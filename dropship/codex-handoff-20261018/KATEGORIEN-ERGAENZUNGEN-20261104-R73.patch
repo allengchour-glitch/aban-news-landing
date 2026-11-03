@@ -1,0 +1,499 @@
+diff --git a/assets/luxe-category.css b/assets/luxe-category.css
+index 915a779..a2773f5 100644
+--- a/assets/luxe-category.css
++++ b/assets/luxe-category.css
+@@ -4,3 +4,45 @@
+ @media(max-width:749px){.lx-category{padding:27px 16px 36px}.lxc-hero{grid-template-columns:minmax(0,1fr);gap:26px}.lxc-hero h1{font-size:clamp(42px,10vw,66px);max-width:550px}.lxc-eyebrow{margin-bottom:15px}.lxc-intro{margin:18px 0 20px;font-size:16px;max-width:480px}.lxc-preview-note{font-size:11px;max-width:360px;margin-top:12px}.lxc-hero-images{aspect-ratio:1.45;gap:10px}.lxc-hero-image img{padding:9px}.lxc-hero-image span{font-size:9px;left:8px;right:8px;bottom:8px;padding:3px 5px}.lxc-process{gap:12px;padding:20px 0;margin:28px 0 38px}.lxc-process p{font-size:11px;gap:7px;line-height:1.5;align-items:flex-start}.lxc-process span{height:23px;width:23px;font-size:9px}.lxc-collection-heading{display:block;margin-bottom:20px}.lxc-collection-heading h2{font-size:32px}.lxc-collection-heading>p{margin-top:12px;font-size:13px}.lxc-categories{gap:7px;margin-bottom:23px}.lxc-categories a{font-size:12px;padding:9px 13px}.lxc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 12px}.lxc-card-image img{padding:10px}.lxc-card h3{font-size:13px}.lxc-price{font-size:13px;margin-bottom:10px}.lxc-card-info{padding-top:12px}.lxc-options{font-size:10px}.lxc-card-cta{font-size:11px;padding-top:11px}.lxc-pagination{gap:12px;font-size:12px;margin-top:28px}.lxc-pagination button{padding:11px 13px}.lxc-products{scroll-margin-top:135px}}
+ .lxc-hero--text-only{grid-template-columns:minmax(0,1fr)}.lxc-option-more summary{cursor:pointer;display:list-item;padding:5px 0;white-space:normal;min-height:28px}.lxc-option-more[open] .lxc-option-values{margin:3px 0 6px}
+ @media(prefers-reduced-motion:reduce){.lxc-hero-image img,.lxc-card-image img{transition:none}}
++
++
++.lcl-catalog[data-luxe-clothing] .lcl-audience,
++.lcl-catalog[data-luxe-clothing] .lcl-reset {
++  min-width:44px;
++  min-height:44px;
++  line-height:1.4;
++}
++.lcl-catalog[data-luxe-clothing] .lcl-reset {
++  padding:10px 4px;
++  font-size:12px;
++}
++.lcl-catalog[data-luxe-clothing] .lcl-discovery :is(button,input,select):focus-visible,
++.lx-category .lxc-option-more summary:focus-visible {
++  outline:2px solid #63584a;
++  outline-offset:3px;
++}
++.lx-category .lxc-option-more summary {
++  min-height:44px;
++  padding:12px 0;
++}
++@media (max-width:749px) {
++  .lcl-catalog[data-luxe-clothing] .lcl-audiences {
++    gap:8px;
++    padding-top:8px;
++  }
++  .lcl-catalog[data-luxe-clothing] .lcl-audience {
++    font-size:12px;
++    padding:10px 12px;
++  }
++  .lcl-catalog[data-luxe-clothing] .lcl-filters {
++    gap:16px 10px;
++    margin-top:20px;
++  }
++  .lcl-catalog[data-luxe-clothing] .lcl-filter {
++    gap:8px;
++  }
++  .lcl-catalog[data-luxe-clothing] .lcl-subcategories {
++    padding:6px 5px 10px;
++    scroll-padding-inline:5px;
++  }
++}
+diff --git a/assets/luxe-collection-explore.css b/assets/luxe-collection-explore.css
+new file mode 100644
+index 0000000..5666fc6
+--- /dev/null
++++ b/assets/luxe-collection-explore.css
+@@ -0,0 +1,47 @@
++.lx-collection-explore {
++  box-sizing: border-box;
++  width: calc(100% - 48px);
++  max-width: min(var(--page-width, 1200px), calc(100% - 48px));
++  min-width: 0;
++  margin: 0 auto 12px;
++  color: #2f2921;
++}
++.lx-collection-explore[hidden],
++.lx-collection-explore [hidden] { display: none !important; }
++.lx-collection-explore__addition { border-block: 1px solid #e8dfd3; }
++.lx-collection-explore__summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding-block: 4px; color: #6c573e; font-size: 13px; font-weight: 600; cursor: pointer; list-style: none; }
++.lx-collection-explore__summary::marker { content: ''; }
++.lx-collection-explore__summary::-webkit-details-marker { display: none; }
++.lx-collection-explore__summary > span { font-size: 20px; font-weight: 400; }
++.lx-collection-explore__addition[open] > .lx-collection-explore__summary > span { transform: rotate(45deg); }
++.lx-collection-explore__addition > nav { padding-block: 4px 14px; }
++.lx-collection-explore__search { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; width: min(100%, 380px); margin: 0 0 14px; }
++.lx-collection-explore__search label { grid-column: 1 / -1; font-size: 12px; color: #6d6154; }
++.lx-collection-explore__search input { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 10px 14px; border: 1px solid #cfc2b1; border-radius: 10px; background: #fff; color: #2f2921; font: inherit; font-size: 14px; }
++.lx-collection-explore__search button { min-width: 44px; min-height: 44px; padding: 8px 10px; border: 1px solid #cfc2b1; border-radius: 10px; background: #fff; color: #5f4d38; cursor: pointer; font: inherit; font-size: 13px; }
++.lx-collection-explore__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 0; padding: 0; list-style: none; }
++.lx-collection-explore__grid li { min-width: 0; margin: 0; }
++.lx-collection-explore__link { box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-width: 0; min-height: 54px; height: 100%; padding: 12px 14px; border: 1px solid #ddd2c4; border-radius: 12px; background: #fffdf9; color: #443a2d; text-decoration: none; font-size: 13px; line-height: 1.4; font-weight: 500; transition: border-color .16s ease, background-color .16s ease; }
++.lx-collection-explore__link span { min-width: 0; overflow-wrap: anywhere; }
++.lx-collection-explore__link svg { flex: 0 0 13px; width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.5; }
++.lx-collection-explore__link:hover { border-color: #9e8668; background: #f4ede3; }
++.lx-collection-explore__link[aria-current='page'] { border-color: #8b7355; background: #eae0d2; color: #352b20; font-weight: 600; }
++.lx-collection-explore__empty { margin: 14px 0; color: #6d6154; font-size: 14px; }
++.lx-collection-explore a:focus-visible,
++.lx-collection-explore input:focus-visible,
++.lx-collection-explore button:focus-visible,
++.lx-collection-explore summary:focus-visible { outline: 2px solid #554128; outline-offset: 3px; }
++@media (min-width: 750px) and (max-width: 1050px) {
++  .lx-collection-explore__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
++}
++@media (max-width: 749px) {
++  .lx-collection-explore { width: calc(100% - 32px); max-width: calc(100% - 32px); }
++  .lx-collection-explore__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
++  .lx-collection-explore__link { padding: 11px 12px; min-height: 56px; font-size: 12px; }
++}
++@media (max-width: 359px) {
++  .lx-collection-explore__link { padding: 10px; gap: 6px; }
++}
++@media (prefers-reduced-motion: reduce) {
++  .lx-collection-explore__link { transition: none; }
++}
+diff --git a/assets/luxe-collection-explore.js b/assets/luxe-collection-explore.js
+new file mode 100644
+index 0000000..3f3abea
+--- /dev/null
++++ b/assets/luxe-collection-explore.js
+@@ -0,0 +1,66 @@
++(() => {
++  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().trim();
++  const destination = href => {
++    try {
++      const url = new URL(href, window.location.href);
++      if (url.origin !== window.location.origin) return null;
++      const path = decodeURI(url.pathname).replace(/\/+$/, '');
++      const collectionPath = path.match(/\/collections\/[^/]+$/);
++      return collectionPath ? collectionPath[0] + url.search : null;
++    } catch { return null; }
++  };
++  const initialize = root => {
++    if (root.dataset.exploreReady === 'true') return;
++    root.dataset.exploreReady = 'true';
++    const seen = new Set();
++    document.querySelectorAll('.lx-tabs a[href], .lx-uf a[href]').forEach(link => {
++      if (root.contains(link)) return;
++      const key = destination(link.getAttribute('href'));
++      if (key) seen.add(key);
++    });
++    const cards = [...root.querySelectorAll('[data-area-item]')];
++    const available = cards.filter(card => {
++      const key = destination(card.querySelector('a[href]')?.getAttribute('href'));
++      const duplicate = key !== null && seen.has(key);
++      card.hidden = duplicate;
++      if (duplicate) card.dataset.areaDuplicate = 'true';
++      else if (key) seen.add(key);
++      return !duplicate;
++    });
++    root.hidden = available.length === 0;
++    if (root.hidden) return;
++    const search = root.querySelector('[data-area-search]');
++    const input = search?.querySelector('input');
++    const reset = search?.querySelector('button');
++    const empty = root.querySelector('[data-area-empty]');
++    if (!search || !input || !reset || !empty || available.length <= 4) return;
++    search.hidden = false;
++    const filter = () => {
++      const query = normalize(input.value);
++      let matches = 0;
++      for (const card of available) {
++        const show = !query || normalize(card.textContent).includes(query);
++        card.hidden = !show;
++        if (show) matches++;
++      }
++      empty.hidden = matches !== 0;
++      reset.hidden = !query;
++    };
++    input.addEventListener('input', filter);
++    input.addEventListener('keydown', event => {
++      if (event.key === 'Escape') {
++        input.value = '';
++        filter();
++      }
++    });
++    reset.addEventListener('click', () => {
++      input.value = '';
++      filter();
++      input.focus();
++    });
++    filter();
++  };
++  const scan = scope => scope.querySelectorAll('[data-collection-explore]').forEach(initialize);
++  scan(document);
++  document.addEventListener('shopify:section:load', event => scan(event.target));
++})();
+diff --git a/locales/de.json b/locales/de.json
+index f0ebe9d..a6ef73c 100644
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -1091,5 +1091,14 @@
+     "shape_star": "Stern",
+     "shape_stocking": "Strumpf",
+     "shape_tree": "Baum"
++  },
++  "luxe_browse": {
++    "nav": {
++      "additional": "Weitere Unterkategorien",
++      "find": "Unterkategorien durchsuchen",
++      "search_placeholder": "Unterkategorie suchen",
++      "reset": "Zurücksetzen",
++      "no_match": "Keine passende Unterkategorie gefunden. Versuche einen anderen Begriff."
++    }
+   }
+ }
+diff --git a/locales/en.default.json b/locales/en.default.json
+index 1d8be20..199ca3a 100644
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -1091,5 +1091,14 @@
+     "shape_star": "Star",
+     "shape_stocking": "Stocking",
+     "shape_tree": "Tree"
++  },
++  "luxe_browse": {
++    "nav": {
++      "additional": "More subcategories",
++      "find": "Browse subcategories",
++      "search_placeholder": "Search subcategories",
++      "reset": "Reset",
++      "no_match": "No matching subcategory. Try another search term."
++    }
+   }
+ }
+diff --git a/locales/fr.json b/locales/fr.json
+index e83a8ba..ed865c4 100644
+--- a/locales/fr.json
++++ b/locales/fr.json
+@@ -621,5 +621,14 @@
+     "shape_star": "Étoile",
+     "shape_stocking": "Chaussette",
+     "shape_tree": "Sapin"
++  },
++  "luxe_browse": {
++    "nav": {
++      "additional": "Autres sous-catégories",
++      "find": "Parcourir les sous-catégories",
++      "search_placeholder": "Rechercher une sous-catégorie",
++      "reset": "Réinitialiser",
++      "no_match": "Aucune sous-catégorie correspondante. Essayez un autre terme."
++    }
+   }
+ }
+diff --git a/snippets/luxe-collection-area-link.liquid b/snippets/luxe-collection-area-link.liquid
+new file mode 100644
+index 0000000..13e8f91
+--- /dev/null
++++ b/snippets/luxe-collection-area-link.liquid
+@@ -0,0 +1,9 @@
++{% doc %}
++  Renders one existing collection navigation destination.
++  @param {string} url - Existing destination URL.
++  @param {string} title - Existing menu or collection title.
++  @param {boolean} [active] - Whether the destination is the current collection.
++  @example
++  {% render 'luxe-collection-area-link', url: collection.url, title: collection.title, active: true %}
++{% enddoc %}
++<li data-area-item><a class="lx-collection-explore__link" href="{{ url | escape }}"{% if active %} aria-current="page"{% endif %}><span>{{ title | escape }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></li>
+diff --git a/snippets/luxe-collection-explore.liquid b/snippets/luxe-collection-explore.liquid
+new file mode 100644
+index 0000000..97eca25
+--- /dev/null
++++ b/snippets/luxe-collection-explore.liquid
+@@ -0,0 +1,206 @@
++{% doc %}
++  Adds missing child or sibling collection links without replacing existing navigation.
++  @param {collection} collection - The current collection.
++  @example
++  {% render 'luxe-collection-explore', collection: collection %}
++{% enddoc %}
++{{ 'luxe-collection-explore.css' | asset_url | stylesheet_tag }}
++{%- liquid
++  assign lx_chips = '' | split: ','
++  assign lx_children = '' | split: ','
++  assign lx_root_handle = ''
++  assign lx_match_priority = 0
++  assign lx_group_url = collection.url
++  assign lx_group_title = collection.title
++  for lx_top in linklists.main-menu.links
++    assign lx_top_handle = lx_top.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode
++    if lx_top.url contains '/collections/'
++      if lx_top_handle == collection.handle
++        if lx_match_priority < 4
++          assign lx_children = '' | split: ','
++          assign lx_chips = '' | split: ','
++        endif
++        assign lx_match_priority = 4
++        assign lx_root_handle = lx_top_handle
++        assign lx_children = lx_children | concat: lx_top.links
++        assign lx_group_url = collection.url
++        assign lx_group_title = collection.title
++      endif
++    endif
++    for lx_child in lx_top.links
++      assign lx_child_handle = lx_child.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode
++      if lx_child.url contains '/collections/'
++        assign lx_child_priority = 2
++        if lx_child.links.size > 0
++          assign lx_child_priority = 3
++        endif
++        if lx_child_handle == collection.handle and lx_match_priority < 4
++          if lx_match_priority < lx_child_priority
++            assign lx_children = '' | split: ','
++            assign lx_chips = '' | split: ','
++            assign lx_root_handle = lx_top_handle
++            assign lx_match_priority = lx_child_priority
++          endif
++          if lx_root_handle == lx_top_handle and lx_match_priority == lx_child_priority
++            if lx_child.links.size > 0
++              assign lx_children = lx_children | concat: lx_child.links
++              assign lx_group_url = collection.url
++              assign lx_group_title = collection.title
++            elsif lx_children.size == 0
++              assign lx_chips = lx_top.links
++              assign lx_group_url = lx_top.url
++              assign lx_group_title = lx_top.title
++            endif
++          endif
++        endif
++      endif
++      for lx_leaf in lx_child.links
++        assign lx_leaf_handle = lx_leaf.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode
++        if lx_leaf.url contains '/collections/'
++          if lx_leaf_handle == collection.handle and lx_match_priority < 1
++            assign lx_match_priority = 1
++            assign lx_root_handle = lx_top_handle
++            assign lx_chips = lx_child.links
++            assign lx_group_url = lx_child.url
++            assign lx_group_title = lx_child.title
++          endif
++        endif
++      endfor
++    endfor
++  endfor
++  if lx_children.size > 0
++    assign lx_chips = lx_children
++    assign lx_group_url = collection.url
++    assign lx_group_title = collection.title
++  endif
++  assign lx_ref_parent = collection.metafields.lux.eltern.value
++  assign lx_refs = collection.metafields.lux.unterfilter.value
++  if lx_refs == blank and lx_ref_parent != blank
++    assign lx_refs = lx_ref_parent.metafields.lux.unterfilter.value
++    if lx_chips.size == 0
++      assign lx_group_url = lx_ref_parent.url
++      assign lx_group_title = lx_ref_parent.title
++    endif
++    if lx_root_handle == ''
++      assign lx_root_handle = lx_ref_parent.handle
++    endif
++  endif
++  assign lx_fallback = ''
++  case collection.handle
++    when 'hundewelt'
++      assign lx_fallback = 'haustier-hunde,leinen-halsbaender-geschirre,hunde-katzen-kleidung,tier-transport,haustier-tech'
++      assign lx_root_handle = 'sub-haustier'
++    when 'sport-outdoor'
++      assign lx_fallback = 'fitness-training,sub-yoga-fitness,camping-outdoor,velo-radsport,schwimmen-tauchen-wassersport'
++      assign lx_root_handle = 'fitness-training'
++    when 'sub-kueche'
++      assign lx_fallback = 'kueche-kochen,geschirr-tisch'
++      assign lx_root_handle = 'kueche-kochen'
++  endcase
++  assign lx_fallback_handles = lx_fallback | split: ','
++  assign lx_legacy_chips = lx_chips
++  assign lx_seen = '|' | append: collection.url | append: '|'
++  if lx_legacy_chips != '' and lx_legacy_chips.size > 1
++    for lx_existing_link in lx_legacy_chips
++      assign lx_existing_url = lx_existing_link.url | split: '?' | first
++      assign lx_seen = lx_seen | append: lx_existing_url | append: '|'
++    endfor
++  endif
++  if lx_refs != blank and lx_refs.size > 0
++    for lx_existing_ref in lx_refs
++      assign lx_seen = lx_seen | append: lx_existing_ref.url | append: '|'
++    endfor
++  endif
++  assign lx_count = 0
++  assign lx_first_cards = ''
++  assign lx_more_cards = ''
++  assign lx_shown_titles = '|'
++-%}
++{%- for lx_link in lx_chips -%}
++  {%- if lx_link.url contains '/collections/' -%}
++    {%- liquid
++      assign lx_key = lx_link.url | split: '?' | first | prepend: '|' | append: '|'
++      assign lx_active = false
++      assign lx_handle = lx_link.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode
++      if lx_handle == collection.handle
++        assign lx_active = true
++      endif
++    -%}
++    {%- unless lx_seen contains lx_key -%}
++      {%- capture lx_card -%}{% render 'luxe-collection-area-link', url: lx_link.url, title: lx_link.title, active: lx_active %}{%- endcapture -%}
++      {%- liquid
++        assign lx_seen = lx_seen | append: lx_key
++        assign lx_count = lx_count | plus: 1
++        assign lx_title_lower = lx_link.title | downcase
++        assign lx_shown_titles = lx_shown_titles | append: lx_title_lower | append: '|'
++        if lx_count <= 8 or lx_active
++          assign lx_first_cards = lx_first_cards | append: lx_card
++        else
++          assign lx_more_cards = lx_more_cards | append: lx_card
++        endif
++      -%}
++    {%- endunless -%}
++  {%- endif -%}
++{%- endfor -%}
++{%- for lx_ref in lx_refs -%}
++  {%- if lx_ref != blank and lx_ref.url != blank -%}
++    {%- liquid
++      assign lx_key = lx_ref.url | split: '?' | first | prepend: '|' | append: '|'
++      assign lx_active = false
++      if lx_ref.id == collection.id
++        assign lx_active = true
++      endif
++    -%}
++    {%- unless lx_seen contains lx_key -%}
++      {%- capture lx_card -%}{% render 'luxe-collection-area-link', url: lx_ref.url, title: lx_ref.title, active: lx_active %}{%- endcapture -%}
++      {%- liquid
++        assign lx_seen = lx_seen | append: lx_key
++        assign lx_count = lx_count | plus: 1
++        assign lx_title_lower = lx_ref.title | downcase
++        assign lx_shown_titles = lx_shown_titles | append: lx_title_lower | append: '|'
++        if lx_count <= 8 or lx_active
++          assign lx_first_cards = lx_first_cards | append: lx_card
++        else
++          assign lx_more_cards = lx_more_cards | append: lx_card
++        endif
++      -%}
++    {%- endunless -%}
++  {%- endif -%}
++{%- endfor -%}
++{%- for lx_fallback_handle in lx_fallback_handles -%}
++  {%- assign lx_ref = collections[lx_fallback_handle] -%}
++  {%- if lx_ref != blank and lx_ref.products_count > 0 -%}
++    {%- assign lx_key = lx_ref.url | split: '?' | first | prepend: '|' | append: '|' -%}
++    {%- unless lx_seen contains lx_key -%}
++      {%- capture lx_card -%}{% render 'luxe-collection-area-link', url: lx_ref.url, title: lx_ref.title, active: false %}{%- endcapture -%}
++      {%- liquid
++        assign lx_seen = lx_seen | append: lx_key
++        assign lx_count = lx_count | plus: 1
++        assign lx_title_lower = lx_ref.title | downcase
++        assign lx_shown_titles = lx_shown_titles | append: lx_title_lower | append: '|'
++        if lx_count <= 8
++          assign lx_first_cards = lx_first_cards | append: lx_card
++        else
++          assign lx_more_cards = lx_more_cards | append: lx_card
++        endif
++      -%}
++    {%- endunless -%}
++  {%- endif -%}
++{%- endfor -%}
++{%- if lx_count > 0 -%}
++  <div class="lx-collection-explore" data-collection-explore data-area-count="{{ lx_count }}" data-category-root="{{ lx_root_handle | escape }}">
++    <details class="lx-collection-explore__addition" data-area-addition>
++      <summary id="lx-areas-{{ collection.id }}" class="lx-collection-explore__summary">{{ 'luxe_browse.nav.additional' | t }}<span aria-hidden="true">+</span></summary>
++      <nav aria-labelledby="lx-areas-{{ collection.id }}">
++        <div class="lx-collection-explore__search" data-area-search hidden>
++          <label for="lx-area-search-{{ collection.id }}">{{ 'luxe_browse.nav.find' | t }}</label>
++          <input id="lx-area-search-{{ collection.id }}" type="search" autocomplete="off" placeholder="{{ 'luxe_browse.nav.search_placeholder' | t | escape_once }}">
++          <button type="button" hidden>{{ 'luxe_browse.nav.reset' | t }}</button>
++        </div>
++        <ul class="lx-collection-explore__grid">{{ lx_first_cards }}{{ lx_more_cards }}</ul>
++        <p class="lx-collection-explore__empty" data-area-empty role="status" hidden>{{ 'luxe_browse.nav.no_match' | t }}</p>
++      </nav>
++    </details>
++  </div>
++  <script src="{{ 'luxe-collection-explore.js' | asset_url }}" defer></script>
++{%- endif -%}
+diff --git a/templates/collection.json b/templates/collection.json
+index a99ee1a..7f8842f 100644
+--- a/templates/collection.json
++++ b/templates/collection.json
+@@ -160,7 +160,7 @@
+     "lux_subchips": {
+       "type": "custom-liquid",
+       "settings": {
+-        "custom_liquid": "{%- liquid\n  assign chips = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url and link.links.size > 1\n      assign chips = link.links\n    endif\n    for sub in link.links\n      if sub.url == collection.url and link.links.size > 1\n        assign chips = link.links\n      endif\n    endfor\n  endfor\n-%}\n{%- if chips != '' and chips.size > 1 -%}\n{%- assign lx_max = 7 -%}\n{%- assign lx_n = chips.size -%}\n<nav class=\"lx-tabs\" aria-label=\"Unterkategorien\">\n<style>\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #cdbd9f;padding:0 0 .1rem;margin:0;list-style:none}\n.lx-tabs a,.lx-tabs summary{font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\n.lx-tabs a[aria-current=\"page\"]{color:#1f1a12;font-weight:800;border-bottom-color:#8b7355;border-bottom-width:3px}\n.lx-tabs summary{list-style:none;cursor:pointer;color:#6b4f1d;font-weight:700}\n.lx-tabs summary::-webkit-details-marker{display:none}\n.lx-tabs summary::after{content:' ▾'}\n.lx-tabs details[open] summary::after{content:' ▴'}\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\n.lx-tabs__alle li{break-inside:avoid}\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\n</style>\n<ul class=\"lx-tabs__zeile\">\n  {%- assign lx_seen = '|' -%}{%- assign lx_shown = 0 -%}\n  {%- for ch in chips -%}\n    {%- assign lx_key = '|' | append: ch.url | append: '|' -%}\n    {%- unless lx_seen contains lx_key -%}\n      {%- assign lx_seen = lx_seen | append: ch.url | append: '|' -%}\n      {%- assign lx_shown = lx_shown | plus: 1 -%}\n      {%- if lx_shown <= lx_max or ch.url == collection.url -%}\n        <li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>\n      {%- endif -%}\n    {%- endunless -%}\n  {%- endfor -%}\n  {%- assign lx_n = lx_shown -%}\n</ul>\n{%- if lx_n > lx_max -%}\n<details class=\"lx-tabs__details\" style=\"margin:0\"><summary style=\"margin:.2rem 0 0;display:inline-block\">Alle {{ lx_n }} Kategorien</summary>\n<ul class=\"lx-tabs__alle\">\n  {%- assign lx_seen2 = '|' -%}\n  {%- for ch in chips -%}{%- assign lx_key2 = '|' | append: ch.url | append: '|' -%}{%- unless lx_seen2 contains lx_key2 -%}{%- assign lx_seen2 = lx_seen2 | append: ch.url | append: '|' -%}<li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>{%- endunless -%}{%- endfor -%}\n</ul></details>\n{%- endif -%}\n</nav>\n{%- endif -%}\n{%- liquid\n  assign lx_uf = collection.metafields.lux.unterfilter.value\n  assign lx_kopf = collection\n  if lx_uf == blank\n    assign lx_el = collection.metafields.lux.eltern.value\n    if lx_el != blank\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\n      assign lx_kopf = lx_el\n    endif\n  endif\n-%}\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\n<nav class=\"lx-uf\" aria-label=\"Unterfilter {{ lx_kopf.title | escape }}\">\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\"page\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\n  <div class=\"lx-uf__zeile\">\n    <span class=\"lx-uf__label\">{{ lx_kopf.title | escape }}:</span>\n    <a href=\"{{ lx_kopf.url }}\"{% if lx_kopf.id == collection.id %} aria-current=\"page\"{% endif %}>Alle</a>\n    {%- for f in lx_uf -%}<a href=\"{{ f.url }}\"{% if f.id == collection.id %} aria-current=\"page\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\n  </div>\n</nav>\n{%- endif -%}\n{%- comment -%}\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\n{%- endcomment -%}\n{%- liquid\n  assign welt = ''\n  assign menuetitel = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url\n      assign welt = link.title\n    endif\n    for sub in link.links\n      if sub.url == collection.url and welt == ''\n        assign welt = link.title\n      endif\n      for sub2 in sub.links\n        if sub2.url == collection.url and welt == ''\n          assign welt = link.title\n        endif\n      endfor\n    endfor\n  endfor\n  for ch in chips\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\n  endfor\n  comment\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\n  endcomment\n  case welt\n    when 'Damen'\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\n    when 'Herren'\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\n    when 'Schuhe'\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\n    when 'Schmuck & Uhren'\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\n    when 'Beauty & Parfüm'\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\n    when 'Wohnen & Garten'\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\n    when 'Küche'\n      assign erlaubt = 'neu,kueche,aufbewahrung,gadget,elektronik,geschenk,ch-lager'\n    when 'Geschirr'\n      assign erlaubt = 'neu,kueche,geschenk,ch-lager'\n    when 'Technik & Gaming'\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\n    when 'Kinder & Haustier'\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\n    when 'Sport & Party'\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\n    when 'Herbst & Übergang'\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\n    else\n      assign erlaubt = ''\n  endcase\n-%}\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\n{%- capture fchips -%}\n  {%- for paar in filterpaare -%}\n    {%- assign teile = paar | split: '|' -%}\n    {%- assign t = teile[0] -%}\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\n    {%- assign tl_pipe = '|' | append: tl -%}\n    {%- assign ok = true -%}\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\n    {%- if ok and collection.all_tags contains t -%}\n      {%- assign akt = false -%}\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\n      {%- if akt -%}\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\n        {%- assign rest = rest | remove_first: '+' -%}\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\n      {%- else -%}\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\n      {%- endif -%}\n      <a href=\"{{ ziel }}\" rel=\"nofollow\" style=\"white-space:nowrap;font-size:.92rem;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#9db5a3{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:700;{% else %}background:#f7faf7;color:#1f3a27;font-weight:600;{% endif %}\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\n    {%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if fchips contains '<a' -%}\n<div class=\"lx-chiprow\" style=\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\">\n  <div class=\"lx-chipflex\" style=\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\">\n    <span style=\"font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap;\">Filtern:</span>\n    {{ fchips }}\n  </div>\n</div>\n{%- endif -%}\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\n",
++        "custom_liquid": "{%- liquid\n  assign chips = '' | split: ','\n  assign chips_priority = 0\n  assign chips_root = ''\n  for link in linklists.main-menu.links\n    assign link_handle = link.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode\n    if link.url contains '/collections/' and link_handle == collection.handle\n      if chips_priority < 4\n        assign chips = '' | split: ','\n      endif\n      assign chips_priority = 4\n      assign chips_root = link.url\n      assign chips = chips | concat: link.links\n    endif\n    for sub in link.links\n      assign sub_handle = sub.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode\n      assign sub_priority = 2\n      if sub.links.size > 0\n        assign sub_priority = 3\n      endif\n      if sub.url contains '/collections/' and sub_handle == collection.handle and chips_priority < 4\n        if chips_priority < sub_priority\n          assign chips_priority = sub_priority\n          assign chips_root = link.url\n          if sub.links.size > 0\n            assign chips = sub.links\n          else\n            assign chips = link.links\n          endif\n        elsif chips_priority == 3 and sub_priority == 3 and chips_root == link.url\n          assign chips = chips | concat: sub.links\n        endif\n      endif\n      for leaf in sub.links\n        assign leaf_handle = leaf.url | split: '/collections/' | last | split: '/' | first | split: '?' | first | url_decode\n        if leaf.url contains '/collections/' and leaf_handle == collection.handle and chips_priority < 1\n          assign chips_priority = 1\n          assign chips_root = link.url\n          assign chips = sub.links\n        endif\n      endfor\n    endfor\n  endfor\n-%}\n{%- if chips != '' and chips.size > 1 -%}\n{%- assign lx_max = 7 -%}\n{%- assign lx_n = chips.size -%}\n<nav class=\"lx-tabs\" aria-label=\"Unterkategorien\">\n<style>\n.lx-tabs{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.5rem 1.5rem .2rem;box-sizing:border-box}\n.lx-tabs__zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1.7rem;border-bottom:1px solid #cdbd9f;padding:0 0 .1rem;margin:0;list-style:none}\n.lx-tabs a,.lx-tabs summary{font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.45rem 0;border-bottom:2px solid transparent;transition:color .35s ease,border-color .35s ease;display:inline-block}\n.lx-tabs a:hover{color:#1f1a12;border-bottom-color:#cdbd9f}\n.lx-tabs a[aria-current=\"page\"]{color:#1f1a12;font-weight:800;border-bottom-color:#8b7355;border-bottom-width:3px}\n.lx-tabs summary{list-style:none;cursor:pointer;color:#6b4f1d;font-weight:700}\n.lx-tabs summary::-webkit-details-marker{display:none}\n.lx-tabs summary::after{content:' ▾'}\n.lx-tabs details[open] summary::after{content:' ▴'}\n.lx-tabs__alle{list-style:none;margin:.35rem 0 .2rem;padding:.9rem 0 .5rem;columns:13.5rem;column-gap:2rem;border-bottom:1px solid #e8e1d4}\n.lx-tabs__alle li{break-inside:avoid}\n.lx-tabs__alle a{letter-spacing:.04em;text-transform:none;font-size:.88rem;display:block;padding:.3rem 0}\n@media(max-width:749px){.lx-tabs__zeile{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1.3rem}.lx-tabs__zeile>li{flex:0 0 auto}}\n</style>\n<ul class=\"lx-tabs__zeile\">\n  {%- assign lx_seen = '|' -%}{%- assign lx_shown = 0 -%}\n  {%- for ch in chips -%}\n    {%- assign lx_key = '|' | append: ch.url | append: '|' -%}\n    {%- unless lx_seen contains lx_key -%}\n      {%- assign lx_seen = lx_seen | append: ch.url | append: '|' -%}\n      {%- assign lx_shown = lx_shown | plus: 1 -%}\n      {%- if lx_shown <= lx_max or ch.url == collection.url -%}\n        <li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>\n      {%- endif -%}\n    {%- endunless -%}\n  {%- endfor -%}\n  {%- assign lx_n = lx_shown -%}\n</ul>\n{%- if lx_n > lx_max -%}\n<details class=\"lx-tabs__details\" style=\"margin:0\"><summary style=\"margin:.2rem 0 0;display:inline-block\">Alle {{ lx_n }} Kategorien</summary>\n<ul class=\"lx-tabs__alle\">\n  {%- assign lx_seen2 = '|' -%}\n  {%- for ch in chips -%}{%- assign lx_key2 = '|' | append: ch.url | append: '|' -%}{%- unless lx_seen2 contains lx_key2 -%}{%- assign lx_seen2 = lx_seen2 | append: ch.url | append: '|' -%}<li><a href=\"{{ ch.url }}\"{% if ch.url == collection.url %} aria-current=\"page\"{% endif %}>{{ ch.title }}</a></li>{%- endunless -%}{%- endfor -%}\n</ul></details>\n{%- endif -%}\n</nav>\n{%- endif -%}\n{%- liquid\n  assign lx_uf = collection.metafields.lux.unterfilter.value\n  assign lx_kopf = collection\n  if lx_uf == blank\n    assign lx_el = collection.metafields.lux.eltern.value\n    if lx_el != blank\n      assign lx_uf = lx_el.metafields.lux.unterfilter.value\n      assign lx_kopf = lx_el\n    endif\n  endif\n-%}\n{%- if lx_uf != blank and lx_uf.size > 0 -%}\n<nav class=\"lx-uf\" aria-label=\"Unterfilter {{ lx_kopf.title | escape }}\">\n<style>.lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}.lx-uf__zeile{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}.lx-uf__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}.lx-uf a{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.4rem .95rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}.lx-uf a:hover{border-color:#8b7355;color:#1f1a12}.lx-uf a[aria-current=\"page\"]{background:#8b7355;border-color:#8b7355;color:#fff;font-weight:600}@media(max-width:749px){.lx-uf__zeile{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:.3rem}.lx-uf__zeile::-webkit-scrollbar{display:none}}</style>\n  <div class=\"lx-uf__zeile\">\n    <span class=\"lx-uf__label\">{{ lx_kopf.title | escape }}:</span>\n    <a href=\"{{ lx_kopf.url }}\"{% if lx_kopf.id == collection.id %} aria-current=\"page\"{% endif %}>Alle</a>\n    {%- for f in lx_uf -%}<a href=\"{{ f.url }}\"{% if f.id == collection.id %} aria-current=\"page\"{% endif %}>{{ f.title | escape }}</a>{%- endfor -%}\n  </div>\n</nav>\n{%- endif -%}\n{%- comment -%}\n  Filterzeile (30.08.2026): native Tag-Filterung — auf Kollektionen ueber 5000\n  Produkten schaltet Shopify die Facetten hart ab (Plattform-Limit); Tags kennen kein Limit. Tag-Liste GEMESSEN\n  (productsCount je Tag) — neue Tags nur mit Zahl dahinter ergaenzen.\n{%- endcomment -%}\n{%- liquid\n  assign welt = ''\n  assign menuetitel = ''\n  for link in linklists.main-menu.links\n    if link.url == collection.url\n      assign welt = link.title\n    endif\n    for sub in link.links\n      if sub.url == collection.url and welt == ''\n        assign welt = link.title\n      endif\n      for sub2 in sub.links\n        if sub2.url == collection.url and welt == ''\n          assign welt = link.title\n        endif\n      endfor\n    endfor\n  endfor\n  for ch in chips\n    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase\n  endfor\n  comment\n    Welt-Whitelist (05.09.2026, Audit kategorie-navigation): «Jacken» auf Wohnen fuehrte zu 1 Hundejacke,\n    «Ringe» auf Elektronik zu Smartwatches mit «Monitoring» — collection.all_tags kennt keine Stueckzahl.\n    Je Welt nur die Tags, die dort etwas bedeuten; ohne erkannte Welt gilt die volle Liste.\n  endcomment\n  case welt\n    when 'Damen'\n      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'\n    when 'Herren'\n      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'\n    when 'Schuhe'\n      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'\n    when 'Schmuck & Uhren'\n      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'\n    when 'Beauty & Parfüm'\n      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'\n    when 'Wohnen & Garten'\n      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'\n    when 'Küche'\n      assign erlaubt = 'neu,kueche,aufbewahrung,gadget,elektronik,geschenk,ch-lager'\n    when 'Geschirr'\n      assign erlaubt = 'neu,kueche,geschenk,ch-lager'\n    when 'Technik & Gaming'\n      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'\n    when 'Kinder & Haustier'\n      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'\n    when 'Sport & Party'\n      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'\n    when 'Herbst & Übergang'\n      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'\n    else\n      assign erlaubt = ''\n  endcase\n-%}\n{%- assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ',' -%}\n{%- capture fchips -%}\n  {%- for paar in filterpaare -%}\n    {%- assign teile = paar | split: '|' -%}\n    {%- assign t = teile[0] -%}\n    {%- assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ ' -%}\n    {%- assign tl_pipe = '|' | append: tl -%}\n    {%- assign ok = true -%}\n    {%- if erlaubt != '' -%}{%- assign erl = erlaubt | split: ',' -%}{%- unless erl contains t -%}{%- assign ok = false -%}{%- endunless -%}{%- endif -%}\n    {%- if menuetitel contains tl_pipe -%}{%- assign ok = false -%}{%- endif -%}\n    {%- if ok and collection.all_tags contains t -%}\n      {%- assign akt = false -%}\n      {%- if current_tags contains t -%}{%- assign akt = true -%}{%- endif -%}\n      {%- comment -%} Mehrfach-Filter (31.08.): native Tag-URLs koennen tag1+tag2 —\n        aktiver Chip entfernt NUR sich selbst, inaktiver haengt sich an die aktiven an. {%- endcomment -%}\n      {%- if akt -%}\n        {%- capture rest -%}{%- for ct in current_tags -%}{%- if ct != t -%}+{{ ct }}{%- endif -%}{%- endfor -%}{%- endcapture -%}\n        {%- assign rest = rest | remove_first: '+' -%}\n        {%- if rest == '' -%}{%- assign ziel = collection.url -%}{%- else -%}{%- assign ziel = collection.url | append: '/' | append: rest -%}{%- endif -%}\n      {%- else -%}\n        {%- capture plus -%}{%- for ct in current_tags -%}{{ ct }}+{%- endfor -%}{{ t }}{%- endcapture -%}\n        {%- assign ziel = collection.url | append: '/' | append: plus -%}\n      {%- endif -%}\n      <a href=\"{{ ziel }}\" rel=\"nofollow\" style=\"white-space:nowrap;font-size:.92rem;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid {% if akt %}#2f5a3b{% else %}#9db5a3{% endif %};{% if akt %}background:#2f5a3b;color:#fff;font-weight:700;{% else %}background:#f7faf7;color:#1f3a27;font-weight:600;{% endif %}\">{{ teile[1] }}{% if akt %} ✕{% endif %}</a>\n    {%- endif -%}\n  {%- endfor -%}\n{%- endcapture -%}\n{%- if fchips contains '<a' -%}\n<div class=\"lx-chiprow\" style=\"width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box;margin:0 auto;padding:.15rem 1.5rem .3rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;\">\n  <div class=\"lx-chipflex\" style=\"display:flex;gap:.45rem;width:max-content;align-items:center;padding-bottom:.3rem;\">\n    <span style=\"font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap;\">Filtern:</span>\n    {{ fchips }}\n  </div>\n</div>\n{%- endif -%}\n<style>@media (min-width:750px){.lx-chiprow{overflow:visible!important}.lx-chipflex{flex-wrap:wrap!important;width:auto!important;row-gap:.45rem!important}}</style>\n",
+         "padding-block-start": 0,
+         "padding-block-end": 0
+       }
+@@ -188,15 +188,24 @@
+         "padding-block-start": 0,
+         "padding-block-end": 0
+       }
++    },
++    "lux_extra_categories": {
++      "type": "custom-liquid",
++      "settings": {
++        "custom_liquid": "{% render 'luxe-collection-explore', collection: collection %}",
++        "padding-block-start": 0,
++        "padding-block-end": 0
++      }
+     }
+   },
+   "order": [
+     "lux_breadcrumb",
+     "lux_subchips",
++    "lux_extra_categories",
+     "lux_usp_coll",
+     "lux_hero",
+     "luxe_review_assets",
+     "main",
+     "lux_faq"
+   ]
+-}
+\ No newline at end of file
++}
