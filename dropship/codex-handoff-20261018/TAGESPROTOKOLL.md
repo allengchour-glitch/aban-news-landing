@@ -791,5 +791,11 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 | Suche / Theme | Drei Landeseiten und aktuelle native/public Breitenregel geprüft | Gewünschte Regel bereits enthalten; keine eigene Publikation, alter Patch nicht erneut anwenden |
 | Verkaufsentwurf | Eine Email3-Qualitätskorrektur mit exaktem Diff vorbereitet | Nicht angewendet, keine Aktivierung/Versandfreigabe |
 | Genehmigte DNS-Records | Genau vier Zielwerte öffentlich über Resolver geprüft | Keiner der vier Zielwerte beobachtet; kein verifizierter Schreibzugang, Genehmigung bleibt bestehen, keine Zone geändert |
+| R65 Beschreibungsdatei | 31 Angebotszeilen und R42-Vergleich mit unabhängiger Gegenzählung geprüft | 29 bekannte Texte mit Motivpräfix; zwei unzugeordnete Offer-Strings, keine neue Umsetzung |
+| R65 Produkt-/Bildzuordnung | Zwei bekannte Produkte und alle sechs aktuellen Set-Bildbindungen geprüft; drei Typbilder angesehen | Farbtext nur für A passend; enger Body-/SEO-Entwurf vorbereitet, nicht angewendet; auswahl-offen erhalten |
+| R65 Merchant-Quellen | Alte Set-Variante mit erfolgreicher nativer Kontrollabfrage geprüft; drei Quellenfälle abgegrenzt | Alte Node null; Google-Zustand/aktive Quelle unbekannt, kein Feedwrite oder Neuzuordnung |
+| R65 Nachfrage | 240 CH-Bekleidungsvorschläge aus September 2026 mit Gegenzählung ausgewertet | Drei begrenzte Stichworthypothesen; 133 Preisrahmen unbekannt, keine Sortiments-/Preisänderung |
 
 [LUXESTYLE_LAUF_20261103] [Paket](LAUFPAKET-20261103-R64.md) · [Belege](LAUFBELEGE-20261103-R64.json) · [Master](MASTER-CONTENT-20261103-R64.md). Tagesreports abgeschlossen; spätere bestehende Läufe lesen sie ohne konkreten neuen Anlass nicht erneut.
+
+[LUXESTYLE_R65_20261103] [Zusatzbericht](BESCHREIBUNGEN-UND-NACHFRAGE-20261103-R65.md) · [Belege](BESCHREIBUNGEN-NACHFRAGE-BELEGE-20261103-R65.json) · [Motiv-Entwurf](BLUMEN-MOTIV-FREIGABE-20261103-R65.json). Kein erneuter Tagesreport; frische Produktgegenprobe durch neue Export-/Variantenabweichung begründet.
