@@ -257,6 +257,12 @@ def lauf(neu=False, client=None, jetzt=None, logbuch=None, kurse=None, lage_text
     d, info = frage_claude(lagebericht(reihen, lage_text, ki["entscheide"]), client)
     if d is None:
         print("KI-Trader: " + info["hinweis"])
+        # Fürs Cockpit: der GRUND steht dann in der Gesundheits-Zeile («Schlüssel ungültig», «Guthaben leer» …), nicht nur im Log. Wirft nie.
+        try:
+            ki["letzter_fehler"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "stand": stand, "hinweis": str(info.get("hinweis", ""))[:300]}
+            schreibe(ki, pfad)
+        except Exception:  # noqa: BLE001
+            pass
         if push:  # nie still: sonst fehlen dem Schattenkonto wochenlang Daten, ohne dass es jemand merkt
             import signale as SG
             SG.push(f"⚠️ KI-Trader: keine Einschätzung für {stand} — {info['hinweis']}")
@@ -264,6 +270,7 @@ def lauf(neu=False, client=None, jetzt=None, logbuch=None, kurse=None, lage_text
     e = {"stand": stand, "zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), **info, **d,
          "kurse": {c: reihen[c][-1][1] for c in COINS}}
     ki["entscheide"] = [x for x in ki["entscheide"] if x["stand"] != stand] + [e]
+    ki.pop("letzter_fehler", None)              # der letzte Versuch hat geklappt
     schreibe(ki, pfad)
     vgl = vergleich(ki, pilot_entscheide(), {c: dict(reihen[c]) for c in COINS})
     t = stand_text(ki, vgl)
