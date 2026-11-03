@@ -1,0 +1,368 @@
+{% liquid
+  assign lx_standard_home = false
+  if template.name == 'index' and template.suffix == blank
+    assign lx_standard_home = true
+  endif
+%}
+<script src="{{ 'luxe-product-reviews.js' | asset_url }}" defer></script>
+{% assign lx_locale_root = routes.root_url | append: '/' | replace: '//', '/' %}
+{% assign lx_design_url = lx_locale_root | append: 'collections/selbst-gestalten-1?view=luxe-gestalten' %}
+{% assign lx_beauty_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453' %}
+{% assign lx_sport_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453' %}
+
+<div class="lx-home" id="lx-top">
+  {% unless lx_standard_home %}
+  <a class="lx-skip" href="#lx-content">{{ 'luxe_home.zum_inhalt_f0521' | t }}</a>
+  <div class="lx-announcement">{{ 'luxe_home.gratisversand_in_der_schweiz_ab__9a8a6' | t }} <a href="{{ lx_locale_root }}pages/versand-lieferung">{{ 'luxe_home.versandinfos_87cfe' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+  <header class="lx-header">
+    <button class="lx-icon-button lx-mobile-menu" type="button" data-open="lx-menu" aria-label="{{ 'luxe_home.men_ffnen_ac3b2' | t | escape }}" aria-haspopup="dialog"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+    <a href="{{ lx_locale_root }}" class="lx-wordmark" aria-label="{{ 'luxe_home.luxestyle_startseite_184ed' | t | escape }}">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a>
+    <nav class="lx-nav" aria-label="{{ 'luxe_home.hauptnavigation_e8fc6' | t | escape }}">
+      <a class="lx-design-nav" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }}</a>
+      <a href="{{ lx_locale_root }}collections/damen-mode">{{ 'luxe_home.mode_5e23e' | t }}</a><a href="{{ lx_locale_root }}collections/wohnen-dekoration">{{ 'luxe_home.wohnen_49bf1' | t }}</a><a href="{{ lx_locale_root }}collections/geschenke-unter-50-franken">{{ 'luxe_home.geschenkideen_6ad8d' | t }}</a><a href="{{ lx_locale_root }}pages/alle-kategorien">{{ 'luxe_home.alle_kategorien_5ed9a' | t }}</a>
+    </nav>
+    <div class="lx-tools">
+      <button class="lx-icon-button" type="button" data-open="lx-search" aria-label="{{ 'luxe_home.suche_ffnen_28121' | t | escape }}" aria-haspopup="dialog"><svg viewbox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+      <a class="lx-icon-button lx-account" href="https://account.luxestyle.com.co" aria-label="{{ 'luxe_home.kundenkonto_15592' | t | escape }}"><svg viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></a>
+      <a class="lx-icon-button" href="{{ routes.cart_url }}" aria-label="{{ 'luxe_home.warenkorb_d6de3' | t | escape }}"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+    </div>
+  </header>
+  {% endunless %}
+  {% if lx_standard_home %}<div id="lx-content">{% else %}<main id="lx-content">{% endif %}
+    <section class="lx-hero lx-background-hero" aria-labelledby="lx-hero-title">
+      <div class="lx-background-hero-media" data-hero-media>
+        <img src="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" width="720" height="1000" loading="eager" fetchpriority="high" alt="{{ 'luxe_home.hero.video_description' | t | escape }}">
+        <video muted playsinline loop preload="none" data-hero-video data-src="https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0" poster="https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853" aria-hidden="true" tabindex="-1"></video>
+        <button type="button" class="lx-hero-video-control" data-hero-toggle data-play-label="{{ 'luxe_home.hero.play' | t | escape }}" data-pause-label="{{ 'luxe_home.hero.pause' | t | escape }}" hidden>{{ 'luxe_home.hero.play' | t }}</button>
+      </div>
+      <div class="lx-hero-copy">
+        <p class="lx-eyebrow">{{ 'luxe_home.sch_nes_f_r_deinen_alltag_14a23' | t }}</p>
+        <h1 id="lx-hero-title">{{ 'luxe_home.hero.heading_first' | t }}<br><em>{{ 'luxe_home.hero.heading_second' | t }}</em></h1>
+        <p class="lx-hero-description">{{ 'luxe_home.hero.description' | t }}</p>
+        <div class="lx-hero-actions">
+          <a class="lx-button" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.hero.categories' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+          <a class="lx-text-link" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+        </div>
+      </div>
+    </section>
+    <section class="lx-worlds lx-section" id="lx-worlds" aria-labelledby="lx-worlds-title">
+      <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.deine_einkaufswelten_8c136' | t }}</p><h2 id="lx-worlds-title">{{ 'luxe_home.was_passt_zu_dir_8d3c4' | t }}</h2></div><p>{{ 'luxe_home.weniger_suchen_e0c2e' | t }}<br>{{ 'luxe_home.mehr_entdecken_386fc' | t }}</p></div>
+      {% assign lx_home_categories = 'selbst-gestalten-1|design,damen-mode|women,fur-ihn|men,sub-baby-kids|kids,schuhe|shoes,sub-taschen|bags,schmuck|jewellery,uhren|watches,beauty-pflege|beauty,wohnen-dekoration|home,sub-kueche|kitchen,elektronik-technik|electronics,gaming|gaming,hundewelt|dogs,sport-outdoor|sport,premium-geschenke|gifts' | split: ',' %}
+      <nav class="lx-category-grid" aria-label="{{ 'luxe_home.categories.navigation' | t | escape }}">
+        {% for lx_entry in lx_home_categories %}
+          {% assign lx_parts = lx_entry | split: '|' %}
+          {% assign lx_collection = collections[lx_parts[0]] %}
+          {% if lx_collection != blank and lx_collection.products_count > 0 %}
+            {% assign lx_label_key = 'luxe_home.categories.' | append: lx_parts[1] %}
+            {% assign lx_category_url = lx_collection.url %}
+            {% if lx_parts[1] == 'design' %}{% assign lx_category_url = lx_design_url %}{% endif %}
+            <a class="lx-category-tile" href="{{ lx_category_url }}" data-category-handle="{{ lx_collection.handle | escape }}">
+              <span class="lx-category-thumb">
+                {% if lx_collection.handle == 'beauty-pflege' %}
+                  <img src="{{ lx_beauty_scene | escape }}&amp;width=240" srcset="{{ lx_beauty_scene | escape }}&amp;width=120 120w, {{ lx_beauty_scene | escape }}&amp;width=180 180w, {{ lx_beauty_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 56px, 80px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+                {% elsif lx_collection.handle == 'sport-outdoor' %}
+                  <img src="{{ lx_sport_scene | escape }}&amp;width=240" srcset="{{ lx_sport_scene | escape }}&amp;width=120 120w, {{ lx_sport_scene | escape }}&amp;width=180 180w, {{ lx_sport_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 56px, 80px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+                {% elsif lx_collection.image != blank %}
+                  {{ lx_collection.image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '(max-width: 760px) 56px, 80px', alt: '' }}
+                {% else %}
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                {% endif %}
+              </span>
+              <span class="lx-category-name">{{ lx_label_key | t }}</span>
+              <svg class="lx-category-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+      <a class="lx-text-link lx-all-categories" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.categories.all' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </section>
+    <section class="lx-design-edit lx-design-collage-section lx-section" id="lx-selfdesign" aria-labelledby="lx-design-title">
+      <div class="lx-design-copy">
+        <p class="lx-eyebrow">{{ 'luxe_home.design.eyebrow' | t }}</p>
+        <h2 id="lx-design-title">{{ 'luxe_home.design.heading' | t }}</h2>
+        <p class="lx-design-description">{{ 'luxe_home.choices.intro' | t }}</p>
+        <a class="lx-button" href="{{ lx_design_url }}">{{ 'luxe_home.choices.browse' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+        <ul class="lx-design-options" aria-label="{{ 'luxe_home.design.options' | t | escape }}"><li>{{ 'luxe_home.design.category' | t }}</li><li>{{ 'luxe_home.design.colour' | t }}</li><li>{{ 'luxe_home.design.size' | t }}</li></ul>
+      </div>
+      <a class="lx-design-collage" href="{{ lx_design_url }}">
+        <img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613" srcset="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=480 480w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=750 750w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=1000 1000w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=1122 1122w" sizes="(max-width: 760px) calc(100vw - 32px), 46vw" width="1122" height="1402" loading="lazy" alt="{{ 'luxe_home.choices.collage_alt' | t | escape }}">
+      </a>
+    </section>
+    {% assign lx_trends_source = collections['hype-jetzt'] %}
+    {% assign lx_trend_ids = '15499700142465,15450856292737,15448587075969,15430462669185,15408458006913,16617685877127,16613782323591,16610088518023,16604940730759,16604922937735,15523992797569,15523992174977' | split: ',' %}
+    {% assign lx_trend_handles = 'magnetische-3-in-1-ladestation-613200,reise-hangematte-aus-fallschirm-nylon-86eb20,midikleid-mit-zopfmuster-und-blumenprint-600200,herren-cargo-hose-trail-multi-pocket-outdoor,kristallspitzen-set-8-teilig-holzbox,yoga-massagerolle-390720,kabelloser-mini-staubsauger-furs-auto-f2796b,tragbarer-mixer-mit-usb-c-ladefunktion-794304,outdoor-bluetooth-karaoke-lautsprecher-600000,magnetischer-kartenhalter-mit-magsafe-632200,reise-organizer-set-mit-netz-617800,futterball-fur-haustiere-498560' | split: ',' %}
+    {% assign lx_trend_stops = 'google-policy-flag,nicht-live,18plus,adult,gmc-adult,compliance-pruefen,verdeckte-ueberwachung,medizinprodukt,social-pause,rueckhol,-raus-,geprueft-gesperrt,marge-verlust,verlust-auto,us-netzteil,nicht-versendbar' | split: ',' %}
+    {% assign lx_trend_count = 0 %}
+    {% capture lx_trend_cards %}
+      {% for lx_trend_handle in lx_trend_handles %}
+        {% assign lx_trend = all_products[lx_trend_handle] %}
+        {% assign lx_trend_id = lx_trend.id | append: '' %}
+        {% if lx_trend_ids contains lx_trend_id and lx_trend.available and lx_trend.featured_image and lx_trend.price_min > 0 and lx_trend.tags.size > 0 %}
+          {% assign lx_trend_blocked = false %}
+          {% assign lx_trend_tag_text = lx_trend.tags | join: '|' | downcase %}
+          {% for lx_stop in lx_trend_stops %}
+            {% if lx_trend_tag_text contains lx_stop %}{% assign lx_trend_blocked = true %}{% endif %}
+          {% endfor %}
+          {% for lx_tag in lx_trend.tags %}
+            {% assign lx_tag_lower = lx_tag | downcase %}
+            {% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_trend_blocked = true %}{% endif %}
+          {% endfor %}
+          {% unless lx_trend_blocked %}
+            {% assign lx_trend_count = lx_trend_count | plus: 1 %}
+            <a class="lx-trend-card" href="{{ lx_trend.url }}" data-trend-product-id="{{ lx_trend.id }}" data-trend-handle="{{ lx_trend.handle | escape }}" aria-labelledby="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">
+              <div class="lx-trend-image">{{ lx_trend.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(max-width: 760px) 42vw, (max-width: 1100px) 28vw, 21vw', alt: '' }}</div>
+              <div class="lx-trend-info">
+                <h3 id="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">{{ lx_trend.title | escape }}</h3>
+                <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_trend.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_trend %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+                <p class="lx-trend-price">{% if lx_trend.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_trend.price_min | money_with_currency }}</p>
+                <span class="lx-trend-open">{{ 'luxe_home.trends.open' | t }}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+              </div>
+            </a>
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+    {% if lx_trend_count > 0 %}
+      <section class="lx-trends lx-section" id="lx-trends" aria-labelledby="lx-trends-title">
+        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.trends.eyebrow' | t }}</p><h2 id="lx-trends-title">{{ 'luxe_home.trends.heading' | t }}</h2></div><a class="lx-text-link" href="{{ lx_trends_source.url }}">{{ 'luxe_home.trends.all' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+        <p class="lx-trends-hint" id="lx-trends-hint">{{ 'luxe_home.trends.swipe' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></p>
+        <div class="lx-trends-grid" tabindex="0" role="region" aria-label="{{ 'luxe_home.trends.products' | t }}">{{ lx_trend_cards }}</div>
+      </section>
+    {% endif %}
+    {% assign lx_edit_groups = 'jewellery|schmuck,home|wohnen-dekoration' | split: ',' %}
+    {% for lx_edit_group in lx_edit_groups %}
+      {% assign lx_edit_parts = lx_edit_group | split: '|' %}
+      {% assign lx_edit_key = lx_edit_parts[0] %}
+      {% assign lx_edit_collection = collections[lx_edit_parts[1]] %}
+      {% if lx_edit_key == 'jewellery' %}
+        {% assign lx_edit_entries = 's925-silber-halskette-eclat-1-karat-moissanite|15412902756737|necklace,ohrstecker-lumiere-elegante-high-end-studs|15412902789505|earrings,geflochtenes-lederarmband-mit-verschluss-625800|15501005226369|bracelet' | split: ',' %}
+      {% else %}
+        {% assign lx_edit_entries = 'satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar|15412960592257|pillowcase,zepterformige-vase-aus-yixing-ton-626100|16654281408903|vase' | split: ',' %}
+      {% endif %}
+      {% assign lx_edit_count = 0 %}
+      {% capture lx_edit_cards %}
+        {% for lx_edit_entry in lx_edit_entries %}
+          {% assign lx_edit_fields = lx_edit_entry | split: '|' %}
+          {% assign lx_edit_product = all_products[lx_edit_fields[0]] %}
+          {% assign lx_edit_product_id = lx_edit_product.id | append: '' %}
+          {% if lx_edit_product_id == lx_edit_fields[1] and lx_edit_product.available and lx_edit_product.featured_image and lx_edit_product.price_min > 0 and lx_edit_product.tags.size > 0 %}
+            {% assign lx_edit_blocked = false %}
+            {% assign lx_edit_tags = lx_edit_product.tags | join: '|' | downcase %}
+            {% for lx_stop in lx_trend_stops %}{% if lx_edit_tags contains lx_stop %}{% assign lx_edit_blocked = true %}{% endif %}{% endfor %}
+            {% for lx_tag in lx_edit_product.tags %}{% assign lx_tag_lower = lx_tag | downcase %}{% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_edit_blocked = true %}{% endif %}{% endfor %}
+            {% unless lx_edit_blocked %}
+              {% assign lx_edit_count = lx_edit_count | plus: 1 %}
+              {% assign lx_edit_name_key = 'luxe_home.extra.' | append: lx_edit_fields[2] %}
+              <a class="lx-edit-product-card" href="{{ lx_edit_product.url }}" data-edit-product-id="{{ lx_edit_product.id }}" data-edit-handle="{{ lx_edit_product.handle | escape }}" aria-labelledby="lx-edit-name-{{ section.id }}-{{ lx_edit_product.id }}">
+                <div class="lx-edit-product-image">{{ lx_edit_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '280, 420, 560, 700', sizes: '(max-width: 760px) 68vw, 31vw', alt: '' }}</div>
+                <div class="lx-edit-product-info"><h3 id="lx-edit-name-{{ section.id }}-{{ lx_edit_product.id }}">{{ lx_edit_name_key | t }}</h3>
+                  <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_edit_product.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_edit_product %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+                  <p class="lx-edit-product-price">{% if lx_edit_product.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_edit_product.price_min | money_with_currency }}</p>
+                  <span class="lx-edit-product-open">{{ 'luxe_home.trends.open' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+                </div>
+              </a>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
+      {% if lx_edit_count > 0 and lx_edit_collection != blank %}
+        {% assign lx_edit_heading = 'luxe_home.extra.' | append: lx_edit_key | append: '_heading' %}
+        {% assign lx_edit_intro = 'luxe_home.extra.' | append: lx_edit_key | append: '_intro' %}
+        <section class="lx-product-edit lx-section" id="lx-edit-{{ lx_edit_key }}" aria-labelledby="lx-edit-title-{{ lx_edit_key }}-{{ section.id }}">
+          <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.extra.eyebrow' | t }}</p><h2 id="lx-edit-title-{{ lx_edit_key }}-{{ section.id }}">{{ lx_edit_heading | t }}</h2></div><a class="lx-text-link" href="{{ lx_edit_collection.url }}">{{ 'luxe_home.extra.all' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+          <p class="lx-edit-product-intro">{{ lx_edit_intro | t }}</p><p class="lx-edit-product-hint">{{ 'luxe_home.trends.swipe' | t }}</p>
+          <div class="lx-edit-product-grid" style="--lx-edit-columns:{{ lx_edit_count }}" tabindex="0" role="region" aria-label="{{ lx_edit_heading | t | escape }}">{{ lx_edit_cards }}</div>
+        </section>
+      {% endif %}
+    {% endfor %}
+    {% assign lx_discover_entries = 'schmuck|jewellery,wohnen-dekoration|home,beauty-pflege|beauty,sport-outdoor|sport' | split: ',' %}
+    {% capture lx_discover_cards %}
+      {% for lx_discover_entry in lx_discover_entries %}
+        {% assign lx_discover_parts = lx_discover_entry | split: '|' %}
+        {% assign lx_discover_collection = collections[lx_discover_parts[0]] %}
+        {% if lx_discover_collection != blank and lx_discover_collection.image != blank and lx_discover_collection.products_count > 0 %}
+          {% assign lx_discover_name = 'luxe_home.categories.' | append: lx_discover_parts[1] %}
+          {% assign lx_discover_note = 'luxe_home.discovery.' | append: lx_discover_parts[1] %}
+          <a class="lx-discover-card" href="{{ lx_discover_collection.url }}" data-discover-collection="{{ lx_discover_collection.handle | escape }}">
+            <div class="lx-discover-photo">{% if lx_discover_collection.handle == 'beauty-pflege' %}<img src="{{ lx_beauty_scene | escape }}&amp;width=800" srcset="{{ lx_beauty_scene | escape }}&amp;width=240 240w, {{ lx_beauty_scene | escape }}&amp;width=360 360w, {{ lx_beauty_scene | escape }}&amp;width=480 480w, {{ lx_beauty_scene | escape }}&amp;width=640 640w, {{ lx_beauty_scene | escape }}&amp;width=800 800w" sizes="(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw" width="1536" height="1024" loading="lazy" decoding="async" alt="" style="object-fit:cover">{% elsif lx_discover_collection.handle == 'sport-outdoor' %}<img src="{{ lx_sport_scene | escape }}&amp;width=800" srcset="{{ lx_sport_scene | escape }}&amp;width=240 240w, {{ lx_sport_scene | escape }}&amp;width=360 360w, {{ lx_sport_scene | escape }}&amp;width=480 480w, {{ lx_sport_scene | escape }}&amp;width=640 640w, {{ lx_sport_scene | escape }}&amp;width=800 800w" sizes="(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw" width="1536" height="1024" loading="lazy" decoding="async" alt="" style="object-fit:cover">{% else %}{{ lx_discover_collection.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '240, 360, 480, 640, 800', sizes: '(max-width: 760px) 44vw, (max-width: 1100px) 45vw, 22vw', alt: '' }}{% endif %}</div>
+            <div class="lx-discover-info"><h3>{{ lx_discover_name | t }}</h3><p>{{ lx_discover_note | t }}</p><span>{{ 'luxe_home.discovery.open' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign lx_discover_present = lx_discover_cards | strip %}
+    {% if lx_discover_present != blank %}
+      <section class="lx-discover lx-section" id="lx-discover" aria-labelledby="lx-discover-title">
+        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.discovery.eyebrow' | t }}</p><h2 id="lx-discover-title">{{ 'luxe_home.discovery.heading' | t }}</h2></div><a class="lx-text-link" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.categories.all' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+        <div class="lx-discover-grid">{{ lx_discover_cards }}</div>
+      </section>
+    {% endif %}
+    {% assign lx_more_entries = '15516233957761|led-leucht-brustgeschirr-reissfest-933632|harness,15518558847361|handgemachte-3d-liebesnagel-blue-ice-652096|nails,15523137225089|elektrischer-nagelpolierer-mit-licht-545984|polisher,15520373932417|outdoor-schultertasche-fur-freizeit-kessel-329792|shoulderbag,15408457941377|rosenquarz-gua-sha-set|gua_sha,15501005324673|lederarmband-mit-verschluss-unisex-604800|bracelet,16656662266247|hufttasche-fur-hundetraining-625200|trainingbag,16654280753543|hundennasenmatte-aus-fleece-energie-intelligen-622000|snufflemat' | split: ',' %}
+    {% assign lx_more_extra_stops = 'waffe-pruefen' | split: ',' %}
+    {% assign lx_more_stops = lx_trend_stops | concat: lx_more_extra_stops %}
+    {% assign lx_more_count = 0 %}
+    {% assign lx_more_seen = '|' %}
+    {% capture lx_more_cards %}
+      {% for lx_more_product in section.settings.more_products limit: 8 %}
+        {% assign lx_more_product_id = lx_more_product.id | append: '' %}
+        {% assign lx_more_match = false %}
+        {% for lx_more_entry in lx_more_entries %}
+          {% assign lx_more_fields = lx_more_entry | split: '|' %}
+          {% if lx_more_product_id == lx_more_fields[0] and lx_more_product.handle == lx_more_fields[1] %}
+            {% assign lx_more_match = true %}
+            {% assign lx_more_name_key = 'luxe_home.more.' | append: lx_more_fields[2] %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        {% assign lx_more_seen_key = lx_more_product_id | prepend: '|' | append: '|' %}
+        {% unless lx_more_seen contains lx_more_seen_key %}
+          {% if lx_more_match and lx_more_product.available and lx_more_product.featured_image and lx_more_product.price_min > 0 and lx_more_product.tags.size > 0 %}
+            {% assign lx_more_blocked = false %}
+            {% assign lx_more_tags = lx_more_product.tags | join: '|' | downcase %}
+            {% for lx_stop in lx_more_stops %}{% if lx_more_tags contains lx_stop %}{% assign lx_more_blocked = true %}{% endif %}{% endfor %}
+            {% for lx_tag in lx_more_product.tags %}{% assign lx_tag_lower = lx_tag | downcase %}{% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_more_blocked = true %}{% endif %}{% endfor %}
+            {% unless lx_more_blocked %}
+              {% assign lx_more_count = lx_more_count | plus: 1 %}
+              {% assign lx_more_seen = lx_more_seen | append: lx_more_product_id | append: '|' %}
+              <a class="lx-more-card" href="{{ lx_more_product.url }}" data-more-product-id="{{ lx_more_product.id }}" data-more-handle="{{ lx_more_product.handle | escape }}" aria-labelledby="lx-more-name-{{ section.id }}-{{ lx_more_product.id }}">
+                <div class="lx-more-photo">{{ lx_more_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '240, 360, 480, 560, 700', sizes: '(max-width: 760px) 44vw, 22vw', alt: '' }}</div>
+                <div class="lx-more-info"><h3 id="lx-more-name-{{ section.id }}-{{ lx_more_product.id }}">{{ lx_more_name_key | t }}</h3>
+                  <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_more_product.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_more_product %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+                  <p class="lx-more-price">{% if lx_more_product.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_more_product.price_min | money_with_currency }}</p>
+                  <span class="lx-more-open">{{ 'luxe_home.trends.open' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+                </div>
+              </a>
+            {% endunless %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    {% endcapture %}
+    {% if lx_more_count > 0 %}
+      <section class="lx-more-products lx-section" id="lx-more-products" aria-labelledby="lx-more-title-{{ section.id }}">
+        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.more.eyebrow' | t }}</p><h2 id="lx-more-title-{{ section.id }}">{{ 'luxe_home.more.heading' | t }}</h2></div><a class="lx-text-link" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.more.all' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+        <p class="lx-more-intro">{{ 'luxe_home.more.intro' | t }}</p>
+        <div class="lx-more-grid">{{ lx_more_cards }}</div>
+      </section>
+    {% endif %}
+    <section class="lx-fashion-edit lx-section" aria-labelledby="lx-fashion-title">
+      <a class="lx-fashion-image" href="{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000" aria-label="{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900" width="1600" height="2133" loading="lazy" alt="{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}"></a>
+      <div class="lx-fashion-copy"><p class="lx-eyebrow">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id="lx-fashion-title">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class="lx-button" href="{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><span class="lx-fashion-footnote">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>
+    </section>
+    {% assign lx_winter_collection = collections['winter-kaelte'] %}
+    {% assign lx_christmas_collection = collections['weihnachten-2026'] %}
+    {% if lx_winter_collection != blank and lx_christmas_collection != blank %}
+      <section class="lx-season-edit lx-section" id="lx-season" aria-labelledby="lx-season-title">
+        <div><p class="lx-eyebrow">{{ 'luxe_home.extra.season_eyebrow' | t }}</p><h2 id="lx-season-title">{{ 'luxe_home.extra.season_heading' | t }}</h2><p>{{ 'luxe_home.extra.season_intro' | t }}</p></div>
+        {% assign lx_winter_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088' %}
+        {% assign lx_christmas_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088' %}
+        <div class="lx-season-actions">
+          <a class="lx-season-card" href="{{ lx_winter_collection.url }}" data-season-card="winter">
+            <span class="lx-season-media" aria-hidden="true"><img src="{{ lx_winter_scene | escape }}&amp;width=800" srcset="{{ lx_winter_scene | escape }}&amp;width=360 360w, {{ lx_winter_scene | escape }}&amp;width=540 540w, {{ lx_winter_scene | escape }}&amp;width=800 800w, {{ lx_winter_scene | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>
+            <span class="lx-season-label">{{ 'luxe_home.extra.winter' | t }}</span><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
+          </a>
+          <a class="lx-season-card" href="{{ lx_christmas_collection.url }}" data-season-card="christmas">
+            <span class="lx-season-media" aria-hidden="true"><img src="{{ lx_christmas_scene | escape }}&amp;width=800" srcset="{{ lx_christmas_scene | escape }}&amp;width=360 360w, {{ lx_christmas_scene | escape }}&amp;width=540 540w, {{ lx_christmas_scene | escape }}&amp;width=800 800w, {{ lx_christmas_scene | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>
+            <span class="lx-season-label">{{ 'luxe_home.extra.christmas' | t }}</span><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
+          </a>
+        </div>
+      </section>
+    {% endif %}
+    {% assign lx_budget_entries = 'unter-chf-25|small,geschenke-unter-50-franken|medium,premium-geschenke|gifts' | split: ',' %}
+    {% capture lx_budget_cards %}
+      {% for lx_budget_entry in lx_budget_entries %}
+        {% assign lx_budget_parts = lx_budget_entry | split: '|' %}
+        {% assign lx_budget_collection = collections[lx_budget_parts[0]] %}
+        {% if lx_budget_collection != blank and lx_budget_collection.products_count > 0 %}
+          {% assign lx_budget_label = 'luxe_home.budget.' | append: lx_budget_parts[1] %}
+          {% assign lx_budget_note = lx_budget_label | append: '_note' %}
+          {% assign lx_budget_url = lx_budget_collection.url %}
+          {% if lx_budget_parts[1] == 'small' %}{% assign lx_budget_url = lx_budget_url | append: '?filter.v.price.lte=24.99' %}{% endif %}
+          {% if lx_budget_parts[1] == 'medium' %}{% assign lx_budget_url = lx_budget_url | append: '?filter.v.price.lte=49.99' %}{% endif %}
+          {% assign lx_budget_background = '' %}
+          {% case lx_budget_parts[1] %}
+            {% when 'small' %}{% assign lx_budget_background = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-small-68733b2db6fb-20261101.png?v=1793568262' %}
+            {% when 'medium' %}{% assign lx_budget_background = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-medium-0117403afa86-20261101.png?v=1793568263' %}
+            {% when 'gifts' %}{% assign lx_budget_background = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-entdecken-gifts-6552132a2b49-20261101.png?v=1793568263' %}
+          {% endcase %}
+          <a class="lx-budget-card" href="{{ lx_budget_url }}" data-budget-collection="{{ lx_budget_collection.handle | escape }}">
+            {% if lx_budget_background != blank %}<span class="lx-budget-media" aria-hidden="true"><img src="{{ lx_budget_background | escape }}&amp;width=750" srcset="{{ lx_budget_background | escape }}&amp;width=360 360w, {{ lx_budget_background | escape }}&amp;width=540 540w, {{ lx_budget_background | escape }}&amp;width=750 750w, {{ lx_budget_background | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, 30vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>{% endif %}
+            <span class="lx-budget-note">{{ lx_budget_note | t }}</span><strong>{{ lx_budget_label | t }}</strong><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign lx_budget_present = lx_budget_cards | strip %}
+    {% if lx_budget_present != blank %}
+      <section class="lx-budget lx-section" id="lx-budget" aria-labelledby="lx-budget-title">
+        <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.budget.eyebrow' | t }}</p><h2 id="lx-budget-title">{{ 'luxe_home.budget.heading' | t }}</h2></div></div>
+        <div class="lx-budget-grid" tabindex="0" role="region" aria-labelledby="lx-budget-title">{{ lx_budget_cards }}</div>
+      </section>
+    {% endif %}
+    <section class="lx-home-help lx-section" id="lx-home-help" aria-labelledby="lx-help-title">
+      <div class="lx-home-help-copy"><p class="lx-eyebrow">{{ 'luxe_home.help.eyebrow' | t }}</p><h2 id="lx-help-title">{{ 'luxe_home.help.heading' | t }}</h2><p>{{ 'luxe_home.help.intro' | t }}</p><a class="lx-text-link" href="{{ pages['kontakt-support'].url }}">{{ 'luxe_home.help.contact' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></div>
+      <div class="lx-home-help-questions">
+        <details><summary>{{ 'luxe_home.help.question_options' | t }}<span aria-hidden="true">+</span></summary><div><p>{{ 'luxe_home.help.answer_options' | t }}</p><a href="{{ pages['kontakt-support'].url }}">{{ 'luxe_home.help.contact' | t }}</a></div></details>
+        <details><summary>{{ 'luxe_home.help.question_design' | t }}<span aria-hidden="true">+</span></summary><div><p>{{ 'luxe_home.help.answer_design' | t }}</p><a href="{{ lx_design_url }}">{{ 'luxe_home.choices.browse' | t }}</a></div></details>
+        <details><summary>{{ 'luxe_home.help.question_delivery' | t }}<span aria-hidden="true">+</span></summary><div><p>{{ 'luxe_home.help.answer_delivery' | t }}</p><nav aria-label="{{ 'luxe_home.help.policies' | t | escape }}"><a href="{{ pages['versand-lieferung'].url }}">{{ 'luxe_home.versand_lieferung_25e74' | t }}</a><a href="{{ pages['rueckgabe'].url }}">{{ 'luxe_home.r_ckgabe_62237' | t }}</a></nav></div></details>
+      </div>
+    </section>
+  {% if lx_standard_home %}</div>{% else %}</main>{% endif %}
+  {% unless lx_standard_home %}
+  <footer class="lx-footer"><a class="lx-wordmark" href="{{ lx_locale_root }}">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></a><p>{{ 'luxe_home.sch_nes_f_r_deinen_alltag_ecdb9' | t }}</p><nav aria-label="{{ 'luxe_home.rechtliche_informationen_346ba' | t | escape }}"><a href="{{ lx_locale_root }}policies/legal-notice">{{ 'luxe_home.impressum_b8a60' | t }}</a><a href="{{ lx_locale_root }}policies/privacy-policy">{{ 'luxe_home.datenschutz_f624f' | t }}</a><a href="{{ lx_locale_root }}policies/terms-of-service">{{ 'luxe_home.agb_ef0fe' | t }}</a></nav><span class="lx-footer-currency">{{ 'luxe_home.schweiz_chf_deutsch_e630d' | t }}</span></footer>
+  {% endunless %}
+  <dialog class="lx-dialog lx-menu-dialog" id="lx-menu" aria-labelledby="lx-menu-title"><div class="lx-dialog-top"><span class="lx-wordmark" id="lx-menu-title">{{ 'luxe_home.luxestyle_9ae01' | t }}<span>{{ 'luxe_home.ch_20daa' | t }}</span></span><button class="lx-icon-button" type="button" data-close aria-label="{{ 'luxe_home.men_schliessen_55d49' | t | escape }}"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav aria-label="{{ 'luxe_home.mobile_navigation_ccea1' | t | escape }}"><a class="lx-design-nav" href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="{{ lx_locale_root }}collections/damen-mode">{{ 'luxe_home.mode_5e23e' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="{{ lx_locale_root }}collections/wohnen-dekoration">{{ 'luxe_home.wohnen_49bf1' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="{{ lx_locale_root }}collections/geschenke-unter-50-franken">{{ 'luxe_home.geschenkideen_6ad8d' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><a href="{{ lx_locale_root }}pages/alle-kategorien">{{ 'luxe_home.alle_kategorien_5ed9a' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></nav><a class="lx-text-link" href="https://account.luxestyle.com.co">{{ 'luxe_home.zum_kundenkonto_9a2d2' | t }} <svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></dialog>
+  <dialog class="lx-dialog lx-search-dialog" id="lx-search" aria-labelledby="lx-search-title"><div class="lx-dialog-top"><h2 id="lx-search-title">{{ 'luxe_home.was_suchst_du_672c5' | t }}</h2><button class="lx-icon-button" type="button" data-close aria-label="{{ 'luxe_home.suche_schliessen_0ef8b' | t | escape }}"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><form action="{{ routes.search_url }}" method="get" role="search"><label for="lx-search-input">{{ 'luxe_home.produkte_durchsuchen_7ab3d' | t }}</label><div class="lx-search-field"><input id="lx-search-input" name="q" type="search" placeholder="{{ 'luxe_home.zum_beispiel_sternenlicht_cc2ca' | t | escape }}" required autocomplete="off"><input type="hidden" name="type" value="product"><button type="submit" class="lx-button">{{ 'luxe_home.suchen_dd097' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></button></div></form><nav class="lx-search-shortcuts" aria-label="{{ 'luxe_home.design.quicklinks' | t | escape }}"><a href="{{ lx_design_url }}">{{ 'luxe_home.design.title' | t }}</a><a href="{{ routes.collections_url }}/damen-mode">{{ 'luxe_home.mode_5e23e' | t }}</a><a href="{{ routes.collections_url }}/wohnen-dekoration">{{ 'luxe_home.wohnen_49bf1' | t }}</a></nav><p>{{ 'luxe_home.oder_entdecke_cff96' | t }} <a href="{{ lx_locale_root }}pages/alle-kategorien">{{ 'luxe_home.alle_kategorien_5f5e9' | t }}</a>{{ 'luxe_home.label_cdb4e' | t }}</p></dialog>
+  <nav class="lx-bottom-nav" aria-label="{{ 'luxe_home.mobile.navigation' | t | escape }}">
+    <a href="#lx-top" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z"/></svg><span>{{ 'luxe_home.mobile.start' | t }}</span></a>
+    <a href="{{ pages['alle-kategorien'].url }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>{{ 'luxe_home.mobile.categories' | t }}</span></a>
+    <button type="button" data-open="lx-search" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>{{ 'luxe_home.mobile.search' | t }}</span></button>
+    <a href="{{ pages['merkliste'].url }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></svg><span>{{ 'luxe_home.mobile.wishlist' | t }}</span></a>
+    <a href="{{ routes.cart_url }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>{{ 'luxe_home.mobile.cart' | t }}</span></a>
+  </nav>
+  <script>
+    (() => {
+      const root = document.currentScript.closest('.lx-home');
+      if (!root) return;
+      let frame;
+      let observer;
+      const update = () => {
+        const height = frame && getComputedStyle(frame).display !== 'none' ? frame.getBoundingClientRect().height : 0;
+        root.style.setProperty('--lx-preview-inset', `${Math.max(0, Math.ceil(height))}px`);
+        {% if lx_standard_home %}document.body.style.setProperty('--lx-standard-preview-inset', `${Math.max(0, Math.ceil(height))}px`);{% endif %}
+      };
+      const connect = () => {
+        const found = document.getElementById('PBarNextFrameWrapper');
+        if (!found || frame === found) return;
+        frame = found;
+        observer?.disconnect();
+        new ResizeObserver(update).observe(frame);
+        update();
+      };
+      observer = new MutationObserver(connect);
+      observer.observe(document.body, {childList: true, subtree: true});
+      window.addEventListener('resize', update, {passive: true});
+      connect();
+    })();
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "LuxeStyle – Editorial",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "more_products",
+      "label": "Weitere Produkte",
+      "limit": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "LuxeStyle – Editorial"
+    }
+  ]
+}
+{% endschema %}
+
+

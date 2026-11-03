@@ -918,12 +918,12 @@ test('W1 (Gegenprobe): sind alle gesetzten Groq-Schlüssel erschöpft, geht nich
 });
 
 // ── W1 (Workflow) / W3: der Aufruf-Workflow reicht alle Groq-Schlüssel durch, und die CI sieht ihn überhaupt (sparse-checkout) ──
-test('W1/W3: cj-reviews.yml reicht GROQ_API_KEY bis _4 durch; die Test-CI nimmt cj-reviews.yml in den sparse-checkout auf (sonst läuft der DRY_RUN-Wächter nie)', t => {
+test('W1/W3: cj-reviews.yml reicht GROQ_API_KEY bis _5 durch; die Test-CI nimmt cj-reviews.yml in den sparse-checkout auf (sonst läuft der DRY_RUN-Wächter nie)', t => {
   const yml = new URL('../.github/workflows/cj-reviews.yml', import.meta.url);
   const ci = new URL('../.github/workflows/luxestyle-automation-tests.yml', import.meta.url);
   if (!fs.existsSync(yml) || !fs.existsSync(ci)) return t.skip('Workflow-Dateien nicht im Checkout (sparse)');
   const text = fs.readFileSync(yml, 'utf8');
-  for (const n of ['GROQ_API_KEY', 'GROQ_API_KEY2', 'GROQ_API_KEY3', 'GROQ_API_KEY4']) {
+  for (const n of ['GROQ_API_KEY', 'GROQ_API_KEY2', 'GROQ_API_KEY3', 'GROQ_API_KEY4', 'GROQ_API_KEY5']) {
     assert.match(text, new RegExp(`${n}:\\s*\\$\\{\\{\\s*secrets\\.${n}\\s*\\}\\}`), n);
   }
   const sparse = fs.readFileSync(ci, 'utf8').split('sparse-checkout: |')[1]?.split('sparse-checkout-cone-mode')[0] || '';
