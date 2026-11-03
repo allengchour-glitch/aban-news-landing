@@ -185,7 +185,7 @@ function podZeilen(o) {
     const ort = fo.assignedLocation && fo.assignedLocation.location;
     const istDienst = !!(ort && ort.isFulfillmentService);
     const offen = fo.status === 'OPEN' || fo.status === 'IN_PROGRESS';
-    const darfMelden = !istDienst && offen && (fo.supportedActions || []).some((a) => a && a.action === 'CREATE_FULFILLMENT');
+    const darfMelden = offen && (fo.supportedActions || []).some((a) => a && a.action === 'CREATE_FULFILLMENT');
     for (const { node: l } of (fo.lineItems && fo.lineItems.edges) || []) {
       if (!istPod(l.lineItem)) continue;
       const rest = Number(l.remainingQuantity) || 0;

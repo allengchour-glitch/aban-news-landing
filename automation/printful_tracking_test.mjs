@@ -26,7 +26,11 @@ if (process.argv[2] === '--szenario') {
   if (sz.clientCredentials) { delete process.env.SHOPIFY_ADMIN_TOKEN; process.env.SHOPIFY_CLIENT_ID = 'cid'; process.env.SHOPIFY_CLIENT_SECRET = 'csecret'; }
   if (sz.summaryDatei) process.env.GITHUB_STEP_SUMMARY = sz.summaryDatei;
   if (sz.max) process.env.MAX = String(sz.max);
-  const prot = { fulfills: [], tagsAdd: [], tagsRemove: [], tg: [], tgMeta: [], pfGets: [], pfHeader: [], queries: [], versionen: [], oauth: 0, anmeldungen: [], exit: null, log: [], err: [] };
+  if (sz.fensterTage) process.env.FENSTER_TAGE = String(sz.fensterTage);
+  if (sz.ohneStoreId) delete process.env.PRINTFUL_STORE_ID;
+  if (sz.shop !== undefined) process.env.SHOPIFY_SHOP = sz.shop;
+  if (sz.csecret !== undefined) process.env.SHOPIFY_CLIENT_SECRET = sz.csecret;
+  const prot = { fulfills: [], tagsAdd: [], tagsRemove: [], tg: [], tgMeta: [], pfGets: [], pfHeader: [], queries: [], versionen: [], oauth: 0, anmeldungen: [], exit: null, log: [], err: [], gqlMeta: [], ns: [], pfAuth: [], pfStore: [], tgNachExit: 0, tgDetails: [], oauthBody: [], hosts: [] };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   let ordersAufrufe = 0, fulfillAufrufe = 0, tagAufrufe = 0; const pf429 = { ...(sz.pf429 || {}) };
 
@@ -81,10 +85,11 @@ if (process.argv[2] === '--szenario') {
 
   globalThis.fetch = async (url, o = {}) => {
     url = String(url);
-    if (url.includes('/admin/oauth/access_token')) { prot.oauth++; return mk(200, { access_token: 'oauth-token' }); }
+    if (url.includes('/admin/oauth/access_token')) { prot.oauth++; prot.oauthBody.push(JSON.parse(o.body)); return mk(200, { access_token: 'oauth-token' }); }
     if (url.includes('myshopify.com') && url.includes('graphql')) {
       const b = JSON.parse(o.body), q = b.query;
       prot.versionen.push(url.split('/admin/api/')[1].split('/')[0]);
+      prot.hosts.push(url.split('/')[2]); prot.gqlMeta.push({ method: o.method, ct: (o.headers || {})['Content-Type'], pfad: url.split('/admin/api/')[1] });
       prot.anmeldungen.push(o.headers['X-Shopify-Access-Token']);
       if (q.includes('shop {')) { if (sz.authFehler) return mk(401, { errors: 'Unauthorized' }); return antwort(q, { shop: { name: 'x' } }); }
       if (q.includes('orders(first')) {
@@ -96,9 +101,11 @@ if (process.argv[2] === '--szenario') {
         if (!/^\s*query\(\$q:String!,\s*\$n:Int!,\s*\$after:String\)/.test(q)) return mk(200, { errors: [{ message: 'Variablentypen der Bestellabfrage falsch' }] });
         if (!(b.variables.n >= 1 && b.variables.n <= 10)) return mk(200, { errors: [{ message: 'MAX_COST_EXCEEDED: Seitengrösse über 10' }] });
         if (sz.ordersStringFehler) return mk(sz.ordersStringFehler, { errors: 'Access denied for orders field.' });
+        if (sz.orders403LeerBody) return mk(403, {});
+        if (sz.waechterAus && b.variables.q.includes('-tag:printful-wartet')) return mk(503, { errors: 'down' });
         if (sz.ordersTransient && ordersAufrufe <= sz.ordersTransient) return mk(sz.ordersTransientArt || 503, { errors: 'down' });
         if (sz.ordersThrottled && ordersAufrufe <= sz.ordersThrottled) return mk(200, { errors: [{ message: 'Throttled', extensions: { code: 'THROTTLED' } }] });
-        prot.queries.push(b.variables.q);
+        prot.queries.push(b.variables.q); prot.ns.push(b.variables.n);
         const istWaechter = b.variables.q.includes('-tag:printful-wartet');
         const seiten = istWaechter ? [sz.waechter || []] : (sz.mainSeiten || [sz.main || []]);
         const nr = b.variables.after ? Number(String(b.variables.after).replace('c', '')) : 0;
@@ -109,6 +116,9 @@ if (process.argv[2] === '--szenario') {
       if (q.includes('fulfillmentCreate')) {
         fulfillAufrufe++; prot.fulfills.push(b.variables.f);
         if (!q.includes('$f:FulfillmentInput!')) return mk(200, { errors: [{ message: 'Variable $f mit falschem Typ' }] });
+        if (!/fulfillmentCreate\(fulfillment:\$f\)/.test(q) || !/userErrors\{\s*field\s+message\s*\}/.test(q)) return mk(200, { errors: [{ message: 'fulfillmentCreate: Argument oder userErrors falsch' }] });
+        if (sz.fulfillFehlerNr === fulfillAufrufe) return antwort(q, { fulfillmentCreate: { fulfillment: null, userErrors: [{ field: ['x'], message: 'kaputt' }] } });
+        if (sz.fulfillWarnung) return antwort(q, { fulfillmentCreate: { fulfillment: { id: 'gid://shopify/Fulfillment/w', status: 'SUCCESS' }, userErrors: [{ field: ['x'], message: 'warn' }] } });
         if (sz.fulfill500) return mk(500, { errors: 'boom' });
         if (sz.fulfillNull) return antwort(q, { fulfillmentCreate: null });
         if (sz.fulfillLeer) return antwort(q, { fulfillmentCreate: { fulfillment: null, userErrors: [] } });
@@ -117,12 +127,15 @@ if (process.argv[2] === '--szenario') {
       }
       if (q.includes('tagsAdd')) {
         if (!q.includes('$id:ID!') || !q.includes('$tags:[String!]!')) return mk(200, { errors: [{ message: 'Variablentyp falsch' }] });
+        if (!/tagsAdd\(id:\$id,\s*tags:\$tags\)/.test(q) || !/userErrors\{\s*message\s*\}/.test(q)) return mk(200, { errors: [{ message: 'tagsAdd: Argument oder userErrors falsch' }] });
         tagAufrufe++; if (sz.tagTransient && tagAufrufe <= sz.tagTransient) return mk(503, { errors: 'down' });
+        if (sz.tagNullErrors) { prot.tagsAdd.push({ id: b.variables.id, tags: b.variables.tags }); return antwort(q, { tagsAdd: { userErrors: null } }); }
         prot.tagsAdd.push({ id: b.variables.id, tags: b.variables.tags });
         return antwort(q, { tagsAdd: { userErrors: sz.tagFehler ? [{ message: 'nein' }] : [] } });
       }
       if (q.includes('tagsRemove')) {
         if (!q.includes('$id:ID!') || !q.includes('$tags:[String!]!')) return mk(200, { errors: [{ message: 'Variablentyp falsch' }] });
+        if (!/tagsRemove\(id:\$id,\s*tags:\$tags\)/.test(q) || !/userErrors\{\s*message\s*\}/.test(q)) return mk(200, { errors: [{ message: 'tagsRemove: Argument oder userErrors falsch' }] });
         prot.tagsRemove.push({ id: b.variables.id, tags: b.variables.tags });
         return antwort(q, { tagsRemove: { userErrors: sz.tagRemoveFehler ? [{ message: 'nein' }] : [] } });
       }
@@ -130,6 +143,8 @@ if (process.argv[2] === '--szenario') {
     }
     if (url.includes('api.printful.com/orders/')) {
       const id = url.split('/orders/')[1]; prot.pfGets.push(id); prot.pfHeader.push(o.headers['X-PF-Store-Id'] || '');
+      prot.pfAuth.push(o.headers.Authorization); prot.pfStore.push('X-PF-Store-Id' in o.headers);
+      if (sz.pfWirft && prot.pfGets.length <= sz.pfWirft) throw new Error('Netz weg');
       if (pf429[id] > 0) { pf429[id]--; return mk(429, { error: 'rate' }, { 'retry-after': '1' }); }
       const a = (sz.printful || {})[id];
       if (a && a.__status) return mk(a.__status, { error: { message: 'x' } });
@@ -138,6 +153,8 @@ if (process.argv[2] === '--szenario') {
     }
     if (url.includes('api.telegram.org')) {
       const body = JSON.parse(o.body); prot.tg.push(body.text); prot.tgMeta.push({ parse_mode: body.parse_mode, chat_id: body.chat_id, url: url.split('/bot')[1].split('/')[0] });
+      prot.tgDetails.push({ endpunkt: url.split('/bot')[1].split('/')[1], method: o.method, ct: (o.headers || {})['Content-Type'], vorschau: body.disable_web_page_preview });
+      if (prot.exit !== null) prot.tgNachExit++;
       if (sz.tgWirft) throw new Error('Netz weg');
       if (sz.tgFehler) return mk(400, { ok: false });
       return mk(200, { ok: true });
@@ -593,7 +610,6 @@ r = lauf({ summaryDatei: sumDatei, apiVersion: '2025-10', main: [bestellung(), b
 const summary = existsSync(sumDatei) ? readFileSync(sumDatei, 'utf8') : '';
 wahr('V29 Zusammenfassung: Zähler, Sendung, Befund, API-Hinweis', /2 offene Bestellung\(en\)/.test(summary) && /1 Sendung\(en\) gemeldet/.test(summary) && /1 Befund\(e\)/.test(summary) && /abgeschlossen/.test(summary) && /#T1: versendet gemeldet, Latvian Postal Services LY1/.test(summary) && /#T2: Printful-Auftrag steht auf «failed»/.test(summary) && /API-Version 2025-10 statt 2026-01/.test(summary));
 wahr('V29b Zeile ohne Fehler: «0 Fehler»', /, 0 Fehler\./.test(summary));
-rmSync(tmp, { recursive: true, force: true });
 
 // V30: Nachsendung / Doppelmeldung derselben Nummer in zwei Sendungen
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]], { reshipment: true })]) } });
@@ -665,6 +681,14 @@ ist('V3-Verhalten: Wächter bei gemischter Bestellung ohne synced → Alarm (Sho
 const wq2 = r.prot.queries.find((q) => q.includes('-tag:printful-wartet')) || '';
 ist('V3-Verhalten: Wächter-Abfrage erfasst auch teilweise versendete Bestellungen', [wq2.includes('(fulfillment_status:unfulfilled OR fulfillment_status:partial)'), wq2.includes('financial_status:paid')], [true, true]);
 
+// ───────────────────────── Verhalten: offene Order am normalen Standort ohne Recht, eine Lieferung anzulegen
+for (const aktionen of [['HOLD'], ['REQUEST_FULFILLMENT'], []]) {
+  r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', aktionen, lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+  ist(`V3-Verhalten: OPEN am normalen Standort mit supportedActions ${JSON.stringify(aktionen)} (kein CREATE_FULFILLMENT) → nicht melden, Befund «nicht meldbar»`, [r.prot.fulfills.length, tagListen(r.prot), /nicht meldbar/.test(r.prot.tg[0] || '')], [0, [PT('nicht-meldbar')], true]);
+}
+r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', aktionen: ['HOLD', 'CREATE_FULFILLMENT', 'MOVE'], lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: supportedActions mit mehreren Einträgen, CREATE_FULFILLMENT dabei → gemeldet', r.prot.fulfills.length, 1);
+
 // ───────────────────────── Verhalten: angenommene Service-Order trägt CREATE_FULFILLMENT und bleibt trotzdem Sache der Fremd-App
 r = lauf({ main: [bestellung({ fos: [{ id: 'foS', dienst: true, status: 'IN_PROGRESS', aktionen: ['CREATE_FULFILLMENT'], lines: [pod('s1', '5599797_9526')] }] })], printful: { 100: pfA('fulfilled', [[1, 9526, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V3-Verhalten: Service-Order IN_PROGRESS mit CREATE_FULFILLMENT → NICHT melden, kein Printful-Aufruf, kein Alarm', [r.prot.fulfills.length, r.prot.pfGets.length, r.prot.tagsAdd.length, r.prot.tg.length], [0, 0, 0, 0]);
@@ -690,6 +714,10 @@ ist('V3-Verhalten: archiviert, Sendung gemeldet → shipped, kein Alters-Fehlala
 // ───────────────────────── Verhalten: Fehlertexte, Zeitlimit
 r = lauf({ ordersStringFehler: 403, main: [bestellung()], printful: {} });
 ist('V3-Verhalten: Shopify 403 mit Text-«errors» → lesbare Meldung (kein TypeError), NICHT wiederholt, Exit 1', [r.prot.exit, r.prot.tg.some((x) => /Access denied/.test(x)), r.prot.tg.some((x) => /is not a function/.test(x)), r.prot.ordersAufrufe >= 1 && r.prot.ordersAufrufe <= 2], [1, true, false, true]);
+r = lauf({ ordersStringFehler: 200, main: [bestellung()], printful: {} });
+ist('V3-Verhalten: Shopify HTTP 200 mit Text-«errors» → Fehler, Exit 1, nichts gelesen/gemeldet (nicht als Erfolg gewertet)', [r.prot.exit, r.prot.tg.some((x) => /Access denied/.test(x)), r.prot.fulfills.length, r.prot.pfGets.length], [1, true, 0, 0]);
+r = lauf({ tagRemoveFehler: true, main: [bestellung({ cancelledAt: new Date().toISOString(), tags: MIT_ART('storniert-aktiv') })], printful: { 100: pfA('canceled', [[1, 10, 1]], []) } });
+ist('V3-Verhalten: storniert + Printful canceled, aber Problem-Tags nicht entfernbar → KEIN printful-storniert, Exit 1', [tagListen(r.prot), r.prot.exit], [[], 1]);
 r = lauf({ main: [bestellung({ name: '#A<1>', pfId: 555 })], printful: { 555: { __status: 500 } } });
 ist('V3-Verhalten: Fehlerbericht maskiert HTML-Zeichen, Exit 1', [r.prot.exit, r.prot.tg.some((x) => /#A&lt;1&gt;/.test(x) && !/#A<1>/.test(x))], [1, true]);
 r = lauf({ runLimit: -1, main: [bestellung(), bestellung({ name: '#T2', pfId: 777, id: 'gid://shopify/Order/T2' })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
@@ -701,5 +729,108 @@ ist('V3-Verhalten: großzügiges Zeitlimit → normal', [r.prot.fulfills.length,
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10', 1)] }, { id: 'fo2', lines: [pod('l2', '9000001_10', 1)] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1], [2, 10, 1]], [sh(7, 'LY1', [[1, 1]]), sh(8, 'LY2', [[2, 1]])]) } });
 ist('V3-Verhalten: gleiche Variante in zwei Shop-Zeilen und zwei Sendungen → NICHT geraten, Befund «unklar»', [r.prot.fulfills.length, tagListen(r.prot)], [0, [PT('unklar')]]);
 
+// ═════════════════════════════════════════════════════════════ Lücken aus der unabhängigen Mutationsprüfung (287 Mutanten, 89 Lücken)
+// ───────────────────────── Logik
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, '   ', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [] });
+ist('Lücke: Sendungsnummer nur aus Leerzeichen → wartet, NICHT gemeldet', [p.aktionen.length, p.wartet.length], [0, 1]);
+for (const nr of [0, null, undefined]) {
+  p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [{ id: 7, tracking_number: nr, items: [{ item_id: 1, quantity: 1 }] }]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [] });
+  ist('Lücke: tracking_number ' + JSON.stringify(nr) + ' → wartet, keine Meldung mit Nummer «0»', [p.aktionen.length, p.wartet.length], [0, 1]);
+}
+p = plan({ pfOrder: pfO('weissnicht', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [] });
+ist('Lücke: unbekannter Status MIT Sendung → NICHT gemeldet, Befund', [p.aktionen.length, p.fertig, /unbekannt/.test(p.befund || '')], [0, false, true]);
+const ts = (iso) => Math.floor(Date.parse(iso) / 1000);
+const ohneNr = (extra) => plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, '', [[1, 1]], extra)]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [] });
+ist('Lücke: ohne Nummer, nur created als Unix-Sekunden (4 Tage) → Befund', !!ohneNr({ created: ts('2026-10-30T12:00:00Z') }).befund, true);
+ist('Lücke: ohne Nummer, created als Unix-Sekunden (6 Stunden) → kein Befund', ohneNr({ created: ts('2026-11-03T06:00:00Z') }).befund, null);
+ist('Lücke: ship_date (heute) hat Vorrang vor altem created', ohneNr({ ship_date: '2026-11-03', created: ts('2026-10-01T00:00:00Z') }).befund, null);
+ist('Lücke: shipped_at hat Vorrang vor created', ohneNr({ shipped_at: '2026-11-03T10:00:00Z', created: ts('2026-10-01T00:00:00Z') }).befund, null);
+ist('Lücke: nur shipped_at alt → Befund', !!ohneNr({ shipped_at: '2026-10-01T10:00:00Z' }).befund, true);
+ist('Lücke: ungültiges Datum → Alter unbekannt, kein Befund', ohneNr({ ship_date: 'gestern' }).befund, null);
+p = plan({ pfOrder: pfO('partial', [[1, 10, 1], [2, 10, 1], [3, 99, 1], [4, 10, 1]], [sh(7, 'LY1', [[1, 1], [2, 1], [3, 1]]), sh(8, 'LY2', [[4, 1]])]), foZeilen: zeilen(['fo1', 'l1', 3, 10]), bekannteNummern: [] });
+ist('Lücke: abgebrochene Sendung gibt ihre GANZE Menge zurück (LY2 meldet 1, Rest 2)', [p.aktionen.map((a) => a.nummer), p.aktionen[0].positionen.map((x) => x.quantity), p.restOffen, p.unklar.map((u) => u.nummer)], [['LY2'], [1], 2, ['LY1']]);
+ist('Lücke: Firmen Correos und Poczta Polska', [trackingFirma('CORREOS', ''), trackingFirma('POCZTA_POLSKA', '')], ['Correos', 'Poczta Polska']);
+// Randfälle der Schwellen: genau auf der Grenze noch kein Befund
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, '', [[1, 1]], { ship_date: '2026-11-01T12:00:00Z' })]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [] });
+ist('Lücke: genau 48,0 h ohne Nummer → noch kein Befund', p.befund, null);
+ist('Lücke: draft genau 24 h → kein Befund', alt('draft', 24).befund, null);
+ist('Lücke: inreview genau 72 h → kein Befund', alt('inreview', 72).befund, null);
+ist('Lücke: pending genau 336 h → kein Befund', alt('pending', 336).befund, null);
+ist('Lücke: Empfänger nur PLZ vorhanden und verschieden → passt NICHT', empfaengerPasst({ zip: '1' }, { zip: '2' }).ok, false);
+ist('Lücke: Empfänger nur Name vorhanden und gleich → passt', empfaengerPasst({ name: 'A B' }, { name: 'a b' }).ok, true);
+
+// ───────────────────────── Verhalten: Lese- und Schreibfehler dürfen NIE still bleiben
+r = lauf({ ordersTransient: 3, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Hauptabfrage scheitert (3× 503), Wächter geht durch → Exit 1 + Telegram «Bestellungen lesen», nichts gemeldet', [r.prot.exit, r.prot.fulfills.length, r.prot.tg.some((x) => /Bestellungen lesen/.test(x))], [1, 0, true]);
+r = lauf({ waechterAus: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Wächter-Abfrage scheitert → Exit 1 + Telegram «Wächter», die normale Meldung ging trotzdem raus', [r.prot.exit, r.prot.fulfills.length, r.prot.tg.some((x) => /Wächter/.test(x))], [1, 1, true]);
+r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], {}) } });
+ist('Lücke: unerwartete Ausnahme in einer Bestellung (shipments kein Array) → Fehler, Exit 1, nichts gemeldet/getaggt', [r.prot.fulfills.length, r.prot.tagsAdd.length, r.prot.exit, r.prot.tg.some((x) => /#T1/.test(x))], [0, 0, 1, true]);
+r = lauf({ orders403LeerBody: true, main: [bestellung()], printful: {} });
+ist('Lücke: Shopify 403 ohne errors-Feld → Fehler Exit 1 (kein stummes «0 Bestellungen»)', [r.prot.exit, r.prot.tg.some((x) => /Shopify 403/.test(x))], [1, true]);
+r = lauf({ fulfillFehlerNr: 1, main: [bestellung({ fos: [{ id: 'foA', ort: 'locA', lines: [pod('l1', '9000001_10')] }, { id: 'foB', ort: 'locB', lines: [pod('l2', '9000001_11')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1], [2, 11, 1]], [sh(7, 'LY1', [[1, 1], [2, 1]])]) } });
+ist('Lücke: erster Standort wird abgelehnt → der zweite wird NICHT mehr versucht (nur 1 Aufruf), kein shipped, Exit 1', [r.prot.fulfills.length, r.prot.tagsAdd.length, r.prot.exit], [1, 0, 1]);
+r = lauf({ fulfillWarnung: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Fulfillment UND userErrors → gilt als Fehler (kein shipped)', [r.prot.tagsAdd.length, r.prot.exit], [0, 1]);
+r = lauf({ tagNullErrors: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Tag-Antwort mit userErrors:null → Fehler, Exit 1', r.prot.exit, 1);
+r = lauf({ max: 2, mainSeiten: [[bn(1), bn(2), bn(3)]], printful: { 201: pfN(1), 202: pfN(2), 203: pfN(3) } });
+ist('Lücke: MAX=2 bei einer Seite mit 3 Bestellungen → genau 2 verarbeitet (Schutz vor Massenmails)', r.prot.fulfills.length, 2);
+r = lauf({ main: [bestellung({ fulfillments: ['LY1'], fos: [{ id: 'fo1', status: 'CLOSED', lines: [pod('l1', '9000001_10', 0)] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: von Hand versendet, CLOSED-Order mit Rest 0 → kein Befund, shipped', [tagListen(r.prot), r.prot.tg.length], [[['printful-shipped']], 0]);
+r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', status: 'ON_HOLD', lines: [pod('l1', '9000001_10', 0)] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: ON_HOLD-Order mit Rest 0 zählt NICHT als pausiert', r.prot.tg.some((x) => /nicht meldbar/.test(x)), false);
+
+// ───────────────────────── Verhalten: Telegram, Reihenfolge, Maskierung
+r = lauf({ main: [bestellung({ adresse: { name: 'Meier & Söhne <AG>', zip: '1000', countryCodeV2: 'CH' } })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])], { name: 'Anna Keller', zip: '3000' }) } });
+wahr('Lücke: Befundtext mit & und < im Kundennamen wird maskiert', /Meier &amp; Söhne &lt;AG&gt;/.test(r.prot.tg[0] || '') && !/<AG>/.test(r.prot.tg[0]));
+r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]], { carrier: 'ACME', service: 'Hermes & Partner Express' })]) } });
+wahr('Lücke: Erfolgsmeldung maskiert die Firma und nennt «Kundenmail ausgelöst»', /Hermes &amp; Partner LY1\)\. Kundenmail ausgelöst\./.test(r.prot.tg[0] || ''));
+ist('Lücke: Telegram-Aufruf: Endpunkt sendMessage, POST, JSON, Vorschau aus', r.prot.tgDetails[0], { endpunkt: 'sendMessage', method: 'POST', ct: 'application/json', vorschau: true });
+r = lauf({ ohnePrintfulKey: true, main: [bestellung()] });
+ist('Lücke: fehlende Zugangsdaten → Telegram geht VOR dem Exit raus', [r.prot.tg.length, r.prot.tgNachExit], [1, 0]);
+r = lauf({ authFehler: true, main: [bestellung()] });
+ist('Lücke: Shopify-Anmeldung scheitert → Telegram VOR dem Exit', [r.prot.tg.length, r.prot.tgNachExit], [1, 0]);
+r = lauf({ main: [bestellung({ pfId: 555 })], printful: { 555: { __status: 500 } } });
+ist('Lücke: Fehlerbericht am Ende → Telegram VOR dem Exit', [r.prot.tg.length > 0, r.prot.tgNachExit, r.prot.exit], [true, 0, 1]);
+r = lauf({ main: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => bestellung({ name: '#E' + n, pfId: 300 + n, id: 'gid://shopify/Order/E' + n })), printful: Object.fromEntries([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => [300 + n, { __status: 500 }])) });
+ist('Lücke: Fehler-Telegram zeigt höchstens 8 Fehlerzeilen', [r.prot.exit, (r.prot.tg.find((x) => /Fehler:/.test(x)) || '').split('\n').length - 1], [1, 8]);
+r = lauf({ ohneTelegram: true, main: [], waechter: [{ name: '#W1', createdAt: alter(20), tags: [], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10')] }] }] });
+ist('Lücke: Wächter ohne Telegram → Tag trotzdem, Exit grün', [tagListen(r.prot), r.prot.exit], [[['printful-wartet']], null]);
+r = lauf({ main: [bestellung({ tags: ['printful-synced', 'printful-wartet'] })], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
+ist('Lücke: das Wächter-Tag «printful-wartet» unterdrückt den Befund-Alarm NICHT', [tagListen(r.prot), r.prot.tg.length], [[PT('status-failed')], 1]);
+
+// ───────────────────────── Verhalten: Zusammenfassung, DRY-Schreibweisen, Anfrageaufbau
+const sum2 = join(tmp, 'summary2.md');
+r = lauf({ summaryDatei: sum2, main: [bestellung({ tags: MIT_ART('status-failed') })], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
+const s2 = existsSync(sum2) ? readFileSync(sum2, 'utf8') : '';
+wahr('Lücke: schon gemeldeter Befund steht trotzdem in der täglichen Zusammenfassung und zählt', /1 Befund\(e\)/.test(s2) && /#T1: Printful-Auftrag steht auf «failed»/.test(s2));
+for (const w of [' 0 ', 'FALSE', 'Off', 'NEIN', ' false ']) {
+  r = lauf({ dry: w, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+  ist("Lücke: DRY_RUN='" + w + "' (Gross-/Kleinschreibung, Ränder) → live", r.prot.fulfills.length, 1);
+}
+r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Shopify-Anfragen: POST, JSON, Pfad 2026-01/graphql.json', [r.prot.gqlMeta.every((m) => m.method === 'POST' && m.ct === 'application/json' && m.pfad === '2026-01/graphql.json'), r.prot.gqlMeta.length > 3], [true, true]);
+ist('Lücke: Printful-Anfrage mit «Bearer», Store-Kopf gesetzt', [r.prot.pfAuth[0], r.prot.pfStore[0]], ['Bearer k', true]);
+r = lauf({ ohneStoreId: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: ohne PRINTFUL_STORE_ID wird KEIN Store-Kopf gesendet', [r.prot.pfStore[0], r.prot.fulfills.length], [false, 1]);
+r = lauf({ pfWirft: 2, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Printful-Netzfehler zweimal, dann OK → Wiederholung gelingt', [r.prot.fulfills.length, r.prot.exit, r.prot.pfGets.length], [1, null, 3]);
+r = lauf({ shop: 'https://abc-xyz.myshopify.com/admin', main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: SHOPIFY_SHOP mit https:// und Pfad → Host bereinigt', [...new Set(r.prot.hosts)], ['abc-xyz.myshopify.com']);
+r = lauf({ shop: 'evil.example.com', main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: SHOPIFY_SHOP ausserhalb von myshopify.com → Standard-Shop (nie ein fremder Host)', [...new Set(r.prot.hosts)], ['au3j0y-hq.myshopify.com']);
+r = lauf({ fensterTage: 10, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: FENSTER_TAGE=10 → Abfragedatum vor 10 Tagen', r.prot.queries[0].split('>=')[1] === vorTagen(10), true);
+r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: jede Bestellabfrage mit höchstens 10 je Seite', [r.prot.ns.length > 0, r.prot.ns.every((n) => n === 10)], [true, true]);
+const gross = (von, bis) => { const a = []; for (let n = von; n <= bis; n++) a.push(bn(n)); return a; };
+const pfs = {}; for (let n = 1; n <= 25; n++) pfs[200 + n] = pfN(n);
+r = lauf({ mainSeiten: [gross(1, 10), gross(11, 20), gross(21, 25)], printful: pfs });
+ist('Lücke: 25 Bestellungen in drei Seiten, kein MAX → alle 25 verarbeitet (Standard-MAX 50)', r.prot.fulfills.length, 25);
+r = lauf({ clientCredentials: true, csecret: 'abc', main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('Lücke: Client-Credentials-Anfrage mit grant_type, client_id und client_secret in der richtigen Rolle', [r.prot.oauthBody[0].grant_type, r.prot.oauthBody[0].client_id, r.prot.oauthBody[0].client_secret], ['client_credentials', 'cid', 'abc']);
+
+rmSync(tmp, { recursive: true, force: true }); // Temp-Verzeichnis der Zusammenfassungs-Tests erst am Ende löschen
 console.log(`\nprintful_tracking: ${ok} bestanden, ${fehl} fehlgeschlagen`);
 process.exit(fehl ? 1 : 0);
