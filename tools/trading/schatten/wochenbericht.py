@@ -18,6 +18,7 @@ from pathlib import Path
 HIER = Path(__file__).resolve().parent
 ROOT = HIER.parents[2]
 LOGBUCH = ROOT / "data" / "krypto-pilot-schatten.json"
+SATELLIT = ROOT / "data" / "krypto-satellit-schatten.json"
 BERICHT = ROOT / "docs" / "KRYPTO-WOCHENBERICHT.md"
 MIN_WOCHEN = 8
 KOPF = ("# Krypto-Wochenbericht (Spielgeld)\n\n"
@@ -63,8 +64,29 @@ def zeilen(lb: dict) -> list[tuple[str, float, float]]:
     return out
 
 
-def abschnitt(lb: dict) -> tuple[str, str]:
-    """→ (Stand, Markdown-Abschnitt). Zu wenig Tage → Stand '' und ein Satz."""
+SAT_NAMEN = {"S1": "Top-10-Regel wie getestet", "S2": "Satellit (ohne Bitcoin und Ether)", "BTC150": "Bitcoin mit Trend 150 (Vergleich)", "BTC": "Bitcoin gehalten (Vergleich)"}
+
+
+def satellit_abschnitt(sb: dict | None) -> list[str]:
+    """Zeilen für den Bericht aus data/krypto-satellit-schatten.json (leer, wenn es noch keinen zweiten Tag gibt)."""
+    t = (sb or {}).get("tage") or []
+    if len(t) < 2:
+        return []
+    md = ["", f"### Satelliten-Experiment (Top-10-Regel, Spielgeld), {len(t)} Tage seit {sb.get('start', t[0]['tag'])}", "",
+          "| | Rendite | schlimmster Einbruch |", "|---|---:|---:|"]
+    for key, name in SAT_NAMEN.items():
+        w = [x[key] for x in t if key in x]
+        if len(w) >= 2:
+            md.append(f"| {name} | {prozent(w[-1] / w[0] - 1)} | {prozent(einbruch(w))} |")
+    gehalten = {k: sorted(s[:-4] for s in (sb.get("reihen") or {}).get(k, {}).get("menge", {})) for k in ("S1", "S2")}
+    md += ["", "Gehalten: " + "; ".join(f"{k}: {', '.join(v) or 'nur USDT'}" for k, v in gehalten.items()) + ".",
+           "Die Regel bestand ihren Test am 13.10.2026 nicht (ab 2022 rund +18 % pro Jahr bei −38 % Einbruch, Bitcoin mit Trend 150 allein +28 % bei −28 %); "
+           "hier läuft sie als Vorwärtstest. " + ("Unter 8 Wochen ist das kein Urteil." if len(t) < 56 else "Auch nach 8 Wochen noch kein Beweis.")]
+    return md
+
+
+def abschnitt(lb: dict, sb: dict | None = None) -> tuple[str, str]:
+    """→ (Stand, Markdown-Abschnitt). Zu wenig Tage → Stand '' und ein Satz. sb: das Satelliten-Schattenbuch (optional)."""
     t = lb.get("tage") or []
     if len(t) < 2:
         return "", "Noch zu wenig Tage im Schattenkonto für einen Bericht."
@@ -82,14 +104,16 @@ def abschnitt(lb: dict) -> tuple[str, str]:
                 if wochen < MIN_WOCHEN else
                 f"Einordnung: {wochen:.1f} Wochen sind die Mindestdauer, aber noch immer nur eine Marktphase.")]
     pos = ", ".join(f"{m} {v['hebel']:+.2f}×" for m, v in t[-1]["maerkte"].items())
-    md += ["", f"Aktuelle Position des Piloten: {pos}.", ""]
+    md += ["", f"Aktuelle Position des Piloten: {pos}."]
+    md += satellit_abschnitt(sb)
+    md += [""]
     return stand, "\n".join(md)
 
 
-def schreiben(lb: dict, datei: Path | None = None) -> str:
+def schreiben(lb: dict, datei: Path | None = None, sb: dict | None = None) -> str:
     """Hängt den Abschnitt an die Berichtsdatei an. → 'geschrieben', 'schon drin' oder 'zu wenig Tage'."""
     datei = datei or BERICHT
-    stand, md = abschnitt(lb)
+    stand, md = abschnitt(lb, sb)
     if not stand:
         return "zu wenig Tage"
     alt = datei.read_text(encoding="utf-8") if datei.exists() else ""
@@ -112,10 +136,10 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--schreiben", action="store_true")
     a = ap.parse_args()
-    lb = lies()
-    print(abschnitt(lb)[1])
+    lb, sb = lies(), lies(SATELLIT)
+    print(abschnitt(lb, sb)[1])
     if a.schreiben:
-        print("Bericht:", schreiben(lb))
+        print("Bericht:", schreiben(lb, sb=sb))
     return 0
 
 
