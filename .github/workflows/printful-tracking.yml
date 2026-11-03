@@ -1,0 +1,58 @@
+name: Printful-Rückmeldung (Versand → Shopify)
+
+# Meldet versendete POD-Bestellungen (Sticker, Magnete, Poster) mit Sendungsnummer in Shopify
+# und löst dabei die normale Shopify-Versandmail an die Kundschaft aus. Liest Printful, schreibt nur
+# fulfillmentCreate + Tags. Legt KEINE Druckaufträge an (das macht printful-sync, Zeitplan pausiert).
+# Doku: dropship/PRINTFUL-RUECKMELDUNG-0311.md · Skript: automation/printful_tracking.mjs
+# Ein roter Lauf heisst: ein technischer Fehler (Lesen/Schreiben/Zugangsdaten/Alarm nicht zugestellt),
+# Zusammenfassung des Laufs lesen. Befunde (Zahlung, nicht zuordenbar …) gehen einmal per Telegram raus und sind nicht rot.
+# Zeitplan: 1x täglich (SHARED-MEMORY: «Crons nur einzeln, sparsam, max. 1x/Tag»), 15:23 UTC = 16:23 Schweizer Winterzeit,
+# damit Sendungen vom Vormittag noch am selben Abend gemeldet sind. Dazwischen von Hand startbar (workflow_dispatch).
+
+on:
+  schedule:
+    - cron: '23 15 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur testen (nichts melden, keine Tags, kein Telegram)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: printful-tracking
+  cancel-in-progress: false
+
+jobs:
+  rueckmeldung:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Nur die drei Laufzeitdateien holen (ein voller Cone-Checkout von automation/ zog rund 125 MB)
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/printful_tracking.mjs
+            automation/lib/printful_tracking.mjs
+            automation/lib/shopify_secret.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Versand zurückmelden
+        env:
+          PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
+          PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: node automation/printful_tracking.mjs
