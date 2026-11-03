@@ -1,0 +1,30 @@
+{
+  "checkedAtUtc": "2026-11-03T23:24:27.599423+00:00",
+  "scope": "Only nine named category-addition files; leading lux_subchips selection block may change, its existing markup/styles and all other sections stay identical; relative order preserved and exactly one custom-liquid section added; not a full theme comparison or live publication proof",
+  "patch": "KATEGORIEN-ERGAENZUNGEN-20261104-R73.patch",
+  "patchDigest": {
+    "bytes": 46497,
+    "md5": "f18b2a6b6dc5375456ebd4430c144ed0",
+    "sha256": "0d384c47d3650e239d4ab84c4e2f09391a761e1db263f0d711aff850e2b30e9e",
+    "gitBlobSha": "4d55dac31b388fb1332b3340e54d827d4ff015b1"
+  },
+  "forwardCheck": true,
+  "forwardApplyExactBytes": true,
+  "reverseCheck": true,
+  "reverseApplyExactBytes": true,
+  "allFourNewFilesRemovedOnReverse": true,
+  "allOtherOriginalTemplateSectionsUnchanged": true,
+  "originalTemplateSectionCount": 7,
+  "unchangedOriginalSectionsExcludingChipSelectionFix": 6,
+  "allowedOriginalSectionCorrection": "lux_subchips leading liquid selection block only",
+  "chipSelectionBlockActuallyChanged": true,
+  "existingChipMarkupAndStylesUnchanged": true,
+  "originalRelativeSectionOrderPreserved": true,
+  "exactlyOneNewCustomLiquidSection": true,
+  "addedSectionId": "lux_extra_categories",
+  "noOtherTemplateObjectChangedBeyondSelectionFixAndAddedSection": true,
+  "sourceBytesStableDuringCheck": true,
+  "existingFiles": 5,
+  "newFiles": 4,
+  "remoteWrites": 0
+}
