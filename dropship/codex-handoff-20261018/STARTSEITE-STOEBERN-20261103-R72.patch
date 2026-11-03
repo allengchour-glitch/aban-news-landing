@@ -1,0 +1,208 @@
+--- a/sections/luxe-edit-home.liquid
++++ b/sections/luxe-edit-home.liquid
+@@ -10,7 +10,7 @@
+ {% assign lx_beauty_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453' %}
+ {% assign lx_sport_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453' %}
+ 
+-<div class="lx-home" id="lx-top">
++<div class="lx-home lx-browse-home" id="lx-top">
+   {% unless lx_standard_home %}
+   <a class="lx-skip" href="#lx-content">{{ 'luxe_home.zum_inhalt_f0521' | t }}</a>
+   <div class="lx-announcement">{{ 'luxe_home.gratisversand_in_der_schweiz_ab__9a8a6' | t }} <a href="{{ lx_locale_root }}pages/versand-lieferung">{{ 'luxe_home.versandinfos_87cfe' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+@@ -59,11 +59,11 @@
+             <a class="lx-category-tile" href="{{ lx_category_url }}" data-category-handle="{{ lx_collection.handle | escape }}">
+               <span class="lx-category-thumb">
+                 {% if lx_collection.handle == 'beauty-pflege' %}
+-                  <img src="{{ lx_beauty_scene | escape }}&amp;width=240" srcset="{{ lx_beauty_scene | escape }}&amp;width=120 120w, {{ lx_beauty_scene | escape }}&amp;width=180 180w, {{ lx_beauty_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 56px, 80px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
++                  <img src="{{ lx_beauty_scene | escape }}&amp;width=240" srcset="{{ lx_beauty_scene | escape }}&amp;width=120 120w, {{ lx_beauty_scene | escape }}&amp;width=180 180w, {{ lx_beauty_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 40px, 48px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+                 {% elsif lx_collection.handle == 'sport-outdoor' %}
+-                  <img src="{{ lx_sport_scene | escape }}&amp;width=240" srcset="{{ lx_sport_scene | escape }}&amp;width=120 120w, {{ lx_sport_scene | escape }}&amp;width=180 180w, {{ lx_sport_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 56px, 80px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
++                  <img src="{{ lx_sport_scene | escape }}&amp;width=240" srcset="{{ lx_sport_scene | escape }}&amp;width=120 120w, {{ lx_sport_scene | escape }}&amp;width=180 180w, {{ lx_sport_scene | escape }}&amp;width=240 240w" sizes="(max-width: 760px) 40px, 48px" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+                 {% elsif lx_collection.image != blank %}
+-                  {{ lx_collection.image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '(max-width: 760px) 56px, 80px', alt: '' }}
++                  {{ lx_collection.image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '(max-width: 760px) 40px, 48px', alt: '' }}
+                 {% else %}
+                   <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                 {% endif %}
+@@ -75,18 +75,6 @@
+         {% endfor %}
+       </nav>
+       <a class="lx-text-link lx-all-categories" href="{{ pages['alle-kategorien'].url }}">{{ 'luxe_home.categories.all' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+-    </section>
+-    <section class="lx-design-edit lx-design-collage-section lx-section" id="lx-selfdesign" aria-labelledby="lx-design-title">
+-      <div class="lx-design-copy">
+-        <p class="lx-eyebrow">{{ 'luxe_home.design.eyebrow' | t }}</p>
+-        <h2 id="lx-design-title">{{ 'luxe_home.design.heading' | t }}</h2>
+-        <p class="lx-design-description">{{ 'luxe_home.choices.intro' | t }}</p>
+-        <a class="lx-button" href="{{ lx_design_url }}">{{ 'luxe_home.choices.browse' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+-        <ul class="lx-design-options" aria-label="{{ 'luxe_home.design.options' | t | escape }}"><li>{{ 'luxe_home.design.category' | t }}</li><li>{{ 'luxe_home.design.colour' | t }}</li><li>{{ 'luxe_home.design.size' | t }}</li></ul>
+-      </div>
+-      <a class="lx-design-collage" href="{{ lx_design_url }}">
+-        <img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613" srcset="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=480 480w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=750 750w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=1000 1000w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=1122 1122w" sizes="(max-width: 760px) calc(100vw - 32px), 46vw" width="1122" height="1402" loading="lazy" alt="{{ 'luxe_home.choices.collage_alt' | t | escape }}">
+-      </a>
+     </section>
+     {% assign lx_trends_source = collections['hype-jetzt'] %}
+     {% assign lx_trend_ids = '15499700142465,15450856292737,15448587075969,15430462669185,15408458006913,16617685877127,16613782323591,16610088518023,16604940730759,16604922937735,15523992797569,15523992174977' | split: ',' %}
+@@ -127,6 +115,25 @@
+         <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.trends.eyebrow' | t }}</p><h2 id="lx-trends-title">{{ 'luxe_home.trends.heading' | t }}</h2></div><a class="lx-text-link" href="{{ lx_trends_source.url }}">{{ 'luxe_home.trends.all' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+         <p class="lx-trends-hint" id="lx-trends-hint">{{ 'luxe_home.trends.swipe' | t }} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></p>
+         <div class="lx-trends-grid" tabindex="0" role="region" aria-label="{{ 'luxe_home.trends.products' | t }}">{{ lx_trend_cards }}</div>
++      </section>
++    {% endif %}
++    {% assign lx_winter_collection = collections['winter-kaelte'] %}
++    {% assign lx_christmas_collection = collections['weihnachten-2026'] %}
++    {% if lx_winter_collection != blank and lx_christmas_collection != blank %}
++      <section class="lx-season-edit lx-section" id="lx-season" aria-labelledby="lx-season-title">
++        <div><p class="lx-eyebrow">{{ 'luxe_home.extra.season_eyebrow' | t }}</p><h2 id="lx-season-title">{{ 'luxe_home.extra.season_heading' | t }}</h2><p>{{ 'luxe_home.extra.season_intro' | t }}</p></div>
++        {% assign lx_winter_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088' %}
++        {% assign lx_christmas_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088' %}
++        <div class="lx-season-actions" tabindex="0" role="region" aria-labelledby="lx-season-title">
++          <a class="lx-season-card" href="{{ lx_winter_collection.url }}" data-season-card="winter">
++            <span class="lx-season-media" aria-hidden="true"><img src="{{ lx_winter_scene | escape }}&amp;width=800" srcset="{{ lx_winter_scene | escape }}&amp;width=360 360w, {{ lx_winter_scene | escape }}&amp;width=540 540w, {{ lx_winter_scene | escape }}&amp;width=800 800w, {{ lx_winter_scene | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>
++            <span class="lx-season-label">{{ 'luxe_home.extra.winter' | t }}</span><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
++          </a>
++          <a class="lx-season-card" href="{{ lx_christmas_collection.url }}" data-season-card="christmas">
++            <span class="lx-season-media" aria-hidden="true"><img src="{{ lx_christmas_scene | escape }}&amp;width=800" srcset="{{ lx_christmas_scene | escape }}&amp;width=360 360w, {{ lx_christmas_scene | escape }}&amp;width=540 540w, {{ lx_christmas_scene | escape }}&amp;width=800 800w, {{ lx_christmas_scene | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>
++            <span class="lx-season-label">{{ 'luxe_home.extra.christmas' | t }}</span><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
++          </a>
++        </div>
+       </section>
+     {% endif %}
+     {% assign lx_edit_groups = 'jewellery|schmuck,home|wohnen-dekoration' | split: ',' %}
+@@ -175,6 +182,18 @@
+         </section>
+       {% endif %}
+     {% endfor %}
++    <section class="lx-design-edit lx-design-collage-section lx-section" id="lx-selfdesign" aria-labelledby="lx-design-title">
++      <div class="lx-design-copy">
++        <p class="lx-eyebrow">{{ 'luxe_home.design.eyebrow' | t }}</p>
++        <h2 id="lx-design-title">{{ 'luxe_home.design.heading' | t }}</h2>
++        <p class="lx-design-description">{{ 'luxe_home.choices.intro' | t }}</p>
++        <a class="lx-button" href="{{ lx_design_url }}">{{ 'luxe_home.choices.browse' | t }} <svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
++        <ul class="lx-design-options" aria-label="{{ 'luxe_home.design.options' | t | escape }}"><li>{{ 'luxe_home.design.category' | t }}</li><li>{{ 'luxe_home.design.colour' | t }}</li><li>{{ 'luxe_home.design.size' | t }}</li></ul>
++      </div>
++      <a class="lx-design-collage" href="{{ lx_design_url }}">
++        <img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613" srcset="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=480 480w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=750 750w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=1000 1000w, https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-selbstgestalten-farbe-44d3413a6ba5-20261101.png?v=1793566613&amp;width=1122 1122w" sizes="(max-width: 760px) calc(100vw - 32px), 46vw" width="1122" height="1402" loading="lazy" alt="{{ 'luxe_home.choices.collage_alt' | t | escape }}">
++      </a>
++    </section>
+     {% assign lx_discover_entries = 'schmuck|jewellery,wohnen-dekoration|home,beauty-pflege|beauty,sport-outdoor|sport' | split: ',' %}
+     {% capture lx_discover_cards %}
+       {% for lx_discover_entry in lx_discover_entries %}
+@@ -248,25 +267,6 @@
+       <a class="lx-fashion-image" href="{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000" aria-label="{{ 'luxe_home.blumenkleid_mit_schn_rung_ansehe_512f8' | t | escape }}"><img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-blumenkleid-01.jpg?v=1790879798&amp;width=900" width="1600" height="2133" loading="lazy" alt="{{ 'luxe_home.model_tr_gt_das_blumenkleid_mit__06548' | t | escape }}"></a>
+       <div class="lx-fashion-copy"><p class="lx-eyebrow">{{ 'luxe_home.mode_im_detail_7a088' | t }}</p><h2 id="lx-fashion-title">{{ 'luxe_home.ein_look_f9af3' | t }}<br>{{ 'luxe_home.ganz_042e8' | t }} <em>{{ 'luxe_home.du_8f547' | t }}</em></h2><p>{{ 'luxe_home.entdecke_das_blumenkleid_mit_sch_43f24' | t }}</p><a class="lx-button" href="{{ lx_locale_root }}products/blumenkleid-mit-schnurung-613000">{{ 'luxe_home.blumenkleid_ansehen_05d54' | t }} <span aria-hidden="true"><svg class="lx-arrow" viewbox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a><span class="lx-fashion-footnote">{{ 'luxe_home.luxestyle_mode_entdecken_f61c2' | t }}</span></div>
+     </section>
+-    {% assign lx_winter_collection = collections['winter-kaelte'] %}
+-    {% assign lx_christmas_collection = collections['weihnachten-2026'] %}
+-    {% if lx_winter_collection != blank and lx_christmas_collection != blank %}
+-      <section class="lx-season-edit lx-section" id="lx-season" aria-labelledby="lx-season-title">
+-        <div><p class="lx-eyebrow">{{ 'luxe_home.extra.season_eyebrow' | t }}</p><h2 id="lx-season-title">{{ 'luxe_home.extra.season_heading' | t }}</h2><p>{{ 'luxe_home.extra.season_intro' | t }}</p></div>
+-        {% assign lx_winter_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-winter-850e6c888ff9-20261101.png?v=1793570088' %}
+-        {% assign lx_christmas_scene = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-saison-christmas-19d8eeaa192b-20261101.png?v=1793570088' %}
+-        <div class="lx-season-actions">
+-          <a class="lx-season-card" href="{{ lx_winter_collection.url }}" data-season-card="winter">
+-            <span class="lx-season-media" aria-hidden="true"><img src="{{ lx_winter_scene | escape }}&amp;width=800" srcset="{{ lx_winter_scene | escape }}&amp;width=360 360w, {{ lx_winter_scene | escape }}&amp;width=540 540w, {{ lx_winter_scene | escape }}&amp;width=800 800w, {{ lx_winter_scene | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>
+-            <span class="lx-season-label">{{ 'luxe_home.extra.winter' | t }}</span><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
+-          </a>
+-          <a class="lx-season-card" href="{{ lx_christmas_collection.url }}" data-season-card="christmas">
+-            <span class="lx-season-media" aria-hidden="true"><img src="{{ lx_christmas_scene | escape }}&amp;width=800" srcset="{{ lx_christmas_scene | escape }}&amp;width=360 360w, {{ lx_christmas_scene | escape }}&amp;width=540 540w, {{ lx_christmas_scene | escape }}&amp;width=800 800w, {{ lx_christmas_scene | escape }}&amp;width=1000 1000w" sizes="(max-width: 760px) 82vw, (max-width: 1100px) 42vw, 28vw" width="1536" height="1024" loading="lazy" decoding="async" alt=""></span>
+-            <span class="lx-season-label">{{ 'luxe_home.extra.christmas' | t }}</span><svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
+-          </a>
+-        </div>
+-      </section>
+-    {% endif %}
+     {% assign lx_budget_entries = 'unter-chf-25|small,geschenke-unter-50-franken|medium,premium-geschenke|gifts' | split: ',' %}
+     {% capture lx_budget_cards %}
+       {% for lx_budget_entry in lx_budget_entries %}
+--- a/assets/luxe-edit.css
++++ b/assets/luxe-edit.css
+@@ -271,3 +271,89 @@
+ .lx-home .lx-wishcard>.lux-wish{top:8px;right:8px}
+ /* Hover-Rahmen bleibt, wenn die Maus auf dem Herz steht (Fund des Darstellungs-Prüfers 03.11.2026). */
+ .lx-home .lx-wishcard:hover>a{border-color:#8b7355}
++
++
++/* 03.11.2026 R72: Breites Stoebern. Alle Kategorie- und Produktlinks bleiben
++   erhalten; Liquid bestimmt die Lesereihenfolge, ohne JavaScript-Umsortierung. */
++.lx-home.lx-browse-home .lx-worlds { padding-top:32px; padding-bottom:24px; }
++.lx-home.lx-browse-home .lx-worlds .lx-section-heading { gap:24px; margin-bottom:20px; align-items:center; }
++.lx-home.lx-browse-home .lx-worlds .lx-section-heading h2 { font-size:36px; margin-top:8px; }
++.lx-home.lx-browse-home .lx-category-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
++.lx-home.lx-browse-home .lx-category-tile { min-height:72px; gap:12px; padding:10px; border-radius:12px; }
++.lx-home.lx-browse-home .lx-category-thumb { flex-basis:48px; width:48px; height:48px; border-radius:9px; }
++.lx-home.lx-browse-home .lx-category-name { font-size:15px; line-height:1.3; }
++.lx-home.lx-browse-home .lx-all-categories { margin-top:10px; }
++.lx-home.lx-browse-home .lx-trends { padding-top:24px; padding-bottom:32px; }
++.lx-home.lx-browse-home .lx-trends .lx-section-heading { margin-bottom:18px; }
++.lx-home.lx-browse-home .lx-trends-grid {
++  grid-template-columns:none;
++  grid-template-rows:auto;
++  grid-auto-flow:column;
++  grid-auto-columns:calc((100% - 54px) / 4.2);
++  gap:18px;
++  overflow-x:auto;
++  overscroll-behavior-x:contain;
++  scroll-snap-type:x proximity;
++  scroll-padding-inline:2px;
++  padding:2px 2px 14px;
++  scrollbar-width:thin;
++  scrollbar-color:#8b7355 #eee7dc;
++}
++.lx-home.lx-browse-home .lx-trends-hint { display:flex; align-items:center; gap:10px; margin:0 0 14px; color:var(--lx-muted); font-size:12px; line-height:1.5; }
++.lx-home.lx-browse-home .lx-trends-hint svg { flex:0 0 18px; width:18px; height:18px; }
++.lx-home.lx-browse-home .lx-trend-info h3 { min-height:3em; }
++.lx-home.lx-browse-home .lx-season-edit { margin-top:12px; margin-bottom:24px; }
++.lx-home.lx-browse-home .lx-product-edit { padding-top:28px; padding-bottom:28px; }
++.lx-home.lx-browse-home .lx-design-collage-section { padding-top:24px; padding-bottom:32px; }
++.lx-home.lx-browse-home .lx-design-collage { height:480px; }
++.lx-home.lx-browse-home .lx-design-collage img { height:100%; object-fit:contain; }
++.lx-home.lx-browse-home .lx-discover,
++.lx-home.lx-browse-home .lx-more-products { padding-top:32px; padding-bottom:32px; }
++@media (min-width:761px) and (max-width:1100px) {
++  .lx-home.lx-browse-home .lx-category-tile { gap:8px; padding:8px; }
++  .lx-home.lx-browse-home .lx-category-name { font-size:14px; }
++  .lx-home.lx-browse-home .lx-category-arrow { display:none; }
++  .lx-home.lx-browse-home .lx-trends-grid { grid-auto-columns:calc((100% - 36px) / 3.2); }
++  .lx-home.lx-browse-home .lx-design-collage { height:440px; }
++}
++@media (max-width:760px) {
++  .lx-home.lx-browse-home .lx-worlds { padding:24px 16px 16px; }
++  .lx-home.lx-browse-home .lx-worlds .lx-section-heading { align-items:flex-start; gap:14px; margin-bottom:18px; }
++  .lx-home.lx-browse-home .lx-worlds .lx-section-heading h2 { font-size:30px; }
++  .lx-home.lx-browse-home .lx-category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
++  .lx-home.lx-browse-home .lx-category-tile { min-height:64px; gap:8px; padding:8px; border-radius:11px; }
++  .lx-home.lx-browse-home .lx-category-thumb { flex-basis:40px; width:40px; height:40px; border-radius:8px; }
++  .lx-home.lx-browse-home .lx-category-name { font-size:14px; line-height:1.3; }
++  .lx-home.lx-browse-home .lx-trends { padding:20px 16px 24px; }
++  .lx-home.lx-browse-home .lx-trends .lx-section-heading { align-items:flex-start; flex-wrap:wrap; gap:8px 18px; margin-bottom:12px; }
++  .lx-home.lx-browse-home .lx-trends-grid { grid-auto-columns:44%; gap:12px; }
++  .lx-home.lx-browse-home .lx-trend-info h3 { min-height:3em; }
++  .lx-home.lx-browse-home .lx-trends-hint { margin-bottom:12px; }
++  .lx-home.lx-browse-home .lx-season-edit { margin:8px 16px 20px; padding:24px 18px; gap:18px; }
++  .lx-home.lx-browse-home .lx-season-actions {
++    grid-template-columns:none;
++    grid-auto-flow:column;
++    grid-auto-columns:86%;
++    overflow-x:auto;
++    overscroll-behavior-x:contain;
++    scroll-snap-type:x proximity;
++    scroll-padding-inline:2px;
++    padding:4px 2px 12px;
++    scrollbar-width:thin;
++    scrollbar-color:#667b69 #dcded2;
++  }
++  .lx-home.lx-browse-home .lx-season-card { scroll-snap-align:start; }
++  .lx-home.lx-browse-home .lx-product-edit { padding-top:24px; padding-bottom:24px; }
++  .lx-home.lx-browse-home .lx-design-collage-section { padding-top:20px; padding-bottom:28px; }
++  .lx-home.lx-browse-home .lx-design-collage { height:340px; }
++  .lx-home.lx-browse-home .lx-discover,
++  .lx-home.lx-browse-home .lx-more-products { padding:28px 16px; }
++}
++@media (max-width:359px) {
++  .lx-home.lx-browse-home .lx-category-tile { gap:6px; }
++  .lx-home.lx-browse-home .lx-category-thumb { flex-basis:32px; width:32px; height:32px; }
++  .lx-home.lx-browse-home .lx-category-name { font-size:13px; }
++  .lx-home.lx-browse-home .lx-worlds .lx-section-heading { flex-direction:column; gap:8px; }
++  .lx-home.lx-browse-home .lx-worlds .lx-section-heading>p { text-align:left; }
++  .lx-home.lx-browse-home .lx-trends-grid { grid-auto-columns:48%; }
++}
