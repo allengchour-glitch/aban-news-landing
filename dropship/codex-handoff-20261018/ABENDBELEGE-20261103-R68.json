@@ -1,0 +1,3905 @@
+{
+  "schemaVersion": 1,
+  "revision": 68,
+  "at": "2026-11-03T18:05:50.944476+00:00",
+  "scope": "Owner-requested main website video preparation plus existing evening check; no new automation or paid render.",
+  "material": {
+    "scope": "Bounded LuxeStyle-only repository source/media inspection; no paid APIs, renders, workflows, publication, Shop/CJ mutations, source scripts not executed",
+    "at": "2026-11-03T17:56:54.673120+00:00",
+    "mainCommit": "cdcd464c88cd10a10cc884255a8b27d825a70ef1",
+    "treeTruncated": false,
+    "files": [
+      {
+        "repositoryPath": ".github/workflows/minimax-h3-clip.yml",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/.github/workflows/minimax-h3-clip.yml",
+        "bytes": 2601,
+        "sha256": "16226eeb33664b8a6fdc7380dc9190158ca90fb801b08fa65a45bb057a6000f9",
+        "expectedGitBlob": "bac8b9f06fb7e9d3ea6ee5177225bd7e26f386f0",
+        "actualGitBlob": "bac8b9f06fb7e9d3ea6ee5177225bd7e26f386f0",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "automation/cj_video_produkte.mjs",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/automation/cj_video_produkte.mjs",
+        "bytes": 10707,
+        "sha256": "2b936469b37932d3fe9274c44b8aaf453c34c650d056cc6533b1e67cbac2944e",
+        "expectedGitBlob": "5769e4fd2cf86f6fab6dcafa63ca70d742fbf888",
+        "actualGitBlob": "5769e4fd2cf86f6fab6dcafa63ca70d742fbf888",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "automation/freegen_video.py",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/automation/freegen_video.py",
+        "bytes": 9050,
+        "sha256": "e60d7e37c0764f414b4a2aab6814dd65dae313064871db2d11c18b4f47e65141",
+        "expectedGitBlob": "2aba8521ae003db84251755b7b2c5f8f088e7a18",
+        "actualGitBlob": "2aba8521ae003db84251755b7b2c5f8f088e7a18",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "automation/lib/cj_video.mjs",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/automation/lib/cj_video.mjs",
+        "bytes": 4745,
+        "sha256": "04ec585c17ee2187249ee94456968b8f51e99f8d81b499945f10bed32b51e27f",
+        "expectedGitBlob": "1e365c175e775b78d1adaee9ba77652d35366452",
+        "actualGitBlob": "1e365c175e775b78d1adaee9ba77652d35366452",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "automation/minimax_h3_clip.mjs",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/automation/minimax_h3_clip.mjs",
+        "bytes": 8771,
+        "sha256": "5e3cbab8116e1f8cd227927eb2e23861787fb75fed003facb26ca678149ea5e2",
+        "expectedGitBlob": "6c3978e4df626a43e0cb7e3fe9850ed5b61c5d15",
+        "actualGitBlob": "6c3978e4df626a43e0cb7e3fe9850ed5b61c5d15",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "automation/music/CREDITS.txt",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/automation/music/CREDITS.txt",
+        "bytes": 2487,
+        "sha256": "3316dc197a40040c8570bbc5c102b8a6bb8ed15ab1fc49d339decf10485326e4",
+        "expectedGitBlob": "b6dab1a05168da2b7215b50f71b879e4cabdf4c2",
+        "actualGitBlob": "b6dab1a05168da2b7215b50f71b879e4cabdf4c2",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/CODEX-REEL-LAMPE-0211.md",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/CODEX-REEL-LAMPE-0211.md",
+        "bytes": 4244,
+        "sha256": "8c9d13d8b8c8bf2c120ed3e7920053400b1d546d82b6ee465192130152f70009",
+        "expectedGitBlob": "ffcd7b23212bb8d93637197868cb81056567c8ed",
+        "actualGitBlob": "ffcd7b23212bb8d93637197868cb81056567c8ed",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/MINIMAX-H3-0211.md",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/MINIMAX-H3-0211.md",
+        "bytes": 2741,
+        "sha256": "8db42823edf5e1759d4da205c8b2e79d28ddd042b45bfbc1a898e5e5048362b2",
+        "expectedGitBlob": "058093a1e15135ca13cb3291178516144e3a96e3",
+        "actualGitBlob": "058093a1e15135ca13cb3291178516144e3a96e3",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/SUPER-VIDEO-PLAYBOOK.md",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/SUPER-VIDEO-PLAYBOOK.md",
+        "bytes": 5057,
+        "sha256": "3d92cf42e45410810abb2f4f6a4bcf09f36c438745c2f681944294b74f2adac6",
+        "expectedGitBlob": "2082bb06c96ee25a7df7b6c8e64c5ddaacf68557",
+        "actualGitBlob": "2082bb06c96ee25a7df7b6c8e64c5ddaacf68557",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/VIDEO-POWER-TOOLS.md",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/VIDEO-POWER-TOOLS.md",
+        "bytes": 23961,
+        "sha256": "12cf6a53454ef5b20498f167f2c54c47c4ede6817df7c81d14d5fcab4383991f",
+        "expectedGitBlob": "8bf582453a01cace5db27c2b42359d508e191600",
+        "actualGitBlob": "8bf582453a01cace5db27c2b42359d508e191600",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/VIDEO-PRAEFERENZEN.md",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/VIDEO-PRAEFERENZEN.md",
+        "bytes": 2209,
+        "sha256": "f7c72db144bb07cadf1a9cf78f48e27021b3dfff75c4ac8a0ee21c31b9bbea80",
+        "expectedGitBlob": "fc0ff4cd659debaed7f0ce08bb6e283f255365c3",
+        "actualGitBlob": "fc0ff4cd659debaed7f0ce08bb6e283f255365c3",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/ads/render_brand_video.py",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/ads/render_brand_video.py",
+        "bytes": 8715,
+        "sha256": "c0fb298f560afaf0f20f22445ae408da0a06029eb619355b201d48b6259a7e63",
+        "expectedGitBlob": "a6fc0357d9e69b87226ba24cd48257e57564b091",
+        "actualGitBlob": "a6fc0357d9e69b87226ba24cd48257e57564b091",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/startseite-2710/README.md",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/startseite-2710/README.md",
+        "bytes": 1879,
+        "sha256": "7be4338ab7523a58fdcb2f331d51592d29e2e8f975bd6508dc2209eaf4f2d642",
+        "expectedGitBlob": "0fef4f5e54bc7e880742e45d82b4d13b3b33697f",
+        "actualGitBlob": "0fef4f5e54bc7e880742e45d82b4d13b3b33697f",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/startseite-2710/hero_video_bauen.py",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/startseite-2710/hero_video_bauen.py",
+        "bytes": 5098,
+        "sha256": "590ae87f40eb0adf5d68a7a50f6f56020a47f81737d8accbc036fdb60e9bf017",
+        "expectedGitBlob": "a19bd59254df99073d4036e1a4545d7b817c5360",
+        "actualGitBlob": "a19bd59254df99073d4036e1a4545d7b817c5360",
+        "byteExact": true,
+        "executed": false
+      },
+      {
+        "repositoryPath": "dropship/startseite-2710/neu_bauen.py",
+        "path": "/workspace/luxestyle-review/website-master-20261103-r68/material/source/dropship/startseite-2710/neu_bauen.py",
+        "bytes": 17975,
+        "sha256": "50e77198d348ca2b7aaf663121e8a34b9c5006041ca390feccd5a0617964854f",
+        "expectedGitBlob": "ef9381473dd4771f2aa45fb0d6c30cb9b27084fc",
+        "actualGitBlob": "ef9381473dd4771f2aa45fb0d6c30cb9b27084fc",
+        "byteExact": true,
+        "executed": false
+      }
+    ],
+    "music": {
+      "path": "/workspace/luxestyle-review/media/luxe-premium.wav",
+      "repositoryPath": "automation/music/luxe-premium.wav",
+      "bytes": 11343950,
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "actualGitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "repositoryGitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "byteExact": true,
+      "rights": "Repository credits claim synthesized original via General MIDI. Commercial soundfont/sample rights and final hearing approval not independently established by this source review.",
+      "probe": {
+        "duration": "64.307664",
+        "streams": [
+          {
+            "codec_type": "audio",
+            "codec_name": "pcm_s16le",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ]
+      }
+    },
+    "media": [
+      {
+        "at": "2026-11-03T17:55:49.682939+00:00",
+        "url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/cdcd464c88cd10a10cc884255a8b27d825a70ef1/reels/luxestyle-brand-30s-text.mp4",
+        "file": "/workspace/luxestyle-review/website-master-20261103-r68/material/media/luxestyle-brand-30s-text-current-repo.mp4",
+        "bytes": 7025336,
+        "sha256": "46fd14d827e653fd463d8a08a8c2dacf28343e14475e7f1ed4888972824404bd",
+        "gitBlobSha": "ba8fb7732395b99baa4e50c3324b493f515fd485",
+        "format": "26.400000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "avg_frame_rate": "30/1",
+            "color_space": null,
+            "color_transfer": null,
+            "color_primaries": null
+          },
+          {
+            "codec_type": "audio",
+            "codec_name": "aac",
+            "width": null,
+            "height": null,
+            "avg_frame_rate": "0/0",
+            "color_space": null,
+            "color_transfer": null,
+            "color_primaries": null
+          }
+        ]
+      },
+      {
+        "at": "2026-11-03T17:56:07.468394+00:00",
+        "url": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+        "file": "/workspace/luxestyle-review/website-master-20261103-r68/material/media/homepage-current-collage.mp4",
+        "bytes": 4063423,
+        "sha256": "6ab14e42d06f139399cda4d723e286b20bc5bd3d5eba1df6261d7227bb424397",
+        "duration": "20.000000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 518,
+            "height": 720,
+            "avg_frame_rate": "24/1",
+            "color_space": null,
+            "color_transfer": null,
+            "color_primaries": null
+          }
+        ]
+      }
+    ],
+    "noCurrentSuitableFootageFoundWithinScope": true,
+    "important": "Not an exhaustive private-drive/CJ account search. Actual reference footage exists; suitability, exact current offered variant and commercial editing/advertising rights remain unproved. A renderer is present; source material is the blocker."
+  },
+  "website": {
+    "checkedAtUtc": "2026-11-03T17:55:01.510166+00:00",
+    "url": "https://luxestyle.ch/",
+    "scope": "Two read-only homepage views desktop/mobile; external analytics/reviews and non-read methods blocked.",
+    "browserSandbox": true,
+    "views": [
+      {
+        "width": 1440,
+        "height": 1000,
+        "http": 200,
+        "url": "https://luxestyle.ch/",
+        "theme": {
+          "id": "213013037447",
+          "role": "main"
+        },
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "bodyStyle": {
+          "fontFamily": "Inter, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgba(44, 44, 44, 0.81)",
+          "backgroundColor": "rgb(250, 247, 242)",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%"
+        },
+        "heading": [
+          {
+            "text": "Schön leben.\nSchlau shoppen.",
+            "rect": {
+              "x": 115.1875,
+              "y": 346.515625,
+              "width": 490.6875,
+              "height": 155.71875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "74.88px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Was passt zu dir?",
+            "rect": {
+              "x": 64.796875,
+              "y": 906.578125,
+              "width": 320.03125,
+              "height": 50.671875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "46.08px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Mach es persönlich.",
+            "rect": {
+              "x": 118.796875,
+              "y": 1923.0625,
+              "width": 433.375,
+              "height": 56.6875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "54px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Trends entdecken",
+            "rect": {
+              "x": 64.796875,
+              "y": 2617.8125,
+              "width": 324.625,
+              "height": 50.671875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "46.08px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Schmuck entdecken",
+            "rect": {
+              "x": 64.796875,
+              "y": 4480.984375,
+              "width": 369.78125,
+              "height": 50.671875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "46.08px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Für dein Zuhause",
+            "rect": {
+              "x": 64.796875,
+              "y": 5254.984375,
+              "width": 322.484375,
+              "height": 50.671875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "46.08px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Mehr von LuxeStyle entdecken",
+            "rect": {
+              "x": 64.796875,
+              "y": 6062.984375,
+              "width": 579.65625,
+              "height": 50.671875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "46.08px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Noch mehr entdecken",
+            "rect": {
+              "x": 64.796875,
+              "y": 6768.25,
+              "width": 404.296875,
+              "height": 50.671875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "46.08px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Ein Look.\nGanz du.",
+            "rect": {
+              "x": 792,
+              "y": 8266.34375,
+              "width": 276.40625,
+              "height": 141
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "69.12px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Winterzeit. Geschenkzeit.",
+            "rect": {
+              "x": 119.796875,
+              "y": 8942.875,
+              "width": 424.875,
+              "height": 103.65625
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "48px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          }
+        ],
+        "images": [
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?height=44&v=1781123787",
+            "alt": "LuxeStyle.ch Logo",
+            "naturalWidth": 215,
+            "naturalHeight": 44,
+            "rect": {
+              "x": 40,
+              "y": 67.1875,
+              "width": 215,
+              "height": 44
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853",
+            "alt": "LuxeStyle-Produktwand mit Mode, Schmuck, Wohnen, Küche, Haustieren und Elektronik",
+            "naturalWidth": 720,
+            "naturalHeight": 1000,
+            "rect": {
+              "x": 665.859375,
+              "y": 163.578125,
+              "width": 730.953125,
+              "height": 640
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 79.796875,
+              "y": 1010.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 31,
+            "rect": {
+              "x": 410.890625,
+              "y": 1010.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 31,
+            "rect": {
+              "x": 742,
+              "y": 1010.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 40,
+            "rect": {
+              "x": 1073.09375,
+              "y": 1010.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 31,
+            "rect": {
+              "x": 79.796875,
+              "y": 1136.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 410.890625,
+              "y": 1136.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 40,
+            "rect": {
+              "x": 742,
+              "y": 1136.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 1073.09375,
+              "y": 1136.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 53,
+            "rect": {
+              "x": 79.796875,
+              "y": 1262.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 31,
+            "rect": {
+              "x": 410.890625,
+              "y": 1262.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 742,
+              "y": 1262.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 1073.09375,
+              "y": 1262.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 79.796875,
+              "y": 1388.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 80,
+            "rect": {
+              "x": 410.890625,
+              "y": 1388.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 53,
+            "rect": {
+              "x": 742,
+              "y": 1388.25,
+              "width": 80,
+              "height": 80
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120",
+            "alt": "",
+            "naturalWidth": 80,
+            "naturalHeight": 31,
+            "rect": {
+              "x": 1073.09375,
+              "y": 1388.25,
+              "width": 80,
+              "height": 80
+            }
+          }
+        ],
+        "videos": [
+          {
+            "src": "",
+            "srcAttr": null,
+            "poster": "https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853",
+            "sources": [],
+            "autoplay": false,
+            "loop": true,
+            "muted": true,
+            "controls": false,
+            "playsInline": true,
+            "preload": "none",
+            "readyState": 0,
+            "paused": true,
+            "currentTime": 0,
+            "rect": {
+              "x": 665.859375,
+              "y": 163.578125,
+              "width": 730.953125,
+              "height": 640
+            },
+            "style": {
+              "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "cover",
+              "objectPosition": "50% 0%"
+            },
+            "visible": true
+          }
+        ],
+        "heroLinks": [
+          {
+            "text": "Alle Kategorien",
+            "href": "https://luxestyle.ch/pages/alle-kategorien",
+            "rect": {
+              "x": 115.1875,
+              "y": 603.234375,
+              "width": 185.59375,
+              "height": 54.390625
+            }
+          },
+          {
+            "text": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "rect": {
+              "x": 318.78125,
+              "y": 606.421875,
+              "width": 120.984375,
+              "height": 48
+            }
+          },
+          {
+            "text": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "rect": {
+              "x": 64.796875,
+              "y": 994.25,
+              "width": 317.09375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Damenmode",
+            "href": "https://luxestyle.ch/collections/damen-mode",
+            "rect": {
+              "x": 395.890625,
+              "y": 994.25,
+              "width": 317.109375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Herrenmode",
+            "href": "https://luxestyle.ch/collections/fur-ihn",
+            "rect": {
+              "x": 727,
+              "y": 994.25,
+              "width": 317.09375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Kinder und Baby",
+            "href": "https://luxestyle.ch/collections/sub-baby-kids",
+            "rect": {
+              "x": 1058.09375,
+              "y": 994.25,
+              "width": 317.109375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Schuhe",
+            "href": "https://luxestyle.ch/collections/schuhe",
+            "rect": {
+              "x": 64.796875,
+              "y": 1120.25,
+              "width": 317.09375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Taschen und Rucksäcke",
+            "href": "https://luxestyle.ch/collections/sub-taschen",
+            "rect": {
+              "x": 395.890625,
+              "y": 1120.25,
+              "width": 317.109375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Schmuck",
+            "href": "https://luxestyle.ch/collections/schmuck",
+            "rect": {
+              "x": 727,
+              "y": 1120.25,
+              "width": 317.09375,
+              "height": 112
+            }
+          },
+          {
+            "text": "Uhren",
+            "href": "https://luxestyle.ch/collections/uhren",
+            "rect": {
+              "x": 1058.09375,
+              "y": 1120.25,
+              "width": 317.109375,
+              "height": 112
+            }
+          }
+        ],
+        "heroButtons": [
+          {
+            "text": "Video abspielen",
+            "label": null,
+            "rect": {
+              "x": 1262.546875,
+              "y": 179.578125,
+              "width": 118.265625,
+              "height": 48
+            }
+          }
+        ],
+        "colours": [
+          "rgba(44, 44, 44, 0.81)",
+          "rgba(0, 0, 0, 0)",
+          "rgb(41, 39, 34)",
+          "rgb(238, 231, 220)",
+          "rgb(255, 255, 255)",
+          "rgb(240, 237, 231)"
+        ],
+        "domWidth": 1440,
+        "bodyWidth": 1440,
+        "reducedMotion": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "http": 200,
+        "url": "https://luxestyle.ch/",
+        "theme": {
+          "id": "213013037447",
+          "role": "main"
+        },
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "bodyStyle": {
+          "fontFamily": "Inter, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgba(44, 44, 44, 0.81)",
+          "backgroundColor": "rgb(250, 247, 242)",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%"
+        },
+        "heading": [
+          {
+            "text": "",
+            "rect": {
+              "x": -349.0249938964844,
+              "y": 1348.671875,
+              "width": 1,
+              "height": 1
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "36px",
+              "fontWeight": "700",
+              "color": "rgba(44, 44, 44, 0.81)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "",
+            "rect": {
+              "x": -349.0249938964844,
+              "y": 2157.578125,
+              "width": 1,
+              "height": 1
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "36px",
+              "fontWeight": "700",
+              "color": "rgba(44, 44, 44, 0.81)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Schön leben.\nSchlau shoppen.",
+            "rect": {
+              "x": 36,
+              "y": 454.859375,
+              "width": 263.21875,
+              "height": 83.53125
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "40.17px",
+              "fontWeight": "400",
+              "color": "rgb(250, 247, 242)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Was passt zu dir?",
+            "rect": {
+              "x": 24,
+              "y": 739.375,
+              "width": 222.25,
+              "height": 35.1875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Mach es persönlich.",
+            "rect": {
+              "x": 38,
+              "y": 1712.5625,
+              "width": 272.875,
+              "height": 35.6875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "34px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Trends entdecken",
+            "rect": {
+              "x": 24,
+              "y": 2581.109375,
+              "width": 194.671875,
+              "height": 70.375
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Schmuck entdecken",
+            "rect": {
+              "x": 16,
+              "y": 3642.890625,
+              "width": 256.796875,
+              "height": 35.1875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Für dein Zuhause",
+            "rect": {
+              "x": 16,
+              "y": 4412.375,
+              "width": 223.953125,
+              "height": 35.1875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Mehr von LuxeStyle entdecken",
+            "rect": {
+              "x": 24,
+              "y": 5201.859375,
+              "width": 342,
+              "height": 70.375
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          },
+          {
+            "text": "Noch mehr entdecken",
+            "rect": {
+              "x": 24,
+              "y": 6161.421875,
+              "width": 280.765625,
+              "height": 35.1875
+            },
+            "style": {
+              "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, \"Times New Roman\", serif",
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "fill",
+              "objectPosition": "50% 50%"
+            }
+          }
+        ],
+        "images": [
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?height=44&v=1781123787",
+            "alt": "LuxeStyle.ch Logo",
+            "naturalWidth": 215,
+            "naturalHeight": 44,
+            "rect": {
+              "x": 93.5,
+              "y": 81,
+              "width": 157,
+              "height": 32
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853",
+            "alt": "LuxeStyle-Produktwand mit Mode, Schmuck, Wohnen, Küche, Haustieren und Elektronik",
+            "naturalWidth": 720,
+            "naturalHeight": 1000,
+            "rect": {
+              "x": 16,
+              "y": 208.375,
+              "width": 358,
+              "height": 472
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/ex-tshirt-paint.png?v=1781011979&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 35,
+              "y": 815.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1788591377&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 21,
+            "rect": {
+              "x": 211,
+              "y": 815.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/pexels-photo-1407846.jpg?v=1788591376&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 21,
+            "rect": {
+              "x": 35,
+              "y": 911.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/pinnwand-sub-baby-kids.jpg?v=1792998390&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 28,
+            "rect": {
+              "x": 211,
+              "y": 911.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/e71f990b-323e-4913-bac5-64e3655fc3e8.jpg?v=1781386831&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 21,
+            "rect": {
+              "x": 35,
+              "y": 1007.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/bf38c7e1-5f24-4a6e-bd0d-828ae796b76f.jpg?v=1781342169&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 211,
+              "y": 1007.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/pinnwand-schmuck.jpg?v=1792997986&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 28,
+            "rect": {
+              "x": 35,
+              "y": 1103.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/8431777726558_0_P02.jpg?v=1781880273&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 211,
+              "y": 1103.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-beauty-f7c9d32db796-20261101.png?v=1793569453&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 37,
+            "rect": {
+              "x": 35,
+              "y": 1199.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/38e961b1-87b9-4197-834e-d24c3cf158c3.jpg?v=1781386831&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 21,
+            "rect": {
+              "x": 211,
+              "y": 1199.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/fa51b24f-1f28-48bf-9250-810a96c3b227.jpg?v=1781342258&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 35,
+              "y": 1295.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/Smart_20TV_20TCL_2075C8K_204K_20Ultra_20HD_2075_22_20ULED_20HDR10_20Google_20Assistant_20_Restauriert_20B_0eb84e28-fca9-4916-ab4f-bc25dd4974c3.jpg?v=1788195387&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 211,
+              "y": 1295.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/4719512132081_M0311582_P00.jpg?v=1781640717&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 35,
+              "y": 1391.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/086bcec8-e421-46af-9dd7-335551f60734_trans.jpg?v=1783597642&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 56,
+            "rect": {
+              "x": 211,
+              "y": 1391.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-kategorie-sport-7fe1761f704f-20261101.png?v=1793569453&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 37,
+            "rect": {
+              "x": 35,
+              "y": 1487.5625,
+              "width": 52,
+              "height": 58
+            }
+          },
+          {
+            "src": "https://luxestyle.ch/cdn/shop/collections/cat-geschenke.jpg?v=1781386833&width=120",
+            "alt": "",
+            "naturalWidth": 56,
+            "naturalHeight": 21,
+            "rect": {
+              "x": 211,
+              "y": 1487.5625,
+              "width": 52,
+              "height": 58
+            }
+          }
+        ],
+        "videos": [
+          {
+            "src": "",
+            "srcAttr": null,
+            "poster": "https://luxestyle.ch/cdn/shop/files/preview_images/4047bc6eca15416888ae316a2327ed62.thumbnail.0000000000_1000x.jpg?v=1793134853",
+            "sources": [],
+            "autoplay": false,
+            "loop": true,
+            "muted": true,
+            "controls": false,
+            "playsInline": true,
+            "preload": "none",
+            "readyState": 0,
+            "paused": true,
+            "currentTime": 0,
+            "rect": {
+              "x": 16,
+              "y": 208.375,
+              "width": 358,
+              "height": 472
+            },
+            "style": {
+              "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "color": "rgb(41, 39, 34)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "objectFit": "cover",
+              "objectPosition": "50% 0%"
+            },
+            "visible": true
+          }
+        ],
+        "heroLinks": [
+          {
+            "text": "Alle Kategorien",
+            "href": "https://luxestyle.ch/pages/alle-kategorien",
+            "rect": {
+              "x": 36,
+              "y": 605.984375,
+              "width": 163.59375,
+              "height": 50.390625
+            }
+          },
+          {
+            "text": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "rect": {
+              "x": 209.59375,
+              "y": 607.171875,
+              "width": 120.984375,
+              "height": 48
+            }
+          },
+          {
+            "text": "Selbst gestalten",
+            "href": "https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten",
+            "rect": {
+              "x": 24,
+              "y": 801.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Damenmode",
+            "href": "https://luxestyle.ch/collections/damen-mode",
+            "rect": {
+              "x": 200,
+              "y": 801.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Herrenmode",
+            "href": "https://luxestyle.ch/collections/fur-ihn",
+            "rect": {
+              "x": 24,
+              "y": 897.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Kinder und Baby",
+            "href": "https://luxestyle.ch/collections/sub-baby-kids",
+            "rect": {
+              "x": 200,
+              "y": 897.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Schuhe",
+            "href": "https://luxestyle.ch/collections/schuhe",
+            "rect": {
+              "x": 24,
+              "y": 993.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Taschen und Rucksäcke",
+            "href": "https://luxestyle.ch/collections/sub-taschen",
+            "rect": {
+              "x": 200,
+              "y": 993.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Schmuck",
+            "href": "https://luxestyle.ch/collections/schmuck",
+            "rect": {
+              "x": 24,
+              "y": 1089.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Uhren",
+            "href": "https://luxestyle.ch/collections/uhren",
+            "rect": {
+              "x": 200,
+              "y": 1089.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Beauty und Pflege",
+            "href": "https://luxestyle.ch/collections/beauty-pflege",
+            "rect": {
+              "x": 24,
+              "y": 1185.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Wohnen und Deko",
+            "href": "https://luxestyle.ch/collections/wohnen-dekoration",
+            "rect": {
+              "x": 200,
+              "y": 1185.5625,
+              "width": 166,
+              "height": 86
+            }
+          },
+          {
+            "text": "Start",
+            "href": "https://luxestyle.ch/#lx-top",
+            "rect": {
+              "x": 8,
+              "y": 783,
+              "width": 74.796875,
+              "height": 53
+            }
+          },
+          {
+            "text": "Kategorien",
+            "href": "https://luxestyle.ch/pages/alle-kategorien",
+            "rect": {
+              "x": 82.796875,
+              "y": 783,
+              "width": 74.796875,
+              "height": 53
+            }
+          },
+          {
+            "text": "Merkliste",
+            "href": "https://luxestyle.ch/pages/merkliste",
+            "rect": {
+              "x": 232.390625,
+              "y": 783,
+              "width": 74.796875,
+              "height": 53
+            }
+          },
+          {
+            "text": "Warenkorb",
+            "href": "https://luxestyle.ch/cart",
+            "rect": {
+              "x": 307.1875,
+              "y": 783,
+              "width": 74.8125,
+              "height": 53
+            }
+          }
+        ],
+        "heroButtons": [
+          {
+            "text": "Video abspielen",
+            "label": null,
+            "rect": {
+              "x": 243.734375,
+              "y": 220.375,
+              "width": 118.265625,
+              "height": 48
+            }
+          },
+          {
+            "text": "Suche",
+            "label": null,
+            "rect": {
+              "x": 157.59375,
+              "y": 783,
+              "width": 74.796875,
+              "height": 53
+            }
+          }
+        ],
+        "colours": [
+          "rgba(44, 44, 44, 0.81)",
+          "rgba(0, 0, 0, 0)",
+          "rgb(41, 39, 34)",
+          "rgb(238, 231, 220)",
+          "rgb(250, 247, 242)",
+          "rgb(255, 255, 255)",
+          "rgb(240, 237, 231)"
+        ],
+        "domWidth": 390,
+        "bodyWidth": 390,
+        "reducedMotion": true
+      }
+    ],
+    "observedVideoMarkup": {
+      "dataSrc": "https://luxestyle.ch/cdn/shop/videos/c/vp/4047bc6eca15416888ae316a2327ed62/4047bc6eca15416888ae316a2327ed62.HD-720p-1.6Mbps-99105826.mp4?v=0",
+      "samplingMode": "Reduced motion; no click, playback or audio acceptance",
+      "filmDownloaded": false
+    }
+  },
+  "websiteBrandAsset": {
+    "checkedAtUtc": "2026-11-03T17:55:01.510166+00:00",
+    "url": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?height=44&v=1781123787",
+    "sha256": "fd30106b7794ce0605199884136dec69c25975c1633c410cf8bbbce2b9cf1dab",
+    "bytes": 6286,
+    "use": "Local concept reference to actual site identity only; not evidence of film/asset licence",
+    "local": "luxestyle-logo.png"
+  },
+  "storyboardValidation": {
+    "originalVisualQa": {
+      "views": [
+        {
+          "width": 1440,
+          "scrollWidth": 1440,
+          "shots": 4,
+          "logoLoaded": true,
+          "videoCount": 0,
+          "hasStoryboardLabel": true,
+          "hasActualBlockingStatement": true,
+          "diagramLabels": [
+            "\"Kompositionsskizze · kein Filmbild\"",
+            "\"Kompositionsskizze · kein Filmbild\"",
+            "\"Kompositionsskizze · kein Filmbild\"",
+            "\"Kompositionsskizze · kein Filmbild\""
+          ],
+          "remoteRequests": [],
+          "checks": {
+            "noOverflow": true,
+            "fourShots": true,
+            "logoLoaded": true,
+            "notFakeVideo": true,
+            "labelledDraft": true,
+            "blockerPresent": true,
+            "selfContained": true
+          }
+        },
+        {
+          "width": 390,
+          "scrollWidth": 390,
+          "shots": 4,
+          "logoLoaded": true,
+          "videoCount": 0,
+          "hasStoryboardLabel": true,
+          "hasActualBlockingStatement": true,
+          "diagramLabels": [
+            "\"Kompositionsskizze · kein Filmbild\"",
+            "\"Kompositionsskizze · kein Filmbild\"",
+            "\"Kompositionsskizze · kein Filmbild\"",
+            "\"Kompositionsskizze · kein Filmbild\""
+          ],
+          "remoteRequests": [],
+          "checks": {
+            "noOverflow": true,
+            "fourShots": true,
+            "logoLoaded": true,
+            "notFakeVideo": true,
+            "labelledDraft": true,
+            "blockerPresent": true,
+            "selfContained": true
+          }
+        }
+      ],
+      "timelineChecks": {
+        "totalFrames": true,
+        "contiguous": true,
+        "fps30": true,
+        "noMP4": true,
+        "priorMasterPreserved": true
+      },
+      "initialLocalFileNavigation": "file:// blocked by administrator; preserved as access outcome, then used Playwright set_content on authorized self-contained HTML. No browser policy change.",
+      "scope": "Static concept preview only. No native Shopify, final video, rights, playback or performance approval."
+    },
+    "purposeConfirmation": {
+      "recordedAtUtc": "2026-11-03T18:03:38.078889+00:00",
+      "reason": "Owner purpose confirmation, bounded text-only update; no timeline, diagram, style, script or film change",
+      "beforeHtmlSha256": "b2bc91e583e3101568b685200f9003aa6e1ba357ff40fcd5a7e71d45c61f3693",
+      "afterHtmlSha256": "019ca2b4cc786e6141a643580d675f9b8b091af0e85f7737c4c95ec4ceab4d7b",
+      "checks": {
+        "confirmedPurposePresent": true,
+        "fourShotCards": true,
+        "stillDraft": true,
+        "noVideoElement": true,
+        "priorPendingRemoved": true
+      },
+      "priorVisualQa": "STORYBOARD-QA.json and screenshots apply to pre-confirmation label, HTMLsha256 b2bc91e583e3101568b685200f9003aa6e1ba357ff40fcd5a7e71d45c61f3693; not relabelled as newly visually retested."
+    },
+    "archiveChange": "Only relative briefing href rewritten for canonical artifact filenames. Prior visual QA remains bound to source version before owner-purpose label confirmation; no new native website integration or film playback acceptance."
+  },
+  "social": {
+    "schemaVersion": 1,
+    "run": "R68",
+    "checkedAt": "2026-11-03T17:58:03.589806+00:00",
+    "mode": "read_only",
+    "identity": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebook": "1049840534888592",
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "pinterest": "luxestyleCH",
+        "tiktok": "luxestyle.ch",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matchesExpected": true,
+      "source": "fresh metricool_getbrandsettings",
+      "otherAccountFieldsOmitted": true
+    },
+    "window": {
+      "fromDate": "2026-11-03T18:56:00+01:00",
+      "toDate": "2026-11-10T18:56:00+01:00",
+      "timezone": "Europe/Zurich",
+      "extendedRange": false,
+      "returnedObjects": 25,
+      "outsideWindow": 0
+    },
+    "counts": {
+      "objects": 25,
+      "uniqueUuids": 25,
+      "providerStates": 40,
+      "states": {
+        "PENDING": 40
+      }
+    },
+    "coverage": {
+      "facebook": {
+        "providerStates": 12,
+        "calendarDateCounts": {
+          "2026-11-03": 0,
+          "2026-11-04": 2,
+          "2026-11-05": 1,
+          "2026-11-06": 2,
+          "2026-11-07": 1,
+          "2026-11-08": 2,
+          "2026-11-09": 2,
+          "2026-11-10": 2
+        },
+        "datesWithNoReturnedFutureObject": [
+          "2026-11-03"
+        ]
+      },
+      "instagram": {
+        "providerStates": 12,
+        "calendarDateCounts": {
+          "2026-11-03": 0,
+          "2026-11-04": 2,
+          "2026-11-05": 1,
+          "2026-11-06": 2,
+          "2026-11-07": 1,
+          "2026-11-08": 2,
+          "2026-11-09": 2,
+          "2026-11-10": 2
+        },
+        "datesWithNoReturnedFutureObject": [
+          "2026-11-03"
+        ]
+      },
+      "threads": {
+        "providerStates": 1,
+        "calendarDateCounts": {
+          "2026-11-03": 0,
+          "2026-11-04": 1,
+          "2026-11-05": 0,
+          "2026-11-06": 0,
+          "2026-11-07": 0,
+          "2026-11-08": 0,
+          "2026-11-09": 0,
+          "2026-11-10": 0
+        },
+        "datesWithNoReturnedFutureObject": [
+          "2026-11-03",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09",
+          "2026-11-10"
+        ]
+      },
+      "pinterest": {
+        "providerStates": 6,
+        "calendarDateCounts": {
+          "2026-11-03": 1,
+          "2026-11-04": 1,
+          "2026-11-05": 1,
+          "2026-11-06": 1,
+          "2026-11-07": 1,
+          "2026-11-08": 1,
+          "2026-11-09": 0,
+          "2026-11-10": 0
+        },
+        "datesWithNoReturnedFutureObject": [
+          "2026-11-09",
+          "2026-11-10"
+        ]
+      },
+      "tiktok": {
+        "providerStates": 9,
+        "calendarDateCounts": {
+          "2026-11-03": 0,
+          "2026-11-04": 2,
+          "2026-11-05": 1,
+          "2026-11-06": 2,
+          "2026-11-07": 1,
+          "2026-11-08": 2,
+          "2026-11-09": 1,
+          "2026-11-10": 0
+        },
+        "datesWithNoReturnedFutureObject": [
+          "2026-11-03",
+          "2026-11-10"
+        ]
+      },
+      "youtube": {
+        "providerStates": 0,
+        "calendarDateCounts": {
+          "2026-11-03": 0,
+          "2026-11-04": 0,
+          "2026-11-05": 0,
+          "2026-11-06": 0,
+          "2026-11-07": 0,
+          "2026-11-08": 0,
+          "2026-11-09": 0,
+          "2026-11-10": 0
+        },
+        "datesWithNoReturnedFutureObject": [
+          "2026-11-03",
+          "2026-11-04",
+          "2026-11-05",
+          "2026-11-06",
+          "2026-11-07",
+          "2026-11-08",
+          "2026-11-09",
+          "2026-11-10"
+        ]
+      }
+    },
+    "coverageMeaning": "Only returned future scheduled objects in the specified full/partial calendar dates; missing objects are not zero activity, metrics, sales or proof of publication. No minimum volume.",
+    "duplicates": {
+      "captionAndMedia": [],
+      "media": [],
+      "caption": [],
+      "slot": []
+    },
+    "duplicateLimit": "Exact same-channel text/media URL/slot matches only; does not prove unique creative or empty older history.",
+    "comparisonR67": {
+      "previousWindow": {
+        "fromDate": "2026-11-03T14:03:00+01:00",
+        "toDate": "2026-11-10T14:03:00+01:00"
+      },
+      "commonUuids": 24,
+      "unchangedAllFields": 18,
+      "changedObjects": 6,
+      "fieldDiffs": [
+        {
+          "uuid": "-441851229276386553",
+          "oldId": 414938612,
+          "currentId": 415553625,
+          "fields": {
+            "creationDate": {
+              "before": {
+                "dateTime": "2026-11-03T08:54:00",
+                "timezone": "Europe/Zurich"
+              },
+              "after": {
+                "dateTime": "2026-11-03T18:19:00",
+                "timezone": "Europe/Zurich"
+              }
+            },
+            "id": {
+              "before": 414938612,
+              "after": 415553625
+            },
+            "tiktokData": {
+              "before": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+                "photoCoverIndex": 0
+              },
+              "after": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+                "autoAddMusic": true,
+                "photoCoverIndex": 0
+              }
+            }
+          }
+        },
+        {
+          "uuid": "-7893674518673470896",
+          "oldId": 414940215,
+          "currentId": 415554806,
+          "fields": {
+            "creationDate": {
+              "before": {
+                "dateTime": "2026-11-03T08:56:00",
+                "timezone": "Europe/Zurich"
+              },
+              "after": {
+                "dateTime": "2026-11-03T18:19:00",
+                "timezone": "Europe/Zurich"
+              }
+            },
+            "id": {
+              "before": 414940215,
+              "after": 415554806
+            },
+            "tiktokData": {
+              "before": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+                "photoCoverIndex": 0
+              },
+              "after": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+                "autoAddMusic": true,
+                "photoCoverIndex": 0
+              }
+            }
+          }
+        },
+        {
+          "uuid": "-9010345156192940856",
+          "oldId": 414940025,
+          "currentId": 415554461,
+          "fields": {
+            "creationDate": {
+              "before": {
+                "dateTime": "2026-11-03T08:56:00",
+                "timezone": "Europe/Zurich"
+              },
+              "after": {
+                "dateTime": "2026-11-03T18:19:00",
+                "timezone": "Europe/Zurich"
+              }
+            },
+            "id": {
+              "before": 414940025,
+              "after": 415554461
+            },
+            "tiktokData": {
+              "before": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+                "photoCoverIndex": 0
+              },
+              "after": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+                "autoAddMusic": true,
+                "photoCoverIndex": 0
+              }
+            }
+          }
+        },
+        {
+          "uuid": "1539281442427783156",
+          "oldId": 414938757,
+          "currentId": 415553806,
+          "fields": {
+            "creationDate": {
+              "before": {
+                "dateTime": "2026-11-03T08:54:00",
+                "timezone": "Europe/Zurich"
+              },
+              "after": {
+                "dateTime": "2026-11-03T18:19:00",
+                "timezone": "Europe/Zurich"
+              }
+            },
+            "id": {
+              "before": 414938757,
+              "after": 415553806
+            },
+            "tiktokData": {
+              "before": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+                "photoCoverIndex": 0
+              },
+              "after": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+                "autoAddMusic": true,
+                "photoCoverIndex": 0
+              }
+            }
+          }
+        },
+        {
+          "uuid": "3188192088876928648",
+          "oldId": 414938871,
+          "currentId": 415554058,
+          "fields": {
+            "creationDate": {
+              "before": {
+                "dateTime": "2026-11-03T08:54:00",
+                "timezone": "Europe/Zurich"
+              },
+              "after": {
+                "dateTime": "2026-11-03T18:19:00",
+                "timezone": "Europe/Zurich"
+              }
+            },
+            "id": {
+              "before": 414938871,
+              "after": 415554058
+            },
+            "tiktokData": {
+              "before": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Elegante Damenuhr in Roségold mit Box",
+                "photoCoverIndex": 0
+              },
+              "after": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Elegante Damenuhr in Roségold mit Box",
+                "autoAddMusic": true,
+                "photoCoverIndex": 0
+              }
+            }
+          }
+        },
+        {
+          "uuid": "4203543208056408815",
+          "oldId": 414939079,
+          "currentId": 415554216,
+          "fields": {
+            "creationDate": {
+              "before": {
+                "dateTime": "2026-11-03T08:54:00",
+                "timezone": "Europe/Zurich"
+              },
+              "after": {
+                "dateTime": "2026-11-03T18:19:00",
+                "timezone": "Europe/Zurich"
+              }
+            },
+            "id": {
+              "before": 414939079,
+              "after": 415554216
+            },
+            "tiktokData": {
+              "before": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+                "photoCoverIndex": 0
+              },
+              "after": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+                "autoAddMusic": true,
+                "photoCoverIndex": 0
+              }
+            }
+          }
+        }
+      ],
+      "newlyCovered": [
+        {
+          "id": 407893833,
+          "uuid": "-4686288400674371149",
+          "plannedAt": "2026-11-10T18:00:00+01:00",
+          "reason": "Later rolling end now includes this slot; no new-creation inference"
+        }
+      ],
+      "noLongerInFutureWindow": [
+        {
+          "id": 414937422,
+          "uuid": "7722742248805451240",
+          "plannedAt": "2026-11-03T18:00:00+01:00",
+          "outsideCurrentWindow": true,
+          "targetedStatusRead": true
+        }
+      ],
+      "actor": "external_observed_changes_not_own_writes"
+    },
+    "threadsRegister": {
+      "path": "dropship/codex-handoff-20261018/register/photo-week-luxe_photo_kosmetik_organizer_20261101.json",
+      "blob": "11c34a27d663a57a8cd6155d6089e034a0e858c2",
+      "checks": {
+        "brand": true,
+        "uuid": true,
+        "id": true,
+        "caption": true,
+        "media": true,
+        "slot": true,
+        "timezone": true,
+        "onlyThreads": true,
+        "draft": true,
+        "autoPublish": true,
+        "state": true,
+        "threadsData": true,
+        "unchangedBlob": true
+      },
+      "id": 413194611,
+      "uuid": "-1937081137064819378",
+      "plannedAt": "2026-11-04T18:30:00+01:00",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "sameMediaUrl": true,
+      "priorActualJpegHash": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+      "newByteDownload": false,
+      "state": "confirmed_scheduled_PENDING",
+      "platformId": "unknown_not_returned",
+      "publicationUrl": "unknown_not_returned",
+      "modified": false
+    },
+    "externalPhotoReels": [
+      {
+        "id": 414940645,
+        "uuid": "-4972715334292126303",
+        "slot": "2026-11-04T10:00:00+01:00",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15442206389654025783.mp4"
+        ],
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "allReturnedFieldsUnchangedSinceR67": true,
+        "approval": "unknown_separate_unanswered_owner_question",
+        "isProfessionalMaster": false
+      },
+      {
+        "id": 414940691,
+        "uuid": "-7866054559336938189",
+        "slot": "2026-11-06T10:00:00+01:00",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4"
+        ],
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "allReturnedFieldsUnchangedSinceR67": true,
+        "approval": "unknown_separate_unanswered_owner_question",
+        "isProfessionalMaster": false
+      },
+      {
+        "id": 414940715,
+        "uuid": "1744402171830094170",
+        "slot": "2026-11-08T16:00:00+01:00",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "allReturnedFieldsUnchangedSinceR67": true,
+        "approval": "unknown_separate_unanswered_owner_question",
+        "isProfessionalMaster": false
+      }
+    ],
+    "automaticTikTokMusic": [
+      {
+        "id": 415553625,
+        "oldId": 414938612,
+        "uuid": "-441851229276386553",
+        "plannedAt": "2026-11-04T18:00:00+01:00",
+        "autoAddMusic": true,
+        "previousAutoAddMusic": "unknown_not_returned",
+        "musicIdentityAndRights": "unknown",
+        "requiredCanonicalMusicEstablished": false,
+        "ownWrite": false
+      },
+      {
+        "id": 415553806,
+        "oldId": 414938757,
+        "uuid": "1539281442427783156",
+        "plannedAt": "2026-11-05T18:00:00+01:00",
+        "autoAddMusic": true,
+        "previousAutoAddMusic": "unknown_not_returned",
+        "musicIdentityAndRights": "unknown",
+        "requiredCanonicalMusicEstablished": false,
+        "ownWrite": false
+      },
+      {
+        "id": 415554058,
+        "oldId": 414938871,
+        "uuid": "3188192088876928648",
+        "plannedAt": "2026-11-06T18:00:00+01:00",
+        "autoAddMusic": true,
+        "previousAutoAddMusic": "unknown_not_returned",
+        "musicIdentityAndRights": "unknown",
+        "requiredCanonicalMusicEstablished": false,
+        "ownWrite": false
+      },
+      {
+        "id": 415554216,
+        "oldId": 414939079,
+        "uuid": "4203543208056408815",
+        "plannedAt": "2026-11-07T12:00:00+01:00",
+        "autoAddMusic": true,
+        "previousAutoAddMusic": "unknown_not_returned",
+        "musicIdentityAndRights": "unknown",
+        "requiredCanonicalMusicEstablished": false,
+        "ownWrite": false
+      },
+      {
+        "id": 415554461,
+        "oldId": 414940025,
+        "uuid": "-9010345156192940856",
+        "plannedAt": "2026-11-08T12:00:00+01:00",
+        "autoAddMusic": true,
+        "previousAutoAddMusic": "unknown_not_returned",
+        "musicIdentityAndRights": "unknown",
+        "requiredCanonicalMusicEstablished": false,
+        "ownWrite": false
+      },
+      {
+        "id": 415554806,
+        "oldId": 414940215,
+        "uuid": "-7893674518673470896",
+        "plannedAt": "2026-11-09T18:00:00+01:00",
+        "autoAddMusic": true,
+        "previousAutoAddMusic": "unknown_not_returned",
+        "musicIdentityAndRights": "unknown",
+        "requiredCanonicalMusicEstablished": false,
+        "ownWrite": false
+      }
+    ],
+    "pastExternalMusicPost": {
+      "id": 414937422,
+      "uuid": "7722742248805451240",
+      "plannedAt": "2026-11-03T18:00:00+01:00",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": "7703993914889358625",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7703993914889358625",
+          "detailedStatus": "Published"
+        }
+      ],
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Plüsch Hochlandrind, 25 cm · Geschenkidee",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "source": "targeted native Metricool getScheduledPosts 03.11.17:55–18:05 Europe/Zurich",
+      "ownPublication": false,
+      "actualPlaybackAndMusicRights": "unknown_not_checked",
+      "actualPublicationTimestamp": "unknown_not_returned; publicationDate is scheduled time"
+    },
+    "channelPrerequisites": {
+      "instagramBio": "unknown",
+      "tiktokBio": "unknown",
+      "pinterest": {
+        "configuredBoardIds": [
+          "1111333714239531706"
+        ],
+        "boardName": "unknown",
+        "authenticatedBoardOwnership": "unknown"
+      },
+      "youtube": {
+        "audience": "owner_general_audience_already_confirmed",
+        "concreteMadeForKidsFlag": "unknown_no_post"
+      }
+    },
+    "masterHistory": {
+      "projectorMasterId": "luxe_sternenprojektor_master_20261018",
+      "state": "unknown",
+      "notInitialised": true,
+      "scopedThreadsPhotoRegisterIsNotMasterHistory": true
+    },
+    "actions": {
+      "brandReadCalls": 1,
+      "planningReadCalls": 1,
+      "targetedPastStatusReadCalls": 1,
+      "registerReadCalls": 1,
+      "metricDefinitionCalls": 0,
+      "metricDataCalls": 0,
+      "writes": 0,
+      "newOwnScheduledPosts": 0,
+      "newOwnPublications": 0,
+      "mediaDownloads": 0,
+      "renders": 0
+    },
+    "dailyReports": "R64 03.11.2026 already completed for27.10.–02.11.; not repeated",
+    "rawPrivateFiles": [
+      "BRAND-RAW.private.json",
+      "PLAN-RAW.private.json",
+      "PAST-MUSIC-RAW.private.json",
+      "MUSIC-COMPARISON.private.json"
+    ],
+    "posts": [
+      {
+        "id": 407849577,
+        "uuid": "5982651913735720132",
+        "publicationDate": {
+          "dateTime": "2026-11-05T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:50:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Fürs Wichteln oder als kleines Mitbringsel noch etwas Weiches gesucht? 🧸\nDer graue Plüsch Waschbär (14 cm) wird zu einem speziellen Freund für dein Kind, empfohlen ab 3 Jahren und nicht für Kinder unter 36 Monaten geeignet.\n\nPlüsch Waschbär · CHF 20.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#plüschtier #waschbär #wichteln #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Waschbär",
+          "Plüsch Waschbär"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407854817,
+        "uuid": "5940175700385481481",
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T14:55:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Noch ein Wichtelgeschenk für ein Kind ab 3 gesucht? 🏗️\nDer Baggerarm ist voll funktionsfähig, der Aufsatz schwenkt um 360° und das Räumschild ist beweglich, im Massstab 1:16 und für drinnen wie draussen.\n\nJCB Mikrobagger 8010 CTS · CHF 26.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#mikrobagger #spielzeugbagger #kinderspielzeug #weihnachtsgeschenk #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+        ],
+        "mediaAltText": [
+          "JCB Mikrobagger 8010 CTS",
+          "JCB Mikrobagger 8010 CTS"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407889412,
+        "uuid": "-6564064169639197228",
+        "publicationDate": {
+          "dateTime": "2026-11-08T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T15:27:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln in Sicht und noch kein Geschenk für sie? 🎁\nEin Hochlandrind als Plüschtier, 25 cm gross – ein spezielles Kuscheltier, wer hat das schon?\n\nPlüsch Hochlandrind · CHF 35.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#plüschtier #hochlandrind #kuscheltier #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Hochlandrind",
+          "Plüsch Hochlandrind"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 407893833,
+        "uuid": "-4686288400674371149",
+        "publicationDate": {
+          "dateTime": "2026-11-10T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-10-27T15:31:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln in der Familie und ein Kind ab 2 Jahren auf der Liste? 🚜\nDer BRUDER Roadmax Traktor hat ein detailliertes Führerhaus, grosse Profilräder und einen voll funktionsfähigen Frontlader für den Sandkasten.\n\nBRUDER ROADMAX Traktor · Nr. 03451 · CHF 45.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#bruder #traktor #kinderspielzeug #weihnachtsgeschenk #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-4160774621955894715.jpeg"
+        ],
+        "mediaAltText": [
+          "BRUDER ROADMAX Traktor · Nr. 03451",
+          "BRUDER ROADMAX Traktor · Nr. 03451"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 413194611,
+        "uuid": "-1937081137064819378",
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T20:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Mehr Überblick auf deinem Schminktisch.\n\nKosmetik-Organizer · CHF 29.90\n\nProdukt und Angaben ansehen:\nhttps://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_fotowoche_20261102&utm_content=luxe_photo_kosmetik_organizer_20261101",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
+        ],
+        "mediaAltText": [
+          "Kosmetik-Organizer für den Schminktisch – Produktansicht mit dekorativen Flaschen"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "threadsData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        }
+      },
+      {
+        "id": 413266756,
+        "uuid": "5341229410228391640",
+        "publicationDate": {
+          "dateTime": "2026-11-03T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Elegante Damenuhr in Roségold mit Edelstahlgehäuse, Quarzuhrwerk und Stahlband, in vier Farbkombinationen, dazu eine Box zum Aufbewahren oder Verschenken. Gratis Versand ab CHF 50.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg"
+        ],
+        "mediaAltText": [
+          "Elegante Damenuhr in Roségold"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Elegante Damenuhr in Roségold · Geschenkidee für Sie",
+          "pinLink": "https://luxestyle.ch/products/elegante-damenuhr-in-rosegold-668544?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 413266778,
+        "uuid": "-4644708277417590463",
+        "publicationDate": {
+          "dateTime": "2026-11-04T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Leichter Laptop-Rucksack für Pendler: schlicht und einfarbig aus Polyester, mit USB-Schnittstelle (ohne Kabel), in 14 oder 17 Zoll. Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "mediaAltText": [
+          "Leichter Laptop-Rucksack für Pendler"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Leichter Laptop-Rucksack für Pendler · 14 und 17 Zoll",
+          "pinLink": "https://luxestyle.ch/products/leichter-laptop-rucksack-fur-pendler-616000?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 413266808,
+        "uuid": "7261714618004557392",
+        "publicationDate": {
+          "dateTime": "2026-11-05T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Grauer Plüsch Waschbär, 14 cm, empfohlen ab 3 Jahren und nicht für Kinder unter 36 Monaten geeignet. Ab Schweizer Lager, Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Waschbär"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+          "pinLink": "https://luxestyle.ch/products/plusch-waschbar-fga41332?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 413266908,
+        "uuid": "-3680497409192607202",
+        "publicationDate": {
+          "dateTime": "2026-11-06T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "JCB Mikrobagger 8010 CTS im Massstab 1:16: voll funktionsfähiger Baggerarm, Aufsatz schwenkt um 360°, beweglicher Räumschild. Für drinnen und draussen. Ab Schweizer Lager.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg"
+        ],
+        "mediaAltText": [
+          "JCB Mikrobagger 8010 CTS"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "JCB Mikrobagger 8010 CTS · Spielzeug für Kinder",
+          "pinLink": "https://luxestyle.ch/products/jcb-mikrobagger-8010-cts-fga062003?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 413266951,
+        "uuid": "-6271192589084504293",
+        "publicationDate": {
+          "dateTime": "2026-11-07T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "XXL Hoodie-Decke mit Taschen: übergrosser Kapuzenpullover für Frauen und Männer, in mehreren Längen und Farben. Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg"
+        ],
+        "mediaAltText": [
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "XXL Hoodie-Decke mit Taschen · Sofaabend-Geschenk",
+          "pinLink": "https://luxestyle.ch/products/xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 413266978,
+        "uuid": "5938318811609320266",
+        "publicationDate": {
+          "dateTime": "2026-11-08T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-01T21:46:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Geflochtenes Lederarmband mit Hufeisen-Schnalle aus Edelstahl, in Schwarz, Blau oder Braun, Länge 20 oder 22 cm. Gratis Versand ab CHF 50 nach Rabatt.",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg"
+        ],
+        "mediaAltText": [
+          "Geflochtenes Lederarmband mit Hufeisen-Schnalle"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "pinterestData": {
+          "boardId": "1111333714239531706",
+          "pinTitle": "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+          "pinLink": "https://luxestyle.ch/products/geflochtenes-lederarmband-mit-hufeisen-schnall-639500?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        }
+      },
+      {
+        "id": 414921719,
+        "uuid": "-6402384969971711358",
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T08:28:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln im Büro und noch eine Idee für ihn, der pendelt? 🎒\nSchlicht und einfarbig aus Polyester, mit USB-Schnittstelle (ohne Kabel) und in 14 oder 17 Zoll, jeweils in mehreren Farben.\n\nLeichter Laptop-Rucksack für Pendler · ab CHF 44.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#laptoprucksack #pendlerrucksack #wichtelgeschenk #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "mediaAltText": [
+          "Leichter Laptop-Rucksack für Pendler"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 414929392,
+        "uuid": "-2612931623723381280",
+        "publicationDate": {
+          "dateTime": "2026-11-07T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T08:40:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln steht an und du suchst etwas für einen gemütlichen Sofaabend? 🛋️\nÜbergrosser Kapuzenpullover mit Taschen, der dich warm einpackt wie eine Decke – für Frauen und Männer, in mehreren Längen und Farben.\n\nXXL Hoodie-Decke mit Taschen für Sie & Ihn · CHF 37.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#hoodiedecke #tvdecke #sofaabend #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "mediaAltText": [
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn",
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 414929635,
+        "uuid": "-8720943201794045273",
+        "publicationDate": {
+          "dateTime": "2026-11-09T12:15:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T08:40:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichteln steht an und das Geschenk für sie fehlt noch? 🎁\nMehrlagig geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl; Beschläge in Stahlfarbe, Schwarz oder Gold, Länge 20 oder 22 cm.\n\nGeflochtenes Lederarmband mit Hufeisen-Schnalle · ab CHF 21.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#lederarmband #hufeisenarmband #schmuck #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+        ],
+        "mediaAltText": [
+          "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+          "Geflochtenes Lederarmband mit Hufeisen-Schnalle"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "POST"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 414940645,
+        "uuid": "-4972715334292126303",
+        "publicationDate": {
+          "dateTime": "2026-11-04T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T08:57:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Die Wasserwellen-Lampe taucht den Raum in warmes, bewegtes Licht. 🌊✨ Ein ruhiger Akzent für dein Zuhause.\n\nFolge uns für neue Ideen. Link in Bio: luxestyle.ch\n\n#wasserwellenlampe #stimmungslicht #wohnideen #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15442206389654025783.mp4"
+        ],
+        "mediaAltText": [
+          "Wasserwellen-Lampe: warmes, bewegtes Licht für dein Zuhause"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "REEL",
+          "title": "Wasserwellen-Lampe"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": true
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Wasserwellen-Lampe",
+          "photoCoverIndex": 0,
+          "isAigc": true
+        }
+      },
+      {
+        "id": 414940691,
+        "uuid": "-7866054559336938189",
+        "publicationDate": {
+          "dateTime": "2026-11-06T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T08:57:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Funkelnd, leicht und zeitlos: das Tennisarmband mit Zirkon. ✨\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#tennisarmband #zirkon #schmuck #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4"
+        ],
+        "mediaAltText": [
+          "Tennisarmband mit Zirkon: funkelnd, leicht, zeitlos"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "REEL",
+          "title": "Tennisarmband mit Zirkon"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": true
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Tennisarmband mit Zirkon",
+          "photoCoverIndex": 0,
+          "isAigc": true
+        }
+      },
+      {
+        "id": 414940715,
+        "uuid": "1744402171830094170",
+        "publicationDate": {
+          "dateTime": "2026-11-08T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T08:57:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Acht Kristallspitzen in einer Holzbox. 💎 Natur pur, für dein Zuhause.\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#kristalle #kristallspitzen #naturpur #geschenkidee #schweiz #luxestyle",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "mediaAltText": [
+          "Kristallspitzen-Set: acht Steine in der Holzbox"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "REEL",
+          "title": "Kristallspitzen-Set"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": true
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Kristallspitzen-Set",
+          "photoCoverIndex": 0,
+          "isAigc": true
+        }
+      },
+      {
+        "id": 415033593,
+        "uuid": "-8611238648907481079",
+        "publicationDate": {
+          "dateTime": "2026-11-09T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T10:50:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4505158859945613837.jpeg"
+        ],
+        "mediaAltText": [
+          "LED-Wasser-Speaker mit farbwechselnden Wasserfontänen auf schwarzem Grund, Text: Musik, die man sehen kann"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "STORY"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 415035691,
+        "uuid": "37985340483322184",
+        "publicationDate": {
+          "dateTime": "2026-11-10T12:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T10:52:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3482646658187184216.jpeg"
+        ],
+        "mediaAltText": [
+          "Rote Rose unter Glashaube mit warmweissem LED-Licht, Text: Romantik im Glas"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "facebookData": {
+          "type": "STORY"
+        },
+        "instagramData": {
+          "autoPublish": true,
+          "type": "STORY",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        }
+      },
+      {
+        "id": 415553625,
+        "uuid": "-441851229276386553",
+        "publicationDate": {
+          "dateTime": "2026-11-04T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T18:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Eine Decke, die man anziehen kann 🛋️\n\nXXL Hoodie-Decke mit Taschen, für Frauen und Männer · CHF 37.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#hoodiedecke #sofaabend #geschenkidee #schweiz",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+        ],
+        "mediaAltText": [
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn",
+          "XXL Hoodie-Decke mit Taschen für Sie & Ihn"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      {
+        "id": 415553806,
+        "uuid": "1539281442427783156",
+        "publicationDate": {
+          "dateTime": "2026-11-05T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T18:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Wichtelgeschenk unter CHF 20? Dieser Panda wartet schon 🐼\n\nPlüsch Panda, 15 cm, empfohlen ab 3 Jahren · CHF 19.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#wichteln #pluschpanda #geschenkidee #schweiz",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-4389425201252858701.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Panda 15 cm",
+          "Plüsch Panda 15 cm"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      {
+        "id": 415554058,
+        "uuid": "3188192088876928648",
+        "publicationDate": {
+          "dateTime": "2026-11-06T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T18:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Eine Uhr in Roségold, fertig zum Verschenken 🎁\n\nElegante Damenuhr mit Box, vier Farbkombinationen · CHF 40.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#damenuhr #rosegold #geschenkidee #schweiz",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+        ],
+        "mediaAltText": [
+          "Elegante Damenuhr in Roségold",
+          "Elegante Damenuhr in Roségold"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Elegante Damenuhr in Roségold mit Box",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      {
+        "id": 415554216,
+        "uuid": "4203543208056408815",
+        "publicationDate": {
+          "dateTime": "2026-11-07T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T18:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Ein kleines Mitbringsel gesucht? Der Waschbär hilft 🧸\n\nPlüsch Waschbär, 14 cm · CHF 20.90 · empfohlen ab 3 Jahren, nicht für Kinder unter 36 Monaten geeignet\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#waschbär #kuscheltier #wichteln #schweiz",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+        ],
+        "mediaAltText": [
+          "Plüsch Waschbär",
+          "Plüsch Waschbär"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      {
+        "id": 415554461,
+        "uuid": "-9010345156192940856",
+        "publicationDate": {
+          "dateTime": "2026-11-08T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T18:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Ein Rucksack mit USB-Anschluss fürs Pendeln 🎒\n\nLeichter Laptop-Rucksack, 14 oder 17 Zoll, USB-Schnittstelle (ohne Kabel) · ab CHF 44.90 je nach Grösse\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#laptoprucksack #pendler #geschenkidee #schweiz",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+        ],
+        "mediaAltText": [
+          "Leichter Laptop-Rucksack für Pendler"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      },
+      {
+        "id": 415554806,
+        "uuid": "-7893674518673470896",
+        "publicationDate": {
+          "dateTime": "2026-11-09T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "creationDate": {
+          "dateTime": "2026-11-03T18:19:00",
+          "timezone": "Europe/Zurich"
+        },
+        "text": "Ein Bagger, dessen Aufsatz um 360° schwenkt 🏗️\n\nJCB Mikrobagger 8010 CTS, Massstab 1:16, ab 3 Jahren · CHF 26.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#mikrobagger #kinderspielzeug #spielzeug #schweiz",
+        "firstCommentText": "",
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-9117456290933473661.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-15287791281962608850.jpeg"
+        ],
+        "mediaAltText": [
+          "JCB Mikrobagger 8010 CTS",
+          "JCB Mikrobagger 8010 CTS"
+        ],
+        "autoPublish": true,
+        "draft": false,
+        "instagramData": {
+          "autoPublish": true,
+          "isAiGenerated": false
+        },
+        "tiktokData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        }
+      }
+    ]
+  },
+  "products": {
+    "schemaVersion": 1,
+    "checkedAtUTC": "2026-11-03T17:59:36.577655+00:00",
+    "canonicalMemoryRevisionRead": 67,
+    "identity": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "country": "Switzerland",
+      "timezone": "CET"
+    },
+    "scope": "Exactly two known products with one exact variant each; no search/pagination, cart, checkout, order or analytics calls.",
+    "products": [
+      {
+        "name": "projector",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "variantTitle": "Default Title",
+        "sku": "CJ-1477820492730732544",
+        "status": "ACTIVE",
+        "priceCHF": "34.90",
+        "tags": [
+          "auswahl-offen",
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "sort-nachtlichter",
+          "sort-nachttischlampen",
+          "tech"
+        ],
+        "nativeAvailableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryTracked": false,
+        "nativeQuantity": 0,
+        "publicVariantAvailable": true,
+        "requiresSellingPlan": false,
+        "publicPage": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089",
+        "publicPageHttp": 200,
+        "publicAjaxHttp": 200,
+        "nativeExactVariantMedia": {
+          "nodes": [],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          }
+        },
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "http": 200,
+          "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+          "bytes": 118008,
+          "localPath": "/workspace/luxestyle-review/website-master-20261103-r68/product-sales/IMAGE-15521256604033.jpg",
+          "source": "product-wide image only",
+          "actuallyViewed": true,
+          "sameHashAsR67": true,
+          "nativeVariantBindingConfirmed": false,
+          "publicVariantFeaturedImage": null,
+          "commercialRightsVerified": false
+        },
+        "tagGate": {
+          "name": "projector",
+          "productId": "gid://shopify/Product/15521256604033",
+          "tags": [
+            "auswahl-offen",
+            "beleuchtung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "sort-nachtlichter",
+            "sort-nachttischlampen",
+            "tech"
+          ],
+          "nativeMatchedTags": [],
+          "ownerRueckholTags": [],
+          "missingTags": false,
+          "state": "PASSED_TAG_CHECK_ONLY",
+          "publicationApproval": "unknown; tag eligibility only"
+        },
+        "quantityIsNotStockPromise": true,
+        "checkoutOrPurchaseAttempted": false,
+        "comparisonToR67": {
+          "variantId": {
+            "same": true,
+            "previous": "gid://shopify/ProductVariant/56197916361089",
+            "current": "gid://shopify/ProductVariant/56197916361089"
+          },
+          "sku": {
+            "same": true,
+            "previous": "CJ-1477820492730732544",
+            "current": "CJ-1477820492730732544"
+          },
+          "status": {
+            "same": true,
+            "previous": "ACTIVE",
+            "current": "ACTIVE"
+          },
+          "priceCHF": {
+            "same": true,
+            "previous": "34.90",
+            "current": "34.90"
+          },
+          "tags": {
+            "same": true,
+            "previous": [
+              "auswahl-offen",
+              "beleuchtung",
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "dropship",
+              "elektronik",
+              "gadget",
+              "sort-nachtlichter",
+              "sort-nachttischlampen",
+              "tech"
+            ],
+            "current": [
+              "auswahl-offen",
+              "beleuchtung",
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "dropship",
+              "elektronik",
+              "gadget",
+              "sort-nachtlichter",
+              "sort-nachttischlampen",
+              "tech"
+            ]
+          },
+          "nativeAvailableForSale": {
+            "same": true,
+            "previous": true,
+            "current": true
+          },
+          "inventoryPolicy": {
+            "same": true,
+            "previous": "CONTINUE",
+            "current": "CONTINUE"
+          },
+          "inventoryTracked": {
+            "same": true,
+            "previous": false,
+            "current": false
+          },
+          "nativeQuantity": {
+            "same": true,
+            "previous": 0,
+            "current": 0
+          },
+          "publicVariantAvailable": {
+            "same": true,
+            "previous": true,
+            "current": true
+          }
+        },
+        "productSpecificLimit": "auswahl-offen; default variant media empty with no further page and public featured_image null. Product-wide photo confirms no exact sold execution, motifs or film rights."
+      },
+      {
+        "name": "pyjama",
+        "productId": "gid://shopify/Product/15447971430785",
+        "variantId": "gid://shopify/ProductVariant/55873727627649",
+        "title": "Weihnachts-Pyjama im Partnerlook",
+        "variantTitle": "Weiss · Papa S",
+        "sku": "CJ-CJYD193098501AZ",
+        "status": "ACTIVE",
+        "priceCHF": "16.90",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "kat-nachtwaesche",
+          "mode",
+          "rueckhol-0907",
+          "sort-partnerlook-paare",
+          "such-weihnachtspyjama",
+          "weihnachten"
+        ],
+        "nativeAvailableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryTracked": false,
+        "nativeQuantity": 0,
+        "publicVariantAvailable": true,
+        "requiresSellingPlan": false,
+        "publicPage": "https://luxestyle.ch/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649",
+        "publicPageHttp": 200,
+        "publicAjaxHttp": 200,
+        "nativeExactVariantMedia": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/70602918920577",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072"
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjo3MDYwMjkxODkyMDU3NywibGFzdF92YWx1ZSI6NzA2MDI5MTg5MjA1Nzd9"
+          }
+        },
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072",
+          "http": 200,
+          "sha256": "14c67e8f74b8ccb6711a4278380300bef211f88aba5db4fb94b8814b0a2ef00c",
+          "bytes": 447286,
+          "localPath": "/workspace/luxestyle-review/website-master-20261103-r68/product-sales/IMAGE-15447971430785.jpg",
+          "source": "exact variant media",
+          "actuallyViewed": true,
+          "sameHashAsR67": true,
+          "nativeVariantBindingConfirmed": true,
+          "publicVariantFeaturedImage": {
+            "id": 83382167634305,
+            "product_id": 15447971430785,
+            "position": 9,
+            "created_at": "2026-08-20T07:01:09+02:00",
+            "updated_at": "2026-08-20T07:01:12+02:00",
+            "alt": "Weihnachts-Pyjama im Partnerlook – Bild 1 | LuxeStyle",
+            "width": 1200,
+            "height": 1200,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ffde3985-e13a-4c47-b981-c339f7b6dcfa.jpg?v=1787202072",
+            "variant_ids": [
+              55873727627649,
+              55873727660417,
+              55873727693185,
+              55873727725953,
+              55873727758721,
+              55873727791489,
+              55873727824257,
+              55873727857025,
+              55873727889793,
+              55873727922561,
+              55873727955329,
+              55873727988097
+            ]
+          },
+          "commercialRightsVerified": false
+        },
+        "tagGate": {
+          "name": "pyjama",
+          "productId": "gid://shopify/Product/15447971430785",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "damen",
+            "dropship",
+            "kat-nachtwaesche",
+            "mode",
+            "rueckhol-0907",
+            "sort-partnerlook-paare",
+            "such-weihnachtspyjama",
+            "weihnachten"
+          ],
+          "nativeMatchedTags": [],
+          "ownerRueckholTags": [
+            "rueckhol-0907"
+          ],
+          "missingTags": false,
+          "state": "BLOCKED",
+          "publicationApproval": "unknown; tag eligibility only"
+        },
+        "quantityIsNotStockPromise": true,
+        "checkoutOrPurchaseAttempted": false,
+        "comparisonToR67": {
+          "variantId": {
+            "same": true,
+            "previous": "gid://shopify/ProductVariant/55873727627649",
+            "current": "gid://shopify/ProductVariant/55873727627649"
+          },
+          "sku": {
+            "same": true,
+            "previous": "CJ-CJYD193098501AZ",
+            "current": "CJ-CJYD193098501AZ"
+          },
+          "status": {
+            "same": true,
+            "previous": "ACTIVE",
+            "current": "ACTIVE"
+          },
+          "priceCHF": {
+            "same": true,
+            "previous": "16.90",
+            "current": "16.90"
+          },
+          "tags": {
+            "same": true,
+            "previous": [
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "damen",
+              "dropship",
+              "kat-nachtwaesche",
+              "mode",
+              "rueckhol-0907",
+              "sort-partnerlook-paare",
+              "such-weihnachtspyjama",
+              "weihnachten"
+            ],
+            "current": [
+              "bild-ok",
+              "bildmass-ok-0906",
+              "cj-real",
+              "damen",
+              "dropship",
+              "kat-nachtwaesche",
+              "mode",
+              "rueckhol-0907",
+              "sort-partnerlook-paare",
+              "such-weihnachtspyjama",
+              "weihnachten"
+            ]
+          },
+          "nativeAvailableForSale": {
+            "same": true,
+            "previous": true,
+            "current": true
+          },
+          "inventoryPolicy": {
+            "same": true,
+            "previous": "CONTINUE",
+            "current": "CONTINUE"
+          },
+          "inventoryTracked": {
+            "same": true,
+            "previous": false,
+            "current": false
+          },
+          "nativeQuantity": {
+            "same": true,
+            "previous": 0,
+            "current": 0
+          },
+          "publicVariantAvailable": {
+            "same": true,
+            "previous": true,
+            "current": true
+          }
+        },
+        "productSpecificLimit": "Only Weiss · Papa S checked; every rueckhol blocks new social under owner rule. No family-set price, stock, delivery, material or measurement promise."
+      }
+    ],
+    "tagGates": {
+      "guard": {
+        "path": "automation/lib/kanal_sperren.mjs",
+        "ref": "main",
+        "gitBlobSha": "3adab7369f90945769331910525c08b3778b4371",
+        "fetchedAtUTC": "2026-11-03T17:57:54.182Z",
+        "ownerExtraRules": [
+          "every rueckhol blocks new social",
+          "missing or empty tags block new social"
+        ],
+        "blobVerified": true,
+        "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321",
+        "pattern": "/nicht-(?:[a-z]+-)?bewerben|google-policy-flag|nicht-live|18plus|adult|gmc-adult|compliance-pruefen|verdeckte-ueberwachung|medizinprodukt|social-pause|raucher-rueckhol|-raus-|geprueft-gesperrt|marge-verlust|verlust-auto|us-netzteil|nicht-versendbar/i"
+      },
+      "products": [
+        {
+          "name": "projector",
+          "productId": "gid://shopify/Product/15521256604033",
+          "tags": [
+            "auswahl-offen",
+            "beleuchtung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "elektronik",
+            "gadget",
+            "sort-nachtlichter",
+            "sort-nachttischlampen",
+            "tech"
+          ],
+          "nativeMatchedTags": [],
+          "ownerRueckholTags": [],
+          "missingTags": false,
+          "state": "PASSED_TAG_CHECK_ONLY",
+          "publicationApproval": "unknown; tag eligibility only"
+        },
+        {
+          "name": "pyjama",
+          "productId": "gid://shopify/Product/15447971430785",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "damen",
+            "dropship",
+            "kat-nachtwaesche",
+            "mode",
+            "rueckhol-0907",
+            "sort-partnerlook-paare",
+            "such-weihnachtspyjama",
+            "weihnachten"
+          ],
+          "nativeMatchedTags": [],
+          "ownerRueckholTags": [
+            "rueckhol-0907"
+          ],
+          "missingTags": false,
+          "state": "BLOCKED",
+          "publicationApproval": "unknown; tag eligibility only"
+        }
+      ],
+      "ownWrites": 0
+    },
+    "validation": "Nine fresh schema reads and supplementary official docs search before one query. MCP preflight explicitly skipped; actual native query succeeded. No full CLI validation claim.",
+    "counts": {
+      "shopIdentityReads": 1,
+      "builtinProductReads": 2,
+      "schemaCalls": 9,
+      "nativeQueryCalls": 1,
+      "publicAjaxReads": 2,
+      "publicPageReads": 2,
+      "imageDownloads": 2,
+      "imagesViewed": 2,
+      "writes": 0,
+      "metricOrFlowReports": 0
+    },
+    "comparisonSummary": "All ten selected status/price/tags/availability/inventory/identity fields unchanged versus R67 for both variants; both images hash-identical."
+  },
+  "klaviyo": {
+    "schemaVersion": 1,
+    "checkedAtUTC": "2026-11-03T17:59:36.577655+00:00",
+    "account": {
+      "type": "account",
+      "id": "XWqMAD",
+      "attributes": {
+        "contact_information": {
+          "organization_name": "LuxeStyle CH",
+          "website_url": "https://luxestyle.ch"
+        },
+        "preferred_currency": "USD",
+        "timezone": "Europe/Zurich"
+      },
+      "links": {
+        "self": "https://a.klaviyo.com/api/accounts/XWqMAD/"
+      }
+    },
+    "flows": [
+      {
+        "id": "Vse76a",
+        "attributes": {
+          "name": "Abandoned Checkout",
+          "status": "draft",
+          "created": "2026-05-18T06:40:56+00:00",
+          "updated": "2026-10-10T08:13:07+00:00",
+          "trigger_type": "Metric"
+        }
+      },
+      {
+        "id": "VbLQj6",
+        "attributes": {
+          "name": "Welcome Series",
+          "status": "draft",
+          "created": "2026-06-01T19:15:25+00:00",
+          "updated": "2026-11-02T22:55:34+00:00",
+          "trigger_type": "Added to List"
+        }
+      },
+      {
+        "id": "RnTvsY",
+        "attributes": {
+          "name": "Post-Purchase · Order + Review",
+          "status": "draft",
+          "created": "2026-05-26T09:58:07+00:00",
+          "updated": "2026-11-02T22:55:37+00:00",
+          "trigger_type": "Metric"
+        }
+      }
+    ],
+    "reusedDailyReport": {
+      "dateZurich": "2026-11-03",
+      "range": "2026-10-27/2026-11-02",
+      "placedOrderMetricId": "W7XTVD",
+      "source": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+      "newMetricDiscoveryCalls": 0,
+      "newFlowReportCalls": 0,
+      "reportIsEarlierSameDayEvidence": true
+    },
+    "singleSalesProposal": {
+      "taskId": "checkout-email3-quality-20261103",
+      "flowId": "Vse76a",
+      "actionId": "108024959",
+      "messageId": "WNFHjV",
+      "templateId": "WaQaDv",
+      "subjectCurrent": "Email #3 Subject",
+      "subjectProposed": "Möchtest du deine Bestellung fortsetzen?",
+      "h1Proposed": "Dein Einkauf bei LuxeStyle",
+      "scope": "Same previously prepared R64 subject and three HTML line changes (15,18,19), neutralising unsupported scarcity and time/discount urgency; existing coupon token/CTA/other lines/status unchanged. Not applied.",
+      "templateHtmlSha256": "93ad1f614f1e55dcc7ba816e8eda87c562d9fca6894045248f9ad492d6f469bb",
+      "templateHtmlExactSameAsR67": true,
+      "messageDefinitionExactSameAsR67": true,
+      "templateIdExactSameAsR67": true,
+      "draftSource": "dropship/codex-handoff-20261018/CHECKOUT-EMAIL3-FREIGABE-20261103-R64.json",
+      "diffSource": "dropship/codex-handoff-20261018/CHECKOUT-EMAIL3-KORREKTUR-20261103-R64.diff",
+      "newCopyEdits": 0,
+      "applicationAllowedNow": false,
+      "sendPermission": false
+    },
+    "limits": [
+      "Shop CHF and Klaviyo USD remain separate.",
+      "Flow statuses are definitions, not evidence of performance, capture functioning or missing order sync.",
+      "No current capture end-to-end or individual order sync check; no new metrics, broad sales reports or purchase watch.",
+      "Actor/cause of earlier flow status changes unknown.",
+      "No test send, customer contact, template or flow mutation."
+    ],
+    "counts": {
+      "accountReads": 1,
+      "flowDefinitionReads": 3,
+      "messageReads": 1,
+      "templateReads": 1,
+      "metricDiscoveryCalls": 0,
+      "flowReportCalls": 0,
+      "writes": 0
+    }
+  },
+  "dailyReports": {
+    "reusedFrom": "LAUFBELEGE-20261103-R64.json",
+    "window": "2026-10-27/2026-11-02 Europe/Zurich",
+    "newCalls": 0,
+    "dataGaps": "unknown_not_zero",
+    "purchaseWatch": "ended_no_queries"
+  },
+  "ownActions": {
+    "paidCalls": 0,
+    "renders": 0,
+    "socialWrites": 0,
+    "shopWrites": 0,
+    "flowWrites": 0,
+    "deployments": 0,
+    "workflowDispatches": 0,
+    "customerMessages": 0,
+    "newMasterMp4": false,
+    "skills": "local_text_only"
+  },
+  "privacy": "Private original Metricool settings/posts remain local *.private.json; shared source contains selected public brand/post identifiers and no account login values.",
+  "localFiles": [
+    {
+      "name": "HAUPTVIDEO-BRIEFING-20261103-R68.md",
+      "sha256": "ebf36384ef0de2239b54ed80658ba7cd9268674964ce4c2d14a0cc4a29003219",
+      "bytes": 7522
+    },
+    {
+      "name": "HAUPTVIDEO-STORYBOARD-20261103-R68.json",
+      "sha256": "a469099291b12eeec1adc456b79e41aa3166fdcf7b2fa7afc906ca054f47e9d5",
+      "bytes": 7422
+    },
+    {
+      "name": "HAUPTVIDEO-ANSICHT-20261103-R68.html",
+      "sha256": "d77dcdf06e3aadaca7847dc46e17382755a0a82bffaf6f93e47c54d3d8336851",
+      "bytes": 17747
+    },
+    {
+      "name": "VIDEO-SKILLS-20261103-R68.json",
+      "sha256": "94af16c1cec32a5f39fd7871c86ea5236478e10640822248a63fd4dd61d21415",
+      "bytes": 51441
+    },
+    {
+      "name": "LUXESTYLE-VIDEO-QUALITY-SKILL-20261103-R68.md",
+      "sha256": "9b44365102c4374a5881ea6a3815ffdc5e8da47d62ffd5da9109a82fa93d608c",
+      "bytes": 10132
+    }
+  ]
+}
