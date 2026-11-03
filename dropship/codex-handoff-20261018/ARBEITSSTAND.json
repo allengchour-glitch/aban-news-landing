@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 73,
-  "updatedAt": "2026-11-03T23:27:31.048780+00:00",
+  "revision": 74,
+  "updatedAt": "2026-11-03T23:41:40.385568+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2742,13 +2742,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r72_stoeber_layout_nativ_im_entwurf_geprueft_github_patch_nicht_live",
+      "state": "r74_vier_neue_kategorieillustrationen_geprueft_github_nicht_eingebunden",
       "title": "Mobile Website im Stil der App weiterentwickelt",
-      "lastEvidenceDate": "2026-11-03",
-      "belegArt": "R72_ZWEI_DATEIEN_PATCH_NATIVE_READBACK_BROWSER_QA_GITHUB_HANDOFF",
-      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R45 auf neuen Screenshot-Auftrag: Drei dekorative Geschenkverpackungs-Bilder für UnterCHF25/UnterCHF50/Geschenkideen erstellt, ShopifyREADY/CDN200/pixelgleich. Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css im bestehendenEntwurf aktualisiert und exakt nativ zurückgelesen. Mobil86%-Wischkarten mit nächstemRand, Desktop3Spalten, weisseHTMLTexte über dunklemVerlauf; keinAutoplay/JS-/LocaleWrite. BestehendeZiele undPreisfilter24.99/49.99 exakt erhalten. Drei TAG-basierteCollections begrenzt geprüft; unfiltrierte25er20Stichprobe enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung/Regeländerung. ValidatorVALIDmiteinemaltenCDN-Hinweis. 20nativeBedingungen auf360/390/1440px mit echtemTouch/Tab/Pfeilen bestanden; Screenshotnach UI-AuswahlNurNotwendige angesehen, keineHTMLOverrides. VorläufigeProgrammfokusprobe scrollteanders, tatsächlicheTabfolge vollständigsichtbar; keinbehobenerProduktfehler behauptet. GET/HEAD-Guard83blockierteRequests/8Fetchfehler, keineCheckout-/Trackingabnahme. MAINunverändert, EntwurfUNPUBLISHED, keineVeröffentlichung. R44Collage/Banner/52Referenzen undweiterebestehendeÄnderungen erhalten. R46: Auf Wunsch Beauty/Pflege und Sport durch zwei neue illustrative Motive ersetzt: ruhige Pflegeszene und Trainingsmotiv, ohne Werbeschrift oder Logos. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich. Nur Section und Directory-Snippet im bestehenden Entwurf212978598279 geändert und exakt nativ bestätigt. Dieselben zwei Bilder erscheinen in Entdecken-Karten, Mini-Kacheln und Kategorieübersicht. 41 begrenzte native Bild-/Link-/Layoutbedingungen auf390/1440px bestanden und Screenshots angesehen. GET/HEAD-Guard110 blockierteRequests/13Fetchfehler; keineCheckout-/Trackingabnahme. Kein globalerCollection-Bild-/Produkt-/CSS-/JS-/Locale-Write. R45Budgetkarussell/Preisfilter, R44Collage/Banner/52Referenzen undandereLinks erhalten. EntwurfUNPUBLISHED, MAINunverändert, keinPublish. Claude-Einstieg aufR46 aktualisiert, tatsächlicherEmpfang unbekannt. R47: Auf Wunsch Winterideen ansehen und die darunterliegende Weihnachtsideen entdecken mit zwei neuen illustrativen Winter-/Weihnachtsszenen versehen. Zwei Shopify-Bilddateien READY/CDN200/pixelgleich. Nur Section und CSS im selben Entwurf212978598279 geändert und vollständig exakt nativ zurückgelesen. Mobil zwei Bildkarten untereinander, Desktop neben Titel, bisherige Labels/Locale-Schlüssel/Links erhalten.26begrenzte native Bedingungen auf360/390/1024/1440px bestanden, Mobil-/Desktopbilder visuell geprüft. GET/HEAD-Guard70blockierteRequests/8Fetchfehler; keineCheckout-/Tracking-/Vollthemeabnahme. Validator VALID mit bestehendemCDN-Hinweis/CSS SUCCESS; SchemaCache und fehlendeFixture-settings_schema.json dokumentiert. R46Beauty/Sport/Directory, R45Budgetkarussell/Bilder/Preisfilter undR44Änderungen erhalten. KeinJS-/Locale-/globalerCollection-/Produktwrite, EntwurfUNPUBLISHED/MAINunverändert, keinPublish. Claude-Einstieg aufR47, tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R51: Nach live verknüpfter Technik-Unterstruktur ist auf Mittel- und Blattseiten im tatsächlichen MAIN213013037447 ein mobiler16px-Seitenüberlauf belegt; öffentliche Unterseitenprüfung28/30 bestanden, zwei Fehler bleiben live. Nur eine CSS-Regel für lx-uf wurde im alten UNPUBLISHED-Entwurf212978598279 korrigiert, native Datei templates/collection.json exakt bestätigt (MD5c7020b391b776427a1346a91540c646f).36/36 begrenzte echte Vorschauprüfungen auf390/1440px bestanden, keine DOM-/CSS-Overrides. MAIN-Datei unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84, kein eigener MAIN-Write oder Publish. Die einzelne Regel ist gegen frischen MAIN als enger Patch vorbereitet; keine vollständige alte Kopie über den neuen MAIN veröffentlichen. Aktuelle Schrift-/Banner-/Reviewänderungen erhalten. Technischer Connectorvertrag blockiert MAIN-Dateiwrites/Publish, keine fehlende Inhaberfreigabe behaupten oder nochmals fragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben. R67, 03.11.2026, bestehender Nachmittagslauf: Öffentliche Handy-&-Laden-/Powerbanks-Seiten in DE/FR bei 390/1440px mit aktuellem MAIN213013037447 rein lesend geprüft. Initial 7/8 Ansichten bestanden, eine FR-Desktop-Wartezeit unbekannt; genau diese Ansicht separat vollständig gegengeprüft und 13 Bedingungen bestanden. Initialen Timeout unverändert erhalten. Damit acht angeforderte Ansichten funktional begrenzt abgedeckt, neun Navigationen. Dokumentbreite entspricht Viewport, scrollX0 auch nach Fokus/Tab über neun Unterkategorielinks. Keine anderen Zielseiten, Personalisierer-, Checkout-, Integrations- oder gesamte Websiteabnahme behauptet. Kein neuer nativer Dateihash, Quellhash stammt R64. Kein CSS-Diff, alter R53-Patch nicht erneut angewandt, kein Theme-Write oder eigenerPublish; Ranking/Indexierung/Kaufwirkung unbekannt. R68 neuer expliziter Auftrag Hauptvideo, Inhaberzweck bestätigt: LuxeStyle als Marke zeigen. Aktuelle Homepage390/1440HTTP200/MAIN213013037447 mit Hero-Rahmen730.95×640 bzw358×472 und Reduced-motion-Poster frisch geprüft. Aktuelle tatsächliche Hero-MP4 nur518×720/24fps20s/Fotowand; alter Brandclip26.4s mit alten Rabatt-/Sommerclaims ungeeignet. Ein20s/600Frames/4Take-Markenfilm samt schematischem HTML-Storyboard vorbereitet; keine MP4/Themeänderung. Drei Skills projektlokal als Text eingerichtet, keine Runtime/Hook/Auto-Claude-Ausführung behauptet. Originaltake-/Produkt-/Rechtebindung fehlt; bestehende Websitefreigaben und ältere Aufgaben erhalten. R69 auf ausdrückliche Korrektur «keine orginalmatrial nur webseite mit allem drin wo du hast nur geschnitten und berbeitet»: vorhandene aktuelle Website-Bilder für diesen Markenfilm schneiden/gestalten. 24 Quellen mit URL/Hash gesammelt, ausgewählte saubere Bilder zu einer sechs Szenen umfassenden Markenmontage verarbeitet. Zwei tatsächliche stumme H.264-MP4s desselben 20s/600Frames/30fps-Masters gerendert: Desktop1280×1120 und Mobil810×1080. Mobile Unterzeilen vergrössert; alte Sommer-/Zähler-/Fremdmarkenbanner ausgeschlossen. Vollständig dekodiert und in Chromium bei1440/390px abgespielt, pausiert und gesucht; visuelle Stichproben aus echten MP4s geprüft. Originaldrehs sind für diese ausdrücklich gewünschte Website-Montage kein Blocker mehr. Keine Websiteeinbindung, Socialveröffentlichung oder kreative Inhaberabnahme; Social-Projektor-Master unverändert. R70 auf Frage nach leer wirkender Website: aktuelle Startseite in zwei nativen Ansichten1440/390px plus Firecrawl und CSS geprüft. 25 Produktkarten/13 Abschnitte vorhanden, erste Produktkarte aber erst2705/2708px. 16Kategorie-Kacheln und grosser Selbstgestaltenblock liegen davor. Konkrete Reihenfolge mit sechs primären Einstiegen, früheren bestehenden Produkten, saisonalen Karten und gezielter Abstandsreduktion vorbereitet. Ratingfelder sind bereits display:none; keine falsche Bewertungsplatz-Korrektur. R69-Film weiterhin nicht eingebunden; künftige Einbindung darf keine doppelte Typografie erzeugen. Kein Websitewrite oder neuer Report. R71 aktuelle Inhaberpräzisierung: Startseite für Menschen, die von allem etwas durchstöbern wollen. R70-Vorschlag auf breite sichtbare Auswahl angepasst: alle16Kategorieeinstiege kompakt erreichbar, frühe gemischte Produktreihe, kurze wechselnde Themen mit Mehr-entdecken-Links. Sechs-Kategorien-Begrenzung als Vorschlag überholt; keine Kategorie entfernen. Keine neue Seiten-/Kennzahlabfrage oder Websiteumsetzung; R70-Messwerte nur datiert übernommen. R72 auf «push»: Zwei-Dateien-Patch aus frisch MD5-geprüften MAIN-Dateien erstellt, im bestehenden UNPUBLISHED-Theme 212978598279 gespeichert und exakt zurückgelesen. Alle 16 Kategorien, 25 Produktkarten und 25 Herzen erhalten; frühe gemischte Produktreihe, Saison höher, Selbstgestalten später. Mobile erste Produktkarte 1594.56 statt 2708.48 px. Native 320/390/1440-Prüfung, 320-Wortumbruch gezielt korrigiert, zwölf Schlussbedingungen inklusive Touch/Tastatur erfüllt; zwei unklare ursprüngliche Synthese-Gesten protokolliert. MAIN-Dateien abschliessend unverändert, kein Publish. Konkreter Patch/Hashes/QA und aktualisierter scoped Claude-Einstieg für Übernahme; tatsächlicher Empfang unbekannt.",
+      "lastEvidenceDate": "2026-11-04",
+      "belegArt": "R74_TATSAECHLICHE_PNGS_VISUELL_GEPRUEFT_REFERENZEN_HASHGLEICH_GITHUB_READBACK",
+      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R45 auf neuen Screenshot-Auftrag: Drei dekorative Geschenkverpackungs-Bilder für UnterCHF25/UnterCHF50/Geschenkideen erstellt, ShopifyREADY/CDN200/pixelgleich. Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css im bestehendenEntwurf aktualisiert und exakt nativ zurückgelesen. Mobil86%-Wischkarten mit nächstemRand, Desktop3Spalten, weisseHTMLTexte über dunklemVerlauf; keinAutoplay/JS-/LocaleWrite. BestehendeZiele undPreisfilter24.99/49.99 exakt erhalten. Drei TAG-basierteCollections begrenzt geprüft; unfiltrierte25er20Stichprobe enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung/Regeländerung. ValidatorVALIDmiteinemaltenCDN-Hinweis. 20nativeBedingungen auf360/390/1440px mit echtemTouch/Tab/Pfeilen bestanden; Screenshotnach UI-AuswahlNurNotwendige angesehen, keineHTMLOverrides. VorläufigeProgrammfokusprobe scrollteanders, tatsächlicheTabfolge vollständigsichtbar; keinbehobenerProduktfehler behauptet. GET/HEAD-Guard83blockierteRequests/8Fetchfehler, keineCheckout-/Trackingabnahme. MAINunverändert, EntwurfUNPUBLISHED, keineVeröffentlichung. R44Collage/Banner/52Referenzen undweiterebestehendeÄnderungen erhalten. R46: Auf Wunsch Beauty/Pflege und Sport durch zwei neue illustrative Motive ersetzt: ruhige Pflegeszene und Trainingsmotiv, ohne Werbeschrift oder Logos. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich. Nur Section und Directory-Snippet im bestehenden Entwurf212978598279 geändert und exakt nativ bestätigt. Dieselben zwei Bilder erscheinen in Entdecken-Karten, Mini-Kacheln und Kategorieübersicht. 41 begrenzte native Bild-/Link-/Layoutbedingungen auf390/1440px bestanden und Screenshots angesehen. GET/HEAD-Guard110 blockierteRequests/13Fetchfehler; keineCheckout-/Trackingabnahme. Kein globalerCollection-Bild-/Produkt-/CSS-/JS-/Locale-Write. R45Budgetkarussell/Preisfilter, R44Collage/Banner/52Referenzen undandereLinks erhalten. EntwurfUNPUBLISHED, MAINunverändert, keinPublish. Claude-Einstieg aufR46 aktualisiert, tatsächlicherEmpfang unbekannt. R47: Auf Wunsch Winterideen ansehen und die darunterliegende Weihnachtsideen entdecken mit zwei neuen illustrativen Winter-/Weihnachtsszenen versehen. Zwei Shopify-Bilddateien READY/CDN200/pixelgleich. Nur Section und CSS im selben Entwurf212978598279 geändert und vollständig exakt nativ zurückgelesen. Mobil zwei Bildkarten untereinander, Desktop neben Titel, bisherige Labels/Locale-Schlüssel/Links erhalten.26begrenzte native Bedingungen auf360/390/1024/1440px bestanden, Mobil-/Desktopbilder visuell geprüft. GET/HEAD-Guard70blockierteRequests/8Fetchfehler; keineCheckout-/Tracking-/Vollthemeabnahme. Validator VALID mit bestehendemCDN-Hinweis/CSS SUCCESS; SchemaCache und fehlendeFixture-settings_schema.json dokumentiert. R46Beauty/Sport/Directory, R45Budgetkarussell/Bilder/Preisfilter undR44Änderungen erhalten. KeinJS-/Locale-/globalerCollection-/Produktwrite, EntwurfUNPUBLISHED/MAINunverändert, keinPublish. Claude-Einstieg aufR47, tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R51: Nach live verknüpfter Technik-Unterstruktur ist auf Mittel- und Blattseiten im tatsächlichen MAIN213013037447 ein mobiler16px-Seitenüberlauf belegt; öffentliche Unterseitenprüfung28/30 bestanden, zwei Fehler bleiben live. Nur eine CSS-Regel für lx-uf wurde im alten UNPUBLISHED-Entwurf212978598279 korrigiert, native Datei templates/collection.json exakt bestätigt (MD5c7020b391b776427a1346a91540c646f).36/36 begrenzte echte Vorschauprüfungen auf390/1440px bestanden, keine DOM-/CSS-Overrides. MAIN-Datei unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84, kein eigener MAIN-Write oder Publish. Die einzelne Regel ist gegen frischen MAIN als enger Patch vorbereitet; keine vollständige alte Kopie über den neuen MAIN veröffentlichen. Aktuelle Schrift-/Banner-/Reviewänderungen erhalten. Technischer Connectorvertrag blockiert MAIN-Dateiwrites/Publish, keine fehlende Inhaberfreigabe behaupten oder nochmals fragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben. R67, 03.11.2026, bestehender Nachmittagslauf: Öffentliche Handy-&-Laden-/Powerbanks-Seiten in DE/FR bei 390/1440px mit aktuellem MAIN213013037447 rein lesend geprüft. Initial 7/8 Ansichten bestanden, eine FR-Desktop-Wartezeit unbekannt; genau diese Ansicht separat vollständig gegengeprüft und 13 Bedingungen bestanden. Initialen Timeout unverändert erhalten. Damit acht angeforderte Ansichten funktional begrenzt abgedeckt, neun Navigationen. Dokumentbreite entspricht Viewport, scrollX0 auch nach Fokus/Tab über neun Unterkategorielinks. Keine anderen Zielseiten, Personalisierer-, Checkout-, Integrations- oder gesamte Websiteabnahme behauptet. Kein neuer nativer Dateihash, Quellhash stammt R64. Kein CSS-Diff, alter R53-Patch nicht erneut angewandt, kein Theme-Write oder eigenerPublish; Ranking/Indexierung/Kaufwirkung unbekannt. R68 neuer expliziter Auftrag Hauptvideo, Inhaberzweck bestätigt: LuxeStyle als Marke zeigen. Aktuelle Homepage390/1440HTTP200/MAIN213013037447 mit Hero-Rahmen730.95×640 bzw358×472 und Reduced-motion-Poster frisch geprüft. Aktuelle tatsächliche Hero-MP4 nur518×720/24fps20s/Fotowand; alter Brandclip26.4s mit alten Rabatt-/Sommerclaims ungeeignet. Ein20s/600Frames/4Take-Markenfilm samt schematischem HTML-Storyboard vorbereitet; keine MP4/Themeänderung. Drei Skills projektlokal als Text eingerichtet, keine Runtime/Hook/Auto-Claude-Ausführung behauptet. Originaltake-/Produkt-/Rechtebindung fehlt; bestehende Websitefreigaben und ältere Aufgaben erhalten. R69 auf ausdrückliche Korrektur «keine orginalmatrial nur webseite mit allem drin wo du hast nur geschnitten und berbeitet»: vorhandene aktuelle Website-Bilder für diesen Markenfilm schneiden/gestalten. 24 Quellen mit URL/Hash gesammelt, ausgewählte saubere Bilder zu einer sechs Szenen umfassenden Markenmontage verarbeitet. Zwei tatsächliche stumme H.264-MP4s desselben 20s/600Frames/30fps-Masters gerendert: Desktop1280×1120 und Mobil810×1080. Mobile Unterzeilen vergrössert; alte Sommer-/Zähler-/Fremdmarkenbanner ausgeschlossen. Vollständig dekodiert und in Chromium bei1440/390px abgespielt, pausiert und gesucht; visuelle Stichproben aus echten MP4s geprüft. Originaldrehs sind für diese ausdrücklich gewünschte Website-Montage kein Blocker mehr. Keine Websiteeinbindung, Socialveröffentlichung oder kreative Inhaberabnahme; Social-Projektor-Master unverändert. R70 auf Frage nach leer wirkender Website: aktuelle Startseite in zwei nativen Ansichten1440/390px plus Firecrawl und CSS geprüft. 25 Produktkarten/13 Abschnitte vorhanden, erste Produktkarte aber erst2705/2708px. 16Kategorie-Kacheln und grosser Selbstgestaltenblock liegen davor. Konkrete Reihenfolge mit sechs primären Einstiegen, früheren bestehenden Produkten, saisonalen Karten und gezielter Abstandsreduktion vorbereitet. Ratingfelder sind bereits display:none; keine falsche Bewertungsplatz-Korrektur. R69-Film weiterhin nicht eingebunden; künftige Einbindung darf keine doppelte Typografie erzeugen. Kein Websitewrite oder neuer Report. R71 aktuelle Inhaberpräzisierung: Startseite für Menschen, die von allem etwas durchstöbern wollen. R70-Vorschlag auf breite sichtbare Auswahl angepasst: alle16Kategorieeinstiege kompakt erreichbar, frühe gemischte Produktreihe, kurze wechselnde Themen mit Mehr-entdecken-Links. Sechs-Kategorien-Begrenzung als Vorschlag überholt; keine Kategorie entfernen. Keine neue Seiten-/Kennzahlabfrage oder Websiteumsetzung; R70-Messwerte nur datiert übernommen. R72 auf «push»: Zwei-Dateien-Patch aus frisch MD5-geprüften MAIN-Dateien erstellt, im bestehenden UNPUBLISHED-Theme 212978598279 gespeichert und exakt zurückgelesen. Alle 16 Kategorien, 25 Produktkarten und 25 Herzen erhalten; frühe gemischte Produktreihe, Saison höher, Selbstgestalten später. Mobile erste Produktkarte 1594.56 statt 2708.48 px. Native 320/390/1440-Prüfung, 320-Wortumbruch gezielt korrigiert, zwölf Schlussbedingungen inklusive Touch/Tastatur erfüllt; zwei unklare ursprüngliche Synthese-Gesten protokolliert. MAIN-Dateien abschliessend unverändert, kein Publish. Konkreter Patch/Hashes/QA und aktualisierter scoped Claude-Einstieg für Übernahme; tatsächlicher Empfang unbekannt. R74: Auf zusätzlichen Bildwunsch vier unterschiedliche Kategorieillustrationen für Wohnen, Schmuck, Beauty und Taschen tatsächlich generiert, je1536×1024. Bildprüfung und unabhängige Zweitsicht; Taschen-V1 mit freiem Riemenende verworfen, V2 korrigiert und geprüft. Vier finale PNGs plus Quelle-/Hash-/Cropmanifest und Paket inGitHub mit exaktem Rücklesen gesichert. Beauty-/Taschen-Referenzdateien frischHTTP200 und SHA256-gleich; keine genaueSKU-/Material-/Fremdrechtebehauptung. BestehendesBanner, R72/R73-Theme-Dateien und globaleCollection-/Produktbilder unverändert. KeinShopifyUpload, ThemeWrite oderPublish. Shop/Metricool-Identitäten frisch passend; keineReports oderKauf-Watch. Claude-Empfang unbekannt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
-      "nextAllowedStep": "Den konkreten R72-Zwei-Dateien-Patch aus dem Transfermanifest auf frischer MAIN-Basis übernehmen, nur bei passenden Ausgangshashes. Bei neueren Änderungen eng rebasieren. Nicht den gesamten älteren Entwurf veröffentlichen, keine Connector-/MAIN-Schutzmechanismen umgehen. Bestehende Websitefreigabe ist vorhanden. Nach unterstützter Veröffentlichung beide Dateien und öffentliche Seite frisch verifizieren; bis dahin nur Entwurf/GitHub-Push, Claude-Empfang unbekannt. R69-Film separat behandeln, heutige Reports und beendeten Kauf-Watch nicht wiederholen.",
+      "nextAllowedStep": "Vier R74-Bilder als zusätzliche Kategorie-Inspiration mit passenden echten Zielen und überprüftem Ausschnitt einsetzen; gewünschtes bestehendes Banner, R72/R73-Ergänzungen und Produktbilder bewahren. Vor Einbindung Sortimentskontext und gegebenenfalls Fremdrechte der Referenzbearbeitungen klären, Bildhosting nur nativ über Shopify; keine SKU-Fotos oder Eigenschaften daraus ableiten. Bestehende Websitefreigabe und MAIN-Connectorgrenzen respektieren, keinen alten Gesamtentwurf veröffentlichen. Keine identischen Neu-Generierungen oder neuen Reports ohne Anlass. Claude-Empfang weiterhin unbekannt.",
       "blockers": [
         "Aktueller Connector sperrt MAIN-Dateischreiben und Theme-Veröffentlichung; geprüftes Paket im UNPUBLISHED-Theme, kein bestätigter Live-Publish.",
         "Claude-Kenntnisnahme und produktive Übernahme unbekannt; kanonische Übergabe ist keine Empfangsquittung.",
@@ -2995,6 +2995,11 @@
           "path": "dropship/codex-handoff-20261018/STARTSEITE-STOEBERN-20261103-R72.json",
           "gitBlobSha": "4df1c478c2c8556103686383dcc73af7f3b99435",
           "readAt": "2026-11-03T22:09:11.012036+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.json",
+          "gitBlobSha": "8366461666e170cce0cf3a43e66482a4a5b0b4e5",
+          "readAt": "2026-11-03T23:41:40.385568+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3348,6 +3353,14 @@
             "Neue acht Produktkarten liegen nur im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Writes und Veröffentlichung; vorhandener öffentlicher Bewertungs-/FR-Stand bleibt erhalten."
           ],
           "previousLastEvidencePreserved": "Exact old text retained as prefix; R72 supersedes plan-only state for this narrow layout patch."
+        },
+        {
+          "at": "2026-11-03T23:41:40.385568+00:00",
+          "sourceRevision": 73,
+          "previousState": "r72_stoeber_layout_nativ_im_entwurf_geprueft_github_patch_nicht_live",
+          "previousNextAllowedStep": "Den konkreten R72-Zwei-Dateien-Patch aus dem Transfermanifest auf frischer MAIN-Basis übernehmen, nur bei passenden Ausgangshashes. Bei neueren Änderungen eng rebasieren. Nicht den gesamten älteren Entwurf veröffentlichen, keine Connector-/MAIN-Schutzmechanismen umgehen. Bestehende Websitefreigabe ist vorhanden. Nach unterstützter Veröffentlichung beide Dateien und öffentliche Seite frisch verifizieren; bis dahin nur Entwurf/GitHub-Push, Claude-Empfang unbekannt. R69-Film separat behandeln, heutige Reports und beendeten Kauf-Watch nicht wiederholen.",
+          "previousBelegArt": "R72_ZWEI_DATEIEN_PATCH_NATIVE_READBACK_BROWSER_QA_GITHUB_HANDOFF",
+          "previousLastEvidenceDate": "2026-11-03"
         }
       ],
       "followUpFindings": [
@@ -3723,6 +3736,27 @@
         "firstProductY390": 1594.5625,
         "mainFirstProductY390": 2708.484375,
         "qa": "43/45 initial; two inconclusive synthetic gestures retained; 12/12 targeted320 final checks passed"
+      },
+      "imageVarietyR74": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.json",
+          "gitBlobSha": "8366461666e170cce0cf3a43e66482a4a5b0b4e5",
+          "readAt": "2026-11-03T23:41:40.385568+00:00"
+        },
+        "finalImageCount": 4,
+        "rejectedVersions": 1,
+        "size": [
+          1536,
+          1024
+        ],
+        "bagV2VisuallyRechecked": true,
+        "originalBannerPreserved": true,
+        "themeWrites": 0,
+        "shopifyUploads": 0,
+        "published": false,
+        "illustrativeNotSkuPhotos": true,
+        "independentReferenceRights": "unknown",
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -6873,6 +6907,17 @@
         "readAt": "2026-11-03T23:27:31.048780+00:00"
       },
       "action": "R73,03./04.11.2026: Inhaber präzisierte ausdrücklich bestehendes Banner/Stil behalten und gezielte Verbesserungen/Fehlerbehebung für Stöbern und Suche. Zwischenzeitliche Banner-Neugestaltung verworfen; endgültig9Dateien mit zusätzlichen Unterbereichen/Suche, kleinem ursprünglichem Chips-Auswahlfix und engem44px-Selbstgestalten-CSS. Sechs bestehende Templateabschnitte plus Banner unverändert; im siebten nur führender Liquid-Auswahlblock geändert, Ausgabe/CSS und relative Reihenfolge erhalten. Genau ein neuer geschlossener Zusatzabschnitt; bestehende Links nicht dupliziert. Damen-Schuhe13eigene Kinder statt28fremderGeschwister. Finaler nativer Readback bytegenau, additive Browser-Schlussprobe86/87, einzig datenbedingteHundewelt-Bildverschiebung nachbelegtemProduktausschluss erklärt; MAIN-Dateien unverändert, keine Publikation. 16Haupteinstiege/180gespeicherteKarten begrenzt geprüft. Einzige klare Fehlzuordnung live03.11.22:50:52Z behoben: Hunderttafel16655507915143 aus Hundeweltquelle26063339905 ausgeschlossen; learning.hasProducttrue und Einschlussbedingungen unverändert. Nicht erneut anwenden. Weitere Titelunklarheiten ohne Produktbeleg nicht verschoben. Eigenes altes Header-Snippet im Entwurf unreferenziert; Löschversuch vomConnector blockiert, keinRetry/Umgehung; nicht Teil des finalenPakets. NeuesGitHub-Paket zurÜbernahme, Claude-Empfang unbekannt. 466bestehendeFRLücken unverändert; nur5neuegenutzteNavschlüsseljeDE/FR/EN.23IDs/21andereTasks erhalten."
+    },
+    {
+      "revision": 74,
+      "at": "2026-11-03T23:41:40.385568+00:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.json",
+        "gitBlobSha": "8366461666e170cce0cf3a43e66482a4a5b0b4e5",
+        "readAt": "2026-11-03T23:41:40.385568+00:00"
+      },
+      "action": "R74: Auf zusätzlichen Bildwunsch vier unterschiedliche Kategorieillustrationen für Wohnen, Schmuck, Beauty und Taschen tatsächlich generiert, je1536×1024. Bildprüfung und unabhängige Zweitsicht; Taschen-V1 mit freiem Riemenende verworfen, V2 korrigiert und geprüft. Vier finale PNGs plus Quelle-/Hash-/Cropmanifest und Paket inGitHub mit exaktem Rücklesen gesichert. Beauty-/Taschen-Referenzdateien frischHTTP200 und SHA256-gleich; keine genaueSKU-/Material-/Fremdrechtebehauptung. BestehendesBanner, R72/R73-Theme-Dateien und globaleCollection-/Produktbilder unverändert. KeinShopifyUpload, ThemeWrite oderPublish. Shop/Metricool-Identitäten frisch passend; keineReports oderKauf-Watch. Claude-Empfang unbekannt."
     }
   ],
   "salesGoal": {
@@ -7036,18 +7081,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 73,
-    "path": "dropship/codex-handoff-20261018/KATEGORIEN-ERGAENZUNGEN-20261104-R73.md",
-    "gitBlobSha": "3150d424cd5e60e5ca38ec46e51eb73a6e3f83e0",
+    "documentationRevision": 74,
+    "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.md",
+    "gitBlobSha": "3c1669267caee83f2458b51152ab9c1c972e8793",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "16f31734abb4b49014f0e36ec4d800968860d045",
+    "entryGitBlobSha": "ee31721e5b2d0f474446393269a8ee46256da69b",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
-    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r73",
+    "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r74",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
-    "scope": "preserve_current_style_nine_file_additions_and_narrow_nav_fix_one_live_membership_correction",
-    "latestCanonicalRevision": 73,
-    "snapshotNote": "Nur endgültiges ErgänzungspaketR73, keine frühere lokaleNeugestaltung. Originalbanner/Stil undR72erhalten.",
+    "scope": "four_generated_category_image_drafts_no_website_integration",
+    "latestCanonicalRevision": 74,
+    "snapshotNote": "Vier neue Kategorieillustrationen; nur Taschen-V2 verwenden. Bestehendes Banner bewahren; keine aktuelle Shopintegration behaupten.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -7187,6 +7232,11 @@
       "path": "dropship/codex-handoff-20261018/MERCHANT-EXPORT-BELEGE-20261102-R59.json",
       "gitBlobSha": "34475f9f4be64224ad67c0da1bcc5073169511c4",
       "readAt": "2026-11-02T21:09:36.975076+00:00"
+    },
+    "categoryImagesR74": {
+      "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.json",
+      "gitBlobSha": "8366461666e170cce0cf3a43e66482a4a5b0b4e5",
+      "readAt": "2026-11-03T23:41:40.385568+00:00"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -8237,6 +8287,164 @@
         "scope": "actual_two_file_layout_patch_native_unpublished_preview_and_github_handoff_no_live_publish",
         "latestCanonicalRevision": 72,
         "snapshotNote": "R72 konkreter enger Stöber-Layoutpatch nativ im Entwurf geprüft. Vor Übergabe MAIN-Ausgangshashes prüfen; keine ganze alte Themeversion veröffentlichen.",
+        "merchantCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+          "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+          "readAt": "2026-11-01T20:21:03.842254Z"
+        },
+        "descriptionCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+          "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+          "readAt": "2026-11-01T20:32:24.782248Z"
+        },
+        "visibilitySupplement": {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+          "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+          "readAt": "2026-11-01T20:50:50.314044Z"
+        },
+        "imageSupplement": {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
+        },
+        "budgetCarouselSupplement": {
+          "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.json",
+          "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
+          "readAt": "2026-11-01T21:34:54.648570Z"
+        },
+        "beautySportSupplement": {
+          "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+          "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+          "readAt": "2026-11-01T21:49:46.970046Z"
+        },
+        "seasonImagesSupplement": {
+          "path": "dropship/codex-handoff-20261018/WINTER-WEIHNACHTSBILDER-20261101-R47.json",
+          "gitBlobSha": "3dcf753fa396085023323242ef7648da3689dd5d",
+          "readAt": "2026-11-01T22:03:08.787599Z"
+        },
+        "dailyPackageR48": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+          "gitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+          "readAt": "2026-11-02T07:11:58.785394Z"
+        },
+        "visibilitySupplementR49": {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json",
+          "gitBlobSha": "e84d0ade44da06c97fb5a2a215fe0bf8ed2efbc8",
+          "readAt": "2026-11-02T09:45:57.309290Z"
+        },
+        "categoryQualitySupplementR50": {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+          "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+          "readAt": "2026-11-02T10:12:23.372462Z"
+        },
+        "currentMainObservationR50": {
+          "id": "213013037447",
+          "source": {
+            "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+            "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+            "readAt": "2026-11-02T10:12:23.372462Z"
+          },
+          "oldDraftNotSafeToPublishWithoutFreshFullDiff": true
+        },
+        "techCategoryStructureSupplementR51": {
+          "path": "dropship/codex-handoff-20261018/TECHNIK-UNTERKATEGORIEN-20261102-R51.json",
+          "gitBlobSha": "141087901a0a6d69f5f2f4a1d3f2845364aee996",
+          "readAt": "2026-11-02T11:11:11.833553Z"
+        },
+        "afternoonPackageR52": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R52.json",
+          "gitBlobSha": "01277347cfd36eed0e0ef35ed7b93b6673290c2e",
+          "readAt": "2026-11-02T13:22:43.077820Z"
+        },
+        "masterAcceptanceSupplementR52": {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBOGEN-20261102-R52.md",
+          "gitBlobSha": "67c7d2f2dc2188cfe47081aac36b4cd521e9742d",
+          "readAt": "2026-11-02T13:22:43.077820Z"
+        },
+        "claudePublicationInstructionR53": {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+          "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+          "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        "currentMainWidthCandidateR53": {
+          "source": {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+            "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+            "readAt": "2026-11-02T15:57:58.185375Z"
+          },
+          "mainTheme": "213013037447",
+          "filename": "templates/collection.json",
+          "beforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+          "candidateMd5": "bbacad38aabc5e292ed819b3d1b01782",
+          "singleRuleOnly": true,
+          "nativeWritten": false,
+          "published": false
+        },
+        "welcomeApplicationScopeR53": {
+          "source": {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+            "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+            "readAt": "2026-11-02T15:57:58.185375Z"
+          },
+          "targetClarification": "resolved_website_only",
+          "ownerApprovalState": "freigabeentwurf_website_only_excluded",
+          "applicationAllowedNow": false
+        },
+        "eveningPackageR54": {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261102-R54.json",
+          "gitBlobSha": "8833412a8099c41b45761a0d40258bde3525fdcd",
+          "readAt": "2026-11-02T18:26:50.969075Z"
+        },
+        "masterContentSupplementR54": {
+          "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261102-R54.md",
+          "gitBlobSha": "2e9de9d69c3fdedc8741434a98ab5d6af1ee0616",
+          "readAt": "2026-11-02T18:26:50.969075Z"
+        },
+        "minimaxAccessCorrectionR55": {
+          "path": "dropship/codex-handoff-20261018/MINIMAX-ZUGANG-20261102-R55.md",
+          "gitBlobSha": "5796bfea4bcc84dde7d7135dd4e2dbab19fd7367",
+          "readAt": "2026-11-02T18:41:37.650465Z"
+        },
+        "musicListeningDraftR56": {
+          "path": "dropship/codex-handoff-20261018/MUSIK-HOERENTWURF-20261102-R56.md",
+          "gitBlobSha": "ce126e84d3f8539037ec726e5dc498c6c7a9942f",
+          "readAt": "2026-11-02T19:19:14.777771+00:00"
+        },
+        "lampComparisonR57": {
+          "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+          "ref": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+          "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+          "readAt": "2026-11-02T19:31:54.226882+00:00",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829"
+        },
+        "merchantFixR58": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261102-R58.md",
+          "gitBlobSha": "d4a30c01cd938af9326d0f50923494768f0b00a0",
+          "readAt": "2026-11-02T20:13:28.392663+00:00"
+        },
+        "merchantExportsAndImageFixesR59": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EXPORT-BELEGE-20261102-R59.json",
+          "gitBlobSha": "34475f9f4be64224ad67c0da1bcc5073169511c4",
+          "readAt": "2026-11-02T21:09:36.975076+00:00"
+        }
+      }
+    },
+    {
+      "at": "2026-11-03T23:41:40.385568+00:00",
+      "sourceRevision": 73,
+      "previous": {
+        "documentationRevision": 73,
+        "path": "dropship/codex-handoff-20261018/KATEGORIEN-ERGAENZUNGEN-20261104-R73.md",
+        "gitBlobSha": "3150d424cd5e60e5ca38ec46e51eb73a6e3f83e0",
+        "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+        "entryGitBlobSha": "16f31734abb4b49014f0e36ec4d800968860d045",
+        "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+        "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r73",
+        "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+        "receiptState": "unknown_missing_receipt",
+        "scope": "preserve_current_style_nine_file_additions_and_narrow_nav_fix_one_live_membership_correction",
+        "latestCanonicalRevision": 73,
+        "snapshotNote": "Nur endgültiges ErgänzungspaketR73, keine frühere lokaleNeugestaltung. Originalbanner/Stil undR72erhalten.",
         "merchantCsvSupplement": {
           "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
           "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
