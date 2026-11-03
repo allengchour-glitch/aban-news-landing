@@ -1,5 +1,12 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 03.11.2026, Revision 70: Startseite gezielt verdichten
+
+[Gestaltungsvorschlag](STARTSEITE-DESIGN-20261103-R70.md) · [Messbelege](STARTSEITE-BELEGE-20261103-R70.json). Auf die Frage nach leer wirkender Website aktuelle Homepage bei1440/390px, frische Firecrawl-Aufnahme und CSS geprüft. 25Produktkarten/13Abschnitte vorhanden; erste Produktkarte erst bei2705/2708px. Vorher liegen Hero,16Kategorie-Kacheln und der grosse Selbstgestaltenblock. Vorschlag: sechs primäre Kategorieeinstiege, vorhandene Produktreihe deutlich früher, Winter/Geschenke höher und gezielte Titel-/Preisabstände verkürzen. Versteckte Ratings reservieren bereits keinen Platz; keine falsche Review-Korrektur.
+
+Kein Layoutpatch, Theme-Write oder Publish. R69-Markenfilm tatsächlich vorhanden, weiterhin nicht eingebunden; spätere Einbindung benötigt eigene passende Videofläche ohne doppelten Textüberzug. Vorhandene Rechte-/Freigabegrenzen und separate Socialmaster erhalten. Tagesreports nicht wiederholt, Kauf-Watch beendet.23IDs/Historien und22andereTasks unverändert. Claude-Kenntnisnahme unbekannt.
+
+
 ## Aktueller Stand – 03.11.2026, Revision 69: tatsächlicher Website-Markenfilm
 
 [Film und Übergabe](MARKENFILM-20261103-R69.md) · [Desktop-MP4](luxestyle-brand-desktop-r69.mp4) · [Handy-MP4](luxestyle-brand-mobile-r69.mp4) · [Belege](MARKENFILM-BELEGE-20261103-R69.json). Der Inhaber wünscht ausdrücklich vorhandene Website-Inhalte, geschnitten und bearbeitet. Für diesen Website-Markenfilm keine neuen Originaldrehs verlangen. Ein sechs Szenen umfassender Schnitt ist tatsächlich gerendert: 20 Sekunden, 30 fps, 600 Frames, stumm, Desktop1280×1120 und Mobil810×1080. Quellen/Hashes, vollständige Dekodierung, echte Browserwiedergabe bei1440/390px und visuelle MP4-Stichproben belegt. Aktuelle Website-Kategorien, vergrösserte mobile Texte; keine alten Sommer-/Rabatt-/Katalogzähler übernommen.
