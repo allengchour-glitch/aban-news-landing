@@ -1,0 +1,71 @@
+{
+  "revision": 72,
+  "at": "2026-11-03T22:08:51.647670+00:00",
+  "brand": "LuxeStyle",
+  "shop": "luxestyle.ch",
+  "taskId": "homepage-redesign-20261029",
+  "ownerRequest": "push after explicit broad-browsing clarification",
+  "sourceMainThemeId": "213013037447",
+  "previewThemeId": "212978598279",
+  "previewRole": "UNPUBLISHED",
+  "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279",
+  "files": [
+    {
+      "themeFilename": "sections/luxe-edit-home.liquid",
+      "artifact": "STARTSEITE-STOEBERN-20261103-R72.liquid",
+      "baseMd5": "d91a9a8c4b80f60e9c0be3d22ddf2db7",
+      "baseSha256": "7d33a730c3aaa4ea073c87c59c08a9a4f23a11b3a0bd694d5823c16836474446",
+      "candidateMd5": "8bda9bef841006e96e10f211f30368e0",
+      "candidateSha256": "1f6b7b0feb1269b21e1e5c11a48ea215c00c207db0f67ee577a2ae5a6f45dd04",
+      "bytes": 43943,
+      "nativeDraftReadback": "byte_exact"
+    },
+    {
+      "themeFilename": "assets/luxe-edit.css",
+      "artifact": "STARTSEITE-STOEBERN-20261103-R72.css",
+      "baseMd5": "5d957883193228b6211510d86bea832c",
+      "baseSha256": "25bcb7e43669b03c97f676cb5589e58c15c614c7dce15c2229ca7416f7d1b524",
+      "candidateMd5": "1c32bca8f50cba8d04efe3ba71d2914f",
+      "candidateSha256": "9324e01fe5242d1bd5fe067785d7224baea56d0c87877c79514631d2d27a5a11",
+      "bytes": 52444,
+      "nativeDraftReadback": "byte_exact"
+    }
+  ],
+  "patch": "STARTSEITE-STOEBERN-20261103-R72.patch",
+  "qa": "STARTSEITE-STOEBERN-20261103-R72-QA.json",
+  "allCategories": 16,
+  "productCards": 25,
+  "wishlistButtons": 25,
+  "firstProductY": {
+    "main390Fresh": 2708.484375,
+    "candidate390": 1594.5625,
+    "main1440HistoricalR70": 2705.484375,
+    "candidate1440": 1467.84375
+  },
+  "nativeWrites": {
+    "initialUpsertFiles": 2,
+    "targeted320CssCorrectionFiles": 1,
+    "allWritesConfirmedByReadback": true,
+    "mainWrites": 0,
+    "themePublication": false
+  },
+  "preserved": [
+    "Product identifiers, selection and blocking filters",
+    "Prices and review data",
+    "All16category links and existing subcategories",
+    "Wishlist wrappers and current MAIN CSS prefix",
+    "Translations, scripts, schema and account domain",
+    "Shipping thresholds and all shop/marketing settings"
+  ],
+  "film": "R69 separate rendered files preserved; not integrated by this patch",
+  "claudeReceipt": "unknown",
+  "publication": "not_live",
+  "applyConstraints": [
+    "Freshly verify shop and MAIN identity. Compare BOTH current MAIN files with baseMd5/baseSha256 before applying.",
+    "If source changed, stop and rebase the small patch; do not overwrite newer work.",
+    "Transfer only these two validated file changes using an authorised supported path. Do not disable MAIN/publish guards or dispatch unreviewed workflows.",
+    "Do not publish the whole old preview theme212978598279. Other theme files are not current-MAIN-equivalence-checked.",
+    "After a supported publication, read back both files and check public homepage independently before claiming live.",
+    "Rollback only if both current files still equal the candidate hashes; reverse patch locally first. Never overwrite unknown intervening changes."
+  ]
+}
