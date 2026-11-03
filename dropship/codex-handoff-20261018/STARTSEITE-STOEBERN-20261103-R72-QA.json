@@ -1,0 +1,351 @@
+{
+  "checkedAtUtc": "2026-11-03T22:08:51.647670+00:00",
+  "initial": {
+    "checkedAtUtc": "2026-11-03T22:03:37.078903+00:00",
+    "result": {
+      "passed": 43,
+      "total": 45,
+      "failed": [
+        {
+          "view": "preview-320",
+          "name": "native_touch_scroll_works",
+          "pass": false,
+          "evidence": {
+            "before": {
+              "left": 0,
+              "width": 288,
+              "scroll": 1772
+            },
+            "after": {
+              "left": 0,
+              "width": 288,
+              "scroll": 1772
+            },
+            "method": "Chromium native synthesized touch gesture",
+            "moved": false
+          }
+        },
+        {
+          "view": "preview-390",
+          "name": "native_touch_scroll_works",
+          "pass": false,
+          "evidence": {
+            "before": {
+              "left": 0,
+              "width": 358,
+              "scroll": 2005
+            },
+            "after": {
+              "left": 0,
+              "width": 358,
+              "scroll": 2005
+            },
+            "method": "Chromium native synthesized touch gesture",
+            "moved": false
+          }
+        }
+      ]
+    },
+    "views": [
+      {
+        "kind": "main",
+        "width": 390,
+        "theme": {
+          "id": "213013037447",
+          "role": "main"
+        },
+        "firstProductY": 2708.484375,
+        "pageHeight": 11935,
+        "categoryCount": 16,
+        "productCount": 25,
+        "blockedCount": 65,
+        "failedRequestCount": 66,
+        "unknown": null
+      },
+      {
+        "kind": "preview",
+        "width": 320,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "firstProductY": 1616.265625,
+        "pageHeight": 10988,
+        "categoryCount": 16,
+        "productCount": 25,
+        "blockedCount": 75,
+        "failedRequestCount": 76,
+        "unknown": null
+      },
+      {
+        "kind": "preview",
+        "width": 390,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "firstProductY": 1594.5625,
+        "pageHeight": 11057,
+        "categoryCount": 16,
+        "productCount": 25,
+        "blockedCount": 69,
+        "failedRequestCount": 70,
+        "unknown": null
+      },
+      {
+        "kind": "preview",
+        "width": 1440,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "firstProductY": 1467.84375,
+        "pageHeight": 9281,
+        "categoryCount": 16,
+        "productCount": 25,
+        "blockedCount": 68,
+        "failedRequestCount": 69,
+        "unknown": null
+      }
+    ]
+  },
+  "targetedCounterprobe": {
+    "checkedAtUtc": "2026-11-03T22:06:16.869911+00:00",
+    "checks": [
+      {
+        "name": "native_unpublished_identity",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "all_16_categories",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "narrow_thumbnails_32px",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "damenmode_herrenmode_single_line",
+        "pass": true,
+        "evidence": [
+          {
+            "handle": "damen-mode",
+            "text": "Damenmode",
+            "height": 64,
+            "width": 140,
+            "labelHeight": 16.890625,
+            "lineHeight": 16.9,
+            "thumbWidth": 32,
+            "href": "/collections/damen-mode"
+          },
+          {
+            "handle": "fur-ihn",
+            "text": "Herrenmode",
+            "height": 64,
+            "width": 140,
+            "labelHeight": 16.890625,
+            "lineHeight": 16.9,
+            "thumbWidth": 32,
+            "href": "/collections/fur-ihn"
+          }
+        ]
+      },
+      {
+        "name": "category_targets_44px",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "no_horizontal_page_overflow",
+        "pass": true,
+        "evidence": 320
+      },
+      {
+        "name": "product_ids_links_prices_exactly_preserved",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": "all_25_products_and_wishlists",
+        "pass": true,
+        "evidence": null
+      },
+      {
+        "name": ".lx-trends-grid_native_touch_scroll",
+        "pass": true,
+        "evidence": {
+          "selector": ".lx-trends-grid",
+          "before": {
+            "left": 0,
+            "width": 288,
+            "scroll": 1772
+          },
+          "afterTouch": {
+            "left": 148,
+            "width": 288,
+            "scroll": 1772
+          },
+          "touchHit": {
+            "tag": "IMG",
+            "classes": "",
+            "grid": true
+          },
+          "touchCoordinates": {
+            "x0": 240.64000000000001,
+            "x1": 88.0,
+            "y": 277.59375
+          },
+          "touchMethod": "Native Chromium dispatchTouchEvent sequence",
+          "touchMoved": true,
+          "keyboard": {
+            "initialFocus": "programmatic_grid",
+            "input": "5 native ArrowRight",
+            "before": 148,
+            "after": 297,
+            "moved": true
+          }
+        }
+      },
+      {
+        "name": ".lx-trends-grid_keyboard",
+        "pass": true,
+        "evidence": {
+          "initialFocus": "programmatic_grid",
+          "input": "5 native ArrowRight",
+          "before": 148,
+          "after": 297,
+          "moved": true
+        }
+      },
+      {
+        "name": ".lx-season-actions_native_touch_scroll",
+        "pass": true,
+        "evidence": {
+          "selector": ".lx-season-actions",
+          "before": {
+            "left": 0,
+            "width": 250,
+            "scroll": 439
+          },
+          "afterTouch": {
+            "left": 189,
+            "width": 250,
+            "scroll": 439
+          },
+          "touchHit": {
+            "tag": "IMG",
+            "classes": "",
+            "grid": true
+          },
+          "touchCoordinates": {
+            "x0": 230.0,
+            "x1": 97.5,
+            "y": 342.296875
+          },
+          "touchMethod": "Native Chromium dispatchTouchEvent sequence",
+          "touchMoved": true,
+          "keyboard": {
+            "initialFocus": "programmatic_first_card",
+            "input": "native_Tab",
+            "href": "/collections/weihnachten-2026",
+            "left": 71.546875,
+            "right": 283.09375,
+            "visibleWithinViewport": true
+          }
+        }
+      },
+      {
+        "name": ".lx-season-actions_keyboard",
+        "pass": true,
+        "evidence": {
+          "initialFocus": "programmatic_first_card",
+          "input": "native_Tab",
+          "href": "/collections/weihnachten-2026",
+          "left": 71.546875,
+          "right": 283.09375,
+          "visibleWithinViewport": true
+        }
+      }
+    ],
+    "result": {
+      "passed": 12,
+      "total": 12,
+      "failed": []
+    }
+  },
+  "validationBefore": {
+    "success": true,
+    "responses": [
+      {
+        "result": "inform",
+        "resultDetail": "sections/luxe-edit-home.liquid passed all checks (with non-error findings):\nWARNING [line 34, col 14]: Asset should be served by the Shopify CDN for better performance.",
+        "artifactId": "luxe-browse-before-r72",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-edit.css passed all checks.",
+        "artifactId": "luxe-browse-before-r72",
+        "artifactRevision": 1
+      }
+    ]
+  },
+  "validationCandidate": {
+    "success": true,
+    "responses": [
+      {
+        "result": "inform",
+        "resultDetail": "sections/luxe-edit-home.liquid passed all checks (with non-error findings):\nWARNING [line 34, col 14]: Asset should be served by the Shopify CDN for better performance.",
+        "artifactId": "luxe-browse-r72",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-edit.css passed all checks.",
+        "artifactId": "luxe-browse-r72",
+        "artifactRevision": 1
+      }
+    ]
+  },
+  "structural": {
+    "lx_trend_cards_byte_equal": true,
+    "lx_edit_cards_byte_equal": true,
+    "lx_more_cards_byte_equal": true,
+    "all_16_category_entries_unchanged": true,
+    "category_count": 16,
+    "translation_key_multiset_unchanged": true,
+    "href_multiset_unchanged": true,
+    "heart_button_templates_unchanged": true,
+    "scripts_unchanged": true,
+    "schema_unchanged": true,
+    "existing_css_preserved_as_prefix": true,
+    "section_order": [
+      "lx-hero lx-background-hero",
+      "lx-worlds",
+      "lx-trends",
+      "lx-season",
+      "lx-edit-{{ lx_edit_key }}",
+      "lx-selfdesign",
+      "lx-discover",
+      "lx-more-products",
+      "lx-fashion-edit lx-section",
+      "lx-budget",
+      "lx-home-help"
+    ],
+    "candidateRevision": 2,
+    "liquidMd5": "8bda9bef841006e96e10f211f30368e0",
+    "cssMd5": "1c32bca8f50cba8d04efe3ba71d2914f",
+    "320pxFixOnlyTwoRulesAdded": true,
+    "mobileCategoryMinimumHeight64Preserved": true
+  },
+  "limits": [
+    "Initial native synthesized-touch probes at320/390 inconclusive; recorded without hiding failures. Actual touch-event and keyboard counterprobe passed at320.",
+    "Read-only GET/HEAD browser guard blocked analytics/review/other requests; requestfailed includes those blockades and is not a site-outage count.",
+    "No checkout, tracking, wishlist persistence, full catalogue, French-wide-layout or whole-old-draft acceptance.",
+    "Shopify validator used existing cached schemas after live schema download failed; source/candidate have the same pre-existing hero-CDN warning.",
+    "Only two homepage files were changed; old draft must not be published wholesale."
+  ]
+}
