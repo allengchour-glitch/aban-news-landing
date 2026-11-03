@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 63,
-  "updatedAt": "2026-11-02T22:28:07.711026+00:00",
+  "revision": 64,
+  "updatedAt": "2026-11-03T07:33:40.980532+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,31 +16,59 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-02",
+    "currentDayEvidenceDate": "2026-11-03",
     "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
-    "currentDayEvidence": "Vor Reports frische R47-Quellen und fehlenden02.11.-Tagesblock geprüft. Einmalig26.10.–01.11.:6Metricool-Definitionen+6kleineDatenabfragen; kanalbezogeneAbdeckung/Nullnurbeobachtet. Genau1Klaviyo-Report nachW7XTVD-Discovery, tatsächlicheRecoveryperformance nichtangefragt/unbekannt. KeineUmsatz-/Syncableitung und keineKauf-Watchabfrage. Heute nicht erneut lesen ohnekonkretenneuenGegenprüfgrund. R49: Neue ausdrückliche Frage nach Google/ChatGPT und frischverifizierte passendeGA4-/GSC-Identitäten begründen genau2gezielte bisherheutenichtgeleseneQuellenreports; keineWiederholungder6Metricool-/1Klaviyoreports. GA4/GSC26.10.–01.11. abgeschlossen, Cache-/Attributionsgrenzen erhalten.",
+    "currentDayEvidence": "Vor Reports frische R63-Dateien und fehlenden03.11.-Block geprüft. Einmalig27.10.–02.11.:6Metricool-Definitionen und6kleine Kanalabfragen, genau1Klaviyo-Flowreport nach frischerW7XTVD-Discovery. Direkte Flowdefinitionen bestätigen alle3draft; Statusänderungsursache unbekannt. Datenlücken unknown, keine Shopumsatz-/Sync-/Kaufableitung. Keine Bestell-Watch-Abfrage oder neue Automation. Heute ohne konkreten neuen Gegenprüfgrund nicht erneut lesen.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-02",
-        "range": "2026-10-26/2026-11-01",
+        "localDate": "2026-11-03",
+        "range": "2026-10-27/2026-11-02",
         "dataCalls": 6,
         "definitionCalls": 6
       },
       "klaviyo": {
-        "localDate": "2026-11-02",
-        "range": "2026-10-26/2026-11-01",
+        "localDate": "2026-11-03",
+        "range": "2026-10-27/2026-11-02",
         "flowReportCalls": 1
       },
-      "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
-      "trafficByExplicitRequest": {
-        "localDate": "2026-11-02",
-        "range": "2026-10-26/2026-11-01",
-        "ga4Calls": 1,
-        "searchConsoleCalls": 1,
-        "reason": "New explicit user question and newly verified LuxeStyle source identities; not repeated social/flow reports",
-        "proof": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json"
+      "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json"
+    },
+    "dayHistory": [
+      {
+        "dateZurich": "2026-11-02",
+        "record": {
+          "timezone": "Europe/Zurich",
+          "checkLogBeforeReading": true,
+          "metricsFlowAndBroadSalesMaxPerDay": 1,
+          "exception": "new_concrete_finding_with_recorded_reason",
+          "currentDayEvidenceDate": "2026-11-02",
+          "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+          "currentDayEvidence": "Vor Reports frische R47-Quellen und fehlenden02.11.-Tagesblock geprüft. Einmalig26.10.–01.11.:6Metricool-Definitionen+6kleineDatenabfragen; kanalbezogeneAbdeckung/Nullnurbeobachtet. Genau1Klaviyo-Report nachW7XTVD-Discovery, tatsächlicheRecoveryperformance nichtangefragt/unbekannt. KeineUmsatz-/Syncableitung und keineKauf-Watchabfrage. Heute nicht erneut lesen ohnekonkretenneuenGegenprüfgrund. R49: Neue ausdrückliche Frage nach Google/ChatGPT und frischverifizierte passendeGA4-/GSC-Identitäten begründen genau2gezielte bisherheutenichtgeleseneQuellenreports; keineWiederholungder6Metricool-/1Klaviyoreports. GA4/GSC26.10.–01.11. abgeschlossen, Cache-/Attributionsgrenzen erhalten.",
+          "completedReports": {
+            "metricool": {
+              "localDate": "2026-11-02",
+              "range": "2026-10-26/2026-11-01",
+              "dataCalls": 6,
+              "definitionCalls": 6
+            },
+            "klaviyo": {
+              "localDate": "2026-11-02",
+              "range": "2026-10-26/2026-11-01",
+              "flowReportCalls": 1
+            },
+            "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+            "trafficByExplicitRequest": {
+              "localDate": "2026-11-02",
+              "range": "2026-10-26/2026-11-01",
+              "ga4Calls": 1,
+              "searchConsoleCalls": 1,
+              "reason": "New explicit user question and newly verified LuxeStyle source identities; not repeated social/flow reports",
+              "proof": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json"
+            }
+          }
+        }
       }
-    }
+    ]
   },
   "expectedIdentity": {
     "shopDomain": "luxestyle.ch",
@@ -968,12 +996,12 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "blockiert_r55_minimax_liveversuch_402_keine_takes_rechte_master_mp4",
+      "state": "r64_gleicher_master_storyboard_renderweg_geprueft_originaltakes_rechte_offen",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-02",
-      "belegArt": "BESTEHENDER_MINIMAX_TROCKENLAUF_UND_402_FEHLER_KEINE_EIGENE_PRODUKTION",
-      "lastEvidence": "Inhaber hat Foto-/Karussellposts zusätzlich für diese Wochenplanung erlaubt und danach genau Kosmetik-Organizer/Threads samt engem Erstregister ausdrücklich freigegeben. Shop luxestyle.ch/CHF, Metricool6227837/EuropeZurich und sechs Kanalidentitäten sowie zwei genaue Produkte/Bilder/Tags/Storefront frisch geprüft. Kosmetik-Organizer15408458236289/Variante55732479590785 ACTIVE/CHF29.90, verfügbare Variante, trackedfalse/CONTINUE/Menge0 ohne Lieferzusage. Bildrechtebestätigung23.10. für genau dieses Produkt akzeptiert; JPEG1601x1601 visuell geprüft. Ein eigener neuer Threads-Post413194611/UUID-1937081137064819378 für04.11.18:30Zürich terminiert, exakt frisch zurückgelesen: draftfalse, autoPublishtrue, nurThreadsPENDING. Metricool-JPEG bytegleich zu OriginalSHA73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e. Enger dauerhafter SHA-CAS/Checkpoint-Beleg vorSend und nachAntwort/Rücklesung bestätigt, alteHistorie bleibtunknown. Zwei explizite Eingabe-/400-Zurückweisungen vor einzig erfolgreichem Planobjekt mit Gegenprobe dokumentiert, kein blindes Unknown-Resend. Sieben bestehendeFB/IG-Termine02.–08.11.erhalten. Schubladenfoto wegen ungeprüfter LinerOptions/fremdemBranding ausgeschlossen. IG/TikTokBio und PinterestBoard durch403/unsupported nicht verifizierbar; keine neuenPosts dort. Film-Material-/Ausführungs-/Rechte-/Abnahmeblocker bleiben separat; keine Tagesreports/Kauf-Watch wiederholt. R48, 02.11.: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich samt sechs Kanalidentitäten frisch bestätigt. Zwei ACTIVE-Produkte öffentlich kaufbar: Projektor15521256604033/56197916361089 CHF34.90 und Organizer15408458236289/55732479590785 CHF29.90; untracked/CONTINUE/Menge0, keine Bestands-/Lieferzusage. Aktueller Repo-Wächter plus rueckhol/leereTags ohne Treffer; Projektor auswahl-offen bleibt. Planung22Objekte/29PENDING-Kanalzustände, keine kanalinternen Caption-/Medien-URL-/Slotdoppel gefunden.14seitR47neu extern beobachtete TikTok-/Pinterest-Fototermine sind keine eigenen Writes/Freigaben. Bestehende7FB/IG und genehmigterThreads04.11.18:30/UUID-1937081137064819378/OriginalJPEG-Hash samt scopedRegister exakt erhalten. Einmalige heutige Kennzahlberichte26.10.–01.11.:6Definitionen+6kleineDatencalls, Teilreihen unbekannt lassen. Genau ein Klaviyo-Flowreport nach PlacedOrder-Discovery; Welcome4Zustellungen/3Opens/1Klick/0zugerechneteConversions, PostPurchase2Zustellungen/0Opens/Klicks/zugeordneteConversions für gelieferteNachricht, keinShopkauf-/Syncschluss. TatsächlicherRecoveryXEGbTBlive separat bestätigt, Leistung nicht imReport/unbekannt. Derselbe18sMaster um konkrete Capture-Framebereiche, Schnittanschlüsse und Kontaktbild-Anker für4nativeOriginaltakes ergänzt,30begrenzteDokumentchecks bestanden. Tatsächliche Dateien/Abnahmen leer, keineMP4/keinRender/keinSocialwrite. CJ-Helfer vorhanden, authentifizierteRuntime nicht belegt; Pflichtmusik aktuell hashgleich, finaleRechte-/Hörabnahme offen. Filmregisterhistorie unbekannt, nicht initialisiert. Owner-YouTube-Zielgruppe allgemein/nicht speziellKinder bleibt geklärt; konkretesPostflag, IG/TikTokBio und PinterestKontoboard unbestätigt. Keine Bestell-/Kauf-Watchabfrage. R52, bestehender Nachmittagslauf 02.11.: Frische Shop-/Marken-/Kanalidentität passt. Metricool zeigt 23 Planobjekte mit 31 PENDING-Kanalzuständen; alle 22 gemeinsamen Morgenobjekte sind unverändert. Der zusätzlich erfasste FB-/IG-Termin am 09.11. um 12:15 liegt nur wegen der weitergerückten Fenstergrenze im Bericht; er wurde am 27.10. angelegt und ist keine eigene Neuanlage. Bestehender Threads-Termin und tatsächlicher JPEG-Hash sind bestätigt, keine Social- oder Registerwrites und keine Publikation behauptet. Zwei konkrete ACTIVE-Produkte/Varianten, CHF-Preise, echte Bilder, Tags/Wächter und Storefront frisch geprüft: Projektor CHF 34.90, Organizer CHF 29.90. Beide untracked/CONTINUE/Menge 0 ohne Bestands- oder Lieferzusage; 20/20 begrenzte öffentliche Produktbedingungen bestanden, keine Checkout-/Trackingabnahme. Derselbe 18-Sekunden-Master luxe_sternenprojektor_master_20261018 wurde durch einen ausfüllbaren, datei-, Kontrollframe- und Rechtebeleg-gebundenen Aufnahme-/Abnahmebogen mit eindeutigen Stopkriterien konkretisiert; 23/23 Dokumentbedingungen, keine Medienabnahme. Vier Originaltakes und genaue Ausführung/Motive fehlen, tatsächliche Dateibindungen, Rechte- und Sichtabnahmen bleiben unbekannt; keine gerenderte Master-MP4. Musikquelle/Herkunft und vorhandene CJ-Helfer wurden gegengeprüft, finale Rechte-/Hörabnahme und authentifizierte CJ-Laufzeit nicht belegt; fehlende Runtime bedeutet keinen fehlenden Connector. Bestehende Hooks und sechs stabile Kanal-UTMs erhalten. YouTube-Inhaberzielgruppe allgemein/nicht speziell Kinder bleibt geklärt, konkretes Postflag sowie Bio-/Board-/Ledger-Voraussetzungen vor einem späteren Push weiter frisch prüfen. Tageskennzahlen und Flowreport R48 wurden frisch als Quellen gelesen und nicht erneut abgefragt. Als genau eine Verkaufsaktion ist der bestehende Welcome-Service-Zwei-Zeilen-Diff gegen Vorlage/Policies zur Freigabe fortgeführt; keine neue alte SEO-Aktion. R49/R50-Texte sind erledigt. Der zuletzt in R51 belegte 16 px-Mobilüberlauf bleibt als offener MAIN-Transfer einer nur im Entwurf bestätigten CSS-Regel erhalten; hier keine neue Prüfung oder Reparatur dieses Punktes. R54, bestehender Abendlauf am 02.11.2026: Shop-/Metricool-/sechs Kanalidentitäten frisch passend. 21 bestehende Planobjekte mit 28 PENDING-Kanalzuständen; 21 mit R52 gemeinsame UUIDs und zehn Postfelder unverändert, keine neue UUID oder Social-/Registerwrites. Die beiden früheren 18-Uhr-Objekte liegen jetzt vor dem rollierenden Fensterstart; ihr Fehlen ist kein Publikations-, Lösch- oder Fehlerbeweis, aktueller Veröffentlichungszustand unbekannt. Der bereits genehmigte Threads-Organizer am 04.11. um 18:30 bleibt in zwölf Bedingungen einschliesslich tatsächlichem JPEG-Hash bestätigt, PENDING bedeutet terminiert. Zwei ACTIVE-Produkte und genaue Varianten frisch geprüft: Projektor CHF 34.90, Organizer CHF 29.90, Storefront/Public-JSON/Bild jeweils HTTP 200, sechs Quellbutton-/Variantenbedingungen erfüllt, Bilder vom Root angesehen und aktueller Tagwächter ohne Treffer. Untracked/CONTINUE und Menge 0 werden nicht als Ausverkauf oder Bestands-/Lieferzusage ausgelegt; keine Checkoutabnahme. Derselbe 18-Sekunden-Master mit 540 Frames und sechs stabilen R52-Kanal-UTMs bleibt erhalten. Neu ist ausschliesslich eine begründete Empfehlung für Hook B «Licht im Detail.» und der TikTok-Titelvorschlag «Licht im Detail. / Sternenlicht-Projektor»; keine kreative Inhaberfreigabe oder Plattformanwendung. Zwölf begrenzte Dokumentbedingungen erfüllt, keine Film-, Rechte-, Ton- oder Sichtabnahme. Vier tatsächliche Originaltakes, genaue Ausführung/Motive und fertige Master-MP4 bleiben unbelegt. Pflichtmusik aktuell hashgleich zum Repository, finale Lizenz-/Hör-/Mischabnahme unbekannt. Vorhandene CJ-Helfer versionsgleich geprüft, keine authentifizierte Laufzeit belegt und kein Helfer ausgeführt; ein fehlendes Plugin ist kein Beweis fehlender Connectoren. Heutige R48-Metricool-/Flow- und R49-GA4/GSC-Berichte werden datiert wiederverwendet, nicht erneut abgefragt. Genau eine Verkaufsaktion bleibt der bereits in R53 belegte Welcome-Service-Zwei-Zeilen-Diff zur separaten Freigabe; keine neue Entdeckung, kein R54-Rebinding oder Klaviyo-Appcall. Die aktuelle ausdrückliche Publikationserlaubnis gilt nur den Website-Verbesserungen; Welcome bleibt ausgeschlossen. R55 auf aktuellen Inhaberhinweis: Authentifiziertes gh und GitHub-Actions-Bild-zu-Video-Weg mit MINIMAX_API_KEY-Verweis frisch nachgewiesen; fehlende lokale CLI/Cloud-Bindings widerlegen diesen Weg nicht. Vorhandenen Trockenlauf 41497876466 erfolgreich und echten Versuch 41498371388 um 19:12 Zürich gescheitert mit HTTP 402 insufficient balance (1008) frisch samt begrenzt maskierter Logs gelesen; kein bestätigtes MP4-Artefakt. Secret-Metadaten-403 ist kein Beweis eines fehlenden Keys. Kein eigener Dispatch/Render/Retry/Guthabenkauf; kostenpflichtige Renders weiterhin untersagt. Geprüfter Weg ist ein Clip-Generator, kein Website-/Social-Publisher; externe Claude-Nutzung bleibt möglich und konkrete Ausführung/Empfang unbestätigt. R53-Websitefreigabe und Welcome-Ausschluss, Tagesgrenzen und beendeter Kauf-Watch bleiben erhalten. R56 auf ausdrückliche Musikfrage: Eine separate neue 18s-Instrumentalhörprobe «Warmes Licht» lokal komponiert und tatsächlich als WAV/MP3 gerendert, 80BPM, reine Synthese ohne Fremdsamples/Soundfonts/API oder Kosten. Elf begrenzte technische/Quellbedingungen bestanden: decodiert18s/48kStereo, WAV24bit, -16LUFS/-3.74dBTP, keine Übersteuerung. Keine Hör-/Kreativ-/Rechtefreigabe oder Film-MP4 behauptet; kanonische Film-Musik hashgleich unverändert. Entwurf hier zum Anhören angeboten, keine Publikation/Automation/Shopänderung oder zusätzlichen Tagesreports. Derselbe offene professionelle Master und alle bisherigen Produktionsvoraussetzungen bleiben erhalten.",
-      "nextAllowedStep": "Für denselben einen Master die vier tatsächlichen Originaltakes P_OPERATION/P_PROJECTION/P_DETAIL/P_HERO mit exakter Produkt-/Ausführungs-/Motivbindung, Dateihashes und kommerziellen Bearbeitungs-/Werberechten im bestehenden R52-Aufnahmebogen belegen. Hook B und der einzelne TikTok-Titel bleiben Vorschläge; den bisherigen Hook nicht als freigegeben ersetzen. Erst nach belastbaren Quellen denselben Film schneiden und die tatsächliche MP4 auf Identität, Bild, Handlung, Ton, Text und Plattformausschnitte prüfen und dem Inhaber vorlegen. Keine Altclips, Foto-Zoom-Ersatzserie oder kostenpflichtigen Renders. Vor einem späteren Metricool-Push alle Produkt-/Kanal-/Bio-/Board-/YouTube-Postflag-/Registervoraussetzungen frisch prüfen; bestehenden Threads-Termin bewahren. Die bereits geklärte allgemeine YouTube-Zielgruppe nicht erneut fragen. Genau den bestehenden Welcome-Zwei-Zeilen-Entwurf als gesondert unfreigegebene Verkaufsaktion behandeln, nicht anwenden. R53-Websiteauftrag und offener eng gebundener MAIN-CSS-Transfer bleiben gesondert erhalten. Keine weiteren heutigen Reports ohne dokumentierten neuen Anlass; Kauf-Watch bleibt beendet. R55 ergänzt: MiniMax-Weg existiert bereits; vorhandener API-Live-Versuch meldet HTTP 402 insufficient balance. Keinen weiteren kostenpflichtigen Versuch oder Guthabenkauf auslösen. Den begrenzten Clip-Generator nicht als freigegebenen professionellen 18s-Master oder Website-Publisher ausgeben; zunächst weiterhin echte Quellen/Produktbindung/Rechte prüfen. R56: Der Inhaber kann die separate Musik-Hörprobe anhören. Ohne neue ausdrückliche Anweisung keine kanonische Musik ersetzen oder den Entwurf im Film/auf Kanälen einsetzen; keine zusätzliche Produktfilm-Variante daraus ableiten.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "Inhaber hat Foto-/Karussellposts zusätzlich für diese Wochenplanung erlaubt und danach genau Kosmetik-Organizer/Threads samt engem Erstregister ausdrücklich freigegeben. Shop luxestyle.ch/CHF, Metricool6227837/EuropeZurich und sechs Kanalidentitäten sowie zwei genaue Produkte/Bilder/Tags/Storefront frisch geprüft. Kosmetik-Organizer15408458236289/Variante55732479590785 ACTIVE/CHF29.90, verfügbare Variante, trackedfalse/CONTINUE/Menge0 ohne Lieferzusage. Bildrechtebestätigung23.10. für genau dieses Produkt akzeptiert; JPEG1601x1601 visuell geprüft. Ein eigener neuer Threads-Post413194611/UUID-1937081137064819378 für04.11.18:30Zürich terminiert, exakt frisch zurückgelesen: draftfalse, autoPublishtrue, nurThreadsPENDING. Metricool-JPEG bytegleich zu OriginalSHA73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e. Enger dauerhafter SHA-CAS/Checkpoint-Beleg vorSend und nachAntwort/Rücklesung bestätigt, alteHistorie bleibtunknown. Zwei explizite Eingabe-/400-Zurückweisungen vor einzig erfolgreichem Planobjekt mit Gegenprobe dokumentiert, kein blindes Unknown-Resend. Sieben bestehendeFB/IG-Termine02.–08.11.erhalten. Schubladenfoto wegen ungeprüfter LinerOptions/fremdemBranding ausgeschlossen. IG/TikTokBio und PinterestBoard durch403/unsupported nicht verifizierbar; keine neuenPosts dort. Film-Material-/Ausführungs-/Rechte-/Abnahmeblocker bleiben separat; keine Tagesreports/Kauf-Watch wiederholt. R48, 02.11.: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich samt sechs Kanalidentitäten frisch bestätigt. Zwei ACTIVE-Produkte öffentlich kaufbar: Projektor15521256604033/56197916361089 CHF34.90 und Organizer15408458236289/55732479590785 CHF29.90; untracked/CONTINUE/Menge0, keine Bestands-/Lieferzusage. Aktueller Repo-Wächter plus rueckhol/leereTags ohne Treffer; Projektor auswahl-offen bleibt. Planung22Objekte/29PENDING-Kanalzustände, keine kanalinternen Caption-/Medien-URL-/Slotdoppel gefunden.14seitR47neu extern beobachtete TikTok-/Pinterest-Fototermine sind keine eigenen Writes/Freigaben. Bestehende7FB/IG und genehmigterThreads04.11.18:30/UUID-1937081137064819378/OriginalJPEG-Hash samt scopedRegister exakt erhalten. Einmalige heutige Kennzahlberichte26.10.–01.11.:6Definitionen+6kleineDatencalls, Teilreihen unbekannt lassen. Genau ein Klaviyo-Flowreport nach PlacedOrder-Discovery; Welcome4Zustellungen/3Opens/1Klick/0zugerechneteConversions, PostPurchase2Zustellungen/0Opens/Klicks/zugeordneteConversions für gelieferteNachricht, keinShopkauf-/Syncschluss. TatsächlicherRecoveryXEGbTBlive separat bestätigt, Leistung nicht imReport/unbekannt. Derselbe18sMaster um konkrete Capture-Framebereiche, Schnittanschlüsse und Kontaktbild-Anker für4nativeOriginaltakes ergänzt,30begrenzteDokumentchecks bestanden. Tatsächliche Dateien/Abnahmen leer, keineMP4/keinRender/keinSocialwrite. CJ-Helfer vorhanden, authentifizierteRuntime nicht belegt; Pflichtmusik aktuell hashgleich, finaleRechte-/Hörabnahme offen. Filmregisterhistorie unbekannt, nicht initialisiert. Owner-YouTube-Zielgruppe allgemein/nicht speziellKinder bleibt geklärt; konkretesPostflag, IG/TikTokBio und PinterestKontoboard unbestätigt. Keine Bestell-/Kauf-Watchabfrage. R52, bestehender Nachmittagslauf 02.11.: Frische Shop-/Marken-/Kanalidentität passt. Metricool zeigt 23 Planobjekte mit 31 PENDING-Kanalzuständen; alle 22 gemeinsamen Morgenobjekte sind unverändert. Der zusätzlich erfasste FB-/IG-Termin am 09.11. um 12:15 liegt nur wegen der weitergerückten Fenstergrenze im Bericht; er wurde am 27.10. angelegt und ist keine eigene Neuanlage. Bestehender Threads-Termin und tatsächlicher JPEG-Hash sind bestätigt, keine Social- oder Registerwrites und keine Publikation behauptet. Zwei konkrete ACTIVE-Produkte/Varianten, CHF-Preise, echte Bilder, Tags/Wächter und Storefront frisch geprüft: Projektor CHF 34.90, Organizer CHF 29.90. Beide untracked/CONTINUE/Menge 0 ohne Bestands- oder Lieferzusage; 20/20 begrenzte öffentliche Produktbedingungen bestanden, keine Checkout-/Trackingabnahme. Derselbe 18-Sekunden-Master luxe_sternenprojektor_master_20261018 wurde durch einen ausfüllbaren, datei-, Kontrollframe- und Rechtebeleg-gebundenen Aufnahme-/Abnahmebogen mit eindeutigen Stopkriterien konkretisiert; 23/23 Dokumentbedingungen, keine Medienabnahme. Vier Originaltakes und genaue Ausführung/Motive fehlen, tatsächliche Dateibindungen, Rechte- und Sichtabnahmen bleiben unbekannt; keine gerenderte Master-MP4. Musikquelle/Herkunft und vorhandene CJ-Helfer wurden gegengeprüft, finale Rechte-/Hörabnahme und authentifizierte CJ-Laufzeit nicht belegt; fehlende Runtime bedeutet keinen fehlenden Connector. Bestehende Hooks und sechs stabile Kanal-UTMs erhalten. YouTube-Inhaberzielgruppe allgemein/nicht speziell Kinder bleibt geklärt, konkretes Postflag sowie Bio-/Board-/Ledger-Voraussetzungen vor einem späteren Push weiter frisch prüfen. Tageskennzahlen und Flowreport R48 wurden frisch als Quellen gelesen und nicht erneut abgefragt. Als genau eine Verkaufsaktion ist der bestehende Welcome-Service-Zwei-Zeilen-Diff gegen Vorlage/Policies zur Freigabe fortgeführt; keine neue alte SEO-Aktion. R49/R50-Texte sind erledigt. Der zuletzt in R51 belegte 16 px-Mobilüberlauf bleibt als offener MAIN-Transfer einer nur im Entwurf bestätigten CSS-Regel erhalten; hier keine neue Prüfung oder Reparatur dieses Punktes. R54, bestehender Abendlauf am 02.11.2026: Shop-/Metricool-/sechs Kanalidentitäten frisch passend. 21 bestehende Planobjekte mit 28 PENDING-Kanalzuständen; 21 mit R52 gemeinsame UUIDs und zehn Postfelder unverändert, keine neue UUID oder Social-/Registerwrites. Die beiden früheren 18-Uhr-Objekte liegen jetzt vor dem rollierenden Fensterstart; ihr Fehlen ist kein Publikations-, Lösch- oder Fehlerbeweis, aktueller Veröffentlichungszustand unbekannt. Der bereits genehmigte Threads-Organizer am 04.11. um 18:30 bleibt in zwölf Bedingungen einschliesslich tatsächlichem JPEG-Hash bestätigt, PENDING bedeutet terminiert. Zwei ACTIVE-Produkte und genaue Varianten frisch geprüft: Projektor CHF 34.90, Organizer CHF 29.90, Storefront/Public-JSON/Bild jeweils HTTP 200, sechs Quellbutton-/Variantenbedingungen erfüllt, Bilder vom Root angesehen und aktueller Tagwächter ohne Treffer. Untracked/CONTINUE und Menge 0 werden nicht als Ausverkauf oder Bestands-/Lieferzusage ausgelegt; keine Checkoutabnahme. Derselbe 18-Sekunden-Master mit 540 Frames und sechs stabilen R52-Kanal-UTMs bleibt erhalten. Neu ist ausschliesslich eine begründete Empfehlung für Hook B «Licht im Detail.» und der TikTok-Titelvorschlag «Licht im Detail. / Sternenlicht-Projektor»; keine kreative Inhaberfreigabe oder Plattformanwendung. Zwölf begrenzte Dokumentbedingungen erfüllt, keine Film-, Rechte-, Ton- oder Sichtabnahme. Vier tatsächliche Originaltakes, genaue Ausführung/Motive und fertige Master-MP4 bleiben unbelegt. Pflichtmusik aktuell hashgleich zum Repository, finale Lizenz-/Hör-/Mischabnahme unbekannt. Vorhandene CJ-Helfer versionsgleich geprüft, keine authentifizierte Laufzeit belegt und kein Helfer ausgeführt; ein fehlendes Plugin ist kein Beweis fehlender Connectoren. Heutige R48-Metricool-/Flow- und R49-GA4/GSC-Berichte werden datiert wiederverwendet, nicht erneut abgefragt. Genau eine Verkaufsaktion bleibt der bereits in R53 belegte Welcome-Service-Zwei-Zeilen-Diff zur separaten Freigabe; keine neue Entdeckung, kein R54-Rebinding oder Klaviyo-Appcall. Die aktuelle ausdrückliche Publikationserlaubnis gilt nur den Website-Verbesserungen; Welcome bleibt ausgeschlossen. R55 auf aktuellen Inhaberhinweis: Authentifiziertes gh und GitHub-Actions-Bild-zu-Video-Weg mit MINIMAX_API_KEY-Verweis frisch nachgewiesen; fehlende lokale CLI/Cloud-Bindings widerlegen diesen Weg nicht. Vorhandenen Trockenlauf 41497876466 erfolgreich und echten Versuch 41498371388 um 19:12 Zürich gescheitert mit HTTP 402 insufficient balance (1008) frisch samt begrenzt maskierter Logs gelesen; kein bestätigtes MP4-Artefakt. Secret-Metadaten-403 ist kein Beweis eines fehlenden Keys. Kein eigener Dispatch/Render/Retry/Guthabenkauf; kostenpflichtige Renders weiterhin untersagt. Geprüfter Weg ist ein Clip-Generator, kein Website-/Social-Publisher; externe Claude-Nutzung bleibt möglich und konkrete Ausführung/Empfang unbestätigt. R53-Websitefreigabe und Welcome-Ausschluss, Tagesgrenzen und beendeter Kauf-Watch bleiben erhalten. R56 auf ausdrückliche Musikfrage: Eine separate neue 18s-Instrumentalhörprobe «Warmes Licht» lokal komponiert und tatsächlich als WAV/MP3 gerendert, 80BPM, reine Synthese ohne Fremdsamples/Soundfonts/API oder Kosten. Elf begrenzte technische/Quellbedingungen bestanden: decodiert18s/48kStereo, WAV24bit, -16LUFS/-3.74dBTP, keine Übersteuerung. Keine Hör-/Kreativ-/Rechtefreigabe oder Film-MP4 behauptet; kanonische Film-Musik hashgleich unverändert. Entwurf hier zum Anhören angeboten, keine Publikation/Automation/Shopänderung oder zusätzlichen Tagesreports. Derselbe offene professionelle Master und alle bisherigen Produktionsvoraussetzungen bleiben erhalten. R64, 03.11.2026: Identitäten passend; 24 Planobjekte/37 PENDING-Kanalzustände, bestätigten Threads-Termin 04.11.18:30 samt Register/JPEG exakt erhalten. Sechs Kennzahl-Definitionen und sechs kleine Abfragen einmalig für 27.10.–02.11.; Datenlücken unbekannt. Projektor 15521256604033/56197916361089 ACTIVE/CHF34.90, nichtleere Tags ohne Sperrtreffer, CONTINUE/tracked=false, nativ/öffentlich verfügbar, HTTP200; auswahl-offen und genaue Default-Ausführung/Motive weiter offen. Pyjama Weiss/PapaS CHF16.90 zwar verfügbar, aber rueckhol-0907 blockiert neue Social-Vorbereitung. Derselbe Master luxe_sternenprojektor_master_20261018 als 18s/540Frames-Storyboard mit zwei Hooks und sechs Text-/UTM-Entwürfen fortgeführt. Neu der geprüfte Eingabevertrag gegen die inzwischen geänderte 9.4s-Foto-Reel-Vorlage mit Musikrotation/optionaler Stimme. Kanonische WAV hashgleich; CREDITS-Mixkit-Hinweis ist keine neue Inhaberfreigabe. Originaltakes/Ausführung/Rechte und finale Film-/Musikabnahme fehlen weiterhin. Kein Render, Master-MP4, Socialwrite oder Ledgerinitialisierung. Drei extern geplante 9.4s-Fotoreels separat tatsächlich gelesen, nicht als eigener Master/PUB-Erfolg ausgegeben.",
+      "nextAllowedStep": "Denselben Master und R52-Aufnahmebogen fortsetzen: vier Originaltakes mit exakter Default-Ausführung, Motivbindung und kommerziellen Bearbeitungs-/Werberechten belegen. Den R64-Eingabevertrag nutzen; keine 9.4s-Fotozoom-/Musikrotations-/Voiceover-Vorlage als Ersatz. Nur kanonische WAV nach finaler Rechte-/Hörabnahme. Erst tatsächlich geschnittene 18s-MP4 vollständig auf Identität, Handlung, Ton, Text und Plattformausschnitte abnehmen lassen. Vor jedem möglichen Push Produkt/Tags/Tracking/Kaufbarkeit, Bio-Ziele, bestätigtes Pinterest-Kontoboard, konkretes YouTube-Postflag und dauerhaftes Register frisch prüfen. Allgemeine YouTube-Zielgruppe ist geklärt, nicht erneut fragen. Bestehenden Threads-Termin erhalten. Drei externe neue Fotoreels sind gesonderte offene Reviewfälle; keine blinde Neuanlage oder Aktivierung. Heutige Reports nicht wiederholen; Kauf-Watch beendet.",
       "blockers": [
         "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
         "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
@@ -1117,6 +1145,26 @@
           "path": "dropship/codex-handoff-20261018/MUSIK-HOERENTWURF-20261102-R56.md",
           "gitBlobSha": "ce126e84d3f8539037ec726e5dc498c6c7a9942f",
           "readAt": "2026-11-02T19:19:14.777771+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261103-R64.md",
+          "gitBlobSha": "cb44bbb3a2f01dbb8c353068c2ea40ef23ab8b1c",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-STORYBOARD-20261103-R64.json",
+          "gitBlobSha": "2664660d15d9a28c162acedab9b47fa95ec41726",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-RENDERWEG-GEGENPROBE-20261103-R64.json",
+          "gitBlobSha": "97eaffd9308252fbbd61102e6d7fce26ce00847c",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1280,6 +1328,21 @@
           "previousBelegArt": "BESTEHENDER_MINIMAX_TROCKENLAUF_UND_402_FEHLER_KEINE_EIGENE_PRODUKTION",
           "previousNextAllowedStep": "Für denselben einen Master die vier tatsächlichen Originaltakes P_OPERATION/P_PROJECTION/P_DETAIL/P_HERO mit exakter Produkt-/Ausführungs-/Motivbindung, Dateihashes und kommerziellen Bearbeitungs-/Werberechten im bestehenden R52-Aufnahmebogen belegen. Hook B und der einzelne TikTok-Titel bleiben Vorschläge; den bisherigen Hook nicht als freigegeben ersetzen. Erst nach belastbaren Quellen denselben Film schneiden und die tatsächliche MP4 auf Identität, Bild, Handlung, Ton, Text und Plattformausschnitte prüfen und dem Inhaber vorlegen. Keine Altclips, Foto-Zoom-Ersatzserie oder kostenpflichtigen Renders. Vor einem späteren Metricool-Push alle Produkt-/Kanal-/Bio-/Board-/YouTube-Postflag-/Registervoraussetzungen frisch prüfen; bestehenden Threads-Termin bewahren. Die bereits geklärte allgemeine YouTube-Zielgruppe nicht erneut fragen. Genau den bestehenden Welcome-Zwei-Zeilen-Entwurf als gesondert unfreigegebene Verkaufsaktion behandeln, nicht anwenden. R53-Websiteauftrag und offener eng gebundener MAIN-CSS-Transfer bleiben gesondert erhalten. Keine weiteren heutigen Reports ohne dokumentierten neuen Anlass; Kauf-Watch bleibt beendet. R55 ergänzt: MiniMax-Weg existiert bereits; vorhandener API-Live-Versuch meldet HTTP 402 insufficient balance. Keinen weiteren kostenpflichtigen Versuch oder Guthabenkauf auslösen. Den begrenzten Clip-Generator nicht als freigegebenen professionellen 18s-Master oder Website-Publisher ausgeben; zunächst weiterhin echte Quellen/Produktbindung/Rechte prüfen.",
           "previousLastEvidencePreserved": "unchanged dated prefix retained"
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "blockiert_r55_minimax_liveversuch_402_keine_takes_rechte_master_mp4",
+          "previousLastEvidenceDate": "2026-11-02",
+          "previousBelegArt": "BESTEHENDER_MINIMAX_TROCKENLAUF_UND_402_FEHLER_KEINE_EIGENE_PRODUKTION",
+          "previousNextAllowedStep": "Für denselben einen Master die vier tatsächlichen Originaltakes P_OPERATION/P_PROJECTION/P_DETAIL/P_HERO mit exakter Produkt-/Ausführungs-/Motivbindung, Dateihashes und kommerziellen Bearbeitungs-/Werberechten im bestehenden R52-Aufnahmebogen belegen. Hook B und der einzelne TikTok-Titel bleiben Vorschläge; den bisherigen Hook nicht als freigegeben ersetzen. Erst nach belastbaren Quellen denselben Film schneiden und die tatsächliche MP4 auf Identität, Bild, Handlung, Ton, Text und Plattformausschnitte prüfen und dem Inhaber vorlegen. Keine Altclips, Foto-Zoom-Ersatzserie oder kostenpflichtigen Renders. Vor einem späteren Metricool-Push alle Produkt-/Kanal-/Bio-/Board-/YouTube-Postflag-/Registervoraussetzungen frisch prüfen; bestehenden Threads-Termin bewahren. Die bereits geklärte allgemeine YouTube-Zielgruppe nicht erneut fragen. Genau den bestehenden Welcome-Zwei-Zeilen-Entwurf als gesondert unfreigegebene Verkaufsaktion behandeln, nicht anwenden. R53-Websiteauftrag und offener eng gebundener MAIN-CSS-Transfer bleiben gesondert erhalten. Keine weiteren heutigen Reports ohne dokumentierten neuen Anlass; Kauf-Watch bleibt beendet. R55 ergänzt: MiniMax-Weg existiert bereits; vorhandener API-Live-Versuch meldet HTTP 402 insufficient balance. Keinen weiteren kostenpflichtigen Versuch oder Guthabenkauf auslösen. Den begrenzten Clip-Generator nicht als freigegebenen professionellen 18s-Master oder Website-Publisher ausgeben; zunächst weiterhin echte Quellen/Produktbindung/Rechte prüfen. R56: Der Inhaber kann die separate Musik-Hörprobe anhören. Ohne neue ausdrückliche Anweisung keine kanonische Musik ersetzen oder den Entwurf im Film/auf Kanälen einsetzen; keine zusätzliche Produktfilm-Variante daraus ableiten.",
+          "previousBlockers": [
+            "Vier passende native Originaltakes fehlen; aktuelle Shopreferenz852×480/25fps und alte960×540/25fps sind dafür ungeeignet",
+            "Default-Ausführung, Motive, Strom/Lieferumfang und kommerzielle Film-/Bearbeitungsrechte ungeklärt; Musikherkunft dokumentiert, finale Rechte-/Hörabnahme offen",
+            "Dauerhaftes Publikationsregister und Filmabnahme nicht bestätigt; fehlendes Register bleibt unbekannt",
+            "R55: vorhandener MiniMax-Liveversuch 41498371388 mit HTTP 402 insufficient balance (1008) fehlgeschlagen; keine MP4 bestätigt. Kostenpflichtige Renders bleiben ausdrücklich nicht erlaubt; Key-Verfügbarkeit ersetzt weder Kostenfreigabe noch Film-/Rechteabnahme."
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
       ],
       "visualAcceptanceDraft": {
@@ -1496,6 +1559,22 @@
         "costsIncurred": false,
         "publication": false,
         "masterIdRetained": "luxe_sternenprojektor_master_20261018"
+      },
+      "morningPackageR64": {
+        "date": "2026-11-03",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "professionalMasterVerified": false,
+        "newRenders": 0,
+        "socialWrites": 0,
+        "ledgerWrites": 0,
+        "productPriceChf": "34.90",
+        "pyjamaSocialBlocked": true,
+        "externalVideoReviewSeparate": true
       }
     },
     {
@@ -1504,10 +1583,10 @@
       "priorityKind": "SETZUNG",
       "state": "blockiert",
       "title": "Vier bereits genehmigte Klaviyo-DNS-Ergänzungen",
-      "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN/VORBEREITET",
-      "lastEvidence": "Genau vier bereits genehmigte DNS-Ergänzungen öffentlich gegengeprüft: drei CNAME-Namen NXDOMAIN, erwarteter Klaviyo-TXT nicht in Antwort. Klaviyo sendingDomain pending. Nur öffentliche Stichprobe, kein vollständiger Zonenstand. Aktuelles Environment ohne Credentialbindungen; kein authentifizierter DNS-Writer verfügbar. Kein Write und keine erneute Genehmigungsfrage.",
-      "nextAllowedStep": "Legitimen authentifizierten DNS-Schreibzugang und vollständigen Zonenstand prüfen, sobald verfügbar. Ausschliesslich vier bereits genehmigte Records ergänzen und einzeln zurücklesen; übrige Zone erhalten.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "Genau vier bereits genehmigte DNS-Ergänzungen öffentlich gegengeprüft: drei CNAME-Namen NXDOMAIN, erwarteter Klaviyo-TXT nicht in Antwort. Klaviyo sendingDomain pending. Nur öffentliche Stichprobe, kein vollständiger Zonenstand. Aktuelles Environment ohne Credentialbindungen; kein authentifizierter DNS-Writer verfügbar. Kein Write und keine erneute Genehmigungsfrage. R64, 03.11.2026: Genau vier bereits genehmigte Zielwerte öffentlich über Resolver abgefragt. Drei CNAME-Namen mit ResolverstatusNXDOMAIN, TXT@ohne erwarteten Verifizierungswert. Dies ist eine öffentliche Stichprobe, kein vollständiger Zonenstand oder authentifizierter Editor. Keine DNS-/Domainaktivierung, keine neue Freigabe nötig; Schreibzugang weiterhin nicht verifiziert.",
+      "nextAllowedStep": "Genehmigung der vier bestehenden Records erhalten. Sobald legitimer authentifizierter DNS-Schreibzugang verfügbar ist, vollständigen aktuellen Zonenstand lesen und nur die vier genehmigten Ergänzungen unter Erhalt aller anderen Records anwenden und einzeln zurücklesen. Öffentliche Resolverbeobachtung ersetzt keine Zone oder Kontoberechtigung; keine Schlüssel/Passwörter im Chat anfordern, keine neue Genehmigung derselben vier Records verlangen.",
       "blockers": [
         "Authentifizierter DNS-Schreibzugang fehlt"
       ],
@@ -1525,6 +1604,11 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
           "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
           "readAt": "2026-10-31T23:53:21.344768+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1540,8 +1624,31 @@
           "blockers": [
             "Authentifizierter DNS-Schreibzugang fehlt"
           ]
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "blockiert",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "GEMESSEN/VORBEREITET",
+          "previousNextAllowedStep": "Legitimen authentifizierten DNS-Schreibzugang und vollständigen Zonenstand prüfen, sobald verfügbar. Ausschliesslich vier bereits genehmigte Records ergänzen und einzeln zurücklesen; übrige Zone erhalten.",
+          "previousBlockers": [
+            "Authentifizierter DNS-Schreibzugang fehlt"
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
-      ]
+      ],
+      "publicRecordCheckR64": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        "observedApprovedTargets": 0,
+        "queries": 4,
+        "ownWrites": 0,
+        "authenticatedWriter": "not_verified"
+      }
     },
     {
       "id": "ads-pyjama-start-24403263741",
@@ -2426,20 +2533,19 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r53_aktuelle_main_einregelfassung_lokal_geprueft_uebernahme_offen",
+      "state": "r64_breitenregel_main_oeffentlich_bestaetigt_funktionsabnahme_offen",
       "title": "Mobile Website im Stil der App weiterentwickelt",
-      "lastEvidenceDate": "2026-11-02",
-      "belegArt": "VIER_PFADE_VERGLICHEN_AKTUELLE_MAIN_EINREGELDATEI_NUR_LOKAL_VALID_KEIN_PUBLISH",
-      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R45 auf neuen Screenshot-Auftrag: Drei dekorative Geschenkverpackungs-Bilder für UnterCHF25/UnterCHF50/Geschenkideen erstellt, ShopifyREADY/CDN200/pixelgleich. Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css im bestehendenEntwurf aktualisiert und exakt nativ zurückgelesen. Mobil86%-Wischkarten mit nächstemRand, Desktop3Spalten, weisseHTMLTexte über dunklemVerlauf; keinAutoplay/JS-/LocaleWrite. BestehendeZiele undPreisfilter24.99/49.99 exakt erhalten. Drei TAG-basierteCollections begrenzt geprüft; unfiltrierte25er20Stichprobe enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung/Regeländerung. ValidatorVALIDmiteinemaltenCDN-Hinweis. 20nativeBedingungen auf360/390/1440px mit echtemTouch/Tab/Pfeilen bestanden; Screenshotnach UI-AuswahlNurNotwendige angesehen, keineHTMLOverrides. VorläufigeProgrammfokusprobe scrollteanders, tatsächlicheTabfolge vollständigsichtbar; keinbehobenerProduktfehler behauptet. GET/HEAD-Guard83blockierteRequests/8Fetchfehler, keineCheckout-/Trackingabnahme. MAINunverändert, EntwurfUNPUBLISHED, keineVeröffentlichung. R44Collage/Banner/52Referenzen undweiterebestehendeÄnderungen erhalten. R46: Auf Wunsch Beauty/Pflege und Sport durch zwei neue illustrative Motive ersetzt: ruhige Pflegeszene und Trainingsmotiv, ohne Werbeschrift oder Logos. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich. Nur Section und Directory-Snippet im bestehenden Entwurf212978598279 geändert und exakt nativ bestätigt. Dieselben zwei Bilder erscheinen in Entdecken-Karten, Mini-Kacheln und Kategorieübersicht. 41 begrenzte native Bild-/Link-/Layoutbedingungen auf390/1440px bestanden und Screenshots angesehen. GET/HEAD-Guard110 blockierteRequests/13Fetchfehler; keineCheckout-/Trackingabnahme. Kein globalerCollection-Bild-/Produkt-/CSS-/JS-/Locale-Write. R45Budgetkarussell/Preisfilter, R44Collage/Banner/52Referenzen undandereLinks erhalten. EntwurfUNPUBLISHED, MAINunverändert, keinPublish. Claude-Einstieg aufR46 aktualisiert, tatsächlicherEmpfang unbekannt. R47: Auf Wunsch Winterideen ansehen und die darunterliegende Weihnachtsideen entdecken mit zwei neuen illustrativen Winter-/Weihnachtsszenen versehen. Zwei Shopify-Bilddateien READY/CDN200/pixelgleich. Nur Section und CSS im selben Entwurf212978598279 geändert und vollständig exakt nativ zurückgelesen. Mobil zwei Bildkarten untereinander, Desktop neben Titel, bisherige Labels/Locale-Schlüssel/Links erhalten.26begrenzte native Bedingungen auf360/390/1024/1440px bestanden, Mobil-/Desktopbilder visuell geprüft. GET/HEAD-Guard70blockierteRequests/8Fetchfehler; keineCheckout-/Tracking-/Vollthemeabnahme. Validator VALID mit bestehendemCDN-Hinweis/CSS SUCCESS; SchemaCache und fehlendeFixture-settings_schema.json dokumentiert. R46Beauty/Sport/Directory, R45Budgetkarussell/Bilder/Preisfilter undR44Änderungen erhalten. KeinJS-/Locale-/globalerCollection-/Produktwrite, EntwurfUNPUBLISHED/MAINunverändert, keinPublish. Claude-Einstieg aufR47, tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R51: Nach live verknüpfter Technik-Unterstruktur ist auf Mittel- und Blattseiten im tatsächlichen MAIN213013037447 ein mobiler16px-Seitenüberlauf belegt; öffentliche Unterseitenprüfung28/30 bestanden, zwei Fehler bleiben live. Nur eine CSS-Regel für lx-uf wurde im alten UNPUBLISHED-Entwurf212978598279 korrigiert, native Datei templates/collection.json exakt bestätigt (MD5c7020b391b776427a1346a91540c646f).36/36 begrenzte echte Vorschauprüfungen auf390/1440px bestanden, keine DOM-/CSS-Overrides. MAIN-Datei unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84, kein eigener MAIN-Write oder Publish. Die einzelne Regel ist gegen frischen MAIN als enger Patch vorbereitet; keine vollständige alte Kopie über den neuen MAIN veröffentlichen. Aktuelle Schrift-/Banner-/Reviewänderungen erhalten. Technischer Connectorvertrag blockiert MAIN-Dateiwrites/Publish, keine fehlende Inhaberfreigabe behaupten oder nochmals fragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "Auf «Startseite mehr Produkte» im vorhandenen UNPUBLISHED-Entwurf 212978598279 den Bereich Noch mehr entdecken mit acht echten, exakt ID-/Handle-geprüften Artikeln aus Haustierbedarf, Beauty, Taschen und Schmuck ergänzt. 22 gezielte Startseiten-Kandidaten ohne Pagination geprüft; gesperrte oder widersprüchliche Artikel nicht neu platziert. Acht product_list-Ressourcen vermeiden zusätzliche all_products-Zugriffe; bisherige 20 Handles erhalten. Mobil zwei/Desktop vier Spalten, echte contain-Bilder, dynamische CHF-Mindestpreise und genaue produktgebundene Bewertungen. Sieben bestätigte Nullstände, Armband 5/5 bei acht Stimmen. Sechs Dateien nativ bestätigt; 26 Basisprüfungen, neun gezielte Roh-HTML/Bild-Gegenproben und zwei CTA-Prüfungen bestanden, ursprüngliche methodische Fehlbefunde erhalten. Acht Produktseiten/JSONs HTTP200 und verfügbare Varianten. Vorhandene Kategorien/Trends/Extras/Collage/Video/Reviews/FR und Sticker-Einstieg erhalten. Öffentliches MAIN 212971061639 unverändert, kein eigener Publish oder Produkt-/Preis-/Tag-/Reviewwrite. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R45 auf neuen Screenshot-Auftrag: Drei dekorative Geschenkverpackungs-Bilder für UnterCHF25/UnterCHF50/Geschenkideen erstellt, ShopifyREADY/CDN200/pixelgleich. Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css im bestehendenEntwurf aktualisiert und exakt nativ zurückgelesen. Mobil86%-Wischkarten mit nächstemRand, Desktop3Spalten, weisseHTMLTexte über dunklemVerlauf; keinAutoplay/JS-/LocaleWrite. BestehendeZiele undPreisfilter24.99/49.99 exakt erhalten. Drei TAG-basierteCollections begrenzt geprüft; unfiltrierte25er20Stichprobe enthält einPreisbeispielCHF32.90, keineVollvariantenprüfung/Regeländerung. ValidatorVALIDmiteinemaltenCDN-Hinweis. 20nativeBedingungen auf360/390/1440px mit echtemTouch/Tab/Pfeilen bestanden; Screenshotnach UI-AuswahlNurNotwendige angesehen, keineHTMLOverrides. VorläufigeProgrammfokusprobe scrollteanders, tatsächlicheTabfolge vollständigsichtbar; keinbehobenerProduktfehler behauptet. GET/HEAD-Guard83blockierteRequests/8Fetchfehler, keineCheckout-/Trackingabnahme. MAINunverändert, EntwurfUNPUBLISHED, keineVeröffentlichung. R44Collage/Banner/52Referenzen undweiterebestehendeÄnderungen erhalten. R46: Auf Wunsch Beauty/Pflege und Sport durch zwei neue illustrative Motive ersetzt: ruhige Pflegeszene und Trainingsmotiv, ohne Werbeschrift oder Logos. Zwei neue Shopify-Dateien READY/CDN200/pixelgleich. Nur Section und Directory-Snippet im bestehenden Entwurf212978598279 geändert und exakt nativ bestätigt. Dieselben zwei Bilder erscheinen in Entdecken-Karten, Mini-Kacheln und Kategorieübersicht. 41 begrenzte native Bild-/Link-/Layoutbedingungen auf390/1440px bestanden und Screenshots angesehen. GET/HEAD-Guard110 blockierteRequests/13Fetchfehler; keineCheckout-/Trackingabnahme. Kein globalerCollection-Bild-/Produkt-/CSS-/JS-/Locale-Write. R45Budgetkarussell/Preisfilter, R44Collage/Banner/52Referenzen undandereLinks erhalten. EntwurfUNPUBLISHED, MAINunverändert, keinPublish. Claude-Einstieg aufR46 aktualisiert, tatsächlicherEmpfang unbekannt. R47: Auf Wunsch Winterideen ansehen und die darunterliegende Weihnachtsideen entdecken mit zwei neuen illustrativen Winter-/Weihnachtsszenen versehen. Zwei Shopify-Bilddateien READY/CDN200/pixelgleich. Nur Section und CSS im selben Entwurf212978598279 geändert und vollständig exakt nativ zurückgelesen. Mobil zwei Bildkarten untereinander, Desktop neben Titel, bisherige Labels/Locale-Schlüssel/Links erhalten.26begrenzte native Bedingungen auf360/390/1024/1440px bestanden, Mobil-/Desktopbilder visuell geprüft. GET/HEAD-Guard70blockierteRequests/8Fetchfehler; keineCheckout-/Tracking-/Vollthemeabnahme. Validator VALID mit bestehendemCDN-Hinweis/CSS SUCCESS; SchemaCache und fehlendeFixture-settings_schema.json dokumentiert. R46Beauty/Sport/Directory, R45Budgetkarussell/Bilder/Preisfilter undR44Änderungen erhalten. KeinJS-/Locale-/globalerCollection-/Produktwrite, EntwurfUNPUBLISHED/MAINunverändert, keinPublish. Claude-Einstieg aufR47, tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R51: Nach live verknüpfter Technik-Unterstruktur ist auf Mittel- und Blattseiten im tatsächlichen MAIN213013037447 ein mobiler16px-Seitenüberlauf belegt; öffentliche Unterseitenprüfung28/30 bestanden, zwei Fehler bleiben live. Nur eine CSS-Regel für lx-uf wurde im alten UNPUBLISHED-Entwurf212978598279 korrigiert, native Datei templates/collection.json exakt bestätigt (MD5c7020b391b776427a1346a91540c646f).36/36 begrenzte echte Vorschauprüfungen auf390/1440px bestanden, keine DOM-/CSS-Overrides. MAIN-Datei unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84, kein eigener MAIN-Write oder Publish. Die einzelne Regel ist gegen frischen MAIN als enger Patch vorbereitet; keine vollständige alte Kopie über den neuen MAIN veröffentlichen. Aktuelle Schrift-/Banner-/Reviewänderungen erhalten. Technischer Connectorvertrag blockiert MAIN-Dateiwrites/Publish, keine fehlende Inhaberfreigabe behaupten oder nochmals fragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
-      "nextAllowedStep": "Ein bereits autorisierter, legitim technisch fähiger MAIN-Writer liest Shopidentität, tatsächlichen MAIN 213013037447 und templates/collection.json unmittelbar frisch. R53-Ausgangs-MD5 ist 6c0ccc1bf403cc94bf55d1dd98b3ea84; die lokal vorbereitete Ein-Regel-Fassung hat MD5 bbacad38aabc5e292ed819b3d1b01782. Bei unveränderter Quelle nur genau diesen CSS-Regel-Diff übernehmen, bei neuer Quelle eng neu binden und alle anderen Bytes einschliesslich Schrift/Banner, Navigation und Bewertungen erhalten. Danach tatsächlichen MAIN nativ und die zwei mobilen Mittel-/Blattansichten öffentlich prüfen. Kein ganzes altes Theme oder komplette alte Collectiondatei publizieren. Der vorhandene Connector blockiert MAIN-Writes/Publish; Grenze nicht umgehen und nicht nochmals dieselbe Websitefreigabe verlangen. Unklaren Write nicht wiederholen. Welcome bleibt gesondert unfreigegeben; keine Reports, Nachrichten oder Konfigurationsänderungen.",
+      "nextAllowedStep": "Die bereits vorhandene aktuelle Breitenregel erhalten und keinen alten R53-Gesamtkandidaten/identischen Patch erneut anwenden. Mit aktuellem MAIN und genau Handy & Laden/Powerbanks die begrenzte DE/FR-Abnahme bei 390/1440px vor/nach Fokus durchführen; Quellpräsenz ist keine vollständige Funktionsabnahme. Neue Schrift, Banner, Navigation und übrige Funktionen erhalten. Bei neuer reproduzierter Ursache nur einen frischen minimalen Diff vorbereiten. Bestehende Websitefreigabe nicht erneut verlangen; kein Umgehen technischer MAIN-Schreibgrenzen oder blindes Theme-Publish. Welcome bleibt separat unfreigegeben.",
       "blockers": [
         "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
         "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
         "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert.",
         "Neue acht Produktkarten liegen nur im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Writes und Veröffentlichung; vorhandener öffentlicher Bewertungs-/FR-Stand bleibt erhalten.",
-        "R51 mobiler16px-Überlauf bleibt im tatsächlichen MAIN live; eine CSS-Regel nur im alten UNPUBLISHED-Entwurf korrigiert. MAIN-Writer durch aktuellen Connectorvertrag nicht verfügbar; keine erneute Freigabe erforderlich.",
-        "R53: Aktuelle MAIN-Ein-Regel-Kandidatendatei ist nur lokal vorbereitet; kein nativer Write/Publish. Zwei echte MAIN-Mobilansichten weiterhin mit 16 px-Überlauf; alter Entwurf darf nicht als Gesamtkopie veröffentlicht werden."
+        "R64: Breitenregel nativ/öffentlich vorhanden; aktuelle 390/1440-DE/FR-Funktionswerte und vollständige mobile Abnahme noch unbekannt. Alten R53-Patch nicht nochmals anwenden."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -2631,6 +2737,21 @@
           "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
           "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
           "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+          "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-ABNAHME-20261103-R64.md",
+          "gitBlobSha": "44c592d9df39e41d551bfddfb1efb1f975e73a88",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -2888,6 +3009,23 @@
           "previousBelegArt": "EINE_CSSREGEL_NUR_ENTWURF_EXAKT_36_VORSCHAUBEDINGUNGEN_MAIN_UEBERLAUF_OFFEN",
           "previousNextAllowedStep": "Ein legitim berechtigter, technisch fähiger MAIN-Writer liest Shopidentität, tatsächlichen MAIN213013037447 und templates/collection.json frisch. Nur die eine R51-lx-uf-CSS-Regel aus dem konkreten Patch übernehmen; bei abweichendem Ausgangs-MD5 gezielt neu binden und aktuelle Schrift/Banner, Review-/Produkt-/Navigationsteile erhalten. Danach exakt nativ zurücklesen und die zwei fehlgeschlagenen echten MAIN-Mobilansichten prüfen. Bestehende ausdrückliche Website-/Sortierfreigabe gilt, keine erneute gleiche Freigabefrage. Die Toolgrenze nicht umgehen, keine neue Kopie und nicht das ganze alte Theme212978598279 veröffentlichen. Restliche R47/R46-/Selbstgestalten-Integration weiterhin nur nach vollständigem aktuellem Diff bestätigen; keine globale Abnahme aus der Vorschau ableiten.",
           "previousLastEvidencePreserved": "Existing lastEvidence remains an unchanged dated prefix; previous sources and history retained."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "r53_aktuelle_main_einregelfassung_lokal_geprueft_uebernahme_offen",
+          "previousLastEvidenceDate": "2026-11-02",
+          "previousBelegArt": "VIER_PFADE_VERGLICHEN_AKTUELLE_MAIN_EINREGELDATEI_NUR_LOKAL_VALID_KEIN_PUBLISH",
+          "previousNextAllowedStep": "Ein bereits autorisierter, legitim technisch fähiger MAIN-Writer liest Shopidentität, tatsächlichen MAIN 213013037447 und templates/collection.json unmittelbar frisch. R53-Ausgangs-MD5 ist 6c0ccc1bf403cc94bf55d1dd98b3ea84; die lokal vorbereitete Ein-Regel-Fassung hat MD5 bbacad38aabc5e292ed819b3d1b01782. Bei unveränderter Quelle nur genau diesen CSS-Regel-Diff übernehmen, bei neuer Quelle eng neu binden und alle anderen Bytes einschliesslich Schrift/Banner, Navigation und Bewertungen erhalten. Danach tatsächlichen MAIN nativ und die zwei mobilen Mittel-/Blattansichten öffentlich prüfen. Kein ganzes altes Theme oder komplette alte Collectiondatei publizieren. Der vorhandene Connector blockiert MAIN-Writes/Publish; Grenze nicht umgehen und nicht nochmals dieselbe Websitefreigabe verlangen. Unklaren Write nicht wiederholen. Welcome bleibt gesondert unfreigegeben; keine Reports, Nachrichten oder Konfigurationsänderungen.",
+          "previousBlockers": [
+            "Vollständiger Original-Layoutvalidator meldet auch unverändert einen vorhandenen RawNode-Skript-Parserfehler. Neue Layoutfragmente, Section und Index separat validiert und nativ geprüft; keine globale Fehlerfreiheit/Checkout-/EN-Abnahme.",
+            "Professioneller Produktfilm-Master bleibt separater Material-/Rechte-/Qualitätsauftrag; bestehendes Websitevideo ist kein neuer Master.",
+            "fr.json hat ausserhalb der neuen Startseiten-UI weiterhin 466 bereits bestehende fehlende Übersetzungsdiagnosen; keine neue Validierungsfehlermeldung. Vollständige FR-/Katalogübersetzung nicht abgenommen. EN/IT unpubliziert, unverändert.",
+            "Neue acht Produktkarten liegen nur im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Writes und Veröffentlichung; vorhandener öffentlicher Bewertungs-/FR-Stand bleibt erhalten.",
+            "R51 mobiler16px-Überlauf bleibt im tatsächlichen MAIN live; eine CSS-Regel nur im alten UNPUBLISHED-Entwurf korrigiert. MAIN-Writer durch aktuellen Connectorvertrag nicht verfügbar; keine erneute Freigabe erforderlich.",
+            "R53: Aktuelle MAIN-Ein-Regel-Kandidatendatei ist nur lokal vorbereitet; kein nativer Write/Publish. Zwei echte MAIN-Mobilansichten weiterhin mit 16 px-Überlauf; alter Entwurf darf nicht als Gesamtkopie veröffentlicht werden."
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
       ],
       "followUpFindings": [
@@ -3129,6 +3267,42 @@
         "mainMobileViews": 2,
         "draftMobileViews": 2,
         "notWholeThemeAcceptance": true
+      },
+      "resolvedBlockers": [
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "previousBlocker": "R51 mobiler16px-Überlauf bleibt im tatsächlichen MAIN live; eine CSS-Regel nur im alten UNPUBLISHED-Entwurf korrigiert. MAIN-Writer durch aktuellen Connectorvertrag nicht verfügbar; keine erneute Freigabe erforderlich.",
+          "resolution": "Nur Quell-/Übernahmeblocker ersetzt: gewünschte Regel jetzt im aktiven Theme und öffentlich. Tatsächlicher aktueller mobiler Überlauf bleibt unbekannt, keine funktionale Vollabnahme."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "previousBlocker": "R53: Aktuelle MAIN-Ein-Regel-Kandidatendatei ist nur lokal vorbereitet; kein nativer Write/Publish. Zwei echte MAIN-Mobilansichten weiterhin mit 16 px-Überlauf; alter Entwurf darf nicht als Gesamtkopie veröffentlicht werden.",
+          "resolution": "Nur Quell-/Übernahmeblocker ersetzt: gewünschte Regel jetzt im aktiven Theme und öffentlich. Tatsächlicher aktueller mobiler Überlauf bleibt unbekannt, keine funktionale Vollabnahme."
+        }
+      ],
+      "currentMainWidthVerifiedR64": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+          "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "role": "MAIN",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "filename": "templates/collection.json",
+        "nativeMd5": "457082cc5d27f1f348ba45f1722d40c1",
+        "computedMd5": "457082cc5d27f1f348ba45f1722d40c1",
+        "sha256": "96d882690659d6634caed4911407a03bdae9b5342ae2015fcfe9205267fb926f",
+        "desiredWidthRuleAlreadyPresent": true,
+        "exactRule": ".lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}",
+        "historicalR53BeforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+        "historicalR53CandidateMd5": "bbacad38aabc5e292ed819b3d1b01782",
+        "oldWholeCandidateMustNotOverwriteCurrent": true,
+        "otherParsedFieldsMatchR53Candidate": true,
+        "additionalChangeObserved": "URL-deduplication in the same lux_subchips custom Liquid block, compared with R53 candidate. No own write or actor attribution.",
+        "nativeWrittenByThisAgent": false,
+        "fullFunctionalAcceptance": false,
+        "ownThemeWrites": 0
       }
     },
     {
@@ -3314,11 +3488,11 @@
       "priorityKind": "SETZUNG",
       "state": "r54_oeffentliche_de_stichprobe_bestaetigt_fr_und_desktop_rest_unbekannt",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
-      "lastEvidenceDate": "2026-11-02",
-      "belegArt": "BEGRENZTE_VIER_UI_ANSICHTEN_36_BEDINGUNGEN_TEILMESSUNG_KEIN_PUBLISH",
-      "lastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R53 nach ausdrücklicher Klärung «Die Website-Verbesserungen»: 13 bereits bekannte frühere Releasepfade gezielt per aktuellem MAIN-/Entwurfs-MD5 verglichen. Elf sind identisch, einschliesslich der Galerie-JSON mit den dokumentierten 52 Referenzen, Editor-JS/CSS/Section, DE/EN/FR-Locale-Dateien, Index, Startseiten-Section und Kategorie-Directory. Zwei Pfade unterscheiden sich: assets/luxe-edit.css und templates/collection.json. Frischer Bodyvergleich bestätigt: Das aktuelle MAIN-Stylesheet enthält den vollständigen Entwurfsinhalt und zusätzlich acht Zeilen zur mobilen Hero-Kürzung; diese aktuelle Ergänzung erhalten. Die Breitenkorrektur der Collectiondatei bleibt offen. Elf bekannte Pfade sind damit nativ bereits im tatsächlichen MAIN belegt; daraus folgen weder eine vollständige Theme-/öffentliche Personalizer-/Kaufbarkeitsabnahme noch eine eigene Veröffentlichung. Keinen alten Gesamtentwurf publizieren. Die aktuelle Freigabe gilt ausschliesslich den Website-Verbesserungen. R54: Den offenen R53-Schritt mit vier tatsächlichen öffentlichen DE-/FR-Kontexten bei 390/1440 px rein lesend weiterbearbeitet, ohne Vorschau-ID, DOM-/CSS-Override, Warenkorb, Checkout oder Shopwrite. MAIN 213013037447 in beiden DE-Ansichten nativ im Browser bestätigt. DE 390 bestand 21/21 Bedingungen für Kategorien, Suche, echte Grusskarten-Herstellerbilder, drei metrische Grössenanzeigen und exakte Variantenbindung; keine neue physische Massvalidierung. Der vorhandene T-Shirt-Angebotsdialog zeigt Hersteller-Variante 4018 Schwarz/L, eingebettete Shopify-Variante 55794951324033, CHF 24.90 und bestehenden Produktlink. Das ist Anzeige-/Zuordnungsbeleg, kein erneuter nativer Produkt-, Warenkorb- oder Checkoutnachweis. DE 1440 bestand die 15 aufgezeichneten Bedingungen bis zum Grusskartendialog; anschliessender Reset-Timeout liess die Angebotsfolge unbekannt. FR 390/1440 lud aktuelle Katalog-Assets mit HTTP 200, die frühere UI-/Scroll-Zeitüberschreitung liess UI, Bilder, Preis und Theme-ID unbekannt. 36 aufgezeichnete Bedingungen bestanden, drei Ablauf-Timeouts; keine volle Vier-Ansichten-, Personalizer- oder Kaufbarkeitsabnahme und kein belegter Shopfehler. Die eng begrenzte Auswertung gespeicherter Zustände zeigt: FR 390 protokollierte den sprachneutralen Katalogselektor als sichtbar mit data-initialized=true, FR 1440 lief beim Scrollen in den Timeout; der DE-Desktop-Reset war als type=button sichtbar/aktiviert und begann den Klick. Die konkrete Ursache bleibt unbekannt, kein falscher sprachabhängiger Selektor oder Frontendfehler belegt. Wegen gekürzter Fehlermeldungen fehlen vollständige Trace-/Fehlerzeitpunktdaten. Fünf gespeicherte Screenshots wurden angesehen. Die sichtbaren 572 Modelle sind datierte Herstellerreferenzen, keine 572 kaufbaren Shopangebote; 13’160 historische Varianten hier nicht vollständig neu gezählt. Der Hinweis auf noch nicht verknüpfte Gestaltung/Bestellung bleibt sichtbar. Keine eigene Veröffentlichung oder Themeänderung. R53-Website-Freigabe, aktuelle zusätzliche MAIN-Hero-CSS-Zeilen und eng gebundener offener Collectionbreitenfix bleiben erhalten.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R53 nach ausdrücklicher Klärung «Die Website-Verbesserungen»: 13 bereits bekannte frühere Releasepfade gezielt per aktuellem MAIN-/Entwurfs-MD5 verglichen. Elf sind identisch, einschliesslich der Galerie-JSON mit den dokumentierten 52 Referenzen, Editor-JS/CSS/Section, DE/EN/FR-Locale-Dateien, Index, Startseiten-Section und Kategorie-Directory. Zwei Pfade unterscheiden sich: assets/luxe-edit.css und templates/collection.json. Frischer Bodyvergleich bestätigt: Das aktuelle MAIN-Stylesheet enthält den vollständigen Entwurfsinhalt und zusätzlich acht Zeilen zur mobilen Hero-Kürzung; diese aktuelle Ergänzung erhalten. Die Breitenkorrektur der Collectiondatei bleibt offen. Elf bekannte Pfade sind damit nativ bereits im tatsächlichen MAIN belegt; daraus folgen weder eine vollständige Theme-/öffentliche Personalizer-/Kaufbarkeitsabnahme noch eine eigene Veröffentlichung. Keinen alten Gesamtentwurf publizieren. Die aktuelle Freigabe gilt ausschliesslich den Website-Verbesserungen. R54: Den offenen R53-Schritt mit vier tatsächlichen öffentlichen DE-/FR-Kontexten bei 390/1440 px rein lesend weiterbearbeitet, ohne Vorschau-ID, DOM-/CSS-Override, Warenkorb, Checkout oder Shopwrite. MAIN 213013037447 in beiden DE-Ansichten nativ im Browser bestätigt. DE 390 bestand 21/21 Bedingungen für Kategorien, Suche, echte Grusskarten-Herstellerbilder, drei metrische Grössenanzeigen und exakte Variantenbindung; keine neue physische Massvalidierung. Der vorhandene T-Shirt-Angebotsdialog zeigt Hersteller-Variante 4018 Schwarz/L, eingebettete Shopify-Variante 55794951324033, CHF 24.90 und bestehenden Produktlink. Das ist Anzeige-/Zuordnungsbeleg, kein erneuter nativer Produkt-, Warenkorb- oder Checkoutnachweis. DE 1440 bestand die 15 aufgezeichneten Bedingungen bis zum Grusskartendialog; anschliessender Reset-Timeout liess die Angebotsfolge unbekannt. FR 390/1440 lud aktuelle Katalog-Assets mit HTTP 200, die frühere UI-/Scroll-Zeitüberschreitung liess UI, Bilder, Preis und Theme-ID unbekannt. 36 aufgezeichnete Bedingungen bestanden, drei Ablauf-Timeouts; keine volle Vier-Ansichten-, Personalizer- oder Kaufbarkeitsabnahme und kein belegter Shopfehler. Die eng begrenzte Auswertung gespeicherter Zustände zeigt: FR 390 protokollierte den sprachneutralen Katalogselektor als sichtbar mit data-initialized=true, FR 1440 lief beim Scrollen in den Timeout; der DE-Desktop-Reset war als type=button sichtbar/aktiviert und begann den Klick. Die konkrete Ursache bleibt unbekannt, kein falscher sprachabhängiger Selektor oder Frontendfehler belegt. Wegen gekürzter Fehlermeldungen fehlen vollständige Trace-/Fehlerzeitpunktdaten. Fünf gespeicherte Screenshots wurden angesehen. Die sichtbaren 572 Modelle sind datierte Herstellerreferenzen, keine 572 kaufbaren Shopangebote; 13’160 historische Varianten hier nicht vollständig neu gezählt. Der Hinweis auf noch nicht verknüpfte Gestaltung/Bestellung bleibt sichtbar. Keine eigene Veröffentlichung oder Themeänderung. R53-Website-Freigabe, aktuelle zusätzliche MAIN-Hero-CSS-Zeilen und eng gebundener offener Collectionbreitenfix bleiben erhalten. R64, 03.11.2026: Verwandten Collectionbreiten-Teil neu gebunden: aktuelle Regel bereits im aktiven Theme/öffentlich vorhanden, alter R53-Patch darf nicht erneut angewandt werden. Keine neue vollständige Personalizer-/FR-/Desktopabnahme behauptet.",
       "previewUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259",
-      "nextAllowedStep": "Im nächsten bereits bestehenden Lauf die beiden frühen FR-UI-/Scroll-Timeouts und den DE-Desktop-Reset in einer begrenzten rein lesenden Diagnose mit aktuellem Zustand vor dem Dialogschliessen und vollständigerer Fehleraufnahme weiter untersuchen; dieser unabhängige Leseschritt ist bereits autorisiert und erfordert keine erneute Freigabe. Nur einen reproduzierten Quellfehler als Änderungsgrund werten; ohne Ursache keinen spekulativen CSS-/JS-Patch, keine alte Gesamtkopie und keinen Publish ableiten. Die vollständige öffentliche DE/FR-Mobil-/Desktopabnahme, echte Produkt-/Varianten-/Bildrechtebindung und Kaufbarkeit bleiben jeweils gesondert zu belegen. Die elf R53-nativ bestätigten bekannten Pfade und das aktuelle zusätzliche mobile Hero-CSS erhalten. Den autorisierten Collectionbreitenfix nur frisch an MAIN gebunden über einen legitim fähigen Writer übernehmen und nativ/öffentlich zurücklesen; keine erneute gleiche Websitefreigabe verlangen. Welcome bleibt ausdrücklich separat unfreigegeben.",
+      "nextAllowedStep": "Die früheren FR-Mobil-/Scroll-Timeouts und den DE-Desktop-Reset begrenzt rein lesend mit aktuellem Zustand vor Dialogschliessen und Fehleraufnahme weiter untersuchen. Nur reproduzierten Quellfehler als Änderungsgrund verwenden; keine spekulative alte Gesamtkopie oder Publikation. Vollständige DE/FR-/SKU-/Bildrechte-/Kaufbarkeitsabnahme und Fulfilmentbindung bleiben offen. R64-Collectionbreitenregel ist bereits nativ/öffentlich vorhanden; alten R53-Patch nicht nochmals anwenden. Schrift, Banner und belegte Funktionen erhalten; Websitefreigabe nicht erneut verlangen. Welcome bleibt separat unfreigegeben.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -3709,6 +3883,16 @@
           "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261102-R54.json",
           "gitBlobSha": "8833412a8099c41b45761a0d40258bde3525fdcd",
           "readAt": "2026-11-02T18:26:50.969075Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+          "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3925,6 +4109,22 @@
           "previousBelegArt": "BEGRENZTER_13_PFAD_CHECK_11_HASHGLEICH_KEIN_EIGENER_PUBLISH",
           "previousNextAllowedStep": "Die elf im aktuellen MAIN nativ bestätigten bekannten Pfade erhalten und ihre gerenderten öffentlichen DE/FR-Mobil-/Desktopoberflächen gezielt prüfen, ohne aus Dateigleichheit volle UI, Produktidentität oder Kaufbarkeit abzuleiten. Den aktuellen zusätzlichen mobilen Hero-CSS bewahren; keine alte vollständige Kopie veröffentlichen. Für die offene Collectionbreitenregel nur die frisch an MAIN gebundene einzelne Regel über einen legitim fähigen Writer übernehmen und nativ/öffentlich zurücklesen. Bestehende Website-Freigabe nicht erneut verlangen. Alle bestehenden Produkt-, Varianten-, Bildrechte-, Review- und Bestellvoraussetzungen unverändert erhalten; keine eigene Publikation behaupten.",
           "previousLastEvidencePreserved": "Existing lastEvidence remains an unchanged dated prefix; previous sources and history retained."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "r54_oeffentliche_de_stichprobe_bestaetigt_fr_und_desktop_rest_unbekannt",
+          "previousLastEvidenceDate": "2026-11-02",
+          "previousBelegArt": "BEGRENZTE_VIER_UI_ANSICHTEN_36_BEDINGUNGEN_TEILMESSUNG_KEIN_PUBLISH",
+          "previousNextAllowedStep": "Im nächsten bereits bestehenden Lauf die beiden frühen FR-UI-/Scroll-Timeouts und den DE-Desktop-Reset in einer begrenzten rein lesenden Diagnose mit aktuellem Zustand vor dem Dialogschliessen und vollständigerer Fehleraufnahme weiter untersuchen; dieser unabhängige Leseschritt ist bereits autorisiert und erfordert keine erneute Freigabe. Nur einen reproduzierten Quellfehler als Änderungsgrund werten; ohne Ursache keinen spekulativen CSS-/JS-Patch, keine alte Gesamtkopie und keinen Publish ableiten. Die vollständige öffentliche DE/FR-Mobil-/Desktopabnahme, echte Produkt-/Varianten-/Bildrechtebindung und Kaufbarkeit bleiben jeweils gesondert zu belegen. Die elf R53-nativ bestätigten bekannten Pfade und das aktuelle zusätzliche mobile Hero-CSS erhalten. Den autorisierten Collectionbreitenfix nur frisch an MAIN gebunden über einen legitim fähigen Writer übernehmen und nativ/öffentlich zurücklesen; keine erneute gleiche Websitefreigabe verlangen. Welcome bleibt ausdrücklich separat unfreigegeben.",
+          "previousBlockers": [
+            "Erweiterte UI mit 31 Herstelleransichten liegt im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Dateiwrites/Publikation; noch keine öffentliche Abnahme dieses Stands.",
+            "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
+            "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+            "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
+            "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung."
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
       ],
       "liveThemeId": "212971061639",
@@ -4191,12 +4391,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "teilweise_live_vier_kategoriefelder_geprueft_filter_falschbefund_korrigiert",
+      "state": "r64_drei_suchseiten_und_aktuelle_breitenregel_begrenzt_verifiziert",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
-      "lastEvidenceDate": "2026-11-02",
-      "belegArt": "VIER_LIVEKATEGORIETEXTE_NATIV_OEFFENTLICH_MOBIL_DESKTOP_GEPRUEFT",
-      "lastEvidence": "R43 auf ausdrücklichen Auftrag sichtbarkeit maximieren: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit allen6Kanalidentitäten frisch bestätigt. Vier öffentliche HTML-Seiten (Startseite,Wohnen,Technik,Bestseller) sowie robots.txt/Sitemap eng geprüft; HTTP200, passendeCanonicals und Haupt-H1, kein noindex im Root-Head. Keine Google-Indexierung oder Rankingwirkung daraus abgeleitet. Drei nativeCollections gelesen. Bestseller: alle10nativenProdukt-Handles stimmen mit öffentlicherHauptliste überein; aktuelle Moissanite-/Echtleder-/wasserfest-/Beliebtheitsaussagen passen nicht zur gebundenenAuswahl beziehungsweise ohne aktuellenNachweis. Genau2neueErsatztexte für erstenBodyabsatz/seo.description als konkreterFreigabeentwurf vorbereitet; Antwort ausstehend, keineMutation. Vier bestehendeTechnik/Wohnen-Fragmente vom27.10. exakt gegen aktuelle nativeOriginalfelder neu gebunden, keine neueUmsetzung. Entwurf212978598279 bleibtUNPUBLISHED,7R40-Dateien metadatahashgleich,6gelieferteMAIN-Dateienanders; kein vollständigerDiff oder neueSichtabnahme. EchteSelbstgestalten-Shopangebote haben bereits serverseitigeHTMLLinks, keineDuplikatliste. ThemePublish/MAINWrites peraktuellemWerkzeugvertraggesperrt, keinAppGrantFehler/neuerApprovalReject. KeineKennzahl-/Flow-/Bestellabfragen, Socialwrites, Ads-/Feed-/Einstellungs- oderFrequenzänderungen. R48, 02.11.: Genau dieselbe Zielcollection687774499201 /bestseller-premium-heroes und zwei Originalfelder frisch gelesen, unverändert gegenüberR43. Zehn nativeProdukt-Handles gleich zehn öffentlichenHauptlistenlinks; ZielHTTP200/Canonical/H1 passend, keinnoindex imgelesenenHaupt-Head. X-Robots-Header/GoogleIndexierung/Rankings/Verkaufswirkung unbekannt. DerselbeZwei-Felder-Freigabevorschlag mit exaktenVorher-/Nachherwerten und Hashes neu gebunden, RestHTMLbytegleich; keineUmsetzung/keineerteilteFreigabe. Ein anfänglicherAbruf der anderenCollection /bestseller aus Zielnachweis ausgeschlossen, zweiöffentlicheAbrufe insgesamt/keinCrawl. KeinShopwrite. R49 auf neue ausdrückliche Nachfrage nach Google-/ChatGPT-Besuchern und weiterer Optimierung: Identität luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit6Kanälen frisch passend. GA4Property561291627 undGSCsc-domain:luxestyle.ch neu authentifiziert/domaingebunden; genau2kleine bisher heute nichtgeleseneQuellenabfragen26.10.–01.11., keineWiederholungSocial/Klaviyo. GA4liefert107Sitzungen in9Zeilen, davonchatgpt.com/ai-assistant50,google/organic11,direct30; GSC21Klicks/4050Impressionen. Sitzungen sindkeineKunden/Käufe; Eigenbesuche/Bots/Attribution/Cachevollständigkeit ungeprüft. LiveGooglebot/OAI-SearchBot öffentlichePfadeerlaubt,robots/SitemapHTTP200,125Childverweise keinIndexierungszähler.3Seiten mitRoothead/Main/Links/Schema enggeprüft; keinnoindex imRoot, eingebettetesShop-Login nichtalsRootfehler zählen. UnteraktuellerOptimierungsbitte dieselbenzuvorgezeigten2Bestsellerfelder tatsächlich umgesetzt undöffentlichHTTP200 bestätigt: ersterAbsatz undseo.description anZehnerauswahl angepasst. ErsterNestedSEOwrite löschteunerwartetSEO-Titel; frischbeobachtet undinseparatemengemKorrekturschritt Originaltitelwiederhergestellt. Final7native/8öffentlicheQuellchecks undunabhängigerReview bestanden,Serviceabsatz/Titel/Handle/SEOTitel/Sortierung/Produkte erhalten.2Mutationscalls insgesamt, keineblindenRetries. Vorvalidatorübersprang,2vorhandeneCLI-PrüferwegenfehlenderBundle-Dateiennichtausführbar; tatsächlicheAPI akzeptiert/keineuserErrors,keinegrüneVollCI. KeineRobots-/Training-/Theme-/Preis-/Rabatt-/Einstellungs-/Socialänderung,keineGoogleIndex-/Ranking-/Umsatzgarantie. RohesCHF{{amount}}imPreisfilter beobachtet,nativerQuellfixnichtumgesetzt. FrühereFreigabefrage dieser2Felder istdurchaktuellenFolgeauftrag/Umsetzung fortgeschrieben,nichtnochmalsstellen. R50 auf Bitte nochbesser/Meisterwerk: Shopluxestyle.ch/CHF undMetricool6227837/EuropeZurich mit6Konten frischpassend. Genau4Nettofelder auf2Kategorien liveverbessert: Wohnen687522775425 undTechnik689681006977 jeweilsersterAbsatz undseo.description, mitkonkreterAuswahlhilfe. Aktuelleerste8ACTIVE-Produkte jeKategoriealsbegrenzteStichprobe gebunden, beidehasNextPagetrue/keinGesamtkatalogbeleg.2Mutationscalls ohneuserErrors, OriginalSEOtitel ausdrücklichmitgesendet;16nativeBedingungen exakt. Einleitungen kürzer321→264/280→222Zeichen; vorhandeneServicezusätze/Linkblöcke/FAQbewahrt, keineneuenDuplikatblöcke. VierbestehendeLinkzieleHTTP200/echteProduktlinks. ÖffentlicherRoothead/Main und4Browseransichten390/1440 imaktuellenMAINgeprüft; strengeFirecrawl-RestHTML-Zeichenprobe zunächstnegativ, echteOrigin-/DOM-Gegenprobe dokumentiert stattTextzurProbezuändern. Vorvalidatorübersprang,CLIfehlendeAssets/keinegrüneVollCI. R49sichtbarerCHF{{amount}}-Preisfilterbefund istwiderlegt: inertestemplate/displaynone, sichtbarePreisspannebeiFilter50 korrekt;24begrenzteBrowserbedingungen bestanden,keinPatch. NeuerMAIN213013037447 SchriftundBanner02.11. durchfremdenVorgangbeobachtet; historischerMAIN212971061639 undEntwurf212978598279beideUNPUBLISHED,kein eigenerPublish. R49Bestsellertexteerhalten. KeineweiterenKennzahl-/Flow-/Bestell-/Social-/Einstellungs-/Theme-/Robots-/Trainingwrites. EineengeVertrauensprobe für15470075576705 bestätigttypisierteProduktwerte5.0/5und8 samtclosest.product-ID-Bindung in3Dateien,keine globale5/8-Konstante dort. ÖffentlichePayload nachRenderingunbekannt; EchtheitderEinzelrezensionen/andereKarten nichtbestätigt. KeineReview-/Kundendatenwrites.",
-      "nextAllowedStep": "Die vier R50-Kategoriefelder und zwei R49-Bestsellerfelder erhalten, nicht erneut schreiben oder dieselben Freigaben fragen. In bestehenden Folgeläufen nach passendem Zeitraum tatsächliche Such-/Quellenwirkung prüfen; heutige R48/R49-Reports ohne neuen konkreten Grund nicht wiederholen. Preisfilter-Falschbefund nicht weiterverfolgen: notwendiges moneyFormat-Template/data-money-format erhalten. Aktuellen MAIN213013037447 und altenEntwurf212978598279 vorThemeübernahme vollständig vergleichen, neueSchrift/Banner undallebelegtenFunktionen erhalten; keinveraltetesTheme blindpublishen. WeitereKategorie-/Produktangaben nur eng mitfrischen Quellen verbessern, keineRankings/Käufe garantieren. MerchantQuelle/Writer undkonkreteGoogleIndex-/Canonical-Abnahme separatoffen; Kauf-Watch beendet.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "R43 auf ausdrücklichen Auftrag sichtbarkeit maximieren: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit allen6Kanalidentitäten frisch bestätigt. Vier öffentliche HTML-Seiten (Startseite,Wohnen,Technik,Bestseller) sowie robots.txt/Sitemap eng geprüft; HTTP200, passendeCanonicals und Haupt-H1, kein noindex im Root-Head. Keine Google-Indexierung oder Rankingwirkung daraus abgeleitet. Drei nativeCollections gelesen. Bestseller: alle10nativenProdukt-Handles stimmen mit öffentlicherHauptliste überein; aktuelle Moissanite-/Echtleder-/wasserfest-/Beliebtheitsaussagen passen nicht zur gebundenenAuswahl beziehungsweise ohne aktuellenNachweis. Genau2neueErsatztexte für erstenBodyabsatz/seo.description als konkreterFreigabeentwurf vorbereitet; Antwort ausstehend, keineMutation. Vier bestehendeTechnik/Wohnen-Fragmente vom27.10. exakt gegen aktuelle nativeOriginalfelder neu gebunden, keine neueUmsetzung. Entwurf212978598279 bleibtUNPUBLISHED,7R40-Dateien metadatahashgleich,6gelieferteMAIN-Dateienanders; kein vollständigerDiff oder neueSichtabnahme. EchteSelbstgestalten-Shopangebote haben bereits serverseitigeHTMLLinks, keineDuplikatliste. ThemePublish/MAINWrites peraktuellemWerkzeugvertraggesperrt, keinAppGrantFehler/neuerApprovalReject. KeineKennzahl-/Flow-/Bestellabfragen, Socialwrites, Ads-/Feed-/Einstellungs- oderFrequenzänderungen. R48, 02.11.: Genau dieselbe Zielcollection687774499201 /bestseller-premium-heroes und zwei Originalfelder frisch gelesen, unverändert gegenüberR43. Zehn nativeProdukt-Handles gleich zehn öffentlichenHauptlistenlinks; ZielHTTP200/Canonical/H1 passend, keinnoindex imgelesenenHaupt-Head. X-Robots-Header/GoogleIndexierung/Rankings/Verkaufswirkung unbekannt. DerselbeZwei-Felder-Freigabevorschlag mit exaktenVorher-/Nachherwerten und Hashes neu gebunden, RestHTMLbytegleich; keineUmsetzung/keineerteilteFreigabe. Ein anfänglicherAbruf der anderenCollection /bestseller aus Zielnachweis ausgeschlossen, zweiöffentlicheAbrufe insgesamt/keinCrawl. KeinShopwrite. R49 auf neue ausdrückliche Nachfrage nach Google-/ChatGPT-Besuchern und weiterer Optimierung: Identität luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit6Kanälen frisch passend. GA4Property561291627 undGSCsc-domain:luxestyle.ch neu authentifiziert/domaingebunden; genau2kleine bisher heute nichtgeleseneQuellenabfragen26.10.–01.11., keineWiederholungSocial/Klaviyo. GA4liefert107Sitzungen in9Zeilen, davonchatgpt.com/ai-assistant50,google/organic11,direct30; GSC21Klicks/4050Impressionen. Sitzungen sindkeineKunden/Käufe; Eigenbesuche/Bots/Attribution/Cachevollständigkeit ungeprüft. LiveGooglebot/OAI-SearchBot öffentlichePfadeerlaubt,robots/SitemapHTTP200,125Childverweise keinIndexierungszähler.3Seiten mitRoothead/Main/Links/Schema enggeprüft; keinnoindex imRoot, eingebettetesShop-Login nichtalsRootfehler zählen. UnteraktuellerOptimierungsbitte dieselbenzuvorgezeigten2Bestsellerfelder tatsächlich umgesetzt undöffentlichHTTP200 bestätigt: ersterAbsatz undseo.description anZehnerauswahl angepasst. ErsterNestedSEOwrite löschteunerwartetSEO-Titel; frischbeobachtet undinseparatemengemKorrekturschritt Originaltitelwiederhergestellt. Final7native/8öffentlicheQuellchecks undunabhängigerReview bestanden,Serviceabsatz/Titel/Handle/SEOTitel/Sortierung/Produkte erhalten.2Mutationscalls insgesamt, keineblindenRetries. Vorvalidatorübersprang,2vorhandeneCLI-PrüferwegenfehlenderBundle-Dateiennichtausführbar; tatsächlicheAPI akzeptiert/keineuserErrors,keinegrüneVollCI. KeineRobots-/Training-/Theme-/Preis-/Rabatt-/Einstellungs-/Socialänderung,keineGoogleIndex-/Ranking-/Umsatzgarantie. RohesCHF{{amount}}imPreisfilter beobachtet,nativerQuellfixnichtumgesetzt. FrühereFreigabefrage dieser2Felder istdurchaktuellenFolgeauftrag/Umsetzung fortgeschrieben,nichtnochmalsstellen. R50 auf Bitte nochbesser/Meisterwerk: Shopluxestyle.ch/CHF undMetricool6227837/EuropeZurich mit6Konten frischpassend. Genau4Nettofelder auf2Kategorien liveverbessert: Wohnen687522775425 undTechnik689681006977 jeweilsersterAbsatz undseo.description, mitkonkreterAuswahlhilfe. Aktuelleerste8ACTIVE-Produkte jeKategoriealsbegrenzteStichprobe gebunden, beidehasNextPagetrue/keinGesamtkatalogbeleg.2Mutationscalls ohneuserErrors, OriginalSEOtitel ausdrücklichmitgesendet;16nativeBedingungen exakt. Einleitungen kürzer321→264/280→222Zeichen; vorhandeneServicezusätze/Linkblöcke/FAQbewahrt, keineneuenDuplikatblöcke. VierbestehendeLinkzieleHTTP200/echteProduktlinks. ÖffentlicherRoothead/Main und4Browseransichten390/1440 imaktuellenMAINgeprüft; strengeFirecrawl-RestHTML-Zeichenprobe zunächstnegativ, echteOrigin-/DOM-Gegenprobe dokumentiert stattTextzurProbezuändern. Vorvalidatorübersprang,CLIfehlendeAssets/keinegrüneVollCI. R49sichtbarerCHF{{amount}}-Preisfilterbefund istwiderlegt: inertestemplate/displaynone, sichtbarePreisspannebeiFilter50 korrekt;24begrenzteBrowserbedingungen bestanden,keinPatch. NeuerMAIN213013037447 SchriftundBanner02.11. durchfremdenVorgangbeobachtet; historischerMAIN212971061639 undEntwurf212978598279beideUNPUBLISHED,kein eigenerPublish. R49Bestsellertexteerhalten. KeineweiterenKennzahl-/Flow-/Bestell-/Social-/Einstellungs-/Theme-/Robots-/Trainingwrites. EineengeVertrauensprobe für15470075576705 bestätigttypisierteProduktwerte5.0/5und8 samtclosest.product-ID-Bindung in3Dateien,keine globale5/8-Konstante dort. ÖffentlichePayload nachRenderingunbekannt; EchtheitderEinzelrezensionen/andereKarten nichtbestätigt. KeineReview-/Kundendatenwrites. R64, 03.11.2026: Drei aktuelle Seiten Elektronik & Technik → Handy & Laden → Powerbanks HTTP200, passende Root-Titel/H1/Canonicals und interne Kategoriekette bestätigt. Kein neuer belegter SEO-Quellfehler; robots=none aus eingebettetem Login nicht als Root-noindex fehlinterpretiert. Aktuelle MAIN-Breitenregel bereits öffentlich vorhanden; keine eigene Publikation, Ranking-/Indexierungs-/Kaufwirkung unbekannt.",
+      "nextAllowedStep": "Bestehende R49/R50-Texte und aktuelle Unterkategorie-Breitenregel erhalten, keine gleichen Felder erneut schreiben. Begrenzte funktionale DE/FR-Abnahme nach R64-Vorlage fortsetzen; bei belegtem neuen Quellfehler frischen minimalen Entwurf erstellen. Kein alter R53-Gesamtkandidat und kein Preisfilter-Falschbefund; moneyFormat-Template erhalten. Google-Indexierung, Rankings und Merchant-Quelle bleiben separat unbekannt; heute keine weiteren umfangreichen Reports ohne konkreten neuen Anlass und keine Kauf-Watch-Abfrage.",
       "blockers": [
         "AktuellerConnector sperrtTheme-Publikation und MAIN-Dateiwrites; heutigerBrowserAdminLogin nichtgeprüft, bestehendeWebsitefreigabe gilt",
         "SearchConsoleIndexierung/GoogleCanonical/Rankings unbekannt; Tagesreports nicht erneutlesen",
@@ -4229,6 +4429,21 @@
           "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
           "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
           "readAt": "2026-11-02T10:12:23.372462Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+          "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-ABNAHME-20261103-R64.md",
+          "gitBlobSha": "44c592d9df39e41d551bfddfb1efb1f975e73a88",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4268,6 +4483,21 @@
           "previousBelegArt": "GA4_GSC_ZWEI_QUELLENMESSUNGEN_ZWEI_LIVETEXTFELDER_EXAKT_GEPRUEFT",
           "previousNextAllowedStep": "Bereits bestätigte zwei Bestsellerfelder samt Originaltitel erhalten, nicht erneut schreiben oder dieselbe Freigabe fragen. Frische Google-Snippets/konkrete Landingpage-Suchanfragen in einem passenden bestehenden Folgelauf messen, keine Ranking-/Verkaufswirkung unterstellen. Zwei frühere Wohnen-/Technik-Textentwürfe zuerst gegen aktuelle native Originale/Auswahl binden und im aktuellen ausdrücklichen SEO-Auftrag eng fortführen. Sichtbaren CHF{{amount}}-Filtertext erst nach nativem Quelldiff gezielt im bestehenden Entwurf korrigieren; data-money-format bewahren, keine MAIN-/Publishsperre umgehen. MerchantQuelle/Writer weiterhin separat klären. Heutige Social-/Flowreports und neue GA4/GSC-Quellenmessungen nicht wiederholen ohne konkreten neuen Gegenprüfgrund; Kauf-Watch bleibt beendet.",
           "previousLastEvidencePreserved": "Existing lastEvidence remains unchanged as dated prefix; all sources and earlier history retained."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "teilweise_live_vier_kategoriefelder_geprueft_filter_falschbefund_korrigiert",
+          "previousLastEvidenceDate": "2026-11-02",
+          "previousBelegArt": "VIER_LIVEKATEGORIETEXTE_NATIV_OEFFENTLICH_MOBIL_DESKTOP_GEPRUEFT",
+          "previousNextAllowedStep": "Die vier R50-Kategoriefelder und zwei R49-Bestsellerfelder erhalten, nicht erneut schreiben oder dieselben Freigaben fragen. In bestehenden Folgeläufen nach passendem Zeitraum tatsächliche Such-/Quellenwirkung prüfen; heutige R48/R49-Reports ohne neuen konkreten Grund nicht wiederholen. Preisfilter-Falschbefund nicht weiterverfolgen: notwendiges moneyFormat-Template/data-money-format erhalten. Aktuellen MAIN213013037447 und altenEntwurf212978598279 vorThemeübernahme vollständig vergleichen, neueSchrift/Banner undallebelegtenFunktionen erhalten; keinveraltetesTheme blindpublishen. WeitereKategorie-/Produktangaben nur eng mitfrischen Quellen verbessern, keineRankings/Käufe garantieren. MerchantQuelle/Writer undkonkreteGoogleIndex-/Canonical-Abnahme separatoffen; Kauf-Watch beendet.",
+          "previousBlockers": [
+            "AktuellerConnector sperrtTheme-Publikation und MAIN-Dateiwrites; heutigerBrowserAdminLogin nichtgeprüft, bestehendeWebsitefreigabe gilt",
+            "SearchConsoleIndexierung/GoogleCanonical/Rankings unbekannt; Tagesreports nicht erneutlesen",
+            "Merchant-Datenquelle/Writer nachR41 technisch unbekannt/fehlend; frühereEinzelquellenprobeTimeout nicht wiederholt",
+            "Google-Neucrawl/ausgewählterSnippet/Canonical und URL-spezifischer Indexstatus nicht geprüft; OpenAI-IP/CDN-Zugriff unbestätigt. GA4-Quellen sind keine Personen-/Kauf-/Empfehlungsnachweise."
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
       ],
       "visibilitySupplementR49": {
@@ -4310,17 +4540,16 @@
       "id": "tech-category-structure-20261102",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r53_aktuelle_main_einregelfassung_lokal_geprueft_uebernahme_offen",
+      "state": "r64_breitenregel_main_oeffentlich_bestaetigt_funktionsabnahme_offen",
       "title": "Elektronik mit Unterkategorien und kuratiertem Produkteinstieg ordnen",
-      "lastEvidenceDate": "2026-11-02",
-      "belegArt": "VIER_PFADE_VERGLICHEN_AKTUELLE_MAIN_EINREGELDATEI_NUR_LOKAL_VALID_KEIN_PUBLISH",
-      "lastEvidence": "R51 auf ausdrücklichen Auftrag «sortiere produkt besser und erstelle unterkategorie wie die anderen»: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit sechs Konten frisch passend. Vorhandene Definitionen lux.unterfilter/lux.eltern und vorhandene Unterkategorien wiederverwendet;69Collection-Referenzfelder in drei Batches geschrieben und exakt zurückgelesen. Zehn Mittelgruppen und60 bereits existierende Blattkategorien dadurch verbunden, keine neue Collection-Dublette oder Menüänderung. Alle60nativen Blattcounts positiv und alle60Ziele per genau einem HEAD/keinen Redirects mit HTTP200 erreichbar; dies ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Eine begrenzte Stichprobe von36verschiedenen ACTIVE-Artikeln zeigte13ohne bisherigen Muttertag elektronik; keine Katalogquote. Die bestehende Mutterbedingung bleibt erhalten und wird im selben Quell-/Bedingungsobjekt als ANY um zwölf positive vorhandene Sortiertags ergänzt; alle zehn Schutzbedingungen bestanden. Nativer Produktzähler6018→6223, keine Zahl öffentlich kaufbarer Artikel; konkretes Tastatur-Gegenbeispiel jetzt inCollection=true. Sechs aktuell geprüfte Einstiegsprodukte gezielt nach vorn verschoben, keine Bestseller-/Verkaufsrangbehauptung und keine Preise/Tags/Status verändert. Öffentliche Produktreihenfolge auf390/1440 bestätigt. Neue Unterseiten-Navigation live28/30 geprüft, mobiler16px-Überlauf bleibt offen. Eine CSS-Regel in templates/collection.json nur im alten UNPUBLISHED-Entwurf212978598279 exakt geändert (MD5c7020b391b776427a1346a91540c646f), dort36/36Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Native Vorvalidatoren übersprangen; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte, keine grüne Voll-CI. Keine weiteren Analytics-/Flow-/Bestellreports, Socialposts oder Kauf-Watchabfragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe.",
-      "nextAllowedStep": "Ein bereits autorisierter, legitim technisch fähiger MAIN-Writer liest Shopidentität, tatsächlichen MAIN 213013037447 und templates/collection.json unmittelbar frisch. R53-Ausgangs-MD5 ist 6c0ccc1bf403cc94bf55d1dd98b3ea84; die lokal vorbereitete Ein-Regel-Fassung hat MD5 bbacad38aabc5e292ed819b3d1b01782. Bei unveränderter Quelle nur genau diesen CSS-Regel-Diff übernehmen, bei neuer Quelle eng neu binden und alle anderen Bytes einschliesslich Schrift/Banner, Navigation und Bewertungen erhalten. Danach tatsächlichen MAIN nativ und die zwei mobilen Mittel-/Blattansichten öffentlich prüfen. Kein ganzes altes Theme oder komplette alte Collectiondatei publizieren. Der vorhandene Connector blockiert MAIN-Writes/Publish; Grenze nicht umgehen und nicht nochmals dieselbe Websitefreigabe verlangen. Unklaren Write nicht wiederholen. Welcome bleibt gesondert unfreigegeben; keine Reports, Nachrichten oder Konfigurationsänderungen.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "R51 auf ausdrücklichen Auftrag «sortiere produkt besser und erstelle unterkategorie wie die anderen»: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit sechs Konten frisch passend. Vorhandene Definitionen lux.unterfilter/lux.eltern und vorhandene Unterkategorien wiederverwendet;69Collection-Referenzfelder in drei Batches geschrieben und exakt zurückgelesen. Zehn Mittelgruppen und60 bereits existierende Blattkategorien dadurch verbunden, keine neue Collection-Dublette oder Menüänderung. Alle60nativen Blattcounts positiv und alle60Ziele per genau einem HEAD/keinen Redirects mit HTTP200 erreichbar; dies ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Eine begrenzte Stichprobe von36verschiedenen ACTIVE-Artikeln zeigte13ohne bisherigen Muttertag elektronik; keine Katalogquote. Die bestehende Mutterbedingung bleibt erhalten und wird im selben Quell-/Bedingungsobjekt als ANY um zwölf positive vorhandene Sortiertags ergänzt; alle zehn Schutzbedingungen bestanden. Nativer Produktzähler6018→6223, keine Zahl öffentlich kaufbarer Artikel; konkretes Tastatur-Gegenbeispiel jetzt inCollection=true. Sechs aktuell geprüfte Einstiegsprodukte gezielt nach vorn verschoben, keine Bestseller-/Verkaufsrangbehauptung und keine Preise/Tags/Status verändert. Öffentliche Produktreihenfolge auf390/1440 bestätigt. Neue Unterseiten-Navigation live28/30 geprüft, mobiler16px-Überlauf bleibt offen. Eine CSS-Regel in templates/collection.json nur im alten UNPUBLISHED-Entwurf212978598279 exakt geändert (MD5c7020b391b776427a1346a91540c646f), dort36/36Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Native Vorvalidatoren übersprangen; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte, keine grüne Voll-CI. Keine weiteren Analytics-/Flow-/Bestellreports, Socialposts oder Kauf-Watchabfragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben.",
+      "nextAllowedStep": "Die bereits vorhandene aktuelle Breitenregel erhalten und keinen alten R53-Gesamtkandidaten/identischen Patch erneut anwenden. Mit aktuellem MAIN und genau Handy & Laden/Powerbanks die begrenzte DE/FR-Abnahme bei 390/1440px vor/nach Fokus durchführen; Quellpräsenz ist keine vollständige Funktionsabnahme. Neue Schrift, Banner, Navigation und übrige Funktionen erhalten. Bei neuer reproduzierter Ursache nur einen frischen minimalen Diff vorbereiten. Bestehende Websitefreigabe nicht erneut verlangen; kein Umgehen technischer MAIN-Schreibgrenzen oder blindes Theme-Publish. Welcome bleibt separat unfreigegeben.",
       "blockers": [
-        "Mobiler16px-Überlauf auf tatsächlichen MAIN-Unterseiten weiterhin live; CSS-Korrektur nur im UNPUBLISHED-Entwurf geprüft.",
         "Aktueller Shopify-Connector erlaubt Theme-Dateiwrites nur auf UNPUBLISHED und blockiert MAIN/Publish; legitim technisch fähiger MAIN-Writer fehlt, keine fehlende Inhaberfreigabe.",
         "Gesamtkatalog, komplette öffentliche Kaufbarkeit, Tracking/Checkout und Ranking-/Verkaufswirkung nicht abgenommen.",
-        "R53: Aktuelle MAIN-Ein-Regel-Kandidatendatei ist nur lokal vorbereitet; kein nativer Write/Publish. Zwei echte MAIN-Mobilansichten weiterhin mit 16 px-Überlauf; alter Entwurf darf nicht als Gesamtkopie veröffentlicht werden."
+        "R64: Breitenregel nativ/öffentlich vorhanden; aktuelle 390/1440-DE/FR-Funktionswerte und vollständige mobile Abnahme noch unbekannt. Alten R53-Patch nicht nochmals anwenden."
       ],
       "acceptance": [
         "Zehn Gruppen/60vorhandene Blätter korrekt über vorhandene Definitions-IDs verbunden, keine Dubletten oder leeren bestätigten Zielcounts.",
@@ -4344,6 +4573,21 @@
           "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
           "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
           "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+          "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-ABNAHME-20261103-R64.md",
+          "gitBlobSha": "44c592d9df39e41d551bfddfb1efb1f975e73a88",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4387,6 +4631,21 @@
           "previousBelegArt": "69_REFERENZFELDER_10_GRUPPEN_60_BLAETTER_SECHS_EINSTIEGSPRODUKTE_LIVE_CSS_NUR_ENTWURF",
           "previousNextAllowedStep": "Live-Daten, 69Referenzen, zwölf zusätzliche positive Muttertags und sechs kuratierte Einstiegspositionen erhalten, nicht erneut anlegen oder verschieben. Nur die eine geprüfte R51-CSS-Regel über legitimen technisch fähigen MAIN-Zugang in die frisch gelesene aktuelle MAIN-Datei übernehmen und die zwei offenen mobilen Unterseitenansichten exakt nachprüfen. Keine neue Inhaberfreigabe derselben Sortier-/Websitearbeit verlangen; technischer Connectorvertrag bleibt Blocker. Keine ganze alte Theme-Kopie veröffentlichen und keine MAIN-Toolgrenze umgehen. Weitergehende Produktzuordnung nur nach frischer enger Quellen-/Diffprüfung; keine nativen Counts als kaufbare Gesamtzahl darstellen. Tagesreports und beendeten Kauf-Watch nicht erneut abrufen.",
           "previousLastEvidencePreserved": "Existing lastEvidence remains an unchanged dated prefix; previous sources and history retained."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "r53_aktuelle_main_einregelfassung_lokal_geprueft_uebernahme_offen",
+          "previousLastEvidenceDate": "2026-11-02",
+          "previousBelegArt": "VIER_PFADE_VERGLICHEN_AKTUELLE_MAIN_EINREGELDATEI_NUR_LOKAL_VALID_KEIN_PUBLISH",
+          "previousNextAllowedStep": "Ein bereits autorisierter, legitim technisch fähiger MAIN-Writer liest Shopidentität, tatsächlichen MAIN 213013037447 und templates/collection.json unmittelbar frisch. R53-Ausgangs-MD5 ist 6c0ccc1bf403cc94bf55d1dd98b3ea84; die lokal vorbereitete Ein-Regel-Fassung hat MD5 bbacad38aabc5e292ed819b3d1b01782. Bei unveränderter Quelle nur genau diesen CSS-Regel-Diff übernehmen, bei neuer Quelle eng neu binden und alle anderen Bytes einschliesslich Schrift/Banner, Navigation und Bewertungen erhalten. Danach tatsächlichen MAIN nativ und die zwei mobilen Mittel-/Blattansichten öffentlich prüfen. Kein ganzes altes Theme oder komplette alte Collectiondatei publizieren. Der vorhandene Connector blockiert MAIN-Writes/Publish; Grenze nicht umgehen und nicht nochmals dieselbe Websitefreigabe verlangen. Unklaren Write nicht wiederholen. Welcome bleibt gesondert unfreigegeben; keine Reports, Nachrichten oder Konfigurationsänderungen.",
+          "previousBlockers": [
+            "Mobiler16px-Überlauf auf tatsächlichen MAIN-Unterseiten weiterhin live; CSS-Korrektur nur im UNPUBLISHED-Entwurf geprüft.",
+            "Aktueller Shopify-Connector erlaubt Theme-Dateiwrites nur auf UNPUBLISHED und blockiert MAIN/Publish; legitim technisch fähiger MAIN-Writer fehlt, keine fehlende Inhaberfreigabe.",
+            "Gesamtkatalog, komplette öffentliche Kaufbarkeit, Tracking/Checkout und Ranking-/Verkaufswirkung nicht abgenommen.",
+            "R53: Aktuelle MAIN-Ein-Regel-Kandidatendatei ist nur lokal vorbereitet; kein nativer Write/Publish. Zwei echte MAIN-Mobilansichten weiterhin mit 16 px-Überlauf; alter Entwurf darf nicht als Gesamtkopie veröffentlicht werden."
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
       ],
       "currentMainWidthCandidateR53": {
@@ -4409,6 +4668,42 @@
         "mainMobileViews": 2,
         "draftMobileViews": 2,
         "notWholeThemeAcceptance": true
+      },
+      "resolvedBlockers": [
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "previousBlocker": "Mobiler16px-Überlauf auf tatsächlichen MAIN-Unterseiten weiterhin live; CSS-Korrektur nur im UNPUBLISHED-Entwurf geprüft.",
+          "resolution": "Nur Quell-/Übernahmeblocker ersetzt: gewünschte Regel jetzt im aktiven Theme und öffentlich. Tatsächlicher aktueller mobiler Überlauf bleibt unbekannt, keine funktionale Vollabnahme."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "previousBlocker": "R53: Aktuelle MAIN-Ein-Regel-Kandidatendatei ist nur lokal vorbereitet; kein nativer Write/Publish. Zwei echte MAIN-Mobilansichten weiterhin mit 16 px-Überlauf; alter Entwurf darf nicht als Gesamtkopie veröffentlicht werden.",
+          "resolution": "Nur Quell-/Übernahmeblocker ersetzt: gewünschte Regel jetzt im aktiven Theme und öffentlich. Tatsächlicher aktueller mobiler Überlauf bleibt unbekannt, keine funktionale Vollabnahme."
+        }
+      ],
+      "currentMainWidthVerifiedR64": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SEO-CHECK-20261103-R64.json",
+          "gitBlobSha": "b037178200841a1eb7d5e243995661957eb3930f",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "role": "MAIN",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "filename": "templates/collection.json",
+        "nativeMd5": "457082cc5d27f1f348ba45f1722d40c1",
+        "computedMd5": "457082cc5d27f1f348ba45f1722d40c1",
+        "sha256": "96d882690659d6634caed4911407a03bdae9b5342ae2015fcfe9205267fb926f",
+        "desiredWidthRuleAlreadyPresent": true,
+        "exactRule": ".lx-uf{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.35rem 1.5rem .2rem;box-sizing:border-box}",
+        "historicalR53BeforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+        "historicalR53CandidateMd5": "bbacad38aabc5e292ed819b3d1b01782",
+        "oldWholeCandidateMustNotOverwriteCurrent": true,
+        "otherParsedFieldsMatchR53Candidate": true,
+        "additionalChangeObserved": "URL-deduplication in the same lux_subchips custom Liquid block, compared with R53 candidate. No own write or actor attribution.",
+        "nativeWrittenByThisAgent": false,
+        "fullFunctionalAcceptance": false,
+        "ownThemeWrites": 0
       }
     },
     {
@@ -4417,10 +4712,10 @@
       "priorityKind": "SETZUNG",
       "state": "freigabeentwurf_website_only_excluded",
       "title": "Welcome-Serviceangaben mit genau zwei belegten Zeilen korrigieren",
-      "lastEvidenceDate": "2026-11-02",
-      "belegArt": "FRISCHES_KONTO_VORLAGE_ZWEI_ZEILEN_DIFF_EXAKT_ANWENDUNG_NICHT_FREIGEGEBEN",
-      "lastEvidence": "R52: Genau der bereits vorhandene Zwei-Zeilen-Servicevorschlag für Klaviyo-Vorlage VZnxDz wurde gegen die aktuelle Vorlage und die tatsächlichen Versand-/Rückgabepolicytexte neu gebunden. Ein enger Vorher-/Nachher-Diff liegt zur ausdrücklichen Freigabe vor; Policyverweise sollen pauschale Serviceversprechen ersetzen. Keine Template-, Flow-, Tracking-, Rabatt-, DNS- oder Shopregeländerung, keine Nachricht/Testsendung und kein neuer Flowreport. CHF-Shopangaben und Klaviyo-USD werden getrennt gehalten. Es ist die einzige beantragte Verkaufsaktion des Nachmittagslaufs; R49/R50-Bestseller-/Kategorietexte sind bereits erledigt. R51-Navigation/Sortierung und der historische noch offene mobile MAIN-CSS-Transfer werden dadurch nicht verändert oder als neu repariert ausgegeben. R53: Klaviyo-Konto und Vorlage VZnxDz frisch erneut gelesen; dieselben Original- und Kandidatenhashes wie R52 bestätigt (1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b beziehungsweise 16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a). Genau Zeilen 47/53, alle anderen Zeilen und Tokens unverändert. Es ist die erneute genaue Bindung des bestehenden Entwurfs, keine neue Servicefehlerentdeckung. Der Inhaber hat den aktuellen Veröffentlichungsauftrag ausdrücklich auf «Die Website-Verbesserungen» begrenzt; Welcome ist nicht freigegeben. applicationAllowedNow=false und keine Template-/Flow-/Tracking-/Rabattänderung, kein Versand oder Testsendung. Policyquellen bleiben datierte R52-Belege; keine erneuten Policy-GETs oder Flowreports. Die aktuelle einzelne Flow-/Message-Flagbindung ist nicht frisch geprüft und bleibt für eine spätere autorisierte Anwendung eine Voraussetzung. Kein Veröffentlichungs- oder Zustimmungserfolg behauptet.",
-      "nextAllowedStep": "Welcome bleibt ein gesonderter Freigabeentwurf: Der aktuelle Auftrag gilt ausdrücklich ausschliesslich den Website-Verbesserungen. Keine erneute Zielklärung verlangen. Nur bei eindeutiger Freigabe genau der Welcome-Serviceanwendung Konto, aktuelle VZnxDz-Originalbytes und notwendige aktuelle Flow-/Message-Flags gezielt frisch binden; keinen neuen Kennzahl-Flowreport auslösen. Dann nur die zwei belegten HTML-Servicezeilen anwenden und vollständig zurücklesen. Alle übrigen Bytes, CTA-/Coupon-/Unsubscribe-Tokens, Template-Name/Editor, Flowstatus und Tracking-/Smart-Sending-Flags erhalten; keine Aktivierung, Nachricht oder Testsendung. Ohne gesonderte ausdrückliche Welcome-Freigabe bleibt applicationAllowedNow=false. Website-CSS-Auftrag separat behandeln.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
+      "lastEvidence": "R52: Genau der bereits vorhandene Zwei-Zeilen-Servicevorschlag für Klaviyo-Vorlage VZnxDz wurde gegen die aktuelle Vorlage und die tatsächlichen Versand-/Rückgabepolicytexte neu gebunden. Ein enger Vorher-/Nachher-Diff liegt zur ausdrücklichen Freigabe vor; Policyverweise sollen pauschale Serviceversprechen ersetzen. Keine Template-, Flow-, Tracking-, Rabatt-, DNS- oder Shopregeländerung, keine Nachricht/Testsendung und kein neuer Flowreport. CHF-Shopangaben und Klaviyo-USD werden getrennt gehalten. Es ist die einzige beantragte Verkaufsaktion des Nachmittagslaufs; R49/R50-Bestseller-/Kategorietexte sind bereits erledigt. R51-Navigation/Sortierung und der historische noch offene mobile MAIN-CSS-Transfer werden dadurch nicht verändert oder als neu repariert ausgegeben. R53: Klaviyo-Konto und Vorlage VZnxDz frisch erneut gelesen; dieselben Original- und Kandidatenhashes wie R52 bestätigt (1739b5bb2a2a532d478e766927a413b68d3c1a8ee881f61f2479ed28d802fb8b beziehungsweise 16472801fde74ce010e16ccb5b4561b3501ac1ba6dfa0ae305f926e493fb496a). Genau Zeilen 47/53, alle anderen Zeilen und Tokens unverändert. Es ist die erneute genaue Bindung des bestehenden Entwurfs, keine neue Servicefehlerentdeckung. Der Inhaber hat den aktuellen Veröffentlichungsauftrag ausdrücklich auf «Die Website-Verbesserungen» begrenzt; Welcome ist nicht freigegeben. applicationAllowedNow=false und keine Template-/Flow-/Tracking-/Rabattänderung, kein Versand oder Testsendung. Policyquellen bleiben datierte R52-Belege; keine erneuten Policy-GETs oder Flowreports. Die aktuelle einzelne Flow-/Message-Flagbindung ist nicht frisch geprüft und bleibt für eine spätere autorisierte Anwendung eine Voraussetzung. Kein Veröffentlichungs- oder Zustimmungserfolg behauptet. R64, 03.11.2026: Bestehenden Welcome-Serviceentwurf erneut gezielt gebunden, weiterhin ausdrücklich nicht angewendet. Neuer direkter Flowbefund: WelcomeVbLQj6 und Post-PurchaseRnTvsY jetzt draft, aktualisiert02.11.23:55:34/37 Europe/Zurich; Ursache/Actor unbekannt. Abandoned Checkout bleibt draft. Ein einziger heutiger Flowreport nach frischer Placed-Order-MetrikW7XTVD; keine Shop-/Sync-Ableitung aus0Attribution und fehlender Checkoutzeile. Heute ist nur die neue Email3-Qualitätskorrektur als separate einzelne Verkaufsaktion vorgeschlagen; Welcome nicht als neue zweite Aktion.",
+      "nextAllowedStep": "Welcome-Zwei-Zeilen-Entwurf unverändert separat unfreigegeben lassen. Keine Reaktivierung aus dem neuen draft-Befund ableiten und keine Ursache/Actor behaupten. Nur bei ausdrücklicher Freigabe genau dieses Welcome-Servicescopes Konto, aktuelle VZnxDz-Originalbytes und notwendige Flow-/Message-Flags erneut frisch binden. Sonst keine Template-, Coupon-, Consent-, Tracking- oder Statusänderung, kein Versand/Test. Einzige aktuelle neue Verkaufsaktion liegt unter checkout-email3-quality-20261103; heutige Reports nicht wiederholen.",
       "blockers": [
         "Ausdrückliche Freigabe für genau die zwei R52-Servicezeilen steht aus; nicht aus allgemeiner Social-Automatisierungserlaubnis ableiten.",
         "Vor einem künftigen Write muss die aktuelle Templatequelle unmittelbar erneut exakt gebunden werden; der Reviewentwurf ist keine Umsetzung."
@@ -4447,6 +4742,11 @@
           "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
           "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
           "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -4470,6 +4770,19 @@
           "previousBelegArt": "FRISCHE_VORLAGE_POLICIES_EXAKTER_ZWEI_ZEILEN_DIFF_NUR_FREIGABEENTWURF",
           "previousNextAllowedStep": "Den genauen R52-Zwei-Zeilen-Diff dem Inhaber zur Freigabe vorlegen. Nur nach ausdrücklicher Freigabe Klaviyo-Konto, aktuelle Vorlage und Originalhash unmittelbar gegenprüfen, exakt diese beiden Servicezeilen anwenden und vollständig zurücklesen. Bei Quellenabweichung erst neu binden, keinen veralteten Entwurf blind schreiben. Alle übrigen Templatebytes, Haupt-CTA, vorhandenen Rabatt-/Unsubscribe-Tokens, Flowstatus, Trackingflags und Versandregeln erhalten. Keine Kundenansprache/Testsendung, keine zusätzliche Verkaufsaktion oder erneute alte SEO-Freigabefrage.",
           "previousLastEvidencePreserved": "Existing lastEvidence remains an unchanged dated prefix; previous sources and history retained."
+        },
+        {
+          "at": "2026-11-03T07:33:40.980532+00:00",
+          "sourceRevision": 63,
+          "previousState": "freigabeentwurf_website_only_excluded",
+          "previousLastEvidenceDate": "2026-11-02",
+          "previousBelegArt": "FRISCHES_KONTO_VORLAGE_ZWEI_ZEILEN_DIFF_EXAKT_ANWENDUNG_NICHT_FREIGEGEBEN",
+          "previousNextAllowedStep": "Welcome bleibt ein gesonderter Freigabeentwurf: Der aktuelle Auftrag gilt ausdrücklich ausschliesslich den Website-Verbesserungen. Keine erneute Zielklärung verlangen. Nur bei eindeutiger Freigabe genau der Welcome-Serviceanwendung Konto, aktuelle VZnxDz-Originalbytes und notwendige aktuelle Flow-/Message-Flags gezielt frisch binden; keinen neuen Kennzahl-Flowreport auslösen. Dann nur die zwei belegten HTML-Servicezeilen anwenden und vollständig zurücklesen. Alle übrigen Bytes, CTA-/Coupon-/Unsubscribe-Tokens, Template-Name/Editor, Flowstatus und Tracking-/Smart-Sending-Flags erhalten; keine Aktivierung, Nachricht oder Testsendung. Ohne gesonderte ausdrückliche Welcome-Freigabe bleibt applicationAllowedNow=false. Website-CSS-Auftrag separat behandeln.",
+          "previousBlockers": [
+            "Ausdrückliche Freigabe für genau die zwei R52-Servicezeilen steht aus; nicht aus allgemeiner Social-Automatisierungserlaubnis ableiten.",
+            "Vor einem künftigen Write muss die aktuelle Templatequelle unmittelbar erneut exakt gebunden werden; der Reviewentwurf ist keine Umsetzung."
+          ],
+          "previousLastEvidencePreserved": "Exact old evidence retained as prefix."
         }
       ],
       "applicationAllowedNow": false,
@@ -4571,6 +4884,266 @@
         "claudeExecution": "unknown_not_claimed"
       },
       "videoSha256": "b1b7d3f665704d447018aeae4a6d4ef0364b2bbb3be0ce75b14b714ff7a7ae05"
+    },
+    {
+      "id": "checkout-email3-quality-20261103",
+      "priority": 6,
+      "priorityKind": "SETZUNG",
+      "state": "freigabeentwurf_nicht_angewendet_nicht_sendebereit",
+      "title": "Dritte Checkout-Mail ohne Platzhalterbetreff oder unbelegte Knappheit/Frist",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "AKTUELLE_MESSAGE_TEMPLATE_BINDUNG_EXAKTER_ENTWURF_KEIN_WRITE",
+      "lastEvidence": "FlowVse76a/Aktion108024959/NachrichtWNFHjV/VorlageWaQaDv frisch gebunden, alles draft. Betreff Email #3 Subject und zwei Bodybereiche mit unbelegter Knappheit/10%-Frist gefunden. Genau ein zusammenhängender Entwurf neutralisiert Betreff/H1/Absatz; alle übrigen Zeilen, CTA/Personalisierungs-/Unsubscribe-/Couponmarkup, Absender, Status und Delays erhalten. Keine Anwendung oder Versandfreigabe.",
+      "nextAllowedStep": "Inhaber prüft den konkreten R64-Diff. Nur bei ausdrücklicher Freigabe dieses Textscopes aktuelle Originalbytes/IDs/Hashes unmittelbar neu binden und genau Subject plus drei HTML-Zeilen ändern, vollständig zurücklesen. Keine Aktivierung, Rabattkonfiguration, Nachricht oder Test. Coupongültigkeit, Einwilligung, Ereignis-/Kaufbarkeits-/Timingvoraussetzungen sind keine durch diesen Entwurf erteilte Sendefreigabe.",
+      "blockers": [
+        "Konkrete Inhaberfreigabe des R64-Textdiffs fehlt.",
+        "Tatsächliche Couponkonfiguration und Sendeberechtigung/Timing ungeprüft; alle drei Flows draft, keine automatische Reaktivierung."
+      ],
+      "acceptance": [
+        "Exakter Betreff und nur die belegten Bodybereiche ändern.",
+        "Alle übrigen Template-/Flow-/Sender-/Token-/Statuswerte erhalten.",
+        "Aktuelle Vorherhashes und gezieltes Rücklesen; unbekannte Writes nicht wiederholen."
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/CHECKOUT-EMAIL3-FREIGABE-20261103-R64.json",
+          "gitBlobSha": "7204d15fa6a7f99dec967fb6e3a4ebd1134aa9c8",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CHECKOUT-EMAIL3-KORREKTUR-20261103-R64.diff",
+          "gitBlobSha": "29a4748996567bf0eec959b4e82118ab4116709d",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "applicationAllowedNow": false,
+      "reviewScope": {
+        "flowId": "Vse76a",
+        "actionId": "108024959",
+        "messageId": "WNFHjV",
+        "templateId": "WaQaDv",
+        "subjectAndBodyDraft": true,
+        "flowActivation": false,
+        "discountConfiguration": false
+      },
+      "proposal": {
+        "proposalId": "checkout-email3-quality-20261103",
+        "state": "ONE_COHERENT_APPROVAL_DRAFT_SUBJECT_AND_TWO_BODY_AREAS_NOT_APPLIED_NOT_SEND_READY",
+        "applicationAllowedNow": false,
+        "oneCurrentImprovementOnly": true,
+        "flowId": "Vse76a",
+        "flowStatus": "draft",
+        "actionId": "108024959",
+        "actionStatus": "draft",
+        "messageId": "WNFHjV",
+        "templateId": "WaQaDv",
+        "subject": {
+          "before": "Email #3 Subject",
+          "after": "Möchtest du deine Bestellung fortsetzen?",
+          "onlyDefinitionFieldChanged": "subject_line",
+          "beforeDefinitionSha256": "65b7b968fb4aa1a80fc2f4dbc3616317324c50db2af76d15a46833e13113e4c6",
+          "candidateDefinitionSha256": "1eba1e61f1b9e2867051fe6613f571510a35d67386bc20f1432386d48f30e269"
+        },
+        "body": {
+          "beforeSha256": "93ad1f614f1e55dcc7ba816e8eda87c562d9fca6894045248f9ad492d6f469bb",
+          "candidateSha256": "b7ec08b4a9c5ad40f689e0d8acd74714539c4a12fb2cc2f1a62218891302d95a",
+          "changedLines1Based": [
+            15,
+            18,
+            19
+          ],
+          "exactTextChanges": [
+            {
+              "area": "heading",
+              "before": "Letzte Chance – fast ausverkauft",
+              "after": "Dein Einkauf bei LuxeStyle"
+            },
+            {
+              "area": "paragraph",
+              "before": "Hey {{ first_name|default:'' }},<br/><br/>deine Lieblingsstücke sind sehr gefragt und fast vergriffen. Dein 10 % Code\n                  <strong>WELCOME10</strong> gilt nur noch heute!",
+              "after": "Hey {{ first_name|default:'' }},<br/><br/>du kannst deinen begonnenen Einkauf im Checkout ansehen und fortsetzen. Falls du den Code\n                  <strong>WELCOME10</strong> verwenden möchtest, prüfe die dort angezeigten Bedingungen."
+            }
+          ],
+          "allOtherHtmlLinesByteIdentical": true,
+          "candidateScarcityClaimRemoved": true,
+          "candidateTodayExpiryClaimRemoved": true,
+          "candidateDoesNotPromise10Percent": true
+        },
+        "preserved": {
+          "allTemplateVariablesAndControlTokens": true,
+          "checkoutCtaExactBytes": true,
+          "checkoutUrlToken": "{{ event.extra.checkout_url }}",
+          "unsubscribeTokenExact": true,
+          "personalizationTokenExact": true,
+          "couponLiteral": "WELCOME10",
+          "couponStrongMarkup": "<strong>WELCOME10</strong>",
+          "couponMarkupAndCountExact": true,
+          "senderFields": {
+            "from_email": "info@luxestyle.ch",
+            "from_label": "LuxeStyle CH",
+            "reply_to_email": null,
+            "cc_email": null,
+            "bcc_email": null
+          },
+          "sendTrackingFlags": {
+            "smart_sending_enabled": true,
+            "transactional": false,
+            "add_tracking_params": false,
+            "custom_tracking_params": null,
+            "additional_filters": null
+          },
+          "templateNameEditorAndOtherAttributesNotChanged": true,
+          "flowStatusAndAllActionStatusesDraft": true,
+          "flowDelaysLinksAndFiltersUnchanged": true
+        },
+        "eligibility": {
+          "sendReady": false,
+          "actualDiscountConfigVerified": false,
+          "discountConfiguredOrActivated": false,
+          "stockPromiseMade": false,
+          "expiryPromiseMade": false,
+          "actualEventOrCustomerCheckoutTest": false,
+          "remainingPrerequisites": [
+            "Current source bytes and all identities must be reread immediately before any future approved edit",
+            "Legitimate isolated subject and template editor required; no whole-flow reimport",
+            "Coupon validity, consent, customer event variables, checkout rendering and send timing not functionally tested or approved",
+            "Flow and actions remain draft; this proposal is no activation or sending approval"
+          ]
+        },
+        "writes": 0,
+        "messagesSent": 0,
+        "newReportsForThisDraft": 0,
+        "discountApiReadsOrWrites": 0,
+        "bodyHtmlStructureBalanced": true
+      },
+      "evidenceHistory": []
+    },
+    {
+      "id": "external-video-review-20261103",
+      "priority": 2,
+      "priorityKind": "SETZUNG",
+      "state": "externe_termine_qualitaetsabweichung_freigabe_unbekannt_unveraendert",
+      "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "DREI_ORIGINALPOSTS_TATSAECHLICHE_MP4_HASHES_PROBES_NEUN_FRAMESTICHPROBEN",
+      "lastEvidence": "Drei extern neu beobachtete FB/IG/TikTok-MP4-Termine04./06./08.11. mit draft=false/autoPublish=true, jeweils PENDING. Alle tatsächlichen Dateien gelesen und gehasht:9.4s/1080x1920/30fps, Foto-Karten statt professioneller15–20s-Produkthandlung. Je3Frames angesehen, keine Vollfilm-/Ton-/Safezoneabnahme. Inhaltliche/Rechtefreigabe und aktuelle Produktbindung unbekannt; Frage nach externer Inhaberfreigabe offen. Keine eigene Produktion, Publikation, Terminänderung oder Registerinitialisierung.",
+      "nextAllowedStep": "Antwort zur konkreten externen Inhaberfreigabe und Nachweise abwarten/gezielt klären; Schweigen ist keine Freigabe. Aktuelle explizite Master-/Musikvorgaben bleiben massgebend. Vor irgendeiner Änderung jeden bestehenden Originalpost mit frischer ID und stabiler UUID vollständig lesen, konkreten Diff und Kollisionsprüfung erstellen, bekannte Identität erhalten und danach je Kanal zurücklesen. Keine Ersatzposts/Neuanlage oder pauschale Aktivierung. Die9.4s-Fotoreels nicht als freigegebenen professionellen Projektor-Master oder eigenen Veröffentlichungserfolg behandeln.",
+      "blockers": [
+        "Aktuelle kreative/kommerzielle Produkt-/Werberechtefreigabe dieser drei konkreten Dateien unbekannt.",
+        "Nachgewiesenes9.4s-Fotokartenformat entspricht aktueller15–20s/18s-Mastervorgabe nicht.",
+        "Audioherkunft/Voiceoverfreiheit, Plattform-Ausschnitte und konkrete Produkt-/Variantenbindung nicht abgenommen."
+      ],
+      "acceptance": [
+        "Nur nach ausdrücklicher passender Inhaberentscheidung und nachgewiesenen Bedingungen handeln.",
+        "Bestehende bestätigte Termine/Publikationen, UUIDs und Kanalzustände erhalten; keine unbekannten Writes wiederholen.",
+        "Neuer Hash/URL/UUID ist kein Nachweis neuen Masters oder leerer Vergangenheit."
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/EXTERNE-VIDEO-PRUEFUNG-20261103-R64.json",
+          "gitBlobSha": "367ec8587aa6b45b5c87410f657edfdbcb7f2e16",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json",
+          "gitBlobSha": "077e9ec5569519cb10b1bd3953882ce3a8ba3871",
+          "readAt": "2026-11-03T07:33:40.980532+00:00"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "posts": [
+        {
+          "id": 414566455,
+          "uuid": "-4972715334292126303",
+          "slot": {
+            "dateTime": "2026-11-04T10:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "mp4Sha256": "6b550fc014222f39f968f8c7f2b668fa7b702d534adb1093c40db80cb400ec74",
+          "durationSeconds": 9.4,
+          "states": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 414566490,
+          "uuid": "-7866054559336938189",
+          "slot": {
+            "dateTime": "2026-11-06T10:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "mp4Sha256": "bb0abd1b8768b305430b49d964d31e3ea21abe9b584c827beec6de4535d87244",
+          "durationSeconds": 9.4,
+          "states": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        {
+          "id": 414566521,
+          "uuid": "1744402171830094170",
+          "slot": {
+            "dateTime": "2026-11-08T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "mp4Sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+          "durationSeconds": 9.4,
+          "states": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        }
+      ],
+      "ownerApproval": "unknown_pending_clarification",
+      "ownWrites": 0,
+      "isMasterPublicationRegistry": false,
+      "evidenceHistory": []
     }
   ],
   "history": [
