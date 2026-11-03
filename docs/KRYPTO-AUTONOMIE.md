@@ -30,6 +30,11 @@ Vorher musste der User ein ZIP entpacken, «Täglich automatisch» und «Alles p
 - **Zonen bleiben:** Was nach `main` kommt, kommt jetzt automatisch zum PC. Darum gilt hart: Gelb und Rot (siehe Tabelle) kommen **nur nach dem ausdrücklichen Ja des Users** in `main`. Ein Merge ohne dieses Ja ist ein Verstoss, nicht nur ein Prozessfehler.
 - **Wochenroutine:** nach jedem Merge, der `tools/trading/` berührt, den Lauf «Krypto-Paket» ansehen (`actions_list`, Workflow `krypto-paket.yml`). Rot = melden, nicht weiterbauen.
 
+## Top-10-Experiment: «mehrere Trades» (Besitzer 03.11.2026: «mehrere trades» → «1 ok 2 ok 3 ok»)
+Der Besitzer will mehr Trades. Die Messlage (`alle_coins_pruefung.py`, vorab festgelegt am 13.10.2026, `data/krypto-alle-coins-pruefung.json`): dieselbe Trend-Regel auf mehr Coins **bestand nicht**. «Top 10 nach Volumen, Trend 50 Tage, Bitcoin-Filter» gab ab 2022 rund +18 % pro Jahr bei −38 % Einbruch, Bitcoin mit Trend 150 allein +28 % bei −28 %; Meme-Coins und «alle Coins» waren im Minus. Mehr Trades hiess dort mehr Kosten und mehr Risiko. Darum läuft die Regel nur als **Experiment mit Spielgeld**, nicht als Ersatz der Pilot-Regel:
+- **Schattenbuch (Grün, Cloud):** `tools/trading/schatten/satellit_schatten.py` führt täglich vier Reihen nach (S1 genau die getestete Regel mit Bitcoin und Ether; S2 ohne Bitcoin und Ether = was der Satellit handelt; Vergleiche «Bitcoin mit Trend 150» und «Bitcoin halten»), Daten von `data-api.binance.vision`, Logbuch `data/krypto-satellit-schatten.json` (committet der Job `ki-bot-schatten` in `tages-update.yml`), der Wochenbericht hat dazu einen Abschnitt. Rechenkern `tools/trading/krypto_bot/satellit_kern.py`: Tag für Tag gleich der getesteten Regel (Test gegen `alle_coins_pruefung.ziele`), die Tageswerte gleich `gewinner_pruefung.simulieren` (Tests `test_satellit.py`, `test_satellit_schatten.py`, Mutationsprobe 36 von 37, der eine ist gleichwertig).
+- **Messlage 03.11.2026:** 9 der 10 grössten Coins liegen unter ihrem 50-Tage-Schnitt (nur PEPE darüber), also hält die Regel heute nichts. Nächster Entscheidungstag ist jeder 7. Tag ab dem 01.02.2018 (Do 05.11.2026). **Unter 8 Wochen ist das kein Urteil.**
+
 ## Drei Zonen
 | Zone | Was | Wie |
 |---|---|---|
@@ -40,7 +45,7 @@ Vorher musste der User ein ZIP entpacken, «Täglich automatisch» und «Alles p
 ## Wochenroutine (geplante Sitzung, siehe unten)
 1. `git fetch`, CI-Stand von `main` ansehen.
 2. Messen: `python3 tools/trading/schatten/wochenbericht.py --schreiben` (hängt den Abschnitt an `docs/KRYPTO-WOCHENBERICHT.md` an, je Stand einmal).
-3. Prüfen: alle Tests aus `.github/workflows/tages-update.yml` (Schritt «Tests») und `test_cockpit.py`, `test_wochenbericht.py`, `test_autoupdate.py`, `tools/trading/test_paket_bauen.py` laufen lassen; dazu der letzte Lauf von `krypto-paket.yml` (grün = das Paket ist draussen). Rot auf `main` = Ursache suchen; liegt sie in Gelb oder Rot, nur melden.
+3. Prüfen: alle Tests aus `.github/workflows/tages-update.yml` (Schritt «Tests») und `test_cockpit.py`, `test_wochenbericht.py`, `test_autoupdate.py`, `tools/trading/test_paket_bauen.py`, `test_satellit.py`, `schatten/test_satellit_schatten.py` laufen lassen; dazu der letzte Lauf von `krypto-paket.yml` (grün = das Paket ist draussen). Rot auf `main` = Ursache suchen; liegt sie in Gelb oder Rot, nur melden.
 4. Genau **einen** Punkt aus dem Backlog (Grün) umsetzen, mit Tests und einer Mutationsprobe der neuen Tests, dann PR und Merge.
 5. Kurz in `CLAUDE.md` unter «Stand» nachführen (nur gemessene Zahlen, ehrlich «Rauschen» bei unter 8 Wochen).
 6. Dem User auf dem Handy in drei Sätzen sagen, was sich geändert hat und ob etwas seine Entscheidung braucht.
