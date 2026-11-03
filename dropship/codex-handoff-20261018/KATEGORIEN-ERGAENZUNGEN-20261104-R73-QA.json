@@ -1,0 +1,1729 @@
+{
+  "at": "2026-11-03T23:26:48.833614+00:00",
+  "finalAdditiveNativeQA": {
+    "at": "2026-11-03T23:24:41.250223+00:00",
+    "scope": "Final additive design after owner steering; preserved MAIN banner and original section order; bounded native collection UI checks only",
+    "views": [
+      {
+        "handle": "elektronik-technik",
+        "width": 390,
+        "checks": [
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_banner_present_new_header_absent",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": {
+              "before": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+              "after": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38"
+            }
+          },
+          {
+            "name": "banner_images_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_heading_and_description_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original7_sections_relative_order_preserved",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "global_product_search_markup_retained",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "no_extra_duplicate_with_existing_navigation",
+            "pass": true,
+            "evidence": []
+          },
+          {
+            "name": "no_extra_duplicate_urls",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing15_area_links_retained",
+            "pass": true,
+            "evidence": 15
+          },
+          {
+            "name": "no_unnecessary_duplicate_addon",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "baseline": {
+          "path": "/workspace/luxestyle-review/category-polish-20261103-r73/audit/elektronik-technik.html",
+          "themeId": "213013037447",
+          "cssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+          "images": [
+            "//luxestyle.ch/cdn/shop/files/8792068501139.jpg?v=1783791704&width=640",
+            "//luxestyle.ch/cdn/shop/files/054832a9-0ed1-4d44-8df9-92323f69fe36.jpg?v=1783806838&width=640",
+            "//luxestyle.ch/cdn/shop/files/1615110431358.jpg?v=1783810166&width=640",
+            "//luxestyle.ch/cdn/shop/files/1169318924835.jpg?v=1783868847&width=640"
+          ],
+          "h1": [
+            "Elektronik & Technik"
+          ],
+          "descriptionText": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Passend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher"
+        },
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "newHeaderCount": 0,
+        "oldHeroCount": 1,
+        "images": [
+          "//luxestyle.ch/cdn/shop/files/8792068501139.jpg?v=1783791704&width=640",
+          "//luxestyle.ch/cdn/shop/files/054832a9-0ed1-4d44-8df9-92323f69fe36.jpg?v=1783806838&width=640",
+          "//luxestyle.ch/cdn/shop/files/1615110431358.jpg?v=1783810166&width=640",
+          "//luxestyle.ch/cdn/shop/files/1169318924835.jpg?v=1783868847&width=640"
+        ],
+        "h1": [
+          "Elektronik & Technik"
+        ],
+        "descriptionText": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Passend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher",
+        "overflow": false,
+        "sectionOrder": [
+          "lux_breadcrumb",
+          "lux_subchips",
+          "lux_extra_categories",
+          "lux_usp_coll",
+          "lux_hero",
+          "luxe_review_assets",
+          "main",
+          "lux_faq"
+        ],
+        "originalLinks": [
+          {
+            "text": "Elektronik & Technik",
+            "href": "/collections/elektronik-technik"
+          },
+          {
+            "text": "Handy & Laden",
+            "href": "/collections/handy-zubehoer"
+          },
+          {
+            "text": "Kopfhörer & Audio",
+            "href": "/collections/kopfhoerer-audio"
+          },
+          {
+            "text": "Smartwatches & Wearables",
+            "href": "/collections/smartwatches-wearables"
+          },
+          {
+            "text": "Kamera, Foto & Drohnen",
+            "href": "/collections/drohnen-kameras"
+          },
+          {
+            "text": "TV, Beamer & Streaming",
+            "href": "/collections/beamer-heimkino"
+          },
+          {
+            "text": "Gaming & VR",
+            "href": "/collections/gaming"
+          },
+          {
+            "text": "Elektronik & Technik",
+            "href": "/collections/elektronik-technik"
+          },
+          {
+            "text": "Handy & Laden",
+            "href": "/collections/handy-zubehoer"
+          },
+          {
+            "text": "Kopfhörer & Audio",
+            "href": "/collections/kopfhoerer-audio"
+          },
+          {
+            "text": "Smartwatches & Wearables",
+            "href": "/collections/smartwatches-wearables"
+          },
+          {
+            "text": "Kamera, Foto & Drohnen",
+            "href": "/collections/drohnen-kameras"
+          },
+          {
+            "text": "TV, Beamer & Streaming",
+            "href": "/collections/beamer-heimkino"
+          },
+          {
+            "text": "Gaming & VR",
+            "href": "/collections/gaming"
+          },
+          {
+            "text": "PC & Computer",
+            "href": "/collections/pc-homeoffice"
+          },
+          {
+            "text": "Büro & Drucker",
+            "href": "/collections/buro-home-office"
+          },
+          {
+            "text": "Sicherheit & Überwachung",
+            "href": "/collections/ueberwachungskameras"
+          },
+          {
+            "text": "Strom, Batterien & Solar",
+            "href": "/collections/solar-energie"
+          },
+          {
+            "text": "Smart Home & smarte Gadgets",
+            "href": "/collections/smart-home-gadgets"
+          },
+          {
+            "text": "3D-Drucker & Zubehör",
+            "href": "/collections/3d-drucker-zubehoer"
+          },
+          {
+            "text": "Kabel & Adapter",
+            "href": "/collections/kabel-adapter"
+          },
+          {
+            "text": "Elektronik-Kleinteile",
+            "href": "/collections/elektronik-kleinteile"
+          }
+        ],
+        "extraLinks": [],
+        "extraRootPresent": false,
+        "extraRootHidden": false,
+        "additionOpen": false,
+        "globalSearchInputs": 2,
+        "heroCssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+        "at": "2026-11-03T23:24:51.667646+00:00"
+      },
+      {
+        "handle": "elektronik-technik",
+        "width": 1440,
+        "checks": [
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_banner_present_new_header_absent",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": {
+              "before": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+              "after": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38"
+            }
+          },
+          {
+            "name": "banner_images_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_heading_and_description_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original7_sections_relative_order_preserved",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "global_product_search_markup_retained",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "no_extra_duplicate_with_existing_navigation",
+            "pass": true,
+            "evidence": []
+          },
+          {
+            "name": "no_extra_duplicate_urls",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing15_area_links_retained",
+            "pass": true,
+            "evidence": 15
+          },
+          {
+            "name": "no_unnecessary_duplicate_addon",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "baseline": {
+          "path": "/workspace/luxestyle-review/category-polish-20261103-r73/audit/elektronik-technik.html",
+          "themeId": "213013037447",
+          "cssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+          "images": [
+            "//luxestyle.ch/cdn/shop/files/8792068501139.jpg?v=1783791704&width=640",
+            "//luxestyle.ch/cdn/shop/files/054832a9-0ed1-4d44-8df9-92323f69fe36.jpg?v=1783806838&width=640",
+            "//luxestyle.ch/cdn/shop/files/1615110431358.jpg?v=1783810166&width=640",
+            "//luxestyle.ch/cdn/shop/files/1169318924835.jpg?v=1783868847&width=640"
+          ],
+          "h1": [
+            "Elektronik & Technik"
+          ],
+          "descriptionText": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Passend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher"
+        },
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "newHeaderCount": 0,
+        "oldHeroCount": 1,
+        "images": [
+          "//luxestyle.ch/cdn/shop/files/8792068501139.jpg?v=1783791704&width=640",
+          "//luxestyle.ch/cdn/shop/files/054832a9-0ed1-4d44-8df9-92323f69fe36.jpg?v=1783806838&width=640",
+          "//luxestyle.ch/cdn/shop/files/1615110431358.jpg?v=1783810166&width=640",
+          "//luxestyle.ch/cdn/shop/files/1169318924835.jpg?v=1783868847&width=640"
+        ],
+        "h1": [
+          "Elektronik & Technik"
+        ],
+        "descriptionText": "Entdecke Elektronik für Zuhause und unterwegs: Fernbedienungen, Tastaturen, Audio- und Ladezubehör. Vergleiche Anschlüsse, Stromversorgung und die angegebenen kompatiblen Geräte, bevor du deine Ausführung auswählst.🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Passend dazu: Nintendo Switch · 3D-Drucker & Stifte · Kopfhörer & Lautsprecher · PC-Komponenten & Speicher",
+        "overflow": false,
+        "sectionOrder": [
+          "lux_breadcrumb",
+          "lux_subchips",
+          "lux_extra_categories",
+          "lux_usp_coll",
+          "lux_hero",
+          "luxe_review_assets",
+          "main",
+          "lux_faq"
+        ],
+        "originalLinks": [
+          {
+            "text": "Elektronik & Technik",
+            "href": "/collections/elektronik-technik"
+          },
+          {
+            "text": "Handy & Laden",
+            "href": "/collections/handy-zubehoer"
+          },
+          {
+            "text": "Kopfhörer & Audio",
+            "href": "/collections/kopfhoerer-audio"
+          },
+          {
+            "text": "Smartwatches & Wearables",
+            "href": "/collections/smartwatches-wearables"
+          },
+          {
+            "text": "Kamera, Foto & Drohnen",
+            "href": "/collections/drohnen-kameras"
+          },
+          {
+            "text": "TV, Beamer & Streaming",
+            "href": "/collections/beamer-heimkino"
+          },
+          {
+            "text": "Gaming & VR",
+            "href": "/collections/gaming"
+          },
+          {
+            "text": "Elektronik & Technik",
+            "href": "/collections/elektronik-technik"
+          },
+          {
+            "text": "Handy & Laden",
+            "href": "/collections/handy-zubehoer"
+          },
+          {
+            "text": "Kopfhörer & Audio",
+            "href": "/collections/kopfhoerer-audio"
+          },
+          {
+            "text": "Smartwatches & Wearables",
+            "href": "/collections/smartwatches-wearables"
+          },
+          {
+            "text": "Kamera, Foto & Drohnen",
+            "href": "/collections/drohnen-kameras"
+          },
+          {
+            "text": "TV, Beamer & Streaming",
+            "href": "/collections/beamer-heimkino"
+          },
+          {
+            "text": "Gaming & VR",
+            "href": "/collections/gaming"
+          },
+          {
+            "text": "PC & Computer",
+            "href": "/collections/pc-homeoffice"
+          },
+          {
+            "text": "Büro & Drucker",
+            "href": "/collections/buro-home-office"
+          },
+          {
+            "text": "Sicherheit & Überwachung",
+            "href": "/collections/ueberwachungskameras"
+          },
+          {
+            "text": "Strom, Batterien & Solar",
+            "href": "/collections/solar-energie"
+          },
+          {
+            "text": "Smart Home & smarte Gadgets",
+            "href": "/collections/smart-home-gadgets"
+          },
+          {
+            "text": "3D-Drucker & Zubehör",
+            "href": "/collections/3d-drucker-zubehoer"
+          },
+          {
+            "text": "Kabel & Adapter",
+            "href": "/collections/kabel-adapter"
+          },
+          {
+            "text": "Elektronik-Kleinteile",
+            "href": "/collections/elektronik-kleinteile"
+          }
+        ],
+        "extraLinks": [],
+        "extraRootPresent": false,
+        "extraRootHidden": false,
+        "additionOpen": false,
+        "globalSearchInputs": 2,
+        "heroCssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+        "at": "2026-11-03T23:25:00.421737+00:00"
+      },
+      {
+        "handle": "damen-schuhe",
+        "width": 390,
+        "checks": [
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_banner_present_new_header_absent",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": {
+              "before": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+              "after": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38"
+            }
+          },
+          {
+            "name": "banner_images_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_heading_and_description_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original7_sections_relative_order_preserved",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "global_product_search_markup_retained",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "no_extra_duplicate_with_existing_navigation",
+            "pass": true,
+            "evidence": []
+          },
+          {
+            "name": "no_extra_duplicate_urls",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_chip_navigation_has_own13_children",
+            "pass": true,
+            "evidence": [
+              "/collections/damen-ballerinas",
+              "/collections/damen-flip-flops",
+              "/collections/damen-freizeitschuhe",
+              "/collections/damen-hausschuhe",
+              "/collections/damen-keilsandalen",
+              "/collections/damen-pantoletten",
+              "/collections/damen-pumps",
+              "/collections/damen-sandalen",
+              "/collections/damen-sneaker",
+              "/collections/damen-sportschuhe",
+              "/collections/damen-stiefel",
+              "/collections/damen-wanderschuhe",
+              "/collections/damen-winterschuhe"
+            ]
+          },
+          {
+            "name": "no_unnecessary_duplicate_addon",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "baseline": {
+          "path": "/workspace/luxestyle-review/category-polish-20261103-r73/qa/damen-schuhe-native.html",
+          "themeId": "213013037447",
+          "cssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+          "images": [
+            "//luxestyle.ch/cdn/shop/files/b4da0d58-e760-4691-b348-9dc4a3d13722.jpg?v=1780268094&width=640",
+            "//luxestyle.ch/cdn/shop/files/d36bd73e-1075-4224-a726-89931471c75d.jpg?v=1785813233&width=640",
+            "//luxestyle.ch/cdn/shop/files/1f057fa3-3161-476c-88d9-ecb12515a2c4.jpg?v=1792620881&width=640",
+            "//luxestyle.ch/cdn/shop/files/4b3d6c6a-69a5-400a-95d5-1ee73123c893.jpg?v=1792620857&width=640"
+          ],
+          "h1": [
+            "Damen-Schuhe"
+          ],
+          "descriptionText": "Entdecke Damenschuhe für jeden Anlass: flache Loafer und Ballerinas für den Alltag, Slingback-Pumps und Stiletto-Sandaletten für den Abend, Plateau-Sneaker und Keil-Sandalen für den Sommer. Dazu Stiefeletten und Boots für die kühle Jahreszeit – die Auswahl wächst laufend.🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Zur Übersicht: Damen"
+        },
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "newHeaderCount": 0,
+        "oldHeroCount": 1,
+        "images": [
+          "//luxestyle.ch/cdn/shop/files/b4da0d58-e760-4691-b348-9dc4a3d13722.jpg?v=1780268094&width=640",
+          "//luxestyle.ch/cdn/shop/files/d36bd73e-1075-4224-a726-89931471c75d.jpg?v=1785813233&width=640",
+          "//luxestyle.ch/cdn/shop/files/1f057fa3-3161-476c-88d9-ecb12515a2c4.jpg?v=1792620881&width=640",
+          "//luxestyle.ch/cdn/shop/files/4b3d6c6a-69a5-400a-95d5-1ee73123c893.jpg?v=1792620857&width=640"
+        ],
+        "h1": [
+          "Damen-Schuhe"
+        ],
+        "descriptionText": "Entdecke Damenschuhe für jeden Anlass: flache Loafer und Ballerinas für den Alltag, Slingback-Pumps und Stiletto-Sandaletten für den Abend, Plateau-Sneaker und Keil-Sandalen für den Sommer. Dazu Stiefeletten und Boots für die kühle Jahreszeit – die Auswahl wächst laufend.🚚 Lieferzeit auf jeder Produktseite · Gratis-Versand in der Schweiz ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10 Zur Übersicht: Damen",
+        "overflow": false,
+        "sectionOrder": [
+          "lux_breadcrumb",
+          "lux_subchips",
+          "lux_extra_categories",
+          "lux_usp_coll",
+          "lux_hero",
+          "luxe_review_assets",
+          "main",
+          "lux_faq"
+        ],
+        "originalLinks": [
+          {
+            "text": "Sneaker",
+            "href": "/collections/damen-sneaker"
+          },
+          {
+            "text": "Sport-, Lauf- & Tanzschuhe",
+            "href": "/collections/damen-sportschuhe"
+          },
+          {
+            "text": "Pumps & Absatzschuhe",
+            "href": "/collections/damen-pumps"
+          },
+          {
+            "text": "Ballerinas, Loafer & Flache",
+            "href": "/collections/damen-ballerinas"
+          },
+          {
+            "text": "Sandalen",
+            "href": "/collections/damen-sandalen"
+          },
+          {
+            "text": "Keil- & Plateausandalen",
+            "href": "/collections/damen-keilsandalen"
+          },
+          {
+            "text": "Pantoletten, Mules & Clogs",
+            "href": "/collections/damen-pantoletten"
+          },
+          {
+            "text": "Sneaker",
+            "href": "/collections/damen-sneaker"
+          },
+          {
+            "text": "Sport-, Lauf- & Tanzschuhe",
+            "href": "/collections/damen-sportschuhe"
+          },
+          {
+            "text": "Pumps & Absatzschuhe",
+            "href": "/collections/damen-pumps"
+          },
+          {
+            "text": "Ballerinas, Loafer & Flache",
+            "href": "/collections/damen-ballerinas"
+          },
+          {
+            "text": "Sandalen",
+            "href": "/collections/damen-sandalen"
+          },
+          {
+            "text": "Keil- & Plateausandalen",
+            "href": "/collections/damen-keilsandalen"
+          },
+          {
+            "text": "Pantoletten, Mules & Clogs",
+            "href": "/collections/damen-pantoletten"
+          },
+          {
+            "text": "Flip-Flops & Badeschuhe",
+            "href": "/collections/damen-flip-flops"
+          },
+          {
+            "text": "Stiefel & Stiefeletten",
+            "href": "/collections/damen-stiefel"
+          },
+          {
+            "text": "Winterschuhe",
+            "href": "/collections/damen-winterschuhe"
+          },
+          {
+            "text": "Wanderschuhe",
+            "href": "/collections/damen-wanderschuhe"
+          },
+          {
+            "text": "Hausschuhe & Pantoffeln",
+            "href": "/collections/damen-hausschuhe"
+          },
+          {
+            "text": "Freizeit- & Alltagsschuhe",
+            "href": "/collections/damen-freizeitschuhe"
+          }
+        ],
+        "extraLinks": [],
+        "extraRootPresent": false,
+        "extraRootHidden": false,
+        "additionOpen": false,
+        "globalSearchInputs": 2,
+        "heroCssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+        "at": "2026-11-03T23:25:08.826927+00:00"
+      },
+      {
+        "handle": "hundewelt",
+        "width": 390,
+        "checks": [
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_banner_present_new_header_absent",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": {
+              "before": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+              "after": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38"
+            }
+          },
+          {
+            "name": "banner_images_identical_to_dated_MAIN",
+            "pass": false,
+            "evidence": null
+          },
+          {
+            "name": "banner_heading_and_description_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original7_sections_relative_order_preserved",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "global_product_search_markup_retained",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "no_extra_duplicate_with_existing_navigation",
+            "pass": true,
+            "evidence": []
+          },
+          {
+            "name": "no_extra_duplicate_urls",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "five_missing_dog_areas_added",
+            "pass": true,
+            "evidence": [
+              "/collections/haustier-hunde",
+              "/collections/leinen-halsbaender-geschirre",
+              "/collections/hunde-katzen-kleidung",
+              "/collections/tier-transport",
+              "/collections/haustier-tech"
+            ]
+          },
+          {
+            "name": "additional_details_closed_initially",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "additional_summary_min44",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "additional_details_open_natively",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "additional_links_min44",
+            "pass": true,
+            "evidence": [
+              74.390625,
+              74.390625,
+              74.390625,
+              74.390625,
+              56
+            ]
+          },
+          {
+            "name": "search_for_larger_addition_visible",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_no_match_state",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_reset_restores",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_finds_actual_label",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_escape_restores",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "baseline": {
+          "path": "/workspace/luxestyle-review/category-polish-20261103-r73/audit/hundewelt.html",
+          "themeId": "213013037447",
+          "cssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+          "images": [
+            "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+            "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+            "//luxestyle.ch/cdn/shop/files/77294eef-fd4e-42ea-b0fd-709d4050fa75.jpg?v=1792550048&width=640",
+            "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640"
+          ],
+          "h1": [
+            "Hundewelt"
+          ],
+          "descriptionText": "Alles für deinen Hund: Spielzeug, Leinen, Betten, Näpfe, Pflege und mehr. 🇨🇭 Schweizer Shop · 30 Tage Rückgabe · Code WELCOME10 = –10%."
+        },
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "newHeaderCount": 0,
+        "oldHeroCount": 1,
+        "images": [
+          "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+          "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+          "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640",
+          "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+        ],
+        "h1": [
+          "Hundewelt"
+        ],
+        "descriptionText": "Alles für deinen Hund: Spielzeug, Leinen, Betten, Näpfe, Pflege und mehr. 🇨🇭 Schweizer Shop · 30 Tage Rückgabe · Code WELCOME10 = –10%.",
+        "overflow": false,
+        "sectionOrder": [
+          "lux_breadcrumb",
+          "lux_subchips",
+          "lux_extra_categories",
+          "lux_usp_coll",
+          "lux_hero",
+          "luxe_review_assets",
+          "main",
+          "lux_faq"
+        ],
+        "originalLinks": [],
+        "extraLinks": [
+          {
+            "text": "Hunde",
+            "href": "/collections/haustier-hunde"
+          },
+          {
+            "text": "Leinen, Halsbänder & Geschirre",
+            "href": "/collections/leinen-halsbaender-geschirre"
+          },
+          {
+            "text": "Hunde- & Katzenkleidung",
+            "href": "/collections/hunde-katzen-kleidung"
+          },
+          {
+            "text": "Tragetaschen, Rucksäcke & Transport",
+            "href": "/collections/tier-transport"
+          },
+          {
+            "text": "Haustier-Tech",
+            "href": "/collections/haustier-tech"
+          }
+        ],
+        "extraRootPresent": true,
+        "extraRootHidden": false,
+        "additionOpen": false,
+        "globalSearchInputs": 2,
+        "heroCssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+        "searchVisible": true,
+        "at": "2026-11-03T23:25:18.108374+00:00"
+      },
+      {
+        "handle": "sport-outdoor",
+        "width": 320,
+        "checks": [
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_banner_present_new_header_absent",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": {
+              "before": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+              "after": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38"
+            }
+          },
+          {
+            "name": "banner_images_identical_to_dated_MAIN",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_heading_and_description_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original7_sections_relative_order_preserved",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "global_product_search_markup_retained",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "no_extra_duplicate_with_existing_navigation",
+            "pass": true,
+            "evidence": []
+          },
+          {
+            "name": "no_extra_duplicate_urls",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "five_missing_sport_areas_added",
+            "pass": true,
+            "evidence": [
+              "/collections/fitness-training",
+              "/collections/sub-yoga-fitness",
+              "/collections/camping-outdoor",
+              "/collections/velo-radsport",
+              "/collections/schwimmen-tauchen-wassersport"
+            ]
+          },
+          {
+            "name": "additional_details_closed_initially",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "additional_summary_min44",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "additional_details_open_natively",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "additional_links_min44",
+            "pass": true,
+            "evidence": [
+              56,
+              56,
+              56,
+              56,
+              72.390625
+            ]
+          },
+          {
+            "name": "search_for_larger_addition_visible",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_no_match_state",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_reset_restores",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_finds_actual_label",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "new_search_escape_restores",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "baseline": {
+          "path": "/workspace/luxestyle-review/category-polish-20261103-r73/audit/sport-outdoor.html",
+          "themeId": "213013037447",
+          "cssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+          "images": [
+            "//luxestyle.ch/cdn/shop/files/c57c9d73-6d09-4193-a979-f487bd24c243.jpg?v=1792550491&width=640",
+            "//luxestyle.ch/cdn/shop/files/817f5ccd-52bb-446a-9efd-090221738c63.jpg?v=1792008421&width=640",
+            "//luxestyle.ch/cdn/shop/files/dced36dc-7de8-4a5d-b08b-d1d9b32c9223_fine.jpg?v=1792008406&width=640",
+            "//luxestyle.ch/cdn/shop/files/b8f7cee3-06ef-4975-963e-5d09cca5552e_trans.jpg?v=1792008390&width=640"
+          ],
+          "h1": [
+            "Sport & Outdoor"
+          ],
+          "descriptionText": "Entdecke bei LuxeStyle.ch die hochwertige \"🏅 Sport & Outdoor\" Kollektion, die dich für jedes Abenteuer rüstet – sei es mit innovativer Ausrüstung für den Radsport, Fanartikeln für Fussballbegeisterte oder bequemen Hoodies für deine Freizeit. Profitiere von unserem Gratis-Versand in der Schweiz ab CHF 50 und der unkomplizierten 30-Tage-Rückgabe für ein sorgenfreies Einkaufserlebnis. Passend dazu: Ballettschuhe · Fussgelenkstütze"
+        },
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "newHeaderCount": 0,
+        "oldHeroCount": 1,
+        "images": [
+          "//luxestyle.ch/cdn/shop/files/c57c9d73-6d09-4193-a979-f487bd24c243.jpg?v=1792550491&width=640",
+          "//luxestyle.ch/cdn/shop/files/817f5ccd-52bb-446a-9efd-090221738c63.jpg?v=1792008421&width=640",
+          "//luxestyle.ch/cdn/shop/files/dced36dc-7de8-4a5d-b08b-d1d9b32c9223_fine.jpg?v=1792008406&width=640",
+          "//luxestyle.ch/cdn/shop/files/b8f7cee3-06ef-4975-963e-5d09cca5552e_trans.jpg?v=1792008390&width=640"
+        ],
+        "h1": [
+          "Sport & Outdoor"
+        ],
+        "descriptionText": "Entdecke bei LuxeStyle.ch die hochwertige \"🏅 Sport & Outdoor\" Kollektion, die dich für jedes Abenteuer rüstet – sei es mit innovativer Ausrüstung für den Radsport, Fanartikeln für Fussballbegeisterte oder bequemen Hoodies für deine Freizeit. Profitiere von unserem Gratis-Versand in der Schweiz ab CHF 50 und der unkomplizierten 30-Tage-Rückgabe für ein sorgenfreies Einkaufserlebnis. Passend dazu: Ballettschuhe · Fussgelenkstütze",
+        "overflow": false,
+        "sectionOrder": [
+          "lux_breadcrumb",
+          "lux_subchips",
+          "lux_extra_categories",
+          "lux_usp_coll",
+          "lux_hero",
+          "luxe_review_assets",
+          "main",
+          "lux_faq"
+        ],
+        "originalLinks": [],
+        "extraLinks": [
+          {
+            "text": "Sport, Fitness & Outdoor",
+            "href": "/collections/fitness-training"
+          },
+          {
+            "text": "Yoga & Fitness",
+            "href": "/collections/sub-yoga-fitness"
+          },
+          {
+            "text": "Camping & Outdoor",
+            "href": "/collections/camping-outdoor"
+          },
+          {
+            "text": "Velo & Radsport",
+            "href": "/collections/velo-radsport"
+          },
+          {
+            "text": "Schwimmen, Tauchen & Wassersport",
+            "href": "/collections/schwimmen-tauchen-wassersport"
+          }
+        ],
+        "extraRootPresent": true,
+        "extraRootHidden": false,
+        "additionOpen": false,
+        "globalSearchInputs": 2,
+        "heroCssHash": "140d2b4156f747f1fbee3b94dc8f6c1efac7912be86978a9c38b6c071458bd38",
+        "searchVisible": true,
+        "at": "2026-11-03T23:25:26.292451+00:00"
+      },
+      {
+        "handle": "hundewelt",
+        "width": 390,
+        "mode": "nojs",
+        "checks": [
+          {
+            "name": "nojs_native_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "nojs_http200",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "nojs_additional_details_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "nojs_details_open",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "nojs_five_links_available",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "nojs_search_hidden",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        }
+      }
+    ],
+    "result": {
+      "passed": 86,
+      "total": 87,
+      "failed": [
+        {
+          "handle": "hundewelt",
+          "width": 390,
+          "mode": null,
+          "name": "banner_images_identical_to_dated_MAIN",
+          "pass": false,
+          "evidence": null
+        }
+      ],
+      "unknown": []
+    }
+  },
+  "expectedDogBannerDataChange": {
+    "at": "2026-11-03T23:26:27.949067+00:00",
+    "passed": true,
+    "scope": "Local explanation of one original86/87 QA difference; no additional website reads",
+    "themeId": "212978598279",
+    "removedProduct": "https://luxestyle.ch/products/lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600",
+    "removedImageUrl": "//luxestyle.ch/cdn/shop/files/77294eef-fd4e-42ea-b0fd-709d4050fa75.jpg?v=1792550048&width=640",
+    "replacementImageUrl": "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640",
+    "replacementProductUrl": "https://luxestyle.ch/products/hundewinterpullover-gross-4xl-7xl-370176",
+    "originalSourceLogic": "main/custom-lux_hero.liquid scans first12 products and uses first4 featured images >=500px. Layout/CSS unchanged.",
+    "savedCardSources": [
+      "audit/hundewelt.html",
+      "qa/PRODUCT-CARD-REGRESSION.json"
+    ],
+    "beforeImages": [
+      "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+      "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+      "//luxestyle.ch/cdn/shop/files/77294eef-fd4e-42ea-b0fd-709d4050fa75.jpg?v=1792550048&width=640",
+      "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640"
+    ],
+    "afterImages": [
+      "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+      "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+      "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640",
+      "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+    ],
+    "expectedCurrentImageCardMapping": [
+      {
+        "productUrl": "/products/hufttasche-fur-hundetraining-625200",
+        "image": "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640"
+      },
+      {
+        "productUrl": "/products/pu-leder-hundetoilettenbeutel-individuell-621500",
+        "image": "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640"
+      },
+      {
+        "productUrl": "/products/hundennasenmatte-aus-fleece-energie-intelligen-622000",
+        "image": "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640"
+      },
+      {
+        "productUrl": "/products/hundewinterpullover-gross-4xl-7xl-370176",
+        "image": "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+      }
+    ],
+    "resultMeaning": "The known narrow collection exclusion removes its image from the original dynamic banner; an existing dog product moves into position. This is a documented data consequence, not a banner redesign or UI blocker.",
+    "originalQaResultPreserved": "ADDITIVE-QA.json remains86/87 with the original failed image equality check"
+  },
+  "finalStructure": {
+    "scope": "Local candidate only; no native writes by this agent",
+    "originalSectionsUnchanged": [
+      "main",
+      "lux_faq",
+      "lux_breadcrumb",
+      "lux_usp_coll",
+      "luxe_review_assets",
+      "lux_hero"
+    ],
+    "onlyExistingSectionChange": "lux_subchips initial Liquid assignment block",
+    "oldSubchipsHtmlCssAndRemainingLogicExact": true,
+    "originalRelativeOrderExact": true,
+    "addedSection": "lux_extra_categories",
+    "additionalSectionAfter": "lux_subchips",
+    "additionalModuleClosedByDefault": true,
+    "headerReferenceAndLocalFileRemoved": true,
+    "newCssContainsNoHeaderOrTagStyles": true,
+    "newTagFilters": false,
+    "routeFixtures": {
+      "damen-schuhe": {
+        "root": "schuhe",
+        "count": 13,
+        "priority": 3,
+        "supplementAfterVisibleChipsDedup": 0
+      },
+      "damen-kleider": {
+        "root": "damen-mode",
+        "count": 26,
+        "priority": 3,
+        "supplementAfterVisibleChipsDedup": 0
+      }
+    },
+    "javascriptSyntax": "passed",
+    "cssParse": "passed",
+    "domLogicChecks": "8 passed; navigation/additive-js-check.cjs; browser QA remains root task",
+    "usedLocaleKeys": [
+      "luxe_browse.nav.additional",
+      "luxe_browse.nav.find",
+      "luxe_browse.nav.no_match",
+      "luxe_browse.nav.reset",
+      "luxe_browse.nav.search_placeholder"
+    ]
+  },
+  "contentSample": {
+    "reviewedAtUtc": "2026-11-03T23:18:22.579881+00:00",
+    "sourceCapturedAtUtc": "2026-11-03T22:45:20.186406+00:00",
+    "source": "audit/CATEGORY-AUDIT.json",
+    "scope": "Local semantic review of already saved first max12 product titles/URLs per category; no new website reads, no full catalogue classification, no product writes",
+    "standardCategoryCount": 15,
+    "reviewedProductCards": 180,
+    "newClearMisclassificationCandidates": [],
+    "knownCorrectedCase": {
+      "category": "hundewelt",
+      "title": "Lernspielzeug für Kinder – Hundert-Zahlen-Tafel",
+      "url": "https://luxestyle.ch/products/lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600",
+      "status": "Already narrowly corrected by root; not a new candidate",
+      "correctionEvidence": "Root-provided dog-membership-readback.json and qa/PRODUCT-CARD-REGRESSION.json; no new reads by this audit"
+    },
+    "rows": [
+      {
+        "category": "Selbst gestalten",
+        "handle": "selbst-gestalten-1",
+        "status": "unklar",
+        "reviewedCardCount": 0,
+        "reason": "Eigene Gestaltungsansicht ohne Standard-Produktkarten. Die Stichprobe erlaubt keine Aussage zum Sortiment; null Standardkarten bedeuten nicht null Produkte."
+      },
+      {
+        "category": "Damenmode",
+        "handle": "damen-mode",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Kleider, Damenbekleidung und Schuhe passen zum breiten Themenbereich. Keine neue Geschlechts-, Material- oder Qualitätsverifikation."
+      },
+      {
+        "category": "Herrenmode",
+        "handle": "fur-ihn",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Herrenbekleidung einschliesslich Sportbekleidung; aus den gespeicherten Titeln keine klare Fehlzuordnung."
+      },
+      {
+        "category": "Kinder und Baby",
+        "handle": "sub-baby-kids",
+        "status": "unklar",
+        "reviewedCardCount": 12,
+        "reason": "RC-Fernsteuerung, Mini-Quadcopter und Game-Card-Schutzbox können zum Spielzeug-/Kinderbereich gehören. Altersfreigabe und Produktkontext fehlen; deshalb keine belegte Fehlzuordnung und keine Verschiebung empfohlen."
+      },
+      {
+        "category": "Schuhe",
+        "handle": "schuhe",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Schuhe und verwandtes Fuss-/Rollsportzubehör. Die Nach-Training-Fussabdeckung ist vom Namen her ergänzendes Zubehör und nicht eindeutig fremd."
+      },
+      {
+        "category": "Taschen und Rucksäcke",
+        "handle": "sub-taschen",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Taschen, Rucksäcke und Geldbeutel; auch Motorrad-/Gaming-Transporttaschen passen zum breiten Taschenbereich."
+      },
+      {
+        "category": "Schmuck",
+        "handle": "schmuck",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Halsketten, Armbänder und Ring; Materialangaben aus den Titeln wurden nicht separat bestätigt."
+      },
+      {
+        "category": "Uhren",
+        "handle": "uhren",
+        "status": "unklar",
+        "reviewedCardCount": 12,
+        "reason": "Zweifarbiger Doppelring-Armband (2. Gen.) könnte Uhrenarmband oder Schmuck sein. Titel allein unterscheidet dies nicht. Apple-Watch-Armband und Smartwatches sind im breiten Uhrenbereich plausibel."
+      },
+      {
+        "category": "Beauty und Pflege",
+        "handle": "beauty-pflege",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Make-up, Pflegegeräte und Nagelprodukte passen thematisch. Keine zusätzliche Funktions-, Sicherheits- oder Wirkungsbestätigung."
+      },
+      {
+        "category": "Wohnen und Deko",
+        "handle": "wohnen-dekoration",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Heimtextilien, Beleuchtung und Wanddeko passen thematisch; gesundheitsbezogene Titelclaims wurden nicht bestätigt."
+      },
+      {
+        "category": "Küche und Kochen",
+        "handle": "sub-kueche",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Küchenhelfer, Trinkgefässe und Kochgeräte. Mehrzweck-Timer und Babynahrung-Zerkleinerer sind in Küche plausibel."
+      },
+      {
+        "category": "Elektronik",
+        "handle": "elektronik-technik",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Fernbedienungen, Smart-Home-Komponenten, Eingabegeräte und weitere elektronische Geräte."
+      },
+      {
+        "category": "Gaming",
+        "handle": "gaming",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Controller, Adapter und Konsolenzubehör. Erste zwölf Karten sind stark auf Controller konzentriert; dies ist eine Darstellungsbeobachtung, kein Zuordnungsfehler."
+      },
+      {
+        "category": "Hundewelt",
+        "handle": "hundewelt",
+        "status": "konkreter_fehler_bereits_korrigiert",
+        "reviewedCardCount": 12,
+        "reason": "Die gespeicherte alte Stichprobe enthält die fachlich fremde Hundert-Zahlen-Tafel. Root hat sie bereits gezielt aus Hundewelt ausgeschlossen; Lernspielzeug-Zuordnung bleibt. Ein Schal mit Dackelmotiv ist thematisch nicht automatisch falsch."
+      },
+      {
+        "category": "Sport und Outdoor",
+        "handle": "sport-outdoor",
+        "status": "unklar",
+        "reviewedCardCount": 12,
+        "reason": "Steuerungsrad aus Edelstahl400mm könnte Bootszubehör sein und damit zu Outdoor/Wassersport passen. Ohne Produktkontext ist eine Fehlzuordnung nicht belegt. Die übrigen Titel passen zu Sport, Camping oder Outdoor."
+      },
+      {
+        "category": "Geschenkideen",
+        "handle": "premium-geschenke",
+        "status": "passend",
+        "reviewedCardCount": 12,
+        "reason": "Uhren, Trinkgefäss, Diffusoren, Ladestation, Decke und personalisierter Anhänger sind als Geschenkideen plausibel. Premiumqualität oder Verkaufsleistung wird dadurch nicht bestätigt."
+      }
+    ]
+  },
+  "validationFinal": {
+    "success": false,
+    "responses": [
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-category.css passed all checks.",
+        "artifactId": "artifact-138a6a1d-085d-4ce0-9892-521c41390dfd",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-collection-explore.css passed all checks.",
+        "artifactId": "artifact-1a2277d9-b43d-4d7a-a72f-3267b1ea39d4",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-collection-explore.js passed all checks.",
+        "artifactId": "artifact-b09796c6-a985-4160-8cea-f21a50a1385e",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "locales/de.json passed all checks.",
+        "artifactId": "artifact-696b6b11-ca68-4b8d-9197-197e0b63e358",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "locales/en.default.json passed all checks.",
+        "artifactId": "artifact-6f4c2716-2086-4a6f-9e92-4afa67f02cf4",
+        "artifactRevision": 1
+      },
+      {
+        "result": "failed",
+        "resultDetail": "locales/fr.json:\nERROR [line 10, col 1]: The translation for 'luxe_categories.eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.search_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.search_placeholder' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.clear' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.group_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.link_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.empty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.costumes' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.gifts' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.pets' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.sport' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.outdoor' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.auto' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.men' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.women' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.fashion' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.season' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.shoes' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.bags' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.jewellery' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.beauty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.gaming' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.electronics' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.home' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.kids' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.office' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.new' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.more' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_color' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.material_info' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_background' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_background_help' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.transparent_background' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.choose_background' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.navigation_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_lead' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_button' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.studio' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.preview_badge' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.close' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.undo' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.redo' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.step_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.step_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.step_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.review_heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.review_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.add_text' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.add_image' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.empty_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.new_text' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.text' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.font' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.color' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.size' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.rotation' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.duplicate' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.center' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.remove' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.layers' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.layer_up' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.layer_down' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_layer' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.drag_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.preview_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.photo_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.view_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.next_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.next_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.back' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.edit_again' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.selected' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_count' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.local_only' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.review_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_help' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.file_invalid' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_invalid' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_too_large' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_added' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.no_variants' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.selection_changed' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.empty_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.kept' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_loading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_missing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.serif' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.sans' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.mono' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.saved_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.price_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.delete_notice' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.move_notice' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.change_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.change_confirm' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.neutral_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.neutral_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.area_pending' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.area_verified' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.print_area_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_reference' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.availability_unknown' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.neutral_review_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_close' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_search' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_search_placeholder' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_search_button' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_category' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_all' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_scope' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_loading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_error' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_retry' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_empty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_previous' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_next' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_page' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_choose' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_from' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_variants' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_image_missing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_navigation_missing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_kicker' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_copy' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_step_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_step_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_step_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_launch' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_preview' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_back' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_clothing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_bags' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_home' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_drinkware' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_accessories' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.browse' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.preview_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.image_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.steps_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.step_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.step_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.step_preview' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.collection_eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.collection_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.collection_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.categories_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.all' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.clothing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.bags' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.home' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.drinkware' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.accessories' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.from' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.more_values' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.empty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.previous' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.next' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.page_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.end_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.shop_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.shop_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.draft_cta' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.eyebrow' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.heading' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.intro' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.notice' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.women' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.men' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.kids' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.baby' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.unisex' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.audience_label' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.unisex_hint' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.search' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.search_placeholder' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.type' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_types' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.reset' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.loading' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.load_error' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.retry' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.results' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.partial' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.empty' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.page' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.previous' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.next' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.details' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.close' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.colors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.sizes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.more_colors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.more_sizes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.details_pending' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.details_error' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.image_unavailable' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.reference_image' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.variant_image' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.choose_size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.variant' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.techniques' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.placements' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.not_specified' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.geometry_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.supplier_available' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.supplier_unavailable' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.supplier_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.regional_status' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.region_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.in_stock' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.out_of_stock' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.not_available' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.model' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.brand' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.source_partial' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_organic_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_polyester' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_recycled_polyester' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_elastane' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_viscose' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_rayon' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_nylon' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_wool' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_acrylic' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_linen' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_recycled_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_combed_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_dtg' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_dtf' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_embroidery' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_flat' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_puff' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_sublimation' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_allover' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_front' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_back' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_left_sleeve' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_right_sleeve' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_left_chest' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_center_chest' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_tshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_hoodies_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_hoodies' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_jackets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_pants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_leggings' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_shorts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_dresses' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_skirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_swimwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_sportswear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_baby' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_tanktops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_longsleeve' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_polos' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_allover_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_zip_hoodies' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_kids' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_men' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_women' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.loaded_status' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.loading_details' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_variants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.discontinued' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_javascript' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_colors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_sizes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_label' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_categories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.special_selection' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.original_name' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.selection_hint' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_link' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.group_empty' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_all' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.selected_color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.selected_size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.men_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.women_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.kids_youth_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.home_living' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.collections' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.brands' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_hoodies_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.hoodies_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_bottoms' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_men_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_women_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_kids_youth_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_home_living_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.baby_bodysuits' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.wall_art' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.towels' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tank_tops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.3_4_sleeve_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.long_sleeve_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_over_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.crop_tops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.trucker_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.dad_hats_baseball_caps' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.5_panel_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.mesh_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.beanies' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.bucket_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.visors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tote_bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.drawstring_bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.framed_posters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.canvas_prints' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.skirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.swimwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.backpacks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.embroidered_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sports_bras' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.aprons' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.jackets_vests' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sweatpants_joggers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.fanny_packs' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.drinkware_coasters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sportswear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.beachwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.eco_friendly' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.gifts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.new_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.underwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.face_masks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.duffle_bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.style_trends' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.bestsellers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pet_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.stationery' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.water_bottles' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.mugs' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.postcards' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.notebooks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.stickers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.footwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.flip_flops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.back_to_school' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.grow_a_fashion_brand' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.patches' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.hair_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.shoes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.socks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.greeting_cards' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tumblers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.metal_prints' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.made_in_eu' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tech_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.phone_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.earphone_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.coasters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.laptop_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.mouse_pads' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.home_decor' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.holiday_decor' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.blankets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.candles' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pillows_pillow_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.glassware' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.magnets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pins' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.handbags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sports_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tableware' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.embroidery_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.knitwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.toys_games' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.flags_signs' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sleepwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.dtflex_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.holiday_season' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_over_print' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.matching_sets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.books' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.new_apparel_variants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.white' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.black' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.navy' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.red' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.blue' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.royal' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.green' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.yellow' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.orange' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.pink' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.purple' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.brown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.grey' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.gray' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.natural' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.cream' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.beige' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.gold' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.silver' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.transparent' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.clear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.light_blue' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.light_pink' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.dark_grey' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.dark_gray' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.model_description' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.catalogue_options' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.dimensions' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.original_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.source_date' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.source_date_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.options_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.membership_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_select' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_choice_hint' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_selection_changed' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_unverified' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_label' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_ambiguous' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_product_link' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_combed_ring_spun_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_ring_spun_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_offer_select' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_offer_placeholder' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_offer_fallback' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.active_filters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.global_search' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.empty_filtered' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.single_color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_source_issue_short' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_source_issue' is missing",
+        "artifactId": "artifact-4117756c-dbb6-4595-bd60-e97b236bcb03",
+        "artifactRevision": 1
+      },
+      {
+        "result": "inform",
+        "resultDetail": "snippets/luxe-collection-area-link.liquid passed all checks (with non-error findings):\nWARNING [line 1, col 1]: This snippet is not referenced by any other files",
+        "artifactId": "artifact-0bcbd9e0-6a6b-4732-8db8-b2922730886e",
+        "artifactRevision": 1
+      },
+      {
+        "result": "inform",
+        "resultDetail": "snippets/luxe-collection-explore.liquid passed all checks (with non-error findings):\nWARNING [line 1, col 1]: This snippet is not referenced by any other files\nWARNING [line 81, col 7]: The variable 'lx_group_url' is assigned but not used; SUGGESTED FIXES: Remove the unused variable 'lx_group_url'.\nWARNING [line 82, col 7]: The variable 'lx_group_title' is assigned but not used; SUGGESTED FIXES: Remove the unused variable 'lx_group_title'.",
+        "artifactId": "artifact-33bea011-9021-4d3a-8df7-4486d4423a04",
+        "artifactRevision": 1
+      },
+      {
+        "result": "success",
+        "resultDetail": "templates/collection.json passed all checks.",
+        "artifactId": "artifact-cf7303f9-131a-4b8d-9ac7-3bc557dfacb0",
+        "artifactRevision": 1
+      }
+    ]
+  },
+  "finalJsThreshold": {
+    "showSearchFromAdditionalAreas": 5,
+    "nodeSyntaxPassedAfterOneIntegerChange": true,
+    "nativeFinalCounterprobe": true
+  },
+  "mainLocaleBaseline": {
+    "success": false,
+    "responses": [
+      {
+        "result": "success",
+        "resultDetail": "assets/luxe-category.css passed all checks.",
+        "artifactId": "luxe-category-before-r73",
+        "artifactRevision": 2
+      },
+      {
+        "result": "success",
+        "resultDetail": "templates/collection.json passed all checks.",
+        "artifactId": "luxe-category-before-r73",
+        "artifactRevision": 2
+      },
+      {
+        "result": "success",
+        "resultDetail": "locales/de.json passed all checks.",
+        "artifactId": "luxe-category-before-r73",
+        "artifactRevision": 2
+      },
+      {
+        "result": "failed",
+        "resultDetail": "locales/fr.json:\nERROR [line 10, col 1]: The translation for 'luxe_categories.eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.search_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.search_placeholder' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.clear' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.group_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.link_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.empty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.costumes' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.gifts' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.pets' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.sport' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.outdoor' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.auto' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.men' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.women' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.fashion' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.season' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.shoes' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.bags' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.jewellery' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.beauty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.gaming' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.electronics' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.home' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.kids' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.office' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.new' is missing\nERROR [line 10, col 1]: The translation for 'luxe_categories.more' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_color' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.material_info' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_background' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_background_help' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.transparent_background' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.choose_background' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.navigation_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_lead' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_button' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.entry_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.studio' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.preview_badge' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.close' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.undo' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.redo' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.step_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.step_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.step_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.review_heading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.review_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.add_text' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.add_image' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.empty_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.new_text' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.text' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.font' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.color' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.size' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.rotation' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.duplicate' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.center' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.remove' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.layers' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.layer_up' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.layer_down' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_layer' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.drag_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.preview_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.photo_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.view_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.next_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.next_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.back' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.edit_again' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.selected' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.design_count' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.local_only' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.review_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_help' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.file_invalid' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_invalid' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_too_large' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_added' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.no_variants' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.selection_changed' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.empty_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.kept' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_loading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.image_missing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.serif' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.sans' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.mono' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.saved_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.price_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.delete_notice' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.move_notice' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.change_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.change_confirm' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.neutral_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.neutral_hint' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.area_pending' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.area_verified' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.print_area_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.product_reference' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.availability_unknown' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.neutral_review_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_close' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_search' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_search_placeholder' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_search_button' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_category' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_all' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_scope' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_loading' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_error' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_retry' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_empty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_previous' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_next' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_page' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_choose' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_from' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_variants' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_image_missing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_navigation_missing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_kicker' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_copy' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_step_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_step_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_step_review' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_launch' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_preview' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_back' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.intro_unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_clothing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_bags' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_home' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_drinkware' is missing\nERROR [line 10, col 1]: The translation for 'luxe_studio.catalog_accessories' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.browse' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.preview_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.image_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.steps_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.step_product' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.step_design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.step_preview' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.collection_eyebrow' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.collection_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.collection_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.categories_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.all' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.clothing' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.bags' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.home' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.drinkware' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.accessories' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.from' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.more_values' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.unavailable' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.design' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.empty' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.previous' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.next' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.page_label' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.end_note' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.shop_title' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.shop_intro' is missing\nERROR [line 10, col 1]: The translation for 'luxe_category.draft_cta' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.eyebrow' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.heading' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.intro' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.notice' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.women' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.men' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.kids' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.baby' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.unisex' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.audience_label' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.unisex_hint' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.search' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.search_placeholder' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.type' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_types' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.reset' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.loading' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.load_error' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.retry' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.results' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.partial' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.empty' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.page' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.previous' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.next' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.details' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.close' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.colors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.sizes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.more_colors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.more_sizes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.details_pending' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.details_error' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.image_unavailable' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.reference_image' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.variant_image' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.choose_size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.variant' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.techniques' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.placements' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.not_specified' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.geometry_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.supplier_available' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.supplier_unavailable' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.supplier_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.regional_status' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.region_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.in_stock' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.out_of_stock' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.not_available' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.model' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.brand' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.source_partial' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_organic_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_polyester' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_recycled_polyester' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_elastane' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_viscose' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_rayon' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_nylon' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_wool' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_acrylic' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_linen' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_recycled_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_combed_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_dtg' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_dtf' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_embroidery' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_flat' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_puff' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_sublimation' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.tech_allover' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_front' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_back' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_left_sleeve' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_right_sleeve' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_left_chest' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.position_center_chest' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_tshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_hoodies_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_hoodies' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_jackets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_pants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_leggings' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_shorts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_dresses' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_skirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_swimwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_sportswear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_baby' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_tanktops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_longsleeve' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_polos' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_allover_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_zip_hoodies' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_kids' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_men' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.cat_women' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.loaded_status' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.loading_details' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_variants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.discontinued' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.no_javascript' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_colors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_sizes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_label' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.all_categories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.special_selection' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.original_name' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.selection_hint' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_link' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.group_empty' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_all' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.selected_color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.selected_size' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.men_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.women_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.kids_youth_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.home_living' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.collections' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.brands' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_hoodies_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.hoodies_sweatshirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_bottoms' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_men_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_women_s_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_kids_youth_clothing' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_home_living_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.baby_bodysuits' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.wall_art' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.towels' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tank_tops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.3_4_sleeve_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.long_sleeve_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_over_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.crop_tops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.trucker_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.dad_hats_baseball_caps' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.5_panel_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.mesh_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.beanies' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.bucket_hats' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.visors' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tote_bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.drawstring_bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.framed_posters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.canvas_prints' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.skirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.swimwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.backpacks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.embroidered_shirts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sports_bras' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.aprons' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.jackets_vests' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sweatpants_joggers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.fanny_packs' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.drinkware_coasters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sportswear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.beachwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.eco_friendly' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.gifts' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.new_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.underwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.face_masks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.duffle_bags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.style_trends' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.bestsellers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pet_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.stationery' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.water_bottles' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.mugs' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.postcards' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.notebooks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.stickers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.footwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.flip_flops' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.back_to_school' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.grow_a_fashion_brand' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.patches' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.hair_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.shoes' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.socks' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.greeting_cards' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tumblers' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.metal_prints' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.made_in_eu' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tech_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.phone_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.earphone_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.coasters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.laptop_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.mouse_pads' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.home_decor' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.holiday_decor' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.blankets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.candles' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pillows_pillow_cases' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.glassware' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.magnets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.pins' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.handbags' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sports_accessories' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.tableware' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.embroidery_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.knitwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.toys_games' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.flags_signs' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.sleepwear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.dtflex_products' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.holiday_season' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.all_over_print' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.matching_sets' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.books' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.category_names.new_apparel_variants' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.white' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.black' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.navy' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.red' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.blue' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.royal' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.green' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.yellow' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.orange' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.pink' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.purple' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.brown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.grey' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.gray' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.natural' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.cream' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.beige' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.gold' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.silver' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.transparent' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.clear' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.light_blue' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.light_pink' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.dark_grey' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.color_names.dark_gray' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.model_description' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.catalogue_options' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.dimensions' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.original_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.source_date' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.source_date_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.options_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.membership_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_select' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_choice_hint' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_selection_changed' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_unverified' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_label' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_unknown' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_ambiguous' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_price_note' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_product_link' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_combed_ring_spun_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_ring_spun_cotton' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_offer_select' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_offer_placeholder' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.shop_offer_fallback' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.active_filters' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.global_search' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.empty_filtered' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.single_color' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_source_issue_short' is missing\nERROR [line 603, col 3]: The translation for 'luxe_clothing.material_source_issue' is missing",
+        "artifactId": "luxe-category-before-r73",
+        "artifactRevision": 2
+      },
+      {
+        "result": "success",
+        "resultDetail": "locales/en.default.json passed all checks.",
+        "artifactId": "luxe-category-before-r73",
+        "artifactRevision": 2
+      }
+    ]
+  },
+  "originalProductCardComparison": {
+    "at": "2026-11-03T23:05:23.938409+00:00",
+    "scope": "Compare already-read MAIN first12 product cards against verified draft first12, no new reads, no full catalog claim. Dogs expected narrow authorised exclusion can shift sample.",
+    "rows": [
+      {
+        "handle": "selbst-gestalten-1",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "damen-mode",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "fur-ihn",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "sub-baby-kids",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "schuhe",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "sub-taschen",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "schmuck",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "uhren",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "beauty-pflege",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "wohnen-dekoration",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "sub-kueche",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "elektronik-technik",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "gaming",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "hundewelt",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": false,
+        "removed": [
+          {
+            "title": "Lernspielzeug für Kinder – Hundert-Zahlen-Tafel",
+            "url": "/products/lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600"
+          }
+        ],
+        "added": [
+          {
+            "title": "Hüftgurt für Hunde mit Streifenmuster",
+            "url": "/products/huftgurt-fur-hunde-mit-streifenmuster-6f54da"
+          }
+        ]
+      },
+      {
+        "handle": "sport-outdoor",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      },
+      {
+        "handle": "premium-geschenke",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "sameTitlesUrls": true,
+        "removed": [],
+        "added": []
+      }
+    ]
+  },
+  "previousDraftQaOnly": {
+    "initialHtml": {
+      "passed": 149,
+      "total": 150,
+      "failed": [
+        {
+          "handle": "damen-schuhe",
+          "name": "own_children_from_third_level_present",
+          "pass": false,
+          "evidence": {
+            "expected": [
+              "/collections/damen-sneaker",
+              "/collections/damen-sportschuhe",
+              "/collections/damen-pumps",
+              "/collections/damen-ballerinas",
+              "/collections/damen-sandalen",
+              "/collections/damen-keilsandalen",
+              "/collections/damen-pantoletten",
+              "/collections/damen-flip-flops",
+              "/collections/damen-stiefel",
+              "/collections/damen-winterschuhe",
+              "/collections/damen-wanderschuhe",
+              "/collections/damen-hausschuhe",
+              "/collections/damen-freizeitschuhe"
+            ],
+            "actual": [
+              "/collections/damen-kleider",
+              "/collections/damen-t-shirts",
+              "/collections/damen-tops",
+              "/collections/damen-blusen-hemden",
+              "/collections/damen-pullover",
+              "/collections/damen-strickjacken",
+              "/collections/damen-hoodies-sweatshirts",
+              "/collections/damen-hosen",
+              "/collections/damen-schuhe",
+              "/collections/damen-jeans",
+              "/collections/damen-shorts",
+              "/collections/damen-roecke",
+              "/collections/damen-jumpsuits",
+              "/collections/damen-jacken-maentel",
+              "/collections/damen-sets",
+              "/collections/damen-sportbekleidung",
+              "/collections/damen-bademode",
+              "/collections/damen-dessous",
+              "/collections/damen-nachtwaesche",
+              "/collections/damen-umstandsmode",
+              "/collections/partnerlook-paare",
+              "/collections/damen-guertel",
+              "/collections/damen-kopfbedeckung",
+              "/collections/damen-sturmhauben-gesichtsmasken",
+              "/collections/damen-schals-tuecher",
+              "/collections/damen-handschuhe",
+              "/collections/damen-sonnenbrillen",
+              "/collections/damen-haarschmuck"
+            ]
+          }
+        }
+      ],
+      "unknown": []
+    },
+    "initialBrowser": {
+      "passed": 62,
+      "total": 64,
+      "failed": [
+        {
+          "view": "elektronik-technik-de-1440",
+          "name": "native_sort_visible",
+          "pass": false,
+          "evidence": "No visible native sort select"
+        },
+        {
+          "view": "elektronik-technik-de-1440",
+          "name": "native_availability_summary_visible",
+          "pass": false,
+          "evidence": "Native availability summary not located"
+        }
+      ],
+      "unknown": []
+    },
+    "priorTwoSnippetCorrection": {
+      "passed": 51,
+      "total": 51,
+      "failed": [],
+      "unknown": []
+    },
+    "status": "Historical earlier draft only; final additive runtime proof is finalAdditiveNativeQA."
+  },
+  "limits": [
+    "16 main-category first pages plus bounded structural samples, at most12 product cards per standard category; no full catalogue audit.",
+    "Current original banner, text, images and styles preserved. No broad redesign authorised by final owner clarification.",
+    "466 pre-existing French missing translations remain; new used keys have DE/FR/EN values. Existing French header search remains German.",
+    "Schema download failed, existing validator cache used; no full-theme CI acceptance.",
+    "GET/HEAD browser guard blocks analytics and other writes; request errors are not a site-failure count.",
+    "No checkout/fulfilment/tracking/complete product-availability or sales-effect verification.",
+    "Own unused draft header snippet removal blocked by connector; it remains unreferenced, is excluded from transfer package and must not be activated."
+  ]
+}
