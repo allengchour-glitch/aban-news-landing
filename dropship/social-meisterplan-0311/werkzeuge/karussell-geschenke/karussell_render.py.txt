@@ -1,0 +1,277 @@
+#!/usr/bin/env python3
+# Rendert das Instagram-Karussell «5 Geschenke» (7 Folien, 1080x1350, JPG).
+# Wird von karussell.sh aufgerufen: liest die frischen Shopify-Storefront-Daten (live.json) und die geprüften Quellbilder (src_final/).
+# Schreibt NUR in /tmp/sm-geschenke (out/, lint.json). Keine Veröffentlichung, kein Shopify-Schreibzugriff.
+import json, os, re, sys
+from PIL import Image, ImageDraw, ImageFont, ImageOps
+
+BASE = os.environ.get("KAR_BASE", "/tmp/sm-geschenke")
+SRC = os.path.join(BASE, "src_final")
+OUT = os.environ.get("KAR_OUT", os.path.join(BASE, "out"))
+LIVE = json.load(open(os.path.join(BASE, "live.json"), encoding="utf-8"))
+COVER_MIT_PREIS = os.environ.get("COVER_MIT_PREIS", "0") == "1"
+os.makedirs(OUT, exist_ok=True)
+
+W, H = 1080, 1350
+BG = (245, 239, 229)    # warmes Beige (luxestyle.ch Seitenhintergrund, am Bildschirmfoto gemessen)
+INK = (48, 42, 37)      # dunkles Braungrau (reel_karte.sh 0x302a25)
+SUB = (84, 74, 64)      # 0x544a40
+GOLD = (139, 115, 85)   # gedämpftes Gold-Braun der Wortmarke «.ch» (am Bildschirmfoto gemessen: 139,115,85)
+LINE = (200, 188, 169)  # 0xc8bca9
+X0, X1 = 70, 1010       # Textrand
+PW, PH = 940, 660       # Fotofenster
+PY = 140                # Oberkante Fotofenster
+FD = "/usr/share/fonts/truetype/dejavu/"
+F_SERIF = FD + "DejaVuSerif.ttf"
+F_SERIF_B = FD + "DejaVuSerif-Bold.ttf"
+F_SANS = FD + "DejaVuSans.ttf"
+F_SANS_B = FD + "DejaVuSans-Bold.ttf"
+_fc = {}
+def font(path, size):
+    k = (path, size)
+    if k not in _fc:
+        _fc[k] = ImageFont.truetype(path, size)
+    return _fc[k]
+
+LINT = []          # jede gezeichnete Textzeile mit Rolle, Grösse, Rahmen
+BAD = re.compile(r"[':%\\]|[\U0001F000-\U0001FFFF☀-➿️]")
+MINS = {"hook": 80, "preis": 64, "text": 44}
+
+def txt(d, slide, role, x, y, s, f, fill, anchor="ls"):
+    """Textzeile zeichnen (y = Grundlinie), Regeln prüfen, protokollieren."""
+    assert not BAD.search(s), f"verbotenes Zeichen in «{s}»"
+    size = f.size
+    assert size >= MINS[role], f"{slide}: «{s}» {size}px unter Mindestgrösse {MINS[role]} ({role})"
+    bb = d.textbbox((x, y), s, font=f, anchor=anchor)
+    # Glyphen mit Überhang (zum Beispiel J) um wenige Pixel einrücken, damit die Tinte im Rand x 70 bis 1010 bleibt
+    if bb[0] < X0 and X0 - bb[0] <= 8:
+        x += X0 - bb[0]
+        bb = d.textbbox((x, y), s, font=f, anchor=anchor)
+    if bb[2] > X1 and bb[2] - X1 <= 8:
+        x -= bb[2] - X1
+        bb = d.textbbox((x, y), s, font=f, anchor=anchor)
+    assert bb[0] >= X0 and bb[2] <= X1, f"{slide}: «{s}» ausserhalb des Rands x {bb[0]}..{bb[2]}"
+    d.text((x, y), s, font=f, fill=fill, anchor=anchor)
+    LINT.append({"folie": slide, "rolle": role, "px": size, "text": s, "x0": bb[0], "x1": bb[2], "y0": bb[1], "y1": bb[3]})
+    return bb
+
+def wrap(s, f, maxw, maxlines):
+    """Umbruch: an Leerzeichen, bei zwei Zeilen die ausgewogenste Teilung; Bindestrich-Umbruch nur wenn es sonst nicht passt."""
+    if f.getlength(s) <= maxw:
+        return [s]
+    assert maxlines >= 2, f"«{s}» passt nicht in eine Zeile"
+    sp = [i for i, c in enumerate(s) if c == " "]
+    best = None
+    for i in sp:
+        a, b = s[:i], s[i + 1:]
+        wa, wb = f.getlength(a), f.getlength(b)
+        if wa <= maxw and wb <= maxw:
+            sc = max(wa, wb)
+            if best is None or sc < best[0]:
+                best = (sc, [a, b])
+    if best:
+        return best[1]
+    hy = [i + 1 for i, c in enumerate(s) if c == "-"]
+    for i in hy:
+        a, b = s[:i], s[i:]
+        if f.getlength(a) <= maxw and f.getlength(b) <= maxw:
+            return [a, b]
+    raise AssertionError(f"«{s}» braucht mehr als {maxlines} Zeilen")
+
+def chf(v):
+    return f"{v:.2f}"
+
+def price_text(p):
+    lo, hi = p["min"], p["max"]
+    return f"CHF {chf(lo)}" if abs(lo - hi) < 0.005 else f"CHF {chf(lo)} bis {chf(hi)}"
+
+# ---------- Bilder ----------
+def load(name, crop=None):
+    im = Image.open(os.path.join(SRC, name)).convert("RGB")
+    if crop:
+        im = im.crop(crop)
+    return im
+
+SKAL = {}
+def photo_window(key, im, mode):
+    """Fotofenster PWxPH. cover = Zuschnitt füllt das Fenster, fit = ganzes Bild, Rand in der Randfarbe des Bildes (weisser Freisteller)."""
+    if mode == "cover":
+        assert abs(im.width / im.height - PW / PH) < 0.01, f"{key}: Zuschnitt {im.width}x{im.height} hat nicht das Fensterverhältnis"
+        out = im.resize((PW, PH), Image.LANCZOS)
+        SKAL[key] = round(PW / im.width, 3)
+        return out
+    sc = min(PW / im.width, PH / im.height, 1.0)
+    fg = im.resize((round(im.width * sc), round(im.height * sc)), Image.LANCZOS)
+    corners = [im.getpixel(p) for p in [(2, 2), (im.width - 3, 2), (2, im.height - 3), (im.width - 3, im.height - 3)]]
+    col = tuple(round(sum(c[i] for c in corners) / 4) for i in range(3))
+    assert min(col) >= 245, f"{key}: Bildrand nicht weiss genug fuer fit ({col})"
+    out = Image.new("RGB", (PW, PH), col)
+    out.paste(fg, ((PW - fg.width) // 2, (PH - fg.height) // 2))
+    SKAL[key] = round(sc, 3)
+    return out
+
+def tile(im, size):
+    return ImageOps.fit(im, size, Image.LANCZOS, centering=(0.5, 0.5))
+
+# ---------- Rahmen und Kopf ----------
+def base(slide, right):
+    img = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(img)
+    d.rectangle([36, 36, W - 37, H - 37], outline=LINE, width=2)
+    fw = font(F_SERIF_B, 46)
+    bb = txt(d, slide, "text", X0, 106, "LuxeStyle", fw, INK)
+    txt(d, slide, "text", bb[2], 106, ".ch", fw, GOLD)
+    txt(d, slide, "text", X1, 106, right, font(F_SANS, 44), GOLD, anchor="rs")
+    return img, d
+
+# ---------- Produkte (Auswahl geprüft am 3.11.2026; Preise live aus der Shop-Storefront) ----------
+PRODUKTE = [
+    dict(key="tulpen", handle="led-tulpen-planet-nachtlicht-fur-tisch-618400", bild="tulpen.jpg", crop=(0, 170, 900, 802), mode="cover",
+         fakt=["Akku per USB geladen,", "drei Farben per Touch wählbar"], lief="cj"),
+    dict(key="becher", handle="retro-vogel-keramikbecher-mit-ballgriff-637200", bild="becher.jpg", crop=(0, 390, 1493, 1438), mode="cover",
+         fakt=["Handgefertigter Keramikbecher,", "fasst 201 bis 300 ml"], lief="cj"),
+    dict(key="armband", handle="dreifachklinken-tennisarmband-mit-zirkon-613400", bild="armband.jpg", crop=(0, 100, 800, 662), mode="cover",
+         fakt=["Zirkon-Einlagen, 4 mm breit.", "Der höhere Preis gilt für 8 Zoll."], lief="cj"),
+    dict(key="panda", handle="plusch-panda-15-cm-fga25867", bild="panda.jpg", crop=None, mode="fit",
+         fakt=["Lieferumfang 1 Stück,", "Altersempfehlung ab 3 Jahren"], lief="fortura"),
+    dict(key="kristall", handle="kristallspitzen-set-8-teilig-holzbox", bild="kristall.jpg", crop=(30, 195, 1170, 995), mode="cover",
+         fakt=["Acht polierte Kristallspitzen", "in Holzbox mit Holzwolle"], lief="cj"),
+]
+LIEFERZEILE = {"cj": ["Lieferung 10–20 Werktage"], "fortura": ["Ab Schweizer Lager ·", "Lieferdatum beim Artikel"]}
+for p in PRODUKTE:
+    L = LIVE[p["handle"]]
+    p.update(title=L["title"], min=L["min"], max=L["max"], verfuegbar=L["available"])
+    assert p["verfuegbar"], f"{p['handle']} nicht kaufbar"
+    assert p["max"] < 30.0 and p["min"] < 30.0, f"{p['handle']} nicht unter CHF 30: {p['min']}..{p['max']}"
+
+# Kombi (nur exakte Preise, ohne Mengenrabatt-Tag): Tulpen + Becher + Panda
+KOMBI = ["tulpen", "becher", "panda"]
+KOMBI_NAME = {"tulpen": ["Tulpen-Planet", "Nachtlicht"], "becher": ["Retro-Vogel-", "Keramikbecher"], "panda": ["Plüsch Panda", "15 cm"]}
+KOMBI_CROP = {"tulpen": ("tulpen.jpg", (100, 130, 800, 830)), "becher": ("becher.jpg", (400, 493, 1400, 1493)),
+              "panda": ("panda.jpg", (0, 40, 974, 1014))}
+by = {p["key"]: p for p in PRODUKTE}
+kombi_preise = []
+for k in KOMBI:
+    assert abs(by[k]["min"] - by[k]["max"]) < 0.005, f"{k} hat keine exakten Preise"
+    kombi_preise.append(round(by[k]["min"], 2))
+SUMME = round(sum(kombi_preise), 2)
+assert SUMME > 50.0, f"Kombi {SUMME} nicht über CHF 50"
+assert SUMME * 0.9 >= 50.0, "Kombi bleibt nach 10 Prozent Rabatt nicht über CHF 50"
+
+# ---------- Folie 1 ----------
+def folie1():
+    s = "folie1"
+    img, d = base(s, "Wischen →")
+    if COVER_MIT_PREIS:
+        l1, l2 = "5 Geschenke", "bis CHF 30"
+    else:
+        l1, l2 = "5 Geschenke", "zum Aussuchen"
+    sub = "Mit Foto, Preis und Lieferzeit"
+    f1 = font(F_SERIF_B, 128)
+    assert f1.getlength(l1) <= X1 - X0
+    txt(d, s, "hook", X0, 300, l1, f1, INK)
+    txt(d, s, "hook", X0, 404, l2, font(F_SERIF, 88), GOLD)
+    txt(d, s, "text", X0, 486, sub, font(F_SANS, 50), SUB)
+    y0 = 540   # Mosaik 940 x 620: oben drei Quadrate, unten zwei Breite
+    T = [("tulpen.jpg", (100, 130, 800, 830), (300, 300), (X0, y0)),
+         ("becher.jpg", (400, 493, 1400, 1493), (300, 300), (X0 + 320, y0)),
+         ("armband.jpg", None, (300, 300), (X0 + 640, y0)),
+         ("panda.jpg", (0, 60, 974, 695), (460, 300), (X0, y0 + 320)),
+         ("kristall.jpg", (40, 232, 1160, 962), (460, 300), (X0 + 480, y0 + 320))]
+    for name, crop, size, pos in T:
+        img.paste(tile(load(name, crop), size), pos)
+        d.rectangle([pos[0], pos[1], pos[0] + size[0] - 1, pos[1] + size[1] - 1], outline=LINE, width=1)
+    fb = font(F_SERIF_B, 56)
+    wmw = fb.getlength("luxestyle") + fb.getlength(".ch")
+    x = (W - wmw) / 2
+    bb = txt(d, s, "text", x, 1262, "luxestyle", fb, INK)
+    txt(d, s, "text", bb[2], 1262, ".ch", fb, GOLD)
+    return img
+
+# ---------- Folien 2 bis 6 (gleiches Raster) ----------
+def produktfolie(nr, p):
+    s = f"folie{nr + 1}"
+    img, d = base(s, f"Geschenk {nr} von 5")
+    im = load(p["bild"], p["crop"])
+    img.paste(photo_window(p["key"], im, p["mode"]), (X0, PY))
+    d.rectangle([X0, PY, X1 - 1, PY + PH - 1], outline=LINE, width=1)
+    fn = font(F_SERIF_B, 50)
+    for i, l in enumerate(wrap(p["title"], fn, X1 - X0, 2)):
+        txt(d, s, "text", X0, 860 + 58 * i, l, fn, INK)
+    pt = price_text(p)
+    fp = font(F_SERIF_B, 72)
+    assert fp.getlength(pt) <= X1 - X0, f"Preis zu breit {pt}"
+    txt(d, s, "preis", X0, 1004, pt, fp, INK)
+    ff = font(F_SANS, 44)
+    for i, l in enumerate(p["fakt"]):
+        assert ff.getlength(l) <= X1 - X0, f"Faktzeile zu breit: {l}"
+        txt(d, s, "text", X0, 1064 + 52 * i, l, ff, SUB)
+    d.line([X0, 1146, X1, 1146], fill=LINE, width=2)
+    for i, l in enumerate(LIEFERZEILE[p["lief"]]):
+        txt(d, s, "text", X0, 1204 + 52 * i, l, font(F_SANS_B, 44), INK)
+    return img
+
+# ---------- Folie 7 ----------
+def folie7():
+    s = "folie7"
+    img, d = base(s, "Zum Schluss")
+    txt(d, s, "hook", X0, 232, "Kombi-Idee", font(F_SERIF_B, 92), INK)
+    txt(d, s, "text", X0, 292, "Drei der fünf Geschenke zusammen", font(F_SANS, 44), SUB)
+    y, RH = 322, 134
+    fnm, fpr = font(F_SANS, 44), font(F_SERIF_B, 64)
+    for i, k in enumerate(KOMBI):
+        top = y + i * RH
+        name, crop = KOMBI_CROP[k]
+        img.paste(tile(load(name, crop), (108, 108)), (X0, top + 12))
+        d.rectangle([X0, top + 12, X0 + 107, top + 12 + 107], outline=LINE, width=1)
+        for j, l in enumerate(KOMBI_NAME[k]):
+            assert fnm.getlength(l) <= 400
+            txt(d, s, "text", X0 + 132, top + 56 + 50 * j, l, fnm, INK)
+        txt(d, s, "preis", X1, top + 84, f"CHF {chf(by[k]['min'])}", fpr, INK, anchor="rs")
+        d.line([X0, top + RH - 1, X1, top + RH - 1], fill=LINE, width=2 if i == len(KOMBI) - 1 else 1)
+    ys = y + len(KOMBI) * RH + 82
+    txt(d, s, "text", X0, ys, "Summe", font(F_SANS_B, 50), INK)
+    txt(d, s, "preis", X1, ys + 8, f"CHF {chf(SUMME)}", font(F_SERIF_B, 80), GOLD, anchor="rs")
+    fv = font(F_SANS_B, 48)
+    vl = ["Versand CHF 7,", "ab CHF 50 gratis nach Rabatt"]   # zusammen: «Versand CHF 7, ab CHF 50 gratis nach Rabatt»
+    assert all(fv.getlength(l) <= X1 - X0 for l in vl)
+    for i, l in enumerate(vl):
+        txt(d, s, "text", X0, ys + 92 + 58 * i, l, fv, INK)
+    f44 = font(F_SANS, 44)
+    yz = ys + 92 + 58 * len(vl) + 22
+    txt(d, s, "text", X0, yz, "Bezahlen mit TWINT, Klarna, Karte, PayPal", f44, SUB)
+    txt(d, s, "text", X0, yz + 56, "Lieferzeit je Artikel wie auf den Folien", f44, SUB)
+    by0, by1 = 1170, 1284   # Wegweiser
+    d.rounded_rectangle([X0, by0, X1, by1], radius=14, fill=INK)
+    fw = font(F_SERIF_B, 82)
+    x = (W - fw.getlength("luxestyle.ch/ig")) / 2
+    txt(d, s, "hook", x, by0 + 82, "luxestyle.ch/ig", fw, BG)
+    return img
+
+def overlap_check():
+    """Keine zwei Textzeilen einer Folie dürfen sich berühren (ausser Wortmarke und .ch, die aneinanderstossen)."""
+    by_s = {}
+    for r in LINT:
+        by_s.setdefault(r["folie"], []).append(r)
+    for s, rs in by_s.items():
+        for i in range(len(rs)):
+            for j in range(i + 1, len(rs)):
+                a, b = rs[i], rs[j]
+                ox = min(a["x1"], b["x1"]) - max(a["x0"], b["x0"])
+                oy = min(a["y1"], b["y1"]) - max(a["y0"], b["y0"])
+                assert not (ox > 1 and oy > 1), f"{s}: Überlappung «{a['text']}» und «{b['text']}"
+
+def main():
+    slides = {"01_titel.jpg": folie1()}
+    for i, p in enumerate(PRODUKTE, start=1):
+        slides[f"0{i + 1}_{p['key']}.jpg"] = produktfolie(i, p)
+    slides["07_kombi.jpg"] = folie7()
+    overlap_check()
+    for name, im in slides.items():
+        assert im.size == (W, H)
+        im.save(os.path.join(OUT, name), "JPEG", quality=93, subsampling=0, optimize=True)
+    json.dump({"slides": sorted(slides), "lint": LINT, "skalierung_foto": SKAL, "kombi": {"preise": kombi_preise, "summe": SUMME}},
+              open(os.path.join(BASE, "lint.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("geschrieben:", ", ".join(sorted(slides)), "| Summe", SUMME, "| Fotoskalierung", SKAL)
+
+main()
