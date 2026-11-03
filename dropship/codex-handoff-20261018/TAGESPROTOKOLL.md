@@ -842,5 +842,11 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R73 Sortimentstichprobe | Bereits gespeicherte 180 Produktkarten aus 15 Standardkategorien plus Selbstgestalten-Sonderansicht eingeordnet | Einziger klarer Fehler Hunderttafel bereits behoben; unklare Titel nicht blind verschoben, kein Vollscan |
 | R73 Schutzgrenze | Löschung des eigenen unbenutzten Header-Snippets angefragt | Connector blockiert Theme-Dateilöschung; kein Retry oder Umgehung, Datei unreferenziert und nicht im Transferpaket |
 | R73 Übergabe/Gedächtnis | Finalen engen Patch vorwärts/rückwärts geprüft, GitHub-Paket und Revision 73 fortgeschrieben | MAIN unverändert; 23 IDs, 21 andere Aufgaben und Historien erhalten. Claude-Empfang unbekannt; keine neuen Reports, Kauf-Watch oder Automation |
+| R74 neue Kategoriebilder | Vier tatsächlich generierte 1536×1024-PNGs für Wohnen, Schmuck, Beauty und Taschen erstellt | Unterschiedliche Motive; zusätzliche Kategorieillustrationen, keine Produktnachweise oder Website-Einbindung |
+| R74 Bildqualität | Alle vier Bilder visuell und unabhängig zweitgeprüft; fehlerhaften Taschenriemen gezielt korrigiert | V1 verworfen, V2 erneut geprüft; nur V2 im finalen Paket. Tatsächliche Layout-Ausschnitte vor Einbindung noch prüfen |
+| R74 Quellen/Identität | Shopify und Metricool frisch identifiziert; zwei verwendete Referenzdateien frisch nach Hash geprüft | LuxeStyle/CHF und Brand6227837/EuropeZurich/Kanäle passend; beide Referenzen HTTP200 und hashgleich, Fremdrechte/SKU-Treue dadurch nicht belegt |
+| R74 GitHub/Gedächtnis | Vier Bilder, Manifest und Paket mit SHA und exaktem Rücklesen gesichert; Revision74 ergänzt | Bestehendes Banner/R72/R73 erhalten, 23 IDs und 22 andere Aufgaben unverändert; kein ShopifyUpload, ThemeWrite, Publish, Report oder Kauf-Watch; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R73_20261104] [Endgültige Kategorie-Ergänzungen, bisheriges Banner erhalten](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md). Keine Veröffentlichung oder Verkaufswirkung daraus abgeleitet.
+
+[LUXESTYLE_R74_20261104] [Vier zusätzliche Kategorieillustrationen](KATEGORIEBILDER-20261104-R74.md). Keine Veröffentlichung oder Verkaufswirkung behauptet.
