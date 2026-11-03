@@ -52,6 +52,7 @@ on:
       - 'automation/lib/pod_editor_bg.mjs'
       - 'automation/lib/pod_editor_bg_test.mjs'
       - 'dropship/taxonomie-2610-b/**'
+      - 'dropship/tiktok-cj-videos-0311/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
@@ -124,6 +125,7 @@ jobs:
             automation/lib/pod_editor_bg.mjs
             automation/lib/pod_editor_bg_test.mjs
             dropship/taxonomie-2610-b
+            dropship/tiktok-cj-videos-0311
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
             .github/workflows/cj-reviews.yml
