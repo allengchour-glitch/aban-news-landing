@@ -10,7 +10,8 @@
  *   4) Sicherung des gelesenen Hauptmenüs nach dropship/menu-sicherung/main-menu-vor-kueche-geschirr-0311.json (eine vorhandene wird NIE überschrieben, die neue bekommt dann einen Zeitstempel),
  *   5) menuUpdate, danach NACHLESEN und STRENGER Vergleich (Pfad, Titel, Typ, Reihenfolge UND Ziel jedes Eintrags) samt denselben Prüfregeln. Exit 3 bei Abweichung.
  * Exit 0 = in Ordnung, 1 = Aufruffehler, 2 = Prüffehler/Lücken (nichts geschrieben), 3 = Abweichung beim Nachlesen (geschrieben, Sicherung liegt vor), 4 = Menü während des Laufs verändert (nichts geschrieben).
- * Rücknahme: die Sicherungsdatei per menuUpdate zurückschreiben (Eintragsform wie eingabeAus), oder die Menü-Einträge im Admin von Hand.
+ * Rücknahme: kueche_geschirr_zurueck.mjs (liest die Sicherung, streicht die Ids der neu angelegten Einträge, schreibt streng nachgelesen zurück; Trockenlauf ist Vorgabe).
+ * NICHT die Sicherung roh zurückschreiben: die fünf Gruppen und ihre Kinder sind neue Einträge, ihre alten Ids gibt es danach nicht mehr.
  * Voraussetzung für LIVE: kueche_geschirr_gruppen.mjs ist gelaufen (die sieben Sammlungen existieren und sind im Onlineshop gefüllt).
  * ANNAHME_ALLE=1 (nur Trockenlauf): tut so, als gäbe es die sieben Sammlungen. WEB_PRUEFEN=1 (Trockenlauf): HTTP-Prüfung auch ohne LIVE, nur als Bericht.
  */
@@ -61,6 +62,7 @@ export async function kuecheGeschirrMenueLauf(q, { live = false, annahmeAlle = f
   }
   const { baum, log, fehler: bauFehler } = kuecheGeschirrMenue(alt, gids, titel);
   out(log.join('\n'));
+  if (bauFehler.length === 1 && bauFehler[0] === 'schon umgebaut') { out('Nichts zu tun: das Menü ist schon umgebaut (Exit 0, nichts geschrieben).'); return { code: 0, schonUmgebaut: true }; }
   if (bauFehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + bauFehler.join('\n- ')); return { code: 2, fehler: bauFehler, fehlend: neu.filter(h => !gids[h]) }; }
   const fehler = pruefeUmbau(alt, baum, gids);
   if (fehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + fehler.join('\n- ')); return { code: 2, fehler }; }

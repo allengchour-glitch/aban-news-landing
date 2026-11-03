@@ -1,13 +1,15 @@
 // Tests der Trennung «Küche & Kochen» / «Geschirr & Tisch» (lib/kueche_geschirr_menue.mjs), des Menü-Laufs (kueche_geschirr_menue.mjs) und des Sammlungs-Laufs (kueche_geschirr_gruppen.mjs).
 // Das Test-Menü ist das echte Hauptmenü vom 03.11.2026 (dropship/taxonomie-2610-b/orakel/menue-main-0311.json, 19 Punkte, 3 Ebenen, nach dem Rucksack-Umbau).
 // Netz gibt es nicht: die Läufe sprechen mit einer Attrappe der Shopify-Abfrage. Gegenproben in BEIDE Richtungen; Zusammenfassung am ENDE.
-import { readFileSync, mkdtempSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { GRUPPEN, OBER, KUECHE, GESCHIRR, KURZ, ELTERN, MAX_TITEL, REST_REIHENFOLGE, neueHandles, handleVon, ziele, kuecheGeschirrMenue, pruefeUmbau, titelWarnungen, gruppenPlan, erwartetAus, SEO } from './kueche_geschirr_menue.mjs';
+import { GRUPPEN, OBER, KUECHE, GESCHIRR, KURZ, VERSCHOBEN, ELTERN, MAX_TITEL, FUSS, neueHandles, handleVon, ziele, kuecheGeschirrMenue, pruefeUmbau, titelWarnungen, gruppenPlan, erwartetAus, seoText, sammlungsTitel, rueckgaengigEingabe } from './kueche_geschirr_menue.mjs';
 import { eingabeAus } from '../menu_eintrag_einfuegen.mjs';
 import { kuecheGeschirrMenueLauf, optionenAusEnv as menueOptionen } from '../kueche_geschirr_menue.mjs';
 import { kuecheGeschirrGruppenLauf, planLesen, tagAusRegel, optionenAusEnv as gruppenOptionen } from '../kueche_geschirr_gruppen.mjs';
+import { kuecheGeschirrZurueckLauf, optionenAusEnv as zurueckOptionen } from '../kueche_geschirr_zurueck.mjs';
+import { gleicherBaum, gleicheZiele } from './menue_plan.mjs';
 
 let ok = 0, fehl = 0;
 const ist = (name, wert, soll) => { const a = JSON.stringify(wert), b = JSON.stringify(soll); if (a === b) ok++; else { fehl++; console.log('FEHLER', name, '\n  ist  ', a, '\n  soll ', b); } };
@@ -31,12 +33,18 @@ ist('die Köpfe: «Küche & Kochen» mit Kochen/Küchenhelfer/Küchengeräte, «
 ist('alle fünf Gruppen stehen im echten Menü unter «Wohnen & Garten» (mit Kopf-Ziel und Kindern)', GRUPPEN.map(g => { const x = wohnen(ALT).items.find(y => y.title === g.titel); return !!(x && handleVon(x) && x.items.length); }), [true, true, true, true, true]);
 ist('keiner der sieben neuen Handles kommt irgendwo im heutigen Menü vor (nichts doppelt)', neueHandles().filter(h => JSON.stringify(ALT).includes('/collections/' + h + '"')), []);
 ist('Menütitel: jeder neue Kopf, jede Gruppe und jeder Kurztitel höchstens 34 Zeichen', [...OBER.map(o => o.titel), ...GRUPPEN.map(g => g.titel), ...Object.values(KURZ)].filter(t => t.length > MAX_TITEL), []);
-ist('die Reihenfolge des Rests nennt GENAU die 13 Gruppen, die bleiben (keine fehlt, keine überzählig)', [...REST_REIHENFOLGE].sort(), wohnen(ALT).items.filter(g => !GRUPPEN.some(x => x.titel === g.title)).map(g => g.title).sort());
+ist('13 Gruppen bleiben in «Wohnen & Garten» (18 − 5)', wohnen(ALT).items.filter(g => !GRUPPEN.some(x => x.titel === g.title)).length, 13);
+ist('das verschobene Kind ist das alte Kopf-Ziel von «Kaffee, Tee & Trinken» und kommt hinter das erste Kind von «Küchengeräte»', [VERSCHOBEN.length, VERSCHOBEN[0].handle === handleVon(wohnen(ALT).items.find(y => y.title === VERSCHOBEN[0].von)),
+  KURZ[handleVon(wohnen(ALT).items.find(y => y.title === VERSCHOBEN[0].nach))] === VERSCHOBEN[0].hinter], [1, true, true]);
+ist('Sammlungstitel: kein neuer Titel kollidiert mit den Titeln, die der Shop am 03.11. schon trägt («Küche & Kochen» 2×: sub-kueche und das umgeleitete kuche-kochen)', [sammlungsTitel(KUECHE), OBER.concat(GRUPPEN).map(sammlungsTitel).filter(t => t === 'Küche & Kochen')], ['Küchenbedarf & Kochzubehör', []]);
+ist('Sammlungstitel + « online kaufen | LuxeStyle CH» höchstens 60 Zeichen (Titel-Tag)', [...OBER, ...GRUPPEN].map(o => `${sammlungsTitel(o)} online kaufen | LuxeStyle CH`).filter(t => t.length > 60), []);
+ist('Meta-Texte: alle sieben höchstens 160 Zeichen, mit Versandsatz und Titel vorn', [...OBER, ...GRUPPEN].map(o => seoText(sammlungsTitel(o), o.kurz)).filter(t => t.length > 160 || !t.endsWith(FUSS) || !t.includes(' online kaufen.')), []);
+ist('seoText: zu langer Kurztext fällt weg, der Versandsatz bleibt', [seoText('Titel', 'x'.repeat(200)) === `Titel online kaufen. ${FUSS}`, seoText('Titel', 'kurz') === `Titel online kaufen. kurz ${FUSS}`], [true, true]);
+ist('Belegpflicht der Texte (Katalog 03.11.): «Zangen» steht in keinem Text (0 Titel), «Kochlöffel» auch nicht', [...OBER, ...GRUPPEN].filter(o => /zange|kochlöffel|schöpfer/i.test(o.beschreibung + o.kurz)).map(o => o.handle), []);
 ist('KURZ nennt nur Kopf-Ziele der fünf Gruppen', Object.keys(KURZ).every(h => GRUPPEN.some(g => handleVon(wohnen(ALT).items.find(y => y.title === g.titel)) === h)), true);
 ist('die ausgeschlossenen Kinder (waagen, haushaltsgeraete) stehen im Menü unter ihrer Gruppe', [GRUPPEN.flatMap(g => g.ausser)].map(a => a.every(h => JSON.stringify(wohnen(ALT)).includes('/collections/' + h + '"'))), [true]);
 ist('handleVon: Adresse mit und ohne Sprachpräfix, Abfrage, Domain, kein Collection-Link', [handleVon({ url: '/en/collections/pfannen-woks' }), handleVon({ url: '/collections/tassen?x=1' }), handleVon({ url: 'https://luxestyle.ch/collections/Sub-Kueche' }), handleVon({ url: '/pages/x' }), handleVon({})],
   ['pfannen-woks', 'tassen', 'sub-kueche', null, null]);
-ist('SEO-Satz endet mit Versand-Satz', SEO('Text.').endsWith('Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.'), true);
 
 // ── Der Umbau ──
 {
@@ -48,14 +56,24 @@ ist('SEO-Satz endet mit Versand-Satz', SEO('Text.').endsWith('Lieferung in die S
   ist('Kopf-Ziele sind die neuen Sammlungen', [k.resourceId, g.resourceId, k.type, g.type], [NEU_GID('kueche-kochen'), NEU_GID('geschirr-tisch'), 'COLLECTION', 'COLLECTION']);
   ist('Gruppen unter den Köpfen in der Reihenfolge des Plans, Gruppenkopf zeigt auf die neue Gruppen-Sammlung', [titel(k.items), k.items.map(x => x.resourceId), titel(g.items), g.items.map(x => x.resourceId)],
     [GRUPPEN.slice(0, 3).map(x => x.titel), GRUPPEN.slice(0, 3).map(x => NEU_GID(x.handle)), GRUPPEN.slice(3).map(x => x.titel), GRUPPEN.slice(3).map(x => NEU_GID(x.handle))]);
-  ist('das alte Kopf-Ziel steht als erstes Kind jeder Gruppe (mit Kurztitel), der Rest der Kinder bleibt', GRUPPEN.map(def => {
+  ist('das alte Kopf-Ziel steht als erstes Kind jeder Gruppe (mit Kurztitel), der Rest der Kinder bleibt; Ausnahme Kaffee: sein Kopf-Ziel wandert', GRUPPEN.map(def => {
     const alt = wohnen(ALT).items.find(x => x.title === def.titel), neu = [...k.items, ...g.items].find(x => x.title === def.titel);
-    return [handleVon(neu.items[0]) === handleVon(alt), neu.items[0].title === (KURZ[handleVon(alt)] || alt.title), JSON.stringify(titel(neu.items.slice(1))) === JSON.stringify(titel(alt.items))];
-  }), GRUPPEN.map(() => [true, true, true]));
+    if (def.titel === 'Kaffee, Tee & Trinken') return [handleVon(neu.items[0]) === handleVon(alt.items[0]), neu.items.length === alt.items.length];
+    const ohneWandernde = neu.items.filter(x => handleVon(x) !== VERSCHOBEN[0].handle);
+    return [handleVon(ohneWandernde[0]) === handleVon(alt), ohneWandernde[0].title === (KURZ[handleVon(alt)] || alt.title), JSON.stringify(titel(ohneWandernde.slice(1))) === JSON.stringify(titel(alt.items))];
+  }), [[true, true, true], [true, true, true], [true, true, true], [true, true, true], [true, true]]);
+  ist('«Wasserkocher & Kaffeemaschinen» steht unter «Küchengeräte» als zweites Kind, nicht mehr unter «Kaffee, Tee & Trinken» und genau einmal im Menü', [
+    titel(k.items[2].items).slice(0, 3), handleVon(g.items[1].items[0]), ziele(baum).filter(z => z === ziele([ALT.find(x => x.title === ELTERN).items.find(x => x.title === 'Kaffee, Tee & Trinken')])[0]).length],
+    [['Mixer, Entsafter & Zerkleinerer', 'Wasserkocher & Kaffeemaschinen', 'Fritteusen, Kochfelder & Öfen'], 'teekannen-kaffeeservice', 1]);
   ist('Pfannen & Woks steht jetzt als sichtbarer Eintrag (vorher nur als Kopf-Link)', titel(k.items[0].items).slice(0, 2), ['Pfannen & Woks', 'Töpfe & Kochgeschirr-Sets']);
-  ist('«Wohnen & Garten» behält 13 Gruppen in der Reihenfolge des Plans, ihre Inhalte unverändert', [titel(wohnen(baum).items), wohnen(baum).items.every(x => JSON.stringify(x) === JSON.stringify(wohnen(ALT).items.find(y => y.title === x.title)))], [REST_REIHENFOLGE, true]);
+  ist('«Wohnen & Garten» behält 13 Gruppen in der BISHERIGEN Reihenfolge (Putzen & Haushalt zuerst), ihre Inhalte und Ids unverändert', [titel(wohnen(baum).items), wohnen(baum).items.every(x => JSON.stringify(x) === JSON.stringify(wohnen(ALT).items.find(y => y.title === x.title)))],
+    [titel(wohnen(ALT).items).filter(t => !GRUPPEN.some(x => x.titel === t)), true]);
+  ist('die ersten drei Gruppen des Rests sind die bisherigen Haushalts-Gruppen', titel(wohnen(baum).items).slice(0, 3), ['Putzen & Haushalt', 'Aufbewahrung & Möbel', 'Bad']);
   ist('«Wohnen & Garten» behält seine Ids und sein Ziel; die verschobenen Gruppen sind neue Einträge (ohne Id)', [wohnen(baum).id === wohnen(ALT).id, wohnen(baum).resourceId === wohnen(ALT).resourceId || wohnen(baum).url === wohnen(ALT).url, JSON.stringify([...k.items, ...g.items]).includes('"id"')], [true, true, false]);
   ist('Tiefe höchstens 3, kein Titel über 34 Zeichen, Log nennt die Verteilung', [pruefeUmbau(ALT, baum, GIDS), titelWarnungen([k, g]), log.join(' ').includes('18 Gruppen → «Küche & Kochen» 3 · «Geschirr & Tisch» 2 · «Wohnen & Garten» 13')], [[], [], true]);
+  const mitTags = kopie(ALT); wohnen(mitTags).items.find(x => x.title === 'Kochen, Grillen & Backen').tags = ['t1']; wohnen(mitTags).items.find(x => x.title === 'Kaffee, Tee & Trinken').tags = ['t2'];
+  const tg = kuecheGeschirrMenue(mitTags, GIDS, {});
+  ist('Tags des alten Kopf-Eintrags bleiben am neuen ersten Kind (auch am wandernden), die Prüfung bleibt grün', [tg.baum.find(x => x.title === KUECHE.titel).items[0].items[0].tags, tg.baum.find(x => x.title === KUECHE.titel).items[2].items[1].tags, pruefeUmbau(mitTags, tg.baum, GIDS)], [['t1'], ['t2'], []]);
   ist('der Eingabebaum bleibt unverändert (reine Funktion)', JSON.stringify(ALT) === JSON.stringify(eingabeAus(MENU_ROH.items)), true);
   ist('jedes Ziel von vorher steht nachher genau so oft im Menü; neu sind nur die sieben Sammlungen', (() => {
     const z = l => l.reduce((m, x) => (m[x] = (m[x] || 0) + 1, m), {}), a = z(ziele(ALT)), n = z(ziele(baum));
@@ -63,6 +81,8 @@ ist('SEO-Satz endet mit Versand-Satz', SEO('Text.').endsWith('Lieferung in die S
   })(), [[], neueHandles().map(h => 'COLLECTION|' + NEU_GID(h)).sort()]);
   const zwei = kuecheGeschirrMenue(baum, GIDS, {});
   ist('zweiter Lauf auf dem umgebauten Baum: «schon umgebaut», nichts geändert', [zwei.fehler, JSON.stringify(zwei.baum) === JSON.stringify(baum)], [['schon umgebaut'], true]);
+  const halb = kopie(baum).filter(x => x.title !== GESCHIRR.titel);
+  ist('steht nur einer der zwei Köpfe: «halb umgebaut» mit dem Namen des fehlenden, nichts geändert', [hat(kuecheGeschirrMenue(halb, GIDS, {}).fehler, 'halb umgebaut'), hat(kuecheGeschirrMenue(halb, GIDS, {}).fehler, 'Geschirr & Tisch» fehlt')], [true, true]);
 }
 {
   const ohne = kuecheGeschirrMenue(ALT, { ...GIDS, 'geschirr-tisch': null }, {});
@@ -77,11 +97,15 @@ ist('SEO-Satz endet mit Versand-Satz', SEO('Text.').endsWith('Lieferung in die S
   ist('steht das Kopf-Ziel schon unter den Kindern: Fehler (sonst käme es doppelt)', hat(kuecheGeschirrMenue(doppelt, GIDS, {}).fehler, 'steht schon unter den Kindern'), true);
   const fremd = kopie(ALT); wohnen(fremd).items.push({ title: 'Neue Gruppe X', type: 'COLLECTION', resourceId: 'gid://x/1', url: '/en/collections/x', items: [] });
   const fr = kuecheGeschirrMenue(fremd, GIDS, {});
-  ist('eine unbekannte Gruppe bleibt erhalten und hängt am Ende von «Wohnen & Garten», mit Hinweis', [fr.fehler, titel(wohnen(fr.baum).items).slice(-1), hat(fr.log, 'ausserhalb der Reihenfolge')], [[], ['Neue Gruppe X'], true]);
+  ist('eine unbekannte Gruppe bleibt erhalten und steht dort, wo sie stand (am Ende von «Wohnen & Garten»)', [fr.fehler, titel(wohnen(fr.baum).items).slice(-1)], [[], ['Neue Gruppe X']]);
+  const keinHinter = kopie(ALT); const kg = wohnen(keinHinter).items.find(x => x.title === 'Küchengeräte'); kg.url = '/en/collections/anderes-ziel'; kg.resourceId = 'gid://x/55';
+  ist('fehlt das Kind, hinter das «Wasserkocher» gehört: Fehler, nichts umgebaut', [hat(kuecheGeschirrMenue(keinHinter, { ...GIDS, 'anderes-ziel': 'gid://x/55' }, {}).fehler, 'kein Kind «Mixer, Entsafter & Zerkleinerer»')], [true]);
+  const kaffeeOhneKopf = kopie(ALT); const kf = wohnen(kaffeeOhneKopf).items.find(x => x.title === 'Kaffee, Tee & Trinken'); kf.url = '/en/collections/anderes-ziel'; kf.resourceId = 'gid://x/56';
+  ist('ist «Wasserkocher» nicht mehr der Kopf von «Kaffee, Tee & Trinken»: Fehler (nichts raten)', hat(kuecheGeschirrMenue(kaffeeOhneKopf, { ...GIDS, 'anderes-ziel': 'gid://x/56' }, {}).fehler, 'ist nicht der Kopf von'), true);
   ist('Kurztitel haben Vorrang, sonst der Shop-Titel, sonst der alte Gruppentitel', (() => {
     const t = kuecheGeschirrMenue(ALT, GIDS, { 'pfannen-woks': 'Shop-Titel', 'teekannen-kaffeeservice': 'X', 'wasserkocher-kaffeemaschinen': 'Zu lang lang lang lang lang lang lang lang' }).baum;
     const k = t.find(x => x.title === KUECHE.titel), g = t.find(x => x.title === GESCHIRR.titel);
-    return [k.items[0].items[0].title, g.items[1].items[0].title];
+    return [k.items[0].items[0].title, k.items[2].items[1].title];
   })(), ['Pfannen & Woks', 'Wasserkocher & Kaffeemaschinen']);
 }
 
@@ -109,7 +133,17 @@ ist('SEO-Satz endet mit Versand-Satz', SEO('Text.').endsWith('Lieferung in die S
   ist('ein anderer oberster Eintrag fehlt → Anzahl und verloren', (() => { const f = mut(b => b.splice(b.findIndex(x => x.title === 'Haustiere'), 1)); return [hat(f, 'verloren'), hat(f, 'erwartet +2')]; })(), [true, true]);
   ist('eine Rest-Gruppe verändert (Kind umbenannt) → verändert', hat(mut(b => { kop(b, ELTERN).items[0].items[0].title = 'Neu'; }), 'wurde verändert'), true);
   ist('«Wohnen & Garten» enthält eine Gruppe zu viel/anders → andere Gruppen', hat(mut(b => { kop(b, ELTERN).items[0].title = 'Umbenannt'; }), 'andere Gruppen'), true);
-  ist('Ids dürfen sich ändern (Nachlesen liefert andere Ids), die Prüfung bleibt grün', (() => { const b = kopie(GUT); const setze = l => l.forEach((x, n) => { x.id = 'gid://neu/' + Math.random().toString(36).slice(2) + n; setze(x.items || []); }); setze(b); return pruefeUmbau(ALT, b, GIDS); })(), []);
+  ist('Ids der NEUEN Einträge dürfen sich ändern (Nachlesen liefert andere Ids), die Prüfung bleibt grün', (() => { const b = kopie(GUT); const setze = l => l.forEach((x, n) => { x.id = 'gid://neu/' + n + x.title.length; setze(x.items || []); }); setze(kop(b, KUECHE.titel).items); setze(kop(b, GESCHIRR.titel).items); kop(b, KUECHE.titel).id = 'gid://neu/k'; kop(b, GESCHIRR.titel).id = 'gid://neu/g'; return pruefeUmbau(ALT, b, GIDS); })(), []);
+  ist('die Id von «Wohnen & Garten» geändert → Fehler (Übersetzung hinge an der alten Id)', hat(mut(b => { kop(b, ELTERN).id = 'gid://x/neu'; }), 'andere Id'), true);
+  ist('Id einer behaltenen Gruppe geändert → «andere Ids»', hat(mut(b => { kop(b, ELTERN).items[0].id = 'gid://x/neu'; }), 'andere Ids'), true);
+  ist('Id eines Eintrags ausserhalb geändert oder gelöscht → «andere Ids»', [hat(mut(b => { kop(b, 'Damen').id = 'gid://x/neu'; }), 'andere Ids'), hat(mut(b => { delete kop(b, 'Damen').id; }), 'andere Ids')], [true, true]);
+  ist('alle Ids gelöscht → erkannt', hat(mut(b => { const l = x => x.forEach(i => { delete i.id; l(i.items || []); }); l(b); }), 'andere Id'), true);
+  ist('Tags an einem behaltenen oder äusseren Eintrag → verändert', [hat(mut(b => { kop(b, ELTERN).items[0].tags = ['x']; }), 'verändert'), hat(mut(b => { kop(b, 'Damen').tags = ['x']; }), 'ausserhalb')], [true, true]);
+  ist('das verschobene Kind steht an erster Stelle statt hinter dem Mixer → Reihenfolge', hat(mut(b => { const it = gruppe(b, 'Küchengeräte').items; [it[0], it[1]] = [it[1], it[0]]; }), 'nicht hinter'), true);
+  ist('das verschobene Kind fehlt unter «Küchengeräte» → verloren und nicht genau einmal', (() => { const f = mut(b => { gruppe(b, 'Küchengeräte').items.splice(1, 1); }); return [hat(f, 'verloren'), hat(f, 'nicht genau einmal')]; })(), [true, true]);
+  ist('das verschobene Kind steht zusätzlich noch unter «Kaffee, Tee & Trinken» → zusätzlich', hat(mut(b => { gruppe(b, 'Kaffee, Tee & Trinken').items.unshift({ ...kopie(gruppe(b, 'Küchengeräte').items[1]) }); }), 'zusätzlich'), true);
+  ist('das verschobene Kind zeigt auf ein falsches Ziel → erkannt', hat(mut(b => { gruppe(b, 'Küchengeräte').items[1].resourceId = 'gid://x/7'; }), 'verloren'), true);
+  ist('der erste Eintrag unter «Kaffee, Tee & Trinken» ist fälschlich ein erfundenes Kopf-Kind → übrige Kinder verändert', hat(mut(b => { gruppe(b, 'Kaffee, Tee & Trinken').items.shift(); }), 'verloren'), true);
 }
 
 // ── Plan der sieben Sammlungen ──
@@ -123,13 +157,15 @@ ist('SEO-Satz endet mit Versand-Satz', SEO('Text.').endsWith('Lieferung in die S
     [true, ['pfannen-woks', 'toepfe-kochgeschirr-sets', 'backformen-backbleche', 'kuechenformen-tortendeko', 'grillpfannen-elektrogrills'].map(h => 'TAG:EQUALS:sort-' + h)]);
   ist('das Tag kommt aus dem Shop, nicht aus dem Handle («kuechen-organizer» → sort-kuechenorganizer)', P['kuechenhelfer-vorrat'].regel.rules.some(r => r.condition === 'sort-kuechenorganizer') && !P['kuechenhelfer-vorrat'].regel.rules.some(r => r.condition === 'sort-kuechen-organizer'), true);
   ist('Küchenhelfer: «waagen» (Körper-, Haustier-, Kranwaagen) ist nicht in der Vereinigung, die Küchenwaagen schon', [P['kuechenhelfer-vorrat'].kinder.some(k => k.handle === 'waagen'), P['kuechenhelfer-vorrat'].kinder.some(k => k.handle === 'kuechenwaagen-feinwaagen')], [false, true]);
-  ist('Küchengeräte: «haushaltsgeraete» (Staubsauger, Bügeleisen) ist nicht in der Vereinigung', [P['kuechengeraete-alle'].kinder.some(k => k.handle === 'haushaltsgeraete'), P['kuechengeraete-alle'].kinder.length], [false, 8]);
+  ist('Küchengeräte: «haushaltsgeraete» (Staubsauger, Bügeleisen) ist nicht in der Vereinigung; «Wasserkocher & Kaffeemaschinen» schon, bei Kaffee, Tee & Trinken nicht mehr', [P['kuechengeraete-alle'].kinder.some(k => k.handle === 'haushaltsgeraete'), P['kuechengeraete-alle'].kinder.length,
+    P['kuechengeraete-alle'].kinder.some(k => k.handle === 'wasserkocher-kaffeemaschinen'), P['kaffee-tee-trinken'].kinder.some(k => k.handle === 'wasserkocher-kaffeemaschinen'), P['kaffee-tee-trinken'].kinder.length], [false, 9, true, false, 5]);
   ist('Kopf Küche = Vereinigung seiner drei Gruppen, Kopf Geschirr = Vereinigung seiner zwei', [
     JSON.stringify([...new Set(['kochen-grillen-backen', 'kuechenhelfer-vorrat', 'kuechengeraete-alle'].flatMap(h => P[h].kinder.map(k => k.handle)))]) === JSON.stringify(P['kueche-kochen'].kinder.map(k => k.handle)),
     JSON.stringify([...new Set(['geschirr-besteck-tisch', 'kaffee-tee-trinken'].flatMap(h => P[h].kinder.map(k => k.handle)))]) === JSON.stringify(P['geschirr-tisch'].kinder.map(k => k.handle))], [true, true]);
   ist('Küche und Geschirr teilen kein Kind (sauber getrennt)', P['kueche-kochen'].kinder.filter(k => P['geschirr-tisch'].kinder.some(x => x.handle === k.handle)).map(k => k.handle), []);
-  ist('Mitgliederzahl: 21 Tag-Regeln für die Küche, 11 für Geschirr & Tisch', [P['kueche-kochen'].regel.rules.length, P['geschirr-tisch'].regel.rules.length], [21, 11]);
-  ist('jede Sammlung hat Beschreibung und SEO-Text mit Versand-Satz', plan.every(p => p.beschreibung.length > 40 && p.seoBeschreibung.endsWith('nach Rabatt.') && p.seoBeschreibung.length <= 320), true);
+  ist('Tag-Regeln: 22 für die Küche, 10 für Geschirr & Tisch', [P['kueche-kochen'].regel.rules.length, P['geschirr-tisch'].regel.rules.length], [22, 10]);
+  ist('jede Sammlung hat Beschreibung und einen Meta-Text von höchstens 160 Zeichen mit Versand-Satz', plan.every(p => p.beschreibung.length > 40 && p.seoBeschreibung.endsWith('nach Rabatt.') && p.seoBeschreibung.length <= 160), true);
+  ist('der Kopf «Küche & Kochen» heisst als Sammlung «Küchenbedarf & Kochzubehör», alle anderen wie im Menü', plan.map(p => p.titel), ['Kochen, Grillen & Backen', 'Küchenhelfer & Vorrat', 'Küchengeräte', 'Geschirr, Besteck & Tisch', 'Kaffee, Tee & Trinken', 'Küchenbedarf & Kochzubehör', 'Geschirr & Tisch']);
   ist('Plan funktioniert auch nach dem Umbau (Gruppen liegen dann unter den neuen Köpfen)', JSON.stringify(gruppenPlan(gut().baum, tagVon).map(p => p.regel.rules.length)), JSON.stringify(plan.map(p => p.regel.rules.length)));
   ist('ohne Tags (alles null): keine Regeln, alle Kinder unter «ohne Tag»', (() => { const p = gruppenPlan(ALT, () => null); return [p.every(x => x.regel.rules.length === 0), p[0].ohneTag.length === p[0].kinder.length]; })(), [true, true]);
   ist('erwartetAus: zählt Produkte mit mindestens einem der Tags, jedes einmal', (() => {
@@ -147,8 +183,8 @@ const kindSammlung = h => ({ id: GIDS[h], title: h, productsCount: { count: 5 },
     : { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: REGEL_TAG(h) }] } });
 const VORHANDEN = Object.fromEntries(Object.keys(GIDS).filter(h => !neueHandles().includes(h)).map(h => [h, kindSammlung(h)]));
 const NEUE = Object.fromEntries(neueHandles().map(h => [h, { id: NEU_GID(h), title: h, productsCount: { count: 9 } }]));
-function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche = false, beimLesen = null, nachLeseFehler = false } = {}) {
-  const z = { menu: kopie(MENU_ROH), collections: kopie(collections), n: 0, pub: {}, gelesen: 0, geschrieben: false, erstellt: [] };
+function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche = false, beimLesen = null, nachLeseFehler = false, menu = null, nachSchreiben = null } = {}) {
+  const z = { menu: kopie(menu || MENU_ROH), collections: kopie(collections), n: 0, pub: {}, gelesen: 0, geschrieben: false, erstellt: [] };
   const aufrufe = [];
   const lesbar = items => items.map(i => ({ id: i.id || `gid://shopify/MenuItem/neu-${++z.n}`, title: i.title, type: i.type, resourceId: i.resourceId ?? null, url: i.url ?? URL_VON_GID[i.resourceId] ?? (i.type === 'COLLECTION' ? '/collections/x' : null), tags: i.tags || [], items: lesbar(i.items || []) }));
   const q = async (query, v = {}) => {
@@ -159,6 +195,7 @@ function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche 
       z.menuUpdateVariablen = { id: v.id, t: v.t, h: v.h }; z.geschrieben = true;
       z.menu = { ...z.menu, items: lesbar(v.i) };
       if (verfaelsche) z.menu.items.find(x => x.title === KUECHE.titel).items.pop();
+      if (nachSchreiben) z.menu = nachSchreiben(kopie(z.menu));
       return { menuUpdate: { menu: { id: z.menu.id }, userErrors: [] } };
     }
     if (/c\d+:collectionByHandle\(handle:/.test(query)) { const aus = {}; for (const [, n, h] of query.matchAll(/c(\d+):collectionByHandle\(handle:"([^"]+)"\)/g)) aus['c' + n] = z.collections[h] ? kopie(z.collections[h]) : null; return aus; }
@@ -214,7 +251,7 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   ist('Shopify liefert danach 21 oberste Einträge mit den neuen Köpfen', [a.z.menu.items.length, titel(a.z.menu.items).slice(8, 11)], [21, ['Küche & Kochen', 'Geschirr & Tisch', 'Wohnen & Garten']]);
   ist('der zurückgelesene Baum besteht die Prüfregeln', pruefeUmbau(ALT, eingabeAus(a.z.menu.items), GIDS), []);
   const r2 = await kuecheGeschirrMenueLauf(a.q, { live: true, web: webAttrappe(), ...frisch('m4b'), out: still().out, err: still().err });
-  ist('zweiter LIVE-Lauf auf dem umgebauten Menü: Exit 2 «schon umgebaut», kein zweites menuUpdate', [r2.code, a.schreibend().length], [2, 1]);
+  ist('zweiter LIVE-Lauf auf dem umgebauten Menü: Exit 0 «nichts zu tun», kein zweites menuUpdate', [r2.code, r2.schonUmgebaut, a.schreibend().length], [0, true, 1]);
 }
 {
   const a = attrappe({ collections: MIT_NEUEN }), s = still();
@@ -282,8 +319,9 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   ist('LIVE: Exit 0, sieben Sammlungen angelegt und in den Kanälen veröffentlicht', [r.code, a.z.erstellt.length, Object.keys(a.z.pub).length], [0, 7, 7]);
   ist('jede Sammlung: Handle, BEST_SELLING, ODER-Regel nur mit TAG EQUALS sort-…, Titel und SEO', a.z.erstellt.every(i => i.sortOrder === 'BEST_SELLING' && i.ruleSet.appliedDisjunctively === true && i.ruleSet.rules.length > 0
     && i.ruleSet.rules.every(x => x.column === 'TAG' && x.relation === 'EQUALS' && /^sort-/.test(x.condition)) && i.seo.description.endsWith('nach Rabatt.') && i.seo.title.length <= 70), true);
-  ist('die Sammlung «Küche & Kochen» hat 21 Regeln, «Geschirr & Tisch» 11, kein Tag doppelt', [a.z.erstellt.find(i => i.handle === 'kueche-kochen').ruleSet.rules.length, a.z.erstellt.find(i => i.handle === 'geschirr-tisch').ruleSet.rules.length,
-    a.z.erstellt.every(i => new Set(i.ruleSet.rules.map(x => x.condition)).size === i.ruleSet.rules.length)], [21, 11, true]);
+  ist('der Kopf «Küche & Kochen» hat 22 Regeln, «Geschirr & Tisch» 10, kein Tag doppelt', [a.z.erstellt.find(i => i.handle === 'kueche-kochen').ruleSet.rules.length, a.z.erstellt.find(i => i.handle === 'geschirr-tisch').ruleSet.rules.length,
+    a.z.erstellt.every(i => new Set(i.ruleSet.rules.map(x => x.condition)).size === i.ruleSet.rules.length)], [22, 10, true]);
+  ist('die Sammlung des Kopfes «Küche & Kochen» heisst «Küchenbedarf & Kochzubehör» (SEO-Titel passend), keine neue Sammlung heisst «Küche & Kochen»', [a.z.erstellt.find(i => i.handle === 'kueche-kochen').title, a.z.erstellt.find(i => i.handle === 'kueche-kochen').seo.title, a.z.erstellt.some(i => i.title === 'Küche & Kochen')], ['Küchenbedarf & Kochzubehör', 'Küchenbedarf & Kochzubehör online kaufen | LuxeStyle CH', false]);
   ist('HTTP-Prüfung im Onlineshop für alle sieben', new Set(web.aufrufe.flat()).size, 7);
   const r2 = await kuecheGeschirrGruppenLauf(a.q, { live: true, web: webAttrappe(), warte: async () => {}, ...frisch('g2b'), out: still().out, err: still().err });
   ist('zweiter LIVE-Lauf ist idempotent: Exit 0, keine zweite Anlage', [r2.code, a.z.erstellt.length], [0, 7]);
@@ -297,6 +335,79 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   const c = attrappe(), r3 = await kuecheGeschirrGruppenLauf(c.q, { live: true, web: webAttrappe({ 'geschirr-tisch': { ok: false, status: 404, n: 0, grund: 'HTTP 404' } }), warte: async () => {}, ...frisch('g3c'), out: still().out, err: still().err });
   ist('eine neue Sammlung ist im Onlineshop nicht erreichbar: Exit 2 (das Menü darf sie nicht verlinken)', r3.code, 2);
   ist('optionenAusEnv (Sammlungen): Trockenlauf ist Vorgabe', [gruppenOptionen({}, 'w'), gruppenOptionen({ LIVE: '1' }, 'w'), gruppenOptionen({ WEB_PRUEFEN: '1' }, 'w')], [{ live: false, web: null }, { live: true, web: 'w' }, { live: false, web: 'w' }]);
+}
+
+// Sicherung bleibt, Mengenprüfung, planLesen-Wächter
+{
+  const a = attrappe({ collections: MIT_NEUEN }), d = frisch('s1'), s = still();
+  mkdirSync(join(TMP, 's1', 'menu-sicherung'), { recursive: true });
+  writeFileSync(d.sicherung, '{"alt":"bleibt"}');
+  const r = await kuecheGeschirrMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, jetzt: () => new Date('2026-11-03T21:30:00Z'), out: s.out, err: s.err });
+  ist('eine vorhandene Sicherungsdatei wird NIE überschrieben: die neue bekommt einen Zeitstempel', [r.code, readFileSync(d.sicherung, 'utf8'), existsSync(d.sicherung.replace('.json', '-2026-11-03T21-30-00-000Z.json'))], [0, '{"alt":"bleibt"}', true]);
+  const b = attrappe(); b.z.menu.handle = 'anderes-menue';
+  const lesen = await planLesen(b.q, () => {});
+  ist('planLesen: ein anderes Menü als «main-menu» wird abgelehnt', [lesen.plan, hat(lesen.fehler, 'Hauptmenü nicht gefunden')], [undefined, true]);
+}
+{
+  const katalog = n => ({ produkte: Array.from({ length: n }, () => ({ tags: ['sort-pfannen-woks'] })) });
+  const a = attrappe(), s = still(), r = await kuecheGeschirrGruppenLauf(a.q, { live: true, web: webAttrappe(), katalog: katalog(100), warte: async () => {}, ...frisch('g4'), out: s.out, err: s.err });
+  ist('Mengenprüfung: Shopify zählt 7 Mitglieder, erwartet werden 100: Exit 2, das Menü darf nicht umgebaut werden', [r.code, hat(s.zeilen, 'zu wenige Mitglieder'), hat(s.zeilen, 'kochen-grillen-backen 7 statt 100')], [2, true, true]);
+  const b = attrappe(), r2 = await kuecheGeschirrGruppenLauf(b.q, { live: true, web: webAttrappe(), katalog: katalog(5), warte: async () => {}, ...frisch('g5'), out: still().out, err: still().err });
+  ist('Mengenprüfung: 7 gezählt bei 5 erwartet (Entwürfe zählen mit): Exit 0', r2.code, 0);
+  const c = attrappe(), r3 = await kuecheGeschirrGruppenLauf(c.q, { live: true, web: webAttrappe(), katalog: null, warte: async () => {}, ...frisch('g6'), out: still().out, err: still().err });
+  ist('ohne Katalog keine Mengenprüfung (Hinweis steht im Aufruf), Exit 0', r3.code, 0);
+}
+
+// Rücknahme
+{
+  const ALT_ROH = MENU_ROH.items;
+  const a = attrappe({ collections: MIT_NEUEN }), d = frisch('z0');
+  await kuecheGeschirrMenueLauf(a.q, { live: true, web: webAttrappe(), ...d, out: still().out, err: still().err });
+  const vor = a.z.menu;
+  const ids = l => l.flatMap(i => [i.id, ...ids(i.items || [])]);
+  const soll = rueckgaengigEingabe(ALT_ROH, vor.items);
+  const entfaellt = ids(ALT_ROH).filter(x => !new Set(ids(vor.items)).has(x)), bleibt = ids(ALT_ROH).filter(x => new Set(ids(vor.items)).has(x));
+  ist('rueckgaengigEingabe: genau die Ids, die es nach dem Umbau nicht mehr gibt, werden gestrichen (5 Gruppen + ihre 30 Kinder, 35 Ids), alle anderen bleiben', [entfaellt.length, ids(soll).filter(Boolean).length, ids(ALT_ROH).length - entfaellt.length], [35, bleibt.length, bleibt.length]);
+  ist('rueckgaengigEingabe: Titel, Typ, Reihenfolge und Ziele sind die der Sicherung', [gleicherBaum(soll, eingabeAus(ALT_ROH)).gleich, gleicheZiele(soll, eingabeAus(ALT_ROH)).gleich], [true, true]);
+  ist('rueckgaengigEingabe: ohne Umbau (aktuell = Sicherung) bleiben alle Ids', JSON.stringify(ids(rueckgaengigEingabe(ALT_ROH, ALT_ROH))), JSON.stringify(ids(ALT_ROH)));
+
+  // Trockenlauf
+  const t = attrappe({ collections: MIT_NEUEN, menu: vor }), s0 = still();
+  const r0 = await kuecheGeschirrZurueckLauf(t.q, { sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach.json'), ledger: d.ledger, out: s0.out, err: s0.err });
+  ist('Rücknahme, Trockenlauf: Exit 0, nichts geschrieben, nennt die 35 Ids', [r0.code, t.schreibend().length, hat(s0.zeilen, '35 Ids der Sicherung gibt es nicht mehr')], [0, 0, true]);
+  // LIVE
+  const l = attrappe({ collections: MIT_NEUEN, menu: vor }), s1 = still();
+  const r1 = await kuecheGeschirrZurueckLauf(l.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach.json'), ledger: d.ledger, out: s1.out, err: s1.err });
+  const zurueck = eingabeAus(l.z.menu.items);
+  ist('Rücknahme LIVE: Exit 0, ein menuUpdate, das Menü gleicht wieder dem von vorher (Titel, Ziele, Reihenfolge)', [r1.code, l.schreibend().length, gleicherBaum(eingabeAus(ALT_ROH), zurueck).gleich, gleicheZiele(eingabeAus(ALT_ROH), zurueck).gleich, zurueck.length], [0, 1, true, true, 19]);
+  ist('Rücknahme LIVE: alle behaltenen Ids sind danach noch da, die zwei neuen Köpfe sind weg, der Zwischenstand liegt in der Datei', [bleibt.every(x => ids(l.z.menu.items).includes(x)), titel(zurueck).includes(KUECHE.titel), JSON.parse(readFileSync(join(TMP, 'z0', 'nach.json'), 'utf8')).items.length], [true, false, 21]);
+  const w = await kuecheGeschirrZurueckLauf(l.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach.json'), ledger: d.ledger, jetzt: () => new Date('2026-11-03T22:00:00Z'), out: still().out, err: still().err });
+  ist('Rücknahme ist wiederholbar (zweiter Lauf auf dem zurückgesetzten Menü): Exit 0, der erste Zwischenstand bleibt unverändert', [w.code, JSON.parse(readFileSync(join(TMP, 'z0', 'nach.json'), 'utf8')).items.length], [0, 21]);
+
+  const f = attrappe({ collections: MIT_NEUEN, menu: vor }), r2 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'gibtsnicht.json'), ledger: d.ledger, out: still().out, err: still().err });
+  ist('Sicherung fehlt: Exit 1, nichts geschrieben', [r2.code, f.schreibend().length], [1, 0]);
+  writeFileSync(join(TMP, 'z0', 'kaputt.json'), '{"id":"gid://x"');
+  const r3 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'kaputt.json'), ledger: d.ledger, out: still().out, err: still().err });
+  ist('Sicherung abgeschnitten (kein gültiges JSON): Exit 1, nichts geschrieben', [r3.code, f.schreibend().length], [1, 0]);
+  writeFileSync(join(TMP, 'z0', 'fremd.json'), JSON.stringify({ id: 'gid://shopify/Menu/anderes', handle: 'main-menu', items: ALT_ROH }));
+  const r4 = await kuecheGeschirrZurueckLauf(f.q, { live: true, sicherung: join(TMP, 'z0', 'fremd.json'), ledger: d.ledger, out: still().out, err: still().err });
+  ist('Sicherung gehört zu einem anderen Menü: Exit 1, nichts geschrieben', [r4.code, f.schreibend().length], [1, 0]);
+  const g = attrappe({ collections: MIT_NEUEN, menu: vor, beimLesen: { nr: 2, aendere: m => { m.items.find(x => x.title === 'Damen').title = 'Damen (neu)'; return m; } } });
+  const r5 = await kuecheGeschirrZurueckLauf(g.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach2.json'), ledger: d.ledger, out: still().out, err: still().err });
+  ist('Menü ändert sich zwischen Lesen und Schreiben: Exit 4, nichts geschrieben', [r5.code, g.schreibend().length], [4, 0]);
+  const h = attrappe({ collections: MIT_NEUEN, menu: vor, nachLeseFehler: true }), s6 = still();
+  const r6 = await kuecheGeschirrZurueckLauf(h.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach3.json'), ledger: d.ledger, out: s6.out, err: s6.err });
+  ist('Netzfehler beim Nachlesen NACH dem Schreiben: Exit 3 mit Hinweis auf den Zwischenstand', [r6.code, hat(s6.zeilen, 'NACH dem Schreiben')], [3, true]);
+  const k = attrappe({ collections: MIT_NEUEN, menu: vor, nachSchreiben: m => { m.items.find(x => x.title === 'Damen').title = 'Damen!'; return m; } }), s7 = still();
+  const r7 = await kuecheGeschirrZurueckLauf(k.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach4.json'), ledger: d.ledger, out: s7.out, err: s7.err });
+  ist('Shopify speichert etwas anderes als gesendet: Exit 3 mit Hinweis auf den Zwischenstand', [r7.code, hat(s7.zeilen, 'Zwischenstand liegt in')], [3, true]);
+  const k2 = attrappe({ collections: MIT_NEUEN, menu: vor, beimLesen: { nr: 2, aendere: m => { m.id = 'gid://shopify/Menu/anderes'; return m; } } });
+  const r8 = await kuecheGeschirrZurueckLauf(k2.q, { live: true, sicherung: d.sicherung, zwischen: join(TMP, 'z0', 'nach5.json'), ledger: d.ledger, out: still().out, err: still().err });
+  ist('beim zweiten Lesen kommt ein anderes Menü (andere Id, gleiche Einträge): Exit 4, nichts geschrieben', [r8.code, k2.schreibend().length], [4, 0]);
+  const k3 = attrappe({ collections: MIT_NEUEN, menu: vor });
+  const r9 = await kuecheGeschirrZurueckLauf(k3.q, { live: true, sicherung: join(TMP, 'z0', 'nach.json'), zwischen: join(TMP, 'z0', 'nach6.json'), ledger: d.ledger, out: still().out, err: still().err });
+  ist('wer den Zwischenstand (NACH dem Umbau) als Sicherung übergibt, wird abgewiesen: Exit 2, nichts geschrieben', [r9.code, k3.schreibend().length], [2, 0]);
+  ist('optionenAusEnv (Rücknahme): Trockenlauf ist Vorgabe, SICHERUNG wählt die Datei', [zurueckOptionen({}), zurueckOptionen({ LIVE: '1', SICHERUNG: 'x.json' })], [{ live: false }, { live: true, sicherung: 'x.json' }]);
 }
 
 console.log(`\nküche/geschirr: ${ok} Prüfungen bestanden, ${fehl} Fehler`);

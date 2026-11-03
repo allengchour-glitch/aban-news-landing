@@ -61,7 +61,13 @@ export async function kuecheGeschirrGruppenLauf(q, { live = false, web = null, k
     out('Erwartete Mitglieder (aktive Produkte im Katalog): ' + plan.map(p => `${p.handle} ${e[p.handle]}`).join(' · '));
   }
   // Ohne `katalog` an gruppenLauf: dessen Zählung kennt nur Engine-Kategorien, hier wäre sie 0. Eigene Zahlen oben.
-  return gruppenLauf(q, { live, web, plan, kategorieVonHandle: () => null, katalog: null, out, err, ...rest });
+  const res = await gruppenLauf(q, { live, web, plan, kategorieVonHandle: () => null, katalog: null, out, err, ...rest });
+  // Mengenprüfung (nur für frisch angelegte Sammlungen): Shopify zählt Entwürfe mit, also mindestens 90 % der aktiven Mitglieder laut Katalog. Eine falsche Regel (z. B. 1 statt 355) darf das Menü nicht freigeben.
+  if (res.code === 0 && katalog) {
+    const e = erwartetAus(katalog.produkte, plan), zuWenig = (res.ergebnis || []).filter(x => x.angelegt && x.mitglieder != null && x.mitglieder < e[x.handle] * 0.9);
+    if (zuWenig.length) { err(`\nFEHLER: zu wenige Mitglieder (Shopify zählt Entwürfe mit, erwartet mindestens 90 % der aktiven laut Katalog): ${zuWenig.map(x => `${x.handle} ${x.mitglieder} statt ${e[x.handle]}`).join('; ')}. Smart-Collections füllen sich verzögert: nach einigen Minuten den Trockenlauf wiederholen (Mitglieder lesen), bevor das Menü umgebaut wird.`); return { ...res, code: 2 }; }
+  }
+  return res;
 }
 
 /** Die Schalter aus der Umgebung: Trockenlauf ist Vorgabe, nur LIVE=1 schreibt; die HTTP-Prüfung läuft bei LIVE oder WEB_PRUEFEN=1. */
