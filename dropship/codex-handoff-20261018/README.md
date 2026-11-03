@@ -1,5 +1,12 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 03.11.2026, Revision 71: Vielfalt zum Stöbern
+
+[Präzisierter Startseitenentwurf](STOEBER-STARTSEITE-20261103-R71.md). Inhaber: «für leute die etwa von allem surfen wollen». Alle16Kategorieeinstiege bleiben kompakt erreichbar; der frühere Vorschlag von nur sechs Einstiegen ist überholt. Frühe gemischte Produkte und kurze wechselnde Themen mit klaren Weiterstöber-Links planen. Mode, Wohnen, Technik, Beauty, Schmuck, Haustiere und Geschenke abwechslungsreich zeigen; keine unbelegten Bestseller-/Personalisierungsclaims.
+
+R70-Messwerte nur datiert übernommen, keine erneute Seitenprüfung oder Reports. Identitäten frisch passend. Kein Theme-/Shop-/Socialwrite; R69-Film unverändert und weiterhin nicht eingebunden.23IDs/Historien und22andereTasks erhalten. Konkrete Entwurfspräzisierung, keine Umsetzung; Claude-Kenntnisnahme unbekannt.
+
+
 ## Aktueller Stand – 03.11.2026, Revision 70: Startseite gezielt verdichten
 
 [Gestaltungsvorschlag](STARTSEITE-DESIGN-20261103-R70.md) · [Messbelege](STARTSEITE-BELEGE-20261103-R70.json). Auf die Frage nach leer wirkender Website aktuelle Homepage bei1440/390px, frische Firecrawl-Aufnahme und CSS geprüft. 25Produktkarten/13Abschnitte vorhanden; erste Produktkarte erst bei2705/2708px. Vorher liegen Hero,16Kategorie-Kacheln und der grosse Selbstgestaltenblock. Vorschlag: sechs primäre Kategorieeinstiege, vorhandene Produktreihe deutlich früher, Winter/Geschenke höher und gezielte Titel-/Preisabstände verkürzen. Versteckte Ratings reservieren bereits keinen Platz; keine falsche Review-Korrektur.
