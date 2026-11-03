@@ -1,0 +1,762 @@
+[
+{
+"bereich": "Repo-Regeln und Bestand (TikTok und Instagram meisterhaft)",
+"fakten": [
+{
+"aussage": "[Regel Stimme] Seit 2.11.2026 erlaubt und erwünscht: Hochdeutsch, Piper lokal (thorsten-high oder ramona-low), höchstens 160 Zeichen (ca. 8 s). Gesprochen werden keine Preise, Rabatte, Lieferzeiten, Bewertungen oder Versprechen. On-screen-Text bleibt zusätzlich. Ältere *-text.mp4 bleiben stumm.",
+"marke": "GEMESSEN",
+"beleg": "dropship/VIDEO-PRAEFERENZEN.md Z.7–10; dropship/reel-vorlage/README.md Z.15–16; origin/main CLAUDE.md «Video-Präferenzen» (gelesen 3.11.2026)"
+},
+{
+"aussage": "[Regel Musik] Rotation über fünf Mixkit-Stücke, nie zweimal hintereinander dasselbe, keine selbst synthetisierten luxe-*-Stücke mehr, Kevin-MacLeod-Stücke nur mit Quellenangabe in der Caption, Lautheit -22 LUFS (Besitzer: -16 war zu laut). Lizenz laut README: kostenlos, auch kommerziell, keine Namensnennung, Stücke nur als Reel-Ton weitergeben (Lizenztext selbst nicht neu geprüft).",
+"marke": "GEMESSEN",
+"beleg": "dropship/VIDEO-PRAEFERENZEN.md Z.11–14; reel-vorlage/README.md Z.24–29; automation/music/CREDITS.txt; reel-vorlage/musik_waehlen.sh Z.2–8"
+},
+{
+"aussage": "[Regel Format] 9:16, 1080×1920; Vorlage 9,4 s und 30 fps; Foto-Reel dreiteilig (Titel, zwei Bildfenster, Markenabschluss). TikTok-Fotobeiträge höchstens 1080 px an jeder Seite, sonst picture_size_check_failed.",
+"marke": "GEMESSEN",
+"beleg": "dropship/REEL-REGELN.md Z.17; reel-vorlage/README.md Z.3; origin/main CLAUDE.md «TikTok geklärt» (3.11.2026)"
+},
+{
+"aussage": "[Regel Text im Bild] Kein ' : % \\ und keine Emoji in drawtext (Prozent ausschreiben), Längen Titel je höchstens 16, Tagline 30, Mitte 18, Name 36, Endzeile 28 Zeichen (Skript bricht mit Exit 2 ab). Schweizer Rechtschreibung (ss). Emoji nur in Captions.",
+"marke": "GEMESSEN",
+"beleg": "VIDEO-PRAEFERENZEN.md Z.15–16; reel-vorlage/README.md Z.21–22; reel_karte.sh Z.23–35; CODEX-REEL-LAMPE-0211.md Z.20"
+},
+{
+"aussage": "[Regel Claims] Im Reel keine Preise, Rabatte, Lieferzeiten, Bewertungen, Gesundheits-, Wasserdicht- oder Materialversprechen, kein englischer Fremdtext, keine Wasserzeichen. Keine erfundenen Erfahrungsberichte, keine KI-Personen als Zeugen (UWG, TikTok-KI-Kennzeichnung), kein 1:1-Nachbau fremder Skripte, keine Wirkversprechen.",
+"marke": "GEMESSEN",
+"beleg": "CODEX-REEL-LAMPE-0211.md Z.20; reel-vorlage/README.md Z.22; LERNEN-TIKTOK-SHOP-KI-VIDEOS-2610.md Z.20–22; REEL-REGELN.md Z.15"
+},
+{
+"aussage": "[Regel Lieferzeit-Wortlaut] Fortura-Ware: «Ab Schweizer Lager · Lieferdatum beim Artikel» bzw. «Versand ab Schweizer Lager mit DPD – der voraussichtliche Lieferzeitraum steht beim Artikel und in der Kasse» (keine Zahl). CJ-Ware: «Lieferung 10–20 Werktage». «Gratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna». Bestellschluss-Daten für Weihnachten nicht ohne Besitzer-Ja anzeigen.",
+"marke": "GEMESSEN",
+"beleg": "dropship/STAND-ARCHIV.md Z.19 und Z.22 (27.10.); origin/main CLAUDE.md Block «ich brauche mehr Verkäufe» (28.10.); live in Metricool-Texten gelesen 3.11.2026"
+},
+{
+"aussage": "[Regel Fotos] Jedes Foto von Hand sichten: keine Fremdschrift, Marken, Personen, privaten Bilder. Produktseiten-Videos (Fremdmaterial) tabu. Besitzerregel vom 8.6.: «KEINE asiatischen Models», nicht zu oft dasselbe Produkt wiederholen. Der Wortlaut der Models-Regel ist als pauschaler Ausschluss heikel und sollte der Besitzer neu fassen.",
+"marke": "GEMESSEN",
+"beleg": "reel-vorlage/README.md Z.19; REEL-REGELN.md Z.88 und Z.90–97; FREIGABEPAKET.md Z.63"
+},
+{
+"aussage": "[Regel nie posten] Fasnacht-Social (Besitzer 29.10.); Produkte unter ca. 4,3 Sterne; 1:1-Reposts (Duplikat-Abwertung); Master ohne Film-/Rechteabnahme (18-Sekunden-Projektor nur Storyboard, kein neuer Social-Write); dropship/_SOCIAL_STOPP nie neu anlegen (Datei existiert auf origin/main nicht).",
+"marke": "GEMESSEN",
+"beleg": "SOCIAL-WOCHE-0211.md Z.22; REEL-REGELN.md Z.20–23; TIKTOK-UPLOAD-PLAN.md Kopf; FREIGABEPAKET.md Z.63 und Z.67; CODEX-REEL-LAMPE-0211.md Z.27; git ls-tree: kein Treffer für STOPP"
+},
+{
+"aussage": "[Regel Captions und Kennzeichnung] Instagram: «Link in Bio», keine klickbaren Links; Facebook: Link erlaubt. Jedes Reel eigener Text, Produkt benannt. Pinterest-Pins mit utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin. Die drei Stimm-Reels sind als KI gekennzeichnet (Instagram isAiGenerated true, TikTok isAigc true).",
+"marke": "GEMESSEN",
+"beleg": "VIDEO-PRAEFERENZEN.md Z.18–19; REEL-REGELN.md Z.73–77; SOCIAL-WOCHE-0211.md Z.17; Metricool getScheduledPosts 4.11./6.11./8.11. (abgefragt 3.11.2026)"
+},
+{
+"aussage": "[Bestand Automatik] Alle Repo-Autopost-Workflows sind pausiert: schedule auskommentiert «PAUSIERT 2026-06-13 (Cron-Nulldiät, GitHub Fair-Use)» bei reel-autopost, reel-render, social-autopost, social-meta-autopost, tiktok-autopost, tiktok-cloud-autopost, social-queue-build, story-meta-autopost, video-meta-autopost, pinterest-publish, reel-analytics; daily-tool-reel seit 9.6. pausiert. product-reel und metricool-schedule nur manuell (Trockenlauf Vorgabe, Live nur mit approve_publish).",
+"marke": "GEMESSEN",
+"beleg": ".github/workflows/*.yml (on:-Blöcke), gelesen via git show origin/main, 3.11.2026"
+},
+{
+"aussage": "[Bestand Queues] Die CSV-Queues treiben nichts mehr an: metricool_queue.csv 26 Zeilen (20 hold, 6 scheduled, Daten 14.6.–29.10.), reels_seed.csv 48 Zeilen (29 archived-deadurl, 3 ready, 7 pending), posts_image.csv 115 Zeilen (47 posted, 30 ready, 38 skip; alles Juni). Geplant wird per Metricool-API direkt aus Sitzungen.",
+"marke": "GEMESSEN",
+"beleg": "social/metricool_queue.csv, automation/reels_seed.csv, social/posts_image.csv (Zählung 3.11.2026)"
+},
+{
+"aussage": "[Bestand Metricool live] Marke 6227837, Label allengchour, Zeitzone Europe/Zurich; Kanäle: Instagram luxestyle.ch, TikTok luxestyle.ch, Facebook 1049840534888592, Threads luxestyle.ch, Pinterest luxestyleCH, YouTube UCSfCEYjAsdOyYxyfTClXRZA. Alle geplanten Beiträge autoPublish true, Status PENDING.",
+"marke": "GEMESSEN",
+"beleg": "Metricool getBrandSettings und getScheduledPosts, abgefragt 3.11.2026"
+},
+{
+"aussage": "[Bestand Plan 4.–9.11.] Pro Tag nur 2 bis 5 Post-Objekte: 4.11. fünf (Reel Lampe 10:00 auf FB/IG/TikTok, FB/IG Rucksack 18:00, TikTok Hoodie-Decke 18:00, Threads 18:30, Pin 20:00), 6.11. vier (Reel Tennisarmband 10:00), 8.11. vier (Reel Kristall-Set 16:00), 9.11. zwei. Gelaufen: 2.11. FB/IG Panda und Pinterest-Pin PUBLISHED; TikTok-Mikrobagger ERROR (Auflösung), neu auf 9.11. 18:00.",
+"marke": "GEMESSEN",
+"beleg": "Metricool getScheduledPosts für 2.–4., 6., 8., 9.11., abgefragt 3.11.2026 (5.11. und 7.11. nicht abgefragt)"
+},
+{
+"aussage": "[Bestand Reel-Vorlage] reel_karte.sh rendert ein 9,4-s-Foto-Reel mit Zoom, Textblende, unscharfem Hintergrund, Hell/Dunkel (INVERS), optional Piper-Stimme mit Musik-Ducking. Schreibt nur eine lokale MP4, kein Upload, keine Queue. Tests reel_karte_test.sh und musik_waehlen_test.sh laufen nicht in der CI. musik-log.txt auf origin/main ist 0 Byte gross, die Rotation hat dort also kein Gedächtnis.",
+"marke": "GEMESSEN",
+"beleg": "dropship/reel-vorlage/README.md Z.3–5 und Z.32; reel_karte.sh Z.1–5; git show musik-log.txt = 0 Byte, 3.11.2026"
+},
+{
+"aussage": "[Bestand Reels gemessen] Die drei geplanten Reels (Lampe, Tennisarmband, Kristall-Set): je H.264 1080×1920, 30 fps, 9,40 s, AAC; Integrallautheit -16,7 / -17,2 / -17,0 LUFS, Peak ca. -3,4 dBFS. Je 3 Einzelbilder angesehen: Titel gross, zwei Bildfenster, Endkarte «LuxeStyle · luxestyle.ch». Keine Untertitel zum gesprochenen Text sichtbar; Untergrund unten mehrheitlich leer; Kleintext (Tagline) klein.",
+"marke": "GEMESSEN",
+"beleg": "ffprobe/ebur128 und Bildbogen der Metricool-Dateien (static.metricool.com/planner/202611/…mp4), 3.11.2026; Klang selbst nicht gehört"
+},
+{
+"aussage": "[Bestand TikTok-Fotobeiträge] Die sieben geprüften Bilder der Foto-Beiträge (Hoodie-Decke, Damenuhr, Rucksack, Hochlandrind, Mikrobagger neu) sind alle höchstens 1080 px: 899×900, 800×800, 1080×589. Sie bleiben unter dem TikTok-Limit, sind aber niedrig aufgelöst, und der Mikrobagger liegt quer im Hochformat-Feed.",
+"marke": "GEMESSEN",
+"beleg": "Download und ffprobe der Metricool-Medien, 3.11.2026"
+},
+{
+"aussage": "[Bestand Wirkung] 12.–18.10.: Instagram 1'384 Views und 20 bekannte Interaktionen, TikTok 4'273 Views und 22, Pinterest 10'330 Impressionen und 185 Interaktionen, YouTube 1'982 Views (jeweils lückenhaft, keine Verkaufsnachweise). Shopify 30 Tage (laut Repo, 28.10.): TikTok 530 Sitzungen, 0 Käufe, Instagram höchstens 9 Besuche; bezahlter TikTok-Test CHF 143.71, 859 Klicks, 0 Käufe, ohne Pixel.",
+"marke": "GEMESSEN",
+"beleg": "FREIGABEPAKET.md Z.36–47; BROWSER-BEFEHL-BIO-LINKS-2810.md Z.4; origin/main CLAUDE.md Block 28.10. nachmittags (Zahlen aus den Dateien, nicht neu gemessen)"
+},
+{
+"aussage": "[Bestand Weihnachten] 14 IG/FB-Wichtel-Beiträge 2.–15.11. in Metricool; nächste Charge 16.–30.11. soll um den 12.11. mit frischen Daten geplant werden. Adventskalender-Plan nennt als spätesten Bestelltag rund 12./13.11.",
+"marke": "GEMESSEN",
+"beleg": "dropship/STAND-ARCHIV.md Z.22; origin/main CLAUDE.md Block «Adventskalender» (29.10.)"
+},
+{
+"aussage": "[Bestand TikTok-Weg] Metricool kann TikTok automatisch veröffentlichen (25.10. drei Videos PUBLISHED). Die eigene TikTok-API-Pipeline blieb auf Entwurf/privat, weil die App unauditiert ist (Stand 12.6.). Eine frühere Notiz vom 2.11. («manuell veröffentlichen») kam von einem einzelnen Foto-Beitrag mit zu grossen Bildern.",
+"marke": "GEMESSEN",
+"beleg": "origin/main CLAUDE.md «TikTok geklärt» (3.11.) und Block 2.11. spät; dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md Z.1–10"
+},
+{
+"aussage": "[Widerspruch Stimme] Mehrere Dokumente sagen weiter «ohne Voiceover»: SOCIAL-WOCHE Z.20, CODEX-REEL-LAMPE Z.19, LERNEN-TIKTOK Z.17, FREIGABEPAKET Z.30 und Z.61, STORYBOARD, ORGANISCHER-PLAN-Kopf, die Sitzungskopie von CLAUDE.md. Massgebend ist VIDEO-PRAEFERENZEN Z.7 (2.11., jünger) und origin/main CLAUDE.md. Die Sitzungskopie von CLAUDE.md ist älter als origin/main.",
+"marke": "GEMESSEN",
+"beleg": "Vergleich der genannten Stellen, 3.11.2026"
+},
+{
+"aussage": "[Widerspruch Musik] luxe-premium.wav als Pflichtmusik (CODEX-REEL-LAMPE Z.15, STORYBOARD, FREIGABEPAKET Z.65, Sitzungskopie CLAUDE.md) und «elegant.wav» (REEL-REGELN Z.16) gegen Mixkit-Rotation (VIDEO-PRAEFERENZEN Z.11–14). Dazu «Trend-Sound in der TikTok-App» (TIKTOK-SKRIPTE Z.5, METRICOOL-PLAN Z.13–16, POLITUR Z.68) gegen fest eingebrannte Musik im MP4, das Metricool unverändert postet.",
+"marke": "GEMESSEN",
+"beleg": "Stellen wie genannt, gelesen 3.11.2026"
+},
+{
+"aussage": "[Widerspruch Preis] Preisfrei im Reel, Preis nur in der Caption (REEL-REGELN Z.15 und Z.50–55: «CHF X statt Designer-Preis» 771 Views) gegen Preis im Bild (TIKTOK-SKRIPTE Tag 2/6), «statt Designer-Preis» (TIKTOK-UPLOAD-PLAN), Preis in der Endkarte (KANALTEXTE) und gegen Vorlage/Codex (keine Preise). Live: Foto-Beiträge nennen Preise im Titel, Reels nicht. Unbelegte Vergleichspreise («statt CHF 5'000», SOCIAL-HOOKS 1.) sind ein Wettbewerbsrisiko.",
+"marke": "Hypothese",
+"beleg": "REEL-REGELN.md; TIKTOK-SKRIPTE-WOCHE.md; TIKTOK-UPLOAD-PLAN.md; KANALTEXTE.md Z.11; SOCIAL-HOOKS.md Z.10; Metricool-Texte 3.11.2026 (Risikoeinschätzung ist meine)"
+},
+{
+"aussage": "[Widerspruch Lieferzeit/Versand] «Weltweiter Versand 8–14 Tage» (VIDEO-PRAEFERENZEN Z.18–19, TIKTOK-SKRIPTE Z.7), «Weltweiter Versand · 30 Tage Rückgabe» (METRICOOL-PLAN Z.60, POLITUR Z.26 und Z.42), «Lieferung 7–14 Tage» (SOCIAL-HOOKS A6) gegen den Shop (nur CH und LI, CJ 10–20 Werktage, Fortura Datum beim Artikel). «30 Tage Rückgabe» ist beim Besitzer als offen markiert.",
+"marke": "GEMESSEN",
+"beleg": "Stellen wie genannt; origin/main CLAUDE.md Block 28.10. spät («30 Tage Rückgabe … entfernen?»)"
+},
+{
+"aussage": "[Widerspruch Weihnachts-Bestellschluss] Die Regel «Bestellschluss-Daten für Weihnachten nicht ohne Besitzer-Ja» (28.10.) trifft auf geplante Texte vom 27.10. mit «Für Weihnachten bis Mitte November bestellen»: Damenuhr FB/IG 3.11. 12:15, Rucksack FB/IG 4.11. 18:00, Lederarmband FB/IG 9.11. 12:15.",
+"marke": "GEMESSEN",
+"beleg": "Metricool getScheduledPosts (creationDate 27.10.), origin/main CLAUDE.md Block 28.10. nachmittags"
+},
+{
+"aussage": "[Widerspruch Bildregel] REEL-REGELN Regel 1 verbietet weisse Katalog-Freisteller und verlangt Model-/Lifestyle-Shots. Die Reel-Vorlage zeigt in Karte 1 und 3 das Produkt ganz auf weissem Feld, in allen drei Reels (Frames Lampe, Tennisarmband, Kristall-Set). README verlangt nur keine Fremdschrift/Personen. Der Besitzer sagte «stimme passt», eine ausdrückliche Freigabe der Freisteller ist nicht belegt.",
+"marke": "GEMESSEN",
+"beleg": "REEL-REGELN.md Z.8–9; reel-vorlage/README.md Z.19; Bildbogen der drei Reels 3.11.2026; origin/main CLAUDE.md Z.119"
+},
+{
+"aussage": "[Widerspruch Hook] REEL-REGELN Regel 8 verlangt einen Hook in den ersten 1–2 s (gern eine Frage) und nennt ihn ca. 80 % der Reichweite. Die Vorlage beginnt mit dem Produktnamen («Wasserwellen-Lampe», «Tennis-Armband», «Kristall-Spitzen»), die Hooks danach («Warmes Licht.», «Mit Zirkon.», «Natur pur.») sind Slogans, keine Fragen.",
+"marke": "GEMESSEN",
+"beleg": "REEL-REGELN.md Z.24–25; Bildbogen der drei Reels 3.11.2026"
+},
+{
+"aussage": "[Widerspruch Freigabe] REEL-REGELN Regel 9 verlangt Einzelfreigabe jedes Reels per Telegram. Reel-Vorlage und Codex-Auftrag sagen «Veröffentlichen entscheidet der Besitzer». Die drei Reels stehen mit autoPublish in Metricool, belegt ist nur «stimme passt» (2.11.).",
+"marke": "GEMESSEN",
+"beleg": "REEL-REGELN.md Z.26; reel-vorlage/README.md Z.35; CODEX-REEL-LAMPE-0211.md Z.41; origin/main CLAUDE.md Z.119; Metricool 3.11.2026"
+},
+{
+"aussage": "[Widerspruch Frequenz] 1–2 Posts/Tag (SOCIAL-HOOKS Z.4, METRICOOL-PLAN Z.80), täglich (POLITUR Z.69), Instagram ca. 4/Woche «Klasse statt Masse» (ORGANISCHER-PLAN), 19–24 Post-Objekte pro Tag (FREIGABEPAKET Z.15–23, 19.–25.10.), heute 2–5 pro Tag (Metricool 3.11.).",
+"marke": "GEMESSEN",
+"beleg": "Stellen wie genannt; Metricool 3.11.2026"
+},
+{
+"aussage": "[Widerspruch Link in Bio] KANALTEXTE Z.5 erlaubt «Link in Bio» erst bei verifiziertem Bio-Ziel. Jeder geplante Beitrag endet mit «Link in Bio: luxestyle.ch». Mögliche Bio-Ziele: Kostüme-Sammlung mit UTM (BROWSER-BEFEHL Z.6 und Z.15–19, passt nicht zu «kein Fasnacht-Social») oder Smartlink f.mtr.cool/XRISHONHRA (POLITUR Z.18). Ob der Befehl ausgeführt wurde, ist nirgends belegt.",
+"marke": "GEMESSEN",
+"beleg": "KANALTEXTE.md Z.5; BROWSER-BEFEHL-BIO-LINKS-2810.md; SOCIAL-MEDIA-POLITUR.md Z.18; Metricool 3.11.2026"
+},
+{
+"aussage": "[Widerspruch Bewertungen] REEL-REGELN wählt Produkte nach Judge.me ab 4,3 Sternen, ORGANISCHER-PLAN will «echte 5-Sterne-Bewertung» zeigen. Laut CLAUDE.md 3.11. widersprechen die rund 889 importierten, nur positiven CJ-Bewertungen mit synthetischen Mails Googles Regel zu eigenen Bewertungen; keine Sterne zeigen, keine weiteren Importe.",
+"marke": "GEMESSEN",
+"beleg": "REEL-REGELN.md Z.20–23; ORGANISCHER-PLAN-HOOK-BANK.md Säule 4; origin/main CLAUDE.md «Google Customer Reviews» (3.11.)"
+},
+{
+"aussage": "[Veraltet/unpassend] TIKTOK-SKRIPTE-WOCHE (12.6.): Gründer-Story, «Packt eine Schweizer Bestellung mit mir», «Ich kuratiere und teste» passen nicht zum Direktversand aus Asien und zu einer synthetischen Stimme; Produkte (Indigo, Mirage) und «weltweit 8–14 Tage» veraltet. SOCIAL-HOOKS (Sommer): «Echtleder», «GRA-zertifiziert», «kühlt wie Klimaanlage» sind nicht belegt; Echtleder gilt erst nach Musterprüfung. docs/urteil-social-posts.md gehört zu aban news (LinkedIn/X), nicht zu LuxeStyle.",
+"marke": "Hypothese",
+"beleg": "TIKTOK-SKRIPTE-WOCHE.md Z.40–46 und Z.49–55; SOCIAL-HOOKS.md Z.11, Z.19–22, Z.29; docs/urteil-social-posts.md Z.1–9; origin/main CLAUDE.md Block 29.10. Lederhüllen (Bewertung als Risiko ist meine)"
+},
+{
+"aussage": "[Bio/Profil] Die Politur-Texte («Schweizer Online-Shop», «Weltweiter Versand · 30 Tage Rückgabe», Name «LuxeStyle · Schweizer Online-Shop») sind mit der Versandwahrheit unvereinbar. Ob sie live stehen, ist nicht lesbar (Profile blockieren Scraping).",
+"marke": "unbekannt",
+"beleg": "SOCIAL-MEDIA-POLITUR.md Z.9–10, Z.20–50"
+},
+{
+"aussage": "[Metricool-Abo] Zahlungsfehler-Mail 22.10. und eine Metricool-Kündigungsbestätigung im Postfach des Besitzers; Gratis-Tarif wäre 20 Beiträge pro Monat. Die tatsächlich geplanten und veröffentlichten Beiträge liegen schon jetzt deutlich darüber, der Tarifstatus ist ungeklärt.",
+"marke": "unbekannt",
+"beleg": "origin/main CLAUDE.md Z.111 und Block 2.11. spät; Zählung aus Metricool 2.–9.11."
+},
+{
+"aussage": "[WELCOME10] REEL-REGELN erlaubt «-10 % WELCOME10» im Outro, Vorlage und Codex verbieten Rabatt im Reel. WELCOME10 galt am 27.10. an einer Bestellung (#1029), die Klaviyo-Welcome-Series steht seit 2.11. auf draft; ob der Code heute für jeden gilt und nach Anmeldung verschickt wird, ist offen.",
+"marke": "unbekannt",
+"beleg": "REEL-REGELN.md Z.15; dropship/STAND-ARCHIV.md Z.18; origin/main CLAUDE.md Block 2.11. spät (Flows pausiert)"
+},
+{
+"aussage": "[Pinterest] Pins nennen teils nur «Ab Schweizer Lager» ohne «Lieferdatum beim Artikel» (Mikrobagger 6.11., Panda 2.11.), die Facebook/Instagram-Texte desselben Produkts tragen den vollen Wortlaut. Pinterest erzielte 12.–18.10. die höchste bekannte Reichweite und Interaktion der sechs Kanäle (lückenhafte Reihen).",
+"marke": "GEMESSEN",
+"beleg": "Metricool getScheduledPosts 2.11./6.11. (3.11.2026); FREIGABEPAKET.md Z.38–45"
+}
+]
+},
+{
+"bereich": "Kontozahlen TikTok und Instagram (Facebook am Rand), 4.10. bis 2.11.2026",
+"fakten": [
+{
+"aussage": "Instagram-Follower 165 am 4.10. auf 171 am 2.11. (+6); 20 gewonnen, 13 verloren. Das Konto folgt selbst rund 920 Konten (887 am 4.10., 920 am 2.11.).",
+"marke": "GEMESSEN",
+"beleg": "Metricool Brand 6227837, IGEV01/IGEV02/IGEV43/IGEV44, Tageswerte 4.10.-2.11.2026, abgefragt 3.11.2026"
+},
+{
+"aussage": "Instagram gesamt: 6'065 Views, 3'279 Summe der Tagesreichweiten (keine eindeutigen Personen), 126 Inhalte (81 Feed-Posts + 45 Reels), 66 Interaktionen (Feed 60, Reels 6) = 1.1 % der Views. Metricool-Engagement je 100 Erreichte: Feed 8.15 (Ø Reichweite 9.1 je Post), Reels 0.22 (Ø Reichweite 61.6 je Reel).",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGEV05/06/37/04/22/38/09/25/19/30/21/31, Summen 4.10.-2.11.2026, eigene Summierung in /tmp/sm-kontozahlen/calc.py"
+},
+{
+"aussage": "Anteil der Instagram-Views nach Format: Reel 57.4 % (3'482), Einzelbild-Post 21.4 % (1'298), Story 11.8 % (717 Views an 21 Tagen), Karussell 9.4 % (568). 51.9 % der Views kommen von Nicht-Followern, 47.1 % von Followern.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGAC02/IGAC03/IGAC05, Summe der Tageszeilen = 6'065 (gleich IGEV05), 4.10.-2.11.2026"
+},
+{
+"aussage": "Reel-Pause wirkt auf allen drei Netzwerken: Letzter Instagram-Reel 25.10. 19:16, letztes TikTok-Video 25.10. 19:05, letzter Facebook-Reel 25.10. Instagram-Views pro Tag 252 (4.-25.10.) gegen 66 (26.10.-2.11.), Tagesreichweite 142 gegen 18; Facebook Page-Media-Views 234 gegen 7 pro Tag; TikTok-Konto-Views an Tagen ohne Video 19 bis 40, an Tagen mit Video typisch 800 bis 1'300.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGEV05/06, FBEV49, TKEV12 und Beitragslisten IGRE02/TKPO02, 4.10.-2.11.2026; Teilsummen in calc.py und calc5.py"
+},
+{
+"aussage": "Instagram-Feed-Posts n=81 (58 Einzelbild, 23 Karussell): Median-Reichweite 8 Konten (Bild 10, Karussell 7), Median-Views 20; 33 von 81 mit mindestens einer Interaktion. 17 Feed-Posts seit 26.10. erzielten zusammen 3 Interaktionen.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGPO02/07/14/28/12, 81 Zeilen 4.10.-2.11.2026, Auswertung calc2.py"
+},
+{
+"aussage": "Beste Feed-Posts nach Interaktionen: Smart Hundespielzeug (Karussell, 4.10. 21:23, Reichweite 8, 6 Interaktionen), Plüsch Schildkröte (Bild, 14.10. 00:32, CH-Lager, Reichweite 9, 5), Samt-Kürbis Kissen (Karussell, 10.10. 00:19, 4). Höchste Reichweite: Leuchtender Schaukelgeist (Bild, 26.10. 18:11) 30, Kostüm Screaming Souls (Bild, 29.10. 16:21) 16. Schwächste: Fransen-Schal (Bild, 8.10. 00:15) Reichweite 3/Views 5, Reise-Schallzahnbürste (Bild, 7.10. 05:13) 5/5, Kaschmir-Pullover (Bild, 12.10. 17:34) Reichweite 8/Views 7.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGPO02/06/07/14/28/12, Rangliste calc2.py; Unterschiede von 1 bis 5 Interaktionen sind bei dieser Grösse Rauschen"
+},
+{
+"aussage": "Instagram-Reels n=45: Median-Reichweite 39, Median-Views 48 (Summe 3'246); 18 Reels mit mindestens 100 Views, 24 unter 50. Interaktionen insgesamt 6. Median der Ø Wiedergabezeit 3.2 s bei meist 11 s Länge, Median der Reel-View-Rate (über 3 s) 16.7 %.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGRE02/11/23/09/24/28/26, 45 Zeilen 4.10.-25.10.2026, calc2.py"
+},
+{
+"aussage": "Beste Reels: Kabelloser Glättkamm (9.10. 08:06, Reichweite 170/Views 186), Haustier-Reisematte (15.10. 08:08, 142/171), 3-in-1 Faltbares Wireless Charger Nachtlicht (25.10. 11:17, 135/170, View-Rate 49.3 %), Magnetisches 15W-Ladegerät (12.10. 08:06, 143/156). Schwächste: 2-teiliges Leinen-Set Provence (6.10. 06:06, 4/2), Hundegeschirr-Detail-Clip (21.10. 08:08, 6/4), Maxi-Kleid Aria (23.10. 18:16, 9/14), Lippenmischung (7.10. 19:19, 18/14).",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGRE02/03/11/23, Rangliste calc2.py"
+},
+{
+"aussage": "Reel-Muster nach Produktlinie: Alle 9 Mode-Reels (Kleid, Hose, Mantel, Sneaker, Leggings, Jumpsuit, Hoodie, Korsage, Leinen-Set) blieben bei höchstens 50 Views (Median 29). Die 20 Reels mit mindestens 85 Views sind Ladegeräte/Tech, Haustier, Licht/Nachtlicht und Haushalts- bzw. Beauty-Gadgets. Die 4 Detail-Clips (Hasen-Wecker, Sternenprojektor, Business-Tasche, Hundegeschirr) liegen bei 4 bis 43 Views.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGRE-Liste 4.10.-25.10.2026, Zuordnung zu Produktlinien von mir nach Titel (calc2.py); Stichproben n=9 und n=4"
+},
+{
+"aussage": "Die Ursache des Reel-Musters ist die Produktlinie, nicht die Uhrzeit: Mode lag meist um 18:16/18:17, aber Tech und Haustier um 18 bis 19 Uhr (Wireless Ladestation 19:16, Katzenkratzbrett 19:21) liefen ebenfalls stark. Mit n=9 nicht belegbar.",
+"marke": "Hypothese",
+"beleg": "Vergleich der Reel-Zeiten und Views in der IGRE-Liste, Zeit und Linie sind teilweise vermischt"
+},
+{
+"aussage": "TikTok-Follower 553 am 4.10. auf 564 am 2.11. (+11); 28 gewonnen, 18 verloren (eigene Summe der Tageswerte, plus/minus 1).",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKEV07/TKEV16/TKEV17, Tageswerte 4.10.-2.11.2026"
+},
+{
+"aussage": "TikTok n=66 Beiträge (65 Videos, 1 Foto), alle zwischen 4.10. und 25.10.; seitdem keiner. Views gesamt 18'113, Median 270 (Spanne 243 bis 509; 258 bis 289 für 80 % der Beiträge), Reichweite Median 252. Interaktionen 78 (70 Likes, 3 Kommentare, 5 Shares) = 0.43 % der Views; 25 von 66 Beiträgen ohne jede Interaktion.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKPO02/07/08/09/10/11, 66 Zeilen, Auswertung calc4.py"
+},
+{
+"aussage": "TikTok-Ausreisser: LED Wasserwellen-Projektionsleuchte (14.10. 08:06) mit 509 Views/481 Reichweite, rund das Doppelte des Medians. Meiste Likes: Knochenschall-Kopfhörer (24.10. 11:06, 6 Likes, 1 Kommentar), Sternenprojektor-Detail (20.10. 08:05, 5 Likes). Schwächster Beitrag: Canvas-Schultertasche (einziges Foto, 17.10.) 243 Views, 1 Like. Alle übrigen liegen im Band 251 bis 305; die Unterschiede sind kein Befund.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKPO02/05/07/08/09/11, Liste 4.-25.10.2026"
+},
+{
+"aussage": "TikTok-Zugang: 97.8 % der Impressionen aus For You, Folgen 0.02 %, Suche 0.04 %, Profilseite 0.36 %, Sound 0 %. Verteilung also fast nur über den Algorithmus-Test, praktisch keine Suchfindung.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKDS01/TKDS02, 4.10.-3.11.2026"
+},
+{
+"aussage": "TikTok-Wiedergabe: Ø Wiedergabezeit bei den meisten Videos 1 bis 5 s bei rund 11 s Länge; Rate der vollständig angesehenen Videos nahe 0 (Werte um 0.0001 bis 0.0024, Einheit unklar). Zwei Videos zeigen 10 und 11 s Ø Wiedergabezeit und widersprechen damit der Komplett-Rate.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKPO13/TKPO15/TKPO06, 66 Zeilen; das Feld TKPO15 ist damit nicht belastbar"
+},
+{
+"aussage": "Zielgruppe passt kaum zum Liefergebiet: TikTok-Follower nach Land CH 24.0 %, BR 23.5 %, NO 4.3 %, PK 3.6 %, NG 2.7 %, GB 2.5 %, übrige 35 %. Instagram-Follower: TR 15.0 %, CH 13.8 %, DE 7.8 %, OM 6.6 %, CZ 6.0 %, PL 4.8 %, US 4.2 %, AT 1.2 %. Der Shop liefert nur in die Schweiz und nach Liechtenstein; Liechtenstein ist in keiner Liste aufgeführt.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKDC01/TKDC02 und IGDP01/IGDP02 (Anteile der Follower), abgefragt 3.11.2026"
+},
+{
+"aussage": "Facebook am Rand: Follower 7 auf 6 (1 gewonnen, 1 verloren), 131 Inhalte, Page-Media-Views 5'196, davon 5'140 bis 25.10. und 56 danach. Interaktionen und Reichweite je Beitrag nicht ausgewertet (Metricool liefert für Interaktionen null).",
+"marke": "GEMESSEN",
+"beleg": "Metricool FBEV17/FBEV47/FBEV48/FBEV33/FBEV49/FBEV34, 4.10.-2.11.2026, calc5.py"
+},
+{
+"aussage": "Geplant 3.-10.11. (Metricool, alle PENDING): Instagram und Facebook je 8 Foto-Posts (1 Einzelbild, 7 Karussells mit 2 Bildern) am 3.11. 12:15, 4.11. 18:00, 5.11. 12:15, 6.11. 18:00, 7.11. 11:00, 8.11. 11:00, 9.11. 12:15, 10.11. 18:00, dazu 3 Reels auf Instagram, Facebook und TikTok (4.11. 10:00 Wasserwellen-Lampe, 6.11. 10:00 Tennisarmband, 8.11. 16:00 Kristallspitzen-Set, KI-Kennzeichnung gesetzt). TikTok: 7 Foto-Posts (3.11. bis 9.11., 12:00 bzw. 18:00). Pinterest 6 Pins (3.-8.11. 20:00), Threads 1 Beitrag (4.11. 18:30). Danach bis 15.11. 5 weitere Instagram/Facebook-Foto-Posts.",
+"marke": "GEMESSEN",
+"beleg": "Metricool getScheduledPosts Brand 6227837, 3.-10.11. und 11.-31.12.2026 (Zeitzone Europe/Zurich), abgefragt 3.11.2026"
+},
+{
+"aussage": "Mischung der Woche: Reels nur 3 von 11 Instagram-Inhalten (27 %), obwohl Reels in den letzten 30 Tagen 57 % der Views brachten. Alle 8 Foto-Texte beginnen mit Wichteln; 4 von 8 sind Plüsch/Spielzeug (Waschbär, Mikrobagger, Hochlandrind, Bruder-Traktor, alle CH-Lager), 4 CJ-Ware (Damenuhr, Laptop-Rucksack, Hoodie-Decke, Lederarmband). Keine Mode, kein Haustier, keine Tech/Küchen-Gadgets im Foto-Plan; die drei Reels sind Licht/Deko, Schmuck, Deko. TikTok wechselt von 65 Videos und 1 Foto auf 7 Fotos und 3 Videos.",
+"marke": "GEMESSEN",
+"beleg": "Zählung der 25 geplanten Einträge 3.-10.11. aus getScheduledPosts; Format-Anteil aus IGAC02; Wertung 'nicht ausgewogen' ist meine Einschätzung"
+},
+{
+"aussage": "Regelprüfung der geplanten Einträge: kein 'Fasnacht' in den geplanten Texten (3.-15.11.). Alle 13 geladenen TikTok-Foto-Dateien haben höchstens 1080 px je Seite (grösste Seite 1080, kleinste 800). Der Satz 'Für Weihnachten bis Mitte November bestellen' steht in 7 geplanten Instagram/Facebook-Posts (3.11., 4.11., 7.11., 9.11., 11.11., 12.11., 15.11.); CLAUDE.md nennt Bestellschluss-Daten nur mit Besitzer-Ja, ein Ja habe ich nicht gefunden.",
+"marke": "GEMESSEN",
+"beleg": "Textsuche in getScheduledPosts; Bilder von static.metricool.com am 3.11.2026 nach /tmp/sm-kontozahlen/img geladen und mit file ausgemessen; CLAUDE.md Stand 28.10. (Diagnose, Bestellschluss)"
+},
+{
+"aussage": "Zwei bereits veröffentlichte Instagram-Posts vom 29.10. (07:41 Gruselpuppe, 16:21 Kostüm Screaming Souls) nennen 'die Fasnacht ab 11.11.' im Text. Ob das vor oder nach der Besitzer-Vorgabe 'kein Fasnachts-Social' (29.10.) war, ist nicht festzustellen.",
+"marke": "unbekannt",
+"beleg": "Metricool IGPO02/IGPO03 (Veröffentlichungszeit, Text); Zeitpunkt der Vorgabe nicht belegt"
+},
+{
+"aussage": "Beste Zeiten laut Metricool (alle drei Netzwerke gleich): Spitze um 10:00, danach 11:00-12:00 und 18:00. Wochenende klar schwächer (Instagram 10:00: 3'409 und 2'582 gegen 4'942 bis 6'734 an den anderen Tagen). Die geplanten Zeiten 10:00, 12:15 und 18:00 liegen in diesen Fenstern; nur der Sonntags-Reel um 16:00 (8.11.) liegt in einem schwächeren Fenster (Instagram Sonntag 16:00 = 1'696 gegen 2'582 um 10:00).",
+"marke": "GEMESSEN",
+"beleg": "Metricool getBestTimeToPostByNetwork instagram/tiktok/facebook, 3.-9.11.2026, Europe/Zurich; Tagesnummer 6/7 als Wochenende ist meine Annahme"
+},
+{
+"aussage": "Die Best-Time-Werte (Tausenderbereich bei 171 Followern) stammen vermutlich aus einem Benchmark und nicht aus den eigenen Zahlen; die Tageszählung 1 bis 7 ist nicht dokumentiert.",
+"marke": "Hypothese",
+"beleg": "Grössenordnung der Metricool-Werte gegen die eigene Kontogrösse; keine Dokumentation abgefragt"
+},
+{
+"aussage": "Klicks aus Social auf den Shop: Metricool liefert für Profil-Link-Taps nur null; ob Instagram oder TikTok Besucher oder Käufe bringen, ist hier nicht messbar.",
+"marke": "unbekannt",
+"beleg": "Metricool IGAC12/IGAC04 liefert für alle Tage null (Abfrage 3.11.2026); Shopify nicht abgefragt (Auftrag nur Metricool)"
+}
+]
+},
+{
+"bereich": "Profile und Landeweg (Instagram/TikTok bis Kauf auf dem Handy)",
+"fakten": [
+{
+"aussage": "Instagram-Profil luxestyle.ch ist nicht lesbar: Weiterleitung auf die Login-Seite. Name, Bio-Text, Link, Profilbild, Highlights, Raster und angeheftete Beiträge sind unbekannt. Ein Lese-Versuch mit anderer Kennung wurde vom Berechtigungssystem blockiert und nicht weiterverfolgt.",
+"marke": "GEMESSEN",
+"beleg": "Playwright 3.11.2026: instagram.com/luxestyle.ch/ landet auf /accounts/login/?next=...; Firecrawl meldet «site not supported»."
+},
+{
+"aussage": "TikTok-Profil: Name «Luxestyle.ch», Handle @luxestyle.ch, Bio «Mode · Beauty · Wohnen · Technik (Schweizer Flagge) / luxestyle.ch · -10% mit WELCOME10 https://luxestyle.ch». 564 Follower, 989 gefolgt, 385 Likes insgesamt, 156 Videos.",
+"marke": "GEMESSEN",
+"beleg": "Playwright, tiktok.com/@luxestyle.ch, 3.11.2026 (Seitentext und __UNIVERSAL_DATA_FOR_REHYDRATION__: signature, stats)."
+},
+{
+"aussage": "TikTok-Videoraster und angeheftete Beiträge sind ohne Login nicht ladbar («Es ist etwas schiefgelaufen», itemList leer). Raster-Eindruck und Pins daher nicht beurteilt.",
+"marke": "unbekannt",
+"beleg": "Playwright Desktop- und Handy-Ansicht 3.11.2026, Screenshots /tmp/sm-profile/tt.png und tt_desktop.png."
+},
+{
+"aussage": "Der TikTok-Bio-Link ist kein Link: Im Profildatensatz gibt es kein bioLink-Feld, die Adresse steht nur im Bio-Text. Das Konto ist ein persönliches (commerceUser false, ttSeller false), 564 Follower.",
+"marke": "GEMESSEN",
+"beleg": "tt_data.json (userInfo.user) aus tiktok.com/@luxestyle.ch, 3.11.2026."
+},
+{
+"aussage": "TikTok erlaubt einen klickbaren Website-Link nur ab 1000 Followern oder mit verifiziertem Business-Konto. Damit ist der am 28.10. beauftragte Bio-Link mit UTM auf TikTok mit dem heutigen Konto nicht setzbar.",
+"marke": "QUELLE",
+"beleg": "https://support.tiktok.com/en/getting-started/setting-up-your-profile/linking-another-social-media-account und https://www.shopify.com/blog/how-to-add-link-to-tiktok-bio (Suche 3.11.2026); Auftrag dropship/BROWSER-BEFEHL-BIO-LINKS-2810.md rechnet selbst mit dieser Sperre."
+},
+{
+"aussage": "Die Bio-Adresse auf TikTok ist https://luxestyle.ch ohne UTM-Angaben und führt (falls getippt) auf die Startseite, nicht auf eine Social-Seite.",
+"marke": "GEMESSEN",
+"beleg": "TikTok-Bio-Text 3.11.2026; Start mit ?utm_source=tiktok&utm_medium=bio wird vom Shop nicht anders behandelt (identische Messwerte, Playwright 3.11.)."
+},
+{
+"aussage": "TikTok-Profilbild: beiges Rundlogo «LuxeStyle · PREMIUM ACCESSOIRES · SCHWEIZ · CH · EST. 2026». Bei Avatar-Grösse ist nur die Wortmarke lesbar; «Premium Accessoires» passt nicht zur Bio (Mode, Beauty, Wohnen, Technik) und zum breiten Sortiment. Der Name schreibt «Luxestyle.ch», die Marke «LuxeStyle».",
+"marke": "GEMESSEN",
+"beleg": "Screenshot /tmp/sm-profile/tt_desktop.png, 3.11.2026."
+},
+{
+"aussage": "Instagram nach Metricool (4.10.–2.11.): Follower 165 auf 171, gefolgt 887 auf 920, 126 Beiträge (81 Feed, 45 Reels), 6065 Aufrufe, 66 Interaktionen. Die letzten 7 Tage: 443 Aufrufe (rund 63 pro Tag) gegen 1800 in den ersten 7 Tagen (rund 257 pro Tag); Reels in den letzten 7 Tagen leer.",
+"marke": "GEMESSEN",
+"beleg": "Metricool getAnalyticsDataByMetrics, Brand 6227837, IGEV01/02/04/05/22/37/38, Abruf 3.11.2026, eigene Summen."
+},
+{
+"aussage": "TikTok nach Metricool (4.10.–3.11.): 66 Beiträge (65 Video, 1 Foto). Aufrufe je Beitrag Median 270 (Spanne 243–509), Likes gesamt 70, Shares 5, 27 Beiträge ohne Like. Letzter Beitrag 25.10. 19:06, seither keiner.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKPO02/06/07/08/10/22, Brand 6227837, Abruf 3.11.2026, eigene Auswertung."
+},
+{
+"aussage": "Beide Profile folgen weit mehr Konten als ihnen folgen: Instagram 920 gefolgt gegen 171 Follower (5,4 zu 1), TikTok 989 gegen 564 (1,75 zu 1). Herkunft dieser Folge-Liste unbekannt; Wirkung auf das Vertrauen von Besuchern ist eine Annahme.",
+"marke": "GEMESSEN",
+"beleg": "Metricool IGEV01/02 (2.11.) und TikTok-Profil (3.11.2026). Wirkung: Hypothese."
+},
+{
+"aussage": "61 von 66 TikTok-Beiträgen nennen die Produktadresse als Klartext («luxestyle.ch/products/...») ohne UTM; 4 tragen utm_source=metricool; 1 Foto verweist auf «Link im Profil». Inhalte quer durch alle Sparten (Hundezubehör, Küchenhelfer, Kopfhörer, Kerzenständer), während die meistbesuchten Seiten Mode sind.",
+"marke": "GEMESSEN",
+"beleg": "Metricool TKPO05 (Beschreibung), 4.10.–3.11.2026, eigene Zählung."
+},
+{
+"aussage": "Eine Klartext-Adresse in der TikTok-Beschreibung ist nicht anklickbar.",
+"marke": "Hypothese",
+"beleg": "Allgemeines Verhalten der App, hier nicht an einem Beitrag geprüft (Videoliste ohne Login nicht ladbar)."
+},
+{
+"aussage": "Der im Skript profil-politur als Instagram-Link vorgesehene Kurzlink https://f.mtr.cool/XRISHONHRA leitet per 302 auf app.metricool.com/socialconnector?token=... (Konten-Verbinden-Seite von Metricool, keine Landeseite). Ob er heute in der Instagram-Bio steht, ist unbekannt. Metricool-Smartlink-Daten 4.10.–3.11. leer.",
+"marke": "GEMESSEN",
+"beleg": "curl -I auf den Kurzlink 3.11.2026; automation/social-profile-polish.mjs Zeile 31 (git show origin/main); Metricool SLTL/SLBT 4.10.–3.11.: keine Zeilen."
+},
+{
+"aussage": "Der im Repo vorgesehene Instagram-Bio-Text nennt «Weltweiter Versand · 30 Tage Rückgabe». Der Shop liefert nur in die Schweiz und nach Liechtenstein. Ob dieser Text live steht, ist unbekannt.",
+"marke": "QUELLE",
+"beleg": "automation/social-profile-polish.mjs Zeile 30 und automation/local/profil-politur-browser.mjs Zeile 24 (origin/main)."
+},
+{
+"aussage": "Bestätigt: Der Kaufknopf liegt tief. 21 Damenmode-Produktseiten (iPhone 390x844): Oberkante des Knopfs Median 1462 px, kleinster Wert 1205 px. Die vier Top-Seiten: Sirène 1645, Aurora 1500, Provence-Set 1630, Boho-Set 1500 px, also 1,8 bis 2,0 Bildschirme.",
+"marke": "GEMESSEN",
+"beleg": "Playwright Chromium-Emulation 3.11.2026, Skripte b_page.js und h_overflow.js unter /tmp/sm-profile/."
+},
+{
+"aussage": "Teilweise widerlegt: Die Galerie füllt den ersten Bildschirm nur bei hochformatigem Erstbild (Höhe 693 px, Titel bei 911 px, z. B. Sirène). Bei quadratischem Bild ist sie 390 px hoch, Titel bei 609 px (Median der 21 Seiten, Galeriehöhen 390 bis 693 px). Die Höhe folgt dem ersten Bild.",
+"marke": "GEMESSEN",
+"beleg": "Playwright 3.11.2026, 21 Seiten aus /collections/damen-mode plus die vier Top-Seiten."
+},
+{
+"aussage": "Der Kaufen-Balken (sticky-add-to-cart__bar) erscheint erst, wenn der Haupt-Knopf aus dem Bild gescrollt ist: bei 1600 px Scrolltiefe nicht da, bei 1800 px da (Schritt 200 px), an allen vier Top-Seiten. Er hilft also nie, bevor der Knopf gefunden wurde. Die Angabe «nach ca. 2000 px» ist ungefähr richtig.",
+"marke": "GEMESSEN",
+"beleg": "Scroll-Protokoll, Playwright 3.11.2026 (plain_p_*.json)."
+},
+{
+"aussage": "Cookie-Balken (div#lx-cookie-banner, im Theme) ist 45 px hoch, liegt fix unten und erscheint nach einigen Sekunden oder beim Scrollen; mit Kaufen-Balken zusammen sind 125 px (15 %) des Bildschirms belegt. Die Hilfe-Blase (#luxas, 115x58 px) wird laut Quelltext bei sichtbarem Cookie-Balken ausgeblendet und über den Kaufen-Balken geschoben; sie deckt nur im ersten Bildschirm die Galerie-Punkte. Beide überlagern den Kaufknopf nicht. «Decken Platz» stimmt nur schwach.",
+"marke": "GEMESSEN",
+"beleg": "Positionen im Scroll-Protokoll 3.11.2026; Skript halten() im Seitenquelltext der Aurora-Seite (aurora.html)."
+},
+{
+"aussage": "Der Fehler «Cannot read properties of undefined (reading 'marketingAllowed')» liess sich NICHT nachstellen: 0 Seitenfehler auf Start, Kategorie und vier Produktseiten, auch nach 8 s Wartezeit, nach «Alle akzeptieren», mit gesperrter consent-tracking-api, mit gesperrtem Clarity und Secomapp, mit In-App-Kennungen. WebKit und Firefox sind in der Sandbox nicht installiert.",
+"marke": "GEMESSEN",
+"beleg": "Playwright 3.11.2026, Skripte c_ma.js, e_repro.js, b_page.js (pageerror-Listener vor dem Laden)."
+},
+{
+"aussage": "Wahrscheinliche Quelle: Das Inline-Skript der App-Einbettung «Microsoft Clarity» (im Quelltext als app block shopify://apps/microsoft-clarity/blocks/clarity_js markiert, nicht im Theme) ruft im Rückruf von Shopify.loadFeatures c.Shopify.customerPrivacy.marketingAllowed() auf; der Wortlaut des Fehlers passt, wenn customerPrivacy dort fehlt. Zweite Kandidatin: App-Einbettung affliate-by-secomapp (core.min.js, window.Shopify.customerPrivacy.marketingAllowed()). Der Auslöser selbst ist nicht belegt.",
+"marke": "Hypothese",
+"beleg": "Code gelesen im Seitenquelltext der Aurora-Seite (Offset 149261) und in cdn.shopify.com/extensions/.../affliate-by-secomapp-139/assets/core.min.js, 3.11.2026."
+},
+{
+"aussage": "Messbar kaputt geht nichts: /cart.js antwortet 200, der Kaufknopf ist vorhanden, der Cookie-Balken verschwindet nach dem Klick, TikTok-, Meta- und Pinterest-Skripte laden. Betroffen wäre höchstens die Einwilligungsmeldung an Clarity (Analyse). Ein Klick auf «In den Warenkorb» wurde nicht ausgeführt (Schreibaufruf).",
+"marke": "GEMESSEN",
+"beleg": "Playwright 3.11.2026 (e_repro.js, c_ma.js)."
+},
+{
+"aussage": "Der TikTok-Pixel lädt auf Start-, Kategorie- und Produktseiten (analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0), ebenso Meta (Pixel 1676528663551701), Pinterest, Google und Clarity. Das widerspricht «kein Pixel» vom 28.10. Ob Ereignisse im TikTok-Konto ankommen, ist unbekannt (TikTok-Ads-Zugang nicht autorisiert).",
+"marke": "GEMESSEN",
+"beleg": "Netzwerkliste Playwright 3.11.2026 (ma_tracker.txt, plain_*.json)."
+},
+{
+"aussage": "Einwilligung: Die Sandbox wird von Shopify als Region US erkannt (getRegion US, marketingAllowed true, Cookies _ttp/_fbp/_pin_unauth schon vor dem Klick). Verhalten für Besucher aus der Schweiz ist daher unbekannt.",
+"marke": "GEMESSEN",
+"beleg": "Shopify.customerPrivacy im Browser, Playwright 3.11.2026 (g_struct.js)."
+},
+{
+"aussage": "In-App-Kennungen («Instagram 340.0...» und «musical_ly_36.5.0 ...») liefern identische Messwerte wie Safari-Kennung: gleiche Positionen und Höhen, keine Fehler, keine fehlenden Elemente (Start, Kategorie, Sirène, Boho). Grenze: Chromium-Emulation, keine echte WKWebView oder Android-WebView.",
+"marke": "GEMESSEN",
+"beleg": "Playwright 3.11.2026, ig_app.out und tt_app.out unter /tmp/sm-profile/."
+},
+{
+"aussage": "Boho-Resort-Set ist breiter als der Bildschirm: scrollWidth 570 gegen 390 px, Ursache zwei Grössentabellen im Beschreibungstext (429 und 468 px breit); dadurch wird auch der Kaufen-Balken 570 px breit (Knopf bei x 507–559). Sonst Überlauf bei 0 von 24 gemessenen Seiten. Boho ist eine der vier Top-Seiten. Wirkung auf einem echten iPhone (Verkleinern oder seitliches Wischen) nicht gemessen.",
+"marke": "GEMESSEN",
+"beleg": "Playwright 3.11.2026 (d_boho.js, d_boho2.js, h_overflow.js, ig_app.out); iPhone-Wirkung: Hypothese."
+},
+{
+"aussage": "Link-Seite /pages/links (normale Shopify-Seite ohne Vorlage, Inhalt im Seitentext, zuletzt geändert 4.10.2026): «Premium-Looks & Wellness · Sommer 2026 · Schweizweiter Versand · 30 Tage Rückgabe». «Jetzt shoppen» führt auf /collections/all, alphabetisch (Nagel-Set, 052D Raketenzerstörer, 1-Zoll-Zapfventil für Diesel). «Top-Bestseller» zeigt 6 Kleider, «Neu eingetroffen» ein Gemisch (Boots, Seife, Kupferbecher, Kaffeebereiter, Kopfhörer). Im ersten Bildschirm keine Produktbilder. Wer auf die Seite verlinkt: unbekannt.",
+"marke": "GEMESSEN",
+"beleg": "Playwright und products.json der Sammlungen 3.11.2026; Shopify pages(handle:links): templateSuffix null, updatedAt 2026-10-04."
+},
+{
+"aussage": "Es gibt keine Seite oder Sammlung für Social-Besucher (/collections/tiktok, instagram, social, trends: 404; /pages/tiktok, instagram, social: 404). Vorhandene Teilstücke: favoriten «Bestseller & Lieblinge» (genau 5 Mode-Produkte), bestseller-shop (genau 6 Kleider), bestseller «Bestbewertet» (gemischt: Haarbürste, Weinöffner, Hundeleine, Heizjacke, WLAN-Kamera).",
+"marke": "GEMESSEN",
+"beleg": "HTTP-Status und products.json?limit=8, 3.11.2026."
+},
+{
+"aussage": "Startseite mobil: Hero-Video, erster Produktlink bei 2708 px (3,2 Bildschirme), Erstladung 7,3 MB (davon Video 4,0 MB), LCP 3,1 s in der Sandbox (kein Mobilnetz). Kategorie Kostüme ab Schweizer Lager: erster Produktlink bei 915 px; Text «Für Halloween: ...» und Chip «Halloween» stehen am 3.11. noch da. Produktseite Sirène: 376 Anfragen, 3,6 MB.",
+"marke": "GEMESSEN",
+"beleg": "Playwright g_struct.js 3.11.2026 (Sandbox-Netz, nicht Mobilfunk)."
+},
+{
+"aussage": "WELCOME10 funktioniert: aktiv, 10 %, alle Artikel, alle Kunden, Mindestbestellwert CHF 0.01, einmal je Kunde, gültig bis 31.12.2027, 7 Einlösungen. Die Bio-Angabe stimmt.",
+"marke": "GEMESSEN",
+"beleg": "Shopify Admin codeDiscountNodeByCode(WELCOME10), 3.11.2026."
+}
+]
+},
+{
+"bereich": "Marktwissen TikTok und Instagram 2026 (Schweiz/DACH, kleine Shops): Plattformregeln, Studien, Schweizer Recht",
+"fakten": [
+{
+"aussage": "[OFFIZIELL Instagram] Seit 30.4.2026 gilt die Originalitätsregel auch für Fotos und Karussells: Konten, die überwiegend Unoriginales posten, werden nirgends mehr empfohlen (Follower sehen weiter alles). Original ist Selbstgemachtes oder wesentlich Bearbeitetes mit neuer Information/Kontext. Nicht genügend: nur Rahmen, Wasserzeichen, Untertitel oder Credit. Wieder empfehlbar, wenn die Mehrheit der letzten 30 Tage (rollierend) original ist; Kontrolle unter 'Kontostatus'. Instagram nennt 75 % der US-Empfehlungen aus Originalposts.",
+"marke": "QUELLE",
+"beleg": "https://creators.instagram.com/blog/rewarding-original-creators-on-instagram , 30.4.2026"
+},
+{
+"aussage": "[OFFIZIELL Instagram] Hilfe-Center: 'You can use up to 5 tags on a post'; mehr als 5 Tags in einem Beitrag werden nicht gepostet. Hashtags sind in Caption oder Kommentar erlaubt. Die Ankündigung des Limits (18.12.2025) kenne ich nur aus einer Zweitquelle.",
+"marke": "QUELLE",
+"beleg": "https://help.instagram.com/351460621611097 , Abruf 3.11.2026 (Seite ohne Datum); Datum 18.12.2025 laut Zweitquelle https://www.storycut.com/blog/instagram-hashtag-limit"
+},
+{
+"aussage": "[OFFIZIELL Instagram, aber alt] Suche: Der eingetippte Text ist 'by far' das wichtigste Signal; Abgleich mit Nutzernamen, Bio, Captions, Hashtags und Orten. Empfehlung: passender Handle/Profilname, Keywords und (bei lokalen Konten) Ort in der Bio, Keywords und Hashtags in die Caption, nicht in Kommentare. Die Keyword-Suche war 2021 nur für Englisch ausgebaut; für Deutsch heute: unbekannt.",
+"marke": "QUELLE",
+"beleg": "https://about.instagram.com/blog/announcements/break-down-how-instagram-search-works , Adam Mosseri, 25.8.2021"
+},
+{
+"aussage": "[OFFIZIELL Instagram] KI-Kennzeichnung: Bilder müssen nicht gekennzeichnet werden; manuell kennzeichnen muss man fotorealistisches Video oder realistisch klingendes Audio, das digital erzeugt oder verändert wurde. Beiträge mit Meta-AI-Werkzeugen oder Branchen-Signalen (Metadaten) können automatisch ein Label bekommen. Ganzes Profil als KI markierbar.",
+"marke": "QUELLE",
+"beleg": "https://help.instagram.com/761121959519495 , Abruf 3.11.2026 (Seite ohne Datum)"
+},
+{
+"aussage": "[OFFIZIELL Meta] 'AI info' wird bei erkannten Branchen-Signalen oder bei Selbstangabe gesetzt; bei nur bearbeitetem Inhalt liegt das Label im Beitragsmenü, bei KI-erzeugtem Inhalt ist es sichtbar.",
+"marke": "QUELLE",
+"beleg": "https://about.fb.com/news/2024/04/metas-approach-to-labeling-ai-generated-content-and-manipulated-media/ , veröffentlicht 5.4.2024, aktualisiert 23.10.2025"
+},
+{
+"aussage": "[OFFIZIELL Instagram] Business-Konten und bestimmte Beitragsarten haben keinen Zugang zur lizenzierten Musikbibliothek; Alternative ist Metas Sound Collection (laut Hilfetext über 14 000 Titel). Fremde, selbst lizenzierte Musik im Video ist damit der Normalfall für Shops.",
+"marke": "QUELLE",
+"beleg": "https://help.instagram.com/402084904469945/ , Abruf 3.11.2026 (nur Suchauszug gelesen, Seite ohne Datum)"
+},
+{
+"aussage": "[OFFIZIELL TikTok] KI-Label: Pflicht für vollständig KI-generierte oder wesentlich KI-bearbeitete realistische Inhalte; als Beispiel genannt wird u. a. KI-generierte Sprache ('portrayed saying something they didn't say'). Schalter 'AI-generated content' gibt es bei Foto und Video. Das Label ändert die Verteilung nicht, solange die Richtlinien eingehalten sind. Ein falsches Label auf unverändertem Inhalt ist ein Verstoss. Auto-Labels (z. B. C2PA-Metadaten) lassen sich nicht entfernen.",
+"marke": "QUELLE",
+"beleg": "https://support.tiktok.com/en/using-tiktok/creating-videos/ai-generated-content , Abruf 3.11.2026 (Seite ohne Datum); ähnlich https://seller-us.tiktok.com/university/essay?knowledge_id=491489038501663&lang=en (TikTok Shop US, ohne Datum, Geltung für CH-Konto unbekannt)"
+},
+{
+"aussage": "[OFFIZIELL TikTok] Wer das eigene Geschäft oder Produkte bewirbt, muss die Offenlegung ('Disclose commercial content') einschalten; Beitrag trägt dann 'Promotional content' (eigene Marke) bzw. 'Paid partnership'. Nach der Veröffentlichung nicht mehr änderbar.",
+"marke": "QUELLE",
+"beleg": "https://support.tiktok.com/en/business-and-creator/creator-and-business-accounts/promoting-a-brand-product-or-service , Abruf 3.11.2026 (nur Suchauszug, Seite ohne Datum)"
+},
+{
+"aussage": "[OFFIZIELL TikTok] Musik bei Werbeinhalten: empfohlen nur Commercial Music Library (CML). Musik von ausserhalb ist erlaubt, wenn bei eingeschalteter Offenlegung die 'Music Usage Confirmation' bestätigt wird (keine geschützte Musik oder alle nötigen Lizenzen vorhanden). TikToks eigene Lizenzen ausserhalb der CML decken kommerzielle Nutzung nicht ab.",
+"marke": "QUELLE",
+"beleg": "https://support.tiktok.com/en/business-and-creator/creator-and-business-accounts/commercial-use-of-music-on-tiktok , Abruf 3.11.2026 (Seite ohne Datum)"
+},
+{
+"aussage": "[OFFIZIELL TikTok API] Content-Posting-API: Feld is_aigc (bool) setzt das Label 'Creator labeled as AI-generated'. Zweitquelle: Foto-Post bis 35 Bilder, höchstens 1080p je Bild (deckt die Hausregel 'höchstens 1080 px').",
+"marke": "QUELLE",
+"beleg": "https://developers.tiktok.com/doc/content-posting-api-reference-direct-post (nur Suchauszug, Seite nicht abrufbar); Foto-Grenzen aus https://postfa.st/sizes/tiktok/carousel , Stand September 2026 (Zweitquelle)"
+},
+{
+"aussage": "[LIZENZGEBER Mixkit] 'Stock Music Free License': kommerzielle und private Nutzung, auf jeder Web- oder Social-Plattform inkl. Werbung, ohne Namensnennung. Nicht erlaubt: CDs/DVDs, TV/Radio, Videospiele, Remix oder Einbau in einen reinen Musik-Track, als eigenes Werk ausgeben, Registrierung bei einem Rechteverwaltungsdienst (Content ID). Weitere Grenzen stehen in den User Terms (nicht gelesen). Bei YouTube-Claims bittet Mixkit um Meldung an team@mixkit.co.",
+"marke": "QUELLE",
+"beleg": "https://mixkit.co/license/modal/musicFree/ , Abruf 3.11.2026 (Seite ohne Datum)"
+},
+{
+"aussage": "[BEHÖRDE SECO] Werbung muss keinen Preis nennen; nennt sie einen, ist der tatsächlich zu zahlende Preis in CHF (inkl. MWST) anzugeben. Online-Angebote: Detailpreis in CHF, PBV gilt bei Angebot an Schweizer Kundschaft. Versandkosten müssen nicht im Preis stehen, aber separat gut sichtbar und lesbar genannt werden. Ein Preis in der Werbung ist nach OR 7/2 nicht verbindlich, kann aber als täuschend nach UWG/PBV sanktioniert werden.",
+"marke": "QUELLE",
+"beleg": "https://www.seco.admin.ch/de/faq-pbv , Abruf 3.11.2026 (enthaltene Dokumente 1.9.2025 bis 30.7.2026)"
+},
+{
+"aussage": "[BEHÖRDE SECO] Rabatte und Vergleiche: einheitlicher Prozentsatz ('20 % auf alles') ist ohne Einzelpreise erlaubt; 'bis zu X %' nur mit Preis und Spezifikation aller Angebote oder als Rahmen mit je einem Beispiel für die untere und obere Grenze. Selbstvergleich nur, wenn der höhere Preis unmittelbar vorher tatsächlich verlangt wurde; Halbierungsregel (Vergleich höchstens halb so lange wie der Vorpreis galt), höchstens 2 Monate. Konkurrenzvergleich nur, wenn andere Anbieter die überwiegende Menge gleicher Waren zu diesem Preis anbieten, sonst 'Mondpreis'. 'ab'-Preise brauchen eine genaue Angebotsbeschreibung.",
+"marke": "QUELLE",
+"beleg": "https://www.seco.admin.ch/de/faq-pbv , Abruf 3.11.2026"
+},
+{
+"aussage": "[GESETZ] UWG Art. 3 Abs. 1: lit. b verbietet unrichtige oder irreführende Angaben über Waren, Preise, vorrätige Menge und Geschäftsverhältnisse; lit. e regelt Vergleiche; lit. s verlangt im elektronischen Geschäftsverkehr klare Angaben zu Identität/Kontaktadresse, Bestellschritten, Fehlerkorrektur und sofortige Bestellbestätigung; lit. x (seit 1.1.2025) verlangt belegbare Klimaaussagen (relevant für Wörter wie 'nachhaltig', 'klimaneutral'). Eine eigene Schweizer Vorschrift speziell für Lieferfristen habe ich nicht gefunden.",
+"marke": "QUELLE",
+"beleg": "https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de , Abruf 3.11.2026"
+},
+{
+"aussage": "[KANZLEI-BEITRAG, veraltet] Schweizer Werbetrennung (SLK-Grundsatz B.15): Werbung muss als solche erkennbar sein; bezahlte Kooperationen sind zu kennzeichnen (Empfehlung #Werbung/#Anzeige/#ad am Anfang, nicht in der Hashtag-Wolke). SLK-Entscheide 2019: bei eindeutig kommerziellem Konto keine zusätzliche Kennzeichnung nötig (Rekurs der Konsumentenschutz-Stiftung damals offen, Ausgang hier nicht belegt). Die SLK verhängt keine Bussen. Das 2025er Grundsätze-PDF habe ich nur im Register gelesen.",
+"marke": "QUELLE",
+"beleg": "https://www.vischer.com/de/insights/werbetrennung-im-influencer-marketing-in-der-schweiz-38349 (2019/2020); https://www.faire-werbung.ch/wp-content/uploads/2025/01/SLK-Grundsaetze_DE-1.1.2025.pdf (Stand 1.1.2025, nur Register)"
+},
+{
+"aussage": "[STUDIE Schweiz] IGEM-Digimonitor 2026 (Befragung März/April 2026, 15 bis 75 Jahre mit Internet): Instagram 4,1 Mio. Nutzende (64 %), TikTok 1,6 Mio. (25 %), Snapchat 1,5 Mio.; tägliche Nutzung laut Zweitquelle Instagram 45 %, TikTok 14 %; Instagram-Durchschnittsalter 39.",
+"marke": "QUELLE",
+"beleg": "https://www.igem.ch/mediennutzung-werbemarkt/online/ , Abruf 3.11.2026 (Studie 2026); tägliche Werte und Alter aus https://blckalpaca.at/de/wissen/social-media/social-media-plattformen-vergleich/social-media-nutzung-deutschland-dach und https://www.onlinekarma.ch/social-media-nutzung-schweiz-2026/ (Zweitquellen)"
+},
+{
+"aussage": "[STUDIE, Tool-Anbieter Metricool] Instagram 2026 (24,3 Mio. Posts, 375 118 Konten, Jan/Feb 2025 gegen 2026): Reels haben über 4x die Interaktionen von Einzelbildern, durchschnittliche Wiedergabedauer verdoppelt auf 8,5 s; Karussells 9x mehr Saves als Einzelbilder; Einzelbilder: Reichweite -21,96 %. Beiträge mit mindestens einem Hashtag hatten 31,7 % weniger Views (Korrelation, Ursache offen); Frage in der Caption +36,7 % Kommentare, Kommentar-Aufforderung +202,78 % Kommentare; die meisten Views fallen in die ersten 3 Tage.",
+"marke": "QUELLE",
+"beleg": "https://metricool.com/press-release-instagram-study-2026/ , 16.6.2026"
+},
+{
+"aussage": "[STUDIE, Tool-Anbieter Metricool] TikTok 2026 (2 314 756 Posts, 92 000 Konten): Video bekommt 5x mehr Views und 6x mehr Interaktionen als Bilder/Karussells; die For-You-Seite liefert 7 von 10 Views. Laut Instagram-Studie haben Reels rund 30 % weniger Views als TikTok-Videos, aber Instagram-Karussells 4,7x mehr Views als TikTok-Karussells. Volltext hinter Formular, nur Teaserzahlen gelesen.",
+"marke": "QUELLE",
+"beleg": "https://metricool.com/tiktok-study/ , veröffentlicht 12.5.2026, aktualisiert 16.9.2026; https://metricool.com/press-release-instagram-study-2026/ , 16.6.2026"
+},
+{
+"aussage": "[STUDIE, Tool-Anbieter Buffer] Rhythmus: Instagram 3 bis 5 Beiträge pro Woche bringt rund 12 % mehr Reichweite je Post als 1 bis 2 (6 bis 9: 18 %, 10+: 24 %; abnehmender Zusatznutzen). TikTok 2 bis 5 pro Woche bringt bis 17 % mehr Views je Post als 1; Median-Views bleiben flach, mehr Beiträge geben mehr Chancen auf Ausreisser. Basis: Auswertung von über 100 000 Buffer-Nutzern.",
+"marke": "QUELLE",
+"beleg": "https://buffer.com/resources/social-media-frequency-guide/ , Abruf 3.11.2026 (Grafiken vom Januar 2026)"
+},
+{
+"aussage": "[STUDIE Socialinsider] Instagram-Engagement je Follower, Stand Q3 2026 (67,5 Mio. Posts, 579 000 Marken-Konten): Karussell 0,50 %, Reels 0,48 %, Einzelbild 0,33 % (Jahr 2025: 0,55 / 0,52 / 0,37). Karussells holen die meisten Saves.",
+"marke": "QUELLE",
+"beleg": "https://www.socialinsider.io/social-media-benchmarks/instagram , Abruf 3.11.2026 (Seite zeigt Q3-2026-Stand)"
+},
+{
+"aussage": "[STUDIE, nur Zweitquellen] Buffer-Auswertung (zitiert; 4 Mio. Posts 2022 bis Okt. 2024, bzw. 52 Mio. Posts): Reels +36 % Reichweite gegenüber Karussells, Karussells 6,90 % gegen 3,31 % Engagement bezogen auf Reichweite. Socialinsider (Sept. 2026, zitiert): Reichweitenrate Karussell 4,50 % gegen Reels 4,10 %, Reels vorn bei Konten unter 50 000 Follower. Metricool/HypeAuditor (700 Mio. Posts H1 2025, zitiert): Konten unter 1 000 Follower, Median 134 Views Reel gegen 56 Karussell gegen 23 Bild. Originalseiten nicht selbst gelesen.",
+"marke": "QUELLE",
+"beleg": "https://blckalpaca.at/en/knowledge-base/social-media/social-media-algorithms-distribution/reels-vs-carousel-instagram-formats ; https://creatorflow.so/blog/instagram-content-formats-guide/ ; https://contentdrips.com/blog/2026/06/instagram-reels-vs-carousels-2026-guide/ ; https://www.wavevision.io/blog/instagram-carousel-posts-vs-reels-performance-comparison-2026-data (alle Abruf 3.11.2026, Sommer/Herbst 2026)"
+},
+{
+"aussage": "[STUDIE, Literaturübersicht] Zu Untertiteln: ACM-Übersicht 2015 bis 2025 nennt eine Schätzung von 85 % der Facebook-Videos, die ohne Ton gesehen werden, und höheres Engagement bei Videos mit Untertiteln. Die 85 % gelten für Facebook und sind alt; für Reels/TikTok 2026 habe ich keine eigene Messung. Ein Anbieter (OpusClip) behauptet 20 bis 40 % mehr Wiedergabedauer mit Untertiteln (eigene Tests, nicht belegt).",
+"marke": "QUELLE",
+"beleg": "https://dl.acm.org/doi/full/10.1145/3772318.3791868 (nur Suchauszug, Jahr 2025/2026); https://www.opus.pro/blog/instagram-reels-caption-subtitle-best-practices (Anbieter-Meinung, Abruf 3.11.2026)"
+},
+{
+"aussage": "[MEINUNG/AGENTUR] Ranking-Signale: Zweitquellen zitieren Adam Mosseri (Januar 2025): Wiedergabedauer, Likes je Reichweite und Sends je Reichweite zählen am meisten. Das Original (Mosseri-Video) habe ich nicht gelesen. Die Rangfolge unterscheidet sich je Quelle (Hootsuite: Shares stärker als Speichern; Clixie: DM-Shares an erster Stelle; Dataslayer: Gesamt-Wiedergabedauer plus Wiederholungen an erster Stelle; ZoomSphere: Instagram gewichte Wiedergabedauer weniger als Konkurrenten).",
+"marke": "Hypothese",
+"beleg": "https://buffer.com/resources/instagram-algorithms/ ; https://www.zoomsphere.com/blog/instagram-algorithm-2026-what-actually-gets-reach ; https://blog.hootsuite.com/instagram-algorithm/ ; https://www.clixie.ai/blog/instagram-algorithm ; https://www.dataslayer.ai/blog/instagram-algorithm-2025-complete-guide-for-marketers (alle Abruf 3.11.2026)"
+},
+{
+"aussage": "[MEINUNG/AGENTUR] Hook: 'Die ersten 3 Sekunden entscheiden'. Die oft zitierte Zahl '63 % der Anzeigen mit höchster Klickrate' stammt laut Tugan.ai aus TikToks Business-Anzeigenbibliothek (Anzeigen, nicht organische Videos), die TikTok-Newsroom-Seite enthält sie nicht. Praktiker nennen 1 bis 4 Sekunden. Eine offizielle Zahl von TikTok oder Instagram zum Hook habe ich nicht gefunden.",
+"marke": "Hypothese",
+"beleg": "https://hansencommerce.com/insights-tiktok-hook-3-seconds ; https://tugan.ai/blog/how-to-write-tiktok-hooks (Abruf 3.11.2026)"
+},
+{
+"aussage": "[MEINUNG/AGENTUR] Ideale Länge widersprüchlich: Blck Alpaca nennt 30 bis 60 s für Reichweite und 7 bis 15 s für hohe Abschlussrate, Clixie 7 bis 15 s. Offiziell (Mosseri, Januar 2025, per Zweitquelle) sind Reels bis 3 Minuten möglich; Instagram wolle trotzdem Kurzvideo. Offizielle Idealwerte: unbekannt.",
+"marke": "Hypothese",
+"beleg": "https://blckalpaca.at/en/knowledge-base/social-media/social-media-algorithms-distribution/reels-vs-carousel-instagram-formats ; https://www.clixie.ai/blog/instagram-algorithm ; https://www.socialmediatoday.com/news/instagram-officially-expands-reels-length-3-minutes/737766/ (Januar 2025)"
+},
+{
+"aussage": "[MEINUNG/AGENTUR] TikTok-Suche: Agenturen raten zu Schlüsselwörtern in Caption, im Bildschirmtext der ersten 1 bis 5 Sekunden und im gesprochenen Wort. Eine offizielle TikTok-Angabe dazu habe ich nicht gefunden.",
+"marke": "Hypothese",
+"beleg": "https://stan.store/blog/tiktok-seo/ ; https://riseatseven.com/blog/the-ultimate-guide-to-tiktok-seo/ (Stand Januar 2024, Abruf 3.11.2026)"
+},
+{
+"aussage": "[MEINUNG/ANBIETER] Link-in-Bio: Instagram erlaube bis zu 5 Profil-Links (nur aus einer YouTube-Anleitung vom 25.7.2025 und Anbieterseiten belegt, Instagram-Hilfeseite nicht gelesen). Der Wert eines Link-in-Bio-Tools ist nur durch Anbieterbehauptungen belegt (Brandkit zitiert Parse.ly: +10 bis 15 % Referral-Traffic, alt). Für den Shop gilt: eine Seite, über die man bestellen kann, ist elektronischer Geschäftsverkehr (UWG lit. s) mit CHF-Preisen.",
+"marke": "Hypothese",
+"beleg": "https://www.youtube.com/watch?v=uFoCzKN_PuY , 25.7.2025; https://brandkit.com/link-in-bio ; https://linktr.ee/features/link-in-bio (Abruf 3.11.2026)"
+},
+{
+"aussage": "[MEINUNG/AGENTUR] Kommentare beantworten: 'Zwei-Wege-Gespräch' als Ranking-Signal behauptet Dataslayer; offizielle Aussage von Instagram oder TikTok dazu: unbekannt. Messbar ist nur die Metricool-Korrelation (Frage/Aufforderung in der Caption erzeugt mehr Kommentare).",
+"marke": "Hypothese",
+"beleg": "https://www.dataslayer.ai/blog/instagram-algorithm-2025-complete-guide-for-marketers ; https://metricool.com/press-release-instagram-study-2026/ , 16.6.2026"
+},
+{
+"aussage": "Hauptwiderspruch Hashtags: Instagram erlaubt höchstens 5 und rät laut Hilfe-Seite zur Caption (Suche) bzw. erlaubt Kommentare (Hilfe-Center); Metricool misst bei Beiträgen mit Hashtag 31,7 % weniger Views (vermutlich Verzerrung, Beweis fehlt); Tool-Seiten empfehlen 3 bis 5. Wo Quellen sich widersprechen: Reels gegen Karussell (Buffer: Reels mehr Reichweite; Socialinsider Sept. 2026: Karussell höhere Reichweitenrate), Rhythmus (Buffer: mehr hilft, abnehmend; HeyOrca-Umfrage: unregelmässiger kann besser sein; BusySeed '3,5x' ohne Beleg), TikTok-Nutzende in der Schweiz (IGEM 1,6 Mio. gegen onlineKarma 2,8 Mio. gegen 2,46 Mio. ab 18 laut Zweitquelle).",
+"marke": "QUELLE",
+"beleg": "https://help.instagram.com/351460621611097 ; https://about.instagram.com/blog/announcements/break-down-how-instagram-search-works ; https://metricool.com/press-release-instagram-study-2026/ ; https://www.heyorca.com/blog/social-media-posting-frequency-by-platform-2026 ; https://www.onlinekarma.ch/social-media-nutzung-schweiz-2026/ ; https://www.igem.ch/mediennutzung-werbemarkt/online/ (alle Abruf 3.11.2026)"
+},
+{
+"aussage": "Repo: automation/metricool-schedule.mjs setzt für Instagram und TikTok nur { autoPublish: true } (Zeilen 117 bis 118). Weder isAigc/isAiGenerated noch commercialContentOwnBrand sind gesetzt. Das Metricool-Tool kennt: tiktokData.isAigc (nur bei Video, bei reinen Foto-Posts still ignoriert), tiktokData.commercialContentOwnBrand, instagramData.isAiGenerated (ein Flag je Post).",
+"marke": "GEMESSEN",
+"beleg": "git show origin/main:automation/metricool-schedule.mjs und Tool-Schema createScheduledPost, gelesen 3.11.2026"
+},
+{
+"aussage": "Repo: Stimme (Piper, lokal) ist seit 2.11.2026 erlaubt; Reel-Vorlage reel_karte.sh baut 9,2 s, 1080x1920, Musik rotierend aus 5 Mixkit-Stücken. luxe-premium.wav ist laut CREDITS.txt selbst synthetisiert (keine Fremdlizenz). Kevin-MacLeod-Stücke (CC BY 4.0) brauchen Namensnennung, die laut Datei automatisch an die Caption angehängt wird. Die CREDITS-Zusammenfassung der Mixkit-Lizenz ist knapper als der Lizenztext (Remix-Verbot und 'nicht als eigenes ausgeben' fehlen).",
+"marke": "GEMESSEN",
+"beleg": "git show origin/main:dropship/VIDEO-PRAEFERENZEN.md, dropship/reel-vorlage/reel_karte.sh, automation/music/CREDITS.txt, gelesen 3.11.2026"
+},
+{
+"aussage": "Repo: Wochenplan 2. bis 8.11.2026 setzt auf TikTok nur Foto-Beiträge (je 1 pro Tag, 18:00 bzw. 12:00), Texte enden mit 'Link in Bio: luxestyle.ch'; Zeiten aus Metricool 'beste Zeit' (Spitzen 10:00 und 18:00). Wirkung: unbekannt. Aktuelle Hook-/Caption-Vorlagen enthalten Preisvergleiche: SOCIAL-HOOKS.md 'CHF 199 statt CHF 5'000' (Moissanit gegen Diamant), REEL-REGELN.md Caption 'CHF X statt Designer-Preis', 'Echtleder-Tasche'.",
+"marke": "GEMESSEN",
+"beleg": "git show origin/main:dropship/SOCIAL-WOCHE-0211.md (1.11.2026), dropship/SOCIAL-HOOKS.md, dropship/REEL-REGELN.md (Juni 2026), gelesen 3.11.2026"
+},
+{
+"aussage": "Einschätzung: Vergleiche wie 'statt Designer-Preis' oder 'statt CHF 5'000' sind nach den SECO-Regeln nur zulässig, wenn der Vergleichspreis ein tatsächlich überwiegend verlangter Marktpreis gleicher Ware ist, sonst 'Mondpreis' (PBV/UWG). 'Echtleder' ohne Datenblatt-Beleg verstösst gegen UWG lit. b. Die Anwendung auf diese konkreten Texte ist meine Auslegung, keine Rechtsberatung.",
+"marke": "Hypothese",
+"beleg": "Auslegung von https://www.seco.admin.ch/de/faq-pbv und https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de (Abruf 3.11.2026) auf die Repo-Texte oben"
+},
+{
+"aussage": "Einschätzung: Ein Piper-Voiceover ist synthetisches, realistisch klingendes Audio. Nach dem Wortlaut der Instagram-Hilfe (Pflicht bei 'realistic-sounding audio') ist das Kennzeichnen für Reels mit Stimme der sichere Weg; bei TikTok gilt 'AI-generated speech' als Beispiel. Ob eine neutrale Produkt-Vorlesestimme ohne Personenbezug darunter fällt, beantwortet keine Plattform ausdrücklich. TikTok sagt, das Label beeinträchtige die Verteilung nicht; bei TikTok-Fotoposts ist das Label über Metricool nicht setzbar.",
+"marke": "Hypothese",
+"beleg": "https://help.instagram.com/761121959519495 ; https://support.tiktok.com/en/using-tiktok/creating-videos/ai-generated-content ; Metricool-Tool-Schema (alle gelesen 3.11.2026)"
+},
+{
+"aussage": "Einschätzung Originalität: Die Shop-Fotos stammen von Lieferanten (CJ). Instagram nennt als 'original' Fotos/Videos, die man selbst aufnahm, oder wesentliche Bearbeitung mit neuem Kontext; ob unverändert verwendete Lieferantenfotos oder CJ-Clips ohne eigenen Schnitt als unoriginal gelten, sagt Instagram nicht. Zweitquellen nennen eine Duplikaterkennung (nur das Original wird empfohlen) und sehen Wasserzeichen anderer Apps als Signal; beides ist hier nicht belegt.",
+"marke": "Hypothese",
+"beleg": "https://creators.instagram.com/blog/rewarding-original-creators-on-instagram , 30.4.2026 (Regeltext); Zweitquelle https://luminaclippers.com/blog/instagram-unoriginal-content-policy (Stand 6.10.2026)"
+}
+]
+},
+{
+"bereich": "Produktauswahl für Kurzvideos (TikTok und Instagram), Stand 03.11.2026, nur lesend",
+"fakten": [
+{
+"aussage": "RANG 1 (A) · Handle kabellose-ladetischlampe-mit-magnetfliegentech-066624 · «Kabellose Ladetischlampe mit Magnetfliegentechnik» · CHF 20.90 bis 22.90 · CJ-Direktversand, tracksInventory=false (gilt als kaufbar) · 8 Bilder · Marge A/B: kein Tag, nicht ableitbar. Eignung (Hypothese): Lampe schwebt per Magnet, warmes Licht, Handy lädt kabellos; Bild 2 (aus) gegen Bild 3/4 (an) gibt ein Vorher/Nachher; Geschenkidee; beste Lifestyle-Bilder ohne Fremdschrift. Risiko: Seitentext sagt «schützt die Augen» (Gesundheitsaussage, im Video weglassen); Netzteil/Steckertyp unbelegt (Text nur «Steckdose erforderlich», kein Tag stecker-bereinigt); Bild 2 hat 1364 px, für TikTok auf höchstens 1080 px verkleinern. Lieferung laut Seitentext 10 bis 20 Werktage.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Preis, Tags, mediaCount, descriptionHtml, onlineStoreUrl https://luxestyle.ch/products/kabellose-ladetischlampe-mit-magnetfliegentech-066624). Beste Bilder, alle HTTP 200 image/jpeg am 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ee511bb9-e9c9-4b40-99ed-e740ed8f245a.jpg?v=1783289815 (800x800) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/61100840-8ddf-4be8-8630-3da53e684004.jpg?v=1783289815 (695x800) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/72e9f013-8928-45bd-846d-156ff072d338.jpg?v=1783289815 (1364x1371, Lampe aus)"
+},
+{
+"aussage": "RANG 2 (A) · Handle led-wasser-speaker-mit-3d-ton-e17c58 · «LED-Wasser-Speaker mit 3D-Ton» · CHF 25.90 · CJ, tracksInventory=false · 5 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): Wasserfontänen tanzen farbig zur Musik, Wow in unter 10 Sekunden, Bilder 1 und 5 sind dunkel und farbstark. Risiko: nur 5 Bilder mit 800 px; Fotos zeigen nur Stillstand, die Bewegung müsste das Reel zeigen; Bild 2 zeigt eine Fremdfigur (nicht nehmen), Bild 4 ein iPhone-ähnliches Handy (nicht nehmen); Anschluss 3.5 mm laut Text, Kabel/Netzteil im Lieferumfang unbelegt.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Preis 25.9, mediaCount 5, descriptionHtml mit «Lieferung 10–20 Werktage»). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1999782621132.jpg?v=1783290113 (800x800) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2076107127183.jpg?v=1783290113 (800x800)"
+},
+{
+"aussage": "RANG 3 (A) · Handle faltbare-led-nachtlichtlampe-beruhrungsempfind-38ce45 · «Faltbare LED-Nachtlichtlampe, Berührungsempfindlich, Dimmbar & USB-Ladeanschluss» · CHF 18.90 bis 54.90 · CJ, tracksInventory=false · 20 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): Verwandlung (Laterne wird ausgezogen, Tisch- und Taschenmodus), warmes Licht, USB-Akku 1200 mAh, 3 Helligkeitsstufen. Risiko: Bild 1 zeigt ein Kind (nicht nehmen), Bilder 3 und 5 tragen «4PCS»/«5PC», Bild 8 die Fremdmarke «JANPIM»; «Limited Edition» im Text nicht übernehmen; welche Variante 54.90 kostet, ist unbekannt, daher Video preisfrei.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Preisspanne, mediaCount 20, descriptionHtml). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/83a8a86f-6c39-4daf-9be2-49543359e90a.jpg?v=1783290259 (800x800, Licht im Dunkeln) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/13437276130170.jpg?v=1783290259 (950x950) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2538206326020.jpg?v=1783290259 (665x920)"
+},
+{
+"aussage": "RANG 4 (A) · Handle ewige-rose-mit-led-licht-718080 · «Ewige Rose mit LED-Licht» · CHF 17.90 · CJ, tracksInventory=false · 16 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): Rose unter Glaskuppel mit Lichterkette, Geschenk für Advent, Weihnachten, Valentinstag; stimmungsvolle Lichtbilder. Risiko: AAA-Batterie ist laut Text NICHT enthalten (Video darf kein «sofort leuchtbereit» zeigen); Material der Rose unbelegt, im Video «Kunstrose», nie «echte Rose»; Bilder 2, 4, 5, 7 zeigen fremden französischen Text auf einer Papiertüte, nur Bilder 1, 3, 6, 8 nehmen. Für Weihnachten Bestellfrist beachten (siehe Faktum Weihnachtsrechnung).",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (descriptionHtml: «Mit AAA-Batterie (nicht enthalten) betrieben»). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9473d925-1722-4be5-ba15-c249a62edc0d.jpg?v=1783290145 (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c448cdab-e809-4af3-a8b4-4e3afc8243c2.jpg?v=1783290145 (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/023f6fe9-9adb-4433-9698-1b390375e86f_77c9ea78-ad36-4611-afa6-20519c554de0.jpg?v=1783290145 (alle 800x800)"
+},
+{
+"aussage": "RANG 5 (A) · Handle automatischer-kaffeebecher-72c4e0 · «Automatischer Kaffeebecher» (rührt selbst) · CHF 15.90 (unterer Rand des Rahmens) · CJ, tracksInventory=false · 19 Bilder · Marge: nicht ableitbar · Judge.me-Metafeld 4.83 bei 6 Stimmen (importiert, siehe Faktum Bewertungen). Eignung (Hypothese): klare Bewegung (Strudel im Becher), Wow in 10 Sekunden, Geschenkidee/Wichtel (Tags geschenkwelt-unter30, -wichtel), billig. Risiko: viele Bilder mit englischem Text («USB charging», «PHYSICAL COOLING 85 °C → 55 °C», Behauptung nicht übernehmen); Bild 1 hat 1920 px (verkleinern); Heiss-Getränk-Thema nur neutral zeigen.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Tags geschenkwelt-unter30, geschenkwelt-wichtel; rating-Metafeld 4.83/6). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2919878172719.jpg?v=1783289806 (800x800, ohne Text) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2092103187873.jpg?v=1783289806 (800x800, Innenansicht) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a06b7e2a-28b6-4ac0-a63d-eaf0b4f016bd.jpg?v=1783289807 (1920x1920, Freisteller, verkleinern)"
+},
+{
+"aussage": "RANG 6 (A) · Handle anti-gravitations-duftbefeuchter-mit-schwebend-903040 · «Anti-Gravitations-Duftbefeuchter mit schwebenden Tropfen» · CHF 22.90 bis 25.90 · CJ, tracksInventory=false · 10 Bilder · Marge: nicht ableitbar · Metafeld 5.0 bei 6 Stimmen (importiert). Eignung (Hypothese): optischer Effekt, Tropfen scheinen nach oben zu fliessen, dazu Nebel und Uhr-Display. Risiko: Es ist eine optische Täuschung, im Video «sieht aus, als» sagen; Bilder 2, 4, 6, 7 haben englischen Text mit Gesundheitsclaims («Healthy humidification», «sleep aid») und dürfen nicht verwendet werden; Lieferumfang nennt ein «Ladegerät», Steckertyp unbelegt (Text: USB, höchstens 36 V); keine Aussagen zu Luftqualität oder Schlaf.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (descriptionHtml: «Lieferung 10–20 Werktage», USB ≤ 36 V). Bilder HTTP 200 image/jpeg 03.11.2026, alle 800x800 und ohne Text: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/90fda0d8-88e9-4b8b-b634-becd956ff6ec.jpg?v=1783289707 (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d6a8cac1-129f-46e1-92b1-3ef7287042e8.jpg?v=1783289707 (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/71aeafdb-a1a4-4093-a559-bda08ea42dc2.jpg?v=1783289708"
+},
+{
+"aussage": "RANG 7 (A-) · Handle smartwecker-mit-sunrise-display-farblicht-551552 · «Smartwecker mit Sunrise-Display & Farblicht» · CHF 37.90 bis 42.90 · CJ, tracksInventory=false · 7 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): RGB-Lichtring mit Farbwechsel, Sonnenaufgangs-Wecker, Tag stecker-bereinigt-2510 (Steckerprüfung lief). Risiko: Text wirbt mit «erholsamer Schlaf» und «Schlafunterstützung» (Gesundheitsversprechen, weglassen); Bilder 2, 3, 5, 6 haben englischen Text und Personen/Kind, nur die Freisteller 1, 4, 7 nehmen, die zeigen den Wow nur still.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Tag stecker-bereinigt-2510, descriptionHtml). Bilder HTTP 200 image/jpeg 03.11.2026, alle 1024x1024: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01332ecd-7d2e-4cb5-b901-47edd90100cf.jpg?v=1783289834 (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/26693261-bd80-49a4-9a2a-7f79c3eb51cb.jpg?v=1783289834 (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/32d4483a-37ef-49ae-91b4-08a3819a0c01.jpg?v=1783289833"
+},
+{
+"aussage": "RANG 8 (B) · Handle 3-in-1-gemusehobel-mit-scharfen-messern-940928 · «3-in-1 Gemüsehobel mit Scharfen Messern» · CHF 26.90 · CJ, tracksInventory=false · 6 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): Kurbel dreht, Gemüse wird zu Bändern und Raspeln («satisfying»), Bilder 1, 3, 5 zeigen das Ergebnis. Risiko: scharfe Klingen, nicht von Kindern bedienen lassen; Bild 6 mit englischem Text («3 in 1 Cutter»); Bilder 3 und 5 haben 1300 px (verkleinern); die Bewegung zeigt erst das Reel.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026. Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/62055d8b-ecd4-4eca-b2b3-0efc188fe9bc.jpg?v=1783290274 (800x800) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f6c4b442-a6ae-4208-af2b-eaeeda8ddd38.jpg?v=1783290274 (1300x1300) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7fe58b1-0cb0-4aa5-aff5-a09ddc8a4c10.jpg?v=1783290274 (1300x1300)"
+},
+{
+"aussage": "RANG 9 (B) · Handle barocke-fake-nails-mit-glitzersteinen-622900 · «Barocke Fake Nails mit Glitzersteinen» (Press-on) · CHF 15.90 (unterer Rand) · CJ, tracksInventory=false · 13 Bilder · Marge A (Tag mengenrabatt-a) · Metafeld 4.88 bei 8 Stimmen (importiert). Eignung (Hypothese): Verwandlung und Funkeln, 10 Nägel plus Zubehör im Set, Grössen XS bis L. Risiko: Grösse muss stimmen (Retourenrisiko, Hypothese); Bilder 1 und 3 tragen englischen Text «PROFESSIONAL NAIL»; Hände sind Personenbilder, Rechte/Herkunft unbelegt.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Tag mengenrabatt-a, rating-Metafeld 4.88/8, descriptionHtml mit Grössen XS, S, M, L). Bilder HTTP 200 image/jpeg 03.11.2026, alle 800x800: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/61a2f7ac-e04a-4f47-8c3b-a6a7a33e69f3.jpg?v=1785510461 (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/028485dc-4c50-4dab-9ec5-982523f69e19.jpg?v=1785510461 (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/58737739-37c7-438c-8a5a-92a9d1d58aa9.jpg?v=1785510463"
+},
+{
+"aussage": "RANG 10 (B) · Handle 360-ai-gesichtsverfolgung-gimbal-fur-vlogs-und-405248 · «360° AI Gesichtsverfolgung Gimbal für Vlogs und TikTok» · CHF 26.90 bis 44.90 · CJ, tracksInventory=false · 15 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): Halter dreht sich und folgt dem Gesicht, passt zur Creator-Zielgruppe. Risiko: Bild 3 zeigt Fremdlogos (TikTok und andere Icons, nicht nehmen), Bilder 2, 7, 8 haben englischen Text und Personen, Bild 1 ein kleines Gesicht im Display; «AI»-Funktion und «8-Stunden-Akku» nur Datenblatt; glaubhaft nur mit echtem Video.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (descriptionHtml). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d90f2bee-233b-4ea4-a10e-ea962e909b54.jpg?v=1783290077 (800x800, rosa Freisteller) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/800b5214-3db4-4c2d-9ecf-de61f4a7fad0.jpg?v=1783290077 (1000x974) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e4571760-b3ca-42d7-84d8-b92285e877f5.jpg?v=1783290078 (800x800)"
+},
+{
+"aussage": "RANG 11 (B-, Risiko hoch) · Handle astronaut-galaxy-sternenlicht-projektor-836224 · «Astronaut Galaxy Sternenlicht-Projektor» · CHF 18.90 · CJ, tracksInventory=false · 17 Bilder · Marge: nicht ableitbar · Metafeld 4.33 bei 6 Stimmen (importiert, schwächster Wert der Auswahl). Eignung (Hypothese): grösste optische Wirkung (Nebel und Sterne an Wand und Decke). Risiko: Text nennt «Einschlafhilfe für Kinder» (Kinder- und Gesundheitsaussage ohne Altersangabe, deshalb nur mit Besitzer-Freigabe); Stromangabe widersprüchlich («USB» und «Batterie/Akku»); Bilder 4 und 6 zeigen Babyraum/Kind, alle mit englischem Text; Figur generisch, Lizenz nicht belegt. Video nur mit Raum und Licht, ohne Kinder und ohne Schlafwort.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (descriptionHtml, rating-Metafeld 4.33/6). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a2a10aca-036d-4efb-9127-5896951d2dcf.jpg?v=1783469112 (800x800) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1734820604911161344.jpg?v=1783469112 (790x1162, Höhe verkleinern) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1734820605758410752.jpg?v=1783469112 (790x1339, verkleinern)"
+},
+{
+"aussage": "RANG 12 (B-) · Handle make-up-spiegel-mit-musik-und-licht-b330fa · «Make-up-Spiegel mit Musik und Licht» · CHF 34.90 · CJ, tracksInventory=false · 6 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): LED-Spiegel mit Lautsprecher, Licht-Wow. Risiko: nur weisse Katalog-Freisteller mit 611 bis 776 px, keine Anwendungsbilder (ältere REEL-REGELN Nr. 1 lehnt Freisteller ab); Funktionsumfang nur aus dem Titel, Beschreibung nicht gelesen.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026. Bilder HTTP 200 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/880225515351.jpg?v=1783290094 (776x775) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2233208206524.png?v=1783290095 (715x679) (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3772660575875.png?v=1783290094 (611x626)"
+},
+{
+"aussage": "RANG 13 (C) · Handle selbstabpressender-mini-bodenreiniger-multifun-593792 · «Selbstabpressender Mini-Bodenreiniger Multifunktional» · CHF 17.90 bis 24.90 · CJ, tracksInventory=false · 13 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): Wasser auspressen, Wischen (Vorher/Nachher denkbar). Risiko: im Bildmaterial gibt es keine echten Vorher/Nachher-Paare; Bilder 2, 4, 6 mit englischem Text; Wirkung nur mit eigenem Video belegbar.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026. Bilder HTTP 200 image/jpeg 03.11.2026, alle 800x800: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0972fa17-db7e-4dbf-82f8-8d58be5bb7e0.jpg?v=1783290224 (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9d64018f-834a-4166-a6b0-c48011fc84d6.jpg?v=1783290224 (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18ff6602-fb25-4fba-803a-422d315452d0.jpg?v=1783290224"
+},
+{
+"aussage": "RANG 14 (C) · FORTURA · Handle arm-knicklichter-fga87818 · «Arm - Knicklichter» (100 Stück) · CHF 24.90 · Bestand 556, Variante fortura-87818 availableForSale=true · Tag ch-lager (Schweizer Lager) · 4 Bilder (genau das Minimum) · Marge: nicht ableitbar. Eignung (Hypothese): Leuchtfarben im Dunkeln, bei Silvester und Partys nutzbar. Risiko: Marke KNIXS auf der Packung (Bilder 2 und 4 nicht nehmen); Text nennt Anlass «Sommer», saisonal schwach; Lieferdatum nicht abgefragt, Seitentext sagt nur «steht beim Artikel und in der Kasse», also kein Datum nennen; Bild 3 mit 1500 px verkleinern.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (inventoryQuantity 556, descriptionHtml mit Marke KNIXS). Bilder HTTP 200 image/jpeg 03.11.2026: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/87818_3.jpg?v=1784974083 (800x792, Leuchtfoto) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/87818_2.jpg?v=1784974084 (1500x1493, deutscher Text «Kreisverbinder»)"
+},
+{
+"aussage": "RANG 15 (C) · Handle ring-schwarz-regenbogen-kristall · «Ring Schwarz · Regenbogen-Kristall» · CHF 15.90 (unterer Rand) · CJ, tracksInventory=false · 8 Medien (7 Bilder) · Marge A (Tag mengenrabatt-a). Eignung (Hypothese): Funkeln der Steine, ein Handfoto vorhanden. Risiko: der Titel sagt «Regenbogen», die Bilder zeigen blaue, grüne, rote Varianten; Freisteller auf Vlies; Beschichtung/Material unbelegt; wenig Bewegung im Motiv.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (Tag mengenrabatt-a, mediaCount 8 mit einem Nicht-Bild-Medium). Bilder HTTP 200 image/jpeg 03.11.2026, beide 1000x1000: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a835fcae-b178-4ae3-aed6-e7b1952f5ccf.jpg?v=1781307548 (am Finger) (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/593fb7b0-63e2-4b3a-a6e5-e16ca42b6459.jpg?v=1781307548 (Freisteller)"
+},
+{
+"aussage": "RESERVE 16 (C) · FORTURA · Handle crossbody-tasche-holo-pink-fgabo36038 · «Crossbody Tasche Holo pink» · CHF 21.90 · Bestand 127, availableForSale=true · Tag ch-lager · 5 Bilder · Marge: nicht ableitbar. Eignung (Hypothese): holografischer Glanz, Modelfotos. Risiko: Text nennt Anlass «Street Parade» (August, Saison passt nicht), Tag kostuem-accessoire (Kostümkatalog, nicht für Fasnacht-Posts verwenden); Bilder 3 und 4 mit englischem Text; Lieferdatum unbekannt.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL 03.11.2026 (inventoryQuantity 127, descriptionHtml «Anlass: Street Parade»). Bilder HTTP 200 image/jpeg 03.11.2026, alle 1000x1000: (1) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/BO36038_4.jpg?v=1784964402 (2) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/BO36038_1.jpg?v=1784841234 (3) https://cdn.shopify.com/s/files/1/0943/6856/3585/files/BO36038_5.jpg?v=1784964402"
+},
+{
+"aussage": "Ausgeschlossen mit Grund (geprüft am Bild oder Text). Schwebende LED-Weltkarte (schwebende-led-weltkarte-mit-magnetlevitation-81a2c9, CHF 40.90): die Kartenbeschriftung ist chinesisch, im Zoom lesbar ist «印度洋». Sonnenuntergang-Projektor «Sunset» (sonnenuntergang-projektor-sunset-stimmungslich-610600): Bilder zeigen Mond, Galaxie, Ozean, Kind und ein anderes Produkt «Bunny's Carousel», also Titel-Bild-Widerspruch. Adventskalender mit Armband und Charms (24-tage-adventskalender-mit-grid-design-650200): Text «eignet sich für Kinder», «Kindgerechtes Design», Blind-Box, keine Altersangabe. Fortura Rucksack Clarity transparent: Text «Anlass: Fasnacht». Kreative Nachrichtentafel: 4 von 6 Bildern zeigen chinesische Zeichen (火 木). Magnet-Schwebeuhr: Marke DOM und US-Zertifikat im Bild. Wandmontierter Zahnpasta-Dispenser: Marke ecoco am Produkt. RGB-Gaming-Tastatur: Marke T-WOLF, Bilder zeigen keine schwebenden Tasten. Heizjacken, Massagegeräte, Aroma-Luftbefeuchter, Klebepflege: Wärme/Massage/Gesundheit. Selbstreinigende Haarbürste, Ladekabel, Mini-Mopp, Intelligente LED-Lampe: Mindestpreis CHF 14.90, unter dem Rahmen.",
+"marke": "GEMESSEN",
+"beleg": "Kontaktbögen aller 201 geladenen Bilder am 03.11.2026 angesehen, Weltkarte-Bild 1 vergrössert (Zoom 900 px); Texte per descriptionHtml gelesen; Preise per Shopify-Admin-GraphQL 03.11.2026. Arbeitsdateien /tmp/sm-produktauswahl/montage/*.jpg und /tmp/sm-produktauswahl/zoom_welt01.jpg."
+},
+{
+"aussage": "Fortura-Lage: Von 84 aktiven Fortura-Produkten mit Tag ch-lager, Bestand über 0 und Preis CHF 15 bis 60 (ohne die Produkttypen Kostüme, Spielzeug, Partydeko) haben nur 17 mindestens 4 Bilder, und das sind fast nur Skibrillen, Partybrillen, Fächer, Taschen (alle Kostümzubehör-Tags). Aus dem ausgeschlossenen Typ Partydeko kam zusätzlich Rang 14. Fortura taugt daher nur für 2 von 16 Plätzen.",
+"marke": "GEMESSEN",
+"beleg": "Shopify-Admin-GraphQL productsCount und Seitenlauf 03.11.2026, Abfrage status:active tag:ch-lager inventory_total:>0 price:>=15 price:<=60 ohne die drei Produkttypen: Zähler 84, hasNextPage=false nach Seite 2."
+},
+{
+"aussage": "Der Tag video-hit (zusammen mit viral und trend) stammt vom Import-Skript für CJ-Trendprodukte und ist KEINE Messung echter Beliebtheit oder Verkäufe.",
+"marke": "QUELLE",
+"beleg": "git show origin/main:automation/cj_trending_import.mjs Zeile 214 (tags:['trend','viral','video-hit','cj-real','dropship','neu']); automation/lib/trend_auswahl.mjs gewichtet video-hit mit 1."
+},
+{
+"aussage": "Bewertungssterne in den Metafeldern reviews.rating (4.33 bis 5.0 bei 4 bis 8 Stimmen) stammen aus dem Bewertungs-Import von CJ, nicht von Käufern des Shops. Im Video nicht als Kundenmeinung zitieren. Plätze ohne Wert haben keine Bewertung (kein Wert wird erfunden).",
+"marke": "QUELLE",
+"beleg": "CLAUDE.md Stand 18.10.2026 (Bewertungs-Import, 775 Bewertungen live); Metafeld-Werte per Shopify-Admin-GraphQL 03.11.2026: Becher 4.83/6, Befeuchter 5.0/6, Nägel 4.88/8, Astronaut 4.33/6."
+},
+{
+"aussage": "Lieferzeit ehrlich nennbar: CJ-Ware 10 bis 20 Werktage (steht so im Seitentext jedes CJ-Picks, Direktversand aus Asien). Eine frühere Messung an 12 CJ-Bestellungen ergab Median 10 Werktage, höchstens 12. Fortura-Ware: «Versand ab Schweizer Lager mit DPD», das Lieferdatum steht beim Artikel und in der Kasse; das konkrete Datum habe ich nicht abgefragt.",
+"marke": "QUELLE",
+"beleg": "descriptionHtml der Picks 03.11.2026 («Lieferung 10–20 Werktage»; Fortura-Text «der voraussichtliche Lieferzeitraum steht beim Artikel und in der Kasse»); CLAUDE.md Stand 28.10.2026 («Lieferzeit gemessen (CJ, n = 12): Median 10 Wt, höchstens 12»)."
+},
+{
+"aussage": "Weihnachtsrechnung für die Geschenk-Picks (Rose, Lampe, Wasser-Speaker, Becher): Bei der Obergrenze von 20 Werktagen muss die Bestellung bis rund 25.11.2026 eingehen, damit die Ware am 23.12. da ist; bei Median 10 Werktagen reicht rund 9.12. Das ist nur gerechnet, nicht zugesagt. Für Adventskalender galt laut Plan Bestelltag rund 12./13.11. für Ankunft vor dem 1.12. Bestellschluss-Daten nicht ohne Besitzer-Ja im Video oder Shop nennen.",
+"marke": "Hypothese",
+"beleg": "Eigene Rechnung Mo bis Fr ab 03.11.2026; Quelle des 12./13.11.: CLAUDE.md Stand 29.10.2026 (dropship/ADVENTSKALENDER-PLAN-2910.md); Regel zu Bestellschluss-Daten: CLAUDE.md Stand 28.10.2026."
+},
+{
+"aussage": "Bildprüfung: 201 Bilder von 28 Kandidaten geladen, alle HTTP 200 mit Typ image/jpeg oder image/png (03.11.2026, 06:50 UTC). Für TikTok-Fotos höchstens 1080 px je Seite: zu gross sind Becher Bild 1 (1920), Lampe Bild 3 (1364x1371), Hobel Bilder 2 und 3 (1300), Knicklichter Bild 2 (1500), Astronaut Bilder 2 und 3 (Höhe 1162 und 1339). Alle anderen genannten Bilder liegen darunter.",
+"marke": "GEMESSEN",
+"beleg": "Skript /tmp/sm-produktauswahl/fetch.sh (curl, identify), Ergebnisdatei /tmp/sm-produktauswahl/status.tsv mit Code, Typ, Grösse und Abmessung je Bild."
+},
+{
+"aussage": "Keine Überschneidung mit den bereits eingeplanten Social-Beiträgen der Woche 02. bis 08.11. (JCB Mikrobagger, Plüsch Hochlandrind, XXL Hoodie-Decke, Plüsch Panda, Damenuhr Roségold, Plüsch Waschbär, Laptop-Rucksack, Lederarmband Hufeisen) und nicht mit der Muster-Lampe «Wasserwellen» der Reel-Vorlage. Aus dem gleichen Grund habe ich den ähnlichen Ocean-Wave-Projektor nicht genommen.",
+"marke": "QUELLE",
+"beleg": "git show origin/main:dropship/SOCIAL-WOCHE-0211.md und dropship/CODEX-REEL-LAMPE-0211.md; der Metricool-Planer selbst wurde nicht abgefragt."
+}
+]
+}
+]
