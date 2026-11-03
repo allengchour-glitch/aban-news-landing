@@ -1,0 +1,3904 @@
+{
+  "scope": "Only two named collection pages, DE/FR,390/1440px and their subcategory keyboard focus/width. No whole-site or Personalizer acceptance.",
+  "initialProbe": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-03T13:09:09.796753+00:00",
+    "brand": "luxestyle.ch",
+    "scope": "Two current public collection pages, DE/FR,390/1440px; eight bounded read-only browser views. No DOM/CSS replacement, template write or old patch. Keyboard entry via first-link focus followed by actual Tab traversal.",
+    "priorSource": {
+      "file": "/workspace/luxestyle-review/tageslauf-20261103-r64/seo/SEO-CHECK.json",
+      "sha256": "b730f7ba05413d8649940f60e18f3f1fc2df0f6e06a47cb7d96ee82c6e77772d",
+      "nativeMainId": "gid://shopify/OnlineStoreTheme/213013037447",
+      "nativeMd5AtR64": "457082cc5d27f1f348ba45f1722d40c1"
+    },
+    "expectedSiblingPathsFromExistingStructure": [
+      "/collections/handy-zubehoer",
+      "/collections/powerbanks",
+      "/collections/ladegeraete-netzteile",
+      "/collections/kabellos-laden",
+      "/collections/auto-ladegeraete",
+      "/collections/ladekabel-datenkabel",
+      "/collections/handyhalter-staender",
+      "/collections/handyhuellen-displayschutz",
+      "/collections/selfie-stative-foto"
+    ],
+    "browserSandboxEnabled": true,
+    "views": [
+      {
+        "lang": "de",
+        "kind": "middle",
+        "width": 390,
+        "requestedUrl": "https://luxestyle.ch/collections/handy-zubehoer",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1761,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 163.765625,
+                "right": 223.8125,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 231,
+                "right": 352.625,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 359.8125,
+                "right": 554.609375,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 561.796875,
+                "right": 720.890625,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 728.078125,
+                "right": 882.875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 890.0625,
+                "right": 1094.453125,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1101.640625,
+                "right": 1296.34375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1303.53125,
+                "right": 1545.859375,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1553.046875,
+                "right": 1800.828125,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1761,
+            "scrollLeft": 1451
+          },
+          "focusedHref": "/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1287.234375,
+                "right": -1227.1875,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1220,
+                "right": -1098.375,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1091.1875,
+                "right": -896.390625,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -889.203125,
+                "right": -730.109375,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -722.921875,
+                "right": -568.125,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -560.9375,
+                "right": -356.546875,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -349.359375,
+                "right": -154.65625,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -147.46875,
+                "right": 94.859375,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 102.046875,
+                "right": 349.828125,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 262
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 262
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 610
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 610
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 1004
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 1004
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 1451
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/de-middle-390.png"
+      },
+      {
+        "lang": "de",
+        "kind": "middle",
+        "width": 1440,
+        "requestedUrl": "https://luxestyle.ch/collections/handy-zubehoer",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0,
+          "navRect": {
+            "x": 40,
+            "right": 1400,
+            "width": 1360
+          },
+          "navStyle": {
+            "width": "1360px",
+            "minWidth": "0px",
+            "maxWidth": "min(1520px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 64,
+            "right": 1376,
+            "width": 1312,
+            "clientWidth": 1312,
+            "scrollWidth": 1312,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 187.765625,
+                "right": 247.8125,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 255,
+                "right": 376.625,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 383.8125,
+                "right": 578.609375,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 585.796875,
+                "right": 744.890625,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 752.078125,
+                "right": 906.875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 914.0625,
+                "right": 1118.453125,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1125.640625,
+                "right": 1320.34375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 64,
+                "right": 306.328125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 313.515625,
+                "right": 561.296875,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0,
+          "navRect": {
+            "x": 40,
+            "right": 1400,
+            "width": 1360
+          },
+          "navStyle": {
+            "width": "1360px",
+            "minWidth": "0px",
+            "maxWidth": "min(1520px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 64,
+            "right": 1376,
+            "width": 1312,
+            "clientWidth": 1312,
+            "scrollWidth": 1312,
+            "scrollLeft": 0
+          },
+          "focusedHref": "/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 187.765625,
+                "right": 247.8125,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 255,
+                "right": 376.625,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 383.8125,
+                "right": 578.609375,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 585.796875,
+                "right": 744.890625,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 752.078125,
+                "right": 906.875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 914.0625,
+                "right": 1118.453125,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1125.640625,
+                "right": 1320.34375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 64,
+                "right": 306.328125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 313.515625,
+                "right": 561.296875,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/de-middle-1440.png"
+      },
+      {
+        "lang": "de",
+        "kind": "leaf",
+        "width": 390,
+        "requestedUrl": "https://luxestyle.ch/collections/powerbanks",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Cannot read properties of null (reading 'sequence')",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1761,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 163.765625,
+                "right": 223.8125,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 231,
+                "right": 352.625,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 359.8125,
+                "right": 554.609375,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 561.796875,
+                "right": 720.890625,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 728.078125,
+                "right": 882.875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 890.0625,
+                "right": 1094.453125,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1101.640625,
+                "right": 1296.34375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1303.53125,
+                "right": 1545.859375,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1553.046875,
+                "right": 1800.828125,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1761,
+            "scrollLeft": 1451
+          },
+          "focusedHref": "/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1287.234375,
+                "right": -1227.1875,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1220,
+                "right": -1098.375,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1091.1875,
+                "right": -896.390625,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -889.203125,
+                "right": -730.109375,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -722.921875,
+                "right": -568.125,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -560.9375,
+                "right": -356.546875,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -349.359375,
+                "right": -154.65625,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -147.46875,
+                "right": 94.859375,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 102.046875,
+                "right": 349.828125,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 262
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 262
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 610
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 610
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 1004
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 1004
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1761,
+              "scrollLeft": 1451
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/de-leaf-390.png"
+      },
+      {
+        "lang": "de",
+        "kind": "leaf",
+        "width": 1440,
+        "requestedUrl": "https://luxestyle.ch/collections/powerbanks",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0,
+          "navRect": {
+            "x": 40,
+            "right": 1400,
+            "width": 1360
+          },
+          "navStyle": {
+            "width": "1360px",
+            "minWidth": "0px",
+            "maxWidth": "min(1520px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 64,
+            "right": 1376,
+            "width": 1312,
+            "clientWidth": 1312,
+            "scrollWidth": 1312,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 187.765625,
+                "right": 247.8125,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 255,
+                "right": 376.625,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 383.8125,
+                "right": 578.609375,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 585.796875,
+                "right": 744.890625,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 752.078125,
+                "right": 906.875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 914.0625,
+                "right": 1118.453125,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1125.640625,
+                "right": 1320.34375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 64,
+                "right": 306.328125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 313.515625,
+                "right": 561.296875,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "de",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0,
+          "navRect": {
+            "x": 40,
+            "right": 1400,
+            "width": 1360
+          },
+          "navStyle": {
+            "width": "1360px",
+            "minWidth": "0px",
+            "maxWidth": "min(1520px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 64,
+            "right": 1376,
+            "width": 1312,
+            "clientWidth": 1312,
+            "scrollWidth": 1312,
+            "scrollLeft": 0
+          },
+          "focusedHref": "/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 187.765625,
+                "right": 247.8125,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 255,
+                "right": 376.625,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 383.8125,
+                "right": 578.609375,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 585.796875,
+                "right": 744.890625,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 752.078125,
+                "right": 906.875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 914.0625,
+                "right": 1118.453125,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1125.640625,
+                "right": 1320.34375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 64,
+                "right": 306.328125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 313.515625,
+                "right": 561.296875,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/de-leaf-1440.png"
+      },
+      {
+        "lang": "fr",
+        "kind": "middle",
+        "width": 390,
+        "requestedUrl": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "fr",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1846,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/fr/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 248.6875,
+                "right": 308.734375,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/fr/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 315.921875,
+                "right": 437.546875,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/fr/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 444.734375,
+                "right": 639.53125,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/fr/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 646.71875,
+                "right": 805.8125,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/fr/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 813,
+                "right": 967.796875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/fr/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 974.984375,
+                "right": 1179.375,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/fr/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1186.5625,
+                "right": 1381.265625,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/fr/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1388.453125,
+                "right": 1630.78125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/fr/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1637.96875,
+                "right": 1885.75,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "fr",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1846,
+            "scrollLeft": 1536
+          },
+          "focusedHref": "/fr/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/fr/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1287.3125,
+                "right": -1227.265625,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/fr/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1220.078125,
+                "right": -1098.453125,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/fr/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1091.265625,
+                "right": -896.46875,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/fr/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -889.28125,
+                "right": -730.1875,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/fr/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -723,
+                "right": -568.203125,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/fr/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -561.015625,
+                "right": -356.625,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/fr/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -349.4375,
+                "right": -154.734375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/fr/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -147.546875,
+                "right": 94.78125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/fr/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 101.96875,
+                "right": 349.75,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/fr/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 347
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 347
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 695
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 695
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 1089
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 1089
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 1536
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/fr-middle-390.png"
+      },
+      {
+        "lang": "fr",
+        "kind": "middle",
+        "width": 1440,
+        "requestedUrl": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+        "unknown": [
+          "TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"main nav.lx-uf\").first to be visible\n    - locator resolved to visible <nav class=\"lx-uf\" aria-label=\"Unterfilter Accessoires pour téléphone\">…</nav>\n"
+        ],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "checks": {},
+        "failed": [],
+        "failureState": {
+          "url": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0
+        }
+      },
+      {
+        "lang": "fr",
+        "kind": "leaf",
+        "width": 390,
+        "requestedUrl": "https://luxestyle.ch/fr/collections/powerbanks",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/fr/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "fr",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1846,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/fr/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 248.6875,
+                "right": 308.734375,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/fr/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 315.921875,
+                "right": 437.546875,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/fr/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 444.734375,
+                "right": 639.53125,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/fr/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 646.71875,
+                "right": 805.8125,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/fr/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 813,
+                "right": 967.796875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/fr/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 974.984375,
+                "right": 1179.375,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/fr/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1186.5625,
+                "right": 1381.265625,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/fr/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1388.453125,
+                "right": 1630.78125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/fr/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 1637.96875,
+                "right": 1885.75,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/fr/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "fr",
+          "viewport": 390,
+          "clientWidth": 390,
+          "htmlScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "scrollX": 0,
+          "navRect": {
+            "x": 16,
+            "right": 374,
+            "width": 358
+          },
+          "navStyle": {
+            "width": "358px",
+            "minWidth": "0px",
+            "maxWidth": "min(1472px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 40,
+            "right": 350,
+            "width": 310,
+            "clientWidth": 310,
+            "scrollWidth": 1846,
+            "scrollLeft": 1536
+          },
+          "focusedHref": "/fr/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/fr/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1287.3125,
+                "right": -1227.265625,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/fr/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1220.078125,
+                "right": -1098.453125,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/fr/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -1091.265625,
+                "right": -896.46875,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/fr/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -889.28125,
+                "right": -730.1875,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/fr/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -723,
+                "right": -568.203125,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/fr/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -561.015625,
+                "right": -356.625,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/fr/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -349.4375,
+                "right": -154.734375,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/fr/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": -147.546875,
+                "right": 94.78125,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/fr/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 101.96875,
+                "right": 349.75,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/fr/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 347
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 347
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 695
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 695
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 1089
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 1089
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 390,
+            "bodyScrollWidth": 390,
+            "row": {
+              "x": 40,
+              "right": 350,
+              "width": 310,
+              "clientWidth": 310,
+              "scrollWidth": 1846,
+              "scrollLeft": 1536
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/fr-leaf-390.png"
+      },
+      {
+        "lang": "fr",
+        "kind": "leaf",
+        "width": 1440,
+        "requestedUrl": "https://luxestyle.ch/fr/collections/powerbanks",
+        "unknown": [],
+        "pageErrors": [
+          "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "http": 200,
+        "beforeKeyboardEntry": {
+          "url": "https://luxestyle.ch/fr/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "fr",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0,
+          "navRect": {
+            "x": 40,
+            "right": 1400,
+            "width": 1360
+          },
+          "navStyle": {
+            "width": "1360px",
+            "minWidth": "0px",
+            "maxWidth": "min(1520px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 64,
+            "right": 1376,
+            "width": 1312,
+            "clientWidth": 1312,
+            "scrollWidth": 1312,
+            "scrollLeft": 0
+          },
+          "focusedHref": null,
+          "focusInNav": false,
+          "links": [
+            {
+              "href": "/fr/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 272.6875,
+                "right": 332.734375,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/fr/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 339.921875,
+                "right": 461.546875,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/fr/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 468.734375,
+                "right": 663.53125,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/fr/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 670.71875,
+                "right": 829.8125,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/fr/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 837,
+                "right": 991.796875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/fr/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 998.984375,
+                "right": 1203.375,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/fr/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 64,
+                "right": 258.703125,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/fr/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 265.890625,
+                "right": 508.21875,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/fr/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 515.40625,
+                "right": 763.1875,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "visibleDialogs": 0,
+        "afterKeyboardTraversal": {
+          "url": "https://luxestyle.ch/fr/collections/powerbanks",
+          "themeId": "213013037447",
+          "themeRole": "main",
+          "locale": "fr",
+          "viewport": 1440,
+          "clientWidth": 1440,
+          "htmlScrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "scrollX": 0,
+          "navRect": {
+            "x": 40,
+            "right": 1400,
+            "width": 1360
+          },
+          "navStyle": {
+            "width": "1360px",
+            "minWidth": "0px",
+            "maxWidth": "min(1520px, 100%)",
+            "boxSizing": "border-box"
+          },
+          "row": {
+            "x": 64,
+            "right": 1376,
+            "width": 1312,
+            "clientWidth": 1312,
+            "scrollWidth": 1312,
+            "scrollLeft": 0
+          },
+          "focusedHref": "/fr/collections/selfie-stative-foto",
+          "focusInNav": true,
+          "links": [
+            {
+              "href": "/fr/collections/handy-zubehoer",
+              "text": "Alle",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 272.6875,
+                "right": 332.734375,
+                "width": 60.046875
+              }
+            },
+            {
+              "href": "/fr/collections/powerbanks",
+              "text": "Powerbanks",
+              "current": "page",
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 339.921875,
+                "right": 461.546875,
+                "width": 121.625
+              }
+            },
+            {
+              "href": "/fr/collections/ladegeraete-netzteile",
+              "text": "Ladegeräte & Netzteile",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 468.734375,
+                "right": 663.53125,
+                "width": 194.796875
+              }
+            },
+            {
+              "href": "/fr/collections/kabellos-laden",
+              "text": "Kabelloses Laden",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 670.71875,
+                "right": 829.8125,
+                "width": 159.09375
+              }
+            },
+            {
+              "href": "/fr/collections/auto-ladegeraete",
+              "text": "Auto-Ladegeräte",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 837,
+                "right": 991.796875,
+                "width": 154.796875
+              }
+            },
+            {
+              "href": "/fr/collections/ladekabel-datenkabel",
+              "text": "Ladekabel & Datenkabel",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 998.984375,
+                "right": 1203.375,
+                "width": 204.390625
+              }
+            },
+            {
+              "href": "/fr/collections/handyhalter-staender",
+              "text": "Handyhalter & Ständer",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 64,
+                "right": 258.703125,
+                "width": 194.703125
+              }
+            },
+            {
+              "href": "/fr/collections/handyhuellen-displayschutz",
+              "text": "Handyhüllen & Displayschutz",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 265.890625,
+                "right": 508.21875,
+                "width": 242.328125
+              }
+            },
+            {
+              "href": "/fr/collections/selfie-stative-foto",
+              "text": "Selfie, Stative & Foto-Zubehör",
+              "current": null,
+              "tabIndex": 0,
+              "rendered": true,
+              "rect": {
+                "x": 515.40625,
+                "right": 763.1875,
+                "width": 247.78125
+              }
+            }
+          ]
+        },
+        "keyboardTrace": [
+          {
+            "step": 0,
+            "method": "first-link focus entry",
+            "focusedHref": "/fr/collections/handy-zubehoer",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 1,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/powerbanks",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 2,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/ladegeraete-netzteile",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 3,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/kabellos-laden",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 4,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/auto-ladegeraete",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 5,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/ladekabel-datenkabel",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 6,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/handyhalter-staender",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 7,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/handyhuellen-displayschutz",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          },
+          {
+            "step": 8,
+            "method": "keyboard Tab",
+            "focusedHref": "/fr/collections/selfie-stative-foto",
+            "focusInNav": true,
+            "scrollX": 0,
+            "htmlScrollWidth": 1440,
+            "bodyScrollWidth": 1440,
+            "row": {
+              "x": 64,
+              "right": 1376,
+              "width": 1312,
+              "clientWidth": 1312,
+              "scrollWidth": 1312,
+              "scrollLeft": 0
+            }
+          }
+        ],
+        "checks": {
+          "http200": true,
+          "actualMainTheme": true,
+          "languagePathRetained": true,
+          "clientWidthExpected": true,
+          "documentFitsBeforeAndAfter": true,
+          "bodyFitsBeforeAndAfter": true,
+          "noWindowHorizontalMovement": true,
+          "navWithinViewport": true,
+          "expectedSiblingTargetsAndOrder": true,
+          "correctActiveTarget": true,
+          "allLinksRenderedAndTabbable": true,
+          "allSiblingLinksReachedByTab": true,
+          "widthRuleEffective": true
+        },
+        "failed": [],
+        "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/fr-leaf-1440.png"
+      }
+    ],
+    "blockedNonRead": 643,
+    "blockedAnalytics": 16,
+    "blockedReviewRequests": 8,
+    "publicPageNavigations": 8,
+    "ownWrites": 0,
+    "analyticsFlowOrderMerchantApiCalls": 0,
+    "oldR53PatchApplied": false,
+    "limits": [
+      "Other sibling destinations are not HTTP-probed; checks cover link markup and keyboard reachability.",
+      "No full checkout, capture, review, catalogue, indexing or whole-theme acceptance.",
+      "Third-party tracking/review requests and every non-GET/HEAD request are blocked."
+    ],
+    "completedViews": 8,
+    "passedViews": 7,
+    "allEightViewsPassed": false,
+    "confirmedFailureViews": [],
+    "unknownViews": [
+      {
+        "lang": "fr",
+        "kind": "middle",
+        "width": 1440,
+        "unknown": [
+          "TimeoutError: Locator.wait_for: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"main nav.lx-uf\").first to be visible\n    - locator resolved to visible <nav class=\"lx-uf\" aria-label=\"Unterfilter Accessoires pour téléphone\">…</nav>\n"
+        ]
+      }
+    ]
+  },
+  "targetedCountercheck": {
+    "checkedAtUtc": "2026-11-03T13:14:27.836241+00:00",
+    "purpose": "One serial diagnostic countercheck of initial FR Handy desktop readiness timeout; initial result retained unchanged.",
+    "requestedUrl": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+    "width": 1440,
+    "browserSandboxEnabled": true,
+    "ownWrites": 0,
+    "publicPageNavigations": 1,
+    "blockedNonRead": 65,
+    "blockedKnownAnalyticsHosts": 2,
+    "blockedKnownReviewHosts": 1,
+    "unknown": [],
+    "checks": {
+      "http200": true,
+      "actualMainTheme": true,
+      "languagePathRetained": true,
+      "clientWidthExpected": true,
+      "documentFitsBeforeAndAfter": true,
+      "bodyFitsBeforeAndAfter": true,
+      "noWindowHorizontalMovement": true,
+      "navWithinViewport": true,
+      "expectedSiblingTargetsAndOrder": true,
+      "correctActiveTarget": true,
+      "allLinksRenderedAndTabbable": true,
+      "allSiblingLinksReachedByTab": true,
+      "widthRuleEffective": true
+    },
+    "pageErrors": [
+      "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D8EQE4JC77UAEKHUJCM0&lib=ttq' failed to load.",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch",
+      "Failed to fetch"
+    ],
+    "http": 200,
+    "beforeKeyboardEntry": {
+      "url": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+      "themeId": "213013037447",
+      "themeRole": "main",
+      "locale": "fr",
+      "viewport": 1440,
+      "clientWidth": 1440,
+      "htmlScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "scrollX": 0,
+      "navRect": {
+        "x": 40,
+        "right": 1400,
+        "width": 1360
+      },
+      "navStyle": {
+        "width": "1360px",
+        "minWidth": "0px",
+        "maxWidth": "min(1520px, 100%)",
+        "boxSizing": "border-box"
+      },
+      "row": {
+        "x": 64,
+        "right": 1376,
+        "width": 1312,
+        "clientWidth": 1312,
+        "scrollWidth": 1312,
+        "scrollLeft": 0
+      },
+      "focusedHref": null,
+      "focusInNav": false,
+      "links": [
+        {
+          "href": "/fr/collections/handy-zubehoer",
+          "text": "Alle",
+          "current": "page",
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 272.6875,
+            "right": 332.734375,
+            "width": 60.046875
+          }
+        },
+        {
+          "href": "/fr/collections/powerbanks",
+          "text": "Powerbanks",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 339.921875,
+            "right": 461.546875,
+            "width": 121.625
+          }
+        },
+        {
+          "href": "/fr/collections/ladegeraete-netzteile",
+          "text": "Ladegeräte & Netzteile",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 468.734375,
+            "right": 663.53125,
+            "width": 194.796875
+          }
+        },
+        {
+          "href": "/fr/collections/kabellos-laden",
+          "text": "Kabelloses Laden",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 670.71875,
+            "right": 829.8125,
+            "width": 159.09375
+          }
+        },
+        {
+          "href": "/fr/collections/auto-ladegeraete",
+          "text": "Auto-Ladegeräte",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 837,
+            "right": 991.796875,
+            "width": 154.796875
+          }
+        },
+        {
+          "href": "/fr/collections/ladekabel-datenkabel",
+          "text": "Ladekabel & Datenkabel",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 998.984375,
+            "right": 1203.375,
+            "width": 204.390625
+          }
+        },
+        {
+          "href": "/fr/collections/handyhalter-staender",
+          "text": "Handyhalter & Ständer",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 64,
+            "right": 258.703125,
+            "width": 194.703125
+          }
+        },
+        {
+          "href": "/fr/collections/handyhuellen-displayschutz",
+          "text": "Handyhüllen & Displayschutz",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 265.890625,
+            "right": 508.21875,
+            "width": 242.328125
+          }
+        },
+        {
+          "href": "/fr/collections/selfie-stative-foto",
+          "text": "Selfie, Stative & Foto-Zubehör",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 515.40625,
+            "right": 763.1875,
+            "width": 247.78125
+          }
+        }
+      ]
+    },
+    "visibleDialogs": 0,
+    "afterKeyboardTraversal": {
+      "url": "https://luxestyle.ch/fr/collections/handy-zubehoer",
+      "themeId": "213013037447",
+      "themeRole": "main",
+      "locale": "fr",
+      "viewport": 1440,
+      "clientWidth": 1440,
+      "htmlScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "scrollX": 0,
+      "navRect": {
+        "x": 40,
+        "right": 1400,
+        "width": 1360
+      },
+      "navStyle": {
+        "width": "1360px",
+        "minWidth": "0px",
+        "maxWidth": "min(1520px, 100%)",
+        "boxSizing": "border-box"
+      },
+      "row": {
+        "x": 64,
+        "right": 1376,
+        "width": 1312,
+        "clientWidth": 1312,
+        "scrollWidth": 1312,
+        "scrollLeft": 0
+      },
+      "focusedHref": "/fr/collections/selfie-stative-foto",
+      "focusInNav": true,
+      "links": [
+        {
+          "href": "/fr/collections/handy-zubehoer",
+          "text": "Alle",
+          "current": "page",
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 272.6875,
+            "right": 332.734375,
+            "width": 60.046875
+          }
+        },
+        {
+          "href": "/fr/collections/powerbanks",
+          "text": "Powerbanks",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 339.921875,
+            "right": 461.546875,
+            "width": 121.625
+          }
+        },
+        {
+          "href": "/fr/collections/ladegeraete-netzteile",
+          "text": "Ladegeräte & Netzteile",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 468.734375,
+            "right": 663.53125,
+            "width": 194.796875
+          }
+        },
+        {
+          "href": "/fr/collections/kabellos-laden",
+          "text": "Kabelloses Laden",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 670.71875,
+            "right": 829.8125,
+            "width": 159.09375
+          }
+        },
+        {
+          "href": "/fr/collections/auto-ladegeraete",
+          "text": "Auto-Ladegeräte",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 837,
+            "right": 991.796875,
+            "width": 154.796875
+          }
+        },
+        {
+          "href": "/fr/collections/ladekabel-datenkabel",
+          "text": "Ladekabel & Datenkabel",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 998.984375,
+            "right": 1203.375,
+            "width": 204.390625
+          }
+        },
+        {
+          "href": "/fr/collections/handyhalter-staender",
+          "text": "Handyhalter & Ständer",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 64,
+            "right": 258.703125,
+            "width": 194.703125
+          }
+        },
+        {
+          "href": "/fr/collections/handyhuellen-displayschutz",
+          "text": "Handyhüllen & Displayschutz",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 265.890625,
+            "right": 508.21875,
+            "width": 242.328125
+          }
+        },
+        {
+          "href": "/fr/collections/selfie-stative-foto",
+          "text": "Selfie, Stative & Foto-Zubehör",
+          "current": null,
+          "tabIndex": 0,
+          "rendered": true,
+          "rect": {
+            "x": 515.40625,
+            "right": 763.1875,
+            "width": 247.78125
+          }
+        }
+      ]
+    },
+    "keyboardTrace": [
+      {
+        "step": 0,
+        "method": "first-link focus entry",
+        "focusedHref": "/fr/collections/handy-zubehoer",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 1,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/powerbanks",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 2,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/ladegeraete-netzteile",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 3,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/kabellos-laden",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 4,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/auto-ladegeraete",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 5,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/ladekabel-datenkabel",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 6,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/handyhalter-staender",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 7,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/handyhuellen-displayschutz",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      },
+      {
+        "step": 8,
+        "method": "keyboard Tab",
+        "focusedHref": "/fr/collections/selfie-stative-foto",
+        "focusInNav": true,
+        "scrollX": 0,
+        "htmlScrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "row": {
+          "x": 64,
+          "right": 1376,
+          "width": 1312,
+          "clientWidth": 1312,
+          "scrollWidth": 1312,
+          "scrollLeft": 0
+        }
+      }
+    ],
+    "failed": [],
+    "screenshot": "/workspace/luxestyle-review/content-sales-20261103-r67/seo/fr-middle-1440-countercheck.png",
+    "passed": true
+  },
+  "finalCoveredViews": 8,
+  "publicPageNavigations": 9,
+  "initialUnknownPreserved": true,
+  "initialUnknownResolvedOnlyBySeparateProbe": true,
+  "finalConfirmedFailuresInScope": [],
+  "allEightNamedViewsCovered": true,
+  "ownThemeWrites": 0,
+  "newPatchRequiredForThisScope": false,
+  "googleIndexRankingOrSalesEffect": "unknown",
+  "nativeTemplateMd5LastVerifiedIn": "R64, not a new R67 native template hash measurement"
+}
