@@ -95,24 +95,35 @@ def funding_okx(inst):
 
 
 def funding(symbol, okx=None, alt=None):
-    """Tagesmittel der 8-Stunden-Funding-Sätze (0.0001 = 0,01 % je 8 h). BitMEX seit 2016, neueste Tage ergänzt aus OKX."""
-    tage, start, ab = {}, 0, _ab(alt)
-    while True:
-        url = f"https://www.bitmex.com/api/v1/funding?symbol={symbol}&count=500&start={start}&reverse=false" + (f"&startTime={ab}" if ab else "")
-        d = json.loads(_hole(url))
-        for x in d:
-            tage.setdefault(x["timestamp"][:10], []).append(float(x["fundingRate"]))
-        if len(d) < 500:
-            break
-        start += 500
-        time.sleep(2.1)  # BitMEX: 30 Anfragen pro Minute ohne Konto
+    """Tagesmittel der 8-Stunden-Funding-Sätze (0.0001 = 0,01 % je 8 h). BitMEX seit 2016, neueste Tage ergänzt aus OKX.
+    BitMEX sperrt manche Netze (HTTP 403) und drosselt (429): dann gelten der gespeicherte Stand plus die letzten ~3 Monate von OKX — vorher brach die ganze
+    Funktion ab und die Zeile «Funding» im Lagebild blieb leer («nicht verfügbar (HTTPError)»), obwohl OKX erreichbar war. Kam aus KEINER Quelle ein neuer Tag,
+    bleibt es beim Fehler (reihe() nimmt dann den gespeicherten Stand und lässt ihn nicht frisch aussehen). Nur Anzeige: kein Handel hängt an dieser Reihe."""
+    tage, start, ab, bitmex_fehler = {}, 0, _ab(alt), None
+    try:
+        while True:
+            url = f"https://www.bitmex.com/api/v1/funding?symbol={symbol}&count=500&start={start}&reverse=false" + (f"&startTime={ab}" if ab else "")
+            d = json.loads(_hole(url))
+            for x in d:
+                tage.setdefault(x["timestamp"][:10], []).append(float(x["fundingRate"]))
+            if len(d) < 500:
+                break
+            start += 500
+            time.sleep(2.1)  # BitMEX: 30 Anfragen pro Minute ohne Konto
+    except Exception as ex:  # noqa: BLE001
+        bitmex_fehler, tage = ex, {}              # halb geholte Seiten verwerfen: eine Reihe mit Loch ist schlechter als eine ohne neue Tage
     out = {**(alt or {}), **{t: sum(v) / len(v) for t, v in tage.items()}}
+    neu_aus_okx = False
     if okx:
         try:
             letzt = max(out) if out else ""
-            out.update({t: v for t, v in funding_okx(okx).items() if t > letzt})
+            neu = {t: v for t, v in funding_okx(okx).items() if t > letzt}
+            out.update(neu)
+            neu_aus_okx = bool(neu)
         except Exception:  # noqa: BLE001
             pass
+    if bitmex_fehler is not None and not neu_aus_okx:
+        raise bitmex_fehler
     return out
 
 

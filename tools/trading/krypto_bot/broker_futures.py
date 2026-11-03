@@ -38,6 +38,14 @@ HEBEL_HART = 2.0
 BAND = 0.25
 STOP_DATEI = HIER.parent / "ki_bot" / "STOP"  # Not-Aus: nichts eröffnen, bestehende Positionen schliessen
 MIN_AUFTRAG = 20.0
+# Testnetz = Spielgeld: schnell und mutig (Wunsch des Besitzers 03.11.2026: «die Trades müssen schnell gehen und hohes Risiko»). Ganzes Konto zu 80 % als Grundlage
+# (10 % bleiben als Pfand für den Satelliten, 10 % als Reserve) und der Aufbau geschieht in EINEM Lauf statt mit höchstens 1000 USDT je Auftrag und Tag.
+# Mit ECHTEM Geld bleiben die vorsichtigen Werte (50 %, 1000 USDT je Auftrag). KRYPTO_TEMPO=normal stellt auch im Testnetz auf sie zurück; gesetzte
+# KI_BOT_ANTEIL / KI_BOT_MAX_AUFTRAG gelten immer. Der Hebel bleibt bei der gewählten Risiko-Stufe (höchstens 2×, HEBEL_HART).
+TURBO_ANTEIL = 0.8
+TURBO_MAX_AUFTRAG = 1_000_000.0
+NORMAL_ANTEIL = 0.5
+NORMAL_MAX_AUFTRAG = 1000.0
 
 
 class BinanceFehler(urllib.error.HTTPError):
@@ -87,6 +95,7 @@ def einstellungen(env=None):
     echt = (env.get("BINANCE_FUTURES_TESTNET") or "true").strip().lower() == "false" and env.get("KI_BOT_ECHTGELD", "") == ECHTGELD_SATZ
     import pilot_kern as K
     hebel = K.risiko(None if env is os.environ else env)["max_hebel"]
+    turbo = not echt and (env.get("KRYPTO_TEMPO") or "").strip().lower() != "normal"
     url = env.get("BINANCE_FUTURES_URL")
     host = urllib.parse.urlparse(url).hostname if url else None
     url_fehler = (f"BINANCE_FUTURES_URL zeigt auf «{host}» — das passt nicht zum Modus {'Echtgeld' if echt else 'Testnetz'}. "
@@ -99,8 +108,9 @@ def einstellungen(env=None):
         "spot": env.get("BINANCE_SPOT_URL") or SPOT_URL,
         "echtgeld": echt, "symbol": (env.get("KRYPTO_FUTURES_SYMBOL") or "BTCUSDT").upper(),
         "max_hebel": max(0.0, min(HEBEL_HART, hebel)),
-        "anteil": max(0.0, min(1.0, env_zahl(env, "KI_BOT_ANTEIL", 0.5))),
-        "max_auftrag": max(0.0, env_zahl(env, "KI_BOT_MAX_AUFTRAG", 1000)),
+        "tempo": "turbo" if turbo else "normal",
+        "anteil": max(0.0, min(1.0, env_zahl(env, "KI_BOT_ANTEIL", TURBO_ANTEIL if turbo else NORMAL_ANTEIL))),
+        "max_auftrag": max(0.0, env_zahl(env, "KI_BOT_MAX_AUFTRAG", TURBO_MAX_AUFTRAG if turbo else NORMAL_MAX_AUFTRAG)),
         "stop": env.get("KI_BOT_STOP", "") == "1" or STOP_DATEI.exists(),
     }
 

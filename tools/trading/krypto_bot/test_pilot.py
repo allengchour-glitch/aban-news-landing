@@ -801,6 +801,84 @@ with _tf.TemporaryDirectory() as _hd:
            ("auftrag", "ETHUSDT") in reihenfolge and gesendet and "ETH ist abgewählt" in gesendet[0] and "SELL 1.5" in gesendet[0], (reihenfolge, gesendet))
     pruefe("Lagebild erst NACH allen Aufträgen geholt", reihenfolge[-1] == ("lage", None) and "Lagebild: test" in gesendet[0], reihenfolge)
 
+
+# ── Handelstempo: Testnetz = schnell und mutig (80 % des Kontos, Aufbau in einem Lauf), Echtgeld = vorsichtig (50 %, 1000 USDT je Auftrag) ──
+# Wunsch des Besitzers 03.11.2026: «die Trades müssen schnell gehen und hohes Risiko» (Spielgeld). Der Hebel selbst bleibt bei der Risiko-Stufe (höchstens 2×).
+_ECHT = {"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ}
+
+
+def _bf(**kw):
+    return BF.einstellungen({"BINANCE_FUTURES_API_KEY": "k", "BINANCE_FUTURES_API_SECRET": "s", **kw})
+
+
+_t0 = _bf()
+pruefe("Tempo: Testnetz ohne Angabe = Turbo (80 % des Kontos, Auftragsgrösse praktisch unbegrenzt)", _t0["tempo"] == "turbo" and _t0["anteil"] == 0.8 and _t0["max_auftrag"] >= 1e6 and not _t0["echtgeld"], _t0)
+_t1 = _bf(KRYPTO_TEMPO="normal")
+pruefe("Tempo: KRYPTO_TEMPO=normal stellt auch im Testnetz auf die vorsichtigen Werte (50 %, 1000 USDT je Auftrag)", _t1["tempo"] == "normal" and _t1["anteil"] == 0.5 and _t1["max_auftrag"] == 1000.0, _t1)
+pruefe("Tempo: andere Angaben (turbo, schnell, leer) und Gross-/Kleinschreibung: Turbo; «NORMAL» und « normal » gelten als normal",
+       all(_bf(KRYPTO_TEMPO=w)["tempo"] == "turbo" for w in ("turbo", "schnell", "", "an")) and all(_bf(KRYPTO_TEMPO=w)["tempo"] == "normal" for w in ("NORMAL", " normal ")))
+_t2 = _bf(KI_BOT_ANTEIL="0.3", KI_BOT_MAX_AUFTRAG="500")
+pruefe("Tempo: gesetzte KI_BOT_ANTEIL / KI_BOT_MAX_AUFTRAG gelten immer, auch im Turbo", _t2["tempo"] == "turbo" and _t2["anteil"] == 0.3 and _t2["max_auftrag"] == 500.0, _t2)
+pruefe("Tempo: der Anteil wird auf höchstens 1 begrenzt, Unsinn → Standard des Tempos", _bf(KI_BOT_ANTEIL="5")["anteil"] == 1.0 and _bf(KI_BOT_ANTEIL="viel")["anteil"] == 0.8 and _bf(KI_BOT_ANTEIL="viel", KRYPTO_TEMPO="normal")["anteil"] == 0.5)
+for _w in ("", "turbo", "schnell", "normal"):
+    _te = _bf(**_ECHT, KRYPTO_TEMPO=_w)
+    pruefe(f"Tempo: ECHTGELD ist nie Turbo (KRYPTO_TEMPO={_w!r}): 50 % und höchstens 1000 USDT je Auftrag", _te["echtgeld"] and _te["tempo"] == "normal" and _te["anteil"] == 0.5 and _te["max_auftrag"] == 1000.0, _te)
+pruefe("Tempo: der Hebel bleibt bei der Risiko-Stufe — der Turbo erhöht ihn nie (2× höchstens)", _bf(KRYPTO_RISIKO="2")["max_hebel"] == 2.0 and _bf(KRYPTO_RISIKO="1")["max_hebel"] == 1.0
+       and _bf(KRYPTO_RISIKO="9")["max_hebel"] <= 2.0 and _bf(KRYPTO_RISIKO="2", KRYPTO_TEMPO="normal")["max_hebel"] == 2.0)
+_R = {"step": 0.001, "min_qty": 0.001, "tick": 0.1, "min_notional": 100.0, "status": "TRADING"}
+_pt = BF.plane(_bf(KRYPTO_RISIKO="2"), 5000.0, 0.0, 76677.0, _R, 2.0, 0.5)
+_pn = BF.plane(_bf(KRYPTO_RISIKO="2", KRYPTO_TEMPO="normal"), 5000.0, 0.0, 76677.0, _R, 2.0, 0.5)
+pruefe("Tempo: Turbo baut das ganze Ziel (2× von 80 % des halben Kontos = 4000 USDT) in EINEM Auftrag auf", len(_pt) == 1 and _pt[0][0] == "BUY" and not _pt[0][2] and abs(_pt[0][1] * 76677.0 - 4000.0) <= 0.001 * 76677.0 + 1e-6, _pt)
+pruefe("Tempo: normal baut höchstens 1000 USDT je Auftrag auf (wie bisher)", len(_pn) == 1 and 0 < _pn[0][1] * 76677.0 <= 1000.0 + 1e-6, _pn)
+
+# ── Logbuch: derselbe Tag zweimal (Stufenwechsel, «Jetzt handeln»): der NEUESTE Entscheid steht da, nicht der erste.
+# Sonst zeigte das Cockpit «LONG 1.00×», während die Aufträge schon auf 2.00× gingen (Fund vom 03.11.2026 am Cockpit-Bild des Besitzers).
+def _entscheid_bsp(hebel, stand="2026-11-02", markt="BTC", detektor_ok=False):
+    return {"markt": markt, "symbol": markt + "USDT", "stand": stand, "kurs": 76677.0, "hebel": hebel, "hebel_roh": hebel,
+            "mvrv": {"tag": "2026-11-01", "wert": 1.45}, "bremse": None, "trend_tage": 150, "schnitt": 70000.0, "schwankung": 0.32,
+            "short_erlaubt": True, "max_hebel": 2.0, "risiko": 2.0, "detektor": {"ok": detektor_ok, "skill_2j": 0.22, "einbruch_1j": 0.1},
+            "stop_long": 72851.8, "stop_short": 80000.0}
+
+
+with _tf.TemporaryDirectory() as _hd2:
+    alt_lb2, alt_ausf2, alt_push2 = PI.LOGBUCH, BF.ausfuehren, _SG.push
+    PI.LOGBUCH = Path(_hd2) / "pilot.json"
+
+    def _ausf2(e_, trocken=False, symbol=None, gewicht=1.0, **k_):
+        e_["broker"] = {"position": 0.1, "hinweis": "", "fehler": False, "modus": "testnetz"}
+        return []
+
+    BF.ausfuehren, _SG.push = _ausf2, (lambda t: None)
+    try:
+        PI.handeln([_entscheid_bsp(1.0)], lambda: "Lage", trocken=False)
+        PI.handeln([_entscheid_bsp(2.0)], lambda: "Lage", trocken=False)
+        _e2 = [(x["stand"], x["hebel"]) for x in json.loads(PI.LOGBUCH.read_text())["entscheide"]]
+        pruefe("Logbuch: zweiter echter Lauf am selben Tag ersetzt den Entscheid (Hebel 2.0 statt des ersten 1.0), kein Doppel", _e2 == [("2026-11-02", 2.0)], _e2)
+        PI.handeln([_entscheid_bsp(1.0)], lambda: "Lage", trocken=True)
+        _e3 = [(x["stand"], x["hebel"]) for x in json.loads(PI.LOGBUCH.read_text())["entscheide"]]
+        pruefe("Logbuch: ein Probelauf überschreibt den Entscheid des Tages nie", _e3 == [("2026-11-02", 2.0)], _e3)
+        PI.handeln([_entscheid_bsp(2.0, stand="2026-11-03")], lambda: "Lage", trocken=False)
+        _e4 = [(x["stand"], x["hebel"]) for x in json.loads(PI.LOGBUCH.read_text())["entscheide"]]
+        pruefe("Logbuch: ein neuer Tag wird angehängt", _e4 == [("2026-11-02", 2.0), ("2026-11-03", 2.0)], _e4)
+        _brok = json.loads(PI.LOGBUCH.read_text())["entscheide"][0].get("broker")
+        pruefe("Logbuch: der ersetzte Entscheid trägt das Ergebnis der Aufträge (Broker-Angaben) des neuen Laufs", _brok and _brok.get("position") == 0.1, _brok)
+    finally:
+        PI.LOGBUCH, BF.ausfuehren, _SG.push = alt_lb2, alt_ausf2, alt_push2
+
+_lbm = {"entscheide": [], "kontostand": []}
+PI.entscheid_merken(_lbm, _entscheid_bsp(1.0, markt="BTC"))
+PI.entscheid_merken(_lbm, _entscheid_bsp(0.5, markt="ETH"))
+PI.entscheid_merken(_lbm, _entscheid_bsp(2.0, markt="BTC"))
+pruefe("entscheid_merken: ersetzt nur den Entscheid des GLEICHEN Marktes am gleichen Tag", [(x["markt"], x["hebel"]) for x in _lbm["entscheide"]] == [("BTC", 2.0), ("ETH", 0.5)], _lbm["entscheide"])
+PI.entscheid_merken(_lbm, _entscheid_bsp(1.0, markt="BTC"), ersetzen=False)
+pruefe("entscheid_merken: ersetzen=False lässt den Entscheid des Tages stehen", _lbm["entscheide"][0]["hebel"] == 2.0, _lbm["entscheide"])
+_lbm2 = {"entscheide": [{"stand": "2026-10-01", "hebel": 0.5}], "kontostand": []}  # altes Logbuch ohne «markt» = Bitcoin
+PI.entscheid_merken(_lbm2, _entscheid_bsp(1.0, stand="2026-10-01", markt="BTC"))
+pruefe("entscheid_merken: Eintrag ohne «markt» (Version 1) zählt als Bitcoin und wird ersetzt", len(_lbm2["entscheide"]) == 1 and _lbm2["entscheide"][0]["hebel"] == 1.0, _lbm2)
+_lbm3 = {"entscheide": [_entscheid_bsp(1.0, stand="2026-11-01")], "kontostand": []}
+PI.entscheid_merken(_lbm3, _entscheid_bsp(1.0, stand="2026-11-02"), ersetzen=False)
+pruefe("entscheid_merken: ein Probelauf an einem NEUEN Tag wird wie bisher angehängt", [x["stand"] for x in _lbm3["entscheide"]] == ["2026-11-01", "2026-11-02"], _lbm3)
+
 # ── nachgebauter Binance-Futures-Server ──
 GEHEIM = "futures-geheim"
 
@@ -907,7 +985,7 @@ srv = HTTPServer(("127.0.0.1", 0), Fake)
 threading.Thread(target=srv.serve_forever, daemon=True).start()
 url = f"http://127.0.0.1:{srv.server_port}"
 env = {"BINANCE_FUTURES_API_KEY": "KEY-F", "BINANCE_FUTURES_API_SECRET": GEHEIM, "BINANCE_FUTURES_URL": url, "BINANCE_SPOT_URL": url,
-       "KI_BOT_MAX_AUFTRAG": "100000"}
+       "KI_BOT_MAX_AUFTRAG": "100000", "KRYPTO_TEMPO": "normal"}  # «normal»: diese Tests prüfen den Ablauf mit den vorsichtigen Werten (50 % des Kontos); das Testnetz-Tempo hat eigene Prüfungen unten
 prot = []
 ent = {"hebel": 1.0, "stop_long": 45000.04, "stop_short": 55000.0, "stand": "2026-10-06"}
 BF.ausfuehren(ent, trocken=True, env=env, protokolliere=prot.append)
@@ -978,7 +1056,7 @@ BF.ausfuehren(e_hb, env=env, protokolliere=prot.append)
 Fake.hebel_fehler = False
 pruefe("Hebel senken bei offener Position (−4161) blockiert das Aufstocken nicht", Fake.pos == 0.2 and not e_hb["broker"]["fehler"], (Fake.pos, e_hb["broker"]))
 pruefe("Komma in Einstellungen legt nichts lahm", BF.einstellungen({"KI_BOT_ANTEIL": "0,4", "KI_BOT_MAX_AUFTRAG": "1'500"})["anteil"] == 0.4
-       and BF.einstellungen({"KI_BOT_MAX_AUFTRAG": "1'500"})["max_auftrag"] == 1500.0 and BF.einstellungen({"KI_BOT_ANTEIL": "viel"})["anteil"] == 0.5)
+       and BF.einstellungen({"KI_BOT_MAX_AUFTRAG": "1'500"})["max_auftrag"] == 1500.0 and BF.einstellungen({"KI_BOT_ANTEIL": "viel", "KRYPTO_TEMPO": "normal"})["anteil"] == 0.5)
 
 
 class Abbruch(Fake):

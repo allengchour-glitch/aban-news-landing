@@ -109,5 +109,91 @@ with tempfile.TemporaryDirectory() as tmp:
 pruefe("Lagebild markiert alte Werte", "(Stand 2024-01-01)" in I.text({"angst_gier": {"tag": "2024-01-01", "wert": 50}}, "2024-02-01")
        and "(Stand" not in I.text({"angst_gier": {"tag": "2024-01-31", "wert": 50}}, "2024-02-01"))
 
+# ── Funding: BitMEX gesperrt (HTTP 403, Fund vom 03.11.2026 am Cockpit des Besitzers: «Info funding_btc: nicht verfügbar (HTTPError)»), OKX erreichbar ──
+import time as _zeit  # noqa: E402
+import urllib.error as _ue  # noqa: E402
+from datetime import datetime as _dt, timezone as _tz  # noqa: E402
+
+
+def _ms(tag_):
+    return int(_dt.fromisoformat(tag_).replace(tzinfo=_tz.utc).timestamp() * 1000)
+
+
+def _netz(bitmex, okx_tage):
+    """Ersatz für infos._hole: BitMEX liefert `bitmex` (Liste von Datensätzen oder eine Ausnahme), OKX die Tage in okx_tage (eine Seite, danach leer)."""
+    zaehler = {"okx": 0}
+
+    def hole(url, versuche=3, kopf=None):
+        if "bitmex.com" in url:
+            if isinstance(bitmex, Exception):
+                raise bitmex
+            return json.dumps(bitmex)
+        if "okx.com" in url:
+            zaehler["okx"] += 1
+            if zaehler["okx"] > 1 or okx_tage is None:
+                if okx_tage is None:
+                    raise _ue.URLError("OKX nicht erreichbar")
+                return json.dumps({"code": "0", "data": []})
+            return json.dumps({"code": "0", "data": [{"fundingTime": str(_ms(t) + 8 * 3600 * 1000 * k), "fundingRate": str(v), "realizedRate": str(v)}
+                                                  for t, v in okx_tage.items() for k in (0,)]})
+        raise AssertionError(url)
+    return hole
+
+
+_h_alt, _sl_alt = I._hole, _zeit.sleep
+_zeit.sleep = lambda s: None
+try:
+    I._hole = _netz(_ue.HTTPError("https://www.bitmex.com/x", 403, "Forbidden", {}, None), {"2026-11-01": 0.0001, "2026-11-02": 0.00012})
+    f1 = I.funding("XBTUSD", "BTC-USDT-SWAP", None)
+    pruefe("Funding: BitMEX gesperrt (403), OKX erreichbar → die OKX-Tage kommen an (vorher: leer)", sorted(f1) == ["2026-11-01", "2026-11-02"] and abs(f1["2026-11-02"] - 0.00012) < 1e-12, f1)
+    I._hole = _netz(_ue.HTTPError("https://www.bitmex.com/x", 403, "Forbidden", {}, None), {"2026-11-01": 0.0001, "2026-11-02": 0.00012})  # frischer Zähler für die OKX-Seiten
+    f2 = I.funding("XBTUSD", "BTC-USDT-SWAP", {"2026-10-30": 0.0002, "2026-11-01": 0.0003})
+    pruefe("Funding: BitMEX gesperrt, gespeicherter Stand vorhanden → alter Stand bleibt, nur NEUERE OKX-Tage kommen dazu",
+           f2 == {"2026-10-30": 0.0002, "2026-11-01": 0.0003, "2026-11-02": 0.00012}, f2)
+    I._hole = _netz(_ue.HTTPError("https://www.bitmex.com/x", 403, "Forbidden", {}, None), None)
+    try:
+        I.funding("XBTUSD", "BTC-USDT-SWAP", {"2026-10-30": 0.0002})
+        beide_aus = False
+    except _ue.HTTPError:
+        beide_aus = True
+    pruefe("Funding: BitMEX UND OKX weg → der BitMEX-Fehler bleibt (reihe() nimmt den gespeicherten Stand, kein falsch frischer Zwischenspeicher)", beide_aus)
+    I._hole = _netz(_ue.HTTPError("https://www.bitmex.com/x", 403, "Forbidden", {}, None), {"2026-10-29": 0.0001})
+    try:
+        I.funding("XBTUSD", "BTC-USDT-SWAP", {"2026-10-30": 0.0002})
+        nichts_neu = False
+    except _ue.HTTPError:
+        nichts_neu = True
+    pruefe("Funding: BitMEX gesperrt und OKX bringt keinen NEUEN Tag → Fehler bleibt (nichts wird als frisch ausgegeben)", nichts_neu)
+    I._hole = _netz([{"timestamp": "2026-11-01T04:00:00.000Z", "fundingRate": 0.0001}, {"timestamp": "2026-11-01T12:00:00.000Z", "fundingRate": 0.0003}], {"2026-11-02": 0.0005})
+    f3 = I.funding("XBTUSD", "BTC-USDT-SWAP", None)
+    pruefe("Funding: BitMEX erreichbar → Tagesmittel aus BitMEX, neuere Tage aus OKX (wie bisher)", abs(f3["2026-11-01"] - 0.0002) < 1e-12 and f3["2026-11-02"] == 0.0005, f3)
+    _bm_seiten = {"n": 0}
+    _okx_nur = _netz(None, {"2026-11-01": 0.0001})
+
+    def _netz_halb(url, versuche=3, kopf=None):
+        """BitMEX: erste Seite (500 Sätze) kommt an, die zweite wird gedrosselt (429) — OKX wie gewohnt."""
+        if "bitmex.com" in url:
+            _bm_seiten["n"] += 1
+            if _bm_seiten["n"] == 1:
+                return json.dumps([{"timestamp": f"2020-01-{1 + (i // 3) % 28:02d}T00:00:00.000Z", "fundingRate": 0.0001} for i in range(500)])
+            raise _ue.HTTPError(url, 429, "Too Many Requests", {}, None)
+        return _okx_nur(url)
+    I._hole = _netz_halb
+    f4 = I.funding("XBTUSD", "BTC-USDT-SWAP", None)
+    pruefe("Funding: BitMEX bricht nach der ersten Seite ab (429) → halb geholte Seiten werden verworfen (keine Reihe mit Loch), OKX-Tage bleiben",
+           sorted(f4) == ["2026-11-01"] and _bm_seiten["n"] == 2, (sorted(f4)[:3], _bm_seiten))
+    with tempfile.TemporaryDirectory() as tmp2:
+        alt_daten2 = I.DATEN
+        I.DATEN = Path(tmp2)
+        try:
+            I._hole = _netz(_ue.HTTPError("https://www.bitmex.com/x", 403, "Forbidden", {}, None), {"2026-11-01": 0.0001, "2026-11-02": 0.00012})
+            r1 = I.reihe("funding_btc")
+            pruefe("reihe(funding_btc): ohne Speicher, BitMEX gesperrt → Werte aus OKX, Zwischenspeicher geschrieben", sorted(r1) == ["2026-11-01", "2026-11-02"] and (Path(tmp2) / "info_funding_btc.json").exists(), r1)
+            pruefe("Lagebild-Text nennt jetzt den Funding-Satz", "Funding BTC 0.0120 %" in I.text(I.lagebild(nur_speicher=True), "2026-11-03") or "0.01" in I.text({"funding_btc": {"tag": "2026-11-02", "wert": 0.00012}}, "2026-11-03"))
+        finally:
+            I.DATEN = alt_daten2
+finally:
+    I._hole, _zeit.sleep = _h_alt, _sl_alt
+
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)
