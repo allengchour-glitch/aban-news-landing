@@ -846,7 +846,13 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R74 Bildqualität | Alle vier Bilder visuell und unabhängig zweitgeprüft; fehlerhaften Taschenriemen gezielt korrigiert | V1 verworfen, V2 erneut geprüft; nur V2 im finalen Paket. Tatsächliche Layout-Ausschnitte vor Einbindung noch prüfen |
 | R74 Quellen/Identität | Shopify und Metricool frisch identifiziert; zwei verwendete Referenzdateien frisch nach Hash geprüft | LuxeStyle/CHF und Brand6227837/EuropeZurich/Kanäle passend; beide Referenzen HTTP200 und hashgleich, Fremdrechte/SKU-Treue dadurch nicht belegt |
 | R74 GitHub/Gedächtnis | Vier Bilder, Manifest und Paket mit SHA und exaktem Rücklesen gesichert; Revision74 ergänzt | Bestehendes Banner/R72/R73 erhalten, 23 IDs und 22 andere Aufgaben unverändert; kein ShopifyUpload, ThemeWrite, Publish, Report oder Kauf-Watch; Claude-Empfang unbekannt |
+| R75 neue Produktmotive | Auf neuesten Wunsch andere Shopprodukte gewählt; drei finale Lifestylebilder gerendert | Gewürztopf, Camping-Kochset und Hundematte; keine Produkt-Neuanlage. Unterkategorie-Video zurückgestellt |
+| R75 Produkt-/Quellenprüfung | Kleine Auswahl ohne Pagination, vier Produkte nativ gelesen; Originalbilder, verfügbare Storefrontvarianten und aktuelle Tags geprüft | Shopify/Metricool passend, Kanalwächter plus rueckhol ohne Treffer; keine Lager-/Lieferzeit- oder vollständige Varianten-/Rechteabnahme |
+| R75 Bildqualität | Vier Kandidaten und unabhängige Zweitsicht; Kaffeebild wegen veränderter Skalen-/Markenbeschriftung ausgeschlossen | Drei finale1536×1024-PNGs; Gewürztopf als Einzelstück. Lifestyle-Entwürfe ohne Produktfoto-Ersatz |
+| R75 Ablage/Gedächtnis | Drei PNGs, Manifest und Paket mit SHA/Rücklesen gesichert; Revision75 ergänzt | Banner/R74/R72/R73 erhalten; keinShopifyUpload, ThemeWrite, Publish, Report, Kauf-Watch oder neueAutomation; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R73_20261104] [Endgültige Kategorie-Ergänzungen, bisheriges Banner erhalten](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md). Keine Veröffentlichung oder Verkaufswirkung daraus abgeleitet.
 
 [LUXESTYLE_R74_20261104] [Vier zusätzliche Kategorieillustrationen](KATEGORIEBILDER-20261104-R74.md). Keine Veröffentlichung oder Verkaufswirkung behauptet.
+
+[LUXESTYLE_R75_20261104] [Neue Motive mit anderen Shop-Produkten](PRODUKTBILDER-20261104-R75.md). Kaffee ausgeschlossen, noch keine Website-Einbindung.
