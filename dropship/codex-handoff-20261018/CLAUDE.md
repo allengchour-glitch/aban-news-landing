@@ -1,5 +1,16 @@
 # LuxeStyle: Arbeitsbeginn für Claude Code
 
+## Aktueller Stand – 03.11.2026, Revision 72: Stöber-Startseite umgesetzt und im Entwurf geprüft
+
+Auf «push» jetzt einen konkreten [Zwei-Dateien-Patch](STARTSEITE-STOEBERN-20261103-R72.patch) erstellt und im bestehenden UNPUBLISHED-Theme 212978598279 gespeichert. [Übergabe und Prüfumfang](STARTSEITE-STOEBERN-20261103-R72.md) · [Ausgangs-/Zielhashes](STARTSEITE-STOEBERN-20261103-R72.json) · [Vorschau](https://luxestyle.ch/?preview_theme_id=212978598279).
+
+Alle 16 Kategorien bleiben kompakt erreichbar. Bestehende gemischte Produkte und Saisonideen stehen früher, Selbstgestalten nach den ersten Produktbereichen. 25 Produktkarten und 25 Herzen, Preise, Links, Sperrfilter und Übersetzungen erhalten. Erste Produktkarte bei 390 px jetzt 1594.56 statt 2708.48 px: rund 1114 px früher. Native Vorschau bei 320/390/1440 px geprüft, ohne horizontalen Seitenüberlauf. Ein ungünstiger 320-px-Wortumbruch korrigiert; zwölf gezielte Schlussbedingungen einschliesslich Touch und Tastatur erfüllt. Zwei unklare synthetische Gestentests aus der Erstprüfung bleiben dokumentiert.
+
+Nur sections/luxe-edit-home.liquid und assets/luxe-edit.css geändert, alle Writes exakt nativ zurückgelesen. Aktuelles MAIN 213013037447 unverändert; kein eigener Publish. Die Schnittstelle sperrt MAIN-Writes/Veröffentlichung. Bestehende Websitefreigabe bleibt gültig; keine erneute pauschale Freigabe nötig. Nur den engen Patch auf frisch geprüfte MAIN-Basis übernehmen, keinen alten Gesamtentwurf veröffentlichen und keine Schutzmechanismen umgehen. Claude-Kenntnisnahme bleibt unbekannt. Der scoped Claude-Einstieg wurde von R55 auf diesen Stand ergänzt, Historie erhalten.
+
+R69-Markenfilm bleibt separat vorhanden und nicht eingebunden. Heutige Reports nicht wiederholt; Kauf-Watch beendet. 23 Aufgaben-IDs, 22 andere Aufgaben, Historien und bestehende Frequenz erhalten.
+
+
 ## Aktueller Stand – 02.11.2026, GitHub-/MiniMax-Korrektur, Revision 55
 
 [Aktuell geprüfter MiniMax-Zugang R55](MINIMAX-ZUGANG-20261102-R55.md). Authentifiziertes GitHub-CLI und bestehender H3-Bild-zu-Video-Workflow sind vorhanden; `MINIMAX_API_KEY` ist im Workflow gebunden. Die frühere lokale CLI-/Runtime-Prüfung beweist keinen fehlenden GitHub-Weg. Bestehender Trockenlauf 41497876466 ist erfolgreich. Der bestehende echte Versuch 41498371388 scheiterte am 02.11. um 19:12 Zürich mit HTTP 402 insufficient balance (1008), ohne bestätigte MP4. Beide bestehenden Läufe samt maskierten Logs gelesen, keinen Job gestartet. Secret-Metadaten-403 ist kein Nachweis eines fehlenden Keys. Andere externe Claude-Nutzung bleibt möglich; keine Claude-Ausführung oder Website-Veröffentlichung behauptet.
