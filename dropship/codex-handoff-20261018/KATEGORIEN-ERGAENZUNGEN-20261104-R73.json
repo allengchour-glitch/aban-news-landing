@@ -1,0 +1,323 @@
+{
+  "revision": 73,
+  "at": "2026-11-03T23:26:48.833614+00:00",
+  "brand": "LuxeStyle",
+  "shopDomain": "luxestyle.ch",
+  "currency": "CHF",
+  "taskIds": [
+    "tech-category-structure-20261102",
+    "personalizer-fullscreen-20261029"
+  ],
+  "ownerScope": "Existing style and current banner preserved; add useful navigation and fix concrete errors. No redesign.",
+  "sourceMainThemeId": "213013037447",
+  "previewThemeId": "212978598279",
+  "previewRole": "UNPUBLISHED",
+  "previewUrl": "https://luxestyle.ch/collections/damen-schuhe?preview_theme_id=212978598279",
+  "files": [
+    {
+      "filename": "assets/luxe-category.css",
+      "kind": "existing",
+      "base": {
+        "bytes": 7051,
+        "md5": "c23e7c296735f98ee7e60f4bacc50c0c",
+        "sha256": "40f854086dbc5fcdbb55e68f7942ab36271730aa43deb7517d04d4518a0daa38",
+        "gitBlobSha": "915a779c0096ab8f5822909a959fcfd2ff4e5ffe"
+      },
+      "candidate": {
+        "bytes": 8059,
+        "md5": "e8fd262fda4b939e8599e9132ec4221b",
+        "sha256": "aa0d1149caf6be7dabbad02f78038c8c100b2e17dae749a9511f491adeb797a0",
+        "gitBlobSha": "a2773f52a8b2a5ab9e352f36c185aead6d9ab10f"
+      }
+    },
+    {
+      "filename": "assets/luxe-collection-explore.css",
+      "kind": "new",
+      "base": null,
+      "candidate": {
+        "bytes": 3725,
+        "md5": "2111462fac0d84d7b2fd4befdd8d22ee",
+        "sha256": "9814435ecc487fcb2b29ccbb945066f518118d3c2031b2a827783d5b7c0cd22c",
+        "gitBlobSha": "5666fc61422a03c7897dd53d27fd9a890c652c61"
+      }
+    },
+    {
+      "filename": "assets/luxe-collection-explore.js",
+      "kind": "new",
+      "base": null,
+      "candidate": {
+        "bytes": 2562,
+        "md5": "79910025a2afd12a4aa8468a91191219",
+        "sha256": "bb78c16aaf1f4a5dbc902a835b2f6c510ef5bc871d63509cce86773b1badef79",
+        "gitBlobSha": "3f3abea3b2c25779472579b211f2cd920193f56e"
+      }
+    },
+    {
+      "filename": "locales/de.json",
+      "kind": "existing",
+      "base": {
+        "bytes": 52012,
+        "md5": "cf07635898956f99cdedd88c95e65af5",
+        "sha256": "e9dda3604c66375dd4d908e5a9b7c9d0b107e6f20ba6cc055b9d975dbcf77a7e",
+        "gitBlobSha": "f0ebe9d8022376db6473be5bb73cd13532e304f0"
+      },
+      "candidate": {
+        "bytes": 52324,
+        "md5": "79298942e3189800c0e4180de3df0ccb",
+        "sha256": "6f91c59b0ee130e4fe836cbaa7a88eaab6ef9a51a46e2690be890dfbcb06517c",
+        "gitBlobSha": "a6ef73cf1aeb82af5a8db87f1088faabfbe2f0e4"
+      }
+    },
+    {
+      "filename": "locales/en.default.json",
+      "kind": "existing",
+      "base": {
+        "bytes": 49337,
+        "md5": "5eed965fe4e7c88612ed8f34517b1c18",
+        "sha256": "8bff308cd4e1c9cdf71828d1490c99dfdad85514b7d5eb78ebf1850767a40532",
+        "gitBlobSha": "1d8be20ca58242fee93f60e77447a35eb738aba1"
+      },
+      "candidate": {
+        "bytes": 49606,
+        "md5": "2f07c7b820f593cc58beb4e8ffc699b2",
+        "sha256": "a7db17cd15fa5546e1b7b0532888d747b975ea903c2a69a816ab6cd4f97ee811",
+        "gitBlobSha": "199ca3a1be60de0b31fd9ae9c7df6678530326c3"
+      }
+    },
+    {
+      "filename": "locales/fr.json",
+      "kind": "existing",
+      "base": {
+        "bytes": 31433,
+        "md5": "0a21cf6b810a2e2fd33552977912948b",
+        "sha256": "2d9bac0f5dbeb2304b7b5af15306d72dcd5a4499205186bc4c92a9217d535719",
+        "gitBlobSha": "e83a8baed6f76bf44c7c94c213db12de9079b9ce"
+      },
+      "candidate": {
+        "bytes": 31749,
+        "md5": "02500014b5e8773d11d3e5f7c4b41148",
+        "sha256": "bb70dd653af08c797aebb5a53467b6da7d3644ffeb66652af0b9a34d5094e1c6",
+        "gitBlobSha": "ed865c4561df5b7ecca46a230a0de9b1613278e3"
+      }
+    },
+    {
+      "filename": "snippets/luxe-collection-area-link.liquid",
+      "kind": "new",
+      "base": null,
+      "candidate": {
+        "bytes": 634,
+        "md5": "c5eecb573a1f30bd616be0c1e37def1f",
+        "sha256": "30b1cd5409fcd7c84d31d5b8fdc7cb0413beb033b374c0fc2e117e568c5c6f82",
+        "gitBlobSha": "13e8f91c994e35edb5e1098541c0cfde9ee68797"
+      }
+    },
+    {
+      "filename": "snippets/luxe-collection-explore.liquid",
+      "kind": "new",
+      "base": null,
+      "candidate": {
+        "bytes": 9257,
+        "md5": "602240b724df0f6815f46e4f62576d57",
+        "sha256": "566e28a949c598b5198608c019d0bb91eaf84cc7ed006d550fd4d5f7ab336d73",
+        "gitBlobSha": "97eca25509a9364d7541f8cb825d2f7c450b7be5"
+      }
+    },
+    {
+      "filename": "templates/collection.json",
+      "kind": "existing",
+      "base": {
+        "bytes": 27332,
+        "md5": "a2c97d98608b3794c9daebb020d7b8a5",
+        "sha256": "555574bd86af19cfbe308de8237a549f5299dae0cd2e269e8bebc5787d6e0467",
+        "gitBlobSha": "a99ee1a132f2ecb102cf7814bf4149166ee29aae"
+      },
+      "candidate": {
+        "bytes": 29052,
+        "md5": "9c4be8d52a077ead0c4128a85f148467",
+        "sha256": "66497cb2eb0566bafba668943abe784dd5a74c9d90c63e993307c903583c9246",
+        "gitBlobSha": "7f8842f04a52919e2df744aef0102696e5ec39ee"
+      }
+    }
+  ],
+  "nativeReadback": {
+    "at": "2026-11-03T23:24:27.368526+00:00",
+    "draftThemeId": "gid://shopify/OnlineStoreTheme/212978598279",
+    "draftRole": "UNPUBLISHED",
+    "mainThemeId": "gid://shopify/OnlineStoreTheme/213013037447",
+    "files": [
+      {
+        "filename": "assets/luxe-category.css",
+        "candidateMd5": "e8fd262fda4b939e8599e9132ec4221b",
+        "candidateSha256": "aa0d1149caf6be7dabbad02f78038c8c100b2e17dae749a9511f491adeb797a0",
+        "baseMd5": "c23e7c296735f98ee7e60f4bacc50c0c",
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "assets/luxe-collection-explore.css",
+        "candidateMd5": "2111462fac0d84d7b2fd4befdd8d22ee",
+        "candidateSha256": "9814435ecc487fcb2b29ccbb945066f518118d3c2031b2a827783d5b7c0cd22c",
+        "baseMd5": null,
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "assets/luxe-collection-explore.js",
+        "candidateMd5": "79910025a2afd12a4aa8468a91191219",
+        "candidateSha256": "bb78c16aaf1f4a5dbc902a835b2f6c510ef5bc871d63509cce86773b1badef79",
+        "baseMd5": null,
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "locales/de.json",
+        "candidateMd5": "79298942e3189800c0e4180de3df0ccb",
+        "candidateSha256": "6f91c59b0ee130e4fe836cbaa7a88eaab6ef9a51a46e2690be890dfbcb06517c",
+        "baseMd5": "cf07635898956f99cdedd88c95e65af5",
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "locales/en.default.json",
+        "candidateMd5": "2f07c7b820f593cc58beb4e8ffc699b2",
+        "candidateSha256": "a7db17cd15fa5546e1b7b0532888d747b975ea903c2a69a816ab6cd4f97ee811",
+        "baseMd5": "5eed965fe4e7c88612ed8f34517b1c18",
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "locales/fr.json",
+        "candidateMd5": "02500014b5e8773d11d3e5f7c4b41148",
+        "candidateSha256": "bb70dd653af08c797aebb5a53467b6da7d3644ffeb66652af0b9a34d5094e1c6",
+        "baseMd5": "0a21cf6b810a2e2fd33552977912948b",
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "snippets/luxe-collection-area-link.liquid",
+        "candidateMd5": "c5eecb573a1f30bd616be0c1e37def1f",
+        "candidateSha256": "30b1cd5409fcd7c84d31d5b8fdc7cb0413beb033b374c0fc2e117e568c5c6f82",
+        "baseMd5": null,
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "snippets/luxe-collection-explore.liquid",
+        "candidateMd5": "602240b724df0f6815f46e4f62576d57",
+        "candidateSha256": "566e28a949c598b5198608c019d0bb91eaf84cc7ed006d550fd4d5f7ab336d73",
+        "baseMd5": null,
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      },
+      {
+        "filename": "templates/collection.json",
+        "candidateMd5": "9c4be8d52a077ead0c4128a85f148467",
+        "candidateSha256": "66497cb2eb0566bafba668943abe784dd5a74c9d90c63e993307c903583c9246",
+        "baseMd5": "a2c97d98608b3794c9daebb020d7b8a5",
+        "nativeDraftByteExact": true,
+        "mainUnchangedOrAbsent": true
+      }
+    ],
+    "published": false,
+    "scope": "nine final files only, not complete old draft equivalence"
+  },
+  "patch": "KATEGORIEN-ERGAENZUNGEN-20261104-R73.patch",
+  "zip": "KATEGORIEN-ERGAENZUNGEN-20261104-R73.zip",
+  "qa": "KATEGORIEN-ERGAENZUNGEN-20261104-R73-QA.json",
+  "finalNativeChecks": {
+    "passed": 86,
+    "total": 87,
+    "failed": [
+      {
+        "handle": "hundewelt",
+        "width": 390,
+        "mode": null,
+        "name": "banner_images_identical_to_dated_MAIN",
+        "pass": false,
+        "evidence": null
+      }
+    ],
+    "unknown": []
+  },
+  "finalAcceptance": "no_ui_blocker_one_expected_collection_image_data_change",
+  "expectedDogBannerDataChange": {
+    "at": "2026-11-03T23:26:27.949067+00:00",
+    "passed": true,
+    "scope": "Local explanation of one original86/87 QA difference; no additional website reads",
+    "themeId": "212978598279",
+    "removedProduct": "https://luxestyle.ch/products/lernspielzeug-fur-kinder-hundert-zahlen-tafel-607600",
+    "removedImageUrl": "//luxestyle.ch/cdn/shop/files/77294eef-fd4e-42ea-b0fd-709d4050fa75.jpg?v=1792550048&width=640",
+    "replacementImageUrl": "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640",
+    "replacementProductUrl": "https://luxestyle.ch/products/hundewinterpullover-gross-4xl-7xl-370176",
+    "originalSourceLogic": "main/custom-lux_hero.liquid scans first12 products and uses first4 featured images >=500px. Layout/CSS unchanged.",
+    "savedCardSources": [
+      "audit/hundewelt.html",
+      "qa/PRODUCT-CARD-REGRESSION.json"
+    ],
+    "beforeImages": [
+      "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+      "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+      "//luxestyle.ch/cdn/shop/files/77294eef-fd4e-42ea-b0fd-709d4050fa75.jpg?v=1792550048&width=640",
+      "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640"
+    ],
+    "afterImages": [
+      "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+      "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+      "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640",
+      "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+    ],
+    "expectedCurrentImageCardMapping": [
+      {
+        "productUrl": "/products/hufttasche-fur-hundetraining-625200",
+        "image": "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640"
+      },
+      {
+        "productUrl": "/products/pu-leder-hundetoilettenbeutel-individuell-621500",
+        "image": "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640"
+      },
+      {
+        "productUrl": "/products/hundennasenmatte-aus-fleece-energie-intelligen-622000",
+        "image": "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640"
+      },
+      {
+        "productUrl": "/products/hundewinterpullover-gross-4xl-7xl-370176",
+        "image": "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+      }
+    ],
+    "resultMeaning": "The known narrow collection exclusion removes its image from the original dynamic banner; an existing dog product moves into position. This is a documented data consequence, not a banner redesign or UI blocker.",
+    "originalQaResultPreserved": "ADDITIVE-QA.json remains86/87 with the original failed image equality check"
+  },
+  "categoryDesignPublished": false,
+  "claudeReceipt": "unknown",
+  "alreadyLiveCorrection": {
+    "productId": "gid://shopify/Product/16655507915143",
+    "collectionId": "gid://shopify/Collection/689884037505",
+    "sourceId": "gid://shopify/CollectionConditionsSource/26063339905",
+    "atUtc": "2026-11-03T22:50:52Z",
+    "change": "Exclude only Hundert-Zahlen-Tafel from Hundewelt; original inclusion conditions and learning collection membership preserved",
+    "proof": {
+      "state": "confirmed_native_readback",
+      "collectionId": "gid://shopify/Collection/689884037505",
+      "excludedProductId": "gid://shopify/Product/16655507915143",
+      "beforeCount": {
+        "count": 2681,
+        "precision": "EXACT"
+      },
+      "afterCount": {
+        "count": 2680,
+        "precision": "EXACT"
+      },
+      "learningMembershipPreserved": true,
+      "inclusionConditionsUnchanged": true
+    },
+    "doNotRepeat": true
+  },
+  "applyConstraints": [
+    "Verify LuxeStyle and actual MAIN freshly. Compare all five existing base file hashes and absence of four new filenames.",
+    "If source differs, rebase narrowly; preserve all current banner, text, styling, menu, breadcrumb, USP, locale and R72 homepage work.",
+    "Transfer only nine files using an authorised supported path. Current connector blocks MAIN writes/publish; do not bypass or publish entire old draft.",
+    "Own obsolete header snippet in preview is unreferenced and excluded. Do not copy or activate it.",
+    "After supported publication, read back exact files and independently inspect public category pages. Until then unpublished preview only.",
+    "The single Hundewelt exclusion is already live; do not run it again. Unknown products must not be blindly reclassified."
+  ]
+}
