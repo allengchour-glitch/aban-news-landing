@@ -32,14 +32,23 @@ permissions:
 
 concurrency:
   group: krypto-paket-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}   # ein neuer Push im PR ersetzt den alten Lauf; auf main wird nie abgebrochen
 
 jobs:
   paket:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
+      # Das ganze Repo wiegt über 3 GB: nur holen, was die Selbsttests und der Paketbau brauchen (tools/trading, data, .gitignore)
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            /tools/trading/
+            /data/
+            /.gitignore
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
