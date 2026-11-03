@@ -1,0 +1,83 @@
+#!/usr/bin/python3 -I
+# Retusche Story 4 (Anti-Gravitations-Duftbefeuchter): entfernt die blasse Beschriftung «OFF» und «ON» am Geraetegehaeuse
+# im QUELLBILD (800x800). Verfahren: harmonische Fuellung (Laplace-Gleichung, Randwerte = umgebende echte Pixel), pro Farbkanal,
+# danach feine Koernung passend zur Umgebung. Es werden nur Pixel ueberschrieben, die in einem Kasten um die Schrift liegen
+# UND vom lokalen Untergrund abweichen (plus 2 px Saum fuer Kantenglaettung/JPEG-Ringing).
+# Aufruf: retusche_s4.py QUELLE AUSGABE.png [MODUS]    MODUS = text (nur OFF/ON, Schalter bleiben) | alles (auch Schiebeschalter-Symbole)
+import sys, hashlib
+import numpy as np
+from PIL import Image, ImageFilter
+
+SHA = "d767b043a6a6bb1eb849eddc05d50557286d25da6e13966158317c50193c1914"
+src_path, out_path = sys.argv[1], sys.argv[2]
+modus = sys.argv[3] if len(sys.argv) > 3 else "text"
+raw = open(src_path, "rb").read()
+if hashlib.sha256(raw).hexdigest() != SHA:
+    sys.stderr.write("FEHLER: SHA-256 der Quelle weicht ab\n"); sys.exit(2)
+im = Image.open(src_path).convert("RGB")
+a = np.asarray(im).astype(float)
+H, W, _ = a.shape
+
+# Kaesten (x0, y0, x1, y1) einschliesslich, im Quellbild (gemessen am 10-fach vergroesserten Kontrastbild)
+if modus == "text":
+    boxes = [(243, 526, 263, 547),    # OFF  (x 247..263, y 529..543); der Schiebebalken beginnt bei x 264
+             (294, 533, 316, 556)]    # ON   (x 296..313, y 536..552); der kleine Schalter liegt bei x 286..292
+elif modus == "alles":
+    boxes = [(243, 526, 274, 567),    # OFF + Schiebebalken (x 264..271, y 531..563)
+             (283, 531, 316, 557)]    # kleiner Schalter + ON
+else:
+    sys.stderr.write("FEHLER: MODUS text|alles\n"); sys.exit(2)
+
+def harmonic_fill(arr, mask):
+    """Loest 4*u - Summe(Nachbarn) = 0 fuer alle maskierten Pixel; Randwerte aus den unmaskierten Nachbarn."""
+    ys, xs = np.nonzero(mask)
+    n = len(ys)
+    idx = -np.ones(mask.shape, int); idx[ys, xs] = np.arange(n)
+    A = np.zeros((n, n)); b = np.zeros((n, 3))
+    for k, (y, x) in enumerate(zip(ys, xs)):
+        A[k, k] = 4.0
+        for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            yy, xx = y + dy, x + dx
+            if mask[yy, xx]: A[k, idx[yy, xx]] -= 1.0
+            else: b[k] += arr[yy, xx]
+    sol = np.linalg.solve(A, b)
+    out = arr.copy(); out[ys, xs] = sol
+    return out
+
+def dilate(m, r):
+    out = m.copy()
+    for _ in range(r):
+        o = out.copy()
+        o[1:, :] |= out[:-1, :]; o[:-1, :] |= out[1:, :]; o[:, 1:] |= out[:, :-1]; o[:, :-1] |= out[:, 1:]
+        out = o
+    return out
+
+L = a.mean(axis=2)
+box_mask = np.zeros((H, W), bool)
+for (x0, y0, x1, y1) in boxes: box_mask[y0:y1 + 1, x0:x1 + 1] = True
+# Schritt 1: Untergrundschaetzung = harmonische Fuellung des ganzen Kastens
+bg = harmonic_fill(a, box_mask)
+resid = np.abs(L - bg.mean(axis=2))
+# Schritt 2: nur abweichende Pixel (Schrift + Saum) im Kasten ersetzen
+text = (resid > 2.5) & box_mask
+mask = dilate(text, 2) & box_mask
+# der Rand des Kastens selbst darf nicht maskiert sein (sonst fehlen Randwerte): Kasten schrumpfen
+inner = np.zeros((H, W), bool)
+for (x0, y0, x1, y1) in boxes: inner[y0 + 1:y1, x0 + 1:x1] = True
+mask &= inner
+fill = harmonic_fill(a, mask)
+# feine Koernung: Standardabweichung der unmaskierten Nachbarschaft (Kasten + 6 px, ohne Maske) nach Abzug der Glaettung
+ring = dilate(box_mask, 6) & ~dilate(mask, 1)
+sm = np.asarray(Image.fromarray(a.clip(0, 255).astype("uint8")).filter(ImageFilter.GaussianBlur(2))).astype(float)
+sigma = float((a - sm)[ring].std())
+rng = np.random.default_rng(4)
+noise = rng.normal(0.0, sigma, size=(H, W, 1))
+out = fill.copy()
+out[mask] += noise[mask] * 0.4
+out = out.clip(0, 255)
+print("maskierte Pixel:", int(mask.sum()), "von Kasten:", int(box_mask.sum()), "| Koernung sigma", round(sigma, 2), "| Modus", modus)
+res = Image.fromarray(out.round().astype("uint8"))
+res.save(out_path)
+print("geschrieben:", out_path)
+# Kontrolle: groesste Abweichung der Fuellung vom Mittel der Randpixel
+print("max |Fuellung - Untergrund| im Kasten:", round(float(np.abs(out - bg)[box_mask].max()), 1))

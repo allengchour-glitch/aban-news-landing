@@ -1,0 +1,91 @@
+#!/usr/bin/python3 -I
+# Retusche Story 3 (Ewige Rose im Glas), im QUELLBILD (800x800), nur AUSSERHALB der Glashaube:
+#  R1  Der Rest des Goldtellers links neben der Haube (x < 273, y >= 553; der Hase selbst liegt links des Ausschnitts) wird mit der Wandfarbe
+#      der Zeilen darueber ueberdeckt (spaltenweise Fortsetzung der Wand, weicher Uebergang oben und zur Glaskante hin).
+#  R2  Das Tischtuch rechts der Haube unterhalb der Wand (x >= 527, y >= 604; liegt spaeter unter der Karte und schimmerte durch sie hindurch)
+#      wird ebenfalls mit der Wandfarbe fortgesetzt.
+#  R3  Ab Quellzeile 603 (spaeter unter der Karte) blendet das Bild zur Wandfarbe aus (kein Geisterbild durch die Karte).
+#  R4  Die dunkle Wand ausserhalb der Haube wird leicht weichgezeichnet (entfernt JPEG-Bloecke, die als helle Rechtecke sichtbar waren).
+# Die Haube, die Rose, die LEDs, der Leuchtdraht und alles innerhalb der Glaskanten (+8 px) bleiben oberhalb der verdeckten Zeile unveraendert.
+# RUNDE 2 (Funde der Gegenpruefung):
+#  R5  Orangefarbener Zickzack-Rest (Lichtdraht-Spiegelung) direkt LINKS der Glaskante (Quelle x 272..276, y 505..548): mit der Wandfarbe ueberdeckt, die dunkle Glaskante (x 277) und alles ab x 278 bleiben.
+#      (Der Fund nannte x 296..306; gemessen liegt der Rest bei x 272..277: 296..306 waere INNERHALB des Glases.) Der Teller-Rest R1 reicht jetzt bis x 276 statt bis x 272.
+#  R3  Verdeckte Zeile ist jetzt ein Parameter (VERD, Vorgabe 645.0 = Kartenoberkante y 994 im fertigen Bild bei Ausschnitt 205:0:390:700, Faktor 526/390, Fotooberkante y 124): hart ab dort Wandfarbe, kein Durchscheinen durch die Karte.
+#  R4  Neben der Haube bleibt nur der LED-Lichtschein (heller als die Wand), dunklere Hoefe entfallen; die Wand wird weiter weg auf EXAKT dieselbe Farbe wie die Hinterlegung gesetzt (WAND, sanft zwischen 28 und 68 px Abstand zur Glaskante): kein Fotoschleier, keine Rechteckkante.
+# Aufruf: retusche_s3.py QUELLE AUSGABE.png [VERD]
+import sys, hashlib
+import numpy as np
+from PIL import Image
+
+SHA = "a1d59903f657f84b0335bac7459c47e6d974aa45677d0465ae40105aadf7d7ad"
+src_path, out_path = sys.argv[1], sys.argv[2]
+VERD = float(sys.argv[3]) if len(sys.argv) > 3 else 645.0   # erste vom Kartenrand verdeckte Quellzeile
+if hashlib.sha256(open(src_path, "rb").read()).hexdigest() != SHA:
+    sys.stderr.write("FEHLER: SHA-256 der Quelle weicht ab\n"); sys.exit(2)
+a = np.asarray(Image.open(src_path).convert("RGB")).astype(float)
+H, W, _ = a.shape
+
+def box_smooth_x(v, k):
+    pad = k // 2
+    vp = np.concatenate([np.repeat(v[:1], pad, 0), v, np.repeat(v[-1:], pad, 0)])
+    c = np.cumsum(np.vstack([np.zeros((1, v.shape[1])), vp]), axis=0)
+    return (c[k:] - c[:-k]) / k
+
+def ramp(v, v0, v1):          # 0 bei v0, 1 bei v1 (glatt)
+    t = np.clip((v - v0) / float(v1 - v0), 0, 1); return t * t * (3 - 2 * t)
+
+ys = np.arange(H)[:, None]; xs = np.arange(W)[None, :]
+rng = np.random.default_rng(3)
+out = a.copy()
+
+# R1: Teller-Rest links der Haube
+wall1 = box_smooth_x(a[528:544].mean(axis=0), 7)                    # W x 3, Wandfarbe je Spalte aus Zeilen 528..543
+w1 = ramp(ys, 548, 555) * (1.0 - ramp(xs, 275.5, 277.5)) * (xs >= 195)  # nach oben und zur Glaskante (x 277) weich
+new1 = np.broadcast_to(wall1[None, :, :], (H, W, 3))
+out = out * (1 - w1[..., None]) + new1 * w1[..., None]
+
+# R5: Zickzack-Rest links der Glaskante (Quelle x 255..276, y 498..548); Wandfarbe je Spalte aus den Zeilen 470..490 (dort ist die Wand rein)
+wall5 = box_smooth_x(a[470:491].mean(axis=0), 7)
+w5 = ramp(ys, 497, 503) * (1.0 - ramp(xs, 275.5, 277.5)) * (xs >= 255)
+new5 = np.broadcast_to(wall5[None, :, :], (H, W, 3))
+out = out * (1 - w5[..., None]) + new5 * w5[..., None]
+
+# R2: Tischtuch rechts, unter der Wandkante (wird spaeter von der Karte verdeckt)
+wall2 = box_smooth_x(a[588:600].mean(axis=0), 7)
+w2 = ramp(ys, 600, 606) * ramp(xs, 523, 528)
+new2 = np.broadcast_to(wall2[None, :, :], (H, W, 3))
+out = out * (1 - w2[..., None]) + new2 * w2[..., None]
+
+# R3: Zeilen ab 603 liegen spaeter unter der Karte (Kartenoberkante = Quellzeile 603). Dort blenden Haubenboden/Holzsockel nach oben zur Wandfarbe aus,
+#     damit sie nicht als helles Geisterbild durch die halbtransparente Karte schimmern. Zeilen < 603 (sichtbar) bleiben unveraendert.
+WAND = np.array([42.0, 36.0, 26.0])     # Wandfarbe = Median der Wand im Quellbild = BGFARBE der Hinterlegung
+w3 = ramp(ys, VERD, VERD + 2.5) * np.ones((1, W))     # hart ab der verdeckten Zeile (2,5 Zeilen Uebergang gegen Resampling-Saum)
+out = out * (1 - w3[..., None]) + WAND[None, None, :] * w3[..., None]
+out = out.clip(0, 255)
+
+# R4: Die dunkle Wand ausserhalb der Haube traegt leichte JPEG-Bloecke (8x8, gemessen +-3 Stufen, oben rechts als helles Rechteck sichtbar). Dort weichzeichnen (sigma 22: flaechige Farbunterschiede der JPEG-Bloecke gehen in einen sanften Verlauf ueber),
+#     nur fuer dunkle Pixel (Leuchtfleck oben an der Haube bleibt scharf); innerhalb der Glaskanten (+8 px, Uebergang bis +14 px) bleibt alles unveraendert.
+def gauss_np(arr, sigma):
+    r = int(3 * sigma); k = np.exp(-0.5 * (np.arange(-r, r + 1) / sigma) ** 2); k /= k.sum()
+    t = np.apply_along_axis(lambda v: np.convolve(np.pad(v, r, mode="edge"), k, mode="valid"), 0, arr)
+    return np.apply_along_axis(lambda v: np.convolve(np.pad(v, r, mode="edge"), k, mode="valid"), 1, t)
+yy, xx = np.mgrid[0:H, 0:W]
+sdist = np.where(yy < 240, np.hypot(xx - 401, yy - 240) - 132, np.abs(xx - 401) - 132)
+lum = out.mean(axis=2)
+wallpix = ((sdist > 6) & (lum < 90)).astype(float)                       # nur echte Wandpixel tragen zur Weichzeichnung bei (kein Lichtfleck der Haube)
+bl = gauss_np(out * wallpix[..., None], 22.0) / (gauss_np(wallpix, 22.0)[..., None] + 1e-6)
+bl = np.maximum(bl, WAND[None, None, :])        # Runde 2: nur Aufhellung (Lichtschein der LEDs) bleibt, dunklere Hoefe/Schatten neben der Glaskante entfallen (waren als dunkles Band neben der Haube sichtbar)
+w4 = ramp(sdist, 0, 14) * (1.0 - ramp(lum, 90, 140))
+out = out * (1 - w4[..., None]) + bl * w4[..., None]
+# R4b: weit weg von der Haube EXAKT die Hinterlegungsfarbe (sdist = Abstand zur Glaskante + 10 px; Fotorand liegt bei sdist 62..64 seitlich und 108 oben)
+wf = ramp(sdist, 18, 58)
+out = out * (1 - wf[..., None]) + WAND[None, None, :] * wf[..., None]
+changed = (np.abs(out - a).max(axis=2) > 0.5)
+print("veraenderte Pixel:", int(changed.sum()), "| Zeilen %d..%d, Spalten %d..%d" % (np.where(changed)[0].min(), np.where(changed)[0].max(), np.where(changed)[1].min(), np.where(changed)[1].max()))
+# Kontrolle: innerhalb der Glaskanten (sdist < -12 = mehr als 2 px innerhalb der Glasaussenkante) und oberhalb der verdeckten Zeile darf sich NICHTS aendern
+inside = (sdist < -12) & (yy < VERD - 2)
+print("max Aenderung INNERHALB der Glaskanten (sdist < -12, Zeilen < %.0f): %.3f" % (VERD - 2, float(np.abs(out - a)[inside].max())))
+ring = (sdist >= -12) & (sdist < 14) & (yy < VERD - 2)
+print("max Aenderung im Ring 12 px innen bis 14 px ausserhalb der Glaskante: %.1f (Glasrand mit R5/R1 links, Leuchtfleck bleibt)" % float(np.abs(out - a)[ring].max()))
+Image.fromarray(out.round().astype("uint8")).save(out_path)
+print("geschrieben:", out_path)
