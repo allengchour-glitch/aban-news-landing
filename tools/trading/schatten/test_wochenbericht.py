@@ -49,4 +49,26 @@ with tempfile.TemporaryDirectory() as d:
 with tempfile.TemporaryDirectory() as d:
     k = Path(d) / "kaputt.json"; k.write_text("{nicht json", encoding="utf-8")
     ok(W.lies(k) == {} and W.lies(Path(d) / "gibtsnicht.json") == {}, "kaputte oder fehlende Datei = leeres Logbuch")
+# 8. Satelliten-Experiment (Top-10-Regel) im Bericht
+def sat(n, **reihen):
+    tage_ = [{"tag": f"2026-11-{k + 1:02d}", **{key: w[k] for key, w in reihen.items()}} for k in range(n)]
+    return {"start": "2026-11-01", "tage": tage_, "reihen": {"S1": {"menge": {"SOLUSDT": 1.0, "ADAUSDT": 2.0}}, "S2": {"menge": {}}}}
+sb = sat(3, S1=[10000, 9500, 9000], S2=[10000, 10000, 10100], BTC150=[10000, 10200, 10100], BTC=[10000, 9800, 9600])
+sa = W.satellit_abschnitt(sb)
+txt = "\n".join(sa)
+ok(sa and "### Satelliten-Experiment (Top-10-Regel, Spielgeld), 3 Tage seit 2026-11-01" in txt, "Satellit: Überschrift mit Tagen und Start")
+ok("| Top-10-Regel wie getestet | −10,0 % | −10,0 % |" in txt and "| Satellit (ohne Bitcoin und Ether) | +1,0 % | +0,0 % |" in txt, "Satellit: Tabellenzeilen mit Rendite und Einbruch")
+ok("| Bitcoin gehalten (Vergleich) | −4,0 % | −4,0 % |" in txt and "Bitcoin mit Trend 150 (Vergleich)" in txt, "Satellit: beide Vergleichsreihen")
+ok("Gehalten: S1: ADA, SOL; S2: nur USDT." in txt, "Satellit: gehaltene Coins ohne USDT-Endung, leere Reihe = nur USDT")
+ok("bestand ihren Test am 13.10.2026 nicht" in txt and "Unter 8 Wochen ist das kein Urteil." in txt, "Satellit: ehrlicher Hinweis auf den nicht bestandenen Test und «kein Urteil»")
+ok("Auch nach 8 Wochen noch kein Beweis." in "\n".join(W.satellit_abschnitt(sat(60, S1=[10000] * 60, S2=[10000] * 60))), "Satellit: ab 56 Tagen «noch kein Beweis»")
+ok(W.satellit_abschnitt(None) == [] and W.satellit_abschnitt({}) == [] and W.satellit_abschnitt(sat(1, S1=[10000])) == [], "Satellit: ohne zweiten Tag kein Abschnitt")
+ok("| Bitcoin gehalten" not in "\n".join(W.satellit_abschnitt(sat(3, S1=[1, 1, 1], S2=[1, 1, 1]))), "Satellit: fehlende Reihen werden übersprungen")
+ok("Satelliten-Experiment" in W.abschnitt(lb, sb)[1] and "Satelliten-Experiment" not in W.abschnitt(lb)[1], "abschnitt: mit Satelliten-Buch ein Zusatz, ohne nicht (alte Aufrufe unverändert)")
+for n_t, wort in ((30, "Unter 8 Wochen ist das kein Urteil."), (55, "Unter 8 Wochen ist das kein Urteil."), (56, "Auch nach 8 Wochen noch kein Beweis.")):
+    ok(wort in "\n".join(W.satellit_abschnitt(sat(n_t, S1=[10000] * n_t, S2=[10000] * n_t))), f"Satellit: bei {n_t} Tagen «{wort}»")
+with tempfile.TemporaryDirectory() as d:
+    f = Path(d) / "b.md"
+    W.schreiben(lb, f, sb=sb)
+    ok("Satelliten-Experiment" in f.read_text(encoding="utf-8"), "schreiben: der Zusatz landet in der Berichtsdatei")
 print(f"\n{ok_n} bestanden, {fail} fehlgeschlagen"); sys.exit(1 if fail else 0)

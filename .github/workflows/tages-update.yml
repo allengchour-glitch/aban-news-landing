@@ -82,7 +82,7 @@ jobs:
     needs: uebungsdepot
     if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -110,12 +110,20 @@ jobs:
       - name: Krypto-Pilot Schattenbuch (Spielgeld)
         if: always()
         run: python tools/trading/schatten/pilot_schatten.py --lauf
+      - name: Satelliten-Schattenbuch (Spielgeld, Top-10-Regel)
+        # Vorwärtstest der Regel «Top 10 nach Volumen, Trend je Coin, Bitcoin-Filter» (alle_coins_pruefung.py: bestand ihren Test NICHT).
+        # Erst die Tests, dann der Lauf: fällt ein Test durch, wird nichts verbucht. Öffentliche Kurse (data-api.binance.vision), keine Schlüssel.
+        if: always()
+        run: |
+          python tools/trading/krypto_bot/test_satellit.py | tail -n 3
+          python tools/trading/schatten/test_satellit_schatten.py | tail -n 3
+          python tools/trading/schatten/satellit_schatten.py --lauf
       - name: Logbücher committen (falls geaendert)
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for f in data/ki-bot-schatten.json data/krypto-pilot-schatten.json; do if [ -f "$f" ]; then git add "$f"; fi; done
+          for f in data/ki-bot-schatten.json data/krypto-pilot-schatten.json data/krypto-satellit-schatten.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git config user.name "aban-news-bot"
             git config user.email "bot@users.noreply.github.com"
