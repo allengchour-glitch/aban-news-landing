@@ -1,5 +1,14 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 74: vier zusätzliche Kategoriebilder
+
+Auf «mehr neue Bilder» und «weiter» vier neue Motive tatsächlich generiert: Wohnen mit blauem Akzent, dunkles Schmuck-Stillleben, frische Beauty-Draufsicht und Tasche im Tageslicht. [Bilder und Verwendung](KATEGORIEBILDER-20261104-R74.md) · [Dateien/Quellen/Hashes](KATEGORIEBILDER-20261104-R74.json) · [Viererpaket](KATEGORIEBILDER-20261104-R74.zip). Je 1536 × 1024 px; eigenständige Bildaufbauten statt Wiederholung derselben Szene.
+
+Sichtprüfung und unabhängige Zweitsicht erfolgt. Taschen-V1 mit losem Riemenende verworfen; ausschliesslich die korrigierte V2 ist im Paket. Beauty-/Taschen-Referenzen frisch HTTP200 und bytegleich zur genutzten Quelle. Alle Bilder sind Kategorieillustrationen, keine geprüften SKU-Fotos oder Belege für Materialien/Verfügbarkeit; eigenständige Fremdrechte der Referenzbilder bleiben ungeklärt.
+
+**Bestehendes Banner und alle Website-Dateien erhalten.** Noch keine Einbindung, kein Shopify-Medienupload oder Publish. Für spätere zusätzliche Karten passenden Sortimentskontext und echte mobile Ausschnitte prüfen; kein Banner- oder Produktfoto-Ersatz. R72-/R73-Pakete unverändert gültig. GitHub-Dateien exakt zurückgelesen; Claude-Empfang unbekannt. 23 Aufgaben-IDs und 22 andere Aufgaben erhalten; keine Reports, Kauf-Watch oder neue Automation.
+
+
 ## Aktueller Stand – 04.11.2026, Revision 73: bestehendes Design behalten, Kategorien gezielt ergänzen
 
 Massgebend sind die letzten Inhaberpräzisierungen: «das jetzige banner gefällt mir aber mehr» und Verbesserungen/Fehlerbehebung für gezieltes und freies Stöbern. **Banner, vorhandener Stil und relative Abschnittsreihenfolge bleiben erhalten.** Kein kompletter Neuaufbau. [Endgültiges Ergänzungspaket](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md) · [Patch](KATEGORIEN-ERGAENZUNGEN-20261104-R73.patch) · [Transfermanifest](KATEGORIEN-ERGAENZUNGEN-20261104-R73.json) · [Vorschau](https://luxestyle.ch/collections/damen-schuhe?preview_theme_id=212978598279).
