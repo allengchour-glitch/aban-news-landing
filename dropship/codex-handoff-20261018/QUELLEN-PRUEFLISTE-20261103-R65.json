@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "LUXESTYLE-R65-SOURCE-REVIEW-ONLY",
+  "checkedAtUtc": "2026-11-03T08:39:01.046123+00:00",
+  "shop": "luxestyle.ch",
+  "scope": "Three unresolved export-to-source contexts only; not a feed upload, replacement or deletion plan.",
+  "allOfferIdsAreOpaqueStrings": true,
+  "missingSourceAndSubmittedUrlMeansUnknown": true,
+  "sourceIdentity": {
+    "merchantAccountHistoricalReference": "5797470070",
+    "authenticatedCurrentDataSource": null,
+    "authenticatedCurrentSubmittedUrls": null
+  },
+  "entries": [
+    {
+      "exportOfferId": "shopify_ZZ_15525460672897_56225328824705",
+      "exportLanguage": "de",
+      "exportFeedLabel": "CHF_99383214465",
+      "exportIsDataNotInstruction": true,
+      "shopifyProductId": "gid://shopify/Product/15525460672897",
+      "historicalExportVariantId": "gid://shopify/ProductVariant/56225328824705",
+      "historicalSkuFromR42": "CJ-2511220828321604600",
+      "nativeOldVariantNode": null,
+      "successfulCurrentControlVariantId": "gid://shopify/ProductVariant/67874513322375",
+      "currentVariantsRead": 6,
+      "currentVariantBindings": [
+        {
+          "variantId": "gid://shopify/ProductVariant/67874513322375",
+          "sku": "CJJT261357801AZ",
+          "type": "Typ A",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+          "imageSha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd"
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67874513355143",
+          "sku": "CJJT261357802BY",
+          "type": "Typ A",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48135295-96c3-49cf-9e9b-a8dc5972c7d9.jpg?v=1788591314",
+          "imageSha256": "73ec990e4670689caeb377e617c7b0d8561e40ef6df4bafa47c5fdb7b29d96cd"
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67874513387911",
+          "sku": "CJJT261357803CX",
+          "type": "Typ B",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fa4e06f-3eac-40f9-ad62-e2700ba73b62.jpg?v=1788591314",
+          "imageSha256": "74cc608fed92044d496c835034cec9ee3fa5b73682d4299ea68d0bf2d44726ea"
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67874513420679",
+          "sku": "CJJT261357804DW",
+          "type": "Typ B",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1fa4e06f-3eac-40f9-ad62-e2700ba73b62.jpg?v=1788591314",
+          "imageSha256": "74cc608fed92044d496c835034cec9ee3fa5b73682d4299ea68d0bf2d44726ea"
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67874513453447",
+          "sku": "CJJT261357805EV",
+          "type": "Typ C",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2685afe5-6908-4d88-8c17-7cbc9c0fc90f.jpg?v=1788591314",
+          "imageSha256": "46d25be7a30b246d7f6fc80e56c10a8caa9a6e3d45703618d843b0763d419a94"
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/67874513486215",
+          "sku": "CJJT261357806FU",
+          "type": "Typ C",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2685afe5-6908-4d88-8c17-7cbc9c0fc90f.jpg?v=1788591314",
+          "imageSha256": "46d25be7a30b246d7f6fc80e56c10a8caa9a6e3d45703618d843b0763d419a94"
+        }
+      ],
+      "replacementOfferId": null,
+      "oldOfferCurrentGoogleState": "unknown",
+      "submittedProductUrl": null,
+      "activeDataSourceId": null,
+      "nextReadOnlyCheck": "Read exactly this original Merchant offer and its source in a legitimate editor; determine whether it is still submitted and which current SKU/URL/image it claims. No guessed reassignment to a current default.",
+      "causeAndTimeOfVariantChange": "unknown"
+    },
+    {
+      "exportOfferId": "6917317292929955722",
+      "exportTitle": "Leinwandbild für Ihr Zuhause | LuxeStyle CH",
+      "exportLanguage": "de",
+      "exportFeedLabel": "CH",
+      "shopifyProductId": null,
+      "shopifyVariantId": null,
+      "activeDataSourceId": null,
+      "submittedProductUrl": null,
+      "recommendation": "Motiv",
+      "recommendationIsNotDisapproval": true,
+      "existingMotifSemanticallyPresent": false,
+      "titleOrOfferNumberNotUsedForShopifyMatching": true,
+      "nextReadOnlyCheck": "Read the exact original offer detail with source ID/type and submitted product URL; only then bind a native product/variant and true image. Do not invent a motif or replace materials, measurements or delivery promises from the title."
+    },
+    {
+      "exportOfferId": "1083834440623406112",
+      "exportTitle": "Marseille Panorama Leinwandbild",
+      "exportLanguage": "de",
+      "exportFeedLabel": "CH",
+      "shopifyProductId": null,
+      "shopifyVariantId": null,
+      "activeDataSourceId": null,
+      "submittedProductUrl": null,
+      "recommendation": "Motiv",
+      "recommendationIsNotDisapproval": true,
+      "existingMotifSemanticallyPresent": true,
+      "titleOrOfferNumberNotUsedForShopifyMatching": true,
+      "nextReadOnlyCheck": "Read the exact original offer detail with source ID/type and submitted product URL; only then bind a native product/variant and true image. Do not invent a motif or replace materials, measurements or delivery promises from the title."
+    }
+  ],
+  "notPerformed": [
+    "merchant data query retry",
+    "feed upload",
+    "offer reassignment",
+    "offer deletion",
+    "variant restoration",
+    "shop product change",
+    "report query",
+    "order watch"
+  ]
+}
