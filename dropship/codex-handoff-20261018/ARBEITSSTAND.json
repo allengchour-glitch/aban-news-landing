@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 65,
-  "updatedAt": "2026-11-03T08:45:15.678968+00:00",
+  "revision": 66,
+  "updatedAt": "2026-11-03T08:53:43.567362+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1707,13 +1707,14 @@
       "priorityKind": "SETZUNG",
       "state": "blockiert",
       "title": "Bestehenden Pyjama-Ads-Entwurf eng auf Startvoraussetzungen prüfen",
-      "lastEvidenceDate": "2026-11-01",
-      "belegArt": "GEMESSEN/VORBEREITET",
-      "lastEvidence": "Konto 719-826-3241 CHF: Kampagne 24403263741 PAUSED, Gruppe/Anzeige/acht Keywords ENABLED. CUSTOM_PERIOD 58 Mio. Micros CHF und 30.10.–05.11. direkt gelesen. Auto-Tagging neu True; kampagnenspezifische Kaufzielbindung und vollständige finale Startprüfung weiter offen. Kein Write, Force-Refresh oder Upgrade. Pyjama-Einstieg HTTP200 und Preis-pro-Person-Klarstellung vorhanden. Neue echte Shopify-Käufe sind kein Ads-Zuordnungs- oder Conversion-Tracking-Beleg.",
-      "nextAllowedStep": "Native kampagnenspezifische Kaufzielbindung sowie übrige ursprüngliche Startparameter belegen, dann finale Startprüfung des bestehenden CHF-58-Entwurfs. Keine automatische Aktivierung oder Verlängerung; ursprüngliches Enddatum 05.11. erhalten.",
+      "lastEvidenceDate": "2026-11-03",
+      "belegArt": "SCREENSHOT_VIER_GROWTH_KARTEN_DREI_KONFIGURATIONSLESUNGEN_LEER_ODER_INKOMPATIBEL_AKTUELLER_STATUS_UNBEKANNT",
+      "lastEvidence": "Konto 719-826-3241 CHF: Kampagne 24403263741 PAUSED, Gruppe/Anzeige/acht Keywords ENABLED. CUSTOM_PERIOD 58 Mio. Micros CHF und 30.10.–05.11. direkt gelesen. Auto-Tagging neu True; kampagnenspezifische Kaufzielbindung und vollständige finale Startprüfung weiter offen. Kein Write, Force-Refresh oder Upgrade. Pyjama-Einstieg HTTP200 und Preis-pro-Person-Klarstellung vorhanden. Neue echte Shopify-Käufe sind kein Ads-Zuordnungs- oder Conversion-Tracking-Beleg. R66, 03.11.2026: Neuer Merchant-Screenshot enthält vier Growth-Empfehlungen, keine konkrete Produktdiagnose. Konto 5797470070, Shopify luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich mit sechs Kanalidentitäten frisch passend. Ads-Konto 719-826-3241 frisch verbunden, aber keine aktuelle Einrichtung allein daraus bestätigt. Genau drei eng begrenzte Konfigurationsabfragen nach frischer Feldentdeckung: Kunde ohne auswertbare Zeilen; Kaufaktion zunächst inkompatible Feldkombination, einmal begründet korrigiert und dann ebenfalls ohne auswertbare Zeilen. Keine neuen Kennzahlen-/Ereignis-/Bestell-/Flowdaten. Aktueller Tracking-/Kaufaktionszustand unbekannt; nicht als fehlend, null oder deaktiviert ausgegeben. Kampagnenspezifische Goal-Felder nicht in entdeckter Connector-Feldliste verfügbar. Screenshot-Setupkarte ist kein Trackingfehlernachweis. Wettbewerbswerte 0 Tage/CHF6.02 nicht als eigene Versandzusage übernommen; keine Rabatte oder Einstellungen geändert. Keine blind weiteren Retries, Force-Refresh, Aktivierung, Testkäufe oder Kauf-Watch-Abfrage.",
+      "nextAllowedStep": "Rein lesend im nativen bereits verbundenen Google-Ads-Konto die bestehende Kaufaktion 7840141331 samt Diagnose und die kampagnenspezifische Kaufzielbindung von 24403263741 prüfen. Leere Windsor-Konfigurationsantworten nicht wiederholen oder als fehlendes Tracking interpretieren; kein Force-Refresh/Upgrade und keine neue Kauf-Watch-Abfrage. Native kampagnenspezifische Kaufzielbindung sowie übrige ursprüngliche Startparameter belegen, dann finale Startprüfung des bestehenden CHF-58-Entwurfs. Keine automatische Aktivierung oder Verlängerung; ursprüngliches Enddatum 05.11. erhalten.",
       "blockers": [
         "Kampagnenspezifische Kaufzielbindung und übrige finale Startparameter nicht vollständig aktuell belegt; Auto-Tagging jetzt True",
-        "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration"
+        "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration",
+        "R66: Aktuelle Konfiguration über drei eng begrenzte Windsor-Setup-Lesungen nicht bestätigt; leere bzw. inkompatible Daten bedeuten unbekannt. Kampagnenspezifische Goal-Felder nicht exponiert. Allgemeine Merchant-Growth-Karte ist keine Tagdiagnose oder Ereignisbestätigung."
       ],
       "acceptance": [
         "BestehendeEntitäten behalten, keineDuplikate",
@@ -1735,6 +1736,11 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261101.json",
           "gitBlobSha": "7a2c0a3a17527be8b1667cfc881022327d450ffa",
           "readAt": "2026-10-31T23:53:21.344768+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-KARTEN-BELEGE-20261103-R66.json",
+          "gitBlobSha": "fa2d36ae73137d7e33e33b234bd7abc822531ca5",
+          "readAt": "2026-11-03T08:53:43.567362+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1755,8 +1761,35 @@
             "Kein bestätigter kampagnenspezifischer Kaufziel-/Auto-Tagging-Beleg",
             "Keine echte Kaufereignis-Auslösung aus aktivem Conversionstatus ableitbar"
           ]
+        },
+        {
+          "at": "2026-11-03T08:53:43.567362+00:00",
+          "sourceRevision": 65,
+          "previousState": "blockiert",
+          "previousLastEvidenceDate": "2026-11-01",
+          "previousBelegArt": "GEMESSEN/VORBEREITET",
+          "previousNextAllowedStep": "Native kampagnenspezifische Kaufzielbindung sowie übrige ursprüngliche Startparameter belegen, dann finale Startprüfung des bestehenden CHF-58-Entwurfs. Keine automatische Aktivierung oder Verlängerung; ursprüngliches Enddatum 05.11. erhalten.",
+          "previousBlockers": [
+            "Kampagnenspezifische Kaufzielbindung und übrige finale Startparameter nicht vollständig aktuell belegt; Auto-Tagging jetzt True",
+            "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration"
+          ],
+          "previousLastEvidencePreserved": "Exact historical evidence retained as prefix; not freshly reconfirmed by empty setup reads."
         }
-      ]
+      ],
+      "setupReviewR66": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-KARTEN-BELEGE-20261103-R66.json",
+          "gitBlobSha": "fa2d36ae73137d7e33e33b234bd7abc822531ca5",
+          "readAt": "2026-11-03T08:53:43.567362+00:00"
+        },
+        "configurationReads": 3,
+        "newPerformanceFlowOrOrderReports": 0,
+        "currentTrackingStatus": "unknown",
+        "actualPurchaseEventStatus": "unknown_not_queried",
+        "campaignGoalBinding": "unknown",
+        "settingsWrites": 0,
+        "screenshotIsErrorDiagnosis": false
+      }
     },
     {
       "id": "merchant-missing-price-20261029",
