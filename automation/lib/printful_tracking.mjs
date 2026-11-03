@@ -1,4 +1,4 @@
-// LuxeStyle — lib/printful_tracking.mjs (Version 2, 03.11.2026 nach unabhängiger Prüfung)
+// LuxeStyle — lib/printful_tracking.mjs (Version 3, 03.11.2026 nach zwei unabhängigen Prüfrunden)
 // Reine Entscheidungslogik für die Rückmeldung Printful → Shopify (kein Netz, kein Schreiben).
 // Eingabe: der Printful-Auftrag (GET /orders/<id>), die noch offenen POD-Positionen des Shopify-Auftrags
 // (aus den fulfillmentOrders, nur solche, die wir selbst melden dürfen) und die Sendungsnummern, die Shopify schon kennt.
@@ -45,9 +45,10 @@ export const PROBLEM_STATUS = new Set(['failed', 'canceled', 'onhold']);
 /** Zustände, die Printful kennt und die wir verstehen. Alles andere ist ein Befund («unbekannter Status»). */
 export const BEKANNTE_STATUS = new Set(['draft', 'failed', 'pending', 'canceled', 'onhold', 'inprocess', 'partial', 'fulfilled', 'inreview', 'archived']);
 /** Schwellen (Stunden seit Bestellung im Shop), ab denen ein Zustand ohne Fortschritt ein Befund wird. */
-export const SCHWELLEN_STUNDEN = { draft: 24, inreview: 72, pending: 14 * 24, inprocess: 14 * 24, partial: 14 * 24, archived: 14 * 24, ohneNummer: 48 };
+export const SCHWELLEN_STUNDEN = { draft: 24, inreview: 72, pending: 14 * 24, inprocess: 14 * 24, partial: 14 * 24, ohneNummer: 48 };
 
-const norm = (s) => String(s == null ? '' : s).trim().toUpperCase();
+// Vergleichsform einer Sendungsnummer: von Hand eingetragene Nummern haben Leerzeichen/Bindestriche («LY 0761 64335 LV»); dem Kunden geht die Originalschreibweise
+const norm = (s) => String(s == null ? '' : s).replace(/[\s\-._]+/g, '').toUpperCase();
 const stundenSeit = (wert, jetztMs) => {
   if (!wert) return null;
   const t = typeof wert === 'number' ? (wert < 1e12 ? wert * 1000 : wert) : Date.parse(String(wert));
@@ -58,17 +59,18 @@ const stundenSeit = (wert, jetztMs) => {
  * @param {object} p
  * @param {object} p.pfOrder         Printful-Auftrag: {status, items:[{id, variant_id}], shipments:[{id, status, reshipment, carrier, service, tracking_number, tracking_url, ship_date, items:[{item_id, quantity}]}]}
  * @param {Array}  p.foZeilen        offene POD-Positionen: [{foId, lineId, ortId, remaining, variantId}] (nur FO, die wir melden dürfen; variantId null = SKU ohne Printful-Variante)
+ * @param {Array}  [p.dienstZeilen]  offene POD-Positionen an Service-Standorten (die Fremd-App meldet selbst): [{variantId, remaining}]; ihre Printful-Positionen werden nicht gemeldet
  * @param {Set<string>|Array<string>} p.bekannteNummern  Sendungsnummern, die Shopify schon an einer (nicht stornierten) Lieferung führt
  * @param {number} [p.alterStunden]  Alter der Shop-Bestellung in Stunden (für «ohne Fortschritt»-Schwellen)
  * @param {number} [p.jetztMs]       aktueller Zeitpunkt (für Tests)
- * @returns {{aktionen:Array, wartet:Array, unklar:Array, uebersprungen:Array, restOffen:number, ohneVariante:number, problem:string|null, befund:string|null, fertig:boolean}}
+ * @returns {{aktionen:Array, wartet:Array, unklar:Array, uebersprungen:Array, restOffen:number, ohneVariante:number, problem:string|null, befund:string|null, befundArt:string|null, fertig:boolean}}
  */
-export function planVersand({ pfOrder, foZeilen, bekannteNummern, alterStunden = 0, jetztMs = Date.now() }) {
+export function planVersand({ pfOrder, foZeilen, dienstZeilen = [], bekannteNummern, alterStunden = 0, jetztMs = Date.now() }) {
   const bekannt = new Set([...(bekannteNummern || [])].map(norm).filter(Boolean));
   const status = String((pfOrder && pfOrder.status) || '').toLowerCase();
-  const out = { aktionen: [], wartet: [], unklar: [], uebersprungen: [], restOffen: 0, ohneVariante: 0, problem: null, befund: null, fertig: false };
+  const out = { aktionen: [], wartet: [], unklar: [], uebersprungen: [], restOffen: 0, ohneVariante: 0, problem: null, befund: null, befundArt: null, fertig: false };
 
-  if (!BEKANNTE_STATUS.has(status)) { out.befund = `Printful-Status «${status || 'leer'}» ist unbekannt`; return out; }
+  if (!BEKANNTE_STATUS.has(status)) { out.befund = `Printful-Status «${status || 'leer'}» ist unbekannt`; out.befundArt = 'status-unbekannt'; return out; }
   if (PROBLEM_STATUS.has(status)) out.problem = status;
 
   // Vorrat je Variante (Kopien, damit der Aufrufer seine Daten behält); Positionen ohne Printful-Variante zählen getrennt
@@ -80,6 +82,7 @@ export function planVersand({ pfOrder, foZeilen, bekannteNummern, alterStunden =
     vorrat.get(z.variantId).push({ foId: z.foId, lineId: z.lineId, ortId: z.ortId || null, remaining: Number(z.remaining) });
   }
   const nichtsOffen = vorrat.size === 0 && out.ohneVariante === 0;
+  const dienstVarianten = new Set((dienstZeilen || []).filter((z) => Number(z.remaining) > 0 && z.variantId).map((z) => z.variantId));
   const zeilenJeVariante = new Map([...vorrat.entries()].map(([v, l]) => [v, l.length]));
   const itemVariante = new Map();
   for (const it of (pfOrder && pfOrder.items) || []) itemVariante.set(String(it.id), Number(it.variant_id) || null);
@@ -104,14 +107,19 @@ export function planVersand({ pfOrder, foZeilen, bekannteNummern, alterStunden =
 
   for (const sh of neu) {
     const nr = String(sh.tracking_number).trim();
-    if (nichtsOffen) { out.uebersprungen.push({ shipmentId: sh.id, nummer: nr, grund: 'Shop-Positionen schon erledigt (Sendungsnummer fehlt in Shopify)' }); continue; }
+    if (nichtsOffen && dienstVarianten.size === 0) { out.uebersprungen.push({ shipmentId: sh.id, nummer: nr, grund: 'Shop-Positionen schon erledigt (Sendungsnummer fehlt in Shopify)' }); continue; }
     const zuteilung = [];
     const entnahme = new Map(); // lineId -> in dieser Sendung vergebene Menge (Rückgabe bei Abbruch)
-    let ok = true; let grund = '';
+    let ok = true; let grund = ''; let dienstItems = 0;
     for (const it of sh.items || []) {
       const vid = itemVariante.get(String(it.item_id));
       const menge = Number(it.quantity);
       if (!vid) { ok = false; grund = `Printful-Position ${it.item_id} ohne Variante`; break; }
+      if (dienstVarianten.has(vid)) {
+        // Position gehört (auch) zu einer Service-Position, deren Fremd-App selbst meldet: nie an die Shop-Zeilen binden, wenn dieselbe Variante dort ebenfalls offen ist
+        if (vorrat.has(vid)) { ok = false; grund = `Variante ${vid} liegt an Service- UND Shop-Standort, Zuordnung mehrdeutig`; break; }
+        dienstItems += 1; continue;
+      }
       if (!Number.isFinite(menge) || menge <= 0) { ok = false; grund = `Printful-Position ${it.item_id} ohne gültige Menge`; break; }
       if ((zeilenJeVariante.get(vid) || 0) > 1 && (sendungenJeVariante.get(vid) || 0) > 1) { ok = false; grund = `Variante ${vid}: mehrere Shop-Positionen und mehrere Sendungen, Zuordnung mehrdeutig`; break; }
       let rest = menge;
@@ -122,6 +130,7 @@ export function planVersand({ pfOrder, foZeilen, bekannteNummern, alterStunden =
       }
       if (rest > 0) { ok = false; grund = `Variante ${vid}: ${rest} Stück ohne offene Position im Shop`; break; }
     }
+    if (ok && zuteilung.length === 0 && dienstItems > 0) { out.uebersprungen.push({ shipmentId: sh.id, nummer: nr, grund: 'nur Service-Positionen (die Fremd-App meldet selbst)' }); continue; }
     if (!ok || zuteilung.length === 0) {
       for (const z of [...vorrat.values()].flat()) z.remaining += entnahme.get(z.lineId) || 0; // Vorrat zurückgeben
       out.unklar.push({ shipmentId: sh.id, nummer: nr, grund: grund || 'Sendung ohne Positionen' });
@@ -132,21 +141,23 @@ export function planVersand({ pfOrder, foZeilen, bekannteNummern, alterStunden =
 
   out.restOffen = [...vorrat.values()].flat().reduce((a, z) => a + Math.max(0, z.remaining), 0);
 
-  // Befund (ein Mensch muss hinsehen), in dieser Reihenfolge der Wichtigkeit
-  if (out.problem) out.befund = `Printful-Auftrag steht auf «${out.problem}» (Zahlung/Druckdatei im Dashboard prüfen)`;
-  else if (out.unklar.length) out.befund = `Sendung nicht eindeutig zuordenbar: ${out.unklar.map((u) => `${u.nummer}: ${u.grund}`).join('; ')}`;
-  else if (out.ohneVariante > 0) out.befund = `${out.ohneVariante} POD-Position(en) ohne Printful-Variante in der SKU (der Sync hat sie nicht an Printful gegeben)`;
-  else if (status === 'fulfilled' && out.wartet.some((w) => w.stunden != null && w.stunden > SCHWELLEN_STUNDEN.ohneNummer)) out.befund = 'Printful hat versendet, aber seit über 48 Stunden keine Sendungsnummer geliefert';
-  // «fulfilled, aber Shop offen» erst, wenn keine Sendung mehr auf ihre Nummer wartet (sonst ist die offene Position genau die Folge davon)
-  else if (status === 'fulfilled' && out.restOffen > 0 && out.wartet.length === 0) out.befund = `Printful meldet «fulfilled», aber ${out.restOffen} Stück sind im Shop noch offen`;
-  else if (SCHWELLEN_STUNDEN[status] != null && alterStunden > SCHWELLEN_STUNDEN[status] && status !== 'fulfilled') {
-    out.befund = status === 'draft' ? 'Printful-Auftrag ist noch ein Entwurf (nie bestätigt), der Druck hat nicht begonnen'
-      : status === 'inreview' ? 'Printful-Auftrag hängt seit über 72 Stunden in der Prüfung'
-        : `Printful-Auftrag steht seit über ${Math.round(SCHWELLEN_STUNDEN[status] / 24)} Tagen auf «${status}»`;
+  // Befund (ein Mensch muss hinsehen), in dieser Reihenfolge der Wichtigkeit; die Art (kurzer Schlüssel) steckt im Tag, damit ein WECHSEL des Befunds neu alarmiert
+  const erledigt = status === 'fulfilled' || status === 'archived';
+  const setze = (art, text) => { out.befundArt = art; out.befund = text; };
+  if (out.problem) setze(`status-${out.problem}`, `Printful-Auftrag steht auf «${out.problem}» (Zahlung/Druckdatei im Dashboard prüfen)`);
+  else if (out.unklar.length) setze('unklar', `Sendung nicht eindeutig zuordenbar: ${out.unklar.map((u) => `${u.nummer}: ${u.grund}`).join('; ')}`);
+  else if (out.ohneVariante > 0) setze('ohne-variante', `${out.ohneVariante} POD-Position(en) ohne Printful-Variante in der SKU (der Sync hat sie nicht an Printful gegeben)`);
+  else if (erledigt && out.wartet.some((w) => w.stunden != null && w.stunden > SCHWELLEN_STUNDEN.ohneNummer)) setze('ohne-nummer', 'Printful hat versendet, aber seit über 48 Stunden keine Sendungsnummer geliefert');
+  // «erledigt, aber Shop offen» erst, wenn keine Sendung mehr auf ihre Nummer wartet (sonst ist die offene Position genau die Folge davon)
+  else if (erledigt && out.restOffen > 0 && out.wartet.length === 0) setze('fertig-aber-offen', `Printful meldet «${status}», aber ${out.restOffen} Stück sind im Shop noch offen`);
+  else if (SCHWELLEN_STUNDEN[status] != null && alterStunden > SCHWELLEN_STUNDEN[status]) {
+    if (status === 'draft') setze('entwurf', 'Printful-Auftrag ist noch ein Entwurf (nie bestätigt), der Druck hat nicht begonnen');
+    else if (status === 'inreview') setze('in-pruefung', 'Printful-Auftrag hängt seit über 72 Stunden in der Prüfung');
+    else setze('zu-lange', `Printful-Auftrag steht seit über ${Math.round(SCHWELLEN_STUNDEN[status] / 24)} Tagen auf «${status}»`);
   }
 
   // «fertig»: Printful sagt fulfilled, alle POD-Positionen sind gemeldet (jetzt oder früher), keine Sendung offen, kein Befund
-  out.fertig = status === 'fulfilled' && out.restOffen === 0 && out.ohneVariante === 0 && out.unklar.length === 0 && out.wartet.length === 0 && !out.befund;
+  out.fertig = erledigt && out.restOffen === 0 && out.ohneVariante === 0 && out.unklar.length === 0 && out.wartet.length === 0 && !out.befund;
   return out;
 }
 

@@ -6,7 +6,7 @@
 // Lauf: /opt/node22/bin/node automation/printful_tracking_test.mjs
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { mkdtempSync, readFileSync, existsSync } from 'node:fs';
+import { mkdtempSync, readFileSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { variantIdVonSku, trackingFirma, planVersand, nachOrtUndFulfillmentOrder, empfaengerPasst, PROBLEM_STATUS, BEKANNTE_STATUS, SCHWELLEN_STUNDEN } from './lib/printful_tracking.mjs';
@@ -17,7 +17,8 @@ const SELF = fileURLToPath(import.meta.url);
 if (process.argv[2] === '--szenario') {
   const sz = JSON.parse(process.env.PT_SZENARIO);
   Object.assign(process.env, { PRINTFUL_API_KEY: 'k', SHOPIFY_ADMIN_TOKEN: 'x', SHOPIFY_SHOP: 'au3j0y-hq.myshopify.com', TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c', RETRY_PAUSE_MS: '0', PRINTFUL_STORE_ID: '777' });
-  for (const k of ['SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'FENSTER_TAGE', 'DRY_RUN']) delete process.env[k];
+  for (const k of ['SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET', 'GITHUB_STEP_SUMMARY', 'MAX', 'FENSTER_TAGE', 'DRY_RUN', 'RUN_LIMIT_MS']) delete process.env[k];
+  if (sz.runLimit !== undefined) process.env.RUN_LIMIT_MS = String(sz.runLimit);
   if (sz.dry !== undefined) process.env.DRY_RUN = sz.dry;
   if (sz.ohnePrintfulKey) delete process.env.PRINTFUL_API_KEY;
   if (sz.ohneShopify) delete process.env.SHOPIFY_ADMIN_TOKEN;
@@ -27,7 +28,7 @@ if (process.argv[2] === '--szenario') {
   if (sz.max) process.env.MAX = String(sz.max);
   const prot = { fulfills: [], tagsAdd: [], tagsRemove: [], tg: [], tgMeta: [], pfGets: [], pfHeader: [], queries: [], versionen: [], oauth: 0, anmeldungen: [], exit: null, log: [], err: [] };
   let fertig; const ende = new Promise((r) => { fertig = r; });
-  let ordersAufrufe = 0, fulfillAufrufe = 0; const pf429 = { ...(sz.pf429 || {}) };
+  let ordersAufrufe = 0, fulfillAufrufe = 0, tagAufrufe = 0; const pf429 = { ...(sz.pf429 || {}) };
 
   const mk = (status, body, kopf = {}) => ({ ok: status >= 200 && status < 300, status, headers: { get: (k) => (kopf[String(k).toLowerCase()] ?? (String(k).toLowerCase() === 'x-shopify-api-version' ? (sz.apiVersion || '2026-01') : null)) }, json: async () => body });
 
@@ -72,8 +73,8 @@ if (process.argv[2] === '--szenario') {
     mf: o.pfId === null ? null : { value: String(o.pfId || '100') },
     fulfillments: (o.fulfillments || []).map((f) => (typeof f === 'string' ? { status: 'SUCCESS', trackingInfo: [{ number: f }] } : f)),
     fulfillmentOrders: { edges: (o.fos || []).map((fo) => ({ node: {
-      id: fo.id, status: fo.status || 'OPEN', supportedActions: (fo.aktionen || ['CREATE_FULFILLMENT']).map((a) => ({ action: a })),
-      assignedLocation: { location: { id: fo.ort || 'gid://shopify/Location/1' } },
+      id: fo.id, status: fo.status || 'OPEN', supportedActions: (fo.aktionen || (fo.dienst ? ['REQUEST_FULFILLMENT'] : ['CREATE_FULFILLMENT'])).map((a) => ({ action: a })),
+      assignedLocation: { location: { id: fo.ort || (fo.dienst ? 'gid://shopify/Location/printful' : 'gid://shopify/Location/1'), isFulfillmentService: !!fo.dienst } },
       lineItems: { edges: fo.lines.map((l) => ({ node: { id: l.id, remainingQuantity: l.remaining, lineItem: { sku: l.sku, variant: l.variantSku === null ? null : { sku: l.variantSku === undefined ? l.sku : l.variantSku }, product: { tags: l.pod === false ? ['cj-real'] : (l.tags || ['wunschdesign']) } } } })) },
     } })) },
   });
@@ -92,6 +93,9 @@ if (process.argv[2] === '--szenario') {
         if (!/metafield\(namespace:"printful",\s*key:"order_id"\)/.test(q)) return mk(200, { errors: [{ message: 'Metafeld-Argumente falsch' }] });
         if (!/orders\(first:\$n,\s*after:\$after,\s*query:\$q,\s*sortKey:CREATED_AT\)/.test(q)) return mk(200, { errors: [{ message: 'orders-Argumente falsch' }] });
         if (!/fulfillmentOrders\(first:20\)/.test(q) || !/lineItems\(first:50\)/.test(q)) return mk(200, { errors: [{ message: 'Seitengrösse der Unterlisten falsch' }] });
+        if (!/^\s*query\(\$q:String!,\s*\$n:Int!,\s*\$after:String\)/.test(q)) return mk(200, { errors: [{ message: 'Variablentypen der Bestellabfrage falsch' }] });
+        if (!(b.variables.n >= 1 && b.variables.n <= 10)) return mk(200, { errors: [{ message: 'MAX_COST_EXCEEDED: Seitengrösse über 10' }] });
+        if (sz.ordersStringFehler) return mk(sz.ordersStringFehler, { errors: 'Access denied for orders field.' });
         if (sz.ordersTransient && ordersAufrufe <= sz.ordersTransient) return mk(sz.ordersTransientArt || 503, { errors: 'down' });
         if (sz.ordersThrottled && ordersAufrufe <= sz.ordersThrottled) return mk(200, { errors: [{ message: 'Throttled', extensions: { code: 'THROTTLED' } }] });
         prot.queries.push(b.variables.q);
@@ -113,13 +117,14 @@ if (process.argv[2] === '--szenario') {
       }
       if (q.includes('tagsAdd')) {
         if (!q.includes('$id:ID!') || !q.includes('$tags:[String!]!')) return mk(200, { errors: [{ message: 'Variablentyp falsch' }] });
+        tagAufrufe++; if (sz.tagTransient && tagAufrufe <= sz.tagTransient) return mk(503, { errors: 'down' });
         prot.tagsAdd.push({ id: b.variables.id, tags: b.variables.tags });
         return antwort(q, { tagsAdd: { userErrors: sz.tagFehler ? [{ message: 'nein' }] : [] } });
       }
       if (q.includes('tagsRemove')) {
         if (!q.includes('$id:ID!') || !q.includes('$tags:[String!]!')) return mk(200, { errors: [{ message: 'Variablentyp falsch' }] });
         prot.tagsRemove.push({ id: b.variables.id, tags: b.variables.tags });
-        return antwort(q, { tagsRemove: { userErrors: [] } });
+        return antwort(q, { tagsRemove: { userErrors: sz.tagRemoveFehler ? [{ message: 'nein' }] : [] } });
       }
       return mk(200, { errors: [{ message: 'unbekannte Abfrage' }] });
     }
@@ -146,6 +151,7 @@ if (process.argv[2] === '--szenario') {
   await import('./printful_tracking.mjs');
   await Promise.race([ende, new Promise((r) => setTimeout(r, 20000))]);
   await new Promise((r) => setTimeout(r, 40)); // Telegram-Nachlauf nach dem Exit-Aufruf
+  prot.ordersAufrufe = ordersAufrufe;
   process.stdout.write('\nPT_ERGEBNIS ' + JSON.stringify(prot) + '\n', () => echtesExit(0));
   await new Promise(() => {});
 }
@@ -174,7 +180,7 @@ ist('Firma service nur Zusatzwort → Printful', trackingFirma('', 'Standard'), 
 ist('Firma leer', trackingFirma('', ''), 'Printful');
 ist('Problemzustände', [...PROBLEM_STATUS].sort(), ['canceled', 'failed', 'onhold']);
 ist('Bekannte Zustände', [...BEKANNTE_STATUS].sort(), ['archived', 'canceled', 'draft', 'failed', 'fulfilled', 'inprocess', 'inreview', 'onhold', 'partial', 'pending']);
-ist('Schwellen', SCHWELLEN_STUNDEN, { draft: 24, inreview: 72, pending: 336, inprocess: 336, partial: 336, archived: 336, ohneNummer: 48 });
+ist('Schwellen', SCHWELLEN_STUNDEN, { draft: 24, inreview: 72, pending: 336, inprocess: 336, partial: 336, ohneNummer: 48 });
 
 // ───────────────────────── reine Logik: planVersand
 const zeilen = (...z) => z.map(([foId, lineId, remaining, variantId, ortId]) => ({ foId, lineId, remaining, variantId, ortId }));
@@ -286,7 +292,7 @@ ist('Plan: eine Sendung gemeldet, eine wartet → nicht fertig', [p.aktionen.len
 const alt = (status, h) => plan({ pfOrder: pfO(status, [[1, 10, 1]], []), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [], alterStunden: h });
 ist('Plan: draft 25 h → Befund, 23 h → keiner', [!!alt('draft', 25).befund, alt('draft', 23).befund], [true, null]);
 ist('Plan: inreview 73 h → Befund, 71 h → keiner', [!!alt('inreview', 73).befund, alt('inreview', 71).befund], [true, null]);
-for (const s of ['pending', 'inprocess', 'partial', 'archived']) ist(`Plan: ${s} 340 h → Befund, 330 h → keiner`, [/14 Tagen/.test(alt(s, 340).befund || ''), alt(s, 330).befund], [true, null]);
+for (const s of ['pending', 'inprocess', 'partial']) ist(`Plan: ${s} 340 h → Befund, 330 h → keiner`, [/14 Tagen/.test(alt(s, 340).befund || ''), alt(s, 330).befund], [true, null]);
 ist('Plan: fulfilled hat keine Altersschwelle', alt('fulfilled', 9999).befund && /fulfilled/.test(alt('fulfilled', 9999).befund) ? 'fulfilled-Befund (Shop offen)' : alt('fulfilled', 9999).befund, 'fulfilled-Befund (Shop offen)');
 
 // Mengen
@@ -329,6 +335,8 @@ const pod = (id, sku, remaining = 1, extra = {}) => ({ id, sku, remaining, ...ex
 const pfA = (status, items, shipments, recipient) => ({ ...pfO(status, items, shipments), ...(recipient ? { recipient } : {}) });
 const bestellung = (extra = {}) => ({ name: '#T1', pfId: 100, tags: ['printful-synced', 'printful-confirmed'], fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10')] }], ...extra });
 const tagListen = (prot, art = 'tagsAdd') => prot[art].map((t) => t.tags);
+const PT = (art) => ['printful-problem', 'printful-problem-' + art]; // Tags eines Befunds: allgemein + Art
+const MIT_ART = (art) => ['printful-synced', 'printful-problem', 'printful-problem-' + art]; // Bestellung, die diesen Befund schon gemeldet hat
 const heute = new Date().toISOString().slice(0, 10);
 const vorTagen = (n) => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10);
 
@@ -338,7 +346,7 @@ ist('V1 Exit', r.prot && r.prot.exit, null);
 ist('V1 fulfillmentCreate', r.prot.fulfills, [{ notifyCustomer: true, trackingInfo: { number: 'LY076164335LV', url: 'https://t/LY076164335LV', company: 'Latvian Postal Services' }, lineItemsByFulfillmentOrder: [{ fulfillmentOrderId: 'fo1', fulfillmentOrderLineItems: [{ id: 'l1', quantity: 1 }] }] }]);
 ist('V1 Tag shipped', tagListen(r.prot), [['printful-shipped']]);
 wahr('V1 Telegram genau eine Erfolgsmeldung mit Nummer, HTML, richtiger Chat und Bot', r.prot.tg.length === 1 && /versendet/.test(r.prot.tg[0]) && /LY076164335LV/.test(r.prot.tg[0]) && r.prot.tgMeta[0].parse_mode === 'HTML' && r.prot.tgMeta[0].chat_id === 'c' && r.prot.tgMeta[0].url === 't');
-ist('V1 Abfrage: nur synced, ohne shipped, mit Datum von vor 45 Tagen', [/^tag:printful-synced -tag:printful-shipped created_at:>=\d{4}-\d\d-\d\d$/.test(r.prot.queries[0]), r.prot.queries[0].split('>=')[1] >= vorTagen(46) && r.prot.queries[0].split('>=')[1] <= vorTagen(44)], [true, true]);
+ist('V1 Abfrage: synced, ohne shipped und ohne storniert, mit Datum von vor 45 Tagen', [/^tag:printful-synced -tag:printful-shipped -tag:printful-storniert created_at:>=\d{4}-\d\d-\d\d$/.test(r.prot.queries[0]), r.prot.queries[0].split('>=')[1] >= vorTagen(46) && r.prot.queries[0].split('>=')[1] <= vorTagen(44)], [true, true]);
 ist('V1 alle Aufrufe mit API 2026-01', [...new Set(r.prot.versionen)], ['2026-01']);
 ist('V1 Printful-Abfrage mit Store-Header', [r.prot.pfGets, r.prot.pfHeader], [['100'], ['777']]);
 ist('V1 Shopify-Anmeldung mit dem Token', [...new Set(r.prot.anmeldungen)], ['x']);
@@ -367,21 +375,21 @@ ist('V3e fehlgeschlagene Lieferungen (ERROR/FAILURE) zählen nicht als gemeldet'
 r = lauf({ main: [bestellung()], printful: { 100: pfA('inprocess', [[1, 10, 1]], []) } });
 ist('V4 jung: nichts geschrieben', [r.prot.fulfills.length, r.prot.tagsAdd.length, r.prot.tg.length, r.prot.exit], [0, 0, 0, null]);
 r = lauf({ main: [bestellung({ createdAt: new Date(Date.now() - 20 * 86400000).toISOString() })], printful: { 100: pfA('inprocess', [[1, 10, 1]], []) } });
-ist('V4b 20 Tage in Arbeit → einmal Befund (Tag + Telegram), Exit grün', [tagListen(r.prot), r.prot.tg.length, /14 Tagen/.test(r.prot.tg[0] || ''), r.prot.exit], [[['printful-problem']], 1, true, null]);
+ist('V4b 20 Tage in Arbeit → einmal Befund (Tag + Telegram), Exit grün', [tagListen(r.prot), r.prot.tg.length, /14 Tagen/.test(r.prot.tg[0] || ''), r.prot.exit], [[PT('zu-lange')], 1, true, null]);
 r = lauf({ main: [bestellung({ createdAt: new Date(Date.now() - 30 * 3600 * 1000).toISOString() })], printful: { 100: pfA('draft', [[1, 10, 1]], []) } });
-ist('V4c Entwurf nach 30 h nie bestätigt → Befund', [tagListen(r.prot), /Entwurf/.test(r.prot.tg[0] || '')], [[['printful-problem']], true]);
+ist('V4c Entwurf nach 30 h nie bestätigt → Befund', [tagListen(r.prot), /Entwurf/.test(r.prot.tg[0] || '')], [[PT('entwurf')], true]);
 
 // V5: Zahlung gescheitert → einmal melden, nicht wiederholen
 r = lauf({ main: [bestellung()], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
-ist('V5 failed: Tag problem + eine Telegram', [r.prot.fulfills.length, tagListen(r.prot), r.prot.tg.length, /failed/.test(r.prot.tg[0] || ''), r.prot.exit], [0, [['printful-problem']], 1, true, null]);
-r = lauf({ main: [bestellung({ tags: ['printful-synced', 'printful-problem'] })], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
-ist('V5b failed mit Problem-Tag: keine Wiederholung', [r.prot.tagsAdd.length, r.prot.tg.length], [0, 0]);
+ist('V5 failed: Tag problem + eine Telegram', [r.prot.fulfills.length, tagListen(r.prot), r.prot.tg.length, /failed/.test(r.prot.tg[0] || ''), r.prot.exit], [0, [PT('status-failed')], 1, true, null]);
+r = lauf({ main: [bestellung({ tags: MIT_ART('status-failed') })], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
+ist('V5b failed, dieselbe Befundart schon gemeldet: keine Wiederholung', [r.prot.tagsAdd.length, r.prot.tg.length], [0, 0]);
 
 // V6: Problem behoben → Tag weg, gemeldet, shipped
-r = lauf({ main: [bestellung({ tags: ['printful-synced', 'printful-problem'] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V6 Erholung', [tagListen(r.prot, 'tagsRemove'), r.prot.fulfills.length, tagListen(r.prot)], [[['printful-problem']], 1, [['printful-shipped']]]);
-r = lauf({ main: [bestellung({ tags: ['printful-synced', 'printful-problem'] })], printful: { 100: pfA('inprocess', [[1, 10, 1]], []) } });
-ist('V6b Befund weg, Tag noch da → Tag entfernt', [tagListen(r.prot, 'tagsRemove'), r.prot.tagsAdd.length], [[['printful-problem']], 0]);
+r = lauf({ main: [bestellung({ tags: MIT_ART('status-failed') })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V6 Erholung: alle Problem-Tags weg, gemeldet, shipped', [tagListen(r.prot, 'tagsRemove'), r.prot.fulfills.length, tagListen(r.prot)], [[['printful-problem', 'printful-problem-status-failed']], 1, [['printful-shipped']]]);
+r = lauf({ main: [bestellung({ tags: MIT_ART('status-failed') })], printful: { 100: pfA('inprocess', [[1, 10, 1]], []) } });
+ist('V6b Befund weg, Tags noch da → alle Problem-Tags entfernt', [tagListen(r.prot, 'tagsRemove'), r.prot.tagsAdd.length], [[['printful-problem', 'printful-problem-status-failed']], 0]);
 r = lauf({ main: [bestellung()], printful: { 100: pfA('inprocess', [[1, 10, 1]], []) } });
 ist('V6c kein Befund, kein Tag → nichts entfernt', r.prot.tagsRemove.length, 0);
 
@@ -398,23 +406,24 @@ for (const tags of [['Wunschdesign'], ['PRINTFUL_PERSONALIZED_PRODUCT'], ['print
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10'), pod('l2', '9000001_11')] }] })], printful: { 100: pfA('partial', [[1, 10, 1], [2, 11, 1]], [sh(7, 'LY1', [[1, 1]]), sh(8, '', [[2, 1]])]) } });
 ist('V8 erste gemeldet, kein shipped, kein Befund', [r.prot.fulfills.length, r.prot.tagsAdd.length, r.prot.tg.length, r.prot.exit], [1, 0, 1, null]);
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, '', [[1, 1]], { ship_date: vorTagen(4) })]) } });
-ist('V8b fulfilled seit 4 Tagen ohne Sendungsnummer → Befund', [tagListen(r.prot), /48 Stunden/.test(r.prot.tg[0] || '')], [[['printful-problem']], true]);
+ist('V8b fulfilled seit 4 Tagen ohne Sendungsnummer → Befund', [tagListen(r.prot), /48 Stunden/.test(r.prot.tg[0] || '')], [[PT('ohne-nummer')], true]);
 
 // V9: Sendung nicht zuordenbar → nichts melden, Mensch benachrichtigen
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 99, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V9 unklar', [r.prot.fulfills.length, tagListen(r.prot), r.prot.tg.length, /nicht eindeutig zuordenbar/.test(r.prot.tg[0] || '')], [0, [['printful-problem']], 1, true]);
-r = lauf({ main: [bestellung({ tags: ['printful-synced', 'printful-problem'] })], printful: { 100: pfA('fulfilled', [[1, 99, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V9b unklar mit Problem-Tag: keine Wiederholung, Tag bleibt', [r.prot.tagsAdd.length, r.prot.tagsRemove.length, r.prot.tg.length], [0, 0, 0]);
+ist('V9 unklar', [r.prot.fulfills.length, tagListen(r.prot), r.prot.tg.length, /nicht eindeutig zuordenbar/.test(r.prot.tg[0] || '')], [0, [PT('unklar')], 1, true]);
+r = lauf({ main: [bestellung({ tags: MIT_ART('unklar') })], printful: { 100: pfA('fulfilled', [[1, 99, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V9b unklar, dieselbe Art schon gemeldet: keine Wiederholung, Tags bleiben', [r.prot.tagsAdd.length, r.prot.tagsRemove.length, r.prot.tg.length], [0, 0, 0]);
 
 // V10: Shopify lehnt die Meldung ab / liefert keine Meldung
 r = lauf({ fulfillFehler: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V10 userErrors: kein shipped, Exit 1, Telegram «gescheitert», nur 1 Versuch', [r.prot.tagsAdd.length, r.prot.exit, r.prot.tg.some((t) => /gescheitert/.test(t)), r.prot.fulfills.length], [0, 1, true, 1]);
+ist('V10 userErrors: kein shipped, Exit 1, Telegram «abgelehnt, von Hand eintragen», nur 1 Versuch', [r.prot.tagsAdd.length, r.prot.exit, r.prot.tg.some((t) => /von Shopify abgelehnt/.test(t)), r.prot.fulfills.length], [0, 1, true, 1]);
 r = lauf({ fulfillNull: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V10b Antwort fulfillmentCreate=null → NICHT als gemeldet gezählt', [r.prot.tagsAdd.length, r.prot.exit, r.prot.tg.some((t) => /versendet \(/.test(t) && /Kundenmail/.test(t))], [0, 1, false]);
 r = lauf({ fulfillLeer: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V10b2 Antwort ohne Fulfillment bei LEERER Fehlerliste → ebenfalls nicht als gemeldet', [r.prot.tagsAdd.length, r.prot.exit, r.prot.err.some((e) => /fulfillment\.id/.test(e))], [0, 1, true]);
 r = lauf({ fulfill500: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V10c HTTP 500 bei fulfillmentCreate: GENAU EIN Versuch (keine Wiederholung, sonst doppelte Mail), Exit 1, kein Tag', [r.prot.fulfills.length, r.prot.exit, r.prot.tagsAdd.length], [1, 1, 0]);
+ist('V10c2 Ausgang unbekannt: Text sagt «erst in Shopify nachsehen», NICHT «bitte von Hand eintragen»', [r.prot.tg.some((t) => /Ausgang unbekannt.*ERST in Shopify nachsehen/.test(t)), r.prot.tg.some((t) => /bitte von Hand eintragen/.test(t))], [true, false]);
 r = lauf({ tagFehler: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V10d Tag-userErrors → Fehler, Exit 1 (Meldung selbst ging raus)', [r.prot.fulfills.length, r.prot.exit], [1, 1]);
 
@@ -434,7 +443,7 @@ ist('V11c DRY: auch kein Telegram und kein Tag bei Befund', [r.prot.tg.length, r
 
 // V12: Printful-Auftrag nicht lesbar
 r = lauf({ main: [bestellung({ pfId: 555 })], printful: {} });
-ist('V12 Printful 404 → Befund (Tag + Telegram), NICHT Exit 1', [r.prot.fulfills.length, tagListen(r.prot), /404/.test(r.prot.tg[0] || ''), r.prot.exit], [0, [['printful-problem']], true, null]);
+ist('V12 Printful 404 → Befund (Tag + Telegram), NICHT Exit 1', [r.prot.fulfills.length, tagListen(r.prot), /404/.test(r.prot.tg[0] || ''), r.prot.exit], [0, [PT('printful-404')], true, null]);
 r = lauf({ main: [bestellung()], printful: { 100: { __status: 500 } } });
 ist('V12b Printful 500 bleibend → Fehler Exit 1, kein Tag, drei Versuche', [r.prot.tagsAdd.length, r.prot.exit, r.prot.pfGets.length], [0, 1, 3]);
 r = lauf({ pf429: { 100: 2 }, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
@@ -444,7 +453,7 @@ ist('V12d Printful 401 → Fehler Exit 1 (kein Befund), Meldung nennt «HTTP 401
 
 // V13: Metafeld fehlt
 r = lauf({ main: [bestellung({ pfId: null })], printful: {} });
-ist('V13 ohne printful.order_id → Befund, kein Printful-Aufruf, Exit grün', [r.prot.pfGets.length, tagListen(r.prot), r.prot.exit], [0, [['printful-problem']], null]);
+ist('V13 ohne printful.order_id → Befund, kein Printful-Aufruf, Exit grün', [r.prot.pfGets.length, tagListen(r.prot), r.prot.exit], [0, [PT('metafeld-fehlt')], null]);
 
 // V14: Teilmenge
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10', 2)] }] })], printful: { 100: pfA('partial', [[1, 10, 2]], [sh(7, 'LY1', [[1, 1]])]) } });
@@ -452,15 +461,15 @@ ist('V14 Teilsendung', [r.prot.fulfills[0].lineItemsByFulfillmentOrder[0].fulfil
 
 // V15: Fulfillment-Orders, die wir nicht melden dürfen
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', status: 'ON_HOLD', lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V15 ON_HOLD → nicht melden, Befund «pausierten»', [r.prot.fulfills.length, tagListen(r.prot), /pausierten/.test(r.prot.tg[0] || '')], [0, [['printful-problem']], true]);
+ist('V15 ON_HOLD → nicht melden, Befund «nicht meldbar»', [r.prot.fulfills.length, tagListen(r.prot), /nicht meldbar/.test(r.prot.tg[0] || '')], [0, [PT('nicht-meldbar')], true]);
 for (const status of ['SCHEDULED', 'INCOMPLETE', 'CLOSED', 'CANCELLED']) {
   r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', status, lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
   ist(`V15b FO-Status ${status} → keine Meldung`, r.prot.fulfills.length, 0);
 }
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', status: 'IN_PROGRESS', lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V15c FO IN_PROGRESS mit CREATE_FULFILLMENT → gemeldet', r.prot.fulfills.length, 1);
-r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', aktionen: ['REQUEST_FULFILLMENT'], lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V15d Service-Standort (kein CREATE_FULFILLMENT): übersprungen, kein Printful-Aufruf, kein Tag, kein Telegram', [r.prot.fulfills.length, r.prot.pfGets.length, r.prot.tagsAdd.length, r.prot.tg.length, r.prot.exit], [0, 0, 0, 0, null]);
+r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', dienst: true, lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V15d Service-Standort (Location.isFulfillmentService): übersprungen, kein Printful-Aufruf, kein Tag, kein Telegram', [r.prot.fulfills.length, r.prot.pfGets.length, r.prot.tagsAdd.length, r.prot.tg.length, r.prot.exit], [0, 0, 0, 0, null]);
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10', 0)] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V15e Restmenge 0 (alles schon erledigt) → keine Meldung, Tag shipped, kein Alarm', [r.prot.fulfills.length, tagListen(r.prot), r.prot.tg.length], [0, [['printful-shipped']], 0]);
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10', null)] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
@@ -478,7 +487,7 @@ r = lauf({ main: [], waechter: [{ name: '#W3', createdAt: alter(20), tags: [], f
 ist('V16d Wächter: Nicht-POD-Bestellung → nichts', [r.prot.tg.length, r.prot.tagsAdd.length], [0, 0]);
 r = lauf({ main: [], waechter: [{ name: '#W4', createdAt: alter(20), tags: [], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10', 0)] }] }] });
 ist('V16e Wächter: POD-Zeile ohne Restmenge → nichts', r.prot.tg.length, 0);
-r = lauf({ main: [], waechter: [{ name: '#W5', createdAt: alter(20), tags: [], fos: [{ id: 'fo9', aktionen: ['REQUEST_FULFILLMENT'], lines: [pod('w1', '5599797_9526')] }] }] });
+r = lauf({ main: [], waechter: [{ name: '#W5', createdAt: alter(20), tags: [], fos: [{ id: 'fo9', dienst: true, lines: [pod('w1', '5599797_9526')] }] }] });
 ist('V16f Wächter: Service-Standort (Printful-App) → kein Fehlalarm', [r.prot.tg.length, r.prot.tagsAdd.length], [0, 0]);
 r = lauf({ main: [], waechter: [{ name: '#W6', createdAt: alter(20), tags: ['printful-review'], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10')] }] }] });
 ist('V16g Wächter: Bestellung mit nur «printful-review» (Auftrag nie angelegt) wird gemeldet', r.prot.tg.length, 1);
@@ -514,7 +523,7 @@ ist('V19c Shopify-Anmeldung scheitert → Exit 1, Telegram, KEINE Bestellabfrage
 r = lauf({ clientCredentials: true, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V19d Client-Credentials-Anmeldung: Token geholt und benutzt', [r.prot.oauth, [...new Set(r.prot.anmeldungen)], r.prot.fulfills.length, r.prot.exit], [1, ['oauth-token'], 1, null]);
 r = lauf({ ohneTelegram: true, main: [bestellung()], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
-ist('V19e ohne Telegram: Befund wird trotzdem getaggt, Exit grün', [tagListen(r.prot), r.prot.tg.length, r.prot.exit], [[['printful-problem']], 0, null]);
+ist('V19e ohne Telegram: Befund wird trotzdem getaggt, Exit grün', [tagListen(r.prot), r.prot.tg.length, r.prot.exit], [[PT('status-failed')], 0, null]);
 
 // V20: Telegram-Ausfall bei Befund
 r = lauf({ tgFehler: true, main: [bestellung()], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
@@ -530,15 +539,32 @@ wahr('V21 Telegram-Text maskiert & < >', /#A&amp;B&lt;1&gt;/.test(r.prot.tg[0] |
 
 // V22: Empfänger passt nicht
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])], { name: 'Anna Meier', zip: '3000' }) } });
-ist('V22 Empfänger verschieden → nicht gemeldet, Befund', [r.prot.fulfills.length, tagListen(r.prot), /gehört vermutlich zu einer anderen Bestellung/.test(r.prot.tg[0] || '')], [0, [['printful-problem']], true]);
+ist('V22 Empfänger verschieden → nicht gemeldet, Befund', [r.prot.fulfills.length, tagListen(r.prot), /gehört vermutlich zu einer anderen Bestellung/.test(r.prot.tg[0] || '')], [0, [PT('empfaenger')], true]);
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])], { name: 'ROLF LANZ', zip: '8703' }) } });
 ist('V22b Empfänger gleich → gemeldet', r.prot.fulfills.length, 1);
 r = lauf({ main: [bestellung({ adresse: { name: 'Frau Muster', zip: '8703', countryCodeV2: 'CH' } })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])], { name: 'Rolf Lanz', zip: '8703' }) } });
 ist('V22c anderer Name (Mitbewohnerin), gleiche PLZ → gemeldet (die PLZ wird in der Abfrage geholt)', r.prot.fulfills.length, 1);
 
 // V23: storniert
-r = lauf({ main: [bestellung({ cancelledAt: new Date().toISOString() })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V23 in Shopify storniert → übersprungen, kein Printful-Aufruf', [r.prot.pfGets.length, r.prot.fulfills.length, r.prot.tagsAdd.length], [0, 0, 0]);
+const storno = (status, pf = true, tags) => lauf({ main: [bestellung({ cancelledAt: new Date().toISOString(), ...(pf ? {} : { pfId: null }), ...(tags ? { tags } : {}) })], printful: status ? { 100: pfA(status, [[1, 10, 1]], status === 'fulfilled' ? [sh(7, 'LY1', [[1, 1]])] : []) } : {} });
+r = storno('inprocess');
+ist('V23 in Shopify storniert, Printful läuft noch → Alarm einmal, NICHT melden', [r.prot.fulfills.length, tagListen(r.prot), /storniert, aber der Printful-Auftrag steht auf «inprocess»/.test(r.prot.tg[0] || '')], [0, [PT('storniert-aktiv')], true]);
+r = storno('fulfilled');
+ist('V23b storniert, Printful schon «fulfilled» → Alarm, keine Versandmeldung', [r.prot.fulfills.length, tagListen(r.prot)], [0, [PT('storniert-aktiv')]]);
+r = storno('canceled');
+ist('V23c storniert, Printful «canceled» → erledigt: nur Tag printful-storniert, kein Alarm', [tagListen(r.prot), r.prot.tg.length], [[['printful-storniert']], 0]);
+r = storno('draft');
+ist('V23d storniert, Printful nur Entwurf → erledigt', [tagListen(r.prot), r.prot.tg.length], [[['printful-storniert']], 0]);
+r = storno('failed');
+ist('V23e storniert, Printful «failed» → erledigt', [tagListen(r.prot), r.prot.tg.length], [[['printful-storniert']], 0]);
+r = storno(null);
+ist('V23f storniert, Printful-Auftrag existiert nicht (404) → erledigt', [tagListen(r.prot), r.prot.tg.length], [[['printful-storniert']], 0]);
+r = storno('inprocess', false);
+ist('V23g storniert ohne Auftragsnummer → nichts, kein Printful-Aufruf', [r.prot.pfGets.length, r.prot.tagsAdd.length, r.prot.tg.length], [0, 0, 0]);
+r = storno('inprocess', true, MIT_ART('storniert-aktiv'));
+ist('V23h storniert-aktiv schon gemeldet → keine Wiederholung', [r.prot.tagsAdd.length, r.prot.tg.length], [0, 0]);
+r = storno('canceled', true, MIT_ART('storniert-aktiv'));
+ist('V23i inzwischen im Dashboard storniert → Problem-Tags weg, dann printful-storniert', [tagListen(r.prot, 'tagsRemove'), tagListen(r.prot)], [[['printful-problem', 'printful-problem-storniert-aktiv']], [['printful-storniert']]]);
 
 // V26: mehrere Standorte / Orders
 r = lauf({ main: [bestellung({ fos: [{ id: 'foA', ort: 'locA', lines: [pod('l1', '9000001_10')] }, { id: 'foB', ort: 'locB', lines: [pod('l2', '9000001_11')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1], [2, 11, 1]], [sh(7, 'LY1', [[1, 1], [2, 1]])]) } });
@@ -567,6 +593,7 @@ r = lauf({ summaryDatei: sumDatei, apiVersion: '2025-10', main: [bestellung(), b
 const summary = existsSync(sumDatei) ? readFileSync(sumDatei, 'utf8') : '';
 wahr('V29 Zusammenfassung: Zähler, Sendung, Befund, API-Hinweis', /2 offene Bestellung\(en\)/.test(summary) && /1 Sendung\(en\) gemeldet/.test(summary) && /1 Befund\(e\)/.test(summary) && /abgeschlossen/.test(summary) && /#T1: versendet gemeldet, Latvian Postal Services LY1/.test(summary) && /#T2: Printful-Auftrag steht auf «failed»/.test(summary) && /API-Version 2025-10 statt 2026-01/.test(summary));
 wahr('V29b Zeile ohne Fehler: «0 Fehler»', /, 0 Fehler\./.test(summary));
+rmSync(tmp, { recursive: true, force: true });
 
 // V30: Nachsendung / Doppelmeldung derselben Nummer in zwei Sendungen
 r = lauf({ main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]], { reshipment: true })]) } });
@@ -580,11 +607,99 @@ ist('V31 Varianten-SKU hat Vorrang vor der Positions-SKU (wie printful_sync)', r
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10', 1, { variantSku: null })] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
 ist('V31b ohne Variante → Positions-SKU', r.prot.fulfills.length, 1);
 r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10'), pod('l2', 'MEIN-SKU-OHNE-SUFFIX')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
-ist('V31c Position ohne Variante → andere wird gemeldet, aber KEIN shipped, Befund', [r.prot.fulfills.length, tagListen(r.prot), /ohne Printful-Variante/.test(r.prot.tg.find((t) => /Variante/.test(t)) || '')], [1, [['printful-problem']], true]);
+ist('V31c Position ohne Variante → andere wird gemeldet, aber KEIN shipped, Befund', [r.prot.fulfills.length, tagListen(r.prot), /ohne Printful-Variante/.test(r.prot.tg.find((t) => /Variante/.test(t)) || '')], [1, [PT('ohne-variante')], true]);
 
 // V32: unbekannter Printful-Status
 r = lauf({ main: [bestellung()], printful: { 100: pfA('weissnicht', [[1, 10, 1]], []) } });
-ist('V32 unbekannter Status → Befund einmal', [tagListen(r.prot), /unbekannt/.test(r.prot.tg[0] || '')], [[['printful-problem']], true]);
+ist('V32 unbekannter Status → Befund einmal', [tagListen(r.prot), /unbekannt/.test(r.prot.tg[0] || '')], [[PT('status-unbekannt')], true]);
+
+// ═════════════════════════════════════════════════════════════ Version 3 (Funde der zweiten Prüfrunde)
+// ───────────────────────── Logik: Sendungsnummern von Hand mit Leerzeichen/Bindestrichen
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY076164335LV', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: ['LY 076 164 335 LV'] });
+ist('V3-Logik: von Hand mit Leerzeichen eingetragene Nummer gilt als bekannt', p.aktionen.length, 0);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY076164335LV', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: ['ly-0761.6433_5lv'] });
+ist('V3-Logik: Bindestriche, Punkte, Unterstriche und Kleinschreibung egal', p.aktionen.length, 0);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY 076 164 335 LV', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: ['LY076164335LV'] });
+ist('V3-Logik: Printful-Nummer mit Leerzeichen, Shopify ohne → bekannt', p.aktionen.length, 0);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 2]], [sh(7, 'LY 1', [[1, 1]]), sh(8, 'L-Y1', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 2, 10]), bekannteNummern: [] });
+ist('V3-Logik: gleiche Nummer in verschiedener Schreibweise in zwei Sendungen → EINE Meldung', [p.aktionen.length, p.aktionen[0].positionen.reduce((a, x) => a + x.quantity, 0)], [1, 2]);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, '  LY 1 ', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [] });
+ist('V3-Logik: dem Kunden geht die Originalschreibweise (nur getrimmt)', p.aktionen[0].nummer, 'LY 1');
+
+// ───────────────────────── Logik: Service-Positionen (Printful-App meldet selbst)
+const dienst = (...v) => v.map(([variantId, remaining]) => ({ variantId, remaining }));
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1], [2, 9526, 1]], [sh(7, 'LY1', [[1, 1], [2, 1]])]), foZeilen: zeilen(['foA', 'l1', 1, 10]), dienstZeilen: dienst([9526, 1]), bekannteNummern: [] });
+ist('V3-Logik: gemischte Sendung → nur die Shop-Position wird gemeldet, fertig', [p.aktionen.length, p.aktionen[0].positionen.map((x) => x.lineId), p.unklar.length, p.fertig], [1, ['l1'], 0, true]);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1], [2, 9526, 1]], [sh(7, 'LY1', [[1, 1]]), sh(8, 'LY2', [[2, 1]])]), foZeilen: zeilen(['foA', 'l1', 1, 10]), dienstZeilen: dienst([9526, 1]), bekannteNummern: [] });
+ist('V3-Logik: Sendung nur mit Service-Position → übersprungen (nicht unklar), Shop-Sendung gemeldet', [p.aktionen.map((a) => a.nummer), p.uebersprungen.map((u) => u.nummer), /Service/.test(p.uebersprungen[0].grund), p.unklar.length, p.fertig], [['LY1'], ['LY2'], true, 0, true]);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1], [2, 10, 1]], [sh(7, 'LY1', [[1, 1], [2, 1]])]), foZeilen: zeilen(['foA', 'l1', 1, 10]), dienstZeilen: dienst([10, 1]), bekannteNummern: [] });
+ist('V3-Logik: dieselbe Variante an Service- UND Shop-Standort → mehrdeutig, nichts gemeldet', [p.aktionen.length, p.unklar.length, /Service- UND Shop-Standort/.test((p.unklar[0] || {}).grund || '')], [0, 1, true]);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: zeilen(['foA', 'l1', 1, 10]), dienstZeilen: dienst([9526, 0], [null, 1]), bekannteNummern: [] });
+ist('V3-Logik: Service-Zeilen ohne Restmenge oder ohne Variante zählen nicht', [p.aktionen.length, p.unklar.length], [1, 0]);
+p = plan({ pfOrder: pfO('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: [], dienstZeilen: dienst([9526, 1]), bekannteNummern: [] });
+ist('V3-Logik: nur Service-Zeilen offen, Sendung mit Shop-Variante → unklar (nicht «erledigt»)', [p.unklar.length, p.uebersprungen.length], [1, 0]);
+
+// ───────────────────────── Logik: archivierte Aufträge, Befundarten
+p = plan({ pfOrder: pfO('archived', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [], alterStunden: 9999 });
+ist('V3-Logik: archiviert, Sendung gemeldet → fertig, kein Alters-Befund', [p.aktionen.length, p.fertig, p.befund], [1, true, null]);
+p = plan({ pfOrder: pfO('archived', [[1, 10, 1]], []), foZeilen: zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [], alterStunden: 9999 });
+ist('V3-Logik: archiviert ohne Sendung, Shop offen → Befund «archived, aber offen»', [p.befundArt, /archived/.test(p.befund || ''), p.fertig], ['fertig-aber-offen', true, false]);
+const art = (status, o = {}) => plan({ pfOrder: pfO(status, [[1, 10, 1]], o.shipments || []), foZeilen: o.foZeilen || zeilen(['fo1', 'l1', 1, 10]), bekannteNummern: [], alterStunden: o.alter || 0 }).befundArt;
+ist('V3-Logik: Befundarten', [art('failed'), art('canceled'), art('onhold'), art('hallo'), art('draft', { alter: 30 }), art('inreview', { alter: 80 }), art('pending', { alter: 400 }), art('fulfilled'), art('fulfilled', { shipments: [sh(7, 'LY1', [[1, 99]])] }), art('fulfilled', { foZeilen: zeilen(['fo1', 'l1', 1, null]), shipments: [] }), art('fulfilled', { shipments: [sh(7, '', [[1, 1]], { ship_date: '2026-10-01' })], alter: 1 })],
+  ['status-failed', 'status-canceled', 'status-onhold', 'status-unbekannt', 'entwurf', 'in-pruefung', 'zu-lange', 'fertig-aber-offen', 'unklar', 'ohne-variante', 'ohne-nummer']);
+ist('V3-Logik: ohne Befund keine Befundart', art('inprocess'), null);
+
+// ───────────────────────── Verhalten: Befundwechsel alarmiert neu
+r = lauf({ main: [bestellung({ tags: MIT_ART('ohne-variante') })], printful: { 100: pfA('failed', [[1, 10, 1]], []) } });
+ist('V3-Verhalten: Befund WECHSELT (ohne-variante → failed) → neuer Alarm, neue Art-Tags, alte Art-Tags weg', [r.prot.tg.length, /failed/.test(r.prot.tg[0] || ''), tagListen(r.prot), tagListen(r.prot, 'tagsRemove')], [1, true, [PT('status-failed')], [['printful-problem-ohne-variante']]]);
+
+// ───────────────────────── Verhalten: gemischte Bestellung (Shop-Sticker + Service-T-Shirt)
+r = lauf({ main: [bestellung({ fos: [{ id: 'foS', dienst: true, lines: [pod('s1', '5599797_9526')] }, { id: 'foA', lines: [pod('l1', '9000001_10')] }] })],
+  printful: { 100: pfA('fulfilled', [[1, 10, 1], [2, 9526, 1]], [sh(7, 'LY1', [[1, 1]]), sh(8, 'LY2', [[2, 1]])]) } });
+ist('V3-Verhalten: gemischte Bestellung → Sticker gemeldet (nur Shop-Zeile), T-Shirt-Sendung ignoriert, shipped, kein Alarm', [r.prot.fulfills.length, r.prot.fulfills[0].lineItemsByFulfillmentOrder.map((x) => x.fulfillmentOrderId), r.prot.fulfills[0].trackingInfo.number, tagListen(r.prot), r.prot.tg.some((x) => /nicht eindeutig/.test(x))], [1, ['foA'], 'LY1', [['printful-shipped']], false]);
+r = lauf({ main: [bestellung({ fos: [{ id: 'foS', dienst: true, lines: [pod('s1', '5599797_9526')] }, { id: 'foA', lines: [pod('l1', '9000001_10')] }] })],
+  printful: { 100: pfA('fulfilled', [[1, 10, 1], [2, 9526, 1]], [sh(7, 'LY1', [[1, 1], [2, 1]])]) } });
+ist('V3-Verhalten: gemischte EINE Sendung → nur die Shop-Position wird gemeldet', [r.prot.fulfills.length, r.prot.fulfills[0].lineItemsByFulfillmentOrder[0].fulfillmentOrderLineItems], [1, [{ id: 'l1', quantity: 1 }]]);
+r = lauf({ main: [], waechter: [{ name: '#W8', createdAt: alter(20), tags: [], fos: [{ id: 'foS', dienst: true, lines: [pod('s1', '5599797_9526')] }, { id: 'foA', lines: [pod('l1', '9000001_10')] }] }] });
+ist('V3-Verhalten: Wächter bei gemischter Bestellung ohne synced → Alarm (Shop-Zeile hat keinen Auftrag)', [r.prot.tg.length, tagListen(r.prot)], [1, [['printful-wartet']]]);
+const wq2 = r.prot.queries.find((q) => q.includes('-tag:printful-wartet')) || '';
+ist('V3-Verhalten: Wächter-Abfrage erfasst auch teilweise versendete Bestellungen', [wq2.includes('(fulfillment_status:unfulfilled OR fulfillment_status:partial)'), wq2.includes('financial_status:paid')], [true, true]);
+
+// ───────────────────────── Verhalten: angenommene Service-Order trägt CREATE_FULFILLMENT und bleibt trotzdem Sache der Fremd-App
+r = lauf({ main: [bestellung({ fos: [{ id: 'foS', dienst: true, status: 'IN_PROGRESS', aktionen: ['CREATE_FULFILLMENT'], lines: [pod('s1', '5599797_9526')] }] })], printful: { 100: pfA('fulfilled', [[1, 9526, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: Service-Order IN_PROGRESS mit CREATE_FULFILLMENT → NICHT melden, kein Printful-Aufruf, kein Alarm', [r.prot.fulfills.length, r.prot.pfGets.length, r.prot.tagsAdd.length, r.prot.tg.length], [0, 0, 0, 0]);
+r = lauf({ main: [], waechter: [{ name: '#W9', createdAt: alter(20), tags: [], fos: [{ id: 'foS', dienst: true, status: 'IN_PROGRESS', aktionen: ['CREATE_FULFILLMENT'], lines: [pod('s1', '5599797_9526')] }] }] });
+ist('V3-Verhalten: Wächter bei angenommener Service-Order → kein Fehlalarm (kein Anstoss zum doppelten Druckauftrag)', [r.prot.tg.length, r.prot.tagsAdd.length], [0, 0]);
+
+// ───────────────────────── Verhalten: geschlossene Fulfillment-Order mit veralteter Restmenge
+r = lauf({ main: [bestellung({ fos: [{ id: 'foAlt', status: 'CLOSED', lines: [pod('l1', '9000001_10')] }, { id: 'foNeu', lines: [pod('l1', '9000001_10')] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: CLOSED mit alter Restmenge + neue OPEN-Order → gemeldet, shipped, KEIN Dauer-Befund', [r.prot.fulfills.length, r.prot.fulfills[0].lineItemsByFulfillmentOrder.map((x) => x.fulfillmentOrderId), tagListen(r.prot), r.prot.tg.some((x) => /nicht meldbar/.test(x))], [1, ['foNeu'], [['printful-shipped']], false]);
+
+// ───────────────────────── Verhalten: Aufräumen der Tags beim Abschluss
+r = lauf({ tagRemoveFehler: true, main: [bestellung({ tags: MIT_ART('status-failed') })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: Problem-Tags lassen sich nicht entfernen → KEIN shipped (sonst blieben shipped + problem hängen), Exit 1, Meldung ging raus', [r.prot.fulfills.length, tagListen(r.prot), r.prot.exit], [1, [], 1]);
+r = lauf({ main: [bestellung({ tags: ['printful-synced', 'printful-wartet'] })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: beim Abschluss wird das Wächter-Tag «printful-wartet» entfernt', [tagListen(r.prot, 'tagsRemove'), tagListen(r.prot)], [[['printful-wartet']], [['printful-shipped']]]);
+r = lauf({ tagTransient: 2, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: Tag-Schreiben bei Shopify-503 wird wiederholt und gelingt', [tagListen(r.prot), r.prot.exit], [[['printful-shipped']], null]);
+
+// ───────────────────────── Verhalten: archivierter Printful-Auftrag
+r = lauf({ main: [bestellung({ createdAt: new Date(Date.now() - 30 * 86400000).toISOString() })], printful: { 100: pfA('archived', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: archiviert, Sendung gemeldet → shipped, kein Alters-Fehlalarm', [r.prot.fulfills.length, tagListen(r.prot), r.prot.tg.some((x) => /Tagen/.test(x))], [1, [['printful-shipped']], false]);
+
+// ───────────────────────── Verhalten: Fehlertexte, Zeitlimit
+r = lauf({ ordersStringFehler: 403, main: [bestellung()], printful: {} });
+ist('V3-Verhalten: Shopify 403 mit Text-«errors» → lesbare Meldung (kein TypeError), NICHT wiederholt, Exit 1', [r.prot.exit, r.prot.tg.some((x) => /Access denied/.test(x)), r.prot.tg.some((x) => /is not a function/.test(x)), r.prot.ordersAufrufe >= 1 && r.prot.ordersAufrufe <= 2], [1, true, false, true]);
+r = lauf({ main: [bestellung({ name: '#A<1>', pfId: 555 })], printful: { 555: { __status: 500 } } });
+ist('V3-Verhalten: Fehlerbericht maskiert HTML-Zeichen, Exit 1', [r.prot.exit, r.prot.tg.some((x) => /#A&lt;1&gt;/.test(x) && !/#A<1>/.test(x))], [1, true]);
+r = lauf({ runLimit: -1, main: [bestellung(), bestellung({ name: '#T2', pfId: 777, id: 'gid://shopify/Order/T2' })], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: Zeitlimit erreicht → keine Bestellung bearbeitet, Fehler «Zeitlimit», Exit 1, Telegram', [r.prot.pfGets.length, r.prot.fulfills.length, r.prot.exit, r.prot.tg.some((x) => /Zeitlimit/.test(x) && /2 Bestellung/.test(x))], [0, 0, 1, true]);
+r = lauf({ runLimit: 600000, main: [bestellung()], printful: { 100: pfA('fulfilled', [[1, 10, 1]], [sh(7, 'LY1', [[1, 1]])]) } });
+ist('V3-Verhalten: großzügiges Zeitlimit → normal', [r.prot.fulfills.length, r.prot.exit], [1, null]);
+
+// ───────────────────────── Verhalten: Mehrfachmeldung bei Standortwechsel nicht (gleiche Position, zwei Orders) bleibt eindeutig
+r = lauf({ main: [bestellung({ fos: [{ id: 'fo1', lines: [pod('l1', '9000001_10', 1)] }, { id: 'fo2', lines: [pod('l2', '9000001_10', 1)] }] })], printful: { 100: pfA('fulfilled', [[1, 10, 1], [2, 10, 1]], [sh(7, 'LY1', [[1, 1]]), sh(8, 'LY2', [[2, 1]])]) } });
+ist('V3-Verhalten: gleiche Variante in zwei Shop-Zeilen und zwei Sendungen → NICHT geraten, Befund «unklar»', [r.prot.fulfills.length, tagListen(r.prot)], [0, [PT('unklar')]]);
 
 console.log(`\nprintful_tracking: ${ok} bestanden, ${fehl} fehlgeschlagen`);
 process.exit(fehl ? 1 : 0);
