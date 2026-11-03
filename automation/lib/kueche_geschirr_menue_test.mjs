@@ -1,10 +1,10 @@
-// Tests der Trennung «Küche & Kochen» / «Geschirr & Tisch» (lib/kueche_geschirr_menue.mjs), des Menü-Laufs (kueche_geschirr_menue.mjs) und des Sammlungs-Laufs (kueche_geschirr_gruppen.mjs).
+// Tests der Trennung «Küche» / «Geschirr» (Menütitel; die Sammlungen heissen «Küchenbedarf & Kochzubehör» und «Geschirr & Tisch») (lib/kueche_geschirr_menue.mjs), des Menü-Laufs (kueche_geschirr_menue.mjs) und des Sammlungs-Laufs (kueche_geschirr_gruppen.mjs).
 // Das Test-Menü ist das echte Hauptmenü vom 03.11.2026 (dropship/taxonomie-2610-b/orakel/menue-main-0311.json, 19 Punkte, 3 Ebenen, nach dem Rucksack-Umbau).
 // Netz gibt es nicht: die Läufe sprechen mit einer Attrappe der Shopify-Abfrage. Gegenproben in BEIDE Richtungen; Zusammenfassung am ENDE.
 import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { GRUPPEN, OBER, KUECHE, GESCHIRR, KURZ, VERSCHOBEN, ELTERN, MAX_TITEL, FUSS, neueHandles, handleVon, ziele, kuecheGeschirrMenue, pruefeUmbau, titelWarnungen, gruppenPlan, erwartetAus, seoText, sammlungsTitel, rueckgaengigEingabe } from './kueche_geschirr_menue.mjs';
+import { GRUPPEN, OBER, KUECHE, GESCHIRR, KURZ, VERSCHOBEN, ELTERN, MAX_TITEL, FUSS, neueHandles, handleVon, ziele, kuecheGeschirrMenue, pruefeUmbau, titelWarnungen, gruppenPlan, erwartetAus, seoText, sammlungsTitel, rueckgaengigEingabe, kopfTitelNeu, pruefeKopfTitel, ALTE_KOPFTITEL } from './kueche_geschirr_menue.mjs';
 import { eingabeAus } from '../menu_eintrag_einfuegen.mjs';
 import { kuecheGeschirrMenueLauf, optionenAusEnv as menueOptionen } from '../kueche_geschirr_menue.mjs';
 import { kuecheGeschirrGruppenLauf, planLesen, tagAusRegel, optionenAusEnv as gruppenOptionen } from '../kueche_geschirr_gruppen.mjs';
@@ -28,8 +28,8 @@ const gut = () => kuecheGeschirrMenue(ALT, GIDS, {});
 
 // ── Der Auftrag ──
 ist('fünf Gruppen, zwei Köpfe, sieben neue Sammlungen (alle Handles verschieden)', [GRUPPEN.length, OBER.length, neueHandles().length, new Set(neueHandles()).size], [5, 2, 7, 7]);
-ist('die Köpfe: «Küche & Kochen» mit Kochen/Küchenhelfer/Küchengeräte, «Geschirr & Tisch» mit Geschirr/Kaffee', OBER.map(o => [o.titel, GRUPPEN.filter(g => g.ober === o.ober).map(g => g.titel)]),
-  [['Küche & Kochen', ['Kochen, Grillen & Backen', 'Küchenhelfer & Vorrat', 'Küchengeräte']], ['Geschirr & Tisch', ['Geschirr, Besteck & Tisch', 'Kaffee, Tee & Trinken']]]);
+ist('die Köpfe: «Küche» mit Kochen/Küchenhelfer/Küchengeräte, «Geschirr» mit Geschirr/Kaffee', OBER.map(o => [o.titel, GRUPPEN.filter(g => g.ober === o.ober).map(g => g.titel)]),
+  [['Küche', ['Kochen, Grillen & Backen', 'Küchenhelfer & Vorrat', 'Küchengeräte']], ['Geschirr', ['Geschirr, Besteck & Tisch', 'Kaffee, Tee & Trinken']]]);
 ist('alle fünf Gruppen stehen im echten Menü unter «Wohnen & Garten» (mit Kopf-Ziel und Kindern)', GRUPPEN.map(g => { const x = wohnen(ALT).items.find(y => y.title === g.titel); return !!(x && handleVon(x) && x.items.length); }), [true, true, true, true, true]);
 ist('keiner der sieben neuen Handles kommt irgendwo im heutigen Menü vor (nichts doppelt)', neueHandles().filter(h => JSON.stringify(ALT).includes('/collections/' + h + '"')), []);
 ist('Menütitel: jeder neue Kopf, jede Gruppe und jeder Kurztitel höchstens 34 Zeichen', [...OBER.map(o => o.titel), ...GRUPPEN.map(g => g.titel), ...Object.values(KURZ)].filter(t => t.length > MAX_TITEL), []);
@@ -50,7 +50,7 @@ ist('handleVon: Adresse mit und ohne Sprachpräfix, Abfrage, Domain, kein Collec
 {
   const { baum, log, fehler } = gut();
   ist('Umbau ohne Fehler', fehler, []);
-  ist('oberste Ebene 19 → 21, die drei Köpfe an der Stelle von «Wohnen & Garten»', [ALT.length, baum.length, titel(baum).slice(8, 11)], [19, 21, ['Küche & Kochen', 'Geschirr & Tisch', 'Wohnen & Garten']]);
+  ist('oberste Ebene 19 → 21, die drei Köpfe an der Stelle von «Wohnen & Garten»', [ALT.length, baum.length, titel(baum).slice(8, 11)], [19, 21, ['Küche', 'Geschirr', 'Wohnen & Garten']]);
   ist('übrige oberste Einträge unverändert und in gleicher Reihenfolge', titel(baum).filter(t => ![KUECHE.titel, GESCHIRR.titel].includes(t)), titel(ALT));
   const k = baum.find(x => x.title === KUECHE.titel), g = baum.find(x => x.title === GESCHIRR.titel);
   ist('Kopf-Ziele sind die neuen Sammlungen', [k.resourceId, g.resourceId, k.type, g.type], [NEU_GID('kueche-kochen'), NEU_GID('geschirr-tisch'), 'COLLECTION', 'COLLECTION']);
@@ -70,7 +70,7 @@ ist('handleVon: Adresse mit und ohne Sprachpräfix, Abfrage, Domain, kein Collec
     [titel(wohnen(ALT).items).filter(t => !GRUPPEN.some(x => x.titel === t)), true]);
   ist('die ersten drei Gruppen des Rests sind die bisherigen Haushalts-Gruppen', titel(wohnen(baum).items).slice(0, 3), ['Putzen & Haushalt', 'Aufbewahrung & Möbel', 'Bad']);
   ist('«Wohnen & Garten» behält seine Ids und sein Ziel; die verschobenen Gruppen sind neue Einträge (ohne Id)', [wohnen(baum).id === wohnen(ALT).id, wohnen(baum).resourceId === wohnen(ALT).resourceId || wohnen(baum).url === wohnen(ALT).url, JSON.stringify([...k.items, ...g.items]).includes('"id"')], [true, true, false]);
-  ist('Tiefe höchstens 3, kein Titel über 34 Zeichen, Log nennt die Verteilung', [pruefeUmbau(ALT, baum, GIDS), titelWarnungen([k, g]), log.join(' ').includes('18 Gruppen → «Küche & Kochen» 3 · «Geschirr & Tisch» 2 · «Wohnen & Garten» 13')], [[], [], true]);
+  ist('Tiefe höchstens 3, kein Titel über 34 Zeichen, Log nennt die Verteilung', [pruefeUmbau(ALT, baum, GIDS), titelWarnungen([k, g]), log.join(' ').includes('18 Gruppen → «Küche» 3 · «Geschirr» 2 · «Wohnen & Garten» 13')], [[], [], true]);
   const mitTags = kopie(ALT); wohnen(mitTags).items.find(x => x.title === 'Kochen, Grillen & Backen').tags = ['t1']; wohnen(mitTags).items.find(x => x.title === 'Kaffee, Tee & Trinken').tags = ['t2'];
   const tg = kuecheGeschirrMenue(mitTags, GIDS, {});
   ist('Tags des alten Kopf-Eintrags bleiben am neuen ersten Kind (auch am wandernden), die Prüfung bleibt grün', [tg.baum.find(x => x.title === KUECHE.titel).items[0].items[0].tags, tg.baum.find(x => x.title === KUECHE.titel).items[2].items[1].tags, pruefeUmbau(mitTags, tg.baum, GIDS)], [['t1'], ['t2'], []]);
@@ -82,7 +82,7 @@ ist('handleVon: Adresse mit und ohne Sprachpräfix, Abfrage, Domain, kein Collec
   const zwei = kuecheGeschirrMenue(baum, GIDS, {});
   ist('zweiter Lauf auf dem umgebauten Baum: «schon umgebaut», nichts geändert', [zwei.fehler, JSON.stringify(zwei.baum) === JSON.stringify(baum)], [['schon umgebaut'], true]);
   const halb = kopie(baum).filter(x => x.title !== GESCHIRR.titel);
-  ist('steht nur einer der zwei Köpfe: «halb umgebaut» mit dem Namen des fehlenden, nichts geändert', [hat(kuecheGeschirrMenue(halb, GIDS, {}).fehler, 'halb umgebaut'), hat(kuecheGeschirrMenue(halb, GIDS, {}).fehler, 'Geschirr & Tisch» fehlt')], [true, true]);
+  ist('steht nur einer der zwei Köpfe: «halb umgebaut» mit dem Namen des fehlenden, nichts geändert', [hat(kuecheGeschirrMenue(halb, GIDS, {}).fehler, 'halb umgebaut'), hat(kuecheGeschirrMenue(halb, GIDS, {}).fehler, 'Geschirr» fehlt')], [true, true]);
 }
 {
   const ohne = kuecheGeschirrMenue(ALT, { ...GIDS, 'geschirr-tisch': null }, {});
@@ -214,6 +214,7 @@ function attrappe({ collections = VORHANDEN, menuUpdateFehler = [], verfaelsche 
   const schreibend = () => aufrufe.filter(a => /mutation/.test(a.query));
   return { q, aufrufe, z, schreibend };
 }
+function lesbarKopie(items) { let n = 0; const l = it => it.map(i => ({ id: i.id || `gid://shopify/MenuItem/lk-${++n}`, title: i.title, type: i.type, resourceId: i.resourceId ?? null, url: i.url ?? URL_VON_GID[i.resourceId] ?? null, tags: i.tags || [], items: l(i.items || []) })); return l(items); }
 function webAttrappe(schlecht = {}) {
   const aufrufe = [];
   const web = async hs => { aufrufe.push([...hs]); return Object.fromEntries(hs.map(h => [h, schlecht[h] || { ok: true, status: 200, n: 3, grund: '' }])); };
@@ -227,7 +228,7 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
 // Menü-Lauf: Trockenlauf
 {
   const a = attrappe(), s = still(), r = await kuecheGeschirrMenueLauf(a.q, { annahmeAlle: true, ...frisch('m1'), out: s.out, err: s.err });
-  ist('Trockenlauf mit ANNAHME_ALLE: Exit 0, nichts geschrieben, Vorschau der drei Köpfe', [r.code, a.schreibend().length, s.zeilen.join('\n').includes('VORSCHAU «Küche & Kochen»'), s.zeilen.join('\n').includes('19 → 21')], [0, 0, true, true]);
+  ist('Trockenlauf mit ANNAHME_ALLE: Exit 0, nichts geschrieben, Vorschau der drei Köpfe', [r.code, a.schreibend().length, s.zeilen.join('\n').includes('VORSCHAU «Küche»'), s.zeilen.join('\n').includes('19 → 21')], [0, 0, true, true]);
 }
 {
   const a = attrappe(), s = still(), r = await kuecheGeschirrMenueLauf(a.q, { ...frisch('m2'), out: s.out, err: s.err });
@@ -248,7 +249,7 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   ist('LIVE, alles da: Exit 0, genau ein menuUpdate, HTTP-Prüfung nur für die sieben neuen Sammlungen', [r.code, a.schreibend().length, JSON.stringify(web.aufrufe[0])], [0, 1, JSON.stringify(neueHandles())]);
   ist('menuUpdate bekommt Menü-Id, Titel und Handle des gelesenen Menüs unverändert', a.z.menuUpdateVariablen, { id: MENU_ROH.id, t: MENU_ROH.title, h: MENU_ROH.handle });
   ist('die Sicherung enthält das gelesene Menü VOR dem Umbau, der Ledger-Eintrag steht', [existsSync(d.sicherung) && JSON.parse(readFileSync(d.sicherung)).items.length, readFileSync(d.ledger, 'utf8').includes('menü küche/geschirr getrennt')], [19, true]);
-  ist('Shopify liefert danach 21 oberste Einträge mit den neuen Köpfen', [a.z.menu.items.length, titel(a.z.menu.items).slice(8, 11)], [21, ['Küche & Kochen', 'Geschirr & Tisch', 'Wohnen & Garten']]);
+  ist('Shopify liefert danach 21 oberste Einträge mit den neuen Köpfen', [a.z.menu.items.length, titel(a.z.menu.items).slice(8, 11)], [21, ['Küche', 'Geschirr', 'Wohnen & Garten']]);
   ist('der zurückgelesene Baum besteht die Prüfregeln', pruefeUmbau(ALT, eingabeAus(a.z.menu.items), GIDS), []);
   const r2 = await kuecheGeschirrMenueLauf(a.q, { live: true, web: webAttrappe(), ...frisch('m4b'), out: still().out, err: still().err });
   ist('zweiter LIVE-Lauf auf dem umgebauten Menü: Exit 0 «nichts zu tun», kein zweites menuUpdate', [r2.code, r2.schonUmgebaut, a.schreibend().length], [0, true, 1]);
@@ -335,6 +336,41 @@ const MIT_NEUEN = { ...VORHANDEN, ...NEUE };
   const c = attrappe(), r3 = await kuecheGeschirrGruppenLauf(c.q, { live: true, web: webAttrappe({ 'geschirr-tisch': { ok: false, status: 404, n: 0, grund: 'HTTP 404' } }), warte: async () => {}, ...frisch('g3c'), out: still().out, err: still().err });
   ist('eine neue Sammlung ist im Onlineshop nicht erreichbar: Exit 2 (das Menü darf sie nicht verlinken)', r3.code, 2);
   ist('optionenAusEnv (Sammlungen): Trockenlauf ist Vorgabe', [gruppenOptionen({}, 'w'), gruppenOptionen({ LIVE: '1' }, 'w'), gruppenOptionen({ WEB_PRUEFEN: '1' }, 'w')], [{ live: false, web: null }, { live: true, web: 'w' }, { live: false, web: 'w' }]);
+}
+
+// Zweiter Teil: die Köpfe des ersten Laufs («Küche & Kochen», «Geschirr & Tisch») bekommen die kurzen Titel
+{
+  const GUT = kuecheGeschirrMenue(ALT, GIDS, {}).baum;
+  const LANG = kopie(GUT); LANG.find(x => x.title === KUECHE.titel).title = 'Küche & Kochen'; LANG.find(x => x.title === GESCHIRR.titel).title = 'Geschirr & Tisch';
+  const u = kopfTitelNeu(LANG);
+  ist('kopfTitelNeu: beide Köpfe werden umbenannt, alles andere bleibt (Ids, Ziele, Kinder)', [u.treffer, u.fehler, titel(u.baum).slice(8, 11), JSON.stringify(u.baum.map(x => x.items)) === JSON.stringify(LANG.map(x => x.items))], [2, [], ['Küche', 'Geschirr', 'Wohnen & Garten'], true]);
+  ist('kopfTitelNeu: tragen die Köpfe schon die kurzen Titel, ist nichts zu tun', [kopfTitelNeu(GUT).treffer, kopfTitelNeu(ALT).treffer], [0, 0]);
+  const halb = kopie(LANG); halb.find(x => x.title === GESCHIRR.titel === false && x.title === 'Geschirr & Tisch').title = 'Geschirr';
+  ist('kopfTitelNeu: nur einer der beiden Köpfe trägt den alten Titel: Fehler, damit nichts geraten wird', [kopfTitelNeu(halb).treffer, hat(kopfTitelNeu(halb).fehler, 'nur 1 von 2')], [1, true]);
+  ist('kopfTitelNeu verändert den Eingabebaum nicht', LANG.find(x => x.title === 'Küche & Kochen') !== undefined, true);
+  ist('pruefeKopfTitel: grün für die Umbenennung', pruefeKopfTitel(LANG, u.baum), []);
+  const m2 = fn => { const b = kopie(u.baum); fn(b); return pruefeKopfTitel(LANG, b); };
+  ist('pruefeKopfTitel: ein weiterer Titel geändert → erkannt', hat(m2(b => { b.find(x => x.title === 'Damen').title = 'X'; }), 'mehr geändert'), true);
+  ist('pruefeKopfTitel: ein Kind verschwindet → erkannt', hat(m2(b => { b.find(x => x.title === 'Küche').items[0].items.pop(); }), 'mehr geändert'), true);
+  ist('pruefeKopfTitel: Id eines Kopfes oder eines Eintrags geändert → erkannt', [hat(m2(b => { b.find(x => x.title === 'Küche').id = 'gid://x/1'; }), 'Ids'), hat(m2(b => { b.find(x => x.title === 'Damen').id = 'gid://x/2'; }), 'Ids')], [true, true]);
+  ist('pruefeKopfTitel: ein Kopf behält den alten Titel → erkannt', hat((() => { const b = kopie(u.baum); b.find(x => x.title === 'Geschirr').title = 'Geschirr & Tisch'; return pruefeKopfTitel(LANG, b); })(), 'mehr geändert'), true);
+  ist('«schon umgebaut» gilt auch für die langen Titel, der Plan der Sammlungen bleibt gleich', [kuecheGeschirrMenue(LANG, GIDS, {}).fehler, JSON.stringify(gruppenPlan(LANG, () => 'sort-x').map(p => p.kinder.map(k => k.handle).sort())) === JSON.stringify(gruppenPlan(ALT, () => 'sort-x').map(p => p.kinder.map(k => k.handle).sort()))], [['schon umgebaut'], true]);
+  ist('ALTE_KOPFTITEL nennt genau die ersten Titel und führt auf die jetzigen', [ALTE_KOPFTITEL, Object.values(ALTE_KOPFTITEL)], [{ 'Küche & Kochen': 'Küche', 'Geschirr & Tisch': 'Geschirr' }, [KUECHE.titel, GESCHIRR.titel]]);
+  // Lauf: Menü mit den langen Titeln (Stand live 03.11. 22:11 UTC)
+  const a = attrappe({ collections: MIT_NEUEN, menu: { ...kopie(MENU_ROH), items: lesbarKopie(LANG) } }), d = frisch('u1'), s = still(), web = webAttrappe();
+  const idsVor = JSON.stringify(a.z.menu.items.map(x => x.id));
+  const r = await kuecheGeschirrMenueLauf(a.q, { live: true, web, ...d, out: s.out, err: s.err });
+  ist('Lauf auf dem Menü mit langen Titeln: Exit 0, ein menuUpdate, nur die zwei Titel ändern sich, alle Ids der obersten Ebene gleich', [r.code, a.schreibend().length, titel(a.z.menu.items).slice(8, 11), JSON.stringify(a.z.menu.items.map(x => x.id)) === idsVor], [0, 1, ['Küche', 'Geschirr', 'Wohnen & Garten'], true]);
+  ist('Lauf (Umbenennung): keine HTTP-Prüfung nötig, Sicherung enthält die langen Titel, Ledger nennt «Köpfe umbenannt»', [web.aufrufe.length, JSON.parse(readFileSync(d.sicherung, 'utf8')).items.some(x => x.title === 'Küche & Kochen'), readFileSync(d.ledger, 'utf8').includes('Köpfe umbenannt')], [0, true, true]);
+  const r2 = await kuecheGeschirrMenueLauf(a.q, { live: true, web: webAttrappe(), ...frisch('u2'), out: still().out, err: still().err });
+  ist('zweiter Lauf: nichts zu tun, Exit 0, kein weiteres menuUpdate', [r2.code, r2.schonUmgebaut, a.schreibend().length], [0, true, 1]);
+  const t = attrappe({ collections: MIT_NEUEN, menu: { ...kopie(MENU_ROH), items: lesbarKopie(LANG) } }), rt = await kuecheGeschirrMenueLauf(t.q, { out: still().out, err: still().err });
+  ist('Trockenlauf der Umbenennung: Exit 0, nichts geschrieben', [rt.code, t.schreibend().length, titel(t.z.menu.items).includes('Küche & Kochen')], [0, 0, true]);
+  const v = attrappe({ collections: MIT_NEUEN, menu: { ...kopie(MENU_ROH), items: lesbarKopie(LANG) }, nachSchreiben: m => { m.items.find(x => x.title === 'Damen').id = 'gid://shopify/MenuItem/anders'; return m; } }), sv = still();
+  const rv = await kuecheGeschirrMenueLauf(v.q, { live: true, web: webAttrappe(), ...frisch('u3'), out: sv.out, err: sv.err });
+  ist('Shopify vergibt beim Umbenennen eine andere Id: Exit 3 (Übersetzungen wären weg), Sicherung genannt', [rv.code, hat(sv.zeilen, 'Sicherung liegt in')], [3, true]);
+  const hb = attrappe({ collections: MIT_NEUEN, menu: { ...kopie(MENU_ROH), items: lesbarKopie(halb) } }), rh = await kuecheGeschirrMenueLauf(hb.q, { live: true, web: webAttrappe(), ...frisch('u4'), out: still().out, err: still().err });
+  ist('halber Zustand (nur ein alter Titel): Exit 2, nichts geschrieben', [rh.code, hb.schreibend().length], [2, 0]);
 }
 
 // Sicherung bleibt, Mengenprüfung, planLesen-Wächter

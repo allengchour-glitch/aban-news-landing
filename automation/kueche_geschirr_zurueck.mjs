@@ -18,7 +18,7 @@ import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { eingabeAus } from './menu_eintrag_einfuegen.mjs';
 import { gleicherBaum, gleicheZiele } from './lib/menue_plan.mjs';
-import { rueckgaengigEingabe, ziele, ELTERN, KUECHE, GESCHIRR } from './lib/kueche_geschirr_menue.mjs';
+import { rueckgaengigEingabe, ziele, ELTERN, KUECHE, GESCHIRR, ALTE_KOPFTITEL } from './lib/kueche_geschirr_menue.mjs';
 
 const FELDER = 'id title type resourceId url tags';
 const MENU_Q = `query($h:String!){menus(first:1,query:$h){nodes{id title handle items{${FELDER} items{${FELDER} items{${FELDER}}}}}}}`;
@@ -39,7 +39,7 @@ export async function kuecheGeschirrZurueckLauf(q, { live = false, sicherung = S
   const gestrichen = idsFlach(sollRoh).filter(x => x && !idsFlach(soll).includes(x)).length;
   out(`Sicherung: ${alt.items.length} oberste Einträge (${ziele(sollRoh).length} Einträge), aktuell ${m.items.length}; ${gestrichen} Ids der Sicherung gibt es nicht mehr (neue Einträge werden angelegt)`);
   // Die Sicherung muss der Stand VOR dem Umbau sein: wer versehentlich den Zwischenstand (nach dem Umbau) übergibt, würde den Umbau «wiederherstellen».
-  if (alt.items.some(x => [KUECHE.titel, GESCHIRR.titel].includes(x.title)) || !alt.items.some(x => x.title === ELTERN)) { err(`ABBRUCH, nichts geschrieben: die Sicherung ist nicht der Stand VOR dem Umbau («${ELTERN}» fehlt oder «${KUECHE.titel}»/«${GESCHIRR.titel}» stehen schon darin)`); return { code: 2, fehler: ['Sicherung ist nicht der Stand vor dem Umbau'] }; }
+  if (alt.items.some(x => [KUECHE.titel, GESCHIRR.titel, ...Object.keys(ALTE_KOPFTITEL)].includes(x.title)) || !alt.items.some(x => x.title === ELTERN)) { err(`ABBRUCH, nichts geschrieben: die Sicherung ist nicht der Stand VOR dem Umbau («${ELTERN}» fehlt oder «${KUECHE.titel}»/«${GESCHIRR.titel}» stehen schon darin)`); return { code: 2, fehler: ['Sicherung ist nicht der Stand vor dem Umbau'] }; }
   if (!live) { out(`Trockenlauf - nichts geschrieben. Oberste Ebene danach: ${soll.map(x => x.title).join(' | ')}`); return { code: 0, soll }; }
 
   const frisch = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];

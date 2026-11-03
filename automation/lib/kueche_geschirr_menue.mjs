@@ -1,12 +1,16 @@
 /**
  * Menü-Umbau 03.11.2026 («kochen geschirr trennen»): «Wohnen & Garten» trug 18 Gruppen in einem Mega-Menü (unten abgeschnitten), Kochen, Küchenhelfer, Küchengeräte,
  * Geschirr und Trinken standen zwischen Putzen, Bad und Deko. Jetzt:
- *   «Küche & Kochen»   → Kochen, Grillen & Backen · Küchenhelfer & Vorrat · Küchengeräte (mit Wasserkocher & Kaffeemaschinen)
- *   «Geschirr & Tisch» → Geschirr, Besteck & Tisch · Kaffee, Tee & Trinken
+ *   «Küche»            → Kochen, Grillen & Backen · Küchenhelfer & Vorrat · Küchengeräte (mit Wasserkocher & Kaffeemaschinen)
+ *   «Geschirr»         → Geschirr, Besteck & Tisch · Kaffee, Tee & Trinken
  *   «Wohnen & Garten»  → die 13 übrigen Gruppen, in ihrer bisherigen Reihenfolge
  * Jede der fünf Gruppen bekommt eine eigene Sammlung (vorher zeigte der Gruppenkopf nur seine erste Kind-Sammlung, z. B. «Kochen, Grillen & Backen» nur Pfannen), die zwei
  * neuen Köpfe die Vereinigung ihrer Gruppen. Der bisherige Ziel-Link des Gruppenkopfes steht danach als ERSTES Kind der Gruppe (nichts geht verloren); nur «Wasserkocher & Kaffeemaschinen»
  * (bisher Kopf-Ziel von «Kaffee, Tee & Trinken», laut Google-Kategorie zu 100 % Küchengeräte) wandert als Kind in «Küchengeräte».
+ *
+ * MENÜTITEL «Küche» und «Geschirr» (nicht «Küche & Kochen» / «Geschirr & Tisch»): GEMESSEN am 03.11. im Browser (Playwright, Titel im Live-Menü ausgetauscht): mit den langen Titeln rutschten bei 1440 px
+ * «Wohnen & Garten» und «Elektronik» in «Mehr» (bei 1920 px Elektronik und Auto), mit den kurzen blieb die Kopfzeile fast wie vorher (1440 px: Wohnen sichtbar, nur Elektronik in «Mehr»).
+ * Der erste Umbau lief mit den langen Titeln; `kopfTitelNeu` benennt sie um (ALTE_KOPFTITEL).
  *
  * Rein (kein Netz). `pruefeUmbau`: jedes Ziel, das vorher im Ast stand, steht danach noch genau so oft im Menü; neu sind nur die sieben Sammlungen; Tiefe höchstens 3; die drei Köpfe stehen an
  * der Stelle von «Wohnen & Garten»; alles ausserhalb des Astes unverändert, die behaltenen Einträge mit ihren Ids (Übersetzungen hängen an der Id). `rueckgaengigEingabe`: Rücknahme aus der Sicherung.
@@ -39,13 +43,16 @@ export const GRUPPEN = [
     kurz: 'Teekannen, Tassen, Thermobecher und Trinkflaschen.' },
 ];
 /** `sammlung` = Titel der Sammlung (H1 und Titel-Tag der Seite), wenn er vom Menütitel abweichen muss: «Küche & Kochen» tragen schon sub-kueche (indexiert, 3 966 Produkte) und kuche-kochen (301). */
-export const KUECHE = { titel: 'Küche & Kochen', sammlung: 'Küchenbedarf & Kochzubehör', handle: 'kueche-kochen', ober: 'kueche',
+export const KUECHE = { titel: 'Küche', sammlung: 'Küchenbedarf & Kochzubehör', handle: 'kueche-kochen', ober: 'kueche',
   beschreibung: 'Alles zum Kochen: Pfannen, Töpfe und Backformen, Küchenhelfer wie Schneidebretter, Reiben und Vorratsdosen sowie Küchengeräte von Mixer bis Fritteuse.',
   kurz: 'Pfannen, Küchenhelfer und Küchengeräte.' };
-export const GESCHIRR = { titel: 'Geschirr & Tisch', handle: 'geschirr-tisch', ober: 'geschirr',
+export const GESCHIRR = { titel: 'Geschirr', sammlung: 'Geschirr & Tisch', handle: 'geschirr-tisch', ober: 'geschirr',
   beschreibung: 'Geschirr und Besteck, Servierplatten und Tischdecken, dazu Tassen, Teekannen und Bar-Zubehör; für unterwegs Trinkflaschen und Lunchboxen.',
   kurz: 'Geschirr, Besteck, Tassen und Trinkflaschen.' };
 export const OBER = [KUECHE, GESCHIRR];
+/** Die Menütitel des ersten Umbaus (03.11. 22:11 UTC): `kopfTitelNeu` benennt sie in die kurzen um. */
+export const ALTE_KOPFTITEL = { 'Küche & Kochen': 'Küche', 'Geschirr & Tisch': 'Geschirr' };
+const alleKopfTitel = o => [o.titel, ...Object.entries(ALTE_KOPFTITEL).filter(([, neu]) => neu === o.titel).map(([alt]) => alt)];
 /** Kurztitel für Sammlungen, die als erstes Kind der Gruppe oder als verschobenes Kind neu im Menü erscheinen (Shop-Titel sind teils zu lang). */
 export const KURZ = { 'pfannen-woks': 'Pfannen & Woks', 'schneidebretter-bretter': 'Schneidebretter', 'mixer-entsafter-zerkleinerer': 'Mixer, Entsafter & Zerkleinerer',
   'teller-schalen-geschirrsets': 'Teller, Schalen & Geschirrsets', 'wasserkocher-kaffeemaschinen': 'Wasserkocher & Kaffeemaschinen' };
@@ -64,7 +71,7 @@ export const ziel = e => `${e.type}|${e.resourceId || e.url || ''}`;
 export const ziele = items => items.flatMap(i => [ziel(i), ...ziele(i.items || [])]);
 /** Handle einer Collection aus der Menü-Adresse (/collections/<handle>, mit oder ohne /en/-Präfix, mit oder ohne Domain). */
 export const handleVon = e => { const m = /\/collections\/([a-z0-9-]+)(?:[/?#]|$)/i.exec(String(e?.url || '')); return m ? m[1].toLowerCase() : null; };
-const gruppeNach = (baum, titel) => [ELTERN, KUECHE.titel, GESCHIRR.titel].flatMap(t => baum.find(x => x.title === t)?.items || []).find(g => g.title === titel);
+const gruppeNach = (baum, titel) => [ELTERN, ...OBER.flatMap(alleKopfTitel)].flatMap(t => baum.find(x => x.title === t)?.items || []).find(g => g.title === titel);
 /** Kinder-Handles einer Gruppe: erst der Kopf (sein Ziel), dann die Kinder, ohne Wiederholung. */
 const gruppenHandles = g => { const hs = []; for (const e of [g, ...(g?.items || [])]) { const h = handleVon(e); if (h && !hs.includes(h)) hs.push(h); } return hs; };
 const verschobenAus = g => VERSCHOBEN.filter(v => v.von === g.titel).map(v => v.handle);
@@ -77,8 +84,8 @@ const verschobenIn = g => VERSCHOBEN.filter(v => v.nach === g.titel).map(v => v.
  */
 export function kuecheGeschirrMenue(baum, gids, titel = {}) {
   const b = kopie(baum), log = [], fehler = [];
-  const da = OBER.filter(o => b.some(x => x.title === o.titel));
-  if (da.length === OBER.length) return { baum: b, log: ['ÜBERSPRUNGEN: «Küche & Kochen» und «Geschirr & Tisch» stehen schon im Menü'], fehler: ['schon umgebaut'] };
+  const da = OBER.filter(o => b.some(x => alleKopfTitel(o).includes(x.title)));
+  if (da.length === OBER.length) return { baum: b, log: [`ÜBERSPRUNGEN: «${KUECHE.titel}» und «${GESCHIRR.titel}» stehen schon im Menü`], fehler: ['schon umgebaut'] };
   if (da.length) return { baum: b, log, fehler: [`halb umgebaut: «${da[0].titel}» steht im Menü, «${OBER.find(o => !da.includes(o)).titel}» fehlt (von Hand im Admin klären)`] };
   const i = b.findIndex(x => x.title === ELTERN);
   if (i < 0) return { baum: b, log, fehler: [`oberster Punkt «${ELTERN}» nicht gefunden`] };
@@ -178,6 +185,26 @@ export function pruefeUmbau(alt, neu, gids = {}) {
       if (JSON.stringify(ohneIdsBaum(kinderNeu)) !== JSON.stringify(ohneIdsBaum(a.items || []))) f.push(`Gruppe «${g.title}»: die übrigen Kinder haben sich verändert`);
     }
   }
+  return f;
+}
+
+/**
+ * Benennt die zwei obersten Köpfe des ersten Umbaus um («Küche & Kochen» → «Küche», «Geschirr & Tisch» → «Geschirr»). Nur diese Titel ändern sich, alles andere bleibt (auch Ids).
+ * `treffer` = Zahl der umbenannten Köpfe (0 = nichts zu tun; 1 = halber Zustand, `fehler` gesetzt).
+ * @returns {{baum: object[], treffer: number, log: string[], fehler: string[]}}
+ */
+export function kopfTitelNeu(baum) {
+  const b = kopie(baum), log = [], fehler = [];
+  const alte = b.filter(x => ALTE_KOPFTITEL[x.title]);
+  for (const x of alte) { log.push(`«${x.title}» → «${ALTE_KOPFTITEL[x.title]}»`); x.title = ALTE_KOPFTITEL[x.title]; }
+  if (alte.length && alte.length !== OBER.length) fehler.push(`nur ${alte.length} von ${OBER.length} Köpfen tragen noch den alten Titel (von Hand im Admin klären)`);
+  return { baum: b, treffer: alte.length, log, fehler };
+}
+/** Prüft die Umbenennung: gleiche Einträge, gleiche Ids, gleiche Ziele, nur die zwei Köpfe tragen neue Titel. */
+export function pruefeKopfTitel(alt, neu) {
+  const f = [], soll = kopfTitelNeu(alt).baum;
+  if (JSON.stringify(ohneIdsBaum(soll)) !== JSON.stringify(ohneIdsBaum(neu))) f.push('es hat sich mehr geändert als die zwei Kopftitel');
+  if (JSON.stringify(idsBaum(soll)) !== JSON.stringify(idsBaum(neu))) f.push('Ids haben sich geändert (Übersetzungen hängen an der Id)');
   return f;
 }
 

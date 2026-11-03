@@ -22,7 +22,7 @@ import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { eingabeAus } from './menu_eintrag_einfuegen.mjs';
 import { gleicherBaum, gleicheZiele } from './lib/menue_plan.mjs';
-import { kuecheGeschirrMenue, pruefeUmbau, titelWarnungen, neueHandles, handleVon, ELTERN, GRUPPEN, KUECHE, GESCHIRR } from './lib/kueche_geschirr_menue.mjs';
+import { kuecheGeschirrMenue, kopfTitelNeu, pruefeKopfTitel, pruefeUmbau, titelWarnungen, neueHandles, handleVon, ELTERN, GRUPPEN, KUECHE, GESCHIRR } from './lib/kueche_geschirr_menue.mjs';
 import { collectionsImWeb } from './lib/collection_web.mjs';
 import { sammlungenLesen } from './schmuck_menue.mjs';
 
@@ -43,36 +43,48 @@ export async function kuecheGeschirrMenueLauf(q, { live = false, annahmeAlle = f
   // menuUpdate schreibt den gelesenen Handle zurück: ein anderes Menü (Entwurf, Kopie) würde umbenannt bzw. überschrieben.
   if (m.handle !== 'main-menu') { err(`ABBRUCH: die Suche lieferte das Menü «${m.handle}» statt «main-menu»`); return { code: 1 }; }
   const alt = eingabeAus(m.items);
-  const eltern = alt.find(x => x.title === ELTERN);
-  if (!eltern) { err(`ABBRUCH: «${ELTERN}» steht nicht im Hauptmenü (schon umgebaut?)`); return { code: 2, fehler: ['Eltern fehlt'] }; }
-  const kopfZiele = GRUPPEN.map(g => handleVon((eltern.items || []).find(x => x.title === g.titel))).filter(Boolean);
-  const alle = [...new Set([...neueHandles(), ...kopfZiele])];
-  const { gids, titel, anzahl } = await sammlungenLesen(q, alle);
-  const neu = neueHandles();
-  out(`Neue Sammlungen im Shop: ${neu.filter(h => gids[h]).length} von ${neu.length}`);
-  if (annahmeAlle) {
-    for (const h of neu) if (!gids[h]) gids[h] = `gid://annahme/${h}`;
-    out('ANNAHME_ALLE: fehlende neue Sammlungen werden als vorhanden angenommen - nur Vorschau');
-  } else if (web) {
-    const da = neu.filter(h => gids[h]);
-    const erg = da.length ? await web(da) : {};
-    const schlecht = da.filter(h => !erg[h]?.ok);
-    for (const h of schlecht) { out(`nicht im Onlineshop    ${h}: ${erg[h]?.grund || 'keine Antwort'}${anzahl[h] != null ? ` (Shopify zählt ${anzahl[h]} Produkte)` : ''}`); gids[h] = null; }
-    out(`HTTP-Prüfung im Onlineshop: ${da.length - schlecht.length} von ${da.length} erreichbar und gefüllt`);
-  }
-  const { baum, log, fehler: bauFehler } = kuecheGeschirrMenue(alt, gids, titel);
-  out(log.join('\n'));
-  if (bauFehler.length === 1 && bauFehler[0] === 'schon umgebaut') { out('Nichts zu tun: das Menü ist schon umgebaut (Exit 0, nichts geschrieben).'); return { code: 0, schonUmgebaut: true }; }
-  if (bauFehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + bauFehler.join('\n- ')); return { code: 2, fehler: bauFehler, fehlend: neu.filter(h => !gids[h]) }; }
-  const fehler = pruefeUmbau(alt, baum, gids);
-  if (fehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + fehler.join('\n- ')); return { code: 2, fehler }; }
-  const lang = titelWarnungen(baum.filter(x => [KUECHE.titel, GESCHIRR.titel, ELTERN].includes(x.title)));
-  if (lang.length) out(`\nHINWEIS: Menütitel über 34 Zeichen: ${lang.join('; ')}`);
+  // Zweiter Teil des Umbaus: trägt das Menü noch die langen Kopftitel des ersten Laufs («Küche & Kochen», «Geschirr & Tisch»), werden nur diese zwei Titel umbenannt (Gründe: lib/kueche_geschirr_menue.mjs).
+  const umb = kopfTitelNeu(alt);
+  if (umb.fehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + umb.fehler.join('\n- ')); return { code: 2, fehler: umb.fehler }; }
+  const umbenennen = umb.treffer > 0;
+  let baum, gids = {}, neu = neueHandles();
+  if (umbenennen) {
+    baum = umb.baum;
+    out(`Umbenennung der Kopftitel: ${umb.log.join(' · ')}`);
+    const fehler = pruefeKopfTitel(alt, baum);
+    if (fehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + fehler.join('\n- ')); return { code: 2, fehler }; }
+    out(`Oberste Ebene: ${alt.length} Einträge, nur zwei Titel ändern sich`);
+  } else {
+    const eltern = alt.find(x => x.title === ELTERN);
+    if (!eltern) { err(`ABBRUCH: «${ELTERN}» steht nicht im Hauptmenü (schon umgebaut?)`); return { code: 2, fehler: ['Eltern fehlt'] }; }
+    const kopfZiele = GRUPPEN.map(g => handleVon((eltern.items || []).find(x => x.title === g.titel))).filter(Boolean);
+    const alle = [...new Set([...neueHandles(), ...kopfZiele])];
+    const gelesen = await sammlungenLesen(q, alle); gids = gelesen.gids; const titel = gelesen.titel, anzahl = gelesen.anzahl;
+    out(`Neue Sammlungen im Shop: ${neu.filter(h => gids[h]).length} von ${neu.length}`);
+    if (annahmeAlle) {
+      for (const h of neu) if (!gids[h]) gids[h] = `gid://annahme/${h}`;
+      out('ANNAHME_ALLE: fehlende neue Sammlungen werden als vorhanden angenommen - nur Vorschau');
+    } else if (web) {
+      const da = neu.filter(h => gids[h]);
+      const erg = da.length ? await web(da) : {};
+      const schlecht = da.filter(h => !erg[h]?.ok);
+      for (const h of schlecht) { out(`nicht im Onlineshop    ${h}: ${erg[h]?.grund || 'keine Antwort'}${anzahl[h] != null ? ` (Shopify zählt ${anzahl[h]} Produkte)` : ''}`); gids[h] = null; }
+      out(`HTTP-Prüfung im Onlineshop: ${da.length - schlecht.length} von ${da.length} erreichbar und gefüllt`);
+    }
+    const bau = kuecheGeschirrMenue(alt, gids, titel), log = bau.log, bauFehler = bau.fehler; baum = bau.baum;
+    out(log.join('\n'));
+    if (bauFehler.length === 1 && bauFehler[0] === 'schon umgebaut') { out('Nichts zu tun: das Menü ist schon umgebaut (Exit 0, nichts geschrieben).'); return { code: 0, schonUmgebaut: true }; }
+    if (bauFehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + bauFehler.join('\n- ')); return { code: 2, fehler: bauFehler, fehlend: neu.filter(h => !gids[h]) }; }
+    const fehler = pruefeUmbau(alt, baum, gids);
+    if (fehler.length) { err('\nABBRUCH, nichts geschrieben:\n- ' + fehler.join('\n- ')); return { code: 2, fehler }; }
+    const lang = titelWarnungen(baum.filter(x => [KUECHE.titel, GESCHIRR.titel, ELTERN].includes(x.title)));
+    if (lang.length) out(`\nHINWEIS: Menütitel über 34 Zeichen: ${lang.join('; ')}`);
 
-  const zeige = (items, d = 0) => items.forEach(i => { out('  '.repeat(d) + '· ' + i.title); zeige(i.items || [], d + 1); });
-  for (const k of baum.filter(x => [KUECHE.titel, GESCHIRR.titel].includes(x.title))) { out(`\nVORSCHAU «${k.title}»:`); zeige(k.items, 1); }
-  out(`\nVORSCHAU «${ELTERN}» (${baum.find(x => x.title === ELTERN).items.length} Gruppen): ${baum.find(x => x.title === ELTERN).items.map(i => i.title).join(' | ')}`);
-  out(`Oberste Ebene: ${alt.length} → ${baum.length} Einträge`);
+    const zeige = (items, d = 0) => items.forEach(i => { out('  '.repeat(d) + '· ' + i.title); zeige(i.items || [], d + 1); });
+    for (const k of baum.filter(x => [KUECHE.titel, GESCHIRR.titel].includes(x.title))) { out(`\nVORSCHAU «${k.title}»:`); zeige(k.items, 1); }
+    out(`\nVORSCHAU «${ELTERN}» (${baum.find(x => x.title === ELTERN).items.length} Gruppen): ${baum.find(x => x.title === ELTERN).items.map(i => i.title).join(' | ')}`);
+    out(`Oberste Ebene: ${alt.length} → ${baum.length} Einträge`);
+  }
   if (!live) { out('\nTrockenlauf - nichts geschrieben.'); return { code: 0, baum }; }
 
   // Lese-Schreib-Fenster schliessen: das Menü JETZT noch einmal lesen. menuUpdate ersetzt den ganzen Baum; eine Änderung zwischen erstem Lesen und Schreiben ginge verloren.
@@ -95,13 +107,13 @@ export async function kuecheGeschirrMenueLauf(q, { live = false, annahmeAlle = f
     zurueck = (await q(MENU_Q, { h: 'handle:main-menu' })).menus.nodes[0];
     zurueckEingabe = eingabeAus(zurueck.items);
   } catch (e) { err(`FEHLER beim Nachlesen NACH dem Schreiben (${e.message}): das Menü ist umgebaut, nicht geprüft. Sicherung: ${datei}`); return { code: 3, baum, fehler: ['Nachlesen fehlgeschlagen'] }; }
-  const v = gleicherBaum(baum, zurueckEingabe), z = gleicheZiele(baum, zurueckEingabe), pf = pruefeUmbau(alt, zurueckEingabe, gids);
+  const v = gleicherBaum(baum, zurueckEingabe), z = gleicheZiele(baum, zurueckEingabe), pf = umbenennen ? pruefeKopfTitel(alt, zurueckEingabe) : pruefeUmbau(alt, zurueckEingabe, gids);
   out('Vergleich gesendet ↔ zurückgelesen:', JSON.stringify({ gleich: v.gleich && z.gleich, nurGesendet: v.nurGesendet.length, nurZurueck: v.nurZurueck.length, zielAbweichungen: z.abweichungen.length, pruefFehler: pf.length }));
   if (!v.gleich || !z.gleich || pf.length) {
     err('ABWEICHUNG!', v.nurGesendet.slice(0, 8), v.nurZurueck.slice(0, 8), z.abweichungen.slice(0, 8).map(a => `${a.pfad}: gesendet ${a.gesendet} ↔ zurück ${a.zurueck}`), pf, '- Sicherung liegt in', datei);
     return { code: 3, baum, fehler: pf };
   }
-  try { appendFileSync(ledger, `${jetzt().toISOString()} · menü küche/geschirr getrennt\n`); } catch (e) { err(`HINWEIS: Menü umgebaut und nachgelesen, aber der Ledger-Eintrag ging nicht (${e.message}); bitte von Hand in ${ledger} nachtragen.`); }
+  try { appendFileSync(ledger, `${jetzt().toISOString()} · menü küche/geschirr ${umbenennen ? 'Köpfe umbenannt' : 'getrennt'}\n`); } catch (e) { err(`HINWEIS: Menü umgebaut und nachgelesen, aber der Ledger-Eintrag ging nicht (${e.message}); bitte von Hand in ${ledger} nachtragen.`); }
   out('OK: Menü umgebaut und streng nachgelesen. Oberste Ebene:', zurueck.items.map(x => x.title).join(' | '));
   return { code: 0, baum };
 }
