@@ -1,0 +1,90 @@
+{
+  "proposalId": "checkout-email3-quality-20261103",
+  "state": "ONE_COHERENT_APPROVAL_DRAFT_SUBJECT_AND_TWO_BODY_AREAS_NOT_APPLIED_NOT_SEND_READY",
+  "applicationAllowedNow": false,
+  "oneCurrentImprovementOnly": true,
+  "flowId": "Vse76a",
+  "flowStatus": "draft",
+  "actionId": "108024959",
+  "actionStatus": "draft",
+  "messageId": "WNFHjV",
+  "templateId": "WaQaDv",
+  "subject": {
+    "before": "Email #3 Subject",
+    "after": "Möchtest du deine Bestellung fortsetzen?",
+    "onlyDefinitionFieldChanged": "subject_line",
+    "beforeDefinitionSha256": "65b7b968fb4aa1a80fc2f4dbc3616317324c50db2af76d15a46833e13113e4c6",
+    "candidateDefinitionSha256": "1eba1e61f1b9e2867051fe6613f571510a35d67386bc20f1432386d48f30e269"
+  },
+  "body": {
+    "beforeSha256": "93ad1f614f1e55dcc7ba816e8eda87c562d9fca6894045248f9ad492d6f469bb",
+    "candidateSha256": "b7ec08b4a9c5ad40f689e0d8acd74714539c4a12fb2cc2f1a62218891302d95a",
+    "changedLines1Based": [
+      15,
+      18,
+      19
+    ],
+    "exactTextChanges": [
+      {
+        "area": "heading",
+        "before": "Letzte Chance – fast ausverkauft",
+        "after": "Dein Einkauf bei LuxeStyle"
+      },
+      {
+        "area": "paragraph",
+        "before": "Hey {{ first_name|default:'' }},<br/><br/>deine Lieblingsstücke sind sehr gefragt und fast vergriffen. Dein 10 % Code\n                  <strong>WELCOME10</strong> gilt nur noch heute!",
+        "after": "Hey {{ first_name|default:'' }},<br/><br/>du kannst deinen begonnenen Einkauf im Checkout ansehen und fortsetzen. Falls du den Code\n                  <strong>WELCOME10</strong> verwenden möchtest, prüfe die dort angezeigten Bedingungen."
+      }
+    ],
+    "allOtherHtmlLinesByteIdentical": true,
+    "candidateScarcityClaimRemoved": true,
+    "candidateTodayExpiryClaimRemoved": true,
+    "candidateDoesNotPromise10Percent": true
+  },
+  "preserved": {
+    "allTemplateVariablesAndControlTokens": true,
+    "checkoutCtaExactBytes": true,
+    "checkoutUrlToken": "{{ event.extra.checkout_url }}",
+    "unsubscribeTokenExact": true,
+    "personalizationTokenExact": true,
+    "couponLiteral": "WELCOME10",
+    "couponStrongMarkup": "<strong>WELCOME10</strong>",
+    "couponMarkupAndCountExact": true,
+    "senderFields": {
+      "from_email": "info@luxestyle.ch",
+      "from_label": "LuxeStyle CH",
+      "reply_to_email": null,
+      "cc_email": null,
+      "bcc_email": null
+    },
+    "sendTrackingFlags": {
+      "smart_sending_enabled": true,
+      "transactional": false,
+      "add_tracking_params": false,
+      "custom_tracking_params": null,
+      "additional_filters": null
+    },
+    "templateNameEditorAndOtherAttributesNotChanged": true,
+    "flowStatusAndAllActionStatusesDraft": true,
+    "flowDelaysLinksAndFiltersUnchanged": true
+  },
+  "eligibility": {
+    "sendReady": false,
+    "actualDiscountConfigVerified": false,
+    "discountConfiguredOrActivated": false,
+    "stockPromiseMade": false,
+    "expiryPromiseMade": false,
+    "actualEventOrCustomerCheckoutTest": false,
+    "remainingPrerequisites": [
+      "Current source bytes and all identities must be reread immediately before any future approved edit",
+      "Legitimate isolated subject and template editor required; no whole-flow reimport",
+      "Coupon validity, consent, customer event variables, checkout rendering and send timing not functionally tested or approved",
+      "Flow and actions remain draft; this proposal is no activation or sending approval"
+    ]
+  },
+  "writes": 0,
+  "messagesSent": 0,
+  "newReportsForThisDraft": 0,
+  "discountApiReadsOrWrites": 0,
+  "bodyHtmlStructureBalanced": true
+}
