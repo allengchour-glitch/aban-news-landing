@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "createdAtUtc": "2026-11-03T13:11:27.440666+00:00",
+  "status": "INPUT_ACCEPTANCE_EXTENSION_ONLY_NO_MEDIA_OR_RIGHTS_APPROVAL",
+  "baseInputContract": {
+    "localPath": "/workspace/luxestyle-review/tageslauf-20261103-r64/publish/MASTER-RENDERWEG-GEGENPROBE-20261103-R64.json",
+    "sha256": "5f61e64debbf17ac0809eb25532ff403353c28ef2d6a34e74f5099fe1723096b",
+    "bytes": 2681
+  },
+  "existingTakeSheet": {
+    "repoPath": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBOGEN-20261102-R52.json",
+    "gitBlobSha": "3d245cbd6687b2fa5dc73672423a64d97b7b1e3a",
+    "unchangedSinceR64": true
+  },
+  "newWorkOnly": [
+    "Freshly observed empty exact-variant native media and null public featured_image bound as an explicit reference stop; product-wide photo is not sufficient for variant, motif or physical-unit acceptance.",
+    "Per-take HDR/SDR colour-pipeline evidence and manual conversion/comparison decision added to the previous general colour/flicker acceptance. No automatic conversion or source acceptance."
+  ],
+  "variantReferenceGate": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/56197916361089",
+    "supplierSku": "CJ-1477820492730732544",
+    "currentNativeVariantMedia": {
+      "nodes": [],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": null
+      }
+    },
+    "publicVariantFeaturedImage": null,
+    "productWideReferenceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+    "productWideReferenceSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "productWidePhotoOnly": true,
+    "physicalUnitToVariantEvidence": null,
+    "includedMotifSetEvidence": null,
+    "supplierVariantConfigurationDocument": null,
+    "verifiedOriginalTakeHashes": null,
+    "decision": "unknown_blocked",
+    "reason": "Empty native binding plus public featured_image=null; product-wide photo does not identify the purchased Default configuration or contained motifs.",
+    "acceptanceRequired": "Exact current variant/SKU → documented supplied configuration and motifs → actual filmed physical unit → each original take hash. Evidence may establish the binding without changing the shop; no media-assignment write is proposed.",
+    "stopRule": "Do not accept filming/AI animation solely from the product-wide photo, an old SKU video, a generic lookalike or a cost/free/purchase flag. No new Shopify media binding is invented."
+  },
+  "plannedOutput": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 18,
+    "frames": 540,
+    "videoIntent": "SDR Rec.709, colour-managed after source inspection",
+    "targetColourIsAPlanNotMeasuredOutput": true,
+    "frameInterpolationAllowed": false
+  },
+  "takeExtensions": [
+    {
+      "takeId": "P_OPERATION",
+      "requirementsInheritedFromR52": {
+        "minimumNativeFrames": 228,
+        "minimumSecondsAt30fps": "7.60",
+        "purpose": "Eine ununterbrochene Bedienung mit ganzer Hand, Kontaktstelle, identifizierter Einheit und sichtbarem Vor-/Nachzustand. Keine unbelegte Ein-/Ausschaltwirkung behaupten.",
+        "usedMasterFrames": [
+          60,
+          228
+        ]
+      },
+      "actualOriginalPath": null,
+      "actualOriginalSha256": null,
+      "actualProductVariantAndPhysicalUnitBinding": null,
+      "actualIncludedMotifBinding": null,
+      "colourPipeline": {
+        "pixelFormat": null,
+        "colourPrimaries": null,
+        "colourTransfer": null,
+        "colourMatrix": null,
+        "colourRange": null,
+        "hdrSideData": null,
+        "sourceProfileDecision": "unknown",
+        "conversionPlan": null,
+        "comparisonFrameHashes": null,
+        "reviewDecision": "unknown"
+      },
+      "existingCommercialEditingAdvertisingRightsDecision": "unknown",
+      "acceptance": "blocked_actual_original_and_identity_rights_unbound"
+    },
+    {
+      "takeId": "P_PROJECTION",
+      "requirementsInheritedFromR52": {
+        "minimumNativeFrames": 264,
+        "minimumSecondsAt30fps": "8.80",
+        "purpose": "Reale Projektion dieser tatsächlichen Default-Ausführung mit belegtem enthaltenem Motiv. Raum-/Gerätezuordnung und Lichtfarbe nachvollziehbar; keine Fremdprojektion einschneiden.",
+        "usedMasterFrames": [
+          228,
+          372
+        ],
+        "optionalHookAFrames": [
+          0,
+          60
+        ]
+      },
+      "actualOriginalPath": null,
+      "actualOriginalSha256": null,
+      "actualProductVariantAndPhysicalUnitBinding": null,
+      "actualIncludedMotifBinding": null,
+      "colourPipeline": {
+        "pixelFormat": null,
+        "colourPrimaries": null,
+        "colourTransfer": null,
+        "colourMatrix": null,
+        "colourRange": null,
+        "hdrSideData": null,
+        "sourceProfileDecision": "unknown",
+        "conversionPlan": null,
+        "comparisonFrameHashes": null,
+        "reviewDecision": "unknown"
+      },
+      "existingCommercialEditingAdvertisingRightsDecision": "unknown",
+      "acceptance": "blocked_actual_original_and_identity_rights_unbound"
+    },
+    {
+      "takeId": "P_DETAIL",
+      "requirementsInheritedFromR52": {
+        "minimumNativeFrames": 168,
+        "minimumSecondsAt30fps": "5.60",
+        "purpose": "Reales Gehäuse-/Bedienelementdetail, Form/Farbe/Logo konsistent. Keine Hauben-Abhebehandlung oder frei erfundene Funktion.",
+        "usedMasterFrames": [
+          372,
+          420
+        ],
+        "optionalHookBFrames": [
+          0,
+          60
+        ]
+      },
+      "actualOriginalPath": null,
+      "actualOriginalSha256": null,
+      "actualProductVariantAndPhysicalUnitBinding": null,
+      "actualIncludedMotifBinding": null,
+      "colourPipeline": {
+        "pixelFormat": null,
+        "colourPrimaries": null,
+        "colourTransfer": null,
+        "colourMatrix": null,
+        "colourRange": null,
+        "hdrSideData": null,
+        "sourceProfileDecision": "unknown",
+        "conversionPlan": null,
+        "comparisonFrameHashes": null,
+        "reviewDecision": "unknown"
+      },
+      "existingCommercialEditingAdvertisingRightsDecision": "unknown",
+      "acceptance": "blocked_actual_original_and_identity_rights_unbound"
+    },
+    {
+      "takeId": "P_HERO",
+      "requirementsInheritedFromR52": {
+        "minimumNativeFrames": 180,
+        "minimumSecondsAt30fps": "6.00",
+        "purpose": "Durchgehendes ruhiges Schlussbild derselben Einheit mit freiem Textraum, keinem Produktwechsel und unverfälschten Lichtfarben.",
+        "usedMasterFrames": [
+          420,
+          540
+        ]
+      },
+      "actualOriginalPath": null,
+      "actualOriginalSha256": null,
+      "actualProductVariantAndPhysicalUnitBinding": null,
+      "actualIncludedMotifBinding": null,
+      "colourPipeline": {
+        "pixelFormat": null,
+        "colourPrimaries": null,
+        "colourTransfer": null,
+        "colourMatrix": null,
+        "colourRange": null,
+        "hdrSideData": null,
+        "sourceProfileDecision": "unknown",
+        "conversionPlan": null,
+        "comparisonFrameHashes": null,
+        "reviewDecision": "unknown"
+      },
+      "existingCommercialEditingAdvertisingRightsDecision": "unknown",
+      "acceptance": "blocked_actual_original_and_identity_rights_unbound"
+    }
+  ],
+  "colourStopRules": [
+    "Probe actual originals for pix_fmt, color_primaries, color_transfer, color_space, color_range and any mastering/content-light side data; values absent from a probe stay unknown.",
+    "PQ/HLG/HDR, mixed profiles or untagged material cannot receive an automatic colour pass. Identify the actual source profile and document a deliberate SDR Rec.709 route plus representative before/after comparison frames.",
+    "No guessed LUT, filter default or metadata-only relabelling is proof of conversion. Never approve product colour from metadata alone.",
+    "Compare the same physical unit and projection motif under controlled white balance/exposure against the accepted actual reference. If no accepted variant/physical reference exists, colour and identity acceptance stay blocked.",
+    "Real output must be watched through all cuts, including the operation-to-projection join; a contact sheet or three stills cannot replace full film/tonal acceptance."
+  ],
+  "audio": {
+    "onlyRepositoryPath": "automation/music/luxe-premium.wav",
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "voiceoverAllowed": false,
+    "sourceSpeechAllowed": false,
+    "foreignSfxAllowed": false,
+    "autoMusicRotationAllowed": false,
+    "rightsAccepted": false,
+    "finalListeningMixAccepted": false
+  },
+  "execution": {
+    "renders": 0,
+    "conversionsPerformed": 0,
+    "sourceOrMusicChanges": 0,
+    "workflowStarts": 0,
+    "publicationOrLedgerWrites": 0,
+    "isNewAutomation": false
+  }
+}
