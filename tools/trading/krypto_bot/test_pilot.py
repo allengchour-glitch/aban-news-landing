@@ -802,6 +802,35 @@ with _tf.TemporaryDirectory() as _hd:
     pruefe("Lagebild erst NACH allen Aufträgen geholt", reihenfolge[-1] == ("lage", None) and "Lagebild: test" in gesendet[0], reihenfolge)
 
 
+# ── Handelstempo: Testnetz = schnell und mutig (80 % des Kontos, Aufbau in einem Lauf), Echtgeld = vorsichtig (50 %, 1000 USDT je Auftrag) ──
+# Wunsch des Besitzers 03.11.2026: «die Trades müssen schnell gehen und hohes Risiko» (Spielgeld). Der Hebel selbst bleibt bei der Risiko-Stufe (höchstens 2×).
+_ECHT = {"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": BF.ECHTGELD_SATZ}
+
+
+def _bf(**kw):
+    return BF.einstellungen({"BINANCE_FUTURES_API_KEY": "k", "BINANCE_FUTURES_API_SECRET": "s", **kw})
+
+
+_t0 = _bf()
+pruefe("Tempo: Testnetz ohne Angabe = Turbo (80 % des Kontos, Auftragsgrösse praktisch unbegrenzt)", _t0["tempo"] == "turbo" and _t0["anteil"] == 0.8 and _t0["max_auftrag"] >= 1e6 and not _t0["echtgeld"], _t0)
+_t1 = _bf(KRYPTO_TEMPO="normal")
+pruefe("Tempo: KRYPTO_TEMPO=normal stellt auch im Testnetz auf die vorsichtigen Werte (50 %, 1000 USDT je Auftrag)", _t1["tempo"] == "normal" and _t1["anteil"] == 0.5 and _t1["max_auftrag"] == 1000.0, _t1)
+pruefe("Tempo: andere Angaben (turbo, schnell, leer) und Gross-/Kleinschreibung: Turbo; «NORMAL» und « normal » gelten als normal",
+       all(_bf(KRYPTO_TEMPO=w)["tempo"] == "turbo" for w in ("turbo", "schnell", "", "an")) and all(_bf(KRYPTO_TEMPO=w)["tempo"] == "normal" for w in ("NORMAL", " normal ")))
+_t2 = _bf(KI_BOT_ANTEIL="0.3", KI_BOT_MAX_AUFTRAG="500")
+pruefe("Tempo: gesetzte KI_BOT_ANTEIL / KI_BOT_MAX_AUFTRAG gelten immer, auch im Turbo", _t2["tempo"] == "turbo" and _t2["anteil"] == 0.3 and _t2["max_auftrag"] == 500.0, _t2)
+pruefe("Tempo: der Anteil wird auf höchstens 1 begrenzt, Unsinn → Standard des Tempos", _bf(KI_BOT_ANTEIL="5")["anteil"] == 1.0 and _bf(KI_BOT_ANTEIL="viel")["anteil"] == 0.8 and _bf(KI_BOT_ANTEIL="viel", KRYPTO_TEMPO="normal")["anteil"] == 0.5)
+for _w in ("", "turbo", "schnell", "normal"):
+    _te = _bf(**_ECHT, KRYPTO_TEMPO=_w)
+    pruefe(f"Tempo: ECHTGELD ist nie Turbo (KRYPTO_TEMPO={_w!r}): 50 % und höchstens 1000 USDT je Auftrag", _te["echtgeld"] and _te["tempo"] == "normal" and _te["anteil"] == 0.5 and _te["max_auftrag"] == 1000.0, _te)
+pruefe("Tempo: der Hebel bleibt bei der Risiko-Stufe — der Turbo erhöht ihn nie (2× höchstens)", _bf(KRYPTO_RISIKO="2")["max_hebel"] == 2.0 and _bf(KRYPTO_RISIKO="1")["max_hebel"] == 1.0
+       and _bf(KRYPTO_RISIKO="9")["max_hebel"] <= 2.0 and _bf(KRYPTO_RISIKO="2", KRYPTO_TEMPO="normal")["max_hebel"] == 2.0)
+_R = {"step": 0.001, "min_qty": 0.001, "tick": 0.1, "min_notional": 100.0, "status": "TRADING"}
+_pt = BF.plane(_bf(KRYPTO_RISIKO="2"), 5000.0, 0.0, 76677.0, _R, 2.0, 0.5)
+_pn = BF.plane(_bf(KRYPTO_RISIKO="2", KRYPTO_TEMPO="normal"), 5000.0, 0.0, 76677.0, _R, 2.0, 0.5)
+pruefe("Tempo: Turbo baut das ganze Ziel (2× von 80 % des halben Kontos = 4000 USDT) in EINEM Auftrag auf", len(_pt) == 1 and _pt[0][0] == "BUY" and not _pt[0][2] and abs(_pt[0][1] * 76677.0 - 4000.0) <= 0.001 * 76677.0 + 1e-6, _pt)
+pruefe("Tempo: normal baut höchstens 1000 USDT je Auftrag auf (wie bisher)", len(_pn) == 1 and 0 < _pn[0][1] * 76677.0 <= 1000.0 + 1e-6, _pn)
+
 # ── Logbuch: derselbe Tag zweimal (Stufenwechsel, «Jetzt handeln»): der NEUESTE Entscheid steht da, nicht der erste.
 # Sonst zeigte das Cockpit «LONG 1.00×», während die Aufträge schon auf 2.00× gingen (Fund vom 03.11.2026 am Cockpit-Bild des Besitzers).
 def _entscheid_bsp(hebel, stand="2026-11-02", markt="BTC", detektor_ok=False):
@@ -956,7 +985,7 @@ srv = HTTPServer(("127.0.0.1", 0), Fake)
 threading.Thread(target=srv.serve_forever, daemon=True).start()
 url = f"http://127.0.0.1:{srv.server_port}"
 env = {"BINANCE_FUTURES_API_KEY": "KEY-F", "BINANCE_FUTURES_API_SECRET": GEHEIM, "BINANCE_FUTURES_URL": url, "BINANCE_SPOT_URL": url,
-       "KI_BOT_MAX_AUFTRAG": "100000"}
+       "KI_BOT_MAX_AUFTRAG": "100000", "KRYPTO_TEMPO": "normal"}  # «normal»: diese Tests prüfen den Ablauf mit den vorsichtigen Werten (50 % des Kontos); das Testnetz-Tempo hat eigene Prüfungen unten
 prot = []
 ent = {"hebel": 1.0, "stop_long": 45000.04, "stop_short": 55000.0, "stand": "2026-10-06"}
 BF.ausfuehren(ent, trocken=True, env=env, protokolliere=prot.append)
@@ -1027,7 +1056,7 @@ BF.ausfuehren(e_hb, env=env, protokolliere=prot.append)
 Fake.hebel_fehler = False
 pruefe("Hebel senken bei offener Position (−4161) blockiert das Aufstocken nicht", Fake.pos == 0.2 and not e_hb["broker"]["fehler"], (Fake.pos, e_hb["broker"]))
 pruefe("Komma in Einstellungen legt nichts lahm", BF.einstellungen({"KI_BOT_ANTEIL": "0,4", "KI_BOT_MAX_AUFTRAG": "1'500"})["anteil"] == 0.4
-       and BF.einstellungen({"KI_BOT_MAX_AUFTRAG": "1'500"})["max_auftrag"] == 1500.0 and BF.einstellungen({"KI_BOT_ANTEIL": "viel"})["anteil"] == 0.5)
+       and BF.einstellungen({"KI_BOT_MAX_AUFTRAG": "1'500"})["max_auftrag"] == 1500.0 and BF.einstellungen({"KI_BOT_ANTEIL": "viel", "KRYPTO_TEMPO": "normal"})["anteil"] == 0.5)
 
 
 class Abbruch(Fake):
