@@ -1,14 +1,17 @@
 name: Printful-Rückmeldung (Versand → Shopify)
 
-# Meldet versendete POD-Bestellungen (Sticker, «Selbst gestalten») mit Sendungsnummer in Shopify
+# Meldet versendete POD-Bestellungen (Sticker, Magnete, Poster) mit Sendungsnummer in Shopify
 # und löst dabei die normale Shopify-Versandmail an die Kundschaft aus. Liest Printful, schreibt nur
 # fulfillmentCreate + Tags. Legt KEINE Druckaufträge an (das macht printful-sync, Zeitplan pausiert).
 # Doku: dropship/PRINTFUL-RUECKMELDUNG-0311.md · Skript: automation/printful_tracking.mjs
-# Ein roter Lauf heisst: ein Lese- oder Schreibzugriff ist gescheitert (Zusammenfassung des Laufs lesen).
+# Ein roter Lauf heisst: ein technischer Fehler (Lesen/Schreiben/Zugangsdaten/Alarm nicht zugestellt),
+# Zusammenfassung des Laufs lesen. Befunde (Zahlung, nicht zuordenbar …) gehen einmal per Telegram raus und sind nicht rot.
+# Zeitplan: 1x täglich (SHARED-MEMORY: «Crons nur einzeln, sparsam, max. 1x/Tag»), 15:23 UTC = 16:23 Schweizer Winterzeit,
+# damit Sendungen vom Vormittag noch am selben Abend gemeldet sind. Dazwischen von Hand startbar (workflow_dispatch).
 
 on:
   schedule:
-    - cron: '17 6,10,14,18 * * *'   # 4x täglich (UTC)
+    - cron: '23 15 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -28,12 +31,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # Nur die drei Laufzeitdateien holen (ein voller Cone-Checkout von automation/ zog rund 125 MB)
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
           filter: blob:none
           sparse-checkout: |
-            automation
+            automation/printful_tracking.mjs
+            automation/lib/printful_tracking.mjs
+            automation/lib/shopify_secret.mjs
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
