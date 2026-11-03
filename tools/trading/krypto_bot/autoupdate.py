@@ -546,7 +546,7 @@ def einspielen(wurzel=None, env=None, hand=False, erzwingen=False, jetzt=None, h
     von = lokal["version"] if lokal else None
 
     def fertig(art, text, ok=True, nach=None, geprueft=False, verlauf=False, kritisch=False):
-        st.update({"ergebnis": art, "text": text[:500], "ok": ok, "zeit": iso, "kritisch": bool(kritisch)})
+        st.update({"ergebnis": art, "text": text[:500], "ok": ok, "zeit": iso, "kritisch": bool(kritisch) or unfertig(wurzel)})   # bleibt kritisch, solange ein halber Tausch nicht zurückgenommen ist
         if geprueft:
             st["geprueft"] = iso
         neu_lokal = lokale_version(wurzel)

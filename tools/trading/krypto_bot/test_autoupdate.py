@@ -443,7 +443,16 @@ with tempfile.TemporaryDirectory() as td:
         r = lauf(td, netz)
     pruefe("Rückweg selbst gestört: als KRITISCH gemeldet, Marke bleibt für die Heilung", r["ergebnis"] == "zurueckgerollt" and AU.status_lesen(td)["kritisch"] and AU.unfertig(td), r)
     pruefe("kritisch: die Ampel ist rot", AU.ampel({}, td, J0)[0] is False)
+    _orig_rollen = AU._zurueckrollen
+    AU._zurueckrollen = lambda w, d: ["cockpit.py (PermissionError)"]
+    try:
+        r = lauf(td, Netz(), jetzt=J0 + timedelta(hours=1))
+    finally:
+        AU._zurueckrollen = _orig_rollen
+    pruefe("Heilung gescheitert: die Marke bleibt, und der Status bleibt KRITISCH (auch nach einem späteren, harmlosen Lauf)", AU.unfertig(td) and AU.status_lesen(td)["kritisch"] is True, AU.status_lesen(td))
     pruefe("Heilung beim nächsten Start: der Zustand von vorher kommt zurück", "zurückgenommen" in AU.erholen(td) and baum(td) == vorher and not AU.unfertig(td))
+    r = lauf(td, Netz(), jetzt=J0 + timedelta(hours=2))
+    pruefe("nach gelungener Heilung ist der Status nicht mehr kritisch", AU.status_lesen(td)["kritisch"] is False and AU.ampel({}, td, J0)[0] is not False, AU.status_lesen(td))
 
 with tempfile.TemporaryDirectory() as td:
     td = Path(td)
