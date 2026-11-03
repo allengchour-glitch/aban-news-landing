@@ -808,6 +808,7 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 | R69 Qualitätsprüfung / Übergabe | Beide MP4s vollständig dekodiert, echtes Browserplayback/Pause/Seek bei1440/390px und visuelle Stichproben geprüft; Dateien/Hashes gesichert | Prüfungen im benannten Umfang bestanden; kreative Abnahme und aktuelle Websiteintegration ausstehend, Claude-Empfang unbekannt |
 | R70 Startseitenaufbau | Zwei aktuelle Homepageansichten, eine Firecrawl-Aufnahme und CSS geprüft; konkrete neue Reihenfolge vorbereitet | 25 Karten vorhanden, Produktbeginn erst2705/2708px; kompaktere Kategorien und frühere Produkte vorgeschlagen, keine Themeänderung oder neuen Reports |
 | R71 Stöbern im ganzen Sortiment | Neue Inhaberpräzisierung übernommen und Startseitenentwurf angepasst | Alle16Bereiche kompakt erreichbar, frühe gemischte Produkte und wechselnde Themen; Sechs-Kategorien-Vorschlag überholt, keine Websiteumsetzung oder neuen Reports |
+| R72 Stöber-Startseite / Push | Zwei aktuelle MAIN-Dateien eng umgebaut, nativ im bestehenden Entwurf gespeichert und exakt zurückgelesen; 320/390/1440-Vorschau geprüft, 320-Wortumbruch korrigiert | 16 Kategorien, 25 Produkte und Herzen erhalten; erste Produkte mobil rund 1114 px früher. Konkreter Patch, Hashes und QA für GitHub-Übergabe; MAIN unverändert, kein Publish, Claude-Empfang unbekannt |
 
 [LUXESTYLE_LAUF_20261103] [Paket](LAUFPAKET-20261103-R64.md) · [Belege](LAUFBELEGE-20261103-R64.json) · [Master](MASTER-CONTENT-20261103-R64.md). Tagesreports abgeschlossen; spätere bestehende Läufe lesen sie ohne konkreten neuen Anlass nicht erneut.
 
@@ -824,3 +825,5 @@ Tageszwischenstand des bestehenden Morgenlaufs, Europe/Zurich. Keine neue Freque
 [LUXESTYLE_R70_20261103] [Startseitenvorschlag](STARTSEITE-DESIGN-20261103-R70.md) · [Messbelege](STARTSEITE-BELEGE-20261103-R70.json). Prüfung und Gestaltungsvorschlag; keine Umsetzung oder Freigabeausweitung.
 
 [LUXESTYLE_R71_20261103] [Startseite zum Stöbern](STOEBER-STARTSEITE-20261103-R71.md). Neue Aufbaupräzisierung des Inhabers dokumentiert; historische R70-Messung nicht als neu ausgegeben.
+
+[LUXESTYLE_R72_20261103] [Konkreter Stöber-Layoutpatch und native Entwurfsprüfung](STARTSEITE-STOEBERN-20261103-R72.md). Kein Live-Publish; ältere Initialprüfungen und Rechte-/Freigabegrenzen erhalten.
