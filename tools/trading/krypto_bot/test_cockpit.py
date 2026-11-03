@@ -149,6 +149,8 @@ with tempfile.TemporaryDirectory() as tmp:
         pruefe("Cockpit: Konto seit Start −0,25 %, unter Hoch −5 %", abs(s["konto"]["seit_start"] + 0.0025) < 1e-12
                and abs(s["konto"]["unter_hoch"] + 0.05) < 1e-12, s["konto"])
         pruefe("Cockpit: nur Futures-Aufträge", len(s["auftraege"]) == 2 and s["auftraege"][0]["symbol"] == "BTCUSDT")
+        pruefe("Cockpit-Stand trägt die Programmversion (geladen und auf der Platte) für den Hinweis «neue Version installiert»",
+               set(s.get("programm", {})) == {"geladen", "auf_platte"} and s["programm"]["geladen"] == C.VERSION_GELADEN, s.get("programm"))
         pruefe("abgelehnter Auftrag ist als Fehler markiert (Live-Chart zeigt dafür keinen «Bot kauft»-Pfeil)",
                [a_["fehler"] for a_ in s["auftraege"]] == [False, True] and "!a.fehler" in (HIER / "markt.html").read_text(encoding="utf-8"))
         pruefe("Cockpit: Testnetz-Anzeige ohne doppelte Freigabe", s["modus"] == "TESTNETZ"
@@ -770,6 +772,119 @@ with tempfile.TemporaryDirectory() as tmp:
             "zeit": "2026-01-20T02:31:00+00:00", "ok": False, "hinweise": ["BTC long", "⚠️ OHNE Stop: bitte prüfen"]}}, {}, heute2)}
         pruefe("Gesundheit: Warnung im letzten Lauf = rot, mit Grund", gw["Letzter Lauf mit Aufträgen"]["ok"] is False
                and "OHNE Stop" in gw["Letzter Lauf mit Aufträgen"]["text"], gw.get("Letzter Lauf mit Aufträgen"))
+        # Gesundheit nennt den Grund des gescheiterten Auftrags (Binance-Antwort aus dem Broker-Protokoll)
+        _lb_x = {"entscheide": [{"stand": "2026-01-19"}], "letzter_lauf": {
+            "zeit": "2026-01-20T02:31:00+00:00", "ok": False, "hinweise": ["⚠️ Mindestens ein Auftrag scheiterte — bitte im Konto prüfen."]}}
+        _bp = Path(tmp) / "ki-bot-broker.json"
+        _bp.write_text(json.dumps([
+            {"zeit": "2026-01-19T02:31:00+00:00", "broker": "binance-futures", "symbol": "ETHUSDT", "trocken": False,
+             "auftraege": [{"seite": "BUY", "menge": 0.4, "fehler": "HTTP -1111: Precision is over the maximum."}]},
+            {"zeit": "2026-01-20T02:31:00+00:00", "broker": "binance-futures", "symbol": "BTCUSDT", "trocken": False,
+             "auftraege": [{"seite": "BUY", "menge": 0.0128, "status": "FILLED"}, {"seite": "BUY", "menge": 0.0128, "fehler": "HTTP -2019:   Margin is insufficient."}]},
+            {"zeit": "2026-01-20T03:00:00+00:00", "broker": "binance-futures", "symbol": "SOLUSDT", "trocken": True,
+             "auftraege": [{"seite": "BUY", "menge": 1, "fehler": "nur Probelauf"}]}]), encoding="utf-8")
+        try:
+            gx = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
+            pruefe("Gesundheit: gescheiterter Auftrag nennt Symbol und Grund von Binance (jüngster echter, Leerzeichen bereinigt)",
+                   gx["ok"] is False and "BTCUSDT BUY 0.0128: HTTP -2019: Margin is insufficient." in gx["text"]
+                   and "Mindestens ein Auftrag scheiterte" in gx["text"] and "Probelauf" not in gx["text"], gx)
+            _bp.write_text("{kaputt", encoding="utf-8")
+            gk = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
+            pruefe("Gesundheit: kaputtes Broker-Protokoll stört die Anzeige nicht (Text wie bisher, ohne Grund)",
+                   gk["ok"] is False and "Grund:" not in gk["text"] and "Mindestens ein Auftrag scheiterte" in gk["text"], gk)
+        finally:
+            _bp.unlink(missing_ok=True)
+        gn = {x["name"]: x for x in C.gesundheit({}, _lb_x, {}, heute2)}["Letzter Lauf mit Aufträgen"]
+        pruefe("Gesundheit: ohne Broker-Protokoll bleibt der Text wie bisher", "Grund:" not in gn["text"] and gn["ok"] is False, gn)
+        # ── Selbstheilung: «Alles prüfen und reparieren» heilt nur Heilbares und sendet nie Aufträge ──
+        def _pkt(name, ok, text, **kw):
+            return {"name": name, "ok": ok, "text": text, **kw}
+        _vor = [_pkt("Täglicher Start (Aufgabenplanung)", False, "fehlt — Knopf «Täglich automatisch einrichten»"),
+                _pkt("Nachkontrolle (Aufgabenplanung)", False, "fehlt — Knopf «Täglich automatisch einrichten» legt sie mit an"),
+                _pkt("Markt-Infos", False, "vor 80 Std. geladen — Knopf «Markt-Infos»"),
+                _pkt("Claude (KI-Trader)", False, "noch keine Einschätzung"),
+                _pkt("Risiko-Stufe", None, "2× bestand den Test nicht", warnung=True)]
+        _nach = [_pkt("Täglicher Start (Aufgabenplanung)", True, "eingerichtet (02:30)"), _pkt("Nachkontrolle (Aufgabenplanung)", True, "eingerichtet"),
+                 _pkt("Markt-Infos", True, "vor 0 Std. geladen"), _pkt("Claude (KI-Trader)", False, "noch keine Einschätzung"),
+                 _pkt("Risiko-Stufe", None, "2× bestand den Test nicht", warnung=True)]
+
+        def _reihe(*listen):
+            it = iter(listen)
+            return lambda: next(it)
+        _starts, _cmds = [], []
+
+        def _starter(args, zeit):
+            _starts.append(list(args))
+            return True, "Futures: Position liegt im Zielbereich — keine Aufträge."
+
+        def _bef(c, z):
+            _cmds.append(list(c))
+            return True, "ERFOLGREICH"
+        _alt_pause, _alt_stop = C.PAUSE, C.STOP
+        C.PAUSE, C.STOP = Path(tmp) / "PAUSE-nicht-da", Path(tmp) / "STOP-nicht-da"
+        try:
+            ok_h, t_h = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe(_vor, _nach))
+            pruefe("Selbstheilung: fehlende Aufgaben werden angelegt (schtasks /create), Ergebnis ok",
+                   ok_h is True and "Aufgabenplanung eingerichtet" in t_h and any(c[:2] == ["schtasks", "/create"] for c in _cmds), (ok_h, t_h, _cmds))
+            pruefe("Selbstheilung: veraltete Markt-Infos werden aufgefrischt, der Prüflauf läuft nur als --trocken",
+                   ["infos.py"] in _starts and ["pilot.py", "--lauf", "--trocken"] in _starts, _starts)
+            pruefe("Selbstheilung sendet NIE Aufträge: kein Lauf ohne --trocken, kein KI-Trader, kein Sparplan",
+                   all(a == ["infos.py"] or "--trocken" in a for a in _starts)
+                   and not any(a[0] in ("ki_trader.py", "eth_sammler.py", "handeln") for a in _starts), _starts)
+            pruefe("Selbstheilung: was bleibt, steht mit Anweisung da (Claude-Schlüssel, Risiko-Stufe als Warnung)",
+                   "Danach noch offen:" in t_h and "✗ Claude (KI-Trader)" in t_h and "console.anthropic.com" in t_h
+                   and "⚠ Risiko-Stufe" in t_h and "höchstens" not in t_h.split("Danach noch offen:")[0], t_h)
+            # Auto-Handel aus (Pause): Aufgaben NICHT anlegen
+            _cmds.clear()
+            C.PAUSE.write_text("", encoding="utf-8")
+            ok_p, t_p = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe(_vor, _vor))
+            pruefe("Selbstheilung bei Auto-Handel AUS: legt keine Aufgaben an und sagt warum",
+                   not _cmds and "NICHT angelegt" in t_p and "Auto-Handel ist aus" in t_p, (t_p, _cmds))
+            C.PAUSE.unlink()
+            # Einrichten scheitert: ❌ und ok False
+            ok_f, t_f = C.selbstheilung(starter=_starter, befehl=lambda c, z: (False, "Zugriff verweigert"), punkte_lesen=_reihe(_vor, _vor))
+            pruefe("Selbstheilung: scheitert das Einrichten, steht ❌ da und das Ergebnis ist nicht ok",
+                   ok_f is False and "❌ Aufgabenplanung" in t_f and "Zugriff verweigert" in t_f, (ok_f, t_f))
+            # «läuft nicht» ist nicht «fehlt»: nichts neu anlegen, nur melden
+            _cmds.clear()
+            _lauft_nicht = [_pkt("Täglicher Start (Aufgabenplanung)", True, "eingerichtet (02:30)"),
+                            _pkt("Nachkontrolle (Aufgabenplanung)", False, "eingerichtet, aber seit 45 Min. kein Lauf — läuft der unsichtbare Starter nicht?")]
+            _o, _t = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe(_lauft_nicht, _lauft_nicht))
+            pruefe("Selbstheilung legt nichts neu an, wenn die Aufgabe da ist und nur nicht läuft (bleibt als Hinweis stehen)",
+                   not _cmds and "Nachkontrolle (Aufgabenplanung): eingerichtet, aber seit 45 Min." in _t, (_cmds, _t))
+            # Prüflauf scheitert: ❌ mit letzter Zeile
+            ok_l, t_l = C.selbstheilung(starter=lambda a, z: (False, "x\nBinance antwortet HTTP 401"), befehl=_bef,
+                                        punkte_lesen=_reihe(_nach, _nach))
+            pruefe("Selbstheilung: scheitert der Prüflauf, wird das laut gemeldet (kein stilles «alles gut»)",
+                   ok_l is False and "FEHLGESCHLAGEN" in t_l and "HTTP 401" in t_l, (ok_l, t_l))
+            # Alles gesund: nichts anfassen ausser dem Prüflauf
+            _starts.clear(); _cmds.clear()
+            ok_g, t_g = C.selbstheilung(starter=_starter, befehl=_bef, punkte_lesen=_reihe([_nach[0], _nach[1], _nach[2]], [_nach[0], _nach[1], _nach[2]]))
+            pruefe("Selbstheilung bei gesundem System: keine Aufgabe, keine Markt-Infos, nur der Prüflauf, «alles in Ordnung»",
+                   not _cmds and _starts == [["pilot.py", "--lauf", "--trocken"]] and "alles in Ordnung" in t_g, (_cmds, _starts, t_g))
+            # Der Knopf (aktion) liefert das Protokoll mit Titel und Ergebnis
+            e_h = C.aktion("heilen", starter=_starter, befehl=_bef)
+            pruefe("Aktion «heilen»: Protokolleintrag mit Titel und Text", e_h["titel"] == "Alles prüfen und reparieren" and "Prüfung und Reparatur" in e_h["text"], e_h)
+        finally:
+            C.PAUSE, C.STOP = _alt_pause, _alt_stop
+            (Path(tmp) / "PAUSE-nicht-da").unlink(missing_ok=True)
+        # ── Gesundheit: Risiko-Stufe ──
+        import pilot_kern as _K
+        _alt_einst = _K.EINSTELLUNGEN
+        _K.EINSTELLUNGEN = Path(tmp) / "krypto-einstellungen-test.json"
+        try:
+            def _stufe(wert, env=None):
+                _K.EINSTELLUNGEN.write_text(json.dumps({"risiko": wert}), encoding="utf-8")
+                return {x["name"]: x for x in C.gesundheit(env or {}, {"entscheide": []}, {}, heute2)}["Risiko-Stufe"]
+            _echt = {"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"}
+            s1, s175, s2, s2e = _stufe(1.0), _stufe(1.75), _stufe(2.0), _stufe(2.0, _echt)
+            pruefe("Risiko-Stufe 1×: grün", s1["ok"] is True and "Standard" in s1["text"], s1)
+            pruefe("Risiko-Stufe 1,75×: Info ohne Warnung (grau)", s175["ok"] is None and not s175.get("warnung") and "1,75×" in s175["text"], s175)
+            pruefe("Risiko-Stufe 2× im Testnetz: graue WARNUNG (zählt mit), Test nicht bestanden",
+                   s2["ok"] is None and s2.get("warnung") is True and "bestand den Test nicht" in s2["text"], s2)
+            pruefe("Risiko-Stufe 2× mit ECHTEM GELD: rot", s2e["ok"] is False and "ECHTEM GELD" in s2e["text"], s2e)
+        finally:
+            _K.EINSTELLUNGEN = _alt_einst
         import meldung as M
         alt_datei = M.DATEI
         M.DATEI = Path(tmp) / "krypto-auto-status.json"
@@ -958,6 +1073,127 @@ with tempfile.TemporaryDirectory() as tmp:
         C.DATA, C.STOP, C.PAUSE = alt
         Sp.ORDNER = alt_sperre
 
+# ── Auto-Update und automatische Pflege im Cockpit (nur Wegwerf-Ordner, nie das echte Update, nie echte Aufgaben) ──
+import contextlib as _cl  # noqa: E402
+import io as _io  # noqa: E402
+import tempfile as _tf  # noqa: E402
+import autoupdate as _AU  # noqa: E402
+import pflege as _PF  # noqa: E402
+pruefe("AKTIONEN: heilen_auto und update vorhanden", "heilen_auto" in C.AKTIONEN and "update" in C.AKTIONEN)
+_s_auto = []
+with _tf.TemporaryDirectory() as _td_a:
+    _alt_a = (C.DATA, C.PAUSE, C.STOP, C.ROOT)
+    C.DATA, C.PAUSE, C.STOP = Path(_td_a) / "data", Path(_td_a) / "PAUSE-nein", Path(_td_a) / "STOP-nein"
+    try:
+        def _st_auto(args, zeit):
+            _s_auto.append(list(args))
+            return True, "ok"
+        ok_m, t_m = C.selbstheilung(starter=_st_auto, befehl=lambda c, z: (True, "ok"), punkte_lesen=lambda: [], mit_probelauf=False)
+        pruefe("selbstheilung(mit_probelauf=False): kein Prüflauf des Piloten, kein Prüflauf-Satz im Bericht", ["pilot.py", "--lauf", "--trocken"] not in _s_auto and "Prüflauf" not in t_m and ok_m, (_s_auto, t_m))
+        ok_m, t_m = C.selbstheilung(starter=_st_auto, befehl=lambda c, z: (True, "ok"), punkte_lesen=lambda: [])
+        pruefe("selbstheilung (Standard): der Prüflauf ohne Aufträge läuft weiterhin", ["pilot.py", "--lauf", "--trocken"] in _s_auto and "Prüflauf ohne Aufträge ok" in t_m)
+        _s_auto.clear()
+        e_ha = C.aktion("heilen_auto", starter=_st_auto, befehl=lambda c, z: (True, "ok"))
+        pruefe("Aktion «heilen_auto»: eigener Titel, und der Prüflauf des Piloten läuft dabei NICHT (der Tageslauf war der Test)",
+               e_ha["titel"].startswith("Automatische Prüfung") and ["pilot.py", "--lauf", "--trocken"] not in _s_auto and "Prüflauf" not in e_ha["text"], (e_ha["titel"], _s_auto, e_ha["text"][:200]))
+        e_u = C.aktion("update", update=lambda: {"ok": True, "ergebnis": "eingespielt", "text": "✅ Programm aktualisiert: a → b"})
+        pruefe("Update-Knopf (Paket): neue Version → Hinweis, das Cockpit-Fenster neu zu starten", e_u["ok"] and "neu starten" in e_u["text"] and "aktualisiert" in e_u["text"], e_u)
+        e_u = C.aktion("update", update=lambda: {"ok": True, "ergebnis": "aktuell", "text": "Version a ist die neueste"})
+        pruefe("Update-Knopf (Paket): nichts Neues → kein Neustart-Hinweis", e_u["ok"] and "neu starten" not in e_u["text"], e_u)
+        e_u = C.aktion("update", update=lambda: {"ok": False, "ergebnis": "fehlgeschlagen", "text": "Probelauf nicht bestanden"})
+        pruefe("Update-Knopf (Paket): Fehler → ok=False mit dem Grund", not e_u["ok"] and "Probelauf" in e_u["text"], e_u)
+        _alt_holen = _AU._holen
+        _AU._holen = lambda url, timeout=20, max_bytes=0: (None, b"")
+        C.ROOT = Path(_td_a)            # kein .git darin → der Paket-Weg mit dem echten Updater, hier gegen ein Netz, das nichts liefert
+        try:
+            e_u = C.aktion("update")
+        finally:
+            C.ROOT = _alt_a[3]
+            _AU._holen = _alt_holen
+        pruefe("Update-Knopf ohne Git-Ordner geht den Paket-Weg: ohne Internet eine verständliche Meldung, nichts geändert",
+               e_u["ok"] and "kein Internet" in e_u["text"] and not (Path(_td_a) / "tools").exists(), e_u)
+        (Path(_td_a) / "data").mkdir(exist_ok=True)
+        pk = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Gesundheit: «Programm-Update (automatisch)» und «Selbstpflege (automatisch)» sind da und grau ohne Alarm, solange nichts gelaufen ist",
+               "Programm-Update (automatisch)" in pk and "Selbstpflege (automatisch)" in pk and pk["Selbstpflege (automatisch)"]["ok"] is None
+               and not pk["Selbstpflege (automatisch)"].get("warnung"), {k: v for k, v in pk.items() if "automatisch" in k})
+        _PF._schreiben(Path(_td_a), {"zeit": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "update": {"ergebnis": "aktuell", "text": "x", "ok": True},
+                                     "heilung": {"ok": False, "text": "❌ Prüflauf ohne Aufträge FEHLGESCHLAGEN: HTTP 401"}})
+        pk = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Gesundheit: Selbstpflege ist rot, wenn die Selbstprüfung etwas fand, und nennt es", pk["Selbstpflege (automatisch)"]["ok"] is False and "HTTP 401" in pk["Selbstpflege (automatisch)"]["text"], pk["Selbstpflege (automatisch)"])
+        pruefe("programm_version: ohne VERSION.json leer", C.programm_version() == "")
+        _AU._bytes_atomar(Path(_td_a) / "tools/trading/VERSION.json", json.dumps({"version": "2026-11-04.abc1234", "commit": "abc1234", "gebaut": "2026-11-04T09:00:00Z"}).encode("utf-8"))
+        pruefe("programm_version: liest die Nummer aus tools/trading/VERSION.json", C.programm_version() == "2026-11-04.abc1234")
+        _AU.status_schreiben(Path(_td_a), {"geprueft": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "ergebnis": "aktuell", "ok": True, "text": "Version x ist die neueste"})
+        pk = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())}
+        pruefe("Gesundheit: frisch geprüftes Update ist grün und nennt die Programmversion", pk["Programm-Update (automatisch)"]["ok"] is True and "2026-11-04.abc1234" in pk["Programm-Update (automatisch)"]["text"], pk["Programm-Update (automatisch)"])
+    finally:
+        C.DATA, C.PAUSE, C.STOP, C.ROOT = _alt_a
+# Robustheit: ein Fehler oder Fehlen der Update-Module legt das Cockpit nie lahm
+_alt_au, _alt_pf = C.AU, C.PF
+try:
+    C.AU = C.PF = None
+    _pk_ohne = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+    pruefe("Gesundheit ohne Update-Module: kein Absturz, die beiden Punkte fehlen einfach", isinstance(_pk_ohne, list) and not any("automatisch" in x["name"] for x in _pk_ohne))
+    pruefe("programm_version ohne Update-Modul: leer statt Absturz", C.programm_version() == "")
+
+    class _KaputtLesen:
+        @staticmethod
+        def lokale_version(*a, **k):
+            raise OSError("Platte weg")
+    C.AU = _KaputtLesen
+    pruefe("programm_version: wirft das Lesen, kommt leer zurück statt eines Absturzes", C.programm_version() == "")
+
+    class _KaputtAU:
+        @staticmethod
+        def ampel(*a, **k):
+            raise RuntimeError("boom")
+    C.AU = _KaputtAU
+    _pk_kaputt = C.gesundheit({}, {"entscheide": []}, {}, datetime.now(timezone.utc).date())
+    pruefe("Gesundheit: wirft die Update-Ampel, bleibt der Rest der Liste erhalten", isinstance(_pk_kaputt, list) and any(x["name"] == "Not-Aus" for x in _pk_kaputt))
+finally:
+    C.AU, C.PF = _alt_au, _alt_pf
+_alt_d = C.DATA
+try:
+    C.DATA = Path(tempfile.gettempdir()) / "krypto-test-xyz" / "data"
+    pruefe("_wurzel: liegt DATA in einem Ordner «data», ist die Wurzel dessen Elternordner", C._wurzel() == C.DATA.parent)
+    C.DATA = Path(tempfile.gettempdir()) / "krypto-test-xyz-anders"
+    pruefe("_wurzel: liegt DATA anderswo (Tests), zeigt die Wurzel in einen Ordner ohne Update-Dateien", C._wurzel().parent == C.DATA and C._wurzel() != C.DATA.parent)
+finally:
+    C.DATA = _alt_d
+_runden, _rufe, _schlaf = [], [], []
+C.pflege_beim_start(warte=3.0, stunden=2.0, runden=3, schlafen=_schlaf.append, ausfuehren=lambda: _rufe.append(1))
+pruefe("pflege_beim_start: wartet kurz, prüft, schläft dann Stunden — drei Runden", _rufe == [1, 1, 1] and _schlaf == [3.0, 7200.0, 7200.0], (_rufe, _schlaf))
+_schlaf.clear()
+
+
+def _boese_runde():
+    raise RuntimeError("boom")
+
+
+C.pflege_beim_start(warte=0, stunden=1, runden=2, schlafen=_schlaf.append, ausfuehren=_boese_runde)
+pruefe("pflege_beim_start: eine Ausnahme in der Prüfung stoppt den Faden nicht", _schlaf == [0, 3600.0], _schlaf)
+_alt_sh, _alt_argv = C.selbstheilung, sys.argv
+_gedruckt = _io.StringIO()
+try:
+    _aufrufe = []
+    for _erg, _rc in (((True, "alles gut"), 0), ((False, "etwas kaputt"), 1)):
+        C.selbstheilung = lambda _e=_erg, **kw: (_aufrufe.append(kw), _e)[1]
+        sys.argv = ["cockpit.py", "--heilen"]
+        with _cl.redirect_stdout(_gedruckt):
+            _r = C.main()
+        pruefe(f"cockpit.py --heilen: ohne Fenster, Rückgabewert {_rc} bei {'Erfolg' if _rc == 0 else 'Fehlschlag'}", _r == _rc and ("alles gut" in _gedruckt.getvalue() or _rc == 1), _r)
+    pruefe("cockpit.py --heilen: ohne --probelauf KEIN Prüflauf des Piloten", _aufrufe[0] == {"mit_probelauf": False}, _aufrufe)
+    sys.argv = ["cockpit.py", "--heilen", "--probelauf"]
+    with _cl.redirect_stdout(_gedruckt):
+        C.main()
+    pruefe("cockpit.py --heilen --probelauf: mit Prüflauf", _aufrufe[-1] == {"mit_probelauf": True}, _aufrufe)
+finally:
+    C.selbstheilung, sys.argv = _alt_sh, _alt_argv
+_html = (HIER / "cockpit.html").read_text(encoding="utf-8")
+pruefe("cockpit.html: Hinweis «neue Programmversion installiert» und Knopf «Update holen» ohne Git-Verweis",
+       'id="versionHinweis"' in _html and "d.programm" in _html and 'data-a="update"' in _html and "git pull" not in _html)
+
 # ── Windows-Startdateien: statisch geprüft (kein cmd.exe im Test) ──
 auto = (HIER / "krypto-auto.bat").read_bytes()
 txt = auto.decode("ascii")
@@ -983,6 +1219,20 @@ pruefe("start-auto.bat auto: ohne Pause, Tageswächter mit Ende (sonst blockiert
        '"%~1"=="auto"' in _sa and "--stunden" in _sa and "\npause" not in _sa.replace("\r", "") and "WARTE=rem" not in _sa)
 pruefe("krypto-auto.bat: ETH-Sparplan nur mit ausdrücklicher Freigabe (ETH_SPARPLAN_BETRAG), nicht schon wegen des Spot-Schlüssels",
        '"%ETH_SPARPLAN_BETRAG%"==""' in txt and 'if not "%BINANCE_API_KEY%"=="" (\r\n  call :schritt ETH-Sammler' not in txt)
+
+# ── Pflege-Zeile in den Start-Dateien (statisch) ──
+_zeilen = txt.split("\r\n")
+_i_ende = _zeilen.index(":ende")
+_pflege = [i for i, z in enumerate(_zeilen) if "pflege.py" in z and not z.startswith("REM")]
+pruefe("krypto-auto.bat: genau eine Pflege-Zeile, NACH :ende und vor dem letzten «goto :eof»", len(_pflege) == 1 and _pflege[0] > _i_ende and _zeilen[_pflege[0] + 1] == "goto :eof", _pflege)
+_pz = _zeilen[_pflege[0]]
+pruefe("krypto-auto.bat: die Pflege-Zeile endet mit «& exit /b» (cmd liest die Datei danach nicht mehr, auch wenn ein Update sie ersetzt) und nur wenn pflege.py da ist",
+       _pz.startswith('if exist "tools\\trading\\krypto_bot\\pflege.py" %PY% ') and _pz.endswith(" --still & exit /b"), _pz)
+pruefe("krypto-auto.bat: die Pflege läuft NACH dem Handel (hinter :ende), nicht davor", txt.index("pflege.py") > txt.index(":ende") > txt.index("meldung.py --ok"))
+_cb = (HIER / "cockpit.bat").read_bytes().decode("ascii").split("\r\n")
+_cz = [z for z in _cb if "cockpit.py" in z and not z.startswith("REM")]
+pruefe("cockpit.bat: Update und Cockpit in EINER Zeile, am Ende «& pause & exit /b», und sonst kein weiteres pause",
+       len(_cz) == 1 and "pflege.py --nur-update --still" in _cz[0] and _cz[0].endswith("cockpit.py & pause & exit /b") and sum(1 for z in _cb if z.strip().lower() == "pause") == 0, _cz)
 
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

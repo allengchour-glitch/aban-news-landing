@@ -84,6 +84,9 @@ if defined FEHLER (
 )
 :ende
 if /i not "%~1"=="auto" pause
+REM Pflege NACH dem Handel (03.11.2026): neue Programmversion holen (nur Spielgeld) und sich selbst pruefen und reparieren. Sendet nie Auftraege.
+REM Alles in EINER Zeile mit "& exit /b": cmd liest sie ganz ein, bevor ein Update diese Datei ersetzt, und liest danach nichts mehr.
+if exist "tools\trading\krypto_bot\pflege.py" %PY% tools\trading\krypto_bot\pflege.py --still & exit /b
 goto :eof
 
 :nachkontrolle_allein

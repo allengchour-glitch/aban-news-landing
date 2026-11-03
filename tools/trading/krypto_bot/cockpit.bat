@@ -7,5 +7,6 @@ set PYTHONIOENCODING=utf-8
 cd /d "%~dp0\..\..\.."
 set PY=py
 where py >nul 2>nul || set PY=python
-%PY% tools\trading\krypto_bot\cockpit.py
-pause
+REM Zuerst eine neue Programmversion holen (nur Spielgeld, hoechstens 1x je Tag, scheitert still), dann das Cockpit.
+REM Alles in EINER Zeile mit "& exit /b": cmd liest sie ganz ein, bevor ein Update diese Datei ersetzt, und liest danach nichts mehr.
+%PY% tools\trading\krypto_bot\pflege.py --nur-update --still & %PY% tools\trading\krypto_bot\cockpit.py & pause & exit /b
