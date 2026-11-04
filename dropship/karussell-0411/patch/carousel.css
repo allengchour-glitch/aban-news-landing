@@ -1,0 +1,32 @@
+
+/* 04.11.2026 (Besitzer: «karussell wie vorher bei produkten»): Pfeile und Positionsbalken für die seitlich wischbaren Produktreihen der Startseite (Skript am Ende von sections/luxe-edit-home.liquid). Ohne Skript bleibt alles wie vorher. */
+.lx-home .lx-carousel{position:relative;min-width:0}
+.lx-home .lx-carousel-btn{display:none;position:absolute;z-index:4;top:var(--lx-car-mid,34%);transform:translateY(-50%);align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:1px solid #c9bfb0;border-radius:50%;background:#fff;color:#292722;box-shadow:0 2px 6px rgba(41,39,34,.18),0 8px 20px rgba(41,39,34,.12);cursor:pointer;transition:opacity .2s ease,background-color .2s ease,border-color .2s ease,color .2s ease}
+.lx-home .lx-carousel-prev{left:-16px}
+.lx-home .lx-carousel-next{right:-16px}
+.lx-home .lx-carousel-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lx-home .lx-carousel-btn:hover:not(:disabled){background:#292722;border-color:#292722;color:#fff}
+.lx-home .lx-carousel-btn:active:not(:disabled){transform:translateY(-50%) scale(.94)}
+.lx-home .lx-carousel-btn:focus-visible{outline:3px solid #845a34;outline-offset:3px;box-shadow:0 0 0 9px #fff}
+.lx-home .lx-carousel-btn:disabled{opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s ease,visibility 0s linear .2s,background-color .2s ease,border-color .2s ease}
+.lx-home .lx-carousel-progress{display:none;position:absolute;left:4px;right:4px;bottom:3px;height:3px;margin:0;border-radius:3px;background:#e8dfd3;overflow:hidden;pointer-events:none}
+.lx-home .lx-carousel-progress>span{display:block;height:100%;border-radius:3px;background:#8b7355;transition:transform .12s linear}
+@media (hover:hover) and (pointer:fine){
+  .lx-home .lx-carousel.is-scrollable>.lx-carousel-btn{display:flex}
+  .lx-home.lx-car-ready .lx-trends-hint,.lx-home.lx-car-ready .lx-edit-product-hint{display:none!important}
+}
+@media (hover:none),(pointer:coarse){
+  .lx-home .lx-carousel.is-scrollable>.lx-carousel-progress{display:block}
+}
+@media (max-width:760px){
+  .lx-home .lx-carousel-prev{left:-10px}
+  .lx-home .lx-carousel-next{right:-10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .lx-home .lx-carousel-btn,.lx-home .lx-carousel-progress>span{transition:none}
+}
+@media (forced-colors:active){
+  .lx-home .lx-carousel-progress{border:1px solid CanvasText;background:Canvas}
+  .lx-home .lx-carousel-progress>span{background:Highlight;forced-color-adjust:none}
+  .lx-home .lx-carousel-btn:hover:not(:disabled){border-color:Highlight}
+}
