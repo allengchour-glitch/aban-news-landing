@@ -1,0 +1,1131 @@
+{
+  "schemaVersion": 1,
+  "revision": 78,
+  "at": "2026-11-04T08:37:38.748962+00:00",
+  "timezone": "Europe/Zurich",
+  "documentStatus": "LOCAL_REVIEW_PACKAGE_COMPLETE_NOT_PUBLISHED",
+  "handoffReady": true,
+  "publicationReady": false,
+  "scope": "Zwei neue referenzbasierte Bildentwürfe; abgeschlossene begrenzte Kategorie- und Medienproben. Keine Themeänderung, keine Socialwrites, keine neuen Tagesreports.",
+  "identity": {
+    "checkedAt": "2026-11-04T08:17:13.291Z",
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "timezone": "CET"
+    },
+    "metricool": [
+      {
+        "id": 6227837,
+        "timezone": "Europe/Zurich",
+        "networksData": {
+          "facebookData": "1049840534888592",
+          "instagramData": "luxestyle.ch",
+          "threadsData": "luxestyle.ch",
+          "pinterestData": "luxestyleCH",
+          "tiktokData": "luxestyle.ch",
+          "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+          "tiktokAdsData": "7691398659300179974"
+        }
+      }
+    ],
+    "reportsRepeated": 0
+  },
+  "imageWork": {
+    "ownerDirection": "weiter mit andere produkten",
+    "status": "TWO_GENERATED_REFERENCE_BASED_DRAFTS_VISUALLY_REVIEWED_NOT_PUBLISHED",
+    "newGeneratedImages": 2,
+    "dimensionsEach": [
+      1536,
+      1024
+    ],
+    "items": [
+      {
+        "productId": "15412302512513",
+        "variantId": "67788980650375",
+        "variantTitle": "Schwarz",
+        "label": "Mini-Schirm",
+        "status": "ACTIVE",
+        "statusSource": "PRODUCTS-NATIVE.json, current root verification",
+        "price": "16.90",
+        "currency": "CHF",
+        "availableForSale": true,
+        "publicVariantAvailable": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryTracked": false,
+        "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet?variant=67788980650375",
+        "referenceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f092b52-a141-4b14-8f63-33033a05f651_trans.jpg?v=1792980176",
+        "referenceExplicitlyVariantBound": true,
+        "publicImageVariantIds": [
+          67788980650375
+        ],
+        "tagCheck": {
+          "id": "15412302512513",
+          "tags": [
+            "accessoires",
+            "bild-ok",
+            "cj-real",
+            "dropship",
+            "freihaendig",
+            "gadget",
+            "natel",
+            "neu",
+            "sommer-2026",
+            "sort-regen-sonnenschirme",
+            "varianten-nachgezogen-1025"
+          ],
+          "repoBlocks": [],
+          "ownerBlocks": []
+        },
+        "image": {
+          "file": "luxestyle-minischirm-20261104-r78.png",
+          "sha256": "0f5b66c1d3dedff85448d70ea3fa6297b04034d02b10ad9b924b22874a50cffc",
+          "gitBlobSha": "6b89097b64d34f75b09eecbac13b87844d4e34a1",
+          "bytes": 1834199,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "path": "images-r78/luxestyle-minischirm-20261104-r78.png",
+          "referenceBasedGeneratedImage": true,
+          "originalProductPhoto": false,
+          "visualDraftReviewCompleted": true,
+          "publicationReady": false
+        },
+        "visualReview": {
+          "checkedAtUtc": "2026-11-04T08:29:55.959995+00:00",
+          "scope": "Unabhängige visuelle Gegenprüfung des neuen Studio-Fotoentwurfs gegen genau zwei gelieferte aktuelle Shopreferenzen. Kein Produkttest, keine Rechte-/Filmfreigabe.",
+          "files": {
+            "variant": {
+              "path": "/workspace/luxestyle-review/weiter-20261104-r78/references/15412302512513-black-variant.jpg",
+              "size": [
+                800,
+                800
+              ],
+              "sha256": "a15a33921440f5a910957a2c8c411a76a3b8584d7079eced973a292d64c79593"
+            },
+            "context": {
+              "path": "/workspace/luxestyle-review/weiter-20261104-r78/references/15412302512513-2.jpg",
+              "size": [
+                800,
+                800
+              ],
+              "sha256": "d1bd4b35ad8821e8890892524e9618dabf53b51e698d6936a8ca08f95fdba530"
+            },
+            "generated": {
+              "path": "/workspace/generated_images/exec-85751730-e598-4896-a94c-ee54d7d152ba.png",
+              "size": [
+                1536,
+                1024
+              ],
+              "sha256": "0f5b66c1d3dedff85448d70ea3fa6297b04034d02b10ad9b924b22874a50cffc"
+            }
+          },
+          "result": "Als Studio-Bildentwurf visuell plausibel; kein zwingender Generierungsfehler in dieser Stichprobe. Präzise Fertigungs-/SKU-Treue bleibt ungeprüft.",
+          "checks": [
+            {
+              "area": "Form und Proportion",
+              "result": "Schwarzer gewölbter Schirm, relative Schirm-/Schaftlänge und symmetrische Hauptsilhouette stimmen sichtbar mit der Frontreferenz überein."
+            },
+            {
+              "area": "Farbe und Oberfläche",
+              "result": "Schwarz und silbriger Rand/Schaft erhalten. Stoffstruktur und Lichtreflexe im neuen Bild stärker ausgearbeitet; daraus keine Material-/Beschichtungsangabe ableiten."
+            },
+            {
+              "area": "Kappe und Endspitzen",
+              "result": "Runde schwarze Scheitelkappe, sichtbare kugelige Strebenenden und heller Saum vorhanden. Keine offensichtlich fehlende Hauptspitze oder grobe Formverschmelzung; verdeckte Streben nicht zählbar."
+            },
+            {
+              "area": "Schaft und Klemme",
+              "result": "Gerader silbriger Schaft, schwarze seitlich nach links geöffnete Klemme und runder Drehpunkt passen zur Referenz. Klemmöffnung/Federgeometrie nicht technisch verifiziert; keine befestigte oder belastete Funktion gezeigt."
+            },
+            {
+              "area": "Handlung",
+              "result": "Freigestelltes Stillleben ohne Telefon, Hände oder Bedienung. Der weiche Bodenschatten zeigt eine inszenierte schwebende Präsentation, keine behauptete Produkteigenschaft."
+            },
+            {
+              "area": "Crop",
+              "result": "Im gesamten 1536×1024-Bild vollständig mit Rand. Produkt weit rechts; ein mittiger quadratischer oder hochkantiger cover-Crop würde rechte Schirmteile abschneiden. 3:2 beibehalten oder tatsächlichen Ausschnitt/contain vor Einbindung prüfen."
+            }
+          ],
+          "restrictions": [
+            "Kein Originalproduktfoto-Ersatz ohne separate genaue Produkt-/Rechteabnahme.",
+            "Keine Massangaben aus der illustrierten Referenz in neue Aussagen übernommen.",
+            "Kein publiziertes Websitebild, kein Video und keine Filmfreigabe."
+          ],
+          "nextStep": "Als 3:2-Entwurf in der vorgesehenen Websitekarte mit tatsächlichem Ausschnitt prüfen; bestehenden Banner nicht ersetzen. Für engere Ausschnitte vollständig sichtbare Silhouette sicherstellen."
+        },
+        "cropRequirement": "3:2 vollständig erhalten oder tatsächlichen contain-/Mobil-/Desktop-Ausschnitt prüfen. Kein mittiger square/portrait cover-Crop: Motiv rechtslastig."
+      },
+      {
+        "productId": "15412301922689",
+        "variantId": "67788961939847",
+        "variantTitle": "Niedlicher Panda",
+        "label": "Panda-Handyhalter",
+        "status": "ACTIVE",
+        "price": "14.90",
+        "currency": "CHF",
+        "availableForSale": true,
+        "publicVariantAvailable": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryTracked": false,
+        "url": "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones?variant=67788961939847",
+        "referenceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/80bd5044-c59c-451f-87ed-70ef2b7eb113_trans.jpg?v=1780217593",
+        "referenceExplicitlyVariantBound": true,
+        "publicImageVariantIds": [
+          67788961939847
+        ],
+        "tagCheck": {
+          "tags": [
+            "bild-ok",
+            "cj-real",
+            "dropship",
+            "gadget",
+            "geschenk",
+            "ig-gepostet",
+            "ig-seit-2026-10-01",
+            "kat-handy",
+            "natel",
+            "neu",
+            "sort-handy-halterungen",
+            "sort-handyhalter-staender",
+            "sort-handyhalter-tisch",
+            "sort-pc-homeoffice",
+            "staender",
+            "suesser",
+            "varianten-nachgezogen-1025"
+          ],
+          "guardMatches": [],
+          "ownerRueckholMatches": [],
+          "emptyTagsBlocked": false,
+          "allowedByTagGuard": true
+        },
+        "priorSocialMarker": true,
+        "image": {
+          "file": "luxestyle-panda-20261104-r78.png",
+          "sha256": "f92f7f0fc4187c31b77d5626a290f01bff96d17d153aee28ce5dc3b14a0fa40c",
+          "gitBlobSha": "e1d87694a2aba6b433ef33f728fe6925773bd4c8",
+          "bytes": 1695846,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "path": "images-r78/luxestyle-panda-20261104-r78.png",
+          "referenceBasedGeneratedImage": true,
+          "originalProductPhoto": false,
+          "visualDraftReviewCompleted": true,
+          "publicationReady": false
+        },
+        "visualReview": {
+          "checkedAtUtc": "2026-11-04T08:32:52.645206+00:00",
+          "productId": "15412301922689",
+          "variantId": "67788961939847",
+          "variantBindingSource": "Root/Produktagent bestätigt; diese unabhängige QA prüft nur zwei gelieferte Bilddateien.",
+          "scope": "Gesicht/Ohren/Arme/Bauch/Füsse/Pose/Pads und vollständiger Bildausschnitt. Keine Funktions-/Material-/Mass-/Rechte- oder Filmfreigabe.",
+          "files": {
+            "reference": {
+              "path": "/workspace/luxestyle-review/weiter-20261104-r78/other-product/panda-original.jpg",
+              "size": [
+                800,
+                800
+              ],
+              "sha256": "5afdef357ae22e40356334a059de0babfb9195cfc3ffa0e7d7321a5bd5ddd73d"
+            },
+            "generated": {
+              "path": "/workspace/generated_images/exec-c7cf47fa-dbdb-4923-b324-3abaec39b807.png",
+              "size": [
+                1536,
+                1024
+              ],
+              "sha256": "f92f7f0fc4187c31b77d5626a290f01bff96d17d153aee28ce5dc3b14a0fa40c"
+            }
+          },
+          "result": "Als inszenierter Bildentwurf visuell plausibel. Keine zwingende Formabweichung in dieser begrenzten Sichtprüfung; keine pixelgleiche oder perfekte SKU-Treue behauptet.",
+          "checks": [
+            {
+              "area": "Gesicht und Ausdruck",
+              "result": "Zwei schwarze Augenfelder mit hellen Ringen, dunkle dreieckige Nase, verbindender kurzer Steg und seitlich gebogene Mundlinie erhalten. Grundausdruck entspricht Referenz; Strichbreite und Lichtreflexe sind leicht stilisiert."
+            },
+            {
+              "area": "Ohren",
+              "result": "Zwei schwarze rundliche Ohren in passenden oberen Positionen; keine zusätzlichen oder verschmolzenen Ohren sichtbar."
+            },
+            {
+              "area": "Arme und Bauch",
+              "result": "Schwarze seitlich nach hinten abgestützte Arme, schwarzes Halsband und heller Bauch erhalten. Linker Arm bleibt perspektivisch weitgehend verdeckt wie in der Referenz; vollständige Rückseite ungeprüft."
+            },
+            {
+              "area": "Füsse und Pads",
+              "result": "Beide schwarzen Füsse nach vorne, erkennbare kleine obere Zehenwölbungen und je ein rundes Sohlenpad vorhanden. Keine offensichtlich zusätzliche Zehenreihe oder fehlendes Hauptpad in der Stichprobe."
+            },
+            {
+              "area": "Pose und Farbe",
+              "result": "Sitzende Pose und Schwarz-/Cremeweiss-Verteilung plausibel. Warmes Licht verändert die Weisswirkung; Oberflächenglanz/Struktur stärker ausgearbeitet, keine Materialbestätigung."
+            },
+            {
+              "area": "Ausschnitt",
+              "result": "Figur im gesamten 1536×1024-Bild vollständig und zentral, Ohren und Sohlen mit Abstand zum Rand. Zentrierte quadratische Darstellung erscheint grundsätzlich möglich; tatsächlichen Web-Crop dennoch prüfen."
+            },
+            {
+              "area": "Aussagegrenze",
+              "result": "Kein Telefon und keine Belastung/Bedienung gezeigt. Damit keine Haltefunktion oder Grössen-/Tragkraftaussage belegt; Bildtext/Masszahlen der Referenz nicht übernommen."
+            }
+          ],
+          "restrictions": [
+            "Nur Lifestyle-/Studio-Bildentwurf; Originalproduktfoto und bestehendes Banner nicht automatisch ersetzen.",
+            "Unabhängige kommerzielle Bildrechte und genaue Fertigungstreue bleiben offen.",
+            "Keine Websiteeinbindung, Publikation oder Filmfreigabe aus dieser QA."
+          ],
+          "nextStep": "Vor Verwendung tatsächlichen Desktop-/Mobil-Ausschnitt der vorgesehenen Karte prüfen und Bild als inszenierten Entwurf behandeln."
+        },
+        "cropRequirement": "Vollständiges 3:2-Bild geprüft; zentraler Aufbau grundsätzlich kartentauglich. Tatsächlichen Desktop-/Mobil-Ausschnitt vor Einbindung prüfen."
+      }
+    ],
+    "referenceStatus": "Aktuelle Shop- und Variantenbilder gebunden; diese Zuordnung ist kein eigenständiger Rechtebeleg.",
+    "originalProductPhotos": false,
+    "exactSkuManufacturingAcceptance": "not_performed",
+    "ownerCreativeApproval": "unknown",
+    "commercialReferenceRights": "unknown",
+    "realWebsiteCropAcceptance": "not_performed",
+    "deferredCandidates": [
+      {
+        "productId": "15503829664129",
+        "label": "Schmuckschale",
+        "reason": "Formzuordnung aus Referenzen nicht eindeutig",
+        "generationPerformed": false
+      },
+      {
+        "productId": "15496360755585",
+        "variantId": "67948041306503",
+        "label": "Retro-Tischuhr",
+        "reason": "Analoge ornamentale Uhr sichtbar; Titel/Beschreibung nennen nicht belegtes Auto-Design/LCD",
+        "generationPerformed": false
+      }
+    ],
+    "noNewFeaturesReviewsMeasuresMaterialsDeliveryClaims": true,
+    "shopifyUploads": 0,
+    "themeWrites": 0,
+    "productImageWrites": 0,
+    "socialWrites": 0
+  },
+  "imagePrompts": {
+    "umbrella": "Create one sophisticated editorial ecommerce product image for the Swiss store LuxeStyle, landscape 3:2. This is a reference-based product-background edit: preserve EXACTLY the black miniature clip-on umbrella in reference 1, its shallow black segmented canopy, small black top cap, rounded black tips, slim silver shaft and the small black spring clip at the bottom. Keep the product front view and proportions from reference 1. Do not redesign its construction, add an umbrella handle, stand, base, additional clip, cable or phone. Reference 2 is ONLY structural context for the same black product, do not copy its typography or duplicate/inset umbrellas. Show ONE complete umbrella, including the entire bottom clip, as a suspended catalog still life against a luminous pale glacier-blue studio cyclorama, with elegant directional sunlight and a soft abstract shadow far behind it. The presentation is deliberately a studio product composition, no implied real-world attachment or function. Frame the object slightly right of centre, generous open space on the left and safe margins all sides. Rich precise black textile detail, natural silver reflections, polished high-end campaign photography, restrained modern art direction, clean crisp boundaries, subtle filmic colour. No text, logos, price, ruler lines, measurements, claims, person, smartphone, jewellery or additional products. Original source proportions and all mechanically meaningful details matter more than artistic embellishment. Preserve black, do not recolour. No collage.",
+    "panda": "Create one premium lifestyle product image for LuxeStyle, landscape 3:2. Use the attached photograph as the exact product reference. Preserve the SAME small seated panda phone-holder figurine: round ivory-white head, small glossy black ears, asymmetrical drooping black eye patches with small white-ring pupils, tiny black nose and curved W-shaped mouth; black neck band, ivory belly, black side arms planted beside the body, two thick forward black legs with sculpted toe pads. Exact face, ear position, limbs, silhouette, surface finish and proportions. Do not make a different cuter cartoon, do not animate it, add extra toes/limbs, change pose or expression. Show this one panda, unobstructed and fully visible, centred in the middle of the frame at tabletop eye level, matching original three-quarter-front view. Create an elegant real-looking home-office setting: pale apricot matte desk, soft warm ivory plaster wall, a broad gentle sage-green shadow from an out-of-frame plant; one closed unbranded notebook blurred far behind at the extreme edge. Beautiful warm late-afternoon window light with controlled highlights, subtle shadow under the actual figurine, refined depth of field, credible product photography, high resolution, clean visual storytelling. Product should occupy about 50% of image height with generous margins on every side and remain intact in a central square crop. No phone and no demonstrated function, no hands, no text, no labels, no logos, no rulers or dimensions, no prices, no jewellery, no invented moving parts. Do not copy the original book, typography or bottom black caption strip. It must be a convincing edited presentation of this exact product, not a generic panda illustration."
+  },
+  "umbrellaReferenceSummary": {
+    "productId": "15412302512513",
+    "variantId": "67788980650375",
+    "sku": "CJYD289701201AZ",
+    "title": "Mini-Schirm, Schwarz",
+    "price": {
+      "amount": "16.90",
+      "currency": "CHF"
+    },
+    "active": true,
+    "native": {
+      "id": "gid://shopify/ProductVariant/67788980650375",
+      "title": "Schwarz",
+      "price": "16.90",
+      "sku": "CJYD289701201AZ",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "tracked": false
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/77829706187143",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f092b52-a141-4b14-8f63-33033a05f651_trans.jpg?v=1792980176",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3NzgyOTcwNjE4NzE0MywibGFzdF92YWx1ZSI6Nzc4Mjk3MDYxODcxNDN9"
+        }
+      }
+    },
+    "storefront": {
+      "status": 200,
+      "productId": 15412302512513,
+      "variantId": 67788980650375,
+      "available": true,
+      "priceMinor": 1690,
+      "variantImageIds": [
+        67788980650375
+      ]
+    },
+    "url": "https://luxestyle.ch/products/regenschirm-mit-handy-halterung-freihandig-8-streben-uv-beschichtet?variant=67788980650375",
+    "tagCheck": {
+      "id": "15412302512513",
+      "tags": [
+        "accessoires",
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "freihaendig",
+        "gadget",
+        "natel",
+        "neu",
+        "sommer-2026",
+        "sort-regen-sonnenschirme",
+        "varianten-nachgezogen-1025"
+      ],
+      "repoBlocks": [],
+      "ownerBlocks": []
+    },
+    "reference": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2f092b52-a141-4b14-8f63-33033a05f651_trans.jpg?v=1792980176",
+      "sha256": "a15a33921440f5a910957a2c8c411a76a3b8584d7079eced973a292d64c79593"
+    },
+    "referenceBindingExact": true,
+    "commercialEditingAdvertisingRights": "unknown",
+    "stockDeliveryPromise": false
+  },
+  "pandaReferenceSummary": {
+    "checked_date": "2026-11-04",
+    "timezone": "Europe/Zurich",
+    "status": "REFERENCE_CANDIDATE_VERIFIED_NOT_PUBLISHED",
+    "search_calls": 2,
+    "search_first": 3,
+    "search_pagination": false,
+    "product_id": "15412301922689",
+    "variant_id": "67788961939847",
+    "sku": "CJJT291503001AZ",
+    "title": "Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones",
+    "variant_title": "Niedlicher Panda",
+    "price": {
+      "amount": "14.90",
+      "currency": "CHF"
+    },
+    "url": "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones?variant=67788961939847",
+    "active": true,
+    "native_available_for_sale": true,
+    "public_product_available": true,
+    "public_variant_available": true,
+    "inventory_policy": "CONTINUE",
+    "tracked": false,
+    "tag_guard": {
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "gadget",
+        "geschenk",
+        "ig-gepostet",
+        "ig-seit-2026-10-01",
+        "kat-handy",
+        "natel",
+        "neu",
+        "sort-handy-halterungen",
+        "sort-handyhalter-staender",
+        "sort-handyhalter-tisch",
+        "sort-pc-homeoffice",
+        "staender",
+        "suesser",
+        "varianten-nachgezogen-1025"
+      ],
+      "guardMatches": [],
+      "ownerRueckholMatches": [],
+      "emptyTagsBlocked": false,
+      "allowedByTagGuard": true
+    },
+    "variant_media_exact_match": true,
+    "media_id": "gid://shopify/MediaImage/69550337229185",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/80bd5044-c59c-451f-87ed-70ef2b7eb113_trans.jpg?v=1780217593",
+    "image_path": "/workspace/luxestyle-review/weiter-20261104-r78/other-product/panda-original.jpg",
+    "image_sha256": "5afdef357ae22e40356334a059de0babfb9195cfc3ffa0e7d7321a5bd5ddd73d",
+    "image_visually_reviewed": true,
+    "image_observations": [
+      "Single black-and-white sitting panda; product silhouette and facial marks legible.",
+      "Remove bottom dimension text strip and third-party book from lifestyle edit.",
+      "Do not invent phone-holding action, dimensions, materials or delivery claims."
+    ],
+    "commercial_edit_advertising_rights": "UNKNOWN",
+    "prior_social_marker": true,
+    "generated": false,
+    "published": false,
+    "writes_to_external_systems": false,
+    "rejected_product": {
+      "product_id": "15496360755585",
+      "variant_id": "67948041306503",
+      "reason": "Visual clock is ornate analogue; title/description mention car design/LCD not visually supported."
+    }
+  },
+  "categories": {
+    "at": "2026-11-04T08:18:34.048085+00:00",
+    "paths": [
+      "/collections/sub-taschen",
+      "/collections/beauty-pflege"
+    ],
+    "publicMain": "213013037447",
+    "views": 8,
+    "locales": [
+      "de",
+      "fr"
+    ],
+    "widths": [
+      390,
+      1440
+    ],
+    "evaluatedChecks": 132,
+    "passedChecks": 132,
+    "failedEvaluatedChecks": 0,
+    "unknownMobileAvailabilitySelections": 4,
+    "fullAcceptance": false,
+    "explicitPageNavigations": 13,
+    "recordedFunctionalSectionAndSuggestionGetResponses": 28,
+    "allSubresourceCountKnown": false,
+    "newConfirmedDefect": {
+      "name": "additional_seo_pager_drops_active_price_filter",
+      "path": "snippets/product-grid.liquid",
+      "url": "https://luxestyle.ch/collections/beauty-pflege?filter.v.price.lte=50",
+      "http": 200,
+      "priceFacet50Confirmed": true,
+      "pagerLinks": 15,
+      "allPagerLinksLosePrice": true,
+      "proofType": "DOM and raw HTML; screenshot does not show pager",
+      "fixApplied": false
+    },
+    "writes": {
+      "shop": 0,
+      "theme": 0,
+      "repo": 0,
+      "customerMessages": 0,
+      "analyticsFlowOrderReads": 0
+    },
+    "files": {
+      "FUNCTIONAL-CHECK.json": {
+        "bytes": 108026,
+        "sha256": "2e03affbdffc89a944ef31cc3a7702bd9e7c5687e7f6b4bea52c98ea110414ed"
+      },
+      "PRICE-FILTER-COUNTERCHECK.json": {
+        "bytes": 4434,
+        "sha256": "829c28f0fb6c4014fc04e1a68b0bd44573b1c1d41ef3aa27bf21feb39c57991b"
+      },
+      "PRICE-FILTER-COUNTERCHECK-RAW.json": {
+        "bytes": 4267,
+        "sha256": "a650fff61b315c607066201b6c04c613710577b537ebd01ee822f1f2452041c1"
+      },
+      "beauty-price50.html": {
+        "bytes": 2266535,
+        "sha256": "bbb772901aee65d6ab3d284f084214970ab3d5663c0e8ba1106aaa293a922aca"
+      },
+      "BERICHT.md": {
+        "bytes": 5203,
+        "sha256": "040a74de94a421b42ecd0eddcdde1da3198cc1294d3242ae9382635cf64403b0"
+      }
+    }
+  },
+  "categoryReport": "# LuxeStyle – begrenzte Kategoriebedienung, 04.11.2026 / R78\n\nR77-Projektgedächtnis, README und heutiger Tagesblock zuerst gelesen. Heutige Kennzahl- und Klaviyo-Berichte nicht wiederholt. Root hat Shop und Metricool frisch passend verifiziert; dieser Teilauftrag prüfte nur öffentliche Website-GETs.\n\nZwei Pfade aus den bestehenden R73-Quellen: `/collections/sub-taschen` und `/collections/beauty-pflege`. Beide wurden auf dem aktuellen MAIN 213013037447 in Deutsch/Französisch bei 390 und 1440 px geprüft. Keine Theme-, Produkt-, Flow- oder Kontowrites. Bestehende Banner und Gestaltung unverändert.\n\n## Ergebnis der acht funktionalen Ansichten\n\n132 ausgewertete Einzelbedingungen bestanden, keine davon negativ. Vier mobile Filterauswahl-Versuche blieben wegen Playwright-Timeout an der Checkbox unbekannt; deshalb keine vollständige Funktionsabnahme behaupten. Die Checkbox wurde nicht durch DOM-Manipulation oder erzwungenen Klick umgangen. Nach der neuen Inhabersteuerung «weiter mit andere produkten» keine weiteren Gegenproben oder Fixes begonnen.\n\n- Acht Seiten HTTP 200, korrekte MAIN-Identität und DE/FR-URL/Locale, je eine H1.\n- Unterkategorie-Details per Tastatur geöffnet und geschlossen. Alle angebotenen Links hatten Namen, waren per Tab erreichbar und behielten auf Französisch `/fr/collections/`. Kein belegter Sprachverlust.\n- Dokumentbreite und Tastaturbewegung ohne horizontalen Seitenüberlauf in den acht Ansichten.\n- Vier Desktop-Sortierproben über die tatsächliche Bedienoberfläche: `price-ascending` in URL und gewähltem Zustand bestätigt. Kein mathematischer Preisvergleich aller Produkte und keine Katalogabnahme.\n- Vier mobile Filterdialoge geöffnet; Auswahl «Auf Lager/En stock» durch den Test nicht bestätigt. Der Timeout ist kein belegter Shopdefekt.\n- Vier mobile Suchen geöffnet; GET-Formular und korrekter Sprachpfad, Vorschlagsantworten HTTP 200, Escape schloss den Dialog. Keine Suche abgesendet und kein Produkt geöffnet; Qualität/Vollständigkeit aller Suchtreffer unbekannt.\n\n## Neuer, gezielt bestätigter Preisfilterbefund\n\nAuf Roots frischen Quellverdacht genau eine öffentliche Gegenprobe:\n`https://luxestyle.ch/collections/beauty-pflege?filter.v.price.lte=50`\n\nHTTP 200, MAIN 213013037447. Preisfelder enthalten `50.00`; der DOM-Filterchip lautet «CHF 0.00–CHF 50.00». Gleichzeitig wird `nav.lux-seiten` mit Layoutbox und 15 Links ausgegeben. Sämtliche Links enthalten nur `?page=N`, beispielsweise `/collections/beauty-pflege?page=2`; der aktive Preisfilter fehlt. Dies ist ein konkreter Verlust der Preisbedingung im Linkziel. Kein Seiten-2-Klick wurde ausgeführt und kein künftiger Verkaufseffekt behauptet.\n\nBetroffener nativer Pfad laut Roots frisch gelesener Quelle: `snippets/product-grid.liquid`. Der eigene zusätzliche SEO-Pager erfasst `active_values`, aber keine Preisgrenzen. Enger nächster Korrekturscope: den zusätzlichen SEO-Pager auch bei einer aktiven Mindest-/Höchstpreisgrenze zurückhalten; übrige Filter, normale Shopify-Pagination und Banner erhalten. Hier noch kein Patch und kein Theme-Write.\n\nDer Screenshot `beauty-price50-pager.png` zeigt nach dem Scrollen Produktkarten; wegen dynamischen Nachladens ist der Pager darin nicht sichtbar. Der Pagerbefund stützt sich auf die gespeicherte DOM-Abfrage und das HTML, nicht auf eine visuelle Screenshot-Abnahme. `visible` im Rohbeleg bedeutet vorhandene Layoutbox, nicht zwingend Position im sichtbaren Viewport.\n\n## Grenzen und Ausführungsprotokoll\n\n13 explizite vollständige Seitennavigationen: zwei anfängliche DOM-Inspektionen, zwei unbeabsichtigte erneute Inspektionen durch den Import eines zunächst nicht mit `__main__` geschützten Hilfsskripts, acht funktionale Ansichten und eine Preisfilter-Gegenprobe. Der Hilfsskript-Import wurde lokal korrigiert; keine weitere Ausführung. Vor dem ersten Browserstart wurde ausserdem ein Dateiname `inspect.py` korrigiert, der das Python-Standardmodul überschattete; dieser fehlgeschlagene Start verursachte keine Website-Navigation.\n\nDie acht Funktionsansichten protokollieren zusätzlich 28 GET-Antworten für Section-/Suchvorschlagsanfragen, einschliesslich automatisch ausgelöster Seite-2-Nachladungen beim Scrollen. Kein manuelles Katalog-Paging und keine Produkt-/Varianten-Massenabfrage. Subresource-/Nachlade-GETs der anfänglichen Inspektionen und der Preisprobe wurden nicht vollständig gezählt. In den acht Funktionsansichten blockierte die Guard 757 Nicht-GET/HEAD-Requests und 24 zusätzliche Analytics-/Review-Requests. Das ist keine Messung fehlender realer Website-Daten oder Kundenaktionen.\n\nDie erste lokale Preis-Auswertung verglich `50` mit dem tatsächlichen String `50.00` und lieferte einen falschen Bool. Korrigiert wurde ausschliesslich die numerische Auswertung derselben gespeicherten DOM-Daten; der ursprüngliche Beleg bleibt als `PRICE-FILTER-COUNTERCHECK-RAW.json` erhalten. Keine erneute Netzabfrage dafür.\n\nKeine Aussagen zu vollständigem Sortiment, tatsächlichen Reviews, Checkout, Tracking, Indexierung, Rankings, Bildrechten oder Verkäufen. Kein Kundenkontakt, keine Kennzahl-/Flow-/Bestellabfrage, keine neue Automation, keine Repo- oder Shopwrites.\n",
+  "priceFilterCountercheck": {
+    "at": "2026-11-04T08:20:10.750281+00:00",
+    "scope": "One public read-only price-filter page requested after fresh source suspicion; no page2 click or settings write",
+    "requestedUrl": "https://luxestyle.ch/collections/beauty-pflege?filter.v.price.lte=50",
+    "unknown": [],
+    "http": 200,
+    "state": {
+      "url": "https://luxestyle.ch/collections/beauty-pflege?filter.v.price.lte=50",
+      "theme": {
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "id": 213013037447,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main",
+        "handle": "null",
+        "style": {
+          "id": null,
+          "handle": null
+        }
+      },
+      "locale": "de",
+      "priceInputs": [
+        {
+          "value": "50.00",
+          "id": "Preis-LTE-horizontal"
+        },
+        {
+          "value": "50.00",
+          "id": "Preis-LTE-dialog"
+        }
+      ],
+      "filterChips": [
+        "Aktive Filter:\n\n\nCHF 0.00–CHF 50.00\n    \n    \n    \n    \n\n\n        Entfernen\n      \n    \n\n\n\n\n\n\n\n\n\n\n\n    \n      Alles löschen",
+        "Aktive Filter:\n\n\nCHF 0.00–CHF 50.00\n    \n    \n    \n    \n\n\n        Entfernen"
+      ],
+      "pager": [
+        {
+          "visible": true,
+          "text": "Seiten:\n1\n2\n3\n4\n5\n10\n20\n30\n40\n50\n60\n70\n80\n90\n100\n163",
+          "links": [
+            {
+              "href": "/collections/beauty-pflege?page=2",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=2",
+              "text": "2"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=3",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=3",
+              "text": "3"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=4",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=4",
+              "text": "4"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=5",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=5",
+              "text": "5"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=10",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=10",
+              "text": "10"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=20",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=20",
+              "text": "20"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=30",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=30",
+              "text": "30"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=40",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=40",
+              "text": "40"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=50",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=50",
+              "text": "50"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=60",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=60",
+              "text": "60"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=70",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=70",
+              "text": "70"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=80",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=80",
+              "text": "80"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=90",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=90",
+              "text": "90"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=100",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=100",
+              "text": "100"
+            },
+            {
+              "href": "/collections/beauty-pflege?page=163",
+              "url": "https://luxestyle.ch/collections/beauty-pflege?page=163",
+              "text": "163"
+            }
+          ]
+        }
+      ],
+      "cards": 24
+    },
+    "confirmedPriceFacetValue50": true,
+    "visiblePagerLinks": 15,
+    "linksDiscardPriceFilter": true,
+    "localAnalysisCorrection": "Strict string equality expected 50, actual inputs50.00. Corrected numeric comparison from same saved DOM evidence; no new network call."
+  },
+  "externalVideoReview": {
+    "schemaVersion": 1,
+    "run": "R78",
+    "checkedAtUtc": "2026-11-04T08:22:51.924160+00:00",
+    "taskId": "external-video-review-20261103",
+    "scope": "Genau zwei der sieben in R77 zusätzlich beobachteten externen MP4-Dateien. Zwei gezielte öffentliche Media-GETs; keine neue Planung, Kennzahlen, Flow-, Bestell- oder Kundendatenabfrage.",
+    "identitySource": "Frische R78 Shopify-/Metricool-Gegenprobe durch Root; Medienzuordnung aus exakt datiertem R77-Planungsbeleg. Keine spätere Poststatusbehauptung.",
+    "items": [
+      {
+        "metricoolId": 416114579,
+        "uuid": "-7930844836166480510",
+        "observedScheduleR77": {
+          "dateTime": "2026-11-05T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "observedProviderStatesR77": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "currentPostState": "not_reread_in_R78_media_only_check",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-8377762538066818219.mp4",
+        "download": {
+          "checkedAtUtc": "2026-11-04T08:15:08.001151+00:00",
+          "httpStatus": 200,
+          "bytes": 6784294,
+          "sha256": "936f2963c765d3f415f905d33ae553b21c825554ca3e9aa845089cbaa68d8f4a"
+        },
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "rFrameRate": "25/1",
+          "avgFrameRate": "25/1",
+          "durationSeconds": 10.68,
+          "frames": 267,
+          "pixelFormat": "yuv420p",
+          "meetsRequested15to20Seconds": false,
+          "meetsRequested30fps": false
+        },
+        "audio": {
+          "codec": "aac",
+          "channels": 2,
+          "sampleRate": "48000",
+          "integratedLUFS": -16.2,
+          "measuredTruePeakDbTP": -4.1,
+          "sourceMusicIdentity": "unknown",
+          "voiceoverPresence": "unknown_no_listening_acceptance",
+          "commercialRights": "unknown"
+        },
+        "visual": {
+          "classification": "Bewegte Produktdarstellung mit wechselnden Tropfen-/Lichtzuständen und kurzer Fingerbedienung; keine reine Foto-Zoom-Abfolge in der Stichprobe.",
+          "overlays": [
+            "Wasser, das schwebt?",
+            "Schwebende Tropfen",
+            "Feiner Nebel",
+            "Per USB betrieben",
+            "LuxeStyle · luxestyle.ch"
+          ],
+          "observations": [
+            "Gerät weitgehend vollständig und gut erkennbar; Detailshot zeigt Berührung am oberen Teil.",
+            "Weisse Schrift mit dunkler Kontur überwiegend lesbar; Übergangseinblendungen teilweise schwach.",
+            "Kabel sichtbar, tatsächlicher USB-Stecker/Stromversorgung aus den geprüften Frames nicht belegt.",
+            "Sichtbarer Tropfeneffekt ist kein physikalischer Antigravitationsnachweis.",
+            "Schluss nennt Marke/Domain, keine explizite Aufforderung «Produkt ansehen»."
+          ],
+          "qualityLimits": [
+            "Genaue angebotene Variante, tatsächliche Rohmaterialherkunft, Werbe-/Bearbeitungsrechte nicht gebunden.",
+            "Komplette Plattform-UI-/Crop-/Bewegungs- und kreative Premiumabnahme nicht erfolgt."
+          ]
+        },
+        "ownWrite": false,
+        "approvedAsProjectorMaster": false
+      },
+      {
+        "metricoolId": 416122901,
+        "uuid": "2172266762404316928",
+        "observedScheduleR77": {
+          "dateTime": "2026-11-10T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "observedProviderStatesR77": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "currentPostState": "not_reread_in_R78_media_only_check",
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4",
+        "download": {
+          "checkedAtUtc": "2026-11-04T08:15:09.796984+00:00",
+          "httpStatus": 200,
+          "bytes": 6670409,
+          "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"
+        },
+        "video": {
+          "codec": "h264",
+          "width": 1080,
+          "height": 1920,
+          "rFrameRate": "25/1",
+          "avgFrameRate": "25/1",
+          "durationSeconds": 10.16,
+          "frames": 254,
+          "pixelFormat": "yuv420p",
+          "meetsRequested15to20Seconds": false,
+          "meetsRequested30fps": false
+        },
+        "audio": {
+          "codec": "aac",
+          "channels": 2,
+          "sampleRate": "48000",
+          "integratedLUFS": -15.8,
+          "measuredTruePeakDbTP": -4.0,
+          "sourceMusicIdentity": "unknown",
+          "voiceoverPresence": "unknown_no_listening_acceptance",
+          "commercialRights": "unknown"
+        },
+        "visual": {
+          "classification": "Bewegte Bedienungssequenz: Handposition und austretende Gemüsestreifen verändern sich; keine reine Foto-Zoom-Abfolge in der Stichprobe.",
+          "overlays": [
+            "Zucchini wird zu Spiralen",
+            "Mit Kurbel",
+            "LuxeStyle · luxestyle.ch"
+          ],
+          "observations": [
+            "Funktionsdarstellung sichtbar, aber Kurbel und bedienende Hand am rechten Rand teilweise abgeschnitten.",
+            "Gegenlicht am Fenster, dunklere Geräte-/Handbereiche und zunehmend unruhige Arbeitsfläche.",
+            "Texte überwiegend lesbar, keine groben Formfehler in den betrachteten Frames.",
+            "Schluss nennt Marke/Domain, keine explizite Aufforderung «Produkt ansehen»."
+          ],
+          "qualityLimits": [
+            "Einzelbilder beweisen keine vollständige zusammenhängende Kurbelbewegung, exaktes Shopmodell oder unveränderte Rohmaterialherkunft.",
+            "Komplette Plattform-UI-/Crop-/Bewegungs- und kreative Premiumabnahme nicht erfolgt."
+          ]
+        },
+        "ownWrite": false,
+        "approvedAsProjectorMaster": false
+      }
+    ],
+    "audioComparison": {
+      "checkedAtUtc": "2026-11-04T08:18:18.621252+00:00",
+      "canonical": {
+        "path": "/workspace/luxestyle-review/media/luxe-premium.wav",
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+        "bytes": 11343950,
+        "matchesFreshR77RepoEvidence": true,
+        "decodedMono12kSha256": "bb357bd3b2a86a5cc0de1bc543a9939a35ec710bb02d3bf21468e97845605ad4"
+      },
+      "method": {
+        "decode": "ffmpeg mono float32 12000Hz",
+        "comparison": "zero-mean normalized cross-correlation across all valid sample offsets in unchanged canonical file",
+        "wholeClipAndThreeTwoSecondSegments": true,
+        "limitations": "Only unchanged speed/pitch and straightforward mixing/gain are addressed. No audio listening, speech identification, licensing or creative acceptance. Low correlation does not identify the alternative audio or disprove all transformations of the canonical source."
+      },
+      "clips": [
+        {
+          "id": 416114579,
+          "decodedAudioSeconds": 10.666666666666666,
+          "decodedMono12kSha256": "f8c8a47ad1c571864024be1c7177c2db7afad501b6dfe315bc478817507e492f",
+          "wholeClip": {
+            "maxAbsoluteNormalizedCrossCorrelation": 0.04567779432393968,
+            "signedCorrelation": 0.04567779432393968,
+            "referenceOffsetSeconds": 24.357083333333332,
+            "needleDurationSeconds": 10.666666666666666
+          },
+          "segments": [
+            {
+              "clipStartSeconds": 1,
+              "maxAbsoluteNormalizedCrossCorrelation": 0.1253846036865637,
+              "signedCorrelation": -0.1253846036865637,
+              "referenceOffsetSeconds": 15.256,
+              "needleDurationSeconds": 2.0
+            },
+            {
+              "clipStartSeconds": 4,
+              "maxAbsoluteNormalizedCrossCorrelation": 0.09528096065477763,
+              "signedCorrelation": 0.09528096065477763,
+              "referenceOffsetSeconds": 41.76875,
+              "needleDurationSeconds": 2.0
+            },
+            {
+              "clipStartSeconds": 7,
+              "maxAbsoluteNormalizedCrossCorrelation": 0.11085226672523671,
+              "signedCorrelation": 0.11085226672523671,
+              "referenceOffsetSeconds": 24.120166666666666,
+              "needleDurationSeconds": 2.0
+            }
+          ],
+          "audioSourceIdentity": "unknown",
+          "voiceoverPresence": "unknown_not_listened",
+          "commercialRights": "unknown"
+        },
+        {
+          "id": 416122901,
+          "decodedAudioSeconds": 10.133333333333333,
+          "decodedMono12kSha256": "c3f369e7dbfb87ef681fc956231602ada4c3c3eab836a330643b1dc8c8c779f2",
+          "wholeClip": {
+            "maxAbsoluteNormalizedCrossCorrelation": 0.09023532693340373,
+            "signedCorrelation": -0.09023532693340373,
+            "referenceOffsetSeconds": 4.27875,
+            "needleDurationSeconds": 10.133333333333333
+          },
+          "segments": [
+            {
+              "clipStartSeconds": 1,
+              "maxAbsoluteNormalizedCrossCorrelation": 0.12675171626409218,
+              "signedCorrelation": 0.12675171626409218,
+              "referenceOffsetSeconds": 15.732083333333334,
+              "needleDurationSeconds": 2.0
+            },
+            {
+              "clipStartSeconds": 4,
+              "maxAbsoluteNormalizedCrossCorrelation": 0.21187871156964844,
+              "signedCorrelation": -0.21187871156964844,
+              "referenceOffsetSeconds": 18.9315,
+              "needleDurationSeconds": 2.0
+            },
+            {
+              "clipStartSeconds": 7,
+              "maxAbsoluteNormalizedCrossCorrelation": 0.1160097457748821,
+              "signedCorrelation": 0.1160097457748821,
+              "referenceOffsetSeconds": 48.504,
+              "needleDurationSeconds": 2.0
+            }
+          ],
+          "audioSourceIdentity": "unknown",
+          "voiceoverPresence": "unknown_not_listened",
+          "commercialRights": "unknown"
+        }
+      ],
+      "betweenClips": {
+        "maxAbsoluteNormalizedCrossCorrelation": 0.03918337369391334,
+        "signedCorrelation": -0.03918337369391334,
+        "referenceOffsetSeconds": 0.38466666666666666,
+        "needleDurationSeconds": 10.133333333333333
+      },
+      "calibration": {
+        "knownCanonicalExcerptWithGainAndDC": {
+          "maxAbsoluteNormalizedCrossCorrelation": 0.9999999999999482,
+          "signedCorrelation": 0.9999999999999482,
+          "referenceOffsetSeconds": 3.0,
+          "needleDurationSeconds": 6.0
+        },
+        "passed": true
+      }
+    },
+    "visualSampling": {
+      "sampleFrames": 41,
+      "exactSourceFrameManifest": "CONTACT-FRAME-MANIFEST.json",
+      "contactPngs": [
+        "416114579-contact.png",
+        "416122901-contact.png"
+      ],
+      "secondaryIndependentReview": "Zweite Sicht auf je0.5s-Kontaktstichproben bestätigt bewegte Darstellung und teilweise abgeschnittene Kurbel; keine Rechts-/Modell-/Tonfreigabe. Finale Kontakte aus exakten Quellframes als PNG, anfängliche JPEG-Arbeitsbilder kein Qualitätsbeleg.",
+      "fullMotionPlayback": "not_performed",
+      "visualAuthenticity": "unknown"
+    },
+    "conclusion": "Keine pauschale Einordnung dieser zwei Dateien als Foto-Slideshows. Beide zeigen bewegte Produktdarstellung, erfüllen aber die geforderte 15–20s/30fps-Mastervorgabe nicht. Keine direkte Zuordnung der Tonspuren zur unveränderten Pflicht-WAV aus dem begrenzten Vergleich; Identität/Rechte bleiben unbekannt. Kein Ersatz für denselben Projektor-Master.",
+    "nextStep": "Vor irgendeiner konkreten Änderung/Übernahme genaue Shop-Produkt-/Variantenbindung und ursprüngliche Film-/Musikquellen samt kommerziellen Bearbeitungs-/Werberechten belegen; bestehenden Post frisch lesen, minimale Änderungen nur im konkret genehmigten Scope. Bestehende Termine/UUIDs erhalten, keine pauschale Löschung oder Aktivierung.",
+    "actions": {
+      "mediaDownloads": 2,
+      "newAnalyticsCalls": 0,
+      "newFlowReports": 0,
+      "orderReads": 0,
+      "socialWrites": 0,
+      "repoWrites": 0,
+      "paidRenders": 0,
+      "newVideoExports": 0,
+      "diagnosticFrameExtractionOnly": true
+    }
+  },
+  "externalVideoReport": "# LuxeStyle: zwei externe Videodateien gezielt geprüft\n\n04.11.2026, R78. Rein lesende Fortsetzung der in R77 neu beobachteten Termine. Genau zwei MP4-Dateien frisch heruntergeladen, SHA-256 gebildet, Streams dekodiert und 41 Kontaktframes ungefähr im Halbsekundenabstand angesehen. Die finalen PNG-Kontakte verwenden dokumentierte tatsächliche Quellframe-Indizes. Zwei unabhängige Sichtprüfungen; keine vollständige Film-, Plattform- oder Rechteabnahme.\n\n| Datei / bestehender Termin aus R77 | Technischer Befund | Sichtbare Handlung / Grenze |\n|---|---|---|\n| Duftbefeuchter, Metricool 416114579, UUID `-7930844836166480510`, TikTok 05.11., 13:00 Europe/Zurich | 1080×1920, H.264, 25 fps, 267 Frames, 10,68 s, AAC-Ton | Wechselnde Tropfen-/Lichtzustände, Detailausschnitt und kurze Fingerbedienung; keine reine Foto-Zoom-Abfolge. Kabel sichtbar, USB-Anschluss dadurch nicht belegt. |\n| Gemüsehobel, Metricool 416122901, UUID `2172266762404316928`, TikTok 10.11., 18:00 Europe/Zurich | 1080×1920, H.264, 25 fps, 254 Frames, 10,16 s, AAC-Ton | Handbewegung und austretende Gemüsestreifen erkennbar. Kurbel/Hand am rechten Bildrand teilweise abgeschnitten, Gegenlicht und unruhige Arbeitsfläche. |\n\nDie Zeitpunkte und PENDING-Zustände stammen aus R77; R78 hat nur die zugeordneten Mediendateien geprüft und keine neuen Postzustände gelesen. Weder Veröffentlichung noch Änderung behauptet.\n\nDie Overlays sind überwiegend lesbar; Ein-/Ausblendungen zeigen zeitweise geringe Deckkraft. Beide Enden nennen «LuxeStyle · luxestyle.ch», aber keine ausdrückliche Produktaufforderung. «Schwebende Tropfen» beschreibt den sichtbaren Effekt und belegt keine echte Antigravitation. Die genaue Zuordnung zu kaufbaren Shopvarianten, Funktionsunterlagen und Filmrechten bleibt offen. Sichtbare Handlung darf nicht mit bestätigter Rohmaterialherkunft oder unverfälschter Aufnahme gleichgesetzt werden.\n\nBeide Dateien sind tatsächlich vorhandene MP4s, erfüllen aber nicht die vorgegebene Länge von 15–20 Sekunden und 30 fps. Daraus folgt keine Freigabe als professioneller Master. Sie ersetzen den offenen Projektor-Master nicht. Bereits vorhandene Termine und UUIDs wurden nicht verändert.\n\n## Begrenzter Audioabgleich\n\nDie lokale kanonische `automation/music/luxe-premium.wav` wurde erneut gehasht: `a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688`, identisch zum frischen R77-Repositorybeleg. Beide Tonspuren und die WAV wurden lokal auf Mono/12 kHz dekodiert; kein neuer Videoexport und kein Audio-Upload.\n\nEine normalisierte Kreuzkorrelation über alle gültigen Zeitpositionen ergibt für die ganzen Clips maximal |r| = 0,046 beziehungsweise 0,090. Drei zusätzliche Zwei-Sekunden-Segmente ergeben höchstens 0,125 beziehungsweise 0,212. Der Prüfweg erkennt einen bekannten, im Pegel geänderten WAV-Ausschnitt korrekt. **Eine direkte Zuordnung zu einem unverändert schnellen/unverändert gestimmten Ausschnitt der Pflichtmusik ist damit nicht belegt.** Starkes Mischen, Zeit-/Tonhöhenänderungen und andere Transformationen sind nicht ausgeschlossen. Alternative Musikquelle, mögliche Sprache und kommerzielle Rechte bleiben unbekannt; kein pauschales Urteil über fehlende Rechte.\n\nGemessen: −16,2/−15,8 LUFS, True Peak −4,1/−4,0 dBTP. In dieser technischen Probe keine digitale Übersteuerung, aber keine Hör-/Mix-/Voiceoverabnahme.\n\n## Belege und nächster Schritt\n\n- Duftbefeuchter-SHA-256: `936f2963c765d3f415f905d33ae553b21c825554ca3e9aa845089cbaa68d8f4a`\n- Gemüsehobel-SHA-256: `fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350`\n- Strukturierte Befunde: `VIDEO-PRUEFUNG-20261104-R78.json`; Audiovergleich: `AUDIO-COMPARISON.json`; Quellframe-Indizes: `CONTACT-FRAME-MANIFEST.json`.\n\nNächster Schritt bleibt eine belegte Produkt-/Varianten-, Filmquellen- und kommerzielle Rechtezuordnung für genau diese bestehenden Dateien. Keine zusätzliche Serie, keine automatische Umarbeitung, keine pauschale Löschung oder Freigabe. Vor einer autorisierten Änderung den konkreten Post frisch lesen und einen minimalen Diff prüfen. Keine Kennzahlen-, Flow-, Bestell-, Kunden- oder Publikationsabfragen und keine Remote-Writes durchgeführt. MP4s und diagnostische Bilder bleiben lokale Prüfdateien.\n",
+  "referenceCandidateReport": "# R78 – ein neues Produkt als Bildreferenz\n\nPrüfung: 04.11.2026, Europe/Zurich. Rein lesender Unterauftrag. Keine Generierung, keine Shop-/Theme-/Social-Schreibaktion durch diesen Unterauftrag.\n\n## Geeigneter Kandidat\n\n**Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones**, Produkt `15412301922689`, ausgewählte Variante **Niedlicher Panda** `67788961939847`, SKU `CJJT291503001AZ`, aktueller Preis **CHF 14.90**.\n\nProduktlink mit eindeutiger Auswahl:\nhttps://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones?variant=67788961939847\n\n- Native Shopify-Daten: `ACTIVE`, `availableForSale=true`, `inventoryPolicy=CONTINUE`, `inventoryItem.tracked=false`; Bestandszähler 0 ist hier kein Ausverkaufsbeleg.\n- Volle aktuelle Tags mit dem für R78 frisch gelesenen `kanal_sperren.mjs` geprüft; kein Guard-Treffer, kein `rueckhol`, Tags nicht leer. Ergebnis in `PANDA-TAG-CHECK.json`.\n- Öffentliche Produkt-JSON antwortete HTTP 200; Produkt-ID, Varianten-ID, SKU und Preis 1490 Rappen stimmen überein. Produkt und gewählte Variante öffentlich verfügbar. `inventory_management=null` passt zum ungetrackten Bestand.\n- Native Variante hat genau ein READY-Bild, MediaImage `69550337229185`; vollständige Varianten-Medienverbindung (`hasNextPage=false`). Öffentliche `featured_image.variant_ids=[67788961939847]`, `featured_media.id` und Bild-URL stimmen exakt überein.\n- Die vorhandenen Tags `ig-gepostet` und `ig-seit-2026-10-01` sind ein Hinweis auf ältere Social-Verwendung. Diese Bildvorbereitung erteilt keine erneute Social-Publikationsfreigabe und ersetzt keine Ledger-Prüfung.\n\n## Visuell geprüfte Originalreferenz\n\nLokale Datei: `panda-original.jpg`, 800 × 800 px, 72'546 Bytes.\n\nSHA-256: `5afdef357ae22e40356334a059de0babfb9195cfc3ffa0e7d7321a5bd5ddd73d`.\n\nQuelle:\nhttps://cdn.shopify.com/s/files/1/0943/6856/3585/files/80bd5044-c59c-451f-87ed-70ef2b7eb113_trans.jpg?v=1780217593\n\nEin einzelner sitzender schwarz-weisser Panda ist klar sichtbar; weisser runder Kopf und Bauch, schwarze Ohren, Augenflecken, Arme und nach vorn gerichtete Füsse. Die Produktform und Gesichtslinien sind als Referenz nachvollziehbar. Kein Variantenmix in diesem gewählten Bild. Die Galerie enthält weitere Ausführungen; sie wurden nicht als Referenz vermischt.\n\nIm neuen Lifestyle-Entwurf die schwarze Textleiste am unteren Rand und das rechts sichtbare fremde Buch weglassen. Die englische Masszeile im Quellbild ist kein unabhängig bestätigter Massbeleg. Keine Masse, Materialien, Gewichte, Lieferzeiten oder Kompatibilitätsversprechen aus Bild oder Shoptext übernehmen. Das Original zeigt kein eingesetztes Telefon; eine Haltehandlung oder genaue Mechanik daher nicht frei erfinden. Ein ruhiges Schreibtischmotiv mit unverändertem Panda ohne Telefon ist als nächster Bildentwurf geeignet.\n\nKommerzielle Bearbeitungs-/Werberechte wurden mit diesen Produkt- und Bilddaten nicht nachgewiesen; die Referenzzuordnung ist kein Lizenzbeleg. Freigabe des fertigen Bildes und Rechteprüfung bleiben vor Veröffentlichung erforderlich.\n\n## Suchumfang und ausgeschlossener Kandidat\n\nGenau zwei Suchabfragen `first:3`, keine Suchpagination:\n\n1. `status:active AND (title:Buchstütze* OR title:Tischuhr*)`\n2. `status:active AND (title:Stifthalter* OR title:Schreibtisch*)`\n\nJe ein enger Native-/Storefront-Abgleich für Retro-Tischuhr und Panda. Keine Katalogquote und keine ganze Produkt-/Sortimentsabnahme ableiten.\n\nDie zuerst geprüfte Retro-Tischuhr `15496360755585`, Variante A `67948041306503`, hatte technisch eine eindeutige Bildzuordnung. Die visuell geprüfte Ausführung zeigt jedoch eine ornamentale analoge Uhr ohne erkennbares Auto-Design oder LCD, während Titel/Beschreibung diese Begriffe enthalten. Deshalb für den neuen Bildentwurf ausgeschlossen. Keine Produkttexte geändert. Belege: `NATIVE.json`, `product.js.json`, `clock-A-original.jpg`, `TAG-CHECK.json`.\n\nPanda-Belege: `PANDA-NATIVE.json`, `panda-public.json`, `PANDA-TAG-CHECK.json`, `panda-original.jpg`. Die separate Shop-/Marken-Identitätsprüfung erfolgte durch den Root-Agenten in R78; dieser Unterauftrag hat sie nicht als zusätzliche eigene Abfrage gezählt.\n",
+  "dailyReadPolicy": {
+    "action": "preserve_exact_R77_policy_and_history",
+    "newAnalyticsReports": 0,
+    "newFlowReports": 0,
+    "purchaseWatchReads": 0,
+    "purchaseWatchStatus": "ended"
+  },
+  "actions": {
+    "newGeneratedImages": 2,
+    "newProducts": 0,
+    "themeWrites": 0,
+    "productWrites": 0,
+    "shopifyImageUploads": 0,
+    "socialWrites": 0,
+    "newVideoExports": 0,
+    "paidRenders": 0,
+    "customerMessages": 0,
+    "automationChanges": 0
+  },
+  "continuity": {
+    "beforeRevision": 77,
+    "taskIdsPreserved": 23,
+    "plannedTaskUpdates": [
+      "homepage-redesign-20261029",
+      "seo-landing-visibility-20261101",
+      "external-video-review-20261103"
+    ],
+    "claudeReceipt": "unknown",
+    "memoryHelperRun": false
+  },
+  "repositoryUploadScope": [
+    "WEITERARBEIT-20261104-R78.md",
+    "WEITERARBEIT-BELEGE-20261104-R78.json",
+    "images-r78/luxestyle-minischirm-20261104-r78.png",
+    "images-r78/luxestyle-panda-20261104-r78.png"
+  ],
+  "referencePhotosAndVideoUploads": false,
+  "sources": [
+    {
+      "path": "IDENTITY.json",
+      "bytes": 451,
+      "sha256": "eaec64865a1203a37795470d0a0f698c6a4419ceadd75875af2836c7451e58a1",
+      "repositoryUpload": false
+    },
+    {
+      "path": "PRODUCTS-NATIVE.json",
+      "bytes": 9510,
+      "sha256": "5d8cc7aba24be92ffaf5139664e937a009efcfe758207a311d17a42573df6f52",
+      "repositoryUpload": false
+    },
+    {
+      "path": "VARIANTS-NATIVE.json",
+      "bytes": 1348,
+      "sha256": "df0c8cd0d126322838ebc13ea7bcfbd3485fc02f362945a2d1dfd4c7465e0751",
+      "repositoryUpload": false
+    },
+    {
+      "path": "TAG-CHECK.json",
+      "bytes": 620,
+      "sha256": "4aef02cad23078d41c3a410a5a791de46628d0bca63a1abc29af91b6c967145e",
+      "repositoryUpload": false
+    },
+    {
+      "path": "UMBRELLA-STOREFRONT.json",
+      "bytes": 3100,
+      "sha256": "eaa2035d990850f5773f5a8c866d5664ee2d66cb07b6e7f8ee89dfb059405d8c",
+      "repositoryUpload": false
+    },
+    {
+      "path": "UMBRELLA-SUMMARY.json",
+      "bytes": 2043,
+      "sha256": "ff50c99fafe34506d59162409fef9f35735ada70784b58d0758e49413bbf64cf",
+      "repositoryUpload": false
+    },
+    {
+      "path": "REFERENCES.json",
+      "bytes": 1511,
+      "sha256": "0cbc72dd8e237e39c0bdf8c244ea705e818ce7ee5220a1437c47a5d7bedd7d11",
+      "repositoryUpload": false
+    },
+    {
+      "path": "IMAGE-MANIFEST.json",
+      "bytes": 551,
+      "sha256": "da8f088e442dc192c10410a75fc052183d19ec5a6483822f801033b40a4ef79a",
+      "repositoryUpload": false
+    },
+    {
+      "path": "IMAGE-PROMPTS.json",
+      "bytes": 3302,
+      "sha256": "c674fa299d7bedc164b03fc3b8aa36c759eb9077cfbe91bece3bfa0b0a7abde0",
+      "repositoryUpload": false
+    },
+    {
+      "path": "QA-Schirm.md",
+      "bytes": 1447,
+      "sha256": "5c3ef706b926d606cecef70bc77f8c4120e89d882e5993e37d1e7e1408aaa2de",
+      "repositoryUpload": false
+    },
+    {
+      "path": "QA-Schirm.json",
+      "bytes": 3215,
+      "sha256": "0cecc4233e70330e8ee1d8314ba3cec32f542eda298e518acfbad88eaa856494",
+      "repositoryUpload": false
+    },
+    {
+      "path": "QA-Panda.md",
+      "bytes": 1487,
+      "sha256": "3b76191af3bf5f53956fd6d564f628b20ac976ded93bce8d253fbba3a49cc64e",
+      "repositoryUpload": false
+    },
+    {
+      "path": "QA-Panda.json",
+      "bytes": 3319,
+      "sha256": "6b45e6b2ebb236c0248e190896bf5c16c85e687562e49b77bab48e81d63a6966",
+      "repositoryUpload": false
+    },
+    {
+      "path": "other-product/BERICHT.md",
+      "bytes": 4196,
+      "sha256": "e7fcb7ec3c7eefc75594b6459170a9626f5ff0436bb4224309e790c80175f84d",
+      "repositoryUpload": false
+    },
+    {
+      "path": "other-product/SUMMARY.json",
+      "bytes": 2441,
+      "sha256": "24242e07cdbafcaca3bebd8668f723727c4915905beee9514ccb35d508665379",
+      "repositoryUpload": false
+    },
+    {
+      "path": "other-product/PANDA-NATIVE.json",
+      "bytes": 15585,
+      "sha256": "22277e511588c232aec91322791df71f3dbc05818003477c90f735bb99d5784e",
+      "repositoryUpload": false
+    },
+    {
+      "path": "other-product/PANDA-TAG-CHECK.json",
+      "bytes": 475,
+      "sha256": "e131711dbffece706a48abf9c6fd51384171419afce10c2fa0bf3e4de2794cab",
+      "repositoryUpload": false
+    },
+    {
+      "path": "other-product/panda-public.json",
+      "bytes": 12314,
+      "sha256": "db19a23fa256418d71752d8a9293ded3ec915ddbd890efd608fccc0993af54a0",
+      "repositoryUpload": false
+    },
+    {
+      "path": "categories/BERICHT.md",
+      "bytes": 5203,
+      "sha256": "040a74de94a421b42ecd0eddcdde1da3198cc1294d3242ae9382635cf64403b0",
+      "repositoryUpload": false
+    },
+    {
+      "path": "categories/SUMMARY.json",
+      "bytes": 1821,
+      "sha256": "801d95d94c4f57ea0cdf31ef0ff388132d3f34dabc759c3746f0261c2866880c",
+      "repositoryUpload": false
+    },
+    {
+      "path": "categories/FUNCTIONAL-CHECK.json",
+      "bytes": 108026,
+      "sha256": "2e03affbdffc89a944ef31cc3a7702bd9e7c5687e7f6b4bea52c98ea110414ed",
+      "repositoryUpload": false
+    },
+    {
+      "path": "categories/PRICE-FILTER-COUNTERCHECK.json",
+      "bytes": 4434,
+      "sha256": "829c28f0fb6c4014fc04e1a68b0bd44573b1c1d41ef3aa27bf21feb39c57991b",
+      "repositoryUpload": false
+    },
+    {
+      "path": "categories/PRICE-FILTER-COUNTERCHECK-RAW.json",
+      "bytes": 4267,
+      "sha256": "a650fff61b315c607066201b6c04c613710577b537ebd01ee822f1f2452041c1",
+      "repositoryUpload": false
+    },
+    {
+      "path": "videos/VIDEO-PRUEFUNG-20261104-R78.md",
+      "bytes": 4267,
+      "sha256": "f54f0576c7c13cf8be6b4e033cc3baddda51d880982b7172de1a354bf322c4dd",
+      "repositoryUpload": false
+    },
+    {
+      "path": "videos/VIDEO-PRUEFUNG-20261104-R78.json",
+      "bytes": 11716,
+      "sha256": "cb011cf33c8a11065edfbaf5e3eb403b611073f049fdca0bfa84bedea8cbe973",
+      "repositoryUpload": false
+    },
+    {
+      "path": "videos/AUDIO-COMPARISON.json",
+      "bytes": 4206,
+      "sha256": "81b7a22a31883735bc58b4b0503118f18e2fbf604e6213c9340fd0e6312c9115",
+      "repositoryUpload": false
+    },
+    {
+      "path": "videos/CONTACT-FRAME-MANIFEST.json",
+      "bytes": 1012,
+      "sha256": "3e6798767d32a33d8a601dd37aeae7a0b8900fee7e5d1fdb7df1b5ce63835250",
+      "repositoryUpload": false
+    }
+  ],
+  "nextStep": "Die zwei neuen Bildentwürfe auf tatsächlichen Desktop-/Mobilkarten mit eindeutiger Variantenbindung und geklärten Bearbeitungs-/Werberechten prüfen. Beim rechtslastigen Mini-Schirm 3:2 erhalten oder contain verwenden; vorhandene Banner und R76-Karten nicht ersetzen. Kein pauschaler Produktfoto-Ersatz. Anschliessend den bestätigten Verlust der Preisgrenze im zusätzlichen SEO-Pager mit einem frischen minimalen Diff vorbereiten, normale Shopify-Pagination erhalten. Vor Änderungen an den zwei externen Videos genaue Produkt-/Variantenbindung und Film-/Musikrechte belegen; bestehende Termine und UUIDs erhalten. Heutige Kennzahl-/Flowreports und beendeten Kauf-Watch nicht erneut abfragen."
+}
