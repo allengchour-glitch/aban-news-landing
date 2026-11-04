@@ -1,15 +1,15 @@
 // Spielt die Optik-Politur vom 04.11.2026 ins MAIN-Theme (Sicherung vorher, Rücklesen nachher). Trockenlauf ist Vorgabe.
 //   Einspielen:   LIVE=1 node dropship/optik-0411/apply.mjs            (Stufe 1, patches.mjs)
-//                 STUFE=2 LIVE=1 node dropship/optik-0411/apply.mjs    (Stufe 2, patches2.mjs; setzt Stufe 1 voraus)
+//                 STUFE=2 LIVE=1 node dropship/optik-0411/apply.mjs    (Stufe n, patchesN.mjs; setzt die vorige Stufe voraus)
 //   Rücknahme:    ZURUECK=1 LIVE=1 node dropship/optik-0411/apply.mjs  (je Stufe; Stufe 2 zuerst zurücknehmen)   (nur wenn alle drei Dateien noch exakt dem eingespielten Stand entsprechen)
 // Die Änderungen stehen in patches.mjs; ohne LIVE=1 wird nichts geschrieben.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { shopifyGql } from '../../automation/lib/shopify_gql.mjs';
 import { shopifyClientSecret } from '../../automation/lib/shopify_secret.mjs';
-const STUFE = process.env.STUFE === '2' ? 2 : 1;
-const { DATEIEN, MD5_VOR, MARKE_THEME, anwenden } = await import(STUFE === 2 ? './patches2.mjs' : './patches.mjs');
-const SUFFIX = STUFE === 2 ? '.vor-stufe2' : '.vor';
+const STUFE = Math.max(1, Number(process.env.STUFE || 1) | 0);
+const { DATEIEN, MD5_VOR, MARKE_THEME, anwenden } = await import(STUFE === 1 ? './patches.mjs' : `./patches${STUFE}.mjs`);
+const SUFFIX = STUFE === 1 ? '.vor' : `.vor-stufe${STUFE}`;
 const LIVE = process.env.LIVE === '1', ZURUECK = process.env.ZURUECK === '1';
 const HIER = new URL('.', import.meta.url).pathname;
 const md5 = (s) => createHash('md5').update(s).digest('hex');

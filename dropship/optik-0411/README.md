@@ -18,6 +18,15 @@ Workflow `optik-suche` (`wf_fb10406e-0a1`): drei Sucher sahen den Live-Shop als 
 | Leere Sterne und «Noch keine Bewertungen» auf fast jeder Kartenzeile (Damen-Schuhe: 46 von 48) | gleicher Block | ausgeblendet (live 46 von 46 unsichtbar, die 2 bewerteten bleiben), Seite −6 % Desktop, −14 % Handy; Fortsetzung der Besitzer-Antwort 03.11. («leere Sterne ja»), erfunden wird nichts |
 | Fusszeile: drei Überschriftstile, 15 Links einspaltig, 687 px hoch | gleicher Block | einheitlich Serif 24/500 (live), Linkliste zweispaltig, wenn die Spalte breit genug ist (`columns:150px 2`), Fusszeile 687 → 490 px |
 
+## Stufe 2: was zusätzlich live ist (LIVE 04.11. ~14:20 UTC, `STUFE=2 LIVE=1 node dropship/optik-0411/apply.mjs`, Änderungen in `patches2.mjs`)
+Ein weiterer Style-Block `lx-optik-0411-b` in `layout/theme.liquid` (+2 088 Byte, nach dem Block von Stufe 1), Sicherung `sicherung/*.vor-stufe2`, Rücklesen GLEICH (Theme md5 `6ce17070…`).
+| Fund | Wirkung (live gemessen) |
+|---|---|
+| Preiszeile sprang je nach Titelzeilen, in der höchsten Karte klebte der Preis am Kartenrand (Kategorie, Suche, Ähnliche Produkte) | Preis bündig am Kartenboden mit 12 px Luft, Listenansicht ausgenommen: Damen-Schuhe Desktop 5 von 5 Reihen und Handy 12 von 12 Reihen gleich (vorher 9 von 10 bzw. 13 von 24 ungleich, Prüfer) |
+| Produktseite: leere Custom-Liquid-Hüllen und leerer Judge.me-Block kosteten je 24–28 px Abstand in der Kaufbox | 4 von 11 Hüllen ausgeblendet (die übrigen tragen Klasse/ID oder Inhalt), 0 sichtbare Hüllen mit Höhe 0; Mengenrabatt, Lieferzeit, Variantenwahl unverändert (Prüfer an 9 Produktseiten) |
+| Lange Variantenlisten: 52 Farbwerte als Vollbreite-Knöpfe, rund 3 000 px | ab 13 Werten Knopf-Mindestbreite auf 8 rem gedeckelt: Haarbürste 52 Werte in 18 Zeilen, 1 153 px; Blumenkleid (4 Werte) unverändert. Der Vorschlag des Suchers (Raster mit 130 px) hätte kurze Grössenlisten ab 13 Werten verlängert und wurde verworfen |
+Rücknahme je Stufe: `STUFE=2 ZURUECK=1 LIVE=1 node dropship/optik-0411/apply.mjs` (zuerst Stufe 2, dann Stufe 1). Offline geprüft: Roundtrip beider Stufen byte-gleich.
+
 ## Live nachgemessen (04.11. 13:37–13:50 UTC, Playwright, Chromium)
 Rücklesen aller drei Dateien GLEICH (md5 `3bc2da31…` Theme, `91cd0d7a…` CSS, `41781248…` Footer); Startseite, `/fr`, Kategorie, Produkt HTTP 200, 0 «Liquid error», 0 Seitenfehler; kein seitliches Scrollen (1440 und 390); Handy-Schublade: Leiste `display:none`, CHF/DE treffbar; Popup: 42 s lang Cookie-Hinweis offen und Popup zu, nach «Nur notwendige» Popup erst nach +11 s; `pruefen_live.mjs` (Rotation) weiter GLEICH.
 
