@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-03T11:53:47Z",
+ "stand": "2026-11-04T12:03:32Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "iOS 27.3: Apple kündigt Apple Intelligence für China an",
-   "u": "https://www.heise.de/news/Apple-Intelligence-kommt-nach-China-mit-iOS-27-3-11508160.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-03T11:28:00Z",
-   "s": "Zwei Jahre nach dem Start von Apples KI-System kommt es ins Reich der Mitte. Neu sind die geplanten Features aber nicht.",
-   "sprache": "de"
-  },
-  {
-   "t": "Maschinenträume 5: KI-Ent-Täuschung",
-   "u": "https://www.golem.de/news/maschinentraeume-5-ki-ent-taeuschung-2611-214755.html",
+   "t": "US-Zwischenwahlen: Eine Klatsche für Musk und die KI-Branche",
+   "u": "https://www.golem.de/news/us-zwischenwahlen-eine-klatsche-fuer-musk-und-die-ki-branche-2611-214835.html",
    "q": "Golem",
-   "d": "2026-11-03T11:00:02Z",
-   "s": "Die KI-Apostel versprechen uns das Paradies auf Erden. Doch selbst eine Superintelligenz kann keine Wunder vollbringen. Zeit für ein wenig Realismus. Ein Deep Dive von P. R. Rhesia (Maschinenträume, K…",
+   "d": "2026-11-04T12:00:01Z",
+   "s": "Die US-Republikaner haben in den Zwischenwahlen eine schwere Niederlage erlitten. Das könnte den ungezügelten Ausbau von Rechenzentren stoppen. Eine Analyse von Friedhelm Greis (Rechenzentrum, Politik…",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: Claude Code, Copilot und Codex im Entwicklungsalltag",
-   "u": "https://www.heise.de/news/KI-gestuetzte-Programmierung-vom-Feature-Auftrag-zum-Pull-Request-11507480.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise+ | Abliterierte KI: Security-Werkzeug oder Weltuntergangswaffe?",
+   "u": "https://www.heise.de/ratgeber/Abliterierte-KI-Security-Werkzeug-oder-Weltuntergangswaffe-11472489.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
    "q": "heise",
-   "d": "2026-11-03T11:00:00Z",
-   "s": "Claude Code, GitHub Copilot und OpenAI Codex im Xcode-Umfeld: Wie Sie mit den Agenten arbeiten, ihre Ergebnisse und auch die Risiken im Blick behalten.",
+   "d": "2026-11-04T11:00:00Z",
+   "s": "Der renommierte Sicherheitsforscher Costin Raiu erklärt, wie wichtig abliterierte Modelle zur Abwehr sind und welche tatsächlichen Gefahren von ihnen ausgehen.",
    "sprache": "de"
   },
   {
-   "t": "Anthropic IPO: Warum der größte Börsengang aller Zeiten ins Wanken gerät",
-   "u": "https://t3n.de/news/anthropic-ipo-boersengang-wanken-risiken-1771236/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "heise-Angebot: Das Programm steht: secIT-Thementag am 2. Dezember rund um KI & Security",
+   "u": "https://www.heise.de/news/Das-Programm-steht-secIT-Thementag-am-2-Dezember-rund-um-KI-Security-11508529.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-04T11:00:00Z",
+   "s": "Von php2shell bis Agenten-unterstützten Cyberangriffen: KI wirbelt die Cybersecurity tüchtig durcheinander. Der Thementag bringt etwas Ordnung ins Chaos.",
+   "sprache": "de"
+  },
+  {
+   "t": "Smart Reports: Was Vorgesetzte jetzt über die Claude-Nutzung von Mitarbeitenden erfahren können",
+   "u": "https://t3n.de/news/smart-reports-was-vorgesetzte-jetzt-ueber-die-claude-nutzung-von-mitarbeitenden-erfahren-koennen-1771500/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-03T10:55:00Z",
-   "s": "Im Vorfeld des möglicherweise größten Börsengangs aller Zeiten meldet Anthropic ein Umsatzplus von gut 1.100 Prozent. Doch Milliardenverluste und Verpflichtungen für KI-Infrastruktur von fast 900 Mill…",
+   "d": "2026-11-04T10:08:55Z",
+   "s": "Die neue Claude-Funktion Smart Reports soll Unternehmen dabei helfen, ihre KI-Kosten in den Griff zu bekommen. Gleichzeitig ermöglicht sie Vorgesetzten aber auch, die Leistung ihrer Mitarbeiter:innen …",
    "sprache": "de"
   },
   {
-   "t": "How “reverse game theory” could keep AI agents in check",
-   "u": "https://www.technologyreview.com/2026/11/03/1147934/reverse-game-theory-mechanism-design-ai-alignment/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-03T10:43:41Z",
-   "s": "A new approach known as “reverse game theory” aims to create incentives for powerful AI models that make following the rules the most rational choice. As AI models become more capable, safety research…",
-   "sprache": "en"
-  },
-  {
-   "t": "KI-Update sorgt für Frust: Claude verweigert das Nachbauen von Games",
-   "u": "https://t3n.de/news/anthropic-claude-ki-update-game-nachbau-blockade-1771064/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-03T09:55:00Z",
-   "s": "Anthropic will verhindern, dass sich sein KI-Modell Claude weiter zum Nachbau von existierenden Games heranziehen lässt. Eine entsprechende Änderung im Systemprompt sorgt aber offenbar auch bei legiti…",
-   "sprache": "de"
-  },
-  {
-   "t": "Wütende KI-Meuten: Wie gefälschte Proteste auf Tiktok Geld bringen sollen",
-   "u": "https://www.golem.de/news/wuetende-ki-meuten-wie-gefaelschte-proteste-auf-tiktok-geld-bringen-sollen-2611-214732.html",
+   "t": "Ohne Zustimmung zu KI: US-Schulen verlieren Zugriff auf Google-Suche",
+   "u": "https://www.golem.de/news/ohne-zustimmung-zu-ki-us-schulen-verlieren-zugriff-auf-google-suche-2611-214831.html",
    "q": "Golem",
-   "d": "2026-11-03T08:45:02Z",
-   "s": "Auf Tiktok protestieren KI-generierte Menschen gegen die Politik. Dahinter steckt ein Geschäftsmodell, das mit Empörung Reichweite und Geld erzeugt. Von Alexander Riechelmann (Tiktok, Spam)",
+   "d": "2026-11-04T10:08:01Z",
+   "s": "Wollen Schulen in den USA auf Googles KI-Integration verzichten, streicht der Konzern auch eine Kernfunktion aus seinen Schulanwendungen. (KI, Google)",
    "sprache": "de"
   },
   {
-   "t": "Heimstaden is changing residential real estate management with AI",
-   "u": "https://openai.com/index/heimstaden",
-   "q": "OpenAI",
-   "d": "2026-11-03T08:00:00Z",
-   "s": "Discover how Heimstaden uses OpenAI’s ChatGPT Enterprise and Codex to transform property management, cut costs, and empower employees across Europe.",
-   "sprache": "en"
+   "t": "Digitalgipfel: KI-Torschlusspanik",
+   "u": "https://netzpolitik.org/2026/digitalgipfel-ki-torschlusspanik/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-04T08:18:18Z",
+   "s": "Nicht nur Digitalminister Karsten Wildberger, sondern auch Thomas Jarzombek, Gitta Connemann und Markus Richter (v. l. n. r.) vom BMDS waren auf dem Gipfel präsent. – Alle Rechte vorbehalten: Jens Oel…",
+   "sprache": "de"
   },
   {
-   "t": "Apple Watch’s AI features for rewinding and recapping conversations begin beta testing",
-   "u": "https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/",
+   "t": "Geht es auch ohne Lightroom? Diese quelloffenen Alternativen gibt es – und das können sie",
+   "u": "https://t3n.de/news/geht-es-auch-ohne-lightroom-diese-quelloffenen-alternativen-gibt-es-und-das-koennen-sie-1771363/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-04T06:30:04Z",
+   "s": "Der Traum der kostenlosen, KI-generierten Lightroom-Alternative entpuppt sich bei genauerer Betrachtung leider doch als Luftschloss. Aber es gibt durchaus einigweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Anthropic is working on a system to prove AI models’ identity",
+   "u": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
    "q": "TechCrunch AI",
-   "d": "2026-11-03T07:20:00Z",
-   "s": "Now in beta: Apple's new Audio Intelligence features can help you remember what someone said or take notes on conversations.",
+   "d": "2026-11-03T22:41:03Z",
+   "s": "Called FlashProve, the system would let anyone check that an AI response really came from the model it claims to be from.",
    "sprache": "en"
   },
   {
-   "t": "Here’s who is falling in line for Trump’s “Super Intelligence” loyalty test",
-   "u": "https://www.technologyreview.com/2026/11/02/1147932/heres-who-is-falling-in-line-for-trumps-super-intelligence-loyalty-test/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-03T04:18:47Z",
-   "s": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. At the end of September, President Trump signed an executive o…",
+   "t": "Data centers are turning to old jet engines as the wait for power grows",
+   "u": "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-03T22:19:53Z",
+   "s": "The years-long wait for access to the grid and new turbines is causing data center builders to turn to an unusual, less-efficient and less environmentally friendly solution: once-discarded jet engines…",
+   "sprache": "en"
+  },
+  {
+   "t": "StateBench: Testing how language models track state changes over long documents",
+   "u": "https://huggingface.co/blog/allenai/statebench",
+   "q": "Hugging Face",
+   "d": "2026-11-03T17:15:21Z",
+   "s": "",
    "sprache": "en"
   }
  ]
