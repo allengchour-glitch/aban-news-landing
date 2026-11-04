@@ -1,5 +1,16 @@
 # LuxeStyle: Arbeitsbeginn für Claude Code
 
+## Aktueller Stand – 04.11.2026, Revision 78: zwei neue Produktmotive und konkrete Teilbefunde
+
+Auf «weiter mit andere produkten» zwei andere aktuell geprüfte Shopartikel gestaltet: schwarzer Mini-Schirm und Panda-Handyhalter. Zwei echte PNGs mit je 1536 × 1024 px, ausdrücklich variantenbezogene Referenzen und abgeschlossene unabhängige Sichtprüfung. **Referenzbasierte Bildentwürfe, keine Originalproduktaufnahmen und nicht live.** [Bilder und Bericht](WEITERARBEIT-20261104-R78.md) · [Quellen, Hashes und QA](WEITERARBEIT-BELEGE-20261104-R78.json).
+
+Mini-Schirm: CHF 16.90, Variante 67788980650375; Panda: CHF 14.90, Variante 67788961939847. Beide ACTIVE und öffentlich verfügbar, CONTINUE/tracked=false. Keine Liefer-/Bestandszusage. Der rechtslastige Schirm benötigt vollständiges 3:2 oder contain; kein mittiger Cover-Crop. Panda zentral, echter Desktop-/Mobil-Ausschnitt dennoch offen. Präzise Fertigungs-/SKU-Treue, kreative Abnahme und unabhängige Referenzrechte bleiben ungeklärt. Schmuckschale und Retro-Tischuhr ohne Generierung zurückgestellt; Banner und R76-Karten erhalten.
+
+Abgeschlossene Teilproben: acht Taschen-/Beauty-Ansichten DE/FR bei 390 und 1440 px, 132 ausgewertete Bedingungen bestanden und vier unbekannte mobile Filterauswahlen. Ein konkreter Preisfilterverlust an 15 Links des zusätzlichen SEO-Pagers wurde per DOM/HTML bestätigt; noch kein Fix. Zwei externe MP4s zeigen Bewegung, erfüllen mit 10,68/10,16 Sekunden und 25 fps die Mastervorgabe aber nicht. Direkte Pflichtmusikzuordnung, genaue Variante und Rechte bleiben offen. R77-Termine wurden nicht neu gelesen oder verändert.
+
+Keine neuen Reports, Shop-/Theme-/Socialwrites, Kundenansprache oder Automation. Tagespolicy samt Historie, beendeter Kauf-Watch und alle 23 IDs bleiben erhalten. Nur zwei generierte Bilder und Text-/JSON-Belege für die Übergabe; keine Referenzbilder oder MP4s hochgeladen. Claude-Empfang unbekannt.
+
+
 ## Aktueller Stand – 04.11.2026, Revision 77: Morgenprüfung und konkrete Quellenfortsetzung
 
 R76 und heutiger Tagesblock vor Abfragen frisch gelesen. Shopify luxestyle.ch/CHF, Metricool 6227837/Europe/Zurich und alle sechs Kanalidentitäten passen. [Morgenpaket](MORGENPAKET-20261104-R77.md) · [Nachweise](LAUFBELEGE-20261104-R77.json) · [derselbe 18-Sekunden-Master](MASTER-CONTENT-20261104-R77.md).
