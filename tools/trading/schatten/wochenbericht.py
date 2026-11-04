@@ -19,10 +19,11 @@ HIER = Path(__file__).resolve().parent
 ROOT = HIER.parents[2]
 LOGBUCH = ROOT / "data" / "krypto-pilot-schatten.json"
 SATELLIT = ROOT / "data" / "krypto-satellit-schatten.json"
+LABOR = ROOT / "data" / "krypto-scalping-labor.json"
 BERICHT = ROOT / "docs" / "KRYPTO-WOCHENBERICHT.md"
 MIN_WOCHEN = 8
 KOPF = ("# Krypto-Wochenbericht (Spielgeld)\n\n"
-        "Automatisch erzeugt aus `data/krypto-pilot-schatten.json` (`tools/trading/schatten/wochenbericht.py`). Nur gemessene Zahlen, "
+        "Automatisch erzeugt aus `data/krypto-pilot-schatten.json`, dem Satelliten-Schattenbuch und dem Scalping-Labor (`tools/trading/schatten/wochenbericht.py`). Nur gemessene Zahlen, "
         "vereinfacht: ohne Börsen-Stops und Liquidation. Kürzer als 8 Wochen ist kein Urteil. Keine Anlageberatung.\n")
 
 
@@ -85,8 +86,35 @@ def satellit_abschnitt(sb: dict | None) -> list[str]:
     return md
 
 
-def abschnitt(lb: dict, sb: dict | None = None) -> tuple[str, str]:
-    """→ (Stand, Markdown-Abschnitt). Zu wenig Tage → Stand '' und ein Satz. sb: das Satelliten-Schattenbuch (optional)."""
+def labor_abschnitt(lab: dict | None) -> list[str]:
+    """Zeilen für den Bericht aus data/krypto-scalping-labor.json (Scalping-Labor, Papier): leer, solange das Labor noch keinen Handel gerechnet hat
+    oder das Buch unlesbar ist (ein kaputtes Buch darf den Bericht nie verhindern)."""
+    if not lab or not lab.get("maerkte"):
+        return []
+    try:
+        sys.path.insert(0, str(ROOT / "tools" / "trading" / "krypto_bot"))
+        import scalping_labor as SL
+        mit = [z for z in SL.tabelle(lab) if z["n"]]
+        u = SL.urteil(lab)
+        de = SL._de
+        if not mit:
+            return []
+        md = ["", f"### Scalping-Labor (Papier, echte Kurse, mit Gebühren), {de(u['tage'])} Tage seit {SL._tag(lab['daten_ab']) if lab.get('daten_ab') else str(lab.get('start') or '?')[:10]}", "",
+              "| Markt | Stufe k | Trades | Treffer | Brutto je Trade | Netto je Trade | Prüfstand netto | Summe |", "|---|---:|---:|---:|---:|---:|---:|---:|"]
+        for z in mit:
+            md.append(f"| {z['markt']} | {de(z['k'])} | {z['n']} | {de(100 * z['treffer'], 0)} % | {de(z['brutto_bp'], 1, True)} bp | {de(z['netto_bp'], 1, True)} bp | "
+                      f"{de(z['erw_netto_bp'], 1, True)} bp | {de(z['summe_pct'], 1, True)} % |")
+        kosten = sum(z["kosten_bp"] * z["n"] for z in mit) / sum(z["n"] for z in mit)
+        md += ["", "Urteil (vorab festgelegt): " + u["text"] + ".",
+               f"Kosten je Trade (Gebühren und Schlupf) im Mittel {de(abs(kosten))} bp: sie fressen die Kursbewegung. Summe = Summe aller Trade-Renditen ohne Hebel, nicht der Verlust des Kontos. "
+               "Papier, kein Geld im Spiel; der Prüfstand vom 13.10.2026 hatte alle sieben Scalping-Verfahren im Minus gesehen."]
+        return md
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def abschnitt(lb: dict, sb: dict | None = None, lab: dict | None = None) -> tuple[str, str]:
+    """→ (Stand, Markdown-Abschnitt). Zu wenig Tage → Stand '' und ein Satz. sb: das Satelliten-Schattenbuch, lab: das Scalping-Labor-Buch (beide optional)."""
     t = lb.get("tage") or []
     if len(t) < 2:
         return "", "Noch zu wenig Tage im Schattenkonto für einen Bericht."
@@ -106,14 +134,15 @@ def abschnitt(lb: dict, sb: dict | None = None) -> tuple[str, str]:
     pos = ", ".join(f"{m} {v['hebel']:+.2f}×" for m, v in t[-1]["maerkte"].items())
     md += ["", f"Aktuelle Position des Piloten: {pos}."]
     md += satellit_abschnitt(sb)
+    md += labor_abschnitt(lab)
     md += [""]
     return stand, "\n".join(md)
 
 
-def schreiben(lb: dict, datei: Path | None = None, sb: dict | None = None) -> str:
+def schreiben(lb: dict, datei: Path | None = None, sb: dict | None = None, lab: dict | None = None) -> str:
     """Hängt den Abschnitt an die Berichtsdatei an. → 'geschrieben', 'schon drin' oder 'zu wenig Tage'."""
     datei = datei or BERICHT
-    stand, md = abschnitt(lb, sb)
+    stand, md = abschnitt(lb, sb, lab)
     if not stand:
         return "zu wenig Tage"
     alt = datei.read_text(encoding="utf-8") if datei.exists() else ""
@@ -136,10 +165,10 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--schreiben", action="store_true")
     a = ap.parse_args()
-    lb, sb = lies(), lies(SATELLIT)
-    print(abschnitt(lb, sb)[1])
+    lb, sb, lab = lies(), lies(SATELLIT), lies(LABOR)
+    print(abschnitt(lb, sb, lab)[1])
     if a.schreiben:
-        print("Bericht:", schreiben(lb, sb=sb))
+        print("Bericht:", schreiben(lb, sb=sb, lab=lab))
     return 0
 
 
