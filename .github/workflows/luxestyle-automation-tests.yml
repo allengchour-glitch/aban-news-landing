@@ -119,6 +119,7 @@ jobs:
             dropship/mode-taxonomie-2610
             dropship/pod-auswahl
             dropship/pod-editor-sicherung-2810
+            dropship/startseite-wechsel-0411/theme
             pod/editor-hintergruende.json
             automation/pod_inject_designer.mjs
             automation/pod_editor_hintergruende.mjs

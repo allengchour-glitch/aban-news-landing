@@ -18,7 +18,7 @@ import { jahreszeitSperre, LIEFER_SPERRE, typSchluessel, trendScore } from './tr
 import { bewertungAus } from './bewertung_rang.mjs';
 
 /** Rotation: Länge eines Zeitfensters in Stunden und die möglichen Schrittweiten (Primzahlen) in Positionen; muss zu sections/luxe-edit-home.liquid passen. */
-export const ROTATION = Object.freeze({ stunden: 4, schritte: [7, 5, 3] });
+export const ROTATION = Object.freeze({ stunden: 4, schritte: [7, 5, 3], zusaetze: [11, 13, 17, 19, 23, 29, 31], primzahlen: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47] });
 
 /** Reihen: Pool-Handle, Poolgrösse, Fenster (so viele Kandidaten liest das Theme), so viele Karten zeigt die Reihe. */
 export const REIHEN = Object.freeze({
@@ -36,7 +36,7 @@ export const THEME_STOPS = Object.freeze(['google-policy-flag', 'nicht-live', '1
 /** Zusätzlich für die Startseite: Lizenz-, Sperr- und Waffenmarkierungen sowie Waren, die auf einer Startseite nichts zu suchen haben. */
 const ZUSATZ_SPERRE = /lizenz|gesperrt|waffe|stecker-nicht-ch|raucher/i;
 const TYP_AUSSCHLUSS = /raucher|erwachsen|dessous|intim|medizin|waffe|bügeltransfer|selbst gestalten/i;
-const TITEL_AUSSCHLUSS = /intim|sex|erotik|vibrator|dildo|waffe|pistole|pfefferspray|schlagring|potenz|abnehm|schlankheit|vape|shisha|desinfektionsbox.*unterw/i;
+const TITEL_AUSSCHLUSS = /intim|\bsex(y|shop|ual\w*)?\b|erotik|vibrator|dildo|waffe|pistole|pfefferspray|schlagring|potenz|abnehm|schlankheit|vape|shisha|desinfektionsbox.*unterw/i;
 /** Warenarten, die als «Trends» und «Noch mehr entdecken» in Frage kommen (Werkzeug, Instrumente, Büro, Basteln und Autoteile sind Nischen und gehören nicht auf die Startseite). */
 const TYP_ERLAUBT = /gadget|elektronik|haushalt|wohnen|küche|beauty|haustier|sport|outdoor|mode|taschen|beleuchtung|garten|spielzeug|baby|kinder|make-up|nagel|accessoires|reise|fitness|hautpflege|geschenk/i;
 const POSITIV = /(^|\|)(hype-jetzt|kunden-liebling|nachfrage-liebling|such-boost)(\||$)/;
@@ -154,16 +154,20 @@ export function baueAllePools(rohzeilen, opt = {}) {
 }
 
 /**
- * Start des Fensters im Pool für das gegebene Zeitfenster `slot`. Muss mit dem Liquid übereinstimmen:
- *   slot = ('now' | date: '%s') / (stunden * 3600);  M = max(n - fenster, 0) + 1
- *   schritt = erste Zahl aus [7, 5, 3], durch die M NICHT teilbar ist (sonst 1);  start = (slot * schritt) mod M
- * Ein Schritt, der sich mit M teilt, liesse nur wenige Startwerte zu (Wohnen: M = 7 und Schritt 7 hätte nie gewechselt);
- * ein Primzahl-Schritt ohne gemeinsamen Teiler durchläuft dagegen alle M Startwerte, ehe er sich wiederholt.
+ * Start des Fensters im Pool für das Zeitfenster `slot`. Muss mit snippets/lx-rot-start.liquid übereinstimmen:
+ *   slot = ('now' | date: '%s') / (stunden * 3600);  n = Poolgrösse (höchstens 50)
+ *   schritt = erste Zahl aus [7, 5, 3], durch die n NICHT teilbar ist (sonst 1)
+ *   zusatz  = erste Zahl aus [11, 13, 17, 19, 23, 29, 31], für die (6 * schritt + zusatz) mit n teilerfremd ist UND (schritt + zusatz) nicht durch n teilbar (sonst bliebe das Fenster am Tageswechsel stehen) (sonst 1)
+ *   start   = (slot * schritt + floor(slot / 6) * zusatz) mod n          (6 Zeitfenster = 1 Tag)
+ * Der Start läuft über den GANZEN Pool (das Fenster liest am Poolende am Anfang weiter): kein Produkt bleibt unsichtbar.
+ * Teilerfremder Schritt: alle n Startwerte kommen vor. Der Tageszusatz sorgt dafür, dass auch ein Besucher, der täglich zur selben
+ * Uhrzeit kommt, jeden Tag ein anderes Fenster sieht (ohne ihn hätte «Mehr» mit n = 23 und Schritt 7 nur zwei Fenster im Wechsel gezeigt).
  */
-export function fensterStart(slot, n, fenster) {
-  const M = Math.max(n - fenster, 0) + 1;
-  const schritt = ROTATION.schritte.find((p) => M % p !== 0) || 1;
-  return (slot * schritt) % M;
+export function fensterStart(slot, n) {
+  const schritt = ROTATION.schritte.find((p) => n % p !== 0) || 1;
+  const sechs = 6 * schritt;
+  const zusatz = ROTATION.zusaetze.find((c) => (schritt + c) % n !== 0 && !ROTATION.primzahlen.some((p) => n % p === 0 && (sechs + c) % p === 0)) || 1;
+  return (slot * schritt + Math.floor(slot / 6) * zusatz) % n;
 }
 
 /** Zeitfenster-Nummer aus Unix-Sekunden (ganzzahlige Division wie `divided_by` in Liquid). */

@@ -1,7 +1,25 @@
-{%- comment -%}Start des Fensters im Pool für die wechselnden Startseiten-Reihen (04.11.2026). Parameter: slot (Zeitfenster-Nummer), n (Poolgrösse, höchstens 50), win (Fenstergrösse).
-Rechnung wie fensterStart() in automation/lib/startseite_pool.mjs: M = max(n - win, 0) + 1; Schritt = erste Zahl aus 7, 5, 3, durch die M nicht teilbar ist (sonst 1); Start = (slot * Schritt) mod M.{%- endcomment -%}
-{%- assign m = n | minus: win | at_least: 0 | plus: 1 -%}
+{%- comment -%}Start des Fensters im Pool für die wechselnden Startseiten-Reihen (04.11.2026). Parameter: slot (Zeitfenster-Nummer = Unix-Sekunden / 14400), n (Poolgrösse, höchstens 50).
+Rechnung wie fensterStart() in automation/lib/startseite_pool.mjs: schritt = erste Zahl aus 7, 5, 3, durch die n nicht teilbar ist (sonst 1); zusatz = erste Zahl aus 11, 13, 17, 19, 23, 29, 31, für die (6 * schritt + zusatz) mit n teilerfremd ist und (schritt + zusatz) nicht durch n teilbar (sonst 1); start = (slot * schritt + (slot / 6) * zusatz) mod n.{%- endcomment -%}
 {%- assign step = 7 -%}
-{%- assign chk = m | modulo: 7 -%}
-{%- if chk == 0 -%}{%- assign step = 5 -%}{%- assign chk = m | modulo: 5 -%}{%- if chk == 0 -%}{%- assign step = 3 -%}{%- assign chk = m | modulo: 3 -%}{%- if chk == 0 -%}{%- assign step = 1 -%}{%- endif -%}{%- endif -%}{%- endif -%}
-{{- slot | times: step | modulo: m -}}
+{%- assign chk = n | modulo: 7 -%}
+{%- if chk == 0 -%}{%- assign step = 5 -%}{%- assign chk = n | modulo: 5 -%}{%- if chk == 0 -%}{%- assign step = 3 -%}{%- assign chk = n | modulo: 3 -%}{%- if chk == 0 -%}{%- assign step = 1 -%}{%- endif -%}{%- endif -%}{%- endif -%}
+{%- assign six = step | times: 6 -%}
+{%- assign primes = '2,3,5,7,11,13,17,19,23,29,31,37,41,43,47' | split: ',' -%}
+{%- assign extras = '11,13,17,19,23,29,31' | split: ',' -%}
+{%- assign extra = 1 -%}
+{%- for c in extras -%}
+  {%- assign ok = true -%}
+  {%- assign d = six | plus: c -%}
+  {%- assign e = step | plus: c | modulo: n -%}
+  {%- if e == 0 -%}{%- assign ok = false -%}{%- endif -%}
+  {%- for p in primes -%}
+    {%- assign np = n | modulo: p -%}
+    {%- assign dp = d | modulo: p -%}
+    {%- if np == 0 and dp == 0 -%}{%- assign ok = false -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if ok -%}{%- assign extra = c -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- assign day = slot | divided_by: 6 -%}
+{%- assign a = slot | times: step -%}
+{%- assign b = day | times: extra -%}
+{{- a | plus: b | modulo: n -}}

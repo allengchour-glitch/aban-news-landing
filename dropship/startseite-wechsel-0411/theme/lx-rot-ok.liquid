@@ -1,0 +1,8 @@
+{%- comment -%}Gültigkeit einer Startseiten-Karte (04.11.2026). Parameter: p (Produkt), stops (Liste von Sperr-Tag-Teilen). Ausgabe: 1, wenn kaufbar, mit Bild, Preis und Tags und ohne Sperr-Tag; sonst nichts.{%- endcomment -%}
+{%- if p.available and p.featured_image and p.price_min > 0 and p.tags.size > 0 -%}
+  {%- assign ok = true -%}
+  {%- assign tagtext = p.tags | join: '|' | downcase -%}
+  {%- for s in stops -%}{%- if tagtext contains s -%}{%- assign ok = false -%}{%- endif -%}{%- endfor -%}
+  {%- for t in p.tags -%}{%- assign tl = t | downcase -%}{%- if tl contains 'nicht-' and tl contains 'bewerben' -%}{%- assign ok = false -%}{%- endif -%}{%- endfor -%}
+  {%- if ok -%}1{%- endif -%}
+{%- endif -%}
