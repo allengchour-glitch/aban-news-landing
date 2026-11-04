@@ -31,10 +31,11 @@ Teil 1 (Format, Ablauf, Handwerkszeug): `LERNEN.md`.
 - Die Sicherheitszonen-Prozente sind eine vorsichtige Annahme, keine YouTube-Vorgabe.
 
 ## 9. Strichmännchen und Stimme im Gleichschritt (Pia-Short)
-Rezept aus dem Referenzvideo: eine kleine Geschichte, jede Sprecherzeile beschreibt genau ihre Szene, eine Stimme, dieselbe Figur überall, Szenenlänge = Länge der Zeile.
-- `projekte/vegan-pia/stimme.txt`: je Zeile `S1`, Sprechtext, optional Bildschirmtitel (TAB-getrennt). `stimme.sh` spricht jede Zeile, rechnet die Einsatzzeiten und schreibt `zeiten.js`; `szenen.html` leitet daraus Szenenfenster, Titel und Ereignisse ab. Ändert sich der Text, ändert sich das Bild mit.
-- `stickman.js`: `Stickman(parent, {x, y, s})`, dann `pose`, `gehen`, `ruehren`, `huepfen`, `mund` in zeitlicher Reihenfolge (sonst Fehlermeldung). Übung: `bausteine/06-stickman.html`.
-- **Falle SVG-Position:** ein `transform`-Attribut wird von einer CSS-Animation auf demselben Element überschrieben (das Gemüse landete oben links). Aussen `<g transform>`, innen ein `<g>` animieren.
-- **Falle Piper:** die Dauer einer Zeile schwankt von Lauf zu Lauf um Zehntelsekunden. Zeiten und Tonspur immer aus demselben Lauf (`bauen.sh`).
-- **Falle Linter:** Sprechtext nur in `stimme.txt`, nicht in `.md` (Anrede-Prüfung, Grenze 5000 Zeichen).
-- **Falle Prozentzeichen:** `printf` liest «% d» im Text als Formatangabe und schrieb «18  0er» statt «18 % der». Texte mit `%` nie in den Formatstring von `printf` setzen, sondern per Editor oder `printf '%s'` schreiben.
+Rezept des Referenzvideos: kleine Geschichte, jede Sprecherzeile beschreibt genau ihre Szene, eine Stimme, dieselbe Figur überall, Szenenlänge = Länge der Zeile.
+- **Figur nach Vorbild** (Vorschaubilder gelesen): grosser runder weisser Kopf, wildes Kritzelhaar, dünne Glieder, weisse Handschuh-Hände, Schuhklumpen, geflicktes Gewand; gemalte Bilderbuch-Welt, gelbe Textschilder. `stickman.js`: `pose`, `gehen`, `ruehren`, `huepfen`, `mund` in zeitlicher Reihenfolge (sonst Fehlermeldung). Übung: `bausteine/06-stickman.html`.
+- `projekte/vegan-pia/stimme.txt`: je Zeile `S1`, Sprechtext, optional Titel (TAB-getrennt). `stimme.sh` rechnet die Einsatzzeiten und schreibt `zeiten.js`; die Szene leitet Fenster, Titel und Ereignisse daraus ab.
+- **Falle SVG-Position:** ein `transform`-Attribut wird von einer CSS-Animation auf demselben Element überschrieben. Aussen `<g transform>`, innen ein `<g>` animieren.
+- **Falle Piper:** die Dauer schwankt von Lauf zu Lauf; Zeiten und Tonspur aus demselben Lauf (`bauen.sh`).
+- **Falle Linter:** Sprechtext nur in `stimme.txt` (Anrede-Prüfung, Grenze 5000 Zeichen).
+- **Falle Prozentzeichen:** `printf` liest «% d» als Formatangabe («18  0er»). Nie in den Formatstring setzen.
+- **Falle Renderzeit:** ein SVG-Rauschfilter über der ganzen Szene kostete über zwei Drittel der Zeit; Korn als fertige PNG-Kachel unter den Himmel legen.

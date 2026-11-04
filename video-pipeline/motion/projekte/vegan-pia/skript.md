@@ -9,7 +9,9 @@ Der gesprochene Wortlaut und die Bildschirmtitel stehen nur in `stimme.txt` (ein
 | 1 Wunsch | Pia wünscht sich eine Welt, in der niemand leidet | Pia geht ins Bild, reisst die Arme hoch, hüpft, Herz |
 | 2 Frage und Fakt 1 | Beim Frühstück fragt sich Pia nach dem Essen; Fläche gegen Kalorien | Denkblase mit Fragezeichen, dann Infografik mit zwei Balken |
 | 3 Fakt 2 | Zahl der jährlich geschlachteten Landtiere | Zähler 0 bis 83, 83 graue Punkte (je einer eine Milliarde), Pia sorgenvoll |
-| 4 Antwort | Pflanzliche Gerichte als kleine Entscheidung für Mitgefühl | Pia kocht, Gemüse poppt auf, Dampf, Keimlinge, goldener Himmel, Herz |
+| 4 Antwort | Pflanzliche Gerichte als kleine Entscheidung für Mitgefühl | Pia kocht am Lagerfeuer im Abendrot, Gemüsekorb, Glühwürmchen, Herz |
+
+Stil nach dem Referenzvideo (Vorschaubilder gelesen, Video selbst nicht gesehen): grosse weisse Rundkopf-Figur mit Kritzelhaar und Handschuh-Händen im geflickten Gewand, Bilderbuch-Welt (Weizen, Tannen, Berge, Abendrot, Lagerfeuer), gelbe Textschilder. Die Welt ist eine handgezeichnete Vektor-Annäherung, kein KI-Gemälde.
 
 Ton: einladend, ohne Zeigefinger. Keine Gesundheitsversprechen, keine Schockbilder. Zahlen gerundet («rund», «etwa», «über») und nur mit Quelle, siehe `quellen.md`.
 

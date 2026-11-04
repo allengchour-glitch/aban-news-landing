@@ -1,12 +1,14 @@
-/* stickman.js — wiederverwendbares Strichmännchen für motion.js (deterministisch, nur Motion.at/loop).
+/* stickman.js — Strichmännchen im Stil des Referenzvideos (The AI Blueprint): grosser runder weisser Kopf mit wildem,
+ * gekritzeltem Haar, dünne Strichgliedmassen, grosse weisse Handschuh-Hände, schwarze Schuh-Klumpen, geflicktes Gewand.
+ * Läuft über motion.js (deterministisch, nur Motion.at/loop).
  *
- *   const pia = Stickman(parentSvgGroup, { x: 540, y: 1480, s: 1.3, schleife: '#e76f51' });
+ *   const pia = Stickman(parentSvgGroup, { x: 540, y: 1560, s: 1.45, kleid: '#7aa64f' });
  *   pia.pose(1.0, 'jubeln', .6);        // ab Sekunde 1.0 in 0.6 s in die Pose
- *   pia.gehen(2.0, 3.0, { dx: 400 });   // 3 s gehen, dabei 400 px nach rechts
+ *   pia.gehen(2.0, 3.0, { dx: 400 });   // 3 s gehen, dabei 400 Einheiten nach rechts
  *   pia.mund(2.0, 'lachen');            // Gesicht: 'ruhig' | 'lachen' | 'sorge'
  *
- * Koordinaten: Ursprung = Standpunkt (Füsse), Figur ca. 290 Einheiten hoch (s skaliert).
- * Winkel in Grad, 0 = Glied hängt nach unten; positiv dreht ZUR BILDSCHIRM-LINKEN (hoch = 180 über links),
+ * Koordinaten: Ursprung = Standpunkt (Füsse), Figur ca. 345 Einheiten hoch mit Haar (s skaliert).
+ * Winkel in Grad, 0 = Glied hängt nach unten; positiv dreht zur BILDSCHIRM-LINKEN (hoch = 180 über links),
  * negativ zur rechten Seite. Linker Arm/Bein = Bildschirm-links.
  *
  * REGEL: Bewegungen derselben Figur (pose/gehen/winken/ruehren/huepfen) stehen in zeitlicher Reihenfolge und überlappen nicht;
@@ -16,88 +18,104 @@
 (function () {
   const M = window.Motion;
   if (!M) throw new Error('stickman.js braucht motion.js (zuerst laden)');
-  const STRICH = '#22303c', HAUT = '#fffdf7';
+  const STRICH = '#1d1d22', HAUT = '#f9f7f1', HAAR = '#17171b';
 
   const POSEN = {
     //            Arm links: oben, Unterarm | Arm rechts: oben, Unterarm | Bein links, Knie | Bein rechts, Knie
-    ruhig:   { aLo: 10,  aLu: 6,    aRo: -10,  aRu: -6,    bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
-    jubeln:  { aLo: 155, aLu: 12,   aRo: -155, aRu: -12,   bLo: 6,  bLu: 0,  bRo: -6, bRu: 0 },
-    zeigen:  { aLo: 10,  aLu: 6,    aRo: -95,  aRu: -4,    bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
-    denken:  { aLo: 12,  aLu: 8,    aRo: -35,  aRu: -150,  bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
-    kochen:  { aLo: 20,  aLu: 40,   aRo: -50,  aRu: -70,   bLo: 3,  bLu: 0,  bRo: -3, bRu: 0 },
-    winken:  { aLo: 10,  aLu: 6,    aRo: -150, aRu: -10,   bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
-    offen:   { aLo: 60,  aLu: 10,   aRo: -60,  aRu: -10,   bLo: 4,  bLu: 0,  bRo: -4, bRu: 0 }
+    ruhig:   { aLo: 8,   aLu: 6,    aRo: -8,   aRu: -6,    bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
+    jubeln:  { aLo: 150, aLu: 14,   aRo: -150, aRu: -14,   bLo: 6,  bLu: 0,  bRo: -6, bRu: 0 },
+    zeigen:  { aLo: 8,   aLu: 6,    aRo: -95,  aRu: -4,    bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
+    denken:  { aLo: 10,  aLu: 8,    aRo: -38,  aRu: -150,  bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
+    kochen:  { aLo: 18,  aLu: 36,   aRo: -48,  aRu: -66,   bLo: 3,  bLu: 0,  bRo: -3, bRu: 0 },
+    winken:  { aLo: 8,   aLu: 6,    aRo: -150, aRu: -10,   bLo: 2,  bLu: 0,  bRo: -2, bRu: 0 },
+    offen:   { aLo: 55,  aLu: 10,   aRo: -55,  aRu: -10,   bLo: 4,  bLu: 0,  bRo: -4, bRu: 0 }
   };
 
   function Stickman(parent, o) {
     o = o || {};
-    const x = o.x || 0, y = o.y || 0, s = o.s || 1, schleife = o.schleife || '#e76f51';
+    const x = o.x || 0, y = o.y || 0, s = o.s || 1, kleid = o.kleid || '#7aa64f', flicken = o.flicken || '#c9a05a';
     const g = (p, a) => M.svg('g', a || {}, p);
-    const dick = o.strich || 13;
-    const linie = (p, x1, y1, x2, y2, w) => M.svg('line', { x1: x1, y1: y1, x2: x2, y2: y2, stroke: STRICH, 'stroke-width': w || dick, 'stroke-linecap': 'round' }, p);
+    const linie = (p, x1, y1, x2, y2, w) => M.svg('line', { x1: x1, y1: y1, x2: x2, y2: y2, stroke: STRICH, 'stroke-width': w || 8, 'stroke-linecap': 'round' }, p);
 
     const root = g(parent, { transform: `translate(${x},${y}) scale(${s})` });
     const schatten = g(root);                      // Bodenschatten: folgt der Figur nur seitwärts
-    M.svg('ellipse', { cx: 0, cy: 3, rx: 74, ry: 13, fill: 'rgba(34,48,60,.16)' }, schatten);
+    M.svg('ellipse', { cx: 0, cy: 4, rx: 82, ry: 13, fill: 'rgba(30,30,40,.18)' }, schatten);
     const mover = g(root);                         // Verschiebung beim Gehen
     const beine = g(mover);
-    const koerper = g(mover);                      // Rumpf, Kopf, Arme (atmet)
+    const koerper = g(mover);                      // Arme, Gewand, Kopf (atmet)
 
     /* ---- Gelenke: je eine Gruppe, die um ihren Ursprung (0,0) dreht ---- */
     const gelenke = {};
     function gelenk(name, parentEl, px, py, start) {
       const wrap = g(parentEl, { transform: `translate(${px},${py})` });
       const dreh = g(wrap);
-      gelenke[name] = { el: dreh, cur: start, wrap: wrap };
+      gelenke[name] = { el: dreh, cur: start };
       return gelenke[name];
     }
-    function glied(j, laenge, ende) {   // Linie nach unten + Anschluss für das nächste Gelenk
-      linie(j.el, 0, 0, 0, laenge);
-      if (ende) M.svg('circle', { cx: 0, cy: laenge, r: ende + 2, fill: HAUT, stroke: STRICH, 'stroke-width': 8 }, j.el);
-      return j;
+    function handschuh(j, laenge) {   // grosse weisse Handschuh-Hand am Ende des Unterarms
+      const h = g(j.el, { transform: `translate(0,${laenge})` });
+      M.svg('ellipse', { cx: -17, cy: 12, rx: 9, ry: 13, fill: HAUT, stroke: STRICH, 'stroke-width': 5, transform: 'rotate(18 -17 12)' }, h);   // Daumen
+      M.svg('ellipse', { cx: 0, cy: 22, rx: 19, ry: 23, fill: HAUT, stroke: STRICH, 'stroke-width': 5 }, h);
+      M.svg('path', { d: 'M-6 30 v12 M6 30 v12', stroke: STRICH, 'stroke-width': 3.5, 'stroke-linecap': 'round', fill: 'none' }, h);
+    }
+    function schuh(j, richtung) {
+      M.svg('ellipse', { cx: richtung * 15, cy: 50, rx: 22, ry: 10, fill: STRICH }, j.el);
     }
     const P0 = POSEN.ruhig;
-    // Beine (Hüfte y = -140)
-    const bLo = gelenk('bLo', beine, -14, -140, P0.bLo); glied(bLo, 70);
-    const bLu = gelenk('bLu', bLo.el, 0, 70, P0.bLu);    glied(bLu, 70); linie(bLu.el, 0, 70, -20, 70, dick - 1);
-    const bRo = gelenk('bRo', beine, 14, -140, P0.bRo);  glied(bRo, 70);
-    const bRu = gelenk('bRu', bRo.el, 0, 70, P0.bRu);    glied(bRu, 70); linie(bRu.el, 0, 70, 20, 70, dick - 1);
-    // Rumpf
-    linie(koerper, 0, -215, 0, -140, dick + 2);
-    // Arme (Schulter y = -205)
-    const aLo = gelenk('aLo', koerper, -4, -205, P0.aLo); glied(aLo, 56);
-    const aLu = gelenk('aLu', aLo.el, 0, 56, P0.aLu);     glied(aLu, 54, 8);
-    const aRo = gelenk('aRo', koerper, 4, -205, P0.aRo);  glied(aRo, 56);
-    const aRu = gelenk('aRu', aRo.el, 0, 56, P0.aRu);     glied(aRu, 54, 8);
-    // Kopf
-    const kopf = g(koerper);
-    M.svg('circle', { cx: 0, cy: -257, r: 37, fill: HAUT, stroke: STRICH, 'stroke-width': 10 }, kopf);
-    M.svg('circle', { cx: -23, cy: -250, r: 7.5, fill: '#ff8f7a', opacity: .45 }, kopf);   // Wangen
-    M.svg('circle', { cx: 23, cy: -250, r: 7.5, fill: '#ff8f7a', opacity: .45 }, kopf);
-    const augen = g(kopf);
-    M.svg('ellipse', { cx: -12, cy: -262, rx: 4.4, ry: 5.2, fill: STRICH }, augen);
-    M.svg('ellipse', { cx: 12, cy: -262, rx: 4.4, ry: 5.2, fill: STRICH }, augen);
-    augen.style.transformBox = 'fill-box'; augen.style.transformOrigin = '50% 50%';
-    // Blinzeln alle 3.4 s (Perioden, deterministisch)
-    M.at(augen, [{ transform: 'scaleY(1)', offset: 0 }, { transform: 'scaleY(1)', offset: .92 }, { transform: 'scaleY(.08)', offset: .955 }, { transform: 'scaleY(1)', offset: 1 }], { t: 0, d: 3.4, n: Infinity, ease: M.EASE.linear, fill: 'forwards' });
+    // Beine (Hüfte y = -98)
+    const bLo = gelenk('bLo', beine, -17, -98, P0.bLo); linie(bLo.el, 0, 0, 0, 50);
+    const bLu = gelenk('bLu', bLo.el, 0, 50, P0.bLu);   linie(bLu.el, 0, 0, 0, 44); schuh(bLu, -1);
+    const bRo = gelenk('bRo', beine, 17, -98, P0.bRo);  linie(bRo.el, 0, 0, 0, 50);
+    const bRu = gelenk('bRu', bRo.el, 0, 50, P0.bRu);   linie(bRu.el, 0, 0, 0, 44); schuh(bRu, 1);
+    // Arme (Schulter y = -172, unter dem Gewand ansetzend)
+    const aLo = gelenk('aLo', koerper, -30, -172, P0.aLo); linie(aLo.el, 0, 0, 0, 62);
+    const aLu = gelenk('aLu', aLo.el, 0, 62, P0.aLu);      linie(aLu.el, 0, 0, 0, 58); handschuh(aLu, 58);
+    const aRo = gelenk('aRo', koerper, 30, -172, P0.aRo);  linie(aRo.el, 0, 0, 0, 62);
+    const aRu = gelenk('aRu', aRo.el, 0, 62, P0.aRu);      linie(aRu.el, 0, 0, 0, 58); handschuh(aRu, 58);
+    // Gewand: schlichte Tunika mit ausgefranstem Saum und Flicken
+    const tun = g(koerper);
+    M.svg('path', { d: 'M-40 -184 Q0 -194 40 -184 L54 -96 l-10 12 l-10 -10 l-12 12 l-12 -12 l-12 12 l-12 -12 l-12 12 l-10 -10 l-10 10 Z', fill: kleid, stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, tun);
+    M.svg('rect', { x: -26, y: -150, width: 28, height: 26, rx: 4, fill: flicken, stroke: STRICH, 'stroke-width': 3.5, transform: 'rotate(-6 -12 -137)' }, tun);
+    M.svg('path', { d: 'M-22 -146 h20 M-22 -138 h20 M-22 -130 h20', stroke: STRICH, 'stroke-width': 2, 'stroke-dasharray': '4 3', fill: 'none', opacity: .7, transform: 'rotate(-6 -12 -137)' }, tun);
+    M.svg('circle', { cx: 22, cy: -118, r: 14, fill: flicken, stroke: STRICH, 'stroke-width': 3.5 }, tun);
+    M.svg('path', { d: 'M12 -118 h20 M22 -128 v20', stroke: STRICH, 'stroke-width': 2, 'stroke-dasharray': '4 3', fill: 'none', opacity: .7 }, tun);
+    // Kopf (gross, rund, doppelt gezogene Kontur wie gekritzelt)
+    const kopf = g(koerper), HY = -245;
+    M.svg('circle', { cx: 2, cy: HY - 1, r: 59, fill: 'none', stroke: STRICH, 'stroke-width': 2.5, opacity: .55 }, kopf);
+    M.svg('circle', { cx: 0, cy: HY, r: 58, fill: HAUT, stroke: STRICH, 'stroke-width': 6 }, kopf);
+    // wildes Haar: Striche vom Scheitel nach aussen (Zufall mit festem Seed → bei jedem Lauf gleich)
+    const rz = M.rnd(o.haarSeed || 21), haar = g(kopf);
+    for (let i = 0; i < 21; i++) {
+      const w = (-176 + i * (172 / 20) + (rz() - .5) * 8) * Math.PI / 180, r0 = 54, len = 16 + rz() * rz() * 52 + (i % 4 === 0 ? 22 : 0), kr = (rz() - .5) * 34;
+      const x0 = Math.cos(w) * r0, y0 = HY + Math.sin(w) * r0, x1 = Math.cos(w + kr / 160) * (r0 + len), y1 = HY + Math.sin(w + kr / 160) * (r0 + len);
+      M.svg('path', { d: `M${x0.toFixed(1)} ${y0.toFixed(1)} Q${((x0 + x1) / 2 + kr).toFixed(1)} ${((y0 + y1) / 2 - kr / 2).toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`, fill: 'none', stroke: HAAR, 'stroke-width': (4.2 + rz() * 3).toFixed(1), 'stroke-linecap': 'round' }, haar);
+    }
+    for (let i = 0; i < 5; i++) {   // ein paar Strähnen über die Stirn
+      const x0 = -34 + i * 17 + (rz() - .5) * 6;
+      M.svg('path', { d: `M${x0.toFixed(1)} ${HY - 54} q${(rz() * 10 - 5).toFixed(1)} 12 ${(rz() * 14 - 7).toFixed(1)} ${(22 + rz() * 12).toFixed(1)}`, fill: 'none', stroke: HAAR, 'stroke-width': 3.2, 'stroke-linecap': 'round' }, haar);
+    }
+    // Augen: offen (Punkte) oder froh (geschlossene Bögen), blinzeln alle 3.4 s
+    const augenOffen = g(kopf);
+    M.svg('ellipse', { cx: -21, cy: HY - 2, rx: 4.6, ry: 6.4, fill: STRICH }, augenOffen);
+    M.svg('ellipse', { cx: 21, cy: HY - 2, rx: 4.6, ry: 6.4, fill: STRICH }, augenOffen);
+    augenOffen.style.transformBox = 'fill-box'; augenOffen.style.transformOrigin = '50% 50%';
+    M.at(augenOffen, [{ transform: 'scaleY(1)', offset: 0 }, { transform: 'scaleY(1)', offset: .92 }, { transform: 'scaleY(.08)', offset: .955 }, { transform: 'scaleY(1)', offset: 1 }], { t: 0, d: 3.4, n: Infinity, ease: M.EASE.linear, fill: 'forwards' });
+    const augenFroh = M.svg('path', { d: `M-31 ${HY} q10 -12 20 0 M11 ${HY} q10 -12 20 0`, fill: 'none', stroke: STRICH, 'stroke-width': 5, 'stroke-linecap': 'round' }, kopf);
+    const augCur = { offen: 1, froh: 0 };
+    augenOffen.style.opacity = 1; augenFroh.style.opacity = 0;
     const brauVar = {
-      ruhig: M.svg('path', { d: 'M-21 -278 Q-13 -283 -5 -279 M5 -279 Q13 -283 21 -278', fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf),
-      sorge: M.svg('path', { d: 'M-21 -274 L-5 -283 M21 -274 L5 -283', fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf)
+      ruhig: M.svg('path', { d: `M-34 ${HY - 22} q11 -7 22 -2 M12 ${HY - 24} q11 -5 22 2`, fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf),
+      sorge: M.svg('path', { d: `M-34 ${HY - 17} l22 -11 M34 ${HY - 17} l-22 -11`, fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf)
     };
     const brauCur = { ruhig: 1, sorge: 0 };
     Object.keys(brauVar).forEach((k) => { brauVar[k].style.opacity = brauCur[k]; });
     const mundVar = {
-      ruhig: M.svg('path', { d: 'M-10 -245 Q0 -241 10 -245', fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf),
-      lachen: M.svg('path', { d: 'M-15 -249 Q0 -227 15 -249 Z', fill: '#fff', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linejoin': 'round' }, kopf),
-      sorge: M.svg('path', { d: 'M-11 -240 Q0 -251 11 -240', fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf)
+      ruhig: M.svg('path', { d: `M-14 ${HY + 24} q14 7 28 0`, fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf),
+      lachen: M.svg('path', { d: `M-19 ${HY + 20} q19 26 38 0 z`, fill: '#fff', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linejoin': 'round' }, kopf),
+      sorge: M.svg('path', { d: `M-13 ${HY + 30} q13 -11 26 0`, fill: 'none', stroke: STRICH, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, kopf)
     };
     const mundCur = { ruhig: 1, lachen: 0, sorge: 0 };
     Object.keys(mundVar).forEach((k) => { mundVar[k].style.opacity = mundCur[k]; });
-    // Schleife (Pias Erkennungszeichen)
-    const sch = g(kopf, { transform: 'translate(-27,-292)' });
-    M.svg('ellipse', { cx: -9, cy: 0, rx: 11, ry: 6, fill: schleife, stroke: STRICH, 'stroke-width': 3, transform: 'rotate(-25 -9 0)' }, sch);
-    M.svg('ellipse', { cx: 9, cy: 0, rx: 11, ry: 6, fill: schleife, stroke: STRICH, 'stroke-width': 3, transform: 'rotate(25 9 0)' }, sch);
-    M.svg('circle', { cx: 0, cy: 0, r: 5, fill: schleife, stroke: STRICH, 'stroke-width': 3 }, sch);
 
     /* ---- Zeitführung ---- */
     let letzteZeit = 0, letzterMund = 0, posX = 0, posY = 0;   // Ende der letzten Bewegung / Zeit des letzten Gesichtswechsels
@@ -112,7 +130,7 @@
     Object.keys(gelenke).forEach((k) => {
       M.at(gelenke[k].el, [{ transform: `rotate(${gelenke[k].cur}deg)` }, { transform: `rotate(${gelenke[k].cur}deg)` }], { t: 0, d: .001, ease: M.EASE.linear });
     });
-    // Atmen: Rumpf hebt und senkt sich leicht (Perioden 2.4 s, endlos)
+    // Atmen: Oberkörper hebt und senkt sich leicht (Perioden 2.4 s, endlos)
     M.loop(koerper, [{ transform: 'translateY(0)' }, { transform: 'translateY(-3px)' }, { transform: 'translateY(0)' }], { t: 0, d: 2.4 });
 
     function drehen(name, t, d, nach, ease) {
@@ -140,7 +158,7 @@
         Object.keys(p).forEach((k) => drehen(k, t, d === undefined ? .5 : d, p[k]));
         letzteZeit = t + (d === undefined ? .5 : d); return api;
       },
-      /* Gehen auf der Stelle oder mit Verschiebung dx/dy (px in Szenenkoordinaten, vor Skalierung durch s: Einheiten der Figur) */
+      /* Gehen auf der Stelle oder mit Verschiebung dx/dy (Einheiten der Figur, vor Skalierung durch s) */
       gehen: function (t, d, opt) {
         ordnung(t, 'gehen'); opt = opt || {}; const per = opt.per || .7;
         zyklus('bLo', t, d, per, 28, false); zyklus('bRo', t, d, per, 28, true);
@@ -156,26 +174,21 @@
       ruehren: function (t, d) {
         ordnung(t, 'ruehren'); zyklus('aRu', t, d, .6, 18, false); letzteZeit = t + d; return api;
       },
-      /* Gesicht wechseln */
+      /* Gesicht wechseln: 'lachen' zeigt geschlossene frohe Augen, 'sorge' schräge Brauen */
       mund: function (t, name) {
         ordnung(t, 'mund'); if (!mundVar[name]) throw new Error('Stickman.mund: unbekannt ' + name);
-        Object.keys(mundVar).forEach((k) => {
-          const ziel = k === name ? 1 : 0;
-          M.at(mundVar[k], [{ opacity: mundCur[k] }, { opacity: ziel }], { t: t, d: .08, ease: M.EASE.linear, fill: 'forwards' });
-          mundCur[k] = ziel;
-        });
+        const fade = (el, von, ziel) => M.at(el, [{ opacity: von }, { opacity: ziel }], { t: t, d: .08, ease: M.EASE.linear, fill: 'forwards' });
+        Object.keys(mundVar).forEach((k) => { const ziel = k === name ? 1 : 0; fade(mundVar[k], mundCur[k], ziel); mundCur[k] = ziel; });
         const bz = name === 'sorge' ? 'sorge' : 'ruhig';
-        Object.keys(brauVar).forEach((k) => {
-          const ziel = k === bz ? 1 : 0;
-          M.at(brauVar[k], [{ opacity: brauCur[k] }, { opacity: ziel }], { t: t, d: .08, ease: M.EASE.linear, fill: 'forwards' });
-          brauCur[k] = ziel;
-        });
+        Object.keys(brauVar).forEach((k) => { const ziel = k === bz ? 1 : 0; fade(brauVar[k], brauCur[k], ziel); brauCur[k] = ziel; });
+        const froh = name === 'lachen' ? 1 : 0;
+        fade(augenFroh, augCur.froh, froh); fade(augenOffen, augCur.offen, 1 - froh); augCur.froh = froh; augCur.offen = 1 - froh;
         letzterMund = t; return api;
       },
       /* kleine Hüpfer (Freude) */
       huepfen: function (t, d) {
         ordnung(t, 'huepfen'); const n = Math.max(1, Math.round(d / .5));
-        M.at(mover, [{ transform: `translate(${posX}px,${posY}px)` }, { transform: `translate(${posX}px,${posY - 26}px)` }, { transform: `translate(${posX}px,${posY}px)` }],
+        M.at(mover, [{ transform: `translate(${posX}px,${posY}px)` }, { transform: `translate(${posX}px,${posY - 30}px)` }, { transform: `translate(${posX}px,${posY}px)` }],
           { t: t, d: .5, n: n, ease: M.EASE.out, fill: 'forwards' });
         M.at(schatten, [{ transform: `translateX(${posX}px) scale(1)` }, { transform: `translateX(${posX}px) scale(.78)` }, { transform: `translateX(${posX}px) scale(1)` }],
           { t: t, d: .5, n: n, ease: M.EASE.out, fill: 'forwards' });
