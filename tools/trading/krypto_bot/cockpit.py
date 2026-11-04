@@ -53,8 +53,12 @@ try:  # das Satelliten-Modul steht ebenfalls allein: ein Fehler darin darf das C
     import satellit as SAT
 except Exception:  # noqa: BLE001
     SAT = None
+try:  # das Scalping-Labor (Papier) ebenso: ein Fehler darin darf das Cockpit nie lahmlegen
+    import scalping_labor as SL
+except Exception:  # noqa: BLE001
+    SL = None
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
-         "/calls Telegram-Calls (Schatten-Bilanz) · /news News-Alarme · "
+         "/calls Telegram-Calls (Schatten-Bilanz) · /news News-Alarme · /scalp Scalping-Labor (Papier) · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
 
@@ -712,7 +716,7 @@ def stand(env=None):
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
             "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")),
             "calls": calls_stand(), "programm": {"geladen": VERSION_GELADEN, "auf_platte": programm_version()},
-            "satellit": satellit_stand(env), "kurse": kurse[0], "kurse_schnitt": kurse[1]}
+            "satellit": satellit_stand(env), "scalp": scalp_stand(env), "kurse": kurse[0], "kurse_schnitt": kurse[1]}
 
 
 def markt_mit_stop(e):
@@ -748,6 +752,26 @@ def satellit_stand(env=None):
                 "ausgestoppt": [{"symbol": f, "tag": t} for f, t in buch["ausgestoppt"].items()],
                 "naechster_tag": SAT.naechster_entscheidungstag(heute),
                 "letzter_lauf": buch["letzter_lauf"] if isinstance(buch["letzter_lauf"], dict) else None}
+    except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
+        return None
+
+
+def scalp_stand(env=None):
+    """Scalping-Labor (Papier) fürs Cockpit — nur lesen, nie ein Absturz und nie eine Datei anfassen: None, wenn das Modul fehlt oder nichts lesbar ist.
+    Sonst Schalter, die 8 Bücher (Markt × Stufe k) mit der Erwartung des Prüfstands, das vorab festgelegte Urteil, die letzten Handel und die mittleren Kosten je Trade."""
+    if SL is None:
+        return None
+    try:
+        env = umgebung() if env is None else env
+        ein = SL.einstellung(env)
+        buch, hinweis = SL.lesen(beiseite=False)
+        d = SL.cockpit_daten(buch)
+        mit = [z for z in d["zeilen"] if z["n"]]
+        kosten = sum(z["kosten_bp"] * z["n"] for z in mit) / sum(z["n"] for z in mit) if mit else None
+        ok, text, warn = SL.ampel(buch, env=env)
+        return {"aus": bool(ein["aus"]), "grund": ein["grund"], "hinweis": hinweis or "", "gelaufen": bool(mit) or bool(d["letzter_lauf"]),
+                "zeilen": d["zeilen"], "urteil": d["urteil"], "letzter_lauf": d["letzter_lauf"], "letzte_trades": d["letzte_trades"], "daten_ab": d["daten_ab"],
+                "kosten_bp": None if kosten is None else round(abs(kosten), 2), "ampel": {"ok": ok, "text": text, "warnung": warn}}
     except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
         return None
 
@@ -981,6 +1005,15 @@ def gesundheit(env, lb, ki, heute=None):
             p("Satellit (Testnetz-Zusatz)", _ok, _text, warnung=_warn)
         except Exception:  # noqa: BLE001
             pass
+    if SL is not None:  # Papier: braucht weder Schlüssel noch Konto; grau solange es nie lief, gelb bei Hinweis oder beschädigtem Buch, rot nur bei Stillstand über 36 Stunden
+        try:
+            _buch, _hin = SL.lesen(beiseite=False)
+            _ok, _text, _warn = SL.ampel(_buch, env=env)
+            if _hin:  # Buch beschädigt (Sicherungskopie benutzt oder neu begonnen): gelbe Warnung mit dem Satz, nie «noch kein Lauf»
+                _ok, _text, _warn = None, _hin, True
+            p("Scalping-Labor (Papier)", _ok, _text, warnung=_warn)
+        except Exception:  # noqa: BLE001
+            pass
     mvrv = HIER.parent / "daten" / "info_mvrv_btc.json"
     if mvrv.exists():
         stunden = (time.time() - mvrv.stat().st_mtime) / 3600
@@ -1092,6 +1125,11 @@ def befehl(text):
     if b == "/news":
         import news_waechter as NW
         return NW.letzte()
+    if b == "/scalp":
+        if SL is None:
+            return "📊 Scalping-Labor: in dieser Programmversion nicht vorhanden."
+        buch, hinweis = SL.lesen(beiseite=False)
+        return SL.zusammenfassung(buch) + (("\n" + hinweis) if hinweis else "")
     if b == "/calls":
         import calls_kopierer as CK
         s = calls_stand()

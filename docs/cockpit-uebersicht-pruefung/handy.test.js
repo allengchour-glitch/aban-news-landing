@@ -147,6 +147,15 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
       const tab = await p.evaluate(() => [...document.querySelectorAll('table')].map(t => { const z = [...t.querySelectorAll('tr')]; const kopf = z.find(r => r.querySelector('th')), daten = z.find(r => !r.querySelector('th'));
         return { disp: getComputedStyle(t).display, kopfDisp: kopf ? getComputedStyle(kopf).display : null, datenDisp: daten ? getComputedStyle(daten).display : null, labels: daten ? [...daten.children].map(c => c.getAttribute('data-label') || '') : [], breit: t.getBoundingClientRect().width <= innerWidth }; }));
       ok(tab.length >= 3 && tab.every(t => t.disp === 'block' && t.kopfDisp === 'none' && t.datenDisp === 'grid' && t.breit), `${T}: alle Tabellen (${tab.length}) sind Karten: Block, Kopfzeile aus, Zeile als Raster`, tab);
+      ok(tab.some(t => t.labels.join('|') === 'Markt · Stufe|Trades|Treffer|Netto je Trade|Prüfstand'), `${T}: jede Zelle der Labor-Tabelle trägt ihren Spaltennamen`, tab.map(t => t.labels.join('|')));
+      // Scalping-Labor am Handy: die 8 Karten stehen hinter einer zugeklappten Zeile mit der Spanne; ein Tipp öffnet sie
+      const labSum = await p.$eval('#u-labor details.labor-tab > summary', e => ({ text: e.innerText.replace(/\s+/g, ' ').trim(), h: Math.round(e.getBoundingClientRect().height) }));
+      ok(labSum.text === '8 Bücher · netto −9.8 bis −7.8 bp je Trade' && labSum.h >= 44 && await p.$eval('#u-labor details.labor-tab', e => !e.open) && await p.$eval('#u-labor details.labor-tab .tabelle', e => !e.checkVisibility()), `${T}: Labor zugeklappt mit der Zeile «8 Bücher · netto −9.8 bis −7.8 bp je Trade», Tippfläche ≥ 44 px, Karten unsichtbar`, labSum);
+      await p.click('#u-labor details.labor-tab > summary'); await p.waitForTimeout(150);
+      const labOffen = await p.evaluate(() => { const zeilen = [...document.querySelectorAll('#u-labor details.labor-tab tbody tr')]; return { offen: document.querySelector('#u-labor details.labor-tab').open, sichtbar: document.querySelector('#u-labor details.labor-tab .tabelle').checkVisibility(), n: zeilen.length, grid: zeilen.every(r => getComputedStyle(r).display === 'grid'), breit: zeilen.every(r => r.getBoundingClientRect().right <= innerWidth), scroll: document.documentElement.scrollWidth <= innerWidth }; });
+      ok(labOffen.offen && labOffen.sichtbar && labOffen.n === 8 && labOffen.grid && labOffen.breit && labOffen.scroll, `${T}: ein Tipp öffnet die 8 Labor-Karten (Raster, nichts ragt heraus, kein seitliches Scrollen)`, labOffen);
+      await p.click('#u-labor details.labor-tab > summary'); await p.waitForTimeout(100);
+      ok(await p.$eval('#u-labor details.labor-tab', e => !e.open), `${T}: ein zweiter Tipp klappt das Labor wieder zu`);
       const profitTab = tab.find(t => t.labels.length === 8);
       ok(profitTab && profitTab.labels.join('|') === 'Markt|Seite|Menge|Einstieg|Jetzt|Gewinn USDT|auf das Pfand|Liquidation', `${T}: jede Zelle der Positions-Tabelle trägt ihren Spaltennamen`, profitTab && profitTab.labels);
       const hinweisZelle = await p.evaluate(() => { const td = [...document.querySelectorAll('#auftraege td[colspan]')][0]; return td ? { label: td.getAttribute('data-label'), grid: getComputedStyle(td).gridColumnStart + '/' + getComputedStyle(td).gridColumnEnd } : null; });
@@ -160,6 +169,7 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
       const satz = await p.evaluate(() => [...document.querySelectorAll('.sat-zeile')].map(z => { const c = z.querySelector('.coin').getBoundingClientRect(), b = z.querySelector('.sat-bar').getBoundingClientRect(), zz = z.querySelector('.sat-zahlen').getBoundingClientRect(), k = z.getBoundingClientRect(); return { bar: Math.round(b.width), unterhalb: b.top >= Math.max(c.bottom, zz.bottom) - 1, voll: b.width >= k.width - 12 }; }));
       ok(satz.length === 3 && satz.every(s => s.unterhalb && s.voll), `${T}: jede Satelliten-Position ist eine Karte mit der Leiter über die ganze Breite`, satz);
       ok(await p.$eval('details.sat-regel', e => !e.open) && await p.$eval('.sat-regel summary', e => getComputedStyle(e, '::after').content === '"▾"'), `${T}: die Satelliten-Spielregel ist zugeklappt, mit Aufklapp-Pfeil`);
+      ok(await p.$$eval('details.sat-regel', es => es.length === 2 && es.every(e => !e.open)), `${T}: die Spielregeln von Satellit und Scalping-Labor sind beide zugeklappt`);
 
       // Kontrast
       await p.tap('#ampel'); await p.waitForTimeout(80);
@@ -275,7 +285,7 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
     ok(nach.m === null && nach.vb === nach.karte, 'Breite ändert sich (Drehen): neu gezeichnet, die Kurve wird für die neue Breite gezeichnet (viewBox = Behälterbreite)', nach);
     await p.setViewportSize({ width: 800, height: 900 }); await p.waitForFunction(() => gezeichneteBreite === 800, null, { timeout: 5000 }); await p.waitForTimeout(200);
     const breit = await p.evaluate(() => ({ nav: getComputedStyle(document.getElementById('sprung')).display, details: document.querySelectorAll('details.sat-regel').length, absatz: document.querySelectorAll('p.sat-regel').length, scroll: document.documentElement.scrollWidth <= innerWidth }));
-    ok(breit.nav === 'none' && breit.details === 0 && breit.absatz === 1 && breit.scroll, 'ab 701 px: keine Sprungleiste, Spielregel als Absatz, kein Überstand', breit);
+    ok(breit.nav === 'none' && breit.details === 0 && breit.absatz === 2 && breit.scroll, 'ab 701 px: keine Sprungleiste, Spielregeln (Satellit und Labor) als Absätze, kein Überstand', breit);
     await p.setViewportSize({ width: 640, height: 360 }); await p.waitForFunction(() => gezeichneteBreite === 640, null, { timeout: 5000 }); await p.waitForTimeout(200);
     const quer = await p.evaluate(() => ({ nav: getComputedStyle(document.getElementById('sprung')).display, scroll: document.documentElement.scrollWidth <= innerWidth, ueb: 0 }));
     ok(quer.nav === 'grid' && quer.scroll, 'Handy quer (640×360): Sprungleiste da, kein seitliches Scrollen', quer);
@@ -340,7 +350,7 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
     const d = await p.evaluate(() => ({ nav: getComputedStyle(document.getElementById('sprung')).display, tab: [...document.querySelectorAll('table')].map(t => getComputedStyle(t).display), band: getComputedStyle(document.querySelector('.band')).position,
       live: getComputedStyle(document.querySelector('.band-rechts a.pill')).display, mk: getComputedStyle(document.querySelector('.mk-live')).display, hinw: [...document.querySelectorAll('.hinw.nur-handy')].every(e => getComputedStyle(e).display === 'none'), absatz: getComputedStyle(document.querySelector('[aria-label="Engagement"] .nur-gross')).display, regel: document.querySelectorAll('p.sat-regel').length,
       thema: document.getElementById('thema').closest('.status-zeile') ? 'status' : 'anders', zaehler: getComputedStyle(document.getElementById('ampelZaehler')).display }));
-    ok(d.nav === 'none' && d.tab.every(t => t === 'table') && d.band === 'sticky' && d.live !== 'none' && d.mk === 'none' && d.hinw && d.absatz !== 'none' && d.regel === 1 && d.thema === 'status' && d.zaehler === 'none', 'Desktop unverändert: keine Sprungleiste, echte Tabellen, klebendes Kopfband, Live-Markt im Kopf, Absatz statt Hinweis-Knopf, Zähler nur am Handy', d);
+    ok(d.nav === 'none' && d.tab.every(t => t === 'table') && d.band === 'sticky' && d.live !== 'none' && d.mk === 'none' && d.hinw && d.absatz !== 'none' && d.regel === 2 && d.thema === 'status' && d.zaehler === 'none', 'Desktop unverändert: keine Sprungleiste, echte Tabellen, klebendes Kopfband, Live-Markt im Kopf, Absatz statt Hinweis-Knopf, Zähler nur am Handy', d);
     // Stern-Knopf funktioniert auch mit der Maus; title bleibt für den Mauszeiger
     await p.click('.chip .hinw.stern'); await p.waitForTimeout(100);
     ok(await p.$eval('#blase', e => !e.hidden) && await p.$eval('.chip .hinw.stern', e => e.title.startsWith('Kein gemerkter Stand')), 'Desktop: der Stern-Knopf öffnet die Blase mit der Maus; title bleibt');

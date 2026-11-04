@@ -342,9 +342,9 @@ def _lesen_datei(pfad):
     return _buch_pruefen(json.loads(Path(pfad).read_text(encoding="utf-8")))
 
 
-def lesen(datei=None, jetzt_ms=None):
+def lesen(datei=None, jetzt_ms=None, beiseite=True):
     """→ (Buch, Hinweis). Fehlt alles: neues Buch ohne Hinweis. Kaputt: Sicherungskopie (Hinweis). Beide kaputt: das kaputte Buch wird beiseitegelegt
-    (nie überschrieben), ein neues angefangen, Hinweis."""
+    (nie überschrieben), ein neues angefangen, Hinweis. beiseite=False (Anzeige, Cockpit): nur lesen, nie eine Datei anfassen."""
     pfad = Path(datei) if datei else BUCH
     jetzt = int(time.time() * 1000) if jetzt_ms is None else int(jetzt_ms)
     bak = pfad.with_name(pfad.name + ".bak")
@@ -358,6 +358,8 @@ def lesen(datei=None, jetzt_ms=None):
         return _lesen_datei(bak), "⚠️ Labor-Buch fehlte oder war kaputt — Sicherungskopie benutzt."
     except (OSError, ValueError):
         pass
+    if not beiseite:
+        return neues_buch(jetzt), "⚠️ Labor-Buch unlesbar und keine brauchbare Sicherungskopie — beim nächsten Lauf wird es beiseitegelegt und ein neues beginnt."
     for kaputt in (pfad, bak):
         if kaputt.exists():
             try:
@@ -603,23 +605,24 @@ def zusammenfassung(buch):
 
 
 def ampel(buch, jetzt_ms=None, env=None, aus_datei=None):
-    """Für die Gesundheits-Ampel des Cockpits: (ok, text). None = nicht eingerichtet/aus (grau), False = steht still oder Warnung (rot), True = läuft."""
+    """Für die Gesundheits-Ampel des Cockpits: (ok, text, warnung) wie satellit.ampel. ok None = grau (aus, noch nie gelaufen), False = rot (steht still),
+    True = grün; ok None mit warnung True = gelb (Hinweis im letzten Lauf, z. B. Netz weg: der nächste Lauf holt es nach)."""
     e = einstellung(env, aus_datei)
     if e["aus"]:
-        return None, f"aus ({e['grund']})"
+        return None, f"aus ({e['grund']})", False
     lauf_ = (buch or {}).get("letzter_lauf")
     if not lauf_:
-        return None, "noch kein Lauf (Papier)"
+        return None, "noch kein Lauf (Papier)", False
     jetzt = int(time.time() * 1000) if jetzt_ms is None else int(jetzt_ms)
     try:
         alter_h = (jetzt - int(datetime.fromisoformat(lauf_["zeit"]).timestamp() * 1000)) / 3_600_000
-    except (KeyError, ValueError):
-        return False, "Zeit des letzten Laufs unlesbar"
+    except (KeyError, TypeError, ValueError):
+        return None, "Zeit des letzten Laufs unlesbar", True
     if alter_h > 36:
-        return False, f"letzter Lauf vor {alter_h:.0f} Stunden"
+        return False, f"letzter Lauf vor {alter_h:.0f} Stunden", False
     if lauf_.get("hinweise"):
-        return False, lauf_["hinweise"][0][:80]
-    return True, f"Papier, {urteil(buch)['urteil']}"
+        return None, lauf_["hinweise"][0][:80], True
+    return True, f"Papier, {urteil(buch)['urteil']}", False
 
 
 def cockpit_daten(buch):
