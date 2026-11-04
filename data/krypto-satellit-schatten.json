@@ -1,0 +1,62 @@
+{
+ "version": 1,
+ "start": "2026-11-03",
+ "start_kapital": 10000.0,
+ "hinweis": "Spielgeld-Vorwärtstest einer Regel, die ihren Test nicht bestand. Vereinfacht: keine Stops, kein Funding, 0,15 % Kosten auf Umschichtungen. Unter 8 Wochen ist das Rauschen und kein Urteil.",
+ "tage": [
+  {
+   "tag": "2026-11-03",
+   "S1": 10000.0,
+   "S2": 10000.0,
+   "BTC150": 10000.0,
+   "BTC": 10000.0
+  }
+ ],
+ "preise": {
+  "BTCUSDT": 77453.86
+ },
+ "reihen": {
+  "S1": {
+   "name": "Regel wie getestet (Top 10 mit Bitcoin und Ether)",
+   "bar": 10000.0,
+   "menge": {},
+   "ziele": {},
+   "entschieden": "2026-10-29",
+   "handel": 0
+  },
+  "S2": {
+   "name": "Satellit (Top 10 ohne Bitcoin und Ether)",
+   "bar": 10000.0,
+   "menge": {},
+   "ziele": {},
+   "entschieden": "2026-10-29",
+   "handel": 0
+  },
+  "BTC150": {
+   "name": "Vergleich: Bitcoin mit Trend 150",
+   "bar": 0.0,
+   "menge": {
+    "BTCUSDT": 0.12891546012038652
+   },
+   "ziele": {
+    "BTCUSDT": 1.0
+   },
+   "entschieden": "2026-10-29",
+   "handel": 1
+  },
+  "BTC": {
+   "name": "Vergleich: Bitcoin halten",
+   "bar": 0.0,
+   "menge": {
+    "BTCUSDT": 0.12891546012038652
+   },
+   "ziele": {
+    "BTCUSDT": 1.0
+   },
+   "entschieden": "2026-10-29",
+   "handel": 1
+  }
+ },
+ "letzter_stand": "2026-11-03",
+ "fehlende_coins": []
+}
