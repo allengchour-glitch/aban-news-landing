@@ -118,7 +118,7 @@ async function nachlesen(name, id, pool) {
 async function main() {
   const freigabe = JSON.parse(readFileSync(FREIGABE, 'utf8'));
   const zeilen = await katalog();
-  console.log(`Katalog: ${zeilen.length} aktive Produkte · Monat ${MONAT} · Fenster alle ${ROTATION.stunden} h, Schritte ${ROTATION.schritte.join("/")}${LIVE ? '' : ' [Trockenlauf]'}\n`);
+  console.log(`Katalog: ${zeilen.length} aktive Produkte · Monat ${MONAT} · Fenster alle ${ROTATION.stunden} h, Schritte ${ROTATION.schritte.join("/")} (+ Tagesversatz ${ROTATION.zusaetze.join("/")})${LIVE ? '' : ' [Trockenlauf]'}\n`);
 
   if (process.env.VORSCHLAG === '1') {
     const schon = new Set([...Object.keys(freigabe.ausschluss || {}), ...Object.values(freigabe.freigabe || {}).flat(), ...Object.values(freigabe.gepinnt || {}).flat()]);
@@ -133,12 +133,12 @@ async function main() {
   const { pools, verworfen } = baueAusFreigabe(zeilen, freigabe, { monat: MONAT });
   for (const [n, l] of Object.entries(pools)) {
     const k = REIHEN[n];
-    console.log(`${n}: ${l.length} Produkte (Fenster ${k.fenster}, zeigt ${k.zeigt}${l.length < k.zeigt ? ' — ZU WENIG, das Theme fällt auf die feste Liste zurück' : ''})`);
+    console.log(`${n}: ${l.length} Produkte (Fenster ${k.fenster}, zeigt ${k.zeigt}${l.length < k.fenster ? ' — ZU WENIG, das Theme fällt auf die feste Liste zurück' : ''})`);
     l.forEach((p, i) => console.log(`  ${String(i + 1).padStart(2)} ${p.handle.slice(0, 48).padEnd(48)} CHF ${String(p.preis).padStart(5)} ${p.productType.slice(0, 20)}`));
   }
   if (verworfen.length) console.log(`\nverworfen (${verworfen.length}):\n` + verworfen.map((v) => `  ${v.reihe} ${v.handle} — ${v.grund}`).join('\n'));
   if (!LIVE) { console.log('\nTrockenlauf, nichts geschrieben'); return 0; }
-  if (Object.values(pools).some((l, i) => l.length < Object.values(REIHEN)[i].zeigt)) { console.error('ABBRUCH: ein Pool hat weniger Produkte als die Reihe zeigt'); return 1; }
+  if (Object.entries(pools).some(([n, l]) => l.length < REIHEN[n].fenster)) { console.error('ABBRUCH: ein Pool hat weniger Produkte als das Fenster der Reihe (das Theme fiele auf die feste Liste zurück)'); return 1; }
 
   const vorbild = (await q(`{collectionByHandle(handle:"hype-jetzt"){resourcePublicationsV2(first:30){nodes{isPublished publication{id}}}}}`)).collectionByHandle;
   const pubs = (vorbild?.resourcePublicationsV2?.nodes || []).filter((n) => n.isPublished).map((n) => ({ publicationId: n.publication.id }));

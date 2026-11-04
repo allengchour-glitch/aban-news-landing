@@ -80,32 +80,38 @@
     {% assign lx_trend_ids = '15499700142465,15450856292737,15448587075969,15430462669185,15408458006913,16617685877127,16613782323591,16610088518023,16604940730759,16604922937735,15523992797569,15523992174977' | split: ',' %}
     {% assign lx_trend_handles = 'magnetische-3-in-1-ladestation-613200,reise-hangematte-aus-fallschirm-nylon-86eb20,midikleid-mit-zopfmuster-und-blumenprint-600200,herren-cargo-hose-trail-multi-pocket-outdoor,kristallspitzen-set-8-teilig-holzbox,yoga-massagerolle-390720,kabelloser-mini-staubsauger-furs-auto-f2796b,tragbarer-mixer-mit-usb-c-ladefunktion-794304,outdoor-bluetooth-karaoke-lautsprecher-600000,magnetischer-kartenhalter-mit-magsafe-632200,reise-organizer-set-mit-netz-617800,futterball-fur-haustiere-498560' | split: ',' %}
     {% assign lx_trend_stops = 'google-policy-flag,nicht-live,18plus,adult,gmc-adult,compliance-pruefen,verdeckte-ueberwachung,medizinprodukt,social-pause,rueckhol,-raus-,geprueft-gesperrt,marge-verlust,verlust-auto,us-netzteil,nicht-versendbar' | split: ',' %}
-    {% comment %}Wechselnde Auswahl (04.11.2026): die zwölf Karten kommen aus der Pool-Sammlung startseite-pool-trends, alle vier Stunden ein anderes Fenster (Rechnung wie automation/lib/startseite_pool.mjs, Snippet lx-rot-start). Ist der Pool zu klein oder fehlt er, bleibt die feste Liste oben.{% endcomment %}
+    {% comment %}Wechselnde Auswahl (04.11.2026): die zwölf Karten kommen aus der Pool-Sammlung startseite-pool-trends, alle vier Stunden ein anderes Fenster (Rechnung wie automation/lib/startseite_pool.mjs, Snippet lx-rot-start; der Start läuft über den ganzen Pool, das Fenster liest am Ende vorn weiter, ohne concat: das liefert auf Sammlungen eine leere Liste). Ist der Pool zu klein oder fehlt er, bleibt die feste Liste oben.{% endcomment %}
     {% assign lx_rot_slot = 'now' | date: '%s' | plus: 0 | divided_by: 14400 %}
     {% assign lx_pool_trends = collections['startseite-pool-trends'] %}
-    {% if lx_pool_trends != blank and lx_pool_trends.products_count >= 14 %}
+    {% if lx_pool_trends != blank and lx_pool_trends.products_count >= 18 %}
       {% assign lx_pool_n = lx_pool_trends.products_count | at_most: 50 %}
-      {% capture lx_rot_start %}{% render 'lx-rot-start', slot: lx_rot_slot, n: lx_pool_n, win: 18 %}{% endcapture %}
+      {% capture lx_rot_start %}{% render 'lx-rot-start', slot: lx_rot_slot, n: lx_pool_n %}{% endcapture %}
       {% assign lx_rot_start = lx_rot_start | plus: 0 %}
-      {% assign lx_rot_handles = '' %}
-      {% assign lx_rot_ids = '' %}
+      {% assign lx_rot_rest = 18 | minus: lx_pool_n | plus: lx_rot_start %}
+      {% assign lx_rot_handles = ',' %}
+      {% assign lx_rot_ids = ',' %}
       {% assign lx_rot_taken = 0 %}
       {% for lx_rot_p in lx_pool_trends.products offset: lx_rot_start limit: 18 %}
-        {% if lx_rot_taken < 12 and lx_rot_p.available and lx_rot_p.featured_image and lx_rot_p.price_min > 0 and lx_rot_p.tags.size > 0 %}
-          {% assign lx_rot_blocked = false %}
-          {% assign lx_rot_tags = lx_rot_p.tags | join: '|' | downcase %}
-          {% for lx_stop in lx_trend_stops %}{% if lx_rot_tags contains lx_stop %}{% assign lx_rot_blocked = true %}{% endif %}{% endfor %}
-          {% for lx_tag in lx_rot_p.tags %}{% assign lx_tag_lower = lx_tag | downcase %}{% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_rot_blocked = true %}{% endif %}{% endfor %}
-          {% unless lx_rot_blocked %}
+        {% capture lx_rot_ok %}{% render 'lx-rot-ok', p: lx_rot_p, stops: lx_trend_stops %}{% endcapture %}
+        {% if lx_rot_taken < 12 and lx_rot_ok != blank %}
+          {% assign lx_rot_taken = lx_rot_taken | plus: 1 %}
+          {% assign lx_rot_handles = lx_rot_handles | append: lx_rot_p.handle | append: ',' %}
+          {% assign lx_rot_ids = lx_rot_ids | append: lx_rot_p.id | append: ',' %}
+        {% endif %}
+      {% endfor %}
+      {% if lx_rot_rest > 0 %}
+        {% for lx_rot_p in lx_pool_trends.products limit: lx_rot_rest %}
+          {% capture lx_rot_ok %}{% render 'lx-rot-ok', p: lx_rot_p, stops: lx_trend_stops %}{% endcapture %}
+          {% if lx_rot_taken < 12 and lx_rot_ok != blank %}
             {% assign lx_rot_taken = lx_rot_taken | plus: 1 %}
             {% assign lx_rot_handles = lx_rot_handles | append: lx_rot_p.handle | append: ',' %}
             {% assign lx_rot_ids = lx_rot_ids | append: lx_rot_p.id | append: ',' %}
-          {% endunless %}
-        {% endif %}
-      {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
       {% if lx_rot_taken >= 12 %}
-        {% assign lx_trend_handles = lx_rot_handles | split: ',' %}
-        {% assign lx_trend_ids = lx_rot_ids | split: ',' %}
+        {% assign lx_trend_handles = lx_rot_handles | remove_first: ',' | split: ',' %}
+        {% assign lx_trend_ids = lx_rot_ids | remove_first: ',' | split: ',' %}
       {% endif %}
     {% endif %}
     {% assign lx_trend_count = 0 %}
@@ -174,7 +180,7 @@
       {% else %}
         {% assign lx_edit_entries = 'satin-seidenkissenbezug-2er-set-sanft-zu-haut-haar|15412960592257|pillowcase,zepterformige-vase-aus-yixing-ton-626100|16654281408903|vase' | split: ',' %}
       {% endif %}
-      {% comment %}Wechselnde Auswahl (04.11.2026): Schmuck und Wohnen ziehen ein Fenster aus startseite-pool-schmuck bzw. startseite-pool-wohnen. Fehlt der Pool, bleibt die feste Liste.{% endcomment %}
+      {% comment %}Wechselnde Auswahl (04.11.2026): Schmuck und Wohnen ziehen ein Fenster aus startseite-pool-schmuck bzw. startseite-pool-wohnen (ganzer Pool, das Fenster läuft am Ende vorn weiter). Fehlt der Pool, bleibt die feste Liste.{% endcomment %}
       {% assign lx_rot_slot = 'now' | date: '%s' | plus: 0 | divided_by: 14400 %}
       {% assign lx_edit_pool_handle = 'startseite-pool-wohnen' %}
       {% assign lx_edit_win = 6 %}
@@ -183,23 +189,28 @@
       {% assign lx_edit_pool = collections[lx_edit_pool_handle] %}
       {% if lx_edit_pool != blank and lx_edit_pool.products_count >= lx_edit_win %}
         {% assign lx_pool_n = lx_edit_pool.products_count | at_most: 50 %}
-        {% capture lx_rot_start %}{% render 'lx-rot-start', slot: lx_rot_slot, n: lx_pool_n, win: lx_edit_win %}{% endcapture %}
+        {% capture lx_rot_start %}{% render 'lx-rot-start', slot: lx_rot_slot, n: lx_pool_n %}{% endcapture %}
         {% assign lx_rot_start = lx_rot_start | plus: 0 %}
-        {% assign lx_edit_new = '' %}
+        {% assign lx_edit_rest = lx_edit_win | minus: lx_pool_n | plus: lx_rot_start %}
+        {% assign lx_edit_new = ',' %}
         {% assign lx_edit_taken = 0 %}
         {% for lx_edit_p in lx_edit_pool.products offset: lx_rot_start limit: lx_edit_win %}
-          {% if lx_edit_taken < lx_edit_show and lx_edit_p.available and lx_edit_p.featured_image and lx_edit_p.price_min > 0 and lx_edit_p.tags.size > 0 %}
-            {% assign lx_edit_pblocked = false %}
-            {% assign lx_edit_ptags = lx_edit_p.tags | join: '|' | downcase %}
-            {% for lx_stop in lx_trend_stops %}{% if lx_edit_ptags contains lx_stop %}{% assign lx_edit_pblocked = true %}{% endif %}{% endfor %}
-            {% for lx_tag in lx_edit_p.tags %}{% assign lx_tag_lower = lx_tag | downcase %}{% if lx_tag_lower contains 'nicht-' and lx_tag_lower contains 'bewerben' %}{% assign lx_edit_pblocked = true %}{% endif %}{% endfor %}
-            {% unless lx_edit_pblocked %}
-              {% assign lx_edit_taken = lx_edit_taken | plus: 1 %}
-              {% assign lx_edit_new = lx_edit_new | append: lx_edit_p.handle | append: '|' | append: lx_edit_p.id | append: '|title,' %}
-            {% endunless %}
+          {% capture lx_edit_ok %}{% render 'lx-rot-ok', p: lx_edit_p, stops: lx_trend_stops %}{% endcapture %}
+          {% if lx_edit_taken < lx_edit_show and lx_edit_ok != blank %}
+            {% assign lx_edit_taken = lx_edit_taken | plus: 1 %}
+            {% assign lx_edit_new = lx_edit_new | append: lx_edit_p.handle | append: '|' | append: lx_edit_p.id | append: '|title,' %}
           {% endif %}
         {% endfor %}
-        {% if lx_edit_taken >= lx_edit_show %}{% assign lx_edit_entries = lx_edit_new | split: ',' %}{% endif %}
+        {% if lx_edit_rest > 0 %}
+          {% for lx_edit_p in lx_edit_pool.products limit: lx_edit_rest %}
+            {% capture lx_edit_ok %}{% render 'lx-rot-ok', p: lx_edit_p, stops: lx_trend_stops %}{% endcapture %}
+            {% if lx_edit_taken < lx_edit_show and lx_edit_ok != blank %}
+              {% assign lx_edit_taken = lx_edit_taken | plus: 1 %}
+              {% assign lx_edit_new = lx_edit_new | append: lx_edit_p.handle | append: '|' | append: lx_edit_p.id | append: '|title,' %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if lx_edit_taken >= lx_edit_show %}{% assign lx_edit_entries = lx_edit_new | remove_first: ',' | split: ',' %}{% endif %}
       {% endif %}
       {% assign lx_edit_count = 0 %}
       {% capture lx_edit_cards %}
@@ -274,26 +285,48 @@
     {% assign lx_more_entries = '15516233957761|led-leucht-brustgeschirr-reissfest-933632|harness,15518558847361|handgemachte-3d-liebesnagel-blue-ice-652096|nails,15523137225089|elektrischer-nagelpolierer-mit-licht-545984|polisher,15520373932417|outdoor-schultertasche-fur-freizeit-kessel-329792|shoulderbag,15408457941377|rosenquarz-gua-sha-set|gua_sha,15501005324673|lederarmband-mit-verschluss-unisex-604800|bracelet,16656662266247|hufttasche-fur-hundetraining-625200|trainingbag,16654280753543|hundennasenmatte-aus-fleece-energie-intelligen-622000|snufflemat' | split: ',' %}
     {% assign lx_more_extra_stops = 'waffe-pruefen' | split: ',' %}
     {% assign lx_more_stops = lx_trend_stops | concat: lx_more_extra_stops %}
-    {% comment %}Wechselnde Auswahl (04.11.2026): acht Karten aus startseite-pool-mehr, alle vier Stunden ein anderes Fenster. Fehlt der Pool, gilt die Liste aus dem Theme-Editor.{% endcomment %}
+    {% comment %}Wechselnde Auswahl (04.11.2026): acht Karten aus startseite-pool-mehr, alle vier Stunden ein anderes Fenster (ganzer Pool, das Fenster läuft am Ende vorn weiter). Ein Vorlauf wählt die ersten acht gültigen Produkte des Fensters; die Karten stehen danach in der Reihenfolge des Pools. Fehlt der Pool oder sind im Fenster weniger als acht gültige Produkte, gilt die Liste aus dem Theme-Editor.{% endcomment %}
     {% assign lx_rot_slot = 'now' | date: '%s' | plus: 0 | divided_by: 14400 %}
     {% assign lx_more_source = section.settings.more_products %}
     {% assign lx_more_start = 0 %}
     {% assign lx_more_limit = 8 %}
     {% assign lx_more_pool_on = false %}
+    {% assign lx_more_chosen = ',' %}
     {% assign lx_more_pool = collections['startseite-pool-mehr'] %}
     {% if lx_more_pool != blank and lx_more_pool.products_count >= 12 %}
       {% assign lx_pool_n = lx_more_pool.products_count | at_most: 50 %}
-      {% capture lx_rot_start %}{% render 'lx-rot-start', slot: lx_rot_slot, n: lx_pool_n, win: 12 %}{% endcapture %}
-      {% assign lx_more_start = lx_rot_start | plus: 0 %}
-      {% assign lx_more_source = lx_more_pool.products %}
-      {% assign lx_more_limit = 12 %}
-      {% assign lx_more_pool_on = true %}
+      {% capture lx_rot_start %}{% render 'lx-rot-start', slot: lx_rot_slot, n: lx_pool_n %}{% endcapture %}
+      {% assign lx_rot_start = lx_rot_start | plus: 0 %}
+      {% assign lx_more_rest = 12 | minus: lx_pool_n | plus: lx_rot_start %}
+      {% assign lx_more_valid = 0 %}
+      {% for lx_more_p in lx_more_pool.products offset: lx_rot_start limit: 12 %}
+        {% capture lx_more_ok %}{% render 'lx-rot-ok', p: lx_more_p, stops: lx_more_stops %}{% endcapture %}
+        {% if lx_more_valid < 8 and lx_more_ok != blank %}
+          {% assign lx_more_valid = lx_more_valid | plus: 1 %}
+          {% assign lx_more_chosen = lx_more_chosen | append: lx_more_p.handle | append: ',' %}
+        {% endif %}
+      {% endfor %}
+      {% if lx_more_rest > 0 %}
+        {% for lx_more_p in lx_more_pool.products limit: lx_more_rest %}
+          {% capture lx_more_ok %}{% render 'lx-rot-ok', p: lx_more_p, stops: lx_more_stops %}{% endcapture %}
+          {% if lx_more_valid < 8 and lx_more_ok != blank %}
+            {% assign lx_more_valid = lx_more_valid | plus: 1 %}
+            {% assign lx_more_chosen = lx_more_chosen | append: lx_more_p.handle | append: ',' %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if lx_more_valid >= 8 %}
+        {% assign lx_more_source = lx_more_pool.products %}
+        {% assign lx_more_limit = 50 %}
+        {% assign lx_more_pool_on = true %}
+      {% endif %}
     {% endif %}
     {% assign lx_more_count = 0 %}
     {% assign lx_more_seen = '|' %}
     {% capture lx_more_cards %}
       {% for lx_more_product in lx_more_source offset: lx_more_start limit: lx_more_limit %}
         {% if lx_more_count >= 8 %}{% break %}{% endif %}
+        {% if lx_more_pool_on %}{% assign lx_more_ckey = ',' | append: lx_more_product.handle | append: ',' %}{% unless lx_more_chosen contains lx_more_ckey %}{% continue %}{% endunless %}{% endif %}
         {% assign lx_more_product_id = lx_more_product.id | append: '' %}
         {% assign lx_more_match = false %}
         {% for lx_more_entry in lx_more_entries %}
