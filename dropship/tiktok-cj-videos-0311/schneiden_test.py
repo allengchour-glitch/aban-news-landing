@@ -93,7 +93,13 @@ ist(abs(float(j['format']['duration']) - info['gesamt_s']) < 0.12, f'Dauer {j["f
 ist(8.0 <= info['gesamt_s'] <= 15.0, 'Gesamtdauer 8 bis 15 s')
 # Dauern sind ganze Takte
 per = 60.0 / info['bpm']
-ist(all(abs(d / per - round(d / per)) < 0.02 for d in info['dauern']) or not info['takt_sicher'], 'Einstellungen dauern ganze Takte')
+kumd = 0.0
+ok_takt = True
+for d in info['dauern']:
+    kumd += d
+    ok_takt = ok_takt and abs(kumd / per - round(kumd / per)) < 0.5 / (30 * per) + 1e-6   # Schnitt höchstens ein halbes Bild neben dem Schlag
+ist(ok_takt or not info['takt_sicher'], 'Schnittzeiten liegen höchstens ein halbes Bild neben dem Schlag (kumuliert gerundet)')
+ist(sum(info['bilder']) == round(info['gesamt_s'] * 30), 'Summe der Bilder gleich Gesamtlänge')
 # Bildinhalt: Hook in den ersten Sekunden sichtbar (Differenz zum Bild ohne Text), nach 4 s kein Hook mehr
 def bild(t, name):
     p = os.path.join(tmp, name)
@@ -150,9 +156,9 @@ puffer = io.StringIO()
 with contextlib.redirect_stdout(puffer):
     S.baue(plan, tmp, os.path.join(tmp, 'x.mp4'), trocken=True)
 graph = puffer.getvalue()
-ist('y=1370' in graph and 'y=1300' not in graph, 'Endkarte bei y=1370')
+ist('y=1330' in graph and 'y=1370' not in graph, 'Endkarte bei y=1330')
 ist('y=1200' in graph and 'y=1240' not in graph, 'Kernaussagen bei y=1200')
-es_ = info['gesamt_s'] - 2.0
+es_ = info['gesamt_s'] - 2.4
 import re
 enden = [float(m.group(1)) for m in re.finditer(r"y=1200:enable='between\(t,[0-9.]+,([0-9.]+)\)'", graph)]
 ist(enden and max(enden) <= es_ - 0.04, f'Kernaussagen enden vor der Endkarte ({max(enden) if enden else None} <= {es_ - 0.05:.2f})')
@@ -168,6 +174,30 @@ ist(puf2.getvalue().count('colortemperature') == 1, 'wb nur an der gewählten Ei
 for bad in (3000, 9500, 'warm'):
     pb = json.loads(json.dumps(plan)); pb['shots'][0]['wb'] = bad
     wirft(lambda pb=pb: S.baue(pb, tmp, out), 'wb', f'wb {bad} ausserhalb')
+
+
+# 8. Zeitlupe ohne Standbilder, Hook ab Bild 0, hook_y, text_y, Anker
+plan_t = json.loads(json.dumps(plan)); plan_t['shots'][0].update(tempo=0.8, ss=0.5, dauer=2.308)
+out_t = os.path.join(tmp, 'tempo.mp4')
+S.baue(plan_t, tmp, out_t)
+fz = subprocess.run(['ffmpeg', '-hide_banner', '-i', out_t, '-vf', 'freezedetect=n=-60dB:d=0.1', '-f', 'null', '-'], capture_output=True, text=True).stderr
+starts = [float(x) for x in re.findall(r'freeze_start: ([0-9.]+)', fz)]
+ist(all(st > info['gesamt_s'] - 0.6 for st in starts), f'tempo 0.8: keine Standbilder ausser im Endfade (Beginn: {starts})')
+puf3 = io.StringIO()
+plan_h = json.loads(json.dumps(plan)); plan_h['hook_y'] = 1100; plan_h['shots'][1].update(text_y=1400, anker_y=0.8, zoom='in', zoomstaerke=0.4)
+with contextlib.redirect_stdout(puf3):
+    S.baue(plan_h, tmp, os.path.join(tmp, 'h.mp4'), trocken=True)
+g3 = puf3.getvalue()
+ist("enable='between(t,0,2.7)'" in g3 and "y=1100:" in g3 and "y=1220:" in g3, 'Hook ab t=0 und bei hook_y/hook_y+120')
+ist("alpha='if(gt(t,2.45),(2.7-t)/0.25,1)'" in g3, 'Hook voll sichtbar ab dem ersten Bild')
+ist('y=1400:' in g3, 'text_y wird übernommen')
+ist("min(max(0.8*ih-ih/zoom/2,0),ih-ih/zoom)" in g3, 'anker_y steuert den Zoom-Ausschnitt')
+for feld, wert, teil in (('hook_y', 100, 'hook_y'), ):
+    pb = json.loads(json.dumps(plan)); pb[feld] = wert
+    wirft(lambda pb=pb: S.baue(pb, tmp, out), teil, f'{feld} ausserhalb')
+for feld, wert, teil in (('text_y', 100, 'text_y'), ('anker_y', 1.5, 'anker')):
+    pb = json.loads(json.dumps(plan)); pb['shots'][1][feld] = wert
+    wirft(lambda pb=pb: S.baue(pb, tmp, out), teil, f'{feld} ausserhalb')
 
 shutil.rmtree(tmp, ignore_errors=True)
 print(f'{ok} Prüfungen bestanden' + (f', {len(fehler)} FEHLER' if fehler else ''))

@@ -106,7 +106,7 @@ export function pruefeCjClip(p) {
   }
   need(typeof p.titel === 'string' && p.titel.length >= 3 && p.titel.length <= 90, 'titel fehlt oder ist zu lang');
   need(typeof p.alt === 'string' && p.alt.length >= 10 && p.alt.length <= 200, 'alt fehlt oder ist zu lang');
-  for (const [k, link, tags] of [['caption_ig', 'Link in Bio: luxestyle.ch', [1, 5]], ['caption_tt', 'Shop: luxestyle.ch/tt', [4, 4]]]) {
+  for (const [k, link, tags] of [['caption_ig', 'Shop: luxestyle.ch (Instagram: Link in Bio)', [1, 5]], ['caption_tt', 'Shop: luxestyle.ch/tt', [4, 4]]]) {
     const c = p[k] ?? '';
     need(c.length >= 80 && c.length <= 2000, `${k} muss 80 bis 2000 Zeichen haben`);
     need(c.includes(link), `${k} muss «${link}» enthalten`);

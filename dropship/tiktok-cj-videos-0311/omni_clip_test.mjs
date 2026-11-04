@@ -192,7 +192,7 @@ ist(cm('dauer', 16), 'CJ: Dauer über 15 s');
 ist(cm('musik', 'luxe-premium.wav'), 'CJ: Eigenproduktion statt Mixkit');
 ist(cm('hook1', 'Siebzehn Zeichen!!'), 'CJ: Hook zu lang');
 ist(cm('hook2', 'Jetzt 19 CHF'), 'CJ: Preis im Hook');
-ist(cm('caption_ig', c0.caption_ig.replace('Link in Bio: luxestyle.ch', '')), 'CJ: IG ohne Link in Bio');
+ist(cm('caption_ig', c0.caption_ig.replace('Shop: luxestyle.ch (Instagram: Link in Bio)', '')), 'CJ: IG ohne Shop-Link (gilt für Instagram und Facebook)');
 ist(cm('caption_tt', c0.caption_tt.replace('Shop: luxestyle.ch/tt', 'luxestyle.ch')), 'CJ: TikTok ohne Wegweiser');
 ist(cm('caption_ig', c0.caption_ig + ' Video mit KI erstellt.'), 'CJ: KI-Aussage bei echtem Material');
 ist(cm('caption_tt', c0.caption_tt.replace('#schweiz', '')), 'CJ: TikTok mit drei Hashtags');
