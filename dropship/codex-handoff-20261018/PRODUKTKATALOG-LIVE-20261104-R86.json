@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R86_20261104",
+  "dateZurich": "2026-11-04",
+  "timezone": "Europe/Zurich",
+  "scope": "controlled_live_catalog_batch_exactly_4",
+  "sourceEvidence": {
+    "consolidated": {
+      "path": "/workspace/luxestyle-review/r85-catalog/RUN-RESULTS-R85-R86.json",
+      "sha256": "8e5a2efbdc2b83865b49d67342c4d3865875eea184ec8b52a95e1fb3b6097e7c"
+    },
+    "allowlistSha256": "14d3d58c88dcbb751032f002f16d7d23d0648371956e82110d9e3cf8d609bd17",
+    "adminAfterSha256": [
+      "aca2ed26d682406f5527fece1ddce52c633dc9522e27c0e3fd8fa7da13b5f240",
+      "3fb715e50268e20e3373fdeb84ae7eff983737490b91fa8d09f6354440be3929",
+      "f703e1d82dae30b8f971bd42dcbefa673e485e281d42b1a9e741836e287d20d7",
+      "2a61ee129a42372a55507088e5b38559b085b7b6c21d5d9ce6b74c79495eabf4"
+    ],
+    "publicReadbackSha256": [
+      "bc015d9bbfbf1cf31938285f7bc2a71ca36534cec0060b7d45ff529a7e57e519",
+      "e761182498ce29b2bcdb2d8281acdfb8e5c74c7c3ce5ae516630c29b13411544",
+      "79d9874a747c8ada8e3d8f935520b5ed612bcb796854c98cc3852e1249cacb77",
+      "e8ea3bbb9f884eb79e68eecce98665d6483fa25c7330fcf10c63bc56896722d9"
+    ]
+  },
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "verifiedEarlierSameRun": true,
+      "noWrites": true
+    }
+  },
+  "execution": {
+    "sequence": [
+      "gid://shopify/Product/15448963645825",
+      "gid://shopify/Product/15454472012161",
+      "gid://shopify/Product/15465835233665",
+      "gid://shopify/Product/15476180451713"
+    ],
+    "writeCount": 4,
+    "allWritesSerial": true,
+    "mutationAttempts": 4,
+    "mutationRetries": 0,
+    "allAdminReadbacksVerified": true,
+    "allPublicReadbacksHttp200": true
+  },
+  "products": [
+    {
+      "sequence": 1,
+      "productId": "gid://shopify/Product/15448963645825",
+      "handle": "manueller-eisraspler-fur-zuhause-621600",
+      "publicUrl": "https://luxestyle.ch/products/manueller-eisraspler-fur-zuhause-621600",
+      "titleBefore": "Manueller Eisraspler für Zuhause",
+      "titleAfter": "Manueller Eisraspler mit Handkurbel",
+      "fieldsChanged": [
+        "title",
+        "descriptionHtml",
+        "productType",
+        "tags",
+        "seo"
+      ],
+      "productTypeBefore": "Aufbewahrung & Organizer",
+      "productTypeAfter": "Küche & Bar",
+      "categoryPreserved": {
+        "id": "gid://shopify/TaxonomyCategory/hg-11-7-27",
+        "name": "Eis-Crusher & Eis-Shaver",
+        "fullName": "Heim & Garten > Küche & Esszimmer > Küchengeräte > Eis-Crusher & Eis-Shaver"
+      },
+      "statusAfter": "ACTIVE",
+      "updatedAtAfter": "2026-11-04T20:04:45Z",
+      "priceChf": "15.90",
+      "variantCount": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55878385926529",
+          "title": "Default Title",
+          "sku": "CJ-2606230932431621600",
+          "priceChf": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "barcodes": [],
+          "mediaBindings": []
+        }
+      ],
+      "mediaCount": 6,
+      "publicationCount": 8,
+      "removedTags": [
+        "aufbewahrung",
+        "organizer",
+        "sort-mixer-entsafter-zerkleinerer"
+      ],
+      "removedClaims": [
+        "500 ml",
+        "PP und PS",
+        "lebensmittelecht",
+        "13 × 12.5 × 26 cm",
+        "gewerbliche Eignung",
+        "Lieferung 10–20 Werktage",
+        "ungeprüfter Rabattcode"
+      ],
+      "tagsAfter": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "rueckhol-0907",
+        "sort-kuechengeraete",
+        "wohnen"
+      ],
+      "preservedBlockingTags": [
+        "rueckhol-0907"
+      ],
+      "mutationAttempts": 1,
+      "mutationRetries": 0,
+      "userErrors": [],
+      "adminReadback": {
+        "verified": true,
+        "strictErrors": [],
+        "semanticWhitespaceOnly": false,
+        "protectedHash": "e027d47c682c48bf412b3fc0f0b129fe36f5288f18f3c3f12579660d9749e830",
+        "protectedHashMatchesBefore": true
+      },
+      "publicReadback": {
+        "verified": true,
+        "httpHtml": 200,
+        "httpJson": 200,
+        "path": "/workspace/luxestyle-review/r86-catalog/R86-AFTER-PUBLIC-1.json",
+        "sha256": "bc015d9bbfbf1cf31938285f7bc2a71ca36534cec0060b7d45ff529a7e57e519"
+      }
+    },
+    {
+      "sequence": 2,
+      "productId": "gid://shopify/Product/15454472012161",
+      "handle": "wandlampe-mit-spiegel-finish-634100",
+      "publicUrl": "https://luxestyle.ch/products/wandlampe-mit-spiegel-finish-634100",
+      "titleBefore": "Wandlampe mit Spiegel-Finish",
+      "titleAfter": "Runde Wandlampe mit glänzender Halterung",
+      "fieldsChanged": [
+        "title",
+        "descriptionHtml",
+        "productType",
+        "tags",
+        "seo"
+      ],
+      "productTypeBefore": "Aufbewahrung & Organizer",
+      "productTypeAfter": "Beleuchtung",
+      "categoryPreserved": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-9-4",
+        "name": "Wandleuchten, Wandbeleuchtung",
+        "fullName": "Heim & Garten > Beleuchtung > Leuchten > Wandleuchten, Wandbeleuchtung"
+      },
+      "statusAfter": "ACTIVE",
+      "updatedAtAfter": "2026-11-04T20:09:18Z",
+      "priceChf": "47.90",
+      "variantCount": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55910476579201",
+          "title": "Default Title",
+          "sku": "CJ-2607130902071634100",
+          "priceChf": "47.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "barcodes": [],
+          "mediaBindings": []
+        }
+      ],
+      "mediaCount": 13,
+      "publicationCount": 8,
+      "removedTags": [
+        "aufbewahrung",
+        "organizer"
+      ],
+      "removedClaims": [
+        "einfache Installation",
+        "Betriebsspannung ≤36 V",
+        "Lieferung 10–20 Werktage",
+        "ungeprüfter Rabattcode"
+      ],
+      "tagsAfter": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenkidee",
+        "geschenkideen",
+        "geschenkwelt-sie",
+        "haushalt",
+        "lampe",
+        "rueckhol-0907",
+        "sort-wandleuchten",
+        "wohnen"
+      ],
+      "preservedBlockingTags": [
+        "rueckhol-0907"
+      ],
+      "mutationAttempts": 1,
+      "mutationRetries": 0,
+      "userErrors": [],
+      "adminReadback": {
+        "verified": true,
+        "strictErrors": [],
+        "semanticWhitespaceOnly": false,
+        "protectedHash": "4f41fa46371b6cef7fc895ab74439d05a3d918dcd465bd906834751f42377715",
+        "protectedHashMatchesBefore": true
+      },
+      "publicReadback": {
+        "verified": true,
+        "httpHtml": 200,
+        "httpJson": 200,
+        "path": "/workspace/luxestyle-review/r86-catalog/R86-AFTER-PUBLIC-2.json",
+        "sha256": "e761182498ce29b2bcdb2d8281acdfb8e5c74c7c3ce5ae516630c29b13411544"
+      }
+    },
+    {
+      "sequence": 3,
+      "productId": "gid://shopify/Product/15465835233665",
+      "handle": "meerjungfrauen-wandlampe-deko-612700",
+      "publicUrl": "https://luxestyle.ch/products/meerjungfrauen-wandlampe-deko-612700",
+      "titleBefore": "Meerjungfrauen Wandlampe & Deko",
+      "titleAfter": "Meerjungfrauen-Wandlampe mit Muschelmotiv",
+      "fieldsChanged": [
+        "title",
+        "descriptionHtml",
+        "productType",
+        "tags",
+        "seo"
+      ],
+      "productTypeBefore": "Aufbewahrung & Organizer",
+      "productTypeAfter": "Beleuchtung",
+      "categoryPreserved": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-9-4",
+        "name": "Wandleuchten, Wandbeleuchtung",
+        "fullName": "Heim & Garten > Beleuchtung > Leuchten > Wandleuchten, Wandbeleuchtung"
+      },
+      "statusAfter": "ACTIVE",
+      "updatedAtAfter": "2026-11-04T20:12:29Z",
+      "priceChf": "19.90",
+      "variantCount": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55951255273857",
+          "title": "Default Title",
+          "sku": "CJ-2607201153331612700",
+          "priceChf": "19.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "barcodes": [],
+          "mediaBindings": []
+        }
+      ],
+      "mediaCount": 6,
+      "publicationCount": 7,
+      "removedTags": [
+        "aufbewahrung",
+        "organizer"
+      ],
+      "removedClaims": [
+        "Kunstharz",
+        "langlebig",
+        "Geschenkeignung",
+        "Lieferung 10–20 Werktage",
+        "ungeprüfter Rabattcode"
+      ],
+      "tagsAfter": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kat-deko",
+        "lampe",
+        "rueckhol-0907",
+        "sort-wandleuchten",
+        "wohnen"
+      ],
+      "preservedBlockingTags": [
+        "rueckhol-0907"
+      ],
+      "mutationAttempts": 1,
+      "mutationRetries": 0,
+      "userErrors": [],
+      "adminReadback": {
+        "verified": true,
+        "strictErrors": [],
+        "semanticWhitespaceOnly": false,
+        "protectedHash": "55187a762adf7f4b25ebd3a47b0d0f7cacb0ab333aa8299baa16b02b6555751e",
+        "protectedHashMatchesBefore": true
+      },
+      "publicReadback": {
+        "verified": true,
+        "httpHtml": 200,
+        "httpJson": 200,
+        "path": "/workspace/luxestyle-review/r86-catalog/R86-AFTER-PUBLIC-3.json",
+        "sha256": "79d9874a747c8ada8e3d8f935520b5ed612bcb796854c98cc3852e1249cacb77"
+      }
+    },
+    {
+      "sequence": 4,
+      "productId": "gid://shopify/Product/15476180451713",
+      "handle": "bewegungssensor-wandleuchte-im-laternen-stil-618900",
+      "publicUrl": "https://luxestyle.ch/products/bewegungssensor-wandleuchte-im-laternen-stil-618900",
+      "titleBefore": "Bewegungssensor Wandleuchte im Laternen-Stil",
+      "titleAfter": "Wandleuchte im Laternen-Stil, Warm- oder Weisslicht",
+      "fieldsChanged": [
+        "title",
+        "descriptionHtml",
+        "productType",
+        "tags",
+        "seo"
+      ],
+      "productTypeBefore": "Aufbewahrung & Organizer",
+      "productTypeAfter": "Beleuchtung",
+      "categoryPreserved": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-9-4",
+        "name": "Wandleuchten, Wandbeleuchtung",
+        "fullName": "Heim & Garten > Beleuchtung > Leuchten > Wandleuchten, Wandbeleuchtung"
+      },
+      "statusAfter": "ACTIVE",
+      "updatedAtAfter": "2026-11-04T20:15:49Z",
+      "priceChf": "15.90",
+      "variantCount": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/67842211840391",
+          "title": "Warmlicht",
+          "sku": "CJYD301176502BY",
+          "priceChf": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "barcodes": [],
+          "mediaBindings": [
+            {
+              "id": "gid://shopify/MediaImage/70303901778305",
+              "mediaContentType": "IMAGE"
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67842211873159",
+          "title": "Weißlicht",
+          "sku": "CJYD301176503CX",
+          "priceChf": "15.90",
+          "compareAtPrice": null,
+          "availableForSale": true,
+          "inventoryPolicy": "CONTINUE",
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "barcodes": [],
+          "mediaBindings": [
+            {
+              "id": "gid://shopify/MediaImage/70303901811073",
+              "mediaContentType": "IMAGE"
+            }
+          ]
+        }
+      ],
+      "mediaCount": 5,
+      "publicationCount": 7,
+      "removedTags": [
+        "aufbewahrung",
+        "organizer"
+      ],
+      "removedClaims": [
+        "Bewegungssensor",
+        "22 W",
+        "PVC",
+        "IP65",
+        "111–240 V",
+        "23.5 cm",
+        "Aussenbereich",
+        "Lieferung 10–20 Werktage",
+        "ungeprüfter Rabattcode"
+      ],
+      "tagsAfter": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "leuchte",
+        "rueckhol-0907",
+        "sort-wandleuchten",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "preservedBlockingTags": [
+        "rueckhol-0907"
+      ],
+      "mutationAttempts": 1,
+      "mutationRetries": 0,
+      "userErrors": [],
+      "adminReadback": {
+        "verified": true,
+        "strictErrors": [
+          "target_mismatch"
+        ],
+        "semanticWhitespaceOnly": true,
+        "protectedHash": "d2a7f85fc0d1bf9bc6c3e50375e64f2a7e202525efd8a0a0c707a1ed4c5f0439",
+        "protectedHashMatchesBefore": true
+      },
+      "publicReadback": {
+        "verified": true,
+        "httpHtml": 200,
+        "httpJson": 200,
+        "path": "/workspace/luxestyle-review/r86-catalog/R86-AFTER-PUBLIC-4.json",
+        "sha256": "e8ea3bbb9f884eb79e68eecce98665d6483fa25c7330fcf10c63bc56896722d9"
+      },
+      "descriptionHtmlVerification": {
+        "strictResult": "target_mismatch",
+        "cause": "Shopify canonicalized only whitespace between HTML list tags",
+        "semanticExact": true,
+        "canonicalTargetHash": "492a9488b828134acf4618164c104baeaca4f14e6b6a478453c0dfa381bf971e",
+        "canonicalAfterHash": "492a9488b828134acf4618164c104baeaca4f14e6b6a478453c0dfa381bf971e",
+        "retryPerformed": false
+      }
+    }
+  ],
+  "protectedFields": {
+    "exactAcrossAllFour": [
+      "ACTIVE status",
+      "handle",
+      "vendor",
+      "official Shopify category ID",
+      "publication states",
+      "variant IDs",
+      "SKUs",
+      "prices",
+      "compare-at prices",
+      "availableForSale",
+      "inventoryPolicy",
+      "inventory tracking",
+      "options",
+      "media IDs/order/bindings",
+      "rueckhol-0907",
+      "barcodes"
+    ],
+    "protectedHashesMatchBefore": true,
+    "allImmediatePreReadsComplete": true,
+    "allMutationUserErrorsEmpty": true
+  },
+  "remainingFindings": {
+    "theme": "Die globale Theme-Lieferzeile und WELCOME10 bleiben getrennte Restbefunde; in R86 gab es keinen Theme-Write.",
+    "historicalHandles": [
+      "wandlampe-mit-spiegel-finish-634100",
+      "meerjungfrauen-wandlampe-deko-612700",
+      "bewegungssensor-wandleuchte-im-laternen-stil-618900"
+    ],
+    "historicalMediaAltTexts": [
+      "Wandlampe mit Spiegel-Finish",
+      "Meerjungfrauen Wandlampe & Deko",
+      "Bewegungssensor Wandleuchte im Laternen-Stil"
+    ],
+    "catalog": "Kein Gesamtkatalogabschluss; weitere Produkte und ungeklärte Angaben bleiben offen."
+  },
+  "socialBlock": {
+    "tag": "rueckhol-0907",
+    "presentOnAllFour": true,
+    "socialWrites": 0
+  },
+  "excludedActions": [
+    "Social-/Metricool-Aktion",
+    "Merchant-/Feed-Aktion",
+    "Theme-Aktion",
+    "Klaviyo-/Flow-Aktion",
+    "Rabatt-/Budget-/Versand-Einstellungsaktion",
+    "Kundenkontakt",
+    "Kauf-Watch-Abfrage",
+    "kostenpflichtiger Render"
+  ],
+  "wholeCatalogFixed": false
+}

@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R85_20261104",
+  "dateZurich": "2026-11-04",
+  "timezone": "Europe/Zurich",
+  "scope": "single_live_catalog_write_then_guard_stop",
+  "sourceEvidence": {
+    "consolidated": {
+      "path": "/workspace/luxestyle-review/r85-catalog/RUN-RESULTS-R85-R86.json",
+      "sha256": "8e5a2efbdc2b83865b49d67342c4d3865875eea184ec8b52a95e1fb3b6097e7c"
+    },
+    "adminAfter": {
+      "path": "/workspace/luxestyle-review/r85-catalog/after-1.json",
+      "sha256": "936676813d3487e3e7eafebd094029635686aa13935f384e619c7eaf3f369e96"
+    },
+    "adminVerification": {
+      "path": "/workspace/luxestyle-review/r85-catalog/after-1.verify.json",
+      "sha256": "2694605d243d36459f90b29679452b63d9374d03a197aee40eebbe91bc9bd43d"
+    },
+    "publicReadback": {
+      "path": "/workspace/luxestyle-review/r85-catalog/AFTER-PUBLIC-1.json",
+      "sha256": "b474330abbd1dc21d94f5ccbd045ce8b21262419a256dc82a5c68896eab87c35"
+    }
+  },
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "verifiedEarlierSameRun": true,
+      "noWrites": true
+    }
+  },
+  "execution": {
+    "writeCount": 1,
+    "mutationAttempts": 1,
+    "mutationRetries": 0,
+    "allWritesSerial": true,
+    "stopped": true,
+    "stoppedAfterSequence": 1,
+    "stopReason": "Barcode fehlte in der Admin-Vorherbasis; deshalb wurde nach dem ersten Write kein weiterer R85-Write gesendet."
+  },
+  "write": {
+    "sequence": 1,
+    "productId": "gid://shopify/Product/15495105184129",
+    "variantId": "gid://shopify/ProductVariant/56086713336193",
+    "handle": "manuelle-nudelmaschine-160-3mm-619100",
+    "publicUrl": "https://luxestyle.ch/products/manuelle-nudelmaschine-160-3mm-619100",
+    "titleBefore": "Manuelle Nudelmaschine 160 (3mm)",
+    "titleAfter": "Manuelle Nudelmaschine mit Handkurbel",
+    "fieldsChanged": [
+      "title",
+      "descriptionHtml",
+      "productType",
+      "tags",
+      "seo"
+    ],
+    "productTypeBefore": "Aufbewahrung & Organizer",
+    "productTypeAfter": "Küche & Bar",
+    "categoryPreserved": {
+      "id": "gid://shopify/TaxonomyCategory/hg-11-7-36",
+      "name": "Nudelmaschinen",
+      "fullName": "Heim & Garten > Küche & Esszimmer > Küchengeräte > Nudelmaschinen"
+    },
+    "statusAfter": "ACTIVE",
+    "updatedAtAfter": "2026-11-04T19:59:12Z",
+    "priceChf": "120.90",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/56086713336193",
+        "title": "Default Title",
+        "sku": "CJ-2604130915211619100",
+        "priceChf": "120.90",
+        "compareAtPrice": null,
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "barcodeBefore": "unknown_field_absent",
+        "barcodesAfter": []
+      }
+    ],
+    "mediaCount": 6,
+    "publicationCount": 8,
+    "removedTags": [
+      "aufbewahrung",
+      "organizer"
+    ],
+    "removedClaims": [
+      "rostfreier Stahl",
+      "Modell 160",
+      "3-mm-Flachschneider",
+      "Lieferumfang",
+      "Lieferung 10–20 Werktage",
+      "ungeprüfter Rabattcode"
+    ],
+    "tagsAfter": [
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "haushalt",
+      "neuheit",
+      "rueckhol-0907",
+      "sort-kuechengeraete",
+      "sort-nudel-eis-snackmaschinen",
+      "wohnen"
+    ],
+    "preservedBlockingTags": [
+      "rueckhol-0907"
+    ],
+    "userErrors": [],
+    "adminReadback": {
+      "verified": true,
+      "protectedFieldsExceptBarcodeExact": true,
+      "barcodeBefore": "unknown_field_absent",
+      "barcodesAfter": [
+        []
+      ],
+      "caveats": [
+        "barcode_before_unknown_field_absent"
+      ]
+    },
+    "publicReadback": {
+      "verified": true,
+      "httpHtml": 200,
+      "httpJson": 200,
+      "path": "/workspace/luxestyle-review/r85-catalog/AFTER-PUBLIC-1.json",
+      "sha256": "b474330abbd1dc21d94f5ccbd045ce8b21262419a256dc82a5c68896eab87c35"
+    }
+  },
+  "protectedFields": {
+    "exactExceptBarcode": [
+      "ACTIVE status",
+      "handle",
+      "vendor",
+      "official Shopify category ID",
+      "publication states",
+      "variant IDs",
+      "SKUs",
+      "prices",
+      "compare-at prices",
+      "availableForSale",
+      "inventoryPolicy",
+      "inventory tracking",
+      "options",
+      "media IDs/order/bindings",
+      "rueckhol-0907"
+    ],
+    "barcodeQualification": "Vorher unbekannt, weil das Feld in der Vorherbasis fehlte; nachher leere Barcode-Verbindung. Kein Gleichheits- oder Nullschluss.",
+    "mutationRetryPerformed": false
+  },
+  "remainingFindings": {
+    "theme": "Die globale Theme-Lieferzeile und WELCOME10 bleiben getrennte Restbefunde; in R85 gab es keinen Theme-Write.",
+    "historicalHandleAndMediaAlt": "Der historische Handle enthält weiterhin 160-3mm; alte Medien-Alttexte mit 3mm wurden nicht geändert.",
+    "catalog": "Kein Gesamtkatalogabschluss; weitere Produkte bleiben offen."
+  },
+  "excludedActions": [
+    "Social-/Metricool-Aktion",
+    "Merchant-/Feed-Aktion",
+    "Theme-Aktion",
+    "Klaviyo-/Flow-Aktion",
+    "Rabatt-/Budget-/Versand-Einstellungsaktion",
+    "Kundenkontakt",
+    "Kauf-Watch-Abfrage",
+    "kostenpflichtiger Render"
+  ],
+  "wholeCatalogFixed": false
+}

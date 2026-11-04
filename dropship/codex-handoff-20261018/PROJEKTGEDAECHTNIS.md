@@ -1,5 +1,19 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 04.11.2026, Revision 86: vier weitere kontrollierte Katalogkorrekturen
+
+[R86-Live-Bericht](PRODUKTKATALOG-LIVE-20261104-R86.md) · [R86-Belege](PRODUKTKATALOG-LIVE-20261104-R86.json). Shopify LuxeStyle / `luxestyle.ch` / CHF wurde unmittelbar vor dem Stapel erneut passend gelesen; die zuvor im selben Lauf bestätigte Metricool-Identität blieb unverändert und es gab dort keinen Write. R86 korrigierte exakt vier ACTIVE-Produkte seriell mit je einem Mutationsversuch, ohne `userErrors` und ohne Retry. Nach jedem Write bestätigten vollständige Admin-Readbacks sowie Storefront-HTML und Produkt-JSON mit HTTP 200 den Zielzustand.
+
+Eisraspler 15448963645825 erhielt den Produkttyp «Küche & Bar», einen bildgestützten neutralen Titel/Text und verlor drei fachfremde Tags. Runde Wandlampe 15454472012161, Meerjungfrauen-Wandlampe 15465835233665 und Laternenleuchte 15476180451713 erhielten den Produkttyp «Beleuchtung», neutrale sichtbare Beschreibungen und verloren jeweils `aufbewahrung` und `organizer`. Unbelegte Material-, Mass-, Elektro-, Sensor-, Schutzart-, Lieferzeit- und Rabattclaims wurden aus Produkttext und SEO entfernt. Bei der Laternenleuchte bestätigte eine semantische Gegenprobe, dass Shopify nur HTML-Zeilenumbrüche normalisiert hatte; korrekt kein Retry.
+
+Status, Handles, Vendor, Kategorien, Publikationen, Varianten-IDs, SKUs, CHF-Preise, Kaufbarkeit, `CONTINUE`, Tracking, Barcodes, Optionen und Medienbindungen blieben exakt erhalten. `rueckhol-0907` blieb auf allen vier Produkten und blockiert neue Social-Ausspielung. Historische Handles und teilweise alte Medien-Alttexte bleiben getrennte Restbefunde; die globale Theme-Lieferzeile und `WELCOME10` wurden nicht geändert. Der Gesamtkatalog ist nicht fertig. Weitere Produkte nur in einem neuen kleinen Stapel mit vollständiger Vorherbasis einschliesslich Barcode, seriellen Einzelwrites und unmittelbarer Admin-/Storefront-Gegenprobe bearbeiten. Tageskennzahlen, Klaviyo und Kauf-Watch wurden nicht wiederholt; kein Social-, Merchant-/Feed-, Theme-, Flow-, DNS-, Budget-, Rabatt-, Versand- oder Shop-Einstellungswrite.
+
+## Aktueller Stand – 04.11.2026, Revision 85: Einzelwrite mit Sicherheitsstopp
+
+[R85-Live-Bericht](PRODUKTKATALOG-LIVE-20261104-R85.md) · [R85-Belege](PRODUKTKATALOG-LIVE-20261104-R85.json). R85 korrigierte exakt die ACTIVE-Nudelmaschine 15495105184129: neutraler bildgestützter Titel/Text, Produkttyp «Küche & Bar», bereinigtes SEO sowie Entfernung von `aufbewahrung` und `organizer`. Unbelegte Stahl-, Modell-, 3-mm-, Lieferumfang-, Lieferzeit- und Rabattclaims wurden entfernt. Ein Mutationsversuch, keine `userErrors`, kein Retry; Admin und öffentliche Storefront wurden mit HTTP 200 zurückgelesen.
+
+Die Admin-Vorherbasis enthielt das Barcode-Feld nicht. Der Barcode-Zustand vor dem Write bleibt deshalb unbekannt; die leere Nachher-Verbindung wird nicht als unverändert ausgegeben. Der Guard stoppte R85 nach diesem ersten Produkt, und es wurde kein zweiter R85-Write gesendet. Status, Handle, Kategorie, Publikationen, Variante, SKU, CHF 120.90, Kaufbarkeit, `CONTINUE`, Tracking, Optionen, Medien und `rueckhol-0907` blieben erhalten. Historischer Handle/Alttexte, globale Theme-Hinweise und quellenlose Spezifikationen blieben unangetastet.
+
 ## Aktueller Stand – 04.11.2026, Revision 84: zweiter kontrollierter Katalogstapel
 
 [Live-Bericht](PRODUKTKATALOG-LIVE-20261104-R84.md) · [Maschinenlesbare Belege](PRODUKTKATALOG-LIVE-20261104-R84.json). Shopify LuxeStyle / `luxestyle.ch` / CHF und Metricool Brand `6227837` / `Europe/Zurich` samt sechs Kanalidentitäten wurden frisch passend gelesen. R84 änderte genau fünf Produkte seriell und las nach jedem Write Admin und öffentliche Seite vollständig zurück. Alle öffentlichen Gegenproben lieferten HTTP 200; keine Mutation meldete `userErrors`.
