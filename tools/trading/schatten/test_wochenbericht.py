@@ -71,4 +71,50 @@ with tempfile.TemporaryDirectory() as d:
     f = Path(d) / "b.md"
     W.schreiben(lb, f, sb=sb)
     ok("Satelliten-Experiment" in f.read_text(encoding="utf-8"), "schreiben: der Zusatz landet in der Berichtsdatei")
+# 9. Scalping-Labor (Papier) im Bericht
+from datetime import datetime, timezone
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "krypto_bot"))
+import scalping_kern as K
+import scalping_labor as SL
+T0 = int(datetime(2026, 11, 2, tzinfo=timezone.utc).timestamp() * 1000)
+def labor(trades_btc, trades_eth, tage=1.0, kosten_null=False):
+    buch = SL.neues_buch(T0 + int(tage * 86_400_000))
+    buch["daten_ab"] = T0
+    buch["start"] = "2026-11-03T00:00:00+00:00"
+    for sym, k, trades in (("BTCUSDT", 2.0, trades_btc), ("ETHUSDT", 3.5, trades_eth)):
+        m = {"weiter_ab": T0 + int(tage * 86_400_000) + 60_000, "letzte_kerze": T0 + int(tage * 86_400_000), "luecken": 0, "buecher": {str(kk): SL.neues_band_buch(kk) for kk in SL.STUFEN}}
+        kosten = {"M": 0.0, "T": 0.0, "slip": 0.0} if kosten_null else SL.kosten_von(sym)
+        for tr in trades:
+            SL.buche(m["buecher"][str(k)], tr, kosten, 0)
+        buch["maerkte"][sym] = m
+    return buch
+def handel(i, ein, aus, art="M", s=1):
+    return (T0 + i * 60_000, T0 + i * 60_000 + 60_000, s, ein, aus, "M", art)
+gewinn, verlust = (100.0, 100.1), (100.0, 99.8)
+lab0 = labor([handel(0, *gewinn), handel(1, *gewinn), handel(2, *gewinn), handel(3, *verlust)], [handel(0, *gewinn), handel(1, *gewinn)], kosten_null=True)
+la = W.labor_abschnitt(lab0)
+lt = "\n".join(la)
+ok(la and "### Scalping-Labor (Papier, echte Kurse, mit Gebühren), 1,0 Tage seit 2026-11-02" in lt, "Labor: Überschrift mit Tagen und Beginn der Daten (nicht dem Startdatum des Buchs)")
+ok("| BTC | 2,0 | 4 | 75 % | +2,5 bp | +2,5 bp | −9,6 bp | +0,1 % |" in lt, "Labor: BTC-Zeile mit exakten Zahlen und der Erwartung des Prüfstands")
+ok("| ETH | 3,5 | 2 | 100 % | +10,0 bp | +10,0 bp | −7,5 bp | +0,2 % |" in lt, "Labor: ETH-Zeile mit der Erwartung der eigenen Stufe")
+ok(lt.count("\n| BTC |") + lt.count("\n| ETH |") == 2, "Labor: Bücher ohne Handel haben keine Zeile")
+ok("Urteil (vorab festgelegt): zu wenig Daten" in lt and "Papier, kein Geld im Spiel" in lt and "alle sieben Scalping-Verfahren" in lt, "Labor: Urteil und ehrlicher Hinweis stehen drin")
+ok(W.labor_abschnitt(None) == [] and W.labor_abschnitt({}) == [] and W.labor_abschnitt({"maerkte": {}}) == [] and W.labor_abschnitt(labor([], [])) == [], "Labor: ohne Buch oder ohne Handel kein Abschnitt")
+ok(W.labor_abschnitt({"maerkte": {"BTCUSDT": "kaputt"}}) == [] and W.labor_abschnitt({"maerkte": {"BTCUSDT": {"buecher": 5}}}) == [], "Labor: ein kaputtes Buch verhindert den Bericht nicht (leerer Abschnitt statt Absturz)")
+# Kosten je Trade: gewichtetes Mittel über alle Handel mit den echten Kosten, mit dem Prüfstand (K) gegengerechnet
+tr_b = [handel(0, *gewinn), handel(1, *gewinn), handel(2, *verlust), handel(3, 100.0, 100.3, "T")]
+tr_e = [handel(0, *gewinn, art="T"), handel(1, *verlust)]
+lab1 = labor(tr_b, tr_e)
+erwartet = sum(1e4 * (K.brutto(x) - K.netto(x, SL.kosten_von("BTCUSDT"))) for x in tr_b) + sum(1e4 * (K.brutto(x) - K.netto(x, SL.kosten_von("ETHUSDT"))) for x in tr_e)
+erwartet /= len(tr_b) + len(tr_e)
+ok(f"im Mittel {SL._de(erwartet)} bp" in "\n".join(W.labor_abschnitt(lab1)), f"Labor: Kosten je Trade = gewichtetes Mittel über alle Handel ({SL._de(erwartet)} bp)")
+# Einhängen: nach dem Satelliten, nur mit Buch; alte Aufrufe unverändert
+mit_alles = W.abschnitt(lb, sb, lab0)[1]
+ok("Scalping-Labor" in mit_alles and mit_alles.index("Satelliten-Experiment") < mit_alles.index("Scalping-Labor"), "abschnitt: das Labor steht nach dem Satelliten")
+ok("Scalping-Labor" not in W.abschnitt(lb)[1] and "Scalping-Labor" not in W.abschnitt(lb, sb)[1], "abschnitt: ohne Labor-Buch kein Zusatz (alte Aufrufe unverändert)")
+with tempfile.TemporaryDirectory() as d:
+    f = Path(d) / "b.md"
+    W.schreiben(lb, f, sb=sb, lab=lab0)
+    ok("Scalping-Labor (Papier" in f.read_text(encoding="utf-8"), "schreiben: das Labor landet in der Berichtsdatei")
+ok(W.LABOR.name == "krypto-scalping-labor.json" and W.LABOR.parent.name == "data", "Pfad: das Buch, das der Cloud-Job und der PC schreiben")
 print(f"\n{ok_n} bestanden, {fail} fehlgeschlagen"); sys.exit(1 if fail else 0)
