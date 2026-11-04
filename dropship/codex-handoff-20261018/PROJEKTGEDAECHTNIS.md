@@ -1,5 +1,18 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 04.11.2026, Revision 79: geprüfter Preisfilterentwurf und präzisierter Master
+
+**Prüf- und Freigabepaket: Der Preisfilterpatch ist lokal vorbereitet und nicht im Theme gespeichert. Es gibt keinen neuen professionellen Masterfilm.** [Mittagspaket](MITTAGSPAKET-20261104-R79.md) · [Nachweise](LAUFBELEGE-20261104-R79.json).
+
+Konkrete Verkaufsaktion zur Freigabe: genau fünf Zeilen in `snippets/product-grid.liquid` ergänzen, damit aktive Mindest-/Höchstpreisgrenzen den zusätzlichen SEO-Pager unterdrücken. MAIN und unveröffentlichter Entwurf wurden frisch mit identischer Ausgangsdatei gelesen. Eine öffentliche Beauty-Gegenprobe bestätigt weiterhin 15 Zusatzlinks ohne den gesetzten Höchstpreis. Beide Liquid-Validatorstände und Vorwärts-/Rückwärtspatch sind erfolgreich; Shopify-Render und Browserprüfung des geänderten Codes sind noch offen. Normale Pagination, Nachladen, Banner, Produkte und Preise bleiben im Patch erhalten.
+
+Derselbe 18-Sekunden-Projektor-Master behält seine masterId und 540 Frames. Aktuell CHF 34.90, ACTIVE, öffentliche Kaufbarkeit und Tags bestätigt; CONTINUE/tracked=false ist keine Lager- oder Lieferzusage. Neu vermessen: 52-px-Prüfschrift, maximal 614 px Text in 780 px Breite, mindestens 1,6 Sekunden volle Deckkraft, Vollfarbenpaar 11,818:1. Das prüft den Textplan, nicht reale Filmlesbarkeit oder offizielle Plattform-Safe-Areas. Default-/Motiv-/Einheitsbindung, geeignete Originaltakes, Film-/Musikrechte und historische WAV-Buildbindung bleiben offen; Musikdatei unverändert und hashgleich. YouTube-Grundzielgruppe ist geklärt, konkretes Postflag sowie Bio-/Board-/Ledgernachweise bleiben vor einer Publikation zu prüfen.
+
+Frische Planung: 32 Objekte und 49 PENDING-Kanalzustände; 30 gemeinsame UUIDs unverändert. Unterschiedliche Fensterkanten sind keine neuen eigenen Posts. Der bestehende Threads-Termin heute 18:30 Zürich stimmt in 13 Prüfbedingungen mit Register und tatsächlichem Bildhash überein und bleibt erhalten. Keine eigene Publikation, Terminänderung oder neue Kreativserie.
+
+Heutige R77-Kennzahlen und Klaviyo-Belege werden datiert wiederverwendet, nicht erneut abgefragt. Alle drei Flowstatus waren um 08:10:41 Zürich draft; derselbe einzige Email3-Textentwurf bleibt unangewendet. CHF/USD getrennt, keine Umsatz-/Syncableitung. Die vier DNS-Ergänzungen bleiben bereits genehmigt; authentifizierter Writer unbestätigt. Nur zwei Aufgaben werden fortgeschrieben; alle 23 IDs, übrige 21 Aufgaben, Historien, Tagespolicy und beendeter Kauf-Watch bleiben erhalten. Keine Shop-/Flow-/DNS-/Budget-/Rabatt-/Socialwrites oder neue Automation. Claude-Empfang unbekannt.
+
+
 ## Aktueller Stand – 04.11.2026, Revision 78: zwei neue Produktmotive und konkrete Teilbefunde
 
 Auf «weiter mit andere produkten» zwei andere aktuell geprüfte Shopartikel gestaltet: schwarzer Mini-Schirm und Panda-Handyhalter. Zwei echte PNGs mit je 1536 × 1024 px, ausdrücklich variantenbezogene Referenzen und abgeschlossene unabhängige Sichtprüfung. **Referenzbasierte Bildentwürfe, keine Originalproduktaufnahmen und nicht live.** [Bilder und Bericht](WEITERARBEIT-20261104-R78.md) · [Quellen, Hashes und QA](WEITERARBEIT-BELEGE-20261104-R78.json).
