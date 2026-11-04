@@ -1,5 +1,16 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 76: neue Bilder gezielt im Entwurf eingebunden
+
+Auf «weiter?» die drei vorhandenen R75-Motive als kleine Zusatzkarten eingebunden: Gewürztopf bei **Vorratsdosen**, Kochset bei **Camping-Geschirr** und Hundematte in der **Hundewelt**. Aktuelle Produkt-/Varianten- und Kategoriezuordnung nativ geprüft; die engere Schnüffelspielzeug-Kategorie enthält die Hundematte aktuell nicht und wurde dafür nicht verwendet. [Umfang und Vorschau](BILDINTEGRATION-20261104-R76.md) · [Belege](BILDINTEGRATION-20261104-R76.json) · [Enger Ergänzungs-Diff](BILDINTEGRATION-20261104-R76.patch) · [Übergabepaket](BILDINTEGRATION-20261104-R76.zip).
+
+Drei Dateien in Shopify Files hochgeladen, alle READY und nach Neukodierung pixelgleich zum R75-Arbeitsstand. Fünf Theme-Dateien im **UNPUBLISHED-Entwurf 212978598279** gespeichert und exakt zurückgelesen. Bestehende Banner, acht Kategorieabschnitte und Reihenfolge erhalten; Startseite/index.json sowie Produktfotos unverändert. Die neuen Texte sind DE/EN/FR vollständig; 466 vorhandene französische Validatorfehler bleiben als Altbefund bestehen.
+
+**Begrenzte Browserprüfung:** 242/242 Prüfungen bestanden in 12/12 Ansichten; 0 fehlgeschlagen, 0 unbekannt. Details und tatsächliche Ansichten stehen im Belegpaket. Dies ist keine vollständige Prüfung aller Kategorien und keine kreative, SKU-/Farb- oder Rechtefreigabe. **Keine Live-Publikation.** Vor Übernahme nur den engen Diff frisch gegen MAIN prüfen; niemals den gesamten älteren Entwurf veröffentlichen. Native MAIN-Writes/Theme-Publikation sind gesperrt, keine Umgehung. Claude-Empfang weiterhin unbekannt.
+
+Keine neuen Produkte, Bilder oder Videos erzeugt; keine neuen Kennzahlen-/Flowreports, Kauf-Watch oder Automation. R74/R72/R73 und alle 23 Aufgaben-IDs bleiben erhalten; 22 andere Aufgaben unverändert.
+
+
 ## Aktueller Stand – 04.11.2026, Revision 75: neue Motive mit anderen Shop-Produkten
 
 Neuester Auftrag: «nimm neue produkte und mache mehr tolle bilder». Drei neue Lifestyle-Entwürfe tatsächlich gerendert: einzelner grüner Gewürztopf vor Terrakotta, dreiteiliges Camping-Kochset am See und bunte Hundematte im hellen Wohnraum. [Bilder ansehen](PRODUKTBILDER-20261104-R75.md) · [Quellen und Hashes](PRODUKTBILDER-20261104-R75.json) · [Finales Dreierpaket](PRODUKTBILDER-20261104-R75.zip). Bestehende Artikel verwendet, keine Produkte neu angelegt. Unterkategorie-Video wegen neuer Bildpriorität zurückgestellt; kein neues Video erstellt.
