@@ -3,7 +3,10 @@
 let playwright; try { playwright = require('playwright'); } catch (e) { playwright = require('/opt/node-tools/node_modules/playwright'); }
 const { chromium } = playwright;
 const http = require('http'), fs = require('fs'), path = require('path');
-const HTML = process.env.COCKPIT_HTML || path.resolve(__dirname, '../../tools/trading/krypto_bot/cockpit.html');
+const KB = path.resolve(__dirname, '../../tools/trading/krypto_bot');
+const HTML = process.env.COCKPIT_HTML || path.join(KB, 'cockpit.html');
+// Die Seite im Lesemodus kommt aus dem ECHTEN Server-Code (fernsicht.seite_lesend), nicht aus einer Nachbildung im Test
+const HTML_LESEN = require('child_process').execFileSync('python3', ['-I', '-c', 'import sys; sys.path.insert(0, sys.argv[1]); import fernsicht as F; sys.stdout.buffer.write(F.seite_lesend(open(sys.argv[2], "rb").read()))', KB, HTML], { maxBuffer: 64 * 1024 * 1024 });
 const FX = path.join(__dirname, 'fx');
 let fails = 0, passes = 0;
 const ok = (c, msg, info) => { if (c) passes++; else { fails++; console.log('FAIL ' + msg + (info !== undefined ? ' :: ' + JSON.stringify(info) : '')); } };
@@ -11,28 +14,29 @@ const norm = s => String(s == null ? '' : s).replace(/[‘’]/g, "'").replace(/
 const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
 
 (async () => {
-  const server = http.createServer((q, a) => { a.setHeader('Content-Type', 'text/html; charset=utf-8'); a.end(fs.readFileSync(HTML)); }).listen(0);
+  const server = http.createServer((q, a) => { a.setHeader('Content-Type', 'text/html; charset=utf-8'); a.end(q.url.startsWith('/lesen') ? HTML_LESEN : fs.readFileSync(HTML)); }).listen(0);
   const port = server.address().port, BASIS = 'http://127.0.0.1:' + port + '/';
   const browser = await chromium.launch();
   const alleFehler = [];
 
-  async function seite(fall, { w = 1440, h = 900, thema = 'dunkel', reduziert = false, abbrechen = false, posts = null, dialoge = null } = {}) {
+  async function seite(fall, { w = 1440, h = 900, thema = 'dunkel', reduziert = false, abbrechen = false, posts = null, dialoge = null, lesen = false, ablehnen = false } = {}) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1, colorScheme: thema === 'hell' ? 'light' : 'dark', locale: 'de-CH', timezoneId: 'Europe/Zurich', reducedMotion: reduziert ? 'reduce' : 'no-preference' });
     const page = await ctx.newPage();
-    const info = { fehler: [], fremd: [], ctx };
+    const info = { fehler: [], fremd: [], api: [], ctx };
     page.on('pageerror', e => info.fehler.push('PAGEERROR ' + e.message));
     page.on('console', m => { if (['error', 'warning'].includes(m.type())) info.fehler.push(m.type() + ' ' + m.text()); });
-    if (dialoge) page.on('dialog', d => { dialoge.push(d.message()); d.accept(); });
+    if (dialoge) page.on('dialog', d => { dialoge.push(d.message()); if (ablehnen) d.dismiss(); else d.accept(); });
     await page.route('**/*', r => {
       const u = new URL(r.request().url());
       if (u.hostname !== '127.0.0.1') { info.fremd.push(u.href); return r.abort(); }
       if (!u.pathname.startsWith('/api/')) return r.continue();
+      info.api.push(r.request().method() + ' ' + u.pathname);
       if (abbrechen) return r.abort();
       const n = u.pathname.split('/').pop();
       if (r.request().method() === 'POST') { if (posts) posts.push({ pfad: u.pathname, body: r.request().postData() }); return r.fulfill({ status: 202, contentType: 'application/json', body: JSON.stringify({ gestartet: 'x', meldung: 'ok' }) }); }
       r.fulfill({ contentType: 'application/json', body: fs.readFileSync(path.join(FX, fall, n + '.json')) });
     });
-    await page.goto(BASIS);
+    await page.goto(lesen ? BASIS + 'lesen' : BASIS);
     await page.waitForSelector('#uebersicht .ukarte', { timeout: 8000 });
     await page.waitForTimeout(500);
     page.info = info;
@@ -207,6 +211,107 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
   const xl = await text(p, '#u-labor');
   ok(xl.includes('Grund <img src=x onerror=window.__xss=1>') && xl.includes('Labor <img src=x onerror=window.__xss=1>') && xl.includes('BTC<img src=x onerror=window.__xss=1> · k 2.0') && (await p.$$eval('#u-labor img', e => e.length)) === 0 && !xl.includes('onerror=window.__xss=1>UTC'), 'Schadtext: auch im Labor (Grund, Hinweis, Markt) als sichtbarer Text, nie als Markup; die Zeit wird nur als Datum gelesen', xl.slice(0, 200));
   await schliessen(p);
+
+  // ───────── Handy-Ansicht: die Karte am PC (nur über 127.0.0.1) ─────────
+  const FSL = 'FAKEkeyFAKEkeyFAKEkeyFAKEkey1234';
+  {
+    const posts = [], dialoge = [];
+    p = await seite('voll', { posts, dialoge });
+    await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+    ok(p.info.fehler.length === 0, 'Handy-Karte (an): keine Konsolenfehler', p.info.fehler);
+    ok((await p.$eval('#fernSchalter', e => e.getAttribute('aria-checked'))) === 'true' && (await text(p, '#fernText')) === 'AN' && (await p.$eval('#fernSchalter', e => e.getAttribute('role'))) === 'switch', 'Handy-Karte (an): Schalter ist ein switch mit aria-checked=true und Text «AN»');
+    const felder = await p.$$eval('#fernInhalt input[readonly]', es => es.map(e => e.value));
+    ok(felder.length === 2 && felder[0] === 'http://192.168.1.23:8766/?k=' + FSL && felder[1] === 'http://100.101.102.103:8766/?k=' + FSL, 'Handy-Karte: zwei schreibgeschützte Felder mit dem vollen Link (Heimnetz, Tailscale)', felder);
+    const ft = await text(p, '#fernInhalt');
+    ok(ft.includes('Heimnetz (WLAN/LAN)') && ft.includes('Tailscale (von unterwegs)') && ft.includes('Port am Router ins Internet wird bewusst nicht unterstützt') && ft.includes('/uebersicht'), 'Handy-Karte: Beschriftungen, Tailscale-Hinweis, kein Port ins Internet, Telegram /uebersicht für unterwegs', ft.slice(0, 200));
+    // von Hand: 185 s → 3 Min. (3.08 gerundet), 7200 s → 120 Min.; Zeiten in Zürcher Zeit (UTC+1 im November)
+    ok(ft.includes('Zuletzt gesehen: 192.168.1.40 vor 3 Min. · 100.101.102.50 vor 120 Min.'), 'Handy-Karte: Geräte «vor 3 Min.» und «vor 120 Min.»', ft);
+    const ev = await alle(p, '#fernInhalt .fern-ereignisse li');
+    ok(ev.length === 5 && ev[0] === '10:05:11 · fremde Quelle abgewiesen · 203.0.113.9' && ev[1] === '10:01:40 · Schreibversuch abgewiesen · 192.168.1.77 · POST' && ev[2] === '09:59:02 · gesperrt (zu viele Fehlversuche) · 192.168.1.77'
+      && ev[3] === '09:58:30 · falscher Schlüssel · 192.168.1.77' && ev[4] === '09:40:00 · Gerät angemeldet · 192.168.1.40', 'Handy-Karte: fünf Ereignisse, neueste zuerst, in deutschen Worten', ev);
+    ok((await p.$$eval('#fernInhalt .fern-ereignisse li.fern-schlecht', e => e.length)) === 4 && (await p.$eval('#fernInhalt .fern-ereignisse li:last-child', e => !e.classList.contains('fern-schlecht'))), 'Handy-Karte: Abgewiesenes ist rot hervorgehoben (4 von 5), «Gerät angemeldet» nicht');
+    ok((await p.$$eval('#fernInhalt button', e => e.map(b => b.textContent.trim()))).join('|') === 'Link kopieren|Link kopieren|Schlüssel erneuern', 'Handy-Karte: Knöpfe «Link kopieren» ×2 und «Schlüssel erneuern»');
+    await p.click('#fernInhalt button[data-kopie="0"]'); await p.waitForTimeout(150);
+    ok(['Kopiert ✓', 'Markiert: Strg+C'].includes(await text(p, '#fernInhalt button[data-kopie="0"]')) && (await p.$eval('#fernUrl0', e => e.selectionStart === 0 && e.selectionEnd === e.value.length)), 'Handy-Karte: «Link kopieren» markiert den Link und meldet «Kopiert ✓» (oder bittet um Strg+C)');
+    // Klicks: Ausschalten (ohne Rückfrage), Schlüssel erneuern (mit Rückfrage)
+    await p.click('#fernSchalter'); await p.waitForTimeout(250);
+    ok(posts.length === 1 && posts[0].pfad === '/api/fern' && JSON.parse(posts[0].body).an === false && JSON.parse(posts[0].body).erneuern === false && dialoge.length === 0, 'Handy-Karte: Ausschalten sendet {an:false} ohne Rückfrage', { posts, dialoge });
+    await p.click('#fernNeu'); await p.waitForTimeout(250);
+    ok(posts.length === 2 && JSON.parse(posts[1].body).an === true && JSON.parse(posts[1].body).erneuern === true && dialoge.length === 1 && dialoge[0].includes('Neuen Schlüssel erzeugen?') && dialoge[0].includes('ungültig'), 'Handy-Karte: «Schlüssel erneuern» fragt nach und sendet {an:true, erneuern:true}', { posts, dialoge });
+    ok((await p.$$eval('#fern', e => e.length)) === 1 && (await p.evaluate(() => document.documentElement.scrollWidth === innerWidth)), 'Handy-Karte: kein seitliches Scrollen (Desktop)');
+    await schliessen(p);
+  }
+  {
+    const posts = [], dialoge = [];
+    p = await seite('voll', { posts, dialoge, ablehnen: true });
+    await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+    await p.click('#fernNeu'); await p.waitForTimeout(250);
+    ok(posts.length === 0 && dialoge.length === 1, 'Handy-Karte: sagt man bei «Schlüssel erneuern» Nein, wird nichts gesendet', { posts, dialoge });
+    await schliessen(p);
+  }
+  {
+    const posts = [], dialoge = [];
+    p = await seite('leer', { posts, dialoge });
+    await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+    const lt = await text(p, '#fernInhalt');
+    ok((await p.$eval('#fernSchalter', e => e.getAttribute('aria-checked'))) === 'false' && (await text(p, '#fernText')) === 'AUS' && lt.startsWith('Aus. Eingeschaltet zeigt dein Handy dieselbe Übersicht, nur lesen') && lt.includes('«Privat» ankreuzen'), 'Handy-Karte (aus): Schalter AUS, erklärender Text mit «Privat ankreuzen»', lt);
+    ok((await p.$$eval('#fernInhalt input, #fernNeu', e => e.length)) === 0, 'Handy-Karte (aus): keine Links und kein «Schlüssel erneuern»');
+    await p.click('#fernSchalter'); await p.waitForTimeout(250);
+    ok(dialoge.length === 1 && dialoge[0].startsWith('Handy-Ansicht einschalten?') && dialoge[0].includes('nicht aus dem Internet') && posts.length === 1 && JSON.parse(posts[0].body).an === true && JSON.parse(posts[0].body).erneuern === false, 'Handy-Karte: Einschalten fragt nach (nur lesen, Schlüssel, nicht aus dem Internet) und sendet {an:true}', { dialoge, posts });
+    await schliessen(p);
+    const d2 = [], po2 = [];
+    p = await seite('leer', { posts: po2, dialoge: d2, ablehnen: true });
+    await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+    await p.click('#fernSchalter'); await p.waitForTimeout(250);
+    ok(d2.length === 1 && po2.length === 0, 'Handy-Karte: Nein beim Einschalten → nichts gesendet, Ansicht bleibt aus', { d2, po2 });
+    await schliessen(p);
+  }
+  p = await seite('daten_fehlen');
+  ok(await p.$eval('#fern', e => e.hidden), 'Handy-Karte: ohne das Modul (verfuegbar=false) ist die Karte nicht da');
+  await schliessen(p);
+  p = await seite('echtgeld');
+  await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+  ok(p.info.api.filter(a => a === 'GET /api/fern').length >= 1, 'Handy-Karte: die Seite fragt /api/fern (nur am PC)');
+  await schliessen(p);
+  p = await seite('xss');
+  await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+  const xf = await text(p, '#fern');
+  ok((await p.evaluate(() => window.__xss)) === undefined && (await p.$$eval('#fern img', e => e.length)) === 0, 'Handy-Karte (Schadtext): kein Skript, kein <img>');
+  ok(xf.includes('Heimnetz<img src=x onerror=window.__xss=1>') && xf.includes('böse-art<img') && xf.includes('Q<img') && xf.includes('Port belegt<img') && xf.includes('192.168.1.40<img'), 'Handy-Karte (Schadtext): Art, Quelle, Info, Fehler und Gerät erscheinen als Text', xf.slice(0, 300));
+  ok((await p.$eval('#fernUrl0', e => e.value)).includes('?k="<img src=x onerror=window.__xss=1>') && (await p.$$eval('#fernInhalt input', e => e.length)) === 2, 'Handy-Karte (Schadtext): Anführungszeichen in der Adresse brechen das Feld nicht aus');
+  await schliessen(p);
+
+  // ───────── Lesemodus: so bekommt das Handy die Seite ─────────
+  {
+    const posts = [], dialoge = [];
+    p = await seite('voll', { lesen: true, posts, dialoge });
+    await p.waitForTimeout(600);
+    ok(p.info.fehler.length === 0 && p.info.fremd.length === 0, 'Lesemodus: keine Konsolenfehler, keine fremde Anfrage', { f: p.info.fehler, x: p.info.fremd });
+    ok(await p.evaluate(() => document.documentElement.hasAttribute('data-nur-lesen')) && (await p.$eval('head meta[name=robots]', e => e.content)) === 'noindex, nofollow', 'Lesemodus: <html> trägt data-nur-lesen, die Seite ist auf «nicht indexieren» gestellt');
+    const sicht = await p.evaluate(() => Object.fromEntries(['#nurLesen', '#notaus', '#autoK', '#fern', '#steuerung .steuerkopf', '#steuerung .risiko', '#steuerung .knoepfe', '#steuerung .konsole', '#g-box', '#uebersicht', '.profit .steuerkopf', '#ampel']
+      .map(sel => { const e = document.querySelector(sel); return [sel, e ? e.checkVisibility() : null]; })));
+    ok(sicht['#nurLesen'] === true && sicht['#notaus'] === false && sicht['#autoK'] === false && sicht['#fern'] === false && sicht['#steuerung .steuerkopf'] === false && sicht['#steuerung .risiko'] === false
+      && sicht['#steuerung .knoepfe'] === false && sicht['#steuerung .konsole'] === false, 'Lesemodus: «nur lesen» sichtbar; Not-Aus, Auto-Schalter, Steuerung, Risiko, Knöpfe, Konsole und Handy-Karte unsichtbar', sicht);
+    ok(sicht['#g-box'] === true && sicht['#uebersicht'] === true && sicht['.profit .steuerkopf'] === true && sicht['#ampel'] === true, 'Lesemodus: Gesundheit, Übersicht, Profit-Kopf und Ampel bleiben sichtbar (.steuerkopf kommt auch im Profit vor)', sicht);
+    ok((await text(p, '#nurLesen')) === '📱 nur lesen' && (await p.$eval('#nurLesen', e => e.title)).includes('Not-Aus: am PC oder per Telegram /stop'), 'Lesemodus: die Pille «📱 nur lesen» nennt den Weg zum Not-Aus (am PC oder Telegram /stop)');
+    ok(p.info.api.length >= 2 && p.info.api.every(a => a.startsWith('GET ')) && !p.info.api.some(a => /protokoll|fern/.test(a)), 'Lesemodus: nur GET, und weder /api/protokoll noch /api/fern werden gefragt', p.info.api);
+    // selbst per Skript ausgelöste Klicks (die Knöpfe sind unsichtbar, aber ein Fehler in der Seite darf trotzdem nichts senden)
+    await p.evaluate(() => {
+      document.querySelector('#notaus').click(); document.querySelector('#autoK').click(); document.querySelector('#auto').click();
+      document.querySelectorAll('#steuerung .knoepfe button').forEach(b => b.click()); document.querySelectorAll('#stufen button').forEach(b => b.click()); document.querySelector('#fernSchalter').click();
+    });
+    await p.waitForTimeout(500);
+    ok(posts.length === 0 && p.info.api.every(a => a.startsWith('GET ')) && !p.info.api.some(a => /protokoll|fern|aktion|notaus/.test(a)), 'Lesemodus: selbst per Skript ausgelöste Klicks auf Not-Aus, Knöpfe, Auto-Schalter, Risiko-Stufen und Handy-Schalter senden NICHTS', { posts, api: p.info.api });
+    ok(dialoge.length === 0, 'Lesemodus: auch kein Bestätigungsfenster erscheint', dialoge);
+    ok((await text(p, '#uebersicht .u8')).includes("5'122.95 USDT") && (await p.$$eval('#uebersicht .ukarte', e => e.length)) >= 8, 'Lesemodus: die Übersicht ist vollständig (Held mit 5\'122.95 USDT, mindestens 8 Karten)');
+    ok(await p.evaluate(() => document.documentElement.scrollWidth === innerWidth), 'Lesemodus 1440: kein seitliches Scrollen');
+    await schliessen(p);
+    for (const [w, h] of [[390, 844], [360, 640]]) {
+      p = await seite('voll', { lesen: true, w, h });
+      ok(await p.evaluate(() => document.documentElement.scrollWidth === innerWidth) && (await p.$eval('#nurLesen', e => e.checkVisibility())), `Lesemodus ${w}: kein seitliches Scrollen, die Pille «nur lesen» ist sichtbar`);
+      await schliessen(p);
+    }
+  }
 
   p = await seite('voll', { abbrechen: true }).catch(() => null);
   if (!p) {

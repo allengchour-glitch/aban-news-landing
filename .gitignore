@@ -138,6 +138,9 @@ data/krypto-einstellungen.json
 data/krypto-profit.json
 data/krypto-auto.log
 data/telegram-calls.session*
+# Handy-Ansicht: Einstellung MIT Zugangsschlüssel (nur auf dem PC des Besitzers; nie ins Repo)
+data/krypto-fern.json
+data/krypto-fern.json.tmp
 data/*.session
 data/*.session-journal
 data/calls/

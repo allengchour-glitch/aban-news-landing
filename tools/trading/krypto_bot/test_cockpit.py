@@ -1511,5 +1511,214 @@ pruefe("Seite: kein neuer Netzzugriff — alle Adressen sind der SVG-Namensraum 
        _urls_u <= {"http://www.w3.org/2000/svg", "https://data-api.binance.vision/api/v3/ticker/price?symbol=ETHUSDT"} and not _re_u.search(r"<script src|@import|<img |<iframe|url\(http", _html_u)
        and _html_u.count("<link ") == 1 and '<link rel="icon" href="data:,">' in _html_u and _html_u.count("<style>") == 1 and "Content-Security-Policy" not in _html_u, _urls_u)
 
+# ───────────────────────── Handy-Ansicht (nur lesend) und Telegram /uebersicht, /handy ─────────────────────────
+import fernsicht as _FS  # noqa: E402
+import http.client as _hcf  # noqa: E402
+
+pruefe("Hilfe nennt /uebersicht und /handy", "/uebersicht" in C.HILFE and "/handy" in C.HILFE)
+pruefe("Telegram: /handy ist ein Sofort-Befehl (die Notbremse für den Link /handy aus steht nie hinter langsamen Info-Befehlen in der Schlange)", "/handy" in C.SOFORT)
+pruefe("Telegram: /uebersicht läuft nebenher in der Schlange (kein Sofort-Befehl, es liest viele Dateien)", "/uebersicht" not in C.SOFORT)
+
+_ue = {"modus": "TESTNETZ", "konto": {"wert": 5122.95, "seit_start": 0.0249, "seit_woche": 0.026, "unter_hoch": -0.012},
+       "maerkte": [{"markt": "BTC", "hebel": 2.0, "stop": 72852.0}, {"markt": "ETH", "hebel": -1.0, "stop": None}, {"markt": "SOL", "hebel": 0}, {"markt": "XRP", "hebel": None, "stop": 0}],
+       "satellit": {"aus": False, "positionen": [1, 2, 3], "naechster_tag": "2026-11-05"}, "scalp": {"ampel": {"text": "Papier, durchgefallen"}},
+       "gesundheit": [{"name": "A", "ok": False, "text": "x"}, {"name": "B", "ok": None, "text": "y", "warnung": True}, {"name": "C", "ok": True, "text": "z"}, {"name": "D", "ok": None, "text": "nur Info"}],
+       "notaus": False, "pause": True}
+# von Hand: 5122.95 → 5'123; 0.0249·100 = 2.49 → +2.5; 0.026·100 = 2.6; −0.012·100 = −1.2; Stop 72852 → 72'852
+_ue_erwartet = "\n".join([
+    "🛩️ Krypto-Cockpit · Testnetz (Spielgeld)",
+    "💼 Konto 5'123 USDT · seit Start +2.5 % · 7 Tage +2.6 % · unter Hoch −1.2 %",
+    "📌 BTC: LONG 2.00× · Stop 72'852",
+    "📌 ETH: SHORT 1.00×",
+    "📌 SOL: FLACH",
+    "📌 XRP: FLACH",
+    "🛰️ Satellit: 3 Position(en), nächster Entscheidungstag 2026-11-05",
+    "📊 Scalping-Labor: Papier, durchgefallen",
+    "🩺 Rot: A. Achtung: B.",
+    "⏸️ Auto-Handel ist aus (Pause).",
+])
+pruefe("/uebersicht: der Text stimmt Zeile für Zeile (von Hand gerechnet)", C.uebersicht_text(_ue) == _ue_erwartet, C.uebersicht_text(_ue))
+pruefe("/uebersicht: leere Daten → drei Zeilen, kein Absturz", C.uebersicht_text({}).split("\n") == ["🛩️ Krypto-Cockpit · Testnetz (Spielgeld)", "💼 Noch kein Kontostand.", "🩺 Alles in Ordnung."])
+pruefe("/uebersicht: ECHTGELD steht gross in der ersten Zeile", C.uebersicht_text({"modus": "ECHTGELD"}).startswith("🛩️ Krypto-Cockpit · ⚠️ ECHTGELD"))
+_t_na = C.uebersicht_text({"notaus": True, "pause": True})
+pruefe("/uebersicht: Not-Aus geht vor Pause", "🛑 Not-Aus ist aktiv." in _t_na and "Pause" not in _t_na)
+pruefe("/uebersicht: ausgeschalteter Satellit fehlt, graue Info-Punkte ohne Warnung zählen nicht", "🛰️" not in C.uebersicht_text({"satellit": {"aus": True}})
+       and "Alles in Ordnung" in C.uebersicht_text({"gesundheit": [{"name": "D", "ok": None, "text": "nur Info"}]}))
+pruefe("/uebersicht: fehlende Zahlen im Konto werden «—»", "seit Start — · 7 Tage — · unter Hoch —" in C.uebersicht_text({"konto": {"wert": 100.0}}))
+_alt_stand_u = C.stand
+C.stand = lambda env=None: _ue
+try:
+    pruefe("Telegram /uebersicht: gibt denselben Text zurück (über stand())", C.befehl("/uebersicht") == _ue_erwartet and C.befehl("/uebersicht@MeinBot") == _ue_erwartet)
+finally:
+    C.stand = _alt_stand_u
+
+_alt_fern, _alt_fs, _alt_data = C.FERN, C.FS, C.DATA
+with tempfile.TemporaryDirectory() as _tdf:
+    _dat = Path(_tdf)
+    C.FERN = _FS.FernServer(_dat, stand_fn=lambda: {"konto": {"wert": 1}}, profit_fn=lambda: {}, seite_fn=lambda: b"<html lang='de'><head></head></html>",
+                            markt_fn=lambda: b"<html lang='de'><head></head></html>", adresse="127.0.0.1", port=0, meldung_im_faden=False)
+    try:
+        t0 = C.befehl("/handy")
+        pruefe("Telegram /handy: ausgeschaltet → sagt aus und «nur am PC»", "aus" in t0 and "nur am PC" in t0, t0)
+        _FS.einschalten(_dat)
+        k1 = _FS.lesen(_dat)["schluessel"]
+        t1 = C.befehl("/handy")
+        pruefe("Telegram /handy: in der Datei an, aber nicht gestartet → «läuft aber nicht», ohne Schlüssel", "läuft aber nicht" in t1 and k1 not in t1, t1)
+        C.FERN.starten()
+        t2 = C.befehl("/handy")
+        pruefe("Telegram /handy: läuft → Port, die Notbremsen-Befehle, KEIN Schlüssel und keine Adresse", f"AN auf Port {C.FERN.port}" in t2 and "/handy aus" in t2 and "/handy erneuern" in t2 and k1 not in t2 and "http" not in t2, t2)
+        _P = C.FERN.port
+        _c = _hcf.HTTPConnection("127.0.0.1", _P, timeout=10)
+        _c.request("GET", "/?k=falsch", headers={"Host": f"127.0.0.1:{_P}"})
+        _c.getresponse().read()
+        _c.close()
+        t3 = C.befehl("/handy")
+        pruefe("Telegram /handy: abgewiesene Versuche werden genannt, mit dem Rat «erneuern»", "abgewiesene Versuche" in t3 and "/handy erneuern" in t3 and k1 not in t3, t3)
+        t4 = C.befehl("/handy erneuern")
+        k2 = _FS.lesen(_dat)["schluessel"]
+        pruefe("Telegram /handy erneuern: neuer Schlüssel, weder der alte noch der neue steht in der Antwort", k2 != k1 and k1 not in t4 and k2 not in t4 and "Neuer Schlüssel" in t4 and C.FERN.laeuft(), t4)
+        t5 = C.befehl("/handy aus")
+        pruefe("Telegram /handy aus: Server gestoppt, Datei aus, kein Schlüssel in der Antwort", not C.FERN.laeuft() and not _FS.lesen(_dat)["an"] and k2 not in t5 and "aus" in t5, t5)
+        t6 = C.befehl("/handy erneuern")
+        pruefe("Telegram /handy erneuern bei ausgeschalteter Ansicht: nichts zu erneuern, schaltet NICHT ein", "nichts zu erneuern" in t6 and not _FS.lesen(_dat)["an"] and _FS.lesen(_dat)["schluessel"] == k2 and not C.FERN.laeuft(), t6)
+        t7 = C.befehl("/handy an")
+        pruefe("Telegram /handy an: gibt es nicht (Einschalten nur am PC): nur der Stand, die Ansicht bleibt aus", t7.startswith("📱 Handy-Ansicht: aus") and not C.FERN.laeuft() and not _FS.lesen(_dat)["an"], t7)
+        C.FS, C.FERN = None, None
+        pruefe("Telegram /handy: ohne das Modul eine ehrliche Antwort statt eines Absturzes", "nicht vorhanden" in C.befehl("/handy"))
+        pruefe("Cockpit: ohne das Modul gibt fern_ui() verfuegbar=False und fern_server() None", C.fern_ui() == {"verfuegbar": False} and C.fern_server() is None)
+    finally:
+        C.FS = _alt_fs
+        if C.FERN is not None:
+            C.FERN.stoppen()
+        C.FERN = _alt_fern
+
+# Lokale Adressen /api/fern: nur über 127.0.0.1, Host-Prüfung, Kopf und Herkunft wie beim Not-Aus
+with tempfile.TemporaryDirectory() as _tdf2:
+    _dat2 = Path(_tdf2)
+    _alt_prot = list(C.PROTOKOLL)
+    C.PROTOKOLL.clear()
+    C.FERN = _FS.FernServer(_dat2, stand_fn=lambda: {"konto": {"wert": 1}}, profit_fn=lambda: {}, seite_fn=lambda: b"<html lang='de'><head></head></html>",
+                            markt_fn=lambda: b"<html lang='de'><head></head></html>", adresse="127.0.0.1", port=0, meldung_im_faden=False)
+    _srv_f = ThreadingHTTPServer(("127.0.0.1", 0), C.Cockpit)
+    _alt_port = C.Cockpit.port
+    C.Cockpit.port = _srv_f.server_port
+    threading.Thread(target=_srv_f.serve_forever, daemon=True).start()
+    _LP = _srv_f.server_port
+
+    def _lok(methode, pfad, host=None, kopf=None, body=None):
+        k_ = _hcf.HTTPConnection("127.0.0.1", _LP, timeout=10)
+        try:
+            k_.putrequest(methode, pfad, skip_host=True)
+            k_.putheader("Host", host or f"127.0.0.1:{_LP}")
+            for n_, w_ in (kopf or {}).items():
+                k_.putheader(n_, w_)
+            k_.putheader("Content-Length", str(len(body or b"")))
+            k_.endheaders(body)
+            r_ = k_.getresponse()
+            roh = r_.read()
+            return r_.status, (json.loads(roh) if roh[:1] == b"{" else roh)
+        finally:
+            k_.close()
+    _JS = {"X-Cockpit": "1", "Content-Type": "application/json", "Origin": f"http://127.0.0.1:{_LP}"}
+    try:
+        st_, j_ = _lok("GET", "/api/fern")
+        pruefe("Lokal /api/fern: 200, verfuegbar, aus, keine Adressen", st_ == 200 and j_["verfuegbar"] is True and j_["an"] is False and j_["laeuft"] is False and j_["adressen"] == [], j_)
+        pruefe("Lokal /api/fern: ein fremder Host-Kopf bekommt NICHTS (hier stehen Adressen MIT Schlüssel; DNS-Rebinding)", _lok("GET", "/api/fern", host=f"rebind.boese.example:{_LP}")[0] == 403)
+        pruefe("Lokal POST /api/fern: ohne X-Cockpit-Kopf verboten", _lok("POST", "/api/fern", kopf={"Content-Type": "application/json"}, body=b'{"an": true}')[0] == 403 and not _FS.lesen(_dat2)["an"])
+        pruefe("Lokal POST /api/fern: fremde Herkunft verboten", _lok("POST", "/api/fern", kopf=dict(_JS, Origin="http://boese.example"), body=b'{"an": true}')[0] == 403 and not _FS.lesen(_dat2)["an"])
+        pruefe("Lokal POST /api/fern: fremder Host verboten", _lok("POST", "/api/fern", host="boese.example", kopf=_JS, body=b'{"an": true}')[0] == 403 and not _FS.lesen(_dat2)["an"])
+        st_, j_ = _lok("POST", "/api/fern", kopf=_JS, body=b'{"an": true}')
+        k_a = _FS.lesen(_dat2)["schluessel"]
+        pruefe("Lokal POST an: 200, läuft, Datei an, Schlüssel erzeugt, Adressen tragen ihn", st_ == 200 and j_["ok"] is True and j_["an"] is True and j_["laeuft"] is True and len(k_a) == 32
+               and all(a["url"].endswith("?k=" + k_a) for a in j_["adressen"]), j_)
+        pruefe("Lokal POST an: ein Eintrag im Cockpit-Protokoll «Handy-Ansicht»", any(e["aktion"] == "fern" and e["titel"] == "Handy-Ansicht" and e["ok"] for e in C.PROTOKOLL) and k_a not in json.dumps(list(C.PROTOKOLL)))
+        st_, j_ = _lok("POST", "/api/fern", kopf=_JS, body=b'{"an": true}')
+        pruefe("Lokal POST an ein zweites Mal: derselbe Schlüssel (nur «erneuern» wechselt ihn)", st_ == 200 and _FS.lesen(_dat2)["schluessel"] == k_a and j_["laeuft"] is True)
+        st_, j_ = _lok("POST", "/api/fern", kopf=_JS, body=b'{"an": true, "erneuern": "ja"}')
+        pruefe("Lokal POST erneuern mit «ja» als Text: zählt nicht als Ja, Schlüssel bleibt", _FS.lesen(_dat2)["schluessel"] == k_a)
+        st_, j_ = _lok("POST", "/api/fern", kopf=_JS, body=b'{"an": true, "erneuern": true}')
+        k_b = _FS.lesen(_dat2)["schluessel"]
+        pruefe("Lokal POST erneuern: neuer Schlüssel, läuft weiter", st_ == 200 and k_b != k_a and j_["laeuft"] is True and "ungültig" in j_["meldung"])
+        st_, j_ = _lok("POST", "/api/fern", kopf=_JS, body=b'{"an": "true"}')
+        pruefe("Lokal POST mit «true» als TEXT: zählt nicht als Ja → ausgeschaltet (nur ein echtes true schaltet ein)", st_ == 200 and j_["an"] is False and not C.FERN.laeuft() and not _FS.lesen(_dat2)["an"], j_)
+        st_, j_ = _lok("POST", "/api/fern", kopf=_JS, body=b'{"erneuern": true}')
+        pruefe("Lokal POST nur mit erneuern (ohne an): bleibt aus, schaltet nichts ein", st_ == 200 and j_["an"] is False and not C.FERN.laeuft())
+        pruefe("Lokal POST kaputtes JSON: 400", _lok("POST", "/api/fern", kopf=_JS, body=b"{{{")[0] == 400)
+        _alt_fs2 = C.FS
+        C.FS, _fern_alt2 = None, C.FERN
+        C.FERN = None
+        pruefe("Lokal ohne das Modul: GET sagt verfuegbar=False, POST 404", _lok("GET", "/api/fern")[1] == {"verfuegbar": False} and _lok("POST", "/api/fern", kopf=_JS, body=b'{"an": true}')[0] == 404)
+        C.FS, C.FERN = _alt_fs2, _fern_alt2
+    finally:
+        _srv_f.shutdown()
+        _srv_f.server_close()
+        C.Cockpit.port = _alt_port
+        if C.FERN is not None:
+            C.FERN.stoppen()
+        C.FERN = _alt_fern
+        C.PROTOKOLL.clear()
+        C.PROTOKOLL.extend(reversed(_alt_prot))
+
+# Die ECHT gebaute Handy-Ansicht: Seite, Kontostand, Lesemodus, kein Schreiben (fern_server() mit den echten Funktionen)
+with tempfile.TemporaryDirectory() as _tdf3:
+    _alt_data3, _alt_profit3, _alt_stop3, _alt_pause3 = C.DATA, C.profit_stand, C.STOP, C.PAUSE
+    C.DATA, C.STOP, C.PAUSE = Path(_tdf3), Path(_tdf3) / "STOP", Path(_tdf3) / "PAUSE"       # ein Durchbruch bis zum Not-Aus träfe nur diese Wegwerf-Dateien
+    C.profit_stand = lambda *a, **k: {"modus": "TESTNETZ", "zeitraeume": {}, "positionen": []}
+    C.FERN = None
+    try:
+        _f = C.fern_server()
+        pruefe("fern_server(): baut den echten Server und merkt ihn sich (nur einer)", _f is not None and C.fern_server() is _f and _f.daten == C.DATA)
+        _f.adresse, _f._port = "127.0.0.1", 0
+        _FS.einschalten(Path(_tdf3))
+        pruefe("fern_server(): startet nur, weil eingeschaltet wurde", _f.starten() is True)
+        _k = _FS.lesen(Path(_tdf3))["schluessel"]
+        _ck, _FP = _FS.cookie_wert(_k), _f.port
+
+        def _fern(methode, pfad, cookie=_ck, host=None):
+            k_ = _hcf.HTTPConnection("127.0.0.1", _FP, timeout=20)
+            try:
+                k_.putrequest(methode, pfad, skip_host=True)
+                k_.putheader("Host", host or f"127.0.0.1:{_FP}")
+                if cookie:
+                    k_.putheader("Cookie", f"{_FS.COOKIE}={cookie}")
+                k_.putheader("Content-Length", "0")
+                k_.endheaders()
+                r_ = k_.getresponse()
+                return r_.status, r_.read()
+            finally:
+                k_.close()
+        st_, roh = _fern("GET", "/")
+        echt_html = (HIER / "cockpit.html").read_text(encoding="utf-8")
+        pruefe("Handy-Ansicht echt: die Seite ist die Cockpit-Seite, im Lesemodus", st_ == 200 and b'data-nur-lesen="1"' in roh and "Krypto-Cockpit" in roh.decode() and len(roh) > len(echt_html.encode()), st_)
+        st_, roh = _fern("GET", "/api/stand")
+        stand_j = json.loads(roh) if st_ == 200 else {}
+        pruefe("Handy-Ansicht echt: /api/stand liefert den echten Stand, ohne Schlüssel und ohne Pfade", st_ == 200 and "maerkte" in stand_j and "gesundheit" in stand_j and _k not in roh.decode() and str(_tdf3) not in roh.decode(), (st_, roh[:200]))
+        pruefe("Handy-Ansicht echt: /api/profit liefert (Zwischenspeicher des Cockpits)", _fern("GET", "/api/profit")[0] == 200)
+        pruefe("Handy-Ansicht echt: /markt geht", _fern("GET", "/markt")[0] == 200)
+        for pfad_, meth_ in (("/api/notaus", "POST"), ("/api/aktion", "POST"), ("/api/fern", "POST"), ("/api/fern", "GET"), ("/api/protokoll", "GET"), ("/api/aktion", "GET"), ("/api/notaus", "GET")):
+            st_, roh = _fern(meth_, pfad_)
+            pruefe(f"Handy-Ansicht echt: {meth_} {pfad_} ist nicht erreichbar (405/404) und liefert keinen Schlüssel", st_ in (404, 405) and _k.encode() not in roh, (st_, roh[:80]))
+        pruefe("Handy-Ansicht echt: nichts davon hat einen Not-Aus oder eine Pause ausgelöst und keine Aktion gestartet", not C.STOP.exists() and not C.PAUSE.exists() and not C._LAUFEND)
+        pruefe("Handy-Ansicht echt: ohne Cookie kommt nichts heraus", _fern("GET", "/api/stand", cookie=None)[0] == 401)
+    finally:
+        if C.FERN is not None:
+            C.FERN.stoppen()
+        C.FERN, C.DATA, C.profit_stand, C.STOP, C.PAUSE = _alt_fern, _alt_data3, _alt_profit3, _alt_stop3, _alt_pause3
+
+# Einbau im Quelltext und in der Seite
+_src_c = (HIER / "cockpit.py").read_text(encoding="utf-8")
+_html_c = (HIER / "cockpit.html").read_text(encoding="utf-8")
+pruefe("Einbau: die Handy-Ansicht startet beim Öffnen des Cockpits NUR, wenn sie eingeschaltet ist (und nicht mit --ohne-fern)", "if f is not None and FS.eingeschaltet(DATA):" in _src_c and '"--ohne-fern"' in _src_c and "f = None if a.ohne_fern else fern_server()" in _src_c)
+pruefe("Einbau: das Cockpit selbst bleibt auf 127.0.0.1 (der Bind steht nur einmal im Cockpit)", _src_c.count('ThreadingHTTPServer(("127.0.0.1", a.port), Cockpit)') == 1 and "0.0.0.0" not in _src_c)
+pruefe("Einbau: /api/fern gibt es nur im lokalen Handler (GET und POST), das Modul der Handy-Ansicht kennt die Adresse nicht", '"/api/fern"' in _src_c and '"/api/fern"' not in (HIER / "fernsicht.py").read_text(encoding="utf-8"))
+pruefe("Seite: Lesemodus-Merkmal, Hinweis «nur lesen», Karte «Handy-Ansicht» sind da", "const NUR_LESEN = document.documentElement.hasAttribute(\"data-nur-lesen\")" in _html_c and 'id="nurLesen"' in _html_c and 'id="fern"' in _html_c and 'id="steuerung"' in _html_c)
+pruefe("Seite: jede schreibende Funktion beginnt mit der Lesemodus-Sperre (Not-Aus, Knöpfe, Protokoll, Karte)", all(x in _html_c for x in (
+    '$("notaus").addEventListener("click", async () => {\n  if (NUR_LESEN) return;', "async function knopf(name) {\n  if (NUR_LESEN) return;", "async function ladeProtokoll() {\n  if (NUR_LESEN) return [];",
+    '$("fernSchalter").addEventListener("click", () => {\n  if (NUR_LESEN || !letzteFern) return;', '$("fern").addEventListener("click", async e => {\n  if (NUR_LESEN) return;', "async function ladeFern() {\n  if (NUR_LESEN) return;")))
+pruefe("Seite: genau drei POST-Stellen (Not-Aus, Knopf, Handy-Ansicht), alle mit dem Kopf X-Cockpit", _html_c.count('method: "POST"') == 3 and _html_c.count('"X-Cockpit": "1"') == 3)
+pruefe("Seite: im Lesemodus sind Not-Aus, Auto-Schalter, Steuerung, Risiko, Knöpfe, Konsole und die Karte per CSS ausgeblendet, die Gesundheit bleibt",
+       all(x in _html_c for x in ("html[data-nur-lesen] #notaus", "html[data-nur-lesen] #autoK", "html[data-nur-lesen] #fern", "#steuerung .steuerkopf", "#steuerung .risiko", "#steuerung .knoepfe", "#steuerung .konsole"))
+       and "#steuerung #g-box" not in _html_c.split("html[data-nur-lesen]")[-1].split("</style>")[0])
+
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

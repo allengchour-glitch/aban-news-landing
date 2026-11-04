@@ -6,7 +6,7 @@ Die Übersicht steht ganz oben, der alte Inhalt darunter unter «Details». Sie 
 ## Ablauf
 
 ```
-python3 docs/cockpit-uebersicht-pruefung/fixtures.py          # schreibt fx/<Fall>/{stand,profit,protokoll}.json neben das Skript (nicht im Repo)
+python3 docs/cockpit-uebersicht-pruefung/fixtures.py          # schreibt fx/<Fall>/{stand,profit,protokoll,fern}.json neben das Skript (nicht im Repo)
 node    docs/cockpit-uebersicht-pruefung/uebersicht.test.js   # Desktop und Allgemeines (Chromium, Playwright)
 node    docs/cockpit-uebersicht-pruefung/handy.test.js        # Handy: 360×640, 390×844, 412×915, hell und dunkel, Berührung, Faktor 2
 node    docs/cockpit-uebersicht-pruefung/messwerte.js         # die gemessenen Zahlen (Scrollen, Tippfläche, Kontrast, Konsole, reduzierte Bewegung), 30 Messungen
@@ -21,7 +21,9 @@ node    docs/cockpit-uebersicht-pruefung/schnellbild.js  voll 1440 900 hell bild
 
 `COCKPIT_HTML=<Datei>` prüft eine andere Fassung, `ABSCHNITT=2,3` lässt `handy.test.js` nur diese Abschnitte laufen (1 Größen und Designs, 2 Blase/Kurve/Tastatur, 3 Ränder, 4 Größenänderung, 5 Fälle, 6 Desktop). Playwright kommt aus `require('playwright')` oder `/opt/node-tools/node_modules/playwright`.
 
-**Letzter Lauf (04.11.2026, Stand mit der Labor-Kachel):** `uebersicht.test.js` 127/0 · `handy.test.js` 425/0 · `test_cockpit.py` 336/0 · `uebersicht_rein.py` 41/0 · `mutationsprobe.py` 64 von 64 erkannt (Stand vor der Labor-Kachel) · `smoke_echt.js` ok · `tools/trading/test_paket_bauen.py` 35/0.
+**Letzter Lauf (04.11.2026, Stand mit der Handy-Ansicht):** `uebersicht.test.js` 161/0 · `handy.test.js` 485/0 · `test_cockpit.py` 392/0 · `test_fernsicht.py` 362/0 · `test_telegram_einrichten.py` 58/0 · `uebersicht_rein.py` 41/0 · `mutationsprobe.py` 64 von 64 erkannt (Stand vor der Labor-Kachel) · `smoke_echt.js` ok · `tools/trading/test_paket_bauen.py` 35/0.
+
+**Handy-Ansicht (04.11.2026):** `cockpit.html` hat zwei neue Teile. (1) Die Karte **📱 Handy-Ansicht** (nur am PC über 127.0.0.1, `GET/POST /api/fern`; die Fälle tragen dafür `fern.json`: `voll` an mit zwei Links und fünf Ereignissen, `leer` aus, `daten_fehlen` ohne das Modul, `xss` mit Schadtext in jedem Feld). (2) Der **Lesemodus**: der Server der Handy-Ansicht setzt `data-nur-lesen` auf `<html>` (die Tests holen die Seite dafür aus dem ECHTEN `fernsicht.seite_lesend`, unter `/lesen`): keine Knöpfe, kein Not-Aus, nur GET; selbst per Skript ausgelöste Klicks senden nichts. Geprüft in `uebersicht.test.js` (Karte, Lesemodus, Schadtext, Rückfragen und gesendete Körper) und `handy.test.js` Abschnitt 7 (Karte und Lesemodus bei 360×640, 390×844, 412×915, hell und dunkel: kein Überstand, Tippflächen ≥ 44 px, Kontrast ≥ 4,5:1).
 
 ## Bilder (`bilder/`, Faktor 2)
 
@@ -35,7 +37,7 @@ node    docs/cockpit-uebersicht-pruefung/schnellbild.js  voll 1440 900 hell bild
 | `leer` | keine Positionen, keine Aufträge, kein Satellit-Lauf, Ampel grün |
 | `echtgeld` | Betriebsart ECHTGELD (roter Streifen, «ECHTGELD» in Pille und Konto-Karte, Satellit «nur Testnetz») |
 | `daten_fehlen` | Server liefert nichts Brauchbares: kein Konto, kein Profit, kein Satellit, keine Kurse |
-| `xss` | Schadtext in jedem Feld, das ausgegeben wird |
+| `xss` | Schadtext in jedem Feld, das ausgegeben wird (auch in der Karte «Handy-Ansicht») |
 
 Jeder Fall trägt auch `scalp` (Scalping-Labor, Papier): `voll` mit den echten Oktober-Zahlen (8 Bücher, «durchgefallen»), `leer` nie gelaufen, `daten_fehlen` ohne `scalp`, `xss` mit Schadtext in Grund, Hinweis und Markt, `gross` mit 12'345'678 Handeln.
 | `gross` | Millionenkonto (lange Zahlen dürfen nichts abschneiden oder überlaufen) |

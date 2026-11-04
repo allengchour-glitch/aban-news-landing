@@ -58,7 +58,7 @@ jobs:
         run: |
           set -eo pipefail
           cd tools/trading/krypto_bot
-          for t in test_pilot test_sammler test_infos test_cockpit test_profit test_calls test_pilot2_plan test_pilot2_live test_pilot2_streng test_testnetz_pruefung test_news_waechter test_autoupdate test_satellit test_satellit_lauf test_scalping_labor; do
+          for t in test_pilot test_sammler test_infos test_cockpit test_profit test_calls test_pilot2_plan test_pilot2_live test_pilot2_streng test_testnetz_pruefung test_news_waechter test_autoupdate test_satellit test_satellit_lauf test_scalping_labor test_fernsicht test_telegram_einrichten; do
             echo "=== $t"
             python "$t.py" | tail -n 3
           done
