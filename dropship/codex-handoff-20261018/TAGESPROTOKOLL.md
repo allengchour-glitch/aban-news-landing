@@ -850,9 +850,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R75 Produkt-/Quellenprüfung | Kleine Auswahl ohne Pagination, vier Produkte nativ gelesen; Originalbilder, verfügbare Storefrontvarianten und aktuelle Tags geprüft | Shopify/Metricool passend, Kanalwächter plus rueckhol ohne Treffer; keine Lager-/Lieferzeit- oder vollständige Varianten-/Rechteabnahme |
 | R75 Bildqualität | Vier Kandidaten und unabhängige Zweitsicht; Kaffeebild wegen veränderter Skalen-/Markenbeschriftung ausgeschlossen | Drei finale1536×1024-PNGs; Gewürztopf als Einzelstück. Lifestyle-Entwürfe ohne Produktfoto-Ersatz |
 | R75 Ablage/Gedächtnis | Drei PNGs, Manifest und Paket mit SHA/Rücklesen gesichert; Revision75 ergänzt | Banner/R74/R72/R73 erhalten; keinShopifyUpload, ThemeWrite, Publish, Report, Kauf-Watch oder neueAutomation; Claude-Empfang unbekannt |
+| R76 Produktzuordnung | Drei Produkte/Varianten und sechs Kategorien gezielt nativ geprüft | Gewürztopf→Vorratsdosen, Kochset→Camping-Geschirr, Matte→Hundewelt; ACTIVE/Tags/CHF/availableForSale bestätigt, CONTINUE und tracked=false; keine Lager-/Lieferzeit-Zusagen |
+| R76 Bilddateien | Drei vorhandene R75-PNGs nativ in Shopify Files hochgeladen; READY und Bildpixel nach CDN-Neukodierung verglichen | Alle drei 1536×1024 und pixelgleich; keine neue Bildgenerierung, kein Produktfoto-Ersatz; präzise SKU-/Farb-/Rechteabnahme offen |
+| R76 Kategorie-Ergänzung | Je eine kompakte Bildkarte ergänzt; fünf Dateien im UNPUBLISHED-Theme gespeichert und exakt zurückgelesen | Bestehende acht Abschnitte, Banner, Reihenfolge und Startseite erhalten; nur Entwurf, kein MAIN-Write/Publish |
+| R76 Browser-/Sprachprüfung | Abgeschlossene begrenzte QA und neue DE/EN/FR-Texte geprüft | 242/242 Prüfungen bestanden in 12/12 Ansichten; 0 fehlgeschlagen, 0 unbekannt; 466 alte FR-Validatorfehler nicht vermehrt, neue Schlüssel vollständig |
+| R76 Übergabe/Gedächtnis | Engen Patch, Belege und Paket mit GitHub-Rücklesen gesichert; Revision 76 vorbereitet | 23 IDs und 22 andere Aufgaben erhalten; keine Reports, Kauf-Watch oder Automation; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R73_20261104] [Endgültige Kategorie-Ergänzungen, bisheriges Banner erhalten](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md). Keine Veröffentlichung oder Verkaufswirkung daraus abgeleitet.
 
 [LUXESTYLE_R74_20261104] [Vier zusätzliche Kategorieillustrationen](KATEGORIEBILDER-20261104-R74.md). Keine Veröffentlichung oder Verkaufswirkung behauptet.
 
 [LUXESTYLE_R75_20261104] [Neue Motive mit anderen Shop-Produkten](PRODUKTBILDER-20261104-R75.md). Kaffee ausgeschlossen, noch keine Website-Einbindung.
+
+[LUXESTYLE_R76_20261104] [Drei zusätzliche Bildkarten im nativen Website-Entwurf](BILDINTEGRATION-20261104-R76.md). Keine Live-Publikation; kreative, genaue SKU-/Bild- und Rechteabnahme offen.
