@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 18,
+    "frames": 540
+  },
+  "hooks": [
+    {
+      "id": "A",
+      "text": [
+        "Dein Raum.",
+        "Neues Licht."
+      ],
+      "visual": "Echte Projektion desselben identifizierten Geräts als Raumauftakt, danach Bedienung.",
+      "openingFrames": [
+        0,
+        60
+      ],
+      "notSeparateNewMaster": true
+    },
+    {
+      "id": "B",
+      "text": [
+        "Licht im Detail."
+      ],
+      "visual": "Nahes tatsächliches Gerätedetail mit erkennbarer Form, danach Bedienung.",
+      "openingFrames": [
+        0,
+        60
+      ],
+      "notSeparateNewMaster": true
+    }
+  ],
+  "timeline": [
+    {
+      "startFrame": 0,
+      "endFrameExclusive": 60,
+      "seconds": "0.00–2.00",
+      "take": "P_PROJECTION for HookA OR P_DETAIL for HookB, one selected master",
+      "overlayA": [
+        "Dein Raum.",
+        "Neues Licht."
+      ],
+      "overlayB": [
+        "Licht im Detail."
+      ]
+    },
+    {
+      "startFrame": 60,
+      "endFrameExclusive": 138,
+      "seconds": "2.00–4.60",
+      "take": "P_OPERATION continuous",
+      "overlay": [
+        "Sternenlicht-Projektor"
+      ]
+    },
+    {
+      "startFrame": 138,
+      "endFrameExclusive": 228,
+      "seconds": "4.60–7.60",
+      "take": "same uninterrupted P_OPERATION",
+      "overlay": [
+        "Aus der Nähe",
+        "entdecken."
+      ]
+    },
+    {
+      "startFrame": 228,
+      "endFrameExclusive": 372,
+      "seconds": "7.60–12.40",
+      "take": "P_PROJECTION exact execution/motif",
+      "overlay": [
+        "Für besondere",
+        "Lichtmomente."
+      ]
+    },
+    {
+      "startFrame": 372,
+      "endFrameExclusive": 420,
+      "seconds": "12.40–14.00",
+      "take": "P_DETAIL",
+      "overlay": []
+    },
+    {
+      "startFrame": 420,
+      "endFrameExclusive": 540,
+      "seconds": "14.00–18.00",
+      "take": "P_HERO continuous",
+      "overlay": [
+        "Produkt ansehen",
+        "LuxeStyle · luxestyle.ch"
+      ]
+    }
+  ],
+  "createdAtUtc": "2026-11-04T07:17:37.794907+00:00",
+  "status": "CONTINUED_STORYBOARD_ONLY_NO_MASTER_MP4",
+  "sameMasterContinued": true,
+  "selectedHook": null,
+  "newStoryboardOrSecondMasterClaimed": false,
+  "inheritedCutPlanUnchanged": true,
+  "newWork": "Offizielle Debian-Copyrightquelle fluid-soundfont 3.1-6 unabhängig gelesen: Soundfont MIT, Debian-Verpackung separat GPL-2+. Historische SF2-Datei/Version/Hash der kanonischen WAV bleiben ungebunden. R52/R67-Schnittplan und vier Aufnahmefenster werden fortgeführt, keine neue Produktion behauptet.",
+  "product": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/56197916361089",
+    "sku": "CJ-1477820492730732544",
+    "status": "ACTIVE",
+    "priceCHF": "34.90",
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech"
+    ],
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "nativeAvailableForSale": true,
+    "publicVariantAvailable": true,
+    "referenceImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "status": 200,
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "bytes": 118008,
+      "binding": "product_level_only",
+      "actuallyViewed": true,
+      "commercialRightsVerified": false,
+      "nativeVariantBindingConfirmed": false,
+      "publicVariantFeaturedImage": null,
+      "sameHashAsR67": true,
+      "visibleObservation": "Weisses Gehäuse und Bügel, schwarze Kuppel mit Sternmotiv, sichtbare Bedienelemente; daneben helle Haube. Kein Nachweis, welches Motivset/Modell die Default-Variante liefert.",
+      "localPath": "/workspace/luxestyle-review/tageslauf-20261104-r77/products/projector-reference.jpg",
+      "actuallyViewedByThisMasterAgent": true
+    },
+    "nativeVariantMediaBindingConfirmed": false,
+    "actualVariantPhysicalUnitAndMotifsBound": false,
+    "photoActuallyViewedByThisMasterAgent": true,
+    "productLevelVideoObserved": {
+      "mediaId": "gid://shopify/Video/77496185356679",
+      "dimensions": [
+        852,
+        480
+      ],
+      "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4",
+      "scope": "Current Shopify delivery source, already observed in R67; not evidence the historical 960x540/25fps original changed.",
+      "downloadedOrAcceptedByThisRun": false,
+      "exactVariantOrRightsBinding": false
+    }
+  },
+  "currentProductProof": {
+    "localPath": "/workspace/luxestyle-review/tageslauf-20261104-r77/products/PRODUCT-CHECKS.json",
+    "sha256": "9ddef61496ffc0887979cfaf85dc192f675b74eabfe0aa556b49499a3732d9fc",
+    "bytes": 18129
+  },
+  "takeRequirements": {
+    "P_OPERATION": {
+      "minimumNativeFrames": 228,
+      "minimumSecondsAt30fps": "7.60",
+      "purpose": "Eine ununterbrochene Bedienung mit ganzer Hand, Kontaktstelle, identifizierter Einheit und sichtbarem Vor-/Nachzustand. Keine unbelegte Ein-/Ausschaltwirkung behaupten.",
+      "usedMasterFrames": [
+        60,
+        228
+      ]
+    },
+    "P_PROJECTION": {
+      "minimumNativeFrames": 264,
+      "minimumSecondsAt30fps": "8.80",
+      "purpose": "Reale Projektion dieser tatsächlichen Default-Ausführung mit belegtem enthaltenem Motiv. Raum-/Gerätezuordnung und Lichtfarbe nachvollziehbar; keine Fremdprojektion einschneiden.",
+      "usedMasterFrames": [
+        228,
+        372
+      ],
+      "optionalHookAFrames": [
+        0,
+        60
+      ]
+    },
+    "P_DETAIL": {
+      "minimumNativeFrames": 168,
+      "minimumSecondsAt30fps": "5.60",
+      "purpose": "Reales Gehäuse-/Bedienelementdetail, Form/Farbe/Logo konsistent. Keine Hauben-Abhebehandlung oder frei erfundene Funktion.",
+      "usedMasterFrames": [
+        372,
+        420
+      ],
+      "optionalHookBFrames": [
+        0,
+        60
+      ]
+    },
+    "P_HERO": {
+      "minimumNativeFrames": 180,
+      "minimumSecondsAt30fps": "6.00",
+      "purpose": "Durchgehendes ruhiges Schlussbild derselben Einheit mit freiem Textraum, keinem Produktwechsel und unverfälschten Lichtfarben.",
+      "usedMasterFrames": [
+        420,
+        540
+      ]
+    }
+  },
+  "inputAcceptanceExtension": "MASTER-INPUT-ACCEPTANCE-20261104-R77.json",
+  "artDirection": {
+    "set": "premium, clean, taupe/cream",
+    "light": "kontrolliertes weiches Seitenlicht, feste Belichtung/Weissabgleich, Flimmerprobe unter tatsächlicher Beleuchtung",
+    "product": "tatsächliche Form, Farbe, Logo, Bedienelemente und belegte Funktion erhalten; keine generischen Stock-/Fotozoom-/KI-Ersatzszenen",
+    "edit": "präzise klare Schnitte; Masterframe138 nur Textwechsel in derselben durchgehenden Bedienungsaufnahme",
+    "textSafeZoneProposal": {
+      "x": [
+        150,
+        930
+      ],
+      "y": [
+        260,
+        1450
+      ],
+      "minimumFontPixelsAt1080": 48,
+      "maxLines": 2,
+      "unverifiedUntilFinalPlatformCrops": true
+    },
+    "sound": "nur die kanonische WAV nach Rechte-/Hörprüfung; keine Stimme/Quellsprache/Fremd-SFX"
+  },
+  "music": {
+    "checkedAt": "2026-11-04T07:09:47.464552+00:00",
+    "repositoryPath": "automation/music/luxe-premium.wav",
+    "localPath": "/workspace/luxestyle-review/media/luxe-premium.wav",
+    "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "bytes": 11343950,
+    "remoteHashMatched": true,
+    "wave": {
+      "channels": 2,
+      "sampleWidthBytes": 2,
+      "sampleRate": 44100,
+      "samples": 2835968,
+      "durationSeconds": 64.30766439909297
+    },
+    "rights": "Debian fluid-soundfont 3.1-6: MIT for soundfont files; GPL-2+ for debian/* only. Actual historical SF2 file/version/hash producing this WAV, composition/recording ownership and intended-use acceptance remain unbound. See MUSIC-LICENCE-PROVENANCE-20261104-R77.json.",
+    "listeningMixAccepted": false,
+    "changed": false,
+    "rightsSourceCountercheckAtUtc": "2026-11-04T07:17:37.794907+00:00",
+    "commercialUseAccepted": false
+  },
+  "gates": {
+    "actualFourOriginalTakes": "unknown/unbound",
+    "exactDefaultPhysicalUnitMotifs": "unknown/unbound",
+    "commercialFilmEditingRights": "unknown",
+    "canonicalMusicFinalRightsAndListeningMix": "unknown",
+    "finalMp4Present": false,
+    "filmOwnerApproved": false,
+    "futurePublicationEligibility": "blocked",
+    "durableMasterChannelHistory": "unknown; no initialization/reset",
+    "sf2PackageLicence": "MIT independently documented for cited Debian version; historical WAV build binding unknown",
+    "actualColourCorrectionOrOperationAccepted": false
+  },
+  "youtubeAudience": "Owner already clarified general audience/not specifically made for kids; do not ask again. Exact future post flag remains a later channel precondition.",
+  "captions": "CONTENT-CAPTIONS-20261104-R77.json; six retained product UTMs for same stable master, conditional text drafts only.",
+  "continuedFrom": {
+    "localPath": "/workspace/luxestyle-review/content-sales-20261103-r67/master/MASTER-STORYBOARD-20261103-R67.json",
+    "sha256": "879e66d50af411994501bd0cc60d27cbf3f702e8c6f94ba206983a77366aba06",
+    "bytes": 8585
+  },
+  "captureWindowRequirements": {
+    "source": "R52 take sheet preserved, not newly developed in R77",
+    "allWindowsAreRequirementsForStillMissingOriginalTakes": true,
+    "measuredSourceFrames": null,
+    "records": [
+      {
+        "takeId": "P_OPERATION",
+        "minimumNativeCaptureFrames": 228,
+        "plannedCandidateRanges": {
+          "takeId": "P_OPERATION",
+          "minimumCaptureFrames": 228,
+          "candidateUsedRanges": [
+            {
+              "masterFrames": [
+                60,
+                228
+              ],
+              "captureFrames": [
+                30,
+                198
+              ]
+            }
+          ],
+          "contactFrameCandidates": [
+            30,
+            114,
+            197
+          ],
+          "additionalHumanFrames": [
+            "realpreactionstate",
+            "actualfingercontact",
+            "realpostactionstate"
+          ],
+          "continuousNoPictureCutAtMasterFrame": 138
+        }
+      },
+      {
+        "takeId": "P_PROJECTION",
+        "minimumNativeCaptureFrames": 264,
+        "plannedCandidateRanges": {
+          "takeId": "P_PROJECTION",
+          "minimumCaptureFrames": 264,
+          "hookAOnlyCaptureRanges": [
+            {
+              "masterFrames": [
+                0,
+                60
+              ],
+              "captureFrames": [
+                30,
+                90
+              ]
+            },
+            {
+              "masterFrames": [
+                228,
+                372
+              ],
+              "captureFrames": [
+                90,
+                234
+              ]
+            }
+          ],
+          "hookBOnlyCaptureRanges": [
+            {
+              "masterFrames": [
+                228,
+                372
+              ],
+              "captureFrames": [
+                30,
+                174
+              ]
+            }
+          ],
+          "contactFrameCandidatesHookA": [
+            30,
+            89,
+            90,
+            162,
+            233
+          ],
+          "additionalHumanFrames": [
+            "sameunitandsurfacebinding",
+            "motifmatchproof"
+          ],
+          "noInsertedOrRecycledProjection": true
+        }
+      },
+      {
+        "takeId": "P_DETAIL",
+        "minimumNativeCaptureFrames": 168,
+        "plannedCandidateRanges": {
+          "takeId": "P_DETAIL",
+          "minimumCaptureFrames": 168,
+          "hookBOnlyCaptureRanges": [
+            {
+              "masterFrames": [
+                0,
+                60
+              ],
+              "captureFrames": [
+                30,
+                90
+              ]
+            },
+            {
+              "masterFrames": [
+                372,
+                420
+              ],
+              "captureFrames": [
+                90,
+                138
+              ]
+            }
+          ],
+          "hookAOnlyCaptureRanges": [
+            {
+              "masterFrames": [
+                372,
+                420
+              ],
+              "captureFrames": [
+                30,
+                78
+              ]
+            }
+          ],
+          "contactFrameCandidatesHookB": [
+            30,
+            89,
+            90,
+            137
+          ],
+          "additionalHumanFrames": [
+            "frontidentity",
+            "domeholderandbuttonidentity"
+          ]
+        }
+      },
+      {
+        "takeId": "P_HERO",
+        "minimumNativeCaptureFrames": 180,
+        "plannedCandidateRanges": {
+          "takeId": "P_HERO",
+          "minimumCaptureFrames": 180,
+          "candidateUsedRanges": [
+            {
+              "masterFrames": [
+                420,
+                540
+              ],
+              "captureFrames": [
+                30,
+                150
+              ]
+            }
+          ],
+          "contactFrameCandidates": [
+            30,
+            90,
+            149
+          ],
+          "additionalHumanFrames": [
+            "ctaSpace",
+            "sameunitandcolourcontinuity"
+          ],
+          "continuousClosingTake": true
+        }
+      }
+    ]
+  }
+}

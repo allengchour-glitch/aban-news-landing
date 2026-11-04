@@ -1,0 +1,465 @@
+{
+  "at": "2026-11-04T07:14:21.271393+00:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Exactly two public collection landing pages, first HTML response only. No catalog pagination, ranking/traffic reports or shop writes. One additional direct GET to corroborate suspicious aggregated robots metadata.",
+  "calls": {
+    "firecrawlScrape": 2,
+    "directCountercheckGet": 1,
+    "writes": 0
+  },
+  "pages": [
+    {
+      "handle": "vorratsdosen",
+      "fetch": {
+        "url": "https://luxestyle.ch/collections/vorratsdosen",
+        "at": "2026-11-04T07:11:47.285Z",
+        "scrapeId": "01a1a564-f5c3-7319-a9dc-d20d36851939",
+        "statusCode": 200,
+        "rawHtmlLength": 2070688,
+        "headLength": 251975,
+        "sourceMaxAge": 0,
+        "headRobotsTags": [],
+        "aggregatedRobots": null,
+        "theme": "{\"name\":\"LuxeStyle – Schrift und Banner 02.11.2026\",\"id\":213013037447,\"schema_name\":\"Horizon\",\"schema_version\":\"3.5.1\",\"theme_store_id\":2481,\"role\":\"main\"}",
+        "r76StringPresent": false,
+        "excerptNote": "Derived evidence: exact title/meta/link/JSON-LD tags from outer head plus exact main element. Other scripts/styles/iframes deliberately omitted. Not a full source HTML."
+      },
+      "title": [
+        "Vorratsdosen & Frischhaltedosen online kaufen | LuxeStyle CH"
+      ],
+      "description": [
+        "Vorratsdosen & Frischhaltedosen für Küche und Kühlschrank. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/vorratsdosen"
+      ],
+      "robots": [],
+      "h1": [
+        "Vorratsdosen & Frischhaltedosen"
+      ],
+      "h2": [
+        "Filtern",
+        "Häufige Fragen zu Vorratsdosen & Frischhaltedosen"
+      ],
+      "productLinkCount": 24,
+      "productLinks": [
+        {
+          "href": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928",
+          "text": "Keramik Gewürztopf im Nordic Style"
+        },
+        {
+          "href": "https://luxestyle.ch/products/bienenwachs-tuch-zum-frischhalten-von-lebensmi-506240",
+          "text": "Bienenwachs-Tuch zum Frischhalten von Lebensmitteln"
+        },
+        {
+          "href": "https://luxestyle.ch/products/japanischer-reiskubel-20-kg-feuchtigkeitsdicht-707264",
+          "text": "Japanischer Reiskübel, 20 kg, feuchtigkeitsdicht"
+        },
+        {
+          "href": "https://luxestyle.ch/products/drehbare-sussigkeiten-box-in-blutenform-058368",
+          "text": "Drehbare Süssigkeiten-Box in Blütenform"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-vorratsglas-mit-gabel-set-602600",
+          "text": "Keramik-Vorratsglas mit Gabel-Set"
+        },
+        {
+          "href": "https://luxestyle.ch/products/ganseblumchen-keramik-vorratsdose-603200",
+          "text": "Gänseblümchen Keramik-Vorratsdose"
+        },
+        {
+          "href": "https://luxestyle.ch/products/frischhaltebox-mit-silikondichtung-514176",
+          "text": "Frischhaltebox mit Silikondichtung"
+        },
+        {
+          "href": "https://luxestyle.ch/products/grosses-keramikgewurzglas-1-2-l-617300",
+          "text": "Grosses Keramikgewürzglas 1,2 L"
+        },
+        {
+          "href": "https://luxestyle.ch/products/doppelfussige-keramikfettglas-mit-holzdeckel-600700",
+          "text": "Doppelfüssige Keramikfettglas mit Holzdeckel"
+        },
+        {
+          "href": "https://luxestyle.ch/products/brotkasten-aus-bambus-und-acryl-623400",
+          "text": "Brotkasten aus Bambus und Acryl"
+        },
+        {
+          "href": "https://luxestyle.ch/products/kinder-snackbehalter-mit-drehscheibe-622500",
+          "text": "Kinder Snackbehälter mit Drehscheibe"
+        },
+        {
+          "href": "https://luxestyle.ch/products/silikon-box-fur-pizza-und-geback-600500",
+          "text": "Silikon-Box für Pizza und Gebäck"
+        },
+        {
+          "href": "https://luxestyle.ch/products/eierbehalter-drehbar-aus-kunststoff-624500",
+          "text": "Eierbehälter drehbar aus Kunststoff"
+        },
+        {
+          "href": "https://luxestyle.ch/products/weisses-drawstring-tasche-fur-gemuse-aee5f4",
+          "text": "Gemüsebeutel weiss mit Zugband"
+        },
+        {
+          "href": "https://luxestyle.ch/products/304-edelstahl-lebensmittelbehalter-mit-luftdic-612900",
+          "text": "304 Edelstahl Lebensmittelbehälter mit luftdichtem Deckel"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-vorratsdose-mit-bambusdeckel-506752",
+          "text": "Keramik-Vorratsdose mit Bambusdeckel"
+        },
+        {
+          "href": "https://luxestyle.ch/products/aufbewahrungsbox-fur-obst-und-sussigkeiten-353408",
+          "text": "Aufbewahrungsbox für Obst und Süssigkeiten"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-gewurzglaser-set-mit-loffeln-899264",
+          "text": "Keramik Gewürzgläser-Set mit Löffeln"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976",
+          "text": "Keramik-Vorratsdose für die Küche"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-vorratsdose-fur-gewurze-736000",
+          "text": "Keramik-Vorratsdose für Gewürze"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-gewurzdose-310-ml-606100",
+          "text": "Keramik-Gewürzdose, 310 ml"
+        },
+        {
+          "href": "https://luxestyle.ch/products/doppeltank-5-kg-reisetank-feuchtigkeits-und-in-601700",
+          "text": "Doppeltank 5 kg Reisetank – Feuchtigkeits- und Insektenfest"
+        },
+        {
+          "href": "https://luxestyle.ch/products/einzelsalzbehalter-aus-keramik-620800",
+          "text": "Einzelsalzbehälter aus Keramik"
+        },
+        {
+          "href": "https://luxestyle.ch/products/keramik-teedose-ice-grey-mit-bambus-deckel-604300",
+          "text": "Keramik Teedose \"Ice Grey\" mit Bambus-Deckel"
+        }
+      ],
+      "collectionLinks": [
+        {
+          "href": "https://luxestyle.ch/collections/kuechenhelfer-vorrat",
+          "text": "Küchenhelfer & Vorrat"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/vorratsdosen/neu",
+          "text": "✨ Neu"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/vorratsdosen/elektronik",
+          "text": "Elektronik"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/vorratsdosen/gadget",
+          "text": "Gadgets"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/vorratsdosen/kueche",
+          "text": "Küche"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/vorratsdosen/aufbewahrung",
+          "text": "Aufbewahrung"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/vorratsdosen#ResultsList",
+          "text": "Zur Ergebnisliste springen"
+        }
+      ],
+      "r76Cards": 0,
+      "schema": [],
+      "mainImages": 86,
+      "imagesMissingAltAttribute": [],
+      "imagesEmptyAltCount": 4,
+      "retainedExcerptJsonLdTypes": [
+        "BreadcrumbList",
+        "ListItem",
+        "ListItem",
+        "ListItem"
+      ]
+    },
+    {
+      "handle": "camping-geschirr-kochsets",
+      "fetch": {
+        "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "at": "2026-11-04T07:11:49.275Z",
+        "scrapeId": "01a1a564-f514-74e9-a548-b279b2c74496",
+        "statusCode": 200,
+        "rawHtmlLength": 2220062,
+        "headLength": 250847,
+        "sourceMaxAge": 0,
+        "headRobotsTags": [],
+        "aggregatedRobots": "none",
+        "theme": "{\"name\":\"LuxeStyle – Schrift und Banner 02.11.2026\",\"id\":213013037447,\"schema_name\":\"Horizon\",\"schema_version\":\"3.5.1\",\"theme_store_id\":2481,\"role\":\"main\"}",
+        "r76StringPresent": false,
+        "excerptNote": "Derived evidence: exact title/meta/link/JSON-LD tags from outer head plus exact main element. Other scripts/styles/iframes deliberately omitted. Not a full source HTML."
+      },
+      "title": [
+        "Camping-Geschirr, Kochsets & Grills online kaufen – LuxeStyle"
+      ],
+      "description": [
+        "Camping-Geschirr, Kochsets & Grills online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/camping-geschirr-kochsets"
+      ],
+      "robots": [],
+      "h1": [
+        "Camping-Geschirr, Kochsets & Grills"
+      ],
+      "h2": [
+        "Filtern",
+        "Häufige Fragen zu Camping-Geschirr, Kochsets & Grills"
+      ],
+      "productLinkCount": 24,
+      "productLinks": [
+        {
+          "href": "https://luxestyle.ch/products/outdoor-kochset-faltbar-d68b2c",
+          "text": "Outdoor Kochset, faltbar"
+        },
+        {
+          "href": "https://luxestyle.ch/products/faltbare-outdoor-bratpfanne-mit-holzgriff-8538a5",
+          "text": "Faltbare Outdoor-Bratpfanne mit Holzgriff"
+        },
+        {
+          "href": "https://luxestyle.ch/products/camping-topfset-aus-harteloxiertem-aluminium-425cf6",
+          "text": "Camping-Topfset aus harteloxiertem Aluminium"
+        },
+        {
+          "href": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500",
+          "text": "Camping Kochset – 3-teilig, leicht"
+        },
+        {
+          "href": "https://luxestyle.ch/products/camping-kochset-mit-topf-und-deckel-186176",
+          "text": "Camping Kochset mit Topf und Deckel"
+        },
+        {
+          "href": "https://luxestyle.ch/products/gewurzbox-fur-camping-687424",
+          "text": "Gewürzbox für Camping"
+        },
+        {
+          "href": "https://luxestyle.ch/products/outdoor-kochset-aus-aluminiumoxid-997632",
+          "text": "Outdoor Kochset aus Aluminiumoxid"
+        },
+        {
+          "href": "https://luxestyle.ch/products/316-edelstahl-backblech-fur-camping-610800",
+          "text": "316 Edelstahl Backblech für Camping"
+        },
+        {
+          "href": "https://luxestyle.ch/products/aufbewahrungstasche-fur-camping-geschirr-628200",
+          "text": "Aufbewahrungstasche für Camping-Geschirr"
+        },
+        {
+          "href": "https://luxestyle.ch/products/camping-grillzange-mit-wender-89da17",
+          "text": "Camping Grillzange mit Wender"
+        },
+        {
+          "href": "https://luxestyle.ch/products/tragbares-camping-topfset-10-teilig-10-stuck-098240",
+          "text": "Tragbares Camping-Topfset, 10-teilig"
+        },
+        {
+          "href": "https://luxestyle.ch/products/titan-schneidebrett-fur-camping-624400",
+          "text": "Titan-Schneidebrett für Camping"
+        },
+        {
+          "href": "https://luxestyle.ch/products/outdoor-kochset-mit-warmesammel-topf-617500",
+          "text": "Outdoor-Kochset mit Wärmesammel-Topf"
+        },
+        {
+          "href": "https://luxestyle.ch/products/bbq-grillbesteck-set-fur-camping-outdoor-302208",
+          "text": "BBQ Grillbesteck-Set für Camping & Outdoor"
+        },
+        {
+          "href": "https://luxestyle.ch/products/outdoor-schultertasche-fur-freizeit-kessel-329792",
+          "text": "Outdoor Schultertasche für Freizeit & Kessel"
+        },
+        {
+          "href": "https://luxestyle.ch/products/outdoor-trinkbecher-mit-strohhalm-632800",
+          "text": "Outdoor Trinkbecher mit Strohhalm"
+        },
+        {
+          "href": "https://luxestyle.ch/products/isolierter-outdoor-kessel-mit-grosser-kapazita-604600",
+          "text": "Isolierter Outdoor-Kessel mit grosser Kapazität"
+        },
+        {
+          "href": "https://luxestyle.ch/products/bbq-set-fur-outdoor-picknicks-b50d18",
+          "text": "BBQ-Set für Outdoor-Picknicks · 7-teilig"
+        },
+        {
+          "href": "https://luxestyle.ch/products/faltbarer-outdoor-camping-grill-e8bec3",
+          "text": "Faltbarer Outdoor Camping Grill"
+        },
+        {
+          "href": "https://luxestyle.ch/products/tragbares-kochset-mit-faltegriff-8c1d58",
+          "text": "Tragbares Kochset mit Faltegriff"
+        },
+        {
+          "href": "https://luxestyle.ch/products/fire-maple-mobile-kitchen-bratpfanne-522624",
+          "text": "Fire Maple Mobile Kitchen Bratpfanne"
+        },
+        {
+          "href": "https://luxestyle.ch/products/picknick-kochset-fur-unterwegs-8-teilig-963968",
+          "text": "Picknick-Kochset für unterwegs (8-teilig)"
+        },
+        {
+          "href": "https://luxestyle.ch/products/faltbarer-holzkohlegrill-fur-unterwegs-521408",
+          "text": "Faltbarer Holzkohlegrill für unterwegs"
+        },
+        {
+          "href": "https://luxestyle.ch/products/faltbarer-silikon-campingkessel-072000",
+          "text": "Faltbarer Silikon-Campingkessel"
+        }
+      ],
+      "collectionLinks": [
+        {
+          "href": "https://luxestyle.ch/collections/camping-outdoor",
+          "text": "Camping"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/camping-geschirr-kochsets/sport",
+          "text": "Sport"
+        },
+        {
+          "href": "https://luxestyle.ch/collections/camping-geschirr-kochsets#ResultsList",
+          "text": "Zur Ergebnisliste springen"
+        }
+      ],
+      "r76Cards": 0,
+      "schema": [],
+      "mainImages": 81,
+      "imagesMissingAltAttribute": [],
+      "imagesEmptyAltCount": 4,
+      "retainedExcerptJsonLdTypes": [
+        "BreadcrumbList",
+        "ListItem",
+        "ListItem",
+        "ListItem"
+      ]
+    }
+  ],
+  "countercheck": {
+    "direct": {
+      "metadata": {
+        "url": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "at": "2026-11-04T07:11:51.824570+00:00",
+        "http": 200,
+        "finalUrl": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+        "contentType": "text/html; charset=utf-8",
+        "xRobotsTag": null,
+        "bytes": 2070245,
+        "sha256": "158b0317ab90cd4e9fa896bce0b53ff221c01053d0928925f919cf3a22f53820",
+        "purpose": "Corroborate aggregated Firecrawl robots=none against the actual root document, not embedded login metadata."
+      },
+      "title": [
+        "Camping-Geschirr, Kochsets & Grills online kaufen – LuxeStyle"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/camping-geschirr-kochsets"
+      ],
+      "robots": [],
+      "rootHeadHasRobotsNone": false,
+      "allRobotsNodes": 0
+    },
+    "aggregation": {
+      "source": "Fresh Firecrawl rawHtml camping-geschirr-kochsets",
+      "at": "2026-11-04T07:13:25.461Z",
+      "aggregatedMetadataRobots": "none",
+      "outerHeadRobots": [],
+      "matches": [
+        {
+          "tag": "<meta name=\"robots\" content=\"none\">",
+          "offset": 878636,
+          "headEnd": 250840,
+          "context": "default: rgb(242, 244, 245);\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <title>\n  Mit Shop einloggen\n</title>\n  \n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <meta name=\"robots\" content=\"none\">\n  <meta name=\"client-region\" content=\"US\">\n<meta name=\"client-is-bot\" content=\"false\">\n<meta name=\"rum-enabled\" content=\"true\">\n\n  <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"https://shopify-assets.shopifycdn.com/shopifycloud/arrive-server/assets/landing/s"
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "vorratsdosen:http200",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:one_relevant_title",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:one_description",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:self_canonical",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:one_h1",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:product_links_present",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:public_main",
+      "pass": true
+    },
+    {
+      "name": "vorratsdosen:no_r76_card_public",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:http200",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:one_relevant_title",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:one_description",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:self_canonical",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:one_h1",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:product_links_present",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:public_main",
+      "pass": true
+    },
+    {
+      "name": "camping-geschirr-kochsets:no_r76_card_public",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "passed": 16,
+    "total": 16,
+    "confirmedDefects": [],
+    "seoWriteProposed": false,
+    "noindexConclusion": "No root-document noindex/none found on either scraped page. Camping raw HTTP countercheck has no root robots meta and no X-Robots-Tag; aggregated Firecrawl none belongs to embedded Shop login head and is not evidence that the collection is noindex.",
+    "r76Public": false,
+    "mainThemeId": "213013037447"
+  },
+  "limitations": [
+    "Not an indexation/ranking/Search Console measurement.",
+    "No crawlability conclusion for robots.txt, which was not requested/read.",
+    "Only first 24 distinct product URLs per page; no whole catalog classification.",
+    "Images with empty alt may be decorative; no blanket missing-alt defect asserted.",
+    "Only outer-head and main excerpts retained from Firecrawl, excluding iframe/script/style bulk. Direct raw countercheck preserved locally; do not publish raw session/tool metadata.",
+    "Existing category navigation, banner, CHF50 public shipping threshold/CHF45 internal threshold and customer domain not modified."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-04T07:14:43.104Z",
+  "scope": "Licence source for the soundfont named in the existing generator, not proof of the historical WAV build or commercial film approval",
+  "source": {
+    "scrapeId": "01a1a568-546c-701c-a156-8e43cb56e1ef",
+    "sourceURL": "https://metadata.ftp-master.debian.org/changelogs/main/f/fluid-soundfont/fluid-soundfont_3.1-6_copyright",
+    "url": "https://metadata.ftp-master.debian.org/changelogs/main/f/fluid-soundfont/fluid-soundfont_3.1-6_copyright",
+    "statusCode": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "timezone": "America/New_York",
+    "proxyUsed": "basic",
+    "indexId": "b7bffead-983a-4f12-83ad-6b6782c6fad3",
+    "creditsUsed": 1,
+    "concurrencyLimited": false
+  },
+  "rawText": "Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\nSource: not existing any more\n        It was downloaded from <http://www.musescore.org/download/fluid-soundfont.tar.gz>\n\nFiles: *\nCopyright: 2000-2002, 2008 Frank Wen <getfrank@gmail.com>\n           2008 Toby Smithe\nLicense: MIT\n Permission is hereby granted, free of charge, to any person\n obtaining a copy of this software and associated documentation\n files (the \"Software\"), to deal in the Software without\n restriction, including without limitation the rights to use,\n copy, modify, merge, publish, distribute, sublicense, and/or sell\n copies of the Software, and to permit persons to whom the\n Software is furnished to do so, subject to the following\n conditions:\n .\n The above copyright notice and this permission notice shall be\n included in all copies or substantial portions of the Software.\n .\n THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n OTHER DEALINGS IN THE SOFTWARE.\n\nFiles: debian/*\nCopyright: 2008 Toby Smithe <tsmithe@ubuntu.com>\nLicense: GPL-2+\n The Debian packaging is licensed under the GPL; either version 2\n of the License, or (at your option) any later version, see\n `/usr/share/common-licenses/GPL-2'.\n",
+  "package": "fluid-soundfont",
+  "packageVersion": "3.1-6",
+  "soundfontFilesLicence": "MIT",
+  "debianPackagingLicence": "GPL-2+",
+  "soundfontCopyright": "2000-2002, 2008 Frank Wen; 2008 Toby Smithe",
+  "permissionGrant": "use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software",
+  "condition": "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+  "actualHistoricalSf2IdentityVerified": false,
+  "actualHistoricalSf2Sha256": null,
+  "buildManifestForCanonicalWav": null,
+  "canonicalMusicCommercialApproval": false,
+  "licenceToWavBinding": "unknown",
+  "generatorOverride": "SF=\"${SF2:-/usr/share/sounds/sf2/FluidR3_GM.sf2}\"",
+  "localReferencedSf2Exists": false,
+  "notes": [
+    "Licence names and permissions are independently evidenced for the cited package.",
+    "The source record states its former upstream source is no longer available; no upstream identity claim is added.",
+    "The production script accepts SF2 override. No historical build receipt links the current canonical WAV to a particular soundfont file/version/hash.",
+    "No new audio generated, installed, substituted or approved.",
+    "Next proof: recover the original build manifest/soundfont file identity and preserve the applicable copyright/permission notice. Do not create a replacement WAV merely to erase the provenance gap."
+  ]
+}

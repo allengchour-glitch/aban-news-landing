@@ -1,0 +1,40 @@
+{
+  "proposalId": "checkout-email3-quality-20261103",
+  "checkedAtUtc": "2026-11-04T07:10:41.179812+00:00",
+  "proposalSource": "dropship/codex-handoff-20261018/CHECKOUT-EMAIL3-FREIGABE-20261103-R64.json",
+  "sameExistingProposal": true,
+  "newTextRevision": false,
+  "flowId": "Vse76a",
+  "messageId": "WNFHjV",
+  "templateId": "WaQaDv",
+  "actionId": "108024959",
+  "freshSubjectOriginal": "Email #3 Subject",
+  "subjectProposed": "Möchtest du deine Bestellung fortsetzen?",
+  "messageDefinitionExactlyMatchesR64": true,
+  "originalHtmlExactlyMatchesR64": true,
+  "originalHtmlSha256": "93ad1f614f1e55dcc7ba816e8eda87c562d9fca6894045248f9ad492d6f469bb",
+  "candidateHtmlSha256": "b7ec08b4a9c5ad40f689e0d8acd74714539c4a12fb2cc2f1a62218891302d95a",
+  "originalThreeHtmlLines": [
+    15,
+    18,
+    19
+  ],
+  "candidateHeading": "Dein Einkauf bei LuxeStyle",
+  "candidateParagraph": "Hey {{ first_name|default:'' }},<br/><br/>du kannst deinen begonnenen Einkauf im Checkout ansehen und fortsetzen. Falls du den Code\n                  <strong>WELCOME10</strong> verwenden möchtest, prüfe die dort angezeigten Bedingungen.",
+  "diffSha256": "eda3c472cd4a42e42981a07ebba7464fb3bea579841f736a5c64611a13c5a75e",
+  "allOtherHtmlLinesIdentical": true,
+  "applicationAllowedNow": false,
+  "sendReady": false,
+  "writes": 0,
+  "messagesSent": 0,
+  "preserve": [
+    "CTA and checkout URL token",
+    "All other template variables/HTML/Coupon token",
+    "Sender fields, tracking flags, action/flow status and delays"
+  ],
+  "blockers": [
+    "Concrete owner approval of this exact text scope not recorded",
+    "Coupon validity, consent, runtime checkout/event rendering and send timing not approved or functionally tested",
+    "Flows and send actions remain draft; no activation or sending approval"
+  ]
+}
