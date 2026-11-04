@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+"""Fixtures für die Übersicht des Cockpits: realistische Zahlen, von Hand nachrechenbar. Schreibt fx/<fall>/{stand,profit,protokoll}.json."""
+import copy
+import json
+import math
+import sys
+from datetime import date, timedelta
+from pathlib import Path
+
+AUS = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / "fx"
+HEUTE = date(2026, 11, 3)
+
+
+def tage(n, ende):
+    return [(ende - timedelta(days=n - 1 - i)).isoformat() for i in range(n)]
+
+
+def kurve(start, ziel, n, amp, phase=0.0):
+    """Glatte, aber unruhige Reihe von start nach ziel (deterministisch)."""
+    out = []
+    for i in range(n):
+        f = i / (n - 1)
+        out.append(start + (ziel - start) * f + amp * math.sin(i * 0.37 + phase) + amp * 0.5 * math.sin(i * 0.91 + phase * 2))
+    out[-1] = ziel
+    return out
+
+
+def position(symbol, menge, einstieg, mark, hebel, liq):
+    gewinn = (mark - einstieg) * menge
+    marge = menge * einstieg / hebel
+    return {"symbol": symbol, "seite": "LONG", "menge": menge, "einstieg": einstieg, "mark": mark, "gewinn": round(gewinn, 4),
+            "gewinn_prozent": gewinn / marge, "kursbewegung": mark / einstieg - 1, "liquidation": liq, "hebel": float(hebel), "wert": round(menge * mark, 2)}
+
+
+POSITIONEN = [
+    position("BTCUSDT", 0.0521, 75100.0, 76677.0, 2, 41180.0),
+    position("ETHUSDT", 1.1, 2210.0, 2249.0, 2, 1160.0),
+    position("SOLUSDT", 0.66, 151.0, 154.2, 2, 80.5),
+    position("LINKUSDT", 7.2, 13.9, 13.4, 2, 7.2),
+    position("DOGEUSDT", 280.0, 0.3571, 0.3704, 2, 0.19),
+]
+OFFEN = round(sum(p["gewinn"] for p in POSITIONEN), 4)
+GESAMT = 5122.95
+WALLET = round(GESAMT - OFFEN, 2)
+
+
+def zeitraum(netto, prozent, offen_bekannt=True):
+    return {"realisiert": round(netto * 0.2, 4), "funding": -1.8, "gebuehren": -3.1, "offen": round(netto * 0.8, 4) if offen_bekannt else None, "netto": netto,
+            "prozent": prozent, "ab": "2026-11-03T00:00", "einzahlungen": 0.0}
+
+
+def profit_voll(modus="TESTNETZ"):
+    kk = [[t, round(v, 4)] for t, v in zip(tage(40, HEUTE), kurve(0, 18.6, 40, 2.0))]
+    return {"modus": modus, "wallet": WALLET, "offen": OFFEN, "gesamt": GESAMT,
+            "zeitraeume": {"heute": zeitraum(34.2, 0.0067), "7_tage": zeitraum(128.6, 0.0258), "30_tage": zeitraum(176.4, 0.0357, offen_bekannt=False), "gesamt": zeitraum(122.95, 0.0246)},
+            "pro_markt": {"BTCUSDT": 82.16}, "positionen": copy.deepcopy(POSITIONEN),
+            "tage": [[t, round(math.sin(i) * 6 + 1, 2)] for i, t in enumerate(tage(30, HEUTE))], "kumuliert": kk, "seit": "2026-09-24", "nicht_umgerechnet": []}
+
+
+def gesundheit_voll():
+    return [
+        {"name": "Futures-Schlüssel (Pilot)", "ok": True, "text": "gesetzt"},
+        {"name": "ETH-Sparplan", "ok": None, "text": "aus (einschalten: setx ETH_SPARPLAN_BETRAG \"50\")"},
+        {"name": "Claude (KI-Trader)", "ok": False, "text": "noch keine Einschätzung — letzter Versuch 2026-11-03 02:31 UTC gescheitert: Claude nicht erreichbar: AuthenticationError: 401 invalid x-api-key"},
+        {"name": "Handy-Nachrichten", "ok": None, "text": "nicht eingerichtet (optional)"},
+        {"name": "Letzter Pilot-Lauf", "ok": True, "text": "Tagesstand 2026-11-02"},
+        {"name": "Letzter Lauf mit Aufträgen", "ok": False, "text": "2026-11-03 18:04 UTC — ⚠️ Mindestens ein Auftrag scheiterte — bitte im Konto prüfen. · Grund: SOLUSDT BUY 0.7: HTTP 400: Binance-Code -2019 Margin is insufficient"},
+        {"name": "Telegram-Calls mitlesen", "ok": False, "text": "noch nie gelaufen — calls.bat starten"},
+        {"name": "Not-Aus", "ok": True, "text": "aus"},
+        {"name": "Auto-Handel", "ok": True, "text": "an"},
+        {"name": "Täglicher Start (Aufgabenplanung)", "ok": True, "text": "eingerichtet (02:30)"},
+        {"name": "Nachkontrolle (Aufgabenplanung)", "ok": False, "text": "fehlt — Knopf «Täglich automatisch einrichten» legt sie mit an"},
+        {"name": "Satellit (Testnetz-Zusatz)", "ok": None, "warnung": True, "text": "3 Position(en): SOL, LINK, DOGE · letzter Lauf mit Warnung: ⚠️ Satellit SOL: aufbauen: BUY 0.7 ✗ HTTP 400 -2019"},
+        {"name": "Markt-Infos", "ok": True, "text": "vor 5 Std. geladen"},
+    ]
+
+
+def maerkte_voll():
+    gemeinsam = {"bremse": None, "trend_tage": 150, "short_erlaubt": True, "max_hebel": 2.0, "risiko": 2.0, "hebel": 2.0, "hebel_roh": 2.0, "stand": "2026-11-02"}
+    btc = dict(gemeinsam, markt="BTC", symbol="BTCUSDT", kurs=76677.0, schnitt=70487.69, schwankung=0.32, mvrv={"tag": "2026-11-01", "wert": 1.45},
+               detektor={"ok": False, "skill_2j": 0.22, "einbruch_1j": 0.1}, stop_long=72000.0, stop_short=80000.0, stop=72851.8, stop_berechnet=72000.0,
+               broker={"stop": 72851.8, "position": 0.0521})
+    eth = dict(gemeinsam, markt="ETH", symbol="ETHUSDT", kurs=2249.0, schnitt=2157.18, schwankung=0.36, trend_tage=200, mvrv={"tag": "2026-11-01", "wert": 1.03},
+               detektor={"ok": False, "skill_2j": 0.41, "einbruch_1j": 0.2}, stop_long=2100.0, stop_short=2400.0, stop=2120.9, stop_berechnet=2100.0,
+               broker={"stop": 2120.9, "position": 1.1})
+    return [btc, eth]
+
+
+def kurse_voll():
+    t = tage(90, date(2026, 11, 2))
+    btc = [round(v, 2) for v in kurve(68200.0, 76677.0, 90, 1400.0)]
+    eth = [round(v, 2) for v in kurve(2420.0, 2249.0, 90, 70.0, 1.3)]
+    sb = [round(v, 2) for v in kurve(70100.0, 70487.69, 90, 120.0, 0.4)]
+    se = [round(v, 2) for v in kurve(2190.0, 2157.18, 90, 12.0, 0.9)]
+    return ({"BTC": [[a, b] for a, b in zip(t, btc)], "ETH": [[a, b] for a, b in zip(t, eth)]},
+            {"BTC": [[a, b] for a, b in zip(t, sb)], "ETH": [[a, b] for a, b in zip(t, se)]})
+
+
+def satellit_voll():
+    return {"aus": False, "grund": "", "anteil": 0.2, "echtgeld": False, "hat_schluessel": True, "hinweis": "", "entschieden": "2026-10-29",
+            "ziele": [{"symbol": "SOLUSDT", "gewicht": 0.1}, {"symbol": "LINKUSDT", "gewicht": 0.1}, {"symbol": "DOGEUSDT", "gewicht": 0.1}, {"symbol": "ADAUSDT", "gewicht": 0.1}],
+            "positionen": [{"symbol": "SOLUSDT", "spot": "SOLUSDT", "menge": 0.66, "stop": 138.4, "seit": "2026-10-30", "stop_anteil": 0.083},
+                           {"symbol": "LINKUSDT", "spot": "LINKUSDT", "menge": 7.2, "stop": 12.2, "seit": "2026-10-30", "stop_anteil": 0.1},
+                           {"symbol": "DOGEUSDT", "spot": "DOGEUSDT", "menge": 280.0, "stop": 0.3198, "seit": "2026-10-30", "stop_anteil": 0.137}],
+            "ausgestoppt": [{"symbol": "ADAUSDT", "tag": "2026-11-01"}], "naechster_tag": "2026-11-05",
+            "letzter_lauf": {"zeit": "2026-11-03T02:41:20+00:00", "ok": False, "auftraege": 1, "positionen": 3, "hinweise": ["⚠️ Satellit SOL: aufbauen: BUY 0.7 ✗ HTTP 400 -2019"]}}
+
+
+def auftraege_voll():
+    z = lambda s: s  # noqa: E731
+    return [
+        {"zeit": z("2026-11-03T18:04:15+00:00"), "symbol": "SOLUSDT", "modus": "testnetz", "trocken": False, "seite": "BUY", "menge": 0.7, "nur_verkleinern": False,
+         "status": "HTTP 400: /fapi/v1/order: Binance-Code -2019 Margin is insufficient", "fehler": True},
+        {"zeit": z("2026-11-03T18:04:13+00:00"), "symbol": "ETHUSDT", "modus": "testnetz", "trocken": False, "seite": "BUY", "menge": 0.435, "nur_verkleinern": False, "status": "FILLED", "fehler": False},
+        {"zeit": z("2026-11-03T18:04:12+00:00"), "symbol": "BTCUSDT", "modus": "testnetz", "trocken": False, "seite": "BUY", "menge": 0.0128, "nur_verkleinern": False, "status": "FILLED", "fehler": False},
+        {"zeit": z("2026-11-02T02:41:09+00:00"), "symbol": "LINKUSDT", "modus": "testnetz", "trocken": False, "seite": "BUY", "menge": 7.2, "nur_verkleinern": False, "status": "FILLED", "fehler": False},
+        {"zeit": z("2026-11-01T02:40:55+00:00"), "symbol": "ADAUSDT", "modus": "testnetz", "trocken": False, "seite": "SELL", "menge": 410.0, "nur_verkleinern": True, "status": "FILLED", "fehler": False},
+        {"zeit": z("2026-10-30T02:40:02+00:00"), "symbol": "BTCUSDT", "modus": "testnetz", "hinweis": "Kurs 71234 liegt schon unter dem Stop 72000.00 — heute kein Long."},
+    ]
+
+
+def lage_voll():
+    return {"angst_gier": {"tag": "2026-11-02", "wert": 37.0}, "funding_btc": {"tag": "2026-11-02", "wert": 0.0001}, "funding_eth": {"tag": "2026-11-02", "wert": 0.00008},
+            "mvrv_btc": {"tag": "2026-11-01", "wert": 1.42}, "mvrv_eth": {"tag": "2026-11-01", "wert": 1.02}, "vix": {"tag": "2026-11-02", "wert": 21.1}, "zins10": {"tag": "2026-11-02", "wert": 4.94}}
+
+
+def stand_voll(modus="TESTNETZ"):
+    ks = kurve(5000.0, GESAMT, 41, 18.0)
+    kurse, schnitt = kurse_voll()
+    return {"zeit": "2026-11-03T22:43:00+00:00", "modus": modus, "modus_spot": modus, "gesundheit": gesundheit_voll(), "notaus": False, "pause": False, "maerkte": maerkte_voll(),
+            "konto": {"wert": GESAMT, "seit_start": 0.0246, "seit_woche": 0.0258, "unter_hoch": -0.012, "start_tag": "2026-09-24", "modus": modus.lower()},
+            "kontostand": [[a, round(b, 2)] for a, b in zip(tage(41, HEUTE), ks)], "auftraege": auftraege_voll(), "lage": lage_voll(),
+            "ki": {"letzter": None, "vergleich": {}, "kosten": 0.0}, "sammler": None, "backtest": None, "risiko": {"stufe": 2.0, "test": {}, "anteil": 0.8},
+            "telegram": False, "calls": None, "programm": {"geladen": "2026-11-03.7524d36", "auf_platte": "2026-11-03.7524d36"},
+            "satellit": satellit_voll(), "kurse": kurse, "kurse_schnitt": schnitt}
+
+
+def fall_voll():
+    return stand_voll(), profit_voll()
+
+
+def fall_leer():
+    s = stand_voll()
+    p = profit_voll()
+    p["positionen"], p["gesamt"], p["offen"], p["wallet"] = [], 5000.0, 0.0, 5000.0
+    for n in p["zeitraeume"].values():
+        n.update(netto=0.0, prozent=0.0, offen=0.0)
+    s["konto"].update(wert=5000.0, seit_start=0.0, seit_woche=0.0, unter_hoch=0.0)
+    s["kontostand"] = [[t, 5000.0] for t in tage(5, HEUTE)]
+    s["maerkte"] = [dict(m, hebel=0.0, hebel_roh=0.0, stop=None, stop_berechnet=None, broker=None) for m in maerkte_voll()]
+    s["auftraege"] = []
+    s["satellit"].update(entschieden=None, ziele=[], positionen=[], ausgestoppt=[], letzter_lauf=None)
+    s["gesundheit"] = [g for g in gesundheit_voll() if g["ok"] is not False][:6] + [{"name": "Nachkontrolle (Aufgabenplanung)", "ok": True, "text": "eingerichtet"}]
+    return s, p
+
+
+def fall_echtgeld():
+    s, p = stand_voll("ECHTGELD"), profit_voll("ECHTGELD")
+    s["satellit"]["echtgeld"] = True  # wie im Server: derselbe Umgebungsschalter → der Satellit ist mit Echtgeld aus
+    return s, p
+
+
+def fall_gross():
+    """Lange Zahlen (Millionenkonto) — nichts darf überlaufen."""
+    s, p = fall_voll()
+    p["gesamt"] = 1234567.89
+    p["wallet"] = 1200000.12
+    p["offen"] = 34567.77
+    for k, v in zip(("heute", "7_tage", "30_tage", "gesamt"), (12345.67, 45678.9, 123456.78, 1234567.89)):
+        p["zeitraeume"][k].update(netto=v, prozent=0.0123)
+    p["positionen"][0].update(gewinn=123456.78, wert=12345678.9, menge=160.1234)
+    s["konto"].update(wert=1234567.89)
+    s["kontostand"] = [[a, b * 240] for a, b in s["kontostand"]]
+    return s, p
+
+
+def fall_daten_fehlen():
+    s = stand_voll()
+    s.update(konto=None, kontostand=[], maerkte=[], auftraege=[], lage={}, satellit=None, kurse={}, kurse_schnitt={}, risiko={"stufe": 1.0, "test": {}, "anteil": 0.5})
+    s["gesundheit"] = [{"name": "Futures-Schlüssel (Pilot)", "ok": False, "text": "fehlt — ohne Schlüssel nur Probeläufe"}]
+    return s, {"hinweis": "Profit nicht lesbar: URLError"}
+
+
+def fall_xss():
+    s, p = fall_voll()
+    boese = "<img src=x onerror=window.__xss=1>"
+    s["gesundheit"][0].update(name="Name " + boese, text="Text " + boese)
+    s["auftraege"][0].update(symbol="SOL" + boese, status="Grund " + boese)
+    s["auftraege"][5].update(hinweis="Hinweis " + boese)
+    s["maerkte"][0].update(markt="BTC" + boese, bremse="Bremse " + boese)
+    s["satellit"].update(hinweis="Buch " + boese, grund="Grund " + boese)
+    s["satellit"]["ziele"][0]["symbol"] = "A" + boese + "USDT"
+    s["satellit"]["ausgestoppt"][0]["symbol"] = "B" + boese + "USDT"
+    s["lage"]["angst_gier"]["tag"] = "2026-11-02" + boese
+    p["positionen"][0]["symbol"] = "BTC" + boese + "USDT"
+    return s, p
+
+
+FAELLE = {"voll": fall_voll, "leer": fall_leer, "echtgeld": fall_echtgeld, "daten_fehlen": fall_daten_fehlen, "xss": fall_xss, "gross": fall_gross}
+
+if __name__ == "__main__":
+    for name, f in FAELLE.items():
+        s, p = f()
+        ordner = AUS / name
+        ordner.mkdir(parents=True, exist_ok=True)
+        (ordner / "stand.json").write_text(json.dumps(s, ensure_ascii=False), encoding="utf-8")
+        (ordner / "profit.json").write_text(json.dumps(p, ensure_ascii=False), encoding="utf-8")
+        (ordner / "protokoll.json").write_text(json.dumps({"protokoll": [], "laufend": []}), encoding="utf-8")
+    print("Fixtures:", ", ".join(FAELLE), "→", AUS)
+    print("offen =", OFFEN, "wallet =", WALLET, "gesamt =", GESAMT, "wert gesamt =", round(sum(p['wert'] for p in POSITIONEN), 2))
