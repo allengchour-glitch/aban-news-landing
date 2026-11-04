@@ -862,6 +862,12 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R77 Klaviyo / Freigabeentwurf | Ein aktueller Flowreport; drei Definitionen und Email3-Originale exakt mit bestehendem R64-Diff abgeglichen | Alle draft; derselbe eine Textentwurf unverändert und nicht angewendet, USD/CHF getrennt |
 | R77 DNS / Codegrundlage | Vier genehmigte Zielrecords öffentlich gegengeprüft; PR2669 aktuell gelesen | Zielwerte nicht beobachtet; kein bestätigter DNS-Writer. PR gemergt, produktive Ausführung dadurch unbekannt |
 | R77 Dokumentation | Morgenpaket und Belege mit konkretem Diff, SHA und exaktem Rücklesen gesichert; Revision 77 vorbereitet | 23 IDs und Historien erhalten; keine neue Automation, Frequenz oder Kundenansprache; Claude-Empfang unbekannt |
+| R78 neue Produktmotive | Mini-Schirm und Panda mit anderen aktuellen Shopprodukten referenzbasiert gestaltet; zwei PNGs tatsächlich erzeugt | Je 1536 × 1024 px; unabhängig visuell plausibel, keine Originalproduktfotos; nicht live |
+| R78 Produkt-/Referenzbindung | Zwei Varianten, CHF-Preise, öffentliche Kaufbarkeit, Tracking/Policy und eindeutige Variantenbilder geprüft | CHF 16.90/14.90, ACTIVE/available, CONTINUE/tracked=false; Schmuckschale und Retro-Uhr ohne Generierung ausgeschlossen |
+| R78 Bildqualität / Crop | Form, Farbe und Hauptdetails beider Bilder gegen die Referenzen geprüft | Leichte Stilisierung, präzise SKU-/Rechteabnahme offen; Schirm vollständig in 3:2 oder contain, tatsächliche Karten-Crops noch prüfen |
+| R78 Kategoriebedienung | Acht Taschen-/Beauty-Ansichten DE/FR bei 390 und 1440 px und eine Preisfilter-Gegenprobe abgeschlossen | 132 ausgewertete Bedingungen bestanden, vier mobile Filterauswahlen unbekannt; 15 Zusatzpager-Links verlieren Preisgrenze, kein Fix angewendet |
+| R78 externe Medien | Zwei bestehende MP4s gehasht und dekodiert, 41 Kontaktframes zweifach und Tonspuren begrenzt gegen Pflicht-WAV geprüft | Bewegung sichtbar; 10,68/10,16 Sekunden und 25 fps, Varianten-, Rechte- und Musikbindung offen; keine Masterfreigabe oder Terminsänderung |
+| R78 Kontinuität | R77-Tagesstand wiederverwendet; zwei Bilder und Text-/JSON-Belege für die Übergabe zusammengestellt | Keine neuen Reports, Kauf-Watch, Theme-/Socialwrites oder Automation; 23 IDs erhalten, Claude-Empfang unbekannt |
 
 [LUXESTYLE_R73_20261104] [Endgültige Kategorie-Ergänzungen, bisheriges Banner erhalten](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md). Keine Veröffentlichung oder Verkaufswirkung daraus abgeleitet.
 
@@ -872,3 +878,5 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 [LUXESTYLE_R76_20261104] [Drei zusätzliche Bildkarten im nativen Website-Entwurf](BILDINTEGRATION-20261104-R76.md). Keine Live-Publikation; kreative, genaue SKU-/Bild- und Rechteabnahme offen.
 
 [LUXESTYLE_R77_20261104] [Morgenpaket](MORGENPAKET-20261104-R77.md) · [Belege](LAUFBELEGE-20261104-R77.json). Tagesberichte für 28.10.–03.11. abgeschlossen; ohne konkreten neuen Gegenprüfgrund heute nicht erneut lesen. Kauf-Watch bleibt beendet; bestehende Frequenz und Befugnisse unverändert.
+
+[LUXESTYLE_R78_20261104] [Weiterarbeit](WEITERARBEIT-20261104-R78.md) · [Belege](WEITERARBEIT-BELEGE-20261104-R78.json). Vorhandene Tagesberichte und Tagespolicy unverändert übernommen; keine erneuten Kennzahlen-/Flowreports. Kauf-Watch bleibt beendet; bestehende Frequenz und Befugnisse unverändert.
