@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 79,
-  "updatedAt": "2026-11-04T13:10:11.240259+00:00",
+  "revision": 80,
+  "updatedAt": "2026-11-04T16:24:40.989Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -127,12 +127,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r65_varianten_motivabweichung_zwei_felder_entwurf_alte_variante_ungebunden",
+      "state": "r80_katzenhaengematte_material_unbelegt_kategorie_falsch_entwurf_weitere_faelle_erhalten",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
-      "lastEvidenceDate": "2026-11-03",
-      "belegArt": "ZWEI_CSV_GEGENZAEHLUNG_BEGRUNDETE_PRODUKT_BILD_GEGENPROBE_ENTWURF_KEIN_PRODUKTIVWRITE",
-      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden.",
-      "nextAllowedStep": "Zuerst exakt R65-Motivabsatz plus ersten SEO-Motivsatz zur Freigabe prüfen. Ohne konkrete Freigabe kein Write. Bei Freigabe frische Originalbytes/Hashes, heutige6Varianten und 3 Bildbindungen neu binden, nur diese 2 Textteile ändern; aktuellen SEO-Titel und alle anderen Felder/Tags einschliesslich auswahl-offen erhalten und nativ/öffentlich zurücklesen. Keine Material-/Mass-/Rechtefreigabe daraus ableiten. Neue, eng begrenzte Quellenfortsetzung R42: Baum-Motivabsatz erhalten; alte produkweite Blumenfarben für neue Typen nicht pauschal bestätigen. Keine bereits vorhandenen Motivpräfixe nochmals ergänzen. Für die sechs aktuellen Blumen-SKUs CJJT261357801AZ, CJJT261357802BY, CJJT261357803CX, CJJT261357804DW, CJJT261357805EV, CJJT261357806FU und Baum-SKU CJ-2504250729121615200 konkrete Originalmodell-/Variantenquelle zu Material, Massen und Rahmenumfang belegen; alte Blumen-SKU CJ-2511220828321604600 ist nur historische R42-Referenz; aktuelle Merchant-Quellbeschreibung erst mit legitimem Zugang prüfen. Die frühere umfangreiche Code-/Materialarbeit bleibt separat offen: Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
+      "lastEvidenceDate": "2026-11-04",
+      "belegArt": "R80_NATIVE_SHOPIFY_PUBLIC_HTTP_HISTORISCHE_EINZELPRODUKTQUELLE",
+      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden. R80: Katzenhängematte16610153759111 frisch mit Stoff-/Holzangaben ohne Komponentenbeleg und falscher Reisenapf-/Feedkategorie gelesen. Historischer BLOCKED_NEEDS_SOURCE bestätigt; Materialentfernung nur als enger Entwurf, keine Shopänderung.",
+      "nextAllowedStep": "Für Katzenhängematte16610153759111 artikel-/variantenbezogene Lieferantenquelle zu Bezug/Gestell/Befestigung lesen; bis dahin engen Materialentfernungsdiff zur Freigabe erhalten und passende offizielle Kategorie gezielt verifizieren. Keine geratenen Faser-/Rahmenangaben, keine Shop-/Feedänderung ohne Freigabe. Andere bisherige Fälle unverändert fortführen: Zuerst exakt R65-Motivabsatz plus ersten SEO-Motivsatz zur Freigabe prüfen. Ohne konkrete Freigabe kein Write. Bei Freigabe frische Originalbytes/Hashes, heutige6Varianten und 3 Bildbindungen neu binden, nur diese 2 Textteile ändern; aktuellen SEO-Titel und alle anderen Felder/Tags einschliesslich auswahl-offen erhalten und nativ/öffentlich zurücklesen. Keine Material-/Mass-/Rechtefreigabe daraus ableiten. Neue, eng begrenzte Quellenfortsetzung R42: Baum-Motivabsatz erhalten; alte produkweite Blumenfarben für neue Typen nicht pauschal bestätigen. Keine bereits vorhandenen Motivpräfixe nochmals ergänzen. Für die sechs aktuellen Blumen-SKUs CJJT261357801AZ, CJJT261357802BY, CJJT261357803CX, CJJT261357804DW, CJJT261357805EV, CJJT261357806FU und Baum-SKU CJ-2504250729121615200 konkrete Originalmodell-/Variantenquelle zu Material, Massen und Rahmenumfang belegen; alte Blumen-SKU CJ-2511220828321604600 ist nur historische R42-Referenz; aktuelle Merchant-Quellbeschreibung erst mit legitimem Zugang prüfen. Die frühere umfangreiche Code-/Materialarbeit bleibt separat offen: Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -265,6 +265,11 @@
           "path": "dropship/codex-handoff-20261018/BLUMEN-MOTIV-FREIGABE-20261103-R65.json",
           "gitBlobSha": "8a54e9c555b434170e44dc82f89f40fd5b61a2f3",
           "readAt": "2026-11-03T08:45:15.678968+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MATERIALPRUEFUNG-20261104-R80.md",
+          "gitBlobSha": "5a7fedbeef7d702e7dbc7d9e263c7ad12715ee12",
+          "readAt": "2026-11-04T16:24:40.974Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -340,6 +345,14 @@
             "R42 Leinwandset: PS/Kunststoff versus Holz und30×40 versus40×60 widersprüchlich; genaue CJ-SKU-Spezifikation fehlt. Einzelbild:80×160, Druckverfahren/Gewicht und tatsächlicher Rahmenumfang nicht unabhängig belegt. Motivfoto ersetzt keine Material-/Massquelle."
           ],
           "previousLastEvidencePreserved": "Exact old evidence retained as prefix; R42 work remains historical, not counted anew."
+        },
+        {
+          "at": "2026-11-04T16:23:45.014Z",
+          "sourceRevision": 79,
+          "previousState": "r65_varianten_motivabweichung_zwei_felder_entwurf_alte_variante_ungebunden",
+          "previousNextAllowedStep": "Zuerst exakt R65-Motivabsatz plus ersten SEO-Motivsatz zur Freigabe prüfen. Ohne konkrete Freigabe kein Write. Bei Freigabe frische Originalbytes/Hashes, heutige6Varianten und 3 Bildbindungen neu binden, nur diese 2 Textteile ändern; aktuellen SEO-Titel und alle anderen Felder/Tags einschliesslich auswahl-offen erhalten und nativ/öffentlich zurücklesen. Keine Material-/Mass-/Rechtefreigabe daraus ableiten. Neue, eng begrenzte Quellenfortsetzung R42: Baum-Motivabsatz erhalten; alte produkweite Blumenfarben für neue Typen nicht pauschal bestätigen. Keine bereits vorhandenen Motivpräfixe nochmals ergänzen. Für die sechs aktuellen Blumen-SKUs CJJT261357801AZ, CJJT261357802BY, CJJT261357803CX, CJJT261357804DW, CJJT261357805EV, CJJT261357806FU und Baum-SKU CJ-2504250729121615200 konkrete Originalmodell-/Variantenquelle zu Material, Massen und Rahmenumfang belegen; alte Blumen-SKU CJ-2511220828321604600 ist nur historische R42-Referenz; aktuelle Merchant-Quellbeschreibung erst mit legitimem Zugang prüfen. Die frühere umfangreiche Code-/Materialarbeit bleibt separat offen: Vollständigen Gesamtpatch gegen erneut aktuellen main und dokumentierte Vorher-Hashes prüfen, vollständige CI unter Node22 in legitimer Umgebung abschliessen. Gemeinsamen Ledger, Quellenaltersregel, App-Grant und konkreten Produktscope vor jedem echten Materiallauf belegen. Keine Wiederholung bereits bestätigter Produktwrites; keine pauschalen Material-/Massannahmen.",
+          "previousBelegArt": "ZWEI_CSV_GEGENZAEHLUNG_BEGRUNDETE_PRODUKT_BILD_GEGENPROBE_ENTWURF_KEIN_PRODUKTIVWRITE",
+          "previousLastEvidenceDate": "2026-11-03"
         }
       ],
       "additionalProductCleanups": [
@@ -445,6 +458,22 @@
         "oldExportVariantId": "gid://shopify/ProductVariant/56225328824705",
         "nativeOldVariantNode": null,
         "googleOfferState": "unknown"
+      },
+      "run80": {
+        "at": "2026-11-04T16:23:45.014Z",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/MATERIALPRUEFUNG-20261104-R80.md",
+          "gitBlobSha": "5a7fedbeef7d702e7dbc7d9e263c7ad12715ee12",
+          "readAt": "2026-11-04T16:24:40.974Z"
+        },
+        "productId": "16610153759111",
+        "variantId": "67948229788039",
+        "sku": "CJYD321170701AZ",
+        "materialStatus": "unverified",
+        "shopifyCategory": "ap-2-14-6",
+        "googleCategory": "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers",
+        "writesToShop": 0,
+        "previousCasesPreserved": true
       }
     },
     {
@@ -3938,8 +3967,8 @@
           "readAt": "2026-11-03T21:26:39.655036+00:00"
         },
         "firstProductTopPx": {
-          "1440": 2705.484375,
-          "390": 2708.484375
+          "390": 2708.484375,
+          "1440": 2705.484375
         },
         "productCards": 25,
         "proposalOnly": true,
@@ -7148,7 +7177,7 @@
                 "channels": 2,
                 "sampleRate": "48000",
                 "integratedLUFS": -15.8,
-                "measuredTruePeakDbTP": -4.0,
+                "measuredTruePeakDbTP": -4,
                 "sourceMusicIdentity": "unknown",
                 "voiceoverPresence": "unknown_no_listening_acceptance",
                 "commercialRights": "unknown"
@@ -7207,21 +7236,21 @@
                     "maxAbsoluteNormalizedCrossCorrelation": 0.1253846036865637,
                     "signedCorrelation": -0.1253846036865637,
                     "referenceOffsetSeconds": 15.256,
-                    "needleDurationSeconds": 2.0
+                    "needleDurationSeconds": 2
                   },
                   {
                     "clipStartSeconds": 4,
                     "maxAbsoluteNormalizedCrossCorrelation": 0.09528096065477763,
                     "signedCorrelation": 0.09528096065477763,
                     "referenceOffsetSeconds": 41.76875,
-                    "needleDurationSeconds": 2.0
+                    "needleDurationSeconds": 2
                   },
                   {
                     "clipStartSeconds": 7,
                     "maxAbsoluteNormalizedCrossCorrelation": 0.11085226672523671,
                     "signedCorrelation": 0.11085226672523671,
                     "referenceOffsetSeconds": 24.120166666666666,
-                    "needleDurationSeconds": 2.0
+                    "needleDurationSeconds": 2
                   }
                 ],
                 "audioSourceIdentity": "unknown",
@@ -7244,21 +7273,21 @@
                     "maxAbsoluteNormalizedCrossCorrelation": 0.12675171626409218,
                     "signedCorrelation": 0.12675171626409218,
                     "referenceOffsetSeconds": 15.732083333333334,
-                    "needleDurationSeconds": 2.0
+                    "needleDurationSeconds": 2
                   },
                   {
                     "clipStartSeconds": 4,
                     "maxAbsoluteNormalizedCrossCorrelation": 0.21187871156964844,
                     "signedCorrelation": -0.21187871156964844,
                     "referenceOffsetSeconds": 18.9315,
-                    "needleDurationSeconds": 2.0
+                    "needleDurationSeconds": 2
                   },
                   {
                     "clipStartSeconds": 7,
                     "maxAbsoluteNormalizedCrossCorrelation": 0.1160097457748821,
                     "signedCorrelation": 0.1160097457748821,
                     "referenceOffsetSeconds": 48.504,
-                    "needleDurationSeconds": 2.0
+                    "needleDurationSeconds": 2
                   }
                 ],
                 "audioSourceIdentity": "unknown",
@@ -7276,8 +7305,8 @@
               "knownCanonicalExcerptWithGainAndDC": {
                 "maxAbsoluteNormalizedCrossCorrelation": 0.9999999999999482,
                 "signedCorrelation": 0.9999999999999482,
-                "referenceOffsetSeconds": 3.0,
-                "needleDurationSeconds": 6.0
+                "referenceOffsetSeconds": 3,
+                "needleDurationSeconds": 6
               },
               "passed": true
             }
@@ -8108,6 +8137,17 @@
         "readAt": "2026-11-04T13:10:11.240259+00:00"
       },
       "action": "R79 setzt R78 fort: Shop und sechs Metricool-Kanalidentitäten frisch passend; 32 Planobjekte/49 PENDING-Kanalzustände, 30 gemeinsame UUIDs unverändert und bestehender Threads-Termin heute 18:30 samt Register/Bildhash in 13 Bedingungen bestätigt. Keine neue Publikation oder Planung. Preisfilterfehler per einem öffentlichen GET an 15 Zusatzpagerlinks erneut belegt; genau fünf lokale Liquid-Zeilen vorbereitet, beide Validatorstände grün, Patch vorwärts/rückwärts bytegenau, kein Theme-Write. Gleicher Projektor-Master mit aktuellem Produkt-/Musikabgleich und vermessener Textgeometrie, Farbpaarkontrast und Lesedauer weiterentwickelt; weiterhin keine Master-MP4 oder Rechte-/Filmabnahme. R77-Kennzahlen/Klaviyo nur datiert wiederverwendet, keine neue Kauf-Watch-Abfrage und keine Konto-/Automationsänderung."
+    },
+    {
+      "revision": 80,
+      "at": "2026-11-04T16:23:45.014Z",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/MATERIALPRUEFUNG-20261104-R80.md",
+        "gitBlobSha": "5a7fedbeef7d702e7dbc7d9e263c7ad12715ee12",
+        "readAt": "2026-11-04T16:24:40.974Z"
+      },
+      "action": "Gezielte Inhaberfrage zur Katzenhängematte geprüft: Holz/Stoff unbestätigt, Reisenapf-/Feedkategorie fachlich falsch; enger Materialentfernungsdiff dokumentiert, kein Shopwrite."
     }
   ],
   "salesGoal": {
@@ -8294,9 +8334,9 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 79,
-    "path": "dropship/codex-handoff-20261018/MITTAGSPAKET-20261104-R79.md",
-    "gitBlobSha": "021dbcecbdc9e97b9e211030c4b3a8e07941eb53",
+    "documentationRevision": 80,
+    "path": "dropship/codex-handoff-20261018/MATERIALPRUEFUNG-20261104-R80.md",
+    "gitBlobSha": "5a7fedbeef7d702e7dbc7d9e263c7ad12715ee12",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "29249a27f6362708ebcbb43b7b6efaeb7e02fa97",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
@@ -8304,7 +8344,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
     "scope": "continued_verified_work_without_repeated_daily_reports",
-    "latestCanonicalRevision": 79,
+    "latestCanonicalRevision": 80,
     "snapshotNote": "R79 setzt R78 fort: Shop und sechs Metricool-Kanalidentitäten frisch passend; 32 Planobjekte/49 PENDING-Kanalzustände, 30 gemeinsame UUIDs unverändert und bestehender Threads-Termin heute 18:30 samt Register/Bildhash in 13 Bedingungen bestätigt. Keine neue Publikation oder Planung. Preisfilterfehler per einem öffentlichen GET an 15 Zusatzpagerlinks erneut belegt; genau fünf lokale Liquid-Zeilen vorbereitet, beide Validatorstände grün, Patch vorwärts/rückwärts bytegenau, kein Theme-Write. Gleicher Projektor-Master mit aktuellem Produkt-/Musikabgleich und vermessener Textgeometrie, Farbpaarkontrast und Lesedauer weiterentwickelt; weiterhin keine Master-MP4 oder Rechte-/Filmabnahme. R77-Kennzahlen/Klaviyo nur datiert wiederverwendet, keine neue Kauf-Watch-Abfrage und keine Konto-/Automationsänderung.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -10689,6 +10729,194 @@
           "readAt": "2026-11-04T08:39:22.685627+00:00"
         }
       }
+    },
+    {
+      "at": "2026-11-04T16:24:40.989Z",
+      "sourceRevision": 79,
+      "previous": {
+        "documentationRevision": 79,
+        "path": "dropship/codex-handoff-20261018/MITTAGSPAKET-20261104-R79.md",
+        "gitBlobSha": "021dbcecbdc9e97b9e211030c4b3a8e07941eb53",
+        "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+        "entryGitBlobSha": "29249a27f6362708ebcbb43b7b6efaeb7e02fa97",
+        "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+        "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
+        "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+        "receiptState": "unknown_missing_receipt",
+        "scope": "continued_verified_work_without_repeated_daily_reports",
+        "latestCanonicalRevision": 79,
+        "snapshotNote": "R79 setzt R78 fort: Shop und sechs Metricool-Kanalidentitäten frisch passend; 32 Planobjekte/49 PENDING-Kanalzustände, 30 gemeinsame UUIDs unverändert und bestehender Threads-Termin heute 18:30 samt Register/Bildhash in 13 Bedingungen bestätigt. Keine neue Publikation oder Planung. Preisfilterfehler per einem öffentlichen GET an 15 Zusatzpagerlinks erneut belegt; genau fünf lokale Liquid-Zeilen vorbereitet, beide Validatorstände grün, Patch vorwärts/rückwärts bytegenau, kein Theme-Write. Gleicher Projektor-Master mit aktuellem Produkt-/Musikabgleich und vermessener Textgeometrie, Farbpaarkontrast und Lesedauer weiterentwickelt; weiterhin keine Master-MP4 oder Rechte-/Filmabnahme. R77-Kennzahlen/Klaviyo nur datiert wiederverwendet, keine neue Kauf-Watch-Abfrage und keine Konto-/Automationsänderung.",
+        "merchantCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+          "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+          "readAt": "2026-11-01T20:21:03.842254Z"
+        },
+        "descriptionCsvSupplement": {
+          "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+          "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+          "readAt": "2026-11-01T20:32:24.782248Z"
+        },
+        "visibilitySupplement": {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+          "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+          "readAt": "2026-11-01T20:50:50.314044Z"
+        },
+        "imageSupplement": {
+          "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+          "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+          "readAt": "2026-11-01T21:14:05.412770Z"
+        },
+        "budgetCarouselSupplement": {
+          "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.json",
+          "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
+          "readAt": "2026-11-01T21:34:54.648570Z"
+        },
+        "beautySportSupplement": {
+          "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+          "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+          "readAt": "2026-11-01T21:49:46.970046Z"
+        },
+        "seasonImagesSupplement": {
+          "path": "dropship/codex-handoff-20261018/WINTER-WEIHNACHTSBILDER-20261101-R47.json",
+          "gitBlobSha": "3dcf753fa396085023323242ef7648da3689dd5d",
+          "readAt": "2026-11-01T22:03:08.787599Z"
+        },
+        "dailyPackageR48": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+          "gitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+          "readAt": "2026-11-02T07:11:58.785394Z"
+        },
+        "visibilitySupplementR49": {
+          "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json",
+          "gitBlobSha": "e84d0ade44da06c97fb5a2a215fe0bf8ed2efbc8",
+          "readAt": "2026-11-02T09:45:57.309290Z"
+        },
+        "categoryQualitySupplementR50": {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+          "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+          "readAt": "2026-11-02T10:12:23.372462Z"
+        },
+        "currentMainObservationR50": {
+          "id": "213013037447",
+          "source": {
+            "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+            "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+            "readAt": "2026-11-02T10:12:23.372462Z"
+          },
+          "oldDraftNotSafeToPublishWithoutFreshFullDiff": true
+        },
+        "techCategoryStructureSupplementR51": {
+          "path": "dropship/codex-handoff-20261018/TECHNIK-UNTERKATEGORIEN-20261102-R51.json",
+          "gitBlobSha": "141087901a0a6d69f5f2f4a1d3f2845364aee996",
+          "readAt": "2026-11-02T11:11:11.833553Z"
+        },
+        "afternoonPackageR52": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R52.json",
+          "gitBlobSha": "01277347cfd36eed0e0ef35ed7b93b6673290c2e",
+          "readAt": "2026-11-02T13:22:43.077820Z"
+        },
+        "masterAcceptanceSupplementR52": {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBOGEN-20261102-R52.md",
+          "gitBlobSha": "67c7d2f2dc2188cfe47081aac36b4cd521e9742d",
+          "readAt": "2026-11-02T13:22:43.077820Z"
+        },
+        "claudePublicationInstructionR53": {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+          "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+          "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        "currentMainWidthCandidateR53": {
+          "source": {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+            "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+            "readAt": "2026-11-02T15:57:58.185375Z"
+          },
+          "mainTheme": "213013037447",
+          "filename": "templates/collection.json",
+          "beforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+          "candidateMd5": "bbacad38aabc5e292ed819b3d1b01782",
+          "singleRuleOnly": true,
+          "nativeWritten": false,
+          "published": false
+        },
+        "welcomeApplicationScopeR53": {
+          "source": {
+            "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+            "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+            "readAt": "2026-11-02T15:57:58.185375Z"
+          },
+          "targetClarification": "resolved_website_only",
+          "ownerApprovalState": "freigabeentwurf_website_only_excluded",
+          "applicationAllowedNow": false
+        },
+        "eveningPackageR54": {
+          "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261102-R54.json",
+          "gitBlobSha": "8833412a8099c41b45761a0d40258bde3525fdcd",
+          "readAt": "2026-11-02T18:26:50.969075Z"
+        },
+        "masterContentSupplementR54": {
+          "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261102-R54.md",
+          "gitBlobSha": "2e9de9d69c3fdedc8741434a98ab5d6af1ee0616",
+          "readAt": "2026-11-02T18:26:50.969075Z"
+        },
+        "minimaxAccessCorrectionR55": {
+          "path": "dropship/codex-handoff-20261018/MINIMAX-ZUGANG-20261102-R55.md",
+          "gitBlobSha": "5796bfea4bcc84dde7d7135dd4e2dbab19fd7367",
+          "readAt": "2026-11-02T18:41:37.650465Z"
+        },
+        "musicListeningDraftR56": {
+          "path": "dropship/codex-handoff-20261018/MUSIK-HOERENTWURF-20261102-R56.md",
+          "gitBlobSha": "ce126e84d3f8539037ec726e5dc498c6c7a9942f",
+          "readAt": "2026-11-02T19:19:14.777771+00:00"
+        },
+        "lampComparisonR57": {
+          "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+          "ref": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+          "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+          "readAt": "2026-11-02T19:31:54.226882+00:00",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829"
+        },
+        "merchantFixR58": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261102-R58.md",
+          "gitBlobSha": "d4a30c01cd938af9326d0f50923494768f0b00a0",
+          "readAt": "2026-11-02T20:13:28.392663+00:00"
+        },
+        "merchantExportsAndImageFixesR59": {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-EXPORT-BELEGE-20261102-R59.json",
+          "gitBlobSha": "34475f9f4be64224ad67c0da1bcc5073169511c4",
+          "readAt": "2026-11-02T21:09:36.975076+00:00"
+        },
+        "categoryImagesR74": {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.json",
+          "gitBlobSha": "8366461666e170cce0cf3a43e66482a4a5b0b4e5",
+          "readAt": "2026-11-03T23:41:40.385568+00:00"
+        },
+        "productScenesR75": {
+          "path": "dropship/codex-handoff-20261018/PRODUKTBILDER-20261104-R75.json",
+          "gitBlobSha": "98fcfb2574dc03c41c5768f7bc182d19d88285d2",
+          "readAt": "2026-11-03T23:56:36.896210+00:00"
+        },
+        "imageIntegrationR76": {
+          "path": "dropship/codex-handoff-20261018/BILDINTEGRATION-20261104-R76.json",
+          "gitBlobSha": "3f902a3865e888ec59ed8da32d1b004f24363f38",
+          "readAt": "2026-11-04T06:37:37.844824+00:00"
+        },
+        "morningRunR77": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json",
+          "gitBlobSha": "46220aa594f1337959ba6409fdf813bc6d9ec515",
+          "readAt": "2026-11-04T07:29:25.340075+00:00"
+        },
+        "followUpRunR78": {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-BELEGE-20261104-R78.json",
+          "gitBlobSha": "fdca6087e9679a0092ad4cdd68b8187a03490e27",
+          "readAt": "2026-11-04T08:39:22.685627+00:00"
+        },
+        "followUpRunR79": {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R79.json",
+          "gitBlobSha": "d2494cf81df01fb36b4c0a54bffbbb880c1299d8",
+          "readAt": "2026-11-04T13:10:11.240259+00:00"
+        }
+      }
     }
   ],
   "websiteFilmReviewR68": {
@@ -10745,5 +10973,15 @@
     },
     "note": "R79 setzt R78 fort: Shop und sechs Metricool-Kanalidentitäten frisch passend; 32 Planobjekte/49 PENDING-Kanalzustände, 30 gemeinsame UUIDs unverändert und bestehender Threads-Termin heute 18:30 samt Register/Bildhash in 13 Bedingungen bestätigt. Keine neue Publikation oder Planung. Preisfilterfehler per einem öffentlichen GET an 15 Zusatzpagerlinks erneut belegt; genau fünf lokale Liquid-Zeilen vorbereitet, beide Validatorstände grün, Patch vorwärts/rückwärts bytegenau, kein Theme-Write. Gleicher Projektor-Master mit aktuellem Produkt-/Musikabgleich und vermessener Textgeometrie, Farbpaarkontrast und Lesedauer weiterentwickelt; weiterhin keine Master-MP4 oder Rechte-/Filmabnahme. R77-Kennzahlen/Klaviyo nur datiert wiederverwendet, keine neue Kauf-Watch-Abfrage und keine Konto-/Automationsänderung.",
     "nextStep": "Zur Freigabe steht genau der lokale Fünfzeilen-Preisfilterpatch. Nach freigegebener Übernahme frische Hashgegenprobe, gezielte Zustandsprüfungen und Rücklesen; bis dahin keine behobene Livewirkung behaupten. Den gleichen Projektor-Master erst nach exakter Default-/Originaltake-/Rechtebindung mit dem nun vermessenen Textplan produzieren. Bestehende Social-Termine erhalten; R77-Tagesreports nicht wiederholen und Kauf-Watch beendet lassen."
+  },
+  "followUpRunR80": {
+    "at": "2026-11-04T16:23:45.014Z",
+    "source": {
+      "path": "dropship/codex-handoff-20261018/MATERIALPRUEFUNG-20261104-R80.md",
+      "gitBlobSha": "5a7fedbeef7d702e7dbc7d9e263c7ad12715ee12",
+      "readAt": "2026-11-04T16:24:40.974Z"
+    },
+    "note": "Eng begrenzte Materialfrage, keine Wiederholung der Tagesreports.",
+    "nextStep": "Lieferantenmaterial pro Komponente verifizieren; vorbereiteten Korrekturdiff erst nach Freigabe anwenden."
   }
 }
