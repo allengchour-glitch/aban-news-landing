@@ -9,7 +9,8 @@
  * Zwischenspeicher /tmp/optionen_uebersetzt.json (wiederaufnehmbar), (3) jede Übersetzung wird geprüft (nicht leer, ≤ 60 Zeichen, kein ß, kein englischer Rest,
  * keine neue Zahl), (4) `plane()` aus lib/option_umbenennen.mjs sichert pro Produkt: Kollisionen, Marken, erfundene Zahlen.
  * Nur NAMEN ändern sich — Varianten, Preise, Bilder, SKUs, Bestellungen bleiben. TROCKENLAUF IST VORGABE (LIVE=1 schreibt).
- * Schalter: LIMIT=n (Produkte schreiben), STAPEL=40, PARALLEL=3, NUR_UEBERSETZEN=1 (nur Zwischenspeicher füllen), PROBE=n (n Beispiele zeigen).
+ * Schalter: LIMIT=n (Produkte schreiben), STAPEL=40, PARALLEL=3, NUR_UEBERSETZEN=1 (nur Zwischenspeicher füllen), PROBE=n (n Beispiele zeigen),
+ * GANZ=1 (eine Option nur umbenennen, wenn ALLE ihre englischen Werte übersetzt sind: sonst stünde «Small / Gross» nebeneinander).
  */
 import { readFileSync, writeFileSync, existsSync, appendFileSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
@@ -20,6 +21,7 @@ import { plane } from './lib/option_umbenennen.mjs';
 import { bulk } from './optionen_reparieren.mjs';
 
 const LIVE = process.env.LIVE === '1', LIMIT = Number(process.env.LIMIT || 1e9), STAPEL = Number(process.env.STAPEL || 40), PARALLEL = Number(process.env.PARALLEL || 3);
+const GANZ = process.env.GANZ === '1';   // 04.11.2026: nur ganze Optionen umbenennen (keine Mischung aus Deutsch und Englisch)
 const CACHE = '/tmp/optionen_uebersetzt.json';
 
 /** Klar englische Wörter (mehrdeutige wie «Set», «Mini», «Box», «Band», «Standard» sind im Schweizer Shop-Deutsch gebräuchlich und zählen NICHT). */
@@ -47,6 +49,28 @@ export function uebersetzungOk(alt, neu) {
   return n;
 }
 
+/** Deterministische Ergänzung für häufige, eindeutige Muster, die Wörterbuch und KI liegen lassen. 04.11.2026: «Small» blieb stehen, daneben stand schon «Gross» (Mischung in einer Option). null = kein Muster. */
+export function ergaenzung(w) {
+  const s = String(w ?? '').trim();
+  let m;
+  if ((m = /^(small|medium|large)( size)?$/i.exec(s))) return { small: 'Klein', medium: 'Mittel', large: 'Gross' }[m[1].toLowerCase()];
+  if (/^extra large$/i.test(s)) return 'Extra gross';
+  if ((m = /^(\d+)\s?pcs$/i.exec(s))) return `${m[1]} Stk.`;
+  if ((m = /^(\d+)\s?pack$/i.exec(s))) return `${m[1]}er-Pack`;
+  if ((m = /^(us )?size\s?(\d+(?:\.\d+)?)$/i.exec(s))) return `${m[1] ? 'US-' : ''}Grösse ${m[2]}`;
+  return null;
+}
+
+/** Welche Werte werden umbenannt? ganz=true: eine Option nur dann, wenn ALLE ihre englischen Werte übersetzt sind (sonst stünde «Small / Gross» nebeneinander). Rein, getestet. */
+export function waehleWunsch(optionen, c, ganz) {
+  const wunsch = {}; let unvollstaendig = 0;
+  for (const o of optionen) {
+    if (ganz && o.werte.some(w => !c[w]?.neu)) { unvollstaendig++; continue; }
+    for (const w of o.werte) if (c[w]?.neu) (wunsch[o.name] ||= {})[w] = c[w].neu;
+  }
+  return { wunsch, unvollstaendig };
+}
+
 const AUFTRAG = `Übersetze diese Varianten-Bezeichnungen eines Schweizer Online-Shops ins Deutsche (Schweizer Schreibweise: ss statt ß). Es sind Farben, Muster, Modelle, Grössen- und Set-Angaben aus Lieferantendaten.
 Regeln: kurz wie auf einem Etikett; Farben deutsch (Black→Schwarz, Navy→Marineblau, Apricot→Aprikose, Rose Red→Rosenrot); Mehrfachfarben mit « / » trennen; Zahlen, Masse und Einheiten UNVERÄNDERT übernehmen (nur «to» zwischen Zahlen → «–», «cm/mm» mit Leerzeichen);
 Eigennamen und Codes (z. B. «CK», «A1», Modellnummern) unverändert lassen; nichts hinzufügen, nichts erklären, keine Marken erfinden; «Ordinary» → «Standard», «Gift Box» → «Geschenkbox», «Set1» → «Set 1».
@@ -59,6 +83,7 @@ function cacheSchreiben(c) { writeFileSync(CACHE, JSON.stringify(c)); }
 async function uebersetzeWerte(werte, c) {
   // Früher abgelehnte Antworten der KI mit der aktuellen Prüfung neu bewerten (kein neuer KI-Aufruf)
   for (const [w, e] of Object.entries(c)) if (e && !e.neu && e.roh) { const ok = uebersetzungOk(w, e.roh); if (ok) c[w] = { neu: ok, weg: e.weg, neubewertet: true }; }
+  for (const w of werte) { const e = ergaenzung(w); if (e && uebersetzungOk(w, e)) c[w] = { neu: uebersetzungOk(w, e), weg: 'ergaenzung' }; }
   const offen = werte.filter(w => !(w in c));
   // 1) deterministisch
   const rest = [];
@@ -103,10 +128,12 @@ async function main() {
   if (process.env.NUR_UEBERSETZEN === '1') return;
 
   const aufgaben = [];
+  let unvollstaendig = 0;
   for (const p of produkte) {
-    const wunsch = {}; for (const o of p.optionen) for (const w of o.werte) if (c[w]?.neu) (wunsch[o.name] ||= {})[w] = c[w].neu;
+    const { wunsch, unvollstaendig: u } = waehleWunsch(p.optionen, c, GANZ); unvollstaendig += u;
     if (Object.keys(wunsch).length) aufgaben.push({ ...p, wunsch });
   }
+  if (GANZ) console.log(`GANZ=1: ${unvollstaendig} Optionen bleiben unverändert (nicht alle englischen Werte übersetzbar)`);
   console.log(`Produkte mit mindestens einem brauchbaren Vorschlag: ${aufgaben.length}`);
   const proben = Number(process.env.PROBE || 12);
   for (const a of aufgaben.sort(() => 0.5 - Math.random()).slice(0, proben)) console.log(`  ${a.handle.slice(0, 38)} · ${Object.entries(a.wunsch).map(([o, m]) => o + ': ' + Object.entries(m).slice(0, 3).map(([k, v]) => `«${k}»→«${v}»`).join(', ')).join(' ; ')}`);
