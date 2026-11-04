@@ -31,15 +31,40 @@
     offen:   { aLo: 55,  aLu: 10,   aRo: -55,  aRu: -10,   bLo: 4,  bLu: 0,  bRo: -4, bRu: 0 }
   };
 
+  function mischen(hex, ziel, anteil) {   // Farbe mit Weiss (255) oder Schwarz (0) mischen
+    const n = parseInt(hex.slice(1), 16), c = [n >> 16 & 255, n >> 8 & 255, n & 255].map((v) => Math.round(v + (ziel - v) * anteil));
+    return '#' + c.map((v) => v.toString(16).padStart(2, '0')).join('');
+  }
+  function verlaeufe(svg, kleid) {
+    let defs = svg.querySelector('#sk-defs');
+    if (!defs) {
+      defs = M.svg('defs', { id: 'sk-defs' }, svg);
+      const rad = (id, cx, cy, r, stops) => { const e = M.svg('radialGradient', { id: id, cx: cx, cy: cy, r: r }, defs); stops.forEach((st) => M.svg('stop', { offset: st[0], 'stop-color': st[1], 'stop-opacity': st[2] === undefined ? 1 : st[2] }, e)); };
+      rad('sk-kopf', '.64', '.28', '.9', [[0, '#ffffff'], [.45, '#f6f3ea'], [1, '#aaa38f']]);          // Kugelschattierung, Licht oben rechts
+      rad('sk-hand', '.6', '.3', '.9', [[0, '#ffffff'], [.6, '#f3f0e6'], [1, '#bdb6a4']]);
+      rad('sk-schuh', '.62', '.3', '.9', [[0, '#5a5a66'], [1, '#0e0e12']]);
+      rad('sk-schatten', '.5', '.5', '.5', [[0, '#14141c', .42], [.6, '#14141c', .18], [1, '#14141c', 0]]);   // weicher Schlagschatten
+    }
+    if (kleid && !svg.querySelector('[id="sk-t-' + kleid.slice(1) + '"]')) {
+      const l = M.svg('linearGradient', { id: 'sk-t-' + kleid.slice(1), x1: '0.15', y1: '0', x2: '0.95', y2: '1' }, defs);
+      [[0, mischen(kleid, 255, .32)], [.45, kleid], [1, mischen(kleid, 0, .38)]].forEach((st) => M.svg('stop', { offset: st[0], 'stop-color': st[1] }, l));
+    }
+    return defs;
+  }
+
   function Stickman(parent, o) {
     o = o || {};
     const x = o.x || 0, y = o.y || 0, s = o.s || 1, kleid = o.kleid || '#7aa64f', flicken = o.flicken || '#c9a05a';
     const g = (p, a) => M.svg('g', a || {}, p);
     const linie = (p, x1, y1, x2, y2, w) => M.svg('line', { x1: x1, y1: y1, x2: x2, y2: y2, stroke: STRICH, 'stroke-width': w || 8, 'stroke-linecap': 'round' }, p);
+    const glied = (p, x1, y1, x2, y2) => { linie(p, x1, y1, x2, y2, 8); M.svg('line', { x1: x1 + 2.2, y1: y1 + 2, x2: x2 + 2.2, y2: y2 - 2, stroke: 'rgba(255,255,255,.32)', 'stroke-width': 2.4, 'stroke-linecap': 'round' }, p); };
 
     const root = g(parent, { transform: `translate(${x},${y}) scale(${s})` });
+    const wurzel = parent.ownerSVGElement || parent;
+    verlaeufe(wurzel, kleid);
+    const licht = o.licht || '#ffe9b3';   // Farbe des Randlichts (Sonne/Feuer von rechts)
     const schatten = g(root);                      // Bodenschatten: folgt der Figur nur seitwärts
-    M.svg('ellipse', { cx: 0, cy: 4, rx: 82, ry: 13, fill: 'rgba(30,30,40,.18)' }, schatten);
+    M.svg('ellipse', { cx: -46, cy: 6, rx: 128, ry: 20, fill: 'url(#sk-schatten)' }, schatten);
     const mover = g(root);                         // Verschiebung beim Gehen
     const beine = g(mover);
     const koerper = g(mover);                      // Arme, Gewand, Kopf (atmet)
@@ -54,27 +79,31 @@
     }
     function handschuh(j, laenge) {   // grosse weisse Handschuh-Hand am Ende des Unterarms
       const h = g(j.el, { transform: `translate(0,${laenge})` });
-      M.svg('ellipse', { cx: -17, cy: 12, rx: 9, ry: 13, fill: HAUT, stroke: STRICH, 'stroke-width': 5, transform: 'rotate(18 -17 12)' }, h);   // Daumen
-      M.svg('ellipse', { cx: 0, cy: 22, rx: 19, ry: 23, fill: HAUT, stroke: STRICH, 'stroke-width': 5 }, h);
+      M.svg('ellipse', { cx: -17, cy: 12, rx: 9, ry: 13, fill: 'url(#sk-hand)', stroke: STRICH, 'stroke-width': 5, transform: 'rotate(18 -17 12)' }, h);   // Daumen
+      M.svg('ellipse', { cx: 0, cy: 22, rx: 19, ry: 23, fill: 'url(#sk-hand)', stroke: STRICH, 'stroke-width': 5 }, h);
       M.svg('path', { d: 'M-6 30 v12 M6 30 v12', stroke: STRICH, 'stroke-width': 3.5, 'stroke-linecap': 'round', fill: 'none' }, h);
     }
     function schuh(j, richtung) {
-      M.svg('ellipse', { cx: richtung * 15, cy: 50, rx: 22, ry: 10, fill: STRICH }, j.el);
+      M.svg('ellipse', { cx: richtung * 15, cy: 50, rx: 22, ry: 10, fill: 'url(#sk-schuh)' }, j.el);
     }
     const P0 = POSEN.ruhig;
     // Beine (Hüfte y = -98)
-    const bLo = gelenk('bLo', beine, -17, -98, P0.bLo); linie(bLo.el, 0, 0, 0, 50);
-    const bLu = gelenk('bLu', bLo.el, 0, 50, P0.bLu);   linie(bLu.el, 0, 0, 0, 44); schuh(bLu, -1);
-    const bRo = gelenk('bRo', beine, 17, -98, P0.bRo);  linie(bRo.el, 0, 0, 0, 50);
-    const bRu = gelenk('bRu', bRo.el, 0, 50, P0.bRu);   linie(bRu.el, 0, 0, 0, 44); schuh(bRu, 1);
+    const bLo = gelenk('bLo', beine, -17, -98, P0.bLo); glied(bLo.el, 0, 0, 0, 50);
+    const bLu = gelenk('bLu', bLo.el, 0, 50, P0.bLu);   glied(bLu.el, 0, 0, 0, 44); schuh(bLu, -1);
+    const bRo = gelenk('bRo', beine, 17, -98, P0.bRo);  glied(bRo.el, 0, 0, 0, 50);
+    const bRu = gelenk('bRu', bRo.el, 0, 50, P0.bRu);   glied(bRu.el, 0, 0, 0, 44); schuh(bRu, 1);
     // Arme (Schulter y = -172, unter dem Gewand ansetzend)
-    const aLo = gelenk('aLo', koerper, -30, -172, P0.aLo); linie(aLo.el, 0, 0, 0, 62);
-    const aLu = gelenk('aLu', aLo.el, 0, 62, P0.aLu);      linie(aLu.el, 0, 0, 0, 58); handschuh(aLu, 58);
-    const aRo = gelenk('aRo', koerper, 30, -172, P0.aRo);  linie(aRo.el, 0, 0, 0, 62);
-    const aRu = gelenk('aRu', aRo.el, 0, 62, P0.aRu);      linie(aRu.el, 0, 0, 0, 58); handschuh(aRu, 58);
+    const aLo = gelenk('aLo', koerper, -30, -172, P0.aLo); glied(aLo.el, 0, 0, 0, 62);
+    const aLu = gelenk('aLu', aLo.el, 0, 62, P0.aLu);      glied(aLu.el, 0, 0, 0, 58); handschuh(aLu, 58);
+    const aRo = gelenk('aRo', koerper, 30, -172, P0.aRo);  glied(aRo.el, 0, 0, 0, 62);
+    const aRu = gelenk('aRu', aRo.el, 0, 62, P0.aRu);      glied(aRu.el, 0, 0, 0, 58); handschuh(aRu, 58);
     // Gewand: schlichte Tunika mit ausgefranstem Saum und Flicken
     const tun = g(koerper);
-    M.svg('path', { d: 'M-40 -184 Q0 -194 40 -184 L54 -96 l-10 12 l-10 -10 l-12 12 l-12 -12 l-12 12 l-12 -12 l-12 12 l-10 -10 l-10 10 Z', fill: kleid, stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, tun);
+    M.svg('path', { d: 'M-40 -184 Q0 -194 40 -184 L54 -96 l-10 12 l-10 -10 l-12 12 l-12 -12 l-12 12 l-12 -12 l-12 12 l-10 -10 l-10 10 Z', fill: 'url(#sk-t-' + kleid.slice(1) + ')', stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, tun);
+    // Falten und Randlicht rechts (Licht von rechts oben)
+    M.svg('path', { d: 'M-18 -178 q6 40 -4 74 M8 -176 q8 36 2 70 M26 -172 q4 30 -2 62', fill: 'none', stroke: 'rgba(0,0,0,.22)', 'stroke-width': 3, 'stroke-linecap': 'round' }, tun);
+    M.svg('path', { d: 'M35 -176 L47 -100', fill: 'none', stroke: licht, 'stroke-width': 3, 'stroke-linecap': 'round', opacity: .6 }, tun);
+    M.svg('ellipse', { cx: 0, cy: -184, rx: 44, ry: 11, fill: 'rgba(20,12,6,.28)' }, tun);   // Kinnschatten auf dem Gewand
     M.svg('rect', { x: -26, y: -150, width: 28, height: 26, rx: 4, fill: flicken, stroke: STRICH, 'stroke-width': 3.5, transform: 'rotate(-6 -12 -137)' }, tun);
     M.svg('path', { d: 'M-22 -146 h20 M-22 -138 h20 M-22 -130 h20', stroke: STRICH, 'stroke-width': 2, 'stroke-dasharray': '4 3', fill: 'none', opacity: .7, transform: 'rotate(-6 -12 -137)' }, tun);
     M.svg('circle', { cx: 22, cy: -118, r: 14, fill: flicken, stroke: STRICH, 'stroke-width': 3.5 }, tun);
@@ -82,11 +111,13 @@
     // Kopf (gross, rund, doppelt gezogene Kontur wie gekritzelt)
     const kopf = g(koerper), HY = -245;
     M.svg('circle', { cx: 2, cy: HY - 1, r: 59, fill: 'none', stroke: STRICH, 'stroke-width': 2.5, opacity: .55 }, kopf);
-    M.svg('circle', { cx: 0, cy: HY, r: 58, fill: HAUT, stroke: STRICH, 'stroke-width': 6 }, kopf);
+    M.svg('circle', { cx: 0, cy: HY, r: 58, fill: 'url(#sk-kopf)', stroke: STRICH, 'stroke-width': 6 }, kopf);
+    M.svg('path', { d: `M-40 ${HY + 40} A58 58 0 0 0 20 ${HY + 56}`, fill: 'none', stroke: 'rgba(70,55,35,.18)', 'stroke-width': 9, 'stroke-linecap': 'round' }, kopf);      // Eigenschatten unten links
+    M.svg('path', { d: `M18 ${HY - 53} A55 55 0 0 1 52 ${HY - 14}`, fill: 'none', stroke: licht, 'stroke-width': 5, 'stroke-linecap': 'round', opacity: .9 }, kopf);   // Randlicht oben rechts
     // wildes Haar: Striche vom Scheitel nach aussen (Zufall mit festem Seed → bei jedem Lauf gleich)
     const rz = M.rnd(o.haarSeed || 21), haar = g(kopf);
     for (let i = 0; i < 21; i++) {
-      const w = (-176 + i * (172 / 20) + (rz() - .5) * 8) * Math.PI / 180, r0 = 54, len = 16 + rz() * rz() * 52 + (i % 4 === 0 ? 22 : 0), kr = (rz() - .5) * 34;
+      const w = (-158 + i * (136 / 20) + (rz() - .5) * 6) * Math.PI / 180, r0 = 54, len = 16 + rz() * rz() * 52 + (i % 4 === 0 ? 22 : 0), kr = (rz() - .5) * 34;
       const x0 = Math.cos(w) * r0, y0 = HY + Math.sin(w) * r0, x1 = Math.cos(w + kr / 160) * (r0 + len), y1 = HY + Math.sin(w + kr / 160) * (r0 + len);
       M.svg('path', { d: `M${x0.toFixed(1)} ${y0.toFixed(1)} Q${((x0 + x1) / 2 + kr).toFixed(1)} ${((y0 + y1) / 2 - kr / 2).toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`, fill: 'none', stroke: HAAR, 'stroke-width': (4.2 + rz() * 3).toFixed(1), 'stroke-linecap': 'round' }, haar);
     }
