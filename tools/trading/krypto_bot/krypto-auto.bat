@@ -76,6 +76,9 @@ if not "%ANTHROPIC_API_KEY%"=="" (
 ) else (
   echo KI-Trader uebersprungen: ANTHROPIC_API_KEY fehlt.
 )
+REM Scalping-Labor (Papier, KEIN Geld im Spiel): rechnet die Minutenkerzen seit dem letzten Lauf nach und schickt, falls Telegram/ntfy eingerichtet ist, die Tageszusammenfassung aufs Handy.
+REM Eigener Ausschalter KRYPTO_SCALP_LABOR=aus. Ganz am Ende, damit ein Fehler hier den Piloten, den Satelliten und alles andere nie aufhaelt.
+call :schritt Scalping-Labor scalping_labor.py --einmal --push
 :bilanz
 if defined FEHLER (
   %PY% tools\trading\krypto_bot\meldung.py --fehler "abgestuerzt:%FEHLER% - bitte Logbuch ansehen" --push
@@ -109,9 +112,9 @@ REM 19. Pruefung: ohne Buch gibt es nichts zu pruefen - der Rueckgabewert 0 uebe
 exit /b 0
 
 :schritt
-REM %1 Name, %2 Skript, %3 Argument. Rueckgabe: 0 ok, 3 Warnung (hat sich schon selbst gemeldet), sonst Absturz.
+REM %1 Name, %2 Skript, %3 und %4 Argumente. Rueckgabe: 0 ok, 3 Warnung (hat sich schon selbst gemeldet), sonst Absturz.
 echo %~1 ...
-%PY% tools\trading\krypto_bot\%2 %3
+%PY% tools\trading\krypto_bot\%2 %3 %4
 set RC=%errorlevel%
 if "%RC%"=="0" goto :eof
 if "%RC%"=="3" (set "WARN=%WARN% %~1") else (set "FEHLER=%FEHLER% %~1")
