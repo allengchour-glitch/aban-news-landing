@@ -1,0 +1,188 @@
+--- a/templates/collection.json
++++ b/templates/collection.json
+@@ -196,6 +196,14 @@
+         "padding-block-start": 0,
+         "padding-block-end": 0
+       }
++    },
++    "lux_product_inspiration": {
++      "type": "custom-liquid",
++      "settings": {
++        "custom_liquid": "{% render 'luxe-product-inspiration', collection: collection %}",
++        "padding-block-start": 0,
++        "padding-block-end": 0
++      }
+     }
+   },
+   "order": [
+@@ -205,6 +213,7 @@
+     "lux_usp_coll",
+     "lux_hero",
+     "luxe_review_assets",
++    "lux_product_inspiration",
+     "main",
+     "lux_faq"
+   ]
+--- a/snippets/luxe-product-inspiration.liquid
++++ b/snippets/luxe-product-inspiration.liquid
+@@ -0,0 +1,76 @@
++{% doc %}
++  Renders one additional lifestyle card on three verified collection pages.
++
++  @param {collection} collection - The current collection.
++{% enddoc %}
++{%- liquid
++  assign inspiration_key = ''
++  case collection.handle
++    when 'vorratsdosen'
++      assign inspiration_key = 'spice'
++      assign inspiration_handle = 'keramik-gewurztopf-im-nordic-style-492928'
++      assign inspiration_variant_id = 67789402210695
++      assign inspiration_image = images['luxestyle-gewuerztopf-20261104-r75.png']
++    when 'camping-geschirr-kochsets'
++      assign inspiration_key = 'camping'
++      assign inspiration_handle = 'camping-kochset-3-teilig-leicht-639500'
++      assign inspiration_variant_id = 67760472424839
++      assign inspiration_image = images['luxestyle-camping-20261104-r75.png']
++    when 'hundewelt'
++      assign inspiration_key = 'dog'
++      assign inspiration_handle = 'hundennasenmatte-aus-fleece-energie-intelligen-622000'
++      assign inspiration_variant_id = 67747895443847
++      assign inspiration_image = images['luxestyle-hundematte-20261104-r75.png']
++  endcase
++  assign inspiration_allowed = false
++  if inspiration_key != blank and inspiration_image != blank
++    assign inspiration_product = all_products[inspiration_handle]
++    assign inspiration_variant = inspiration_product.variants | where: 'id', inspiration_variant_id | first
++    if inspiration_product != blank and inspiration_variant.available and inspiration_product.tags != blank
++      assign inspiration_allowed = true
++      assign inspiration_tags = inspiration_product.tags | join: '|' | downcase
++      assign inspiration_blocks = 'nicht-bewerben,18plus,adult,compliance-pruefen,social-pause,rueckhol,-raus-,marge-verlust,medizinprodukt,nicht-versendbar' | split: ','
++      for inspiration_block in inspiration_blocks
++        if inspiration_tags contains inspiration_block
++          assign inspiration_allowed = false
++          break
++        endif
++      endfor
++    endif
++  endif
++-%}
++{%- if inspiration_allowed -%}
++  {%- liquid
++    assign inspiration_title_key = 'luxe_inspiration.' | append: inspiration_key | append: '.title'
++    assign inspiration_body_key = 'luxe_inspiration.' | append: inspiration_key | append: '.body'
++    assign inspiration_alt_key = 'luxe_inspiration.' | append: inspiration_key | append: '.alt'
++    assign inspiration_alt = inspiration_alt_key | t
++  -%}
++  <aside class="lx-inspiration" aria-label="{{ 'luxe_inspiration.label' | t | escape }}" data-inspiration-product="{{ inspiration_product.id }}">
++    <div class="lx-inspiration__image">
++      {{ inspiration_image | image_url: width: 720 | image_tag: loading: 'lazy', widths: '144, 288, 432, 720', sizes: '(min-width: 750px) 216px, 132px', alt: inspiration_alt }}
++    </div>
++    <div class="lx-inspiration__copy">
++      <p class="lx-inspiration__eyebrow">{{ 'luxe_inspiration.label' | t }}</p>
++      <h2>{{ inspiration_title_key | t }}</h2>
++      <p class="lx-inspiration__body">{{ inspiration_body_key | t }}</p>
++      <a href="{{ inspiration_variant.url }}" class="lx-inspiration__link" aria-label="{{ 'luxe_inspiration.product_link' | t: product: inspiration_product.title | escape }}">
++        {{ 'luxe_inspiration.cta' | t }} <span aria-hidden="true">&rarr;</span>
++      </a>
++    </div>
++  </aside>
++  <style>
++    .lx-inspiration{display:flex;align-items:center;gap:28px;max-width:1120px;margin:12px auto 24px;padding:16px;background:#f5f0e9;border:1px solid #e4dbcf;border-radius:16px;color:#312b25}
++    .lx-inspiration__image{flex:0 0 216px;overflow:hidden;border-radius:10px;line-height:0}
++    .lx-inspiration__image img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
++    .lx-inspiration__copy{min-width:0}
++    .lx-inspiration__eyebrow{margin:0 0 5px;font-size:10px;line-height:1.4;letter-spacing:.13em;text-transform:uppercase;color:#695b4b}
++    .lx-inspiration h2{margin:0;font-family:inherit;font-size:23px;line-height:1.25;font-weight:600;letter-spacing:-.02em;color:inherit}
++    .lx-inspiration__body{margin:6px 0 0;font-size:14px;line-height:1.45;color:#554c43}
++    .lx-inspiration__link{display:inline-flex;align-items:center;gap:9px;min-height:44px;font-size:14px;line-height:1.25;font-weight:600;color:#463b2e;text-decoration:underline;text-underline-offset:4px}
++    .lx-inspiration__link:hover{text-decoration-thickness:2px}
++    .lx-inspiration__link:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:2px}
++    @media(max-width:749px){.lx-inspiration{gap:14px;margin:10px 0 20px;padding:12px;border-radius:13px}.lx-inspiration__image{flex-basis:132px}.lx-inspiration h2{font-size:18px}.lx-inspiration__eyebrow{font-size:9px}.lx-inspiration__body{font-size:12px}.lx-inspiration__link{font-size:12px;gap:5px}}
++    @media(max-width:359px){.lx-inspiration{gap:10px;padding:10px}.lx-inspiration__image{flex-basis:104px}.lx-inspiration h2{font-size:16px}}
++  </style>
++{%- endif -%}
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -1100,5 +1100,25 @@
+       "reset": "Zurücksetzen",
+       "no_match": "Keine passende Unterkategorie gefunden. Versuche einen anderen Begriff."
+     }
++  },
++  "luxe_inspiration": {
++    "label": "Inspiration",
++    "cta": "Produkt ansehen",
++    "product_link": "{{ product }} ansehen",
++    "spice": {
++      "title": "Gewürze schön aufbewahren",
++      "body": "Ein grüner Akzent für deine Küche.",
++      "alt": "Gestaltete Küchenszene mit grünem Gewürztopf"
++    },
++    "camping": {
++      "title": "Eine Pause draussen",
++      "body": "Kochgeschirr für die nächste Auszeit.",
++      "alt": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset"
++    },
++    "dog": {
++      "title": "Für neugierige Nasen",
++      "body": "Entdecke die bunte Schnüffelmatte.",
++      "alt": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund"
++    }
+   }
+ }
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -1100,5 +1100,25 @@
+       "reset": "Reset",
+       "no_match": "No matching subcategory. Try another search term."
+     }
++  },
++  "luxe_inspiration": {
++    "label": "Inspiration",
++    "cta": "View product",
++    "product_link": "View {{ product }}",
++    "spice": {
++      "title": "A place for your spices",
++      "body": "A green accent for your kitchen.",
++      "alt": "Styled kitchen scene with a green spice jar"
++    },
++    "camping": {
++      "title": "A moment outdoors",
++      "body": "Cookware for your next escape.",
++      "alt": "Styled outdoor scene with a three-piece camping cookware set"
++    },
++    "dog": {
++      "title": "For curious noses",
++      "body": "Discover the colourful snuffle mat.",
++      "alt": "Styled living room scene with a colourful snuffle mat and a dog"
++    }
+   }
+ }
+--- a/locales/fr.json
++++ b/locales/fr.json
+@@ -630,5 +630,25 @@
+       "reset": "Réinitialiser",
+       "no_match": "Aucune sous-catégorie correspondante. Essayez un autre terme."
+     }
++  },
++  "luxe_inspiration": {
++    "label": "Inspiration",
++    "cta": "Voir le produit",
++    "product_link": "Voir {{ product }}",
++    "spice": {
++      "title": "Une place pour vos épices",
++      "body": "Une touche de vert dans votre cuisine.",
++      "alt": "Scène de cuisine composée avec un pot à épices vert"
++    },
++    "camping": {
++      "title": "Une pause en plein air",
++      "body": "Des ustensiles pour votre prochaine escapade.",
++      "alt": "Scène extérieure composée avec une batterie de camping de trois pièces"
++    },
++    "dog": {
++      "title": "Pour les museaux curieux",
++      "body": "Découvrez le tapis de fouille coloré.",
++      "alt": "Scène de salon composée avec un tapis de fouille coloré et un chien"
++    }
+   }
+ }

@@ -1,0 +1,3174 @@
+{
+  "revision": 76,
+  "at": "2026-11-04T06:36:01.973688+00:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Three existing R75 lifestyle illustrations added only to unpublished website draft; no new images/videos, no MAIN publish",
+  "sources": {
+    "at": "2026-11-04T06:33:13.551Z",
+    "shop": "luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "main": [
+      {
+        "id": "gid://shopify/OnlineStoreTheme/213013037447",
+        "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+        "role": "MAIN",
+        "files": [
+          {
+            "filename": "locales/de.json",
+            "md5": "cf07635898956f99cdedd88c95e65af5"
+          },
+          {
+            "filename": "locales/en.default.json",
+            "md5": "5eed965fe4e7c88612ed8f34517b1c18"
+          },
+          {
+            "filename": "locales/fr.json",
+            "md5": "0a21cf6b810a2e2fd33552977912948b"
+          },
+          {
+            "filename": "sections/custom-liquid.liquid",
+            "md5": "7cdc881360a5496197b6b0267f08b43e"
+          },
+          {
+            "filename": "templates/collection.json",
+            "md5": "a2c97d98608b3794c9daebb020d7b8a5"
+          },
+          {
+            "filename": "templates/index.json",
+            "md5": "17b76982b0cd942cf91a002e60f0dc8e"
+          }
+        ]
+      }
+    ],
+    "draft": {
+      "id": "gid://shopify/OnlineStoreTheme/212978598279",
+      "name": "LuxeStyle – Sticker und Varianten 01.11.2026",
+      "role": "UNPUBLISHED"
+    },
+    "products": [
+      {
+        "id": "gid://shopify/ProductVariant/67789402210695",
+        "title": "Grün / B",
+        "price": "20.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/15504177136001",
+          "handle": "keramik-gewurztopf-im-nordic-style-492928",
+          "status": "ACTIVE",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "haushalt",
+            "kochen",
+            "kueche",
+            "sort-vorratsdosen",
+            "topf",
+            "varianten-nachgezogen-1025"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928"
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67760472424839",
+        "title": "Default Title",
+        "price": "21.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/16656666919303",
+          "handle": "camping-kochset-3-teilig-leicht-639500",
+          "status": "ACTIVE",
+          "tags": [
+            "cj-real",
+            "dropship",
+            "haushalt",
+            "kochen",
+            "kueche",
+            "neuheit",
+            "sort-camping-geschirr-kochsets",
+            "sort-kochgeschirr",
+            "sort-sub-reise"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500"
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67747895443847",
+        "title": "Default Title",
+        "price": "17.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/16654280753543",
+          "handle": "hundennasenmatte-aus-fleece-energie-intelligen-622000",
+          "status": "ACTIVE",
+          "tags": [
+            "cj-real",
+            "dropship",
+            "haushalt",
+            "kat-haustier",
+            "kat-hunde",
+            "kueche",
+            "matte",
+            "neuheit",
+            "wohnen"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000"
+        }
+      }
+    ],
+    "collections": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Collection/688564535681",
+          "handle": "sub-kueche",
+          "title": "Küche & Kochen",
+          "templateSuffix": null,
+          "spice": true,
+          "camping": true,
+          "mat": true
+        },
+        {
+          "id": "gid://shopify/Collection/688725197185",
+          "handle": "sport-outdoor",
+          "title": "Sport & Outdoor",
+          "templateSuffix": null,
+          "spice": false,
+          "camping": false,
+          "mat": false
+        },
+        {
+          "id": "gid://shopify/Collection/689884037505",
+          "handle": "hundewelt",
+          "title": "Hundewelt",
+          "templateSuffix": null,
+          "spice": false,
+          "camping": false,
+          "mat": true
+        },
+        {
+          "id": "gid://shopify/Collection/755391922567",
+          "handle": "vorratsdosen",
+          "title": "Vorratsdosen & Frischhaltedosen",
+          "templateSuffix": null,
+          "spice": true,
+          "camping": false,
+          "mat": false
+        },
+        {
+          "id": "gid://shopify/Collection/756155089287",
+          "handle": "camping-geschirr-kochsets",
+          "title": "Camping-Geschirr, Kochsets & Grills",
+          "templateSuffix": null,
+          "spice": false,
+          "camping": true,
+          "mat": false
+        },
+        {
+          "id": "gid://shopify/Collection/756161053063",
+          "handle": "tier-intelligenzspielzeug",
+          "title": "Intelligenz- & Schnüffelspielzeug",
+          "templateSuffix": null,
+          "spice": false,
+          "camping": false,
+          "mat": false
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjo3NTYxNjEwNTMwNjMsImxhc3RfdmFsdWUiOiI3NTYxNjEwNTMwNjMifQ=="
+      }
+    },
+    "uploads": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555",
+        "fileId": "gid://shopify/MediaImage/77950622138759",
+        "filename": "luxestyle-gewuerztopf-20261104-r75.png",
+        "alt": "Grüner Gewürztopf in einer gestalteten Küchenszene"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-camping-20261104-r75.png?v=1793773564",
+        "fileId": "gid://shopify/MediaImage/77950622564743",
+        "filename": "luxestyle-camping-20261104-r75.png",
+        "alt": "Dreiteiliges Camping-Kochset auf einem Holztisch im Freien"
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-hundematte-20261104-r75.png?v=1793773573",
+        "fileId": "gid://shopify/MediaImage/77950622892423",
+        "filename": "luxestyle-hundematte-20261104-r75.png",
+        "alt": "Bunte Schnüffelmatte in einer gestalteten Wohnszene mit Hund"
+      }
+    ],
+    "media": [
+      {
+        "id": "gid://shopify/MediaImage/77950622138759",
+        "fileStatus": "READY",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555",
+          "width": 1536,
+          "height": 1024
+        }
+      },
+      {
+        "id": "gid://shopify/MediaImage/77950622564743",
+        "fileStatus": "READY",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-camping-20261104-r75.png?v=1793773564",
+          "width": 1536,
+          "height": 1024
+        }
+      },
+      {
+        "id": "gid://shopify/MediaImage/77950622892423",
+        "fileStatus": "READY",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-hundematte-20261104-r75.png?v=1793773573",
+          "width": 1536,
+          "height": 1024
+        }
+      }
+    ],
+    "write": {
+      "data": {
+        "themeFilesUpsert": {
+          "upsertedThemeFiles": [
+            {
+              "filename": "templates/collection.json"
+            },
+            {
+              "filename": "snippets/luxe-product-inspiration.liquid"
+            },
+            {
+              "filename": "locales/de.json"
+            },
+            {
+              "filename": "locales/en.default.json"
+            },
+            {
+              "filename": "locales/fr.json"
+            }
+          ],
+          "userErrors": []
+        }
+      }
+    },
+    "readback": [
+      {
+        "filename": "locales/de.json",
+        "md5": "b501c707cb2b770ecc682c35682bc629",
+        "exact": true
+      },
+      {
+        "filename": "locales/en.default.json",
+        "md5": "d71607203cfd3bbc9cd0dd6288129a0c",
+        "exact": true
+      },
+      {
+        "filename": "locales/fr.json",
+        "md5": "9ee520fb4bb780f7d0d6759f0b18bc80",
+        "exact": true
+      },
+      {
+        "filename": "snippets/luxe-product-inspiration.liquid",
+        "md5": "1708e1e4b54d045a0e5683e0e26d26c2",
+        "exact": true
+      },
+      {
+        "filename": "templates/collection.json",
+        "md5": "c48f0c63070eee617d9ef3176382c368",
+        "exact": true
+      },
+      {
+        "filename": "templates/index.json",
+        "md5": "17b76982b0cd942cf91a002e60f0dc8e",
+        "exact": true
+      }
+    ]
+  },
+  "cdn": [
+    {
+      "key": "gewuerztopf",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555",
+      "sha256": "187d99da73e276bc82580832ebf7b185f79db2048e164920563eff111d77f0f4",
+      "bytes": 1865433,
+      "cdnMode": "RGB",
+      "originalMode": "RGB",
+      "size": [
+        1536,
+        1024
+      ],
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "identicalDecodedPixels": true,
+      "meanPixelDifference": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "camping",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-camping-20261104-r75.png?v=1793773564",
+      "sha256": "2d45eab08d5bf7daeb1f17947c5af8714c0b78c661d49c8edcafe7fd0ac3aa2f",
+      "bytes": 2431705,
+      "cdnMode": "RGB",
+      "originalMode": "RGB",
+      "size": [
+        1536,
+        1024
+      ],
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "identicalDecodedPixels": true,
+      "meanPixelDifference": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "key": "hundematte",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-hundematte-20261104-r75.png?v=1793773573",
+      "sha256": "c7cddee4f64cb78990abb9fa2cfa0b20396837cf2b53e731653dee8d87696c89",
+      "bytes": 2451552,
+      "cdnMode": "RGB",
+      "originalMode": "RGB",
+      "size": [
+        1536,
+        1024
+      ],
+      "originalSize": [
+        1536,
+        1024
+      ],
+      "identicalDecodedPixels": true,
+      "meanPixelDifference": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "changedFiles": [
+    {
+      "filename": "templates/collection.json",
+      "beforeMd5": "9c4be8d52a077ead0c4128a85f148467",
+      "afterMd5": "c48f0c63070eee617d9ef3176382c368",
+      "sha256": "ff6f37107972a41159053649e51501b453639806a3e17916e4eb83f79508e7cc",
+      "bytes": 29339
+    },
+    {
+      "filename": "snippets/luxe-product-inspiration.liquid",
+      "beforeMd5": null,
+      "afterMd5": "1708e1e4b54d045a0e5683e0e26d26c2",
+      "sha256": "22ec3ab71b20e8bef83af5b24abe85b30aac2c81159a39d7d6f8c6cff450db86",
+      "bytes": 4904
+    },
+    {
+      "filename": "locales/de.json",
+      "beforeMd5": "79298942e3189800c0e4180de3df0ccb",
+      "afterMd5": "b501c707cb2b770ecc682c35682bc629",
+      "sha256": "244f0bd885c6f446e6001bdf29e0f7a85e657e7c6c3d3ffd2e10b9071a6153c7",
+      "bytes": 53018
+    },
+    {
+      "filename": "locales/en.default.json",
+      "beforeMd5": "2f07c7b820f593cc58beb4e8ffc699b2",
+      "afterMd5": "d71607203cfd3bbc9cd0dd6288129a0c",
+      "sha256": "1bd911ae659357d9be13e44bbd3518f76e07086ca255d139b4327bd9f30fb7d1",
+      "bytes": 50276
+    },
+    {
+      "filename": "locales/fr.json",
+      "beforeMd5": "02500014b5e8773d11d3e5f7c4b41148",
+      "afterMd5": "9ee520fb4bb780f7d0d6759f0b18bc80",
+      "sha256": "3a8175ea66689cf00c60d24816f6862a7c74df2ddcd1a239e0526778917eaed1",
+      "bytes": 32495
+    }
+  ],
+  "mainAfter": {
+    "id": "gid://shopify/OnlineStoreTheme/213013037447",
+    "role": "MAIN",
+    "files": {
+      "nodes": [
+        {
+          "filename": "locales/de.json",
+          "checksumMd5": "cf07635898956f99cdedd88c95e65af5"
+        },
+        {
+          "filename": "locales/en.default.json",
+          "checksumMd5": "5eed965fe4e7c88612ed8f34517b1c18"
+        },
+        {
+          "filename": "locales/fr.json",
+          "checksumMd5": "0a21cf6b810a2e2fd33552977912948b"
+        },
+        {
+          "filename": "sections/custom-liquid.liquid",
+          "checksumMd5": "7cdc881360a5496197b6b0267f08b43e"
+        },
+        {
+          "filename": "templates/collection.json",
+          "checksumMd5": "a2c97d98608b3794c9daebb020d7b8a5"
+        },
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "17b76982b0cd942cf91a002e60f0dc8e"
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+      }
+    }
+  },
+  "validation": {
+    "validator": [
+      {
+        "result": "inform",
+        "file": "snippets/luxe-product-inspiration.liquid",
+        "errors": 0,
+        "example": []
+      },
+      {
+        "result": "success",
+        "file": "templates/collection.json",
+        "errors": 0,
+        "example": []
+      },
+      {
+        "result": "success",
+        "file": "locales/de.json",
+        "errors": 0,
+        "example": []
+      },
+      {
+        "result": "success",
+        "file": "locales/en.default.json",
+        "errors": 0,
+        "example": []
+      },
+      {
+        "result": "failed",
+        "file": "locales/fr.json",
+        "errors": 466,
+        "example": [
+          "ERROR [line 10, col 1]: The translation for 'luxe_categories.eyebrow' is missing",
+          "ERROR [line 10, col 1]: The translation for 'luxe_categories.heading' is missing"
+        ]
+      }
+    ],
+    "frMissingBefore": 467,
+    "frMissingAfter": 467,
+    "noNewMissingKeys": true,
+    "onlyBaselineFrenchErrors": true
+  },
+  "browserQA": {
+    "at": "2026-11-04T06:32:37.336076+00:00",
+    "theme": {
+      "id": "212978598279",
+      "role": "unpublished"
+    },
+    "scope": "12 native preview views only; first collection page; no product clicks, cart, checkout, POST, Theme API or tracking",
+    "sourceFiles": {
+      "native_followup.py": "97249f5fb61048ab49f3980ee341e115aecec986669f1d32ce3999aea81b7fd0",
+      "native_qa.py": "8bc497589173eed62e97f1e63811bbeea132ff70206c98eb6fde2f237dc4c86d"
+    },
+    "views": [
+      {
+        "handle": "vorratsdosen",
+        "width": 1440,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:32:39.211199+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 1440,
+              "viewport": 1440
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "15504177136001"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Gewürze schön aufbewahren"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=288"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Küchenszene mit grünem Gewürztopf"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 699.734375,
+              "y": 736.65625,
+              "width": 138.921875,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/vorratsdosen",
+          "htmlLanguage": "de",
+          "documentWidth": 1440,
+          "viewportWidth": 1440,
+          "cardCount": 1,
+          "h1": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1619490117574.jpg?v=1787124960&width=640",
+            "//luxestyle.ch/cdn/shop/files/1618993431322.jpg?v=1788488061&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619188995398.jpg?v=1787173665&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619573596093.jpg?v=1787124116&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 438.734375,
+              "y": 632.640625,
+              "width": 562.515625,
+              "height": 178
+            },
+            "product": "15504177136001",
+            "heading": "Gewürze schön aufbewahren",
+            "text": "Inspiration Gewürze schön aufbewahren Ein grüner Akzent für deine Küche. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 455.734375,
+                "y": 649.640625,
+                "width": 216,
+                "height": 144
+              },
+              "complete": true,
+              "naturalWidth": 216,
+              "naturalHeight": 144,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=288",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Küchenszene mit grünem Gewürztopf",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 699.734375,
+                "y": 736.65625,
+                "width": 138.921875,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695",
+              "text": "Produkt ansehen →",
+              "label": "Keramik Gewürztopf im Nordic Style ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "vorratsdosen",
+        "width": 390,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:32:46.762234+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 390,
+              "viewport": 390
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "banner_content_consistent_across_viewports",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "15504177136001"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Gewürze schön aufbewahren"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Küchenszene mit grünem Gewürztopf"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 175,
+              "y": 754.859375,
+              "width": 116.359375,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/vorratsdosen",
+          "htmlLanguage": "de",
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "cardCount": 1,
+          "h1": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1619490117574.jpg?v=1787124960&width=640",
+            "//luxestyle.ch/cdn/shop/files/1618993431322.jpg?v=1788488061&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619188995398.jpg?v=1787173665&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619573596093.jpg?v=1787124116&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 638.484375,
+              "width": 358,
+              "height": 173.375
+            },
+            "product": "15504177136001",
+            "heading": "Gewürze schön aufbewahren",
+            "text": "Inspiration Gewürze schön aufbewahren Ein grüner Akzent für deine Küche. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 29,
+                "y": 681.171875,
+                "width": 132,
+                "height": 88
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Küchenszene mit grünem Gewürztopf",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 175,
+                "y": 754.859375,
+                "width": 116.359375,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695",
+              "text": "Produkt ansehen →",
+              "label": "Keramik Gewürztopf im Nordic Style ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "vorratsdosen",
+        "width": 320,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:32:52.112759+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 320,
+              "viewport": 320
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "banner_content_consistent_across_viewports",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "15504177136001"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Gewürze schön aufbewahren"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5001126887536624,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Küchenszene mit grünem Gewürztopf"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 141,
+              "y": 807.21875,
+              "width": 116.359375,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/vorratsdosen",
+          "htmlLanguage": "de",
+          "documentWidth": 320,
+          "viewportWidth": 320,
+          "cardCount": 1,
+          "h1": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1619490117574.jpg?v=1787124960&width=640",
+            "//luxestyle.ch/cdn/shop/files/1618993431322.jpg?v=1788488061&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619188995398.jpg?v=1787173665&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619573596093.jpg?v=1787124116&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 697.84375,
+              "width": 288,
+              "height": 164.375
+            },
+            "product": "15504177136001",
+            "heading": "Gewürze schön aufbewahren",
+            "text": "Inspiration Gewürze schön aufbewahren Ein grüner Akzent für deine Küche. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 27,
+                "y": 745.359375,
+                "width": 104,
+                "height": 69.328125
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Küchenszene mit grünem Gewürztopf",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 141,
+                "y": 807.21875,
+                "width": 116.359375,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695",
+              "text": "Produkt ansehen →",
+              "label": "Keramik Gewürztopf im Nordic Style ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "camping-geschirr-kochsets",
+        "width": 1440,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:32:56.883905+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 1440,
+              "viewport": 1440
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "16656666919303"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Eine Pause draussen"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=288"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 717.9375,
+              "y": 694.046875,
+              "width": 138.921875,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "htmlLanguage": "de",
+          "documentWidth": 1440,
+          "viewportWidth": 1440,
+          "cardCount": 1,
+          "h1": [
+            "Camping-Geschirr, Kochsets & Grills"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Camping-Geschirr, Kochsets & Grills"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1350227210271.png?v=1787452687&width=640",
+            "//luxestyle.ch/cdn/shop/files/34397069890904.jpg?v=1787283436&width=640",
+            "//luxestyle.ch/cdn/shop/files/4869820283446.jpg?v=1787404345&width=640",
+            "//luxestyle.ch/cdn/shop/files/c85e4910-f9a2-4c22-af87-84435bd83768.jpg?v=1792646321&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 456.9375,
+              "y": 590.03125,
+              "width": 526.125,
+              "height": 178
+            },
+            "product": "16656666919303",
+            "heading": "Eine Pause draussen",
+            "text": "Inspiration Eine Pause draussen Kochgeschirr für die nächste Auszeit. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 473.9375,
+                "y": 607.03125,
+                "width": 216,
+                "height": 144
+              },
+              "complete": true,
+              "naturalWidth": 216,
+              "naturalHeight": 144,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=288",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 717.9375,
+                "y": 694.046875,
+                "width": 138.921875,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839",
+              "text": "Produkt ansehen →",
+              "label": "Camping Kochset – 3-teilig, leicht ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "camping-geschirr-kochsets",
+        "width": 390,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:33:03.415810+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 390,
+              "viewport": 390
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "banner_content_consistent_across_viewports",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "16656666919303"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Eine Pause draussen"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 175,
+              "y": 689.75,
+              "width": 116.359375,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "htmlLanguage": "de",
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "cardCount": 1,
+          "h1": [
+            "Camping-Geschirr, Kochsets & Grills"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Camping-Geschirr, Kochsets & Grills"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1350227210271.png?v=1787452687&width=640",
+            "//luxestyle.ch/cdn/shop/files/34397069890904.jpg?v=1787283436&width=640",
+            "//luxestyle.ch/cdn/shop/files/4869820283446.jpg?v=1787404345&width=640",
+            "//luxestyle.ch/cdn/shop/files/c85e4910-f9a2-4c22-af87-84435bd83768.jpg?v=1792646321&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 595.875,
+              "width": 358,
+              "height": 150.875
+            },
+            "product": "16656666919303",
+            "heading": "Eine Pause draussen",
+            "text": "Inspiration Eine Pause draussen Kochgeschirr für die nächste Auszeit. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 29,
+                "y": 627.3125,
+                "width": 132,
+                "height": 88
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 175,
+                "y": 689.75,
+                "width": 116.359375,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839",
+              "text": "Produkt ansehen →",
+              "label": "Camping Kochset – 3-teilig, leicht ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "camping-geschirr-kochsets",
+        "width": 320,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:33:08.351882+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 320,
+              "viewport": 320
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "banner_content_consistent_across_viewports",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "16656666919303"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Eine Pause draussen"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5001126887536624,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 141,
+              "y": 816.53125,
+              "width": 116.359375,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/camping-geschirr-kochsets",
+          "htmlLanguage": "de",
+          "documentWidth": 320,
+          "viewportWidth": 320,
+          "cardCount": 1,
+          "h1": [
+            "Camping-Geschirr, Kochsets & Grills"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Camping-Geschirr, Kochsets & Grills"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1350227210271.png?v=1787452687&width=640",
+            "//luxestyle.ch/cdn/shop/files/34397069890904.jpg?v=1787283436&width=640",
+            "//luxestyle.ch/cdn/shop/files/4869820283446.jpg?v=1787404345&width=640",
+            "//luxestyle.ch/cdn/shop/files/c85e4910-f9a2-4c22-af87-84435bd83768.jpg?v=1792646321&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 727.15625,
+              "width": 288,
+              "height": 144.375
+            },
+            "product": "16656666919303",
+            "heading": "Eine Pause draussen",
+            "text": "Inspiration Eine Pause draussen Kochgeschirr für die nächste Auszeit. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 27,
+                "y": 764.671875,
+                "width": 104,
+                "height": 69.328125
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-camping-20261104-r75.png?v=1793773564&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Outdoor-Szene mit dreiteiligem Camping-Kochset",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 141,
+                "y": 816.53125,
+                "width": 116.359375,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/camping-kochset-3-teilig-leicht-639500?variant=67760472424839",
+              "text": "Produkt ansehen →",
+              "label": "Camping Kochset – 3-teilig, leicht ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "hundewelt",
+        "width": 1440,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:33:12.604775+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 1440,
+              "viewport": 1440
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "16654280753543"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Für neugierige Nasen"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=288"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 724.40625,
+              "y": 655.234375,
+              "width": 138.921875,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/hundewelt",
+          "htmlLanguage": "de",
+          "documentWidth": 1440,
+          "viewportWidth": 1440,
+          "cardCount": 1,
+          "h1": [
+            "Hundewelt"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Hundewelt"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+            "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+            "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640",
+            "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 463.40625,
+              "y": 551.21875,
+              "width": 513.171875,
+              "height": 178
+            },
+            "product": "16654280753543",
+            "heading": "Für neugierige Nasen",
+            "text": "Inspiration Für neugierige Nasen Entdecke die bunte Schnüffelmatte. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 480.40625,
+                "y": 568.21875,
+                "width": 216,
+                "height": 144
+              },
+              "complete": true,
+              "naturalWidth": 216,
+              "naturalHeight": 144,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=288",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 724.40625,
+                "y": 655.234375,
+                "width": 138.921875,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847",
+              "text": "Produkt ansehen →",
+              "label": "Hundennasenmatte aus Fleece – Energie &amp; Intelligenz ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "hundewelt",
+        "width": 390,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:33:19.415505+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 390,
+              "viewport": 390
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "banner_content_consistent_across_viewports",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "16654280753543"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Für neugierige Nasen"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 175,
+              "y": 667.46875,
+              "width": 116.359375,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/hundewelt",
+          "htmlLanguage": "de",
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "cardCount": 1,
+          "h1": [
+            "Hundewelt"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Hundewelt"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+            "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+            "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640",
+            "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 573.59375,
+              "width": 358,
+              "height": 150.875
+            },
+            "product": "16654280753543",
+            "heading": "Für neugierige Nasen",
+            "text": "Inspiration Für neugierige Nasen Entdecke die bunte Schnüffelmatte. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 29,
+                "y": 605.03125,
+                "width": 132,
+                "height": 88
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 175,
+                "y": 667.46875,
+                "width": 116.359375,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847",
+              "text": "Produkt ansehen →",
+              "label": "Hundennasenmatte aus Fleece – Energie &amp; Intelligenz ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "hundewelt",
+        "width": 320,
+        "language": "de",
+        "positive": true,
+        "at": "2026-11-04T06:33:24.669339+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 320,
+              "viewport": 320
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "banner_content_consistent_across_viewports",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "16654280753543"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Für neugierige Nasen"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5001126887536624,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 141,
+              "y": 674.96875,
+              "width": 116.359375,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/hundewelt",
+          "htmlLanguage": "de",
+          "documentWidth": 320,
+          "viewportWidth": 320,
+          "cardCount": 1,
+          "h1": [
+            "Hundewelt"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Hundewelt"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/081397ba-d3c9-407d-bbb0-99579e246b5a.jpg?v=1792644255&width=640",
+            "//luxestyle.ch/cdn/shop/files/24cc0a53-300f-4758-85cc-44e03976892f.png?v=1792624175&width=640",
+            "//luxestyle.ch/cdn/shop/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527&width=640",
+            "//luxestyle.ch/cdn/shop/files/4b5dd712-a7f7-4ab6-9f50-ed12ee604605.jpg?v=1792386374&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 585.59375,
+              "width": 288,
+              "height": 144.375
+            },
+            "product": "16654280753543",
+            "heading": "Für neugierige Nasen",
+            "text": "Inspiration Für neugierige Nasen Entdecke die bunte Schnüffelmatte. Produkt ansehen →",
+            "image": {
+              "box": {
+                "x": 27,
+                "y": 623.109375,
+                "width": 104,
+                "height": 69.328125
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-hundematte-20261104-r75.png?v=1793773573&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Gestaltete Wohnszene mit bunter Schnüffelmatte und Hund",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 141,
+                "y": 674.96875,
+                "width": 116.359375,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/products/hundennasenmatte-aus-fleece-energie-intelligen-622000?variant=67747895443847",
+              "text": "Produkt ansehen →",
+              "label": "Hundennasenmatte aus Fleece – Energie &amp; Intelligenz ansehen"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "vorratsdosen",
+        "width": 390,
+        "language": "fr",
+        "positive": true,
+        "at": "2026-11-04T06:33:29.220473+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 390,
+              "viewport": 390
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 1
+          },
+          {
+            "name": "correct_product_identity",
+            "pass": true,
+            "evidence": "15504177136001"
+          },
+          {
+            "name": "correct_translated_heading",
+            "pass": true,
+            "evidence": "Une place pour vos épices"
+          },
+          {
+            "name": "no_missing_translation",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "small_card_between_existing_banner_and_grid",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "card_within_viewport",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_loaded_and_correct_asset",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144"
+          },
+          {
+            "name": "responsive_image_markup",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "image_three_by_two_without_crop",
+            "pass": true,
+            "evidence": {
+              "naturalRatio": 1.5,
+              "displayedRatio": 1.5,
+              "objectFit": "contain"
+            }
+          },
+          {
+            "name": "useful_image_alt",
+            "pass": true,
+            "evidence": "Scène de cuisine composée avec un pot à épices vert"
+          },
+          {
+            "name": "exact_product_variant_and_localized_path",
+            "pass": true,
+            "evidence": "https://luxestyle.ch/fr/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695"
+          },
+          {
+            "name": "CTA_touch_target_at_least_44px",
+            "pass": true,
+            "evidence": {
+              "x": 175,
+              "y": 742.859375,
+              "width": 99.015625,
+              "height": 44
+            }
+          },
+          {
+            "name": "CTA_accessible_name",
+            "pass": true,
+            "evidence": null
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/fr/collections/vorratsdosen",
+          "htmlLanguage": "fr",
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "cardCount": 1,
+          "h1": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Vorratsdosen & Frischhaltedosen"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1619490117574.jpg?v=1787124960&width=640",
+            "//luxestyle.ch/cdn/shop/files/1618993431322.jpg?v=1788488061&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619188995398.jpg?v=1787173665&width=640",
+            "//luxestyle.ch/cdn/shop/files/1619573596093.jpg?v=1787124116&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true,
+          "card": {
+            "box": {
+              "x": 16,
+              "y": 626.484375,
+              "width": 358,
+              "height": 173.375
+            },
+            "product": "15504177136001",
+            "heading": "Une place pour vos épices",
+            "text": "Inspiration Une place pour vos épices Une touche de vert dans votre cuisine. Voir le produit →",
+            "image": {
+              "box": {
+                "x": 29,
+                "y": 669.171875,
+                "width": 132,
+                "height": 88
+              },
+              "complete": true,
+              "naturalWidth": 132,
+              "naturalHeight": 88,
+              "widthAttribute": "720",
+              "heightAttribute": "480",
+              "src": "https://luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144",
+              "srcset": "//luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=144 144w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=288 288w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=432 432w, //luxestyle.ch/cdn/shop/files/luxestyle-gewuerztopf-20261104-r75.png?v=1793773555&width=720 720w",
+              "sizes": "(min-width: 750px) 216px, 132px",
+              "alt": "Scène de cuisine composée avec un pot à épices vert",
+              "objectFit": "contain"
+            },
+            "link": {
+              "box": {
+                "x": 175,
+                "y": 742.859375,
+                "width": 99.015625,
+                "height": 44
+              },
+              "href": "https://luxestyle.ch/fr/products/keramik-gewurztopf-im-nordic-style-492928?variant=67789402210695",
+              "text": "Voir le produit →",
+              "label": "Voir Keramik Gewürztopf im Nordic Style"
+            },
+            "afterBanner": true,
+            "beforeGrid": true
+          }
+        }
+      },
+      {
+        "handle": "tier-intelligenzspielzeug",
+        "width": 390,
+        "language": "de",
+        "positive": false,
+        "at": "2026-11-04T06:33:34.151028+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 390,
+              "viewport": 390
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "existing_collection_sections_in_order",
+            "pass": true,
+            "evidence": [
+              "lux_breadcrumb",
+              "lux_subchips",
+              "lux_extra_categories",
+              "lux_usp_coll",
+              "lux_hero",
+              "luxe_review_assets",
+              "lux_product_inspiration",
+              "main",
+              "lux_faq"
+            ]
+          },
+          {
+            "name": "original_banner_present",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "banner_css_matches_fresh_original",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "single_nonempty_banner_h1",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "original_product_grid_present",
+            "pass": true,
+            "evidence": {
+              "grids": 1,
+              "firstPageCards": 24
+            }
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 0
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/collections/tier-intelligenzspielzeug",
+          "htmlLanguage": "de",
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "cardCount": 0,
+          "h1": [
+            "Intelligenz- & Schnüffelspielzeug"
+          ],
+          "sectionOrder": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [
+            "Intelligenz- & Schnüffelspielzeug"
+          ],
+          "bannerImages": [
+            "//luxestyle.ch/cdn/shop/files/1845447711275.jpg?v=1783469470&width=640",
+            "//luxestyle.ch/cdn/shop/files/4dca362c-b05c-4ce1-b0c0-7890d9d3c198.jpg?v=1783468619&width=640",
+            "//luxestyle.ch/cdn/shop/files/d1db310f-6007-4f97-ab9c-916dd1e5661e.jpg?v=1783477627&width=640",
+            "//luxestyle.ch/cdn/shop/files/5feefd78-e306-4421-b8a9-03c16056de8b_trans.jpg?v=1791366648&width=640"
+          ],
+          "bannerCss": ".lx-hero{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}\n.lx-hero__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}\n.lx-hero__bilder img{width:100%;height:100%;object-fit:cover;display:block}\n.lx-hero__bilder img.lx-hero__eins{grid-column:1/-1}\n.lx-hero::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}\n.lx-hero__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:2.4rem 1.5rem 2.2rem;box-sizing:border-box}\n.lx-hero h1{margin:0 0 .6rem;color:#fff!important;font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}\n.lx-hero__beschr,.lx-hero__beschr p{color:#f4ede0!important;margin:.4rem 0 0;max-width:62rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}\n.lx-hero__beschr a{color:#fff!important;text-decoration:underline}\n@media(max-width:749px){.lx-hero__bilder{grid-template-columns:repeat(2,1fr)}.lx-hero__bilder img:nth-child(n+3):not(.lx-hero__eins){display:none}.lx-hero__text{padding:1.8rem 1rem 1.6rem}}",
+          "gridCount": 1,
+          "productCards": 24,
+          "hasSearch": true
+        }
+      },
+      {
+        "handle": "",
+        "width": 390,
+        "language": "de",
+        "positive": false,
+        "at": "2026-11-04T06:33:38.747482+00:00",
+        "checks": [
+          {
+            "name": "http200",
+            "pass": true,
+            "evidence": 200
+          },
+          {
+            "name": "native_unpublished_identity",
+            "pass": true,
+            "evidence": {
+              "id": "212978598279",
+              "role": "unpublished"
+            }
+          },
+          {
+            "name": "no_horizontal_overflow",
+            "pass": true,
+            "evidence": {
+              "document": 390,
+              "viewport": 390
+            }
+          },
+          {
+            "name": "global_search_preserved",
+            "pass": true,
+            "evidence": null
+          },
+          {
+            "name": "R72_homepage_section_order_preserved",
+            "pass": true,
+            "evidence": [
+              "luxe_home",
+              "luxe_reviews"
+            ]
+          },
+          {
+            "name": "exactly_one_card_or_none_as_scoped",
+            "pass": true,
+            "evidence": 0
+          }
+        ],
+        "consoleErrors": [
+          "Failed to fetch",
+          "Failed to fetch",
+          "Failed to fetch"
+        ],
+        "httpStatus": 200,
+        "theme": {
+          "id": "212978598279",
+          "role": "unpublished"
+        },
+        "dom": {
+          "location": "https://luxestyle.ch/",
+          "htmlLanguage": "de",
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "cardCount": 0,
+          "h1": [
+            "Schön leben.Schlau shoppen."
+          ],
+          "sectionOrder": [
+            "luxe_home",
+            "luxe_reviews"
+          ],
+          "bannerCount": 1,
+          "bannerHeading": [],
+          "bannerImages": [],
+          "bannerCss": "",
+          "gridCount": 0,
+          "productCards": 0,
+          "hasSearch": true
+        }
+      }
+    ],
+    "screenshots": [
+      "screenshots/vorratsdosen-de-1440-card.png",
+      "screenshots/vorratsdosen-de-390-card.png",
+      "screenshots/vorratsdosen-de-390-context.png",
+      "screenshots/vorratsdosen-de-320-card.png",
+      "screenshots/vorratsdosen-de-320-context.png",
+      "screenshots/camping-geschirr-kochsets-de-1440-card.png",
+      "screenshots/camping-geschirr-kochsets-de-390-card.png",
+      "screenshots/camping-geschirr-kochsets-de-390-context.png",
+      "screenshots/camping-geschirr-kochsets-de-320-card.png",
+      "screenshots/camping-geschirr-kochsets-de-320-context.png",
+      "screenshots/hundewelt-de-1440-card.png",
+      "screenshots/hundewelt-de-390-card.png",
+      "screenshots/hundewelt-de-390-context.png",
+      "screenshots/hundewelt-de-320-card.png",
+      "screenshots/hundewelt-de-320-context.png",
+      "screenshots/vorratsdosen-fr-390-card.png",
+      "screenshots/vorratsdosen-fr-390-context.png",
+      "screenshots/tier-intelligenzspielzeug-de-390-control.png",
+      "screenshots/homepage-de-390-control.png"
+    ],
+    "localSource": {
+      "scope": "Local before/draft versus after, not proof of remote write",
+      "checks": [
+        {
+          "name": "only_one_new_collection_section",
+          "pass": true,
+          "evidence": null
+        },
+        {
+          "name": "all_existing_sections_byte_equivalent_as_json_values",
+          "pass": true,
+          "evidence": []
+        },
+        {
+          "name": "original_relative_section_order_preserved",
+          "pass": true,
+          "evidence": [
+            "lux_breadcrumb",
+            "lux_subchips",
+            "lux_extra_categories",
+            "lux_usp_coll",
+            "lux_hero",
+            "luxe_review_assets",
+            "lux_product_inspiration",
+            "main",
+            "lux_faq"
+          ]
+        },
+        {
+          "name": "inspiration_after_banner_before_grid",
+          "pass": true,
+          "evidence": null
+        },
+        {
+          "name": "homepage_not_in_change_set",
+          "pass": true,
+          "evidence": null
+        }
+      ]
+    },
+    "finishedAt": "2026-11-04T06:33:43.165177+00:00",
+    "result": {
+      "passed": 242,
+      "total": 242,
+      "visited": 12,
+      "planned": 12,
+      "failed": [],
+      "unknown": []
+    }
+  },
+  "visualReview": {
+    "reviewDate": "2026-11-04",
+    "themeId": "212978598279",
+    "themeRole": "unpublished",
+    "automatedReport": "QA-REPORT.json",
+    "automatedResult": "242/242 UI checks passed across 12 views; 5/5 local source-preservation checks passed",
+    "inspectedScreenshots": [
+      "screenshots/vorratsdosen-de-390-context.png",
+      "screenshots/camping-geschirr-kochsets-de-320-context.png",
+      "screenshots/hundewelt-de-1440-card.png",
+      "screenshots/hundewelt-de-390-context.png",
+      "screenshots/vorratsdosen-fr-390-context.png",
+      "screenshots/hundewelt-de-320-card.png"
+    ],
+    "findings": [
+      "The new cards are compact and visually separated from the preserved banner and product grid.",
+      "All three inspected lifestyle images are visible in full, without cropping or stretching.",
+      "Titles and calls to action are readable, including the 320 px camping and dog examples.",
+      "The French card displays French copy and Voir le produit; its link uses /fr/ and the exact variant.",
+      "No layout defect attributable to the new cards was observed in this bounded sample."
+    ],
+    "limitations": [
+      "This is a draft preview, not a public publication or a full-site QA.",
+      "Existing French-page navigation and banner content remain partly German; these areas were preserved.",
+      "Browser console reported generic Failed to fetch messages with the read-only and tracking guards active. Their source was not individually attributed, so this review does not assert an error-free JavaScript console.",
+      "Visual review does not replace product-identity or commercial-rights approval of the generated source images."
+    ]
+  },
+  "limitations": [
+    "Lifestyle drafts, exact SKU/colour/size acceptance and independent reference rights remain open.",
+    "No MAIN theme write or publication. Do not publish entire older draft.",
+    "466 existing French translation validator errors remain, no new missing keys.",
+    "Browser used GET/HEAD-only tracking/cart/checkout guard. General Failed to fetch messages not individually attributed.",
+    "Bounded 12-view UI check, not full catalog or checkout test."
+  ],
+  "next": "Owner creative/reference-rights acceptance; Claude compare this narrow additive diff against fresh MAIN and existing R72/R73 state. No native MAIN-write bypass."
+}
