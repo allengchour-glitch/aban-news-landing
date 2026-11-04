@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 86,
-  "updatedAt": "2026-11-04T20:25:39Z",
+  "revision": 87,
+  "updatedAt": "2026-11-04T21:55:58Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -127,12 +127,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r86_fuenf_liveprodukte_mit_r85_sicherheitsstopp_und_readback_verifiziert",
+      "state": "r87_fuenf_weitere_liveprodukte_vollstaendig_verifiziert",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-04",
-      "belegArt": "R85_R86_FUENF_SERIELLE_SHOPIFY_WRITES_MIT_SICHERHEITSSTOPP_UND_VOLLSTAENDIGEM_READBACK",
-      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden. R80: Katzenhängematte16610153759111 frisch mit Stoff-/Holzangaben ohne Komponentenbeleg und falscher Reisenapf-/Feedkategorie gelesen. Historischer BLOCKED_NEEDS_SOURCE bestätigt; Materialentfernung nur als enger Entwurf, keine Shopänderung. R81, 04.11.2026: Historischer ACTIVE-Export mit56’630 eindeutigen Produkten reproduzierbar ausgewertet, ohne ihn als aktuellen Livebestand auszugeben. 3’523 Produkte mit kritischem/hohem Prüfsignal, darunter2’841 Materialkandidaten,1’504 mögliche Materialkonflikte Detailzeile/Fliesstext,595 mehrere Materialzeilen,336 Titel-/Text-Materialabweichungen,15 Medizin-/Therapie- und13 Review-/Beliebtheitsclaims. Titel-/Variantenprüfung:62 hochsichere Produktkandidaten, darunter49 Einheitsgrössen-Aussagen bei mehreren Optionen und7 Titelfarben ohne passende Optionswerte; fünf Produkte mit case-insensitiv doppelten Optionswerten. Aktuelle gezielte Shopify-Probe: fünf ACTIVE-Produkte/52 Varianten. Katzenhängematte16610153759111 bestätigt Material-/Taxonomiefehler live. Hundepullover16605072458119: Titel weiss, aktuelle Varianten nur Braun/Beige; Text nurM und200g, OptionenXS–XL und Detailgewicht57–117g. 52/52 Varianten in der Stichprobe availableForSale, CONTINUE, tracked=false; keine Livekatalogquote, Lager- oder Lieferzusage. Keine Mutation. R82, 04.11.2026: Historischen ACTIVE-Export vollständig zu 56’630 eindeutigen IDs in eine deterministische Queue überführt: P0 154, P1 3’982, P2 52’494, autoFixAllowed 0. Drei aktuelle Katzenprodukte seriell live korrigiert und nativ/öffentlich zurückgelesen: 15454094426497 DRAFT blieb DRAFT; 15493884445057 und 15495226098049 blieben ACTIVE/kaufbar. Neutrale Titel/Texte, passende Produkttyp-/Leaf-Taxonomie und fachfremde Tags korrigiert. Beim L-Modell ungesicherte Tiermaterialwerte durch bildgestützte Struktur-/Glattplüsch-Bezugswerte ersetzt. Preise, Varianten-IDs, SKUs, availability, CONTINUE/tracked=false, Handles, Bilder und Sperrtags erhalten. Keine Massenmutation oder Merchant-/Theme-/Socialänderung. R83, 04.11.2026: Fünf P0-Produkte öffentlich HTTP200/available und taxonomisch geprüft; für 0/5 wurde eine unabhängige SKU-spezifische CJ-/Lieferantenquelle lokal gefunden. Seifenspender mischt zwei Geräte und Akku/4×AAA; Badeanzug hat keine versprochene Masstabelle; Alkoholmeter unlesbare Skalen/separates Thermometer; Hopfenfilter absolute ungesicherte Claims; Katzenspielzeug offene Stromversorgung/Modi und fachfremden hund-Tag. Alle fünf tragen rueckhol-0907 und bleiben für neue Socialausspielung blockiert. Zwei klare Leaf-/Tag-Diffs vorbereitet, keine Produktmutation. R84, 04.11.2026: Genau fünf Produkte seriell live korrigiert und nach jedem Write vollständig im Admin sowie öffentlich gegengelesen. Badeanzug15448534122881 erhielt neutralen Text/SEO, Leaf aa-1-20-22, Produkttyp Damen-Bademode und verlor zwei falsche Jumpsuit-Tags. Katzenspielzeug15454092558721 erhielt neutralen Text/SEO, Leaf ap-2-2-5-5 und verlor nur hund. Hopfenfilter15509968880001 verlor unbelegte Material-/Mikron-/Sicherheitsclaims. Kaffeemaschine15493277024641 und Vakuumierer15454415389057 erhielten ausschliesslich Produkttyp Küche & Bar; ihre korrekten Leafs blieben. Alle fünf Mutationen ohne userErrors, alle öffentlichen Gegenproben HTTP200. Status, Handles, Medien, Varianten-IDs, SKUs, Preise, Kaufbarkeit, Inventory-Policy, Tracking und rueckhol-0907 erhalten. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben wegen SKU-/Geräte-/Technikquellen BLOCKED_NO_WRITE. Kein Merchant-, Theme-, Social-, Flow-, DNS-, Budget-, Rabatt- oder Versandwrite; keine erneuten Tagesreports oder Kauf-Watch-Abfrage. R85, 04.11.2026: Nudelmaschine15495105184129 mit neutralem Titel/Text/SEO und Produkttyp Küche & Bar korrigiert; aufbewahrung/organizer sowie unbelegte Stahl-, Modell-, 3-mm-, Lieferumfang-, Lieferzeit- und Rabattclaims entfernt. Ein Versuch, keine userErrors/keinRetry, Admin/StorefrontHTTP200. Barcode-Vorherfeld fehlte und bleibtunknown; Guard stoppte R85 nach genau1Write. R86, 04.11.2026: Eisraspler15448963645825, rundeWandlampe15454472012161, Meerjungfrauenlampe15465835233665 und Laternenleuchte15476180451713 seriell mit vollständiger Barcode-/Varianten-/Medienbasis korrigiert. Neutrale bildgestützte Titel/Texte/SEO, falsche Tags und unbelegte Material-/Mass-/Elektro-/Sensor-/Schutzart-/Lieferzeit-/Rabattclaims entfernt. Vier Versuche, keine userErrors/Retries; Adminschutz und öffentliche HTML-/JSON-HTTP200-Gegenproben vollständig. ACTIVE, Handles, Kategorien, Publikationen, Varianten-IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, Barcodes, Optionen, Medienbindungen und rueckhol erhalten. Alte Handles/Alttexte und globale Theme-Hinweise getrennt offen; Gesamtkatalog nicht abgeschlossen. Keine Tagesreport-/Kauf-Watch-Wiederholung oder externen Writes ausser den fünf beschriebenen Produktmutationen.",
-      "nextAllowedStep": "R86-Priorität: Nächsten kleinen Queue-Stapel mit exakter GID-Allowlist und vollständiger Admin-Vorherbasis einschliesslich Barcodes, Varianten, SKUs, CHF-Preisen, Tags/Sperren, Storefront, Bildern, Taxonomie, Publikationen und Medienbindungen frisch lesen. Nur eindeutige bild- oder SKU-quellenbelegte Minimaldiffs seriell ausführen; nach jedem Einzelwrite vollständiger Admin-/Storefront-Readback, bei unknown sofort stoppen und nicht retrien. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben bis SKU-spezifischem Quellenbeleg BLOCKED_NO_WRITE. Material-/Mass-/Elektro-/Sensorclaims, alte Handles/Alttexte und globale Theme-Hinweise getrennt behandeln; bereits bestätigte R82–R86-Writes nicht wiederholen. Historische Queue ist keine Livefreigabe; keine pauschale Katalogmutation.",
+      "belegArt": "R87_FUENF_SERIELLE_SHOPIFY_WRITES_MIT_VOLLSTAENDIGEM_ADMIN_UND_STOREFRONT_READBACK",
+      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden. R80: Katzenhängematte16610153759111 frisch mit Stoff-/Holzangaben ohne Komponentenbeleg und falscher Reisenapf-/Feedkategorie gelesen. Historischer BLOCKED_NEEDS_SOURCE bestätigt; Materialentfernung nur als enger Entwurf, keine Shopänderung. R81, 04.11.2026: Historischer ACTIVE-Export mit56’630 eindeutigen Produkten reproduzierbar ausgewertet, ohne ihn als aktuellen Livebestand auszugeben. 3’523 Produkte mit kritischem/hohem Prüfsignal, darunter2’841 Materialkandidaten,1’504 mögliche Materialkonflikte Detailzeile/Fliesstext,595 mehrere Materialzeilen,336 Titel-/Text-Materialabweichungen,15 Medizin-/Therapie- und13 Review-/Beliebtheitsclaims. Titel-/Variantenprüfung:62 hochsichere Produktkandidaten, darunter49 Einheitsgrössen-Aussagen bei mehreren Optionen und7 Titelfarben ohne passende Optionswerte; fünf Produkte mit case-insensitiv doppelten Optionswerten. Aktuelle gezielte Shopify-Probe: fünf ACTIVE-Produkte/52 Varianten. Katzenhängematte16610153759111 bestätigt Material-/Taxonomiefehler live. Hundepullover16605072458119: Titel weiss, aktuelle Varianten nur Braun/Beige; Text nurM und200g, OptionenXS–XL und Detailgewicht57–117g. 52/52 Varianten in der Stichprobe availableForSale, CONTINUE, tracked=false; keine Livekatalogquote, Lager- oder Lieferzusage. Keine Mutation. R82, 04.11.2026: Historischen ACTIVE-Export vollständig zu 56’630 eindeutigen IDs in eine deterministische Queue überführt: P0 154, P1 3’982, P2 52’494, autoFixAllowed 0. Drei aktuelle Katzenprodukte seriell live korrigiert und nativ/öffentlich zurückgelesen: 15454094426497 DRAFT blieb DRAFT; 15493884445057 und 15495226098049 blieben ACTIVE/kaufbar. Neutrale Titel/Texte, passende Produkttyp-/Leaf-Taxonomie und fachfremde Tags korrigiert. Beim L-Modell ungesicherte Tiermaterialwerte durch bildgestützte Struktur-/Glattplüsch-Bezugswerte ersetzt. Preise, Varianten-IDs, SKUs, availability, CONTINUE/tracked=false, Handles, Bilder und Sperrtags erhalten. Keine Massenmutation oder Merchant-/Theme-/Socialänderung. R83, 04.11.2026: Fünf P0-Produkte öffentlich HTTP200/available und taxonomisch geprüft; für 0/5 wurde eine unabhängige SKU-spezifische CJ-/Lieferantenquelle lokal gefunden. Seifenspender mischt zwei Geräte und Akku/4×AAA; Badeanzug hat keine versprochene Masstabelle; Alkoholmeter unlesbare Skalen/separates Thermometer; Hopfenfilter absolute ungesicherte Claims; Katzenspielzeug offene Stromversorgung/Modi und fachfremden hund-Tag. Alle fünf tragen rueckhol-0907 und bleiben für neue Socialausspielung blockiert. Zwei klare Leaf-/Tag-Diffs vorbereitet, keine Produktmutation. R84, 04.11.2026: Genau fünf Produkte seriell live korrigiert und nach jedem Write vollständig im Admin sowie öffentlich gegengelesen. Badeanzug15448534122881 erhielt neutralen Text/SEO, Leaf aa-1-20-22, Produkttyp Damen-Bademode und verlor zwei falsche Jumpsuit-Tags. Katzenspielzeug15454092558721 erhielt neutralen Text/SEO, Leaf ap-2-2-5-5 und verlor nur hund. Hopfenfilter15509968880001 verlor unbelegte Material-/Mikron-/Sicherheitsclaims. Kaffeemaschine15493277024641 und Vakuumierer15454415389057 erhielten ausschliesslich Produkttyp Küche & Bar; ihre korrekten Leafs blieben. Alle fünf Mutationen ohne userErrors, alle öffentlichen Gegenproben HTTP200. Status, Handles, Medien, Varianten-IDs, SKUs, Preise, Kaufbarkeit, Inventory-Policy, Tracking und rueckhol-0907 erhalten. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben wegen SKU-/Geräte-/Technikquellen BLOCKED_NO_WRITE. Kein Merchant-, Theme-, Social-, Flow-, DNS-, Budget-, Rabatt- oder Versandwrite; keine erneuten Tagesreports oder Kauf-Watch-Abfrage. R85, 04.11.2026: Nudelmaschine15495105184129 mit neutralem Titel/Text/SEO und Produkttyp Küche & Bar korrigiert; aufbewahrung/organizer sowie unbelegte Stahl-, Modell-, 3-mm-, Lieferumfang-, Lieferzeit- und Rabattclaims entfernt. Ein Versuch, keine userErrors/keinRetry, Admin/StorefrontHTTP200. Barcode-Vorherfeld fehlte und bleibtunknown; Guard stoppte R85 nach genau1Write. R86, 04.11.2026: Eisraspler15448963645825, rundeWandlampe15454472012161, Meerjungfrauenlampe15465835233665 und Laternenleuchte15476180451713 seriell mit vollständiger Barcode-/Varianten-/Medienbasis korrigiert. Neutrale bildgestützte Titel/Texte/SEO, falsche Tags und unbelegte Material-/Mass-/Elektro-/Sensor-/Schutzart-/Lieferzeit-/Rabattclaims entfernt. Vier Versuche, keine userErrors/Retries; Adminschutz und öffentliche HTML-/JSON-HTTP200-Gegenproben vollständig. ACTIVE, Handles, Kategorien, Publikationen, Varianten-IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, Barcodes, Optionen, Medienbindungen und rueckhol erhalten. Alte Handles/Alttexte und globale Theme-Hinweise getrennt offen; Gesamtkatalog nicht abgeschlossen. Keine Tagesreport-/Kauf-Watch-Wiederholung oder externen Writes ausser den fünf beschriebenen Produktmutationen. R87, 04.11.2026: Fünf weitere ACTIVE-Leuchtenprodukte seriell mit vollständiger Admin-Vorherbasis korrigiert und nach jedem Write vollständig im Admin sowie öffentlich über HTML und Produkt-JSON zurückgelesen. Je genau ein Mutationsversuch, keine userErrors und keine Retries. 15 fachfremde Schmuck-Tags entfernt; neutrale Titel, Beschreibungen und SEO-Texte ausschliesslich aus aktuellen Variantenwerten und sichtbaren Bildern. Drei Optionslabels Farbe zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. 26 Varianten und 38 Bilder vollständig geschützt; Status, Handles, Vendor, Kategorie, Publikationen, IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, leere Barcode-Sätze und Medienbindungen erhalten. Keine unbelegten Material-, Mass-, Elektro-, Aussenbereichs-, Lieferzeit- oder Bewertungsclaims ergänzt. Gesamtkatalog weiter offen; keine Tagesreport- oder Kauf-Watch-Wiederholung und keine externen Writes ausser den fünf Produktmutationen.",
+      "nextAllowedStep": "R87 abgeschlossen. Als Nächstes einen neuen kleinen Queue-Stapel mit exakter GID-Allowlist und vollständiger Admin-Vorherbasis einschliesslich Barcodes, Varianten, SKUs, CHF-Preisen, Tags/Sperren, Storefront, Bildern, Taxonomie, Publikationen und Medienbindungen frisch lesen. Nur eindeutige bild- oder SKU-quellenbelegte Minimaldiffs seriell und je Produkt genau einmal ausführen; unmittelbar vollständig im Admin und öffentlich zurücklesen, bei unknown stoppen und nicht retrien. R82–R87 nicht wiederholen. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben bis SKU-spezifischem Quellenbeleg BLOCKED_NO_WRITE. Material-/Mass-/Elektro-/Sensorclaims, alte Handles/Alttexte und globale Theme-Hinweise getrennt behandeln. Historische Queue ist keine Livefreigabe; keine pauschale Katalogmutation.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -354,6 +354,16 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R86.json",
           "gitBlobSha": "83e889808f48aa992ede8b6b196befc4259865d9",
           "readAt": "2026-11-04T20:25:39Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.md",
+          "gitBlobSha": "ffe4103f236b3eef266b902ebcbbbf450421b379",
+          "readAt": "2026-11-04T21:55:58Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.json",
+          "gitBlobSha": "e090f9f03f6e5087cf687393be5a5ad6469c793e",
+          "readAt": "2026-11-04T21:55:58Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -506,6 +516,34 @@
             "merchantWrites": 0,
             "socialWrites": 0
           }
+        },
+        {
+          "at": "2026-11-04T21:55:58Z",
+          "sourceRevision": 86,
+          "previous": {
+            "state": "r86_fuenf_liveprodukte_mit_r85_sicherheitsstopp_und_readback_verifiziert",
+            "lastEvidenceDate": "2026-11-04",
+            "belegArt": "R85_R86_FUENF_SERIELLE_SHOPIFY_WRITES_MIT_SICHERHEITSSTOPP_UND_VOLLSTAENDIGEM_READBACK",
+            "nextAllowedStep": "R86-Priorität: Nächsten kleinen Queue-Stapel mit exakter GID-Allowlist und vollständiger Admin-Vorherbasis einschliesslich Barcodes, Varianten, SKUs, CHF-Preisen, Tags/Sperren, Storefront, Bildern, Taxonomie, Publikationen und Medienbindungen frisch lesen. Nur eindeutige bild- oder SKU-quellenbelegte Minimaldiffs seriell ausführen; nach jedem Einzelwrite vollständiger Admin-/Storefront-Readback, bei unknown sofort stoppen und nicht retrien. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben bis SKU-spezifischem Quellenbeleg BLOCKED_NO_WRITE. Material-/Mass-/Elektro-/Sensorclaims, alte Handles/Alttexte und globale Theme-Hinweise getrennt behandeln; bereits bestätigte R82–R86-Writes nicht wiederholen. Historische Queue ist keine Livefreigabe; keine pauschale Katalogmutation."
+          },
+          "newEvidence": {
+            "liveProductsReadAndChanged": 5,
+            "allWritesSerial": true,
+            "mutationAttempts": 5,
+            "mutationRetries": 0,
+            "shopifyUserErrors": 0,
+            "completeAdminReadbacks": 5,
+            "publicHtmlReadbacksHttp200": 5,
+            "publicProductJsonReadbacksHttp200": 5,
+            "variantsProtected": 26,
+            "imagesProtected": 38,
+            "wrongJewelleryTagsRemoved": 15,
+            "optionLabelsRenamed": 3,
+            "wholeCatalogComplete": false,
+            "metricoolWrites": 0,
+            "merchantWrites": 0,
+            "themeWrites": 0
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -627,6 +665,37 @@
         "googleCategory": "Animals & Pet Supplies > Pet Supplies > Pet Bowls, Feeders & Waterers",
         "writesToShop": 0,
         "previousCasesPreserved": true
+      },
+      "run87": {
+        "at": "2026-11-04T21:55:58Z",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.json",
+          "gitBlobSha": "e090f9f03f6e5087cf687393be5a5ad6469c793e",
+          "readAt": "2026-11-04T21:55:58Z"
+        },
+        "liveProductsReadAndChanged": 5,
+        "allWritesSerial": true,
+        "mutationAttempts": 5,
+        "mutationRetries": 0,
+        "shopifyUserErrors": 0,
+        "completeAdminReadbacks": 5,
+        "publicHtmlReadbacksHttp200": 5,
+        "publicProductJsonReadbacksHttp200": 5,
+        "variantsProtected": 26,
+        "imagesProtected": 38,
+        "wrongJewelleryTagsRemoved": 15,
+        "optionLabelsRenamed": 3,
+        "wholeCatalogComplete": false,
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "themeWrites": 0,
+        "productIds": [
+          "gid://shopify/Product/16615805780359",
+          "gid://shopify/Product/16615805878663",
+          "gid://shopify/Product/16615805976967",
+          "gid://shopify/Product/16615806075271",
+          "gid://shopify/Product/16615806337415"
+        ]
       }
     },
     {
@@ -6124,12 +6193,12 @@
       "id": "tech-category-structure-20261102",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r86_fuenf_produkttyp_und_tag_korrekturen_verifiziert",
+      "state": "r87_fuenf_weitere_leuchtenprodukte_tag_und_option_korrekturen_verifiziert",
       "title": "Elektronik mit Unterkategorien und kuratiertem Produkteinstieg ordnen",
       "lastEvidenceDate": "2026-11-04",
-      "belegArt": "R85_R86_FUENF_AKTUELLE_PRODUKTTYPEN_UND_TAGBEREINIGUNGEN_SERIELL_VERIFIZIERT",
-      "lastEvidence": "R51 auf ausdrücklichen Auftrag «sortiere produkt besser und erstelle unterkategorie wie die anderen»: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit sechs Konten frisch passend. Vorhandene Definitionen lux.unterfilter/lux.eltern und vorhandene Unterkategorien wiederverwendet;69Collection-Referenzfelder in drei Batches geschrieben und exakt zurückgelesen. Zehn Mittelgruppen und60 bereits existierende Blattkategorien dadurch verbunden, keine neue Collection-Dublette oder Menüänderung. Alle60nativen Blattcounts positiv und alle60Ziele per genau einem HEAD/keinen Redirects mit HTTP200 erreichbar; dies ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Eine begrenzte Stichprobe von36verschiedenen ACTIVE-Artikeln zeigte13ohne bisherigen Muttertag elektronik; keine Katalogquote. Die bestehende Mutterbedingung bleibt erhalten und wird im selben Quell-/Bedingungsobjekt als ANY um zwölf positive vorhandene Sortiertags ergänzt; alle zehn Schutzbedingungen bestanden. Nativer Produktzähler6018→6223, keine Zahl öffentlich kaufbarer Artikel; konkretes Tastatur-Gegenbeispiel jetzt inCollection=true. Sechs aktuell geprüfte Einstiegsprodukte gezielt nach vorn verschoben, keine Bestseller-/Verkaufsrangbehauptung und keine Preise/Tags/Status verändert. Öffentliche Produktreihenfolge auf390/1440 bestätigt. Neue Unterseiten-Navigation live28/30 geprüft, mobiler16px-Überlauf bleibt offen. Eine CSS-Regel in templates/collection.json nur im alten UNPUBLISHED-Entwurf212978598279 exakt geändert (MD5c7020b391b776427a1346a91540c646f), dort36/36Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Native Vorvalidatoren übersprangen; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte, keine grüne Voll-CI. Keine weiteren Analytics-/Flow-/Bestellreports, Socialposts oder Kauf-Watchabfragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben. R67, 03.11.2026, bestehender Nachmittagslauf: Öffentliche Handy-&-Laden-/Powerbanks-Seiten in DE/FR bei 390/1440px mit aktuellem MAIN213013037447 rein lesend geprüft. Initial 7/8 Ansichten bestanden, eine FR-Desktop-Wartezeit unbekannt; genau diese Ansicht separat vollständig gegengeprüft und 13 Bedingungen bestanden. Initialen Timeout unverändert erhalten. Damit acht angeforderte Ansichten funktional begrenzt abgedeckt, neun Navigationen. Dokumentbreite entspricht Viewport, scrollX0 auch nach Fokus/Tab über neun Unterkategorielinks. Keine anderen Zielseiten, Personalisierer-, Checkout-, Integrations- oder gesamte Websiteabnahme behauptet. Kein neuer nativer Dateihash, Quellhash stammt R64. Kein CSS-Diff, alter R53-Patch nicht erneut angewandt, kein Theme-Write oder eigenerPublish; Ranking/Indexierung/Kaufwirkung unbekannt. R73,03./04.11.2026: Inhaber präzisierte ausdrücklich bestehendes Banner/Stil behalten und gezielte Verbesserungen/Fehlerbehebung für Stöbern und Suche. Zwischenzeitliche Banner-Neugestaltung verworfen; endgültig9Dateien mit zusätzlichen Unterbereichen/Suche, kleinem ursprünglichem Chips-Auswahlfix und engem44px-Selbstgestalten-CSS. Sechs bestehende Templateabschnitte plus Banner unverändert; im siebten nur führender Liquid-Auswahlblock geändert, Ausgabe/CSS und relative Reihenfolge erhalten. Genau ein neuer geschlossener Zusatzabschnitt; bestehende Links nicht dupliziert. Damen-Schuhe13eigene Kinder statt28fremderGeschwister. Finaler nativer Readback bytegenau, additive Browser-Schlussprobe86/87, einzig datenbedingteHundewelt-Bildverschiebung nachbelegtemProduktausschluss erklärt; MAIN-Dateien unverändert, keine Publikation. 16Haupteinstiege/180gespeicherteKarten begrenzt geprüft. Einzige klare Fehlzuordnung live03.11.22:50:52Z behoben: Hunderttafel16655507915143 aus Hundeweltquelle26063339905 ausgeschlossen; learning.hasProducttrue und Einschlussbedingungen unverändert. Nicht erneut anwenden. Weitere Titelunklarheiten ohne Produktbeleg nicht verschoben. Eigenes altes Header-Snippet im Entwurf unreferenziert; Löschversuch vomConnector blockiert, keinRetry/Umgehung; nicht Teil des finalenPakets. NeuesGitHub-Paket zurÜbernahme, Claude-Empfang unbekannt. 466bestehendeFRLücken unverändert; nur5neuegenutzteNavschlüsseljeDE/FR/EN. R81: Historischer Aktivexport enthält103 hochsichere Typ-/Tag-Widersprüche und66 weitere Prüffälle. Darunter36 Haustier-,35 Küchen- und22 Beleuchtungsfälle;62 echte Lampen/Küchengeräte sind als Aufbewahrung & Organizer typisiert. Aktueller Livefall Katzenhängematte bestätigt falsche Shopify-Taxonomie Reisenäpfe und Google Pet Bowls/Feeders/Waterers. Export enthält keine vollständigen aktuellen Shopify-/Google-Taxonomiefelder; keine Vollquote und keine pauschale Umklassifizierung. R83, 04.11.2026: Fünf P0-Produkte aktuell taxonomisch geprüft. Seifenspender-Leaf bleibt passend. Badeanzug kann klar aa-1-20-22 Einteilige Badeanzüge, Katzenspielzeug ap-2-2-5-5 Interaktives Spielzeug zugeordnet werden; Jumpsuit-Tags beziehungsweise hund sind fachfremd. Für Hopfenfilter und Alkoholmeter kein sauberer spezifischer Leaf, medizinische Alkoholmessgeräte-Kategorie ausdrücklich verworfen. Keine Änderung. R84, 04.11.2026: Badeanzug auf Leaf aa-1-20-22 und Damen-Bademode gesetzt; Katzenspielzeug auf Leaf ap-2-2-5-5 gesetzt und fachfremden hund-Tag entfernt. Kaffeemaschine und Vakuumierer auf Produkttyp Küche & Bar gesetzt, bestehende korrekte Leafs hg-11-7-4 beziehungsweise hg-11-7-48 erhalten. Hopfenfilter-Taxonomie ae-2-3 unverändert. Alle Änderungen seriell nativ und öffentlich bestätigt; keine pauschale Katalogumklassifizierung. R85: Nudelmaschine15495105184129 vom falschen Aufbewahrungstyp auf Küche & Bar gestellt; offizielle Leaf-Kategorie hg-11-7-36 erhalten, zwei Aufbewahrungstags entfernt. Sicherheitsstopp nach genau1Write wegen fehlender Barcode-Vorherbasis. R86: Eisraspler15448963645825 auf Küche & Bar und drei Wandleuchten15454472012161/15465835233665/15476180451713 auf Beleuchtung gestellt; bestehende passende Leafs hg-11-7-27 beziehungsweise hg-13-9-4 erhalten. Aufbewahrung/Organizer und beim Eisraspler zusätzlich der falsche Mixer-/Entsafter-/Zerkleinerer-Sortiertag entfernt. Alle vier seriell mit vollständiger Vorher-/Nachherbasis und öffentlicher HTTP200-Gegenprobe; keine pauschale Katalogumklassifizierung.",
-      "nextAllowedStep": "R86-Priorität: Nächsten kleinen Taxonomiestapel vollständig live lesen und jede aktuelle Shopify-Leaf-ID samt Produktfunktion, Varianten, Tags, Bildern und Storefront vor einem Diff bestätigen. Bestehende passende Leafs erhalten; nur klar falsche Produkttypen oder fachfremde Tags minimal und seriell korrigieren. Keine pauschale Umklassifizierung, keine Wiederholung der R82–R86-Fälle. Unklare Geräte, Materialien, Technik und historische Handles/Alttexte bleiben bis Quellenbeleg getrennt blockiert; R73-Kategorieerweiterungen und Themeaufgaben nicht mit Produktdaten vermischen.",
+      "belegArt": "R87_FUENF_LEUCHTENPRODUKTE_SCHMUCKTAGS_UND_DREI_OPTIONSLABELS_SERIELL_VERIFIZIERT",
+      "lastEvidence": "R51 auf ausdrücklichen Auftrag «sortiere produkt besser und erstelle unterkategorie wie die anderen»: Shop luxestyle.ch/CHF und Metricool6227837/EuropeZurich mit sechs Konten frisch passend. Vorhandene Definitionen lux.unterfilter/lux.eltern und vorhandene Unterkategorien wiederverwendet;69Collection-Referenzfelder in drei Batches geschrieben und exakt zurückgelesen. Zehn Mittelgruppen und60 bereits existierende Blattkategorien dadurch verbunden, keine neue Collection-Dublette oder Menüänderung. Alle60nativen Blattcounts positiv und alle60Ziele per genau einem HEAD/keinen Redirects mit HTTP200 erreichbar; dies ist keine vollständige Inhalts-/Kaufbarkeitsabnahme. Eine begrenzte Stichprobe von36verschiedenen ACTIVE-Artikeln zeigte13ohne bisherigen Muttertag elektronik; keine Katalogquote. Die bestehende Mutterbedingung bleibt erhalten und wird im selben Quell-/Bedingungsobjekt als ANY um zwölf positive vorhandene Sortiertags ergänzt; alle zehn Schutzbedingungen bestanden. Nativer Produktzähler6018→6223, keine Zahl öffentlich kaufbarer Artikel; konkretes Tastatur-Gegenbeispiel jetzt inCollection=true. Sechs aktuell geprüfte Einstiegsprodukte gezielt nach vorn verschoben, keine Bestseller-/Verkaufsrangbehauptung und keine Preise/Tags/Status verändert. Öffentliche Produktreihenfolge auf390/1440 bestätigt. Neue Unterseiten-Navigation live28/30 geprüft, mobiler16px-Überlauf bleibt offen. Eine CSS-Regel in templates/collection.json nur im alten UNPUBLISHED-Entwurf212978598279 exakt geändert (MD5c7020b391b776427a1346a91540c646f), dort36/36Vorschaubedingungen bestanden. MAIN213013037447 bleibt unverändert MD56c0ccc1bf403cc94bf55d1dd98b3ea84. Native Vorvalidatoren übersprangen; vorhandene CLI wegen fehlender Bundle-Dateien nicht ausführbar, tatsächliche API akzeptierte, keine grüne Voll-CI. Keine weiteren Analytics-/Flow-/Bestellreports, Socialposts oder Kauf-Watchabfragen. R53: Aktueller MAIN 213013037447 und vier konkrete Pfade frisch gegen den alten Entwurf 212978598279 verglichen. sections/luxe-edit-home.liquid und snippets/luxe-category-directory.liquid sind exakt gleich, assets/luxe-edit.css und templates/collection.json verschieden; das ist keine volle Theme-Abnahme und keine Erlaubnis für eine alte Gesamtkopie. Aus der tatsächlichen aktuellen MAIN-Collectiondatei wurde lokal nur eine CSS-Regel ersetzt: MD5 6c0ccc1bf403cc94bf55d1dd98b3ea84→bbacad38aabc5e292ed819b3d1b01782, alle anderen Bytes exakt erhalten, geänderter Liquid-Block VALID. Kein nativer Theme-Write oder Publish versucht. Vier rein lesende mobile Ansichten bestätigen weiterhin zwei MAIN-Seiten mit 390 px-Viewport/406 px-Dokument und 16 px-Verschiebung nach Fokus, zwei alte Entwurfsansichten mit 390 px/390 px ohne Verschiebung. Die lokal vorbereitete aktuelle MAIN-Kandidatendatei wurde nicht als Live-Fix oder direkt gerenderter Kandidat ausgegeben. MAIN-/Publish-Sperre ist technischer Toolvertrag, keine fehlende erneute Websitefreigabe. R64, 03.11.2026: Gewünschte .lx-uf-Regel im aktuellen MAIN213013037447/templates/collection.json nativ und auf öffentlichen Mittel-/Blattseiten bestätigt. MD5 jetzt457082cc5d27f1f348ba45f1722d40c1; zusätzlich URL-Deduplizierung im selben Block, alle anderen geparsten Collectionfelder gleich zum R53-Kandidaten. Keine eigene Umsetzung oder Actor-Zuordnung. Alten R53-Vorher-/Nachher-Gesamtkandidaten keinesfalls erneut anwenden. Drei Suchseiten HTTP200 mit passenden Root-Titeln/H1/Canonicals und verlinkter Kategoriekette. Vollständige funktionale DE/FR-390/1440px-Abnahme bleibt offen; alte16px-Messung nicht als neue Messung ausgeben. R67, 03.11.2026, bestehender Nachmittagslauf: Öffentliche Handy-&-Laden-/Powerbanks-Seiten in DE/FR bei 390/1440px mit aktuellem MAIN213013037447 rein lesend geprüft. Initial 7/8 Ansichten bestanden, eine FR-Desktop-Wartezeit unbekannt; genau diese Ansicht separat vollständig gegengeprüft und 13 Bedingungen bestanden. Initialen Timeout unverändert erhalten. Damit acht angeforderte Ansichten funktional begrenzt abgedeckt, neun Navigationen. Dokumentbreite entspricht Viewport, scrollX0 auch nach Fokus/Tab über neun Unterkategorielinks. Keine anderen Zielseiten, Personalisierer-, Checkout-, Integrations- oder gesamte Websiteabnahme behauptet. Kein neuer nativer Dateihash, Quellhash stammt R64. Kein CSS-Diff, alter R53-Patch nicht erneut angewandt, kein Theme-Write oder eigenerPublish; Ranking/Indexierung/Kaufwirkung unbekannt. R73,03./04.11.2026: Inhaber präzisierte ausdrücklich bestehendes Banner/Stil behalten und gezielte Verbesserungen/Fehlerbehebung für Stöbern und Suche. Zwischenzeitliche Banner-Neugestaltung verworfen; endgültig9Dateien mit zusätzlichen Unterbereichen/Suche, kleinem ursprünglichem Chips-Auswahlfix und engem44px-Selbstgestalten-CSS. Sechs bestehende Templateabschnitte plus Banner unverändert; im siebten nur führender Liquid-Auswahlblock geändert, Ausgabe/CSS und relative Reihenfolge erhalten. Genau ein neuer geschlossener Zusatzabschnitt; bestehende Links nicht dupliziert. Damen-Schuhe13eigene Kinder statt28fremderGeschwister. Finaler nativer Readback bytegenau, additive Browser-Schlussprobe86/87, einzig datenbedingteHundewelt-Bildverschiebung nachbelegtemProduktausschluss erklärt; MAIN-Dateien unverändert, keine Publikation. 16Haupteinstiege/180gespeicherteKarten begrenzt geprüft. Einzige klare Fehlzuordnung live03.11.22:50:52Z behoben: Hunderttafel16655507915143 aus Hundeweltquelle26063339905 ausgeschlossen; learning.hasProducttrue und Einschlussbedingungen unverändert. Nicht erneut anwenden. Weitere Titelunklarheiten ohne Produktbeleg nicht verschoben. Eigenes altes Header-Snippet im Entwurf unreferenziert; Löschversuch vomConnector blockiert, keinRetry/Umgehung; nicht Teil des finalenPakets. NeuesGitHub-Paket zurÜbernahme, Claude-Empfang unbekannt. 466bestehendeFRLücken unverändert; nur5neuegenutzteNavschlüsseljeDE/FR/EN. R81: Historischer Aktivexport enthält103 hochsichere Typ-/Tag-Widersprüche und66 weitere Prüffälle. Darunter36 Haustier-,35 Küchen- und22 Beleuchtungsfälle;62 echte Lampen/Küchengeräte sind als Aufbewahrung & Organizer typisiert. Aktueller Livefall Katzenhängematte bestätigt falsche Shopify-Taxonomie Reisenäpfe und Google Pet Bowls/Feeders/Waterers. Export enthält keine vollständigen aktuellen Shopify-/Google-Taxonomiefelder; keine Vollquote und keine pauschale Umklassifizierung. R83, 04.11.2026: Fünf P0-Produkte aktuell taxonomisch geprüft. Seifenspender-Leaf bleibt passend. Badeanzug kann klar aa-1-20-22 Einteilige Badeanzüge, Katzenspielzeug ap-2-2-5-5 Interaktives Spielzeug zugeordnet werden; Jumpsuit-Tags beziehungsweise hund sind fachfremd. Für Hopfenfilter und Alkoholmeter kein sauberer spezifischer Leaf, medizinische Alkoholmessgeräte-Kategorie ausdrücklich verworfen. Keine Änderung. R84, 04.11.2026: Badeanzug auf Leaf aa-1-20-22 und Damen-Bademode gesetzt; Katzenspielzeug auf Leaf ap-2-2-5-5 gesetzt und fachfremden hund-Tag entfernt. Kaffeemaschine und Vakuumierer auf Produkttyp Küche & Bar gesetzt, bestehende korrekte Leafs hg-11-7-4 beziehungsweise hg-11-7-48 erhalten. Hopfenfilter-Taxonomie ae-2-3 unverändert. Alle Änderungen seriell nativ und öffentlich bestätigt; keine pauschale Katalogumklassifizierung. R85: Nudelmaschine15495105184129 vom falschen Aufbewahrungstyp auf Küche & Bar gestellt; offizielle Leaf-Kategorie hg-11-7-36 erhalten, zwei Aufbewahrungstags entfernt. Sicherheitsstopp nach genau1Write wegen fehlender Barcode-Vorherbasis. R86: Eisraspler15448963645825 auf Küche & Bar und drei Wandleuchten15454472012161/15465835233665/15476180451713 auf Beleuchtung gestellt; bestehende passende Leafs hg-11-7-27 beziehungsweise hg-13-9-4 erhalten. Aufbewahrung/Organizer und beim Eisraspler zusätzlich der falsche Mixer-/Entsafter-/Zerkleinerer-Sortiertag entfernt. Alle vier seriell mit vollständiger Vorher-/Nachherbasis und öffentlicher HTTP200-Gegenprobe; keine pauschale Katalogumklassifizierung. R87: Fünf weitere ACTIVE-Leuchtenprodukte mit bestehender passender Beleuchtungs-Kategorie hg-13 seriell geprüft. Die Kategorie blieb unverändert; je drei fachfremde Tags kategorie-halskette, sort-halsketten und sort-schmuck wurden entfernt. Drei falsche Optionslabels Farbe wurden anhand aktueller Werte zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. Fünf Admin- und fünf öffentliche HTML-/Produkt-JSON-Rücklesungen bestätigen die Diffs; keine pauschale Umklassifizierung und keine Theme-/Kategoriepublikation.",
+      "nextAllowedStep": "R87 abgeschlossen. Im nächsten kleinen Taxonomiestapel jede aktuelle Shopify-Leaf-ID samt Produktfunktion, Varianten, Tags, Bildern und Storefront vollständig live lesen. Bestehende passende Beleuchtungs-Kategorie hg-13 und andere passende Leafs erhalten; nur klar falsche Produkttypen, fachfremde Tags oder eindeutig falsch benannte Optionslabels minimal und seriell korrigieren. Keine Wiederholung R82–R87 und keine pauschale Umklassifizierung. Unklare Geräte, Materialien, Technik sowie historische Handles/Alttexte bleiben bis Quellenbeleg getrennt blockiert; R73-Kategorieerweiterungen und Themeaufgaben nicht mit Produktdaten vermischen.",
       "blockers": [
         "Connector blockiert MAIN-Dateiwrites/Publish; endgültige Kategorie-Ergänzungen nur imUNPUBLISHED-Theme.",
         "Claude-Empfang/produktiveÜbernahme unbekannt. Alte unbenutzteHeaderdatei konnte wegenConnector-Löschsperre nicht gelöscht werden; keine aktiveReferenz, nicht übernehmen.",
@@ -6234,6 +6303,16 @@
           "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R86.json",
           "gitBlobSha": "83e889808f48aa992ede8b6b196befc4259865d9",
           "readAt": "2026-11-04T20:25:39Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.md",
+          "gitBlobSha": "ffe4103f236b3eef266b902ebcbbbf450421b379",
+          "readAt": "2026-11-04T21:55:58Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.json",
+          "gitBlobSha": "e090f9f03f6e5087cf687393be5a5ad6469c793e",
+          "readAt": "2026-11-04T21:55:58Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -6354,6 +6433,34 @@
             "vacuumTypeAfter": "Küche & Bar",
             "vacuumLeafPreserved": "gid://shopify/TaxonomyCategory/hg-11-7-48",
             "hopfenfilterTaxonomyChanged": false
+          }
+        },
+        {
+          "at": "2026-11-04T21:55:58Z",
+          "sourceRevision": 86,
+          "previous": {
+            "state": "r86_fuenf_produkttyp_und_tag_korrekturen_verifiziert",
+            "lastEvidenceDate": "2026-11-04",
+            "belegArt": "R85_R86_FUENF_AKTUELLE_PRODUKTTYPEN_UND_TAGBEREINIGUNGEN_SERIELL_VERIFIZIERT",
+            "nextAllowedStep": "R86-Priorität: Nächsten kleinen Taxonomiestapel vollständig live lesen und jede aktuelle Shopify-Leaf-ID samt Produktfunktion, Varianten, Tags, Bildern und Storefront vor einem Diff bestätigen. Bestehende passende Leafs erhalten; nur klar falsche Produkttypen oder fachfremde Tags minimal und seriell korrigieren. Keine pauschale Umklassifizierung, keine Wiederholung der R82–R86-Fälle. Unklare Geräte, Materialien, Technik und historische Handles/Alttexte bleiben bis Quellenbeleg getrennt blockiert; R73-Kategorieerweiterungen und Themeaufgaben nicht mit Produktdaten vermischen."
+          },
+          "newEvidence": {
+            "liveProductsReadAndChanged": 5,
+            "allWritesSerial": true,
+            "mutationAttempts": 5,
+            "mutationRetries": 0,
+            "shopifyUserErrors": 0,
+            "completeAdminReadbacks": 5,
+            "publicHtmlReadbacksHttp200": 5,
+            "publicProductJsonReadbacksHttp200": 5,
+            "variantsProtected": 26,
+            "imagesProtected": 38,
+            "wrongJewelleryTagsRemoved": 15,
+            "optionLabelsRenamed": 3,
+            "wholeCatalogComplete": false,
+            "metricoolWrites": 0,
+            "merchantWrites": 0,
+            "themeWrites": 0
           }
         }
       ],
@@ -6487,6 +6594,33 @@
           "doNotRepeat": true
         },
         "claudeReceipt": "unknown"
+      },
+      "run87": {
+        "at": "2026-11-04T21:55:58Z",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.json",
+          "gitBlobSha": "e090f9f03f6e5087cf687393be5a5ad6469c793e",
+          "readAt": "2026-11-04T21:55:58Z"
+        },
+        "shopifyCategoryPreserved": "gid://shopify/TaxonomyCategory/hg-13",
+        "productsVerified": 5,
+        "wrongJewelleryTagsRemoved": 15,
+        "optionLabelsRenamed": [
+          {
+            "before": "Farbe",
+            "after": "Anzahl Leuchten"
+          },
+          {
+            "before": "Farbe",
+            "after": "Modell"
+          },
+          {
+            "before": "Farbe",
+            "after": "Ausführung"
+          }
+        ],
+        "bulkReclassification": false,
+        "themeWrites": 0
       }
     },
     {
@@ -8573,6 +8707,17 @@
         "readAt": "2026-11-04T20:25:39Z"
       },
       "action": "R86: Vier Produkte seriell mit vollständiger Vorherbasis korrigiert; Eisraspler auf Küche & Bar, drei Wandleuchten auf Beleuchtung, fachfremde Tags und unbelegte Claims entfernt. Je ein Versuch, keine userErrors/Retries; vollständige Adminschutz- und öffentliche HTTP200-Rücklesungen. Alle IDs, Preise, Kaufbarkeit, Inventory-, Medien- und Sperrwerte erhalten; Gesamtkatalog offen."
+    },
+    {
+      "revision": 87,
+      "at": "2026-11-04T21:55:58Z",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.json",
+        "gitBlobSha": "e090f9f03f6e5087cf687393be5a5ad6469c793e",
+        "readAt": "2026-11-04T21:55:58Z"
+      },
+      "action": "R87: Fünf ACTIVE-Leuchtenprodukte seriell mit vollständiger Vorherbasis korrigiert; 15 fachfremde Schmuck-Tags entfernt und drei Optionslabels präzisiert. Je ein Versuch, keine userErrors/Retries; vollständige Adminschutz- und öffentliche HTTP200-Rücklesungen. 26 Varianten, 38 Bilder und alle geschützten Produkt-, Preis-, Inventory-, Medien- und Publikationswerte erhalten; Gesamtkatalog offen."
     }
   ],
   "salesGoal": {
@@ -11661,5 +11806,15 @@
     },
     "note": "R86: Vier Produkte seriell mit vollständiger Vorherbasis, je einem Write und vollständigem Admin-/Storefront-Readback korrigiert; keine Retries oder unerwarteten Schutzfeldänderungen.",
     "nextStep": "Nächsten kleinen Queue-Stapel frisch und vollständig lesen; nur eindeutige bild-/quellenbelegte Diffs seriell ausführen. Alte Handles/Alttexte und Theme-Hinweise getrennt behandeln."
+  },
+  "followUpRunR87": {
+    "at": "2026-11-04T21:55:58Z",
+    "source": {
+      "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R87.json",
+      "gitBlobSha": "e090f9f03f6e5087cf687393be5a5ad6469c793e",
+      "readAt": "2026-11-04T21:55:58Z"
+    },
+    "note": "R87: Fünf ACTIVE-Leuchtenprodukte seriell mit vollständiger Vorherbasis, je einem Write und vollständigem Admin-/Storefront-Readback korrigiert; 26 Varianten und 38 Bilder geschützt, keine Retries oder unerwarteten Schutzfeldänderungen.",
+    "nextStep": "Nächsten kleinen Queue-Stapel frisch und vollständig lesen; nur eindeutige bild- oder quellenbelegte Diffs seriell ausführen. Gesamtkatalog bleibt offen."
   }
 }

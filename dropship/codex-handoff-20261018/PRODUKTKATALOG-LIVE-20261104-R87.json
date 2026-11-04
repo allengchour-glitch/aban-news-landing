@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R87_20261104",
+  "dateEuropeZurich": "2026-11-04",
+  "status": "VERIFIED_LIVE",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "shopAddress": {
+        "country": "Switzerland"
+      },
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "facebook": "1049840534888592",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    }
+  },
+  "planSha256": "9a280f1c9af1b14d9a9481a621c81f51b84bd57acea54d7718d4b50239e38ace",
+  "summary": {
+    "productsUpdated": 5,
+    "variantsProtected": 26,
+    "imagesProtected": 38,
+    "wrongTagsRemoved": 15,
+    "optionLabelsRenamed": 3,
+    "mutationAttempts": 5,
+    "mutationRetries": 0,
+    "mutationUserErrors": 0,
+    "adminReadbacksVerified": 5,
+    "publicReadbacksVerified": 5,
+    "wholeCatalogComplete": false
+  },
+  "products": [
+    {
+      "sequence": 1,
+      "productId": "gid://shopify/Product/16615805780359",
+      "handle": "wandlampe-glas-kurbis-618600",
+      "url": "https://luxestyle.ch/products/wandlampe-glas-kurbis-618600",
+      "titleAfter": "Wandleuchte in sechs Ausführungen",
+      "descriptionHtmlAfter": "<p>Diese Wandleuchte ist in sechs sichtbaren Ausführungen erhältlich. Wähle Typ A bis Typ F anhand der Variantenbilder.</p><h3>Auswahl</h3><ul>\n<li>Sechs Varianten: Typ A bis Typ F</li>\n<li>Jede Variante ist einem Produktbild zugeordnet</li>\n<li>Die gewünschte Ausführung wird vor dem Kauf ausgewählt</li>\n</ul>",
+      "seoAfter": {
+        "title": "Wandleuchte in sechs Ausführungen | LuxeStyle CH",
+        "description": "Wandleuchte in sechs Ausführungen. Typ A bis Typ F anhand der Variantenbilder vergleichen und passend auswählen."
+      },
+      "tagsRemoved": [
+        "kategorie-halskette",
+        "sort-halsketten",
+        "sort-schmuck"
+      ],
+      "tagsAfter": [
+        "auswahl-nachgeruestet",
+        "beleuchtung",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "lampe",
+        "licht",
+        "neuheit",
+        "sort-wandleuchten",
+        "wohnen"
+      ],
+      "optionRename": null,
+      "variantCount": 6,
+      "imageCount": 6,
+      "publicationCount": 7,
+      "priceRangeChf": {
+        "min": "44.90",
+        "max": "54.90"
+      },
+      "availableOnPublicStorefront": true,
+      "protectedBeforeSha256": "5afc163b409c5f5f6ebc4b81919da8afd7657e9ae9ab0cb26c3500e7e580969a",
+      "adminVerification": {
+        "id": true,
+        "title": true,
+        "descriptionSemantic": true,
+        "tags": true,
+        "seo": true,
+        "protectedHash": true,
+        "pagesComplete": true
+      },
+      "publicVerification": {
+        "html200": true,
+        "json200": true,
+        "noRedirect": true,
+        "id": true,
+        "title": true,
+        "productTypePreserved": true,
+        "tags": true,
+        "descriptionSemantic": true,
+        "availablePreserved": true,
+        "pricePreserved": true,
+        "variantIdentityPreserved": true,
+        "imageCountPreserved": true,
+        "oldJewelleryTagsAbsent": true,
+        "targetTitleInHtml": true
+      },
+      "mutationUserErrors": []
+    },
+    {
+      "sequence": 2,
+      "productId": "gid://shopify/Product/16615805878663",
+      "handle": "wandlampe-modern-1-oder-2-kopf-220-v-620700",
+      "url": "https://luxestyle.ch/products/wandlampe-modern-1-oder-2-kopf-220-v-620700",
+      "titleAfter": "Moderne Wandleuchte, ein- oder zweiflammig",
+      "descriptionHtmlAfter": "<p>Diese moderne Wandleuchte ist als ein- oder zweiflammige Variante erhältlich. Zusätzlich wählst du zwischen Warmlicht, Dreifarbenlicht oder einer Ausführung ohne Lichtquelle.</p><h3>Auswahl</h3><ul>\n<li>Ein- oder zweiflammige Wandleuchte</li>\n<li>Warmlicht oder Dreifarbenlicht</li>\n<li>Variante ohne Lichtquelle verfügbar</li>\n</ul>",
+      "seoAfter": {
+        "title": "Moderne Wandleuchte, ein- oder zweiflammig | LuxeStyle CH",
+        "description": "Moderne Wandleuchte mit einer oder zwei Leuchten. Warmlicht, Dreifarbenlicht oder Ausführung ohne Lichtquelle auswählen."
+      },
+      "tagsRemoved": [
+        "kategorie-halskette",
+        "sort-halsketten",
+        "sort-schmuck"
+      ],
+      "tagsAfter": [
+        "auswahl-offen",
+        "beleuchtung",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "lampe",
+        "licht",
+        "neuheit",
+        "sort-wandleuchten",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "optionRename": {
+        "id": "gid://shopify/ProductOption/19621047730567",
+        "before": "Farbe",
+        "after": "Anzahl Leuchten"
+      },
+      "variantCount": 6,
+      "imageCount": 7,
+      "publicationCount": 7,
+      "priceRangeChf": {
+        "min": "45.90",
+        "max": "53.90"
+      },
+      "availableOnPublicStorefront": true,
+      "protectedBeforeSha256": "d18b00a486e509faecab52cd24696644e057357651cb6d37666ffd1595c878e8",
+      "adminVerification": {
+        "id": true,
+        "title": true,
+        "descriptionSemantic": true,
+        "tags": true,
+        "seo": true,
+        "optionRename": true,
+        "optionValuesPreserved": true,
+        "variantSelectedOptionRenameOnly": true,
+        "protectedHashNormalized": true,
+        "pagesComplete": true
+      },
+      "publicVerification": {
+        "html200": true,
+        "json200": true,
+        "noRedirect": true,
+        "id": true,
+        "title": true,
+        "productTypePreserved": true,
+        "tags": true,
+        "descriptionSemantic": true,
+        "availablePreserved": true,
+        "pricePreserved": true,
+        "variantIdentityPreserved": true,
+        "imageCountPreserved": true,
+        "oldJewelleryTagsAbsent": true,
+        "targetTitleInHtml": true,
+        "optionRenamed": true
+      },
+      "mutationUserErrors": []
+    },
+    {
+      "sequence": 3,
+      "productId": "gid://shopify/Product/16615805976967",
+      "handle": "wandleuchte-fur-aussenbereiche-625300",
+      "url": "https://luxestyle.ch/products/wandleuchte-fur-aussenbereiche-625300",
+      "titleAfter": "Lineare Wandleuchte",
+      "descriptionHtmlAfter": "<p>Diese Wandleuchte zeigt eine klare, lineare Form. Die aktuelle Auswahl umfasst eine Ausführung; die Produktbilder zeigen das Modell aus mehreren Ansichten.</p><h3>Auswahl</h3><ul>\n<li>Eine aktuelle Ausführung</li>\n<li>Mehrere Produktansichten verfügbar</li>\n<li>Für die Wandmontage vorgesehen</li>\n</ul>",
+      "seoAfter": {
+        "title": "Lineare Wandleuchte | LuxeStyle CH",
+        "description": "Lineare Wandleuchte in einer aktuellen Ausführung. Form und Farbwirkung anhand der Produktbilder vergleichen."
+      },
+      "tagsRemoved": [
+        "kategorie-halskette",
+        "sort-halsketten",
+        "sort-schmuck"
+      ],
+      "tagsAfter": [
+        "auswahl-offen",
+        "beleuchtung",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "lampe",
+        "leuchte",
+        "licht",
+        "neuheit",
+        "sort-wandleuchten",
+        "wohnen"
+      ],
+      "optionRename": null,
+      "variantCount": 1,
+      "imageCount": 9,
+      "publicationCount": 7,
+      "priceRangeChf": {
+        "min": "61.90",
+        "max": "61.90"
+      },
+      "availableOnPublicStorefront": true,
+      "protectedBeforeSha256": "7b8f06e820a718e95ee3fd6b8a9b1f45fb1b335d66e992d94b61f21783e461fa",
+      "adminVerification": {
+        "id": true,
+        "title": true,
+        "descriptionSemantic": true,
+        "tags": true,
+        "seo": true,
+        "protectedHash": true,
+        "pagesComplete": true
+      },
+      "publicVerification": {
+        "html200": true,
+        "json200": true,
+        "noRedirect": true,
+        "id": true,
+        "title": true,
+        "productTypePreserved": true,
+        "tags": true,
+        "descriptionSemantic": true,
+        "availablePreserved": true,
+        "pricePreserved": true,
+        "variantIdentityPreserved": true,
+        "imageCountPreserved": true,
+        "oldJewelleryTagsAbsent": true,
+        "targetTitleInHtml": true
+      },
+      "mutationUserErrors": []
+    },
+    {
+      "sequence": 4,
+      "productId": "gid://shopify/Product/16615806075271",
+      "handle": "nordische-wandlampe-fur-stimmungsvolles-licht-621200",
+      "url": "https://luxestyle.ch/products/nordische-wandlampe-fur-stimmungsvolles-licht-621200",
+      "titleAfter": "Leuchtenserie mit Wand- und Deckenvarianten",
+      "descriptionHtmlAfter": "<p>Diese Leuchtenserie umfasst Wand-, Decken- und Kronleuchter-Varianten. Je nach Modell wählst du Warmlicht oder Dreifarbenlicht.</p><h3>Auswahl</h3><ul>\n<li>Wand-, Decken- und Kronleuchter-Varianten</li>\n<li>Warmlicht oder Dreifarbenlicht</li>\n<li>Weisse, gelbe und transparente Modellbezeichnungen</li>\n</ul>",
+      "seoAfter": {
+        "title": "Leuchtenserie mit Wand- und Deckenvarianten | LuxeStyle CH",
+        "description": "Leuchtenserie mit Wand-, Decken- und Kronleuchter-Varianten. Warmlicht oder Dreifarbenlicht passend auswählen."
+      },
+      "tagsRemoved": [
+        "kategorie-halskette",
+        "sort-halsketten",
+        "sort-schmuck"
+      ],
+      "tagsAfter": [
+        "auswahl-offen",
+        "beleuchtung",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "lampe",
+        "licht",
+        "neuheit",
+        "sort-wandleuchten",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "optionRename": {
+        "id": "gid://shopify/ProductOption/19621044814215",
+        "before": "Farbe",
+        "after": "Modell"
+      },
+      "variantCount": 12,
+      "imageCount": 11,
+      "publicationCount": 6,
+      "priceRangeChf": {
+        "min": "26.90",
+        "max": "26.90"
+      },
+      "availableOnPublicStorefront": true,
+      "protectedBeforeSha256": "9178a7069863fa4a18d0efc678cfff3b88821911227740b0f7061fe0015f4726",
+      "adminVerification": {
+        "id": true,
+        "title": true,
+        "descriptionSemantic": true,
+        "tags": true,
+        "seo": true,
+        "optionRename": true,
+        "optionValuesPreserved": true,
+        "variantSelectedOptionRenameOnly": true,
+        "protectedHashNormalized": true,
+        "pagesComplete": true
+      },
+      "publicVerification": {
+        "html200": true,
+        "json200": true,
+        "noRedirect": true,
+        "id": true,
+        "title": true,
+        "productTypePreserved": true,
+        "tags": true,
+        "descriptionSemantic": true,
+        "availablePreserved": true,
+        "pricePreserved": true,
+        "variantIdentityPreserved": true,
+        "imageCountPreserved": true,
+        "oldJewelleryTagsAbsent": true,
+        "targetTitleInHtml": true,
+        "optionRenamed": true
+      },
+      "mutationUserErrors": []
+    },
+    {
+      "sequence": 5,
+      "productId": "gid://shopify/Product/16615806337415",
+      "handle": "rattan-vintage-wandlampe-616100",
+      "url": "https://luxestyle.ch/products/rattan-vintage-wandlampe-616100",
+      "titleAfter": "Wandlampe im Vintage-Stil",
+      "descriptionHtmlAfter": "<p>Diese Wandlampe zeigt einen sichtbaren Vintage-Look mit strukturiertem Schirm. Die aktuelle Auswahl enthält die Ausführung «Europäischer Standard».</p><h3>Auswahl</h3><ul>\n<li>Eine aktuelle Ausführung</li>\n<li>Strukturierter Schirm im Produktbild</li>\n<li>Auswahlbezeichnung: Europäischer Standard</li>\n</ul>",
+      "seoAfter": {
+        "title": "Wandlampe im Vintage-Stil | LuxeStyle CH",
+        "description": "Wandlampe im Vintage-Stil mit strukturiertem Schirm. Aktuelle Ausführung anhand der Produktbilder prüfen und auswählen."
+      },
+      "tagsRemoved": [
+        "kategorie-halskette",
+        "sort-halsketten",
+        "sort-schmuck"
+      ],
+      "tagsAfter": [
+        "beleuchtung",
+        "cj-real",
+        "dekoration",
+        "dropship",
+        "lampe",
+        "licht",
+        "neuheit",
+        "sort-retro",
+        "sort-wandleuchten",
+        "stecker-bereinigt-2510",
+        "stecker-eu-sku",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "optionRename": {
+        "id": "gid://shopify/ProductOption/19563877106055",
+        "before": "Farbe",
+        "after": "Ausführung"
+      },
+      "variantCount": 1,
+      "imageCount": 5,
+      "publicationCount": 7,
+      "priceRangeChf": {
+        "min": "28.90",
+        "max": "28.90"
+      },
+      "availableOnPublicStorefront": true,
+      "protectedBeforeSha256": "58abf251e1001d05c2c34aaeaf3d4229526a0489a54fddc7a586cc65383a532a",
+      "adminVerification": {
+        "id": true,
+        "title": true,
+        "descriptionSemantic": true,
+        "tags": true,
+        "seo": true,
+        "optionRename": true,
+        "optionValuesPreserved": true,
+        "variantSelectedOptionRenameOnly": true,
+        "protectedHashNormalized": true,
+        "pagesComplete": true
+      },
+      "publicVerification": {
+        "html200": true,
+        "json200": true,
+        "noRedirect": true,
+        "id": true,
+        "title": true,
+        "productTypePreserved": true,
+        "tags": true,
+        "descriptionSemantic": true,
+        "availablePreserved": true,
+        "pricePreserved": true,
+        "variantIdentityPreserved": true,
+        "imageCountPreserved": true,
+        "oldJewelleryTagsAbsent": true,
+        "targetTitleInHtml": true,
+        "optionRenamed": true
+      },
+      "mutationUserErrors": []
+    }
+  ],
+  "claimsPolicy": {
+    "unsupportedMaterialMassElectricalOutdoorDeliveryReviewClaimsAdded": false,
+    "copyBasis": "Aktuelle Variantenwerte, Optionen und sichtbare Produktbilder"
+  },
+  "nonActions": [
+    "Keine Social- oder Metricool-Schreibaktion",
+    "Keine Merchant-, Feed-, Theme-, Flow-, DNS-, Budget-, Rabatt-, Versand-, Kunden-, Bestell- oder Renderaktion",
+    "Keine Status-, Handle-, Vendor-, Kategorie-, Publikations-, Varianten-, SKU-, Preis-, Inventar-, Barcode-, Medien- oder Kaufbarkeitsänderung"
+  ]
+}

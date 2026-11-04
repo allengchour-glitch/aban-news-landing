@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 87: fünf weitere kontrollierte Katalogkorrekturen
+
+[R87-Live-Bericht](PRODUKTKATALOG-LIVE-20261104-R87.md) · [R87-Belege](PRODUKTKATALOG-LIVE-20261104-R87.json). Shopify LuxeStyle / `luxestyle.ch` / CHF sowie Metricool Brand `6227837` / `Europe/Zurich` mit den sechs bekannten Kanalidentitäten wurden frisch passend gelesen. R87 korrigierte exakt fünf ACTIVE-Leuchtenprodukte seriell mit je einem Mutationsversuch, ohne `userErrors` und ohne Retry. Nach jedem Write bestätigten vollständige Admin-Readbacks sowie Storefront-HTML und Produkt-JSON mit HTTP 200 den Zielzustand.
+
+Alle fünf Produkte erhielten neutrale, auf aktuelle Variantenwerte und sichtbare Bilder begrenzte Titel, Beschreibungen und SEO-Texte. Insgesamt wurden 15 fachfremde Schmuck-Tags entfernt. Bei drei Produkten wurde das falsche Optionslabel «Farbe» präzisiert: zu «Anzahl Leuchten», «Modell» beziehungsweise «Ausführung». Unbelegte Material-, Mass-, Elektro-, Aussenbereichs-, Lieferzeit- und Bewertungsangaben wurden nicht ergänzt.
+
+Status, Handles, Vendor, Beleuchtungs-Kategorie `hg-13`, Publikationen, 26 Varianten-IDs und SKUs, CHF-Preise, Kaufbarkeit, `CONTINUE`, Tracking, leere Barcode-Sätze, 38 Bilder und Medienbindungen blieben erhalten. Der Gesamtkatalog ist nicht fertig. Weitere Produkte nur in einem neuen kleinen Allowlist-Stapel mit vollständiger Vorherbasis, genau einem Versuch je Produkt und unmittelbarer Admin-/Storefront-Gegenprobe bearbeiten. Tageskennzahlen, Klaviyo und Kauf-Watch wurden nicht wiederholt; kein Social-/Metricool-, Merchant-/Feed-, Theme-, Flow-, DNS-, Budget-, Rabatt-, Versand-, Kunden-, Bestell- oder Renderwrite.
+
 ## Aktueller Stand – 04.11.2026, Revision 86: vier weitere kontrollierte Katalogkorrekturen
 
 [R86-Live-Bericht](PRODUKTKATALOG-LIVE-20261104-R86.md) · [R86-Belege](PRODUKTKATALOG-LIVE-20261104-R86.json). Shopify LuxeStyle / `luxestyle.ch` / CHF wurde unmittelbar vor dem Stapel erneut passend gelesen; die zuvor im selben Lauf bestätigte Metricool-Identität blieb unverändert und es gab dort keinen Write. R86 korrigierte exakt vier ACTIVE-Produkte seriell mit je einem Mutationsversuch, ohne `userErrors` und ohne Retry. Nach jedem Write bestätigten vollständige Admin-Readbacks sowie Storefront-HTML und Produkt-JSON mit HTTP 200 den Zielzustand.
