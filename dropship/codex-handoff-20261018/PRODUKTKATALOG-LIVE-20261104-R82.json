@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "brand": "luxestyle.ch",
+  "date": "2026-11-04",
+  "scope": "first_live_batch_after_full_historical_catalog_audit",
+  "fullCatalogQueue": {
+    "basis": "historical_ACTIVE_export",
+    "uniqueProductIds": 56630,
+    "priority": {"P0": 154, "P1": 3982, "P2": 52494},
+    "autoFixAllowedCount": 0,
+    "liveVerifiedCountInThisBatch": 3,
+    "queueSha256": "6761955345d87513d9d5ce3fc1cd14fa9f5629ad853d26eb0fc21face6c98746",
+    "gzipSha256": "12e1ee0244ba502249904a5070887c9377dd80f222157d0d8f57eaf2f4151fc0"
+  },
+  "writes": [
+    {
+      "productId": "gid://shopify/Product/15454094426497",
+      "statusBefore": "DRAFT",
+      "statusAfter": "DRAFT",
+      "titleBefore": "Katzenhängematte mit Fensterhalter für Balkon",
+      "titleAfter": "Katzen-Fensterhängematte mit Saugnäpfen",
+      "productTypeBefore": "Haustierbedarf",
+      "productTypeAfter": "Haustierbedarf",
+      "categoryBefore": null,
+      "categoryAfter": "gid://shopify/TaxonomyCategory/ap-2-2-2-2",
+      "categoryAfterName": "Katzenregale und -sitze",
+      "removedTags": ["hund"],
+      "preservedBlockingTags": ["marge-verlust-draft", "verlust-auto-draft", "rueckhol-0907"],
+      "removedUnsupportedClaims": ["Balkon", "Metallgestell", "ABS-Halter", "20 kg", "Farboptionen", "Einbaupaket", "Lieferung 10–20 Werktage", "Geprüfte Angaben"],
+      "variantInvariant": {"id": "gid://shopify/ProductVariant/55907370041729", "sku": "CJ-2501040136551625300", "price": "110.90", "availableForSale": true, "inventoryPolicy": "CONTINUE", "tracked": false},
+      "onlineStoreUrl": null,
+      "readbackUpdatedAt": "2026-11-04T17:43:10Z",
+      "userErrors": []
+    },
+    {
+      "productId": "gid://shopify/Product/15493884445057",
+      "statusBefore": "ACTIVE",
+      "statusAfter": "ACTIVE",
+      "titleBefore": "L-förmige Katzenhängematte Plüsch",
+      "titleAfter": "L-förmige Katzenhängematte mit Plüschbezug",
+      "productTypeBefore": "Spielzeug & Spiele",
+      "productTypeAfter": "Haustierbedarf",
+      "categoryBefore": "gid://shopify/TaxonomyCategory/ap-2-9",
+      "categoryAfter": "gid://shopify/TaxonomyCategory/ap-2-9-10",
+      "categoryAfterName": "Haustierliegen",
+      "removedTags": ["hund", "sort-kinder-baby"],
+      "preservedBlockingTags": ["rueckhol-0907"],
+      "removedUnsupportedClaims": ["Lammfell", "Kaninchenfell", "Lammwolle", "Lieferung 10–20 Werktage", "Geprüfte Angaben"],
+      "optionChange": {
+        "optionId": "gid://shopify/ProductOption/19631402582407",
+        "nameBefore": "Farbe",
+        "nameAfter": "Bezug",
+        "valuesBefore": ["Lammwolle Beige", "Lammwolle Grau", "Kaninchenfell Beige", "Kaninchenfell Grau"],
+        "valuesAfter": ["Strukturplüsch Beige", "Strukturplüsch Grau", "Glattplüsch Beige", "Glattplüsch Grau"],
+        "variantStrategy": "LEAVE_AS_IS"
+      },
+      "variantInvariants": {"count": 8, "idsSkusPricesPreserved": true, "availableForSaleAll": true, "inventoryPolicyAll": "CONTINUE", "trackedAll": false, "priceMin": "24.90", "priceMax": "25.90"},
+      "unresolvedOption": {"name": "Modell", "values": ["Taschen", "Schachtel"], "reason": "supplier meaning not independently verified"},
+      "onlineStoreUrl": "https://luxestyle.ch/products/l-formige-katzenhangematte-plusch-624900",
+      "readbackUpdatedAt": "2026-11-04T17:45:43Z",
+      "publicReadback": {"newTitleFound": true, "newBodyFound": true, "newOptionValuesFound": true, "oldAnimalMaterialTermsFoundAfterOptionWrite": false},
+      "userErrors": []
+    },
+    {
+      "productId": "gid://shopify/Product/15495226098049",
+      "statusBefore": "ACTIVE",
+      "statusAfter": "ACTIVE",
+      "titleBefore": "Wand-Katzenhängematte aus Holz",
+      "titleAfter": "Wand-Katzenhängematte mit Stoffliege",
+      "productTypeBefore": "Haustierbedarf",
+      "productTypeAfter": "Haustierbedarf",
+      "categoryBefore": "gid://shopify/TaxonomyCategory/ap-2-2-2",
+      "categoryAfter": "gid://shopify/TaxonomyCategory/ap-2-2-2-2",
+      "categoryAfterName": "Katzenregale und -sitze",
+      "removedTags": ["hund"],
+      "preservedBlockingTags": ["rueckhol-0907"],
+      "removedUnsupportedClaims": ["Material: Holz", "Produktkategorie: Kabine", "Lieferung 10–20 Werktage", "Geprüfte Angaben"],
+      "variantInvariant": {"id": "gid://shopify/ProductVariant/56087300997505", "sku": "CJ-DD3BD999-1B53-4767-AFE8-5C3B2F847551", "price": "37.90", "availableForSale": true, "inventoryPolicy": "CONTINUE", "tracked": false},
+      "onlineStoreUrl": "https://luxestyle.ch/products/wand-katzenhangematte-aus-holz-847551",
+      "readbackUpdatedAt": "2026-11-04T17:43:52Z",
+      "publicReadback": {"newTitleFound": true, "newBodyFound": true, "oldMaterialAndCabinClaimsFound": false},
+      "userErrors": []
+    }
+  ],
+  "notChanged": ["prices", "variant IDs", "SKUs", "availability", "inventory policy", "inventory tracking", "publication status", "blocking tags", "images", "handles", "shipping settings", "discounts", "flows", "DNS", "social planning"],
+  "limitations": [
+    "The 56,630-product queue is based on a historical ACTIVE export and is not a current live verification of every product.",
+    "Only the three listed products were freshly read and written in this batch.",
+    "The meaning of option values Taschen and Schachtel remains unknown and was not changed.",
+    "Missing Merchant CSV matches are unknown, not zero errors."
+  ]
+}

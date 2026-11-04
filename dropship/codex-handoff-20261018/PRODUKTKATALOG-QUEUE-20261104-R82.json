@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "luxestyle-product-review-queue-summary-v1",
+  "mode": "historical_offline_read_only",
+  "generatedFrom": {
+    "activeExport": {
+      "path": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+      "sha256": "481c98a41cd614a50b0bd7b5ff4a52e5845f10b10a8310bc0710ac42f271c994",
+      "rows": 56630
+    },
+    "reports": {
+      "materials": {
+        "path": "/workspace/luxestyle-review/full-audit-20261104/materials-report.json",
+        "sha256": "78ba4cab103736874b13f8ae7af74948f71a288bd03c3de612495cce9a46121a"
+      },
+      "taxonomy": {
+        "path": "/workspace/luxestyle-review/full-audit-20261104/taxonomy-report.json",
+        "sha256": "5e20ff509b4b3e14219b6a92d9b344defeff6d94b6dcc0ff80696859dbe5bdfc"
+      },
+      "title-variant": {
+        "path": "/workspace/luxestyle-review/full-audit-20261104/title-variant-report.json",
+        "sha256": "b485727583b0ae6c4f60eba95c8211be1dad323b00b46a7f3adae5cd337ad3f9"
+      },
+      "commerce": {
+        "path": "/workspace/luxestyle-review/full-audit-20261104/commerce-report.json",
+        "sha256": "a2040760c6d2aa9053ddf638d6f1656a2236bdf01c55cd7061ecc8ad32aaedc8"
+      },
+      "merchant": {
+        "path": "/workspace/luxestyle-review/full-audit-20261104/merchant-report.json",
+        "sha256": "af00ea25193efe88439fc1b6d827ae49707410b7f14530004df6154311c4ed80"
+      }
+    },
+    "merchantLatestUniqueCsvBlobs": 16
+  },
+  "interpretation": [
+    "Every historical active product appears exactly once.",
+    "Priority is a review order, not a current live error or severity verdict.",
+    "No automatic fix is allowed; every row requires a current live and, where relevant, supplier or policy check.",
+    "P0 means immediate evidence and compliance review, P1 means priority data review, P2 means routine review.",
+    "Products with no specific offline rule hit remain P2 and are not certified error-free."
+  ],
+  "queue": {
+    "path": "/workspace/luxestyle-review/catalog-improvement-20261104/PRODUCT-REVIEW-QUEUE.jsonl",
+    "sha256": "6761955345d87513d9d5ce3fc1cd14fa9f5629ad853d26eb0fc21face6c98746",
+    "compressedPath": "/workspace/luxestyle-review/catalog-improvement-20261104/PRODUCT-REVIEW-QUEUE.jsonl.gz",
+    "compressedSha256": "12e1ee0244ba502249904a5070887c9377dd80f222157d0d8f57eaf2f4151fc0",
+    "rows": 56630,
+    "uniqueProductIds": 56630,
+    "priorityCounts": {
+      "P0": 154,
+      "P1": 3982,
+      "P2": 52494
+    },
+    "signalGroupCounts": {
+      "delivery_and_trust_claims": 53926,
+      "social_guard": 24389,
+      "material_and_components": 2841,
+      "baseline_review": 2326,
+      "title_variant": 681,
+      "rights_review": 591,
+      "merchant_product_data": 260,
+      "taxonomy": 170,
+      "measurement_scope": 142,
+      "discoverability_identity": 138,
+      "policy_and_age_review": 77,
+      "merchant_policy_review": 47,
+      "copy_quality": 42,
+      "claim_contradiction": 38,
+      "merchant_account_or_scope": 34,
+      "medical_and_policy_review": 17,
+      "commerce_identity": 15,
+      "unsupported_social_proof": 13,
+      "variant_identity": 5,
+      "performance_claim": 2
+    },
+    "signalCodeCounts": {
+      "FIXED_DELIVERY_WINDOW": 53926,
+      "GENERIC_VERIFIED_CLAIM": 53068,
+      "SOCIAL_BLOCK_TAG_PRESENT": 24389,
+      "NO_SPECIFIC_SIGNAL_IN_AVAILABLE_OFFLINE_RULES": 2326,
+      "POTENTIAL_MATERIAL_COMPONENT_CONFLICT": 1504,
+      "MULTIPLE_DIFFERENT_MATERIAL_LINES": 595,
+      "RIGHTS_BRAND_OR_CHARACTER_REVIEW_NEEDED": 591,
+      "EXCLUSIVITY_WORD_WITH_MULTIPLE_SIZE_OPTIONS": 584,
+      "ABSOLUTE_MATERIAL_WITH_MULTIPLE_MATERIALS": 464,
+      "TITLE_BODY_MATERIAL_MISMATCH": 336,
+      "MANY_DIMENSION_SETS": 142,
+      "DUPLICATE_TITLE_GROUP": 138,
+      "Missing product price": 134,
+      "HIGH_CONFIDENCE_PRODUCT_TYPE_OR_TAG_MISMATCH": 103,
+      "Promotional overlay on image": 82,
+      "ADULT_OR_18PLUS_REVIEW_NEEDED": 77,
+      "TAXONOMY_TENSION_REVIEW_NEEDED": 66,
+      "DESCRIPTION_SINGLE_SIZE_BUT_MULTIPLE_SIZE_OPTIONS": 49,
+      "DUPLICATE_VISIBLE_BLOCK": 42,
+      "Over capacity for Shopping ads (in CSS program)": 34,
+      "TITLE_HANDLE_COLOR_DIVERGENCE": 33,
+      "Product page unavailable": 30,
+      "WATERPROOF_CONTRADICTION": 24,
+      "MEDICAL_OR_THERAPEUTIC_CLAIM": 15,
+      "Image too small": 14,
+      "REVIEW_OR_POPULARITY_CLAIM": 13,
+      "Tobacco products & related equipment": 11,
+      "WIRELESS_WIRED_CONTRADICTION": 11,
+      "Sale of live animals": 9,
+      "Personalized advertising: legal restrictions": 8,
+      "Guns and Parts": 8,
+      "CROSS_PRODUCT_SKU_REUSE_IN_NATIVE_SAMPLE": 8,
+      "TITLE_COLOR_NOT_IN_COLOR_OPTIONS": 7,
+      "FIXED_WEIGHT_OUTSIDE_DETAIL_RANGE": 5,
+      "CASE_INSENSITIVE_DUPLICATE_OPTION_VALUES": 5,
+      "Personalized advertising: Identity and belief": 4,
+      "Adult-oriented content": 4,
+      "TITLE_HANDLE_PRODUCT_NOUN_DIVERGENCE": 4,
+      "Alcoholic beverages": 3,
+      "DISPOSABLE_REUSABLE_CONTRADICTION": 3,
+      "MEDICAL_TAG_REVIEW_NEEDED": 2,
+      "OBVIOUS_MALFORMED_PRODUCT_WORDING": 2,
+      "ABSOLUTE_PERFORMANCE_CLAIM": 2,
+      "INVENTORY_SENTINEL_OR_SUPPLIER_PLACEHOLDER_VALUES": 2,
+      "Weapons": 1,
+      "Image not processed": 1,
+      "Explosives": 1,
+      "Broken image link": 1,
+      "CURRENT_EXACT_SHOPIFY_GOOGLE_CATEGORY_MISMATCH": 1
+    },
+    "autoFixAllowedTrue": 0
+  },
+  "merchant": {
+    "parsedProductIdsInLatestSeries": 328,
+    "parsedProductIdsNotInHistoricalActiveSnapshot": [
+      "15412949451137",
+      "15413025014145",
+      "15413245608321",
+      "15413245706625",
+      "15421165404545",
+      "15421606953345",
+      "15427285156225",
+      "15447610458497",
+      "15447627760001",
+      "15447991189889",
+      "15448044306817",
+      "15448667947393",
+      "15448870748545",
+      "15449583485313",
+      "15450067108225",
+      "15450835222913",
+      "15450847904129",
+      "15450850689409",
+      "15453942776193",
+      "15455682232705",
+      "15506299191681"
+    ],
+    "opaqueOfferIdsWithoutProductBinding": 74
+  },
+  "requiredLiveProfiles": {
+    "FULL_PRODUCT_SOURCE_V1": [
+      "id",
+      "status",
+      "updatedAt",
+      "title",
+      "handle",
+      "descriptionHtml",
+      "productType",
+      "tags",
+      "category{id,name,fullName}",
+      "google_product_category metafield",
+      "options{name,values}",
+      "variants{id,title,selectedOptions,sku,price,availableForSale,inventoryPolicy,inventoryItem{tracked}}",
+      "media{id,status,alt,dimensions,source}",
+      "resourcePublications/isPublished",
+      "Storefront product and selected variant availability",
+      "supplier source per claimed material, measurement, function and compatibility"
+    ]
+  },
+  "firstBatch": {
+    "path": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+    "selection": "first 50 queue rows by deterministic priority order; read-only current verification required",
+    "sha256": "b5fd8186aedb99ecfb1a27c3749d06e42624e2052cf8767d3f8d166a370f8159"
+  }
+}
