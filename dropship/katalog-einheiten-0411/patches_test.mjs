@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import vm from 'node:vm';
 import { DATEIEN, MD5_VOR, MARKE, TEXTE, CSS_NEU, SPRUNG_SKRIPT, anwenden, ohneKommentar } from './patches.mjs';
 import { bauen, herstellerWerte, ozKind, ozTextErsetzen, ozUmrechnen, schuhLabel, inGalerieEinfuegen, titelMitEinheit, UNSICHER } from './etiketten.mjs';
 
@@ -198,6 +199,8 @@ ok(neu[DATEIEN.CSS].includes('.lcl-design-switch:hover') && neu[DATEIEN.CSS].inc
     gleich(f([], '7'), 'ROH:7', 'Filter: leer fällt auf den bisherigen Rohwert zurück');
     gleich(f(['10', 'EU 44', 'EU 42 (ca.)'], '10'), 'EU 42 (ca.) / EU 44', 'Filter: ca. bleibt sichtbar');
     gleich(f(['EU 36', 'EU 38'], '5.5'), 'EU 36 / EU 38', 'Filter: zwei EU-Etiketten');
+    gleich(f(['EU 100', 'EU 9'], 'x'), 'EU 9 / EU 100', 'Filter: Etiketten werden numerisch sortiert (9 vor 100)');
+    gleich(f(['EU 42,5', 'EU 42'], 'x'), 'EU 42 / EU 42,5', 'Filter: Dezimalkomma sortiert hinter der ganzen Zahl');
     gleich(f(['443 ml', '444 ml'], '15 oz'), '443–444 ml', 'Filter: ml als Bereich');
     gleich(f(['591 ml', '600 ml'], '20 oz'), '591–600 ml', 'Filter: ml als Bereich (20 oz)');
     gleich(f(['255 g', '113 g'], '9oz'), '113–255 g', 'Filter: g als Bereich');
@@ -229,6 +232,42 @@ ok(neu[DATEIEN.CSS].includes('.lcl-design-switch:hover') && neu[DATEIEN.CSS].inc
   const dir = mkdtempSync(join(tmpdir(), 'lxsp-')); writeFileSync(join(dir, 's.js'), skript);
   let sOk = true; try { execFileSync(process.execPath, ['--check', join(dir, 's.js')], { stdio: 'pipe' }); } catch { sOk = false; }
   ok(sOk, 'Sprung-Skript: Syntax');
+
+  // Verhalten in einer Attrappe (vm): Klick auf den Anker → scrollt 100 px über den Editor, setzt den Fokus, verhindert den nativen Sprung
+  const lauf = (opt) => {
+    const log = { scrollTo: [], focus: [], timeouts: 0, replaced: [], listeners: {}, gesetzt: {} };
+    const editor = { getBoundingClientRect: () => ({ top: 500 }), hasAttribute: (k) => k in log.gesetzt, setAttribute: (k, v) => { log.gesetzt[k] = v; }, style: {}, focus: (o) => log.focus.push(o) };
+    const dok = { getElementById: (id) => (id === 'lspod-start' ? editor : null), addEventListener: (t, f) => { log.listeners['doc:' + t] = f; } };
+    const fenster = { scrollY: 1000, scrollTo: (a, b) => log.scrollTo.push(typeof a === 'object' ? a.top : b), addEventListener: (t, f) => { log.listeners['win:' + t] = f; } };
+    const ctx = { document: dok, window: fenster, location: { hash: opt.hash || '' }, history: { state: { x: 1 }, replaceState: (...a) => log.replaced.push(a) }, setTimeout: () => { log.timeouts++; } };
+    vm.createContext(ctx); vm.runInContext(skript, ctx);
+    return { log, ctx };
+  };
+  {
+    const { log } = lauf({});
+    const ev = { defaultPrevented: false, button: 0, ctrlKey: false, metaKey: false, shiftKey: false, altKey: false, prevented: false, preventDefault() { this.prevented = true; }, target: { closest: (sel) => (sel === 'a[href="#lspod-start"]' ? {} : null) } };
+    log.listeners['doc:click'](ev);
+    ok(ev.prevented, 'Sprung-Skript (Verhalten): Klick auf den Anker wird abgefangen');
+    ok(log.scrollTo.length === 1 && log.scrollTo[0] === 500 + 1000 - 100, 'Sprung-Skript (Verhalten): scrollt 100 px über den Editor (' + log.scrollTo + ')');
+    ok(log.focus.length === 1 && log.focus[0] && log.focus[0].preventScroll === true, 'Sprung-Skript (Verhalten): setzt den Fokus auf den Editor ohne Scrollen');
+    ok(log.gesetzt.tabindex === '-1', 'Sprung-Skript (Verhalten): tabindex -1 gesetzt');
+    ok(log.timeouts === 2, 'Sprung-Skript (Verhalten): zwei Nach-Korrekturen (' + log.timeouts + ')');
+    ok(log.replaced.length === 1 && log.replaced[0][0].x === 1 && log.replaced[0][2] === '#lspod-start', 'Sprung-Skript (Verhalten): history.state bleibt erhalten');
+    const ev2 = { ...ev, prevented: false, ctrlKey: true, preventDefault() { this.prevented = true; } };
+    log.listeners['doc:click'](ev2);
+    ok(!ev2.prevented && log.scrollTo.length === 1, 'Sprung-Skript (Verhalten): Strg-Klick bleibt nativ');
+    const ev3 = { ...ev, prevented: false, target: { closest: () => null }, preventDefault() { this.prevented = true; } };
+    log.listeners['doc:click'](ev3);
+    ok(!ev3.prevented && log.scrollTo.length === 1, 'Sprung-Skript (Verhalten): fremder Klick bleibt unberührt');
+  }
+  {
+    const { log } = lauf({ hash: '#lspod-start' });
+    ok(typeof log.listeners['win:load'] === 'function', 'Sprung-Skript (Verhalten): mit #lspod-start in der Adresse wird beim Laden gesprungen');
+    log.listeners['win:load']();
+    ok(log.scrollTo.length === 1 && log.focus.length === 1, 'Sprung-Skript (Verhalten): Laden mit Anker scrollt und fokussiert');
+    const { log: l2 } = lauf({ hash: '' });
+    ok(!l2.listeners['win:load'], 'Sprung-Skript (Verhalten): ohne Anker in der Adresse kein Sprung beim Laden');
+  }
 }
 
 // ---------- Doppelte Anwendung wird abgelehnt ----------

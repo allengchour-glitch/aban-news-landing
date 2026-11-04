@@ -9,10 +9,10 @@ const HIER = new URL('.', import.meta.url).pathname;
 const MUTANTEN = [
   // patches.mjs
   ['patches.mjs', 'Anker-Prüfung lockern', 'if (teile.length !== 2) throw new Error(`Anker', 'if (teile.length < 2) throw new Error(`Anker'],
-  ['patches.mjs', 'Filter-Option nicht ändern', "return new Option(labels.length?joinSizeLabels(labels):metricText(value),value);", "return new Option(labels.length===1?labels[0]:metricText(value),value);"],
-  ['patches.mjs', 'Filter-Chip nicht ändern', "sizeLabels.length?joinSizeLabels(sizeLabels):metricText(sizeFilter.value)`, 'JS Filter-Chip'", "sizeLabels.length===1?sizeLabels[0]:metricText(sizeFilter.value)`, 'JS Filter-Chip'"],
-  ['patches.mjs', 'Etiketten ohne EU zuerst', '[...eu.sort(cmp),...rest.sort(cmp)]', '[...rest.sort(cmp),...eu.sort(cmp)]'],
-  ['patches.mjs', 'nicht lieferbar bekommt Knopf', 'if(offer.available===false)priceBox.append', 'if(offer.available===true)priceBox.append'],
+  ['patches.mjs', 'Filter-Option nicht ändern', "new Option(joinSizeLabels(labels,value),value)", "new Option(labels.length===1?labels[0]:metricText(value),value)"],
+  ['patches.mjs', 'Filter-Chip nicht ändern', "`joinSizeLabels(sizeLabels,sizeFilter.value)`, 'JS Filter-Chip'", "`sizeLabels.length===1?sizeLabels[0]:metricText(sizeFilter.value)`, 'JS Filter-Chip'"],
+  ['patches.mjs', 'Filter sortiert nicht numerisch', "{numeric:true}", "{numeric:false}"],
+  ['patches.mjs', 'nicht lieferbar bekommt Knopf', 'if(offer.available===false){priceBox', 'if(offer.available===true){priceBox'],
   ['patches.mjs', 'neuer Schlüssel fehlt', "const NEUE_SCHLUESSEL = ['design_cta', ", "const NEUE_SCHLUESSEL = ["],
   ['patches.mjs', 'Wortlaut wie Vorschau-Seite', "design_cta: 'Jetzt selbst gestalten'", "design_cta: 'Jetzt gestalten'"],
   ['patches.mjs', 'CSS nicht anhängen', "return text.replace(/\\s*$/, '\\n') + CSS_NEU;", "return text;"],
