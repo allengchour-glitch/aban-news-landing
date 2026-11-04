@@ -1,0 +1,3182 @@
+{
+  "revision": 79,
+  "at": "2026-11-04T13:07:43.313494+00:00",
+  "scope": "Mittagsprüfung und lokale fünfzeilige Preisfilter-Korrektur zur Freigabe",
+  "identity": {
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "timezone": "CET"
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "match": true,
+    "checkedDuringRun": "R79 2026-11-04",
+    "runtime": {
+      "observationsCurrent": true,
+      "network": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "configuredSecretBindings": 0,
+      "dnsWriterConfirmed": false
+    },
+    "reportsRepeated": 0
+  },
+  "priceFilter": {
+    "scope": "Only additional SEO pager guard; local draft, no theme write",
+    "addedLines": 5,
+    "removedLines": 0,
+    "forwardPatchExact": true,
+    "reversePatchExact": true,
+    "shopifyValidatorBefore": {
+      "success": true,
+      "responses": [
+        {
+          "result": "success",
+          "resultDetail": "product-grid.liquid passed all checks.",
+          "artifactId": "r79-price-filter-baseline",
+          "artifactRevision": 1
+        }
+      ]
+    },
+    "shopifyValidatorAfter": {
+      "success": true,
+      "responses": [
+        {
+          "result": "success",
+          "resultDetail": "product-grid.liquid passed all checks.",
+          "artifactId": "r79-price-filter-after",
+          "artifactRevision": 1
+        }
+      ]
+    },
+    "beforeMD5": "003e7ff97eb7a6312f02e1ae10679576",
+    "afterMD5": "d53feb1609ea66e1f85b049e56d06dd0",
+    "beforeSHA256": "41086210ed9bf0012c25432f57b99e9ecc640f6cfe200620abae42b0ba053151",
+    "afterSHA256": "2f7232b3cc8c6a06535af6b891734664327f2d86b337595cbf242a1dff20874a",
+    "publicCountercheck": {
+      "at": "2026-11-04T13:00:58.559743+00:00",
+      "url": "https://luxestyle.ch/collections/beauty-pflege?filter.v.price.lte=50",
+      "http": 200,
+      "priceInputs": [
+        "50.00",
+        "50.00"
+      ],
+      "additionalPagerLinks": [
+        "/collections/beauty-pflege?page=2",
+        "/collections/beauty-pflege?page=3",
+        "/collections/beauty-pflege?page=4",
+        "/collections/beauty-pflege?page=5",
+        "/collections/beauty-pflege?page=10",
+        "/collections/beauty-pflege?page=20",
+        "/collections/beauty-pflege?page=30",
+        "/collections/beauty-pflege?page=40",
+        "/collections/beauty-pflege?page=50",
+        "/collections/beauty-pflege?page=60",
+        "/collections/beauty-pflege?page=70",
+        "/collections/beauty-pflege?page=80",
+        "/collections/beauty-pflege?page=90",
+        "/collections/beauty-pflege?page=100",
+        "/collections/beauty-pflege?page=163"
+      ],
+      "allLosePriceParameter": true,
+      "themeIdObserved": true,
+      "scope": "One public HTML GET, no browser subrequests or page2 navigation"
+    },
+    "normalPaginationBeforeMD5": "193662ee2ea5ba259f84a8471149079b",
+    "nativeProductionRenderAfter": "not_performed",
+    "browserQAAfter": "not_performed",
+    "shopWrites": 0,
+    "docs": [
+      "https://shopify.dev/docs/storefronts/themes/navigation-search/filtering/storefront-filtering/support-storefront-filtering"
+    ]
+  },
+  "metricool": {
+    "schemaVersion": 1,
+    "run": "R79",
+    "checkedAt": "2026-11-04T13:00:52.569181+00:00",
+    "dateZurich": "2026-11-04",
+    "identity": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "shopAndChannelsVerifiedFreshByRoot": true,
+      "ownBrandRead": false
+    },
+    "planningWindow": {
+      "from": "2026-11-04T13:58:34+01:00",
+      "toExclusive": "2026-11-11T13:58:34+01:00",
+      "extendedRange": false
+    },
+    "planning": {
+      "objects": 32,
+      "channelStates": 49,
+      "statuses": {
+        "PENDING": 49
+      },
+      "allDraftFalse": true,
+      "allAutoPublishTrue": true,
+      "coverage": {
+        "facebook": {
+          "scheduledChannelObjects": 15,
+          "calendarDates": {
+            "2026-11-04": 1,
+            "2026-11-05": 2,
+            "2026-11-06": 2,
+            "2026-11-07": 2,
+            "2026-11-08": 2,
+            "2026-11-09": 3,
+            "2026-11-10": 2,
+            "2026-11-11": 1
+          },
+          "noReturnedSlots": [],
+          "firstAndLastDatesArePartial": true
+        },
+        "instagram": {
+          "scheduledChannelObjects": 15,
+          "calendarDates": {
+            "2026-11-04": 1,
+            "2026-11-05": 2,
+            "2026-11-06": 2,
+            "2026-11-07": 2,
+            "2026-11-08": 2,
+            "2026-11-09": 3,
+            "2026-11-10": 2,
+            "2026-11-11": 1
+          },
+          "noReturnedSlots": [],
+          "firstAndLastDatesArePartial": true
+        },
+        "threads": {
+          "scheduledChannelObjects": 1,
+          "calendarDates": {
+            "2026-11-04": 1,
+            "2026-11-05": 0,
+            "2026-11-06": 0,
+            "2026-11-07": 0,
+            "2026-11-08": 0,
+            "2026-11-09": 0,
+            "2026-11-10": 0,
+            "2026-11-11": 0
+          },
+          "noReturnedSlots": [
+            "2026-11-05",
+            "2026-11-06",
+            "2026-11-07",
+            "2026-11-08",
+            "2026-11-09",
+            "2026-11-10",
+            "2026-11-11"
+          ],
+          "firstAndLastDatesArePartial": true
+        },
+        "pinterest": {
+          "scheduledChannelObjects": 5,
+          "calendarDates": {
+            "2026-11-04": 1,
+            "2026-11-05": 1,
+            "2026-11-06": 1,
+            "2026-11-07": 1,
+            "2026-11-08": 1,
+            "2026-11-09": 0,
+            "2026-11-10": 0,
+            "2026-11-11": 0
+          },
+          "noReturnedSlots": [
+            "2026-11-09",
+            "2026-11-10",
+            "2026-11-11"
+          ],
+          "firstAndLastDatesArePartial": true
+        },
+        "tiktok": {
+          "scheduledChannelObjects": 13,
+          "calendarDates": {
+            "2026-11-04": 1,
+            "2026-11-05": 2,
+            "2026-11-06": 2,
+            "2026-11-07": 2,
+            "2026-11-08": 2,
+            "2026-11-09": 2,
+            "2026-11-10": 1,
+            "2026-11-11": 1
+          },
+          "noReturnedSlots": [],
+          "firstAndLastDatesArePartial": true
+        },
+        "youtube": {
+          "scheduledChannelObjects": 0,
+          "calendarDates": {
+            "2026-11-04": 0,
+            "2026-11-05": 0,
+            "2026-11-06": 0,
+            "2026-11-07": 0,
+            "2026-11-08": 0,
+            "2026-11-09": 0,
+            "2026-11-10": 0,
+            "2026-11-11": 0
+          },
+          "noReturnedSlots": [
+            "2026-11-04",
+            "2026-11-05",
+            "2026-11-06",
+            "2026-11-07",
+            "2026-11-08",
+            "2026-11-09",
+            "2026-11-10",
+            "2026-11-11"
+          ],
+          "firstAndLastDatesArePartial": true
+        }
+      },
+      "duplicates": {
+        "caption_media": [],
+        "media": [],
+        "caption": [],
+        "slot": []
+      },
+      "duplicateScope": "Exact same-channel caption/media-URL/slot equality only; re-encoded or renamed master identities and prior publication history remain unknown.",
+      "rollingWindowDelta": {
+        "commonUuids": 30,
+        "changedCommon": [],
+        "newlyObserved": [
+          {
+            "id": 414929660,
+            "uuid": "3294509733200285464",
+            "publicationDate": {
+              "dateTime": "2026-11-11T12:15:00",
+              "timezone": "Europe/Zurich"
+            },
+            "creationDate": {
+              "dateTime": "2026-11-03T08:40:00",
+              "timezone": "Europe/Zurich"
+            },
+            "providers": [
+              {
+                "network": "facebook",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              },
+              {
+                "network": "instagram",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202610/6227837-file-9019448443445299966.jpeg",
+              "https://static.metricool.com/planner/202610/6227837-file-6700642228488989031.jpeg"
+            ],
+            "autoPublish": true,
+            "draft": false,
+            "tiktokData": null,
+            "outsidePreviousWindow": true,
+            "classification": "newly_observed_due_to_rolling_window_not_new_creation"
+          },
+          {
+            "id": 416122966,
+            "uuid": "-7768329881687535680",
+            "publicationDate": {
+              "dateTime": "2026-11-11T12:00:00",
+              "timezone": "Europe/Zurich"
+            },
+            "creationDate": {
+              "dateTime": "2026-11-04T07:02:00",
+              "timezone": "Europe/Zurich"
+            },
+            "providers": [
+              {
+                "network": "tiktok",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+            ],
+            "autoPublish": true,
+            "draft": false,
+            "tiktokData": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Wasserwellen-Projektionsleuchte",
+              "photoCoverIndex": 0
+            },
+            "outsidePreviousWindow": true,
+            "classification": "newly_observed_due_to_rolling_window_not_new_creation"
+          }
+        ],
+        "noLongerReturned": [
+          {
+            "id": 414940645,
+            "uuid": "-4972715334292126303",
+            "publicationDate": {
+              "dateTime": "2026-11-04T10:00:00",
+              "timezone": "Europe/Zurich"
+            },
+            "creationDate": {
+              "dateTime": "2026-11-03T08:57:00",
+              "timezone": "Europe/Zurich"
+            },
+            "providers": [
+              {
+                "network": "facebook",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              },
+              {
+                "network": "instagram",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              },
+              {
+                "network": "tiktok",
+                "status": "PENDING",
+                "detailedStatus": "Pending"
+              }
+            ],
+            "media": [
+              "https://static.metricool.com/planner/202611/6227837-file-15442206389654025783.mp4"
+            ],
+            "autoPublish": true,
+            "draft": false,
+            "tiktokData": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Wasserwellen-Lampe",
+              "photoCoverIndex": 0,
+              "isAigc": true
+            },
+            "outsideCurrentWindow": true,
+            "actualPublicationStatus": "unknown_not_returned"
+          }
+        ],
+        "newlyObservedIsNotNewCreation": true,
+        "absenceIsNotPublished": true
+      },
+      "automaticTikTokMusic": [
+        {
+          "id": 415553625,
+          "uuid": "-441851229276386553",
+          "publicationDate": {
+            "dateTime": "2026-11-04T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "canonicalMusicAndCommercialRights": "unknown"
+        },
+        {
+          "id": 415553806,
+          "uuid": "1539281442427783156",
+          "publicationDate": {
+            "dateTime": "2026-11-05T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+            "https://static.metricool.com/planner/202611/6227837-file-4389425201252858701.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "canonicalMusicAndCommercialRights": "unknown"
+        },
+        {
+          "id": 415554058,
+          "uuid": "3188192088876928648",
+          "publicationDate": {
+            "dateTime": "2026-11-06T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Elegante Damenuhr in Roségold mit Box",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "canonicalMusicAndCommercialRights": "unknown"
+        },
+        {
+          "id": 415554216,
+          "uuid": "4203543208056408815",
+          "publicationDate": {
+            "dateTime": "2026-11-07T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "canonicalMusicAndCommercialRights": "unknown"
+        },
+        {
+          "id": 415554461,
+          "uuid": "-9010345156192940856",
+          "publicationDate": {
+            "dateTime": "2026-11-08T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "canonicalMusicAndCommercialRights": "unknown"
+        },
+        {
+          "id": 415554806,
+          "uuid": "-7893674518673470896",
+          "publicationDate": {
+            "dateTime": "2026-11-09T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-9117456290933473661.jpeg",
+            "https://static.metricool.com/planner/202611/6227837-file-15287791281962608850.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "canonicalMusicAndCommercialRights": "unknown"
+        }
+      ],
+      "scheduledObjects": [
+        {
+          "id": 414921719,
+          "uuid": "-6402384969971711358",
+          "publicationDate": {
+            "dateTime": "2026-11-04T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T08:28:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 415553625,
+          "uuid": "-441851229276386553",
+          "publicationDate": {
+            "dateTime": "2026-11-04T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 413194611,
+          "uuid": "-1937081137064819378",
+          "publicationDate": {
+            "dateTime": "2026-11-04T18:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-01T20:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "threads",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-13237600471063082883.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 413266778,
+          "uuid": "-4644708277417590463",
+          "publicationDate": {
+            "dateTime": "2026-11-04T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-01T21:46:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 407849577,
+          "uuid": "5982651913735720132",
+          "publicationDate": {
+            "dateTime": "2026-11-05T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-10-27T14:50:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 416114579,
+          "uuid": "-7930844836166480510",
+          "publicationDate": {
+            "dateTime": "2026-11-05T13:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T06:47:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-8377762538066818219.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Anti-Gravitations-Duftbefeuchter",
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 415553806,
+          "uuid": "1539281442427783156",
+          "publicationDate": {
+            "dateTime": "2026-11-05T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-17072755864023982500.jpeg",
+            "https://static.metricool.com/planner/202611/6227837-file-4389425201252858701.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 416119413,
+          "uuid": "-650204652815301427",
+          "publicationDate": {
+            "dateTime": "2026-11-05T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T06:56:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-5987516639766013153.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 413266808,
+          "uuid": "7261714618004557392",
+          "publicationDate": {
+            "dateTime": "2026-11-05T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-01T21:46:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 414940691,
+          "uuid": "-7866054559336938189",
+          "publicationDate": {
+            "dateTime": "2026-11-06T10:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T08:57:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-568132272184090251.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Tennisarmband mit Zirkon",
+            "photoCoverIndex": 0,
+            "isAigc": true
+          }
+        },
+        {
+          "id": 407854817,
+          "uuid": "5940175700385481481",
+          "publicationDate": {
+            "dateTime": "2026-11-06T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-10-27T14:55:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-18143323225348014733.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 415554058,
+          "uuid": "3188192088876928648",
+          "publicationDate": {
+            "dateTime": "2026-11-06T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-13563092280422521127.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-10069902211398372547.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Elegante Damenuhr in Roségold mit Box",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 413266908,
+          "uuid": "-3680497409192607202",
+          "publicationDate": {
+            "dateTime": "2026-11-06T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-01T21:46:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-4617302606309612785.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 414929392,
+          "uuid": "-2612931623723381280",
+          "publicationDate": {
+            "dateTime": "2026-11-07T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T08:40:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-17073380681179091812.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 415554216,
+          "uuid": "4203543208056408815",
+          "publicationDate": {
+            "dateTime": "2026-11-07T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-2357634910872347643.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-7678917221088862285.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 416121310,
+          "uuid": "8147121371837647826",
+          "publicationDate": {
+            "dateTime": "2026-11-07T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T06:59:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-16133367906294951957.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 416121297,
+          "uuid": "-2503182895774282094",
+          "publicationDate": {
+            "dateTime": "2026-11-07T18:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T06:59:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-18058500002578990162.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "LED-Wasser-Speaker",
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 413266951,
+          "uuid": "-6271192589084504293",
+          "publicationDate": {
+            "dateTime": "2026-11-07T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-01T21:46:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-15706468246919287668.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 407889412,
+          "uuid": "-6564064169639197228",
+          "publicationDate": {
+            "dateTime": "2026-11-08T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-10-27T15:27:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-12068652531933805311.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 415554461,
+          "uuid": "-9010345156192940856",
+          "publicationDate": {
+            "dateTime": "2026-11-08T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-10043424650140786836.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 414940715,
+          "uuid": "1744402171830094170",
+          "publicationDate": {
+            "dateTime": "2026-11-08T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T08:57:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Kristallspitzen-Set",
+            "photoCoverIndex": 0,
+            "isAigc": true
+          }
+        },
+        {
+          "id": 413266978,
+          "uuid": "5938318811609320266",
+          "publicationDate": {
+            "dateTime": "2026-11-08T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-01T21:46:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "pinterest",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 414929635,
+          "uuid": "-8720943201794045273",
+          "publicationDate": {
+            "dateTime": "2026-11-09T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T08:40:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 416121336,
+          "uuid": "-7257455683644011058",
+          "publicationDate": {
+            "dateTime": "2026-11-09T12:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T06:59:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Ewige Rose mit LED-Licht",
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 415033593,
+          "uuid": "-8611238648907481079",
+          "publicationDate": {
+            "dateTime": "2026-11-09T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T10:50:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-4505158859945613837.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 415554806,
+          "uuid": "-7893674518673470896",
+          "publicationDate": {
+            "dateTime": "2026-11-09T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T18:19:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-9117456290933473661.jpeg",
+            "https://static.metricool.com/planner/202611/6227837-file-15287791281962608850.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 416121358,
+          "uuid": "3863915044291300024",
+          "publicationDate": {
+            "dateTime": "2026-11-09T19:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T06:59:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 415035691,
+          "uuid": "37985340483322184",
+          "publicationDate": {
+            "dateTime": "2026-11-10T12:30:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T10:52:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-3482646658187184216.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 407893833,
+          "uuid": "-4686288400674371149",
+          "publicationDate": {
+            "dateTime": "2026-11-10T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-10-27T15:31:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-4160774621955894715.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        },
+        {
+          "id": 416122901,
+          "uuid": "2172266762404316928",
+          "publicationDate": {
+            "dateTime": "2026-11-10T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T07:02:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "3-in-1 Gemüsehobel",
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 416122966,
+          "uuid": "-7768329881687535680",
+          "publicationDate": {
+            "dateTime": "2026-11-11T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-04T07:02:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Wasserwellen-Projektionsleuchte",
+            "photoCoverIndex": 0
+          }
+        },
+        {
+          "id": 414929660,
+          "uuid": "3294509733200285464",
+          "publicationDate": {
+            "dateTime": "2026-11-11T12:15:00",
+            "timezone": "Europe/Zurich"
+          },
+          "creationDate": {
+            "dateTime": "2026-11-03T08:40:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            },
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "media": [
+            "https://static.metricool.com/planner/202610/6227837-file-9019448443445299966.jpeg",
+            "https://static.metricool.com/planner/202610/6227837-file-6700642228488989031.jpeg"
+          ],
+          "autoPublish": true,
+          "draft": false,
+          "tiktokData": null
+        }
+      ]
+    },
+    "threadsExistingSchedule": {
+      "id": 413194611,
+      "uuid": "-1937081137064819378",
+      "masterId": "luxe_photo_kosmetik_organizer_20261101",
+      "productId": "gid://shopify/Product/15408458236289",
+      "variantId": "gid://shopify/ProductVariant/55732479590785",
+      "plannedAt": "2026-11-04T18:30:00+01:00",
+      "timezone": "Europe/Zurich",
+      "state": "PENDING_SCHEDULED_NOT_PUBLISHED",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "platformId": null,
+      "publicationUrl": null,
+      "registerSha": "11c34a27d663a57a8cd6155d6089e034a0e858c2",
+      "registerPath": "dropship/codex-handoff-20261018/register/photo-week-luxe_photo_kosmetik_organizer_20261101.json",
+      "checks": {
+        "sameId": true,
+        "sameUuid": true,
+        "sameCaption": true,
+        "sameMediaUrl": true,
+        "samePlannedAt": true,
+        "sameTimezone": true,
+        "onlyThreads": true,
+        "draftFalse": true,
+        "autoPublishTrue": true,
+        "pending": true,
+        "sameThreadsData": true,
+        "sameRegisterSha": true,
+        "actualImageBytesSame": true
+      },
+      "image": {
+        "http": 200,
+        "sha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+        "registerExportSha256": "73a02bbe05de8fad5755cc8bff6026905d2921de9e6544ce9f62893292fe275e",
+        "hashMatch": true,
+        "type": "IMAGE",
+        "mp4": false
+      },
+      "ownWrite": false
+    },
+    "r78VideoProbeReuse": {
+      "source": "dropship/codex-handoff-20261018/WEITERARBEIT-BELEGE-20261104-R78.json",
+      "metricoolIds": [
+        416114579,
+        416122901
+      ],
+      "sameMediaAndFieldsAsR77": true,
+      "summary": "R78 actual MP4 probe: moving product/use imagery; 10.68 and10.16 seconds,25fps; exact variant, commercial film rights and direct canonical music binding unresolved. No new file download or approval."
+    },
+    "dailyAnalytics": {
+      "source": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json",
+      "sourceReadDateZurich": "2026-11-04",
+      "window": "2026-10-28/2026-11-03",
+      "reusedWithoutNewRead": true,
+      "metrics": {
+        "instagram": {
+          "state": "read",
+          "returnedRows": 7,
+          "metrics": [
+            {
+              "id": "IGEV05",
+              "label": "Instagram Evolution > Views",
+              "definition": "Total number of times the account's content was displayed, all formats (feed posts, reels, stories) plus profile. Organic and paid data.",
+              "aggregation": "SUM",
+              "observedSubtotal": 424.0,
+              "availableDays": 7,
+              "expectedDays": 7,
+              "windowTotal": 424.0,
+              "unknownDates": [],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261101": 56.0,
+                "20261102": 27.0,
+                "20261103": 36.0,
+                "20261028": 129.0,
+                "20261030": 42.0,
+                "20261031": 35.0,
+                "20261029": 99.0
+              }
+            },
+            {
+              "id": "IGEV38",
+              "label": "Instagram Evolution > Total Content Interactions (feed posts + reels)",
+              "definition": "Interactions (likes, comments, saves and shares) received by all feed content: feed posts + reels. Does not include stories.",
+              "aggregation": "SUM",
+              "observedSubtotal": 1.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261103": 1.0
+              }
+            },
+            {
+              "id": "IGEV37",
+              "label": "Instagram Evolution > Total Content (feed posts + reels)",
+              "definition": "Number of pieces of content published in the period, all feed formats: feed posts (photos and carousels) + reels. Does not include stories. Use this to answer 'how much content was published'.",
+              "aggregation": "SUM",
+              "observedSubtotal": 12.0,
+              "availableDays": 7,
+              "expectedDays": 7,
+              "windowTotal": 12.0,
+              "unknownDates": [],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261101": 1.0,
+                "20261102": 1.0,
+                "20261103": 1.0,
+                "20261028": 2.0,
+                "20261030": 2.0,
+                "20261031": 1.0,
+                "20261029": 4.0
+              }
+            }
+          ]
+        },
+        "facebook": {
+          "state": "read",
+          "returnedRows": 7,
+          "metrics": [
+            {
+              "id": "FBEV12",
+              "label": "Facebook Evolution > Feed Posts Impressions",
+              "definition": "Times feed posts were displayed. Does NOT include reels.",
+              "aggregation": "SUM",
+              "observedSubtotal": 2.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261028": 2.0
+              }
+            },
+            {
+              "id": "FBEV34",
+              "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+              "definition": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            },
+            {
+              "id": "FBEV22",
+              "label": "Facebook Evolution > Reels Video Views",
+              "definition": "Number of video views received on your reels.",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            },
+            {
+              "id": "FBEV33",
+              "label": "Facebook Evolution > Total Content (feed posts + reels)",
+              "definition": "Number of pieces of content published on the Page: feed posts + reels. Does not include stories.",
+              "aggregation": "SUM",
+              "observedSubtotal": 12.0,
+              "availableDays": 7,
+              "expectedDays": 7,
+              "windowTotal": 12.0,
+              "unknownDates": [],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261030": 2.0,
+                "20261031": 1.0,
+                "20261029": 4.0,
+                "20261102": 1.0,
+                "20261103": 1.0,
+                "20261028": 2.0,
+                "20261101": 1.0
+              }
+            }
+          ]
+        },
+        "threads": {
+          "state": "read",
+          "returnedRows": 1,
+          "metrics": [
+            {
+              "id": "THEV06",
+              "label": "Threads Evolution > Post Views",
+              "definition": "Total number of times that the post is displayed.",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            },
+            {
+              "id": "THEV05",
+              "label": "Threads Evolution > Interactions",
+              "definition": "Number of interactions: Likes, Replies, Reposts and Quotes",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            },
+            {
+              "id": "THEV02",
+              "label": "Threads Evolution > Posts",
+              "definition": "Number of posts published in the period. On Threads every piece of content is a post: this is the total content count.",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            }
+          ]
+        },
+        "tiktok": {
+          "state": "read",
+          "returnedRows": 7,
+          "metrics": [
+            {
+              "id": "TKEV12",
+              "label": "TikTok Evolution > Video views in period",
+              "definition": "Number of video views in the period",
+              "aggregation": "SUM",
+              "observedSubtotal": 128.0,
+              "availableDays": 6,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261103"
+              ],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261030": 19.0,
+                "20261031": 21.0,
+                "20261029": 27.0,
+                "20261102": 13.0,
+                "20261028": 26.0,
+                "20261101": 22.0
+              }
+            },
+            {
+              "id": "TKEV06",
+              "label": "TikTok Evolution > Interactions",
+              "definition": "Number of interactions on videos: Likes, Comments and Shares.",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            },
+            {
+              "id": "TKEV01",
+              "label": "TikTok Evolution > Videos",
+              "definition": "Number of videos published in the period. On TikTok every piece of content is a video: this is the total content count.",
+              "aggregation": "SUM",
+              "observedSubtotal": 1.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261103": 1.0
+              }
+            }
+          ]
+        },
+        "pinterest": {
+          "state": "read",
+          "returnedRows": 7,
+          "metrics": [
+            {
+              "id": "PIEV01",
+              "label": "Pinterest Evolution > Impressions in period",
+              "definition": "",
+              "aggregation": "SUM",
+              "observedSubtotal": 1565.0,
+              "availableDays": 5,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261101": 278.0,
+                "20261028": 444.0,
+                "20261030": 293.0,
+                "20261031": 226.0,
+                "20261029": 324.0
+              }
+            },
+            {
+              "id": "PIEV04",
+              "label": "Pinterest Evolution > Interactions in period",
+              "definition": "",
+              "aggregation": "SUM",
+              "observedSubtotal": 24.0,
+              "availableDays": 5,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [
+                "20261101",
+                "20261031"
+              ],
+              "dailyObserved": {
+                "20261101": 0.0,
+                "20261028": 7.0,
+                "20261030": 8.0,
+                "20261031": 0.0,
+                "20261029": 9.0
+              }
+            },
+            {
+              "id": "PIEV06",
+              "label": "Pinterest Evolution > Outbound clicks in period",
+              "definition": "",
+              "aggregation": "SUM",
+              "observedSubtotal": 1.0,
+              "availableDays": 5,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [
+                "20261101",
+                "20261030",
+                "20261031",
+                "20261029"
+              ],
+              "dailyObserved": {
+                "20261101": 0.0,
+                "20261028": 1.0,
+                "20261030": 0.0,
+                "20261031": 0.0,
+                "20261029": 0.0
+              }
+            },
+            {
+              "id": "PIEV02",
+              "label": "Pinterest Evolution > Pins",
+              "definition": "Number of pins published in the period. This is the total content count of the account.",
+              "aggregation": "SUM",
+              "observedSubtotal": 18.0,
+              "availableDays": 7,
+              "expectedDays": 7,
+              "windowTotal": 18.0,
+              "unknownDates": [],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261101": 2.0,
+                "20261102": 2.0,
+                "20261103": 1.0,
+                "20261028": 2.0,
+                "20261030": 5.0,
+                "20261031": 3.0,
+                "20261029": 3.0
+              }
+            }
+          ]
+        },
+        "youtube": {
+          "state": "read",
+          "returnedRows": 6,
+          "metrics": [
+            {
+              "id": "YTEV02",
+              "label": "Youtube Evolution > Video Views",
+              "definition": "Number of times the videos were watched",
+              "aggregation": "SUM",
+              "observedSubtotal": 23.0,
+              "availableDays": 5,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [],
+              "dailyObserved": {
+                "20261101": 6.0,
+                "20261028": 8.0,
+                "20261030": 2.0,
+                "20261031": 2.0,
+                "20261029": 5.0
+              }
+            },
+            {
+              "id": "YTEV14",
+              "label": "Youtube Evolution > Visited Videos Likes",
+              "definition": "Number of likes of the visited videos",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 4,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261101",
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [
+                "20261028",
+                "20261030",
+                "20261031",
+                "20261029"
+              ],
+              "dailyObserved": {
+                "20261028": 0.0,
+                "20261030": 0.0,
+                "20261031": 0.0,
+                "20261029": 0.0
+              }
+            },
+            {
+              "id": "YTEV16",
+              "label": "Youtube Evolution > Visited Videos Comments",
+              "definition": "Number of comments received by visited video",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 4,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261101",
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [
+                "20261028",
+                "20261030",
+                "20261031",
+                "20261029"
+              ],
+              "dailyObserved": {
+                "20261028": 0.0,
+                "20261030": 0.0,
+                "20261031": 0.0,
+                "20261029": 0.0
+              }
+            },
+            {
+              "id": "YTEV18",
+              "label": "Youtube Evolution > Visited Videos Shares",
+              "definition": "Number of shares of the visited videos",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 4,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261101",
+                "20261102",
+                "20261103"
+              ],
+              "explicitZeroDates": [
+                "20261028",
+                "20261030",
+                "20261031",
+                "20261029"
+              ],
+              "dailyObserved": {
+                "20261028": 0.0,
+                "20261030": 0.0,
+                "20261031": 0.0,
+                "20261029": 0.0
+              }
+            },
+            {
+              "id": "YTEV04",
+              "label": "Youtube Evolution > Videos",
+              "definition": "Number of videos published in the period (long videos and Shorts). This is the total content count of the channel.",
+              "aggregation": "SUM",
+              "observedSubtotal": 0.0,
+              "availableDays": 1,
+              "expectedDays": 7,
+              "windowTotal": null,
+              "unknownDates": [
+                "20261028",
+                "20261029",
+                "20261030",
+                "20261031",
+                "20261101",
+                "20261102"
+              ],
+              "explicitZeroDates": [
+                "20261103"
+              ],
+              "dailyObserved": {
+                "20261103": 0.0
+              }
+            }
+          ]
+        }
+      },
+      "noSalesInference": true
+    },
+    "masterLedger": {
+      "projectorMasterId": "luxe_sternenprojektor_master_20261018",
+      "history": "unknown_not_established",
+      "queriedScope": "one known authorised Threads photo register only",
+      "createdOrReset": false
+    },
+    "channelPrerequisites": {
+      "instagramBio": "unknown_not_requeried",
+      "tiktokBio": "unknown_not_requeried",
+      "pinterestAccountBoard": "unknown_board_ids_in_existing_posts_are_not_account_verification",
+      "youtubeAudience": "prior_explicit_general_audience_decision_retained",
+      "youtubeConcreteMadeForKidsFlag": "unknown_without_new_post",
+      "allNewProfessionalMasterPosts": "blocked_by_material_variant_rights_quality_approval_and_history_conditions"
+    },
+    "ownActions": {
+      "scheduleReads": 1,
+      "targetedGithubRegisterReads": 1,
+      "actualJpegRead": 1,
+      "metricDefinitionCalls": 0,
+      "metricDataCalls": 0,
+      "metricoolWrites": 0,
+      "ledgerWrites": 0,
+      "newPosts": 0,
+      "newVideos": 0
+    },
+    "limits": [
+      "First and last calendar dates are partial; missing queue slots do not mean no activity.",
+      "Existing external caption claims were not product-verified and are not adopted.",
+      "No full creative history or previous publication proof from schedule API.",
+      "No sales, purchase, attribution or conversion inference.",
+      "No mandatory posting volume or schedule changes."
+    ]
+  },
+  "master": {
+    "schemaVersion": 1,
+    "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+    "status": "CONTINUED_MASTER_WITH_MEASURED_TEXT_PLAN_BLOCKED_PRODUCTION",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "newWork": "Geplante Overlays konkret vermessen: 52 px Prüfschrift, maximal 614 px innerhalb 780 px Breite, mindestens 1,6 s volle Deckkraft, Vollfarbenpaar 11,818:1. Keine tatsächliche Plattform-/Filmlesbarkeitsabnahme.",
+    "product": {
+      "productId": "15521256604033",
+      "variantId": "56197916361089",
+      "sku": "CJ-1477820492730732544",
+      "active": true,
+      "price": "34.90",
+      "currency": "CHF",
+      "availableForSale": true,
+      "publicAvailable": true,
+      "inventoryPolicy": "CONTINUE",
+      "tracked": false,
+      "nativeVariantMediaCount": 0,
+      "publicVariantImage": null,
+      "tagGuardPassed": true,
+      "exactDefaultMotifUnitBinding": "unknown"
+    },
+    "referenceImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "http": 200,
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "path": "/workspace/luxestyle-review/mittagslauf-20261104-r79/master/projector-reference.jpg"
+    },
+    "music": {
+      "checkedAt": "2026-11-04T13:00:49.823879+00:00",
+      "localPath": "/workspace/luxestyle-review/media/luxe-premium.wav",
+      "repoPath": "automation/music/luxe-premium.wav",
+      "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "freshRemoteBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "bytes": 11343950,
+      "wave": {
+        "channels": 2,
+        "sampleRate": 44100,
+        "sampleWidthBytes": 2,
+        "frames": 2835968,
+        "duration": 64.30766439909297
+      },
+      "changed": false,
+      "commercialRightsAccepted": false,
+      "historicalSf2Binding": "unknown",
+      "rightsEvidence": "R77 datierte offizielle FluidR3-Paketlizenz, keine erneute Recherche"
+    },
+    "cjRuntime": {
+      "checkedAt": "2026-11-04T13:00:49.823879+00:00",
+      "knownVariablePresence": {
+        "CJ_EMAIL": false,
+        "CJ_API_KEY": false,
+        "CJ_ACCESS_TOKEN": false,
+        "CJ_TOKEN": false
+      },
+      "knownTokenFileExists": false,
+      "fileContentsRead": false,
+      "executed": false,
+      "noInferenceAboutConnectorOrGithubSecrets": true
+    },
+    "canonicalR77": {
+      "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261104-R77.md",
+      "sha": "7447cfeb4cca8b14403a9f4ddd260d8be43139fc",
+      "localExact": true
+    },
+    "validation": {
+      "timelineFrames": 540,
+      "timelineUnchanged": true,
+      "hooksUnchanged": true,
+      "uniqueChannelUtms": 6,
+      "overlayMetrics": {
+        "entries": 6,
+        "maximumGlyphWidthPx": 614,
+        "minimumFullOpacitySeconds": 1.6,
+        "opaqueColorPairContrast": 11.818,
+        "pass": true
+      }
+    },
+    "channels": {
+      "all": "Kein abgenommener professioneller Master-MP4, genaue Default-/Motiv-/Einheitsbindung, vier akzeptierte Originaltakes, Film-/Musikrechte und verifizierte dauerhafte Master-/Kanalhistorie fehlen.",
+      "instagram": "Bio-Produktziel unbekannt, bedingter Captiontext deaktiviert",
+      "tiktok": "Bio-Produktziel unbekannt, bedingter Captiontext deaktiviert",
+      "pinterest": "Kontoboard unbekannt, keines gewählt",
+      "youtube": "Allgemeines Publikum bereits bestätigt; konkretes Postflag noch ungebunden",
+      "facebook": "Gemeinsame Produktions-/Freigabeblocker",
+      "threads": "Gemeinsame Produktions-/Freigabeblocker"
+    },
+    "nextStep": "Genaue Default-/Motiv-/Einheitsbindung und vier geeignete Originaltakes mit Bearbeitungs-/Werberechten belegen; historischen SF2-Buildbezug zur kanonischen WAV ergänzen. Danach den vermessenen Textplan an realen Bildern und Plattformansichten prüfen.",
+    "newMasterMp4": false,
+    "newImages": 0,
+    "publishingWrites": 0,
+    "paidRenders": 0,
+    "workflowStarts": 0,
+    "repoWrites": 0,
+    "sourceOrMusicChanged": false,
+    "metricsReports": 0,
+    "files": {
+      "MASTER-CONTENT-20261104-R79.md": {
+        "sha256": "632e342dcec31e96723838285e9b0cc66090d60104abff3074aa5a716707e632",
+        "bytes": 12788
+      },
+      "OVERLAY-LESBARKEIT-20261104-R79.json": {
+        "sha256": "f4cb3a038c5092dac80f5528cc64ca78fce8a5a0e61247c7b5c1d97e29b0d764",
+        "bytes": 5808
+      },
+      "CONTENT-CAPTIONS-20261104-R79.json": {
+        "sha256": "e937fb22f379b2ae609304420dd37a783caef0758cea1dd3ba2c01bcfa861f8a",
+        "bytes": 12802
+      },
+      "MASTER-STORYBOARD-20261104-R79.json": {
+        "sha256": "9a232bb769aba2076e223890662871b217a1b2709a26b8a621f1f62a9b36f5b5",
+        "bytes": 13709
+      },
+      "PRODUCT-NATIVE.json": {
+        "sha256": "e34c5806ea72b5910937bab683d90096e9319d0b998df5d474b486b020e51cac",
+        "bytes": 8780
+      },
+      "VARIANT-NATIVE.json": {
+        "sha256": "f20b80a9e743341084afe4f2a1a19d92e3843bc0bf91c7974f1ae7521de5270e",
+        "bytes": 554
+      },
+      "STOREFRONT.json": {
+        "sha256": "3442a26e476c39ea910742692509f83420336f9736fd7a34643fea0643985bbc",
+        "bytes": 1070
+      },
+      "TAG-CHECK.json": {
+        "sha256": "e73fb110aabc992dbc361f253aa5c98243d4aa75481f9c0e15de8d418be722e8",
+        "bytes": 318
+      },
+      "MUSIC-CHECK.json": {
+        "sha256": "ee635ced6a0b0266c2287a74e3b9b609132f48fb3181af99af5dc934b312050e",
+        "bytes": 733
+      },
+      "CJ-RUNTIME-PRESENCE.json": {
+        "sha256": "3220a553141e132fe23909df222e16d6a0b8e0cd25d043e5717ab976b2be51a9",
+        "bytes": 322
+      }
+    }
+  },
+  "storyboard": {
+    "schemaVersion": 1,
+    "brand": "luxestyle.ch",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "format": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "durationSeconds": 18,
+      "frames": 540
+    },
+    "hooks": [
+      {
+        "id": "A",
+        "text": [
+          "Dein Raum.",
+          "Neues Licht."
+        ],
+        "visual": "Echte Projektion desselben identifizierten Geräts als Raumauftakt, danach Bedienung.",
+        "openingFrames": [
+          0,
+          60
+        ],
+        "notSeparateNewMaster": true
+      },
+      {
+        "id": "B",
+        "text": [
+          "Licht im Detail."
+        ],
+        "visual": "Nahes tatsächliches Gerätedetail mit erkennbarer Form, danach Bedienung.",
+        "openingFrames": [
+          0,
+          60
+        ],
+        "notSeparateNewMaster": true
+      }
+    ],
+    "timeline": [
+      {
+        "startFrame": 0,
+        "endFrameExclusive": 60,
+        "seconds": "0.00–2.00",
+        "take": "P_PROJECTION for HookA OR P_DETAIL for HookB, one selected master",
+        "overlayA": [
+          "Dein Raum.",
+          "Neues Licht."
+        ],
+        "overlayB": [
+          "Licht im Detail."
+        ]
+      },
+      {
+        "startFrame": 60,
+        "endFrameExclusive": 138,
+        "seconds": "2.00–4.60",
+        "take": "P_OPERATION continuous",
+        "overlay": [
+          "Sternenlicht-Projektor"
+        ]
+      },
+      {
+        "startFrame": 138,
+        "endFrameExclusive": 228,
+        "seconds": "4.60–7.60",
+        "take": "same uninterrupted P_OPERATION",
+        "overlay": [
+          "Aus der Nähe",
+          "entdecken."
+        ]
+      },
+      {
+        "startFrame": 228,
+        "endFrameExclusive": 372,
+        "seconds": "7.60–12.40",
+        "take": "P_PROJECTION exact execution/motif",
+        "overlay": [
+          "Für besondere",
+          "Lichtmomente."
+        ]
+      },
+      {
+        "startFrame": 372,
+        "endFrameExclusive": 420,
+        "seconds": "12.40–14.00",
+        "take": "P_DETAIL",
+        "overlay": []
+      },
+      {
+        "startFrame": 420,
+        "endFrameExclusive": 540,
+        "seconds": "14.00–18.00",
+        "take": "P_HERO continuous",
+        "overlay": [
+          "Produkt ansehen",
+          "LuxeStyle · luxestyle.ch"
+        ]
+      }
+    ],
+    "createdAtUtc": "2026-11-04T07:17:37.794907+00:00",
+    "status": "CONTINUED_STORYBOARD_ONLY_NO_MASTER_MP4",
+    "sameMasterContinued": true,
+    "selectedHook": null,
+    "newStoryboardOrSecondMasterClaimed": false,
+    "inheritedCutPlanUnchanged": true,
+    "newWork": "R79: Overlay-Zeilen mit vorhandenem gehashtem Font vermessen, Positionen und Fade-/Volltextdauer konkretisiert. Keine Aufnahme/MP4 erzeugt.",
+    "product": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "variantId": "gid://shopify/ProductVariant/56197916361089",
+      "sku": "CJ-1477820492730732544",
+      "status": "ACTIVE",
+      "priceCHF": "34.90",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech"
+      ],
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "nativeAvailableForSale": true,
+      "publicVariantAvailable": true,
+      "referenceImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "status": 200,
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "bytes": 118008,
+        "binding": "product_level_only",
+        "actuallyViewed": true,
+        "commercialRightsVerified": false,
+        "nativeVariantBindingConfirmed": false,
+        "publicVariantFeaturedImage": null,
+        "sameHashAsR67": true,
+        "visibleObservation": "Weisses Gehäuse und Bügel, schwarze Kuppel mit Sternmotiv, sichtbare Bedienelemente; daneben helle Haube. Kein Nachweis, welches Motivset/Modell die Default-Variante liefert.",
+        "localPath": "/workspace/luxestyle-review/tageslauf-20261104-r77/products/projector-reference.jpg",
+        "actuallyViewedByThisMasterAgent": true
+      },
+      "nativeVariantMediaBindingConfirmed": false,
+      "actualVariantPhysicalUnitAndMotifsBound": false,
+      "photoActuallyViewedByThisMasterAgent": true,
+      "productLevelVideoObserved": {
+        "mediaId": "gid://shopify/Video/77496185356679",
+        "dimensions": [
+          852,
+          480
+        ],
+        "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4",
+        "scope": "Current Shopify delivery source, already observed in R67; not evidence the historical 960x540/25fps original changed.",
+        "downloadedOrAcceptedByThisRun": false,
+        "exactVariantOrRightsBinding": false
+      }
+    },
+    "currentProductProof": {
+      "localPath": "/workspace/luxestyle-review/tageslauf-20261104-r77/products/PRODUCT-CHECKS.json",
+      "sha256": "9ddef61496ffc0887979cfaf85dc192f675b74eabfe0aa556b49499a3732d9fc",
+      "bytes": 18129
+    },
+    "takeRequirements": {
+      "P_OPERATION": {
+        "minimumNativeFrames": 228,
+        "minimumSecondsAt30fps": "7.60",
+        "purpose": "Eine ununterbrochene Bedienung mit ganzer Hand, Kontaktstelle, identifizierter Einheit und sichtbarem Vor-/Nachzustand. Keine unbelegte Ein-/Ausschaltwirkung behaupten.",
+        "usedMasterFrames": [
+          60,
+          228
+        ]
+      },
+      "P_PROJECTION": {
+        "minimumNativeFrames": 264,
+        "minimumSecondsAt30fps": "8.80",
+        "purpose": "Reale Projektion dieser tatsächlichen Default-Ausführung mit belegtem enthaltenem Motiv. Raum-/Gerätezuordnung und Lichtfarbe nachvollziehbar; keine Fremdprojektion einschneiden.",
+        "usedMasterFrames": [
+          228,
+          372
+        ],
+        "optionalHookAFrames": [
+          0,
+          60
+        ]
+      },
+      "P_DETAIL": {
+        "minimumNativeFrames": 168,
+        "minimumSecondsAt30fps": "5.60",
+        "purpose": "Reales Gehäuse-/Bedienelementdetail, Form/Farbe/Logo konsistent. Keine Hauben-Abhebehandlung oder frei erfundene Funktion.",
+        "usedMasterFrames": [
+          372,
+          420
+        ],
+        "optionalHookBFrames": [
+          0,
+          60
+        ]
+      },
+      "P_HERO": {
+        "minimumNativeFrames": 180,
+        "minimumSecondsAt30fps": "6.00",
+        "purpose": "Durchgehendes ruhiges Schlussbild derselben Einheit mit freiem Textraum, keinem Produktwechsel und unverfälschten Lichtfarben.",
+        "usedMasterFrames": [
+          420,
+          540
+        ]
+      }
+    },
+    "inputAcceptanceExtension": "MASTER-INPUT-ACCEPTANCE-20261104-R77.json",
+    "artDirection": {
+      "set": "premium, clean, taupe/cream",
+      "light": "kontrolliertes weiches Seitenlicht, feste Belichtung/Weissabgleich, Flimmerprobe unter tatsächlicher Beleuchtung",
+      "product": "tatsächliche Form, Farbe, Logo, Bedienelemente und belegte Funktion erhalten; keine generischen Stock-/Fotozoom-/KI-Ersatzszenen",
+      "edit": "präzise klare Schnitte; Masterframe138 nur Textwechsel in derselben durchgehenden Bedienungsaufnahme",
+      "textSafeZoneProposal": {
+        "x": [
+          150,
+          930
+        ],
+        "y": [
+          260,
+          1450
+        ],
+        "minimumFontPixelsAt1080": 48,
+        "maxLines": 2,
+        "unverifiedUntilFinalPlatformCrops": true
+      },
+      "sound": "nur die kanonische WAV nach Rechte-/Hörprüfung; keine Stimme/Quellsprache/Fremd-SFX"
+    },
+    "music": {
+      "checkedAt": "2026-11-04T07:09:47.464552+00:00",
+      "repositoryPath": "automation/music/luxe-premium.wav",
+      "localPath": "/workspace/luxestyle-review/media/luxe-premium.wav",
+      "gitBlobSha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "bytes": 11343950,
+      "remoteHashMatched": true,
+      "wave": {
+        "channels": 2,
+        "sampleWidthBytes": 2,
+        "sampleRate": 44100,
+        "samples": 2835968,
+        "durationSeconds": 64.30766439909297
+      },
+      "rights": "Debian fluid-soundfont 3.1-6: MIT for soundfont files; GPL-2+ for debian/* only. Actual historical SF2 file/version/hash producing this WAV, composition/recording ownership and intended-use acceptance remain unbound. See MUSIC-LICENCE-PROVENANCE-20261104-R77.json.",
+      "listeningMixAccepted": false,
+      "changed": false,
+      "rightsSourceCountercheckAtUtc": "2026-11-04T07:17:37.794907+00:00",
+      "commercialUseAccepted": false
+    },
+    "gates": {
+      "actualFourOriginalTakes": "unknown/unbound",
+      "exactDefaultPhysicalUnitMotifs": "unknown/unbound",
+      "commercialFilmEditingRights": "unknown",
+      "canonicalMusicFinalRightsAndListeningMix": "unknown",
+      "finalMp4Present": false,
+      "filmOwnerApproved": false,
+      "futurePublicationEligibility": "blocked",
+      "durableMasterChannelHistory": "unknown; no initialization/reset",
+      "sf2PackageLicence": "MIT independently documented for cited Debian version; historical WAV build binding unknown",
+      "actualColourCorrectionOrOperationAccepted": false
+    },
+    "youtubeAudience": "Owner already clarified general audience/not specifically made for kids; do not ask again. Exact future post flag remains a later channel precondition.",
+    "captions": "CONTENT-CAPTIONS-20261104-R77.json; six retained product UTMs for same stable master, conditional text drafts only.",
+    "continuedFrom": {
+      "localPath": "/workspace/luxestyle-review/content-sales-20261103-r67/master/MASTER-STORYBOARD-20261103-R67.json",
+      "sha256": "879e66d50af411994501bd0cc60d27cbf3f702e8c6f94ba206983a77366aba06",
+      "bytes": 8585
+    },
+    "captureWindowRequirements": {
+      "source": "R52 take sheet preserved, not newly developed in R77",
+      "allWindowsAreRequirementsForStillMissingOriginalTakes": true,
+      "measuredSourceFrames": null,
+      "records": [
+        {
+          "takeId": "P_OPERATION",
+          "minimumNativeCaptureFrames": 228,
+          "plannedCandidateRanges": {
+            "takeId": "P_OPERATION",
+            "minimumCaptureFrames": 228,
+            "candidateUsedRanges": [
+              {
+                "masterFrames": [
+                  60,
+                  228
+                ],
+                "captureFrames": [
+                  30,
+                  198
+                ]
+              }
+            ],
+            "contactFrameCandidates": [
+              30,
+              114,
+              197
+            ],
+            "additionalHumanFrames": [
+              "realpreactionstate",
+              "actualfingercontact",
+              "realpostactionstate"
+            ],
+            "continuousNoPictureCutAtMasterFrame": 138
+          }
+        },
+        {
+          "takeId": "P_PROJECTION",
+          "minimumNativeCaptureFrames": 264,
+          "plannedCandidateRanges": {
+            "takeId": "P_PROJECTION",
+            "minimumCaptureFrames": 264,
+            "hookAOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  0,
+                  60
+                ],
+                "captureFrames": [
+                  30,
+                  90
+                ]
+              },
+              {
+                "masterFrames": [
+                  228,
+                  372
+                ],
+                "captureFrames": [
+                  90,
+                  234
+                ]
+              }
+            ],
+            "hookBOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  228,
+                  372
+                ],
+                "captureFrames": [
+                  30,
+                  174
+                ]
+              }
+            ],
+            "contactFrameCandidatesHookA": [
+              30,
+              89,
+              90,
+              162,
+              233
+            ],
+            "additionalHumanFrames": [
+              "sameunitandsurfacebinding",
+              "motifmatchproof"
+            ],
+            "noInsertedOrRecycledProjection": true
+          }
+        },
+        {
+          "takeId": "P_DETAIL",
+          "minimumNativeCaptureFrames": 168,
+          "plannedCandidateRanges": {
+            "takeId": "P_DETAIL",
+            "minimumCaptureFrames": 168,
+            "hookBOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  0,
+                  60
+                ],
+                "captureFrames": [
+                  30,
+                  90
+                ]
+              },
+              {
+                "masterFrames": [
+                  372,
+                  420
+                ],
+                "captureFrames": [
+                  90,
+                  138
+                ]
+              }
+            ],
+            "hookAOnlyCaptureRanges": [
+              {
+                "masterFrames": [
+                  372,
+                  420
+                ],
+                "captureFrames": [
+                  30,
+                  78
+                ]
+              }
+            ],
+            "contactFrameCandidatesHookB": [
+              30,
+              89,
+              90,
+              137
+            ],
+            "additionalHumanFrames": [
+              "frontidentity",
+              "domeholderandbuttonidentity"
+            ]
+          }
+        },
+        {
+          "takeId": "P_HERO",
+          "minimumNativeCaptureFrames": 180,
+          "plannedCandidateRanges": {
+            "takeId": "P_HERO",
+            "minimumCaptureFrames": 180,
+            "candidateUsedRanges": [
+              {
+                "masterFrames": [
+                  420,
+                  540
+                ],
+                "captureFrames": [
+                  30,
+                  150
+                ]
+              }
+            ],
+            "contactFrameCandidates": [
+              30,
+              90,
+              149
+            ],
+            "additionalHumanFrames": [
+              "ctaSpace",
+              "sameunitandcolourcontinuity"
+            ],
+            "continuousClosingTake": true
+          }
+        }
+      ]
+    },
+    "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+    "overlayPlan": "OVERLAY-LESBARKEIT-20261104-R79.json"
+  },
+  "captions": {
+    "schemaVersion": 1,
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "revisionPurpose": "R79: gleicher Master und dieselben sechs Kanalentwürfe; aktuelle Produktgegenprobe, neue vermessene Textplanung. Keine neue Kampagne/Produktion.",
+    "referenceImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "status": 200,
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "bytes": 118008,
+      "binding": "product_level_only",
+      "actuallyViewed": true,
+      "commercialRightsVerified": false,
+      "nativeVariantBindingConfirmed": false,
+      "publicVariantFeaturedImage": null,
+      "sameHashAsR67": true,
+      "visibleObservation": "Weisses Gehäuse und Bügel, schwarze Kuppel mit Sternmotiv, sichtbare Bedienelemente; daneben helle Haube. Kein Nachweis, welches Motivset/Modell die Default-Variante liefert.",
+      "localPath": "/workspace/luxestyle-review/mittagslauf-20261104-r79/master/projector-reference.jpg",
+      "actuallyViewedByThisMasterAgent": true
+    },
+    "referenceIsProductWideOnly": true,
+    "mainHook": "Licht im Detail.",
+    "alternativeHook": "Dein Raum. Neues Licht.",
+    "cta": "Produkt ansehen",
+    "noVoiceover": true,
+    "musicPolicy": "Only automation/music/luxe-premium.wav after current rights and listening/mix approval; no autoAddMusic or rotation.",
+    "channelDrafts": [
+      {
+        "channel": "instagram",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor bei LuxeStyle. Produktdetails über den Link in der Bio.",
+        "linkUse": "Verified Bio destination required; the caption URL is not presented as clickable.",
+        "additionalBlocker": "Bio-Produktziel aktuell unbestätigt. Der Link-in-Bio-Text ist nur bedingter Entwurf und darf so noch nicht ausgespielt werden.",
+        "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+        "currentProductPriceChf": "34.90",
+        "commonBlockers": [
+          "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+          "Original four takes plus commercial editing/advertising rights not established.",
+          "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+          "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+        ],
+        "notToBePublishedAsTextOnly": true,
+        "creativeOwnerApproval": "unknown",
+        "scheduledByThisRun": false,
+        "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+        "productTagGatePassed": true,
+        "bioDestinationVerified": false,
+        "conditionalBioCaptionEnabled": false
+      },
+      {
+        "channel": "tiktok",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Produktdetails und angebotene Ausführung: Link in der Bio.",
+        "linkUse": "Verified Bio destination required; no clickable caption product link claimed.",
+        "additionalBlocker": "Bio-Produktziel aktuell unbestätigt. Der Link-in-Bio-Text ist nur bedingter Entwurf und darf so noch nicht ausgespielt werden.",
+        "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+        "currentProductPriceChf": "34.90",
+        "commonBlockers": [
+          "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+          "Original four takes plus commercial editing/advertising rights not established.",
+          "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+          "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+        ],
+        "notToBePublishedAsTextOnly": true,
+        "creativeOwnerApproval": "unknown",
+        "scheduledByThisRun": false,
+        "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+        "productTagGatePassed": true,
+        "bioDestinationVerified": false,
+        "conditionalBioCaptionEnabled": false
+      },
+      {
+        "channel": "youtube",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "title": "Sternenlicht-Projektor: Licht im Detail | LuxeStyle",
+        "caption": "Ein genauer Blick auf den Sternenlicht-Projektor. Produktdetails und aktuelle Ausführung: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "linkUse": "URL supplied for copying; Shorts-description URLs are not promised clickable.",
+        "additionalBlocker": "Owner general-audience decision retained; exact concrete post made-for-kids flag must be verified.",
+        "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+        "currentProductPriceChf": "34.90",
+        "commonBlockers": [
+          "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+          "Original four takes plus commercial editing/advertising rights not established.",
+          "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+          "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+        ],
+        "notToBePublishedAsTextOnly": true,
+        "creativeOwnerApproval": "unknown",
+        "scheduledByThisRun": false,
+        "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+        "productTagGatePassed": true,
+        "ownerAudienceDecision": "general_audience_not_specifically_made_for_kids",
+        "concretePostMadeForKidsFlag": "unknown"
+      },
+      {
+        "channel": "facebook",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und die angebotene Ausführung auf der Produktseite: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "linkUse": "Product destination in caption.",
+        "additionalBlocker": null,
+        "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+        "currentProductPriceChf": "34.90",
+        "commonBlockers": [
+          "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+          "Original four takes plus commercial editing/advertising rights not established.",
+          "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+          "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+        ],
+        "notToBePublishedAsTextOnly": true,
+        "creativeOwnerApproval": "unknown",
+        "scheduledByThisRun": false,
+        "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+        "productTagGatePassed": true
+      },
+      {
+        "channel": "threads",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "caption": "Licht im Detail. Ein Blick auf den Sternenlicht-Projektor von LuxeStyle. Produktdetails: https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "linkUse": "Produktlink im Text nach Freigabe dieses Masters; andere Inhalte ersetzen dessen Publikationsbeleg nicht.",
+        "additionalBlocker": null,
+        "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+        "currentProductPriceChf": "34.90",
+        "commonBlockers": [
+          "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+          "Original four takes plus commercial editing/advertising rights not established.",
+          "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+          "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+        ],
+        "notToBePublishedAsTextOnly": true,
+        "creativeOwnerApproval": "unknown",
+        "scheduledByThisRun": false,
+        "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+        "productTagGatePassed": true
+      },
+      {
+        "channel": "pinterest",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "productId": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=56197916361089&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=hook_detail_master18",
+        "title": "Sternenlicht-Projektor – Licht im Detail",
+        "caption": "Der Sternenlicht-Projektor von LuxeStyle. Details zur angebotenen Ausführung findest du auf der Produktseite.",
+        "linkUse": "Product destination field; no unverified board assigned.",
+        "boardId": null,
+        "additionalBlocker": "Kontoboard nicht bestätigt. Eine Board-ID aus einer Postkonfiguration belegt keine aktuelle Kontozuordnung und wird nicht gewählt.",
+        "state": "CONDITIONAL_TEXT_DRAFT_NOT_READY_TO_SCHEDULE",
+        "currentProductPriceChf": "34.90",
+        "commonBlockers": [
+          "Exact default-variant/reference/filmed-unit identity unknown; native variant media empty and public featured_image null.",
+          "Original four takes plus commercial editing/advertising rights not established.",
+          "No professional final master MP4 or final quality/rights/sound/crop approval established.",
+          "Durable history for this projector master/channel unknown; no register initialisation or publication performed."
+        ],
+        "notToBePublishedAsTextOnly": true,
+        "creativeOwnerApproval": "unknown",
+        "scheduledByThisRun": false,
+        "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+        "productTagGatePassed": true
+      }
+    ],
+    "publishingWrites": 0,
+    "newRender": false,
+    "professionalMasterMp4": null,
+    "checkedAtUtc": "2026-11-04T13:05:36.089424+00:00",
+    "continuedFrom": {
+      "localPath": "/workspace/luxestyle-review/content-sales-20261103-r67/CONTENT-CAPTIONS-20261103-R67.json",
+      "sha256": "90b8860c4c6fabef36786572097a3ac187a69af4cd3fef153991b4ad87831dfc",
+      "bytes": 11188
+    },
+    "currentProductProof": {
+      "localPath": "/workspace/luxestyle-review/tageslauf-20261104-r77/products/PRODUCT-CHECKS.json",
+      "sha256": "9ddef61496ffc0887979cfaf85dc192f675b74eabfe0aa556b49499a3732d9fc",
+      "bytes": 18129
+    }
+  },
+  "klaviyoReusedToday": {
+    "schemaVersion": 1,
+    "run": "R79",
+    "evidenceKind": "REUSED_R77_LOCAL_SOURCE_NOT_FRESH_KLAVIYO_READ",
+    "sourceCheckedAtUtc": "2026-11-04T07:10:41.179812+00:00",
+    "sourceCheckedAtZurich": "2026-11-04T08:10:41.179812+01:00",
+    "sourceRevision": 77,
+    "newKlaviyoReads": 0,
+    "newKlaviyoReports": 0,
+    "account": {
+      "id": "XWqMAD",
+      "name": "LuxeStyle CH",
+      "website": "https://luxestyle.ch",
+      "timezone": "Europe/Zurich",
+      "currency": "USD",
+      "source": "R77"
+    },
+    "shopCurrency": "CHF",
+    "currenciesCombined": false,
+    "monetaryValuesReadInR79": false,
+    "placedOrderMetric": {
+      "id": "W7XTVD",
+      "name": "Placed Order",
+      "discoveredBeforeReportInR77": true,
+      "freshDiscoveryInR79": false
+    },
+    "reportPeriod": {
+      "localStart": "2026-10-28T00:00:00+01:00",
+      "localEndExclusive": "2026-11-04T00:00:00+01:00",
+      "utcStart": "2026-10-27T23:00:00Z",
+      "utcEndExclusive": "2026-11-03T23:00:00Z",
+      "completedLocalDays": 7
+    },
+    "flowStatusFromR77": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "draft"
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase",
+        "status": "draft"
+      }
+    ],
+    "liveStatusAfterSourceCheck": "unknown_not_rechecked_in_R79",
+    "reportPerformanceFromR77": [
+      {
+        "flowId": "Vse76a",
+        "delivered": null,
+        "opensUnique": null,
+        "clicksUnique": null,
+        "conversions": null,
+        "missingReason": "no_returned_report_row_not_zero"
+      },
+      {
+        "flowId": "VbLQj6",
+        "delivered": 2,
+        "opensUnique": 1,
+        "clicksUnique": 0,
+        "conversions": 0
+      },
+      {
+        "flowId": "RnTvsY",
+        "delivered": 4,
+        "opensUnique": 1,
+        "clicksUnique": 0,
+        "conversions": 0
+      }
+    ],
+    "performanceScope": "Report-attributed aggregates only; zero conversions do not prove absence of shop orders or order sync.",
+    "captureFromR77": {
+      "formsRowsReturned": 0,
+      "formsPaginationComplete": true,
+      "welcomeListId": "T2VHfu",
+      "welcomeListName": "Newsletter Subscribers",
+      "optInProcess": "single_opt_in",
+      "addedToCartMetric": "TFy7Yn",
+      "addedToCartFlowIdsReturned": [],
+      "otherCaptureChannels": "unknown_not_inferred_absent",
+      "endToEndCaptureTest": false
+    },
+    "singleExistingApprovalDraft": {
+      "proposalId": "checkout-email3-quality-20261103",
+      "proposalSource": "dropship/codex-handoff-20261018/CHECKOUT-EMAIL3-FREIGABE-20261103-R64.json",
+      "sameExistingProposal": true,
+      "newTextRevision": false,
+      "originalReboundInR77": true,
+      "originalRecheckedInR79": false,
+      "flowId": "Vse76a",
+      "messageId": "WNFHjV",
+      "templateId": "WaQaDv",
+      "actionId": "108024959",
+      "originalSubject": "Email #3 Subject",
+      "proposedSubject": "Möchtest du deine Bestellung fortsetzen?",
+      "htmlLines": [
+        15,
+        18,
+        19
+      ],
+      "proposedHeading": "Dein Einkauf bei LuxeStyle",
+      "proposedParagraphHtml": "Hey {{ first_name|default:'' }},<br/><br/>du kannst deinen begonnenen Einkauf im Checkout ansehen und fortsetzen. Falls du den Code\n                  <strong>WELCOME10</strong> verwenden möchtest, prüfe die dort angezeigten Bedingungen.",
+      "originalHtmlSha256": "93ad1f614f1e55dcc7ba816e8eda87c562d9fca6894045248f9ad492d6f469bb",
+      "candidateHtmlSha256": "b7ec08b4a9c5ad40f689e0d8acd74714539c4a12fb2cc2f1a62218891302d95a",
+      "diffSha256": "eda3c472cd4a42e42981a07ebba7464fb3bea579841f736a5c64611a13c5a75e",
+      "otherHtmlBytesIdenticalInR77": true,
+      "applied": false,
+      "sendReady": false,
+      "ownerTextApproval": "unknown_not_recorded",
+      "preserved": [
+        "All other HTML bytes and template variables",
+        "CTA, checkout, unsubscribe and coupon tokens",
+        "Sender fields, tracking flags, delays, flow status and send status"
+      ],
+      "unverified": [
+        "Coupon validity",
+        "Consent",
+        "Runtime checkout/event rendering",
+        "Send timing"
+      ],
+      "activationOrSendingOrDiscountAuthorization": false
+    },
+    "sources": [
+      {
+        "path": "/workspace/luxestyle-review/tageslauf-20261104-r77/klaviyo/SUMMARY.json",
+        "bytes": 8351,
+        "sha256": "bab83362a3c95bd4866a5dfb4df9241b2ec2e38accc2388e1f443cadcb325062"
+      },
+      {
+        "path": "/workspace/luxestyle-review/tageslauf-20261104-r77/klaviyo/BERICHT.md",
+        "bytes": 2948,
+        "sha256": "be4fd340b9841904ecbb387b12547d3da969e8b738e588af38aed870d90a2654"
+      },
+      {
+        "path": "/workspace/luxestyle-review/tageslauf-20261104-r77/klaviyo/CHECKOUT-EMAIL3-R64-UNVERAENDERT.diff",
+        "bytes": 1429,
+        "sha256": "eda3c472cd4a42e42981a07ebba7464fb3bea579841f736a5c64611a13c5a75e"
+      }
+    ],
+    "r79Actions": {
+      "localSourceReview": true,
+      "remoteWrites": 0,
+      "accountQueries": 0,
+      "reports": 0,
+      "flowActivations": 0,
+      "couponChanges": 0,
+      "customersContacted": 0,
+      "profilesEventsOrdersRead": 0,
+      "testMessagesSent": 0
+    },
+    "limitations": [
+      "Status is dated R77 evidence; no new live verification in R79.",
+      "Current draft definitions and historical sends may coexist.",
+      "Missing checkout report row remains unknown.",
+      "Other capture/recovery paths remain unknown.",
+      "No claim of no sales or missing order sync.",
+      "No second improvement proposal."
+    ]
+  },
+  "actions": {
+    "themeWrites": 0,
+    "shopProductWrites": 0,
+    "socialWrites": 0,
+    "reportsRepeated": 0,
+    "newMp4": 0,
+    "paidRenders": 0,
+    "customerMessages": 0,
+    "dnsWrites": 0,
+    "automationChanges": 0
+  },
+  "continuity": {
+    "baseRevision": 78,
+    "taskIds": 23,
+    "tasksAdvanced": [
+      "master-projector-15521256604033",
+      "seo-landing-visibility-20261101"
+    ],
+    "dailyPolicyUnchanged": true,
+    "purchaseWatchEnded": true,
+    "claudeReceipt": "unknown"
+  },
+  "files": {
+    "MITTAGSPAKET-20261104-R79.md": {
+      "sha256": "912ac88d3602e5ab669383739c552ad16491e747fd1725e986be72da9839ecec",
+      "bytes": 6892
+    },
+    "PREISFILTER-20261104-R79.md": {
+      "sha256": "bf54bc56f95ab86d67ccf8c7364f2670d3b0507346f8273b38d860f0617bbb07",
+      "bytes": 2330
+    },
+    "preisfilter-r79/price-filter.patch": {
+      "sha256": "60763909264d2d0c769cdbec3c823f530fd611879bf709dafac0bc03f18b6609",
+      "bytes": 596
+    },
+    "preisfilter-r79/product-grid.liquid": {
+      "sha256": "2f7232b3cc8c6a06535af6b891734664327f2d86b337595cbf242a1dff20874a",
+      "bytes": 12299
+    },
+    "MASTER-CONTENT-20261104-R79.md": {
+      "sha256": "632e342dcec31e96723838285e9b0cc66090d60104abff3074aa5a716707e632",
+      "bytes": 12788
+    },
+    "OVERLAY-LESBARKEIT-20261104-R79.json": {
+      "sha256": "f4cb3a038c5092dac80f5528cc64ca78fce8a5a0e61247c7b5c1d97e29b0d764",
+      "bytes": 5808
+    },
+    "KLAVIYO-WIEDERVERWENDUNG-20261104-R79.md": {
+      "sha256": "430b426f7a12c6f2e5ca510660ba4f074306029bad9086d269ccddc335f92a36",
+      "bytes": 3327
+    }
+  }
+}

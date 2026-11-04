@@ -1,0 +1,226 @@
+{
+  "checkedAtUtc": "2026-11-04T13:02:45.940134+00:00",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "status": "MEASURED_OVERLAY_PLAN_NOT_RENDERED_FILM",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 18,
+    "frames": 540
+  },
+  "measurementFont": {
+    "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+    "sizePx": 52,
+    "role": "Pinned measurement reference; no final brand-font or rendered-video approval",
+    "localLicenseFile": "/usr/share/doc/fonts-dejavu-core/copyright",
+    "localLicenseSha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+  },
+  "editorialHouseBox": {
+    "left": 150,
+    "top": 260,
+    "right": 930,
+    "bottom": 1450
+  },
+  "officialPlatformSafeAreaClaimed": false,
+  "colors": {
+    "text": "#F5F0E8",
+    "opaqueBackplate": "#332E2B"
+  },
+  "opaqueColorPairContrastRatio": 11.818,
+  "contrastAgainstFootageMeasured": false,
+  "backplateRule": "Only if necessary and only on proven free image space; do not cover product, hand/contact or projection. No transparent-backplate contrast promise.",
+  "entries": [
+    {
+      "segmentIndex": 0,
+      "hook": "A",
+      "fromFrame": 0,
+      "toFrameExclusive": 60,
+      "fadeInFrames": 6,
+      "fadeOutFrames": 6,
+      "fullOpacityFrames": 48,
+      "fontPx": 52,
+      "lineHeightPx": 64,
+      "lines": [
+        {
+          "text": "Dein Raum.",
+          "advancePx": 302.9688,
+          "glyphWidthPx": 303,
+          "x": 388.5,
+          "y": 300,
+          "right": 691.5,
+          "bottom": 341
+        },
+        {
+          "text": "Neues Licht.",
+          "advancePx": 321.375,
+          "glyphWidthPx": 321,
+          "x": 379.5,
+          "y": 364,
+          "right": 700.5,
+          "bottom": 405
+        }
+      ],
+      "fullOpacitySeconds": 1.6,
+      "inHouseBox": true
+    },
+    {
+      "segmentIndex": 0,
+      "hook": "B",
+      "fromFrame": 0,
+      "toFrameExclusive": 60,
+      "fadeInFrames": 6,
+      "fadeOutFrames": 6,
+      "fullOpacityFrames": 48,
+      "fontPx": 52,
+      "lineHeightPx": 64,
+      "lines": [
+        {
+          "text": "Licht im Detail.",
+          "advancePx": 393.2656,
+          "glyphWidthPx": 393,
+          "x": 343.5,
+          "y": 300,
+          "right": 736.5,
+          "bottom": 341
+        }
+      ],
+      "fullOpacitySeconds": 1.6,
+      "inHouseBox": true
+    },
+    {
+      "segmentIndex": 1,
+      "hook": "both",
+      "fromFrame": 60,
+      "toFrameExclusive": 138,
+      "fadeInFrames": 6,
+      "fadeOutFrames": 6,
+      "fullOpacityFrames": 66,
+      "fontPx": 52,
+      "lineHeightPx": 64,
+      "lines": [
+        {
+          "text": "Sternenlicht-Projektor",
+          "advancePx": 566.0312,
+          "glyphWidthPx": 567,
+          "x": 256.5,
+          "y": 300,
+          "right": 823.5,
+          "bottom": 351
+        }
+      ],
+      "fullOpacitySeconds": 2.2,
+      "inHouseBox": true
+    },
+    {
+      "segmentIndex": 2,
+      "hook": "both",
+      "fromFrame": 138,
+      "toFrameExclusive": 228,
+      "fadeInFrames": 6,
+      "fadeOutFrames": 6,
+      "fullOpacityFrames": 78,
+      "fontPx": 52,
+      "lineHeightPx": 64,
+      "lines": [
+        {
+          "text": "Aus der Nähe",
+          "advancePx": 350.7969,
+          "glyphWidthPx": 351,
+          "x": 364.5,
+          "y": 300,
+          "right": 715.5,
+          "bottom": 341
+        },
+        {
+          "text": "entdecken.",
+          "advancePx": 288.6875,
+          "glyphWidthPx": 289,
+          "x": 395.5,
+          "y": 364,
+          "right": 684.5,
+          "bottom": 405
+        }
+      ],
+      "fullOpacitySeconds": 2.6,
+      "inHouseBox": true
+    },
+    {
+      "segmentIndex": 3,
+      "hook": "both",
+      "fromFrame": 228,
+      "toFrameExclusive": 372,
+      "fadeInFrames": 6,
+      "fadeOutFrames": 6,
+      "fullOpacityFrames": 132,
+      "fontPx": 52,
+      "lineHeightPx": 64,
+      "lines": [
+        {
+          "text": "Für besondere",
+          "advancePx": 372.0469,
+          "glyphWidthPx": 372,
+          "x": 354.0,
+          "y": 300,
+          "right": 726.0,
+          "bottom": 341
+        },
+        {
+          "text": "Lichtmomente.",
+          "advancePx": 392.3594,
+          "glyphWidthPx": 392,
+          "x": 344.0,
+          "y": 364,
+          "right": 736.0,
+          "bottom": 405
+        }
+      ],
+      "fullOpacitySeconds": 4.4,
+      "inHouseBox": true
+    },
+    {
+      "segmentIndex": 5,
+      "hook": "both",
+      "fromFrame": 420,
+      "toFrameExclusive": 540,
+      "fadeInFrames": 6,
+      "fadeOutFrames": 6,
+      "fullOpacityFrames": 108,
+      "fontPx": 52,
+      "lineHeightPx": 64,
+      "lines": [
+        {
+          "text": "Produkt ansehen",
+          "advancePx": 437.3125,
+          "glyphWidthPx": 437,
+          "x": 321.5,
+          "y": 1260,
+          "right": 758.5,
+          "bottom": 1301
+        },
+        {
+          "text": "LuxeStyle · luxestyle.ch",
+          "advancePx": 613.8281,
+          "glyphWidthPx": 614,
+          "x": 233.0,
+          "y": 1324,
+          "right": 847.0,
+          "bottom": 1375
+        }
+      ],
+      "fullOpacitySeconds": 3.6,
+      "inHouseBox": true
+    }
+  ],
+  "maxGlyphWidthPx": 614,
+  "minimumFullOpacitySeconds": 1.6,
+  "sourceTimelineUnchanged": true,
+  "pass": true,
+  "limits": [
+    "Only font metrics, planned timings and opaque colour-pair ratio measured.",
+    "No accepted original take, filmed identity, real footage contrast, actual render or platform UI tested.",
+    "Re-measure whenever font, size, text, export dimensions or crop changes.",
+    "Do not move overlays outside the house box; if no free space exists, revise the shot."
+  ]
+}

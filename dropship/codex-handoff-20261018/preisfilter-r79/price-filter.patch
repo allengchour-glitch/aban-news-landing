@@ -1,0 +1,14 @@
+--- a/snippets/product-grid.liquid
++++ b/snippets/product-grid.liquid
+@@ -172,6 +172,11 @@
+           {%- assign lux_f = 0 -%}
+           {%- for f in collection.filters -%}
+             {%- assign lux_f = lux_f | plus: f.active_values.size -%}
++            {%- if f.type == 'price_range' -%}
++              {%- if f.min_value.value != nil or f.max_value.value != nil -%}
++                {%- assign lux_f = lux_f | plus: 1 -%}
++              {%- endif -%}
++            {%- endif -%}
+           {%- endfor -%}
+           {%- if lux_f == 0 and collection.sort_by == blank -%}
+             <style>
