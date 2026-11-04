@@ -1005,7 +1005,7 @@ def gesundheit(env, lb, ki, heute=None):
             p("Satellit (Testnetz-Zusatz)", _ok, _text, warnung=_warn)
         except Exception:  # noqa: BLE001
             pass
-    if SL is not None:  # Papier: braucht weder Schlüssel noch Konto; grau, solange es nie lief, rot nur bei Stillstand oder Hinweis
+    if SL is not None:  # Papier: braucht weder Schlüssel noch Konto; grau solange es nie lief, gelb bei Hinweis oder beschädigtem Buch, rot nur bei Stillstand über 36 Stunden
         try:
             _buch, _hin = SL.lesen(beiseite=False)
             _ok, _text, _warn = SL.ampel(_buch, env=env)
