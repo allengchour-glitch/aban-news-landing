@@ -20,7 +20,7 @@ FONTS = {
 }
 MUSIK_STUECKE = ['mixkit-serene-view-443.mp3', 'mixkit-majestic-475.mp3', 'mixkit-dreamy-jazz-645.mp3', 'mixkit-new-york-427.mp3', 'mixkit-violin-uplift-675.mp3']
 VERBOTEN = set("'\":%\\")
-FPS = 30
+FPS = 25     # die CJ-Quellen laufen mit 25 Bildern/s: bei 30 würde jedes sechste Bild verdoppelt (Abnahme 04.11.: sichtbares Ruckeln)
 MIN_S, MAX_S = 6.0, 15.0
 LUFS = -16   # reine Musik ohne Stimme: -16 (Prüfer-Fund 03.11.: -22 klang neben anderen Beiträgen zu leise)
 

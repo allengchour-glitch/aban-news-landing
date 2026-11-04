@@ -69,7 +69,7 @@ ist(not r['sicher'] and r['bpm'] == 120.0, 'Rauschen: Takt unsicher, Vorgabe 120
 
 # 2. Dauern
 ist(S.schnitt_dauern([{'dauer': 2.1}, {'dauer': 0.4}, {'dauer': 5}], 0.5) == [2.0, 1.0, 5.0], 'Dauern auf ganze Takte, mindestens zwei Schläge')
-ist(S.schnitt_dauern([{'dauer': 2.1}], 0.5, mit_takt=False) == [round(2.1 * 30) / 30], 'ohne Takt auf Frames gerundet')
+ist(S.schnitt_dauern([{'dauer': 2.1}], 0.5, mit_takt=False) == [round(2.1 * S.FPS) / S.FPS], 'ohne Takt auf Frames gerundet')
 
 # 3. Rendern mit synthetischen Quellen und echter Musik
 a = os.path.join(tmp, 'a.mp4'); b = os.path.join(tmp, 'b.mp4')
@@ -87,7 +87,7 @@ info = S.baue(plan, tmp, out)
 j = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'stream=codec_type,codec_name,width,height,r_frame_rate,pix_fmt:format=duration', '-of', 'json', out], text=True))
 v = next(s for s in j['streams'] if s['codec_type'] == 'video'); au = [s for s in j['streams'] if s['codec_type'] == 'audio']
 ist((v['width'], v['height']) == (1080, 1920), 'Ausgabe 1080x1920')
-ist(v['codec_name'] == 'h264' and v['pix_fmt'] == 'yuv420p' and v['r_frame_rate'] == '30/1', 'h264, yuv420p, 30 fps')
+ist(v['codec_name'] == 'h264' and v['pix_fmt'] == 'yuv420p' and v['r_frame_rate'] == f'{S.FPS}/1', f'h264, yuv420p, {S.FPS} fps')
 ist(len(au) == 1 and au[0]['codec_name'] == 'aac', 'genau eine Tonspur (aac)')
 ist(abs(float(j['format']['duration']) - info['gesamt_s']) < 0.12, f'Dauer {j["format"]["duration"]} s entspricht dem Plan {info["gesamt_s"]} s')
 ist(8.0 <= info['gesamt_s'] <= 15.0, 'Gesamtdauer 8 bis 15 s')
@@ -97,9 +97,9 @@ kumd = 0.0
 ok_takt = True
 for d in info['dauern']:
     kumd += d
-    ok_takt = ok_takt and abs(kumd / per - round(kumd / per)) < 0.5 / (30 * per) + 1e-6   # Schnitt höchstens ein halbes Bild neben dem Schlag
+    ok_takt = ok_takt and abs(kumd / per - round(kumd / per)) < 0.5 / (S.FPS * per) + 1e-6   # Schnitt höchstens ein halbes Bild neben dem Schlag
 ist(ok_takt or not info['takt_sicher'], 'Schnittzeiten liegen höchstens ein halbes Bild neben dem Schlag (kumuliert gerundet)')
-ist(sum(info['bilder']) == round(info['gesamt_s'] * 30), 'Summe der Bilder gleich Gesamtlänge')
+ist(sum(info['bilder']) == round(info['gesamt_s'] * S.FPS), 'Summe der Bilder gleich Gesamtlänge')
 # Bildinhalt: Hook in den ersten Sekunden sichtbar (Differenz zum Bild ohne Text), nach 4 s kein Hook mehr
 def bild(t, name):
     p = os.path.join(tmp, name)

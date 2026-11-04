@@ -22,30 +22,23 @@
      "dauer": 2.54,
      "zoom": "in",
      "zoomstaerke": 0.05,
-     "text": "Tropfen wie schwebend"
+     "text": "Schwebende Tropfen"
     },
     {
      "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
      "ss": 16.3,
-     "dauer": 2.033,
+     "dauer": 1.525,
      "zoom": "in",
      "zoomstaerke": 0.04,
      "text": "Feiner Nebel"
     },
     {
      "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
-     "ss": 8.45,
-     "dauer": 1.525,
-     "tempo": 0.7,
-     "zoom": "none",
-     "text": "Per USB betrieben"
-    },
-    {
-     "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
      "ss": 26.2,
-     "dauer": 2.033,
+     "dauer": 4.068,
      "zoom": "out",
-     "zoomstaerke": 0.05
+     "zoomstaerke": 0.05,
+     "text": "Per USB betrieben"
     }
    ]
   },
@@ -59,8 +52,8 @@
    "shots": [
     {
      "quelle": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
-     "ss": 16.8,
-     "dauer": 3.53,
+     "ss": 16.15,
+     "dauer": 2.82,
      "zoom": "in",
      "zoomstaerke": 0.08
     },
@@ -68,14 +61,14 @@
      "quelle": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
      "ss": 4.15,
      "dauer": 2.118,
+     "tempo": 0.8,
      "zoom": "in",
      "zoomstaerke": 0.07,
-     "text": "Zwei Wassersäulen",
-     "tempo": 0.8
+     "text": "Zwei Wassersäulen"
     },
     {
      "quelle": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
-     "ss": 9.1,
+     "ss": 9.35,
      "dauer": 1.412,
      "zoom": "none",
      "wb": 5800
@@ -101,9 +94,10 @@
     {
      "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
      "ss": 2.0,
-     "dauer": 2.501,
+     "dauer": 3.0012,
      "zoom": "none",
-     "text": "Abbildung ähnlich"
+     "text": "Blüte kann abweichen",
+     "tempo": 0.8
     },
     {
      "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
@@ -145,8 +139,8 @@
     },
     {
      "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
-     "ss": 15.8,
-     "dauer": 1.5006,
+     "ss": 16.3,
+     "dauer": 1.0004,
      "zoom": "out",
      "zoomstaerke": 0.05
     }
@@ -166,8 +160,9 @@
      "dauer": 2.77,
      "zoom": "in",
      "zoomstaerke": 0.05,
-     "cropx": 0.8,
-     "wb": 5600
+     "cropx": 0.9,
+     "wb": 5600,
+     "anker_x": 0.9
     },
     {
      "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
@@ -175,10 +170,11 @@
      "dauer": 2.308,
      "zoom": "in",
      "zoomstaerke": 0.05,
-     "cropx": 0.8,
+     "cropx": 0.9,
      "wb": 5600,
-     "text": "Von Hand gekurbelt",
-     "text_y": 1390
+     "text": "Mit Kurbel",
+     "text_y": 1390,
+     "anker_x": 0.9
     },
     {
      "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
@@ -186,8 +182,9 @@
      "dauer": 2.308,
      "zoom": "out",
      "zoomstaerke": 0.05,
-     "cropx": 0.8,
-     "wb": 5600
+     "cropx": 0.9,
+     "wb": 5600,
+     "anker_x": 0.9
     },
     {
      "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
@@ -195,8 +192,9 @@
      "dauer": 2.77,
      "zoom": "in",
      "zoomstaerke": 0.05,
-     "cropx": 0.8,
-     "wb": 5600
+     "cropx": 0.9,
+     "wb": 5600,
+     "anker_x": 0.9
     }
    ]
   },
@@ -219,8 +217,8 @@
      "ss": 8.44,
      "dauer": 2.1828,
      "zoom": "in",
-     "zoomstaerke": 0.45,
-     "anker_y": 0.78,
+     "zoomstaerke": 0.6,
+     "anker_y": 0.65,
      "text": "Wechselnde Lichtfarben",
      "text_y": 900
     },
@@ -233,10 +231,11 @@
     },
     {
      "quelle": "led-wasserwellen-projektionsleuchte-677504-9.mp4",
-     "ss": 22.1,
-     "dauer": 2.1828,
+     "ss": 23.08,
+     "dauer": 1.637,
      "zoom": "in",
-     "text": "Ruhige Stimmung"
+     "text": "Ruhige Stimmung",
+     "text_y": 900
     },
     {
      "quelle": "led-wasserwellen-projektionsleuchte-677504-6.mp4",
