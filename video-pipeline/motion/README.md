@@ -1,6 +1,6 @@
 # Motion-Shorts (`video-pipeline/motion/`)
 
-Animierte YouTube Shorts (9:16) aus HTML/SVG: Chromium rendert deterministisch Bild für Bild, ffmpeg macht das Video. **Lernen: `LERNEN.md`.**
+Animierte YouTube Shorts (9:16) aus HTML/SVG: Chromium rendert deterministisch Bild für Bild, ffmpeg macht das Video. **Lernen: `LERNEN.md`, dann `LERNEN-2-GESTALTEN-FALLEN.md`.**
 
 ```bash
 cd video-pipeline/motion
