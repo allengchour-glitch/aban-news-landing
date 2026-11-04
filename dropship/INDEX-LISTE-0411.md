@@ -43,3 +43,16 @@ Hinweis: Die Kennung im Link ändert sich bei jeder neuen Messung; bei einem Feh
 
 ## Hinweis zur Seitengrösse
 Alle gemessenen Sammlungsseiten liefern rund 1,9 bis 2,8 MB HTML (GEMESSEN 03.11., `curl`, z. B. `spielzeug` 2,6 MB, `fitness-training` 2,6 MB). Das ist die bekannte Grösse der Sammlungsvorlage (Entscheid zum Theme-Platz beim Besitzer offen); Google crawlt grosse Seiten langsamer, was zu «Discovered - currently not indexed» beitragen kann (Hypothese, nicht belegt).
+
+## Frische Direktlinks (Messung 04.11.2026 18:33 UTC, `inspect_urls`; Stand: noch nichts beantragt oder verarbeitet)
+Die Kennung im Link ändert sich bei jeder Messung; Google-Stand: acht «URL ist Google nicht bekannt», `herren-schuhe` «Gefunden – zurzeit nicht indexiert», `sub-armbaender` weiter der alte 404-Stand vom 12.06. (die Seite lädt mit HTTP 200). Der Stand von `spielzeug`/`damen-schuhe` schwankt zwischen «Gefunden» und «unbekannt», das ist die Eigenart der Abfrage und kein Fortschritt.
+1. kissen-wohntextilien: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=reoWeJbjQSvgV10vvWtRzg&utm_medium=link&utm_source=api
+2. spielzeug: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=nUPn-m1Gz0Y56V24HINKlg&utm_medium=link&utm_source=api
+3. blitzversand-schweiz: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=XaSzUke_2Siu37fM5xSXOw&utm_medium=link&utm_source=api
+4. damen-schuhe: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=o7geyZKAxkXzk3xQU_k84Q&utm_medium=link&utm_source=api
+5. herren-schuhe: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=ANpNebi6sB8VrGXwLRcdJA&utm_medium=link&utm_source=api
+6. kinderschuhe: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=WqgsbmeQLujmQDmIuoPPAA&utm_medium=link&utm_source=api
+7. sub-armbaender: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=jIFQPUEgxE8_nbwQhu0F-Q&utm_medium=link&utm_source=api
+8. haustier-hunde: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=L0yFbANzmzEGSol5gfGzPg&utm_medium=link&utm_source=api
+9. viral-hits: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=wHHU9uTvvVTJYAJcO04m5Q&utm_medium=link&utm_source=api
+10. werkzeug-maschinen: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=xoVOTmVZCtQ9bWoBeo_h_g&utm_medium=link&utm_source=api
