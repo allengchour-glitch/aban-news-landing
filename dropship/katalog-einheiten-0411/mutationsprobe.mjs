@@ -24,6 +24,10 @@ const MUTANTEN = [
   ['patches.mjs', 'Galerie-Ausgabe kompakt', "return { text: JSON.stringify(neu, null, 2) + '\\n', stat };", "return { text: JSON.stringify(neu), stat };"],
   ['patches.mjs', 'Section ohne Schutz vor Doppelung', "if (text.includes(\"'luxe_clothing.design_cta'\")) throw new Error('Section trägt die neuen Labels schon');", ""],
   // etiketten.mjs
+  ['etiketten.mjs', 'titleDe überschreiben', 'if (titel[pid] && !zeile.titleDe)', 'if (titel[pid])'],
+  ['etiketten.mjs', 'Can Cooler ohne Nachbearbeitung', "const ETIKETT_NACHBEARBEITUNG = { '764':", "const ETIKETT_NACHBEARBEITUNG = { '0':"],
+  ['etiketten.mjs', 'Deckel-Zusatz nicht übersetzen', "[/ With Lid & Straw$/, ' mit Deckel und Strohhalm']", "[/ With Lid & StrawX$/, ' mit Deckel und Strohhalm']"],
+  ['etiketten.mjs', 'Titel trotz Widerspruch', "if (!r || r.konflikt) return null;\n  return String(titel)", "if (!r) return null;\n  return String(titel)"],
   ['etiketten.mjs', 'Hersteller-Toleranz zu weit', 'export const TOLERANZ_HERSTELLER = 0.03;', 'export const TOLERANZ_HERSTELLER = 0.5;'],
   ['etiketten.mjs', 'oz in britischen ml', 'export const OZ_ML = 29.5735295625;', 'export const OZ_ML = 28.4130625;'],
   ['etiketten.mjs', 'Kerzen nicht in g', "if (/\\bCandles\\b/i.test(pfad)) return 'g';", "if (/\\bCandlesX\\b/i.test(pfad)) return 'g';"],

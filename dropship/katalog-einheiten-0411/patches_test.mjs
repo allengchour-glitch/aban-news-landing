@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { DATEIEN, MD5_VOR, MARKE, TEXTE, CSS_NEU, SPRUNG_SKRIPT, anwenden, ohneKommentar } from './patches.mjs';
-import { bauen, herstellerWerte, ozKind, ozTextErsetzen, ozUmrechnen, schuhLabel, inGalerieEinfuegen, UNSICHER } from './etiketten.mjs';
+import { bauen, herstellerWerte, ozKind, ozTextErsetzen, ozUmrechnen, schuhLabel, inGalerieEinfuegen, titelMitEinheit, UNSICHER } from './etiketten.mjs';
 
 const HIER = new URL('.', import.meta.url).pathname;
 let n = 0, fehler = 0;
@@ -34,8 +34,15 @@ gleich(ozTextErsetzen('20 oz', 'ml').text, '591 ml', '20 oz gerechnet');
 gleich(ozTextErsetzen('9oz', 'g').text, '255 g', '9oz ohne Leerzeichen (Kerze)');
 gleich(ozTextErsetzen('4oz', 'g').text, '113 g', '4oz');
 gleich(ozTextErsetzen('Regular 12 oz', 'ml').text, 'Regular 355 ml', 'Präfix bleibt');
-gleich(ozTextErsetzen('16 oz With Lid & Straw', 'ml').text, '473 ml With Lid & Straw', 'Suffix bleibt');
+gleich(ozTextErsetzen('16 oz With Lid & Straw', 'ml').text, '473 ml mit Deckel und Strohhalm', 'englischer Zusatz wird übersetzt');
+gleich(ozTextErsetzen('16 oz Foo Bar', 'ml').text, '473 ml Foo Bar', 'anderer Zusatz bleibt');
 gleich(ozTextErsetzen('10.5 oz', 'ml').text, '311 ml', '10.5 oz');
+gleich(titelMitEinheit('Can-Shaped Glass (16 oz)', 'ml', []), 'Can-Shaped Glass (473 ml)', 'Titel mit oz');
+gleich(titelMitEinheit('Scented Soy Candle, 9oz', 'g', []), 'Scented Soy Candle, 255 g', 'Titel mit 9oz (Kerze)');
+gleich(titelMitEinheit('Tumbler (16 oz)', 'ml', [{ oz: 16, wert: 590, einheit: 'ml' }]), null, 'Titel bei Herstellerwiderspruch bleibt');
+gleich(titelMitEinheit('Hoodie', 'ml', []), null, 'Titel ohne oz');
+gleich(titelMitEinheit('Fabric 4.2 oz./yd²', 'ml', []), null, 'Stoffgewicht im Titel bleibt');
+gleich(titelMitEinheit('Bowl 18 oz', null, []), null, 'unbekannte Art: kein Titel');
 gleich(ozTextErsetzen('18 oz', null).art, 'unbekannt', 'Tiernapf bleibt unverändert (unbekannte Art)');
 gleich(ozTextErsetzen('4.2 oz./yd²', 'ml'), null, 'Stoffgewicht wird nie angefasst');
 gleich(ozTextErsetzen('9 oz/yd²', 'ml'), null, 'Stoffgewicht ohne Punkt');
@@ -71,8 +78,13 @@ const mini = [
   { id: 574, title: 'Shoe', productType: {}, description: '', variants: [{ id: 5, size: '10' }, { id: 6, size: '99' }] },
   { id: 7, title: 'Shirt', productType: {}, description: '<p>fabric 4.2 oz./yd²</p>', variants: [{ id: 7, size: 'M' }, { id: 8, size: '4.2 oz./yd²' }] },
 ];
+mini.push({ id: 764, title: 'Can Cooler', productType: { categoryPath: [{ title: 'Home & living' }, { title: 'Drinkware & coasters' }] }, description: '', variants: [{ id: 9, size: 'Regular 12 oz' }, { id: 10, size: 'Slim 12 oz' }] });
+mini.push({ id: 690, title: 'Can-Shaped Glass (16 oz)', productType: K.productType, description: '', variants: [{ id: 11, size: '16 oz With Lid & Straw' }, { id: 12, size: '16 oz' }] });
 const b = bauen(mini, TAB);
-gleich(Object.keys(b.produkte), ['19', '574'], 'bauen: nur Produkte mit Etikett');
+gleich(Object.keys(b.produkte).sort(), ['19', '574', '690', '764'], 'bauen: nur Produkte mit Etikett');
+gleich(b.produkte['764'].map((e) => e.displaySizeCh), ['Regular (für Dosen à 355 ml)', 'Slim (für Dosen à 355 ml)'], 'bauen: Can Cooler nennt die Dosengrösse, kein Fassungsvermögen');
+gleich(b.produkte['690'].map((e) => e.displaySizeCh), ['473 ml mit Deckel und Strohhalm', '473 ml'], 'bauen: Deckel-Zusatz übersetzt');
+gleich(b.titel, { 690: 'Can-Shaped Glass (473 ml)' }, 'bauen: Titel mit ml nur wo oz im Titel steht');
 gleich(b.produkte['19'].map((e) => e.displaySizeCh), ['325 ml', '444 ml'], 'bauen: Tasse');
 gleich(b.protokoll.map((p) => p.art).sort(), ['konflikt', 'schuh-ohne-eu', 'unbekannt'], 'bauen: Protokoll nennt Konflikt, unbekannte Art und Schuh ohne EU');
 
@@ -90,6 +102,8 @@ for (const [pid, v] of alle) for (const e of v) {
 const ids = alle.flatMap(([, v]) => v.map((e) => e.id)); ok(new Set(ids).size === ids.length, 'Varianten-IDs eindeutig');
 gleich(alle.flatMap(([, v]) => v).filter((e) => e.displaySizeCh.includes('(ca.)')).length, 20, '20 Schuhvarianten mit (ca.)');
 gleich(ET.produkte['19'].map((e) => e.displaySizeCh), ['325 ml', '444 ml', '591 ml'], 'Tasse 19');
+gleich(Object.keys(ET.titel).sort(), ['653', '690', '691', '861', '909', '935'], 'Titel mit ml/g für sechs Produkte (751 nicht)');
+ok(!/\boz\b/i.test(Object.values(ET.titel).join(' ')), 'kein oz in den neuen Titeln');
 gleich(ET.produkte['585'].map((e) => e.displaySizeCh), ['600 ml', '600 ml'], 'Tumbler 585: Herstellerwert 600 ml');
 
 // ---------- Galerie ----------
@@ -105,8 +119,10 @@ ok(new Set(gneu.products.map((z) => String(z.productId))).size === gneu.products
 for (const z of gal.products) {
   const zn = gneu.products.find((x) => String(x.productId) === String(z.productId));
   ok(!!zn, `Zeile ${z.productId} fehlt`);
-  const { variants: _a, ...restAlt } = z; const { variants: _b, ...restNeu } = zn;
-  ok(JSON.stringify(restAlt) === JSON.stringify(restNeu), `Zeile ${z.productId}: Felder ausser variants verändert`);
+  const { variants: _a, ...restAlt } = z; const { variants: _b, ...restNeu0 } = zn;
+  const restNeu = { ...restNeu0 }; if (!('titleDe' in z) && 'titleDe' in restNeu) delete restNeu.titleDe;   // titleDe darf nur NEU dazukommen, nie geändert werden
+  ok(JSON.stringify(restAlt) === JSON.stringify(restNeu), `Zeile ${z.productId}: Felder ausser variants (und neuem titleDe) verändert`);
+  if (z.titleDe) ok(zn.titleDe === z.titleDe, `Zeile ${z.productId}: vorhandener titleDe überschrieben`);
   for (const v of z.variants || []) {
     const vn = (zn.variants || []).find((x) => String(x.id) === String(v.id));
     ok(!!vn, `Variante ${z.productId}/${v.id} fehlt`);
@@ -118,6 +134,8 @@ for (const [pid, v] of alle) {
   const zn = gneu.products.find((x) => String(x.productId) === pid);
   for (const e of v) { const x = zn.variants.find((y) => String(y.id) === String(e.id)); ok(x && x.displaySizeCh === e.displaySizeCh && x.originalSize === e.originalSize, `Galerie ${pid}/${e.id}: Etikett fehlt oder falsch`); }
 }
+for (const [pid, t] of Object.entries(ET.titel)) { const zn = gneu.products.find((x) => String(x.productId) === pid); const z = gal.products.find((x) => String(x.productId) === pid); ok(zn && zn.titleDe === (z?.titleDe || t), `Galerie ${pid}: titleDe ${zn?.titleDe}`); }
+gleich(gneu.products.find((x) => String(x.productId) === '653').titleDe, 'Pint-Glas (473 ml)', 'vorhandener deutscher Titel von 653 bleibt');
 // Bestehende Herstellerbilder bleiben: Zeilen mit reference.approved
 gleich(gneu.products.filter((z) => z.reference?.approved === true).length, gal.products.filter((z) => z.reference?.approved === true).length, 'freigegebene Herstellerbilder bleiben alle erhalten');
 // Idempotenz und Widerspruchsschutz

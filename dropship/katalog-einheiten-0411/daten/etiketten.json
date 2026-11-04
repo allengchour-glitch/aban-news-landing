@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "erzeugt": "2026-11-04",
- "hinweis": "Etiketten für variants[].displaySizeCh; erzeugt von etiketten_bauen.mjs",
+ "hinweis": "Etiketten für variants[].displaySizeCh und Titel (titleDe) mit ml/g; erzeugt von etiketten_bauen.mjs",
  "produkte": {
   "19": [
    {
@@ -1655,7 +1655,7 @@
    {
     "id": 19390,
     "originalSize": "16 oz With Lid & Straw",
-    "displaySizeCh": "473 ml With Lid & Straw"
+    "displaySizeCh": "473 ml mit Deckel und Strohhalm"
    },
    {
     "id": 17354,
@@ -1701,12 +1701,12 @@
    {
     "id": 19461,
     "originalSize": "Regular 12 oz",
-    "displaySizeCh": "Regular 355 ml"
+    "displaySizeCh": "Regular (für Dosen à 355 ml)"
    },
    {
     "id": 19462,
     "originalSize": "Slim 12 oz",
-    "displaySizeCh": "Slim 355 ml"
+    "displaySizeCh": "Slim (für Dosen à 355 ml)"
    }
   ],
   "779": [
@@ -1890,5 +1890,13 @@
     "displaySizeCh": "255 g"
    }
   ]
+ },
+ "titel": {
+  "653": "Shaker Pint Glass (473 ml)",
+  "690": "Can-Shaped Glass (473 ml)",
+  "691": "Stemless Wine Glass (443 ml)",
+  "861": "Scented Soy Candle, 255 g",
+  "909": "Tapered Stainless Steel Tumbler 600 ml",
+  "935": "Copper Vacuum Insulated Bottle (650 ml)"
  }
 }

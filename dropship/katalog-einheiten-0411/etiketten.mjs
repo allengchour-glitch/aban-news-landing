@@ -25,6 +25,11 @@ export const UNSICHER = {
   '598': ['6.5'],
 };
 
+// Englische Zusätze in Grössentexten (Prüferfund 04.11.2026) und Produkte, bei denen die Zahl kein Fassungsvermögen ist.
+const ZUSATZ_UEBERSETZUNG = [[/ With Lid & Straw$/, ' mit Deckel und Strohhalm']];
+// Can Cooler 764: «12 oz» ist die Grösse der passenden Dose, nicht das Fassungsvermögen des Coolers.
+const ETIKETT_NACHBEARBEITUNG = { '764': (t) => t.replace(/^(Regular|Slim) (\d+ ml)$/, '$1 (für Dosen à $2)') };
+
 const stripHtml = (s) => String(s ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 const num = (s) => Number(String(s).replace(',', '.'));
 const formatZahl = (n) => (Number.isInteger(n) ? String(n) : String(n).replace('.', ','));
@@ -66,7 +71,18 @@ export function ozTextErsetzen(roh, kind, hersteller = []) {
   const r = ozUmrechnen(num(m[1]), kind, hersteller);
   if (!r) return { art: 'unbekannt' };
   if (r.konflikt) return { art: 'konflikt', ...r.konflikt };
-  return { art: 'ok', text: String(roh).replace(m[0], `${formatZahl(r.wert)} ${r.einheit}`), quelle: r.quelle, rechnung: r.rechnung };
+  let text = String(roh).replace(m[0], `${formatZahl(r.wert)} ${r.einheit}`);
+  for (const [muster, ersatz] of ZUSATZ_UEBERSETZUNG) text = text.replace(muster, ersatz);
+  return { art: 'ok', text, quelle: r.quelle, rechnung: r.rechnung };
+}
+
+// Titel mit «N oz» (z. B. «Can-Shaped Glass (16 oz)»): gleiche Umrechnung wie bei den Grössen; bei Widerspruch oder unbekannter Art kein Titel.
+export function titelMitEinheit(titel, kind, hersteller = []) {
+  const m = String(titel).match(/(\d+(?:\.\d+)?)\s*oz\b/i);
+  if (!m || /oz\.?\s*\/\s*y/i.test(titel)) return null;
+  const r = ozUmrechnen(num(m[1]), kind, hersteller);
+  if (!r || r.konflikt) return null;
+  return String(titel).replace(m[0], `${formatZahl(r.wert)} ${r.einheit}`);
 }
 
 export function schuhLabel(produktId, roh, tabellen) {
@@ -77,9 +93,9 @@ export function schuhLabel(produktId, roh, tabellen) {
 }
 
 // katalog: Liste der Produkte (id, title, variants[{id,size}], description, productType); tabellen: {produktId:{roh:eu}}.
-// Rückgabe: { produkte: {produktId:[{id,originalSize,displaySizeCh}]}, protokoll: [...] }
+// Rückgabe: { produkte: {produktId:[{id,originalSize,displaySizeCh}]}, titel: {produktId: Titel mit ml/g}, protokoll: [...] }
 export function bauen(katalog, tabellen) {
-  const produkte = {}, protokoll = [];
+  const produkte = {}, protokoll = [], titel = {};
   for (const p of katalog) {
     const pid = String(p.id), eintraege = [];
     const hersteller = herstellerWerte(p.description);
@@ -90,26 +106,28 @@ export function bauen(katalog, tabellen) {
       if (tabellen?.[pid]) label = schuhLabel(pid, roh, tabellen);
       else if (/\boz\b|\d\s*oz\b/i.test(roh)) {
         const r = ozTextErsetzen(roh, kind, hersteller);
-        if (r?.art === 'ok') label = r.text;
+        if (r?.art === 'ok') label = ETIKETT_NACHBEARBEITUNG[pid] ? ETIKETT_NACHBEARBEITUNG[pid](r.text) : r.text;
         else if (r) protokoll.push({ produkt: pid, titel: p.title, variante: v.id, roh, art: r.art, ...(r.art === 'konflikt' ? { herstellerWert: r.herstellerWert, rechnung: r.rechnung } : {}) });
       }
       if (label && label !== roh) eintraege.push({ id: v.id, originalSize: roh, displaySizeCh: label });
       else if (tabellen?.[pid] && !label) protokoll.push({ produkt: pid, titel: p.title, variante: v.id, roh, art: 'schuh-ohne-eu' });
     }
     if (eintraege.length) produkte[pid] = eintraege;
+    if (eintraege.length && !tabellen?.[pid]) { const t = titelMitEinheit(p.title, kind, hersteller); if (t && t !== p.title) titel[pid] = t; }
   }
-  return { produkte, protokoll };
+  return { produkte, protokoll, titel };
 }
 
 // Fügt die Etiketten in die Galerie (Objekt mit products[]) ein: vorhandene Zeilen bleiben bis auf variants[] unverändert.
 // Neue Zeilen tragen nur productId und variants (der Katalogcode liest alles andere mit ?. und list()).
-export function inGalerieEinfuegen(galerie, produkte) {
+export function inGalerieEinfuegen(galerie, produkte, titel = {}) {
   const out = JSON.parse(JSON.stringify(galerie));
-  const stat = { verschmolzen: 0, neu: 0, ergaenzt: 0, ersetzt: 0 };
+  const stat = { verschmolzen: 0, neu: 0, ergaenzt: 0, ersetzt: 0, titel: 0 };
   for (const [pid, eintraege] of Object.entries(produkte)) {
     let zeile = out.products.find((z) => String(z.productId) === pid);
     if (!zeile) { zeile = { productId: pid, variants: [] }; out.products.push(zeile); stat.neu++; } else stat.verschmolzen++;
     if (!Array.isArray(zeile.variants)) zeile.variants = [];
+    if (titel[pid] && !zeile.titleDe) { zeile.titleDe = titel[pid]; stat.titel++; }   // ein vorhandener titleDe bleibt immer
     for (const e of eintraege) {
       const vorhanden = zeile.variants.find((x) => String(x.id) === String(e.id));
       if (!vorhanden) { zeile.variants.push({ id: e.id, originalSize: e.originalSize, displaySizeCh: e.displaySizeCh }); stat.ergaenzt++; }

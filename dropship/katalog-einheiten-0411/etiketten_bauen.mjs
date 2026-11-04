@@ -16,8 +16,8 @@ for (const o of ordner) for (const f of readdirSync(o).filter((n) => /^luxe-clot
 console.log('Schalen', gesehen.size, 'Produkte', katalog.length, 'Varianten', katalog.reduce((a, p) => a + p.variants.length, 0));
 if (gesehen.size !== 51 || katalog.length !== 572) { console.error('Erwartet 51 Schalen und 572 Produkte (Stand 04.11.2026): Datenbasis prüfen'); process.exit(3); }
 const tabellen = JSON.parse(readFileSync(HIER + 'daten/schuh_eu_tabellen.json', 'utf8')).tabellen;
-const { produkte, protokoll } = bauen(katalog, tabellen);
+const { produkte, protokoll, titel } = bauen(katalog, tabellen);
 const n = Object.values(produkte).reduce((a, v) => a + v.length, 0);
-writeFileSync(HIER + 'daten/etiketten.json', JSON.stringify({ schemaVersion: 1, erzeugt: '2026-11-04', hinweis: 'Etiketten für variants[].displaySizeCh; erzeugt von etiketten_bauen.mjs', produkte }, null, 1) + '\n');
-console.log('Produkte mit Etiketten', Object.keys(produkte).length, 'Varianten', n);
+writeFileSync(HIER + 'daten/etiketten.json', JSON.stringify({ schemaVersion: 1, erzeugt: '2026-11-04', hinweis: 'Etiketten für variants[].displaySizeCh und Titel (titleDe) mit ml/g; erzeugt von etiketten_bauen.mjs', produkte, titel }, null, 1) + '\n');
+console.log('Produkte mit Etiketten', Object.keys(produkte).length, 'Varianten', n, 'Titel', Object.keys(titel).length);
 for (const p of protokoll) console.log('PROTOKOLL', JSON.stringify(p));

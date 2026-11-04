@@ -180,7 +180,7 @@ export function galerie(text, etiketten) {
   if (g.schemaVersion !== 1 || !Array.isArray(g.products)) throw new Error('Galerie hat nicht das erwartete Format');
   // Format des Originals erhalten (gemessen: JSON.stringify(…, null, 2) plus Zeilenumbruch, byte-gleich)
   if (JSON.stringify(g, null, 2) + '\n' !== text) throw new Error('Galerie hat nicht das erwartete Format (2 Leerzeichen Einrückung): Rundreise nicht byte-gleich');
-  const { galerie: neu, stat } = inGalerieEinfuegen(g, etiketten.produkte);
+  const { galerie: neu, stat } = inGalerieEinfuegen(g, etiketten.produkte, etiketten.titel || {});
   return { text: JSON.stringify(neu, null, 2) + '\n', stat };
 }
 
