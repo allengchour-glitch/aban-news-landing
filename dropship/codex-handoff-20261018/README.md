@@ -1,5 +1,11 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 80: Materialfrage Katzenhängematte
+
+Gezielte Prüfung von Produkt 16610153759111: Shopify und öffentliche Seite zeigen «aus Stoff» und «Material: Holz» ohne getrennten Bezug-/Gestellnachweis. Der historische Einzelproduktbefund war bereits BLOCKED_NEEDS_SOURCE; Holz bleibt unbestätigt. Auch die Shopify-Kategorie Reisenäpfe und Google-Zuordnung Futter-/Wasserspender passen nicht. [Beleg und enger Korrekturentwurf](MATERIALPRUEFUNG-20261104-R80.md).
+
+Nur Untersuchung und Dokumentation; keine Shop-/Feed-/Themeänderung. Der Material-Diff entfernt die zwei ungesicherten Materialaussagen, erfindet keinen Ersatzstoff und ist noch nicht angewendet. Lieferantenbeleg und passende Taxonomie bleiben der nächste Schritt. Vorhandene CJ-Helfer geprüft; kein authentifizierter CJ-Lauf gestartet. R79-Entwürfe, frühere Produktfälle, Tagesberichte, 23 Aufgaben und beendeter Kauf-Watch bleiben erhalten. Claude-Kenntnisnahme unbekannt.
+
 ## Aktueller Stand – 04.11.2026, Revision 79: geprüfter Preisfilterentwurf und präzisierter Master
 
 **Prüf- und Freigabepaket: Der Preisfilterpatch ist lokal vorbereitet und nicht im Theme gespeichert. Es gibt keinen neuen professionellen Masterfilm.** [Mittagspaket](MITTAGSPAKET-20261104-R79.md) · [Nachweise](LAUFBELEGE-20261104-R79.json).
