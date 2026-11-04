@@ -43,6 +43,8 @@
       rad('sk-kopf', '.64', '.28', '.9', [[0, '#ffffff'], [.45, '#f6f3ea'], [1, '#aaa38f']]);          // Kugelschattierung, Licht oben rechts
       rad('sk-hand', '.6', '.3', '.9', [[0, '#ffffff'], [.6, '#f3f0e6'], [1, '#bdb6a4']]);
       rad('sk-schuh', '.62', '.3', '.9', [[0, '#5a5a66'], [1, '#0e0e12']]);
+      const hl = M.svg('linearGradient', { id: 'sk-haar', x1: '0', y1: '0', x2: '0.3', y2: '1' }, defs);
+      [[0, '#5a3b2b'], [1, '#1c120e']].forEach((st) => M.svg('stop', { offset: st[0], 'stop-color': st[1] }, hl));
       rad('sk-schatten', '.5', '.5', '.5', [[0, '#14141c', .42], [.6, '#14141c', .18], [1, '#14141c', 0]]);   // weicher Schlagschatten
     }
     if (kleid && !svg.querySelector('[id="sk-t-' + kleid.slice(1) + '"]')) {
@@ -110,21 +112,24 @@
     M.svg('path', { d: 'M12 -118 h20 M22 -128 v20', stroke: STRICH, 'stroke-width': 2, 'stroke-dasharray': '4 3', fill: 'none', opacity: .7 }, tun);
     // Kopf (gross, rund, doppelt gezogene Kontur wie gekritzelt)
     const kopf = g(koerper), HY = -245;
+    // Haar hinten: fällt links und rechts hinter dem Kopf bis zu den Schultern
+    const hinten = g(kopf);
+    [-1, 1].forEach((sg) => M.svg('path', { d: `M${sg * 56} ${HY - 6} C${sg * 78} ${HY + 26} ${sg * 80} ${HY + 66} ${sg * 62} ${HY + 96} C${sg * 50} ${HY + 110} ${sg * 32} ${HY + 102} ${sg * 30} ${HY + 88} C${sg * 38} ${HY + 62} ${sg * 42} ${HY + 30} ${sg * 42} ${HY + 8} Z`, fill: 'url(#sk-haar)', stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, hinten));
+    [-1, 1].forEach((sg) => M.svg('path', { d: `M${sg * 62} ${HY + 20} Q${sg * 68} ${HY + 54} ${sg * 54} ${HY + 84}`, fill: 'none', stroke: '#a77b5e', 'stroke-width': 3.5, 'stroke-linecap': 'round', opacity: .45 }, hinten));
     M.svg('circle', { cx: 2, cy: HY - 1, r: 59, fill: 'none', stroke: STRICH, 'stroke-width': 2.5, opacity: .55 }, kopf);
     M.svg('circle', { cx: 0, cy: HY, r: 58, fill: 'url(#sk-kopf)', stroke: STRICH, 'stroke-width': 6 }, kopf);
     M.svg('path', { d: `M-40 ${HY + 40} A58 58 0 0 0 20 ${HY + 56}`, fill: 'none', stroke: 'rgba(70,55,35,.18)', 'stroke-width': 9, 'stroke-linecap': 'round' }, kopf);      // Eigenschatten unten links
     M.svg('path', { d: `M18 ${HY - 53} A55 55 0 0 1 52 ${HY - 14}`, fill: 'none', stroke: licht, 'stroke-width': 5, 'stroke-linecap': 'round', opacity: .9 }, kopf);   // Randlicht oben rechts
-    // wildes Haar: Striche vom Scheitel nach aussen (Zufall mit festem Seed → bei jedem Lauf gleich)
+    // Haar: weich fallend, gefüllt, mit Pony, Glanzsträhnen und ein paar lockeren Kritzel-Strähnen (Referenz-Look); fester Zufall → bei jedem Lauf gleich
     const rz = M.rnd(o.haarSeed || 21), haar = g(kopf);
-    for (let i = 0; i < 21; i++) {
-      const w = (-158 + i * (136 / 20) + (rz() - .5) * 6) * Math.PI / 180, r0 = 54, len = 16 + rz() * rz() * 52 + (i % 4 === 0 ? 22 : 0), kr = (rz() - .5) * 34;
-      const x0 = Math.cos(w) * r0, y0 = HY + Math.sin(w) * r0, x1 = Math.cos(w + kr / 160) * (r0 + len), y1 = HY + Math.sin(w + kr / 160) * (r0 + len);
-      M.svg('path', { d: `M${x0.toFixed(1)} ${y0.toFixed(1)} Q${((x0 + x1) / 2 + kr).toFixed(1)} ${((y0 + y1) / 2 - kr / 2).toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`, fill: 'none', stroke: HAAR, 'stroke-width': (4.2 + rz() * 3).toFixed(1), 'stroke-linecap': 'round' }, haar);
-    }
-    for (let i = 0; i < 5; i++) {   // ein paar Strähnen über die Stirn
-      const x0 = -34 + i * 17 + (rz() - .5) * 6;
-      M.svg('path', { d: `M${x0.toFixed(1)} ${HY - 54} q${(rz() * 10 - 5).toFixed(1)} 12 ${(rz() * 14 - 7).toFixed(1)} ${(22 + rz() * 12).toFixed(1)}`, fill: 'none', stroke: HAAR, 'stroke-width': 3.2, 'stroke-linecap': 'round' }, haar);
-    }
+    M.svg('path', { d: `M-62 ${HY + 6} C-66 ${HY - 50} -34 ${HY - 86} 8 ${HY - 84} C48 ${HY - 84} 70 ${HY - 46} 62 ${HY + 6} C56 ${HY - 22} 42 ${HY - 40} 22 ${HY - 46} C6 ${HY - 30} -28 ${HY - 34} -44 ${HY - 14} C-52 ${HY - 4} -58 ${HY + 2} -62 ${HY + 6} Z`, fill: 'url(#sk-haar)', stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, haar);
+    M.svg('path', { d: `M-46 ${HY - 16} C-26 ${HY - 52} 8 ${HY - 56} 34 ${HY - 46} C12 ${HY - 40} -8 ${HY - 34} -24 ${HY - 26} C-32 ${HY - 22} -40 ${HY - 18} -46 ${HY - 16} Z`, fill: 'url(#sk-haar)', stroke: STRICH, 'stroke-width': 4, 'stroke-linejoin': 'round' }, haar);
+    [[`M10 ${HY - 76} Q34 ${HY - 72} 50 ${HY - 50}`, 4.5, .6], [`M-6 ${HY - 70} Q10 ${HY - 70} 22 ${HY - 62}`, 3.5, .45], [`M-30 ${HY - 60} Q-18 ${HY - 66} -6 ${HY - 62}`, 3, .35]].forEach(([d, w, op]) =>
+      M.svg('path', { d: d, fill: 'none', stroke: '#a77b5e', 'stroke-width': w, 'stroke-linecap': 'round', opacity: op }, haar));   // Glanzlichter
+    const schl = g(haar, { transform: `translate(-34,${HY - 74}) rotate(-18)` });   // Haarschleife
+    M.svg('ellipse', { cx: -11, cy: 0, rx: 13, ry: 7.5, fill: '#e76f51', stroke: STRICH, 'stroke-width': 3.5, transform: 'rotate(-22 -11 0)' }, schl);
+    M.svg('ellipse', { cx: 11, cy: 0, rx: 13, ry: 7.5, fill: '#e76f51', stroke: STRICH, 'stroke-width': 3.5, transform: 'rotate(22 11 0)' }, schl);
+    M.svg('circle', { cx: 0, cy: 0, r: 5.5, fill: '#f08a6b', stroke: STRICH, 'stroke-width': 3.5 }, schl);
     // Augen: offen (Punkte) oder froh (geschlossene Bögen), blinzeln alle 3.4 s
     const augenOffen = g(kopf);
     M.svg('ellipse', { cx: -21, cy: HY - 2, rx: 4.6, ry: 6.4, fill: STRICH }, augenOffen);
