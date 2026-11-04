@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-04T19:08:43+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Read-only taxonomy and classification review for five LuxeStyle Shopify products",
+  "shop": "luxestyle.ch",
+  "writesPerformed": false,
+  "method": {
+    "liveShopify": "Admin GraphQL product/category read and live taxonomy category search on 2026-11-04",
+    "localStorefrontSnapshots": [
+      "/workspace/luxestyle-review/r83-batch-20261104/public/automatischer-seifenspender-1adb26.json",
+      "/workspace/luxestyle-review/r83-batch-20261104/public/hopfenfilter-aus-edelstahl-9f9627.json",
+      "/workspace/luxestyle-review/r83-batch-20261104/public/grosser-einteiler-mit-karomuster-614700.json",
+      "/workspace/luxestyle-review/r83-batch-20261104/public/alkoholmeter-set-fur-selbstgebranntes-002496.json",
+      "/workspace/luxestyle-review/r83-batch-20261104/public/katzenspielzeug-mit-drehkopf-618400.json"
+    ],
+    "historicalMerchantSummary": "/workspace/luxestyle-review/r83-batch-20261104/MERCHANT-KLAVIYO.md",
+    "merchantFreshness": "Historical CSV window 2026-11-02 12:41:30-13:04:55; no fresh Merchant API read in this taxonomy review"
+  },
+  "guardrails": [
+    "No Shopify, Merchant, feed, tag or product-type writes were made.",
+    "rueckhol-0907 is preserved on every product.",
+    "No category or wording change is proposed as a way to bypass a Merchant policy classification.",
+    "Where the official taxonomy has no sufficiently exact leaf, the current parent is retained pending better source evidence."
+  ],
+  "products": [
+    {
+      "productId": "gid://shopify/Product/15483793244545",
+      "numericId": "15483793244545",
+      "title": "Automatischer Seifenspender",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/automatischer-seifenspender-1adb26",
+      "current": {
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/hg-1-15",
+          "name": "Seifen- & Lotionsspender",
+          "fullName": "Heim & Garten > Badzubehör > Seifen- & Lotionsspender",
+          "isLeaf": true
+        },
+        "productType": "Haushalt & Wohnen",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "neu",
+          "rueckhol-0907",
+          "sort-seifenspender-bad-accessoires",
+          "trend",
+          "video-hit",
+          "viral"
+        ]
+      },
+      "taxonomyAssessment": {
+        "decision": "KEEP_EXACT_LEAF",
+        "confidence": "high",
+        "recommendedLeaf": {
+          "id": "gid://shopify/TaxonomyCategory/hg-1-15",
+          "name": "Seifen- & Lotionsspender",
+          "fullName": "Heim & Garten > Badzubehör > Seifen- & Lotionsspender"
+        },
+        "reason": "Current title and use match the existing official leaf exactly."
+      },
+      "productTypeAssessment": {
+        "decision": "KEEP",
+        "fachfremd": false,
+        "recommended": "Haushalt & Wohnen",
+        "reason": "Broad, but not inconsistent with a household soap dispenser."
+      },
+      "tagAssessment": {
+        "remove": [],
+        "preserve": [
+          "rueckhol-0907"
+        ],
+        "reason": "No clearly unrelated taxonomy tag was found."
+      },
+      "historicalMerchant": {
+        "freshStatus": "unknown",
+        "observedIssues": [
+          "Tobacco products & related equipment",
+          "Over capacity for Shopping ads (in CSS program)"
+        ],
+        "assessment": "The tobacco classification is not supported by the current product identity, but remains a historical Merchant classification requiring a fresh item/source review. CSS capacity is an account/program issue, not a taxonomy issue."
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15509968880001",
+      "numericId": "15509968880001",
+      "title": "Hopfenfilter aus Edelstahl",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/hopfenfilter-aus-edelstahl-9f9627",
+      "current": {
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/ae-2-3",
+          "name": "Zubehör für Bier- & Weinherstellung",
+          "fullName": "Kunst & Unterhaltung > Hobby & Kunst > Zubehör für Bier- & Weinherstellung",
+          "isLeaf": false
+        },
+        "productType": "Küche & Bar",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "kochen",
+          "kueche",
+          "rueckhol-0907",
+          "varianten-nachgezogen-1025"
+        ]
+      },
+      "taxonomyAssessment": {
+        "decision": "KEEP_PARENT_PENDING_EXACT_LEAF",
+        "confidence": "high for not forcing a leaf",
+        "recommendedLeaf": null,
+        "nearestCandidate": {
+          "id": "gid://shopify/TaxonomyCategory/ae-2-3-5",
+          "name": "Fermentationsausrüstung",
+          "fullName": "Kunst & Unterhaltung > Hobby & Kunst > Zubehör für Bier- & Weinherstellung > Fermentationsausrüstung",
+          "confidence": "low",
+          "reason": "It is the closest listed leaf, but a hop filter is not necessarily fermentation equipment."
+        },
+        "reason": "Live taxonomy searches for Hopfenfilter and brewery filter returned no exact official leaf. The current parent is more accurate than an invented or over-specific leaf."
+      },
+      "productTypeAssessment": {
+        "decision": "OPTIONAL_NARROWING",
+        "fachfremd": false,
+        "tooBroad": true,
+        "recommended": "Brau- & Filterzubehör",
+        "reason": "Küche & Bar is broad; the title and current description centre on filtering for brewing."
+      },
+      "tagAssessment": {
+        "remove": [],
+        "preserve": [
+          "rueckhol-0907"
+        ],
+        "reason": "The household/kitchen tags are broad but not demonstrably unrelated. No speculative replacement tag is added."
+      },
+      "historicalMerchant": {
+        "freshStatus": "unknown",
+        "observedIssues": [
+          "Alcoholic beverages",
+          "Personalized advertising: legal restrictions"
+        ],
+        "assessment": "The brewing context can legitimately trigger alcohol-related handling. Do not hide or rewrite the real use to evade policy; verify the current offer, market and method separately."
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448534122881",
+      "numericId": "15448534122881",
+      "title": "Grosser Einteiler mit Karomuster",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/grosser-einteiler-mit-karomuster-614700",
+      "current": {
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/aa-1-9",
+          "name": "Einteiler",
+          "fullName": "Bekleidung & Accessoires > Bekleidung > Einteiler",
+          "isLeaf": true
+        },
+        "productType": "Damenmode",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "mode",
+          "rueckhol-0907",
+          "sort-damen-jumpsuits",
+          "sort-damen-jumpsuits-overall"
+        ]
+      },
+      "taxonomyAssessment": {
+        "decision": "CHANGE_TO_EXACT_LEAF",
+        "confidence": "high",
+        "recommendedLeaf": {
+          "id": "gid://shopify/TaxonomyCategory/aa-1-20-22",
+          "name": "Einteilige Badeanzüge",
+          "fullName": "Bekleidung & Accessoires > Bekleidung > Bademode > Einteilige Badeanzüge"
+        },
+        "reason": "The live title/description explicitly identify an adult one-piece swimsuit for swimming and water activities. The current generic Einteiler leaf is semantically too broad."
+      },
+      "productTypeAssessment": {
+        "decision": "NARROW",
+        "fachfremd": false,
+        "tooBroad": true,
+        "recommended": "Damen-Bademode",
+        "reason": "Damenmode is not wrong, but the product is specifically swimwear."
+      },
+      "tagAssessment": {
+        "remove": [
+          "sort-damen-jumpsuits",
+          "sort-damen-jumpsuits-overall"
+        ],
+        "preserve": [
+          "rueckhol-0907",
+          "damen",
+          "mode"
+        ],
+        "reason": "Jumpsuit/overall routing is unrelated to a one-piece swimsuit and can misroute collection browsing."
+      },
+      "historicalMerchant": {
+        "freshStatus": "unknown",
+        "observedIssues": [
+          "Personalized advertising: legal restrictions",
+          "Over capacity for Shopping ads (in CSS program)"
+        ],
+        "assessment": "These historical Merchant findings remain separate from the taxonomy correction. The category change does not prove policy resolution."
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15512184586625",
+      "numericId": "15512184586625",
+      "title": "Alkoholmeter-Set für Selbstgebranntes",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/alkoholmeter-set-fur-selbstgebranntes-002496",
+      "current": {
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/ae-2-3",
+          "name": "Zubehör für Bier- & Weinherstellung",
+          "fullName": "Kunst & Unterhaltung > Hobby & Kunst > Zubehör für Bier- & Weinherstellung",
+          "isLeaf": false
+        },
+        "productType": "Werkzeug & Heimwerken",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "neu",
+          "rueckhol-0907"
+        ]
+      },
+      "taxonomyAssessment": {
+        "decision": "KEEP_PARENT_PENDING_EXACT_LEAF",
+        "confidence": "high for rejecting the medical leaf; medium for retaining the parent",
+        "recommendedLeaf": null,
+        "nearestCandidate": {
+          "id": "gid://shopify/TaxonomyCategory/ae-2-3-5",
+          "name": "Fermentationsausrüstung",
+          "fullName": "Kunst & Unterhaltung > Hobby & Kunst > Zubehör für Bier- & Weinherstellung > Fermentationsausrüstung",
+          "confidence": "low",
+          "reason": "The set measures liquid alcohol/distillates and is not clearly fermentation equipment."
+        },
+        "rejectedCandidate": {
+          "id": "gid://shopify/TaxonomyCategory/hb-1-4-6",
+          "name": "Alkoholmessgeräte",
+          "fullName": "Gesundheit & Schönheit > Gesundheitspflege > Medizinische Messgeräte > Alkoholmessgeräte",
+          "reason": "The hierarchy denotes medical measuring devices and would misclassify a liquid alcoholmeter/hydrometer set."
+        },
+        "reason": "Live taxonomy searches for Hydrometer, Aräometer and alcohol measurement found no exact beverage/distillate leaf. Do not force a medical or unrelated leaf."
+      },
+      "productTypeAssessment": {
+        "decision": "CHANGE_AFTER_SOURCE_REVIEW",
+        "fachfremd": true,
+        "recommended": "Messzubehör für Spirituosenherstellung",
+        "reason": "Werkzeug & Heimwerken is unrelated to the stated product use. The proposed merchant-defined type should only be applied after the product scope and legal/supplier wording are confirmed."
+      },
+      "tagAssessment": {
+        "remove": [],
+        "preserve": [
+          "rueckhol-0907"
+        ],
+        "reason": "No existing tag is demonstrably unrelated; no alcohol-policy tag is removed or obscured."
+      },
+      "historicalMerchant": {
+        "freshStatus": "unknown",
+        "observedIssues": [
+          "Alcoholic beverages",
+          "Personalized advertising: legal restrictions"
+        ],
+        "assessment": "The stated use with spirits makes policy relevance plausible. Do not change category, title or wording merely to evade the classification; verify current market/method eligibility separately."
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15454092558721",
+      "numericId": "15454092558721",
+      "title": "Katzenspielzeug mit Drehkopf",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/katzenspielzeug-mit-drehkopf-618400",
+      "current": {
+        "category": {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-2-5",
+          "name": "Katzenspielzeug",
+          "fullName": "Tiere & Tierbedarf > Haustierbedarf > Katzenbedarf > Katzenspielzeug",
+          "isLeaf": false
+        },
+        "productType": "Haustierbedarf",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haustier",
+          "hund",
+          "kat-haustier",
+          "kat-katzen",
+          "katze",
+          "mengenrabatt-a",
+          "pet",
+          "rueckhol-0907",
+          "sort-haustier",
+          "sort-katzen",
+          "sort-tier-katzenspielzeug",
+          "sort-tier-spielzeug",
+          "sub-katze",
+          "sub-tierspielzeug"
+        ]
+      },
+      "taxonomyAssessment": {
+        "decision": "CHANGE_TO_EXACT_LEAF",
+        "confidence": "high based on current description",
+        "recommendedLeaf": {
+          "id": "gid://shopify/TaxonomyCategory/ap-2-2-5-5",
+          "name": "Interaktives Spielzeug",
+          "fullName": "Tiere & Tierbedarf > Haustierbedarf > Katzenbedarf > Katzenspielzeug > Interaktives Spielzeug"
+        },
+        "reason": "The current description states automatic rotation and an interactive chase action; the live child leaf matches this function."
+      },
+      "productTypeAssessment": {
+        "decision": "KEEP",
+        "fachfremd": false,
+        "recommended": "Haustierbedarf",
+        "reason": "The current merchant-defined type is broad but correct."
+      },
+      "tagAssessment": {
+        "remove": [
+          "hund"
+        ],
+        "preserve": [
+          "rueckhol-0907",
+          "haustier",
+          "katze",
+          "kat-katzen",
+          "sort-tier-katzenspielzeug",
+          "sub-katze"
+        ],
+        "reason": "The product is currently identified only as a cat toy; the dog tag is unrelated and can pollute dog collections."
+      },
+      "historicalMerchant": {
+        "freshStatus": "unknown",
+        "observedIssues": [
+          "Tobacco products & related equipment",
+          "Over capacity for Shopping ads (in CSS program)"
+        ],
+        "assessment": "The tobacco classification is not supported by the current product identity, but remains a historical Merchant classification requiring a fresh item/source review. Taxonomy cleanup alone does not establish remediation."
+      }
+    }
+  ],
+  "safeNextChangeSet": {
+    "applyOnlyAfterParentReview": true,
+    "categoryChanges": [
+      {
+        "productId": "gid://shopify/Product/15448534122881",
+        "to": "gid://shopify/TaxonomyCategory/aa-1-20-22"
+      },
+      {
+        "productId": "gid://shopify/Product/15454092558721",
+        "to": "gid://shopify/TaxonomyCategory/ap-2-2-5-5"
+      }
+    ],
+    "tagRemovals": [
+      {
+        "productId": "gid://shopify/Product/15448534122881",
+        "tags": [
+          "sort-damen-jumpsuits",
+          "sort-damen-jumpsuits-overall"
+        ]
+      },
+      {
+        "productId": "gid://shopify/Product/15454092558721",
+        "tags": [
+          "hund"
+        ]
+      }
+    ],
+    "productTypeChanges": [
+      {
+        "productId": "gid://shopify/Product/15448534122881",
+        "to": "Damen-Bademode",
+        "confidence": "high"
+      },
+      {
+        "productId": "gid://shopify/Product/15512184586625",
+        "to": "Messzubehör für Spirituosenherstellung",
+        "confidence": "medium",
+        "condition": "Confirm product scope and supplier/legal wording first"
+      }
+    ],
+    "leaveUnchanged": [
+      "gid://shopify/Product/15483793244545 category",
+      "gid://shopify/Product/15509968880001 category pending exact leaf",
+      "gid://shopify/Product/15512184586625 category pending exact leaf",
+      "all rueckhol-0907 tags",
+      "all Merchant policy classifications and feed settings"
+    ]
+  }
+}

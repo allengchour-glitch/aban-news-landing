@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R83_20261104",
+  "at": "2026-11-04T18:12:16Z",
+  "branch": "codex/luxestyle-claude-handoff-20261018",
+  "baseCommit": "5ccddb6420a2c620d7dbd878cea76c8ab7d3aae7",
+  "revisionBefore": 82,
+  "revisionAfter": 83,
+  "fileSha256": {
+    "README.md": {
+      "before": "b675da0106edc3ce7ea849bce8142755f4c0b3f174aa72109ff2225356473e3e",
+      "after": "bace22fdb0a9288a2ea83326d0e3fe017b2ae85965b9a39ef94164f1e44f1649"
+    },
+    "PROJEKTGEDAECHTNIS.md": {
+      "before": "e8b74882f26a9bdb7adfda19dece160b38a237b7e2efd6ed0a0439652fdba35c",
+      "after": "259adf9c6cfba556ec1cb5da9248c19916d5c0ec55dc59a4fc54256f6ace6ed9"
+    },
+    "TAGESPROTOKOLL.md": {
+      "before": "5ffa67387e55ca4eec35f506b92967f7797ad65756824ae2c5cde917a18f0f6e",
+      "after": "554a065bee3c60f05afebb530cae02f0040bfac5be075e80580a875251ce144d"
+    },
+    "ARBEITSSTAND.json": {
+      "before": "cd039d96ae54a41c3013b86f7fcb0c24ff75733f3004bf557d7b804dc394f2f6",
+      "after": "161895d78f57d693e8086c43fd5a017be7b762d8f216a615ec0ed6c6f80533a5"
+    }
+  },
+  "taskCountBefore": 23,
+  "taskCountAfter": 23,
+  "updatedTaskIds": [
+    "product-attribute-completeness",
+    "master-projector-15521256604033",
+    "merchant-missing-price-20261029",
+    "tech-category-structure-20261102",
+    "checkout-email3-quality-20261103",
+    "external-video-review-20261103"
+  ],
+  "unchangedTaskCount": 17,
+  "historyPreserved": true,
+  "dailyMetricAndKlaviyoReadsRepeated": false,
+  "salesGoalStatusPreserved": "ERREICHT",
+  "purchaseWatchPreservedEnded": true,
+  "externalWrites": 0,
+  "claudeReceipt": "unknown"
+}

@@ -1,0 +1,1909 @@
+{
+  "schemaVersion": "luxestyle-r83-local-source-audit-v1",
+  "generatedAt": "2026-11-04T18:25:00Z",
+  "scope": {
+    "productIds": [
+      "15483793244545",
+      "15509968880001",
+      "15448534122881",
+      "15512184586625",
+      "15454092558721"
+    ],
+    "mode": "read-only external systems; local report write only",
+    "network": "Keine neuen Supplier-/CJ-/Admin-Abfragen; ausschliesslich vorhandene lokale Dateien und bereits abgelegte öffentliche Shopify-Responses.",
+    "credentials": "Keine Credentials gelesen oder verwendet.",
+    "installations": "Keine Installation."
+  },
+  "conclusion": {
+    "independentSupplierRecordsFound": 0,
+    "productsChecked": 5,
+    "publicSnapshotsConfirmed": 5,
+    "allHaveCurrentRueckholGuard": true,
+    "keyResult": "Für keines der fünf Produkte liegt lokal ein unabhängiger SKU-spezifischer Lieferanten-/CJ-Datensatz vor. Sicher sind Storefront-Konfiguration und visuelle Beobachtungen; Materialien, Masse, Funktionen, Leistung, Lieferumfang, Lieferzeit und Medienrechte bleiben ohne zusätzliche Primärquelle ungesichert."
+  },
+  "sourceInventory": [
+    {
+      "source": "/workspace/luxestyle-review/r83-batch-20261104/public/*.json",
+      "kind": "unveränderte öffentliche Shopify-Produkt-JSON-Responses",
+      "retrievedAt": "2026-11-04T19:04:14+01:00",
+      "use": "aktueller Titel, Handle, Preis, öffentliche Verfügbarkeit, Optionen, Varianten, SKUs, Tags und Medienliste",
+      "notProofOf": [
+        "inventoryPolicy",
+        "inventoryItem.tracked",
+        "physischer Bestand",
+        "Lieferzeit",
+        "Material",
+        "Masse",
+        "Funktion",
+        "Lieferumfang",
+        "Medienrechte"
+      ]
+    },
+    {
+      "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+      "kind": "historischer Shopify-Katalogsnapshot",
+      "use": "historische Beschreibung, Tags, Typ, Status und updatedAt",
+      "notProofOf": [
+        "aktueller Admin-Status",
+        "Lieferantenwahrheit"
+      ]
+    },
+    {
+      "source": "/workspace/luxestyle-review/produkttexte-20261026/drafts-v1/{blocked,changes}.jsonl",
+      "kind": "historische Review-Entscheide",
+      "use": "vorherige BLOCKED_NEEDS_SOURCE-/Review-only-Befunde",
+      "notProofOf": [
+        "Produktclaim",
+        "Live-Änderung"
+      ]
+    },
+    {
+      "source": "/workspace/luxestyle-review/katalogpflege-20261026/options/snapshot-v{1,2}/triage-evidence.jsonl",
+      "kind": "historische Options-/Texttriage",
+      "use": "Optionen und damalige Quellenlücken",
+      "notProofOf": [
+        "Variantenverfügbarkeit heute",
+        "physische Spezifikation"
+      ]
+    },
+    {
+      "source": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+      "kind": "historisch gebündelte R82-P0-Reviewqueue",
+      "use": "Priorität, Guards und Merchant-/Claim-Signale",
+      "notProofOf": [
+        "aktueller Merchant-Status",
+        "Auto-Fix-Freigabe",
+        "Lieferantenclaim"
+      ]
+    },
+    {
+      "source": "/workspace/luxestyle-review/merchant-additional-20261102-r60/review/OFFLINE-PARSED.json",
+      "kind": "historische, vom Nutzer gelieferte Merchant-CSV-Auswertung",
+      "use": "damalige offerId-, Policy- und Kontextbeobachtungen",
+      "notProofOf": [
+        "aktueller Merchant-Status",
+        "Produktmaterial",
+        "richtige oder falsche Google-Klassifikation"
+      ]
+    },
+    {
+      "source": "/workspace/luxestyle-review/batch-safety-repo/google-merchant-feed.xml",
+      "kind": "shop-abgeleiteter Feed",
+      "use": "ein einzelner MPN/SKU-Treffer für den Einteiler",
+      "notProofOf": [
+        "unabhängige Lieferantenspezifikation",
+        "Material",
+        "Masse",
+        "Rechte"
+      ]
+    }
+  ],
+  "crossCuttingRules": [
+    "Das aktuelle Tag rueckhol-0907 bleibt bei allen fünf Produkten ein Social-Guard und darf nicht aus einem Quellenaudit entfernt werden.",
+    "Öffentliches available=true ist kein Bestands-, Lieferzeit- oder inventoryPolicy-Beleg.",
+    "In Produktbildern eingebettete Texte sind Marketingclaims, keine unabhängigen technischen Quellen.",
+    "CJ-artige SKUs und das Tag cj-real belegen die Zuordnung, aber weder Claim-Wahrheit noch Nutzungsrechte.",
+    "Historische Merchant-Policy-Zeilen müssen im exakten Land-/Sprach-/Traffic-Kontext gelesen werden; keine Policy-Umgehung und keine automatische Feedänderung.",
+    "Ohne lokalen Rechtebeleg dürfen die Medien nicht als freigegebenes Werbe- oder KI-Referenzmaterial behandelt werden."
+  ],
+  "products": [
+    {
+      "productId": "15483793244545",
+      "gid": "gid://shopify/Product/15483793244545",
+      "title": "Automatischer Seifenspender",
+      "handle": "automatischer-seifenspender-1adb26",
+      "publicUrl": "https://luxestyle.ch/products/automatischer-seifenspender-1adb26",
+      "publicJsonUrl": "https://luxestyle.ch/products/automatischer-seifenspender-1adb26.js",
+      "publicSnapshot": {
+        "sourceFile": "/workspace/luxestyle-review/r83-batch-20261104/public/automatischer-seifenspender-1adb26.json",
+        "sha256": "39960ad7fa8e8a971548988dc77dcfba0c9d5f899d83c639f57ec8933af089f2",
+        "rawResponseUnchanged": true,
+        "retrievedAt": "2026-11-04T19:04:14+01:00",
+        "vendor": "LuxeStyle",
+        "productType": "Haushalt & Wohnen",
+        "publishedAt": "2026-09-07T18:39:39+02:00",
+        "availablePublic": true,
+        "priceMinCents": 5290,
+        "priceMaxCents": 5290,
+        "priceDisplay": "CHF 52.90",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "neu",
+          "rueckhol-0907",
+          "sort-seifenspender-bad-accessoires",
+          "trend",
+          "video-hit",
+          "viral"
+        ],
+        "options": [
+          {
+            "name": "Farbe",
+            "position": 1,
+            "values": [
+              "Schwarz · 4 Stück",
+              "Schwarz",
+              "Blau",
+              "Schwarz · 2 Stück",
+              "Schwarz · 3 Stück"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "id": "56026399441281",
+            "title": "Schwarz · 4 Stück",
+            "sku": "CJ-CJJJJTJT01223-Black 4pcs",
+            "priceCents": 5290,
+            "priceDisplay": "CHF 52.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 1366,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "56026399474049",
+            "title": "Schwarz",
+            "sku": "CJ-CJJJJTJT01223-Black",
+            "priceCents": 5290,
+            "priceDisplay": "CHF 52.90",
+            "availablePublic": false,
+            "inventoryManagementPublicField": "shopify",
+            "weightPublic": 1366,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "56026399506817",
+            "title": "Blau",
+            "sku": "CJ-CJJJJTJT01223-Blue",
+            "priceCents": 5290,
+            "priceDisplay": "CHF 52.90",
+            "availablePublic": false,
+            "inventoryManagementPublicField": "shopify",
+            "weightPublic": 1366,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "56026399539585",
+            "title": "Schwarz · 2 Stück",
+            "sku": "CJ-CJJJJTJT01223-Black 2pcs",
+            "priceCents": 5290,
+            "priceDisplay": "CHF 52.90",
+            "availablePublic": false,
+            "inventoryManagementPublicField": "shopify",
+            "weightPublic": 1366,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "56026399572353",
+            "title": "Schwarz · 3 Stück",
+            "sku": "CJ-CJJJJTJT01223-Black 3pcs",
+            "priceCents": 5290,
+            "priceDisplay": "CHF 52.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 1366,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          }
+        ],
+        "media": {
+          "imageCount": 10,
+          "mediaCount": 10,
+          "mediaTypes": [
+            "image"
+          ],
+          "videoCount": 0,
+          "rightsEvidenceLocal": "unknown"
+        }
+      },
+      "safeEvidence": [
+        {
+          "statement": "Der öffentliche Shopify-Endpunkt führt das Produkt als „Automatischer Seifenspender“ unter /products/automatischer-seifenspender-1adb26.",
+          "scope": "aktuelle Storefront-Konfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/automatischer-seifenspender-1adb26.json",
+          "limitation": "Belegt die öffentliche Konfiguration zum Abrufzeitpunkt, nicht die materielle Produkteigenschaft."
+        },
+        {
+          "statement": "Der öffentliche Endpunkt meldet Preisbereich CHF 52.90 und available=true.",
+          "scope": "öffentlicher Preis-/Verfügbarkeitsstatus",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/automatischer-seifenspender-1adb26.json",
+          "limitation": "available ist kein Nachweis für Bestand, Lieferzeit, inventoryPolicy oder Checkout-Erfolg."
+        },
+        {
+          "statement": "Aktuell sind 5 Varianten, 10 Bilder und keine öffentlichen Video-Medien in der Produkt-JSON enthalten.",
+          "scope": "aktuelle öffentliche Medien-/Variantenkonfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/automatischer-seifenspender-1adb26.json",
+          "limitation": "Rechte, Herkunft und in Bildern eingebettete Marketingclaims sind damit nicht belegt."
+        },
+        {
+          "statement": "Die Medien zeigen einen freistehenden Spender in Schwarz/Weiss und Hellblau/Weiss sowie Montage- und Anwendungsillustrationen.",
+          "scope": "sichtbare Medienbeobachtung",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/automatischer-seifenspender-1adb26-montage.jpg",
+          "limitation": "Visuelle Beobachtung; kein Material-, Funktions-, Mass-, Lieferumfang- oder Rechtebeleg."
+        }
+      ],
+      "skuSearch": {
+        "skus": [
+          "CJ-CJJJJTJT01223-Black 4pcs",
+          "CJ-CJJJJTJT01223-Black",
+          "CJ-CJJJJTJT01223-Blue",
+          "CJ-CJJJJTJT01223-Black 2pcs",
+          "CJ-CJJJJTJT01223-Black 3pcs"
+        ],
+        "normalizedBaseCodes": [
+          "CJJJJTJT01223"
+        ],
+        "workspaceSearch": "rg über /workspace; Ausschlüsse .git, node_modules, vendor, .next, dist, build",
+        "matchesOutsidePublicSnapshot": [],
+        "independentSupplierOrCjPayloadFound": false,
+        "interpretation": "Kein lokaler SKU-spezifischer CJ-/Lieferanten-API-Payload, Datenblatt, Manual, Zertifikat oder Rechtebeleg gefunden. Das Tag cj-real und CJ-artige SKU-Präfixe sind keine Sachquelle. Fehlender lokaler Treffer bedeutet unbekannt, nicht dass extern keine Quelle existiert."
+      },
+      "unsupportedOrUnverifiedClaims": [
+        {
+          "claim": "Infrarot-Sensor und automatische Seifenabgabe",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine unabhängige lokale Lieferantenquelle oder technische Dokumentation gefunden."
+        },
+        {
+          "claim": "Touchlose Bedienung verhindere Kreuzinfektion bzw. verbessere die Hygiene",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Gesundheits-/Hygienewirkung ist weder durch die Storefront-Konfiguration noch durch eine unabhängige Quelle belegt."
+        },
+        {
+          "claim": "Design ohne Tropfenbildung",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Leistungsbehauptung ohne Test- oder Lieferantennachweis."
+        },
+        {
+          "claim": "Grosse Füllöffnung",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine verifizierte Massangabe oder definierter Vergleichsmassstab."
+        },
+        {
+          "claim": "Akku-betrieben",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Aktuelle Medien scheinen ein austauschbares Batteriefach und eine Vier-AAA-Anweisung zu zeigen; die Formulierung Akku ist damit mindestens widersprüchlich."
+        },
+        {
+          "claim": "Paketinhalt 2, 3 oder 4 Stück",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Die Optionsnamen sind belegt; der tatsächliche Lieferumfang je SKU ist ohne Lieferanten-/Fulfilmentquelle nicht bestätigt."
+        },
+        {
+          "claim": "Geprüfte Angaben, Lieferung 10–20 Werktage, 30 Tage Rückgabe, Schweizer Shop sowie genannte Zahlungsarten",
+          "status": "UNVERIFIED_SERVICE_CLAIM",
+          "reason": "Der Block steht in der aktuellen Storefront, aber in den geprüften lokalen Produkt-/Lieferantenquellen fehlt der aktuelle Leistungs-, Versand- und Zahlungsnachweis."
+        }
+      ],
+      "marketingClaimsEmbeddedInCurrentMedia": {
+        "claims": [
+          "Vier-AAA-Batteriebetrieb (in einer Anwendungsillustration)",
+          "Produktmass-Grafik",
+          "Kompatibilität mit verschiedenen Flüssigkeiten"
+        ],
+        "status": "NOT_INDEPENDENTLY_VERIFIED",
+        "interpretation": "Text in einem Shopbild ist kein unabhängiger Lieferanten-, Prüf- oder Rechtebeleg."
+      },
+      "historicalEvidence": {
+        "shopifySnapshot": {
+          "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+          "sourceLine": 52902,
+          "updatedAt": "2026-10-23T16:07:30Z",
+          "status": "ACTIVE",
+          "descriptionMatchesCurrentPublic": true
+        },
+        "reviewQueue": {
+          "source": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+          "priority": "P0",
+          "priorityScore": 105,
+          "autoFixAllowed": false,
+          "signalCodes": [
+            "FIXED_DELIVERY_WINDOW",
+            "GENERIC_VERIFIED_CLAIM",
+            "Over capacity for Shopping ads (in CSS program)",
+            "SOCIAL_BLOCK_TAG_PRESENT",
+            "Tobacco products & related equipment"
+          ],
+          "signalGroups": [
+            "delivery_and_trust_claims",
+            "merchant_account_or_scope",
+            "merchant_policy_review",
+            "social_guard"
+          ],
+          "signals": {
+            "merchant_policy_review": [
+              {
+                "code": "Tobacco products & related equipment",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Tobacco products & related equipment",
+                  "uniqueOfferCountForProduct": 3,
+                  "contexts": [
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Free listings"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "NOT_ELIGIBLE_OR_DISAPPROVED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15483793244545_56026399441281",
+                      "title": "Automatischer Seifenspender | LuxeStyle CH Schwarz · 4 Stück"
+                    },
+                    {
+                      "offerId": "shopify_ZZ_15483793244545_56026399539585",
+                      "title": "Automatischer Seifenspender | LuxeStyle CH Schwarz · 2 Stück"
+                    },
+                    {
+                      "offerId": "shopify_ZZ_15483793244545_56026399572353",
+                      "title": "Automatischer Seifenspender | LuxeStyle CH Schwarz · 3 Stück"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "delivery_and_trust_claims": [
+              {
+                "code": "FIXED_DELIVERY_WINDOW",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "FIXED_DELIVERY_WINDOW",
+                  "recordUpdatedAt": "2026-10-23T16:07:30Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              },
+              {
+                "code": "GENERIC_VERIFIED_CLAIM",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "GENERIC_VERIFIED_CLAIM",
+                  "recordUpdatedAt": "2026-10-23T16:07:30Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ],
+            "merchant_account_or_scope": [
+              {
+                "code": "Over capacity for Shopping ads (in CSS program)",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Keep separate from product copy; verify account, source, target country and program capacity.",
+                "evidence": {
+                  "issueTitle": "Over capacity for Shopping ads (in CSS program)",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "NOT_ELIGIBLE_OR_DISAPPROVED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15483793244545_56026399572353",
+                      "title": "Automatischer Seifenspender | LuxeStyle CH Schwarz · 3 Stück"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "social_guard": [
+              {
+                "code": "SOCIAL_BLOCK_TAG_PRESENT",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "SOCIAL_BLOCK_TAG_PRESENT",
+                  "recordUpdatedAt": "2026-10-23T16:07:30Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ]
+          }
+        },
+        "merchantVariantIdentity": {
+          "historicalOfferVariantIds": [
+            "56026399441281",
+            "56026399539585",
+            "56026399572353"
+          ],
+          "currentPublicVariantIds": [
+            "56026399441281",
+            "56026399474049",
+            "56026399506817",
+            "56026399539585",
+            "56026399572353"
+          ],
+          "sameSet": false,
+          "overlapIds": [
+            "56026399441281",
+            "56026399539585",
+            "56026399572353"
+          ],
+          "interpretation": "Die historischen Merchant-Beispiele referenzieren nur eine Teilmenge der aktuellen Varianten-IDs; weder weitere Varianten noch der heutige Merchant-Status sind damit belegt."
+        },
+        "guardTagCurrent": true,
+        "merchantPolicyInterpretation": "Historische Google-Klassifikation in konkretem Land-/Sprach-/Traffic-Kontext. Kein Lieferantenbeleg, keine aktuelle Diagnose und kein Grund, Policy durch Texttricks zu umgehen."
+      },
+      "specificBlockers": [
+        "Betriebsart Batterie/Akku klären.",
+        "Paketinhalt je Mehrstück-SKU bestätigen.",
+        "Hygiene- und Tropffreiheitsclaims nicht ohne Quelle verwenden."
+      ],
+      "safeCopyBoundary": "Sicher formulierbar sind nur die aktuell sichtbaren Farb-/Packungs-Optionsnamen, der öffentliche Preisstatus und die sichtbare Form. Keine Hygiene-, Tropffreiheits-, Batterie-/Akku- oder Packungszusage ohne Lieferantenbeleg."
+    },
+    {
+      "productId": "15509968880001",
+      "gid": "gid://shopify/Product/15509968880001",
+      "title": "Hopfenfilter aus Edelstahl",
+      "handle": "hopfenfilter-aus-edelstahl-9f9627",
+      "publicUrl": "https://luxestyle.ch/products/hopfenfilter-aus-edelstahl-9f9627",
+      "publicJsonUrl": "https://luxestyle.ch/products/hopfenfilter-aus-edelstahl-9f9627.js",
+      "publicSnapshot": {
+        "sourceFile": "/workspace/luxestyle-review/r83-batch-20261104/public/hopfenfilter-aus-edelstahl-9f9627.json",
+        "sha256": "1078c1d89d4354c6f618a6997fa5faadd7536179f3a5f1342211adf87fc202f3",
+        "rawResponseUnchanged": true,
+        "retrievedAt": "2026-11-04T19:04:14+01:00",
+        "vendor": "LuxeStyle",
+        "productType": "Küche & Bar",
+        "publishedAt": "2026-09-07T19:34:34+02:00",
+        "availablePublic": true,
+        "priceMinCents": 2390,
+        "priceMaxCents": 2390,
+        "priceDisplay": "CHF 23.90",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "kochen",
+          "kueche",
+          "rueckhol-0907",
+          "varianten-nachgezogen-1025"
+        ],
+        "options": [
+          {
+            "name": "Grösse",
+            "position": 1,
+            "values": [
+              "29CM",
+              "18CM"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "id": "67880059142535",
+            "title": "29CM",
+            "sku": "CJJJCFCJ01844-29CM",
+            "priceCents": 2390,
+            "priceDisplay": "CHF 23.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 0,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "67880059175303",
+            "title": "18CM",
+            "sku": "CJJJCFCJ01844-18CM",
+            "priceCents": 2390,
+            "priceDisplay": "CHF 23.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 0,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          }
+        ],
+        "media": {
+          "imageCount": 6,
+          "mediaCount": 6,
+          "mediaTypes": [
+            "image"
+          ],
+          "videoCount": 0,
+          "rightsEvidenceLocal": "unknown"
+        }
+      },
+      "safeEvidence": [
+        {
+          "statement": "Der öffentliche Shopify-Endpunkt führt das Produkt als „Hopfenfilter aus Edelstahl“ unter /products/hopfenfilter-aus-edelstahl-9f9627.",
+          "scope": "aktuelle Storefront-Konfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/hopfenfilter-aus-edelstahl-9f9627.json",
+          "limitation": "Belegt die öffentliche Konfiguration zum Abrufzeitpunkt, nicht die materielle Produkteigenschaft."
+        },
+        {
+          "statement": "Der öffentliche Endpunkt meldet Preisbereich CHF 23.90 und available=true.",
+          "scope": "öffentlicher Preis-/Verfügbarkeitsstatus",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/hopfenfilter-aus-edelstahl-9f9627.json",
+          "limitation": "available ist kein Nachweis für Bestand, Lieferzeit, inventoryPolicy oder Checkout-Erfolg."
+        },
+        {
+          "statement": "Aktuell sind 2 Varianten, 6 Bilder und keine öffentlichen Video-Medien in der Produkt-JSON enthalten.",
+          "scope": "aktuelle öffentliche Medien-/Variantenkonfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/hopfenfilter-aus-edelstahl-9f9627.json",
+          "limitation": "Rechte, Herkunft und in Bildern eingebettete Marketingclaims sind damit nicht belegt."
+        },
+        {
+          "statement": "Die Medien zeigen einen zylindrischen Metallgewebe-Filter; zwei Bilder tragen Massgrafiken für 18 cm bzw. 29 cm und 7 cm Durchmesser.",
+          "scope": "sichtbare Medienbeobachtung",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/hopfenfilter-aus-edelstahl-9f9627-montage.jpg",
+          "limitation": "Visuelle Beobachtung; kein Material-, Funktions-, Mass-, Lieferumfang- oder Rechtebeleg."
+        }
+      ],
+      "skuSearch": {
+        "skus": [
+          "CJJJCFCJ01844-29CM",
+          "CJJJCFCJ01844-18CM"
+        ],
+        "normalizedBaseCodes": [
+          "CJJJCFCJ01844"
+        ],
+        "workspaceSearch": "rg über /workspace; Ausschlüsse .git, node_modules, vendor, .next, dist, build",
+        "matchesOutsidePublicSnapshot": [],
+        "independentSupplierOrCjPayloadFound": false,
+        "interpretation": "Kein lokaler SKU-spezifischer CJ-/Lieferanten-API-Payload, Datenblatt, Manual, Zertifikat oder Rechtebeleg gefunden. Das Tag cj-real und CJ-artige SKU-Präfixe sind keine Sachquelle. Fehlender lokaler Treffer bedeutet unbekannt, nicht dass extern keine Quelle existiert."
+      },
+      "unsupportedOrUnverifiedClaims": [
+        {
+          "claim": "304er Edelstahl",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Kein Materialzertifikat und kein unabhängiger lokaler Lieferantendatensatz gefunden."
+        },
+        {
+          "claim": "Beständigkeit gegen Säuren, Laugen und extreme Temperaturen",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Chemische und thermische Beständigkeit ist nicht belegt."
+        },
+        {
+          "claim": "Steril, ungiftig und absolut sicher",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Starke Sicherheits-/Hygieneaussage ohne Zertifikat oder Prüfbericht."
+        },
+        {
+          "claim": "300-Mikron-Sieb",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine unabhängige Spezifikation gefunden; die aktuellen Bilder belegen die Maschenweite nicht."
+        },
+        {
+          "claim": "Geeignet für Bier, Wein und Kaffee",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Anwendungsbehauptung aus Shoptext/Marketingbildern, nicht durch eine unabhängige technische Quelle belegt."
+        },
+        {
+          "claim": "18 cm und 29 cm als physische Längen",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Die Werte sind aktuelle Optionsnamen und stehen in Bildern; eine unabhängige Massquelle fehlt."
+        },
+        {
+          "claim": "Geprüfte Angaben, Lieferung 10–20 Werktage, 30 Tage Rückgabe, Schweizer Shop sowie genannte Zahlungsarten",
+          "status": "UNVERIFIED_SERVICE_CLAIM",
+          "reason": "Der Block steht in der aktuellen Storefront, aber in den geprüften lokalen Produkt-/Lieferantenquellen fehlt der aktuelle Leistungs-, Versand- und Zahlungsnachweis."
+        }
+      ],
+      "marketingClaimsEmbeddedInCurrentMedia": {
+        "claims": [
+          "18 cm bzw. 29 cm Länge und 7 cm Durchmesser",
+          "Einsatz für Bier/Getränke"
+        ],
+        "status": "NOT_INDEPENDENTLY_VERIFIED",
+        "interpretation": "Text in einem Shopbild ist kein unabhängiger Lieferanten-, Prüf- oder Rechtebeleg."
+      },
+      "historicalEvidence": {
+        "shopifySnapshot": {
+          "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+          "sourceLine": 19607,
+          "updatedAt": "2026-10-23T18:18:25Z",
+          "status": "ACTIVE",
+          "descriptionMatchesCurrentPublic": false
+        },
+        "reviewQueue": {
+          "source": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+          "priority": "P0",
+          "priorityScore": 105,
+          "autoFixAllowed": false,
+          "signalCodes": [
+            "Alcoholic beverages",
+            "FIXED_DELIVERY_WINDOW",
+            "GENERIC_VERIFIED_CLAIM",
+            "Personalized advertising: legal restrictions",
+            "SOCIAL_BLOCK_TAG_PRESENT"
+          ],
+          "signalGroups": [
+            "delivery_and_trust_claims",
+            "merchant_policy_review",
+            "social_guard"
+          ],
+          "signals": {
+            "merchant_policy_review": [
+              {
+                "code": "Alcoholic beverages",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Alcoholic beverages",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Free listings"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "ELIGIBLE_LIMITED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15509968880001_56158453825921",
+                      "title": "Hopfenfilter aus Edelstahl | LuxeStyle CH"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              },
+              {
+                "code": "Personalized advertising: legal restrictions",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Personalized advertising: legal restrictions",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "ELIGIBLE_LIMITED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15509968880001_56158453825921",
+                      "title": "Hopfenfilter aus Edelstahl | LuxeStyle CH"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "delivery_and_trust_claims": [
+              {
+                "code": "FIXED_DELIVERY_WINDOW",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "FIXED_DELIVERY_WINDOW",
+                  "recordUpdatedAt": "2026-10-23T18:18:25Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              },
+              {
+                "code": "GENERIC_VERIFIED_CLAIM",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "GENERIC_VERIFIED_CLAIM",
+                  "recordUpdatedAt": "2026-10-23T18:18:25Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ],
+            "social_guard": [
+              {
+                "code": "SOCIAL_BLOCK_TAG_PRESENT",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "SOCIAL_BLOCK_TAG_PRESENT",
+                  "recordUpdatedAt": "2026-10-23T18:18:25Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ]
+          }
+        },
+        "merchantVariantIdentity": {
+          "historicalOfferVariantIds": [
+            "56158453825921"
+          ],
+          "currentPublicVariantIds": [
+            "67880059142535",
+            "67880059175303"
+          ],
+          "sameSet": false,
+          "overlapIds": [],
+          "interpretation": "Die historischen Merchant-Beispiele verwenden andere Varianten-IDs als die aktuelle öffentliche Produktkonfiguration; aktuelle Feedwirkung ist unbekannt."
+        },
+        "guardTagCurrent": true,
+        "merchantPolicyInterpretation": "Historische Google-Klassifikation in konkretem Land-/Sprach-/Traffic-Kontext. Kein Lieferantenbeleg, keine aktuelle Diagnose und kein Grund, Policy durch Texttricks zu umgehen."
+      },
+      "specificBlockers": [
+        "Materialgüte, Maschenweite und chemische/thermische Eignung fehlen.",
+        "Lebensmittelkontakt-/Sicherheitsnachweis fehlt.",
+        "Merchant-Historie bezieht sich auf eine alte Varianten-ID; keine Ableitung auf den aktuellen Feed ohne Gegenprüfung."
+      ],
+      "safeCopyBoundary": "Sicher formulierbar sind die aktuellen Optionsnamen 18CM und 29CM sowie die sichtbare zylindrische Gewebeform. 304, 300 Mikron, steril, ungiftig, Temperatur-/Chemikalienbeständigkeit und Lebensmittelkontakt nicht behaupten."
+    },
+    {
+      "productId": "15448534122881",
+      "gid": "gid://shopify/Product/15448534122881",
+      "title": "Grosser Einteiler mit Karomuster",
+      "handle": "grosser-einteiler-mit-karomuster-614700",
+      "publicUrl": "https://luxestyle.ch/products/grosser-einteiler-mit-karomuster-614700",
+      "publicJsonUrl": "https://luxestyle.ch/products/grosser-einteiler-mit-karomuster-614700.js",
+      "publicSnapshot": {
+        "sourceFile": "/workspace/luxestyle-review/r83-batch-20261104/public/grosser-einteiler-mit-karomuster-614700.json",
+        "sha256": "d3a18ae57ea93b1dbf0539c45695fee018cf05ec8d059dc944e35a315c924284",
+        "rawResponseUnchanged": true,
+        "retrievedAt": "2026-11-04T19:04:14+01:00",
+        "vendor": "LuxeStyle",
+        "productType": "Damenmode",
+        "publishedAt": "2026-09-07T14:23:34+02:00",
+        "availablePublic": true,
+        "priceMinCents": 1790,
+        "priceMaxCents": 1890,
+        "priceDisplay": "CHF 17.90–CHF 18.90",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "damen",
+          "dropship",
+          "mode",
+          "rueckhol-0907",
+          "sort-damen-jumpsuits",
+          "sort-damen-jumpsuits-overall"
+        ],
+        "options": [
+          {
+            "name": "Farbe",
+            "position": 1,
+            "values": [
+              "Wie abgebildet"
+            ]
+          },
+          {
+            "name": "Grösse",
+            "position": 2,
+            "values": [
+              "0XL",
+              "1XL",
+              "2XL",
+              "3XL",
+              "4XL"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "id": "55875875471745",
+            "title": "Wie abgebildet / 0XL",
+            "sku": "CJ-CJNT294775001AZ",
+            "priceCents": 1790,
+            "priceDisplay": "CHF 17.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 300,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "55875875504513",
+            "title": "Wie abgebildet / 1XL",
+            "sku": "CJ-CJNT294775002BY",
+            "priceCents": 1790,
+            "priceDisplay": "CHF 17.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 310,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "55875875537281",
+            "title": "Wie abgebildet / 2XL",
+            "sku": "CJ-CJNT294775003CX",
+            "priceCents": 1890,
+            "priceDisplay": "CHF 18.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 320,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "55875875570049",
+            "title": "Wie abgebildet / 3XL",
+            "sku": "CJ-CJNT294775004DW",
+            "priceCents": 1890,
+            "priceDisplay": "CHF 18.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 330,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          },
+          {
+            "id": "55875875602817",
+            "title": "Wie abgebildet / 4XL",
+            "sku": "CJ-CJNT294775005EV",
+            "priceCents": 1890,
+            "priceDisplay": "CHF 18.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 340,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          }
+        ],
+        "media": {
+          "imageCount": 6,
+          "mediaCount": 6,
+          "mediaTypes": [
+            "image"
+          ],
+          "videoCount": 0,
+          "rightsEvidenceLocal": "unknown"
+        }
+      },
+      "safeEvidence": [
+        {
+          "statement": "Der öffentliche Shopify-Endpunkt führt das Produkt als „Grosser Einteiler mit Karomuster“ unter /products/grosser-einteiler-mit-karomuster-614700.",
+          "scope": "aktuelle Storefront-Konfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/grosser-einteiler-mit-karomuster-614700.json",
+          "limitation": "Belegt die öffentliche Konfiguration zum Abrufzeitpunkt, nicht die materielle Produkteigenschaft."
+        },
+        {
+          "statement": "Der öffentliche Endpunkt meldet Preisbereich CHF 17.90 bis CHF 18.90 und available=true.",
+          "scope": "öffentlicher Preis-/Verfügbarkeitsstatus",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/grosser-einteiler-mit-karomuster-614700.json",
+          "limitation": "available ist kein Nachweis für Bestand, Lieferzeit, inventoryPolicy oder Checkout-Erfolg."
+        },
+        {
+          "statement": "Aktuell sind 5 Varianten, 6 Bilder und keine öffentlichen Video-Medien in der Produkt-JSON enthalten.",
+          "scope": "aktuelle öffentliche Medien-/Variantenkonfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/grosser-einteiler-mit-karomuster-614700.json",
+          "limitation": "Rechte, Herkunft und in Bildern eingebettete Marketingclaims sind damit nicht belegt."
+        },
+        {
+          "statement": "Die sechs Medien zeigen einen einteiligen Badeanzug mit blau-rosa-weissem Karomuster an einem Model.",
+          "scope": "sichtbare Medienbeobachtung",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/grosser-einteiler-mit-karomuster-614700-montage.jpg",
+          "limitation": "Visuelle Beobachtung; kein Material-, Funktions-, Mass-, Lieferumfang- oder Rechtebeleg."
+        }
+      ],
+      "skuSearch": {
+        "skus": [
+          "CJ-CJNT294775001AZ",
+          "CJ-CJNT294775002BY",
+          "CJ-CJNT294775003CX",
+          "CJ-CJNT294775004DW",
+          "CJ-CJNT294775005EV"
+        ],
+        "normalizedBaseCodes": [
+          "CJNT294775001AZ",
+          "CJNT294775002BY",
+          "CJNT294775003CX",
+          "CJNT294775004DW",
+          "CJNT294775005EV"
+        ],
+        "workspaceSearch": "rg über /workspace; Ausschlüsse .git, node_modules, vendor, .next, dist, build",
+        "matchesOutsidePublicSnapshot": [
+          "/workspace/luxestyle-review/batch-safety-repo/google-merchant-feed.xml (nur g:mpn; shop-/feed-abgeleitet, kein Lieferantenbeleg)"
+        ],
+        "independentSupplierOrCjPayloadFound": false,
+        "interpretation": "Kein lokaler SKU-spezifischer CJ-/Lieferanten-API-Payload, Datenblatt, Manual, Zertifikat oder Rechtebeleg gefunden. Das Tag cj-real und CJ-artige SKU-Präfixe sind keine Sachquelle. Fehlender lokaler Treffer bedeutet unbekannt, nicht dass extern keine Quelle existiert."
+      },
+      "unsupportedOrUnverifiedClaims": [
+        {
+          "claim": "95 % Polyester/Terylen",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Kein Lieferantenblatt, Etikett oder Materialnachweis lokal gefunden."
+        },
+        {
+          "claim": "Hohe Elastizität und optimaler Tragekomfort",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Leistungs-/Komfortaussage ohne Prüf- oder Materialnachweis."
+        },
+        {
+          "claim": "Asiatische Grössen fallen kleiner aus",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine verifizierte Grössentabelle oder Lieferantenspezifikation gefunden."
+        },
+        {
+          "claim": "Bei Zwischengrössen grössere Option wählen",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Passformempfehlung ohne verifizierte Masse."
+        },
+        {
+          "claim": "Europäisch-amerikanischer Stil",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Subjektive, nicht prüfbare Herkunfts-/Stilangabe."
+        },
+        {
+          "claim": "Masstabelle sorgfältig prüfen",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Unter den sechs aktuellen Medien ist keine Grössentabelle sichtbar; lokal wurde keine zugehörige Tabelle gefunden."
+        },
+        {
+          "claim": "Geprüfte Angaben, Lieferung 10–20 Werktage, 30 Tage Rückgabe, Schweizer Shop sowie genannte Zahlungsarten",
+          "status": "UNVERIFIED_SERVICE_CLAIM",
+          "reason": "Der Block steht in der aktuellen Storefront, aber in den geprüften lokalen Produkt-/Lieferantenquellen fehlt der aktuelle Leistungs-, Versand- und Zahlungsnachweis."
+        }
+      ],
+      "marketingClaimsEmbeddedInCurrentMedia": {
+        "claims": [],
+        "status": "NOT_INDEPENDENTLY_VERIFIED",
+        "interpretation": "Text in einem Shopbild ist kein unabhängiger Lieferanten-, Prüf- oder Rechtebeleg."
+      },
+      "historicalEvidence": {
+        "shopifySnapshot": {
+          "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+          "sourceLine": 2749,
+          "updatedAt": "2026-10-24T06:24:50Z",
+          "status": "ACTIVE",
+          "descriptionMatchesCurrentPublic": true
+        },
+        "reviewQueue": {
+          "source": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+          "priority": "P0",
+          "priorityScore": 105,
+          "autoFixAllowed": false,
+          "signalCodes": [
+            "FIXED_DELIVERY_WINDOW",
+            "GENERIC_VERIFIED_CLAIM",
+            "Over capacity for Shopping ads (in CSS program)",
+            "Personalized advertising: legal restrictions",
+            "SOCIAL_BLOCK_TAG_PRESENT"
+          ],
+          "signalGroups": [
+            "delivery_and_trust_claims",
+            "merchant_account_or_scope",
+            "merchant_policy_review",
+            "social_guard"
+          ],
+          "signals": {
+            "merchant_policy_review": [
+              {
+                "code": "Personalized advertising: legal restrictions",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Personalized advertising: legal restrictions",
+                  "uniqueOfferCountForProduct": 5,
+                  "contexts": [
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "ELIGIBLE_LIMITED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15448534122881_55875875471745",
+                      "title": "Grosser Einteiler mit Karomuster | LuxeStyle CH Wie abgebildet / 0XL"
+                    },
+                    {
+                      "offerId": "shopify_ZZ_15448534122881_55875875537281",
+                      "title": "Grosser Einteiler mit Karomuster | LuxeStyle CH Wie abgebildet / 2XL"
+                    },
+                    {
+                      "offerId": "shopify_ZZ_15448534122881_55875875504513",
+                      "title": "Grosser Einteiler mit Karomuster | LuxeStyle CH Wie abgebildet / 1XL"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "delivery_and_trust_claims": [
+              {
+                "code": "FIXED_DELIVERY_WINDOW",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "FIXED_DELIVERY_WINDOW",
+                  "recordUpdatedAt": "2026-10-24T06:24:50Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              },
+              {
+                "code": "GENERIC_VERIFIED_CLAIM",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "GENERIC_VERIFIED_CLAIM",
+                  "recordUpdatedAt": "2026-10-24T06:24:50Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ],
+            "merchant_account_or_scope": [
+              {
+                "code": "Over capacity for Shopping ads (in CSS program)",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Keep separate from product copy; verify account, source, target country and program capacity.",
+                "evidence": {
+                  "issueTitle": "Over capacity for Shopping ads (in CSS program)",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "ELIGIBLE_LIMITED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15448534122881_55875875471745",
+                      "title": "Grosser Einteiler mit Karomuster | LuxeStyle CH Wie abgebildet / 0XL"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "social_guard": [
+              {
+                "code": "SOCIAL_BLOCK_TAG_PRESENT",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "SOCIAL_BLOCK_TAG_PRESENT",
+                  "recordUpdatedAt": "2026-10-24T06:24:50Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ]
+          }
+        },
+        "merchantVariantIdentity": {
+          "historicalOfferVariantIds": [
+            "55875875471745",
+            "55875875504513",
+            "55875875537281"
+          ],
+          "currentPublicVariantIds": [
+            "55875875471745",
+            "55875875504513",
+            "55875875537281",
+            "55875875570049",
+            "55875875602817"
+          ],
+          "sameSet": false,
+          "overlapIds": [
+            "55875875471745",
+            "55875875504513",
+            "55875875537281"
+          ],
+          "interpretation": "Die historischen Merchant-Beispiele referenzieren nur eine Teilmenge der aktuellen Varianten-IDs; weder weitere Varianten noch der heutige Merchant-Status sind damit belegt."
+        },
+        "guardTagCurrent": true,
+        "merchantPolicyInterpretation": "Historische Google-Klassifikation in konkretem Land-/Sprach-/Traffic-Kontext. Kein Lieferantenbeleg, keine aktuelle Diagnose und kein Grund, Policy durch Texttricks zu umgehen."
+      },
+      "specificBlockers": [
+        "Materialzusammensetzung fehlt.",
+        "Verifizierte Körper- und Kleidungsmasse je 0XL–4XL fehlen.",
+        "Bild-/Modelrechte sind lokal nicht dokumentiert."
+      ],
+      "safeCopyBoundary": "Sicher formulierbar sind einteiliger Badeanzug, sichtbares Karomuster, aktuelle Grössenlabels 0XL–4XL und die aktuell konfigurierten Preise. Material, Elastizität, Komfort und Passformempfehlungen erst nach Grössen-/Materialquelle."
+    },
+    {
+      "productId": "15512184586625",
+      "gid": "gid://shopify/Product/15512184586625",
+      "title": "Alkoholmeter-Set für Selbstgebranntes",
+      "handle": "alkoholmeter-set-fur-selbstgebranntes-002496",
+      "publicUrl": "https://luxestyle.ch/products/alkoholmeter-set-fur-selbstgebranntes-002496",
+      "publicJsonUrl": "https://luxestyle.ch/products/alkoholmeter-set-fur-selbstgebranntes-002496.js",
+      "publicSnapshot": {
+        "sourceFile": "/workspace/luxestyle-review/r83-batch-20261104/public/alkoholmeter-set-fur-selbstgebranntes-002496.json",
+        "sha256": "383420782dabdaf52b12e2eb198c70860b6d9f253b09ea25a5d1c401d9023b0b",
+        "rawResponseUnchanged": true,
+        "retrievedAt": "2026-11-04T19:04:14+01:00",
+        "vendor": "LuxeStyle",
+        "productType": "Werkzeug & Heimwerken",
+        "publishedAt": "2026-09-07T19:38:57+02:00",
+        "availablePublic": true,
+        "priceMinCents": 2090,
+        "priceMaxCents": 2090,
+        "priceDisplay": "CHF 20.90",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "neu",
+          "rueckhol-0907"
+        ],
+        "options": [
+          {
+            "name": "Title",
+            "position": 1,
+            "values": [
+              "Default Title"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "id": "56169028616577",
+            "title": "Default Title",
+            "sku": "CJ-1356224415377002496",
+            "priceCents": 2090,
+            "priceDisplay": "CHF 20.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 400,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          }
+        ],
+        "media": {
+          "imageCount": 5,
+          "mediaCount": 5,
+          "mediaTypes": [
+            "image"
+          ],
+          "videoCount": 0,
+          "rightsEvidenceLocal": "unknown"
+        }
+      },
+      "safeEvidence": [
+        {
+          "statement": "Der öffentliche Shopify-Endpunkt führt das Produkt als „Alkoholmeter-Set für Selbstgebranntes“ unter /products/alkoholmeter-set-fur-selbstgebranntes-002496.",
+          "scope": "aktuelle Storefront-Konfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/alkoholmeter-set-fur-selbstgebranntes-002496.json",
+          "limitation": "Belegt die öffentliche Konfiguration zum Abrufzeitpunkt, nicht die materielle Produkteigenschaft."
+        },
+        {
+          "statement": "Der öffentliche Endpunkt meldet Preisbereich CHF 20.90 und available=true.",
+          "scope": "öffentlicher Preis-/Verfügbarkeitsstatus",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/alkoholmeter-set-fur-selbstgebranntes-002496.json",
+          "limitation": "available ist kein Nachweis für Bestand, Lieferzeit, inventoryPolicy oder Checkout-Erfolg."
+        },
+        {
+          "statement": "Aktuell sind 1 Varianten, 5 Bilder und keine öffentlichen Video-Medien in der Produkt-JSON enthalten.",
+          "scope": "aktuelle öffentliche Medien-/Variantenkonfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/alkoholmeter-set-fur-selbstgebranntes-002496.json",
+          "limitation": "Rechte, Herkunft und in Bildern eingebettete Marketingclaims sind damit nicht belegt."
+        },
+        {
+          "statement": "Die fünf Medien zeigen einen blauen Aufbewahrungskoffer mit drei gläsernen Messkörpern und einem separaten gelben Instrument.",
+          "scope": "sichtbare Medienbeobachtung",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/alkoholmeter-set-fur-selbstgebranntes-002496-montage.jpg",
+          "limitation": "Visuelle Beobachtung; kein Material-, Funktions-, Mass-, Lieferumfang- oder Rechtebeleg."
+        }
+      ],
+      "skuSearch": {
+        "skus": [
+          "CJ-1356224415377002496"
+        ],
+        "normalizedBaseCodes": [
+          "1356224415377002496"
+        ],
+        "workspaceSearch": "rg über /workspace; Ausschlüsse .git, node_modules, vendor, .next, dist, build",
+        "matchesOutsidePublicSnapshot": [],
+        "independentSupplierOrCjPayloadFound": false,
+        "interpretation": "Kein lokaler SKU-spezifischer CJ-/Lieferanten-API-Payload, Datenblatt, Manual, Zertifikat oder Rechtebeleg gefunden. Das Tag cj-real und CJ-artige SKU-Präfixe sind keine Sachquelle. Fehlender lokaler Treffer bedeutet unbekannt, nicht dass extern keine Quelle existiert."
+      },
+      "unsupportedOrUnverifiedClaims": [
+        {
+          "claim": "Dreiteiliges Set",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Die Bilder zeigen drei gläserne Messkörper plus ein separates gelbes Instrument; der genaue Lieferumfang ist ohne Lieferantenquelle unklar."
+        },
+        {
+          "claim": "Messbereiche 0–40 %, 40–70 % und 70–100 %",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine lesbare, unabhängige Kalibrierungs- oder Lieferantenspezifikation gefunden."
+        },
+        {
+          "claim": "Integriertes Thermometer",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Die Bilder zeigen das gelbe Instrument separat; integriert ist daher widersprüchlich bzw. unklar."
+        },
+        {
+          "claim": "Präzise Messung bei 20 °C",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine Genauigkeitsklasse, Kalibrierung oder Bedienungsanleitung lokal gefunden."
+        },
+        {
+          "claim": "Umrechnungstabelle enthalten",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Papier ist in Bildern sichtbar, Inhalt/Lieferumfang aber nicht unabhängig bestätigt."
+        },
+        {
+          "claim": "Geeignet für Hobbybrenner und Spirituosenherstellung",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Anwendungsbehauptung; zusätzlich historischer Merchant-Policy-Kontext zu Alkoholprodukten."
+        },
+        {
+          "claim": "Geprüfte Angaben, Lieferung 10–20 Werktage, 30 Tage Rückgabe, Schweizer Shop sowie genannte Zahlungsarten",
+          "status": "UNVERIFIED_SERVICE_CLAIM",
+          "reason": "Der Block steht in der aktuellen Storefront, aber in den geprüften lokalen Produkt-/Lieferantenquellen fehlt der aktuelle Leistungs-, Versand- und Zahlungsnachweis."
+        }
+      ],
+      "marketingClaimsEmbeddedInCurrentMedia": {
+        "claims": [
+          "Mehrere Messkörper und ein gelbes Instrument im Koffer",
+          "Beigelegtes Papier/Tabellenblatt"
+        ],
+        "status": "NOT_INDEPENDENTLY_VERIFIED",
+        "interpretation": "Text in einem Shopbild ist kein unabhängiger Lieferanten-, Prüf- oder Rechtebeleg."
+      },
+      "historicalEvidence": {
+        "shopifySnapshot": {
+          "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+          "sourceLine": 21199,
+          "updatedAt": "2026-10-25T23:03:18Z",
+          "status": "ACTIVE",
+          "descriptionMatchesCurrentPublic": true
+        },
+        "reviewQueue": {
+          "source": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+          "priority": "P0",
+          "priorityScore": 105,
+          "autoFixAllowed": false,
+          "signalCodes": [
+            "Alcoholic beverages",
+            "FIXED_DELIVERY_WINDOW",
+            "GENERIC_VERIFIED_CLAIM",
+            "Personalized advertising: legal restrictions",
+            "SOCIAL_BLOCK_TAG_PRESENT"
+          ],
+          "signalGroups": [
+            "delivery_and_trust_claims",
+            "merchant_policy_review",
+            "social_guard"
+          ],
+          "signals": {
+            "merchant_policy_review": [
+              {
+                "code": "Alcoholic beverages",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Alcoholic beverages",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Free listings"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "ELIGIBLE_LIMITED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15512184586625_56169028616577",
+                      "title": "Alkoholmeter-Set für Selbstgebranntes | LuxeStyle CH"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              },
+              {
+                "code": "Personalized advertising: legal restrictions",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Personalized advertising: legal restrictions",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "ELIGIBLE_LIMITED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15512184586625_56169028616577",
+                      "title": "Alkoholmeter-Set für Selbstgebranntes | LuxeStyle CH"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "delivery_and_trust_claims": [
+              {
+                "code": "FIXED_DELIVERY_WINDOW",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "FIXED_DELIVERY_WINDOW",
+                  "recordUpdatedAt": "2026-10-25T23:03:18Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              },
+              {
+                "code": "GENERIC_VERIFIED_CLAIM",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "GENERIC_VERIFIED_CLAIM",
+                  "recordUpdatedAt": "2026-10-25T23:03:18Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ],
+            "social_guard": [
+              {
+                "code": "SOCIAL_BLOCK_TAG_PRESENT",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "SOCIAL_BLOCK_TAG_PRESENT",
+                  "recordUpdatedAt": "2026-10-25T23:03:18Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ]
+          }
+        },
+        "merchantVariantIdentity": {
+          "historicalOfferVariantIds": [
+            "56169028616577"
+          ],
+          "currentPublicVariantIds": [
+            "56169028616577"
+          ],
+          "sameSet": true,
+          "overlapIds": [
+            "56169028616577"
+          ],
+          "interpretation": "Die historischen Merchant-Beispiele referenzieren exakt die aktuelle Varianten-ID-Menge; der heutige Merchant-Status bleibt trotzdem unbekannt."
+        },
+        "guardTagCurrent": true,
+        "merchantPolicyInterpretation": "Historische Google-Klassifikation in konkretem Land-/Sprach-/Traffic-Kontext. Kein Lieferantenbeleg, keine aktuelle Diagnose und kein Grund, Policy durch Texttricks zu umgehen."
+      },
+      "specificBlockers": [
+        "Lieferumfang, Messbereiche, Genauigkeit und Kalibrierung fehlen.",
+        "Thermometer ist offenbar separat, nicht integriert.",
+        "Alkoholbezogene Merchant-Policy-Kontexte dürfen nicht durch Umschreiben umgangen werden."
+      ],
+      "safeCopyBoundary": "Sicher formulierbar sind nur Titel, öffentlich sichtbarer Koffer/Instrumente, SKU und aktueller Preisstatus. Messbereiche, Genauigkeit, Temperaturbezug, Tabelleninhalt und Lieferumfang nicht ohne Manual/Lieferantenbeleg."
+    },
+    {
+      "productId": "15454092558721",
+      "gid": "gid://shopify/Product/15454092558721",
+      "title": "Katzenspielzeug mit Drehkopf",
+      "handle": "katzenspielzeug-mit-drehkopf-618400",
+      "publicUrl": "https://luxestyle.ch/products/katzenspielzeug-mit-drehkopf-618400",
+      "publicJsonUrl": "https://luxestyle.ch/products/katzenspielzeug-mit-drehkopf-618400.js",
+      "publicSnapshot": {
+        "sourceFile": "/workspace/luxestyle-review/r83-batch-20261104/public/katzenspielzeug-mit-drehkopf-618400.json",
+        "sha256": "fdb3d48865892e938cc15d48401c8aefcf4b969517238b6637d50fc171bd4de2",
+        "rawResponseUnchanged": true,
+        "retrievedAt": "2026-11-04T19:04:14+01:00",
+        "vendor": "LuxeStyle",
+        "productType": "Haustierbedarf",
+        "publishedAt": "2026-09-07T17:38:34+02:00",
+        "availablePublic": true,
+        "priceMinCents": 4490,
+        "priceMaxCents": 4490,
+        "priceDisplay": "CHF 44.90",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haustier",
+          "hund",
+          "kat-haustier",
+          "kat-katzen",
+          "katze",
+          "mengenrabatt-a",
+          "pet",
+          "rueckhol-0907",
+          "sort-haustier",
+          "sort-katzen",
+          "sort-tier-katzenspielzeug",
+          "sort-tier-spielzeug",
+          "sub-katze",
+          "sub-tierspielzeug"
+        ],
+        "options": [
+          {
+            "name": "Title",
+            "position": 1,
+            "values": [
+              "Default Title"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "id": "55907359392129",
+            "title": "Default Title",
+            "sku": "CJ-2507100944341618400",
+            "priceCents": 4490,
+            "priceDisplay": "CHF 44.90",
+            "availablePublic": true,
+            "inventoryManagementPublicField": null,
+            "weightPublic": 520,
+            "limitation": "Öffentliche Produkt-JSON; kein Ersatz für Admin-Felder inventoryPolicy, inventoryItem.tracked oder Lieferantenspezifikation."
+          }
+        ],
+        "media": {
+          "imageCount": 6,
+          "mediaCount": 6,
+          "mediaTypes": [
+            "image"
+          ],
+          "videoCount": 0,
+          "rightsEvidenceLocal": "unknown"
+        }
+      },
+      "safeEvidence": [
+        {
+          "statement": "Der öffentliche Shopify-Endpunkt führt das Produkt als „Katzenspielzeug mit Drehkopf“ unter /products/katzenspielzeug-mit-drehkopf-618400.",
+          "scope": "aktuelle Storefront-Konfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/katzenspielzeug-mit-drehkopf-618400.json",
+          "limitation": "Belegt die öffentliche Konfiguration zum Abrufzeitpunkt, nicht die materielle Produkteigenschaft."
+        },
+        {
+          "statement": "Der öffentliche Endpunkt meldet Preisbereich CHF 44.90 und available=true.",
+          "scope": "öffentlicher Preis-/Verfügbarkeitsstatus",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/katzenspielzeug-mit-drehkopf-618400.json",
+          "limitation": "available ist kein Nachweis für Bestand, Lieferzeit, inventoryPolicy oder Checkout-Erfolg."
+        },
+        {
+          "statement": "Aktuell sind 1 Varianten, 6 Bilder und keine öffentlichen Video-Medien in der Produkt-JSON enthalten.",
+          "scope": "aktuelle öffentliche Medien-/Variantenkonfiguration",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/katzenspielzeug-mit-drehkopf-618400.json",
+          "limitation": "Rechte, Herkunft und in Bildern eingebettete Marketingclaims sind damit nicht belegt."
+        },
+        {
+          "statement": "Die sechs Medien zeigen ein pinkes, rundes Katzenspielzeug mit flexiblem Stab und Federanhänger; Marketinggrafiken zeigen Bewegungspfeile.",
+          "scope": "sichtbare Medienbeobachtung",
+          "source": "/workspace/luxestyle-review/r83-batch-20261104/public/katzenspielzeug-mit-drehkopf-618400-montage.jpg",
+          "limitation": "Visuelle Beobachtung; kein Material-, Funktions-, Mass-, Lieferumfang- oder Rechtebeleg."
+        }
+      ],
+      "skuSearch": {
+        "skus": [
+          "CJ-2507100944341618400"
+        ],
+        "normalizedBaseCodes": [
+          "2507100944341618400"
+        ],
+        "workspaceSearch": "rg über /workspace; Ausschlüsse .git, node_modules, vendor, .next, dist, build",
+        "matchesOutsidePublicSnapshot": [],
+        "independentSupplierOrCjPayloadFound": false,
+        "interpretation": "Kein lokaler SKU-spezifischer CJ-/Lieferanten-API-Payload, Datenblatt, Manual, Zertifikat oder Rechtebeleg gefunden. Das Tag cj-real und CJ-artige SKU-Präfixe sind keine Sachquelle. Fehlender lokaler Treffer bedeutet unbekannt, nicht dass extern keine Quelle existiert."
+      },
+      "unsupportedOrUnverifiedClaims": [
+        {
+          "claim": "Automatische Rotation",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Nur Shoptext und Marketinggrafik; kein Video, Manual oder unabhängiger Funktionsnachweis."
+        },
+        {
+          "claim": "Regt den Jagdinstinkt an",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Wirkungsbehauptung ohne Testnachweis."
+        },
+        {
+          "claim": "ABS-Kunststoff",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Keine Materialquelle oder Zertifizierung lokal gefunden."
+        },
+        {
+          "claim": "Einzelnes Produkt",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Der genaue Lieferumfang ist ohne Lieferantenquelle nicht bestätigt."
+        },
+        {
+          "claim": "Zwei Geschwindigkeiten, schnell/langsam",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Steht nur in einem aktuellen Marketingbild und fehlt als unabhängige Spezifikation."
+        },
+        {
+          "claim": "Masse 25,5 cm / 15 cm / 18 cm",
+          "status": "UNVERIFIED_LOCAL_SOURCE",
+          "reason": "Steht nur in einem aktuellen Marketingbild; keine unabhängige Massquelle."
+        },
+        {
+          "claim": "Geprüfte Angaben, Lieferung 10–20 Werktage, 30 Tage Rückgabe, Schweizer Shop sowie genannte Zahlungsarten",
+          "status": "UNVERIFIED_SERVICE_CLAIM",
+          "reason": "Der Block steht in der aktuellen Storefront, aber in den geprüften lokalen Produkt-/Lieferantenquellen fehlt der aktuelle Leistungs-, Versand- und Zahlungsnachweis."
+        }
+      ],
+      "marketingClaimsEmbeddedInCurrentMedia": {
+        "claims": [
+          "ABS und Fallfestigkeit",
+          "Automatische Rotation",
+          "Zwei Geschwindigkeiten",
+          "Masse 25,5 cm, 15 cm und 18 cm"
+        ],
+        "status": "NOT_INDEPENDENTLY_VERIFIED",
+        "interpretation": "Text in einem Shopbild ist kein unabhängiger Lieferanten-, Prüf- oder Rechtebeleg."
+      },
+      "historicalEvidence": {
+        "shopifySnapshot": {
+          "source": "/workspace/luxestyle-review/produkttexte-20261026/katalog/active-products.jsonl",
+          "sourceLine": 43399,
+          "updatedAt": "2026-10-25T23:57:18Z",
+          "status": "ACTIVE",
+          "descriptionMatchesCurrentPublic": true
+        },
+        "reviewQueue": {
+          "source": "/workspace/luxestyle-review/catalog-improvement-20261104/LIVE-BATCH-01-50.json",
+          "priority": "P0",
+          "priorityScore": 105,
+          "autoFixAllowed": false,
+          "signalCodes": [
+            "FIXED_DELIVERY_WINDOW",
+            "GENERIC_VERIFIED_CLAIM",
+            "Over capacity for Shopping ads (in CSS program)",
+            "SOCIAL_BLOCK_TAG_PRESENT",
+            "Tobacco products & related equipment"
+          ],
+          "signalGroups": [
+            "delivery_and_trust_claims",
+            "merchant_account_or_scope",
+            "merchant_policy_review",
+            "social_guard"
+          ],
+          "signals": {
+            "merchant_policy_review": [
+              {
+                "code": "Tobacco products & related equipment",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Review the exact product and policy classification; do not evade policy or assume a false positive.",
+                "evidence": {
+                  "issueTitle": "Tobacco products & related equipment",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Free listings"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Liechtenstein",
+                      "trafficType": "Shopping ads"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Switzerland",
+                      "trafficType": "Free listings"
+                    },
+                    {
+                      "language": "de",
+                      "country": "Switzerland",
+                      "trafficType": "Shopping ads"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Free listings"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "NOT_ELIGIBLE_OR_DISAPPROVED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15454092558721_55907359392129",
+                      "title": "Katzenspielzeug mit Drehkopf | LuxeStyle CH"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "delivery_and_trust_claims": [
+              {
+                "code": "FIXED_DELIVERY_WINDOW",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "FIXED_DELIVERY_WINDOW",
+                  "recordUpdatedAt": "2026-10-25T23:57:18Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              },
+              {
+                "code": "GENERIC_VERIFIED_CLAIM",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "GENERIC_VERIFIED_CLAIM",
+                  "recordUpdatedAt": "2026-10-25T23:57:18Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ],
+            "merchant_account_or_scope": [
+              {
+                "code": "Over capacity for Shopping ads (in CSS program)",
+                "confidence": "historical_csv_observation",
+                "source": "user-supplied Merchant CSV latest filtered series",
+                "requiredAction": "Keep separate from product copy; verify account, source, target country and program capacity.",
+                "evidence": {
+                  "issueTitle": "Over capacity for Shopping ads (in CSS program)",
+                  "uniqueOfferCountForProduct": 1,
+                  "contexts": [
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Dynamic remarketing"
+                    },
+                    {
+                      "language": "fr",
+                      "country": "Switzerland",
+                      "trafficType": "Shopping ads"
+                    }
+                  ],
+                  "issueSeverities": [
+                    "SEVERITY_DISAPPROVED"
+                  ],
+                  "itemStatuses": [
+                    "NOT_ELIGIBLE_OR_DISAPPROVED"
+                  ],
+                  "examples": [
+                    {
+                      "offerId": "shopify_ZZ_15454092558721_55907359392129",
+                      "title": "Katzenspielzeug mit Drehkopf | LuxeStyle CH"
+                    }
+                  ],
+                  "sourceWindow": [
+                    "2026-11-02T12:41:30",
+                    "2026-11-02T13:04:55"
+                  ]
+                }
+              }
+            ],
+            "social_guard": [
+              {
+                "code": "SOCIAL_BLOCK_TAG_PRESENT",
+                "confidence": "historical_rule_hit",
+                "source": "materials-report.json",
+                "requiredAction": "Preserve guards and verify the dated service or copy signal during routine live review.",
+                "evidence": {
+                  "snapshotIssueCode": "SOCIAL_BLOCK_TAG_PRESENT",
+                  "recordUpdatedAt": "2026-10-25T23:57:18Z",
+                  "detail": "Exact rule hit is recorded in materials-report.findingIndex; a detailed excerpt is not materialized for every medium rule."
+                }
+              }
+            ]
+          }
+        },
+        "merchantVariantIdentity": {
+          "historicalOfferVariantIds": [
+            "55907359392129"
+          ],
+          "currentPublicVariantIds": [
+            "55907359392129"
+          ],
+          "sameSet": true,
+          "overlapIds": [
+            "55907359392129"
+          ],
+          "interpretation": "Die historischen Merchant-Beispiele referenzieren exakt die aktuelle Varianten-ID-Menge; der heutige Merchant-Status bleibt trotzdem unbekannt."
+        },
+        "guardTagCurrent": true,
+        "merchantPolicyInterpretation": "Historische Google-Klassifikation in konkretem Land-/Sprach-/Traffic-Kontext. Kein Lieferantenbeleg, keine aktuelle Diagnose und kein Grund, Policy durch Texttricks zu umgehen."
+      },
+      "specificBlockers": [
+        "Funktionsnachweis und Betriebsart fehlen.",
+        "Material-/Massquelle fehlt.",
+        "Tag hund passt nicht zu Titel, Medien und Katzen-Taxonomie; vor Entfernung aktuelle Admin-Gegenprobe."
+      ],
+      "safeCopyBoundary": "Sicher formulierbar sind pinkes Katzenspielzeug mit Stab/Feder in der sichtbaren Form, SKU und aktueller Preisstatus. Rotation, Geschwindigkeiten, ABS, Masse, Wirkung und Lieferumfang nicht ohne Quelle."
+    }
+  ],
+  "blockers": [
+    {
+      "code": "NO_LOCAL_SUPPLIER_PRIMARY_SOURCE",
+      "scope": "all_five_products",
+      "detail": "Keine SKU-spezifischen CJ-/Lieferantenpayloads, Manuals, Zertifikate oder Produktdatenblätter lokal gefunden."
+    },
+    {
+      "code": "MEDIA_RIGHTS_UNKNOWN",
+      "scope": "all_five_products",
+      "detail": "Keine lokale Dokumentation zu kommerziellen Bearbeitungs-/Werberechten der Bilder gefunden."
+    },
+    {
+      "code": "ADMIN_INVENTORY_FIELDS_NOT_IN_PUBLIC_JSON",
+      "scope": "all_five_products",
+      "detail": "inventoryPolicy und inventoryItem.tracked sind im öffentlichen Produkt-JSON nicht vorhanden."
+    },
+    {
+      "code": "CURRENT_MERCHANT_STATUS_NOT_READ",
+      "scope": "all_five_products",
+      "detail": "Die geprüften Merchant-Signale sind historische CSV-Beobachtungen, keine aktuelle Live-Diagnose."
+    }
+  ]
+}

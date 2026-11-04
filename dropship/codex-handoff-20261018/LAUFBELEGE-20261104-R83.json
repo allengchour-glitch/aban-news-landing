@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R83_20261104",
+  "generatedAt": "2026-11-04T18:12:16Z",
+  "timezone": "Europe/Zurich",
+  "scope": "compact owner approval package; fresh identity, planning and two-product read; five-product public/source/taxonomy review; reuse of today's completed metrics and Klaviyo report",
+  "identity": {
+    "shopify": {
+      "shopName": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "country": "Switzerland",
+      "currency": "CHF",
+      "freshlyRead": true,
+      "matchesExpected": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "freshlyRead": true,
+      "matchesExpected": true
+    }
+  },
+  "metricoolPlanning": {
+    "windowLocal": {
+      "from": "2026-11-04T19:04:31+01:00",
+      "to": "2026-11-11T19:04:31+01:00"
+    },
+    "objects": 31,
+    "networkStates": 47,
+    "states": {
+      "PENDING": 47
+    },
+    "autoPublishObjects": 31,
+    "draftObjects": 0,
+    "byNetwork": {
+      "facebook": 15,
+      "instagram": 15,
+      "pinterest": 5,
+      "tiktok": 12,
+      "threads": 0,
+      "youtube": 0
+    },
+    "exactSameNetworkSlotTextMediaDuplicates": 0,
+    "emptyCaptionObjects": [
+      {
+        "id": 415033593,
+        "uuid": "-8611238648907481079",
+        "scheduledLocal": "2026-11-09T16:00:00+01:00",
+        "networks": [
+          "facebook",
+          "instagram"
+        ]
+      },
+      {
+        "id": 415035691,
+        "uuid": "37985340483322184",
+        "scheduledLocal": "2026-11-10T12:30:00+01:00",
+        "networks": [
+          "facebook",
+          "instagram"
+        ]
+      }
+    ],
+    "writes": 0
+  },
+  "dailyMetrics": {
+    "sourceRun": "R77",
+    "sourceReadAtLocal": "2026-11-04 morning run",
+    "periodLocal": "2026-10-28/2026-11-03",
+    "requeriedInR83": false,
+    "values": {
+      "instagram": {
+        "metricId": "IGEV05",
+        "views": 424,
+        "completeDays": 7,
+        "totalDays": 7,
+        "weeklyInteractions": null
+      },
+      "facebook": {
+        "metricId": "FBEV12",
+        "feedPostImpressions": 2,
+        "completeDays": 1,
+        "totalDays": 7
+      },
+      "pinterest": {
+        "impressionsMetricId": "PIEV01",
+        "impressions": 1565,
+        "interactionsMetricId": "PIEV04",
+        "interactions": 24,
+        "outgoingClicksMetricId": "PIEV06",
+        "outgoingClicks": 1,
+        "completeDays": 5,
+        "totalDays": 7
+      },
+      "tiktok": {
+        "metricId": "TKEV12",
+        "videoViews": 128,
+        "completeDays": 6,
+        "totalDays": 7,
+        "weeklyInteractions": null
+      },
+      "youtube": {
+        "metricId": "YTEV02",
+        "views": 23,
+        "completeDays": 5,
+        "totalDays": 7,
+        "interactionsComplete": false
+      },
+      "threads": {
+        "viewsOn2026-11-03": 0,
+        "otherDays": null,
+        "weeklyTotal": null
+      }
+    },
+    "salesInferenceMade": false
+  },
+  "shopifyQuery": {
+    "workflow": {
+      "queryRootSchemaRead": true,
+      "productSchemasRead": true,
+      "validatorResult": "skipped_by_tool_then_validated_by_execution",
+      "firstExecution": "rejected_deprecated_ProductVariant.image",
+      "correctedExecution": "success_using_ProductVariant.media"
+    },
+    "products": [
+      {
+        "id": "gid://shopify/Product/15521256604033",
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "status": "ACTIVE",
+        "price": {
+          "amount": "34.90",
+          "currency": "CHF"
+        },
+        "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "availableForSale": true,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "tagsNonEmpty": true,
+        "repoGuardMatches": [],
+        "featuredImage": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "width": 1920,
+          "height": 1919,
+          "status": "READY"
+        },
+        "productVideo": {
+          "status": "READY",
+          "width": 960,
+          "height": 540,
+          "mimeType": "video/mp4"
+        },
+        "variantMediaCount": 0,
+        "exactVariantMotifUnitBinding": null,
+        "commercialFilmRights": null
+      },
+      {
+        "id": "gid://shopify/Product/15454092558721",
+        "variantId": "gid://shopify/ProductVariant/55907359392129",
+        "sku": "CJ-2507100944341618400",
+        "title": "Katzenspielzeug mit Drehkopf",
+        "status": "ACTIVE",
+        "price": {
+          "amount": "44.90",
+          "currency": "CHF"
+        },
+        "onlineStoreUrl": "https://luxestyle.ch/products/katzenspielzeug-mit-drehkopf-618400",
+        "availableForSale": true,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "productImageCount": 6,
+        "variantMediaCount": 0,
+        "ownerSocialBlockTags": [
+          "rueckhol-0907"
+        ],
+        "unrelatedTags": [
+          "hund"
+        ],
+        "powerModesAndPackageVerified": false,
+        "existingSeoDiscountCodeVerified": false
+      }
+    ],
+    "writes": 0,
+    "stockOrDeliveryPromiseMade": false
+  },
+  "fiveProductReview": {
+    "productIds": [
+      "15483793244545",
+      "15509968880001",
+      "15448534122881",
+      "15512184586625",
+      "15454092558721"
+    ],
+    "publicHttp200": 5,
+    "publicAvailableTrue": 5,
+    "independentSkuSpecificSupplierSourcesFound": 0,
+    "allCarryOwnerSocialBlockRueckhol": true,
+    "clearTaxonomyChangesPrepared": [
+      {
+        "productId": "15448534122881",
+        "leafId": "aa-1-20-22",
+        "leafName": "Einteilige Badeanzüge",
+        "removeUnrelatedTags": [
+          "sort-damen-jumpsuits",
+          "sort-damen-jumpsuits-overall"
+        ]
+      },
+      {
+        "productId": "15454092558721",
+        "leafId": "ap-2-2-5-5",
+        "leafName": "Interaktives Spielzeug",
+        "removeUnrelatedTags": [
+          "hund"
+        ]
+      }
+    ],
+    "shopifyWrites": 0,
+    "merchantWrites": 0
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "state": "script_and_cut_plan_only",
+    "actualProfessionalMasterMp4": false,
+    "renderTriggered": false,
+    "target": {
+      "durationSeconds": 18,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30
+    },
+    "hooks": [
+      "Dein Raum. Neues Licht.",
+      "Licht im Detail."
+    ],
+    "cta": "Produkt ansehen",
+    "canonicalMusicPath": "automation/music/luxe-premium.wav",
+    "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "videoRights": null,
+    "musicRightsAndMixApproval": null,
+    "metricoolWrites": 0
+  },
+  "klaviyo": {
+    "sourceRun": "R77",
+    "sourceReadAtLocal": "2026-11-04T08:10:41+01:00",
+    "requeriedInR83": false,
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "currenciesCombined": false,
+    "placedOrderMetricId": "W7XTVD",
+    "flows": {
+      "Vse76a": {
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "reportRow": null
+      },
+      "VbLQj6": {
+        "name": "Welcome Series",
+        "status": "draft",
+        "recipients": 2,
+        "delivered": 2,
+        "uniqueOpens": 1,
+        "uniqueClicks": 0,
+        "reportedConversions": 0
+      },
+      "RnTvsY": {
+        "name": "Post-Purchase",
+        "status": "draft",
+        "recipients": 4,
+        "delivered": 4,
+        "uniqueOpens": 1,
+        "uniqueClicks": 0,
+        "reportedConversions": 0
+      }
+    },
+    "singleApprovalDraft": {
+      "flowId": "Vse76a",
+      "messageId": "WNFHjV",
+      "templateId": "WaQaDv",
+      "subject": "Möchtest du deine Bestellung fortsetzen?",
+      "heading": "Dein Einkauf bei LuxeStyle",
+      "removeScarcityClaims": true,
+      "applied": false
+    },
+    "flowWrites": 0,
+    "messagesSent": 0
+  },
+  "externalWrites": {
+    "shopify": 0,
+    "metricool": 0,
+    "merchant": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "ads": 0,
+    "customersContacted": 0
+  },
+  "artifacts": [
+    {
+      "path": "dropship/codex-handoff-20261018/ABENDPAKET-20261104-R83.md",
+      "sha256": "48fd2ea737b6930aec482df4979014dccbcd56031e447b816c3a2a855cb394cd"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261104-R83.md",
+      "sha256": "afb9d360fc9c3a291e3fc5621f9c83fd2830ff8f48f1cb5fdcd847ba2b205eb3"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/METRICOOL-20261104-R83.md",
+      "sha256": "1e2ec04f7d4e164639f80cd51fe74ffd170f800b1c45a2bd44adac276384a544"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MERCHANT-KLAVIYO-20261104-R83.md",
+      "sha256": "1a8f8daceed29135a36656abbdcaf606017e4fef54475474bc9282e4bee48709"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261104-R83.md",
+      "sha256": "e5f722e561344ca911d97eef449ce42533dd30fbfbb6cf1610986bc14a745923"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTQUELLEN-20261104-R83.md",
+      "sha256": "479e2e61eee13e6f7299122c115b218f0b02873f09540de53be6fd36450966e5"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PRODUKTQUELLEN-20261104-R83.json",
+      "sha256": "94381e5222d612c5a8cd9498a2b479dc0bab9270a0ab0b19abc4e0a7d13c08f1"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/TAXONOMIE-20261104-R83.md",
+      "sha256": "88c1aad7d96d3de44ea486aaa9748cf3a504ddeaff5fd2bcd7de0788e9cf5c32"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/TAXONOMIE-20261104-R83.json",
+      "sha256": "be87c3b7c2d1580287e9467b2f37bcaffe28887af2478606c9f6978c090cb8d6"
+    }
+  ]
+}
