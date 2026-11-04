@@ -1,0 +1,233 @@
+{
+ "_stand": "2026-11-04. Schnittplaene der fünf CJ-Clips nach vollständiger Sichtung (wf_2b23058f). Quelle: CJ-Videos (isFree=1, Besitzer 03.11.: es ist erlaubt). Zeitangaben = Sekunden im Quellvideo.",
+ "clips": [
+  {
+   "id": "duft",
+   "musik": "mixkit-serene-view-443.mp3",
+   "musik_start": 16,
+   "hook1": "Wasser, das",
+   "hook2": "schwebt?",
+   "endzeile": "LuxeStyle · luxestyle.ch",
+   "shots": [
+    {
+     "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-4.mp4",
+     "ss": 14.08,
+     "dauer": 1.017,
+     "zoom": "in"
+    },
+    {
+     "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
+     "ss": 21.8,
+     "dauer": 3.05,
+     "zoom": "in",
+     "zoomstaerke": 0.06,
+     "text": "scheinen zu schweben"
+    },
+    {
+     "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
+     "ss": 16.3,
+     "dauer": 2.033,
+     "zoom": "in",
+     "text": "Feiner Nebel"
+    },
+    {
+     "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
+     "ss": 8.0,
+     "dauer": 1.525,
+     "zoom": "none",
+     "text": "Per USB betrieben"
+    },
+    {
+     "quelle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4",
+     "ss": 26.2,
+     "dauer": 2.54,
+     "zoom": "in",
+     "zoomstaerke": 0.06
+    }
+   ]
+  },
+  {
+   "id": "speaker",
+   "musik": "mixkit-majestic-475.mp3",
+   "musik_start": 14,
+   "hook1": "Dieses Wasser",
+   "hook2": "tanzt",
+   "endzeile": "LuxeStyle · luxestyle.ch",
+   "shots": [
+    {
+     "quelle": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
+     "ss": 15.95,
+     "dauer": 3.5305,
+     "tempo": 0.8,
+     "zoom": "in"
+    },
+    {
+     "quelle": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
+     "ss": 4.0,
+     "dauer": 2.118,
+     "tempo": 0.8,
+     "zoom": "out",
+     "text": "Zwei Wassersäulen"
+    },
+    {
+     "quelle": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
+     "ss": 8.9,
+     "dauer": 2.824,
+     "tempo": 0.75,
+     "zoom": "in",
+     "wb": 5500
+    }
+   ]
+  },
+  {
+   "id": "rose",
+   "musik": "mixkit-violin-uplift-675.mp3",
+   "musik_start": 9,
+   "hook1": "Rose im Glas",
+   "hook2": "mit LED-Licht",
+   "endzeile": "LuxeStyle · luxestyle.ch",
+   "shots": [
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 0.0,
+     "dauer": 1.5006,
+     "zoom": "in"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 2.0,
+     "dauer": 2.501,
+     "zoom": "none"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 14.3,
+     "dauer": 3.0012,
+     "zoom": "none",
+     "text": "Im Glascover"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 7.7,
+     "dauer": 2.0008,
+     "zoom": "none",
+     "text": "Batterie nicht enthalten"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 17.52,
+     "dauer": 1.0004,
+     "tempo": 0.8,
+     "zoom": "none"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 18.4,
+     "dauer": 1.0004,
+     "tempo": 0.74,
+     "zoom": "none"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-10.mp4",
+     "ss": 19.22,
+     "dauer": 1.0004,
+     "tempo": 0.76,
+     "zoom": "none"
+    },
+    {
+     "quelle": "ewige-rose-mit-led-licht-718080-11.mp4",
+     "ss": 18.4,
+     "dauer": 2.0008,
+     "zoom": "out"
+    }
+   ]
+  },
+  {
+   "id": "hobel",
+   "musik": "mixkit-new-york-427.mp3",
+   "musik_start": 24,
+   "hook1": "Gemüse in",
+   "hook2": "Sekunden",
+   "endzeile": "LuxeStyle · luxestyle.ch",
+   "shots": [
+    {
+     "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
+     "ss": 36.2,
+     "dauer": 2.7696,
+     "zoom": "in",
+     "cropx": 0.55,
+     "wb": 5800
+    },
+    {
+     "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
+     "ss": 32.4,
+     "dauer": 2.308,
+     "zoom": "in",
+     "cropx": 0.55,
+     "text": "Zucchini zu Spiralen",
+     "wb": 5800
+    },
+    {
+     "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
+     "ss": 40.0,
+     "dauer": 2.308,
+     "zoom": "out",
+     "cropx": 0.55,
+     "wb": 5800
+    },
+    {
+     "quelle": "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4",
+     "ss": 50.4,
+     "dauer": 2.7696,
+     "zoom": "in",
+     "zoomstaerke": 0.06,
+     "cropx": 0.55,
+     "wb": 5800
+    }
+   ]
+  },
+  {
+   "id": "welle",
+   "musik": "mixkit-dreamy-jazz-645.mp3",
+   "musik_start": 11,
+   "hook1": "Wellenlicht",
+   "hook2": "an der Wand",
+   "endzeile": "LuxeStyle · luxestyle.ch",
+   "shots": [
+    {
+     "quelle": "led-wasserwellen-projektionsleuchte-677504-3.mp4",
+     "ss": 3.6,
+     "dauer": 2.1828,
+     "zoom": "in"
+    },
+    {
+     "quelle": "led-wasserwellen-projektionsleuchte-677504-5.mp4",
+     "ss": 8.44,
+     "dauer": 2.1828,
+     "zoom": "none",
+     "text": "Wechselnde Lichtfarben"
+    },
+    {
+     "quelle": "led-wasserwellen-projektionsleuchte-677504-5.mp4",
+     "ss": 11.66,
+     "dauer": 1.637,
+     "zoom": "none"
+    },
+    {
+     "quelle": "led-wasserwellen-projektionsleuchte-677504-9.mp4",
+     "ss": 22.1,
+     "dauer": 2.1828,
+     "zoom": "in",
+     "text": "Ruhige Stimmung"
+    },
+    {
+     "quelle": "led-wasserwellen-projektionsleuchte-677504-6.mp4",
+     "ss": 9.4,
+     "dauer": 2.1828,
+     "fit": "blur",
+     "zoom": "none"
+    }
+   ]
+  }
+ ]
+}

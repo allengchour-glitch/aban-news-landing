@@ -1,70 +1,120 @@
 {
-  "_stand": "2026-11-03. Fünf bearbeitete CJ-Produktvideos (kostenlose Videos, isFree=1, ON_STATE). Quelle jeweils CJ-videoId, Ausschnitt mit veredeln.sh, Originalton weggelassen, Mixkit-Musik. Sichtprüfung der Einzelbilder am 03.11. durch Claude: keine Gesichter, keine Fremdschrift im verwendeten Ausschnitt (Hobel: chinesische Schrift auf der Schürze ab ca. 11 s und oben links in den ersten Sekunden, darum Ausschnitt 4 bis 10 s). Nicht gesichtet: die übrigen 49 Videos. Rechte zur Bearbeitung für eigene Werbung: Besitzer 03.11. «es ist erlaubt» (CJ-Doku nennt nur Listing im Shop).",
+  "_stand": "2026-11-04. Fünf bearbeitete CJ-Produktvideos (kostenlose Videos, isFree=1, ON_STATE), geschnitten mit schneiden.py nach schnittplaene.json (Beat-Schnitt, mehrere Quellen). Vollständige Sichtung aller 54 Quellvideos am 03./04.11. (2 Bilder pro Sekunde, Workflow wf_2b23058f) und Gegenprüfung der ersten Fassung (wf_3ae2a0bd) ergaben: erste Fassung teils mit Fremdgerät/Fremdschrift, darum neu. Originalton wird nie verwendet. Rechte zur Bearbeitung für eigene Werbung: Besitzer 03.11. «es ist erlaubt» (CJ-Doku nennt nur Listing im Shop).",
   "clips": [
     {
       "id": "duft",
       "handle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040",
-      "video_id": "005d726c677a71efb9ba6632b68f0102",
-      "quelle_datei": "anti-gravitations-duftbefeuchter-mit-schwebend-903040-3.mp4",
-      "ss": 0, "dauer": 12, "musik": "mixkit-serene-view-443.mp3",
-      "hook1": "Wasser, das", "hook2": "schwebt?",
+      "dauer": 10.17,
+      "musik": "mixkit-serene-view-443.mp3",
+      "hook1": "Wasser, das",
+      "hook2": "schwebt?",
       "titel": "Anti-Gravitations-Duftbefeuchter",
       "alt": "Anti-Gravitations-Duftbefeuchter: Tropfen scheinen zu schweben, feiner Nebel steigt auf",
-      "caption_ig": "Wasser, das zu schweben scheint. 💧 Beim Anti-Gravitations-Duftbefeuchter fliessen die Tropfen optisch langsam nach oben, dazu befeuchtet ein feiner Nebel die Raumluft.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#duftbefeuchter #wohnideen #gadgets #schweiz",
-      "caption_tt": "Wasser, das zu schweben scheint. 💧 Beim Anti-Gravitations-Duftbefeuchter fliessen die Tropfen optisch langsam nach oben, dazu befeuchtet ein feiner Nebel die Raumluft.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#duftbefeuchter #wohnideen #gadgets #schweiz",
-      "plan_igfb": "2026-11-05T18:00:00", "plan_tt": "2026-11-05T13:00:00"
+      "caption_ig": "Wasser, das zu schweben scheint. 💧 Beim Anti-Gravitations-Duftbefeuchter scheinen die Tropfen langsam nach oben zu fliessen, dazu befeuchtet ein feiner Nebel die Raumluft. Betrieb per USB.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#duftbefeuchter #wohnideen #gadgets #schweiz",
+      "caption_tt": "Wasser, das zu schweben scheint. 💧 Beim Anti-Gravitations-Duftbefeuchter scheinen die Tropfen langsam nach oben zu fliessen, dazu befeuchtet ein feiner Nebel die Raumluft. Betrieb per USB.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#duftbefeuchter #wohnideen #gadgets #schweiz",
+      "plan_igfb": "2026-11-05T18:00:00",
+      "plan_tt": "2026-11-05T13:00:00",
+      "quellen": [
+        "anti-gravitations-duftbefeuchter-mit-schwebend-903040-4.mp4",
+        "anti-gravitations-duftbefeuchter-mit-schwebend-903040-8.mp4"
+      ],
+      "video_ids": [
+        "005e9aca677a71ef80874531958d0102",
+        "e0062a11677b71ef91b45017f1e80102"
+      ],
+      "schnitt": "schnittplaene.json"
     },
     {
       "id": "speaker",
       "handle": "led-wasser-speaker-mit-3d-ton-e17c58",
-      "video_id": "90e33556c99f71ef800d5017e1e90102",
-      "quelle_datei": "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4",
-      "ss": 2, "dauer": 12, "musik": "mixkit-dreamy-jazz-645.mp3",
-      "hook1": "Dieses Wasser", "hook2": "tanzt",
+      "dauer": 8.47,
+      "musik": "mixkit-majestic-475.mp3",
+      "hook1": "Dieses Wasser",
+      "hook2": "tanzt",
       "titel": "LED-Wasser-Speaker",
       "alt": "LED-Wasser-Speaker: farbige Wasserfontänen in zwei transparenten Säulen",
-      "caption_ig": "Wassersäulen, die im Takt leuchten. 🎶 Der LED-Wasser-Speaker lässt farbige Fontänen zur Musik tanzen, mit zwei Kanälen und 3.5-mm-Anschluss.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#lautsprecher #ledlicht #gadgets #schweiz",
-      "caption_tt": "Wassersäulen, die im Takt leuchten. 🎶 Der LED-Wasser-Speaker lässt farbige Fontänen zur Musik tanzen, mit zwei Kanälen und 3.5-mm-Anschluss.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#lautsprecher #ledlicht #gadgets #schweiz",
-      "plan_igfb": "2026-11-07T18:00:00", "plan_tt": "2026-11-07T18:30:00"
+      "caption_ig": "Wassersäulen, die leuchten. 🎶 Der LED-Wasser-Speaker lässt farbige Fontänen sprudeln, mit zwei Lautsprechern und 3.5-mm-Anschluss.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#lautsprecher #ledlicht #gadgets #schweiz",
+      "caption_tt": "Wassersäulen, die leuchten. 🎶 Der LED-Wasser-Speaker lässt farbige Fontänen sprudeln, mit zwei Lautsprechern und 3.5-mm-Anschluss.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#lautsprecher #ledlicht #gadgets #schweiz",
+      "plan_igfb": "2026-11-07T18:00:00",
+      "plan_tt": "2026-11-07T18:30:00",
+      "quellen": [
+        "led-wasser-speaker-mit-3d-ton-e17c58-2.mp4"
+      ],
+      "video_ids": [
+        "90e33556c99f71ef800d5017e1e90102"
+      ],
+      "schnitt": "schnittplaene.json"
     },
     {
       "id": "rose",
       "handle": "ewige-rose-mit-led-licht-718080",
-      "video_id": "d0f38d7ac32e71efbfa94531948c0102",
-      "quelle_datei": "ewige-rose-mit-led-licht-718080-4.mp4",
-      "ss": 1, "dauer": 12, "musik": "mixkit-new-york-427.mp3",
-      "hook1": "Eine Rose,", "hook2": "die nie welkt",
+      "dauer": 14.01,
+      "musik": "mixkit-violin-uplift-675.mp3",
+      "hook1": "Rose im Glas",
+      "hook2": "mit LED-Licht",
       "titel": "Ewige Rose mit LED-Licht",
-      "alt": "Ewige Rosen in Glaskuppeln mit warmem LED-Licht, in mehreren Farben",
-      "caption_ig": "Eine Rose im Glas, die nie welkt. 🌹 Mit warmem LED-Licht im Glascover, in sechs Farben, passend für Dekoration, Geschenk oder Hochzeitstisch. Batterie (AAA) nicht enthalten.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#ewigerose #geschenkidee #deko #schweiz",
-      "caption_tt": "Eine Rose im Glas, die nie welkt. 🌹 Mit warmem LED-Licht im Glascover, in sechs Farben, passend für Dekoration, Geschenk oder Hochzeitstisch. Batterie (AAA) nicht enthalten.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#ewigerose #geschenkidee #deko #schweiz",
-      "plan_igfb": "2026-11-09T19:30:00", "plan_tt": "2026-11-09T12:30:00"
+      "alt": "Rose im Glascover mit warmem LED-Licht auf Holzsockel, Farben Gold, Blau und Rot",
+      "caption_ig": "Eine Rose im Glascover mit warmem LED-Licht. 🌹 In sechs Farben wählbar, passend für Dekoration, Geschenk oder Hochzeitstisch. Betrieb mit AAA-Batterie (nicht enthalten).\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#rosenimglas #geschenkidee #deko #schweiz",
+      "caption_tt": "Eine Rose im Glascover mit warmem LED-Licht. 🌹 In sechs Farben wählbar, passend für Dekoration, Geschenk oder Hochzeitstisch. Betrieb mit AAA-Batterie (nicht enthalten).\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#rosenimglas #geschenkidee #deko #schweiz",
+      "plan_igfb": "2026-11-09T19:30:00",
+      "plan_tt": "2026-11-09T12:30:00",
+      "quellen": [
+        "ewige-rose-mit-led-licht-718080-10.mp4",
+        "ewige-rose-mit-led-licht-718080-11.mp4"
+      ],
+      "video_ids": [
+        "e16ea7a0a5e671ed988f0764a0fd0102",
+        "e838a180a5e671edbff46723a78f0102"
+      ],
+      "schnitt": "schnittplaene.json"
     },
     {
       "id": "hobel",
       "handle": "3-in-1-gemusehobel-mit-scharfen-messern-940928",
-      "video_id": "6fd997e0e8b171ed804b0764a0fd0102",
-      "quelle_datei": "3-in-1-gemusehobel-mit-scharfen-messern-940928-2.mp4",
-      "ss": 4, "dauer": 6, "musik": "mixkit-serene-view-443.mp3",
-      "hook1": "Frisch gehobelt", "hook2": "in Sekunden",
+      "dauer": 10.15,
+      "musik": "mixkit-new-york-427.mp3",
+      "hook1": "Gemüse in",
+      "hook2": "Sekunden",
       "titel": "3-in-1 Gemüsehobel",
-      "alt": "3-in-1 Gemüsehobel schneidet Gurkenscheiben in eine Glasschüssel",
-      "caption_ig": "Frisch gehobelt in Sekunden. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfüssen für festen Stand und drei Edelstahlmessern.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz",
-      "caption_tt": "Frisch gehobelt in Sekunden. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfüssen für festen Stand und drei Edelstahlmessern.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz",
-      "plan_igfb": "2026-11-11T20:30:00", "plan_tt": "2026-11-10T18:00:00"
+      "alt": "3-in-1 Gemüsehobel dreht Zucchini zu Spiralen auf einen Teller",
+      "caption_ig": "Gemüse in Sekunden: Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfüssen für festen Stand und drei Edelstahlmessern. Im Video: Zucchini-Spiralen.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz",
+      "caption_tt": "Gemüse in Sekunden: Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfüssen für festen Stand und drei Edelstahlmessern. Im Video: Zucchini-Spiralen.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz",
+      "plan_igfb": "2026-11-11T20:30:00",
+      "plan_tt": "2026-11-10T18:00:00",
+      "quellen": [
+        "3-in-1-gemusehobel-mit-scharfen-messern-940928-3.mp4"
+      ],
+      "video_ids": [
+        "2db62230de7e71eda4586733a78e0102"
+      ],
+      "schnitt": "schnittplaene.json"
     },
     {
       "id": "welle",
       "handle": "led-wasserwellen-projektionsleuchte-677504",
-      "video_id": "ed77c0d07c6a71eea5d45017f0e80102",
-      "quelle_datei": "led-wasserwellen-projektionsleuchte-677504-5.mp4",
-      "ss": 0.5, "dauer": 12, "musik": "mixkit-violin-uplift-675.mp3",
-      "hook1": "Wellenlicht", "hook2": "an der Wand",
+      "dauer": 10.37,
+      "musik": "mixkit-dreamy-jazz-645.mp3",
+      "hook1": "Wellenlicht",
+      "hook2": "an der Wand",
       "titel": "Wasserwellen-Projektionsleuchte",
       "alt": "LED-Wasserwellen-Projektionsleuchte wirft farbiges Wellenlicht an die Wand",
-      "caption_ig": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, 16 Farben wählst du mit der Fernbedienung.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz",
-      "caption_tt": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, 16 Farben wählst du mit der Fernbedienung.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz",
-      "plan_igfb": "2026-11-13T20:30:00", "plan_tt": "2026-11-11T12:00:00"
+      "caption_ig": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, die Lichtfarbe wählst du per Fernbedienung (16 Farben). Im Video: quadratische Ausführung und Kronenform.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nLink in Bio: luxestyle.ch\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz",
+      "caption_tt": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, die Lichtfarbe wählst du per Fernbedienung (16 Farben). Im Video: quadratische Ausführung und Kronenform.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz",
+      "plan_igfb": "2026-11-13T20:30:00",
+      "plan_tt": "2026-11-11T12:00:00",
+      "quellen": [
+        "led-wasserwellen-projektionsleuchte-677504-3.mp4",
+        "led-wasserwellen-projektionsleuchte-677504-5.mp4",
+        "led-wasserwellen-projektionsleuchte-677504-9.mp4",
+        "led-wasserwellen-projektionsleuchte-677504-6.mp4"
+      ],
+      "video_ids": [
+        "e01494bc0d2f71ef800d6632b68f0102",
+        "ed77c0d07c6a71eea5d45017f0e80102",
+        "0af53f50876771ee991d0764a0fd0102",
+        "ac84b5607c6a71eeb09b6732b68e0102"
+      ],
+      "schnitt": "schnittplaene.json"
     }
   ]
 }

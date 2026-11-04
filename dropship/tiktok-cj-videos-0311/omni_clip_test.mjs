@@ -180,7 +180,13 @@ ist(pruefeCjDatei(CJ).length === 0, `cj_clips.json erfüllt die Regeln: ${pruefe
 const c0 = cj[0];
 const cm = (feld, wert) => pruefeCjClip({ ...c0, [feld]: wert }).length > 0;
 ist(pruefeCjClip(c0).length === 0, 'CJ-Clip unverändert besteht');
-ist(cm('video_id', 'abc'), 'CJ: video_id zu kurz');
+ist(cm('video_ids', ['abc']), 'CJ: video_ids mit zu kurzer Kennung');
+ist(cm('video_ids', []), 'CJ: video_ids leer');
+ist(cm('video_ids', [c0.video_ids[0], c0.video_ids[0]]), 'CJ: video_ids doppelt');
+ist(cm('schnitt', 'kein json'), 'CJ: schnitt muss eine JSON-Datei sein');
+ist(cm('quellen', ['a.mp4']) === (c0.video_ids.length !== 1), 'CJ: quellen müssen zu video_ids passen');
+ist(pruefeCjClip({ ...c0, schnitt: undefined, video_ids: undefined, video_id: c0.video_ids[0], ss: 3 }).length === 0, 'CJ: alte Form (eine Quelle, ss) besteht weiter');
+ist(pruefeCjClip({ ...c0, schnitt: undefined, video_ids: undefined, video_id: 'abc', ss: 3 }).length > 0, 'CJ: alte Form mit kurzer video_id');
 ist(cm('dauer', 3), 'CJ: Dauer unter 4 s');
 ist(cm('dauer', 16), 'CJ: Dauer über 15 s');
 ist(cm('musik', 'luxe-premium.wav'), 'CJ: Eigenproduktion statt Mixkit');

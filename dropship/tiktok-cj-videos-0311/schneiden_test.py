@@ -100,10 +100,10 @@ def bild(t, name):
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(t), '-i', out, '-frames:v', '1', p], check=True)
     return p
 ist(os.path.getsize(bild(1.0, 'f1.png')) > 20000, 'Bild bei 1,0 s lässt sich lesen')
-# Lautstärke der Musik: -22 LUFS Ziel (loudnorm Einzeldurchgang, Toleranz ±4)
+# Lautstärke der Musik: -16 LUFS Ziel (loudnorm Einzeldurchgang, Toleranz ±4)
 e = subprocess.run(['ffmpeg', '-v', 'info', '-i', out, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
 lufs = float([l for l in e.split('\n') if ' I:' in l][-1].split('I:')[1].split('LUFS')[0])
-ist(-26 <= lufs <= -17, f'Lautheit {lufs} LUFS im Zielbereich')
+ist(-21 <= lufs <= -12, f'Lautheit {lufs} LUFS im Zielbereich')
 
 # 4. Eingabeprüfung
 def kopie(**kw):
@@ -133,6 +133,41 @@ wirft(lambda: S.baue(c, tmp, out), 'ausserhalb von', 'Gesamtdauer unter 8 s')
 neu = os.path.join(tmp, 'trocken.mp4')
 S.baue(plan, tmp, neu, trocken=True)
 ist(not os.path.exists(neu), 'Trockenlauf schreibt keine Datei')
+
+
+# 6. Querformat mit Weichzeichner-Rahmen, Text unter der Endkarte, Endkarte tiefer
+import io, contextlib
+c_ = os.path.join(tmp, 'quer.mp4')
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc2=size=960x540:rate=30:duration=14', '-pix_fmt', 'yuv420p', c_], check=True)
+plan_b = json.loads(json.dumps(plan)); plan_b['shots'][1].update(quelle='quer.mp4', ss=1.0, fit='blur', zoom='none')
+out_b = os.path.join(tmp, 'blur.mp4')
+S.baue(plan_b, tmp, out_b)
+jb = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height', '-of', 'json', out_b], text=True))['streams'][0]
+ist((jb['width'], jb['height']) == (1080, 1920), 'Weichzeichner-Rahmen: Ausgabe 1080x1920')
+plan_c = json.loads(json.dumps(plan)); plan_c['shots'][1]['fit'] = 'quatsch'
+wirft(lambda: S.baue(plan_c, tmp, out), 'fit', 'unbekannter fit')
+puffer = io.StringIO()
+with contextlib.redirect_stdout(puffer):
+    S.baue(plan, tmp, os.path.join(tmp, 'x.mp4'), trocken=True)
+graph = puffer.getvalue()
+ist('y=1370' in graph and 'y=1300' not in graph, 'Endkarte bei y=1370')
+ist('y=1200' in graph and 'y=1240' not in graph, 'Kernaussagen bei y=1200')
+es_ = info['gesamt_s'] - 2.0
+import re
+enden = [float(m.group(1)) for m in re.finditer(r"y=1200:enable='between\(t,[0-9.]+,([0-9.]+)\)'", graph)]
+ist(enden and max(enden) <= es_ - 0.04, f'Kernaussagen enden vor der Endkarte ({max(enden) if enden else None} <= {es_ - 0.05:.2f})')
+
+
+# 7. Weissabgleich: kleinere Kelvin-Zahl macht wärmer, Bereich geprüft
+plan_w = json.loads(json.dumps(plan)); plan_w['shots'][0]['wb'] = 5500
+puf2 = io.StringIO()
+with contextlib.redirect_stdout(puf2):
+    S.baue(plan_w, tmp, os.path.join(tmp, 'w.mp4'), trocken=True)
+ist('colortemperature=temperature=5500,cas=' in puf2.getvalue(), 'wb wird als colortemperature vor dem Nachschärfen eingebaut')
+ist(puf2.getvalue().count('colortemperature') == 1, 'wb nur an der gewählten Einstellung')
+for bad in (3000, 9500, 'warm'):
+    pb = json.loads(json.dumps(plan)); pb['shots'][0]['wb'] = bad
+    wirft(lambda pb=pb: S.baue(pb, tmp, out), 'wb', f'wb {bad} ausserhalb')
 
 shutil.rmtree(tmp, ignore_errors=True)
 print(f'{ok} Prüfungen bestanden' + (f', {len(fehler)} FEHLER' if fehler else ''))

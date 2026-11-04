@@ -3,9 +3,9 @@
 
 Was der Schnitt tut (anders als veredeln.sh, das nur einen Ausschnitt nimmt):
   * mehrere Einstellungen aus verschiedenen Quellvideos, Schnitte auf dem Takt der Musik (Beat-Analyse mit numpy/scipy, Dauer je Einstellung = ganze Takte)
-  * je Einstellung: Entrauschen (hqdn3d), Zuschnitt auf 9:16, Hochskalieren mit Lanczos, sanfter Zoom (Ken Burns), Nachschärfen (cas), leichte Farbkorrektur
+  * je Einstellung: Entrauschen (hqdn3d), optionaler Weissabgleich (wb in Kelvin), Zuschnitt auf 9:16 (oder fit=blur: ganzes Querformat mit Weichzeichner-Rahmen), Hochskalieren mit Lanczos, sanfter Zoom (Ken Burns), Nachschärfen (cas), leichte Farbkorrektur
   * Hook in zwei Zeilen (erste 2,7 s), Kernaussage je Einstellung (untere Drittelmitte, ausserhalb der TikTok-Oberfläche), Endkarte mit Wegweiser, Ausblenden von Bild und Ton
-  * Musik rotierend aus den fünf Mixkit-Stücken (dropship/reel-vorlage/musik_waehlen.sh), -22 LUFS, Originalton der Quelle wird nie verwendet
+  * Musik rotierend aus den fünf Mixkit-Stücken (dropship/reel-vorlage/musik_waehlen.sh), -16 LUFS, Originalton der Quelle wird nie verwendet
 Eingabe: Schnittplan (siehe schnittplaene.json) mit Clips; je Clip id, musik, musik_start, hook1, hook2, endzeile, shots[{quelle, ss, dauer, zoom, cropx, cropy, tempo, text}].
 Aufruf:  python3 schneiden.py plan.json --id duft --quellen /pfad/zu/cjvid --out /pfad/duft.mp4 [--trocken] [--ohne-takt]
 Grenzen (offen gesagt): Die Beat-Analyse kann bei Stücken ohne klaren Schlag (ambient) danebenliegen; dann meldet sie «Takt unsicher» und nimmt 120 bpm. Gehört hat das Ergebnis niemand von uns (kein Gehör hier).
@@ -22,6 +22,7 @@ MUSIK_STUECKE = ['mixkit-serene-view-443.mp3', 'mixkit-majestic-475.mp3', 'mixki
 VERBOTEN = set("'\":%\\")
 FPS = 30
 MIN_S, MAX_S = 8.0, 15.0
+LUFS = -16   # reine Musik ohne Stimme: -16 (Prüfer-Fund 03.11.: -22 klang neben anderen Beiträgen zu leise)
 
 
 class Fehler(Exception):
@@ -170,13 +171,26 @@ def baue(clip, quellen, out, mit_takt=True, musik_log=False, trocken=False):
         else:
             z = None
         eingaben += ['-ss', f'{ss:.3f}', '-t', f'{span + 0.3:.3f}', '-i', q]
-        v = (f"[{i}:v]fps={FPS},trim=duration={span:.3f},setpts=(PTS-STARTPTS)/{tempo},hqdn3d=1.4:1.4:3:3,crop={cw}:{ch}:{cx}:{cy},"
-             f"scale=1620:2880:flags=lanczos,")
-        if z:
-            v += f"zoompan={z}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps={FPS},"
+        wb = s.get('wb')
+        if wb is not None and not (isinstance(wb, (int, float)) and 3500 <= wb <= 9000):
+            raise Fehler(f'shots[{i}].wb (Weissabgleich in Kelvin) muss zwischen 3500 und 9000 liegen; kleiner = wärmer')
+        wbf = f"colortemperature=temperature={int(wb)}," if wb else ''
+        fit = s.get('fit', 'crop')
+        if fit not in ('crop', 'blur'):
+            raise Fehler(f'shots[{i}].fit muss crop oder blur sein')
+        if fit == 'blur':
+            # Querformat-Quelle ohne harten Beschnitt: ganzes Bild auf 1080 Breite, Rest als abgedunkelte, weichgezeichnete Vergrösserung desselben Bildes
+            v = (f"[{i}:v]fps={FPS},trim=duration={span:.3f},setpts=(PTS-STARTPTS)/{tempo},hqdn3d=1.4:1.4:3:3,split=2[a{i}][b{i}];"
+                 f"[a{i}]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=45,eq=brightness=-0.14:saturation=1.15[g{i}];"
+                 f"[b{i}]scale=1080:-2:flags=lanczos[f{i}];[g{i}][f{i}]overlay=(W-w)/2:(H-h)/2,")
         else:
-            v += "scale=1080:1920:flags=lanczos,"
-        v += f"cas=strength=0.5,eq=contrast=1.05:saturation=1.10,setsar=1,fps={FPS},trim=duration={d:.3f},setpts=PTS-STARTPTS,format=yuv420p[v{i}]"
+            v = (f"[{i}:v]fps={FPS},trim=duration={span:.3f},setpts=(PTS-STARTPTS)/{tempo},hqdn3d=1.4:1.4:3:3,crop={cw}:{ch}:{cx}:{cy},"
+                 f"scale=1620:2880:flags=lanczos,")
+            if z:
+                v += f"zoompan={z}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1080x1920:fps={FPS},"
+            else:
+                v += "scale=1080:1920:flags=lanczos,"
+        v += f"{wbf}cas=strength=0.5,eq=contrast=1.05:saturation=1.10,setsar=1,fps={FPS},trim=duration={d:.3f},setpts=PTS-STARTPTS,format=yuv420p[v{i}]"
         kette.append(v)
         namen.append(f'v{i}')
         grenzen.append((t0, t0 + d, s.get('text', '')))
@@ -198,27 +212,26 @@ def baue(clip, quellen, out, mit_takt=True, musik_log=False, trocken=False):
         p = txt(f'{key}.txt', clip[key])
         stufen.append(f"drawtext=fontfile={fh}:textfile={p}:fontsize=96:fontcolor=white:borderw=7:bordercolor=black:shadowcolor=black@0.55:shadowx=0:shadowy=6:"
                       f"x=(w-text_w)/2:y='{y0}+34*(1-min(1,max(0,(t-0.15)/0.25)))':enable='between(t,0.15,2.7)':alpha='{ha}'")
+    es = total - 2.0
     for i, (a, b, text) in enumerate(grenzen):
         if not text:
             continue
         p = txt(f'text{i}.txt', text)
-        a2, b2 = a + 0.12, b - 0.10
-        if i == 0:
-            a2 = max(a2, 2.8)            # nie gleichzeitig mit dem Hook
+        a2, b2 = a + 0.12, min(b - 0.10, es - 0.05)     # Kernaussagen nie unter der Endkarte
+        a2 = max(a2, 2.8)                # nie gleichzeitig mit dem Hook
         if b2 - a2 < 0.8:
             continue
         al = f"if(lt(t,{a2:.2f}+0.2),(t-{a2:.2f})/0.2,if(gt(t,{b2:.2f}-0.15),({b2:.2f}-t)/0.15,1))"
         stufen.append(f"drawtext=fontfile={ft}:textfile={p}:fontsize=66:fontcolor=white:borderw=6:bordercolor=black:shadowcolor=black@0.5:shadowx=0:shadowy=5:"
-                      f"x=(w-text_w)/2:y=1240:enable='between(t,{a2:.2f},{b2:.2f})':alpha='{al}'")
+                      f"x=(w-text_w)/2:y=1200:enable='between(t,{a2:.2f},{b2:.2f})':alpha='{al}'")
     pe = txt('end.txt', clip.get('endzeile', 'LuxeStyle · luxestyle.ch'))
-    es = total - 2.0
-    stufen.append(f"drawtext=fontfile={fe}:textfile={pe}:fontsize=56:fontcolor=white:borderw=3:bordercolor=black@0.6:box=1:boxcolor=black@0.38:boxborderw=24:"
-                  f"x=(w-text_w)/2:y=1300:enable='gte(t,{es:.2f})':alpha='if(lt(t,{es:.2f}+0.3),(t-{es:.2f})/0.3,1)'")
+    stufen.append(f"drawtext=fontfile={fe}:textfile={pe}:fontsize=56:fontcolor=white:borderw=3:bordercolor=black@0.7:box=1:boxcolor=black@0.58:boxborderw=26:"
+                  f"x=(w-text_w)/2:y=1370:enable='gte(t,{es:.2f})':alpha='if(lt(t,{es:.2f}+0.3),(t-{es:.2f})/0.3,1)'")
     stufen.append(f"fade=t=out:st={total - 0.45:.2f}:d=0.45,format=yuv420p")
     kette.append('[vc]' + ','.join(stufen) + '[v]')
     n = len(shots)
     eingaben += ['-ss', f"{mstart + takt['phase']:.3f}", '-t', f'{total + 1:.2f}', '-i', mpfad]
-    kette.append(f"[{n}:a]atrim=duration={total:.3f},asetpts=PTS-STARTPTS,loudnorm=I=-22:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.3,afade=t=out:st={total - 0.9:.2f}:d=0.9,aresample=48000,atrim=duration={total:.3f}[a]")
+    kette.append(f"[{n}:a]atrim=duration={total:.3f},asetpts=PTS-STARTPTS,loudnorm=I={LUFS}:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.3,afade=t=out:st={total - 0.9:.2f}:d=0.9,aresample=48000,atrim=duration={total:.3f}[a]")
     skript = os.path.join(work, 'graph.txt')
     with open(skript, 'w', encoding='utf-8') as f:
         f.write(';\n'.join(kette))

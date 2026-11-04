@@ -90,8 +90,12 @@ export function pruefeCjClip(p) {
   const need = (c, m) => { if (!c) f.push(m); };
   need(/^[a-z0-9-]{2,24}$/.test(p.id ?? ''), 'id fehlt oder hat verbotene Zeichen');
   need(/^[a-z0-9-]{3,120}$/.test(p.handle ?? ''), 'handle fehlt oder hat verbotene Zeichen');
-  need(/^[0-9a-f]{32}$/.test(p.video_id ?? ''), 'video_id muss die 32-stellige CJ-videoId sein');
-  need(typeof p.ss === 'number' && p.ss >= 0 && p.ss <= 600, 'ss muss eine Zahl zwischen 0 und 600 sein');
+  // eine Quelle (video_id + ss) oder ein Schnittplan mit mehreren Quellen (video_ids + schnitt)
+  const ids = Array.isArray(p.video_ids) ? p.video_ids : (p.video_id !== undefined ? [p.video_id] : []);
+  need(ids.length >= 1 && ids.length <= 8 && ids.every((v) => /^[0-9a-f]{32}$/.test(v ?? '')), 'video_id (oder video_ids) muss aus 32-stelligen CJ-videoIds bestehen');
+  need(new Set(ids).size === ids.length, 'video_ids enthält eine Kennung doppelt');
+  if (p.schnitt === undefined) need(typeof p.ss === 'number' && p.ss >= 0 && p.ss <= 600, 'ss muss eine Zahl zwischen 0 und 600 sein');
+  else need(typeof p.schnitt === 'string' && /^[\w.-]+\.json$/.test(p.schnitt) && Array.isArray(p.quellen) && p.quellen.length === ids.length, 'schnitt muss eine JSON-Datei nennen und quellen müssen zu video_ids passen');
   need(typeof p.dauer === 'number' && p.dauer >= 4 && p.dauer <= 15, 'dauer muss zwischen 4 und 15 Sekunden liegen');
   need(MUSIK_STUECKE.includes(p.musik), 'musik muss eines der fünf Mixkit-Stücke sein');
   for (const k of ['hook1', 'hook2']) {
