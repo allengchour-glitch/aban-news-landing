@@ -1,12 +1,15 @@
 // Spielt die Optik-Politur vom 04.11.2026 ins MAIN-Theme (Sicherung vorher, Rücklesen nachher). Trockenlauf ist Vorgabe.
-//   Einspielen:   LIVE=1 node dropship/optik-0411/apply.mjs
-//   Rücknahme:    ZURUECK=1 LIVE=1 node dropship/optik-0411/apply.mjs   (nur wenn alle drei Dateien noch exakt dem eingespielten Stand entsprechen)
+//   Einspielen:   LIVE=1 node dropship/optik-0411/apply.mjs            (Stufe 1, patches.mjs)
+//                 STUFE=2 LIVE=1 node dropship/optik-0411/apply.mjs    (Stufe 2, patches2.mjs; setzt Stufe 1 voraus)
+//   Rücknahme:    ZURUECK=1 LIVE=1 node dropship/optik-0411/apply.mjs  (je Stufe; Stufe 2 zuerst zurücknehmen)   (nur wenn alle drei Dateien noch exakt dem eingespielten Stand entsprechen)
 // Die Änderungen stehen in patches.mjs; ohne LIVE=1 wird nichts geschrieben.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { shopifyGql } from '../../automation/lib/shopify_gql.mjs';
 import { shopifyClientSecret } from '../../automation/lib/shopify_secret.mjs';
-import { DATEIEN, MD5_VOR, anwenden, zuruecknehmen } from './patches.mjs';
+const STUFE = process.env.STUFE === '2' ? 2 : 1;
+const { DATEIEN, MD5_VOR, MARKE_THEME, anwenden } = await import(STUFE === 2 ? './patches2.mjs' : './patches.mjs');
+const SUFFIX = STUFE === 2 ? '.vor-stufe2' : '.vor';
 const LIVE = process.env.LIVE === '1', ZURUECK = process.env.ZURUECK === '1';
 const HIER = new URL('.', import.meta.url).pathname;
 const md5 = (s) => createHash('md5').update(s).digest('hex');
@@ -39,7 +42,7 @@ async function schreibenUndPruefen(soll, beschreibung) {
 function ladeVor() {
   // Die Sicherung der Stände VOR der Politur (vom Einspielen angelegt).
   const m = {};
-  for (const n of NAMEN) { const p = HIER + 'sicherung/' + n.replace('/', '__') + '.vor'; if (!existsSync(p)) { console.error('Sicherung fehlt:', p); process.exit(4); } m[n] = readFileSync(p, 'utf8'); }
+  for (const n of NAMEN) { const p = HIER + 'sicherung/' + n.replace('/', '__') + SUFFIX; if (!existsSync(p)) { console.error('Sicherung fehlt:', p); process.exit(4); } m[n] = readFileSync(p, 'utf8'); }
   return m;
 }
 if (ZURUECK) {
@@ -52,13 +55,13 @@ if (ZURUECK) {
 }
 
 if (NAMEN.every((n) => md5(jetzt[n]) === vor[n]) === false) {
-  const schon = jetzt[DATEIEN.THEME].includes('id="lx-optik-0411"');
+  const schon = jetzt[DATEIEN.THEME].includes(`id="${MARKE_THEME}"`);
   console.error(schon ? 'Schon eingespielt (oder teilweise): nichts geschrieben' : 'Mindestens eine Datei weicht vom erwarteten Ausgangsstand ab: nichts geschrieben');
   process.exit(schon ? 3 : 4);
 }
 const neu = anwenden(alsDreier(jetzt));
 mkdirSync(HIER + 'sicherung', { recursive: true });
-for (const n of NAMEN) writeFileSync(HIER + 'sicherung/' + n.replace('/', '__') + '.vor', jetzt[n]);
+for (const n of NAMEN) writeFileSync(HIER + 'sicherung/' + n.replace('/', '__') + SUFFIX, jetzt[n]);
 console.log('Sicherung geschrieben; neue Grössen', NAMEN.map((n) => `${n} ${alsMap(neu)[n].length}`).join(' | '));
 if (!LIVE) { console.log('Trockenlauf, nichts geschrieben'); process.exit(0); }
 await schreibenUndPruefen(alsMap(neu), 'neu');
