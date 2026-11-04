@@ -106,6 +106,38 @@ def satellit_voll():
             "letzter_lauf": {"zeit": "2026-11-03T02:41:20+00:00", "ok": False, "auftraege": 1, "positionen": 3, "hinweise": ["⚠️ Satellit SOL: aufbauen: BUY 0.7 ✗ HTTP 400 -2019"]}}
 
 
+LABOR_ZAHLEN = (   # (Markt, k, Handel, Treffer, brutto bp, netto bp, Summe %, Erwartung brutto bp, Erwartung netto bp, Erwartung Handel je Tag) — echte Messung des Labors über 34 Tage (Oktober 2026), auf eine Stelle gerundet
+    ("BTC", 2.0, 3795, 0.32, -2.3, -8.9, -336.6, -3.039, -9.565, 119.7), ("BTC", 2.5, 2426, 0.36, -1.4, -8.0, -194.1, -1.600, -8.037, 76.7),
+    ("BTC", 3.0, 1536, 0.36, -1.2, -7.8, -119.0, -0.763, -7.192, 49.1), ("BTC", 3.5, 973, 0.36, -1.3, -8.0, -77.8, -0.457, -6.927, 30.5),
+    ("ETH", 2.0, 3966, 0.38, -3.0, -9.8, -389.7, -4.502, -11.338, 126.7), ("ETH", 2.5, 2554, 0.41, -1.8, -8.6, -218.7, -2.517, -9.244, 81.9),
+    ("ETH", 3.0, 1630, 0.42, -1.0, -7.8, -127.7, -1.286, -8.008, 53.1), ("ETH", 3.5, 992, 0.41, -1.0, -7.9, -78.8, -0.719, -7.485, 34.0))
+
+
+def scalp_zeilen(mit_handel=True):
+    out = []
+    for (m, k, n, tr, br, ne, su, eb, en, ej) in LABOR_ZAHLEN:
+        z = {"markt": m, "k": k, "n": n if mit_handel else 0, "erw_brutto_bp": eb, "erw_netto_bp": en, "erw_je_tag": ej, "offen": False}
+        if mit_handel:
+            z.update(treffer=tr, brutto_bp=br, netto_bp=ne, kosten_bp=round(ne - br, 3), summe_pct=su, einbruch_pct=su, dauer_min=12.5, nachgerechnet=0)
+        out.append(z)
+    return out
+
+
+def scalp_voll():
+    """Scalping-Labor (Papier) wie cockpit.scalp_stand() es liefert: 8 Bücher, Urteil «durchgefallen». Mittlere Kosten je Trade von Hand: Σ(kosten × n) / Σ n = 119980 / 17872 = 6.71 bp."""
+    return {"aus": False, "grund": "", "hinweis": "", "gelaufen": True, "zeilen": scalp_zeilen(),
+            "urteil": {"urteil": "durchgefallen", "tage": 34.0, "je_stufe": {}, "text": "durchgefallen — wie der Prüfstand es erwarten liess"},
+            "letzter_lauf": {"zeit": "2026-11-04T02:30:41+00:00", "kerzen": 1440, "trades": 214, "hinweise": []},
+            "letzte_trades": [{"markt": "ETH", "k": 2.0, "t_ein": 1793759400000, "t_aus": 1793759460000, "richtung": 1, "ein": 2249.1, "aus": 2248.8, "art": "T", "netto_bp": -9.2}],
+            "daten_ab": 1790812800000, "kosten_bp": 6.71, "ampel": {"ok": True, "text": "Papier, durchgefallen"}}
+
+
+def scalp_leer():
+    return {"aus": False, "grund": "", "hinweis": "", "gelaufen": False, "zeilen": scalp_zeilen(False),
+            "urteil": {"urteil": "zu wenig Daten", "tage": 0.0, "je_stufe": {}, "text": "zu wenig Daten"}, "letzter_lauf": None, "letzte_trades": [], "daten_ab": None,
+            "kosten_bp": None, "ampel": {"ok": None, "text": "noch kein Lauf (Papier)"}}
+
+
 def auftraege_voll():
     z = lambda s: s  # noqa: E731
     return [
@@ -132,7 +164,7 @@ def stand_voll(modus="TESTNETZ"):
             "kontostand": [[a, round(b, 2)] for a, b in zip(tage(41, HEUTE), ks)], "auftraege": auftraege_voll(), "lage": lage_voll(),
             "ki": {"letzter": None, "vergleich": {}, "kosten": 0.0}, "sammler": None, "backtest": None, "risiko": {"stufe": 2.0, "test": {}, "anteil": 0.8},
             "telegram": False, "calls": None, "programm": {"geladen": "2026-11-03.7524d36", "auf_platte": "2026-11-03.7524d36"},
-            "satellit": satellit_voll(), "kurse": kurse, "kurse_schnitt": schnitt}
+            "satellit": satellit_voll(), "scalp": scalp_voll(), "kurse": kurse, "kurse_schnitt": schnitt}
 
 
 def fall_voll():
@@ -150,6 +182,7 @@ def fall_leer():
     s["maerkte"] = [dict(m, hebel=0.0, hebel_roh=0.0, stop=None, stop_berechnet=None, broker=None) for m in maerkte_voll()]
     s["auftraege"] = []
     s["satellit"].update(entschieden=None, ziele=[], positionen=[], ausgestoppt=[], letzter_lauf=None)
+    s["scalp"] = scalp_leer()
     s["gesundheit"] = [g for g in gesundheit_voll() if g["ok"] is not False][:6] + [{"name": "Nachkontrolle (Aufgabenplanung)", "ok": True, "text": "eingerichtet"}]
     return s, p
 
@@ -171,12 +204,13 @@ def fall_gross():
     p["positionen"][0].update(gewinn=123456.78, wert=12345678.9, menge=160.1234)
     s["konto"].update(wert=1234567.89)
     s["kontostand"] = [[a, b * 240] for a, b in s["kontostand"]]
+    s["scalp"]["zeilen"][0].update(n=12345678, summe_pct=-1234567.8)   # Millionen Handel: nichts darf überlaufen
     return s, p
 
 
 def fall_daten_fehlen():
     s = stand_voll()
-    s.update(konto=None, kontostand=[], maerkte=[], auftraege=[], lage={}, satellit=None, kurse={}, kurse_schnitt={}, risiko={"stufe": 1.0, "test": {}, "anteil": 0.5})
+    s.update(konto=None, kontostand=[], maerkte=[], auftraege=[], lage={}, satellit=None, scalp=None, kurse={}, kurse_schnitt={}, risiko={"stufe": 1.0, "test": {}, "anteil": 0.5})
     s["gesundheit"] = [{"name": "Futures-Schlüssel (Pilot)", "ok": False, "text": "fehlt — ohne Schlüssel nur Probeläufe"}]
     return s, {"hinweis": "Profit nicht lesbar: URLError"}
 
@@ -192,6 +226,9 @@ def fall_xss():
     s["satellit"]["ziele"][0]["symbol"] = "A" + boese + "USDT"
     s["satellit"]["ausgestoppt"][0]["symbol"] = "B" + boese + "USDT"
     s["lage"]["angst_gier"]["tag"] = "2026-11-02" + boese
+    s["scalp"].update(aus=True, grund="Grund " + boese, hinweis="Labor " + boese)
+    s["scalp"]["zeilen"][0]["markt"] = "BTC" + boese
+    s["scalp"]["letzter_lauf"]["zeit"] = "2026-11-04T02:30:41+00:00" + boese
     p["positionen"][0]["symbol"] = "BTC" + boese + "USDT"
     return s, p
 

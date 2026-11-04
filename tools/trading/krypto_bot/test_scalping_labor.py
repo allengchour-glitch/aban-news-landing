@@ -576,6 +576,14 @@ with tempfile.TemporaryDirectory() as tmp:
     b3, h3 = L.lesen(pfad, START)
     pruefe("lesen: beide kaputt → altes beiseitegelegt (nie überschrieben), neues Buch, Hinweis", "unlesbar" in h3 and b3["maerkte"] == {} and any(".kaputt-" in p.name for p in pfad.parent.iterdir())
            and not pfad.exists(), [p.name for p in pfad.parent.iterdir()])
+    # die Anzeige (Cockpit) fasst nie eine Datei an
+    pfad.write_text("{kaputt")
+    pfad.with_name("buch.json.bak").write_text("auch kaputt")
+    vorher_namen = sorted(p.name for p in pfad.parent.iterdir())
+    b4, h4 = L.lesen(pfad, START, beiseite=False)
+    pruefe("lesen(beiseite=False): beide kaputt → neues Buch und Hinweis, aber keine Datei wird umbenannt oder angelegt", "unlesbar" in h4 and "nächsten Lauf" in h4 and b4["maerkte"] == {}
+           and sorted(p.name for p in pfad.parent.iterdir()) == vorher_namen and pfad.read_text() == "{kaputt", (h4, vorher_namen))
+    pruefe("lesen(beiseite=False): fehlende Dateien → neues Buch ohne Hinweis, nichts angelegt", L.lesen(tmp / "gibtsnicht" / "b.json", START, beiseite=False)[1] == "" and not (tmp / "gibtsnicht").exists())
     for schaden, name in ((lambda d: d.pop("version"), "Version fehlt"), (lambda d: d["maerkte"].update({"XRPUSDT": {"buecher": {}}}), "fremder Markt"),
                           (lambda d: d["maerkte"]["BTCUSDT"]["buecher"]["2.0"].pop("fenster"), "Feld fehlt"),
                           (lambda d: d["maerkte"]["BTCUSDT"]["buecher"]["2.0"].update({"k": 9.0}), "falsches k"),
@@ -621,15 +629,15 @@ with tempfile.TemporaryDirectory() as tmp:
     lauf_zeit = L._iso(jetzt_a)
     bb = json.loads(json.dumps(b_a))
     bb["letzter_lauf"] = {"zeit": lauf_zeit, "kerzen": 10, "trades": 1, "hinweise": []}
-    pruefe("Ampel: aus per Schalter → grau (None)", L.ampel(bb, jetzt_a, {"KRYPTO_SCALP_LABOR": "aus"}, nix)[0] is None)
-    pruefe("Ampel: noch kein Lauf → grau", L.ampel(L.neues_buch(START), jetzt_a, {}, nix)[0] is None)
-    pruefe("Ampel: frischer Lauf ohne Hinweis → grün mit Urteil", L.ampel(bb, jetzt_a + 3600_000, {}, nix) == (True, "Papier, zu wenig Daten"), L.ampel(bb, jetzt_a + 3600_000, {}, nix))
-    pruefe("Ampel: Lauf älter als 36 Stunden → rot", L.ampel(bb, jetzt_a + 37 * 3600_000, {}, nix)[0] is False and "37" in L.ampel(bb, jetzt_a + 37 * 3600_000, {}, nix)[1])
+    pruefe("Ampel: aus per Schalter → grau (None), keine Warnung", L.ampel(bb, jetzt_a, {"KRYPTO_SCALP_LABOR": "aus"}, nix)[0] is None and L.ampel(bb, jetzt_a, {"KRYPTO_SCALP_LABOR": "aus"}, nix)[2] is False)
+    pruefe("Ampel: noch kein Lauf → grau, keine Warnung", L.ampel(L.neues_buch(START), jetzt_a, {}, nix)[0] is None and L.ampel(L.neues_buch(START), jetzt_a, {}, nix)[2] is False)
+    pruefe("Ampel: frischer Lauf ohne Hinweis → grün mit Urteil, keine Warnung", L.ampel(bb, jetzt_a + 3600_000, {}, nix) == (True, "Papier, zu wenig Daten", False), L.ampel(bb, jetzt_a + 3600_000, {}, nix))
+    pruefe("Ampel: Lauf älter als 36 Stunden → rot, ohne Warnung-Flag", L.ampel(bb, jetzt_a + 37 * 3600_000, {}, nix)[0] is False and "37" in L.ampel(bb, jetzt_a + 37 * 3600_000, {}, nix)[1] and L.ampel(bb, jetzt_a + 37 * 3600_000, {}, nix)[2] is False)
     pruefe("Ampel: genau 36 Stunden noch grün", L.ampel(bb, jetzt_a + 36 * 3600_000, {}, nix)[0] is True)
     bb["letzter_lauf"]["hinweise"] = ["BTC: Kerzen nicht erreichbar (OSError)"]
-    pruefe("Ampel: Hinweis im letzten Lauf → rot mit dem Hinweis", L.ampel(bb, jetzt_a, {}, nix)[0] is False and "nicht erreichbar" in L.ampel(bb, jetzt_a, {}, nix)[1])
+    pruefe("Ampel: Hinweis im letzten Lauf (z. B. Netz weg, wird nachgeholt) → GELB (grau mit Warnung), nicht rot", L.ampel(bb, jetzt_a, {}, nix)[0] is None and L.ampel(bb, jetzt_a, {}, nix)[2] is True and "nicht erreichbar" in L.ampel(bb, jetzt_a, {}, nix)[1])
     bb["letzter_lauf"]["zeit"] = "kaputt"
-    pruefe("Ampel: unlesbare Zeit → rot, kein Absturz", L.ampel(bb, jetzt_a, {}, nix)[0] is False)
+    pruefe("Ampel: unlesbare Zeit → gelb, kein Absturz", L.ampel(bb, jetzt_a, {}, nix)[0] is None and L.ampel(bb, jetzt_a, {}, nix)[2] is True)
 
 # ───────────────────────── 10) Handy-Meldung: einmal pro Tag, nur wenn zugestellt ─────────────────────────
 with tempfile.TemporaryDirectory() as tmp:

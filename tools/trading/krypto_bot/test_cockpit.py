@@ -1335,6 +1335,116 @@ with tempfile.TemporaryDirectory() as _tu:
     finally:
         _SAT_U.BUCH, _SAT_U.AUS_DATEI = _alt_buch_u, _alt_aus_u
 
+# ── Scalping-Labor (Papier) im Cockpit: Anzeige-Daten, Gesundheitszeile, Telegram /scalp ──
+import scalping_labor as _SL_U  # noqa: E402
+import scalping_kern as _SK_U  # noqa: E402
+
+with tempfile.TemporaryDirectory() as _tl:
+    _tlp = Path(_tl)
+    _alt_sl = (_SL_U.BUCH, _SL_U.AUS_DATEI, _SL_U.STOP, _SL_U.PAUSE)
+    _SL_U.BUCH, _SL_U.AUS_DATEI, _SL_U.STOP, _SL_U.PAUSE = _tlp / "labor.json", _tlp / "aus.txt", _tlp / "STOP-nein", _tlp / "PAUSE-nein"
+    _T0 = int(datetime(2026, 11, 2, tzinfo=timezone.utc).timestamp() * 1000)
+    try:
+        _leer = C.scalp_stand({})
+        pruefe("scalp_stand: nie gelaufen → gelaufen False, 8 Zeilen ohne Handel, zu wenig Daten, keine Kosten, an",
+               _leer is not None and _leer["gelaufen"] is False and len(_leer["zeilen"]) == 8 and all(z["n"] == 0 for z in _leer["zeilen"]) and _leer["urteil"]["urteil"] == "zu wenig Daten"
+               and _leer["kosten_bp"] is None and _leer["aus"] is False and _leer["hinweis"] == "" and _leer["letzte_trades"] == [], _leer)
+        # ein Buch mit gerechneten Handeln (ohne Kosten, damit die Zahlen von Hand stimmen)
+        _b = _SL_U.neues_buch(_T0 + 86_400_000)
+        _b["daten_ab"] = _T0
+        for _sym, _k, _trades in (("BTCUSDT", 2.0, [(100.0, 100.1)] * 3 + [(100.0, 99.8)]), ("ETHUSDT", 3.5, [(100.0, 100.1)] * 2)):
+            _m = {"weiter_ab": _T0 + 86_400_000 + 60_000, "letzte_kerze": _T0 + 86_400_000, "luecken": 0, "buecher": {str(kk): _SL_U.neues_band_buch(kk) for kk in _SL_U.STUFEN}}
+            for _i, (_e, _a) in enumerate(_trades):
+                _SL_U.buche(_m["buecher"][str(_k)], (_T0 + _i * 60_000, _T0 + _i * 60_000 + 60_000, 1, _e, _a, "M", "M"), {"M": 0.0, "T": 0.0, "slip": 0.0}, 0)
+            _b["maerkte"][_sym] = _m
+        _b["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "kerzen": 10, "trades": 6, "hinweise": []}
+        _SL_U.schreiben(_b, _SL_U.BUCH)
+        _s1 = C.scalp_stand({})
+        _zb = {(z["markt"], z["k"]): z for z in _s1["zeilen"]}
+        pruefe("scalp_stand: gelaufen, die Zeilen tragen die Zahlen des Buchs (BTC 2,0: 4 Handel, 75 %, netto +2,5 bp) und die Erwartung des Prüfstands",
+               _s1["gelaufen"] is True and _zb[("BTC", 2.0)]["n"] == 4 and _zb[("BTC", 2.0)]["treffer"] == 0.75 and abs(_zb[("BTC", 2.0)]["netto_bp"] - 2.5) < 1e-9
+               and _zb[("BTC", 2.0)]["erw_netto_bp"] == -9.565 and _zb[("ETH", 3.5)]["n"] == 2 and _zb[("BTC", 2.5)]["n"] == 0, _zb[("BTC", 2.0)])
+        pruefe("scalp_stand: Urteil (zu wenig Daten), Kosten 0 bei Handeln ohne Kosten, Ampel grün, letzte Handel neueste zuerst, Datenbeginn",
+               _s1["urteil"]["urteil"] == "zu wenig Daten" and _s1["kosten_bp"] == 0.0 and _s1["ampel"]["ok"] is True and len(_s1["letzte_trades"]) == 6
+               and all(_s1["letzte_trades"][i]["t_aus"] >= _s1["letzte_trades"][i + 1]["t_aus"] for i in range(5)) and _s1["daten_ab"] == _T0, _s1["ampel"])
+        pruefe("scalp_stand: ist JSON und enthält nur Zahlen und Text (kein Schlüssel, kein Pfad)", "C:\\" not in json.dumps(_s1) and "/home/" not in json.dumps(_s1) and json.loads(json.dumps(_s1))["gelaufen"] is True)
+        # echte Kosten: «Kosten je Trade» ist das gewichtete Mittel, positiv ausgewiesen
+        _b2 = json.loads(json.dumps(_b))
+        _bb = _b2["maerkte"]["BTCUSDT"]["buecher"]["2.0"]
+        for _f in ("n", "n_nach", "wins", "sum_br", "sum_net", "gew", "verl", "kum", "hoechst", "tiefst", "dauer_ms"):
+            _bb[_f] = 0 if not isinstance(_bb[_f], float) else 0.0
+        _bb["tage"], _bb["letzte"] = {}, []
+        _SL_U.buche(_bb, (_T0, _T0 + 60_000, 1, 100.0, 100.0, "M", "M"), _SL_U.kosten_von("BTCUSDT"), 0)
+        _SL_U.schreiben(_b2, _SL_U.BUCH)
+        _s2 = C.scalp_stand({})
+        # BTC 2,0: ein Handel ohne Kursbewegung kostet Maker-Gebühr hin und zurück = 4 bp; ETH 3,5: zwei Handel ohne Kosten → gewichtetes Mittel (4 × 1 + 0 × 2) / 3 = 1,33 bp
+        pruefe("scalp_stand: Kosten je Trade (positiv ausgewiesen) = gewichtetes Mittel über alle Handel (1,33 bp)", _s2["kosten_bp"] == 1.33, _s2["kosten_bp"])
+        # Schalter, Hinweis, Fehler
+        pruefe("scalp_stand: ausgeschaltet nennt den Grund", C.scalp_stand({"KRYPTO_SCALP_LABOR": "aus"})["aus"] is True and C.scalp_stand({"KRYPTO_SCALP_LABOR": "aus"})["grund"] == "KRYPTO_SCALP_LABOR=aus")
+        _SL_U.BUCH.write_text("kaputt")
+        _SL_U.BUCH.with_name("labor.json.bak").write_text("auch kaputt")
+        _namen = sorted(p.name for p in _tlp.iterdir())
+        _s3 = C.scalp_stand({})
+        pruefe("scalp_stand: beide Buch-Dateien kaputt → Hinweis «unlesbar», leere Zeilen, kein Absturz und KEINE Datei wird angefasst (nur lesen)",
+               _s3 is not None and _s3["hinweis"].startswith("⚠️ Labor-Buch unlesbar") and _s3["gelaufen"] is False and sorted(p.name for p in _tlp.iterdir()) == _namen
+               and _SL_U.BUCH.read_text() == "kaputt", (_s3 or {}).get("hinweis"))
+        _SL_U.BUCH.unlink()
+        _SL_U.BUCH.with_name("labor.json.bak").unlink()
+        _alt_lesen = _SL_U.lesen
+        _SL_U.lesen = lambda *a, **k: (_ for _ in ()).throw(OSError("Platte weg"))
+        try:
+            _s4 = C.scalp_stand({})
+        finally:
+            _SL_U.lesen = _alt_lesen
+        pruefe("scalp_stand: ein Fehler beim Lesen → None statt Absturz", _s4 is None)
+        _alt_modl = C.SL
+        C.SL = None
+        try:
+            pruefe("scalp_stand: Modul fehlt → None; Telegram /scalp sagt es ehrlich", C.scalp_stand({}) is None and "nicht vorhanden" in C.befehl("/scalp"))
+        finally:
+            C.SL = _alt_modl
+        # Gesundheitszeile
+        _h20l = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
+        _gz = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: «Scalping-Labor (Papier)» grau, solange es nie lief", _gz["Scalping-Labor (Papier)"]["ok"] is None and "noch kein Lauf" in _gz["Scalping-Labor (Papier)"]["text"], _gz.get("Scalping-Labor (Papier)"))
+        _SL_U.schreiben(_b, _SL_U.BUCH)
+        _gz2 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: frischer Lauf = grün mit dem Urteil", _gz2["Scalping-Labor (Papier)"]["ok"] is True and "zu wenig Daten" in _gz2["Scalping-Labor (Papier)"]["text"], _gz2["Scalping-Labor (Papier)"])
+        _alt_b = json.loads(json.dumps(_b))
+        _alt_b["letzter_lauf"]["zeit"] = (datetime.now(timezone.utc) - timedelta(hours=40)).isoformat(timespec="seconds")
+        _SL_U.schreiben(_alt_b, _SL_U.BUCH)
+        _gz3 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: Lauf älter als 36 Stunden = rot", _gz3["Scalping-Labor (Papier)"]["ok"] is False and "40" in _gz3["Scalping-Labor (Papier)"]["text"], _gz3["Scalping-Labor (Papier)"])
+        _gz4 = {x["name"]: x for x in C.gesundheit({"KRYPTO_SCALP_LABOR": "aus"}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: ausgeschaltet = grau mit dem Grund", _gz4["Scalping-Labor (Papier)"]["ok"] is None and "KRYPTO_SCALP_LABOR=aus" in _gz4["Scalping-Labor (Papier)"]["text"], _gz4["Scalping-Labor (Papier)"])
+        _SL_U.BUCH.write_text("kaputt")
+        _SL_U.BUCH.with_name("labor.json.bak").write_text("auch kaputt")
+        _gz5 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}["Scalping-Labor (Papier)"]
+        pruefe("Gesundheit: beschädigtes Buch = GELB (grau mit Warnung) mit dem Satz «Labor-Buch unlesbar», nicht «noch kein Lauf» und nicht rot",
+               _gz5["ok"] is None and _gz5.get("warnung") is True and _gz5["text"].startswith("⚠️ Labor-Buch unlesbar"), _gz5)
+        _SL_U.BUCH.unlink()
+        _SL_U.BUCH.with_name("labor.json.bak").unlink()
+        _bw = json.loads(json.dumps(_b))
+        _bw["letzter_lauf"]["hinweise"] = ["BTC: Kerzen nicht erreichbar (OSError) — der nächste Lauf holt den Rest"]
+        _SL_U.schreiben(_bw, _SL_U.BUCH)
+        _gz6 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}["Scalping-Labor (Papier)"]
+        pruefe("Gesundheit: ein Hinweis im letzten Lauf (Netz weg) = GELB mit dem Hinweis, nicht rot", _gz6["ok"] is None and _gz6.get("warnung") is True and "nicht erreichbar" in _gz6["text"], _gz6)
+        pruefe("scalp_stand: die Ampel trägt das Warnung-Flag", C.scalp_stand({})["ampel"]["warnung"] is True and C.scalp_stand({})["ampel"]["ok"] is None)
+        # Telegram
+        _SL_U.schreiben(_b, _SL_U.BUCH)
+        _t = C.befehl("/scalp")
+        pruefe("Telegram /scalp: die Zusammenfassung des Labors (Papier, kein Geld im Spiel), in /hilfe aufgeführt", "Scalping-Labor (Papier" in _t and "Kein Geld im Spiel" in _t and "/scalp" in C.HILFE and "/scalp" in C.befehl("/hilfe"), _t)
+        _SL_U.BUCH.write_text("kaputt")
+        _SL_U.BUCH.with_name("labor.json.bak").write_text("auch kaputt")
+        pruefe("Telegram /scalp: bei kaputtem Buch ein ehrlicher Satz statt Absturz", "unlesbar" in C.befehl("/scalp"))
+        _SL_U.BUCH.unlink()
+        _SL_U.BUCH.with_name("labor.json.bak").unlink()
+        # stand() trägt die Angaben und bleibt JSON ohne Schlüssel
+        _d_l = C.stand(env={"BINANCE_FUTURES_API_KEY": "GEHEIM-KEY-1", "BINANCE_FUTURES_API_SECRET": "GEHEIM-SEC-2"})
+        pruefe("stand(): enthält scalp (ohne Buch: nie gelaufen), ist JSON, ohne Schlüssel", "scalp" in _d_l and _d_l["scalp"] is not None and _d_l["scalp"]["gelaufen"] is False and "GEHEIM" not in json.dumps(_d_l), sorted(_d_l))
+    finally:
+        _SL_U.BUCH, _SL_U.AUS_DATEI, _SL_U.STOP, _SL_U.PAUSE = _alt_sl
+
 # stand(): die Pilot-Märkte tragen den Stop aus dem Logbuch
 with tempfile.TemporaryDirectory() as _tm:
     _alt_m = C.DATA

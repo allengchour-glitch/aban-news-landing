@@ -1118,6 +1118,30 @@ function uSatellit(d, p, satMap) {
     ${kleinerBildschirm() ? `<details class="sat-regel"><summary>So arbeitet der Satellit</summary>${regel}</details>` : `<p class="sat-regel"><b>So arbeitet der Satellit:</b> ${regel}</p>`}</section>`;
 }
 
+function uLabor(d) {
+  const s = d.scalp;
+  const kopf = (status, klasse) => `<div class="u-kopf"><h3>Scalping-Labor <span class="abz">Papier</span></h3><span class="sat-status ${klasse}">${status}</span></div>`;
+  if (s == null) return `<section class="ukarte u12" id="u-labor" aria-label="Scalping-Labor">${kopf("nicht verfügbar", "")}<p class="u-leer">Die Anzeige des Scalping-Labors ist in dieser Programmversion nicht vorhanden.</p></section>`;
+  const u = s.urteil || {}, alle = Array.isArray(s.zeilen) ? s.zeilen : [], mit = alle.filter(z => z && z.n > 0);
+  const status = s.aus ? ["AUS" + (s.grund ? " · " + esc(s.grund) : ""), "aus"] : !s.gelaufen ? ["noch nicht gelaufen", ""]
+    : u.urteil === "bestanden" ? ["bestanden · nur Kandidat", "an"] : u.urteil === "durchgefallen" ? ["durchgefallen", "aus"] : ["zu wenig Daten", ""];
+  const ll = s.letzter_lauf, seit = Number.isFinite(s.daten_ab) ? uDatum(new Date(s.daten_ab).toISOString()) : "";
+  const unter = `<p class="u-sub">Echte Kurse, alle Kosten, kein Geld im Spiel${seit ? " · Daten seit " + esc(seit) + " (" + esc(fmtZahl(u.tage, 1)) + " Tage)" : ""}${ll && ll.zeit ? " · letzter Lauf " + esc(uDatum(String(ll.zeit).slice(0, 10))) + " " + esc(String(ll.zeit).slice(11, 16)) + " UTC" : ""}</p>`;
+  const zeilen = mit.map(z => `<tr><td>${esc(z.markt)} · k ${esc(fmtZahl(z.k, 1))}</td><td>${esc(fmtZahl(z.n, 0))}</td><td>${esc(fmtZahl(z.treffer * 100, 0))} %</td>
+    <td class="${uKl(z.netto_bp)}"><b>${uPfeil(z.netto_bp)} ${esc(uVz(z.netto_bp, 1))} bp</b></td><td>${esc(uVz(z.erw_netto_bp, 1))} bp</td></tr>`).join("");
+  const tab = mit.length ? `<div class="tabelle"><table><thead><tr><th>Markt · Stufe</th><th>Trades</th><th>Treffer</th><th>Netto je Trade</th><th>Prüfstand</th></tr></thead><tbody>${zeilen}</tbody></table></div>`
+    : `<p class="u-leer">${s.aus ? "Das Labor ist ausgeschaltet und rechnet nichts." : "Das Labor ist noch nicht gelaufen. Es rechnet beim nächsten Tageslauf (krypto-auto.bat) alles nach, auch die verpassten Minuten. Von Hand: py tools\\trading\\krypto_bot\\scalping_labor.py --einmal"}</p>`;
+  const z0 = mit.reduce((a, z) => !a || z.n > a.n ? z : a, null);
+  const beispiel = z0 ? (() => { const br = Math.round(z0.brutto_bp * z0.n / 10), ko = Math.round(z0.kosten_bp * z0.n / 10);
+    return `Zum Greifen (${esc(z0.markt)} k ${esc(fmtZahl(z0.k, 1))}, ${esc(fmtZahl(z0.n, 0))} Trades, 1000 USDT je Trade): Kursbewegung ${esc(uVz(br, 0))} USDT, Gebühren und Schlupf ${esc(uVz(ko, 0))} USDT, bleibt ${esc(uVz(br + ko, 0))} USDT.`; })() : "";
+  const kosten = s.kosten_bp != null ? `Kosten je Trade (Gebühren und Schlupf) im Mittel ${esc(fmtZahl(s.kosten_bp, 1))} bp: sie fressen die Kursbewegung. ` : "";
+  const regel = "Das Labor rechnet die Scalping-Regel «Band-Abpraller» Minute für Minute mit echten Kursen nach, mit denselben Gebühren und Füllregeln wie der Prüfstand vom 13.10.2026 (dort verloren alle sieben Scalping-Verfahren nach Kosten). Es handelt nichts und braucht keinen Schlüssel. «Bestanden» gälte nur bei mindestens 14 Tagen, 200 Trades, +1 bp netto je Trade, in beiden Hälften und auf BTC und ETH mit derselben Stufe k; auch dann nie Echtgeld.";
+  return `<section class="ukarte u12 ulabor" id="u-labor" aria-label="Scalping-Labor">${kopf(status[0], status[1])}${unter}
+    ${s.hinweis ? `<div class="hinweis-stop">${esc(s.hinweis)}</div>` : ""}${tab}
+    ${mit.length ? `<p class="u-sub">${kosten}${beispiel}</p>` : ""}
+    ${kleinerBildschirm() ? `<details class="sat-regel"><summary>So liest man das Labor</summary>${esc(regel)}</details>` : `<p class="sat-regel"><b>So liest man das Labor:</b> ${esc(regel)}</p>`}</section>`;
+}
+
 function uZeitstrahl(d) {
   const ev = zeitstrahl(d.auftraege, 6);
   const sym = {kauf: "▲", verkauf: "▼", verkleinern: "▽", fehler: "✕", hinweis: "i"};
@@ -1190,7 +1214,7 @@ function uebersichtZeichnen() {
   const sat = d.satellit || null;
   const satSymbole = sat ? sat.positionen.map(q => q.symbol) : [];
   const satMap = Object.fromEntries((sat ? sat.positionen : []).map(q => [q.symbol, q]));
-  host.innerHTML = uHeld(d, p) + uAusl(d, p, satSymbole) + uPositionen(d, p, satSymbole, satMap) + uSatellit(d, p, satMap) + uZeitstrahl(d) + uMaerkte(d) + uLage(d);
+  host.innerHTML = uHeld(d, p) + uAusl(d, p, satSymbole) + uPositionen(d, p, satSymbole, satMap) + uSatellit(d, p, satMap) + uZeitstrahl(d) + uLabor(d) + uMaerkte(d) + uLage(d);
   if ($("u-kurve")) uKurveZeichnen($("u-kurve"), d.kontostand);
   (d.maerkte || []).forEach((m, i) => { const h = $("u-spark-" + i); if (h) uSparkZeichnen(h, m, (d.kurse || {})[m.markt], (d.kurse_schnitt || {})[m.markt]); });
   if (offeneBlase) { const k = [...host.querySelectorAll(".hinw")].find(x => x.dataset.hinweis === offeneBlase); if (k) blaseOeffnen(k); }

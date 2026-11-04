@@ -82,6 +82,18 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
   const sm = await p.$$eval('#uebersicht .sat-zeile', es => es.map(z => ({ stop: parseFloat(z.querySelector('.m-stop').style.left), jetzt: parseFloat(z.querySelector('.m-jetzt').style.left) })));
   ok(nah(sm[0].stop, 12.12, 0.05) && nah(sm[0].jetzt, 87.88, 0.05) && nah(sm[1].jetzt, 65.60, 0.05) && nah(sm[2].jetzt, 87.88, 0.05), 'Satellit: Mini-Leiter Stop 12.12 %, Kurs SOL 87.88 %, LINK 65.60 %, DOGE 87.88 %', sm);
   ok((await alle(p, '#uebersicht .usat .tag:not(.aus)')).join(',') === 'SOL,LINK,DOGE,ADA' && (await alle(p, '#uebersicht .usat .tag.aus')).join('|') === '✕ ADA · 01.11.', 'Satellit: Ziele SOL, LINK, DOGE, ADA; ausgestoppt ADA seit 01.11.');
+  // Scalping-Labor (Papier): von Hand aus fixtures.py gerechnet. Kosten je Trade im Mittel Σ(kosten × n) / Σ n = 119980 / 17872 = 6.71 bp; geschäftigstes Buch ETH k 2.0 (3966 Handel):
+  // Kursbewegung round(−3.0 × 3966 / 10) = −1190, Gebühren und Schlupf round(−6.8 × 3966 / 10) = −2697, bleibt −3887 USDT bei 1000 USDT je Trade
+  const lab = await text(p, '#u-labor'), labZeilen = await alle(p, '#u-labor tbody tr');
+  ok((await text(p, '#u-labor .sat-status')) === 'durchgefallen' && lab.toLowerCase().includes('scalping-labor') && lab.toLowerCase().includes('papier'), 'Labor: Überschrift mit «Papier» und Urteil «durchgefallen»', lab.slice(0, 120));
+  ok(lab.includes('Echte Kurse, alle Kosten, kein Geld im Spiel') && lab.includes('Daten seit 01.10. (34.0 Tage)') && lab.includes('letzter Lauf 04.11. 02:30 UTC'), 'Labor: Datenbeginn 01.10., 34.0 Tage, letzter Lauf 04.11. 02:30 UTC', lab.slice(0, 260));
+  ok(labZeilen.length === 8 && labZeilen[0].startsWith('BTC · k 2.0') && labZeilen[0].includes("3'795") && labZeilen[0].includes('32 %') && labZeilen[0].includes('▼ −8.9 bp') && labZeilen[0].endsWith('−9.6 bp'), 'Labor: BTC k 2.0 = 3\'795 Handel, 32 %, ▼ −8.9 bp, Prüfstand −9.6 bp', labZeilen[0]);
+  ok(labZeilen[4].startsWith('ETH · k 2.0') && labZeilen[4].includes("3'966") && labZeilen[4].includes('38 %') && labZeilen[4].includes('▼ −9.8 bp') && labZeilen[4].endsWith('−11.3 bp') && labZeilen[7].startsWith('ETH · k 3.5') && labZeilen[7].includes('992') && labZeilen[7].includes('▼ −7.9 bp') && labZeilen[7].endsWith('−7.5 bp'), 'Labor: ETH k 2.0 (3\'966, −9.8 bp, Prüfstand −11.3) und ETH k 3.5 (992, −7.9 bp, Prüfstand −7.5)', [labZeilen[4], labZeilen[7]]);
+  ok((await p.$$eval('#u-labor td.g-minus', e => e.length)) === 8 && (await p.$$eval('#u-labor td.g-minus', e => e.every(x => x.innerText.includes('▼')))) === true, 'Labor: Verlust nie nur Farbe, in allen 8 Zeilen auch ▼');
+  ok(lab.includes('Kosten je Trade (Gebühren und Schlupf) im Mittel 6.7 bp: sie fressen die Kursbewegung.') && lab.includes("Zum Greifen (ETH k 2.0, 3'966 Trades, 1000 USDT je Trade): Kursbewegung −1'190 USDT, Gebühren und Schlupf −2'697 USDT, bleibt −3'887 USDT."), 'Labor: Kosten im Mittel 6.7 bp und das Beispiel ETH k 2.0: −1\'190 − 2\'697 = −3\'887 USDT', lab.slice(-520));
+  ok(lab.includes('Prüfstand vom 13.10.2026') && lab.includes('nie Echtgeld') && lab.includes('Es handelt nichts und braucht keinen Schlüssel'), 'Labor: die Erklärung nennt Prüfstand, «handelt nichts» und «nie Echtgeld»');
+  ok(await p.evaluate(() => { const a = document.getElementById('u-auftraege'), l = document.getElementById('u-labor'), m = [...document.querySelectorAll('#uebersicht section')].find(x => x.getAttribute('aria-label') === 'Märkte');
+    return !!(a.compareDocumentPosition(l) & Node.DOCUMENT_POSITION_FOLLOWING) && !!(l.compareDocumentPosition(m) & Node.DOCUMENT_POSITION_FOLLOWING); }), 'Labor: die Karte liegt nach den Aufträgen und vor den Märkten (das Raster bleibt paarig)');
   // Zeitstrahl
   const zs = await p.$$eval('#uebersicht .zs > li', es => es.map(l => ({ k: l.className, t: l.innerText.replace(/\s+/g, ' ').trim() })));
   ok(zs.filter(x => x.k.startsWith('z-')).map(x => x.k).join(',') === 'z-fehler,z-kauf,z-kauf,z-kauf,z-verkleinern,z-hinweis', 'Zeitstrahl: Fehler, 3 Käufe, Verkleinert, Hinweis (6 Einträge, neueste zuerst)', zs.map(x => x.k));
@@ -168,6 +180,8 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
   ok(leerPos.includes('Keine offene Position des Piloten') && leerPos.includes('BTC FLACH') && leerPos.includes('ETH FLACH'), 'leer: «Keine offene Position des Piloten», Entscheid FLACH', leerPos);
   ok(leerAus.includes('0.00×') && leerAus.includes("Frei (nicht im Markt) 5'000 USDT"), 'leer: Engagement 0.00×, frei 5\'000 USDT', leerAus);
   ok(leerSat.includes('Noch keine Entscheidung') && leerSat.includes('noch nicht entschieden') && leerSat.includes('Keine Satelliten-Position') && !leerSat.includes('Bitcoin-Filter zu oder'), 'leer: Satellit ehrlich «noch nicht entschieden» (behauptet keinen Filter)', leerSat.slice(0, 200));
+  const leerLab = await text(p, '#u-labor');
+  ok((await text(p, '#u-labor .sat-status')) === 'noch nicht gelaufen' && leerLab.includes('Das Labor ist noch nicht gelaufen') && leerLab.includes('scalping_labor.py --einmal') && (await p.$$eval('#u-labor tbody tr', e => e.length)) === 0 && !leerLab.includes('Zum Greifen'), 'leer: Labor ehrlich «noch nicht gelaufen», ohne Tabelle und ohne Beispielzahlen', leerLab.slice(0, 200));
   ok((await text(p, '#uebersicht .u5')).includes('Noch keine Aufträge.') && (await text(p, '#ampelText')) === 'alles in Ordnung' && (await p.$eval('#ampel', e => e.dataset.stufe)) === 'gruen', 'leer: «Noch keine Aufträge», Ampel grün «alles in Ordnung»');
   ok(p.info.fehler.length === 0, 'leer: keine Konsolenfehler', p.info.fehler);
   await schliessen(p);
@@ -180,6 +194,7 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
   p = await seite('daten_fehlen');
   const df = await text(p, '#uebersicht');
   ok(df.includes('kein Kontostand') && df.includes('Profit nicht lesbar: URLError') && df.includes('nicht verfügbar') && df.includes('Noch kein Pilot-Lauf') && df.includes('Noch zu wenig Kontostände für eine Kurve') && df.includes('noch offen'), 'Daten fehlen: ehrliche Hinweise statt Nullen («kein Kontostand», «Profit nicht lesbar», «nicht verfügbar», «Noch kein Pilot-Lauf»)', df.slice(0, 300));
+  ok((await text(p, '#u-labor')).includes('nicht verfügbar') && (await text(p, '#u-labor')).includes('Die Anzeige des Scalping-Labors ist in dieser Programmversion nicht vorhanden'), 'Daten fehlen: das Labor sagt «nicht verfügbar»');
   ok(p.info.fehler.length === 0, 'Daten fehlen: keine Konsolenfehler', p.info.fehler);
   await schliessen(p);
 
@@ -189,6 +204,8 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
   ok((await p.evaluate(() => window.__xss)) === undefined, 'Schadtext: kein Skript ausgeführt (window.__xss bleibt leer)');
   ok((await p.$$eval('#uebersicht img, #ampelListe img, .band img', e => e.length)) === 0, 'Schadtext: kein eingeschleustes <img> in Übersicht, Ampel-Liste, Kopf');
   ok((await text(p, '#ampelListe')).includes('<img src=x onerror=window.__xss=1>') && (await text(p, '#uebersicht .zs')).includes('Grund <img src=x onerror=window.__xss=1>'), 'Schadtext: erscheint als sichtbarer Text, nicht als Markup');
+  const xl = await text(p, '#u-labor');
+  ok(xl.includes('Grund <img src=x onerror=window.__xss=1>') && xl.includes('Labor <img src=x onerror=window.__xss=1>') && xl.includes('BTC<img src=x onerror=window.__xss=1> · k 2.0') && (await p.$$eval('#u-labor img', e => e.length)) === 0 && !xl.includes('onerror=window.__xss=1>UTC'), 'Schadtext: auch im Labor (Grund, Hinweis, Markt) als sichtbarer Text, nie als Markup; die Zeit wird nur als Datum gelesen', xl.slice(0, 200));
   await schliessen(p);
 
   p = await seite('voll', { abbrechen: true }).catch(() => null);
@@ -266,6 +283,14 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
     const kn = await p.evaluate(kontrast), tf = await p.evaluate(tippflaechen);
     ok(kn.length === 0, `${fall} ${w} ${thema}: Kontrast ≥ 4,5:1 (gross ≥ 3:1) auch im Sonderfall`, kn.slice(0, 5));
     ok(tf.length === 0, `${fall} ${w} ${thema}: jede Tippfläche mindestens 44 px (kleinste Seite)`, tf);
+    await schliessen(p);
+  }
+
+  // Millionen Handel im Labor: nichts darf überlaufen (Desktop und schmal)
+  for (const [w, h] of [[1440, 900], [390, 844]]) {
+    p = await seite('gross', { w, h });
+    const gl = await text(p, '#u-labor');
+    ok(gl.includes("12'345'678") && gl.includes('−1’234’567.8') === false && (await p.evaluate(() => document.documentElement.scrollWidth === innerWidth)) && (await p.$eval('#u-labor', e => e.scrollWidth <= e.clientWidth + 1)), `gross ${w}: Labor mit 12'345'678 Handeln — kein seitliches Scrollen, nichts ragt aus der Karte`, gl.slice(0, 160));
     await schliessen(p);
   }
 
