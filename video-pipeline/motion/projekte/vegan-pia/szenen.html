@@ -17,7 +17,7 @@
   .cap .w{display:inline-block;margin:0 .13em}
   .karte{background:#fff;border:5px solid #1d1d22;border-radius:34px;box-shadow:0 11px 0 rgba(29,29,34,.25)}
   .t{position:absolute;color:#1d1d22;font-weight:800}
-  .quelle{position:absolute;left:270px;width:630px;text-align:center;font-size:27px;font-weight:800;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.55);opacity:0}
+  .quelle{position:absolute;left:270px;width:630px;box-sizing:border-box;padding:8px 14px;text-align:center;font-size:25px;font-weight:800;color:#1d1d22;background:#fff;border:4px solid #1d1d22;border-radius:18px;box-shadow:0 6px 0 rgba(29,29,34,.22);opacity:0}
   #zaehler{counter-reset:v var(--v)}
   #zaehler::after{content:counter(v)}
   .szui{position:absolute;inset:0;opacity:0}
@@ -140,7 +140,8 @@
     for (let i = 0; i < n; i++) halm(w, x + (i - n / 2) * 22 + rr() * 8, y + rr() * 14, hoehe * (.75 + rr() * .5));
     unten(w, `${x}px`, `${y}px`);
     w.style.transformBox = 'view-box'; w.style.transformOrigin = `${x}px ${y}px`;
-    M.loop(w, [{ transform: 'rotate(-2.2deg)' }, { transform: 'rotate(2.2deg)' }, { transform: 'rotate(-2.2deg)' }], { t: rr() * 2, d: 2.6, n: Math.ceil(T / 2.6) });
+    const kw = 9 + Math.floor(rr() * 4);   // ganzzahlig viele Schwingungen und Start bei 0: Ende = Anfang (Loop)
+    M.loop(w, [{ transform: 'rotate(-2.2deg)' }, { transform: 'rotate(2.2deg)' }, { transform: 'rotate(-2.2deg)' }], { t: 0, d: T / kw, n: kw });
   }
   [[40, GY + 70], [150, GY + 150], [60, GY + 260], [960, GY + 80], [1040, GY + 170], [900, GY + 270], [1000, GY + 320]].forEach(([x, y]) => weizenBueschel(x, y, 5, 130 + (y - GY) * .35));
   // Blumen in der Wiese
@@ -151,7 +152,8 @@
     for (let k = 0; k < 5; k++) M.svg('circle', { cx: (Math.cos(k * 1.2566) * 8).toFixed(1), cy: (-44 + Math.sin(k * 1.2566) * 8).toFixed(1), r: 6.5, fill: f, stroke: 'rgba(43,33,24,.55)', 'stroke-width': 1.6 }, w);
     M.svg('circle', { cx: 0, cy: -44, r: 4.5, fill: '#f2a93b' }, w);
     unten(w, '50%', '100%');
-    M.loop(w, [{ transform: 'rotate(-4deg)' }, { transform: 'rotate(4deg)' }, { transform: 'rotate(-4deg)' }], { t: rr() * 2, d: 2.4, n: Math.ceil(T / 2.4) });
+    const kb = 9 + Math.floor(rr() * 5);
+    M.loop(w, [{ transform: 'rotate(-4deg)' }, { transform: 'rotate(4deg)' }, { transform: 'rotate(-4deg)' }], { t: 0, d: T / kb, n: kb });
   }
   // dunkle Grasspitzen am unteren Bildrand (rahmen das Bild)
   let gd = 'M-200 1930'; for (let x = -200; x <= 1290; x += 34) gd += ` L${x} ${1880 - Math.round(rr() * 46)} L${x + 17} 1930`; gd += ' Z';
