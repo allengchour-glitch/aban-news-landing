@@ -9818,3 +9818,5 @@
 2026-11-03T22:26:27.309Z · bewertung-zuerst kaffee-tee-trinken 20
 2026-11-03T22:26:29.035Z · bewertung-zuerst kueche-kochen 113
 2026-11-03T22:26:30.557Z · bewertung-zuerst geschirr-tisch 32
+2026-11-04T08:24:22.656Z · verfuegbar-zuerst tier-toilette-hygiene vorher=MANUAL verfuegbar=18 uebrige=2
+2026-11-04T08:24:48.860Z · verfuegbar-zuerst kuschel-heizdecken vorher=MANUAL verfuegbar=14 uebrige=22
