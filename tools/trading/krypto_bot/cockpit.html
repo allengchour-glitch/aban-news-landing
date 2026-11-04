@@ -268,6 +268,13 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .sat-bar .m-jetzt{position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:currentColor;border:2.5px solid var(--panel);box-shadow:0 0 0 1.5px currentColor;transform:translateX(-50%)}
 .sat-zahlen{text-align:right;font-variant-numeric:tabular-nums;font-size:13px;line-height:1.3}
 .sat-zahlen b{display:block;font-size:14.5px}
+/* Scalping-Labor am Handy: die 8 Karten hinter einer Zeile mit der Spanne (zugeklappt) */
+details.labor-tab{margin-top:8px}
+details.labor-tab>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);font-weight:700;font-size:15px;cursor:pointer;list-style:none}
+details.labor-tab>summary::-webkit-details-marker{display:none}
+details.labor-tab>summary::after{content:"▾";color:var(--mut)}
+details.labor-tab[open]>summary::after{content:"▴"}
+details.labor-tab>.tabelle{margin-top:10px}
 .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
 .tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:12.5px;font-weight:700}
 .tag.aus{background:var(--amber-soft);border-color:var(--warning);color:var(--amber-ink)}
@@ -1132,12 +1139,13 @@ function uLabor(d) {
   const tab = mit.length ? `<div class="tabelle"><table><thead><tr><th>Markt · Stufe</th><th>Trades</th><th>Treffer</th><th>Netto je Trade</th><th>Prüfstand</th></tr></thead><tbody>${zeilen}</tbody></table></div>`
     : `<p class="u-leer">${s.aus ? "Das Labor ist ausgeschaltet und rechnet nichts." : "Das Labor ist noch nicht gelaufen. Es rechnet beim nächsten Tageslauf (krypto-auto.bat) alles nach, auch die verpassten Minuten. Von Hand: py tools\\trading\\krypto_bot\\scalping_labor.py --einmal"}</p>`;
   const z0 = mit.reduce((a, z) => !a || z.n > a.n ? z : a, null);
+  const spanne = mit.length ? `${mit.length} Bücher · netto ${uVz(Math.min(...mit.map(z => z.netto_bp)), 1)} bis ${uVz(Math.max(...mit.map(z => z.netto_bp)), 1)}\u00a0bp je Trade` : "";
   const beispiel = z0 ? (() => { const br = Math.round(z0.brutto_bp * z0.n / 10), ko = Math.round(z0.kosten_bp * z0.n / 10);
     return `Zum Greifen (${esc(z0.markt)} k ${esc(fmtZahl(z0.k, 1))}, ${esc(fmtZahl(z0.n, 0))} Trades, 1000 USDT je Trade): Kursbewegung ${esc(uVz(br, 0))} USDT, Gebühren und Schlupf ${esc(uVz(ko, 0))} USDT, bleibt ${esc(uVz(br + ko, 0))} USDT.`; })() : "";
   const kosten = s.kosten_bp != null ? `Kosten je Trade (Gebühren und Schlupf) im Mittel ${esc(fmtZahl(s.kosten_bp, 1))} bp: sie fressen die Kursbewegung. ` : "";
   const regel = "Das Labor rechnet die Scalping-Regel «Band-Abpraller» Minute für Minute mit echten Kursen nach, mit denselben Gebühren und Füllregeln wie der Prüfstand vom 13.10.2026 (dort verloren alle sieben Scalping-Verfahren nach Kosten). Es handelt nichts und braucht keinen Schlüssel. «Bestanden» gälte nur bei mindestens 14 Tagen, 200 Trades, +1 bp netto je Trade, in beiden Hälften und auf BTC und ETH mit derselben Stufe k; auch dann nie Echtgeld.";
   return `<section class="ukarte u12 ulabor" id="u-labor" aria-label="Scalping-Labor">${kopf(status[0], status[1])}${unter}
-    ${s.hinweis ? `<div class="hinweis-stop">${esc(s.hinweis)}</div>` : ""}${tab}
+    ${s.hinweis ? `<div class="hinweis-stop">${esc(s.hinweis)}</div>` : ""}${mit.length && kleinerBildschirm() ? `<details class="labor-tab"><summary>${esc(spanne)}</summary>${tab}</details>` : tab}
     ${mit.length ? `<p class="u-sub">${kosten}${beispiel}</p>` : ""}
     ${kleinerBildschirm() ? `<details class="sat-regel"><summary>So liest man das Labor</summary>${esc(regel)}</details>` : `<p class="sat-regel"><b>So liest man das Labor:</b> ${esc(regel)}</p>`}</section>`;
 }
