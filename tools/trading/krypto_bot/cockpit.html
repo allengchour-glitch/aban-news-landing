@@ -471,6 +471,16 @@ details.labor-tab>.tabelle{margin-top:10px}
   .chip b{font-size:15px}
   .chip{padding:10px}
 }
+/* Handy-Ansicht: die Karte am PC und der Lesemodus (so bekommt das Handy die Seite: der Server setzt data-nur-lesen auf <html>) */
+#fern button{min-height:44px}
+.fern-zeile{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:8px 0}
+.fern-zeile b{min-width:160px;font-size:14px}
+.fern-zeile input{flex:1 1 260px;min-width:0;font:12px ui-monospace,SFMono-Regular,Consolas,monospace;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--bg);color:var(--ink)}
+.fern-ereignisse{margin:6px 0 0;padding:0;list-style:none;font-size:13px;color:var(--ink-2)}
+.fern-ereignisse li{padding:4px 0;border-top:1px solid var(--grid)}
+.fern-ereignisse .fern-schlecht{color:var(--loss);font-weight:700}
+html[data-nur-lesen] #autoK,html[data-nur-lesen] #notaus,html[data-nur-lesen] #fern,html[data-nur-lesen] #steuerung .steuerkopf,html[data-nur-lesen] #steuerung .risiko,
+html[data-nur-lesen] #steuerung .knoepfe,html[data-nur-lesen] #steuerung .konsole{display:none!important}
 </style>
 </head>
 <body>
@@ -480,6 +490,7 @@ details.labor-tab>.tabelle{margin-top:10px}
       <h1>🛩️ Krypto-Cockpit</h1>
       <span id="modus" class="pill">…</span>
       <span id="tg" class="pill" hidden>Telegram aktiv</span>
+      <span id="nurLesen" class="pill" hidden title="Von hier lässt sich nichts steuern. Not-Aus: am PC oder per Telegram /stop">📱 nur lesen</span>
     </div>
     <div class="band-rechts">
       <a class="pill" href="/markt">📈 Live-Markt</a>
@@ -513,7 +524,7 @@ details.labor-tab>.tabelle{margin-top:10px}
     <div class="karte kpi w3"><h2>Unter Höchststand</h2><div class="zahl" id="k-hoch">—</div><div class="unter">Abstand zum besten Kontostand</div></div>
   </section>
 
-  <section class="karte" style="margin-top:12px" aria-label="Steuerung">
+  <section class="karte" id="steuerung" style="margin-top:12px" aria-label="Steuerung">
     <div class="steuerkopf">
       <h2 style="margin:0">Steuerung</h2>
       <button type="button" id="auto" class="schalter" role="switch" aria-checked="true"><span class="bahn" aria-hidden="true"></span><span id="autoText">Auto-Handel AN</span></button>
@@ -544,6 +555,15 @@ details.labor-tab>.tabelle{margin-top:10px}
     </div>
     <details style="margin-top:10px" id="g-box" open><summary><b>🩺 Gesundheit</b> <span id="g-kurz" class="unter"></span></summary><ul id="gesund" style="margin:8px 0 0;padding-left:0;list-style:none"></ul></details>
     <div class="konsole" id="konsole" aria-live="polite"><div class="ekopf">Bereit. Ausgaben der Knöpfe erscheinen hier.</div></div>
+  </section>
+
+  <section class="karte" id="fern" hidden style="margin-top:12px" aria-label="Handy-Ansicht">
+    <div class="steuerkopf">
+      <h2 style="margin:0">📱 Handy-Ansicht</h2>
+      <button type="button" id="fernSchalter" class="schalter" role="switch" aria-checked="false"><span class="bahn" aria-hidden="true"></span><span id="fernText">AUS</span></button>
+      <span class="unter" id="fernInfo">nur lesen · mit Schlüssel · Heimnetz und Tailscale</span>
+    </div>
+    <div id="fernInhalt"></div>
   </section>
 
   <section class="raster" style="margin-top:12px" aria-label="Märkte" id="maerkte"></section>
@@ -589,6 +609,8 @@ const fmtZahl = (x, s = 0) => x == null ? "—" : x.toLocaleString("de-CH", {min
 const fmtPct = x => x == null ? "—" : (x >= 0 ? "+" : "") + fmtZahl(x * 100, 1) + " %";
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+// Lesemodus (Handy-Ansicht): der Server setzt data-nur-lesen auf <html>. Dann gibt es keine Knöpfe, und die Seite fragt nichts Schreibendes mehr (der Server verbietet es ohnehin).
+const NUR_LESEN = document.documentElement.hasAttribute("data-nur-lesen");
 const NS = "http://www.w3.org/2000/svg";
 
 function richtung(h) {
@@ -1443,6 +1465,7 @@ async function laden() {
 }
 
 $("notaus").addEventListener("click", async () => {
+  if (NUR_LESEN) return;
   const konto = letzterStand && letzterStand.modus === "ECHTGELD" ? "⚠️ ECHTGELD-Konto" : "Testnetz-Konto";
   if (!confirm(`Not-Aus: Pilot-Positionen und kopierte Calls sofort schliessen und alle Bots stoppen?\n(${konto})`)) return;
   const knopf = $("notaus");
@@ -1484,10 +1507,12 @@ function zeigeProtokoll(liste, laufend) {
   return namen;
 }
 async function ladeProtokoll() {
+  if (NUR_LESEN) return [];
   try { const j = await (await fetch("/api/protokoll", {cache: "no-store"})).json(); return zeigeProtokoll(j.protokoll, j.laufend); }
   catch (e) { return []; }
 }
 async function knopf(name) {
+  if (NUR_LESEN) return;
   const f = FRAGE[name];
   if (f && !confirm(f(letzterStand || {}))) return;
   const b = document.querySelector(`.knoepfe button[data-a="${name}"]`);
@@ -1503,6 +1528,7 @@ async function knopf(name) {
 document.querySelector(".knoepfe").addEventListener("click", e => { const b = e.target.closest("button[data-a]"); if (b && !b.disabled) knopf(b.dataset.a); });
 $("auto").addEventListener("click", () => knopf(letzterStand && (letzterStand.notaus || letzterStand.pause) ? "auto_an" : "auto_aus"));
 $("stufen").addEventListener("click", e => {
+  if (NUR_LESEN) return;
   const b = e.target.closest("button[data-s]"); if (!b) return;
   const s = +b.dataset.s, ri = (letzterStand && letzterStand.risiko) || {stufe: 1, test: {}};
   if (s === ri.stufe) return;
@@ -1521,6 +1547,73 @@ addEventListener("resize", () => {
   clearTimeout(groesseGeplant);
   groesseGeplant = setTimeout(() => { gezeichneteBreite = innerWidth; blaseZu(); if (letzterStand) zeichne(letzterStand); if (letzterProfit) zeigeProfit(letzterProfit); sprungPlanen(); }, 120);
 });
+
+// ───────── Handy-Ansicht (Karte nur am PC über 127.0.0.1; im Lesemodus gibt es sie nicht) ─────────
+const FERN_ART = {"angemeldet": "Gerät angemeldet", "falscher-schluessel": "falscher Schlüssel", "gesperrt": "gesperrt (zu viele Fehlversuche)", "fremde-quelle": "fremde Quelle abgewiesen",
+  "falscher-host": "falscher Host abgewiesen", "methode": "Schreibversuch abgewiesen", "fehler": "Fehler",
+  "neues-geraet": "neues Gerät (gespeicherter Zugang)", "fremder-aufruf": "Link von einer fremden Seite abgewiesen"};
+let letzteFern = null;
+function fernZeichnen(f) {
+  const k = $("fern");
+  if (NUR_LESEN || !f || !f.verfuegbar) { k.hidden = true; return; }
+  k.hidden = false;
+  letzteFern = f;
+  $("fernSchalter").setAttribute("aria-checked", String(!!f.an));
+  $("fernText").textContent = f.an ? (f.laeuft ? "AN" : "AN (läuft nicht)") : "AUS";
+  let h = "";
+  if (f.gesperrt_durch_umgebung) h += `<p class="hinweis brems">Gesperrt: die Umgebungsvariable KRYPTO_FERN steht auf «aus» (Eingabeaufforderung: setx KRYPTO_FERN "", danach das Cockpit neu öffnen).</p>`;
+  if (f.fehler) h += `<p class="hinweis brems">⚠️ ${esc(f.fehler)}</p>`;
+  if (!f.an) {
+    h += `<p class="unter">Aus. Eingeschaltet zeigt dein Handy dieselbe Übersicht, <b>nur lesen</b> (keine Knöpfe, kein Not-Aus), mit einem Zugangsschlüssel und nur aus dem Heimnetz oder dem privaten Tunnel (Tailscale). Beim ersten Einschalten fragt Windows nach dem Netzwerk: nur «Privat» ankreuzen. Ausschalten macht alle bisherigen Links ungültig.</p>`;
+  } else {
+    h += (f.adressen || []).length
+      ? f.adressen.map((a, i) => `<div class="fern-zeile"><b>${esc(a.art)}</b><input readonly value="${esc(a.url)}" id="fernUrl${i}" aria-label="Link ${esc(a.art)}"><button type="button" data-kopie="${i}">Link kopieren</button></div>`).join("")
+      : `<p class="unter">Keine Netzwerk-Adresse gefunden (der PC ist nicht im WLAN oder LAN).</p>`;
+    h += `<p class="unter">Den Link einmal am Handy öffnen, zum Beispiel per Telegram an dich selbst schicken (er enthält deinen Zugangsschlüssel: nur an dich selbst): der Browser merkt sich den Zugang. Von unterwegs geht es nur über <b>Tailscale</b> (gratis; auf PC und Handy installieren und beide anmelden) und den Tailscale-Link. Ein Port am Router ins Internet wird bewusst nicht unterstützt (kein HTTPS). Unterwegs ohne Tailscale: Telegram <b>/uebersicht</b>.</p>`;
+    const g = f.geraete || [];
+    h += g.length ? `<p class="unter">Zuletzt gesehen: ${g.slice(0, 3).map(x => esc(x.quelle) + " vor " + Math.max(0, Math.round(x.vor_s / 60)) + " Min.").join(" · ")}</p>` : `<p class="unter">Noch kein Gerät hat die Ansicht geöffnet.</p>`;
+    const ev = (f.ereignisse || []).slice(0, 5);
+    if (ev.length) h += `<ul class="fern-ereignisse" aria-label="Letzte Ereignisse">${ev.map(e => `<li class="${e.art === "angemeldet" || e.art === "neues-geraet" ? "" : "fern-schlecht"}">${esc(uhr(e.zeit))} · ${esc(FERN_ART[e.art] || e.art)} · ${esc(e.quelle)}${e.info ? " · " + esc(e.info) : ""}${e.n > 1 ? " · ×" + esc(String(e.n)) : ""}</li>`).join("")}</ul>`;
+    h += `<div class="fern-zeile"><button type="button" id="fernNeu">Schlüssel erneuern</button><span class="unter">macht alle bisherigen Links und angemeldeten Geräte ungültig</span></div>`;
+  }
+  $("fernInhalt").innerHTML = h;
+}
+async function ladeFern() {
+  if (NUR_LESEN) return;
+  try { fernZeichnen(await (await fetch("/api/fern", {cache: "no-store"})).json()); } catch (e) { $("fern").hidden = true; }
+}
+async function fernSchalten(an, erneuern) {
+  if (NUR_LESEN) return;
+  const b = $("fernSchalter");
+  b.disabled = true;
+  try {
+    const r = await fetch("/api/fern", {method: "POST", headers: {"Content-Type": "application/json", "X-Cockpit": "1"}, body: JSON.stringify({an: an, erneuern: !!erneuern})});
+    const j = await r.json().catch(() => ({}));
+    $("fernInfo").textContent = (j && j.meldung) || (r.ok ? "" : "Das hat nicht geklappt (HTTP " + r.status + ")");
+  } catch (e) { $("fernInfo").textContent = "Cockpit-Server nicht erreichbar"; }
+  finally { b.disabled = false; ladeFern(); }
+}
+$("fernSchalter").addEventListener("click", () => {
+  if (NUR_LESEN || !letzteFern) return;
+  if (!letzteFern.an && !confirm("Handy-Ansicht einschalten?\nDein PC lauscht dann zusätzlich im Heimnetz (nur lesen, mit Zugangsschlüssel, nicht aus dem Internet). Windows fragt eventuell nach dem Netzwerk: nur «Privat» erlauben.")) return;
+  fernSchalten(!letzteFern.an, false);
+});
+$("fern").addEventListener("click", async e => {
+  if (NUR_LESEN) return;
+  const kopie = e.target.closest("button[data-kopie]");
+  if (kopie) {
+    const feld = $("fernUrl" + kopie.dataset.kopie);
+    feld.select();
+    let ok = false;
+    try { await navigator.clipboard.writeText(feld.value); ok = true; } catch (x) { try { ok = document.execCommand("copy"); } catch (y) { ok = false; } }
+    kopie.textContent = ok ? "Kopiert ✓" : "Markiert: Strg+C";
+    setTimeout(() => { kopie.textContent = "Link kopieren"; }, 2500);
+    return;
+  }
+  if (e.target.closest("#fernNeu") && confirm("Neuen Schlüssel erzeugen?\nAlle bisherigen Links und alle angemeldeten Handys sind danach ungültig. Den neuen Link musst du am Handy einmal öffnen.")) fernSchalten(true, true);
+});
+if (NUR_LESEN) $("nurLesen").hidden = false; else { ladeFern(); setInterval(ladeFern, 30000); }
+
 laden(); setInterval(laden, 60000);
 ladeProfit(); setInterval(ladeProfit, 15000);
 </script>

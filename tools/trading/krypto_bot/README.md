@@ -353,11 +353,34 @@ sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernim
 
 **Telegram-Steuerung** läuft mit dem Cockpit, sobald `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` gesetzt sind
 (Einrichtung: `tools/trading/ki_bot/README.md`). Befehle nur aus deinem eigenen Chat: `/status`, `/konto`, `/ki`, `/lage`,
-`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/calls`, `/scalp` (Scalping-Labor, Papier), `/hilfe`. Was ankam, während das Cockpit aus war, wird
+`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/calls`, `/scalp` (Scalping-Labor, Papier), `/uebersicht` (Konto, Märkte, Satellit, Labor und Ampel in einem kurzen Text),
+`/handy` (Stand der Handy-Ansicht; `/handy aus`, `/handy erneuern`), `/hilfe`. Was ankam, während das Cockpit aus war, wird
 **nicht** ausgeführt (sonst könnte ein altes `/weiter` einen Not-Aus aufheben); der Bot antwortet dann «bitte nochmals
 senden». Das hängt nicht an der PC-Uhr und gilt auch, wenn beim Start das Netz noch fehlt (dann wird bis dahin nichts
 ausgeführt). `/stop` und `/weiter` laufen sofort — langsame Info-Befehle (`/lage`, `/status`, `/profit`) laufen nebenher
 und halten den Not-Aus nie auf.
+
+### 📱 Handy: Telegram einrichten und die Handy-Ansicht (nur lesend)
+
+**1. Telegram einrichten (einmalig, 2 bis 3 Minuten, auf dem PC):** Doppelklick auf `tools\trading\krypto_bot\telegram-einrichten.bat`.
+In Telegram bei `@BotFather` mit `/newbot` einen eigenen Bot anlegen und den langen Token kopieren. Das Programm fragt ihn **unsichtbar** ab (es erscheint beim Einfügen
+nichts, das ist richtig) und zeigt einen Einmalcode, den du deinem neuen Bot schickst: so findet es DEINEN Chat (nur private Chats von Menschen zählen, keine Weiterleitungen, keine Gruppen). Danach schickt der Bot dir eine
+**Bestätigungszahl**, die du im Fenster auf dem PC eintippst: nur wer am PC sitzt UND den Chat besitzt kommt durch (hätte sich ein Fremder mit dem Code vor dich gedrängt, bekäme er die Zahl, nichts würde gespeichert).
+Erst dann speichert es Token und Chat-Nummer per `setx` (zuerst den Token, dann die Chat-Nummer; scheitert die zweite, sagt es das und nennt den Handbefehl), schickt eine Testnachricht und sagt, dass das Cockpit neu geöffnet werden muss.
+Ein offenes Cockpit-Fenster vorher schliessen (es würde denselben Bot mitlesen). Das Programm bestätigt keine Nachrichten bei Telegram: ein `/stop`, das du währenddessen schickst, bleibt für das Cockpit liegen.
+**Den Token nie in einen Chat schicken**; er steht in keiner Ausgabe und keiner Fehlermeldung.
+Telegram antwortet nur, **solange das Cockpit auf dem PC läuft** (Fenster offen lassen).
+
+**2. Handy-Ansicht: dieselbe Übersicht auf dem Handy, nur lesen.** Ab Werk **aus**. Cockpit öffnen → «Details» → Karte **📱 Handy-Ansicht** → Schalter AN. Windows fragt beim ersten Mal nach dem Netzwerk:
+nur **«Privat»** ankreuzen, nie «Öffentlich». Die Karte zeigt die Links (Heimnetz, bei Tailscale zusätzlich der Tailscale-Link) mit dem Zugangsschlüssel; den Link einmal am Handy öffnen (zum Beispiel per Telegram an dich selbst schicken),
+danach merkt sich der Browser den Zugang 30 Tage und die Adresszeile wird gesäubert. Die Karte nennt auch jeden Zugriff, jeden abgewiesenen Versuch und die zuletzt gesehenen Geräte; ein neues Gerät meldet sich zusätzlich per Telegram.
+
+- **Nur lesen:** zweiter, eigener Server (Port 8766) mit nur GET und HEAD und vier festen Adressen. Es gibt dort keine Knöpfe und keine Schreib-Adresse: kein Auftrag, keine Einstellung, **kein Not-Aus**. Not-Aus bleibt am PC oder Telegram `/stop`.
+- **Nur aus dem Heimnetz und dem privaten Tunnel:** Quell-Adressen aus 192.168.x.x, 10.x.x.x, 172.16–31.x.x, Tailscale (100.64–127.x.x) und dieser PC; eine Verbindung aus dem öffentlichen Internet bekommt nicht einmal eine Antwort (der Server schliesst sie, bevor ein Faden startet), **auch wenn jemand am Router einen Port freigibt**. Dazu Host-Prüfung gegen DNS-Rebinding.
+- **Zugangsschlüssel** mit 192 Bit Zufall; falscher Schlüssel fünfmal → die Quelle ist 15 Minuten gesperrt (ein Link, den eine fremde Webseite unsichtbar lädt, zählt nicht mit); höchstens 32 gleichzeitige Verbindungen, höchstens 8 je Quelle, keine länger als 30 Sekunden. Der Schlüssel steht nie im Protokoll, gleiche Vorfälle derselben Quelle zählen im Protokoll nur hoch (ein Flut-Versuch spült nichts weg). In den Daten der Seite fehlen Ordnerpfade und der Benutzername deines PCs. Jede erstmals gesehene Adresse (auch mit nur einem gespeicherten Zugang) meldet sich per Telegram.
+- **Von unterwegs (Mobilfunk):** nur über einen **privaten Tunnel**, empfohlen **Tailscale** (gratis, auf PC und Handy installieren, beide anmelden, den Tailscale-Link aus der Karte verwenden). Ein Port am Router ins Internet wird bewusst **nicht** unterstützt: es gibt kein HTTPS, der Schlüssel liefe im Klartext. Ohne Tailscale gibt es unterwegs Telegram `/uebersicht`.
+- **Notbremsen:** Schalter in der Karte und Telegram `/handy aus` (beide machen **alle** bisherigen Links und angemeldeten Geräte ungültig: der Schlüssel wird vergessen, beim nächsten Einschalten gibt es einen neuen), `/handy erneuern` (neuer Schlüssel bei laufender Ansicht, z. B. bei einem verlorenen Handy), `setx KRYPTO_FERN aus` (hält die Ansicht in jedem Fall aus; danach Cockpit neu öffnen), `cockpit.py --ohne-fern`. Einschalten geht bewusst nur am PC.
+- **Grenzen:** Das Cockpit muss laufen (Fenster offen). Die Verbindung im Heimnetz ist unverschlüsselt (HTTP); im Tailscale-Tunnel verschlüsselt der Tunnel. Ob Windows-Firewall und ein bestimmter Router die Verbindung erlauben, ist auf dem echten PC noch nicht gemessen.
 
 ## 📰 News-Wächter — immer im Bild, aber kein News-Trading (`news_waechter.py`)
 
@@ -1440,7 +1463,9 @@ python3 tools/trading/krypto_bot/test_pilot.py    # 140 Tests, inkl. Risiko-Stuf
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 314 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel (Reihe der Durchgänge, Kopfzeile mit node), Not-Aus, Telegram, Startdateien, Übersicht (Angaben aus stand(), reine Funktionen mit node: uebersicht_rein.py, Bauform der Handy-Fassung)
+python3 tools/trading/krypto_bot/test_fernsicht.py  # 451 Tests, gegen einen ECHTEN Server: ohne Schlüssel nichts, keine Schreib-Adresse und -Methode, falscher Host, fremde Quelle, Sperre, Cookie, Schlüssel erneuern, Protokoll ohne Schlüssel, nur Standardbibliothek
+python3 tools/trading/krypto_bot/test_telegram_einrichten.py  # 128 Tests, gegen einen simulierten Telegram-Server: nur dein privater Chat per Einmalcode und Bestätigungszahl am PC, keine Weiterleitungen, der Token steht nie in Ausgabe oder Fehlertext, nichts gespeichert bei Fehlern, nichts bestätigt (kein /stop verschluckt)
+python3 tools/trading/krypto_bot/test_cockpit.py  # 392 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel (Reihe der Durchgänge, Kopfzeile mit node), Not-Aus, Telegram, Startdatei, Handy-Ansicht (/uebersicht, /handy, /api/fern, die echt gebaute Ansicht)en, Übersicht (Angaben aus stand(), reine Funktionen mit node: uebersicht_rein.py, Bauform der Handy-Fassung)
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)

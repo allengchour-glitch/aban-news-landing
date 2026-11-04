@@ -3,7 +3,10 @@
 let playwright; try { playwright = require('playwright'); } catch (e) { playwright = require('/opt/node-tools/node_modules/playwright'); }
 const { chromium } = playwright;
 const http = require('http'), fs = require('fs'), path = require('path');
-const HTML = process.env.COCKPIT_HTML || path.resolve(__dirname, '../../tools/trading/krypto_bot/cockpit.html');
+const KB = path.resolve(__dirname, '../../tools/trading/krypto_bot');
+const HTML = process.env.COCKPIT_HTML || path.join(KB, 'cockpit.html');
+// Die Seite im Lesemodus kommt aus dem ECHTEN Server-Code (fernsicht.seite_lesend), nicht aus einer Nachbildung im Test
+const HTML_LESEN = require('child_process').execFileSync('python3', ['-I', '-c', 'import sys; sys.path.insert(0, sys.argv[1]); import fernsicht as F; sys.stdout.buffer.write(F.seite_lesend(open(sys.argv[2], "rb").read()))', KB, HTML], { maxBuffer: 64 * 1024 * 1024 });
 const FX = path.join(__dirname, 'fx');
 let fails = 0, passes = 0;
 const ok = (c, msg, info) => { if (c) passes++; else { fails++; console.log('FAIL ' + msg + (info !== undefined ? ' :: ' + JSON.stringify(info) : '')); } };
@@ -12,11 +15,11 @@ const GROESSEN = [[360, 640], [390, 844], [412, 915]];
 const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf = n => !ABSCHNITT.length || ABSCHNITT.includes(String(n));   // ABSCHNITT=2,3 prüft nur diese Abschnitte
 
 (async () => {
-  const server = http.createServer((q, a) => { a.setHeader('Content-Type', 'text/html; charset=utf-8'); a.end(fs.readFileSync(HTML)); }).listen(0);
+  const server = http.createServer((q, a) => { a.setHeader('Content-Type', 'text/html; charset=utf-8'); a.end(q.url.startsWith('/lesen') ? HTML_LESEN : fs.readFileSync(HTML)); }).listen(0);
   const BASIS = 'http://127.0.0.1:' + server.address().port + '/';
   const browser = await chromium.launch();
 
-  async function seite(fall, { w = 390, h = 844, thema = 'dunkel', reduziert = false, touch = true } = {}) {
+  async function seite(fall, { w = 390, h = 844, thema = 'dunkel', reduziert = false, touch = true, lesen = false } = {}) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 2, isMobile: touch, hasTouch: touch, colorScheme: thema === 'hell' ? 'light' : 'dark', locale: 'de-CH', timezoneId: 'Europe/Zurich', reducedMotion: reduziert ? 'reduce' : 'no-preference' });
     const page = await ctx.newPage();
     await page.addInitScript(() => { window.__maxBreite = 0; const f = () => { window.__maxBreite = Math.max(window.__maxBreite, innerWidth, document.documentElement.scrollWidth); requestAnimationFrame(f); }; requestAnimationFrame(f); });   // jedes Bild: wie breit war die Seite? (am Handy zoomt der Browser heraus, sobald Inhalt breiter als das Fenster ist)
@@ -30,7 +33,7 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
       if (r.request().method() === 'POST') return r.fulfill({ status: 202, contentType: 'application/json', body: JSON.stringify({ gestartet: 'x', meldung: 'ok' }) });
       r.fulfill({ contentType: 'application/json', body: fs.readFileSync(path.join(FX, fall, u.pathname.split('/').pop() + '.json')) });
     });
-    await page.goto(BASIS);
+    await page.goto(lesen ? BASIS + 'lesen' : BASIS);
     await page.waitForSelector('#uebersicht .ukarte', { timeout: 8000 });
     await page.waitForTimeout(500);
     page.info = info;
@@ -59,7 +62,7 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
     const grund = el => { const e = []; for (let x = el; x; x = x.parentElement) { const c = rgbaVon(getComputedStyle(x).backgroundColor); if (c.a > 0) e.push(c); if (c.a >= 1) break; }
       let h = { r: 255, g: 255, b: 255, a: 1 }; if (!e.length || e[e.length - 1].a < 1) h = rgbaVon(getComputedStyle(document.body).backgroundColor); for (let i = e.length - 1; i >= 0; i--) h = misch(e[i], h); return h; };
     const schlecht = [], gesehen = new Set();
-    document.querySelectorAll('.band, .status-zeile, #uebersicht, #ampelListe:not([hidden]), #sprung, #blase:not([hidden])').forEach(b => [b, ...b.querySelectorAll('*')].forEach(el => {
+    document.querySelectorAll('.band, .status-zeile, #uebersicht, #ampelListe:not([hidden]), #sprung, #blase:not([hidden]), #fern:not([hidden])').forEach(b => [b, ...b.querySelectorAll('*')].forEach(el => {
       if (gesehen.has(el) || el.closest('.nur-leser') || el.closest('defs')) return;
       const eigen = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim()).map(n => n.textContent.trim()).join(' ');
       if (!eigen) return;
@@ -356,6 +359,35 @@ const ABSCHNITT = (process.env.ABSCHNITT || '').split(',').filter(Boolean), lauf
     ok(await p.$eval('#blase', e => !e.hidden) && await p.$eval('.chip .hinw.stern', e => e.title.startsWith('Kein gemerkter Stand')), 'Desktop: der Stern-Knopf öffnet die Blase mit der Maus; title bleibt');
     await zu(p);
   }
+  }
+
+  // ───────── 7. Handy-Ansicht: die Karte am PC passt auch in ein schmales Fenster, der Lesemodus ist am Handy sauber ─────────
+  if (lauf(7)) {
+    for (const [w, h] of GROESSEN) for (const thema of ['dunkel', 'hell']) {
+      const T = `Karte ${w}×${h} ${thema}`;
+      const p = await seite('voll', { w, h, thema });
+      await p.waitForSelector('#fern:not([hidden])', { timeout: 4000 });
+      ok(await p.evaluate(() => window.__maxBreite <= innerWidth), `${T}: kein einziges Bild breiter als das Fenster`, await p.evaluate(() => [window.__maxBreite, innerWidth]));
+      ok((await p.evaluate(ueberstand)).length === 0, `${T}: nichts ragt aus dem Fenster`, (await p.evaluate(ueberstand)).slice(0, 4));
+      const tf = await p.evaluate(() => [...document.querySelectorAll('#fern button, #fern input')].filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; })
+        .map(e => { const r = e.getBoundingClientRect(); return { n: String(e.id || e.className || e.tagName).slice(0, 20), b: Math.round(r.width), h: Math.round(r.height) }; }).filter(z => Math.min(z.b, z.h) < 44));
+      ok(tf.length === 0, `${T}: Schalter, Knöpfe und Felder mindestens 44 px (kleinste Seite)`, tf);
+      const kn = await p.evaluate(kontrast);
+      ok(kn.length === 0, `${T}: Kontrast ≥ 4,5:1 (gross ≥ 3:1) auch in der Karte`, kn.slice(0, 5));
+      ok(await p.evaluate(() => { const k = document.getElementById('fern').getBoundingClientRect(); return [...document.querySelectorAll('#fern input, #fern button')].filter(e => e.getBoundingClientRect().width > 0).every(e => { const r = e.getBoundingClientRect(); return r.left >= k.left - 1 && r.right <= k.right + 1; }); }), `${T}: Felder und Knöpfe bleiben innerhalb der Karte`);
+      ok(p.info.fehler.length === 0, `${T}: keine Konsolenfehler`, p.info.fehler);
+      await zu(p);
+    }
+    for (const [w, h] of GROESSEN) for (const thema of ['dunkel', 'hell']) {
+      const T = `Lesemodus ${w}×${h} ${thema}`;
+      const p = await seite('voll', { w, h, thema, lesen: true });
+      ok(await p.evaluate(() => window.__maxBreite <= innerWidth) && (await p.evaluate(ueberstand)).length === 0, `${T}: kein Überstand`, (await p.evaluate(ueberstand)).slice(0, 4));
+      ok((await p.$eval('#nurLesen', e => e.checkVisibility())) && !(await p.$eval('#notaus', e => e.checkVisibility())) && !(await p.$eval('#fern', e => e.checkVisibility())) && !(await p.$eval('#steuerung .knoepfe', e => e.checkVisibility())), `${T}: «nur lesen» sichtbar; Not-Aus, Knöpfe und Karte weg`);
+      const kn = await p.evaluate(kontrast);
+      ok(kn.length === 0, `${T}: Kontrast ≥ 4,5:1 (gross ≥ 3:1)`, kn.slice(0, 5));
+      ok(p.info.fehler.length === 0, `${T}: keine Konsolenfehler`, p.info.fehler);
+      await zu(p);
+    }
   }
 
   await browser.close(); server.close();

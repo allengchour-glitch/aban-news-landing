@@ -7,12 +7,14 @@
 Das Cockpit liest nur die Logbücher in data/ und den Zwischenspeicher der Markt-Infos und handelt nicht selbst.
 /markt ist die Live-Ansicht im Stil einer Börse (Kerzen, Volumen, MA/BOLL, RSI, MACD, Orderbuch, Markttiefe, Trades, Märkte):
 der Browser holt die Kurse direkt bei Binance (öffentliche Marktdaten, ohne Schlüssel). Einzige Aktion: der Not-Aus-Knopf (schliesst die Pilot-Positionen und stoppt alle Bots, wie stop.bat).
-Es lauscht nur auf diesem PC (127.0.0.1), nicht im Netzwerk.
+Es lauscht nur auf diesem PC (127.0.0.1), nicht im Netzwerk. Einzige Ausnahme: die HANDY-ANSICHT (fernsicht.py) — ein zweiter, NUR LESENDER Server mit Zugangsschlüssel für
+das Heimnetz und einen privaten Tunnel (Tailscale). Sie ist ab Werk AUS und wird nur hier am PC (Karte «Handy-Ansicht») eingeschaltet.
 
 Telegram-Steuerung (läuft mit, wenn TELEGRAM_BOT_TOKEN und TELEGRAM_CHAT_ID gesetzt sind). Befehle nur aus deinem Chat:
   /profit  Gewinn + offene Positionen · /status  Pilot heute · /konto  Wochenbericht · /ki  Claude-Einschätzung · /lage  Markt-Infos
   /news    die letzten News-Alarme (der News-Wächter läuft mit dem Cockpit alle 30 Minuten und meldet Hacks, gestoppte
            Abhebungen, Insolvenzen, Depegs, SEC/ETF und BTC/ETH-Delistings — nur Info, der Bot handelt nicht nach News)
+  /uebersicht  Konto, Märkte, Satellit, Labor und Ampel in einem kurzen Text · /handy  Stand der Handy-Ansicht (/handy aus · /handy erneuern)
   /stop    Not-Aus: Positionen schliessen, alle Bots stoppen · /weiter  Not-Aus aufheben · /hilfe
 """
 from __future__ import annotations
@@ -57,8 +59,13 @@ try:  # das Scalping-Labor (Papier) ebenso: ein Fehler darin darf das Cockpit ni
     import scalping_labor as SL
 except Exception:  # noqa: BLE001
     SL = None
+try:  # die Handy-Ansicht (nur lesend, ab Werk aus) steht ebenfalls allein: ein Fehler darin darf das Cockpit nie lahmlegen
+    import fernsicht as FS
+except Exception:  # noqa: BLE001
+    FS = None
 HILFE = ("Befehle: /profit Gewinn und Positionen · /status Pilot heute · /konto Wochenbericht · /ki Claude-Einschätzung · /lage Markt-Infos · "
          "/calls Telegram-Calls (Schatten-Bilanz) · /news News-Alarme · /scalp Scalping-Labor (Papier) · "
+         "/uebersicht alles in Kürze · /handy Handy-Ansicht (aus · erneuern) · "
          "/stop Not-Aus (Positionen schliessen) · /weiter Not-Aus aufheben")
 
 
@@ -1021,6 +1028,90 @@ def gesundheit(env, lb, ki, heute=None):
     return punkte
 
 
+# ───────────────────────── Handy-Ansicht (nur lesend, ab Werk aus) ─────────────────────────
+FERN = None
+
+
+def fern_server():
+    """Der lesende Zweit-Server (fernsicht.py), beim ersten Gebrauch gebaut. Er läuft nur, wenn er eingeschaltet ist; ohne das Modul None."""
+    global FERN
+    if FS is None:
+        return None
+    if FERN is None:
+        def melden(text):
+            import signale as SG
+            SG.push(text)
+        FERN = FS.FernServer(DATA, stand_fn=stand, profit_fn=profit_stand, seite_fn=SEITE.read_bytes, markt_fn=MARKT.read_bytes, meldung=melden)
+    return FERN
+
+
+def fern_ui():
+    """Für die Karte «Handy-Ansicht» (nur über 127.0.0.1): Stand, Adressen MIT Schlüssel, letzte Zugriffe."""
+    f = fern_server()
+    if f is None:
+        return {"verfuegbar": False}
+    return {"verfuegbar": True, **f.ui()}
+
+
+def handy_befehl(text):
+    """Telegram /handy: Stand der Handy-Ansicht (ohne Schlüssel und Adressen) · /handy aus · /handy erneuern (alle alten Links und Geräte ungültig).
+    Einschalten geht bewusst nur am PC."""
+    f = fern_server()
+    if f is None:
+        return "📱 Handy-Ansicht: in dieser Programmversion nicht vorhanden."
+    teile = (text or "").split()
+    arg = teile[1].lower() if len(teile) > 1 else ""
+    if arg == "aus":
+        return "📱 " + f.schalten(False)[1]
+    if arg == "erneuern":
+        if not f.laeuft():
+            return "📱 Die Handy-Ansicht ist aus, es gibt nichts zu erneuern (einschalten geht nur am PC)."
+        return "📱 " + f.schalten(True, erneuern=True)[1] + " Neuen Link gibt es am PC (Karte «Handy-Ansicht»)."
+    u = f.status()
+    if not u["an"]:
+        return "📱 Handy-Ansicht: aus. Einschalten nur am PC (Karte «Handy-Ansicht» im Cockpit)."
+    if not u["laeuft"]:
+        return "📱 Handy-Ansicht ist eingeschaltet, läuft aber nicht" + (f": {u['fehler']}" if u["fehler"] else " (Cockpit neu öffnen).")
+    abgewiesen = sum(e.get("n", 1) for e in u["ereignisse"] if e["art"] in ("falscher-schluessel", "gesperrt", "fremde-quelle", "falscher-host", "fremder-aufruf"))
+    z = [f"📱 Handy-Ansicht (nur lesen): AN auf Port {u['port']}."]
+    if u["geraete"]:
+        g = u["geraete"][0]
+        z.append(f"Zuletzt gesehen: {g['quelle']} vor {g['vor_s'] // 60} Min.")
+    if abgewiesen:
+        z.append(f"⚠️ {abgewiesen} abgewiesene Versuche (falscher Schlüssel, Host, Quelle oder fremde Seite). Warst du das nicht: /handy erneuern.")
+    z.append("/handy aus · /handy erneuern")
+    return "\n".join(z)
+
+
+def uebersicht_text(d):
+    """Die Übersicht als kurzer Handy-Text (Telegram /uebersicht): Konto, Märkte, Satellit, Labor, Ampel. Nur Anzeige, aus stand()."""
+    def pct(x):
+        return "—" if x is None else f"{x * 100:+.1f} %".replace("-", "−")
+
+    def zahl(x):
+        return f"{x:,.0f}".replace(",", "'")
+    z = [f"🛩️ Krypto-Cockpit · {'⚠️ ECHTGELD' if d.get('modus') == 'ECHTGELD' else 'Testnetz (Spielgeld)'}"]
+    k = d.get("konto")
+    z.append(f"💼 Konto {zahl(k['wert'])} USDT · seit Start {pct(k.get('seit_start'))} · 7 Tage {pct(k.get('seit_woche'))} · unter Hoch {pct(k.get('unter_hoch'))}" if k else "💼 Noch kein Kontostand.")
+    for m in d.get("maerkte") or []:
+        h = m.get("hebel") or 0
+        z.append(f"📌 {m.get('markt')}: " + (f"LONG {abs(h):.2f}×" if h > 0 else f"SHORT {abs(h):.2f}×" if h < 0 else "FLACH") + (f" · Stop {zahl(m['stop'])}" if m.get("stop") else ""))
+    s = d.get("satellit")
+    if s and not s.get("aus"):
+        z.append(f"🛰️ Satellit: {len(s.get('positionen') or [])} Position(en), nächster Entscheidungstag {s.get('naechster_tag') or '—'}")
+    sc = d.get("scalp")
+    if sc and sc.get("ampel"):
+        z.append("📊 Scalping-Labor: " + str(sc["ampel"].get("text", "")))
+    g = d.get("gesundheit") or []
+    rot, gelb = [p["name"] for p in g if p.get("ok") is False], [p["name"] for p in g if p.get("ok") is None and p.get("warnung")]
+    z.append("🩺 Alles in Ordnung." if not rot and not gelb else "🩺 " + (f"Rot: {', '.join(rot)}. " if rot else "") + (f"Achtung: {', '.join(gelb)}." if gelb else ""))
+    if d.get("notaus"):
+        z.append("🛑 Not-Aus ist aktiv.")
+    elif d.get("pause"):
+        z.append("⏸️ Auto-Handel ist aus (Pause).")
+    return "\n".join(z)
+
+
 # ───────────────────────── Webserver (nur 127.0.0.1) ─────────────────────────
 class Cockpit(BaseHTTPRequestHandler):
     port = 8765
@@ -1060,6 +1151,8 @@ class Cockpit(BaseHTTPRequestHandler):
                 return self._senden(200, stand())
             except Exception as ex:  # noqa: BLE001
                 return self._senden(500, {"fehler": type(ex).__name__})
+        if pfad == "/api/fern":  # NUR hier am PC (127.0.0.1): die Adressen tragen den Schlüssel der Handy-Ansicht
+            return self._senden(200, fern_ui())
         return self._senden(404, {"fehler": "nicht gefunden"})
 
     def do_POST(self):
@@ -1069,7 +1162,7 @@ class Cockpit(BaseHTTPRequestHandler):
         if not self._host_ok() or self.headers.get("X-Cockpit") != "1" or (herkunft and herkunft not in erlaubt):
             return self._senden(403, {"fehler": "verboten"})
         pfad = urllib.parse.urlparse(self.path).path
-        if pfad not in ("/api/notaus", "/api/aktion"):
+        if pfad not in ("/api/notaus", "/api/aktion", "/api/fern"):
             return self._senden(404, {"fehler": "nicht gefunden"})
         try:
             n = int(self.headers.get("Content-Length") or 0)
@@ -1085,6 +1178,13 @@ class Cockpit(BaseHTTPRequestHandler):
             # Im Hintergrund: manche Läufe dauern Minuten (erster Abruf der Markt-Infos), der Browser fragt das Protokoll ab
             threading.Thread(target=aktion, args=(name,), daemon=True).start()
             return self._senden(202, {"gestartet": name})
+        if pfad == "/api/fern":
+            f = fern_server()
+            if f is None:
+                return self._senden(404, {"fehler": "in dieser Programmversion nicht vorhanden"})
+            ok, text = f.schalten(daten.get("an") is True, erneuern=daten.get("erneuern") is True)
+            PROTOKOLL.appendleft({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "aktion": "fern", "titel": "Handy-Ansicht", "ok": ok, "text": text})
+            return self._senden(200, {"ok": ok, "meldung": text, **fern_ui()})
         an = bool(daten.get("an"))
         meldung = notaus_an() if an else notaus_aus()
         PROTOKOLL.appendleft({"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "aktion": "notaus" if an else "auto_an",
@@ -1125,6 +1225,10 @@ def befehl(text):
     if b == "/news":
         import news_waechter as NW
         return NW.letzte()
+    if b == "/uebersicht":
+        return uebersicht_text(stand())
+    if b == "/handy":
+        return handy_befehl(text)
     if b == "/scalp":
         if SL is None:
             return "📊 Scalping-Labor: in dieser Programmversion nicht vorhanden."
@@ -1137,7 +1241,7 @@ def befehl(text):
     return None
 
 
-SOFORT = {"/stop", "/weiter", "/hilfe", "/help", "/start"}  # Not-Aus nie hinter langsamen Info-Befehlen einreihen
+SOFORT = {"/stop", "/weiter", "/hilfe", "/help", "/start", "/handy"}  # Not-Aus nie hinter langsamen Info-Befehlen einreihen
 
 
 def _tg_senden(url, chat, text):
@@ -1241,6 +1345,7 @@ def main():
     ap.add_argument("--ohne-telegram", action="store_true")
     ap.add_argument("--ohne-news", action="store_true")
     ap.add_argument("--ohne-pflege", action="store_true", help="keine automatische Prüfung im Hintergrund")
+    ap.add_argument("--ohne-fern", action="store_true", help="die Handy-Ansicht nicht starten, auch wenn sie eingeschaltet ist")
     ap.add_argument("--heilen", action="store_true", help="ohne Fenster «Alles prüfen und reparieren» einmal ausführen und beenden (Aufgabenplanung; sendet nie Aufträge)")
     ap.add_argument("--probelauf", action="store_true", help="mit --heilen: zusätzlich ein Prüflauf des Piloten ohne Aufträge")
     a = ap.parse_args()
@@ -1255,6 +1360,12 @@ def main():
     if os.environ.get("TELEGRAM_BOT_TOKEN") and os.environ.get("TELEGRAM_CHAT_ID") and not a.ohne_telegram:
         threading.Thread(target=telegram_schleife, daemon=True).start()
         print("Telegram-Steuerung aktiv: /status /konto /ki /lage /stop /weiter")
+    f = None if a.ohne_fern else fern_server()
+    if f is not None and FS.eingeschaltet(DATA):
+        if f.starten():
+            print(f"Handy-Ansicht (nur lesen) läuft auf Port {f.port} — Adressen und Schlüssel: Karte «Handy-Ansicht» im Cockpit; Telegram: /handy")
+        else:
+            print(f"⚠️ Die Handy-Ansicht ließ sich nicht starten: {f.fehler}")
     if not a.ohne_news:
         import news_waechter as NW
         import signale as SG

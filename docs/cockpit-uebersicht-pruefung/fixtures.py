@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fixtures für die Übersicht des Cockpits: realistische Zahlen, von Hand nachrechenbar. Schreibt fx/<fall>/{stand,profit,protokoll}.json."""
+"""Fixtures für die Übersicht des Cockpits: realistische Zahlen, von Hand nachrechenbar. Schreibt fx/<fall>/{stand,profit,protokoll,fern}.json."""
 import copy
 import json
 import math
@@ -233,6 +233,31 @@ def fall_xss():
     return s, p
 
 
+FERN_SCHLUESSEL = "FAKEkeyFAKEkeyFAKEkeyFAKEkey1234"       # erfunden, 32 Zeichen: sieht aus wie ein Schlüssel, öffnet nichts
+
+
+def fern(fall):
+    """Antwort von GET /api/fern (Karte «Handy-Ansicht» am PC): voll = an mit zwei Adressen und fünf Ereignissen, leer = aus, daten_fehlen = Modul fehlt, xss = Schadtext überall."""
+    if fall == "daten_fehlen":
+        return {"verfuegbar": False}
+    aus = {"verfuegbar": True, "an": False, "laeuft": False, "port": 8766, "gesperrt_durch_umgebung": False, "fehler": "", "adressen": [], "erzeugt": "", "geraete": [], "ereignisse": []}
+    if fall == "leer":
+        return aus
+    adr = [{"art": "Heimnetz (WLAN/LAN)", "tailscale": False, "anzeige": "http://192.168.1.23:8766/", "url": "http://192.168.1.23:8766/?k=" + FERN_SCHLUESSEL},
+           {"art": "Tailscale (von unterwegs)", "tailscale": True, "anzeige": "http://100.101.102.103:8766/", "url": "http://100.101.102.103:8766/?k=" + FERN_SCHLUESSEL}]
+    ev = [{"zeit": "2026-11-04T09:05:11+00:00", "art": "fremde-quelle", "quelle": "203.0.113.9", "info": "", "n": 12}, {"zeit": "2026-11-04T09:01:40+00:00", "art": "methode", "quelle": "192.168.1.77", "info": "POST"},
+          {"zeit": "2026-11-04T08:59:02+00:00", "art": "gesperrt", "quelle": "192.168.1.77", "info": ""}, {"zeit": "2026-11-04T08:58:30+00:00", "art": "falscher-schluessel", "quelle": "192.168.1.77", "info": ""},
+          {"zeit": "2026-11-04T08:40:00+00:00", "art": "angemeldet", "quelle": "192.168.1.40", "info": ""}]
+    an = dict(aus, an=True, laeuft=True, adressen=adr, erzeugt="2026-11-04T08:30:00+00:00", geraete=[{"quelle": "192.168.1.40", "vor_s": 185}, {"quelle": "100.101.102.50", "vor_s": 7200}], ereignisse=ev)
+    if fall == "xss":
+        boese = "<img src=x onerror=window.__xss=1>"
+        an["adressen"][0].update(art="Heimnetz" + boese, url='http://192.168.1.23:8766/?k="' + boese)
+        an["geraete"][0]["quelle"] = "192.168.1.40" + boese
+        an["ereignisse"][0].update(art="böse-art" + boese, quelle="Q" + boese, info="I" + boese)
+        an["fehler"] = "Port belegt" + boese
+    return an
+
+
 FAELLE = {"voll": fall_voll, "leer": fall_leer, "echtgeld": fall_echtgeld, "daten_fehlen": fall_daten_fehlen, "xss": fall_xss, "gross": fall_gross}
 
 if __name__ == "__main__":
@@ -243,5 +268,6 @@ if __name__ == "__main__":
         (ordner / "stand.json").write_text(json.dumps(s, ensure_ascii=False), encoding="utf-8")
         (ordner / "profit.json").write_text(json.dumps(p, ensure_ascii=False), encoding="utf-8")
         (ordner / "protokoll.json").write_text(json.dumps({"protokoll": [], "laufend": []}), encoding="utf-8")
+        (ordner / "fern.json").write_text(json.dumps(fern(name), ensure_ascii=False), encoding="utf-8")
     print("Fixtures:", ", ".join(FAELLE), "→", AUS)
     print("offen =", OFFEN, "wallet =", WALLET, "gesamt =", GESAMT, "wert gesamt =", round(sum(p['wert'] for p in POSITIONEN), 2))
