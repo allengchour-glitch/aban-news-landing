@@ -839,6 +839,16 @@ def gesundheit(env, lb, ki, heute=None):
         p("Risiko-Stufe", False, f"{sl} mit ECHTEM GELD: der Test mit Zufallsjahren bestand 2× nicht (8 % der Jahre tiefer als −60 %) — auf höchstens 1,75× stellen")
     else:
         p("Risiko-Stufe", None, f"{sl}: bestand den Test nicht (8 % der Zufallsjahre tiefer als −60 %) — im Testnetz erlaubt, für echtes Geld nicht empfohlen", warnung=True)
+    try:  # Handelstempo: wie gross und wie schnell der Pilot aufbaut (Testnetz-Turbo oder vorsichtig) — nur Anzeige
+        import broker_futures as _BF
+        _c = _BF.einstellungen(env)
+        _anteil, _auftrag = f"{_c['anteil'] * 100:.0f} %", f"{_c['max_auftrag']:,.0f}".replace(",", "'")
+        if _c["tempo"] == "turbo":
+            p("Handelstempo", None, f"Turbo (Testnetz): {_anteil} des Kontos als Grundlage, Aufbau in einem Lauf (Auftrag bis {_auftrag} USDT) — vorsichtiger: setx KRYPTO_TEMPO normal")
+        else:
+            p("Handelstempo", None, f"vorsichtig: {_anteil} des Kontos, höchstens {_auftrag} USDT je Auftrag" + (" (echtes Geld: immer vorsichtig)" if _c["echtgeld"] else " — Turbo im Testnetz: setx KRYPTO_TEMPO \"\""))
+    except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
+        pass
     if env.get("ETH_SPARPLAN_BETRAG"):
         p("ETH-Sparplan", bool(env.get("BINANCE_API_KEY")), f"an: {env['ETH_SPARPLAN_BETRAG']} USDT" if env.get("BINANCE_API_KEY")
           else "eingeschaltet, aber BINANCE_API_KEY (Spot) fehlt")

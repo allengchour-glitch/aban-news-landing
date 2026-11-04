@@ -970,9 +970,10 @@ with tempfile.TemporaryDirectory() as tmp:
             pruefe("Oberfläche: Knopf für 1,75× (als Schaltfläche, nicht nur im Stil) und die Zuordnung zur Aktion risiko_1_75",
                    '<button type="button" data-s="1.75" aria-pressed="false">1,75× viel Risiko<small id="st-1.75"></small></button>' in _html
                    and '"1.75": "risiko_1_75"' in _html)
-            pruefe("Kontoanteil: Standard 0,5, KI_BOT_ANTEIL=0.3 → 0,3 (die Testzahlen gelten fürs ganze Konto)",
-                   C.konto_anteil({}) == 0.5 and C.konto_anteil({"KI_BOT_ANTEIL": "0.3"}) == 0.3 and C.stand(env={})["risiko"]["anteil"] == 0.5
-                   and C.stand(env={"KI_BOT_ANTEIL": "1"})["risiko"]["anteil"] == 1.0)
+            pruefe("Kontoanteil: Testnetz-Turbo 0,8, KRYPTO_TEMPO=normal und Echtgeld 0,5, KI_BOT_ANTEIL=0.3 → 0,3 (die Testzahlen gelten fürs ganze Konto)",
+                   C.konto_anteil({}) == 0.8 and C.konto_anteil({"KRYPTO_TEMPO": "normal"}) == 0.5 and C.konto_anteil({"KI_BOT_ANTEIL": "0.3"}) == 0.3
+                   and C.konto_anteil({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"}) == 0.5
+                   and C.stand(env={})["risiko"]["anteil"] == 0.8 and C.stand(env={"KI_BOT_ANTEIL": "1"})["risiko"]["anteil"] == 1.0)
             pruefe("Oberfläche: die Rückfrage nennt den Kontoanteil und dass die Zahlen fürs GANZE Konto gelten",
                    "% des Kontos ein (KI_BOT_ANTEIL)" in _html and "gelten für das GANZE Konto" in _html)
             pruefe("Oberfläche: die Rückfrage vor jeder höheren Stufe warnt vor dem Verlust und nennt die Wahrscheinlichkeit eines Jahres unter −60 %",
@@ -1004,6 +1005,17 @@ with tempfile.TemporaryDirectory() as tmp:
         _ki_alt_fehler = {"entscheide": [{"stand": "2026-01-10"}], "letzter_fehler": {"zeit": "2026-01-19T02:31:00+00:00", "stand": "2026-01-18", "hinweis": "Guthaben leer"}}
         gk5 = {x["name"]: x for x in C.gesundheit({"ANTHROPIC_API_KEY": "k"}, {"entscheide": []}, _ki_alt_fehler, _h20)}["Claude (KI-Trader)"]
         pruefe("KI-Ampel: alte Einschätzung PLUS gescheiterter neuer Versuch nennt beides", gk5["ok"] is False and "10 Tage alt" in gk5["text"] and "Guthaben leer" in gk5["text"], gk5)
+
+        # Handelstempo (03.11.2026, Wunsch «schnell und hohes Risiko»): die Gesundheits-Zeile nennt Turbo oder vorsichtig mit den Zahlen
+        _h20t = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
+        gt0 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20t)}["Handelstempo"]
+        gt1 = {x["name"]: x for x in C.gesundheit({"KRYPTO_TEMPO": "normal"}, {"entscheide": []}, {}, _h20t)}["Handelstempo"]
+        gt2 = {x["name"]: x for x in C.gesundheit({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"}, {"entscheide": []}, {}, _h20t)}["Handelstempo"]
+        pruefe("Handelstempo-Zeile: Testnetz = Turbo mit 80 % und «in einem Lauf», grau ohne Alarm, nennt den Rückweg",
+               gt0["ok"] is None and not gt0.get("warnung") and "Turbo (Testnetz)" in gt0["text"] and "80 %" in gt0["text"] and "KRYPTO_TEMPO normal" in gt0["text"], gt0)
+        pruefe("Handelstempo-Zeile: normal = 50 % und höchstens 1'000 USDT je Auftrag, nennt den Weg zurück zum Turbo",
+               gt1["ok"] is None and "vorsichtig" in gt1["text"] and "50 %" in gt1["text"] and "1'000 USDT" in gt1["text"] and "Turbo im Testnetz" in gt1["text"], gt1)
+        pruefe("Handelstempo-Zeile: echtes Geld ist immer vorsichtig und sagt es", "vorsichtig" in gt2["text"] and "echtes Geld: immer vorsichtig" in gt2["text"] and "Turbo (Testnetz)" not in gt2["text"], gt2)
 
         # ── Telegram-Calls im Cockpit ──
         pruefe("Calls: ohne Einrichtung keine Tafel und ehrliche /calls-Antwort", C.calls_stand() is None and "nicht eingerichtet" in C.befehl("/calls"))
