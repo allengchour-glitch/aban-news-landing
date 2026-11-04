@@ -1,0 +1,103 @@
+{
+ "id": "gid://shopify/Product/16610153759111",
+ "title": "Faltbare Katzenhängematte mit Saugnäpfen",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Für eine gemütliche Ruhezone für deine Katze befestigst du diese Hängematte einfach an einem Fenster. Die Liegefläche ist 43 × 30 cm gross. Sie ist aus Stoff gefertigt und für den ganzjährigen Gebrauch geeignet. Die Hängematte ist atmungsaktiv und wärmespeichernd.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Befestigung ohne Bohren</li>\n<li>Einfach faltbar</li>\n<li>Mit starken Saugnäpfen</li>\n<li>Für alle Jahreszeiten</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Holz</li>\n<li>\n<strong>Gewicht:</strong> ca. 1 kg – 1.1 kg (je nach Variante)</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/19561476850055",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58800022880647",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58800022913415",
+     "name": "M"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/19649446904199",
+   "name": "Ausführung",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58800022946183",
+     "name": "Sea Salt Blue Basis"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58800022978951",
+     "name": "Sea Salt Blue Katzenpfote"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58800023011719",
+     "name": "Sea Salt Blue Samt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58800023044487",
+     "name": "Milk Fufu Yellow Basis"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58800023077255",
+     "name": "Milk Fufu Yellow Katzenpfote"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58800023110023",
+     "name": "Milk Fufu Yellow Flausch"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "sku": "CJYD321170701AZ",
+    "title": "S / Sea Salt Blue Basis"
+   },
+   {
+    "sku": "CJYD321170702BY",
+    "title": "S / Sea Salt Blue Katzenpfote"
+   },
+   {
+    "sku": "CJYD321170703CX",
+    "title": "S / Sea Salt Blue Samt"
+   },
+   {
+    "sku": "CJYD321170704DW",
+    "title": "S / Milk Fufu Yellow Basis"
+   },
+   {
+    "sku": "CJYD321170705EV",
+    "title": "S / Milk Fufu Yellow Katzenpfote"
+   },
+   {
+    "sku": "CJYD321170706FU",
+    "title": "S / Milk Fufu Yellow Flausch"
+   },
+   {
+    "sku": "CJYD321170707GT",
+    "title": "M / Sea Salt Blue Basis"
+   },
+   {
+    "sku": "CJYD321170708HS",
+    "title": "M / Sea Salt Blue Katzenpfote"
+   },
+   {
+    "sku": "CJYD321170709IR",
+    "title": "M / Sea Salt Blue Samt"
+   },
+   {
+    "sku": "CJYD321170710JQ",
+    "title": "M / Milk Fufu Yellow Basis"
+   },
+   {
+    "sku": "CJYD321170711KP",
+    "title": "M / Milk Fufu Yellow Katzenpfote"
+   },
+   {
+    "sku": "CJYD321170712LO",
+    "title": "M / Milk Fufu Yellow Flausch"
+   }
+  ]
+ }
+}
