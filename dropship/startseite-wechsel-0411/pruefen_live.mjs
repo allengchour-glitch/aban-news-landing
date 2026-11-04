@@ -7,15 +7,20 @@
 // deshalb normale Chrome-Kennung, Adresse der Startseite OHNE Query, Pausen zwischen den Abrufen, Wiederholung bei 429/503.
 // Das Zeitfenster kommt aus dem Datum-Kopf der Antwort der Startseite (nicht aus der eigenen Uhr), damit ein Wechsel zwischen
 // zwei Abrufen kein falsches «Abweichung» erzeugt.
-import { fensterStart, slotAus, REIHEN, THEME_STOPS } from '../../automation/lib/startseite_pool.mjs';
+// Seiten-Cache: Shopify hält die fertig gerechnete Startseite nach einem Fensterwechsel noch eine Weile vor (GEMESSEN 04.11.:
+// Wechsel 12:00 UTC, Browser-Kopf liefert den alten Stand bis 12:22 UTC; ohne Accept-Kopf kam der neue Stand sofort). Zeigt die Seite in den
+// ersten 40 Minuten (LAG_MIN) nach einer Fenstergrenze genau die Auswahl des VORHERIGEN Fensters, meldet das Skript «GLEICH (Cache-Verzug)»
+// statt «Abweichung». Danach zählt nur noch das aktuelle Fenster.
+import { fensterStart, slotAus, REIHEN, THEME_STOPS, ROTATION } from '../../automation/lib/startseite_pool.mjs';
 const BASIS = 'https://luxestyle.ch';
 const PAUSE_MS = Number(process.env.PAUSE_MS || 3200);
+const LAG_MIN = Number(process.env.LAG_MIN || 40);
 const schlaf = (ms) => new Promise((r) => setTimeout(r, ms));
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 async function holen(pfad, versuche = 5) {
   let letzter = '';
   for (let i = 0; i < versuche; i++) {
-    const r = await fetch(BASIS + pfad, { headers: { 'user-agent': UA, 'accept-language': 'de-CH,de;q=0.9' } });
+    const r = await fetch(BASIS + pfad, { headers: { 'user-agent': UA, accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8', 'accept-language': 'de-CH,de;q=0.9' } });
     if (r.ok) return r;
     letzter = `HTTP ${r.status}`;
     if (![429, 503].includes(r.status)) break;
@@ -68,9 +73,12 @@ try {
     const k = REIHEN[n];
     const pool = (await (await holen(`/collections/${k.handle}/products.json?limit=250`)).json()).products;
     const e = soll(pool, k, slot);
-    const gleich = e.liste.length === ist[n].length && e.liste.every((h, i) => h === ist[n][i]);
+    const gl = (l) => l.length === ist[n].length && l.every((h, i) => h === ist[n][i]);
+    let gleich = gl(e.liste), verzug = false;
+    // Verzug: erst «Abweichung» prüfen, ob die Seite das vorherige Fenster zeigt und die Grenze noch jung ist.
+    if (!gleich && sekunden - slot * ROTATION.stunden * 3600 < LAG_MIN * 60 && gl(soll(pool, k, slot - 1).liste)) { gleich = true; verzug = true; }
     const zuWenig = e.liste.length < k.zeigt;
-    console.log(`${n}: Pool ${pool.length}, Start ${e.s} → ${gleich ? 'GLEICH' : 'ABWEICHUNG'}${zuWenig ? ' (Fenster hat zu wenig gültige Produkte: das Theme muss auf die feste Liste zurückfallen)' : ''}`);
+    console.log(`${n}: Pool ${pool.length}, Start ${e.s} → ${gleich ? (verzug ? 'GLEICH (Cache-Verzug: Seite zeigt noch das vorherige Fenster)' : 'GLEICH') : 'ABWEICHUNG'}${zuWenig ? ' (Fenster hat zu wenig gültige Produkte: das Theme muss auf die feste Liste zurückfallen)' : ''}`);
     if (!gleich) { console.log('  soll', e.liste.join(', ')); console.log('  ist ', ist[n].join(', ')); code = 1; }
   }
   const doppelt = [...trends, ...edit, ...mehr]; if (new Set(doppelt).size !== doppelt.length) { console.log('FEHLER: ein Produkt steht doppelt'); code = 1; }
