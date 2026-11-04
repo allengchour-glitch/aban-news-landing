@@ -69,7 +69,7 @@ ist(not r['sicher'] and r['bpm'] == 120.0, 'Rauschen: Takt unsicher, Vorgabe 120
 
 # 2. Dauern
 ist(S.schnitt_dauern([{'dauer': 2.1}, {'dauer': 0.4}, {'dauer': 5}], 0.5) == [2.0, 1.0, 5.0], 'Dauern auf ganze Takte, mindestens zwei Schläge')
-ist(S.schnitt_dauern([{'dauer': 2.1}], 0.5, mit_takt=False) == [round(2.1 * 30) / 30], 'ohne Takt auf Frames gerundet')
+ist(S.schnitt_dauern([{'dauer': 2.1}], 0.5, mit_takt=False) == [round(2.1 * S.FPS) / S.FPS], 'ohne Takt auf Frames gerundet')
 
 # 3. Rendern mit synthetischen Quellen und echter Musik
 a = os.path.join(tmp, 'a.mp4'); b = os.path.join(tmp, 'b.mp4')
@@ -87,23 +87,29 @@ info = S.baue(plan, tmp, out)
 j = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'stream=codec_type,codec_name,width,height,r_frame_rate,pix_fmt:format=duration', '-of', 'json', out], text=True))
 v = next(s for s in j['streams'] if s['codec_type'] == 'video'); au = [s for s in j['streams'] if s['codec_type'] == 'audio']
 ist((v['width'], v['height']) == (1080, 1920), 'Ausgabe 1080x1920')
-ist(v['codec_name'] == 'h264' and v['pix_fmt'] == 'yuv420p' and v['r_frame_rate'] == '30/1', 'h264, yuv420p, 30 fps')
+ist(v['codec_name'] == 'h264' and v['pix_fmt'] == 'yuv420p' and v['r_frame_rate'] == f'{S.FPS}/1', f'h264, yuv420p, {S.FPS} fps')
 ist(len(au) == 1 and au[0]['codec_name'] == 'aac', 'genau eine Tonspur (aac)')
 ist(abs(float(j['format']['duration']) - info['gesamt_s']) < 0.12, f'Dauer {j["format"]["duration"]} s entspricht dem Plan {info["gesamt_s"]} s')
 ist(8.0 <= info['gesamt_s'] <= 15.0, 'Gesamtdauer 8 bis 15 s')
 # Dauern sind ganze Takte
 per = 60.0 / info['bpm']
-ist(all(abs(d / per - round(d / per)) < 0.02 for d in info['dauern']) or not info['takt_sicher'], 'Einstellungen dauern ganze Takte')
+kumd = 0.0
+ok_takt = True
+for d in info['dauern']:
+    kumd += d
+    ok_takt = ok_takt and abs(kumd / per - round(kumd / per)) < 0.5 / (S.FPS * per) + 1e-6   # Schnitt höchstens ein halbes Bild neben dem Schlag
+ist(ok_takt or not info['takt_sicher'], 'Schnittzeiten liegen höchstens ein halbes Bild neben dem Schlag (kumuliert gerundet)')
+ist(sum(info['bilder']) == round(info['gesamt_s'] * S.FPS), 'Summe der Bilder gleich Gesamtlänge')
 # Bildinhalt: Hook in den ersten Sekunden sichtbar (Differenz zum Bild ohne Text), nach 4 s kein Hook mehr
 def bild(t, name):
     p = os.path.join(tmp, name)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(t), '-i', out, '-frames:v', '1', p], check=True)
     return p
 ist(os.path.getsize(bild(1.0, 'f1.png')) > 20000, 'Bild bei 1,0 s lässt sich lesen')
-# Lautstärke der Musik: -22 LUFS Ziel (loudnorm Einzeldurchgang, Toleranz ±4)
+# Lautstärke der Musik: -16 LUFS Ziel (loudnorm Einzeldurchgang, Toleranz ±4)
 e = subprocess.run(['ffmpeg', '-v', 'info', '-i', out, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
 lufs = float([l for l in e.split('\n') if ' I:' in l][-1].split('I:')[1].split('LUFS')[0])
-ist(-26 <= lufs <= -17, f'Lautheit {lufs} LUFS im Zielbereich')
+ist(-21 <= lufs <= -12, f'Lautheit {lufs} LUFS im Zielbereich')
 
 # 4. Eingabeprüfung
 def kopie(**kw):
@@ -133,6 +139,65 @@ wirft(lambda: S.baue(c, tmp, out), 'ausserhalb von', 'Gesamtdauer unter 8 s')
 neu = os.path.join(tmp, 'trocken.mp4')
 S.baue(plan, tmp, neu, trocken=True)
 ist(not os.path.exists(neu), 'Trockenlauf schreibt keine Datei')
+
+
+# 6. Querformat mit Weichzeichner-Rahmen, Text unter der Endkarte, Endkarte tiefer
+import io, contextlib
+c_ = os.path.join(tmp, 'quer.mp4')
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc2=size=960x540:rate=30:duration=14', '-pix_fmt', 'yuv420p', c_], check=True)
+plan_b = json.loads(json.dumps(plan)); plan_b['shots'][1].update(quelle='quer.mp4', ss=1.0, fit='blur', zoom='none')
+out_b = os.path.join(tmp, 'blur.mp4')
+S.baue(plan_b, tmp, out_b)
+jb = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height', '-of', 'json', out_b], text=True))['streams'][0]
+ist((jb['width'], jb['height']) == (1080, 1920), 'Weichzeichner-Rahmen: Ausgabe 1080x1920')
+plan_c = json.loads(json.dumps(plan)); plan_c['shots'][1]['fit'] = 'quatsch'
+wirft(lambda: S.baue(plan_c, tmp, out), 'fit', 'unbekannter fit')
+puffer = io.StringIO()
+with contextlib.redirect_stdout(puffer):
+    S.baue(plan, tmp, os.path.join(tmp, 'x.mp4'), trocken=True)
+graph = puffer.getvalue()
+ist('y=1330' in graph and 'y=1370' not in graph, 'Endkarte bei y=1330')
+ist('y=1200' in graph and 'y=1240' not in graph, 'Kernaussagen bei y=1200')
+es_ = info['gesamt_s'] - 2.4
+import re
+enden = [float(m.group(1)) for m in re.finditer(r"y=1200:enable='between\(t,[0-9.]+,([0-9.]+)\)'", graph)]
+ist(enden and max(enden) <= es_ - 0.04, f'Kernaussagen enden vor der Endkarte ({max(enden) if enden else None} <= {es_ - 0.05:.2f})')
+
+
+# 7. Weissabgleich: kleinere Kelvin-Zahl macht wärmer, Bereich geprüft
+plan_w = json.loads(json.dumps(plan)); plan_w['shots'][0]['wb'] = 5500
+puf2 = io.StringIO()
+with contextlib.redirect_stdout(puf2):
+    S.baue(plan_w, tmp, os.path.join(tmp, 'w.mp4'), trocken=True)
+ist('colortemperature=temperature=5500,cas=' in puf2.getvalue(), 'wb wird als colortemperature vor dem Nachschärfen eingebaut')
+ist(puf2.getvalue().count('colortemperature') == 1, 'wb nur an der gewählten Einstellung')
+for bad in (3000, 9500, 'warm'):
+    pb = json.loads(json.dumps(plan)); pb['shots'][0]['wb'] = bad
+    wirft(lambda pb=pb: S.baue(pb, tmp, out), 'wb', f'wb {bad} ausserhalb')
+
+
+# 8. Zeitlupe ohne Standbilder, Hook ab Bild 0, hook_y, text_y, Anker
+plan_t = json.loads(json.dumps(plan)); plan_t['shots'][0].update(tempo=0.8, ss=0.5, dauer=2.308)
+out_t = os.path.join(tmp, 'tempo.mp4')
+S.baue(plan_t, tmp, out_t)
+fz = subprocess.run(['ffmpeg', '-hide_banner', '-i', out_t, '-vf', 'freezedetect=n=-60dB:d=0.1', '-f', 'null', '-'], capture_output=True, text=True).stderr
+starts = [float(x) for x in re.findall(r'freeze_start: ([0-9.]+)', fz)]
+ist(all(st > info['gesamt_s'] - 0.6 for st in starts), f'tempo 0.8: keine Standbilder ausser im Endfade (Beginn: {starts})')
+puf3 = io.StringIO()
+plan_h = json.loads(json.dumps(plan)); plan_h['hook_y'] = 1100; plan_h['shots'][1].update(text_y=1400, anker_y=0.8, zoom='in', zoomstaerke=0.4)
+with contextlib.redirect_stdout(puf3):
+    S.baue(plan_h, tmp, os.path.join(tmp, 'h.mp4'), trocken=True)
+g3 = puf3.getvalue()
+ist("enable='between(t,0,2.7)'" in g3 and "y=1100:" in g3 and "y=1220:" in g3, 'Hook ab t=0 und bei hook_y/hook_y+120')
+ist("alpha='if(gt(t,2.45),(2.7-t)/0.25,1)'" in g3, 'Hook voll sichtbar ab dem ersten Bild')
+ist('y=1400:' in g3, 'text_y wird übernommen')
+ist("min(max(0.8*ih-ih/zoom/2,0),ih-ih/zoom)" in g3, 'anker_y steuert den Zoom-Ausschnitt')
+for feld, wert, teil in (('hook_y', 100, 'hook_y'), ):
+    pb = json.loads(json.dumps(plan)); pb[feld] = wert
+    wirft(lambda pb=pb: S.baue(pb, tmp, out), teil, f'{feld} ausserhalb')
+for feld, wert, teil in (('text_y', 100, 'text_y'), ('anker_y', 1.5, 'anker')):
+    pb = json.loads(json.dumps(plan)); pb['shots'][1][feld] = wert
+    wirft(lambda pb=pb: S.baue(pb, tmp, out), teil, f'{feld} ausserhalb')
 
 shutil.rmtree(tmp, ignore_errors=True)
 print(f'{ok} Prüfungen bestanden' + (f', {len(fehler)} FEHLER' if fehler else ''))
