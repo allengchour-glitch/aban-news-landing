@@ -1,0 +1,58 @@
+// Mutationsprobe: verändert je einen Satz in patches.mjs oder etiketten.mjs und prüft, dass patches_test.mjs es bemerkt.
+//   node dropship/katalog-einheiten-0411/mutationsprobe.mjs
+import { cpSync, mkdtempSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
+const HIER = new URL('.', import.meta.url).pathname;
+
+const MUTANTEN = [
+  // patches.mjs
+  ['patches.mjs', 'Anker-Prüfung lockern', 'if (teile.length !== 2) throw new Error(`Anker', 'if (teile.length < 2) throw new Error(`Anker'],
+  ['patches.mjs', 'Filter-Option nicht ändern', "return new Option(labels.length?joinSizeLabels(labels):metricText(value),value);", "return new Option(labels.length===1?labels[0]:metricText(value),value);"],
+  ['patches.mjs', 'Filter-Chip nicht ändern', "sizeLabels.length?joinSizeLabels(sizeLabels):metricText(sizeFilter.value)`, 'JS Filter-Chip'", "sizeLabels.length===1?sizeLabels[0]:metricText(sizeFilter.value)`, 'JS Filter-Chip'"],
+  ['patches.mjs', 'Etiketten ohne EU zuerst', '[...eu.sort(cmp),...rest.sort(cmp)]', '[...rest.sort(cmp),...eu.sort(cmp)]'],
+  ['patches.mjs', 'nicht lieferbar bekommt Knopf', 'if(offer.available===false)priceBox.append', 'if(offer.available===true)priceBox.append'],
+  ['patches.mjs', 'neuer Schlüssel fehlt', "const NEUE_SCHLUESSEL = ['design_cta', ", "const NEUE_SCHLUESSEL = ["],
+  ['patches.mjs', 'Wortlaut wie Vorschau-Seite', "design_cta: 'Jetzt selbst gestalten'", "design_cta: 'Jetzt gestalten'"],
+  ['patches.mjs', 'CSS nicht anhängen', "return text.replace(/\\s*$/, '\\n') + CSS_NEU;", "return text;"],
+  ['patches.mjs', 'notice nicht ersetzen', "const GEAENDERTE_SCHLUESSEL = ['notice', 'shop_price_note'];", "const GEAENDERTE_SCHLUESSEL = ['shop_price_note'];"],
+  ['patches.mjs', 'Section ohne letztes Label', "NEUE_SCHLUESSEL.map((k) => `      \"${k}\": {{", "NEUE_SCHLUESSEL.slice(0, 4).map((k) => `      \"${k}\": {{"],
+  ['patches.mjs', 'JS-Marke weglassen', "return t.replace(/\\s*$/, '\\n') + `/* ${MARKE} */\\n`;", "return t;"],
+  ['patches.mjs', 'Hinweis immer zeigen', "if(offer)priceBox.append(el('p','lcl-small',t('shop_price_note')))", "priceBox.append(el('p','lcl-small',t('shop_price_note')))"],
+  ['patches.mjs', 'Formatprüfung der Galerie weg', "if (JSON.stringify(g, null, 2) + '\\n' !== text) throw", "if (false) throw"],
+  ['patches.mjs', 'Galerie-Ausgabe kompakt', "return { text: JSON.stringify(neu, null, 2) + '\\n', stat };", "return { text: JSON.stringify(neu), stat };"],
+  ['patches.mjs', 'Section ohne Schutz vor Doppelung', "if (text.includes(\"'luxe_clothing.design_cta'\")) throw new Error('Section trägt die neuen Labels schon');", ""],
+  // etiketten.mjs
+  ['etiketten.mjs', 'Hersteller-Toleranz zu weit', 'export const TOLERANZ_HERSTELLER = 0.03;', 'export const TOLERANZ_HERSTELLER = 0.5;'],
+  ['etiketten.mjs', 'oz in britischen ml', 'export const OZ_ML = 29.5735295625;', 'export const OZ_ML = 28.4130625;'],
+  ['etiketten.mjs', 'Kerzen nicht in g', "if (/\\bCandles\\b/i.test(pfad)) return 'g';", "if (/\\bCandlesX\\b/i.test(pfad)) return 'g';"],
+  ['etiketten.mjs', 'unsicher nie markieren', "const unsicher = (UNSICHER[String(produktId)] || []).includes(String(roh));", "const unsicher = false;"],
+  ['etiketten.mjs', 'Dezimalpunkt statt Komma', "String(n).replace('.', ',')", "String(n)"],
+  ['etiketten.mjs', 'Stoffgewicht nicht schützen', "if (/oz\\.?\\s*\\/\\s*y/i.test(roh)) return null;", ""],
+  ['etiketten.mjs', 'Schuhzweig aus', "if (tabellen?.[pid]) label = schuhLabel(pid, roh, tabellen);", "if (false) label = schuhLabel(pid, roh, tabellen);"],
+  ['etiketten.mjs', 'Rohwert-Widerspruch ignorieren', "if (vorhanden.originalSize !== e.originalSize) throw new Error(", "if (false) throw new Error("],
+  ['etiketten.mjs', 'Slides Damen nicht unsicher', "  '598': ['6.5'],\n", ""],
+  ['etiketten.mjs', 'Hersteller-Regex ohne Punkt', "oz\\.?\\s*\\(\\s*(\\d+(?:[.,]\\d+)?)", "oz\\s*\\(\\s*(\\d+(?:[.,]\\d+)?)"],
+  ['etiketten.mjs', 'Herstellerwert egal welche oz', "Math.abs(h.oz - oz) < 1e-9", "true"],
+  ['etiketten.mjs', 'Varianten doppelt anhängen', "const vorhanden = zeile.variants.find((x) => String(x.id) === String(e.id));", "const vorhanden = null;"],
+  ['etiketten.mjs', 'Tiernapf als ml', "  if (/Drinkware & coasters/i.test(pfad)) return 'ml';", "  if (/Drinkware & coasters|Pet products/i.test(pfad)) return 'ml';"],
+  ['etiketten.mjs', 'Konflikt trotzdem umrechnen', "return { konflikt: { oz, herstellerWert: passende[0].wert, rechnung: Math.round(rechnung), abweichung: Math.max(...abw) } };", "return { wert: Math.round(rechnung), einheit: kind, quelle: 'rechnung', rechnung: Math.round(rechnung) };"],
+];
+
+let erkannt = 0; const uebrig = [];
+for (const [datei, name, alt, neu] of MUTANTEN) {
+  const dir = mkdtempSync(join(tmpdir(), 'lxmut-'));
+  cpSync(HIER, dir, { recursive: true });
+  const p = join(dir, datei); const text = readFileSync(p, 'utf8');
+  const teile = text.split(alt);
+  if (teile.length !== 2) { console.log('  ?', name, '- Muster kommt', teile.length - 1, '× vor (Mutant nicht anwendbar)'); uebrig.push(name + ' (nicht anwendbar)'); rmSync(dir, { recursive: true, force: true }); continue; }
+  writeFileSync(p, teile[0] + neu + teile[1]);
+  const r = spawnSync(process.execPath, [join(dir, 'patches_test.mjs')], { encoding: 'utf8' });
+  const bemerkt = r.status !== 0;
+  if (bemerkt) erkannt++; else uebrig.push(name);
+  console.log(bemerkt ? '  erkannt ' : '  ÜBERLEBT', name);
+  rmSync(dir, { recursive: true, force: true });
+}
+console.log(`Mutationsprobe: ${erkannt} von ${MUTANTEN.length} erkannt` + (uebrig.length ? `; übrig: ${uebrig.join('; ')}` : ''));
+process.exit(erkannt === MUTANTEN.length ? 0 : 1);

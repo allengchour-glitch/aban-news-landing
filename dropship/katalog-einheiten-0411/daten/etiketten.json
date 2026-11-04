@@ -1,0 +1,1894 @@
+{
+ "schemaVersion": 1,
+ "erzeugt": "2026-11-04",
+ "hinweis": "Etiketten für variants[].displaySizeCh; erzeugt von etiketten_bauen.mjs",
+ "produkte": {
+  "19": [
+   {
+    "id": 1320,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 4830,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 16586,
+    "originalSize": "20 oz",
+    "displaySizeCh": "591 ml"
+   }
+  ],
+  "300": [
+   {
+    "id": 9323,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 9324,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   }
+  ],
+  "382": [
+   {
+    "id": 16030,
+    "originalSize": "17 oz",
+    "displaySizeCh": "500 ml"
+   },
+   {
+    "id": 10798,
+    "originalSize": "17 oz",
+    "displaySizeCh": "500 ml"
+   }
+  ],
+  "403": [
+   {
+    "id": 11051,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17196,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 11050,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17197,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 22373,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 12579,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 12578,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 11049,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17200,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 11048,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17199,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 17362,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17359,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17360,
+    "originalSize": "15 oz",
+    "displaySizeCh": "444 ml"
+   },
+   {
+    "id": 17358,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   },
+   {
+    "id": 17361,
+    "originalSize": "11 oz",
+    "displaySizeCh": "325 ml"
+   }
+  ],
+  "407": [
+   {
+    "id": 11189,
+    "originalSize": "12 oz",
+    "displaySizeCh": "355 ml"
+   }
+  ],
+  "513": [
+   {
+    "id": 17460,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 17461,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 17462,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 17463,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 17464,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 17465,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 17466,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 17450,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 17451,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 17452,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 17453,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 17454,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 17455,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 17456,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 17457,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 17458,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 17459,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 12913,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 12914,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 12915,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 12916,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 12918,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 12919,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 12920,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 12903,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 12904,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 12905,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 12906,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 12907,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 12908,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 12909,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 12910,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 12911,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 12912,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   }
+  ],
+  "525": [
+   {
+    "id": 17477,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 17478,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 17479,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 17480,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 17481,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 17467,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 17468,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 17469,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 17471,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 17470,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 17472,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 17473,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 17474,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 17475,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 17476,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 13233,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 13234,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 13235,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 13236,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 13237,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 13223,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 13224,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 13225,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 13226,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 13227,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 13228,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 13229,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 13230,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 13231,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 13232,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   }
+  ],
+  "574": [
+   {
+    "id": 20898,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 20899,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 20900,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 20901,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 20902,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 20903,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 20904,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 20888,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 20889,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 20890,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 20891,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 20892,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 20893,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 20894,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 20895,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 20896,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 20897,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 14746,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 14747,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 14748,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 14749,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 14750,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 14751,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 14752,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 14736,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 14737,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 14738,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 14739,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 14740,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 14741,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 14742,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 14743,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 14744,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 14745,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   }
+  ],
+  "575": [
+   {
+    "id": 20915,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 20916,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 20917,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 20918,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 20919,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 20905,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 20906,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 20907,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 20908,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 20909,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 20910,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 20911,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 20912,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 20913,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 20914,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 14731,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 14732,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 14733,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 14734,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 14735,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 14721,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 14722,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 14723,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 14724,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 14725,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 14726,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 14727,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 14728,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 14729,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 14730,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   }
+  ],
+  "578": [
+   {
+    "id": 20930,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 20931,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 20932,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 20933,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 20934,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 20935,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 20936,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 20920,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 20921,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 20922,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 20923,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 20924,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 20925,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 20926,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 20927,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 20928,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 20929,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 14854,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 14855,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 14856,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 14857,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 14858,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 14859,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 14860,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 14844,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 14845,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 14846,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 14847,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 14848,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 14849,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 14850,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 14851,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 14852,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 14853,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   }
+  ],
+  "579": [
+   {
+    "id": 20947,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 20948,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 20949,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 20950,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 20951,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 20937,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 20938,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 20939,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 20940,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 20941,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 20942,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 20943,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 20944,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 20945,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 20946,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 14871,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 14872,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 14873,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 14874,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 14875,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 14861,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 14862,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 14863,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 14864,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 14865,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 14866,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 14867,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 14868,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 14869,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 14870,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   }
+  ],
+  "585": [
+   {
+    "id": 15004,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   },
+   {
+    "id": 15005,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   }
+  ],
+  "597": [
+   {
+    "id": 15241,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 15242,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 15243,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 15244,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 15236,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 15237,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 15238,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 15239,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 15240,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 15250,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 15251,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 15252,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 15253,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 15245,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 15246,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 15247,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 15248,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 15249,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   }
+  ],
+  "598": [
+   {
+    "id": 15269,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 15270,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 15271,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 15263,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 15264,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37 (ca.)"
+   },
+   {
+    "id": 15265,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 15266,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 15267,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 15268,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 15260,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 15261,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 15262,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 15254,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 15255,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37 (ca.)"
+   },
+   {
+    "id": 15256,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 15257,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 15258,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 15259,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   }
+  ],
+  "632": [
+   {
+    "id": 16046,
+    "originalSize": "12 oz",
+    "displaySizeCh": "355 ml"
+   }
+  ],
+  "653": [
+   {
+    "id": 16359,
+    "originalSize": "16 oz",
+    "displaySizeCh": "473 ml"
+   }
+  ],
+  "657": [
+   {
+    "id": 20866,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 20867,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 20868,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 20869,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 20870,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 20871,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 20872,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 20856,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 20857,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 20858,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 20859,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 20860,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 20861,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 20862,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 20863,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 20864,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 20865,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 16378,
+    "originalSize": "10",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 16379,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 16380,
+    "originalSize": "11",
+    "displaySizeCh": "EU 45"
+   },
+   {
+    "id": 16381,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 46 (ca.)"
+   },
+   {
+    "id": 16382,
+    "originalSize": "12",
+    "displaySizeCh": "EU 46,5 (ca.)"
+   },
+   {
+    "id": 16383,
+    "originalSize": "12.5",
+    "displaySizeCh": "EU 47"
+   },
+   {
+    "id": 16384,
+    "originalSize": "13",
+    "displaySizeCh": "EU 47,5"
+   },
+   {
+    "id": 16368,
+    "originalSize": "5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 16369,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 16370,
+    "originalSize": "6",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 16371,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 16372,
+    "originalSize": "7",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 16373,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 16374,
+    "originalSize": "8",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 16375,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 16376,
+    "originalSize": "9",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 16377,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 43"
+   }
+  ],
+  "658": [
+   {
+    "id": 20883,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 20884,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 20885,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 20886,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 20887,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 20873,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 20874,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 20875,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 20876,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 20877,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 20878,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 20879,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 20880,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 20881,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 20882,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   },
+   {
+    "id": 16395,
+    "originalSize": "10",
+    "displaySizeCh": "EU 42"
+   },
+   {
+    "id": 16396,
+    "originalSize": "10.5",
+    "displaySizeCh": "EU 42,5"
+   },
+   {
+    "id": 16397,
+    "originalSize": "11",
+    "displaySizeCh": "EU 43"
+   },
+   {
+    "id": 16398,
+    "originalSize": "11.5",
+    "displaySizeCh": "EU 44"
+   },
+   {
+    "id": 16399,
+    "originalSize": "12",
+    "displaySizeCh": "EU 44,5"
+   },
+   {
+    "id": 16385,
+    "originalSize": "5",
+    "displaySizeCh": "EU 35,5"
+   },
+   {
+    "id": 16386,
+    "originalSize": "5.5",
+    "displaySizeCh": "EU 36"
+   },
+   {
+    "id": 16387,
+    "originalSize": "6",
+    "displaySizeCh": "EU 36,5"
+   },
+   {
+    "id": 16388,
+    "originalSize": "6.5",
+    "displaySizeCh": "EU 37,5"
+   },
+   {
+    "id": 16389,
+    "originalSize": "7",
+    "displaySizeCh": "EU 38"
+   },
+   {
+    "id": 16390,
+    "originalSize": "7.5",
+    "displaySizeCh": "EU 38,5"
+   },
+   {
+    "id": 16391,
+    "originalSize": "8",
+    "displaySizeCh": "EU 39"
+   },
+   {
+    "id": 16392,
+    "originalSize": "8.5",
+    "displaySizeCh": "EU 40"
+   },
+   {
+    "id": 16393,
+    "originalSize": "9",
+    "displaySizeCh": "EU 40,5"
+   },
+   {
+    "id": 16394,
+    "originalSize": "9.5",
+    "displaySizeCh": "EU 41"
+   }
+  ],
+  "663": [
+   {
+    "id": 16440,
+    "originalSize": "25 oz",
+    "displaySizeCh": "739 ml"
+   },
+   {
+    "id": 19514,
+    "originalSize": "40 oz",
+    "displaySizeCh": "1183 ml"
+   }
+  ],
+  "690": [
+   {
+    "id": 19390,
+    "originalSize": "16 oz With Lid & Straw",
+    "displaySizeCh": "473 ml With Lid & Straw"
+   },
+   {
+    "id": 17354,
+    "originalSize": "16 oz",
+    "displaySizeCh": "473 ml"
+   }
+  ],
+  "691": [
+   {
+    "id": 17353,
+    "originalSize": "15 oz",
+    "displaySizeCh": "443 ml"
+   }
+  ],
+  "742": [
+   {
+    "id": 19107,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   },
+   {
+    "id": 19108,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   },
+   {
+    "id": 19109,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   },
+   {
+    "id": 19110,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   },
+   {
+    "id": 19111,
+    "originalSize": "20 oz",
+    "displaySizeCh": "600 ml"
+   }
+  ],
+  "764": [
+   {
+    "id": 19461,
+    "originalSize": "Regular 12 oz",
+    "displaySizeCh": "Regular 355 ml"
+   },
+   {
+    "id": 19462,
+    "originalSize": "Slim 12 oz",
+    "displaySizeCh": "Slim 355 ml"
+   }
+  ],
+  "779": [
+   {
+    "id": 19793,
+    "originalSize": "10.5 oz",
+    "displaySizeCh": "311 ml"
+   }
+  ],
+  "788": [
+   {
+    "id": 20175,
+    "originalSize": "32 oz",
+    "displaySizeCh": "950 ml"
+   }
+  ],
+  "837": [
+   {
+    "id": 21352,
+    "originalSize": "12 oz",
+    "displaySizeCh": "355 ml"
+   }
+  ],
+  "848": [
+   {
+    "id": 22016,
+    "originalSize": "25 oz",
+    "displaySizeCh": "739 ml"
+   },
+   {
+    "id": 22017,
+    "originalSize": "25 oz",
+    "displaySizeCh": "739 ml"
+   },
+   {
+    "id": 22020,
+    "originalSize": "25 oz",
+    "displaySizeCh": "739 ml"
+   }
+  ],
+  "861": [
+   {
+    "id": 22804,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22806,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22807,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22808,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22809,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22810,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22811,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22812,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 22455,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   }
+  ],
+  "909": [
+   {
+    "id": 23470,
+    "originalSize": "20oz",
+    "displaySizeCh": "600 ml"
+   }
+  ],
+  "935": [
+   {
+    "id": 23880,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23883,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23884,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23881,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23885,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23886,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23887,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   },
+   {
+    "id": 23882,
+    "originalSize": "22oz",
+    "displaySizeCh": "650 ml"
+   }
+  ],
+  "1424": [
+   {
+    "id": 44139,
+    "originalSize": "4oz",
+    "displaySizeCh": "113 g"
+   },
+   {
+    "id": 44143,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 44144,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 44145,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 44140,
+    "originalSize": "4oz",
+    "displaySizeCh": "113 g"
+   },
+   {
+    "id": 44141,
+    "originalSize": "4oz",
+    "displaySizeCh": "113 g"
+   },
+   {
+    "id": 44146,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   },
+   {
+    "id": 44142,
+    "originalSize": "4oz",
+    "displaySizeCh": "113 g"
+   },
+   {
+    "id": 44147,
+    "originalSize": "9oz",
+    "displaySizeCh": "255 g"
+   }
+  ]
+ }
+}
