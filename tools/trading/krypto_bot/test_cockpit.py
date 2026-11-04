@@ -1270,5 +1270,136 @@ _cz = [z for z in _cb if "cockpit.py" in z and not z.startswith("REM")]
 pruefe("cockpit.bat: Update und Cockpit in EINER Zeile, am Ende «& pause & exit /b», und sonst kein weiteres pause",
        len(_cz) == 1 and "pflege.py --nur-update --still" in _cz[0] and _cz[0].endswith("cockpit.py & pause & exit /b") and sum(1 for z in _cb if z.strip().lower() == "pause") == 0, _cz)
 
+# ───────────────────────── Übersicht: neue Angaben in stand() (nur Anzeige, nur lesen) ─────────────────────────
+import satellit as _SAT_U  # noqa: E402
+
+_e_mit = {"markt": "BTC", "symbol": "BTCUSDT", "hebel": 2.0, "stop_long": 72000.0, "stop_short": 80000.0, "broker": {"stop": 72851.8, "position": 0.05}}
+_m1 = C.markt_mit_stop(_e_mit)
+pruefe("markt_mit_stop: der Stop an der Börse (broker.stop) steht als `stop`, die Regel-Stop nur als Hinweis `stop_berechnet`",
+       _m1["stop"] == 72851.8 and _m1["stop_berechnet"] == 72000.0 and _m1["hebel"] == 2.0, _m1)
+pruefe("markt_mit_stop: der Logbuch-Eintrag selbst bleibt unverändert (Kopie)", "stop" not in _e_mit and "stop_berechnet" not in _e_mit)
+_m2 = C.markt_mit_stop({"hebel": -1.0, "stop_long": 1.0, "stop_short": 80000.0})
+pruefe("markt_mit_stop: ohne Börsen-Stop kein erfundener Stop (None), Short nimmt stop_short", _m2["stop"] is None and _m2["stop_berechnet"] == 80000.0, _m2)
+_m3 = C.markt_mit_stop({"hebel": 0.0, "stop_long": 5.0, "stop_short": 6.0, "broker": {"stop": 0}})
+pruefe("markt_mit_stop: flach oder Stop 0 → beides None", _m3["stop"] is None and _m3["stop_berechnet"] is None, _m3)
+_m4 = C.markt_mit_stop({"hebel": 1.0, "stop_long": "abc", "broker": {"stop": True}})
+pruefe("markt_mit_stop: Unsinn (Text, bool) wird nicht als Stop gelesen", _m4["stop"] is None and _m4["stop_berechnet"] is None, _m4)
+pruefe("markt_mit_stop: broker kein Objekt → kein Absturz", C.markt_mit_stop({"hebel": 1.0, "broker": "x"})["stop"] is None)
+
+with tempfile.TemporaryDirectory() as _tu:
+    _buch_u, _alt_buch_u, _alt_aus_u = Path(_tu) / "buch.json", _SAT_U.BUCH, _SAT_U.AUS_DATEI
+    _SAT_U.BUCH, _SAT_U.AUS_DATEI = _buch_u, Path(_tu) / "aus.txt"
+    try:
+        s0 = C.satellit_stand({})
+        pruefe("satellit_stand: leeres Buch → alle Listen leer, an, 20 %, nächster Entscheidungstag ein Donnerstag, kein letzter Lauf",
+               s0 is not None and s0["aus"] is False and s0["anteil"] == 0.2 and s0["ziele"] == [] and s0["positionen"] == [] and s0["ausgestoppt"] == [] and s0["entschieden"] is None
+               and s0["letzter_lauf"] is None and s0["hinweis"] == "" and date.fromisoformat(s0["naechster_tag"]).weekday() == 3 and s0["echtgeld"] is False and s0["hat_schluessel"] is False, s0)
+        _SAT_U.schreiben({**_SAT_U.neues_buch(), "entschieden": "2026-11-05", "ziele": {"SOLUSDT": 0.1, "ADAUSDT": 0.1},
+                          "positionen": {"SOLUSDT": {"spot": "SOLUSDT", "menge": 1.5, "stop": 150.2, "seit": "2026-11-06", "stop_anteil": 0.12},
+                                         "1000PEPEUSDT": {"spot": "PEPEUSDT", "menge": 20000.0, "stop": 0.0123, "seit": "2026-11-06", "stop_anteil": 0.2}},
+                          "ausgestoppt": {"DOGEUSDT": "2026-11-09"}, "bekannt": ["SOLUSDT"],
+                          "letzter_lauf": {"zeit": "2026-11-10T02:40:00+00:00", "ok": True, "auftraege": 0, "positionen": 2, "hinweise": []}}, _buch_u)
+        s1 = C.satellit_stand({"BINANCE_FUTURES_API_KEY": "k", "BINANCE_FUTURES_API_SECRET": "s"})
+        pruefe("satellit_stand: Ziele, Positionen mit Stop/Menge/seit, ausgestoppte Coins und letzter Lauf aus dem Buch; Schlüssel nur als Ja/Nein",
+               s1["entschieden"] == "2026-11-05" and s1["ziele"] == [{"symbol": "SOLUSDT", "gewicht": 0.1}, {"symbol": "ADAUSDT", "gewicht": 0.1}]
+               and s1["positionen"][0] == {"symbol": "SOLUSDT", "spot": "SOLUSDT", "menge": 1.5, "stop": 150.2, "seit": "2026-11-06", "stop_anteil": 0.12}
+               and len(s1["positionen"]) == 2 and s1["positionen"][1]["symbol"] == "1000PEPEUSDT" and s1["ausgestoppt"] == [{"symbol": "DOGEUSDT", "tag": "2026-11-09"}]
+               and s1["letzter_lauf"]["ok"] is True and s1["hat_schluessel"] is True and "k" not in json.dumps({k: v for k, v in s1.items() if k != "hat_schluessel"}).replace("ok", ""), s1)
+        s2 = C.satellit_stand({"KRYPTO_SATELLIT": "aus"})
+        pruefe("satellit_stand: ausgeschaltet nennt den Grund", s2["aus"] is True and s2["grund"] == "KRYPTO_SATELLIT=aus", s2)
+        s3 = C.satellit_stand({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"})
+        pruefe("satellit_stand: mit echtem Geld steht echtgeld=True (die Anzeige sagt «nur Testnetz»)", s3["echtgeld"] is True, s3)
+        _buch_u.write_text("kaputt")
+        _buch_u.with_name(_buch_u.name + ".bak").write_text("auch kaputt")
+        s4 = C.satellit_stand({})
+        pruefe("satellit_stand: beide Buch-Dateien kaputt → Hinweis «unlesbar», leere Listen, kein Absturz", s4 is not None and s4["hinweis"].startswith("⚠️ Satelliten-Buch unlesbar") and s4["positionen"] == [] and s4["ziele"] == [], s4)
+        _alt_lesen = _SAT_U.lesen
+        _SAT_U.lesen = lambda *a, **k: (_ for _ in ()).throw(OSError("Platte weg"))
+        try:
+            s5 = C.satellit_stand({})
+        finally:
+            _SAT_U.lesen = _alt_lesen
+        pruefe("satellit_stand: ein Fehler beim Lesen → None statt Absturz", s5 is None)
+        _alt_mod = C.SAT
+        C.SAT = None
+        try:
+            pruefe("satellit_stand: Modul fehlt → None (die Oberfläche zeigt dann nichts statt zu stören)", C.satellit_stand({}) is None)
+        finally:
+            C.SAT = _alt_mod
+        # stand() trägt die neuen Angaben, bleibt als JSON darstellbar und enthält keine Schlüssel
+        _buch_u.unlink()
+        _buch_u.with_name(_buch_u.name + ".bak").unlink()
+        d_u = C.stand(env={"BINANCE_FUTURES_API_KEY": "GEHEIM-KEY-1", "BINANCE_FUTURES_API_SECRET": "GEHEIM-SEC-2"})
+        j_u = json.dumps(d_u)
+        pruefe("stand(): enthält satellit, kurse, kurse_schnitt, ist JSON, ohne Schlüssel", "satellit" in d_u and "kurse" in d_u and "kurse_schnitt" in d_u and "GEHEIM" not in j_u, sorted(d_u))
+    finally:
+        _SAT_U.BUCH, _SAT_U.AUS_DATEI = _alt_buch_u, _alt_aus_u
+
+# stand(): die Pilot-Märkte tragen den Stop aus dem Logbuch
+with tempfile.TemporaryDirectory() as _tm:
+    _alt_m = C.DATA
+    C.DATA = Path(_tm)
+    try:
+        (Path(_tm) / "krypto-pilot.json").write_text(json.dumps({"entscheide": [
+            {"markt": "BTC", "symbol": "BTCUSDT", "stand": "2026-11-02", "kurs": 76677.0, "hebel": 2.0, "hebel_roh": 2.0, "stop_long": 72000.0, "stop_short": 80000.0,
+             "broker": {"stop": 72851.8, "position": 0.05}},
+            {"markt": "ETH", "symbol": "ETHUSDT", "stand": "2026-11-02", "kurs": 2249.0, "hebel": 2.0, "hebel_roh": 2.0, "stop_long": 2100.0, "stop_short": 2400.0}],
+            "kontostand": []}), encoding="utf-8")
+        d_m = C.stand(env={})
+        mk = {m["markt"]: m for m in d_m["maerkte"]}
+        pruefe("stand(): BTC trägt den bestätigten Börsen-Stop, ETH ohne Börsen-Angabe nur den berechneten (stop None) — nichts erfunden",
+               mk["BTC"]["stop"] == 72851.8 and mk["BTC"]["stop_berechnet"] == 72000.0 and mk["ETH"]["stop"] is None and mk["ETH"]["stop_berechnet"] == 2100.0, mk)
+    finally:
+        C.DATA = _alt_m
+
+# kurse_stand: Schlusskurse und Schnitt aus dem Zwischenspeicher
+_alt_kl = KT.kurse_laden
+_tage_k = [(date(2025, 1, 1) + timedelta(days=i)).isoformat() for i in range(300)]
+KT.kurse_laden = lambda offline=False, jetzt=None: {"btc": [(t, float(i + 1)) for i, t in enumerate(_tage_k)], "eth": [(t, 2.0 * (i + 1)) for i, t in enumerate(_tage_k)]}
+try:
+    ku, sk = C.kurse_stand()
+    pruefe("kurse_stand: 90 Tage Schlusskurse je Markt, letzter Tag und Kurs stimmen", len(ku["BTC"]) == 90 and ku["BTC"][-1] == [_tage_k[-1], 300.0] and ku["BTC"][0] == [_tage_k[210], 211.0]
+           and ku["ETH"][-1] == [_tage_k[-1], 600.0], (ku["BTC"][:1], ku["BTC"][-1]))
+    pruefe("kurse_stand: BTC-Schnitt = 150 Tage (Mittel von 151…300 = 225.5), ETH-Schnitt = 200 Tage (Mittel von 2·101…2·300 = 401.0)",
+           sk["BTC"][-1] == [_tage_k[-1], 225.5] and sk["ETH"][-1] == [_tage_k[-1], 401.0] and len(sk["BTC"]) == 90, (sk["BTC"][-1], sk["ETH"][-1]))
+    ku2, sk2 = C.kurse_stand(tage=500)
+    pruefe("kurse_stand: der Schnitt fehlt, solange er noch nicht rechenbar ist (erste 149 Tage von BTC)", len(ku2["BTC"]) == 300 and len(sk2["BTC"]) == 300 - 149 and sk2["BTC"][0][0] == _tage_k[149], (len(ku2["BTC"]), len(sk2["BTC"])))
+    KT.kurse_laden = lambda offline=False, jetzt=None: {"btc": [], "eth": [(t, 1.0) for t in _tage_k[:5]]}
+    ku3, sk3 = C.kurse_stand()
+    pruefe("kurse_stand: ein Markt ohne Kurse fehlt, der andere bleibt (ETH mit 5 Tagen: Kurse ja, Schnitt noch nicht)", "BTC" not in ku3 and len(ku3["ETH"]) == 5 and sk3["ETH"] == [], (ku3.keys(), sk3))
+    KT.kurse_laden = lambda offline=False, jetzt=None: (_ for _ in ()).throw(OSError("Platte weg"))
+    pruefe("kurse_stand: Fehler → leere Angaben statt Absturz", C.kurse_stand() == ({}, {}))
+finally:
+    KT.kurse_laden = _alt_kl
+
+# ───────────────────────── Übersicht: reine Funktionen (mit node ausgeführt) und Bauform der Handy-Fassung ─────────────────────────
+import re as _re_u  # noqa: E402
+import uebersicht_rein as _UR  # noqa: E402
+
+_html_u = (HIER / "cockpit.html").read_text(encoding="utf-8")
+for _n_u, _ok_u, _i_u in _UR.pruefen(_html_u):  # Kursleiter, Auslastung, Kurven, Ampel-Gruppen, Sprungleiste, Karten-Tabellen, Blase: Erwartungswerte von Hand gerechnet (uebersicht_rein.py)
+    pruefe("Oberfläche: " + _n_u, _ok_u, _i_u)
+_anker_u = _re_u.findall(r'<a href="#([a-z-]+)" data-ziel="([a-z-]+)">([^<]+)</a>', _html_u)
+pruefe("Handy: Sprungleiste mit den fünf Zielen Übersicht · Positionen · Satellit · Aufträge · Details, jedes Ziel gibt es in der Seite",
+       [(a, t) for a, z, t in _anker_u if a == z] == [("oben", "Übersicht"), ("u-positionen", "Positionen"), ("u-satellit", "Satellit"), ("u-auftraege", "Aufträge"), ("details", "Details")]
+       and all(f'id="{a}"' in _html_u for a, _z, _t in _anker_u), _anker_u)
+pruefe("Handy: viewport-fit=cover, zwei theme-color-Angaben (hell/dunkel) und sichere Ränder über env(safe-area-inset-…) als Variablen (die Sprungleiste weicht dem Home-Balken aus)",
+       "viewport-fit=cover" in _html_u and len(_re_u.findall(r'<meta name="theme-color" content="#[0-9a-f]{6}" media="\(prefers-color-scheme: (?:light|dark)\)">', _html_u)) == 2
+       and all(f"env(safe-area-inset-{k}" in _html_u for k in ("top", "right", "bottom", "left")) and "padding:0 var(--sa-r) var(--sa-b) var(--sa-l)" in _html_u)
+pruefe("Handy: Not-Aus und Auto-Handel sind ≥ 48 px hoch und haben 18 px Abstand; der Design-Schalter liegt nicht mehr im Kopf neben dem Not-Aus",
+       ".band button{min-height:56px}" in _html_u and ".band-rechts{display:flex;flex-wrap:nowrap;align-items:stretch;gap:18px" in _html_u
+       and 'id="thema"' in _html_u.split('<div class="status-zeile">', 1)[1].split("</div>", 1)[0] and 'id="thema"' not in _html_u.split('<div class="band-rechts">', 1)[1].split("</div>", 1)[0])
+pruefe("Handy: Tabellen werden Karten (kein seitliches Scrollen) — jede Zelle bekommt ihren Spaltennamen, die Umwandlung gilt nur bis 700 px",
+       "function tabellenBeschriften(" in _html_u and ".tabelle td::before{content:attr(data-label)" in _html_u and ".tabelle tr.kz{display:none}" in _html_u and "@media (max-width:700px){" in _html_u and ".tabelle{overflow:visible}" in _html_u
+       and "table.kt" not in _html_u and "@supports selector(:has(> th))" in _html_u)  # reines CSS ab dem ersten Layout: eine Klasse, die erst ein Skript im nächsten Bild setzt, liess am Handy kurz eine breite Tabelle stehen (Herauszoomen)
+pruefe("Handy: kein Mauszeiger nötig — Hinweise stehen als Knöpfe (Tippen, Enter, Escape), die Kurve reagiert auf Finger (pointerdown, touch-action: pan-y)",
+       "function blaseOeffnen(" in _html_u and ".hinw{" in _html_u and 'svg.addEventListener("pointerdown", zeige)' in _html_u and ".kurve svg{touch-action:pan-y}" in _html_u and 'e.key === "Escape" && blasenAusloeser' in _html_u)
+pruefe("Handy: das Neuzeichnen folgt der BREITE, nicht der Höhe (die Adressleiste am Handy klappt ein und aus, ohne dass die Anzeige flackert)",
+       "if (innerWidth === gezeichneteBreite)" in _html_u and 'addEventListener("resize", () => letzterStand && zeichne(letzterStand));' not in _html_u and "if (sig === letzteSignatur) return;" in _html_u)
+_urls_u = set(_re_u.findall(r"https?://[^\s\"'`)<>]+", _html_u))
+pruefe("Seite: kein neuer Netzzugriff — alle Adressen sind der SVG-Namensraum und der öffentliche Binance-Preis des ETH-Sammlers (wie vorher), keine fremden Skripte, Stile, Bilder oder Rahmen",
+       _urls_u <= {"http://www.w3.org/2000/svg", "https://data-api.binance.vision/api/v3/ticker/price?symbol=ETHUSDT"} and not _re_u.search(r"<script src|@import|<img |<iframe|url\(http", _html_u)
+       and _html_u.count("<link ") == 1 and '<link rel="icon" href="data:,">' in _html_u and _html_u.count("<style>") == 1 and "Content-Security-Policy" not in _html_u, _urls_u)
+
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)

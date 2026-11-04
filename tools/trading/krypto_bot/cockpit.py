@@ -702,15 +702,77 @@ def stand(env=None):
                    "unklar": len(unklar), "unklar_usdt": round(sum(k["usdt"] for k in unklar), 2),
                    "modus": "ECHTGELD" if echt_spot else "TESTNETZ"}
     gesund = gesundheit(env, lb, ki)
+    kurse = kurse_stand()
     return {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modus": "ECHTGELD" if echt_futures else "TESTNETZ",
             "modus_spot": "ECHTGELD" if echt_spot else "TESTNETZ",
             "gesundheit": gesund,
-            "notaus": notaus_env_aktiv(env), "pause": PAUSE.exists(), "maerkte": [maerkte[m] for m in PI.MAERKTE if m in maerkte], "konto": konto,
+            "notaus": notaus_env_aktiv(env), "pause": PAUSE.exists(), "maerkte": [markt_mit_stop(maerkte[m]) for m in PI.MAERKTE if m in maerkte], "konto": konto,
             "kontostand": [[x["tag"], x["kapital"]] for x in ks], "auftraege": auftraege, "lage": lage,
             "ki": {"letzter": ki["entscheide"][-1] if ki.get("entscheide") else None, "vergleich": vgl,
                    "kosten": round(sum(x.get("kosten_usd", 0) for x in ki.get("entscheide", [])), 2)},
             "sammler": sammler, "backtest": backtest_kurven(), "risiko": risiko, "telegram": bool(env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")),
-            "calls": calls_stand(), "programm": {"geladen": VERSION_GELADEN, "auf_platte": programm_version()}}
+            "calls": calls_stand(), "programm": {"geladen": VERSION_GELADEN, "auf_platte": programm_version()},
+            "satellit": satellit_stand(env), "kurse": kurse[0], "kurse_schnitt": kurse[1]}
+
+
+def markt_mit_stop(e):
+    """Pilot-Markt fürs Cockpit mit dem Stop an der Börse: `stop` = was der letzte Lauf WIRKLICH gesetzt hat (broker.stop), sonst None (ehrlich «kein Stop bekannt»);
+    `stop_berechnet` = der Stop aus der Regel (stop_long/stop_short), nur als Hinweis, nicht bestätigt. Ändert den Eintrag im Logbuch nie (Kopie)."""
+    e = dict(e)
+    b = e.get("broker") if isinstance(e.get("broker"), dict) else {}
+    s = b.get("stop")
+    e["stop"] = float(s) if isinstance(s, (int, float)) and not isinstance(s, bool) and s > 0 else None
+    h = e.get("hebel")
+    roh = e.get("stop_long") if isinstance(h, (int, float)) and h > 0 else e.get("stop_short") if isinstance(h, (int, float)) and h < 0 else None
+    e["stop_berechnet"] = float(roh) if isinstance(roh, (int, float)) and not isinstance(roh, bool) and roh > 0 else None
+    return e
+
+
+def satellit_stand(env=None):
+    """Satelliten-Angaben fürs Cockpit — nur lesen, nie ein Absturz: None, wenn das Modul fehlt oder nichts lesbar ist. Sonst Schalter, Ziele der letzten Entscheidung,
+    Positionen (mit Stop), ausgestoppte Coins und der nächste Entscheidungstag. Ein unlesbares Buch steht als `hinweis`, die Listen sind dann leer."""
+    if SAT is None:
+        return None
+    try:
+        env = umgebung() if env is None else env
+        import broker_futures as BF
+        cfg = BF.einstellungen(env)
+        ein = SAT.einstellung(env)
+        buch, hinweis = SAT.lesen()
+        heute = datetime.now(timezone.utc).date().isoformat()
+        return {"aus": bool(ein["aus"]), "grund": ein["grund"], "anteil": ein["anteil"], "echtgeld": bool(cfg["echtgeld"]), "hat_schluessel": bool(cfg["key"] and cfg["secret"]),
+                "hinweis": hinweis or "", "entschieden": buch["entschieden"],
+                "ziele": [{"symbol": s, "gewicht": w} for s, w in buch["ziele"].items()],
+                "positionen": [{"symbol": f, "spot": p.get("spot"), "menge": p.get("menge"), "stop": p.get("stop"), "seit": p.get("seit"), "stop_anteil": p.get("stop_anteil")}
+                               for f, p in buch["positionen"].items()],
+                "ausgestoppt": [{"symbol": f, "tag": t} for f, t in buch["ausgestoppt"].items()],
+                "naechster_tag": SAT.naechster_entscheidungstag(heute),
+                "letzter_lauf": buch["letzter_lauf"] if isinstance(buch["letzter_lauf"], dict) else None}
+    except Exception:  # noqa: BLE001 — eine Anzeige darf das Cockpit nie stören
+        return None
+
+
+def kurse_stand(tage=90):
+    """Schlusskurse der letzten `tage` Tage und der gleitende Schnitt (BTC 150, ETH 200 Tage, wie der Pilot) fürs Preis-Diagramm — NUR aus dem Offline-Zwischenspeicher,
+    nie aus dem Netz. → ({"BTC": [[tag, schluss], …]}, {"BTC": [[tag, schnitt], …]}); bei jedem Fehler leere Angaben."""
+    try:
+        import ki_trader as KT
+        import pilot as PI
+        import pilot_kern as K
+        reihen = KT.kurse_laden(offline=True)
+        kurse, schnitt = {}, {}
+        for markt, (_sym, _yahoo, n) in PI.MAERKTE.items():
+            r = reihen.get(markt.lower())
+            if not r:
+                continue
+            p = [float(x[1]) for x in r]
+            s = K.sma(p, n)
+            ab = max(0, len(r) - tage)
+            kurse[markt] = [[r[i][0], round(p[i], 2)] for i in range(ab, len(r))]
+            schnitt[markt] = [[r[i][0], round(s[i], 2)] for i in range(ab, len(r)) if s[i] is not None]
+        return kurse, schnitt
+    except Exception:  # noqa: BLE001
+        return {}, {}
 
 
 def calls_stand():
