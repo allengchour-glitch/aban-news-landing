@@ -235,10 +235,10 @@ ok(neu[DATEIEN.CSS].includes('.lcl-design-switch:hover') && neu[DATEIEN.CSS].inc
 
   // Verhalten in einer Attrappe (vm): Klick auf den Anker → scrollt 100 px über den Editor, setzt den Fokus, verhindert den nativen Sprung
   const lauf = (opt) => {
-    const log = { scrollTo: [], focus: [], timeouts: 0, replaced: [], listeners: {}, gesetzt: {} };
+    const log = { scrollTo: [], opts: [], focus: [], timeouts: 0, replaced: [], listeners: {}, gesetzt: {} };
     const editor = { getBoundingClientRect: () => ({ top: 500 }), hasAttribute: (k) => k in log.gesetzt, setAttribute: (k, v) => { log.gesetzt[k] = v; }, style: {}, focus: (o) => log.focus.push(o) };
     const dok = { getElementById: (id) => (id === 'lspod-start' ? editor : null), addEventListener: (t, f) => { log.listeners['doc:' + t] = f; } };
-    const fenster = { scrollY: 1000, scrollTo: (a, b) => log.scrollTo.push(typeof a === 'object' ? a.top : b), addEventListener: (t, f) => { log.listeners['win:' + t] = f; } };
+    const fenster = { scrollY: 1000, scrollTo: (a, b) => { log.opts.push(a); log.scrollTo.push(typeof a === 'object' ? a.top : b); }, addEventListener: (t, f) => { log.listeners['win:' + t] = f; } };
     const ctx = { document: dok, window: fenster, location: { hash: opt.hash || '' }, history: { state: { x: 1 }, replaceState: (...a) => log.replaced.push(a) }, setTimeout: () => { log.timeouts++; } };
     vm.createContext(ctx); vm.runInContext(skript, ctx);
     return { log, ctx };
@@ -249,6 +249,7 @@ ok(neu[DATEIEN.CSS].includes('.lcl-design-switch:hover') && neu[DATEIEN.CSS].inc
     log.listeners['doc:click'](ev);
     ok(ev.prevented, 'Sprung-Skript (Verhalten): Klick auf den Anker wird abgefangen');
     ok(log.scrollTo.length === 1 && log.scrollTo[0] === 500 + 1000 - 100, 'Sprung-Skript (Verhalten): scrollt 100 px über den Editor (' + log.scrollTo + ')');
+    ok(log.opts[0] && log.opts[0].behavior === 'instant', 'Sprung-Skript (Verhalten): springt sofort (nicht animiert)');
     ok(log.focus.length === 1 && log.focus[0] && log.focus[0].preventScroll === true, 'Sprung-Skript (Verhalten): setzt den Fokus auf den Editor ohne Scrollen');
     ok(log.gesetzt.tabindex === '-1', 'Sprung-Skript (Verhalten): tabindex -1 gesetzt');
     ok(log.timeouts === 2, 'Sprung-Skript (Verhalten): zwei Nach-Korrekturen (' + log.timeouts + ')');
@@ -281,6 +282,89 @@ wirft(() => anwenden({ ...sich, [DATEIEN.SECTION]: sich[DATEIEN.SECTION].replace
 wirft(() => anwenden({ ...sich, [DATEIEN.JS]: sich[DATEIEN.JS] + "\nreturn new Option(labels.length===1?labels[0]:metricText(value),value);" }, ET), 'kommt 2×', 'doppelt vorhandener JS-Anker bricht ab (nicht eindeutig)');
 wirft(() => anwenden({ ...sich, [DATEIEN.BUY]: sich[DATEIEN.BUY] + "\n                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setzen);\n                else setzen();\n              })();\n            </script>" }, ET), 'kommt 2×', 'buy-buttons-Anker doppelt: Skript wird nicht angehängt');
 wirft(() => anwenden({ ...sich, [DATEIEN.BUY]: sich[DATEIEN.BUY].replace('else setzen();', 'else setzen2();') }, ET), 'Anker', 'fehlender buy-buttons-Anker bricht ab');
+
+
+// ---------- Soll-Stand: gleich dem im Browser geprüften Stand ----------
+{
+  const gold = JSON.parse(readFileSync(new URL('./daten/pruefstand.json', import.meta.url), 'utf8'));
+  for (const d of Object.values(DATEIEN)) gleich(createHash('md5').update(neu[d]).digest('hex'), gold.md5[d], `Soll-Stand ${d} (Browser-geprüfter Stand; bei bewusster Änderung Browsertest wiederholen und daten/pruefstand.json nachführen)`);
+}
+
+// ---------- Section, Produktseite, CSS, Texte: Verhalten statt Zeichenketten ----------
+{
+  // Section: jede neue Zeile ist ein gültiges Liquid-Paar «"schluessel": {{ 'luxe_clothing.schluessel' | t | json }},»
+  const zeilen = neu[DATEIEN.SECTION].split('\n').filter((l) => !sich[DATEIEN.SECTION].split('\n').includes(l));
+  gleich(zeilen.length, 5, 'Section: genau 5 neue Zeilen');
+  for (const l of zeilen) ok(/^ {6}"(\w+)": \{\{ 'luxe_clothing\.\1' \| t \| json \}\},$/.test(l), `Section: Zeile gültig (json-Filter, gleicher Schlüssel): ${l}`);
+  // Produktseite: Skript direkt hinter dem Skript des Ankers, Tags ausgeglichen, genau ein Skript mehr
+  const a = sich[DATEIEN.BUY], nn = neu[DATEIEN.BUY];
+  const zaehl = (t, re) => (t.match(re) || []).length;
+  gleich(zaehl(nn, /<script>/g), zaehl(a, /<script>/g) + 1, 'buy-buttons: ein <script> mehr');
+  gleich(zaehl(nn, /<\/script>/g), zaehl(a, /<\/script>/g) + 1, 'buy-buttons: ein </script> mehr');
+  const ende = nn.indexOf(SPRUNG_SKRIPT);
+  ok(ende > 0 && /<\/script>\s*$/.test(nn.slice(0, ende).replace(/[ \t]+$/, '')), 'buy-buttons: das neue Skript beginnt hinter dem </script> des vorhandenen (nicht mitten darin)');
+  // CSS: Kontrast und Mindesthöhen
+  const voll = (h) => (h && h.length === 4 ? '#' + h.slice(1).split('').map((c) => c + c).join('') : h);
+  const lum = (hex) => { hex = voll(hex); const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
+  const kontrast = (x, y) => { const [p, q] = [lum(x), lum(y)].sort((u, v) => v - u); return (p + 0.05) / (q + 0.05); };
+  const regel = (sel) => { const m = CSS_NEU.match(new RegExp(sel.replace(/[.:]/g, '\\$&') + '\\{([^}]*)\\}')); return m ? m[1] : ''; };
+  const cta = regel('.lcl-design-cta'), sw = regel('.lcl-design-switch');
+  const bg = (cta.match(/background:(#[0-9a-f]{6})/i) || [])[1], fg = (cta.match(/(?:^|;)color:(#[0-9a-f]{3,6})/i) || [])[1] === '#fff' ? '#ffffff' : null;
+  ok(bg && fg && kontrast(bg, fg) >= 4.5, `CSS: Knopf Kontrast >= 4,5 (${bg} auf ${fg})`);
+  ok(Number((cta.match(/min-height:(\d+)px/) || [])[1]) >= 44, 'CSS: Knopf mindestens 44 px hoch');
+  ok(Number((sw.match(/min-height:(\d+)px/) || [])[1]) >= 44, 'CSS: Wechselknopf mindestens 44 px hoch');
+  const swBg = (sw.match(/background:(#[0-9a-f]{3,6})/i) || [])[1], swFg = (sw.match(/(?:^|;)color:(#[0-9a-f]{3,6})/i) || [])[1];
+  ok(swBg && swFg && kontrast(swBg, swFg) >= 4.5, `CSS: Wechselknopf Kontrast >= 4,5 (${swFg} auf ${swBg})`);
+  const swRand = (sw.match(/border:1px solid (#[0-9a-f]{6})/i) || [])[1];
+  ok(swRand && kontrast(swRand, '#ffffff') >= 3, `CSS: Rand des Wechselknopfs Kontrast >= 3:1 (${swRand} auf weiss)`);
+  ok(/\.lcl-design-cta:focus-visible\{outline:2px/.test(CSS_NEU) && /\.lcl-design-switch:focus-visible\{outline:2px/.test(CSS_NEU), 'CSS: sichtbarer Fokusring an beiden Knöpfen');
+  // Texte: feste Erwartungswerte (nicht gegen dieselbe Konstante)
+  const lies = (d) => JSON.parse(ohneKommentar(neu[d])).luxe_clothing;
+  const de = lies(DATEIEN.DE), en = lies(DATEIEN.EN);
+  gleich(de.design_cta, 'Jetzt selbst gestalten', 'Text de design_cta');
+  gleich(en.design_cta, 'Design it yourself now', 'Text en design_cta');
+  gleich(de.not_orderable, 'Noch nicht bestellbar: Für dieses Modell gibt es bei LuxeStyle noch kein Produkt zum Selbstgestalten.', 'Text de not_orderable');
+  gleich(de.variant_not_orderable, 'Diese Ausführung ist noch nicht bestellbar. Andere Ausführungen dieses Modells kannst du gestalten.', 'Text de variant_not_orderable');
+  gleich(de.switch_orderable, 'Zu einer bestellbaren Ausführung wechseln', 'Text de switch_orderable');
+  gleich(de.offer_unavailable, 'Diese Ausführung ist derzeit nicht lieferbar.', 'Text de offer_unavailable');
+  gleich(de.shop_price_note, 'Gestaltet und bestellt wird auf der Produktseite im Shop.', 'Text de shop_price_note');
+  ok(/Europa-Tabelle/.test(de.notice) && /«Jetzt selbst gestalten»/.test(de.notice) && !/Gestaltung und Bestellung sind hier noch nicht verknüpft/.test(de.notice), 'Text de notice: Europa-Tabelle, Knopfname, alter Satz weg');
+  ok(/European size chart/.test(en.notice) && /«Design it yourself now»/.test(en.notice), 'Text en notice: englisch, Knopfname');
+  for (const k of ['design_cta', 'not_orderable', 'variant_not_orderable', 'switch_orderable', 'offer_unavailable']) ok(typeof en[k] === 'string' && /^[A-Z]/.test(en[k]) && !/[äöüÄÖÜ]|\b(noch|nicht|Ausführung|Jetzt)\b/.test(en[k]), `Text en ${k}: englisch`);
+  // Filterhelfer: Duplikate
+  const m = neu[DATEIEN.JS].match(/const joinSizeLabels = (\(labels, value\) => \{[^\n]*\});\n/);
+  const f = new Function('config', 'metricText', `return (${m[1]});`)({ locale: 'de-CH' }, (v) => 'ROH:' + v);
+  gleich(f(['EU 44', 'EU 44'], 'x'), 'EU 44', 'Filter: gleiche Etiketten werden nicht verdoppelt');
+  gleich(f(['EU 44', 'EU 42', 'EU 44'], 'x'), 'EU 42 / EU 44', 'Filter: Duplikate neben anderen Etiketten');
+  gleich(f(['444 ml', '444 ml'], 'x'), '444 ml', 'Filter: gleiche ml-Etiketten bleiben ein Etikett');
+  // Kaufbox: Bestellbarkeit zählt nur lieferbare Angebote, im Wechselknopf wird die erste bestellbare Ausführung gewählt
+  ok(neu[DATEIEN.JS].includes('const orderableVariants=variants.filter(v=>offersFor(v).offers.some(o=>o.available!==false));'), 'JS: bestellbar = mindestens ein Angebot mit available !== false');
+  ok(neu[DATEIEN.JS].includes('orderableVariants.find(v=>colorKey(v)===selectedColor)||orderableVariants[0]'), 'JS: Wechsel wählt die bestellbare Ausführung der gleichen Farbe, sonst die erste');
+}
+
+// ---------- Daten: Etiketten gegen Tabelle und Rechnung ----------
+{
+  const tab = JSON.parse(readFileSync(new URL('./daten/schuh_eu_tabellen.json', import.meta.url), 'utf8'));
+  const tabellen = tab.tabellen || tab;
+  let schuhe = 0, oz = 0;
+  for (const [pid, eintraege] of Object.entries(ET.produkte)) {
+    for (const e of eintraege) {
+      if (tabellen[pid]) { schuhe++; gleich(e.displaySizeCh, schuhLabel(pid, e.originalSize, tabellen), `Schuh-Etikett ${pid}/${e.originalSize}`); }
+      else if (/\d (ml|g)\b/.test(e.displaySizeCh)) {
+        oz++;
+        const mm = /(\d[\d,]*) (ml|g)\b/.exec(e.displaySizeCh), ozWert = Number((/(\d+(?:\.\d+)?)\s*oz/i.exec(e.originalSize) || [])[1]);
+        const rechnung = ozWert * (mm[2] === 'ml' ? 29.5735295625 : 28.349523125), wert = Number(mm[1].replace(',', '.'));
+        ok(ozWert > 0 && Math.abs(wert - rechnung) / rechnung <= 0.03 + 1e-9, `oz-Etikett ${pid}/${e.originalSize} → ${e.displaySizeCh} weicht höchstens 3 % von der Rechnung ab`);
+      }
+    }
+  }
+  gleich(schuhe, 292, 'Daten: 292 Schuh-Etiketten gegen die Tabelle geprüft'); gleich(oz, 73, 'Daten: 73 oz-Etiketten gegen die Rechnung geprüft');
+  for (const [pid, roh] of [['513', '11.5'], ['513', '12'], ['578', '11.5'], ['578', '12'], ['657', '11.5'], ['657', '12'], ['574', '11.5'], ['597', '11.5'], ['598', '6.5']]) ok(/\(ca\.\)/.test(schuhLabel(pid, roh, tabellen) || ''), `«(ca.)» bei ${pid}/${roh}`);
+  // Herstellerwert deutlich UNTER der Rechnung ist ein Widerspruch, nicht Übernahme
+  const unter = ozUmrechnen(20, 'ml', [{ oz: 20, wert: 473, einheit: 'ml' }]); ok(unter && unter.konflikt, 'Hersteller 473 ml bei 20 oz (Rechnung 591): Konflikt');
+  const ueber = ozUmrechnen(20, 'ml', [{ oz: 20, wert: 709, einheit: 'ml' }]); ok(ueber && ueber.konflikt, 'Hersteller 709 ml bei 20 oz (Rechnung 591): Konflikt');
+  const nahe = ozUmrechnen(20, 'ml', [{ oz: 20, wert: 600, einheit: 'ml' }]); ok(nahe && !nahe.konflikt && nahe.wert === 600, 'Hersteller 600 ml bei 20 oz (1,5 % ab): Herstellerwert gilt');
+}
 
 console.log(`${n} Prüfungen, ${fehler} Fehler`);
 process.exit(fehler ? 1 : 0);

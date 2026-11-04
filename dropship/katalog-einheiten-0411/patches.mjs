@@ -27,8 +27,7 @@ export const MD5_VOR = {
 };
 export const MARKE = 'lx-einheiten-0411';
 
-// Reihenfolge beim Schreiben: Texte und Section zuerst (t() zeigt bei fehlendem Label den rohen Schlüsselnamen), JS/CSS zuletzt.
-export const SCHREIB_REIHENFOLGE = [DATEIEN.DE, DATEIEN.EN, DATEIEN.SECTION, DATEIEN.GALERIE, DATEIEN.CSS, DATEIEN.JS, DATEIEN.BUY];
+// Die Schreibreihenfolge steht in apply.mjs (SCHRITT1/SCHRITT2): Texte, Section und Galerie zuerst (t() zeigt bei fehlendem Label den rohen Schlüsselnamen), JS/CSS zuletzt.
 
 const einmal = (text, anker, ersatz, name) => {
   const teile = text.split(anker);
