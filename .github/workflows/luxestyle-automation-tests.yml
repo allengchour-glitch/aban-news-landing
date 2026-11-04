@@ -299,6 +299,7 @@ jobs:
           node automation/lib/pod_editor_bg_test.mjs
           # Variantenbilder aus dem Printful-Katalog (04.11.2026): reine Planung, welche Variante welches Farb-/Materialbild bekommt
           node automation/lib/pod_variantenbilder_test.mjs
+          node automation/lib/startseite_pool_test.mjs
       - name: Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)
