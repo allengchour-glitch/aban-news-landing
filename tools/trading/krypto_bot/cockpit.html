@@ -2,17 +2,21 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f4f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
 <title>Krypto-Cockpit</title>
 <link rel="icon" href="data:,">
 <style>
 :root{
   color-scheme:light;
   --bg:#f4f4f2; --panel:#fcfcfb; --line:#e3e2de; --grid:#ebeae6;
-  --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#7a7974;
+  --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#6b6a65;
   --s-claude:#2a78d6; --s-pilot:#eb6834; --s-halten:#1baf7a;
   --good:#0ca30c; --critical:#d03b3b; --warning:#fab219; --warn-text:#9a6700;
   --r-s:8px; --r-c:14px;
+  --sa-t:env(safe-area-inset-top,0px); --sa-r:env(safe-area-inset-right,0px); --sa-b:env(safe-area-inset-bottom,0px); --sa-l:env(safe-area-inset-left,0px);
+  --rand-l:max(16px,var(--sa-l)); --rand-r:max(16px,var(--sa-r)); --sprung-h:52px;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -30,12 +34,12 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:1180px;margin:0 auto;padding:16px}
+main{max-width:1180px;margin:0 auto;padding:16px var(--rand-r) 16px var(--rand-l)}
 header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:14px}
 h1{font-size:20px;margin:0;letter-spacing:-.01em}
 h2{font-size:13px;margin:0 0 10px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
 .pill{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;border:1px solid var(--line);color:var(--ink-2)}
-.pill.echt{border-color:var(--critical);color:var(--critical)}
+.pill.echt{border-color:var(--loss);color:var(--loss);font-weight:800}
 .zeit{color:var(--ink-3);font-size:13px;margin-left:auto}
 button{font:inherit;border-radius:var(--r-s);border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 14px;cursor:pointer}
 button.stop{background:var(--critical);border-color:var(--critical);color:#fff;font-weight:700}
@@ -52,7 +56,7 @@ button:focus-visible{outline:2px solid var(--s-claude);outline-offset:2px}
 .kopf .kurs{color:var(--ink-2)}
 .richtung{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:22px}
 .richtung .ic{font-size:16px}
-.r-long{color:var(--good)}.r-short{color:var(--critical)}.r-flach{color:var(--ink-3)}
+.r-long{color:var(--gain)}.r-short{color:var(--loss)}.r-flach{color:var(--mut)}
 dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:14px}
 dt{color:var(--ink-3)}dd{margin:0;font-variant-numeric:tabular-nums}
 .hinweis{border-left:3px solid var(--warning);padding:4px 10px;color:var(--ink-2);font-size:14px}
@@ -93,7 +97,7 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .knoepfe button:disabled{opacity:.55;cursor:progress}
 .profit .gross{font-size:40px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
 .profit .gross small{font-size:18px;font-weight:700}
-.plus{color:var(--good)}.minus{color:var(--critical)}.null{color:var(--ink-2)}.warn{color:var(--warn-text)}  /* dunkles Bernstein im hellen Thema (Kontrast ≥ 4,5:1), das helle Gelb nur im dunklen */
+.plus{color:var(--gain)}.minus{color:var(--loss)}.null{color:var(--ink-2)}.warn{color:var(--warn-text)}  /* dunkles Bernstein im hellen Thema (Kontrast ≥ 4,5:1), das helle Gelb nur im dunklen */
 .perioden{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
 @media (max-width:860px){.perioden{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .perioden div{border:1px solid var(--line);border-radius:var(--r-s);padding:8px 10px}
@@ -113,21 +117,388 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 .konsole .ekopf{color:var(--ink-2);font-weight:700;margin-top:6px}
 .konsole .ekopf:first-child{margin-top:0}
 .konsole pre{margin:2px 0 8px;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
-.konsole .gut{color:var(--good)}.konsole .schlecht{color:var(--critical)}
+.konsole .gut{color:var(--gain)}.konsole .schlecht{color:var(--loss)}
+/* ───────── Übersicht (03.11.2026): ruhige Karten, grosse Zahlen, Farbe nie allein (immer Pfeil oder Wort) ───────── */
+:root{--gain:#0b7a3f;--loss:#b42318;--gain-soft:rgba(11,122,63,.11);--loss-soft:rgba(180,35,24,.09);--amber-soft:rgba(154,103,0,.14);--amber-ink:#7a5200;
+  --mut:#5f5e5a;--pilot:#1f6fd1;--sat:#7c4dcc;--surface-2:#f1f0ec;--shadow:0 1px 2px rgba(20,20,18,.05),0 10px 28px rgba(20,20,18,.05)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--gain:#3ddc84;--loss:#ff8a80;--gain-soft:rgba(61,220,132,.13);--loss-soft:rgba(255,138,128,.14);--amber-soft:rgba(250,178,25,.15);--amber-ink:#fab219;
+    --mut:#a8a79e;--pilot:#6aa6f0;--sat:#b79cf2;--surface-2:#222220;--shadow:0 1px 2px rgba(0,0,0,.45)}
+}
+:root[data-theme="dark"]{--gain:#3ddc84;--loss:#ff8a80;--gain-soft:rgba(61,220,132,.13);--loss-soft:rgba(255,138,128,.14);--amber-soft:rgba(250,178,25,.15);--amber-ink:#fab219;
+  --mut:#a8a79e;--pilot:#6aa6f0;--sat:#b79cf2;--surface-2:#222220;--shadow:0 1px 2px rgba(0,0,0,.45)}
+.g-plus{color:var(--gain)}.g-minus{color:var(--loss)}.g-null{color:var(--ink-2)}
+.nur-leser{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Kopfband */
+.band{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 calc(-1*var(--rand-r)) 16px calc(-1*var(--rand-l));padding:12px var(--rand-r) 12px var(--rand-l);
+  background:var(--bg);background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.band-titel{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.band-rechts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+.band button,.band a.pill{min-height:44px}
+.band a.pill{display:inline-flex;align-items:center;text-decoration:none;font-size:14px;padding:6px 14px;color:var(--ink)}
+.band.echtgeld{box-shadow:inset 0 3px 0 var(--loss)}
+.ampel-mitte{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;text-align:left}
+.ampel-zaehler{display:none;flex-wrap:wrap;gap:6px}
+.az{display:inline-flex;align-items:center;gap:4px;padding:1px 9px;border-radius:999px;font-size:12.5px;font-weight:800;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.az.rot{color:var(--loss);border-color:var(--loss)}.az.gelb{color:var(--amber-ink);border-color:var(--warning)}.az.gut{color:var(--gain)}
+.ampel{display:inline-flex;align-items:center;gap:10px;padding:6px 18px 6px 8px;border-radius:999px;font-weight:800;font-size:15px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.ampel-licht{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface-2);color:var(--ink);font-size:16px;font-weight:900}
+.ampel[data-stufe="gruen"]{border-color:var(--gain)}.ampel[data-stufe="gruen"] .ampel-licht{background:var(--gain-soft);color:var(--gain)}
+.ampel[data-stufe="gelb"]{border-color:var(--warning)}.ampel[data-stufe="gelb"] .ampel-licht{background:var(--amber-soft);color:var(--amber-ink)}
+.ampel[data-stufe="rot"]{border-color:var(--loss)}.ampel[data-stufe="rot"] .ampel-licht{background:var(--loss-soft);color:var(--loss)}
+.ampel::after{content:"▾";color:var(--mut);font-size:13px;transition:transform .2s}
+.ampel[aria-expanded="true"]::after{transform:rotate(180deg)}
+.thema{min-width:44px;min-height:44px;padding:6px 10px;font-size:17px}
+.schalter-klein{display:inline-flex;align-items:center;gap:9px;font-weight:800;padding:6px 14px 6px 8px;border-radius:999px}
+.schalter-klein .bahn{width:40px;height:24px;border-radius:999px;background:var(--grid);position:relative;transition:background .2s}
+.schalter-klein .bahn::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--ink-3);transition:left .2s,background .2s}
+.schalter-klein[aria-checked="true"] .bahn{background:var(--gain)}
+.schalter-klein[aria-checked="true"] .bahn::after{left:19px;background:#fff}
+.ampel-liste{margin:-6px 0 16px;padding:14px}
+.ampel-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.ampel-rest{margin-top:10px;font-size:inherit;color:inherit}
+.ampel-rest summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--ink-2);font-size:14px}
+.ampel-rest[open] summary{margin-bottom:6px}
+.ampel-alles{margin:0;color:var(--mut);font-size:14px}
+.achip{display:grid;grid-template-columns:24px 1fr;gap:2px 8px;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.achip b{font-size:14px}.achip small{grid-column:2;color:var(--mut);font-size:12.5px;line-height:1.35;overflow-wrap:anywhere}
+.achip .zz{font-weight:900;text-align:center}
+.achip.rot{border-color:var(--loss)}.achip.gelb{border-color:var(--warning)}
+.achip.rot .zz{color:var(--loss)}.achip.gelb .zz{color:var(--amber-ink)}.achip.gut .zz{color:var(--gain)}.achip.grau .zz{color:var(--mut)}
+
+/* Raster und Karten */
+.uebersicht{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.ukarte{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);min-width:0}
+.u4{grid-column:span 4}.u5{grid-column:span 5}.u6{grid-column:span 6}.u7{grid-column:span 7}.u8{grid-column:span 8}.u12{grid-column:span 12}
+@media (max-width:980px){.u4,.u5,.u6,.u7,.u8{grid-column:span 12}}
+@media (max-width:560px){.ukarte{padding:16px 14px;border-radius:16px}.uebersicht{gap:12px}}
+.u-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:700;margin:0 0 6px}
+.u-kopf{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.u-kopf h3{margin:0;font-size:15px;letter-spacing:-.005em}
+.u-sub{color:var(--mut);font-size:13px;line-height:1.4}
+.u-leer{color:var(--mut);font-size:14.5px;padding:6px 0}
+.u-zahl{font-variant-numeric:tabular-nums}
+.u-gross{font-size:clamp(34px,5.4vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.04;font-variant-numeric:tabular-nums}
+.u-gross.u-kein{font-size:clamp(22px,3.4vw,30px);color:var(--mut);letter-spacing:-.01em;padding:10px 0}
+.u-gross{overflow-wrap:anywhere}
+.u-gross.lang{font-size:clamp(28px,4.2vw,46px)}
+.u-gross small{font-size:.38em;font-weight:700;letter-spacing:0;color:var(--mut);margin-left:2px}
+.abz{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
+.abz.pilot{color:var(--pilot);border-color:var(--pilot)}.abz.sat{color:var(--sat);border-color:var(--sat)}
+
+/* Held */
+.held-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 8px}
+@media (max-width:700px){.chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.chip{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.chip span{font-size:12px;color:var(--mut);font-weight:600}
+.chip b{font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip small{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.chip.g-plus{background:var(--gain-soft)}.chip.g-minus{background:var(--loss-soft)}
+.kurve svg{display:block;width:100%;height:auto;overflow:visible}
+.kurve{position:relative;margin-top:6px}
+.kurve .tip{white-space:nowrap}
+
+/* Auslastung */
+.ausl-zahl{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ausl-bahn{position:relative;display:flex;height:20px;border-radius:10px;background:var(--grid);margin:32px 0 10px;overflow:visible}
+.ausl-bahn i{display:block;height:100%}
+.ausl-bahn i:first-child{border-radius:10px 0 0 10px}
+.ausl-pilot{background:var(--pilot)}.ausl-sat{background:var(--sat)}.ausl-andere{background:var(--ink-3)}.ausl-frei{background:repeating-linear-gradient(135deg,var(--grid) 0 5px,transparent 5px 10px)}
+.ausl-konto{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink);border-radius:1px}
+.ausl-konto::after{content:"Konto";position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--ink-2);letter-spacing:.04em}
+.legende-reihe{display:grid;gap:6px;margin:12px 0 0;padding:0;list-style:none;font-size:13.5px}
+.legende-reihe li{display:flex;align-items:center;gap:8px}
+.legende-reihe .sw{width:12px;height:12px;border-radius:4px;flex:none}
+.legende-reihe b{margin-left:auto;font-variant-numeric:tabular-nums}
+.ukarte.u4{display:flex;flex-direction:column}
+.stufe-zeile{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+
+/* Positionskarten */
+.upos-kopf{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.upos-name{display:flex;align-items:center;gap:10px}
+.upos-name b{font-size:22px;letter-spacing:-.01em}
+.rbadge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-weight:800;font-size:14px}
+.rbadge.long{background:var(--gain-soft);color:var(--gain)}.rbadge.short{background:var(--loss-soft);color:var(--loss)}.rbadge.flach{background:var(--surface-2);color:var(--ink-2)}
+.upos-gewinn{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:12px 0 2px}
+.upos-gewinn .u-gross{font-size:clamp(26px,3.4vw,36px)}
+.leiter{position:relative;height:46px;margin:16px 8px 8px}
+.leiter-bahn{position:absolute;left:0;right:0;top:21px;height:4px;border-radius:2px;background:var(--grid)}
+.leiter-zone{position:absolute;top:18px;height:10px;border-radius:5px;box-sizing:border-box}
+.leiter-zone.risiko{background:var(--loss-soft);border:1px solid var(--loss)}
+.leiter-zone.gewinn{background:var(--gain-soft);border:1px solid var(--gain)}
+.leiter-zone.verlust{background:var(--loss-soft);border:1px dashed var(--loss)}
+.marke{position:absolute;transform:translateX(-50%);box-sizing:border-box}
+.marke.stop{top:9px;width:4px;height:28px;border-radius:2px;background:var(--loss)}
+.marke.einstieg{top:17px;width:13px;height:13px;background:var(--panel);border:2.5px solid var(--ink-2);transform:translateX(-50%) rotate(45deg)}
+.marke.jetzt{top:12px;width:22px;height:22px;border-radius:50%;background:currentColor;border:3px solid var(--panel);box-shadow:0 0 0 2px currentColor}
+.marke.liquidation{top:7px;width:7px;height:32px;background:repeating-linear-gradient(45deg,var(--loss) 0 2px,transparent 2px 5px);border:1.5px solid var(--loss);border-radius:2px}
+.marke.aussen{width:auto;height:auto;background:none;border:0;top:-13px;font-size:12px;font-weight:800;color:var(--loss);white-space:nowrap}
+.marke.aussen.links{transform:none;left:0 !important}.marke.aussen.rechts{transform:translateX(-100%);left:100% !important}
+.leiter-legende{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px 10px;margin:6px 0 0;padding:0;list-style:none}
+.leiter-legende li{display:grid;grid-template-columns:auto 1fr;gap:0 7px;align-items:start;align-content:start;font-size:13px;color:var(--ink-2)}
+.leiter-legende .lg{grid-row:span 3;width:12px;height:18px;display:inline-block;margin-top:1px}
+.leiter-legende .lg.stop{width:4px;border-radius:2px;background:var(--loss);margin:0 4px}
+.leiter-legende .lg.einstieg{width:11px;height:11px;border:2.5px solid var(--ink-2);transform:rotate(45deg);margin:0 1px;background:var(--panel)}
+.leiter-legende .lg.jetzt{width:14px;height:14px;border-radius:50%;background:currentColor}
+.leiter-legende .lg.liquidation{width:7px;border:1.5px solid var(--loss);background:repeating-linear-gradient(45deg,var(--loss) 0 2px,transparent 2px 5px)}
+.leiter-legende b{font-size:14.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+.leiter-legende small{grid-column:2;color:var(--mut);font-size:12.5px;font-variant-numeric:tabular-nums;line-height:1.3}
+.leiter-legende .unbekannt b{color:var(--mut);font-weight:600}
+.upos-fuss{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);display:flex;gap:6px 16px;flex-wrap:wrap;color:var(--mut);font-size:13px;font-variant-numeric:tabular-nums}
+.hinweis-stop{margin-top:8px;font-size:13px;color:var(--ink-2);border-left:3px solid var(--warning);padding:3px 10px}
+
+/* Satellit */
+.sat-status{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:13px;padding:4px 11px;border-radius:999px;background:var(--surface-2);color:var(--ink-2)}
+.sat-status.an{background:var(--gain-soft);color:var(--gain)}.sat-status.aus{background:var(--amber-soft);color:var(--amber-ink)}
+.sat-leg{display:flex;gap:6px 16px;flex-wrap:wrap;margin:12px 0 0}
+.sat-leg span{display:inline-flex;align-items:center;gap:7px}
+.sat-leg i{display:inline-block}
+.sat-leg .k1{width:3px;height:14px;border-radius:2px;background:var(--loss)}.sat-leg .k2{width:12px;height:12px;border-radius:50%;background:var(--ink-2)}
+.sat-leg .k3{width:22px;height:8px;border-radius:4px;background:var(--loss-soft);border:1px solid var(--loss)}
+.sat-liste{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:2px}
+.sat-zeile{display:grid;grid-template-columns:76px minmax(90px,1fr) auto;gap:10px;align-items:center;padding:9px 4px;border-top:1px solid var(--line)}
+.sat-zeile:first-child{border-top:0}
+.sat-zeile .coin{font-weight:800;font-size:15px}.sat-zeile .coin small{display:block;color:var(--mut);font-weight:600;font-size:11.5px}
+.sat-bar{position:relative;height:30px}
+.sat-bar .bahn{position:absolute;left:0;right:0;top:13px;height:4px;border-radius:2px;background:var(--grid)}
+.sat-bar .zone{position:absolute;top:11px;height:8px;border-radius:4px;background:var(--loss-soft);border:1px solid var(--loss)}
+.sat-bar .m-stop{position:absolute;top:5px;width:3px;height:20px;border-radius:2px;background:var(--loss);transform:translateX(-50%)}
+.sat-bar .m-jetzt{position:absolute;top:8px;width:14px;height:14px;border-radius:50%;background:currentColor;border:2.5px solid var(--panel);box-shadow:0 0 0 1.5px currentColor;transform:translateX(-50%)}
+.sat-zahlen{text-align:right;font-variant-numeric:tabular-nums;font-size:13px;line-height:1.3}
+.sat-zahlen b{display:block;font-size:14.5px}
+/* Scalping-Labor am Handy: die 8 Karten hinter einer Zeile mit der Spanne (zugeklappt) */
+details.labor-tab{margin-top:8px}
+details.labor-tab>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);font-weight:700;font-size:15px;cursor:pointer;list-style:none}
+details.labor-tab>summary::-webkit-details-marker{display:none}
+details.labor-tab>summary::after{content:"▾";color:var(--mut)}
+details.labor-tab[open]>summary::after{content:"▴"}
+details.labor-tab>.tabelle{margin-top:10px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:12.5px;font-weight:700}
+.tag.aus{background:var(--amber-soft);border-color:var(--warning);color:var(--amber-ink)}
+.tags .u-sub{margin-right:4px}
+.ukarte.usat{display:flex;flex-direction:column}
+.sat-regel{margin:auto 0 0;padding:12px 0 0;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;line-height:1.5}
+.sat-regel b{color:var(--ink-2)}
+@media (max-width:560px){.sat-zeile{grid-template-columns:64px minmax(70px,1fr) auto;gap:8px}}
+
+/* Zeitstrahl der Aufträge */
+.zs{list-style:none;margin:10px 0 0;padding:0 0 0 20px;position:relative}
+.zs::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.zs li{position:relative;padding:7px 0 7px 8px}
+.zs .punkt-z{position:absolute;left:-20px;top:9px;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:9.5px;font-weight:900;background:var(--panel);border:2px solid var(--ink-3);color:var(--ink-2)}
+.zs li.z-kauf .punkt-z{border-color:var(--gain);color:var(--gain)}.zs li.z-verkauf .punkt-z,.zs li.z-verkleinern .punkt-z{border-color:var(--pilot);color:var(--pilot)}
+.zs li.z-fehler .punkt-z{border-color:var(--loss);background:var(--loss);color:var(--panel)}
+.zs-kopf{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:14.5px}
+.zs-kopf b{font-variant-numeric:tabular-nums}
+.zs-zeit{color:var(--mut);font-size:12.5px;font-variant-numeric:tabular-nums}
+.zs-grund{margin-top:3px;font-size:13px;color:var(--loss);overflow-wrap:anywhere}
+.zs-status{font-size:12px;font-weight:700;color:var(--mut)}
+.zs-tag{margin:10px 0 0 -20px;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--mut);text-transform:uppercase}
+
+/* Märkte (Kursverlauf) und Lage */
+.maerkte-paar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.maerkte-paar{grid-template-columns:minmax(0,1fr)}}
+.mk{min-width:0}
+.mk-kopf{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.mk-kopf b{font-size:17px}
+.mk-preis{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.spark{display:block;width:100%;height:auto;margin:8px 0 4px;overflow:visible}
+.spark-legende{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
+.spark-legende span{display:inline-flex;align-items:center;gap:6px}
+.spark-legende i{display:inline-block;width:18px;height:0;border-top:2.5px solid var(--pilot)}
+.spark-legende i.sma{border-top:2px dashed var(--ink-2)}.spark-legende i.stop{border-top:2px dotted var(--loss)}
+.mk-fakten{margin:8px 0 0;font-size:13px;color:var(--ink-2);display:grid;gap:3px}
+.mk-warn{margin-top:8px;font-size:13px;border-left:3px solid var(--warning);padding:3px 10px;color:var(--ink-2)}
+.gauge{display:block;width:100%;max-width:300px;margin:4px auto 0;height:auto}
+.gauge-wert{text-align:center;margin-top:-6px}
+.gauge-wert b{font-size:34px;font-variant-numeric:tabular-nums}
+.gauge-wert span{display:block;color:var(--ink-2);font-weight:700}
+.lage-kacheln{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+@media (max-width:560px){.lage-kacheln{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lage-kacheln div{padding:9px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.lage-kacheln span{display:block;font-size:12px;color:var(--mut);font-weight:600}
+.lage-kacheln b{font-size:17px;font-variant-numeric:tabular-nums}
+.lage-kacheln small{display:block;color:var(--mut);font-size:11.5px}
+.details-titel{margin:26px 0 12px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+.details-titel::after{content:"";flex:1;height:1px;background:var(--line)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none !important;animation:none !important}}
+.status-zeile{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin:0 0 14px}
+.status-zeile .zeit{margin-left:auto;color:var(--mut);font-size:13px}
+.ampel-liste[hidden]{display:none}
+.band .stop{white-space:nowrap}
+/* Hinweis-Blase: Tippen statt Schweben (title bleibt am Mauszeiger zusätzlich) */
+.hinw{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;margin:-14px -12px -14px -10px;padding:0;border:0;background:none;color:var(--mut);cursor:pointer;vertical-align:middle;border-radius:50%}
+.hinw::before{content:"i";display:grid;place-items:center;width:20px;height:20px;border:1.5px solid currentColor;border-radius:50%;font:800 12px/1 system-ui,sans-serif;box-sizing:border-box}
+.hinw.stern::before{content:"*";border:0;width:auto;height:auto;font-size:20px;line-height:1}
+.hinw[aria-expanded="true"]{color:var(--ink)}
+.blase{position:fixed;z-index:70;max-width:min(320px,calc(100vw - 24px));padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13.5px;line-height:1.4;box-shadow:0 8px 28px rgba(0,0,0,.28)}
+.blase[hidden]{display:none}
+.kurve svg{touch-action:pan-y}
+.ukarte,.details-titel{scroll-margin-top:12px}
+.mk-live{display:none}
+.nur-handy{display:none}
+.sprung{display:none}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* ───────── Handy-Fassung (≤ 700 px): eigene Anordnung — Daumenzone, Sprungleiste, Karten statt Tabellen ───────── */
+@media (max-width:700px){
+  html{scroll-padding-bottom:calc(var(--sprung-h) + var(--sa-b) + 16px)}
+  main{padding-top:max(12px,var(--sa-t));padding-bottom:calc(var(--sprung-h) + var(--sa-b) + 28px)}
+  .nur-gross{display:none}
+  .nur-handy{display:inline}
+  .nur-handy.hinw{display:inline-grid}
+  /* Kopf: Titel oben; darunter die zwei Sicherheitsschalter gross, mit Abstand, ohne Nachbarn */
+  .band{position:static;display:block;margin:0 0 16px;padding:0;background:none;border-bottom:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .band.echtgeld{box-shadow:none;border-top:4px solid var(--loss);padding-top:10px}
+  .band-titel{margin:0 0 10px;gap:8px 10px}
+  .band-titel h1{font-size:19px}
+  .band-rechts{display:flex;flex-wrap:nowrap;align-items:stretch;gap:18px;width:100%;margin:0}
+  .band-rechts a.pill{display:none}
+  .band button{min-height:56px}
+  .schalter-klein{flex:1 1 0;min-width:0;justify-content:flex-start;gap:12px;padding:6px 14px 6px 10px;border-radius:16px}
+  .schalter-klein .bahn{flex:none;width:52px;height:32px}
+  .schalter-klein .bahn::after{top:4px;left:4px;width:24px;height:24px}
+  .schalter-klein[aria-checked="true"] .bahn::after{left:24px}
+  #autoKText{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;font-size:12.5px;font-weight:700;color:var(--mut);text-align:left}
+  #autoKText .zust{font-size:19px;font-weight:800;letter-spacing:.01em}
+  #autoKText .zust.an{color:var(--gain)}#autoKText .zust.aus{color:var(--loss)}
+  #notaus{flex:0 0 auto;min-width:120px;padding:8px 16px;border-radius:16px;font-size:16px;line-height:1.2}
+  /* Gesundheit als Kachel, Liste nur auf Tipp und gruppiert */
+  .status-zeile{gap:10px 12px;margin:0 0 12px}
+  .ampel{flex:1 1 100%;width:100%;min-height:68px;padding:10px 14px 10px 10px;border-radius:18px;gap:12px;font-size:16px;line-height:1.25;align-items:center}
+  .ampel-licht{width:44px;height:44px;font-size:22px;flex:none}
+  .ampel-mitte{flex:1 1 auto}
+  .ampel-zaehler{display:flex}
+  .ampel::after{margin-left:auto;flex:none}
+  .status-zeile .zeit{flex:1 1 0;min-width:0;margin:0;font-size:12.5px;line-height:1.35;overflow-wrap:anywhere}
+  .thema{flex:none;width:48px;min-height:48px;font-size:19px}
+  .ampel-liste{margin:0 0 14px;padding:12px}
+  .ampel-grid{grid-template-columns:minmax(0,1fr)}
+  .achip{padding:12px}
+  .achip b{font-size:15px}.achip small{font-size:13.5px}
+  /* Karten: grosse Zahlen, ruhige Abstände */
+  .uebersicht{gap:12px;margin-bottom:18px}
+  .ukarte{padding:16px 14px;border-radius:18px}
+  .u-gross{font-size:clamp(40px,12.6vw,54px)}
+  .u-label{font-size:12.5px}
+  .u-sub{font-size:13.5px}
+  .chips{gap:8px;margin:14px 0 8px}
+  .chip{padding:10px 12px}
+  .chip span{font-size:12.5px}
+  .chip b{font-size:16px;white-space:normal;overflow-wrap:anywhere}
+  .chip b small{font-size:11.5px !important}
+  .u-gross.lang{font-size:clamp(28px,8.4vw,44px)}
+  .chip small{font-size:13.5px}
+  .kurve{margin-top:10px}
+  .ausl-zahl .u-gross{font-size:clamp(38px,11.4vw,50px)}
+  .legende-reihe{font-size:15px;gap:9px}
+  .u-gross.u-kein,.ausl-zahl .u-gross.u-kein{font-size:clamp(24px,7vw,30px)}
+  .upos-name b{font-size:24px}
+  .upos-gewinn{margin:14px 0 4px}
+  .upos-gewinn .u-gross{font-size:clamp(32px,9.6vw,40px)}
+  /* Kursleiter: dicker, grössere Marken, Legende als zwei mal zwei Kacheln */
+  .leiter{height:68px;margin:30px 12px 10px}
+  .leiter-bahn{top:31px;height:6px;border-radius:3px}
+  .leiter-zone{top:27px;height:14px;border-radius:7px}
+  .marke.stop{top:11px;width:6px;height:46px;border-radius:3px}
+  .marke.einstieg{top:25px;width:17px;height:17px;border-width:3px}
+  .marke.jetzt{top:19px;width:30px;height:30px;border-width:3.5px}
+  .marke.liquidation{top:10px;width:9px;height:48px}
+  .marke.aussen{top:-6px;font-size:13.5px}
+  .leiter-legende{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .leiter-legende li{padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-size:14px;gap:2px 8px}
+  .leiter-legende b{font-size:18px}
+  .leiter-legende small{font-size:13.5px}
+  .upos-fuss{font-size:14px}
+  /* Satellit: jede Position eine kleine Karte (Name + Ergebnis oben, Leiter über die ganze Breite) */
+  .sat-zeile{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"coin zahl" "bar bar";gap:6px 12px;padding:12px 2px}
+  .sat-zeile .coin{grid-area:coin;font-size:18px}
+  .sat-zeile .coin small{display:inline;margin-left:8px;font-size:13px}
+  .sat-zahlen{grid-area:zahl;font-size:13.5px}
+  .sat-zahlen b{font-size:16px}
+  .sat-bar{grid-area:bar;height:34px}
+  .sat-bar .bahn{top:15px;height:5px}
+  .sat-bar .zone{top:12px;height:11px}
+  .sat-bar .m-stop{top:5px;width:4px;height:24px}
+  .sat-bar .m-jetzt{top:8px;width:18px;height:18px}
+  .tag{font-size:14px;padding:5px 12px}
+  .sat-regel summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--ink-2)}
+  .zs-kopf{font-size:15px}
+  .mk-live{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:14px;padding:6px 14px;color:var(--ink)}
+  .mk-preis{font-size:28px}
+  .spark-legende,.mk-fakten{font-size:13.5px}
+  .lage-kacheln div{position:relative;padding:11px 12px}
+  .lage-kacheln b{font-size:20px}
+  .lage-kacheln span,.lage-kacheln small{font-size:13px}
+  .lage-kacheln .hinw{position:absolute;top:-2px;right:-6px;margin:0}
+  /* Tabellen werden Karten: jede Zeile eine Karte, jede Zelle «Name … Wert» (kein seitliches Scrollen) */
+  .tabelle{overflow:visible}
+  .tabelle table,.tabelle tbody{display:block;width:100%}
+  .tabelle table{font-size:14px}
+  .tabelle tr{display:block}
+  .tabelle tr.kz{display:none}
+  .tabelle tr:not(.kz){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;margin:0 0 10px;padding:6px 14px 10px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2)}
+  .tabelle td{display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:0;padding:8px 0 2px;border:0;white-space:normal;text-align:left;overflow-wrap:anywhere;font-size:15px;font-weight:600}
+  .tabelle td::before{content:attr(data-label);color:var(--mut);font-weight:600;font-size:12.5px}
+  .tabelle td:first-child{grid-column:1/-1;margin-bottom:2px;padding-bottom:8px;border-bottom:1px solid var(--line);font-size:16px;font-weight:800}
+  .tabelle td:first-child::before{display:none}
+  .tabelle td[colspan]{grid-column:1/-1;font-weight:500}
+  .tabelle td[colspan]::before{display:none}
+  @supports selector(:has(> th)){.tabelle tr:has(> th){display:none !important}}
+  /* Details unten: grosse Tippflächen */
+  .knoepfe button{min-height:60px}
+  .stufen{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
+  .stufen button{min-width:0;min-height:52px}
+  .schalter{min-height:48px}
+  summary{min-height:44px;display:flex;align-items:center}
+  .sat-regel summary::after,.ampel-rest summary::after{content:"▾";margin-left:auto;padding-left:10px;color:var(--mut);transition:transform .2s}
+  .sat-regel[open] summary::after,.ampel-rest[open] summary::after{transform:rotate(180deg)}
+  .profit .gross{font-size:34px}
+  .profit .gross small{display:block;font-size:16px;margin-top:2px}
+  /* Sprungleiste: fest unten (Daumen), fünf Ziele */
+  .sprung{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:40;padding:0 var(--sa-r) var(--sa-b) var(--sa-l);background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(0,0,0,.12)}
+  .sprung a{position:relative;display:flex;align-items:center;justify-content:center;min-height:var(--sprung-h);padding:4px 2px;color:var(--ink-2);text-decoration:none;font-weight:700;font-size:clamp(11.5px,3.25vw,13.5px);text-align:center;-webkit-tap-highlight-color:transparent}
+  .sprung a[aria-current="true"]{color:var(--ink)}
+  .sprung a[aria-current="true"]::before{content:"";position:absolute;top:0;left:20%;right:20%;height:3px;border-radius:0 0 3px 3px;background:var(--pilot)}
+  .sprung a:focus-visible{outline:2px solid var(--s-claude);outline-offset:-4px}
+}
+@media (max-width:380px){
+  .ampel{font-size:15px;gap:10px;padding-right:10px}
+  .ampel-licht{width:38px;height:38px;font-size:19px}
+  .chip b{font-size:15px}
+  .chip{padding:10px}
+}
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>🛩️ Krypto-Cockpit</h1>
-    <span id="modus" class="pill">…</span>
-    <span id="tg" class="pill" hidden>Telegram aktiv</span>
-    <a class="pill" href="/markt" style="text-decoration:none;font-size:14px;padding:6px 12px">📈 Live-Markt</a>
-    <span class="zeit" id="zeit"></span>
-    <button id="notaus" class="stop" type="button">Not-Aus</button>
+<main id="oben">
+  <header class="band">
+    <div class="band-titel">
+      <h1>🛩️ Krypto-Cockpit</h1>
+      <span id="modus" class="pill">…</span>
+      <span id="tg" class="pill" hidden>Telegram aktiv</span>
+    </div>
+    <div class="band-rechts">
+      <a class="pill" href="/markt">📈 Live-Markt</a>
+      <button id="autoK" class="schalter-klein" type="button" role="switch" aria-checked="true"><span class="bahn" aria-hidden="true"></span><span id="autoKText">Auto-Handel AN</span></button>
+      <button id="notaus" class="stop" type="button">Not-Aus</button>
+    </div>
   </header>
+  <div class="status-zeile">
+    <button id="ampel" class="ampel" type="button" aria-expanded="false" aria-controls="ampelListe" data-stufe="gruen"><span id="ampelLicht" class="ampel-licht" aria-hidden="true">✓</span><span class="ampel-mitte"><span id="ampelText">Gesundheit wird geprüft …</span><span id="ampelZaehler" class="ampel-zaehler" aria-hidden="true"></span></span></button>
+    <span class="zeit" id="zeit"></span>
+    <button id="thema" class="thema" type="button" aria-label="Design umschalten" aria-pressed="false">☾</button>
+  </div>
+  <div id="ampelListe" class="karte ampel-liste" hidden role="region" aria-label="Gesundheit im Detail"></div>
   <div id="notausHinweis" class="hinweis brems karte" hidden style="margin-bottom:12px">🛑 Not-Aus ist aktiv — der Pilot schliesst seine Positionen und eröffnet nichts Neues.</div>
   <div id="versionHinweis" class="hinweis karte" hidden style="margin-bottom:12px"></div>
+
+  <section class="uebersicht" id="uebersicht" aria-label="Übersicht"><div class="ukarte u12"><p class="u-leer">Übersicht wird geladen …</p></div></section>
+  <h2 class="details-titel" id="details">Details</h2>
+
 
   <section class="karte profit" aria-label="Profit" style="margin-bottom:12px">
     <div class="steuerkopf" style="margin-bottom:4px"><h2 style="margin:0">💰 Profit</h2><span class="pill" id="p-modus">—</span>
@@ -202,6 +573,14 @@ footer{color:var(--ink-3);font-size:12px;margin:16px 0}
 
   <footer>Aktualisiert jede Minute aus den Logbüchern auf diesem PC. Backtest = Vergangenheit, keine Garantie. Keine Anlageberatung.</footer>
 </main>
+<nav class="sprung" id="sprung" aria-label="Abschnitte der Seite">
+  <a href="#oben" data-ziel="oben">Übersicht</a>
+  <a href="#u-positionen" data-ziel="u-positionen">Positionen</a>
+  <a href="#u-satellit" data-ziel="u-satellit">Satellit</a>
+  <a href="#u-auftraege" data-ziel="u-auftraege">Aufträge</a>
+  <a href="#details" data-ziel="details">Details</a>
+</nav>
+<div id="blase" class="blase" role="tooltip" hidden></div>
 <script>
 // Nie in einem fremden Rahmen anzeigen (Clickjacking); der Server sendet zusätzlich X-Frame-Options/CSP
 if (window.top !== window.self) { document.documentElement.innerHTML = ""; throw new Error("eingebettet"); }
@@ -316,6 +695,7 @@ function zeigeProfit(p) {
   if (!p || p.hinweis) {
     $("p-modus").textContent = "—";
     $("p-inhalt").innerHTML = `<p class="leer">${esc(p ? p.hinweis : "Cockpit-Server nicht erreichbar")}</p>`;
+    uebersichtZeichnen();
     return;
   }
   $("p-modus").textContent = p.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)";
@@ -349,11 +729,13 @@ function zeigeProfit(p) {
   linie($("p-kurve"), [{name: "Gewinn", farbe: "--s-pilot", punkte: p.kumuliert}], {fmt: x => vz(x) + " USDT", achse: x => vz(x), kurz: true,
     titel: "Gewinn kumuliert", leer: "Noch kein realisierter Gewinn oder Verlust."});
   balken($("p-tage"), p.tage);
+  uebersichtZeichnen();
 }
 async function ladeProfit() {
   try { zeigeProfit(await (await fetch("/api/profit", {cache: "no-store"})).json()); } catch (e) { zeigeProfit(null); }
 }
 let letzterStand = null;
+let standFehler = false;
 
 function zeigeCalls(c) {
   $("calls-karte").hidden = !c;
@@ -387,11 +769,577 @@ function gesundKopfzeile(g) {
 }
 // gesund:ende
 
+// uebersicht:start — reine Funktionen (ohne DOM, ohne Sprachformat), damit test_cockpit.py sie mit node ausführen kann
+const PILOT_SYMBOLE = ["BTCUSDT", "ETHUSDT"];
+const istZahl = x => typeof x === "number" && isFinite(x);
+const pos0 = x => istZahl(x) && x > 0 ? x : null;
+
+// Ampel: rot, sobald ein Punkt rot ist; gelb, wenn nur Warnungen da sind; sonst grün (graue Info-Zeilen zählen nicht)
+function ampelStufe(g) {
+  g = Array.isArray(g) ? g.filter(x => x && typeof x === "object") : [];
+  const rot = g.filter(x => x.ok === false).length;
+  const warn = g.filter(x => x.ok == null && x.warnung).length;
+  const gut = g.filter(x => x.ok === true).length;
+  const grau = g.filter(x => x.ok == null && !x.warnung).length;
+  return {stufe: rot ? "rot" : warn ? "gelb" : "gruen", rot, warn, gut, grau, gesamt: g.length};
+}
+
+// «SOLUSDT» → «SOL»; Tausender-Verträge («1000PEPEUSDT», «1000000MOGUSDT») verlieren ihre Vorsilbe
+function kurzSymbol(sym) {
+  return String(sym == null ? "" : sym).replace(/USDT$/, "").replace(/^1000000/, "").replace(/^1000/, "");
+}
+
+function positionsArt(sym, satSymbole) {
+  if (PILOT_SYMBOLE.includes(sym)) return "pilot";
+  return Array.isArray(satSymbole) && satSymbole.includes(sym) ? "satellit" : "andere";
+}
+
+// Abstand bis zum Stop als Anteil des Kurses: positiv = der Stop liegt noch auf der sicheren Seite, negativ = der Kurs ist schon durch den Stop
+function stopAbstand(seite, mark, stop) {
+  if (!pos0(mark) || !pos0(stop)) return null;
+  return seite === "SHORT" ? (stop - mark) / mark : (mark - stop) / mark;
+}
+
+// Abstand eines Preises zum aktuellen Kurs (Anteil des Kurses, negativ = darunter)
+function kursAbstand(mark, preis) {
+  if (!pos0(mark) || !pos0(preis)) return null;
+  return preis / mark - 1;
+}
+
+// Kursleiter: eine Preisachse (aufsteigend von links nach rechts) mit Marken für Stop, Einstieg, Jetzt und Liquidation.
+// Die Liquidation kommt nur in die Achse, wenn sie höchstens EINE Kernspanne vom Rand entfernt liegt; sonst steht sie als Pfeil am Rand (aussen = «links»/«rechts»),
+// damit Stop, Einstieg und Kurs nicht zu einem Strich zusammengedrückt werden.
+function kursleiter(pos) {
+  const e = pos0(pos.einstieg), m = pos0(pos.mark), s = pos0(pos.stop), l = pos0(pos.liquidation);
+  const kern = [e, m, s].filter(x => x != null);
+  if (!kern.length) return null;
+  let lo = Math.min(...kern), hi = Math.max(...kern);
+  const spanne = hi > lo ? hi - lo : hi * 0.02;
+  let aussen = null;
+  if (l != null) {
+    if (l >= lo - spanne && l <= hi + spanne) { lo = Math.min(lo, l); hi = Math.max(hi, l); } else aussen = l < lo ? "links" : "rechts";
+  }
+  const rand = (hi - lo) > 0 ? (hi - lo) * 0.16 : hi * 0.01;
+  const a = lo - rand, b = hi + rand;
+  const x = v => (v - a) / (b - a) * 100;
+  const marken = [];
+  if (s != null) marken.push({art: "stop", wert: s, x: x(s)});
+  if (e != null) marken.push({art: "einstieg", wert: e, x: x(e)});
+  if (m != null) marken.push({art: "jetzt", wert: m, x: x(m)});
+  if (l != null) marken.push({art: "liquidation", wert: l, x: aussen ? (aussen === "links" ? 0 : 100) : x(l), aussen});
+  const lang = pos.seite !== "SHORT";
+  const risiko = s != null && e != null ? {von: x(Math.min(s, e)), bis: x(Math.max(s, e))} : null;
+  const bewegung = e != null && m != null ? {von: x(Math.min(e, m)), bis: x(Math.max(e, m)), gewinn: lang ? m >= e : m <= e} : null;
+  return {von: a, bis: b, marken, risiko, bewegung};
+}
+
+// Auslastung: Nennwert der Positionen gegen den Kontowert (kein Pfand: der Nennwert zeigt, wie viel «Markt» das Konto bewegt)
+function auslastung(positionen, konto, satSymbole) {
+  const sum = {pilot: 0, satellit: 0, andere: 0};
+  (Array.isArray(positionen) ? positionen : []).forEach(p => { if (p) sum[positionsArt(p.symbol, satSymbole)] += Math.abs(+p.wert) || 0; });
+  const gesamt = sum.pilot + sum.satellit + sum.andere;
+  const k = pos0(konto);
+  const skala = Math.max(k || 0, gesamt) || 1;
+  const frei = k && gesamt < k ? k - gesamt : 0;
+  return {pilot: sum.pilot, satellit: sum.satellit, andere: sum.andere, gesamt, konto: k, faktor: k ? gesamt / k : null, skala, frei,
+    segmente: ["pilot", "satellit", "andere"].map(art => ({art, wert: sum[art], anteil: k ? sum[art] / k : null, breite: sum[art] / skala * 100})),
+    freiBreite: frei / skala * 100, kontoMarke: k ? k / skala * 100 : null};
+}
+
+// Konto-Kurve: Linie und Fläche für ein SVG der Grösse W×H; rand = {l, r, o, u} (Abstände in Pixel)
+function kontoKurve(punkte, W, H, rand) {
+  rand = rand || {l: 8, r: 8, o: 10, u: 14};
+  const pts = (Array.isArray(punkte) ? punkte : []).filter(q => Array.isArray(q) && istZahl(q[1]));
+  if (pts.length < 2) return null;
+  const werte = pts.map(q => q[1]);
+  let lo = Math.min(...werte), hi = Math.max(...werte);
+  if (hi - lo < 1e-9) { lo -= 1; hi += 1; }
+  const pad = (hi - lo) * 0.1;
+  lo -= pad; hi += pad;
+  const X = i => rand.l + (W - rand.l - rand.r) * i / (pts.length - 1);
+  const Y = v => rand.o + (H - rand.o - rand.u) * (1 - (v - lo) / (hi - lo));
+  const pp = pts.map((q, i) => ({tag: q[0], wert: q[1], x: +X(i).toFixed(2), y: +Y(q[1]).toFixed(2)}));
+  const linie = pp.map((q, i) => (i ? "L" : "M") + q.x + "," + q.y).join("");
+  const grund = H - rand.u;
+  return {linie, flaeche: linie + "L" + pp[pp.length - 1].x + "," + grund + "L" + pp[0].x + "," + grund + "Z", lo, hi, punkte: pp, grund};
+}
+
+// Kursverlauf mit gleitendem Schnitt und Stop: Pfade fürs SVG W×H (der Schnitt wird nach Datum an die Kurstage gelegt)
+function sparkGeometrie(kurse, schnitt, stop, W, H) {
+  const k = (Array.isArray(kurse) ? kurse : []).filter(q => Array.isArray(q) && pos0(q[1]));
+  if (k.length < 2) return null;
+  const idx = new Map(k.map((q, i) => [q[0], i]));
+  const sm = (Array.isArray(schnitt) ? schnitt : []).filter(q => Array.isArray(q) && pos0(q[1]) && idx.has(q[0]));
+  const st = pos0(stop);
+  const alle = k.map(q => q[1]).concat(sm.map(q => q[1]), st != null ? [st] : []);
+  let lo = Math.min(...alle), hi = Math.max(...alle);
+  const pad = (hi - lo) * 0.06 || hi * 0.01;
+  lo -= pad; hi += pad;
+  const X = i => W * i / (k.length - 1);
+  const Y = v => H * (1 - (v - lo) / (hi - lo));
+  const pfad = pts => pts.map((q, j) => (j ? "L" : "M") + (+X(idx.get(q[0])).toFixed(2)) + "," + (+Y(q[1]).toFixed(2))).join("");
+  const letzt = k[k.length - 1];
+  return {kurs: pfad(k), schnitt: sm.length > 1 ? pfad(sm) : "", stopY: st != null ? +Y(st).toFixed(2) : null, lo, hi,
+    ende: {x: +X(k.length - 1).toFixed(2), y: +Y(letzt[1]).toFixed(2), wert: letzt[1], tag: letzt[0]}, anzahl: k.length};
+}
+
+// Angst & Gier: Wort und Zeigerwinkel (−90° = links, +90° = rechts)
+function fgZone(w) {
+  if (!istZahl(w)) return null;
+  return w <= 20 ? "extreme Angst" : w < 45 ? "Angst" : w <= 55 ? "neutral" : w < 80 ? "Gier" : "extreme Gier";
+}
+function fgWinkel(w) {
+  return istZahl(w) ? -90 + Math.max(0, Math.min(100, w)) * 1.8 : null;
+}
+
+function wochentagKurz(iso) {
+  const t = new Date(String(iso) + "T12:00:00Z");
+  return isNaN(t) ? "" : ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][t.getUTCDay()];
+}
+
+// Aufträge als Zeitstrahl: neueste zuerst; Art: kauf, verkauf, verkleinern (nur-verkleinern), fehler, hinweis
+function zeitstrahl(auftraege, n) {
+  const liste = (Array.isArray(auftraege) ? auftraege : []).filter(a => a && typeof a === "object" && a.zeit);
+  return liste.slice(0, n || 8).map(a => {
+    const zeit = String(a.zeit);
+    const basis = {tag: zeit.slice(0, 10), uhr: zeit.slice(11, 16), symbol: a.symbol || ""};
+    if (a.hinweis) return {...basis, art: "hinweis", text: String(a.hinweis)};
+    const seite = String(a.seite || "").toUpperCase();
+    const art = a.fehler ? "fehler" : a.nur_verkleinern ? "verkleinern" : seite === "BUY" ? "kauf" : seite === "SELL" ? "verkauf" : "hinweis";
+    return {...basis, art, seite, menge: a.menge, status: a.status == null ? "" : String(a.status), modus: a.modus || ""};
+  });
+}
+// Gesundheitspunkte in Anzeigereihenfolge (rot, gelb, grau, gut; innerhalb einer Art bleibt die Reihenfolge): «aufmerksam» = rot + gelb, «rest» = grau + gut
+function ampelGruppen(g) {
+  g = Array.isArray(g) ? g.filter(x => x && typeof x === "object") : [];
+  const art = x => x.ok === false ? "rot" : x.ok == null && x.warnung ? "gelb" : x.ok === true ? "gut" : "grau";
+  const rang = {rot: 0, gelb: 1, grau: 2, gut: 3};
+  const liste = g.map((x, i) => ({x, art: art(x), i})).sort((a, b) => rang[a.art] - rang[b.art] || a.i - b.i).map(e => ({...e.x, art: e.art}));
+  return {liste, aufmerksam: liste.filter(e => e.art === "rot" || e.art === "gelb"), rest: liste.filter(e => e.art === "grau" || e.art === "gut")};
+}
+
+// Sprungleiste: der letzte Abschnitt (in Seitenreihenfolge), dessen Oberkante die Schwelle (Pixel vom oberen Fensterrand) erreicht hat; am Seitenende immer der letzte
+function aktiverAbschnitt(oberkanten, schwelle, amEnde) {
+  const L = (Array.isArray(oberkanten) ? oberkanten : []).filter(q => q && typeof q.id === "string" && istZahl(q.top));
+  if (!L.length) return null;
+  if (amEnde) return L[L.length - 1].id;
+  let aktiv = L[0].id;
+  L.forEach(q => { if (q.top <= schwelle) aktiv = q.id; });
+  return aktiv;
+}
+
+// Tabellen als Karten (Handy): Name der Spalte für jede Zelle einer Zeile; Zellen über mehrere Spalten (Hinweiszeilen) bekommen keinen Namen
+function zellenBeschriftung(namen, spannen) {
+  let spalte = 0;
+  return (Array.isArray(spannen) ? spannen : []).map(sp => {
+    const breite = sp > 0 ? Math.floor(sp) : 1, name = breite > 1 ? "" : String((Array.isArray(namen) ? namen[spalte] : "") || "");
+    spalte += breite;
+    return name;
+  });
+}
+
+// Hinweis-Blase neben ihrem Auslöser (r = Rechteck des Auslösers, b×h = Blase, f = Fenster): unterhalb, wenn dort Platz ist, sonst oberhalb; frei = unten besetzte Höhe (Sprungleiste)
+function blasenPosition(r, b, h, f, rand, frei) {
+  const mitte = (r.left + r.right) / 2;
+  const links = Math.max(rand, Math.min(f.w - b - rand, mitte - b / 2));
+  const unten = r.bottom + 8 + h <= f.h - (frei || 0);
+  return {left: +links.toFixed(1), top: +(unten ? r.bottom + 8 : Math.max(rand, r.top - 8 - h)).toFixed(1), unten};
+}
+// uebersicht:ende
+
+// ───────── Übersicht: Darstellung (alles Dynamische läuft durch esc(); Zahlen durch die Formatierer) ─────────
+const kleinerBildschirm = () => matchMedia("(max-width:700px)").matches;
+// Hinweis zum Antippen (am Handy gibt es kein Schweben): der Knopf trägt den Text, die Blase zeigt ihn; title bleibt für die Maus
+const hinweisKnopf = (text, label, art) => `<button type="button" class="hinw${art ? " " + art : ""}" data-hinweis="${esc(text)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="blase" title="${esc(text)}"></button>`;
+const HINWEIS_OFFEN = "Kein gemerkter Stand der offenen Positionen zu Beginn — nur der abgeschlossene Teil gezählt.";
+const HINWEIS_NENNWERT = "Nennwert heisst: so viel Markt bewegt das Konto, nicht das Pfand. Über 1,00× arbeitet das Konto mit Hebel.";
+const uPfeil = x => x > 0 ? "▲" : x < 0 ? "▼" : "■";
+const uKl = x => x > 0 ? "g-plus" : x < 0 ? "g-minus" : "g-null";
+const uVz = (x, s = 2) => !istZahl(x) ? "—" : (x > 0 ? "+" : x < 0 ? "−" : "±") + fmtZahl(Math.abs(x), s);
+const uPct = (x, s = 1) => !istZahl(x) ? "—" : (x > 0 ? "+" : x < 0 ? "−" : "±") + fmtZahl(Math.abs(x) * 100, s) + "\u00a0%";
+function uPreis(x) {
+  if (!istZahl(x)) return "—";
+  const a = Math.abs(x);
+  return fmtZahl(x, a >= 1000 ? 0 : a >= 100 ? 1 : a >= 1 ? 2 : a >= 0.01 ? 4 : 6);
+}
+function uTagKurz(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ""));
+  return m ? wochentagKurz(m[0]) + " " + m[3] + "." + m[2] + "." : "";
+}
+const uDatum = iso => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || "")); return m ? m[3] + "." + m[2] + "." : ""; };
+const uStopText = a => a == null ? "" : a >= 0 ? fmtZahl(a * 100, 1) + "\u00a0% bis zum Stop" : "⚠ Kurs " + fmtZahl(-a * 100, 1) + "\u00a0% jenseits des Stops";
+
+// Konto-Kurve als Fläche; die Breite kommt vom Behälter, damit die Schrift lesbar bleibt (Handy)
+function uKurveZeichnen(host, punkte) {
+  const W = Math.max(260, host.clientWidth), H = W < 520 ? 150 : 190;
+  const k = kontoKurve(punkte, W, H, {l: 6, r: 6, o: 12, u: 22});
+  if (!k) { host.innerHTML = `<p class="u-leer">Noch zu wenig Kontostände für eine Kurve — sie wächst mit jedem Tageslauf.</p>`; return; }
+  const letzte = k.punkte[k.punkte.length - 1], erste = k.punkte[0];
+  const gut = letzte.wert >= erste.wert;
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Kontostand von ${esc(erste.tag)} bis ${esc(letzte.tag)}: von ${esc(fmtZahl(erste.wert, 0))} auf ${esc(fmtZahl(letzte.wert, 0))} USDT">
+    <defs><linearGradient id="uFlaeche" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:var(--pilot);stop-opacity:.34"/><stop offset="1" style="stop-color:var(--pilot);stop-opacity:0"/></linearGradient></defs>
+    <line x1="6" x2="${W - 6}" y1="${k.grund}" y2="${k.grund}" stroke="var(--line)"/>
+    <path d="${k.flaeche}" fill="url(#uFlaeche)"/>
+    <path d="${k.linie}" fill="none" stroke="var(--pilot)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${letzte.x}" cy="${letzte.y}" r="5" fill="var(--pilot)" stroke="var(--panel)" stroke-width="2.5"/>
+    <text x="6" y="${H - 5}" font-size="11.5" fill="var(--mut)">${esc(uDatum(erste.tag))}</text>
+    <text x="${W - 6}" y="${H - 5}" font-size="11.5" fill="var(--mut)" text-anchor="end">${esc(uDatum(letzte.tag))}</text>
+    <text x="8" y="11" font-size="11.5" fill="var(--mut)">${esc(fmtZahl(Math.max(...k.punkte.map(q => q.wert)), 0))}</text>
+    <line id="uFk" x1="0" x2="0" y1="12" y2="${k.grund}" stroke="var(--ink-3)" visibility="hidden"/><circle id="uFp" r="4.5" fill="var(--panel)" stroke="var(--pilot)" stroke-width="2.5" visibility="hidden"/>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="transparent"/></svg><div class="tip"></div>`;
+  const svg = host.querySelector("svg"), tip = host.querySelector(".tip"), fk = svg.querySelector("#uFk"), fp = svg.querySelector("#uFp");
+  const zeige = ev => {
+    const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) * W / r.width;
+    let i = 0;
+    k.punkte.forEach((q, j) => { if (Math.abs(q.x - x) < Math.abs(k.punkte[i].x - x)) i = j; });
+    const q = k.punkte[i];
+    fk.setAttribute("x1", q.x); fk.setAttribute("x2", q.x); fk.setAttribute("visibility", "visible");
+    fp.setAttribute("cx", q.x); fp.setAttribute("cy", q.y); fp.setAttribute("visibility", "visible");
+    tip.innerHTML = `<div style="color:var(--mut)">${esc(q.tag)}</div><b>${esc(fmtZahl(q.wert, 2))} USDT</b>`;
+    tip.style.display = "block";
+    const px = q.x * r.width / W;
+    tip.style.left = (px > r.width * 0.6 ? px - tip.offsetWidth - 10 : px + 10) + "px";
+    tip.style.top = "4px";
+  };
+  const weg = () => { tip.style.display = "none"; fk.setAttribute("visibility", "hidden"); fp.setAttribute("visibility", "hidden"); };
+  svg.addEventListener("pointerdown", zeige);
+  svg.addEventListener("pointermove", zeige);
+  svg.addEventListener("pointerleave", ev => { if (ev.pointerType === "mouse") weg(); });   // Finger: bleibt stehen, bis woanders getippt wird
+  host._weg = weg;
+  host.dataset.richtung = gut ? "plus" : "minus";
+}
+
+function uHeld(d, p) {
+  const live = p && !p.hinweis && istZahl(p.gesamt);
+  const k = d.konto;
+  const wert = live ? p.gesamt : k ? k.wert : null;
+  const echt = d.modus === "ECHTGELD";
+  const z = live ? p.zeitraeume : null;
+  const chip = (name, w) => {
+    if (!w) return `<div class="chip g-null"><span>${name}</span><b>—</b><small>&nbsp;</small></div>`;
+    return `<div class="chip ${uKl(w.netto)}">
+      <span>${name}${w.offen == null ? hinweisKnopf(HINWEIS_OFFEN, "Hinweis zu " + name, "stern") : ""}</span><b>${uPfeil(w.netto)} ${uVz(w.netto)} <small style="font-weight:600;color:var(--mut)">USDT</small></b><small>${uPct(w.prozent)}</small></div>`;
+  };
+  const hoch = k && istZahl(k.unter_hoch) ? (k.unter_hoch >= -0.0005 ? "auf dem Höchststand" : uPct(k.unter_hoch) + " unter dem Höchststand") : "";
+  const quelle = live ? "live vom Konto" : k ? "Stand des letzten Laufs" : "";
+  return `<section class="ukarte u8" aria-label="Konto">
+    <div class="held-kopf"><div><p class="u-label">Konto · ${echt ? "⚠️ ECHTGELD" : "Testnetz (Spielgeld)"}</p>
+      <div class="u-gross${wert == null ? " u-kein" : fmtZahl(wert, 2).length > 10 ? " lang" : ""}" id="u-konto">${wert == null ? "kein Kontostand" : fmtZahl(wert, 2)}${wert == null ? "" : "<small> USDT</small>"}</div>
+      <div class="u-sub">${[quelle, hoch].filter(Boolean).map(esc).join(" · ") || "noch kein Lauf mit Futures-Schlüssel"}</div></div></div>
+    ${live ? `<div class="chips">${chip("Heute", z.heute)}${chip("7 Tage", z["7_tage"])}${chip("30 Tage", z["30_tage"])}${chip("Seit Start", z.gesamt)}</div>
+      <div class="u-sub">Gewinn ohne Ein- und Auszahlungen · ${p.seit ? "seit " + esc(uDatum(p.seit)) : ""}</div>`
+      : `<p class="u-leer">${esc(p && p.hinweis ? p.hinweis : "Gewinn je Zeitraum erscheint, sobald der Konto-Abruf läuft (Futures-Schlüssel nötig).")}</p>`}
+    <div class="kurve" id="u-kurve" aria-label="Kontostand der letzten Tage"></div></section>`;
+}
+
+function uAusl(d, p, satSymbole) {
+  const live = p && !p.hinweis && istZahl(p.gesamt);
+  const konto = live ? p.gesamt : d.konto ? d.konto.wert : null;
+  const A = auslastung(live ? p.positionen : [], konto, satSymbole);
+  const ri = d.risiko || {};
+  const zeile = (art, name, farbe, w) => `<li><span class="sw ${farbe}"></span>${name}<b>${fmtZahl(w, 0)} USDT${A.konto ? " · " + fmtZahl(w / A.konto * 100, 0) + " %" : ""}</b></li>`;
+  const segs = A.segmente.filter(s => s.wert > 0).map(s => `<i class="ausl-${s.art === "satellit" ? "sat" : s.art}" style="width:${s.breite.toFixed(2)}%"></i>`).join("") + (A.freiBreite > 0 ? `<i class="ausl-frei" style="width:${A.freiBreite.toFixed(2)}%"></i>` : "");
+  const label = `Nennwert der Positionen ${fmtZahl(A.gesamt, 0)} USDT gegen Kontowert ${A.konto ? fmtZahl(A.konto, 0) : "unbekannt"} USDT`;
+  return `<section class="ukarte u4" aria-label="Engagement">
+    <p class="u-label">Engagement${hinweisKnopf(HINWEIS_NENNWERT, "Was Nennwert und Hebel bedeuten", "nur-handy")}</p>
+    <div class="ausl-zahl"><span class="u-gross${A.faktor == null ? " u-kein" : ""}">${A.faktor == null ? "noch offen" : fmtZahl(A.faktor, 2) + "×"}</span><span class="u-sub">Nennwert ÷ Kontowert</span></div>
+    ${live ? `<div class="ausl-bahn" role="img" aria-label="${esc(label)}">${segs}${A.kontoMarke != null ? `<span class="ausl-konto" style="left:${A.kontoMarke.toFixed(2)}%"></span>` : ""}</div>
+    <ul class="legende-reihe">${zeile("pilot", "Pilot (BTC, ETH)", "ausl-pilot", A.pilot)}${zeile("satellit", "Satellit", "ausl-sat", A.satellit)}${A.andere > 0 ? zeile("andere", "Andere (z. B. Calls)", "ausl-andere", A.andere) : ""}
+      <li><span class="sw ausl-frei" style="border:1px solid var(--line)"></span>Frei (nicht im Markt)<b>${fmtZahl(A.frei, 0)} USDT</b></li></ul>
+    <p class="u-sub nur-gross" style="margin-top:10px">${HINWEIS_NENNWERT}</p>`
+    : `<p class="u-leer">Die Auslastung erscheint, sobald der Konto-Abruf läuft.</p>`}
+    <div class="stufe-zeile"><span class="abz">Risiko-Stufe ${ri.stufe != null ? fmtZahl(ri.stufe, ri.stufe % 1 ? 2 : 0).replace(/(\.\d)0$/, "$1") + "×" : "—"}</span>${ri.anteil != null ? `<span class="abz">Anteil ${fmtZahl(ri.anteil * 100, 0)} %</span>` : ""}</div></section>`;
+}
+
+// Kursleiter einer Position mit Legende
+function uLeiter(x, stop, stopHinweis) {
+  const L = kursleiter({seite: x.seite, einstieg: x.einstieg, mark: x.mark, stop, liquidation: x.liquidation});
+  if (!L) return "";
+  const gewinnKl = uKl(x.gewinn);
+  const m = Object.fromEntries(L.marken.map(q => [q.art, q]));
+  const sa = stopAbstand(x.seite, x.mark, stop), la = kursAbstand(x.mark, x.liquidation);
+  const zonen = (L.risiko ? `<span class="leiter-zone risiko" style="left:${L.risiko.von.toFixed(2)}%;width:${(L.risiko.bis - L.risiko.von).toFixed(2)}%"></span>` : "")
+    + (L.bewegung ? `<span class="leiter-zone ${L.bewegung.gewinn ? "gewinn" : "verlust"}" style="left:${L.bewegung.von.toFixed(2)}%;width:${(L.bewegung.bis - L.bewegung.von).toFixed(2)}%"></span>` : "");
+  const marken = L.marken.map(q => q.aussen
+    ? `<span class="marke aussen ${q.aussen}" title="Liquidation ${esc(uPreis(q.wert))} (ausserhalb der Skala)">${q.aussen === "links" ? "◀ Liq." : "Liq. ▶"}</span>`
+    : `<span class="marke ${q.art}${q.art === "jetzt" ? " " + gewinnKl : ""}" style="left:${q.x.toFixed(2)}%"></span>`).join("");
+  const worte = [stop ? `Stop ${uPreis(stop)}` : "kein Stop bekannt", `Einstieg ${uPreis(x.einstieg)}`, `Jetzt ${uPreis(x.mark)}`, x.liquidation ? `Liquidation ${uPreis(x.liquidation)}` : ""].filter(Boolean).join(", ");
+  return `<div class="leiter" role="img" aria-label="Kursleiter ${esc(kurzSymbol(x.symbol))}: ${esc(worte)}"><div class="leiter-bahn"></div>${zonen}${marken}</div>
+    <ul class="leiter-legende">
+      <li class="${stop ? "" : "unbekannt"}"><span class="lg stop"></span><span>Stop</span>${stop ? `<b>${uPreis(stop)}</b><small>${esc(uStopText(sa))}</small>` : `<b>kein Stop bekannt</b><small>${esc(stopHinweis || "")}</small>`}</li>
+      <li><span class="lg einstieg"></span><span>Einstieg</span><b>${uPreis(x.einstieg)}</b><small>Kurs seit Einstieg ${uPct(x.kursbewegung)}</small></li>
+      <li class="${gewinnKl}"><span class="lg jetzt"></span><span style="color:var(--ink-2)">Jetzt</span><b style="color:var(--ink)">${uPreis(x.mark)}</b><small style="color:var(--mut)">Markpreis</small></li>
+      ${x.liquidation ? `<li><span class="lg liquidation"></span><span>Liquidation</span><b>${uPreis(x.liquidation)}</b><small>${la != null ? uPct(la) + " vom Kurs" : ""}</small></li>` : ""}
+    </ul>`;
+}
+
+function uPositionen(d, p, satSymbole, satMap) {
+  if (!p || p.hinweis) return `<section class="ukarte u12" id="u-positionen" aria-label="Positionen"><p class="u-label">Positionen</p><p class="u-leer">${esc(p && p.hinweis ? p.hinweis : "Positionen erscheinen, sobald der Konto-Abruf läuft (Futures-Schlüssel nötig).")}</p></section>`;
+  const gross = p.positionen.filter(x => positionsArt(x.symbol, satSymbole) !== "satellit");
+  if (!gross.length) {
+    const flach = (d.maerkte || []).map(m => `${esc(m.markt)} ${m.hebel > 0 ? "LONG" : m.hebel < 0 ? "SHORT" : "FLACH"}`).join(" · ");
+    return `<section class="ukarte u12" id="u-positionen" aria-label="Positionen"><p class="u-label">Positionen</p><p class="u-leer"><b>Keine offene Position des Piloten.</b> ${flach ? "Letzter Entscheid: " + flach + "." : "Noch kein Pilot-Lauf."} Der Pilot handelt einmal täglich (krypto-auto.bat).</p></section>`;
+  }
+  return gross.map((x, i) => {
+    const markt = (d.maerkte || []).find(m => m.symbol === x.symbol);
+    const art = positionsArt(x.symbol, satSymbole);
+    const stop = art === "pilot" ? (markt && markt.stop) || null : (satMap[x.symbol] && satMap[x.symbol].stop) || null;
+    const hinweis = !stop && markt && markt.stop_berechnet ? `Regel-Stop ${uPreis(markt.stop_berechnet)} (nicht bestätigt)` : "";
+    const lang = x.seite !== "SHORT";
+    return `<article class="ukarte u6"${i === 0 ? ' id="u-positionen"' : ""} aria-label="Position ${esc(kurzSymbol(x.symbol))}">
+      <div class="upos-kopf"><div class="upos-name"><b>${esc(kurzSymbol(x.symbol))}</b><span class="abz ${art === "pilot" ? "pilot" : ""}">${art === "pilot" ? "Pilot" : "Andere"}</span></div>
+        <span class="rbadge ${lang ? "long" : "short"}">${lang ? "▲ LONG" : "▼ SHORT"}${x.hebel ? " · Hebel " + fmtZahl(x.hebel, 0) + "×" : ""}</span></div>
+      <div class="upos-gewinn"><span class="u-gross ${uKl(x.gewinn)}">${uPfeil(x.gewinn)} ${uVz(x.gewinn)}<small> USDT</small></span>
+        <span class="u-sub ${uKl(x.gewinn)}" style="font-weight:700">${uPct(x.gewinn_prozent)} auf das Pfand</span></div>
+      ${uLeiter(x, stop, hinweis)}
+      <div class="upos-fuss"><span>Nennwert ${fmtZahl(x.wert, 0)} USDT</span><span>Menge ${fmtZahl(x.menge, x.menge >= 100 ? 0 : 4)} ${esc(kurzSymbol(x.symbol))}</span></div></article>`;
+  }).join("");
+}
+
+function uSatellit(d, p, satMap) {
+  const s = d.satellit;
+  const kopf = (status, klasse) => `<div class="u-kopf"><h3>Satellit <span class="abz sat">Testnetz-Zusatz</span></h3><span class="sat-status ${klasse}">${status}</span></div>`;
+  if (s == null) return `<section class="ukarte u7" id="u-satellit" aria-label="Satellit">${kopf("nicht verfügbar", "")}<p class="u-leer">Die Satelliten-Anzeige ist in dieser Programmversion nicht vorhanden.</p></section>`;
+  const status = s.echtgeld ? ["nur Testnetz — mit Echtgeld aus", "aus"] : s.aus ? ["AUS" + (s.grund ? " · " + esc(s.grund) : ""), "aus"] : d.notaus ? ["Not-Aus — alles geschlossen", "aus"]
+    : d.pause ? ["Pause — es wird nicht gehandelt", "aus"] : !s.hat_schluessel ? ["keine Futures-Schlüssel", "aus"] : ["AN · " + fmtZahl(s.anteil * 100, 0) + " % des Kontos", "an"];
+  const live = p && !p.hinweis;
+  const zeilen = s.positionen.map(q => {
+    const x = live ? p.positionen.find(y => y.symbol === q.symbol) : null;
+    const L = x ? kursleiter({seite: "LONG", einstieg: x.einstieg, mark: x.mark, stop: q.stop}) : null;
+    const mk = L ? Object.fromEntries(L.marken.map(m => [m.art, m])) : {};
+    const sa = x ? stopAbstand("LONG", x.mark, q.stop) : null;
+    const bar = L && mk.stop ? `<div class="sat-bar" role="img" aria-label="Stop ${esc(uPreis(q.stop))}, Kurs ${esc(uPreis(x.mark))}"><div class="bahn"></div>${L.risiko ? `<span class="zone" style="left:${L.risiko.von.toFixed(2)}%;width:${(L.risiko.bis - L.risiko.von).toFixed(2)}%"></span>` : ""}
+      <span class="m-stop" style="left:${mk.stop.x.toFixed(2)}%"></span><span class="m-jetzt ${uKl(x.gewinn)}" style="left:${mk.jetzt.x.toFixed(2)}%"></span></div>` : `<div class="u-sub">${q.stop ? "Stop " + esc(uPreis(q.stop)) : "kein Stop bekannt"}</div>`;
+    return `<li class="sat-zeile"><div class="coin">${esc(kurzSymbol(q.symbol))}<small>seit ${esc(uDatum(q.seit) || "?")}</small></div>${bar}
+      <div class="sat-zahlen">${x ? `<b class="${uKl(x.gewinn)}">${uPfeil(x.gewinn)} ${uVz(x.gewinn)} USDT</b>` : `<b>${fmtZahl(q.menge, 4)}</b>`}<span class="u-sub">${x ? esc(uStopText(sa)) : "Menge"}</span></div></li>`;
+  }).join("");
+  const ziele = s.ziele.length ? s.ziele.map(z => `<span class="tag">${esc(kurzSymbol(z.symbol))}</span>`).join("") : `<span class="u-sub">${s.entschieden ? "keine — Bitcoin-Filter zu oder kein Coin im Trend" : "noch nicht entschieden"}</span>`;
+  const aus = s.ausgestoppt.length ? `<div class="tags"><span class="u-sub">Ausgestoppt bis zur nächsten Entscheidung:</span>${s.ausgestoppt.map(z => `<span class="tag aus">✕ ${esc(kurzSymbol(z.symbol))} · ${esc(uDatum(z.tag))}</span>`).join("")}</div>` : "";
+  const ll = s.letzter_lauf;
+  const regel = "Er folgt der Top-10-Regel (grösste Coins nach Volumen, Kurs über dem 50-Tage-Schnitt, Bitcoin-Filter) ohne Bitcoin und Ether. Gekauft und verkauft wird nur an Entscheidungstagen (alle 7 Tage, donnerstags); dazwischen wacht nur der Stop. Spielgeld im Testnetz, nie echtes Geld.";
+  return `<section class="ukarte u7 usat" id="u-satellit" aria-label="Satellit">${kopf(status[0], status[1])}
+    <p class="u-sub">${s.entschieden ? "Entscheidung vom " + esc(uTagKurz(s.entschieden)) : "Noch keine Entscheidung"} · nächste ${esc(uTagKurz(s.naechster_tag))}${ll ? " · letzter Lauf " + esc(uDatum(String(ll.zeit).slice(0, 10))) + " " + esc(String(ll.zeit).slice(11, 16)) + (ll.ok ? " ✓" : " ⚠ mit Warnung") : ""}</p>
+    ${s.hinweis ? `<div class="hinweis-stop">${esc(s.hinweis)}</div>` : ""}
+    ${zeilen ? `<p class="u-sub sat-leg"><span><i class="k1"></i>Stop</span><span><i class="k2"></i>Kurs jetzt</span><span><i class="k3"></i>Risikozone: vom Stop bis zum Einstieg</span></p><ul class="sat-liste">${zeilen}</ul>` : `<p class="u-leer">Keine Satelliten-Position. Der Satellit kauft nur an Entscheidungstagen, wenn der Bitcoin-Filter offen ist und ein Coin im Trend liegt.</p>`}
+    <div class="tags"><span class="u-sub">Ziele:</span>${ziele}</div>${aus}
+    ${kleinerBildschirm() ? `<details class="sat-regel"><summary>So arbeitet der Satellit</summary>${regel}</details>` : `<p class="sat-regel"><b>So arbeitet der Satellit:</b> ${regel}</p>`}</section>`;
+}
+
+function uLabor(d) {
+  const s = d.scalp;
+  const kopf = (status, klasse) => `<div class="u-kopf"><h3>Scalping-Labor <span class="abz">Papier</span></h3><span class="sat-status ${klasse}">${status}</span></div>`;
+  if (s == null) return `<section class="ukarte u12" id="u-labor" aria-label="Scalping-Labor">${kopf("nicht verfügbar", "")}<p class="u-leer">Die Anzeige des Scalping-Labors ist in dieser Programmversion nicht vorhanden.</p></section>`;
+  const u = s.urteil || {}, alle = Array.isArray(s.zeilen) ? s.zeilen : [], mit = alle.filter(z => z && z.n > 0);
+  const status = s.aus ? ["AUS" + (s.grund ? " · " + esc(s.grund) : ""), "aus"] : !s.gelaufen ? ["noch nicht gelaufen", ""]
+    : u.urteil === "bestanden" ? ["bestanden · nur Kandidat", "an"] : u.urteil === "durchgefallen" ? ["durchgefallen", "aus"] : ["zu wenig Daten", ""];
+  const ll = s.letzter_lauf, seit = Number.isFinite(s.daten_ab) ? uDatum(new Date(s.daten_ab).toISOString()) : "";
+  const unter = `<p class="u-sub">Echte Kurse, alle Kosten, kein Geld im Spiel${seit ? " · Daten seit " + esc(seit) + " (" + esc(fmtZahl(u.tage, 1)) + " Tage)" : ""}${ll && ll.zeit ? " · letzter Lauf " + esc(uDatum(String(ll.zeit).slice(0, 10))) + " " + esc(String(ll.zeit).slice(11, 16)) + " UTC" : ""}</p>`;
+  const zeilen = mit.map(z => `<tr><td>${esc(z.markt)} · k ${esc(fmtZahl(z.k, 1))}</td><td>${esc(fmtZahl(z.n, 0))}</td><td>${esc(fmtZahl(z.treffer * 100, 0))} %</td>
+    <td class="${uKl(z.netto_bp)}"><b>${uPfeil(z.netto_bp)} ${esc(uVz(z.netto_bp, 1))} bp</b></td><td>${esc(uVz(z.erw_netto_bp, 1))} bp</td></tr>`).join("");
+  const tab = mit.length ? `<div class="tabelle"><table><thead><tr><th>Markt · Stufe</th><th>Trades</th><th>Treffer</th><th>Netto je Trade</th><th>Prüfstand</th></tr></thead><tbody>${zeilen}</tbody></table></div>`
+    : `<p class="u-leer">${s.aus ? "Das Labor ist ausgeschaltet und rechnet nichts." : "Das Labor ist noch nicht gelaufen. Es rechnet beim nächsten Tageslauf (krypto-auto.bat) alles nach, auch die verpassten Minuten. Von Hand: py tools\\trading\\krypto_bot\\scalping_labor.py --einmal"}</p>`;
+  const z0 = mit.reduce((a, z) => !a || z.n > a.n ? z : a, null);
+  const spanne = mit.length ? `${mit.length} Bücher · netto ${uVz(Math.min(...mit.map(z => z.netto_bp)), 1)} bis ${uVz(Math.max(...mit.map(z => z.netto_bp)), 1)}\u00a0bp je Trade` : "";
+  const beispiel = z0 ? (() => { const br = Math.round(z0.brutto_bp * z0.n / 10), ko = Math.round(z0.kosten_bp * z0.n / 10);
+    return `Zum Greifen (${esc(z0.markt)} k ${esc(fmtZahl(z0.k, 1))}, ${esc(fmtZahl(z0.n, 0))} Trades, 1000 USDT je Trade): Kursbewegung ${esc(uVz(br, 0))} USDT, Gebühren und Schlupf ${esc(uVz(ko, 0))} USDT, bleibt ${esc(uVz(br + ko, 0))} USDT.`; })() : "";
+  const kosten = s.kosten_bp != null ? `Kosten je Trade (Gebühren und Schlupf) im Mittel ${esc(fmtZahl(s.kosten_bp, 1))} bp: sie fressen die Kursbewegung. ` : "";
+  const regel = "Das Labor rechnet die Scalping-Regel «Band-Abpraller» Minute für Minute mit echten Kursen nach, mit denselben Gebühren und Füllregeln wie der Prüfstand vom 13.10.2026 (dort verloren alle sieben Scalping-Verfahren nach Kosten). Es handelt nichts und braucht keinen Schlüssel. «Bestanden» gälte nur bei mindestens 14 Tagen, 200 Trades, +1 bp netto je Trade, in beiden Hälften und auf BTC und ETH mit derselben Stufe k; auch dann nie Echtgeld.";
+  return `<section class="ukarte u12 ulabor" id="u-labor" aria-label="Scalping-Labor">${kopf(status[0], status[1])}${unter}
+    ${s.hinweis ? `<div class="hinweis-stop">${esc(s.hinweis)}</div>` : ""}${mit.length && kleinerBildschirm() ? `<details class="labor-tab"><summary>${esc(spanne)}</summary>${tab}</details>` : tab}
+    ${mit.length ? `<p class="u-sub">${kosten}${beispiel}</p>` : ""}
+    ${kleinerBildschirm() ? `<details class="sat-regel"><summary>So liest man das Labor</summary>${esc(regel)}</details>` : `<p class="sat-regel"><b>So liest man das Labor:</b> ${esc(regel)}</p>`}</section>`;
+}
+
+function uZeitstrahl(d) {
+  const ev = zeitstrahl(d.auftraege, 6);
+  const sym = {kauf: "▲", verkauf: "▼", verkleinern: "▽", fehler: "✕", hinweis: "i"};
+  const wort = {kauf: "Kauf", verkauf: "Verkauf", verkleinern: "Verkleinert", fehler: "Fehler", hinweis: "Hinweis"};
+  let tag = "", html = "";
+  ev.forEach(e => {
+    if (e.tag !== tag) { tag = e.tag; html += `<li class="zs-tag" style="padding-left:0">${esc(uTagKurz(e.tag))}</li>`; }
+    html += `<li class="z-${e.art}"><span class="punkt-z" aria-hidden="true">${sym[e.art]}</span><div class="zs-kopf"><b>${wort[e.art]}</b>${e.art === "hinweis" ? "" : ` <span class="u-zahl">${esc(e.menge)}</span> <span>${esc(kurzSymbol(e.symbol))}</span>`}<span class="zs-zeit">${esc(e.uhr)}</span>${e.modus === "ECHTGELD" ? "<span>⚠️</span>" : ""}${e.art !== "fehler" && e.status ? `<span class="zs-status">${esc(e.status)}</span>` : ""}</div>${e.art === "fehler" ? `<div class="zs-grund">${esc(e.status || "Auftrag gescheitert")}</div>` : ""}${e.art === "hinweis" ? `<div class="u-sub" style="margin-top:2px">${esc(e.text)}${e.symbol ? " (" + esc(kurzSymbol(e.symbol)) + ")" : ""}</div>` : ""}</li>`;
+  });
+  return `<section class="ukarte u5" id="u-auftraege" aria-label="Letzte Aufträge"><div class="u-kopf"><h3>Letzte Aufträge</h3><span class="u-sub">${(d.auftraege || []).length ? "neueste zuerst · Zeiten in UTC" : ""}</span></div>
+    ${ev.length ? `<ol class="zs" style="list-style:none">${html}</ol>` : `<p class="u-leer">Noch keine Aufträge.</p>`}</section>`;
+}
+
+function uSparkZeichnen(host, m, kurse, schnitt) {
+  const W = Math.max(220, host.clientWidth), H = 136;
+  const g = sparkGeometrie(kurse, schnitt, m.stop, W - 4, H - 8);
+  if (!g) { host.innerHTML = `<p class="u-sub">Kursverlauf liegt nicht im Zwischenspeicher («Markt-Infos» auffrischen).</p>`; return; }
+  host.innerHTML = `<svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="Kursverlauf ${esc(m.markt)} der letzten ${g.anzahl} Tage bis ${esc(uDatum(g.ende.tag))}: zuletzt ${esc(uPreis(g.ende.wert))}">
+    <g transform="translate(2 4)">${g.stopY != null ? `<line x1="0" x2="${W - 4}" y1="${g.stopY}" y2="${g.stopY}" stroke="var(--loss)" stroke-width="1.8" stroke-dasharray="2 4"/>` : ""}
+    ${g.schnitt ? `<path d="${g.schnitt}" fill="none" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="6 4"/>` : ""}
+    <path d="${g.kurs}" fill="none" stroke="var(--pilot)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${g.ende.x}" cy="${g.ende.y}" r="4.5" fill="var(--pilot)" stroke="var(--panel)" stroke-width="2"/></g></svg>
+    <div class="spark-legende"><span><i></i>Kurs (${g.anzahl} Tage bis ${esc(uDatum(g.ende.tag))})</span>${g.schnitt ? `<span><i class="sma"></i>${esc(String(m.trend_tage || ""))}-Tage-Schnitt</span>` : ""}${g.stopY != null ? `<span><i class="stop"></i>Stop ${esc(uPreis(m.stop))}</span>` : ""}</div>`;
+}
+
+function uMaerkte(d) {
+  if (!(d.maerkte || []).length) return `<section class="ukarte u7" aria-label="Märkte"><p class="u-label">Pilot-Märkte</p><p class="u-leer">Noch kein Pilot-Lauf. Start: py tools\\trading\\krypto_bot\\pilot.py --lauf --trocken</p></section>`;
+  return `<section class="ukarte u7" aria-label="Märkte"><div class="u-kopf"><h3>Pilot-Märkte</h3><span class="u-sub">Entscheid vom ${esc(uDatum(d.maerkte[0].stand))} · Schlusskurse</span><a class="pill mk-live" href="/markt">📈 Live-Markt</a></div>
+    <div class="maerkte-paar">${d.maerkte.map((m, i) => {
+      const ueber = m.schnitt && m.kurs > m.schnitt;
+      const ri = m.hebel > 0 ? ["long", "▲ LONG " + fmtZahl(m.hebel, 2) + "×"] : m.hebel < 0 ? ["short", "▼ SHORT " + fmtZahl(-m.hebel, 2) + "×"] : ["flach", "■ FLACH"];
+      return `<div class="mk"><div class="mk-kopf"><b>${esc(m.markt)}</b><span class="rbadge ${ri[0]}">${ri[1]}</span></div>
+        <div class="mk-preis">${uPreis(m.kurs)} <small class="u-sub">USD</small></div><div id="u-spark-${i}"></div>
+        <div class="mk-fakten"><span>${m.schnitt ? (ueber ? "über" : "unter") + " dem " + esc(String(m.trend_tage)) + "-Tage-Schnitt (" + uPreis(m.schnitt) + ")" : ""}</span><span>Schwankung ${m.schwankung ? fmtZahl(m.schwankung * 100, 0) + " %/Jahr" : "—"} · MVRV ${m.mvrv && m.mvrv.wert != null ? fmtZahl(m.mvrv.wert, 2) : "—"}</span></div>
+        ${m.bremse ? `<div class="mk-warn">🛑 ${esc(m.bremse)}</div>` : ""}${m.detektor && m.detektor.skill_2j != null && !m.detektor.ok ? `<div class="mk-warn">⚠ Lügendetektor: Die Regel schlug in 2 Jahren ${fmtZahl(m.detektor.skill_2j * 100, 0)} % der Zufallskopien — Vorteil zurzeit nicht belegt.</div>` : ""}</div>`;
+    }).join("")}</div></section>`;
+}
+
+function uLage(d) {
+  const L = d.lage || {}, w = n => L[n] && L[n].wert != null ? L[n].wert : null;
+  const fg = w("angst_gier");
+  const farben = ["var(--loss)", "var(--warning)", "var(--ink-3)", "var(--gain)", "var(--gain)"], grenzen = [0, 20, 45, 55, 80, 100];
+  const punkt = (a) => { const t = Math.PI * (1 - a / 100); return [(100 + 80 * Math.cos(t)).toFixed(2), (100 - 80 * Math.sin(t)).toFixed(2)]; };
+  const bogen = grenzen.slice(0, -1).map((v, i) => { const [x1, y1] = punkt(v + (i ? 0.6 : 0)), [x2, y2] = punkt(grenzen[i + 1] - (i < 4 ? 0.6 : 0)); return `<path d="M${x1},${y1} A80,80 0 0 1 ${x2},${y2}" fill="none" stroke="${farben[i]}" stroke-width="16" ${i === 2 ? 'opacity=".55"' : ""}/>`; }).join("");
+  const kachel = (n, x, u, hinweis) => `<div${hinweis ? ` title="${esc(hinweis)}"` : ""}><span>${n}</span><b>${x}</b><small>${esc(u)}</small>${hinweis ? hinweisKnopf(hinweis, "Erklärung zu " + n, "nur-handy") : ""}</div>`;
+  const tg = n => L[n] ? "Stand " + uDatum(L[n].tag) : "";
+  return `<section class="ukarte u5" aria-label="Lage"><div class="u-kopf"><h3>Lage am Markt</h3><span class="u-sub">nur Info</span></div>
+    ${fg != null ? `<svg class="gauge" viewBox="0 0 200 116" role="img" aria-label="Angst und Gier: ${esc(fmtZahl(fg, 0))}, ${esc(fgZone(fg))}">${bogen}
+      <g transform="rotate(${fgWinkel(fg).toFixed(1)} 100 100)"><line x1="100" y1="100" x2="100" y2="34" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round"/></g><circle cx="100" cy="100" r="7" fill="var(--ink)"/>
+      <text x="14" y="114" font-size="11" fill="var(--mut)" font-weight="700">Angst</text><text x="186" y="114" font-size="11" fill="var(--mut)" text-anchor="end" font-weight="700">Gier</text></svg>
+      <div class="gauge-wert"><b>${fmtZahl(fg, 0)}</b><span>aktuell: ${esc(fgZone(fg))}</span></div>` : `<p class="u-leer">Angst &amp; Gier nicht im Zwischenspeicher («Markt-Infos» auffrischen).</p>`}
+    <div class="lage-kacheln">${[
+      kachel("Funding BTC", w("funding_btc") != null ? fmtZahl(w("funding_btc") * 100, 4) + " %" : "—", ["je 8 h", tg("funding_btc")].filter(Boolean).join(" · "), "Funding-Satz je 8 Stunden"),
+      kachel("Funding ETH", w("funding_eth") != null ? fmtZahl(w("funding_eth") * 100, 4) + " %" : "—", ["je 8 h", tg("funding_eth")].filter(Boolean).join(" · "), "Funding-Satz je 8 Stunden"),
+      kachel("MVRV BTC", w("mvrv_btc") != null ? fmtZahl(w("mvrv_btc"), 2) : "—", tg("mvrv_btc"), "MVRV unter 1: der Pilot geht nicht short"),
+      kachel("MVRV ETH", w("mvrv_eth") != null ? fmtZahl(w("mvrv_eth"), 2) : "—", tg("mvrv_eth"), "MVRV unter 1: der Pilot geht nicht short"),
+      kachel("VIX", w("vix") != null ? fmtZahl(w("vix"), 1) : "—", tg("vix"), "VIX: Angst an der Aktienbörse"),
+      kachel("US-Zins 10 J.", w("zins10") != null ? fmtZahl(w("zins10"), 2) + " %" : "—", tg("zins10"))].join("")}</div></section>`;
+}
+
+let letzteSignatur = "";
+function uebersichtZeichnen() {
+  const host = $("uebersicht"), d = letzterStand, p = letzterProfit;
+  if (!d) { host.innerHTML = standFehler ? `<section class="ukarte u12"><p class="u-leer"><b>Cockpit-Server nicht erreichbar.</b> Das Cockpit lädt jede Minute neu. Läuft cockpit.bat noch?</p></section>` : `<section class="ukarte u12"><p class="u-leer">Übersicht wird geladen …</p></section>`; return; }
+  const sig = JSON.stringify([d, p, innerWidth, dunkelJetzt()], (k, v) => k === "zeit" ? undefined : v);
+  if (sig === letzteSignatur) return;   // nichts Neues: Anzeige, Blase und Finger-Markierung bleiben ungestört
+  letzteSignatur = sig;
+  const offeneBlase = blasenAusloeser ? blasenAusloeser.dataset.hinweis : null;
+  blaseZu();
+  const sat = d.satellit || null;
+  const satSymbole = sat ? sat.positionen.map(q => q.symbol) : [];
+  const satMap = Object.fromEntries((sat ? sat.positionen : []).map(q => [q.symbol, q]));
+  host.innerHTML = uHeld(d, p) + uAusl(d, p, satSymbole) + uPositionen(d, p, satSymbole, satMap) + uSatellit(d, p, satMap) + uZeitstrahl(d) + uLabor(d) + uMaerkte(d) + uLage(d);
+  if ($("u-kurve")) uKurveZeichnen($("u-kurve"), d.kontostand);
+  (d.maerkte || []).forEach((m, i) => { const h = $("u-spark-" + i); if (h) uSparkZeichnen(h, m, (d.kurse || {})[m.markt], (d.kurse_schnitt || {})[m.markt]); });
+  if (offeneBlase) { const k = [...host.querySelectorAll(".hinw")].find(x => x.dataset.hinweis === offeneBlase); if (k) blaseOeffnen(k); }
+  sprungPlanen();
+}
+
+// Kopfband: Ampel, Auto-Handel-Schalter, Echtgeld-Rand — liegt ausserhalb des neu gezeichneten Bereichs (Fokus bleibt)
+function kopfZeichnen(d) {
+  const g = d.gesundheit || [], a = ampelStufe(g);
+  $("ampel").dataset.stufe = a.stufe;
+  $("ampelLicht").textContent = a.stufe === "gruen" ? "✓" : a.stufe === "gelb" ? "!" : "✕";
+  $("ampelText").textContent = gesundKopfzeile(g);
+  $("ampelZaehler").innerHTML = [["rot", "✕", a.rot], ["gelb", "!", a.warn], ["grau", "○", a.grau], ["gut", "✓", a.gut]].filter(q => q[2]).map(q => `<span class="az ${q[0]}">${q[1]} ${q[2]}</span>`).join("");
+  const G = ampelGruppen(g);
+  const zz = {rot: "✕", gelb: "!", grau: "○", gut: "✓"}, wort = {rot: "braucht Aufmerksamkeit", gelb: "Warnung", grau: "Info", gut: "in Ordnung"};
+  const achip = x => `<div class="achip ${x.art}"><span class="zz" aria-hidden="true">${zz[x.art]}</span><b>${esc(x.name)} <span class="nur-leser">(${wort[x.art]})</span></b><small>${esc(x.text)}</small></div>`;
+  const altOffen = $("ampelListe").querySelector("details"), warOffen = altOffen ? altOffen.open : null;   // aufgeklappt bleibt aufgeklappt
+  const nGut = G.rest.filter(x => x.art === "gut").length, nGrau = G.rest.length - nGut;
+  $("ampelListe").innerHTML = (G.aufmerksam.length ? `<div class="ampel-grid">${G.aufmerksam.map(achip).join("")}</div>` : `<p class="ampel-alles">Nichts braucht Aufmerksamkeit.</p>`)
+    + (G.rest.length ? `<details class="ampel-rest"${(warOffen != null ? warOffen : !G.aufmerksam.length) ? " open" : ""}><summary>${G.rest.length} ${G.aufmerksam.length ? "weitere " : ""}Punkte (${[nGut ? nGut + " in Ordnung" : "", nGrau ? nGrau + " Info" : ""].filter(Boolean).join(", ")})</summary><div class="ampel-grid">${G.rest.map(achip).join("")}</div></details>` : "");
+  document.querySelector(".band").classList.toggle("echtgeld", d.modus === "ECHTGELD");
+  const aus = d.notaus || d.pause;
+  $("autoK").setAttribute("aria-checked", String(!aus));
+  $("autoKText").innerHTML = `Auto-Handel <b class="zust ${aus ? "aus" : "an"}">${aus ? "AUS" : "AN"}</b>`;
+}
+$("ampel").addEventListener("click", () => {
+  const offen = $("ampelListe").hidden;
+  $("ampelListe").hidden = !offen;
+  $("ampel").setAttribute("aria-expanded", String(offen));
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("ampelListe").hidden) { $("ampelListe").hidden = true; $("ampel").setAttribute("aria-expanded", "false"); $("ampel").focus(); } });
+$("autoK").addEventListener("click", () => { if (!$("auto").disabled) $("auto").click(); });
+const dunkelJetzt = () => document.documentElement.dataset.theme === "dark" || (document.documentElement.dataset.theme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+function themeFarbe() { const f = dunkelJetzt() ? "#111110" : "#f4f4f2"; document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.setAttribute("content", f)); }
+function themaZeigen() { themeFarbe(); $("thema").textContent = dunkelJetzt() ? "☀" : "☾"; $("thema").setAttribute("aria-label", dunkelJetzt() ? "Helles Design einschalten" : "Dunkles Design einschalten"); $("thema").setAttribute("aria-pressed", String(dunkelJetzt())); }
+try { const g = localStorage.getItem("cockpit-thema"); if (g === "hell" || g === "dunkel") document.documentElement.dataset.theme = g === "hell" ? "light" : "dark"; } catch (e) { /* ohne Speicher: gilt nur für diese Sitzung */ }
+$("thema").addEventListener("click", () => {
+  const neu = dunkelJetzt() ? "light" : "dark";
+  document.documentElement.dataset.theme = neu;
+  try { localStorage.setItem("cockpit-thema", neu === "light" ? "hell" : "dunkel"); } catch (e) { /* egal */ }
+  themaZeigen();
+  uebersichtZeichnen();
+});
+themaZeigen();
+{ const mq = matchMedia("(prefers-color-scheme: dark)"), neuZeigen = () => { themaZeigen(); uebersichtZeichnen(); }; if (mq.addEventListener) mq.addEventListener("change", neuZeigen); else if (mq.addListener) mq.addListener(neuZeigen); }
+
+// ───────── Hinweis-Blase: Tippen, Klicken, Enter statt Schweben; Escape und Tippen daneben schliessen ─────────
+let blasenAusloeser = null;
+function blaseZu() {
+  $("blase").hidden = true;
+  if (blasenAusloeser) blasenAusloeser.setAttribute("aria-expanded", "false");
+  blasenAusloeser = null;
+}
+function blaseOeffnen(knopf) {
+  const b = $("blase");
+  if (blasenAusloeser && blasenAusloeser !== knopf) blasenAusloeser.setAttribute("aria-expanded", "false");
+  blasenAusloeser = knopf; knopf.setAttribute("aria-expanded", "true");
+  b.textContent = knopf.dataset.hinweis; b.hidden = false;
+  const nav = $("sprung"), frei = nav && getComputedStyle(nav).display !== "none" ? nav.offsetHeight : 0;
+  const pos = blasenPosition(knopf.getBoundingClientRect(), b.offsetWidth, b.offsetHeight, {w: innerWidth, h: innerHeight}, 12, frei);
+  b.style.left = pos.left + "px"; b.style.top = pos.top + "px";
+}
+document.addEventListener("click", ev => {
+  const k = ev.target.closest ? ev.target.closest(".hinw") : null;
+  if (k) { ev.preventDefault(); blasenAusloeser === k ? blaseZu() : blaseOeffnen(k); return; }
+  if (blasenAusloeser && !ev.target.closest("#blase")) blaseZu();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && blasenAusloeser) { const k = blasenAusloeser; blaseZu(); k.focus(); } });
+document.addEventListener("pointerdown", ev => { document.querySelectorAll(".kurve").forEach(h => { if (h._weg && !h.contains(ev.target)) h._weg(); }); });   // Finger-Markierung der Konto-Kurve schliessen
+addEventListener("scroll", () => { if (blasenAusloeser) blaseZu(); }, {passive: true});
+
+// ───────── Sprungleiste (Handy): der aktive Abschnitt ist markiert ─────────
+let sprungGeplant = false;
+function sprungAktiv() {
+  sprungGeplant = false;
+  const nav = $("sprung");
+  if (!nav || getComputedStyle(nav).display === "none") return;
+  const links = [...nav.querySelectorAll("a[data-ziel]")];
+  const oberkanten = links.map(a => { const z = $(a.dataset.ziel); return z ? {id: a.dataset.ziel, top: z.getBoundingClientRect().top} : null; }).filter(Boolean);
+  const aktiv = aktiverAbschnitt(oberkanten, innerHeight * 0.4, innerHeight + scrollY >= document.documentElement.scrollHeight - 2);
+  links.forEach(a => { if (a.dataset.ziel === aktiv) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+}
+function sprungPlanen() { if (!sprungGeplant) { sprungGeplant = true; requestAnimationFrame(sprungAktiv); } }
+addEventListener("scroll", sprungPlanen, {passive: true});
+// Ein Tipp springt zum Abschnitt, ohne für jeden Sprung einen Verlaufseintrag anzulegen (sonst bräuchte «Zurück» viele Schritte, um die Seite zu verlassen)
+$("sprung").addEventListener("click", ev => {
+  const a = ev.target.closest ? ev.target.closest("a[data-ziel]") : null, z = a ? $(a.dataset.ziel) : null;
+  if (!z) return;
+  ev.preventDefault();
+  z.scrollIntoView({block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+  try { history.replaceState(null, "", "#" + a.dataset.ziel); } catch (e) { /* ohne Verlauf (eingebettet): der Sprung gilt trotzdem */ }
+});
+
+// ───────── Tabellen als Karten (Handy): jede Zelle trägt ihren Spaltennamen; die Umwandlung selbst ist reines CSS ─────────
+function tabellenBeschriften(wurzel) {
+  wurzel.querySelectorAll("table").forEach(t => {
+    const zeilen = [...t.querySelectorAll("tr")], kopf = zeilen.find(tr => tr.querySelector("th"));
+    if (!kopf) return;
+    const namen = [...kopf.children].map(c => c.textContent.trim());
+    zeilen.forEach(tr => {
+      if (tr.querySelector("th")) { tr.classList.add("kz"); return; }
+      const zellen = [...tr.children], beschriftung = zellenBeschriftung(namen, zellen.map(c => c.colSpan || 1));
+      zellen.forEach((c, j) => { if (beschriftung[j]) c.setAttribute("data-label", beschriftung[j]); else c.removeAttribute("data-label"); });
+    });
+  });
+}
+let tabellenGeplant = false;
+new MutationObserver(() => { if (!tabellenGeplant) { tabellenGeplant = true; requestAnimationFrame(() => { tabellenGeplant = false; tabellenBeschriften(document.querySelector("main")); }); } })
+  .observe(document.querySelector("main"), {childList: true, subtree: true});
+tabellenBeschriften(document.querySelector("main"));
+
+
 function zeichne(d) {
   letzterStand = d;
-  $("modus").textContent = d.modus_spot && d.modus_spot !== d.modus
-    ? `Futures: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"} · Spot: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}`
-    : (d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "TESTNETZ (Spielgeld)");
+  if (d.modus_spot && d.modus_spot !== d.modus) $("modus").textContent = `Futures: ${d.modus === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"} · Spot: ${d.modus_spot === "ECHTGELD" ? "⚠️ ECHTGELD" : "Testnetz"}`;
+  else if (d.modus === "ECHTGELD") $("modus").textContent = "⚠️ ECHTGELD";
+  else $("modus").innerHTML = 'TESTNETZ<span class="nur-gross"> (Spielgeld)</span>';
   $("modus").className = "pill" + (d.modus === "ECHTGELD" ? " echt" : "");
   $("tg").hidden = !d.telegram;
   zeigeCalls(d.calls);
@@ -482,13 +1430,16 @@ function zeichne(d) {
     const wert = s.eth * +t.price, g = wert - s.eingesetzt;
     $("s-wert").innerHTML = `${fmtZahl(wert, 2)} USDT · <b class="${kl(g)}">${pfeil(g)}${vz(g)} (${fmtPct(g / s.eingesetzt)})</b>`;
   }).catch(() => { $("s-wert").textContent = "Kurs nicht erreichbar"; });
+  kopfZeichnen(d);
+  uebersichtZeichnen();
 }
 
 async function laden() {
   try {
     const r = await fetch("/api/stand", {cache: "no-store"});
     zeichne(await r.json());
-  } catch (e) { $("zeit").textContent = "Cockpit-Server nicht erreichbar"; }
+    standFehler = false;
+  } catch (e) { $("zeit").textContent = "Cockpit-Server nicht erreichbar"; standFehler = true; if (!letzterStand) uebersichtZeichnen(); }
 }
 
 $("notaus").addEventListener("click", async () => {
@@ -529,6 +1480,7 @@ function zeigeProtokoll(liste, laufend) {
   const namen = laufend.map(a => a.aktion);
   document.querySelectorAll(".knoepfe button").forEach(b => { b.disabled = namen.includes(b.dataset.a); });
   $("auto").disabled = namen.includes("auto_an") || namen.includes("auto_aus");
+  $("autoK").disabled = $("auto").disabled;
   return namen;
 }
 async function ladeProtokoll() {
@@ -563,10 +1515,14 @@ $("stufen").addEventListener("click", e => {
   knopf({"1": "risiko_1", "1.5": "risiko_1_5", "1.75": "risiko_1_75", "2": "risiko_2"}[b.dataset.s]);
 });
 ladeProtokoll();
-addEventListener("resize", () => letzterStand && zeichne(letzterStand));
+let gezeichneteBreite = innerWidth, groesseGeplant = null;
+addEventListener("resize", () => {
+  if (innerWidth === gezeichneteBreite) { sprungPlanen(); return; }
+  clearTimeout(groesseGeplant);
+  groesseGeplant = setTimeout(() => { gezeichneteBreite = innerWidth; blaseZu(); if (letzterStand) zeichne(letzterStand); if (letzterProfit) zeigeProfit(letzterProfit); sprungPlanen(); }, 120);
+});
 laden(); setInterval(laden, 60000);
 ladeProfit(); setInterval(ladeProfit, 15000);
-addEventListener("resize", () => letzterProfit && zeigeProfit(letzterProfit));
 </script>
 </body>
 </html>

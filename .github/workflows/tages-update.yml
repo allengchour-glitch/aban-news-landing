@@ -118,12 +118,24 @@ jobs:
           python tools/trading/krypto_bot/test_satellit.py | tail -n 3
           python tools/trading/schatten/test_satellit_schatten.py | tail -n 3
           python tools/trading/schatten/satellit_schatten.py --lauf
+      - name: Scalping-Labor (Papier, Vorwärtstest mit echten Minutenkerzen)
+        # «Trades, die immer scalpen» (Besitzer 04.11.2026), ehrlich: Strategie S1 «Band-Abpraller» auf BTC und ETH mit genau den Regeln, Gebühren und Füllregeln des Prüfstands
+        # (scalping_pruefung.py: alle 7 Scalping-Verfahren verloren nach Kosten). Papier: kein Auftrag, kein Schlüssel. Verpasste Minuten werden nachgeholt, ein Lauf pro Tag genügt.
+        # Erst der Test (ohne Pipe: ein roter Test stoppt den Schritt wirklich), dann der Lauf. Das Buch im Repo (der Git-Verlauf ist der Zeitstempel) ist der Vorwärtstest, unabhängig vom PC.
+        # continue-on-error: ein Fehler hier darf die anderen Schattenbücher nie stören.
+        if: always()
+        continue-on-error: true
+        run: |
+          python tools/trading/krypto_bot/test_scalping_labor.py > /tmp/labor-test.log 2>&1 || { tail -n 30 /tmp/labor-test.log; exit 1; }
+          tail -n 1 /tmp/labor-test.log
+          python tools/trading/krypto_bot/scalping_labor.py --einmal
+          python tools/trading/krypto_bot/scalping_labor.py --status | head -n 24
       - name: Logbücher committen (falls geaendert)
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for f in data/ki-bot-schatten.json data/krypto-pilot-schatten.json data/krypto-satellit-schatten.json; do if [ -f "$f" ]; then git add "$f"; fi; done
+          for f in data/ki-bot-schatten.json data/krypto-pilot-schatten.json data/krypto-satellit-schatten.json data/krypto-scalping-labor.json; do if [ -f "$f" ]; then git add "$f"; fi; done
           if ! git diff --cached --quiet; then
             git config user.name "aban-news-bot"
             git config user.email "bot@users.noreply.github.com"

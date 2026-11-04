@@ -293,6 +293,14 @@ ETH-Sammler. Dazu ein **Not-Aus-Knopf**: Er schliesst die Pilot-Positionen sofor
 meldet je Markt ehrlich «geschlossen», «NICHT geschlossen» oder «unklar».
 Das Cockpit liest nur die Logbücher auf deinem PC, lauscht nur auf 127.0.0.1 und lehnt Anfragen fremder Webseiten ab.
 
+**Übersicht** (ganz oben, seit 04.11.2026; darunter steht der alte Inhalt unter «Details»): Kontowert gross mit Heute / 7 Tage / 30 Tage / Seit Start und Kurve,
+Engagement (Nennwert gegen Konto, Pilot gegen Satellit), je Position eine **Kursleiter** (Stop, Einstieg, Jetzt, Liquidation), der Satellit mit seinen Positionen,
+die letzten Aufträge als Zeitstrahl (Fehlergrund der Börse im Eintrag), Kursverlauf mit Schnitt und Stop, Angst & Gier. Die Gesundheits-Ampel steht oben im Kopf;
+ein Tipp öffnet die Punkte, die Aufmerksamkeit brauchen. Die Zahlen kommen nur aus `/api/stand` und `/api/profit` (kein neuer Netzzugriff).
+**Handy-Fassung** (bis 700 px Breite): Not-Aus und Auto-Handel gross (≥ 56 px) mit Abstand, Gesundheit als Kachel mit Zählern, feste Sprungleiste unten
+(Übersicht · Positionen · Satellit · Aufträge · Details), Tabellen als Karten, Hinweise zum Antippen statt Schweben, sichere Ränder für Kerbe und Home-Balken.
+Prüfung: `docs/cockpit-uebersicht-pruefung/README.md`.
+
 **💰 Profit-Anzeige** (ganz oben im Cockpit, alle 15 Sekunden): Gewinn seit Start in USDT und Prozent, dazu Heute,
 7 Tage, 30 Tage; aufgeteilt in realisiert, offen, Funding und Gebühren sowie pro Markt; Kurve des abgeschlossenen
 Gewinns, Balken pro Tag und die offenen Positionen mit Einstieg, aktuellem Preis, Gewinn und Liquidationspreis.
@@ -345,7 +353,7 @@ sonst wäre der Vergleich nicht fair. Lehnt das Modell eine Anfrage ab, übernim
 
 **Telegram-Steuerung** läuft mit dem Cockpit, sobald `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` gesetzt sind
 (Einrichtung: `tools/trading/ki_bot/README.md`). Befehle nur aus deinem eigenen Chat: `/status`, `/konto`, `/ki`, `/lage`,
-`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/calls`, `/hilfe`. Was ankam, während das Cockpit aus war, wird
+`/stop` (Not-Aus mit Schliessen), `/weiter`, `/profit`, `/calls`, `/scalp` (Scalping-Labor, Papier), `/hilfe`. Was ankam, während das Cockpit aus war, wird
 **nicht** ausgeführt (sonst könnte ein altes `/weiter` einen Not-Aus aufheben); der Bot antwortet dann «bitte nochmals
 senden». Das hängt nicht an der PC-Uhr und gilt auch, wenn beim Start das Netz noch fehlt (dann wird bis dahin nichts
 ausgeführt). `/stop` und `/weiter` laufen sofort — langsame Info-Befehle (`/lage`, `/status`, `/profit`) laufen nebenher
@@ -1432,7 +1440,7 @@ python3 tools/trading/krypto_bot/test_pilot.py    # 140 Tests, inkl. Risiko-Stuf
 python3 tools/trading/krypto_bot/test_sammler.py  # 48 Tests, inkl. nachgebautem Binance-Server mit Staking, verlorenen Antworten, Ablehnungen und Opt-in
 python3 tools/trading/krypto_bot/test_infos.py    # 26 Tests: keine Zukunftsdaten, MVRV-Bremse, Zwischenspeicher
 python3 tools/trading/krypto_bot/test_profit.py   # 45 Tests: getrennte Bücher, offen unbekannt, BNB-Gebühren, Ein-/Auszahlungen, Seitengrenze, Drosselung
-python3 tools/trading/krypto_bot/test_cockpit.py  # 192 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel (Reihe der Durchgänge, Kopfzeile mit node), Not-Aus, Telegram, Startdateien
+python3 tools/trading/krypto_bot/test_cockpit.py  # 314 Tests: Claude, Schattenkonto, Cockpit, Knöpfe, Host/Einbetten, Ampel (Reihe der Durchgänge, Kopfzeile mit node), Not-Aus, Telegram, Startdateien, Übersicht (Angaben aus stand(), reine Funktionen mit node: uebersicht_rein.py, Bauform der Handy-Fassung)
 python3 tools/trading/krypto_bot/test_calls.py    # 84 Tests: 40 typische Call-Formate, Plausibilität, Antworten/Wiederholungen, Nachspielen, Zufallsprobe, Kopierer gegen nachgebauten Binance-Server
 python3 tools/trading/krypto_bot/test_binance.py  # 21 Tests, inkl. nachgebautem Binance-Server mit Signaturprüfung
 python3 tools/trading/krypto_bot/test_pilot2_plan.py  # 23 Tests: Pilot-2.0-Rechnung (Richtung, Ernte, Pfand, Mindestbeträge)

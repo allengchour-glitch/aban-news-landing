@@ -1270,5 +1270,246 @@ _cz = [z for z in _cb if "cockpit.py" in z and not z.startswith("REM")]
 pruefe("cockpit.bat: Update und Cockpit in EINER Zeile, am Ende «& pause & exit /b», und sonst kein weiteres pause",
        len(_cz) == 1 and "pflege.py --nur-update --still" in _cz[0] and _cz[0].endswith("cockpit.py & pause & exit /b") and sum(1 for z in _cb if z.strip().lower() == "pause") == 0, _cz)
 
+# ───────────────────────── Übersicht: neue Angaben in stand() (nur Anzeige, nur lesen) ─────────────────────────
+import satellit as _SAT_U  # noqa: E402
+
+_e_mit = {"markt": "BTC", "symbol": "BTCUSDT", "hebel": 2.0, "stop_long": 72000.0, "stop_short": 80000.0, "broker": {"stop": 72851.8, "position": 0.05}}
+_m1 = C.markt_mit_stop(_e_mit)
+pruefe("markt_mit_stop: der Stop an der Börse (broker.stop) steht als `stop`, die Regel-Stop nur als Hinweis `stop_berechnet`",
+       _m1["stop"] == 72851.8 and _m1["stop_berechnet"] == 72000.0 and _m1["hebel"] == 2.0, _m1)
+pruefe("markt_mit_stop: der Logbuch-Eintrag selbst bleibt unverändert (Kopie)", "stop" not in _e_mit and "stop_berechnet" not in _e_mit)
+_m2 = C.markt_mit_stop({"hebel": -1.0, "stop_long": 1.0, "stop_short": 80000.0})
+pruefe("markt_mit_stop: ohne Börsen-Stop kein erfundener Stop (None), Short nimmt stop_short", _m2["stop"] is None and _m2["stop_berechnet"] == 80000.0, _m2)
+_m3 = C.markt_mit_stop({"hebel": 0.0, "stop_long": 5.0, "stop_short": 6.0, "broker": {"stop": 0}})
+pruefe("markt_mit_stop: flach oder Stop 0 → beides None", _m3["stop"] is None and _m3["stop_berechnet"] is None, _m3)
+_m4 = C.markt_mit_stop({"hebel": 1.0, "stop_long": "abc", "broker": {"stop": True}})
+pruefe("markt_mit_stop: Unsinn (Text, bool) wird nicht als Stop gelesen", _m4["stop"] is None and _m4["stop_berechnet"] is None, _m4)
+pruefe("markt_mit_stop: broker kein Objekt → kein Absturz", C.markt_mit_stop({"hebel": 1.0, "broker": "x"})["stop"] is None)
+
+with tempfile.TemporaryDirectory() as _tu:
+    _buch_u, _alt_buch_u, _alt_aus_u = Path(_tu) / "buch.json", _SAT_U.BUCH, _SAT_U.AUS_DATEI
+    _SAT_U.BUCH, _SAT_U.AUS_DATEI = _buch_u, Path(_tu) / "aus.txt"
+    try:
+        s0 = C.satellit_stand({})
+        pruefe("satellit_stand: leeres Buch → alle Listen leer, an, 20 %, nächster Entscheidungstag ein Donnerstag, kein letzter Lauf",
+               s0 is not None and s0["aus"] is False and s0["anteil"] == 0.2 and s0["ziele"] == [] and s0["positionen"] == [] and s0["ausgestoppt"] == [] and s0["entschieden"] is None
+               and s0["letzter_lauf"] is None and s0["hinweis"] == "" and date.fromisoformat(s0["naechster_tag"]).weekday() == 3 and s0["echtgeld"] is False and s0["hat_schluessel"] is False, s0)
+        _SAT_U.schreiben({**_SAT_U.neues_buch(), "entschieden": "2026-11-05", "ziele": {"SOLUSDT": 0.1, "ADAUSDT": 0.1},
+                          "positionen": {"SOLUSDT": {"spot": "SOLUSDT", "menge": 1.5, "stop": 150.2, "seit": "2026-11-06", "stop_anteil": 0.12},
+                                         "1000PEPEUSDT": {"spot": "PEPEUSDT", "menge": 20000.0, "stop": 0.0123, "seit": "2026-11-06", "stop_anteil": 0.2}},
+                          "ausgestoppt": {"DOGEUSDT": "2026-11-09"}, "bekannt": ["SOLUSDT"],
+                          "letzter_lauf": {"zeit": "2026-11-10T02:40:00+00:00", "ok": True, "auftraege": 0, "positionen": 2, "hinweise": []}}, _buch_u)
+        s1 = C.satellit_stand({"BINANCE_FUTURES_API_KEY": "k", "BINANCE_FUTURES_API_SECRET": "s"})
+        pruefe("satellit_stand: Ziele, Positionen mit Stop/Menge/seit, ausgestoppte Coins und letzter Lauf aus dem Buch; Schlüssel nur als Ja/Nein",
+               s1["entschieden"] == "2026-11-05" and s1["ziele"] == [{"symbol": "SOLUSDT", "gewicht": 0.1}, {"symbol": "ADAUSDT", "gewicht": 0.1}]
+               and s1["positionen"][0] == {"symbol": "SOLUSDT", "spot": "SOLUSDT", "menge": 1.5, "stop": 150.2, "seit": "2026-11-06", "stop_anteil": 0.12}
+               and len(s1["positionen"]) == 2 and s1["positionen"][1]["symbol"] == "1000PEPEUSDT" and s1["ausgestoppt"] == [{"symbol": "DOGEUSDT", "tag": "2026-11-09"}]
+               and s1["letzter_lauf"]["ok"] is True and s1["hat_schluessel"] is True and "k" not in json.dumps({k: v for k, v in s1.items() if k != "hat_schluessel"}).replace("ok", ""), s1)
+        s2 = C.satellit_stand({"KRYPTO_SATELLIT": "aus"})
+        pruefe("satellit_stand: ausgeschaltet nennt den Grund", s2["aus"] is True and s2["grund"] == "KRYPTO_SATELLIT=aus", s2)
+        s3 = C.satellit_stand({"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"})
+        pruefe("satellit_stand: mit echtem Geld steht echtgeld=True (die Anzeige sagt «nur Testnetz»)", s3["echtgeld"] is True, s3)
+        _buch_u.write_text("kaputt")
+        _buch_u.with_name(_buch_u.name + ".bak").write_text("auch kaputt")
+        s4 = C.satellit_stand({})
+        pruefe("satellit_stand: beide Buch-Dateien kaputt → Hinweis «unlesbar», leere Listen, kein Absturz", s4 is not None and s4["hinweis"].startswith("⚠️ Satelliten-Buch unlesbar") and s4["positionen"] == [] and s4["ziele"] == [], s4)
+        _alt_lesen = _SAT_U.lesen
+        _SAT_U.lesen = lambda *a, **k: (_ for _ in ()).throw(OSError("Platte weg"))
+        try:
+            s5 = C.satellit_stand({})
+        finally:
+            _SAT_U.lesen = _alt_lesen
+        pruefe("satellit_stand: ein Fehler beim Lesen → None statt Absturz", s5 is None)
+        _alt_mod = C.SAT
+        C.SAT = None
+        try:
+            pruefe("satellit_stand: Modul fehlt → None (die Oberfläche zeigt dann nichts statt zu stören)", C.satellit_stand({}) is None)
+        finally:
+            C.SAT = _alt_mod
+        # stand() trägt die neuen Angaben, bleibt als JSON darstellbar und enthält keine Schlüssel
+        _buch_u.unlink()
+        _buch_u.with_name(_buch_u.name + ".bak").unlink()
+        d_u = C.stand(env={"BINANCE_FUTURES_API_KEY": "GEHEIM-KEY-1", "BINANCE_FUTURES_API_SECRET": "GEHEIM-SEC-2"})
+        j_u = json.dumps(d_u)
+        pruefe("stand(): enthält satellit, kurse, kurse_schnitt, ist JSON, ohne Schlüssel", "satellit" in d_u and "kurse" in d_u and "kurse_schnitt" in d_u and "GEHEIM" not in j_u, sorted(d_u))
+    finally:
+        _SAT_U.BUCH, _SAT_U.AUS_DATEI = _alt_buch_u, _alt_aus_u
+
+# ── Scalping-Labor (Papier) im Cockpit: Anzeige-Daten, Gesundheitszeile, Telegram /scalp ──
+import scalping_labor as _SL_U  # noqa: E402
+import scalping_kern as _SK_U  # noqa: E402
+
+with tempfile.TemporaryDirectory() as _tl:
+    _tlp = Path(_tl)
+    _alt_sl = (_SL_U.BUCH, _SL_U.AUS_DATEI, _SL_U.STOP, _SL_U.PAUSE)
+    _SL_U.BUCH, _SL_U.AUS_DATEI, _SL_U.STOP, _SL_U.PAUSE = _tlp / "labor.json", _tlp / "aus.txt", _tlp / "STOP-nein", _tlp / "PAUSE-nein"
+    _T0 = int(datetime(2026, 11, 2, tzinfo=timezone.utc).timestamp() * 1000)
+    try:
+        _leer = C.scalp_stand({})
+        pruefe("scalp_stand: nie gelaufen → gelaufen False, 8 Zeilen ohne Handel, zu wenig Daten, keine Kosten, an",
+               _leer is not None and _leer["gelaufen"] is False and len(_leer["zeilen"]) == 8 and all(z["n"] == 0 for z in _leer["zeilen"]) and _leer["urteil"]["urteil"] == "zu wenig Daten"
+               and _leer["kosten_bp"] is None and _leer["aus"] is False and _leer["hinweis"] == "" and _leer["letzte_trades"] == [], _leer)
+        # ein Buch mit gerechneten Handeln (ohne Kosten, damit die Zahlen von Hand stimmen)
+        _b = _SL_U.neues_buch(_T0 + 86_400_000)
+        _b["daten_ab"] = _T0
+        for _sym, _k, _trades in (("BTCUSDT", 2.0, [(100.0, 100.1)] * 3 + [(100.0, 99.8)]), ("ETHUSDT", 3.5, [(100.0, 100.1)] * 2)):
+            _m = {"weiter_ab": _T0 + 86_400_000 + 60_000, "letzte_kerze": _T0 + 86_400_000, "luecken": 0, "buecher": {str(kk): _SL_U.neues_band_buch(kk) for kk in _SL_U.STUFEN}}
+            for _i, (_e, _a) in enumerate(_trades):
+                _SL_U.buche(_m["buecher"][str(_k)], (_T0 + _i * 60_000, _T0 + _i * 60_000 + 60_000, 1, _e, _a, "M", "M"), {"M": 0.0, "T": 0.0, "slip": 0.0}, 0)
+            _b["maerkte"][_sym] = _m
+        _b["letzter_lauf"] = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "kerzen": 10, "trades": 6, "hinweise": []}
+        _SL_U.schreiben(_b, _SL_U.BUCH)
+        _s1 = C.scalp_stand({})
+        _zb = {(z["markt"], z["k"]): z for z in _s1["zeilen"]}
+        pruefe("scalp_stand: gelaufen, die Zeilen tragen die Zahlen des Buchs (BTC 2,0: 4 Handel, 75 %, netto +2,5 bp) und die Erwartung des Prüfstands",
+               _s1["gelaufen"] is True and _zb[("BTC", 2.0)]["n"] == 4 and _zb[("BTC", 2.0)]["treffer"] == 0.75 and abs(_zb[("BTC", 2.0)]["netto_bp"] - 2.5) < 1e-9
+               and _zb[("BTC", 2.0)]["erw_netto_bp"] == -9.565 and _zb[("ETH", 3.5)]["n"] == 2 and _zb[("BTC", 2.5)]["n"] == 0, _zb[("BTC", 2.0)])
+        pruefe("scalp_stand: Urteil (zu wenig Daten), Kosten 0 bei Handeln ohne Kosten, Ampel grün, letzte Handel neueste zuerst, Datenbeginn",
+               _s1["urteil"]["urteil"] == "zu wenig Daten" and _s1["kosten_bp"] == 0.0 and _s1["ampel"]["ok"] is True and len(_s1["letzte_trades"]) == 6
+               and all(_s1["letzte_trades"][i]["t_aus"] >= _s1["letzte_trades"][i + 1]["t_aus"] for i in range(5)) and _s1["daten_ab"] == _T0, _s1["ampel"])
+        pruefe("scalp_stand: ist JSON und enthält nur Zahlen und Text (kein Schlüssel, kein Pfad)", "C:\\" not in json.dumps(_s1) and "/home/" not in json.dumps(_s1) and json.loads(json.dumps(_s1))["gelaufen"] is True)
+        # echte Kosten: «Kosten je Trade» ist das gewichtete Mittel, positiv ausgewiesen
+        _b2 = json.loads(json.dumps(_b))
+        _bb = _b2["maerkte"]["BTCUSDT"]["buecher"]["2.0"]
+        for _f in ("n", "n_nach", "wins", "sum_br", "sum_net", "gew", "verl", "kum", "hoechst", "tiefst", "dauer_ms"):
+            _bb[_f] = 0 if not isinstance(_bb[_f], float) else 0.0
+        _bb["tage"], _bb["letzte"] = {}, []
+        _SL_U.buche(_bb, (_T0, _T0 + 60_000, 1, 100.0, 100.0, "M", "M"), _SL_U.kosten_von("BTCUSDT"), 0)
+        _SL_U.schreiben(_b2, _SL_U.BUCH)
+        _s2 = C.scalp_stand({})
+        # BTC 2,0: ein Handel ohne Kursbewegung kostet Maker-Gebühr hin und zurück = 4 bp; ETH 3,5: zwei Handel ohne Kosten → gewichtetes Mittel (4 × 1 + 0 × 2) / 3 = 1,33 bp
+        pruefe("scalp_stand: Kosten je Trade (positiv ausgewiesen) = gewichtetes Mittel über alle Handel (1,33 bp)", _s2["kosten_bp"] == 1.33, _s2["kosten_bp"])
+        # Schalter, Hinweis, Fehler
+        pruefe("scalp_stand: ausgeschaltet nennt den Grund", C.scalp_stand({"KRYPTO_SCALP_LABOR": "aus"})["aus"] is True and C.scalp_stand({"KRYPTO_SCALP_LABOR": "aus"})["grund"] == "KRYPTO_SCALP_LABOR=aus")
+        _SL_U.BUCH.write_text("kaputt")
+        _SL_U.BUCH.with_name("labor.json.bak").write_text("auch kaputt")
+        _namen = sorted(p.name for p in _tlp.iterdir())
+        _s3 = C.scalp_stand({})
+        pruefe("scalp_stand: beide Buch-Dateien kaputt → Hinweis «unlesbar», leere Zeilen, kein Absturz und KEINE Datei wird angefasst (nur lesen)",
+               _s3 is not None and _s3["hinweis"].startswith("⚠️ Labor-Buch unlesbar") and _s3["gelaufen"] is False and sorted(p.name for p in _tlp.iterdir()) == _namen
+               and _SL_U.BUCH.read_text() == "kaputt", (_s3 or {}).get("hinweis"))
+        _SL_U.BUCH.unlink()
+        _SL_U.BUCH.with_name("labor.json.bak").unlink()
+        _alt_lesen = _SL_U.lesen
+        _SL_U.lesen = lambda *a, **k: (_ for _ in ()).throw(OSError("Platte weg"))
+        try:
+            _s4 = C.scalp_stand({})
+        finally:
+            _SL_U.lesen = _alt_lesen
+        pruefe("scalp_stand: ein Fehler beim Lesen → None statt Absturz", _s4 is None)
+        _alt_modl = C.SL
+        C.SL = None
+        try:
+            pruefe("scalp_stand: Modul fehlt → None; Telegram /scalp sagt es ehrlich", C.scalp_stand({}) is None and "nicht vorhanden" in C.befehl("/scalp"))
+        finally:
+            C.SL = _alt_modl
+        # Gesundheitszeile
+        _h20l = datetime(2026, 1, 20, tzinfo=timezone.utc).date()
+        _gz = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: «Scalping-Labor (Papier)» grau, solange es nie lief", _gz["Scalping-Labor (Papier)"]["ok"] is None and "noch kein Lauf" in _gz["Scalping-Labor (Papier)"]["text"], _gz.get("Scalping-Labor (Papier)"))
+        _SL_U.schreiben(_b, _SL_U.BUCH)
+        _gz2 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: frischer Lauf = grün mit dem Urteil", _gz2["Scalping-Labor (Papier)"]["ok"] is True and "zu wenig Daten" in _gz2["Scalping-Labor (Papier)"]["text"], _gz2["Scalping-Labor (Papier)"])
+        _alt_b = json.loads(json.dumps(_b))
+        _alt_b["letzter_lauf"]["zeit"] = (datetime.now(timezone.utc) - timedelta(hours=40)).isoformat(timespec="seconds")
+        _SL_U.schreiben(_alt_b, _SL_U.BUCH)
+        _gz3 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: Lauf älter als 36 Stunden = rot", _gz3["Scalping-Labor (Papier)"]["ok"] is False and "40" in _gz3["Scalping-Labor (Papier)"]["text"], _gz3["Scalping-Labor (Papier)"])
+        _gz4 = {x["name"]: x for x in C.gesundheit({"KRYPTO_SCALP_LABOR": "aus"}, {"entscheide": []}, {}, _h20l)}
+        pruefe("Gesundheit: ausgeschaltet = grau mit dem Grund", _gz4["Scalping-Labor (Papier)"]["ok"] is None and "KRYPTO_SCALP_LABOR=aus" in _gz4["Scalping-Labor (Papier)"]["text"], _gz4["Scalping-Labor (Papier)"])
+        _SL_U.BUCH.write_text("kaputt")
+        _SL_U.BUCH.with_name("labor.json.bak").write_text("auch kaputt")
+        _gz5 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}["Scalping-Labor (Papier)"]
+        pruefe("Gesundheit: beschädigtes Buch = GELB (grau mit Warnung) mit dem Satz «Labor-Buch unlesbar», nicht «noch kein Lauf» und nicht rot",
+               _gz5["ok"] is None and _gz5.get("warnung") is True and _gz5["text"].startswith("⚠️ Labor-Buch unlesbar"), _gz5)
+        _SL_U.BUCH.unlink()
+        _SL_U.BUCH.with_name("labor.json.bak").unlink()
+        _bw = json.loads(json.dumps(_b))
+        _bw["letzter_lauf"]["hinweise"] = ["BTC: Kerzen nicht erreichbar (OSError) — der nächste Lauf holt den Rest"]
+        _SL_U.schreiben(_bw, _SL_U.BUCH)
+        _gz6 = {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, _h20l)}["Scalping-Labor (Papier)"]
+        pruefe("Gesundheit: ein Hinweis im letzten Lauf (Netz weg) = GELB mit dem Hinweis, nicht rot", _gz6["ok"] is None and _gz6.get("warnung") is True and "nicht erreichbar" in _gz6["text"], _gz6)
+        pruefe("scalp_stand: die Ampel trägt das Warnung-Flag", C.scalp_stand({})["ampel"]["warnung"] is True and C.scalp_stand({})["ampel"]["ok"] is None)
+        # Telegram
+        _SL_U.schreiben(_b, _SL_U.BUCH)
+        _t = C.befehl("/scalp")
+        pruefe("Telegram /scalp: die Zusammenfassung des Labors (Papier, kein Geld im Spiel), in /hilfe aufgeführt", "Scalping-Labor (Papier" in _t and "Kein Geld im Spiel" in _t and "/scalp" in C.HILFE and "/scalp" in C.befehl("/hilfe"), _t)
+        _SL_U.BUCH.write_text("kaputt")
+        _SL_U.BUCH.with_name("labor.json.bak").write_text("auch kaputt")
+        pruefe("Telegram /scalp: bei kaputtem Buch ein ehrlicher Satz statt Absturz", "unlesbar" in C.befehl("/scalp"))
+        _SL_U.BUCH.unlink()
+        _SL_U.BUCH.with_name("labor.json.bak").unlink()
+        # stand() trägt die Angaben und bleibt JSON ohne Schlüssel
+        _d_l = C.stand(env={"BINANCE_FUTURES_API_KEY": "GEHEIM-KEY-1", "BINANCE_FUTURES_API_SECRET": "GEHEIM-SEC-2"})
+        pruefe("stand(): enthält scalp (ohne Buch: nie gelaufen), ist JSON, ohne Schlüssel", "scalp" in _d_l and _d_l["scalp"] is not None and _d_l["scalp"]["gelaufen"] is False and "GEHEIM" not in json.dumps(_d_l), sorted(_d_l))
+    finally:
+        _SL_U.BUCH, _SL_U.AUS_DATEI, _SL_U.STOP, _SL_U.PAUSE = _alt_sl
+
+# stand(): die Pilot-Märkte tragen den Stop aus dem Logbuch
+with tempfile.TemporaryDirectory() as _tm:
+    _alt_m = C.DATA
+    C.DATA = Path(_tm)
+    try:
+        (Path(_tm) / "krypto-pilot.json").write_text(json.dumps({"entscheide": [
+            {"markt": "BTC", "symbol": "BTCUSDT", "stand": "2026-11-02", "kurs": 76677.0, "hebel": 2.0, "hebel_roh": 2.0, "stop_long": 72000.0, "stop_short": 80000.0,
+             "broker": {"stop": 72851.8, "position": 0.05}},
+            {"markt": "ETH", "symbol": "ETHUSDT", "stand": "2026-11-02", "kurs": 2249.0, "hebel": 2.0, "hebel_roh": 2.0, "stop_long": 2100.0, "stop_short": 2400.0}],
+            "kontostand": []}), encoding="utf-8")
+        d_m = C.stand(env={})
+        mk = {m["markt"]: m for m in d_m["maerkte"]}
+        pruefe("stand(): BTC trägt den bestätigten Börsen-Stop, ETH ohne Börsen-Angabe nur den berechneten (stop None) — nichts erfunden",
+               mk["BTC"]["stop"] == 72851.8 and mk["BTC"]["stop_berechnet"] == 72000.0 and mk["ETH"]["stop"] is None and mk["ETH"]["stop_berechnet"] == 2100.0, mk)
+    finally:
+        C.DATA = _alt_m
+
+# kurse_stand: Schlusskurse und Schnitt aus dem Zwischenspeicher
+_alt_kl = KT.kurse_laden
+_tage_k = [(date(2025, 1, 1) + timedelta(days=i)).isoformat() for i in range(300)]
+KT.kurse_laden = lambda offline=False, jetzt=None: {"btc": [(t, float(i + 1)) for i, t in enumerate(_tage_k)], "eth": [(t, 2.0 * (i + 1)) for i, t in enumerate(_tage_k)]}
+try:
+    ku, sk = C.kurse_stand()
+    pruefe("kurse_stand: 90 Tage Schlusskurse je Markt, letzter Tag und Kurs stimmen", len(ku["BTC"]) == 90 and ku["BTC"][-1] == [_tage_k[-1], 300.0] and ku["BTC"][0] == [_tage_k[210], 211.0]
+           and ku["ETH"][-1] == [_tage_k[-1], 600.0], (ku["BTC"][:1], ku["BTC"][-1]))
+    pruefe("kurse_stand: BTC-Schnitt = 150 Tage (Mittel von 151…300 = 225.5), ETH-Schnitt = 200 Tage (Mittel von 2·101…2·300 = 401.0)",
+           sk["BTC"][-1] == [_tage_k[-1], 225.5] and sk["ETH"][-1] == [_tage_k[-1], 401.0] and len(sk["BTC"]) == 90, (sk["BTC"][-1], sk["ETH"][-1]))
+    ku2, sk2 = C.kurse_stand(tage=500)
+    pruefe("kurse_stand: der Schnitt fehlt, solange er noch nicht rechenbar ist (erste 149 Tage von BTC)", len(ku2["BTC"]) == 300 and len(sk2["BTC"]) == 300 - 149 and sk2["BTC"][0][0] == _tage_k[149], (len(ku2["BTC"]), len(sk2["BTC"])))
+    KT.kurse_laden = lambda offline=False, jetzt=None: {"btc": [], "eth": [(t, 1.0) for t in _tage_k[:5]]}
+    ku3, sk3 = C.kurse_stand()
+    pruefe("kurse_stand: ein Markt ohne Kurse fehlt, der andere bleibt (ETH mit 5 Tagen: Kurse ja, Schnitt noch nicht)", "BTC" not in ku3 and len(ku3["ETH"]) == 5 and sk3["ETH"] == [], (ku3.keys(), sk3))
+    KT.kurse_laden = lambda offline=False, jetzt=None: (_ for _ in ()).throw(OSError("Platte weg"))
+    pruefe("kurse_stand: Fehler → leere Angaben statt Absturz", C.kurse_stand() == ({}, {}))
+finally:
+    KT.kurse_laden = _alt_kl
+
+# ───────────────────────── Übersicht: reine Funktionen (mit node ausgeführt) und Bauform der Handy-Fassung ─────────────────────────
+import re as _re_u  # noqa: E402
+import uebersicht_rein as _UR  # noqa: E402
+
+_html_u = (HIER / "cockpit.html").read_text(encoding="utf-8")
+for _n_u, _ok_u, _i_u in _UR.pruefen(_html_u):  # Kursleiter, Auslastung, Kurven, Ampel-Gruppen, Sprungleiste, Karten-Tabellen, Blase: Erwartungswerte von Hand gerechnet (uebersicht_rein.py)
+    pruefe("Oberfläche: " + _n_u, _ok_u, _i_u)
+_anker_u = _re_u.findall(r'<a href="#([a-z-]+)" data-ziel="([a-z-]+)">([^<]+)</a>', _html_u)
+pruefe("Handy: Sprungleiste mit den fünf Zielen Übersicht · Positionen · Satellit · Aufträge · Details, jedes Ziel gibt es in der Seite",
+       [(a, t) for a, z, t in _anker_u if a == z] == [("oben", "Übersicht"), ("u-positionen", "Positionen"), ("u-satellit", "Satellit"), ("u-auftraege", "Aufträge"), ("details", "Details")]
+       and all(f'id="{a}"' in _html_u for a, _z, _t in _anker_u), _anker_u)
+pruefe("Handy: viewport-fit=cover, zwei theme-color-Angaben (hell/dunkel) und sichere Ränder über env(safe-area-inset-…) als Variablen (die Sprungleiste weicht dem Home-Balken aus)",
+       "viewport-fit=cover" in _html_u and len(_re_u.findall(r'<meta name="theme-color" content="#[0-9a-f]{6}" media="\(prefers-color-scheme: (?:light|dark)\)">', _html_u)) == 2
+       and all(f"env(safe-area-inset-{k}" in _html_u for k in ("top", "right", "bottom", "left")) and "padding:0 var(--sa-r) var(--sa-b) var(--sa-l)" in _html_u)
+pruefe("Handy: Not-Aus und Auto-Handel sind ≥ 48 px hoch und haben 18 px Abstand; der Design-Schalter liegt nicht mehr im Kopf neben dem Not-Aus",
+       ".band button{min-height:56px}" in _html_u and ".band-rechts{display:flex;flex-wrap:nowrap;align-items:stretch;gap:18px" in _html_u
+       and 'id="thema"' in _html_u.split('<div class="status-zeile">', 1)[1].split("</div>", 1)[0] and 'id="thema"' not in _html_u.split('<div class="band-rechts">', 1)[1].split("</div>", 1)[0])
+pruefe("Handy: Tabellen werden Karten (kein seitliches Scrollen) — jede Zelle bekommt ihren Spaltennamen, die Umwandlung gilt nur bis 700 px",
+       "function tabellenBeschriften(" in _html_u and ".tabelle td::before{content:attr(data-label)" in _html_u and ".tabelle tr.kz{display:none}" in _html_u and "@media (max-width:700px){" in _html_u and ".tabelle{overflow:visible}" in _html_u
+       and "table.kt" not in _html_u and "@supports selector(:has(> th))" in _html_u)  # reines CSS ab dem ersten Layout: eine Klasse, die erst ein Skript im nächsten Bild setzt, liess am Handy kurz eine breite Tabelle stehen (Herauszoomen)
+pruefe("Handy: kein Mauszeiger nötig — Hinweise stehen als Knöpfe (Tippen, Enter, Escape), die Kurve reagiert auf Finger (pointerdown, touch-action: pan-y)",
+       "function blaseOeffnen(" in _html_u and ".hinw{" in _html_u and 'svg.addEventListener("pointerdown", zeige)' in _html_u and ".kurve svg{touch-action:pan-y}" in _html_u and 'e.key === "Escape" && blasenAusloeser' in _html_u)
+pruefe("Handy: das Neuzeichnen folgt der BREITE, nicht der Höhe (die Adressleiste am Handy klappt ein und aus, ohne dass die Anzeige flackert)",
+       "if (innerWidth === gezeichneteBreite)" in _html_u and 'addEventListener("resize", () => letzterStand && zeichne(letzterStand));' not in _html_u and "if (sig === letzteSignatur) return;" in _html_u)
+_urls_u = set(_re_u.findall(r"https?://[^\s\"'`)<>]+", _html_u))
+pruefe("Seite: kein neuer Netzzugriff — alle Adressen sind der SVG-Namensraum und der öffentliche Binance-Preis des ETH-Sammlers (wie vorher), keine fremden Skripte, Stile, Bilder oder Rahmen",
+       _urls_u <= {"http://www.w3.org/2000/svg", "https://data-api.binance.vision/api/v3/ticker/price?symbol=ETHUSDT"} and not _re_u.search(r"<script src|@import|<img |<iframe|url\(http", _html_u)
+       and _html_u.count("<link ") == 1 and '<link rel="icon" href="data:,">' in _html_u and _html_u.count("<style>") == 1 and "Content-Security-Policy" not in _html_u, _urls_u)
+
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)
