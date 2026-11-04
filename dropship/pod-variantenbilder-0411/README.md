@@ -23,6 +23,10 @@ Die Galeriefotos der Printful-Produktseiten waren schon kopiert (`dropship/POD-B
 
 Jedes Produkt wurde nach dem Schreiben frisch gelesen (jede Variante trägt das geplante Medium) und auf der Storefront (`/products/<handle>.js`) gegengeprüft: 0 Varianten ohne Bild, 0 Rückansichten.
 
+## Galerie-Ergänzung
+
+Drei Lifestyle-Beispielfotos von Printful beim Badeanzug (`einteiliger-allover-badeanzug-selbst-gestalten`, 14 → 17 Medien, LIVE 04.11., Beleg `galerie-ergaenzung.json`). Die übrigen 11 «neuen» Bilder der Printful-Seiten waren englische Infografiken, Verpackungs- oder Platzhalterfotos und wurden nicht übernommen.
+
 ## Bewusst NICHT gemacht
 
 - **Handyhüllen** (Samsung 84, iPhone 48 Varianten): die Katalogbilder zeigen ein bestimmtes Modell; ein Bild je Material wäre bei jedem anderen Modell ein falsches Gerät. Bilder je Modell wären 46 bzw. 16 zusätzliche Fotos in der Galerie → Entscheid des Besitzers.
@@ -36,5 +40,6 @@ Jedes Produkt wurde nach dem Schreiben frisch gelesen (jede Variante trägt das 
 ## Werkzeug und Tests
 
 - `automation/pod_variantenbilder.mjs` (Trockenlauf Vorgabe, `LIVE=1` schreibt), Rechenkern `automation/lib/pod_variantenbilder.mjs`, Test `automation/lib/pod_variantenbilder_test.mjs` (23 Prüfungen, in der CI; Mutationsprobe 13 von 13 erkannt, die letzte erst nach dem Test «Grenze ist bewusst 12»).
+- Der Printful-Zwischenspeicher `printful-cache.json` entsteht beim Lauf und ist ignoriert (`.gitignore`): Bild-URLs ändern sich, ein alter Zwischenspeicher darf nicht wiederverwendet werden.
 - Regeln: höchstens 12 verschiedene Bilder je Produkt (sonst bläht sich die Galerie auf); gleiche Bilder (Prüfsumme) werden zu einem Medium; vorhandene gute Eigenbilder werden nie überschrieben; Rückansichten (Dateiname `-back-`) werden ersetzt.
 - **Lehren:** (1) `productVariantsBulkUpdate` mit `mediaSrc` ignoriert Shopify; Medien legt man mit `productUpdate(media:…)` an, findet sie über den Alt-Text und bindet sie mit `productVariantAppendMedia`. (2) Grössen derselben Farbe haben bei Printful eigene Dateinamen: ein Vertreter-Bild je Aussehen wählen, sonst wirft ein einzelnes defektes Bild alle anderen aus dem Plan (erster Trockenlauf: 13 statt 18 Varianten beim Poster). (3) Sieben Produkte der Liste sind Entwurf (`laptop-sleeve`, `wm-trikot`, `tote`, `baby-jersey-body`, `baumwolltasche`, `premium-hoodie`, `urban-umhangetasche`): ihre Storefront-Adresse liefert 404, das ist kein Fehler.
