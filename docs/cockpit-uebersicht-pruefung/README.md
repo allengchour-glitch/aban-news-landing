@@ -21,7 +21,7 @@ node    docs/cockpit-uebersicht-pruefung/schnellbild.js  voll 1440 900 hell bild
 
 `COCKPIT_HTML=<Datei>` prüft eine andere Fassung, `ABSCHNITT=2,3` lässt `handy.test.js` nur diese Abschnitte laufen (1 Größen und Designs, 2 Blase/Kurve/Tastatur, 3 Ränder, 4 Größenänderung, 5 Fälle, 6 Desktop). Playwright kommt aus `require('playwright')` oder `/opt/node-tools/node_modules/playwright`.
 
-**Letzter Lauf (04.11.2026, Stand mit der Labor-Kachel):** `uebersicht.test.js` 127/0 · `handy.test.js` 407/0 · `test_cockpit.py` 336/0 · `uebersicht_rein.py` 41/0 · `mutationsprobe.py` 64 von 64 erkannt (Stand vor der Labor-Kachel) · `smoke_echt.js` ok · `tools/trading/test_paket_bauen.py` 35/0.
+**Letzter Lauf (04.11.2026, Stand mit der Labor-Kachel):** `uebersicht.test.js` 127/0 · `handy.test.js` 425/0 · `test_cockpit.py` 336/0 · `uebersicht_rein.py` 41/0 · `mutationsprobe.py` 64 von 64 erkannt (Stand vor der Labor-Kachel) · `smoke_echt.js` ok · `tools/trading/test_paket_bauen.py` 35/0.
 
 ## Bilder (`bilder/`, Faktor 2)
 
