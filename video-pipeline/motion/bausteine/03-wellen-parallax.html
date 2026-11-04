@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><title>Baustein 3: Wellen und Parallax</title>
+<link rel="stylesheet" href="_basis.css">
+<div class="stage"><svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script src="../motion.js"></script>
+<script>
+ const M = Motion, s = document.getElementById('s');
+ M.svg('rect', { width: 1080, height: 1920, fill: '#cfe8f5' }, s);
+ // Lernpunkt: Parallax = hintere Ebenen bewegen sich langsam, vordere schnell. Drei Ebenen reichen.
+ const farben = ['#9bc7e0', '#6fa8cc', '#3f7fae'], tempo = [30, 60, 120], ys = [1150, 1300, 1450];
+ farben.forEach((f, i) => {
+   const g = M.svg('g', {}, s);
+   let d = 'M-200 ' + ys[i];
+   for (let x = -200; x <= 1480; x += 160) d += ' q80 -' + (60 + i * 20) + ' 160 0';
+   d += ' V1920 H-200 Z';
+   M.svg('path', { d: d, fill: f }, g);
+   M.loop(g, [{ transform: 'translateX(0)' }, { transform: 'translateX(-' + tempo[i] + 'px)' }], { t: 0, d: 3, ease: M.EASE.inOut });
+ });
+ M.fertig(3);
+</script>
