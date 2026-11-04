@@ -121,6 +121,8 @@ data/ki-signale.json
 tools/trading/ki_bot/STOP
 tools/trading/ki_bot/PAUSE
 data/*.lock
+data/krypto-scalping-labor.json.bak
+data/krypto-scalping-labor.json.kaputt-*
 data/ki-bot.json
 data/ki-bot-broker.json
 data/krypto-bot.json
