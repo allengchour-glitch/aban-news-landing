@@ -1574,6 +1574,17 @@ with tempfile.TemporaryDirectory() as _tdf:
         _c.close()
         t3 = C.befehl("/handy")
         pruefe("Telegram /handy: abgewiesene Versuche werden genannt, mit dem Rat «erneuern»", "abgewiesene Versuche" in t3 and "/handy erneuern" in t3 and k1 not in t3, t3)
+        for _i in range(2):
+            _c = _hcf.HTTPConnection("127.0.0.1", _P, timeout=10)
+            _c.request("GET", "/?k=falsch%d" % _i, headers={"Host": f"127.0.0.1:{_P}"})
+            _c.getresponse().read()
+            _c.close()
+        _c = _hcf.HTTPConnection("127.0.0.1", _P, timeout=10)
+        _c.request("GET", "/api/stand", headers={"Host": "boese.example:1"})
+        _c.getresponse().read()
+        _c.close()
+        t3b = C.befehl("/handy")
+        pruefe("Telegram /handy: die Wiederholungen zählen mit (1 + 2 falsche Schlüssel + 1 falscher Host = 4 abgewiesene Versuche)", "⚠️ 4 abgewiesene Versuche" in t3b and k1 not in t3b, t3b)
         t4 = C.befehl("/handy erneuern")
         k2 = _FS.lesen(_dat)["schluessel"]
         pruefe("Telegram /handy erneuern: neuer Schlüssel, weder der alte noch der neue steht in der Antwort", k2 != k1 and k1 not in t4 and k2 not in t4 and "Neuer Schlüssel" in t4 and C.FERN.laeuft(), t4)
