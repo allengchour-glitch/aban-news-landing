@@ -1,0 +1,113 @@
+name: "Lager-Wächter (Verfügbares zuerst)"
+
+# Hält auf den Kategorieseiten die kaufbaren Produkte vorn und die ausverkauften hinten. Hintergrund: Die Ware aus dem Schweizer Lager
+# (Fortura) verkauft sich aus, ohne dass jemand es merkt (GEMESSEN 04.11.2026: in «kostueme-ch-lager» 555 von 1 521 aktiven Produkten
+# ausverkauft, in «blitzversand-schweiz» 718 von 2 371). Das Werkzeug stellt nur um (collectionReorderProducts), es versteckt und löscht nichts.
+# Skript und Regeln: automation/verfuegbar_zuerst.mjs, automation/lib/verfuegbar_rang.mjs. Doku: dropship/LAGER-WAECHTER-0411.md
+#
+# Zwei Stufen, bewusst getrennt (wie beim Google-Schaufenster):
+#   - Ohne Freigabedatei: nur LESEN (Trockenlauf), der Lauf zeigt in der Zusammenfassung, was umsortiert würde.
+#   - Mit Freigabedatei dropship/LAGER-WAECHTER-FREI.txt im Repo: sortiert im Zeitplan LIVE um. Datei löschen = Stopp.
+# Von Hand (workflow_dispatch) lässt sich jederzeit lesen oder, mit Freigabedatei, schreiben.
+#
+# Zugang: Repo-Secrets SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET. Zeitplan 05:17 UTC (06:17 Schweizer Winterzeit):
+# nicht neben dem Google-Schaufenster (04:41), dem Tages-Update und dem Auswahl-Lauf (21:50). Einmal täglich (Regel «Crons sparsam, max. 1x/Tag»).
+# Das Protokoll (dropship/kategorien_ledger.txt, «vorher=») bleibt im Lauf als Artefakt, es wird nicht ins Repo geschrieben.
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+    inputs:
+      schreiben:
+        description: 'Wirklich umsortieren (nur mit Freigabedatei dropship/LAGER-WAECHTER-FREI.txt); sonst nur lesen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lager-waechter
+  cancel-in-progress: false
+
+jobs:
+  waechter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/verfuegbar_zuerst.mjs
+            automation/lib/verfuegbar_rang.mjs
+            automation/lib/shopify_gql.mjs
+            automation/lib/shopify_secret.mjs
+            automation/lib/shopify_host.mjs
+            dropship/LAGER-WAECHTER-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        run: |
+          live=0
+          if [ -f dropship/LAGER-WAECHTER-FREI.txt ]; then
+            if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
+          fi
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          if [ "$live" = "1" ]; then echo "Modus: umsortieren (Freigabe liegt im Repo)"; else echo "Modus: nur lesen (Trockenlauf)"; fi
+
+      - name: Menü-Sammlungen prüfen und umsortieren
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live == '1' && '1' || '' }}
+          MENUE: '1'
+          SCHWELLE: '0.1'
+        run: |
+          mkdir -p dropship
+          node automation/verfuegbar_zuerst.mjs 2>&1 | tee lauf-menue.txt
+
+      - name: Lager- und Kostüm-Sammlungen ausserhalb des Menüs
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live == '1' && '1' || '' }}
+          HANDLES: 'ft-kostuem-accessoire,ft-kostuem-hut,spielzeug-ch-lager,blitzversand-schweiz,kostueme-ch-lager,kostueme-fasnacht'
+          SCHWELLE: '0.1'
+        run: node automation/verfuegbar_zuerst.mjs 2>&1 | tee lauf-lager.txt
+
+      - name: Zusammenfassung
+        if: always()
+        run: |
+          {
+            echo "## Lager-Wächter"
+            echo
+            if [ "${{ steps.modus.outputs.live }}" = "1" ]; then echo "Modus: **umsortiert** (Freigabedatei liegt im Repo)."; else echo "Modus: **nur gelesen** (keine Freigabedatei oder kein Schreibwunsch)."; fi
+            echo
+            echo '### Menü-Sammlungen'
+            echo '```'; tail -n 25 lauf-menue.txt 2>/dev/null || echo "(kein Lauf)"; echo '```'
+            echo '### Lager-/Kostüm-Sammlungen'
+            echo '```'; tail -n 25 lauf-lager.txt 2>/dev/null || echo "(kein Lauf)"; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Protokoll aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lager-waechter-protokoll
+          path: |
+            lauf-menue.txt
+            lauf-lager.txt
+            dropship/kategorien_ledger.txt
+          if-no-files-found: ignore
+          retention-days: 90
