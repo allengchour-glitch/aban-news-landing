@@ -1,5 +1,13 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 84: zweiter kontrollierter Katalogstapel
+
+[Live-Bericht](PRODUKTKATALOG-LIVE-20261104-R84.md) · [Maschinenlesbare Belege](PRODUKTKATALOG-LIVE-20261104-R84.json). Shopify LuxeStyle / `luxestyle.ch` / CHF und Metricool Brand `6227837` / `Europe/Zurich` samt sechs Kanalidentitäten wurden frisch passend gelesen. R84 änderte genau fünf Produkte seriell und las nach jedem Write Admin und öffentliche Seite vollständig zurück. Alle öffentlichen Gegenproben lieferten HTTP 200; keine Mutation meldete `userErrors`.
+
+Badeanzug 15448534122881 erhielt einen neutralen Auswahltext, den Leaf «Einteilige Badeanzüge», Produkttyp Damen-Bademode und verlor zwei falsche Jumpsuit-Tags. Katzenspielzeug 15454092558721 erhielt neutralen Text, den Leaf «Interaktives Spielzeug» und verlor nur den falschen Tag `hund`. Hopfenfilter 15509968880001 nennt keine unbelegten 304er-, 300-Mikron-, Sterilitäts- oder Sicherheitsclaims mehr. Kaffeemaschine 15493277024641 und Vakuumierer 15454415389057 wurden ausschliesslich vom falschen Produkttyp auf den bestehenden Typ «Küche & Bar» umgestellt; ihre offiziellen Leafs waren bereits korrekt.
+
+Status, Preise, Varianten-IDs, SKUs, Kaufbarkeit, Inventory-Policy, Tracking, Handles, Medien und `rueckhol-0907` blieben erhalten. Seifenspender 15483793244545 und Alkoholmeter 15512184586625 bleiben wegen Geräte-/Stromversorgungs- beziehungsweise technischer Quellenwidersprüche ohne Write blockiert. Der Fünferblock ist abgeschlossen; der Gesamtkatalog ist nicht fertig. Nächster sicherer Stapel: Nudelmaschine 15495105184129, Eisraspler 15448963645825 und Wandlampe 15454472012161 erst vollständig live lesen, dann nur klare minimale Diffs seriell umsetzen. Tageskennzahlen, Klaviyo und der beendete Kauf-Watch wurden nicht wiederholt. Alle 23 Aufgaben, Versand-/Kundendomäne und übrigen Grenzen bleiben erhalten; Claude-Kenntnisnahme unbekannt.
+
 ## Aktueller Stand – 04.11.2026, Revision 83: Freigabepaket und nächster P0-Quellenblock
 
 [Kompaktes Freigabepaket](ABENDPAKET-20261104-R83.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261104-R83.json) · [derselbe Projektor-Master](MASTER-CONTENT-20261104-R83.md). Shopify LuxeStyle/luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich samt sechs Kanalidentitäten wurden frisch passend gelesen. Das gleitende Planungsfenster enthält 31 Objekte/47 `PENDING`-Kanalzustände, keine exakten kanalgleichen Slot-/Text-/Mediendoppel und dieselben zwei leeren Facebook-/Instagram-Captions. Keine Termin-, Caption- oder Publikationsänderung. R77-Tageskennzahlen und Klaviyo wurden datiert wiederverwendet, nicht erneut abgefragt.
