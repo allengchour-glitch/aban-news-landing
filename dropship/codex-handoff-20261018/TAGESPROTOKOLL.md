@@ -873,6 +873,8 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R79 Produktfilm-Master | Projektor und kanonische Musik gegengeprüft; geplante Overlaygeometrie, Farbpaarkontrast und Lesedauer vermessen | CHF 34.90/ACTIVE/verfügbar; 540 Frames, 614/780 px, mindestens 1,6 s, 11,818:1; weiterhin Skript, keine Master-MP4 oder Rechteabnahme |
 | R79 Preisfilter / Verkaufsentwurf | 15 fehlerhafte Zusatzpagerlinks frisch bestätigt; genau fünf Liquid-Zeilen lokal vorbereitet und begrenzt validiert | Vorher/Nachher-Validator grün, Vorwärts-/Rückwärtspatch bytegenau; zur Freigabe, kein Theme-Write oder Livefix |
 | R79 Tagesgrenzen / Übergabe | R77-Klaviyo und Kennzahlen datiert wiederverwendet; zwei Aufgaben mit kompakten Belegen zur Fortschreibung vorbereitet | Keine neuen Reports, Kauf-Watch oder Automation; übrige 21 Aufgaben und Historien erhalten, Claude-Empfang unbekannt |
+| R80 Materialfrage | Exakte Katzenhängematte 16610153759111 in Shopify und öffentlicher Seite geprüft; historische Quellen und vorhandene CJ-Helfer abgeglichen | Holz und Stoff ohne Komponentenbeleg; historische Sperre BLOCKED_NEEDS_SOURCE bestätigt; kein bestätigtes Ersatzmaterial |
+| R80 Kategorie / Entwurf | Reisenäpfe sowie Google-Futterspender-Zuordnung bestätigt; engen Material-Entfernungsdiff dokumentiert | Freigabeentwurf, nicht angewendet; keine Shop-/Feed-/Themeänderung, keine neuen Reports oder Kauf-Watch-Abfrage |
 
 [LUXESTYLE_R73_20261104] [Endgültige Kategorie-Ergänzungen, bisheriges Banner erhalten](KATEGORIEN-ERGAENZUNGEN-20261104-R73.md). Keine Veröffentlichung oder Verkaufswirkung daraus abgeleitet.
 
