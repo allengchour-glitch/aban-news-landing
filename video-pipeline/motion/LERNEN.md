@@ -15,7 +15,7 @@ Das fertige Beispiel steht in `projekte/frieden/` («Wie eine friedliche Welt au
 3. **Szene in HTML/SVG bauen** (`szenen.html`). Zuerst Standbilder, dann Bewegung.
 4. **Vorschau:** `node render.mjs szene.html --vorschau 0,3,9,16 --outdir ausgabe/vorschau` (Sekunden, in Sekunden Standbilder). Ansehen, korrigieren, wiederholen. Das ist die eigentliche Arbeitsschleife.
 5. **Render:** `node render.mjs szene.html --out ausgabe/x.mp4` (stumm; ca. 2 Bilder/s, 35 s = rund 9 Minuten).
-6. **Ton:** `bash mix.sh ausgabe/x.mp4 ausgabe/x-ton.mp4` (rotierende Mixkit-Musik, −22 LUFS; optional `STIMME_DATEI=`).
+6. **Ton:** `bash mix.sh ausgabe/x.mp4 ausgabe/x-ton.mp4` (rotierende Mixkit-Musik, −22 LUFS). **Deutsche Stimme:** je Zeile «Sekunde TAB Text» in `stimme.txt` schreiben, `bash stimme.sh stimme.txt ausgabe/stimme.wav 35` (Piper, prüft, dass jede Zeile vor dem nächsten Einsatz fertig ist; `STIMME_TEMPO` 1.0–1.4), dann `STIMME_DATEI=ausgabe/stimme.wav STIMME_START=0 bash mix.sh …`. Die Musik duckt unter der Stimme. Sprechzeilen so schreiben, wie sie klingen sollen, und ca. 0,3 s nach dem Titel einsetzen lassen.
 7. **Abnahme:** Sicherzone, Lesbarkeit auf dem Handy (Bild verkleinert ansehen), Loop-Naht (erstes und letztes Bild), Ton.
 
 ## 3. Das Grundgesetz: Zeit gehört dem Renderer
@@ -65,5 +65,5 @@ M.fertig(35);   // Gesamtdauer melden, sonst bricht render.mjs ab
 
 ## 8. Was hier nicht belegt ist
 - Wie YouTube Reichweite für animierte Kurzvideos bewertet, und wie es mit massenproduzierten Clips umgeht: ungemessen.
-- Klang der Musik zum Thema: Hörabnahme fehlt (hier gibt es kein Gehör); die Stimme (Piper) ist hier nicht installiert und nicht getestet.
+- Klang der Musik zum Thema: Hörabnahme fehlt (hier gibt es kein Gehör); die Stimme (Piper, `de_DE-thorsten-high`) ist technisch geprüft (Dauer, Pegel, Einsätze), ob sie gut klingt und Wörter richtig betont, hat niemand von uns gehört. Bekannte kleine Schwäche des Beispiels: beim Übergang Tag → Goldlicht (ca. 26–29 s) wird der Himmel kurz grau.
 - Die Sicherheitszonen-Prozente sind eine vorsichtige Annahme, keine YouTube-Vorgabe.
