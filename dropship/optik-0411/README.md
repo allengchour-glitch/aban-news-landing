@@ -27,7 +27,23 @@ Ein weiterer Style-Block `lx-optik-0411-b` in `layout/theme.liquid` (+2 088 Byte
 | Lange Variantenlisten: 52 Farbwerte als Vollbreite-Knöpfe, rund 3 000 px | ab 13 Werten Knopf-Mindestbreite auf 8 rem gedeckelt: Haarbürste 52 Werte in 18 Zeilen, 1 153 px; Blumenkleid (4 Werte) unverändert. Der Vorschlag des Suchers (Raster mit 130 px) hätte kurze Grössenlisten ab 13 Werten verlängert und wurde verworfen |
 Rücknahme je Stufe: `STUFE=2 ZURUECK=1 LIVE=1 node dropship/optik-0411/apply.mjs` (zuerst Stufe 2, dann Stufe 1). Offline geprüft: Roundtrip beider Stufen byte-gleich.
 
-## Live nachgemessen (04.11. 13:37–13:50 UTC, Playwright, Chromium)
+## Stufe 3: was zusätzlich live ist (LIVE 04.11. ~15:45 UTC, `STUFE=3 LIVE=1 node dropship/optik-0411/apply.mjs`, Änderungen in `patches3.mjs`)
+Zwei Blöcke in `layout/theme.liquid` (+2 299 Byte, hinter dem Block von Stufe 2): `lx-optik-0411-c` (reines CSS) und `lx-optik-0411-c-etikett` (nur auf neun Seiten, per Liquid-Liste). Sicherung `sicherung/*.vor-stufe3`, Rücklesen GLEICH (Theme md5 `beb02fc4…`, CSS und Footer unverändert).
+| Fund | Wirkung (live gemessen, Chromium) |
+|---|---|
+| Warenkorb-Schublade: «Zur Kasse» nur zu 41 %, die Express-Zahlung zu 0 % im Bild (bei jedem Warenkorb, jeder Fenstergrösse), das Schliessen-Kreuz lag über dem Leistentext | «Zur Kasse» und Shop/PayPal/GPay zu 100 % sichtbar und oberstes Element: 1440×900 (y 762/824), 1366×680 (542/604), Handy 390×844 (714/776); die Gratisversand-Leiste steht im Fluss (116 px), das Kreuz im 56-px-Polster. Texte und Schwellen unverändert |
+| Warenkorb-Seite: Gratisversand-Leiste am Bildschirmrand statt im Seitenraster | Leiste bündig mit dem Seitentitel: x=40 (1440) bzw. x=16 (390) |
+| Überschriften gleicher Grösse teils Serif, teils Sans | einheitlich Serif (Stärke unberührt): «Ähnliche Produkte», «Das könnte dir auch gefallen», Schubladentitel «Warenkorb», «Unsere Bestseller» (404), «Selbst gestalten – Deine Design-Produkte» |
+| Internes Etikett «NO. 00X · …» über den Seitentiteln (Handy zweizeilig) | ausgeblendet auf neun Seiten (`versand-lieferung`, `garantie`, `ueber-uns`, `faq`, `rueckgabe`, `kontakt-support`, `tracking`, `pflegehinweise`, `groessenberatung`, auch `/fr`): live 0 von 9 sichtbar; **Impressum, Cookie-Richtlinie und Newsletter-Seite bewusst nicht in der Liste** (je 1 Etikett weiter sichtbar) |
+| «Selbst gestalten»: Materialkacheln abgeschnitten («Gerahmt · …») | Poster: 6 von 6 Kacheln nicht abgeschnitten (T-Shirt und Hoodie nicht einzeln nachgemessen) |
+Live nachgemessen: alle genannten Seiten HTTP 200, 0 «Liquid error», kein seitliches Scrollen (1440, 1366, 390). Konsole: nur `importScripts` des Shopify-Web-Pixels und einmal «Section … header_section not found» (nicht aus dieser Änderung). Rücknahme: `STUFE=3 ZURUECK=1 LIVE=1 node dropship/optik-0411/apply.mjs` (vor Stufe 2 und 1). Offline: Roundtrip byte-gleich, zweites Anwenden abgelehnt.
+
+**Nebenwirkung der Schublade (vom Prüfer gemessen):** bei sehr niedrigen Fenstern (unter rund 650 px Höhe) bekommt die Artikelliste weniger Platz und scrollt innen (1280×550: 11 von 125 px sichtbar); vorher war dort «Zur Kasse» gar nicht erreichbar. Hochformat-Handy und Desktop ab 650 px sind nicht betroffen.
+
+**Nicht eingebaut, bewusst:** Sprung der /cart-Leiste nach 2–3 s (Teil 2 des Prüfer-Fixes arbeitet mit festen Pixelhöhen, die an die heutigen Leistentexte gebunden sind), Straffung des Abstands unter dem Seitentitel (träfe auch Rechtstexte), Emoji vor Zwischentiteln (Texte, im Admin), Login-Seite von Shopify (nur im Admin unter Einstellungen → Branding), Kontrast des Primärbrauns (Geschmackssache, Markenfarbe).
+**Von den Suchern gemeldet, von keinem zweiten Prüfer nachgestellt, darum nicht eingebaut:** Cookie-Hinweis und Newsletter-Popup auf `/fr` deutsch (braucht Übersetzungen), Preise der Trends-Reihe bei Karten mit Sternen, Rahmen-Übergang beim Überfahren, doppeltes Suchfeld auf der Handy-Suchseite und auf der 404-Seite, Facette «kategorie» klein geschrieben, Überschriften im Beschreibungsbereich der Produktseite.
+
+## Live nachgemessen (Stufe 1, 04.11. 13:37–13:50 UTC, Playwright, Chromium)
 Rücklesen aller drei Dateien GLEICH (md5 `3bc2da31…` Theme, `91cd0d7a…` CSS, `41781248…` Footer); Startseite, `/fr`, Kategorie, Produkt HTTP 200, 0 «Liquid error», 0 Seitenfehler; kein seitliches Scrollen (1440 und 390); Handy-Schublade: Leiste `display:none`, CHF/DE treffbar; Popup: 42 s lang Cookie-Hinweis offen und Popup zu, nach «Nur notwendige» Popup erst nach +11 s; `pruefen_live.mjs` (Rotation) weiter GLEICH.
 
 ## Rücknahme
