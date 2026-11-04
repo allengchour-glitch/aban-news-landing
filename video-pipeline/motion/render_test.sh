@@ -91,6 +91,15 @@ if command -v piper >/dev/null 2>&1 && [ -s "$HOME/.local/share/luxe-stimmen/de_
 else
   echo "  --   Stimmen-Tests übersprungen (Piper oder Modell nicht installiert)"
 fi
+echo "== Erstes Bild (Loop)"
+node render.mjs projekte/vegan-pia/szenen.html --vorschau 0 --outdir "$tmp/e0" >/dev/null 2>&1
+node render.mjs projekte/vegan-pia/szenen.html --out "$tmp/e.mp4" --dauer 0.1 >/dev/null 2>&1
+ffmpeg -y -loglevel error -i "$tmp/e.mp4" -vf "select=eq(n\\,0)" -frames:v 1 "$tmp/e_erstes.png" 2>/dev/null
+abw="$(python3 -I -c 'import sys;from PIL import Image;import numpy as np
+a=np.array(Image.open(sys.argv[1]).convert("RGB")).astype(int);b=np.array(Image.open(sys.argv[2]).convert("RGB")).astype(int)
+print(round(float(np.abs(a-b).mean()),2))' "$tmp/e0/t00000.png" "$tmp/e_erstes.png" 2>/dev/null || echo 99)"
+check "erstes Videobild gleicht dem Standbild bei t=0 (mittlere Abweichung $abw, Grenze 3.5)" "$(awk -v x="$abw" 'BEGIN{print (x<3.5)?1:0}')"
+
 echo "== Markdown-Linter (wie die CI)"
 lint_ok=1; for f in *.md projekte/*/*.md; do python3 ../../tools/brand-voice-linter.py "$f" --strict >/dev/null 2>&1 || { lint_ok=0; echo "     Linter rot: $f"; }; done
 check "alle .md in video-pipeline/motion bestehen den Voice-Linter" "$lint_ok"

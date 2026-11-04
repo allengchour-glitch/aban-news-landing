@@ -63,7 +63,9 @@ const setzeZeit = (t) => page.evaluate((ms) => new Promise((fertig) => {
 }), Math.round(t * 1000));
 // Aufwärmen: der allererste Screenshot zeigte sonst noch den Stand aus den ersten Millisekunden nach dem Laden (vor dem Pausieren),
 // z. B. ein halb eingeblendetes erstes Bild. Einmal auf Zeit 0 stellen, ein Bild machen und verwerfen.
-await setzeZeit(0); await page.screenshot({ type: 'png' }); await setzeZeit(0);
+// Ein Sprung auf Zeit 0 allein löst keinen neuen Bildaufbau aus, wenn der Stand schon fast 0 ist: darum erst auf eine andere Zeit springen,
+// ein Bild verwerfen, dann zurück auf 0.
+await setzeZeit(1); await page.screenshot({ type: 'png' }); await setzeZeit(0); await page.screenshot({ type: 'png' }); await setzeZeit(0);
 const dauer = Number(a.dauer || (await page.evaluate('window.__duration')));
 
 if (a.vorschau) {
