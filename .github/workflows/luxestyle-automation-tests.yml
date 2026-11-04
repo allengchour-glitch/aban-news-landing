@@ -297,6 +297,8 @@ jobs:
           node automation/printful_tracking_test.mjs
           # Editor-Hintergründe ohne eingebranntes «Dein Design» (28.10.2026): Baustein lesen/umschreiben, Übersteuerungstabelle pod/editor-hintergruende.json, Sicherung dropship/pod-editor-sicherung-2810
           node automation/lib/pod_editor_bg_test.mjs
+          # Variantenbilder aus dem Printful-Katalog (04.11.2026): reine Planung, welche Variante welches Farb-/Materialbild bekommt
+          node automation/lib/pod_variantenbilder_test.mjs
       - name: Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)

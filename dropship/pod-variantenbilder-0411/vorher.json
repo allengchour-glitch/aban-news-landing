@@ -1,0 +1,968 @@
+{
+ "bio-jutebeutel-selbst-gestalten": {
+  "produkt": "gid://shopify/Product/15422819991937",
+  "zeit": "2026-11-04T06:32:16.981Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55777965539713",
+    "sku": "2069171_10458",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293124487",
+    "sku": "2069171_10457",
+    "bild": null,
+    "medien": []
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69681923522945",
+    "alt": "Bio-Jutebeutel blanko zum Selbstgestalten"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69711688040833",
+    "alt": "Bio-Jutebeutel – selbst gestalten, getragen"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657160071",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657192839",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657225607",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657258375",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657291143",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657323911",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto 6"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903673735",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto von Printful 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903706503",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto von Printful 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903739271",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto von Printful 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903772039",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto von Printful 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903804807",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto von Printful 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903837575",
+    "alt": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten – Beispielfoto von Printful 6"
+   }
+  ]
+ },
+ "shirt-zum-selbstgestalten": {
+  "produkt": "gid://shopify/Product/15427283157377",
+  "zeit": "2026-11-04T06:32:53.992Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55792263954817",
+    "sku": "9000001_4011",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55792263987585",
+    "sku": "9000001_4012",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55792264020353",
+    "sku": "9000001_4013",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55792264053121",
+    "sku": "9000001_4014",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55792264085889",
+    "sku": "9000001_4015",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951258497",
+    "sku": "9000001_4016",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951291265",
+    "sku": "9000001_4017",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951324033",
+    "sku": "9000001_4018",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951356801",
+    "sku": "9000001_4019",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951389569",
+    "sku": "9000001_4020",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951422337",
+    "sku": "9000001_4111",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951455105",
+    "sku": "9000001_4112",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951487873",
+    "sku": "9000001_4113",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951520641",
+    "sku": "9000001_4114",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55794951553409",
+    "sku": "9000001_4115",
+    "bild": null,
+    "medien": []
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69656871567745",
+    "alt": "Weißes Unisex-T-Shirt (Bella+Canvas 3001) – dein Motiv wird aufgedruckt"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69656945525121",
+    "alt": "Unisex-T-Shirt Schwarz – dein Motiv wird aufgedruckt"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69656945557889",
+    "alt": "Unisex-T-Shirt Navy – dein Motiv wird aufgedruckt"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663156615",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663189383",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663222151",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663254919",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663287687",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663320455",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 6"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663353223",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 7"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921663385991",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto 8"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921907343751",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto von Printful 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921907376519",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto von Printful 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921907409287",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto von Printful 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921907442055",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto von Printful 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921907474823",
+    "alt": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv – Beispielfoto von Printful 5"
+   }
+  ]
+ },
+ "poster-zum-selbstgestalten": {
+  "produkt": "gid://shopify/Product/15427182330241",
+  "zeit": "2026-11-04T06:33:08.371Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55791753298305",
+    "sku": "9000001_8948",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55791753331073",
+    "sku": "9000001_8952",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55791753363841",
+    "sku": "9000001_8954",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55791753396609",
+    "sku": "9000001_19516",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154043783",
+    "sku": "9000001_6875",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154076551",
+    "sku": "9000001_48863",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154109319",
+    "sku": "9000001_19526",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154174855",
+    "sku": "9000001_5",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154207623",
+    "sku": "9000001_19310",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154240391",
+    "sku": "9000001_19321",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154305927",
+    "sku": "9000001_9357",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154338695",
+    "sku": "9000001_19643",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154404231",
+    "sku": "9000001_10297",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154436999",
+    "sku": "9000001_10298",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154469767",
+    "sku": "9000001_19648",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154568071",
+    "sku": "9000001_11791",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154600839",
+    "sku": "9000001_11792",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814154633607",
+    "sku": "9000001_19653",
+    "bild": null,
+    "medien": []
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69681923916161",
+    "alt": "Poster im Rahmen blanko zum Selbstgestalten"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662271879",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662304647",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662337415",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662370183",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662402951",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662435719",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 6"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662468487",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 7"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921662501255",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto 8"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921905213831",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto von Printful 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921905246599",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto von Printful 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921905279367",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto von Printful 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921905312135",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto von Printful 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921905344903",
+    "alt": "Poster zum Selbstgestalten – Beispielfoto von Printful 5"
+   }
+  ]
+ },
+ "baumwolltasche-mit-langen-henkeln-selbst-gestalten": {
+  "produkt": "gid://shopify/Product/15422938382721",
+  "zeit": "2026-11-04T06:33:30.259Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55778317402497",
+    "sku": "3033370_49323",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293484935",
+    "sku": "3033370_49313",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293517703",
+    "sku": "3033370_49314",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293550471",
+    "sku": "3033370_49315",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293583239",
+    "sku": "3033370_49316",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293616007",
+    "sku": "3033370_49317",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293648775",
+    "sku": "3033370_49318",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293681543",
+    "sku": "3033370_49319",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293714311",
+    "sku": "3033370_49320",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293747079",
+    "sku": "3033370_49321",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293779847",
+    "sku": "3033370_49322",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67668293812615",
+    "sku": "3033370_49324",
+    "bild": null,
+    "medien": []
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69681923490177",
+    "alt": "Baumwolltasche blanko zum Selbstgestalten"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69711688204673",
+    "alt": "Baumwolltasche mit langen Henkeln – selbst gestalten, getragen"
+   }
+  ]
+ },
+ "klassisches-unisex-t-shirt-selbst-gestalten": {
+  "produkt": "gid://shopify/Product/15422857642369",
+  "zeit": "2026-11-04T06:33:53.259Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55778083996033",
+    "sku": "8481330_11576",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084028801",
+    "sku": "8481330_11577",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084061569",
+    "sku": "8481330_11578",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084094337",
+    "sku": "8481330_11579",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084127105",
+    "sku": "8481330_11580",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084159873",
+    "sku": "8481330_12650",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084192641",
+    "sku": "8481330_12651",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778084225409",
+    "sku": "8481330_12652",
+    "bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-classic-tee-white-back-6a270582a6fc6.jpg?v=1780942223",
+    "medien": [
+     "gid://shopify/MediaImage/69634683011457"
+    ]
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/77847325081991",
+    "alt": "Klassisches Unisex T-Shirt weiss – blanko, selbst gestalten – LuxeStyle"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634683011457",
+    "alt": "Product mockup"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903149447",
+    "alt": "Klassisches Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903182215",
+    "alt": "Klassisches Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903214983",
+    "alt": "Klassisches Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903247751",
+    "alt": "Klassisches Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903280519",
+    "alt": "Klassisches Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903313287",
+    "alt": "Klassisches Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 6"
+   }
+  ]
+ },
+ "unisex-hoodie-selbst-gestalten": {
+  "produkt": "gid://shopify/Product/15422815699329",
+  "zeit": "2026-11-04T06:34:06.344Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55777955643777",
+    "sku": "1726823_5426",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955676545",
+    "sku": "1726823_5427",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955709313",
+    "sku": "1726823_5428",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955742081",
+    "sku": "1726823_5429",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955774849",
+    "sku": "1726823_5430",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955807617",
+    "sku": "1726823_5431",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955840385",
+    "sku": "1726823_5432",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777955873153",
+    "sku": "1726823_5433",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157877639",
+    "sku": "1726823_20805",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157910407",
+    "sku": "1726823_20811",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157943175",
+    "sku": "1726823_20817",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157975943",
+    "sku": "1726823_20823",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814158008711",
+    "sku": "1726823_20830",
+    "bild": null,
+    "medien": []
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69681923785089",
+    "alt": "Unisex-Hoodie weiss blanko zum Selbstgestalten"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69711676637569",
+    "alt": "Unisex Hoodie – selbst gestalten, am Model getragen"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658208647",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658241415",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658274183",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658306951",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658339719",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658372487",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 6"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658405255",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 7"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921658438023",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto 8"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903444359",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto von Printful 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903477127",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto von Printful 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903509895",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto von Printful 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903542663",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto von Printful 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903575431",
+    "alt": "Unisex Hoodie – Selbst gestalten – Beispielfoto von Printful 5"
+   }
+  ]
+ },
+ "unisex-t-shirt-selbst-gestalten": {
+  "produkt": "gid://shopify/Product/15422811439489",
+  "zeit": "2026-11-04T06:34:18.738Z",
+  "varianten": [
+   {
+    "id": "gid://shopify/ProductVariant/55777948008833",
+    "sku": "5599797_9526",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948041601",
+    "sku": "5599797_4011",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948074369",
+    "sku": "5599797_4012",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948107137",
+    "sku": "5599797_4013",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948139905",
+    "sku": "5599797_4014",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948172673",
+    "sku": "5599797_4015",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948205441",
+    "sku": "5599797_5294",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948238209",
+    "sku": "5599797_5309",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55777948270977",
+    "sku": "5599797_12872",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156730759",
+    "sku": "5599797_53681",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156763527",
+    "sku": "5599797_11864",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156796295",
+    "sku": "5599797_11865",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156829063",
+    "sku": "5599797_11866",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156861831",
+    "sku": "5599797_11867",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156894599",
+    "sku": "5599797_11868",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156927367",
+    "sku": "5599797_17228",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156960135",
+    "sku": "5599797_17232",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814156992903",
+    "sku": "5599797_17235",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157091207",
+    "sku": "5599797_15124",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157123975",
+    "sku": "5599797_15125",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157156743",
+    "sku": "5599797_15126",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157189511",
+    "sku": "5599797_15127",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157222279",
+    "sku": "5599797_15128",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157255047",
+    "sku": "5599797_16335",
+    "bild": null,
+    "medien": []
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814157287815",
+    "sku": "5599797_17508",
+    "bild": null,
+    "medien": []
+   }
+  ],
+  "medien": [
+   {
+    "id": "gid://shopify/MediaImage/69643556716929",
+    "alt": "Unisex T-Shirt – selbst gestalten (blanko)"
+   },
+   {
+    "id": "gid://shopify/MediaImage/69711676604801",
+    "alt": "Unisex T-Shirt – selbst gestalten, am Model getragen"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921656865159",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921656897927",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921656930695",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921656963463",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921656996231",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 5"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657028999",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 6"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657061767",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 7"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921657094535",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto 8"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921902985607",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 1"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903018375",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 2"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903051143",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 3"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903083911",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 4"
+   },
+   {
+    "id": "gid://shopify/MediaImage/77921903116679",
+    "alt": "Unisex T-Shirt – Selbst gestalten – Beispielfoto von Printful 5"
+   }
+  ]
+ }
+}
