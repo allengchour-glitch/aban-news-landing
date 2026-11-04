@@ -1,0 +1,509 @@
+{
+ "bio-jutebeutel-selbst-gestalten": {
+  "zeit": "2026-11-04T06:32:27.558Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55777965539713",
+    "mediaId": "gid://shopify/MediaImage/77950637506951",
+    "label": "Oyster"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293124487",
+    "mediaId": "gid://shopify/MediaImage/77950637539719",
+    "label": "Schwarz"
+   }
+  ]
+ },
+ "shirt-zum-selbstgestalten": {
+  "zeit": "2026-11-04T06:33:07.175Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55792263954817",
+    "mediaId": "gid://shopify/MediaImage/77950653137287",
+    "label": "Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55792263987585",
+    "mediaId": "gid://shopify/MediaImage/77950653137287",
+    "label": "Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55792264020353",
+    "mediaId": "gid://shopify/MediaImage/77950653137287",
+    "label": "Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55792264053121",
+    "mediaId": "gid://shopify/MediaImage/77950653137287",
+    "label": "Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55792264085889",
+    "mediaId": "gid://shopify/MediaImage/77950653137287",
+    "label": "Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951258497",
+    "mediaId": "gid://shopify/MediaImage/77950653170055",
+    "label": "Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951291265",
+    "mediaId": "gid://shopify/MediaImage/77950653170055",
+    "label": "Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951324033",
+    "mediaId": "gid://shopify/MediaImage/77950653170055",
+    "label": "Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951356801",
+    "mediaId": "gid://shopify/MediaImage/77950653170055",
+    "label": "Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951389569",
+    "mediaId": "gid://shopify/MediaImage/77950653170055",
+    "label": "Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951422337",
+    "mediaId": "gid://shopify/MediaImage/77950653202823",
+    "label": "Marineblau"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951455105",
+    "mediaId": "gid://shopify/MediaImage/77950653202823",
+    "label": "Marineblau"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951487873",
+    "mediaId": "gid://shopify/MediaImage/77950653202823",
+    "label": "Marineblau"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951520641",
+    "mediaId": "gid://shopify/MediaImage/77950653202823",
+    "label": "Marineblau"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55794951553409",
+    "mediaId": "gid://shopify/MediaImage/77950653202823",
+    "label": "Marineblau"
+   }
+  ]
+ },
+ "poster-zum-selbstgestalten": {
+  "zeit": "2026-11-04T06:33:24.400Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55791753298305",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55791753331073",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55791753363841",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55791753396609",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154043783",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154076551",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154109319",
+    "mediaId": "gid://shopify/MediaImage/77950655660423",
+    "label": "Poster matt / Foto-Glanzpapier"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154174855",
+    "mediaId": "gid://shopify/MediaImage/77950655693191",
+    "label": "Leinwand"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154207623",
+    "mediaId": "gid://shopify/MediaImage/77950655693191",
+    "label": "Leinwand"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154240391",
+    "mediaId": "gid://shopify/MediaImage/77950655693191",
+    "label": "Leinwand"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154305927",
+    "mediaId": "gid://shopify/MediaImage/77950655725959",
+    "label": "Gerahmt · Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154338695",
+    "mediaId": "gid://shopify/MediaImage/77950655725959",
+    "label": "Gerahmt · Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154404231",
+    "mediaId": "gid://shopify/MediaImage/77950655758727",
+    "label": "Gerahmt · Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154436999",
+    "mediaId": "gid://shopify/MediaImage/77950655758727",
+    "label": "Gerahmt · Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154469767",
+    "mediaId": "gid://shopify/MediaImage/77950655758727",
+    "label": "Gerahmt · Weiss"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154568071",
+    "mediaId": "gid://shopify/MediaImage/77950655791495",
+    "label": "Gerahmt · Eiche"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154600839",
+    "mediaId": "gid://shopify/MediaImage/77950655791495",
+    "label": "Gerahmt · Eiche"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814154633607",
+    "mediaId": "gid://shopify/MediaImage/77950655791495",
+    "label": "Gerahmt · Eiche"
+   }
+  ]
+ },
+ "baumwolltasche-mit-langen-henkeln-selbst-gestalten": {
+  "zeit": "2026-11-04T06:33:52.567Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55778317402497",
+    "mediaId": "gid://shopify/MediaImage/77950656938375",
+    "label": "Natur"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293484935",
+    "mediaId": "gid://shopify/MediaImage/77950656971143",
+    "label": "Schwarz"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293517703",
+    "mediaId": "gid://shopify/MediaImage/77950657003911",
+    "label": "Flaschengrün"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293550471",
+    "mediaId": "gid://shopify/MediaImage/77950657036679",
+    "label": "Burgunderrot"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293583239",
+    "mediaId": "gid://shopify/MediaImage/77950657069447",
+    "label": "Rosa"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293616007",
+    "mediaId": "gid://shopify/MediaImage/77950657102215",
+    "label": "Rot"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293648775",
+    "mediaId": "gid://shopify/MediaImage/77950657134983",
+    "label": "Korallenrot"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293681543",
+    "mediaId": "gid://shopify/MediaImage/77950657167751",
+    "label": "Marineblau"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293714311",
+    "mediaId": "gid://shopify/MediaImage/77950657200519",
+    "label": "Hellgrau"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293747079",
+    "mediaId": "gid://shopify/MediaImage/77950657233287",
+    "label": "Mint"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293779847",
+    "mediaId": "gid://shopify/MediaImage/77950657266055",
+    "label": "Senfgelb"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67668293812615",
+    "mediaId": "gid://shopify/MediaImage/77950657298823",
+    "label": "Orange"
+   }
+  ]
+ },
+ "klassisches-unisex-t-shirt-selbst-gestalten": {
+  "zeit": "2026-11-04T06:34:04.368Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55778083996033",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084028801",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084061569",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084094337",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084127105",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084159873",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084192641",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55778084225409",
+    "mediaId": "gid://shopify/MediaImage/77950658216327",
+    "label": "Vorderansicht"
+   }
+  ]
+ },
+ "unisex-hoodie-selbst-gestalten": {
+  "zeit": "2026-11-04T06:34:18.236Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955643777",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955676545",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955709313",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955742081",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955774849",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955807617",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955840385",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777955873153",
+    "mediaId": "gid://shopify/MediaImage/77950658937223",
+    "label": "Sweatshirt (Rundhals)"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157877639",
+    "mediaId": "gid://shopify/MediaImage/77950658969991",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157910407",
+    "mediaId": "gid://shopify/MediaImage/77950658969991",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157943175",
+    "mediaId": "gid://shopify/MediaImage/77950658969991",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157975943",
+    "mediaId": "gid://shopify/MediaImage/77950658969991",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814158008711",
+    "mediaId": "gid://shopify/MediaImage/77950658969991",
+    "label": "Bio-Baumwolle"
+   }
+  ]
+ },
+ "unisex-t-shirt-selbst-gestalten": {
+  "zeit": "2026-11-04T06:34:32.942Z",
+  "fertig": true,
+  "gebunden": [
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948008833",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948041601",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948074369",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948107137",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948139905",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948172673",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948205441",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948238209",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/55777948270977",
+    "mediaId": "gid://shopify/MediaImage/77950659690887",
+    "label": "Ringgarn-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156730759",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156763527",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156796295",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156829063",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156861831",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156894599",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156927367",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156960135",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814156992903",
+    "mediaId": "gid://shopify/MediaImage/77950659723655",
+    "label": "Bio-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157091207",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157123975",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157156743",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157189511",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157222279",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157255047",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   },
+   {
+    "variantId": "gid://shopify/ProductVariant/67814157287815",
+    "mediaId": "gid://shopify/MediaImage/77950659756423",
+    "label": "Heavyweight-Baumwolle"
+   }
+  ]
+ }
+}
