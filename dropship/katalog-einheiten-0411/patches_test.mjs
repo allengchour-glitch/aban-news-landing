@@ -172,6 +172,7 @@ ok(!/noch nicht verknüpft/i.test(TEXTE.de.notice + TEXTE.de.shop_price_note), '
 // ---------- CSS ----------
 ok(neu[DATEIEN.CSS] === sich[DATEIEN.CSS].replace(/\s*$/, '\n') + CSS_NEU, 'CSS: Original plus angehängter Block');
 ok(neu[DATEIEN.CSS].includes('.lcl-design-cta') && neu[DATEIEN.CSS].includes('.lcl-not-orderable'), 'CSS: Klassen vorhanden');
+ok(neu[DATEIEN.CSS].includes('.lcl-design-switch:hover') && neu[DATEIEN.CSS].includes('border:1px solid #7a6a50'), 'CSS: Wechselknopf mit Hover und kräftigem Rand');
 
 // ---------- JS ----------
 {
@@ -188,16 +189,28 @@ ok(neu[DATEIEN.CSS].includes('.lcl-design-cta') && neu[DATEIEN.CSS].includes('.l
   ok(entfernt.some((l) => l.includes("t('shop_price_note')")), 'JS: Hinweis-Zeile');
   ok(jsNeu.trimEnd().endsWith(`/* ${MARKE} */`), 'JS: Marke am Ende');
   for (const s of ['displaySize', 'originalSize', 'presentation.set', 'sizesFor', 'sortSizes']) ok(jsNeu.includes(s), `JS: ${s} unverändert vorhanden`);
-  // joinSizeLabels aus dem neuen JS herauslösen und prüfen
-  const m = jsNeu.match(/const joinSizeLabels = (labels => \{[^\n]*\});\n/); ok(!!m, 'JS: joinSizeLabels gefunden');
+  // joinSizeLabels aus dem neuen JS herauslösen und prüfen (metricText ersetzt durch einen Platzhalter)
+  const m = jsNeu.match(/const joinSizeLabels = (\(labels, value\) => \{[^\n]*\});\n/); ok(!!m, 'JS: joinSizeLabels gefunden');
   if (m) {
-    const f = new Function('config', `return (${m[1]});`)({ locale: 'de-CH' });
-    gleich(f(['EU 44', 'EU 42', '10']), 'EU 42 / EU 44 / 10', 'joinSizeLabels: EU zuerst, numerisch');
-    gleich(f(['EU 37,5']), 'EU 37,5', 'joinSizeLabels: ein Etikett bleibt');
-    gleich(f([]), '', 'joinSizeLabels: leer');
-    gleich(f(['10', 'EU 44', 'EU 42 (ca.)']), 'EU 42 (ca.) / EU 44 / 10', 'joinSizeLabels: ca. und Rohwert');
-    gleich(f(['EU 36', 'EU 38']), 'EU 36 / EU 38', 'joinSizeLabels: zwei EU');
+    const f = new Function('config', 'metricText', `return (${m[1]});`)({ locale: 'de-CH' }, (v) => 'ROH:' + v);
+    gleich(f(['EU 44', 'EU 42', '10'], '10'), 'EU 42 / EU 44', 'Filter: EU zuerst, Rohwert ohne EU (Kindergrösse) entfällt');
+    gleich(f(['EU 37,5'], 'x'), 'EU 37,5', 'Filter: ein Etikett bleibt');
+    gleich(f([], '7'), 'ROH:7', 'Filter: leer fällt auf den bisherigen Rohwert zurück');
+    gleich(f(['10', 'EU 44', 'EU 42 (ca.)'], '10'), 'EU 42 (ca.) / EU 44', 'Filter: ca. bleibt sichtbar');
+    gleich(f(['EU 36', 'EU 38'], '5.5'), 'EU 36 / EU 38', 'Filter: zwei EU-Etiketten');
+    gleich(f(['443 ml', '444 ml'], '15 oz'), '443–444 ml', 'Filter: ml als Bereich');
+    gleich(f(['591 ml', '600 ml'], '20 oz'), '591–600 ml', 'Filter: ml als Bereich (20 oz)');
+    gleich(f(['255 g', '113 g'], '9oz'), '113–255 g', 'Filter: g als Bereich');
+    gleich(f(['1,5 ml', '2 ml'], 'x'), '1,5–2 ml', 'Filter: Dezimalkomma im Bereich');
+    gleich(f(['16 oz', '473 ml'], '16 oz'), 'ROH:16 oz', 'Filter: Mischung mit Rest-oz bleibt beim bisherigen Verhalten');
+    gleich(f(['355 ml', '12 g'], 'x'), 'ROH:x', 'Filter: verschiedene Einheiten bleiben beim bisherigen Verhalten');
+    gleich(f(['12,7 × 17,8 cm', '12,7 × 17,78 cm'], 'x'), 'ROH:x', 'Filter: cm-Beinahe-Doppelungen bleiben beim bisherigen Verhalten (Prüferfund)');
+    gleich(f(['Heart', 'Herz'], 'Heart'), 'ROH:Heart', 'Filter: Sprachmix bleibt beim bisherigen Verhalten (Prüferfund)');
   }
+  ok(jsNeu.includes('joinSizeLabels(labels,value)') && jsNeu.includes('joinSizeLabels(sizeLabels,sizeFilter.value)'), 'JS: beide Filterstellen benutzen den Helfer');
+  ok(jsNeu.includes('const switchBtn=') && (jsNeu.match(/switchBtn\(\)/g) || []).length === 2, 'JS: Wechselknopf in beiden Zweigen (nicht bestellbar und nicht lieferbar)');
+  ok(jsNeu.includes("c.focus()"), 'JS: nach dem Wechsel geht der Fokus auf den Knopf');
+  ok(jsNeu.includes('!known||!variants.length||data.requiresChoice'), 'JS: «kein Produkt» nur bei geladenen Details und eindeutigem Ergebnis (Prüferfund)');
   ok(jsNeu.includes("cta.dataset.lclDesignCta=''"), 'JS: Knopf trägt data-lcl-design-cta');
   ok(jsNeu.includes("offer.available===false"), 'JS: nicht lieferbare Angebote bekommen keinen Knopf');
 }
@@ -208,6 +221,9 @@ ok(neu[DATEIEN.CSS].includes('.lcl-design-cta') && neu[DATEIEN.CSS].includes('.l
   ok(nn.split(SPRUNG_SKRIPT).length === 2, 'buy-buttons: Sprung-Skript genau einmal');
   ok(nn.replace(SPRUNG_SKRIPT, '') === a, 'buy-buttons: ohne das Skript identisch mit dem Original');
   ok(!/\{%|\{\{/.test(SPRUNG_SKRIPT), 'Sprung-Skript enthält kein Liquid');
+  ok(SPRUNG_SKRIPT.includes("d.focus({ preventScroll: true })") && SPRUNG_SKRIPT.includes("'tabindex', '-1'"), 'Sprung-Skript setzt den Fokus auf den Editor (Tastatur, Screenreader)');
+  ok(SPRUNG_SKRIPT.includes('e.ctrlKey || e.metaKey || e.shiftKey') && SPRUNG_SKRIPT.includes('e.button'), 'Sprung-Skript lässt Strg/Cmd/Umschalt- und Mittelklick durch');
+  ok(SPRUNG_SKRIPT.includes('history.replaceState(history.state'), 'Sprung-Skript lässt history.state stehen');
   const i = nn.indexOf(MARKE), j = nn.indexOf('{% else %}', i); ok(i > 0 && j > i, 'Skript steht vor {% else %} (nur im Zweig lspod_designzwang)');
   const skript = SPRUNG_SKRIPT.replace(/<\/?script>/g, '');
   const dir = mkdtempSync(join(tmpdir(), 'lxsp-')); writeFileSync(join(dir, 's.js'), skript);

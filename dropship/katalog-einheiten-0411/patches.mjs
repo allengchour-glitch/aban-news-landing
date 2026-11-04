@@ -111,7 +111,9 @@ export const CSS_NEU = `
 .lcl-design-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin:2px 0 12px;padding:12px 16px;background:#2b261f;color:#fff!important;border:0;border-radius:6px;font-size:15px;font-weight:600;line-height:1.3;text-decoration:none}
 .lcl-design-cta:hover{background:#463d31}
 .lcl-design-cta:focus-visible{outline:2px solid #63584a;outline-offset:3px}
-.lcl-design-switch{display:block;width:100%;min-height:44px;margin-top:10px;padding:10px 14px;border:1px solid #bfae94;border-radius:6px;background:#fff;color:#30291f;font-size:14px}
+.lcl-design-switch{display:block;width:100%;min-height:44px;margin-top:10px;padding:10px 14px;border:1px solid #7a6a50;border-radius:6px;background:#fff;color:#30291f;font-size:14px;cursor:pointer}
+.lcl-design-switch:hover{background:#f3eee6}
+.lcl-design-switch:focus-visible{outline:2px solid #63584a;outline-offset:2px}
 .lcl-not-orderable{font-weight:600}
 `;
 function css(text) {
@@ -120,16 +122,16 @@ function css(text) {
 }
 
 // ---------- JS ----------
-const JS_FILTER_HELFER = `    const joinSizeLabels = labels => {const eu=labels.filter(x=>/^EU\\s/.test(x)), rest=labels.filter(x=>!/^EU\\s/.test(x)), cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});return labels.length<2?(labels[0]||''):[...eu.sort(cmp),...rest.sort(cmp)].join(' / ');};\n`;
+const JS_FILTER_HELFER = `    const joinSizeLabels = (labels, value) => {const u=[...new Set(labels)], cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});if(u.length===1)return u[0];const eu=u.filter(x=>/^EU\\s/.test(x));if(eu.length)return eu.sort(cmp).join(' / ');const m=u.map(x=>/^(\\d+(?:,\\d+)?) (ml|g)$/.exec(x));if(u.length&&m.every(Boolean)&&new Set(m.map(x=>x[2])).size===1){const n=m.map(x=>Number(x[1].replace(',','.'))).sort((p,q)=>p-q), f=v=>String(v).replace('.',',');return n[0]===n[n.length-1]?u[0]:f(n[0])+'–'+f(n[n.length-1])+' '+m[0][2];}return metricText(value);};\n`;
 function js(text) {
   if (text.includes(MARKE)) throw new Error('JS trägt die Marke schon');
   let t = text;
   // 1. Helfer für mehrere Grössenetiketten (vor titleForProduct, nach displaySize)
   t = einmal(t, `    const titleForProduct = product => {\n`, JS_FILTER_HELFER + `    const titleForProduct = product => {\n`, 'JS titleForProduct');
   // 2. Grössenfilter: alle Etiketten statt US-Rohwert
-  t = einmal(t, `return new Option(labels.length===1?labels[0]:metricText(value),value);`, `return new Option(labels.length?joinSizeLabels(labels):metricText(value),value);`, 'JS Filter-Option');
+  t = einmal(t, `return new Option(labels.length===1?labels[0]:metricText(value),value);`, `return new Option(joinSizeLabels(labels,value),value);`, 'JS Filter-Option');
   // 3. Filter-Chip: dasselbe
-  t = einmal(t, `sizeLabels.length===1?sizeLabels[0]:metricText(sizeFilter.value)`, `sizeLabels.length?joinSizeLabels(sizeLabels):metricText(sizeFilter.value)`, 'JS Filter-Chip');
+  t = einmal(t, `sizeLabels.length===1?sizeLabels[0]:metricText(sizeFilter.value)`, `joinSizeLabels(sizeLabels,sizeFilter.value)`, 'JS Filter-Chip');
   // 4. Knopf und ehrliche Anzeige im Preisfeld
   t = einmal(t,
     `      let priceChoiceVariant='',priceChoiceId='';\n      const renderPrice = () => {\n`,
@@ -137,7 +139,7 @@ function js(text) {
     'JS renderPrice-Kopf');
   t = einmal(t,
     `        if(offer){priceBox.append(el('p','lcl-retail-price',offer.priceFormatted));const link=el('a','lcl-shop-product-link',t('shop_product_link'));link.href=offer.url;priceBox.append(link);}else priceBox.append(el('p','lcl-price-pending',t(data.offers.length?'shop_price_ambiguous':'shop_price_unknown')));\n`,
-    `        if(offer){priceBox.append(el('p','lcl-retail-price',offer.priceFormatted));if(offer.available===false)priceBox.append(el('p','lcl-price-pending lcl-not-orderable',t('offer_unavailable')));else{const cta=el('a','lcl-button lcl-design-cta',t('design_cta'));cta.href=designUrl(offer.url);cta.dataset.lclDesignCta='';priceBox.append(cta);}const link=el('a','lcl-shop-product-link',t('shop_product_link'));link.href=offer.url;priceBox.append(link);}\n        else if(data.offers.length)priceBox.append(el('p','lcl-price-pending',t('shop_price_ambiguous')));\n        else{priceBox.append(el('p','lcl-price-pending lcl-not-orderable',t(orderableVariants.length?'variant_not_orderable':'not_orderable')));if(orderableVariants.length){const sw=button(t('switch_orderable'),()=>{referencePreview=false;selected=orderableVariants.find(v=>colorKey(v)===selectedColor)||orderableVariants[0];selectedColor=colorKey(selected);update();},'lcl-design-switch');priceBox.append(sw);}}\n`,
+    `        const switchBtn=()=>button(t('switch_orderable'),()=>{referencePreview=false;selected=orderableVariants.find(v=>colorKey(v)===selectedColor)||orderableVariants[0];selectedColor=colorKey(selected);update();const c=priceBox.querySelector('[data-lcl-design-cta]');if(c)c.focus();},'lcl-design-switch');\n        if(offer){priceBox.append(el('p','lcl-retail-price',offer.priceFormatted));if(offer.available===false){priceBox.append(el('p','lcl-price-pending lcl-not-orderable',t('offer_unavailable')));if(orderableVariants.length)priceBox.append(switchBtn());}else{const cta=el('a','lcl-button lcl-design-cta',t('design_cta'));cta.href=designUrl(offer.url);cta.dataset.lclDesignCta='';priceBox.append(cta);}const link=el('a','lcl-shop-product-link',t('shop_product_link'));link.href=offer.url;priceBox.append(link);}\n        else if(data.offers.length)priceBox.append(el('p','lcl-price-pending',t('shop_price_ambiguous')));\n        else if(!known||!variants.length||data.requiresChoice)priceBox.append(el('p','lcl-price-pending',t('shop_price_unknown')));\n        else{priceBox.append(el('p','lcl-price-pending lcl-not-orderable',t(orderableVariants.length?'variant_not_orderable':'not_orderable')));if(orderableVariants.length)priceBox.append(switchBtn());}\n`,
     'JS Preis-Zweig');
   t = einmal(t,
     `        priceBox.append(el('p','lcl-small',t('shop_price_note')));if(keepFocus && chooser)chooser.focus({preventScroll:true});`,
@@ -157,13 +159,20 @@ export const SPRUNG_SKRIPT = `
                   var y = d.getBoundingClientRect().top + window.scrollY - 100;
                   try { window.scrollTo({ top: y, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); }
                 };
-                var gehe = function () { ziel(); setTimeout(ziel, 150); setTimeout(ziel, 450); };
+                var fokus = function () {
+                  var d = document.getElementById('lspod-start');
+                  if (!d) return;
+                  if (!d.hasAttribute('tabindex')) { d.setAttribute('tabindex', '-1'); d.style.outline = 'none'; }
+                  try { d.focus({ preventScroll: true }); } catch (e) {}
+                };
+                var gehe = function () { ziel(); fokus(); setTimeout(ziel, 150); setTimeout(ziel, 450); };
                 if (location.hash === '#lspod-start') window.addEventListener('load', gehe);
                 document.addEventListener('click', function (e) {
+                  if (e.defaultPrevented || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
                   var a = e.target.closest && e.target.closest('a[href="#lspod-start"]');
                   if (!a) return;
                   e.preventDefault();
-                  try { history.replaceState(null, '', '#lspod-start'); } catch (x) {}
+                  try { history.replaceState(history.state, '', '#lspod-start'); } catch (x) {}
                   gehe();
                 });
               })();
