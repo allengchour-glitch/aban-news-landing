@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import ntpath
 import queue
 import os
 import re
@@ -401,6 +402,66 @@ def aufgabe_da(befehl=None, name=None):
         return None
     ok, _ = (befehl or _befehl)(["schtasks", "/query", "/tn", name or AUFGABE], 20)
     return ok
+
+
+def aufgabe_ziel(befehl=None, name=None, datei="krypto-auto.bat"):
+    """Der Pfad der Datei `datei`, die die Windows-Aufgabe (Standard: die tägliche) wirklich startet: aus `schtasks /query /tn <Name> /xml`
+    (<Command> und <Arguments>; die einfache und die XML-Variante schreiben ihn dorthin). None, wenn er sich nicht SICHER lesen lässt
+    (nicht Windows, Aufgabe fehlt, kein Laufwerks- oder Netzpfad zu `datei`). Nur lesen: die Aufgabe wird hier nie verändert."""
+    if os.name != "nt" and befehl is None:
+        return None
+    ok, text = (befehl or _befehl)(["schtasks", "/query", "/tn", name or AUFGABE, "/xml"], 10)  # kürzer als bei aufgabe_da: bleibt die Aufgabenplanung hängen, soll die Anzeige nicht lange warten
+    if not ok:
+        return None
+    import html
+    for teil in re.findall(r"<(?:Command|Arguments)>(.*?)</(?:Command|Arguments)>", text, re.S):
+        t = html.unescape(teil)
+        i = t.lower().rfind(datei.lower())
+        if i < 0:
+            continue
+        pfad = t[t.rfind('"', 0, i) + 1:i + len(datei)].strip()  # ein Pfad in Anführungszeichen beginnt hinter dem letzten davor, sonst am Anfang
+        if re.match(r"^(?:[A-Za-z]:[\\/]|\\\\)", pfad):
+            return pfad
+    return None
+
+
+def _winpfad(s):
+    """Vergleichsform eines Windows-Pfads: klein, nur Rückstriche, ohne «\\\\?\\». Zeichen ausserhalb von ASCII fallen weg: schtasks schreibt in der
+    Zeichentafel der Konsole, ein «ü» im Ordnernamen darf keinen falschen Alarm auslösen (ein echter Unterschied zeigt sich an den übrigen Zeichen)."""
+    s = ntpath.normcase(ntpath.normpath(str(s).strip().strip('"')))
+    if s.startswith("\\\\?\\"):
+        s = s[4:]
+    return "".join(c for c in s if ord(c) < 128)
+
+
+def _datei_da(pfad):
+    return os.path.exists(pfad)
+
+
+def _selbe_datei(a, b):
+    return os.path.samefile(a, b)
+
+
+def _soll_ziele():
+    """Die Dateien in DIESEM Ordner, auf die die beiden Aufgaben zeigen müssen: (täglicher Start, Starter der Nachkontrolle)."""
+    return HIER / "krypto-auto.bat", HIER / NK_STARTER
+
+
+def aufgabe_lage(ziel, soll, existiert=None, gleich=None):
+    """Zeigt die Aufgabe auf DIESE Kopie des Programms? ziel = Pfad aus der Aufgabe (oder None), soll = die Datei in diesem Ordner.
+    → None (nicht beurteilbar) | «gleich» | «anders» (eine andere Kopie, die Datei gibt es dort) | «weg» (die Datei gibt es nicht mehr).
+    Eine andere Schreibweise derselben Datei (8.3-Name, Verknüpfung) zählt als gleich."""
+    if not ziel:
+        return None
+    if _winpfad(ziel) == _winpfad(soll):
+        return "gleich"
+    existiert, gleich = existiert or _datei_da, gleich or _selbe_datei
+    try:
+        if existiert(ziel):
+            return "gleich" if existiert(soll) and gleich(ziel, soll) else "anders"
+    except OSError:
+        return None
+    return "weg" if str(ziel).isascii() else "anders"  # mit «ü» o. ä. kann die Ausgabe von schtasks verstümmelt sein: dann sagen wir nur «anders», nie «weg»
 
 
 HEIL_HINWEISE = {
@@ -896,8 +957,17 @@ def gesundheit(env, lb, ki, heute=None):
           else (f"letzte Einschätzung {alt_ki} Tage alt — Guthaben/Schlüssel prüfen" if letzte_ki else "noch keine Einschätzung")) + grund_ki)
     else:
         p("Claude (KI-Trader)", None, "nicht gesetzt (optional)")
-    p("Handy-Nachrichten", True if (env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID")) or env.get("KI_BOT_NTFY") else None,
-      "Telegram" if env.get("TELEGRAM_BOT_TOKEN") else "ntfy" if env.get("KI_BOT_NTFY") else "nicht eingerichtet (optional)")
+    tg_token, tg_chat, ntfy = bool(env.get("TELEGRAM_BOT_TOKEN")), bool(env.get("TELEGRAM_CHAT_ID")), bool(env.get("KI_BOT_NTFY"))
+    if tg_token and tg_chat:
+        p("Handy-Nachrichten", True, "Telegram" + (" und ntfy" if ntfy else ""))
+    elif ntfy:
+        p("Handy-Nachrichten", True, "ntfy" + (f" (Telegram ist nur halb eingerichtet: {'Chat-Nummer' if tg_token else 'Token'} fehlt, telegram-einrichten.bat nochmals starten)" if tg_token or tg_chat else ""))
+    elif tg_token or tg_chat:  # z. B. der Einrichter brach nach dem Token ab: der Token allein schickt und empfängt nichts
+        p("Handy-Nachrichten", None, f"Telegram ist nur halb eingerichtet: {'Chat-Nummer' if tg_token else 'Token'} fehlt — telegram-einrichten.bat nochmals doppelklicken (2 Minuten)", warnung=True)
+    elif echt_f:
+        p("Handy-Nachrichten", False, "nicht eingerichtet — mit ECHTEM Geld ohne Handy-Nachricht nicht erlaubt: telegram-einrichten.bat doppelklicken (2 Minuten)")
+    else:
+        p("Handy-Nachrichten", None, "nicht eingerichtet (optional): telegram-einrichten.bat doppelklicken, 2 Minuten, dann kommen Meldungen und /uebersicht aufs Handy")
     letzte = max((e.get("stand", "") for e in lb.get("entscheide", [])), default="")
     if letzte:
         alt = (heute - datetime.fromisoformat(letzte).date()).days
@@ -937,16 +1007,35 @@ def gesundheit(env, lb, ki, heute=None):
     p("Auto-Handel", not PAUSE.exists(), "an" if not PAUSE.exists() else "aus (Pause) — es wird nicht gehandelt, Positionen bleiben")
     if os.name == "nt":
         if time.time() - _AUFGABE_CACHE["zeit"] > 300:
-            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": aufgabe_da(), "wert_nk": aufgabe_da(name=AUFGABE_NK)})
+            _w, _wn = aufgabe_da(), aufgabe_da(name=AUFGABE_NK)
+            _AUFGABE_CACHE.update({"zeit": time.time(), "wert": _w, "wert_nk": _wn,
+                                   "ziel": aufgabe_ziel() if _w else None, "ziel_nk": aufgabe_ziel(name=AUFGABE_NK, datei=NK_STARTER) if _wn else None})
         da = _AUFGABE_CACHE["wert"]
-        p("Täglicher Start (Aufgabenplanung)", da, "eingerichtet (02:30)" if da else "fehlt — Knopf «Täglich automatisch einrichten»")
+        # Zeigt die Aufgabe auf DIESE Kopie? Nach dem Entpacken in einen NEUEN Ordner liefe der Pilot sonst still mit der alten, nicht aktualisierten Kopie weiter (nur Warnung, nichts wird umgebogen)
+        soll_bat, soll_vbs = _soll_ziele()
+        lage = aufgabe_lage(_AUFGABE_CACHE.get("ziel"), soll_bat) if da else None
+        if lage == "anders":
+            p("Täglicher Start (Aufgabenplanung)", None, f"eingerichtet (02:30), startet krypto-auto.bat aber aus einem ANDEREN Ordner: {ntpath.dirname(_AUFGABE_CACHE['ziel'])} — dieses Cockpit läuft in {ntpath.dirname(str(soll_bat))}. "
+              "Die Aufgabe nutzt sonst die alte Kopie. Soll dieser Ordner gelten: Knopf «Täglich automatisch einrichten» stellt sie um; sonst das Cockpit aus dem Ordner der Aufgabe öffnen.", warnung=True)
+        elif lage == "weg":
+            p("Täglicher Start (Aufgabenplanung)", False, f"eingerichtet, zeigt aber auf {_AUFGABE_CACHE['ziel']}: diese Datei gibt es nicht mehr (Ordner verschoben oder gelöscht?) — der tägliche Lauf kann so nicht starten. "
+              "Knopf «Täglich automatisch einrichten» legt die Aufgabe für diesen Ordner neu an.")
+        else:
+            p("Täglicher Start (Aufgabenplanung)", da, "eingerichtet (02:30)" if da else "fehlt — Knopf «Täglich automatisch einrichten»")
         da_nk = _AUFGABE_CACHE.get("wert_nk")  # (17. Prüfung W4) ohne sie läuft die Nachkontrolle nur hinter dem Tageslauf — stirbt der mit dem Prozess, bleibt ein Markt bis morgen ohne Stop
+        lage_nk = aufgabe_lage(_AUFGABE_CACHE.get("ziel_nk"), soll_vbs) if da_nk else None
         # Der Starter läuft UNSICHTBAR (kein Konsolenfenster alle 10 Minuten) — ein stiller Ausfall (Windows Script Host gesperrt, Virenscanner, falscher Pfad) wäre sonst nicht zu sehen: das Lebenszeichen zeigt es
         try:
             minuten_nk = (time.time() - (DATA / NK_LEBT).stat().st_mtime) / 60
         except OSError:
             minuten_nk = None
-        if not da_nk:
+        if lage_nk == "anders":
+            p("Nachkontrolle (Aufgabenplanung)", None, f"eingerichtet, startet den unsichtbaren Starter aber aus einem ANDEREN Ordner: {ntpath.dirname(_AUFGABE_CACHE['ziel_nk'])} — dieses Cockpit läuft in {ntpath.dirname(str(soll_vbs))}. "
+              "Das Lebenszeichen hier stammt dann nicht von ihr. Knopf «Täglich automatisch einrichten» stellt auch die Nachkontrolle auf diesen Ordner um.", warnung=True)
+        elif lage_nk == "weg":
+            p("Nachkontrolle (Aufgabenplanung)", False, f"eingerichtet, zeigt aber auf {_AUFGABE_CACHE['ziel_nk']}: diese Datei gibt es nicht mehr — die Nachkontrolle kann so nicht laufen. "
+              "Knopf «Täglich automatisch einrichten» legt sie für diesen Ordner neu an.")
+        elif not da_nk:
             p("Nachkontrolle (Aufgabenplanung)", da_nk, "fehlt — Knopf «Täglich automatisch einrichten» legt sie mit an")
         elif minuten_nk is None:
             p("Nachkontrolle (Aufgabenplanung)", None, "eingerichtet (alle 10 Minuten), noch kein Lauf gesehen — bis zu 10 Minuten warten, dann sollte hier ein Lebenszeichen stehen")

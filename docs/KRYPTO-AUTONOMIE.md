@@ -79,17 +79,17 @@ Der Besitzer will das Cockpit auf dem Handy: Telegram als Handy-Weg und eine nur
 ## Backlog (nur Grün; Selbstheilung und Check zuerst)
 1. ✅ Cockpit-Ampel nennt den Grund eines gescheiterten Auftrags (03.11.2026).
 2. ✅ Knopf «Alles prüfen & reparieren» und Check «Risiko-Stufe» (03.11.2026).
-3. Check «PC-Uhr geht richtig» (gegen die Binance-Serverzeit, nur lesen): falsche Uhr = abgelehnte Aufträge.
+3. ✖ Check «PC-Uhr geht richtig» entfällt (04.11.2026): `broker_futures.Futures._zeit` gleicht die Uhr bei jedem Lauf mit `/fapi/v1/time` ab und signiert mit `recvWindow` 10 s; eine falsche PC-Uhr lässt Aufträge also nicht scheitern, die Zeile wäre Lärm.
 4. Check «Schlüssel gültig» (Konto lesbar, Auszahlungsrecht aus), nur lesen.
-5. Handy-Alarm: Anleitung für ntfy (kostenlos, ohne Konto) direkt in der Ampel; mit echtem Geld und ohne Handy-Alarm = rot.
+5. ✅ Handy-Alarm in der Ampel (04.11.2026): die Zeile «Handy-Nachrichten» erkennt Telegram (Token UND Chat-Nummer), ntfy, ein nur halb eingerichtetes Telegram (graue Warnung mit dem fehlenden Teil) und nichts (im Testnetz optional, mit echtem Geld rot); sie verweist auf `telegram-einrichten.bat`.
 6. Wochenbericht meldet zusätzlich Lücken im Schattenkonto (fehlende Tage) und den CI-Stand von `main`.
 7. ✅ Neue Version kommt von selbst (Auto-Update, 03.11.2026), nur mit Spielgeld; der Hinweis «neue Programmversion installiert» steht im Cockpit.
 8. Spielgeld-Turnier der Risiko-Stufen 1,5× / 1,75× / 2× im Schattenkonto (nur messen, **keine** automatische Stufenwahl; neue Reihen ab Einführungstag).
 9. Dashboard «Pilot 2.0 Prüfstand» (Claude-Artefakt) mit den Zahlen des Wochenberichts nachführen.
 10. Das Release-Telegram nennt, ob Handels- oder Schutzdateien (`pilot*.py`, `broker_*.py`, `sperre.py`, `*.bat`) gegenüber dem letzten Paket geändert sind (nur Hinweis, keine Sperre).
 11. `autoupdate.py --erholen` ganz vorn in `krypto-auto.bat`: heute heilt ein Absturz mitten im Tausch erst am Ende des nächsten Tageslaufs (der Selbsttest am Anfang würde den halben Stand sehen und den Handel für diesen Tag auslassen). Gelb, weil es die Start-Datei des Piloten berührt.
-12. Handy-Alarm ohne Zutun: Anleitung für ntfy direkt in der Ampel (Backlog 5), damit die Meldungen von «Pflege» den User sicher erreichen.
-13. Ampel-Warnung, wenn die Windows-Aufgabe «Krypto-Pilot» auf einen ANDEREN Ordner zeigt als den, in dem das Cockpit läuft (zweite Kopie nach dem Entpacken: die Aufgabe liefe dann weiter mit der alten, nicht aktualisierten Kopie). Nur Warnung, nichts umbiegen.
+12. ✅ Handy-Alarm ohne Zutun: mit Punkt 5 erledigt (Telegram statt ntfy als Standardweg, Einrichter `telegram-einrichten.bat`).
+13. ✅ Ampel-Warnung, wenn eine Windows-Aufgabe («Krypto-Pilot», «Krypto-Pilot-Nachkontrolle») auf einen ANDEREN Ordner zeigt als den, in dem das Cockpit läuft (04.11.2026): `aufgabe_ziel()` liest den Pfad aus `schtasks /query /tn … /xml`, `aufgabe_lage()` urteilt gleich / anders (graue Warnung) / weg (rot, Zieldatei gibt es nicht mehr); verstümmelte Zeichen (ü) lösen nie einen falschen Alarm aus, Windows-Aufgaben werden nie umgebogen und die Selbstheilung legt sie dafür nicht neu an (kein Wort «fehlt» in den Texten). Behebung: Knopf «Täglich automatisch einrichten».
 
 ## Was nicht automatisch geht
 - Die Cloud sieht den PC nicht (kein Zugriff, keine Schlüssel). Ob ein Update dort ankam, steht nur in der Ampel und im Handy-Alarm des PCs. Mit echtem Geld macht der Auto-Update nichts: dort bleibt jede Änderung ein Klick des Users. (Bis 03.11.2026 galt das für alle Fälle; der User hat es für Spielgeld ausdrücklich anders gewollt.)
