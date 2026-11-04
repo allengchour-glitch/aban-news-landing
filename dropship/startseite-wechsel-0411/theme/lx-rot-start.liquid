@@ -1,0 +1,7 @@
+{%- comment -%}Start des Fensters im Pool für die wechselnden Startseiten-Reihen (04.11.2026). Parameter: slot (Zeitfenster-Nummer), n (Poolgrösse, höchstens 50), win (Fenstergrösse).
+Rechnung wie fensterStart() in automation/lib/startseite_pool.mjs: M = max(n - win, 0) + 1; Schritt = erste Zahl aus 7, 5, 3, durch die M nicht teilbar ist (sonst 1); Start = (slot * Schritt) mod M.{%- endcomment -%}
+{%- assign m = n | minus: win | at_least: 0 | plus: 1 -%}
+{%- assign step = 7 -%}
+{%- assign chk = m | modulo: 7 -%}
+{%- if chk == 0 -%}{%- assign step = 5 -%}{%- assign chk = m | modulo: 5 -%}{%- if chk == 0 -%}{%- assign step = 3 -%}{%- assign chk = m | modulo: 3 -%}{%- if chk == 0 -%}{%- assign step = 1 -%}{%- endif -%}{%- endif -%}{%- endif -%}
+{{- slot | times: step | modulo: m -}}
