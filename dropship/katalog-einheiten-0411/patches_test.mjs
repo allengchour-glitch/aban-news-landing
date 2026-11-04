@@ -329,7 +329,7 @@ wirft(() => anwenden({ ...sich, [DATEIEN.BUY]: sich[DATEIEN.BUY].replace('else s
   gleich(de.offer_unavailable, 'Diese Ausführung ist derzeit nicht lieferbar.', 'Text de offer_unavailable');
   gleich(de.shop_price_note, 'Gestaltet und bestellt wird auf der Produktseite im Shop.', 'Text de shop_price_note');
   ok(/Europa-Tabelle/.test(de.notice) && /«Jetzt selbst gestalten»/.test(de.notice) && !/Gestaltung und Bestellung sind hier noch nicht verknüpft/.test(de.notice), 'Text de notice: Europa-Tabelle, Knopfname, alter Satz weg');
-  ok(/European size chart/.test(en.notice) && /«Design it yourself now»/.test(en.notice), 'Text en notice: englisch, Knopfname');
+  ok(/European chart/.test(en.notice) && /«Design it yourself now»/.test(en.notice), 'Text en notice: englisch, Knopfname');
   for (const k of ['design_cta', 'not_orderable', 'variant_not_orderable', 'switch_orderable', 'offer_unavailable']) ok(typeof en[k] === 'string' && /^[A-Z]/.test(en[k]) && !/[äöüÄÖÜ]|\b(noch|nicht|Ausführung|Jetzt)\b/.test(en[k]), `Text en ${k}: englisch`);
   // Filterhelfer: Duplikate
   const m = neu[DATEIEN.JS].match(/const joinSizeLabels = (\(labels, value\) => \{[^\n]*\});\n/);
@@ -338,6 +338,9 @@ wirft(() => anwenden({ ...sich, [DATEIEN.BUY]: sich[DATEIEN.BUY].replace('else s
   gleich(f(['EU 44', 'EU 42', 'EU 44'], 'x'), 'EU 42 / EU 44', 'Filter: Duplikate neben anderen Etiketten');
   gleich(f(['444 ml', '444 ml'], 'x'), '444 ml', 'Filter: gleiche ml-Etiketten bleiben ein Etikett');
   // Kaufbox: Bestellbarkeit zählt nur lieferbare Angebote, im Wechselknopf wird die erste bestellbare Ausführung gewählt
+  ok(neu[DATEIEN.JS].includes("if(offer&&offer.available!==false)priceBox.append(el('p','lcl-small',t('shop_price_note')))"), 'JS: «Gestaltet und bestellt …» nur, wenn der Knopf steht (nicht bei nicht lieferbaren Ausführungen)');
+  ok(/\.lcl-filters select\{text-overflow:ellipsis/.test(CSS_NEU), 'CSS: Grössenfilter kürzt lange Etiketten mit Auslassungszeichen');
+  ok(de.notice.length <= 250 && en.notice.length <= 250, `Hinweis im festen Kopf bleibt kurz (de ${de.notice.length}, en ${en.notice.length} Zeichen)`);
   ok(neu[DATEIEN.JS].includes('const orderableVariants=variants.filter(v=>offersFor(v).offers.some(o=>o.available!==false));'), 'JS: bestellbar = mindestens ein Angebot mit available !== false');
   ok(neu[DATEIEN.JS].includes('orderableVariants.find(v=>colorKey(v)===selectedColor)||orderableVariants[0]'), 'JS: Wechsel wählt die bestellbare Ausführung der gleichen Farbe, sonst die erste');
 }

@@ -1,13 +1,13 @@
 {
  "hinweis": "Soll-Stand der sieben Theme-Dateien (MD5 von anwenden() auf der Sicherung mit daten/etiketten.json). Gleich der Nachbildung, die im Browser geprüft wurde (Playwright, 1440 und 390 px, 04.11.2026). Nur ändern, nachdem der Browsertest am neuen Stand wiederholt wurde.",
- "geprueft": "2026-11-04",
+ "geprueft": "2026-11-04 (nach den Funden des Browser-Prüfers: Hinweis nur mit Knopf, kürzerer Hinweistext, Auslassungszeichen im Grössenfilter)",
  "md5": {
-  "assets/luxe-clothing.js": "67a5c3c9642aa4713ed395f6699cac62",
-  "assets/luxe-clothing.css": "e31f954b130e2c60567224b47f4eaad7",
+  "assets/luxe-clothing.js": "198328a67066f91ac776e7953d33f07b",
+  "assets/luxe-clothing.css": "feba50324b9f59bf07216b2d46ffdbb5",
   "assets/luxe-clothing-reference-gallery.json": "4bf382c81c93e088a3ed89bf5a83a305",
   "sections/luxe-clothing.liquid": "71c1406cf5d069e0a23b535d629f1bde",
-  "locales/de.json": "c429cd87aa765edd306ff3faf9c5e280",
-  "locales/en.default.json": "9f9d3c1c5da4463bd87b635a15012f25",
+  "locales/de.json": "74704b4a7583a70276bda37f2b5fed6a",
+  "locales/en.default.json": "75522c426fe29e23479bbc3e35bffa77",
   "blocks/buy-buttons.liquid": "c15e3c9ef315b626e0e9cb6b05778508"
  }
 }

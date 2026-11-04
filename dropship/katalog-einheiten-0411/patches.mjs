@@ -38,7 +38,7 @@ const einmal = (text, anker, ersatz, name) => {
 // ---------- Texte ----------
 export const TEXTE = {
   de: {
-    notice: 'Produktkatalog zur Auswahl. Modelle mit dem Knopf «Jetzt selbst gestalten» lassen sich im Shop gestalten und bestellen; alle anderen sind noch nicht bestellbar. Preise zeigen wir nur, wo es ein Shopprodukt gibt. Schuhgrössen stehen in der Europa-Tabelle des Herstellers, Werte mit «ca.» können leicht abweichen.',
+    notice: 'Produktkatalog zur Auswahl. Modelle mit dem Knopf «Jetzt selbst gestalten» lassen sich im Shop gestalten und bestellen, alle anderen noch nicht. Preise nur, wo es ein Shopprodukt gibt. Schuhgrössen: Europa-Tabelle des Herstellers, «ca.» = ungefähr.',
     shop_price_note: 'Gestaltet und bestellt wird auf der Produktseite im Shop.',
     design_cta: 'Jetzt selbst gestalten',
     not_orderable: 'Noch nicht bestellbar: Für dieses Modell gibt es bei LuxeStyle noch kein Produkt zum Selbstgestalten.',
@@ -47,7 +47,7 @@ export const TEXTE = {
     offer_unavailable: 'Diese Ausführung ist derzeit nicht lieferbar.',
   },
   en: {
-    notice: 'Product catalogue. Models with the «Design it yourself now» button can be designed and ordered in the shop; all others cannot be ordered yet. Prices are shown only where a shop product exists. Shoe sizes follow the manufacturer\'s European size chart; values marked «ca.» may differ slightly.',
+    notice: 'Product catalogue. Models with the «Design it yourself now» button can be designed and ordered in the shop, all others not yet. Prices are shown only where a shop product exists. Shoe sizes: manufacturer\'s European chart, «ca.» means approximately.',
     shop_price_note: 'You design and order on the product page in the shop.',
     design_cta: 'Design it yourself now',
     not_orderable: 'Not available to order yet: LuxeStyle does not offer this model for custom design yet.',
@@ -114,6 +114,7 @@ export const CSS_NEU = `
 .lcl-design-switch:hover{background:#f3eee6}
 .lcl-design-switch:focus-visible{outline:2px solid #63584a;outline-offset:2px}
 .lcl-not-orderable{font-weight:600}
+.lcl-filters select{text-overflow:ellipsis;white-space:nowrap}
 `;
 function css(text) {
   if (text.includes(MARKE)) throw new Error('CSS trägt die Marke schon');
@@ -142,7 +143,7 @@ function js(text) {
     'JS Preis-Zweig');
   t = einmal(t,
     `        priceBox.append(el('p','lcl-small',t('shop_price_note')));if(keepFocus && chooser)chooser.focus({preventScroll:true});`,
-    `        if(offer)priceBox.append(el('p','lcl-small',t('shop_price_note')));if(keepFocus && chooser)chooser.focus({preventScroll:true});`,
+    `        if(offer&&offer.available!==false)priceBox.append(el('p','lcl-small',t('shop_price_note')));if(keepFocus && chooser)chooser.focus({preventScroll:true});`,
     'JS shop_price_note');
   return t.replace(/\s*$/, '\n') + `/* ${MARKE} */\n`;
 }
