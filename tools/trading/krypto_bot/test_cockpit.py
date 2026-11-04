@@ -656,6 +656,180 @@ with tempfile.TemporaryDirectory() as tmp:
                and g2["Handy-Nachrichten"]["text"] == "ntfy", g2)
         pruefe("Gesundheit: Schlüssel selbst nie in der Anzeige", '"s"' not in json.dumps(g2) and "KEY" not in json.dumps(C.stand(env={"BINANCE_FUTURES_API_KEY": "KEY-XYZ"})["gesundheit"]))
 
+        # ── Ampel «Handy-Nachrichten» (Backlog 5/12): Telegram voll / nur ntfy / Telegram nur halb / nichts / echtes Geld ──
+        def hn21(env_):
+            return {x["name"]: x for x in C.gesundheit(env_, {"entscheide": []}, {}, heute)}["Handy-Nachrichten"]
+        z21 = hn21({"TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "1"})
+        pruefe("Handy-Nachrichten: Token UND Chat-Nummer → grün «Telegram»", z21["ok"] is True and z21["text"] == "Telegram" and "warnung" not in z21, z21)
+        z21 = hn21({"TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "1", "KI_BOT_NTFY": "n"})
+        pruefe("Handy-Nachrichten: Telegram und ntfy → grün, beide genannt", z21["ok"] is True and z21["text"] == "Telegram und ntfy", z21)
+        z21 = hn21({"KI_BOT_NTFY": "n"})
+        pruefe("Handy-Nachrichten: nur ntfy → grün «ntfy» (wie bisher)", z21["ok"] is True and z21["text"] == "ntfy" and "warnung" not in z21, z21)
+        for fall21, env21, fehlt21 in (("nur der Token", {"TELEGRAM_BOT_TOKEN": "t-geheim-123"}, "Chat-Nummer"), ("nur die Chat-Nummer", {"TELEGRAM_CHAT_ID": "1"}, "Token")):
+            z21 = hn21(env21)
+            pruefe(f"Handy-Nachrichten: Telegram nur halb eingerichtet ({fall21}) → graue WARNUNG, nennt den fehlenden Teil und telegram-einrichten.bat",
+                   z21["ok"] is None and z21.get("warnung") is True and "nur halb eingerichtet" in z21["text"] and f"{fehlt21} fehlt" in z21["text"] and "telegram-einrichten.bat" in z21["text"], z21)
+            z21n = hn21({**env21, "KI_BOT_NTFY": "n"})
+            pruefe(f"Handy-Nachrichten: Telegram halb ({fall21}), aber ntfy da → grün, der Hinweis steht trotzdem dabei", z21n["ok"] is True and "nur halb eingerichtet" in z21n["text"] and "warnung" not in z21n, z21n)
+            pruefe(f"Handy-Nachrichten: der Token steht nie in der Zeile ({fall21})", "t-geheim-123" not in json.dumps(z21) + json.dumps(z21n))
+        z21 = hn21({})
+        pruefe("Handy-Nachrichten: nichts eingerichtet (Testnetz) → grau ohne Warnung, nennt telegram-einrichten.bat und «optional»",
+               z21["ok"] is None and "warnung" not in z21 and "telegram-einrichten.bat" in z21["text"] and "optional" in z21["text"], z21)
+        echt21 = {"BINANCE_FUTURES_TESTNET": "false", "KI_BOT_ECHTGELD": "JA, MIT ECHTEM GELD"}
+        z21 = hn21(echt21)
+        pruefe("Handy-Nachrichten: mit ECHTEM Geld und ohne jede Handy-Nachricht → rot", z21["ok"] is False and "ECHTEM Geld" in z21["text"] and "telegram-einrichten.bat" in z21["text"], z21)
+        pruefe("Handy-Nachrichten: mit ECHTEM Geld und Telegram → grün", hn21({**echt21, "TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "1"})["ok"] is True)
+        pruefe("Handy-Nachrichten: mit ECHTEM Geld und nur halbem Telegram → grau mit Warnung (nicht grün)", hn21({**echt21, "TELEGRAM_BOT_TOKEN": "t"})["ok"] is None and hn21({**echt21, "TELEGRAM_BOT_TOKEN": "t"}).get("warnung") is True)
+
+        # ── Ampel «Täglicher Start» / «Nachkontrolle» (Backlog 13): zeigt die Aufgabe auf DIESE Kopie? Nach dem Entpacken in einen NEUEN Ordner liefe der Pilot still mit der alten Kopie weiter ──
+        from xml.sax.saxutils import escape as esc21
+        WIN_NEU, WIN_ALT = r"C:\Krypto Neu\tools\trading\krypto_bot", r"C:\Krypto Alt\tools\trading\krypto_bot"
+
+        def xml_win21(xml_text, datei, ziel):
+            """Die Aufgaben-XML mit einem Windows-Pfad statt dem Pfad dieses Rechners (maskiert wie im echten Aufruf)."""
+            return xml_text.replace(esc21(str(C.HIER / datei)), esc21(ziel))
+
+        def schtasks21(xml_tag, xml_nk, da=True, da_nk=True, xml_ok=True, mitschnitt=None):
+            def f(cmd, zeit):
+                if mitschnitt is not None:
+                    mitschnitt.append(list(cmd))
+                name21 = cmd[cmd.index("/tn") + 1] if "/tn" in cmd else ""
+                if cmd[:2] == ["schtasks", "/query"]:
+                    if "/xml" in cmd:
+                        return xml_ok, (xml_nk if name21 == C.AUFGABE_NK else xml_tag)
+                    return (da_nk if name21 == C.AUFGABE_NK else da), ""
+                return True, ""
+            return f
+
+        def aufgaben_xml21(tag_ordner, nk_ordner):
+            return (xml_win21(C.aufgabe_xml(), "krypto-auto.bat", tag_ordner + r"\krypto-auto.bat"),
+                    xml_win21(C.aufgabe_xml_nk(), C.NK_STARTER, nk_ordner + "\\" + C.NK_STARTER))
+        xt21, xn21 = aufgaben_xml21(WIN_NEU, WIN_NEU)
+        mit21 = []
+        pruefe("aufgabe_ziel: liest den Pfad der täglichen Aufgabe aus der XML (nur lesend: /query … /xml)",
+               C.aufgabe_ziel(schtasks21(xt21, xn21, mitschnitt=mit21)) == WIN_NEU + r"\krypto-auto.bat" and mit21 == [["schtasks", "/query", "/tn", C.AUFGABE, "/xml"]], (mit21,))
+        pruefe("aufgabe_ziel: liest den Pfad des unsichtbaren Starters der Nachkontrolle aus <Arguments> (in Anführungszeichen, mit Leerzeichen im Pfad)",
+               C.aufgabe_ziel(schtasks21(xt21, xn21), name=C.AUFGABE_NK, datei=C.NK_STARTER) == WIN_NEU + "\\" + C.NK_STARTER)
+        xt_amp21, _ = aufgaben_xml21(r"C:\R&D Krypto\tools\trading\krypto_bot", WIN_NEU)
+        pruefe("aufgabe_ziel: ein «&» im Ordnernamen (in der XML als &amp;) kommt richtig zurück", "&amp;" in xt_amp21 and C.aufgabe_ziel(schtasks21(xt_amp21, "")) == r"C:\R&D Krypto\tools\trading\krypto_bot\krypto-auto.bat")
+        for fall21, xml21, erwartet21 in (
+                ("einfache Variante: Pfad in Anführungszeichen im <Command>", '<Task><Actions><Exec><Command>"C:\\Krypto Neu\\x\\krypto-auto.bat"</Command><Arguments>auto</Arguments></Exec></Actions></Task>', r"C:\Krypto Neu\x\krypto-auto.bat"),
+                ("über cmd.exe: Pfad in Anführungszeichen in <Arguments>", '<Exec><Command>cmd.exe</Command><Arguments>/c "C:\\a b\\krypto-auto.bat" auto</Arguments></Exec>', r"C:\a b\krypto-auto.bat"),
+                ("Netzpfad", "<Exec><Command>\\\\server\\freigabe\\krypto\\krypto-auto.bat</Command></Exec>", r"\\server\freigabe\krypto\krypto-auto.bat"),
+                ("Gross-/Kleinschreibung der Datei", r"<Exec><Command>C:\x\KRYPTO-AUTO.BAT</Command></Exec>", r"C:\x\KRYPTO-AUTO.BAT"),
+                ("leere Ausgabe", "", None), ("keine <Command>-Zeile", "<Task><Actions/></Task>", None),
+                ("eine ganz andere Datei", r"<Exec><Command>C:\Windows\notepad.exe</Command></Exec>", None),
+                ("nur der Dateiname, kein Pfad", "<Exec><Command>krypto-auto.bat</Command></Exec>", None),
+                ("Dateiname mit Schalter davor, aber ohne Anführungszeichen (kein sicherer Pfad)", r"<Exec><Command>cmd.exe</Command><Arguments>/c C:\a\krypto-auto.bat</Arguments></Exec>", None)):
+            pruefe(f"aufgabe_ziel: {fall21}", C.aufgabe_ziel(schtasks21(xml21, xml21)) == erwartet21, C.aufgabe_ziel(schtasks21(xml21, xml21)))
+        pruefe("aufgabe_ziel: scheitert der Befehl, gibt es keinen Pfad (und keinen Absturz)", C.aufgabe_ziel(schtasks21(xt21, xn21, xml_ok=False)) is None)
+        class _POSIX21:  # auch auf dem PC des Users (Windows) gilt der Test: dort nie die echte Aufgabenplanung abfragen
+            name = "posix"
+
+            def __getattr__(self, a_):
+                import os as _os21
+                return getattr(_os21, a_)
+        aufrufe21 = []
+        alt_os21, alt_bef21 = C.os, C._befehl
+        C.os, C._befehl = _POSIX21(), (lambda cmd, zeit: (aufrufe21.append(list(cmd)) or True, r"<Exec><Command>C:\x\krypto-auto.bat</Command></Exec>"))
+        try:
+            pruefe("aufgabe_ziel: ausserhalb von Windows und ohne Befehl: nichts gestartet (kein einziger Aufruf), None", C.aufgabe_ziel() is None and aufrufe21 == [], aufrufe21)
+        finally:
+            C.os, C._befehl = alt_os21, alt_bef21
+        pruefe("aufgabe_ziel: kommt der Dateiname schon im Ordnernamen vor, zählt der letzte Treffer (die Datei selbst)",
+               C.aufgabe_ziel(schtasks21(r"<Exec><Command>C:\Sicherung krypto-auto.bat\neu\krypto-auto.bat</Command></Exec>", "")) == r"C:\Sicherung krypto-auto.bat\neu\krypto-auto.bat")
+        # aufgabe_lage (reine Entscheidung, Dateiprüfung eingespeist)
+        L21, ist_da21 = C.aufgabe_lage, (lambda p_: True)
+        pruefe("aufgabe_lage: derselbe Pfad in anderer Schreibweise (Gross/Klein, Schrägstriche) → gleich", L21("c:/krypto neu/TOOLS/trading/krypto_bot/KRYPTO-AUTO.BAT", WIN_NEU + r"\krypto-auto.bat") == "gleich")
+        pruefe("aufgabe_lage: mit dem Vorsatz \\\\?\\ → gleich", L21("\\\\?\\" + WIN_NEU + r"\krypto-auto.bat", WIN_NEU + r"\krypto-auto.bat") == "gleich")
+        pruefe("aufgabe_lage: andere Kopie, die Datei gibt es dort → anders", L21(WIN_ALT + r"\krypto-auto.bat", WIN_NEU + r"\krypto-auto.bat", existiert=ist_da21, gleich=lambda a, b: False) == "anders")
+        pruefe("aufgabe_lage: anderer Name, aber dieselbe Datei (8.3-Name, Verknüpfung) → gleich", L21(r"C:\KRYPTO~1\krypto-auto.bat", WIN_NEU + r"\krypto-auto.bat", existiert=ist_da21, gleich=lambda a, b: True) == "gleich")
+        pruefe("aufgabe_lage: die Datei gibt es nicht mehr → weg", L21(WIN_ALT + r"\krypto-auto.bat", WIN_NEU + r"\krypto-auto.bat", existiert=lambda p_: False) == "weg")
+        pruefe("aufgabe_lage: mit «ü» im Pfad (Ausgabe vielleicht verstümmelt) und nicht auffindbar → anders, nie weg", L21(r"C:\Müller Alt\krypto-auto.bat", WIN_NEU + r"\krypto-auto.bat", existiert=lambda p_: False) == "anders")
+        pruefe("aufgabe_lage: nur das «ü» ist verstümmelt (U+FFFD) → gleich, kein falscher Alarm", L21("C:\\M\ufffdller\\krypto-auto.bat", r"C:\Müller\krypto-auto.bat") == "gleich")
+        pruefe("aufgabe_lage: kein Ziel gelesen → None", L21(None, WIN_NEU) is None and L21("", WIN_NEU) is None)
+        pruefe("aufgabe_lage: ein Pfad in Anführungszeichen (so steht er manchmal in der Aufgabe) zählt wie ohne", L21('"' + WIN_NEU + r'\krypto-auto.bat"', WIN_NEU + r"\krypto-auto.bat") == "gleich")
+
+        def boese21(a, b):
+            raise OSError("Zugriff verweigert")
+        pruefe("aufgabe_lage: ein Fehler beim Prüfen → None (nichts behaupten)", L21(WIN_ALT + r"\krypto-auto.bat", WIN_NEU + r"\krypto-auto.bat", existiert=ist_da21, gleich=boese21) is None)
+
+        # … und in der Ampel (Windows-Zweig von gesundheit() mit vorgetäuschtem os.name == "nt", eigenem data/-Ordner, eigenen Zielen und eigener Dateiprüfung)
+        class _NT21:
+            name = "nt"
+
+            def __getattr__(self, a_):
+                import os as _os21
+                return getattr(_os21, a_)
+        alt21 = (C.os, C._befehl, C.DATA, C._soll_ziele, C._datei_da, C._selbe_datei, dict(C._AUFGABE_CACHE))
+        with tempfile.TemporaryDirectory() as td21:
+            try:
+                C.DATA = Path(td21)
+                C.os = _NT21()
+                C._soll_ziele = lambda: (WIN_NEU + r"\krypto-auto.bat", WIN_NEU + "\\" + C.NK_STARTER)
+                C._selbe_datei = lambda a, b: False
+
+                def ampel21(xml_tag, xml_nk, da=True, da_nk=True, xml_ok=True, mitschnitt=None, da_alt=True):
+                    C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None, "ziel": None, "ziel_nk": None})
+                    C._befehl = schtasks21(xml_tag, xml_nk, da, da_nk, xml_ok, mitschnitt)
+                    C._datei_da = lambda p_: da_alt if "Alt" in str(p_) else True
+                    return {x["name"]: x for x in C.gesundheit({}, {"entscheide": []}, {}, heute)}
+                for fall21, (xt_, xn_), erw_tag21, erw_nk21 in (("beide zeigen auf diesen Ordner", aufgaben_xml21(WIN_NEU, WIN_NEU), "gleich", "gleich"),
+                                                                ("der tägliche Start zeigt auf eine andere Kopie", aufgaben_xml21(WIN_ALT, WIN_NEU), "anders", "gleich"),
+                                                                ("die Nachkontrolle zeigt auf eine andere Kopie", aufgaben_xml21(WIN_NEU, WIN_ALT), "gleich", "anders"),
+                                                                ("beide zeigen auf eine andere Kopie", aufgaben_xml21(WIN_ALT, WIN_ALT), "anders", "anders")):
+                    a21 = ampel21(xt_, xn_)
+                    tag21, nk21 = a21["Täglicher Start (Aufgabenplanung)"], a21["Nachkontrolle (Aufgabenplanung)"]
+                    for zeile21, erw21, wort21 in ((tag21, erw_tag21, "ANDEREN Ordner"), (nk21, erw_nk21, "ANDEREN Ordner")):
+                        if erw21 == "anders":
+                            gut21 = (zeile21["ok"] is None and zeile21.get("warnung") is True and wort21 in zeile21["text"] and WIN_ALT in zeile21["text"] and WIN_NEU in zeile21["text"]
+                                     and "Täglich automatisch einrichten" in zeile21["text"] and "fehlt" not in zeile21["text"])
+                        else:
+                            gut21 = "ANDEREN" not in zeile21["text"] and "warnung" not in zeile21
+                        pruefe(f"Ampel Aufgabenplanung ({fall21}): {zeile21['text'][:40]}… → {erw21}", gut21, zeile21)
+                    pruefe(f"Ampel Aufgabenplanung ({fall21}): die tägliche Aufgabe ist {'grün' if erw_tag21 == 'gleich' else 'eine graue Warnung'}",
+                           (tag21["ok"] is True) == (erw_tag21 == "gleich"), tag21)
+                # die Kopf-Zählung: nur die Warnung trägt das Kennzeichen, nichts wird rot
+                a21 = ampel21(*aufgaben_xml21(WIN_ALT, WIN_ALT))
+                pruefe("Ampel: eine andere Kopie ist nur eine WARNUNG (grau), nie rot — der Pilot läuft ja weiter", [n_ for n_, x_ in a21.items() if "Aufgabenplanung" in n_ and x_["ok"] is False] == [])
+                # die Zieldatei der Aufgabe gibt es nicht mehr → rot, mit dem Weg zur Reparatur
+                a21 = ampel21(*aufgaben_xml21(WIN_ALT, WIN_ALT), da_alt=False)
+                for n_ in ("Täglicher Start (Aufgabenplanung)", "Nachkontrolle (Aufgabenplanung)"):
+                    z_ = a21[n_]
+                    pruefe(f"Ampel {n_}: die Zieldatei gibt es nicht mehr → rot, ohne das Wort «fehlt» (sonst legte die Selbstheilung die Aufgabe ungefragt neu an)",
+                           z_["ok"] is False and "nicht mehr" in z_["text"] and WIN_ALT in z_["text"] and "Täglich automatisch einrichten" in z_["text"] and "fehlt" not in z_["text"], z_)
+                # kein Befund, wenn die Ausgabe nicht zu lesen ist (kein falscher Alarm)
+                for fall21, kw21 in (("schtasks liefert keine XML", {"xml_ok": False}), ("XML ohne Befehl", {})):
+                    a21 = ampel21("<Task/>" if not kw21 else "", "<Task/>" if not kw21 else "", **kw21)
+                    pruefe(f"Ampel Aufgabenplanung: {fall21} → keine Warnung, die tägliche Aufgabe bleibt grün",
+                           a21["Täglicher Start (Aufgabenplanung)"]["ok"] is True and "warnung" not in a21["Täglicher Start (Aufgabenplanung)"] and "ANDEREN" not in a21["Nachkontrolle (Aufgabenplanung)"]["text"], a21["Täglicher Start (Aufgabenplanung)"])
+                # nur fragen, wenn es die Aufgabe gibt, und nur einmal je Aufgabe und fünf Minuten
+                m21 = []
+                ampel21(xt21, xn21, mitschnitt=m21)
+                C.gesundheit({}, {"entscheide": []}, {}, heute)
+                pruefe("Ampel: je Aufgabe genau EINE XML-Abfrage (Zwischenspeicher von 5 Minuten, kein schtasks bei jedem Abruf)", len([c_ for c_ in m21 if "/xml" in c_]) == 2, m21)
+                m21 = []
+                ampel21(xt21, xn21, da=False, da_nk=False, mitschnitt=m21)
+                pruefe("Ampel: gibt es die Aufgabe gar nicht, wird auch keine XML gelesen (und es bleibt bei «fehlt», damit die Selbstheilung sie anlegt)",
+                       not [c_ for c_ in m21 if "/xml" in c_] and "fehlt" in ampel21(xt21, xn21, da=False, da_nk=False)["Täglicher Start (Aufgabenplanung)"]["text"])
+                # Selbstheilung: «anders» und «weg» sind ein Hinweis, die Aufgabe wird NICHT von selbst umgebogen
+                for fall21, kw21 in (("andere Kopie", {}), ("Zieldatei weg", {"da_alt": False})):
+                    erstellt21 = []
+
+                    def bef21(cmd, zeit, erstellt=erstellt21, f=None):
+                        if cmd[:2] == ["schtasks", "/create"]:
+                            erstellt.append(cmd)
+                        return C._befehl(cmd, zeit)
+                    ampel21(*aufgaben_xml21(WIN_ALT, WIN_ALT), **kw21)
+                    ok21, text21 = C.selbstheilung(starter=lambda a_, z_: (True, "ok"), befehl=bef21,
+                                                   punkte_lesen=lambda: list(ampel21(*aufgaben_xml21(WIN_ALT, WIN_ALT), **kw21).values()), mit_probelauf=False)
+                    pruefe(f"Selbstheilung ({fall21}): keine Aufgabe neu angelegt oder umgebogen, der Hinweis steht unter «noch offen»",
+                           erstellt21 == [] and "Danach noch offen" in text21 and "Täglicher Start (Aufgabenplanung)" in text21 and "Täglich automatisch einrichten" in text21, (erstellt21, text21[:300]))
+            finally:
+                C.os, C._befehl, C.DATA, C._soll_ziele, C._datei_da, C._selbe_datei = alt21[:6]
+                C._AUFGABE_CACHE.clear()
+                C._AUFGABE_CACHE.update(alt21[6])
+
         def http_aktion(kopf, name):
             req = urllib.request.Request(basis + "/api/aktion", data=json.dumps({"aktion": name}).encode(), method="POST", headers=kopf)
             try:
