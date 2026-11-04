@@ -29,3 +29,12 @@ Teil 1 (Format, Ablauf, Handwerkszeug): `LERNEN.md`.
 - Wie YouTube Reichweite für animierte Kurzvideos bewertet, und wie es mit massenproduzierten Clips umgeht: ungemessen.
 - Klang der Musik zum Thema: Hörabnahme fehlt (hier gibt es kein Gehör); die Stimme (Piper, `de_DE-thorsten-high`) ist technisch geprüft (Dauer, Pegel, Einsätze), ob sie gut klingt und Wörter richtig betont, hat niemand von uns gehört. Bekannte kleine Schwäche des Beispiels: beim Übergang Tag → Goldlicht (ca. 26–29 s) wird der Himmel kurz grau.
 - Die Sicherheitszonen-Prozente sind eine vorsichtige Annahme, keine YouTube-Vorgabe.
+
+## 9. Strichmännchen und Stimme im Gleichschritt (Pia-Short)
+Rezept aus dem Referenzvideo: eine kleine Geschichte, jede Sprecherzeile beschreibt genau ihre Szene, eine Stimme, dieselbe Figur überall, Szenenlänge = Länge der Zeile.
+- `projekte/vegan-pia/stimme.txt`: je Zeile `S1`, Sprechtext, optional Bildschirmtitel (TAB-getrennt). `stimme.sh` spricht jede Zeile, rechnet die Einsatzzeiten und schreibt `zeiten.js`; `szenen.html` leitet daraus Szenenfenster, Titel und Ereignisse ab. Ändert sich der Text, ändert sich das Bild mit.
+- `stickman.js`: `Stickman(parent, {x, y, s})`, dann `pose`, `gehen`, `ruehren`, `huepfen`, `mund` in zeitlicher Reihenfolge (sonst Fehlermeldung). Übung: `bausteine/06-stickman.html`.
+- **Falle SVG-Position:** ein `transform`-Attribut wird von einer CSS-Animation auf demselben Element überschrieben (das Gemüse landete oben links). Aussen `<g transform>`, innen ein `<g>` animieren.
+- **Falle Piper:** die Dauer einer Zeile schwankt von Lauf zu Lauf um Zehntelsekunden. Zeiten und Tonspur immer aus demselben Lauf (`bauen.sh`).
+- **Falle Linter:** Sprechtext nur in `stimme.txt`, nicht in `.md` (Anrede-Prüfung, Grenze 5000 Zeichen).
+- **Falle Prozentzeichen:** `printf` liest «% d» im Text als Formatangabe und schrieb «18  0er» statt «18 % der». Texte mit `%` nie in den Formatstring von `printf` setzen, sondern per Editor oder `printf '%s'` schreiben.

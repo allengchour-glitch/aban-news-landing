@@ -58,4 +58,41 @@ else
   check "Mutant konnte nicht gebaut werden (Suchtext in render.mjs geändert?)" 0
 fi
 
+echo "== Strichmännchen"
+node render.mjs bausteine/06-stickman.html --vorschau 1.0,3.3 --outdir "$tmp/st" >/dev/null 2>&1
+check "Pose wechselt (Gehen und Jubeln sehen verschieden aus)" "$([ -f "$tmp/st/t00001.png" ] && [ -f "$tmp/st/t003_3.png" ] && [ "$(md5 "$tmp/st/t00001.png")" != "$(md5 "$tmp/st/t003_3.png")" ] && echo 1 || echo 0)"
+cat > "$tmp/falsch.html" <<'H'
+<!doctype html><meta charset="utf-8"><svg id="s" width="1080" height="1920"></svg>
+<script src="file://HERE/motion.js"></script><script src="file://HERE/stickman.js"></script>
+<script>const p = Stickman(document.getElementById('s'), { x: 500, y: 1500 }); p.pose(2, 'jubeln', .5); p.pose(1, 'ruhig', .5); Motion.fertig(3)</script>
+H
+sed -i "s#HERE#$here#g" "$tmp/falsch.html"
+node render.mjs "$tmp/falsch.html" --vorschau 1 --outdir "$tmp/f" >/dev/null 2>&1
+check "Bewegungen rückwärts in der Zeit werden abgelehnt" "$([ $? -ne 0 ] && echo 1 || echo 0)"
+
+echo "== Pia-Short (Zeiten und Sicherzone)"
+node -e '
+const fs=require("fs"); const w={}; new Function("window",fs.readFileSync("projekte/vegan-pia/zeiten.js","utf8"))(w);
+const z=w.__ZEITEN; let ok=z&&z.szenen&&z.szenen.length===4&&z.gesamt>20&&z.gesamt<40;
+z.szenen.forEach((s,i)=>{ if(s.t0>=s.t1) ok=false; s.zeilen.forEach(l=>{ if(l.start<s.t0||l.start+l.dauer>s.t1-0.3) ok=false; });
+  if(i>0){ const v=z.szenen[i-1]; if(s.t0>v.t1) ok=false; } });
+if(Math.abs(z.szenen[3].t1-z.gesamt)>0.01) ok=false;
+process.exit(ok?0:1)' >/dev/null 2>&1
+check "zeiten.js: 4 Szenen, jede Zeile liegt in ihrer Szene (0,3 s Reserve), keine Lücke" "$([ $? -eq 0 ] && echo 1 || echo 0)"
+node pruefe_sicherzone.mjs projekte/vegan-pia/szenen.html >/dev/null 2>&1
+check "Titel des Pia-Shorts liegen in der Sicherzone" "$([ $? -eq 0 ] && echo 1 || echo 0)"
+if command -v piper >/dev/null 2>&1 && [ -s "$HOME/.local/share/luxe-stimmen/de_DE-thorsten-high.onnx" ]; then
+  printf 'S1\tHallo Welt.\tTitel\nS2\tNoch ein Satz.\n' > "$tmp/s.txt"
+  ZEITEN_JSON="$tmp/z.json" bash stimme.sh "$tmp/s.txt" "$tmp/s.wav" >/dev/null 2>&1
+  check "stimme.sh schreibt Zeiten für S<Nummer>-Zeilen (2 Szenen, wachsende Startzeiten)" "$(python3 -I -c 'import json,sys;z=json.load(open(sys.argv[1]));s=z["szenen"];print(1 if len(s)==2 and s[1]["t0"]>0 and s[1]["zeilen"][0]["start"]>s[0]["zeilen"][0]["start"] and abs(s[1]["t1"]-z["gesamt"])<0.01 else 0)' "$tmp/z.json" 2>/dev/null || echo 0)"
+  printf 'S1\tEins.\n2.0\tZwei.\n' > "$tmp/m.txt"
+  bash stimme.sh "$tmp/m.txt" "$tmp/m.wav" >/dev/null 2>&1
+  check "stimme.sh lehnt gemischte Formate ab" "$([ $? -ne 0 ] && echo 1 || echo 0)"
+else
+  echo "  --   Stimmen-Tests übersprungen (Piper oder Modell nicht installiert)"
+fi
+echo "== Markdown-Linter (wie die CI)"
+lint_ok=1; for f in *.md projekte/*/*.md; do python3 ../../tools/brand-voice-linter.py "$f" --strict >/dev/null 2>&1 || { lint_ok=0; echo "     Linter rot: $f"; }; done
+check "alle .md in video-pipeline/motion bestehen den Voice-Linter" "$lint_ok"
+
 echo; echo "Ergebnis: $ok ok, $bad Fehler"; [ "$bad" -eq 0 ]
