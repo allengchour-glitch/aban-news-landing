@@ -24,6 +24,13 @@ product-card:not([product-grid-view="list"] product-card) .product-card__content
 product-card:not([product-grid-view="list"] product-card) .product-card__content.spacing-style>product-price{margin-top:auto}
 product-card:not([product-grid-view="list"] product-card) .product-card__content.spacing-style>.lx-review-badge[data-review-state="rated"]{margin-top:auto}
 product-card:not([product-grid-view="list"] product-card) .product-card__content.spacing-style>.lx-review-badge[data-review-state="rated"]+product-price{margin-top:0}
+/* Produktseite, Kaufbox: leere Custom-Liquid-Hüllen und der leere Bewertungs-Block kosten je 28 px (Handy 24 px) Abstand. Nur Hüllen ohne sichtbares Element werden ausgeblendet. */
+body.template-product .group-block-content>div:not([class]):not([id]):not(:has(>:not(script):not(style))){display:none}
+body.template-product .group-block-content>div:not([class]):not([id]):has(>.lx-review-badge[data-review-zero-only]):not(:has(>:not(script):not(style):not(.lx-review-badge[data-review-zero-only]))){display:none}
+body.template-product .group-block-content>.shopify-app-block:has(.jdgm-prev-badge[data-number-of-reviews="0"]):not(:has(>:not(.jdgm-preview-badge))),
+body.template-product .group-block-content>.shopify-app-block:has(>.jdgm-preview-badge):not(:has(.jdgm-preview-badge *)):not(:has(>:not(.jdgm-preview-badge))){display:none}
+/* Lange Variantenlisten (ab 13 Werten, z. B. 52 Farben): Knopf-Mindestbreite gedeckelt, damit mehrere Knöpfe je Zeile passen. Kurze Listen bleiben unverändert. */
+variant-picker fieldset.variant-option--equal-width-buttons:has(label:nth-of-type(13)){--variant-min-width:clamp(44px,calc(var(--variant-option-padding-inline) * 2 + var(--variant-ch)),8rem)}
 </style>`;
 
 export const CSS_BLOCK = `${MARKE_CSS_ANFANG}
