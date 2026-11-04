@@ -1,0 +1,5 @@
+Freigabe für den täglichen Zeitplan von .github/workflows/lager-waechter.yml (05:17 UTC): mit dieser Datei sortiert der Lauf LIVE um, ohne sie liest er nur.
+Grundlage: Auftrag des Besitzers, Chat 04.11.2026, «ausverkaufte lager aufpassen» (Auslegung durch Claude: ausverkaufte Ware soll auf den Kategorieseiten nicht vorn stehen, und das soll von selbst laufen).
+Voraussetzung war erfüllt: Probelauf in Actions 04.11.2026 (Lauf 41918646390, 11 Minuten, grün): 742 Menü-Sammlungen und 6 Lager-/Kostüm-Sammlungen gelesen, 0 Fehler, 0 fehlende, 4 über der Schwelle mit 0 nötigen Zügen.
+Der Lauf stellt nur um (collectionReorderProducts, stabile Teilung: Verfügbares vorn, die bisherige Reihenfolge bleibt in beiden Gruppen). Er versteckt, löscht und ändert keinen Produktstatus.
+Stopp: diese Datei löschen (der nächste Lauf liest dann nur). Rücknahme je Sammlung: HANDLES=<handle> ZURUECK=1 LIVE=1 node automation/verfuegbar_zuerst.mjs mit dem «vorher=»-Wert aus dem Protokoll des Laufs (Artefakt lager-waechter-protokoll). Doku: dropship/LAGER-WAECHTER-0411.md

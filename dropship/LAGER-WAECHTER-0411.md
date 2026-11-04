@@ -35,3 +35,11 @@ Das Protokoll (`dropship/kategorien_ledger.txt` mit `vorher=`, dazu die Lauf-Aus
 
 ## Prüfung nach dem Einbau
 Erster Lauf von Hand im Trockenlauf (workflow_dispatch ohne «schreiben»): Zusammenfassung lesen (Anzahl Sammlungen, Schwelle, Fehler), Laufzeit notieren. Erst danach die Freigabedatei legen.
+
+## Probelauf 04.11.2026 (GEMESSEN, Actions-Lauf 41918646390)
+- Modus «nur lesen (Trockenlauf)», Dauer 21:42:53 bis 21:53:54 UTC (11 Minuten, davon Menü-Teil 10:35 min, Lager-Teil 12 s).
+- Menü: 742 Collections, Schwelle 0.1, vier über der Schwelle (`herren-jacken-jeans` 13 von 48, `pool-sonnenschutz-gartenmoebel` 4 von 28, `tier-toilette-hygiene` 2 von 20, `kuschel-heizdecken` 3 von 17), bei allen vier **Züge 0** (die Reihenfolge von 03./04.11. hält), 738 unter der Schwelle, zu klein 0, fehlt 0, Fehler 0.
+- Lager-/Kostüm-Sammlungen: 6 Collections, alle unter der Schwelle, Fehler 0.
+- **Anzeigefehler im Trockenlauf:** die Schlusszeile «ÄNDERN WÜRDE: 4» zählt die Sammlungen über der Schwelle, nicht die tatsächlichen Änderungen. Im Live-Modus überspringt das Skript Sammlungen ohne Züge (`if (!LIVE || !moves.length) continue;`, `automation/verfuegbar_zuerst.mjs` Zeile 80) und schreibt für sie nichts; «GEÄNDERT» wäre hier 0.
+- Der Menü-Teil dauert wegen der Pausen zwischen den Abfragen rund 10 Minuten; der Job hat ein Zeitlimit von 150 Minuten.
+- **Freigabedatei `dropship/LAGER-WAECHTER-FREI.txt` am 04.11.2026 gelegt.** Erster Lauf mit Schreibrecht: Zeitplan 05.11. 05:17 UTC; danach Zusammenfassung und Artefakt lesen (Anzahl «GEÄNDERT», Fehler, Ledger-Zeilen «vorher=»). Bis zum Fasnacht-Start (11.11.) täglich ansehen, danach wöchentlich.
