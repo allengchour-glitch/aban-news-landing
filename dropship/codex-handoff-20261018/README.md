@@ -1,5 +1,16 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 04.11.2026, Revision 81: katalogweiter Qualitätsaudit
+
+Auf den Auftrag «check alles durch» wurde LuxeStyle breit, aber kontrolliert geprüft. [Gesamtbericht](GESAMTAUDIT-20261104-R81.md) · [Maschinenlesbare Belege](GESAMTAUDIT-20261104-R81.json). Grundlage sind der historische Aktivexport mit 56’630 eindeutigen Produkten, alle 28 bereitgestellten Merchant-CSV-Dateien, eine aktuelle Shopify-Livestichprobe von fünf ACTIVE-Produkten mit 52 Varianten, begrenzte öffentliche Website-/Sitemap-Prüfungen, das aktuelle Sieben-Tage-Metricool-Fenster und die vorhandenen Repo-Helfer. Historische Snapshot-Signale sind keine aktuelle Vollkatalogbestätigung; aktuelle Liveaussagen sind jeweils als Stichprobe bezeichnet.
+
+Priorisierte Befunde: 3’523 Produkte tragen im Offlineaudit mindestens ein kritisches/hohes Prüfsignal; darunter 2’841 Materialkandidaten, 1’504 mögliche Materialkonflikte zwischen Detailzeile und Fliesstext und 103 hochsichere Typ-/Tag-Widersprüche. 62 Produkte haben hochsichere Titel-/Variantenwidersprüche; fünf Produkte besitzen gross-/kleinschreibungsbedingte doppelte Optionswerte. Die aktuelle Katzenhängematte bestätigt Material- und Taxonomiefehler live. Der aktuelle Hundepullover 16605072458119 nennt weiss, zeigt aber nur Braun/Beige-Varianten und widerspricht sich bei Grösse/Gewicht. Keine dieser Zahlen ist eine Fehlerquote des ganzen Livekatalogs.
+
+Merchant: 28 CSVs beziehungsweise 26 eindeutige Dateien wurden getrennt ausgewertet. In der jüngsten gefilterten Serie betreffen die grössten deduplizierten Gruppen 1’211 Angebote ohne Preis, 277 mit Werbe-Overlay und 75 mit zu kleinem Bild. Filter und Zeitpunkte unterscheiden sich; sinkende Dashboardzahlen beweisen keine bestimmte Eigenkorrektur. Die öffentliche Website zeigt bei der Katzenhängematte die falsche Camping-/Reisenapf-Einordnung, überbreite fachfremde Filterchips und den bekannten offenen Preisfilter-Pagerfehler. 24 gezielt geprüfte interne Ziele waren erreichbar; Canonicals, H1 und Hauptseiten-Robots waren im Prüfumfang intakt.
+
+Metricool-Identität blieb passend. Im aktuellen Fenster wurden 34 Objekte/51 PENDING-Kanalzustände ohne exakte kanalgleiche Slot-/Text-/Mediendoppel gelesen. Zwei FB/IG-Termine am 09. und 10.11. haben leere Captions; keine Änderung oder Neuanlage. Tageskennzahlen und Klaviyo wurden gemäss Tagesgrenze nicht nochmals abgefragt. Keine Shop-/Feed-/Theme-/Flow-/DNS-/Budget-/Rabatt-/Socialänderung, keine Kundenansprache, kein Render oder Workflowstart. Der sichere nächste Schritt ist eine priorisierte Offline-Liste und danach eine frische Liveverifikation in Batches von 20–50 IDs; der bestehende Materialhelfer bleibt wegen 12 von 23 fehlgeschlagenen zusätzlichen Konflikttests für Livewrites gesperrt. Claude-Kenntnisnahme unbekannt.
+
+
 ## Aktueller Stand – 04.11.2026, Revision 80: Materialfrage Katzenhängematte
 
 Gezielte Prüfung von Produkt 16610153759111: Shopify und öffentliche Seite zeigen «aus Stoff» und «Material: Holz» ohne getrennten Bezug-/Gestellnachweis. Der historische Einzelproduktbefund war bereits BLOCKED_NEEDS_SOURCE; Holz bleibt unbestätigt. Auch die Shopify-Kategorie Reisenäpfe und Google-Zuordnung Futter-/Wasserspender passen nicht. [Beleg und enger Korrekturentwurf](MATERIALPRUEFUNG-20261104-R80.md).

@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "luxestyle-full-audit-r81-v1",
+  "date": "2026-11-04",
+  "mode": "read-only",
+  "liveChanges": [],
+  "identity": {
+    "shopify": {"shop": "LuxeStyle", "domain": "luxestyle.ch", "currency": "CHF", "country": "CH"},
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebook": "1049840534888592",
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "pinterest": "luxestyleCH",
+        "tiktok": "luxestyle.ch",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "scope": {
+    "historicalActiveProducts": 56630,
+    "historicalDataRange": ["2026-09-30T15:20:55Z", "2026-10-26T04:28:09Z"],
+    "liveProducts": 5,
+    "liveVariants": 52,
+    "merchantFiles": 28,
+    "merchantUniqueBlobs": 26,
+    "publicInternalTargets": 24
+  },
+  "blockers": [
+    "Material automation fails 12 of 23 added source-conflict checks.",
+    "Full historical snapshot has no current variants, prices, SKUs, images, tracking, inventoryPolicy or storefront availability.",
+    "Historical candidates require current product-level and, where needed, supplier-source verification before writes.",
+    "Social blocker tags must remain effective."
+  ],
+  "confirmedLiveFindings": [
+    {
+      "productId": "16610153759111",
+      "title": "Faltbare Katzenhängematte mit Saugnäpfen",
+      "severity": "P1",
+      "findings": [
+        "Description says fabric while detail row says wood.",
+        "Shopify taxonomy Reisenäpfe is wrong for a cat hammock.",
+        "Google category Pet Bowls, Feeders & Waterers is wrong for a cat hammock.",
+        "Public breadcrumb routes through Sport & Party > Camping & Outdoor."
+      ],
+      "commerce": {"variants": 12, "images": 11, "priceMinCHF": 34.9, "priceMaxCHF": 37.9, "availableForSale": 12, "inventoryPolicy": "CONTINUE", "tracked": false}
+    },
+    {
+      "productId": "16605072458119",
+      "title": "Hundepullover mit Norwegermuster, weiss",
+      "severity": "P1",
+      "findings": [
+        "Title says white, but all ten current variants are brown or beige.",
+        "Description says size M, but current variants cover XS to XL.",
+        "Description says 200 g while its own detail range says 57 to 117 g.",
+        "Malformed words Hundelange and Der Langer.",
+        "Material, dimensions and weight lack current supplier proof."
+      ]
+    }
+  ],
+  "historicalCounts": {
+    "criticalOrHighTextCandidates": 3523,
+    "materialCandidates": 2841,
+    "materialDetailVsProse": 1504,
+    "multipleMaterialLines": 595,
+    "titleBodyMaterialMismatch": 336,
+    "medicalTherapeuticClaims": 15,
+    "reviewPopularityClaims": 13,
+    "highConfidenceTypeTagContradictions": 103,
+    "additionalTaxonomyReview": 66,
+    "highTitleVariantContradictions": 62,
+    "additionalTitleHandleReviewProducts": 621,
+    "socialBlockedProducts": 24389,
+    "rueckhol0907Products": 24233,
+    "rightsBrandCharacterReview": 591,
+    "adult18plusReview": 77
+  },
+  "merchantLatestFilteredSeries": {
+    "uniqueOfferIdsAcrossIssues": 1693,
+    "missingPrice": 1211,
+    "promotionalOverlay": 277,
+    "imageTooSmall": 75,
+    "pageUnavailable": 30,
+    "brokenImage": 15,
+    "missingAvailability": 13,
+    "cssOverCapacity": 42,
+    "trendInterpretation": "Observed volume decreased, but differing filters do not prove complete repair."
+  },
+  "website": {
+    "testedInternalTargets200": 24,
+    "collectionUrlsInSitemap": 1560,
+    "subcategoriesShown": 412,
+    "furtherCategories": 76,
+    "homeImages": 65,
+    "homeEmptyAlt": 53,
+    "priceFilterPagerBugStillOpen": true,
+    "mainFinding": "Broad main-category pages expose many off-topic filter chips through indexable, self-canonical public targets."
+  },
+  "metricoolPlanning": {
+    "window": ["2026-11-04T17:35:11+01:00", "2026-11-11T17:35:11+01:00"],
+    "objects": 34,
+    "providerStates": {"PENDING": 51},
+    "autoPublishObjects": 34,
+    "drafts": 0,
+    "byNetwork": {"facebook": 16, "instagram": 16, "threads": 1, "pinterest": 5, "tiktok": 13, "youtube": 0},
+    "exactCollisions": 0,
+    "sameNetworkMediaRepeats": 0,
+    "emptyCaptionPosts": [
+      {"id": 415033593, "uuid": "-8611238648907481079", "dateTime": "2026-11-09T16:00:00", "timezone": "Europe/Zurich", "networks": ["facebook", "instagram"]},
+      {"id": 415035691, "uuid": "37985340483322184", "dateTime": "2026-11-10T12:30:00", "timezone": "Europe/Zurich", "networks": ["facebook", "instagram"]}
+    ],
+    "writes": []
+  },
+  "contentAndSales": {
+    "projectorMaster": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "status": "SCRIPT_AND_CUT_PLAN_ONLY",
+      "professionalMasterMp4": false,
+      "renderStarted": false,
+      "blockers": [
+        "Exact default, motif and unit binding is missing.",
+        "Four suitable original takes and commercial editing and advertising rights are missing.",
+        "Historical music build provenance is not bound to the canonical WAV."
+      ]
+    },
+    "klaviyoDatedEvidence": {
+      "checkedAtUtc": "2026-11-04T07:10:41.179812+00:00",
+      "reusedWithoutNewReport": true,
+      "placedOrderMetricId": "W7XTVD",
+      "accountCurrency": "USD",
+      "shopCurrency": "CHF",
+      "currenciesCombined": false,
+      "flows": {
+        "Vse76a": "draft",
+        "VbLQj6": "draft",
+        "RnTvsY": "draft"
+      },
+      "abandonedCheckoutPerformance": "unknown_no_returned_row_not_zero",
+      "writes": 0,
+      "messagesSent": 0
+    },
+    "singleImprovementForApproval": "Correct source-bound product facts and taxonomy for the cat hammock and dog sweater before adding traffic; then verify missing-price offers by active source.",
+    "implementationStatus": "PLAN_ONLY"
+  },
+  "recommendedOrder": [
+    "Review the five live-read products with current source-bound facts and minimal diffs.",
+    "Correct the cat hammock material only after component proof; align Shopify taxonomy, Google category, breadcrumb and structured data together.",
+    "Rewrite product 16605072458119 against current variants and remove or block unsupported claims.",
+    "Process Merchant price/availability, URL/image and policy cases as separate batches.",
+    "Live-read 20 to 50 explicit candidate IDs per batch before any write.",
+    "Reduce category chips with per-category allowlists and fix the price pager separately.",
+    "Prepare a field-level approval diff after verification; never blindly retry uncertain writes."
+  ],
+  "sourceHashes": {
+    "merchant-report.md": "8c8640acdd5003f42e6c5a482e46d1989af1780ac6098cc98d8f1ebd6ffa3e98",
+    "commerce-report.md": "b9ce74a68654770fbdee3490ee2e7450cdeeac78c599812765acf1c7ebdfc969",
+    "taxonomy-report.md": "caac882309c38c5dc77fd68bfe6d5b5bbd05178044036196bf99377dcc7d07b0",
+    "title-variant-report.md": "10769dc7557515c3a0cc3732f260bc09cf88001ec71a402e38bb23df104cbb7d",
+    "website-report.md": "e9183a50da3c8977e2ac80faf350bfea38a8b5edfec435ac71b9a1916b145679",
+    "tooling-report.md": "99cc482b94f441be2f85fa161dc633d742293c05574c8d4b2ba80bcfd2dc94e6",
+    "materials-report.md": "b573a5f0a16e12d46babfa0e9aae29dd7183da36d4a12fe91a3fa09717a33765",
+    "live-sample-review.md": "cbd9a11ad030590f863aeabc0899a9fbc975b6f7dbde9ce38f6ae39fd511939a",
+    "metricool-planning-summary.json": "4f93f4ec58723d72a90c95118677ee4f36fc57c2ef1510ed7f802cd0637e6782"
+  }
+}
