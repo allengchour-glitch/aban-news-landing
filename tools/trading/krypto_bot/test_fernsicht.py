@@ -37,9 +37,9 @@ def pruefe(name, bed, info=""):
 
 
 # ───────────────────────── Hilfen ─────────────────────────
-def anfrage(port, methode="GET", pfad="/", host=None, kopf=None, cookie=None, body=None):
-    """Roher HTTP-Aufruf mit frei wählbarem Host-Kopf (host=False: gar keiner). → (Status, Köpfe in Kleinschrift, Körper)."""
-    c = http.client.HTTPConnection("127.0.0.1", port, timeout=10)
+def anfrage(port, methode="GET", pfad="/", host=None, kopf=None, cookie=None, body=None, quelle=None):
+    """Roher HTTP-Aufruf mit frei wählbarem Host-Kopf (host=False: gar keiner) und, wenn gewünscht, anderer Quelladresse (127.0.0.x). → (Status, Köpfe in Kleinschrift, Körper)."""
+    c = http.client.HTTPConnection("127.0.0.1", port, timeout=10, source_address=(quelle, 0) if quelle else None)
     try:
         c.putrequest(methode, pfad, skip_host=True, skip_accept_encoding=True)
         if host is not False:
@@ -90,7 +90,7 @@ class Welt:
             w.aufrufe["stand"] += 1
             if w.stand_fehler:
                 raise RuntimeError("Geheimtext C:\\Users\\alleng\\data\\x.json")
-            return {"zeit": "2026-11-04T10:00:00+00:00", "konto": {"wert": 5000.0}, "kontostand": [["2026-11-03", 5000.0]],
+            return {"zeit": "2026-11-04T10:00:00+00:00", "konto": {"wert": 5000.0}, "kontostand": [["2026-11-03", 5000.0]], "gruss": "Hallo Hanspeter",
                     "gesundheit": [{"name": "Datei", "ok": None, "text": "fehlt: C:\\Users\\alleng\\krypto\\data\\krypto-pilot.json und /home/alleng/x/y.txt"}],
                     "modus": "TESTNETZ"}
 
@@ -255,7 +255,34 @@ pruefe("Bereinigen: Netzwerkpfad", F.bereinigen("\\\\SERVER\\freigabe\\a\\b.txt 
 pruefe("Bereinigen: POSIX-Pfad", F.bereinigen("in /home/user/aban/data/x.json gelesen") == "in …/x.json gelesen")
 pruefe("Bereinigen: Adressen und normale Texte bleiben", F.bereinigen("https://data-api.binance.vision/api/v3/ticker?symbol=ETHUSDT und «C:» und 5 : 3") == "https://data-api.binance.vision/api/v3/ticker?symbol=ETHUSDT und «C:» und 5 : 3")
 pruefe("Bereinigen: URL mit /home/ bleibt (kein Pfad dieses PCs)", F.bereinigen("https://example.org/home/foo/bar") == "https://example.org/home/foo/bar")
-pruefe("Bereinigen: verschachtelt, Zahlen und None bleiben, Schlüssel bleiben", F.bereinigen({"a": [1, 2.5, None, True, {"b": "C:\\x\\y.txt"}], "C:\\k": 3}) == {"a": [1, 2.5, None, True, {"b": "…\\y.txt"}], "C:\\k": 3})
+pruefe("Bereinigen: verschachtelt, Zahlen und None bleiben, Texte und Schlüsselnamen werden bereinigt", F.bereinigen({"a": [1, 2.5, None, True, {"b": "C:\\x\\y.txt"}], "C:\\k": 3}) == {"a": [1, 2.5, None, True, {"b": "…\\y.txt"}], "…\\k": 3})
+pruefe("Bereinigen: Ordner mit Leerzeichen («C:\\Program Files\\…»)", F.bereinigen("C:\\Program Files\\Krypto\\data\\x.json lag da") == "…\\x.json lag da")
+_perm = str(PermissionError(13, "Permission denied", "C:\\Users\\Anna Beispiel\\krypto\\data\\krypto-pilot.json"))
+pruefe("Bereinigen: der Text eines echten PermissionError (Rückstriche doppelt, Leerzeichen im Benutzernamen)", "Anna" not in F.bereinigen(_perm) and "Users" not in F.bereinigen(_perm) and "krypto-pilot.json" in F.bereinigen(_perm), F.bereinigen(_perm))
+for roh_, soll_ in (("/srv/app/data/x.json", "…/x.json"), ("/media/usb/y.txt", "…/y.txt"), ("/c/Users/Anna/z.txt", "…/z.txt"), ("/cygdrive/c/Users/Anna/q.txt", "…/q.txt"), ("//server/share/ordner/datei.txt", "…/datei.txt"),
+                    ("\\\\server\\share\\ordner\\datei.txt", "…\\datei.txt"), ("file:///home/anna/x.json", "file://…/x.json"), ("D:/Daten/x/y.json", "…\\y.json")):
+    pruefe(f"Bereinigen: {roh_} → {soll_}", F.bereinigen(roh_) == soll_, F.bereinigen(roh_))
+pruefe("Bereinigen: Schlüsselnamen werden auch bereinigt", F.bereinigen({"C:\\Users\\Anna\\k": 1}) == {"…\\k": 1})
+pruefe("Bereinigen: der Benutzername verschwindet überall (gross/klein egal), auch ohne Pfad davor", F.bereinigen({"t": "Hallo Hanspeter, hanspeter und HANSPETER"}, geheim=("Hanspeter",)) == {"t": "Hallo …, … und …"})
+_alt_gu, _alt_env = F.getpass.getuser, dict(os.environ)
+try:
+    F.getpass.getuser = lambda: "Hanspeter"
+    for k_ in ("USERNAME", "USER"):
+        os.environ.pop(k_, None)
+    pruefe("Eigene Namen: der Anmeldename ab vier Zeichen zählt", "Hanspeter" in F.eigene_namen())
+    F.getpass.getuser = lambda: "root"
+    pruefe("Eigene Namen: Allerweltsnamen («root», «user», «admin» …) und zu kurze bleiben ausserhalb", not any(n.lower() in ("root", "user", "admin") for n in F.eigene_namen()))
+    F.getpass.getuser = lambda: "Ab"
+    pruefe("Eigene Namen: zwei Zeichen sind zu kurz (sonst würde normaler Text zerhackt)", "Ab" not in F.eigene_namen())
+
+    def kaputt_user():
+        raise OSError("kein Benutzer")
+    F.getpass.getuser = kaputt_user
+    pruefe("Eigene Namen: ein Fehler beim Ermitteln stürzt nicht ab", isinstance(F.eigene_namen(), tuple))
+finally:
+    F.getpass.getuser = _alt_gu
+    os.environ.clear()
+    os.environ.update(_alt_env)
 tief = x = {}
 for _ in range(40):
     x["n"] = {}
@@ -344,11 +371,19 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
     st, kopf, body = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
     j = json.loads(body) if st == 200 else {}
     pruefe("Mit Cookie: /api/stand → 200, JSON, Konto da", st == 200 and j.get("konto", {}).get("wert") == 5000.0 and "application/json" in kopf["content-type"])
+    pruefe("Mit Cookie: der Name des Benutzers ist nur dann sichtbar, wenn der Server ihn nicht kennt (hier: Welt kennt keinen)", "Hallo Hanspeter" in body.decode())
+    w.s._geheim = ("Hanspeter",)
+    w.s._cache.clear()
+    st, kopf, body = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
+    pruefe("Mit Cookie: kennt der Server den Benutzernamen, steht er in /api/stand nirgends («Hallo …»)", st == 200 and "Hanspeter" not in body.decode() and "Hallo …" in body.decode(), body[:200])
+    w.s._geheim = ()
+    w.s._cache.clear()
+    st, kopf, body = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
     pruefe("Mit Cookie: Pfade des PCs sind aus den Texten verschwunden", "alleng" not in body.decode() and "…\\krypto-pilot.json" in body.decode().replace("\\\\", "\\") and "…/y.txt" in body.decode(), body[:300])
     st, kopf, body = anfrage(P, "GET", "/api/profit?x=1", cookie=COOKIE)
     pruefe("Mit Cookie: /api/profit mit Abfrage-Teil → 200", st == 200 and json.loads(body).get("stand") == "ok")
     pruefe("Mit Cookie: auch im Profit sind die Pfade des PCs verschwunden", "alleng" not in body.decode() and "profit.json" in body.decode(), body[:200])
-    pruefe("Mit Cookie: die Berechnungen liefen je einmal", w.aufrufe == {"stand": 1, "profit": 1, "seite": 1, "markt": 1}, w.aufrufe)
+    pruefe("Mit Cookie: die Berechnungen liefen je einmal (Stand dreimal: die zwei Zusatzabfragen zum Benutzernamen davor)", w.aufrufe == {"stand": 3, "profit": 1, "seite": 1, "markt": 1}, w.aufrufe)
     for pfad in ("/api/aktion", "/api/notaus", "/api/fern", "/api/protokoll", "/api/stand/", "/api/stand.json", "/INDEX.HTML", "/../etc/passwd", "/%2e%2e/x", "/api/%73tand", "/cockpit.py",
                  "/data/krypto-fern.json", "/krypto-fern.json", "/.git/config", "/favicon.ico"):
         st, kopf, body = anfrage(P, "GET", pfad, cookie=COOKIE)
@@ -395,12 +430,16 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
     vor = dict(w.aufrufe)
     _alt_q = F.quelle_erlaubt
     F.quelle_erlaubt = lambda a: False
+    antworten = []
     try:
-        st, kopf, body = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
-        st2, _, body2 = anfrage(P, "GET", f"/?k={KEY}")
+        for pfad_f, ck_f in (("/api/stand", COOKIE), (f"/?k={KEY}", None)):
+            try:
+                antworten.append(anfrage(P, "GET", pfad_f, cookie=ck_f)[0])
+            except (http.client.RemoteDisconnected, ConnectionResetError, BrokenPipeError):
+                antworten.append("zu")
     finally:
         F.quelle_erlaubt = _alt_q
-    pruefe("Fremde Quelle: 403, auch mit gültigem Cookie oder Schlüssel", st == 403 and st2 == 403 and b"5000" not in body and b"GEHEIM" not in body2)
+    pruefe("Fremde Quelle: die Verbindung wird OHNE jede Antwort geschlossen (auch mit gültigem Cookie oder Schlüssel), nicht einmal ein Fehlertext", antworten == ["zu", "zu"], antworten)
     pruefe("Fremde Quelle: nichts ausgelöst, im Protokoll vermerkt", w.aufrufe == vor and any(e["art"] == "fremde-quelle" for e in w.s.ui()["ereignisse"]))
 
     # 8i) falsche Schlüssel und Sperre
@@ -521,7 +560,7 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
     pruefe("Karte: jedes Ereignis nennt die Quelle (Adresse des Geräts) und eine Zeit", all(e["quelle"] == "127.0.0.1" and e["zeit"].startswith("20") for e in ui["ereignisse"]), ui["ereignisse"][:2])
     alle = []
     with w.s._lock:
-        alle = list(w.s._ereignisse)
+        alle = list(w.s._ereignisse.values())
     pruefe("Protokoll: bekannte Arten vorhanden (angemeldet, falscher-schluessel, gesperrt, methode, falscher-host, fremde-quelle)",
            {"angemeldet", "falscher-schluessel", "gesperrt", "methode", "falscher-host", "fremde-quelle"} <= {e["art"] for e in alle}, {e["art"] for e in alle})
     pruefe("Protokoll: der Schlüssel steht in KEINEM Ereignis (auch kein alter, kein falscher)", all(k_ not in alles_text(alle) for k_ in (KEY, alter_key, alter_key2, "falsch0", "nochmals0")))
@@ -601,6 +640,10 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
         time.sleep(0.4)
     st, _, _ = anfrage(P5, "GET", "/api/stand", cookie=C5)
     pruefe("Dreimal Flut und wieder frei: kein Platz ist verloren gegangen (jeder Platz wird zurückgegeben)", st == 200)
+    for _ in range(40):                 # ein Faden, der gerade endet, gibt seinen Platz einen Atemzug später zurück
+        if w5.s._srv._platz._value == F._Server.MAX_GLEICHZEITIG:
+            break
+        time.sleep(0.1)
     pruefe("Plätze: nach allem sind wieder alle 32 frei", w5.s._srv._platz._value == F._Server.MAX_GLEICHZEITIG, w5.s._srv._platz._value)
     _alt_start = threading.Thread.start
     _versuche = []
@@ -621,6 +664,190 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
     st, _, _ = anfrage(P5, "GET", "/api/stand", cookie=C5)
     pruefe("Nach dem Fehlstart antwortet der Server weiter", st == 200)
     w5.stopp()
+
+    # 8n3) Je Quelle höchstens 8 Plätze, alle Quellen zusammen höchstens 32; eine Quelle, die flutet, sperrt die anderen nicht aus
+    w6 = Welt()
+    P6, C6 = w6.port, w6.cookie
+    basis_f = threading.active_count()
+    stille = [socket.create_connection(("127.0.0.1", P6), timeout=5) for _ in range(30)]
+    time.sleep(0.7)
+    mehr = threading.active_count() - basis_f
+    pruefe("Eine Quelle: 30 stille Verbindungen von EINER Adresse belegen höchstens 8 Fäden", mehr <= F._Server.JE_QUELLE + 1, mehr)
+    pruefe("Eine Quelle: die Grenze je Quelle ist 8", F._Server.JE_QUELLE == 8)
+    st, _, _ = anfrage(P6, "GET", "/api/stand", cookie=C6, quelle="127.0.0.9")
+    pruefe("Eine Quelle flutet (127.0.0.1): ein anderes Gerät (127.0.0.9) wird trotzdem normal bedient", st == 200, st)
+    for s_ in stille:
+        s_.close()
+    time.sleep(0.5)
+    stille = []
+    for i in range(100):
+        try:
+            stille.append(socket.create_connection(("127.0.0.1", P6), timeout=5, source_address=(f"127.0.0.{2 + i % 12}", 0)))
+        except OSError:
+            break
+    time.sleep(0.9)
+    mehr = threading.active_count() - basis_f
+    pruefe("Viele Quellen: 100 stille Verbindungen von 12 Adressen belegen höchstens 32 Fäden", F._Server.JE_QUELLE * 12 > F._Server.MAX_GLEICHZEITIG and mehr <= F._Server.MAX_GLEICHZEITIG + 1, mehr)
+    for s_ in stille:
+        s_.close()
+    time.sleep(0.6)
+    st, _, _ = anfrage(P6, "GET", "/api/stand", cookie=C6)
+    pruefe("Nach der Flut aus vielen Quellen antwortet der Server wieder", st == 200)
+    for _ in range(40):
+        if w6.s._srv._platz._value == F._Server.MAX_GLEICHZEITIG and w6.s._srv._je_quelle == {} and w6.s._srv._offen == {}:
+            break
+        time.sleep(0.1)
+    pruefe("Plätze und Zähler je Quelle sind nach der Flut wieder leer", w6.s._srv._platz._value == F._Server.MAX_GLEICHZEITIG and w6.s._srv._je_quelle == {} and w6.s._srv._offen == {}, (w6.s._srv._je_quelle, len(w6.s._srv._offen)))
+    w6.stopp()
+
+    # 8n4) Absolute Frist: ein tröpfelndes Gerät hält keinen Platz ohne Ende (das Zeitlimit des Handlers gilt nur je Lesen)
+    w7 = Welt()
+    _alt_dauer = F._Server.MAX_DAUER_S
+    F._Server.MAX_DAUER_S = 2.0
+    zu_nach = None
+    try:
+        k_ = socket.create_connection(("127.0.0.1", w7.port), timeout=5)
+        start_ = time.monotonic()
+        k_.sendall(b"G")
+        while time.monotonic() - start_ < 9:
+            time.sleep(0.4)
+            try:
+                k_.sendall(b"E")
+            except OSError:
+                zu_nach = time.monotonic() - start_
+                break
+        k_.close()
+    finally:
+        F._Server.MAX_DAUER_S = _alt_dauer
+    pruefe("Absolute Frist: ein Gerät, das alle 0,4 s ein Byte tröpfelt, wird nach MAX_DAUER_S (2 s) vom Wächter getrennt", zu_nach is not None and 1.5 <= zu_nach <= 6.5, zu_nach)
+    pruefe("Absolute Frist: Vorgabe 30 Sekunden", F._Server.MAX_DAUER_S == 30.0)
+    st, _, _ = anfrage(w7.port, "GET", "/api/stand", cookie=w7.cookie)
+    for _ in range(40):
+        if w7.s._srv._offen == {}:
+            break
+        time.sleep(0.1)
+    pruefe("…und der Server antwortet weiter; die getrennte Verbindung steht nicht mehr in der Liste der offenen", st == 200 and w7.s._srv._offen == {}, w7.s._srv._offen)
+    w7.stopp()
+
+    # 8i2) Sec-Fetch: ein unsichtbar geladener Link zählt nicht als Fehlversuch, aber der echte Link als Seite geht
+    w8 = Welt()
+    P8, K8 = w8.port, w8.key
+    SF_BILD = {"Sec-Fetch-Dest": "image", "Sec-Fetch-Mode": "no-cors", "Sec-Fetch-Site": "cross-site"}
+    SF_SEITE = {"Sec-Fetch-Dest": "document", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-Site": "cross-site"}
+    st_liste = [anfrage(P8, "GET", "/?k=falsch%d" % i, kopf=SF_BILD)[0] for i in range(7)]
+    pruefe("Fremde Webseite lädt 7× einen Link mit falschem Schlüssel als Bild: jedes Mal 403 (nicht 401) und KEIN Fehlversuch", st_liste == [403] * 7, st_liste)
+    st, kopf, _ = anfrage(P8, "GET", f"/?k={K8}", kopf=SF_SEITE)
+    pruefe("…danach geht der echte Link, als Seite geöffnet (auch von einer anderen Seite aus angeklickt): 303, nicht gesperrt", st == 303 and "set-cookie" in kopf, st)
+    for dest, mode in (("image", "no-cors"), ("script", "no-cors"), ("iframe", "navigate"), ("empty", "cors"), ("style", "no-cors"), ("embed", "no-cors")):
+        st, kopf, _ = anfrage(P8, "GET", f"/?k={K8}", kopf={"Sec-Fetch-Dest": dest, "Sec-Fetch-Mode": mode})
+        pruefe(f"Mit dem RICHTIGEN Schlüssel, aber als «{dest}/{mode}» geladen: 403 und kein Cookie", st == 403 and "set-cookie" not in kopf, st)
+    for kopf_x, name_x in (({"Sec-Fetch-Mode": "cors"}, "nur Mode cors"), ({"Sec-Fetch-Mode": "no-cors"}, "nur Mode no-cors"), ({"Sec-Fetch-Dest": "empty"}, "nur Dest empty")):
+        st, kopf, _ = anfrage(P8, "GET", f"/?k={K8}", kopf=kopf_x)
+        pruefe(f"Link mit richtigem Schlüssel, {name_x}: 403 und kein Cookie (kein Seitenaufruf)", st == 403 and "set-cookie" not in kopf, st)
+    for kopf_x, name_x in (({"Sec-Fetch-Dest": "document"}, "nur Dest document"), ({"Sec-Fetch-Mode": "navigate"}, "nur Mode navigate"), ({}, "gar keine Köpfe (curl)"), ({"Sec-Fetch-Dest": "DOCUMENT", "Sec-Fetch-Mode": "NAVIGATE"}, "Grossschreibung")):
+        st, kopf, _ = anfrage(P8, "GET", f"/?k={K8}", kopf=kopf_x)
+        pruefe(f"Link mit richtigem Schlüssel, {name_x}: 303", st == 303, st)
+    st, _, _ = anfrage(P8, "GET", "/api/stand", kopf={"X-Krypto-Fern": K8, "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors"})
+    pruefe("Schlüssel im Kopf (für Skripte): die Sec-Fetch-Köpfe spielen keine Rolle", st == 200, st)
+    for i in range(5):
+        anfrage(P8, "GET", "/?k=nochmal%d" % i, kopf=SF_SEITE)
+    st, _, _ = anfrage(P8, "GET", f"/?k={K8}", kopf=SF_SEITE)
+    pruefe("Falsche Schlüssel als echte Seitenaufrufe zählen weiter: nach fünf ist die Quelle gesperrt (429)", st == 429, st)
+    pruefe("Das Protokoll kennt «fremder-aufruf»", any(e["art"] == "fremder-aufruf" for e in w8.s.ui()["ereignisse"]))
+    w8.stopp()
+
+    # 8l3) Neue Quelladresse: auch mit nur einem gespeicherten Cookie wird gemeldet (ein gestohlenes Cookie fiele sonst nie auf)
+    w9 = Welt()
+    P9, K9, C9 = w9.port, w9.key, w9.cookie
+    anfrage(P9, "GET", "/api/stand", cookie=C9, quelle="127.0.0.2")
+    pruefe("Neue Quelle nur mit Cookie: genau eine Meldung, nennt Adresse und «gespeichertem Zugang», nicht den Schlüssel", len(w9.meldungen) == 1 and "127.0.0.2" in w9.meldungen[0] and "gespeichertem Zugang" in w9.meldungen[0] and K9 not in w9.meldungen[0], w9.meldungen)
+    anfrage(P9, "GET", "/api/stand", cookie=C9, quelle="127.0.0.2")
+    pruefe("Dieselbe Quelle nochmals: keine zweite Meldung", len(w9.meldungen) == 1)
+    anfrage(P9, "GET", f"/?k={K9}", quelle="127.0.0.3")
+    pruefe("Neue Quelle mit dem Link: eine Meldung «mit dem Schlüssel»", len(w9.meldungen) == 2 and "127.0.0.3" in w9.meldungen[1] and "mit dem Schlüssel" in w9.meldungen[1] and K9 not in w9.meldungen[1], w9.meldungen)
+    anfrage(P9, "GET", "/api/stand", cookie=C9, quelle="127.0.0.3")
+    pruefe("Dieselbe Quelle danach mit Cookie: still", len(w9.meldungen) == 2)
+    anfrage(P9, "GET", "/api/stand", cookie="0" * 64, quelle="127.0.0.4")
+    anfrage(P9, "GET", "/?k=falsch", quelle="127.0.0.4")
+    pruefe("Eine Quelle ohne gültigen Zugang löst keine Meldung aus (sie kommt ja nicht hinein)", len(w9.meldungen) == 2)
+    arten9 = {(e["art"], e["quelle"]) for e in w9.s.ui()["ereignisse"]}
+    pruefe("Das Protokoll hat «neues-geraet» für 127.0.0.2 und «angemeldet» für 127.0.0.3", ("neues-geraet", "127.0.0.2") in arten9 and ("angemeldet", "127.0.0.3") in arten9, arten9)
+    w9.stopp()
+
+    # 8l4) Das Protokoll lässt sich nicht fluten: derselbe Vorfall derselben Quelle zählt hoch, statt Platz zu belegen
+    w10 = Welt()
+    anfrage(w10.port, "GET", f"/?k={w10.key}")
+    anfrage(w10.port, "GET", "/?k=falsch")
+    for _ in range(150):
+        anfrage(w10.port, "GET", "/api/stand", host="evil.example:1")
+    for _ in range(60):
+        anfrage(w10.port, "POST", "/api/aktion", cookie=w10.cookie, body=b"{}")
+    ev10 = {e["art"]: e for e in w10.s.ui()["ereignisse"]}
+    pruefe("Protokoll: 150 falsche Hosts und 60 Schreibversuche spülen «angemeldet» und «falscher-schluessel» NICHT weg", {"angemeldet", "falscher-schluessel", "falscher-host", "methode"} <= set(ev10), set(ev10))
+    pruefe("Protokoll: die Zähler stimmen (150 falsche Hosts, 60 Schreibversuche, 1 falscher Schlüssel, 1 Anmeldung)",
+           ev10["falscher-host"]["n"] == 150 and ev10["methode"]["n"] == 60 and ev10["falscher-schluessel"]["n"] == 1 and ev10["angemeldet"]["n"] == 1, {k: v["n"] for k, v in ev10.items()})
+    for i in range(100):
+        w10.s.ereignis("x", f"10.0.0.{i}")
+    pruefe("Protokoll: höchstens 60 verschiedene Einträge, die neuesten bleiben", len(w10.s._ereignisse) == 60 and ("x", "10.0.0.99") in w10.s._ereignisse and ("x", "10.0.0.0") not in w10.s._ereignisse)
+    pruefe("Protokoll: die Karte zeigt höchstens 10, neueste zuerst, jeder mit Zähler n", len(w10.s.ui()["ereignisse"]) == 10 and all(isinstance(e["n"], int) and e["n"] >= 1 for e in w10.s.ui()["ereignisse"]) and w10.s.ui()["ereignisse"][0]["quelle"] == "10.0.0.99")
+    w10.stopp()
+
+    # 8k2) «Aus» bleibt zu, auch wenn das Speichern scheitert (Windows: Datei gerade offen); kurze Zugriffsfehler werden wiederholt
+    w11 = Welt()
+    P11, C11 = w11.port, w11.cookie
+    _alt_replace = os.replace
+
+    def immer_kaputt(a, b):
+        raise PermissionError(13, "Zugriff verweigert")
+    os.replace = immer_kaputt
+    try:
+        ok_, text_ = w11.s.schalten(False)
+    finally:
+        os.replace = _alt_replace
+    pruefe("Aus bei Speicherfehler: (False, «GESTOPPT … wäre sie wieder an»), und der Server ist trotzdem zu", ok_ is False and "GESTOPPT" in text_ and "wieder an" in text_ and not w11.s.laeuft(), text_)
+    try:
+        anfrage(P11, "GET", "/api/stand", cookie=C11)
+        zu_11 = False
+    except OSError:
+        zu_11 = True
+    pruefe("…das alte Cookie bekommt keine Antwort mehr", zu_11)
+    pruefe("Aus bei Speicherfehler: keine Wegwerfdatei bleibt liegen", sorted(p_.name for p_ in w11.daten.iterdir()) == [F.DATEI], [p_.name for p_ in w11.daten.iterdir()])
+    zaehler = {"n": 0}
+
+    def zweimal_kaputt(a, b):
+        zaehler["n"] += 1
+        if zaehler["n"] <= 2:
+            raise PermissionError(13, "gerade offen")
+        return _alt_replace(a, b)
+    os.replace = zweimal_kaputt
+    try:
+        ok_, text_ = w11.s.schalten(True)
+    finally:
+        os.replace = _alt_replace
+    pruefe("Kurzer Zugriffsfehler (Datei gerade gelesen): nach zwei Wiederholungen klappt das Einschalten", ok_ is True and zaehler["n"] == 3 and w11.s.laeuft(), (ok_, zaehler, text_))
+    key_vor = F.lesen(w11.daten)["schluessel"]
+    os.replace = immer_kaputt
+    try:
+        ok_, text_ = w11.s.schalten(True, erneuern=True)
+    finally:
+        os.replace = _alt_replace
+    pruefe("Einschalten/Erneuern ohne Speichern: (False, «nicht speichern»), der Schlüssel bleibt der alte", ok_ is False and "nicht speichern" in text_ and F.lesen(w11.daten)["schluessel"] == key_vor, text_)
+    w11.stopp()
+
+    # 8c2) Umleitung nach dem Anmelden: nur zu bekannten Adressen, nie zu etwas Ausgedachtem
+    w12 = Welt()
+    P12, K12 = w12.port, w12.key
+    for pfad_l, ziel_l in (("/", "/"), ("/index.html", "/index.html"), ("/markt", "/markt"), ("/markt.html", "/markt.html"), ("/api/stand", "/api/stand"), ("/api/profit", "/api/profit"),
+                           ("/zzz", "/"), ("/%5Cevil.example/x", "/"), ("/evil.example", "/"), ("/api/aktion", "/"), ("/%2f%2fevil.example", "/")):
+        st, kopf, _ = anfrage(P12, "GET", f"{pfad_l}?k={K12}")
+        pruefe(f"Umleitung von {pfad_l}: nach {ziel_l}", st == 303 and kopf.get("location") == ziel_l and not kopf.get("location", "").startswith(("//", "\\\\")), (st, kopf.get("location")))
+    for pfad_b in ("/\\evil.example/x", "/a\\b", "\\evil"):
+        try:
+            st, kopf, _ = anfrage(P12, "GET", f"{pfad_b}?k={K12}")
+            pruefe(f"Rückstrich im Pfad {pfad_b!r}: 400, keine Umleitung, kein Cookie", st == 400 and "location" not in kopf and "set-cookie" not in kopf, st)
+        except (http.client.HTTPException, OSError) as ex_b:
+            pruefe(f"Rückstrich im Pfad {pfad_b!r}: abgelehnt", True, type(ex_b).__name__)
+    w12.stopp()
 
     # 8o) Port belegt
     belegt = socket.socket()
@@ -672,7 +899,7 @@ for n in ast.walk(baum):
         importiert |= {a.name for a in n.names}
     elif isinstance(n, ast.ImportFrom):
         importiert.add(n.module or "")
-ERLAUBTE_IMPORTE = {"__future__", "hashlib", "hmac", "ipaddress", "json", "os", "re", "secrets", "socket", "sys", "threading", "time", "urllib.parse", "collections", "datetime", "http.server", "pathlib"}
+ERLAUBTE_IMPORTE = {"__future__", "getpass", "hashlib", "hmac", "ipaddress", "json", "os", "re", "secrets", "socket", "sys", "threading", "time", "urllib.parse", "collections", "datetime", "http.server", "pathlib"}
 pruefe("Invariante: nur Standardbibliothek-Module, kein Netz nach aussen, keine Prozesse", importiert <= ERLAUBTE_IMPORTE, importiert - ERLAUBTE_IMPORTE)
 pruefe("Invariante: kennt weder Cockpit noch Pilot, Broker, Sperre, Binance, Telegram", not re.search(r"^\s*(?:import|from)\s+(?:cockpit|pilot|broker|sperre|signale|satellit|binance|telegram|urllib\.request|http\.client|subprocess|ssl)", quelle, re.M))
 pruefe("Invariante: kein exec/eval/os.system/subprocess/__import__ im Quelltext", not re.search(r"\b(?:exec|eval|__import__)\s*\(|os\.system|subprocess|os\.popen", quelle))
@@ -691,7 +918,9 @@ pruefe("Invariante: POST/PUT/DELETE/PATCH/OPTIONS sind genau `_nein`", sorted(t.
 nein = next(n for n in klasse.body if isinstance(n, ast.FunctionDef) and n.name == "_nein")
 pruefe("Invariante: `_nein` ruft nichts ausser Protokoll und Antwort", {c.func.attr for c in ast.walk(nein) if isinstance(c, ast.Call) and isinstance(c.func, ast.Attribute)} <= {"ereignis", "_senden"})
 pruefe("Invariante: die festen Adressen sind genau vier Seiten/Daten", set(re.findall(r'pfad (?:in \(|== )"([^"]+)"', quelle)) | set(re.findall(r'"(/[a-z/.]*)"', quelle[quelle.index("def _bearbeiten"):quelle.index("def _antwort")])) >= {"/", "/api/stand", "/api/profit"})
-pruefe("Invariante: die Plätze (Semaphore) werden beim Beenden des Fadens zurückgegeben und beim Fehlstart auch", quelle.count("self._platz.release()") == 2 and "BoundedSemaphore" in quelle)
+pruefe("Invariante: der Platz (Semaphore) wird an EINER Stelle zurückgegeben (`_frei`), und die wird beim Beenden des Fadens und beim Fehlstart gerufen", quelle.count("self._platz.release()") == 1 and quelle.count("self._frei(request") == 2 and "BoundedSemaphore" in quelle)
+pruefe("Invariante: kein SO_REUSEADDR unter Windows (zwei Cockpit-Fenster würden sich den Port teilen)", 'allow_reuse_address = os.name != "nt"' in quelle)
+pruefe("Invariante: der Server prüft die Quelle schon vor dem Faden (verify_request)", "def verify_request" in quelle and "if not quelle_erlaubt(client_address[0]):" in quelle)
 pruefe("Invariante: Dateien werden nur in `schreiben` geschrieben", quelle.count(".write_text(") == 1 and "open(" not in quelle and ".write(" in quelle and quelle.count(".write(") == 1)
 pruefe("Invariante: kein Schlüssel in print/Protokoll (kein print im Modul ausser der Hilfe)", len(re.findall(r"\bprint\(", quelle)) == 1)
 pruefe("Invariante: der Schlüssel kommt von `secrets`, nicht von `random`", "secrets.token_urlsafe" in quelle and "import random" not in quelle)

@@ -245,7 +245,7 @@ def fern(fall):
         return aus
     adr = [{"art": "Heimnetz (WLAN/LAN)", "tailscale": False, "anzeige": "http://192.168.1.23:8766/", "url": "http://192.168.1.23:8766/?k=" + FERN_SCHLUESSEL},
            {"art": "Tailscale (von unterwegs)", "tailscale": True, "anzeige": "http://100.101.102.103:8766/", "url": "http://100.101.102.103:8766/?k=" + FERN_SCHLUESSEL}]
-    ev = [{"zeit": "2026-11-04T09:05:11+00:00", "art": "fremde-quelle", "quelle": "203.0.113.9", "info": ""}, {"zeit": "2026-11-04T09:01:40+00:00", "art": "methode", "quelle": "192.168.1.77", "info": "POST"},
+    ev = [{"zeit": "2026-11-04T09:05:11+00:00", "art": "fremde-quelle", "quelle": "203.0.113.9", "info": "", "n": 12}, {"zeit": "2026-11-04T09:01:40+00:00", "art": "methode", "quelle": "192.168.1.77", "info": "POST"},
           {"zeit": "2026-11-04T08:59:02+00:00", "art": "gesperrt", "quelle": "192.168.1.77", "info": ""}, {"zeit": "2026-11-04T08:58:30+00:00", "art": "falscher-schluessel", "quelle": "192.168.1.77", "info": ""},
           {"zeit": "2026-11-04T08:40:00+00:00", "art": "angemeldet", "quelle": "192.168.1.40", "info": ""}]
     an = dict(aus, an=True, laeuft=True, adressen=adr, erzeugt="2026-11-04T08:30:00+00:00", geraete=[{"quelle": "192.168.1.40", "vor_s": 185}, {"quelle": "100.101.102.50", "vor_s": 7200}], ereignisse=ev)

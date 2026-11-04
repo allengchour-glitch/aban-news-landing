@@ -1072,13 +1072,13 @@ def handy_befehl(text):
         return "📱 Handy-Ansicht: aus. Einschalten nur am PC (Karte «Handy-Ansicht» im Cockpit)."
     if not u["laeuft"]:
         return "📱 Handy-Ansicht ist eingeschaltet, läuft aber nicht" + (f": {u['fehler']}" if u["fehler"] else " (Cockpit neu öffnen).")
-    abgewiesen = sum(1 for e in u["ereignisse"] if e["art"] in ("falscher-schluessel", "gesperrt", "fremde-quelle", "falscher-host"))
+    abgewiesen = sum(e.get("n", 1) for e in u["ereignisse"] if e["art"] in ("falscher-schluessel", "gesperrt", "fremde-quelle", "falscher-host", "fremder-aufruf"))
     z = [f"📱 Handy-Ansicht (nur lesen): AN auf Port {u['port']}."]
     if u["geraete"]:
         g = u["geraete"][0]
         z.append(f"Zuletzt gesehen: {g['quelle']} vor {g['vor_s'] // 60} Min.")
     if abgewiesen:
-        z.append(f"⚠️ {abgewiesen} abgewiesene Versuche unter den letzten {len(u['ereignisse'])} Ereignissen (falscher Schlüssel, Host oder Quelle). Warst du das nicht: /handy erneuern.")
+        z.append(f"⚠️ {abgewiesen} abgewiesene Versuche (falscher Schlüssel, Host, Quelle oder fremde Seite). Warst du das nicht: /handy erneuern.")
     z.append("/handy aus · /handy erneuern")
     return "\n".join(z)
 

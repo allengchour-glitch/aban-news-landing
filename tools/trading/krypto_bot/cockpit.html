@@ -1550,7 +1550,8 @@ addEventListener("resize", () => {
 
 // ───────── Handy-Ansicht (Karte nur am PC über 127.0.0.1; im Lesemodus gibt es sie nicht) ─────────
 const FERN_ART = {"angemeldet": "Gerät angemeldet", "falscher-schluessel": "falscher Schlüssel", "gesperrt": "gesperrt (zu viele Fehlversuche)", "fremde-quelle": "fremde Quelle abgewiesen",
-  "falscher-host": "falscher Host abgewiesen", "methode": "Schreibversuch abgewiesen", "fehler": "Fehler"};
+  "falscher-host": "falscher Host abgewiesen", "methode": "Schreibversuch abgewiesen", "fehler": "Fehler",
+  "neues-geraet": "neues Gerät (gespeicherter Zugang)", "fremder-aufruf": "Link von einer fremden Seite abgewiesen"};
 let letzteFern = null;
 function fernZeichnen(f) {
   const k = $("fern");
@@ -1572,7 +1573,7 @@ function fernZeichnen(f) {
     const g = f.geraete || [];
     h += g.length ? `<p class="unter">Zuletzt gesehen: ${g.slice(0, 3).map(x => esc(x.quelle) + " vor " + Math.max(0, Math.round(x.vor_s / 60)) + " Min.").join(" · ")}</p>` : `<p class="unter">Noch kein Gerät hat die Ansicht geöffnet.</p>`;
     const ev = (f.ereignisse || []).slice(0, 5);
-    if (ev.length) h += `<ul class="fern-ereignisse" aria-label="Letzte Ereignisse">${ev.map(e => `<li class="${e.art === "angemeldet" ? "" : "fern-schlecht"}">${esc(uhr(e.zeit))} · ${esc(FERN_ART[e.art] || e.art)} · ${esc(e.quelle)}${e.info ? " · " + esc(e.info) : ""}</li>`).join("")}</ul>`;
+    if (ev.length) h += `<ul class="fern-ereignisse" aria-label="Letzte Ereignisse">${ev.map(e => `<li class="${e.art === "angemeldet" || e.art === "neues-geraet" ? "" : "fern-schlecht"}">${esc(uhr(e.zeit))} · ${esc(FERN_ART[e.art] || e.art)} · ${esc(e.quelle)}${e.info ? " · " + esc(e.info) : ""}${e.n > 1 ? " · ×" + esc(String(e.n)) : ""}</li>`).join("")}</ul>`;
     h += `<div class="fern-zeile"><button type="button" id="fernNeu">Schlüssel erneuern</button><span class="unter">macht alle bisherigen Links und angemeldeten Geräte ungültig</span></div>`;
   }
   $("fernInhalt").innerHTML = h;
@@ -1582,6 +1583,7 @@ async function ladeFern() {
   try { fernZeichnen(await (await fetch("/api/fern", {cache: "no-store"})).json()); } catch (e) { $("fern").hidden = true; }
 }
 async function fernSchalten(an, erneuern) {
+  if (NUR_LESEN) return;
   const b = $("fernSchalter");
   b.disabled = true;
   try {

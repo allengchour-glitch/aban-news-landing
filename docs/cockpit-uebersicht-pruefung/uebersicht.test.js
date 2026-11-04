@@ -227,7 +227,7 @@ const nah = (a, b, eps) => a != null && b != null && Math.abs(a - b) <= eps;
     // von Hand: 185 s → 3 Min. (3.08 gerundet), 7200 s → 120 Min.; Zeiten in Zürcher Zeit (UTC+1 im November)
     ok(ft.includes('Zuletzt gesehen: 192.168.1.40 vor 3 Min. · 100.101.102.50 vor 120 Min.'), 'Handy-Karte: Geräte «vor 3 Min.» und «vor 120 Min.»', ft);
     const ev = await alle(p, '#fernInhalt .fern-ereignisse li');
-    ok(ev.length === 5 && ev[0] === '10:05:11 · fremde Quelle abgewiesen · 203.0.113.9' && ev[1] === '10:01:40 · Schreibversuch abgewiesen · 192.168.1.77 · POST' && ev[2] === '09:59:02 · gesperrt (zu viele Fehlversuche) · 192.168.1.77'
+    ok(ev.length === 5 && ev[0] === '10:05:11 · fremde Quelle abgewiesen · 203.0.113.9 · ×12' && ev[1] === '10:01:40 · Schreibversuch abgewiesen · 192.168.1.77 · POST' && ev[2] === '09:59:02 · gesperrt (zu viele Fehlversuche) · 192.168.1.77'
       && ev[3] === '09:58:30 · falscher Schlüssel · 192.168.1.77' && ev[4] === '09:40:00 · Gerät angemeldet · 192.168.1.40', 'Handy-Karte: fünf Ereignisse, neueste zuerst, in deutschen Worten', ev);
     ok((await p.$$eval('#fernInhalt .fern-ereignisse li.fern-schlecht', e => e.length)) === 4 && (await p.$eval('#fernInhalt .fern-ereignisse li:last-child', e => !e.classList.contains('fern-schlecht'))), 'Handy-Karte: Abgewiesenes ist rot hervorgehoben (4 von 5), «Gerät angemeldet» nicht');
     ok((await p.$$eval('#fernInhalt button', e => e.map(b => b.textContent.trim()))).join('|') === 'Link kopieren|Link kopieren|Schlüssel erneuern', 'Handy-Karte: Knöpfe «Link kopieren» ×2 und «Schlüssel erneuern»');

@@ -11,7 +11,9 @@ bleibt sie in jedem Fall aus. Zusätzlich zum Cockpit auf 127.0.0.1 läuft dann 
   • nur aus dem Heimnetz (192.168.x.x, 10.x.x.x, 172.16–31.x.x), dem Tailscale-Netz (100.64–127.x.x) und von diesem PC selbst:
     eine Anfrage aus dem öffentlichen Internet wird abgewiesen — auch dann, wenn jemand am Router einen Port freigibt
   • nur mit passendem Host-Kopf (gegen DNS-Rebinding: eine fremde Seite, deren Name plötzlich auf diesen PC zeigt)
-  • Sperre einer Quelle nach fünf falschen Schlüsseln (15 Minuten); höchstens 32 gleichzeitige Verbindungen
+  • Sperre einer Quelle nach fünf falschen Schlüsseln (15 Minuten; ein Link, den eine fremde Webseite unsichtbar lädt, zählt nicht mit); höchstens 32 gleichzeitige
+    Verbindungen, höchstens 8 je Quelle, keine länger als 30 Sekunden; eine Quelle ausserhalb der erlaubten Netze bekommt nicht einmal einen Faden
+  • jede erstmals gesehene Quelladresse wird per Telegram gemeldet (mit Link oder mit gespeichertem Zugang)
   • Kontodaten ohne Pfade dieses PCs
 
 Von unterwegs (Mobilfunk) kommt man NUR durch einen PRIVATEN Tunnel (Tailscale: PC und Handy im selben privaten, verschlüsselten
@@ -24,6 +26,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import getpass
 import ipaddress
 import json
 import os
@@ -34,7 +37,7 @@ import sys
 import threading
 import time
 import urllib.parse
-from collections import deque
+from collections import OrderedDict
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -97,17 +100,32 @@ def lesen(daten):
 
 
 def schreiben(daten, einst):
-    """Atomar schreiben (Wegwerfdatei, dann ersetzen), wo möglich nur für den Besitzer lesbar."""
+    """Atomar schreiben (Wegwerfdatei, dann ersetzen), wo möglich nur für den Besitzer lesbar. Windows verweigert das Ersetzen, solange ein anderer Faden die Datei
+    gerade liest: dann vier Versuche mit kurzer Pause. Scheitert es doch, bleibt keine Wegwerfdatei liegen und der Fehler geht weiter."""
     Path(daten).mkdir(parents=True, exist_ok=True)
     ziel = _datei(daten)
     tmp = ziel.with_name(ziel.name + ".tmp")
-    tmp.write_text(json.dumps({"an": bool(einst.get("an")), "schluessel": einst.get("schluessel", ""), "port": einst.get("port", PORT),
-                               "erzeugt": einst.get("erzeugt", "")}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     try:
-        os.chmod(tmp, 0o600)
-    except OSError:
-        pass
-    os.replace(tmp, ziel)
+        tmp.write_text(json.dumps({"an": bool(einst.get("an")), "schluessel": einst.get("schluessel", ""), "port": einst.get("port", PORT),
+                                   "erzeugt": einst.get("erzeugt", "")}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        try:
+            os.chmod(tmp, 0o600)
+        except OSError:
+            pass
+        for versuch in range(4):
+            try:
+                os.replace(tmp, ziel)
+                return
+            except PermissionError:
+                if versuch == 3:
+                    raise
+                time.sleep(0.05 * (versuch + 1))
+    except BaseException:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+        raise
 
 
 def einschalten(daten, erneuern=False):
@@ -227,20 +245,45 @@ class Sperre:
 
 
 # ───────────────────────── Was die Seite zeigt ─────────────────────────
-_PFAD_WIN = re.compile(r"(?:(?<![A-Za-z0-9])[A-Za-z]:[\\/]|\\\\)(?:[^\\/\s\"'<>|:*?]+[\\/])*([^\\/\s\"'<>|:*?]*)")   # «https://…» ist kein Laufwerk: davor darf kein Buchstabe stehen
-_PFAD_POSIX = re.compile(r"(?<![\w.~-])/(?:home|Users|root|tmp|var|opt|mnt)/(?:[^/\s\"'<>|]+/)*([^/\s\"'<>|]*)")
+# Ein Windows-Pfad darf Leerzeichen in den ORDNER-Namen haben («C:\\Users\\Anna Beispiel\\…»), der letzte Teil (Dateiname) endet am Leerzeichen; Rückstriche dürfen doppelt stehen
+# (so druckt repr() sie). Die Trennzeichen sind je Pfad EINHEITLICH (nur «\\» oder nur «/»): so frisst ein Pfad nicht den Satz bis zum nächsten Pfad.
+_PFAD_WIN = re.compile(r"(?:(?<![A-Za-z0-9])[A-Za-z]:\\+(?:[^\\\n\r\"'<>|:*?]+\\+)*([^\\\s\"'<>|:*?]*)|\\\\+(?:[^\\\n\r\"'<>|:*?]+\\+)*([^\\\s\"'<>|:*?]*))")
+_PFAD_WIN_SLASH = re.compile(r"(?<![A-Za-z0-9])[A-Za-z]:/+(?:[^/\\\n\r\"'<>|:*?]+/+)*([^/\\\s\"'<>|:*?]*)")
+_PFAD_POSIX = re.compile(r"(?<![\w.~:-])/(?:home|Users|root|tmp|var|opt|mnt|srv|media|usr|etc|proc|run|cygdrive|[A-Za-z](?=/Users/))/(?:[^/\s\"'<>|]+/)*([^/\s\"'<>|]*)")
+_PFAD_UNC_SLASH = re.compile(r"(?<![:\w/])//[^/\s\"'<>|]+/(?:[^/\s\"'<>|]+/)*([^/\s\"'<>|]*)")
+_BENUTZER_NIE = {"root", "user", "users", "admin", "administrator", "test", "default", "public", "home", "guest", "system"}
 
 
-def bereinigen(x, _tiefe=0):
-    """Kopie von Daten für die Handy-Ansicht: in Texten verschwinden Ordnerpfade dieses PCs («C:\\Users\\…\\data\\x.json» → «…\\x.json»)."""
+def eigene_namen():
+    """Benutzername dieses PCs (aus dem Anmeldenamen und dem Ordner des Benutzers): wird in den Daten für das Handy überall durch «…» ersetzt, auch wo kein Pfad davor steht.
+    Gängige Allerweltsnamen («root», «user», «admin» …) bleiben unberührt, sonst würde normaler Text zerhackt."""
+    namen = set()
+    for quelle in (lambda: getpass.getuser(), lambda: os.environ.get("USERNAME"), lambda: os.environ.get("USER"), lambda: Path.home().name):
+        try:
+            n = str(quelle() or "").strip()
+        except Exception:  # noqa: BLE001
+            continue
+        if len(n) >= 4 and n.lower() not in _BENUTZER_NIE:
+            namen.add(n)
+    return tuple(sorted(namen, key=len, reverse=True))
+
+
+def bereinigen(x, geheim=(), _tiefe=0):
+    """Kopie von Daten für die Handy-Ansicht: in Texten (und Schlüsselnamen) verschwinden Ordnerpfade dieses PCs («C:\\Users\\…\\data\\x.json» → «…\\x.json»)
+    und die Namen aus `geheim` (der Benutzername)."""
     if _tiefe > 12:
         return None
     if isinstance(x, str):
-        return _PFAD_POSIX.sub(lambda m: "…/" + m.group(1), _PFAD_WIN.sub(lambda m: "…\\" + m.group(1), x))
+        t = _PFAD_WIN.sub(lambda m: "…\\" + (m.group(1) if m.group(1) is not None else m.group(2) or ""), x)
+        t = _PFAD_WIN_SLASH.sub(lambda m: "…\\" + m.group(1), t)
+        t = _PFAD_UNC_SLASH.sub(lambda m: "…/" + m.group(1), _PFAD_POSIX.sub(lambda m: "…/" + m.group(1), t))
+        for g in geheim:
+            t = re.sub(re.escape(g), "…", t, flags=re.IGNORECASE)
+        return t
     if isinstance(x, dict):
-        return {k: bereinigen(v, _tiefe + 1) for k, v in x.items()}
+        return {(bereinigen(k, geheim, _tiefe + 1) if isinstance(k, str) else k): bereinigen(v, geheim, _tiefe + 1) for k, v in x.items()}
     if isinstance(x, (list, tuple)):
-        return [bereinigen(v, _tiefe + 1) for v in x]
+        return [bereinigen(v, geheim, _tiefe + 1) for v in x]
     return x
 
 
@@ -299,6 +342,9 @@ def adressen(port, schluessel, ips=None):
 
 
 # ───────────────────────── Der Webserver ─────────────────────────
+ROUTEN = ("/", "/index.html", "/markt", "/markt.html", "/api/stand", "/api/profit")      # die einzigen Adressen, die überhaupt etwas liefern
+
+
 class _Handler(BaseHTTPRequestHandler):
     ctx = None                          # der FernServer (wird je Server als Unterklasse gesetzt)
     timeout = 10                        # eine hängende Verbindung hält keinen Faden länger als zehn Sekunden fest
@@ -367,13 +413,20 @@ class _Handler(BaseHTTPRequestHandler):
             c.ereignis("falscher-host", quelle)
             return self._senden(403, {"fehler": "falscher Host"})
         teile = urllib.parse.urlsplit(self.path)
-        if teile.scheme or teile.netloc or not teile.path.startswith("/") or teile.path.startswith("//"):
-            return self._senden(400, {"fehler": "ungültige Adresse"})
         pfad = teile.path
+        if teile.scheme or teile.netloc or not pfad.startswith("/") or pfad.startswith("//") or "\\" in pfad or any(ord(z) < 32 or ord(z) == 127 for z in pfad):
+            return self._senden(400, {"fehler": "ungültige Adresse"})      # «/\\evil» liest mancher Browser als «//evil»: Rückstriche und Steuerzeichen gar nicht erst zulassen
         schluessel = c.schluessel()
         if not schluessel:
             return self._senden(503, {"fehler": "Handy-Ansicht ist ausgeschaltet"})
         vorgezeigt, wo = self._vorgezeigt(teile.query)
+        if vorgezeigt is not None and wo == "link":
+            # Ein Link mit Schlüssel wird als SEITE geöffnet (Tippen, Lesezeichen). Eine fremde Webseite, die im Browser des Besitzers unsichtbar Bilder, Skripte oder Rahmen
+            # mit falschem Schlüssel lädt, zählt nicht als Fehlversuch: sonst sperrte sie den Besitzer aus (die Sperre gilt je Quelladresse)
+            ziel_art, modus = (self.headers.get("Sec-Fetch-Dest") or "").lower(), (self.headers.get("Sec-Fetch-Mode") or "").lower()
+            if (ziel_art and ziel_art != "document") or (modus and modus != "navigate"):
+                c.ereignis("fremder-aufruf", quelle, ziel_art or modus)
+                return self._senden(403, {"fehler": "den Link bitte als Seite öffnen"})
         if vorgezeigt is not None:
             if c.sperre.gesperrt(quelle):
                 c.ereignis("gesperrt", quelle)
@@ -387,13 +440,14 @@ class _Handler(BaseHTTPRequestHandler):
             if wo == "link":
                 # Zugang merken und die Adresszeile säubern: der Schlüssel bleibt weder im Verlauf noch im Lesezeichen-Vorschlag hängen
                 cookie = f"{COOKIE}={cookie_wert(schluessel)}; Path=/; Max-Age={COOKIE_SEKUNDEN}; HttpOnly; SameSite=Strict"
-                return self._senden(303, b"", "text/plain; charset=utf-8", extra=(("Location", pfad), ("Set-Cookie", cookie)))
+                ziel = pfad if pfad in ROUTEN else "/"                       # nur zu einer bekannten Adresse zurück, nie zu etwas, das der Aufrufer sich ausdenkt
+                return self._senden(303, b"", "text/plain; charset=utf-8", extra=(("Location", ziel), ("Set-Cookie", cookie)))
         elif not _gleich(_cookie_lesen(self.headers.get("Cookie")), cookie_wert(schluessel)):
             return self._senden(401, ZUGANG_SEITE, "text/html; charset=utf-8")
         c.zugriff(quelle)
-        if pfad in ("/", "/index.html"):
+        if pfad in ROUTEN[0:2]:
             return self._antwort(c.seite, "text/html; charset=utf-8")
-        if pfad in ("/markt", "/markt.html"):
+        if pfad in ROUTEN[2:4]:
             return self._antwort(c.markt, "text/html; charset=utf-8")
         if pfad == "/api/stand":
             return self._antwort(c.stand)
@@ -412,27 +466,75 @@ class _Handler(BaseHTTPRequestHandler):
 
 class _Server(ThreadingHTTPServer):
     daemon_threads = True
-    MAX_GLEICHZEITIG = 32               # mehr gleichzeitige Verbindungen werden sofort geschlossen: der Cockpit-Prozess bekommt nie unbegrenzt viele Fäden (Funkloch, absichtliches Fluten im Heimnetz)
+    allow_reuse_address = os.name != "nt"     # Windows: SO_REUSEADDR liesse einen zweiten Prozess denselben Port belegen (zwei Cockpit-Fenster würden sich die Anfragen teilen)
+    MAX_GLEICHZEITIG = 32               # mehr gleichzeitige Verbindungen werden sofort geschlossen: der Cockpit-Prozess bekommt nie unbegrenzt viele Fäden
+    JE_QUELLE = 8                       # davon höchstens so viele von EINER Quelladresse (ein Browser öffnet bis zu sechs auf einmal)
+    MAX_DAUER_S = 30.0                  # absolute Obergrenze für eine Verbindung: ein Gerät, das alle paar Sekunden ein Byte tröpfelt, hält sonst einen Platz ohne Ende
 
     def __init__(self, *a, **k):
         self._platz = threading.BoundedSemaphore(self.MAX_GLEICHZEITIG)
+        self._sperre = threading.Lock()
+        self._je_quelle, self._offen = {}, {}
+        self._ende = threading.Event()
         super().__init__(*a, **k)
+        threading.Thread(target=self._aufpassen, daemon=True).start()
+
+    def _aufpassen(self):
+        """Ein einziger Wächter: schliesst Verbindungen, die länger als MAX_DAUER_S offen sind (das Zeitlimit des Handlers gilt nur je Lesen)."""
+        while not self._ende.wait(1.0):
+            jetzt = time.monotonic()
+            with self._sperre:
+                alt = [r for r, t in self._offen.items() if jetzt - t > self.MAX_DAUER_S]
+            for r in alt:
+                try:
+                    r.shutdown(socket.SHUT_RDWR)
+                except OSError:
+                    pass
+
+    def verify_request(self, request, client_address):
+        """Schon VOR dem Faden: eine Quelle ausserhalb von Heimnetz, Tailscale und diesem PC bekommt weder einen Faden noch eine Antwort (die Verbindung wird einfach geschlossen)."""
+        if not quelle_erlaubt(client_address[0]):
+            ctx = getattr(self.RequestHandlerClass, "ctx", None)
+            if ctx is not None:
+                ctx.ereignis("fremde-quelle", client_address[0])
+            return False
+        return True
 
     def process_request(self, request, client_address):
-        if not self._platz.acquire(blocking=False):
+        ip = client_address[0]
+        with self._sperre:
+            zu_viele = self._je_quelle.get(ip, 0) >= self.JE_QUELLE
+        if zu_viele or not self._platz.acquire(blocking=False):
             self.shutdown_request(request)
             return
+        with self._sperre:
+            self._je_quelle[ip] = self._je_quelle.get(ip, 0) + 1
+            self._offen[request] = time.monotonic()
         try:
             super().process_request(request, client_address)
         except BaseException:
-            self._platz.release()       # der Faden ließ sich nicht starten
+            self._frei(request, ip)     # der Faden ließ sich nicht starten
             raise
+
+    def _frei(self, request, ip):
+        with self._sperre:
+            self._offen.pop(request, None)
+            n = self._je_quelle.get(ip, 0) - 1
+            if n > 0:
+                self._je_quelle[ip] = n
+            else:
+                self._je_quelle.pop(ip, None)
+        self._platz.release()
 
     def process_request_thread(self, request, client_address):
         try:
             super().process_request_thread(request, client_address)
         finally:
-            self._platz.release()
+            self._frei(request, client_address[0])
+
+    def server_close(self):
+        self._ende.set()
+        super().server_close()
 
     def handle_error(self, request, client_address):
         ex = sys.exc_info()[1]
@@ -456,9 +558,10 @@ class FernServer:
         self._srv = self._faden = None
         self._lock = threading.RLock()
         self._cache = {}
-        self._ereignisse = deque(maxlen=60)
+        self._ereignisse = OrderedDict()   # (Art, Quelle) → Ereignis mit Zähler: derselbe Vorfall derselben Quelle belegt nur EINEN Platz (60 verschiedene), ein Flut-Versuch spült nichts weg
         self._zuletzt = {}              # Quelle → letzter erlaubter Zugriff (Zeit)
-        self._bekannt = set()           # Quellen, die sich schon angemeldet haben (nur die erste löst eine Meldung aus)
+        self._bekannt = set()           # Quellen, die schon einmal hineinkamen (nur die erste löst eine Meldung aus), gleich ob mit Link oder mit gespeichertem Zugang
+        self._geheim = eigene_namen()   # der Benutzername dieses PCs: kommt in den Daten für das Handy nie vor
 
     # ── Einstellung ──
     @property
@@ -480,34 +583,53 @@ class FernServer:
 
     # ── Protokoll ──
     def ereignis(self, art, quelle, info=""):
-        e = {"zeit": datetime.now(timezone.utc).isoformat(timespec="seconds"), "art": art, "quelle": str(quelle)[:64], "info": str(info)[:40]}
+        """Merkt einen Vorfall. Derselbe Vorfall (Art + Quelle) zählt hoch und rückt nach vorn, statt einen neuen Platz zu belegen."""
+        jetzt = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        schluessel = (str(art), str(quelle)[:64])
         with self._lock:
-            self._ereignisse.append(e)
+            e = self._ereignisse.pop(schluessel, None)
+            e = dict(e, zeit=jetzt, info=str(info)[:40], n=e["n"] + 1) if e else {"zeit": jetzt, "art": schluessel[0], "quelle": schluessel[1], "info": str(info)[:40], "n": 1}
+            self._ereignisse[schluessel] = e
+            while len(self._ereignisse) > 60:
+                self._ereignisse.popitem(last=False)
+
+    def _neues_geraet(self, quelle, wie):
+        """Die erste Sichtung einer Quelladresse geht per Telegram raus (die Karte am PC zeigt sie ohnehin)."""
+        if not self.meldung:
+            return
+        text = (f"📱 Handy-Ansicht: ein neues Gerät hat die Ansicht geöffnet ({quelle}, {wie}). Warst du das nicht, im Cockpit am PC «Schlüssel erneuern» drücken "
+                "oder in Telegram /handy aus schicken.")
+
+        def senden():
+            try:
+                self.meldung(text)
+            except Exception:  # noqa: BLE001 — eine Meldung darf die Ansicht nie stören
+                pass
+        if self.meldung_im_faden:
+            threading.Thread(target=senden, daemon=True).start()
+        else:
+            senden()
 
     def zugriff(self, quelle):
+        """Ein erlaubter Zugriff (Link, Kopf oder Cookie). Eine bisher nie gesehene Quelle wird gemeldet — auch wenn sie nur ein gespeichertes Cookie vorzeigt."""
         with self._lock:
             self._zuletzt[quelle] = self.uhr()
             if len(self._zuletzt) > 50:
                 for q in sorted(self._zuletzt, key=self._zuletzt.get)[:len(self._zuletzt) - 50]:
                     self._zuletzt.pop(q, None)
+            neu = quelle not in self._bekannt
+            self._bekannt.add(quelle)
+        if neu:
+            self.ereignis("neues-geraet", quelle)
+            self._neues_geraet(quelle, "mit gespeichertem Zugang")
 
     def angemeldet(self, quelle):
         with self._lock:
             neu = quelle not in self._bekannt
             self._bekannt.add(quelle)
         self.ereignis("angemeldet", quelle)
-        if neu and self.meldung:
-            text = (f"📱 Handy-Ansicht: ein Gerät hat sich mit dem Schlüssel angemeldet ({quelle}). Warst du das nicht, im Cockpit am PC «Schlüssel erneuern» drücken.")
-
-            def senden():
-                try:
-                    self.meldung(text)
-                except Exception:  # noqa: BLE001 — eine Meldung darf die Ansicht nie stören
-                    pass
-            if self.meldung_im_faden:
-                threading.Thread(target=senden, daemon=True).start()
-            else:
-                senden()
+        if neu:
+            self._neues_geraet(quelle, "mit dem Schlüssel")
 
     def geraete(self):
         jetzt = self.uhr()
@@ -527,10 +649,10 @@ class FernServer:
         return wert
 
     def stand(self):
-        return self._zwischen("stand", lambda: bereinigen(self._stand_fn()))
+        return self._zwischen("stand", lambda: bereinigen(self._stand_fn(), self._geheim))
 
     def profit(self):
-        return self._zwischen("profit", lambda: bereinigen(self._profit_fn()))
+        return self._zwischen("profit", lambda: bereinigen(self._profit_fn(), self._geheim))
 
     def seite(self):
         return seite_lesend(self._seite_fn())
@@ -578,27 +700,32 @@ class FernServer:
             faden.join(5)
 
     def schalten(self, an, erneuern=False):
-        """Vom Cockpit am PC: ein-, ausschalten oder den Schlüssel erneuern. → (ok, Text)."""
-        try:
-            if an:
-                if von_umgebung_gesperrt(self.env):
-                    return False, "Gesperrt: die Umgebungsvariable KRYPTO_FERN steht auf «aus» (Eingabeaufforderung: setx KRYPTO_FERN \"\", dann das Cockpit neu öffnen)."
+        """Vom Cockpit am PC: ein-, ausschalten oder den Schlüssel erneuern. → (ok, Text).
+        Beim Ausschalten wird ZUERST der Server gestoppt und erst dann gespeichert: scheitert das Speichern (Windows hält die Datei gerade offen), antwortet trotzdem nichts mehr."""
+        if an:
+            if von_umgebung_gesperrt(self.env):
+                return False, "Gesperrt: die Umgebungsvariable KRYPTO_FERN steht auf «aus» (Eingabeaufforderung: setx KRYPTO_FERN \"\", dann das Cockpit neu öffnen)."
+            try:
                 einschalten(self.daten, erneuern=erneuern)
-                if not self.starten():
-                    return False, "⚠️ Die Handy-Ansicht ließ sich nicht starten: " + (self.fehler or "unbekannter Grund")
-                return True, ("Neuer Schlüssel: alle bisherigen Links und angemeldeten Geräte sind ungültig." if erneuern else "Handy-Ansicht ist an (nur lesen).")
+            except OSError as ex:
+                return False, f"⚠️ Die Einstellung ließ sich nicht speichern ({type(ex).__name__})."
+            if not self.starten():
+                return False, "⚠️ Die Handy-Ansicht ließ sich nicht starten: " + (self.fehler or "unbekannter Grund")
+            return True, ("Neuer Schlüssel: alle bisherigen Links und angemeldeten Geräte sind ungültig." if erneuern else "Handy-Ansicht ist an (nur lesen).")
+        self.stoppen()
+        try:
             ausschalten(self.daten)
-            self.stoppen()
-            return True, "Handy-Ansicht ist aus. Alle bisherigen Links und angemeldeten Geräte sind ungültig; beim nächsten Einschalten gibt es einen neuen Schlüssel."
         except OSError as ex:
-            return False, f"⚠️ Die Einstellung ließ sich nicht speichern ({type(ex).__name__})."
+            return False, (f"⚠️ Die Handy-Ansicht ist GESTOPPT, aber die Einstellung ließ sich nicht speichern ({type(ex).__name__}): nach dem nächsten Öffnen des Cockpits wäre sie wieder an. "
+                           "Die Datei data\\krypto-fern.json prüfen (zum Beispiel ein offenes Programm, das sie hält).")
+        return True, "Handy-Ansicht ist aus. Alle bisherigen Links und angemeldeten Geräte sind ungültig; beim nächsten Einschalten gibt es einen neuen Schlüssel."
 
     def status(self):
         """Stand OHNE Schlüssel und ohne Adressen (für Telegram): an/läuft, Port, Fehler, zuletzt gesehene Geräte, letzte Ereignisse."""
         e = lesen(self.daten)
         laeuft = self.laeuft()
         with self._lock:
-            ereignisse = list(self._ereignisse)[-10:][::-1]
+            ereignisse = [dict(e) for e in reversed(self._ereignisse.values())][:10]
         return {"an": e["an"], "laeuft": laeuft, "port": self.port if laeuft else e["port"], "gesperrt_durch_umgebung": von_umgebung_gesperrt(self.env), "fehler": self.fehler,
                 "geraete": self.geraete(), "ereignisse": ereignisse}
 
