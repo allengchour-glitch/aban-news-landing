@@ -142,9 +142,10 @@ with tempfile.TemporaryDirectory() as td:
     schluessel_viele = {F.neuer_schluessel() for _ in range(200)}
     pruefe("Einstellung: 200 neue Schlüssel sind alle verschieden", len(schluessel_viele) == 200)
     e4 = F.ausschalten(d)
-    pruefe("Einstellung: ausschalten lässt den Schlüssel stehen, aber an=False", not e4["an"] and e4["schluessel"] == e3["schluessel"])
+    pruefe("Einstellung: ausschalten VERGISST den Schlüssel (alle bisherigen Links ungültig), an=False", not e4["an"] and e4["schluessel"] == "" and e4["erzeugt"] == "")
     pruefe("Einstellung: eingeschaltet() sieht das", not F.eingeschaltet(d, {}))
     F.einschalten(d)
+    pruefe("Einstellung: Einschalten nach dem Ausschalten erzeugt einen NEUEN Schlüssel", F.lesen(d)["schluessel"] not in ("", e3["schluessel"]) and len(F.lesen(d)["schluessel"]) == 32)
     pruefe("Einstellung: eingeschaltet() ohne Sperre ja", F.eingeschaltet(d, {}))
     pruefe("Einstellung: KRYPTO_FERN=aus sperrt in jedem Fall", not F.eingeschaltet(d, {"KRYPTO_FERN": "aus"}) and not F.eingeschaltet(d, {"KRYPTO_FERN": " AUS "}))
     pruefe("Einstellung: andere Werte von KRYPTO_FERN sperren nicht", F.eingeschaltet(d, {"KRYPTO_FERN": ""}) and F.eingeschaltet(d, {"KRYPTO_FERN": "an"}))
@@ -489,9 +490,9 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
     st, _, _ = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
     pruefe("…und wieder frei, wenn die Sperre fällt", st == 200)
     ok_, text_ = w.s.schalten(False)
-    pruefe("Ausschalten: Server stoppt, Datei an=False, Schlüssel bleibt", ok_ and not w.s.laeuft() and not F.lesen(w.daten)["an"] and F.lesen(w.daten)["schluessel"] == KEY)
+    pruefe("Ausschalten: Server stoppt, Datei an=False, der Schlüssel ist VERGESSEN, der Text sagt «ungültig»", ok_ and not w.s.laeuft() and not F.lesen(w.daten)["an"] and F.lesen(w.daten)["schluessel"] == "" and "ungültig" in text_)
     u_aus = w.s.ui(ips=["192.168.1.23"])
-    pruefe("Ausschalten: die Karte zeigt dann KEINE Adresse und keinen Schlüssel (obwohl er gespeichert bleibt)", not u_aus["an"] and not u_aus["laeuft"] and u_aus["adressen"] == [] and KEY not in alles_text(u_aus), u_aus)
+    pruefe("Ausschalten: die Karte zeigt dann KEINE Adresse und keinen Schlüssel", not u_aus["an"] and not u_aus["laeuft"] and u_aus["adressen"] == [] and KEY not in alles_text(u_aus), u_aus)
     try:
         anfrage(P, "GET", "/", cookie=COOKIE)
         pruefe("Ausschalten: der Port ist zu", False)
@@ -500,10 +501,17 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
     except OSError as ex:
         pruefe("Ausschalten: der Port ist zu (Verbindung verweigert)", False, type(ex).__name__)
     ok_, text_ = w.s.schalten(True)
-    pruefe("Wieder einschalten: derselbe Schlüssel, Server läuft", ok_ and w.s.laeuft() and F.lesen(w.daten)["schluessel"] == KEY)
+    neu_key = F.lesen(w.daten)["schluessel"]
+    pruefe("Wieder einschalten: NEUER Schlüssel, Server läuft", ok_ and w.s.laeuft() and neu_key not in ("", KEY) and len(neu_key) == 32)
     P = w.s.port
     st, _, _ = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
-    pruefe("Wieder eingeschaltet: das Cookie von vorher geht", st == 200)
+    pruefe("Wieder eingeschaltet: das Cookie von VORHER gilt nicht mehr (ein verlorenes Handy bleibt ausgesperrt)", st == 401)
+    st, _, _ = anfrage(P, "GET", f"/?k={KEY}")
+    pruefe("Wieder eingeschaltet: der alte Link gilt nicht mehr", st == 401)
+    alter_key2 = KEY
+    KEY, COOKIE = neu_key, F.cookie_wert(neu_key)
+    st, _, _ = anfrage(P, "GET", "/api/stand", cookie=COOKIE)
+    pruefe("Wieder eingeschaltet: das Cookie zum neuen Schlüssel geht", st == 200)
 
     # 8l) Protokoll, Meldung
     ui = w.s.ui(ips=["192.168.1.23", "100.64.0.5"])
@@ -516,8 +524,12 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
         alle = list(w.s._ereignisse)
     pruefe("Protokoll: bekannte Arten vorhanden (angemeldet, falscher-schluessel, gesperrt, methode, falscher-host, fremde-quelle)",
            {"angemeldet", "falscher-schluessel", "gesperrt", "methode", "falscher-host", "fremde-quelle"} <= {e["art"] for e in alle}, {e["art"] for e in alle})
-    pruefe("Protokoll: der Schlüssel steht in KEINEM Ereignis (auch kein alter, kein falscher)", all(k_ not in alles_text(alle) for k_ in (KEY, alter_key, "falsch0", "nochmals0")))
+    pruefe("Protokoll: der Schlüssel steht in KEINEM Ereignis (auch kein alter, kein falscher)", all(k_ not in alles_text(alle) for k_ in (KEY, alter_key, alter_key2, "falsch0", "nochmals0")))
     pruefe("Karte: Ereignisse und Geräte tragen keinen Schlüssel", KEY not in alles_text(ui["ereignisse"]) and KEY not in alles_text(ui["geraete"]))
+    stt = w.s.status()
+    pruefe("status() (für Telegram): KEIN Schlüssel, keine Adressen, keine Links; aber an, läuft, Port, Ereignisse, Geräte", KEY not in alles_text(stt) and "adressen" not in stt and "http" not in alles_text(stt) and stt["an"] is True
+           and stt["laeuft"] is True and stt["port"] == P and {"geraete", "ereignisse", "fehler", "gesperrt_durch_umgebung"} <= set(stt), stt)
+    pruefe("ui() ist status() plus Adressen und Erzeugungszeit (nichts sonst)", set(ui) == set(stt) | {"adressen", "erzeugt"}, set(ui) ^ set(stt))
     pruefe("Geräte: die Quelle 127.0.0.1 ist als zuletzt gesehen vermerkt", any(g["quelle"] == "127.0.0.1" for g in ui["geraete"]))
     pruefe("Meldung: genau EINE (erste Anmeldung der Quelle), ohne Schlüssel", len(w.meldungen) == 1 and "127.0.0.1" in w.meldungen[0] and KEY not in w.meldungen[0] and alter_key not in w.meldungen[0], w.meldungen)
     anfrage(P, "GET", f"/?k={KEY}")
@@ -561,6 +573,54 @@ with redirect_stdout(mit_ausgabe[0]), redirect_stderr(mit_ausgabe[1]):
         f_.join(20)
     pruefe("24 gleichzeitige Anfragen: alle 200", ergebnisse == [200] * 24, ergebnisse)
     w.stopp()
+
+    # 8n2) Höchstens 32 gleichzeitige Verbindungen
+    w5 = Welt()
+    P5, C5 = w5.port, w5.cookie
+    basis_faeden = threading.active_count()
+    stille = []
+    for _ in range(100):
+        try:
+            stille.append(socket.create_connection(("127.0.0.1", P5), timeout=5))
+        except OSError:
+            break
+    time.sleep(0.7)
+    mehr = threading.active_count() - basis_faeden
+    pruefe("Flut: 100 stille Verbindungen bringen höchstens 32 zusätzliche Fäden (der Cockpit-Prozess wächst nicht ohne Ende)", mehr <= F._Server.MAX_GLEICHZEITIG + 1, mehr)
+    pruefe("Flut: die Grenze ist 32", F._Server.MAX_GLEICHZEITIG == 32)
+    for s_ in stille:
+        s_.close()
+    time.sleep(0.5)
+    st, _, _ = anfrage(P5, "GET", "/api/stand", cookie=C5)
+    pruefe("Flut vorbei: der Server antwortet wieder (alle Plätze sind frei)", st == 200)
+    for _ in range(3):
+        stille = [socket.create_connection(("127.0.0.1", P5), timeout=5) for _ in range(40)]
+        time.sleep(0.3)
+        for s_ in stille:
+            s_.close()
+        time.sleep(0.4)
+    st, _, _ = anfrage(P5, "GET", "/api/stand", cookie=C5)
+    pruefe("Dreimal Flut und wieder frei: kein Platz ist verloren gegangen (jeder Platz wird zurückgegeben)", st == 200)
+    pruefe("Plätze: nach allem sind wieder alle 32 frei", w5.s._srv._platz._value == F._Server.MAX_GLEICHZEITIG, w5.s._srv._platz._value)
+    _alt_start = threading.Thread.start
+    _versuche = []
+
+    def _start_kaputt(self_):
+        if getattr(self_, "_target", None) is not None and getattr(self_._target, "__name__", "") == "process_request_thread":
+            _versuche.append(1)
+            raise RuntimeError("can't start new thread")
+        return _alt_start(self_)
+    threading.Thread.start = _start_kaputt
+    try:
+        k_ = socket.create_connection(("127.0.0.1", P5), timeout=5)
+        time.sleep(0.5)
+        k_.close()
+    finally:
+        threading.Thread.start = _alt_start
+    pruefe("Plätze: lässt sich ein Faden nicht starten, wird der Platz sofort zurückgegeben (kein stilles Auslaufen)", _versuche and w5.s._srv._platz._value == F._Server.MAX_GLEICHZEITIG, (_versuche, w5.s._srv._platz._value))
+    st, _, _ = anfrage(P5, "GET", "/api/stand", cookie=C5)
+    pruefe("Nach dem Fehlstart antwortet der Server weiter", st == 200)
+    w5.stopp()
 
     # 8o) Port belegt
     belegt = socket.socket()
@@ -631,6 +691,7 @@ pruefe("Invariante: POST/PUT/DELETE/PATCH/OPTIONS sind genau `_nein`", sorted(t.
 nein = next(n for n in klasse.body if isinstance(n, ast.FunctionDef) and n.name == "_nein")
 pruefe("Invariante: `_nein` ruft nichts ausser Protokoll und Antwort", {c.func.attr for c in ast.walk(nein) if isinstance(c, ast.Call) and isinstance(c.func, ast.Attribute)} <= {"ereignis", "_senden"})
 pruefe("Invariante: die festen Adressen sind genau vier Seiten/Daten", set(re.findall(r'pfad (?:in \(|== )"([^"]+)"', quelle)) | set(re.findall(r'"(/[a-z/.]*)"', quelle[quelle.index("def _bearbeiten"):quelle.index("def _antwort")])) >= {"/", "/api/stand", "/api/profit"})
+pruefe("Invariante: die Plätze (Semaphore) werden beim Beenden des Fadens zurückgegeben und beim Fehlstart auch", quelle.count("self._platz.release()") == 2 and "BoundedSemaphore" in quelle)
 pruefe("Invariante: Dateien werden nur in `schreiben` geschrieben", quelle.count(".write_text(") == 1 and "open(" not in quelle and ".write(" in quelle and quelle.count(".write(") == 1)
 pruefe("Invariante: kein Schlüssel in print/Protokoll (kein print im Modul ausser der Hilfe)", len(re.findall(r"\bprint\(", quelle)) == 1)
 pruefe("Invariante: der Schlüssel kommt von `secrets`, nicht von `random`", "secrets.token_urlsafe" in quelle and "import random" not in quelle)

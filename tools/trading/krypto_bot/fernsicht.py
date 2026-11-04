@@ -7,11 +7,11 @@ bleibt sie in jedem Fall aus. Zusätzlich zum Cockpit auf 127.0.0.1 läuft dann 
   • nur lesend: nur GET/HEAD und vier feste Adressen (Seite, Markt-Seite, Kontostand, Profit). Es gibt keine Knöpfe und keine
     Schreib-Adresse — Aufträge, Einstellungen und Not-Aus erreicht man hier nicht (Not-Aus: Telegram /stop oder am PC)
   • mit Zugangsschlüssel: 192 Bit Zufall. Den Link einmal öffnen, der Browser merkt sich den Zugang (Cookie), der Schlüssel
-    verschwindet aus der Adresszeile; im Protokoll steht er nie
+    verschwindet aus der Adresszeile; im Protokoll steht er nie. Ausschalten und «Schlüssel erneuern» machen alle bisherigen Links ungültig
   • nur aus dem Heimnetz (192.168.x.x, 10.x.x.x, 172.16–31.x.x), dem Tailscale-Netz (100.64–127.x.x) und von diesem PC selbst:
     eine Anfrage aus dem öffentlichen Internet wird abgewiesen — auch dann, wenn jemand am Router einen Port freigibt
   • nur mit passendem Host-Kopf (gegen DNS-Rebinding: eine fremde Seite, deren Name plötzlich auf diesen PC zeigt)
-  • Sperre einer Quelle nach fünf falschen Schlüsseln (15 Minuten)
+  • Sperre einer Quelle nach fünf falschen Schlüsseln (15 Minuten); höchstens 32 gleichzeitige Verbindungen
   • Kontodaten ohne Pfade dieses PCs
 
 Von unterwegs (Mobilfunk) kommt man NUR durch einen PRIVATEN Tunnel (Tailscale: PC und Handy im selben privaten, verschlüsselten
@@ -121,9 +121,10 @@ def einschalten(daten, erneuern=False):
 
 
 def ausschalten(daten):
-    """Ansicht aus; der Schlüssel bleibt gespeichert (einschalten nimmt ihn wieder)."""
+    """Ansicht aus UND Schlüssel vergessen: alle bisherigen Links und angemeldeten Geräte sind damit ungültig (so schliesst man ein verlorenes Handy aus);
+    Einschalten erzeugt einen neuen Schlüssel."""
     e = lesen(daten)
-    schreiben(daten, {"an": False, "schluessel": e["schluessel"], "port": e["port"], "erzeugt": e["erzeugt"]})
+    schreiben(daten, {"an": False, "schluessel": "", "port": e["port"], "erzeugt": ""})
     return lesen(daten)
 
 
@@ -411,6 +412,27 @@ class _Handler(BaseHTTPRequestHandler):
 
 class _Server(ThreadingHTTPServer):
     daemon_threads = True
+    MAX_GLEICHZEITIG = 32               # mehr gleichzeitige Verbindungen werden sofort geschlossen: der Cockpit-Prozess bekommt nie unbegrenzt viele Fäden (Funkloch, absichtliches Fluten im Heimnetz)
+
+    def __init__(self, *a, **k):
+        self._platz = threading.BoundedSemaphore(self.MAX_GLEICHZEITIG)
+        super().__init__(*a, **k)
+
+    def process_request(self, request, client_address):
+        if not self._platz.acquire(blocking=False):
+            self.shutdown_request(request)
+            return
+        try:
+            super().process_request(request, client_address)
+        except BaseException:
+            self._platz.release()       # der Faden ließ sich nicht starten
+            raise
+
+    def process_request_thread(self, request, client_address):
+        try:
+            super().process_request_thread(request, client_address)
+        finally:
+            self._platz.release()
 
     def handle_error(self, request, client_address):
         ex = sys.exc_info()[1]
@@ -567,20 +589,24 @@ class FernServer:
                 return True, ("Neuer Schlüssel: alle bisherigen Links und angemeldeten Geräte sind ungültig." if erneuern else "Handy-Ansicht ist an (nur lesen).")
             ausschalten(self.daten)
             self.stoppen()
-            return True, "Handy-Ansicht ist aus. Der Schlüssel bleibt gespeichert; beim nächsten Einschalten gilt er wieder."
+            return True, "Handy-Ansicht ist aus. Alle bisherigen Links und angemeldeten Geräte sind ungültig; beim nächsten Einschalten gibt es einen neuen Schlüssel."
         except OSError as ex:
             return False, f"⚠️ Die Einstellung ließ sich nicht speichern ({type(ex).__name__})."
 
-    def ui(self, ips=None):
-        """Für die Karte im Cockpit am PC (die Adressen tragen den Schlüssel — nur über 127.0.0.1 ausliefern)."""
+    def status(self):
+        """Stand OHNE Schlüssel und ohne Adressen (für Telegram): an/läuft, Port, Fehler, zuletzt gesehene Geräte, letzte Ereignisse."""
         e = lesen(self.daten)
         laeuft = self.laeuft()
-        port = self.port if laeuft else e["port"]
         with self._lock:
             ereignisse = list(self._ereignisse)[-10:][::-1]
-        return {"an": e["an"], "laeuft": laeuft, "port": port, "gesperrt_durch_umgebung": von_umgebung_gesperrt(self.env), "fehler": self.fehler,
-                "adressen": adressen(port, e["schluessel"], ips) if e["an"] and e["schluessel"] else [], "erzeugt": e["erzeugt"],
+        return {"an": e["an"], "laeuft": laeuft, "port": self.port if laeuft else e["port"], "gesperrt_durch_umgebung": von_umgebung_gesperrt(self.env), "fehler": self.fehler,
                 "geraete": self.geraete(), "ereignisse": ereignisse}
+
+    def ui(self, ips=None):
+        """Für die Karte im Cockpit am PC: der Stand plus die Links MIT Schlüssel (nur über 127.0.0.1 ausliefern)."""
+        e = lesen(self.daten)
+        u = self.status()
+        return dict(u, adressen=adressen(u["port"], e["schluessel"], ips) if e["an"] and e["schluessel"] else [], erzeugt=e["erzeugt"])
 
 
 if __name__ == "__main__":

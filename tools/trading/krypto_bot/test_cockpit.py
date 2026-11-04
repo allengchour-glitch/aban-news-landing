@@ -1578,9 +1578,10 @@ with tempfile.TemporaryDirectory() as _tdf:
         k2 = _FS.lesen(_dat)["schluessel"]
         pruefe("Telegram /handy erneuern: neuer Schlüssel, weder der alte noch der neue steht in der Antwort", k2 != k1 and k1 not in t4 and k2 not in t4 and "Neuer Schlüssel" in t4 and C.FERN.laeuft(), t4)
         t5 = C.befehl("/handy aus")
-        pruefe("Telegram /handy aus: Server gestoppt, Datei aus, kein Schlüssel in der Antwort", not C.FERN.laeuft() and not _FS.lesen(_dat)["an"] and k2 not in t5 and "aus" in t5, t5)
+        pruefe("Telegram /handy aus: Server gestoppt, Datei aus, der Schlüssel VERGESSEN (alle Links ungültig, auch bei einem verlorenen Handy), kein Schlüssel in der Antwort",
+               not C.FERN.laeuft() and not _FS.lesen(_dat)["an"] and _FS.lesen(_dat)["schluessel"] == "" and k2 not in t5 and "aus" in t5 and "ungültig" in t5, t5)
         t6 = C.befehl("/handy erneuern")
-        pruefe("Telegram /handy erneuern bei ausgeschalteter Ansicht: nichts zu erneuern, schaltet NICHT ein", "nichts zu erneuern" in t6 and not _FS.lesen(_dat)["an"] and _FS.lesen(_dat)["schluessel"] == k2 and not C.FERN.laeuft(), t6)
+        pruefe("Telegram /handy erneuern bei ausgeschalteter Ansicht: nichts zu erneuern, schaltet NICHT ein, erzeugt keinen Schlüssel", "nichts zu erneuern" in t6 and not _FS.lesen(_dat)["an"] and _FS.lesen(_dat)["schluessel"] == "" and not C.FERN.laeuft(), t6)
         t7 = C.befehl("/handy an")
         pruefe("Telegram /handy an: gibt es nicht (Einschalten nur am PC): nur der Stand, die Ansicht bleibt aus", t7.startswith("📱 Handy-Ansicht: aus") and not C.FERN.laeuft() and not _FS.lesen(_dat)["an"], t7)
         C.FS, C.FERN = None, None

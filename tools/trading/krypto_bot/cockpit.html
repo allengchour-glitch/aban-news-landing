@@ -1563,12 +1563,12 @@ function fernZeichnen(f) {
   if (f.gesperrt_durch_umgebung) h += `<p class="hinweis brems">Gesperrt: die Umgebungsvariable KRYPTO_FERN steht auf «aus» (Eingabeaufforderung: setx KRYPTO_FERN "", danach das Cockpit neu öffnen).</p>`;
   if (f.fehler) h += `<p class="hinweis brems">⚠️ ${esc(f.fehler)}</p>`;
   if (!f.an) {
-    h += `<p class="unter">Aus. Eingeschaltet zeigt dein Handy dieselbe Übersicht, <b>nur lesen</b> (keine Knöpfe, kein Not-Aus), mit einem Zugangsschlüssel und nur aus dem Heimnetz oder dem privaten Tunnel (Tailscale). Beim ersten Einschalten fragt Windows nach dem Netzwerk: nur «Privat» ankreuzen.</p>`;
+    h += `<p class="unter">Aus. Eingeschaltet zeigt dein Handy dieselbe Übersicht, <b>nur lesen</b> (keine Knöpfe, kein Not-Aus), mit einem Zugangsschlüssel und nur aus dem Heimnetz oder dem privaten Tunnel (Tailscale). Beim ersten Einschalten fragt Windows nach dem Netzwerk: nur «Privat» ankreuzen. Ausschalten macht alle bisherigen Links ungültig.</p>`;
   } else {
     h += (f.adressen || []).length
       ? f.adressen.map((a, i) => `<div class="fern-zeile"><b>${esc(a.art)}</b><input readonly value="${esc(a.url)}" id="fernUrl${i}" aria-label="Link ${esc(a.art)}"><button type="button" data-kopie="${i}">Link kopieren</button></div>`).join("")
       : `<p class="unter">Keine Netzwerk-Adresse gefunden (der PC ist nicht im WLAN oder LAN).</p>`;
-    h += `<p class="unter">Den Link einmal am Handy öffnen, zum Beispiel per Telegram an dich selbst schicken: der Browser merkt sich den Zugang. Von unterwegs geht es nur über <b>Tailscale</b> (gratis; auf PC und Handy installieren und beide anmelden) und den Tailscale-Link. Ein Port am Router ins Internet wird bewusst nicht unterstützt (kein HTTPS). Unterwegs ohne Tailscale: Telegram <b>/uebersicht</b>.</p>`;
+    h += `<p class="unter">Den Link einmal am Handy öffnen, zum Beispiel per Telegram an dich selbst schicken (er enthält deinen Zugangsschlüssel: nur an dich selbst): der Browser merkt sich den Zugang. Von unterwegs geht es nur über <b>Tailscale</b> (gratis; auf PC und Handy installieren und beide anmelden) und den Tailscale-Link. Ein Port am Router ins Internet wird bewusst nicht unterstützt (kein HTTPS). Unterwegs ohne Tailscale: Telegram <b>/uebersicht</b>.</p>`;
     const g = f.geraete || [];
     h += g.length ? `<p class="unter">Zuletzt gesehen: ${g.slice(0, 3).map(x => esc(x.quelle) + " vor " + Math.max(0, Math.round(x.vor_s / 60)) + " Min.").join(" · ")}</p>` : `<p class="unter">Noch kein Gerät hat die Ansicht geöffnet.</p>`;
     const ev = (f.ereignisse || []).slice(0, 5);

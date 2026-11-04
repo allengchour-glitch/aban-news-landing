@@ -1067,7 +1067,7 @@ def handy_befehl(text):
         if not f.laeuft():
             return "📱 Die Handy-Ansicht ist aus, es gibt nichts zu erneuern (einschalten geht nur am PC)."
         return "📱 " + f.schalten(True, erneuern=True)[1] + " Neuen Link gibt es am PC (Karte «Handy-Ansicht»)."
-    u = f.ui(ips=[])
+    u = f.status()
     if not u["an"]:
         return "📱 Handy-Ansicht: aus. Einschalten nur am PC (Karte «Handy-Ansicht» im Cockpit)."
     if not u["laeuft"]:
