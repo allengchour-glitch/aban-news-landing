@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 91,
-  "updatedAt": "2026-11-05T13:28:30+01:00",
+  "revision": 92,
+  "updatedAt": "2026-11-05T13:44:48+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -8342,6 +8342,42 @@
       },
       "masterId": "luxe_website_brand_master_20261103",
       "ownerMaterialScope": "03.11.2026 ausdrücklich vorhandene Website-Inhalte schneiden/bearbeiten; keine neuen Originaldrehs für diesen Website-Markenfilm verlangen. Keine Änderung am separaten Social-Produktmaster."
+    },
+    {
+      "id": "product-stock-status-display-20261105",
+      "priority": 4,
+      "priorityKind": "SETZUNG",
+      "state": "live_durch_claude_owner_codex_oeffentlich_verifiziert_kein_eigener_write",
+      "title": "Variantenabhängigen Lagerstatus auf öffentlichen Produktseiten ehrlich anzeigen",
+      "lastEvidenceDate": "2026-11-05",
+      "belegArt": "R92_SHOP_IDENTITAET_GITHUB_MERGE_VIER_OEFFENTLICHE_RUECKLESEN_KEIN_WRITE",
+      "lastEvidence": "Shopify LuxeStyle/luxestyle.ch/CHF passend. PR2895/Head82f41095bada975dfd3ff34e4655b12dfc964adb durch Claude-/Inhaberarbeit am Merge4fd7bbe0924dd57db03d0afa2073722935d51c10 übernommen. Öffentlich Sensemann XL55970683388289 available true/grün Auf Lager, XXL55970683421057 true/orange Nur noch1, XXXL55970683453825 false/rot Diese Ausführung ist ausverkauft; vollständig nicht kaufbares Hippiekleid rot Momentan ausverkauft. data-lx-delivery und aria-live=polite beobachtet. Codex-R92 nur verifiziert; kein Theme-/Produkt-/Bestandswrite, Banner/Layout unverändert.",
+      "nextAllowedStep": "Anzeige erhalten. Bei späterem Wunsch nach Kollektionskarten diesen separaten Scope zuerst auf Produkt- gegen Variantenverfügbarkeit, Performance, mobile Darstellung und unbekannte Inventory-Quellen prüfen. Vor jeder Themeänderung aktuellen MAIN-Block/Hash lesen, minimalen Diff und Rückweg prüfen; Bestellbarkeit nie als Lieferantenlager oder Lieferzeit ausgeben.",
+      "blockers": [],
+      "acceptance": [
+        "Gewählte Shopify-Ausführung ist Statusquelle; kaufbar und nicht kaufbar werden textlich und farblich unterschieden.",
+        "Farbe ist nicht die einzige Information; Statuscontainer bleibt zugänglich und Variantenwechsel darf keine fremde Produkt-ID übernehmen.",
+        "Ungetrackte Bestellbarkeit erzeugt keine numerische Bestands- oder Lieferzeitzusage; bestehendes Banner und Layout bleiben erhalten."
+      ],
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/LAGERSTATUS-PRODUKTSEITEN-20261105-R92.json",
+          "gitBlobSha": "528e48bef51d9e337156c983165ca51a71bb416c",
+          "readAt": "2026-11-05T13:44:48+01:00",
+          "ref": "4fd7bbe0924dd57db03d0afa2073722935d51c10",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2895"
+        }
+      ],
+      "requiresFreshVerification": true,
+      "applicationAllowedNow": false,
+      "ownWritesToShopOrSocial": 0,
+      "implementationOwner": "pre-existing Claude/owner work; not Codex R92",
+      "reviewScope": {
+        "productDetailPages": true,
+        "collectionCards": false,
+        "catalogWideLiveCoverageClaimed": false,
+        "publicSamples": 4
+      }
     }
   ],
   "history": [
@@ -9174,6 +9210,19 @@
         "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42026512823"
       },
       "action": "R91: Draft-PR 2896/Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 um den rein lesenden Inventory-Pfad ergänzt, Action-SHAs fixiert und Legacy-Secretjob entfernt. Run 42026512823/Job 127241964880 erfolgreich mit genau 1 Auth+1 Produkt+1 Inventory für PID1477820492730732544/productSku CJSN1392391 und sieben SKU/VID-Zeilen. Alle CN-Werte sind ausschliesslich factoryInventory; cjInventory=0 und verifiedWarehouse=2, ohne Beleg für physischen CJ-Bestand, CH-Lieferbarkeit oder Lieferzeit. Storefront 2026-11-05T12:23:08.908Z: Produkt und sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90, öffentliche Inventory-Felder null; nativer Altbeleg tracked=false/CONTINUE/Menge0 nicht neu gemessen. 261/261 Tests gesamt und 87/87 fokussiert; CI-Simulation an unshare blockiert. Keine Shopwrites oder Bestandszusage."
+    },
+    {
+      "revision": 92,
+      "at": "2026-11-05T13:44:48+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/LAGERSTATUS-PRODUKTSEITEN-20261105-R92.json",
+        "gitBlobSha": "528e48bef51d9e337156c983165ca51a71bb416c",
+        "readAt": "2026-11-05T13:44:48+01:00",
+        "ref": "4fd7bbe0924dd57db03d0afa2073722935d51c10",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2895"
+      },
+      "action": "R92: Bereits durch Claude-/Inhaberarbeit aktive Lagerstatus-Anzeige aus PR 2895 von Codex nur gegengeprüft. Shopify-Identität passend; vier öffentliche Rückleseproben bestätigten grüne kaufbare, orange niedrige und rote nicht kaufbare Zustände samt data-lx-delivery/aria-live=polite. Kein eigener Theme-, Produkt-, Bestands-, Shop- oder Socialwrite; Banner/Layout unverändert. Bestellbarkeit nicht als Lieferantenlager oder Lieferzeit ausgegeben."
     }
   ],
   "salesGoal": {
@@ -12341,5 +12390,17 @@
     },
     "note": "Draft-PR 2896/Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 enthält den neuen rein lesenden Inventory-Pfad mit fixierten Action-SHAs und ohne Legacy-Secretjob. Run 42026512823/Job 127241964880 erfolgreich: genau 1 Auth+1 Produkt+1 Inventory, PID1477820492730732544/productSku CJSN1392391 und sieben SKU/VID-Zeilen. CN total/cj/factory/verified A–G:33714/0/33714/2,37567/0/37567/2,43253/0/43253/2,33773/0/33773/2,36227/0/36227/2,40142/0/40142/2,13059/0/13059/2. Ausschliesslich factoryInventory, kein physischer CJ-Bestand, keine CH-Lieferbarkeit oder Lieferzeit. Storefront 2026-11-05T12:23:08.908Z Produkt+sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90, inventory_management/inventory_policy null; nativer Altbeleg tracked=false/CONTINUE/Menge0 nicht neu gemessen. 261/261 gesamt und 87/87 fokussiert bestanden; CI-Simulation an unshare blockiert. Keine Shopwrites oder Bestandszusage.",
     "nextStep": "Ohne neuen Gegenprüfgrund keinen weiteren Remote-Lauf starten. Die sieben CJ-variantSku/VID-Paare einzeln an aktuelle Shopify-Varianten-IDs, Ausführungen, SKUs und Preise binden; danach physischen Lieferantenbestand, CH-Lieferbarkeit, Lieferzeit, Prime-Status und Rechte separat belegen. Öffentliche available-/null-Inventory-Felder und den alten nativen tracked=false/CONTINUE/Menge0-Beleg nicht als Bestand verwenden; keine Import-, Produkt-, Preis- oder Bestandsfreigabe ableiten."
+  },
+  "followUpRunR92": {
+    "at": "2026-11-05T13:44:48+01:00",
+    "source": {
+      "path": "dropship/codex-handoff-20261018/LAGERSTATUS-PRODUKTSEITEN-20261105-R92.json",
+      "gitBlobSha": "528e48bef51d9e337156c983165ca51a71bb416c",
+      "readAt": "2026-11-05T13:44:48+01:00",
+      "ref": "4fd7bbe0924dd57db03d0afa2073722935d51c10",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2895"
+    },
+    "note": "PR2895 ist gemergte frühere Claude-/Inhaberarbeit. Codex-R92 hat den öffentlichen Stand nur verifiziert: Sensemann XL grün/kaufbar, XXL orange/kaufbar/Nur noch1, XXXL rot/nicht kaufbar; vollständig nicht kaufbares Hippiekleid rot. data-lx-delivery und aria-live=polite vorhanden. Keine eigene Theme-/Produkt-/Bestandsänderung, kein Beleg für Lieferantenlager/Lieferzeit oder den gesamten Katalog.",
+    "nextStep": "Bestehenden Status erhalten. Kollektionskarten nur nach separater Anforderung und Varianten-/Performanceprüfung ergänzen; keinen Stock oder Liefertermin aus ungetrackter Shopify-Bestellbarkeit ableiten."
   }
 }

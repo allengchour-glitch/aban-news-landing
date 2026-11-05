@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "taskId": "product-stock-status-display-20261105",
+  "observedAt": "2026-11-05T13:44:48+01:00",
+  "scope": "public_readback_only",
+  "shopIdentity": {
+    "verifiedInSameRun": true,
+    "shop": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "method": "Shopify connector get_shop_info"
+  },
+  "implementationProvenance": {
+    "implementedBy": "pre-existing Claude/owner work; not Codex R92",
+    "pullRequest": 2895,
+    "pullRequestUrl": "https://github.com/allengchour-glitch/aban-news-landing/pull/2895",
+    "head": "82f41095bada975dfd3ff34e4655b12dfc964adb",
+    "mergeCommit": "4fd7bbe0924dd57db03d0afa2073722935d51c10",
+    "mergedAt": "2026-11-05T12:15:38Z"
+  },
+  "publicReadbacks": [
+    {
+      "url": "https://luxestyle.ch/products/kostum-sensemann-fgss0052?variant=55970683388289",
+      "httpStatus": 200,
+      "variantId": "55970683388289",
+      "variantTitle": "XL",
+      "availableExpectedFromPublicProductJson": true,
+      "deliveryContainer": true,
+      "ariaLivePolite": true,
+      "observedColor": "#1e7a2e",
+      "observedText": "Auf Lager · versandbereit",
+      "responseSha256": "9d2d9a53aa618cd1016d7ab830d1c044e9ab5c78476e143aff8989fda0ec20f4"
+    },
+    {
+      "url": "https://luxestyle.ch/products/kostum-sensemann-fgss0052?variant=55970683421057",
+      "httpStatus": 200,
+      "variantId": "55970683421057",
+      "variantTitle": "XXL",
+      "availableExpectedFromPublicProductJson": true,
+      "deliveryContainer": true,
+      "ariaLivePolite": true,
+      "observedColor": "#9a5b00",
+      "observedText": "Nur noch 1 Stück auf Lager · versandbereit",
+      "responseSha256": "f4c6e4a1d226d3c0a2ea6e53aa19584eb0d211a931436d1ca342014b7d6cc700"
+    },
+    {
+      "url": "https://luxestyle.ch/products/kostum-sensemann-fgss0052?variant=55970683453825",
+      "httpStatus": 200,
+      "variantId": "55970683453825",
+      "variantTitle": "XXXL",
+      "availableExpectedFromPublicProductJson": false,
+      "deliveryContainer": true,
+      "ariaLivePolite": true,
+      "observedColor": "#b3261e",
+      "observedText": "Diese Ausführung ist ausverkauft",
+      "responseSha256": "0597f8ded73d1f329efa58d9d87807798f481f0c129043687caca9d1412f2435"
+    },
+    {
+      "url": "https://luxestyle.ch/products/langes-hippiekleid-gr-m-ft90654-2",
+      "httpStatus": 200,
+      "productState": "fully_unavailable",
+      "deliveryContainer": true,
+      "ariaLivePolite": true,
+      "observedColor": "#b3261e",
+      "observedText": "Momentan ausverkauft",
+      "responseSha256": "eb71de04e530afb70226f2bde2ebcfc21e637d0246c9593d0ed9e00d5e55f220"
+    }
+  ],
+  "semantics": {
+    "green": "selected Shopify variant is currently orderable",
+    "orange": "freshly gated low tracked stock display",
+    "red": "selected Shopify variant is currently not orderable",
+    "inventoryCaveat": "Orderability is not a supplier-warehouse or delivery-time promise; untracked inventory is not presented as a numeric stock proof."
+  },
+  "codexWrites": {
+    "theme": 0,
+    "product": 0,
+    "inventory": 0,
+    "shopSettings": 0,
+    "social": 0
+  },
+  "preserved": [
+    "existing banner",
+    "current layout"
+  ],
+  "notVerifiedInR92": [
+    "Fortura admin inventory totals",
+    "supplier warehouse inventory",
+    "delivery promises",
+    "all products or all themes",
+    "collection-card badges",
+    "live in-page variant event by browser interaction"
+  ]
+}

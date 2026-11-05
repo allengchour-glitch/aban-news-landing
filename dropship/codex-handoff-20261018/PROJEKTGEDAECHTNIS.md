@@ -1,5 +1,13 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 05.11.2026, Revision 92: Lagerstatus auf Produktseiten öffentlich verifiziert
+
+Die Lagerstatus-Anzeige war bereits vor diesem Codex-Nachlauf durch Claude-/Inhaberarbeit im Shopify-Haupt-Theme aktiv. [PR 2895](https://github.com/allengchour-glitch/aban-news-landing/pull/2895), Head `82f41095bada975dfd3ff34e4655b12dfc964adb`, wurde am 05.11.2026 um 12:15:38 UTC mit Commit `4fd7bbe0924dd57db03d0afa2073722935d51c10` gemergt. Codex hat diese Theme-, Produkt- oder Bestandsänderung nicht ausgeführt und gibt sie nicht als eigene Umsetzung aus.
+
+Die Shopify-Identität LuxeStyle / `luxestyle.ch` / CHF wurde im selben Lauf passend gelesen. Auf der öffentlichen Produktseite `kostum-sensemann-fgss0052` zeigten direkte Variantenabrufe: XL `55970683388289` kaufbar und grün `#1e7a2e` mit «Auf Lager · versandbereit», XXL `55970683421057` kaufbar und orange `#9a5b00` mit «Nur noch 1 Stück auf Lager · versandbereit», XXXL `55970683453825` nicht kaufbar und rot `#b3261e` mit «Diese Ausführung ist ausverkauft». Das vollständig nicht kaufbare Produkt `langes-hippiekleid-gr-m-ft90654-2` zeigte rot «Momentan ausverkauft». Die Stichproben enthielten `data-lx-delivery` und `aria-live="polite"`; Farbe ist damit nicht die einzige Statusinformation.
+
+Grün bedeutet hier aktuelle Shopify-Bestellbarkeit der gewählten Ausführung, Rot aktuelle Nicht-Bestellbarkeit. Orange ist die zusätzliche, frischegeprüfte Niedrigbestandsstufe. Daraus folgt kein Lieferantenlager-, Lieferzeit- oder Gesamtkatalogbeleg; ungetrackte Bestellbarkeit ist keine numerische Bestandszusage. Das bestehende Banner und Layout wurden in R92 nicht verändert. Es gab keine eigenen Theme-, Produkt-, Bestands-, Shop-, Social- oder Einstellungswrites. [Maschinenlesbarer öffentlicher Rücklesebeleg](LAGERSTATUS-PRODUKTSEITEN-20261105-R92.json).
+
 ## Aktueller Stand – 05.11.2026, Revision 91: CJ-Inventory nur lesend geprüft
 
 Der offene [Draft-PR 2896](https://github.com/allengchour-glitch/aban-news-landing/pull/2896) steht auf Head `e0173681ef2e8a2b78f5db93d0bf877c05a2b172`. Der Projekt-MCP `luxestyle-cj-read` besitzt jetzt als drittes Werkzeug den rein lesenden `luxe_cj_inventory_read`; der Workflow verwendet fest auf Commit-SHAs gebundene Actions und enthält den früheren Legacy-Secretjob nicht mehr. 261/261 Tests insgesamt und 87/87 fokussierte CJ-MCP-Tests waren erfolgreich. Die lokale CI-Simulation blieb an der in dieser Laufzeit blockierten `unshare`-Ausführung stehen und ist deshalb kein erfolgreicher CI-Simulationsbeleg.
