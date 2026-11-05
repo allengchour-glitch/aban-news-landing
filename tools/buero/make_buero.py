@@ -69,11 +69,11 @@ ROWS = [
          "Drei Läufe in Folge grün. Ob das etwas verkauft, ist nicht gemessen.",
          "Lauf", "2026-11-05T14:56:26Z", "GitHub Actions: shop-autopilot.yml, letzte 3 Läufe", 36),
     mess("fortura", "Shop", "Fortura-Bestand", "Fortura-Bestand", "gelb",
-         "Der tägliche Abgleich in GitHub ist noch nie gelaufen: Die Freigabedatei fehlt, und ob die Zugangsdaten "
-         "hinterlegt sind, kann ich nicht prüfen. Heute hat die Shop-Sitzung den Bestand von Hand abgeglichen; "
-         "diese Zahlen gelten bis morgen etwa 14:57. Für morgen 08:30 steht eine Erinnerung an die Shop-Sitzung.",
+         "Der tägliche Abgleich in GitHub ist noch nie gelaufen. Du hast den Zugang eingetragen; ob er ankommt, zeigt erst ein Lauf "
+         "(ein Probelauf von hier scheiterte an einem GitHub-Serverfehler, der Zeitplan startet um 03:51 UTC). Die Freigabedatei fehlt, "
+         "bis dahin läuft er nur lesend. Heute hat die Shop-Sitzung den Bestand von Hand abgeglichen; diese Zahlen gelten bis morgen etwa 14:57.",
          "Von Hand", "2026-11-05T11:57:00Z",
-         "GitHub Actions: fortura-bestand.yml, 0 Läufe; Freigabedatei in main: fehlt; CLAUDE.md 05.11.", 24),
+         "GitHub Actions: fortura-bestand.yml, 0 Läufe; Freigabedatei in main: fehlt; Zugang laut Besitzer 05.11. eingetragen; CLAUDE.md 05.11.", 24),
     mess("shop_sitzung", "Shop", "Shop-Sitzung (Claude)", "Shop-Sitzung", "gruen",
          "Die Claude-Sitzung, die den Shop betreut, ist offen und arbeitet gerade. Laut Plattform zuletzt: "
          "«indexing luxestyle.ch pages, excluding glaetteisen-locken-foehn». Sie legt CJ-Bestellungen an, "
@@ -133,25 +133,17 @@ ROWS = [
          "Jüngste", "2026-11-05T17:42:47Z", "Shopify: Bestellungen (nur Nummer, Betrag, Datum)", 12,
          figur="tafel", menge=5, aktiv_h=0),
     frage("zip", "Starter-ZIP einspielen", "ZIP einspielen",
-          "Einmal über den alten Ordner entpacken. Danach holt sich dein PC jedes Programm-Update selbst. "
+          "Einmal über den alten Ordner entpacken (Schritt für Schritt im Chat, 05.11.). Danach holt sich dein PC jedes Programm-Update selbst. "
           "Ob das schon passiert ist, sehe ich von hier nicht.",
-          "Gesendet 04.11.", "04.11.", "CLAUDE.md, Stand 04.11. (Krypto)"),
+          "Anleitung 05.11.", "05.11.", "CLAUDE.md, Stand 05.11. (Krypto)"),
     frage("cockpitstart", "Cockpit unsichtbar beim Start", "Cockpit-Autostart",
-          "Würde das Cockpit beim Windows-Anmelden still im Hintergrund starten. Das ändert Windows-Aufgaben, "
-          "darum nur mit deinem Ja.",
-          "Gefragt 04.11.", "04.11.", "CLAUDE.md, Stand 04.11. (Krypto)"),
+          "Du hast Ja gesagt (05.11.). Gebaut: das Cockpit startet beim Windows-Anmelden still im Hintergrund. "
+          "Es kommt mit dem nächsten Programm-Update auf deinen PC, sobald das ZIP einmal eingespielt ist.",
+          "Ja 05.11.", "05.11.", "Besitzer-Antwort 05.11., CLAUDE.md, Stand 05.11. (Krypto)"),
     frage("geld", "Etsy oder Anzeigen", "Etsy oder Anzeigen",
           "Zwei Wege, Geld zu verdienen, warten auf deinen Entscheid: Etsy oder Anzeigen (Rest bei Google CHF 58). "
           "Ausgeben kann ich nichts ohne dein Ja.",
           "Offen seit 04.11.", "04.11.", "CLAUDE.md, Stand 04.11."),
-    frage("themes", "Alte Shop-Themes löschen", "Themes löschen",
-          "«Horizon» und «Horizon-Polish-Grid» belegen Platz; der Shop steht bei 20 von 20 Themes. "
-          "Löschen kann nur du.",
-          "Offen seit 03.11.", "03.11.", "CLAUDE.md, Stand 03.11. (Shop-Sitzung)"),
-    frage("fortura_zugang", "Fortura-Zugang für den Tagesabgleich", "Fortura-Zugang",
-          "Zwei Zugangsdaten bei GitHub eintragen (FORTURA_FTP_USER und FORTURA_FTP_PW) und die Freigabedatei legen. "
-          "Dann gleicht GitHub den Fortura-Bestand jeden Tag selbst ab. Anleitung: dropship/lagerbestand-0511/README.md.",
-          "Offen seit 05.11.", "05.11.", "CLAUDE.md, Stand 05.11. (Shop-Sitzung)"),
 ]
 
 
@@ -168,7 +160,7 @@ ORTE = {
     "waechter": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei lager-waechter.yml. Plan: täglich 05:17 UTC.", WF + "lager-waechter.yml"),
     "autopilot": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei shop-autopilot.yml. Plan: täglich 06:45 UTC.", WF + "shop-autopilot.yml"),
     "fortura": ("cloud", "GitHub-Cloud", "GitHub",
-                "GitHub Actions, Datei fortura-bestand.yml. Plan: täglich 03:51 UTC, bisher nie gelaufen. Den heutigen Abgleich hat die Shop-Sitzung von Hand gemacht.",
+                "GitHub Actions, Datei fortura-bestand.yml. Plan: täglich 03:51 UTC, bisher nie gelaufen; Zugang eingetragen, ohne Freigabedatei nur lesend. Den heutigen Abgleich hat die Shop-Sitzung von Hand gemacht.",
                 WF + "fortura-bestand.yml"),
     "shop_sitzung": ("claude", "Claude-Sitzung (Cloud)", "Claude",
                      "Eine offene Claude-Sitzung in der Cloud (claude.ai/code) mit Zugriff auf Shopify und CJ. Sie arbeitet nur, solange sie offen ist.", S_SHOP),
@@ -191,12 +183,8 @@ ORTE = {
                        "Eine offene Claude-Sitzung in der Cloud (claude.ai/code). Sie betreut den Krypto-Teil und fasst Shop und CJ nicht an.", S_KRYPTO),
     "bestellungen7": ("shop", "Shopify", "Shopify", "Die Zahlen stehen im Shopify-Admin unter Bestellungen.", SHOP + "/orders"),
     "zip": ("pc", "Dein Windows-PC", "Dein PC", "Das ZIP entpackst du einmal über den alten Ordner deines Krypto-Cockpits auf dem Windows-PC.", ""),
-    "cockpitstart": ("pc", "Dein Windows-PC", "Dein PC", "Eine Windows-Aufgabe beim Anmelden auf deinem PC. Das ändert Windows-Einstellungen, darum nur mit deinem Ja.", ""),
+    "cockpitstart": ("pc", "Dein Windows-PC", "Dein PC", "Eine Windows-Aufgabe beim Anmelden auf deinem PC (Aufgabe «Krypto-Cockpit-Start»). Du hast Ja gesagt; ausschalten kannst du sie im Cockpit.", ""),
     "geld": ("du", "Bei dir (Entscheid)", "Bei dir", "Das entscheidest du. Danach läuft es in deinem Etsy-Konto oder in Google Ads.", ""),
-    "themes": ("shop", "Shopify-Admin", "Shopify", "Shopify-Admin, Onlineshop, Themes. Löschen kann nur du.", SHOP + "/themes"),
-    "fortura_zugang": ("cloud", "GitHub, Einstellungen des Repos", "GitHub",
-                       "GitHub, Repo-Einstellungen, Secrets and variables, Actions: FORTURA_FTP_USER und FORTURA_FTP_PW. Die Freigabedatei legst du im Repo.",
-                       GH + "/settings/secrets/actions"),
 }
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
