@@ -240,8 +240,6 @@ jobs:
       # Kopf-/Zahlenzeilen), nicht mit einer Ausschlussliste: eine neue Ausgabezeile des Skripts landet damit nie unbemerkt im Artefakt.
       - name: Protokoll bereinigen
         if: always()
-        env:
-          LIVE: ${{ steps.modus.outputs.live }}
         run: |
           set +e
           mkdir -p protokoll

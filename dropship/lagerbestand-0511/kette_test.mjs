@@ -265,14 +265,15 @@ if (py.status === 0) {
   }
 
   // Führt modus -> Abgleich -> (Nachprüfung) -> (Stempel) so aus, wie GitHub es täte: Ausdrücke aufgelöst, Bedingungen ausgewertet.
-  // `testgroessen`: false lässt MIN_FEED_ROWS beim echten Wert des Workflows (18000).
-  function kette(w, { ereignis, schreiben = '', nullErlauben = '', testgroessen = true }) {
+  // `testgroessen`: false lässt MIN_FEED_ROWS beim echten Wert des Workflows (18000). `geerbt`: Umgebungsvariablen, die schon im Runner stehen (z. B. ein
+  // von aussen gesetztes FORCE_ZERO=1); jeder Schritt sieht sie, bis er sie selbst löscht.
+  function kette(w, { ereignis, schreiben = '', nullErlauben = '', testgroessen = true, geerbt = {} }) {
     const ctx = { steps: {}, ereignis, inputs: ereignis === 'schedule' ? {} : { schreiben, null_erlauben: nullErlauben } };
     // Ein Zeitplan-Lauf kennt keine Eingaben. Ein (hypothetisch) mitgeschickter Wert wird über die Job-Umgebung durchgereicht, um den Schutz zu prüfen.
     const jobEnv = Object.fromEntries(Object.entries(wf.jobs.abgleich.env || {}).map(([k, v]) => [k, aufloesen(v, ctx)]));
     if (ereignis === 'schedule') { jobEnv.SCHREIBEN_EINGABE = schreiben; jobEnv.NULL_ERLAUBEN_EINGABE = nullErlauben; }
     const basis = { PATH: `${path.dirname(process.execPath)}:/usr/bin:/bin`, HOME: os.tmpdir(), NODE_OPTIONS: `--import=${pathToFileURL(vorlauf).href}`, SIM_STATE: w.stand,
-      FORTURA_CSV: w.feed, SHOPIFY_TOKEN_FILE: path.join(w.d, 'tok.txt'), RUNNER_TEMP: w.d };
+      FORTURA_CSV: w.feed, SHOPIFY_TOKEN_FILE: path.join(w.d, 'tok.txt'), RUNNER_TEMP: w.d, ...geerbt };
     const gefahren = {};
     const fahre = (id) => {
       const st = schritt(id), out = path.join(w.d, `gh_out_${id}`); fs.writeFileSync(out, '');
@@ -313,6 +314,8 @@ if (py.status === 0) {
     ['Zeitplan mit (hypothetisch) mitgeschicktem null_erlauben=true', { ereignis: 'schedule', schreiben: 'true', nullErlauben: 'true' }],
     ['Handstart schreiben=true, null_erlauben=false', { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'false' }],
     ['Handstart schreiben=true ohne null_erlauben', { ereignis: 'workflow_dispatch', schreiben: 'true' }],
+    ['Zeitplan mit von aussen geerbtem FORCE_ZERO=1 im Runner', { ereignis: 'schedule', geerbt: { FORCE_ZERO: '1' } }],
+    ['Handstart schreiben=true ohne null_erlauben, aber mit geerbtem FORCE_ZERO=1', { ereignis: 'workflow_dispatch', schreiben: 'true', geerbt: { FORCE_ZERO: '1' } }],
   ]) {
     const w = weltNull(); const vor = md5(w.stand);
     const r = kette(w, optionen);
@@ -334,14 +337,15 @@ if (py.status === 0) {
     ok(/Abgleich: 200 unverändert · 0 zu ändern/.test(r.logNach) && /\[DRY\] nichts geschrieben\./.test(r.logNach), 'Kette null_erlauben: die Nachprüfung zeigt 0 Abweichungen und lief zu Ende');
     ok(ZEIT.test(lies(w).stempel?.value || '') && /STEMPEL gesetzt/.test(r.logStempel), 'Kette null_erlauben: Stempel gesetzt');
   }
-  // 6.3 Die Nachprüfung läuft mit scharfer Bremse: «erfolgreiche» Schreibaufrufe, die den Shop nicht ändern, dürfen nie einen Stempel ergeben
-  {
-    const w = weltNull({ ignorieren: true }); const r = kette(w, { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'true' });
-    gleich([r.live, r.forceZero, r.rc.sync], ['1', '1', '0'], 'Kette ohne Wirkung: Schreiblauf meldet Erfolg (Exit 0), Bremse war aufgehoben');
-    ok(r.nachLaeuft && r.rc.nach === '2' && BREMSE.test(r.logNach), 'Kette ohne Wirkung: die Nachprüfung läuft mit SCHARFER Bremse und bricht ab (Exit 2)');
-    ok(/Abgleich: 0 unverändert · 200 zu ändern/.test(r.logNach), 'Kette ohne Wirkung: die Nachprüfung sieht alle 200 Abweichungen');
-    gleich([r.stempelLaeuft, r.rc.stempel, lies(w).stempel], [true, '1', null], 'Kette ohne Wirkung: Stempel verweigert (Exit 1), kein Stempel');
-    ok(/\(b\) Nachprüfung: 200 Varianten weichen noch vom Feed ab/.test(r.logStempel) && /ABBRUCH/.test(r.logStempel), 'Kette ohne Wirkung: der Grund nennt die 200 verbliebenen Abweichungen und den Abbruch');
+  // 6.3 Die Nachprüfung läuft mit scharfer Bremse: «erfolgreiche» Schreibaufrufe, die den Shop nicht ändern, dürfen nie einen Stempel ergeben —
+  //     auch dann nicht, wenn im Runner schon ein FORCE_ZERO=1 steht (die Nachprüfung löscht es, bevor sie rechnet)
+  for (const [name, geerbt] of [['', {}], [' (mit geerbtem FORCE_ZERO=1)', { FORCE_ZERO: '1' }]]) {
+    const w = weltNull({ ignorieren: true }); const r = kette(w, { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'true', geerbt });
+    gleich([r.live, r.forceZero, r.rc.sync], ['1', '1', '0'], `Kette ohne Wirkung${name}: Schreiblauf meldet Erfolg (Exit 0), Bremse war aufgehoben`);
+    ok(r.nachLaeuft && r.rc.nach === '2' && BREMSE.test(r.logNach), `Kette ohne Wirkung${name}: die Nachprüfung läuft mit SCHARFER Bremse und bricht ab (Exit 2)`);
+    ok(/Abgleich: 0 unverändert · 200 zu ändern/.test(r.logNach), `Kette ohne Wirkung${name}: die Nachprüfung sieht alle 200 Abweichungen`);
+    gleich([r.stempelLaeuft, r.rc.stempel, lies(w).stempel], [true, '1', null], `Kette ohne Wirkung${name}: Stempel verweigert (Exit 1), kein Stempel`);
+    ok(/\(b\) Nachprüfung: 200 Varianten weichen noch vom Feed ab/.test(r.logStempel) && /ABBRUCH/.test(r.logStempel), `Kette ohne Wirkung${name}: der Grund nennt die 200 verbliebenen Abweichungen und den Abbruch`);
   }
   // 6.4 Handstart ohne «schreiben»: Lesemodus, die Eingabe null_erlauben ändert nichts
   {

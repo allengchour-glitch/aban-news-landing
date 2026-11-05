@@ -157,7 +157,7 @@ const M = [
   ['W53 Hinweis zur ignorierten Eingabe fehlt', W, 'echo "Hinweis: null_erlauben wirkt nur bei Handstart mit Freigabedatei und schreiben=true; hier ignoriert."', ':', 'stempel'],
   // Kettentest (ganze Schritte hintereinander, ~90 s je Lauf): nur die Mutanten, deren Wirkung erst im Zusammenspiel sichtbar wird
   ['K01 Zeitplan darf die Bremse aufheben (Kette)', W, 'if [ "$live" = "1" ] && [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'if [ "$live" = "1" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'kette'],
-  ['K02 Abgleich hebt die Bremse auch im Lesemodus auf (Kette)', W, 'if [ "$LIVE" = "1" ] && [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'if [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'kette'],
+  ['K02 Abgleich löscht ein geerbtes FORCE_ZERO nicht (Kette)', W, 'then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'then export FORCE_ZERO=1; fi', 'kette'],
   ['K03 Nachprüfung erbt FORCE_ZERO (Kette)', W, '          unset FORCE_ZERO\n          SHOPIFY_CLIENT_SECRET=', '          SHOPIFY_CLIENT_SECRET=', 'kette'],
   ['K04 Nachprüfung hebt die Bremse auf (Kette)', W, '          unset FORCE_ZERO\n          SHOPIFY_CLIENT_SECRET=', '          export FORCE_ZERO=1\n          SHOPIFY_CLIENT_SECRET=', 'kette'],
   ['K05 FORCE_ZERO im Stempel-Schritt wird geduldet (Kette)', S, 'if (forceZero) gruende.push(', 'if (false) gruende.push(', 'kette'],
@@ -180,10 +180,12 @@ const TESTS = {
   feed: 'dropship/lagerbestand-0511/feed_holen_test.mjs',
   kette: 'dropship/lagerbestand-0511/kette_test.mjs',
 };
+const NUR = process.env.NUR || '';   // z. B. NUR=kette: nur Mutanten dieser Art (und nur deren Ausgangslage) fahren
 const lauf = (art) => spawnSync(process.execPath, [path.join(BAUM, TESTS[art])], { cwd: BAUM, encoding: 'utf8', timeout: 300000, env: { PATH: process.env.PATH, HOME: process.env.HOME, TMPDIR: os.tmpdir() } });
 
 // Ausgangslage: beide Tests müssen auf der Kopie grün sein
 for (const art of Object.keys(TESTS)) {
+  if (NUR && art !== NUR) continue;
   const r = lauf(art);
   if (r.status !== 0) { console.log(`Ausgangslage: ${art}-Test ist auf der Kopie NICHT grün:\n` + (r.stdout + r.stderr).split('\n').slice(-15).join('\n')); process.exit(2); }
   console.log(`Ausgangslage ${art}: ${(r.stdout.match(/(\d+) Prüfungen/) || [])[0] || 'grün'}`);
@@ -192,6 +194,7 @@ for (const art of Object.keys(TESTS)) {
 let erkannt = 0, gleichwertig = 0, ueberlebt = 0, unanwendbar = 0;
 const liste = [];
 for (const [name, datei, von, zu, art] of M) {
+  if (NUR && art !== NUR) continue;
   const pfad = path.join(BAUM, datei);
   const orig = fs.readFileSync(pfad, 'utf8');
   const vorkommen = orig.split(von).length - 1;
@@ -205,6 +208,6 @@ for (const [name, datei, von, zu, art] of M) {
   else { ueberlebt++; liste.push(`  ✗ ${name}: ÜBERLEBT (kein Test wurde rot)`); }
 }
 console.log(liste.join('\n'));
-console.log(`\n${M.length} Mutanten: ${erkannt} erkannt, ${gleichwertig} gleichwertig, ${ueberlebt} überlebt, ${unanwendbar} nicht anwendbar`);
+console.log(`\n${NUR ? M.filter(x => x[4] === NUR).length : M.length} Mutanten${NUR ? ` (nur Art «${NUR}»)` : ''}: ${erkannt} erkannt, ${gleichwertig} gleichwertig, ${ueberlebt} überlebt, ${unanwendbar} nicht anwendbar`);
 fs.rmSync(BAUM, { recursive: true, force: true });
 process.exit(ueberlebt || unanwendbar ? 1 : 0);
