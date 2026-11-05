@@ -1,0 +1,298 @@
+{
+  "revision": 102,
+  "checkedAt": "2026-11-05T20:36:02+01:00",
+  "scope": "One uploaded Google Merchant issue CSV, fresh Shopify/Metricool identity, two exact Shopify products, public storefront readback, one exact existing-media variant binding, and post-write Admin/Storefront readback",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "matched": true
+    }
+  },
+  "input": {
+    "fileName": "product_issues_2026-11-05_09-03-46.csv",
+    "sha256": "0e20c63e1f39db5faf325d4f7ca264677efba8f83111fee53abf8661287b1785",
+    "bytes": 8421979,
+    "encoding": "UTF-8",
+    "delimiter": ",",
+    "columns": 12,
+    "rows": 22006,
+    "uniqueItemIds": 10628,
+    "uniqueTitles": 10627,
+    "shopifyStyleItemIds": 10628,
+    "uniqueShopifyProductPrefixes": 6672,
+    "exactDuplicateRows": 0,
+    "embeddedInstructions": 0,
+    "formulaCells": 0,
+    "languages": {
+      "de": 16530,
+      "fr": 5476
+    },
+    "countries": {
+      "Switzerland": 21955,
+      "Liechtenstein": 51
+    },
+    "feedLabel": "CHF_99383214465",
+    "channel": "ONLINE"
+  },
+  "issues": {
+    "Over capacity for Shopping ads (in CSS program)": {
+      "rows": 21862,
+      "uniqueItemIds": 10628,
+      "uniqueProducts": 6672,
+      "countries": {
+        "Switzerland": 21862
+      },
+      "traffic": {
+        "Shopping ads": 10931,
+        "Dynamic remarketing": 10931
+      },
+      "eligibleLimitedRows": 21832,
+      "notEligibleOrDisapprovedRows": 30,
+      "classification": "ACCOUNT_OR_PROGRAM_CAPACITY_NOT_PRODUCT_DATA"
+    },
+    "Promotional overlay on image": {
+      "rows": 54,
+      "uniqueItemIds": 10,
+      "uniqueProducts": 8,
+      "countries": {
+        "Switzerland": 36,
+        "Liechtenstein": 18
+      },
+      "traffic": {
+        "Free listings": 18,
+        "Shopping ads": 18,
+        "Dynamic remarketing": 18
+      }
+    },
+    "Personalized advertising: personal hardships": {
+      "rows": 70,
+      "uniqueItemIds": 42,
+      "uniqueProducts": 27,
+      "traffic": {
+        "Dynamic remarketing": 70
+      }
+    },
+    "Item pending processing": {
+      "rows": 6,
+      "uniqueItemIds": 1,
+      "uniqueProducts": 1,
+      "severity": "SEVERITY_PENDING"
+    },
+    "Personalized advertising: Sexual interests": {
+      "rows": 3,
+      "uniqueItemIds": 2,
+      "uniqueProducts": 2,
+      "traffic": {
+        "Dynamic remarketing": 3
+      }
+    },
+    "Restricted adult content": {
+      "rows": 3,
+      "uniqueItemIds": 2,
+      "uniqueProducts": 2,
+      "traffic": {
+        "Dynamic remarketing": 3
+      }
+    },
+    "Product page unavailable": {
+      "rows": 3,
+      "uniqueItemIds": 1,
+      "uniqueProducts": 1,
+      "traffic": {
+        "Free listings": 1,
+        "Shopping ads": 1,
+        "Dynamic remarketing": 1
+      }
+    },
+    "Tobacco products & related equipment": {
+      "rows": 3,
+      "uniqueItemIds": 1,
+      "uniqueProducts": 1,
+      "traffic": {
+        "Free listings": 1,
+        "Shopping ads": 1,
+        "Dynamic remarketing": 1
+      }
+    },
+    "Personalized advertising: Identity and belief": {
+      "rows": 2,
+      "uniqueItemIds": 1,
+      "uniqueProducts": 1,
+      "traffic": {
+        "Dynamic remarketing": 2
+      }
+    }
+  },
+  "nonCapacityScope": {
+    "rows": 144,
+    "uniqueItemIds": 58,
+    "uniqueProducts": 41,
+    "note": "Issue rows and filtered exports are diagnostics; they are not a current catalog count or confirmed live error rate."
+  },
+  "productSamples": [
+    {
+      "itemId": "shopify_ZZ_15461980373377_55934240031105",
+      "productId": "gid://shopify/Product/15461980373377",
+      "variantId": "gid://shopify/ProductVariant/55934240031105",
+      "issue": "Product page unavailable",
+      "csvLanguage": "fr",
+      "csvCountry": "Switzerland",
+      "status": "ACTIVE",
+      "title": "Mädchen Leder Prinzessinnen-Schuhe mit Stickerei",
+      "variantTitle": "Beige · Gr. 23",
+      "sku": "CJ-CJYD213484203CX",
+      "priceChf": "17.90",
+      "availableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "publicationNodes": 7,
+      "googleAndYoutubePublished": true,
+      "publicDefaultHttp": 200,
+      "publicVariantHttp": 200,
+      "publicFrenchVariantHttp": 200,
+      "canonicalDefault": "https://luxestyle.ch/products/madchen-leder-prinzessinnen-schuhe-mit-sticker-615200",
+      "canonicalFrench": "https://luxestyle.ch/fr/products/madchen-leder-prinzessinnen-schuhe-mit-sticker-615200",
+      "frenchPageTitleLanguage": "German despite html lang=fr",
+      "submittedMerchantUrl": "unknown",
+      "decision": "NO_PRODUCT_WRITE_CURRENT_STOREFRONT_REACHABLE_SUBMITTED_URL_UNKNOWN"
+    },
+    {
+      "itemId": "shopify_ZZ_15450832961921_55889732993409",
+      "productId": "gid://shopify/Product/15450832961921",
+      "variantId": "gid://shopify/ProductVariant/55889732993409",
+      "issue": "Promotional overlay on image",
+      "status": "ACTIVE",
+      "title": "Intelligenter Rollball für Katzen",
+      "variantTitle": "2 Stück in Pink-USB",
+      "sku": "CJ-CJJT149562615OL",
+      "priceChf": "24.90",
+      "availableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "publicationNodes": 7,
+      "googleAndYoutubePublished": true,
+      "retainedBlockTag": "rueckhol-0907",
+      "beforeVariantMedia": [],
+      "beforePublicFeaturedMedia": null,
+      "defaultProductImage": {
+        "visualFinding": "green ball with large *3 overlay, not the two-pink variant",
+        "width": 800,
+        "height": 800,
+        "sha256": "70cdeed0b98ade052b050a1fdba964bf7435d5a14f8b39b465ad608a0f926c25"
+      },
+      "selectedExistingMedia": {
+        "mediaId": "gid://shopify/MediaImage/69886967415169",
+        "imageSourceId": "gid://shopify/ImageSource/69886967415169",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2d03099-7c60-45cf-bd54-eb9eaf06c8b4.jpg?v=1783468637",
+        "width": 1200,
+        "height": 1200,
+        "status": "READY",
+        "visualFinding": "exactly two pink balls on white, no promotional overlay",
+        "sha256": "a44079e2210277f2412c9f597db9cd2e8cb568a5bfc5cfc6b71bf5ece0af0dfa"
+      },
+      "decision": "BIND_EXISTING_EXACT_MEDIA_TO_VARIANT"
+    }
+  ],
+  "shopifyWrite": {
+    "mutation": "productVariantsBulkUpdate",
+    "productId": "gid://shopify/Product/15450832961921",
+    "variantId": "gid://shopify/ProductVariant/55889732993409",
+    "fieldChanged": "variant media association",
+    "from": [],
+    "to": [
+      "gid://shopify/MediaImage/69886967415169"
+    ],
+    "allowPartialUpdates": false,
+    "userErrors": [],
+    "attempts": 1,
+    "retries": 0,
+    "protectedFieldsConfirmedAfter": {
+      "productStatus": "ACTIVE",
+      "handle": "intelligenter-rollball-fur-katzen-776896",
+      "tagsPreserved": true,
+      "variantTitle": "2 Stück in Pink-USB",
+      "sku": "CJ-CJJT149562615OL",
+      "priceChf": "24.90",
+      "availableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "publicationNodes": 7
+    }
+  },
+  "readback": {
+    "adminVariantMediaIds": [
+      "gid://shopify/MediaImage/69886967415169"
+    ],
+    "adminMediaStatus": "READY",
+    "publicProductJsonHttp": 200,
+    "publicFeaturedMediaId": 69886967415169,
+    "publicFeaturedImageVariantIds": [
+      55889732993409
+    ],
+    "publicProductJsonBeforeSha256": "dcc8295a5618bb6a1013ef6a168ef595c96bda7acc2a8e79e84ef67dde56e5fa",
+    "publicProductJsonAfterSha256": "cee80edb00475ee2fa224ed8723cb9755f59b0ec7ddbd171ce62f21b99db5862"
+  },
+  "publicArtifacts": {
+    "shoesHtmlSha256": "beca8bf3d5d9af2bca583aad1f365d805072df851b6596bed82ef7fb0b3cef51",
+    "shoesProductJsonSha256": "55dd0619042f89c7e6f7bc18599ec502c136c6159c629e7ef4950e254d17a9b3",
+    "shoesFrenchVariantHtmlSha256": "b612d5b60a0d9f9891f8a1beb241252c0d43c103fcbb6c089b09d43d5041031b",
+    "shoesDefaultVariantHtmlSha256": "1ed027e84c61c0559bfe07d7687584a3374ce95135e4e1964b9941d499b91473",
+    "rollballHtmlSha256": "90ee62300eec0379ae50617572f998dfb818de33ab1963e4457786c68e3dde70",
+    "rollballVariantHtmlSha256": "0764749a833540119efdb1355544c34871efae40de19fcdec56f636acfce21fa"
+  },
+  "remaining": {
+    "googleReprocessingStatus": "unknown",
+    "activeMerchantSourceId": "unknown",
+    "submittedImageUrl": "unknown",
+    "overlayItemIdsOpen": 9,
+    "note": "The 3-piece pink variant and other overlay items were not changed because no exact clean same-quantity/current-source image was proven in this run.",
+    "policyItems": "No policy text/image rewrite or evasion. Dynamic-remarketing-only restrictions remain channel-specific; pending item was not altered.",
+    "capacity": "CSS capacity remains an account/program matter; no product, feed, country or campaign change was attempted."
+  },
+  "writes": {
+    "shopifyVariantMediaAssociations": 1,
+    "shopifyProductsOtherwise": 0,
+    "merchant": 0,
+    "metricool": 0,
+    "feed": 0,
+    "country": 0,
+    "shipping": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "orders": 0,
+    "render": 0
+  },
+  "dailyReadsNotRepeated": [
+    "Metricool analytics",
+    "Klaviyo flow report",
+    "orders or ended purchase watch"
+  ],
+  "strictCatalogProgressUnchanged": {
+    "correctedActiveProducts": 32,
+    "activeProducts": 56506,
+    "percent": 0.05663,
+    "roundedPercent": 0.06,
+    "remainingProducts": 56474,
+    "reason": "This was one exact variant-media repair, not a complete product SEO/quality pass under the strict catalog procedure."
+  },
+  "nextStep": "After Merchant reprocessing, read the exact item image/source state for the corrected variant. Then inspect remaining overlay item IDs only in small product-faithful batches; do not use CSS capacity or policy rows as a reason for product-text rewrites."
+}
