@@ -45,12 +45,12 @@ const FEUER = [14, -8], TISCH = [16.5, -3];
 const faceFeuer = (x, z) => gegen(x, z, FEUER[0], FEUER[1]);
 
 const spPia = spieler(pia, [
-  { t0: 0, t1: 3.6, clip: 'ernten' }, { t0: 3.6, t1: S.S2.t1 - 1.6, clip: 'tragen', requisit: 'korb' },
+  { t0: 0, t1: t1 - 1.44, clip: 'ernten' }, { t0: t1 - 1.44, t1: S.S2.t1 - 1.6, clip: 'tragen', requisit: 'korb' },
   { t0: S.S2.t1 - 1.6, t1: S.S3.t0 + 0.3, clip: 'winkenKlein', requisit: 'korb' }, { t0: S.S3.t0 + 0.3, t1: t3 - 0.3, clip: 'ruehren', requisit: 'loeffel' },
   { t0: t3 - 0.3, t1: t3 + 0.9, clip: 'gehen' }, { t0: t3 + 0.9, t1: t4 - 3.2, clip: 'sitzen' }, { t0: t4 - 3.2, t1: 99, clip: 'anstossen', requisit: 'becher' }
 ].map((s) => s), [
-  { t: 0, x: 3.2, z: -3.1, ry: 0 }, { t: 3.7, x: 3.2, z: -3.1, ry: 0 }, { t: 4.9, x: 3.6, z: -2.6, ry: Math.PI / 2 }, { t: 8.5, x: 8.0, z: -2.7, ry: Math.PI / 2, lin: true },
-  { t: 8.9, x: 8.0, z: -2.7, ry: Math.PI / 2 }, { t: S.S3.t0, x: 8.0, z: -2.7, ry: Math.PI / 2 }, { t: S.S3.t0 + 0.01, x: 15.3, z: -9.7, ry: faceFeuer(15.3, -9.7) },
+  { t: 0, x: 3.2, z: -3.1, ry: 0 }, { t: t1 - 1.34, x: 3.2, z: -3.1, ry: 0 }, { t: t1 - 0.14, x: 3.6, z: -2.6, ry: Math.PI / 2 }, { t: S.S2.t1 - 1.78, x: 8.0, z: -2.7, ry: Math.PI / 2, lin: true },
+  { t: S.S2.t1 - 1.38, x: 8.0, z: -2.7, ry: Math.PI / 2 }, { t: S.S3.t0, x: 8.0, z: -2.7, ry: Math.PI / 2 }, { t: S.S3.t0 + 0.01, x: 15.3, z: -9.7, ry: faceFeuer(15.3, -9.7) },
   { t: t3 - 0.3, x: 15.3, z: -9.7, ry: faceFeuer(15.3, -9.7) }, { t: t3 + 0.9, x: 16.5, z: -4.65, ry: 0 }, { t: 99, x: 16.5, z: -4.65, ry: 0 }
 ], { y });
 const spMia = spieler(mia, [
