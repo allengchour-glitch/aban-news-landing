@@ -1,0 +1,17 @@
+{
+ "hinweis": "Soll-Stand der elf Theme-Dateien (MD5 von anwenden() auf der Sicherung mit daten/ausblenden-quelle.json und daten/variantenkarte.json). Gleich der Nachbildung, die im Browser geprüft wurde (Playwright gegen das Live-Dokument, 1440 und 390 px, 05.11.2026). Nur ändern, nachdem der Browsertest am neuen Stand wiederholt wurde.",
+ "geprueft": "2026-11-05 (Live-Dokument mit 17 Shopprodukten und 22 bestellbaren Modellen)",
+ "md5": {
+  "assets/luxe-clothing-ausblenden.json": "7f27109aa5049125e80a0f3d0374861a",
+  "assets/luxe-clothing-variantenkarte.json": "5790968bda235f40049578e0471e9899",
+  "locales/de.json": "8cdd691e2ef2c7834bea5e1c7c77924d",
+  "locales/en.default.json": "0c760ab488e9a7524af94f7ec886c1cc",
+  "locales/fr.json": "d938a8fd86d3997a5e8db01ff7083367",
+  "sections/luxe-clothing.liquid": "b305205924153ceab9a3cafddd6adcb3",
+  "snippets/luxe-clothing-asset-manifest.liquid": "e384e40aae88e0282e83cbd8e05c36e9",
+  "snippets/luxe-selfdesign-cover.liquid": "69d4e5b6c01fc6dfccb648bb79bec46e",
+  "sections/luxe-category.liquid": "2dfc2b62476c800d9c9234bc0a02bbbc",
+  "assets/luxe-clothing.css": "549bf374b1791834af07eb70ba05ce5c",
+  "assets/luxe-clothing.js": "144038a5ff1903eca8419a1f417af99a"
+ }
+}

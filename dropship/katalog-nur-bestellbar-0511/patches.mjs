@@ -202,7 +202,7 @@ function js(text) {
   let t = text;
   // 1. Varianten: nur bestellbare (lxVids bleibt null, bis lxPrepare gelaufen ist)
   t = einmal(t, `const variantsFor = product => list(product.variants).filter(v => id(v.id));`,
-    `let lxVids = null; /* ${MARKE} */\n    const variantsFor = product => list(product.variants).filter(v => id(v.id) && (lxVids === null || lxVids.has(id(v.id))));`, 'JS variantsFor');
+    `let lxVids = null; /* ${MARKE} */\n    const variantsFor = product => list(product.variants).filter(v => id(v.id) && (lxVids === null || lxVids.has(id(v.id)))); /* ${MARKE} */`, 'JS variantsFor');
   // 2. Helfer vor load()
   t = einmal(t, `    const load = async () => {\n`, JS_HELFER + `    const load = async () => {\n`, 'JS load-Kopf');
   // 3. Nach dem Laden: auf Bestellbares einschränken (vor renderGroups/refreshTypes)
@@ -227,7 +227,7 @@ function js(text) {
   t = einmal(t, `const data=offersFor(selected);const offer=data.requiresChoice ?`,
     `const data=offersFor(selected);if(data.requiresChoice&&data.offers.length>1&&!priceChoiceId){const first=data.offers.find(item=>item.available!==false);if(first)priceChoiceId=id(first.variantId);} /* ${MARKE} */ const offer=data.requiresChoice ?`, 'JS Vorwahl');
   // 10. Zeile «N Originalvarianten aus dem Herstellerkatalog» zählt jetzt die bestellbaren Ausführungen
-  t = einmal(t, `t('original_variants',{count:variants.length})`, `t('orderable_variants',{count:variants.length})`, 'JS Anzahl Ausführungen');
+  t = einmal(t, `t('original_variants',{count:variants.length})`, `t('orderable_variants'/* ${MARKE} */,{count:variants.length})`, 'JS Anzahl Ausführungen');
   return t.replace(/\s*$/, '\n') + `/* ${MARKE} */\n`;
 }
 
