@@ -1,0 +1,39 @@
+{
+ "modell": 683,
+ "stand": "2026-11-05",
+ "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 683.json); jeder Satz mit englischem Beleg",
+ "intro": [
+  {
+   "de": "Diese hochwertige Handyhülle ist für alle gemacht, die einen minimalistischen Stil lieben.",
+   "beleg": "This premium phone case is made for all minimalist style lovers."
+  },
+  {
+   "de": "Sie ist elegant und leicht und erfüllt ihre Aufgabe, dein Handy zu schützen.",
+   "beleg": "It’s classy and lightweight but will certainly do the job when it comes to keeping your phone safe."
+  }
+ ],
+ "punkte": [
+  {
+   "de": "Aus Polycarbonat (PC)",
+   "beleg": "Made of polycarbonate (PC) material"
+  },
+  {
+   "de": "Geeignet für kabelloses Laden",
+   "beleg": "Wireless charging compatible"
+  },
+  {
+   "de": "Genau ausgerichtete Aussparungen für die Anschlüsse",
+   "beleg": "Precisely aligned port openings"
+  },
+  {
+   "de": "Der unbedruckte Rohling stammt aus der Republik Korea.",
+   "beleg": "Blank product sourced from the Republic of Korea"
+  }
+ ],
+ "hinweis": [
+  {
+   "de": "Hinweis: Von Flüssigkeiten mit hohem Alkoholgehalt fernhalten, sonst kann sich das Motiv abreiben. Vor direkter Sonne schützen, damit die Hülle nicht vergilbt.",
+   "beleg": "Keep away from liquids containing high alcohol levels, as designs on the phone case may rub off. Keep away from direct sunlight to prevent yellowing."
+  }
+ ]
+}

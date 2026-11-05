@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mock-Produktseite für den Editor v6</title>
+<!--
+  Nachbildung einer Produktseite von luxestyle.ch, nur für die Tests. Parameter in der Adresse:
+    karte=71            Modell aus test/testdaten/<id>.karte.json (v6-Container mit eingebettetem JSON, wie in der Produktbeschreibung)
+    shop=1001:4012,…    Shopify-Variante:Printful-Variante, wird in die Karte (shop.varianten) eingefügt
+    modus=v6            (Vorgabe) v6 mit Karte
+          legacy6       v6-Container OHNE Karte (Rückfall in den v5-Modus), Attribute wie bei v5
+          v5            Container mit Klasse lspod-designer und das echte v5 aus pod/live (live wirksame Datei)
+          v5,v6 / v5,legacy6   beides auf einer Seite
+    kaputt=json|schema|leer   Karte absichtlich beschädigen (Rückfall prüfen)
+    maxpx=0             data-max-px am Container (0 = keine Obergrenze der Druckdatei)
+    ohneMinDpi=1        Server lässt minDpi aus der Karte weg (Vorgabe 100 prüfen)
+    hinweise=1          Server fügt vier zusätzliche Hinweise ein (unbekannte Einschränkung, unbekannte Info, eigener Kundentext, Einschränkung ohne Text)
+    lang=en             Shopify.locale
+    varianten=1001:Weiss:#ffffff,1002:Schwarz:#111111   Auswahl im Formular (Vorgabe: drei Stück)
+-->
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:#16151a;font:15px/1.4 Arial,sans-serif}
+  .seite{max-width:1180px;margin:0 auto;padding:12px 16px}
+  .spalten{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+  .links{flex:1 1 300px;min-width:0}
+  .rechts{flex:1 1 380px;max-width:600px;min-width:0}
+  .foto{width:100%;aspect-ratio:1;background:#eee;border-radius:8px}
+  fieldset{border:0;padding:0;margin:0 0 10px}
+  label.v{display:inline-block;margin:0 8px 8px 0;padding:8px 12px;border:1px solid #bbb;border-radius:8px;cursor:pointer}
+  #theme-kaufen{padding:12px 18px;border-radius:8px;border:0;background:#16151a;color:#fff;font-size:15px}
+</style>
+</head>
+<body>
+<div class="seite">
+  <h1 id="titel">Selbst gestalten (Mock)</h1>
+  <div class="spalten">
+    <div class="links"><div class="foto"></div></div>
+    <div class="rechts">
+      <form method="post" action="/cart/add" id="produkt-form">
+        <fieldset id="varianten"></fieldset>
+        <button type="submit" id="theme-kaufen">Theme-Kaufknopf</button>
+      </form>
+      <div id="beschreibung"></div>
+      <p id="nachher">Text nach dem Editor.</p>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  window.Shopify = { locale: q.get('lang') || 'de' };
+  document.documentElement.lang = window.Shopify.locale;
+  var modi = (q.get('modus') || 'v6').split(',');
+  var karteId = q.get('karte') || '71';
+  var shop = q.get('shop') || '';
+
+  // Variantenauswahl wie im Theme: Radios mit name="id"
+  var vs = (q.get('varianten') || '1001:Weiss,1002:Schwarz,1003:Rot').split(',');
+  var fs = document.getElementById('varianten');
+  vs.forEach(function (v, i) {
+    var t = v.split(':');
+    var l = document.createElement('label'); l.className = 'v';
+    var r = document.createElement('input'); r.type = 'radio'; r.name = 'id'; r.value = t[0]; if (i === 0) r.checked = true;
+    l.appendChild(r); l.appendChild(document.createTextNode(' ' + (t[1] || t[0])));
+    fs.appendChild(l);
+  });
+  document.getElementById('produkt-form').addEventListener('submit', function (e) { e.preventDefault(); window.__themeKnopf = (window.__themeKnopf || 0) + 1; });
+
+  var beschr = document.getElementById('beschreibung');
+  var bildA = '/bild/vorne.svg', bildB = '/bild/hinten.svg';
+  function skript(src) { var s = document.createElement('script'); s.src = src; s.defer = true; document.body.appendChild(s); return s; }
+
+  function v5Container() {
+    var d = document.createElement('div'); d.className = 'lspod-designer'; d.id = 'ed-v5';
+    d.setAttribute('data-img-front', bildA); d.setAttribute('data-img-back', bildB); d.setAttribute('data-variant', '1001'); d.setAttribute('data-ratio', '1.2');
+    beschr.appendChild(d); return d;
+  }
+  function legacyContainer() {
+    var d = document.createElement('div'); d.className = 'lspod-designer-v6'; d.id = 'ed-v6';
+    d.setAttribute('data-img-front', bildA); d.setAttribute('data-img-back', bildB); d.setAttribute('data-variant', '1001'); d.setAttribute('data-ratio', '1.2');
+    beschr.appendChild(d); return d;
+  }
+  function karteContainer(text) {
+    var d = document.createElement('div'); d.className = 'lspod-designer-v6'; d.id = 'ed-v6'; d.setAttribute('data-variant', '1001');
+    // wie in einer echten Produktbeschreibung: die Attribute des alten Editors bleiben stehen, sie gelten nur für den Rückfall ohne Karte
+    d.setAttribute('data-img-front', bildA); d.setAttribute('data-img-back', bildB); d.setAttribute('data-ratio', '1.2');
+    if (q.get('maxpx') !== null) d.setAttribute('data-max-px', q.get('maxpx'));
+    var s = document.createElement('script'); s.type = 'application/json'; s.id = 'lspod-karte'; s.textContent = text;
+    d.appendChild(s); beschr.appendChild(d); return d;
+  }
+
+  function weiter(karteText) {
+    if (modi.indexOf('v5') >= 0) v5Container();
+    if (modi.indexOf('legacy6') >= 0) legacyContainer();
+    if (modi.indexOf('v6') >= 0) karteContainer(karteText);
+    if (modi.indexOf('v5') >= 0) skript('/v5.js');
+    if (modi.indexOf('v6') >= 0 || modi.indexOf('legacy6') >= 0) skript('/lspod-designer-v6.js');
+  }
+
+  if (modi.indexOf('v6') >= 0) {
+    fetch('/karten/' + karteId + '.json' + location.search).then(function (r) { return r.text(); }).then(function (t) {
+      var k = q.get('kaputt');
+      if (k === 'json') t = t.slice(0, 40);
+      else if (k === 'schema') t = JSON.stringify({ schema: 2, platzierungen: [] });
+      else if (k === 'leer') t = '';
+      weiter(t);
+    });
+  } else weiter('');
+})();
+</script>
+</body>
+</html>

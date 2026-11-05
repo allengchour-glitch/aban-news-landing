@@ -1,0 +1,2252 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T18:41:14.547Z",
+  "katalogGeholt": "2026-11-05T17:02:32.275Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 411,
+ "stufe": 1,
+ "klasse": "FLACH",
+ "klasseEndgueltig": "FLACH",
+ "typ": "T-SHIRT",
+ "standardTechnik": "DTG",
+ "titelEn": "Unisex Premium Sweatshirt | Cotton Heritage M2480",
+ "titel": "Unisex Premium Sweatshirt selbst gestalten",
+ "titelKurz": "Unisex Premium Sweatshirt",
+ "titelQuelle": "glossar",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [],
+ "entfernteMarken": [],
+ "handle": "unisex-premium-sweatshirt-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Bekleidung",
+ "tags": [
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-bekleidung",
+  "sg-fabrik",
+  "sg-klasse-flach",
+  "sg-modell-411",
+  "sg-typ-t-shirt",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Unisex Premium Sweatshirt selbst gestalten | LuxeStyle CH",
+  "description": "Unisex Premium Sweatshirt selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Farbe",
+   "art": "farbe",
+   "werte": [
+    "Weiss",
+    "Schwarz",
+    "Cremeweiss",
+    "Altrosa",
+    "Verwaschenes Schwarz",
+    "Marineblau",
+    "Hellgrau",
+    "Anthrazit meliert",
+    "Rot",
+    "Königsblau",
+    "Waldgrün"
+   ]
+  },
+  {
+   "name": "Grösse",
+   "art": "groesse",
+   "werte": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ]
+  }
+ ],
+ "varianten": [
+  {
+   "sku": "9100411_11249",
+   "printfulVariantId": 11249,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "S"
+   },
+   "farbe": "Weiss",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100411_11250",
+   "printfulVariantId": 11250,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "M"
+   },
+   "farbe": "Weiss",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100411_11251",
+   "printfulVariantId": 11251,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "L"
+   },
+   "farbe": "Weiss",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100411_11252",
+   "printfulVariantId": 11252,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "XL"
+   },
+   "farbe": "Weiss",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100411_11253",
+   "printfulVariantId": 11253,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "2XL"
+   },
+   "farbe": "Weiss",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100411_13261",
+   "printfulVariantId": 13261,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "3XL"
+   },
+   "farbe": "Weiss",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100411_11254",
+   "printfulVariantId": 11254,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "S"
+   },
+   "farbe": "Schwarz",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100411_11255",
+   "printfulVariantId": 11255,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "M"
+   },
+   "farbe": "Schwarz",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100411_11256",
+   "printfulVariantId": 11256,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "L"
+   },
+   "farbe": "Schwarz",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100411_11257",
+   "printfulVariantId": 11257,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "XL"
+   },
+   "farbe": "Schwarz",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100411_11258",
+   "printfulVariantId": 11258,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "2XL"
+   },
+   "farbe": "Schwarz",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100411_13258",
+   "printfulVariantId": 13258,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "3XL"
+   },
+   "farbe": "Schwarz",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100411_20357",
+   "printfulVariantId": 20357,
+   "optionen": {
+    "Farbe": "Cremeweiss",
+    "Grösse": "S"
+   },
+   "farbe": "Cremeweiss",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss"
+  },
+  {
+   "sku": "9100411_20356",
+   "printfulVariantId": 20356,
+   "optionen": {
+    "Farbe": "Cremeweiss",
+    "Grösse": "M"
+   },
+   "farbe": "Cremeweiss",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss"
+  },
+  {
+   "sku": "9100411_20355",
+   "printfulVariantId": 20355,
+   "optionen": {
+    "Farbe": "Cremeweiss",
+    "Grösse": "L"
+   },
+   "farbe": "Cremeweiss",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss"
+  },
+  {
+   "sku": "9100411_20354",
+   "printfulVariantId": 20354,
+   "optionen": {
+    "Farbe": "Cremeweiss",
+    "Grösse": "XL"
+   },
+   "farbe": "Cremeweiss",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss"
+  },
+  {
+   "sku": "9100411_20353",
+   "printfulVariantId": 20353,
+   "optionen": {
+    "Farbe": "Cremeweiss",
+    "Grösse": "2XL"
+   },
+   "farbe": "Cremeweiss",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss"
+  },
+  {
+   "sku": "9100411_20352",
+   "printfulVariantId": 20352,
+   "optionen": {
+    "Farbe": "Cremeweiss",
+    "Grösse": "3XL"
+   },
+   "farbe": "Cremeweiss",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss"
+  },
+  {
+   "sku": "9100411_13863",
+   "printfulVariantId": 13863,
+   "optionen": {
+    "Farbe": "Altrosa",
+    "Grösse": "S"
+   },
+   "farbe": "Altrosa",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Altrosa"
+  },
+  {
+   "sku": "9100411_13864",
+   "printfulVariantId": 13864,
+   "optionen": {
+    "Farbe": "Altrosa",
+    "Grösse": "M"
+   },
+   "farbe": "Altrosa",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Altrosa"
+  },
+  {
+   "sku": "9100411_13865",
+   "printfulVariantId": 13865,
+   "optionen": {
+    "Farbe": "Altrosa",
+    "Grösse": "L"
+   },
+   "farbe": "Altrosa",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Altrosa"
+  },
+  {
+   "sku": "9100411_13866",
+   "printfulVariantId": 13866,
+   "optionen": {
+    "Farbe": "Altrosa",
+    "Grösse": "XL"
+   },
+   "farbe": "Altrosa",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Altrosa"
+  },
+  {
+   "sku": "9100411_13867",
+   "printfulVariantId": 13867,
+   "optionen": {
+    "Farbe": "Altrosa",
+    "Grösse": "2XL"
+   },
+   "farbe": "Altrosa",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Altrosa"
+  },
+  {
+   "sku": "9100411_13868",
+   "printfulVariantId": 13868,
+   "optionen": {
+    "Farbe": "Altrosa",
+    "Grösse": "3XL"
+   },
+   "farbe": "Altrosa",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Altrosa"
+  },
+  {
+   "sku": "9100411_20363",
+   "printfulVariantId": 20363,
+   "optionen": {
+    "Farbe": "Verwaschenes Schwarz",
+    "Grösse": "S"
+   },
+   "farbe": "Verwaschenes Schwarz",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Verwaschenes Schwarz"
+  },
+  {
+   "sku": "9100411_20362",
+   "printfulVariantId": 20362,
+   "optionen": {
+    "Farbe": "Verwaschenes Schwarz",
+    "Grösse": "M"
+   },
+   "farbe": "Verwaschenes Schwarz",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Verwaschenes Schwarz"
+  },
+  {
+   "sku": "9100411_20361",
+   "printfulVariantId": 20361,
+   "optionen": {
+    "Farbe": "Verwaschenes Schwarz",
+    "Grösse": "L"
+   },
+   "farbe": "Verwaschenes Schwarz",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Verwaschenes Schwarz"
+  },
+  {
+   "sku": "9100411_20359",
+   "printfulVariantId": 20359,
+   "optionen": {
+    "Farbe": "Verwaschenes Schwarz",
+    "Grösse": "2XL"
+   },
+   "farbe": "Verwaschenes Schwarz",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Verwaschenes Schwarz"
+  },
+  {
+   "sku": "9100411_20358",
+   "printfulVariantId": 20358,
+   "optionen": {
+    "Farbe": "Verwaschenes Schwarz",
+    "Grösse": "3XL"
+   },
+   "farbe": "Verwaschenes Schwarz",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Verwaschenes Schwarz"
+  },
+  {
+   "sku": "9100411_13252",
+   "printfulVariantId": 13252,
+   "optionen": {
+    "Farbe": "Marineblau",
+    "Grösse": "S"
+   },
+   "farbe": "Marineblau",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Marineblau"
+  },
+  {
+   "sku": "9100411_13253",
+   "printfulVariantId": 13253,
+   "optionen": {
+    "Farbe": "Marineblau",
+    "Grösse": "M"
+   },
+   "farbe": "Marineblau",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Marineblau"
+  },
+  {
+   "sku": "9100411_13254",
+   "printfulVariantId": 13254,
+   "optionen": {
+    "Farbe": "Marineblau",
+    "Grösse": "L"
+   },
+   "farbe": "Marineblau",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Marineblau"
+  },
+  {
+   "sku": "9100411_13255",
+   "printfulVariantId": 13255,
+   "optionen": {
+    "Farbe": "Marineblau",
+    "Grösse": "XL"
+   },
+   "farbe": "Marineblau",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Marineblau"
+  },
+  {
+   "sku": "9100411_13256",
+   "printfulVariantId": 13256,
+   "optionen": {
+    "Farbe": "Marineblau",
+    "Grösse": "2XL"
+   },
+   "farbe": "Marineblau",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Marineblau"
+  },
+  {
+   "sku": "9100411_13257",
+   "printfulVariantId": 13257,
+   "optionen": {
+    "Farbe": "Marineblau",
+    "Grösse": "3XL"
+   },
+   "farbe": "Marineblau",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Marineblau"
+  },
+  {
+   "sku": "9100411_11244",
+   "printfulVariantId": 11244,
+   "optionen": {
+    "Farbe": "Hellgrau",
+    "Grösse": "S"
+   },
+   "farbe": "Hellgrau",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau"
+  },
+  {
+   "sku": "9100411_11245",
+   "printfulVariantId": 11245,
+   "optionen": {
+    "Farbe": "Hellgrau",
+    "Grösse": "M"
+   },
+   "farbe": "Hellgrau",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau"
+  },
+  {
+   "sku": "9100411_11246",
+   "printfulVariantId": 11246,
+   "optionen": {
+    "Farbe": "Hellgrau",
+    "Grösse": "L"
+   },
+   "farbe": "Hellgrau",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau"
+  },
+  {
+   "sku": "9100411_11247",
+   "printfulVariantId": 11247,
+   "optionen": {
+    "Farbe": "Hellgrau",
+    "Grösse": "XL"
+   },
+   "farbe": "Hellgrau",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau"
+  },
+  {
+   "sku": "9100411_11248",
+   "printfulVariantId": 11248,
+   "optionen": {
+    "Farbe": "Hellgrau",
+    "Grösse": "2XL"
+   },
+   "farbe": "Hellgrau",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau"
+  },
+  {
+   "sku": "9100411_13259",
+   "printfulVariantId": 13259,
+   "optionen": {
+    "Farbe": "Hellgrau",
+    "Grösse": "3XL"
+   },
+   "farbe": "Hellgrau",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau"
+  },
+  {
+   "sku": "9100411_11259",
+   "printfulVariantId": 11259,
+   "optionen": {
+    "Farbe": "Anthrazit meliert",
+    "Grösse": "S"
+   },
+   "farbe": "Anthrazit meliert",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert"
+  },
+  {
+   "sku": "9100411_11260",
+   "printfulVariantId": 11260,
+   "optionen": {
+    "Farbe": "Anthrazit meliert",
+    "Grösse": "M"
+   },
+   "farbe": "Anthrazit meliert",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert"
+  },
+  {
+   "sku": "9100411_11261",
+   "printfulVariantId": 11261,
+   "optionen": {
+    "Farbe": "Anthrazit meliert",
+    "Grösse": "L"
+   },
+   "farbe": "Anthrazit meliert",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert"
+  },
+  {
+   "sku": "9100411_11262",
+   "printfulVariantId": 11262,
+   "optionen": {
+    "Farbe": "Anthrazit meliert",
+    "Grösse": "XL"
+   },
+   "farbe": "Anthrazit meliert",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert"
+  },
+  {
+   "sku": "9100411_11263",
+   "printfulVariantId": 11263,
+   "optionen": {
+    "Farbe": "Anthrazit meliert",
+    "Grösse": "2XL"
+   },
+   "farbe": "Anthrazit meliert",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert"
+  },
+  {
+   "sku": "9100411_13260",
+   "printfulVariantId": 13260,
+   "optionen": {
+    "Farbe": "Anthrazit meliert",
+    "Grösse": "3XL"
+   },
+   "farbe": "Anthrazit meliert",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert"
+  },
+  {
+   "sku": "9100411_20369",
+   "printfulVariantId": 20369,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "S"
+   },
+   "farbe": "Rot",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Rot"
+  },
+  {
+   "sku": "9100411_20368",
+   "printfulVariantId": 20368,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "M"
+   },
+   "farbe": "Rot",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Rot"
+  },
+  {
+   "sku": "9100411_20367",
+   "printfulVariantId": 20367,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "L"
+   },
+   "farbe": "Rot",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Rot"
+  },
+  {
+   "sku": "9100411_20366",
+   "printfulVariantId": 20366,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "XL"
+   },
+   "farbe": "Rot",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Rot"
+  },
+  {
+   "sku": "9100411_20365",
+   "printfulVariantId": 20365,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "2XL"
+   },
+   "farbe": "Rot",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Rot"
+  },
+  {
+   "sku": "9100411_20364",
+   "printfulVariantId": 20364,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "3XL"
+   },
+   "farbe": "Rot",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Rot"
+  },
+  {
+   "sku": "9100411_13869",
+   "printfulVariantId": 13869,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "S"
+   },
+   "farbe": "Königsblau",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100411_13870",
+   "printfulVariantId": 13870,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "M"
+   },
+   "farbe": "Königsblau",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100411_13871",
+   "printfulVariantId": 13871,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "L"
+   },
+   "farbe": "Königsblau",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100411_13872",
+   "printfulVariantId": 13872,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "XL"
+   },
+   "farbe": "Königsblau",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100411_13873",
+   "printfulVariantId": 13873,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "2XL"
+   },
+   "farbe": "Königsblau",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100411_13874",
+   "printfulVariantId": 13874,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "3XL"
+   },
+   "farbe": "Königsblau",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100411_16156",
+   "printfulVariantId": 16156,
+   "optionen": {
+    "Farbe": "Waldgrün",
+    "Grösse": "S"
+   },
+   "farbe": "Waldgrün",
+   "groesse": "S",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün"
+  },
+  {
+   "sku": "9100411_16157",
+   "printfulVariantId": 16157,
+   "optionen": {
+    "Farbe": "Waldgrün",
+    "Grösse": "M"
+   },
+   "farbe": "Waldgrün",
+   "groesse": "M",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün"
+  },
+  {
+   "sku": "9100411_16158",
+   "printfulVariantId": 16158,
+   "optionen": {
+    "Farbe": "Waldgrün",
+    "Grösse": "L"
+   },
+   "farbe": "Waldgrün",
+   "groesse": "L",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün"
+  },
+  {
+   "sku": "9100411_16159",
+   "printfulVariantId": 16159,
+   "optionen": {
+    "Farbe": "Waldgrün",
+    "Grösse": "XL"
+   },
+   "farbe": "Waldgrün",
+   "groesse": "XL",
+   "herkunft": "EU",
+   "kostenUsd": 24.53,
+   "ekRechnungUsd": 30.91,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 50.9,
+   "nettoChf": 6.99,
+   "nettoBeiMesskursChf": 10.19,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün"
+  },
+  {
+   "sku": "9100411_16160",
+   "printfulVariantId": 16160,
+   "optionen": {
+    "Farbe": "Waldgrün",
+    "Grösse": "2XL"
+   },
+   "farbe": "Waldgrün",
+   "groesse": "2XL",
+   "herkunft": "EU",
+   "kostenUsd": 26.53,
+   "ekRechnungUsd": 33.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 55.9,
+   "nettoChf": 9.17,
+   "nettoBeiMesskursChf": 12.56,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün"
+  },
+  {
+   "sku": "9100411_16161",
+   "printfulVariantId": 16161,
+   "optionen": {
+    "Farbe": "Waldgrün",
+    "Grösse": "3XL"
+   },
+   "farbe": "Waldgrün",
+   "groesse": "3XL",
+   "herkunft": "EU",
+   "kostenUsd": 28.53,
+   "ekRechnungUsd": 35.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.39,
+   "aufpreisUsd": 0,
+   "preisChf": 59.9,
+   "nettoChf": 10.47,
+   "nettoBeiMesskursChf": 14.05,
+   "bindend": "richtwert",
+   "bildAlt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün"
+  }
+ ],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/ad/ad9ddd4bd72e10797de24da876bb3c6d_l",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Produktbild",
+   "rolle": "haupt",
+   "label": "Produktbild"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/11249_1791983115.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Weiss",
+   "rolle": "variante",
+   "label": "Weiss"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/11254_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Schwarz",
+   "rolle": "variante",
+   "label": "Schwarz"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/20352_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Cremeweiss",
+   "rolle": "variante",
+   "label": "Cremeweiss"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/13863_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Altrosa",
+   "rolle": "variante",
+   "label": "Altrosa"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/20358_1791983115.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Verwaschenes Schwarz",
+   "rolle": "variante",
+   "label": "Verwaschenes Schwarz"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/13252_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Marineblau",
+   "rolle": "variante",
+   "label": "Marineblau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/11244_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Hellgrau",
+   "rolle": "variante",
+   "label": "Hellgrau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/11259_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Anthrazit meliert",
+   "rolle": "variante",
+   "label": "Anthrazit meliert"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/20364_1791983115.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Rot",
+   "rolle": "variante",
+   "label": "Rot"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/13869_1791983115.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Königsblau",
+   "rolle": "variante",
+   "label": "Königsblau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/411/16156_1791983114.jpg",
+   "alt": "Unisex Premium Sweatshirt selbst gestalten Waldgrün",
+   "rolle": "variante",
+   "label": "Waldgrün"
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>14 bis 16 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"411\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":411,\"klasse\":\"FLACH\",\"technik\":\"DTG\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":961,\"oben\":381,\"breite\":1110,\"hoehe\":1480,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/front/05_ghost_front_base_whitebg.png?v=1744093611\",\"hintergrund\":null},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":943,\"oben\":517,\"breite\":1112,\"hoehe\":1483,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/back/05_ghost_back_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titel\":\"Etikett aussen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":2.6,\"druck\":{\"px\":[450,450],\"dpi\":150,\"cm\":[7.6,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[560,560],\"links\":137,\"oben\":187,\"breite\":288,\"hoehe\":288,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"back\",\"label_inside\",\"label_inside_dtf\"]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titel\":\"Etikett innen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[750,750],\"dpi\":300,\"cm\":[6.4,6.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":251,\"oben\":182,\"breite\":228,\"hoehe\":228,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\",\"label_inside_dtf\"]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titel\":\"Ärmel links\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1512,\"oben\":826,\"breite\":264,\"hoehe\":1057,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titel\":\"Ärmel rechts\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1394,\"oben\":842,\"breite\":264,\"hoehe\":1057,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"label_inside_dtf\",\"dateiTyp\":\"label_inside_dtf\",\"titel\":\"Etikett innen (DTF)\",\"art\":\"etikett\",\"technik\":\"DTFILM\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[750,750],\"dpi\":300,\"cm\":[6.4,6.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":251,\"oben\":182,\"breite\":228,\"hoehe\":228,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\",\"label_inside\"]},{\"id\":\"embroidery_wrist_left\",\"dateiTyp\":\"embroidery_wrist_left\",\"titel\":\"Stickerei Handgelenk links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1507,\"oben\":1550,\"breite\":434,\"hoehe\":650,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/zoomed-in/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_left\",\"sleeve_right\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titel\":\"Stickerei Handgelenk rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1280,\"oben\":1539,\"breite\":434,\"hoehe\":650,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/zoomed-in/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_right\",\"sleeve_left\"]}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Ein klassischer Sweatshirt-Schnitt mit gerippten Rundhalsausschnitt, Ärmelbündchen und geradem Saum. Schicht es über andere Kleidung oder trag es allein für einen zeitgemässen Streetwear-Look.</p>\n<p>Mit dem weichen Fleece innen und der bequemen Passform wird es sofort dein liebster Alltagspullover.</p>\n<ul><li>100 % Baumwolle an der Aussenseite</li><li>65 % Baumwolle, 35 % Polyester</li><li>Anthrazit meliert (bei Printful «Charcoal Heather»): 55 % Baumwolle, 45 % Polyester</li><li>Stoffgewicht: 288,2 g/m²</li><li>Dicht gestricktes 3-End-Fleece</li><li>Mit Seitennähten verarbeitet</li><li>Rückenpatch aus demselben Stoff</li><li>Rippkragen, Bündchen und Saum mit Doppelnadelnaht</li><li>Der unbedruckte Rohling stammt aus Pakistan.</li></ul>\n<p>Hinweis: Dieses Sweatshirt fällt klein aus. Für die perfekte Passform empfehlen wir, eine Grösse grösser als üblich zu bestellen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1800 × 2400 Pixel bei 150 dpi, das sind 30,5 × 40,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>83,8 bis 91,4 cm</td><td>59,7 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>94 bis 101,6 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>104,1 bis 109,2 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>111,8 bis 116,8 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>119,4 bis 124,5 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>127 bis 132,1 cm</td><td>61 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>50,8 cm</td><td>59,7 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>53,3 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>58,4 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>63,5 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>67,3 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>71,1 cm</td><td>61 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [],
+ "uebersetzung": {
+  "ok": true,
+  "fehler": [],
+  "saetze": 12,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":411,\"klasse\":\"FLACH\",\"technik\":\"DTG\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":961,\"oben\":381,\"breite\":1110,\"hoehe\":1480,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/front/05_ghost_front_base_whitebg.png?v=1744093611\",\"hintergrund\":null},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":943,\"oben\":517,\"breite\":1112,\"hoehe\":1483,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/back/05_ghost_back_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titel\":\"Etikett aussen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":2.6,\"druck\":{\"px\":[450,450],\"dpi\":150,\"cm\":[7.6,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[560,560],\"links\":137,\"oben\":187,\"breite\":288,\"hoehe\":288,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"back\",\"label_inside\",\"label_inside_dtf\"]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titel\":\"Etikett innen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[750,750],\"dpi\":300,\"cm\":[6.4,6.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":251,\"oben\":182,\"breite\":228,\"hoehe\":228,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\",\"label_inside_dtf\"]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titel\":\"Ärmel links\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1512,\"oben\":826,\"breite\":264,\"hoehe\":1057,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titel\":\"Ärmel rechts\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1394,\"oben\":842,\"breite\":264,\"hoehe\":1057,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"label_inside_dtf\",\"dateiTyp\":\"label_inside_dtf\",\"titel\":\"Etikett innen (DTF)\",\"art\":\"etikett\",\"technik\":\"DTFILM\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[750,750],\"dpi\":300,\"cm\":[6.4,6.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":251,\"oben\":182,\"breite\":228,\"hoehe\":228,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\",\"label_inside\"]},{\"id\":\"embroidery_wrist_left\",\"dateiTyp\":\"embroidery_wrist_left\",\"titel\":\"Stickerei Handgelenk links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1507,\"oben\":1550,\"breite\":434,\"hoehe\":650,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/zoomed-in/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_left\",\"sleeve_right\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titel\":\"Stickerei Handgelenk rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1280,\"oben\":1539,\"breite\":434,\"hoehe\":650,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/zoomed-in/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_right\",\"sleeve_left\"]}],\"hinweise\":[]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "411"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "FLACH"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T17:02:32.275Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"14–16\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 411,
+  "klasse": "FLACH",
+  "technik": "DTG",
+  "basis": "front",
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titel": "Vorderseite",
+    "art": "flaeche",
+    "technik": "DTG",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      1800,
+      2400
+     ],
+     "dpi": 150,
+     "cm": [
+      30.5,
+      40.6
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 961,
+     "oben": 381,
+     "breite": 1110,
+     "hoehe": 1480,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/front/05_ghost_front_base_whitebg.png?v=1744093611",
+    "hintergrund": null
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titel": "Rückseite",
+    "art": "flaeche",
+    "technik": "DTG",
+    "inklusive": false,
+    "aufpreisChf": 6.1,
+    "druck": {
+     "px": [
+      1800,
+      2400
+     ],
+     "dpi": 150,
+     "cm": [
+      30.5,
+      40.6
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 943,
+     "oben": 517,
+     "breite": 1112,
+     "hoehe": 1483,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/back/05_ghost_back_base_whitebg.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "label_outside"
+    ]
+   },
+   {
+    "id": "label_outside",
+    "dateiTyp": "label_outside",
+    "titel": "Etikett aussen",
+    "art": "etikett",
+    "technik": "DTG",
+    "inklusive": false,
+    "aufpreisChf": 2.6,
+    "druck": {
+     "px": [
+      450,
+      450
+     ],
+     "dpi": 150,
+     "cm": [
+      7.6,
+      7.6
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      560,
+      560
+     ],
+     "links": 137,
+     "oben": 187,
+     "breite": 288,
+     "hoehe": 288,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "back",
+     "label_inside",
+     "label_inside_dtf"
+    ]
+   },
+   {
+    "id": "label_inside",
+    "dateiTyp": "label_inside",
+    "titel": "Etikett innen",
+    "art": "etikett",
+    "technik": "DTG",
+    "inklusive": false,
+    "aufpreisChf": 1,
+    "druck": {
+     "px": [
+      750,
+      750
+     ],
+     "dpi": 300,
+     "cm": [
+      6.4,
+      6.4
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      728,
+      728
+     ],
+     "links": 251,
+     "oben": 182,
+     "breite": 228,
+     "hoehe": 228,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "label_outside",
+     "label_inside_dtf"
+    ]
+   },
+   {
+    "id": "sleeve_left",
+    "dateiTyp": "sleeve_left",
+    "titel": "Ärmel links",
+    "art": "flaeche",
+    "technik": "DTG",
+    "inklusive": false,
+    "aufpreisChf": 6.1,
+    "druck": {
+     "px": [
+      450,
+      1800
+     ],
+     "dpi": 150,
+     "cm": [
+      7.6,
+      30.5
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 1512,
+     "oben": 826,
+     "breite": 264,
+     "hoehe": 1057,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/05_ghost_left_base_whitebg.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "embroidery_wrist_right",
+     "embroidery_wrist_left"
+    ]
+   },
+   {
+    "id": "sleeve_right",
+    "dateiTyp": "sleeve_right",
+    "titel": "Ärmel rechts",
+    "art": "flaeche",
+    "technik": "DTG",
+    "inklusive": false,
+    "aufpreisChf": 6.1,
+    "druck": {
+     "px": [
+      450,
+      1800
+     ],
+     "dpi": 150,
+     "cm": [
+      7.6,
+      30.5
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 1394,
+     "oben": 842,
+     "breite": 264,
+     "hoehe": 1057,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/05_ghost_right_base_whitebg.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "embroidery_wrist_right",
+     "embroidery_wrist_left"
+    ]
+   },
+   {
+    "id": "label_inside_dtf",
+    "dateiTyp": "label_inside_dtf",
+    "titel": "Etikett innen (DTF)",
+    "art": "etikett",
+    "technik": "DTFILM",
+    "inklusive": false,
+    "aufpreisChf": 1,
+    "druck": {
+     "px": [
+      750,
+      750
+     ],
+     "dpi": 300,
+     "cm": [
+      6.4,
+      6.4
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      728,
+      728
+     ],
+     "links": 251,
+     "oben": 182,
+     "breite": 228,
+     "hoehe": 228,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "label_outside",
+     "label_inside"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_left",
+    "dateiTyp": "embroidery_wrist_left",
+    "titel": "Stickerei Handgelenk links",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "inklusive": false,
+    "aufpreisChf": 3,
+    "druck": {
+     "px": [
+      600,
+      900
+     ],
+     "dpi": 300,
+     "cm": [
+      5.1,
+      7.6
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 1507,
+     "oben": 1550,
+     "breite": 434,
+     "hoehe": 650,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/zoomed-in/05_ghost_left_base_whitebg.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "sleeve_left",
+     "sleeve_right"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_right",
+    "dateiTyp": "embroidery_wrist_right",
+    "titel": "Stickerei Handgelenk rechts",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "inklusive": false,
+    "aufpreisChf": 3,
+    "druck": {
+     "px": [
+      600,
+      900
+     ],
+     "dpi": 300,
+     "cm": [
+      5.1,
+      7.6
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 1280,
+     "oben": 1539,
+     "breite": 434,
+     "hoehe": 650,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/zoomed-in/05_ghost_right_base_whitebg.png?v=1744093611",
+    "hintergrund": null,
+    "kollidiertMit": [
+     "sleeve_right",
+     "sleeve_left"
+    ]
+   }
+  ],
+  "hinweise": []
+ },
+ "kompaktBytes": 4759,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 11.39,
+  "tageMin": 14,
+  "tageMax": 16,
+  "ratenVariante": 25536
+ },
+ "basisPlatzierung": {
+  "id": "front",
+  "dateiTyp": "default",
+  "technik": "DTG",
+  "pflichtAufpreisUsd": 0
+ },
+ "bestellweg": {
+  "platzierung": "front",
+  "gesichert": true,
+  "grund": null,
+  "dateien": [
+   "embroidery_chest_left",
+   "embroidery_chest_center",
+   "embroidery_wrist_left",
+   "embroidery_wrist_right",
+   "default",
+   "back",
+   "label_outside",
+   "label_inside",
+   "sleeve_left",
+   "sleeve_right",
+   "front_dtf",
+   "back_dtf",
+   "label_inside_dtf",
+   "long_sleeve_left_dtf",
+   "long_sleeve_right_dtf"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 114,
+  "bestellbar": 65,
+  "gewaehlt": 65,
+  "farbenGewaehlt": [
+   {
+    "name": "White",
+    "de": "Weiss",
+    "anzahl": 6,
+    "rang": 0
+   },
+   {
+    "name": "Black",
+    "de": "Schwarz",
+    "anzahl": 6,
+    "rang": 1
+   },
+   {
+    "name": "Bone",
+    "de": "Cremeweiss",
+    "anzahl": 6,
+    "rang": 99
+   },
+   {
+    "name": "Dusty Rose",
+    "de": "Altrosa",
+    "anzahl": 6,
+    "rang": 99
+   },
+   {
+    "name": "Vintage Black",
+    "de": "Verwaschenes Schwarz",
+    "anzahl": 5,
+    "rang": 101
+   },
+   {
+    "name": "Navy Blazer",
+    "de": "Marineblau",
+    "anzahl": 6,
+    "rang": 102
+   },
+   {
+    "name": "Carbon Grey",
+    "de": "Hellgrau",
+    "anzahl": 6,
+    "rang": 103
+   },
+   {
+    "name": "Charcoal Heather",
+    "de": "Anthrazit meliert",
+    "anzahl": 6,
+    "rang": 105
+   },
+   {
+    "name": "Team Red",
+    "de": "Rot",
+    "anzahl": 6,
+    "rang": 107
+   },
+   {
+    "name": "Team Royal",
+    "de": "Königsblau",
+    "anzahl": 6,
+    "rang": 108
+   },
+   {
+    "name": "Forest Green",
+    "de": "Waldgrün",
+    "anzahl": 6,
+    "rang": 111
+   }
+  ],
+  "farbenAusgelassen": [],
+  "ausgelassen": [
+   {
+    "grund": "nur ausserhalb der EU lieferbar, das Modell hat EU-Varianten",
+    "anzahl": 49,
+    "beispiel": [
+     "Adobe 2XL",
+     "Adobe 3XL",
+     "Adobe L"
+    ]
+   }
+  ]
+ },
+ "preis": {
+  "min": 50.9,
+  "max": 59.9,
+  "nettoMin": 6.99,
+  "nettoMax": 10.47,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [],
+  "ungemessen": [],
+  "anzahl": 12,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/upload/product-catalog-img/ad/ad9ddd4bd72e10797de24da876bb3c6d_l",
+   "https://files.cdn.printful.com/products/411/11249_1791983115.jpg",
+   "https://files.cdn.printful.com/products/411/11254_1791983114.jpg",
+   "https://files.cdn.printful.com/products/411/20352_1791983114.jpg",
+   "https://files.cdn.printful.com/products/411/13863_1791983114.jpg",
+   "https://files.cdn.printful.com/products/411/20358_1791983115.jpg",
+   "https://files.cdn.printful.com/products/411/13252_1791983114.jpg",
+   "https://files.cdn.printful.com/products/411/11244_1791983114.jpg",
+   "https://files.cdn.printful.com/products/411/11259_1791983114.jpg",
+   "https://files.cdn.printful.com/products/411/20364_1791983115.jpg",
+   "https://files.cdn.printful.com/products/411/13869_1791983115.jpg",
+   "https://files.cdn.printful.com/products/411/16156_1791983114.jpg"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "karte",
+   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "ohne Schätzung: Kostenboden mit Katalogpreis +26 % (Sicherheit)"
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": true,
+ "hash": "f22f4334e10841b3e03b504df3a7b535200d463be73514cc530b33e803868a71"
+}

@@ -1,0 +1,37 @@
+{
+ "modell": 1,
+ "stand": "2026-11-05",
+ "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 1.json); jeder Satz mit englischem Beleg",
+ "intro": [
+  {
+   "de": "Poster in Museumsqualität auf dickem, mattem Papier.",
+   "beleg": "Museum-quality posters made on thick matte paper."
+  },
+  {
+   "de": "Setze mit diesen Postern einen schönen Akzent in deinem Zimmer oder Büro.",
+   "beleg": "Add a wonderful accent to your room and office with these posters"
+  }
+ ],
+ "punkte": [
+  {
+   "de": "Papierdicke: 0,26 mm",
+   "beleg": "Paper thickness: 10.3 mil"
+  },
+  {
+   "de": "Papiergewicht: 189 g/m²",
+   "beleg": "Paper weight: 189 g/m²"
+  },
+  {
+   "de": "Opazität: 94 %",
+   "beleg": "Opacity: 94%"
+  },
+  {
+   "de": "ISO-Helligkeit: 104 %",
+   "beleg": "ISO brightness: 104%"
+  },
+  {
+   "de": "Das Papier stammt aus Japan.",
+   "beleg": "Paper is sourced from Japan"
+  }
+ ]
+}

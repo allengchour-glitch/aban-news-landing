@@ -1,0 +1,1232 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T18:43:27.721Z",
+  "katalogGeholt": "2026-11-05T17:13:36.580Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 574,
+ "stufe": null,
+ "klasse": "UNGEEIGNET",
+ "klasseEndgueltig": "UNGEEIGNET",
+ "typ": "SHOES",
+ "standardTechnik": "SUBLIMATION",
+ "titelEn": "Men's Slip-On Canvas Shoes",
+ "titel": "Herren Leinwand selbst gestalten",
+ "titelKurz": "Herren Leinwand",
+ "titelQuelle": "glossar",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [
+  "Slip-On",
+  "Shoes"
+ ],
+ "entfernteMarken": [],
+ "handle": "herren-leinwand-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Bekleidung",
+ "tags": [
+  "pod-bestellweg-manuell",
+  "pod-uebersee",
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-bekleidung",
+  "sg-fabrik",
+  "sg-klasse-ungeeignet",
+  "sg-modell-574",
+  "sg-typ-shoes",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Herren Leinwand selbst gestalten | LuxeStyle CH",
+  "description": "Herren Leinwand selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Farbe",
+   "art": "farbe",
+   "werte": [
+    "Weiss",
+    "Schwarz"
+   ]
+  },
+  {
+   "name": "Grösse",
+   "art": "groesse",
+   "werte": [
+    "EU 37,5",
+    "EU 38",
+    "EU 38,5",
+    "EU 39",
+    "EU 40",
+    "EU 40,5",
+    "EU 41",
+    "EU 42",
+    "EU 42,5",
+    "EU 43",
+    "EU 44",
+    "EU 44,5",
+    "EU 45",
+    "EU 46 (ca.)",
+    "EU 46,5 (ca.)",
+    "EU 47",
+    "EU 47,5"
+   ]
+  }
+ ],
+ "varianten": [
+  {
+   "sku": "9100574_14736",
+   "printfulVariantId": 14736,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 37,5"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 37,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14737",
+   "printfulVariantId": 14737,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 38"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 38",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14738",
+   "printfulVariantId": 14738,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 38,5"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 38,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14739",
+   "printfulVariantId": 14739,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 39"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 39",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14740",
+   "printfulVariantId": 14740,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 40"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 40",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14741",
+   "printfulVariantId": 14741,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 40,5"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 40,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14742",
+   "printfulVariantId": 14742,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 41"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 41",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14743",
+   "printfulVariantId": 14743,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 42"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 42",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14744",
+   "printfulVariantId": 14744,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 42,5"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 42,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14745",
+   "printfulVariantId": 14745,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 43"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 43",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14746",
+   "printfulVariantId": 14746,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 44"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 44",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14747",
+   "printfulVariantId": 14747,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 44,5"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 44,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14748",
+   "printfulVariantId": 14748,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 45"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 45",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14749",
+   "printfulVariantId": 14749,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 46 (ca.)"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 46 (ca.)",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14750",
+   "printfulVariantId": 14750,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 46,5 (ca.)"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 46,5 (ca.)",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14751",
+   "printfulVariantId": 14751,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 47"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 47",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_14752",
+   "printfulVariantId": 14752,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "EU 47,5"
+   },
+   "farbe": "Weiss",
+   "groesse": "EU 47,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100574_20888",
+   "printfulVariantId": 20888,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 37,5"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 37,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20889",
+   "printfulVariantId": 20889,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 38"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 38",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20890",
+   "printfulVariantId": 20890,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 38,5"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 38,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20891",
+   "printfulVariantId": 20891,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 39"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 39",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20892",
+   "printfulVariantId": 20892,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 40"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 40",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20893",
+   "printfulVariantId": 20893,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 40,5"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 40,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20894",
+   "printfulVariantId": 20894,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 41"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 41",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20895",
+   "printfulVariantId": 20895,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 42"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 42",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20896",
+   "printfulVariantId": 20896,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 42,5"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 42,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20897",
+   "printfulVariantId": 20897,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 43"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 43",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20898",
+   "printfulVariantId": 20898,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 44"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 44",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20899",
+   "printfulVariantId": 20899,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 44,5"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 44,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20900",
+   "printfulVariantId": 20900,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 45"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 45",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20901",
+   "printfulVariantId": 20901,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 46 (ca.)"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 46 (ca.)",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20902",
+   "printfulVariantId": 20902,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 46,5 (ca.)"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 46,5 (ca.)",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20903",
+   "printfulVariantId": 20903,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 47"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 47",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100574_20904",
+   "printfulVariantId": 20904,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "EU 47,5"
+   },
+   "farbe": "Schwarz",
+   "groesse": "EU 47,5",
+   "herkunft": "ausserhalb",
+   "kostenUsd": 41.82,
+   "ekRechnungUsd": 52.69,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 11.29,
+   "aufpreisUsd": 0,
+   "preisChf": 86.9,
+   "nettoChf": 19.56,
+   "nettoBeiMesskursChf": 24.39,
+   "bindend": "richtwert",
+   "bildAlt": "Herren Leinwand selbst gestalten Schwarz"
+  }
+ ],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+   "alt": "Herren Leinwand selbst gestalten Produktbild",
+   "rolle": "haupt",
+   "label": "Produktbild"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/574/14736_1647612580.jpg",
+   "alt": "Herren Leinwand selbst gestalten Weiss",
+   "rolle": "variante",
+   "label": "Weiss"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/574/20888_1729152053.jpg",
+   "alt": "Herren Leinwand selbst gestalten Schwarz",
+   "rolle": "variante",
+   "label": "Schwarz"
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>20 bis 25 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"574\" data-klasse=\"UNGEEIGNET\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":574,\"klasse\":\"UNGEEIGNET\",\"technik\":\"SUBLIMATION\",\"basis\":\"shoe_left\",\"platzierungen\":[{\"id\":\"shoe_left\",\"dateiTyp\":\"shoe_left\",\"titel\":\"Schuh links\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2325,2325],\"dpi\":150,\"cm\":[39.4,39.4],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":0,\"oben\":0,\"breite\":3000,\"hoehe\":3000,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293\",\"hintergrund\":null},{\"id\":\"shoe_right\",\"dateiTyp\":\"shoe_right\",\"titel\":\"Schuh rechts\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2325,2325],\"dpi\":150,\"cm\":[39.4,39.4],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":0,\"oben\":0,\"breite\":3000,\"hoehe\":3000,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244\",\"hintergrund\":null},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titel\":\"Etikett innen\",\"art\":\"etikett\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1050,600],\"dpi\":150,\"cm\":[17.8,10.2],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":457,\"oben\":902,\"breite\":2081,\"hoehe\":1190,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313\",\"hintergrund\":null}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Schuh links):</strong> 2325 × 2325 Pixel bei 150 dpi, das sind 39,4 × 39,4 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [
+  "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (US Men, UK, Europe, Japan, Foot Length, Outsole Length)"
+ ],
+ "uebersetzung": {
+  "ok": false,
+  "fehler": [
+   "keine Übersetzungsdatei 574.json",
+   "keine Übersetzung vorhanden"
+  ],
+  "saetze": 0,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":574,\"klasse\":\"UNGEEIGNET\",\"technik\":\"SUBLIMATION\",\"basis\":\"shoe_left\",\"platzierungen\":[{\"id\":\"shoe_left\",\"dateiTyp\":\"shoe_left\",\"titel\":\"Schuh links\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2325,2325],\"dpi\":150,\"cm\":[39.4,39.4],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":0,\"oben\":0,\"breite\":3000,\"hoehe\":3000,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293\",\"hintergrund\":null},{\"id\":\"shoe_right\",\"dateiTyp\":\"shoe_right\",\"titel\":\"Schuh rechts\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2325,2325],\"dpi\":150,\"cm\":[39.4,39.4],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":0,\"oben\":0,\"breite\":3000,\"hoehe\":3000,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244\",\"hintergrund\":null},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titel\":\"Etikett innen\",\"art\":\"etikett\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1050,600],\"dpi\":150,\"cm\":[17.8,10.2],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":457,\"oben\":902,\"breite\":2081,\"hoehe\":1190,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313\",\"hintergrund\":null}],\"hinweise\":[]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "574"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "UNGEEIGNET"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T17:13:36.580Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"20–25\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 574,
+  "klasse": "UNGEEIGNET",
+  "technik": "SUBLIMATION",
+  "basis": "shoe_left",
+  "platzierungen": [
+   {
+    "id": "shoe_left",
+    "dateiTyp": "shoe_left",
+    "titel": "Schuh links",
+    "art": "flaeche",
+    "technik": "SUBLIMATION",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      2325,
+      2325
+     ],
+     "dpi": 150,
+     "cm": [
+      39.4,
+      39.4
+     ],
+     "fill": "cover",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 0,
+     "oben": 0,
+     "breite": 3000,
+     "hoehe": 3000,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293",
+    "hintergrund": null
+   },
+   {
+    "id": "shoe_right",
+    "dateiTyp": "shoe_right",
+    "titel": "Schuh rechts",
+    "art": "flaeche",
+    "technik": "SUBLIMATION",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      2325,
+      2325
+     ],
+     "dpi": 150,
+     "cm": [
+      39.4,
+      39.4
+     ],
+     "fill": "cover",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 0,
+     "oben": 0,
+     "breite": 3000,
+     "hoehe": 3000,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244",
+    "hintergrund": null
+   },
+   {
+    "id": "label_inside",
+    "dateiTyp": "label_inside",
+    "titel": "Etikett innen",
+    "art": "etikett",
+    "technik": "SUBLIMATION",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      1050,
+      600
+     ],
+     "dpi": 150,
+     "cm": [
+      17.8,
+      10.2
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 457,
+     "oben": 902,
+     "breite": 2081,
+     "hoehe": 1190,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313",
+    "hintergrund": null
+   }
+  ],
+  "hinweise": []
+ },
+ "kompaktBytes": 1511,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 11.29,
+  "tageMin": 20,
+  "tageMax": 25,
+  "ratenVariante": 20898
+ },
+ "basisPlatzierung": {
+  "id": "shoe_left",
+  "dateiTyp": "shoe_left",
+  "technik": "SUBLIMATION",
+  "pflichtAufpreisUsd": 0
+ },
+ "bestellweg": {
+  "platzierung": "front",
+  "gesichert": false,
+  "grund": "«front» steht nicht in der Dateiliste des Printful-Produkts (shoe_left, shoe_right, label_inside)",
+  "dateien": [
+   "shoe_left",
+   "shoe_right",
+   "label_inside"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 34,
+  "bestellbar": 34,
+  "gewaehlt": 34,
+  "farbenGewaehlt": [
+   {
+    "name": "White",
+    "de": "Weiss",
+    "anzahl": 17,
+    "rang": 0
+   },
+   {
+    "name": "Black",
+    "de": "Schwarz",
+    "anzahl": 17,
+    "rang": 1
+   }
+  ],
+  "farbenAusgelassen": [],
+  "ausgelassen": []
+ },
+ "preis": {
+  "min": 86.9,
+  "max": 86.9,
+  "nettoMin": 19.56,
+  "nettoMax": 19.56,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [],
+  "ungemessen": [],
+  "anzahl": 3,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+   "https://files.cdn.printful.com/products/574/14736_1647612580.jpg",
+   "https://files.cdn.printful.com/products/574/20888_1729152053.jpg"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "Klasse UNGEEIGNET: in dieser Fabrik nicht gestaltbar"
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "Wörter nicht im Glossar: Slip-On, Shoes (Glossar oder TITEL_FEST ergänzen)"
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "2 Fehler, erster: keine Übersetzungsdatei 574.json"
+  },
+  {
+   "code": "karte",
+   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "printful_sync bestimmt «front» nicht gesichert («front» steht nicht in der Dateiliste des Printful-Produkts (shoe_left, shoe_right, label_inside)): Aufträge blieben Entwurf bei Printful"
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "34 Variante(n) nur ausserhalb der EU lieferbar: Zoll und Einfuhr-MWST für die Schweiz ungemessen"
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "ohne Schätzung: Kostenboden mit Katalogpreis +26 % (Sicherheit)"
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (US Men, UK, Europe, Japan, Foot Length, Outsole Length)"
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": false,
+ "hash": "f5d10cf66a7a09a6e2a88371951c608ebef59c63f96b8fc87b674c23288e257d"
+}

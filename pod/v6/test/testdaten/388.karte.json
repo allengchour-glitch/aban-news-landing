@@ -1,0 +1,274 @@
+{
+ "schema": 1,
+ "printfulProductId": 388,
+ "typ": "CUT-SEW",
+ "titelEn": "All-Over Print Recycled Unisex Hoodie",
+ "klasse": "PANEL",
+ "standardTechnik": "CUT-SEW",
+ "minDpi": 75,
+ "platzierungen": [
+  {
+   "id": "front",
+   "dateiTyp": "default",
+   "titelDe": "Vorderseite",
+   "titelEn": "Front print",
+   "art": "flaeche",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 19360,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/ef/ef4169567967bef4f9105d2ea3beb34f?v=1714048899",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 182,
+    "flaecheOben": -14,
+    "flaecheBreite": 2636,
+    "flaecheHoehe": 2636,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "back",
+   "dateiTyp": "back",
+   "titelDe": "Rückseite",
+   "titelEn": "Back print",
+   "art": "flaeche",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 19361,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/f1/f1017802bea3aa62c053607518eb8ba5?v=1714048832",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 180,
+    "flaecheOben": 0,
+    "flaecheBreite": 2640,
+    "flaecheHoehe": 2633,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "sleeve_right",
+   "dateiTyp": "sleeve_right",
+   "titelDe": "Ärmel rechts",
+   "titelEn": "Right sleeve",
+   "art": "flaeche",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 19362,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/5d/5d05408b250a449f3340dbfada9fc7b2?v=1709734731",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 0,
+    "flaecheOben": 0,
+    "flaecheBreite": 3000,
+    "flaecheHoehe": 3000,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "sleeve_left",
+   "dateiTyp": "sleeve_left",
+   "titelDe": "Ärmel links",
+   "titelEn": "Left sleeve",
+   "art": "flaeche",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 19363,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/8f/8fc2db4c2362a5995941e2ad0c7d1344?v=1714049182",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 0,
+    "flaecheOben": 0,
+    "flaecheBreite": 3000,
+    "flaecheHoehe": 3000,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "pocket",
+   "dateiTyp": "pocket",
+   "titelDe": "Tasche",
+   "titelEn": "Pocket",
+   "art": "flaeche",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 19364,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/40/40b36b5a210734a29f84e3b5dae05d8d?v=1714458270",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 0,
+    "flaecheOben": 0,
+    "flaecheBreite": 3000,
+    "flaecheHoehe": 3000,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "hood",
+   "dateiTyp": "hood",
+   "titelDe": "Kapuze",
+   "titelEn": "Hood",
+   "art": "flaeche",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 19365,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/0a/0a7fe74f96862d203482d35d66f883da?v=1714049085",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 0,
+    "flaecheOben": 0,
+    "flaecheBreite": 3000,
+    "flaecheHoehe": 3000,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "label_panel",
+   "dateiTyp": "label_panel",
+   "titelDe": "Etikettenteil",
+   "titelEn": "Label panel",
+   "art": "etikett",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 200,
+    "breitePx": 6000,
+    "hoehePx": 6000,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 210233,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/f9/f9c7193b06c17d9b83a04466a3348144?v=1714048749",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#ffffff",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 0,
+    "flaecheOben": 0,
+    "flaecheBreite": 3000,
+    "flaecheHoehe": 3000,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "label_inside",
+   "dateiTyp": "label_inside",
+   "titelDe": "Etikett innen",
+   "titelEn": "Inside label",
+   "art": "etikett",
+   "technik": "CUT-SEW",
+   "printfile": {
+    "printfileId": 64,
+    "breitePx": 375,
+    "hoehePx": 150,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 47702,
+    "bildUrl": "https://files.cdn.printful.com/m/templates/medium/inside_label_2.5x1.png?v=1767354585",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": null,
+    "vorlageBreite": 560,
+    "vorlageHoehe": 560,
+    "flaecheLinks": 100,
+    "flaecheOben": 208,
+    "flaecheBreite": 360,
+    "flaecheHoehe": 144,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  }
+ ],
+ "druckdateien": {
+  "64": {
+   "printfileId": 64,
+   "breitePx": 375,
+   "hoehePx": 150,
+   "dpi": 150
+  },
+  "200": {
+   "printfileId": 200,
+   "breitePx": 6000,
+   "hoehePx": 6000,
+   "dpi": 150
+  }
+ },
+ "hinweise": []
+}

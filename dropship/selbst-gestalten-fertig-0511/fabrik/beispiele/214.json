@@ -1,0 +1,851 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T18:41:14.547Z",
+  "katalogGeholt": "2026-11-05T16:40:31.438Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 214,
+ "stufe": 2,
+ "klasse": "PANEL",
+ "klasseEndgueltig": "PANEL",
+ "typ": "CUT-SEW",
+ "standardTechnik": "CUT-SEW",
+ "titelEn": "All-Over Print Premium Pillow",
+ "titel": "Premium Kissen mit Allover-Druck selbst gestalten",
+ "titelKurz": "Premium Kissen mit Allover-Druck",
+ "titelQuelle": "fest",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [],
+ "entfernteMarken": [],
+ "handle": "premium-kissen-mit-allover-druck-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Wohnen",
+ "tags": [
+  "pod-bestellweg-manuell",
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-fabrik",
+  "sg-klasse-panel",
+  "sg-modell-214",
+  "sg-typ-cut-sew",
+  "sg-wohnen",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Premium Kissen mit Allover-Druck selbst gestalten | LuxeStyle CH",
+  "description": "Premium Kissen mit Allover-Druck selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Grösse",
+   "art": "groesse",
+   "werte": [
+    "35,6 × 35,6 cm",
+    "40,6 × 40,6 cm",
+    "45,7 × 45,7 cm",
+    "50,8 × 30,5 cm",
+    "55,9 × 55,9 cm"
+   ]
+  }
+ ],
+ "varianten": [
+  {
+   "sku": "9100214_49604",
+   "printfulVariantId": 49604,
+   "optionen": {
+    "Grösse": "35,6 × 35,6 cm"
+   },
+   "farbe": null,
+   "groesse": "35,6 × 35,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 15.61,
+   "ekRechnungUsd": 19.67,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 41.9,
+   "nettoChf": 4.32,
+   "nettoBeiMesskursChf": 7.07,
+   "bindend": "kosten",
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 2"
+  },
+  {
+   "sku": "9100214_49605",
+   "printfulVariantId": 49605,
+   "optionen": {
+    "Grösse": "40,6 × 40,6 cm"
+   },
+   "farbe": null,
+   "groesse": "40,6 × 40,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 16.63,
+   "ekRechnungUsd": 20.95,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 42.9,
+   "nettoChf": 4.05,
+   "nettoBeiMesskursChf": 6.9,
+   "bindend": "kosten",
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 3"
+  },
+  {
+   "sku": "9100214_9515",
+   "printfulVariantId": 9515,
+   "optionen": {
+    "Grösse": "45,7 × 45,7 cm"
+   },
+   "farbe": null,
+   "groesse": "45,7 × 45,7 cm",
+   "herkunft": "EU",
+   "kostenUsd": 18.68,
+   "ekRechnungUsd": 23.54,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 45.9,
+   "nettoChf": 4.4,
+   "nettoBeiMesskursChf": 7.44,
+   "bindend": "kosten",
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 4"
+  },
+  {
+   "sku": "9100214_7907",
+   "printfulVariantId": 7907,
+   "optionen": {
+    "Grösse": "50,8 × 30,5 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 30,5 cm",
+   "herkunft": "EU",
+   "kostenUsd": 17.64,
+   "ekRechnungUsd": 22.23,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 44.9,
+   "nettoChf": 4.69,
+   "nettoBeiMesskursChf": 7.63,
+   "bindend": "kosten",
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 5"
+  },
+  {
+   "sku": "9100214_11077",
+   "printfulVariantId": 11077,
+   "optionen": {
+    "Grösse": "55,9 × 55,9 cm"
+   },
+   "farbe": null,
+   "groesse": "55,9 × 55,9 cm",
+   "herkunft": "EU",
+   "kostenUsd": 20.76,
+   "ekRechnungUsd": 26.16,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 48.9,
+   "nettoChf": 4.72,
+   "nettoBeiMesskursChf": 7.96,
+   "bindend": "kosten",
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 6"
+  }
+ ],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/f8/f8f08e9fe5e868d738198ed371e8c045_l",
+   "alt": "Premium Kissen mit Allover-Druck selbst gestalten Produktbild",
+   "rolle": "haupt",
+   "label": "Produktbild"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/214/49604_1787221751.jpg",
+   "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 2",
+   "rolle": "variante",
+   "label": null
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/214/49605_1787221751.jpg",
+   "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 3",
+   "rolle": "variante",
+   "label": null
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/214/9515_1787221751.jpg",
+   "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 4",
+   "rolle": "variante",
+   "label": null
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/214/7907_1787221751.jpg",
+   "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 5",
+   "rolle": "variante",
+   "label": null
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/214/11077_1787221761.jpg",
+   "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 6",
+   "rolle": "variante",
+   "label": null
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"214\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":214,\"klasse\":\"PANEL\",\"technik\":\"CUT-SEW\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":116,\"oben\":116,\"breite\":2769,\"hoehe\":2769,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\",\"hintergrund\":null,\"geometrien\":[{\"pf\":1705,\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"flaeche\":[116,116,2769,2769],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\"},{\"pf\":1706,\"px\":[2550,2550],\"dpi\":150,\"cm\":[43.2,43.2],\"flaeche\":[104,104,2793,2793],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/44/449dbd4913056788f41a63f1c5a02361?v=1782806119\"},{\"pf\":32,\"px\":[2850,2850],\"dpi\":150,\"cm\":[48.3,48.3],\"flaeche\":[146,14,2717,2717],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/dd/ddf5a0ee97e4069b477ee0f829de5873?v=1716210942\"},{\"pf\":72,\"px\":[3150,1950],\"dpi\":150,\"cm\":[53.3,33],\"flaeche\":[3,572,2997,1856],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/f5/f5f1ed70116a720b5a5ba10fe8621476?v=1626336829\"},{\"pf\":214,\"px\":[3450,3450],\"dpi\":150,\"cm\":[58.4,58.4],\"flaeche\":[166,97,2674,2674],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/35/35667f9d0dafad8e7c71c85ab7069e76?v=1716211036\"}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":116,\"oben\":116,\"breite\":2769,\"hoehe\":2769,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\",\"hintergrund\":null,\"geometrien\":[{\"pf\":1705,\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"flaeche\":[116,116,2769,2769],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\"},{\"pf\":1706,\"px\":[2550,2550],\"dpi\":150,\"cm\":[43.2,43.2],\"flaeche\":[104,104,2793,2793],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/8a/8a1983f3d9d16523c4805d0bde7af6a7?v=1782806147\"},{\"pf\":32,\"px\":[2850,2850],\"dpi\":150,\"cm\":[48.3,48.3],\"flaeche\":[146,14,2717,2717],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/10/10e4ae2613228963003ef4a5c8a2a2c6?v=1626336859\"},{\"pf\":72,\"px\":[3150,1950],\"dpi\":150,\"cm\":[53.3,33],\"flaeche\":[3,572,2997,1856],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/24/24d22af1992642db6ba773a1cdf0e773?v=1716211002\"},{\"pf\":214,\"px\":[3450,3450],\"dpi\":150,\"cm\":[58.4,58.4],\"flaeche\":[166,97,2674,2674],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bf1b4fc8b72ac7a83be669d14a8bfc37?v=1716211053\"}]}],\"gruppen\":[{\"pf\":{\"front\":1705,\"back\":1705},\"varianten\":[49604]},{\"pf\":{\"front\":1706,\"back\":1706},\"varianten\":[49605]},{\"pf\":{\"front\":32,\"back\":32},\"varianten\":[9515]},{\"pf\":{\"front\":72,\"back\":72},\"varianten\":[7907]},{\"pf\":{\"front\":214,\"back\":214},\"varianten\":[11077]}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Du möchtest Farbe in dein Zuhause bringen? Dieses Kissen mit hochwertigem Gefühl und formstabiler Füllung ist genau richtig.</p>\n<p>Es macht jeden Raum luxuriöser und ist der perfekte Anlass für ein kurzes Nickerchen.</p>\n<ul><li>Bezug aus 100 % Polyester</li><li>Stoffgewicht: 275 g/m²</li><li>Stoff mit Leinenoptik</li><li>Verdeckter Reissverschluss</li><li>Bezug maschinenwaschbar</li><li>Formstabile Füllung aus 100 % Polyester im Lieferumfang (nur Handwäsche)</li><li>Die Rohlinge in Mexiko stammen aus Material aus China und Mexiko.</li><li>Die Rohlinge in der EU stammen aus Material aus China und Polen.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li><li><strong>Druckdatei (Vorderseite):</strong> 2250 × 2250 Pixel bei 150 dpi, das sind 38,1 × 38,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [
+  "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
+ ],
+ "uebersetzung": {
+  "ok": true,
+  "fehler": [],
+  "saetze": 10,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":214,\"klasse\":\"PANEL\",\"technik\":\"CUT-SEW\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":116,\"oben\":116,\"breite\":2769,\"hoehe\":2769,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\",\"hintergrund\":null,\"geometrien\":[{\"pf\":1705,\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"flaeche\":[116,116,2769,2769],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\"},{\"pf\":1706,\"px\":[2550,2550],\"dpi\":150,\"cm\":[43.2,43.2],\"flaeche\":[104,104,2793,2793],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/44/449dbd4913056788f41a63f1c5a02361?v=1782806119\"},{\"pf\":32,\"px\":[2850,2850],\"dpi\":150,\"cm\":[48.3,48.3],\"flaeche\":[146,14,2717,2717],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/dd/ddf5a0ee97e4069b477ee0f829de5873?v=1716210942\"},{\"pf\":72,\"px\":[3150,1950],\"dpi\":150,\"cm\":[53.3,33],\"flaeche\":[3,572,2997,1856],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/f5/f5f1ed70116a720b5a5ba10fe8621476?v=1626336829\"},{\"pf\":214,\"px\":[3450,3450],\"dpi\":150,\"cm\":[58.4,58.4],\"flaeche\":[166,97,2674,2674],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/35/35667f9d0dafad8e7c71c85ab7069e76?v=1716211036\"}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":116,\"oben\":116,\"breite\":2769,\"hoehe\":2769,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\",\"hintergrund\":null,\"geometrien\":[{\"pf\":1705,\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"flaeche\":[116,116,2769,2769],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\"},{\"pf\":1706,\"px\":[2550,2550],\"dpi\":150,\"cm\":[43.2,43.2],\"flaeche\":[104,104,2793,2793],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/8a/8a1983f3d9d16523c4805d0bde7af6a7?v=1782806147\"},{\"pf\":32,\"px\":[2850,2850],\"dpi\":150,\"cm\":[48.3,48.3],\"flaeche\":[146,14,2717,2717],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/10/10e4ae2613228963003ef4a5c8a2a2c6?v=1626336859\"},{\"pf\":72,\"px\":[3150,1950],\"dpi\":150,\"cm\":[53.3,33],\"flaeche\":[3,572,2997,1856],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/24/24d22af1992642db6ba773a1cdf0e773?v=1716211002\"},{\"pf\":214,\"px\":[3450,3450],\"dpi\":150,\"cm\":[58.4,58.4],\"flaeche\":[166,97,2674,2674],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bf1b4fc8b72ac7a83be669d14a8bfc37?v=1716211053\"}]}],\"gruppen\":[{\"pf\":{\"front\":1705,\"back\":1705},\"varianten\":[49604]},{\"pf\":{\"front\":1706,\"back\":1706},\"varianten\":[49605]},{\"pf\":{\"front\":32,\"back\":32},\"varianten\":[9515]},{\"pf\":{\"front\":72,\"back\":72},\"varianten\":[7907]},{\"pf\":{\"front\":214,\"back\":214},\"varianten\":[11077]}],\"hinweise\":[]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "214"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "PANEL"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T16:40:31.438Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 214,
+  "klasse": "PANEL",
+  "technik": "CUT-SEW",
+  "basis": "front",
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titel": "Vorderseite",
+    "art": "flaeche",
+    "technik": "CUT-SEW",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      2250,
+      2250
+     ],
+     "dpi": 150,
+     "cm": [
+      38.1,
+      38.1
+     ],
+     "fill": "cover",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 116,
+     "oben": 116,
+     "breite": 2769,
+     "hoehe": 2769,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176",
+    "hintergrund": null,
+    "geometrien": [
+     {
+      "pf": 1705,
+      "px": [
+       2250,
+       2250
+      ],
+      "dpi": 150,
+      "cm": [
+       38.1,
+       38.1
+      ],
+      "flaeche": [
+       116,
+       116,
+       2769,
+       2769
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176"
+     },
+     {
+      "pf": 1706,
+      "px": [
+       2550,
+       2550
+      ],
+      "dpi": 150,
+      "cm": [
+       43.2,
+       43.2
+      ],
+      "flaeche": [
+       104,
+       104,
+       2793,
+       2793
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/44/449dbd4913056788f41a63f1c5a02361?v=1782806119"
+     },
+     {
+      "pf": 32,
+      "px": [
+       2850,
+       2850
+      ],
+      "dpi": 150,
+      "cm": [
+       48.3,
+       48.3
+      ],
+      "flaeche": [
+       146,
+       14,
+       2717,
+       2717
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/dd/ddf5a0ee97e4069b477ee0f829de5873?v=1716210942"
+     },
+     {
+      "pf": 72,
+      "px": [
+       3150,
+       1950
+      ],
+      "dpi": 150,
+      "cm": [
+       53.3,
+       33
+      ],
+      "flaeche": [
+       3,
+       572,
+       2997,
+       1856
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/f5/f5f1ed70116a720b5a5ba10fe8621476?v=1626336829"
+     },
+     {
+      "pf": 214,
+      "px": [
+       3450,
+       3450
+      ],
+      "dpi": 150,
+      "cm": [
+       58.4,
+       58.4
+      ],
+      "flaeche": [
+       166,
+       97,
+       2674,
+       2674
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/35/35667f9d0dafad8e7c71c85ab7069e76?v=1716211036"
+     }
+    ]
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titel": "Rückseite",
+    "art": "flaeche",
+    "technik": "CUT-SEW",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      2250,
+      2250
+     ],
+     "dpi": 150,
+     "cm": [
+      38.1,
+      38.1
+     ],
+     "fill": "cover",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 116,
+     "oben": 116,
+     "breite": 2769,
+     "hoehe": 2769,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210",
+    "hintergrund": null,
+    "geometrien": [
+     {
+      "pf": 1705,
+      "px": [
+       2250,
+       2250
+      ],
+      "dpi": 150,
+      "cm": [
+       38.1,
+       38.1
+      ],
+      "flaeche": [
+       116,
+       116,
+       2769,
+       2769
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210"
+     },
+     {
+      "pf": 1706,
+      "px": [
+       2550,
+       2550
+      ],
+      "dpi": 150,
+      "cm": [
+       43.2,
+       43.2
+      ],
+      "flaeche": [
+       104,
+       104,
+       2793,
+       2793
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/8a/8a1983f3d9d16523c4805d0bde7af6a7?v=1782806147"
+     },
+     {
+      "pf": 32,
+      "px": [
+       2850,
+       2850
+      ],
+      "dpi": 150,
+      "cm": [
+       48.3,
+       48.3
+      ],
+      "flaeche": [
+       146,
+       14,
+       2717,
+       2717
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/10/10e4ae2613228963003ef4a5c8a2a2c6?v=1626336859"
+     },
+     {
+      "pf": 72,
+      "px": [
+       3150,
+       1950
+      ],
+      "dpi": 150,
+      "cm": [
+       53.3,
+       33
+      ],
+      "flaeche": [
+       3,
+       572,
+       2997,
+       1856
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/24/24d22af1992642db6ba773a1cdf0e773?v=1716211002"
+     },
+     {
+      "pf": 214,
+      "px": [
+       3450,
+       3450
+      ],
+      "dpi": 150,
+      "cm": [
+       58.4,
+       58.4
+      ],
+      "flaeche": [
+       166,
+       97,
+       2674,
+       2674
+      ],
+      "vorlage": [
+       3000,
+       3000
+      ],
+      "bild": "https://files.cdn.printful.com/o/upload/api-template/bf/bf1b4fc8b72ac7a83be669d14a8bfc37?v=1716211053"
+     }
+    ]
+   }
+  ],
+  "gruppen": [
+   {
+    "pf": {
+     "front": 1705,
+     "back": 1705
+    },
+    "varianten": [
+     49604
+    ]
+   },
+   {
+    "pf": {
+     "front": 1706,
+     "back": 1706
+    },
+    "varianten": [
+     49605
+    ]
+   },
+   {
+    "pf": {
+     "front": 32,
+     "back": 32
+    },
+    "varianten": [
+     9515
+    ]
+   },
+   {
+    "pf": {
+     "front": 72,
+     "back": 72
+    },
+    "varianten": [
+     7907
+    ]
+   },
+   {
+    "pf": {
+     "front": 214,
+     "back": 214
+    },
+    "varianten": [
+     11077
+    ]
+   }
+  ],
+  "hinweise": []
+ },
+ "kompaktBytes": 3483,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 16.69,
+  "tageMin": 3,
+  "tageMax": 6,
+  "ratenVariante": 49604
+ },
+ "basisPlatzierung": {
+  "id": "front",
+  "dateiTyp": "default",
+  "technik": "CUT-SEW",
+  "pflichtAufpreisUsd": 0
+ },
+ "bestellweg": {
+  "platzierung": "front",
+  "gesichert": false,
+  "grund": "2 Flächen ohne Aufpreis (front, back): printful_sync schickt nur eine Datei",
+  "dateien": [
+   "default",
+   "back"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 5,
+  "bestellbar": 5,
+  "gewaehlt": 5,
+  "farbenGewaehlt": [
+   {
+    "name": "",
+    "de": null,
+    "anzahl": 5,
+    "rang": 99
+   }
+  ],
+  "farbenAusgelassen": [],
+  "ausgelassen": []
+ },
+ "preis": {
+  "min": 41.9,
+  "max": 48.9,
+  "nettoMin": 4.05,
+  "nettoMax": 4.72,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [],
+  "ungemessen": [],
+  "anzahl": 6,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/upload/product-catalog-img/f8/f8f08e9fe5e868d738198ed371e8c045_l",
+   "https://files.cdn.printful.com/products/214/49604_1787221751.jpg",
+   "https://files.cdn.printful.com/products/214/49605_1787221751.jpg",
+   "https://files.cdn.printful.com/products/214/9515_1787221751.jpg",
+   "https://files.cdn.printful.com/products/214/7907_1787221751.jpg",
+   "https://files.cdn.printful.com/products/214/11077_1787221761.jpg"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "karte",
+   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "printful_sync bestimmt «front» nicht gesichert (2 Flächen ohne Aufpreis (front, back): printful_sync schickt nur eine Datei): Aufträge blieben Entwurf bei Printful"
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "ohne Schätzung: Kostenboden mit Katalogpreis +26 % (Sicherheit)"
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": true,
+ "hash": "54c6914bf4708c605e4c6b256cd3ef306f8f35e649a44196d5c28b185574476d"
+}

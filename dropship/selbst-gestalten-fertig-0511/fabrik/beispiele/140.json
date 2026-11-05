@@ -1,0 +1,1127 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T18:41:14.547Z",
+  "katalogGeholt": "2026-11-05T17:05:51.219Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 140,
+ "stufe": 1,
+ "klasse": "FLACH_MIT_HINWEIS",
+ "klasseEndgueltig": "FLACH_MIT_HINWEIS",
+ "typ": "EMBROIDERY",
+ "standardTechnik": "EMBROIDERY",
+ "titelEn": "Closed-Back Structured Cap | Flexfit 6277",
+ "titel": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten",
+ "titelKurz": "Strukturierte Cap mit geschlossener Rückseite",
+ "titelQuelle": "fest",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [],
+ "entfernteMarken": [],
+ "handle": "strukturierte-cap-geschlossen-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Bekleidung",
+ "tags": [
+  "pod-bestellweg-manuell",
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-bekleidung",
+  "sg-fabrik",
+  "sg-klasse-flach-mit-hinweis",
+  "sg-modell-140",
+  "sg-typ-embroidery",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten",
+  "description": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Farbe",
+   "art": "farbe",
+   "werte": [
+    "Weiss",
+    "Schwarz",
+    "Grau",
+    "Rot",
+    "Khaki",
+    "Oliv",
+    "Camouflage Schwarz",
+    "Dunkles Marineblau",
+    "Dunkelgrau",
+    "Königsblau",
+    "Camouflage Grün"
+   ]
+  },
+  {
+   "name": "Grösse",
+   "art": "groesse",
+   "werte": [
+    "S/M",
+    "L/XL"
+   ]
+  }
+ ],
+ "varianten": [
+  {
+   "sku": "9100140_5274",
+   "printfulVariantId": 5274,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "S/M"
+   },
+   "farbe": "Weiss",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100140_5275",
+   "printfulVariantId": 5275,
+   "optionen": {
+    "Farbe": "Weiss",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Weiss",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Weiss"
+  },
+  {
+   "sku": "9100140_5276",
+   "printfulVariantId": 5276,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "S/M"
+   },
+   "farbe": "Schwarz",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100140_5277",
+   "printfulVariantId": 5277,
+   "optionen": {
+    "Farbe": "Schwarz",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Schwarz",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100140_5282",
+   "printfulVariantId": 5282,
+   "optionen": {
+    "Farbe": "Grau",
+    "Grösse": "S/M"
+   },
+   "farbe": "Grau",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Grau"
+  },
+  {
+   "sku": "9100140_5283",
+   "printfulVariantId": 5283,
+   "optionen": {
+    "Farbe": "Grau",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Grau",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Grau"
+  },
+  {
+   "sku": "9100140_5288",
+   "printfulVariantId": 5288,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "S/M"
+   },
+   "farbe": "Rot",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Rot"
+  },
+  {
+   "sku": "9100140_5289",
+   "printfulVariantId": 5289,
+   "optionen": {
+    "Farbe": "Rot",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Rot",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Rot"
+  },
+  {
+   "sku": "9100140_5292",
+   "printfulVariantId": 5292,
+   "optionen": {
+    "Farbe": "Khaki",
+    "Grösse": "S/M"
+   },
+   "farbe": "Khaki",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Khaki"
+  },
+  {
+   "sku": "9100140_5293",
+   "printfulVariantId": 5293,
+   "optionen": {
+    "Farbe": "Khaki",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Khaki",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Khaki"
+  },
+  {
+   "sku": "9100140_15901",
+   "printfulVariantId": 15901,
+   "optionen": {
+    "Farbe": "Oliv",
+    "Grösse": "S/M"
+   },
+   "farbe": "Oliv",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Oliv"
+  },
+  {
+   "sku": "9100140_15902",
+   "printfulVariantId": 15902,
+   "optionen": {
+    "Farbe": "Oliv",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Oliv",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Oliv"
+  },
+  {
+   "sku": "9100140_15897",
+   "printfulVariantId": 15897,
+   "optionen": {
+    "Farbe": "Camouflage Schwarz",
+    "Grösse": "S/M"
+   },
+   "farbe": "Camouflage Schwarz",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Camouflage Schwarz"
+  },
+  {
+   "sku": "9100140_15898",
+   "printfulVariantId": 15898,
+   "optionen": {
+    "Farbe": "Camouflage Schwarz",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Camouflage Schwarz",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Camouflage Schwarz"
+  },
+  {
+   "sku": "9100140_5278",
+   "printfulVariantId": 5278,
+   "optionen": {
+    "Farbe": "Dunkles Marineblau",
+    "Grösse": "S/M"
+   },
+   "farbe": "Dunkles Marineblau",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Dunkles Marineblau"
+  },
+  {
+   "sku": "9100140_5279",
+   "printfulVariantId": 5279,
+   "optionen": {
+    "Farbe": "Dunkles Marineblau",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Dunkles Marineblau",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Dunkles Marineblau"
+  },
+  {
+   "sku": "9100140_5280",
+   "printfulVariantId": 5280,
+   "optionen": {
+    "Farbe": "Dunkelgrau",
+    "Grösse": "S/M"
+   },
+   "farbe": "Dunkelgrau",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Dunkelgrau"
+  },
+  {
+   "sku": "9100140_5281",
+   "printfulVariantId": 5281,
+   "optionen": {
+    "Farbe": "Dunkelgrau",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Dunkelgrau",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Dunkelgrau"
+  },
+  {
+   "sku": "9100140_5286",
+   "printfulVariantId": 5286,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "S/M"
+   },
+   "farbe": "Königsblau",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100140_5287",
+   "printfulVariantId": 5287,
+   "optionen": {
+    "Farbe": "Königsblau",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Königsblau",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Königsblau"
+  },
+  {
+   "sku": "9100140_15899",
+   "printfulVariantId": 15899,
+   "optionen": {
+    "Farbe": "Camouflage Grün",
+    "Grösse": "S/M"
+   },
+   "farbe": "Camouflage Grün",
+   "groesse": "S/M",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Camouflage Grün"
+  },
+  {
+   "sku": "9100140_15900",
+   "printfulVariantId": 15900,
+   "optionen": {
+    "Farbe": "Camouflage Grün",
+    "Grösse": "L/XL"
+   },
+   "farbe": "Camouflage Grün",
+   "groesse": "L/XL",
+   "herkunft": "EU",
+   "kostenUsd": 16.51,
+   "ekRechnungUsd": 20.8,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 9.45,
+   "preisChf": 45.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 7.1,
+   "bindend": "kosten",
+   "bildAlt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Camouflage Grün"
+  }
+ ],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/products/140/5274_1661249125.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Weiss",
+   "rolle": "variante",
+   "label": "Weiss"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5276_1661248982.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Schwarz",
+   "rolle": "variante",
+   "label": "Schwarz"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5282_1661248996.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Grau",
+   "rolle": "variante",
+   "label": "Grau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5288_1661249007.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Rot",
+   "rolle": "variante",
+   "label": "Rot"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5292_1661248922.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Khaki",
+   "rolle": "variante",
+   "label": "Khaki"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/15901_1661248942.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Oliv",
+   "rolle": "variante",
+   "label": "Oliv"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/15897_1661248932.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Camouflage Schwarz",
+   "rolle": "variante",
+   "label": "Camouflage Schwarz"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5278_1661248993.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Dunkles Marineblau",
+   "rolle": "variante",
+   "label": "Dunkles Marineblau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5280_1661248985.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Dunkelgrau",
+   "rolle": "variante",
+   "label": "Dunkelgrau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/5286_1661249027.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Königsblau",
+   "rolle": "variante",
+   "label": "Königsblau"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/140/15899_1661248942.jpg",
+   "alt": "Strukturierte Cap mit geschlossener Rückseite selbst gestalten Camouflage Grün",
+   "rolle": "variante",
+   "label": "Camouflage Grün"
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>6 bis 9 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"140\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":140,\"klasse\":\"FLACH_MIT_HINWEIS\",\"technik\":\"EMBROIDERY\",\"basis\":\"embroidery_front_large\",\"basisMitAufpreis\":true,\"platzierungen\":[{\"id\":\"embroidery_front_large\",\"dateiTyp\":\"embroidery_front_large\",\"titel\":\"Stickerei vorne gross\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1770,600],\"dpi\":300,\"cm\":[15,5.1],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":635,\"oben\":1027,\"breite\":1729,\"hoehe\":586,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/front/flexfit6277_flat_front_blackcamo_base_whitebg.png?v=1752566077\",\"hintergrund\":null},{\"id\":\"embroidery_back\",\"dateiTyp\":\"back\",\"titel\":\"Stickerei hinten\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,300],\"dpi\":300,\"cm\":[5.1,2.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1180,\"oben\":1981,\"breite\":657,\"hoehe\":329,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/back/flexfit6277_flat_back_blackcamo_base_whitebg.png?v=1749456228\",\"hintergrund\":null},{\"id\":\"embroidery_right\",\"dateiTyp\":\"right\",\"titel\":\"Stickerei rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,300],\"dpi\":300,\"cm\":[5.1,2.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":93,\"oben\":229,\"breite\":542,\"hoehe\":271,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/e4/e444b5266c0b8fc1c20bd20e74c6a588?v=1637577304\",\"hintergrund\":null},{\"id\":\"embroidery_left\",\"dateiTyp\":\"left\",\"titel\":\"Stickerei links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,300],\"dpi\":300,\"cm\":[5.1,2.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":93,\"oben\":229,\"breite\":542,\"hoehe\":271,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/75/75516a7217e8296fd30b661fdac6255b?v=1637577288\",\"hintergrund\":null}],\"hinweise\":[{\"code\":\"stickerei\",\"quelle\":\"katalog\"},{\"code\":\"kappe\",\"quelle\":\"annahme\"}]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>In zwei Grössen mit elastischem Stretchband erhältlich: Diese Cap ist ein Gewinn für den Tragekomfort. Sie hat eine sportliche Form mit gebogenem Schirm.</p>\n<ul><li>63 % Polyester, 34 % Baumwolle, 3 % Elasthan (Twill)</li><li>Strukturiert, 6 Panels, mittelhohes Profil (mit flachem Stickbereich)</li><li>6 bestickte Ösen</li><li>Stretchband</li><li>Silberner Unterschirm</li><li>Kopfumfang: 55,9 bis 60,6 cm</li><li>Der unbedruckte Rohling stammt aus Vietnam oder Bangladesch.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Stickerei</li><li><strong>Druckdatei (Stickerei vorne gross):</strong> 1770 × 600 Pixel bei 300 dpi, das sind 15 × 5,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp zur Stickerei: Dein Motiv wird in Garnfarben umgesetzt. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.</li><li>Tipp: Die Fläche ist klein und gewölbt. Halte dein Motiv klein und ohne feine Details.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [
+  "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
+ ],
+ "uebersetzung": {
+  "ok": true,
+  "fehler": [],
+  "saetze": 8,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":140,\"klasse\":\"FLACH_MIT_HINWEIS\",\"technik\":\"EMBROIDERY\",\"basis\":\"embroidery_front_large\",\"basisMitAufpreis\":true,\"platzierungen\":[{\"id\":\"embroidery_front_large\",\"dateiTyp\":\"embroidery_front_large\",\"titel\":\"Stickerei vorne gross\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1770,600],\"dpi\":300,\"cm\":[15,5.1],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":635,\"oben\":1027,\"breite\":1729,\"hoehe\":586,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/front/flexfit6277_flat_front_blackcamo_base_whitebg.png?v=1752566077\",\"hintergrund\":null},{\"id\":\"embroidery_back\",\"dateiTyp\":\"back\",\"titel\":\"Stickerei hinten\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,300],\"dpi\":300,\"cm\":[5.1,2.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1180,\"oben\":1981,\"breite\":657,\"hoehe\":329,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/back/flexfit6277_flat_back_blackcamo_base_whitebg.png?v=1749456228\",\"hintergrund\":null},{\"id\":\"embroidery_right\",\"dateiTyp\":\"right\",\"titel\":\"Stickerei rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,300],\"dpi\":300,\"cm\":[5.1,2.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":93,\"oben\":229,\"breite\":542,\"hoehe\":271,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/e4/e444b5266c0b8fc1c20bd20e74c6a588?v=1637577304\",\"hintergrund\":null},{\"id\":\"embroidery_left\",\"dateiTyp\":\"left\",\"titel\":\"Stickerei links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,300],\"dpi\":300,\"cm\":[5.1,2.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":93,\"oben\":229,\"breite\":542,\"hoehe\":271,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/75/75516a7217e8296fd30b661fdac6255b?v=1637577288\",\"hintergrund\":null}],\"hinweise\":[{\"code\":\"stickerei\",\"quelle\":\"katalog\"},{\"code\":\"kappe\",\"quelle\":\"annahme\"}]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "140"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "FLACH_MIT_HINWEIS"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T17:05:51.219Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"6–9\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 140,
+  "klasse": "FLACH_MIT_HINWEIS",
+  "technik": "EMBROIDERY",
+  "basis": "embroidery_front_large",
+  "basisMitAufpreis": true,
+  "platzierungen": [
+   {
+    "id": "embroidery_front_large",
+    "dateiTyp": "embroidery_front_large",
+    "titel": "Stickerei vorne gross",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      1770,
+      600
+     ],
+     "dpi": 300,
+     "cm": [
+      15,
+      5.1
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 635,
+     "oben": 1027,
+     "breite": 1729,
+     "hoehe": 586,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/flexfit6277/medium/flat/front/flexfit6277_flat_front_blackcamo_base_whitebg.png?v=1752566077",
+    "hintergrund": null
+   },
+   {
+    "id": "embroidery_back",
+    "dateiTyp": "back",
+    "titel": "Stickerei hinten",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "inklusive": false,
+    "aufpreisChf": 3,
+    "druck": {
+     "px": [
+      600,
+      300
+     ],
+     "dpi": 300,
+     "cm": [
+      5.1,
+      2.5
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 1180,
+     "oben": 1981,
+     "breite": 657,
+     "hoehe": 329,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/flexfit6277/medium/flat/back/flexfit6277_flat_back_blackcamo_base_whitebg.png?v=1749456228",
+    "hintergrund": null
+   },
+   {
+    "id": "embroidery_right",
+    "dateiTyp": "right",
+    "titel": "Stickerei rechts",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "inklusive": false,
+    "aufpreisChf": 3,
+    "druck": {
+     "px": [
+      600,
+      300
+     ],
+     "dpi": 300,
+     "cm": [
+      5.1,
+      2.5
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      728,
+      728
+     ],
+     "links": 93,
+     "oben": 229,
+     "breite": 542,
+     "hoehe": 271,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/e4/e444b5266c0b8fc1c20bd20e74c6a588?v=1637577304",
+    "hintergrund": null
+   },
+   {
+    "id": "embroidery_left",
+    "dateiTyp": "left",
+    "titel": "Stickerei links",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "inklusive": false,
+    "aufpreisChf": 3,
+    "druck": {
+     "px": [
+      600,
+      300
+     ],
+     "dpi": 300,
+     "cm": [
+      5.1,
+      2.5
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      728,
+      728
+     ],
+     "links": 93,
+     "oben": 229,
+     "breite": 542,
+     "hoehe": 271,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/75/75516a7217e8296fd30b661fdac6255b?v=1637577288",
+    "hintergrund": null
+   }
+  ],
+  "hinweise": [
+   {
+    "code": "stickerei",
+    "quelle": "katalog"
+   },
+   {
+    "code": "kappe",
+    "quelle": "annahme"
+   }
+  ]
+ },
+ "kompaktBytes": 2153,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 10.39,
+  "tageMin": 6,
+  "tageMax": 9,
+  "ratenVariante": 5277
+ },
+ "basisPlatzierung": {
+  "id": "embroidery_front_large",
+  "dateiTyp": "embroidery_front_large",
+  "technik": "EMBROIDERY",
+  "pflichtAufpreisUsd": 2.95
+ },
+ "bestellweg": {
+  "platzierung": "front",
+  "gesichert": false,
+  "grund": "printful_sync schickt «front», die Basisfläche heisst «embroidery_front_large»",
+  "dateien": [
+   "default",
+   "embroidery_front_large",
+   "back",
+   "right",
+   "left"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 22,
+  "bestellbar": 22,
+  "gewaehlt": 22,
+  "farbenGewaehlt": [
+   {
+    "name": "White",
+    "de": "Weiss",
+    "anzahl": 2,
+    "rang": 0
+   },
+   {
+    "name": "Black",
+    "de": "Schwarz",
+    "anzahl": 2,
+    "rang": 1
+   },
+   {
+    "name": "Grey",
+    "de": "Grau",
+    "anzahl": 2,
+    "rang": 3
+   },
+   {
+    "name": "Red",
+    "de": "Rot",
+    "anzahl": 2,
+    "rang": 7
+   },
+   {
+    "name": "Khaki",
+    "de": "Khaki",
+    "anzahl": 2,
+    "rang": 20
+   },
+   {
+    "name": "Olive",
+    "de": "Oliv",
+    "anzahl": 2,
+    "rang": 21
+   },
+   {
+    "name": "Multicam Black",
+    "de": "Camouflage Schwarz",
+    "anzahl": 2,
+    "rang": 101
+   },
+   {
+    "name": "Dark Navy",
+    "de": "Dunkles Marineblau",
+    "anzahl": 2,
+    "rang": 102
+   },
+   {
+    "name": "Dark Grey",
+    "de": "Dunkelgrau",
+    "anzahl": 2,
+    "rang": 103
+   },
+   {
+    "name": "Royal Blue",
+    "de": "Königsblau",
+    "anzahl": 2,
+    "rang": 108
+   },
+   {
+    "name": "Multicam Green",
+    "de": "Camouflage Grün",
+    "anzahl": 2,
+    "rang": 110
+   }
+  ],
+  "farbenAusgelassen": [],
+  "ausgelassen": []
+ },
+ "preis": {
+  "min": 45.9,
+  "max": 45.9,
+  "nettoMin": 4.02,
+  "nettoMax": 4.02,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [
+   "https://files.cdn.printful.com/o/products/140/product_1586182449.jpg"
+  ],
+  "ungemessen": [],
+  "anzahl": 11,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/products/140/product_1586182449.jpg",
+   "https://files.cdn.printful.com/products/140/5274_1661249125.jpg",
+   "https://files.cdn.printful.com/products/140/5276_1661248982.jpg",
+   "https://files.cdn.printful.com/products/140/5282_1661248996.jpg",
+   "https://files.cdn.printful.com/products/140/5288_1661249007.jpg",
+   "https://files.cdn.printful.com/products/140/5292_1661248922.jpg",
+   "https://files.cdn.printful.com/products/140/15901_1661248942.jpg",
+   "https://files.cdn.printful.com/products/140/15897_1661248932.jpg",
+   "https://files.cdn.printful.com/products/140/5278_1661248993.jpg",
+   "https://files.cdn.printful.com/products/140/5280_1661248985.jpg",
+   "https://files.cdn.printful.com/products/140/5286_1661249027.jpg",
+   "https://files.cdn.printful.com/products/140/15899_1661248942.jpg"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "karte",
+   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "printful_sync bestimmt «front» nicht gesichert (printful_sync schickt «front», die Basisfläche heisst «embroidery_front_large»): Aufträge blieben Entwurf bei Printful"
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "ohne Schätzung: Kostenboden mit Katalogpreis +26 % (Sicherheit)"
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": true,
+ "hash": "ec66cf72f4e5e6887b562417be8288258f3766f4956663f01db96269256f5126"
+}
