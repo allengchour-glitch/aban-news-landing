@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "run": "R105",
+  "recordedAt": "2026-11-05T21:42:22+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "sourceBoundary": {
+    "exactCjSupplierRecordsFound": 0,
+    "allowedClaims": [
+      "current Shopify option values",
+      "visible current product images",
+      "current Admin and public product state"
+    ],
+    "unsupportedClaimsRemovedNotReplaced": [
+      "materials",
+      "fit",
+      "protection",
+      "weight",
+      "delivery time",
+      "functional promises"
+    ],
+    "handlesPreserved": true
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminReadbacks": 2,
+    "publicHtmlReadbacksHttp200": 2,
+    "publicProductJsonReadbacksHttp200": 2,
+    "readyImageAltTextsUpdated": 18,
+    "variantsProtected": 34,
+    "publicationNodesProtected": 12,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15500282003841",
+      "handle": "beige-maxi-kleid-600600",
+      "publicUrl": "https://luxestyle.ch/products/beige-maxi-kleid-600600",
+      "before": {
+        "title": "Beige Maxi Kleid",
+        "seo": {
+          "title": "Beige Maxi Kleid | LuxeStyle CH",
+          "description": "Beige Maxi Kleid – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+        }
+      },
+      "after": {
+        "title": "Ärmelloses Maxikleid in drei Farben",
+        "descriptionHtml": "<p>Dieses ärmellose Maxikleid ist in drei Farben und sechs Grössen erhältlich. Die lange Rockpartie zeigt mehrere horizontale Teilungsnähte.</p><h2>Ausführungen</h2><ul>\n<li>Farben: Milchweiss, Himmelblau, Lavendel-Lila</li>\n<li>Grössen: XS, S, M, L, XL, 2XL</li>\n<li>Design: ärmellos und lang geschnitten</li>\n</ul><p>Wähle Farbe und Grösse direkt bei der Produktauswahl.</p>",
+        "seo": {
+          "title": "Ärmelloses Maxikleid in drei Farben | LuxeStyle",
+          "description": "Ärmelloses Maxikleid mit langer Rockpartie in Milchweiss, Himmelblau oder Lavendel-Lila. Grössen XS bis 2XL bei LuxeStyle ansehen."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Milchweiss",
+            "Himmelblau",
+            "Lavendel-Lila"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 18,
+        "hasNextPage": false,
+        "firstId": "gid://shopify/ProductVariant/56107265360257",
+        "lastId": "gid://shopify/ProductVariant/56107265917313",
+        "firstSku": "CJ-CJLY296327701AZ",
+        "lastSku": "CJ-CJLY296327718RI",
+        "prices": [
+          "22.90",
+          "23.90",
+          "24.90",
+          "25.90",
+          "26.90"
+        ],
+        "availableForSale": [
+          true
+        ],
+        "inventoryPolicy": [
+          "CONTINUE"
+        ],
+        "tracked": [
+          false
+        ],
+        "inventoryQuantity": [
+          0
+        ],
+        "barcodeValues": []
+      },
+      "media": [
+        {
+          "id": "gid://shopify/MediaImage/70542308049281",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Himmelblau, Vorderansicht",
+          "width": 759,
+          "height": 759
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308213121",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Lavendel-Lila, Vorderansicht",
+          "width": 1440,
+          "height": 1920
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308245889",
+          "status": "READY",
+          "altText": "Himmelblaues Maxikleid mit ärmellosem Oberteil und Rockdetail",
+          "width": 751,
+          "height": 751
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308278657",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Himmelblau mit langer Rockpartie",
+          "width": 570,
+          "height": 759
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308311425",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Milchweiss, Vorderansicht",
+          "width": 1920,
+          "height": 1920
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308344193",
+          "status": "READY",
+          "altText": "Himmelblaues Maxikleid, Detail der langen Rockpartie",
+          "width": 750,
+          "height": 750
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308376961",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Lavendel-Lila auf weissem Hintergrund",
+          "width": 1600,
+          "height": 1600
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542308409729",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Milchweiss mit langer Rockpartie",
+          "width": 1440,
+          "height": 1920
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542309196161",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Milchweiss, Variantenbild",
+          "width": 1440,
+          "height": 1920
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542309228929",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Himmelblau, Variantenbild",
+          "width": 570,
+          "height": 759
+        },
+        {
+          "id": "gid://shopify/MediaImage/70542309261697",
+          "status": "READY",
+          "altText": "Ärmelloses Maxikleid in Lavendel-Lila, Variantenbild",
+          "width": 1440,
+          "height": 1920
+        }
+      ],
+      "publications": [
+        {
+          "id": "gid://shopify/Publication/301970915713",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 301970915713 for Online Store"
+        },
+        {
+          "id": "gid://shopify/Publication/301971014017",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 301971014017 for Shop"
+        },
+        {
+          "id": "gid://shopify/Publication/302032716161",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 302032716161 for TikTok"
+        },
+        {
+          "id": "gid://shopify/Publication/302566834561",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 302566834561 for Facebook & Instagram"
+        },
+        {
+          "id": "gid://shopify/Publication/302994456961",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 302994456961 for Pinterest"
+        },
+        {
+          "id": "gid://shopify/Publication/391626359175",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 391626359175 for Luxe Style Headless"
+        }
+      ],
+      "protected": {
+        "status": true,
+        "handle": true,
+        "vendor": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsDimensions": true,
+        "publications": true
+      },
+      "publicReadback": {
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "00f55a9b198bca1c3eccc68715f90f645a452bfe66c19d558be127edbba3fc8d",
+        "productJsonSha256": "00177a0274bfc75e030bc31fa8367064abd7b496f80a2dbfd5c836a2772d47fe"
+      },
+      "visualReview": {
+        "contactSheetSha256": "583f1d251951bac8409f4a8af5b0bda39162adfef8b8ea1314be54434bdc4362"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16638316020103",
+      "handle": "indoor-fitness-schuhe-fur-manner-weiss-black-g-623100",
+      "publicUrl": "https://luxestyle.ch/products/indoor-fitness-schuhe-fur-manner-weiss-black-g-623100",
+      "before": {
+        "title": "Indoor Fitness Schuhe für Männer – weiss/black/gray",
+        "seo": {
+          "title": "Indoor Fitness Schuhe für Männer – weiss/black/gray | LuxeStyle CH",
+          "description": "An Trainingsstudio nutzt du diese Schuhe, um deine Knie zu schützen. Material: Kunststoff."
+        }
+      },
+      "after": {
+        "title": "Herren-Fitnessschuhe in Weiss oder Schwarz",
+        "descriptionHtml": "<p>Diese hoch geschnittenen Herren-Fitnessschuhe sind mit Schnürung ausgeführt. Sie sind in Weiss oder Schwarz sowie in den Grössen 38 bis 45 erhältlich.</p><h2>Ausführungen</h2><ul>\n<li>Farben: Weiss 201960, Schwarz 201960</li>\n<li>Grössen: 38, 39, 40, 41, 42, 43, 44, 45</li>\n<li>Design: hoher Schaft und Schnürung</li>\n</ul><p>Wähle Farbe und Grösse direkt bei der Produktauswahl.</p>",
+        "seo": {
+          "title": "Herren-Fitnessschuhe in Weiss oder Schwarz | LuxeStyle",
+          "description": "Hoch geschnittene Herren-Fitnessschuhe mit Schnürung in Weiss oder Schwarz. Grössen 38 bis 45 bei LuxeStyle ansehen."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Weiss 201960",
+            "Schwarz 201960"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 16,
+        "hasNextPage": false,
+        "firstId": "gid://shopify/ProductVariant/67679666733447",
+        "lastId": "gid://shopify/ProductVariant/67679667224967",
+        "firstSku": "CJ-CJYD208753801AZ",
+        "lastSku": "CJ-CJYD208753816PK",
+        "prices": [
+          "50.90"
+        ],
+        "availableForSale": [
+          true
+        ],
+        "inventoryPolicy": [
+          "CONTINUE"
+        ],
+        "tracked": [
+          false
+        ],
+        "inventoryQuantity": [
+          0
+        ],
+        "barcodeValues": []
+      },
+      "media": [
+        {
+          "id": "gid://shopify/MediaImage/77666550448519",
+          "status": "READY",
+          "altText": "Weisse hoch geschnittene Herren-Schnürschuhe mit Sohlenansicht",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77666550415751",
+          "status": "READY",
+          "altText": "Gruppenansicht hoch geschnittener Herren-Schnürschuhe",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77666549924231",
+          "status": "READY",
+          "altText": "Detailansicht eines weissen Herren-Schnürschuhs",
+          "width": 587,
+          "height": 334
+        },
+        {
+          "id": "gid://shopify/MediaImage/77666550481287",
+          "status": "READY",
+          "altText": "Schwarze hoch geschnittene Herren-Schnürschuhe",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77666550514055",
+          "status": "READY",
+          "altText": "Weisse hoch geschnittene Herren-Schnürschuhe mit roter Schnürung",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77666551103879",
+          "status": "READY",
+          "altText": "Weisse hoch geschnittene Herren-Schnürschuhe, Variantenbild",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77666551136647",
+          "status": "READY",
+          "altText": "Schwarze hoch geschnittene Herren-Schnürschuhe, Variantenbild",
+          "width": 800,
+          "height": 800
+        }
+      ],
+      "publications": [
+        {
+          "id": "gid://shopify/Publication/301970915713",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 301970915713 for Online Store"
+        },
+        {
+          "id": "gid://shopify/Publication/301971014017",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 301971014017 for Shop"
+        },
+        {
+          "id": "gid://shopify/Publication/302032716161",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 302032716161 for TikTok"
+        },
+        {
+          "id": "gid://shopify/Publication/302566834561",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 302566834561 for Facebook & Instagram"
+        },
+        {
+          "id": "gid://shopify/Publication/302994456961",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 302994456961 for Pinterest"
+        },
+        {
+          "id": "gid://shopify/Publication/391626359175",
+          "isPublished": true,
+          "catalogTitle": "Channel Catalog 391626359175 for Luxe Style Headless"
+        }
+      ],
+      "protected": {
+        "status": true,
+        "handle": true,
+        "vendor": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsDimensions": true,
+        "publications": true
+      },
+      "publicReadback": {
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "5ed2676cfda0da5e8ce9640d5559149829c74c7ed721d5664600e70d60d3aa72",
+        "productJsonSha256": "ed63984d679f0a567dbd117e50a92e3128dcac2eb63ba9cddfaf269a33c4b708"
+      },
+      "visualReview": {
+        "contactSheetSha256": "332650070afeb3bd7ee3990f88e1858d55049971970c38ada3b8fe884a9971e0"
+      }
+    }
+  ],
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 36,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.06371,
+    "roundedPercent": 0.06,
+    "remainingProducts": 56470,
+    "remainingPercentApprox": 99.94,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}
+
