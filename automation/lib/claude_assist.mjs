@@ -17,12 +17,12 @@ const secret = /\b(?:shpat_|shpss_|ghp_|github_pat_|sk-ant-|sk-proj-)[A-Za-z0-9_
 export const SUITES = Object.freeze({
   core: ['automation/lib/shopify_gql_test.mjs', 'automation/lib/shopify_secret_test.mjs', 'automation/lib/kanal_sperren_test.mjs'],
   seo: ['automation/seo-optimizer_test.mjs', 'automation/lib/seo_titel_test.mjs'],
-  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs', 'automation/lib/claude_assist_commits_test.mjs', 'automation/lib/claude_assist_evidence_test.mjs'],
+  assist: ['automation/lib/claude_assist_test.mjs', 'automation/lib/claude_assist_mcp_test.mjs', 'automation/lib/claude_assist_changes_test.mjs', 'automation/lib/claude_assist_readiness_test.mjs', 'automation/lib/claude_assist_launch_test.mjs', 'automation/lib/claude_assist_runner_test.mjs', 'automation/lib/claude_assist_commits_test.mjs', 'automation/lib/claude_assist_evidence_test.mjs', 'automation/lib/cj_readonly_test.mjs', 'automation/lib/cj_read_mcp_test.mjs'],
 });
 export const CHECK_INPUTS = Object.freeze({
   core: Object.freeze([...SUITES.core, 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/kanal_sperren.mjs', 'automation/lib/claude_assist_offline.mjs']),
   seo: Object.freeze([...SUITES.seo, 'automation/seo-optimizer.mjs', 'automation/lib/seo_titel.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/claude_assist_offline.mjs']),
-  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence'].map(name => 'automation/lib/' + name + '.mjs')]),
+  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', 'automation/cj-read-mcp.mjs', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence', 'cj_readonly', 'cj_read_mcp'].map(name => 'automation/lib/' + name + '.mjs')]),
 });
 export const POLICY = Object.freeze({
   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
