@@ -1,7 +1,6 @@
-name: "Diagnose Actions-Zugang (Shopify + CJ, nur lesen)"
+name: "Diagnose Actions-Zugang (CJ-MCP, nur lesen)"
 
-# Der Modus cj_mcp prüft den eng begrenzten CJ-Nur-Lese-MCP an einem fixierten Commit.
-# Der historische Modus legacy bleibt getrennt und wird bei cj_mcp vollständig übersprungen.
+# Prüft ausschliesslich den eng begrenzten CJ-Nur-Lese-MCP an einem fixierten Commit.
 on:
   workflow_dispatch:
     inputs:
@@ -10,7 +9,6 @@ on:
         type: choice
         options:
           - cj_mcp
-          - legacy
         default: cj_mcp
         required: true
       approved_commit:
@@ -18,24 +16,28 @@ on:
         type: string
         required: false
         default: ''
+      operation:
+        description: 'Nur cj_mcp: product oder inventory'
+        type: choice
+        options:
+          - product
+          - inventory
+        default: product
+        required: true
       pid:
-        description: 'CJ-PID; genau PID oder productSku setzen'
+        description: 'CJ-PID; inventory verlangt ausschliesslich PID'
         type: string
         required: false
       productSku:
         description: 'CJ-productSku; genau PID oder productSku setzen'
         type: string
         required: false
-      cj_probe:
-        description: 'Nur legacy: alten CJ-Token-Test ausführen'
-        type: boolean
-        default: false
 
 permissions:
   contents: read
 
 concurrency:
-  group: diagnose-actions-zugang-${{ github.repository }}-${{ github.ref }}-${{ inputs.mode }}
+  group: diagnose-actions-zugang-${{ github.repository }}-${{ github.ref }}-${{ inputs.mode }}-${{ inputs.operation }}
   cancel-in-progress: false
 
 jobs:
@@ -48,6 +50,7 @@ jobs:
         shell: bash
         env:
           APPROVED_COMMIT: ${{ inputs.approved_commit }}
+          CJ_MCP_OPERATION: ${{ inputs.operation }}
           CJ_MCP_PID: ${{ inputs.pid }}
           CJ_MCP_PRODUCT_SKU: ${{ inputs.productSku }}
         run: |
@@ -56,15 +59,23 @@ jobs:
           test "$GITHUB_REPOSITORY" = allengchour-glitch/aban-news-landing
           [[ "$APPROVED_COMMIT" =~ ^[0-9a-f]{40}$ ]]
           test "$APPROVED_COMMIT" = "$GITHUB_SHA"
-          if [[ -n "$CJ_MCP_PID" && -n "$CJ_MCP_PRODUCT_SKU" ]] || [[ -z "$CJ_MCP_PID" && -z "$CJ_MCP_PRODUCT_SKU" ]]; then
-            echo 'Genau PID oder productSku ist erforderlich.' >&2
-            exit 1
+          [[ "$CJ_MCP_OPERATION" == product || "$CJ_MCP_OPERATION" == inventory ]]
+          if [[ "$CJ_MCP_OPERATION" == inventory ]]; then
+            if [[ -z "$CJ_MCP_PID" || -n "$CJ_MCP_PRODUCT_SKU" ]]; then
+              echo 'inventory verlangt genau eine PID und kein productSku.' >&2
+              exit 1
+            fi
+          else
+            if [[ -n "$CJ_MCP_PID" && -n "$CJ_MCP_PRODUCT_SKU" ]] || [[ -z "$CJ_MCP_PID" && -z "$CJ_MCP_PRODUCT_SKU" ]]; then
+              echo 'product verlangt genau PID oder productSku.' >&2
+              exit 1
+            fi
           fi
           if [[ -n "$CJ_MCP_PID" ]]; then [[ "$CJ_MCP_PID" =~ ^[0-9]{6,40}$ ]]; fi
           if [[ -n "$CJ_MCP_PRODUCT_SKU" ]]; then [[ "$CJ_MCP_PRODUCT_SKU" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; fi
 
       - name: Freigegebenen Commit minimal auschecken
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: ${{ inputs.approved_commit }}
           fetch-depth: 1
@@ -78,7 +89,7 @@ jobs:
             automation/lib/cj_readonly.mjs
           sparse-checkout-cone-mode: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
 
@@ -92,41 +103,16 @@ jobs:
           cat <<'HASHES' | sha256sum -c -
           9ea924f1c74bcced370290adbe2a4a3b3ad12ec43496a961d9e46531bb895883  .mcp.json
           ef986b11c17d707aa78208c2fd51d4b35486a86e85c2883618daa2e8f8c80ffc  automation/cj-read-mcp.mjs
-          12c48cc17b52f155324a19c86fac924d0282f7d50c3093fa7fcf6ccbce66b6af  automation/cj-read-mcp-probe.mjs
+          4abf25c51e6b44a1cef54d08753b726ba02717ef6c2beb2a01b78e69689cc3d7  automation/cj-read-mcp-probe.mjs
           228be1d0783fb688e2f6971f39fd6a29457a24138bc5242de2f648345793a671  automation/lib/claude_assist_mcp.mjs
-          842e2607cbe8341e9464b2d7a2539f4f36b1cfa0e446d883617b8b47d78e7b8e  automation/lib/cj_read_mcp.mjs
-          4b2e549ca6ea46dba3e11304b6b90f9aebcfcbe24202463a25c19a3ee47644f6  automation/lib/cj_readonly.mjs
+          2163a3243b2afe766606f497876248dcdd9468f05e3c0b740017912b16e462a0  automation/lib/cj_read_mcp.mjs
+          9a97ca7a99110814bd7b4b9a5c73c024deb87ecfb9a9eb018b3f31ed952c4c1a  automation/lib/cj_readonly.mjs
           HASHES
 
       - name: CJ-MCP einmalig nur lesend prüfen
         env:
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          CJ_MCP_OPERATION: ${{ inputs.operation }}
           CJ_MCP_PID: ${{ inputs.pid }}
           CJ_MCP_PRODUCT_SKU: ${{ inputs.productSku }}
         run: node automation/cj-read-mcp-probe.mjs
-
-  legacy:
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'legacy' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          sparse-checkout: |
-            automation/diagnose_actions_zugang.mjs
-            automation/lib/shopify_secret.mjs
-          sparse-checkout-cone-mode: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Historischen Zugang messen
-        env:
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
-          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          CJ_EMAIL: ${{ secrets.CJ_EMAIL }}
-          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
-          CJ_PROBE: ${{ inputs.cj_probe && '1' || '0' }}
-        run: node automation/diagnose_actions_zugang.mjs

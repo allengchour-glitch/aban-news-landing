@@ -6,6 +6,7 @@ const ASSIST_CONFIG = new Set([
   '.claude/commands/luxestyle-assist.md',
   '.github/workflows/diagnose-actions-zugang.yml',
   '.github/workflows/luxestyle-assist-tests.yml',
+  'dropship/assistant/CJ-READ-MCP.md',
 ]);
 const CORE_FILES = new Set([
   'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_gql_test.mjs',

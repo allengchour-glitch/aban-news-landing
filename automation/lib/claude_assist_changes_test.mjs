@@ -41,7 +41,7 @@ test('Assist implementation, transport, preload, configuration and tests select 
     'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_read_mcp_test.mjs',
     'automation/lib/cj_read_mcp_probe_test.mjs',
     '.mcp.json', '.claude/commands/luxestyle-assist.md', '.github/workflows/diagnose-actions-zugang.yml',
-    '.github/workflows/luxestyle-assist-tests.yml',
+    '.github/workflows/luxestyle-assist-tests.yml', 'dropship/assistant/CJ-READ-MCP.md',
   ]) {
     assert.deepEqual(classifyChanges([file]).suites, ['assist'], file);
   }
