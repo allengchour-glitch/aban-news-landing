@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "run": "R109",
+  "draft": false,
+  "recordedAt": "2026-11-05T22:39:29+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminProductReadbacksAfterEachSentWrite": 4,
+    "publicHtmlReadbacksHttp200": 4,
+    "publicProductJsonReadbacksHttp200": 4,
+    "finalPublicHtmlProducts": 2,
+    "finalPublicProductJsonProducts": 2,
+    "readyImageAltTextsUpdated": 17,
+    "variantsProtected": 30,
+    "publicationNodesProtected": 12,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/16639115329927",
+      "handle": "herren-freizeitschuhe-aus-kunstleder-601600",
+      "publicUrl": "https://luxestyle.ch/products/herren-freizeitschuhe-aus-kunstleder-601600",
+      "beforeTitle": "Herren-Freizeitschuhe aus Kunstleder",
+      "after": {
+        "title": "Herren-Loafer mit Zierschnalle",
+        "descriptionHtml": "<p>Diese niedrig geschnittenen Herren-Loafer zeigen eine Schlupfform mit markanter Zierschnalle, sichtbaren Nähten an der Zehenpartie und profilierter Sohle.</p><h3>Auswahl</h3><ul><li>Farben: Schwarz oder Braun</li><li>Grössen: 39, 40, 41, 42, 43 und 44</li></ul><p>Wähle Farbe und Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Herren-Loafer mit Zierschnalle | LuxeStyle CH",
+          "description": "Niedrig geschnittene Herren-Loafer mit markanter Zierschnalle, sichtbaren Nähten und profilierter Sohle. In Schwarz oder Braun und 39–44 wählbar."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Schwarz",
+            "Braun"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 12,
+        "pricesCHF": [
+          16.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": {
+        "count": 9,
+        "readyImageAltTextsUpdated": 9,
+        "altTexts": [
+          "Braune Herren-Loafer mit Zierschnalle seitlich getragen",
+          "Brauner Herren-Loafer mit Zierschnalle in Seitenansicht",
+          "Schwarze Herren-Loafer mit Zierschnalle als Paar",
+          "Schwarze Herren-Loafer mit Zierschnalle auf einer Hand präsentiert",
+          "Braune Herren-Loafer mit Zierschnalle in Draufsicht",
+          "Schwarzer Herren-Loafer mit Zierschnalle in Seitenansicht",
+          "Schwarze Herren-Loafer mit Zierschnalle seitlich getragen",
+          "Schwarzer Herren-Loafer mit Zierschnalle in Seitenansicht",
+          "Brauner Herren-Loafer mit Zierschnalle in Seitenansicht"
+        ]
+      },
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Kunstleder/Leder/Gummi",
+        "Verschleissfestigkeit",
+        "Rutschfestigkeit",
+        "Komfort",
+        "Eignung für Geschäftstermine",
+        "Keilabsatz",
+        "nur Grösse 39",
+        "Gewicht",
+        "produktbezogene Liefer-/Zahlungsangaben"
+      ],
+      "rightsReview": {
+        "visibleMarks": [
+          "V-förmige Kennzeichnung",
+          "unklarer Innensohlen-Schriftzug"
+        ],
+        "authenticity": "unknown",
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "newSocialPublication": "blocked"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15524874355073",
+      "handle": "herren-sneaker-mit-schnurung-601200",
+      "publicUrl": "https://luxestyle.ch/products/herren-sneaker-mit-schnurung-601200",
+      "beforeTitle": "Herren-Sneaker mit Schnürung",
+      "after": {
+        "title": "Herren-Sneaker mit Schnürung und Musterdetails",
+        "descriptionHtml": "<p>Diese Herren-Sneaker verbinden eine Schnürung mit farbigen Musterdetails und einer markant profilierten Sohle.</p><h3>Auswahl</h3><ul><li>Farben: Dunkelblau, Khaki oder Hellblau</li><li>Grössen: 39, 40, 41, 42, 43 und 44</li></ul><p>Wähle Farbe und Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Herren-Sneaker mit Musterdetails | LuxeStyle CH",
+          "description": "Herren-Sneaker mit Schnürung, farbigen Musterdetails und markant profilierter Sohle. Dunkelblau, Khaki oder Hellblau in 39–44 wählen."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Dunkelblau",
+            "Khaki",
+            "Hellblau"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 18,
+        "pricesCHF": [
+          30.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {
+          "Dunkelblau": "gid://shopify/MediaImage/70800702538113",
+          "Khaki": "gid://shopify/MediaImage/70800702570881",
+          "Hellblau": "gid://shopify/MediaImage/70800702603649"
+        },
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": {
+        "count": 8,
+        "readyImageAltTextsUpdated": 8,
+        "altTexts": [
+          "Herren-Sneaker in der Variante Khaki als Paar im Schuhkarton",
+          "Herren-Sneaker in der Variante Hellblau als Paar im Schuhkarton",
+          "Dunkelblaue Herren-Sneaker mit Musterdetails als Paar im Schuhkarton",
+          "Dunkelblauer Herren-Sneaker mit Schnürung in Seitenansicht",
+          "Dunkelblaue Herren-Sneaker mit Musterdetails getragen und in der Hand",
+          "Dunkelblaue Herren-Sneaker mit Musterdetails als Paar im Schuhkarton",
+          "Herren-Sneaker in der Variante Khaki als Paar im Schuhkarton",
+          "Herren-Sneaker in der Variante Hellblau als Paar im Schuhkarton"
+        ]
+      },
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Sporteignung",
+        "Kunstleder/Leder",
+        "Mesh/Atmungsaktivität",
+        "Gummi",
+        "Viscose-Technik",
+        "Rutschfestigkeit",
+        "Absatzhöhe 3–5 cm",
+        "Schnitttiefe",
+        "nur Grösse 39",
+        "Gewicht",
+        "produktbezogene Liefer-/Zahlungsangaben"
+      ],
+      "rightsReview": {
+        "visibleMarks": [
+          "GUO CHAO"
+        ],
+        "authenticity": "unknown",
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "newSocialPublication": "blocked"
+      }
+    }
+  ],
+  "readback": {
+    "own": {
+      "loaferHtmlSha256": "e49566324f6a94bafdc94b912a6425ea8a57b8bc0b517232a7b38b6af72a3fb4",
+      "loaferProductJsonSha256": "ebca631618f0f003e5d491ed2e0463ab97472e1d904238a393b2fb055040a3bf",
+      "sneakerHtmlSha256": "8061dc28be9457d0f8eb013d96f25ababddb2f0767ab39a8fe3a9012dc659ae5",
+      "sneakerProductJsonSha256": "251f27b2d4e8399b6267202042c099d7b4078b576f4256694b67f89a24590fb2"
+    },
+    "independentQa": {
+      "status": "GO",
+      "productsPassed": 2,
+      "productsTotal": 2,
+      "loaferHtmlSha256": "1acb66fa01e47b4085ea0344282de1a1a29243edfffdf674ce7bbb9a753db50c",
+      "loaferProductJsonSha256": "ebca631618f0f003e5d491ed2e0463ab97472e1d904238a393b2fb055040a3bf",
+      "sneakerHtmlSha256": "c0f49c235b4479965130cc3c0e11798ede788d67a8a7fdb05a003c6ba6f1c6e5",
+      "sneakerProductJsonSha256": "251f27b2d4e8399b6267202042c099d7b4078b576f4256694b67f89a24590fb2",
+      "dynamicHtmlHashesMayDiffer": true
+    }
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 43,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.0761,
+    "roundedPercent": 0.08,
+    "remainingProducts": 56463,
+    "remainingPercentApprox": 99.92,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "currentMainObserved": "859132ed6",
+    "latestClaudeLuxeStyleBranchObserved": "origin/claude/luxestyle-selbst-gestalten-0511@24d3d192a",
+    "exactR109ProductOverlapInCurrentClaudeCommits": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedReservedBaselinesBeforeWrites": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}

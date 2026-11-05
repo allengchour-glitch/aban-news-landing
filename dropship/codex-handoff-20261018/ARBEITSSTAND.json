@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 108,
-  "updatedAt": "2026-11-05T22:27:36+01:00",
+  "revision": 109,
+  "updatedAt": "2026-11-05T22:39:29+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13495,6 +13495,35 @@
       "historical handles and hoodie sort/taxonomy fields require separate Redirect/Collection/Merchant review",
       "swimwear visible TYR logo authenticity and commercial rights unknown",
       "R109 visible GUO CHAO and loafer insole/ornament marks require rights review before social",
+      "no shared Claude live lock or receipt",
+      "seven R103 overlay SKUs lack exact CJ variant/media mapping",
+      "Google Merchant reprocessing remains unknown"
+    ],
+    "shopifyProductWrites": 2,
+    "shopifyFileWrites": 2,
+    "merchantWrites": 0,
+    "metricoolWrites": 0,
+    "otherExternalWrites": 0
+  },
+  "followUpRunR109": {
+    "at": "2026-11-05T22:39:29+01:00",
+    "actualUpdates": [
+      "Herren-Loafer16639115329927: title, body, SEO and9 image alt texts",
+      "Herren-Sneaker15524874355073: title, body, SEO and8 image alt texts"
+    ],
+    "coordination": "Remote Claude work, exact IDs/handles/SKU prefixes and Shopify updatedAt checked before each product; no overlap found, receipt/live lock unknown.",
+    "qualityAndRights": "Independent QA2/2 GO. Visible GUO CHAO on sneakers and loafer insole/V-shaped marks have unknown authenticity/commercial rights; block new social content for both products.",
+    "catalogProgress": {
+      "strictLiveCorrectedActiveProducts": 43,
+      "activeProductsExact": 56506,
+      "percent": 0.0761,
+      "remaining": 56463,
+      "remainingPercentApprox": 99.92
+    },
+    "nextStep": "Select the next two ACTIVE products only after a fresh Claude branch/PR/transition search and exact Shopify updatedAt read; continue with evidence-bound minimal copy and alt-text changes.",
+    "blockedBy": [
+      "visible GUO CHAO and loafer insole/V-shaped marks: authenticity and commercial rights unknown",
+      "historical material-bearing shoe handles require separate Redirect/Collection/Merchant review",
       "no shared Claude live lock or receipt",
       "seven R103 overlay SKUs lack exact CJ variant/media mapping",
       "Google Merchant reprocessing remains unknown"
