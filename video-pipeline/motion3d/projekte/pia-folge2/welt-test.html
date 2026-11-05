@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>M3: Welt-Test</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { erzeugeWelt } from '../../lib/welt3d.js';
+const W = 1080, H = 1920;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); const cam = new THREE.PerspectiveCamera(38, W / H, 0.1, 600);
+const welt = erzeugeWelt(scene, { dauer: 40 });
+const ansichten = [
+  { t: 1,  p: [-14, 20, 24], z: [3, 1, -2] }, { t: 3, p: [5, 3.2, 7.5], z: [3, 1, -1] }, { t: 12, p: [11, 2.6, 7], z: [14, 2, -3] },
+  { t: 16, p: [9, 3.2, -2.5], z: [14, 1.6, -8] }, { t: 28, p: [16.5, 2.8, 5], z: [16.5, 1.6, -3] }, { t: 36, p: [16, 2.2, 6], z: [16, 14, -40] }
+];
+window.__seek3d = async (t) => {
+  const a = ansichten[Math.min(ansichten.length - 1, Math.floor(t))];
+  welt.update(a.t, new THREE.Vector3(a.z[0], 0, a.z[2]));
+  cam.position.set(...a.p); cam.lookAt(...a.z);
+  renderer.render(scene, cam); renderer.getContext().finish();
+};
+Motion.fertig(6);
+</script>

@@ -1,0 +1,7 @@
+{
+  "name": "luxe-motion3d",
+  "private": true,
+  "version": "1.0.0",
+  "description": "3D-Toon-Shorts mit three.js, gerendert über video-pipeline/motion/render.mjs",
+  "dependencies": { "three": "0.187.0" }
+}

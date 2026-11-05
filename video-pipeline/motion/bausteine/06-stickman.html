@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><title>Baustein 6: Strichmännchen mit Posen</title>
+<link rel="stylesheet" href="_basis.css">
+<div class="stage"><svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script src="../motion.js"></script>
+<script src="../stickman.js"></script>
+<script>
+ const M = Motion, s = document.getElementById('s');
+ M.svg('rect', { width: 1080, height: 1920, fill: '#fdf1e3' }, s);
+ M.svg('line', { x1: 0, y1: 1500, x2: 1080, y2: 1500, stroke: '#22303c', 'stroke-width': 6 }, s);
+ // Lernpunkt: Aufrufe für dieselbe Figur stehen in zeitlicher Reihenfolge. Pose = Zielwinkel aller Gelenke mit weichem Übergang.
+ const pia = Stickman(s, { x: 200, y: 1500, s: 1.4 });
+ pia.gehen(0.3, 2.1, { dx: 300 });          // 3 Schritte nach rechts
+ pia.pose(2.6, 'jubeln', .5).mund(2.6, 'lachen');
+ pia.huepfen(3.2, 1.0);
+ pia.pose(4.4, 'denken', .6).mund(4.4, 'sorge');
+ pia.pose(6.0, 'kochen', .5).mund(6.0, 'ruhig');
+ pia.ruehren(6.6, 2.4);
+ M.fertig(9);
+</script>

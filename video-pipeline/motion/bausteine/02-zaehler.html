@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Baustein 2: Zähler hochzählen</title>
+<link rel="stylesheet" href="_basis.css">
+<style>
+ .zahl{position:absolute;left:0;width:900px;top:760px;text-align:center;font-size:260px;font-weight:900;color:#16324f;font-variant-numeric:tabular-nums}
+ .label{position:absolute;left:0;width:900px;top:1060px;text-align:center;font-size:58px;font-weight:600;color:#47698c}
+</style>
+<div class="stage"><div class="zahl" id="n">0</div><div class="label">Beispielzahl, frei gewählt</div></div>
+<script src="../motion.js"></script>
+<script>
+ const M = Motion;
+ // Lernpunkt: Eine Zahl «animieren» heisst einen Wert animieren und ihn pro Bild ausschreiben.
+ // Trick: eine Hilfsanimation auf einer CSS-Variable, der Text folgt per JS NICHT (nicht deterministisch) –
+ // darum eine echte Animation auf --v und der Text wird über ::after mit counter() geschrieben.
+ const n = document.getElementById('n');
+ n.textContent = '';
+ n.style.counterReset = 'v var(--v)';
+ const css = document.createElement('style');
+ css.textContent = '@property --v{syntax:"<integer>";initial-value:0;inherits:false}#n::after{content:counter(v)}#n{counter-reset:v var(--v)}';
+ document.head.appendChild(css);
+ M.at(n, [{ '--v': 0 }, { '--v': 1200 }], { t: 0.3, d: 2, ease: M.EASE.out });
+ M.fertig(3);
+</script>
