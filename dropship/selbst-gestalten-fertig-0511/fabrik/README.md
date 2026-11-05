@@ -196,4 +196,9 @@ Voraussetzungen, die nicht die Fabrik erfüllt: (a) Besitzer gibt das Anlegen al
 
 ## Mutationsprobe, Ergebnis
 
-(wird nach dem Lauf eingetragen)
+GEMESSEN 05.11.2026 abends (`node automation/pod_modell/mutation.mjs`, 143 Mutanten in 10 Testdateien, rund 9 Minuten):
+
+- **Erster Lauf (vor den letzten Reparaturen): 137 von 143 erkannt, 5 überlebt, 1 nicht anwendbar.** Die Überlebenden zeigten echte Lücken in den Tests, keine gleichwertigen Mutanten: (1) «LIVE ohne Ledger erlaubt» (der Test prüfte nur Exit 1, den die Sperre auch ohne die Ledger-Prüfung lieferte: jetzt prüft er die Meldung), (2) «Editor-Karte: Farben auch bei nur einer Farbe» (neuer Test: eine Farbe gibt keine Farbtabelle, zwei Farben geben eine), (3) bis (5) drei Mutanten zur Übernahme eines Produkts mit gleichem Handle («FEHLER ohne VERSUCH», «im Verkaufskanal», «fremde SKU»): die Test-Fremdprodukte trugen den falschen Titel `Fremd`, darum scheiterte die Übernahme immer am Titel und jede einzelne Prüfung blieb ungetestet; jetzt weicht jedes Fremdprodukt nur in dem einen geprüften Punkt ab. Der sechste («Lieferbox nennt wieder Printful») war nur ein Muster, das zweimal im Code stand (Kommentar und Text): Muster eindeutig gemacht.
+- **Zweiter, voller Lauf nach den Reparaturen: 143 von 143 erkannt, 0 überlebt, 0 nicht anwendbar.**
+- Seit der ersten Fassung sind zu den alten Mutanten rund 48 neue gekommen (Lieferzeit, Rate-Variante, Wiederherstellung nach verlorener Antwort, Sperre, Alter der Eingaben, Kategorien, Versandmessung, Bildmessung, Superlative, Farbrang), veraltete wurden entfernt.
+- `NUR=teil1|teil2` fährt nur Mutanten, deren Name einen der Teile enthält.
