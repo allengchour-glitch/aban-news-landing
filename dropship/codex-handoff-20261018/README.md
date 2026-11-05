@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 05.11.2026, Revision 95: zwei weitere Produkt-SEO-Fälle live korrigiert
+
+[R95-Live-Bericht](PRODUKT-SEO-LIVE-20261105-R95.md) · [R95-Belege](PRODUKT-SEO-LIVE-20261105-R95.json). Shopify LuxeStyle / `luxestyle.ch` / CHF / Schweiz wurde passend gelesen. Der Lauf korrigierte genau zwei ACTIVE-Produkte und ist kein Katalogabschluss.
+
+Produkt `16615274611079` erhielt den neutralen Titel «Tennisarmband mit dekorativem Besatz», einen auf Weiss/Gold und 6,5–8 Zoll begrenzten Body, passende SEO-Felder und sieben bildbezogene Alttexte. Unbelegte Stein-, Material-, Beschichtungs-, Mass-, Gewichts-, Anlass- und Lieferzeitangaben wurden entfernt. Produkt `15450837188993` erhielt den Titel «Runder Gemüseschneider mit Handkurbel», einen auf sichtbare Bedienung, Farbvarianten und ausdrücklich nur abgebildete Trommeln/Schnittbilder begrenzten Body, passende SEO-Felder und zwölf Alttexte. Unbelegte Material-, Leistungs-, Reinigungs-, Sicherheits-, Lieferumfangs-, Lieferzeit- und Rabattangaben wurden entfernt.
+
+Je Produkt gab es genau einen kombinierten `productUpdate`-/`fileUpdate`-Versuch, ohne `userErrors` oder Retry. Vollständige Admin-Gegenproben und je zwei öffentliche HTML-/Produkt-JSON-Lesungen bestätigten final 12/12 Checks pro Produkt. Shopifys SEO-Spiegel `global.title_tag` und `global.description_tag` änderten sich erwartungsgemäss; sämtliche übrigen geschützten Felder blieben gleich.
+
+Das Armband behielt acht Varianten zu CHF 16.90–19.90, ungetracktes `CONTINUE`, sieben READY-Bilder und sechs Publikationen. Der Gemüseschneider behielt drei Varianten zu je CHF 39.90, getracktes `CONTINUE`, zwölf READY-Bilder, acht Publikationen und `rueckhol-0907`; Social bleibt blockiert. Beide alten Handles bleiben für einen getrennten redirect-sicheren Lauf offen. Keine Lager-/Lieferzusage und keine anderen Social-, Metricool-, Merchant-, Theme-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderwrites.
+
 ## Aktueller Stand – 05.11.2026, Revision 94: zwei Produkt-SEO-Fälle live korrigiert
 
 [R94-Live-Bericht](PRODUKT-SEO-LIVE-20261105-R94.md) · [R94-Belege](PRODUKT-SEO-LIVE-20261105-R94.json). Shopify LuxeStyle / `luxestyle.ch` / CHF / Schweiz wurde passend gelesen. Der Lauf korrigierte genau zwei ACTIVE-Hundepullover und ist kein Katalogabschluss.

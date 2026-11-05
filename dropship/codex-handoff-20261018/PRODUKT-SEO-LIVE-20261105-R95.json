@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R95_20261105",
+  "revision": 95,
+  "at": "2026-11-05T16:48:08+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Exactly two ACTIVE Shopify products; title, descriptionHtml, SEO title/description and existing READY image alt text only.",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "timezone": "CET",
+    "identityMatched": true
+  },
+  "taskId": "product-attribute-completeness",
+  "products": [
+    {
+      "productId": "gid://shopify/Product/16615274611079",
+      "publicUrl": "https://luxestyle.ch/products/dreifachklinken-tennisarmband-mit-zirkon-613400",
+      "status": "ACTIVE",
+      "handle": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+      "before": {
+        "title": "Dreifachklinken-Tennisarmband mit Zirkon",
+        "seoTitle": "Dreifachklinken-Tennisarmband mit Zirkon | LuxeStyle CH",
+        "seoDescription": "Für den täglichen Büroalltag oder besondere Anlässe. 3 Claws Design.",
+        "descriptionHtml": "<p>Für den täglichen Büroalltag oder besondere Anlässe.</p><p>Das Armband ist aus Kupfer mit echter Goldplattierung gefertigt und verfügt über Zirkon-Einlagen. Es ist 7 Zoll (17,8 cm) lang und hat eine Breite von 4 mm. Die Farben sind weiss und gold.</p><h3>Das zeichnet es aus</h3><ul>\n<li>3 Claws Design</li>\n<li>Zirkon-Einlagen</li>\n<li>Goldplattierung</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Metall</li>\n<li>\n<strong>Gewicht:</strong> ca. 15 g</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/premium-schmuck\">Schmuck &amp; Uhren</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "imageAltTexts": [
+          "Dreifachklinken-Tennisarmband mit Zirkon – Bild 5 | LuxeStyle",
+          "Dreifachklinken-Tennisarmband mit Zirkon | LuxeStyle",
+          "Dreifachklinken-Tennisarmband mit Zirkon – Bild 2 | LuxeStyle",
+          "Dreifachklinken-Tennisarmband mit Zirkon – Bild 3 | LuxeStyle",
+          "Dreifachklinken-Tennisarmband mit Zirkon – Bild 4 | LuxeStyle",
+          "Dreifachklinken-Tennisarmband mit Zirkon – Bild 6 | LuxeStyle",
+          "Dreifachklinken-Tennisarmband mit Zirkon – Bild 7 | LuxeStyle"
+        ],
+        "publicHtmlSha256": "a3f59be4949fdb24fcf937f7c29e49c4fdf4e383c95b7a0679d46a79aed45d8b",
+        "publicProductJsonSha256": "5d13d439ea33e67e77e165c9a3a384fe2098b77608b4366724e907960e005caa"
+      },
+      "after": {
+        "title": "Tennisarmband mit dekorativem Besatz",
+        "seoTitle": "Tennisarmband mit dekorativem Besatz | LuxeStyle",
+        "seoDescription": "Tennisarmband mit dekorativem Besatz in Weiss oder Gold. Wähle 6,5, 7, 7,5 oder 8 Zoll bei LuxeStyle Schweiz.",
+        "descriptionHtml": "<!-- ls-seo-r95 --><p>Dieses Tennisarmband zeigt eine durchgehende Reihe runder dekorativer Schmuckelemente. Es ist in Weiss oder Gold sowie in vier Längen erhältlich.</p><h3>Farbe und Länge wählen</h3><ul>\n<li>Farbvarianten: Weiss oder Gold</li>\n<li>Längen: 6,5, 7, 7,5 oder 8 Zoll</li>\n<li>Design: durchgehender dekorativer Besatz</li>\n</ul><p>Prüfe vor dem Kauf die gewählte Farbe, Länge, das Variantenbild und den angezeigten Preis.</p><!-- /ls-seo-r95 -->",
+        "imageAltTexts": [
+          "Tennisarmbänder in Weiss und Gold auf hellem Schmuckdisplay",
+          "Tennisarmband in Weiss mit rundem dekorativem Besatz, Frontansicht",
+          "Tennisarmband in Weiss mit sichtbarem Verschluss, Schrägansicht",
+          "Tennisarmband in Weiss am Handgelenk",
+          "Tennisarmband in Gold mit rundem dekorativem Besatz, Frontansicht",
+          "Tennisarmband in Gold mit sichtbarem Verschluss, Schrägansicht",
+          "Tennisarmbänder in Gold und Weiss im direkten Farbvergleich"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Tennisarmband mit dekorativem Besatz | LuxeStyle",
+        "publicH1": "Tennisarmband mit dekorativem Besatz",
+        "canonical": "https://luxestyle.ch/products/dreifachklinken-tennisarmband-mit-zirkon-613400",
+        "publicHtmlSha256": "a8aaef266bb8ee2973581de127afd0021ffdeb66bf55182a82f90a0ddaa220e1",
+        "publicProductJsonSha256": "9383919790be0451f71862cd4389bbf2aee74d0fdecd564b39b812e4122e3594",
+        "publicDescriptionSha256": "d331de72ac8cc1564c815d84993331dd46ffd50fbf48ead6b0e8f27d843ed628",
+        "finalQaChecksPassed": 12,
+        "finalQaChecksTotal": 12
+      },
+      "write": {
+        "combinedAttempts": 1,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "zircon/zirconia stone identity",
+        "copper",
+        "real gold plating",
+        "4 mm width",
+        "15 g weight",
+        "single 7 inch / 17.8 cm size",
+        "office or occasion suitability",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "variantCount": 8,
+        "priceRangeCHF": [
+          "16.90",
+          "19.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 6,
+        "readyImageCount": 7,
+        "allImagesReady": true,
+        "tags": [
+          "armband",
+          "auswahl-nachgeruestet",
+          "cj-real",
+          "damen",
+          "dropship",
+          "geschenk",
+          "kategorie-armband",
+          "mengenrabatt-b",
+          "neuheit",
+          "schmuck",
+          "sort-armbaender",
+          "sort-gliederarmbaender",
+          "sort-schmuck",
+          "sort-zirkonia-strassarmbaender"
+        ],
+        "diffAllowedOnly": true
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15450837188993",
+      "publicUrl": "https://luxestyle.ch/products/multifunktionaler-runder-gemuseschneider-be2e21",
+      "status": "ACTIVE",
+      "handle": "multifunktionaler-runder-gemuseschneider-be2e21",
+      "before": {
+        "title": "Multifunktionaler runder Gemüseschneider",
+        "seoTitle": "Multifunktionaler runder Gemüseschneider | LuxeStyle CH",
+        "seoDescription": "Multifunktionaler runder Gemüseschneider bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+        "descriptionHtml": "<p>Der multifunktionale Gemüseschneider ist ein praktisches Küchengerät, das dir hilft, Gemüse, Kartoffeln und Käse mühelos zu schneiden. Dieses vielseitige Tool vereinfacht die Zubereitung deiner Mahlzeiten und spart dir wertvolle Zeit in der Küche. Dank seines durchdachten Designs ist er einfach zu handhaben und zu reinigen. Ein Must-have für jede moderne Küche, das sowohl Funktionalität als auch Effizienz bietet.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Hergestellt aus robustem ABS, PC und 430 Edelstahl</li>\n<li>Vielseitig einsetzbar für Gemüse, Kartoffeln und Käse</li>\n<li>Erhältlich in den Farben Blau, Grün oder Rot</li>\n<li>Kompaktes Design für einfache Handhabung und Lagerung</li>\n<li>Ideal für den täglichen Gebrauch in der Küche</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "imageAltTexts": [
+          "Multifunktionaler runder Gemüseschneider – Bild 1 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 2 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 3 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 4 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 5 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 6 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 7 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 8 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 9 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 10 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 11 | LuxeStyle",
+          "Multifunktionaler runder Gemüseschneider – Bild 12 | LuxeStyle"
+        ],
+        "publicHtmlSha256": "bf45de0555423b3db96ce135ebfdc95c4f95832f8856d69b0f8df54d2614f48f",
+        "publicProductJsonSha256": "cafb38efeb8f21f47bdeab08b34e8077a64a5e54ae50b695b4faa76078f48151"
+      },
+      "after": {
+        "title": "Runder Gemüseschneider mit Handkurbel",
+        "seoTitle": "Gemüseschneider mit Handkurbel | LuxeStyle",
+        "seoDescription": "Runder Gemüseschneider mit Handkurbel in Rot, Blau oder Grün. Produktbilder und Farbvarianten bei LuxeStyle Schweiz ansehen.",
+        "descriptionHtml": "<!-- ls-seo-r95 --><p>Dieser runde Gemüseschneider wird mit einer Handkurbel bedient und ist in Rot, Blau oder Grün erhältlich. Die Produktbilder zeigen das Gerät beim Reiben und Schneiden von Gemüse.</p><h3>Farbe wählen</h3><ul>\n<li>Farbvarianten: Rot, Blau oder Grün</li>\n<li>Bedienung: sichtbare Handkurbel und Drücker</li>\n<li>Abbildungen: unterschiedlich perforierte Trommeln und verschiedene Schnittbilder</li>\n</ul><p>Prüfe vor dem Kauf die gewählte Farbe, die Produktbilder und den ausgewiesenen Lieferumfang.</p><!-- /ls-seo-r95 -->",
+        "imageAltTexts": [
+          "Runder Gemüseschneider in Blau beim Reiben einer Karotte",
+          "Runder Gemüseschneider in Rot mit drei abgebildeten Trommeln",
+          "Runder Gemüseschneider in Blau mit drei abgebildeten Trommeln",
+          "Transparentes Bauteil des Gemüseschneiders in Detailansicht",
+          "Verschiedene abgebildete Schnittbilder von Gemüse",
+          "Runder Gemüseschneider in Blau mit Handkurbel und Trommeln",
+          "Runder Gemüseschneider in Blau mit feinem Schnittbild in einer Schüssel",
+          "Gemüseschneider in Blau mit Handkurbel, Drücker und eingesetzter Trommel",
+          "Gemüseschneider in Blau mit Trommeln und geschnittenem Gemüse",
+          "Gemüseschneider in Grün mit Trommeln und verschiedenen Schnittbildern",
+          "Drei unterschiedlich perforierte Trommeln mit abgebildeten Schnittbeispielen",
+          "Runder Gemüseschneider in Blau beim Schneiden einer Gurke"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Gemüseschneider mit Handkurbel | LuxeStyle",
+        "publicH1": "Runder Gemüseschneider mit Handkurbel",
+        "canonical": "https://luxestyle.ch/products/multifunktionaler-runder-gemuseschneider-be2e21",
+        "publicHtmlSha256": "da84fc82cb4628eea574dea7ee6a1a6cabea0e16570723e57ab383fdb9fe7599",
+        "publicProductJsonSha256": "dc5c11f3e71119313660bb2cb46f308de3bf42e45a31e3bd6539c301d49b152d",
+        "publicDescriptionSha256": "20074e4966971b4dc42dc4ca6b4f68066f83dbe5fedd932f18146a4416a4d9d9",
+        "finalQaChecksPassed": 12,
+        "finalQaChecksTotal": 12
+      },
+      "write": {
+        "combinedAttempts": 1,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "ABS",
+        "PC",
+        "430 stainless steel",
+        "effortless operation",
+        "time saving",
+        "easy cleaning",
+        "absolute safety claims",
+        "guaranteed food compatibility beyond pictured vegetables",
+        "specified included drums",
+        "compact storage",
+        "fixed 10–20 working-day delivery",
+        "WELCOME10 discount copy"
+      ],
+      "protected": {
+        "variantCount": 3,
+        "priceRangeCHF": [
+          "39.90",
+          "39.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTrackedValues": [
+          true
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 8,
+        "readyImageCount": 12,
+        "allImagesReady": true,
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "gemueseschneider",
+          "gfeed-anstupsen-260929",
+          "hype-jetzt",
+          "kunden-liebling",
+          "mengenrabatt-a",
+          "neu",
+          "rueckhol-0907",
+          "sort-kuechenhelfer",
+          "sort-schneiden-gemuesehobel",
+          "sort-schneiden-reiben-schaelen",
+          "trend",
+          "video-hit",
+          "viral"
+        ],
+        "diffAllowedOnly": true
+      }
+    }
+  ],
+  "writeSummary": {
+    "combinedProductUpdateAndFileUpdateAttempts": 2,
+    "mutationRetries": 0,
+    "productUserErrors": [],
+    "fileUserErrors": [],
+    "completeAdminProductReadbacks": 4,
+    "publicHtmlReadbacksHttp200": 4,
+    "publicProductJsonReadbacksHttp200": 4,
+    "finalQaChecksPassed": 24,
+    "finalQaChecksTotal": 24
+  },
+  "seoMirrorMetafieldsChangedAsExpected": [
+    "global.title_tag",
+    "global.description_tag"
+  ],
+  "unchangedFields": [
+    "product IDs",
+    "handles",
+    "status",
+    "vendor",
+    "product type",
+    "categories",
+    "tags",
+    "options",
+    "variant IDs",
+    "SKUs",
+    "barcodes",
+    "CHF prices",
+    "availability",
+    "inventory quantities",
+    "inventory tracking",
+    "inventory policy",
+    "media IDs",
+    "media URLs",
+    "variant-media bindings",
+    "publications"
+  ],
+  "openItems": [
+    "Both legacy handles remain unchanged and need a separate redirect-safe review.",
+    "Product 15450837188993 retains rueckhol-0907; new social publication remains blocked.",
+    "The catalogue remains open; this is a two-product batch, not a catalogue-wide completion.",
+    "Shopify availability and inventory values are not supplier-stock or delivery-time evidence."
+  ],
+  "otherWrites": {
+    "social": 0,
+    "metricool": 0,
+    "merchantFeed": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "discount": 0,
+    "shipping": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0
+  },
+  "independentEvidence": {
+    "publicReportPath": "/workspace/luxestyle-review/r95-public-seo/REPORT.md",
+    "publicReportSha256": "17b75b6a6652a6ac0f27fa3757faa5d43a7cddeef254924ce094132f8371a01c",
+    "braceletContactSheetPath": "/workspace/luxestyle-review/r95-image-audit/bracelet-sheet.jpg",
+    "braceletContactSheetSha256": "35824191fbf04122f282e8dcb9d073dfd77cbf2d73283339980157d7afbd33d6",
+    "slicerContactSheetPath": "/workspace/luxestyle-review/r95-image-audit/slicer-sheet.jpg",
+    "slicerContactSheetSha256": "8850fd2ec0332dcc47fa3ae9a70ef9e0e1a973198001a6a1f98082da035f8f0a"
+  },
+  "documentationBaselineSha256": {
+    "README.md": "1389877c234d963e77f8473758b00be84095689acf30d26b851d0e1852699bbf",
+    "PROJEKTGEDAECHTNIS.md": "287908e4c21f28e93e35ac379c597dcc28edd536cac00179d1969c9222805c4d",
+    "TAGESPROTOKOLL.md": "1a8aa24542f3fcb1b4abec9378a0c0017b97a7ac4866574617666d1d81d127f0",
+    "ARBEITSSTAND.json": "a8727d6df7f862b85ed671f6758624d2f90d2f3722bb8f8116835aaf2b205dae"
+  }
+}
