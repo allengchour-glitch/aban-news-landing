@@ -1441,3 +1441,9 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – Fotoformat freigegeben und ein Threads-Termin bestätigt, Revision 39
 
 [R39-Fototermin](FOTO-WOCHENENTWURF-20261101-R39.md): ein eigener neuer Threads-Post für 04.11., 18:30 Zürich nach zwei ausdrücklichen Inhaberantworten, genauer Produkt-, Bild- und Kanalprüfung und dauerhafter enger Register-Initialisierung. ID 413194611 / UUID -1937081137064819378, nur Threads PENDING, Original-JPEG-SHA identisch. Sieben bestehende FB-/IG-Termine erhalten; Film und übrige Kanalblocker separat. 16 IDs, Historien, Tagesgrenzen und R37/R5 erhalten.
+
+## 05.11.2026 – R100 CSV-Produktbeschreibungen
+
+[Zwei BRUDER-Spielsets aus dem neuen Merchant-CSV live korrigiert](PRODUKT-SEO-LIVE-20261105-R100.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R100.json). Die CSV liefert nur das fehlende Feld Mindestalter, keinen Wert. Artikelnummer, GTIN und Bilder wurden deshalb gegen die offiziellen BRUDER-Seiten gebunden. Feuerwehrstation 62702 und UPS-Paketshop 62250 erhielten belegte Setinhalte und Herstellerempfehlung ab 4 Jahren; nur der UPS-Artikel erhielt den dort belegten Kleinteilehinweis. Zwei `productUpdate`, zwei `fileUpdate`, keine `userErrors` oder Retries; unabhängige QA 40/40, 2/2 GO und 8/8 Alttexte. Produkt-/Varianten-/Preis-/Inventar-/Medien-/Publikationszustände geschützt.
+
+CSV-Teilumfang: 2 von 29 eindeutig zuordenbaren Produkten bearbeitet; 27 plus eine nicht abbildbare Merchant-ID offen. 28 Zeilen sind als `fr` markiert, enthalten aber deutsche Texte; das bleibt ein separater Feed-/Sprachbefund. Google-Neuverarbeitung unbekannt. Strenger Livefortschritt 32/56’506 ACTIVE = 0,05663 %, gerundet 0,06 %; 56’474 beziehungsweise rund 99,94 % offen. Keine weiteren externen Writes oder Tagesreport-Wiederholung.

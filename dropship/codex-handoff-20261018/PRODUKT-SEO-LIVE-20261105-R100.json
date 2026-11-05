@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "luxestyle-product-seo-live-r100-v1",
+  "run": "R100",
+  "at": "2026-11-05T20:02:52+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "timezoneReported": "CET"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "writes": 0
+    }
+  },
+  "csv": {
+    "path": "/workspace/attachments/f887d14b-9939-46a6-8faf-c4cfc2c199b0/Update product descriptions to include details customers are looking for_2026-11-05_09-01-18.csv",
+    "sha256": "d86aac4e7e6b08a755260905596c739a02974efcb27c0d0e8d155b07eb8347ec",
+    "rows": 32,
+    "uniqueShopifyProducts": 29,
+    "limitation": "The CSV requests age details but supplies no age value.",
+    "languageObservation": "28 rows marked fr contain German descriptions",
+    "unsafeClaimsObserved": [
+      "WELCOME10 in 24 rows",
+      "delivery/return/development claims without supplied evidence"
+    ],
+    "uniqueProductsChangedThisRun": 2,
+    "remainingUniqueMappedProducts": 27,
+    "unmappedRows": 1
+  },
+  "writes": {
+    "productUpdateAttempts": 2,
+    "fileUpdateAttempts": 2,
+    "userErrors": 0,
+    "retries": 0,
+    "altsUpdated": 8
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15470017380737",
+      "legacyResourceId": "15470017380737",
+      "handle": "bruder-bworld-feuerwehrstation-fga062702",
+      "url": "https://luxestyle.ch/products/bruder-bworld-feuerwehrstation-fga062702",
+      "beforeTitle": "BRUDER bworld Feuerwehrstation",
+      "afterTitle": "BRUDER bworld Feuerwehrstation mit Feuerwehrmann",
+      "status": "ACTIVE",
+      "seo": {
+        "title": "BRUDER bworld Feuerwehrstation ab 4 Jahren | LuxeStyle",
+        "description": "BRUDER bworld Feuerwehrstation mit Feuerwehrmann, Leitstelle, Treppe und Zubehör. Herstellerempfehlung ab 4 Jahren. Bei LuxeStyle entdecken."
+      },
+      "manufacturerSource": {
+        "url": "https://www.bruder.de/shop/de/bworld-feuerwehrstation-mit-feuerwehrmann/62702",
+        "articleNumber": "62702",
+        "gtin13": "4001702627027",
+        "ageRecommendation": "ab 4 Jahren",
+        "scrapeId": "01a1ad0d-28d9-70bf-8204-ae344ce05b14"
+      },
+      "variantCount": 1,
+      "mediaCount": 4,
+      "altCount": 4,
+      "publicationCount": 7,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55970882519425",
+          "sku": "fortura-062702",
+          "barcodes": [
+            {
+              "value": "4001702627027",
+              "type": null
+            }
+          ],
+          "priceChf": "47.90",
+          "availableForSale": true,
+          "inventoryQuantity": 18,
+          "sellableOnlineQuantity": 18,
+          "tracked": true,
+          "inventoryPolicy": "DENY"
+        }
+      ],
+      "publicEvidence": {
+        "htmlSha256": "c1f0e597a0536647abe6f7bfc66cdc190e11747cb4d7df8e527a225909b5ebb5",
+        "productJsonSha256": "0ad80fc6d4f28deda836cd5927ba30c4dde3bb4e15c6cd3b48ec184fb3e17e8b",
+        "httpHtml": 200,
+        "httpProductJson": 200
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15470032945537",
+      "legacyResourceId": "15470032945537",
+      "handle": "bruder-bworld-ups-paketshop-fga062250",
+      "url": "https://luxestyle.ch/products/bruder-bworld-ups-paketshop-fga062250",
+      "beforeTitle": "BRUDER bworld UPS Paketshop",
+      "afterTitle": "BRUDER bworld UPS Paketshop mit Figur",
+      "status": "ACTIVE",
+      "seo": {
+        "title": "BRUDER bworld UPS Paketshop ab 4 Jahren | LuxeStyle",
+        "description": "BRUDER bworld UPS Paketshop mit Figur, Tresen, Waage, Regalen und Paketen. Herstellerempfehlung ab 4 Jahren. Bei LuxeStyle entdecken."
+      },
+      "manufacturerSource": {
+        "url": "https://www.bruder.de/shop/de/bworld-ups-paketshop-mit-figur/62250",
+        "articleNumber": "62250",
+        "gtin13": "4001702622503",
+        "ageRecommendation": "ab 4 Jahren",
+        "safetyWarning": "Achtung! Nicht für Kinder unter 36 Monaten geeignet. Erstickungsgefahr wegen verschluckbarer Kleinteile.",
+        "scrapeId": "01a1ad0d-2956-731c-8e02-ba905017dcc3"
+      },
+      "variantCount": 1,
+      "mediaCount": 4,
+      "altCount": 4,
+      "publicationCount": 7,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55970906145153",
+          "sku": "fortura-062250",
+          "barcodes": [
+            {
+              "value": "4001702622503",
+              "type": null
+            }
+          ],
+          "priceChf": "32.90",
+          "availableForSale": true,
+          "inventoryQuantity": 49,
+          "sellableOnlineQuantity": 49,
+          "tracked": true,
+          "inventoryPolicy": "DENY"
+        }
+      ],
+      "publicEvidence": {
+        "htmlSha256": "4530a28a66513473fec82716dd3c0c52975492dc302e1c45aa37e84de4a5d88f",
+        "productJsonSha256": "c1926803a6cd65c8a6e06524e712ee7fc83132738c8435efabefc627aa1b96cf",
+        "httpHtml": 200,
+        "httpProductJson": 200
+      }
+    }
+  ],
+  "qa": {
+    "passed": 40,
+    "total": 40,
+    "productsGo": 2,
+    "productsTotal": 2,
+    "altsExact": 8,
+    "decision": "GO",
+    "reportSha256": "6ce75a410fbd606e2851657e7ba6883802463370784a4510d7b090f47ee01a1d",
+    "prewriteReportSha256": "b2991174dcc071ca81db366eae08a1c010d7af8cd582cd03d4d0be6414f407de"
+  },
+  "protected": {
+    "unchanged": [
+      "product IDs",
+      "handles",
+      "status",
+      "vendor",
+      "product type",
+      "category",
+      "tags",
+      "options",
+      "variant IDs",
+      "SKUs",
+      "barcodes",
+      "CHF prices",
+      "availability",
+      "inventory quantities",
+      "tracking",
+      "inventory policy",
+      "media IDs",
+      "media URLs",
+      "media order",
+      "variant-media bindings",
+      "publications",
+      "non-SEO review facts"
+    ],
+    "expectedMirrors": [
+      "global.title_tag",
+      "global.description_tag",
+      "variant displayName mirrors title",
+      "Judge.me product title/image/locale mirrors while review count/rating remain 0"
+    ]
+  },
+  "catalogProgress": {
+    "strictlyVerifiedActiveProducts": 32,
+    "activeProductsExact": 56506,
+    "allProductsExact": 87774,
+    "percent": 0.05663115421371182,
+    "roundedPercent": "0.06%",
+    "openActiveProducts": 56474,
+    "openRoundedPercent": "99.94%",
+    "historicalQueueScanIsNotLiveQualityRate": true
+  },
+  "blockedCandidate": {
+    "productId": "gid://shopify/Product/15470033633665",
+    "reason": "The guessed current manufacturer URL returned HTTP 404; no age claim or product write.",
+    "scrapeId": "01a1ad0d-2b07-7539-9500-e663933ef2af"
+  },
+  "limits": [
+    "Shopify product data is fixed for the two exact products; Google Merchant diagnostic clearance is pending a future recrawl.",
+    "The CSV is not a source for age values; only official manufacturer pages were used.",
+    "No bulk change was run. The remaining 27 mapped unique products need the same exact source mapping and readback procedure.",
+    "No inventory or delivery promise was added."
+  ],
+  "externalWrites": {
+    "shopifyProductText": 2,
+    "shopifyFileAltBatches": 2,
+    "metricool": 0,
+    "merchant": 0,
+    "theme": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "ads": 0,
+    "social": 0
+  }
+}

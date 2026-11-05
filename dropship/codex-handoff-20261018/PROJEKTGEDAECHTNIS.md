@@ -845,3 +845,13 @@ Nächster Schritt: Frische kanonische Dateien und R4 im tatsächlichen Claude-Co
 ## 01.11.2026 – Fotoformat freigegeben und ein Threads-Termin bestätigt, Revision 39
 
 [R39-Fototermin](FOTO-WOCHENENTWURF-20261101-R39.md): ein eigener neuer Threads-Post für 04.11., 18:30 Zürich nach zwei ausdrücklichen Inhaberantworten, genauer Produkt-, Bild- und Kanalprüfung und dauerhafter enger Register-Initialisierung. ID 413194611 / UUID -1937081137064819378, nur Threads PENDING, Original-JPEG-SHA identisch. Sieben bestehende FB-/IG-Termine erhalten; Film und übrige Kanalblocker separat. 16 IDs, Historien, Tagesgrenzen und R37/R5 erhalten.
+
+## 05.11.2026 – R100 CSV-Mindestalter, Revision 100
+
+Der neue CSV-Export hat 32 Datenzeilen, 29 eindeutige Shopify-Produkte und eine nicht sicher abbildbare Merchant-ID. Er fordert nur «Mindestalter»/«Âge», liefert keinen Wert. 28 als Französisch markierte Zeilen enthalten deutsche Beschreibungen, 24 enthalten `WELCOME10`; die Datei ist Kandidatenliste, kein Sachbeleg.
+
+Zwei exakte Produkte wurden über offizielle BRUDER-Artikelnummer, GTIN und visuell passende Bilder verifiziert und live korrigiert: Feuerwehrstation 62702 / Shopify 15470017380737 und UPS-Paketshop 62250 / Shopify 15470032945537. Beide erhielten belegte Setinhalte und Herstellerempfehlung ab 4 Jahren. Der Kleinteilehinweis wurde nur beim UPS-Artikel übernommen, weil er dort offiziell belegt ist. Alte Liefer-, Rabatt-, Rückgabe-, Zahlungs- und Qualitätsclaims wurden aus den Produkttexten/SEO-Feldern entfernt; der globale Theme-Banner blieb unverändert. Acht vorhandene READY-Bild-Alttexte wurden bildbezogen verbessert.
+
+Vier seriell gesendete Mutationen, keine `userErrors` oder Retries. Nach jedem Produkt vollständiger Admin- und öffentlicher HTTP-200-Readback; gemeinsame Schluss-QA 40/40, 2/2 GO, 8/8 Alttexte. Handles, Tags, Kategorie, Optionen, Varianten, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventar, Tracking, `DENY`, Medienstruktur/-bindungen und 14 Publikationsknoten blieben erhalten. Judge.me spiegelte nur Titel/Bild/Locale bei unverändert null Reviews/null Durchschnitt.
+
+Strenger Livefortschritt 32/56’506 ACTIVE = 0,05663 %, gerundet 0,06 %; 56’474 beziehungsweise rund 99,94 % offen. Im CSV-Scope bleiben 27 zuordenbare Produkte und eine unbekannte ID. Ein dritter Herstellerkandidat blieb wegen HTTP 404 ohne Write. Merchant-Bereinigung erst nach Google-Neuverarbeitung bekannt; `fr`/Deutsch separat klären. [Bericht](PRODUKT-SEO-LIVE-20261105-R100.md) · [Belege](PRODUKT-SEO-LIVE-20261105-R100.json). Keine Metricool-/Merchant-/Theme-/Flow-/DNS-/Budget-/Rabatt-/Versand-/Kunden-/Bestell-/Renderänderung und keine Tagesreport-Wiederholung.
