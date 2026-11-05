@@ -1,0 +1,124 @@
+/**
+ * Preisformel für ALLE «Selbst gestalten»-Modelle (Printful). Rein: kein Netz, keine Dateien. Aufgabe B (05.11.2026).
+ *
+ * Ziel: nie Verlust, runde X.90-Preise wie im Shop, Aufpreis je Platzierung/Technik 1:1 weitergeben.
+ *
+ * Eingabe (alles USD, direkt aus Printful):
+ *   ekUsd       Katalogpreis der Variante (GET /products/variant/<id> → variant.price)
+ *   versandUsd  Versand nach CH 8001, Versandart STANDARD, 1 Stück (POST /shipping/rates), je Variante gemessen
+ *   aufpreisUsd Summe der Zusatzplatzierungen/Techniken (GET /products/<id> → files[].additional_price, z. B. Rückseite 5.95, Ärmel 2.49, Stickerei 2.95), Vorgabe 0
+ *
+ * Rechnung (in Rappen, ganze Zahlen):
+ *   Kosten      K = round((ek + versand + aufpreis) × kurs)                         Printful-Ware, Printful-Versand, Aufpreis
+ *   Netto(P)    = P / (1 + MWST) − Gebühr(P) − K                                    P = Endpreis inkl. MWST, Gebühr = 3.4 % × P + 0.30
+ *   Kostenpreis = kleinstes P mit Netto(P) ≥ nettoMin                                (Kunde zahlt KEINEN Versand eingerechnet: Worst Case)
+ *   Richtwert   = max(ek × kurs × faktor, ek × kurs + aufschlagFix) + aufpreis 1:1   (Marktlage wie bisher: 2.3 × Einkauf, mindestens +12)
+ *   Endpreis    = kleinster Wert X.90 mit P ≥ max(Kostenpreis, Richtwert)
+ *
+ * Aufpreise werden NICHT mit dem Faktor multipliziert: sie gehen nur mit Umrechnung, MWST und Zahlungsgebühr ein (1:1).
+ *
+ * SETZUNGEN (vom Besitzer zu bestätigen, keine Messwerte): kurs 0.90 (Praxis von pod_preise.mjs/printful_reprice.mjs; der Messkurs des Repos ist 0.82435, der Abstand ist
+ * der Sicherheitspuffer für Kursbewegung und Kartenaufschlag), nettoMin 4.00, faktor 2.3, aufschlagFix 12.
+ * MESSWERTE: MWST 8.1 % (Preise im Shop sind Endpreise, taxesIncluded = true), Gebühr 3.4 % + 0.30 (Repo: pod_preise.mjs), Printful berechnet bei Lieferung nach CH 8.1 % Steuer auf
+ * Ware + Versand (POST /orders/estimate-costs, 05.11.2026): sie ist in `kosten` NICHT enthalten, weil sie bei einem MWST-pflichtigen Shop als Vorsteuer neutral ist (siehe README der Messung).
+ *
+ * Grundsatz des Repos: Unbekanntes bleibt UNBEKANNT. Fehlender Versand, negative oder nicht endliche Zahlen werfen einen Fehler, es gibt nie einen geratenen Preis.
+ */
+
+export const REGEL = Object.freeze({
+  kurs: 0.90,              // USD → CHF für die KOSTEN (Setzung, Puffer über dem Messkurs)
+  kursMess: 0.82435,       // USD → CHF laut Repo (grind_preis.mjs, cj_fracht.mjs); nur für Prüfungen «was bleibt beim Messkurs»
+  mwst: 0.081,             // Schweizer MWST, im Endpreis enthalten
+  gebuehrProzent: 0.034,   // Zahlungsgebühr, Anteil vom Endpreis
+  gebuehrFix: 0.30,        // Zahlungsgebühr fest (CHF)
+  nettoMin: 4.00,          // Mindestgewinn je Verkauf (CHF) nach MWST, Gebühr, Printful-Ware und -Versand, OHNE Kundenversand
+  faktor: 2.3,             // Richtwert: Einkauf × Faktor …
+  aufschlagFix: 12,        // … oder Einkauf + Aufschlag (CHF), je nachdem, was höher ist
+  kundenVersand: 7,        // der Shop erhebt CHF 7 unter CHF 50 Warenwert (nach Rabatt); wird für den Endpreis NICHT angerechnet
+  gratisAb: 50,
+  maxPreis: null,          // null = keine Obergrenze; sonst `ueberMax: true` in der Antwort (nie ein gekappter, zu tiefer Preis)
+});
+
+const EPS = 1e-9;
+const rp = (chf) => Math.round(chf * 100 + EPS);
+export const chfVonRp = (r) => Math.round(r) / 100;
+
+function zahl(name, x, erlaubtNull = false) {
+  if (typeof x !== 'number' || !Number.isFinite(x) || x < 0 || (!erlaubtNull && x === 0)) {
+    throw new TypeError(`preisformel: ${name} muss eine ${erlaubtNull ? 'nicht negative' : 'positive'} Zahl sein (war: ${JSON.stringify(x)})`);
+  }
+  return x;
+}
+
+/** USD → Rappen (CHF) mit dem Kurs der Regel. */
+export function usdZuRp(usd, kurs = REGEL.kurs) { return Math.round(zahl('USD-Betrag', usd, true) * 100 * kurs + EPS); }
+
+/** Zahlungsgebühr in Rappen auf einen Endpreis in Rappen. */
+export function gebuehrRp(preisRp, regel = REGEL) { return Math.round(preisRp * regel.gebuehrProzent + EPS) + Math.round(regel.gebuehrFix * 100); }
+
+/** Kosten in Rappen: Printful-Ware + Versand + Aufpreis (je Posten einzeln auf Rappen gerundet, damit die Rechnung von Hand nachvollziehbar bleibt). */
+export function kostenRp({ ekUsd, versandUsd, aufpreisUsd = 0 }, kurs = REGEL.kurs) {
+  zahl('ekUsd', ekUsd); zahl('versandUsd', versandUsd, true); zahl('aufpreisUsd', aufpreisUsd, true);
+  return usdZuRp(ekUsd, kurs) + usdZuRp(versandUsd, kurs) + usdZuRp(aufpreisUsd, kurs);
+}
+
+/** Netto in Rappen (Dezimalzahl, nicht gerundet) bei Endpreis P (Rappen): P/(1+MWST) − Gebühr − Kosten. Kunde zahlt keinen Versand. */
+export function nettoRp(preisRp, kostenRpWert, regel = REGEL) { return preisRp / (1 + regel.mwst) - gebuehrRp(preisRp, regel) - kostenRpWert; }
+
+/** Kleinster Endpreis in Rappen (beliebig, nicht gerundet auf X.90) mit Netto ≥ nettoMin. Die Gebühr ist treppenförmig, darum wird der Anfangswert erst nach unten gesichert und dann geprüft. */
+export function kostenpreisRp(kostenRpWert, regel = REGEL) {
+  const ziel = kostenRpWert + Math.round(regel.nettoMin * 100);
+  let p = Math.floor((ziel + Math.round(regel.gebuehrFix * 100)) / (1 / (1 + regel.mwst) - regel.gebuehrProzent)) - 3;   // knapp darunter beginnen
+  if (p < 0) p = 0;
+  while (nettoRp(p, kostenRpWert, regel) + EPS < Math.round(regel.nettoMin * 100)) p++;
+  return p;
+}
+
+/** Richtwert in Rappen (Dezimalzahl): max(Einkauf × Faktor, Einkauf + Aufschlag), dazu der Aufpreis 1:1 (mit MWST und Gebühr aufgerechnet, nicht mit dem Faktor multipliziert). */
+export function richtwertRp({ ekUsd, aufpreisUsd = 0 }, regel = REGEL) {
+  const ek = usdZuRp(ekUsd, regel.kurs);
+  const basis = Math.max(ek * regel.faktor, ek + regel.aufschlagFix * 100);
+  return basis + aufpreisAufgerechnetRp(aufpreisUsd, regel);
+}
+
+/** Der Aufpreis (USD) als Endpreis-Anteil in Rappen: Kosten in CHF, durch (1/(1+MWST) − Gebühr%) geteilt, damit MWST und Zahlungsgebühr den Aufpreis nicht auffressen. Dezimalzahl. */
+export function aufpreisAufgerechnetRp(aufpreisUsd, regel = REGEL) {
+  const k = usdZuRp(zahl('aufpreisUsd', aufpreisUsd, true), regel.kurs);
+  return k / (1 / (1 + regel.mwst) - regel.gebuehrProzent);
+}
+
+/** Aufpreis für den Kunden in CHF, aufgerundet auf 10 Rappen: das, was eine Platzierung/Technik mindestens kosten muss (1:1). Für die Anzeige («Rückseite +CHF 6.10»). */
+export function aufpreisChf(aufpreisUsd, regel = REGEL) {
+  return Math.ceil(aufpreisAufgerechnetRp(aufpreisUsd, regel) / 10 - EPS) / 10;
+}
+
+/**
+ * Endpreis einer Variante (CHF, X.90).
+ * @returns {{preisChf:number, bindend:'richtwert'|'kosten', kostenChf:number, nettoChf:number, nettoBeiMesskursChf:number, richtwertChf:number, kostenpreisChf:number, ueberMax:boolean}}
+ */
+export function endpreis({ ekUsd, versandUsd, aufpreisUsd = 0 }, regel = REGEL) {
+  const K = kostenRp({ ekUsd, versandUsd, aufpreisUsd }, regel.kurs);
+  const kp = kostenpreisRp(K, regel);
+  const rw = richtwertRp({ ekUsd, aufpreisUsd }, regel);
+  const soll = Math.max(kp, rw);
+  const k = Math.max(0, Math.ceil((soll - 90) / 100 - EPS));   // erster X.90, der `soll` erreicht: k·100 + 90 ≥ soll
+  const preis = k * 100 + 90;
+  const nettoMess = nettoRp(preis, kostenRp({ ekUsd, versandUsd, aufpreisUsd }, regel.kursMess), regel);
+  return {
+    preisChf: chfVonRp(preis), bindend: rw >= kp ? 'richtwert' : 'kosten', kostenChf: chfVonRp(K), nettoChf: chfVonRp(nettoRp(preis, K, regel)), nettoBeiMesskursChf: chfVonRp(nettoMess),
+    richtwertChf: chfVonRp(rw), kostenpreisChf: chfVonRp(kp), ueberMax: regel.maxPreis != null && preis > rp(regel.maxPreis),
+  };
+}
+
+/**
+ * Prüft einen vorhandenen Preis (CHF, inkl. MWST) gegen die Kosten, ohne ihn zu ändern. `kurs` wählbar (Vorgabe: Messkurs des Repos).
+ * marge  = Aufgabenvorgabe: Preis ohne MWST − Printful-Ware − Printful-Versand (CHF; Kunde zahlt keinen Versand, keine Zahlungsgebühr)
+ * netto  = marge − Zahlungsgebühr
+ * urteil: 'verlust' (marge < 0) · 'unter4' (marge < 4) · 'ok'
+ */
+export function pruefePreis({ preisChf, ekUsd, versandUsd, aufpreisUsd = 0 }, kurs = REGEL.kursMess, regel = REGEL) {
+  zahl('preisChf', preisChf);
+  const p = rp(preisChf), K = kostenRp({ ekUsd, versandUsd, aufpreisUsd }, kurs);
+  const marge = p / (1 + regel.mwst) - K, netto = marge - gebuehrRp(p, regel);
+  return { margeChf: chfVonRp(marge), nettoChf: chfVonRp(netto), urteil: marge < 0 ? 'verlust' : marge < 400 ? 'unter4' : 'ok' };
+}
