@@ -62,3 +62,24 @@ Anmeldung als Betreiber nötig; Klickweg: Link öffnen → «Indexierung beantra
 | 9 | gaming | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=mAfGTWzKy74cocr6f7IVXA&utm_medium=link&utm_source=api |
 | 10 | smartwatches | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=yJIQqbMdHtlBC2w5A8pp1A&utm_medium=link&utm_source=api |
 Reserve: luxestyle-premium https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Uy3N78BxfQWfN0gYTo4Jhw&utm_medium=link&utm_source=api · glaetteisen-locken-foehn https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=f9zdNlHMIB6KxBmHCcLfjA&utm_medium=link&utm_source=api
+
+## Messung 05.11.2026 ca. 20:25 UTC (inspect_urls, GEMESSEN; Besitzer meldete «indexiert ausser glaetteisen-locken-foehn»)
+- **Indexiert (letzter Abruf 05.11. 20:15 bis 20:16 UTC):** uhren, unter-chf-25, spielzeug-ch-lager, sub-ringe, herren-t-shirts, fitness-training, make-up, jacken-outdoor, gaming (9 von 10 der Liste) und die Reserve `luxestyle-premium` (20:20 UTC). Damit sind 10 von 12 Adressen indexiert, plus `damen-umhaengetaschen` seit 05.11. 02:18 UTC.
+- **Offen:** `glaetteisen-locken-foehn` («Gefunden – zurzeit nicht indexiert», nie gecrawlt; Seite gesund: HTTP 200, kein `noindex`, Canonical auf sich selbst, 1 502 309 Byte, in `sitemap_collections_2.xml`) und `smartwatches` («URL ist Google nicht bekannt»; Besitzer nannte die Seite nicht, Antrag unklar). Ursache bei `glaetteisen`: nicht belegt (Hypothese: Antrag noch nicht gestellt oder Google hat noch nicht abgerufen; `inspect_urls` hinkt um Stunden).
+- Direktlinks (Kennung ändert sich bei jeder Messung):
+  - glaetteisen-locken-foehn: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=1fgS_mTK8M9PXXns-4-FfQ&utm_medium=link&utm_source=api
+  - smartwatches: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=LdsIzvMiNOpP-KTOE0revA&utm_medium=link&utm_source=api
+
+### Nächste Liste (Kaufnähe: Geschenke, Winter; alle HTTP 200, kein `noindex`, unter 2 MiB, 28 Produktlinks im HTML; GEMESSEN 05.11. ca. 20:25 UTC)
+| # | Seite | Google-Stand | HTML (Byte) | Direktlink |
+|---|---|---|---|---|
+| 1 | uhren-damen | Gefunden – zurzeit nicht indexiert | 1 459 784 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=dF23pt-DgXXWhP4U7Z1UlQ&utm_medium=link&utm_source=api |
+| 2 | kopfhoerer-audio | URL ist Google nicht bekannt | 1 516 119 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=dKiNyfpE0lCswM0lYzQVAg&utm_medium=link&utm_source=api |
+| 3 | fitness-tracker-smartbands | Gefunden – zurzeit nicht indexiert | 1 567 726 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=vepUvsFV5cCq5zYbltQYPA&utm_medium=link&utm_source=api |
+| 4 | pc-gaming | Gefunden – zurzeit nicht indexiert | 1 531 327 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=uZOES43S-RPKnxPsSFHpuA&utm_medium=link&utm_source=api |
+| 5 | drohnen-kameras | Gefunden – zurzeit nicht indexiert | 1 516 820 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=5T_4919HJVVAgZ0lQp1tfg&utm_medium=link&utm_source=api |
+| 6 | westen-gilets | URL ist Google nicht bekannt | 1 708 003 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=UBePxfaE7g7mdvGi68MSkg&utm_medium=link&utm_source=api |
+| 7 | wandern-trekking | Gefunden – zurzeit nicht indexiert | 1 681 182 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=VJDwmynQvSQH2L8LpQg7sQ&utm_medium=link&utm_source=api |
+| 8 | babykleidung | Gefunden – zurzeit nicht indexiert | 1 706 183 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=nBqwFYYWklvZ17Yj6jWinw&utm_medium=link&utm_source=api |
+Reserve: auto-kfz-zubehoer (Gefunden – zurzeit nicht indexiert, 1 669 369 Byte) https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Vle3mcDEE5tk0pd7uWbJBA&utm_medium=link&utm_source=api
+Auswahl aus der Messdatei vom 02.11. (`index-analyse-0311/index_menue_0311.csv`, zwei Tage alt), frisch nachgemessen; bewusst nicht dabei: `haarstyling-geraete` (gleiches Thema wie `glaetteisen-locken-foehn`, zuerst diese Seite).
