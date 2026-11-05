@@ -8,6 +8,7 @@
 // ENV: PRINTFUL_API_KEY, PRINTFUL_STORE_ID (nie ausgeben) · OUT=<Ordner mit pf_varianten.json, pf_produkte.json, shop_preise.json> · DATEI=<öffentliche Bild-URL>
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { optionenAusFehler } from './kosten_schaetzung_alle.mjs';
 
 const OUT = process.env.OUT || './kosten_daten';
 const DATEI = process.env.DATEI || 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white.png?v=1781027029';
@@ -35,23 +36,34 @@ const proProdukt = {};
 for (const [vid, x] of Object.entries(c)) if (x.preisUsd != null) (proProdukt[x.produktId] ||= []).push(Number(vid));
 
 const schaetze = async (items) => {
-  const a = await pf('POST', '/orders/estimate-costs', { recipient: { name: 'Schaetzung', address1: 'Bahnhofstrasse 1', city: 'Zuerich', country_code: 'CH', zip: '8001' }, items, currency: 'USD' });
-  if (a.status !== 200) return { fehler: `HTTP ${a.status} ${typeof a.j.result === 'string' ? a.j.result : ''}`.trim().slice(0, 160) };
+  // Pflichtoptionen (stitch_color, thread_colors …) aus der Fehlermeldung lesen und mit dem ersten erlaubten Wert wiederholen (nur für die Schätzung)
+  let opts = [], a = null;
+  for (let v = 0; v < 4; v++) {
+    const mit = items.map((it, i) => (i === 0 && opts.length ? { ...it, options: opts.map((o) => ({ id: o.id, value: o.wert })) } : it));
+    a = await pf('POST', '/orders/estimate-costs', { recipient: { name: 'Schaetzung', address1: 'Bahnhofstrasse 1', city: 'Zuerich', country_code: 'CH', zip: '8001' }, items: mit, currency: 'USD' });
+    if (a.status === 200) break;
+    const neu = optionenAusFehler(a.j?.result).filter((o) => !opts.some((x) => x.id === o.id));
+    if (!neu.length) break;
+    opts = opts.concat(neu); await pause(800);
+  }
+  if (a.status !== 200) return { fehler: `HTTP ${a.status} ${typeof a.j.result === 'string' ? a.j.result : ''}`.trim().slice(0, 200) };
   const co = a.j.result?.costs || {};
-  return { zwischensumme: co.subtotal, versand: co.shipping, steuer: co.tax, mwst: co.vat, aufpreis: co.additional_fee, digitalisierung: co.digitization, gesamt: co.total, extra: a.j.extra };
+  return { zwischensumme: co.subtotal, versand: co.shipping, steuer: co.tax, mwst: co.vat, aufpreis: co.additional_fee, digitalisierung: co.digitization, gesamt: co.total, optionen: opts.map((o) => o.id) };
 };
 
 for (const [pid, vids] of Object.entries(proProdukt)) {
   if (erg.proProdukt[pid]?.q1 && !erg.proProdukt[pid].q1.fehler) continue;
   const vid = vids.slice().sort((a, b) => c[a].preisUsd - c[b].preisUsd)[0];   // billigste Variante des Produkts
   const e = { vid, katalogUsd: c[vid].preisUsd, titel: c[vid].produktTitel };
-  e.q1 = await schaetze([{ variant_id: vid, quantity: 1, files: [{ type: 'default', url: DATEI }] }]); await pause(800);
-  e.q2 = await schaetze([{ variant_id: vid, quantity: 2, files: [{ type: 'default', url: DATEI }] }]); await pause(800);
+  const ids = (k[pid]?.dateien || []).map((d) => d.id).filter((t) => t && t !== 'preview');
+  const basis = (ids.includes('default') ? ['default'] : (ids.includes('left_leg') ? ['right_leg', 'left_leg'] : ids.slice(0, 1))).map((type) => ({ type, url: DATEI }));
+  e.q1 = await schaetze([{ variant_id: vid, quantity: 1, files: basis }]); await pause(800);
+  e.q2 = await schaetze([{ variant_id: vid, quantity: 2, files: basis }]); await pause(800);
   e.platzierungen = {};
   for (const d of k[pid]?.dateien || []) {
     const ap = parseFloat(d.aufpreis);
-    if (!Number.isFinite(ap) || ap <= 0 || d.typ === 'default' || d.typ === 'preview') continue;
-    e.platzierungen[d.typ] = { katalogAufpreisUsd: ap, ...(await schaetze([{ variant_id: vid, quantity: 1, files: [{ type: 'default', url: DATEI }, { type: d.typ, url: DATEI }] }])) };
+    if (!Number.isFinite(ap) || ap <= 0 || d.id === 'default' || d.id === 'preview') continue;
+    e.platzierungen[d.id] = { katalogAufpreisUsd: ap, ...(await schaetze([{ variant_id: vid, quantity: 1, files: (d.id.startsWith('embroidery_') ? [] : basis).concat([{ type: d.id, url: DATEI }]) }])) };
     await pause(800);
   }
   erg.proProdukt[pid] = e;

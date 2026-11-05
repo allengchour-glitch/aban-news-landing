@@ -92,20 +92,35 @@ export function aufpreisChf(aufpreisUsd, regel = REGEL) {
   return Math.ceil(aufpreisAufgerechnetRp(aufpreisUsd, regel) / 10 - EPS) / 10;
 }
 
+/** Kleinster Wert X.90 (in Rappen), der `soll` (Rappen, auch Dezimal) erreicht oder übersteigt: 2737 → 2790, 2790 → 2790, 2791 → 2890. */
+export function aufX90Rp(soll) { return Math.max(0, Math.ceil((soll - 90) / 100 - EPS)) * 100 + 90; }
+
+/**
+ * Welcher Einkaufspreis geht in die Formel? Der Katalogpreis (GET /products/variant, US-Katalog) und die Rechnung für CH (POST /orders/estimate-costs → subtotal)
+ * weichen je Produkt um bis zu etwa ±25 % ab (GEMESSEN 05.11.2026); sicher ist das Grössere von beiden. Fehlt die Schätzung, gilt der Katalogpreis und `quelle` sagt es.
+ * @returns {{ekUsd:number, quelle:'schaetzung'|'katalog'}}
+ */
+export function abrechnungsEk({ katalogUsd, schaetzungUsd = null }) {
+  zahl('katalogUsd', katalogUsd);
+  if (schaetzungUsd == null) return { ekUsd: katalogUsd, quelle: 'katalog' };
+  zahl('schaetzungUsd', schaetzungUsd);
+  return { ekUsd: Math.max(katalogUsd, schaetzungUsd), quelle: schaetzungUsd >= katalogUsd ? 'schaetzung' : 'katalog' };
+}
+
 /**
  * Endpreis einer Variante (CHF, X.90).
- * @returns {{preisChf:number, bindend:'richtwert'|'kosten', kostenChf:number, nettoChf:number, nettoBeiMesskursChf:number, richtwertChf:number, kostenpreisChf:number, ueberMax:boolean}}
+ *   preisChf        = Empfehlung: kleinster X.90 ≥ max(Kostenpreis, Richtwert)
+ *   mindestpreisChf = harte Untergrenze: kleinster X.90 ≥ Kostenpreis (darunter wäre der Gewinn kleiner als nettoMin, beim Messkurs meist noch ≥ 0)
+ * @returns {{preisChf:number, mindestpreisChf:number, bindend:'richtwert'|'kosten', kostenChf:number, nettoChf:number, nettoBeiMesskursChf:number, richtwertChf:number, kostenpreisChf:number, ueberMax:boolean}}
  */
 export function endpreis({ ekUsd, versandUsd, aufpreisUsd = 0 }, regel = REGEL) {
   const K = kostenRp({ ekUsd, versandUsd, aufpreisUsd }, regel.kurs);
   const kp = kostenpreisRp(K, regel);
   const rw = richtwertRp({ ekUsd, aufpreisUsd }, regel);
-  const soll = Math.max(kp, rw);
-  const k = Math.max(0, Math.ceil((soll - 90) / 100 - EPS));   // erster X.90, der `soll` erreicht: k·100 + 90 ≥ soll
-  const preis = k * 100 + 90;
+  const preis = aufX90Rp(Math.max(kp, rw));
   const nettoMess = nettoRp(preis, kostenRp({ ekUsd, versandUsd, aufpreisUsd }, regel.kursMess), regel);
   return {
-    preisChf: chfVonRp(preis), bindend: rw >= kp ? 'richtwert' : 'kosten', kostenChf: chfVonRp(K), nettoChf: chfVonRp(nettoRp(preis, K, regel)), nettoBeiMesskursChf: chfVonRp(nettoMess),
+    preisChf: chfVonRp(preis), mindestpreisChf: chfVonRp(aufX90Rp(kp)), bindend: rw >= kp ? 'richtwert' : 'kosten', kostenChf: chfVonRp(K), nettoChf: chfVonRp(nettoRp(preis, K, regel)), nettoBeiMesskursChf: chfVonRp(nettoMess),
     richtwertChf: chfVonRp(rw), kostenpreisChf: chfVonRp(kp), ueberMax: regel.maxPreis != null && preis > rp(regel.maxPreis),
   };
 }
