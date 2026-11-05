@@ -1,0 +1,1855 @@
+{
+ "quelle": "Auszug aus GET /products/<id>, /mockup-generator/printfiles/<id>, /mockup-generator/templates/<id> (Printful, gelesen 05.11.2026 für Strom 3 «Bestellweg»); Kopie von dropship/selbst-gestalten-fertig-0511/werkzeuge/testdaten/katalog, gekürzt auf das, was der Bestellweg liest",
+ "produkte": {
+  "19": {
+   "produkt": {
+    "id": 19,
+    "type": "MUG",
+    "options": [
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     }
+    ],
+    "techniques": [
+     {
+      "key": "SUBLIMATION",
+      "display_name": "Sublimation",
+      "is_default": true
+     }
+    ],
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 43,
+      "width": 2700,
+      "height": 1050,
+      "dpi": 300,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 44,
+      "width": 2700,
+      "height": 1140,
+      "dpi": 300,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 426,
+      "width": 3071,
+      "height": 1205,
+      "dpi": 300,
+      "fill_mode": "fit",
+      "can_rotate": false
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "default": 43
+      },
+      "varianten": [
+       1320
+      ]
+     },
+     {
+      "placements": {
+       "default": 44
+      },
+      "varianten": [
+       4830
+      ]
+     },
+     {
+      "placements": {
+       "default": 426
+      },
+      "varianten": [
+       16586
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 150,
+    "conflicting_placements": []
+   },
+   "varianten": [
+    1320,
+    4830,
+    16586
+   ]
+  },
+  "71": {
+   "produkt": {
+    "id": 71,
+    "type": "T-SHIRT",
+    "options": [
+     {
+      "id": "thread_colors_chest_left",
+      "title": "Left chest thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "thread_colors_chest_center",
+      "title": "Center chest thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "thread_colors_sleeve_left_top",
+      "title": "Sleeve left top thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "thread_colors_sleeve_right_top",
+      "title": "Sleeve right top thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "notes",
+      "title": "Embroidery notes",
+      "type": "text",
+      "values": null,
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "lifelike",
+      "title": "Lifelike",
+      "type": "bool",
+      "values": null,
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     }
+    ],
+    "techniques": [
+     {
+      "key": "DTG",
+      "display_name": "DTG printing",
+      "is_default": true
+     },
+     {
+      "key": "EMBROIDERY",
+      "display_name": "Embroidery",
+      "is_default": false
+     },
+     {
+      "key": "DTFILM",
+      "display_name": "DTF printing",
+      "is_default": false
+     }
+    ],
+    "files": [
+     {
+      "id": "embroidery_chest_left",
+      "type": "embroidery_chest_left",
+      "title": "Left chest",
+      "additional_price": "2.95",
+      "options": [
+       {
+        "id": "full_color",
+        "type": "bool",
+        "title": "Unlimited color",
+        "additional_price": 3.5
+       }
+      ]
+     },
+     {
+      "id": "embroidery_chest_center",
+      "type": "embroidery_chest_center",
+      "title": "Center chest",
+      "additional_price": "2.95",
+      "options": [
+       {
+        "id": "full_color",
+        "type": "bool",
+        "title": "Unlimited color",
+        "additional_price": 3.5
+       }
+      ]
+     },
+     {
+      "id": "embroidery_sleeve_left_top",
+      "type": "embroidery_sleeve_left_top",
+      "title": "Left sleeve top",
+      "additional_price": "2.95",
+      "options": []
+     },
+     {
+      "id": "embroidery_sleeve_right_top",
+      "type": "embroidery_sleeve_right_top",
+      "title": "Right sleeve top",
+      "additional_price": "2.95",
+      "options": []
+     },
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "front_dtf",
+      "type": "front_dtf",
+      "title": "Front print",
+      "additional_price": "5.95",
+      "options": []
+     },
+     {
+      "id": "front_large",
+      "type": "front_large",
+      "title": "Large front print",
+      "additional_price": "5.95",
+      "options": []
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print",
+      "additional_price": "5.95",
+      "options": []
+     },
+     {
+      "id": "back_dtf",
+      "type": "back_dtf",
+      "title": "Back print",
+      "additional_price": "5.95",
+      "options": []
+     },
+     {
+      "id": "sleeve_left",
+      "type": "sleeve_left",
+      "title": "Left sleeve",
+      "additional_price": "2.49",
+      "options": []
+     },
+     {
+      "id": "sleeve_right",
+      "type": "sleeve_right",
+      "title": "Right sleeve",
+      "additional_price": "2.49",
+      "options": []
+     },
+     {
+      "id": "short_sleeve_left_dtf",
+      "type": "short_sleeve_left_dtf",
+      "title": "Short left sleeve",
+      "additional_price": "2.49",
+      "options": []
+     },
+     {
+      "id": "short_sleeve_right_dtf",
+      "type": "short_sleeve_right_dtf",
+      "title": "Short right sleeve",
+      "additional_price": "2.49",
+      "options": []
+     },
+     {
+      "id": "label_inside",
+      "type": "label_inside",
+      "title": "Inside label",
+      "additional_price": "0.99",
+      "options": []
+     },
+     {
+      "id": "label_outside",
+      "type": "label_outside",
+      "title": "Outside label",
+      "additional_price": "2.49",
+      "options": []
+     },
+     {
+      "id": "label_inside_dtf",
+      "type": "label_inside_dtf",
+      "title": "Inside label",
+      "additional_price": "0.99",
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 1,
+      "width": 1800,
+      "height": 2400,
+      "dpi": 150,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 71,
+      "width": 450,
+      "height": 450,
+      "dpi": 150,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 90,
+      "width": 450,
+      "height": 450,
+      "dpi": 150,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 130,
+      "width": 600,
+      "height": 525,
+      "dpi": 150,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 333,
+      "width": 2250,
+      "height": 2700,
+      "dpi": 150,
+      "fill_mode": "fit",
+      "can_rotate": false
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "front": 1,
+       "front_large": 333,
+       "back": 1,
+       "sleeve_left": 130,
+       "sleeve_right": 130,
+       "label_inside": 71,
+       "label_outside": 90,
+       "label_inside_dtf": 71
+      },
+      "varianten": [
+       9575,
+       8923,
+       8924,
+       4025
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 75,
+    "conflicting_placements": [
+     {
+      "placement": "front",
+      "conflicts": [
+       "front_large",
+       "front_dtf",
+       "front_dtfabric",
+       "chest_left_dtf",
+       "front_large_dtf"
+      ]
+     },
+     {
+      "placement": "front_large",
+      "conflicts": [
+       "front",
+       "front_dtf",
+       "front_dtfabric",
+       "chest_left_dtf",
+       "front_large_dtf"
+      ]
+     },
+     {
+      "placement": "back",
+      "conflicts": [
+       "label_outside",
+       "label_outside_dtf",
+       "back_dtf",
+       "back_large",
+       "back_large_dtf",
+       "back_dtfabric"
+      ]
+     },
+     {
+      "placement": "sleeve_left",
+      "conflicts": [
+       "long_sleeve_left_dtf",
+       "short_sleeve_left_dtf",
+       "embroidery_wrist_right",
+       "embroidery_wrist_left",
+       "embroidery_sleeve_left_top",
+       "embroidery_sleeve_right_top"
+      ]
+     },
+     {
+      "placement": "sleeve_right",
+      "conflicts": [
+       "long_sleeve_right_dtf",
+       "short_sleeve_right_dtf",
+       "embroidery_wrist_right",
+       "embroidery_wrist_left",
+       "embroidery_sleeve_left_top",
+       "embroidery_sleeve_right_top",
+       "sleeve_right_dtfabric"
+      ]
+     },
+     {
+      "placement": "label_inside",
+      "conflicts": [
+       "label_outside",
+       "label_outside_dtf",
+       "label_inside_dtf"
+      ]
+     },
+     {
+      "placement": "label_outside",
+      "conflicts": [
+       "back",
+       "back_large",
+       "back_dtf",
+       "label_inside",
+       "label_inside_dtf",
+       "label_outside_dtfabric",
+       "label_outside_dtf"
+      ]
+     },
+     {
+      "placement": "label_inside_dtf",
+      "conflicts": [
+       "label_outside",
+       "label_outside_dtf",
+       "label_inside"
+      ]
+     }
+    ]
+   },
+   "varianten": [
+    4025,
+    5296,
+    5311,
+    4025
+   ]
+  },
+  "206": {
+   "produkt": {
+    "id": 206,
+    "type": "EMBROIDERY",
+    "options": [
+     {
+      "id": "embroidery_type",
+      "title": "Embroidery type",
+      "type": "radio",
+      "values": {
+       "flat": "Flat Embroidery",
+       "3d": "3D Puff (+$1.50)",
+       "both": "Partial 3D Puff (+$1.50)"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "thread_colors_3d",
+      "title": "3D Puff thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "thread_colors_front_large",
+      "title": "Flat thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "thread_colors_3d_front_large",
+      "title": "3D Puff thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "thread_colors_back",
+      "title": "Back thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "thread_colors_right",
+      "title": "Right side thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "thread_colors_left",
+      "title": "Left side thread colors",
+      "type": "multi_select",
+      "values": {
+       "#FFFFFF": "1801 White",
+       "#000000": "1800 Black",
+       "#96A1A8": "1718 Grey",
+       "#A67843": "1672 Old Gold",
+       "#FFCC00": "1951 Gold",
+       "#E25C27": "1987 Orange",
+       "#CC3366": "1910 Flamingo",
+       "#CC3333": "1839 Red",
+       "#660000": "1784 Maroon",
+       "#333366": "1966 Navy",
+       "#005397": "1842 Royal",
+       "#3399FF": "1695 Aqua/Teal",
+       "#6B5294": "1832 Purple",
+       "#01784E": "1751 Kelly Green",
+       "#7BA35A": "1848 Kiwi Green"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "notes",
+      "title": "Embroidery notes",
+      "type": "text",
+      "values": null,
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     },
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": {
+       "flat": "0.00",
+       "3d": "1.50",
+       "both": "1.50"
+      }
+     }
+    ],
+    "techniques": [
+     {
+      "key": "EMBROIDERY",
+      "display_name": "Embroidery",
+      "is_default": true
+     },
+     {
+      "key": "DTFILM",
+      "display_name": "DTF printing",
+      "is_default": false
+     }
+    ],
+    "files": [
+     {
+      "id": "default",
+      "type": "embroidery_front",
+      "title": "Front",
+      "additional_price": null,
+      "options": [
+       {
+        "id": "full_color",
+        "type": "bool",
+        "title": "Unlimited color",
+        "additional_price": 3.5
+       }
+      ]
+     },
+     {
+      "id": "embroidery_front_large",
+      "type": "embroidery_front_large",
+      "title": "Front",
+      "additional_price": "2.95",
+      "options": [
+       {
+        "id": "full_color",
+        "type": "bool",
+        "title": "Unlimited color",
+        "additional_price": 3.5
+       }
+      ]
+     },
+     {
+      "id": "back",
+      "type": "embroidery_back",
+      "title": "Back",
+      "additional_price": "2.95",
+      "options": []
+     },
+     {
+      "id": "right",
+      "type": "embroidery_right",
+      "title": "Right side",
+      "additional_price": "2.95",
+      "options": []
+     },
+     {
+      "id": "left",
+      "type": "embroidery_left",
+      "title": "Left side",
+      "additional_price": "2.95",
+      "options": []
+     },
+     {
+      "id": "front_dtf_hat",
+      "type": "front_dtf_hat",
+      "title": "Front print",
+      "additional_price": "2.95",
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 75,
+      "width": 1650,
+      "height": 600,
+      "dpi": 300,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 76,
+      "width": 600,
+      "height": 300,
+      "dpi": 300,
+      "fill_mode": "fit",
+      "can_rotate": false
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "embroidery_front_large": 75,
+       "embroidery_back": 76,
+       "embroidery_right": 76,
+       "embroidery_left": 76
+      },
+      "varianten": [
+       7854,
+       7857,
+       12735
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 150,
+    "conflicting_placements": [
+     {
+      "placement": "embroidery_front_large",
+      "conflicts": [
+       "embroidery_front",
+       "addon_embroidery_front",
+       "embroidery_front_high"
+      ]
+     }
+    ]
+   },
+   "varianten": [
+    7854,
+    9794,
+    7855
+   ]
+  },
+  "268": {
+   "produkt": {
+    "id": 268,
+    "type": "POSTER",
+    "options": [
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     }
+    ],
+    "techniques": [
+     {
+      "key": "DIGITAL",
+      "display_name": "Digital printing",
+      "is_default": true
+     }
+    ],
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 106,
+      "width": 3544,
+      "height": 2480,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     },
+     {
+      "printfile_id": 113,
+      "width": 8268,
+      "height": 5906,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     },
+     {
+      "printfile_id": 115,
+      "width": 11812,
+      "height": 8268,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     },
+     {
+      "printfile_id": 153,
+      "width": 4724,
+      "height": 3544,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     },
+     {
+      "printfile_id": 155,
+      "width": 10748,
+      "height": 7200,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     },
+     {
+      "printfile_id": 621,
+      "width": 9933,
+      "height": 7016,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     },
+     {
+      "printfile_id": 624,
+      "width": 7016,
+      "height": 4961,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": true
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "default": 621
+      },
+      "varianten": [
+       19515
+      ]
+     },
+     {
+      "placements": {
+       "default": 624
+      },
+      "varianten": [
+       19516
+      ]
+     },
+     {
+      "placements": {
+       "default": 106
+      },
+      "varianten": [
+       8947
+      ]
+     },
+     {
+      "placements": {
+       "default": 153
+      },
+      "varianten": [
+       8948
+      ]
+     },
+     {
+      "placements": {
+       "default": 113
+      },
+      "varianten": [
+       8952
+      ]
+     },
+     {
+      "placements": {
+       "default": 155
+      },
+      "varianten": [
+       8953
+      ]
+     },
+     {
+      "placements": {
+       "default": 115
+      },
+      "varianten": [
+       8954
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 150,
+    "conflicting_placements": []
+   },
+   "varianten": [
+    19515,
+    19516,
+    8947
+   ]
+  },
+  "388": {
+   "produkt": {
+    "id": 388,
+    "type": "CUT-SEW",
+    "options": [
+     {
+      "id": "stitch_color",
+      "title": "Drawcord & Stitch color",
+      "type": "radio",
+      "values": {
+       "white": "White",
+       "black": "Black"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "notes",
+      "title": "Printing notes",
+      "type": "text",
+      "values": null,
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     }
+    ],
+    "techniques": [
+     {
+      "key": "CUT-SEW",
+      "display_name": "All-over synthetic",
+      "is_default": true
+     }
+    ],
+    "files": [
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "sleeve_right",
+      "type": "sleeve_right",
+      "title": "Right sleeve",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "sleeve_left",
+      "type": "sleeve_left",
+      "title": "Left sleeve",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "pocket",
+      "type": "pocket",
+      "title": "Pocket",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "hood",
+      "type": "hood",
+      "title": "Hood",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "label_panel",
+      "type": "label_panel",
+      "title": "Label panel",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "label_inside",
+      "type": "label_inside",
+      "title": "Inside label",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 64,
+      "width": 375,
+      "height": 150,
+      "dpi": 150,
+      "fill_mode": "fit",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 200,
+      "width": 6000,
+      "height": 6000,
+      "dpi": 150,
+      "fill_mode": "cover",
+      "can_rotate": false
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "front": 200,
+       "back": 200,
+       "sleeve_right": 200,
+       "sleeve_left": 200,
+       "pocket": 200,
+       "hood": 200,
+       "label_panel": 200,
+       "label_inside": 64
+      },
+      "varianten": [
+       18730,
+       10869,
+       10870
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 75,
+    "conflicting_placements": [
+     {
+      "placement": "front",
+      "conflicts": [
+       "front_large",
+       "front_dtf",
+       "front_dtfabric",
+       "chest_left_dtf",
+       "front_large_dtf"
+      ]
+     },
+     {
+      "placement": "back",
+      "conflicts": [
+       "label_outside_dtf",
+       "back_dtf",
+       "back_large",
+       "back_large_dtf",
+       "back_dtfabric"
+      ]
+     },
+     {
+      "placement": "sleeve_right",
+      "conflicts": [
+       "long_sleeve_right_dtf",
+       "short_sleeve_right_dtf",
+       "embroidery_wrist_right",
+       "embroidery_wrist_left",
+       "embroidery_sleeve_left_top",
+       "embroidery_sleeve_right_top",
+       "sleeve_right_dtfabric"
+      ]
+     },
+     {
+      "placement": "sleeve_left",
+      "conflicts": [
+       "long_sleeve_left_dtf",
+       "short_sleeve_left_dtf",
+       "embroidery_wrist_right",
+       "embroidery_wrist_left",
+       "embroidery_sleeve_left_top",
+       "embroidery_sleeve_right_top"
+      ]
+     },
+     {
+      "placement": "pocket",
+      "conflicts": [
+       "pocket_dtfabric"
+      ]
+     },
+     {
+      "placement": "hood",
+      "conflicts": [
+       "hood_dtfabric"
+      ]
+     },
+     {
+      "placement": "label_panel",
+      "conflicts": [
+       "label_panel_dtfabric"
+      ]
+     },
+     {
+      "placement": "label_inside",
+      "conflicts": [
+       "label_outside_dtf",
+       "label_inside_dtf"
+      ]
+     }
+    ]
+   },
+   "varianten": [
+    18730,
+    18731,
+    18732
+   ]
+  },
+  "769": {
+   "produkt": {
+    "id": 769,
+    "type": "KNITWEAR",
+    "options": [
+     {
+      "id": "base_color",
+      "title": "Base color",
+      "type": "single_line_text",
+      "values": {
+       "#090909": "Black",
+       "#404040": "Charcoal",
+       "#563c33": "Soil",
+       "#d52213": "Chili",
+       "#6e5242": "Toffee",
+       "#7f6a53": "Peanut",
+       "#cd5e38": "Burnt Orange",
+       "#b57648": "Rust",
+       "#d1773b": "Orange",
+       "#d68785": "Coral",
+       "#c6b5a7": "Coco",
+       "#d6c6b4": "Taupe",
+       "#dcd3cc": "Sand",
+       "#edd9d9": "Light Pink",
+       "#e2dfdc": "Bone",
+       "#fdfafa": "Bleach",
+       "#999996": "Grey",
+       "#dda032": "Mustard",
+       "#d1c6ae": "Beige",
+       "#eddea4": "Mellow",
+       "#48542e": "Olive",
+       "#6e8c4b": "Grass",
+       "#c0c1bd": "Light Grey",
+       "#243f33": "Pine",
+       "#c5d1d0": "Powder",
+       "#175387": "Yale Blue",
+       "#237d96": "Cyan",
+       "#787979": "Dark Grey",
+       "#343d55": "Navy",
+       "#4e59be": "Royal",
+       "#566e99": "Denim",
+       "#504372": "Violet",
+       "#4c1c29": "Burgundy",
+       "#f66274": "Hot Pink",
+       "#eda6b4": "Pink",
+       "#ddabc8": "Lilac"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "trim_color",
+      "title": "Trim color",
+      "type": "single_line_text",
+      "values": {
+       "#090909": "Black",
+       "#404040": "Charcoal",
+       "#563c33": "Soil",
+       "#d52213": "Chili",
+       "#6e5242": "Toffee",
+       "#7f6a53": "Peanut",
+       "#cd5e38": "Burnt Orange",
+       "#b57648": "Rust",
+       "#d1773b": "Orange",
+       "#d68785": "Coral",
+       "#c6b5a7": "Coco",
+       "#d6c6b4": "Taupe",
+       "#dcd3cc": "Sand",
+       "#edd9d9": "Light Pink",
+       "#e2dfdc": "Bone",
+       "#fdfafa": "Bleach",
+       "#999996": "Grey",
+       "#dda032": "Mustard",
+       "#d1c6ae": "Beige",
+       "#eddea4": "Mellow",
+       "#48542e": "Olive",
+       "#6e8c4b": "Grass",
+       "#c0c1bd": "Light Grey",
+       "#243f33": "Pine",
+       "#c5d1d0": "Powder",
+       "#175387": "Yale Blue",
+       "#237d96": "Cyan",
+       "#787979": "Dark Grey",
+       "#343d55": "Navy",
+       "#4e59be": "Royal",
+       "#566e99": "Denim",
+       "#504372": "Violet",
+       "#4c1c29": "Burgundy",
+       "#f66274": "Hot Pink",
+       "#eda6b4": "Pink",
+       "#ddabc8": "Lilac"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "yarn_colors",
+      "title": "Yarn colors",
+      "type": "multi_select",
+      "values": {
+       "#090909": "Black",
+       "#404040": "Charcoal",
+       "#563c33": "Soil",
+       "#d52213": "Chili",
+       "#6e5242": "Toffee",
+       "#7f6a53": "Peanut",
+       "#cd5e38": "Burnt Orange",
+       "#b57648": "Rust",
+       "#d1773b": "Orange",
+       "#d68785": "Coral",
+       "#c6b5a7": "Coco",
+       "#d6c6b4": "Taupe",
+       "#dcd3cc": "Sand",
+       "#edd9d9": "Light Pink",
+       "#e2dfdc": "Bone",
+       "#fdfafa": "Bleach",
+       "#999996": "Grey",
+       "#dda032": "Mustard",
+       "#d1c6ae": "Beige",
+       "#eddea4": "Mellow",
+       "#48542e": "Olive",
+       "#6e8c4b": "Grass",
+       "#c0c1bd": "Light Grey",
+       "#243f33": "Pine",
+       "#c5d1d0": "Powder",
+       "#175387": "Yale Blue",
+       "#237d96": "Cyan",
+       "#787979": "Dark Grey",
+       "#343d55": "Navy",
+       "#4e59be": "Royal",
+       "#566e99": "Denim",
+       "#504372": "Violet",
+       "#4c1c29": "Burgundy",
+       "#f66274": "Hot Pink",
+       "#eda6b4": "Pink",
+       "#ddabc8": "Lilac"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     },
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     }
+    ],
+    "techniques": [
+     {
+      "key": "KNITWEAR",
+      "display_name": "Knitting",
+      "is_default": true
+     }
+    ],
+    "files": [
+     {
+      "id": "default",
+      "type": "front",
+      "title": "Front print",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "back",
+      "type": "back",
+      "title": "Back print",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "sleeve_right",
+      "type": "sleeve_right",
+      "title": "Right sleeve",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "sleeve_left",
+      "type": "sleeve_left",
+      "title": "Left sleeve",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 642,
+      "width": 400,
+      "height": 622,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 643,
+      "width": 451,
+      "height": 634,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 672,
+      "width": 460,
+      "height": 648,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 674,
+      "width": 511,
+      "height": 675,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 675,
+      "width": 446,
+      "height": 570,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 676,
+      "width": 430,
+      "height": 580,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 677,
+      "width": 430,
+      "height": 551,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 678,
+      "width": 340,
+      "height": 517,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     },
+     {
+      "printfile_id": 690,
+      "width": 483,
+      "height": 667,
+      "dpi": 1,
+      "fill_mode": "cover",
+      "can_rotate": false
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "front": 678,
+       "back": 678,
+       "sleeve_right": 678,
+       "sleeve_left": 678
+      },
+      "varianten": [
+       19633
+      ]
+     },
+     {
+      "placements": {
+       "front": 677,
+       "back": 677,
+       "sleeve_right": 677,
+       "sleeve_left": 677
+      },
+      "varianten": [
+       19634
+      ]
+     },
+     {
+      "placements": {
+       "front": 676,
+       "back": 676,
+       "sleeve_right": 676,
+       "sleeve_left": 676
+      },
+      "varianten": [
+       19635
+      ]
+     },
+     {
+      "placements": {
+       "front": 675,
+       "back": 675,
+       "sleeve_right": 675,
+       "sleeve_left": 675
+      },
+      "varianten": [
+       19636
+      ]
+     },
+     {
+      "placements": {
+       "front": 642,
+       "back": 642,
+       "sleeve_right": 642,
+       "sleeve_left": 642
+      },
+      "varianten": [
+       19637
+      ]
+     },
+     {
+      "placements": {
+       "front": 643,
+       "back": 643,
+       "sleeve_right": 643,
+       "sleeve_left": 643
+      },
+      "varianten": [
+       19638
+      ]
+     },
+     {
+      "placements": {
+       "front": 672,
+       "back": 672,
+       "sleeve_right": 672,
+       "sleeve_left": 672
+      },
+      "varianten": [
+       19639
+      ]
+     },
+     {
+      "placements": {
+       "front": 690,
+       "back": 690,
+       "sleeve_right": 690,
+       "sleeve_left": 690
+      },
+      "varianten": [
+       19640
+      ]
+     },
+     {
+      "placements": {
+       "front": 674,
+       "back": 674,
+       "sleeve_right": 674,
+       "sleeve_left": 674
+      },
+      "varianten": [
+       19641
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 0.5,
+    "conflicting_placements": [
+     {
+      "placement": "front",
+      "conflicts": [
+       "front_large",
+       "front_dtf",
+       "front_dtfabric",
+       "chest_left_dtf",
+       "front_large_dtf"
+      ]
+     },
+     {
+      "placement": "back",
+      "conflicts": [
+       "label_outside",
+       "label_outside_dtf",
+       "back_dtf",
+       "back_large",
+       "back_large_dtf",
+       "back_dtfabric"
+      ]
+     },
+     {
+      "placement": "sleeve_right",
+      "conflicts": [
+       "long_sleeve_right_dtf",
+       "short_sleeve_right_dtf",
+       "embroidery_wrist_right",
+       "embroidery_wrist_left",
+       "embroidery_sleeve_left_top",
+       "embroidery_sleeve_right_top",
+       "sleeve_right_dtfabric"
+      ]
+     },
+     {
+      "placement": "sleeve_left",
+      "conflicts": [
+       "long_sleeve_left_dtf",
+       "short_sleeve_left_dtf",
+       "embroidery_wrist_right",
+       "embroidery_wrist_left",
+       "embroidery_sleeve_left_top",
+       "embroidery_sleeve_right_top"
+      ]
+     }
+    ]
+   },
+   "varianten": [
+    19640,
+    19634,
+    19641
+   ]
+  },
+  "798": {
+   "produkt": {
+    "id": 798,
+    "type": "PHONE-CASE",
+    "options": [
+     {
+      "id": "license_type",
+      "title": "License type",
+      "type": "multi_select",
+      "values": {
+       "CLC": "Collegiate Licensing Company",
+       "AFFINITY": "Affinity",
+       "BR": "BR",
+       "EX": "EX",
+       "NCAA": "NCAA",
+       "FAN": "Fan",
+       "BCOMPLY": "BrandComply",
+       "TAG": "Tag",
+       "DLH": "DLH",
+       "CORE81": "Core81"
+      },
+      "additional_price": null,
+      "additional_price_breakdown": []
+     }
+    ],
+    "techniques": [
+     {
+      "key": "SUBLIMATION",
+      "display_name": "Sublimation",
+      "is_default": true
+     }
+    ],
+    "files": [
+     {
+      "id": "default",
+      "type": "default",
+      "title": "Print file",
+      "additional_price": null,
+      "options": []
+     },
+     {
+      "id": "preview",
+      "type": "mockup",
+      "title": "Mockup",
+      "additional_price": null,
+      "options": []
+     }
+    ]
+   },
+   "printfiles": {
+    "printfiles": [
+     {
+      "printfile_id": 331,
+      "width": 1392,
+      "height": 2220,
+      "dpi": 300,
+      "fill_mode": "cover",
+      "can_rotate": false
+     }
+    ],
+    "variant_printfiles_gruppen": [
+     {
+      "placements": {
+       "default": 331
+      },
+      "varianten": [
+       20687,
+       20688,
+       20691
+      ]
+     }
+    ]
+   },
+   "templates": {
+    "min_dpi": 150,
+    "conflicting_placements": []
+   },
+   "varianten": [
+    20691,
+    20693,
+    20689
+   ]
+  }
+ }
+}
