@@ -46,6 +46,7 @@ on:
       - 'dropship/mode-taxonomie-2610/**'
       - 'dropship/pod-auswahl/**'
       - 'dropship/pod-editor-sicherung-2810/**'
+      - 'dropship/katalog-einheiten-0411/**'
       - 'pod/editor-hintergruende.json'
       - 'automation/pod_inject_designer.mjs'
       - 'automation/pod_editor_hintergruende.mjs'
@@ -119,6 +120,7 @@ jobs:
             dropship/mode-taxonomie-2610
             dropship/pod-auswahl
             dropship/pod-editor-sicherung-2810
+            dropship/katalog-einheiten-0411
             dropship/startseite-wechsel-0411/theme
             pod/editor-hintergruende.json
             automation/pod_inject_designer.mjs
@@ -301,6 +303,9 @@ jobs:
           # Variantenbilder aus dem Printful-Katalog (04.11.2026): reine Planung, welche Variante welches Farb-/Materialbild bekommt
           node automation/lib/pod_variantenbilder_test.mjs
           node automation/lib/startseite_pool_test.mjs
+          # Katalogfenster «Selbst gestalten» (04.11.2026): EU-Schuhgrössen, ml/g statt oz, Knopf «Jetzt selbst gestalten», Sprung-Skript; läuft auf den gesicherten Live-Dateien (dropship/katalog-einheiten-0411/sicherung)
+          node dropship/katalog-einheiten-0411/patches_test.mjs
+          node dropship/katalog-einheiten-0411/apply_test.mjs   # Einspielskript gegen eine Attrappe der Theme-API (kein Netz)
       - name: Mutationsprobe «Selbst gestalten» (221 absichtliche Fehler, alle müssen rot werden)
         run: node automation/pod_auswahl_mutation.mjs
       - name: CJ failures and publication regressions (mock APIs only)

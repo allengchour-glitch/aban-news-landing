@@ -1,0 +1,13 @@
+{
+ "erstellt": "2026-11-04T23:54:54.727Z",
+ "hinweis": "MD5 der Dateien, die apply.mjs ins MAIN-Theme schreibt (Soll-Stand)",
+ "md5": {
+  "assets/luxe-clothing.js": "198328a67066f91ac776e7953d33f07b",
+  "assets/luxe-clothing.css": "feba50324b9f59bf07216b2d46ffdbb5",
+  "assets/luxe-clothing-reference-gallery.json": "4bf382c81c93e088a3ed89bf5a83a305",
+  "sections/luxe-clothing.liquid": "71c1406cf5d069e0a23b535d629f1bde",
+  "locales/de.json": "74704b4a7583a70276bda37f2b5fed6a",
+  "locales/en.default.json": "75522c426fe29e23479bbc3e35bffa77",
+  "blocks/buy-buttons.liquid": "c15e3c9ef315b626e0e9cb6b05778508"
+ }
+}
