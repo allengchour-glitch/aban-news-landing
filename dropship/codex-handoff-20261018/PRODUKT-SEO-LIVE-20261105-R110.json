@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "run": "R110",
+  "draft": false,
+  "recordedAt": "2026-11-05T22:51:56+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminProductReadbacksAfterEachSentWrite": 4,
+    "publicHtmlReadbacksHttp200": 4,
+    "publicProductJsonReadbacksHttp200": 4,
+    "finalPublicHtmlProducts": 2,
+    "finalPublicProductJsonProducts": 2,
+    "readyImageAltTextsUpdated": 19,
+    "variantsProtected": 24,
+    "publicationNodesProtected": 13,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/16613732450695",
+      "handle": "lockeres-mannershirt-aus-cord-japanischer-retr-617700",
+      "publicUrl": "https://luxestyle.ch/products/lockeres-mannershirt-aus-cord-japanischer-retr-617700",
+      "beforeTitle": "Lockeres Männershirt aus Cord – japanischer Retro-Stil",
+      "after": {
+        "title": "Herren-Overshirt in Cordoptik mit Brusttaschen",
+        "descriptionHtml": "<p>Dieses Herren-Overshirt zeigt eine durchgehende Knopfleiste, einen Kragen, lange Ärmel und zwei Brusttaschen mit Patten. Die Oberfläche ist in einer sichtbar gerippten Cordoptik gestaltet.</p><h3>Auswahl</h3><ul><li>Farben: Grau, Grün, Braun oder Aprikose</li><li>Grössen: M, L, XL, XXL und XXXL</li></ul><p>Wähle Farbe und Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Herren-Overshirt in Cordoptik | LuxeStyle CH",
+          "description": "Herren-Overshirt in gerippter Cordoptik mit Knopfleiste, Kragen und zwei Brusttaschen. Grau, Grün, Braun oder Aprikose in M–XXXL wählen."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Grau",
+            "Grün",
+            "Braun",
+            "Aprikose"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "XXXL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 20,
+        "pricesCHF": [
+          20.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {
+          "Grau": "gid://shopify/MediaImage/77488418292103",
+          "Grün": "gid://shopify/MediaImage/77488418324871",
+          "Braun": "gid://shopify/MediaImage/77488418357639",
+          "Aprikose": "gid://shopify/MediaImage/77488418390407"
+        },
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": {
+        "count": 13,
+        "readyImageAltTextsUpdated": 13,
+        "altTexts": [
+          "Braunes Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Grünes Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Graues Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Graues Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Braunes Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Herren-Overshirt in der Variante Aprikose offen über weissem Shirt",
+          "Herren-Overshirt in der Variante Aprikose offen über weissem Shirt",
+          "Herren-Overshirt in der Variante Aprikose als freigestellte Vorderansicht",
+          "Grünes Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Graues Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Grünes Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Braunes Herren-Overshirt in Cordoptik offen über weissem Shirt",
+          "Herren-Overshirt in der Variante Aprikose offen über weissem Shirt"
+        ]
+      },
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "100 % Baumwolle",
+        "weiches Material",
+        "bügelfrei",
+        "lockere Passform",
+        "japanischer Retro-Stil",
+        "nur Grösse M",
+        "Gewicht",
+        "produktbezogene Liefer-/Zahlungsangaben"
+      ],
+      "separateStructureReview": [
+        "taxonomy T-Shirts preserved pending Collection/Template/Merchant review"
+      ],
+      "rightsReview": {
+        "visibleMarks": [
+          "small unreadable label at button placket/collar"
+        ],
+        "authenticity": "unknown",
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "newSocialPublication": "blocked"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15524522623361",
+      "handle": "off-shoulder-shirt-mit-pflanzen-print-603100",
+      "publicUrl": "https://luxestyle.ch/products/off-shoulder-shirt-mit-pflanzen-print-603100",
+      "beforeTitle": "Off-Shoulder Shirt mit Pflanzen-Print",
+      "after": {
+        "title": "Damen-Off-Shoulder-Shirt mit Pflanzenmuster",
+        "descriptionHtml": "<p>Dieses Damen-Shirt zeigt einen elastisch gerafften Off-Shoulder-Ausschnitt, lange Ärmel und ein schwarzes Pflanzenmuster auf hellem Grund.</p><h3>Auswahl</h3><ul><li>Grössen: S, M, L und XL</li></ul><p>Wähle die Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Damen-Off-Shoulder-Shirt mit Pflanzenmuster | LuxeStyle CH",
+          "description": "Damen-Off-Shoulder-Shirt mit gerafftem Ausschnitt, langen Ärmeln und schwarzem Pflanzenmuster auf hellem Grund. In S bis XL wählbar."
+        }
+      },
+      "options": [
+        {
+          "name": "Grösse",
+          "values": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 4,
+        "pricesCHF": [
+          24.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {
+          "allVariants": "gid://shopify/MediaImage/70777902006657"
+        },
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": {
+        "count": 6,
+        "readyImageAltTextsUpdated": 6,
+        "altTexts": [
+          "Damen-Off-Shoulder-Shirt mit schwarzem Pflanzenmuster, getragen mit weissen Shorts",
+          "Damen-Off-Shoulder-Shirt mit schwarzem Pflanzenmuster, Vorderansicht mit Handtasche",
+          "Damen-Off-Shoulder-Shirt mit schwarzem Pflanzenmuster in Vorderansicht",
+          "Damen-Off-Shoulder-Shirt mit schwarzem Pflanzenmuster, gerade Vorderansicht",
+          "Damen-Off-Shoulder-Shirt mit schwarzem Pflanzenmuster in Rückansicht",
+          "Damen-Off-Shoulder-Shirt mit schwarzem Pflanzenmuster, gerade Vorderansicht"
+        ],
+        "duplicateObservation": "media 6 is a separate file but pixel-identical to media 4; neither file removed"
+      },
+      "publicationNodesProtected": 7,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Polyester",
+        "Raglan-Stil",
+        "lockerer Sitz",
+        "Apricot as product option",
+        "Patchwork-Details",
+        "Commuter-/Alltagseignung",
+        "nur Grösse S",
+        "Gewicht",
+        "produktbezogene Liefer-/Zahlungsangaben"
+      ],
+      "rightsReview": {
+        "visibleThirdPartyMark": false,
+        "commercialModelImageRights": "unknown",
+        "newSocialPublication": "blocked"
+      }
+    }
+  ],
+  "readback": {
+    "own": {
+      "overshirtHtmlSha256": "b04db30fb208d69e636f774d59c89dfbd4bc8c47b67d33f1213b227fd7384e79",
+      "overshirtProductJsonSha256": "5d240bc855f7a09e969b05a15e1bce126b13c74336ee84b2c0bb810269b79dfd",
+      "offShoulderHtmlSha256": "1f1b3c7f2088fc10671be0623b23a287f44047e1b4874971ccbb6b28830b8eec",
+      "offShoulderProductJsonSha256": "ba2a9beafb519513bbb42297c179985c4ae7ad2647fdbcc1ba2ca599c31cf080"
+    },
+    "independentQa": {
+      "status": "GO",
+      "productsPassed": 2,
+      "productsTotal": 2,
+      "overshirtHtmlSha256": "946c3d67bbb1002413bf87df685325e9e213fbb2210efd84e6c740b2460ad036",
+      "overshirtProductJsonSha256": "5d240bc855f7a09e969b05a15e1bce126b13c74336ee84b2c0bb810269b79dfd",
+      "offShoulderHtmlSha256": "4a21084e00f1148dafa6b525e14d26f761fd73ae1b64ba0cad607c77b88704ec",
+      "offShoulderProductJsonSha256": "ba2a9beafb519513bbb42297c179985c4ae7ad2647fdbcc1ba2ca599c31cf080",
+      "dynamicHtmlHashesMayDiffer": true
+    }
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 45,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.07964,
+    "roundedPercent": 0.08,
+    "remainingProducts": 56461,
+    "remainingPercentApprox": 99.92,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "currentMainObserved": "859132ed6",
+    "latestClaudeLuxeStyleHeadObserved": "e04ce11a0",
+    "exactR110ProductOverlapInCurrentClaudeCommits": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedReservedBaselinesBeforeWrites": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}
