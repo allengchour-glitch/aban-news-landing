@@ -1,0 +1,330 @@
+{
+  "schemaVersion": "luxestyle-catalogue-live-r99-v1",
+  "run": "R99",
+  "recordedAt": "2026-11-05T19:39:40+01:00",
+  "ownerInstruction": "katalog push",
+  "scope": "exact-three-product-allowlist",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "country": "Switzerland",
+      "currency": "CHF",
+      "timezoneField": "CET",
+      "expectedStoreMatched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "expectedIdentityMatched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 3,
+    "fileUpdateAttemptsSent": 3,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminReadbacks": 3,
+    "publicHtmlReadbacksHttp200": 3,
+    "publicProductJsonReadbacksHttp200": 3,
+    "readyImageAltTextsUpdated": 46,
+    "variantsProtected": 36,
+    "publicationNodesProtected": 19
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15448913281409",
+      "legacyResourceId": "15448913281409",
+      "handle": "rucksack-aus-vollnarbenleder-fur-herren-608700",
+      "status": "ACTIVE",
+      "title": {
+        "before": "Rucksack aus Vollnarbenleder für Herren",
+        "after": "Schwarzer Rucksack mit mehreren Fächern"
+      },
+      "seo": {
+        "title": "Schwarzer Rucksack mit mehreren Fächern | LuxeStyle",
+        "description": "Schwarzer Rucksack mit Reissverschlussfächern, Tragegriff und Schulterriemen. Bilder und aktuelle Auswahl direkt bei LuxeStyle ansehen."
+      },
+      "bodyMarker": "ls-seo-r99",
+      "variantCount": 1,
+      "variantTitles": [
+        "Default Title"
+      ],
+      "priceRangeCHF": {
+        "min": 60.9,
+        "max": 60.9
+      },
+      "allAvailableForSale": true,
+      "inventory": {
+        "trackedValues": [
+          false
+        ],
+        "policyValues": [
+          "CONTINUE"
+        ],
+        "quantityValues": [
+          0
+        ],
+        "sellableOnlineQuantityValues": [
+          0
+        ],
+        "note": "Bestellbarkeit und Zähler belegen keinen physischen Lieferantenbestand oder Liefertermin."
+      },
+      "images": {
+        "count": 5,
+        "ready": true,
+        "altTextsUpdated": 5
+      },
+      "publicationNodes": 7,
+      "rueckholPreserved": true,
+      "socialAllowed": false,
+      "publicReadback": {
+        "url": "https://luxestyle.ch/products/rucksack-aus-vollnarbenleder-fur-herren-608700",
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "424439d32e039ebc2feb2568c692e1ae1e37402d8c48c4c65a4df8f25045227b",
+        "productJsonSha256": "48c9716c22476c1fa104c16c9333245f9e8206b2470c16816f97645953aa48c4",
+        "qaPassed": 20,
+        "qaTotal": 20,
+        "verdict": "GO"
+      },
+      "protectedFieldsEqual": true,
+      "removedUnsupportedClaims": [
+        "Vollnarben-/Rindsleder",
+        "Herren-Zielgruppe",
+        "36–55 Liter",
+        "wasserdicht",
+        "diebstahlsicher",
+        "ergonomisch",
+        "atmungsaktiv",
+        "abriebfest",
+        "feste Lieferzeit"
+      ],
+      "remainingOpen": [
+        "Handle und Sortier-/Collection-Tags enthalten historische Leder-/Herrenbegriffe",
+        "Material und Masse nicht bestätigt"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15493835751809",
+      "legacyResourceId": "15493835751809",
+      "handle": "samt-kissenbezug-mit-stickerei-885632",
+      "status": "ACTIVE",
+      "title": {
+        "before": "Samt-Kissenbezug mit Stickerei",
+        "after": "Dekorativer Kissenbezug in 27 Designs"
+      },
+      "seo": {
+        "title": "Dekorativer Kissenbezug in 27 Designs | LuxeStyle",
+        "description": "Dekorativer Kissenbezug mit 27 auswählbaren Designs: geometrische, florale und grafische Motive in verschiedenen Farbtönen bei LuxeStyle."
+      },
+      "bodyMarker": "ls-seo-r99",
+      "variantCount": 27,
+      "variantTitles": [
+        "Modell 1",
+        "Modell 2",
+        "Modell 3",
+        "Modell 4",
+        "Modell 5",
+        "Modell 6",
+        "Modell 7",
+        "Modell 8",
+        "Modell 9",
+        "Modell 10",
+        "Modell 11",
+        "Modell 12",
+        "Modell 13",
+        "Modell 14",
+        "Modell 15",
+        "Modell 16",
+        "Modell 17",
+        "Modell 18",
+        "Modell 19",
+        "Modell 20",
+        "Modell 21",
+        "Modell 22",
+        "Modell 23",
+        "Modell 24",
+        "Modell 25",
+        "Modell 26",
+        "Modell 27"
+      ],
+      "priceRangeCHF": {
+        "min": 16.9,
+        "max": 19.9
+      },
+      "allAvailableForSale": true,
+      "inventory": {
+        "trackedValues": [
+          false
+        ],
+        "policyValues": [
+          "CONTINUE"
+        ],
+        "quantityValues": [
+          0
+        ],
+        "sellableOnlineQuantityValues": [
+          0
+        ],
+        "note": "Bestellbarkeit und Zähler belegen keinen physischen Lieferantenbestand oder Liefertermin."
+      },
+      "images": {
+        "count": 28,
+        "ready": true,
+        "altTextsUpdated": 28
+      },
+      "publicationNodes": 6,
+      "rueckholPreserved": true,
+      "socialAllowed": false,
+      "publicReadback": {
+        "url": "https://luxestyle.ch/products/samt-kissenbezug-mit-stickerei-885632",
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "fa907ee6ddf5f0cd4a5d0ebcf28cb56128574c729886e44d0589b3af9662d47a",
+        "productJsonSha256": "a23bf3c8a860271d8aca3fbd7414e87ce5f67778bf775ee6dda834d21faac830",
+        "qaPassed": 20,
+        "qaTotal": 20,
+        "verdict": "GO"
+      },
+      "protectedFieldsEqual": true,
+      "removedUnsupportedClaims": [
+        "Samt",
+        "Polyester",
+        "45 × 45 cm",
+        "Stickerei",
+        "weiche Haptik",
+        "strapazierfähig",
+        "pflegeleicht",
+        "feste Lieferzeit"
+      ],
+      "remainingOpen": [
+        "Handle enthält historische Samt-/Stickerei-Begriffe",
+        "Google-Shopping-Materialmetafeld und Shopping_ads-Ausschluss blieben geschützt",
+        "Material, Masse, Verarbeitung und Lieferumfang nicht bestätigt"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15493851480449",
+      "legacyResourceId": "15493851480449",
+      "handle": "multicolor-harz-armband-614000",
+      "status": "ACTIVE",
+      "title": {
+        "before": "Multicolor Harz-Armband",
+        "after": "Farbiges Segment-Armband in 8 Varianten"
+      },
+      "seo": {
+        "title": "Farbiges Segment-Armband in 8 Varianten | LuxeStyle",
+        "description": "Farbiges Segment-Armband in acht auswählbaren Varianten. Einzelansichten, Farbauswahl und Bilder am Handgelenk direkt bei LuxeStyle ansehen."
+      },
+      "bodyMarker": "ls-seo-r99",
+      "variantCount": 8,
+      "variantTitles": [
+        "Schwarz",
+        "Gelb",
+        "Blau",
+        "Rot",
+        "Braun",
+        "Bernstein",
+        "Rosa",
+        "Beige"
+      ],
+      "priceRangeCHF": {
+        "min": 16.9,
+        "max": 16.9
+      },
+      "allAvailableForSale": true,
+      "inventory": {
+        "trackedValues": [
+          false
+        ],
+        "policyValues": [
+          "CONTINUE"
+        ],
+        "quantityValues": [
+          0
+        ],
+        "sellableOnlineQuantityValues": [
+          0
+        ],
+        "note": "Bestellbarkeit und Zähler belegen keinen physischen Lieferantenbestand oder Liefertermin."
+      },
+      "images": {
+        "count": 13,
+        "ready": true,
+        "altTextsUpdated": 13
+      },
+      "publicationNodes": 6,
+      "rueckholPreserved": true,
+      "socialAllowed": false,
+      "publicReadback": {
+        "url": "https://luxestyle.ch/products/multicolor-harz-armband-614000",
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "848d44fbc661b071fd6e160bdba0c7ca73f4b300883d916ee1a4136b60ea2957",
+        "productJsonSha256": "dc630683c3968492c1b23748dd7826be368cd3da1d60247664a872ecfe2a176b",
+        "qaPassed": 20,
+        "qaTotal": 20,
+        "verdict": "GO"
+      },
+      "protectedFieldsEqual": true,
+      "removedUnsupportedClaims": [
+        "Harz",
+        "Edelstahl",
+        "elastisch",
+        "55 mm",
+        "optimaler Tragekomfort",
+        "Reise-Souvenir",
+        "feste Lieferzeit"
+      ],
+      "remainingOpen": [
+        "Handle enthält historischen Harz-Begriff",
+        "Google-Shopping-Materialmetafeld und Shopping_ads-Ausschluss blieben geschützt",
+        "Material, Masse, Gewicht und Verschlussart nicht bestätigt"
+      ]
+    }
+  ],
+  "qa": {
+    "prewriteVerdict": "GO",
+    "prewriteReportSha256": "11abcadbd176f67661634cdab36a759fa71c0e87726846b68b7026259f92e328",
+    "finalPassed": 60,
+    "finalTotal": 60,
+    "productsGo": 3,
+    "finalVerdict": "GO",
+    "altTextsExact": 46,
+    "reportSha256": "5a1606459ec1b9324ab2ed9efde4d81bc16a668bceb33583814a92c621cf3643",
+    "resultsSha256": "9ba57f61c8e58731e0d3c782f25a4ea952c4f6c1543bf7e6f008b10cc9fd45ef"
+  },
+  "catalogueProgress": {
+    "allStatusesExact": 87774,
+    "activeExact": 56506,
+    "historicalSnapshotUniqueActiveIds": 56630,
+    "historicalOfflineScanAndPriorityCoveragePercent": 100.0,
+    "historicalScanIsNotLiveFixOrQualityPercent": true,
+    "strictControlledLiveCorrectedActiveProducts": 30,
+    "strictProgressPercent": 0.05309,
+    "strictProgressPercentRounded": 0.05,
+    "remainingProducts": 56476,
+    "remainingPercentApprox": 99.95,
+    "currentQualityCoveragePercent": null
+  },
+  "nextImprovementForApproval": "Getrennter redirect-/canonical-sicherer Struktur-Lauf für die drei historischen Handles sowie aktuelle Prüfung der Leder-/Herren-Sortiertags und geschützten Google-Shopping-Materialmetafelder; vor Änderung Collection-, Feed- und Rankingwirkung prüfen.",
+  "limits": [
+    "Der Gesamtkatalog ist nicht abgeschlossen.",
+    "Die historischen Handles wurden nicht geändert.",
+    "Nicht-SEO-Metafelder, Tags, Kategorien, Varianten, Preise, Inventar, Medienbindungen und Publikationen blieben unverändert.",
+    "rueckhol-0907 blockiert alle drei Produkte für neue Social-Ausspielung.",
+    "Keine Lager- oder Lieferzeitzusage.",
+    "Keine Metricool-, Merchant-, Theme-, Flow-, DNS-, Budget-, Rabatt-, Versand-, Kunden-, Bestell- oder Renderänderung.",
+    "Tageskennzahlen, Klaviyo und der beendete Kauf-Watch wurden nicht erneut abgefragt."
+  ]
+}
