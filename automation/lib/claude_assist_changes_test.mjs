@@ -29,7 +29,7 @@ test('SEO scripts and title helpers select the fixed seo suite', () => {
 
 test('Assist implementation, transport, preload, configuration and tests select assist', () => {
   for (const file of [
-    'automation/claude-assist.mjs', 'automation/lib/claude_assist.mjs',
+    'automation/claude-assist.mjs', 'automation/cj-read-mcp.mjs', 'automation/cj-read-mcp-probe.mjs', 'automation/lib/claude_assist.mjs',
     'automation/lib/claude_assist_mcp.mjs', 'automation/lib/claude_assist_offline.mjs',
     'automation/lib/claude_assist_changes.mjs', 'automation/lib/claude_assist_changes_test.mjs',
     'automation/lib/claude_assist_readiness.mjs', 'automation/lib/claude_assist_readiness_test.mjs',
@@ -37,7 +37,11 @@ test('Assist implementation, transport, preload, configuration and tests select 
     'automation/lib/claude_assist_runner.mjs', 'automation/lib/claude_assist_runner_test.mjs',
     'automation/lib/claude_assist_commits.mjs', 'automation/lib/claude_assist_commits_test.mjs',
     'automation/lib/claude_assist_evidence.mjs', 'automation/lib/claude_assist_evidence_test.mjs',
-    '.mcp.json', '.claude/commands/luxestyle-assist.md', '.github/workflows/luxestyle-assist-tests.yml',
+    'automation/lib/cj_readonly.mjs', 'automation/lib/cj_readonly_test.mjs',
+    'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_read_mcp_test.mjs',
+    'automation/lib/cj_read_mcp_probe_test.mjs',
+    '.mcp.json', '.claude/commands/luxestyle-assist.md', '.github/workflows/diagnose-actions-zugang.yml',
+    '.github/workflows/luxestyle-assist-tests.yml', 'dropship/assistant/CJ-READ-MCP.md',
   ]) {
     assert.deepEqual(classifyChanges([file]).suites, ['assist'], file);
   }
