@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 110,
-  "updatedAt": "2026-11-05T22:51:56+01:00",
+  "revision": 111,
+  "updatedAt": "2026-11-05T23:19:32+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13553,6 +13553,39 @@
     "blockedBy": [
       "overshirt T-Shirt taxonomy requires separate Collection/Template/Merchant review",
       "small overshirt labels and commercial model-image rights unknown",
+      "no shared Claude live lock or receipt",
+      "seven R103 overlay SKUs lack exact CJ variant/media mapping",
+      "Google Merchant reprocessing remains unknown"
+    ],
+    "shopifyProductWrites": 2,
+    "shopifyFileWrites": 2,
+    "merchantWrites": 0,
+    "metricoolWrites": 0,
+    "otherExternalWrites": 0
+  },
+  "followUpRunR111": {
+    "at": "2026-11-05T23:19:32+01:00",
+    "actualUpdates": [
+      "Damen-Plateausandalen16611701883271: title, body, SEO and10 image alt texts",
+      "Damen-Langarmbluse15524522754433: title, body, SEO and7 image alt texts"
+    ],
+    "deferredReadOnly": [
+      "Herrenhemd15520242467201: no write because three gallery designs are not selectable and two image pairs are duplicates"
+    ],
+    "coordination": "Before each product, remote Claude work, exact IDs/handles/SKU prefixes and Shopify updatedAt were checked; no overlap found. Latest Claude work concerned the internal 3D office. Receipt/live lock remain unknown.",
+    "qualityAndRights": "Independent QA2/2 GO with17/17 alt texts and22/22 variants. Small label details and commercial model-image rights remain unknown; block new social content. Blouse T-Shirt taxonomy preserved pending structural review.",
+    "catalogProgress": {
+      "strictLiveCorrectedActiveProducts": 47,
+      "activeProductsExact": 56506,
+      "percent": 0.08318,
+      "remaining": 56459,
+      "remainingPercentApprox": 99.92
+    },
+    "nextStep": "Select the next one or two ACTIVE products only after a fresh Claude branch/PR/transition search and exact Shopify updatedAt read; resolve the deferred shirt only after a separate media/variant decision.",
+    "blockedBy": [
+      "shirt15520242467201 has three gallery designs that are not selectable and two duplicate pairs",
+      "blouse T-Shirt taxonomy requires separate Collection/Template/Merchant review",
+      "small labels and commercial model-image rights unknown",
       "no shared Claude live lock or receipt",
       "seven R103 overlay SKUs lack exact CJ variant/media mapping",
       "Google Merchant reprocessing remains unknown"

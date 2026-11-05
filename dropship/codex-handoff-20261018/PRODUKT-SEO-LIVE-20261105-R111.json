@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "run": "R111",
+  "draft": false,
+  "recordedAt": "2026-11-05T23:19:32+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminProductReadbacksAfterEachSentWrite": 4,
+    "publicReadbackAfterEachSentWrite": true,
+    "publicCachePropagationReadRetryAfterProductWrite": true,
+    "writeRetryAfterStalePublicRead": false,
+    "readyImageAltTextsUpdated": 17,
+    "variantsProtected": 22,
+    "publicationNodesProtected": 13,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2,
+    "publicCachePropagationReadRetriesAfterProductWrites": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/16611701883271",
+      "handle": "gradient-platform-sandalen-mit-riemen-weiss-bl-332864",
+      "publicUrl": "https://luxestyle.ch/products/gradient-platform-sandalen-mit-riemen-weiss-bl-332864",
+      "beforeTitle": "Gradient Platform Sandalen mit Riemen – weiss/blau/pink",
+      "finalUpdatedAt": "2026-11-05T22:07:13Z",
+      "after": {
+        "title": "Damen-Plateausandalen mit Schmetterlingsmuster",
+        "descriptionHtml": "<p>Diese Damen-Sandalen zeigen eine markant profilierte Plateausohle, einen silbern wirkenden Vorderriemen, einen gerafften Riemen mit buntem Schmetterlingsmuster und einen Fersenriemen mit Schnalle.</p><h3>Auswahl</h3><ul><li>Farben: Pink, Blau oder Weiss</li><li>Grössen: 34, 35, 36, 37, 38 und 39</li></ul><p>Bei Pink und Blau geht die weisse Sohle im Fersenbereich in die gewählte Farbe über. Wähle Farbe und Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Damen-Plateausandalen mit Schmetterlingsmuster | LuxeStyle CH",
+          "description": "Damen-Plateausandalen mit profilierter Sohle, Schmetterlingsmuster und Schnallenriemen. Pink, Blau oder Weiss in den Grössen 34–39 wählen."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Pink",
+            "Blau",
+            "Weiss"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 18,
+        "pricesCHF": [
+          20.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {
+          "Pink": "gid://shopify/MediaImage/77472634765703",
+          "Blau": "gid://shopify/MediaImage/77472634798471",
+          "Weiss": "gid://shopify/MediaImage/77472634831239"
+        },
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": {
+        "count": 10,
+        "readyImageAltTextsUpdated": 10,
+        "exactPixelDuplicatePairsPreservedForVariantBindings": [
+          [
+            "gid://shopify/MediaImage/77472633979271",
+            "gid://shopify/MediaImage/77472634765703"
+          ],
+          [
+            "gid://shopify/MediaImage/77472634175879",
+            "gid://shopify/MediaImage/77472634831239"
+          ],
+          [
+            "gid://shopify/MediaImage/77472634241415",
+            "gid://shopify/MediaImage/77472634798471"
+          ]
+        ],
+        "altTexts": [
+          "Pinke Damen-Plateausandale mit Schmetterlingsmuster in schräger Seitenansicht",
+          "Weisse Damen-Plateausandale mit Schmetterlingsmuster in schräger Seitenansicht",
+          "Damen-Plateausandalen mit Schmetterlingsmuster, getragen sowie in Blau und Pink gezeigt",
+          "Blaue Damen-Plateausandale mit Schmetterlingsmuster in schräger Seitenansicht",
+          "Damen-Plateausandalen in Weiss, Pink und Blau, blaue Variante am Fuss",
+          "Pinke Damen-Plateausandalen mit Schmetterlingsmuster, getragen und aus der Nähe",
+          "Weisse Damen-Plateausandalen mit Schmetterlingsmuster am Fuss",
+          "Pinke Damen-Plateausandale mit Schmetterlingsmuster in schräger Seitenansicht",
+          "Blaue Damen-Plateausandale mit Schmetterlingsmuster in schräger Seitenansicht",
+          "Weisse Damen-Plateausandale mit Schmetterlingsmuster in schräger Seitenansicht"
+        ]
+      },
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Komfort und Leichtigkeit",
+        "PU-Oberstoff beziehungsweise PU-Leder",
+        "Gummisohle",
+        "weiche Oberfläche",
+        "rundkugelförmiger Zehenschutz",
+        "Korean Sole beziehungsweise koreanischer Stil",
+        "sicherer Sitz",
+        "ca. 200 g ohne Bezugsgrösse oder Paar-/Einzelschuhbezug",
+        "produktbezogene Liefer-, Prüf-, Rückgabe- und Zahlungsclaims"
+      ],
+      "rightsReview": {
+        "visibleThirdPartyMark": false,
+        "commercialModelImageRights": "unknown",
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "newSocialPublication": "blocked"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15524522754433",
+      "handle": "loose-seaside-shirt-mit-farbblock-patch-600500",
+      "publicUrl": "https://luxestyle.ch/products/loose-seaside-shirt-mit-farbblock-patch-600500",
+      "beforeTitle": "Loose Seaside Shirt mit Farbblock-Patch",
+      "after": {
+        "title": "Damen-Langarmbluse mit pink-grünem Muster",
+        "descriptionHtml": "<p>Diese Damenbluse zeigt ein pink-grünes abstraktes Muster, einen Kragen, eine durchgehende Knopfleiste und lange Ärmel.</p><h3>Auswahl</h3><ul><li>Grössen: M, L, XL und XXL</li></ul><p>Wähle die Grösse über die Option.</p>",
+        "seo": {
+          "title": "Damen-Langarmbluse mit pink-grünem Muster | LuxeStyle CH",
+          "description": "Damen-Langarmbluse mit pink-grünem Muster, Kragen, durchgehender Knopfleiste und langen Ärmeln. In den Grössen M bis XXL wählbar."
+        }
+      },
+      "options": [
+        {
+          "name": "Grösse",
+          "values": [
+            "M",
+            "L",
+            "XL",
+            "XXL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 4,
+        "pricesCHF": [
+          26.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {
+          "allVariants": "gid://shopify/MediaImage/70777905185153"
+        },
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": {
+        "count": 7,
+        "readyImageAltTextsUpdated": 7,
+        "altTexts": [
+          "Damen-Langarmbluse mit pink-grünem Muster als freigestellte Vorderansicht",
+          "Damen-Langarmbluse mit pink-grünem Muster, seitlich getragen",
+          "Damen-Langarmbluse mit pink-grünem Muster, getragen mit verschränkten Armen",
+          "Damen-Langarmbluse mit pink-grünem Muster, getragen mit Hand am Haar",
+          "Damen-Langarmbluse mit pink-grünem Muster als freigestellte Vorderansicht",
+          "Damen-Langarmbluse mit pink-grünem Muster, getragen in gerader Vorderansicht",
+          "Damen-Langarmbluse mit pink-grünem Muster als freigestellte Vorderansicht"
+        ]
+      },
+      "publicationNodesProtected": 7,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "100 % Polyester",
+        "Druck und Färben",
+        "50–65 cm Länge",
+        "ca. 300–330 g",
+        "lockere Passform",
+        "Strandkleid beziehungsweise Strandeignung",
+        "Casual-Stil",
+        "produktbezogene Liefer-, Prüf-, Rückgabe- und Zahlungsclaims"
+      ],
+      "separateStructureReview": [
+        "T-Shirt taxonomy preserved pending Collection/Template/Merchant review"
+      ],
+      "rightsReview": {
+        "smallLabelDetails": "unreadable",
+        "commercialModelImageRights": "unknown",
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "newSocialPublication": "blocked"
+      },
+      "finalUpdatedAt": "2026-11-05T22:12:42Z"
+    }
+  ],
+  "deferredReadOnlyCandidates": [
+    {
+      "id": "gid://shopify/Product/15520242467201",
+      "handle": "leinen-langarm-hemd-herren-fruhlings-weiss-629000",
+      "writes": 0,
+      "reason": "Three of seven gallery images show colours or designs that are not selectable; two image pairs are exact duplicates. Product requires a separate media/variant decision before copy changes."
+    }
+  ],
+  "readback": {
+    "own": {
+      "sandalsHtmlSha256": "6b12576101c7a6953f95d3b9899acf94c4cec4d6c00bc8e9fc51087346a08655",
+      "sandalsProductJsonSha256": "381bc253f2d1ddfbc53dbb1f763e232f9ca9f6fe0953de1576f6900522fc4246",
+      "blouseHtmlSha256": "b03c113dec22001fc8573a07148d1d16c59d2704d5ed9410c23b3e9b3228ec53",
+      "blouseProductJsonSha256": "3fba1fbb9097d8e257bc4ab079299f31485cfe2f4e799799ebe4cc2dd02489c8"
+    },
+    "independentQa": {
+      "status": "GO",
+      "productsPassed": 2,
+      "productsTotal": 2,
+      "altTextsConfirmed": 17,
+      "variantsConfirmed": 22,
+      "allVariantMediaBindingsConfirmed": true,
+      "adminAndPublicReadbacksComplete": true,
+      "sandalsHtmlSha256": "0d8f5ecb603b28da65adc64d16be269919a0176247e3cc1a21b6c90f037c7aca",
+      "sandalsProductJsonSha256": "381bc253f2d1ddfbc53dbb1f763e232f9ca9f6fe0953de1576f6900522fc4246",
+      "blouseHtmlSha256": "879caabc06ebf0a3bd570d52780cf8f29db5218e1e0b01c32abff35c51cc9722",
+      "blouseProductJsonSha256": "3fba1fbb9097d8e257bc4ab079299f31485cfe2f4e799799ebe4cc2dd02489c8",
+      "dynamicHtmlHashesMayDiffer": true
+    }
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 47,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.08318,
+    "roundedPercent": 0.08,
+    "remainingProducts": 56459,
+    "remainingPercentApprox": 99.91682,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeProduct": true,
+    "currentMainObserved": "507e8c04d",
+    "latestClaudeHeadObserved": "5b2f3515b",
+    "exactR111ProductOverlapInCurrentClaudeRefsAndPullRequests": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedReservedBaselineBeforeWrite": true,
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "shopifyUpdatedAtMatchedReservedBaselinesBeforeWrites": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}
