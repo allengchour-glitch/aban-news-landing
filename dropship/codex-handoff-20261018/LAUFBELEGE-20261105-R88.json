@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 1,
+  "run": "R88",
+  "compiledAtUtc": "2026-11-05T07:17:17Z",
+  "dateEuropeZurich": "2026-11-05",
+  "scope": "LuxeStyle / luxestyle.ch only",
+  "continuity": {
+    "branch": "codex/luxestyle-claude-handoff-20261018",
+    "beforeCommit": "b12422e840848759a94ac0686078e0fc2b998135",
+    "beforeRevision": 87,
+    "priorDayLogRead": true,
+    "priorMemoryRead": true,
+    "purchaseWatchEnded": true,
+    "orderQueries": 0
+  },
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "primaryDomain": "luxestyle.ch",
+      "country": "CH",
+      "currency": "CHF",
+      "timezone": "CET",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "matched": true,
+      "channels": {
+        "facebook": "1049840534888592",
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "writeGate": "passed_identity_only_no_content_write_authorized_without_master"
+  },
+  "metricool": {
+    "planning": {
+      "window": {
+        "start": "2026-11-05T07:56:00+01:00",
+        "end": "2026-11-12T07:56:00+01:00",
+        "timezone": "Europe/Zurich"
+      },
+      "objects": 38,
+      "channelStates": 55,
+      "states": {
+        "PENDING": 55
+      },
+      "channels": {
+        "facebook": {
+          "states": 16,
+          "returnedDateCoverage": "2026-11-05/2026-11-11",
+          "gaps": []
+        },
+        "instagram": {
+          "states": 16,
+          "returnedDateCoverage": "2026-11-05/2026-11-11",
+          "gaps": []
+        },
+        "tiktok": {
+          "states": 12,
+          "returnedDateCoverage": "2026-11-05/2026-11-11",
+          "gaps": []
+        },
+        "youtube": {
+          "states": 7,
+          "returnedDateCoverage": "2026-11-05/2026-11-11",
+          "gaps": [],
+          "scheduledMadeForKidsFalseCount": 7
+        },
+        "pinterest": {
+          "states": 4,
+          "returnedGaps": [
+            "2026-11-09",
+            "2026-11-10",
+            "2026-11-11"
+          ],
+          "observedBoardId": "1111333714239531706",
+          "boardName": null
+        },
+        "threads": {
+          "states": 0,
+          "returnedGaps": "entire_window"
+        }
+      },
+      "exactSameChannelDuplicates": 0,
+      "duplicateKey": "slot + full text + full media URL list",
+      "completeHistoricalMasterDedupe": null,
+      "emptyTextPosts": [
+        {
+          "id": 415033593,
+          "uuid": "-8611238648907481079",
+          "channels": [
+            "facebook",
+            "instagram"
+          ],
+          "at": "2026-11-09T16:00:00+01:00"
+        },
+        {
+          "id": 415035691,
+          "uuid": "37985340483322184",
+          "channels": [
+            "facebook",
+            "instagram"
+          ],
+          "at": "2026-11-10T12:30:00+01:00"
+        }
+      ],
+      "writes": 0,
+      "planningCalls": 2,
+      "secondCallReason": "structured extraction after overlong raw response; not an error retry"
+    },
+    "metrics": {
+      "rangeLocalCompletedDays": "2026-10-29/2026-11-04",
+      "definitionCalls": 6,
+      "dataCalls": 6,
+      "nullMeans": "unknown_not_zero",
+      "instagram": {
+        "metricIds": [
+          "IGEV05",
+          "IGEV38",
+          "IGEV37"
+        ],
+        "views": 348,
+        "viewsCompleteDays": 7,
+        "content": 12,
+        "contentCompleteDays": 7,
+        "interactionsDelivered": 1,
+        "interactionsDeliveredDate": "2026-11-03",
+        "interactionsCompleteDays": 1
+      },
+      "facebook": {
+        "metricIds": [
+          "FBEV12",
+          "FBEV34",
+          "FBEV22",
+          "FBEV33"
+        ],
+        "content": 12,
+        "contentCompleteDays": 7,
+        "feedImpressionsOn2026-11-04": 0,
+        "interactionsOn2026-11-04": 1,
+        "reelViewsOn2026-11-04": 199,
+        "otherMetricCompleteDays": 1,
+        "weeklyTotals": null
+      },
+      "threads": {
+        "metricIds": [
+          "THEV06",
+          "THEV05",
+          "THEV02"
+        ],
+        "viewsOn2026-11-04": 0,
+        "interactionsOn2026-11-04": 0,
+        "postsOn2026-11-04": 1,
+        "completeDays": 1,
+        "weeklyTotals": null
+      },
+      "tiktok": {
+        "metricIds": [
+          "TKEV12",
+          "TKEV06",
+          "TKEV01"
+        ],
+        "views": 199,
+        "viewsCompleteDays": 6,
+        "interactionsByDate": {
+          "2026-11-03": 1,
+          "2026-11-04": 0
+        },
+        "interactionsCompleteDays": 2,
+        "videosByDate": {
+          "2026-11-03": 1,
+          "2026-11-04": 2
+        },
+        "videosCompleteDays": 2,
+        "weeklyInteractions": null
+      },
+      "pinterest": {
+        "metricIds": [
+          "PIEV01",
+          "PIEV04",
+          "PIEV06",
+          "PIEV02"
+        ],
+        "impressions": 1723,
+        "interactions": 26,
+        "outgoingClicks": 1,
+        "reachMetricCompleteDays": 5,
+        "unknownDates": [
+          "2026-11-03",
+          "2026-11-04"
+        ],
+        "pins": 18,
+        "pinsCompleteDays": 7
+      },
+      "youtube": {
+        "metricIds": [
+          "YTEV02",
+          "YTEV14",
+          "YTEV16",
+          "YTEV18",
+          "YTEV04"
+        ],
+        "views": 22,
+        "viewsCompleteDays": 5,
+        "unknownViewDates": [
+          "2026-11-03",
+          "2026-11-04"
+        ],
+        "likesCommentsSharesDeliveredAsZeroDays": 4,
+        "interactionUnknownDays": 3,
+        "videoCountOn2026-11-04": 0,
+        "otherVideoCountDays": null
+      },
+      "salesInferenceMade": false
+    }
+  },
+  "shopify": {
+    "selectionSize": 1,
+    "selectionReason": "continue the one open professional master; no unrelated product switch",
+    "product": {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "publishedAt": "2026-08-31T05:11:31Z",
+      "updatedAt": "2026-11-05T02:32:49Z",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "publicHttp": 200,
+      "storefrontFormAndBuyButton": true,
+      "available": true,
+      "priceRange": {
+        "min": "34.90",
+        "max": "51.90",
+        "currency": "CHF"
+      },
+      "variants": [
+        {
+          "name": "A",
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "sku": "CJSN139239101AZ",
+          "price": {
+            "amount": "34.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173719425",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "name": "B",
+          "id": "gid://shopify/ProductVariant/68122445316487",
+          "sku": "CJSN139239102BY",
+          "price": {
+            "amount": "37.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173686657",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "name": "C",
+          "id": "gid://shopify/ProductVariant/68122445349255",
+          "sku": "CJSN139239103CX",
+          "price": {
+            "amount": "40.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173457281",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "name": "D",
+          "id": "gid://shopify/ProductVariant/68122445382023",
+          "sku": "CJSN139239104DW",
+          "price": {
+            "amount": "49.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173588353",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "name": "E",
+          "id": "gid://shopify/ProductVariant/68122445414791",
+          "sku": "CJSN139239105EV",
+          "price": {
+            "amount": "51.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173457281",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "name": "F",
+          "id": "gid://shopify/ProductVariant/68122445447559",
+          "sku": "CJSN139239106FU",
+          "price": {
+            "amount": "44.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173588353",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        },
+        {
+          "name": "G",
+          "id": "gid://shopify/ProductVariant/68122445480327",
+          "sku": "CJSN139239107GT",
+          "price": {
+            "amount": "35.90",
+            "currency": "CHF"
+          },
+          "mediaId": "gid://shopify/MediaImage/70733173490049",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "tracked": false,
+          "inventoryPolicy": "CONTINUE"
+        }
+      ],
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "tagsNonEmpty": true,
+      "repoGuardMatches": [],
+      "ownerRueckholMatch": false,
+      "guardFile": {
+        "path": "automation/lib/kanal_sperren.mjs",
+        "sha256": "88de768661a0454cf1ff170957be1bef7382289382884222d3130e429a18c321"
+      },
+      "featuredImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "width": 1920,
+        "height": 1919,
+        "localSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d"
+      },
+      "variantAImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "width": 800,
+        "height": 654
+      },
+      "productMedia": {
+        "imageCount": 12,
+        "videoCount": 1,
+        "video": {
+          "id": "gid://shopify/Video/77496185356679",
+          "fileName": "cj-1477820492730732544.mp4",
+          "durationSeconds": 27.96,
+          "width": 852,
+          "height": 480,
+          "fps": 25,
+          "videoCodec": "H.264",
+          "audio": "AAC stereo",
+          "sha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+          "boundToCurrentVariant": false,
+          "commercialEditingAndAdvertisingRights": null
+        }
+      },
+      "historicalBinding": {
+        "variantId": "gid://shopify/ProductVariant/56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "status": "HISTORICAL_NOT_CURRENT"
+      },
+      "currentMasterTargetVariant": null,
+      "stockOrDeliveryPromiseMade": false
+    },
+    "writes": 0
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "state": "storyboard_and_cut_plan_only",
+    "professionalMasterMp4": false,
+    "renderTriggered": false,
+    "target": {
+      "durationSeconds": 18,
+      "frames": 540,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "voiceover": false
+    },
+    "hooks": [
+      "Dein Raum. Neues Licht.",
+      "Licht im Detail."
+    ],
+    "cta": "Produkt ansehen",
+    "canonicalMusic": {
+      "path": "automation/music/luxe-premium.wav",
+      "gitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "historicalBuildBinding": null,
+      "finalRightsListeningMixApproval": null
+    },
+    "blockers": [
+      "current variant not selected",
+      "film unit and motif not bound to a current variant",
+      "commercial edit and advertising rights unknown",
+      "852x480/25fps derivative not premium portrait source",
+      "canonical music build and final mix approval incomplete",
+      "no rendered and accepted MP4",
+      "bio, board name and final channel checks incomplete"
+    ],
+    "contentPath": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261105-R88.md"
+  },
+  "klaviyo": {
+    "schemaVersion": 1,
+    "capturedAtUtc": "2026-11-05T06:59:18.250871Z",
+    "dateEuropeZurich": "2026-11-05",
+    "dailyPolicy": {
+      "priorFlowReportToday": false,
+      "flowReportCalls": 1,
+      "metricDiscoveryCalls": 1
+    },
+    "account": {
+      "id": "XWqMAD",
+      "organizationName": "LuxeStyle CH",
+      "websiteUrl": "https://luxestyle.ch",
+      "preferredCurrency": "USD",
+      "timezone": "Europe/Zurich",
+      "testAccount": false
+    },
+    "placedOrderMetric": {
+      "id": "W7XTVD",
+      "name": "Placed Order",
+      "integration": "Shopify"
+    },
+    "timeframe": {
+      "startUtc": "2026-10-28T23:00:00Z",
+      "endUtc": "2026-11-04T23:00:00Z",
+      "localCompletedDays": "2026-10-29/2026-11-04"
+    },
+    "flows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "updated": "2026-10-10T08:13:07Z",
+        "reportRow": "unknown_missing"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "draft",
+        "updated": "2026-11-02T22:55:34Z",
+        "report": {
+          "recipients": 2,
+          "delivered": 2,
+          "opensUnique": 1,
+          "clicksUnique": 0,
+          "conversionsAttributed": 0
+        }
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft",
+        "updated": "2026-11-02T22:55:37Z",
+        "report": {
+          "recipients": 4,
+          "delivered": 4,
+          "opensUnique": 1,
+          "clicksUnique": 0,
+          "conversionsAttributed": 0
+        }
+      },
+      {
+        "id": "XEGbTB",
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "draft",
+        "updated": "2026-11-02T22:55:35Z",
+        "reportRow": "unknown_not_in_requested_report"
+      }
+    ],
+    "capture": {
+      "formsApiCount": 0,
+      "formsApiInterpretation": "does_not_prove_no_capture",
+      "publicHomepageHttp": 200,
+      "publicMarkers": {
+        "klaviyo": true,
+        "publicApiKeyXWqMAD": true,
+        "onsite": true
+      },
+      "endToEndSignupTested": false
+    },
+    "welcomeMessage": {
+      "id": "TTuuTS",
+      "templateId": "VZnxDz",
+      "addTrackingParams": false,
+      "customTrackingParams": null,
+      "smartSending": true
+    },
+    "interpretation": {
+      "shopChfKeptSeparate": true,
+      "klaviyoUsdKeptSeparate": true,
+      "zeroAttributedConversionsNotShopOrderProof": true,
+      "noCustomerContact": true,
+      "writes": 0
+    },
+    "singleApprovalProposal": "Before any later Welcome reactivation, set TTuuTS add_tracking_params false to true only after checking account-wide UTM rules and link previews; not applied.",
+    "sourceFile": "dropship/codex-handoff-20261018/KLAVIYO-READ-20261105-R88.json",
+    "sourceSha256": "61ed2446b20de7e3c2db33c29f3761960ac6b45e0eedbe89908e01aad9be1ef9"
+  },
+  "salesActionForApproval": {
+    "scope": "price-filter SEO pager guard only",
+    "target": "snippets/product-grid.liquid",
+    "observedUrl": "https://luxestyle.ch/collections/beauty-pflege?filter.v.price.lte=50",
+    "publicHttp": 200,
+    "priceInputsWith50": 2,
+    "additionalPagerLinks": 15,
+    "pagerLinksLosingActiveMaxPrice": 15,
+    "existingPatch": "dropship/codex-handoff-20261018/preisfilter-r79/price-filter.patch",
+    "baselineMd5": "003e7ff97eb7a6312f02e1ae10679576",
+    "expectedPatchedMd5": "d53feb1609ea66e1f85b049e56d06dd0",
+    "currentNativeHash": null,
+    "postPatchRenderQa": null,
+    "applied": false,
+    "requiredQa": [
+      "unfiltered",
+      "min only",
+      "max only",
+      "min and max",
+      "clear filter",
+      "normal pagination and load more"
+    ],
+    "rankingOrSalesEffectClaimed": false
+  },
+  "externalWrites": {
+    "shopify": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "theme": 0,
+    "dns": 0,
+    "ads": 0,
+    "customersContacted": 0
+  },
+  "artifacts": [
+    {
+      "path": "dropship/codex-handoff-20261018/MORGENPAKET-20261105-R88.md",
+      "sha256": "dd15c4da899c69faeabfbf9ce6eec0da788100c6a58dc8883059cdbe3047cda4"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261105-R88.md",
+      "sha256": "ce32dfae661eae673a69906e7a591e71dbb2d7d6fe8c9151278803acb560d4ef"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/KLAVIYO-READ-20261105-R88.json",
+      "sha256": "61ed2446b20de7e3c2db33c29f3761960ac6b45e0eedbe89908e01aad9be1ef9"
+    }
+  ],
+  "dnsOneTimeOrder": {
+    "approvalState": "PREVIOUSLY_APPROVED_NOT_REASKED",
+    "checkedAtUtc": "2026-11-05T07:14:34Z",
+    "resolver": "Google Public DNS HTTPS API",
+    "publicRead": [
+      {
+        "name": "send.luxestyle.ch",
+        "type": "CNAME",
+        "dnsStatus": 3,
+        "answers": [],
+        "expected": "3848818023763335087.klaviyodns.com"
+      },
+      {
+        "name": "mtd1._domainkey.luxestyle.ch",
+        "type": "CNAME",
+        "dnsStatus": 3,
+        "answers": [],
+        "expected": "mtd1._domainkey.3848818023763335087.klaviyodns.com"
+      },
+      {
+        "name": "mtd2._domainkey.luxestyle.ch",
+        "type": "CNAME",
+        "dnsStatus": 3,
+        "answers": [],
+        "expected": "mtd2._domainkey.3848818023763335087.klaviyodns.com"
+      },
+      {
+        "name": "luxestyle.ch",
+        "type": "TXT",
+        "dnsStatus": 0,
+        "expected": "klaviyo-site-verification=XWqMAD",
+        "expectedObserved": false,
+        "otherPublicTxtPreservedInRead": true
+      }
+    ],
+    "implementedInThisRun": false,
+    "writes": 0,
+    "zoneReplacementAttempted": false,
+    "authenticatedWriterReadyProven": false,
+    "connectorAndAccountAccess": null,
+    "matchingRuntimeVariableNamesObserved": false,
+    "matchingRuntimeVariableNamesInterpretation": "does_not_prove_no_connector_or_account_access"
+  },
+  "preservedSettings": {
+    "publicFreeShippingThresholdCHF": "50",
+    "internalAfterDiscountThresholdCHF": "45",
+    "customerAccountDomain": "account.luxestyle.com.co",
+    "changed": false
+  }
+}

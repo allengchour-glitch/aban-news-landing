@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "capturedAtUtc": "2026-11-05T06:59:18.250871Z",
+  "dateEuropeZurich": "2026-11-05",
+  "dailyPolicy": {
+    "priorFlowReportToday": false,
+    "flowReportCalls": 1,
+    "metricDiscoveryCalls": 1
+  },
+  "account": {
+    "id": "XWqMAD",
+    "organizationName": "LuxeStyle CH",
+    "websiteUrl": "https://luxestyle.ch",
+    "preferredCurrency": "USD",
+    "timezone": "Europe/Zurich",
+    "testAccount": false
+  },
+  "placedOrderMetric": {
+    "id": "W7XTVD",
+    "name": "Placed Order",
+    "integration": "Shopify"
+  },
+  "timeframe": {
+    "startUtc": "2026-10-28T23:00:00Z",
+    "endUtc": "2026-11-04T23:00:00Z",
+    "localCompletedDays": "2026-10-29/2026-11-04"
+  },
+  "flows": [
+    {
+      "id": "Vse76a",
+      "name": "Abandoned Checkout",
+      "status": "draft",
+      "updated": "2026-10-10T08:13:07Z",
+      "reportRow": "unknown_missing"
+    },
+    {
+      "id": "VbLQj6",
+      "name": "Welcome Series",
+      "status": "draft",
+      "updated": "2026-11-02T22:55:34Z",
+      "report": {
+        "recipients": 2,
+        "delivered": 2,
+        "opensUnique": 1,
+        "clicksUnique": 0,
+        "conversionsAttributed": 0
+      }
+    },
+    {
+      "id": "RnTvsY",
+      "name": "Post-Purchase · Order + Review",
+      "status": "draft",
+      "updated": "2026-11-02T22:55:37Z",
+      "report": {
+        "recipients": 4,
+        "delivered": 4,
+        "opensUnique": 1,
+        "clicksUnique": 0,
+        "conversionsAttributed": 0
+      }
+    },
+    {
+      "id": "XEGbTB",
+      "name": "Abandoned Checkout · 1 Std",
+      "status": "draft",
+      "updated": "2026-11-02T22:55:35Z",
+      "reportRow": "unknown_not_in_requested_report"
+    }
+  ],
+  "capture": {
+    "formsApiCount": 0,
+    "formsApiInterpretation": "does_not_prove_no_capture",
+    "publicHomepageHttp": 200,
+    "publicMarkers": {
+      "klaviyo": true,
+      "publicApiKeyXWqMAD": true,
+      "onsite": true
+    },
+    "endToEndSignupTested": false
+  },
+  "welcomeMessage": {
+    "id": "TTuuTS",
+    "templateId": "VZnxDz",
+    "addTrackingParams": false,
+    "customTrackingParams": null,
+    "smartSending": true
+  },
+  "interpretation": {
+    "shopChfKeptSeparate": true,
+    "klaviyoUsdKeptSeparate": true,
+    "zeroAttributedConversionsNotShopOrderProof": true,
+    "noCustomerContact": true,
+    "writes": 0
+  },
+  "singleApprovalProposal": "Before any later Welcome reactivation, set TTuuTS add_tracking_params false to true only after checking account-wide UTM rules and link previews; not applied."
+}

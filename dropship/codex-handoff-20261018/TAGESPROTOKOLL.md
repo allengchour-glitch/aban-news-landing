@@ -931,3 +931,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 [LUXESTYLE_R86_20261104] [Vier weitere bestätigte Katalogkorrekturen](PRODUKTKATALOG-LIVE-20261104-R86.md) · [Maschinenlesbare Belege](PRODUKTKATALOG-LIVE-20261104-R86.json). Vier serielle Shopify-Writes mit vollständiger Vorherbasis und Admin-/Storefront-Rücklesung; Gesamtkatalog weiter offen.
 
 [LUXESTYLE_R87_20261104] [Fünf weitere bestätigte Katalogkorrekturen](PRODUKTKATALOG-LIVE-20261104-R87.md) · [Maschinenlesbare Belege](PRODUKTKATALOG-LIVE-20261104-R87.json). Fünf serielle Shopify-Writes mit vollständiger Vorherbasis und Admin-/Storefront-Rücklesung; 26 Varianten und 38 Bilder geschützt, Gesamtkatalog weiter offen.
+
+## 05.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | Branch, Revision 87, Projektgedächtnis, Arbeitsstand und letzten Tagesblock frisch gelesen; Shopify und Metricool samt sechs Kanälen verifiziert | luxestyle.ch/CHF sowie Brand 6227837/Europe/Zurich passend; Kauf-Watch beendet, keine Bestellabfrage |
+| Metricool-Planung | Rollierendes Sieben-Tage-Fenster, UUIDs, Kanalzustände, Text und Medien-URLs auf Lücken und exakte kanalgleiche Doppel geprüft | 38 Objekte/55 PENDING; Threads ohne Termin, Pinterest 09.–11.11. ohne zurückgelieferten Termin; zwei FB/IG-Termine mit leerem Text; keine exakten Doppel, vollständige Masterhistorie unbekannt; kein Write |
+| Tageskennzahlen | Gültige IDs entdeckt und sechs kleine Kanalabfragen für 29.10.–04.11. ausgeführt | Teilreihen mit dokumentierter Abdeckung; fehlende Tage unbekannt, keine Verkaufsableitung; Tagesgrenze verbraucht |
+| Shopify / Produkt | Den offenen Projektor mit Status, Preisen, sieben Varianten, Bildern, Video, Tags, Kaufbarkeit und Inventory-Werten gezielt gelesen | ACTIVE/HTTP200/kaufbar; CHF34.90–51.90, untracked/CONTINUE. Historische Variante/SKU nicht mehr aktuell; Zielvariante offen, Video nicht gebunden; keine Produktänderung |
+| Master / Content | Denselben 18-Sekunden-Master auf die aktuelle Variantenlage korrigiert; zwei Hooks, 540-Frame-Schnittplan, echte Bildreferenzen und sechs kanalgetrennte UTMs dokumentiert | Storyboard/Schnittplan, keine MP4. Varianten-/Motiv-/Einheitsbindung, Film-/Musikrechte und Premiumquelle blockieren Render und Social-Ausspielung |
+| Klaviyo | Placed Order W7XTVD entdeckt, genau einen Flowreport und Welcome/Capture-Gegenproben gelesen | Vier gelesene Flows draft; Report-/Capturelücken unbekannt. Genau ein Trackingparameter-Vorschlag für TTuuTS, nicht angewendet; kein Versand, CHF/USD getrennt |
+| SEO / Verkaufsaktion | Beauty-Preisfilter auf drei Seiten eng gegengeprüft und bestehenden R79-Fünfzeilen-Guard erneut abgegrenzt | 15/15 Zusatzpagerlinks verlieren die Höchstpreisgrenze. Enger Patch zur Freigabe; aktueller nativer Hash und Post-Patch-QA offen, kein Theme-Write |
+| DNS-Einmalauftrag | Vier bereits genehmigte Klaviyo-Zielrecords öffentlich gezielt über Google Public DNS gelesen und aktuellen Writer-/Credentialzugang geprüft | Drei CNAME-Ziele DNS-Status3/ohne Antwort, Klaviyo-Apex-TXT nicht beobachtet; einsatzbereiter authentifizierter Writer nicht belegt, Connector/Kontozugriff unbekannt, keine Umsetzung oder Wiederfreigabe |
+| Dokumentation | R88-Paket, Masterplan, Klaviyo-Rohbeleg und maschinenlesbare Laufbelege erstellt; Gedächtnis, Arbeitsstand und Tagesprotokoll gezielt fortgeschrieben | Dokumentationsfortschritt; keine Shop-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Renderänderung, Claude-Empfang unbekannt |
+
+[LUXESTYLE_R88_20261105] [Kompaktes Content- und Verkaufspaket](MORGENPAKET-20261105-R88.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261105-R88.json) · [derselbe Masterplan](MASTER-CONTENT-20261105-R88.md). Keine externe Produktivänderung, keine Kauf-Watch-Abfrage und kein Render.
