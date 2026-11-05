@@ -3,7 +3,9 @@ on:
   pull_request:
     paths:
       - 'automation/claude-assist.mjs'
+      - 'automation/cj-read-mcp.mjs'
       - 'automation/lib/claude_assist*.mjs'
+      - 'automation/lib/cj_read*.mjs'
       - '.mcp.json'
       - '.github/workflows/luxestyle-assist-tests.yml'
 permissions:
@@ -17,7 +19,9 @@ jobs:
         with:
           sparse-checkout: |
             automation/claude-assist.mjs
+            automation/cj-read-mcp.mjs
             automation/lib/claude_assist*.mjs
+            automation/lib/cj_read*.mjs
             .mcp.json
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
@@ -26,5 +30,6 @@ jobs:
       - name: Local assistant and MCP regressions
         run: |
           node --check automation/claude-assist.mjs
-          node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs automation/lib/claude_assist_evidence_test.mjs
+          node --check automation/cj-read-mcp.mjs
+          node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs automation/lib/claude_assist_evidence_test.mjs automation/lib/cj_readonly_test.mjs automation/lib/cj_read_mcp_test.mjs
           node -e 'JSON.parse(require("node:fs").readFileSync(".mcp.json","utf8"))'
