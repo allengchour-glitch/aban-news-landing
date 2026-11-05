@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R94_20261105",
+  "revision": 94,
+  "at": "2026-11-05T15:48:37+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Exactly two ACTIVE Shopify products; titles, descriptionHtml, SEO title/description, and existing image alt text only.",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "identityMatched": true
+  },
+  "products": [
+    {
+      "productId": "gid://shopify/Product/16605072458119",
+      "publicUrl": "https://luxestyle.ch/products/hundelange-aus-braunem-faux-mink-wolle-601600",
+      "status": "ACTIVE",
+      "handle": "hundelange-aus-braunem-faux-mink-wolle-601600",
+      "before": {
+        "title": "Hundepullover mit Norwegermuster, weiss",
+        "seoTitle": "Hundepullover mit Norwegermuster, weiss | LuxeStyle",
+        "seoDescription": "Für Spaziergänge an kühlen Tagen hält dieser Hundelange deinen Vierbeiner warm. Wolle als Material.",
+        "publicHtmlSha256": "13579fa2311b943f1f65892cb57824cac6ca2770eaf54a4fbe53f0f9d4382876",
+        "publicProductJsonSha256": "e7e00da3fadfa2789c90d22ba5cc44489aa688b7f4ffe0df350e39bcd4d88f7b"
+      },
+      "after": {
+        "title": "Hundepullover mit Norwegermuster",
+        "seoTitle": "Hundepullover mit Norwegermuster | LuxeStyle",
+        "seoDescription": "Hundepullover mit Norwegermuster in Braun oder Beige. Grössen XS bis XL auswählen und Varianten bei LuxeStyle Schweiz ansehen.",
+        "descriptionHtml": "<!-- ls-seo-r94 --><p>Hundepullover mit Norwegermuster. Wähle Braun oder Beige sowie eine Grösse von XS bis XL.</p><h3>Farbe und Grösse auswählen</h3><ul><li>Farben: Braun oder Beige</li><li>Grössen: XS, S, M, L oder XL</li><li>Motiv: Norwegermuster</li></ul><p>Prüfe vor dem Kauf die gewählte Farbe, Grösse, das Produktbild und den angezeigten Preis.</p><!-- /ls-seo-r94 -->",
+        "imageAltTexts": [
+          "Hundepullover mit Norwegermuster am Hund",
+          "Hundepullover mit Norwegermuster, Produktansicht",
+          "Hundepullover mit Norwegermuster, Ärmel und Ausschnitt",
+          "Hundepullover mit Norwegermuster am Hund, Seitenansicht",
+          "Hundepullover mit Norwegermuster, Rückseite und Ärmel",
+          "Hundepullover mit Norwegermuster am Hund, Draufsicht",
+          "Hundepullover mit Norwegermuster am Hund, Vorderansicht",
+          "Grössentabelle für Hundepullover, XS bis XL",
+          "Hundepullover mit Norwegermuster, Rückansicht",
+          "Hundepullover mit Norwegermuster, flache Produktansicht",
+          "Hundepullover mit Norwegermuster am Hund"
+        ],
+        "publicHttp": 200,
+        "publicTitle": "Hundepullover mit Norwegermuster | LuxeStyle",
+        "publicH1": "Hundepullover mit Norwegermuster",
+        "canonical": "https://luxestyle.ch/products/hundelange-aus-braunem-faux-mink-wolle-601600",
+        "publicHtmlReadbackSha256": [
+          "a6805bb98680ceee1aa959ed54b931dd89af83e57ac9fea1256a9a228a5f5a9f",
+          "d0a0e9823b9a66b2630cb5dfab58b1135531417e71534d50ba12e41a154fc72b"
+        ],
+        "publicProductJsonSha256": "f9a5c92110539bf4350af818c099d3d2b87178548a384e82e7e6a4b6cf660736",
+        "finalQaChecksPassed": 10,
+        "finalQaChecksTotal": 10
+      },
+      "write": {
+        "combinedProductUpdateAndFileUpdateAttempts": 1,
+        "correctiveProductUpdateAttempts": 0,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "white product-wide colour",
+        "100% wool",
+        "warming performance",
+        "only size M",
+        "30 cm length",
+        "200 g weight",
+        "packaging statement",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "variantCount": 10,
+        "priceRangeCHF": [
+          "21.90",
+          "22.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "publicationCount": 7,
+        "readyImageCount": 11
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/16611936010631",
+      "publicUrl": "https://luxestyle.ch/products/hundekuscheldecke-mit-v-ausschnitt-streifen-751040",
+      "status": "ACTIVE",
+      "handle": "hundekuscheldecke-mit-v-ausschnitt-streifen-751040",
+      "before": {
+        "title": "Hundepullover mit V-Ausschnitt, Streifen",
+        "seoTitle": "Hundepullover mit V-Ausschnitt, Streifen | LuxeStyle CH",
+        "seoDescription": "Hundepullover mit V-Ausschnitt, Streifen bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "intermediateReadback": {
+        "reason": "The first combined write retained the historical V-neck phrase. A later independent full-gallery review showed a round collar, so one evidence-based correction was made.",
+        "title": "Hundepullover mit V-Ausschnitt und Bärenmotiv",
+        "publicHtmlSha256": "085e19811a3d2f30d86d0ce132232843e68a2b1879785d4fdd87c5274cd5f476",
+        "publicProductJsonSha256": "bfe812fbe4a7a7c5c0c154ac076f0c02c41fe16621c5ff06d8e4571cabb17db8"
+      },
+      "after": {
+        "title": "Hundepullover mit Bärenmotiv",
+        "seoTitle": "Hundepullover mit Bärenmotiv | LuxeStyle",
+        "seoDescription": "Hundepullover mit Bärenmotiv in Hellblau, Beige oder Rot. Grössen XS bis XL bei LuxeStyle Schweiz ansehen.",
+        "descriptionHtml": "<!-- ls-seo-r94 --><p>Hundepullover mit Bärenmotiv. Wähle Hellblau, Beige oder Rot sowie eine Grösse von XS bis XL.</p><h3>Farbe und Grösse auswählen</h3><ul><li>Farben: Hellblau, Beige oder Rot</li><li>Grössen: XS, S, M, L oder XL</li><li>Motiv: Bärenmotiv</li></ul><p>Prüfe vor dem Kauf die gewählte Farbe, Grösse, das Produktbild und den angezeigten Preis.</p><!-- /ls-seo-r94 -->",
+        "imageAltTexts": [
+          "Hundepullover mit Bärenmotiv in Beige, Rückenansicht",
+          "Hundepullover mit Bärenmotiv in Hellblau am Hund",
+          "Hundepullover mit Bärenmotiv in Beige, Detailansicht",
+          "Hundepullover mit Bärenmotiv in Rot, Rückenansicht",
+          "Hundepullover mit Bärenmotiv in Hellblau, Rückenansicht",
+          "Hundepullover mit Bärenmotiv in Rot am Hund",
+          "Hundepullover mit Bärenmotiv in Beige am Hund",
+          "Hundepullover mit Bärenmotiv in Rot, Detailansicht",
+          "Hundepullover mit Bärenmotiv in Rot, Rückenansicht"
+        ],
+        "publicHttp": 200,
+        "publicTitle": "Hundepullover mit Bärenmotiv | LuxeStyle",
+        "publicH1": "Hundepullover mit Bärenmotiv",
+        "canonical": "https://luxestyle.ch/products/hundekuscheldecke-mit-v-ausschnitt-streifen-751040",
+        "publicHtmlReadbackSha256": [
+          "93ce42a7e15003ed91f1b62c81afe64aa3813901ad0375e6e7e4a150168d368c",
+          "b7d6d67d94b3c0ba1b8e6999d408fcad386c780e582a837bcb2f31e76cb3e62f"
+        ],
+        "publicProductJsonSha256": "0ae8e38f656d3ca9dae3d9b4d08d059fe542d9993206c7a4495893a83aa89297",
+        "finalQaChecksPassed": 10,
+        "finalQaChecksTotal": 10
+      },
+      "write": {
+        "combinedProductUpdateAndFileUpdateAttempts": 1,
+        "correctiveProductUpdateAttempts": 1,
+        "correctionTrigger": "independent full-gallery evidence of a round collar",
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "V-neck",
+        "striped pattern",
+        "wool",
+        "winter warmth",
+        "leash hole",
+        "elasticity",
+        "Japanese/Korean style",
+        "cat suitability",
+        "weight",
+        "fixed 10–20 working-day delivery",
+        "WELCOME10 discount copy"
+      ],
+      "protected": {
+        "variantCount": 15,
+        "priceRangeCHF": [
+          "16.90",
+          "16.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "publicationCount": 7,
+        "readyImageCount": 9
+      }
+    }
+  ],
+  "htmlHashNote": "Public HTML is dynamic; multiple dated readback hashes are retained. Product JSON stayed stable during final QA.",
+  "unchangedFields": [
+    "product IDs",
+    "handles",
+    "status",
+    "vendor",
+    "product type",
+    "categories",
+    "tags",
+    "options",
+    "variant IDs",
+    "SKUs",
+    "CHF prices",
+    "availability",
+    "inventory tracking",
+    "inventory policy",
+    "media IDs",
+    "media URLs",
+    "publications"
+  ],
+  "openItems": [
+    "Both legacy handles remain unchanged and need a separate redirect-safe review.",
+    "Product 16611936010631 still has the tag decke; collection effects need a separate collection-safe review.",
+    "Product 16611936010631 remains in the general pet clothing category; a leaf-category change was not part of this run.",
+    "An AggregateRating visible on product 16611936010631 was not used because its origin and product binding are unverified.",
+    "The catalogue remains open; this is a two-product batch, not a catalogue-wide completion.",
+    "Inventory counters 0 or -1 on untracked CONTINUE variants are not stock or delivery-time evidence."
+  ],
+  "otherWrites": {
+    "social": 0,
+    "metricool": 0,
+    "merchantFeed": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "discount": 0,
+    "shipping": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0
+  },
+  "independentReadEvidence": {
+    "reportPath": "/workspace/luxestyle-review/seo-dog-products-read-20261105/REPORT.md",
+    "reportSha256": "25dae5a76ed726506409c472bf8bd9074fbe70f9e72a6457ff7f3888025accd2",
+    "auditPath": "/workspace/luxestyle-review/seo-dog-products-read-20261105/audit.json",
+    "auditSha256": "f38bc46b29f784a2ea7cabb1f2b0fd2461a8b3a72549ef49698dfe9f7aa4936f"
+  },
+  "documentationBaselineSha256": {
+    "README.md": "df189e465b478e96d2f1db0d28c3f5f98f8e395a3f71fee28a40bf0716c195a8",
+    "PROJEKTGEDAECHTNIS.md": "c5f2adcba543fd851c7dd7a1192fa5f5d57918e00380921861b7c1b72a9d704a",
+    "TAGESPROTOKOLL.md": "2bd041310cf9f878707f7492fc9ff66ac036f3acc6a620075714a7616baa4efa",
+    "ARBEITSSTAND.json": "4c0cabb0f43dcee885cefea8ae390311549d087d6f96b76e217bcc78841bf007"
+  }
+}

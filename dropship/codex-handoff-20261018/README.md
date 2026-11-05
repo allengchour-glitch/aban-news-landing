@@ -1,5 +1,15 @@
 # LuxeStyle: Codex-Übergabe für die nächste Claude-Session
 
+## Aktueller Stand – 05.11.2026, Revision 94: zwei Produkt-SEO-Fälle live korrigiert
+
+[R94-Live-Bericht](PRODUKT-SEO-LIVE-20261105-R94.md) · [R94-Belege](PRODUKT-SEO-LIVE-20261105-R94.json). Shopify LuxeStyle / `luxestyle.ch` / CHF / Schweiz wurde passend gelesen. Der Lauf korrigierte genau zwei ACTIVE-Hundepullover und ist kein Katalogabschluss.
+
+Produkt `16605072458119` erhielt einen neutralen Norwegermuster-Titel, passende SEO-Felder, einen ausschliesslich auf Braun/Beige und XS–XL begrenzten Body sowie elf sichtbare Bild-Alttexte. Widersprüchliche oder unbelegte Angaben zu Weiss, Wolle, Wärme, nur M, 30 cm, 200 g, Packung und fester Lieferzeit wurden entfernt. Produkt `16611936010631` erhielt final den Titel «Hundepullover mit Bärenmotiv», passende SEO-Felder, einen auf Hellblau/Beige/Rot und XS–XL begrenzten Body sowie neun Bild-Alttexte statt «Hundekuscheldecke»/«Streifen». Wolle, Wärme, V-Ausschnitt, Leinenloch, Elastizität, Stil, Katzen-Eignung, Gewicht, feste Lieferzeit und Rabattkopie wurden entfernt.
+
+Beim zweiten Produkt zeigte eine unabhängige Galerieprüfung nach dem ersten Write einen Rundhals statt des zunächst übernommenen historischen V-Ausschnitts. Ein begründeter Korrektur-Write entfernte diesen Begriff; kein blinder Retry. Alle Mutationen meldeten keine `userErrors`. Vollständige Admin-Readbacks und je zwei öffentliche QA-Lesungen bestätigten final 10/10 Checks pro Seite; Produkt-JSON blieb hashstabil, dynamisches HTML wurde mit beiden gültigen Rücklesehashes dokumentiert.
+
+IDs, Handles, Status, Vendor, Produkttyp, Kategorien, Tags, Optionen, 25 Varianten, SKUs, CHF-Preise, Kaufbarkeit, ungetracktes `CONTINUE`, Medien-IDs/-URLs und je sieben Publikationen blieben erhalten. Alte Handles und der Tag `decke` des zweiten Produkts bleiben für einen getrennten redirect- und collectionsicheren Lauf offen. Keine Lager-/Lieferzusage und keine anderen Shop-, Social-, Flow-, DNS-, Merchant-, Theme-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderwrites.
+
 ## Aktueller Stand – 05.11.2026, Revision 93: frisches Freigabepaket ohne externe Writes
 
 [R93-Mittagspaket](MITTAGSPAKET-20261105-R93.md) · [R93-Belege](LAUFBELEGE-20261105-R93.json) · [derselbe Projektor-Master](MASTER-CONTENT-20261105-R93.md). Shopify LuxeStyle / `luxestyle.ch` / CHF und Metricool Brand `6227837` / `Europe/Zurich` samt sechs Kanalidentitäten wurden frisch passend gelesen. Das aktuelle Fenster 05.11. 14:05 bis 12.11. 14:05 enthält 37 Planobjekte und 54 `PENDING`-Kanalzustände, alle `draft=false` und `autoPublish=true`. Es gibt keine exakten kanalgleichen Slot-/Text-/Mediendoppel und keine zweimal verwendete Medien-URL auf demselben Kanal. Threads bleibt leer; Pinterest hat ab 09.11. keinen zurückgelieferten Termin. Drei Facebook-/Instagram-Medientermine haben leeren Text, neu einschliesslich 12.11. 12:30. Medienidentität und Rechtebindung sind unbekannt; keine Caption-, Termin- oder Publikationsänderung.
