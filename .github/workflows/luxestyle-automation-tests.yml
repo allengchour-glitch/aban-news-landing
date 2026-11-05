@@ -47,6 +47,9 @@ on:
       - 'dropship/pod-auswahl/**'
       - 'dropship/pod-editor-sicherung-2810/**'
       - 'dropship/katalog-einheiten-0411/**'
+      - 'dropship/lagerbestand-0511/**'
+      - 'automation/fortura_feed_holen.sh'
+      - '.github/workflows/fortura-bestand.yml'
       - 'pod/editor-hintergruende.json'
       - 'automation/pod_inject_designer.mjs'
       - 'automation/pod_editor_hintergruende.mjs'
@@ -323,3 +326,41 @@ jobs:
           node --test automation/lib/shopify_host_test.mjs automation/social_queue_test.mjs automation/publish_guard_test.mjs dropship/cj_enrich_test.mjs
       - name: Content preflight (offline evidence only)
         run: python3 -B -m unittest discover -s automation -p 'test_content_preflight.py' -v
+
+  # Lagerbestand 05.11.2026: Fortura-Abgleich (Freigabedatei, null_erlauben nur bei Handstart, Stempel-Gate, Feed-Skript), Einspielskript fuer
+  # templates/product.json (Attrappe der Theme-API) und der Liefer-/Bestandsblock (LiquidJS; Ruby-Liquid und Browsertest laufen nur lokal). Kein Netz, keine Geheimnisse.
+  lagerbestand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/lib
+            automation/fortura_bestand_sync.mjs
+            automation/fortura_bestand_stempel.mjs
+            automation/fortura_feed_holen.sh
+            dropship/lagerbestand-0511
+            dropship/_fortura_sperr_varianten.txt
+            .github/workflows/fortura-bestand.yml
+            .github/workflows/lager-waechter.yml
+            .github/workflows/luxestyle-automation-tests.yml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Werkzeuge fuer die Tests (PyYAML, LiquidJS 10.30.1)
+        run: |
+          python3 -m pip install --quiet pyyaml
+          npm install --silent --no-audit --no-fund --prefix "$RUNNER_TEMP/lq" liquidjs@10.30.1
+      - name: Fortura-Abgleich, Stempel, Feed-Skript, Einspielskript, Block
+        run: |
+          node dropship/lagerbestand-0511/stempel_test.mjs
+          node dropship/lagerbestand-0511/feed_holen_test.mjs
+          node dropship/lagerbestand-0511/kette_test.mjs
+          node dropship/lagerbestand-0511/apply_theme_test.mjs
+          LIQUIDJS_DIR="$RUNNER_TEMP/lq" NUR_TEST=1 OHNE_BROWSER=1 node dropship/lagerbestand-0511/delivery_test.mjs
+          sha1sum automation/fortura_bestand_sync.mjs | grep -q '^0dc135363bd9c5b7259bb0d49d7dd793057fe3f2 ' && echo "fortura_bestand_sync.mjs unveraendert (SHA1 der erprobten Fassung)"
