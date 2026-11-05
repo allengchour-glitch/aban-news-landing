@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "luxestyle-product-seo-live-r104-v1",
+  "run": "R104",
+  "recordedAt": "2026-11-05T21:30:14+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "country": "Switzerland",
+      "currency": "CHF",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminReadbacks": 2,
+    "publicHtmlReadbacksHttp200": 2,
+    "publicProductJsonReadbacksHttp200": 2,
+    "readyImageAltTextsUpdated": 2,
+    "variantsProtected": 2,
+    "publicationNodesProtected": 16,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15470028915073",
+      "handle": "bworld-forstwirtschaft-fga062650",
+      "publicUrl": "https://luxestyle.ch/products/bworld-forstwirtschaft-fga062650",
+      "beforeTitle": "bworld Forstwirtschaft",
+      "afterTitle": "BRUDER bworld Forstwirtschaftsset",
+      "manufacturerSource": {
+        "url": "https://www.bruder.de/shop/de/bworld-forstwirtschaftsset/62650",
+        "articleNumber": "62650",
+        "gtin13": "4001702626501",
+        "searchId": "01a1ad62-9ead-708f-8006-483690e56aa6",
+        "scrapeId": "01a1ad62-a1f1-7503-ba87-5672da4f7e6a"
+      },
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55970901557633",
+        "sku": "fortura-062650",
+        "barcode": "4001702626501",
+        "priceChf": "36.90",
+        "availableForSale": true,
+        "tracked": true,
+        "inventoryPolicy": "DENY",
+        "inventoryQuantity": 45
+      },
+      "media": {
+        "id": "gid://shopify/MediaImage/70130970034561",
+        "width": 2324,
+        "height": 1704,
+        "shopImageSha256": "d5239fe59b6d52bf614046a440156a5b2f22eb07ec56e3eca8275dccaea9f6f6",
+        "officialReferenceSha256": "bc9ca556f79b3a9f9600b60b19d7cf8f270fa804626a804806e5b689465e5008",
+        "finalAlt": "BRUDER bworld Forstwirtschaftsset 62650 mit Figur, Holzspalter und Zubehör"
+      },
+      "publicReadback": {
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "6997257ae2332981f7ff9aecad689d7b3358e0959c02c858855e1f0f47f89621",
+        "productJsonSha256": "947cd831302ab8165edc6134245e7d47543b0defb1dc0dd55c52d4ea82fc7c53"
+      },
+      "publicationNodesProtected": 8
+    },
+    {
+      "id": "gid://shopify/Product/15470029308289",
+      "handle": "polizei-quad-mit-polizist-und-ausstattung-fga063010",
+      "publicUrl": "https://luxestyle.ch/products/polizei-quad-mit-polizist-und-ausstattung-fga063010",
+      "beforeTitle": "Polizei-Quad mit Polizist und Ausstattung",
+      "afterTitle": "BRUDER Polizei-Quad mit Polizist und Ausstattung",
+      "manufacturerSource": {
+        "url": "https://www.bruder.de/shop/de/polizei-quad-mit-polizist-und-ausstattung/63010",
+        "articleNumber": "63010",
+        "gtin13": "4001702630102",
+        "searchId": "01a1ad62-c9ad-70ed-974b-7935750a65ca",
+        "scrapeId": "01a1ad62-cdc7-7212-9de2-86dd23651a04"
+      },
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55970901950849",
+        "sku": "fortura-063010",
+        "barcode": "4001702630102",
+        "priceChf": "36.90",
+        "availableForSale": true,
+        "tracked": true,
+        "inventoryPolicy": "DENY",
+        "inventoryQuantity": 16
+      },
+      "media": {
+        "id": "gid://shopify/MediaImage/70130971705729",
+        "width": 1000,
+        "height": 984,
+        "shopImageSha256": "825e60885bce2d5331052e375885be8d4cfd0d157e4f7542a3985cf568c1917f",
+        "officialReferenceSha256": "a7f760cd2cd06e5b6f3d6b9634759a4c9617f76e56c6ff8fc96ec1692824b4cc",
+        "finalAlt": "BRUDER Polizei-Quad 63010 mit Polizist und Ausstattung"
+      },
+      "publicReadback": {
+        "htmlHttp": 200,
+        "productJsonHttp": 200,
+        "htmlSha256": "fdc3ef8603f242a16acd9c141bf796d605657560dc63d1b3a853a56a46ec86f2",
+        "productJsonSha256": "794553fa4f98936c4bac479f0cedef9b30e8bd521bba298cca891d5127e4110a"
+      },
+      "publicationNodesProtected": 8
+    }
+  ],
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 34,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.06017,
+    "roundedPercent": 0.06,
+    "remainingProducts": 56472,
+    "remainingPercentApprox": 99.94,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "blockedOverlayCases": {
+    "count": 7,
+    "state": "unchanged_blocked_missing_exact_cj_variant_mapping",
+    "skus": [
+      "CJSD108550101AZ",
+      "CJ-CJYD188109128BY",
+      "CJYD242312502BY",
+      "CJ-CJJT163260416PK",
+      "CJSY114580804DW",
+      "CJ-CJJT149562611KP",
+      "CJ-CJJT149562613MN"
+    ],
+    "newCjApiReads": 0,
+    "workflowDispatches": 0
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}
