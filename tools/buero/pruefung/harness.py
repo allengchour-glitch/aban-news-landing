@@ -25,14 +25,23 @@ window.__ROWS = %%ROWS%%;
 (function () {
   var NOW = Date.parse('2026-11-05T20:30:00Z');
   Date.now = function () { return NOW; };
-  var draws = {};
+  var draws = {}, gemountet = new WeakMap();
   window.dash = {
     colors: ['#3b6fd8', '#c0562b', '#2f9e6a', '#8a5bd6', '#c79a1b', '#1f9fb8', '#c4488a', '#6a7280'],
     data: function () { return { status: 'ok', data: window.__ROWS, columns: [], meta: [] }; },
     onData: function (fn) { window.__onData = fn; },
+    // Wie das Dashboard: dash.draw(name, fn) merkt sich die Zeichnung, dash.draw(name) führt sie aus (verborgene werden übersprungen).
+    // Eine Zeichnung darf auch ein Objekt {mount, update, unmount} sein.
     draw: function (name, fn) {
-      if (typeof fn === 'function') { draws[name] = fn; return; }
-      document.querySelectorAll('[data-draw="' + name + '"]').forEach(function (el) { if (!el.closest('[hidden]')) draws[name](el); });
+      if (fn) { draws[name] = fn; return; }
+      document.querySelectorAll('[data-draw="' + name + '"]').forEach(function (el) {
+        if (el.closest('[hidden]')) return;
+        var d = draws[name];
+        if (typeof d === 'function') { d(el); return; }
+        var made = gemountet.get(el);
+        if (made === undefined) { el.replaceChildren(); made = d.mount(el); gemountet.set(el, made); }
+        d.update(el, made);
+      });
     }
   };
   window.__runAll = function () {

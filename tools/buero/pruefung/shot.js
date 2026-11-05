@@ -16,6 +16,7 @@ const dir = process.argv[2];
     p.on('pageerror', (e) => errs.push('pageerror: ' + String(e)));
     p.on('console', (m) => { if (m.type() === 'error') errs.push('console: ' + m.text()); });
     await p.goto('file://' + dir + '/' + file);
+    await p.locator('#kb-tab-buero').click();
     await p.evaluate(() => window.__runAll());
     await p.waitForTimeout(700);
     // Kopf
