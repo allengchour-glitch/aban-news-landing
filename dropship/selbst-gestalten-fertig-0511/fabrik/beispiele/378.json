@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T17:04:15.600Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -128,7 +136,7 @@
    "label": "Beige"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"378\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":378,\"typ\":\"T-SHIRT\",\"titelDe\":\"Grosse Eco Tragetasche\",\"klasse\":\"FLACH_MIT_HINWEIS\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14969,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14970,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[]}],\"druckdateien\":{\"5\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150}},\"hinweise\":[{\"code\":\"tasche\",\"art\":\"einschraenkung\"}],\"farben\":{\"#222222\":[10732],\"#edcea5\":[10733]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Verzichte auf Plastik und pack deine Sachen in diese geräumige Tragetasche aus Bio-Baumwolle. Ob Einkäufe, Bücher oder Reisebedarf, es ist Platz für alles!</p>\n<ul><li>100 % zertifizierte Bio-Baumwolle, Köper 3/1</li><li>Stoffgewicht: 272 g/m²</li><li>Masse: 50,8 × 35,6 × 12,7 cm</li><li>Fassungsvermögen: 23 l</li><li>Maximale Belastung: 13,6 kg</li><li>Zwei lange Henkel aus demselben Stoff, 2,5 × 63,5 cm</li><li>Offenes Hauptfach, flacher Boden</li><li>Der unbedruckte Rohling stammt aus China oder Indien.</li></ul>\n<p>Hinweis: Die Pflegehinweise auf dem Abreissetikett können sich beim Waschen lösen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1500 × 1500 Pixel bei 150 dpi, das sind 25,4 × 25,4 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp: Die Druckfläche endet vor Nähten und Henkeln. Setze dein Motiv nicht an den Rand.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"378\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":378,\"typ\":\"T-SHIRT\",\"titelDe\":\"Grosse Eco Tragetasche\",\"klasse\":\"FLACH_MIT_HINWEIS\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14969,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14970,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[]}],\"druckdateien\":{\"5\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150}},\"hinweise\":[{\"code\":\"tasche\",\"art\":\"einschraenkung\"}],\"farben\":{\"#222222\":[10732],\"#edcea5\":[10733]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Verzichte auf Plastik und pack deine Sachen in diese geräumige Tragetasche aus Bio-Baumwolle. Ob Einkäufe, Bücher oder Reisebedarf, es ist Platz für alles!</p>\n<ul><li>100 % zertifizierte Bio-Baumwolle, Köper 3/1</li><li>Stoffgewicht: 272 g/m²</li><li>Masse: 50,8 × 35,6 × 12,7 cm</li><li>Fassungsvermögen: 23 l</li><li>Maximale Belastung: 13,6 kg</li><li>Zwei lange Henkel aus demselben Stoff, 2,5 × 63,5 cm</li><li>Offenes Hauptfach, flacher Boden</li><li>Der unbedruckte Rohling stammt aus China oder Indien.</li></ul>\n<p>Hinweis: Die Pflegehinweise auf dem Abreissetikett können sich beim Waschen lösen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1500 × 1500 Pixel bei 150 dpi, das sind 25,4 × 25,4 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp: Die Druckfläche endet vor Nähten und Henkeln. Setze dein Motiv nicht an den Rand.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (A, B, C, D)"
  ],
@@ -179,7 +187,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Luggage & Bags > Shopping Totes"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -371,6 +397,25 @@
   "tageMax": 6,
   "ratenVariante": 10732
  },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "tote",
+  "google": "Luggage & Bags > Shopping Totes",
+  "shopify": "gid://shopify/TaxonomyCategory/lb-11"
+ },
  "basisPlatzierung": {
   "id": "front",
   "dateiTyp": "default",
@@ -438,7 +483,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -451,8 +496,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -549,6 +601,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Grosse Eco Tragetasche selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -592,5 +679,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "e13e476d890bd11f952c6dd1bd18055b42a4e8695efa17405afcb1ffea06ecb9"
+ "hash": "b5f688264a52b6cc9f2bffd89f1277d2c09f1e0eaf775c6005bac00d57f41f05"
 }

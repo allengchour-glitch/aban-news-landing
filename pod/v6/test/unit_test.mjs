@@ -12,7 +12,10 @@ import { join } from 'node:path';
 import { hier, repo, V6_DATEI, V5_DATEI } from './lib.mjs';
 import { aufpreisChf as aufpreisRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { schweizerZahl as zahlRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
-import { karteFuerEditor, kartenbuendelFuerEditor, shopVariantenNormalisieren, podKarteGroesstmoeglich, kartenWarnungen, BEKANNTE_HINWEIS_CODES, POD_KARTE_MAX } from '../werkzeug/karte_fuer_editor.mjs';
+import { pathToFileURL } from 'node:url';
+// V6_KARTENBAUER: andere Fassung des Kartenbauers (für die Mutationsprobe)
+const { karteFuerEditor, kartenbuendelFuerEditor, shopVariantenNormalisieren, podKarteGroesstmoeglich, kartenWarnungen, BEKANNTE_HINWEIS_CODES, POD_KARTE_MAX } =
+  await import(process.env.V6_KARTENBAUER ? pathToFileURL(process.env.V6_KARTENBAUER).href : '../werkzeug/karte_fuer_editor.mjs');
 import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
 
 let n = 0; const fehler = [];
@@ -237,6 +240,8 @@ if (katalogOrdner && existsSync(join(katalogOrdner, '71.json'))) {
   pruefe('Bündel: der Editor liest es', !!H.karteNormalisieren(b).karte && H.karteNormalisieren(b).karte.zuordnung['222'].m === '206');
   gleich('Bündel: nicht verkaufte Modelle fallen heraus', Object.keys(kartenbuendelFuerEditor([kat(19), kat(206)], { 111: v19 }).modelle), ['19']);
   pruefe('Bündel: Printful-Variante in keinem Katalog → Abbruch', /stehen in keinem/.test(werft(() => kartenbuendelFuerEditor([kat(19), kat(206)], { 111: 999999991 })) || ''));
+  const k206doppelt = JSON.parse(JSON.stringify(kat(206))); k206doppelt.varianten[0].id = v19;   // eine Printful-Variante steht in zwei Katalogen
+  pruefe('Bündel: Printful-Variante in zwei Katalogen → Abbruch', /steht in den Katalogen von/.test(werft(() => kartenbuendelFuerEditor([kat(19), k206doppelt], { 111: v19 })) || ''));
   pruefe('Bündel: dasselbe Modell zweimal → Abbruch', /doppelt/.test(werft(() => kartenbuendelFuerEditor([kat(19), kat(19)], { 111: v19 })) || ''));
   pruefe('Bündel: ohne Zuordnung → Abbruch', /keine Zuordnung/.test(werft(() => kartenbuendelFuerEditor([kat(19)], {})) || ''));
   pruefe('Bündel: Filter gelten für jedes Modell', Object.values(kartenbuendelFuerEditor([kat(71), kat(19)], { 1: kat(71).varianten[0].id, 2: v19 }, { ohneAufpreis: true }).modelle).every((m) => m.platzierungen.every((p) => p.aufpreisChf === 0)));

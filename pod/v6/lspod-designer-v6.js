@@ -1289,6 +1289,10 @@
       zOrdnen(); speichern(); ebenenLeisteNeu(); formularSynchronisieren();
     }
     function ebeneHinzufuegen(e) {
+      if (!platzierungIn(karte, st.aktiv)) {   // fremde Platzierung (gibt es bei dieser Ausführung nicht): dort kann man nur entfernen, nichts hinzufügen
+        meldung(fmt(T.orphan, { a: titelVon(platzierung(st.aktiv)) }), 'err');
+        return;
+      }
       ebenenAktiv().push(e);
       knotenBauen(e); knotenZeichnen(e); waehlen(e.id); zOrdnen(); tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();
     }
@@ -1536,7 +1540,7 @@
       });
     }
     function geaendert() {
-      druckUrls = {};   // Adressen von früheren Druckdateien gehören zu einem älteren Stand des Entwurfs
+      if (!eingefroren) druckUrls = {};   // Adressen von früheren Druckdateien gehören zu einem älteren Stand des Entwurfs (während des Bauens der Druckdateien bleiben sie)
       ebenenLeisteNeu();
       formularSynchronisieren();
       aufpreisSummeAktualisieren();

@@ -4,15 +4,14 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { lauf, produktAnlegen, zuruecknehmen, vergleiche, leseFrisch, ledgerLesen, produktSetEingabe, sollBeschreibung, shopVariantenVon, Q_PRODUKT, Q_SKU, M_BIND, M_DELETE, MARKER_TAG, AbweichungFehler } from './anlegen.mjs';
 import { neueAttrappe } from './fake_shopify.mjs';
-import { planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
+import { wegwerfOrdner, planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
 import { M_SET, M_META, M_UPDATE } from '../lib/pod_auswahl_schreiben.mjs';
 
 const { ist, wahr, wirft, ende } = neuerTest('anlegen');
 const URL_EDITOR = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v6.js?v=1';
 const plan = (id, opt = {}) => { const k = lade(id); return planeModell({ katalog: k, versand: versand(), uebersetzung: testUebersetzung(k), bilder: bilderFuer(k) }, { jetzt: 'x', stufen: [1, 2], ...opt }); };
 const warte = async () => {};
-const tempOrdner = [];
-const ledger = () => { const d = mkdtempSync(join(tmpdir(), 'fabrik-')); tempOrdner.push(d); return join(d, 'ledger.txt'); };
+const ledger = () => join(wegwerfOrdner('fabrik-'), 'ledger.txt');
 const still = () => {};
 const L = (extra = {}) => ({ editorUrl: URL_EDITOR, log: still, warte, mediaPauseMs: 0, ...extra });
 const tasse = plan(19), cap = plan(206), shirt = plan(71);
@@ -31,6 +30,8 @@ ist('productSet: Varianten mit SKU, Preis (2 Stellen), CONTINUE, nicht verfolgt'
 ist('productSet: jede Variante nennt jede Option', ein.variants.every((v) => v.optionValues.length === ein.productOptions.length), true);
 ist('productSet: Medien mit Alt-Text', ein.files.every((f) => f.contentType === 'IMAGE' && f.alt && f.originalSource.startsWith('https://')), true);
 wahr('productSet: enthält den Platzhalter noch (Schritt 7 ersetzt ihn)', ein.descriptionHtml.includes('__ERSTE_VARIANTE__'));
+ist('productSet: Shopify-Kategorie aus dem Plan (Tasse: Mugs)', ein.category, 'gid://shopify/TaxonomyCategory/hg-11-10-5-5');
+ist('productSet: ohne bekannte Kategorie kein Feld «category»', 'category' in produktSetEingabe({ ...tasse, kategorie: null }), false);
 wahr('productSet: veröffentlicht nichts (kein publish, kein publications-Feld)', !('publications' in ein) && !JSON.stringify(ein).includes('publish'));
 
 // ── Alles gut
@@ -72,6 +73,8 @@ wahr('productSet: veröffentlicht nichts (kein publish, kein publications-Feld)'
   wahr('Abweichung: Medium nicht READY', await abw(() => { p.media[0].status = 'PROCESSING'; p.media[0].lesungen = -1e9; }, 'PROCESSING'));
   wahr('Abweichung: Medium fehlt', await abw(() => { p.media = p.media.slice(1); }, 'fehlt'));
   wahr('Abweichung: Metafeld fehlt', await abw(() => { p.metafields = []; }, 'Metafeld'));
+  wahr('Abweichung: Kategorie anders', await abw(() => { p.category = 'gid://shopify/TaxonomyCategory/hg'; }, 'Kategorie'));
+  wahr('Abweichung: Google-Metafeld weicht ab', await abw(() => { p.metafields.find((m) => m.key === 'google_product_category').value = 'Home & Garden'; }, 'google_product_category'));
   wahr('Abweichung: Metafeld-Karte weicht ab', await abw(() => { p.metafields.find((m) => m.key === 'karte').value = '{"x":1}'; }, 'weicht ab'));
   wahr('Abweichung: Beschreibung', await abw(() => { p.descriptionHtml = '<p>x</p>'; }, 'Beschreibung'));
   wahr('Abweichung: shop.varianten zeigt auf die falsche Printful-Variante', await abw(() => { p.descriptionHtml = p.descriptionHtml.replace(/("shop":\{"varianten":\{"\d+":)\d+/, '$10'); }, 'Beschreibung'));
@@ -151,7 +154,7 @@ for (const wo of ['metafieldsSet', 'productVariantAppendMedia', 'productUpdate']
 { // …aber nie ein Produkt, dessen SKUs nicht zum Modell des Ledgers gehören, oder das nicht mehr DRAFT ist
   const f = neueAttrappe(); const led = ledger();
   writeFileSync(led, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n2026-11-05T00:00:01Z\t${tasse.handle}\t19\tFEHLER\t\ttimeout\n`);
-  const fremd = f.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: ['FREMD_1'] });
+  const fremd = f.legeProduktAn({ handle: tasse.handle, title: tasse.titel, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: ['FREMD_1'] });
   const r = await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still });
   ist('Rücknahme ohne Ledger-ID: Produkt mit fremden SKUs wird nie gelöscht', [r.ergebnisse[0].status, r.exit, f.st.produkte.has(fremd.id)], ['GESPERRT', 5, true]);
   fremd.variants[0].sku = `${9100000 + 19}_77`; f.setzeStatus(fremd.id, 'ACTIVE');
@@ -168,15 +171,16 @@ for (const wo of ['metafieldsSet', 'productVariantAppendMedia', 'productUpdate']
   ist('Rücknahme: VERSUCH ohne Produkt im Shop → WEG, kein Schreibaufruf', [r.ergebnisse[0].status, f.st.schreibaufrufe, ledgerLesen(led).get(tasse.handle).status], ['WEG', 0, 'ZURUECK']);
 }
 { // ein FEHLER ohne VERSUCH (z. B. vor dem Senden gescheitert) macht ein Fremdprodukt gleichen Handles NICHT zum eigenen
+  // Jedes Fremdprodukt trägt hier den richtigen Titel, DRAFT, Marker-Tag und die Plan-SKUs: es weicht NUR in dem einen geprüften Punkt ab (sonst bestünde der Test auch ohne die jeweilige Prüfung, weil der Titel allein schon abweicht; die Mutationsprobe fand das)
   const f = neueAttrappe(); const led = ledger();
   writeFileSync(led, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tFEHLER\t\tSKU-Suche kaputt\n`);
-  f.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: tasse.varianten.map((v) => v.sku) });
+  f.legeProduktAn({ handle: tasse.handle, title: tasse.titel, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: tasse.varianten.map((v) => v.sku) });
   const r = await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
   ist('FEHLER ohne VERSUCH und ohne ID: ein gleichnamiges Produkt wird nicht übernommen (Exit 3, 0 Schreibaufrufe)', [r.exit, f.st.schreibaufrufe], [3, 0]);
   const led2 = ledger(); writeFileSync(led2, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n`);
-  const f2 = neueAttrappe(); f2.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 1, skus: tasse.varianten.map((v) => v.sku) });
+  const f2 = neueAttrappe(); f2.legeProduktAn({ handle: tasse.handle, title: tasse.titel, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 1, skus: tasse.varianten.map((v) => v.sku) });
   ist('VERSUCH, aber das Produkt steht in einem Verkaufskanal: nicht übernommen', (await lauf({ plaene: [tasse], gql: f2.gql, ledgerPfad: led2, ...L() })).exit, 3);
-  const f3 = neueAttrappe(); f3.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: [...tasse.varianten.map((v) => v.sku), 'FREMD_9'] });
+  const f3 = neueAttrappe(); f3.legeProduktAn({ handle: tasse.handle, title: tasse.titel, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: [...tasse.varianten.map((v) => v.sku), 'FREMD_9'] });
   const led3 = ledger(); writeFileSync(led3, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n`);
   ist('VERSUCH, aber eine SKU gehört nicht zum Plan: nicht übernommen', (await lauf({ plaene: [tasse], gql: f3.gql, ledgerPfad: led3, ...L() })).exit, 3);
 }
@@ -333,5 +337,4 @@ ist('Ledger lesen: Datei fehlt → leer', ledgerLesen('/gibt/es/nicht.txt').size
 ist('sollBeschreibung ersetzt beide Platzhalter', (() => { const s = sollBeschreibung(tasse, { ersteVarianteNr: 123, editorUrl: URL_EDITOR }); return [s.includes('data-variant="123"'), s.includes(URL_EDITOR), s.includes('__')]; })(), [true, true, false]);
 ist('shopVariantenVon: nur Varianten des Plans, Nummer ohne gid, Wert = Printful-Variante aus dem Plan', shopVariantenVon(tasse, [{ id: 'gid://shopify/ProductVariant/77', sku: tasse.varianten[0].sku }, { id: 'gid://shopify/ProductVariant/78', sku: 'FREMD_1' }]), { 77: tasse.varianten[0].printfulVariantId });
 ist('sollBeschreibung trägt die Abbildung ein (Platzhalter samt Anführungszeichen weg)', (() => { const s = sollBeschreibung(tasse, { ersteVarianteNr: 1, editorUrl: URL_EDITOR, shopVarianten: { 5: 9 } }); return [s.includes('"shop":{"varianten":{"5":9}}'), s.includes('__SHOP_VARIANTEN__')]; })(), [true, false]);
-for (const d of tempOrdner) rmSync(d, { recursive: true, force: true });   // keine Wegwerf-Ordner im Temp-Verzeichnis zurücklassen
 ende();

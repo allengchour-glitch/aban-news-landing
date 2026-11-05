@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T17:11:57.685Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -155,7 +163,7 @@
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"673\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":673,\"typ\":\"STICKER\",\"titelDe\":\"Kiss-Cut holografische Aufkleber\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":183,\"breitePx\":900,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":179491,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/3x3.png?v=1678979038\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":105,\"flaecheOben\":105,\"flaecheBreite\":519,\"flaecheHoehe\":519,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":183,\"vorlage\":{\"vorlageId\":179491,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/3x3.png?v=1678979038\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":105,\"flaecheOben\":105,\"flaecheBreite\":519,\"flaecheHoehe\":519,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16705},{\"printfileId\":184,\"vorlage\":{\"vorlageId\":179492,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/4x4.png?v=1678979038\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":69,\"flaecheOben\":69,\"flaecheBreite\":590,\"flaecheHoehe\":590,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16706},{\"printfileId\":185,\"vorlage\":{\"vorlageId\":179493,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/5_5x5_5.png?v=1679043099\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":16,\"flaecheOben\":16,\"flaecheBreite\":697,\"flaecheHoehe\":697,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16707}]}],\"druckdateien\":{\"183\":{\"printfileId\":183,\"breitePx\":900,\"hoehePx\":900,\"dpi\":300},\"184\":{\"printfileId\":184,\"breitePx\":1200,\"hoehePx\":1200,\"dpi\":300},\"185\":{\"printfileId\":185,\"breitePx\":1650,\"hoehePx\":1650,\"dpi\":300}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":183},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":184},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":185},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":16705,\"druckdateiGruppe\":0},{\"printfulVariantId\":16706,\"druckdateiGruppe\":1},{\"printfulVariantId\":16707,\"druckdateiGruppe\":2}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Bring Glitzer in dein Leben mit diesen holografischen Aufklebern.</p>\n<p>Sie sind aus hochwertigem Vinyl, lassen sich leicht abziehen und aufkleben, und die Klebeschicht auf der Rückseite sorgt für eine lange Haltbarkeit.</p>\n<p>Der besondere holografische Effekt fängt das Licht faszinierend ein und macht sie zum ultimativen Blickfang.</p>\n<ul><li>Heissgeprägt, das erzeugt ein tiefes 3D-Muster</li><li>Robustes Vinyl, ideal für den Innenbereich</li><li>Schnelle und einfache, blasenfreie Anwendung</li></ul>\n<p>Hinweis: Dieses Produkt ist nur für den Innenbereich geeignet.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li><li><strong>Druckdatei (Druckfläche):</strong> 900 × 900 Pixel bei 300 dpi, das sind 7,6 × 7,6 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"673\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":673,\"typ\":\"STICKER\",\"titelDe\":\"Kiss-Cut holografische Aufkleber\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":183,\"breitePx\":900,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":179491,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/3x3.png?v=1678979038\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":105,\"flaecheOben\":105,\"flaecheBreite\":519,\"flaecheHoehe\":519,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":183,\"vorlage\":{\"vorlageId\":179491,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/3x3.png?v=1678979038\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":105,\"flaecheOben\":105,\"flaecheBreite\":519,\"flaecheHoehe\":519,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16705},{\"printfileId\":184,\"vorlage\":{\"vorlageId\":179492,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/4x4.png?v=1678979038\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":69,\"flaecheOben\":69,\"flaecheBreite\":590,\"flaecheHoehe\":590,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16706},{\"printfileId\":185,\"vorlage\":{\"vorlageId\":179493,\"bildUrl\":\"https://files.cdn.printful.com/m/Holographic_stickers/medium/template/5_5x5_5.png?v=1679043099\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":16,\"flaecheOben\":16,\"flaecheBreite\":697,\"flaecheHoehe\":697,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16707}]}],\"druckdateien\":{\"183\":{\"printfileId\":183,\"breitePx\":900,\"hoehePx\":900,\"dpi\":300},\"184\":{\"printfileId\":184,\"breitePx\":1200,\"hoehePx\":1200,\"dpi\":300},\"185\":{\"printfileId\":185,\"breitePx\":1650,\"hoehePx\":1650,\"dpi\":300}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":183},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":184},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":185},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":16705,\"druckdateiGruppe\":0},{\"printfulVariantId\":16706,\"druckdateiGruppe\":1},{\"printfulVariantId\":16707,\"druckdateiGruppe\":2}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Bring Glitzer in dein Leben mit diesen holografischen Aufklebern.</p>\n<p>Sie sind aus hochwertigem Vinyl, lassen sich leicht abziehen und aufkleben, und die Klebeschicht auf der Rückseite sorgt für eine lange Haltbarkeit.</p>\n<p>Der besondere holografische Effekt fängt das Licht ein.</p>\n<ul><li>Heissgeprägt, das erzeugt ein tiefes 3D-Muster</li><li>Robustes Vinyl, ideal für den Innenbereich</li><li>Schnelle und einfache, blasenfreie Anwendung</li></ul>\n<p>Hinweis: Dieses Produkt ist nur für den Innenbereich geeignet.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -204,7 +212,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Decorative Stickers"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -514,6 +540,25 @@
   "tageMax": 6,
   "ratenVariante": 16705
  },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "sticker",
+  "google": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Decorative Stickers",
+  "shopify": "gid://shopify/TaxonomyCategory/ae-2-1-2-8-4"
+ },
  "basisPlatzierung": {
   "id": "default",
   "dateiTyp": "default",
@@ -572,7 +617,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -585,8 +630,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -683,6 +735,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Kiss-Cut holografische Aufkleber selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -726,5 +813,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "10b5f046142087872c40f897c73a74bbd62d45b4f505e28193861f56a2b9c9a8"
+ "hash": "14f1b9342c1e7bee3520fe888f3e2c375d5f98d6af8b24fd88d615ac05dbc541"
 }

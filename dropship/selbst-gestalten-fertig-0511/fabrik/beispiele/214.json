@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T16:40:31.438Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -63,9 +71,9 @@
    "art": "groesse",
    "werte": [
     "35,6 × 35,6 cm",
+    "50,8 × 30,5 cm",
     "40,6 × 40,6 cm",
     "45,7 × 45,7 cm",
-    "50,8 × 30,5 cm",
     "55,9 × 55,9 cm"
    ]
   }
@@ -92,6 +100,26 @@
    "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 2"
   },
   {
+   "sku": "9100214_7907",
+   "printfulVariantId": 7907,
+   "optionen": {
+    "Grösse": "50,8 × 30,5 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 30,5 cm",
+   "herkunft": "EU",
+   "kostenUsd": 17.64,
+   "ekRechnungUsd": 22.23,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 44.9,
+   "nettoChf": 4.69,
+   "nettoBeiMesskursChf": 7.63,
+   "bindend": "kosten",
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 3"
+  },
+  {
    "sku": "9100214_49605",
    "printfulVariantId": 49605,
    "optionen": {
@@ -109,7 +137,7 @@
    "nettoChf": 4.05,
    "nettoBeiMesskursChf": 6.9,
    "bindend": "kosten",
-   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 3"
+   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 4"
   },
   {
    "sku": "9100214_9515",
@@ -128,26 +156,6 @@
    "preisChf": 45.9,
    "nettoChf": 4.4,
    "nettoBeiMesskursChf": 7.44,
-   "bindend": "kosten",
-   "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 4"
-  },
-  {
-   "sku": "9100214_7907",
-   "printfulVariantId": 7907,
-   "optionen": {
-    "Grösse": "50,8 × 30,5 cm"
-   },
-   "farbe": null,
-   "groesse": "50,8 × 30,5 cm",
-   "herkunft": "EU",
-   "kostenUsd": 17.64,
-   "ekRechnungUsd": 22.23,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 16.69,
-   "aufpreisUsd": 0,
-   "preisChf": 44.9,
-   "nettoChf": 4.69,
-   "nettoBeiMesskursChf": 7.63,
    "bindend": "kosten",
    "bildAlt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 5"
   },
@@ -186,19 +194,19 @@
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/214/49605_1787221751.jpg",
+   "url": "https://files.cdn.printful.com/products/214/7907_1787221751.jpg",
    "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 3",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/214/9515_1787221751.jpg",
+   "url": "https://files.cdn.printful.com/products/214/49605_1787221751.jpg",
    "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 4",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/214/7907_1787221751.jpg",
+   "url": "https://files.cdn.printful.com/products/214/9515_1787221751.jpg",
    "alt": "Premium Kissen mit Allover-Druck selbst gestalten Ansicht 5",
    "rolle": "variante",
    "label": null
@@ -210,14 +218,14 @@
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"214\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":214,\"typ\":\"CUT-SEW\",\"titelDe\":\"Premium Kissen mit Allover-Druck\",\"klasse\":\"PANEL\",\"standardTechnik\":\"CUT-SEW\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1705,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138340,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1705,\"vorlage\":{\"vorlageId\":1138340,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49604},{\"printfileId\":1706,\"vorlage\":{\"vorlageId\":1138343,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/44/449dbd4913056788f41a63f1c5a02361?v=1782806119\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":104,\"flaecheOben\":104,\"flaecheBreite\":2793,\"flaecheHoehe\":2793,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49605},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22711,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/dd/ddf5a0ee97e4069b477ee0f829de5873?v=1716210942\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9515},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22713,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/f5/f5f1ed70116a720b5a5ba10fe8621476?v=1626336829\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":7907},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22709,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/35/35667f9d0dafad8e7c71c85ab7069e76?v=1716211036\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11077}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1705,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138335,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1705,\"vorlage\":{\"vorlageId\":1138335,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49604},{\"printfileId\":1706,\"vorlage\":{\"vorlageId\":1138342,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8a/8a1983f3d9d16523c4805d0bde7af6a7?v=1782806147\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":104,\"flaecheOben\":104,\"flaecheBreite\":2793,\"flaecheHoehe\":2793,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49605},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22712,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/10/10e4ae2613228963003ef4a5c8a2a2c6?v=1626336859\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9515},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22714,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/24/24d22af1992642db6ba773a1cdf0e773?v=1716211002\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":7907},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22710,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bf1b4fc8b72ac7a83be669d14a8bfc37?v=1716211053\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11077}]}],\"druckdateien\":{\"32\":{\"printfileId\":32,\"breitePx\":2850,\"hoehePx\":2850,\"dpi\":150},\"72\":{\"printfileId\":72,\"breitePx\":3150,\"hoehePx\":1950,\"dpi\":150},\"214\":{\"printfileId\":214,\"breitePx\":3450,\"hoehePx\":3450,\"dpi\":150},\"1705\":{\"printfileId\":1705,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"1706\":{\"printfileId\":1706,\"breitePx\":2550,\"hoehePx\":2550,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"front\":1705,\"back\":1705},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":1706,\"back\":1706},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":32,\"back\":32},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":72,\"back\":72},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":214,\"back\":214},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":49604,\"druckdateiGruppe\":0},{\"printfulVariantId\":49605,\"druckdateiGruppe\":1},{\"printfulVariantId\":9515,\"druckdateiGruppe\":2},{\"printfulVariantId\":7907,\"druckdateiGruppe\":3},{\"printfulVariantId\":11077,\"druckdateiGruppe\":4}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Du möchtest Farbe in dein Zuhause bringen? Dieses Kissen mit hochwertigem Gefühl und formstabiler Füllung ist genau richtig.</p>\n<p>Es macht jeden Raum luxuriöser und ist der perfekte Anlass für ein kurzes Nickerchen.</p>\n<ul><li>Bezug aus 100 % Polyester</li><li>Stoffgewicht: 275 g/m²</li><li>Stoff mit Leinenoptik</li><li>Verdeckter Reissverschluss</li><li>Bezug maschinenwaschbar</li><li>Formstabile Füllung aus 100 % Polyester im Lieferumfang (nur Handwäsche)</li><li>Die Rohlinge in Mexiko stammen aus Material aus China und Mexiko.</li><li>Die Rohlinge in der EU stammen aus Material aus China und Polen.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li><li><strong>Druckdatei (Vorderseite):</strong> 2250 × 2250 Pixel bei 150 dpi, das sind 38,1 × 38,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"214\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":214,\"typ\":\"CUT-SEW\",\"titelDe\":\"Premium Kissen mit Allover-Druck\",\"klasse\":\"PANEL\",\"standardTechnik\":\"CUT-SEW\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1705,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138340,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1705,\"vorlage\":{\"vorlageId\":1138340,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d8/d8f84e5a8589175de83c12ee8797f533?v=1782806176\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49604},{\"printfileId\":1706,\"vorlage\":{\"vorlageId\":1138343,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/44/449dbd4913056788f41a63f1c5a02361?v=1782806119\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":104,\"flaecheOben\":104,\"flaecheBreite\":2793,\"flaecheHoehe\":2793,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49605},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22711,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/dd/ddf5a0ee97e4069b477ee0f829de5873?v=1716210942\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9515},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22713,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/f5/f5f1ed70116a720b5a5ba10fe8621476?v=1626336829\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":7907},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22709,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/35/35667f9d0dafad8e7c71c85ab7069e76?v=1716211036\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11077}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1705,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138335,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1705,\"vorlage\":{\"vorlageId\":1138335,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/36/36f76c0814ad0417d62371602e4340ec?v=1782806210\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":116,\"flaecheOben\":116,\"flaecheBreite\":2769,\"flaecheHoehe\":2769,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49604},{\"printfileId\":1706,\"vorlage\":{\"vorlageId\":1138342,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8a/8a1983f3d9d16523c4805d0bde7af6a7?v=1782806147\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":104,\"flaecheOben\":104,\"flaecheBreite\":2793,\"flaecheHoehe\":2793,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49605},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22712,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/10/10e4ae2613228963003ef4a5c8a2a2c6?v=1626336859\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9515},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22714,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/24/24d22af1992642db6ba773a1cdf0e773?v=1716211002\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":7907},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22710,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bf1b4fc8b72ac7a83be669d14a8bfc37?v=1716211053\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11077}]}],\"druckdateien\":{\"32\":{\"printfileId\":32,\"breitePx\":2850,\"hoehePx\":2850,\"dpi\":150},\"72\":{\"printfileId\":72,\"breitePx\":3150,\"hoehePx\":1950,\"dpi\":150},\"214\":{\"printfileId\":214,\"breitePx\":3450,\"hoehePx\":3450,\"dpi\":150},\"1705\":{\"printfileId\":1705,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"1706\":{\"printfileId\":1706,\"breitePx\":2550,\"hoehePx\":2550,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"front\":1705,\"back\":1705},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":1706,\"back\":1706},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":32,\"back\":32},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":72,\"back\":72},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":214,\"back\":214},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":49604,\"druckdateiGruppe\":0},{\"printfulVariantId\":7907,\"druckdateiGruppe\":3},{\"printfulVariantId\":49605,\"druckdateiGruppe\":1},{\"printfulVariantId\":9515,\"druckdateiGruppe\":2},{\"printfulVariantId\":11077,\"druckdateiGruppe\":4}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Du möchtest Farbe in dein Zuhause bringen? Dieses Kissen mit hochwertigem Gefühl und formstabiler Füllung ist genau richtig.</p>\n<ul><li>Bezug aus 100 % Polyester</li><li>Stoffgewicht: 275 g/m²</li><li>Stoff mit Leinenoptik</li><li>Verdeckter Reissverschluss</li><li>Bezug maschinenwaschbar</li><li>Formstabile Füllung aus 100 % Polyester im Lieferumfang (nur Handwäsche)</li><li>Die Rohlinge in Mexiko stammen aus Material aus China und Mexiko.</li><li>Die Rohlinge in der EU stammen aus Material aus China und Polen.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
  ],
  "uebersetzung": {
   "ok": true,
   "fehler": [],
-  "saetze": 10,
+  "saetze": 9,
   "nichtUebernommen": []
  },
  "metafelder": [
@@ -261,7 +269,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Decor > Throw Pillows"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -968,16 +994,16 @@
     "druckdateiGruppe": 0
    },
    {
+    "printfulVariantId": 7907,
+    "druckdateiGruppe": 3
+   },
+   {
     "printfulVariantId": 49605,
     "druckdateiGruppe": 1
    },
    {
     "printfulVariantId": 9515,
     "druckdateiGruppe": 2
-   },
-   {
-    "printfulVariantId": 7907,
-    "druckdateiGruppe": 3
    },
    {
     "printfulVariantId": 11077,
@@ -992,6 +1018,25 @@
   "tageMin": 3,
   "tageMax": 6,
   "ratenVariante": 49604
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "pillow",
+  "google": "Home & Garden > Decor > Throw Pillows",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-3-64"
  },
  "basisPlatzierung": {
   "id": "front",
@@ -1038,9 +1083,9 @@
   "kandidaten": [
    "https://files.cdn.printful.com/o/upload/product-catalog-img/f8/f8f08e9fe5e868d738198ed371e8c045_l",
    "https://files.cdn.printful.com/products/214/49604_1787221751.jpg",
+   "https://files.cdn.printful.com/products/214/7907_1787221751.jpg",
    "https://files.cdn.printful.com/products/214/49605_1787221751.jpg",
    "https://files.cdn.printful.com/products/214/9515_1787221751.jpg",
-   "https://files.cdn.printful.com/products/214/7907_1787221751.jpg",
    "https://files.cdn.printful.com/products/214/11077_1787221761.jpg"
   ]
  },
@@ -1054,7 +1099,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1067,8 +1112,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1165,6 +1217,41 @@
    "grund": "printful_sync bestimmt «front» nicht gesichert (2 Flächen ohne Aufpreis (front, back): printful_sync schickt nur eine Datei): Aufträge blieben Entwurf bei Printful"
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1208,5 +1295,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "2c31184a9cd7b7f39933be77d120e3a898725f563c96e86151519aa043817c04"
+ "hash": "fb76f6122148ce721593e85228057f06d00015840f14670f57aa662dee24cae5"
 }

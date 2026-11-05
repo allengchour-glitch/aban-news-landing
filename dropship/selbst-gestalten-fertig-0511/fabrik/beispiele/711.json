@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T17:18:21.420Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -128,7 +136,7 @@
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"711\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":711,\"typ\":\"SUBLIMATION\",\"titelDe\":\"Sherpa-Decke\",\"klasse\":\"FLACH\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":477,\"breitePx\":9000,\"hoehePx\":6000,\"dpi\":150},\"vorlage\":{\"vorlageId\":203303,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bfb6adbadd463707d43c56f186e79c53?v=1732277660\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":3,\"flaecheOben\":123,\"flaecheBreite\":721,\"flaecheHoehe\":481,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":477,\"vorlage\":{\"vorlageId\":203303,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bfb6adbadd463707d43c56f186e79c53?v=1732277660\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":3,\"flaecheOben\":123,\"flaecheBreite\":721,\"flaecheHoehe\":481,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17483},{\"printfileId\":208,\"vorlage\":{\"vorlageId\":203301,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/93/93db0286ee2d1696123efef18ad34c3a?v=1692260682\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":3,\"flaecheOben\":61,\"flaecheBreite\":720,\"flaecheHoehe\":606,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17482},{\"printfileId\":271,\"vorlage\":{\"vorlageId\":203306,\"bildUrl\":\"https://files.cdn.printful.com/m/aop_sherpa_blanket/medium/templates/horizontal_blanket.png?v=1774009077\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":6,\"flaecheOben\":95,\"flaecheBreite\":718,\"flaecheHoehe\":540,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17449}]}],\"druckdateien\":{\"208\":{\"printfileId\":208,\"breitePx\":9450,\"hoehePx\":7950,\"dpi\":150},\"271\":{\"printfileId\":271,\"breitePx\":12451,\"hoehePx\":9376,\"dpi\":150},\"477\":{\"printfileId\":477,\"breitePx\":9000,\"hoehePx\":6000,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":477},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":208},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":271},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":17483,\"druckdateiGruppe\":0},{\"printfulVariantId\":17482,\"druckdateiGruppe\":1}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Diese edle Sherpa-Decke verbindet ein plüschiges Gefühl mit aussergewöhnlicher Weichheit und ist der ultimative Begleiter für Gemütlichkeit.</p>\n<p>Ideal für den Alltag auf dem Sofa, für kühle Abende oder zum Einrichten deines Zimmers: Diese Decke bietet unvergleichliche Behaglichkeit und Wärme.</p>\n<ul><li>Gesamtzusammensetzung: 100 % Polyesterfasern</li><li>Stoff: 100 % Polyester (51,5 % Oberstoff, 48,5 % Sherpa-Stoff)</li><li>Glatte Seite: 220 g/m², Sherpa-Stoff: 240 g/m²</li><li>Die Rohlinge stammen aus China.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Druckfläche):</strong> 9000 × 6000 Pixel bei 150 dpi, das sind 152,4 × 101,6 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"711\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":711,\"typ\":\"SUBLIMATION\",\"titelDe\":\"Sherpa-Decke\",\"klasse\":\"FLACH\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":477,\"breitePx\":9000,\"hoehePx\":6000,\"dpi\":150},\"vorlage\":{\"vorlageId\":203303,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bfb6adbadd463707d43c56f186e79c53?v=1732277660\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":3,\"flaecheOben\":123,\"flaecheBreite\":721,\"flaecheHoehe\":481,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":477,\"vorlage\":{\"vorlageId\":203303,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/bf/bfb6adbadd463707d43c56f186e79c53?v=1732277660\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":3,\"flaecheOben\":123,\"flaecheBreite\":721,\"flaecheHoehe\":481,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17483},{\"printfileId\":208,\"vorlage\":{\"vorlageId\":203301,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/93/93db0286ee2d1696123efef18ad34c3a?v=1692260682\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":3,\"flaecheOben\":61,\"flaecheBreite\":720,\"flaecheHoehe\":606,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17482},{\"printfileId\":271,\"vorlage\":{\"vorlageId\":203306,\"bildUrl\":\"https://files.cdn.printful.com/m/aop_sherpa_blanket/medium/templates/horizontal_blanket.png?v=1774009077\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":6,\"flaecheOben\":95,\"flaecheBreite\":718,\"flaecheHoehe\":540,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17449}]}],\"druckdateien\":{\"208\":{\"printfileId\":208,\"breitePx\":9450,\"hoehePx\":7950,\"dpi\":150},\"271\":{\"printfileId\":271,\"breitePx\":12451,\"hoehePx\":9376,\"dpi\":150},\"477\":{\"printfileId\":477,\"breitePx\":9000,\"hoehePx\":6000,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":477},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":208},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":271},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":17483,\"druckdateiGruppe\":0},{\"printfulVariantId\":17482,\"druckdateiGruppe\":1}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Diese Sherpa-Decke verbindet ein plüschiges Gefühl mit besonderer Weichheit.</p>\n<p>Ideal für den Alltag auf dem Sofa, für kühle Abende oder zum Einrichten deines Zimmers.</p>\n<ul><li>Gesamtzusammensetzung: 100 % Polyesterfasern</li><li>Stoff: 100 % Polyester (51,5 % Oberstoff, 48,5 % Sherpa-Stoff)</li><li>Glatte Seite: 220 g/m², Sherpa-Stoff: 240 g/m²</li><li>Die Rohlinge stammen aus China.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -177,7 +185,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Linens & Bedding > Bedding > Blankets"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -452,6 +478,25 @@
   "tageMax": 6,
   "ratenVariante": 17483
  },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "blanket",
+  "google": "Home & Garden > Linens & Bedding > Bedding > Blankets",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-15-1-4"
+ },
  "basisPlatzierung": {
   "id": "default",
   "dateiTyp": "default",
@@ -517,7 +562,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -530,8 +575,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -628,6 +680,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Sherpa-Decke selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -671,5 +758,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "6182081eb2d6a688c7903be87bdcb18ce3f8fc0e956e34d73fb0286c0d42e9ac"
+ "hash": "0924a0f1c821fc4c4aca56a1f31d23f996261d39e81b883152b26c67f4b7dd7a"
 }

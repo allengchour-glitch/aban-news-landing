@@ -796,8 +796,11 @@ szenario('buendel-tshirt', true, async (b, srv) => {
   await p.locator('.lsp6-cta').click();
   await p.waitForFunction(() => /gibt es .* nicht/.test(document.querySelector('[data-feld="status"]').innerText));
   pruefe('Kauf mit Motiv auf nicht vorhandener Platzierung gesperrt: kein Upload, kein Warenkorb', s.uploads.length === 0 && s.warenkorb.length === 0);
-  // Das Motiv dort entfernen: der Reiter verschwindet, die Vorderseite des Modells ist aktiv
+  // Auf der fremden Platzierung kann man nur entfernen: Text und Sticker hinzufügen ist dort gesperrt
   await tab(p, 'Vorderseite gross').click();
+  await p.getByRole('button', { name: '➕ Text' }).click();
+  pruefe('auf der fremden Platzierung lässt sich nichts hinzufügen (weiter nur das eine Motiv)', (await p.locator('.lsp6-layer').count()) === 1 && /gibt es .* nicht/.test(await status(p).innerText()));
+  // Das Motiv dort entfernen: der Reiter verschwindet, die Vorderseite des Modells ist aktiv
   await p.locator('.lsp6-layer').first().click();
   await p.locator('.lsp6-del').click();
   await p.waitForFunction(() => document.querySelectorAll('.lsp6-tab[data-fremd="1"]').length === 0);
@@ -829,6 +832,11 @@ szenario('buendel-tshirt', true, async (b, srv) => {
   await t.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
   pruefe('Variante ausserhalb der Zuordnung: Kauf gesperrt (es gibt nie still die Standardgeometrie)', t.uploads.length === 0 && t.warenkorb.length === 0 && (await t.page.locator('.lsp6-cta').isEnabled()));
   await t.schliessen();
+  // Plan B: Bündel als Datei (data-karte-url) statt Inline-JSON in der Beschreibung
+  const v = await seiteOeffnen(b, srv.url, { ...PC, query: BUENDEL + '&karteurl=1' });
+  await editorBereit(v.page);
+  pruefe('Plan B: Bündel per data-karte-url geladen, Modus «karte», acht Reiter, kein Inline-JSON im Container', (await v.page.locator('.lsp6').getAttribute('data-modus')) === 'karte' && (await v.page.locator('.lsp6-tab').count()) === 8 && (await v.page.locator('.lspod-designer-v6 script#lspod-karte').count()) === 0 && v.fehler.length === 0, v.fehler.join('|'));
+  await v.schliessen();
   // Beschädigtes Bündel (Zuordnung ohne Modell) → Rückfall auf den v5-Modus ohne Seitenfehler
   const u = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=buendel&m=71&shop=1001:4012:999' });
   await editorBereit(u.page);
@@ -892,6 +900,17 @@ szenario('variante-waehrend-upload', true, async (b, srv) => {
   const pod = JSON.parse(w.properties._pod_karte);
   pruefe('zweiter Versuch: Variante 1003, Karte und Datei stimmen überein', w.id === '1003' && pod.sv === '1003' && pod.pv === 16586 && `${s.uploads[1].breite}x${s.uploads[1].hoehe}` === dim(2), JSON.stringify([w.id, pod, s.uploads[1]]));
   await s.schliessen();
+  // Wechsel im selben Augenblick wie der Klick (noch bevor die Druckdatei gerechnet ist): die Datei wird trotzdem für die Variante des Klicks gebaut
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=19&shop=1001:1320,1002:4830,1003:16586&varianten=1001:11 oz,1002:15 oz,1003:20 oz' });
+  await editorBereit(t.page);
+  await textHinzufuegen(t.page, 'Tasse');
+  await t.page.evaluate(() => {
+    document.querySelector('.lsp6-cta').click();
+    const r = document.querySelector('input[name="id"][value="1003"]'); r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  await t.page.waitForFunction(() => /gewechselt/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 15000 });
+  pruefe('Wechsel im Moment des Klicks: Datei bleibt die der Variante des Klicks (11 oz), Warenkorb unberührt', t.uploads.length === 1 && `${t.uploads[0].breite}x${t.uploads[0].hoehe}` === dim(0) && t.warenkorb.length === 0, JSON.stringify(t.uploads));
+  await t.schliessen();
 });
 
 // ── F3 (Gegenleser 1 und 2): zwei schnelle Foto-Bearbeitungen, der langsamere Upload darf nicht gewinnen ──
@@ -1047,7 +1066,8 @@ szenario('reiter-sichtbar', true, async (b, srv) => {
     const p = s.page;
     let alle = true, letzte = '', ueberlauf = false;
     for (const w of wahl) {
-      await p.locator(`.lsp6-tab[data-p="${w}"]`).click();
+      // über die Schnittstelle wechseln: ein Klick von Playwright rückt den Reiter selbst ins Bild und würde einen fehlenden Rücksprung im Editor verdecken
+      await p.evaluate((id) => window.LSPOD6.editors[0].wechseln(id), w);
       const r = await sichtbar(p);
       ueberlauf = ueberlauf || r.ueberlauf;
       if (!r.ok) { alle = false; letzte = `${w}: ${JSON.stringify(r)}`; }

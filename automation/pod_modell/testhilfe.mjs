@@ -1,11 +1,19 @@
 // Gemeinsame Hilfen der Tests der Modell-Fabrik (kein Netz). Echte Katalogdateien liegen in dropship/selbst-gestalten-fertig-0511/werkzeuge/testdaten/katalog/.
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { modellkarteBauen } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs';
 import { planeModell as planeEcht } from './plan.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
+/**
+ * Wegwerf-Ordner im Temp-Verzeichnis, der beim Ende des Prozesses IMMER verschwindet (auch bei einem Absturz oder process.exit mitten im Test): Gegenleser 2, K9: die Mutationsprobe und abgestürzte Tests
+ * hinterliessen Hunderte Ordner (fabrik-*, pm-*, bm-*) in /tmp.
+ */
+const angelegt = [];
+export function wegwerfOrdner(praefix) { const d = mkdtempSync(join(tmpdir(), praefix)); angelegt.push(d); return d; }
+process.on('exit', () => { for (const d of angelegt) { try { rmSync(d, { recursive: true, force: true }); } catch { /* weg oder gesperrt */ } } });
 export const lade = (id) => JSON.parse(readFileSync(join(HIER, '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/testdaten/katalog', `${id}.json`), 'utf8'));
 export const tief = (o) => JSON.parse(JSON.stringify(o));
 

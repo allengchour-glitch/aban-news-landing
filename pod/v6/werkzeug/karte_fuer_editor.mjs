@@ -156,7 +156,15 @@ export function podKarteGroesstmoeglich(karte) {
   const dt = {};
   for (const x of p) if (x.dateiTyp && x.dateiTyp !== x.id) dt[x.id] = x.dateiTyp;
   if (Object.keys(dt).length) o.dt = dt;
-  if (p.some((x) => x.printfile.breitePx * x.printfile.hoehePx > MAX_PIXEL_STANDARD)) o.px = p.map((x) => '9999x9999');
+  // px steht nur, wenn eine Druckdatei durch die Obergrenze kleiner als das Printfile wird (gleiche Rechnung wie renderGroesse im Editor)
+  const gross = (x) => x.printfile.breitePx * x.printfile.hoehePx > MAX_PIXEL_STANDARD;
+  if (p.some(gross)) {
+    o.px = p.map((x) => {
+      if (!gross(x)) return `${x.printfile.breitePx}x${x.printfile.hoehePx}`;
+      const k = Math.sqrt(MAX_PIXEL_STANDARD / (x.printfile.breitePx * x.printfile.hoehePx));
+      return `${Math.max(1, Math.floor(x.printfile.breitePx * k))}x${Math.max(1, Math.floor(x.printfile.hoehePx * k))}`;
+    });
+  }
   o.ap = p.reduce((s, x) => s + (x.aufpreisChf || 0), 0);
   return JSON.stringify(o).length;
 }

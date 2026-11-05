@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.955Z",
+  "am": "2026-11-05T21:14:20.402Z",
   "katalogGeholt": "2026-11-05T17:13:36.580Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -830,7 +838,7 @@
    "label": "Schwarz"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>20 bis 25 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"574\" data-klasse=\"UNGEEIGNET\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":574,\"typ\":\"SHOES\",\"titelDe\":\"Herren Leinwand\",\"klasse\":\"UNGEEIGNET\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"shoe_left\",\"dateiTyp\":\"shoe_left\",\"titelDe\":\"Schuh links\",\"titelEn\":\"Left shoe\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150},\"vorlage\":{\"vorlageId\":557948,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":0,\"flaecheOben\":0,\"flaecheBreite\":3000,\"flaecheHoehe\":3000,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"shoe_right\",\"dateiTyp\":\"shoe_right\",\"titelDe\":\"Schuh rechts\",\"titelEn\":\"Right shoe\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150},\"vorlage\":{\"vorlageId\":558003,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":0,\"flaecheOben\":0,\"flaecheBreite\":3000,\"flaecheHoehe\":3000,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titelDe\":\"Etikett innen\",\"titelEn\":\"Branding\",\"art\":\"etikett\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":263,\"breitePx\":1050,\"hoehePx\":600,\"dpi\":150},\"vorlage\":{\"vorlageId\":558004,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":457,\"flaecheOben\":902,\"flaecheBreite\":2081,\"flaecheHoehe\":1190,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]}],\"druckdateien\":{\"263\":{\"printfileId\":263,\"breitePx\":1050,\"hoehePx\":600,\"dpi\":150},\"292\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150}},\"hinweise\":[],\"farben\":{\"#ffffff\":[14736,14737,14738,14739,14740,14741,14742,14743,14744,14745,14746,14747,14748,14749,14750,14751,14752],\"#000000\":[20888,20889,20890,20891,20892,20893,20894,20895,20896,20897,20898,20899,20900,20901,20902,20903,20904]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Schuh links):</strong> 2325 × 2325 Pixel bei 150 dpi, das sind 39,4 × 39,4 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>22 bis 30 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"574\" data-klasse=\"UNGEEIGNET\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":574,\"typ\":\"SHOES\",\"titelDe\":\"Herren Leinwand\",\"klasse\":\"UNGEEIGNET\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"shoe_left\",\"dateiTyp\":\"shoe_left\",\"titelDe\":\"Schuh links\",\"titelEn\":\"Left shoe\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150},\"vorlage\":{\"vorlageId\":557948,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":0,\"flaecheOben\":0,\"flaecheBreite\":3000,\"flaecheHoehe\":3000,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"shoe_right\",\"dateiTyp\":\"shoe_right\",\"titelDe\":\"Schuh rechts\",\"titelEn\":\"Right shoe\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150},\"vorlage\":{\"vorlageId\":558003,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":0,\"flaecheOben\":0,\"flaecheBreite\":3000,\"flaecheHoehe\":3000,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titelDe\":\"Etikett innen\",\"titelEn\":\"Branding\",\"art\":\"etikett\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":263,\"breitePx\":1050,\"hoehePx\":600,\"dpi\":150},\"vorlage\":{\"vorlageId\":558004,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":457,\"flaecheOben\":902,\"flaecheBreite\":2081,\"flaecheHoehe\":1190,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]}],\"druckdateien\":{\"263\":{\"printfileId\":263,\"breitePx\":1050,\"hoehePx\":600,\"dpi\":150},\"292\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150}},\"hinweise\":[],\"farben\":{\"#ffffff\":[14736,14737,14738,14739,14740,14741,14742,14743,14744,14745,14746,14747,14748,14749,14750,14751,14752],\"#000000\":[20888,20889,20890,20891,20892,20893,20894,20895,20896,20897,20898,20899,20900,20901,20902,20903,20904]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Schuh links):</strong> 2325 × 2325 Pixel bei 150 dpi, das sind 39,4 × 39,4 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (US Men, UK, Europe, Japan, Foot Length, Outsole Length)"
  ],
@@ -884,7 +892,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"20–25\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"22–30\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "male"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -1170,6 +1196,25 @@
   "tageMax": 25,
   "ratenVariante": 20898
  },
+ "lieferzeit": {
+  "min": 22,
+  "max": 30,
+  "quelle": "berechnet",
+  "versandTage": [
+   20,
+   25
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "canvas",
+  "google": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-3-4-2-2"
+ },
  "basisPlatzierung": {
   "id": "shoe_left",
   "dateiTyp": "shoe_left",
@@ -1235,7 +1280,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1248,8 +1293,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1346,6 +1398,41 @@
    "grund": "printful_sync bestimmt «front» nicht gesichert («front» steht nicht in der Dateiliste des Printful-Produkts (shoe_left, shoe_right, label_inside)): Aufträge blieben Entwurf bei Printful"
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Versandtage 20 bis 25 plus Fertigung 2 bis 5 Werktage: die Seite nennt 22 bis 30 Werktage, länger als bei den übrigen «Selbst gestalten»-Produkten (Besitzer bestätigt)"
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Herren Leinwand selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1389,5 +1476,5 @@
   }
  ],
  "anlegbar": false,
- "hash": "975e31d03c536ffe0978d0df50cc3b0fac981dff6e2661a8e06ba8a2b094a324"
+ "hash": "9969a4ba1c53c58c3114fffd33690655a892074b7c4411bda6ed5f216335f48e"
 }

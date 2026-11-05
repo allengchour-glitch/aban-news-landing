@@ -3,7 +3,7 @@ import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { repraesentant, brauchtMessung, messeEine, main } from './versand_messen.mjs';
-import { planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
+import { wegwerfOrdner, planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
 
 const { ist, wahr, ende } = neuerTest('versand_messen');
 const v = (id, farbe, groesse) => ({ printfulVariantId: id, farbe, groesse });
@@ -44,7 +44,7 @@ const antwort = (status, j, kopf = {}) => ({ status, headers: { get: (k) => kopf
 
 // ── Kommandozeile: schreibt NUR die Versanddatei, fremde Einträge bleiben, kein Schlüssel im Protokoll
 {
-  const d = mkdtempSync(join(tmpdir(), 'vm-'));
+  const d = wegwerfOrdner('vm-');
   const k = lade(19), erz = (p) => p;
   const p19 = erz(planeModell({ katalog: k, versand: versand('10.39', 3, 6, 999999), uebersetzung: testUebersetzung(k), bilder: bilderFuer(k) }, { jetzt: 'x', stufen: [1, 2] }));
   writeFileSync(join(d, '19.json'), JSON.stringify(p19));

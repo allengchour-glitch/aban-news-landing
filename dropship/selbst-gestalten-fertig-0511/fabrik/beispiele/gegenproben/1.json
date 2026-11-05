@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.402Z",
   "katalogGeholt": "2026-11-05T17:04:33.791Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -61,520 +69,40 @@
    "name": "Grösse",
    "art": "groesse",
    "werte": [
-    "29,7 × 42 cm",
-    "21 × 29,7 cm",
-    "A1 (59,4 × 84,1 cm)",
-    "A2 (42 × 59,4 cm)",
-    "25,4 × 25,4 cm",
-    "25,4 × 61 cm",
-    "27,9 × 35,6 cm",
-    "27,9 × 43,2 cm",
-    "30,5 × 30,5 cm",
-    "30,5 × 40,6 cm",
-    "30,5 × 45,7 cm",
-    "35,6 × 35,6 cm",
-    "40,6 × 40,6 cm",
-    "40,6 × 50,8 cm",
-    "40,6 × 61 cm",
-    "45,7 × 45,7 cm",
-    "45,7 × 61 cm",
-    "50,8 × 50,8 cm",
-    "50,8 × 61 cm",
-    "50,8 × 71,1 cm",
-    "50,8 × 76,2 cm",
-    "61 × 61 cm",
-    "61 × 81,3 cm",
-    "61 × 91,4 cm",
     "12,7 × 17,8 cm",
     "15,2 × 20,3 cm",
     "20,3 × 25,4 cm",
     "20,3 × 30,5 cm",
+    "21 × 29,7 cm",
+    "22,9 × 27,9 cm",
+    "25,4 × 25,4 cm",
+    "30,5 × 30,5 cm",
+    "27,9 × 35,6 cm",
     "20,3 × 50,8 cm",
-    "22,9 × 27,9 cm"
+    "27,9 × 43,2 cm",
+    "30,5 × 40,6 cm",
+    "29,7 × 42 cm",
+    "35,6 × 35,6 cm",
+    "30,5 × 45,7 cm",
+    "25,4 × 61 cm",
+    "40,6 × 40,6 cm",
+    "40,6 × 50,8 cm",
+    "45,7 × 45,7 cm",
+    "40,6 × 61 cm",
+    "A2 (42 × 59,4 cm)",
+    "50,8 × 50,8 cm",
+    "45,7 × 61 cm",
+    "50,8 × 61 cm",
+    "50,8 × 71,1 cm",
+    "61 × 61 cm",
+    "50,8 × 76,2 cm",
+    "61 × 81,3 cm",
+    "A1 (59,4 × 84,1 cm)",
+    "61 × 91,4 cm"
    ]
   }
  ],
  "varianten": [
-  {
-   "sku": "9100001_48504",
-   "printfulVariantId": 48504,
-   "optionen": {
-    "Grösse": "29,7 × 42 cm"
-   },
-   "farbe": null,
-   "groesse": "29,7 × 42 cm",
-   "herkunft": "EU",
-   "kostenUsd": 11.25,
-   "ekRechnungUsd": 14.18,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 29.9,
-   "nettoChf": 4.14,
-   "nettoBeiMesskursChf": 6,
-   "bindend": "kosten",
-   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 1"
-  },
-  {
-   "sku": "9100001_48505",
-   "printfulVariantId": 48505,
-   "optionen": {
-    "Grösse": "21 × 29,7 cm"
-   },
-   "farbe": null,
-   "groesse": "21 × 29,7 cm",
-   "herkunft": "EU",
-   "kostenUsd": 7.5,
-   "ekRechnungUsd": 9.45,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 25.9,
-   "nettoChf": 4.83,
-   "nettoBeiMesskursChf": 6.34,
-   "bindend": "kosten",
-   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 2"
-  },
-  {
-   "sku": "9100001_19527",
-   "printfulVariantId": 19527,
-   "optionen": {
-    "Grösse": "A1 (59,4 × 84,1 cm)"
-   },
-   "farbe": null,
-   "groesse": "A1 (59,4 × 84,1 cm)",
-   "herkunft": "EU",
-   "kostenUsd": 17.23,
-   "ekRechnungUsd": 21.71,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 37.9,
-   "nettoChf": 4.49,
-   "nettoBeiMesskursChf": 6.92,
-   "bindend": "kosten",
-   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 3"
-  },
-  {
-   "sku": "9100001_19528",
-   "printfulVariantId": 19528,
-   "optionen": {
-    "Grösse": "A2 (42 × 59,4 cm)"
-   },
-   "farbe": null,
-   "groesse": "A2 (42 × 59,4 cm)",
-   "herkunft": "EU",
-   "kostenUsd": 12.89,
-   "ekRechnungUsd": 16.24,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 31.9,
-   "nettoChf": 4.07,
-   "nettoBeiMesskursChf": 6.09,
-   "bindend": "kosten",
-   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 4"
-  },
-  {
-   "sku": "9100001_6239",
-   "printfulVariantId": 6239,
-   "optionen": {
-    "Grösse": "25,4 × 25,4 cm"
-   },
-   "farbe": null,
-   "groesse": "25,4 × 25,4 cm",
-   "herkunft": "EU",
-   "kostenUsd": 8.05,
-   "ekRechnungUsd": 10.14,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 25.9,
-   "nettoChf": 4.21,
-   "nettoBeiMesskursChf": 5.77,
-   "bindend": "kosten",
-   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 5"
-  },
-  {
-   "sku": "9100001_48493",
-   "printfulVariantId": 48493,
-   "optionen": {
-    "Grösse": "25,4 × 61 cm"
-   },
-   "farbe": null,
-   "groesse": "25,4 × 61 cm",
-   "herkunft": "EU",
-   "kostenUsd": 11.82,
-   "ekRechnungUsd": 14.89,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 30.9,
-   "nettoChf": 4.39,
-   "nettoBeiMesskursChf": 6.3,
-   "bindend": "kosten",
-   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 6"
-  },
-  {
-   "sku": "9100001_14125",
-   "printfulVariantId": 14125,
-   "optionen": {
-    "Grösse": "27,9 × 35,6 cm"
-   },
-   "farbe": null,
-   "groesse": "27,9 × 35,6 cm",
-   "herkunft": "EU",
-   "kostenUsd": 9.83,
-   "ekRechnungUsd": 12.39,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 28.9,
-   "nettoChf": 4.86,
-   "nettoBeiMesskursChf": 6.59,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48494",
-   "printfulVariantId": 48494,
-   "optionen": {
-    "Grösse": "27,9 × 43,2 cm"
-   },
-   "farbe": null,
-   "groesse": "27,9 × 43,2 cm",
-   "herkunft": "EU",
-   "kostenUsd": 11.01,
-   "ekRechnungUsd": 13.87,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 29.9,
-   "nettoChf": 4.41,
-   "nettoBeiMesskursChf": 6.25,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_4464",
-   "printfulVariantId": 4464,
-   "optionen": {
-    "Grösse": "30,5 × 30,5 cm"
-   },
-   "farbe": null,
-   "groesse": "30,5 × 30,5 cm",
-   "herkunft": "EU",
-   "kostenUsd": 9.07,
-   "ekRechnungUsd": 11.43,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 27.9,
-   "nettoChf": 4.83,
-   "nettoBeiMesskursChf": 6.49,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_1349",
-   "printfulVariantId": 1349,
-   "optionen": {
-    "Grösse": "30,5 × 40,6 cm"
-   },
-   "farbe": null,
-   "groesse": "30,5 × 40,6 cm",
-   "herkunft": "EU",
-   "kostenUsd": 11.11,
-   "ekRechnungUsd": 14,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 29.9,
-   "nettoChf": 4.3,
-   "nettoBeiMesskursChf": 6.15,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_3876",
-   "printfulVariantId": 3876,
-   "optionen": {
-    "Grösse": "30,5 × 45,7 cm"
-   },
-   "farbe": null,
-   "groesse": "30,5 × 45,7 cm",
-   "herkunft": "EU",
-   "kostenUsd": 11.62,
-   "ekRechnungUsd": 14.64,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 30.9,
-   "nettoChf": 4.61,
-   "nettoBeiMesskursChf": 6.51,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_6240",
-   "printfulVariantId": 6240,
-   "optionen": {
-    "Grösse": "35,6 × 35,6 cm"
-   },
-   "farbe": null,
-   "groesse": "35,6 × 35,6 cm",
-   "herkunft": "EU",
-   "kostenUsd": 10.09,
-   "ekRechnungUsd": 12.71,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 28.9,
-   "nettoChf": 4.57,
-   "nettoBeiMesskursChf": 6.32,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_4465",
-   "printfulVariantId": 4465,
-   "optionen": {
-    "Grösse": "40,6 × 40,6 cm"
-   },
-   "farbe": null,
-   "groesse": "40,6 × 40,6 cm",
-   "herkunft": "EU",
-   "kostenUsd": 11.87,
-   "ekRechnungUsd": 14.96,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 30.9,
-   "nettoChf": 4.33,
-   "nettoBeiMesskursChf": 6.25,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_3877",
-   "printfulVariantId": 3877,
-   "optionen": {
-    "Grösse": "40,6 × 50,8 cm"
-   },
-   "farbe": null,
-   "groesse": "40,6 × 50,8 cm",
-   "herkunft": "EU",
-   "kostenUsd": 12.13,
-   "ekRechnungUsd": 15.28,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 30.9,
-   "nettoChf": 4.03,
-   "nettoBeiMesskursChf": 5.98,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48495",
-   "printfulVariantId": 48495,
-   "optionen": {
-    "Grösse": "40,6 × 61 cm"
-   },
-   "farbe": null,
-   "groesse": "40,6 × 61 cm",
-   "herkunft": "EU",
-   "kostenUsd": 12.94,
-   "ekRechnungUsd": 16.3,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 31.9,
-   "nettoChf": 4.02,
-   "nettoBeiMesskursChf": 6.04,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_6242",
-   "printfulVariantId": 6242,
-   "optionen": {
-    "Grösse": "45,7 × 45,7 cm"
-   },
-   "farbe": null,
-   "groesse": "45,7 × 45,7 cm",
-   "herkunft": "EU",
-   "kostenUsd": 12.64,
-   "ekRechnungUsd": 15.93,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 31.9,
-   "nettoChf": 4.36,
-   "nettoBeiMesskursChf": 6.35,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_1",
-   "printfulVariantId": 1,
-   "optionen": {
-    "Grösse": "45,7 × 61 cm"
-   },
-   "farbe": null,
-   "groesse": "45,7 × 61 cm",
-   "herkunft": "EU",
-   "kostenUsd": 13.15,
-   "ekRechnungUsd": 16.57,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 32.9,
-   "nettoChf": 4.66,
-   "nettoBeiMesskursChf": 6.7,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48496",
-   "printfulVariantId": 48496,
-   "optionen": {
-    "Grösse": "50,8 × 50,8 cm"
-   },
-   "farbe": null,
-   "groesse": "50,8 × 50,8 cm",
-   "herkunft": "EU",
-   "kostenUsd": 13.05,
-   "ekRechnungUsd": 16.44,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 32.9,
-   "nettoChf": 4.77,
-   "nettoBeiMesskursChf": 6.81,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48497",
-   "printfulVariantId": 48497,
-   "optionen": {
-    "Grösse": "50,8 × 61 cm"
-   },
-   "farbe": null,
-   "groesse": "50,8 × 61 cm",
-   "herkunft": "EU",
-   "kostenUsd": 13.15,
-   "ekRechnungUsd": 16.57,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 32.9,
-   "nettoChf": 4.66,
-   "nettoBeiMesskursChf": 6.7,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48498",
-   "printfulVariantId": 48498,
-   "optionen": {
-    "Grösse": "50,8 × 71,1 cm"
-   },
-   "farbe": null,
-   "groesse": "50,8 × 71,1 cm",
-   "herkunft": "EU",
-   "kostenUsd": 13.15,
-   "ekRechnungUsd": 16.57,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 32.9,
-   "nettoChf": 4.66,
-   "nettoBeiMesskursChf": 6.7,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_16365",
-   "printfulVariantId": 16365,
-   "optionen": {
-    "Grösse": "50,8 × 76,2 cm"
-   },
-   "farbe": null,
-   "groesse": "50,8 × 76,2 cm",
-   "herkunft": "EU",
-   "kostenUsd": 13.15,
-   "ekRechnungUsd": 16.57,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 32.9,
-   "nettoChf": 4.66,
-   "nettoBeiMesskursChf": 6.7,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48499",
-   "printfulVariantId": 48499,
-   "optionen": {
-    "Grösse": "61 × 61 cm"
-   },
-   "farbe": null,
-   "groesse": "61 × 61 cm",
-   "herkunft": "EU",
-   "kostenUsd": 13.15,
-   "ekRechnungUsd": 16.57,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 32.9,
-   "nettoChf": 4.66,
-   "nettoBeiMesskursChf": 6.7,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_48500",
-   "printfulVariantId": 48500,
-   "optionen": {
-    "Grösse": "61 × 81,3 cm"
-   },
-   "farbe": null,
-   "groesse": "61 × 81,3 cm",
-   "herkunft": "EU",
-   "kostenUsd": 17.13,
-   "ekRechnungUsd": 21.58,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 37.9,
-   "nettoChf": 4.6,
-   "nettoBeiMesskursChf": 7.03,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
-  {
-   "sku": "9100001_2",
-   "printfulVariantId": 2,
-   "optionen": {
-    "Grösse": "61 × 91,4 cm"
-   },
-   "farbe": null,
-   "groesse": "61 × 91,4 cm",
-   "herkunft": "EU",
-   "kostenUsd": 18.25,
-   "ekRechnungUsd": 23,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 10.49,
-   "aufpreisUsd": 0,
-   "preisChf": 38.9,
-   "nettoChf": 4.23,
-   "nettoBeiMesskursChf": 6.76,
-   "bindend": "kosten",
-   "bildAlt": null
-  },
   {
    "sku": "9100001_16364",
    "printfulVariantId": 16364,
@@ -656,24 +184,24 @@
    "bildAlt": null
   },
   {
-   "sku": "9100001_48491",
-   "printfulVariantId": 48491,
+   "sku": "9100001_48505",
+   "printfulVariantId": 48505,
    "optionen": {
-    "Grösse": "20,3 × 50,8 cm"
+    "Grösse": "21 × 29,7 cm"
    },
    "farbe": null,
-   "groesse": "20,3 × 50,8 cm",
+   "groesse": "21 × 29,7 cm",
    "herkunft": "EU",
-   "kostenUsd": 10.09,
-   "ekRechnungUsd": 12.71,
+   "kostenUsd": 7.5,
+   "ekRechnungUsd": 9.45,
    "ekQuelle": "katalog+26%",
    "versandUsd": 10.49,
    "aufpreisUsd": 0,
-   "preisChf": 28.9,
-   "nettoChf": 4.57,
-   "nettoBeiMesskursChf": 6.32,
+   "preisChf": 25.9,
+   "nettoChf": 4.83,
+   "nettoBeiMesskursChf": 6.34,
    "bindend": "kosten",
-   "bildAlt": null
+   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 1"
   },
   {
    "sku": "9100001_48492",
@@ -694,47 +222,527 @@
    "nettoBeiMesskursChf": 5.77,
    "bindend": "kosten",
    "bildAlt": null
+  },
+  {
+   "sku": "9100001_6239",
+   "printfulVariantId": 6239,
+   "optionen": {
+    "Grösse": "25,4 × 25,4 cm"
+   },
+   "farbe": null,
+   "groesse": "25,4 × 25,4 cm",
+   "herkunft": "EU",
+   "kostenUsd": 8.05,
+   "ekRechnungUsd": 10.14,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 25.9,
+   "nettoChf": 4.21,
+   "nettoBeiMesskursChf": 5.77,
+   "bindend": "kosten",
+   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 2"
+  },
+  {
+   "sku": "9100001_4464",
+   "printfulVariantId": 4464,
+   "optionen": {
+    "Grösse": "30,5 × 30,5 cm"
+   },
+   "farbe": null,
+   "groesse": "30,5 × 30,5 cm",
+   "herkunft": "EU",
+   "kostenUsd": 9.07,
+   "ekRechnungUsd": 11.43,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 27.9,
+   "nettoChf": 4.83,
+   "nettoBeiMesskursChf": 6.49,
+   "bindend": "kosten",
+   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 3"
+  },
+  {
+   "sku": "9100001_14125",
+   "printfulVariantId": 14125,
+   "optionen": {
+    "Grösse": "27,9 × 35,6 cm"
+   },
+   "farbe": null,
+   "groesse": "27,9 × 35,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 9.83,
+   "ekRechnungUsd": 12.39,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 28.9,
+   "nettoChf": 4.86,
+   "nettoBeiMesskursChf": 6.59,
+   "bindend": "kosten",
+   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 4"
+  },
+  {
+   "sku": "9100001_48491",
+   "printfulVariantId": 48491,
+   "optionen": {
+    "Grösse": "20,3 × 50,8 cm"
+   },
+   "farbe": null,
+   "groesse": "20,3 × 50,8 cm",
+   "herkunft": "EU",
+   "kostenUsd": 10.09,
+   "ekRechnungUsd": 12.71,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 28.9,
+   "nettoChf": 4.57,
+   "nettoBeiMesskursChf": 6.32,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48494",
+   "printfulVariantId": 48494,
+   "optionen": {
+    "Grösse": "27,9 × 43,2 cm"
+   },
+   "farbe": null,
+   "groesse": "27,9 × 43,2 cm",
+   "herkunft": "EU",
+   "kostenUsd": 11.01,
+   "ekRechnungUsd": 13.87,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 29.9,
+   "nettoChf": 4.41,
+   "nettoBeiMesskursChf": 6.25,
+   "bindend": "kosten",
+   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 5"
+  },
+  {
+   "sku": "9100001_1349",
+   "printfulVariantId": 1349,
+   "optionen": {
+    "Grösse": "30,5 × 40,6 cm"
+   },
+   "farbe": null,
+   "groesse": "30,5 × 40,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 11.11,
+   "ekRechnungUsd": 14,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 29.9,
+   "nettoChf": 4.3,
+   "nettoBeiMesskursChf": 6.15,
+   "bindend": "kosten",
+   "bildAlt": "Poster auf mattem Papier selbst gestalten Ansicht 6"
+  },
+  {
+   "sku": "9100001_48504",
+   "printfulVariantId": 48504,
+   "optionen": {
+    "Grösse": "29,7 × 42 cm"
+   },
+   "farbe": null,
+   "groesse": "29,7 × 42 cm",
+   "herkunft": "EU",
+   "kostenUsd": 11.25,
+   "ekRechnungUsd": 14.18,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 29.9,
+   "nettoChf": 4.14,
+   "nettoBeiMesskursChf": 6,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_6240",
+   "printfulVariantId": 6240,
+   "optionen": {
+    "Grösse": "35,6 × 35,6 cm"
+   },
+   "farbe": null,
+   "groesse": "35,6 × 35,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 10.09,
+   "ekRechnungUsd": 12.71,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 28.9,
+   "nettoChf": 4.57,
+   "nettoBeiMesskursChf": 6.32,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_3876",
+   "printfulVariantId": 3876,
+   "optionen": {
+    "Grösse": "30,5 × 45,7 cm"
+   },
+   "farbe": null,
+   "groesse": "30,5 × 45,7 cm",
+   "herkunft": "EU",
+   "kostenUsd": 11.62,
+   "ekRechnungUsd": 14.64,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 30.9,
+   "nettoChf": 4.61,
+   "nettoBeiMesskursChf": 6.51,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48493",
+   "printfulVariantId": 48493,
+   "optionen": {
+    "Grösse": "25,4 × 61 cm"
+   },
+   "farbe": null,
+   "groesse": "25,4 × 61 cm",
+   "herkunft": "EU",
+   "kostenUsd": 11.82,
+   "ekRechnungUsd": 14.89,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 30.9,
+   "nettoChf": 4.39,
+   "nettoBeiMesskursChf": 6.3,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_4465",
+   "printfulVariantId": 4465,
+   "optionen": {
+    "Grösse": "40,6 × 40,6 cm"
+   },
+   "farbe": null,
+   "groesse": "40,6 × 40,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 11.87,
+   "ekRechnungUsd": 14.96,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 30.9,
+   "nettoChf": 4.33,
+   "nettoBeiMesskursChf": 6.25,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_3877",
+   "printfulVariantId": 3877,
+   "optionen": {
+    "Grösse": "40,6 × 50,8 cm"
+   },
+   "farbe": null,
+   "groesse": "40,6 × 50,8 cm",
+   "herkunft": "EU",
+   "kostenUsd": 12.13,
+   "ekRechnungUsd": 15.28,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 30.9,
+   "nettoChf": 4.03,
+   "nettoBeiMesskursChf": 5.98,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_6242",
+   "printfulVariantId": 6242,
+   "optionen": {
+    "Grösse": "45,7 × 45,7 cm"
+   },
+   "farbe": null,
+   "groesse": "45,7 × 45,7 cm",
+   "herkunft": "EU",
+   "kostenUsd": 12.64,
+   "ekRechnungUsd": 15.93,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 31.9,
+   "nettoChf": 4.36,
+   "nettoBeiMesskursChf": 6.35,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48495",
+   "printfulVariantId": 48495,
+   "optionen": {
+    "Grösse": "40,6 × 61 cm"
+   },
+   "farbe": null,
+   "groesse": "40,6 × 61 cm",
+   "herkunft": "EU",
+   "kostenUsd": 12.94,
+   "ekRechnungUsd": 16.3,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 31.9,
+   "nettoChf": 4.02,
+   "nettoBeiMesskursChf": 6.04,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_19528",
+   "printfulVariantId": 19528,
+   "optionen": {
+    "Grösse": "A2 (42 × 59,4 cm)"
+   },
+   "farbe": null,
+   "groesse": "A2 (42 × 59,4 cm)",
+   "herkunft": "EU",
+   "kostenUsd": 12.89,
+   "ekRechnungUsd": 16.24,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 31.9,
+   "nettoChf": 4.07,
+   "nettoBeiMesskursChf": 6.09,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48496",
+   "printfulVariantId": 48496,
+   "optionen": {
+    "Grösse": "50,8 × 50,8 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 50,8 cm",
+   "herkunft": "EU",
+   "kostenUsd": 13.05,
+   "ekRechnungUsd": 16.44,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 32.9,
+   "nettoChf": 4.77,
+   "nettoBeiMesskursChf": 6.81,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_1",
+   "printfulVariantId": 1,
+   "optionen": {
+    "Grösse": "45,7 × 61 cm"
+   },
+   "farbe": null,
+   "groesse": "45,7 × 61 cm",
+   "herkunft": "EU",
+   "kostenUsd": 13.15,
+   "ekRechnungUsd": 16.57,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 32.9,
+   "nettoChf": 4.66,
+   "nettoBeiMesskursChf": 6.7,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48497",
+   "printfulVariantId": 48497,
+   "optionen": {
+    "Grösse": "50,8 × 61 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 61 cm",
+   "herkunft": "EU",
+   "kostenUsd": 13.15,
+   "ekRechnungUsd": 16.57,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 32.9,
+   "nettoChf": 4.66,
+   "nettoBeiMesskursChf": 6.7,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48498",
+   "printfulVariantId": 48498,
+   "optionen": {
+    "Grösse": "50,8 × 71,1 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 71,1 cm",
+   "herkunft": "EU",
+   "kostenUsd": 13.15,
+   "ekRechnungUsd": 16.57,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 32.9,
+   "nettoChf": 4.66,
+   "nettoBeiMesskursChf": 6.7,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48499",
+   "printfulVariantId": 48499,
+   "optionen": {
+    "Grösse": "61 × 61 cm"
+   },
+   "farbe": null,
+   "groesse": "61 × 61 cm",
+   "herkunft": "EU",
+   "kostenUsd": 13.15,
+   "ekRechnungUsd": 16.57,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 32.9,
+   "nettoChf": 4.66,
+   "nettoBeiMesskursChf": 6.7,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_16365",
+   "printfulVariantId": 16365,
+   "optionen": {
+    "Grösse": "50,8 × 76,2 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 76,2 cm",
+   "herkunft": "EU",
+   "kostenUsd": 13.15,
+   "ekRechnungUsd": 16.57,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 32.9,
+   "nettoChf": 4.66,
+   "nettoBeiMesskursChf": 6.7,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_48500",
+   "printfulVariantId": 48500,
+   "optionen": {
+    "Grösse": "61 × 81,3 cm"
+   },
+   "farbe": null,
+   "groesse": "61 × 81,3 cm",
+   "herkunft": "EU",
+   "kostenUsd": 17.13,
+   "ekRechnungUsd": 21.58,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 37.9,
+   "nettoChf": 4.6,
+   "nettoBeiMesskursChf": 7.03,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_19527",
+   "printfulVariantId": 19527,
+   "optionen": {
+    "Grösse": "A1 (59,4 × 84,1 cm)"
+   },
+   "farbe": null,
+   "groesse": "A1 (59,4 × 84,1 cm)",
+   "herkunft": "EU",
+   "kostenUsd": 17.23,
+   "ekRechnungUsd": 21.71,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 37.9,
+   "nettoChf": 4.49,
+   "nettoBeiMesskursChf": 6.92,
+   "bindend": "kosten",
+   "bildAlt": null
+  },
+  {
+   "sku": "9100001_2",
+   "printfulVariantId": 2,
+   "optionen": {
+    "Grösse": "61 × 91,4 cm"
+   },
+   "farbe": null,
+   "groesse": "61 × 91,4 cm",
+   "herkunft": "EU",
+   "kostenUsd": 18.25,
+   "ekRechnungUsd": 23,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.49,
+   "aufpreisUsd": 0,
+   "preisChf": 38.9,
+   "nettoChf": 4.23,
+   "nettoBeiMesskursChf": 6.76,
+   "bindend": "kosten",
+   "bildAlt": null
   }
  ],
  "medien": [
   {
-   "url": "https://files.cdn.printful.com/products/1/48504_1777277660.jpg",
+   "url": "https://files.cdn.printful.com/products/1/48505_1777277660.jpg",
    "alt": "Poster auf mattem Papier selbst gestalten Ansicht 1",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/1/48505_1777277660.jpg",
+   "url": "https://files.cdn.printful.com/products/1/6239_1527678729.jpg",
    "alt": "Poster auf mattem Papier selbst gestalten Ansicht 2",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/1/19527_1714721626.jpg",
+   "url": "https://files.cdn.printful.com/products/1/4464_1527678770.jpg",
    "alt": "Poster auf mattem Papier selbst gestalten Ansicht 3",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/1/19528_1714721630.jpg",
+   "url": "https://files.cdn.printful.com/products/1/14125_1643009909.jpg",
    "alt": "Poster auf mattem Papier selbst gestalten Ansicht 4",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/1/6239_1527678729.jpg",
+   "url": "https://files.cdn.printful.com/products/1/48494_1777277671.jpg",
    "alt": "Poster auf mattem Papier selbst gestalten Ansicht 5",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/1/48493_1777277670.jpg",
+   "url": "https://files.cdn.printful.com/products/1/1349_1527679043.jpg",
    "alt": "Poster auf mattem Papier selbst gestalten Ansicht 6",
    "rolle": "variante",
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"1\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":1,\"typ\":\"POSTER\",\"titelDe\":\"Poster auf mattem Papier\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":1627,\"breitePx\":4962,\"hoehePx\":3507,\"dpi\":300},\"vorlage\":{\"vorlageId\":1117385,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/12/128d7e11e744c1449279062a3517c852?v=1775135661\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":477,\"flaecheBreite\":2886,\"flaecheHoehe\":2046,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1627,\"vorlage\":{\"vorlageId\":1117385,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/12/128d7e11e744c1449279062a3517c852?v=1775135661\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":477,\"flaecheBreite\":2886,\"flaecheHoehe\":2046,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48504},{\"printfileId\":1629,\"vorlage\":{\"vorlageId\":1117383,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":52,\"flaecheOben\":473,\"flaecheBreite\":2896,\"flaecheHoehe\":2054,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48505},{\"printfileId\":621,\"vorlage\":{\"vorlageId\":354189,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":480,\"flaecheBreite\":2886,\"flaecheHoehe\":2040,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":19527},{\"printfileId\":624,\"vorlage\":{\"vorlageId\":354191,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":55,\"flaecheOben\":478,\"flaecheBreite\":2889,\"flaecheHoehe\":2044,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":19528},{\"printfileId\":1602,\"vorlage\":{\"vorlageId\":1117363,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":51,\"flaecheOben\":896,\"flaecheBreite\":2898,\"flaecheHoehe\":1208,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48493},{\"printfileId\":285,\"vorlage\":{\"vorlageId\":99959,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":13,\"flaecheOben\":70,\"flaecheBreite\":702,\"flaecheHoehe\":552,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":14125},{\"printfileId\":1604,\"vorlage\":{\"vorlageId\":1117366,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":566,\"flaecheBreite\":2888,\"flaecheHoehe\":1868,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48494},{\"printfileId\":15,\"vorlage\":{\"vorlageId\":21384,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":97,\"flaecheBreite\":670,\"flaecheHoehe\":502,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":1349},{\"printfileId\":17,\"vorlage\":{\"vorlageId\":21385,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":125,\"flaecheBreite\":670,\"flaecheHoehe\":447,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":3876},{\"printfileId\":41,\"vorlage\":{\"vorlageId\":21386,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":81,\"flaecheBreite\":670,\"flaecheHoehe\":536,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":3877},{\"printfileId\":1608,\"vorlage\":{\"vorlageId\":1117368,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":538,\"flaecheBreite\":2886,\"flaecheHoehe\":1924,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48495},{\"printfileId\":38,\"vorlage\":{\"vorlageId\":21387,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":97,\"flaecheBreite\":670,\"flaecheHoehe\":502,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":1},{\"printfileId\":1613,\"vorlage\":{\"vorlageId\":1117371,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":298,\"flaecheBreite\":2886,\"flaecheHoehe\":2404,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48497},{\"printfileId\":1615,\"vorlage\":{\"vorlageId\":1117373,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":469,\"flaecheBreite\":2888,\"flaecheHoehe\":2062,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48498},{\"printfileId\":415,\"vorlage\":{\"vorlageId\":163533,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":24,\"flaecheOben\":137,\"flaecheBreite\":680,\"flaecheHoehe\":454,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16365},{\"printfileId\":1618,\"vorlage\":{\"vorlageId\":1117376,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":417,\"flaecheBreite\":2886,\"flaecheHoehe\":2166,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48500},{\"printfileId\":39,\"vorlage\":{\"vorlageId\":21388,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":125,\"flaecheBreite\":670,\"flaecheHoehe\":446,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":2},{\"printfileId\":1622,\"vorlage\":{\"vorlageId\":1117379,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":60,\"flaecheOben\":492,\"flaecheBreite\":2880,\"flaecheHoehe\":2016,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48501},{\"printfileId\":1625,\"vorlage\":{\"vorlageId\":1117381,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":60,\"flaecheOben\":420,\"flaecheBreite\":2880,\"flaecheHoehe\":2160,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48503},{\"printfileId\":414,\"vorlage\":{\"vorlageId\":163483,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":24,\"flaecheOben\":121,\"flaecheBreite\":680,\"flaecheHoehe\":486,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16364},{\"printfileId\":1577,\"vorlage\":{\"vorlageId\":1117317,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":305,\"flaecheOben\":604,\"flaecheBreite\":2390,\"flaecheHoehe\":1792,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48489},{\"printfileId\":42,\"vorlage\":{\"vorlageId\":21383,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":80,\"flaecheBreite\":670,\"flaecheHoehe\":537,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4463},{\"printfileId\":1579,\"vorlage\":{\"vorlageId\":1117323,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":538,\"flaecheBreite\":2888,\"flaecheHoehe\":1924,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48490},{\"printfileId\":1582,\"vorlage\":{\"vorlageId\":1117352,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":922,\"flaecheBreite\":2888,\"flaecheHoehe\":1156,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48491},{\"printfileId\":1584,\"vorlage\":{\"vorlageId\":1117359,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":55,\"flaecheOben\":318,\"flaecheBreite\":2890,\"flaecheHoehe\":2364,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48492},{\"printfileId\":29,\"vorlage\":{\"vorlageId\":21372,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/ba/ba2da95168ae0694b77e8da4ca605869?v=1652682813\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":669,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":6239},{\"printfileId\":12,\"vorlage\":{\"vorlageId\":21373,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":669,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4464},{\"printfileId\":30,\"vorlage\":{\"vorlageId\":21374,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":670,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":6240},{\"printfileId\":16,\"vorlage\":{\"vorlageId\":21375,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":13,\"flaecheBreite\":670,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4465},{\"printfileId\":31,\"vorlage\":{\"vorlageId\":21376,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":669,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":6242},{\"printfileId\":1610,\"vorlage\":{\"vorlageId\":1117369,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":98,\"flaecheOben\":98,\"flaecheBreite\":2804,\"flaecheHoehe\":2804,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48496},{\"printfileId\":1616,\"vorlage\":{\"vorlageId\":1117374,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":99,\"flaecheOben\":99,\"flaecheBreite\":2802,\"flaecheHoehe\":2802,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48499},{\"printfileId\":1621,\"vorlage\":{\"vorlageId\":1117377,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":100,\"flaecheOben\":100,\"flaecheBreite\":2800,\"flaecheHoehe\":2800,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48502}]}],\"druckdateien\":{\"12\":{\"printfileId\":12,\"breitePx\":3600,\"hoehePx\":3600,\"dpi\":300},\"15\":{\"printfileId\":15,\"breitePx\":4800,\"hoehePx\":3600,\"dpi\":300},\"16\":{\"printfileId\":16,\"breitePx\":4800,\"hoehePx\":4800,\"dpi\":300},\"17\":{\"printfileId\":17,\"breitePx\":5400,\"hoehePx\":3600,\"dpi\":300},\"29\":{\"printfileId\":29,\"breitePx\":3000,\"hoehePx\":3000,\"dpi\":300},\"30\":{\"printfileId\":30,\"breitePx\":4200,\"hoehePx\":4200,\"dpi\":300},\"31\":{\"printfileId\":31,\"breitePx\":5400,\"hoehePx\":5400,\"dpi\":300},\"38\":{\"printfileId\":38,\"breitePx\":7200,\"hoehePx\":5400,\"dpi\":300},\"39\":{\"printfileId\":39,\"breitePx\":10800,\"hoehePx\":7200,\"dpi\":300},\"41\":{\"printfileId\":41,\"breitePx\":6000,\"hoehePx\":4800,\"dpi\":300},\"42\":{\"printfileId\":42,\"breitePx\":3000,\"hoehePx\":2400,\"dpi\":300},\"285\":{\"printfileId\":285,\"breitePx\":4200,\"hoehePx\":3300,\"dpi\":300},\"414\":{\"printfileId\":414,\"breitePx\":2100,\"hoehePx\":1500,\"dpi\":300},\"415\":{\"printfileId\":415,\"breitePx\":9000,\"hoehePx\":6000,\"dpi\":300},\"621\":{\"printfileId\":621,\"breitePx\":9933,\"hoehePx\":7016,\"dpi\":300},\"624\":{\"printfileId\":624,\"breitePx\":7016,\"hoehePx\":4961,\"dpi\":300},\"1577\":{\"printfileId\":1577,\"breitePx\":2400,\"hoehePx\":1800,\"dpi\":300},\"1579\":{\"printfileId\":1579,\"breitePx\":3600,\"hoehePx\":2400,\"dpi\":300},\"1582\":{\"printfileId\":1582,\"breitePx\":6000,\"hoehePx\":2400,\"dpi\":300},\"1584\":{\"printfileId\":1584,\"breitePx\":3300,\"hoehePx\":2700,\"dpi\":300},\"1602\":{\"printfileId\":1602,\"breitePx\":7200,\"hoehePx\":3000,\"dpi\":300},\"1604\":{\"printfileId\":1604,\"breitePx\":5100,\"hoehePx\":3300,\"dpi\":300},\"1608\":{\"printfileId\":1608,\"breitePx\":7200,\"hoehePx\":4800,\"dpi\":300},\"1610\":{\"printfileId\":1610,\"breitePx\":6000,\"hoehePx\":6000,\"dpi\":300},\"1613\":{\"printfileId\":1613,\"breitePx\":7200,\"hoehePx\":6000,\"dpi\":300},\"1615\":{\"printfileId\":1615,\"breitePx\":8400,\"hoehePx\":6000,\"dpi\":300},\"1616\":{\"printfileId\":1616,\"breitePx\":7200,\"hoehePx\":7200,\"dpi\":300},\"1618\":{\"printfileId\":1618,\"breitePx\":9600,\"hoehePx\":7200,\"dpi\":300},\"1621\":{\"printfileId\":1621,\"breitePx\":8400,\"hoehePx\":8400,\"dpi\":300},\"1622\":{\"printfileId\":1622,\"breitePx\":12000,\"hoehePx\":8400,\"dpi\":300},\"1625\":{\"printfileId\":1625,\"breitePx\":12000,\"hoehePx\":9000,\"dpi\":300},\"1627\":{\"printfileId\":1627,\"breitePx\":4962,\"hoehePx\":3507,\"dpi\":300},\"1629\":{\"printfileId\":1629,\"breitePx\":3507,\"hoehePx\":2481,\"dpi\":300}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":1627},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1629},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":621},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":624},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":29},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1602},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":285},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1604},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":12},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":15},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":17},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":30},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":16},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":41},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1608},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":31},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":38},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1610},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1613},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1615},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":415},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1616},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1618},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":39},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1621},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1622},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1625},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":414},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1577},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":42},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1579},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1582},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1584},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":48504,\"druckdateiGruppe\":0},{\"printfulVariantId\":48505,\"druckdateiGruppe\":1},{\"printfulVariantId\":19527,\"druckdateiGruppe\":2},{\"printfulVariantId\":19528,\"druckdateiGruppe\":3},{\"printfulVariantId\":6239,\"druckdateiGruppe\":4},{\"printfulVariantId\":48493,\"druckdateiGruppe\":5},{\"printfulVariantId\":14125,\"druckdateiGruppe\":6},{\"printfulVariantId\":48494,\"druckdateiGruppe\":7},{\"printfulVariantId\":4464,\"druckdateiGruppe\":8},{\"printfulVariantId\":1349,\"druckdateiGruppe\":9},{\"printfulVariantId\":3876,\"druckdateiGruppe\":10},{\"printfulVariantId\":6240,\"druckdateiGruppe\":11},{\"printfulVariantId\":4465,\"druckdateiGruppe\":12},{\"printfulVariantId\":3877,\"druckdateiGruppe\":13},{\"printfulVariantId\":48495,\"druckdateiGruppe\":14},{\"printfulVariantId\":6242,\"druckdateiGruppe\":15},{\"printfulVariantId\":1,\"druckdateiGruppe\":16},{\"printfulVariantId\":48496,\"druckdateiGruppe\":17},{\"printfulVariantId\":48497,\"druckdateiGruppe\":18},{\"printfulVariantId\":48498,\"druckdateiGruppe\":19},{\"printfulVariantId\":16365,\"druckdateiGruppe\":20},{\"printfulVariantId\":48499,\"druckdateiGruppe\":21},{\"printfulVariantId\":48500,\"druckdateiGruppe\":22},{\"printfulVariantId\":2,\"druckdateiGruppe\":23},{\"printfulVariantId\":16364,\"druckdateiGruppe\":27},{\"printfulVariantId\":48489,\"druckdateiGruppe\":28},{\"printfulVariantId\":4463,\"druckdateiGruppe\":29},{\"printfulVariantId\":48490,\"druckdateiGruppe\":30},{\"printfulVariantId\":48491,\"druckdateiGruppe\":31},{\"printfulVariantId\":48492,\"druckdateiGruppe\":32}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Poster in Museumsqualität auf dickem, mattem Papier.</p>\n<p>Setze mit diesen Postern einen schönen Akzent in deinem Zimmer oder Büro.</p>\n<ul><li>Papierdicke: 0,26 mm</li><li>Papiergewicht: 189 g/m²</li><li>Opazität: 94 %</li><li>ISO-Helligkeit: 104 %</li><li>Das Papier stammt aus Japan.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li><li><strong>Druckdatei (Druckfläche):</strong> 4962 × 3507 Pixel bei 300 dpi, das sind 42 × 29,7 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"1\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":1,\"typ\":\"POSTER\",\"titelDe\":\"Poster auf mattem Papier\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":1627,\"breitePx\":4962,\"hoehePx\":3507,\"dpi\":300},\"vorlage\":{\"vorlageId\":1117385,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/12/128d7e11e744c1449279062a3517c852?v=1775135661\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":477,\"flaecheBreite\":2886,\"flaecheHoehe\":2046,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1627,\"vorlage\":{\"vorlageId\":1117385,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/12/128d7e11e744c1449279062a3517c852?v=1775135661\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":477,\"flaecheBreite\":2886,\"flaecheHoehe\":2046,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48504},{\"printfileId\":1629,\"vorlage\":{\"vorlageId\":1117383,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":52,\"flaecheOben\":473,\"flaecheBreite\":2896,\"flaecheHoehe\":2054,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48505},{\"printfileId\":621,\"vorlage\":{\"vorlageId\":354189,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":480,\"flaecheBreite\":2886,\"flaecheHoehe\":2040,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":19527},{\"printfileId\":624,\"vorlage\":{\"vorlageId\":354191,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":55,\"flaecheOben\":478,\"flaecheBreite\":2889,\"flaecheHoehe\":2044,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":19528},{\"printfileId\":1602,\"vorlage\":{\"vorlageId\":1117363,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":51,\"flaecheOben\":896,\"flaecheBreite\":2898,\"flaecheHoehe\":1208,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48493},{\"printfileId\":285,\"vorlage\":{\"vorlageId\":99959,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":13,\"flaecheOben\":70,\"flaecheBreite\":702,\"flaecheHoehe\":552,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":14125},{\"printfileId\":1604,\"vorlage\":{\"vorlageId\":1117366,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":566,\"flaecheBreite\":2888,\"flaecheHoehe\":1868,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48494},{\"printfileId\":15,\"vorlage\":{\"vorlageId\":21384,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":97,\"flaecheBreite\":670,\"flaecheHoehe\":502,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":1349},{\"printfileId\":17,\"vorlage\":{\"vorlageId\":21385,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":125,\"flaecheBreite\":670,\"flaecheHoehe\":447,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":3876},{\"printfileId\":41,\"vorlage\":{\"vorlageId\":21386,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":81,\"flaecheBreite\":670,\"flaecheHoehe\":536,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":3877},{\"printfileId\":1608,\"vorlage\":{\"vorlageId\":1117368,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":538,\"flaecheBreite\":2886,\"flaecheHoehe\":1924,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48495},{\"printfileId\":38,\"vorlage\":{\"vorlageId\":21387,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":97,\"flaecheBreite\":670,\"flaecheHoehe\":502,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":1},{\"printfileId\":1613,\"vorlage\":{\"vorlageId\":1117371,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":298,\"flaecheBreite\":2886,\"flaecheHoehe\":2404,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48497},{\"printfileId\":1615,\"vorlage\":{\"vorlageId\":1117373,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":469,\"flaecheBreite\":2888,\"flaecheHoehe\":2062,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48498},{\"printfileId\":415,\"vorlage\":{\"vorlageId\":163533,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":24,\"flaecheOben\":137,\"flaecheBreite\":680,\"flaecheHoehe\":454,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16365},{\"printfileId\":1618,\"vorlage\":{\"vorlageId\":1117376,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":57,\"flaecheOben\":417,\"flaecheBreite\":2886,\"flaecheHoehe\":2166,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48500},{\"printfileId\":39,\"vorlage\":{\"vorlageId\":21388,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":125,\"flaecheBreite\":670,\"flaecheHoehe\":446,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":2},{\"printfileId\":1622,\"vorlage\":{\"vorlageId\":1117379,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":60,\"flaecheOben\":492,\"flaecheBreite\":2880,\"flaecheHoehe\":2016,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48501},{\"printfileId\":1625,\"vorlage\":{\"vorlageId\":1117381,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":60,\"flaecheOben\":420,\"flaecheBreite\":2880,\"flaecheHoehe\":2160,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48503},{\"printfileId\":414,\"vorlage\":{\"vorlageId\":163483,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":24,\"flaecheOben\":121,\"flaecheBreite\":680,\"flaecheHoehe\":486,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":16364},{\"printfileId\":1577,\"vorlage\":{\"vorlageId\":1117317,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":305,\"flaecheOben\":604,\"flaecheBreite\":2390,\"flaecheHoehe\":1792,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48489},{\"printfileId\":42,\"vorlage\":{\"vorlageId\":21383,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":80,\"flaecheBreite\":670,\"flaecheHoehe\":537,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4463},{\"printfileId\":1579,\"vorlage\":{\"vorlageId\":1117323,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":538,\"flaecheBreite\":2888,\"flaecheHoehe\":1924,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48490},{\"printfileId\":1582,\"vorlage\":{\"vorlageId\":1117352,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":56,\"flaecheOben\":922,\"flaecheBreite\":2888,\"flaecheHoehe\":1156,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48491},{\"printfileId\":1584,\"vorlage\":{\"vorlageId\":1117359,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":55,\"flaecheOben\":318,\"flaecheBreite\":2890,\"flaecheHoehe\":2364,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48492},{\"printfileId\":29,\"vorlage\":{\"vorlageId\":21372,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/ba/ba2da95168ae0694b77e8da4ca605869?v=1652682813\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":669,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":6239},{\"printfileId\":12,\"vorlage\":{\"vorlageId\":21373,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":669,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4464},{\"printfileId\":30,\"vorlage\":{\"vorlageId\":21374,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":670,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":6240},{\"printfileId\":16,\"vorlage\":{\"vorlageId\":21375,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":13,\"flaecheBreite\":670,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4465},{\"printfileId\":31,\"vorlage\":{\"vorlageId\":21376,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":30,\"flaecheOben\":13,\"flaecheBreite\":669,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":6242},{\"printfileId\":1610,\"vorlage\":{\"vorlageId\":1117369,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":98,\"flaecheOben\":98,\"flaecheBreite\":2804,\"flaecheHoehe\":2804,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48496},{\"printfileId\":1616,\"vorlage\":{\"vorlageId\":1117374,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":99,\"flaecheOben\":99,\"flaecheBreite\":2802,\"flaecheHoehe\":2802,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48499},{\"printfileId\":1621,\"vorlage\":{\"vorlageId\":1117377,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":100,\"flaecheOben\":100,\"flaecheBreite\":2800,\"flaecheHoehe\":2800,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":48502}]}],\"druckdateien\":{\"12\":{\"printfileId\":12,\"breitePx\":3600,\"hoehePx\":3600,\"dpi\":300},\"15\":{\"printfileId\":15,\"breitePx\":4800,\"hoehePx\":3600,\"dpi\":300},\"16\":{\"printfileId\":16,\"breitePx\":4800,\"hoehePx\":4800,\"dpi\":300},\"17\":{\"printfileId\":17,\"breitePx\":5400,\"hoehePx\":3600,\"dpi\":300},\"29\":{\"printfileId\":29,\"breitePx\":3000,\"hoehePx\":3000,\"dpi\":300},\"30\":{\"printfileId\":30,\"breitePx\":4200,\"hoehePx\":4200,\"dpi\":300},\"31\":{\"printfileId\":31,\"breitePx\":5400,\"hoehePx\":5400,\"dpi\":300},\"38\":{\"printfileId\":38,\"breitePx\":7200,\"hoehePx\":5400,\"dpi\":300},\"39\":{\"printfileId\":39,\"breitePx\":10800,\"hoehePx\":7200,\"dpi\":300},\"41\":{\"printfileId\":41,\"breitePx\":6000,\"hoehePx\":4800,\"dpi\":300},\"42\":{\"printfileId\":42,\"breitePx\":3000,\"hoehePx\":2400,\"dpi\":300},\"285\":{\"printfileId\":285,\"breitePx\":4200,\"hoehePx\":3300,\"dpi\":300},\"414\":{\"printfileId\":414,\"breitePx\":2100,\"hoehePx\":1500,\"dpi\":300},\"415\":{\"printfileId\":415,\"breitePx\":9000,\"hoehePx\":6000,\"dpi\":300},\"621\":{\"printfileId\":621,\"breitePx\":9933,\"hoehePx\":7016,\"dpi\":300},\"624\":{\"printfileId\":624,\"breitePx\":7016,\"hoehePx\":4961,\"dpi\":300},\"1577\":{\"printfileId\":1577,\"breitePx\":2400,\"hoehePx\":1800,\"dpi\":300},\"1579\":{\"printfileId\":1579,\"breitePx\":3600,\"hoehePx\":2400,\"dpi\":300},\"1582\":{\"printfileId\":1582,\"breitePx\":6000,\"hoehePx\":2400,\"dpi\":300},\"1584\":{\"printfileId\":1584,\"breitePx\":3300,\"hoehePx\":2700,\"dpi\":300},\"1602\":{\"printfileId\":1602,\"breitePx\":7200,\"hoehePx\":3000,\"dpi\":300},\"1604\":{\"printfileId\":1604,\"breitePx\":5100,\"hoehePx\":3300,\"dpi\":300},\"1608\":{\"printfileId\":1608,\"breitePx\":7200,\"hoehePx\":4800,\"dpi\":300},\"1610\":{\"printfileId\":1610,\"breitePx\":6000,\"hoehePx\":6000,\"dpi\":300},\"1613\":{\"printfileId\":1613,\"breitePx\":7200,\"hoehePx\":6000,\"dpi\":300},\"1615\":{\"printfileId\":1615,\"breitePx\":8400,\"hoehePx\":6000,\"dpi\":300},\"1616\":{\"printfileId\":1616,\"breitePx\":7200,\"hoehePx\":7200,\"dpi\":300},\"1618\":{\"printfileId\":1618,\"breitePx\":9600,\"hoehePx\":7200,\"dpi\":300},\"1621\":{\"printfileId\":1621,\"breitePx\":8400,\"hoehePx\":8400,\"dpi\":300},\"1622\":{\"printfileId\":1622,\"breitePx\":12000,\"hoehePx\":8400,\"dpi\":300},\"1625\":{\"printfileId\":1625,\"breitePx\":12000,\"hoehePx\":9000,\"dpi\":300},\"1627\":{\"printfileId\":1627,\"breitePx\":4962,\"hoehePx\":3507,\"dpi\":300},\"1629\":{\"printfileId\":1629,\"breitePx\":3507,\"hoehePx\":2481,\"dpi\":300}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":1627},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1629},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":621},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":624},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":29},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1602},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":285},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1604},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":12},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":15},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":17},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":30},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":16},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":41},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1608},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":31},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":38},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1610},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1613},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1615},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":415},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1616},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1618},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":39},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1621},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1622},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1625},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":414},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1577},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":42},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1579},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1582},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":1584},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":16364,\"druckdateiGruppe\":27},{\"printfulVariantId\":48489,\"druckdateiGruppe\":28},{\"printfulVariantId\":4463,\"druckdateiGruppe\":29},{\"printfulVariantId\":48490,\"druckdateiGruppe\":30},{\"printfulVariantId\":48505,\"druckdateiGruppe\":1},{\"printfulVariantId\":48492,\"druckdateiGruppe\":32},{\"printfulVariantId\":6239,\"druckdateiGruppe\":4},{\"printfulVariantId\":4464,\"druckdateiGruppe\":8},{\"printfulVariantId\":14125,\"druckdateiGruppe\":6},{\"printfulVariantId\":48491,\"druckdateiGruppe\":31},{\"printfulVariantId\":48494,\"druckdateiGruppe\":7},{\"printfulVariantId\":1349,\"druckdateiGruppe\":9},{\"printfulVariantId\":48504,\"druckdateiGruppe\":0},{\"printfulVariantId\":6240,\"druckdateiGruppe\":11},{\"printfulVariantId\":3876,\"druckdateiGruppe\":10},{\"printfulVariantId\":48493,\"druckdateiGruppe\":5},{\"printfulVariantId\":4465,\"druckdateiGruppe\":12},{\"printfulVariantId\":3877,\"druckdateiGruppe\":13},{\"printfulVariantId\":6242,\"druckdateiGruppe\":15},{\"printfulVariantId\":48495,\"druckdateiGruppe\":14},{\"printfulVariantId\":19528,\"druckdateiGruppe\":3},{\"printfulVariantId\":48496,\"druckdateiGruppe\":17},{\"printfulVariantId\":1,\"druckdateiGruppe\":16},{\"printfulVariantId\":48497,\"druckdateiGruppe\":18},{\"printfulVariantId\":48498,\"druckdateiGruppe\":19},{\"printfulVariantId\":48499,\"druckdateiGruppe\":21},{\"printfulVariantId\":16365,\"druckdateiGruppe\":20},{\"printfulVariantId\":48500,\"druckdateiGruppe\":22},{\"printfulVariantId\":19527,\"druckdateiGruppe\":2},{\"printfulVariantId\":2,\"druckdateiGruppe\":23}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Poster in Museumsqualität auf dickem, mattem Papier.</p>\n<p>Setze mit diesen Postern einen schönen Akzent in deinem Zimmer oder Büro.</p>\n<ul><li>Papierdicke: 0,26 mm</li><li>Papiergewicht: 189 g/m²</li><li>Opazität: 94 %</li><li>ISO-Helligkeit: 104 %</li><li>Das Papier stammt aus Japan.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -783,7 +791,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -2839,102 +2865,6 @@
   ],
   "varianten": [
    {
-    "printfulVariantId": 48504,
-    "druckdateiGruppe": 0
-   },
-   {
-    "printfulVariantId": 48505,
-    "druckdateiGruppe": 1
-   },
-   {
-    "printfulVariantId": 19527,
-    "druckdateiGruppe": 2
-   },
-   {
-    "printfulVariantId": 19528,
-    "druckdateiGruppe": 3
-   },
-   {
-    "printfulVariantId": 6239,
-    "druckdateiGruppe": 4
-   },
-   {
-    "printfulVariantId": 48493,
-    "druckdateiGruppe": 5
-   },
-   {
-    "printfulVariantId": 14125,
-    "druckdateiGruppe": 6
-   },
-   {
-    "printfulVariantId": 48494,
-    "druckdateiGruppe": 7
-   },
-   {
-    "printfulVariantId": 4464,
-    "druckdateiGruppe": 8
-   },
-   {
-    "printfulVariantId": 1349,
-    "druckdateiGruppe": 9
-   },
-   {
-    "printfulVariantId": 3876,
-    "druckdateiGruppe": 10
-   },
-   {
-    "printfulVariantId": 6240,
-    "druckdateiGruppe": 11
-   },
-   {
-    "printfulVariantId": 4465,
-    "druckdateiGruppe": 12
-   },
-   {
-    "printfulVariantId": 3877,
-    "druckdateiGruppe": 13
-   },
-   {
-    "printfulVariantId": 48495,
-    "druckdateiGruppe": 14
-   },
-   {
-    "printfulVariantId": 6242,
-    "druckdateiGruppe": 15
-   },
-   {
-    "printfulVariantId": 1,
-    "druckdateiGruppe": 16
-   },
-   {
-    "printfulVariantId": 48496,
-    "druckdateiGruppe": 17
-   },
-   {
-    "printfulVariantId": 48497,
-    "druckdateiGruppe": 18
-   },
-   {
-    "printfulVariantId": 48498,
-    "druckdateiGruppe": 19
-   },
-   {
-    "printfulVariantId": 16365,
-    "druckdateiGruppe": 20
-   },
-   {
-    "printfulVariantId": 48499,
-    "druckdateiGruppe": 21
-   },
-   {
-    "printfulVariantId": 48500,
-    "druckdateiGruppe": 22
-   },
-   {
-    "printfulVariantId": 2,
-    "druckdateiGruppe": 23
-   },
-   {
     "printfulVariantId": 16364,
     "druckdateiGruppe": 27
    },
@@ -2951,12 +2881,108 @@
     "druckdateiGruppe": 30
    },
    {
-    "printfulVariantId": 48491,
-    "druckdateiGruppe": 31
+    "printfulVariantId": 48505,
+    "druckdateiGruppe": 1
    },
    {
     "printfulVariantId": 48492,
     "druckdateiGruppe": 32
+   },
+   {
+    "printfulVariantId": 6239,
+    "druckdateiGruppe": 4
+   },
+   {
+    "printfulVariantId": 4464,
+    "druckdateiGruppe": 8
+   },
+   {
+    "printfulVariantId": 14125,
+    "druckdateiGruppe": 6
+   },
+   {
+    "printfulVariantId": 48491,
+    "druckdateiGruppe": 31
+   },
+   {
+    "printfulVariantId": 48494,
+    "druckdateiGruppe": 7
+   },
+   {
+    "printfulVariantId": 1349,
+    "druckdateiGruppe": 9
+   },
+   {
+    "printfulVariantId": 48504,
+    "druckdateiGruppe": 0
+   },
+   {
+    "printfulVariantId": 6240,
+    "druckdateiGruppe": 11
+   },
+   {
+    "printfulVariantId": 3876,
+    "druckdateiGruppe": 10
+   },
+   {
+    "printfulVariantId": 48493,
+    "druckdateiGruppe": 5
+   },
+   {
+    "printfulVariantId": 4465,
+    "druckdateiGruppe": 12
+   },
+   {
+    "printfulVariantId": 3877,
+    "druckdateiGruppe": 13
+   },
+   {
+    "printfulVariantId": 6242,
+    "druckdateiGruppe": 15
+   },
+   {
+    "printfulVariantId": 48495,
+    "druckdateiGruppe": 14
+   },
+   {
+    "printfulVariantId": 19528,
+    "druckdateiGruppe": 3
+   },
+   {
+    "printfulVariantId": 48496,
+    "druckdateiGruppe": 17
+   },
+   {
+    "printfulVariantId": 1,
+    "druckdateiGruppe": 16
+   },
+   {
+    "printfulVariantId": 48497,
+    "druckdateiGruppe": 18
+   },
+   {
+    "printfulVariantId": 48498,
+    "druckdateiGruppe": 19
+   },
+   {
+    "printfulVariantId": 48499,
+    "druckdateiGruppe": 21
+   },
+   {
+    "printfulVariantId": 16365,
+    "druckdateiGruppe": 20
+   },
+   {
+    "printfulVariantId": 48500,
+    "druckdateiGruppe": 22
+   },
+   {
+    "printfulVariantId": 19527,
+    "druckdateiGruppe": 2
+   },
+   {
+    "printfulVariantId": 2,
+    "druckdateiGruppe": 23
    }
   ]
  },
@@ -2967,6 +2993,25 @@
   "tageMin": 3,
   "tageMax": 6,
   "ratenVariante": 48504
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": "enhanced matte paper poster",
+ "kategorie": {
+  "art": "poster",
+  "google": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-3-4-2-1"
  },
  "basisPlatzierung": {
   "id": "default",
@@ -3019,21 +3064,28 @@
   "unlesbar": [
    "https://files.cdn.printful.com/o/products/1/product_1613463122.jpg"
   ],
-  "ungemessen": [],
+  "ungemessen": [
+   "https://files.cdn.printful.com/products/1/16364_1672744007.jpg",
+   "https://files.cdn.printful.com/products/1/48489_1777277734.jpg",
+   "https://files.cdn.printful.com/products/1/4463_1527678642.jpg",
+   "https://files.cdn.printful.com/products/1/48490_1777277744.jpg",
+   "https://files.cdn.printful.com/products/1/48492_1777277744.jpg",
+   "https://files.cdn.printful.com/products/1/48491_1777277744.jpg"
+  ],
   "anzahl": 6,
   "kandidaten": [
    "https://files.cdn.printful.com/o/products/1/product_1613463122.jpg",
-   "https://files.cdn.printful.com/products/1/48504_1777277660.jpg",
+   "https://files.cdn.printful.com/products/1/16364_1672744007.jpg",
+   "https://files.cdn.printful.com/products/1/48489_1777277734.jpg",
+   "https://files.cdn.printful.com/products/1/4463_1527678642.jpg",
+   "https://files.cdn.printful.com/products/1/48490_1777277744.jpg",
    "https://files.cdn.printful.com/products/1/48505_1777277660.jpg",
-   "https://files.cdn.printful.com/products/1/19527_1714721626.jpg",
-   "https://files.cdn.printful.com/products/1/19528_1714721630.jpg",
+   "https://files.cdn.printful.com/products/1/48492_1777277744.jpg",
    "https://files.cdn.printful.com/products/1/6239_1527678729.jpg",
-   "https://files.cdn.printful.com/products/1/48493_1777277670.jpg",
-   "https://files.cdn.printful.com/products/1/14125_1643009909.jpg",
-   "https://files.cdn.printful.com/products/1/48494_1777277671.jpg",
    "https://files.cdn.printful.com/products/1/4464_1527678770.jpg",
-   "https://files.cdn.printful.com/products/1/1349_1527679043.jpg",
-   "https://files.cdn.printful.com/products/1/3876_1527678813.jpg"
+   "https://files.cdn.printful.com/products/1/14125_1643009909.jpg",
+   "https://files.cdn.printful.com/products/1/48491_1777277744.jpg",
+   "https://files.cdn.printful.com/products/1/48494_1777277671.jpg"
   ]
  },
  "tore": [
@@ -3046,10 +3098,10 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
-   "ergebnis": "bestanden",
-   "grund": ""
+   "ergebnis": "durchgefallen",
+   "grund": "Dasselbe Modell in der anderen Masseinheit ((in) gegen (cm)) steckt schon in einem der heutigen Produkte: für Kunden ein doppeltes Angebot"
   },
   {
    "code": "ch_rate",
@@ -3059,8 +3111,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -3095,10 +3154,10 @@
   },
   {
    "code": "bilder",
-   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse",
    "art": "blocker",
-   "ergebnis": "bestanden",
-   "grund": ""
+   "ergebnis": "ungeprueft",
+   "grund": "6 Bild(er) ohne Messung"
   },
   {
    "code": "titel_uebersetzt",
@@ -3157,6 +3216,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "24 von 30 Varianten ohne eigenes Bild (Produkte ohne Farbwahl zeigen höchstens 6 Bilder): sie zeigen beim Wählen das erste Bild"
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -3199,6 +3293,6 @@
    "grund": ""
   }
  ],
- "anlegbar": true,
- "hash": "f4992197c7acb38e9782d80f63d0232b372a7ce469f2d3266a5501d902e241cb"
+ "anlegbar": false,
+ "hash": "5deb409bbe55a7a7fc4e3cf7020bc3484ea257895abdf2a9bd2ac5a5ddf35521"
 }

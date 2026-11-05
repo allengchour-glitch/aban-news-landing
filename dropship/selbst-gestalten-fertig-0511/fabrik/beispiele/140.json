@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T17:05:51.219Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -616,14 +624,14 @@
    "label": "Camouflage Grün"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>6 bis 9 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"140\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":140,\"typ\":\"EMBROIDERY\",\"titelDe\":\"Strukturierte Cap mit geschlossener Rückseite\",\"klasse\":\"FLACH_MIT_HINWEIS\",\"standardTechnik\":\"EMBROIDERY\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"embroidery_front_large\",\"dateiTyp\":\"embroidery_front_large\",\"titelDe\":\"Stickerei vorne gross\",\"titelEn\":\"Front\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":522,\"breitePx\":1770,\"hoehePx\":600,\"dpi\":300},\"vorlage\":{\"vorlageId\":298999,\"bildUrl\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/front/flexfit6277_flat_front_blackcamo_base_whitebg.png?v=1752566077\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":635,\"flaecheOben\":1027,\"flaecheBreite\":1729,\"flaecheHoehe\":586,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]},{\"id\":\"embroidery_back\",\"dateiTyp\":\"back\",\"titelDe\":\"Stickerei hinten\",\"titelEn\":\"Back\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"vorlage\":{\"vorlageId\":127818,\"bildUrl\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/back/flexfit6277_flat_back_blackcamo_base_whitebg.png?v=1749456228\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1180,\"flaecheOben\":1981,\"flaecheBreite\":657,\"flaecheHoehe\":329,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]},{\"id\":\"embroidery_right\",\"dateiTyp\":\"right\",\"titelDe\":\"Stickerei rechts\",\"titelEn\":\"Right side\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"vorlage\":{\"vorlageId\":127843,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/e4/e444b5266c0b8fc1c20bd20e74c6a588?v=1637577304\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#131211\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":93,\"flaecheOben\":229,\"flaecheBreite\":542,\"flaecheHoehe\":271,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]},{\"id\":\"embroidery_left\",\"dateiTyp\":\"left\",\"titelDe\":\"Stickerei links\",\"titelEn\":\"Left side\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"vorlage\":{\"vorlageId\":127842,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/75/75516a7217e8296fd30b661fdac6255b?v=1637577288\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#131211\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":93,\"flaecheOben\":229,\"flaecheBreite\":542,\"flaecheHoehe\":271,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]}],\"druckdateien\":{\"76\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"522\":{\"printfileId\":522,\"breitePx\":1770,\"hoehePx\":600,\"dpi\":300}},\"hinweise\":[{\"code\":\"stickerei\",\"art\":\"einschraenkung\"},{\"code\":\"kappe\",\"art\":\"einschraenkung\"}],\"farben\":{\"#ffffff\":[5274,5275],\"#1b1b1b\":[5276,5277],\"#717171\":[5282,5283],\"#bf0a1b\":[5288,5289],\"#bdaa97\":[5292,5293],\"#483d20\":[15901,15902],\"#131211\":[15897,15898],\"#171822\":[5278,5279],\"#554e46\":[5280,5281],\"#0b3466\":[5286,5287],\"#585c30\":[15899,15900]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>In zwei Grössen mit elastischem Stretchband erhältlich: Diese Cap ist ein Gewinn für den Tragekomfort. Sie hat eine sportliche Form mit gebogenem Schirm.</p>\n<ul><li>63 % Polyester, 34 % Baumwolle, 3 % Elasthan (Twill)</li><li>Strukturiert, 6 Panels, mittelhohes Profil (mit flachem Stickbereich)</li><li>6 bestickte Ösen</li><li>Stretchband</li><li>Silberner Unterschirm</li><li>Kopfumfang: 55,9 bis 60,6 cm</li><li>Der unbedruckte Rohling stammt aus Vietnam oder Bangladesch.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Stickerei</li><li><strong>Druckdatei (Stickerei vorne gross):</strong> 1770 × 600 Pixel bei 300 dpi, das sind 15 × 5,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp zur Stickerei: Dein Motiv wird in Garnfarben umgesetzt. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.</li><li>Tipp: Die Fläche ist klein und gewölbt. Halte dein Motiv klein und ohne feine Details.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"140\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":140,\"typ\":\"EMBROIDERY\",\"titelDe\":\"Strukturierte Cap mit geschlossener Rückseite\",\"klasse\":\"FLACH_MIT_HINWEIS\",\"standardTechnik\":\"EMBROIDERY\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"embroidery_front_large\",\"dateiTyp\":\"embroidery_front_large\",\"titelDe\":\"Stickerei vorne gross\",\"titelEn\":\"Front\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":522,\"breitePx\":1770,\"hoehePx\":600,\"dpi\":300},\"vorlage\":{\"vorlageId\":298999,\"bildUrl\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/front/flexfit6277_flat_front_blackcamo_base_whitebg.png?v=1752566077\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":635,\"flaecheOben\":1027,\"flaecheBreite\":1729,\"flaecheHoehe\":586,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]},{\"id\":\"embroidery_back\",\"dateiTyp\":\"back\",\"titelDe\":\"Stickerei hinten\",\"titelEn\":\"Back\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"vorlage\":{\"vorlageId\":127818,\"bildUrl\":\"https://files.cdn.printful.com/m/flexfit6277/medium/flat/back/flexfit6277_flat_back_blackcamo_base_whitebg.png?v=1749456228\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1180,\"flaecheOben\":1981,\"flaecheBreite\":657,\"flaecheHoehe\":329,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]},{\"id\":\"embroidery_right\",\"dateiTyp\":\"right\",\"titelDe\":\"Stickerei rechts\",\"titelEn\":\"Right side\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"vorlage\":{\"vorlageId\":127843,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/e4/e444b5266c0b8fc1c20bd20e74c6a588?v=1637577304\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#131211\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":93,\"flaecheOben\":229,\"flaecheBreite\":542,\"flaecheHoehe\":271,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]},{\"id\":\"embroidery_left\",\"dateiTyp\":\"left\",\"titelDe\":\"Stickerei links\",\"titelEn\":\"Left side\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"vorlage\":{\"vorlageId\":127842,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/75/75516a7217e8296fd30b661fdac6255b?v=1637577288\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#131211\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":93,\"flaecheOben\":229,\"flaecheBreite\":542,\"flaecheHoehe\":271,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]}],\"druckdateien\":{\"76\":{\"printfileId\":76,\"breitePx\":600,\"hoehePx\":300,\"dpi\":300},\"522\":{\"printfileId\":522,\"breitePx\":1770,\"hoehePx\":600,\"dpi\":300}},\"hinweise\":[{\"code\":\"stickerei\",\"art\":\"einschraenkung\"},{\"code\":\"kappe\",\"art\":\"einschraenkung\"}],\"farben\":{\"#ffffff\":[5274,5275],\"#1b1b1b\":[5276,5277],\"#717171\":[5282,5283],\"#bf0a1b\":[5288,5289],\"#bdaa97\":[5292,5293],\"#483d20\":[15901,15902],\"#131211\":[15897,15898],\"#171822\":[5278,5279],\"#554e46\":[5280,5281],\"#0b3466\":[5286,5287],\"#585c30\":[15899,15900]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>In zwei Grössen mit elastischem Stretchband erhältlich.</p>\n<p>Sie hat eine sportliche Form mit gebogenem Schirm.</p>\n<ul><li>63 % Polyester, 34 % Baumwolle, 3 % Elasthan (Twill)</li><li>Strukturiert, 6 Panels, mittelhohes Profil (mit flachem Stickbereich)</li><li>6 bestickte Ösen</li><li>Stretchband</li><li>Silberner Unterschirm</li><li>Kopfumfang: 55,9 bis 60,6 cm</li><li>Der unbedruckte Rohling stammt aus Vietnam oder Bangladesch.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Stickerei</li><li><strong>Druckdatei (Stickerei vorne gross):</strong> 1770 × 600 Pixel bei 300 dpi, das sind 15 × 5,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp zur Stickerei: Dein Motiv wird in Garnfarben umgesetzt. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.</li><li>Tipp: Die Fläche ist klein und gewölbt. Halte dein Motiv klein und ohne feine Details.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
  ],
  "uebersetzung": {
   "ok": true,
   "fehler": [],
-  "saetze": 8,
+  "saetze": 9,
   "nichtUebernommen": []
  },
  "metafelder": [
@@ -667,7 +675,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"6–9\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Apparel & Accessories > Clothing Accessories > Hats"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -1044,6 +1070,25 @@
   "tageMax": 9,
   "ratenVariante": 5277
  },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   6,
+   9
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "cap",
+  "google": "Apparel & Accessories > Clothing Accessories > Hats",
+  "shopify": "gid://shopify/TaxonomyCategory/aa-2-17"
+ },
  "basisPlatzierung": {
   "id": "embroidery_front_large",
   "dateiTyp": "embroidery_front_large",
@@ -1176,7 +1221,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1189,8 +1234,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1287,6 +1339,41 @@
    "grund": "printful_sync bestimmt «front» nicht gesichert (printful_sync schickt «front», die Basisfläche heisst «embroidery_front_large»): Aufträge blieben Entwurf bei Printful"
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1330,5 +1417,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "38c3f0fd0809c9a8c822623d88128a69ee472b7b7a5b874217d6703e19d841d3"
+ "hash": "78d1fa8478e7b5b73c3713883414911336f61b3e354a15fc8052beab6829eb80"
 }

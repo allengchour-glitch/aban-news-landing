@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T17:18:39.650Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -31,13 +39,13 @@
  "typ": "CANVAS",
  "standardTechnik": "DIGITAL",
  "titelEn": "Thin Canvas (in)",
- "titel": "Dünne Leinwand selbst gestalten",
- "titelKurz": "Dünne Leinwand",
- "titelQuelle": "glossar",
+ "titel": "Schlanke Leinwand selbst gestalten",
+ "titelKurz": "Schlanke Leinwand",
+ "titelQuelle": "fest",
  "titelUnterscheidung": null,
  "titelUnbekannt": [],
  "entfernteMarken": [],
- "handle": "duenne-leinwand-selbst-gestalten",
+ "handle": "schlanke-leinwand-selbst-gestalten",
  "handleKollision": false,
  "status": "DRAFT",
  "vendor": "LuxeStyle",
@@ -53,8 +61,8 @@
   "wunschdesign"
  ],
  "seo": {
-  "title": "Dünne Leinwand selbst gestalten | LuxeStyle CH",
-  "description": "Dünne Leinwand selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+  "title": "Schlanke Leinwand selbst gestalten | LuxeStyle CH",
+  "description": "Schlanke Leinwand selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
  },
  "optionen": [
   {
@@ -63,8 +71,8 @@
    "werte": [
     "20,3 × 25,4 cm",
     "22,9 × 30,5 cm",
-    "27,9 × 35,6 cm",
     "30,5 × 30,5 cm",
+    "27,9 × 35,6 cm",
     "30,5 × 40,6 cm",
     "30,5 × 45,7 cm",
     "40,6 × 40,6 cm",
@@ -96,7 +104,7 @@
    "nettoChf": 4.52,
    "nettoBeiMesskursChf": 6.66,
    "bindend": "kosten",
-   "bildAlt": "Dünne Leinwand selbst gestalten Ansicht 2"
+   "bildAlt": "Schlanke Leinwand selbst gestalten Ansicht 2"
   },
   {
    "sku": "9100616_17623",
@@ -116,27 +124,7 @@
    "nettoChf": 4.24,
    "nettoBeiMesskursChf": 6.48,
    "bindend": "kosten",
-   "bildAlt": "Dünne Leinwand selbst gestalten Ansicht 3"
-  },
-  {
-   "sku": "9100616_17621",
-   "printfulVariantId": 17621,
-   "optionen": {
-    "Grösse": "27,9 × 35,6 cm"
-   },
-   "farbe": null,
-   "groesse": "27,9 × 35,6 cm",
-   "herkunft": "EU",
-   "kostenUsd": 16.58,
-   "ekRechnungUsd": 20.89,
-   "ekQuelle": "katalog+26%",
-   "versandUsd": 9.89,
-   "aufpreisUsd": 0,
-   "preisChf": 36.9,
-   "nettoChf": 4.89,
-   "nettoBeiMesskursChf": 7.22,
-   "bindend": "kosten",
-   "bildAlt": "Dünne Leinwand selbst gestalten Ansicht 4"
+   "bildAlt": "Schlanke Leinwand selbst gestalten Ansicht 3"
   },
   {
    "sku": "9100616_15701",
@@ -156,7 +144,27 @@
    "nettoChf": 5.95,
    "nettoBeiMesskursChf": 8.64,
    "bindend": "richtwert",
-   "bildAlt": "Dünne Leinwand selbst gestalten Ansicht 5"
+   "bildAlt": "Schlanke Leinwand selbst gestalten Ansicht 4"
+  },
+  {
+   "sku": "9100616_17621",
+   "printfulVariantId": 17621,
+   "optionen": {
+    "Grösse": "27,9 × 35,6 cm"
+   },
+   "farbe": null,
+   "groesse": "27,9 × 35,6 cm",
+   "herkunft": "EU",
+   "kostenUsd": 16.58,
+   "ekRechnungUsd": 20.89,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 9.89,
+   "aufpreisUsd": 0,
+   "preisChf": 36.9,
+   "nettoChf": 4.89,
+   "nettoBeiMesskursChf": 7.22,
+   "bindend": "kosten",
+   "bildAlt": "Schlanke Leinwand selbst gestalten Ansicht 5"
   },
   {
    "sku": "9100616_15702",
@@ -176,7 +184,7 @@
    "nettoChf": 6.83,
    "nettoBeiMesskursChf": 9.67,
    "bindend": "richtwert",
-   "bildAlt": "Dünne Leinwand selbst gestalten Ansicht 6"
+   "bildAlt": "Schlanke Leinwand selbst gestalten Ansicht 6"
   },
   {
    "sku": "9100616_17622",
@@ -342,42 +350,42 @@
  "medien": [
   {
    "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
-   "alt": "Dünne Leinwand selbst gestalten Produktbild",
+   "alt": "Schlanke Leinwand selbst gestalten Produktbild",
    "rolle": "haupt",
    "label": "Produktbild"
   },
   {
    "url": "https://files.cdn.printful.com/products/616/17620_1692688979.jpg",
-   "alt": "Dünne Leinwand selbst gestalten Ansicht 2",
+   "alt": "Schlanke Leinwand selbst gestalten Ansicht 2",
    "rolle": "variante",
    "label": null
   },
   {
    "url": "https://files.cdn.printful.com/products/616/17623_1692688979.jpg",
-   "alt": "Dünne Leinwand selbst gestalten Ansicht 3",
-   "rolle": "variante",
-   "label": null
-  },
-  {
-   "url": "https://files.cdn.printful.com/products/616/17621_1692688959.jpg",
-   "alt": "Dünne Leinwand selbst gestalten Ansicht 4",
+   "alt": "Schlanke Leinwand selbst gestalten Ansicht 3",
    "rolle": "variante",
    "label": null
   },
   {
    "url": "https://files.cdn.printful.com/products/616/15701_1660725254.jpg",
-   "alt": "Dünne Leinwand selbst gestalten Ansicht 5",
+   "alt": "Schlanke Leinwand selbst gestalten Ansicht 4",
+   "rolle": "variante",
+   "label": null
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/616/17621_1692688959.jpg",
+   "alt": "Schlanke Leinwand selbst gestalten Ansicht 5",
    "rolle": "variante",
    "label": null
   },
   {
    "url": "https://files.cdn.printful.com/products/616/15702_1660725256.jpg",
-   "alt": "Dünne Leinwand selbst gestalten Ansicht 6",
+   "alt": "Schlanke Leinwand selbst gestalten Ansicht 6",
    "rolle": "variante",
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 7 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"616\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":616,\"typ\":\"CANVAS\",\"titelDe\":\"Dünne Leinwand\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":373,\"breitePx\":4200,\"hoehePx\":4200,\"dpi\":300},\"vorlage\":{\"vorlageId\":135278,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x12/12x12_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":4,\"flaecheBreite\":720,\"flaecheHoehe\":720,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":373,\"vorlage\":{\"vorlageId\":135278,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x12/12x12_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":4,\"flaecheBreite\":720,\"flaecheHoehe\":720,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15701},{\"printfileId\":374,\"vorlage\":{\"vorlageId\":135279,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x16/12x16hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":84,\"flaecheBreite\":720,\"flaecheHoehe\":560,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15702},{\"printfileId\":51,\"vorlage\":{\"vorlageId\":135281,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/03/03b3012ec9e40d5619bf641fe2f40538?v=1660810680\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":4,\"flaecheBreite\":720,\"flaecheHoehe\":720,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15703},{\"printfileId\":46,\"vorlage\":{\"vorlageId\":135282,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/16x20/16x20hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":6,\"flaecheOben\":70,\"flaecheBreite\":720,\"flaecheHoehe\":588,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15704},{\"printfileId\":376,\"vorlage\":{\"vorlageId\":135284,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/18x24/18x24hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":87,\"flaecheBreite\":720,\"flaecheHoehe\":554,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15705},{\"printfileId\":379,\"vorlage\":{\"vorlageId\":135286,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/24x36/24x36hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":118,\"flaecheBreite\":720,\"flaecheHoehe\":492,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15706},{\"printfileId\":486,\"vorlage\":{\"vorlageId\":206010,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/11x14/11x14_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":24,\"flaecheOben\":88,\"flaecheBreite\":680,\"flaecheHoehe\":552,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17621},{\"printfileId\":488,\"vorlage\":{\"vorlageId\":205992,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x18/12x18_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":23,\"flaecheOben\":125,\"flaecheBreite\":682,\"flaecheHoehe\":478,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17622},{\"printfileId\":490,\"vorlage\":{\"vorlageId\":206028,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/20x28/20x28_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":15,\"flaecheOben\":108,\"flaecheBreite\":696,\"flaecheHoehe\":512,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17624},{\"printfileId\":480,\"vorlage\":{\"vorlageId\":206064,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/20x30/20x30hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":5,\"flaecheOben\":116,\"flaecheBreite\":720,\"flaecheHoehe\":496,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17626},{\"printfileId\":492,\"vorlage\":{\"vorlageId\":206046,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/24x32/24x32_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":15,\"flaecheOben\":98,\"flaecheBreite\":698,\"flaecheHoehe\":532,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17625},{\"printfileId\":482,\"vorlage\":{\"vorlageId\":205956,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/8x10/8x10_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":32,\"flaecheOben\":87,\"flaecheBreite\":664,\"flaecheHoehe\":554,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17620},{\"printfileId\":484,\"vorlage\":{\"vorlageId\":205974,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/9x12/9x12_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":99,\"flaecheBreite\":670,\"flaecheHoehe\":529,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17623}]}],\"druckdateien\":{\"46\":{\"printfileId\":46,\"breitePx\":6600,\"hoehePx\":5400,\"dpi\":300},\"51\":{\"printfileId\":51,\"breitePx\":5400,\"hoehePx\":5400,\"dpi\":300},\"373\":{\"printfileId\":373,\"breitePx\":4200,\"hoehePx\":4200,\"dpi\":300},\"374\":{\"printfileId\":374,\"breitePx\":5400,\"hoehePx\":4200,\"dpi\":300},\"376\":{\"printfileId\":376,\"breitePx\":7800,\"hoehePx\":6000,\"dpi\":300},\"379\":{\"printfileId\":379,\"breitePx\":11400,\"hoehePx\":7800,\"dpi\":300},\"480\":{\"printfileId\":480,\"breitePx\":9600,\"hoehePx\":6600,\"dpi\":300},\"482\":{\"printfileId\":482,\"breitePx\":3600,\"hoehePx\":3000,\"dpi\":300},\"484\":{\"printfileId\":484,\"breitePx\":4200,\"hoehePx\":3300,\"dpi\":300},\"486\":{\"printfileId\":486,\"breitePx\":4800,\"hoehePx\":3900,\"dpi\":300},\"488\":{\"printfileId\":488,\"breitePx\":6000,\"hoehePx\":4200,\"dpi\":300},\"490\":{\"printfileId\":490,\"breitePx\":9000,\"hoehePx\":6600,\"dpi\":300},\"492\":{\"printfileId\":492,\"breitePx\":10200,\"hoehePx\":7800,\"dpi\":300}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":373},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":374},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":51},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":46},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":376},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":379},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":486},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":488},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":490},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":480},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":492},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":482},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":484},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":17620,\"druckdateiGruppe\":11},{\"printfulVariantId\":17623,\"druckdateiGruppe\":12},{\"printfulVariantId\":17621,\"druckdateiGruppe\":6},{\"printfulVariantId\":15701,\"druckdateiGruppe\":0},{\"printfulVariantId\":15702,\"druckdateiGruppe\":1},{\"printfulVariantId\":17622,\"druckdateiGruppe\":7},{\"printfulVariantId\":15703,\"druckdateiGruppe\":2},{\"printfulVariantId\":15704,\"druckdateiGruppe\":3},{\"printfulVariantId\":15705,\"druckdateiGruppe\":4},{\"printfulVariantId\":17624,\"druckdateiGruppe\":8},{\"printfulVariantId\":17626,\"druckdateiGruppe\":9},{\"printfulVariantId\":17625,\"druckdateiGruppe\":10},{\"printfulVariantId\":15706,\"druckdateiGruppe\":5}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Gestalte deine Räume mit dieser besonders schlanken, dünnen Leinwand! Bestellen und gleich aufhängen: Wandhalterungen sind angebracht, Gummipuffer auf der Rückseite schützen vor Beschädigungen.</p>\n<ul><li>Leinwand, 19,05 mm dick</li><li>Stoffgewicht der Leinwand: 344 g/m² ± 25 g/m²</li><li>Wandhalterungen angebracht</li><li>Gummipuffer auf der Rückseite gegen Beschädigungen</li><li>Schlanker als normale Leinwände</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li><li><strong>Druckdatei (Druckfläche):</strong> 4200 × 4200 Pixel bei 300 dpi, das sind 35,6 × 35,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Höhe</th><th>Breite</th></tr></thead><tbody><tr><th scope=\"row\">20,3 × 25,4 cm</th><td>20,3 cm</td><td>25,4 cm</td></tr><tr><th scope=\"row\">22,9 × 30,5 cm</th><td>22,9 cm</td><td>30,5 cm</td></tr><tr><th scope=\"row\">27,9 × 35,6 cm</th><td>27,9 cm</td><td>35,6 cm</td></tr><tr><th scope=\"row\">30,5 × 30,5 cm</th><td>30,5 cm</td><td>30,5 cm</td></tr><tr><th scope=\"row\">30,5 × 40,6 cm</th><td>30,5 cm</td><td>40,6 cm</td></tr><tr><th scope=\"row\">30,5 × 45,7 cm</th><td>30,5 cm</td><td>45,7 cm</td></tr><tr><th scope=\"row\">40,6 × 40,6 cm</th><td>40,6 cm</td><td>40,6 cm</td></tr><tr><th scope=\"row\">40,6 × 50,8 cm</th><td>40,6 cm</td><td>50,8 cm</td></tr><tr><th scope=\"row\">45,7 × 61 cm</th><td>45,7 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">50,8 × 71,1 cm</th><td>50,8 cm</td><td>71,1 cm</td></tr><tr><th scope=\"row\">50,8 × 76,2 cm</th><td>50,8 cm</td><td>76,2 cm</td></tr><tr><th scope=\"row\">61 × 81,3 cm</th><td>61 cm</td><td>81,3 cm</td></tr><tr><th scope=\"row\">61 × 91,4 cm</th><td>61 cm</td><td>91,4 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"616\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":616,\"typ\":\"CANVAS\",\"titelDe\":\"Schlanke Leinwand\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":373,\"breitePx\":4200,\"hoehePx\":4200,\"dpi\":300},\"vorlage\":{\"vorlageId\":135278,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x12/12x12_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":4,\"flaecheBreite\":720,\"flaecheHoehe\":720,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":373,\"vorlage\":{\"vorlageId\":135278,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x12/12x12_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":4,\"flaecheBreite\":720,\"flaecheHoehe\":720,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15701},{\"printfileId\":374,\"vorlage\":{\"vorlageId\":135279,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x16/12x16hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":84,\"flaecheBreite\":720,\"flaecheHoehe\":560,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15702},{\"printfileId\":51,\"vorlage\":{\"vorlageId\":135281,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/03/03b3012ec9e40d5619bf641fe2f40538?v=1660810680\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":4,\"flaecheBreite\":720,\"flaecheHoehe\":720,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15703},{\"printfileId\":46,\"vorlage\":{\"vorlageId\":135282,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/16x20/16x20hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":6,\"flaecheOben\":70,\"flaecheBreite\":720,\"flaecheHoehe\":588,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15704},{\"printfileId\":376,\"vorlage\":{\"vorlageId\":135284,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/18x24/18x24hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":87,\"flaecheBreite\":720,\"flaecheHoehe\":554,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15705},{\"printfileId\":379,\"vorlage\":{\"vorlageId\":135286,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/24x36/24x36hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":4,\"flaecheOben\":118,\"flaecheBreite\":720,\"flaecheHoehe\":492,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":15706},{\"printfileId\":486,\"vorlage\":{\"vorlageId\":206010,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/11x14/11x14_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":24,\"flaecheOben\":88,\"flaecheBreite\":680,\"flaecheHoehe\":552,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17621},{\"printfileId\":488,\"vorlage\":{\"vorlageId\":205992,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/12x18/12x18_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":23,\"flaecheOben\":125,\"flaecheBreite\":682,\"flaecheHoehe\":478,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17622},{\"printfileId\":490,\"vorlage\":{\"vorlageId\":206028,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/20x28/20x28_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":15,\"flaecheOben\":108,\"flaecheBreite\":696,\"flaecheHoehe\":512,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17624},{\"printfileId\":480,\"vorlage\":{\"vorlageId\":206064,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/20x30/20x30hor_notext.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":5,\"flaecheOben\":116,\"flaecheBreite\":720,\"flaecheHoehe\":496,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17626},{\"printfileId\":492,\"vorlage\":{\"vorlageId\":206046,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/24x32/24x32_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":15,\"flaecheOben\":98,\"flaecheBreite\":698,\"flaecheHoehe\":532,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17625},{\"printfileId\":482,\"vorlage\":{\"vorlageId\":205956,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/8x10/8x10_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":32,\"flaecheOben\":87,\"flaecheBreite\":664,\"flaecheHoehe\":554,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17620},{\"printfileId\":484,\"vorlage\":{\"vorlageId\":205974,\"bildUrl\":\"https://files.cdn.printful.com/m/Thin_canvas/medium/Template/9x12/9x12_hor.png?v=1792663654\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":99,\"flaecheBreite\":670,\"flaecheHoehe\":529,\"ausrichtung\":\"horizontal\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":17623}]}],\"druckdateien\":{\"46\":{\"printfileId\":46,\"breitePx\":6600,\"hoehePx\":5400,\"dpi\":300},\"51\":{\"printfileId\":51,\"breitePx\":5400,\"hoehePx\":5400,\"dpi\":300},\"373\":{\"printfileId\":373,\"breitePx\":4200,\"hoehePx\":4200,\"dpi\":300},\"374\":{\"printfileId\":374,\"breitePx\":5400,\"hoehePx\":4200,\"dpi\":300},\"376\":{\"printfileId\":376,\"breitePx\":7800,\"hoehePx\":6000,\"dpi\":300},\"379\":{\"printfileId\":379,\"breitePx\":11400,\"hoehePx\":7800,\"dpi\":300},\"480\":{\"printfileId\":480,\"breitePx\":9600,\"hoehePx\":6600,\"dpi\":300},\"482\":{\"printfileId\":482,\"breitePx\":3600,\"hoehePx\":3000,\"dpi\":300},\"484\":{\"printfileId\":484,\"breitePx\":4200,\"hoehePx\":3300,\"dpi\":300},\"486\":{\"printfileId\":486,\"breitePx\":4800,\"hoehePx\":3900,\"dpi\":300},\"488\":{\"printfileId\":488,\"breitePx\":6000,\"hoehePx\":4200,\"dpi\":300},\"490\":{\"printfileId\":490,\"breitePx\":9000,\"hoehePx\":6600,\"dpi\":300},\"492\":{\"printfileId\":492,\"breitePx\":10200,\"hoehePx\":7800,\"dpi\":300}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":373},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":374},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":51},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":46},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":376},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":379},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":486},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":488},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":490},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":480},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":492},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":482},\"anzahlVarianten\":1},{\"platzierungen\":{\"default\":484},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":17620,\"druckdateiGruppe\":11},{\"printfulVariantId\":17623,\"druckdateiGruppe\":12},{\"printfulVariantId\":15701,\"druckdateiGruppe\":0},{\"printfulVariantId\":17621,\"druckdateiGruppe\":6},{\"printfulVariantId\":15702,\"druckdateiGruppe\":1},{\"printfulVariantId\":17622,\"druckdateiGruppe\":7},{\"printfulVariantId\":15703,\"druckdateiGruppe\":2},{\"printfulVariantId\":15704,\"druckdateiGruppe\":3},{\"printfulVariantId\":15705,\"druckdateiGruppe\":4},{\"printfulVariantId\":17624,\"druckdateiGruppe\":8},{\"printfulVariantId\":17626,\"druckdateiGruppe\":9},{\"printfulVariantId\":17625,\"druckdateiGruppe\":10},{\"printfulVariantId\":15706,\"druckdateiGruppe\":5}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Gestalte deine Räume mit dieser besonders schlanken Leinwand! Bestellen und gleich aufhängen: Wandhalterungen sind angebracht, Gummipuffer auf der Rückseite schützen vor Beschädigungen.</p>\n<ul><li>Leinwand, 19,05 mm dick</li><li>Stoffgewicht der Leinwand: 344 g/m² ± 25 g/m²</li><li>Wandhalterungen angebracht</li><li>Gummipuffer auf der Rückseite gegen Beschädigungen</li><li>Schlanker als normale Leinwände</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -426,7 +434,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–7\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -886,7 +912,7 @@
   "schema": 1,
   "printfulProductId": 616,
   "typ": "CANVAS",
-  "titelDe": "Dünne Leinwand",
+  "titelDe": "Schlanke Leinwand",
   "klasse": "FLACH",
   "standardTechnik": "DIGITAL",
   "minDpi": 150,
@@ -1343,12 +1369,12 @@
     "druckdateiGruppe": 12
    },
    {
-    "printfulVariantId": 17621,
-    "druckdateiGruppe": 6
-   },
-   {
     "printfulVariantId": 15701,
     "druckdateiGruppe": 0
+   },
+   {
+    "printfulVariantId": 17621,
+    "druckdateiGruppe": 6
    },
    {
     "printfulVariantId": 15702,
@@ -1388,13 +1414,32 @@
    }
   ]
  },
- "karteBytes": 8739,
+ "karteBytes": 8741,
  "lieferung": {
   "versandart": "STANDARD",
   "rateUsd": 9.89,
   "tageMin": 3,
   "tageMax": 7,
   "ratenVariante": 15701
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   7
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": "thin canvas",
+ "kategorie": {
+  "art": "canvas",
+  "google": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-3-4-2-2"
  },
  "basisPlatzierung": {
   "id": "default",
@@ -1441,8 +1486,8 @@
    "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
    "https://files.cdn.printful.com/products/616/17620_1692688979.jpg",
    "https://files.cdn.printful.com/products/616/17623_1692688979.jpg",
-   "https://files.cdn.printful.com/products/616/17621_1692688959.jpg",
    "https://files.cdn.printful.com/products/616/15701_1660725254.jpg",
+   "https://files.cdn.printful.com/products/616/17621_1692688959.jpg",
    "https://files.cdn.printful.com/products/616/15702_1660725256.jpg",
    "https://files.cdn.printful.com/products/616/17622_1692688962.jpg",
    "https://files.cdn.printful.com/products/616/15703_1660725264.jpg",
@@ -1462,7 +1507,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1475,8 +1520,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1573,6 +1625,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "8 von 13 Varianten ohne eigenes Bild (Produkte ohne Farbwahl zeigen höchstens 6 Bilder): sie zeigen beim Wählen das erste Bild"
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1616,5 +1703,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "7fe1f18e301b57ab32f00ae75d6575a6ba07c4ed6d28045fce72e81c70c075aa"
+ "hash": "d7787cf5316f5dba04883b3749e7e600bf5879775e94eb464832315f45b7179c"
 }

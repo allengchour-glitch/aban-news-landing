@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { bildMass } from './bildmass.mjs';
 import { adressenAus, erlaubt, main } from './bilder_messen.mjs';
-import { neuerTest } from './testhilfe.mjs';
+import { neuerTest, wegwerfOrdner } from './testhilfe.mjs';
 const { ist, wahr, ende } = neuerTest('bildmass');
 
 const be16 = (n) => [n >> 8, n & 255];
@@ -25,7 +25,7 @@ ist('Text ist kein Bild', bildMass(new TextEncoder().encode('<html>nicht gefunde
 ist('leer', bildMass(new Uint8Array(0)), null);
 
 ist('erlaubte Hosts: nur https auf Printful', ['https://files.cdn.printful.com/a.jpg', 'http://files.cdn.printful.com/a.jpg', 'https://evil.example/a.jpg', 'https://files.cdn.printful.com.evil.example/a.jpg', 'kein url'].map(erlaubt), [true, false, false, false, false]);
-const dir = mkdtempSync(join(tmpdir(), 'bm-'));
+const dir = wegwerfOrdner('bm-');
 writeFileSync(join(dir, 'p.json'), JSON.stringify({ medien: [{ url: 'https://files.cdn.printful.com/a.jpg' }], bilder: { ungemessen: ['https://files.cdn.printful.com/b.jpg'], kandidaten: ['https://files.cdn.printful.com/c.jpg'] } }));
 ist('Adressen aus Plan-Dateien (Medien, ungemessen, Kandidaten)', adressenAus({ plaeneDir: dir }).sort(), ['https://files.cdn.printful.com/a.jpg', 'https://files.cdn.printful.com/b.jpg', 'https://files.cdn.printful.com/c.jpg']);
 writeFileSync(join(dir, 'u.txt'), 'https://files.cdn.printful.com/x.jpg\n\nhttps://evil.example/y.jpg\n');

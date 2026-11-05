@@ -156,6 +156,21 @@ export function lieferbox({ min, max }) {
   return `<p class="ls-liefer" data-tier="pod" style="${LIEFERBOX_STIL}">📦 <strong>Lieferzeit</strong> Schweiz: <strong>${sp}</strong> <span style="opacity:.7;">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>`;
 }
 
+/**
+ * Eine Tabelle, deren Zellen nur die Zahlen der Grössenbezeichnung wiederholen (Leinwand «20,3 × 25,4 cm» mit den Spalten Höhe 20,3 und Breite 25,4), sagt dem Kunden nichts Neues und trug dazu noch die
+ * Überschrift «zum Selbstmessen» (Gegenleser 2, K4). Sie entfällt ohne Vermerk (es geht nichts verloren).
+ */
+export function tabelleWiederholtNurGroesse(t) {
+  let zellen = 0;
+  for (const m of t.messungen ?? []) for (const w of m.werte ?? []) {
+    const erlaubt = zahlenAus(w.groesseAnzeige ?? w.groesse);
+    const zahlen = zahlenAus(w.anzeige);
+    zellen++;
+    if (!zahlen.length || !zahlen.every((z) => erlaubt.some((e) => gleichZahl(z, e)))) return false;
+  }
+  return zellen > 0;
+}
+
 function tabelleHtml(t, labelDe) {
   const messungen = t.messungen.filter((m) => m.werte && m.werte.length);
   if (!messungen.length) return null;
@@ -206,6 +221,7 @@ export function beschreibungBauen({ karte, lieferzeit, modell, klasse, kompakt, 
     const labels = t.messungen.map((m) => messungDe(m.label));
     if (labels.some((l) => l === null)) { weggelassen.push(`Grössentabelle «${t.typ}» ohne deutsche Beschriftung der Masse (${t.messungen.map((m) => m.label).join(', ')})`); continue; }
     if (t.messungen.some((m) => m.markiert)) { weggelassen.push(`Grössentabelle «${t.typ}» enthält markierte (nicht umgerechnete) Werte`); continue; }
+    if (tabelleWiederholtNurGroesse(t)) continue;
     const h = tabelleHtml(t, (l) => messungDe(l));
     if (!h) continue;
     if (tabellen.some((x) => x.h === h)) { weggelassen.push(`Grössentabelle «${t.typ}» ist gleich einer schon gezeigten`); continue; }

@@ -3,7 +3,7 @@
 //   19 Tasse · 206 Dad-Cap (Stickerei, Pflicht-Aufpreis) · 268 Poster · 798 iPhone-Hülle · 71 T-Shirt (628 Varianten, mehr als 100) · 861 Kerze (ohne bestellbare Variante) · 574 Schuh · 388 Allover-Hoodie (PANEL)
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { waehleVarianten, optionenBauen, basisPlatzierung, kompaktKarte, editorKarte, EDITOR_HINWEIS_CODES, medienBauen, hashVon, kanon, seoText, gruppeVon, SKU_BASIS, FABRIK_REGEL } from './plan.mjs';
+import { lieferzeitAus, groesseFlaeche, waehleVarianten, optionenBauen, basisPlatzierung, kompaktKarte, editorKarte, EDITOR_HINWEIS_CODES, medienBauen, hashVon, kanon, seoText, gruppeVon, SKU_BASIS, FABRIK_REGEL } from './plan.mjs';
 import { modellkarteBauen } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs';
 import { endpreis } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest, tief } from './testhilfe.mjs';
@@ -55,8 +55,25 @@ ist('ohne CH-Rate: Preis nicht berechenbar, Tore melden es', blocker(ohneRate).i
 ist('ohne Versandeintrag: gesperrt', blocker(plan(19, { versand: null })).includes('ch_rate'), true);
 ist('Rate 0 oder negativ: gesperrt', [plan(19, { versand: versand('0') }), plan(19, { versand: versand('-3') })].map((p) => blocker(p).includes('ch_rate')), [true, true]);
 ist('Rate ohne Tage: Lieferangabe fehlt, Anlegen gesperrt', blocker(plan(19, { versand: { variante: 1, http: 200, raten: [{ id: 'STANDARD', rateUsd: '10.39' }] } })).includes('lieferangabe'), true);
-ist('Lieferzeit auf der Seite: Spanne aus der Rate, «laut Printful», keine Tageszusage', [/3 bis 6 Werktage/.test(plan(19).beschreibungHtml), /laut Printful/.test(plan(19).beschreibungHtml)], [true, true]);
-ist('Lieferzeit-Metafeld trägt die Rate', JSON.parse(plan(19).metafelder.find((m) => m.key === 'lieferzeit').value).tier, 'pod');
+// ── Lieferzeit (Gegenleser 05.11.): Versandtage plus Fertigung; innerhalb von 7 bis 14 gilt die Angabe der heutigen Produkte
+ist('Lieferzeit: Versand 3 bis 6 + Fertigung 2 bis 5 = 5 bis 11 → die Shop-Angabe 7 bis 14', (({ min, max, quelle }) => [min, max, quelle])(lieferzeitAus({ tageMin: 3, tageMax: 6 })), [7, 14, 'shop-standard']);
+ist('Lieferzeit: Versand 6 bis 9 + Fertigung = 14 genau → Shop-Angabe', (({ min, max, quelle }) => [min, max, quelle])(lieferzeitAus({ tageMin: 6, tageMax: 9 })), [7, 14, 'shop-standard']);
+ist('Lieferzeit: Versand 14 bis 16 → berechnet 16 bis 21', (({ min, max, quelle }) => [min, max, quelle])(lieferzeitAus({ tageMin: 14, tageMax: 16 })), [16, 21, 'berechnet']);
+ist('Lieferzeit: Versand 6 bis 10 → berechnet 8 bis 15 (nie unter 7)', (({ min, max, quelle }) => [min, max, quelle])(lieferzeitAus({ tageMin: 6, tageMax: 10 })), [8, 15, 'berechnet']);
+ist('Lieferzeit: Versand 1 bis 12 → berechnet 7 bis 17 (untere Grenze mindestens 7)', (({ min, max }) => [min, max])(lieferzeitAus({ tageMin: 1, tageMax: 12 })), [7, 17]);
+ist('Lieferzeit: ungültige Tage → null', [lieferzeitAus({ tageMin: null, tageMax: 5 }), lieferzeitAus({ tageMin: 9, tageMax: 3 }), lieferzeitAus({ tageMin: 0, tageMax: 3 }), lieferzeitAus(null)], [null, null, null, null]);
+ist('Lieferzeit: Versand und Fertigung stehen im Ergebnis (Beleg für die Seite)', (({ versandTage, fertigung }) => [versandTage, fertigung])(lieferzeitAus({ tageMin: 3, tageMax: 6 })), [[3, 6], [2, 5]]);
+{
+  const p = plan(19);
+  ist('Seite nennt «7 bis 14 Werktage» im Wortlaut der Live-Seiten, nicht die Versandtage (3 bis 6) und nicht «Printful»/«Kasse»', [/<strong>7 bis 14 Werktage<\/strong>/.test(p.beschreibungHtml), /3 bis 6 Werktage/.test(p.beschreibungHtml), /laut Printful|Kasse/.test(p.beschreibungHtml.replace(/<script[\s\S]*?<\/script>/g, ''))], [true, false, false]);
+  ist('Metafeld custom.lieferzeit genau wie bei den heutigen Produkten (nur ch, tier, weg)', p.metafelder.find((m) => m.key === 'lieferzeit').value, '{"ch":"7–14","tier":"pod","weg":"Druck auf Bestellung"}');
+  const lang = plan(19, { versand: versand('10.39', 14, 16) });
+  ist('lange Versandzeit: Seite und Metafeld nennen die berechnete Spanne 16 bis 21, Hinweis lieferzeit_laenger', [/16 bis 21 Werktage/.test(lang.beschreibungHtml), JSON.parse(lang.metafelder.find((m) => m.key === 'lieferzeit').value).ch, tor(lang, 'lieferzeit_laenger').ergebnis, lang.anlegbar], [true, '16–21', 'durchgefallen', true]);
+  ist('kurze Versandzeit: Hinweis lieferzeit_laenger bestanden', tor(p, 'lieferzeit_laenger').ergebnis, 'bestanden');
+}
+// ── Versandrate für eine Variante der Auswahl (Tor rate_variante)
+ist('Rate für eine Variante ausserhalb der Auswahl: Anlegen gesperrt', blocker(plan(19, { versand: versand('10.39', 3, 6, 99999999) })).includes('rate_variante'), true);
+ist('Rate für die erste Variante der Auswahl: bestanden', tor(plan(19), 'rate_variante').ergebnis, 'bestanden');
 ist('Rate wechselt: der Preis steigt', plan(19, { versand: versand('20.00') }).varianten[0].preisChf > plan(19).varianten[0].preisChf, true);
 ist('Versand je Variante überschreibt die Modellrate', planeModell({ katalog: lade(19), versand: versand(), uebersetzung: testUebersetzung(lade(19)), bilder: bilderFuer(lade(19)) }, { jetzt: 'x', versandVarianten: { [v1.printfulVariantId]: 30 } }).varianten[0].versandUsd === 10.39 ? 'ignoriert' : 'genommen', 'genommen');
 
@@ -160,6 +177,40 @@ ist('Beschreibung: Editor-Container und Karte im Skript-Tag', [/class="lspod-des
 ist('Container trägt NICHT die Klasse des live wirksamen Editors v5 («lspod-designer»), sonst mountet v5 ohne Bilder', /class="(?:[^"]* )?lspod-designer(?: [^"]*)?"/.test(plan(19).beschreibungHtml), false);
 ist('Das Skript mit der Karte steht im Container (Einbindung laut Kopf von lspod-designer-v6.js)', /<div class="lspod-designer-v6"[^>]*><script type="application\/json" id="lspod-karte">/.test(plan(19).beschreibungHtml), true);
 
+// ── Grössen nach Fläche ordnen (Gegenleser 1, F5: Poster 1 stand ungeordnet) und Fläche aus der Angabe lesen
+ist('groesseFlaeche: zwei Masse, Komma, Klammer (A1), Einheiten, ohne Masse', [groesseFlaeche('29,7 × 42 cm'), groesseFlaeche('A1 (59,4 × 84,1 cm)'), groesseFlaeche('61 x 91,4 cm'), groesseFlaeche('XL'), groesseFlaeche('325 ml'), groesseFlaeche(null)], [1247.4, 4995.54, 5575.4, null, null, null]);
+{
+  const p = plan(268);
+  const werte = p.optionen.find((o) => o.name === 'Grösse').werte;
+  const fl = werte.map(groesseFlaeche);
+  ist('Poster 268: Grössen nach Fläche aufsteigend (A1 und A2 mitten drin, nicht am Anfang)', [fl.every((x, i) => i === 0 || fl[i - 1] <= x), werte[0], werte[werte.length - 1]], [true, '21 × 30 cm', '70 × 100 cm']);
+  ist('… und die Varianten folgen derselben Reihenfolge', p.varianten.map((v) => v.groesse), werte);
+  ist('Kleidergrössen behalten die Reihenfolge des Katalogs (S, M, L …)', plan(71).optionen.find((o) => o.name === 'Grösse').werte.slice(0, 6), ['XS', 'S', 'M', 'L', 'XL', '2XL']);
+  ist('Masse einheitlich «21 × 30 cm» mit Dezimalkomma, auch bei den cm-Modellen (vorher «21×30 cm», «59.4»)', werte, ['21 × 30 cm', '30 × 40 cm', 'A2 (42 × 59,4 cm)', '50 × 70 cm', 'A1 (59,4 × 84,1 cm)', '61 × 91 cm', '70 × 100 cm']);
+}
+// ── «Custom» ist keine Farbe (Strickwaren: Gegenleser 2, K3)
+{
+  const k = tief(lade(19)); for (const v of k.varianten) v.color = 'Custom';
+  const p = plan(19, { katalog: k });
+  ist('Farbe «Custom»: keine Farbwahl, keine ausgelassene Farbe, Varianten bleiben', [p.optionen.some((o) => o.name === 'Farbe'), p.auswahl.farbenAusgelassen.length, p.varianten.length], [false, 0, 3]);
+}
+// ── Kategorie und Google-Felder (Gegenleser 2, W4)
+{
+  const mf = (p, key) => p.metafelder.find((m) => m.namespace === 'mm-google-shopping' && m.key === key)?.value;
+  const t = plan(19), sh = plan(71), cp = plan(206);
+  ist('Tasse: Google-Kategorie wie bei den heutigen Produkten, unisex, adult', [mf(t, 'google_product_category'), mf(t, 'gender'), mf(t, 'age_group')], ['Home & Garden > Kitchen & Dining > Tableware > Drinkware > Mugs', 'unisex', 'adult']);
+  ist('T-Shirt: Shirts & Tops; Zielgruppe «Unisex» aus dem Titel', [mf(sh, 'google_product_category'), mf(sh, 'gender')], ['Apparel & Accessories > Clothing > Shirts & Tops', 'unisex']);
+  ist('Dad-Cap: Hats', mf(cp, 'google_product_category'), 'Apparel & Accessories > Clothing Accessories > Hats');
+  ist('Plan trägt die Shopify-Kategorie (Tasse: Mugs, Blattkategorie)', [t.kategorie.shopify, t.kategorie.art], ['gid://shopify/TaxonomyCategory/hg-11-10-5-5', 'mug']);
+  const fremd = tief(lade(19)); fremd.produkt.title = 'Mystery Gadget'; const pf = plan(19, { katalog: fremd });
+  ist('unbekannter Typ: keine Kategorie, keine Google-Felder ausser condition/custom_product, Hinweis kategorie fällt durch (Plan bleibt anlegbar)', [pf.kategorie, mf(pf, 'google_product_category'), pf.metafelder.filter((m) => m.namespace === 'mm-google-shopping').map((m) => m.key).sort(), tor(pf, 'kategorie').ergebnis], [null, undefined, ['condition', 'custom_product'], 'durchgefallen']);
+}
+// ── Familie (Poster in/cm) und Geschwister-Sperre
+ist('Plan 268 (Poster (cm)): Familie «enhanced matte paper poster»; Tasse ohne Einheit: null', [plan(268).familie, plan(19).familie], ['enhanced matte paper poster', null]);
+ist('Plan 268 mit Familie im Shop: modell_neu gesperrt, mit anderer Familie frei', [blocker(plan(268, {}, { verwendeteFamilien: new Set(['enhanced matte paper poster']) })).includes('modell_neu'), blocker(plan(268, {}, { verwendeteFamilien: new Set(['canvas']) })).includes('modell_neu')], [true, false]);
+// ── Eckdaten «Druckdatei» nur bei EINER Druckdatei (Gegenleser 05.11.)
+ist('T-Shirt (eine Druckdatei): Zeile «Druckdatei» steht; Tasse (3 Druckdateien) und Poster (7 Formate): sie entfällt', [/Druckdatei \(/.test(plan(71).beschreibungHtml), /Druckdatei \(/.test(plan(19).beschreibungHtml), /Druckdatei \(/.test(plan(268).beschreibungHtml)], [true, false, false]);
+
 // ── Karte für den Editor v6 (Vertrag: pod/v6/lspod-designer-v6.js liest genau diese Felder)
 const ek = (id) => plan(id).editorKarte;
 const emb = (id) => JSON.parse(/<script type="application\/json" id="lspod-karte">([\s\S]*?)<\/script>/.exec(plan(id).beschreibungHtml)[1].replace(/\\u003c/gi, '<'));
@@ -170,6 +221,12 @@ wahr('Editor-Karte Tasse: Druckdatei je Variante (druckdateiGruppen) und variant
 wahr('Editor-Karte im Plan OHNE shop, in der Beschreibung MIT dem Platzhalter statt der Abbildung', ek(19).shop === undefined && emb(19).shop?.varianten === '__SHOP_VARIANTEN__');
 ist('Editor-Karte in der Beschreibung = Karte des Plans plus shop', (() => { const e = emb(19); delete e.shop; return JSON.stringify(e); })(), JSON.stringify(ek(19)));
 ist('Editor-Karte T-Shirt (71): Farben nur der gewählten Varianten, jede Variante in genau einer Farbe', (() => { const k = ek(71); const ids = new Set(plan(71).varianten.map((v) => v.printfulVariantId)); const alle = Object.values(k.farben ?? {}).flat(); return [alle.every((x) => ids.has(x)), new Set(alle).size === alle.length]; })(), [true, true]);
+{ // Farbtabelle nur ab zwei Farben (wie die Quelle des Editors: pod/v6/werkzeug/karte_fuer_editor.mjs)
+  const k0 = lade(71);
+  const eine = { ...k0, varianten: k0.varianten.filter((v) => v.color === 'Aqua') };
+  const zwei = { ...k0, varianten: k0.varianten.filter((v) => v.color === 'Aqua' || v.color === 'Black') };
+  ist('Editor-Karte: eine Farbe gibt keine Farbtabelle, zwei Farben geben eine mit beiden', [plan(71, { katalog: eine }).editorKarte.farben, Object.keys(plan(71, { katalog: zwei }).editorKarte.farben ?? {}).length], [undefined, 2]);
+}
 ist('Editor-Karte nennt den deutschen Titel und keinen Katalogtitel mit Fremdmarke (T-Shirt: Bella + Canvas, Cap: Yupoong; Bild-Adressen des Printful-Netzes ausgenommen)', [[71, 206].map((id) => /bella|yupoong|\b3001\b|\b6245/i.test(JSON.stringify(plan(id).editorKarte).replace(/https?:[^"]+/g, ''))), ek(19).titelEn, ek(19).titelDe === plan(19).titelKurz], [[false, false], undefined, true]);
 wahr('Editor-Karte: Hinweise nur einschraenkung oder bekannte Codes; bekannte ohne Text', ek(206).hinweise.every((h) => h.art === 'einschraenkung' || EDITOR_HINWEIS_CODES.includes(h.code)) && ek(206).hinweise.filter((h) => EDITOR_HINWEIS_CODES.includes(h.code)).every((h) => h.text === undefined));
 wahr('Editor-Karte: Platzierungen und Karte der Prüfung (kompakt) nennen dieselben Flächen', JSON.stringify(ek(71).platzierungen.map((p) => p.id)) === JSON.stringify(plan(71).kompakt.platzierungen.map((p) => p.id)));
@@ -184,7 +241,7 @@ wahr('Metafeld luxe_sg.karte ist die kompakte Prüfkarte (Schema lspod-karte/1, 
     const { karteFuerEditor, BEKANNTE_HINWEIS_CODES } = await import(quelle);
     ist('Vertrag: Hinweis-Codes gleich der Quelle des Editors', [...EDITOR_HINWEIS_CODES], [...BEKANNTE_HINWEIS_CODES]);
     for (const id of [19, 206, 268, 798, 388, 71]) {
-      const k = lade(id); const eigene = plan(id, { katalog: k }).editorKarte; const quelleKarte = karteFuerEditor(k);
+      const k = lade(id); const eigene = plan(id, { katalog: k }).editorKarte; const quelleKarte = karteFuerEditor(k, { panelErlauben: true });
       const ohne = (o) => { const c = JSON.parse(JSON.stringify(o)); delete c.varianten; delete c.farben; delete c.shop; delete c.titelEn; delete c.titelDe; return c; };
       ist(`Vertrag ${id}: gleiche Karte wie karteFuerEditor (ohne varianten/farben/shop)`, JSON.stringify(kanon(ohne(eigene))), JSON.stringify(kanon(ohne(quelleKarte))));
     }

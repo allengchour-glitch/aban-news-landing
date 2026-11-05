@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T16:57:48.415Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -356,7 +364,7 @@
    "label": "Dunkelblau"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>6 bis 9 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"403\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":403,\"typ\":\"MUG\",\"titelDe\":\"Keramik-Tasse mit farbiger Innenseite\",\"klasse\":\"FLACH\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":43,\"breitePx\":2700,\"hoehePx\":1050,\"dpi\":300},\"vorlage\":{\"vorlageId\":172772,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/99/999343228b21091a90973dfe1ecb277d?v=1643280623\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":163,\"flaecheBreite\":671,\"flaecheHoehe\":261,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":43,\"vorlage\":{\"vorlageId\":172772,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/99/999343228b21091a90973dfe1ecb277d?v=1643280623\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":163,\"flaecheBreite\":671,\"flaecheHoehe\":261,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":10,\"beispielVarianteId\":11051},{\"printfileId\":44,\"vorlage\":{\"vorlageId\":198682,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/92/92a5b53ba8ed78ae1bc84dc0aee34de4?v=1687768320\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":39,\"flaecheOben\":117,\"flaecheBreite\":649,\"flaecheHoehe\":273,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":6,\"beispielVarianteId\":17196}]}],\"druckdateien\":{\"43\":{\"printfileId\":43,\"breitePx\":2700,\"hoehePx\":1050,\"dpi\":300},\"44\":{\"printfileId\":44,\"breitePx\":2700,\"hoehePx\":1140,\"dpi\":300}},\"hinweise\":[{\"code\":\"rundumdruck\",\"art\":\"info\"}],\"farben\":{\"#050505\":[11051,17196],\"#e32a2d\":[11049,17200],\"#1e9fcd\":[11050,17197],\"#f6a1b1\":[12578,17199],\"#f85625\":[12579],\"#ffdc3a\":[11048],\"#1b1b51\":[22373]},\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":43},\"anzahlVarianten\":10},{\"platzierungen\":{\"default\":44},\"anzahlVarianten\":6}],\"varianten\":[{\"printfulVariantId\":11051,\"druckdateiGruppe\":0},{\"printfulVariantId\":17196,\"druckdateiGruppe\":1},{\"printfulVariantId\":11049,\"druckdateiGruppe\":0},{\"printfulVariantId\":17200,\"druckdateiGruppe\":1},{\"printfulVariantId\":11050,\"druckdateiGruppe\":0},{\"printfulVariantId\":17197,\"druckdateiGruppe\":1},{\"printfulVariantId\":12578,\"druckdateiGruppe\":0},{\"printfulVariantId\":17199,\"druckdateiGruppe\":1},{\"printfulVariantId\":12579,\"druckdateiGruppe\":0},{\"printfulVariantId\":11048,\"druckdateiGruppe\":0},{\"printfulVariantId\":22373,\"druckdateiGruppe\":1}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Bring Farbe in dein Morgenkaffee- oder Teeritual: Diese Keramiktassen haben nicht nur ein schönes Motiv, sondern auch einen farbigen Rand, einen farbigen Henkel und eine farbige Innenseite.</p>\n<p>So bringt die Tasse Schwung in dein Tassenregal.</p>\n<ul><li>Keramik</li><li>325 ml: Höhe 9,6 cm, Durchmesser 8,3 cm</li><li>444 ml: Höhe 11,9 cm, Durchmesser 8,5 cm</li><li>Farbiger Rand, farbige Innenseite und farbiger Henkel</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Druckfläche):</strong> 2700 × 1050 Pixel bei 300 dpi, das sind 22,9 × 8,9 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"403\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":403,\"typ\":\"MUG\",\"titelDe\":\"Keramik-Tasse mit farbiger Innenseite\",\"klasse\":\"FLACH\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":43,\"breitePx\":2700,\"hoehePx\":1050,\"dpi\":300},\"vorlage\":{\"vorlageId\":172772,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/99/999343228b21091a90973dfe1ecb277d?v=1643280623\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":163,\"flaecheBreite\":671,\"flaecheHoehe\":261,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":43,\"vorlage\":{\"vorlageId\":172772,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/99/999343228b21091a90973dfe1ecb277d?v=1643280623\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":29,\"flaecheOben\":163,\"flaecheBreite\":671,\"flaecheHoehe\":261,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":10,\"beispielVarianteId\":11051},{\"printfileId\":44,\"vorlage\":{\"vorlageId\":198682,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/92/92a5b53ba8ed78ae1bc84dc0aee34de4?v=1687768320\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":39,\"flaecheOben\":117,\"flaecheBreite\":649,\"flaecheHoehe\":273,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":6,\"beispielVarianteId\":17196}]}],\"druckdateien\":{\"43\":{\"printfileId\":43,\"breitePx\":2700,\"hoehePx\":1050,\"dpi\":300},\"44\":{\"printfileId\":44,\"breitePx\":2700,\"hoehePx\":1140,\"dpi\":300}},\"hinweise\":[{\"code\":\"rundumdruck\",\"art\":\"info\"}],\"druckdateiGruppen\":[{\"platzierungen\":{\"default\":43},\"anzahlVarianten\":10},{\"platzierungen\":{\"default\":44},\"anzahlVarianten\":6}],\"farben\":{\"#050505\":[11051,17196],\"#e32a2d\":[11049,17200],\"#1e9fcd\":[11050,17197],\"#f6a1b1\":[12578,17199],\"#f85625\":[12579],\"#ffdc3a\":[11048],\"#1b1b51\":[22373]},\"varianten\":[{\"printfulVariantId\":11051,\"druckdateiGruppe\":0},{\"printfulVariantId\":17196,\"druckdateiGruppe\":1},{\"printfulVariantId\":11049,\"druckdateiGruppe\":0},{\"printfulVariantId\":17200,\"druckdateiGruppe\":1},{\"printfulVariantId\":11050,\"druckdateiGruppe\":0},{\"printfulVariantId\":17197,\"druckdateiGruppe\":1},{\"printfulVariantId\":12578,\"druckdateiGruppe\":0},{\"printfulVariantId\":17199,\"druckdateiGruppe\":1},{\"printfulVariantId\":12579,\"druckdateiGruppe\":0},{\"printfulVariantId\":11048,\"druckdateiGruppe\":0},{\"printfulVariantId\":22373,\"druckdateiGruppe\":1}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Bring Farbe in dein Morgenkaffee- oder Teeritual: Diese Keramiktassen haben nicht nur ein schönes Motiv, sondern auch einen farbigen Rand, einen farbigen Henkel und eine farbige Innenseite.</p>\n<p>So bringt die Tasse Schwung in dein Tassenregal.</p>\n<ul><li>Keramik</li><li>325 ml: Höhe 9,6 cm, Durchmesser 8,3 cm</li><li>444 ml: Höhe 11,9 cm, Durchmesser 8,5 cm</li><li>Farbiger Rand, farbige Innenseite und farbiger Henkel</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -405,7 +413,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"6–9\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Mugs"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -630,6 +656,20 @@
     "art": "info"
    }
   ],
+  "druckdateiGruppen": [
+   {
+    "platzierungen": {
+     "default": 43
+    },
+    "anzahlVarianten": 10
+   },
+   {
+    "platzierungen": {
+     "default": 44
+    },
+    "anzahlVarianten": 6
+   }
+  ],
   "farben": {
    "#050505": [
     11051,
@@ -657,20 +697,6 @@
     22373
    ]
   },
-  "druckdateiGruppen": [
-   {
-    "platzierungen": {
-     "default": 43
-    },
-    "anzahlVarianten": 10
-   },
-   {
-    "platzierungen": {
-     "default": 44
-    },
-    "anzahlVarianten": 6
-   }
-  ],
   "varianten": [
    {
     "printfulVariantId": 11051,
@@ -725,6 +751,25 @@
   "tageMin": 6,
   "tageMax": 9,
   "ratenVariante": 11051
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   6,
+   9
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "mug",
+  "google": "Home & Garden > Kitchen & Dining > Tableware > Drinkware > Mugs",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-11-10-5-5"
  },
  "basisPlatzierung": {
   "id": "default",
@@ -836,7 +881,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -849,8 +894,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -947,6 +999,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -990,5 +1077,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "6e495f98a0693cc9813f517de0814589a95f1a612fab87f4f48cefefb242ac9f"
+ "hash": "d3dba1bb5525aa18ae409f5ade6b2c71f75ed51721122b90c0553234dff2579e"
 }

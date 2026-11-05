@@ -92,7 +92,13 @@ export function groesseFlaeche(text) {
   const n = (x) => Number(x.replace(',', '.'));
   return Math.round(n(m[1]) * n(m[2]) * 100) / 100;
 }
-const groesseText = (g) => (/^one size$/i.test(String(g ?? '').trim()) ? 'Einheitsgrösse' : g);
+/** Option «Grösse» für Kunden: «One size» deutsch, Masse einheitlich «21 × 30 cm» mit Dezimalkomma (die cm-Modelle von Printful liefern «21×30 cm» und «59.4», die umgerechneten Zoll-Modelle «27,9 × 35,6 cm»). */
+const groesseText = (g) => {
+  if (g === null || g === undefined) return g;
+  const t = String(g).trim();
+  if (/^one size$/i.test(t)) return 'Einheitsgrösse';
+  return t.replace(/(\d+(?:[.,]\d+)?)\s*[×x]\s*(\d+(?:[.,]\d+)?)/g, (_, a, b) => `${a.replace('.', ',')} × ${b.replace('.', ',')}`);
+};
 
 /** Wählt die Varianten, die das Produkt bekommt (alles deterministisch, jede Auslassung mit Grund). */
 export function waehleVarianten(karte, katalog, { max = FABRIK_REGEL.maxVarianten, uebersee = true } = {}) {

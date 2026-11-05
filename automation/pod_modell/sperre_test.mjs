@@ -3,10 +3,10 @@ import { mkdtempSync, existsSync, writeFileSync, readFileSync, rmSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { sperreNehmen, SPERRE_MAX_ALTER_H } from './sperre.mjs';
-import { neuerTest } from './testhilfe.mjs';
+import { neuerTest, wegwerfOrdner } from './testhilfe.mjs';
 
 const { ist, wahr, ende } = neuerTest('sperre');
-const d = mkdtempSync(join(tmpdir(), 'fabrik-sperre-'));
+const d = wegwerfOrdner('fabrik-sperre-');
 const led = (n) => join(d, `${n}.txt`);
 const T0 = Date.parse('2026-11-05T12:00:00Z');
 

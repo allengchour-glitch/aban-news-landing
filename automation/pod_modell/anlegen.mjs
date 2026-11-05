@@ -109,6 +109,7 @@ export function vergleiche(plan, ist, { editorUrl, vollstaendig = true } = {}) {
   const gl = (n, x, y) => { if (JSON.stringify(x) !== JSON.stringify(y)) a.push(`${n}: ist «${typeof x === 'string' ? x : JSON.stringify(x)}» ≠ soll «${typeof y === 'string' ? y : JSON.stringify(y)}»`); };
   gl('Status', ist.status, 'DRAFT'); gl('Handle', ist.handle, plan.handle); gl('Titel', ist.title, plan.titel); gl('Verkäufer', ist.vendor, plan.vendor); gl('Produktart', ist.productType, plan.produktart);
   gl('Tags', [...(ist.tags ?? [])].sort(), [...plan.tags].sort());
+  if (plan.kategorie?.shopify) gl('Kategorie', ist.category?.id ?? null, plan.kategorie.shopify);
   if (plan.seo) { gl('SEO-Titel', ist.seo?.title ?? null, plan.seo.title); gl('SEO-Text', ist.seo?.description ?? null, plan.seo.description); }
   gl('Optionen (Namen)', ist.optionen.map((o) => o.name), plan.optionen.map((o) => o.name));
   for (const o of plan.optionen) { const io = ist.optionen.find((x) => x.name === o.name); gl(`Werte ${o.name}`, (io?.werte ?? []).map((w) => w.name), o.werte); if ((io?.werte ?? []).some((w) => w.hatVarianten === false)) a.push(`Option ${o.name}: Wert ohne Variante`); }
@@ -142,6 +143,7 @@ export function produktSetEingabe(plan) {
   const namen = plan.optionen.map((o) => o.name);
   return {
     title: plan.titel, handle: plan.handle, status: 'DRAFT', vendor: plan.vendor, productType: plan.produktart, tags: plan.tags, seo: plan.seo,
+    ...(plan.kategorie?.shopify ? { category: plan.kategorie.shopify } : {}),     // Shopify-Kategorie (TaxonomyCategory), nur wenn kategorien.mjs den Typ kennt
     descriptionHtml: plan.beschreibungHtml,   // mit Platzhaltern; Schritt 7 ersetzt sie
     productOptions: plan.optionen.map((o, i) => ({ name: o.name, position: i + 1, values: o.werte.map((w) => ({ name: w })) })),
     variants: plan.varianten.map((v) => ({ optionValues: namen.map((n) => ({ optionName: n, name: v.optionen[n] })), price: v.preisChf.toFixed(2), sku: v.sku, inventoryPolicy: 'CONTINUE', inventoryItem: { tracked: false, requiresShipping: true } })),

@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T16:56:04.505Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -549,15 +557,17 @@
    "label": "Marineblau"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"760\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":760,\"typ\":\"T-SHIRT\",\"titelDe\":\"Unisex Eco T-Shirt\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":358698,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/front/05_bc3001_ghost_front_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":996,\"flaecheOben\":530,\"flaecheBreite\":1010,\"flaecheHoehe\":1346,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":358701,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/back/05_bc3001_ghost_back_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":987,\"flaecheOben\":224,\"flaecheBreite\":1031,\"flaecheHoehe\":1375,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titelDe\":\"Etikett innen\",\"titelEn\":\"Inside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":71,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":358719,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/inside_label__3x3.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":137,\"flaecheOben\":187,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":0.99,\"aufpreisChf\":1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titelDe\":\"Etikett aussen\",\"titelEn\":\"Outside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":358761,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1732710082\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":137,\"flaecheOben\":187,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[\"back\",\"label_inside\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titelDe\":\"Ärmel rechts\",\"titelEn\":\"Right sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":130,\"breitePx\":600,\"hoehePx\":525,\"dpi\":150},\"vorlage\":{\"vorlageId\":358713,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/right/zoomed/05_bc3001_ghost_right_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1150,\"flaecheOben\":1546,\"flaecheBreite\":712,\"flaecheHoehe\":624,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titelDe\":\"Ärmel links\",\"titelEn\":\"Left sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":130,\"breitePx\":600,\"hoehePx\":525,\"dpi\":150},\"vorlage\":{\"vorlageId\":358707,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/left/zoomed/05_bc3001_ghost_left_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1269,\"flaecheOben\":1546,\"flaecheBreite\":712,\"flaecheHoehe\":624,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[]}],\"druckdateien\":{\"1\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"71\":{\"printfileId\":71,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"90\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"130\":{\"printfileId\":130,\"breitePx\":600,\"hoehePx\":525,\"dpi\":150}},\"hinweise\":[],\"farben\":{\"#ffffff\":[19393,19396,19399,19402,19405,19408,19411],\"#0c0c0c\":[19391,19394,19397,19400,19403,19406,19409],\"#212642\":[19392,19395,19398,19401,19404,19407,19410]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Dieses Unisex-T-Shirt ist die Eco-Version eines beliebten Klassikers und besteht aus 100 % recycelten Materialien.</p>\n<p>Der leichte Stoff und die bewährte Passform machen es zum Basic für wärmere Tage.</p>\n<ul><li>65 % recyceltes Polyester, 35 % recycelte, gekämmte und ringgesponnene Airlume-Baumwolle</li><li>Stoffgewicht: 142 g/m²</li><li>Garn: 32 singles</li><li>Unisex-Schnitt, normale Passform</li><li>Mit Seitennähten verarbeitet</li><li>Der recycelte Anteil dieses Produkts ist nach GRS (Global Recycled Standard) zertifiziert.</li><li>Der unbedruckte Rohling stammt aus Nicaragua.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1800 × 2400 Pixel bei 150 dpi, das sind 30,5 × 40,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Brustumfang</th></tr></thead><tbody><tr><th scope=\"row\">XS</th><td>68,6 cm</td><td>41,9 cm</td><td>78,7 bis 86,4 cm</td></tr><tr><th scope=\"row\">S</th><td>71,1 cm</td><td>45,7 cm</td><td>86,4 bis 94 cm</td></tr><tr><th scope=\"row\">M</th><td>73,7 cm</td><td>50,8 cm</td><td>96,5 bis 104,1 cm</td></tr><tr><th scope=\"row\">L</th><td>76,2 cm</td><td>55,9 cm</td><td>106,7 bis 114,3 cm</td></tr><tr><th scope=\"row\">XL</th><td>78,7 cm</td><td>61 cm</td><td>116,8 bis 124,5 cm</td></tr><tr><th scope=\"row\">2XL</th><td>81,3 cm</td><td>66 cm</td><td>127 bis 134,6 cm</td></tr><tr><th scope=\"row\">3XL</th><td>83,8 cm</td><td>71,1 cm</td><td>137,2 bis 144,8 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"760\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":760,\"typ\":\"T-SHIRT\",\"titelDe\":\"Unisex Eco T-Shirt\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":358698,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/front/05_bc3001_ghost_front_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":996,\"flaecheOben\":530,\"flaecheBreite\":1010,\"flaecheHoehe\":1346,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":358701,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/back/05_bc3001_ghost_back_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":987,\"flaecheOben\":224,\"flaecheBreite\":1031,\"flaecheHoehe\":1375,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titelDe\":\"Etikett innen\",\"titelEn\":\"Inside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":71,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":358719,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/inside_label__3x3.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":137,\"flaecheOben\":187,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":0.99,\"aufpreisChf\":1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titelDe\":\"Etikett aussen\",\"titelEn\":\"Outside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":358761,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1732710082\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":137,\"flaecheOben\":187,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[\"back\",\"label_inside\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titelDe\":\"Ärmel rechts\",\"titelEn\":\"Right sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":130,\"breitePx\":600,\"hoehePx\":525,\"dpi\":150},\"vorlage\":{\"vorlageId\":358713,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/right/zoomed/05_bc3001_ghost_right_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1150,\"flaecheOben\":1546,\"flaecheBreite\":712,\"flaecheHoehe\":624,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titelDe\":\"Ärmel links\",\"titelEn\":\"Left sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":130,\"breitePx\":600,\"hoehePx\":525,\"dpi\":150},\"vorlage\":{\"vorlageId\":358707,\"bildUrl\":\"https://files.cdn.printful.com/m/unisex_staple_eco_tshirt_bella_canvas_3001eco/medium/ghost/left/zoomed/05_bc3001_ghost_left_base_whitebg.png?v=1717662763\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0c0c0c\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1269,\"flaecheOben\":1546,\"flaecheBreite\":712,\"flaecheHoehe\":624,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[]}],\"druckdateien\":{\"1\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"71\":{\"printfileId\":71,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"90\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"130\":{\"printfileId\":130,\"breitePx\":600,\"hoehePx\":525,\"dpi\":150}},\"hinweise\":[],\"farben\":{\"#ffffff\":[19393,19396,19399,19402,19405,19408,19411],\"#0c0c0c\":[19391,19394,19397,19400,19403,19406,19409],\"#212642\":[19392,19395,19398,19401,19404,19407,19410]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Dieses Unisex-T-Shirt ist die Eco-Version eines beliebten Klassikers und besteht aus 100 % recycelten Materialien.</p>\n<p>Der leichte Stoff und die bewährte Passform machen es zum Basic für wärmere Tage.</p>\n<ul><li>65 % recyceltes Polyester, 35 % recycelte, gekämmte und ringgesponnene Airlume-Baumwolle</li><li>Stoffgewicht: 142 g/m²</li><li>Unisex-Schnitt, normale Passform</li><li>Mit Seitennähten verarbeitet</li><li>Der recycelte Anteil dieses Produkts ist nach GRS (Global Recycled Standard) zertifiziert.</li><li>Der unbedruckte Rohling stammt aus Nicaragua.</li></ul>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1800 × 2400 Pixel bei 150 dpi, das sind 30,5 × 40,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Brustumfang</th></tr></thead><tbody><tr><th scope=\"row\">XS</th><td>68,6 cm</td><td>41,9 cm</td><td>78,7 bis 86,4 cm</td></tr><tr><th scope=\"row\">S</th><td>71,1 cm</td><td>45,7 cm</td><td>86,4 bis 94 cm</td></tr><tr><th scope=\"row\">M</th><td>73,7 cm</td><td>50,8 cm</td><td>96,5 bis 104,1 cm</td></tr><tr><th scope=\"row\">L</th><td>76,2 cm</td><td>55,9 cm</td><td>106,7 bis 114,3 cm</td></tr><tr><th scope=\"row\">XL</th><td>78,7 cm</td><td>61 cm</td><td>116,8 bis 124,5 cm</td></tr><tr><th scope=\"row\">2XL</th><td>81,3 cm</td><td>66 cm</td><td>127 bis 134,6 cm</td></tr><tr><th scope=\"row\">3XL</th><td>83,8 cm</td><td>71,1 cm</td><td>137,2 bis 144,8 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «product_measure» ist gleich einer schon gezeigten"
  ],
  "uebersetzung": {
   "ok": true,
   "fehler": [],
-  "saetze": 9,
-  "nichtUebernommen": []
+  "saetze": 8,
+  "nichtUebernommen": [
+   "32 singles"
+  ]
  },
  "metafelder": [
   {
@@ -600,7 +610,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Apparel & Accessories > Clothing > Shirts & Tops"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -1102,6 +1130,25 @@
   "tageMax": 6,
   "ratenVariante": 19406
  },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "t-shirt",
+  "google": "Apparel & Accessories > Clothing > Shirts & Tops",
+  "shopify": "gid://shopify/TaxonomyCategory/aa-1-13-8"
+ },
  "basisPlatzierung": {
   "id": "front",
   "dateiTyp": "default",
@@ -1177,7 +1224,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1190,8 +1237,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1288,6 +1342,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Unisex Eco T-Shirt selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1326,10 +1415,10 @@
    "code": "uebersetzung_luecken",
    "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
    "art": "hinweis",
-   "ergebnis": "bestanden",
-   "grund": ""
+   "ergebnis": "durchgefallen",
+   "grund": "1 Punkt(e) nicht übernommen: 32 singles"
   }
  ],
  "anlegbar": true,
- "hash": "784c9d32f8e65ab9ae676c110f9b018f8cc6a6d90b1c143a3076bfe4cce8bb82"
+ "hash": "1342437568e7f0d7b9b728a960de048e7f465da25b64bb127f35945e1f495b9c"
 }

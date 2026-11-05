@@ -4,7 +4,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { beschreibungBauen, pruefeUebersetzung, zahlenAus, jsonFuerScript, htmlText, esc, spanneText, lieferbox, RUECKGABE_TEXT, RUECKGABE_TEXT_LIVE, ladeUebersetzung, PLATZHALTER_VARIANTE, PLATZHALTER_EDITOR, technikDeVon, HINWEIS_DE, messungDe } from './beschreibung.mjs';
+import { beschreibungBauen, pruefeUebersetzung, zahlenAus, jsonFuerScript, htmlText, esc, spanneText, lieferbox, tabelleWiederholtNurGroesse, RUECKGABE_TEXT, RUECKGABE_TEXT_LIVE, ladeUebersetzung, PLATZHALTER_VARIANTE, PLATZHALTER_EDITOR, technikDeVon, HINWEIS_DE, messungDe, VERBOTEN } from './beschreibung.mjs';
 import { modellkarteBauen } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs';
 import { kontextAusKatalog } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
 import { lade, neuerTest, tief } from './testhilfe.mjs';
@@ -62,10 +62,12 @@ ist('jsonFuerScript bleibt gültiges JSON', JSON.parse(jsonFuerScript({ a: '</sc
 ist('esc', esc('<a href="x">&</a>'), '&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;');
 ist('htmlText ohne script/style/Kommentar', htmlText('<p>Hallo <b>Welt</b></p><script>var a="Zoll";</script><style>.a{}</style><!-- x -->&amp; Co'), 'Hallo Welt & Co');
 ist('Lieferspanne: bis, nie Bindestrich', [spanneText(3, 6), spanneText(5, 5), spanneText(0, 3), spanneText(6, 3), spanneText(null, 3)], ['3 bis 6 Werktage', '5 Werktage', null, null, null]);
-const lb = lieferbox({ tageMin: 6, tageMax: 9 });
-wahr('Lieferbox nennt Spanne, Printful und Kasse, keine Tageszusage', /6 bis 9 Werktage/.test(lb) && /laut Printful/.test(lb) && /Kasse/.test(lb));
+const lb = lieferbox({ min: 7, max: 14 });
+wahr('Lieferbox im Wortlaut der Live-Seiten: «Lieferzeit Schweiz: 7 bis 14 Werktage · Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein»', htmlText(lb) === '📦 Lieferzeit Schweiz: 7 bis 14 Werktage · Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein', htmlText(lb));
+wahr('Lieferbox: kein «Printful» und kein «Kasse» (Versandtage ohne Fertigung sind keine Lieferzeit; Kassendatum für Druckartikel nicht belegt, Gegenleser 05.11.)', !/printful|kasse/i.test(lb));
 wahr('Lieferbox ohne Strich (– —)', !/[–—]/.test(htmlText(lb)));
-ist('Lieferbox ohne gültige Tage: keine Box', lieferbox({ tageMin: null, tageMax: null }), null);
+wahr('Lieferbox mit berechneter längerer Spanne', /17 bis 21 Werktage/.test(lieferbox({ min: 17, max: 21 })));
+ist('Lieferbox ohne gültige Tage: keine Box', [lieferbox({ min: null, max: null }), lieferbox({ min: 9, max: 3 })], [null, null]);
 ist('Rückgabetext: gleich der Live-Seite bis auf den Gedankenstrich', RUECKGABE_TEXT_LIVE.replace(' — eine Rückgabe aus Meinungsänderung ist darum', ', darum ist eine Rückgabe aus Meinungsänderung'), RUECKGABE_TEXT);
 wahr('Rückgabetext ohne Gedankenstrich', !/[–—]/.test(RUECKGABE_TEXT));
 wahr('Rückgabetext schliesst Rückgabe aus Meinungsänderung aus, nennt Druckfehler', /Rückgabe aus Meinungsänderung ausgeschlossen/.test(RUECKGABE_TEXT) && /Druckfehlern/.test(RUECKGABE_TEXT));
@@ -78,7 +80,7 @@ ist('ladeUebersetzung: kein Ordner', ladeUebersetzung(null, 1).fehler, 'kein Üb
 
 // ── Grössentabellen im Seitentext
 const tab = (typ, label, wert) => ({ typ, einheitOriginal: 'inches', messungen: [{ label, art: 'laenge', einheit: 'cm', markiert: false, werte: [{ groesse: 'S', groesseAnzeige: 'S', wert, anzeige: wert }, { groesse: 'M', groesseAnzeige: 'M', min: 78.7, max: 86.4, anzeige: '78,7–86,4 cm' }] }] });
-const bauen = (tabellen) => beschreibungBauen({ karte: { groessentabelle: { tabellen }, produktMasse: [] }, lieferung: null, modell: 1, klasse: 'FLACH', editorKarte: { schema: 1 }, kompakt: { platzierungen: [], hinweise: [] }, technikDe: null, basis: null, uebersetzung: { intro: [], punkte: [] } });
+const bauen = (tabellen) => beschreibungBauen({ karte: { groessentabelle: { tabellen }, produktMasse: [] }, lieferzeit: null, modell: 1, klasse: 'FLACH', editorKarte: { schema: 1 }, kompakt: { platzierungen: [], hinweise: [] }, technikDe: null, basis: null, uebersetzung: { intro: [], punkte: [] } });
 const t1 = bauen([tab('product_measure', 'Length', '68,6 cm'), tab('measure_yourself', 'Length', '68,6 cm')]);
 ist('zwei gleiche Tabellen: nur eine wird gezeigt, die andere als weggelassen vermerkt', [(t1.html.match(/<table/g) || []).length, t1.weggelassen.some((x) => /gleich einer schon gezeigten/.test(x))], [1, true]);
 const t2 = bauen([tab('product_measure', 'Length', '68,6 cm'), tab('measure_yourself', 'Length', '70 cm')]);
@@ -88,6 +90,36 @@ ist('Tabelle mit Buchstaben (A, B …) entfällt mit Vermerk', (() => { const r 
 ist('Tabelle mit nicht umgerechneten (markierten) Werten entfällt', (() => { const t = tab('product_measure', 'Length', '1 cm'); t.messungen[0].markiert = true; return /<table/.test(bauen([t]).html); })(), false);
 ist('Überschriften der beiden Tabellenarten', (() => { const r = bauen([tab('product_measure', 'Length', '1 cm'), tab('measure_yourself', 'Length', '2 cm')]).html; return [/Masse des Produkts \(cm\)/.test(r), /Grössentabelle zum Selbstmessen \(cm\)/.test(r)]; })(), [true, true]);
 
+// ── Tabellen, die nur die Grösse wiederholen (Leinwand, Gegenleser 2, K4)
+{
+  const zelle = (g, anzeige) => ({ groesse: g, groesseAnzeige: g, anzeige });
+  const leinwand = { typ: 'measure_yourself', messungen: [{ label: 'Height', werte: [zelle('20,3 × 25,4 cm', '20,3 cm'), zelle('61 × 91,4 cm', '61 cm')] }, { label: 'Width', werte: [zelle('20,3 × 25,4 cm', '25,4 cm'), zelle('61 × 91,4 cm', '91,4 cm')] }] };
+  const shirt = { typ: 'product_measure', messungen: [{ label: 'Length', werte: [zelle('S', '68,6 cm'), zelle('M', '71,1 cm')] }] };
+  const gemischt = { typ: 'product_measure', messungen: [{ label: 'Length', werte: [zelle('20 × 30 cm', '20 cm'), zelle('40 × 50 cm', '45 cm')] }] };
+  ist('Tabelle wiederholt nur die Grössenbezeichnung → true; Kleidertabelle und gemischte → false; leer → false', [tabelleWiederholtNurGroesse(leinwand), tabelleWiederholtNurGroesse(shirt), tabelleWiederholtNurGroesse(gemischt), tabelleWiederholtNurGroesse({ messungen: [] })], [true, false, false, false]);
+  const r = beschreibungBauen({ karte: { groessentabelle: { tabellen: [{ ...leinwand, messungen: leinwand.messungen.map((m) => ({ ...m, label: m.label === 'Height' ? 'Height' : 'Width', einheit: 'cm', markiert: false })) }] }, produktMasse: [] }, lieferzeit: null, modell: 1, klasse: 'FLACH', editorKarte: { schema: 1 }, kompakt: { platzierungen: [], hinweise: [] }, technikDe: null, basis: null, uebersetzung: { intro: [], punkte: [] } });
+  ist('beschreibungBauen: die wiederholende Tabelle fehlt ohne Vermerk und ohne die Überschrift «zum Selbstmessen»', [/<table/.test(r.html), /Selbstmessen/.test(r.html), r.weggelassen.length], [false, false, 0]);
+}
+// ── Eckdaten «Druckdatei»: nur, wenn alle Grössen dieselbe Druckdatei nutzen (Gegenleser 05.11.: Poster «42 × 29,7 cm» für Formate bis 61 × 91,4 cm)
+{
+  const basisPf = { titel: 'Druckfläche', printfile: { breitePx: 4962, hoehePx: 3507, dpi: 300, groesseCm: { breite: 42, hoehe: 29.7 } } };
+  const mit = (geos) => beschreibungBauen({ karte: { groessentabelle: { tabellen: [] }, produktMasse: [] }, lieferzeit: null, modell: 1, klasse: 'FLACH', editorKarte: { schema: 1 }, kompakt: { basis: 'default', platzierungen: [{ id: 'default', art: 'flaeche', ...(geos ? { geometrien: geos } : {}) }], hinweise: [] }, technikDe: 'Sublimationsdruck', basis: basisPf, uebersetzung: { intro: [], punkte: [] } }).html;
+  wahr('eine Druckdatei für alle Grössen: die Zeile steht da, mit Pixeln und cm', /Druckdatei \(Druckfläche\):<\/strong> 4962 × 3507 Pixel bei 300 dpi, das sind 42 × 29,7 cm/.test(mit(undefined)));
+  wahr('mehrere Druckdateien (je Grösse eine): die Zeile entfällt, das Druckverfahren bleibt', !/Druckdatei/.test(mit([{ printfileId: 1 }, { printfileId: 2 }])) && /Druckverfahren/.test(mit([{ printfileId: 1 }, { printfileId: 2 }])));
+  wahr('eine einzige Geometrie gilt als eine Druckdatei', /Druckdatei/.test(mit([{ printfileId: 1 }])));
+}
+// ── keine Marketing-Superlative und keine Zusagen in den Übersetzungen (Gegenleser 1, F6): ohne Katalog prüfbar
+{
+  const dir = join(dirname(fileURLToPath(import.meta.url)), '../../dropship/selbst-gestalten-fertig-0511/fabrik/uebersetzungen');
+  for (const f of existsSync(dir) ? readdirSync(dir).filter((x) => /^\d+\.json$/.test(x)) : []) {
+    const u = JSON.parse(readFileSync(join(dir, f), 'utf8'));
+    const treffer = [];
+    for (const g of ['intro', 'punkte', 'hinweis']) for (const x of u[g] ?? []) for (const [re, was] of VERBOTEN) if (re.test(x.de)) treffer.push(`${was}: ${x.de.slice(0, 50)}`);
+    ist(`Übersetzung ${f}: kein VERBOTEN-Muster (Superlativ, Garantie, Zoll, Strich …)`, treffer, []);
+  }
+  for (const [t, was] of [['der ultimative Begleiter', 'Superlativ'], ['unvergleichliche Behaglichkeit', 'Superlativ'], ['die perfekte Wahl', 'Superlativ'], ['ein einzigartiger Look', 'Superlativ'], ['Masse: 20" × 14"', 'Zoll/oz/lb'], ['bis 86 °F', 'Zoll/oz/lb'], ['a − b', 'Gedankenstrich'], ['a - b', 'Gedankenstrich']]) wahr(`VERBOTEN erkennt «${t}» als ${was}`, VERBOTEN.some(([re, w]) => w === was && re.test(t)));
+  for (const t of ['Kopfumfang 55,9 bis 60,6 cm', 'Stoffgewicht: 142 g/m²', 'Kiss-Cut Aufkleber', 'mit gerippt-em Saum']) wahr(`VERBOTEN lässt «${t}» durch`, !VERBOTEN.some(([re]) => re.test(t)));
+}
 // ── die zwölf Beispiel-Übersetzungen gegen die echten Katalogdateien (nur mit KATALOG_DIR)
 const HIER = dirname(fileURLToPath(import.meta.url));
 const UE = join(HIER, '../../dropship/selbst-gestalten-fertig-0511/fabrik/uebersetzungen');

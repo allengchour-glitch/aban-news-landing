@@ -112,5 +112,20 @@ await text(s.page, 'Wie v5');
 await foto(s, '18-v5-modus-pc');
 await s.schliessen();
 
+// Kartenbündel: T-Shirt-Produkt aus zwei Modellen, Motiv auf «Vorderseite gross», dann Wechsel auf die Variante des Modells 586 (dort gibt es die Platzierung nicht)
+s = await frisch(PC, 'karte=buendel&m=71,586&shop=1001:4012:71,1002:15124:586&varianten=1001:T-Shirt 71,1002:T-Shirt 586');
+await tab(s.page, 'Vorderseite gross').click(); await text(s.page, 'Gross');
+await s.page.locator('input[name="id"][value="1002"]').check();
+await s.page.waitForFunction(() => !document.querySelector('[data-feld="modellhinweis"]').hidden);
+await s.page.waitForTimeout(300);
+await foto(s, '19-buendel-pc-fremde-platzierung-sperrt-kauf');
+await s.schliessen();
+// aktiver Reiter im Sichtfeld der Leiste (8 Reiter, letzter gewählt)
+s = await frisch(PC, `karte=71&${SHOP71}`);
+await s.page.locator('.lsp6-tab[data-p="label_inside_dtf"]').click();
+await s.page.waitForTimeout(300);
+await foto(s, '20-tshirt-pc-letzter-reiter-sichtbar');
+await s.schliessen();
+
 await b.close(); await srv.stop();
 console.log(liste.length, 'Aufnahmen in', ziel);

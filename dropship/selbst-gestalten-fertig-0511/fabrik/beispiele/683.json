@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.787Z",
+  "am": "2026-11-05T21:14:20.065Z",
   "katalogGeholt": "2026-11-05T17:16:28.619Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -1255,7 +1263,7 @@
    "label": "Matt"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>6 bis 9 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"683\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":683,\"typ\":\"PHONE-CASE\",\"titelDe\":\"Snap-Hülle für iPhone\",\"klasse\":\"FLACH\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":438,\"breitePx\":1328,\"hoehePx\":2197,\"dpi\":300},\"vorlage\":{\"vorlageId\":185608,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/1b/1bee9c34cf0b10de9ace3565074bf3e7?v=1689330126\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":205,\"flaecheOben\":100,\"flaecheBreite\":318,\"flaecheHoehe\":528,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":438,\"vorlage\":{\"vorlageId\":185608,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/1b/1bee9c34cf0b10de9ace3565074bf3e7?v=1689330126\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":205,\"flaecheOben\":100,\"flaecheBreite\":318,\"flaecheHoehe\":528,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":38,\"beispielVarianteId\":16888},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":494596,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":843,\"flaecheOben\":415,\"flaecheBreite\":1314,\"flaecheHoehe\":2172,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":8,\"beispielVarianteId\":20294},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":1006129,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":835,\"flaecheOben\":398,\"flaecheBreite\":1332,\"flaecheHoehe\":2206,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":4,\"beispielVarianteId\":34009},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":1006125,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":831,\"flaecheOben\":394,\"flaecheBreite\":1336,\"flaecheHoehe\":2212,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":2,\"beispielVarianteId\":34011},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":1006123,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":834,\"flaecheOben\":394,\"flaecheBreite\":1334,\"flaecheHoehe\":2210,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":2,\"beispielVarianteId\":34015}]}],\"druckdateien\":{\"438\":{\"printfileId\":438,\"breitePx\":1328,\"hoehePx\":2197,\"dpi\":300}},\"hinweise\":[],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Diese hochwertige Handyhülle ist für alle gemacht, die einen minimalistischen Stil lieben.</p>\n<p>Sie ist elegant und leicht und erfüllt ihre Aufgabe, dein Handy zu schützen.</p>\n<ul><li>Aus Polycarbonat (PC)</li><li>Geeignet für kabelloses Laden</li><li>Genau ausgerichtete Aussparungen für die Anschlüsse</li><li>Der unbedruckte Rohling stammt aus der Republik Korea.</li></ul>\n<p>Hinweis: Von Flüssigkeiten mit hohem Alkoholgehalt fernhalten, sonst kann sich das Motiv abreiben. Vor direkter Sonne schützen, damit die Hülle nicht vergilbt.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Druckfläche):</strong> 1328 × 2197 Pixel bei 300 dpi, das sind 11,2 × 18,6 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"683\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":683,\"typ\":\"PHONE-CASE\",\"titelDe\":\"Snap-Hülle für iPhone\",\"klasse\":\"FLACH\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":438,\"breitePx\":1328,\"hoehePx\":2197,\"dpi\":300},\"vorlage\":{\"vorlageId\":185608,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/1b/1bee9c34cf0b10de9ace3565074bf3e7?v=1689330126\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":205,\"flaecheOben\":100,\"flaecheBreite\":318,\"flaecheHoehe\":528,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":438,\"vorlage\":{\"vorlageId\":185608,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/1b/1bee9c34cf0b10de9ace3565074bf3e7?v=1689330126\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":205,\"flaecheOben\":100,\"flaecheBreite\":318,\"flaecheHoehe\":528,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":38,\"beispielVarianteId\":16888},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":494596,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":843,\"flaecheOben\":415,\"flaecheBreite\":1314,\"flaecheHoehe\":2172,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":8,\"beispielVarianteId\":20294},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":1006129,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":835,\"flaecheOben\":398,\"flaecheBreite\":1332,\"flaecheHoehe\":2206,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":4,\"beispielVarianteId\":34009},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":1006125,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":831,\"flaecheOben\":394,\"flaecheBreite\":1336,\"flaecheHoehe\":2212,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":2,\"beispielVarianteId\":34011},{\"printfileId\":438,\"vorlage\":{\"vorlageId\":1006123,\"bildUrl\":null,\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":834,\"flaecheOben\":394,\"flaecheBreite\":1334,\"flaecheHoehe\":2210,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":2,\"beispielVarianteId\":34015}]}],\"druckdateien\":{\"438\":{\"printfileId\":438,\"breitePx\":1328,\"hoehePx\":2197,\"dpi\":300}},\"hinweise\":[],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Diese hochwertige Handyhülle ist für alle gemacht, die einen minimalistischen Stil lieben.</p>\n<p>Sie ist elegant und leicht und erfüllt ihre Aufgabe, dein Handy zu schützen.</p>\n<ul><li>Aus Polycarbonat (PC)</li><li>Geeignet für kabelloses Laden</li><li>Genau ausgerichtete Aussparungen für die Anschlüsse</li><li>Der unbedruckte Rohling stammt aus der Republik Korea.</li></ul>\n<p>Hinweis: Von Flüssigkeiten mit hohem Alkoholgehalt fernhalten, sonst kann sich das Motiv abreiben. Vor direkter Sonne schützen, damit die Hülle nicht vergilbt.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Druckfläche):</strong> 1328 × 2197 Pixel bei 300 dpi, das sind 11,2 × 18,6 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -1306,7 +1314,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"6–9\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -1511,6 +1537,25 @@
   "tageMax": 9,
   "ratenVariante": 16892
  },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   6,
+   9
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "phone-case",
+  "google": "Electronics > Communications > Telephony > Mobile Phone Accessories > Mobile Phone Cases",
+  "shopify": "gid://shopify/TaxonomyCategory/el-4-8-4-2"
+ },
  "basisPlatzierung": {
   "id": "default",
   "dateiTyp": "default",
@@ -1574,7 +1619,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1587,8 +1632,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1685,6 +1737,41 @@
    "grund": ""
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1728,5 +1815,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "fc4b72f2e97a9b4ac3d5bda12978a1d45d39fd1545e6fe7a4de2c63628f44873"
+ "hash": "302b06efacacb4b335009e5a7002102ab52aeabd373a1f79172ea4152cd50e9d"
 }

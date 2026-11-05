@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:54:40.955Z",
+  "am": "2026-11-05T21:14:20.402Z",
   "katalogGeholt": "2026-11-05T16:34:42.447Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -17,6 +17,14 @@
    "stufen": [
     1
    ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
    "preis": {
     "kurs": 0.9,
     "nettoMin": 4,
@@ -63,9 +71,9 @@
    "art": "groesse",
    "werte": [
     "35,6 × 35,6 cm",
+    "50,8 × 30,5 cm",
     "40,6 × 40,6 cm",
     "45,7 × 45,7 cm",
-    "50,8 × 30,5 cm",
     "55,9 × 55,9 cm"
    ]
   }
@@ -92,6 +100,26 @@
    "bildAlt": "Allover Basic Kissen selbst gestalten Ansicht 1"
   },
   {
+   "sku": "9100083_9513",
+   "printfulVariantId": 9513,
+   "optionen": {
+    "Grösse": "50,8 × 30,5 cm"
+   },
+   "farbe": null,
+   "groesse": "50,8 × 30,5 cm",
+   "herkunft": "EU",
+   "kostenUsd": 15.56,
+   "ekRechnungUsd": 16.5,
+   "ekQuelle": "schaetzung",
+   "versandUsd": 16.69,
+   "aufpreisUsd": 0,
+   "preisChf": 38.9,
+   "nettoChf": 4.5,
+   "nettoBeiMesskursChf": 7.01,
+   "bindend": "kosten",
+   "bildAlt": "Allover Basic Kissen selbst gestalten Ansicht 2"
+  },
+  {
    "sku": "9100083_49854",
    "printfulVariantId": 49854,
    "optionen": {
@@ -109,7 +137,7 @@
    "nettoChf": 4.58,
    "nettoBeiMesskursChf": 7.24,
    "bindend": "kosten",
-   "bildAlt": "Allover Basic Kissen selbst gestalten Ansicht 2"
+   "bildAlt": "Allover Basic Kissen selbst gestalten Ansicht 3"
   },
   {
    "sku": "9100083_4532",
@@ -128,26 +156,6 @@
    "preisChf": 39.9,
    "nettoChf": 4.48,
    "nettoBeiMesskursChf": 7.06,
-   "bindend": "kosten",
-   "bildAlt": "Allover Basic Kissen selbst gestalten Ansicht 3"
-  },
-  {
-   "sku": "9100083_9513",
-   "printfulVariantId": 9513,
-   "optionen": {
-    "Grösse": "50,8 × 30,5 cm"
-   },
-   "farbe": null,
-   "groesse": "50,8 × 30,5 cm",
-   "herkunft": "EU",
-   "kostenUsd": 15.56,
-   "ekRechnungUsd": 16.5,
-   "ekQuelle": "schaetzung",
-   "versandUsd": 16.69,
-   "aufpreisUsd": 0,
-   "preisChf": 38.9,
-   "nettoChf": 4.5,
-   "nettoBeiMesskursChf": 7.01,
    "bindend": "kosten",
    "bildAlt": "Allover Basic Kissen selbst gestalten Ansicht 4"
   },
@@ -180,19 +188,19 @@
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/83/49854_1782739793.jpg",
+   "url": "https://files.cdn.printful.com/products/83/9513_1581582330.jpg",
    "alt": "Allover Basic Kissen selbst gestalten Ansicht 2",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/83/4532_1581582292.jpg",
+   "url": "https://files.cdn.printful.com/products/83/49854_1782739793.jpg",
    "alt": "Allover Basic Kissen selbst gestalten Ansicht 3",
    "rolle": "variante",
    "label": null
   },
   {
-   "url": "https://files.cdn.printful.com/products/83/9513_1581582330.jpg",
+   "url": "https://files.cdn.printful.com/products/83/4532_1581582292.jpg",
    "alt": "Allover Basic Kissen selbst gestalten Ansicht 4",
    "rolle": "variante",
    "label": null
@@ -204,7 +212,7 @@
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"83\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":83,\"typ\":\"CUT-SEW\",\"titelDe\":\"Allover Basic Kissen\",\"klasse\":\"PANEL\",\"standardTechnik\":\"CUT-SEW\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138355,\"bildUrl\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1701,\"vorlage\":{\"vorlageId\":1138355,\"bildUrl\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49853},{\"printfileId\":1702,\"vorlage\":{\"vorlageId\":1138358,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8bb86c0fa1dd60dcd499d6d3eedd8795?v=1782738148\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":103,\"flaecheOben\":103,\"flaecheBreite\":2794,\"flaecheHoehe\":2794,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49854},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22667,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d3/d37f0274e8dee1378196a60f58b6ad09?v=1716212455\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4532},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22669,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/64/6495c0578ba972b85867d93098efd5f7?v=1716212491\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9513},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22665,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/35/3570bd2f3ddaa5c0d41280b143eec6e5?v=1716212539\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11075}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138354,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1701,\"vorlage\":{\"vorlageId\":1138354,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49853},{\"printfileId\":1702,\"vorlage\":{\"vorlageId\":1138356,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/f7/f7094bee49365a6c0032ad3af4016da7?v=1782738163\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":103,\"flaecheOben\":103,\"flaecheBreite\":2794,\"flaecheHoehe\":2794,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49854},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22668,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d2/d2eaba3dc240133a9cfcf54c17d13ea5?v=1716212473\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4532},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22670,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/4f/4f5a70d8b427d4d39a450c4ded884fc7?v=1716212514\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9513},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22666,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/17/174a0b9719ac94e6f986c0a8ccb14854?v=1716212559\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11075}]}],\"druckdateien\":{\"32\":{\"printfileId\":32,\"breitePx\":2850,\"hoehePx\":2850,\"dpi\":150},\"72\":{\"printfileId\":72,\"breitePx\":3150,\"hoehePx\":1950,\"dpi\":150},\"214\":{\"printfileId\":214,\"breitePx\":3450,\"hoehePx\":3450,\"dpi\":150},\"1701\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"1702\":{\"printfileId\":1702,\"breitePx\":2550,\"hoehePx\":2550,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"front\":1701,\"back\":1701},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":1702,\"back\":1702},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":32,\"back\":32},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":72,\"back\":72},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":214,\"back\":214},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":49853,\"druckdateiGruppe\":0},{\"printfulVariantId\":49854,\"druckdateiGruppe\":1},{\"printfulVariantId\":4532,\"druckdateiGruppe\":2},{\"printfulVariantId\":9513,\"druckdateiGruppe\":3},{\"printfulVariantId\":11075,\"druckdateiGruppe\":4}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li><li><strong>Druckdatei (Vorderseite):</strong> 2250 × 2250 Pixel bei 150 dpi, das sind 38,1 × 38,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"83\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":83,\"typ\":\"CUT-SEW\",\"titelDe\":\"Allover Basic Kissen\",\"klasse\":\"PANEL\",\"standardTechnik\":\"CUT-SEW\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138355,\"bildUrl\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1701,\"vorlage\":{\"vorlageId\":1138355,\"bildUrl\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49853},{\"printfileId\":1702,\"vorlage\":{\"vorlageId\":1138358,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8bb86c0fa1dd60dcd499d6d3eedd8795?v=1782738148\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":103,\"flaecheOben\":103,\"flaecheBreite\":2794,\"flaecheHoehe\":2794,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49854},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22667,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d3/d37f0274e8dee1378196a60f58b6ad09?v=1716212455\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4532},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22669,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/64/6495c0578ba972b85867d93098efd5f7?v=1716212491\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9513},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22665,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/35/3570bd2f3ddaa5c0d41280b143eec6e5?v=1716212539\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11075}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138354,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1701,\"vorlage\":{\"vorlageId\":1138354,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49853},{\"printfileId\":1702,\"vorlage\":{\"vorlageId\":1138356,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/f7/f7094bee49365a6c0032ad3af4016da7?v=1782738163\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":103,\"flaecheOben\":103,\"flaecheBreite\":2794,\"flaecheHoehe\":2794,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49854},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22668,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d2/d2eaba3dc240133a9cfcf54c17d13ea5?v=1716212473\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4532},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22670,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/4f/4f5a70d8b427d4d39a450c4ded884fc7?v=1716212514\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9513},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22666,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/17/174a0b9719ac94e6f986c0a8ccb14854?v=1716212559\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11075}]}],\"druckdateien\":{\"32\":{\"printfileId\":32,\"breitePx\":2850,\"hoehePx\":2850,\"dpi\":150},\"72\":{\"printfileId\":72,\"breitePx\":3150,\"hoehePx\":1950,\"dpi\":150},\"214\":{\"printfileId\":214,\"breitePx\":3450,\"hoehePx\":3450,\"dpi\":150},\"1701\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"1702\":{\"printfileId\":1702,\"breitePx\":2550,\"hoehePx\":2550,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"front\":1701,\"back\":1701},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":1702,\"back\":1702},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":32,\"back\":32},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":72,\"back\":72},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":214,\"back\":214},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":49853,\"druckdateiGruppe\":0},{\"printfulVariantId\":9513,\"druckdateiGruppe\":3},{\"printfulVariantId\":49854,\"druckdateiGruppe\":1},{\"printfulVariantId\":4532,\"druckdateiGruppe\":2},{\"printfulVariantId\":11075,\"druckdateiGruppe\":4}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
  ],
@@ -258,7 +266,25 @@
    "namespace": "custom",
    "key": "lieferzeit",
    "type": "json",
-   "value": "{\"ch\":\"3–6\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\",\"quelle\":\"Printful Versandart Standard nach CH\"}"
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Home & Garden > Decor > Throw Pillows"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
   }
  ],
  "kompakt": {
@@ -965,16 +991,16 @@
     "druckdateiGruppe": 0
    },
    {
+    "printfulVariantId": 9513,
+    "druckdateiGruppe": 3
+   },
+   {
     "printfulVariantId": 49854,
     "druckdateiGruppe": 1
    },
    {
     "printfulVariantId": 4532,
     "druckdateiGruppe": 2
-   },
-   {
-    "printfulVariantId": 9513,
-    "druckdateiGruppe": 3
    },
    {
     "printfulVariantId": 11075,
@@ -989,6 +1015,25 @@
   "tageMin": 3,
   "tageMax": 6,
   "ratenVariante": 49853
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "pillow",
+  "google": "Home & Garden > Decor > Throw Pillows",
+  "shopify": "gid://shopify/TaxonomyCategory/hg-3-64"
  },
  "basisPlatzierung": {
   "id": "front",
@@ -1037,9 +1082,9 @@
   "kandidaten": [
    "https://files.cdn.printful.com/o/products/83/product_1573737219.jpg",
    "https://files.cdn.printful.com/products/83/49853_1782739772.jpg",
+   "https://files.cdn.printful.com/products/83/9513_1581582330.jpg",
    "https://files.cdn.printful.com/products/83/49854_1782739793.jpg",
    "https://files.cdn.printful.com/products/83/4532_1581582292.jpg",
-   "https://files.cdn.printful.com/products/83/9513_1581582330.jpg",
    "https://files.cdn.printful.com/products/83/11075_1581582363.jpg"
   ]
  },
@@ -1053,7 +1098,7 @@
   },
   {
    "code": "modell_neu",
-   "name": "Modell wird noch von keinem Shop-Produkt verkauft",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
    "art": "blocker",
    "ergebnis": "durchgefallen",
    "grund": "Das Printful-Modell steckt schon in einem der heutigen Produkte (doppelt verkaufen vermeiden)"
@@ -1066,8 +1111,15 @@
    "grund": ""
   },
   {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
    "code": "lieferangabe",
-   "name": "Lieferangabe aus der CH-Rate mit Tagen",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1164,6 +1216,41 @@
    "grund": "printful_sync bestimmt «front» nicht gesichert (2 Flächen ohne Aufpreis (front, back): printful_sync schickt nur eine Datei): Aufträge blieben Entwurf bei Printful"
   },
   {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)"
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Allover Basic Kissen selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
    "code": "lieferherkunft",
    "name": "Alle Varianten kommen aus der EU",
    "art": "hinweis",
@@ -1207,5 +1294,5 @@
   }
  ],
  "anlegbar": false,
- "hash": "67e149b03120ec9db9e0527853bd594a199f6610fc4797d76e75eaf72e159f1c"
+ "hash": "824dcd29a3186958b2e0fa007ee25b527e55dc414c8e4f9e05bbb24cfd550ca5"
 }

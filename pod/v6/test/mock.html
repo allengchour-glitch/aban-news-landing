@@ -21,6 +21,7 @@
     karte=buendel&m=71,586&shop=1001:4012:71,1002:15124:586   Kartenbündel (ein Produkt aus mehreren Modellen): Shopify-Variante:Printful-Variante:Modell
     maxbytes=N          data-max-bytes (Obergrenze der Dateigrösse vor dem Upload, 0 = keine Prüfung)
     uptimeout=N         data-upload-timeout in Millisekunden
+    karteurl=1          Plan B: Karte per data-karte-url (Datei) statt als Inline-JSON in der Beschreibung
     abstand=N           Leerraum (px) vor der Beschreibung: der Editor liegt dann unterhalb des Fensters (Sprung zu #lspod-start)
 -->
 <style>
@@ -96,6 +97,11 @@
     if (q.get('maxpx') !== null) d.setAttribute('data-max-px', q.get('maxpx'));
     if (q.get('maxbytes') !== null) d.setAttribute('data-max-bytes', q.get('maxbytes'));
     if (q.get('uptimeout') !== null) d.setAttribute('data-upload-timeout', q.get('uptimeout'));
+    if (q.get('karteurl') !== null) {
+      // Plan B: keine Karte in der Beschreibung, nur die Adresse einer JSON-Datei (data-karte-url)
+      d.setAttribute('data-karte-url', '/karten/' + karteId + '.json' + location.search);
+      beschr.appendChild(d); return d;
+    }
     var s = document.createElement('script'); s.type = 'application/json'; s.id = 'lspod-karte'; s.textContent = text;
     d.appendChild(s); beschr.appendChild(d); return d;
   }
