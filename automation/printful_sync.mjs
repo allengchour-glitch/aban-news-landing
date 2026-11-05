@@ -9,18 +9,23 @@
  *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6: «🖼️ Druckdatei (<Platzierung>)», v5: Vorne/Hinten) mit den ECHTEN Printful-
  *      Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und Mindest-dpi des Katalogs), KI-Kontrolle, Empfänger.
  *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, Adresse unbrauchbar, mehr als 50 Positionen): KEIN Auftrag, Tag `printful-review`, eine Meldung.
- *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Tag `printful-synced` + Metafeld printful.order_id setzen (Fehler dabei werden gemeldet, Exit 1).
- *   3. Entwurf nachlesen: Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös (Verlust → kein Bestätigen).
+ *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
+ *      findet der nächste Lauf den Entwurf über external_id und holt beides nach).
+ *   3. Entwurf nachlesen (bis zu ~2 Minuten, 7 Lesungen): Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös samt bezahltem Versand (Verlust oder weniger als der Mindestgewinn → kein Bestätigen).
  *   4. Nur ohne jeden Befund UND mit PRINTFUL_AUTO_CONFIRM an: POST /orders/<id>/confirm, danach den Status NACHLESEN. «BESTÄTIGT» steht nur, wenn Printful pending/inprocess/… meldet;
  *      failed (Zahlung der Karte), onhold, canceled, draft → Befund, nie «bestätigt».
  *   Befunde: Tags `printful-review` + `printful-review-<art>` (wie `printful-problem-<art>` in printful_tracking.mjs): dieselbe Befundart wird nur EINMAL per Telegram gemeldet.
- *   Eine Bestellung mit Tag `printful-review` wird nicht mehr gelesen: wer die Ursache behoben hat, entfernt das Tag (oder legt den Auftrag im Printful-Dashboard selbst an).
+ *   Eine Bestellung mit Tag `printful-review` wird nicht mehr gelesen. Bei HARTEN Befunden (kein Auftrag angelegt) entfernt man nach der Behebung das Tag: der nächste Lauf versucht es neu. Bei WEICHEN
+ *   Befunden gibt es schon einen Entwurf bei Printful (Tag `printful-synced`): den prüft und bestätigt man im Printful-Dashboard, das Entfernen des Tags bewirkt dort nichts.
  *   Vorübergehende Fehler (Netz, 429, 5xx): kein Tag ausser `printful-versuch-<n>`; nach 3 Läufen wird daraus ein Befund.
  * Gelesen werden alle Seiten der offenen Bestellungen (nicht nur die ersten MAX): Nicht-POD-Bestellungen verdrängen POD-Bestellungen nicht mehr.
  * Exit 1 bei technischem Fehler (Zugangsdaten fehlen, Shopify/Printful nicht erreichbar, Markieren gescheitert, Telegram-Meldung nicht zugestellt, Zeitlimit). Befunde sind KEIN Exit 1.
  * ENV: PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=0 schaltet das Bestätigen ab], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN),
  *      [PRINTFUL_KI_KONTROLLE=pflicht|aus (Vorgabe pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
- *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=0], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
+ *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
+ *      für Produkte mit Option stitch_color (Entscheid des Besitzers; ohne sie bleiben diese Aufträge Entwurf)], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
+ *      [PF_PAUSE_MS=2500: Grundpause; die Wartezeit auf Dateien und Kosten ist 48 × PF_PAUSE_MS = 120 s],
+ *      [PRINTFUL_LOG_DETAIL=1: Befundtexte auch in Log und Zusammenfassung (nur für Läufe auf dem eigenen Rechner: das Repo ist öffentlich, Actions-Protokolle sind es auch; sonst steht dort nur die Befundart)],
  *      [DRY_RUN: alles ausser ''/0/false/no/nein/off ist Trockenlauf: es wird gelesen, nichts geschrieben, nichts gemeldet]
  */
 import { appendFileSync } from 'node:fs';
@@ -45,7 +50,11 @@ const KI_MODELL = (process.env.PRINTFUL_KI_MODELL || 'gemini-2.5-flash').trim();
 const TG_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const TG_CHAT = (process.env.TELEGRAM_CHAT_ID || '').trim();
 const MAX = Math.max(1, parseInt(process.env.MAX || '20', 10) || 20);
-const NETTO_MIN = Number.isFinite(Number(process.env.PRINTFUL_MIN_NETTO_CHF)) && process.env.PRINTFUL_MIN_NETTO_CHF !== undefined && process.env.PRINTFUL_MIN_NETTO_CHF !== '' ? Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 0;
+// Mindestgewinn je Auftrag (CHF, nach MWST, Gebühr und Printful-Kosten): Vorgabe 4 = das Ziel der Preisformel (werkzeuge/preisformel.mjs); 0 hält nur Verluste an.
+const NETTO_MIN = Number.isFinite(Number(process.env.PRINTFUL_MIN_NETTO_CHF)) && process.env.PRINTFUL_MIN_NETTO_CHF !== undefined && process.env.PRINTFUL_MIN_NETTO_CHF !== '' ? Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 4;
+const STITCH = String(process.env.PRINTFUL_STITCH_COLOR || '').trim().toLowerCase();
+const OPTION_VORGABEN = STITCH ? { stitch_color: STITCH } : {};
+const DETAIL = ['1', 'true', 'ja', 'yes', 'on'].includes(String(process.env.PRINTFUL_LOG_DETAIL || '').trim().toLowerCase());
 const HOSTS = [...ERLAUBTE_HOSTS, ...String(process.env.PRINTFUL_DATEI_HOSTS || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean)];
 const RUN_LIMIT_MS = Number.isFinite(Number(process.env.RUN_LIMIT_MS)) && process.env.RUN_LIMIT_MS !== undefined && process.env.RUN_LIMIT_MS !== '' ? Number(process.env.RUN_LIMIT_MS) : 600000;
 const DRY = !['', '0', 'false', 'no', 'nein', 'off'].includes(String(process.env.DRY_RUN == null ? '' : process.env.DRY_RUN).trim().toLowerCase());
@@ -61,16 +70,21 @@ let SHOP = SHOPraw.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));
-const fehler = [];          // technische Fehler (Exit 1)
-const zeilen = [];          // Zusammenfassung je Bestellung
-const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0 };
+// Das Repo und seine Actions-Protokolle sind ÖFFENTLICH. Log und Step-Summary tragen darum nur Bestellnummer und Befundart; Texte von Printful, der KI (sie beschreibt Kundenbilder) und Kundenangaben
+// gehen nur an Telegram (privater Chat). Mit PRINTFUL_LOG_DETAIL=1 (eigener Rechner) steht alles auch im Log.
+const fehler = [];          // technische Fehler (Exit 1): {kurz (öffentlich), detail (nur Telegram bzw. DETAIL)}
+const zeilen = [];          // Zusammenfassung je Bestellung (öffentlich: Nummer + Art)
+const fehlerAdd = (kurz, detail = '') => { fehler.push({ kurz, detail: String(detail || '') }); };
+const fehlerLog = (f) => f.kurz + (DETAIL && f.detail ? ' | ' + f.detail : '');
+const fehlerTg = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');
+const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0, anstehend: 0 };
 
 if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.error('❌ Keine Shopify-Zugangsdaten (SHOPIFY_CLIENT_ID/SECRET oder SHOPIFY_ADMIN_TOKEN): der Bestellweg kann nichts tun.'); process.exit(1); }
 
 // ───────────────────────────────────────────── Telegram: true = zugestellt, false = Zustellung gescheitert, null = nicht konfiguriert oder Trockenlauf
 async function tg(text) {
-  if (DRY) { console.log('[DRY] Telegram: ' + String(text).replace(/<[^>]+>/g, '').slice(0, 300)); return null; }
+  if (DRY) { console.log('[DRY] Telegram würde senden' + (DETAIL ? ': ' + String(text).replace(/<[^>]+>/g, '').slice(0, 300) : ` (${String(text).length} Zeichen; der Text steht nur im privaten Chat, das Protokoll ist öffentlich)`)); return null; }
   if (!TG_TOKEN || !TG_CHAT) return null;
   try {
     const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML', disable_web_page_preview: true }), signal: AbortSignal.timeout(15000) });
@@ -109,8 +123,9 @@ async function resolveToken() {
 
 const ORDERS_Q = `query($q:String!,$n:Int!,$c:String){ orders(first:$n, after:$c, query:$q, sortKey:CREATED_AT){ pageInfo{ hasNextPage endCursor } edges{ node{
   id name email tags cancelledAt
+  currentShippingPriceSet{ shopMoney{ amount currencyCode } }
   shippingAddress{ name firstName lastName address1 address2 city provinceCode countryCodeV2 zip phone }
-  lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id quantity sku title
+  lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id quantity currentQuantity sku title
     discountedTotalSet{ shopMoney{ amount currencyCode } }
     product{ productType tags metafield(namespace:"custom", key:"print_file"){ value } }
     variant{ sku }
@@ -119,18 +134,20 @@ const ORDERS_Q = `query($q:String!,$n:Int!,$c:String){ orders(first:$n, after:$c
 const TAG_ADD = `mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }`;
 const MF_SET = `mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ userErrors{ message } } }`;
 
-// Tags (und beim ersten Setzen das Metafeld) schreiben; das Ergebnis wird GEPRÜFT (früher wurde es verworfen: ein Fehler hier führte beim nächsten Lauf zu einem zweiten Auftrag).
+// Metafeld (beim ersten Setzen) und Tags schreiben; das Ergebnis wird GEPRÜFT (früher wurde es verworfen: ein Fehler hier führte beim nächsten Lauf zu einem zweiten Auftrag).
+// REIHENFOLGE: erst das Metafeld, die Tags ZULETZT. Das Tag `printful-synced` schliesst die Bestellung aus der Abfrage aus; stünde es vor dem Metafeld und das Metafeld scheiterte,
+// bliebe ein unbestätigter Entwurf ohne Prüfer liegen (Gegenleser-Fund 05.11.: «der nächste Lauf findet ihn» stimmte dann nicht). So findet der nächste Lauf ihn über external_id und holt beides nach.
 async function tagsSetzen(tok, o, tags, pfId) {
   if (DRY) return true;
   try {
-    const a = await gql(tok, TAG_ADD, { id: o.id, tags });
-    const ue = a && a.data && a.data.tagsAdd && a.data.tagsAdd.userErrors;
-    if (!Array.isArray(ue) || ue.length) return false;
     if (pfId) {
       const m = await gql(tok, MF_SET, { mf: [{ ownerId: o.id, namespace: 'printful', key: 'order_id', type: 'single_line_text_field', value: String(pfId) }] });
       const ue2 = m && m.data && m.data.metafieldsSet && m.data.metafieldsSet.userErrors;
       if (!Array.isArray(ue2) || ue2.length) return false;
     }
+    const a = await gql(tok, TAG_ADD, { id: o.id, tags });
+    const ue = a && a.data && a.data.tagsAdd && a.data.tagsAdd.userErrors;
+    if (!Array.isArray(ue) || ue.length) return false;
     o.tags = [...new Set([...(o.tags || []), ...tags])];
     return true;
   } catch { return false; }
@@ -217,46 +234,53 @@ const io = { produkt: variantProdukt, druckdaten: holeDruckdaten, kopf: holeKopf
 // ───────────────────────────────────────────── Befunde melden: Tags + EINE Telegram-Meldung je neuer Befundart
 async function befundMelden(tok, o, befunde, kopf) {
   const plan = befundPlan({ tags: o.tags || [], befunde });
-  for (const b of befunde) zeilen.push(`${o.name}: [${b.art}] ${b.text}`);
+  for (const b of befunde) zeilen.push(`${o.name}: [${b.art}]${DETAIL ? ' ' + b.text : ''}`);
   if (plan.alarm) {
     // Telegram nimmt höchstens 4096 Zeichen: je Zeile 300 Zeichen (VOR dem Maskieren gekürzt, sonst entstünde ein halbes «&amp;»), höchstens 10 Zeilen
     const texte = plan.neu.slice(0, 10).map((b) => '• ' + esc(String(b.text).slice(0, 300))).join('\n') + (plan.neu.length > 10 ? `\n… und ${plan.neu.length - 10} weitere` : '');
     const ok = await tg(`${befunde.some((b) => b.hart) ? '🔴' : '🟡'} LuxeStyle POD: Bestellung <b>${esc(o.name)}</b> ${esc(kopf)}:\n${texte}`);
-    if (ok === false) { fehler.push(`${o.name}: Telegram-Meldung nicht zugestellt (${plan.neu.map((b) => b.art).join(', ')})`); return false; }   // ohne Tag: der nächste Lauf meldet erneut
+    if (ok === false) { fehlerAdd(`${o.name}: Telegram-Meldung nicht zugestellt (${plan.neu.map((b) => b.art).join(', ')})`); return false; }   // ohne Tag: der nächste Lauf meldet erneut
   }
-  if (plan.hinzu.length && !(await tagsSetzen(tok, o, plan.hinzu))) { fehler.push(`${o.name}: Tags ${plan.hinzu.join(', ')} nicht gesetzt (Befund: ${befunde.map((b) => b.art).join(', ')})`); return false; }
+  if (plan.hinzu.length && !(await tagsSetzen(tok, o, plan.hinzu))) { fehlerAdd(`${o.name}: Tags ${plan.hinzu.join(', ')} nicht gesetzt (Befund: ${befunde.map((b) => b.art).join(', ')})`); return false; }
   return true;
 }
 // Vorübergehender Fehler (Netz, 429, 5xx): nichts angelegt; der Zähler im Tag macht nach MAX_VERSUCHE einen Befund daraus
-async function vorlaeufigerFehler(tok, o, text) {
+async function vorlaeufigerFehler(tok, o, text, detail = '') {
   const n = versuche(o.tags || []) + 1;
-  fehler.push(`${o.name}: ${text} (Versuch ${n} von ${MAX_VERSUCHE})`); zaehler.spaeter++;
+  fehlerAdd(`${o.name}: ${text} (Versuch ${n} von ${MAX_VERSUCHE})`, detail); zaehler.spaeter++;
   if (DRY) return;
-  if (!(await tagsSetzen(tok, o, [versuchTag(n)]))) fehler.push(`${o.name}: Versuchszähler nicht gesetzt`);
-  if (n >= MAX_VERSUCHE) await befundMelden(tok, o, [{ art: 'wiederholt-gescheitert', text: `${n} Läufe in Folge ohne Erfolg (${text})`, hart: true }], 'wurde nicht an Printful übergeben');
+  if (!(await tagsSetzen(tok, o, [versuchTag(n)]))) fehlerAdd(`${o.name}: Versuchszähler nicht gesetzt`);
+  if (n >= MAX_VERSUCHE) await befundMelden(tok, o, [{ art: 'wiederholt-gescheitert', text: `${n} Läufe in Folge ohne Erfolg (${text}${detail ? ': ' + detail : ''})`, hart: true }], 'wurde nicht an Printful übergeben');
 }
 
 // ───────────────────────────────────────────── Printful-Auftrag lesen (mit Wartezeit, bis Printful die Dateien und Kosten gerechnet hat)
+// Wartefolge in Vielfachen von PF_PAUSE_MS (2500 ms): 5, 10, 15, 20, 30, 40 s zwischen 7 Lesungen = 120 s. Wie lange Printful wirklich braucht, ist UNGEMESSEN (kein Entwurf wurde je angelegt);
+// früher waren es 15 s bei 4 Lesungen, und ein Entwurf ohne fertige Dateien/Kosten blieb dann für immer ungeprüft (er trägt printful-synced und wird nicht mehr gelesen). Messen beim ersten echten Auftrag.
+const WARTE_FOLGE = [2, 4, 6, 8, 12, 16];
 async function auftragLesen(pfId, fertig) {
   let r = null;
-  for (let i = 0; i < 4; i++) {
+  const t0 = Date.now();
+  for (let i = 0; i <= WARTE_FOLGE.length; i++) {
     r = await pfLesen('/orders/' + pfId, 2);
-    if (r.ok && r.j && r.j.result) { const urteil = fertig(r.j.result); if (urteil) return { order: r.j.result, urteil }; }
+    if (r.ok && r.j && r.j.result) { const urteil = fertig(r.j.result); if (urteil) return { order: r.j.result, urteil, sek: Math.round((Date.now() - t0) / 1000) }; }
     else if (!r.ok && r.status !== 0 && r.status < 500 && r.status !== 429) break;
-    if (i < 3) await pause(PAUSE_MS * (i + 1));
+    if (i < WARTE_FOLGE.length) {
+      if (Date.now() - START > RUN_LIMIT_MS) break;          // das Zeitlimit des Laufs gilt auch beim Warten
+      await pause(PAUSE_MS * WARTE_FOLGE[i]);
+    }
   }
-  return { order: r && r.ok && r.j ? r.j.result || null : null, urteil: null, status: r && r.status };
+  return { order: r && r.ok && r.j ? r.j.result || null : null, urteil: null, status: r && r.status, sek: Math.round((Date.now() - t0) / 1000) };
 }
 
 async function bearbeite(tok, o) {
-  const ext = externalId(o.name);
-  if (!ext) { fehler.push(`${o.name}: aus der Bestellnummer lässt sich keine external_id bilden`); return; }
+  const ext = externalId(o.name, o.id);
+  if (!ext) { fehlerAdd(`${o.name}: aus der Bestellnummer lässt sich keine external_id bilden`); return; }
   // 0. Gibt es den Auftrag schon? (external_id; das Markieren in Shopify kann gescheitert sein)
   const vorh = await pfLesen('/orders/@' + encodeURIComponent(ext));
   if (vorh.status === 200 && vorh.j && vorh.j.result) { await vorhandenBehandeln(tok, o, ext, vorh.j.result); return; }
-  if (vorh.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lässt sich nach einem bestehenden Auftrag nicht fragen (${pfText(vorh)}): es wird nichts angelegt`); return; }
+  if (vorh.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lässt sich nach einem bestehenden Auftrag nicht fragen (HTTP ${vorh.status}): es wird nichts angelegt`, pfText(vorh)); return; }
   // 1. Planen
-  const plan = await planeBestellung(o, io, { hosts: HOSTS });
+  const plan = await planeBestellung(o, io, { hosts: HOSTS, optionVorgaben: OPTION_VORGABEN });
   const emp = empfaengerAus(o);
   const befunde = [...plan.befunde, ...emp.befunde];
   if (!plan.items.length && !befunde.length) befunde.push({ art: 'ohne-artikel', text: 'aus der Bestellung ist kein Printful-Artikel entstanden', hart: true });
@@ -267,37 +291,47 @@ async function bearbeite(tok, o) {
     return;
   }
   if (DRY) {
-    console.log(`[DRY] ${o.name}: ${plan.items.length} Artikel, external_id ${ext}, würde als Entwurf angelegt und ${AUTO_CONFIRM && !befunde.length ? 'danach bestätigt (vorbehaltlich Dateistatus und Kosten)' : 'NICHT bestätigt'}${befunde.length ? ' (REVIEW: ' + befunde.map((b) => `[${b.art}] ${b.text}`).join('; ') + ')' : ''}`);
+    zaehler.anstehend++;
+    const wie = `${plan.items.length} Artikel, external_id ${ext}: würde als Entwurf angelegt und ${AUTO_CONFIRM && !befunde.length ? 'danach bestätigt (vorbehaltlich Dateistatus und Kosten)' : 'NICHT bestätigt'}`;
+    zeilen.push(`${o.name}: ${wie}${befunde.length ? ' [' + [...new Set(befunde.map((b) => b.art))].join(', ') + ']' : ''}`);
+    console.log(`[DRY] ${o.name}: ${wie}${befunde.length ? ' (REVIEW: ' + [...new Set(befunde.map((b) => b.art))].join(', ') + ')' : ''}`);
+    if (DETAIL) for (const b of befunde) console.log(`[DRY]   [${b.art}] ${b.text}`);
     return;
   }
   // 2. Entwurf anlegen (nie wiederholen: ein Zeitüberschreitung-POST kann «gelang» heissen; darum danach über external_id nachfragen)
-  let res = await pf('/orders', 'POST', { external_id: ext, recipient: emp.recipient, items: plan.items }, 60000);
-  let pfId = res.ok && res.j && res.j.result && res.j.result.id;
+  const res = await pf('/orders', 'POST', { external_id: ext, recipient: emp.recipient, items: plan.items }, 60000);
+  const pfId = res.ok && res.j && res.j.result && res.j.result.id;
   if (!pfId) {
     if (res.status === 0 || res.status === 408 || res.status === 429 || res.status >= 500 || res.ok) {
       await pause(PAUSE_MS);
       const nach = await pfLesen('/orders/@' + encodeURIComponent(ext), 2);
       if (nach.status === 200 && nach.j && nach.j.result) { await vorhandenBehandeln(tok, o, ext, nach.j.result, 'Anlegen wurde nicht quittiert, der Auftrag existiert aber'); return; }
-      await vorlaeufigerFehler(tok, o, `Anlegen des Printful-Auftrags nicht quittiert (${pfText(res)}), ein Auftrag mit external_id ${ext} existiert nicht`); return;
+      const wo = nach.status === 404 ? 'ein Auftrag mit dieser external_id ist nicht zu finden' : `die Nachfrage nach der external_id blieb ohne Antwort (HTTP ${nach.status})`;
+      await vorlaeufigerFehler(tok, o, `Anlegen des Printful-Auftrags nicht quittiert (HTTP ${res.status}), ${wo}`, pfText(res)); return;
     }
-    if (res.status === 401 || res.status === 403) { fehler.push(`${o.name}: Printful verweigert den Zugriff (${pfText(res)}): Schlüssel oder Store-ID prüfen`); return; }
+    if (res.status === 401 || res.status === 403) { fehlerAdd(`${o.name}: Printful verweigert den Zugriff (HTTP ${res.status}): Schlüssel oder Store-ID prüfen`, pfText(res)); return; }
+    // Ein 4xx ist nicht immer «Auftrag ungültig»: lehnt Printful eine doppelte external_id so ab (ungemessen), oder legte ein anderer Lauf den Auftrag gerade an, existiert er. Erst nachfragen, dann den harten Befund buchen.
+    const nach4 = await pfLesen('/orders/@' + encodeURIComponent(ext), 2);
+    if (nach4.status === 200 && nach4.j && nach4.j.result) { await vorhandenBehandeln(tok, o, ext, nach4.j.result, `Printful lehnte das Anlegen ab (HTTP ${res.status}), der Auftrag existiert aber`); return; }
+    if (nach4.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lehnte das Anlegen ab (HTTP ${res.status}); die Nachfrage nach der external_id blieb ohne Antwort (HTTP ${nach4.status})`, pfText(res)); return; }
     zaehler.ohneAuftrag++;
     await befundMelden(tok, o, [{ art: 'printful-abgelehnt', text: `Printful lehnt den Auftrag ab (${pfText(res)})`, hart: true }], 'wurde von Printful abgelehnt');
     return;
   }
-  // 3. Sofort markieren: Tag + Metafeld. Gelingt das nicht, wird NICHT bestätigt; der nächste Lauf findet den Entwurf über external_id und holt es nach.
-  if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) { fehler.push(`${o.name}: Printful-Entwurf #${pfId} angelegt, aber Tag/Metafeld nicht gesetzt (nicht bestätigt; der nächste Lauf findet ihn über external_id ${ext})`); zaehler.entwuerfe++; return; }
+  // 3. Sofort markieren: Metafeld, dann Tag. Gelingt das nicht, wird NICHT bestätigt; der nächste Lauf findet den Entwurf über external_id und holt es nach.
+  if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) { fehlerAdd(`${o.name}: Printful-Entwurf #${pfId} angelegt, aber Metafeld/Tag nicht gesetzt (nicht bestätigt; der nächste Lauf findet ihn über external_id ${ext} und markiert ihn nach)`); zaehler.entwuerfe++; return; }
   // 4. Entwurf nachlesen: Dateien und Kosten
   const weich = befunde.slice();
   const urteilEntwurf = (ord) => ({ d: dateienStatus(ord), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN }) });
   // fertig = Printful hat die Dateien geprüft (nicht «waiting») UND die Kosten gerechnet (total vorhanden, nicht «calculating»); sonst nach kurzer Pause nochmal lesen
   const lese = await auftragLesen(pfId, (ord) => { const u = urteilEntwurf(ord), c = ord.costs; const gerechnet = !!c && c.total !== null && c.total !== undefined && c.total !== '' && String(c.calculation_status || 'done').toLowerCase() === 'done'; return u.d.art === 'wartet' || !gerechnet ? null : u; });
-  if (!lese.order) weich.push({ art: 'entwurf-nicht-lesbar', text: `Entwurf #${pfId} lässt sich nicht nachlesen (HTTP ${lese.status || 0}): Dateien und Kosten ungeprüft`, hart: false });
+  console.log(`${o.name}: Printful-Entwurf #${pfId}: Dateien und Kosten ${lese.urteil ? 'fertig' : 'NICHT fertig'} nach ${lese.sek} s Wartezeit`);   // misst, wie lange Printful wirklich braucht (bisher ungemessen)
+  if (!lese.order) weich.push({ art: 'entwurf-nicht-lesbar', text: `Entwurf #${pfId} lässt sich nach ${lese.sek} s nicht nachlesen (HTTP ${lese.status || 0}): Dateien und Kosten ungeprüft`, hart: false });
   else {
     const { d, k } = lese.urteil || urteilEntwurf(lese.order);
     if (d.art === 'problem') for (const t of d.texte) weich.push({ art: 'datei-abgelehnt', text: t, hart: false });
-    else if (d.art === 'wartet') weich.push({ art: 'datei-wartet', text: 'Printful hat die Dateien nach mehreren Minuten noch nicht fertig geprüft', hart: false });
-    if (!k.ok) weich.push({ art: k.art, text: k.text, hart: false });
+    else if (d.art === 'wartet') weich.push({ art: 'datei-wartet', text: `Printful hat die Dateien nach ${lese.sek} Sekunden Wartezeit noch nicht fertig geprüft: Entwurf im Printful-Dashboard ansehen und von Hand bestätigen`, hart: false });
+    if (!k.ok) weich.push({ art: k.art, text: k.art === 'kosten-unbekannt' ? `${k.text} (nach ${lese.sek} Sekunden Wartezeit)` : k.text, hart: false });
   }
   if (!AUTO_CONFIRM) weich.push({ art: 'manuell', text: 'automatisches Bestätigen ist aus (PRINTFUL_AUTO_CONFIRM=0): Entwurf im Printful-Dashboard prüfen und bestätigen', hart: false });
   if (weich.length) {
@@ -306,9 +340,10 @@ async function bearbeite(tok, o) {
     await befundMelden(tok, o, weich, `→ Printful-Entwurf #${pfId} (nicht bestätigt)`);
     return;
   }
-  // 5. Bestätigen und den Status NACHLESEN
-  const c = await pf(`/orders/${pfId}/confirm`, 'POST', null, 60000);
-  const unklar = !c.ok && (c.status === 0 || c.status === 408 || c.status >= 500);
+  // 5. Bestätigen und den Status NACHLESEN. Bei 429 (Drosselung: der Aufruf wurde nicht ausgeführt) einmal nach der Pause wiederholen.
+  let c = await pf(`/orders/${pfId}/confirm`, 'POST', null, 60000);
+  if (c.status === 429) { await pause(Math.min(60000, Math.max(PAUSE_MS * 2, c.retryAfter * 1000))); c = await pf(`/orders/${pfId}/confirm`, 'POST', null, 60000); }
+  const unklar = !c.ok && (c.status === 0 || c.status === 408 || c.status === 429 || c.status >= 500);
   if (!c.ok && !unklar) {
     zaehler.entwuerfe++;
     console.log(`${o.name} → Printful #${pfId} ENTWURF (Review)`);
@@ -319,7 +354,7 @@ async function bearbeite(tok, o) {
   const st = nach.urteil || (nach.order ? statusBewerten(nach.order) : null);
   if (st && st.art === 'bestaetigt') {
     zaehler.bestaetigt++;
-    await tagsSetzen(tok, o, ['printful-confirmed']) || fehler.push(`${o.name}: Tag printful-confirmed nicht gesetzt`);
+    await tagsSetzen(tok, o, ['printful-confirmed']) || fehlerAdd(`${o.name}: Tag printful-confirmed nicht gesetzt`);
     console.log(`${o.name} → Printful #${pfId} BESTÄTIGT (Status ${st.text})`);
     return;
   }
@@ -333,8 +368,8 @@ async function bearbeite(tok, o) {
 async function vorhandenBehandeln(tok, o, ext, ord, grund) {
   zaehler.vorhanden++;
   const s = statusBewerten(ord);
-  console.log(`${o.name}: Printful-Auftrag #${ord.id} existiert schon (external_id ${ext}, Status ${ord.status})${grund ? ' – ' + grund : ''}: nichts angelegt`);
-  if (!DRY && !(await tagsSetzen(tok, o, ['printful-synced'], ord.id))) fehler.push(`${o.name}: Printful-Auftrag #${ord.id} existiert, Tag/Metafeld konnten nicht nachgetragen werden`);
+  console.log(`${o.name}: Printful-Auftrag #${ord.id} existiert schon (external_id ${ext}, Status ${ord.status})${grund ? ': ' + grund : ''}: nichts angelegt`);
+  if (!DRY && !(await tagsSetzen(tok, o, ['printful-synced'], ord.id))) fehlerAdd(`${o.name}: Printful-Auftrag #${ord.id} existiert, Metafeld/Tag konnten nicht nachgetragen werden`);
   if (s.art === 'problem') await befundMelden(tok, o, [{ art: 'vorhanden-' + s.befund, text: `Printful-Auftrag #${ord.id} existiert schon (${ext}): ${s.text}`, hart: false }], 'hat schon einen Printful-Auftrag');
   else if (s.art === 'wartet') await befundMelden(tok, o, [{ art: 'vorhanden-entwurf', text: `Printful-Auftrag #${ord.id} existiert schon (${ext}) und ist noch ein Entwurf: im Printful-Dashboard prüfen und bestätigen`, hart: false }], 'hat schon einen Printful-Entwurf');
 }
@@ -356,23 +391,23 @@ const hatDruckdatei = (li) => (li.customAttributes || []).some((a) => /Druckdate
       const n = e && e.node; if (!n) continue;
       zaehler.gelesen++;
       if (n.cancelledAt) { console.log(`${n.name}: in Shopify storniert (${n.cancelledAt}), wird nicht an Printful übergeben`); continue; }   // eine stornierte, noch nicht erstattete Bestellung darf nie gedruckt werden
-      const lis = ((n.lineItems && n.lineItems.edges) || []).map((x) => x && x.node).filter(Boolean);
+      const lis = ((n.lineItems && n.lineItems.edges) || []).map((x) => x && x.node).filter(Boolean).filter((li) => li.currentQuantity !== 0);   // nachträglich entfernte/erstattete Positionen zählen nicht
       // Prüfen, wenn eine Position Editor-Ware ist, eine Druckdatei-Eigenschaft trägt (auch ohne POD-Tag: Befund) oder die Positionsliste länger ist als eine Abfrage (die 51. könnte Editor-Ware sein)
       if (lis.some((li) => istPod(li) || hatDruckdatei(li)) || (n.lineItems && n.lineItems.pageInfo && n.lineItems.pageInfo.hasNextPage)) kandidaten.push(n);
     }
     mehr = !!(conn.pageInfo && conn.pageInfo.hasNextPage);
     if (!mehr) break;
     cursor = conn.pageInfo.endCursor;
-    if (seiten >= MAX_SEITEN) { fehler.push(`Seitenlimit (${MAX_SEITEN} Seiten) erreicht: weitere offene Bestellungen blieben ungelesen`); break; }
+    if (seiten >= MAX_SEITEN) { fehlerAdd(`Seitenlimit (${MAX_SEITEN} Seiten) erreicht: weitere offene Bestellungen blieben ungelesen`); break; }
   }
   if (!kandidaten.length) console.log(`Keine offenen POD-Bestellungen zum Synchronisieren (${zaehler.gelesen} offene Bestellung(en) in ${seiten} Seite(n) gelesen).`);
   for (const o of kandidaten.slice(0, MAX)) {
-    if (Date.now() - START > RUN_LIMIT_MS) { fehler.push(`Zeitlimit (${Math.round(RUN_LIMIT_MS / 1000)} s) erreicht: ${o.name} und die folgenden Bestellungen bleiben für den nächsten Lauf`); break; }
-    try { await bearbeite(tok, o); } catch (e) { fehler.push(`${o.name}: unerwarteter Fehler: ${String(e && e.message || e).slice(0, 200)}`); }
+    if (Date.now() - START > RUN_LIMIT_MS) { fehlerAdd(`Zeitlimit (${Math.round(RUN_LIMIT_MS / 1000)} s) erreicht: ${o.name} und die folgenden Bestellungen bleiben für den nächsten Lauf`); break; }
+    try { await bearbeite(tok, o); } catch (e) { fehlerAdd(`${o.name}: unerwarteter Fehler`, String(e && e.message || e).slice(0, 200)); }
   }
-  const summary = `Printful-Sync fertig: ${zaehler.bestaetigt} bestätigt, ${zaehler.entwuerfe} Entwurf/Review, ${zaehler.ohneAuftrag} ohne Auftrag (harter Befund), ${zaehler.vorhanden} schon vorhanden, ${zaehler.spaeter} später wieder, ${fehler.length} Fehler${DRY ? ' (DRY_RUN)' : ''}.`;
-  if (process.env.GITHUB_STEP_SUMMARY) { try { appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Printful-Sync\n\n${summary}\n\n${zeilen.length ? zeilen.map((z) => '- ' + z).join('\n') + '\n' : ''}${fehler.length ? '\n**Fehler:**\n' + fehler.map((f) => '- ' + f).join('\n') + '\n' : ''}`); } catch { /* Zusammenfassung ist Zugabe */ } }
-  if (fehler.length) { fehler.forEach((f) => console.error('✗', f)); await tg(`🔴 LuxeStyle POD-Sync Fehler:\n${fehler.slice(0, 8).map(esc).join('\n')}`); process.exitCode = 1; }
+  const summary = `Printful-Sync fertig: ${zaehler.bestaetigt} bestätigt, ${zaehler.entwuerfe} Entwurf/Review, ${zaehler.ohneAuftrag} ohne Auftrag (harter Befund), ${zaehler.vorhanden} schon vorhanden, ${zaehler.spaeter} später wieder, ${fehler.length} Fehler${DRY ? ` (DRY_RUN: ${zaehler.anstehend} Bestellung(en) würden angelegt)` : ''}.`;
+  if (process.env.GITHUB_STEP_SUMMARY) { try { appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Printful-Sync\n\n${summary}\n\n${zeilen.length ? zeilen.map((z) => '- ' + z).join('\n') + '\n' : ''}${fehler.length ? '\n**Fehler:**\n' + fehler.map((f) => '- ' + fehlerLog(f)).join('\n') + '\n' : ''}`); } catch { /* Zusammenfassung ist Zugabe */ } }
+  if (fehler.length) { fehler.forEach((f) => console.error('✗', fehlerLog(f))); await tg(`🔴 LuxeStyle POD-Sync Fehler:\n${fehler.slice(0, 8).map((f) => esc(fehlerTg(f))).join('\n')}`); process.exitCode = 1; }
   if ((zaehler.bestaetigt || zaehler.entwuerfe) && !DRY) await tg(`✅ LuxeStyle POD: ${esc(summary)}`);
   console.log(summary);
 })().catch(async (e) => { console.error('Fataler Fehler:', e); await tg(`🔴 LuxeStyle POD-Sync: fataler Fehler ${esc(e && e.message)}`); process.exit(1); });

@@ -48,6 +48,9 @@ on:
       - 'dropship/pod-editor-sicherung-2810/**'
       - 'dropship/katalog-einheiten-0411/**'
       - 'dropship/lagerbestand-0511/**'
+      - 'dropship/selbst-gestalten-fertig-0511/bestellweg/**'
+      - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
+      - '.github/workflows/printful-sync.yml'
       - 'automation/fortura_feed_holen.sh'
       - '.github/workflows/fortura-bestand.yml'
       - 'pod/editor-hintergruende.json'
@@ -136,6 +139,9 @@ jobs:
             .github/workflows/luxestyle-automation-tests.yml
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
+            .github/workflows/printful-sync.yml
+            dropship/selbst-gestalten-fertig-0511/bestellweg
+            dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -170,6 +176,7 @@ jobs:
           node --check automation/pod_inject_designer.mjs
           node --check automation/pod_editor_hintergruende.mjs
           node --check automation/printful_sync.mjs
+          node --check automation/lib/printful_bestellweg.mjs
           node --check automation/printful_tracking.mjs
           node --check automation/lib/printful_tracking.mjs
           node --check automation/schmuck_gruppen.mjs
@@ -298,7 +305,11 @@ jobs:
           node automation/lib/pod_auswahl_gql_test.mjs
           node automation/lib/pod_auswahl_schreiben_test.mjs
           node automation/pod_auswahl_test.mjs
+          # Bestellweg «bezahlte Bestellung → Printful-Auftrag» (05.11.2026): reine Logik (Optionen, Kosten-Wächter samt Versand, Stickerei nach Typ, Karte), dazu das ganze Skript gegen gefälschtes Netz
+          node automation/lib/printful_bestellweg_test.mjs
           node automation/printful_sync_test.mjs
+          # Die Fundstellen der 162 Mutanten des Bestellwegs müssen noch genau einmal vorkommen (die volle Probe dauert rund 9 Minuten und läuft von Hand: dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs)
+          node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs --pruefen
           # Rückmeldung Printful → Shopify (03.11.2026): reine Zuordnung + Verhalten des Skripts im Kindprozess (gefälschtes Shopify/Printful/Telegram)
           node automation/printful_tracking_test.mjs
           # Editor-Hintergründe ohne eingebranntes «Dein Design» (28.10.2026): Baustein lesen/umschreiben, Übersteuerungstabelle pod/editor-hintergruende.json, Sicherung dropship/pod-editor-sicherung-2810

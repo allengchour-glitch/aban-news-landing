@@ -513,6 +513,11 @@ export async function planeBestellung(o, io, cfg = {}) {
     const arten = typen.map((t) => platzierungsName(t, prod && prod.info));   // Platzierungs-TYPEN laut Dateiliste («default» einer Kappe → «embroidery_front»): nach ihnen richten sich Technik und Garnfarben
     const roh = prod && prod.roh && prod.roh.product ? prod.roh.product : null;
     const pid = prod && prod.info && prod.info.id;
+    if (eig.karte) {                                           // Editor v6 schreibt Printful-Variante (pv) und -Produkt (m) in die Karte: sie müssen zur gekauften SKU passen (Drift oder Manipulation → Entwurf)
+      const kpv = num(eig.karte.pv), km = num(eig.karte.m);
+      if (kpv !== null && kpv !== sku.vid) weich('karte-widerspruch', vor(`Der Editor nennt die Printful-Variante ${kpv}, gekauft wurde ${sku.vid} (SKU): Farbe oder Grösse wurden nach dem Gestalten eventuell gewechselt`));
+      else if (km !== null && pid && km !== pid) weich('karte-widerspruch', vor(`Der Editor nennt das Printful-Produkt ${km}, die Variante ${sku.vid} gehört aber zu Produkt ${pid}`));
+    }
     let dd = null;
     if (pid) dd = await io.druckdaten(pid);
     if (!dd || dd.art !== 'ok') weich('druckdaten', vor(`Druckdaten des Printful-Produkts nicht lesbar${dd && dd.text ? ' (' + dd.text + ')' : ''}: Konflikte und Mindest-dpi lassen sich nicht prüfen`));

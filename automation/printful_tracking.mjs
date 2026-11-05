@@ -305,7 +305,13 @@ async function waechter(tok, seit) {
     if (!pz.zeilen.length) continue; // nur Service-Positionen (Printful-App) oder nichts Meldbares: kein Alarm
     zaehler.wartetAufSync++;
     zusammenfassung.push(`${o.name}: bezahlte POD-Bestellung ohne Printful-Auftrag (älter als ${WAECHTER_STUNDEN} h)`);
-    const ok = await tg(`🟠 LuxeStyle POD: Bestellung <b>${esc(o.name)}</b> ist bezahlt, trägt aber kein Tag printful-synced (Druckauftrag unbekannt). Erst im Printful-Dashboard nachsehen, ob es schon einen Auftrag gibt, dann erst «Printful-Sync» starten (sonst doppelter Auftrag).`);
+    // Der Sync (printful_sync.mjs, Version 2) fragt vor dem Anlegen über die external_id bei Printful nach: ein Doppelauftrag ist ausgeschlossen. Hat der Sync die Bestellung selbst angehalten (Tag printful-review), hilft ein Neustart NICHT:
+    // erst die Ursache beheben und das Tag entfernen. Ein von Hand im Printful-Dashboard angelegter Auftrag gehört vorher mit dem Tag printful-synced an der Bestellung markiert.
+    const angehalten = (o.tags || []).includes('printful-review');
+    const text = angehalten
+      ? `🟠 LuxeStyle POD: Bestellung <b>${esc(o.name)}</b> ist bezahlt und wartet seit über ${WAECHTER_STUNDEN} h: der Sync hat sie angehalten (Tag printful-review, die Art steht im Tag printful-review-… und in der ersten Meldung). Ursache beheben, dann das Tag printful-review entfernen; ein Neustart des Syncs allein ändert nichts.`
+      : `🟠 LuxeStyle POD: Bestellung <b>${esc(o.name)}</b> ist bezahlt, trägt aber kein Tag printful-synced (Druckauftrag unbekannt). Im Printful-Dashboard nachsehen, ob es schon einen Auftrag gibt: dann die Bestellung mit dem Tag printful-synced markieren. Sonst «Printful-Sync» starten: er fragt vorher über die external_id LX<Nr> bei Printful nach, ein Doppelauftrag ist ausgeschlossen.`;
+    const ok = await tg(text);
     if (ok === false) { fehler.push(`${o.name}: Telegram-Alarm nicht zugestellt (Wächter)`); continue; }
     await tagsHinzu(tok, o, ['printful-wartet']);
   }

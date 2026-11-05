@@ -110,12 +110,16 @@ for (const [t, soll] of [['default', 'STANDARD'], ['front', 'STANDARD'], ['back'
   if (!ALLE || !existsSync(ALLE)) console.log('(KATALOG_ALLE nicht gesetzt → Katalogprobe der Garnfarben übersprungen)');
   else {
     const { readdirSync } = await import('node:fs');
-    let mit = 0, ohne = [];
+    let mit = 0, ohne = [], nachId = 0;
     for (const f of readdirSync(ALLE)) {
       const p = JSON.parse(readFileSync(ALLE + '/' + f, 'utf8')).produkt, ids = (p.options || []).map((o) => o.id);
-      for (const fl of p.files || []) if (/^embroidery_/.test(fl.id)) { if (garnOption(fl.id, ids)) mit++; else ohne.push(p.id + ':' + fl.id); }
+      for (const fl of p.files || []) {
+        if (/^embroidery_/.test(fl.id)) nachId++;
+        if (/^embroidery_/.test(fl.type || '')) { if (garnOption(fl.type, ids)) mit++; else ohne.push(p.id + ':' + fl.id + ':' + fl.type); }
+      }
     }
-    ist('Gesamtkatalog: 504 Stickerei-Platzierungen, 504 mit gefundener Garnfarben-Option (alle ausser 0)', [mit, ohne], [504, []]);
+    // Nach TYP gezählt (nicht nach Datei-ID): die Kappen/Taschen führen ihre Stickerei unter «default», «back», «left», «right». Gegenleser-Fund 05.11.: die Zählung nach ID übersah 133 Dateien von 63 Produkten.
+    ist('Gesamtkatalog nach Typ: 637 Stickerei-Platzierungen (504 davon mit Stickerei-ID), 634 mit gefundener Garnfarben-Option; die drei Kappen 99, 206, 252 («embroidery_front») führen keine', [nachId, mit, ohne.sort()], [504, 634, ['206:default:embroidery_front', '252:default:embroidery_front', '99:default:embroidery_front']]);
   }
 }
 ist('garnOption: genaue Option vor allgemeiner', garnOption('embroidery_chest_left', ['thread_colors', 'thread_colors_chest_left']), 'thread_colors_chest_left');
@@ -250,7 +254,7 @@ for (const [n, b] of [['leer', Buffer.alloc(0)], ['null', null], ['Text', Buffer
   ist('Kosten: genau 0 Netto → kein Verlust (Grenze ist «unter nettoMin»)', (() => { const e = (16.42 + 0.3) / (1 / 1.081 - 0.034); const x = kostenPruefen({ costs: costs('19.71'), erloesChf: e }); return x.nettoChf >= 0 ? x.ok : 'netto ' + x.nettoChf; })(), true);
   ist('Kosten: nettoMin 4 (Ziel der Preisformel) schlägt früher an', [kostenPruefen({ costs: costs('19.71'), erloesChf: 21, nettoMin: 4 }).ok, kostenPruefen({ costs: costs('19.71'), erloesChf: 21, nettoMin: 0 }).ok], [false, true]);
   ist('Kosten: ohne Printfuls Steuer gerechnet (tax und vat abgezogen)', kostenPruefen({ costs: costs('20.00', { tax: '1.00', vat: '1.00' }), erloesChf: 60 }).kostenChf, 16.2);
-  for (const [n, c, e] of [['keine Kosten', null, 50], ['Kosten ohne total', { currency: 'USD' }, 50], ['total leer', costs(''), 50], ['total Text', costs('abc'), 50], ['Kosten in Berechnung', costs('1', { calculation_status: 'calculating' }), 50], ['Berechnung fehlgeschlagen', costs('1', { calculation_status: 'failed' }), 50],
+  for (const [n, c, e] of [['keine Kosten', null, 50], ['Kosten ohne total', { currency: 'USD' }, 50], ['total leer', costs(''), 50], ['total Text', costs('abc'), 50], ['Kosten in Berechnung (sonst plausible Summe 30 USD)', costs('30', { calculation_status: 'calculating' }), 50], ['Berechnung fehlgeschlagen (sonst plausible Summe 30 USD)', costs('30', { calculation_status: 'failed' }), 50],
     ['Euro statt Dollar', costs('19.71', { currency: 'EUR' }), 50], ['Erlös unbekannt', costs('19.71'), null], ['Erlös 0', costs('19.71'), 0], ['Erlös negativ', costs('19.71'), -5], ['Erlös Text', costs('19.71'), 'x']]) {
     const x = kostenPruefen({ costs: c, erloesChf: e });
     ist(`Kosten unbekannt: ${n} → KEIN grünes Licht (Befund «kosten-unbekannt»)`, [x.ok, x.art, x.nettoChf], [false, 'kosten-unbekannt', null]);
@@ -464,6 +468,139 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const io = mkIo();
   await plane([zeile(), zeile({ id: 'gid://shopify/LineItem/9002' })], io);
   ist('Zwei Positionen derselben Variante: der Cache des Klebers entscheidet über die Abfrage, planeBestellung ruft io.produkt je Position', io.log.produkt, [4025, 4025]);
+}
+
+
+// ═══════════════════════════════════════ NEU (Gegenleser, Runde 2, 05.11.2026)
+// Kosten-Wächter: null und negative Summen geben nie frei (GL1 Fund 4)
+{
+  const c = (total, extra = {}) => ({ currency: 'USD', total: String(total), tax: '0.00', ...extra });
+  for (const [n, k] of [['total 0', c('0.00')], ['total 0 als Zahl', { currency: 'USD', total: 0 }], ['total negativ', c('-3.00')], ['total negativ bei negativer Steuer (die Differenz wäre positiv)', c('-1', { tax: '-5' })], ['Steuer = Summe', c('12.70', { tax: '12.70' })], ['Steuer > Summe', c('12.70', { tax: '20.00' })], ['Steuer und MWST zusammen = Summe', c('10', { tax: '5', vat: '5' })]]) {
+    const x = kostenPruefen({ costs: k, erloesChf: 50 });
+    ist(`Kosten ${n} → «kosten-unbekannt», kein grünes Licht`, [x.ok, x.art, x.kostenChf], [false, 'kosten-unbekannt', null]);
+  }
+  const knapp = kostenPruefen({ costs: { currency: 'USD', total: '19.71', tax: '1.47' }, erloesChf: 21, nettoMin: 4 });
+  ist('Kosten: Gewinn über null, aber unter dem Mindestgewinn → Text «Gewinn unter dem Mindestgewinn» (kein «Verlust»)', [knapp.ok, /Gewinn unter dem Mindestgewinn/.test(knapp.text), /Verlust/.test(knapp.text), /Mindest 4\.00/.test(knapp.text)], [false, true, false, true]);
+  const echt = kostenPruefen({ costs: { currency: 'USD', total: '19.71', tax: '1.47' }, erloesChf: 23.83, nettoMin: 4 });
+  ist('Kosten: #1033 mit bezahltem Versand (Erlös 23.83 CHF) → netto 4.51 CHF, über dem Mindestgewinn', [echt.ok, echt.nettoChf], [true, 4.51]);
+}
+// Garnfarben: Typ statt Datei-ID, Zusatzstickerei (GL1 Fund 7)
+{
+  ist('garnOption: Zusatzstickerei addon_embroidery_front → addon_thread_colors_front', garnOption('addon_embroidery_front', ['thread_colors', 'addon_thread_colors_front']), 'addon_thread_colors_front');
+  ist('garnOption: Zusatzstickerei ohne passende Option → null (nicht thread_colors)', garnOption('addon_embroidery_front', ['thread_colors']), null);
+  ist('garnOption: embroidery_front der Kappe 206 (Katalog ohne passende Option) → null', garnOption('embroidery_front', (roh(206).options || []).map((o) => o.id)), null);
+  ist('garnOption: embroidery_front mit allgemeiner Option (Trucker-Cap-Muster) → thread_colors', garnOption('embroidery_front', ['thread_colors', 'thread_colors_3d']), 'thread_colors');
+  ist('technikFamilie: addon_embroidery_front ist Stickerei', technikFamilie('addon_embroidery_front'), 'EMBROIDERY');
+  ist('technikFamilie: «default» allein ist Standard (die Stickerei zeigt sich erst über den Typ aus der Dateiliste)', technikFamilie('default'), 'STANDARD');
+  const k = optionenPruefen({ produkt: roh(206), typen: ['embroidery_front'], angegeben: {} });
+  ist('Kappe 206, Stickerei embroidery_front ohne Angaben: weicher Befund «optionen» (Katalog führt keine Garnfarben-Option), nichts gesendet', [arten(k.befunde), k.befunde[0].hart, /führt der Printful-Katalog keine Garnfarben-Option/.test(k.befunde[0].text), k.optionen], [['optionen'], false, true, []]);
+  const k2 = optionenPruefen({ produkt: roh(206), typen: ['embroidery_front_large'], angegeben: { thread_colors_front_large: '#000000' } });
+  ist('Kappe 206, embroidery_front_large mit Option thread_colors_front_large: Option gefunden, Wert gültig → gesendet, kein Befund', [k2.optionen, k2.befunde], [[{ id: 'thread_colors_front_large', value: ['#000000'] }], []]);
+  const ohneDef = optionenPruefen({ produkt: null, typen: ['embroidery_front'], angegeben: {} });
+  ist('Produkt-Optionen nicht lesbar + Stickerei → Befund «nicht prüfbar» (wie bisher)', arten(ohneDef.befunde), ['optionen']);
+}
+// Garnfarben mit Leerzeichen im Namen (GL2 Fund 11)
+{
+  const o = (v) => optionenPruefen({ produkt: roh(71), typen: ['embroidery_chest_left'], angegeben: { thread_colors_chest_left: v } });
+  ist('Garnfarbe «1801 White» (Name mit Leerzeichen und Nummer): ein Wert, in Katalogschreibweise #FFFFFF', [o('1801 White').optionen, o('1801 White').befunde], [[{ id: 'thread_colors_chest_left', value: ['#FFFFFF'] }], []]);
+  ist('«1801 White, 1672 Old Gold» (Komma trennt, Namen mit Leerzeichen bleiben heil)', o('1801 White, 1672 Old Gold').optionen, [{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#A67843'] }]);
+  ist('«#FFFFFF #CC3333» (nur Leerzeichen, kein erlaubter Gesamtwert): zwei Hex-Werte', o('#FFFFFF #CC3333').optionen, [{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#CC3333'] }]);
+  ist('«#FFFFFF;#000000» mit Semikolon', o('#FFFFFF;#000000').optionen, [{ id: 'thread_colors_chest_left', value: ['#FFFFFF', '#000000'] }]);
+  ist('«1801 Weiss» (Name gibt es nicht): Befund, der den ganzen Wert nennt statt «1801» und «Weiss» getrennt', [o('1801 Weiss').optionen, o('1801 Weiss').befunde.length, /1801/.test(o('1801 Weiss').befunde[0].text)], [[], 1, true]);
+}
+// Nahtfarbe: Vorgabe des Besitzers (GL2 Fund 3)
+{
+  const j = (angegeben, vorgaben) => optionenPruefen({ produkt: roh(388), typen: ['front'], angegeben, vorgaben });
+  ist('Jacke 388 (Option stitch_color): ohne Angabe und ohne Vorgabe → Befund «Pflichtoption stitch_color fehlt»', [arten(j({}, {}).befunde), /stitch_color/.test(j({}, {}).befunde[0].text)], [['optionen'], true]);
+  ist('…mit Vorgabe white: options [{stitch_color: white}], kein Befund', [j({}, { stitch_color: 'white' }).optionen, j({}, { stitch_color: 'white' }).befunde], [[{ id: 'stitch_color', value: 'white' }], []]);
+  ist('…Vorgabe «Black» (Schreibweise): auf den Schlüssel des Produkts abgebildet', j({}, { stitch_color: 'Black' }).optionen, [{ id: 'stitch_color', value: 'black' }]);
+  ist('…die ausdrückliche Wahl der Kundin gewinnt gegen die Vorgabe', j({ stitch_color: 'black' }, { stitch_color: 'white' }).optionen, [{ id: 'stitch_color', value: 'black' }]);
+  ist('…Vorgabe, die das Produkt nicht kennt («clear» bei white/black): Befund, nichts gesendet', [j({}, { stitch_color: 'clear' }).optionen, arten(j({}, { stitch_color: 'clear' }).befunde)], [[], ['optionen']]);
+  const t = optionenPruefen({ produkt: roh(71), typen: ['default'], angegeben: {}, vorgaben: { stitch_color: 'white' } });
+  ist('Produkt ohne stitch_color (T-Shirt 71): die Vorgabe wird nicht gesendet, kein Befund', [t.optionen, t.befunde], [[], []]);
+  const nur = optionenPruefen({ produkt: roh(388), typen: [], angegeben: {}, vorgaben: { stitch_color: 'white' } });
+  ist('Ohne Druckdatei-Typen (typen leer) wird die Vorgabe nicht gesetzt', nur.optionen, []);
+}
+// externalId (GL2 Fund 10)
+{
+  ist('externalId: «#1034-1» und «#10341» kollidieren nicht', [externalId('#1034-1', 'gid://shopify/Order/111'), externalId('#10341', 'gid://shopify/Order/222')], ['LX10341N111', 'LX10341']);
+  ist('externalId: der Normalfall «#1034» bleibt LX1034, auch mit ID', externalId('#1034', 'gid://shopify/Order/19118298694023'), 'LX1034');
+  ist('externalId: Namen ohne weggelassene Zeichen bleiben wie bisher («#SW1034» → LXSW1034)', externalId('#SW1034', 'gid://shopify/Order/5'), 'LXSW1034');
+  ist('externalId: mit weggelassenem Zeichen aber ohne ID → wie bisher (ohne Suffix)', externalId('#1034-1'), 'LX10341');
+  ist('externalId: lange Namen mit ID bleiben höchstens 32 Zeichen, die ID bleibt vollständig', [externalId('#' + '9'.repeat(40) + '-1', 'gid://shopify/Order/19118298694023').length, externalId('#' + '9'.repeat(40) + '-1', 'gid://shopify/Order/19118298694023').endsWith('N19118298694023')], [32, true]);
+  ist('externalId: nur Sonderzeichen → null', [externalId('#-', 'gid://shopify/Order/5'), externalId('###', 'x')], [null, null]);
+}
+// JPEG progressiv (SOF2) und Basis (SOF0) werden gelesen (Mutant «SOF2 nicht gelesen»)
+{
+  const sof = (marker, w, h) => Buffer.from([0xff, 0xd8, 0xff, marker, 0x00, 0x11, 0x08, h >> 8, h & 255, w >> 8, w & 255, 3, 1, 0x22, 0, 2, 0x11, 1, 3, 0x11, 1, 0xff, 0xd9]);
+  ist('JPEG progressiv (SOF2) 4000×3000 wird gemessen', dateiMasse(sof(0xc2, 4000, 3000)), { format: 'jpeg', breite: 4000, hoehe: 3000 });
+  ist('JPEG SOF1 (erweitert) wird gemessen', dateiMasse(sof(0xc1, 800, 600)), { format: 'jpeg', breite: 800, hoehe: 600 });
+  ist('Tabellen-Marker DHT (0xc4) und DAC (0xcc) sind keine Bildkopfzeile', [dateiMasse(sof(0xc4, 800, 600)), dateiMasse(sof(0xcc, 800, 600))], [null, null]);
+}
+// planeBestellung: Stickerei am Typ, Versand, entfernte Einheiten (GL1 Fund 7, GL2 Fund 1 und 9)
+{
+  const kappenIo = () => mkIo({ produkt: () => prodVon(206), druckdaten: (pid) => ({ art: 'ok', printfiles: KAT[pid].printfiles, templates: KAT[pid].templates }) });
+  const kappe = (attr) => zeile({ sku: '1_7854', variant: { sku: '1_7854' }, product: { productType: 'Kappen', tags: ['wunschdesign'] }, customAttributes: attr });
+  const a = await plane([kappe([A('🖼️ Druckdatei (embroidery_front)', U('v')), karte6(['embroidery_front'])])], kappenIo());
+  ist('Kappe, ausdrücklich embroidery_front ohne Garnfarben: Befund «optionen» (früher: kein Befund → bestätigt)', arten(a.befunde), ['optionen']);
+  const b = await plane([kappe([A('🖼️ Druckdatei (default)', U('v')), karte6(['default'])])], kappenIo());
+  ist('Kappe, Datei-ID «default» (Typ embroidery_front laut Dateiliste): Befund «optionen», KEIN Auflösungsbefund (Stickerei hat keine Pixelgrösse im Katalog)', arten(b.befunde), ['optionen']);
+  const c = await plane([kappe([A('🖼️ Druckdatei (Vorne)', U('v'))])], kappenIo());
+  ist('Kappe, v5 «Vorne» (Platzierung «front», nicht in der Dateiliste der Kappe): bleibt Entwurf (Auflösung nicht prüfbar), nicht still bestätigt', arten(c.befunde).length > 0, true);
+  const versand = { currentShippingPriceSet: { shopMoney: { amount: '7.0', currencyCode: 'CHF' } } };
+  const pos = (betrag, extra = {}) => zeile({ discountedTotalSet: { shopMoney: { amount: betrag, currencyCode: 'CHF' } }, ...extra });
+  const v1 = await planeBestellung(bestellung([pos('16.83')], versand), mkIo());
+  ist('Erlös = Positionen + bezahlter Versand: 16.83 + 7.00 = 23.83 (#1033)', [v1.positionenChf, v1.versandChf, v1.erloesChf], [16.83, 7, 23.83]);
+  const v2 = await planeBestellung(bestellung([pos('16.83'), pos('16.83', { id: 'gid://shopify/LineItem/9002', product: { productType: 'x', tags: ['cj'] }, customAttributes: [] })], versand), mkIo());
+  ist('Mischbestellung: der Versand wird nach Umsatz verteilt (Hälfte)', [v2.positionenChf, v2.versandChf, v2.erloesChf], [16.83, 3.5, 20.33]);
+  const v3 = await planeBestellung(bestellung([pos('16.83')], { currentShippingPriceSet: { shopMoney: { amount: '7.0', currencyCode: 'EUR' } } }), mkIo());
+  ist('Versand in EUR: kein Anteil (nicht raten)', [v3.versandChf, v3.erloesChf], [0, 16.83]);
+  const v4 = await planeBestellung(bestellung([pos('16.83'), pos('10', { id: 'gid://shopify/LineItem/9002', product: { productType: 'x', tags: ['cj'] }, customAttributes: [], discountedTotalSet: { shopMoney: { amount: '10', currencyCode: 'EUR' } } })], versand), mkIo());
+  ist('Mischbestellung mit einer Position in EUR: Umsatz unvollständig → kein Versandanteil (vorsichtig)', [v4.versandChf, v4.erloesChf], [0, 16.83]);
+  const v5 = await planeBestellung(bestellung([pos('16.83')], { currentShippingPriceSet: null }), mkIo());
+  ist('Ohne Versandfeld (alte Daten, Fakes): wie bisher', [v5.versandChf, v5.erloesChf], [0, 16.83]);
+  const v6 = await planeBestellung(bestellung([pos('16.83')], { currentShippingPriceSet: { shopMoney: { amount: '-7', currencyCode: 'CHF' } } }), mkIo());
+  ist('Negativer oder 0-Versand: kein Anteil', v6.versandChf, 0);
+  const v7 = await planeBestellung(bestellung([pos('16.83')], { currentShippingPriceSet: { shopMoney: { amount: '99', currencyCode: 'CHF' } } }), mkIo());
+  ist('Der Versandanteil übersteigt nie den bezahlten Versand', v7.versandChf <= 99, true);
+  const q1 = await planeBestellung(bestellung([zeile({ quantity: 3, currentQuantity: 2, discountedTotalSet: { shopMoney: { amount: '90', currencyCode: 'CHF' } } })]), mkIo());
+  ist('Menge: currentQuantity 2 von 3 → 2 gedruckt, Erlös anteilig 60.00', [q1.items[0].quantity, q1.positionenChf, q1.entfernt], [2, 60, 0]);
+  const q2 = await planeBestellung(bestellung([zeile({ quantity: 1, currentQuantity: 0 })]), mkIo());
+  ist('Menge: currentQuantity 0 → Position übergangen, kein Artikel, kein Befund, entfernt = 1, pod = 0', [q2.items.length, q2.befunde, q2.entfernt, q2.pod, q2.erloesChf], [0, [], 1, 0, null]);
+  const q3 = await planeBestellung(bestellung([zeile({ quantity: 1, currentQuantity: 0, customAttributes: [A('🖼️ Druckdatei (front)', 'https://evil.example.com/x.png')] })]), mkIo());
+  ist('…auch mit schlechter Druckdatei: eine entfernte Position löst keinen Befund aus', q3.befunde, []);
+  const q4 = await planeBestellung(bestellung([zeile({ quantity: 0 }), zeile({ id: 'gid://shopify/LineItem/9002', quantity: 'x' })]), mkIo());
+  ist('Menge: ohne brauchbare Zahlen bleibt es bei 1 (wie bisher)', q4.items.map((i) => i.quantity), [1, 1]);
+  const q5 = await planeBestellung(bestellung([zeile({ quantity: 2, currentQuantity: 5 })]), mkIo());
+  ist('Menge: currentQuantity über der bestellten Menge (unsinnig) → gilt, Erlös nicht erhöht', [q5.items[0].quantity, q5.positionenChf], [5, 29.9]);
+}
+// Karte des Editors v6 gegen die gekaufte SKU (GL1 Fund 11)
+{
+  const mit = (extra) => zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, ...extra })] });
+  const ok1 = await plane([mit({ m: 71, pv: 4025 })]);
+  ist('Karte nennt Produkt 71 und Variante 4025 wie die SKU 5599797_4025: kein Befund', ok1.befunde, []);
+  const v = await plane([mit({ m: 71, pv: 4026 })]);
+  ist('Karte nennt Variante 4026, gekauft wurde 4025: weicher Befund «karte-widerspruch» (Entwurf)', [arten(v.befunde), v.befunde[0].hart, /4026/.test(v.befunde[0].text), /4025/.test(v.befunde[0].text)], [['karte-widerspruch'], false, true, true]);
+  const m = await plane([mit({ m: 19, pv: 4025 })]);
+  ist('Karte nennt Produkt 19, die Variante gehört zu 71: weicher Befund «karte-widerspruch»', [arten(m.befunde), /Produkt 19/.test(m.befunde[0].text)], [['karte-widerspruch'], true]);
+  const s2 = await plane([mit({ m: '71', pv: '4025' })]);
+  ist('Zahlen als Text («71», «4025») gelten wie Zahlen', s2.befunde, []);
+  const x = await plane([mit({ pv: 'abc', m: null })]);
+  ist('Unlesbare Angaben in der Karte (kein Zahlenwert): kein Befund (sie sind optional)', x.befunde, []);
+  const n = await plane([zeile()]);
+  ist('Karte ohne pv und m (wie der Editor v5 es nicht kennt): kein Befund', n.befunde, []);
+}
+// Workflow: ein Zeitplan, Handstart standardmässig nur lesen, Einstellungen durchgereicht (GL1/GL2 Funde 2, 3, 9)
+{
+  const wf = fileURLToPath(new URL('../../.github/workflows/printful-sync.yml', import.meta.url));
+  if (existsSync(wf)) {
+    const t = readFileSync(wf, 'utf8');
+    const aktiv = t.split('\n').filter((l) => /^\s*-\s*cron:/.test(l));
+    ist('Workflow: höchstens EIN aktiver Zeitplan (Repo-Regel «Crons einzeln, max. 1×/Tag», SHARED-MEMORY Cron-Nulldiät)', aktiv.length <= 1, true);
+    ist('Workflow: der Handstart steht standardmässig auf «Nur testen» (ein Klick ohne Haken schreibt nichts)', /dry_run:[\s\S]*?default: true/.test(t), true);
+    for (const v of ['PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_STITCH_COLOR', 'PRINTFUL_DATEI_HOSTS', 'PRINTFUL_KI_MODELL', 'PRINTFUL_KI_KONTROLLE', 'PRINTFUL_AUTO_CONFIRM']) ist(`Workflow reicht ${v} durch`, new RegExp(v + ': \\$\\{\\{').test(t), true);
+    ist('Workflow: der Zeitplan schreibt nur mit der Freigabedatei', /EREIGNIS" = "schedule"[\s\S]*?PRINTFUL-SYNC-FREI\.txt/.test(t), true);
+  } else console.log('(Workflow-Datei nicht ausgecheckt → Workflow-Prüfungen übersprungen)');
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

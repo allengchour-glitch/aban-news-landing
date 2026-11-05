@@ -5,7 +5,7 @@
 // GESENDET wird (Entwurf anlegen, bestätigen, external_id, files[].type, options), welche Tags die Bestellung bekommt, was an Telegram geht und der Exit-Code.
 // Warum so: vorher prüfte ein Test nur per Regex den Quelltext; fünf von fünf Mutanten an der Platzierung überlebten. Lauf: /opt/node22/bin/node automation/printful_sync_test.mjs
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeSync } from 'node:fs';
+import { readFileSync, writeSync, rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const SELF = fileURLToPath(import.meta.url);
@@ -21,7 +21,7 @@ if (process.argv[2] === '--szenario') {
   if (sz.telegram) Object.assign(process.env, { TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c' });
   if (sz.ki && sz.ki !== 'aus') { process.env.PRINTFUL_KI_KONTROLLE = 'pflicht'; if (sz.ki !== 'ohne-schluessel') process.env.GEMINI_API_KEY = 'g'; }
   Object.assign(process.env, sz.env || {});
-  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0 };
+  const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '' };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   const st = { bestaetigt: false, ext: null, nr: 0 };
   const mk = (status, body, x = {}) => ({ ok: status >= 200 && status < 300, status, body: null, headers: { get: (k) => { const l = String(k).toLowerCase(); return x.header && x.header[l] !== undefined ? x.header[l] : (sz.retryAfter && l === 'retry-after' ? String(sz.retryAfter) : null); } },
@@ -44,7 +44,7 @@ if (process.argv[2] === '--szenario') {
       const b = JSON.parse(o.body), q = b.query;
       prot.api.push((/\/admin\/api\/([^/]+)\//.exec(url) || [])[1]);
       if (q.includes('orders(first')) {
-        prot.shop.push({ q: b.variables.q, n: b.variables.n, c: b.variables.c });
+        prot.shop.push({ q: b.variables.q, n: b.variables.n, c: b.variables.c }); prot.shopQuery = q;
         const seiten = sz.shopSeiten || [{ orders: sz.orders || [] }];
         const i = b.variables.c ? parseInt(String(b.variables.c).slice(1), 10) : 0, s = seiten[i] || { orders: [] };
         const weiter = s.weiter !== undefined ? s.weiter : i < seiten.length - 1;
@@ -52,13 +52,14 @@ if (process.argv[2] === '--szenario') {
       }
       if (q.includes('shop {')) return mk(200, { data: { shop: { name: 'x' } } });
       if (q.includes('tagsAdd')) {
+        prot.shopOps.push('tagsAdd');
         if (sz.tagFehler === 'http') return mk(500, {});
         const n = prot.tags.length; prot.tags.push({ id: b.variables.id, tags: b.variables.tags });
         if (sz.tagFehler === 'userErrors' && (sz.tagFehlerAb === undefined || n >= sz.tagFehlerAb)) return mk(200, { data: { tagsAdd: { userErrors: [{ message: 'kaputt' }] } } });
         if (sz.tagFehler === 'graphql') return mk(200, { errors: [{ message: 'Access denied' }] });
         return mk(200, { data: { tagsAdd: { userErrors: [] } } });
       }
-      if (q.includes('metafieldsSet')) { prot.mf.push(b.variables.mf[0]); return mk(200, { data: { metafieldsSet: { userErrors: sz.mfFehler ? [{ message: 'x' }] : [] } } }); }
+      if (q.includes('metafieldsSet')) { prot.shopOps.push('metafieldsSet'); prot.mf.push(b.variables.mf[0]); return mk(200, { data: { metafieldsSet: { userErrors: sz.mfFehler ? [{ message: 'x' }] : [] } } }); }
       return mk(200, { data: {} });
     }
     if (url.startsWith('https://api.telegram.org')) { prot.tg.push(JSON.parse(o.body).text); return sz.tgFehler ? mk(500, {}) : mk(200, { ok: true }); }
@@ -75,6 +76,12 @@ if (process.argv[2] === '--szenario') {
       if (spez.wirft) throw new Error('ECONNRESET');
       const status = spez.status || 200;
       if (status !== 200) return mk(status, {});
+      if (spez.strom) {                                   // ein Server, der den Range-Kopf ignoriert und die GANZE Datei in Stücken liefert: der Kleber darf nur den Anfang ziehen
+        const ganz = Buffer.concat([png(...(spez.px || [3000, 3000])), Buffer.alloc(spez.strom)]); let pos = 0;
+        const r = mk(200, {}, { bytes: ganz, header: { 'content-type': 'image/png' } });
+        r.body = { getReader: () => ({ read: async () => { if (pos >= ganz.length) return { done: true }; const teil = ganz.subarray(pos, pos + 16384); pos += teil.length; prot.dateiGezogen += teil.length; return { done: false, value: new Uint8Array(teil) }; }, cancel: async () => { prot.dateiAbgebrochen = true; } }) };
+        return r;
+      }
       return mk(200, {}, { bytes: spez.roh ? Buffer.from('<html>kein Bild</html>') : png(...(spez.px || [3000, 3000])), header: { 'content-type': spez.typ || 'image/png' } });
     }
     if (url.startsWith('https://api.printful.com')) {
@@ -110,7 +117,7 @@ if (process.argv[2] === '--szenario') {
         return mk(status, status === 200 ? { result: { id: 42, status: 'draft' } } : { error: { message: pr.meldung || 'fehlgeschlagen' } });
       }
       if ((r = /^\/orders\/(\d+)\/confirm$/.exec(p)) && m === 'POST') {
-        prot.confirms.push(p); const c = sz.confirm || {};
+        prot.confirms.push(p); const c = sz.confirmFolge ? folge(sz.confirmFolge, prot.confirms.length - 1) : (sz.confirm || {});
         if (c.wirft) throw new Error(c.wirft);
         if (c.status && c.status !== 200) { if (c.trotzdem) st.bestaetigt = true; return mk(c.status, { error: { message: c.meldung || 'abgelehnt' } }); }
         st.bestaetigt = true; return mk(200, { result: { id: 42, status: 'pending' } });
@@ -335,7 +342,7 @@ for (const [name, sz, soll] of [
   // Tag-Fehler
   for (const [name, f] of [['userErrors', 'userErrors'], ['HTTP 500', 'http'], ['GraphQL-Fehler', 'graphql']]) {
     const t = lauf(sz1([zeile()], { tagFehler: f }));
-    ist(`Markieren scheitert (${name}): Auftrag angelegt, aber NICHT bestätigt, Fehler gemeldet, Exit 1; es bleibt bei EINEM Auftrag`, [t.prot.posts.length, t.prot.confirms.length, t.prot.exitCode, t.prot.err.some((x) => /Tag\/Metafeld nicht gesetzt/.test(x))], [1, 0, 1, true]);
+    ist(`Markieren scheitert (${name}): Auftrag angelegt, aber NICHT bestätigt, Fehler gemeldet, Exit 1; es bleibt bei EINEM Auftrag`, [t.prot.posts.length, t.prot.confirms.length, t.prot.exitCode, t.prot.err.some((x) => /Metafeld\/Tag nicht gesetzt/.test(x))], [1, 0, 1, true]);
   }
   const mf = lauf(sz1([zeile()], { mfFehler: true }));
   ist('Metafeld scheitert (userErrors): wie ein Tag-Fehler, nicht bestätigt, Exit 1', [mf.prot.confirms.length, mf.prot.exitCode], [0, 1]);
@@ -371,7 +378,7 @@ for (const [name, sz, soll] of [
   const df = lauf(sz1([zeile()], { entwurf: { items: [{ files: [{ type: 'default', status: 'failed', warning: 'Image resolution too low' }, { type: 'preview', status: 'ok' }] }] }, telegram: true }));
   ist('Printful lehnt die Datei ab (status failed + Warnung): Entwurf, Befund «datei-abgelehnt» mit dem Text, nicht bestätigt', [bestaetigt(df), tags(df).includes('printful-review-datei-abgelehnt'), /Image resolution too low/.test(df.prot.tg[0])], [false, true, true]);
   const dw = lauf(sz1([zeile()], { entwurf: { items: [{ files: [{ type: 'default', status: 'waiting' }] }] } }));
-  ist('Dateien bleiben «waiting» (nach vier Lesungen): Befund «datei-wartet», nicht bestätigt', [bestaetigt(dw), tags(dw).includes('printful-review-datei-wartet'), dw.prot.leseVor], [false, true, 4]);
+  ist('Dateien bleiben «waiting» (nach sieben Lesungen, rund 2 Minuten): Befund «datei-wartet», nicht bestätigt', [bestaetigt(dw), tags(dw).includes('printful-review-datei-wartet'), dw.prot.leseVor], [false, true, 7]);
   const dw2 = lauf(sz1([zeile()], { entwurfFolge: [{ items: [{ files: [{ type: 'default', status: 'waiting' }] }] }, { items: [{ files: [{ type: 'default', status: 'waiting' }] }] }, {}] }));
   ist('Dateien erst «waiting», dann ok: nachgelesen (drei Lesungen), bestätigt', [dw2.prot.leseVor, bestaetigt(dw2)], [3, true]);
   const verlust = lauf(sz1([zeile({ discountedTotalSet: { shopMoney: { amount: '12.90', currencyCode: 'CHF' } } })], { entwurf: { costs: { currency: 'USD', subtotal: '19.00', shipping: '10.00', tax: '2.35', vat: '0.00', total: '31.35' } }, telegram: true }));
@@ -379,8 +386,10 @@ for (const [name, sz, soll] of [
   const knapp = lauf(sz1([zeile({ discountedTotalSet: { shopMoney: { amount: '29.90', currencyCode: 'CHF' } } })], { entwurf: { costs: { currency: 'USD', subtotal: '7.75', shipping: '10.49', tax: '1.47', vat: '0.00', total: '19.71' } } }));
   ist('Echte Zahlen des Auftrags 183834327 (19.71 USD inkl. 1.47 Steuer) gegen 29.90 CHF: Gewinn → bestätigt', bestaetigt(knapp), true);
   const wenig = { discountedTotalSet: { shopMoney: { amount: '21.90', currencyCode: 'CHF' } } }, kost = { costs: { currency: 'USD', subtotal: '7.75', shipping: '10.49', tax: '1.47', vat: '0.00', total: '19.71' } };
-  const o0 = lauf(sz1([zeile(wenig)], { entwurf: kost }));
-  ist('21.90 CHF Erlös gegen dieselben Kosten: Netto etwa 2.80 CHF, kein Verlust → bestätigt', bestaetigt(o0), true);
+  const o0 = lauf(sz1([zeile(wenig)], { entwurf: kost, env: { PRINTFUL_MIN_NETTO_CHF: '0' } }));
+  ist('21.90 CHF Erlös gegen dieselben Kosten: Netto etwa 2.80 CHF, kein Verlust, Mindestgewinn ausdrücklich 0 → bestätigt', bestaetigt(o0), true);
+  const o4 = lauf(sz1([zeile(wenig)], { entwurf: kost, telegram: true }));
+  ist('Vorgabe des Mindestgewinns ist 4 CHF (Ziel der Preisformel): dasselbe Beispiel ohne Einstellung → Entwurf «kosten», Meldung «Gewinn unter dem Mindestgewinn»', [bestaetigt(o4), tags(o4).includes('printful-review-kosten'), /Gewinn unter dem Mindestgewinn/.test(o4.prot.tg[0])], [false, true, true]);
   const minn = lauf(sz1([zeile(wenig)], { entwurf: kost, env: { PRINTFUL_MIN_NETTO_CHF: '4' } }));
   ist('PRINTFUL_MIN_NETTO_CHF=4 (Ziel der Preisformel): dasselbe Beispiel → Entwurf «kosten», nicht bestätigt', [bestaetigt(minn), tags(minn).includes('printful-review-kosten')], [false, true]);
   const eur = lauf(sz1([zeile({ discountedTotalSet: { shopMoney: { amount: '29.90', currencyCode: 'EUR' } } })]));
@@ -388,7 +397,7 @@ for (const [name, sz, soll] of [
   const ohneK = lauf(sz1([zeile({ discountedTotalSet: null })]));
   ist('Erlös fehlt im Shopify-Ergebnis: «kosten-unbekannt», nicht bestätigt', [bestaetigt(ohneK), tags(ohneK).includes('printful-review-kosten-unbekannt')], [false, true]);
   const keine = lauf(sz1([zeile()], { entwurf: { costs: null } }));
-  ist('Printful nennt keine Kosten (auch nach Wiederholen): «kosten-unbekannt», nicht bestätigt', [bestaetigt(keine), tags(keine).includes('printful-review-kosten-unbekannt'), keine.prot.leseVor], [false, true, 4]);
+  ist('Printful nennt keine Kosten (auch nach Wiederholen): «kosten-unbekannt», nicht bestätigt', [bestaetigt(keine), tags(keine).includes('printful-review-kosten-unbekannt'), keine.prot.leseVor], [false, true, 7]);
   const rechnet = lauf(sz1([zeile()], { entwurfFolge: [{ costs: { currency: 'USD', total: '1', calculation_status: 'calculating' } }, { costs: { currency: 'USD', total: '1', calculation_status: 'calculating' } }, {}] }));
   ist('Kosten erst «calculating», dann fertig: nachgelesen, bestätigt', [rechnet.prot.leseVor, bestaetigt(rechnet)], [3, true]);
 }
@@ -469,6 +478,147 @@ for (const [name, sz, soll] of [
   ist('Shopify-Abfragen laufen auf der unterstützten API-Version 2026-01 (die alte Fassung nutzte das abgelaufene 2025-01)', [...new Set(man.prot.api)], ['2026-01']);
   const sum = lauf(sz1([zeile()], { env: { GITHUB_STEP_SUMMARY: '/dev/null' } }));
   ist('Zusammenfassung ohne Fehler: Zeile «Printful-Sync fertig: 1 bestätigt …», Exit 0', [/^Printful-Sync fertig: 1 bestätigt, 0 Entwurf\/Review, 0 ohne Auftrag/.test(sum.prot.log[sum.prot.log.length - 1]), sum.prot.exitCode], [true, 0]);
+}
+
+// ═════════════════════════════════════════════════════════════ NEU (Gegenleser, Runde 2, 05.11.2026)
+// Fund 1 (beide Gegenleser): erst das Metafeld, das Tag ZULETZT
+{
+  const mf = lauf(sz1([zeile()], { mfFehler: true }));
+  ist('Metafeld scheitert: das Tag printful-synced wird gar nicht erst gesetzt (sonst bliebe der Entwurf ohne Prüfer liegen), nicht bestätigt, Exit 1', [tags(mf), mf.prot.confirms.length, mf.prot.exitCode], [[], 0, 1]);
+  ist('…und die Meldung verspricht nur, was stimmt: der nächste Lauf findet den Entwurf über external_id', mf.prot.err.some((x) => /findet ihn über external_id LXT1 und markiert ihn nach/.test(x)), true);
+  const reihe = lauf(sz1([zeile()]));
+  ist('Reihenfolge der Schreibzugriffe: Metafeld printful.order_id VOR dem Tag printful-synced (Aufruf-Reihenfolge am Shop)', reihe.prot.shopOps, ['metafieldsSet', 'tagsAdd', 'tagsAdd']);
+  const nachlauf = lauf(sz1([zeile()], { lookup: [{ status: 200, order: { id: 42, status: 'draft' } }] }));
+  ist('Zweiter Lauf nach dem Metafeld-Fehler (der Entwurf existiert): kein zweiter Auftrag, Metafeld UND Tag werden nachgeholt, Entwurf bleibt zur Prüfung', [nachlauf.prot.posts.length, nachlauf.prot.mf.map((m) => m.value), tags(nachlauf).includes('printful-synced'), nachlauf.prot.confirms.length], [0, ['42'], true, 0]);
+}
+// Fund 4 (GL1): Kosten von null oder darunter geben nie frei
+{
+  for (const [n, costs] of [['total 0.00', { currency: 'USD', total: '0.00', tax: '0.00' }], ['total negativ', { currency: 'USD', total: '-5.00' }], ['Steuer grösser als die Summe', { currency: 'USD', total: '12.70', tax: '20.00' }], ['Steuer gleich Summe', { currency: 'USD', total: '12.70', tax: '12.70' }]]) {
+    const e = lauf(sz1([zeile()], { entwurf: { costs }, telegram: true }));
+    ist(`Kosten ${n}: NICHT bestätigt, Befund «kosten-unbekannt»`, [bestaetigt(e), tags(e).includes('printful-review-kosten-unbekannt')], [false, true]);
+  }
+}
+// Fund 1 (GL2): der bezahlte Versand gehört auf die Erlösseite
+{
+  const versand = { currentShippingPriceSet: { shopMoney: { amount: '7.0', currencyCode: 'CHF' } } };
+  const kosten1033 = { costs: { currency: 'USD', subtotal: '2.34', shipping: '15.90', tax: '1.47', vat: '0.00', total: '19.71' } };   // echte Zahlen des Auftrags 183834327 (#1033)
+  const pos = (betrag) => zeile({ discountedTotalSet: { shopMoney: { amount: betrag, currencyCode: 'CHF' } } });
+  const mit = lauf(sz1([pos('16.83')], { entwurf: kosten1033, order: versand, telegram: true }));
+  ist('#1033 (Positionen 16.83 CHF + 7.00 CHF bezahlter Versand = 23.83 CHF, Kosten 19.71 USD inkl. 1.47 Steuer): netto +4.51 CHF, über dem Mindestgewinn 4 → bestätigt', [bestaetigt(mit), hatReview(mit)], [true, false]);
+  const ohne = lauf(sz1([pos('16.83')], { entwurf: kosten1033, telegram: true }));
+  ist('…derselbe Auftrag OHNE Versand auf der Erlösseite (Fehler vor der Korrektur): netto -1.72 CHF → Entwurf «kosten» (Gegenprobe, dass der Versand wirkt)', [bestaetigt(ohne), tags(ohne).includes('printful-review-kosten'), /-1\.72 CHF/.test(ohne.prot.tg[0])], [false, true, true]);
+  const frei = lauf(sz1([pos('16.83')], { entwurf: kosten1033, order: { currentShippingPriceSet: { shopMoney: { amount: '0.0', currencyCode: 'CHF' } } } }));
+  ist('Gratisversand (0.0): kein Versandanteil, derselbe Auftrag bleibt Entwurf', bestaetigt(frei), false);
+  const misch = lauf(sz1([pos('16.83'), zeile({ id: 'gid://shopify/LineItem/9002', title: 'Lampe', sku: 'CJ-1', variant: { sku: 'CJ-1' }, product: { productType: 'x', tags: ['cj'], metafield: null }, customAttributes: [], discountedTotalSet: { shopMoney: { amount: '16.83', currencyCode: 'CHF' } } })], { entwurf: kosten1033, order: versand, telegram: true }));
+  ist('Mischbestellung (Sticker 16.83 + CJ-Lampe 16.83, Versand 7.00): nur der halbe Versand (3.50) zählt zum Druckauftrag → netto +0.0 unter dem Mindestgewinn → Entwurf «kosten»', [bestaetigt(misch), tags(misch).includes('printful-review-kosten')], [false, true]);
+  const eur = lauf(sz1([pos('16.83')], { entwurf: kosten1033, order: { currentShippingPriceSet: { shopMoney: { amount: '7.0', currencyCode: 'EUR' } } } }));
+  ist('Versand in EUR: wird nicht geraten, kein Versandanteil (vorsichtig) → Entwurf', bestaetigt(eur), false);
+}
+// Fund 9 (GL2): entfernte und erstattete Einheiten werden nicht gedruckt
+{
+  const teil = lauf(sz1([zeile({ quantity: 3, currentQuantity: 2, discountedTotalSet: { shopMoney: { amount: '89.70', currencyCode: 'CHF' } } })]));
+  ist('Drei bestellt, eine nachträglich entfernt (currentQuantity 2): an Printful gehen 2', teil.prot.posts[0].body.items[0].quantity, 2);
+  const weg = lauf(sz1([zeile({ quantity: 1, currentQuantity: 0 })], { telegram: true }));
+  ist('Einzige Editor-Position vollständig entfernt (currentQuantity 0): die Bestellung ist kein Kandidat mehr (Log «Keine offenen POD-Bestellungen»), kein Printful-Aufruf, keine Tags, keine Meldung, Exit 0', [weg.prot.posts.length, weg.prot.pf.length, weg.prot.tags.length, weg.prot.tg.length, weg.prot.log.some((l) => /Keine offenen POD-Bestellungen/.test(l)), weg.prot.exitCode], [0, 0, 0, 0, true, 0]);
+  const halb = lauf(sz1([zeile({ currentQuantity: 0 }), zeile({ id: 'gid://shopify/LineItem/9005', title: 'Tasse' })]));
+  ist('Zwei Editor-Positionen, eine entfernt: nur die andere geht an Printful', [halb.prot.posts[0].body.items.length, halb.prot.posts[0].body.items[0].external_id], [1, '9005']);
+  const q = lauf(sz1([zeile()]));
+  ist('Die Shopify-Abfrage liest currentQuantity und den Versand der Bestellung', [/currentQuantity/.test(q.prot.shopQuery), /currentShippingPriceSet/.test(q.prot.shopQuery)], [true, true]);
+}
+// Fund 10 (GL2): external_id kollidiert nicht
+{
+  const a = lauf(sz1([zeile()], { order: { name: '#1034-1', id: 'gid://shopify/Order/111' } })), b = lauf(sz1([zeile()], { order: { name: '#10341', id: 'gid://shopify/Order/222' } }));
+  ist('Bestellnamen «#1034-1» und «#10341» ergeben zwei verschiedene external_id (früher beide LX10341)', [a.prot.posts[0].body.external_id, b.prot.posts[0].body.external_id], ['LX10341N111', 'LX10341']);
+  const n = lauf(sz1([zeile()], { order: { name: '#1034', id: 'gid://shopify/Order/333' } }));
+  ist('Der Normalfall «#1034» bleibt «LX1034» (lesbar im Printful-Dashboard)', n.prot.posts[0].body.external_id, 'LX1034');
+}
+// Fund 5 (GL1): ein 4xx beim Anlegen wird erst nachgefragt, dann gebucht
+{
+  const z = lauf(sz1([zeile()], { post: [{ status: 400, meldung: 'duplicate external_id' }], lookup: [{ status: 404 }, { status: 200, order: { status: 'pending' } }], telegram: true }));
+  ist('POST /orders → 400, die Nachfrage findet den Auftrag (zweiter Lauf legte ihn an): KEIN harter Befund «printful-abgelehnt», Tag printful-synced + Metafeld nachgetragen', [tags(z).includes('printful-review-printful-abgelehnt'), tags(z).includes('printful-synced'), z.prot.mf.map((m) => m.value), z.prot.posts.length], [false, true, ['777'], 1]);
+  const z5 = lauf(sz1([zeile()], { post: [{ status: 400, meldung: 'Invalid placement' }], lookup: [{ status: 404 }, { status: 500 }] }));
+  ist('POST /orders → 400, die Nachfrage ist nicht beantwortbar (500): kein harter Befund auf Verdacht, Versuchszähler, Exit 1', [tags(z5), z5.prot.exitCode], [['printful-versuch-1'], 1]);
+  const z4 = lauf(sz1([zeile()], { post: [{ status: 400, meldung: 'Invalid placement' }], lookup: [{ status: 404 }, { status: 404 }], telegram: true }));
+  ist('POST /orders → 400 und es gibt keinen Auftrag: harter Befund wie bisher', [tags(z4).includes('printful-review-printful-abgelehnt'), z4.prot.lookups], [true, 2]);
+}
+// Fund 6/2: die Wartezeit reicht für langsame Dateien, der Text nennt sie ehrlich
+{
+  const warte = (n) => Array.from({ length: n }, () => ({ items: [{ files: [{ type: 'default', status: 'waiting' }] }] }));
+  const sechs = lauf(sz1([zeile()], { entwurfFolge: [...warte(5), {}] }));
+  ist('Das Protokoll hält fest, wie lange Printful brauchte («Dateien und Kosten fertig nach N s Wartezeit»)', sechs.prot.log.some((l) => /^#T1: Printful-Entwurf #42: Dateien und Kosten fertig nach \d+ s Wartezeit/.test(l)), true);
+  ist('Dateien erst nach fünf Lesungen fertig (früher nach vier aufgegeben): bestätigt, sechs Lesungen', [bestaetigt(sechs), sechs.prot.leseVor, hatReview(sechs)], [true, 6, false]);
+  const nie = lauf(sz1([zeile()], { entwurf: { items: [{ files: [{ type: 'default', status: 'waiting' }] }] }, telegram: true }));
+  ist('Dateien nie fertig: die Meldung nennt die Wartezeit in Sekunden (nicht «mehrere Minuten»), den Weg (Dashboard) und bleibt Entwurf', [/Sekunden Wartezeit noch nicht fertig geprüft/.test(nie.prot.tg[0]), /Printful-Dashboard/.test(nie.prot.tg[0]), /mehreren Minuten/.test(nie.prot.tg[0])], [true, true, false]);
+  const kn = lauf(sz1([zeile()], { entwurf: { costs: null }, telegram: true }));
+  ist('Kosten nie fertig: Befund «kosten-unbekannt» mit der Wartezeit im Text', /Sekunden Wartezeit/.test(kn.prot.tg[0]), true);
+  const rl = lauf(sz1([zeile()], { entwurf: { items: [{ files: [{ type: 'default', status: 'waiting' }] }] }, env: { RUN_LIMIT_MS: '1200', PF_PAUSE_MS: '300' } }));
+  ist('Das Zeitlimit des Laufs gilt auch beim Warten (Limit 1,2 s, Pausen 0,6 s, 1,2 s …): die Bestellung wird bearbeitet, aber nicht mehr alle sieben Lesungen abgewartet', [rl.prot.posts.length, rl.prot.leseVor >= 1 && rl.prot.leseVor < 7], [1, true]);
+}
+// Fund 11 (GL2): 429 beim Bestätigen ist vorübergehend
+{
+  const e = lauf(sz1([zeile()], { confirmFolge: [{ status: 429, meldung: 'Too many requests' }, {}], telegram: true }));
+  ist('Bestätigen: HTTP 429, nach der Pause erneut → bestätigt (der gedrosselte Aufruf wurde nicht ausgeführt)', [e.prot.confirms.length, tags(e).includes('printful-confirmed'), hatReview(e)], [2, true, false]);
+  const z = lauf(sz1([zeile()], { confirmFolge: [{ status: 429 }, { status: 429 }], telegram: true }));
+  ist('Bestätigen: zweimal 429 und der Auftrag bleibt Entwurf: Befund «nicht-bestaetigt» mit dem Hinweis «Bestätigen unklar», NICHT «lehnt ab»', [z.prot.confirms.length, tags(z).includes('printful-review-nicht-bestaetigt'), tags(z).includes('printful-review-bestaetigen-abgelehnt'), tags(z).includes('printful-confirmed')], [2, true, false, false]);
+}
+// Fund 6 (GL2): der Trockenlauf zeigt, was er täte
+{
+  const ds = '/tmp/ps_summary_' + process.pid + '.md';
+  const dry = lauf(sz1([zeile()], { telegram: true, env: { DRY_RUN: '1', GITHUB_STEP_SUMMARY: ds } }));
+  const text = readFileSync(ds, 'utf8'); try { rmSync(ds); } catch { /* egal */ }
+  ist('Trockenlauf: die Zusammenfassung zählt die anstehende Bestellung und nennt sie (Nummer, external_id, würde angelegt und bestätigt)', [/1 Bestellung\(en\) würden angelegt/.test(dry.prot.log[dry.prot.log.length - 1]), /- #T1: 1 Artikel, external_id LXT1: würde als Entwurf angelegt und danach bestätigt/.test(text)], [true, true]);
+  const dry2 = lauf(sz1([zeile()], { entwurf: {}, telegram: true, env: { DRY_RUN: '1', PRINTFUL_AUTO_CONFIRM: '0' } }));
+  ist('Trockenlauf mit PRINTFUL_AUTO_CONFIRM=0: «NICHT bestätigt» steht im Log', dry2.prot.log.some((l) => /NICHT bestätigt/.test(l)), true);
+}
+// Fund 8 (GL1): das Repo ist öffentlich, Log und Zusammenfassung tragen nur Nummer und Art
+{
+  const ds = '/tmp/ps_summary2_' + process.pid + '.md';
+  const geheim = 'Haus-Foto von Frau Muster';
+  const fail = lauf(sz1([zeile()], { ki: 'fail', telegram: true, env: { GITHUB_STEP_SUMMARY: ds } }));
+  const text = readFileSync(ds, 'utf8'); try { rmSync(ds); } catch { /* egal */ }
+  const log = [...fail.prot.log, ...fail.prot.warn, ...fail.prot.err].join('\n') + '\n' + text;
+  ist('KI-Befund (beschreibt das Kundenbild): im Telegram-Text vollständig, im Log und in der Zusammenfassung nur Nummer und Art', [/FAIL/.test(fail.prot.tg[0]), /leer/.test(fail.prot.tg[0]), /#T1: \[kontrolle-fail\]/.test(text), /leer/.test(log)], [true, true, true, false]);
+  const p400 = lauf(sz1([zeile()], { post: [{ status: 400, meldung: geheim }], telegram: true }));
+  ist('Fehlertext von Printful (kann Adressdaten enthalten): nur im Telegram-Text, nicht im Log', [p400.prot.tg.some((t) => t.includes(geheim)), [...p400.prot.log, ...p400.prot.warn, ...p400.prot.err].some((t) => t.includes(geheim))], [true, false]);
+  const p503 = lauf(sz1([zeile()], { post: [{ status: 503, meldung: geheim }], lookup: [{ status: 404 }], telegram: true }));
+  ist('Technischer Fehler mit Printful-Text: Log öffentlich ohne den Text, Telegram-Fehlermeldung mit', [[...p503.prot.log, ...p503.prot.warn, ...p503.prot.err].some((t) => t.includes(geheim)), p503.prot.tg.some((t) => t.includes(geheim))], [false, true]);
+  const dry = lauf(sz1([zeile({ sku: 'kaputt', variant: { sku: 'k' } })], { telegram: true, env: { DRY_RUN: '1' } }));
+  ist('Trockenlauf mit hartem Befund: «[DRY] Telegram würde senden» nennt keinen Befundtext (der Zeitplan ohne Freigabedatei läuft öffentlich), die Art steht in der Warnung', [dry.prot.log.some((l) => /^\[DRY\] Telegram würde senden/.test(l)), [...dry.prot.log, ...dry.prot.warn].some((l) => /SKU ohne Printful-Variante/.test(l)), dry.prot.warn.some((l) => /ohne-variante/.test(l))], [true, false, true]);
+  const detail = lauf(sz1([zeile()], { ki: 'fail', telegram: true, env: { PRINTFUL_LOG_DETAIL: '1', DRY_RUN: '1' } }));
+  ist('PRINTFUL_LOG_DETAIL=1 (eigener Rechner): die Befundtexte stehen auch im Log', detail.prot.log.some((l) => /FAIL/.test(l)), true);
+}
+// Fund 11 (GL2) / Mutant «state_code»: das Bundesland geht mit
+{
+  const e = lauf(sz1([zeile()], { order: { shippingAddress: { name: 'T', address1: 'x', city: 'Los Angeles', countryCodeV2: 'US', provinceCode: 'CA', zip: '90001', phone: '+1 555 0100' } } }));
+  ist('Empfänger: state_code (Bundesland), Telefon und E-Mail gehen an Printful', [e.prot.posts[0].body.recipient.state_code, e.prot.posts[0].body.recipient.phone, e.prot.posts[0].body.recipient.email, e.prot.posts[0].body.recipient.country_code], ['CA', '+1 555 0100', 'a@b.ch', 'US']);
+}
+// Mutant «Telegram-Text ohne Maskieren des Bestellnamens»
+{
+  const e = lauf(sz1([zeile({ sku: 'kaputt', variant: { sku: 'k' } })], { order: { name: '#<b>X' }, telegram: true }));
+  ist('Telegram: der Bestellname (Fremdtext) wird maskiert', [/<b>X/.test(e.prot.tg[0]), /&lt;b&gt;X/.test(e.prot.tg[0])], [false, true]);
+}
+// Mutant «holeKopf, Streaming-Pfad»: ein Server ignoriert den Range-Kopf und liefert die ganze Datei
+{
+  const e = lauf(sz1([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', V('v')), karte6(['front'], { dt: { front: 'default' } })] })], { telegram: true, datei: { px: [600, 800], strom: 400000 } }));
+  ist('Server ignoriert Range und liefert 400 KB: nur der Anfang wird gezogen (höchstens 64 KB plus ein Stück), der Rest abgebrochen, die Pixelgrösse stimmt (600×800 → «aufloesung»)', [e.prot.dateiGezogen <= 65536 + 16384, e.prot.dateiAbgebrochen, /600×800 px ergeben auf dem Produkt etwa 50 dpi/.test(e.prot.tg[0])], [true, true, true]);
+}
+// Fund 3 (GL2): Nahtfarbe bei Cut-and-Sew-Produkten: ohne Vorgabe des Besitzers Entwurf, mit Vorgabe gesendet
+{
+  const jacke = (extra = {}) => sz1([zeile({ sku: '5_18730', variant: { sku: '5_18730' }, product: { productType: 'Jacken', tags: ['wunschdesign'], metafield: null }, customAttributes: [A('🖼️ Druckdatei (front)', V('v')), karte6(['front'], { dt: { front: 'default' } })] })], { vid: 18730, variant: [{ kat: 388 }], ...extra });
+  const o = lauf(jacke({ telegram: true }));
+  ist('Kapuzenjacke (Option stitch_color) ohne Vorgabe: Entwurf, Befund «optionen», die Meldung nennt stitch_color', [bestaetigt(o), tags(o).includes('printful-review-optionen'), /stitch_color/.test(o.prot.tg[0])], [false, true, true]);
+  const m = lauf(jacke({ env: { PRINTFUL_STITCH_COLOR: 'white' } }));
+  ist('…mit PRINTFUL_STITCH_COLOR=white: options [{stitch_color: white}] gesendet, bestätigt', [m.prot.posts[0].body.items[0].options, bestaetigt(m), hatReview(m)], [[{ id: 'stitch_color', value: 'white' }], true, false]);
+  const f = lauf(jacke({ telegram: true, env: { PRINTFUL_STITCH_COLOR: 'rot' } }));
+  ist('…mit einem Wert, den das Produkt nicht kennt («rot»): Entwurf, nichts gesendet, Meldung nennt die Option', [bestaetigt(f), 'options' in f.prot.posts[0].body.items[0], /stitch_color/.test(f.prot.tg[0])], [false, false, true]);
+}
+// Fund 7 (GL1): Stickerei wird am Platzierungs-TYP erkannt, nicht an der Datei-ID
+{
+  const kappe = (attr, extra = {}) => sz1([zeile({ sku: '5_7854', variant: { sku: '5_7854' }, product: { productType: 'Kappen', tags: ['wunschdesign'], metafield: null }, customAttributes: attr })], { vid: 7854, variant: [{ kat: 206 }], telegram: true, ...extra });
+  const a = lauf(kappe([A('🖼️ Druckdatei (embroidery_front)', V('v')), karte6(['embroidery_front'])]));
+  ist('Kappe, Stickerei «embroidery_front» ohne Garnfarben (früher: kein Befund, BESTÄTIGT): Entwurf, Befund «optionen» (der Katalog führt dort keine Garnfarben-Option)', [bestaetigt(a), tags(a).includes('printful-review-optionen'), /Garnfarben-Option/.test(a.prot.tg[0])], [false, true, true]);
+  const b = lauf(kappe([A('🖼️ Druckdatei (default)', V('v')), karte6(['default'])]));
+  ist('Kappe, Datei-ID «default» (= Typ embroidery_front): ebenso Entwurf «optionen», und KEIN Auflösungsbefund aus Zufall (Stickerei hat keine Pixelgrösse)', [bestaetigt(b), tags(b).includes('printful-review-optionen'), tags(b).includes('printful-review-aufloesung')], [false, true, false]);
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);
