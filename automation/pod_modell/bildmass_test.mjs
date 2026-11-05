@@ -42,5 +42,35 @@ const fehl = await main({ URLS: join(dir, 'u.txt'), OUT: join(dir, 'm2.json'), P
 ist('HTTP 404 wird als Fehler vermerkt, nicht als Grösse', fehl['https://files.cdn.printful.com/x.jpg'].fehler, 'HTTP 404');
 const html = await main({ URLS: join(dir, 'u.txt'), OUT: join(dir, 'm3.json'), PAUSE_MS: '0' }, async () => ({ status: 200, headers: { get: () => null }, arrayBuffer: async () => new TextEncoder().encode('<html>x</html>').buffer }), async () => {});
 ist('Antwort ist kein Bild: Fehler, keine Grösse', html['https://files.cdn.printful.com/x.jpg'].fehler, 'Format nicht erkannt');
+// ── mehr Adressen als die Grenze je Lauf (Fund Gegenleser 1: .slice(0, 400) stand VOR der Prüfung auf Gemessenes, die Adressen ab 401 wurden nie erreicht)
+{
+  const viele = Array.from({ length: 450 }, (_, i) => `https://files.cdn.printful.com/p/${i}.jpg`);
+  writeFileSync(join(dir, 'viele.txt'), viele.join('\n') + '\nhttps://evil.example/z.jpg\n');
+  const o = join(dir, 'viele.json'); const gefragt = new Set(); let n = 0;
+  const ff = async (url) => { gefragt.add(url); n++; return { status: 206, headers: { get: () => null }, arrayBuffer: async () => jpeg(700, 1000).buffer }; };
+  await main({ URLS: join(dir, 'viele.txt'), OUT: o, PAUSE_MS: '0' }, ff, async () => {});
+  ist('Lauf 1: höchstens 400 Anfragen', n, 400);
+  n = 0; const e2 = await main({ URLS: join(dir, 'viele.txt'), OUT: o, PAUSE_MS: '0' }, ff, async () => {});
+  ist('Lauf 2: die übrigen 50 werden gemessen (nicht 0)', n, 50);
+  ist('… danach haben alle 450 eine Grösse, die fremde Adresse nie eine Anfrage', [viele.filter((u) => e2[u]?.w).length, gefragt.has('https://evil.example/z.jpg')], [450, false]);
+  n = 0; await main({ URLS: join(dir, 'viele.txt'), OUT: o, PAUSE_MS: '0' }, ff, async () => {});
+  ist('Lauf 3: nichts mehr zu messen', n, 0);
+}
+{ // früher Gescheitertes hält die übrigen nicht auf; MAX_PRO_LAUF wirkt
+  const urls = Array.from({ length: 6 }, (_, i) => `https://files.cdn.printful.com/q/${i}.jpg`);
+  writeFileSync(join(dir, 'q.txt'), urls.join('\n'));
+  const o = join(dir, 'q.json');
+  writeFileSync(o, JSON.stringify({ [urls[0]]: { fehler: 'HTTP 404' }, [urls[1]]: { fehler: 'HTTP 404' } }));
+  const reihe = []; const ff = async (url) => { reihe.push(url); return { status: 206, headers: { get: () => null }, arrayBuffer: async () => jpeg(700, 1000).buffer }; };
+  await main({ URLS: join(dir, 'q.txt'), OUT: o, PAUSE_MS: '0', MAX_PRO_LAUF: '3' }, ff, async () => {});
+  ist('MAX_PRO_LAUF=3: erst die nie versuchten (2 bis 4), die gescheiterten (0, 1) danach', reihe, urls.slice(2, 5));
+}
+{ // Weiterleitung wird nicht verfolgt (kein Sprung auf einen fremden Host)
+  writeFileSync(join(dir, 'w.txt'), 'https://files.cdn.printful.com/w.jpg');
+  let redirectArt = null;
+  const ff = async (url, o) => { redirectArt = o.redirect; return { status: 302, headers: { get: () => 'https://evil.example/x.jpg' }, arrayBuffer: async () => new ArrayBuffer(0) }; };
+  const e = await main({ URLS: join(dir, 'w.txt'), OUT: join(dir, 'w.json'), PAUSE_MS: '0' }, ff, async () => {});
+  ist('Weiterleitung: Anfrage mit redirect:manual, Antwort 302 als Fehler vermerkt', [redirectArt, /Weiterleitung HTTP 302/.test(e['https://files.cdn.printful.com/w.jpg'].fehler)], ['manual', true]);
+}
 rmSync(dir, { recursive: true, force: true });   // keine Wegwerf-Ordner im Temp-Verzeichnis zurücklassen
 ende();

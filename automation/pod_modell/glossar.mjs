@@ -103,7 +103,17 @@ export const TITEL_FEST = Object.freeze({
   140: { titel: 'Strukturierte Cap mit geschlossener Rückseite', slug: 'strukturierte-cap-geschlossen' },
   683: 'Snap-Hülle für iPhone',
   214: 'Premium Kissen mit Allover-Druck',
+  616: { titel: 'Schlanke Leinwand', slug: 'schlanke-leinwand' },                    // «Thin Canvas»: 19 mm dick, «schlanker als normale Leinwände» (Printful-Text); «Dünne Leinwand» klang unglücklich (Gegenleser 05.11.)
+  1411: { titel: 'Leichtes stückgefärbtes Kapuzen-Sweatshirt für Jugendliche', slug: 'leichtes-kapuzen-sweatshirt-jugend' },   // die Regel ergab «Jugend stückgefärbtes leichtes Kapuzen-Sweatshirt»
 });
+
+/** Nomen, bei denen «gestrickt» im Namen schon steckt oder in ein Kompositum übergeht. */
+const STRICKTEILE = Object.freeze({ Pullover: { de: 'Strickpullover', g: 'm' }, 'Mütze': { de: 'Strickmütze', g: 'f' }, Strickjacke: { de: 'Strickjacke', g: 'f' } });
+
+/** Familie eines Printful-Modells: Handelsname ohne Marke (« | …») und ohne die Masseinheit in Klammern «(in)», «(cm)». Die Inch- und die Zentimeter-Fassung desselben Posters sind ein Produkt für den Kunden. */
+export function familienSchluessel(titelEn) {
+  return String(titelEn ?? '').split('|')[0].replace(/[’‘`´]/g, "'").toLowerCase().replace(/\s*\((in|cm|mm|inch|inches)\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+}
 
 const gross1 = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const ENDUNG = { m: 'er', f: 'e', n: 'es', pl: 'e' };
@@ -154,6 +164,9 @@ export function titelDe(k) {
     unbekannt.push(w); i++;
   }
   if (!nomen) { unbekannt.push('kein Nomen erkannt'); return { titel: null, quelle: 'glossar', unbekannt, entferntMarken: entfernt, masse }; }
+  // «gestrickt» bei einem Strickteil ist doppelt gemoppelt («gestrickte Strickjacke», «gestrickter Pullover»): beim Pullover wird daraus «Strickpullover», bei der Mütze «Strickmütze», bei der Strickjacke entfällt es.
+  const gestr = adj.findIndex((a) => a.de === 'gestrickt');
+  if (gestr >= 0 && STRICKTEILE[nomen.de]) { adj.splice(gestr, 1); nomen = STRICKTEILE[nomen.de]; }
   // Adjektive vor dem Nomen: veränderlich nach Geschlecht, Fremdwörter und Präfixe (Keramik-, Edelstahl-) bleiben
   const praefixe = adj.filter((a) => a.praefix).map((a) => a.de);
   const vor = adj.filter((a) => !a.praefix).map((a) => (a.var ? a.de : a.de + ENDUNG[nomen.g]));
@@ -202,7 +215,7 @@ export function handleAus(titelOhneSuffix, { nummer = null, schonVergeben = new 
 /** Ganze Namen, die nicht aus Einzelwörtern entstehen (Kleinschreibung). */
 export const FARBE_FEST = Object.freeze({
   'navy blazer': 'Marineblau', 'sport grey': 'Grau meliert', 'heather sport dark navy': 'Marineblau meliert', 'carbon grey': 'Hellgrau', 'dusty rose': 'Altrosa', 'carolina blue': 'Himmelblau',
-  'irish green': 'Grün', 'kelly green': 'Hellgrün', 'military green': 'Olivgrün', 'forest green': 'Waldgrün', 'indigo blue': 'Indigoblau', 'royal blue': 'Königsblau', 'team royal': 'Königsblau',
+  'irish green': 'Grün', 'kelly green': 'Grün', 'kelly': 'Grün', 'heather kelly': 'Grün meliert', 'washed kelly': 'Grün verwaschen', 'light denim': 'Helles Jeansblau', 'light washed denim': 'Helles Jeansblau verwaschen', 'light steel': 'Helles Stahlblau', 'military green': 'Olivgrün', 'forest green': 'Waldgrün', 'indigo blue': 'Indigoblau', 'royal blue': 'Königsblau', 'team royal': 'Königsblau',
   'team red': 'Rot', 'vintage black': 'Verwaschenes Schwarz', 'vintage white': 'Verwaschenes Weiss', 'dark chocolate': 'Dunkelbraun', 'golden yellow': 'Goldgelb', 'light blue': 'Hellblau', 'light pink': 'Hellrosa',
   'dark grey': 'Dunkelgrau', 'dark gray': 'Dunkelgrau', 'dark navy': 'Dunkles Marineblau', 'french navy': 'Marineblau', 'charcoal grey': 'Anthrazit', 'athletic heather': 'Grau meliert', 'midnight navy': 'Marineblau', 'dark blue': 'Dunkelblau', 'dark green': 'Dunkelgrün', 'dark heather': 'Dunkelgrau meliert',
   'multicam black': 'Camouflage Schwarz', 'multicam green': 'Camouflage Grün', 'natural': 'Natur', 'oyster': 'Beige', 'tan': 'Beige', 'bone': 'Cremeweiss', 'latte': 'Hellbraun', 'heliconia': 'Pink',
@@ -212,9 +225,17 @@ const BASISFARBE = Object.freeze({
   white: 'Weiss', black: 'Schwarz', grey: 'Grau', gray: 'Grau', blue: 'Blau', green: 'Grün', red: 'Rot', pink: 'Rosa', orange: 'Orange', purple: 'Lila', yellow: 'Gelb', brown: 'Braun',
   navy: 'Marineblau', royal: 'Königsblau', gold: 'Gold', silver: 'Silber', beige: 'Beige', khaki: 'Khaki', olive: 'Oliv', maroon: 'Weinrot', burgundy: 'Bordeaux', charcoal: 'Anthrazit', cream: 'Creme',
   ivory: 'Elfenbein', mint: 'Mint', teal: 'Petrol', turquoise: 'Türkis', lavender: 'Lavendel', lilac: 'Flieder', coral: 'Koralle', peach: 'Pfirsich', salmon: 'Lachs', lime: 'Limette', violet: 'Violett',
-  rose: 'Rosé', mustard: 'Senf', chocolate: 'Schokobraun', sage: 'Salbeigrün', emerald: 'Smaragdgrün', sapphire: 'Saphirblau', crimson: 'Karminrot', cardinal: 'Kardinalrot', mauve: 'Malve', oatmeal: 'Haferflocken', ecru: 'Ecru', jade: 'Jade', aqua: 'Aqua', steel: 'Stahlblau', espresso: 'Espresso', blush: 'Blush', sky: 'Himmelblau', sunset: 'Sonnenuntergang', forest: 'Waldgrün', kelly: 'Hellgrün', army: 'Armeegrün', camo: 'Camouflage', natural: 'Natur', jean: 'Jeansblau', midnight: 'Nachtblau', denim: 'Jeansblau', stone: 'Stein', anthracite: 'Anthrazit', slate: 'Schiefer', graphite: 'Graphit', camel: 'Kamel', copper: 'Kupfer', bronze: 'Bronze', wine: 'Weinrot',
+  rose: 'Rosé', mustard: 'Senf', chocolate: 'Schokobraun', sage: 'Salbeigrün', emerald: 'Smaragdgrün', sapphire: 'Saphirblau', crimson: 'Karminrot', cardinal: 'Kardinalrot', mauve: 'Malve', oatmeal: 'Haferflocken', ecru: 'Ecru', jade: 'Jade', aqua: 'Aqua', steel: 'Stahlblau', espresso: 'Espresso', blush: 'Blush', sky: 'Himmelblau', sunset: 'Sonnenuntergang', forest: 'Waldgrün', kelly: 'Grün', army: 'Armeegrün', camo: 'Camouflage', natural: 'Natur', jean: 'Jeansblau', midnight: 'Nachtblau', denim: 'Jeansblau', stone: 'Stein', anthracite: 'Anthrazit', slate: 'Schiefer', graphite: 'Graphit', camel: 'Kamel', copper: 'Kupfer', bronze: 'Bronze', wine: 'Weinrot',
 });
-const FARBZUSATZ = Object.freeze({ dark: 'Dunkel', light: 'Hell', deep: 'Tief', bright: 'Leuchtend', pale: 'Blass', soft: 'Zart', baby: 'Baby', neon: 'Neon' });
+/**
+ * Zusätze vor einer Farbe. `komp`: Zusammensetzung «Hellblau», `adj`: gebeugte Form «Helles Königsblau». Zusammengesetzt wird nur mit einfachen Grundfarben (KOMPOSITA_OK); bei allen anderen («Helljeansblau»,
+ * «Leuchtendlachs» wären kein Deutsch) steht die gebeugte Form. Hat ein Zusatz die gebeugte Form nicht (baby, neon), bleibt die Farbe unübersetzt: nie raten.
+ */
+const FARBZUSATZ = Object.freeze({
+  dark: { komp: 'Dunkel', adj: 'Dunkles' }, deep: { komp: 'Dunkel', adj: 'Dunkles' }, light: { komp: 'Hell', adj: 'Helles' }, pale: { komp: 'Blass', adj: 'Blasses' }, soft: { komp: 'Zart', adj: 'Zartes' },
+  bright: { adj: 'Leuchtendes' }, baby: { komp: 'Baby' }, neon: { komp: 'Neon' },
+});
+const KOMPOSITA_OK = new Set(['Blau', 'Grün', 'Grau', 'Rosa', 'Rot', 'Gelb', 'Braun', 'Orange', 'Lila', 'Beige', 'Oliv', 'Petrol', 'Türkis', 'Violett']);
 const FARBSUFFIX = Object.freeze({ heather: 'meliert', melange: 'meliert', marle: 'meliert', marl: 'meliert', triblend: 'meliert', tri: 'meliert', vintage: 'verwaschen', washed: 'verwaschen', faded: 'verwaschen', sunwashed: 'verwaschen' });
 const IGNORIERT = new Set(['sport', 'team', 'true', 'classic', 'solid', 'color', 'colour', 'blend', 'athletic', 'pigment', 'dyed', 'garment', 'custom', 'base', 'g.', 'french']);
 
@@ -232,7 +253,14 @@ function einFarbname(roh) {
     else unb.push(t);
   }
   if (unb.length || (!basis && !suf.length)) return { de: null, unbekannt: unb.length ? unb : [roh] };
-  const kern = basis ? (zus.length ? zus.join('') + basis.toLowerCase() : basis) : 'Grau';
+  let kern = 'Grau';
+  if (basis) {
+    if (!zus.length) kern = basis;
+    else if (zus.length > 1) return { de: null, unbekannt: [roh] };                       // zwei Zusätze («Dark Soft …»): nicht raten
+    else if (zus[0].komp && KOMPOSITA_OK.has(basis)) kern = zus[0].komp + basis.toLowerCase();
+    else if (zus[0].adj) kern = `${zus[0].adj} ${basis}`;
+    else return { de: null, unbekannt: [roh] };
+  }
   return { de: [kern, ...suf].join(' '), unbekannt: [] };
 }
 /** Deutscher Farbname («Black/White» → «Schwarz/Weiss»); de = null, wenn ein Wort fehlt. */

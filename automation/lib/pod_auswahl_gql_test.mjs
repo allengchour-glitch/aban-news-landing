@@ -125,6 +125,13 @@ for (const [name, antwort] of [['HTTP 503', 503], ['HTTP 500', 500], ['Netzfehle
   await g(Q, {}); await g(M, {});
   ist('shopifyGql erhält versuche:1 nur bei Mutationen', gesehen, [[false, null], [true, 1]]);
 }
+{ // Zeitlimit je Anfrage: nur wenn der Aufrufer es verlangt (Modell-Fabrik: productSet mit vielen Varianten braucht mehr als 30 s)
+  const gesehen = [];
+  const sg = async (shop, api, token, query, variables, opt) => { gesehen.push(opt.timeoutMs ?? null); return { ok: 1 }; };
+  const g = gqlFuer({ shop: 's', api: 'a', token: 't', shopifyGql: sg });
+  await g(M, {}); await g(M, {}, { timeoutMs: 120000 }); await g(M, {}, { timeoutMs: -5 }); await g(M, {}, {}); await g(M, {}, null);
+  ist('timeoutMs wird nur durchgereicht, wenn es eine positive Zahl ist', gesehen, [null, 120000, null, null, null]);
+}
 
 // ── API-Version und Abfragetexte gehören zusammen (Befund 14): eine Stelle, 2026-01, kein veraltetes productByHandle
 {

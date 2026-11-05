@@ -1,0 +1,643 @@
+{
+ "schema": 1,
+ "printfulProductId": 586,
+ "typ": "T-SHIRT",
+ "titelEn": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717",
+ "klasse": "FLACH",
+ "standardTechnik": "DTG",
+ "minDpi": 75,
+ "platzierungen": [
+  {
+   "id": "front",
+   "dateiTyp": "default",
+   "titelDe": "Vorderseite",
+   "titelEn": "Front print",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 1,
+    "breitePx": 1800,
+    "hoehePx": 2400,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 252980,
+    "bildUrl": "https://files.cdn.printful.com/m/comfortcolors_1717/medium/ghost/front/05_cc1717_ghost_front_base_whitebg.png?v=1787740517",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#1b1b1c",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 958,
+    "flaecheOben": 473,
+    "flaecheBreite": 1074,
+    "flaecheHoehe": 1432,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "back",
+   "dateiTyp": "back",
+   "titelDe": "Rückseite",
+   "titelEn": "Back print",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 1,
+    "breitePx": 1800,
+    "hoehePx": 2400,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 252899,
+    "bildUrl": "https://files.cdn.printful.com/m/comfortcolors_1717/medium/ghost/back/05_cc1717_ghost_back_base_whitebg.png?v=1787740739",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#1b1b1c",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 950,
+    "flaecheOben": 295,
+    "flaecheBreite": 1074,
+    "flaecheHoehe": 1432,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 5.95,
+   "aufpreisChf": 6.1,
+   "kollidiertMit": [
+    "label_outside"
+   ]
+  },
+  {
+   "id": "sleeve_left",
+   "dateiTyp": "sleeve_left",
+   "titelDe": "Ärmel links",
+   "titelEn": "Left sleeve",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 130,
+    "breitePx": 600,
+    "hoehePx": 525,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 253358,
+    "bildUrl": "https://files.cdn.printful.com/m/comfortcolors_1717/medium/ghost/embroidery/left/05_cc1717_ghost_emb_left_base_whitebg.png?v=1787752982",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#1b1b1c",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 1156,
+    "flaecheOben": 1580,
+    "flaecheBreite": 658,
+    "flaecheHoehe": 574,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.49,
+   "aufpreisChf": 2.6,
+   "kollidiertMit": []
+  },
+  {
+   "id": "sleeve_right",
+   "dateiTyp": "sleeve_right",
+   "titelDe": "Ärmel rechts",
+   "titelEn": "Right sleeve",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 130,
+    "breitePx": 600,
+    "hoehePx": 525,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 253304,
+    "bildUrl": "https://files.cdn.printful.com/m/comfortcolors_1717/medium/ghost/embroidery/right/05_cc1717_ghost_emb_right_base_whitebg.png?v=1787753001",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#1b1b1c",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 1176,
+    "flaecheOben": 1592,
+    "flaecheBreite": 647,
+    "flaecheHoehe": 565,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.49,
+   "aufpreisChf": 2.6,
+   "kollidiertMit": []
+  },
+  {
+   "id": "label_outside",
+   "dateiTyp": "label_outside",
+   "titelDe": "Etikett aussen",
+   "titelEn": "Outside label",
+   "art": "etikett",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 90,
+    "breitePx": 450,
+    "hoehePx": 450,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 118063,
+    "bildUrl": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744029696",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#1b1b1c",
+    "vorlageBreite": 560,
+    "vorlageHoehe": 560,
+    "flaecheLinks": 137,
+    "flaecheOben": 187,
+    "flaecheBreite": 288,
+    "flaecheHoehe": 288,
+    "ausrichtung": "any",
+    "vorderansicht": false
+   },
+   "aufpreisUsd": 2.49,
+   "aufpreisChf": 2.6,
+   "kollidiertMit": [
+    "back"
+   ]
+  }
+ ],
+ "druckdateien": {
+  "1": {
+   "printfileId": 1,
+   "breitePx": 1800,
+   "hoehePx": 2400,
+   "dpi": 150
+  },
+  "90": {
+   "printfileId": 90,
+   "breitePx": 450,
+   "hoehePx": 450,
+   "dpi": 150
+  },
+  "130": {
+   "printfileId": 130,
+   "breitePx": 600,
+   "hoehePx": 525,
+   "dpi": 150
+  }
+ },
+ "hinweise": [],
+ "farben": {
+  "#306d6e": [
+   52270,
+   52273,
+   52276,
+   52264,
+   52261,
+   52258,
+   52267
+  ],
+  "#efff99": [
+   52227,
+   52230,
+   52233,
+   52221,
+   52218,
+   52215,
+   52224
+  ],
+  "#ff5ea1": [
+   52248,
+   52251,
+   52254,
+   52242,
+   52239,
+   52236,
+   52245
+  ],
+  "#938a6f": [
+   52296,
+   52300,
+   52304,
+   52288,
+   52284,
+   52280,
+   52292
+  ],
+  "#816977": [
+   52297,
+   52301,
+   52305,
+   52289,
+   52285,
+   52281,
+   52293
+  ],
+  "#b8bfab": [
+   17711,
+   17712,
+   17713,
+   17709,
+   17708,
+   17707,
+   17710
+  ],
+  "#8e5a7b": [
+   15160,
+   16325,
+   17497,
+   15158,
+   15157,
+   15156,
+   15159
+  ],
+  "#1b1b1c": [
+   15118,
+   16326,
+   17500,
+   15116,
+   15115,
+   15114,
+   15117
+  ],
+  "#ffd6e1": [
+   16545,
+   16546,
+   17503,
+   16543,
+   16542,
+   16541,
+   16544
+  ],
+  "#707e8d": [
+   16515,
+   16516,
+   17506,
+   16513,
+   16512,
+   16511,
+   16514
+  ],
+  "#4c6151": [
+   17690,
+   17691,
+   17692,
+   17688,
+   17687,
+   17686,
+   17689
+  ],
+  "#8d4b54": [
+   15165,
+   16327,
+   17509,
+   15163,
+   15162,
+   15161,
+   15164
+  ],
+  "#ff7842": [
+   22093,
+   22094,
+   22095,
+   22091,
+   22090,
+   22089,
+   22092
+  ],
+  "#ffe09e": [
+   15170,
+   16328,
+   17511,
+   15168,
+   15167,
+   15166,
+   15169
+  ],
+  "#a1f2dc": [
+   21517,
+   21518,
+   21519,
+   21515,
+   21514,
+   21513,
+   21516
+  ],
+  "#d9f3ff": [
+   17652,
+   17653,
+   17654,
+   17650,
+   17649,
+   17648,
+   17651
+  ],
+  "#bb5151": [
+   16551,
+   16552,
+   17513,
+   16549,
+   16548,
+   16547,
+   16550
+  ],
+  "#ff748e": [
+   21254,
+   21255,
+   21256,
+   21252,
+   21251,
+   21250,
+   21253
+  ],
+  "#565a67": [
+   21524,
+   21525,
+   21526,
+   21522,
+   21521,
+   21520,
+   21523
+  ],
+  "#87634a": [
+   21247,
+   21248,
+   21249,
+   21245,
+   21244,
+   21243,
+   21246
+  ],
+  "#7888d2": [
+   15175,
+   16329,
+   17498,
+   15173,
+   15172,
+   15171,
+   15174
+  ],
+  "#a6abaa": [
+   17659,
+   17660,
+   17661,
+   17657,
+   17656,
+   17655,
+   17658
+  ],
+  "#644e6d": [
+   22100,
+   22101,
+   22102,
+   22098,
+   22097,
+   22096,
+   22099
+  ],
+  "#3e3737": [
+   21268,
+   21269,
+   21270,
+   21266,
+   21265,
+   21264,
+   21267
+  ],
+  "#92928f": [
+   15180,
+   16330,
+   17501,
+   15178,
+   15177,
+   15176,
+   15179
+  ],
+  "#4f5232": [
+   22107,
+   22108,
+   22109,
+   22105,
+   22104,
+   22103,
+   22106
+  ],
+  "#7a9096": [
+   16521,
+   16522,
+   17504,
+   16519,
+   16518,
+   16517,
+   16520
+  ],
+  "#b8ffca": [
+   21531,
+   21532,
+   21533,
+   21529,
+   21528,
+   21527,
+   21530
+  ],
+  "#fff4d9": [
+   16527,
+   16528,
+   17507,
+   16525,
+   16524,
+   16523,
+   16526
+  ],
+  "#b3ab8b": [
+   21538,
+   21539,
+   21540,
+   21536,
+   21535,
+   21534,
+   21537
+  ],
+  "#92dedb": [
+   17683,
+   17684,
+   17685,
+   17680,
+   17681,
+   17679,
+   17682
+  ],
+  "#608267": [
+   16539,
+   16540,
+   17510,
+   16537,
+   16536,
+   16535,
+   16538
+  ],
+  "#3a4e63": [
+   21545,
+   21546,
+   21547,
+   21543,
+   21542,
+   21541,
+   21544
+  ],
+  "#6b7053": [
+   17704,
+   17705,
+   17706,
+   17703,
+   17701,
+   17700,
+   17702
+  ],
+  "#ffbc5a": [
+   21552,
+   21553,
+   21554,
+   21550,
+   21549,
+   21548,
+   21551
+  ],
+  "#5068ab": [
+   22084,
+   22086,
+   22088,
+   22080,
+   22078,
+   22076,
+   22082
+  ],
+  "#424150": [
+   21559,
+   21560,
+   21561,
+   21557,
+   21556,
+   21555,
+   21558
+  ],
+  "#ead3f2": [
+   21261,
+   21262,
+   21263,
+   21259,
+   21258,
+   21257,
+   21260
+  ],
+  "#fe4747": [
+   17673,
+   17674,
+   17675,
+   17671,
+   17670,
+   17669,
+   17672
+  ],
+  "#514f4c": [
+   17697,
+   17698,
+   17699,
+   17695,
+   17694,
+   17693,
+   17696
+  ],
+  "#bb1035": [
+   15122,
+   16331,
+   17512,
+   15121,
+   15120,
+   15119,
+   15123
+  ],
+  "#49482e": [
+   21566,
+   21567,
+   21568,
+   21564,
+   21563,
+   21562,
+   21565
+  ],
+  "#69a999": [
+   16533,
+   16534,
+   17514,
+   16531,
+   16530,
+   16529,
+   16532
+  ],
+  "#ff9364": [
+   17666,
+   17667,
+   17668,
+   17664,
+   17663,
+   17662,
+   17665
+  ],
+  "#1e2c4a": [
+   15185,
+   16332,
+   17499,
+   15183,
+   15182,
+   15181,
+   15184
+  ],
+  "#9a8ad2": [
+   15190,
+   16333,
+   17502,
+   15188,
+   15187,
+   15186,
+   15189
+  ],
+  "#98aed1": [
+   21510,
+   21511,
+   21512,
+   21508,
+   21507,
+   21506,
+   21509
+  ],
+  "#d15c68": [
+   15195,
+   16334,
+   17505,
+   15193,
+   15192,
+   15191,
+   15194
+  ],
+  "#ffffff": [
+   15128,
+   16335,
+   17508,
+   15126,
+   15125,
+   15124,
+   15127
+  ],
+  "#db642f": [
+   21275,
+   21276,
+   21277,
+   21273,
+   21272,
+   21271,
+   21274
+  ]
+ }
+}

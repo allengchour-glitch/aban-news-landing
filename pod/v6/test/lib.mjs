@@ -54,6 +54,14 @@ export function starteServer() {
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
     if (u.pathname === '/v5.js') return senden('text/javascript; charset=utf-8', readFileSync(V5_DATEI));
     let m;
+    if (u.pathname === '/karten/buendel.json') {
+      // Kartenbündel: m=71,586 (Modelle aus testdaten/), shop=<Shopify-Id>:<Printful-Variante>:<Modell>,…
+      const modelle = {};
+      for (const id of (u.searchParams.get('m') || '').split(',').filter(Boolean)) { const k = karteMitShop(id, '', false, false); if (k) modelle[id] = k; }
+      const varianten = {};
+      for (const paar of (u.searchParams.get('shop') || '').split(',').filter(Boolean)) { const [sv, pv, mo] = paar.split(':'); if (sv && pv && mo) varianten[sv] = { pv: Number(pv), m: Number(mo) }; }
+      return senden('application/json', JSON.stringify({ schema: 1, modelle, shop: { varianten } }));
+    }
     if ((m = u.pathname.match(/^\/karten\/(\d+)\.json$/))) {
       const k = karteMitShop(m[1], u.searchParams.get('shop'), u.searchParams.get('ohneMinDpi'), u.searchParams.get('hinweise'));
       return k ? senden('application/json', JSON.stringify(k)) : senden('text/plain', 'keine Karte', 404);
@@ -88,6 +96,15 @@ export function pngErzeugen(w, h, farbe = [200, 60, 60]) {
   }
   return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(roh, { level: 1 })), chunk('IEND', Buffer.alloc(0))]);
 }
+/** PNG mit Zufallsrauschen (fast nicht komprimierbar): so gross wie ein echtes Handyfoto, damit Dateigrössen-Grenzen greifen. Deterministisch (fester Startwert). */
+export function pngRauschen(w, h) {
+  const ihdr = Buffer.alloc(13); ihdr.writeUInt32BE(w, 0); ihdr.writeUInt32BE(h, 4); ihdr[8] = 8; ihdr[9] = 2;   // RGB ohne Alpha
+  const roh = Buffer.alloc((1 + w * 3) * h);
+  let z = 123456789;
+  for (let i = 0; i < roh.length; i++) { z = (Math.imul(z, 1664525) + 1013904223) >>> 0; roh[i] = z >>> 24; }
+  for (let y = 0; y < h; y++) roh[y * (1 + w * 3)] = 0;   // Filtertyp 0 je Zeile
+  return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(roh, { level: 1 })), chunk('IEND', Buffer.alloc(0))]);
+}
 const PNG_KOPF = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 /** Ein PNG aus einem Mehrteil-Körper (multipart) herausschneiden; Breite und Höhe aus dem IHDR. */
 export function pngAusKoerper(buf) {
@@ -113,8 +130,10 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
 /**
  * @param browser  Playwright-Browser
  * @param basis    Adresse des Test-Servers
- * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool }
- * @returns { page, ctx, fehler: string[], uploads: [], warenkorb: [], png(url), schliessen() }
+ * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool,
+ *                   cloudinaryMaxBytes: Zahl (grössere Uploads → HTTP 400 «File size too large»), cloudinaryMaxPixel: Zahl (mehr Pixel → HTTP 400 «Image dimensions too large»),
+ *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms }
+ * @returns { page, ctx, fehler: string[], uploads: [], abgelehnt: [], warenkorb: [], png(url), schliessen() }
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
   const ctx = await browser.newContext({
@@ -123,6 +142,8 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   const page = await ctx.newPage();
   const fehler = [];
   const uploads = [];
+  const abgelehnt = [];
+  let eingang = 0;
   const warenkorb = [];
   const gespeichert = new Map();
   page.on('pageerror', (e) => fehler.push('pageerror: ' + e.message));
@@ -139,6 +160,18 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     const p = pngAusKoerper(koerper);
     const dateityp = p ? 'png' : (koerper.indexOf(Buffer.from([0xff, 0xd8, 0xff])) >= 0 ? 'jpeg' : '?');
     if (opt.cloudinaryFehler) return route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: { message: 'mock-fehler' } }) });
+    const nr = ++eingang;
+    if (opt.cloudinaryHaengt && opt.cloudinaryHaengt(nr)) return;   // Antwort bleibt aus (Zeitlimit-Test)
+    if (opt.cloudinaryVerzoegerung) { const ms = opt.cloudinaryVerzoegerung(nr, dateityp); if (ms > 0) await new Promise((r) => setTimeout(r, ms)); }
+    const cors = { 'access-control-allow-origin': '*' };
+    if (opt.cloudinaryMaxBytes && koerper.length > opt.cloudinaryMaxBytes) {
+      abgelehnt.push({ nr, bytes: koerper.length, grund: 'bytes' });
+      return route.fulfill({ status: 400, contentType: 'application/json', body: JSON.stringify({ error: { message: `File size too large. Got ${koerper.length}. Maximum is ${opt.cloudinaryMaxBytes}.` } }), headers: cors });
+    }
+    if (opt.cloudinaryMaxPixel && p && p.breite * p.hoehe > opt.cloudinaryMaxPixel) {
+      abgelehnt.push({ nr, bytes: koerper.length, grund: 'pixel', breite: p.breite, hoehe: p.hoehe });
+      return route.fulfill({ status: 400, contentType: 'application/json', body: JSON.stringify({ error: { message: `Image dimensions too large. Maximum is ${opt.cloudinaryMaxPixel} megapixels.` } }), headers: cors });
+    }
     const n = uploads.length + 1;
     const url = `https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/${n}.png`;
     uploads.push({ n, url, typ: dateityp, breite: p ? p.breite : null, hoehe: p ? p.hoehe : null, bytes: p ? p.bytes : koerper.length, hatPreset: koerper.includes(Buffer.from('pigto8ba')) });
@@ -150,14 +183,15 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     if (png) return route.fulfill({ status: 200, contentType: 'image/png', body: png, headers: { 'access-control-allow-origin': '*' } });
     route.fulfill({ status: 200, contentType: 'image/png', body: pngErzeugen(64, 64), headers: { 'access-control-allow-origin': '*' } });
   });
-  await page.route('**/cart/add.js', (route) => {
+  await page.route('**/cart/add.js', async (route) => {
     const req = route.request();
     let daten = null; try { daten = JSON.parse(req.postData()); } catch { /* egal */ }
     warenkorb.push(daten);
+    if (opt.warenkorbVerzoegerung) await new Promise((r) => setTimeout(r, opt.warenkorbVerzoegerung));
     route.fulfill({ status: opt.warenkorbFehler ? 422 : 200, contentType: 'application/json', body: JSON.stringify(opt.warenkorbFehler ? { description: 'mock-warenkorb-fehler' } : { id: 1, items: [] }) });
   });
   await page.goto(`${basis}/mock.html?${opt.query || ''}`, { waitUntil: 'domcontentloaded' });
-  return { page, ctx, fehler, uploads, warenkorb, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
+  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
 }
 
 /** Warten, bis der v6-Editor gebaut ist. */

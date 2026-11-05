@@ -1,6 +1,7 @@
 /**
  * Tests ohne Browser und ohne Netz für den Editor v6: die reinen Funktionen von lspod-designer-v6.js (in einer vm geladen), der Kartenbau
- * (werkzeug/karte_fuer_editor.mjs) und das Lesen der Warenkorb-Eigenschaften (werkzeug/eigenschaften_lesen.mjs).
+ * (werkzeug/karte_fuer_editor.mjs: Einzelkarte, Kartenbündel, Filter, Prüfungen) und der Vertrag der Warenkorb-Eigenschaften mit der Auftragsabwicklung
+ * (automation/lib/printful_bestellweg.mjs wird nur gelesen/importiert, nicht verändert).
  * Die Vergleiche mit preisformel.mjs und schweizer_masse.mjs sind der Beleg, dass die in den Editor kopierten Formeln dieselben Zahlen liefern.
  * Aufruf: node unit_test.mjs
  */
@@ -11,8 +12,8 @@ import { join } from 'node:path';
 import { hier, repo, V6_DATEI, V5_DATEI } from './lib.mjs';
 import { aufpreisChf as aufpreisRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { schweizerZahl as zahlRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
-import { karteFuerEditor, BEKANNTE_HINWEIS_CODES } from '../werkzeug/karte_fuer_editor.mjs';
-import { dateienAusEigenschaften } from '../werkzeug/eigenschaften_lesen.mjs';
+import { karteFuerEditor, kartenbuendelFuerEditor, shopVariantenNormalisieren, podKarteGroesstmoeglich, kartenWarnungen, BEKANNTE_HINWEIS_CODES, POD_KARTE_MAX } from '../werkzeug/karte_fuer_editor.mjs';
+import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
 
 let n = 0; const fehler = [];
 function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); } }
@@ -32,7 +33,7 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === '6.0.0');
+pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === '6.1.0');
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
 {
   const g = ladeV6(); const erste = g.LSPOD6; ladeV6(V6_DATEI, g);
@@ -86,7 +87,7 @@ pruefe('Sichtfenster Tasse: nie breiter als die Vorlage', wm.x >= 0 && wm.x + wm
 // ── Karten laden und prüfen ────────────────────────────────────────────────────────────────────────
 const lies = (id) => JSON.parse(readFileSync(join(hier, 'testdaten', `${id}.karte.json`), 'utf8'));
 const K = {};
-for (const id of [71, 19, 268, 206, 388]) { const r = H.karteNormalisieren(lies(id)); pruefe(`Karte ${id} ist gültig`, !!r.karte, r.fehler); K[id] = r.karte; }
+for (const id of [71, 19, 268, 206, 388, 586, 456]) { const r = H.karteNormalisieren(lies(id)); pruefe(`Karte ${id} ist gültig`, !!r.karte, r.fehler); K[id] = r.karte; }
 gleich('Platzierungen T-Shirt', K[71].platzierungen.map((p) => p.id), ['front', 'front_large', 'back', 'sleeve_left', 'sleeve_right', 'label_inside', 'label_outside', 'label_inside_dtf']);
 gleich('Platzierungen Tasse', K[19].platzierungen.map((p) => p.id), ['default']);
 gleich('Platzierungen Dad-Cap', K[206].platzierungen.map((p) => p.id), ['embroidery_front_large', 'embroidery_back', 'embroidery_right', 'embroidery_left']);
@@ -131,6 +132,25 @@ gleich('Shop-Zuordnung: Zahl und Objekt gelesen, leer verworfen', sn, { 1001: 13
 // Farben
 const fk = H.karteNormalisieren({ ...lies(71), farben: { '#ffffff': [1, 2], 'rot': [3], '#000000': 'x' } }).karte.farbeVon;
 gleich('Farben: nur gültige Hex-Werte mit Liste', fk, { 1: '#ffffff', 2: '#ffffff' });
+
+// Kartenbündel (ein Shop-Produkt aus mehreren Printful-Modellen)
+{
+  const buendel = { schema: 1, modelle: { 71: lies(71), 586: lies(586) }, shop: { varianten: { 1001: { pv: 4012, m: 71 }, 1002: { pv: 15124, m: 586 }, 1003: { pv: 1, m: 999 }, 1004: { pv: null, m: 71 }, 1005: 4013 } } };
+  const r = H.karteNormalisieren(buendel);
+  pruefe('Bündel: gültig', !!r.karte && r.karte.buendel === true && r.karte.legacy === false, r.fehler);
+  gleich('Bündel: Modelle in der Reihenfolge der Schlüssel', r.karte.reihenfolge, ['71', '586']);
+  gleich('Bündel: Zuordnung nur gültige Einträge (Modell fehlt, pv fehlt, Zahl ohne Modell werden verworfen)', r.karte.zuordnung, { 1001: { pv: 4012, m: '71' }, 1002: { pv: 15124, m: '586' } });
+  pruefe('Bündel: Vereinigung der Platzierungen enthält front_large (nur Modell 71) und label_inside_dtf', r.karte.alleIds.includes('front_large') && r.karte.alleIds.includes('label_inside_dtf'));
+  pruefe('Bündel: Modell 586 hat kein front_large', !r.karte.modelle[586].platzierungen.some((p) => p.id === 'front_large') && r.karte.modelle[71].platzierungen.some((p) => p.id === 'front_large'));
+  pruefe('Bündel: Konflikte je Modell getrennt', !!r.karte.modelle[71].konflikte.front.front_large && !r.karte.modelle[586].konflikte.front_large);
+  pruefe('Bündel ohne Modelle → Fehler', !!H.karteNormalisieren({ schema: 1, modelle: {} }).fehler);
+  pruefe('Bündel ohne Zuordnung → Fehler (jede Variante wäre gesperrt)', /ohne Zuordnung/.test(H.karteNormalisieren({ schema: 1, modelle: { 71: lies(71) } }).fehler));
+  pruefe('Bündel mit unbrauchbarem Modell → ganzes Bündel unbrauchbar', /Modell 586/.test(H.karteNormalisieren({ ...buendel, modelle: { 71: lies(71), 586: { schema: 1, platzierungen: [] } } }).fehler));
+  pruefe('Bündel: Schlüssel und printfulProductId müssen übereinstimmen', /passt nicht zum Schlüssel/.test(H.karteNormalisieren({ ...buendel, modelle: { 71: lies(71), 586: lies(71) } }).fehler));
+  pruefe('Bündel im Bündel → Fehler', !!H.karteNormalisieren({ schema: 1, modelle: { 71: { modelle: {} } }, shop: { varianten: { 1: { pv: 1, m: 71 } } } }).fehler);
+  pruefe('Bündel: Schema 2 → Fehler', /unbekannt/.test(H.karteNormalisieren({ ...buendel, schema: 2 }).fehler));
+  pruefe('Bündel: Eingabe wird nicht verändert', (() => { const b = JSON.parse(JSON.stringify(buendel)); const v = JSON.stringify(b); H.karteNormalisieren(b); return JSON.stringify(b) === v; })());
+}
 
 // ── Geometrie je Variante ──────────────────────────────────────────────────────────────────────────
 const tasse = K[19]; const tp = tasse.platzierungen[0];

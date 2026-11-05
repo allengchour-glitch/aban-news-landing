@@ -18,6 +18,10 @@
     hinweise=1          Server fügt vier zusätzliche Hinweise ein (unbekannte Einschränkung, unbekannte Info, eigener Kundentext, Einschränkung ohne Text)
     lang=en             Shopify.locale
     varianten=1001:Weiss:#ffffff,1002:Schwarz:#111111   Auswahl im Formular (Vorgabe: drei Stück)
+    karte=buendel&m=71,586&shop=1001:4012:71,1002:15124:586   Kartenbündel (ein Produkt aus mehreren Modellen): Shopify-Variante:Printful-Variante:Modell
+    maxbytes=N          data-max-bytes (Obergrenze der Dateigrösse vor dem Upload, 0 = keine Prüfung)
+    uptimeout=N         data-upload-timeout in Millisekunden
+    abstand=N           Leerraum (px) vor der Beschreibung: der Editor liegt dann unterhalb des Fensters (Sprung zu #lspod-start)
 -->
 <style>
   *{box-sizing:border-box}
@@ -42,6 +46,8 @@
         <fieldset id="varianten"></fieldset>
         <button type="submit" id="theme-kaufen">Theme-Kaufknopf</button>
       </form>
+      <a id="designzwang" href="#lspod-start" style="display:block;margin:10px 0">Zuerst dein Design gestalten</a>
+      <div id="abstand"></div>
       <div id="beschreibung"></div>
       <p id="nachher">Text nach dem Editor.</p>
     </div>
@@ -69,6 +75,7 @@
   document.getElementById('produkt-form').addEventListener('submit', function (e) { e.preventDefault(); window.__themeKnopf = (window.__themeKnopf || 0) + 1; });
 
   var beschr = document.getElementById('beschreibung');
+  if (q.get('abstand')) document.getElementById('abstand').style.height = q.get('abstand') + 'px';
   var bildA = '/bild/vorne.svg', bildB = '/bild/hinten.svg';
   function skript(src) { var s = document.createElement('script'); s.src = src; s.defer = true; document.body.appendChild(s); return s; }
 
@@ -87,6 +94,8 @@
     // wie in einer echten Produktbeschreibung: die Attribute des alten Editors bleiben stehen, sie gelten nur für den Rückfall ohne Karte
     d.setAttribute('data-img-front', bildA); d.setAttribute('data-img-back', bildB); d.setAttribute('data-ratio', '1.2');
     if (q.get('maxpx') !== null) d.setAttribute('data-max-px', q.get('maxpx'));
+    if (q.get('maxbytes') !== null) d.setAttribute('data-max-bytes', q.get('maxbytes'));
+    if (q.get('uptimeout') !== null) d.setAttribute('data-upload-timeout', q.get('uptimeout'));
     var s = document.createElement('script'); s.type = 'application/json'; s.id = 'lspod-karte'; s.textContent = text;
     d.appendChild(s); beschr.appendChild(d); return d;
   }

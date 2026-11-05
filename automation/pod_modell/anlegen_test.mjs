@@ -121,6 +121,86 @@ for (const wo of ['metafieldsSet', 'productVariantAppendMedia', 'productUpdate']
   const r2 = await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
   ist('Netzfehler vor dem Anlegen: erster Lauf FEHLER, zweiter OK', [r1.exit, r2.exit, f.st.produkte.size], [1, 0, 1]);
 }
+// ── Antwort auf productSet VERLOREN (Zeitüberschreitung), das Produkt steht aber im Shop (Fund beider Gegenleser 05.11.)
+{
+  const f = neueAttrappe({ antwortVerlorenBei: 'productSet' }); const led = ledger();
+  const r1 = await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
+  const e1 = ledgerLesen(led).get(tasse.handle); const p = [...f.st.produkte.values()][0];
+  ist('Antwort verloren: Lauf 1 endet mit FEHLER, das Produkt steht im Shop', [r1.exit, r1.ergebnisse[0].status, f.st.produkte.size], [1, 'FEHLER', 1]);
+  ist('Antwort verloren: das Werkzeug findet das Produkt nach dem Fehler und trägt die ID ein (kein Waisen-Entwurf)', [e1.produktId === p.id, e1.versucht], [true, true]);
+  ist('Ledger-Datei trägt VERSUCH vor dem Senden und BEGONNEN mit ID', [/\tVERSUCH\t\t/.test(readFileSync(led, 'utf8')), readFileSync(led, 'utf8').includes(`\tBEGONNEN\t${p.id}\t`)], [true, true]);
+  const r2 = await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
+  ist('Wiederholung nach verlorener Antwort: OK, weiter ein Produkt, kein zweites productSet', [r2.exit, r2.ergebnisse[0].status, f.st.produkte.size, f.st.aufrufe.filter((a) => /productSet/.test(a)).length], [0, 'OK', 1, 1]);
+}
+{ // dasselbe, aber auch das Nachlesen nach dem Fehler scheitert: der nächste Lauf übernimmt das Produkt über die Zeile VERSUCH
+  const f = neueAttrappe({ antwortVerlorenBei: 'productSet' }); const led = ledger(); let lesefehler = 0;
+  const gql = async (q, v, e) => { if (/productByIdentifier/.test(q) && lesefehler === 1) { lesefehler = 2; throw new Error('Netz weg (Attrappe)'); } if (/productSet/.test(q)) lesefehler = 1; return f.gql(q, v, e); };
+  const r1 = await lauf({ plaene: [tasse], gql, ledgerPfad: led, ...L() });
+  const e1 = ledgerLesen(led).get(tasse.handle);
+  ist('Antwort UND Nachlesen verloren: FEHLER, im Ledger steht keine ID, aber VERSUCH', [r1.exit, f.st.produkte.size, e1.produktId, e1.versucht], [1, 1, null, true]);
+  const r2 = await lauf({ plaene: [tasse], gql, ledgerPfad: led, ...L() });
+  ist('… der nächste Lauf übernimmt das eigene Produkt (VERSUCH + Tag + DRAFT + nur Plan-SKUs) und macht es fertig', [r2.exit, r2.ergebnisse[0].status, f.st.produkte.size, f.st.aufrufe.filter((a) => /productSet/.test(a)).length], [0, 'OK', 1, 1]);
+  ist('… und trägt dabei die ID ins Ledger ein (Rücknahme geht dann über die ID)', ledgerLesen(led).get(tasse.handle).produktId, [...f.st.produkte.values()][0].id);
+}
+{ // Rücknahme eines Waisen-Entwurfs OHNE Ledger-ID
+  const f = neueAttrappe({ antwortVerlorenBei: 'productSet' }); const led = ledger(); let lesefehler = 0;
+  const gql = async (q, v, e) => { if (/productByIdentifier/.test(q) && lesefehler === 1) { lesefehler = 2; throw new Error('Netz weg (Attrappe)'); } if (/productSet/.test(q)) lesefehler = 1; return f.gql(q, v, e); };
+  await lauf({ plaene: [tasse], gql, ledgerPfad: led, ...L() });
+  const r = await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still });
+  ist('Rücknahme löst «VERSUCH/FEHLER ohne ID» über den Handle auf und löscht den Waisen-Entwurf', [r.ergebnisse.map((x) => x.status), r.exit, f.st.produkte.size, ledgerLesen(led).get(tasse.handle).status], [['GELOESCHT'], 0, 0, 'ZURUECK']);
+}
+{ // …aber nie ein Produkt, dessen SKUs nicht zum Modell des Ledgers gehören, oder das nicht mehr DRAFT ist
+  const f = neueAttrappe(); const led = ledger();
+  writeFileSync(led, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n2026-11-05T00:00:01Z\t${tasse.handle}\t19\tFEHLER\t\ttimeout\n`);
+  const fremd = f.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: ['FREMD_1'] });
+  const r = await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still });
+  ist('Rücknahme ohne Ledger-ID: Produkt mit fremden SKUs wird nie gelöscht', [r.ergebnisse[0].status, r.exit, f.st.produkte.has(fremd.id)], ['GESPERRT', 5, true]);
+  fremd.variants[0].sku = `${9100000 + 19}_77`; f.setzeStatus(fremd.id, 'ACTIVE');
+  ist('Rücknahme ohne Ledger-ID: ein aktives Produkt wird nie gelöscht', [(await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still })).ergebnisse[0].status, f.st.produkte.has(fremd.id)], ['GESPERRT', true]);
+  f.setzeStatus(fremd.id, 'DRAFT'); fremd.tags = [];
+  ist('Rücknahme ohne Ledger-ID: ohne Marker-Tag nie', (await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still })).ergebnisse[0].status, 'GESPERRT');
+  fremd.tags = [MARKER_TAG];
+  ist('Rücknahme ohne Ledger-ID: Modellnummer des Ledgers im SKU-Präfix, DRAFT, Marker, kein Kanal → gelöscht', [(await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still })).ergebnisse[0].status, f.st.produkte.has(fremd.id)], ['GELOESCHT', false]);
+}
+{ // VERSUCH, aber das Produkt wurde nie angelegt: die Rücknahme verbucht «nie angelegt», löscht nichts
+  const f = neueAttrappe(); const led = ledger();
+  writeFileSync(led, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n`);
+  const r = await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still });
+  ist('Rücknahme: VERSUCH ohne Produkt im Shop → WEG, kein Schreibaufruf', [r.ergebnisse[0].status, f.st.schreibaufrufe, ledgerLesen(led).get(tasse.handle).status], ['WEG', 0, 'ZURUECK']);
+}
+{ // ein FEHLER ohne VERSUCH (z. B. vor dem Senden gescheitert) macht ein Fremdprodukt gleichen Handles NICHT zum eigenen
+  const f = neueAttrappe(); const led = ledger();
+  writeFileSync(led, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tFEHLER\t\tSKU-Suche kaputt\n`);
+  f.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: tasse.varianten.map((v) => v.sku) });
+  const r = await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
+  ist('FEHLER ohne VERSUCH und ohne ID: ein gleichnamiges Produkt wird nicht übernommen (Exit 3, 0 Schreibaufrufe)', [r.exit, f.st.schreibaufrufe], [3, 0]);
+  const led2 = ledger(); writeFileSync(led2, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n`);
+  const f2 = neueAttrappe(); f2.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 1, skus: tasse.varianten.map((v) => v.sku) });
+  ist('VERSUCH, aber das Produkt steht in einem Verkaufskanal: nicht übernommen', (await lauf({ plaene: [tasse], gql: f2.gql, ledgerPfad: led2, ...L() })).exit, 3);
+  const f3 = neueAttrappe(); f3.legeProduktAn({ handle: tasse.handle, status: 'DRAFT', tags: [MARKER_TAG], kanaele: 0, skus: [...tasse.varianten.map((v) => v.sku), 'FREMD_9'] });
+  const led3 = ledger(); writeFileSync(led3, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n`);
+  ist('VERSUCH, aber eine SKU gehört nicht zum Plan: nicht übernommen', (await lauf({ plaene: [tasse], gql: f3.gql, ledgerPfad: led3, ...L() })).exit, 3);
+}
+{ // nach ZURUECK gilt ein früherer Versuch nicht mehr
+  const f = neueAttrappe(); const led = ledger();
+  writeFileSync(led, `2026-11-05T00:00:00Z\t${tasse.handle}\t19\tVERSUCH\t\tx\n2026-11-05T00:00:01Z\t${tasse.handle}\t19\tZURUECK\t\tnie angelegt\n`);
+  ist('Ledger: ZURUECK nimmt «versucht» zurück', ledgerLesen(led).get(tasse.handle).versucht, false);
+}
+{ // productSet bekommt das längere Zeitlimit, Abfragen nicht
+  const f = neueAttrappe(); const led = ledger();
+  await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
+  const i = f.st.aufrufe.findIndex((a) => /productSet/.test(a));
+  ist('productSet läuft mit Zeitlimit 120 s, die Abfragen davor mit Vorgabe', [f.st.extras[i].timeoutMs, f.st.extras[0].timeoutMs ?? null], [120000, null]);
+}
+{ // Rücknahme: das Produkt wurde vom Besitzer umbenannt (Handle weg, ID noch da) → melden, nicht als «weg» verbuchen
+  const f = neueAttrappe(); const led = ledger();
+  await lauf({ plaene: [tasse], gql: f.gql, ledgerPfad: led, ...L() });
+  const p = [...f.st.produkte.values()][0]; p.handle = 'vom-besitzer-umbenannt';
+  const r = await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still });
+  ist('Rücknahme: umbenanntes Produkt → UMBENANNT (Exit 5), nicht gelöscht, Ledger bleibt OK', [r.ergebnisse[0].status, r.exit, f.st.produkte.size, ledgerLesen(led).get(tasse.handle).status], ['UMBENANNT', 5, 1, 'OK']);
+  f.st.produkte.delete(p.id);
+  ist('Rücknahme: Produkt samt ID wirklich weg → WEG, Ledger ZURUECK', [(await zuruecknehmen({ gql: f.gql, ledgerPfad: led, log: still })).ergebnisse[0].status, ledgerLesen(led).get(tasse.handle).status], ['WEG', 'ZURUECK']);
+}
 // ── Wiederaufnahme nur, solange das Produkt noch der eigene DRAFT ist
 {
   const f = neueAttrappe({ netzfehlerBei: 'metafieldsSet' }); const led = ledger();

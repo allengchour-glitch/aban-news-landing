@@ -9,13 +9,16 @@
  *      SKUs wie im Plan). Alles andere = Abweichung OHNE Schreibzugriff (ein vorhandenes Produkt wird NIE überschrieben).
  *   2. SKU-Präfix im Shop suchen (productVariants query sku:<Präfix>_*): jeder Treffer, der nicht zum eigenen Produkt gehört → Abweichung ohne Schreibzugriff.
  *   3. Variantenbudget: passt das Produkt nicht mehr in den Rest des Tageslimits, wird es gar nicht begonnen (Exit 4).
- *   4. productSet (synchron): Titel, Handle, DRAFT, Optionen, Varianten (SKU, Preis, CONTINUE, nicht verfolgt), Medien (files). Sofort danach Ledger BEGONNEN mit der Produkt-ID.
+ *   4. VOR dem Senden Ledger VERSUCH (ohne ID), dann productSet (synchron, Zeitlimit 120 s): Titel, Handle, DRAFT, Optionen, Varianten (SKU, Preis, CONTINUE, nicht verfolgt), Medien (files). Sofort danach Ledger BEGONNEN mit
+ *      der Produkt-ID. Geht die Antwort verloren (Zeitüberschreitung, Netz), obwohl Shopify das Produkt angelegt hat, liest das Werkzeug den Handle frisch und trägt ein EIGENES Produkt (Tag sg-fabrik, DRAFT, kein Kanal,
+ *      nur SKUs des Plans) mit seiner ID als BEGONNEN ein; gelingt auch das nicht, übernimmt der nächste Lauf es über die Zeile VERSUCH (Fund beider Gegenleser 05.11.: sonst blieb ein Waisen-Entwurf für immer).
  *   5. metafieldsSet (Editor-Karte, Modellnummer, Klasse, …).
  *   6. Warten bis alle Medien READY sind, dann productVariantAppendMedia je Farbe/Bild (productVariantsBulkUpdate mit mediaSrc wird von Shopify ignoriert, GEMESSEN 04.11.2026).
  *   7. Beschreibung: Platzhalter für die erste Variante und die Editor-Adresse ersetzen (productUpdate).
  *   8. FRISCH zurücklesen und mit dem Plan vergleichen (Titel, Handle, DRAFT, Tags, Optionen, jede Variante mit SKU/Preis/Optionen/Bild, Medien READY, Metafelder, Beschreibung, KEINE Veröffentlichung).
  *      Abweichung → AbweichungFehler (Exit 3). Dann Ledger OK.
- * Rücknahme (`zuruecknehmen`): löscht NUR Produkte, die im Ledger stehen, noch DRAFT sind, das Tag sg-fabrik tragen, die Ledger-ID haben und in keinem Kanal veröffentlicht sind.
+ * Rücknahme (`zuruecknehmen`): löscht NUR Produkte, die im Ledger stehen, noch DRAFT sind, das Tag sg-fabrik tragen, die Ledger-ID haben und in keinem Kanal veröffentlicht sind. Eine Zeile VERSUCH/FEHLER ohne ID wird über den Handle
+ * aufgelöst (Tag, DRAFT, kein Kanal und jede SKU «<9100000 + Modellnummer>_…»). Ist der Handle weg, sucht sie die Ledger-ID (ein vom Besitzer umbenanntes Produkt wird nicht als «weg» verbucht, sondern gemeldet).
  *
  * EXIT-CODES: 0 alles Geplante ausgeführt · 1 Fehler (Produkt mit FEHLER oder drei Fehler in Folge) · 2 Lauf-Grenze (höchstens `maxProLauf` neue Varianten je Lauf, Rest am nächsten Tag)
  *             3 Abweichung (Zustand ≠ Plan) · 4 Tageslimit für neue Varianten (später denselben Befehl wiederholen) · 5 mindestens ein Produkt GESPERRT (Tor nicht bestanden)
@@ -24,18 +27,22 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } fr
 import { dirname, join } from 'node:path';
 import { pruefeAntwort, TageslimitFehler, AbweichungFehler, M_SET, M_META, M_UPDATE } from '../lib/pod_auswahl_schreiben.mjs';
 import { PLATZHALTER_VARIANTE, PLATZHALTER_EDITOR, PLATZHALTER_SHOP, htmlText } from './beschreibung.mjs';
+import { SKU_BASIS } from './plan.mjs';
 
 export { TageslimitFehler, AbweichungFehler };
 export const MARKER_TAG = 'sg-fabrik';
 export const CHUNK_META = 25;
+/** Zeitlimit für productSet (Vorgabe von shopifyGql: 30 s). Ein Produkt mit 99 Varianten und 15 Bildern kann länger brauchen (Hoodie 146); UNGEMESSEN, darum grosszügig. */
+export const SET_TIMEOUT_MS = 120000;
 
 // ───────────────────────────────────────────────────────── GraphQL-Texte
-export const Q_PRODUKT = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status vendor productType tags descriptionHtml seo{ title description }
+export const Q_PRODUKT = `query($h:String!){ productByIdentifier(identifier:{handle:$h}){ id handle title status vendor productType tags descriptionHtml seo{ title description } category{ id }
   options{ id name position optionValues{ id name hasVariants } }
   variants(first:250){ nodes{ id sku price inventoryPolicy selectedOptions{ name value } inventoryItem{ tracked requiresShipping } media(first:5){ nodes{ id alt } } } pageInfo{ hasNextPage } }
   media(first:100){ nodes{ id alt status mediaContentType } }
   metafields(first:50){ nodes{ namespace key type value } }
   resourcePublicationsCount{ count } } }`;
+export const Q_NACH_ID = `query($id:ID!){ product(id:$id){ id handle title status tags resourcePublicationsCount{ count } } }`;
 export const Q_SKU = `query($q:String!){ productVariants(first:5, query:$q){ nodes{ id sku product{ id handle } } } }`;
 export const M_BIND = `mutation($p:ID!,$m:[ProductVariantAppendMediaInput!]!){ productVariantAppendMedia(productId:$p, variantMedia:$m){ userErrors{ field message code } } }`;
 export const M_DELETE = `mutation($id:ID!){ productDelete(input:{id:$id}){ deletedProductId userErrors{ field message } } }`;
@@ -44,14 +51,19 @@ const nummer = (gid) => String(gid ?? '').split('/').pop();
 const normHtml = (h) => String(h ?? '').replace(/\s+/g, ' ').replace(/>\s+</g, '><').replace(/\s*\/>/g, '>').trim();
 
 // ───────────────────────────────────────────────────────── Ledger (Anhänge, eine Zeile je Ereignis)
-export const LEDGER_KOPF = '# Modell-Fabrik Ledger: Zeit\\tHandle\\tPrintful-Nr\\tStatus\\tProdukt-ID\\tDetail (BEGONNEN, OK, ZURUECK, FEHLER)';
+export const LEDGER_KOPF = '# Modell-Fabrik Ledger: Zeit\\tHandle\\tPrintful-Nr\\tStatus\\tProdukt-ID\\tDetail (VERSUCH, BEGONNEN, OK, ZURUECK, FEHLER)';
 export function ledgerLesen(pfad) {
   const m = new Map();
   if (!pfad || !existsSync(pfad)) return m;
   for (const z of readFileSync(pfad, 'utf8').split('\n')) {
     if (!z.trim() || z.startsWith('#')) continue;
     const [zeit, handle, pfNr, status, produktId, ...detail] = z.split('\t');
-    if (handle && status) m.set(handle, { zeit, handle, pfNr, status, produktId: produktId || m.get(handle)?.produktId || null, detail: detail.join('\t') });   // eine spätere Zeile ohne ID (FEHLER) behält die ID der BEGONNEN-Zeile
+    if (!handle || !status) continue;
+    const vor = m.get(handle);
+    // `versucht`: das Werkzeug hat für diesen Handle ein productSet GESENDET (Zeile VERSUCH oder BEGONNEN), und das Produkt wurde seither nicht zurückgenommen (ZURUECK). Nur dann darf ein Produkt gleichen Handles mit unserem
+    // Marker-Tag als eigenes gelten, auch wenn die Antwort mit der Produkt-ID verloren ging.
+    const versucht = status === 'ZURUECK' ? false : (status === 'VERSUCH' || status === 'BEGONNEN') ? true : Boolean(vor?.versucht);
+    m.set(handle, { zeit, handle, pfNr, status, versucht, produktId: produktId || vor?.produktId || null, detail: detail.join('\t') });   // eine spätere Zeile ohne ID (FEHLER) behält die ID der BEGONNEN-Zeile
   }
   return m;
 }
@@ -156,13 +168,17 @@ export function bildGruppen(plan, ist) {
 // ───────────────────────────────────────────────────────── ein Produkt anlegen
 export function pruefeVorhandenes(plan, ist, ledgerEintrag) {
   const a = [];
-  if (!ledgerEintrag || !['BEGONNEN', 'FEHLER'].includes(ledgerEintrag.status) || !ledgerEintrag.produktId) a.push('der Handle gehört keinem halb fertigen Produkt dieser Fabrik (Ledger kennt ihn nicht als BEGONNEN)');
-  else if (ledgerEintrag.produktId !== ist.id) a.push(`Produkt-ID ${ist.id} ≠ Ledger ${ledgerEintrag.produktId}`);
+  // «eigen» heisst: das Ledger weiss, dass DIESES Werkzeug für diesen Handle ein Produkt angelegt (BEGONNEN) oder wenigstens zu senden versucht hat (VERSUCH, auch wenn die Antwort mit der ID verloren ging)
+  const bekannt = ledgerEintrag && ['BEGONNEN', 'FEHLER', 'VERSUCH'].includes(ledgerEintrag.status) && (ledgerEintrag.produktId || ledgerEintrag.versucht);
+  if (!bekannt) a.push('der Handle gehört keinem halb fertigen Produkt dieser Fabrik (Ledger kennt ihn nicht als begonnen oder versucht)');
+  else if (ledgerEintrag.produktId && ledgerEintrag.produktId !== ist.id) a.push(`Produkt-ID ${ist.id} ≠ Ledger ${ledgerEintrag.produktId}`);
   if (ist.status !== 'DRAFT') a.push(`Status ${ist.status} ≠ DRAFT`);
   if (!(ist.tags ?? []).includes(MARKER_TAG)) a.push(`Tag ${MARKER_TAG} fehlt`);
+  if (ist.kanaele !== 0) a.push(`in ${ist.kanaele} Verkaufskanal/-kanälen veröffentlicht (ein eigenes Entwurfsprodukt steht in keinem)`);
   if (ist.title !== plan.titel) a.push(`Titel «${ist.title}» ≠ «${plan.titel}»`);
   const erlaubt = new Set(plan.varianten.map((v) => v.sku));
   for (const v of ist.varianten) if (!erlaubt.has(v.sku)) a.push(`SKU ${v.sku} gehört nicht zum Plan`);
+  if (!ist.varianten.length) a.push('Produkt ohne Variante (kein Ergebnis von productSet dieser Fabrik)');
   return a;
 }
 
@@ -176,6 +192,7 @@ export async function produktAnlegen(plan, { gql, ledgerPfad, editorUrl, log = c
   if (schon) {
     const fremd = pruefeVorhandenes(plan, schon, led);
     if (fremd.length) throw new AbweichungFehler(`${plan.handle}: Handle gibt es schon, aber nicht als das eigene halb fertige DRAFT-Produkt dieser Fabrik, nichts geschrieben`, fremd);
+    if (!led.produktId) L('BEGONNEN', { produktId: schon.id, detail: 'übernommen: die Antwort auf productSet ging verloren, das Produkt steht aber im Shop (eigener Entwurf)' });
     log(`   Produkt gab es schon (${schon.id}, eigener Entwurf), ergänze, was fehlt`);
   } else {
     // SKU-Präfix im Shop: kein Treffer ausser dem eigenen Produkt
@@ -184,7 +201,19 @@ export async function produktAnlegen(plan, { gql, ledgerPfad, editorUrl, log = c
     const treffer = (j.data?.productVariants?.nodes ?? []);
     if (treffer.length) throw new AbweichungFehler(`${plan.handle}: SKU-Präfix ${praefix}_ gibt es im Shop schon (${treffer.map((t) => `${t.sku} in ${t.product?.handle}`).join(', ')}), nichts geschrieben`, treffer.map((t) => t.sku));
     if (sicherungsDir) { mkdirSync(sicherungsDir, { recursive: true }); writeFileSync(join(sicherungsDir, `${plan.handle}.plan.json`), JSON.stringify(plan, null, 1)); }
-    const r = pruefeAntwort(await gql(M_SET, { input: produktSetEingabe(plan) }), `${plan.handle}: Produkt anlegen`, 'productSet');
+    L('VERSUCH', { detail: `${plan.varianten.length} Varianten: productSet wird gesendet (steht keine ID dahinter, ging die Antwort verloren oder das Produkt wurde nie angelegt; der nächste Lauf entscheidet am Handle)` });
+    let r;
+    try { r = pruefeAntwort(await gql(M_SET, { input: produktSetEingabe(plan) }, { timeoutMs: SET_TIMEOUT_MS }), `${plan.handle}: Produkt anlegen`, 'productSet'); }
+    catch (e) {
+      // Zeitüberschreitung, Netzfehler oder Fehlerantwort: hat Shopify das Produkt trotzdem angelegt? Dann die ID festhalten (sonst bliebe ein Waisen-Entwurf, den kein Werkzeug mehr findet).
+      let gefunden = null;
+      try { gefunden = await leseFrisch(gql, plan.handle); } catch { /* Lesen scheitert ebenfalls: der nächste Lauf übernimmt über die Zeile VERSUCH */ }
+      if (gefunden && pruefeVorhandenes(plan, gefunden, { status: 'VERSUCH', versucht: true, produktId: null }).length === 0) {
+        L('BEGONNEN', { produktId: gefunden.id, detail: `productSet endete mit «${String(e.message).slice(0, 120)}», das Produkt steht aber im Shop (eigener Entwurf)` });
+        log(`   productSet meldete einen Fehler, das Produkt wurde aber angelegt (${gefunden.id}); die ID steht im Ledger`);
+      }
+      throw e;
+    }
     schon = { id: r.product.id };
     L('BEGONNEN', { produktId: schon.id, detail: `${plan.varianten.length} Varianten` });
     log(`   Produkt angelegt (DRAFT): ${schon.id}`);
@@ -266,16 +295,39 @@ export async function lauf({ plaene, gql, ledgerPfad, editorUrl, log = console.l
 }
 
 // ───────────────────────────────────────────────────────── Rücknahme
-/** Löscht NUR Produkte aus dem Ledger (letzter Stand OK oder BEGONNEN/FEHLER mit Produkt-ID), die noch DRAFT sind, das Tag sg-fabrik tragen, die Ledger-ID haben und in keinem Kanal stehen. */
+export async function leseNachId(gql, id) {
+  const j = await gql(Q_NACH_ID, { id });
+  if (j.errors) throw new Error('Abfrage nach ID: ' + JSON.stringify(j.errors).slice(0, 300));
+  const p = j.data?.product;
+  return p ? { ...p, kanaele: p.resourcePublicationsCount?.count ?? null } : null;
+}
+/**
+ * Löscht NUR Produkte aus dem Ledger, die noch DRAFT sind, das Tag sg-fabrik tragen und in keinem Kanal stehen, UND
+ *   - deren Ledger-ID stimmt (Letzter Stand OK, BEGONNEN oder FEHLER mit Produkt-ID), oder
+ *   - bei VERSUCH/FEHLER OHNE ID (die Antwort auf productSet ging verloren): jede Variante trägt eine SKU «<9100000 + Modellnummer aus dem Ledger>_<Zahl>».
+ * Ist der Handle nicht mehr da, aber das Ledger kennt eine ID, wird nach der ID gesucht: ein vom Besitzer umbenanntes Produkt wird gemeldet (UMBENANNT, Exit 5) und nicht als «weg» verbucht.
+ */
 export async function zuruecknehmen({ gql, ledgerPfad, log = console.log, jetzt = () => new Date().toISOString(), nur = null }) {
   const ergebnisse = [];
   for (const e of ledgerLesen(ledgerPfad).values()) {
-    if (!['OK', 'BEGONNEN', 'FEHLER'].includes(e.status) || !e.produktId) continue;
+    if (!['OK', 'BEGONNEN', 'FEHLER', 'VERSUCH'].includes(e.status) || !(e.produktId || e.versucht)) continue;
     if (nur && !nur.includes(e.handle)) continue;
     const ist = await leseFrisch(gql, e.handle);
-    if (!ist) { log(`= ${e.handle}: gibt es nicht mehr`); ledgerSchreiben(ledgerPfad, { handle: e.handle, pfNr: e.pfNr, status: 'ZURUECK', produktId: e.produktId, detail: 'war schon weg' }, jetzt); ergebnisse.push({ handle: e.handle, status: 'WEG' }); continue; }
+    if (!ist) {
+      if (e.produktId) {
+        const nachId = await leseNachId(gql, e.produktId);
+        if (nachId) { log(`✗ ${e.handle}: der Handle ist weg, das Produkt ${e.produktId} gibt es aber noch (jetzt «${nachId.handle}», Status ${nachId.status}): NICHT gelöscht, bitte von Hand ansehen`); ergebnisse.push({ handle: e.handle, status: 'UMBENANNT', gruende: [`Produkt ${e.produktId} heisst jetzt ${nachId.handle}`] }); continue; }
+        log(`= ${e.handle}: gibt es nicht mehr`); ledgerSchreiben(ledgerPfad, { handle: e.handle, pfNr: e.pfNr, status: 'ZURUECK', produktId: e.produktId, detail: 'war schon weg' }, jetzt); ergebnisse.push({ handle: e.handle, status: 'WEG' }); continue;
+      }
+      log(`= ${e.handle}: laut Ledger nur versucht, im Shop gibt es kein Produkt mit diesem Handle`); ledgerSchreiben(ledgerPfad, { handle: e.handle, pfNr: e.pfNr, status: 'ZURUECK', detail: 'nie angelegt (kein Produkt mit dem Handle)' }, jetzt); ergebnisse.push({ handle: e.handle, status: 'WEG' }); continue;
+    }
     const gruende = [];
-    if (ist.id !== e.produktId) gruende.push(`Produkt-ID ${ist.id} ≠ Ledger ${e.produktId}`);
+    if (e.produktId) { if (ist.id !== e.produktId) gruende.push(`Produkt-ID ${ist.id} ≠ Ledger ${e.produktId}`); }
+    else {
+      const praefix = SKU_BASIS + Number(e.pfNr);
+      const re = new RegExp(`^${praefix}_\\d+$`);
+      if (!Number.isFinite(praefix) || !ist.varianten.length || !ist.varianten.every((v) => re.test(String(v.sku ?? '')))) gruende.push(`ohne Ledger-ID nur mit SKUs «${praefix}_…» an jeder Variante (gefunden: ${ist.varianten.slice(0, 3).map((v) => v.sku || '(leer)').join(', ')})`);
+    }
     if (ist.status !== 'DRAFT') gruende.push(`Status ${ist.status}, nur ENTWÜRFE werden gelöscht`);
     if (!(ist.tags ?? []).includes(MARKER_TAG)) gruende.push(`Tag ${MARKER_TAG} fehlt (nicht von dieser Fabrik)`);
     if (ist.kanaele !== 0) gruende.push(`in ${ist.kanaele} Kanal/Kanälen veröffentlicht`);
@@ -283,9 +335,9 @@ export async function zuruecknehmen({ gql, ledgerPfad, log = console.log, jetzt 
     pruefeAntwort(await gql(M_DELETE, { id: ist.id }), `${e.handle}: löschen`, 'productDelete');
     const danach = await leseFrisch(gql, e.handle);
     if (danach) { log(`✗ ${e.handle}: nach dem Löschen noch vorhanden`); ergebnisse.push({ handle: e.handle, status: 'NOCH_DA' }); continue; }
-    ledgerSchreiben(ledgerPfad, { handle: e.handle, pfNr: e.pfNr, status: 'ZURUECK', produktId: e.produktId, detail: 'gelöscht, frisch gelesen: weg' }, jetzt);
+    ledgerSchreiben(ledgerPfad, { handle: e.handle, pfNr: e.pfNr, status: 'ZURUECK', produktId: ist.id, detail: 'gelöscht, frisch gelesen: weg' }, jetzt);
     log(`✓ ${e.handle}: gelöscht`); ergebnisse.push({ handle: e.handle, status: 'GELOESCHT' });
   }
-  const offen = ergebnisse.filter((r) => ['GESPERRT', 'NOCH_DA'].includes(r.status)).length;
+  const offen = ergebnisse.filter((r) => ['GESPERRT', 'NOCH_DA', 'UMBENANNT'].includes(r.status)).length;
   return { ergebnisse, exit: offen ? 5 : 0 };
 }

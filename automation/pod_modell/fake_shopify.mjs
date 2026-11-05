@@ -6,7 +6,7 @@
  */
 export function neueAttrappe(optionen = {}) {
   const o = { polls: 1, ...optionen };
-  const st = { produkte: new Map(), naechste: 1000, aufrufe: [], lesungen: 0, schreibaufrufe: 0 };
+  const st = { produkte: new Map(), naechste: 1000, aufrufe: [], extras: [], lesungen: 0, schreibaufrufe: 0 };
   const zaehler = (p) => `gid://shopify/${p}/${st.naechste++}`;
   const gid = (id) => String(id);
   const byHandle = (h) => [...st.produkte.values()].find((p) => p.handle === h) ?? null;
@@ -15,7 +15,7 @@ export function neueAttrappe(optionen = {}) {
   const sichtbar = (p) => {
     for (const m of p.media) { if (m.status !== 'PROCESSING') continue; m.lesungen = (m.lesungen ?? 0) + 1; if (m.lesungen > o.polls) m.status = o.mediaFehler ? 'FAILED' : 'READY'; }
     return {
-      id: p.id, handle: p.handle, title: p.title, status: p.status, vendor: p.vendor, productType: p.productType, tags: [...p.tags], seo: p.seo ?? { title: null, description: null }, descriptionHtml: p.descriptionHtml,
+      id: p.id, handle: p.handle, title: p.title, status: p.status, vendor: p.vendor, productType: p.productType, tags: [...p.tags], seo: p.seo ?? { title: null, description: null }, descriptionHtml: p.descriptionHtml, category: p.category ? { id: p.category } : null,
       options: p.options.map((x, i) => ({ id: `gid://shopify/ProductOption/${i + 1}`, name: x.name, position: i + 1, optionValues: x.values.map((w, j) => ({ id: `gid://shopify/ProductOptionValue/${j + 1}`, name: w, hasVariants: p.variants.some((v) => v.selectedOptions.some((s) => s.name === x.name && s.value === w)) })) })),
       variants: { nodes: p.variants.map((v) => ({ id: v.id, sku: v.sku, price: v.price, inventoryPolicy: v.inventoryPolicy, selectedOptions: v.selectedOptions, inventoryItem: v.inventoryItem, media: { nodes: v.mediaIds.map((mid) => ({ id: mid, alt: p.media.find((m) => m.id === mid)?.alt })) } })), pageInfo: { hasNextPage: false } },
       media: { nodes: p.media.map((m) => ({ id: m.id, alt: m.alt, status: m.status, mediaContentType: 'IMAGE' })) },
@@ -24,10 +24,14 @@ export function neueAttrappe(optionen = {}) {
     };
   };
   const netz = (was) => { if (o.netzfehlerBei === was) { o.netzfehlerBei = null; throw new Error(`Netzfehler (Attrappe) bei ${was}`); } };
+  // Antwort verloren: die Mutation WIRD ausgeführt, die Antwort kommt aber nie an (Zeitüberschreitung). Einmalig.
+  const verloren = (was) => { if (o.antwortVerlorenBei === was) { o.antwortVerlorenBei = null; return true; } return false; };
 
-  async function gql(query, v = {}) {
+  async function gql(query, v = {}, extra = {}) {
     st.aufrufe.push(String(query).slice(0, 60).replace(/\s+/g, ' '));
+    st.extras.push(extra ?? {});
     const q = String(query);
+    if (/\bproduct\(id:/.test(q)) { st.lesungen++; const p = st.produkte.get(v.id); return { data: { product: p ? { id: p.id, handle: p.handle, title: p.title, status: p.status, tags: [...p.tags], resourcePublicationsCount: { count: p.kanaele } } : null } }; }
     if (/productByIdentifier/.test(q)) { st.lesungen++; const p = byHandle(v.h); return { data: { productByIdentifier: p ? sichtbar(p) : null } }; }
     if (/productVariants\(/.test(q)) {
       const m = String(v.q).match(/^sku:(.+)\*$/); const pre = m ? m[1] : String(v.q).replace(/^sku:/, '');
@@ -50,12 +54,13 @@ export function neueAttrappe(optionen = {}) {
       }
       if (i.status !== 'DRAFT' && o.nurDraft !== false) return ue('productSet', 'Attrappe erwartet DRAFT');
       const p = {
-        id: zaehler('Product'), handle: i.handle, title: i.title, status: i.status, vendor: i.vendor, productType: i.productType, tags: [...i.tags], seo: i.seo, descriptionHtml: o.entferneScripts ? i.descriptionHtml.replace(/<script[\s\S]*?<\/script>/g, '') : i.descriptionHtml, kanaele: 0, metafields: [],
+        id: zaehler('Product'), category: i.category ?? null, handle: i.handle, title: i.title, status: i.status, vendor: i.vendor, productType: i.productType, tags: [...i.tags], seo: i.seo, descriptionHtml: o.entferneScripts ? i.descriptionHtml.replace(/<script[\s\S]*?<\/script>/g, '') : i.descriptionHtml, kanaele: 0, metafields: [],
         options: i.productOptions.map((x) => ({ name: x.name, values: x.values.map((w) => w.name) })),
         variants: i.variants.map((x) => ({ id: zaehler('ProductVariant'), sku: x.sku, price: o.preisAufschlag ? (Number(x.price) + o.preisAufschlag).toFixed(2) : x.price, inventoryPolicy: x.inventoryPolicy, inventoryItem: { tracked: x.inventoryItem?.tracked ?? true, requiresShipping: x.inventoryItem?.requiresShipping ?? true }, selectedOptions: x.optionValues.map((ov) => ({ name: ov.optionName, value: ov.name })), mediaIds: [] })),
         media: (i.files ?? []).map((f) => ({ id: zaehler('MediaImage'), alt: f.alt, url: f.originalSource, status: 'PROCESSING' })),
       };
       st.produkte.set(p.id, p);
+      if (verloren('productSet')) throw new Error('GraphQL: fetch: The operation was aborted due to timeout (Attrappe, Antwort verloren)');
       return ok('productSet', { product: { id: p.id, handle: p.handle, status: p.status } });
     }
     if (/metafieldsSet/.test(q)) {

@@ -4,8 +4,12 @@
  "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 140.json); jeder Satz mit englischem Beleg",
  "intro": [
   {
-   "de": "In zwei Grössen mit elastischem Stretchband erhältlich: Diese Cap ist ein Gewinn für den Tragekomfort. Sie hat eine sportliche Form mit gebogenem Schirm.",
-   "beleg": "Available in two sizes with an elastic stretch band, this hat is a sure winner in comfort! It has an athletic shape with a curved visor."
+   "de": "In zwei Grössen mit elastischem Stretchband erhältlich.",
+   "beleg": "Available in two sizes with an elastic stretch band"
+  },
+  {
+   "de": "Sie hat eine sportliche Form mit gebogenem Schirm.",
+   "beleg": "It has an athletic shape with a curved visor."
   }
  ],
  "punkte": [

@@ -16,18 +16,22 @@
  *   <script src="…/lspod-designer-v6.js" defer></script>
  * Die Karte kann auch als data-karte="…JSON…" oder per data-karte-url="…" kommen. Ohne gültige Karte arbeitet der Editor im
  * v5-Modus (Rückfall): Vorne/Hinten aus data-img-front / data-img-back, Leinwand data-ref × data-ratio, gleiche Warenkorb-Eigenschaften wie v5.
- * Weitere Attribute (alle optional): data-img-map (Variante → Bild, nur v5-Modus), data-max-px (Obergrenze der Druckdatei in Pixeln, 0 = keine).
+ * Weitere Attribute (alle optional): data-img-map (Variante → Bild, nur v5-Modus), data-max-px (Obergrenze der Druckdatei in Pixeln; 0 = nur die
+ * absolute Grenze von 25 Mpx), data-max-bytes (Obergrenze der Dateigrösse vor dem Upload, Vorgabe 9 MB, 0 = keine Prüfung), data-upload-timeout (ms).
  *
  * Gelesene Felder der Karte: printfulProductId, klasse, minDpi, platzierungen[{id, dateiTyp, titelDe, titelEn, art, technik, printfile, vorlage,
  * geometrien, aufpreisUsd, aufpreisChf, kollidiertMit, kollidiertMitImEditor}], druckdateien, druckdateiGruppen, varianten[{printfulVariantId,
  * druckdateiGruppe}], hinweise[{code, art, text, kundentext, kundentextEn}], shop.varianten{<Shopify-Id>: <Printful-Variante>}.
+ * KARTENBÜNDEL (ein Shop-Produkt aus mehreren Printful-Modellen, z. B. T-Shirt = 71 + 456 + 586): { schema: 1, modelle: { "<Printful-Produkt>": <Modellkarte>, … },
+ * shop: { varianten: { "<Shopify-Id>": { pv: <Printful-Variante>, m: <Printful-Produkt> } } } }. Der Editor wählt die Karte nach der gewählten Variante;
+ * eine Variante ohne Eintrag sperrt den Kauf (es wird nie still die Standardgeometrie genommen).
  */
 (function () {
   'use strict';
   if (window.__lspodDesignerV6Loaded) return;
   window.__lspodDesignerV6Loaded = true;
 
-  var VERSION = '6.0.0';
+  var VERSION = '6.1.0';
 
   // ── Konfiguration (Cloudinary und Sticker unverändert aus v5) ───────────────────────────────────
   var CLOUD_NAME = 'dwyi6kkrl';
@@ -47,6 +51,13 @@
    *  16 777 216 Pixel (QUELLE: allgemein bekannte iOS-Grenze, hier nicht auf einem iPhone gemessen); Printful skaliert zu kleine Dateien selbst hoch.
    *  Alle Modelle bis 16,7 Mpx (T-Shirt, Tasse, Kappe, Hülle …) werden in der echten Pixelgrösse erzeugt. */
   var MAX_PIXEL = 16777216;
+  /** Absolute Grenze, auch mit data-max-px="0" (QUELLE: Cloudinary-Preisvergleich, Gegenleser 05.11.: höchstens 25 Megapixel bei Free und Plus, 50 bei Advanced; nicht am Konto gemessen). */
+  var MAX_PIXEL_ABS = 25000000;
+  /** Grösste Druckdatei in Bytes vor dem Upload (QUELLE: Cloudinary Free 10 MB, Plus 20 MB; Konto dwyi6kkrl ungemessen). Darüber wird die Datei verkleinert und neu gerechnet. */
+  var MAX_BYTES = 9 * 1024 * 1024;
+  var UPLOAD_ZEIT_MS = 90000;      // Zeitlimit eines Uploads
+  /** Längster Wert einer Warenkorb-Eigenschaft (QUELLE: zwei Dritt-Anleitungen zu Shopify-Line-Item-Properties nennen 255 Zeichen; nicht an Shopify gemessen). */
+  var POD_KARTE_MAX = 255;
   var MIN_DPI_VORGABE = 100;       // gilt, wenn die Karte kein minDpi nennt
   var LEGACY_REF = 1200;           // v5: Breite der Druckdatei in Pixeln
   var MAX_ZURUECK = 60;            // Schritte Rückgängig
@@ -98,6 +109,15 @@
       frame: '\u{1F5BC}\uFE0F Rahmen', bw: '⚫ S/W', reset: '↺ Zurücksetzen', bright: 'Helligkeit', contrast: 'Kontrast', saturation: 'Sättigung', sharp: 'Schärfe',
       bold: 'Fett', italic: 'Kursiv', alignL: 'Links', alignC: 'Mitte', alignR: 'Rechts', alignLT: 'Linksbündig', alignCT: 'Zentriert', alignRT: 'Rechtsbündig', customColor: 'Eigene Farbe',
       cropHead: '✂\uFE0F Bild zuschneiden: Rahmen ziehen', apply: '✓ Übernehmen', cancel: '✕ Abbrechen', fontL: 'Schrift', colorL: 'Farbe', statusL: 'Status',
+      noMap: 'Diese Ausführung ist im Editor noch nicht eingerichtet. Bitte wähle oben eine andere Grösse oder Farbe.',
+      orphan: 'Bei dieser Ausführung gibt es «{a}» nicht. Entferne dein Motiv dort oder wähle oben eine andere Ausführung.',
+      notPossible: 'hier nicht möglich', orphanTitle: 'Bei dieser Ausführung nicht möglich',
+      tooHeavy: 'Die Druckdatei ist zu gross für den Upload. Nimm ein kleineres Foto oder weniger Motive.',
+      shrunk: 'Die Druckdatei wurde auf {w} \xD7 {h} px verkleinert, damit der Upload klappt.',
+      upTimeout: 'Der Upload dauert zu lange. Bitte prüfe deine Verbindung und versuche es erneut.',
+      varChanged: 'Du hast die Variante gewechselt. Bitte tippe noch einmal auf «Mit meinem Design in den Warenkorb».',
+      tooMany: 'Zu viele Druckflächen auf einmal. Bestelle dein Design bitte in zwei Teilen.',
+      sheetInfo: 'Druckbogen {w} \xD7 {h} cm',
     },
     en: {
       head: 'Design it yourself', ph: 'Your text …', addText: '➕ Text', addImg: '\u{1F5BC}\uFE0F Image', addSticker: '⭐ Sticker',
@@ -130,6 +150,15 @@
       frame: '\u{1F5BC}\uFE0F Frame', bw: '⚫ B/W', reset: '↺ Reset', bright: 'Brightness', contrast: 'Contrast', saturation: 'Saturation', sharp: 'Sharpness',
       bold: 'Bold', italic: 'Italic', alignL: 'Left', alignC: 'Center', alignR: 'Right', alignLT: 'Align left', alignCT: 'Center', alignRT: 'Align right', customColor: 'Custom color',
       cropHead: '✂\uFE0F Crop image: drag the box', apply: '✓ Apply', cancel: '✕ Cancel', fontL: 'Font', colorL: 'Color', statusL: 'Status',
+      noMap: 'This option is not set up in the editor yet. Please pick another size or color above.',
+      orphan: '"{a}" does not exist for this option. Remove your design there or pick another option above.',
+      notPossible: 'not available here', orphanTitle: 'Not available for this option',
+      tooHeavy: 'The print file is too large to upload. Use a smaller photo or fewer designs.',
+      shrunk: 'The print file was reduced to {w} \xD7 {h} px so that the upload works.',
+      upTimeout: 'The upload takes too long. Please check your connection and try again.',
+      varChanged: 'You changed the option. Please tap "Add my design to cart" again.',
+      tooMany: 'Too many print areas at once. Please order your design in two parts.',
+      sheetInfo: 'Print sheet {w} \xD7 {h} cm',
     },
   };
   var T = EN ? TEXTE.en : TEXTE.de;
@@ -141,8 +170,8 @@
   /** Kundentexte zu den Hinweis-Codes der Karte. Die Karte darf eigene Texte mitbringen (kundentext / kundentextEn). Nur Hinweise
    *  mit art «einschraenkung» oder ein Code dieser Tabelle werden angezeigt; interne Texte der Karte («Erfahrungswert», Verweise auf Messdateien) nie. */
   var HINWEIS_TEXTE = {
-    stickerei: { de: 'Stickerei: Dein Motiv wird in Garnfarben gestickt. Nimm ein einfaches Motiv mit wenigen Farben. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.',
-      en: 'Embroidery: your design is stitched in thread colors. Use a simple design with few colors. Photos, gradients and very fine lines cannot be stitched.' },
+    stickerei: { de: 'Stickerei: Dein Motiv wird gestickt. Nimm ein einfaches Motiv mit wenigen Farben. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.',
+      en: 'Embroidery: your design is stitched. Use a simple design with few colors. Photos, gradients and very fine lines cannot be stitched.' },
     gestrickt: { de: 'Gestrickt: Das Motiv wird als Maschenraster umgesetzt. Feine Details und Fotos gehen verloren.',
       en: 'Knitted: the design is made as a stitch grid. Fine details and photos are lost.' },
     allover_einzeldatei: { de: 'Rundum-Druck: Dein Motiv läuft über das ganze Teil und über die Nähte.',
@@ -237,9 +266,39 @@
     return istZahl(vl.flaecheLinks) && istZahl(vl.flaecheOben);
   }
 
+  /** Kartenbündel prüfen: { schema:1, modelle:{ "<Printful-Produkt>": Modellkarte }, shop:{ varianten:{ "<Shopify-Id>": {pv, m} } } }. Ein unbrauchbares Modell
+   *  macht das ganze Bündel unbrauchbar (der Editor fällt dann in den v5-Modus zurück, wie es heute auf der Seite ist). */
+  function buendelNormalisieren(roh) {
+    if (roh.schema !== undefined && roh.schema !== 1) return { fehler: 'Kartenschema ' + roh.schema + ' unbekannt' };
+    if (!roh.modelle || typeof roh.modelle !== 'object' || Array.isArray(roh.modelle)) return { fehler: 'Feld «modelle» ungültig' };
+    var modelle = {}, reihenfolge = [], alleIds = [];
+    var schluessel = Object.keys(roh.modelle);
+    if (!schluessel.length) return { fehler: 'Bündel ohne Modell' };
+    for (var i = 0; i < schluessel.length; i++) {
+      var pid = schluessel[i], m = roh.modelle[pid];
+      if (!m || typeof m !== 'object' || m.modelle !== undefined) return { fehler: 'Modell ' + pid + ': keine Modellkarte' };
+      if (m.printfulProductId != null && String(m.printfulProductId) !== pid) return { fehler: 'Modell ' + pid + ': printfulProductId ' + m.printfulProductId + ' passt nicht zum Schlüssel' };
+      var r = karteNormalisieren(m);
+      if (!r.karte) return { fehler: 'Modell ' + pid + ': ' + r.fehler };
+      if (r.karte.printfulProductId == null) r.karte.printfulProductId = Number(pid);
+      modelle[pid] = r.karte; reihenfolge.push(pid);
+      r.karte.platzierungen.forEach(function (p) { if (alleIds.indexOf(p.id) < 0) alleIds.push(p.id); });
+    }
+    var zuordnung = {}, sv = roh.shop && roh.shop.varianten;
+    if (sv && typeof sv === 'object') {
+      Object.keys(sv).forEach(function (k) {
+        var x = sv[k];
+        if (x && typeof x === 'object' && x.pv != null && x.pv !== '' && istZahl(Number(x.pv)) && x.m != null && modelle[String(x.m)]) zuordnung[String(k)] = { pv: Number(x.pv), m: String(x.m) };
+      });
+    }
+    if (!Object.keys(zuordnung).length) return { fehler: 'Bündel ohne Zuordnung Shopify-Variante → Modell' };
+    return { karte: { buendel: true, legacy: false, modelle: modelle, reihenfolge: reihenfolge, zuordnung: zuordnung, alleIds: alleIds } };
+  }
+
   /** Karte prüfen und für den Editor vorbereiten. Gibt { karte } oder { fehler } zurück. Die übergebene Karte wird nicht verändert. */
   function karteNormalisieren(roh) {
     if (!roh || typeof roh !== 'object') return { fehler: 'keine Karte' };
+    if (roh.modelle !== undefined) return buendelNormalisieren(roh);
     if (roh.schema !== undefined && roh.schema !== 1) return { fehler: 'Kartenschema ' + roh.schema + ' unbekannt' };
     if (!Array.isArray(roh.platzierungen)) return { fehler: 'Feld «platzierungen» fehlt' };
     var platzierungen = roh.platzierungen.filter(platzierungOk);
@@ -309,6 +368,12 @@
     return { printfile: pf, vorlage: vl };
   }
 
+  /** Platzierung einer Karte nach ID (oder null). */
+  function platzierungIn(k, id) {
+    for (var i = 0; i < k.platzierungen.length; i++) if (k.platzierungen[i].id === id) return k.platzierungen[i];
+    return null;
+  }
+
   /** Platzierungen, die mit `id` kollidieren UND schon Ebenen tragen (ebenen: { id: [..] }). */
   function blockierer(karte, id, ebenen) {
     var k = karte.konflikte[id] || {};
@@ -364,24 +429,49 @@
     return CLOUD_NAME && url.indexOf('abannews.com') >= 0 ? 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/fetch/' + encodeURIComponent(url) : url;
   }
 
-  /** Datei zu Cloudinary (Parameter unverändert aus v5). streng: Antwort muss ok sein und eine https-Adresse tragen (für Druckdateien). */
-  function hochladen(datei, streng, fertig) {
+  /** Fehler eines Uploads: `detail` = Text des Servers, `gross` = die Datei war dem Server zu gross (Bytes, Pixel oder Seitenlänge), `zeit` = Zeitlimit. */
+  function uploadFehler(text, detail, status) {
+    var err = new Error(text);
+    err.detail = detail || '';
+    err.status = status || 0;
+    err.gross = status === 413 || /size|large|megapixel|too big|dimension|pixels|zu gross/i.test(detail || '');
+    return err;
+  }
+
+  /** Datei zu Cloudinary (Parameter unverändert aus v5). streng: Antwort muss ok sein und eine https-Adresse tragen (für Druckdateien). zeitMs: Zeitlimit.
+   *  Meldet genau einmal zurück: fertig(Fehler) oder fertig(null, Adresse). */
+  function hochladen(datei, streng, fertig, zeitMs) {
     var fd = new FormData();
     fd.append('file', datei);
     fd.append('upload_preset', UPLOAD_PRESET);
-    fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/auto/upload', { method: 'POST', body: fd })
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var gemeldet = false, timer = null;
+    function melden(err, url) {
+      if (gemeldet) return;
+      gemeldet = true; clearTimeout(timer);
+      fertig(err, url);
+    }
+    if (zeitMs > 0) timer = setTimeout(function () {
+      if (ctrl) { try { ctrl.abort(); } catch (x) { /* egal */ } }
+      var err = uploadFehler(T.upTimeout, 'timeout', 0); err.zeit = true;
+      melden(err);
+    }, zeitMs);
+    var opt = { method: 'POST', body: fd };
+    if (ctrl) opt.signal = ctrl.signal;
+    fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/auto/upload', opt)
       .then(function (r) {
-        if (streng && !r.ok) throw new Error(T.printErr);
-        return r.json();
+        return r.json().catch(function () { return null; }).then(function (j) { return { ok: r.ok, status: r.status, j: j }; });
       })
-      .then(function (j) {
+      .then(function (a) {
+        var j = a.j, meldungServer = (j && j.error && j.error.message) || '';
         if (streng) {
-          if (!j || typeof j.secure_url !== 'string' || !/^https:\/\//i.test(j.secure_url)) throw new Error(T.printErr);
-          fertig(null, j.secure_url);
-        } else if (j.secure_url) fertig(null, j.secure_url);
-        else fertig(new Error((j.error && j.error.message) || 'failed'));
+          if (!a.ok) throw uploadFehler(T.printErr, meldungServer, a.status);
+          if (!j || typeof j.secure_url !== 'string' || !/^https:\/\//i.test(j.secure_url)) throw uploadFehler(T.printErr, meldungServer, a.status);
+          melden(null, j.secure_url);
+        } else if (j && j.secure_url) melden(null, j.secure_url);
+        else melden(uploadFehler(meldungServer || 'failed', meldungServer, a.status));
       })
-      .catch(fertig);
+      .catch(function (err) { melden(err && err.detail !== undefined ? err : uploadFehler(streng ? T.printErr : String((err && err.message) || err), String((err && err.message) || err), 0)); });
   }
 
   /** Hintergrund entfernen: Farbe der vier Ecken als Hintergrund, alles nah daran wird durchsichtig (weicher Rand). */
@@ -434,6 +524,11 @@
     ctx.lineWidth = dicke;
     ctx.strokeRect(dicke / 2, dicke / 2, cv.width - dicke, cv.height - dicke);
     ctx.restore();
+  }
+
+  /** Speicher einer Leinwand freigeben (Mobile Safari hält grosse Leinwände sonst bis zur Müllabfuhr). */
+  function leinwandFreigeben(cv) {
+    try { if (cv) { cv.width = 0; cv.height = 0; } } catch (x) { /* egal */ }
   }
 
   /** Das Bild der Ebene mit allen Bearbeitungen (Zuschnitt, Drehen, Spiegeln, Filter) auf eine Leinwand zeichnen; maxBreite 0 = volle Grösse. */
@@ -511,12 +606,14 @@
     '.lsp6 *,.lsp6 *::before,.lsp6 *::after{box-sizing:border-box}',
     '.lsp6 [hidden]{display:none!important}',
     '.lsp6-head{background:var(--ink);color:#fff;padding:12px 16px;font-weight:800;font-size:15px}',
-    '.lsp6-tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px 6px;background:var(--paper);border-bottom:1px solid #ece7df;scrollbar-width:thin}',
+    '.lsp6-tabs{position:relative;display:flex;gap:6px;overflow-x:auto;padding:10px 12px 6px;background:var(--paper);border-bottom:1px solid #ece7df;scrollbar-width:thin}',
     '.lsp6-tab{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-height:44px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:13px;line-height:1.2;cursor:pointer;text-align:left}',
     '.lsp6-tab small{font-family:inherit;font-weight:600;font-size:11px;line-height:1.2;color:var(--mute)}',
     '.lsp6-tab[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}',
     '.lsp6-tab[aria-selected=true] small{color:#e8e4da}',
     '.lsp6-tab[aria-disabled=true]{opacity:.62;border-style:dashed;cursor:not-allowed}',
+    '.lsp6-tab.fremd{border-style:dashed;border-color:var(--red);color:var(--red)}',
+    '.lsp6-tab.fremd[aria-selected=true]{background:var(--red);border-color:var(--red);color:#fff}',
     '.lsp6-tab .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-left:6px;vertical-align:middle}',
     '.lsp6-tabnote{margin:0;padding:8px 14px;background:#fff4f5;border-bottom:1px solid #f3c6cd;color:var(--red);font-size:12.5px;font-weight:700}',
     '.lsp6-stagewrap{background:#efece6;padding:8px 0 0}',
@@ -532,6 +629,7 @@
     '.lsp6-layer.sel{z-index:600!important}',
     '.lsp6-handle{position:absolute;right:-21px;bottom:-21px;width:30px;height:30px;border-radius:50%;background:var(--ink);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);cursor:nwse-resize;touch-action:none;color:#fff;font-size:13px;line-height:26px;text-align:center}',
     '.lsp6-del{position:absolute;left:-21px;top:-21px;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);cursor:pointer;font-size:14px;line-height:26px;text-align:center;font-weight:900;touch-action:none}',
+    '.lsp6-handle::before,.lsp6-del::before{content:"";position:absolute;inset:-7px}',   // Tippfläche 44 px bei sichtbaren 30 px
     '.lsp6-sel-frame{position:absolute;inset:-8px;border:1.5px dashed var(--ink);border-radius:6px;pointer-events:none;background:rgba(255,255,255,.04)}',
     '.lsp6-meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:space-between;padding:8px 16px 0;font-size:12px;color:var(--mute)}',
     '.lsp6-linkbtn{border:none;background:none;color:var(--golddk);font-family:inherit;font-weight:700;font-size:12px;line-height:1.2;text-decoration:underline;cursor:pointer;padding:6px 0;min-height:36px}',
@@ -613,14 +711,26 @@
   // ── Der Editor ──────────────────────────────────────────────────────────────────────────────────
   var editoren = [];   // alle gebauten Editoren (für Tests und Fehlersuche)
 
-  function baueEditor(container, karte) {
-    var legacy = !!karte.legacy;
+  function baueEditor(container, wurzel) {
+    var legacy = !!wurzel.legacy;
+    var buendel = !!wurzel.buendel;
+    var karte = buendel ? wurzel.modelle[wurzel.reihenfolge[0]] : wurzel;   // bei einem Bündel wechselt `karte` mit dem Modell der gewählten Variante
     var attrMax = container.getAttribute('data-max-px');
     var maxPixel = legacy ? 0 : (attrMax !== null && attrMax !== '' && isFinite(Number(attrMax)) && Number(attrMax) >= 0 ? Number(attrMax)
       : (karte.maxPixel != null ? karte.maxPixel : MAX_PIXEL));
-    var standardVariante = legacy ? karte.standardVariante : (container.getAttribute('data-variant') || '');
+    if (!legacy && (!(maxPixel > 0) || maxPixel > MAX_PIXEL_ABS)) maxPixel = MAX_PIXEL_ABS;
+    var attrBytes = container.getAttribute('data-max-bytes');
+    var maxBytes = attrBytes !== null && attrBytes !== '' && isFinite(Number(attrBytes)) && Number(attrBytes) >= 0 ? Number(attrBytes) : MAX_BYTES;
+    var attrZeit = container.getAttribute('data-upload-timeout');
+    var uploadZeit = attrZeit && Number(attrZeit) > 0 ? Number(attrZeit) : UPLOAD_ZEIT_MS;
+    var standardVariante = legacy ? wurzel.standardVariante : (container.getAttribute('data-variant') || '');
     var st = { aktiv: karte.platzierungen[0].id, ebenen: {}, sel: null, ansicht: 'flaeche', shopVariante: null, pfVariante: null };
-    karte.platzierungen.forEach(function (p) { st.ebenen[p.id] = []; });
+    (buendel ? wurzel.alleIds : karte.platzierungen.map(function (p) { return p.id; })).forEach(function (id) { st.ebenen[id] = []; });
+    var eingefroren = null;                // beim Klick auf «In den Warenkorb»: { sv, pv } der Variante, für die die Druckdateien gebaut werden
+    var bildVersion = {};                  // Ebenen-ID → Zähler der Foto-Bearbeitungen (nur die letzte darf ihr Ergebnis eintragen)
+    var origMass = {};                     // Ebenen-ID → { w, h } des Originalfotos (überlebt Rückgängig/Wiederholen)
+    var letzteGroesse = {};                // Platzierungs-ID → { w, h } der zuletzt erzeugten Druckdatei
+    var verkleinertText = '';              // Hinweis für den Kunden, wenn eine Druckdatei vor dem Upload verkleinert werden musste
     var knoten = {};                       // Ebenen-ID → { root, content, frame, handle, del }
     var verlauf = { stack: [], idx: -1 };
     var ui = {};
@@ -631,8 +741,19 @@
 
     // ── Zugriff ─────────────────────────────────────────────────────────────────────────────────
     function platzierung(id) {
-      for (var i = 0; i < karte.platzierungen.length; i++) if (karte.platzierungen[i].id === id) return karte.platzierungen[i];
-      return null;
+      var p = platzierungIn(karte, id);
+      if (p || !buendel) return p;
+      for (var i = 0; i < wurzel.reihenfolge.length && !p; i++) p = platzierungIn(wurzel.modelle[wurzel.reihenfolge[i]], id);   // «fremde» Platzierung: nur in einem anderen Modell
+      return p;
+    }
+    /** Platzierungen, die in den Reitern stehen: die des gewählten Modells, dazu fremde, die schon Ebenen tragen (damit man sie entfernen kann). */
+    function tabIds() {
+      var ids = karte.platzierungen.map(function (p) { return p.id; });
+      if (buendel) wurzel.alleIds.forEach(function (id) { if (ids.indexOf(id) < 0 && st.ebenen[id] && st.ebenen[id].length) ids.push(id); });
+      return ids;
+    }
+    function fremdeMitEbenen() {
+      return tabIds().filter(function (id) { return !platzierungIn(karte, id); });
     }
     function pAktiv() { return platzierung(st.aktiv); }
     function ebenenAktiv() { return st.ebenen[st.aktiv]; }
@@ -660,10 +781,39 @@
       } catch (e) { /* egal */ }
       return standardVariante || null;
     }
+    /** Zuordnung Shopify-Variante → { pv: Printful-Variante, m: Printful-Produkt }; null, wenn der Karte die Variante unbekannt ist. */
+    function zuordnungFuer(shopId) {
+      if (shopId == null) return null;
+      var k = String(shopId);
+      if (buendel) return wurzel.zuordnung[k] || null;
+      if (karte.shop[k] != null) return { pv: Number(karte.shop[k]), m: karte.printfulProductId };
+      return null;
+    }
     function pfVarianteFuer(shopId) {
-      if (shopId != null && karte.shop[String(shopId)] != null) return Number(karte.shop[String(shopId)]);
+      var z = zuordnungFuer(shopId);
+      if (z) return z.pv;
+      if (buendel) return null;
       var d = container.getAttribute('data-pf-variant');
       return d && isFinite(Number(d)) ? Number(d) : null;
+    }
+    /** Ist für die gewählte Variante bekannt, welche Druckdatei gilt? Sonst wird der Kauf gesperrt (es gibt nie still die Standardgeometrie). */
+    function ausfuehrungOk() {
+      if (legacy) return true;
+      if (buendel) return !!zuordnungFuer(st.shopVariante);
+      if (Object.keys(karte.shop).length && st.pfVariante == null) return false;
+      if (mehrereGeometrien() && st.pfVariante == null) return false;
+      if (st.pfVariante != null && Object.keys(karte.varianten).length && !karte.varianten[st.pfVariante]) return false;
+      return true;
+    }
+    /** Bei einem Bündel die Karte des Modells der gewählten Variante einsetzen. Gibt true zurück, wenn das Modell gewechselt hat (die Oberfläche muss dann neu gebaut werden). */
+    function modellAnpassen() {
+      if (!buendel) return false;
+      var z = zuordnungFuer(st.shopVariante);
+      var neu = z && wurzel.modelle[z.m];
+      if (!neu || neu === karte) return false;
+      karte = neu;
+      if (!platzierungIn(karte, st.aktiv) && !(st.ebenen[st.aktiv] && st.ebenen[st.aktiv].length)) st.aktiv = karte.platzierungen[0].id;
+      return true;
     }
     /** Variante neu lesen; true, wenn sich die Geometrie ändern könnte. */
     function variantenLesen() {
@@ -674,8 +824,10 @@
       st.pfVariante = pf;
       return geaendert;
     }
-    function geo(p) {
-      var g = geometrieFuer(karte, p, st.pfVariante);
+    /** Geometrie einer Platzierung für die Variante (Vorgabe: die gewählte; beim Bau der Druckdateien die eingefrorene). */
+    function geo(p, pfV) {
+      var pv = pfV !== undefined ? pfV : (eingefroren ? eingefroren.pv : st.pfVariante);
+      var g = geometrieFuer(karte, p, pv);
       return { printfile: g.printfile, vorlage: g.vorlage, masse: legacy ? null : dateiMasse(g.printfile), render: renderGroesse(g.printfile, maxPixel) };
     }
 
@@ -737,7 +889,7 @@
       v[3].style.cssText = 'left:' + PCT(Math.min(1, fl + fb)) + ';top:' + PCT(Math.max(0, fo)) + ';width:' + PCT(Math.max(0, 1 - fl - fb)) + ';height:' + PCT(Math.min(1, fo + fh) - Math.max(0, fo));
       v.forEach(function (x) { x.hidden = false; });
       if (geoAktiv.masse) {
-        ui.tag.textContent = fmt(T.areaInfo, { w: zahlAnzeige(geoAktiv.masse.breite, 1), h: zahlAnzeige(geoAktiv.masse.hoehe, 1) });
+        ui.tag.textContent = fmt(karte.klasse === 'PANEL' ? T.sheetInfo : T.areaInfo, { w: zahlAnzeige(geoAktiv.masse.breite, 1), h: zahlAnzeige(geoAktiv.masse.hoehe, 1) });
         ui.tag.style.left = 'calc(' + PCT(Math.max(0, fl)) + ' + 4px)';
         ui.tag.style.top = 'calc(' + PCT(Math.max(0, fo)) + ' + 4px)';
         ui.tag.hidden = false;
@@ -747,7 +899,7 @@
       var teile = [];
       var g = geoAktiv;
       if (legacy) { ui.metaText.textContent = ''; ui.viewBtn.hidden = true; return; }
-      if (g.masse) teile.push(fmt(T.areaInfo, { w: zahlAnzeige(g.masse.breite, 1), h: zahlAnzeige(g.masse.hoehe, 1) }));
+      if (g.masse) teile.push(fmt(karte.klasse === 'PANEL' ? T.sheetInfo : T.areaInfo, { w: zahlAnzeige(g.masse.breite, 1), h: zahlAnzeige(g.masse.hoehe, 1) }));
       var pf = g.printfile;
       teile.push(pf.dpi >= 10 ? fmt(T.fileInfo, { w: pf.breitePx, h: pf.hoehePx, dpi: zahlAnzeige(pf.dpi, 0) }) : fmt(T.fileInfoNoDpi, { w: pf.breitePx, h: pf.hoehePx }));
       ui.metaText.textContent = teile.join(' \xB7 ');
@@ -1013,27 +1165,43 @@
     function tabsAufbauen() {
       ui.tabs.textContent = '';
       ui.tabKnoepfe = {};
-      if (karte.platzierungen.length < 2) { ui.tabs.hidden = true; return; }
+      var ids = tabIds();
+      ui.tabIdsGebaut = ids.join('|');
+      if (ids.length < 2) { ui.tabs.hidden = true; return; }
       ui.tabs.hidden = false;
-      karte.platzierungen.forEach(function (p) {
-        var b = el('button', { type: 'button', class: 'lsp6-tab', role: 'tab', 'data-p': p.id, 'aria-selected': 'false', tabindex: '-1' });
+      ids.forEach(function (id) {
+        var p = platzierung(id);
+        var fremd = !platzierungIn(karte, id);
+        var b = el('button', { type: 'button', class: 'lsp6-tab' + (fremd ? ' fremd' : ''), role: 'tab', 'data-p': p.id, 'aria-selected': 'false', tabindex: '-1' });
+        if (fremd) { b.setAttribute('data-fremd', '1'); b.title = T.orphanTitle; }
         b.appendChild(el('span', { text: titelVon(p) }));
-        var ap = platzierungAufpreisChf(p);
-        if (ap > 0) b.appendChild(el('small', { text: T.extra + ' + CHF ' + chfText(ap) }));
+        var ap = fremd ? 0 : platzierungAufpreisChf(p);
+        if (fremd) b.appendChild(el('small', { text: T.notPossible }));
+        else if (ap > 0) b.appendChild(el('small', { text: T.extra + ' + CHF ' + chfText(ap) }));
         ui.tabKnoepfe[p.id] = b;
         ui.tabs.appendChild(b);
       });
       tabsAktualisieren();
     }
+    /** Der aktive Reiter soll im Sichtfeld der Leiste liegen: gemessen an den echten Rechtecken (offsetLeft bezieht sich auf den nächsten positionierten Vorfahren, nicht auf die Leiste). */
+    function aktivenReiterZeigen(b) {
+      var t = ui.tabs;
+      if (!(t.scrollWidth > t.clientWidth)) return;
+      var tr = t.getBoundingClientRect(), br = b.getBoundingClientRect();
+      var links = br.left - tr.left + t.scrollLeft;
+      t.scrollLeft = Math.max(0, links - (t.clientWidth - br.width) / 2);
+    }
     function tabsAktualisieren() {
-      karte.platzierungen.forEach(function (p) {
+      if (ui.tabIdsGebaut !== tabIds().join('|')) { tabsAufbauen(); return; }   // eine fremde Platzierung ist dazugekommen oder weggefallen
+      tabIds().forEach(function (id) {
+        var p = platzierung(id);
         var b = ui.tabKnoepfe[p.id];
         if (!b) return;
         var an = p.id === st.aktiv;
         var block = !an && blockiertDurch(p.id).length > 0;
         b.setAttribute('aria-selected', an ? 'true' : 'false');
         b.setAttribute('tabindex', an ? '0' : '-1');
-        if (an && ui.tabs.scrollWidth > ui.tabs.clientWidth) ui.tabs.scrollLeft = Math.max(0, b.offsetLeft - (ui.tabs.clientWidth - b.offsetWidth) / 2);
+        if (an) aktivenReiterZeigen(b);
         if (block) {
           b.setAttribute('aria-disabled', 'true');
           b.title = fmt(T.lockTitle, { b: blockiertDurch(p.id).map(function (q) { return titelVon(platzierung(q)); }).join(', ') });
@@ -1043,6 +1211,17 @@
         if (hat && !punkt) b.firstChild.appendChild(el('i', { class: 'dot', 'aria-hidden': 'true' }));
         if (!hat && punkt) punkt.remove();
       });
+      modellHinweisAktualisieren();
+    }
+    /** Dauerhafter Hinweis unter den Reitern: Motiv auf einer Platzierung, die es bei dieser Ausführung nicht gibt, oder Ausführung ohne Zuordnung. */
+    function modellHinweisAktualisieren() {
+      if (!ui.modellNote) return;
+      var fremde = fremdeMitEbenen();
+      var text = '';
+      if (fremde.length) text = fmt(T.orphan, { a: fremde.map(function (id) { return titelVon(platzierung(id)); }).join(', ') });
+      else if (!ausfuehrungOk()) text = T.noMap;
+      ui.modellNote.textContent = text;
+      ui.modellNote.hidden = !text;
     }
     /** Die aktive Platzierung wechseln. Gibt false zurück, wenn eine kollidierende Platzierung schon Ebenen trägt. */
     function platzierungWechseln(id) {
@@ -1070,7 +1249,7 @@
     function aktivePruefen() {
       if (!blockiertDurch(st.aktiv).length) return;
       var ziel = karte.platzierungen.filter(function (p) { return st.ebenen[p.id].length; })[0] || karte.platzierungen[0];
-      st.aktiv = ziel.id;
+      st.aktiv = ziel.id;   // gesperrt war die aktive nur wegen einer Platzierung des gewählten Modells: die Auswahl bleibt innerhalb von ihm
     }
 
     // ── Ebenenliste ─────────────────────────────────────────────────────────────────────────────
@@ -1113,11 +1292,22 @@
       ebenenAktiv().push(e);
       knotenBauen(e); knotenZeichnen(e); waehlen(e.id); zOrdnen(); tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();
     }
+    /** Ist die aktive Platzierung noch Teil des gewählten Modells (oder trägt sie noch Ebenen)? Sonst auf die erste Platzierung des Modells umschalten. true = umgeschaltet. */
+    function aktivGueltigHalten() {
+      if (platzierungIn(karte, st.aktiv)) return false;
+      if (st.ebenen[st.aktiv] && st.ebenen[st.aktiv].length) return false;
+      var ziel = karte.platzierungen.filter(function (p) { return st.ebenen[p.id].length; })[0] || karte.platzierungen[0];
+      st.aktiv = ziel.id;
+      return true;
+    }
     function ebeneEntfernen(id) {
       var liste = ebenenAktiv();
       for (var i = 0; i < liste.length; i++) if (liste[i].id === id) { liste.splice(i, 1); break; }
       if (knoten[id]) { knoten[id].root.remove(); delete knoten[id]; }
-      if (st.sel === id) abwaehlen(); else felderAktualisieren();
+      var umgeschaltet = false;
+      if (st.sel === id) st.sel = null;
+      if (aktivGueltigHalten()) { umgeschaltet = true; knotenLoeschen(); buehneAufbauen(); metaAktualisieren(); knotenNeuAufbauen(); }
+      if (umgeschaltet || st.sel === null) abwaehlen(); else felderAktualisieren();
       tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();
     }
     function neuerText() {
@@ -1179,12 +1369,14 @@
           for (var k in e) n[k] = e[k];
           if (e.edit) { n.edit = {}; for (var k2 in e.edit) n.edit[k2] = e.edit[k2]; }
           n.uploading = false;
+          if (n.type === 'image' && !n._origW && origMass[n.id]) { n._origW = origMass[n.id].w; n._origH = origMass[n.id].h; }   // Stand von vor dem Laden des Fotos: Grösse aus dem Zwischenspeicher
           return n;
         });
       });
       var merke = st.sel;
       st.ebenen = neu;
       aktivePruefen();
+      aktivGueltigHalten();
       knotenLoeschen();
       buehneAufbauen();
       metaAktualisieren();
@@ -1287,19 +1479,25 @@
         return e.type === 'text' ? T.layerText + ': "' + (e.text || '').replace(/\n/g, ' / ') + '"' : e.type === 'sticker' ? T.layerSticker + ': ' + e.name : T.layerImage;
       }).join(' \xB7 ');
     }
-    /** Kennung für die Auftragsabwicklung (beginnt mit «_», wird dem Kunden nicht angezeigt): Modell, Variante, genutzte Platzierungen, Pixelgrössen, Aufpreis. */
+    /** Kennung für die Auftragsabwicklung (beginnt mit «_», wird dem Kunden nicht angezeigt): Modell, Variante, genutzte Platzierungen, Aufpreis.
+     *  Kurz gehalten (Shopify-Eigenschaften sind auf 255 Zeichen begrenzt, QUELLE Dritt-Anleitungen): `px` steht nur, wenn eine Druckdatei kleiner als das Printfile ist
+     *  (Obergrenze oder Verkleinerung vor dem Upload), `dt` nur, wo der Dateityp von der Platzierungs-ID abweicht. */
     function podKarteWert(verwendet) {
-      var ids = [], dt = {}, px = [], ap = 0;
+      var ids = [], dt = {}, px = [], ap = 0, abweichend = false;
+      var fix = eingefroren;
       verwendet.forEach(function (p) {
         ids.push(p.id);
         if (p.dateiTyp && p.dateiTyp !== p.id) dt[p.id] = p.dateiTyp;
-        var rg = geo(p).render;
+        var g = geo(p);
+        var rg = letzteGroesse[p.id] && fix ? letzteGroesse[p.id] : g.render;
         px.push(rg.w + 'x' + rg.h);
+        if (rg.w !== g.printfile.breitePx || rg.h !== g.printfile.hoehePx) abweichend = true;
         ap += platzierungAufpreisChf(p);
       });
-      var o = { v: 6, s: 1, m: karte.printfulProductId, pv: st.pfVariante, sv: st.shopVariante == null ? null : String(st.shopVariante), pl: ids };
+      var sv = fix ? fix.sv : st.shopVariante, pv = fix ? fix.pv : st.pfVariante;
+      var o = { v: 6, m: karte.printfulProductId, pv: pv, sv: sv == null ? null : String(sv), pl: ids };
       if (Object.keys(dt).length) o.dt = dt;
-      o.px = px;
+      if (abweichend) o.px = px;
       o.ap = Math.round(ap * 100) / 100;
       return JSON.stringify(o);
     }
@@ -1338,6 +1536,7 @@
       });
     }
     function geaendert() {
+      druckUrls = {};   // Adressen von früheren Druckdateien gehören zu einem älteren Stand des Entwurfs
       ebenenLeisteNeu();
       formularSynchronisieren();
       aufpreisSummeAktualisieren();
@@ -1345,11 +1544,17 @@
     }
 
     // ── Druckdatei in echter Pixelgrösse ────────────────────────────────────────────────────────
-    function druckdateiErzeugen(id) {
+    /** Druckdatei einer Platzierung als PNG. opt.skala (0 bis 1) verkleinert gleichmässig (Seitenverhältnis und Lage der Motive bleiben), opt.pf = Printful-Variante. */
+    function druckdateiErzeugen(idOderP, opt) {
+      opt = opt || {};
+      var p = typeof idOderP === 'string' ? platzierung(idOderP) : idOderP;
+      var id = p.id;
       var liste = st.ebenen[id] || [];
       if (!liste.length) return Promise.resolve(null);
-      var g = geo(platzierung(id));
-      var W = g.render.w, H = g.render.h;
+      var g = geo(p, opt.pf);
+      var sk = opt.skala > 0 && opt.skala < 1 ? opt.skala : 1;
+      var W = Math.max(1, Math.floor(g.render.w * sk)), H = Math.max(1, Math.floor(g.render.h * sk));
+      letzteGroesse[id] = { w: W, h: H };
       var cv = document.createElement('canvas');
       cv.width = W; cv.height = H;
       var ctx = cv.getContext('2d');
@@ -1400,8 +1605,40 @@
       });
       return kette.then(function () {
         return new Promise(function (ok, fehler) {
-          try { cv.toBlob(function (b) { b && b.size > 0 ? ok(b) : fehler(new Error(T.printErr)); }, 'image/png'); } catch (x3) { fehler(x3); }
+          try { cv.toBlob(function (b) { leinwandFreigeben(cv); b && b.size > 0 ? ok(b) : fehler(new Error(T.printErr)); }, 'image/png'); } catch (x3) { leinwandFreigeben(cv); fehler(x3); }
         });
+      }, function (err) { leinwandFreigeben(cv); throw err; });
+    }
+
+    /** Druckdatei bauen und hochladen. Ist sie schwerer als maxBytes oder lehnt Cloudinary sie als zu gross ab, wird sie gleichmässig verkleinert und neu gerechnet
+     *  (höchstens vier Versuche); der Kunde bekommt die tatsächliche Grösse gemeldet, `_pod_karte.px` trägt sie. Fehler: Error mit dem Kundentext. */
+    function druckdateiSenden(p, pv) {
+      var versuch = 0, skala = 1;
+      function einmal() {
+        return druckdateiErzeugen(p, { skala: skala, pf: pv }).then(function (blob) {
+          if (!dateiPng(blob)) throw new Error(T.printErr);
+          if (maxBytes > 0 && blob.size > maxBytes) {
+            if (versuch >= 4) throw new Error(T.tooHeavy);
+            versuch++;
+            skala *= Math.max(0.4, Math.min(0.9, Math.sqrt(maxBytes / blob.size) * 0.92));
+            return einmal();
+          }
+          return new Promise(function (ok, schlecht) {
+            hochladen(blob, true, function (err, url) {
+              if (err || !url) { schlecht(err || new Error(T.printErr)); return; }
+              ok(url);
+            }, uploadZeit);
+          }).catch(function (err) {
+            if (err && err.gross && versuch < 4) { versuch++; skala *= 0.7; return einmal(); }
+            if (err && err.gross) throw new Error(T.tooHeavy);
+            throw err;
+          });
+        });
+      }
+      return einmal().then(function (url) {
+        var gr = letzteGroesse[p.id];
+        if (skala < 1 && gr) verkleinertText = fmt(T.shrunk, { w: gr.w, h: gr.h });
+        return url;
       });
     }
 
@@ -1418,6 +1655,9 @@
     ui.tabHinweis = el('p', { class: 'lsp6-tabnote', role: 'status', 'aria-live': 'polite', 'data-feld': 'tabhinweis' });
     ui.tabHinweis.hidden = true;
     ui.karte.appendChild(ui.tabHinweis);
+    ui.modellNote = el('p', { class: 'lsp6-tabnote', role: 'status', 'aria-live': 'polite', 'data-feld': 'modellhinweis' });
+    ui.modellNote.hidden = true;
+    ui.karte.appendChild(ui.modellNote);
 
     ui.stage = el('div', { class: 'lsp6-stage', role: 'tabpanel', 'aria-label': T.head });
     ui.bg = el('img', { class: 'lsp6-bg', alt: '' });
@@ -1604,7 +1844,7 @@
       if (b) platzierungWechseln(b.getAttribute('data-p'));
     });
     ui.tabs.addEventListener('keydown', function (ev) {
-      var ids = karte.platzierungen.map(function (p) { return p.id; });
+      var ids = tabIds();
       var i = ids.indexOf(st.aktiv), ziel = null;
       if (ev.key === 'ArrowRight') ziel = ids[(i + 1) % ids.length];
       else if (ev.key === 'ArrowLeft') ziel = ids[(i - 1 + ids.length) % ids.length];
@@ -1633,7 +1873,7 @@
     ui.textfeld.addEventListener('input', function () {
       var e = textEbene();
       if (!e) return;
-      e.text = ui.textfeld.value.split('\n').slice(0, 4).map(function (z) { return z.slice(0, 40); }).join('\n');
+      e.text = ui.textfeld.value.split('\n').slice(0, 4).map(function (z) { return Array.from(z).slice(0, 40).join(''); }).join('\n');
       if (ui.textfeld.value !== e.text) ui.textfeld.value = e.text;
       knotenZeichnen(e); geaendert(); speichernVerzoegert();
     });
@@ -1699,11 +1939,15 @@
         }).catch(function () { /* Vorschau ist nur Komfort */ });
       }, 50);
     }
-    /** Bearbeitung festschreiben: Vorschau (höchstens 1600 px) für die Bühne, volle Grösse als Druckdatei zu Cloudinary. */
+    /** Bearbeitung festschreiben: Vorschau (höchstens 1600 px) für die Bühne, volle Grösse als Druckdatei zu Cloudinary.
+     *  Jede Bearbeitung hat eine Nummer: nur die letzte darf ihr Ergebnis eintragen (sonst überholt ein langsamer Upload einen schnelleren und die Kasse nimmt die alte Datei). */
     function bildUebernehmen(e) {
+      var nr = bildVersion[e.id] = (bildVersion[e.id] || 0) + 1;
+      function gilt() { return bildVersion[e.id] === nr; }
       // Sofort als «lädt hoch» markieren und die alte Adresse verwerfen: sonst könnte die Kasse in der kurzen Zeit des Rechnens noch den Stand vor der Bearbeitung nehmen
       if (CLOUDINARY_AKTIV) { e.uploading = true; e.printUrl = ''; geaendert(); }
       bildBearbeiten(e, 0).then(function (cv) {
+        if (!gilt()) { leinwandFreigeben(cv); return; }
         var klein = cv;
         if (cv.width > 1600) {
           klein = document.createElement('canvas');
@@ -1711,18 +1955,21 @@
           klein.getContext('2d').drawImage(cv, 0, 0, klein.width, klein.height);
         }
         e.src = klein.toDataURL('image/png');
+        if (klein !== cv) leinwandFreigeben(klein);
         speichern();
         var k = knoten[e.id];
         if (k && k.content.tagName === 'IMG') k.content.src = e.src;
         knotenZeichnen(e); aufloesungPruefen(e);
-        if (!CLOUDINARY_AKTIV) { geaendert(); return; }
+        if (!CLOUDINARY_AKTIV) { leinwandFreigeben(cv); geaendert(); return; }
         try {
           cv.toBlob(function (blob) {
+            leinwandFreigeben(cv);
+            if (!gilt()) return;
             if (!blob) { e.uploading = false; geaendert(); return; }
-            hochladen(blob, true, function (err, url) { e.uploading = false; if (!err && url) e.printUrl = url; geaendert(); });
+            hochladen(blob, true, function (err, url) { if (!gilt()) return; e.uploading = false; if (!err && url) e.printUrl = url; geaendert(); }, uploadZeit);
           }, 'image/png');
-        } catch (x) { e.uploading = false; geaendert(); }
-      }).catch(function () { e.uploading = false; geaendert(); });
+        } catch (x) { leinwandFreigeben(cv); if (gilt()) { e.uploading = false; geaendert(); } }
+      }).catch(function () { if (gilt()) { e.uploading = false; geaendert(); } });
     }
     function filterKnoepfeSetzen(e) {
       var b = e.edit || neueBearbeitung();
@@ -1829,14 +2076,17 @@
         meldung(T.uploading);
         bildLaden(leser.result).then(function (img) {
           e._origW = img.naturalWidth || img.width; e._origH = img.naturalHeight || img.height;
+          origMass[e.id] = { w: e._origW, h: e._origH };
           einpassen(e, { w: e._origW, h: e._origH });
           if (st.sel === e.id) aufloesungPruefen(e);
         }).catch(function () { /* egal */ });
+        var nr0 = bildVersion[e.id] || 0;
         hochladen(f, false, function (err, url) {
+          if ((bildVersion[e.id] || 0) !== nr0) return;   // inzwischen bearbeitet: die Bearbeitung hat ihren eigenen Upload
           e.uploading = false;
           if (err) { meldung(T.upErr + err.message, 'err'); return; }
           e.printUrl = url; meldung(''); geaendert();
-        });
+        }, uploadZeit);
       };
       leser.readAsDataURL(f);
       ui.datei.value = '';
@@ -1855,7 +2105,7 @@
     }
     function stickerRasterZeigen() {
       ui.stickerRaster.textContent = '';
-      if (!stickerListe.length) { ui.stickerRaster.appendChild(el('div', { style: 'grid-column:1/-1;color:#5b5a62;font-size:13px;text-align:center;padding:10px', text: '—' })); return; }
+      if (!stickerListe.length) { ui.stickerRaster.appendChild(el('div', { style: 'grid-column:1/-1;color:#5b5a62;font-size:13px;text-align:center;padding:10px', text: '…' })); return; }
       stickerListe.forEach(function (name) {
         var b = el('button', { type: 'button', 'aria-label': name, style: 'border:1px solid #ece7df;border-radius:10px;background:#faf8f5;padding:6px;cursor:pointer;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center' });
         b.appendChild(el('img', { src: STICKER_BASIS + name + '.png', alt: '', loading: 'lazy', style: 'max-width:100%;max-height:100%;pointer-events:none' }));
@@ -1894,21 +2144,36 @@
     });
 
     // In den Warenkorb
+    /** Eingaben während des Bauens der Druckdateien sperren (sonst gehört die hochgeladene Datei zu einem älteren Stand des Entwurfs). */
+    function sperren(an) {
+      ui.cta.disabled = an; ui.cta.style.opacity = an ? '0.7' : '1';
+      try { if (an) ui.karte.setAttribute('inert', ''); else ui.karte.removeAttribute('inert'); } catch (x) { /* egal */ }
+    }
     ui.cta.addEventListener('click', function () {
+      if (eingefroren) return;
+      varianteGeprueft();   // gewählte Variante und Modell jetzt übernehmen (baut bei einem Modellwechsel die Oberfläche um)
+      var fremde = fremdeMitEbenen();
       var verwendet = karte.platzierungen.filter(function (p) { return st.ebenen[p.id].length > 0; });
-      if (!verwendet.length) { meldung(T.empty, 'err'); return; }
+      if (!verwendet.length && !fremde.length) { meldung(T.empty, 'err'); return; }
+      if (fremde.length) { meldung(fmt(T.orphan, { a: fremde.map(function (id) { return titelVon(platzierung(id)); }).join(', ') }), 'err'); return; }
       if (verwendet.some(function (p) { return st.ebenen[p.id].some(function (e) { return e.uploading; }); })) { meldung(T.stillUp, 'err'); return; }
-      variantenLesen();
       var shopId = st.shopVariante;
       if (!shopId) { meldung(T.noVar, 'err'); return; }
+      if (!ausfuehrungOk()) { meldung(T.noMap, 'err'); return; }
       for (var i = 0; i < verwendet.length; i++) {
         var b = blockiertDurch(verwendet[i].id);
         if (b.length) { meldung(fmt(T.blocked, { a: titelVon(verwendet[i]), b: b.map(function (q) { return titelVon(platzierung(q)); }).join(', ') }), 'err'); return; }   // kann nur eintreten, wenn der Verlauf einen unzulässigen Stand lieferte
       }
-      ui.cta.disabled = true; ui.cta.style.opacity = '0.7';
+      // Variante und Geometrie jetzt einfrieren: alle Druckdateien und die Eigenschaften gehören zu DIESER Variante, auch wenn die Seite sie während des Bauens wechselt
+      eingefroren = { sv: String(shopId), pv: st.pfVariante };
+      sperren(true);
       abwaehlen();
+      verkleinertText = '';
       function fehler(err) {
-        ui.cta.disabled = false; ui.cta.style.opacity = '1';
+        eingefroren = null;
+        druckUrls = {};
+        formularSynchronisieren();
+        sperren(false);
         meldung(T.addErr + ((err && err.message) || T.printErr), 'err');
       }
       druckUrls = {};
@@ -1917,31 +2182,31 @@
       var kette = Promise.resolve();
       verwendet.forEach(function (p) {
         kette = kette.then(function () {
-          return druckdateiErzeugen(p.id).then(function (blob) {
-            if (!dateiPng(blob)) throw new Error(T.printErr);
-            return new Promise(function (ok, schlecht) {
-              hochladen(blob, true, function (err, url) {
-                if (err || !url) { schlecht(err || new Error(T.printErr)); return; }
-                druckUrls[p.id] = url; ok();
-              });
-            });
-          });
+          return druckdateiSenden(p, eingefroren.pv).then(function (url) { druckUrls[p.id] = url; });
         });
       });
+      var eigenschaftenFertig = null;
       kette.then(function () {
         if (verwendet.some(function (p) { return !druckUrls[p.id]; })) throw new Error(T.printErr);
-        meldung(T.adding);
+        // Hat die Seite die Variante inzwischen gewechselt, gehört der Warenkorb-Eintrag nicht mehr zu dem, was der Kunde jetzt gewählt hat: abbrechen
+        if (String(aktuelleShopVariante()) !== eingefroren.sv) throw new Error(T.varChanged);
+        eigenschaftenFertig = eigenschaften();
+        if (eigenschaftenFertig._pod_karte && eigenschaftenFertig._pod_karte.length > POD_KARTE_MAX) throw new Error(T.tooMany);
+        meldung(T.adding + (verkleinertText ? ' ' + verkleinertText : ''));
         return fetch(CART_ADD_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ id: shopId, quantity: 1, properties: eigenschaften() }),
+          body: JSON.stringify({ id: eingefroren.sv, quantity: 1, properties: eigenschaftenFertig }),
         });
       }).then(function (r) {
         return r.ok ? r.json() : r.json().then(function (d) { throw new Error(d.description || 'Fehler'); });
       }).then(function () {
         meldung(T.added, 'ok');
         window.location.href = CART_URL;
-      }).catch(fehler);
+      }).catch(function (err) {
+        fehler(err);
+        varianteGeprueft();   // eine inzwischen gewählte andere Variante jetzt nachziehen
+      });
     });
 
     // Tastatur (wie v5): Strg+Z / Strg+Y, Entf, Pfeiltasten
@@ -1969,18 +2234,28 @@
       beobachter.observe(ui.stage);
     } else window.addEventListener('resize', function () { if (geoAktiv) alleZeichnen(); });
 
-    // Variantenwechsel (andere Farbe/Grösse): Geometrie und Hintergrund nachziehen, wie v5 mit Taktgeber
+    // Variantenwechsel (andere Farbe/Grösse): Modell, Geometrie und Hintergrund nachziehen, wie v5 mit Taktgeber
     function mehrereGeometrien() {
       return karte.druckdateiGruppen.length > 1 || karte.platzierungen.some(function (p) { return (p.geometrien || []).length > 1; });
     }
     function varianteGeprueft() {
+      if (eingefroren) return;   // während die Druckdateien gebaut werden, gilt die eingefrorene Variante
       if (!variantenLesen()) return;
       if (legacy) { bildSetzen(ui.bg, legacyBild()); return; }
+      var modellGewechselt = modellAnpassen();
+      if (modellGewechselt) {
+        abwaehlen();
+        knotenLoeschen();
+        buehneAufbauen(); metaAktualisieren(); knotenNeuAufbauen();
+        tabsAufbauen(); felderAktualisieren(); aufpreisSummeAktualisieren(); reiterHinweis('');
+        return;
+      }
       buehneAufbauen(); metaAktualisieren(); alleZeichnen();
       var e = gewaehlt(); if (e) { werteSetzen(e); aufloesungPruefen(e); }
+      modellHinweisAktualisieren();
     }
     function varianteBeobachten() {
-      if (legacy ? !Object.keys(karte.imgMap).length : !(mehrereGeometrien() || Object.keys(karte.farbeVon).length)) return;
+      if (legacy ? !Object.keys(karte.imgMap).length : !(buendel || mehrereGeometrien() || Object.keys(karte.farbeVon).length || Object.keys(karte.shop).length)) return;
       document.addEventListener('change', varianteGeprueft, true);
       document.addEventListener('click', function () { setTimeout(varianteGeprueft, 60); }, true);
       window.addEventListener('popstate', varianteGeprueft);
@@ -1989,6 +2264,7 @@
 
     // ── Start ───────────────────────────────────────────────────────────────────────────────────
     variantenLesen();
+    modellAnpassen();
     buehneAufbauen();
     metaAktualisieren();
     tabsAufbauen();
@@ -2000,13 +2276,18 @@
     ui.dpiBox.hidden = true;
     felderAktualisieren();
     aufpreisSummeAktualisieren();
+    modellHinweisAktualisieren();
     varianteBeobachten();
     speichern();
+    // Sprungziel der Theme-Schaltfläche «Zuerst dein Design gestalten» (href="#lspod-start"): das Theme setzt die Kennung nur an Container der Klasse «lspod-designer»
+    try { if (!document.getElementById('lspod-start')) ui.karte.id = 'lspod-start'; } catch (x) { /* egal */ }
+    container.setAttribute('data-lspod6-modus', legacy ? 'v5' : 'karte');
 
     var api = {
-      karte: karte, st: st, ui: ui, legacy: legacy, maxPixel: maxPixel,
+      get karte() { return karte; }, wurzel: wurzel, st: st, ui: ui, legacy: legacy, maxPixel: maxPixel, maxBytes: maxBytes,
+      ausfuehrungOk: ausfuehrungOk, varianteGeprueft: varianteGeprueft,
       geo: function (id) { return geo(platzierung(id || st.aktiv)); },
-      wechseln: platzierungWechseln, druckdateiErzeugen: druckdateiErzeugen, eigenschaften: eigenschaften,
+      wechseln: platzierungWechseln, druckdateiErzeugen: druckdateiErzeugen, eigenschaften: eigenschaften, platzierungIds: tabIds,
       neuerText: function (text) { var e = neuerText(); e.text = text; ebeneHinzufuegen(e); return e; },
       neuesBild: function (src, w, h) { var e = neuesBild(src, '', false); e._origW = w; e._origH = h; ebeneHinzufuegen(e); return e; },
       entfernen: ebeneEntfernen, zurueck: zurueck, wiederholen: wiederholen, speichern: speichern, waehlen: waehlen,
