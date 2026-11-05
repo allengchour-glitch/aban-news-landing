@@ -1,0 +1,681 @@
+{
+  "schemaVersion": 1,
+  "run": "R108",
+  "draft": false,
+  "recordedAt": "2026-11-05T22:27:36+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "preDispatchLocalScriptFailures": 1,
+    "shopifyUserErrors": 0,
+    "completeAdminProductReadbacksAfterEachSentWrite": 4,
+    "publicHtmlReadbacksHttp200": 4,
+    "publicProductJsonReadbacksHttp200": 4,
+    "finalPublicHtmlProducts": 2,
+    "finalPublicProductJsonProducts": 2,
+    "readyImageAltTextsUpdated": 14,
+    "variantsProtected": 35,
+    "publicationNodesProtected": 12,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/16655747481991",
+      "handle": "patchwork-hoodie-mit-lockerer-passform-638800",
+      "publicUrl": "https://luxestyle.ch/products/patchwork-hoodie-mit-lockerer-passform-638800",
+      "beforeTitle": "Patchwork-Hoodie mit lockerer Passform",
+      "after": {
+        "title": "Layering-Oberteil mit Hemdoptik",
+        "descriptionHtml": "<p>Das Oberteil zeigt eine mehrlagige Optik mit sichtbarem Hemdkragen, langen Ärmeln und verlängertem Hemdsaum. Die kurzärmlige Aussenschicht trägt einen Schriftzug auf der Vorderseite.</p><h3>Auswahl</h3><ul>\n<li>Farben: Grau oder Schwarz</li>\n<li>Grössen: S, M, L und XL</li>\n</ul><p>Wähle Farbe und Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Layering-Oberteil mit Hemdoptik | LuxeStyle CH",
+          "description": "Layering-Oberteil in Grau oder Schwarz mit sichtbarem Kragen, langen Ärmeln und Frontschriftzug. Wählbar in den Grössen S bis XL."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Grau",
+            "Schwarz"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "L",
+            "S",
+            "M",
+            "XL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 8,
+        "items": [
+          {
+            "id": "gid://shopify/ProductVariant/67757025624455",
+            "title": "Grau / L",
+            "sku": "CJ-CJWY265502402BY",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008558983"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025657223",
+            "title": "Grau / S",
+            "sku": "CJ-CJWY265502403CX",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008558983"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025689991",
+            "title": "Grau / M",
+            "sku": "CJ-CJWY265502404DW",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008558983"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025722759",
+            "title": "Grau / XL",
+            "sku": "CJ-CJWY265502405EV",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008558983"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025755527",
+            "title": "Schwarz / L",
+            "sku": "CJ-CJWY265502406FU",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008591751"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025788295",
+            "title": "Schwarz / S",
+            "sku": "CJ-CJWY265502407GT",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008591751"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025821063",
+            "title": "Schwarz / M",
+            "sku": "CJ-CJWY265502408HS",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008591751"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67757025853831",
+            "title": "Schwarz / XL",
+            "sku": "CJ-CJWY265502409IR",
+            "priceCHF": 50.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77796008591751"
+          }
+        ],
+        "pricesCHF": [
+          50.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": [
+        {
+          "id": "gid://shopify/MediaImage/77796007969159",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b38ee7dc-a40a-4904-91d7-d7274810f853.png?v=1792577894",
+          "altText": "Layering-Oberteil in Schwarz mit weissem Kragen, grauen langen Ärmeln und Frontschriftzug, Vorder- und Rückansicht",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008165767",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ae2f401-4f2c-460d-9b54-0d022c198b11.png?v=1792577895",
+          "altText": "Layering-Oberteil in Grau mit hellblauem Kragen, weissen langen Ärmeln und Frontschriftzug, Vorder- und Rückansicht",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008198535",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d31f8e14-2a4a-4c48-a19b-f1ab3038ede7_fine.jpg?v=1792577894",
+          "altText": "Graues Layering-Oberteil mit hellblauem Kragen und weissen langen Ärmeln am Model",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008231303",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/71efcbe1-2faf-43cd-8347-3df2b57209f0.png?v=1792577895",
+          "altText": "Schwarzes Layering-Oberteil mit weissem Kragen und grauen langen Ärmeln am Model",
+          "width": 800,
+          "height": 1067
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008264071",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b43de356-b75b-4c31-aa69-ba00cabd798c.png?v=1792577895",
+          "altText": "Graues Layering-Oberteil mit hellblauem Kragen und weissen langen Ärmeln, Vorderansicht am Model",
+          "width": 800,
+          "height": 1067
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008296839",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08cb985a-78a7-4e37-aa49-ff945d49f415.png?v=1792577895",
+          "altText": "Detailansicht des grauen Layering-Oberteils mit hellblauem Kragen, Knöpfen und Frontschriftzug",
+          "width": 800,
+          "height": 1066
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008558983",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ae2f401-4f2c-460d-9b54-0d022c198b11_713bcbf7-7383-4b3f-b77e-43d284f660ee.png?v=1792577898",
+          "altText": "Graues Layering-Oberteil mit hellblauem Kragen und weissen langen Ärmeln, Vorder- und Rückansicht",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77796008591751",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b38ee7dc-a40a-4904-91d7-d7274810f853_79fcf322-7df6-4d5a-a114-1376a2df328f.png?v=1792577899",
+          "altText": "Schwarzes Layering-Oberteil mit weissem Kragen und grauen langen Ärmeln, Vorder- und Rückansicht",
+          "width": 800,
+          "height": 800
+        }
+      ],
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "vendor": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsDimensionsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Hoodie/Kapuze",
+        "lockere Passform",
+        "55 % Baumwolle/45 % Polyester",
+        "knitterresistent/formstabil",
+        "Maschinenwäsche",
+        "nur Grösse M",
+        "Gewicht",
+        "produktbezogene Liefer-/Rabattbausteine"
+      ],
+      "separateStructureReview": [
+        "historical handle contains patchwork-hoodie/lockerer-passform",
+        "tags sort-herren-hoodies and sort-herren-hoodies-sweatshirts preserved",
+        "taxonomy Kapuzenpullis preserved"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/16616678195591",
+      "handle": "herren-badehose-schnelltrocknend-616200",
+      "publicUrl": "https://luxestyle.ch/products/herren-badehose-schnelltrocknend-616200",
+      "beforeTitle": "Herren Badehose schnelltrocknend",
+      "after": {
+        "title": "Herren-Badehose mit seitlichem Farbeinsatz",
+        "descriptionHtml": "<p>Die Produktbilder zeigen eine Herren-Badehose mit längerem Bein und einem geschwungenen seitlichen Farbeinsatz auf dunklem Grund.</p><h3>Auswahl</h3><ul>\n<li>Modell 1: Schwarz mit Blau</li>\n<li>Modell 2: Dunkelblau mit Weiss</li>\n<li>Modell 3: Schwarz mit Rot</li>\n<li>Grössen: XS, S, M, L, XL, 2XL, 3XL, 4XL und 5XL</li>\n</ul><p>Wähle Modell und Grösse über die Optionen.</p>",
+        "seo": {
+          "title": "Herren-Badehose mit Farbeinsatz | LuxeStyle CH",
+          "description": "Herren-Badehose mit längerem Bein und seitlichem Farbeinsatz. Drei Modelle und Grössen von XS bis 5XL stehen zur Auswahl."
+        }
+      },
+      "options": [
+        {
+          "name": "Modell",
+          "values": [
+            "Modell 1",
+            "Modell 2",
+            "Modell 3"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "values": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL",
+            "3XL",
+            "4XL",
+            "5XL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 27,
+        "items": [
+          {
+            "id": "gid://shopify/ProductVariant/67672402493831",
+            "title": "Modell 1 / XS",
+            "sku": "CJYD279936401AZ",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674911932807",
+            "title": "Modell 1 / S",
+            "sku": "CJYD279936402BY",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674911965575",
+            "title": "Modell 1 / M",
+            "sku": "CJYD279936403CX",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674911998343",
+            "title": "Modell 1 / L",
+            "sku": "CJYD279936404DW",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912031111",
+            "title": "Modell 1 / XL",
+            "sku": "CJYD279936405EV",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912063879",
+            "title": "Modell 1 / 2XL",
+            "sku": "CJYD279936406FU",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912096647",
+            "title": "Modell 1 / 3XL",
+            "sku": "CJYD279936407GT",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912129415",
+            "title": "Modell 1 / 4XL",
+            "sku": "CJYD279936408HS",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912162183",
+            "title": "Modell 1 / 5XL",
+            "sku": "CJYD279936409IR",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671356295"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912194951",
+            "title": "Modell 2 / XS",
+            "sku": "CJYD279936410JQ",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912227719",
+            "title": "Modell 2 / S",
+            "sku": "CJYD279936411KP",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912260487",
+            "title": "Modell 2 / M",
+            "sku": "CJYD279936412LO",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912293255",
+            "title": "Modell 2 / L",
+            "sku": "CJYD279936413MN",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912326023",
+            "title": "Modell 2 / XL",
+            "sku": "CJYD279936414NM",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912358791",
+            "title": "Modell 2 / 2XL",
+            "sku": "CJYD279936415OL",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912391559",
+            "title": "Modell 2 / 3XL",
+            "sku": "CJYD279936416PK",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912424327",
+            "title": "Modell 2 / 4XL",
+            "sku": "CJYD279936417QJ",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912457095",
+            "title": "Modell 2 / 5XL",
+            "sku": "CJYD279936418RI",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671323527"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912489863",
+            "title": "Modell 3 / XS",
+            "sku": "CJYD279936419SH",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912522631",
+            "title": "Modell 3 / S",
+            "sku": "CJYD279936420TG",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912555399",
+            "title": "Modell 3 / M",
+            "sku": "CJYD279936421UF",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912588167",
+            "title": "Modell 3 / L",
+            "sku": "CJYD279936422VE",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912620935",
+            "title": "Modell 3 / XL",
+            "sku": "CJYD279936423WD",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912653703",
+            "title": "Modell 3 / 2XL",
+            "sku": "CJYD279936424XC",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912686471",
+            "title": "Modell 3 / 3XL",
+            "sku": "CJYD279936425YB",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912719239",
+            "title": "Modell 3 / 4XL",
+            "sku": "CJYD279936426ZA",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67674912752007",
+            "title": "Modell 3 / 5XL",
+            "sku": "CJYD279936427AZ",
+            "priceCHF": 16.9,
+            "available": true,
+            "featuredMediaId": "gid://shopify/MediaImage/77502671389063"
+          }
+        ],
+        "pricesCHF": [
+          16.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": [
+        {
+          "id": "gid://shopify/MediaImage/77502671225223",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/80e5719e-cf99-41b5-85db-0d14e69c1f0f.png?v=1791878240",
+          "altText": "Herren-Badehose in Schwarz mit violettem seitlichem Farbeinsatz, Vorderansicht am Model",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "id": "gid://shopify/MediaImage/77502671257991",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/46dac391-b736-4247-b65d-9afbe405d230.png?v=1791878242",
+          "altText": "Herren-Badehose in Dunkelblau mit gelbem seitlichem Farbeinsatz, Vorderansicht am Model",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "id": "gid://shopify/MediaImage/77502671290759",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8df1dd4-4e37-41a1-9c1a-98b8171b3de7.png?v=1791878241",
+          "altText": "Herren-Badehose in Dunkelblau mit orangem seitlichem Farbeinsatz, Vorderansicht am Model",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "id": "gid://shopify/MediaImage/77502671323527",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ee06839-592c-4a13-912a-0622b20eccdb.png?v=1791878241",
+          "altText": "Herren-Badehose in Dunkelblau mit weissem seitlichem Farbeinsatz, Vorderansicht am Model",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "id": "gid://shopify/MediaImage/77502671356295",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/564e6317-0a30-45a5-a268-9194953fa823.png?v=1791878241",
+          "altText": "Herren-Badehose in Schwarz mit blauem seitlichem Farbeinsatz, Vorderansicht am Model",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "id": "gid://shopify/MediaImage/77502671389063",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ea7f4005-b000-4b0a-bd93-d0f91fc1f77e.png?v=1791878241",
+          "altText": "Herren-Badehose in Schwarz mit rotem seitlichem Farbeinsatz, Vorderansicht am Model",
+          "width": 1000,
+          "height": 1000
+        }
+      ],
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "vendor": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsDimensionsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "schnelltrocknend",
+        "Nylon/strapazierfähiges Nylongewebe",
+        "Wassersport-/Trainingseignung",
+        "Tragekomfort",
+        "kurzer Schnitt",
+        "nur Grösse XS",
+        "Gewicht",
+        "produktbezogene Lieferbausteine"
+      ],
+      "separateStructureReview": [
+        "historical handle contains schnelltrocknend",
+        "three unbound gallery images (violet/yellow/orange) are not offered as selectable models"
+      ],
+      "rightsReview": {
+        "visibleThirdPartyLogoImages": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "authenticity": "unknown",
+        "commercialEditingRights": "unknown",
+        "advertisingRights": "unknown",
+        "newSocialDistributionBlocked": true,
+        "brandClaimAdded": false,
+        "tagsOrPublicationsChanged": false
+      }
+    }
+  ],
+  "readback": {
+    "own": {
+      "hoodieHtmlSha256": "c00fc9f2e6da9ecbe5ee10e6832701e4e06fa5adcd6d50b7bd734cb10a7fd0b9",
+      "hoodieProductJsonSha256": "938977afc8d993a0c6c40359b39972406679fc86b1ebaa0f3df2bcd35e37ac88",
+      "swimHtmlSha256": "01cbccc99f561554da968e52ab646bbe7791dcdf63a426e074c20ea9adff3215",
+      "swimProductJsonSha256": "2e2d8d568bb0d5e1964080e963d8905d2d5ba7605600ea0f427c1fba86613beb"
+    },
+    "independentQa": {
+      "status": "GO",
+      "hoodieHtmlSha256": "29e15eb816adc0eb3156d5d9f12459f0ef58d3d961d9e5cdb31876f20b9630a9",
+      "hoodieProductJsonSha256": "938977afc8d993a0c6c40359b39972406679fc86b1ebaa0f3df2bcd35e37ac88",
+      "swimHtmlSha256": "7ae5989eb13209ee12bcb98a12c00737f4b1afd2191d6a7b67ea52ff4f02a0c5",
+      "swimProductJsonSha256": "2e2d8d568bb0d5e1964080e963d8905d2d5ba7605600ea0f427c1fba86613beb",
+      "dynamicHtmlHashesMayDiffer": true
+    },
+    "contactSheets": {
+      "hoodieSha256": "2b4d656e5d5d4491a42d9028522b80008736d594ba33411a19c3ccf7c3ee5462",
+      "swimSha256": "7b95158486bcec4b43de043e1c87b7e33372a51566f79d227f34a94c64ecfc0a"
+    }
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 41,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.07256,
+    "roundedPercent": 0.07,
+    "remainingProducts": 56465,
+    "remainingPercentApprox": 99.93,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "currentMainObserved": "859132ed6",
+    "exactR108ProductOverlapInCurrentClaudeCommits": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedReservedBaselinesBeforeWrites": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}
