@@ -43,3 +43,22 @@ Anmeldung als Betreiber nötig; Klickweg: Link öffnen → «Indexierung beantra
 - Gegenmessung der Liste vom 04.11. am 05.11. früh (siehe oben).
 - Danach nächste Liste aus der Messdatei: grösste noch ungelistete Sammlungen (Stand 02./03.11.): `luxestyle-premium`, `damen-sandalen`, `rucksaecke-material-gruppe`, `auto-kfz-zubehoer`, `elektronik-kleinteile`, `spielzeug-fahrzeuge`, `smartwatches`, `glaetteisen-locken-foehn`, `tier-leinen`, `tier-halsbaender`; die Messdatei ist zwei Tage alt, vor dem Verwenden frisch messen.
 - Wirkung auf Rang und Verkäufe: unbekannt (erste Einblendungen nach der Indexierung abwarten, Search Console in 7 und 14 Tagen).
+
+## Frische Messung 05.11.2026 ca. 16:50 UTC (inspect_urls, GEMESSEN; Besitzer wünschte neue Direktlinks)
+- `damen-umhaengetaschen` ist **«Gesendet und indexiert»** (zuletzt gecrawlt 05.11. 02:18 UTC): fällt aus der Liste. Alle anderen neun der Liste vom 04.11. sind noch nicht indexiert (6× «Gefunden – zurzeit nicht indexiert», 3× «URL ist Google nicht bekannt»); `inspect_urls` hinkt Anträgen von heute um Stunden hinterher.
+- Als Nr. 10 neu: `smartwatches` (Geschenk, «URL ist Google nicht bekannt», HTTP 200, kein `noindex`, 48 Karten, 1 513 792 Byte). Reserve: `luxestyle-premium`, `glaetteisen-locken-foehn` (beide HTTP 200, kein `noindex`, unter 2 MiB).
+- Die Kennung im Link ändert sich bei jeder Messung (Links der Liste weiter oben sind überholt).
+
+| # | Seite | Google-Stand 05.11. | Direktlink |
+|---|---|---|---|
+| 1 | uhren | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=ikCqPJtGJ3N5tKuS94N1SQ&utm_medium=link&utm_source=api |
+| 2 | unter-chf-25 | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=kPaNkLjDYyKRtaWOZ22EJQ&utm_medium=link&utm_source=api |
+| 3 | spielzeug-ch-lager | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=m8blsBWTvrOADiBqZz_IfA&utm_medium=link&utm_source=api |
+| 4 | sub-ringe | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=d1gEbwc0d3u9TjPHZ3dfKg&utm_medium=link&utm_source=api |
+| 5 | herren-t-shirts | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=7nsfm-Ue-pRY_O3mNaXr-A&utm_medium=link&utm_source=api |
+| 6 | fitness-training | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=P-nnaARdoZX1-83CbYOZAg&utm_medium=link&utm_source=api |
+| 7 | make-up | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=HHf8utybl_Tqay92atgG7g&utm_medium=link&utm_source=api |
+| 8 | jacken-outdoor | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=lLkz1Ku8vWhBXa34Zy1ZQw&utm_medium=link&utm_source=api |
+| 9 | gaming | Gefunden – zurzeit nicht indexiert | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=mAfGTWzKy74cocr6f7IVXA&utm_medium=link&utm_source=api |
+| 10 | smartwatches | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=yJIQqbMdHtlBC2w5A8pp1A&utm_medium=link&utm_source=api |
+Reserve: luxestyle-premium https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Uy3N78BxfQWfN0gYTo4Jhw&utm_medium=link&utm_source=api · glaetteisen-locken-foehn https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=f9zdNlHMIB6KxBmHCcLfjA&utm_medium=link&utm_source=api
