@@ -170,3 +170,6 @@ data/krypto-update-aus.txt
 data/krypto-update-backup/
 data/krypto-update-tmp/
 data/krypto-pflege.json
+
+# Marktdruck-Prüfstand: rohe Tagesdateien von data.binance.vision (öffentlich, gross, jederzeit neu ladbar)
+data/marktdruck-roh/
