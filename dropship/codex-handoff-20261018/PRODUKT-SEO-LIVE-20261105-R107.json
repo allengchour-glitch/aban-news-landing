@@ -1,0 +1,778 @@
+{
+  "schemaVersion": 1,
+  "run": "R107",
+  "recordedAt": "2026-11-05T22:04:20+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminProductReadbacks": 2,
+    "completeAdminVariantPagesRead": 3,
+    "publicHtmlReadbacksHttp200": 2,
+    "publicProductJsonReadbacksHttp200": 2,
+    "readyImageAltTextsUpdated": 32,
+    "variantsProtected": 111,
+    "publicationNodesProtected": 12,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/16656436363655",
+      "handle": "mary-jane-pumps-mit-quadratischem-zehenschutz-604900",
+      "publicUrl": "https://luxestyle.ch/products/mary-jane-pumps-mit-quadratischem-zehenschutz-604900",
+      "beforeTitle": "Mary Jane Pumps mit quadratischem Zehenschutz",
+      "after": {
+        "title": "Glitzer-Slingback-Pumps mit Riemen",
+        "descriptionHtml": "<p>Diese Slingback-Pumps verbinden eine glitzernde Oberfläche mit einer kantigen Schuhspitze und schmalen Riemendetails. Wähle zwischen Schwarz und Champagner sowie den Grössen 34–39.</p><h3>Auf einen Blick</h3><ul>\n<li>Glitzernde Oberfläche</li>\n<li>Slingback-Form mit Fersenriemen</li>\n<li>Schmale Riemendetails</li>\n<li>Farben: Schwarz und Champagner</li>\n<li>Grössen: 34–39</li>\n</ul>",
+        "seo": {
+          "title": "Glitzer-Slingback-Pumps mit Riemen | LuxeStyle",
+          "description": "Slingback-Pumps mit glitzernder Oberfläche, kantiger Spitze und Riemendetails. In Schwarz oder Champagner und den Grössen 34–39 zur Auswahl."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Schwarz",
+            "Champagner"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "position": 2,
+          "values": [
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 12,
+        "ids": [
+          "gid://shopify/ProductVariant/67759367192967",
+          "gid://shopify/ProductVariant/67759367225735",
+          "gid://shopify/ProductVariant/67759367258503",
+          "gid://shopify/ProductVariant/67759367291271",
+          "gid://shopify/ProductVariant/67759367324039",
+          "gid://shopify/ProductVariant/67759367356807",
+          "gid://shopify/ProductVariant/67759367389575",
+          "gid://shopify/ProductVariant/67759367422343",
+          "gid://shopify/ProductVariant/67759367455111",
+          "gid://shopify/ProductVariant/67759367487879",
+          "gid://shopify/ProductVariant/67759367520647",
+          "gid://shopify/ProductVariant/67759367553415"
+        ],
+        "skus": [
+          "CJ-CJYD314727101AZ",
+          "CJ-CJYD314727102BY",
+          "CJ-CJYD314727103CX",
+          "CJ-CJYD314727104DW",
+          "CJ-CJYD314727105EV",
+          "CJ-CJYD314727106FU",
+          "CJ-CJYD314727107GT",
+          "CJ-CJYD314727108HS",
+          "CJ-CJYD314727109IR",
+          "CJ-CJYD314727110JQ",
+          "CJ-CJYD314727111KP",
+          "CJ-CJYD314727112LO"
+        ],
+        "pricesCHF": [
+          42.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": [
+        {
+          "id": "gid://shopify/MediaImage/77799616414087",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cc531c25-4d1f-4f4c-b823-a58122ea5adc.jpg?v=1792613622",
+          "altText": "Champagnerfarbene Glitzer-Slingback-Pumps seitlich getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799616610695",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/51714cee-832b-4875-bb25-3f43277e9d39.jpg?v=1792613631",
+          "altText": "Schwarze Glitzer-Slingback-Pumps seitlich getragen",
+          "width": 750,
+          "height": 750
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799616643463",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/876a49f5-3dcb-4666-bb5e-ff43d0d21a6a.jpg?v=1792613631",
+          "altText": "Schwarze Glitzer-Slingback-Pumps als Paar getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799616676231",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24447b66-3005-4992-b822-3b504b5e4b92.jpg?v=1792613631",
+          "altText": "Schwarze Glitzer-Slingback-Pumps in Seitenansicht",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799616708999",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e0f0c3eb-1118-4ac6-bf3b-c5796299481c.jpg?v=1792613631",
+          "altText": "Champagnerfarbene Glitzer-Slingback-Pumps als Nahansicht getragen",
+          "width": 750,
+          "height": 750
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799616741767",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b9811501-7c74-4877-bd91-21587ff37899.jpg?v=1792613631",
+          "altText": "Champagnerfarbene Glitzer-Slingback-Pumps als Paar getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799616774535",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/40cecf53-563f-4b57-8b80-e793113ce157.jpg?v=1792613631",
+          "altText": "Champagnerfarbene Glitzer-Slingback-Pumps freigestellt",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799618511239",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/51714cee-832b-4875-bb25-3f43277e9d39_4973a28c-c7b5-4708-b934-2fa8fbdae446.jpg?v=1792613663",
+          "altText": "Schwarze Glitzer-Slingback-Pumps seitlich getragen",
+          "width": 750,
+          "height": 750
+        },
+        {
+          "id": "gid://shopify/MediaImage/77799618544007",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e0f0c3eb-1118-4ac6-bf3b-c5796299481c_d9e93730-4754-4ae3-8c4c-ad67be676e48.jpg?v=1792613663",
+          "altText": "Champagnerfarbene Glitzer-Slingback-Pumps als Nahansicht getragen",
+          "width": 750,
+          "height": 750
+        }
+      ],
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "vendor": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsDimensionsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Pigskin/Leder/TPR",
+        "Zehenschutz/Schutzwirkung",
+        "Stabilität",
+        "Gewicht",
+        "figurbetont",
+        "nur Grösse 34",
+        "produktbezogene Liefer-/Rabattbausteine"
+      ],
+      "separateStructureReview": [
+        "historical handle contains zehenschutz",
+        "tag such-sicherheitsschuhe preserved",
+        "taxonomy Ballerinas preserved"
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15500453872001",
+      "handle": "beige-grun-funf-finger-sneaker-619500",
+      "publicUrl": "https://luxestyle.ch/products/beige-grun-funf-finger-sneaker-619500",
+      "beforeTitle": "Beige Grün Fünf-Finger-Sneaker",
+      "after": {
+        "title": "Fünf-Zehen-Schuhe in neun Farben",
+        "descriptionHtml": "<p>Diese niedrigen Schuhe haben fünf getrennte Zehenpartien und eine sichtbar profilierte Sohle. Zur Auswahl stehen neun Farben sowie die Grössen 35–45.</p><h3>Auf einen Blick</h3><ul>\n<li>Fünf separate Zehenpartien</li>\n<li>Niedrige Schlupfform</li>\n<li>Sichtbar profilierte Sohle</li>\n<li>Farben: Grün, Pink, Schwarz, E Grau, Kaffeebraun, Traubenviolett, Korallenpink, Kühles Schwarz und Jadeweiss</li>\n<li>Grössen: 35–45</li>\n</ul>",
+        "seo": {
+          "title": "Fünf-Zehen-Schuhe in neun Farben | LuxeStyle",
+          "description": "Fünf-Zehen-Schuhe mit separaten Zehenpartien in neun Farben und den Grössen 35–45. Variante auswählen und Produktbilder ansehen."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Grün",
+            "Pink",
+            "Schwarz",
+            "E Grau",
+            "Kaffeebraun",
+            "Traubenviolett",
+            "Korallenpink",
+            "Kühles Schwarz",
+            "Jadeweiss"
+          ]
+        },
+        {
+          "name": "Grösse",
+          "position": 2,
+          "values": [
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 99,
+        "ids": [
+          "gid://shopify/ProductVariant/56107994349953",
+          "gid://shopify/ProductVariant/56107994382721",
+          "gid://shopify/ProductVariant/56107994415489",
+          "gid://shopify/ProductVariant/56107994448257",
+          "gid://shopify/ProductVariant/56107994481025",
+          "gid://shopify/ProductVariant/56107994513793",
+          "gid://shopify/ProductVariant/56107994546561",
+          "gid://shopify/ProductVariant/56107994579329",
+          "gid://shopify/ProductVariant/56107994612097",
+          "gid://shopify/ProductVariant/56107994644865",
+          "gid://shopify/ProductVariant/56107994677633",
+          "gid://shopify/ProductVariant/56107994710401",
+          "gid://shopify/ProductVariant/56107994743169",
+          "gid://shopify/ProductVariant/56107994775937",
+          "gid://shopify/ProductVariant/56107994808705",
+          "gid://shopify/ProductVariant/56107994841473",
+          "gid://shopify/ProductVariant/56107994874241",
+          "gid://shopify/ProductVariant/56107994907009",
+          "gid://shopify/ProductVariant/56107994939777",
+          "gid://shopify/ProductVariant/56107994972545",
+          "gid://shopify/ProductVariant/56107995005313",
+          "gid://shopify/ProductVariant/56107995038081",
+          "gid://shopify/ProductVariant/56107995070849",
+          "gid://shopify/ProductVariant/56107995103617",
+          "gid://shopify/ProductVariant/56107995136385",
+          "gid://shopify/ProductVariant/56107995169153",
+          "gid://shopify/ProductVariant/56107995201921",
+          "gid://shopify/ProductVariant/56107995234689",
+          "gid://shopify/ProductVariant/56107995267457",
+          "gid://shopify/ProductVariant/56107995300225",
+          "gid://shopify/ProductVariant/56107995332993",
+          "gid://shopify/ProductVariant/56107995365761",
+          "gid://shopify/ProductVariant/56107995398529",
+          "gid://shopify/ProductVariant/56107995431297",
+          "gid://shopify/ProductVariant/56107995464065",
+          "gid://shopify/ProductVariant/56107995496833",
+          "gid://shopify/ProductVariant/56107995529601",
+          "gid://shopify/ProductVariant/56107995562369",
+          "gid://shopify/ProductVariant/56107995595137",
+          "gid://shopify/ProductVariant/56107995627905",
+          "gid://shopify/ProductVariant/56107995660673",
+          "gid://shopify/ProductVariant/56107995693441",
+          "gid://shopify/ProductVariant/56107995726209",
+          "gid://shopify/ProductVariant/56107995758977",
+          "gid://shopify/ProductVariant/56107995791745",
+          "gid://shopify/ProductVariant/56107995824513",
+          "gid://shopify/ProductVariant/56107995857281",
+          "gid://shopify/ProductVariant/56107995890049",
+          "gid://shopify/ProductVariant/56107995922817",
+          "gid://shopify/ProductVariant/56107995955585",
+          "gid://shopify/ProductVariant/56107995988353",
+          "gid://shopify/ProductVariant/56107996021121",
+          "gid://shopify/ProductVariant/56107996053889",
+          "gid://shopify/ProductVariant/56107996086657",
+          "gid://shopify/ProductVariant/56107996119425",
+          "gid://shopify/ProductVariant/56107996152193",
+          "gid://shopify/ProductVariant/56107996184961",
+          "gid://shopify/ProductVariant/56107996217729",
+          "gid://shopify/ProductVariant/56107996250497",
+          "gid://shopify/ProductVariant/56107996283265",
+          "gid://shopify/ProductVariant/56107996316033",
+          "gid://shopify/ProductVariant/56107996348801",
+          "gid://shopify/ProductVariant/56107996381569",
+          "gid://shopify/ProductVariant/56107996414337",
+          "gid://shopify/ProductVariant/56107996447105",
+          "gid://shopify/ProductVariant/56107996479873",
+          "gid://shopify/ProductVariant/56107996512641",
+          "gid://shopify/ProductVariant/56107996545409",
+          "gid://shopify/ProductVariant/56107996578177",
+          "gid://shopify/ProductVariant/56107996610945",
+          "gid://shopify/ProductVariant/56107996643713",
+          "gid://shopify/ProductVariant/56107996676481",
+          "gid://shopify/ProductVariant/56107996709249",
+          "gid://shopify/ProductVariant/56107996742017",
+          "gid://shopify/ProductVariant/56107996774785",
+          "gid://shopify/ProductVariant/56107996807553",
+          "gid://shopify/ProductVariant/56107996840321",
+          "gid://shopify/ProductVariant/56107996873089",
+          "gid://shopify/ProductVariant/56107996905857",
+          "gid://shopify/ProductVariant/56107996938625",
+          "gid://shopify/ProductVariant/56107996971393",
+          "gid://shopify/ProductVariant/56107997004161",
+          "gid://shopify/ProductVariant/56107997036929",
+          "gid://shopify/ProductVariant/56107997069697",
+          "gid://shopify/ProductVariant/56107997102465",
+          "gid://shopify/ProductVariant/56107997135233",
+          "gid://shopify/ProductVariant/56107997168001",
+          "gid://shopify/ProductVariant/56107997200769",
+          "gid://shopify/ProductVariant/56107997233537",
+          "gid://shopify/ProductVariant/56107997266305",
+          "gid://shopify/ProductVariant/56107997299073",
+          "gid://shopify/ProductVariant/56107997331841",
+          "gid://shopify/ProductVariant/56107997364609",
+          "gid://shopify/ProductVariant/56107997397377",
+          "gid://shopify/ProductVariant/56107997430145",
+          "gid://shopify/ProductVariant/56107997462913",
+          "gid://shopify/ProductVariant/56107997495681",
+          "gid://shopify/ProductVariant/56107997528449",
+          "gid://shopify/ProductVariant/56107997561217"
+        ],
+        "skus": [
+          "CJ-CJYD241362701AZ",
+          "CJ-CJYD241362702BY",
+          "CJ-CJYD241362703CX",
+          "CJ-CJYD241362704DW",
+          "CJ-CJYD241362705EV",
+          "CJ-CJYD241362706FU",
+          "CJ-CJYD241362707GT",
+          "CJ-CJYD241362708HS",
+          "CJ-CJYD241362709IR",
+          "CJ-CJYD241362710JQ",
+          "CJ-CJYD241362711KP",
+          "CJ-CJYD241362712LO",
+          "CJ-CJYD241362713MN",
+          "CJ-CJYD241362714NM",
+          "CJ-CJYD241362715OL",
+          "CJ-CJYD241362716PK",
+          "CJ-CJYD241362717QJ",
+          "CJ-CJYD241362718RI",
+          "CJ-CJYD241362719SH",
+          "CJ-CJYD241362720TG",
+          "CJ-CJYD241362721UF",
+          "CJ-CJYD241362722VE",
+          "CJ-CJYD241362723WD",
+          "CJ-CJYD241362724XC",
+          "CJ-CJYD241362725YB",
+          "CJ-CJYD241362726ZA",
+          "CJ-CJYD241362727AZ",
+          "CJ-CJYD241362728BY",
+          "CJ-CJYD241362729CX",
+          "CJ-CJYD241362730DW",
+          "CJ-CJYD241362731EV",
+          "CJ-CJYD241362732FU",
+          "CJ-CJYD241362733GT",
+          "CJ-CJYD241362734HS",
+          "CJ-CJYD241362735IR",
+          "CJ-CJYD241362736JQ",
+          "CJ-CJYD241362737KP",
+          "CJ-CJYD241362738LO",
+          "CJ-CJYD241362739MN",
+          "CJ-CJYD241362740NM",
+          "CJ-CJYD241362741OL",
+          "CJ-CJYD241362742PK",
+          "CJ-CJYD241362743QJ",
+          "CJ-CJYD241362744RI",
+          "CJ-CJYD241362745SH",
+          "CJ-CJYD241362746TG",
+          "CJ-CJYD241362747UF",
+          "CJ-CJYD241362748VE",
+          "CJ-CJYD241362749WD",
+          "CJ-CJYD241362750XC",
+          "CJ-CJYD241362751YB",
+          "CJ-CJYD241362752ZA",
+          "CJ-CJYD241362753AZ",
+          "CJ-CJYD241362754BY",
+          "CJ-CJYD241362755CX",
+          "CJ-CJYD241362756DW",
+          "CJ-CJYD241362757EV",
+          "CJ-CJYD241362758FU",
+          "CJ-CJYD241362759GT",
+          "CJ-CJYD241362760HS",
+          "CJ-CJYD241362761IR",
+          "CJ-CJYD241362762JQ",
+          "CJ-CJYD241362763KP",
+          "CJ-CJYD241362764LO",
+          "CJ-CJYD241362765MN",
+          "CJ-CJYD241362766NM",
+          "CJ-CJYD241362767OL",
+          "CJ-CJYD241362768PK",
+          "CJ-CJYD241362769QJ",
+          "CJ-CJYD241362770RI",
+          "CJ-CJYD241362771SH",
+          "CJ-CJYD241362772TG",
+          "CJ-CJYD241362773UF",
+          "CJ-CJYD241362774VE",
+          "CJ-CJYD241362775WD",
+          "CJ-CJYD241362776XC",
+          "CJ-CJYD241362777YB",
+          "CJ-CJYD241362778ZA",
+          "CJ-CJYD241362779AZ",
+          "CJ-CJYD241362780BY",
+          "CJ-CJYD241362781CX",
+          "CJ-CJYD241362782DW",
+          "CJ-CJYD241362783EV",
+          "CJ-CJYD241362784FU",
+          "CJ-CJYD241362785GT",
+          "CJ-CJYD241362786HS",
+          "CJ-CJYD241362787IR",
+          "CJ-CJYD241362788JQ",
+          "CJ-CJYD241362789KP",
+          "CJ-CJYD241362790LO",
+          "CJ-CJYD241362791MN",
+          "CJ-CJYD241362792NM",
+          "CJ-CJYD241362793OL",
+          "CJ-CJYD241362794PK",
+          "CJ-CJYD241362795QJ",
+          "CJ-CJYD241362796RI",
+          "CJ-CJYD241362797SH",
+          "CJ-CJYD241362798TG",
+          "CJ-CJYD241362799UF"
+        ],
+        "pricesCHF": [
+          89.9,
+          95.9,
+          96.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "interpretation": "quantity 0 is not an out-of-stock conclusion; variants are untracked and availableForSale=true"
+      },
+      "media": [
+        {
+          "id": "gid://shopify/MediaImage/70543068889473",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7a5ec47f-43e0-4f00-9b9f-cad1436d14f3.jpg?v=1786782983",
+          "altText": "Schwarze Fünf-Zehen-Schuhe getragen, Vorderansicht",
+          "width": 900,
+          "height": 1200
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543069872513",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a0b64e29-6889-485a-addc-afc6c8e4239c.jpg?v=1786782984",
+          "altText": "Rosafarbene Fünf-Zehen-Schuhe mit sichtbarer Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543069905281",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/451ef71e-7fd5-4c75-8f04-56ca3b8bfedc.jpg?v=1786782983",
+          "altText": "Grüne Fünf-Zehen-Schuhe mit heller Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543069938049",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a63f195-45c5-40c0-b2fb-ec59de2616d5.jpg?v=1786782983",
+          "altText": "Graubraune Fünf-Zehen-Schuhe mit profilierter Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543069970817",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0af0266f-33f7-4136-84f7-12037442b628.jpg?v=1786782984",
+          "altText": "Violette Fünf-Zehen-Schuhe mit sichtbarer Sohle",
+          "width": 900,
+          "height": 1200
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070003585",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3460e28c-aa11-4583-97bb-2a24f95feb5a_fine.jpg?v=1786782984",
+          "altText": "Helle Fünf-Zehen-Schuhe seitlich getragen",
+          "width": 900,
+          "height": 900
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070036353",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/633a0dd0-8c34-46f5-a782-e08d380bf3f0.jpg?v=1786782983",
+          "altText": "Schwarze Fünf-Zehen-Schuhe mit schwarzer Profilsohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070069121",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b37fb5be-5467-409c-9d1c-f642ab8b7e9b.jpg?v=1786782984",
+          "altText": "Rosafarbene Fünf-Zehen-Schuhe mit schwarzer Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070101889",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9310f551-24d7-4c8a-9923-620af1275461.jpg?v=1786782983",
+          "altText": "Dunkelgraue Fünf-Zehen-Schuhe mit orangefarbener Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070134657",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a32988e6-de12-43f2-b52a-09ad89d51c4d_trans.jpg?v=1786782983",
+          "altText": "Graubrauner Fünf-Zehen-Schuh mit eingeblendeter Seitenansicht",
+          "width": 900,
+          "height": 1200
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070167425",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/63dde435-d8e4-4e50-8459-5adac4f9c062.jpg?v=1786782983",
+          "altText": "Helle Fünf-Zehen-Schuhe mit beiger Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070200193",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e324dcb7-266e-4389-846b-3776358af5b1.jpg?v=1786782983",
+          "altText": "Schwarze Fünf-Zehen-Schuhe mit neongrüner Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070232961",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7fd34d5-ea49-4495-b6d9-dde0a6d56096.jpg?v=1786782984",
+          "altText": "Rosafarbene Fünf-Zehen-Schuhe freigestellt",
+          "width": 900,
+          "height": 1200
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070265729",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac8745e4-4fbe-4bd5-88f5-80d57e13a250.jpg?v=1786782983",
+          "altText": "Traubenviolette Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070757249",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/451ef71e-7fd5-4c75-8f04-56ca3b8bfedc_fe2a686a-5f4c-4da0-8cdf-2fc0fd51effd.jpg?v=1786782989",
+          "altText": "Grüne Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070790017",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b37fb5be-5467-409c-9d1c-f642ab8b7e9b_1e282d78-b34d-42a0-aaf5-943ab34c13b6.jpg?v=1786782990",
+          "altText": "Korallenpinke Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070822785",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e324dcb7-266e-4389-846b-3776358af5b1_04d85847-921a-40f3-be78-d6b0b0578b96.jpg?v=1786782989",
+          "altText": "Schwarze Fünf-Zehen-Schuhe mit neongrüner Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070855553",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9310f551-24d7-4c8a-9923-620af1275461_47ef800a-67a1-40cb-8d04-444128f99f8a.jpg?v=1786782989",
+          "altText": "Fünf-Zehen-Schuhe in E Grau mit orangefarbener Sohle",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070888321",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a63f195-45c5-40c0-b2fb-ec59de2616d5_dc4af72e-e24c-436a-ba95-f15b6233fbb6.jpg?v=1786782989",
+          "altText": "Kaffeebraune Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070921089",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac8745e4-4fbe-4bd5-88f5-80d57e13a250_17ba2d30-5d90-4470-9484-8d4b7ca081f0.jpg?v=1786782989",
+          "altText": "Traubenviolette Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070953857",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a0b64e29-6889-485a-addc-afc6c8e4239c_b5c19ae6-c4e5-4496-8d08-18756ac7c78a.jpg?v=1786782989",
+          "altText": "Pinke Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543070986625",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/633a0dd0-8c34-46f5-a782-e08d380bf3f0_461d76b6-286c-4a99-b0a8-3c81d989d675.jpg?v=1786782989",
+          "altText": "Fünf-Zehen-Schuhe in Kühlem Schwarz getragen",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "id": "gid://shopify/MediaImage/70543071019393",
+          "status": "READY",
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/63dde435-d8e4-4e50-8459-5adac4f9c062_52101c77-6a66-4599-9683-f243a0d2c846.jpg?v=1786782989",
+          "altText": "Jadeweisse Fünf-Zehen-Schuhe getragen",
+          "width": 800,
+          "height": 800
+        }
+      ],
+      "publicationNodesProtected": 6,
+      "protected": {
+        "status": true,
+        "handle": true,
+        "vendor": true,
+        "productType": true,
+        "tags": true,
+        "category": true,
+        "options": true,
+        "variantIdsSkusPricesAvailabilityInventory": true,
+        "mediaIdsUrlsDimensionsAndBindings": true,
+        "publications": true
+      },
+      "removedUnsupportedClaims": [
+        "Beige as current option",
+        "Indoor-Eignung",
+        "Non-Slip/Rutschhemmung",
+        "Schockabsorption",
+        "Luftdurchlässigkeit",
+        "Leichtigkeit",
+        "produktbezogene Lieferbausteine"
+      ],
+      "separateStructureReview": [
+        "historical handle contains beige/grun/funf-finger",
+        "product type Herrenschuhe preserved"
+      ]
+    }
+  ],
+  "readback": {
+    "own": {
+      "pumpsHtmlSha256": "59a74057c4fbbf9ce813a893fc2b65a4616b47a8bc0db9b04c613aee42cbb753",
+      "pumpsProductJsonSha256": "7657d1e738492360e2b1210941ff4bac78e7bc57258dcf9a753ab642b3a93f10",
+      "fingersHtmlSha256": "2f31a9c1602a2990f1380e801d37d6a3ae72c4e93b6187703ec84cdf63af0279",
+      "fingersProductJsonSha256": "7ce256fc257521f273576b0f9c1e7c7b4b25e5da2757c655154a160207ff6d97"
+    },
+    "independentQa": {
+      "pumpsVariantEvidenceSha256": "70e85f0512aa13f44e235566cd1eb20291a4f06c80068c2870bd43fbf11fda21",
+      "fingersVariantEvidenceSha256": "be3adc3b7560e6344b32ef44a98c909152ec2a7f36e048735142940b8e82bc3a",
+      "pumpsHtmlSha256": "b953a02f30a866f22c33a22df69a006a2c05f9559f88ef3a575f8a1801e4d1cd",
+      "pumpsProductJsonSha256": "7657d1e738492360e2b1210941ff4bac78e7bc57258dcf9a753ab642b3a93f10",
+      "fingersHtmlSha256": "0c6e93d5ec35b5cf70adccc5303144789f951a6d4d6515c8fda078e268ffdae4",
+      "fingersProductJsonSha256": "7ce256fc257521f273576b0f9c1e7c7b4b25e5da2757c655154a160207ff6d97",
+      "dynamicHtmlHashesMayDiffer": true
+    },
+    "contactSheets": {
+      "pumpsSha256": "ba3dfc35931cc67056356d53ae2c06c166558e70d964e1715953a6aba49f2da4",
+      "fingersSha256": "7264ec548146b28f63b3c8f5630469c3efbd1d6b2efe850298b00d7312c7581f"
+    }
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 39,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.06902,
+    "roundedPercent": 0.07,
+    "remainingProducts": 56467,
+    "remainingPercentApprox": 99.93,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformed": true,
+    "checkedAt": "2026-11-05T22:04:20+01:00",
+    "currentMain": "859132ed6",
+    "currentClaudeWorkObserved": [
+      "Printful/Selbst gestalten",
+      "Fell-Folge",
+      "Wegweiser/Kategorien",
+      "KI-Büro"
+    ],
+    "exactR107OrReservedR108ProductOverlapInCurrentClaudeChangedFiles": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "reservedNextBatch": [
+      "gid://shopify/Product/16655747481991",
+      "gid://shopify/Product/16616678195591"
+    ],
+    "note": "Historical GMC manifest or ledgers can mention an ID without proving a parallel product write. Recheck remote heads and Shopify updatedAt before R108."
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}

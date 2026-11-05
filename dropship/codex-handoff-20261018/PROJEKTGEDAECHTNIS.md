@@ -891,3 +891,11 @@ Fortschritt: 34/56’506 ACTIVE = 0,06017 %, gerundet 0,06 %; 56’472 beziehung
 [Live-Korrektur und Schutzbelege](PRODUKT-SEO-LIVE-20261105-R106.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R106.json). Produkt16610538324359 von falscher Midi-/Einzelgrösse und widersprüchlichen Material-/Gewichtsangaben auf die aktuellen S–XL-Optionen und sichtbar kurze Neckholder-/Volantform begrenzt. Ein `productUpdate`, ein `fileUpdate`, sieben Alttexte, keine userErrors/Retries; Admin-/Storefront-Readback und unabhängige QA GO.
 
 Vier Varianten, CHF16.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handle, Tags, Kategorie, Medien und sechs Publikationen erhalten. Handle und `sort-damen-kleider-midi` bleiben getrennt offen. Streng37/56’506=0,06548 %, gerundet0,07 %;56’469/rund99,93 % offen. Keine sonstigen externen Writes.
+
+## 05.11.2026 – R107 zwei Varianten-/Claim-Widersprüche, Revision 107
+
+[Live-Korrekturen und Schutzbelege](PRODUKT-SEO-LIVE-20261105-R107.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R107.json). Produkt16656436363655 wurde von unbelegtem Zehenschutz/Pigskin/TPR/Stabilität und nur34 auf sichtbare Glitzer-Slingback-Form, Schwarz/Champagner und34–39 begrenzt. Produkt15500453872001 wurde von falschem Beige sowie unbelegten Indoor-/Rutsch-/Schock-/Luft-/Leichtigkeitsclaims auf neun aktuelle Farben,35–45 und sichtbare Fünf-Zehen-/Sohlenform begrenzt. Zwei `productUpdate`, zwei `fileUpdate`,32 Alttexte, keine userErrors/Retries; vollständige Admin-/Storefront-Rücklesung und unabhängige QA2/2GO.
+
+111 Varianten, CHF42.90 beziehungsweiseCHF89.90–96.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und zwölf Publikationen erhalten. Alte Handles, Pumpen-Tag `such-sicherheitsschuhe` und Taxonomie-/Produkttypfragen bleiben separat offen. Streng39/56’506=0,06902 %, gerundet0,07 %;56’467/rund99,93 % offen.
+
+Remote-Abgleich: PR2689 stand auf R106, main859132ed6 betrifft KI-Büro; frische Claude-Arbeit an Printful/Selbst gestalten, Fell-Folge und Wegweiser überschneidet die vier geprüften/reservierten IDs nicht. Claude-Receipt/Live-Lock weiter unbekannt; R108 nur nach erneutem Remote- und Shopify-`updatedAt`-Read. Keine sonstigen externen Writes.
