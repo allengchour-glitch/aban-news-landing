@@ -1104,3 +1104,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R111 Zurückstellung / Grenzen | Hemd15520242467201 rein lesend geprüft und wegen drei nicht auswählbarer Galeriedesigns zurückgestellt; Berichte, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeschrieben | Kein Hemd-Write. Revision111 vorbereitet; keine Merchant-/Feed-/Versand-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung und keine Tagesreport-Wiederholung |
 
 [LUXESTYLE_R111_20261105] [Zwei weitere Damenprodukte live korrigiert](PRODUKT-SEO-LIVE-20261105-R111.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R111.json). Plateausandalen und Langarmbluse mit22 geschützten Varianten,17 Alttexten, vollständigen Readbacks, Claude-Overlap-Gegenprobe und unabhängiger QA2/2 GO; ein irreführender Hemd-Kandidat ohne Write zurückgestellt;47/56’506 streng abgeschlossen.
+
+
+## 06.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| R112 Identität / Claude-Abgleich | Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/Europe/Zurich samt sechs Kanälen passend gelesen; vor jedem Produkt Remote-Heads, exakte IDs/Handles/SKU-Präfixe und Shopify `updatedAt` erneut geprüft | Keine aktuelle Claude-Überschneidung; Receipt/Live-Lock unbekannt. Metricool ohne Write |
+| R112 Frosch-Halskrause | Unbelegte Material-, Komfort-, Heilungs-, Operations-, Schutz-, Mass- und Lieferclaims entfernt; Titel, Body, SEO und fünf Alttexte auf sichtbares Froschdesign und S–XL begrenzt | Ein `productUpdate` und ein `fileUpdate`, keine userErrors/Retry. Admin und öffentlich HTTP200; vier Varianten CHF15.90–17.90 erhalten |
+| R112 Kostümset | Unbelegte Woll-, Gewichts-, Passform-, Anime-Nutzungs- und Lieferclaims entfernt; Titel, Body, SEO und sieben Alttexte auf fünf sichtbare Teile und S–3XL begrenzt | Ein `productUpdate` und ein `fileUpdate`, keine userErrors/Retry. Admin und öffentlich HTTP200; sechs Varianten zu CHF34.90 erhalten |
+| R112 QA / Rechte / Fortschritt | Nach den Writes Admin und öffentliche HTML-/Produkt-JSON-Seiten zurückgelesen; unabhängige Schlussprüfung | QA2/2 GO;10 Varianten,12 Alttexte,13 Publikationen geschützt. Bildrechte unbekannt, Social blockiert; Halskrause zusätzlich medizinische Taxonomie. Streng49/56’506=0,08672 %, rund0,09 %;56’457/rund99,91 % offen |
+| R112 Dokumentation / Grenzen | Berichte, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeschrieben | Revision112 vorbereitet; keine Merchant-/Feed-/Versand-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung und keine Tagesreport-Wiederholung |
+
+[LUXESTYLE_R112_20261106] [Zwei weitere Produkte live korrigiert](PRODUKT-SEO-LIVE-20261106-R112.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R112.json). Halskrause und Kostümset mit zehn geschützten Varianten, zwölf Alttexten, vollständigen Readbacks, Claude-Overlap-Gegenprobe und unabhängiger QA2/2 GO;49/56’506 streng abgeschlossen.

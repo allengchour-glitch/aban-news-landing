@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "run": "R112",
+  "draft": false,
+  "recordedAt": "2026-11-06T00:08:11+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "unclearWrites": 0,
+    "publicReadbackAfterSentWrites": true,
+    "readyImageAltTextsUpdated": 12,
+    "variantsProtected": 10,
+    "publicationNodesProtected": 13,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15506878333313",
+      "handle": "eliza-circle-frosch-halskrause-fur-hunde-004288",
+      "publicUrl": "https://luxestyle.ch/products/eliza-circle-frosch-halskrause-fur-hunde-004288",
+      "beforeTitle": "Eliza Circle Frosch-Halskrause für Hunde",
+      "finalUpdatedAt": "2026-11-05T23:01:27Z",
+      "after": {
+        "title": "Frosch-Halskrause für Haustiere",
+        "descriptionHtml": "<p>Diese grüne Halskrause zeigt ein rundes Froschdesign mit aufgesetzten Augen. Die Produktbilder zeigen das Modell an Katzen sowie die angebotenen Grössen im Vergleich.</p><h3>Auswahl</h3><ul><li>Grössen: S, M, L und XL</li></ul><p>Wähle die Grösse über die Option.</p>",
+        "seo": {
+          "title": "Frosch-Halskrause für Haustiere | LuxeStyle CH",
+          "description": "Grüne Frosch-Halskrause für Haustiere in den Grössen S bis XL. Produktbilder und Varianten ansehen und gewünschte Grösse auswählen."
+        }
+      },
+      "options": [
+        {
+          "name": "Grösse",
+          "values": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 4,
+        "pricesCHF": [
+          15.9,
+          16.9,
+          17.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBinding": "gid://shopify/MediaImage/70605138329985"
+      },
+      "media": {
+        "count": 5,
+        "readyImageAltTextsUpdated": 5,
+        "altTexts": [
+          "Katze mit grüner Frosch-Halskrause in Seitenansicht",
+          "Katze mit grüner Frosch-Halskrause von oben",
+          "Katze trägt grüne Frosch-Halskrause in Seitenansicht",
+          "Katze mit grüner Frosch-Halskrause in Vorderansicht",
+          "Grüne Frosch-Halskrausen in mehreren Grössen"
+        ]
+      },
+      "publicationNodesProtected": 7,
+      "removedUnsupportedClaims": [
+        "Baumwolle",
+        "Komfort",
+        "Wundheilung oder Operationsschutz",
+        "Halsumfang",
+        "ganzjähriger Gebrauch",
+        "produktbezogene Liefer- und Zahlungsclaims"
+      ],
+      "rightsReview": {
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "medicalTaxonomy": true,
+        "newSocialPublication": "blocked"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/16604923298183",
+      "handle": "anime-jk-uniform-cosplay-woll-komplettset-608800",
+      "publicUrl": "https://luxestyle.ch/products/anime-jk-uniform-cosplay-woll-komplettset-608800",
+      "beforeTitle": "Schuluniform-Set im Anime-Stil: Blazer, Rock, Hemd & Fliege (Cosplay)",
+      "finalUpdatedAt": "2026-11-05T23:04:09Z",
+      "after": {
+        "title": "Fünfteiliges Kostümset mit Blazer und Faltenrock",
+        "descriptionHtml": "<p>Dieses fünfteilige Kostümset besteht aus einem dunkelblauen Blazer, einem weissen Hemd, einem grauen Faltenrock, einer Fliege und schwarzen Socken. Die Produktbilder zeigen das Set in Vorder- und Rückansicht sowie alle fünf Bestandteile.</p><h3>Set-Inhalt</h3><ul><li>Dunkelblauer Blazer</li><li>Weisses Hemd</li><li>Grauer Faltenrock</li><li>Fliege</li><li>Schwarze Socken</li></ul><h3>Auswahl</h3><ul><li>Grössen: S, M, L, XL, 2XL und 3XL</li></ul><p>Wähle die Grösse über die Option.</p>",
+        "seo": {
+          "title": "Kostümset mit Blazer und Faltenrock | LuxeStyle CH",
+          "description": "Fünfteiliges Kostümset mit dunkelblauem Blazer, weissem Hemd, grauem Faltenrock, Fliege und schwarzen Socken. In S bis 3XL wählbar."
+        }
+      },
+      "options": [
+        {
+          "name": "Grösse",
+          "values": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL",
+            "3XL"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 6,
+        "pricesCHF": [
+          34.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBinding": "gid://shopify/MediaImage/77442127692167"
+      },
+      "media": {
+        "count": 7,
+        "readyImageAltTextsUpdated": 7,
+        "altTexts": [
+          "Dunkelblauer Blazer mit grauem Faltenrock, weissem Hemd und Fliege – Vorderansicht",
+          "Fünfteiliges Kostümset mit Blazer, Hemd, Faltenrock, Fliege und schwarzen Socken",
+          "Kostümset mit dunkelblauem Blazer und grauem Faltenrock – Vorder- und Rückansicht",
+          "Kostümset in Blau und Grau mit fünf abgebildeten Set-Teilen",
+          "Dunkelblauer Blazer mit goldfarbenen Knöpfen und grauem Faltenrock – Frontansicht",
+          "Dunkelblauer Blazer und grauer Faltenrock – Rückansicht",
+          "Komplettes Kostümset mit Blazer, Hemd, Rock, Fliege und schwarzen Socken"
+        ]
+      },
+      "publicationNodesProtected": 6,
+      "removedUnsupportedClaims": [
+        "Wolle oder andere Materialangaben",
+        "Gewicht",
+        "Passform",
+        "Anime-spezifische Nutzung",
+        "produktbezogene Liefer- und Zahlungsclaims"
+      ],
+      "rightsReview": {
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "newSocialPublication": "blocked"
+      }
+    }
+  ],
+  "readback": {
+    "homeHtmlSha256": "963960a02b0689559a5e7b21aa1296c8ca12c3f8202d306add1b92fc0af83d09",
+    "homeProductJsonSha256": "6d65b5768ebcc6898d6b52dbb43b25b1e795474cde70a780667b1195d9536e58",
+    "fashionHtmlSha256": "9eb9b3f41b6f642b38ec3c389296e79f037e9cad2ce335dcbd961a859d323683",
+    "fashionProductJsonSha256": "30b49dcb49c69d7787698e9f29d15f29d2c854299553a7824b3f27f3b828e4ea",
+    "adminAndPublicConsistent": true
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 49,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.08672,
+    "remainingProducts": 56457,
+    "remainingPercentApprox": 99.91328,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "currentMainObserved": "f9c4b5f60f889063a2902231112abc9a0ce5a7d3",
+    "latestClaudeHeadObserved": "35d562d2d255c5a18bf465e8bea32c61dfd8216a",
+    "exactR112ProductOverlapInCurrentClaudeRefsAndPullRequests": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedReservedBaselinesBeforeWrites": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}
