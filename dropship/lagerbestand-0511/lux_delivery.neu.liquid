@@ -1,6 +1,6 @@
 {%- comment -%} LUX-LIEFERUNG 05.11.2026 (Verfügbarkeit je Ausführung, ehrliche Bestandsanzeige).
 1. Die Verfügbarkeit gilt für die gewählte Ausführung (selected_or_first_available_variant), nicht mehr für das ganze Produkt. Ist sie ausverkauft: rote Pille «Diese Ausführung ist ausverkauft» (wenn eine andere Ausführung kaufbar ist) bzw. «Momentan ausverkauft», und KEINE Lieferbox.
-2. «Nur noch N» / «Nur noch wenige» (orange) erscheint nur, wenn ALLE Bedingungen gelten: Tag fortura oder ch-lager · Zweig Schweizer Lager · Variante mit inventory_management shopify · inventory_policy deny · Variante kaufbar · Stempel shop.metafields.luxe.fortura_bestand_stand ist ein Zeitstempel mit Uhrzeit (z. B. 2026-11-05T08:15:00Z), höchstens 26 h (93600 s) alt und höchstens 300 s in der Zukunft · Notschalter nicht aus. Fehlt eine Bedingung oder ist der Stempel leer, alt, zu neu oder kein Datum, steht keine Zahl und kein «Nur noch» (Rückfall: «Auf Lager · versandbereit»). CJ, Druck auf Bestellung und EU-Lager bekommen nie eine Zahl.
+2. «Nur noch N» / «Nur noch wenige» (orange) erscheint nur, wenn ALLE Bedingungen gelten: Tag fortura oder ch-lager · Zweig Schweizer Lager · Variante mit inventory_management shopify · inventory_policy deny · Variante kaufbar · Stempel shop.metafields.luxe.fortura_bestand_stand ist ein Zeitstempel mit Datum und Uhrzeit (z. B. 2026-11-05T08:15:00Z), höchstens 26 h (93600 s) alt und höchstens 300 s in der Zukunft · Notschalter nicht aus. Fehlt eine Bedingung oder ist der Stempel leer, alt, zu neu oder kein Datum, steht keine Zahl und kein «Nur noch» (Rückfall: «Auf Lager · versandbereit»). CJ, Druck auf Bestellung und EU-Lager bekommen nie eine Zahl.
 3. Stufen: 1 bis 3 Stück = genaue Zahl (bei 1 «Nur noch 1 Stück»), 4 bis 5 = «wenige», ab 6 = «Auf Lager · versandbereit» (grün wie bisher).
 Abschalten der Zahlen: Shop-Metafeld luxe.bestand_anzeige = 0 (auch «false»; fehlt es, ist die Anzeige an). Punkt 1 bleibt dann trotzdem aktiv. Datumsrechnung, Lieferbox-Texte und Versandsätze sind unverändert (Stand 13.10./24.08.2026). {%- endcomment -%}
 {%- assign now_s = 'now' | date: '%s' | plus: 0 -%}
@@ -70,13 +70,14 @@ und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endco
   {%- assign lx_bs_an = 0 -%}
   {%- assign lx_bs_roh = shop.metafields.luxe.fortura_bestand_stand.value -%}
   {%- assign lx_bs_txt = lx_bs_roh | append: '' -%}
-  {%- if lx_bs_txt contains ':' -%}
+  {%- assign lx_bs_teile = lx_bs_txt | split: '-' | size -%}
+  {%- if lx_bs_txt contains ':' and lx_bs_teile >= 3 -%}
     {%- assign lx_bs_st = lx_bs_roh | date: '%s' -%}
     {%- if lx_bs_st != lx_bs_txt -%}
       {%- assign lx_bs_st = lx_bs_st | plus: 0 -%}
       {%- assign lx_bs_alter = now_s | minus: lx_bs_st -%}
       {%- assign lx_bs_vor = lx_bs_st | minus: now_s -%}
-      {%- if lx_bs_st > 0 and lx_bs_alter <= 93600 and lx_bs_vor <= 300 -%}{%- assign lx_bs_an = 1 -%}{%- endif -%}
+      {%- if lx_bs_alter <= 93600 and lx_bs_vor <= 300 -%}{%- assign lx_bs_an = 1 -%}{%- endif -%}
     {%- endif -%}
   {%- endif -%}
 {%- endif -%}

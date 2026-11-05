@@ -20,7 +20,7 @@
 #   FORTURA_PAUSE          Sekunden zwischen den Versuchen, Vorgabe 20
 #   FORTURA_TLS_UNSICHER=1 schaltet die Zertifikatsprüfung ab (wie das Original). Nur nach Prüfung des Zertifikats setzen.
 #
-# GEHEIMNISSE: die Zugangsdaten gehen weder in die Befehlszeile noch ins Protokoll (kein «set -x», keine Ausgabe der Antworten
+# GEHEIMNISSE: die Zugangsdaten gehen weder in die Befehlszeile noch ins Protokoll (kein Ablaufprotokoll der Befehle, keine Ausgabe der Antworten
 # ausser dem Fehlercode). curl liest sie aus Dateien in einem privaten Ordner (Modus 700), der beim Ende gelöscht wird.
 set -u
 set -o pipefail
@@ -108,9 +108,13 @@ versuch() {
     fi
     return 10
   fi
-  if [ "$http" -ge 500 ] 2>/dev/null; then echo "  Login: HTTP $http" >&2; return 10; fi
+  # Alles ausser einer sauberen JSON-Antwort mit HTTP 200 ist KEIN Urteil über die Zugangsdaten (Proxy-Fehler, Sperrseite, 5xx): wiederholbar.
+  if [ "$http" != "200" ]; then echo "  Login: HTTP $http" >&2; return 10; fi
   antwort=$(json_lesen "$ARBEIT/login.json" data.sid) || {
-    echo "  Login fehlgeschlagen (HTTP $http, ${antwort#FEHLERCODE:}). Zugangsdaten falsch oder Konto gesperrt: es wird NICHT wiederholt." >&2
+    case "$antwort" in
+      FEHLERCODE:keine-json-antwort|FEHLERCODE:feld-fehlt) echo "  Login: Antwort ohne JSON/SID (HTTP $http, ${antwort#FEHLERCODE:})" >&2; return 10 ;;
+    esac
+    echo "  Login von Fortura abgelehnt (API-Fehlercode ${antwort#FEHLERCODE:}). Zugangsdaten falsch, Konto oder Quelladresse gesperrt: es wird NICHT wiederholt." >&2
     return 20
   }
   sid="$antwort"
