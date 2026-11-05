@@ -411,12 +411,12 @@
   var VS = [
     'attribute vec3 aPos; attribute vec3 aNor; attribute vec4 aCol; attribute vec2 aUV;',
     'uniform mat4 uVP; uniform mat4 uModel; uniform vec2 uUVS; uniform vec2 uUVO; uniform vec4 uPal[16]; uniform float uPalOn;',
-    'varying vec3 vN; varying vec4 vC; varying vec2 vUV;',
-    'void main(){ vec4 w = uModel * vec4(aPos, 1.0); vN = mat3(uModel) * aNor; vec4 c = aCol; if (uPalOn > 0.5) { c = uPal[int(aCol.r * 16.0 + 0.5)]; } vC = c; vUV = aUV * uUVS + uUVO; gl_Position = uVP * w; }'
+    'varying vec3 vN; varying vec4 vC; varying vec2 vUV; varying float vL;',
+    'void main(){ vec4 w = uModel * vec4(aPos, 1.0); vN = mat3(uModel) * aNor; vec4 c = aCol; vL = 0.0; if (uPalOn > 0.5) { c = uPal[int(aCol.r * 16.0 + 0.5)]; vL = aCol.g; } vC = c; vUV = aUV * uUVS + uUVO; gl_Position = uVP * w; }'
   ].join('\n');
   var FS = [
     '#ifdef GL_FRAGMENT_PRECISION_HIGH', 'precision highp float;', '#else', 'precision mediump float;', '#endif',
-    'varying vec3 vN; varying vec4 vC; varying vec2 vUV;',
+    'varying vec3 vN; varying vec4 vC; varying vec2 vUV; varying float vL;',
     'uniform vec3 uL; uniform vec3 uLC; uniform vec3 uSky; uniform vec3 uGnd;',
     'uniform sampler2D uTex; uniform float uUseTex; uniform float uAlpha; uniform float uEmi; uniform vec3 uTint;',
     'void main(){',
@@ -426,7 +426,7 @@
     '  vec3 n = normalize(vN);',
     '  vec3 amb = mix(uGnd, uSky, n.y * 0.5 + 0.5);',
     '  float nd = max(dot(n, uL), 0.0);',
-    '  vec3 lit = b.rgb * (amb + uLC * nd);',
+    '  vec3 lit = b.rgb * (amb + uLC * nd) * (1.0 + 0.75 * vL);',
     '  float e = clamp(vC.a + uEmi, 0.0, 1.0);',
     '  gl_FragColor = vec4(mix(lit, b.rgb, e), b.a * uAlpha);',
     '}'

@@ -67,7 +67,7 @@
             var ll = Math.sqrt(sx * sx + sy * sy + sz * sz) || 1;
             data[w] = pos[vi * 3]; data[w + 1] = pos[vi * 3 + 1]; data[w + 2] = pos[vi * 3 + 2];
             data[w + 3] = sx / ll; data[w + 4] = sy / ll; data[w + 5] = sz / ll;
-            data[w + 6] = slot / 16; data[w + 7] = 0; data[w + 8] = 0; data[w + 9] = 0;
+            data[w + 6] = slot / 16; data[w + 7] = opt.lift ? opt.lift(g, data[w], data[w + 1], data[w + 2]) : 0; data[w + 8] = 0; data[w + 9] = 0;
             data[w + 10] = 0; data[w + 11] = 0;
             w += 12;
             cast[cw] = data[w - 12]; cast[cw + 1] = data[w - 11]; cast[cw + 2] = data[w - 10]; cw += 3;

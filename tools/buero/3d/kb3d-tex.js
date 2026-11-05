@@ -301,6 +301,41 @@
     return o.c;
   };
 
+  /* Arbeitsort-Schild am Schreibtisch: Symbol links, Kürzel rechts (256x128). */
+  T.ortSchild = function (art, text) {
+    var o = mk(256, 128), g = o.g;
+    var P = { cloud: ['#2f6fb0', '#d4e8ff'], claude: ['#b85c32', '#ffe6d6'], pc: ['#3d4655', '#e8edf4'], shop: ['#2f7d4f', '#d9f3e4'], du: ['#5a4bc0', '#e8e4ff'] }[art] || ['#5a4bc0', '#e8e4ff'];
+    g.fillStyle = P[0]; rr(g, 2, 2, 252, 124, 20); g.fill();
+    g.strokeStyle = 'rgba(255,255,255,0.6)'; g.lineWidth = 4; rr(g, 8, 8, 240, 112, 15); g.stroke();
+    g.fillStyle = P[1]; g.beginPath(); g.arc(60, 64, 42, 0, 7); g.fill();
+    g.save(); g.translate(60, 64); g.scale(1.25, 1.25);
+    g.fillStyle = P[0]; g.strokeStyle = P[0]; g.lineWidth = 4; g.lineJoin = 'round'; g.lineCap = 'round';
+    if (art === 'cloud') {
+      g.translate(0, 4); g.beginPath(); g.moveTo(-14, 10); g.arc(-12, 2, 8, PI * 0.5, PI * 1.5); g.arc(-1, -8, 10, PI, PI * 2); g.arc(12, 2, 8, PI * 1.5, PI * 0.5); g.closePath(); g.fill();
+    } else if (art === 'claude') {
+      rr(g, -16, -14, 32, 22, 7); g.fill();
+      g.beginPath(); g.moveTo(-8, 8); g.lineTo(-10, 17); g.lineTo(2, 8); g.closePath(); g.fill();
+      g.fillStyle = P[1]; [-8, 0, 8].forEach(function (x) { g.beginPath(); g.arc(x, -3, 2.6, 0, 7); g.fill(); });
+    } else if (art === 'pc') {
+      rr(g, -18, -16, 36, 24, 4); g.fill();
+      g.fillStyle = P[1]; g.fillRect(-14, -12, 28, 16);
+      g.fillStyle = P[0]; g.fillRect(-4, 8, 8, 6); g.fillRect(-10, 14, 20, 3);
+    } else if (art === 'shop') {
+      g.beginPath(); g.moveTo(-14, -6); g.lineTo(14, -6); g.lineTo(17, 17); g.lineTo(-17, 17); g.closePath(); g.fill();
+      g.beginPath(); g.arc(0, -6, 8, PI, 0); g.stroke();
+    } else {
+      g.beginPath(); g.arc(0, -8, 8, 0, 7); g.fill();
+      g.beginPath(); g.ellipse(0, 14, 17, 13, 0, PI, 0); g.fill();
+    }
+    g.restore();
+    var fs = 40;
+    g.fillStyle = '#fff'; g.textAlign = 'left'; g.textBaseline = 'middle';
+    g.font = 'bold ' + fs + 'px ' + FONT;
+    while (g.measureText(text).width > 132 && fs > 16) { fs -= 2; g.font = 'bold ' + fs + 'px ' + FONT; }
+    g.fillText(String(text || ''), 112, 66);
+    return o.c;
+  };
+
   /* ---------- Schilder ---------- */
   T.sign = function (text, fg, bg, edge, sub) {
     var o = mk(256, 64), g = o.g;

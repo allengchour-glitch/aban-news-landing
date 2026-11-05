@@ -45,7 +45,7 @@ Besitzer: «jetzt wie in büro 3d mit zimmer und objekten?», «mehr details», 
 | Teil | Inhalt |
 |---|---|
 | Räume | Chefbüro (NW, Fenster mit Himmel nach Schweizer Uhrzeit, Wanduhr mit echter Zeit, Pinnwand mit den Blättern «für dich», Tafel mit der Zahl), Krypto (NO, Serverschränke, grosser Kursverlauf, drehende Münze), Shop (SW, Warenregale, Kasse, Schaufensterpuppen), Versand (SO, Förderband mit Paketen, Paletten, Paketwagen, Lieferwagen an der Laderampe) |
-| Figuren | 14 sitzende Menschen (Modelle `th30_*` aus dem Ordner `models/`, in Teilen) plus «Du» am Chefpult. Haltung wie in 2D: tippt, Kaffee, Hand am Kopf, Arme hoch, schläft (aus `status`, `frisch_h`, `aktiv_h`) |
+| Figuren | 14 sitzende Menschen (Modelle `th30_*` aus dem Ordner `models/`, in Teilen) plus «Du» am Chefpult. Haltung wie in 2D: tippt, Kaffee, Hand am Kopf, Arme hoch, schläft (aus `status`, `frisch_h`, `aktiv_h`). Schultern und Ellbogen sind aufgehellt (Besitzer 05.11.: «elbogen und schulter mache personen heller»): Punkte von Rumpf und Armen nahe den Gelenken bekommen bis +60 % Licht, damit Arme bei dunkler Haut nicht im eigenen Schatten verschwinden (`K.jointLift` in `kb3d-figur.js`) |
 | Zeichen | schwebende Form über der Figur wie die Lampe (Kugel läuft, Pyramide prüfen, Würfel steht, Raute für dich, Ring alt); Bildschirm zeigt Warndreieck oder rotes Kreuz oder dunkel; Sprechblase, Fragezeichen, Ausrufezeichen, Zzz, Dampf, Alarmschein |
 | Bedienung | Ziehen dreht (Handy: waagerecht; senkrechtes Wischen scrollt die Seite), zwei Finger oder Knöpfe zoomen, Raumknöpfe fahren zur Ansicht, Antippen wählt (Figur, Band, Tafel, Blatt, Beschriftung), Pfeiltasten, «Grösser» |
 | Beschriftungen | Knöpfe über den Figuren mit Lampenform und Name, ab Raumansicht sichtbar, gleiche Auswahl und gleiches Detailfeld wie in 2D |
@@ -53,7 +53,26 @@ Besitzer: «jetzt wie in büro 3d mit zimmer und objekten?», «mehr details», 
 
 **Dateien im Speicher des Dashboards:** `files/index.html` (Seite, Version 3), `files/kb3d-code.js` (Engine und Szene, 142 KB), `files/kb3d-pack-1.js` bis `-3.js` (Modelle, je unter 240 KB). Quellen, Bau und Herkunft der Modelle: `tools/buero/3d/README.md`.
 **Warum eine eigene Engine:** der Dashboard-Typ lässt nur eigene Dateien als Skript zu, jedes Dokument höchstens 256 KB.
-**Prüfung:** `tools/buero/pruefung/test3d.js` (41 Prüfungen: Aufbau, Raumknöpfe, Zoom, Drehen, Antippen von Figur, Band, Tafel, Blatt und Beschriftung, Tastatur, «Grösser», Tabs, drei Rückfälle ohne WebGL, ohne Modelldatei, ohne Codedatei), dazu die 27 Prüfungen der 2D-Ansicht.
+**Prüfung:** `tools/buero/pruefung/test3d.js` (Aufbau, Raumknöpfe, Zoom, Drehen, Antippen von Figur, Band, Tafel, Blatt und Beschriftung, Tastatur, «Grösser», Tabs, drei Rückfälle ohne WebGL, ohne Modelldatei, ohne Codedatei, dazu Arbeitsort, Schilder und Fremdlinks), dazu `test.js` für die 2D-Ansicht. Zahlen: siehe Ausgabe beider Skripte (`ALLES OK`).
+
+## Arbeitsort («Wo sie wirklich laufen», seit 05.11. spät)
+Besitzer: «echter arbeiteisort». Auf Rückfrage gewählt: jede Figur zeigt den Ort, an dem sie wirklich läuft, im Detailfeld und als kleines Schild am Schreibtisch, mit Link zum echten Ort, wo es einen gibt. Keine Umräumung der Räume.
+
+| Art (`ort_art`) | Schild und Kürzel | Heisst |
+|---|---|---|
+| `cloud` | blaue Wolke, «GitHub» (oder «GitHub + PC») | läuft in der GitHub-Cloud (Actions, Datei und Zeitplan stehen im Detailfeld) |
+| `claude` | orange Sprechblase, «Claude» | eine Claude-Sitzung oder geplante Aufgabe der Plattform; eine Sitzung arbeitet nur, solange sie offen ist |
+| `pc` | graues Gerät, «Dein PC» | läuft auf dem Windows-PC des Besitzers oder braucht dort einen Handgriff |
+| `shop` | grüne Tasche, «Shopify» | steht im Shopify-Admin |
+| `du` | violette Figur, «Bei dir» | das entscheidet der Besitzer |
+
+- **Wo es zu sehen ist:** Schild auf dem Tisch jeder der 14 Figuren (nicht am Chefpult), Ortskürzel hinter dem Namen jeder Beschriftung (nicht bei «Du»), Zeile «Arbeitsort» und, wenn es einen echten Ort gibt, Zeile «Zum Ort» im Detailfeld (2D, 3D und Liste gleich).
+- **Quelle der Orte:** `.github/workflows/*.yml` (Zeitpläne in UTC), die geplanten Aufgaben der Plattform (`list_triggers`), `CLAUDE.md` und `docs/KRYPTO-AUTONOMIE.md`; in `make_buero.py` (Tabelle `ORTE`) mit `pruefen()` abgesichert (Art, Länge, nur https).
+- **Links (`link`):** Seiten der Workflows (`…/actions/workflows/<Datei>.yml`, also die Lauf-Liste, nicht ein einzelner Lauf), die Sitzungen (`claude.ai/code/session_…`, öffnen nur beim Besitzer), `admin.shopify.com/store/au3j0y-hq/orders` und `/themes`, die Secrets-Seite des Repos. **Kein Link** bei `bestellwaechter` (geplante Aufgabe ohne eigene Seite), `zip`, `cockpitstart`, `geld`.
+- **Link-Regeln der Seite (Fremdtext aus den Daten):** nur `https`, nur die Hosts `github.com`, `claude.ai` und `admin.shopify.com`, keine Anmeldedaten und kein Port in der Adresse; sonst keine Link-Zeile. Öffnet in neuem Fenster (`noopener noreferrer`). Das sichtbare Wort steht fest im HTML («In GitHub öffnen», «In Claude öffnen», «Im Shopify-Admin öffnen»), eine CSS-Klasse wählt es.
+- **Schild-Textur:** `T.ortSchild(art, kürzel)` zeichnet Symbol und Kürzel zur Laufzeit (256×128), je Art und Kürzel einmal; Plätze, die zur Kamera schauen (Versand, vordere Reihe in Shop und Krypto), tragen es vorn in der Mitte vor dem Bildschirm, Plätze mit dem Rücken zur Kamera (hintere Reihe in Shop und Krypto) seitlich am Tischrand.
+- **Geprüft (nur im Nachbau):** `test3d.js` und `test.js` prüfen Kürzel an 21 Beschriftungen, Schilder an 14 Plätzen mit drei verschiedenen Tafeln, Schild im Bild (Pixelvergleich mit und ohne), Detailfeld mit Ort, Link und Wort für GitHub, Claude und Shopify, die Fälle ohne Link und 14 Fremdlinks (`javascript:`, `http:`, fremder Host, Host als Unterseite, Anmeldedaten, Port, leer, Zahl, …). Mutationsprobe der neuen Prüfungen: 11 absichtliche Fehler, 10 erkannt (der überlebende betrifft nur die Lage der Schilder an den Plätzen mit dem Rücken zur Kamera).
+- **Ungemessen:** wie die Schilder auf einem echten Handy aussehen. Im Nachbau sind sie in der Raumansicht und beim Hineinzoomen lesbar, in der Gesamtansicht zu klein (die Beschriftungen mit dem Kürzel erscheinen erst ab Raumansicht). Ob die Links im echten Dashboard aufgehen (der Rahmen der Seite kann neue Fenster sperren) und ob der Link der Sitzung im Handy-Browser mit dem Konto des Besitzers sofort öffnet, ist nicht geprüft.
 
 ## Wie die Seite gebaut ist
 - Dashboard-Typ (Artefakt-Speicher): `dash/meta` (Titel), `datasets/buero` (Datei `buero.json`), `files/index.html` (die Seite).
@@ -75,6 +94,10 @@ Besitzer: «jetzt wie in büro 3d mit zimmer und objekten?», «mehr details», 
 | `figur` | `arbeiter` (Figur), `paket` (Band), `tafel` (Wandtafel), `papier` (Blatt auf dem Chefpult) |
 | `menge` | Zahl für `paket` und `tafel`, sonst `0` |
 | `aktiv_h` | So viele Stunden nach dem Ereignis zählt die Figur als «arbeitet gerade»; `0` heisst nie (Bücher, Fragen) |
+| `ort_art` | `cloud`, `claude`, `pc`, `shop` oder `du` (bestimmt Symbol und Farbe des Schilds) |
+| `ort`, `ort_kurz` | der echte Arbeitsort als kurzer Satzteil; Kürzel für Schild und Beschriftung (höchstens 11 Zeichen) |
+| `ort_text` | wo und wann es wirklich läuft (Datei, Zeitplan in UTC, Einschränkung), höchstens 260 Zeichen |
+| `link` | `https`-Adresse des echten Ortes (GitHub, Claude oder Shopify-Admin) oder leer |
 
 ## Auffrischen (auf Zuruf «Büro neu messen»; es gibt keinen Zeitplan)
 1. Messen, nur lesend (Rezepte unten).
@@ -108,4 +131,7 @@ Die Seite läuft nur im Dashboard. Zum Ansehen und Prüfen ohne Dashboard gibt e
 - «Arbeitet gerade» heisst nur: das letzte Ereignis ist höchstens `aktiv_h` Stunden her. Ob ein Lauf in diesem Moment wirklich läuft, steht nicht in den Daten.
 - Lampen und Haltungen sind Urteile zum Zeitpunkt der Messung. Die Seite kann nur das Alter prüfen, nicht, ob es inzwischen anders ist.
 - 3D: nur im Nachbau gesehen (Chromium mit Software-WebGL), nicht im echten Dashboard auf einem Handy. Bildrate, Ladezeit der 0,8 MB Skriptdateien und Speicher auf echten Geräten sind ungemessen; im Nachbau: Aufbau rund 150 ms, 437 Zeichenaufrufe, rund 230 000 Dreiecke je Bild.
+- Arbeitsort: Zeitpläne (UTC) stammen aus den Workflow-Dateien und den geplanten Aufgaben zum Messzeitpunkt 05.11.; wer sie ändert, ändert die Zeile in `ORTE` mit. GitHub-Zeitpläne starten hier oft Stunden später als eingetragen (gemessen: `tages-update.yml` rund 7 bis 8 Stunden Verzug), der Ort stimmt, die Uhrzeit nicht auf die Minute.
+- Arbeitsort: der Link zeigt auf die Lauf-Liste des Workflows, nicht auf den einzelnen Lauf, und auf die Sitzung, nicht auf deren Stand.
+- Arbeitsort: die Kürzel machen die Beschriftungen breiter. Gemessen auf dem Handy (390 px) überdecken sich die Beschriftungen in der Versand-Ansicht zu 19 % der Fläche ohne und 26 % mit Kürzel (Chefbüro 27 und 29 %), auf Tablet und Desktop kaum. Wird es dem Besitzer zu eng, genügt `.kb3-ort { display: none; }` in `seite.html`; Schild und Detailfeld bleiben.
 - 3D: sieben der 21 Modelle haben keinen Herkunftsvermerk in den Credit-Dateien des Repos (siehe `tools/buero/3d/README.md`). Die Seite ist privat.

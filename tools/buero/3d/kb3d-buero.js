@@ -164,6 +164,7 @@
             seat.entId = e.id; seat.ent = e; seat.used = true; seat.state = e.state; seat.pose = e.pose;
             seat.fig.setPose(e.pose);
             applyScreen(seat, screenKindFor(e.bereich, e.pose, true));
+            if (seat.sign) seat.sign.tex = e.ortArt ? W.ortTex(e.ortArt, e.ortKurz) : null;
             var h = seat.h, c = Math.cos(h), s = Math.sin(h);
             picks.push({ id: e.id, mn: [seat.x - 0.95, 0, Math.min(seat.z - 0.4 * c, seat.z + 1.2 * c)], mx: [seat.x + 0.95, 1.9, Math.max(seat.z - 0.4 * c, seat.z + 1.2 * c)] });
             addLabel(e, seat.x, 2.15, seat.z);
@@ -324,6 +325,7 @@
             if (seat.screenKind === 'code') sm.uvo[1] = ((still ? 0 : t) * 0.06 + (seat.seed % 7) / 7) % 0.5;
             R.draw(sm, null);
           }
+          if (seat.sign && seat.used && seat.sign.tex) R.draw(seat.sign, null);
           if (seat.used || seat.spec.boss) seat.fig.draw(R, t, still);
         }
         // Kärtchen und Tafel
