@@ -18,19 +18,21 @@
 // ist wiederum gegen ALT_MD5 gesichert). Weicht eines ab: Abbruch ohne Schreiben, ausser FREMD_UEBERSCHREIBEN=1 (ersetzt dann den Blocktext, der live steht,
 // die Sicherung ist dann der tatsächliche Live-Stand).
 //
-// Einspielen im Ablauf: Eingaben prüfen -> Seiten messen (Startseite + Produktseiten; Ausgangswerte merken) -> Sicherung (sicherung/product.json.vor)
-// und Merkliste (sicherung/eingespielt.json) ablegen -> schreiben -> warten, bis die API-Prüfsumme gleich dem Soll ist (höchstens 150 s) -> Seiten erneut
+// Einspielen im Ablauf: Eingaben prüfen -> Seiten messen (Startseite + Produktseiten; Ausgangswerte merken) -> Sicherung (sicherung/product.json.vor) ablegen
+// -> templates/product.json NOCHMAL lesen (hat der Theme-Editor sie während der Messung gespeichert: Abbruch, Exit 4, nichts geschrieben; themeFilesUpsert prüft das nicht)
+// -> Merkliste (sicherung/eingespielt.json) ablegen -> schreiben -> warten, bis die API-Prüfsumme gleich dem Soll ist (höchstens 150 s) -> Seiten erneut
 // messen (zwei Runden): HTTP 200, kein NEUER «Liquid error», der Lieferblock rendert wie vorher. Bei JEDEM Fehler nach dem ersten Schreiben (Rücklesen
 // weicht ab, Seitenprüfung, Ausnahme, SIGINT/SIGTERM) schreibt das Skript die Sicherung selbst zurück, wartet auf die Prüfsumme und misst die Seiten.
 // Rückweg bei einer Seite mit HTTP 500: derselbe, er braucht nur die Admin-API, nicht die Storefront. Misslingt auch das, steht der Befehl für den
 // Rückweg von Hand in der Meldung: ZURUECK=1 LIVE=1 node dropship/lagerbestand-0511/apply_theme.mjs (liest je Datei neu den Zustand, wiederholbar).
 //
 // Grenze (nicht messbar): ob die Storefront schon den NEUEN Block ausliefert, lässt sich an gewöhnlichen Seiten nicht erkennen (Alt und Neu rendern gleich,
-// solange keine Ausführung ausverkauft ist). Das macht nur die Testvorlage sichtbar (Testmarke im Quelltext): erst TESTVORLAGE=1 LIVE=1, dann LIVE=1.
+// solange keine Ausführung ausverkauft ist; bei ausverkaufter Ausführung lässt der neue Block die Lieferbox absichtlich weg, die Seitenprüfung nimmt den Wechsel
+// box -> aus dann hin, wenn «ausverkauft» schon vorher auf der Seite stand). Das macht nur die Testvorlage sichtbar (Testmarke im Quelltext): erst TESTVORLAGE=1 LIVE=1, dann LIVE=1.
 //
 // Exit: 0 ok · 1 kein Token / fehlende Variablen / ungültiger Aufruf / unerwartete Ausnahme VOR dem Schreiben
 //       3 schon eingespielt / Rücknahme nicht möglich (fremder Stand)
-//       4 Ausgangsstand, Sicherung oder Eingabedatei weicht ab (auch: Seiten schon vor dem Eingriff fehlerhaft)
+//       4 Ausgangsstand, Sicherung oder Eingabedatei weicht ab (auch: Seiten schon vor dem Eingriff fehlerhaft; Vorlage zwischen Lesen und Schreiben geändert)
 //       5 Block nicht eindeutig im Dateitext auffindbar (Maskierung) oder userErrors beim Schreiben; nichts geschrieben
 //       6 Rücklesen weicht ab (bei LIVE: zurückgeschrieben und bestätigt) · 7 Seitenprüfung fehlgeschlagen (bei LIVE: zurückgeschrieben und bestätigt)
 //       8 Ausnahme nach Beginn des Schreibens (bei LIVE: zurückgeschrieben und bestätigt)
@@ -97,6 +99,7 @@ export function pruefeNeu(neu) {
   if (neu.includes('\uFFFD')) p.push('enthält ein ungültiges Zeichen (U+FFFD: abgeschnittenes oder falsch kodiertes Zeichen, vielleicht wird die Datei gerade geschrieben)');
   if (typeof neu.isWellFormed === 'function' && !neu.isWellFormed()) p.push('enthält ein einzelnes Surrogat-Zeichen');
   if (neu.includes('\u0000')) p.push('enthält NUL');
+  if (neu.includes('\uFEFF')) p.push('enthält U+FEFF (Byte-Order-Mark, unsichtbar: würde in die Seite geschrieben)');
   if (Buffer.byteLength(neu) > 120000) p.push('ist über 120 KB gross');
   const b = liquidBalance(neu); if (!b.ok) p.push('Liquid unplausibel: ' + b.grund);
   return p;
@@ -147,6 +150,7 @@ export function analysiereSeite(text) {
   return {
     fehler: [...new Set(text.match(/Liquid (?:syntax )?error[^<\n]{0,160}/gi) || [])],
     art: LIEFERBOX.test(text) ? 'box' : AUSVERKAUFT.test(text) ? 'aus' : 'kein',
+    ausverk: AUSVERKAUFT.test(text),   // unabhängig von der Lieferbox: steht irgendwo «ausverkauft»?
     marke: text.includes(TESTMARKE),
   };
 }
@@ -157,7 +161,9 @@ export function bewerte(m, vor, opt = {}) {
   const bekannt = vor ? vor.fehler : (opt.vorfehlerOk ? m.fehler : []);
   const neue = m.fehler.filter((f) => !bekannt.includes(f));
   if (neue.length) p.push('Liquid-Fehler: ' + neue[0]);
-  if (vor && vor.art !== 'kein' && m.art !== vor.art) p.push(`Lieferblock zeigt «${m.art}» statt «${vor.art}»`);
+  // Ausnahme (Prüferfund 05.11.): Der alte Block zeigt die Lieferbox auch bei ausverkaufter Ausführung, der neue absichtlich nicht («KEINE Lieferbox»).
+  // Stand schon vorher «ausverkauft» (z. B. das erste Fortura-Produkt, 718 sind ausverkauft) und steht es nachher noch da, ist der Wechsel box -> aus gewollt.
+  if (vor && vor.art !== 'kein' && m.art !== vor.art && !(vor.ausverk && m.ausverk)) p.push(`Lieferblock zeigt «${m.art}» statt «${vor.art}»`);
   if (opt.marke && !m.marke) p.push('Testmarke fehlt (Testvorlage nicht ausgeliefert?)');
   return p;
 }
@@ -239,6 +245,15 @@ async function haupt() {
     }
   }
 
+  // Direkt vor dem ersten Schreiben noch einmal lesen (Prüferfund 05.11.): themeFilesUpsert prüft nichts gegen den Stand, den wir gelesen haben, und der
+  // Theme-Editor schreibt templates/product.json bei jedem Speichern komplett neu. Zwischen dem Lesen am Anfang und dem Schreiben liegen die Auswahl der
+  // Prüfseiten und die erste Seitenmessung (Sekunden, bei Drosselung über eine Minute). Gibt null zurück, wenn die Datei noch gleich ist, sonst die neue Prüfsumme.
+  async function veraendertSeit(name, md5Gelesen) {
+    const n = (await lesen([name]))[name];
+    return n && n.md5 === md5Gelesen ? null : (n ? n.md5 || 'ohne Prüfsumme' : 'Datei fehlt');
+  }
+  const SEIT_TEXT = (name, gelesen, jetztMd5) => `${name} hat sich seit dem Lesen am Anfang des Laufs geändert (Prüfsumme ${jetztMd5}, gelesen ${gelesen}): jemand hat die Vorlage gespeichert (Theme-Editor?). Nichts geschrieben. Skript neu starten.`;
+
   // ---------- Seitenprüfung ----------
   const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
   const BASIS = (E.STOREFRONT || 'https://luxestyle.ch').replace(/\/+$/, '');
@@ -253,7 +268,7 @@ async function haupt() {
         return { status, bytes: Buffer.byteLength(t), ...analysiereSeite(t) };
       } catch (e) { netz = 'Netzfehler: ' + (e && e.message ? e.message : e); status = 0; await warte(5000); }
     }
-    return { status, bytes: 0, fehler: [], art: 'kein', marke: false, netz };
+    return { status, bytes: 0, fehler: [], art: 'kein', ausverk: false, marke: false, netz };
   }
   async function pfadeWaehlen() {
     let handles = (E.PRUEF_PRODUKTE || '').split(',').map((s) => s.trim()).filter((s) => /^[a-z0-9][a-z0-9-]*$/.test(s));
@@ -448,6 +463,7 @@ async function haupt() {
     const testText = tErs.text, md5Test = md5(testText);
     console.log(`Testvorlage: ${Buffer.byteLength(testText)} Byte · md5 ${md5Test} (= Soll plus Testmarke ${TESTMARKE} am Ende des Blocks)`);
     try {
+      { const abw = await veraendertSeit(DATEI, jetzt.md5); if (abw) fail(4, SEIT_TEXT(DATEI, jetzt.md5, abw)); }
       const u = await schreibe(TESTDATEI, testText);
       console.log('upsert', JSON.stringify(u.upsertedThemeFiles));
       if (u.userErrors?.length) fail(5, 'userErrors: ' + JSON.stringify(u.userErrors));
@@ -474,6 +490,7 @@ async function haupt() {
   if (!existsSync(sichPfad)) writeFileSync(sichPfad, jetzt.content);
   const sicherung = ladeSicherung(sichN, jetzt.md5);
   if (sicherung == null) fail(4, 'Sicherung konnte nicht angelegt werden');
+  { const abw = await veraendertSeit(DATEI, jetzt.md5); if (abw) fail(4, SEIT_TEXT(DATEI, jetzt.md5, abw)); }
   // Merkliste VOR dem Schreiben: so findet die Rücknahme auch einen halb durchgelaufenen Eingriff
   writeFileSync(MERKLISTE, JSON.stringify({ erstellt: new Date().toISOString(), hinweis: 'apply_theme.mjs hat templates/product.json (Block lux_delivery) ins MAIN-Theme geschrieben; md5_soll ist der Soll-Stand, md5_vor der Stand davor', datei: DATEI, sicherung: sichN, md5_vor: jetzt.md5, md5_soll: md5Soll, bytes_vor: Buffer.byteLength(jetzt.content), bytes_soll: Buffer.byteLength(neuText), block_md5_vor: md5(blockLive), block_md5_neu: md5(neu), fremd: jetzt.md5 !== MD5_VOR }, null, 1) + '\n');
 

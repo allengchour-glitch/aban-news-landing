@@ -14,6 +14,8 @@ name: "Fortura-Bestand (Abgleich)"
 #   - Von Hand (workflow_dispatch) wird nur geschrieben, wenn die Freigabedatei liegt UND «schreiben» angehakt ist.
 # Der Stempel wird nur gesetzt, wenn das Gate besteht (siehe Kopf von fortura_bestand_stempel.mjs). Besteht es nicht, bleibt der alte Stempel stehen
 # und altert von selbst: das Theme fällt dann auf «keine Angabe» zurück. Ein roter Lauf ist also die sichere Richtung.
+# Alter des Feeds: Im Schreibmodus lehnt schon der Abruf einen Feed ab, der auf dem Server älter als 36 Stunden ist (kein Schreiben veralteter Mengen).
+# Kann der Server den Stand der Datei nicht nennen, wird geschrieben wie bisher, aber der Stempel NICHT gesetzt (Dateizeit 1970, Gate c).
 #
 # Zugang: Repo-Secrets FORTURA_FTP_USER, FORTURA_FTP_PW (Feed), SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Shop). Fehlt eines, endet der erste Schritt
 # mit Exit 2 und nennt den Namen. Zeitplan 03:51 UTC (04:51 Schweizer Winterzeit): nach dem Feed auf dem Fortura-Server (~23:02 UTC), vor dem
@@ -95,9 +97,13 @@ jobs:
 
       - name: Feed holen (nur lesen)
         id: feed
+        timeout-minutes: 20
         env:
           FORTURA_FTP_USER: ${{ secrets.FORTURA_FTP_USER }}
           FORTURA_FTP_PW: ${{ secrets.FORTURA_FTP_PW }}
+          # Im Schreibmodus nimmt der Abruf einen Feed, der auf dem Server älter als 36 Stunden ist, gar nicht erst an (sonst würden veraltete Mengen
+          # in den Shop geschrieben); im Lesemodus gibt es keine Grenze, damit der Probelauf immer etwas zeigt.
+          FORTURA_MAX_ALTER_H: ${{ steps.modus.outputs.live == '1' && '36' || '' }}
         run: |
           set +e
           bash automation/fortura_feed_holen.sh "$FORTURA_CSV" 2>&1 | tee lauf-feed.txt
@@ -125,7 +131,8 @@ jobs:
 
       - name: Nachprüfung (erneuter Trockenlauf)
         id: nach
-        if: ${{ !cancelled() && steps.modus.outputs.live == '1' && (steps.sync.outputs.rc == '0' || steps.sync.outputs.rc == '1') }}
+        # Der Wächter "rc != ''" ist nötig: GitHub liest eine fehlende Ausgabe als null, und null == '0' ist wahr (beide werden zu Zahl 0).
+        if: ${{ !cancelled() && steps.modus.outputs.live == '1' && steps.sync.outputs.rc != '' && (steps.sync.outputs.rc == '0' || steps.sync.outputs.rc == '1') }}
         env:
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}

@@ -64,6 +64,8 @@ const M = [
   ['S37 Secret wird nicht bereinigt', S, 'secret = shopifyClientSecret(env.SHOPIFY_CLIENT_SECRET)', 'secret = env.SHOPIFY_CLIENT_SECRET', 'stempel'],
   ['S38 Token-Fehler ignoriert (HTTP-Status)', S, "if (!r.ok) throw new Error(`Token: HTTP ${r.status}`);", '', 'stempel'],
   ['S39 Token-Aufruf folgt Weiterleitungen', S, "redirect: 'error', signal: AbortSignal.timeout(30000),", 'signal: AbortSignal.timeout(30000),', 'stempel'],
+  ['S40 Dateizeit 1970 hat keinen eigenen Grund', S, 'else if (feedMtimeMs <= 0) gruende.push(', 'else if (false) gruende.push(', 'stempel'],
+  ['S41 Dateizeit genau 1970 zählt nicht als unbelegt', S, 'else if (feedMtimeMs <= 0) gruende.push(', 'else if (feedMtimeMs < 0) gruende.push(', 'stempel'],
   // --- erprobtes Abgleich-Skript: jede Änderung fällt auf ---
   ['Y01 Abgleich-Skript verändert (Puffer 2)', Y, ': 1;\nconst BESTAND_SPALTE', ': 2;\nconst BESTAND_SPALTE', 'stempel'],
   // --- Workflow ---
@@ -90,6 +92,11 @@ const M = [
   ['W19 Modus meldet immer live', W, 'echo "live=$live" >> "$GITHUB_OUTPUT"', 'echo "live=1" >> "$GITHUB_OUTPUT"', 'stempel'],
   ['W20 Stempel-Schritt ohne Nachprüfungs-Exit', W, '          NACH_EXIT: ${{ steps.nach.outputs.rc }}\n', '', 'stempel'],
   ['W21 Nachprüfung läuft auch bei Exit 2', W, "(steps.sync.outputs.rc == '0' || steps.sync.outputs.rc == '1')", "steps.sync.outputs.rc != ''", 'stempel'],
+  ['W23 Feed-Schritt ohne Altersgrenze', W, "          FORTURA_MAX_ALTER_H: ${{ steps.modus.outputs.live == '1' && '36' || '' }}\n", '', 'stempel'],
+  ['W24 Altersgrenze auch im Lesemodus', W, "FORTURA_MAX_ALTER_H: ${{ steps.modus.outputs.live == '1' && '36' || '' }}", "FORTURA_MAX_ALTER_H: '36'", 'stempel'],
+  ['W25 Altersgrenze 72 statt 36 Stunden', W, "live == '1' && '36' || '' }}", "live == '1' && '72' || '' }}", 'stempel'],
+  ['W26 Nachprüfung ohne Wächter gegen fehlenden Exit-Code (null == 0)', W, "steps.modus.outputs.live == '1' && steps.sync.outputs.rc != '' && (steps.sync.outputs.rc == '0'", "steps.modus.outputs.live == '1' && (steps.sync.outputs.rc == '0'", 'stempel'],
+  ['W27 Feed-Schritt ohne Zeitlimit', W, '        timeout-minutes: 20\n', '', 'stempel'],
   // --- Feed-Skript ---
   ['F01 keine Mindestgrösse', F, 'if [ "$BYTES" -lt "$MIN_BYTES" ]; then', 'if [ "$BYTES" -lt 1 ]; then', 'feed'],
   ['F02 falsches Passwort wird wiederholt', F, '[ $rc -eq 20 ] && fehler', '[ $rc -eq 99 ] && fehler', 'feed'],
@@ -107,6 +114,11 @@ const M = [
   ['F13 Dateien lesbar für alle', F, 'umask 077', 'umask 022', 'feed'],
   ['F14 Download ohne Zeitlimit', F, '--connect-timeout 30 --max-time 900 -G', '--connect-timeout 30 -G', 'feed'],
   ['F15 Zugangsprüfung nur auf den Benutzer', F, '[ -n "${FORTURA_FTP_USER:-}" ] && [ -n "${FORTURA_FTP_PW:-}" ] || {', '[ -n "${FORTURA_FTP_USER:-}" ] || {', 'feed'],
+  ['F18 Altersgrenze entfällt', F, 'if [ "$ALTER_S" -gt $(( MAX_ALTER_H * 3600 )) ]; then', 'if false; then', 'feed'],
+  ['F19 Altersgrenze rechnet in Tagen statt Stunden', F, '$(( MAX_ALTER_H * 3600 ))', '$(( MAX_ALTER_H * 86400 ))', 'feed'],
+  ['F20 Altersgrenze gilt auch ohne bekannten Serverstand', F, 'if [ -n "$MAX_ALTER_H" ] && [ -n "$SERVER" ]; then', 'if [ -n "$MAX_ALTER_H" ]; then', 'feed'],
+  ['F21 Dateizeit bleibt bei unbekanntem Serverstand die Abrufzeit', F, 'touch -d "@0" "$ARBEIT/feed" 2>/dev/null || fehler "Dateizeit der Feeddatei nicht setzbar. Am Ziel $OUT wurde nichts geändert."', 'true', 'feed'],
+  ['F22 Altersgrenze wird nicht auf Zahl geprüft', F, 'case "$MAX_ALTER_H" in *[!0-9]*|0) fehler "FORTURA_MAX_ALTER_H ist keine Zahl >= 1" ;; esac', ':', 'feed'],
   ['F16 Zieldatei wird direkt geschrieben (nicht erst nach der Prüfung)', F, 'cp -p "$ARBEIT/feed" "$TMPZIEL" || { rm -f "$TMPZIEL"; fehler "Zieldatei nicht schreibbar: $OUT"; }\nmv -f "$TMPZIEL" "$OUT" || { rm -f "$TMPZIEL"; fehler "Zieldatei nicht ersetzbar: $OUT"; }', ': > "$OUT"; cp -p "$ARBEIT/feed" "$OUT"', 'feed'],
 ];
 

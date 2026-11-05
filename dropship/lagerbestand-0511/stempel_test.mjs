@@ -132,6 +132,13 @@ const hat = (e, teil) => e.gruende.some(g => g.includes(teil));
   ok(entscheid({ feedMtimeMs: JETZT + 5 * 60000 }).ok, '(c) Uhrenabweichung von 5 Minuten wird geduldet');
   ok(!entscheid({ feedMtimeMs: JETZT + 11 * 60000 }).ok && hat(entscheid({ feedMtimeMs: JETZT + 11 * 60000 }), 'Zukunft'), '(c) 11 Minuten in der Zukunft: nein');
   ok(!entscheid({ feedMtimeMs: NaN }).ok && !entscheid({ feedMtimeMs: undefined }).ok, '(c) unbekannte Feedzeit');
+  // Dateizeit 1970 = das Feed-Skript konnte den Stand auf dem Server nicht lesen: Alter der Daten unbelegt, KEIN Stempel (Prüfer 05.11.: vorher galt die Abrufzeit)
+  for (const x of [0, -1000]) {
+    const e0 = entscheid({ feedMtimeMs: x });
+    ok(!e0.ok && hat(e0, '(c) Stand des Feeds auf dem Server nicht belegt') && hat(e0, 'Alter der Daten ist unbekannt'), `(c) Dateizeit ${x} (Serverstand unbekannt): kein Stempel, eigener Grund`);
+    ok(!hat(e0, 'Stunden alt'), `(c) Dateizeit ${x}: nicht als «Millionen Stunden alt» gemeldet`);
+  }
+  ok(entscheid({ feedMtimeMs: 1 }).ok === false && entscheid({ feedMtimeMs: JETZT - 1000 }).ok, '(c) schon 1 Millisekunde nach 1970 ist ein (viel zu altes) Datum, ein echtes jetziges geht durch');
   ok(entscheid({ feedMtimeMs: JETZT - 10 * STUNDE, opt: { feedMaxStunden: 8 } }).ok === false, '(c) feedMaxStunden ist einstellbar');
 
   // (d) Stand-Datei
@@ -493,12 +500,21 @@ globalThis.fetch = async (url, init = {}) => {
 
     // Bedingungen: die Ausdrücke bestehen nur aus !cancelled(), always(), steps.<id>.outputs.<name>, ==, !=, &&, || und Klammern und sind damit
     // gültiges JavaScript. Fehlende Ausgaben sind in GitHub leer (null == '' ist wahr), darum liefert der Stellvertreter '' für alles Unbekannte.
-    const auswerten = (ausdruck, { live = '', sync = '', abgebrochen = false } = {}) => {
+    // Gleichheit wie bei GitHub (Dokumentation «Operators»): zwei Texte ohne Beachtung der Gross-/Kleinschreibung; bei ungleichen Typen werden beide zu Zahlen
+    // (null -> 0, '' -> 0, Text -> Zahl oder NaN). Eine fehlende Ausgabe ist null (nicht ''): darum ist null == '0' WAHR. Der alte Stellvertreter lieferte '' und
+    // verbarg das (Prüfer 05.11.). Hier steht '' oder undefined für «Schritt hat nichts ausgegeben».
+    const ghZahl = (v) => (v === null || v === undefined ? 0 : typeof v === 'boolean' ? Number(v) : typeof v === 'number' ? v : (String(v).trim() === '' ? 0 : Number(v)));
+    const ghGleich = (a, b) => (typeof a === 'string' && typeof b === 'string' ? a.toLowerCase() === b.toLowerCase() : ghZahl(a) === ghZahl(b));
+    gleich([ghGleich(null, '0'), ghGleich(null, ''), ghGleich('', '0'), ghGleich('0', '0'), ghGleich(null, '1'), ghGleich('1', '1')], [true, true, false, true, false, true], 'Auswerter: GitHub-Gleichheit (null == \'0\' ist wahr, \'\' == \'0\' ist falsch)');
+    const auswertenWert = (ausdruck, { live, sync, abgebrochen = false } = {}) => {
       const roh = ausdruck.replace(/^\$\{\{\s*|\s*\}\}$/g, '');
+      const js = roh.replace(/([\w.]+)\s*(==|!=)\s*('[^']*')/g, (_, a, op, b) => `${op === '!=' ? '!' : ''}GLEICH(${a}, ${b})`);
       const ausgaben = { modus: { live }, sync: { rc: sync } };
-      const steps = new Proxy({}, { get: (_, id) => ({ outputs: new Proxy(ausgaben[id] || {}, { get: (o, k) => o[k] ?? '' }) }) });
-      return Boolean(new Function('steps', 'cancelled', 'always', `return (${roh});`)(steps, () => abgebrochen, () => true));
+      const fehlt = (v) => v === undefined || v === '';
+      const steps = new Proxy({}, { get: (_, id) => ({ outputs: new Proxy(ausgaben[id] || {}, { get: (o, k) => (fehlt(o[k]) ? null : o[k]) }) }) });
+      return new Function('steps', 'cancelled', 'always', 'GLEICH', `return (${js});`)(steps, () => abgebrochen, () => true, ghGleich);
     };
+    const auswerten = (ausdruck, o) => Boolean(auswertenWert(ausdruck, o));
     for (const [live, sync, nachSoll, stempelSoll] of [
       ['1', '0', true, true], ['1', '1', true, true], ['1', '2', false, true], ['1', '3', false, true], ['1', '124', false, true], ['1', '', false, false],
       ['0', '0', false, false], ['0', '1', false, false], ['0', '', false, false], ['', '0', false, false],
@@ -510,6 +526,17 @@ globalThis.fetch = async (url, init = {}) => {
     ok(schritt('nach').if.includes("steps.modus.outputs.live == '1'") && schritt('nach').if.includes('!cancelled()'), 'Nachprüfung nur im Schreibmodus');
     ok(schritt('stempel').if.includes("steps.modus.outputs.live == '1'") && schritt('stempel').if.includes('!cancelled()'), 'Stempel nur im Schreibmodus, auch nach einem roten Abgleich (damit der Grund sichtbar wird)');
     for (const id of ['feed', 'sync']) ok(!schritt(id).if, `Schritt ${id} hat keine Sonderbedingung (läuft nur, wenn alles davor grün ist)`);
+    // Nachprüfung und Stempel dürfen nie laufen, wenn der Abgleich keinen Exit-Code hinterlassen hat (Schritt übersprungen oder abgebrochen), auch nicht über null == '0'
+    ok(!auswerten(schritt('nach').if, { live: '1', sync: undefined }) && !auswerten(schritt('stempel').if, { live: '1', sync: undefined }), 'ohne Exit-Code des Abgleichs (Schritt übersprungen) laufen weder Nachprüfung noch Stempel');
+    ok(schritt('nach').if.includes("steps.sync.outputs.rc != ''"), 'Nachprüfung: Wächter «rc != \'\'» steht in der Bedingung');
+    // Alter des Feeds: Grenze 36 Stunden nur im Schreibmodus; Zeitlimit des Abrufs
+    {
+      const feed = schritt('feed');
+      gleich(feed['timeout-minutes'], 20, 'Feed-Schritt: eigenes Zeitlimit von 20 Minuten (3 Versuche mit je 15 Minuten Download würden sonst den Job ausfüllen)');
+      ok(typeof feed.env.FORTURA_MAX_ALTER_H === 'string', 'Feed-Schritt: FORTURA_MAX_ALTER_H wird gesetzt');
+      for (const [live, soll] of [['1', '36'], ['0', ''], [undefined, ''], ['', ''], ['2', '']]) gleich(auswertenWert(feed.env.FORTURA_MAX_ALTER_H, { live }), soll, `Feed-Schritt: Altersgrenze bei live=${JSON.stringify(live)}`);
+      ok(!JSON.stringify(feed.env).includes('SHOPIFY'), 'Feed-Schritt: keine Shopify-Zugangsdaten');
+    }
     ok(steps.find(s => s.name === 'Zusammenfassung').if === 'always()', 'Zusammenfassung läuft immer');
     const hoch = steps.find(s => s.uses === 'actions/upload-artifact@v4');
     ok(hoch.if === 'always()', 'Artefakt wird immer hochgeladen');

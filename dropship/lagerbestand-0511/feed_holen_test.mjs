@@ -3,14 +3,15 @@
 // Der Server läuft auf 127.0.0.1; das Skript nimmt eine Ersatzadresse nur zusammen mit FORTURA_TEST=1 an (sonst immer webtransfer.fortura.ch).
 // Geprüft: Erfolgsweg (Reihenfolge Login -> Download -> Zeitstempel -> Logout, Serverzeit als Dateizeit, nichts Halbes am Ziel), alle Fehlerwege mit Exit 2
 // (falsches Passwort wird NICHT wiederholt, zu kleine Datei, JSON-Fehlerantwort, falscher Inhalt, Server 503 mit Wiederholung), Zugangsdaten nie in
-// URL/Ausgabe/Befehlszeile, Zertifikatsprüfung ist ohne FORTURA_TLS_UNSICHER=1 scharf.
+// URL/Ausgabe/Befehlszeile, Zertifikatsprüfung ist ohne FORTURA_TLS_UNSICHER=1 scharf. Alter des Feeds: FORTURA_MAX_ALTER_H lehnt einen veralteten Feed ab,
+// und ist der Stand auf dem Server nicht lesbar, steht die Dateizeit auf 1970, sodass das Gate des Stempels ablehnt (Prüfer 05.11.: vorher wurde die Abrufzeit genommen).
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import http from 'node:http';
 import https from 'node:https';
 import { spawn, spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HIER = path.dirname(fileURLToPath(import.meta.url));
 const WURZEL = path.resolve(HIER, '../..');
@@ -141,15 +142,63 @@ const ohneGeheimnis = (r) => !r.alles.includes(PW) && !r.alles.includes(USER) &&
   ok(r2.code === 0 && fs.existsSync(out2), 'Ziel aus FORTURA_CSV, wenn kein Argument');
   sv2.s.close();
 
-  // Serverzeit nicht lesbar -> Hinweis, Exit 0, Dateizeit = jetzt
+  // Serverzeit nicht lesbar -> Hinweis, Exit 0, Dateizeit 1970 (NICHT die Abrufzeit: die sagt nichts über das Alter der Daten)
   const opt3 = { koerper: GROSS, ohneZeit: true };
   const sv3 = await startServer({}, () => opt3);
   const out3 = path.join(neuerTmp(), 'f.csv');
   const r3 = await skript(basisEnv(sv3.port), [out3]);
   ok(r3.code === 0 && /Stand der Datei auf dem Server nicht lesbar/.test(r3.err), 'ohne Serverzeit: Exit 0 mit Hinweis');
-  ok(Math.abs(Date.now() - fs.statSync(out3).mtimeMs) < 120000, 'ohne Serverzeit: Dateizeit = Abrufzeit');
+  gleich(fs.statSync(out3).mtimeMs, 0, 'ohne Serverzeit: Dateizeit steht auf 1970 (Alter der Daten unbelegt), nicht auf der Abrufzeit');
+  ok(/NICHT gesetzt/.test(r3.err) && /1970/.test(r3.err), 'ohne Serverzeit: der Hinweis sagt, dass der Stempel nicht gesetzt wird');
   ok(!/Stand auf dem Server/.test(r3.out), 'ohne Serverzeit: die Meldung behauptet keinen Serverstand');
+  ok(fs.readFileSync(out3).equals(GROSS), 'ohne Serverzeit: der Inhalt ist trotzdem vollständig (nur die Dateizeit ist 1970)');
+  // Zusammenspiel mit dem Gate des Stempels: ein Feed ohne belegten Stand bekommt keinen Stempel (vorher: BESTANDEN, auch wenn er auf dem Server 5 Tage alt war)
+  {
+    const { stempelEntscheid } = await import(pathToFileURL(path.join(WURZEL, 'automation/fortura_bestand_stempel.mjs')).href);
+    const jetzt = Date.now();
+    const nach = 'Feed x: 1 Zeilen → 1 Artikelnummern (Fingerabdruck abc123def456)\nAbgleich: 8400 unverändert · 16 zu ändern (davon 2 auf 0) · 8 SKU nicht mehr im Feed (0.1 %)\n[DRY] nichts geschrieben.\n';
+    const stand = { stand: new Date(jetzt - 60000).toISOString().slice(0, 16) + 'Z', feed_hash: 'abc123def456', offen: 0 };
+    const gate = (mtimeMs) => stempelEntscheid({ liveExit: 0, nachText: nach, nachExit: 0, feedMtimeMs: mtimeMs, jetztMs: jetzt, stand });
+    const eOhne = gate(fs.statSync(out3).mtimeMs);
+    ok(!eOhne.ok && eOhne.gruende.some(g => g.includes('(c)') && g.includes('nicht belegt')), 'ohne Serverzeit: das Gate des Stempels lehnt die Datei ab, Grund (c) «nicht belegt»');
+    // Gegenprobe mit lesbarer Serverzeit (3 Stunden alt): dasselbe Gate besteht
+    const sv3b = await startServer({}, () => ({ koerper: GROSS, mtime: Math.floor(Date.now() / 1000) - 3 * 3600 }));
+    const out3b = path.join(neuerTmp(), 'g.csv');
+    const r3b = await skript(basisEnv(sv3b.port), [out3b]);
+    ok(r3b.code === 0 && gate(fs.statSync(out3b).mtimeMs).ok, 'mit lesbarer Serverzeit (3 Stunden alt): dasselbe Gate besteht');
+    sv3b.s.close();
+  }
   sv3.s.close();
+
+  // FORTURA_MAX_ALTER_H: nur mit lesbarer Serverzeit wirksam; ohne die Grenze gibt es nie eine Ablehnung wegen des Alters
+  for (const [name, stundenAlt, grenze, soll] of [
+    ['30 Stunden alt, Grenze 36', 30, '36', 0], ['35 Stunden 50 Minuten alt, Grenze 36', 35 + 50 / 60, '36', 0], ['36 Stunden 2 Minuten alt, Grenze 36', 36 + 2 / 60, '36', 2],
+    ['40 Stunden alt, Grenze 36', 40, '36', 2], ['400 Stunden alt, ohne Grenze', 400, undefined, 0], ['400 Stunden alt, leere Grenze', 400, '', 0], ['40 Stunden alt, Grenze 48', 40, '48', 0],
+  ]) {
+    const opt = { koerper: GROSS, mtime: Math.floor(Date.now() / 1000 - stundenAlt * 3600) };
+    const sv = await startServer({}, () => opt);
+    const out = path.join(neuerTmp(), 'a.csv');
+    fs.writeFileSync(out, 'ALTER-FEED-INHALT');
+    const r = await skript(basisEnv(sv.port, grenze === undefined ? {} : { FORTURA_MAX_ALTER_H: grenze }), [out]);
+    gleich(r.code, soll, `Alter: ${name}: Exit`);
+    if (soll === 0) ok(fs.readFileSync(out).equals(GROSS), `Alter: ${name}: Feed liegt am Ziel`);
+    else {
+      gleich(fs.readFileSync(out, 'utf8'), 'ALTER-FEED-INHALT', `Alter: ${name}: das Ziel bleibt unverändert`);
+      ok(/Stunden alt/.test(r.err) && /Veraltete Mengen werden nicht geschrieben/.test(r.err) && /FEHLER \(Fortura-Feed\)/.test(r.err), `Alter: ${name}: Meldung nennt Alter und Folge`);
+      gleich(sv.log.filter(l => l.apiMethode === 'login').length, 1, `Alter: ${name}: kein zweiter Login (ein zu alter Feed wird nicht wiederholt geholt)`);
+      gleich(sv.log.filter(l => l.apiMethode === 'logout').length, 1, `Alter: ${name}: die Sitzung wurde abgemeldet`);
+    }
+    ok(ohneGeheimnis(r), `Alter: ${name}: keine Zugangsdaten in der Ausgabe`);
+    sv.s.close();
+  }
+  {
+    // Serverzeit nicht lesbar + Grenze gesetzt: kein Urteil über das Alter möglich -> der Feed wird angenommen (der Stempel verweigert dann über Dateizeit 1970)
+    const sv = await startServer({}, () => ({ koerper: GROSS, ohneZeit: true }));
+    const out = path.join(neuerTmp(), 'b.csv');
+    const r = await skript(basisEnv(sv.port, { FORTURA_MAX_ALTER_H: '36' }), [out]);
+    ok(r.code === 0 && fs.statSync(out).mtimeMs === 0, 'Alter: Serverzeit unlesbar + Grenze 36: Feed wird angenommen, Dateizeit 1970');
+    sv.s.close();
+  }
 
   // Mindestgrösse einstellbar
   const opt4 = { koerper: KLEIN, mtime: Math.floor(Date.now() / 1000) };
@@ -221,7 +270,8 @@ await fehlerFall('Server nicht erreichbar', { koerper: GROSS }, { FORTURA_BASIS:
     ok(!fs.existsSync(out), `Zugang fehlt (${name}): nichts angelegt`);
     sv.s.close();
   }
-  for (const [name, env] of [['MIN_BYTES keine Zahl', { FORTURA_MIN_BYTES: 'viel' }], ['VERSUCHE 0', { FORTURA_VERSUCHE: '0' }], ['PAUSE keine Zahl', { FORTURA_PAUSE: '-3' }]]) {
+  for (const [name, env] of [['MIN_BYTES keine Zahl', { FORTURA_MIN_BYTES: 'viel' }], ['VERSUCHE 0', { FORTURA_VERSUCHE: '0' }], ['PAUSE keine Zahl', { FORTURA_PAUSE: '-3' }],
+    ['MAX_ALTER_H keine Zahl', { FORTURA_MAX_ALTER_H: 'viel' }], ['MAX_ALTER_H 0', { FORTURA_MAX_ALTER_H: '0' }], ['MAX_ALTER_H negativ', { FORTURA_MAX_ALTER_H: '-3' }], ['MAX_ALTER_H Dezimalzahl', { FORTURA_MAX_ALTER_H: '3.5' }]]) {
     const sv = await startServer({}, () => ({ koerper: GROSS }));
     const r = await skript(basisEnv(sv.port, env), [out]);
     ok(r.code === 2 && sv.log.length === 0, `${name}: Exit 2 ohne Aufruf`);

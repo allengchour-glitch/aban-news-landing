@@ -93,7 +93,7 @@ const M = [
   ['M64 Drosselung (429) nicht abgewartet', 'if (status === 429) {', 'if (false) {'],
   ['M65 HTTP-Status wird nicht geprüft', "if (m.status !== 200) p.push(m.netz || `HTTP ${m.status}`);", ""],
   ['M66 neue Liquid-Fehler werden nicht gemeldet', "if (neue.length) p.push('Liquid-Fehler: ' + neue[0]);", ""],
-  ['M67 Zustand des Lieferblocks wird nicht verglichen', "if (vor && vor.art !== 'kein' && m.art !== vor.art) p.push(", "if (false) p.push("],
+  ['M67 Zustand des Lieferblocks wird nicht verglichen', "if (vor && vor.art !== 'kein' && m.art !== vor.art && !(vor.ausverk && m.ausverk)) p.push(", "if (false) p.push("],
   ['M68 Liquid-Syntaxfehler nicht erkannt', "/Liquid (?:syntax )?error[^<\\n]{0,160}/gi", "/Liquid error[^<\\n]{0,160}/gi"],
   ['M69 bereits vorhandene Fehler zählen als neu', "const bekannt = vor ? vor.fehler : (opt.vorfehlerOk ? m.fehler : []);", "const bekannt = [];"],
   ['M70 VORFEHLER_OK ohne Wirkung', "const bekannt = vor ? vor.fehler : (opt.vorfehlerOk ? m.fehler : []);", "const bekannt = vor ? vor.fehler : [];"],
@@ -102,6 +102,20 @@ const M = [
   ['M72 Diff-Statistik fehlt', "console.log('--- Diff-Statistik ---');", ''],
   ['M73 Byte-Vergleich nicht gemeldet', 'Byte-Vergleich bestanden)`);', 'Byte-Vergleich ausgelassen)`);'],
   ['M74 Hinweis auf den Rückweg fehlt', "console.log('Rückweg, falls nötig: ' + BEFEHL);", ''],
+  // --- Funde der zweiten unabhängigen Prüfung (05.11.) ---
+  ['M75 Vorlage vor dem Schreiben nicht erneut gelesen (Einspielen)', "  { const abw = await veraendertSeit(DATEI, jetzt.md5); if (abw) fail(4, SEIT_TEXT(DATEI, jetzt.md5, abw)); }\n  // Merkliste VOR dem Schreiben", "  // Merkliste VOR dem Schreiben"],
+  ['M76 Vorlage vor dem Schreiben nicht erneut gelesen (Testvorlage)', "      { const abw = await veraendertSeit(DATEI, jetzt.md5); if (abw) fail(4, SEIT_TEXT(DATEI, jetzt.md5, abw)); }\n      const u = await schreibe(TESTDATEI, testText);", "      const u = await schreibe(TESTDATEI, testText);"],
+  ['M77 Nachlesen vergleicht die Prüfsumme nicht', "return n && n.md5 === md5Gelesen ? null :", "return n ? null :"],
+  ['M78 Ausnahme für ausverkaufte Seiten zu weit (nur vorher)', "!(vor.ausverk && m.ausverk)) p.push(", "!vor.ausverk) p.push("],
+  ['M79 Ausnahme für ausverkaufte Seiten fehlt', " && !(vor.ausverk && m.ausverk)) p.push(", ") p.push("],
+  ['M80 ausverk wird nie erkannt', "ausverk: AUSVERKAUFT.test(text),", "ausverk: false,"],
+  ['M81 Byte-Order-Mark in der Blockdatei hingenommen', "if (neu.includes('\\uFEFF')) p.push(", "if (false) p.push("],
+  ['M82 Rücknahme ignoriert userErrors', "      if (u.userErrors?.length) fail(5, 'userErrors: ' + JSON.stringify(u.userErrors));\n      const w = await warteBis(DATEI, md5vor, 150000);", "      const w = await warteBis(DATEI, md5vor, 150000);"],
+  ['M83 Rücknahme: abweichendes Rücklesen ohne Exit 6', "if (!w.ok) process.exit(6);", "if (false) process.exit(6);"],
+  ['M84 Testvorlage: Ausnahme mit Exit 1 statt 8', "catch (e) { fail(8, 'Ausnahme: ' + (e && e.message ? e.message : e) + '\\n' + DATEI + ' wurde nicht angefasst.", "catch (e) { fail(1, 'Ausnahme: ' + (e && e.message ? e.message : e) + '\\n' + DATEI + ' wurde nicht angefasst."],
+  ['M85 Block in der Live-Datei nicht lesbar wird hingenommen', "if (blockLive === null) fail(4,", "if (false) fail(4,"],
+  ['M86 Merkliste: Block-Prüfsumme vorher falsch', "block_md5_vor: md5(blockLive)", "block_md5_vor: md5(neu)"],
+  ['M87 Sicherungsname darf Pfadanteile tragen', "const SICH_NAME = /^product\\.json\\.vor(-[0-9a-f]{8})?$/;", "const SICH_NAME = /^product\\.json\\.vor.*$/;"],
 ];
 
 // Gleichwertige oder im Test nicht erzwingbare Mutanten (Begründung)

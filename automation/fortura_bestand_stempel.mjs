@@ -13,7 +13,8 @@
  *   (b) NACH_DATEI     Text der Nachprüfung (ein zweiter Lauf des Abgleichs mit DRY=1) enthält die Zeile
  *                      «Abgleich: X unverändert · Y zu ändern …» mit Y <= max(40, 1 % von X+Y), der Lauf ist zu Ende gekommen
  *                      («[DRY] nichts geschrieben.»), keine Bremse hat abgebrochen, und es waren überhaupt Varianten da
- *   (c) FEED_DATEI     Alter der Feeddatei (mtime) <= 36 Stunden (fortura_feed_holen.sh setzt die mtime auf den Serverstand)
+ *   (c) FEED_DATEI     Alter der Feeddatei (mtime) <= 36 Stunden (fortura_feed_holen.sh setzt die mtime auf den Serverstand; kann der Server ihn
+ *                      nicht nennen, steht die mtime auf 1970: dann ist das Alter der Daten UNBELEGT und es gibt keinen Stempel)
  *   (d) STAND_DATEI    dropship/_fortura_bestand_stand.json (schreibt der Live-Lauf) trägt  offen == 0
  *   Zusätzlich, weil billig und sicher: die Stand-Datei stammt aus diesem Lauf (höchstens 180 Minuten alt), ihr Feed-
  *   Fingerabdruck passt zu dem der Nachprüfung, und ein Exit-Code der Nachprüfung (NACH_EXIT), falls übergeben, ist 0.
@@ -136,6 +137,7 @@ export function stempelEntscheid({ liveExit, nachText, nachExit, feedMtimeMs, je
 
   // (c) Feed-Alter
   if (!Number.isFinite(feedMtimeMs) || !Number.isFinite(jetztMs)) gruende.push('(c) Zeit der Feeddatei unbekannt (Datei fehlt?)');
+  else if (feedMtimeMs <= 0) gruende.push('(c) Stand des Feeds auf dem Server nicht belegt (Serverzeit war nicht lesbar, Dateizeit 1970): das Alter der Daten ist unbekannt');
   else {
     const alterH = (jetztMs - feedMtimeMs) / 3600000;
     mess.feedAlterH = Math.round(alterH * 100) / 100;

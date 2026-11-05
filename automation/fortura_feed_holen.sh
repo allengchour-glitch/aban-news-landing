@@ -19,6 +19,13 @@
 #   FORTURA_VERSUCHE       Versuche bei Netz-/Serverfehlern, Vorgabe 3 (falsche Zugangsdaten werden NIE wiederholt: Sperrgefahr)
 #   FORTURA_PAUSE          Sekunden zwischen den Versuchen, Vorgabe 20
 #   FORTURA_TLS_UNSICHER=1 schaltet die Zertifikatsprüfung ab (wie das Original). Nur nach Prüfung des Zertifikats setzen.
+#   FORTURA_MAX_ALTER_H    höchstes Alter des Feeds auf dem Server in Stunden (Vorgabe: keine Grenze). Ist die Serverzeit lesbar und der Feed
+#                          älter, endet der Abruf mit Exit 2 und am Ziel wird nichts geändert: ein veralteter Feed darf nicht in den Shop
+#                          geschrieben werden (er hob die Mengen sonst über schon ausgelieferte Stücke). Der Workflow setzt 36 nur im Schreibmodus.
+#
+# DATEIZEIT: die Zieldatei trägt den Stand des Feeds auf dem Server (SYNO.FileStation.List, additional=time). Kann der Server ihn nicht nennen,
+# wird die Dateizeit auf 1970 gesetzt (NICHT auf die Abrufzeit): das Alter der Daten ist dann unbelegt, und der Frische-Stempel
+# (fortura_bestand_stempel.mjs, Gate c) wird nicht gesetzt. Mit der Abrufzeit bekäme ein Feed, der auf dem Server tagelang liegen blieb, einen frischen Stempel.
 #
 # GEHEIMNISSE: die Zugangsdaten gehen weder in die Befehlszeile noch ins Protokoll (kein Ablaufprotokoll der Befehle, keine Ausgabe der Antworten
 # ausser dem Fehlercode). curl liest sie aus Dateien in einem privaten Ordner (Modus 700), der beim Ende gelöscht wird.
@@ -45,7 +52,9 @@ OUT="${1:-${FORTURA_CSV:-/tmp/fortura_feed.csv}}"
 MIN_BYTES="${FORTURA_MIN_BYTES:-5000000}"
 VERSUCHE="${FORTURA_VERSUCHE:-3}"
 PAUSE="${FORTURA_PAUSE:-20}"
+MAX_ALTER_H="${FORTURA_MAX_ALTER_H:-}"
 case "$MIN_BYTES" in ''|*[!0-9]*) fehler "FORTURA_MIN_BYTES ist keine Zahl" ;; esac
+case "$MAX_ALTER_H" in *[!0-9]*|0) fehler "FORTURA_MAX_ALTER_H ist keine Zahl >= 1" ;; esac
 case "$VERSUCHE" in ''|*[!0-9]*|0) fehler "FORTURA_VERSUCHE ist keine Zahl >= 1" ;; esac
 case "$PAUSE" in ''|*[!0-9]*) fehler "FORTURA_PAUSE ist keine Zahl" ;; esac
 
@@ -130,8 +139,8 @@ versuch() {
   return 0
 }
 
-# Server-Zeit der Feed-Datei (best effort). Ohne sie ist die Dateizeit die Abrufzeit, und die 36-Stunden-Prüfung des Stempels
-# misst dann nur noch den Abruf statt das Alter der Daten. Ein Fehler hier bricht NICHT ab, er wird gemeldet.
+# Server-Zeit der Feed-Datei (best effort). Ein Fehler hier bricht den Abruf NICHT ab, er wird gemeldet; die Dateizeit steht dann auf 1970
+# (siehe unten), damit der Frische-Stempel nicht auf einer Abrufzeit beruht, die nichts über das Alter der Daten sagt.
 server_zeit() {
   [ -n "$SID" ] || return 1
   local rc
@@ -179,6 +188,18 @@ if SERVER=$(server_zeit); then
 fi
 abmelden
 
+# Alter des Feeds auf dem Server: nur prüfbar, wenn der Server den Stand genannt hat. Ein zu alter Feed wird nicht ans Ziel gelegt.
+if [ -n "$MAX_ALTER_H" ] && [ -n "$SERVER" ]; then
+  ALTER_S=$(( $(date +%s) - SERVER ))
+  if [ "$ALTER_S" -gt $(( MAX_ALTER_H * 3600 )) ]; then
+    fehler "Der Feed auf dem Server ist $(( ALTER_S / 3600 )) Stunden alt (Stand $(date -u -d "@$SERVER" +%FT%TZ), erlaubt höchstens $MAX_ALTER_H). Veraltete Mengen werden nicht geschrieben. Am Ziel $OUT wurde nichts geändert."
+  fi
+fi
+# Stand auf dem Server unbekannt -> Dateizeit 1970 (Alter der Daten unbelegt; das Gate des Stempels lehnt ab). Gelingt das nicht, bricht der Abruf ab.
+if [ -z "$SERVER" ]; then
+  touch -d "@0" "$ARBEIT/feed" 2>/dev/null || fehler "Dateizeit der Feeddatei nicht setzbar. Am Ziel $OUT wurde nichts geändert."
+fi
+
 # Erst jetzt, vollständig und geprüft, ersetzt der neue Feed die Zieldatei (mv im selben Dateisystem ist atomar; sonst cp + mv).
 ZIELORDNER="$(dirname "$OUT")"
 mkdir -p "$ZIELORDNER" || fehler "Zielordner $ZIELORDNER nicht anlegbar"
@@ -190,6 +211,6 @@ if [ -n "$SERVER" ]; then
   echo "Fortura-Feed geladen -> $OUT ($BYTES Bytes, $ZEILEN Zeilen, Stand auf dem Server $(date -u -d "@$SERVER" +%FT%TZ))"
 else
   echo "Fortura-Feed geladen -> $OUT ($BYTES Bytes, $ZEILEN Zeilen)"
-  echo "HINWEIS: Stand der Datei auf dem Server nicht lesbar; die Dateizeit ist die Abrufzeit, die 36-Stunden-Prüfung des Stempels misst dann nur den Abruf." >&2
+  echo "HINWEIS: Stand der Datei auf dem Server nicht lesbar; die Dateizeit steht auf 1970 (Alter der Daten unbelegt). Der Frische-Stempel wird in diesem Lauf NICHT gesetzt." >&2
 fi
 exit 0

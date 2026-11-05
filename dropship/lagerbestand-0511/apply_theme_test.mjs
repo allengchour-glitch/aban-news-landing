@@ -84,10 +84,13 @@ ok(S.pruefeNeu(NEU_KERN).length === 0, 'Platzhalter-Block besteht die Eingabepr�
   ok(S.pruefeNeu('').length === 1 && S.pruefeNeu('  \n').length === 1, 'pruefeNeu: leer');
   ok(S.pruefeNeu('a\uFFFDb').some((x) => /U\+FFFD/.test(x)), 'pruefeNeu: U+FFFD');
   ok(S.pruefeNeu('a\u0000b').some((x) => /NUL/.test(x)), 'pruefeNeu: NUL');
+  ok(S.pruefeNeu('\uFEFF' + NEU_KERN).some((x) => /U\+FEFF/.test(x)), 'pruefeNeu: Byte-Order-Mark am Anfang');
   ok(S.pruefeNeu('x'.repeat(120001)).some((x) => /120 KB/.test(x)), 'pruefeNeu: zu gross');
   ok(S.pruefeNeu('{% if a %}').some((x) => /Liquid unplausibel/.test(x)), 'pruefeNeu: Liquid unplausibel');
   // Seitenauswertung
-  gleich(S.analysiereSeite('<p>Lieferung voraussichtlich 6. Nov.</p>' + S.TESTMARKE), { fehler: [], art: 'box', marke: true }, 'analysiereSeite Lieferbox + Marke');
+  gleich(S.analysiereSeite('<p>Lieferung voraussichtlich 6. Nov.</p>' + S.TESTMARKE), { fehler: [], art: 'box', ausverk: false, marke: true }, 'analysiereSeite Lieferbox + Marke');
+  gleich(S.analysiereSeite('Momentan ausverkauft <p>Lieferung voraussichtlich 6. Nov.</p>'), { fehler: [], art: 'box', ausverk: true, marke: false }, 'analysiereSeite: ausverkauft UND Lieferbox (alter Block bei ausverkaufter Ausführung)');
+  gleich(S.analysiereSeite('Diese Ausführung ist ausverkauft').ausverk, true, 'analysiereSeite: ausverk bei «Diese Ausführung ist ausverkauft»');
   gleich(S.analysiereSeite('Momentan ausverkauft').art, 'aus', 'analysiereSeite ausverkauft');
   gleich(S.analysiereSeite('Diese Ausführung ist ausverkauft').art, 'aus', 'analysiereSeite Ausführung ausverkauft');
   gleich(S.analysiereSeite('Lieferung nach Liechtenstein: x').art, 'box', 'analysiereSeite Liechtenstein');
@@ -102,6 +105,11 @@ ok(S.pruefeNeu(NEU_KERN).length === 0, 'Platzhalter-Block besteht die Eingabepr�
   ok(S.bewerte({ ...gut, fehler: ['Liquid error: a'] }, null).length === 1, 'bewerte: absolut, Liquid-Fehler zählt');
   gleich(S.bewerte({ ...gut, fehler: ['Liquid error: a'] }, null, { vorfehlerOk: true }), [], 'bewerte: absolut mit vorfehlerOk');
   ok(S.bewerte({ ...gut, art: 'kein' }, { fehler: [], art: 'box' }).some((x) => /Lieferblock/.test(x)), 'bewerte: Lieferblock verschwunden');
+  // ausverkaufte Ausführung: box -> aus ist gewollt (der neue Block lässt die Lieferbox weg), aber nur wenn «ausverkauft» vorher UND nachher dasteht
+  gleich(S.bewerte({ ...gut, art: 'aus', ausverk: true }, { fehler: [], art: 'box', ausverk: true }), [], 'bewerte: ausverkauft vorher und nachher, Lieferbox weg = gewollt');
+  ok(S.bewerte({ ...gut, art: 'aus', ausverk: true }, { fehler: [], art: 'box', ausverk: false }).some((x) => /Lieferblock zeigt «aus» statt «box»/.test(x)), 'bewerte: nachher ausverkauft, vorher nicht = Abweichung');
+  ok(S.bewerte({ ...gut, art: 'kein', ausverk: false }, { fehler: [], art: 'box', ausverk: true }).some((x) => /Lieferblock zeigt «kein»/.test(x)), 'bewerte: vorher ausverkauft, nachher gar kein Block = Abweichung');
+  ok(S.bewerte({ ...gut, art: 'box', ausverk: false }, { fehler: [], art: 'aus', ausverk: true }).some((x) => /statt «aus»/.test(x)), 'bewerte: Lieferbox erscheint plötzlich bei vorher ausverkaufter Seite = Abweichung ausserhalb der Ausnahme');
   gleich(S.bewerte({ ...gut, art: 'kein' }, { fehler: [], art: 'kein' }), [], 'bewerte: Seite ohne Block bleibt ohne Block');
   ok(S.bewerte(gut, { fehler: [], art: 'box' }, { marke: true }).some((x) => /Testmarke/.test(x)), 'bewerte: Testmarke fehlt');
 }
@@ -180,6 +188,7 @@ globalThis.fetch = async (u, opt) => {
   if (!u.startsWith('https://shop.test')) throw new Error('FAKE-Sperre: echter Netzzugriff ' + u);
   const s = JSON.parse(readFileSync(ST, 'utf8')), url = new URL(u), view = url.searchParams.get('view');
   s.urls = s.urls || []; s.urls.push(url.pathname + url.search);
+  if (F.has('editor_waehrend') && s.urls.length === 2 && !(s.calls || []).length) s.files['templates/product.json'] += '\\n';   // der Theme-Editor speichert mitten in der Seitenmessung
   const istOrig = md5(s.files['templates/product.json']) === ORIG;
   if (!istOrig) s.nachher = (s.nachher || 0) + 1;
   if (F.has('drossel')) { s.drossel = s.drossel || {}; if (!s.drossel[u]) { s.drossel[u] = 1; save(s); return new Response('', { status: 429 }); } }
@@ -193,6 +202,7 @@ globalThis.fetch = async (u, opt) => {
   if (b.includes('FAKE_HANG')) await new Promise((_, rej) => { setInterval(() => {}, 1000); opt && opt.signal && opt.signal.addEventListener('abort', () => rej(opt.signal.reason)); });
   let body = '<html><body>';
   if (!b.includes('FAKE_LEER') && b.includes('Lieferung voraussichtlich') && !(F.has('blockblind_vorher') && istOrig)) body += 'Bestelle jetzt – Lieferung voraussichtlich 6. Nov.';
+  if (F.has('soldout_wechsel')) { body = '<html><body>'; if (!b.includes('FAKE_LEER')) body += 'Momentan ausverkauft'; if (istOrig && name === 'templates/product.json') body += 'Bestelle jetzt – Lieferung voraussichtlich 6. Nov.'; }   // wie der echte alte Block: Pille UND Lieferbox; der neue: nur die Pille
   if (b.includes(MARKE)) body += MARKE;
   if (b.includes('FAKE_LIQUIDFEHLER') || (F.has('seitenfehler_vorher') && istOrig) || (F.has('runde2fehler') && !istOrig && s.nachher > 4) || (F.has('seiten_kaputt_nach_write') && geschrieben)) body += "Liquid error (templates/product line 12): Unknown tag 'x'";
   return new Response(body + '</body></html>', { status: 200 });
@@ -272,7 +282,7 @@ try {
     ok(S.blockWert(dateien()[D_]) === NEU_KERN, 'LIVE: Block trägt den neuen Text mit allen Sonderzeichen ($&, $\', Rückstrich, Emoji)');
   }
   ok(existsSync(MERK), 'LIVE: Merkliste angelegt');
-  { const m = JSON.parse(readFileSync(MERK, 'utf8')); gleich([m.md5_vor, m.md5_soll, m.sicherung, m.datei, m.fremd], [S.MD5_VOR, md5(soll), 'product.json.vor', D_, false], 'LIVE: Merkliste mit Prüfsummen, Sicherung und Datei'); }
+  { const m = JSON.parse(readFileSync(MERK, 'utf8')); gleich([m.md5_vor, m.md5_soll, m.sicherung, m.datei, m.fremd], [S.MD5_VOR, md5(soll), 'product.json.vor', D_, false], 'LIVE: Merkliste mit Prüfsummen, Sicherung und Datei'); gleich([m.bytes_vor, m.bytes_soll, m.block_md5_vor, m.block_md5_neu], [Buffer.byteLength(ORIG), Buffer.byteLength(soll), md5(ALT), md5(NEU_KERN)], 'LIVE: Merkliste mit Grössen und Block-Prüfsummen'); }
   ok(readFileSync(join(SICH, 'product.json.vor'), 'utf8') === ORIG, 'LIVE: Sicherung gleich dem Ausgangsstand');
   ok(/rücklesen GLEICH/.test(r.aus) && /Seiten vorher/.test(r.aus) && /Runde 1 von 2/.test(r.aus) && /Runde 2 von 2/.test(r.aus) && /Fertig:/.test(r.aus), 'LIVE: Rücklesen, Seiten vorher, zwei Runden nachher, Fertig');
   ok(/Rückweg, falls nötig: ZURUECK=1 LIVE=1/.test(r.aus), 'LIVE: nennt den Rückweg vor dem Schreiben');
@@ -467,6 +477,37 @@ try {
   neuerStand({ extra: { [T_]: 'x' } }); r = lauf('delstuck', { TESTVORLAGE_WEG: '1', LIVE: '1' }); gleich(r.code, 6, 'WEG, Datei bleibt in der API: Exit 6'); ok(/DATEI NOCH DA/.test(r.aus), 'WEG, Datei bleibt: Meldung');
   neuerStand({ extra: { [T_]: 'x' } }); r = lauf('verzug', { TESTVORLAGE_WEG: '1', LIVE: '1' }); gleich(r.code, 0, 'WEG, Löschung erst verzögert sichtbar: Exit 0');
 
+  // ----- 19. Funde der zweiten unabhängigen Prüfung (05.11.) -----
+  // 19a. Der Theme-Editor speichert templates/product.json mitten in der Seitenmessung: vor dem Schreiben wird noch einmal gelesen, seine Änderung bleibt
+  neuerStand(); r = lauf('editor_waehrend', { LIVE: '1' });
+  gleich(r.code, 4, 'Editor speichert während der Messung: Exit 4'); gleich(calls(), [], 'Editor speichert während der Messung: nichts geschrieben'); ok(dateien()[D_] === ORIG + '\n', 'Editor speichert während der Messung: seine Änderung bleibt erhalten'); ok(!existsSync(MERK), 'Editor speichert während der Messung: keine Merkliste'); ok(/hat sich seit dem Lesen am Anfang des Laufs geändert/.test(r.aus), 'Editor speichert während der Messung: Meldung');
+  neuerStand(); r = lauf('editor_waehrend', { TESTVORLAGE: '1', LIVE: '1' });
+  gleich(r.code, 4, 'Editor speichert während der Messung (Testvorlage): Exit 4'); gleich(calls(), [], 'Editor speichert während der Messung (Testvorlage): nichts geschrieben'); ok(/hat sich seit dem Lesen am Anfang des Laufs geändert/.test(r.aus), 'Editor speichert während der Messung (Testvorlage): Meldung');
+  // 19b. Ausverkaufte Prüfseite (das erste Fortura-Produkt ist es heute): der alte Block zeigt Pille UND Lieferbox, der neue nur die Pille. Gewollt, kein Rückweg.
+  neuerStand(); r = lauf('soldout_wechsel', { LIVE: '1' });
+  gleich(r.code, 0, 'ausverkaufte Prüfseiten, Lieferbox fällt weg: Exit 0'); ok(dateien()[D_] === soll, 'ausverkaufte Prüfseiten: Soll-Stand bleibt'); gleich(upserts(), [[D_]], 'ausverkaufte Prüfseiten: kein Rückweg'); ok(/Lieferblock aus\b/.test(r.aus), 'ausverkaufte Prüfseiten: nachher «aus» gemessen');
+  neuerStand(); r = lauf('soldout_wechsel', { TESTVORLAGE: '1', LIVE: '1' });
+  gleich(r.code, 0, 'ausverkaufte Prüfseiten, Testvorlage: Exit 0'); ok(/Testvorlage in Ordnung/.test(r.aus), 'ausverkaufte Prüfseiten, Testvorlage: in Ordnung');
+  // 19c. Dasselbe, aber der neue Block verschwindet ganz (auch die Pille): bleibt eine Abweichung
+  neuerStand({ neu: neuMit('<!--FAKE_LEER-->') }); r = lauf('soldout_wechsel', { LIVE: '1' });
+  gleich(r.code, 7, 'ausverkaufte Prüfseiten, Block verschwindet ganz: Exit 7'); ok(istOrig(), 'ausverkaufte Prüfseiten, Block verschwindet ganz: zurückgeschrieben'); ok(/Lieferblock zeigt «kein» statt «box»/.test(r.aus), 'ausverkaufte Prüfseiten, Block verschwindet ganz: Meldung');
+  // 19d. Byte-Order-Mark in der Blockdatei wird abgewiesen (würde unsichtbar in die Seite geschrieben)
+  neuerStand({ neu: '\uFEFF' + NEU_KERN }); r = lauf('', { LIVE: '1' }); gleich(r.code, 4, 'Blockdatei mit BOM: Exit 4'); gleich(calls(), [], 'Blockdatei mit BOM: nichts geschrieben'); ok(/U\+FEFF/.test(r.aus), 'Blockdatei mit BOM: Meldung');
+  // 19e. Rücknahme: userErrors beim Schreiben -> Exit 5, Rücklesen weicht ab -> Exit 6 (ohne Seitenprüfung des falschen Stands)
+  neuerStand(); lauf('', { LIVE: '1' }); v = upserts().length; r = lauf('usererr', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 5, 'Rücknahme mit userErrors: Exit 5'); ok(dateien()[D_] === soll, 'Rücknahme mit userErrors: Vorlage unverändert'); gleich(upserts().length, v + 1, 'Rücknahme mit userErrors: ein Versuch');
+  neuerStand(); lauf('', { LIVE: '1' }); r = lauf('norm_alles', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 6, 'Rücknahme, Rücklesen weicht ab: Exit 6'); ok(/ABWEICHUNG/.test(r.aus) && !/Seiten nach der Rücknahme/.test(r.aus), 'Rücknahme, Rücklesen weicht ab: Meldung, keine Seitenprüfung des falschen Stands');
+  // 19f. Ausnahme nach dem Schreiben der Testvorlage: Exit 8, echte Vorlage unberührt, Ausweg genannt
+  neuerStand(); r = lauf('throwafter', { TESTVORLAGE: '1', LIVE: '1' });
+  gleich(r.code, 8, 'Testvorlage, Ausnahme nach dem Schreiben: Exit 8'); ok(istOrig(), 'Testvorlage, Ausnahme: echte Vorlage unberührt'); ok(/wurde nicht angefasst/.test(r.aus) && /TESTVORLAGE_WEG=1/.test(r.aus), 'Testvorlage, Ausnahme: Ausweg genannt');
+  // 19g. Der Block lux_delivery fehlt in der Live-Datei (umbenannt): Abbruch mit der eigenen Meldung, auch mit FREMD_UEBERSCHREIBEN=1
+  {
+    const ohne = einmal(ORIG, '"lux_delivery": {', '"lux_delivery_x": {'); neuerStand({ vorlage: ohne }); const pp = mitMd5Vor(md5(ohne));
+    r = lauf('', { LIVE: '1' }, pp); gleich(r.code, 4, 'Block fehlt in der Live-Datei: Exit 4'); gleich(calls(), [], 'Block fehlt in der Live-Datei: nichts geschrieben'); ok(/Der Block lux_delivery ist in der Live-Datei nicht lesbar: nichts geschrieben/.test(r.aus), 'Block fehlt in der Live-Datei: eigene Meldung');
+    r = lauf('', { LIVE: '1', FREMD_UEBERSCHREIBEN: '1' }, pp); gleich(r.code, 4, 'Block fehlt in der Live-Datei trotz FREMD_UEBERSCHREIBEN=1: Exit 4'); gleich(calls(), [], 'Block fehlt in der Live-Datei trotz FREMD_UEBERSCHREIBEN=1: nichts geschrieben');
+  }
+
   // ----- 18. Aufruf und Umgebung -----
   neuerStand(); r = lauf('', { ZURUECK: '1', TESTVORLAGE: '1' }); gleich(r.code, 1, 'ZURUECK + TESTVORLAGE: Exit 1'); gleich(calls(), [], 'ZURUECK + TESTVORLAGE: nichts geschrieben');
   r = lauf('', { TESTVORLAGE: '1', TESTVORLAGE_WEG: '1', LIVE: '1' }); gleich(r.code, 1, 'TESTVORLAGE + TESTVORLAGE_WEG: Exit 1');
@@ -478,6 +519,7 @@ try {
   neuerStand(); r = lauf('csumfalsch', { LIVE: '1' }); gleich(r.code, 4, 'Inhalt passt nicht zur Prüfsumme: Exit 4'); gleich(calls(), [], 'Inhalt passt nicht zur Prüfsumme: nichts geschrieben'); ok(/nicht lesbar \(oder passt nicht zur Prüfsumme\)/.test(r.aus), 'Inhalt passt nicht zur Prüfsumme: Meldung');
   // Merkliste manipuliert: Pfad aus dem Ordner heraus / ungültige Prüfsumme
   neuerStand(); lauf('', { LIVE: '1' }); { const m = JSON.parse(readFileSync(MERK, 'utf8')); writeFileSync(MERK, JSON.stringify({ ...m, sicherung: '../../evil' })); v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'Merkliste mit Pfad aus dem Ordner: Exit 4'); ok(/Merkliste unvollständig oder ungültig/.test(r.aus), 'Merkliste mit Pfad aus dem Ordner: Meldung'); gleich(upserts().length, v, 'Merkliste mit Pfad aus dem Ordner: nichts geschrieben'); writeFileSync(MERK, JSON.stringify({ ...m, md5_soll: 'xyz' })); r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'Merkliste mit ungültiger Prüfsumme: Exit 4'); ok(/Merkliste unvollständig oder ungültig/.test(r.aus), 'Merkliste mit ungültiger Prüfsumme: Meldung'); writeFileSync(MERK, '{kaputt'); r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'unlesbare Merkliste: Exit 4'); gleich(upserts().length, v, 'kaputte Merkliste: nichts geschrieben'); }
+  neuerStand(); lauf('', { LIVE: '1' }); { const m = JSON.parse(readFileSync(MERK, 'utf8')); writeFileSync(MERK, JSON.stringify({ ...m, sicherung: 'product.json.vor/../product.json.vor' })); v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'Merkliste mit Pfadanteil hinter dem Sicherungsnamen: Exit 4'); ok(/Merkliste unvollständig oder ungültig/.test(r.aus), 'Merkliste mit Pfadanteil: Meldung der Namensprüfung (nicht erst «Sicherung fehlt»)'); gleich(upserts().length, v, 'Merkliste mit Pfadanteil: nichts geschrieben'); }
   // Sicherung nach dem Einspielen verfälscht: die Rücknahme schreibt sie nicht
   neuerStand(); lauf('', { LIVE: '1' }); writeFileSync(join(SICH, 'product.json.vor'), ORIG + ' '); v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 4, 'Rücknahme mit verfälschter Sicherung: Exit 4'); gleich(upserts().length, v, 'Rücknahme mit verfälschter Sicherung: nichts geschrieben'); ok(/weicht vom erwarteten Ausgangsstand ab/.test(r.aus), 'Rücknahme mit verfälschter Sicherung: Meldung');
