@@ -39,6 +39,7 @@
 
     mount: function (el, cfg) {
       cfg = cfg || {};
+      var tBuild = performance.now();
       var made = { ok: false, ents: [], destroyed: false };
       var cv = document.createElement('canvas');
       cv.className = 'kb3-canvas';
@@ -457,6 +458,9 @@
       goView('alle', true);
       made.started = true;
       made.ok = true;
+      made.buildMs = Math.round(performance.now() - tBuild);
+      K.Buero.last = made;
+      start();
       return made;
     }
   };

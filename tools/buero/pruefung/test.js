@@ -15,6 +15,7 @@ function ok(name, bedingung, info) {
   p.on('pageerror', (e) => errs.push(String(e)));
   p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
   await p.goto('file://' + dir + '/harness.html');
+  await p.locator('#kb-tab-buero').click();
   await p.evaluate(() => window.__runAll());
 
   const z = async (sel) => p.locator(sel).count();
@@ -32,7 +33,7 @@ function ok(name, bedingung, info) {
 
   // Klick auf eine Figur öffnet das Detailfeld nur im eigenen Raum
   await p.locator('.kb-desk[data-pick="fortura"]').click();
-  const d1 = await p.evaluate(() => [...document.querySelectorAll('.kb-detail')].map((d) => d.textContent.trim().length > 0));
+  const d1 = await p.evaluate(() => [...document.querySelectorAll('#kb-pane-buero .kb-detail')].map((d) => d.textContent.trim().length > 0));
   ok('Detail nur im Shop-Raum', JSON.stringify(d1) === JSON.stringify([true, false, false, false]), d1);
   const t1 = await p.locator('.kb-raum').first().locator('.kb-detail').textContent();
   ok('Detail nennt Fortura-Bestand und den Befund', t1.includes('Fortura-Bestand') && t1.includes('Freigabedatei'));
@@ -40,13 +41,13 @@ function ok(name, bedingung, info) {
   ok('Figur ist markiert', await p.locator('.kb-desk[data-pick="fortura"]').evaluate((n) => n.classList.contains('is-sel')));
   // Zweiter Klick schliesst
   await p.locator('.kb-desk[data-pick="fortura"]').click();
-  ok('Zweiter Klick schliesst das Detail', (await p.evaluate(() => [...document.querySelectorAll('.kb-detail')].every((d) => d.textContent.trim() === ''))));
+  ok('Zweiter Klick schliesst das Detail', (await p.evaluate(() => [...document.querySelectorAll('#kb-pane-buero .kb-detail')].every((d) => d.textContent.trim() === ''))));
   // Blatt im Chefbüro, Schliessen-Knopf
   await p.locator('.kb-blatt[data-pick="zip"]').click();
   const t2 = await p.locator('.kb-raum').nth(3).locator('.kb-detail').textContent();
   ok('Blatt öffnet Detail im Chefbüro', t2.includes('Starter-ZIP einspielen'));
   await p.locator('.kb-raum').nth(3).locator('.kb-x').click();
-  ok('Schliessen-Knopf leert das Detail', (await p.evaluate(() => [...document.querySelectorAll('.kb-detail')].every((d) => d.textContent.trim() === ''))));
+  ok('Schliessen-Knopf leert das Detail', (await p.evaluate(() => [...document.querySelectorAll('#kb-pane-buero .kb-detail')].every((d) => d.textContent.trim() === ''))));
   // Tastatur: Fokus + Enter
   await p.locator('.kb-desk[data-pick="auswahl"]').focus();
   await p.keyboard.press('Enter');
@@ -59,6 +60,7 @@ function ok(name, bedingung, info) {
 
   // Ansicht wechseln
   ok('Liste ist zuerst verborgen', await p.locator('#kb-pane-liste').evaluate((n) => n.hidden));
+  ok('3D-Ansicht ist bei der 2D-Ansicht verborgen', await p.locator('#kb-pane-3d').evaluate((n) => n.hidden));
   await p.locator('#kb-tab-liste').click();
   ok('Tab Liste zeigt die Liste und verbirgt das Büro', !(await p.locator('#kb-pane-liste').evaluate((n) => n.hidden)) && (await p.locator('#kb-pane-buero').evaluate((n) => n.hidden)));
   ok('aria-selected wechselt', (await p.locator('#kb-tab-liste').getAttribute('aria-selected')) === 'true' && (await p.locator('#kb-tab-buero').getAttribute('aria-selected')) === 'false');
@@ -75,6 +77,7 @@ function ok(name, bedingung, info) {
   const ctx2 = await b.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
   const p2 = await ctx2.newPage();
   await p2.goto('file://' + dir + '/harness.html');
+  await p2.locator('#kb-tab-buero').click();
   await p2.evaluate(() => window.__runAll());
   const anim = await p2.evaluate(() => {
     const a = document.querySelector('.kb-desk.pose-busy .f-armL');
@@ -84,6 +87,7 @@ function ok(name, bedingung, info) {
   const ctx3 = await b.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'no-preference' });
   const p3 = await ctx3.newPage();
   await p3.goto('file://' + dir + '/harness.html');
+  await p3.locator('#kb-tab-buero').click();
   await p3.evaluate(() => window.__runAll());
   const anim3 = await p3.evaluate(() => {
     const a = document.querySelector('.kb-desk.pose-busy .f-armL');

@@ -171,6 +171,30 @@
 .kb-x:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 1px; }
 .kb-detailbox .kb-row summary { padding-right: 1.6rem; }
 
+
+/* ---------- 3D-Büro ---------- */
+.kb3-bar, .kb3-tools { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+.kb3-chip, .kb3-tool { appearance: none; min-height: 2.25rem; padding: var(--cds-pad-xs) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); color: var(--color-fg); font: inherit; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); cursor: pointer; }
+.kb3-chip[aria-pressed="true"], .kb3-tool[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+.kb3-chip:focus-visible, .kb3-tool:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: var(--color-panel); user-select: none; -webkit-user-select: none; }
+.kb3-stage.is-gross { aspect-ratio: 3 / 4; }
+.kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+.kb3-canvas:active { cursor: grabbing; }
+.kb3-canvas:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
+.kb3-over { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.kb3-label { position: absolute; left: 0; top: 0; pointer-events: auto; will-change: transform; }
+.kb3-lb { appearance: none; display: inline-flex; align-items: center; gap: 0.3rem; max-width: 13rem; margin: 0; padding: 0.1rem 0.55rem 0.1rem 0.35rem; border: 1px solid var(--lamp, var(--color-border-line)); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); font: inherit; font-size: 0.72rem; font-weight: var(--cds-font-weight-medium); line-height: 1.25; cursor: pointer; white-space: nowrap; }
+@supports (color: color-mix(in srgb, red 50%, blue)) { .kb3-lb { background: color-mix(in srgb, var(--color-bg) 92%, transparent); } }
+.kb3-lb:disabled { cursor: default; }
+.kb3-lb:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 1px; }
+.kb3-lb.is-sel { outline: 2px solid var(--lamp, var(--color-fg)); outline-offset: 1px; }
+.kb3-lb .lamp { display: flex; }
+.kb3-lb .lamp svg, .kb .kb3-lb .shape { width: 0.8rem; height: 0.8rem; }
+.kb .kb3-lb .kb-name { display: block; min-height: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; text-align: left; font-size: inherit; line-height: inherit; hyphens: none; }
+.kb3-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.kb .kb3-lb .kb-word { display: block; }
+
 /* Bewegung nur, wenn der Mensch sie nicht abgeschaltet hat. */
 @media (prefers-reduced-motion: no-preference) {
   .kb-desk.pose-busy .f-armL { animation: kb-tipp-l 0.5s ease-in-out infinite; animation-delay: var(--d); transform-origin: 23px 58px; }
@@ -243,11 +267,36 @@
   </ul>
 
   <div class="kb-tabs" role="tablist" aria-label="Ansicht">
-    <button type="button" class="kb-tab" role="tab" id="kb-tab-buero" data-tab="buero" aria-selected="true" aria-controls="kb-pane-buero">Büro</button>
+    <button type="button" class="kb-tab" role="tab" id="kb-tab-3d" data-tab="3d" aria-selected="true" aria-controls="kb-pane-3d">Büro 3D</button>
+    <button type="button" class="kb-tab" role="tab" id="kb-tab-buero" data-tab="buero" aria-selected="false" aria-controls="kb-pane-buero" tabindex="-1">Büro 2D</button>
     <button type="button" class="kb-tab" role="tab" id="kb-tab-liste" data-tab="liste" aria-selected="false" aria-controls="kb-pane-liste" tabindex="-1">Liste</button>
   </div>
 
-  <div class="kb-pane" id="kb-pane-buero" data-pane="buero" role="tabpanel" aria-labelledby="kb-tab-buero">
+  <div class="kb-pane" id="kb-pane-3d" data-pane="3d" role="tabpanel" aria-labelledby="kb-tab-3d">
+    <p class="kb-hint">Das Büro als 3D-Modell. Ziehen dreht es, zwei Finger oder die Knöpfe zoomen. Tippe auf eine Figur, das Förderband, die Tafel oder ein Kärtchen, dann siehst du die Einzelheiten. Die Haltung jeder Figur ist gemessen, die Figuren selbst sind Modelle.</p>
+    <div class="kb3-bar" role="group" aria-label="Raum wählen">
+      <button type="button" class="kb3-chip" data-cmd="view:alle" aria-pressed="true">Alles</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Shop" aria-pressed="false">Shop</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Versand" aria-pressed="false">Versand</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Krypto" aria-pressed="false">Krypto</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Chefbüro" aria-pressed="false">Chefbüro</button>
+    </div>
+    <div class="kb3-stage" data-draw="szene3d" data-source="buero">—</div>
+    <div class="kb3-tools" role="group" aria-label="Kamera">
+      <button type="button" class="kb3-tool" data-cmd="zoomOut" aria-label="Herauszoomen">−</button>
+      <button type="button" class="kb3-tool" data-cmd="zoomIn" aria-label="Hineinzoomen">+</button>
+      <button type="button" class="kb3-tool" data-cmd="turnLeft" aria-label="Nach links drehen">⟲</button>
+      <button type="button" class="kb3-tool" data-cmd="turnRight" aria-label="Nach rechts drehen">⟳</button>
+      <button type="button" class="kb3-tool" data-cmd="tiltUp" aria-label="Steiler von oben">↑</button>
+      <button type="button" class="kb3-tool" data-cmd="tiltDown" aria-label="Flacher von der Seite">↓</button>
+      <button type="button" class="kb3-tool" data-cmd="reset">Zurück</button>
+      <button type="button" class="kb3-tool" data-cmd="gross" aria-pressed="false">Grösser</button>
+    </div>
+    <div class="kb-detail" data-draw="detail" data-bereich="*" data-source="buero"></div>
+  </div>
+
+  <div class="kb-pane" id="kb-pane-buero" data-pane="buero" role="tabpanel" aria-labelledby="kb-tab-buero" hidden>
+    <p class="kb-note kb3-aus" hidden>3D geht auf diesem Gerät nicht, weil WebGL fehlt oder abgeschaltet ist. Diese Ansicht zeigt dasselbe als Zeichnung.</p>
     <p class="kb-hint">Jede Figur ist ein echter Automat oder eine echte Sitzung und spielt ihren Stand. Tippe auf eine Figur, ein Paket oder ein Blatt, dann siehst du die Einzelheiten.</p>
 
     <section class="kb-card kb-raum" aria-labelledby="r-shop">
@@ -338,6 +387,12 @@
         <li class="kb-pose"><span><b>Schläft, Zzz:</b> Die Messung ist zu alt, ich weiss nicht, was die Figur gerade tut.</span></li>
       </ul>
       <p class="kb-note">Jede Lampe hat eine eigene Form und ein Wort. Die Farbe allein sagt nichts. Die Figuren sind gezeichnet, ihr Zustand ist gemessen.</p>
+      <h3>Im 3D-Büro</h3>
+      <ul>
+        <li class="kb-pose"><span><b>Schwebende Form über der Figur:</b> dieselbe Lampe wie in der Liste. Kugel läuft, Pyramide prüfen, Würfel steht, Raute für dich, Ring alt.</span></li>
+        <li class="kb-pose"><span><b>Bildschirm:</b> zeigt, was die Figur gerade tut. Warndreieck bei Prüfen, rotes Kreuz bei Steht, dunkel bei Alt.</span></li>
+        <li class="kb-pose"><span><b>Pakete auf dem Band:</b> die offenen Bestellungen. Das Band steht, wenn die Zeile rot oder alt ist.</span></li>
+      </ul>
     </details>
   </section>
 
@@ -499,6 +554,29 @@
   </button>
 </template>
 
+
+<template id="kb-label3d">
+  <button type="button" class="kb3-lb">
+    <span class="lamp" aria-hidden="true">
+      <svg class="s-gruen" viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg>
+      <svg class="s-gelb" viewBox="0 0 16 16" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg>
+      <svg class="s-rot" viewBox="0 0 16 16" focusable="false"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+      <svg class="s-du" viewBox="0 0 16 16" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg>
+      <svg class="s-alt" viewBox="0 0 16 16" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg>
+    </span>
+    <span class="kb-name" data-source="buero" data-field="kurz">—</span>
+    <span class="kb3-sr kb-word"><span class="w-gruen">Läuft</span><span class="w-gelb">Prüfen</span><span class="w-rot">Steht</span><span class="w-du">Für dich</span><span class="w-alt">Alt</span></span>
+  </button>
+</template>
+
+<template id="kb-label3d-du">
+  <span class="kb3-lb st-du"><span class="lamp" aria-hidden="true"><svg class="s-du" viewBox="0 0 16 16" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg></span><span class="kb-name">Du</span></span>
+</template>
+
+<script src="kb3d-code.js"></script>
+<script src="kb3d-pack-1.js"></script>
+<script src="kb3d-pack-2.js"></script>
+<script src="kb3d-pack-3.js"></script>
 <script>
 (function () {
   var root = document.querySelector('.kb');
@@ -511,6 +589,7 @@
   var HEMD = ['#4f6fa5', '#5d9a86', '#b8695a', '#8a6fb0', '#c4a24a', '#5a8fa8', '#7d8a99'];
   var tpl = function (id) { return document.getElementById(id); };
   var gewaehlt = null;
+  var made3d = null;
 
   // Zustand einer Zeile jetzt: eine Messung, die älter ist als ihre erlaubte Frische, zählt als «alt».
   function eff(r, now) {
@@ -753,7 +832,7 @@
     var data = rows();
     el.replaceChildren();
     if (!data || !gewaehlt) return;
-    var r = data.filter(function (x) { return x.id === gewaehlt && x.bereich === el.dataset.bereich; })[0];
+    var r = data.filter(function (x) { return x.id === gewaehlt && (el.dataset.bereich === '*' || x.bereich === el.dataset.bereich); })[0];
     var box = r ? klon('kb-detail') : null;
     if (!r || !box) return;
     var liste = box.querySelector('.kb-list');
@@ -763,24 +842,29 @@
     el.appendChild(box);
   });
 
-  if (root) {
-    root.addEventListener('click', function (ev) {
-      var t = ev.target && ev.target.closest ? ev.target.closest('[data-pick],[data-schliessen]') : null;
-      if (!t || !root.contains(t)) return;
-      if (t.hasAttribute('data-schliessen')) {
-        gewaehlt = null;
-      } else {
-        var id = t.getAttribute('data-pick');
-        gewaehlt = gewaehlt === id ? null : id;
-      }
+  // Auswahl: gilt für Figuren, Pakete, Blätter, Beschriftungen und für Treffer in der 3D-Szene
+  function waehle(id, umschalten) {
+    gewaehlt = id == null ? null : (umschalten && gewaehlt === id ? null : id);
+    if (root) {
       root.querySelectorAll('[data-pick]').forEach(function (n) {
         n.classList.toggle('is-sel', n.getAttribute('data-pick') === gewaehlt);
       });
-      dash.draw('detail');
+    }
+    if (made3d && made3d.select) made3d.select(gewaehlt);
+    dash.draw('detail');
+  }
+
+  if (root) {
+    root.addEventListener('click', function (ev) {
+      var t = ev.target && ev.target.closest ? ev.target.closest('[data-pick],[data-schliessen],[data-cmd]') : null;
+      if (!t || !root.contains(t)) return;
+      if (t.hasAttribute('data-cmd')) { befehl3d(t); return; }
+      if (t.hasAttribute('data-schliessen')) waehle(null, false);
+      else waehle(t.getAttribute('data-pick'), true);
     });
   }
 
-  // Ansichten Büro und Liste
+  // Ansichten: 3D, 2D, Liste
   function zeige(name) {
     document.querySelectorAll('.kb-tab').forEach(function (b) {
       var an = b.dataset.tab === name;
@@ -791,6 +875,88 @@
   }
   document.querySelectorAll('.kb-tab').forEach(function (b) {
     b.addEventListener('click', function () { zeige(b.dataset.tab); });
+  });
+
+  // 3D-Büro: Zustand aus den Zeilen, Farben der Lampen aus dem Theme, Beschriftungen aus den Vorlagen
+  function cssHex(name, fb) {
+    try {
+      var v = getComputedStyle(root).getPropertyValue(name).trim();
+      if (!v) return fb;
+      var c = document.createElement('canvas');
+      c.width = 1; c.height = 1;
+      var g = c.getContext('2d');
+      g.fillStyle = '#000000';
+      g.fillStyle = v;
+      g.fillRect(0, 0, 1, 1);
+      var d = g.getImageData(0, 0, 1, 1).data;
+      return '#' + [d[0], d[1], d[2]].map(function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+    } catch (e) { return fb; }
+  }
+  function lampHex() {
+    return { gruen: cssHex('--color-ok', '#2f9e5b'), gelb: cssHex('--color-warn', '#d99a1b'), rot: cssHex('--color-bad', '#e04b4b'), du: typeof c0 === 'string' ? cssHex('--kb-du', '#3b6fd8') : '#3b6fd8', alt: cssHex('--color-fg-muted', '#8b949e') };
+  }
+  function zustand3d(data, now) {
+    var ents = data.map(function (r) {
+      var e = eff(r, now);
+      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge };
+    });
+    var es = ents.map(function (e) { return e.state; });
+    var blaetter = ents.filter(function (e) { return e.figur === 'papier'; }).length;
+    var pose = es.indexOf('rot') >= 0 ? 'alarm' : blaetter > 0 || es.indexOf('gelb') >= 0 ? 'warn' : 'rest';
+    return { ents: ents, chef: { pose: pose, blaetter: blaetter }, sel: gewaehlt, colors: lampHex() };
+  }
+  function beschriftung3d(ent) {
+    if (ent.id === '__chef') return klon('kb-label3d-du');
+    var data = rows();
+    var r = data ? data.filter(function (x) { return x.id === ent.id; })[0] : null;
+    var n = r ? klon('kb-label3d') : null;
+    if (!n) return null;
+    n.classList.add('st-' + ent.state);
+    n.setAttribute('data-pick', ent.id);
+    if (ent.id === gewaehlt) n.classList.add('is-sel');
+    fuellen(n, r);
+    return n;
+  }
+  function raumKnopf(name) {
+    root.querySelectorAll('.kb3-chip').forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-cmd') === 'view:' + name ? 'true' : 'false'); });
+  }
+  function ohne3d() {
+    var note = root.querySelector('.kb3-aus');
+    if (note) note.hidden = false;
+    var tab = document.getElementById('kb-tab-3d');
+    var pane = document.getElementById('kb-pane-3d');
+    if (tab) tab.hidden = true;
+    if (pane) pane.hidden = true;
+    made3d = null;
+    zeige('buero');
+  }
+  function befehl3d(knopf) {
+    var cmd = knopf.getAttribute('data-cmd');
+    if (cmd === 'gross') {
+      var an = knopf.getAttribute('aria-pressed') !== 'true';
+      knopf.setAttribute('aria-pressed', an ? 'true' : 'false');
+      root.querySelectorAll('.kb3-stage').forEach(function (st) { st.classList.toggle('is-gross', an); });
+    } else if (made3d && made3d.cmd) made3d.cmd(cmd);
+  }
+
+  dash.draw('szene3d', {
+    mount: function (el) {
+      var K3 = window.KB3D;
+      if (!K3 || !K3.Buero || !K3.Buero.supported()) { ohne3d(); return { ok: false }; }
+      var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var m = K3.Buero.mount(el, { colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
+      made3d = m && m.ok ? m : null;
+      return m;
+    },
+    update: function (el, m) {
+      if (!m || !m.ok || !m.update) return;
+      var data = rows();
+      m.update(data ? zustand3d(data, Date.now()) : { ents: [], chef: { pose: 'rest', blaetter: 0 }, sel: gewaehlt, colors: lampHex() });
+    },
+    unmount: function (el, m) {
+      if (m && m.destroy) m.destroy();
+      if (made3d === m) made3d = null;
+    }
   });
 
   // Wanduhr im Chefbüro: echte Schweizer Zeit
