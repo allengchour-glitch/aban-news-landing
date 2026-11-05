@@ -1,6 +1,7 @@
 <meta name="dash-one-writer">
 <style>
-/* Layout: eine schmale Spalte fürs Handy. Oben Titel, Satz und Lampen-Zähler, dann vier Bereiche mit aufklappbaren Zeilen. */
+/* Layout: eine schmale Spalte fürs Handy. Oben Titel, Satz und Lampen-Zähler, darunter zwei Ansichten:
+   «Büro» (gezeichnete Szene mit Figuren, die den echten Stand spielen) und «Liste» (alle Zeilen mit Text). */
 .kb { max-width: 46rem; margin-inline: auto; display: flex; flex-direction: column; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
 .kb *, .kb *::before, .kb *::after { box-sizing: border-box; }
 
@@ -19,16 +20,28 @@
 .kb .shape, .kb .lamp svg { flex: none; width: 0.875rem; height: 0.875rem; }
 .kb .shape *, .kb .lamp svg * { fill: var(--lamp); }
 .kb .shape .ring, .kb .lamp svg .ring { fill: none; stroke: var(--lamp); stroke-width: 2; }
+.kb .lamp svg, .kb .r-word span, .kb .kb-word span { display: none; }
+.kb .st-gruen .lamp .s-gruen, .kb .st-gelb .lamp .s-gelb, .kb .st-rot .lamp .s-rot, .kb .st-du .lamp .s-du, .kb .st-alt .lamp .s-alt { display: block; }
+.kb .st-gruen .w-gruen, .kb .st-gelb .w-gelb, .kb .st-rot .w-rot, .kb .st-du .w-du, .kb .st-alt .w-alt { display: inline; }
 
 .kb-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); }
 .kb-chip { display: inline-flex; align-items: center; gap: var(--cds-gap-xs); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); font-size: var(--cds-font-size-body); }
 .kb .kb-chip b { font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; }
+
+/* Ansichten */
+.kb-tabs { display: flex; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); }
+.kb-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: var(--cds-pad-xs) var(--cds-pad-md); font: inherit; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); cursor: pointer; }
+.kb-tab[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); }
+.kb-tab:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; border-radius: var(--cds-radius); }
+.kb-pane { display: flex; flex-direction: column; gap: var(--cds-gap-md); min-width: 0; }
+.kb-hint { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; max-width: 65ch; }
 
 .kb-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
 .kb-card > h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
 .kb-sub { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
 .kb-list { list-style: none; margin: var(--cds-gap-xs) 0 0; padding: 0; min-height: 3rem; }
 
+/* Zeilen der Liste */
 .kb-row + .kb-row { border-top: 1px solid var(--color-border-line); }
 .kb-row summary { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "lamp name word chev" "lamp when when chev"; column-gap: var(--cds-gap-sm); row-gap: 0.125rem; align-items: baseline; padding: var(--cds-pad-sm) 0; cursor: pointer; list-style: none; }
 .kb-row summary::-webkit-details-marker { display: none; }
@@ -39,12 +52,8 @@
 .kb-row .r-name { grid-area: name; font-weight: var(--cds-font-weight-medium); min-width: 0; overflow-wrap: anywhere; }
 .kb-row .r-word { grid-area: word; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); white-space: nowrap; }
 .kb-row .r-when { grid-area: when; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: anywhere; }
-
-.kb-row .lamp svg, .kb-row .r-word span, .kb-row .r-old { display: none; }
-.kb-row.st-gruen .lamp .s-gruen, .kb-row.st-gelb .lamp .s-gelb, .kb-row.st-rot .lamp .s-rot, .kb-row.st-du .lamp .s-du, .kb-row.st-alt .lamp .s-alt { display: block; }
-.kb-row.st-gruen .r-word .w-gruen, .kb-row.st-gelb .r-word .w-gelb, .kb-row.st-rot .r-word .w-rot, .kb-row.st-du .r-word .w-du, .kb-row.st-alt .r-word .w-alt { display: inline; }
+.kb-row .r-old { display: none; }
 .kb-row.st-alt .r-old { display: block; }
-
 .kb-row .r-body { padding: 0 0 var(--cds-pad-sm) calc(0.875rem + var(--cds-gap-sm)); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
 .kb-row .r-befund { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.45; max-width: 65ch; text-wrap: pretty; }
 .kb-row .r-old { margin: 0; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); }
@@ -53,13 +62,165 @@
 .kb-row .r-meta dt { font-weight: var(--cds-font-weight-medium); }
 .kb-row .r-meta dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; min-width: 0; }
 
+/* ---------- Szene ---------- */
+.kb { --kb-stuhl: var(--color-border-line); --kb-tisch: var(--color-border-line); --kb-tischfront: var(--color-border-line); --kb-geraet: var(--color-fg-muted); --kb-wand: var(--color-panel); --kb-boden: var(--color-panel); --kb-himmel: var(--color-panel); --kb-karton: #c9a678; --kb-band: var(--color-fg-muted); }
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .kb {
+    --kb-stuhl: color-mix(in srgb, var(--color-fg) 36%, var(--color-panel));
+    --kb-tisch: color-mix(in srgb, var(--color-fg) 20%, var(--color-panel));
+    --kb-tischfront: color-mix(in srgb, var(--color-fg) 30%, var(--color-panel));
+    --kb-geraet: color-mix(in srgb, var(--color-fg) 58%, var(--color-panel));
+    --kb-wand: color-mix(in srgb, var(--color-fg) 7%, var(--color-panel));
+    --kb-boden: color-mix(in srgb, var(--color-fg) 2%, var(--color-panel));
+    --kb-himmel: color-mix(in srgb, #7fb6ee 35%, var(--color-panel));
+    --kb-band: color-mix(in srgb, var(--color-fg) 70%, var(--color-panel));
+  }
+}
+.kb-floor { position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: var(--cds-gap-sm) var(--cds-gap-xs); padding: 1.6rem var(--cds-pad-xs) var(--cds-pad-sm); margin-top: var(--cds-gap-xs); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: linear-gradient(to bottom, var(--kb-wand) 0, var(--kb-wand) 1.3rem, var(--kb-boden) 1.3rem); min-height: 9rem; overflow: hidden; }
+.kb-floor::before { content: ""; position: absolute; left: 0; right: 0; top: 1.3rem; height: 3px; background: var(--color-border-line); }
+.kb-floor-chef { padding-top: 3.9rem; background: linear-gradient(to bottom, var(--kb-wand) 0, var(--kb-wand) 3.6rem, var(--kb-boden) 3.6rem); }
+.kb-floor-chef::before { top: 3.6rem; }
+.kb-fenster { position: absolute; top: 0.55rem; left: 0.8rem; width: 4.2rem; height: 2.5rem; border: 2px solid var(--color-border-line); border-radius: 3px; background: linear-gradient(var(--color-border-line), var(--color-border-line)) center / 2px 100% no-repeat, linear-gradient(var(--color-border-line), var(--color-border-line)) center / 100% 2px no-repeat, var(--kb-himmel); }
+.kb-uhr { position: absolute; top: 0.5rem; right: 0.8rem; width: 2.6rem; height: 2.6rem; }
+.kb-uhr .u-rand { fill: var(--color-bg); stroke: var(--color-fg-muted); stroke-width: 2; }
+.kb-uhr .u-tick { fill: none; stroke: var(--color-fg-muted); stroke-width: 1.6; stroke-linecap: round; }
+.kb-uhr .u-h, .kb-uhr .u-m { stroke: var(--color-fg); stroke-linecap: round; transform-origin: 20px 20px; }
+.kb-uhr .u-h { stroke-width: 2.6; transform: rotate(var(--ah, 0deg)); }
+.kb-uhr .u-m { stroke-width: 1.8; transform: rotate(var(--am, 0deg)); }
+
+.kb-desk, .kb-band, .kb-blatt, .kb-tafel { appearance: none; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; position: relative; border-radius: var(--cds-radius); text-align: center; }
+.kb-desk:focus-visible, .kb-band:focus-visible, .kb-blatt:focus-visible, .kb-tafel:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.kb-desk.is-sel, .kb-band.is-sel, .kb-blatt.is-sel, .kb-tafel.is-sel { outline: 2px solid var(--lamp, var(--color-fg)); outline-offset: 2px; }
+.kb-desk:disabled { cursor: default; color: inherit; }
+.kb-desk { --d: 0s; width: 5.25rem; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.kb-badge { position: absolute; top: 0; left: 0.15rem; display: flex; z-index: 1; }
+.kb-name { display: block; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); line-height: 1.15; text-align: center; min-height: 2.3em; max-width: 100%; overflow-wrap: anywhere; hyphens: auto; }
+.kb-word { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.2; }
+.kb-chefplatz { display: flex; flex-direction: column; align-items: center; width: 5.25rem; }
+.kb-chef-fig { width: 100%; }
+.is-chef .kb-name, .is-chef .kb-word, .is-chef .kb-badge { display: none; }
+
+.fig { width: 100%; height: auto; display: block; overflow: visible; }
+.fig .f-skin { fill: var(--skin, #e2b48c); }
+.fig .f-hair { fill: var(--hair, #3a2a1e); }
+.fig .f-shirt { fill: var(--shirt, #4f6fa5); }
+.fig .f-tie { fill: var(--color-bad); display: none; }
+.is-chef .fig .f-tie { display: inline; }
+.fig .f-armline { fill: none; stroke: var(--shirt, #4f6fa5); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.fig .f-chair { fill: var(--kb-stuhl); }
+.fig .f-desk { fill: var(--kb-tisch); }
+.fig .f-deskfront { fill: var(--kb-tischfront); }
+.fig .f-drawer { fill: var(--kb-tisch); }
+.fig .f-lid { fill: var(--kb-geraet); }
+.fig .f-led { fill: var(--lamp, var(--color-fg-muted)); }
+.fig .f-eye { fill: #26221f; }
+.fig .f-line { fill: none; stroke: #26221f; stroke-width: 1.5; stroke-linecap: round; }
+.fig .f-mouth { fill: none; stroke: #7a3b2e; stroke-width: 1.7; stroke-linecap: round; }
+.fig .f-mouth-o { fill: #7a3b2e; }
+.fig .f-bub { fill: var(--color-panel); stroke: var(--lamp, var(--color-fg-muted)); stroke-width: 1.6; }
+.fig .f-bubtxt { fill: var(--color-fg); font-family: var(--font-anthropic-sans), sans-serif; font-size: 13px; font-weight: 700; }
+.fig .f-pt { fill: var(--color-fg); }
+.fig .f-z { fill: var(--color-fg-muted); font-family: var(--font-anthropic-sans), sans-serif; font-size: 10px; font-weight: 700; }
+.fig .f-drop { fill: #6aaed6; }
+.fig .f-siren { fill: var(--color-bad); }
+.fig .f-glow { fill: var(--color-bad); opacity: 0.28; }
+.fig .f-mug { fill: #f3efe8; stroke: var(--color-fg-muted); stroke-width: 1; }
+.fig .f-handle { fill: none; stroke: var(--color-fg-muted); stroke-width: 1.4; }
+.fig .f-steam { fill: none; stroke: var(--color-fg-muted); stroke-width: 1.4; stroke-linecap: round; opacity: 0.55; }
+
+/* Haltungen: genau eine ist sichtbar, gewählt wird sie von der Seite je nach echtem Stand. */
+.fig .p-busy, .fig .p-rest, .fig .p-warn, .fig .p-alarm, .fig .p-sleep, .fig .p-eyes-closed, .fig .m-flat, .fig .m-o, .fig .h-b, .fig .h-c { display: none; }
+.kb-desk.pose-busy .p-busy, .kb-desk.pose-rest .p-rest, .kb-desk.pose-warn .p-warn, .kb-desk.pose-alarm .p-alarm, .kb-desk.pose-sleep .p-sleep { display: inline; }
+.kb-desk.pose-sleep .p-eyes-open, .kb-desk.pose-sleep .m-smile, .kb-desk.pose-warn .m-smile, .kb-desk.pose-alarm .m-smile { display: none; }
+.kb-desk.pose-sleep .p-eyes-closed, .kb-desk.pose-sleep .m-flat, .kb-desk.pose-warn .m-flat, .kb-desk.pose-alarm .m-o { display: inline; }
+.kb-desk.hair-a .h-a { display: inline; }
+.kb-desk.hair-b .h-a, .kb-desk.hair-c .h-a { display: none; }
+.kb-desk.hair-b .h-b, .kb-desk.hair-c .h-c { display: inline; }
+.kb-desk.pose-sleep .f-head { transform: translate(4px, 15px) rotate(22deg); transform-origin: 42px 48px; }
+.is-chef .fig .f-drop { display: none; }
+
+/* Förderband (Versand) */
+.kb-band { width: 10rem; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.kb-band .band { width: 100%; height: auto; display: block; overflow: hidden; }
+.kb-band .b-belt { fill: var(--kb-band); }
+.kb-band .b-rahmen { fill: var(--kb-tischfront); }
+.kb-band .b-rollen circle { fill: var(--kb-tisch); stroke: var(--kb-band); stroke-width: 1.2; }
+.kb-band .b-box { fill: var(--kb-karton); stroke: rgba(0, 0, 0, 0.25); stroke-width: 1; }
+.kb-band .b-tape { fill: rgba(255, 255, 255, 0.45); }
+.kb-band .b-etikett { fill: none; stroke: rgba(0, 0, 0, 0.35); stroke-width: 1.6; stroke-linecap: round; }
+.kb-band .paket { transform: translateX(calc(var(--i, 0) * 38px + 10px)); }
+
+/* Blätter auf dem Chefpult und Wandtafel */
+.kb-blaetter, .kb-tafeln { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: var(--cds-gap-xs); }
+.kb-blatt { width: 3.9rem; display: flex; flex-direction: column; align-items: center; gap: 2px; transform: rotate(var(--r, 0deg)); }
+.kb-blatt .blatt { width: 2.1rem; height: auto; display: block; }
+.kb-blatt .bl-papier { fill: #f6f4ee; stroke: #8b949e; stroke-width: 1.4; stroke-linejoin: round; }
+.kb-blatt .bl-ecke { fill: #d8dde2; }
+.kb-blatt .bl-linien { fill: none; stroke: #c5ccd3; stroke-width: 2; stroke-linecap: round; }
+.kb-blatt .bl-punkt { fill: var(--lamp, var(--color-fg)); }
+.kb-blatt .kb-name { font-size: var(--cds-font-size-caption); min-height: 2.3em; }
+.kb-tafel { width: 7rem; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: var(--cds-pad-sm) var(--cds-pad-xs); background: var(--color-fg); color: var(--color-bg); border: 3px solid var(--kb-tischfront); border-radius: 6px; }
+.kb-tafel .t-zahl { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); line-height: 1; font-variant-numeric: tabular-nums; }
+.kb-tafel .t-label { font-size: var(--cds-font-size-caption); line-height: 1.15; overflow-wrap: anywhere; }
+
+/* Detailfeld unter dem Raum */
+.kb-detail:empty { display: none; }
+.kb-detailbox { position: relative; margin-top: var(--cds-gap-xs); padding: var(--cds-pad-sm) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); }
+.kb-detailbox .kb-list { margin: 0; min-height: 0; }
+.kb-x { appearance: none; position: absolute; top: 0.2rem; right: 0.3rem; z-index: 2; width: 1.9rem; height: 1.9rem; border: 0; border-radius: var(--cds-radius); background: none; color: var(--color-fg-muted); font: inherit; font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.kb-x:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 1px; }
+.kb-detailbox .kb-row summary { padding-right: 1.6rem; }
+
+/* Bewegung nur, wenn der Mensch sie nicht abgeschaltet hat. */
+@media (prefers-reduced-motion: no-preference) {
+  .kb-desk.pose-busy .f-armL { animation: kb-tipp-l 0.5s ease-in-out infinite; animation-delay: var(--d); transform-origin: 23px 58px; }
+  .kb-desk.pose-busy .f-armR { animation: kb-tipp-r 0.5s ease-in-out infinite; animation-delay: calc(var(--d) + 0.25s); transform-origin: 61px 58px; }
+  .kb-desk.pose-busy .f-head { animation: kb-nick 1.8s ease-in-out infinite; animation-delay: var(--d); transform-origin: 42px 48px; }
+  .kb-desk.pose-busy .f-led { animation: kb-led 0.9s steps(2, end) infinite; animation-delay: var(--d); }
+  .kb-desk.pose-busy .f-pt { animation: kb-punkt 1.2s ease-in-out infinite; }
+  .kb-desk.pose-busy .f-pt:nth-of-type(2) { animation-delay: 0.2s; }
+  .kb-desk.pose-busy .f-pt:nth-of-type(3) { animation-delay: 0.4s; }
+  .kb-desk.pose-rest .f-steam { animation: kb-dampf 2.6s ease-in-out infinite; animation-delay: var(--d); }
+  .kb-desk.pose-rest .f-steam.s2 { animation-delay: calc(var(--d) + 1.3s); }
+  .kb-desk.pose-warn .f-bubble { animation: kb-wipp 1.5s ease-in-out infinite; }
+  .kb-desk.pose-warn .f-drop { animation: kb-schweiss 2.2s ease-in infinite; animation-delay: var(--d); }
+  .kb-desk.pose-alarm .f-person { animation: kb-huepf 0.7s ease-in-out infinite; animation-delay: var(--d); }
+  .kb-desk.pose-alarm .f-armUpL { animation: kb-winken-l 0.55s ease-in-out infinite; transform-origin: 25px 62px; }
+  .kb-desk.pose-alarm .f-armUpR { animation: kb-winken-r 0.55s ease-in-out infinite; transform-origin: 59px 62px; }
+  .kb-desk.pose-alarm .f-glow { animation: kb-sirene 0.8s ease-in-out infinite; }
+  .kb-desk.pose-alarm .f-bubble { animation: kb-zittern 0.3s linear infinite; }
+  .kb-desk.pose-sleep .f-z.z1 { animation: kb-zzz 3.6s ease-out infinite; animation-delay: var(--d); }
+  .kb-desk.pose-sleep .f-z.z2 { animation: kb-zzz 3.6s ease-out infinite; animation-delay: calc(var(--d) + 1.2s); }
+  .kb-desk.pose-sleep .f-z.z3 { animation: kb-zzz 3.6s ease-out infinite; animation-delay: calc(var(--d) + 2.4s); }
+  .kb-band .paket { animation: kb-paket 8s linear infinite; animation-delay: calc(var(--i, 0) * -2.7s); }
+  .kb-band .b-rollen circle { animation: kb-rolle 1.2s linear infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes kb-tipp-l { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
+@keyframes kb-tipp-r { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-8deg); } }
+@keyframes kb-nick { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2.5deg); } }
+@keyframes kb-led { 0% { opacity: 1; } 100% { opacity: 0.25; } }
+@keyframes kb-punkt { 0%, 100% { opacity: 0.2; } 35% { opacity: 1; } }
+@keyframes kb-dampf { 0% { opacity: 0; transform: translateY(3px); } 40% { opacity: 0.7; } 100% { opacity: 0; transform: translateY(-7px); } }
+@keyframes kb-wipp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+@keyframes kb-schweiss { 0% { opacity: 0; transform: translateY(-2px); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(11px); } }
+@keyframes kb-huepf { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3.5px); } }
+@keyframes kb-winken-l { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-16deg); } }
+@keyframes kb-winken-r { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(16deg); } }
+@keyframes kb-sirene { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.6; } }
+@keyframes kb-zittern { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-1px); } 75% { transform: translateX(1px); } }
+@keyframes kb-zzz { 0% { opacity: 0; transform: translate(0, 4px) scale(0.7); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(6px, -12px) scale(1.2); } }
+@keyframes kb-paket { 0% { transform: translateX(-30px); } 100% { transform: translateX(165px); } }
+@keyframes kb-rolle { 0% { stroke-dasharray: 3 3; stroke-dashoffset: 0; } 100% { stroke-dasharray: 3 3; stroke-dashoffset: 6; } }
+
+/* Erklärung und Fussnote */
 .kb-help summary { cursor: pointer; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
 .kb-help summary:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; border-radius: var(--cds-radius); }
 .kb-help ul { list-style: none; margin: var(--cds-gap-sm) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
 .kb-help li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--cds-gap-sm); align-items: start; font-size: var(--cds-font-size-body); line-height: 1.4; }
 .kb-help li .shape { margin-top: 0.2rem; }
+.kb-help li.kb-pose { grid-template-columns: minmax(0, 1fr); }
 .kb .kb-help li b { font-weight: var(--cds-font-weight-medium); }
-
+.kb-help h3 { margin: var(--cds-gap-md) 0 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
 .kb-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; max-width: 65ch; }
 </style>
 
@@ -81,9 +242,86 @@
     <li class="kb-chip st-alt" data-alt-line hidden><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><b data-draw="n" data-st="alt" data-source="buero">—</b><span>Alt</span></li>
   </ul>
 
+  <div class="kb-tabs" role="tablist" aria-label="Ansicht">
+    <button type="button" class="kb-tab" role="tab" id="kb-tab-buero" data-tab="buero" aria-selected="true" aria-controls="kb-pane-buero">Büro</button>
+    <button type="button" class="kb-tab" role="tab" id="kb-tab-liste" data-tab="liste" aria-selected="false" aria-controls="kb-pane-liste" tabindex="-1">Liste</button>
+  </div>
+
+  <div class="kb-pane" id="kb-pane-buero" data-pane="buero" role="tabpanel" aria-labelledby="kb-tab-buero">
+    <p class="kb-hint">Jede Figur ist ein echter Automat oder eine echte Sitzung und spielt ihren Stand. Tippe auf eine Figur, ein Paket oder ein Blatt, dann siehst du die Einzelheiten.</p>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-shop">
+      <h2 id="r-shop">Shop</h2>
+      <p class="kb-sub">Automaten, die den Shop pflegen.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Shop" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Shop" data-source="buero"></div>
+    </section>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-versand">
+      <h2 id="r-versand">Versand</h2>
+      <p class="kb-sub">Bestellungen und Sendungen. Die Pakete auf dem Band sind die offenen Bestellungen.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Versand" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Versand" data-source="buero"></div>
+    </section>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-krypto">
+      <h2 id="r-krypto">Krypto</h2>
+      <p class="kb-sub">Nur Spielgeld und Papier. Kein echtes Geld im Spiel.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Krypto" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Krypto" data-source="buero"></div>
+    </section>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-chef">
+      <h2 id="r-chef">Chefbüro</h2>
+      <p class="kb-sub">Was nur du entscheiden oder anklicken kannst. Jedes Blatt ist ein offener Punkt, die Tafel zählt die Bestellungen.</p>
+      <div class="kb-floor kb-floor-chef">
+        <div class="kb-fenster" aria-hidden="true"></div>
+        <svg class="kb-uhr" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <circle class="u-rand" cx="20" cy="20" r="17.5"/>
+          <path class="u-tick" d="M20 4.8v3.4M35.2 20h-3.4M20 35.2v-3.4M4.8 20h3.4"/>
+          <line class="u-h" x1="20" y1="20" x2="20" y2="11.5"/>
+          <line class="u-m" x1="20" y1="20" x2="20" y2="7.5"/>
+        </svg>
+        <div class="kb-chefplatz">
+          <div class="kb-chef-fig" data-draw="chef" data-source="buero"></div>
+          <span class="kb-name">Du</span>
+        </div>
+        <div class="kb-blaetter" data-draw="blaetter" data-source="buero"></div>
+        <div class="kb-tafeln" data-draw="tafeln" data-source="buero"></div>
+      </div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Chefbüro" data-source="buero"></div>
+    </section>
+  </div>
+
+  <div class="kb-pane" id="kb-pane-liste" data-pane="liste" role="tabpanel" aria-labelledby="kb-tab-liste" hidden>
+    <section class="kb-card" aria-labelledby="h-shop">
+      <h2 id="h-shop">Shop</h2>
+      <p class="kb-sub">Automaten, die den Shop pflegen.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Shop" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-versand">
+      <h2 id="h-versand">Versand</h2>
+      <p class="kb-sub">Bestellungen und Sendungen.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Versand" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-krypto">
+      <h2 id="h-krypto">Krypto</h2>
+      <p class="kb-sub">Nur Spielgeld und Papier. Kein echtes Geld im Spiel.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Krypto" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-chef">
+      <h2 id="h-chef">Chefbüro</h2>
+      <p class="kb-sub">Was nur du entscheiden oder anklicken kannst.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Chefbüro" data-source="buero"></ul>
+    </section>
+  </div>
+
   <section class="kb-card">
     <details class="kb-help">
-      <summary>Was die Lampen bedeuten</summary>
+      <summary>Was die Lampen und Figuren bedeuten</summary>
       <ul>
         <li class="st-gruen"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg><span><b>Grüner Kreis, läuft.</b> Der letzte Lauf war gut und die Messung ist frisch.</span></li>
         <li class="st-gelb"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg><span><b>Gelbes Dreieck, prüfen.</b> Es läuft mit Einschränkung, oder ich kann es nicht belegen. Schau mal hin.</span></li>
@@ -91,32 +329,16 @@
         <li class="st-du"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg><span><b>Raute, für dich.</b> Wartet auf deinen Entscheid, oder ist eine Zahl zur Information.</span></li>
         <li class="st-alt"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><span><b>Grauer Ring, alt.</b> Die Messung ist älter als erlaubt. Die Lampe zeigt dann nichts Sicheres mehr.</span></li>
       </ul>
-      <p class="kb-note">Jede Lampe hat eine eigene Form und ein Wort. Die Farbe allein sagt nichts.</p>
+      <h3>Was die Figuren tun</h3>
+      <ul>
+        <li class="kb-pose"><span><b>Tippt, Punkte in der Sprechblase:</b> Der letzte Lauf ist frisch, die Figur arbeitet gerade.</span></li>
+        <li class="kb-pose"><span><b>Kaffee mit Dampf:</b> Der Lauf ist länger her. Die Figur ruht bis zum nächsten Mal.</span></li>
+        <li class="kb-pose"><span><b>Hand am Kopf, Fragezeichen:</b> Schau hin (gelbe Lampe).</span></li>
+        <li class="kb-pose"><span><b>Arme hoch, Alarmlicht:</b> Es steht still (rote Lampe).</span></li>
+        <li class="kb-pose"><span><b>Schläft, Zzz:</b> Die Messung ist zu alt, ich weiss nicht, was die Figur gerade tut.</span></li>
+      </ul>
+      <p class="kb-note">Jede Lampe hat eine eigene Form und ein Wort. Die Farbe allein sagt nichts. Die Figuren sind gezeichnet, ihr Zustand ist gemessen.</p>
     </details>
-  </section>
-
-  <section class="kb-card" aria-labelledby="h-shop">
-    <h2 id="h-shop">Shop</h2>
-    <p class="kb-sub">Automaten, die den Shop pflegen.</p>
-    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Shop" data-source="buero"></ul>
-  </section>
-
-  <section class="kb-card" aria-labelledby="h-versand">
-    <h2 id="h-versand">Versand</h2>
-    <p class="kb-sub">Bestellungen und Sendungen.</p>
-    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Versand" data-source="buero"></ul>
-  </section>
-
-  <section class="kb-card" aria-labelledby="h-krypto">
-    <h2 id="h-krypto">Krypto</h2>
-    <p class="kb-sub">Nur Spielgeld und Papier. Kein echtes Geld im Spiel.</p>
-    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Krypto" data-source="buero"></ul>
-  </section>
-
-  <section class="kb-card" aria-labelledby="h-chef">
-    <h2 id="h-chef">Chefbüro</h2>
-    <p class="kb-sub">Was nur du entscheiden oder anklicken kannst.</p>
-    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Chefbüro" data-source="buero"></ul>
   </section>
 
   <p class="kb-note">Alle Zeiten sind Schweizer Zeit. GitHub startet geplante Läufe oft Stunden zu spät. Das zeigt sich hier als späte Uhrzeit und ist kein Fehler. Diese Seite aktualisiert sich nicht von selbst: Sag Claude «Büro neu messen», dann gibt es frische Zeiten.</p>
@@ -149,6 +371,134 @@
   </li>
 </template>
 
+<template id="kb-detail">
+  <div class="kb-detailbox">
+    <button type="button" class="kb-x" data-schliessen aria-label="Schliessen">×</button>
+    <ul class="kb-list"></ul>
+  </div>
+</template>
+
+<template id="kb-figur">
+  <button type="button" class="kb-desk">
+    <span class="lamp kb-badge" aria-hidden="true">
+      <svg class="s-gruen" viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg>
+      <svg class="s-gelb" viewBox="0 0 16 16" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg>
+      <svg class="s-rot" viewBox="0 0 16 16" focusable="false"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+      <svg class="s-du" viewBox="0 0 16 16" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg>
+      <svg class="s-alt" viewBox="0 0 16 16" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg>
+    </span>
+    <svg class="fig" viewBox="0 0 84 104" aria-hidden="true" focusable="false">
+      <g class="f-person">
+        <rect class="f-chair" x="24" y="46" width="36" height="34" rx="11"/>
+        <path class="f-shirt" d="M21 82 C21 60 30 53 42 53 C54 53 63 60 63 82 Z"/>
+        <path class="f-tie" d="M42 54 L45.5 60 L42 74 L38.5 60 Z"/>
+        <rect class="f-skin" x="38" y="44" width="8" height="11" rx="3"/>
+        <g class="p-busy">
+          <rect class="f-armL f-shirt" x="19" y="57" width="9" height="22" rx="4.5"/>
+          <rect class="f-armR f-shirt" x="56" y="57" width="9" height="22" rx="4.5"/>
+        </g>
+        <g class="p-rest">
+          <rect class="f-shirt" x="20" y="58" width="9" height="21" rx="4.5" transform="rotate(8 24 58)"/>
+          <rect class="f-shirt" x="55" y="58" width="9" height="21" rx="4.5" transform="rotate(-8 60 58)"/>
+        </g>
+        <g class="p-warn">
+          <rect class="f-shirt" x="20" y="58" width="9" height="21" rx="4.5" transform="rotate(8 24 58)"/>
+          <path class="f-armline" d="M60 64 Q69 57 58 43"/>
+          <circle class="f-skin" cx="56" cy="39.5" r="4.4"/>
+        </g>
+        <g class="p-alarm">
+          <g class="f-armUpL"><path class="f-armline" d="M25 62 Q10 52 12 31"/><circle class="f-skin" cx="12" cy="28.5" r="4.6"/></g>
+          <g class="f-armUpR"><path class="f-armline" d="M59 62 Q74 52 72 31"/><circle class="f-skin" cx="72" cy="28.5" r="4.6"/></g>
+        </g>
+        <g class="f-head">
+          <circle class="f-skin" cx="42" cy="34" r="12.5"/>
+          <circle class="f-skin" cx="29.6" cy="35" r="2.8"/>
+          <circle class="f-skin" cx="54.4" cy="35" r="2.8"/>
+          <path class="f-hair h-a" d="M29.5 33 C29 21 36 18.5 42 18.5 C48 18.5 55 21 54.5 33 C51 28 47 26.5 42 26.5 C37 26.5 33 28 29.5 33 Z"/>
+          <path class="f-hair h-b" d="M28.5 41 C26 22 34 17.5 42 17.5 C50 17.5 58 22 55.5 41 C54.5 33 52 27.5 42 27.5 C32 27.5 29.5 33 28.5 41 Z"/>
+          <g class="h-c"><path class="f-hair" d="M29.5 33 C29 22 35 19 42 19 C49 19 55 22 54.5 33 C51 28 47 27 42 27 C37 27 33 28 29.5 33 Z"/><circle class="f-hair" cx="42" cy="15" r="5"/></g>
+          <g class="p-eyes-open"><circle class="f-eye" cx="37.5" cy="35" r="1.8"/><circle class="f-eye" cx="46.5" cy="35" r="1.8"/></g>
+          <g class="p-eyes-closed"><path class="f-line" d="M35 35.4 q2.5 2.2 5 0 M44 35.4 q2.5 2.2 5 0"/></g>
+          <path class="f-mouth m-smile" d="M38 40.6 q4 3.2 8 0"/>
+          <path class="f-mouth m-flat" d="M39 41.4 h6"/>
+          <ellipse class="f-mouth-o m-o" cx="42" cy="41.6" rx="2.4" ry="3.1"/>
+          <path class="f-drop p-warn" d="M56.5 24 q2.6 4.2 0 6.4 q-2.6 -2.2 0 -6.4"/>
+        </g>
+      </g>
+      <rect class="f-desk" x="2" y="73" width="80" height="8" rx="2.5"/>
+      <rect class="f-deskfront" x="6" y="81" width="72" height="22" rx="2.5"/>
+      <rect class="f-drawer" x="33" y="88" width="18" height="2.6" rx="1.3"/>
+      <rect class="f-lid" x="23" y="56" width="38" height="17.5" rx="3"/>
+      <circle class="f-led" cx="42" cy="64.8" r="2.5"/>
+      <g class="p-rest">
+        <rect class="f-mug" x="66" y="65" width="9" height="8" rx="1.8"/>
+        <path class="f-handle" d="M75 67 q3.2 0 0 4"/>
+        <path class="f-steam s1" d="M68.5 62 q-2.2 -3 0 -5.5"/>
+        <path class="f-steam s2" d="M72.5 62 q-2.2 -3 0 -5.5"/>
+      </g>
+      <g class="p-alarm">
+        <circle class="f-glow" cx="12" cy="68" r="10"/>
+        <path class="f-siren" d="M7 73 v-3.5 a5 5 0 0 1 10 0 v3.5 Z"/>
+      </g>
+      <g class="p-busy f-bubble">
+        <rect class="f-bub" x="58" y="6" width="22" height="14" rx="6"/>
+        <circle class="f-pt" cx="64.5" cy="13" r="1.7"/>
+        <circle class="f-pt" cx="69" cy="13" r="1.7"/>
+        <circle class="f-pt" cx="73.5" cy="13" r="1.7"/>
+      </g>
+      <g class="p-warn f-bubble">
+        <rect class="f-bub" x="60" y="4" width="20" height="16" rx="6"/>
+        <text class="f-bubtxt" x="70" y="16.5" text-anchor="middle">?</text>
+      </g>
+      <g class="p-alarm f-bubble">
+        <rect class="f-bub" x="60" y="4" width="20" height="16" rx="6"/>
+        <text class="f-bubtxt" x="70" y="16.5" text-anchor="middle">!</text>
+      </g>
+      <g class="p-sleep">
+        <text class="f-z z1" x="56" y="26">z</text>
+        <text class="f-z z2" x="62" y="18">z</text>
+        <text class="f-z z3" x="68" y="10">Z</text>
+      </g>
+    </svg>
+    <span class="kb-name" data-source="buero" data-field="kurz">—</span>
+    <span class="kb-word"><span class="w-gruen">Läuft</span><span class="w-gelb">Prüfen</span><span class="w-rot">Steht</span><span class="w-alt">Alt</span></span>
+  </button>
+</template>
+
+<template id="kb-band">
+  <button type="button" class="kb-band">
+    <span class="lamp kb-badge" aria-hidden="true">
+      <svg class="s-gruen" viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg>
+      <svg class="s-gelb" viewBox="0 0 16 16" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg>
+      <svg class="s-rot" viewBox="0 0 16 16" focusable="false"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+      <svg class="s-du" viewBox="0 0 16 16" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg>
+      <svg class="s-alt" viewBox="0 0 16 16" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg>
+    </span>
+    <svg class="band" viewBox="0 0 160 84" aria-hidden="true" focusable="false">
+      <g class="b-pakete"><g class="paket"><rect class="b-box" x="0" y="36" width="26" height="21" rx="2.5"/><rect class="b-tape" x="10" y="36" width="6" height="21"/><path class="b-etikett" d="M18 49h5"/></g></g>
+      <rect class="b-belt" x="4" y="56" width="152" height="9" rx="4.5"/>
+      <rect class="b-rahmen" x="12" y="65" width="136" height="14" rx="3"/>
+      <g class="b-rollen"><circle cx="26" cy="72" r="4"/><circle cx="54" cy="72" r="4"/><circle cx="82" cy="72" r="4"/><circle cx="110" cy="72" r="4"/><circle cx="138" cy="72" r="4"/></g>
+    </svg>
+    <span class="kb-name" data-source="buero" data-field="kurz">—</span>
+    <span class="kb-word"><span class="w-gruen">Läuft</span><span class="w-gelb">Prüfen</span><span class="w-rot">Steht</span><span class="w-alt">Alt</span></span>
+  </button>
+</template>
+
+<template id="kb-blatt">
+  <button type="button" class="kb-blatt st-du">
+    <svg class="blatt" viewBox="0 0 36 46" aria-hidden="true" focusable="false"><path class="bl-papier" d="M4 2h20l8 8v34H4z"/><path class="bl-ecke" d="M24 2v8h8z"/><path class="bl-linien" d="M9 22h18M9 28h18M9 34h12"/><circle class="bl-punkt" cx="10" cy="13" r="2.6"/></svg>
+    <span class="kb-name" data-source="buero" data-field="kurz">—</span>
+  </button>
+</template>
+
+<template id="kb-tafel">
+  <button type="button" class="kb-tafel st-du">
+    <span class="t-zahl" data-source="buero" data-field="menge">—</span>
+    <span class="t-label" data-source="buero" data-field="kurz">—</span>
+  </button>
+</template>
+
 <script>
 (function () {
   var root = document.querySelector('.kb');
@@ -156,7 +506,11 @@
   if (root && typeof c0 === 'string') root.style.setProperty('--kb-du', c0);
 
   var ORDER = ['rot', 'gelb', 'alt', 'du', 'gruen'];
-  var tpl = document.getElementById('kb-row');
+  var HAUT = ['#f3d3b6', '#e2b48c', '#c68a5f', '#8d5b3e'];
+  var HAAR = ['#2b1d14', '#5a3a22', '#a8672a', '#d9b45a', '#9a9a9a', '#1b1b1f'];
+  var HEMD = ['#4f6fa5', '#5d9a86', '#b8695a', '#8a6fb0', '#c4a24a', '#5a8fa8', '#7d8a99'];
+  var tpl = function (id) { return document.getElementById(id); };
+  var gewaehlt = null;
 
   // Zustand einer Zeile jetzt: eine Messung, die älter ist als ihre erlaubte Frische, zählt als «alt».
   function eff(r, now) {
@@ -171,7 +525,97 @@
     return g.status === 'ok' && Array.isArray(g.data) ? g.data : null;
   }
 
-  // Zeigt genau einen Satz unter dem Titel und die graue Lampe nur, wenn es eine gibt.
+  // Arbeitet die Figur gerade? Ja, wenn ihr Ereignis höchstens aktiv_h Stunden her ist.
+  function aktiv(r, now) {
+    var h = Number(r.aktiv_h);
+    var t = Date.parse(r.ereignis_iso);
+    return h > 0 && isFinite(t) && now - t <= h * 3600000 && now - t >= -60000;
+  }
+
+  function haltung(e, arbeitet) {
+    if (e === 'rot') return 'alarm';
+    if (e === 'gelb') return 'warn';
+    if (e === 'alt') return 'sleep';
+    return arbeitet ? 'busy' : 'rest';
+  }
+
+  function hash(s) {
+    var x = 7;
+    for (var i = 0; i < s.length; i++) x = (x * 31 + s.charCodeAt(i)) >>> 0;
+    return x;
+  }
+
+  function fuellen(n, r) {
+    n.querySelectorAll('[data-field]').forEach(function (f) {
+      var v = r[f.dataset.field];
+      f.textContent = v == null ? '' : String(v);
+      f.dataset.where = 'id=' + encodeURIComponent(r.id);
+    });
+  }
+
+  function klon(id) {
+    var t = tpl(id);
+    return t && t.content && t.content.firstElementChild ? t.content.firstElementChild.cloneNode(true) : null;
+  }
+
+  // Zeile der Liste (auch im Detailfeld der Szene benutzt)
+  function build(r, e, was) {
+    var li = klon('kb-row');
+    if (!li) return document.createDocumentFragment();
+    li.classList.add('st-' + e);
+    li.dataset.id = r.id;
+    var det = li.querySelector('details');
+    det.open = Object.prototype.hasOwnProperty.call(was, r.id) ? was[r.id] : e !== 'gruen';
+    fuellen(li, r);
+    return li;
+  }
+
+  function figur(r, now, chef) {
+    var n = klon('kb-figur');
+    if (!n) return null;
+    var e = chef ? 'du' : eff(r, now);
+    var hs = hash(chef ? 'chef' : r.id);
+    n.classList.add('st-' + e, 'pose-' + (chef || haltung(e, aktiv(r, now))), 'hair-' + 'abc'.charAt(hs % 3));
+    n.style.setProperty('--skin', HAUT[hs % HAUT.length]);
+    n.style.setProperty('--hair', HAAR[(hs >> 3) % HAAR.length]);
+    n.style.setProperty('--shirt', HEMD[(hs >> 5) % HEMD.length]);
+    n.style.setProperty('--d', ((hs % 9) / 10) + 's');
+    if (!chef) {
+      n.setAttribute('data-pick', r.id);
+      if (r.id === gewaehlt) n.classList.add('is-sel');
+      fuellen(n, r);
+    } else {
+      n.classList.add('is-chef');
+      n.disabled = true;
+      ['.kb-name', '.kb-word', '.kb-badge'].forEach(function (sel) {
+        var x = n.querySelector(sel);
+        if (x && x.parentNode) x.parentNode.removeChild(x);
+      });
+    }
+    return n;
+  }
+
+  function band(r, now) {
+    var n = klon('kb-band');
+    if (!n) return null;
+    n.classList.add('st-' + eff(r, now));
+    n.setAttribute('data-pick', r.id);
+    if (r.id === gewaehlt) n.classList.add('is-sel');
+    var proto = n.querySelector('.paket');
+    var k = Math.max(0, Math.min(4, Math.round(Number(r.menge) || 0)));
+    if (proto && proto.parentNode) {
+      var halter = proto.parentNode;
+      for (var i = 0; i < k; i++) {
+        var c = proto.cloneNode(true);
+        c.style.setProperty('--i', String(i));
+        halter.appendChild(c);
+      }
+      halter.removeChild(proto);
+    }
+    fuellen(n, r);
+    return n;
+  }
+
   dash.onData(function () {
     var data = rows();
     var sentences = document.querySelectorAll('.kb [data-t]');
@@ -212,20 +656,6 @@
     el.dataset.where = 'id=' + encodeURIComponent(best.id);
   });
 
-  function build(r, e, was) {
-    var li = tpl.content.firstElementChild.cloneNode(true);
-    li.classList.add('st-' + e);
-    li.dataset.id = r.id;
-    var det = li.querySelector('details');
-    det.open = Object.prototype.hasOwnProperty.call(was, r.id) ? was[r.id] : e !== 'gruen';
-    li.querySelectorAll('[data-field]').forEach(function (n) {
-      var v = r[n.dataset.field];
-      n.textContent = v == null ? '' : String(v);
-      n.dataset.where = 'id=' + encodeURIComponent(r.id);
-    });
-    return li;
-  }
-
   dash.draw('rows', function (el) {
     var data = rows();
     var was = {};
@@ -233,7 +663,7 @@
       var d = li.querySelector('details');
       if (d) was[li.dataset.id] = d.open;
     });
-    if (!data || !tpl) {
+    if (!data || !tpl('kb-row')) {
       el.replaceChildren();
       el.classList.add('dash-skeleton');
       return;
@@ -246,5 +676,141 @@
       .sort(function (a, b) { return ORDER.indexOf(a.e) - ORDER.indexOf(b.e); });
     el.replaceChildren.apply(el, mine.map(function (x) { return build(x.r, x.e, was); }));
   });
+
+  // Räume Shop, Versand, Krypto: Figuren in fester Reihenfolge (die Plätze wechseln nicht), Pakete auf dem Band.
+  dash.draw('raum', function (el) {
+    var data = rows();
+    if (!data) {
+      el.replaceChildren();
+      el.classList.add('dash-skeleton');
+      return;
+    }
+    el.classList.remove('dash-skeleton');
+    var now = Date.now();
+    var teile = [];
+    data.forEach(function (r) {
+      if (r.bereich !== el.dataset.bereich) return;
+      var f = r.figur || 'arbeiter';
+      var n = f === 'paket' ? band(r, now) : f === 'arbeiter' ? figur(r, now, null) : null;
+      if (n) teile.push(n);
+    });
+    el.replaceChildren.apply(el, teile);
+  });
+
+  // Chefbüro: der Chef richtet sich nach dem schlechtesten Stand, Blätter und Tafel kommen aus den Zeilen.
+  dash.draw('chef', function (el) {
+    var data = rows();
+    el.replaceChildren();
+    if (!data) return;
+    var now = Date.now();
+    var es = data.map(function (r) { return eff(r, now); });
+    var blaetter = data.filter(function (r) { return r.figur === 'papier'; }).length;
+    var h = es.indexOf('rot') >= 0 ? 'alarm' : blaetter > 0 || es.indexOf('gelb') >= 0 ? 'warn' : 'rest';
+    var n = figur(null, now, h);
+    if (!n) return;
+    var frage = n.querySelector('.p-warn .f-bubtxt');
+    if (frage && blaetter > 0) frage.textContent = String(blaetter);
+    el.appendChild(n);
+  });
+
+  dash.draw('blaetter', function (el) {
+    var data = rows();
+    el.replaceChildren();
+    if (!data) return;
+    var liste = data.filter(function (r) { return r.figur === 'papier'; });
+    var teile = [];
+    liste.forEach(function (r, i) {
+      var n = klon('kb-blatt');
+      if (!n) return;
+      n.setAttribute('data-pick', r.id);
+      n.style.setProperty('--r', String((i - (liste.length - 1) / 2) * 3) + 'deg');
+      if (r.id === gewaehlt) n.classList.add('is-sel');
+      fuellen(n, r);
+      teile.push(n);
+    });
+    el.replaceChildren.apply(el, teile);
+  });
+
+  dash.draw('tafeln', function (el) {
+    var data = rows();
+    el.replaceChildren();
+    if (!data) return;
+    var teile = [];
+    data.forEach(function (r) {
+      if (r.figur !== 'tafel') return;
+      var n = klon('kb-tafel');
+      if (!n) return;
+      n.setAttribute('data-pick', r.id);
+      if (r.id === gewaehlt) n.classList.add('is-sel');
+      fuellen(n, r);
+      teile.push(n);
+    });
+    el.replaceChildren.apply(el, teile);
+  });
+
+  // Detailfeld: zeigt die gewählte Zeile im Raum, zu dem sie gehört.
+  dash.draw('detail', function (el) {
+    var data = rows();
+    el.replaceChildren();
+    if (!data || !gewaehlt) return;
+    var r = data.filter(function (x) { return x.id === gewaehlt && x.bereich === el.dataset.bereich; })[0];
+    var box = r ? klon('kb-detail') : null;
+    if (!r || !box) return;
+    var liste = box.querySelector('.kb-list');
+    var was = {};
+    was[r.id] = true;
+    if (liste) liste.appendChild(build(r, eff(r, Date.now()), was));
+    el.appendChild(box);
+  });
+
+  if (root) {
+    root.addEventListener('click', function (ev) {
+      var t = ev.target && ev.target.closest ? ev.target.closest('[data-pick],[data-schliessen]') : null;
+      if (!t || !root.contains(t)) return;
+      if (t.hasAttribute('data-schliessen')) {
+        gewaehlt = null;
+      } else {
+        var id = t.getAttribute('data-pick');
+        gewaehlt = gewaehlt === id ? null : id;
+      }
+      root.querySelectorAll('[data-pick]').forEach(function (n) {
+        n.classList.toggle('is-sel', n.getAttribute('data-pick') === gewaehlt);
+      });
+      dash.draw('detail');
+    });
+  }
+
+  // Ansichten Büro und Liste
+  function zeige(name) {
+    document.querySelectorAll('.kb-tab').forEach(function (b) {
+      var an = b.dataset.tab === name;
+      b.setAttribute('aria-selected', an ? 'true' : 'false');
+      b.tabIndex = an ? 0 : -1;
+    });
+    document.querySelectorAll('.kb-pane').forEach(function (p) { p.hidden = p.dataset.pane !== name; });
+  }
+  document.querySelectorAll('.kb-tab').forEach(function (b) {
+    b.addEventListener('click', function () { zeige(b.dataset.tab); });
+  });
+
+  // Wanduhr im Chefbüro: echte Schweizer Zeit
+  var fmtUhr = typeof Intl !== 'undefined' && Intl.DateTimeFormat
+    ? new Intl.DateTimeFormat('de-CH', { timeZone: 'Europe/Zurich', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+    : null;
+  function uhrStellen() {
+    if (!fmtUhr) return;
+    var h = 0;
+    var m = 0;
+    fmtUhr.formatToParts(new Date()).forEach(function (p) {
+      if (p.type === 'hour') h = Number(p.value);
+      if (p.type === 'minute') m = Number(p.value);
+    });
+    document.querySelectorAll('.kb-uhr').forEach(function (u) {
+      u.style.setProperty('--ah', String(((h % 12) + m / 60) * 30) + 'deg');
+      u.style.setProperty('--am', String(m * 6) + 'deg');
+    });
+  }
+  uhrStellen();
+  setInterval(uhrStellen, 30000);
 })();
 </script>
