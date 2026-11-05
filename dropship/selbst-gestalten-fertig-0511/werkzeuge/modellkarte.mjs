@@ -60,7 +60,7 @@ const VOLL = {
   default: 'Druckfläche', front: 'Vorderseite', back: 'Rückseite', front_large: 'Vorderseite gross', back_large: 'Rückseite gross',
   sleeve_left: 'Ärmel links', sleeve_right: 'Ärmel rechts', label_inside: 'Etikett innen', label_outside: 'Etikett aussen', label_panel: 'Etikettenteil',
   pocket: 'Tasche', hood: 'Kapuze', cover: 'Umschlag', background: 'Hintergrund', details: 'Details', sides: 'Seitenteile', top: 'Oberteil', bottom: 'Unterteil',
-  belt: 'Bund', collar: 'Kragen', yoke: 'Passe', facing: 'Besatz', preview: 'Vorschau',
+  belt: 'Bund', collar: 'Kragen', yoke: 'Passe', facing: 'Besatz', preview: 'Vorschau', outside_cover: 'Aussenumschlag', inside_cover: 'Innenumschlag',
 };
 const TOKEN = {
   front: 'vorne', back: 'hinten', left: 'links', right: 'rechts', sleeve: 'Ärmel', chest: 'Brust', center: 'Mitte', large: 'gross', small: 'klein',
@@ -69,13 +69,13 @@ const TOKEN = {
   embroidery: 'Stickerei', dtf: '(DTF)', dtfabric: '(Stoffdruck)', long: 'lang', short: 'kurz', lining: 'Futter', details: 'Details', yoke: 'Passe', sides: 'Seitenteile',
   outer: 'aussen', inner: 'innen', first: '1', second: '2', third: '3', fourth: '4', spread: 'Doppelseite', page: 'Seite', inside1: 'innen 1', inside2: 'innen 2', facing: 'Besatz',
   january: 'Januar', february: 'Februar', march: 'März', april: 'April', may: 'Mai', june: 'Juni', july: 'Juli', august: 'August', september: 'September', october: 'Oktober', november: 'November', december: 'Dezember',
-  default: 'Druckfläche', mug: 'Tasse', wrap: 'Rundum',
+  default: 'Druckfläche', mug: 'Tasse', wrap: 'Rundum', addon: 'Zusatz',
 };
 const gross = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 /** Deutscher Titel einer Platzierung oder null (Platzhalter), wenn ein Wortteil nicht in der Tabelle steht. */
 export function platzierungTitelDe(key) {
   if (VOLL[key]) return VOLL[key];
-  const teile = txt(key).split('_').filter(Boolean);
+  const teile = txt(key).replace(/^page(\d+)/, 'page_$1').split('_').filter(Boolean);
   if (!teile.length) return null;
   const aus = [];
   for (let i = 0; i < teile.length; i++) {
@@ -92,7 +92,7 @@ export function platzierungTitelDe(key) {
 }
 
 const istEtikett = (key) => /(^|_)label(_|$)/.test(key);
-function technikAusPlatzierung(key, standard) {
+export function technikAusPlatzierung(key, standard) {
   if (/embroidery/.test(key)) return 'EMBROIDERY';
   if (/dtfabric/.test(key)) return 'DIRECT-TO-FABRIC';
   if (/(^|_)dtf(_|$)/.test(key)) return 'DTFILM';

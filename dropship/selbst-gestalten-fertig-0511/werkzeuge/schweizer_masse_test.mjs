@@ -58,6 +58,8 @@ ist('°F → °C: −40 → −40', M.fahrenheitNachCelsius(-40), -40);
 // ── Anzeige
 ist('anzeigeCm 7,62 → «7,6 cm»', M.anzeigeCm(7.62), '7,6 cm');
 ist('anzeigeCm 0,3048 → «3 mm» (unter 1 cm in mm)', M.anzeigeCm(0.3048), '3 mm');
+ist('anzeigeCm 0,6 → «6 mm» (Grenze liegt bei 1 cm, nicht bei 0,5)', M.anzeigeCm(0.6), '6 mm');
+ist('anzeigeCm 1 → «1 cm»', M.anzeigeCm(1), '1 cm');
 ist('anzeigeCm 25,4 → «25,4 cm»', M.anzeigeCm(25.4), '25,4 cm');
 ist('anzeigeCmReihe [21, 29.7] → «21 × 29,7 cm»', M.anzeigeCmReihe([21.0058, 29.6926]), '21 × 29,7 cm');
 ist('anzeigeCmReihe [1] einzeln', M.anzeigeCmReihe([2.54]), '2,5 cm');

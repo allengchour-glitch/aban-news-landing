@@ -6,7 +6,7 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { modellkarteBauen, klassifizieren, unterstuetzungEintrag, platzierungTitelDe, KLASSEN, SCHEMA } from './modellkarte.mjs';
+import { modellkarteBauen, klassifizieren, unterstuetzungEintrag, platzierungTitelDe, technikAusPlatzierung, KLASSEN, SCHEMA } from './modellkarte.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const lade = (id) => JSON.parse(readFileSync(join(HIER, 'testdaten', 'katalog', `${id}.json`), 'utf8'));
@@ -227,9 +227,11 @@ ist('Regel: Stickerei als Standardtechnik → FLACH_MIT_HINWEIS «stickerei»', 
 ist('Regel: nur Stick-Flächen bei anderer Standardtechnik → ebenfalls «stickerei»', kl({ standardTechnik: 'DTFILM', platzierungen: [flaeche('embroidery_chest_left', 'EMBROIDERY'), flaeche('embroidery_chest_center', 'EMBROIDERY')] }).klasseGrundCode, 'stickerei');
 ist('Regel: Stickerei NEBEN einer DTG-Fläche macht noch keine Einschränkung', kl({ platzierungen: [flaeche('front'), flaeche('embroidery_chest_left', 'EMBROIDERY')] }).klasse, 'FLACH');
 ist('Regel: Strick → FLACH_MIT_HINWEIS «gestrickt»', kl({ standardTechnik: 'KNITWEAR', platzierungen: [flaeche('front', 'KNITWEAR'), flaeche('back', 'KNITWEAR')] }).klasseGrundCode, 'gestrickt');
-ist('Regel: Titel «Snapback Cap» → kappe', kl({ titelEn: 'Snapback Cap' }).klasseGrundCode, 'kappe');
+ist('Regel: Titel «Classic Cap» → kappe', kl({ titelEn: 'Classic Cap' }).klasseGrundCode, 'kappe');
+ist('Regel: Titel «Snapback» allein → kappe', kl({ titelEn: 'Retro Snapback' }).klasseGrundCode, 'kappe');
 ist('Regel: Titel «Bucket Hat» / «Beanie» → kappe', [kl({ titelEn: 'Bucket Hat' }).klasseGrundCode, kl({ titelEn: 'Knit Beanie' }).klasseGrundCode], ['kappe', 'kappe']);
 ist('Regel: Titel «Eco Tote Bag» → tasche', kl({ titelEn: 'Eco Tote Bag' }).klasseGrundCode, 'tasche');
+ist('Regel: Titel «Large Eco Tote» (ohne «Bag») → tasche', kl({ titelEn: 'Large Eco Tote' }).klasseGrundCode, 'tasche');
 ist('Regel: Titel «Backpack» (DTG, 1 Fläche) → tasche', kl({ titelEn: 'Backpack' }).klasseGrundCode, 'tasche');
 ist('Regel: Wortgrenzen: «Hatchback Sticker» und «Baggy Hoodie» sind weder Kappe noch Tasche', [kl({ titelEn: 'Hatchback Sticker' }).klasse, kl({ titelEn: 'Baggy Hoodie' }).klasse], ['FLACH', 'FLACH']);
 ist('Regel: Kappe UND Stickerei → beide Codes', kl({ titelEn: 'Dad Hat', standardTechnik: 'EMBROIDERY', platzierungen: [flaeche('embroidery_front_large', 'EMBROIDERY')] }).klasseGrundCode, 'stickerei+kappe');
@@ -269,9 +271,34 @@ ist('Hinweis: Rundumdruck nur bei breiten Gefässen (Tasse 2,6:1 ja, Hülle 0,6:
 ist('Klassen sind immer eine der vier', [kl({}), kl({ typ: 'SHOES' }), kl({ lieferbarkeit: keinEu }), kl({ standardTechnik: 'CUT-SEW', platzierungen: cut(2) })].every((f) => KLASSEN.includes(f.klasse) && KLASSEN.includes(f.technischeKlasse)), true);
 ist('Die vier Klassen', KLASSEN, ['FLACH', 'FLACH_MIT_HINWEIS', 'PANEL', 'UNGEEIGNET']);
 
+// ═══ Standarddruckdatei, Lieferstatus «auf Anfrage», Technik je Platzierung (abgeänderte Kopien echter Katalogdateien) ═══
+{
+  // Tasse 19: drei Druckdateien (43, 44, 426) mit je einer Variante. Wir legen die dritte Variante zur Datei 44: dann nutzen die MEISTEN Varianten die Datei 44.
+  const kat = JSON.parse(JSON.stringify(lade(19)));
+  const gr = kat.printfiles.variant_printfiles_gruppen;
+  gr[1].varianten.push(...gr[2].varianten); gr.splice(2, 1);
+  const k = modellkarteBauen(kat);
+  ist('Standard-Druckdatei ist die der meisten Varianten (44: 2 von 3), nicht die erste', pl(k, 'default').printfile.printfileId, 44);
+  ist('Gruppen der abgeänderten Tasse: 2 (1 + 2 Varianten)', k.druckdateiGruppen.map((g) => g.anzahlVarianten), [1, 2]);
+}
+{
+  // Alle EU-Stati auf «stocked_on_demand»: nicht ab Lager, aber bestellbar → nicht UNGEEIGNET
+  const kat = JSON.parse(JSON.stringify(lade(19)));
+  for (const v of kat.varianten) { v.status.EU = 'stocked_on_demand'; for (const r of Object.keys(v.status)) if (r !== 'EU') delete v.status[r]; }
+  const k = modellkarteBauen(kat);
+  ist('Auf Anfrage: lieferbarEU false, lieferbarEUAufAnfrage true, bestellbar 3', [k.varianten.every((v) => !v.lieferbarEU && v.lieferbarEUAufAnfrage), k.lieferbarkeit.euInStock, k.lieferbarkeit.euAufAnfrage, k.lieferbarkeit.euBestellbar], [true, 0, 3, 3]);
+  ist('Auf Anfrage: Klasse FLACH, Hinweis «eu_auf_anfrage»', [k.klasse, k.lieferbarkeit.keinEu, codes(k).includes('eu_auf_anfrage')], ['FLACH', false, true]);
+  const k2 = modellkarteBauen((() => { const c = JSON.parse(JSON.stringify(lade(19))); for (const v of c.varianten) v.status = { US: 'in_stock' }; return c; })());
+  ist('Nur USA in_stock: UNGEEIGNET «nur_us»', [k2.klasse, k2.klasseGrundCode, k2.lieferbarkeit.nurUs, k2.lieferbarkeit.usInStock], ['UNGEEIGNET', 'nur_us', true, 3]);
+  const k3 = modellkarteBauen((() => { const c = JSON.parse(JSON.stringify(lade(19))); for (const v of c.varianten) v.status = { EU: 'supplier_out_of_stock', US: 'in_stock' }; return c; })());
+  ist('EU «supplier_out_of_stock» und USA in_stock: nicht bestellbar → UNGEEIGNET «nur_us»', [k3.klasse, k3.lieferbarkeit.euBestellbar, k3.varianten.every((v) => v.statusEU === 'supplier_out_of_stock')], ['UNGEEIGNET', 0, true]);
+}
+ist('Technik je Platzierung: Stickerei, DTF, Stoffdruck, sonst Standardtechnik', [technikAusPlatzierung('embroidery_chest_left', 'DTG'), technikAusPlatzierung('front_dtf', 'DTG'), technikAusPlatzierung('label_inside_dtf', 'DTG'), technikAusPlatzierung('front_dtf_hat', 'EMBROIDERY'), technikAusPlatzierung('sleeve_left_dtfabric', 'CUT-SEW'), technikAusPlatzierung('front', 'DTG'), technikAusPlatzierung('front', null)], ['EMBROIDERY', 'DTFILM', 'DTFILM', 'DTFILM', 'DIRECT-TO-FABRIC', 'DTG', null]);
+
 // ═══ Deutsche Platzierungstitel ═══
 ist('Titel: bekannte Schlüssel', ['front', 'back', 'sleeve_left', 'label_inside', 'default', 'front_large'].map(platzierungTitelDe), ['Vorderseite', 'Rückseite', 'Ärmel links', 'Etikett innen', 'Druckfläche', 'Vorderseite gross']);
 ist('Titel: zusammengesetzt', ['embroidery_chest_left', 'leg_front_left', 'label_inside_dtf', 'belt_front', 'page_3', 'shoe_quarters_left', 'sleeve_right_dtfabric'].map(platzierungTitelDe), ['Stickerei Brust links', 'Bein vorne links', 'Etikett innen (DTF)', 'Bund vorne', 'Seite 3', 'Schuh Seitenteile links', 'Ärmel rechts (Stoffdruck)']);
+ist('Titel: Drucksachen (Umschlag, Seite 1 vorne, Zusatzstickerei)', ['outside_cover', 'inside_cover', 'page1_front', 'page2_back', 'addon_embroidery_front'].map(platzierungTitelDe), ['Aussenumschlag', 'Innenumschlag', 'Seite 1 vorne', 'Seite 2 hinten', 'Zusatz Stickerei vorne']);
 ist('Titel: unbekanntes Wort → null (Platzhalter, nicht geraten)', [platzierungTitelDe('fancy_zone'), platzierungTitelDe('')], [null, null]);
 ist('Titel: unbekannter Schlüssel in der Karte → Platzhalter-Status', (() => { const k = JSON.parse(JSON.stringify(lade(19))); k.printfiles.available_placements = { default: 'Print file' }; return modellkarteBauen(k).platzierungen[0].titelDeStatus; })(), 'tabelle');
 
