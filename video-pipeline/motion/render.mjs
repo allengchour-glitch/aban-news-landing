@@ -37,13 +37,20 @@ const fps = Number(a.fps || 30), W = Number(a.breite || 1080), H = Number(a.hoeh
 if (!(fps > 0 && W > 0 && H > 0)) { console.error('FEHLER: fps/breite/hoehe müssen positiv sein'); process.exit(2); }
 
 const { chromium } = ladePlaywright();
-const browser = await chromium.launch({ args: ['--no-sandbox', '--force-color-profile=srgb'] });
+// --webgl sw  : Software-WebGL (SwiftShader), läuft ohne Grafikkarte (z. B. in der Cloud)
+// --webgl gpu : echte Grafikkarte (Laptop), Chrome nutzt sie von selbst; neuer Headless-Modus, damit die GPU angesprochen wird
+const startArgs = ['--no-sandbox', '--force-color-profile=srgb'];
+const startOpt = { args: startArgs };
+if (a.webgl) startArgs.push('--allow-file-access-from-files');   // ES-Module (three.js) per file:// laden
+if (a.webgl === 'gpu') { startArgs.push('--ignore-gpu-blocklist', '--enable-webgl', '--enable-gpu-rasterization'); startOpt.channel = 'chromium'; }
+else if (a.webgl) startArgs.push('--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist');
+const browser = await chromium.launch(startOpt);
 const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
 const fehler = [];
 page.on('pageerror', (e) => fehler.push(String(e)));
 page.on('console', (m) => { if (m.type() === 'error') fehler.push(m.text()); });
 await page.goto(pathToFileURL(resolve(szene)).href, { waitUntil: 'load' });
-await page.waitForFunction('window.__fertig === true', { timeout: 15000 }).catch(() => {
+await page.waitForFunction('window.__fertig === true', null, { timeout: Number(a.wartezeit || 60) * 1000 }).catch(() => {
   console.error('FEHLER: Die Szene hat Motion.fertig(<Sekunden>) nicht aufgerufen.' + (fehler.length ? '\n' + fehler.join('\n') : ''));
   process.exit(3);
 });
@@ -56,11 +63,13 @@ if (fehler.length) { console.error('FEHLER auf der Seite:\n' + fehler.join('\n')
 await page.evaluate(() => { const an = document.getAnimations(); an.forEach((x) => x.pause()); return Promise.all(an.map((x) => x.ready)); });
 // Zeit setzen UND abwarten, bis Chromium sie gezeichnet hat (Stil-Neuberechnung erzwingen + zwei Bildzyklen).
 // Ohne dieses Warten zeigte ein Screenshot gelegentlich einen Mischzustand (Sonne neu, Szene/Text noch alt).
-const setzeZeit = (t) => page.evaluate((ms) => new Promise((fertig) => {
+// 3D-Seiten (three.js) stellen window.__seek3d(sekunden) bereit: rendert das Bild für diese Zeit und gibt danach zurück.
+const setzeZeit = (t) => page.evaluate(async (ms) => {
   document.getAnimations().forEach((x) => { x.currentTime = ms; });
+  if (typeof window.__seek3d === 'function') await window.__seek3d(ms / 1000);
   void document.body.offsetHeight;
-  requestAnimationFrame(() => requestAnimationFrame(() => fertig()));
-}), Math.round(t * 1000));
+  await new Promise((fertig) => requestAnimationFrame(() => requestAnimationFrame(() => fertig())));
+}, Math.round(t * 1000));
 // Aufwärmen: der allererste Screenshot zeigte sonst noch den Stand aus den ersten Millisekunden nach dem Laden (vor dem Pausieren),
 // z. B. ein halb eingeblendetes erstes Bild. Einmal auf Zeit 0 stellen, ein Bild machen und verwerfen.
 // Ein Sprung auf Zeit 0 allein löst keinen neuen Bildaufbau aus, wenn der Stand schon fast 0 ist: darum erst auf eine andere Zeit springen,
