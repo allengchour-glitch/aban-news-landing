@@ -3,7 +3,7 @@
 // Ein Test, der einen eingebauten Fehler nicht bemerkt, schützt nichts. Gearbeitet wird in einer KOPIE im Temp-Ordner, das Repo bleibt unberührt.
 // Lauf: /opt/node22/bin/node automation/pod_modell/mutation.mjs      (Exit 0 = alle Mutanten erkannt, 1 = mindestens einer überlebt, 2 = Mutation nicht anwendbar)
 // Jeder Mutant nennt `von` (muss genau einmal vorkommen, ausser mit `alle`) und `zu`. Steht «?» in der Ausgabe, passt das Muster nicht mehr zum Code: Mutant nachziehen.
-import { mkdtempSync, mkdirSync, copyFileSync, readFileSync, writeFileSync, rmSync, readdirSync, cpSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, copyFileSync, readFileSync, writeFileSync, rmSync, readdirSync, cpSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -28,6 +28,8 @@ export const MUTANTEN = [
   { name: 'Titelschlüssel kennt den Strich nicht', datei: P('glossar'), von: ".replace(/[–—-]/g, ' ').replace(/\\s+/g, ' ').trim();", zu: ".replace(/\\s+/g, ' ').trim();" },
   { name: 'Handelsname «Staple» bleibt im Titel', datei: P('glossar'), von: 'staple: { drop: true },', zu: "staple: { de: 'Staple', var: true }," },
   // ── Beschreibung
+  { name: 'Container trägt die Klasse des Editors v5 (v5 würde ohne Bilder mounten)', datei: P('beschreibung'), von: '<div class="lspod-designer-v6"', zu: '<div class="lspod-designer"' },
+  { name: 'Karte steht nicht im Container', datei: P('beschreibung'), von: 'PLATZHALTER_VARIANTE}"><script type="application/json" id="lspod-karte">', zu: 'PLATZHALTER_VARIANTE}"></div><script type="application/json" id="lspod-karte">' },
   { name: 'Beleg wird nicht gegen den Katalogtext geprüft', datei: P('beschreibung'), von: 'if (!o.includes(b)) fehler.push(', zu: 'if (false) fehler.push(' },
   { name: 'Zahlentoleranz riesig', datei: P('beschreibung'), von: 'Math.max(0.06, Math.abs(b) * 0.006)', zu: 'Math.max(1000, Math.abs(b) * 0.006)' },
   { name: 'Rückgabe-Aussage in Übersetzungen erlaubt', datei: P('beschreibung'), von: '[/rückgabe|umtausch|rücksendung|widerruf/i, \'Rückgabe\']', zu: "[/zzzzzzzz/, 'Rückgabe']" },
@@ -48,7 +50,14 @@ export const MUTANTEN = [
   { name: 'Variantengrenze 150', datei: P('tore'), von: 'v.length >= 1 && v.length <= maxV &&', zu: 'v.length >= 1 && v.length <= maxV + 50 &&' },
   { name: 'Stufe wird nicht geprüft', datei: P('tore'), von: 'B(\'klasse\', \'Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)\', stufen.includes(plan.stufe),', zu: 'B(\'klasse\', \'Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)\', true,' },
   { name: 'Modell schon im Shop wird ignoriert', datei: P('tore'), von: "B('modell_neu', 'Modell wird noch von keinem Shop-Produkt verkauft', !(ctx.verwendeteModelle ?? new Set()).has(plan.printfulProductId),", zu: "B('modell_neu', 'Modell wird noch von keinem Shop-Produkt verkauft', true," },
-  { name: 'Editor-Karte darf beliebig gross sein', datei: P('tore'), von: '(plan.kompaktBytes ?? 0) <= max &&', zu: '(plan.kompaktBytes ?? 0) <= max * 100 &&' },
+  { name: 'Editor-Karte bettet den englischen Katalogtitel mit Fremdmarke ein', datei: P('plan'), von: '...(titelDe ? { titelDe } : {}), klasse: karte.klasse,', zu: 'titelEn: karte.titelEn, klasse: karte.klasse,' },
+  { name: 'Editor-Karte: Aufpreis in CHF fehlt', datei: P('plan'), von: 'aufpreisChf: aufUsd ? aufpreisChf(aufUsd) : 0,', zu: 'aufpreisChf: 0,' },
+  { name: 'Editor-Karte: Druckdatei-Gruppen erst ab sechs Gruppen', datei: P('plan'), von: 'if (gruppenAnzahl > 1) {', zu: 'if (gruppenAnzahl > 5) {' },
+  { name: 'Editor-Karte: Hinweis-Code «stickerei» ohne Kundentext des Editors', datei: P('plan'), von: "['stickerei', 'gestrickt',", zu: "['gestrickt'," },
+  { name: 'Editor-Karte: Grösse ohne die Variantenabbildung gerechnet', datei: P('plan'), von: "JSON.stringify({ ...edKarte, shop: { varianten: abbildungWorst } })", zu: 'JSON.stringify(edKarte)' },
+  { name: 'Metafeld-Karte: die Editor-Karte statt der kompakten Prüfkarte', datei: P('plan'), von: "type: 'json', value: kompaktJson },", zu: "type: 'json', value: JSON.stringify(edKarteMitShop) }," },
+  { name: 'Metafeld-Karte darf beliebig gross sein', datei: P('tore'), von: 'const mfGross = (plan.kompaktBytes ?? 0) > max,', zu: 'const mfGross = (plan.kompaktBytes ?? 0) > max * 100,' },
+  { name: 'Editor-Karte darf beliebig gross sein', datei: P('tore'), von: 'edGross = (plan.karteBytes ?? 0) > maxEd;', zu: 'edGross = (plan.karteBytes ?? 0) > maxEd * 100;' },
   { name: 'CH-Rate wird nicht verlangt', datei: P('tore'), von: "B('ch_rate', 'Printful-Versandrate nach CH vorhanden', plan.lieferung != null,", zu: "B('ch_rate', 'Printful-Versandrate nach CH vorhanden', true," },
   { name: 'Fremdmarke im Titel wird geduldet', datei: P('tore'), von: 'plan.titel != null && (plan.titelUnbekannt ?? []).length === 0 && fm.length === 0,', zu: 'plan.titel != null && (plan.titelUnbekannt ?? []).length === 0,' },
   { name: 'ungemessene Bilder gelten als bestanden', datei: P('tore'), von: "else if ((plan.bilder?.ungemessen ?? []).length) add(", zu: "else if (false) add(" },
@@ -85,7 +94,9 @@ export const MUTANTEN = [
   { name: 'SKU-Präfix im Shop wird nicht geprüft', datei: P('anlegen'), von: 'if (treffer.length) throw new AbweichungFehler(', zu: 'if (false) throw new AbweichungFehler(' },
   { name: 'fehlgeschlagene Medien werden ignoriert', datei: P('anlegen'), von: 'if (fehlgeschlagen.length) throw new Error(', zu: 'if (false) throw new Error(' },
   { name: 'Verbinden schon vor READY', datei: P('anlegen'), von: 'if (!offen.length) break;', zu: 'break;' },
-  { name: 'Editor-Adresse wird nicht eingesetzt', datei: P('anlegen'), von: '.split(PLATZHALTER_EDITOR).join(editorUrl);', zu: ".split(PLATZHALTER_EDITOR).join('');" },
+  { name: 'Variantenabbildung (shop.varianten) wird nicht eingetragen', datei: P('anlegen'), von: '.join(JSON.stringify(shopVarianten ?? {}))', zu: ".join('{}')" },
+  { name: 'Variantenabbildung zeigt immer auf Printful-Variante 0', datei: P('anlegen'), von: 'o[nummer(x.id)] = jeSku.get(x.sku);', zu: 'o[nummer(x.id)] = 0;' },
+  { name: 'Editor-Adresse wird nicht eingesetzt', datei: P('anlegen'), von: '.split(PLATZHALTER_EDITOR).join(editorUrl)', zu: ".split(PLATZHALTER_EDITOR).join('')" },
   { name: 'Beschreibung wird nicht verglichen', datei: P('anlegen'), von: 'if (normHtml(ist.descriptionHtml) !== normHtml(soll)) a.push(', zu: 'if (false) a.push(' },
   { name: 'Metafelder werden nicht verglichen', datei: P('anlegen'), von: "if (!x) a.push(`Metafeld ${f.namespace}.${f.key} fehlt`);", zu: 'if (false) a.push(`Metafeld ${f.namespace}.${f.key} fehlt`);' },
   { name: 'Handle-Kollision mit fremdem Produkt wird übergangen', datei: P('anlegen'), von: 'if (fremd.length) throw new AbweichungFehler(`${plan.handle}: Handle gibt es schon', zu: 'if (false) throw new AbweichungFehler(`${plan.handle}: Handle gibt es schon' },
@@ -112,6 +123,7 @@ function baue(temp) {
   for (const f of [...LIB, ...TESTS]) kopieren(join(REPO, f), join(temp, f));
   for (const f of readdirSync(join(REPO, 'automation/pod_modell')).filter((x) => x.endsWith('.mjs'))) kopieren(join(REPO, 'automation/pod_modell', f), join(temp, 'automation/pod_modell', f));
   cpSync(join(REPO, 'dropship/selbst-gestalten-fertig-0511/werkzeuge'), join(temp, 'dropship/selbst-gestalten-fertig-0511/werkzeuge'), { recursive: true });
+  if (existsSync(join(REPO, 'pod/v6/werkzeug/karte_fuer_editor.mjs'))) kopieren(join(REPO, 'pod/v6/werkzeug/karte_fuer_editor.mjs'), join(temp, 'pod/v6/werkzeug/karte_fuer_editor.mjs'));
   cpSync(join(REPO, 'dropship/pod-auswahl'), join(temp, 'dropship/pod-auswahl'), { recursive: true });
   cpSync(join(REPO, 'dropship/selbst-gestalten-fertig-0511/fabrik/uebersetzungen'), join(temp, 'dropship/selbst-gestalten-fertig-0511/fabrik/uebersetzungen'), { recursive: true });
 }

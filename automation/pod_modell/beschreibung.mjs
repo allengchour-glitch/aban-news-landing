@@ -15,6 +15,8 @@ import { umrechneText } from '../../dropship/selbst-gestalten-fertig-0511/werkze
 
 export const PLATZHALTER_VARIANTE = '__ERSTE_VARIANTE__';
 export const PLATZHALTER_EDITOR = '__LSPOD_EDITOR_URL__';
+/** Steht in der Karte als Zeichenkette ("__SHOP_VARIANTEN__"); anlegen.mjs ersetzt sie samt Anführungszeichen durch die Abbildung Shopify-Variante → Printful-Variante. */
+export const PLATZHALTER_SHOP = '__SHOP_VARIANTEN__';
 
 export const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 /** JSON für ein <script type="application/json">: «<» wird <, damit weder «</script>» noch «<!--» den Block beenden. */
@@ -164,13 +166,14 @@ export const messungDe = (l) => MESSUNG_DE[String(l).toLowerCase().trim()] ?? nu
  * Baut die Beschreibung (HTML mit Platzhaltern). Gibt auch zurück, was weggelassen wurde (Tabellen ohne deutsche Beschriftung usw.).
  * @param {{karte:object, plan:{titel:string,lieferung:{tageMin:number,tageMax:number}|null,modell:number,klasse:string,kompakt:object,hinweisCodes:string[],technikDe:string|null,basis:object|null}, uebersetzung:object}} p
  */
-export function beschreibungBauen({ karte, lieferung, modell, klasse, kompakt, technikDe, basis, uebersetzung }) {
+export function beschreibungBauen({ karte, lieferung, modell, klasse, kompakt, editorKarte, technikDe, basis, uebersetzung }) {
+  if (!editorKarte || typeof editorKarte !== 'object') throw new Error('beschreibungBauen: editorKarte fehlt (die Karte, die der Editor aus <script id="lspod-karte"> liest)');
   const weggelassen = [];
   const teile = [];
   const box = lieferung ? lieferbox(lieferung) : null;
   if (box) teile.push(box);
-  teile.push(`<div class="lspod-designer" data-lspod="6" data-modell="${esc(modell)}" data-klasse="${esc(klasse)}" data-variant="${PLATZHALTER_VARIANTE}"></div>`);
-  teile.push(`<script type="application/json" id="lspod-karte">${jsonFuerScript(kompakt)}</script>`);
+  // Container nach der EINBINDUNG im Kopf von pod/v6/lspod-designer-v6.js: eigene Klasse «lspod-designer-v6» (der live wirksame Editor v5 sucht nur «lspod-designer» und bliebe hier stumm), Karte als Kind.
+  teile.push(`<div class="lspod-designer-v6" data-modell="${esc(modell)}" data-klasse="${esc(klasse)}" data-variant="${PLATZHALTER_VARIANTE}"><script type="application/json" id="lspod-karte">${jsonFuerScript(editorKarte)}</script></div>`);
   teile.push(`<script src="${PLATZHALTER_EDITOR}" defer></script>`);
   teile.push('<hr>');
   for (const x of uebersetzung?.intro ?? []) teile.push(`<p>${esc(x.de)}</p>`);

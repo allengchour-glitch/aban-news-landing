@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:43:27.721Z",
+  "am": "2026-11-05T18:54:40.955Z",
   "katalogGeholt": "2026-11-05T16:34:42.447Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -11,6 +11,7 @@
    "ekAufschlagOhneSchaetzung": 1.26,
    "digitalisierungUsd": 6.5,
    "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
    "medienMax": 20,
    "medienOhneFarbe": 6,
    "stufen": [
@@ -203,7 +204,7 @@
    "label": null
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"83\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":83,\"klasse\":\"PANEL\",\"technik\":\"CUT-SEW\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":114,\"oben\":114,\"breite\":2772,\"hoehe\":2772,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrund\":null,\"geometrien\":[{\"pf\":1701,\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"flaeche\":[114,114,2772,2772],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\"},{\"pf\":1702,\"px\":[2550,2550],\"dpi\":150,\"cm\":[43.2,43.2],\"flaeche\":[103,103,2794,2794],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8bb86c0fa1dd60dcd499d6d3eedd8795?v=1782738148\"},{\"pf\":32,\"px\":[2850,2850],\"dpi\":150,\"cm\":[48.3,48.3],\"flaeche\":[146,14,2717,2717],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/d3/d37f0274e8dee1378196a60f58b6ad09?v=1716212455\"},{\"pf\":72,\"px\":[3150,1950],\"dpi\":150,\"cm\":[53.3,33],\"flaeche\":[3,572,2997,1856],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/64/6495c0578ba972b85867d93098efd5f7?v=1716212491\"},{\"pf\":214,\"px\":[3450,3450],\"dpi\":150,\"cm\":[58.4,58.4],\"flaeche\":[166,97,2674,2674],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/35/3570bd2f3ddaa5c0d41280b143eec6e5?v=1716212539\"}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":114,\"oben\":114,\"breite\":2772,\"hoehe\":2772,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrund\":null,\"geometrien\":[{\"pf\":1701,\"px\":[2250,2250],\"dpi\":150,\"cm\":[38.1,38.1],\"flaeche\":[114,114,2772,2772],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\"},{\"pf\":1702,\"px\":[2550,2550],\"dpi\":150,\"cm\":[43.2,43.2],\"flaeche\":[103,103,2794,2794],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/f7/f7094bee49365a6c0032ad3af4016da7?v=1782738163\"},{\"pf\":32,\"px\":[2850,2850],\"dpi\":150,\"cm\":[48.3,48.3],\"flaeche\":[146,14,2717,2717],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/d2/d2eaba3dc240133a9cfcf54c17d13ea5?v=1716212473\"},{\"pf\":72,\"px\":[3150,1950],\"dpi\":150,\"cm\":[53.3,33],\"flaeche\":[3,572,2997,1856],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/4f/4f5a70d8b427d4d39a450c4ded884fc7?v=1716212514\"},{\"pf\":214,\"px\":[3450,3450],\"dpi\":150,\"cm\":[58.4,58.4],\"flaeche\":[166,97,2674,2674],\"vorlage\":[3000,3000],\"bild\":\"https://files.cdn.printful.com/o/upload/api-template/17/174a0b9719ac94e6f986c0a8ccb14854?v=1716212559\"}]}],\"gruppen\":[{\"pf\":{\"front\":1701,\"back\":1701},\"varianten\":[49853]},{\"pf\":{\"front\":1702,\"back\":1702},\"varianten\":[49854]},{\"pf\":{\"front\":32,\"back\":32},\"varianten\":[4532]},{\"pf\":{\"front\":72,\"back\":72},\"varianten\":[9513]},{\"pf\":{\"front\":214,\"back\":214},\"varianten\":[11075]}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li><li><strong>Druckdatei (Vorderseite):</strong> 2250 × 2250 Pixel bei 150 dpi, das sind 38,1 × 38,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"83\" data-klasse=\"PANEL\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":83,\"typ\":\"CUT-SEW\",\"titelDe\":\"Allover Basic Kissen\",\"klasse\":\"PANEL\",\"standardTechnik\":\"CUT-SEW\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138355,\"bildUrl\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1701,\"vorlage\":{\"vorlageId\":1138355,\"bildUrl\":\"https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49853},{\"printfileId\":1702,\"vorlage\":{\"vorlageId\":1138358,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8bb86c0fa1dd60dcd499d6d3eedd8795?v=1782738148\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":103,\"flaecheOben\":103,\"flaecheBreite\":2794,\"flaecheHoehe\":2794,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49854},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22667,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d3/d37f0274e8dee1378196a60f58b6ad09?v=1716212455\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4532},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22669,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/64/6495c0578ba972b85867d93098efd5f7?v=1716212491\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9513},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22665,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/35/3570bd2f3ddaa5c0d41280b143eec6e5?v=1716212539\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11075}]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"CUT-SEW\",\"printfile\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"vorlage\":{\"vorlageId\":1138354,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[],\"geometrien\":[{\"printfileId\":1701,\"vorlage\":{\"vorlageId\":1138354,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":114,\"flaecheOben\":114,\"flaecheBreite\":2772,\"flaecheHoehe\":2772,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49853},{\"printfileId\":1702,\"vorlage\":{\"vorlageId\":1138356,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/f7/f7094bee49365a6c0032ad3af4016da7?v=1782738163\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":103,\"flaecheOben\":103,\"flaecheBreite\":2794,\"flaecheHoehe\":2794,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":49854},{\"printfileId\":32,\"vorlage\":{\"vorlageId\":22668,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/d2/d2eaba3dc240133a9cfcf54c17d13ea5?v=1716212473\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":146,\"flaecheOben\":14,\"flaecheBreite\":2717,\"flaecheHoehe\":2717,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":4532},{\"printfileId\":72,\"vorlage\":{\"vorlageId\":22670,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/4f/4f5a70d8b427d4d39a450c4ded884fc7?v=1716212514\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":3,\"flaecheOben\":572,\"flaecheBreite\":2997,\"flaecheHoehe\":1856,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":9513},{\"printfileId\":214,\"vorlage\":{\"vorlageId\":22666,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/17/174a0b9719ac94e6f986c0a8ccb14854?v=1716212559\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":166,\"flaecheOben\":97,\"flaecheBreite\":2674,\"flaecheHoehe\":2674,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"anzahlVarianten\":1,\"beispielVarianteId\":11075}]}],\"druckdateien\":{\"32\":{\"printfileId\":32,\"breitePx\":2850,\"hoehePx\":2850,\"dpi\":150},\"72\":{\"printfileId\":72,\"breitePx\":3150,\"hoehePx\":1950,\"dpi\":150},\"214\":{\"printfileId\":214,\"breitePx\":3450,\"hoehePx\":3450,\"dpi\":150},\"1701\":{\"printfileId\":1701,\"breitePx\":2250,\"hoehePx\":2250,\"dpi\":150},\"1702\":{\"printfileId\":1702,\"breitePx\":2550,\"hoehePx\":2550,\"dpi\":150}},\"hinweise\":[],\"druckdateiGruppen\":[{\"platzierungen\":{\"front\":1701,\"back\":1701},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":1702,\"back\":1702},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":32,\"back\":32},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":72,\"back\":72},\"anzahlVarianten\":1},{\"platzierungen\":{\"front\":214,\"back\":214},\"anzahlVarianten\":1}],\"varianten\":[{\"printfulVariantId\":49853,\"druckdateiGruppe\":0},{\"printfulVariantId\":49854,\"druckdateiGruppe\":1},{\"printfulVariantId\":4532,\"druckdateiGruppe\":2},{\"printfulVariantId\":9513,\"druckdateiGruppe\":3},{\"printfulVariantId\":11075,\"druckdateiGruppe\":4}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Zuschnitt und Naht: die Teile werden vor dem Nähen bedruckt</li><li><strong>Druckdatei (Vorderseite):</strong> 2250 × 2250 Pixel bei 150 dpi, das sind 38,1 × 38,1 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Dieses Modell besteht aus 2 bedruckten Teilen (Vorderseite, Rückseite). Jedes Teil bekommt sein eigenes Motiv.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «product_measure» ohne deutsche Beschriftung der Masse (A, B, C, D)"
  ],
@@ -622,6 +623,366 @@
   "hinweise": []
  },
  "kompaktBytes": 3512,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 83,
+  "typ": "CUT-SEW",
+  "titelDe": "Allover Basic Kissen",
+  "klasse": "PANEL",
+  "standardTechnik": "CUT-SEW",
+  "minDpi": 75,
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titelDe": "Vorderseite",
+    "titelEn": "Front print",
+    "art": "flaeche",
+    "technik": "CUT-SEW",
+    "printfile": {
+     "printfileId": 1701,
+     "breitePx": 2250,
+     "hoehePx": 2250,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 1138355,
+     "bildUrl": "https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 114,
+     "flaecheOben": 114,
+     "flaecheBreite": 2772,
+     "flaecheHoehe": 2772,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": [],
+    "geometrien": [
+     {
+      "printfileId": 1701,
+      "vorlage": {
+       "vorlageId": 1138355,
+       "bildUrl": "https://files.cdn.printful.com/m/all-over-basic-pillow-w-stuffing/medium/templates/14x14_mockup_gen.png?v=1782822247",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": "#ffffff",
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 114,
+       "flaecheOben": 114,
+       "flaecheBreite": 2772,
+       "flaecheHoehe": 2772,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 49853
+     },
+     {
+      "printfileId": 1702,
+      "vorlage": {
+       "vorlageId": 1138358,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/8b/8bb86c0fa1dd60dcd499d6d3eedd8795?v=1782738148",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": "#ffffff",
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 103,
+       "flaecheOben": 103,
+       "flaecheBreite": 2794,
+       "flaecheHoehe": 2794,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 49854
+     },
+     {
+      "printfileId": 32,
+      "vorlage": {
+       "vorlageId": 22667,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/d3/d37f0274e8dee1378196a60f58b6ad09?v=1716212455",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": null,
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 146,
+       "flaecheOben": 14,
+       "flaecheBreite": 2717,
+       "flaecheHoehe": 2717,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 4532
+     },
+     {
+      "printfileId": 72,
+      "vorlage": {
+       "vorlageId": 22669,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/64/6495c0578ba972b85867d93098efd5f7?v=1716212491",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": null,
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 3,
+       "flaecheOben": 572,
+       "flaecheBreite": 2997,
+       "flaecheHoehe": 1856,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 9513
+     },
+     {
+      "printfileId": 214,
+      "vorlage": {
+       "vorlageId": 22665,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/35/3570bd2f3ddaa5c0d41280b143eec6e5?v=1716212539",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": null,
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 166,
+       "flaecheOben": 97,
+       "flaecheBreite": 2674,
+       "flaecheHoehe": 2674,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 11075
+     }
+    ]
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titelDe": "Rückseite",
+    "titelEn": "Back print",
+    "art": "flaeche",
+    "technik": "CUT-SEW",
+    "printfile": {
+     "printfileId": 1701,
+     "breitePx": 2250,
+     "hoehePx": 2250,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 1138354,
+     "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 114,
+     "flaecheOben": 114,
+     "flaecheBreite": 2772,
+     "flaecheHoehe": 2772,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": [],
+    "geometrien": [
+     {
+      "printfileId": 1701,
+      "vorlage": {
+       "vorlageId": 1138354,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/68/68773c724a6b031efa01a66d4217e0f7?v=1782738013",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": "#ffffff",
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 114,
+       "flaecheOben": 114,
+       "flaecheBreite": 2772,
+       "flaecheHoehe": 2772,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 49853
+     },
+     {
+      "printfileId": 1702,
+      "vorlage": {
+       "vorlageId": 1138356,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/f7/f7094bee49365a6c0032ad3af4016da7?v=1782738163",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": "#ffffff",
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 103,
+       "flaecheOben": 103,
+       "flaecheBreite": 2794,
+       "flaecheHoehe": 2794,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 49854
+     },
+     {
+      "printfileId": 32,
+      "vorlage": {
+       "vorlageId": 22668,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/d2/d2eaba3dc240133a9cfcf54c17d13ea5?v=1716212473",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": null,
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 146,
+       "flaecheOben": 14,
+       "flaecheBreite": 2717,
+       "flaecheHoehe": 2717,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 4532
+     },
+     {
+      "printfileId": 72,
+      "vorlage": {
+       "vorlageId": 22670,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/4f/4f5a70d8b427d4d39a450c4ded884fc7?v=1716212514",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": null,
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 3,
+       "flaecheOben": 572,
+       "flaecheBreite": 2997,
+       "flaecheHoehe": 1856,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 9513
+     },
+     {
+      "printfileId": 214,
+      "vorlage": {
+       "vorlageId": 22666,
+       "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/17/174a0b9719ac94e6f986c0a8ccb14854?v=1716212559",
+       "hintergrundUrl": null,
+       "hintergrundFarbe": null,
+       "vorlageBreite": 3000,
+       "vorlageHoehe": 3000,
+       "flaecheLinks": 166,
+       "flaecheOben": 97,
+       "flaecheBreite": 2674,
+       "flaecheHoehe": 2674,
+       "ausrichtung": "any",
+       "vorderansicht": true
+      },
+      "anzahlVarianten": 1,
+      "beispielVarianteId": 11075
+     }
+    ]
+   }
+  ],
+  "druckdateien": {
+   "32": {
+    "printfileId": 32,
+    "breitePx": 2850,
+    "hoehePx": 2850,
+    "dpi": 150
+   },
+   "72": {
+    "printfileId": 72,
+    "breitePx": 3150,
+    "hoehePx": 1950,
+    "dpi": 150
+   },
+   "214": {
+    "printfileId": 214,
+    "breitePx": 3450,
+    "hoehePx": 3450,
+    "dpi": 150
+   },
+   "1701": {
+    "printfileId": 1701,
+    "breitePx": 2250,
+    "hoehePx": 2250,
+    "dpi": 150
+   },
+   "1702": {
+    "printfileId": 1702,
+    "breitePx": 2550,
+    "hoehePx": 2550,
+    "dpi": 150
+   }
+  },
+  "hinweise": [],
+  "druckdateiGruppen": [
+   {
+    "platzierungen": {
+     "front": 1701,
+     "back": 1701
+    },
+    "anzahlVarianten": 1
+   },
+   {
+    "platzierungen": {
+     "front": 1702,
+     "back": 1702
+    },
+    "anzahlVarianten": 1
+   },
+   {
+    "platzierungen": {
+     "front": 32,
+     "back": 32
+    },
+    "anzahlVarianten": 1
+   },
+   {
+    "platzierungen": {
+     "front": 72,
+     "back": 72
+    },
+    "anzahlVarianten": 1
+   },
+   {
+    "platzierungen": {
+     "front": 214,
+     "back": 214
+    },
+    "anzahlVarianten": 1
+   }
+  ],
+  "varianten": [
+   {
+    "printfulVariantId": 49853,
+    "druckdateiGruppe": 0
+   },
+   {
+    "printfulVariantId": 49854,
+    "druckdateiGruppe": 1
+   },
+   {
+    "printfulVariantId": 4532,
+    "druckdateiGruppe": 2
+   },
+   {
+    "printfulVariantId": 9513,
+    "druckdateiGruppe": 3
+   },
+   {
+    "printfulVariantId": 11075,
+    "druckdateiGruppe": 4
+   }
+  ]
+ },
+ "karteBytes": 6705,
  "lieferung": {
   "versandart": "STANDARD",
   "rateUsd": 16.69,
@@ -790,7 +1151,7 @@
   },
   {
    "code": "karte",
-   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -846,5 +1207,5 @@
   }
  ],
  "anlegbar": false,
- "hash": "c256903e435b05c6d9ee4c5a8641f226299d08964a5b945a57d15474445ed209"
+ "hash": "67e149b03120ec9db9e0527853bd594a199f6610fc4797d76e75eaf72e159f1c"
 }

@@ -1,0 +1,4 @@
+Plan-Hash der 12 Beispiele (STUFEN=1,2 START=2026-11-06, Katalog geholt 2026-11-05 16:57 UTC): d3a8d12959a617eb
+Glossar 2026-11-05.1, Preisformel Kurs 0.90, nettoMin 4.00
+Hash aller 577 Modelle (gleiche Einstellung): d5d05f855e75aa94
+(Die Konsole zeigt die ersten 16 Zeichen; der volle Hash steht in plan.json des Trockenlaufs, LIVE vergleicht ihn.)

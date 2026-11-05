@@ -1,8 +1,8 @@
 // Tests für anlegen.mjs (kein Netz): ein Shopify-Attrappe (fake_shopify.mjs) nimmt alle Aufrufe entgegen. Lauf: /opt/node22/bin/node automation/pod_modell/anlegen_test.mjs
-import { mkdtempSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { lauf, produktAnlegen, zuruecknehmen, vergleiche, leseFrisch, ledgerLesen, produktSetEingabe, sollBeschreibung, Q_PRODUKT, Q_SKU, M_BIND, M_DELETE, MARKER_TAG, AbweichungFehler } from './anlegen.mjs';
+import { lauf, produktAnlegen, zuruecknehmen, vergleiche, leseFrisch, ledgerLesen, produktSetEingabe, sollBeschreibung, shopVariantenVon, Q_PRODUKT, Q_SKU, M_BIND, M_DELETE, MARKER_TAG, AbweichungFehler } from './anlegen.mjs';
 import { planeModell } from './plan.mjs';
 import { neueAttrappe } from './fake_shopify.mjs';
 import { lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
@@ -12,7 +12,8 @@ const { ist, wahr, wirft, ende } = neuerTest('anlegen');
 const URL_EDITOR = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v6.js?v=1';
 const plan = (id, opt = {}) => { const k = lade(id); return planeModell({ katalog: k, versand: versand(), uebersetzung: testUebersetzung(k), bilder: bilderFuer(k) }, { jetzt: 'x', stufen: [1, 2], ...opt }); };
 const warte = async () => {};
-const ledger = () => join(mkdtempSync(join(tmpdir(), 'fabrik-')), 'ledger.txt');
+const tempOrdner = [];
+const ledger = () => { const d = mkdtempSync(join(tmpdir(), 'fabrik-')); tempOrdner.push(d); return join(d, 'ledger.txt'); };
 const still = () => {};
 const L = (extra = {}) => ({ editorUrl: URL_EDITOR, log: still, warte, mediaPauseMs: 0, ...extra });
 const tasse = plan(19), cap = plan(206), shirt = plan(71);
@@ -43,6 +44,7 @@ wahr('productSet: veröffentlicht nichts (kein publish, kein publications-Feld)'
   ist('Shop: Tag sg-fabrik gesetzt', p.tags.includes(MARKER_TAG), true);
   ist('Shop: jede Variante hat ihr Farbbild verbunden', p.variants.every((v) => v.mediaIds.length === 1), true);
   ist('Shop: Platzhalter ersetzt, Editor-Adresse und echte Varianten-ID drin', [p.descriptionHtml.includes('__'), p.descriptionHtml.includes(URL_EDITOR), p.descriptionHtml.includes(`data-variant="${p.variants[0].id.split('/').pop()}"`)], [false, true, true]);
+  ist('Shop: Karte im Editor-Baustein trägt shop.varianten (Shopify-Variantennummer → Printful-Variante) für jede Variante', (() => { const m = /<script type="application\/json" id="lspod-karte">([\s\S]*?)<\/script>/.exec(p.descriptionHtml); const k = JSON.parse(m[1]); const soll = Object.fromEntries(p.variants.map((v) => [v.id.split('/').pop(), Number(v.sku.split('_').pop())])); return [JSON.stringify(k.shop.varianten) === JSON.stringify(soll), Object.keys(k.shop.varianten).length === tasse.varianten.length]; })(), [true, true]);
   ist('Shop: Metafelder geschrieben (Karte als JSON, Modell, Klasse)', ['karte', 'modell', 'klasse'].every((k) => p.metafields.some((m) => m.namespace === 'luxe_sg' && m.key === k)), true);
   ist('Ledger: BEGONNEN dann OK mit Produkt-ID', [...ledgerLesen(led).values()].map((e) => [e.status, e.produktId === p.id]), [['OK', true]]);
   ist('Ledger-Datei: beide Zeilen vorhanden', readFileSync(led, 'utf8').split('\n').filter((z) => /\tBEGONNEN\t|\tOK\t/.test(z)).length, 2);
@@ -73,6 +75,7 @@ wahr('productSet: veröffentlicht nichts (kein publish, kein publications-Feld)'
   wahr('Abweichung: Metafeld fehlt', await abw(() => { p.metafields = []; }, 'Metafeld'));
   wahr('Abweichung: Metafeld-Karte weicht ab', await abw(() => { p.metafields.find((m) => m.key === 'karte').value = '{"x":1}'; }, 'weicht ab'));
   wahr('Abweichung: Beschreibung', await abw(() => { p.descriptionHtml = '<p>x</p>'; }, 'Beschreibung'));
+  wahr('Abweichung: shop.varianten zeigt auf die falsche Printful-Variante', await abw(() => { p.descriptionHtml = p.descriptionHtml.replace(/("shop":\{"varianten":\{"\d+":)\d+/, '$10'); }, 'Beschreibung'));
   wahr('Abweichung: Platzhalter übrig', await abw(() => { p.descriptionHtml = tasse.beschreibungHtml; }, 'Platzhalter übrig: true'));
   wahr('Abweichung: veröffentlicht', await abw(() => { p.kanaele = 2; }, 'Verkaufskanal'));
   wahr('Abweichung: Optionswert ohne Variante', await abw(() => { p.options[0].values.push('Leer'); }, 'ohne Variante'));
@@ -249,4 +252,7 @@ await wirft('Editor-Adresse ist der Platzhalter', () => lauf({ plaene: [tasse], 
 }
 ist('Ledger lesen: Datei fehlt → leer', ledgerLesen('/gibt/es/nicht.txt').size, 0);
 ist('sollBeschreibung ersetzt beide Platzhalter', (() => { const s = sollBeschreibung(tasse, { ersteVarianteNr: 123, editorUrl: URL_EDITOR }); return [s.includes('data-variant="123"'), s.includes(URL_EDITOR), s.includes('__')]; })(), [true, true, false]);
+ist('shopVariantenVon: nur Varianten des Plans, Nummer ohne gid, Wert = Printful-Variante aus dem Plan', shopVariantenVon(tasse, [{ id: 'gid://shopify/ProductVariant/77', sku: tasse.varianten[0].sku }, { id: 'gid://shopify/ProductVariant/78', sku: 'FREMD_1' }]), { 77: tasse.varianten[0].printfulVariantId });
+ist('sollBeschreibung trägt die Abbildung ein (Platzhalter samt Anführungszeichen weg)', (() => { const s = sollBeschreibung(tasse, { ersteVarianteNr: 1, editorUrl: URL_EDITOR, shopVarianten: { 5: 9 } }); return [s.includes('"shop":{"varianten":{"5":9}}'), s.includes('__SHOP_VARIANTEN__')]; })(), [true, false]);
+for (const d of tempOrdner) rmSync(d, { recursive: true, force: true });   // keine Wegwerf-Ordner im Temp-Verzeichnis zurücklassen
 ende();

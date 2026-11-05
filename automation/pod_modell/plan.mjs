@@ -26,7 +26,7 @@ import { endpreis, aufpreisChf, abrechnungsEk, REGEL } from '../../dropship/selb
 import { kontextAusKatalog } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
 import { entscheide } from '../lib/printful_platzierung.mjs';
 import { titelDe, titelVoll, titelSchluessel, handleAus, farbeDe, farbRang, GLOSSAR_VERSION } from './glossar.mjs';
-import { beschreibungBauen, pruefeUebersetzung, technikDeVon } from './beschreibung.mjs';
+import { beschreibungBauen, pruefeUebersetzung, technikDeVon, PLATZHALTER_SHOP } from './beschreibung.mjs';
 import { pruefeTore } from './tore.mjs';
 
 export const PLAN_SCHEMA = 'pod-modell-plan/1';
@@ -37,7 +37,8 @@ export const FABRIK_REGEL = Object.freeze({
   bildMinPx: 600,             // «lesbar»: die kürzere Seite hat mindestens so viele Pixel (SETZUNG, nicht gemessen)
   ekAufschlagOhneSchaetzung: 1.26,   // GEMESSEN 05.11.2026: Rechnung für CH bis +26 % über dem Katalogpreis (preisformel.mjs)
   digitalisierungUsd: 6.5,    // GEMESSEN an einer Schätzung für die Dad-Cap (messung_0511.json): einmalig je Motiv
-  kartenMaxBytes: 10240,      // Metafeld/Editor-Karte höchstens 10 KB
+  kartenMaxBytes: 10240,      // Metafeld-Karte (kompakt, ohne Variantenliste) höchstens 10 KB (Vorgabe des Auftrags)
+  editorKartenMaxBytes: 24576, // Karte im Editor-Baustein der Beschreibung samt Variantenabbildung höchstens 24 KB (Setzung; GEMESSEN an 577 Modellen: Median 3,2 KB, 90 % unter 6,7 KB, Poster 17 KB)
   medienMax: 20,
   medienOhneFarbe: 6,         // ohne Farben (Poster, Hüllen): Produktbild plus höchstens 5 Grössen-Bilder
   stufen: [1],                // 1 = FLACH und FLACH_MIT_HINWEIS; 2 = PANEL
@@ -172,6 +173,49 @@ export function kompaktKarte(karte, { varianten, basisId, pflichtAufpreisUsd = 0
   };
 }
 
+/** Hinweis-Codes, zu denen der Editor v6 eigene Kundentexte hat (Quelle: pod/v6/werkzeug/karte_fuer_editor.mjs; der Vertragstest in plan_test.mjs hält beides gleich, solange die Datei vorliegt). */
+export const EDITOR_HINWEIS_CODES = Object.freeze(['stickerei', 'gestrickt', 'allover_einzeldatei', 'kappe', 'tasche', 'rundumdruck']);
+/**
+ * Die Karte, die der Editor v6 (pod/v6/lspod-designer-v6.js) aus <script id="lspod-karte"> liest: gleiche Felder wie pod/v6/werkzeug/karte_fuer_editor.mjs (Schema 1), aber
+ * `varianten` und `farben` nur für die gewählten Varianten. `shop.varianten` (Shopify-Variante → Printful-Variante) kommt erst beim Anlegen dazu (anlegen.mjs), weil die Nummern vorher nicht
+ * bekannt sind; im Plan steht dort der Platzhalter. Ohne `shopPlatzhalter` fehlt der Schlüssel `shop` (so liegt die Karte im Metafeld).
+ */
+export function editorKarte(karte, { varianten, minDpi, titelDe = null, shopPlatzhalter = null }) {
+  const gruppenAnzahl = (karte.druckdateiGruppen ?? []).length;
+  const platzierungen = karte.platzierungen.map((p) => {
+    const aufUsd = typeof p.aufpreisUsd === 'number' && p.aufpreisUsd > 0 ? p.aufpreisUsd : 0;
+    const o = {
+      id: p.id, dateiTyp: p.dateiTyp, titelDe: p.titelDe, titelEn: p.titelEn, art: p.art, technik: p.technik,
+      printfile: { printfileId: p.printfile.printfileId, breitePx: p.printfile.breitePx, hoehePx: p.printfile.hoehePx, dpi: p.printfile.dpi },
+      vorlage: p.vorlage,
+      aufpreisUsd: aufUsd || null, aufpreisChf: aufUsd ? aufpreisChf(aufUsd) : 0,
+      kollidiertMit: p.kollidiertMitImEditor,
+    };
+    if (p.geometrien.length > 1) o.geometrien = p.geometrien;
+    return o;
+  });
+  const druckdateien = {};
+  const gebraucht = new Set(platzierungen.flatMap((p) => [p.printfile.printfileId, ...(p.geometrien ?? []).map((g) => g.printfileId)]));
+  for (const [id, d] of Object.entries(karte.druckdateien)) if (gebraucht.has(Number(id))) druckdateien[id] = { printfileId: d.printfileId, breitePx: d.breitePx, hoehePx: d.hoehePx, dpi: d.dpi };
+  const k = {
+    // Der Katalogtitel (englisch, mit Fremdmarke und Modellnummer, z. B. «… | Gildan 18500») wird NICHT eingebettet: statt `titelEn` steht der deutsche Titel als `titelDe` (das liest der Editor als Titel).
+    schema: 1, printfulProductId: karte.printfulProductId, typ: karte.typ, ...(titelDe ? { titelDe } : {}), klasse: karte.klasse, standardTechnik: karte.standardTechnik,
+    minDpi: Number.isFinite(Number(minDpi)) && Number(minDpi) > 0 ? Number(minDpi) : null,
+    platzierungen, druckdateien,
+    hinweise: (karte.hinweise ?? []).filter((h) => h.art === 'einschraenkung' || EDITOR_HINWEIS_CODES.includes(h.code))
+      .map((h) => (EDITOR_HINWEIS_CODES.includes(h.code) ? { code: h.code, art: h.art } : { code: h.code, art: h.art, text: h.text })),
+  };
+  const farben = {};
+  for (const v of varianten) if (/^#[0-9a-f]{6}$/i.test(v.farbeHex ?? '')) (farben[v.farbeHex.toLowerCase()] ??= []).push(v.printfulVariantId);
+  if (Object.keys(farben).length > 1) k.farben = farben;
+  if (gruppenAnzahl > 1) {
+    k.druckdateiGruppen = karte.druckdateiGruppen;
+    k.varianten = varianten.map((v) => ({ printfulVariantId: v.printfulVariantId, druckdateiGruppe: v.druckdateiGruppe }));
+  }
+  if (shopPlatzhalter) k.shop = { varianten: shopPlatzhalter };
+  return k;
+}
+
 // ─────────────────────────────────────────────────────────────── Medien
 /**
  * Galerie: Produktbild (falls lesbar) + je Farbe EIN Bild (ohne Farben: je Bild-Adresse, höchstens `medienOhneFarbe` Bilder). Gibt auch die Zuordnung Variante → Bild zurück.
@@ -290,13 +334,19 @@ export function planeModell(eingabe, opt = {}) {
 
   // Editor-Karte
   const kompakt = kompaktKarte(karte, { varianten: w.varianten, basisId: basis?.p?.id ?? null, pflichtAufpreisUsd: basis?.pflichtAufpreisUsd ?? 0 });
+  const minDpi = Number(katalog.templates?.min_dpi);
   const kompaktJson = JSON.stringify(kompakt);
+  const edKarte = editorKarte(karte, { varianten: w.varianten, minDpi, titelDe: titel ?? null });                                   // ohne Variantenabbildung (zum Prüfen und Vergleichen)
+  const edKarteMitShop = editorKarte(karte, { varianten: w.varianten, minDpi, titelDe: titel ?? null, shopPlatzhalter: PLATZHALTER_SHOP }); // Beschreibung: Platzhalter, anlegen.mjs trägt die Abbildung ein
+  // Grösse der eingebetteten Karte im ungünstigsten Fall: die Abbildung nach dem Anlegen (14-stellige Shopify-Nummern, GEMESSEN an heutigen Varianten-IDs) ist mitgerechnet
+  const abbildungWorst = Object.fromEntries(w.varianten.map((v, i) => [String(40000000000000 + i), v.printfulVariantId]));
+  const karteBytes = Buffer.byteLength(JSON.stringify({ ...edKarte, shop: { varianten: abbildungWorst } }), 'utf8');
 
   // Übersetzung und Beschreibung
   const uPruef = pruefeUebersetzung(uebersetzung?.u ?? null, karte.beschreibung.original, { ozArt: kontextAusKatalog(katalog).ozArt });
   if (uebersetzung && uebersetzung.fehler) uPruef.fehler.unshift(uebersetzung.fehler);
   const technikDe = technikDeVon(karte.standardTechnik);
-  const beschr = beschreibungBauen({ karte, lieferung, modell: id, klasse, kompakt, technikDe, basis: basis ? { ...basis.p, titel: basis.p.titelDe ?? basis.p.id } : null, uebersetzung: uebersetzung?.u ?? null });
+  const beschr = beschreibungBauen({ karte, lieferung, modell: id, klasse, kompakt, editorKarte: edKarteMitShop, technikDe, basis: basis ? { ...basis.p, titel: basis.p.titelDe ?? basis.p.id } : null, uebersetzung: uebersetzung?.u ?? null });
 
   // Bestellweg (printful_sync): ist die Platzierung der Vorderseite sicher?
   const dateien = (katalog.produkt?.files ?? []).filter((f) => f.type !== 'mockup').map((f) => f.id);
@@ -335,14 +385,14 @@ export function planeModell(eingabe, opt = {}) {
     optionen: achsen.map((a) => ({ name: a.name, art: a.art, werte: a.werte })),
     varianten, medien: md.medien,
     beschreibungHtml: beschr.html, beschreibungWeggelassen: beschr.weggelassen, uebersetzung: { ok: uPruef.ok, fehler: uPruef.fehler, saetze: uPruef.saetze, nichtUebernommen: uPruef.nichtUebernommen },
-    metafelder, kompakt, kompaktBytes: Buffer.byteLength(kompaktJson, 'utf8'),
+    metafelder, kompakt, kompaktBytes: Buffer.byteLength(kompaktJson, 'utf8'), editorKarte: edKarte, karteBytes,
     lieferung, basisPlatzierung: basis ? { id: basis.p.id, dateiTyp: basis.p.dateiTyp, technik: basis.p.technik, pflichtAufpreisUsd: basis.pflichtAufpreisUsd } : null,
     bestellweg: { platzierung: weg.platzierung, gesichert: weg.gesichert, grund: weg.grund, dateien },
     auswahl: { vorAuswahl: w.gesamtVorAuswahl, bestellbar: w.bestellbar, gewaehlt: varianten.length, farbenGewaehlt: w.farbenGewaehlt, farbenAusgelassen: w.farbenAusgelassen, ausgelassen: w.ausgelassen },
     preis: { min: preise.length ? Math.min(...preise) : null, max: preise.length ? Math.max(...preise) : null, nettoMin: netto.length ? Math.min(...netto) : null, nettoMax: netto.length ? Math.max(...netto) : null, fehler: preisFehler },
     bilder: { gemessen: md.bilderGemessen, unlesbar: md.unlesbar, ungemessen: md.ungemessen, anzahl: md.medien.length, kandidaten: md.kandidaten },
   };
-  plan.tore = pruefeTore(plan, { regel, stufen, schonHandles, schonSkus, verwendeteModelle: verwendet, bilder, kartenMaxBytes: regel.kartenMaxBytes, originalText: karte.beschreibung.original });
+  plan.tore = pruefeTore(plan, { regel, stufen, schonHandles, schonSkus, verwendeteModelle: verwendet, bilder, kartenMaxBytes: regel.kartenMaxBytes, editorKartenMaxBytes: regel.editorKartenMaxBytes, originalText: karte.beschreibung.original });
   plan.anlegbar = plan.tore.filter((x) => x.art === 'blocker').every((x) => x.ergebnis === 'bestanden');
   plan.hash = hashVon({ ...plan, erzeugt: { ...plan.erzeugt, am: null }, hash: undefined });
   return plan;

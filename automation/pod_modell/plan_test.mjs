@@ -1,7 +1,9 @@
 // Tests für plan.mjs (kein Netz). Lauf: /opt/node22/bin/node automation/pod_modell/plan_test.mjs
 // Echte Katalogdateien (Printful-API, geholt 05.11.2026) aus dropship/selbst-gestalten-fertig-0511/werkzeuge/testdaten/katalog/:
 //   19 Tasse · 206 Dad-Cap (Stickerei, Pflicht-Aufpreis) · 268 Poster · 798 iPhone-Hülle · 71 T-Shirt (628 Varianten, mehr als 100) · 861 Kerze (ohne bestellbare Variante) · 574 Schuh · 388 Allover-Hoodie (PANEL)
-import { planeModell, waehleVarianten, optionenBauen, basisPlatzierung, kompaktKarte, medienBauen, hashVon, kanon, seoText, gruppeVon, SKU_BASIS, FABRIK_REGEL } from './plan.mjs';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { planeModell, waehleVarianten, optionenBauen, basisPlatzierung, kompaktKarte, editorKarte, EDITOR_HINWEIS_CODES, medienBauen, hashVon, kanon, seoText, gruppeVon, SKU_BASIS, FABRIK_REGEL } from './plan.mjs';
 import { modellkarteBauen } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs';
 import { endpreis } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { lade, versand, testUebersetzung, bilderFuer, neuerTest, tief } from './testhilfe.mjs';
@@ -33,7 +35,7 @@ for (const p of alle) {
   ist(`${n}: höchstens 100 Varianten`, p.varianten.length <= 100, true);
   ist(`${n}: Handle ≤ 50 Zeichen, nur a-z 0-9 -`, p.handle.length <= 50 && /^[a-z0-9-]+$/.test(p.handle), true);
   ist(`${n}: keine Zoll/oz/lb und keine Gedankenstriche in den Kundentexten`, ['masse_einheiten', 'gedankenstrich'].map((c) => tor(p, c).ergebnis), ['bestanden', 'bestanden']);
-  ist(`${n}: Metafeld-Karte < 10 KB und gleich der Karte der Beschreibung`, [p.kompaktBytes < 10240, JSON.parse(p.metafelder.find((m) => m.key === 'karte').value).modell], [true, n]);
+  ist(`${n}: Metafeld-Karte höchstens 10 KB, Editor-Karte höchstens 24 KB`, [p.kompaktBytes <= 10240, p.karteBytes <= 24576, JSON.parse(p.metafelder.find((m) => m.key === 'karte').value).modell], [true, true, n]);
   ist(`${n}: Plan trägt den Marker-Tag und die Pflicht-Tags`, ['sg-fabrik', 'wunschdesign', 'selbst-gestalten', `sg-modell-${n}`].every((x) => p.tags.includes(x)), true);
   ist(`${n}: keine Variante unter dem Kostenboden (Preis ≥ Kostenpreis der Formel)`, p.varianten.every((v) => v.preisChf >= endpreis({ ekUsd: v.ekRechnungUsd, versandUsd: v.versandUsd, aufpreisUsd: v.aufpreisUsd, ekRichtwertUsd: v.kostenUsd }).mindestpreisChf), true);
 }
@@ -154,6 +156,39 @@ ist('Gruppen: Tasse gehört zu «Trinken», T-Shirt zu «Bekleidung»', [gruppeV
 ist('kaputte Katalogdatei: Plan mit Tor statt Absturz', (() => { const p = planeModell({ katalog: {}, versand: versand() }, { jetzt: 'x' }); return [p.anlegbar, p.tore[0].code]; })(), [false, 'katalog']);
 ist('Beschreibung enthält Platzhalter für Variante und Editor (LIVE ersetzt sie)', [/__ERSTE_VARIANTE__/.test(plan(19).beschreibungHtml), /__LSPOD_EDITOR_URL__/.test(plan(19).beschreibungHtml)], [true, true]);
 ist('Beschreibung: Rückgabe-Hinweis personalisierter Ware', /Rückgabe aus Meinungsänderung ausgeschlossen/.test(plan(19).beschreibungHtml), true);
-ist('Beschreibung: Editor-Container und Karte im Skript-Tag', [/class="lspod-designer"/.test(plan(19).beschreibungHtml), /<script type="application\/json" id="lspod-karte">/.test(plan(19).beschreibungHtml)], [true, true]);
+ist('Beschreibung: Editor-Container und Karte im Skript-Tag', [/class="lspod-designer-v6"/.test(plan(19).beschreibungHtml), /<script type="application\/json" id="lspod-karte">/.test(plan(19).beschreibungHtml)], [true, true]);
+ist('Container trägt NICHT die Klasse des live wirksamen Editors v5 («lspod-designer»), sonst mountet v5 ohne Bilder', /class="(?:[^"]* )?lspod-designer(?: [^"]*)?"/.test(plan(19).beschreibungHtml), false);
+ist('Das Skript mit der Karte steht im Container (Einbindung laut Kopf von lspod-designer-v6.js)', /<div class="lspod-designer-v6"[^>]*><script type="application\/json" id="lspod-karte">/.test(plan(19).beschreibungHtml), true);
+
+// ── Karte für den Editor v6 (Vertrag: pod/v6/lspod-designer-v6.js liest genau diese Felder)
+const ek = (id) => plan(id).editorKarte;
+const emb = (id) => JSON.parse(/<script type="application\/json" id="lspod-karte">([\s\S]*?)<\/script>/.exec(plan(id).beschreibungHtml)[1].replace(/\\u003c/gi, '<'));
+ist('Editor-Karte: Schema 1, Modell, Klasse', [ek(19).schema, ek(19).printfulProductId, ek(19).klasse], [1, 19, 'FLACH']);
+wahr('Editor-Karte: jede Platzierung mit printfile (Pixel, dpi), vorlage und aufpreisChf', ek(19).platzierungen.every((p) => p.printfile.breitePx > 0 && p.printfile.dpi > 0 && p.vorlage && typeof p.aufpreisChf === 'number'));
+wahr('Editor-Karte: druckdateien nur die gebrauchten', Object.keys(ek(19).druckdateien).length > 0 && Object.keys(ek(19).druckdateien).every((id) => ek(19).platzierungen.some((p) => p.printfile.printfileId === Number(id) || (p.geometrien ?? []).some((g) => g.printfileId === Number(id)))));
+wahr('Editor-Karte Tasse: Druckdatei je Variante (druckdateiGruppen) und varianten nur die gewählten', ek(19).druckdateiGruppen.length === 3 && ek(19).varianten.length === plan(19).varianten.length && ek(19).varianten.every((v) => plan(19).varianten.some((x) => x.printfulVariantId === v.printfulVariantId)));
+wahr('Editor-Karte im Plan OHNE shop, in der Beschreibung MIT dem Platzhalter statt der Abbildung', ek(19).shop === undefined && emb(19).shop?.varianten === '__SHOP_VARIANTEN__');
+ist('Editor-Karte in der Beschreibung = Karte des Plans plus shop', (() => { const e = emb(19); delete e.shop; return JSON.stringify(e); })(), JSON.stringify(ek(19)));
+ist('Editor-Karte T-Shirt (71): Farben nur der gewählten Varianten, jede Variante in genau einer Farbe', (() => { const k = ek(71); const ids = new Set(plan(71).varianten.map((v) => v.printfulVariantId)); const alle = Object.values(k.farben ?? {}).flat(); return [alle.every((x) => ids.has(x)), new Set(alle).size === alle.length]; })(), [true, true]);
+ist('Editor-Karte nennt den deutschen Titel und keinen Katalogtitel mit Fremdmarke (T-Shirt: Bella + Canvas, Cap: Yupoong; Bild-Adressen des Printful-Netzes ausgenommen)', [[71, 206].map((id) => /bella|yupoong|\b3001\b|\b6245/i.test(JSON.stringify(plan(id).editorKarte).replace(/https?:[^"]+/g, ''))), ek(19).titelEn, ek(19).titelDe === plan(19).titelKurz], [[false, false], undefined, true]);
+wahr('Editor-Karte: Hinweise nur einschraenkung oder bekannte Codes; bekannte ohne Text', ek(206).hinweise.every((h) => h.art === 'einschraenkung' || EDITOR_HINWEIS_CODES.includes(h.code)) && ek(206).hinweise.filter((h) => EDITOR_HINWEIS_CODES.includes(h.code)).every((h) => h.text === undefined));
+wahr('Editor-Karte: Platzierungen und Karte der Prüfung (kompakt) nennen dieselben Flächen', JSON.stringify(ek(71).platzierungen.map((p) => p.id)) === JSON.stringify(plan(71).kompakt.platzierungen.map((p) => p.id)));
+wahr('karteBytes rechnet die Variantenabbildung nach dem Anlegen mit (mindestens 20 Byte je Variante mehr als die Karte allein)', plan(19).karteBytes >= Buffer.byteLength(JSON.stringify(plan(19).editorKarte), 'utf8') + 20 * plan(19).varianten.length);
+wahr('Editor-Karte höchstens 24 576 Byte, auch mit der Abbildung nach dem Anlegen (karteBytes rechnet sie mit); Metafeld-Karte höchstens 10 240', [19, 71, 206, 268, 798, 388].every((id) => plan(id).karteBytes <= 24576 && plan(id).kompaktBytes <= 10240));
+wahr('Metafeld luxe_sg.karte ist die kompakte Prüfkarte (Schema lspod-karte/1, ohne Variantenliste), nicht die Editor-Karte', (() => { const m = JSON.parse(plan(19).metafelder.find((x) => x.key === 'karte').value); return m.schema === 'lspod-karte/1' && m.printfulProductId === undefined; })());
+{
+  // Vertragstest gegen die Quelle des Editors: gleiche Felder wie pod/v6/werkzeug/karte_fuer_editor.mjs (Datei gehört dem Editor-Strom; fehlt sie, wird der Test übersprungen und gemeldet)
+  const quelle = fileURLToPath(new URL('../../pod/v6/werkzeug/karte_fuer_editor.mjs', import.meta.url));
+  if (!existsSync(quelle)) { console.log('  übersprungen: Vertragstest gegen pod/v6/werkzeug/karte_fuer_editor.mjs (Datei fehlt)'); }
+  else {
+    const { karteFuerEditor, BEKANNTE_HINWEIS_CODES } = await import(quelle);
+    ist('Vertrag: Hinweis-Codes gleich der Quelle des Editors', [...EDITOR_HINWEIS_CODES], [...BEKANNTE_HINWEIS_CODES]);
+    for (const id of [19, 206, 268, 798, 388, 71]) {
+      const k = lade(id); const eigene = plan(id, { katalog: k }).editorKarte; const quelleKarte = karteFuerEditor(k);
+      const ohne = (o) => { const c = JSON.parse(JSON.stringify(o)); delete c.varianten; delete c.farben; delete c.shop; delete c.titelEn; delete c.titelDe; return c; };
+      ist(`Vertrag ${id}: gleiche Karte wie karteFuerEditor (ohne varianten/farben/shop)`, JSON.stringify(kanon(ohne(eigene))), JSON.stringify(kanon(ohne(quelleKarte))));
+    }
+  }
+}
 
 ende();

@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:43:27.721Z",
+  "am": "2026-11-05T18:54:40.955Z",
   "katalogGeholt": "2026-11-05T17:13:36.580Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -11,6 +11,7 @@
    "ekAufschlagOhneSchaetzung": 1.26,
    "digitalisierungUsd": 6.5,
    "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
    "medienMax": 20,
    "medienOhneFarbe": 6,
    "stufen": [
@@ -829,7 +830,7 @@
    "label": "Schwarz"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>20 bis 25 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"574\" data-klasse=\"UNGEEIGNET\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":574,\"klasse\":\"UNGEEIGNET\",\"technik\":\"SUBLIMATION\",\"basis\":\"shoe_left\",\"platzierungen\":[{\"id\":\"shoe_left\",\"dateiTyp\":\"shoe_left\",\"titel\":\"Schuh links\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2325,2325],\"dpi\":150,\"cm\":[39.4,39.4],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":0,\"oben\":0,\"breite\":3000,\"hoehe\":3000,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293\",\"hintergrund\":null},{\"id\":\"shoe_right\",\"dateiTyp\":\"shoe_right\",\"titel\":\"Schuh rechts\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2325,2325],\"dpi\":150,\"cm\":[39.4,39.4],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":0,\"oben\":0,\"breite\":3000,\"hoehe\":3000,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244\",\"hintergrund\":null},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titel\":\"Etikett innen\",\"art\":\"etikett\",\"technik\":\"SUBLIMATION\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1050,600],\"dpi\":150,\"cm\":[17.8,10.2],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":457,\"oben\":902,\"breite\":2081,\"hoehe\":1190,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313\",\"hintergrund\":null}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Schuh links):</strong> 2325 × 2325 Pixel bei 150 dpi, das sind 39,4 × 39,4 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>20 bis 25 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"574\" data-klasse=\"UNGEEIGNET\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":574,\"typ\":\"SHOES\",\"titelDe\":\"Herren Leinwand\",\"klasse\":\"UNGEEIGNET\",\"standardTechnik\":\"SUBLIMATION\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"shoe_left\",\"dateiTyp\":\"shoe_left\",\"titelDe\":\"Schuh links\",\"titelEn\":\"Left shoe\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150},\"vorlage\":{\"vorlageId\":557948,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":0,\"flaecheOben\":0,\"flaecheBreite\":3000,\"flaecheHoehe\":3000,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"shoe_right\",\"dateiTyp\":\"shoe_right\",\"titelDe\":\"Schuh rechts\",\"titelEn\":\"Right shoe\",\"art\":\"flaeche\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150},\"vorlage\":{\"vorlageId\":558003,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":0,\"flaecheOben\":0,\"flaecheBreite\":3000,\"flaecheHoehe\":3000,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titelDe\":\"Etikett innen\",\"titelEn\":\"Branding\",\"art\":\"etikett\",\"technik\":\"SUBLIMATION\",\"printfile\":{\"printfileId\":263,\"breitePx\":1050,\"hoehePx\":600,\"dpi\":150},\"vorlage\":{\"vorlageId\":558004,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":457,\"flaecheOben\":902,\"flaecheBreite\":2081,\"flaecheHoehe\":1190,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]}],\"druckdateien\":{\"263\":{\"printfileId\":263,\"breitePx\":1050,\"hoehePx\":600,\"dpi\":150},\"292\":{\"printfileId\":292,\"breitePx\":2325,\"hoehePx\":2325,\"dpi\":150}},\"hinweise\":[],\"farben\":{\"#ffffff\":[14736,14737,14738,14739,14740,14741,14742,14743,14744,14745,14746,14747,14748,14749,14750,14751,14752],\"#000000\":[20888,20889,20890,20891,20892,20893,20894,20895,20896,20897,20898,20899,20900,20901,20902,20903,20904]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Sublimationsdruck</li><li><strong>Druckdatei (Schuh links):</strong> 2325 × 2325 Pixel bei 150 dpi, das sind 39,4 × 39,4 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (US Men, UK, Europe, Japan, Foot Length, Outsole Length)"
  ],
@@ -1002,6 +1003,166 @@
   "hinweise": []
  },
  "kompaktBytes": 1511,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 574,
+  "typ": "SHOES",
+  "titelDe": "Herren Leinwand",
+  "klasse": "UNGEEIGNET",
+  "standardTechnik": "SUBLIMATION",
+  "minDpi": 75,
+  "platzierungen": [
+   {
+    "id": "shoe_left",
+    "dateiTyp": "shoe_left",
+    "titelDe": "Schuh links",
+    "titelEn": "Left shoe",
+    "art": "flaeche",
+    "technik": "SUBLIMATION",
+    "printfile": {
+     "printfileId": 292,
+     "breitePx": 2325,
+     "hoehePx": 2325,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 557948,
+     "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/3b/3b5446b2e1b431db0ce98215124cdd79?v=1715326293",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 0,
+     "flaecheOben": 0,
+     "flaecheBreite": 3000,
+     "flaecheHoehe": 3000,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "shoe_right",
+    "dateiTyp": "shoe_right",
+    "titelDe": "Schuh rechts",
+    "titelEn": "Right shoe",
+    "art": "flaeche",
+    "technik": "SUBLIMATION",
+    "printfile": {
+     "printfileId": 292,
+     "breitePx": 2325,
+     "hoehePx": 2325,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 558003,
+     "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/8b/8beca072c66388f49fc587871dfe245b?v=1715326244",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 0,
+     "flaecheOben": 0,
+     "flaecheBreite": 3000,
+     "flaecheHoehe": 3000,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "label_inside",
+    "dateiTyp": "label_inside",
+    "titelDe": "Etikett innen",
+    "titelEn": "Branding",
+    "art": "etikett",
+    "technik": "SUBLIMATION",
+    "printfile": {
+     "printfileId": 263,
+     "breitePx": 1050,
+     "hoehePx": 600,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 558004,
+     "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/8d/8d7cdec5d7f810429e2a204cc7ea60bc?v=1715326313",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 457,
+     "flaecheOben": 902,
+     "flaecheBreite": 2081,
+     "flaecheHoehe": 1190,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   }
+  ],
+  "druckdateien": {
+   "263": {
+    "printfileId": 263,
+    "breitePx": 1050,
+    "hoehePx": 600,
+    "dpi": 150
+   },
+   "292": {
+    "printfileId": 292,
+    "breitePx": 2325,
+    "hoehePx": 2325,
+    "dpi": 150
+   }
+  },
+  "hinweise": [],
+  "farben": {
+   "#ffffff": [
+    14736,
+    14737,
+    14738,
+    14739,
+    14740,
+    14741,
+    14742,
+    14743,
+    14744,
+    14745,
+    14746,
+    14747,
+    14748,
+    14749,
+    14750,
+    14751,
+    14752
+   ],
+   "#000000": [
+    20888,
+    20889,
+    20890,
+    20891,
+    20892,
+    20893,
+    20894,
+    20895,
+    20896,
+    20897,
+    20898,
+    20899,
+    20900,
+    20901,
+    20902,
+    20903,
+    20904
+   ]
+  }
+ },
+ "karteBytes": 3205,
  "lieferung": {
   "versandart": "STANDARD",
   "rateUsd": 11.29,
@@ -1172,7 +1333,7 @@
   },
   {
    "code": "karte",
-   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -1228,5 +1389,5 @@
   }
  ],
  "anlegbar": false,
- "hash": "f5d10cf66a7a09a6e2a88371951c608ebef59c63f96b8fc87b674c23288e257d"
+ "hash": "975e31d03c536ffe0978d0df50cc3b0fac981dff6e2661a8e06ba8a2b094a324"
 }

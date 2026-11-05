@@ -78,7 +78,7 @@ ist('ladeUebersetzung: kein Ordner', ladeUebersetzung(null, 1).fehler, 'kein Üb
 
 // ── Grössentabellen im Seitentext
 const tab = (typ, label, wert) => ({ typ, einheitOriginal: 'inches', messungen: [{ label, art: 'laenge', einheit: 'cm', markiert: false, werte: [{ groesse: 'S', groesseAnzeige: 'S', wert, anzeige: wert }, { groesse: 'M', groesseAnzeige: 'M', min: 78.7, max: 86.4, anzeige: '78,7–86,4 cm' }] }] });
-const bauen = (tabellen) => beschreibungBauen({ karte: { groessentabelle: { tabellen }, produktMasse: [] }, lieferung: null, modell: 1, klasse: 'FLACH', kompakt: { platzierungen: [], hinweise: [] }, technikDe: null, basis: null, uebersetzung: { intro: [], punkte: [] } });
+const bauen = (tabellen) => beschreibungBauen({ karte: { groessentabelle: { tabellen }, produktMasse: [] }, lieferung: null, modell: 1, klasse: 'FLACH', editorKarte: { schema: 1 }, kompakt: { platzierungen: [], hinweise: [] }, technikDe: null, basis: null, uebersetzung: { intro: [], punkte: [] } });
 const t1 = bauen([tab('product_measure', 'Length', '68,6 cm'), tab('measure_yourself', 'Length', '68,6 cm')]);
 ist('zwei gleiche Tabellen: nur eine wird gezeigt, die andere als weggelassen vermerkt', [(t1.html.match(/<table/g) || []).length, t1.weggelassen.some((x) => /gleich einer schon gezeigten/.test(x))], [1, true]);
 const t2 = bauen([tab('product_measure', 'Length', '68,6 cm'), tab('measure_yourself', 'Length', '70 cm')]);

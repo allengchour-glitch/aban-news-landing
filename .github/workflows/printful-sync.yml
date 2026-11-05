@@ -1,14 +1,29 @@
 name: Printful-Sync (POD-Bestellungen → Druckauftrag)
 
+# Legt für bezahlte Shopify-Bestellungen mit Editor-Design («Selbst gestalten») einen Printful-Auftrag an und bestätigt ihn, wenn alle Prüfungen bestehen.
+# Skript und Regeln: automation/printful_sync.mjs, automation/lib/printful_bestellweg.mjs, automation/lib/printful_platzierung.mjs. Doku: dropship/selbst-gestalten-fertig-0511/bestellweg/README.md
+#
+# Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
+#   - Zeitplan OHNE Freigabedatei: nur LESEN (Trockenlauf). Der Lauf liest Shopify und Printful, zeigt in der Zusammenfassung, was er täte, legt nichts an, setzt keine Tags, sendet keine Telegram-Meldung.
+#   - Zeitplan MIT Freigabedatei dropship/PRINTFUL-SYNC-FREI.txt im Repo: legt scharf Aufträge an. Datei löschen = Stopp (der nächste Lauf liest nur noch).
+#   - Handstart (workflow_dispatch): wie bisher, «Nur testen» an = Trockenlauf, aus = scharf. Die Freigabedatei gilt nur für den Zeitplan.
+# Der Besitzer hat die Häufigkeit offen gelassen: Vorschlag 2× täglich (06:41 und 13:37 UTC = 07:41/08:41 und 14:37/15:37 Schweizer Zeit, vor der Rückmeldung printful-tracking um 15:23 UTC).
+# Eine Zeile streichen = einmal täglich; beide Zeilen auskommentieren = nur Handstart. (Die Notiz «Crons sparsam, max. 1×/Tag» spricht für eine Zeile.)
+#
+# Zugang: Repo-Secrets PRINTFUL_API_KEY, [PRINTFUL_STORE_ID], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN), [TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID].
+# KI-Kontrolle der Druckdatei: GEMINI_API_KEY. OHNE funktionierenden Schlüssel (oder bei Guthaben leer, HTTP 402) bleibt jeder Auftrag ein ENTWURF mit Meldung; wer die KI bewusst nicht will,
+# setzt das Secret PRINTFUL_KI_KONTROLLE auf «aus» (die mechanischen Prüfungen bleiben). PRINTFUL_AUTO_CONFIRM=0 schaltet das automatische Bestätigen ganz ab.
+# Wenn der Sync eine neue Bibliotheksdatei importiert, gehört sie in die Liste «sparse-checkout» unten.
 on:
+  schedule:
+    - cron: '41 6 * * *'
+    - cron: '37 13 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Nur testen (keine Aufträge anlegen)'
+        description: 'Nur testen (keine Aufträge anlegen, keine Tags, keine Meldungen)'
         type: boolean
         default: false
-  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
-    # - cron: '0 6 * * *'   # 1x taeglich (gedrosselt)
 
 permissions:
   contents: read
@@ -23,14 +38,47 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/printful_sync.mjs
+            automation/lib/printful_platzierung.mjs
+            automation/lib/printful_bestellweg.mjs
+            automation/lib/shopify_secret.mjs
+            dropship/PRINTFUL-SYNC-FREI.txt
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        env:
+          EREIGNIS: ${{ github.event_name }}
+          DRY_EINGABE: ${{ github.event.inputs.dry_run }}
+        run: |
+          dry=1
+          if [ "$EREIGNIS" = "schedule" ]; then
+            if [ -f dropship/PRINTFUL-SYNC-FREI.txt ]; then dry=0; fi
+          elif [ "$DRY_EINGABE" != "true" ]; then
+            dry=0
+          fi
+          echo "dry=$dry" >> "$GITHUB_OUTPUT"
+          if [ "$dry" = "1" ]; then
+            echo "Modus: nur lesen (Trockenlauf)"
+            echo "Modus: **nur gelesen** (Zeitplan ohne Freigabedatei oder Handstart mit «Nur testen»)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Modus: scharf (Freigabedatei im Repo oder Handstart)"
+            echo "Modus: **scharf**." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Bestellungen synchronisieren
         env:
           PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
           PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
           PRINTFUL_AUTO_CONFIRM: ${{ secrets.PRINTFUL_AUTO_CONFIRM }}
+          PRINTFUL_KI_KONTROLLE: ${{ secrets.PRINTFUL_KI_KONTROLLE }}
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
@@ -38,5 +86,5 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+          DRY_RUN: ${{ steps.modus.outputs.dry == '1' && '1' || '' }}
         run: node automation/printful_sync.mjs

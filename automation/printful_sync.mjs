@@ -1,137 +1,378 @@
 #!/usr/bin/env node
-/* LuxeStyle — printful_sync.mjs
+/* LuxeStyle — printful_sync.mjs (Version 2, 05.11.2026: «Bestellweg härten», Strom 3 von «Selbst gestalten 100 %»)
  * Verbindet den eigenen „Selbst gestalten"-Editor mit dem Druck-Anbieter PRINTFUL.
- * Für jede BEZAHLTE, noch nicht synchronisierte Shopify-Bestellung mit POD-Artikeln (Tag wunschdesign +
- * Editor-Druckdatei-Property) legt es einen Printful-Druckauftrag an:
- *   • Variante = aus der Shopify-SKU decodiert ( "<sync>_<printfulVariantId>" → Printful-Katalog-Variante )
- *   • Druckdatei(en) = aus den Bestell-Eigenschaften "🖼️ Druckdatei (Vorne/Hinten)" (Cloudinary-URL)
- *   • Empfänger = Shopify-Lieferadresse
- * KONTROLL-GATE (User-Wunsch): Gemini prüft jede Druckdatei (leer? unscharf? unzulässig?) → PASS/FAIL.
- *   PASS  → Auftrag wird VERBINDLICH bestätigt (confirm) und produziert.
- *   FAIL  → Auftrag bleibt ENTWURF (draft) + Shopify-Tag `printful-review` + Telegram-Hinweis.
- * Idempotent: erledigte Bestellungen bekommen Tag `printful-synced` + Metafeld printful.order_id.
- * No-op ohne PRINTFUL_API_KEY oder ohne Shopify-Creds. ENV:
- *   PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=1|0 (Default 1 = AI-gated)],
- *   SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN), [GEMINI_API_KEY], [TELEGRAM_*], [MAX=20], [DRY_RUN=1]
+ * Für jede BEZAHLTE, noch nicht synchronisierte Shopify-Bestellung mit POD-Artikeln (Tag wunschdesign + Editor-Druckdatei-Eigenschaft) legt es einen Printful-Auftrag an.
+ *
+ * Ablauf je Bestellung (reine Logik und Prüfungen: lib/printful_bestellweg.mjs und lib/printful_platzierung.mjs; Verhalten: automation/printful_sync_test.mjs):
+ *   0. Gibt es bei Printful schon einen Auftrag mit external_id «LX<Bestellnummer>»? (GET /orders/@<external_id>; GEMESSEN 05.11.: 404 wenn nicht, `GET /orders?external_id=` filtert NICHT)
+ *      Ja → nichts anlegen, nur Tag `printful-synced` + Metafeld nachtragen (ein gescheitertes Markieren führt nie mehr zu einem zweiten Auftrag). Nicht prüfbar → nichts anlegen, später wieder.
+ *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6: «🖼️ Druckdatei (<Platzierung>)», v5: Vorne/Hinten) mit den ECHTEN Printful-
+ *      Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und Mindest-dpi des Katalogs), KI-Kontrolle, Empfänger.
+ *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, Adresse unbrauchbar, mehr als 50 Positionen): KEIN Auftrag, Tag `printful-review`, eine Meldung.
+ *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Tag `printful-synced` + Metafeld printful.order_id setzen (Fehler dabei werden gemeldet, Exit 1).
+ *   3. Entwurf nachlesen: Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös (Verlust → kein Bestätigen).
+ *   4. Nur ohne jeden Befund UND mit PRINTFUL_AUTO_CONFIRM an: POST /orders/<id>/confirm, danach den Status NACHLESEN. «BESTÄTIGT» steht nur, wenn Printful pending/inprocess/… meldet;
+ *      failed (Zahlung der Karte), onhold, canceled, draft → Befund, nie «bestätigt».
+ *   Befunde: Tags `printful-review` + `printful-review-<art>` (wie `printful-problem-<art>` in printful_tracking.mjs): dieselbe Befundart wird nur EINMAL per Telegram gemeldet.
+ *   Eine Bestellung mit Tag `printful-review` wird nicht mehr gelesen: wer die Ursache behoben hat, entfernt das Tag (oder legt den Auftrag im Printful-Dashboard selbst an).
+ *   Vorübergehende Fehler (Netz, 429, 5xx): kein Tag ausser `printful-versuch-<n>`; nach 3 Läufen wird daraus ein Befund.
+ * Gelesen werden alle Seiten der offenen Bestellungen (nicht nur die ersten MAX): Nicht-POD-Bestellungen verdrängen POD-Bestellungen nicht mehr.
+ * Exit 1 bei technischem Fehler (Zugangsdaten fehlen, Shopify/Printful nicht erreichbar, Markieren gescheitert, Telegram-Meldung nicht zugestellt, Zeitlimit). Befunde sind KEIN Exit 1.
+ * ENV: PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=0 schaltet das Bestätigen ab], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN),
+ *      [PRINTFUL_KI_KONTROLLE=pflicht|aus (Vorgabe pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
+ *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=0], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
+ *      [DRY_RUN: alles ausser ''/0/false/no/nein/off ist Trockenlauf: es wird gelesen, nichts geschrieben, nichts gemeldet]
  */
+import { appendFileSync } from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { platzierungenFuerDateien, neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
-const SHOPraw=process.env.SHOPIFY_SHOP||'';
-const ADMIN_TOKEN=(process.env.SHOPIFY_ADMIN_TOKEN||'').trim();
-const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim();
-const CSEC=(shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET)||'').trim();
-const PF_KEY=(process.env.PRINTFUL_API_KEY||'').trim();
-const PF_STORE=(process.env.PRINTFUL_STORE_ID||'').trim();
-const AUTO_CONFIRM=(process.env.PRINTFUL_AUTO_CONFIRM||'1')!=='0';
-const GEMINI=(process.env.GEMINI_API_KEY||'').trim();
-const TG_TOKEN=(process.env.TELEGRAM_BOT_TOKEN||'').trim();
-const TG_CHAT=(process.env.TELEGRAM_CHAT_ID||'').trim();
-const MAX=Math.max(1,parseInt(process.env.MAX||'20',10)||20);
-const DRY=process.env.DRY_RUN==='1';
-const API='2025-01';
+import { neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
+import {
+  planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
+  kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS,
+} from './lib/printful_bestellweg.mjs';
 
-let SHOP=SHOPraw.replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim();
-if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
+const SHOPraw = process.env.SHOPIFY_SHOP || '';
+const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
+const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
+const CSEC = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
+const PF_KEY = (process.env.PRINTFUL_API_KEY || '').trim();
+const PF_STORE = (process.env.PRINTFUL_STORE_ID || '').trim();
+const AUS = ['0', 'false', 'no', 'nein', 'off'];
+const AUTO_CONFIRM = !AUS.includes(String(process.env.PRINTFUL_AUTO_CONFIRM == null || process.env.PRINTFUL_AUTO_CONFIRM === '' ? '1' : process.env.PRINTFUL_AUTO_CONFIRM).trim().toLowerCase());
+const KI = String(process.env.PRINTFUL_KI_KONTROLLE || 'pflicht').trim().toLowerCase() === 'aus' ? 'aus' : 'pflicht';
+const GEMINI = (process.env.GEMINI_API_KEY || '').trim();
+const KI_MODELL = (process.env.PRINTFUL_KI_MODELL || 'gemini-2.5-flash').trim();   // Name aus der alten Fassung; ob Google ihn noch anbietet, ist nicht geprüft (bei Fehler bleibt der Auftrag Entwurf)
+const TG_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
+const TG_CHAT = (process.env.TELEGRAM_CHAT_ID || '').trim();
+const MAX = Math.max(1, parseInt(process.env.MAX || '20', 10) || 20);
+const NETTO_MIN = Number.isFinite(Number(process.env.PRINTFUL_MIN_NETTO_CHF)) && process.env.PRINTFUL_MIN_NETTO_CHF !== undefined && process.env.PRINTFUL_MIN_NETTO_CHF !== '' ? Number(process.env.PRINTFUL_MIN_NETTO_CHF) : 0;
+const HOSTS = [...ERLAUBTE_HOSTS, ...String(process.env.PRINTFUL_DATEI_HOSTS || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean)];
+const RUN_LIMIT_MS = Number.isFinite(Number(process.env.RUN_LIMIT_MS)) && process.env.RUN_LIMIT_MS !== undefined && process.env.RUN_LIMIT_MS !== '' ? Number(process.env.RUN_LIMIT_MS) : 600000;
+const DRY = !['', '0', 'false', 'no', 'nein', 'off'].includes(String(process.env.DRY_RUN == null ? '' : process.env.DRY_RUN).trim().toLowerCase());
+// Shopify unterstützt 2026-01 bis ca. 16.01.2027 (QUELLE shopify.dev laut Prüfer 03.11.2026; Wiedervorlage Dezember 2026). Die alte Fassung lief auf dem abgelaufenen 2025-01.
+const API = '2026-01';
+// Bestellungen je Seite. GEMESSEN 05.11.2026 (extensions.cost): 10 Bestellungen × lineItems(first:50) = 158 angefragte Punkte, 25 × 25 = 206; verfügbar 2000. 20 × 50 bleibt weit darunter.
+const SEITE = 20, MAX_SEITEN = 30;
+const PLATZ_PAUSE_MS = Math.max(0, parseInt(process.env.PF_PLATZIERUNG_PAUSE_MS || '2000', 10) || 0);
+const PAUSE_MS = Math.max(0, parseInt(process.env.PF_PAUSE_MS || '2500', 10) || 0);
+const START = Date.now();
 
-if(!PF_KEY){ console.log('Kein PRINTFUL_API_KEY → No-op (Connector noch nicht scharf).'); process.exit(0); }
-if(!ADMIN_TOKEN && !(CID&&CSEC)){ console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
+let SHOP = SHOPraw.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
+if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 
-// ---------- Shopify-Auth (wie desc_block.mjs) ----------
-async function gql(tok,query,variables){ const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query,variables})}); return r.json(); }
-async function works(tok){ try{ const r=await gql(tok,'{ shop { name } }'); return r?.data?.shop?.name?r.data.shop:null; }catch{ return null; } }
-async function clientCredentials(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); return j.access_token||null; }
-async function resolveToken(){ if(ADMIN_TOKEN){ const s=await works(ADMIN_TOKEN); if(s) return ADMIN_TOKEN; } if(CID&&CSEC){ const t=await clientCredentials(); if(t&&await works(t)) return t; } console.error('❌ Keine funktionierende Shopify-Auth.'); process.exit(0); }
+const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+const fehler = [];          // technische Fehler (Exit 1)
+const zeilen = [];          // Zusammenfassung je Bestellung
+const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0 };
 
-// ---------- Printful ----------
-// timeoutMs: nur für Abfragen (GET) gesetzt; ohne Zeitlimit hinge ein Lauf an einer nicht antwortenden Printful-API. retryAfter: Sekunden aus dem Kopf «Retry-After» (bei 429).
-async function pf(path,method,body,timeoutMs){ const headers={'Authorization':'Bearer '+PF_KEY,'Content-Type':'application/json'}; if(PF_STORE) headers['X-PF-Store-Id']=PF_STORE;
-  const r=await fetch('https://api.printful.com'+path,{method:method||'GET',headers,body:body?JSON.stringify(body):undefined,signal:timeoutMs?AbortSignal.timeout(timeoutMs):undefined});
-  const j=await r.json().catch(()=>({})); return {ok:r.ok,status:r.status,j,retryAfter:parseInt((r.headers&&r.headers.get&&r.headers.get('retry-after'))||'0',10)||0}; }
+if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
+if (!ADMIN_TOKEN && !(CID && CSEC)) { console.error('❌ Keine Shopify-Zugangsdaten (SHOPIFY_CLIENT_ID/SECRET oder SHOPIFY_ADMIN_TOKEN): der Bestellweg kann nichts tun.'); process.exit(1); }
 
-// ---------- Telegram ----------
-async function tg(text){ if(!TG_TOKEN||!TG_CHAT) return; try{ await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text,parse_mode:'HTML',disable_web_page_preview:true})}); }catch{} }
+// ───────────────────────────────────────────── Telegram: true = zugestellt, false = Zustellung gescheitert, null = nicht konfiguriert oder Trockenlauf
+async function tg(text) {
+  if (DRY) { console.log('[DRY] Telegram: ' + String(text).replace(/<[^>]+>/g, '').slice(0, 300)); return null; }
+  if (!TG_TOKEN || !TG_CHAT) return null;
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML', disable_web_page_preview: true }), signal: AbortSignal.timeout(15000) });
+    return !!r.ok;
+  } catch { return false; }
+}
 
-// ---------- Gemini-Kontrolle der Druckdatei ----------
-async function fetchB64(url){ const r=await fetch(url); if(!r.ok) throw new Error('img '+r.status); const ab=await r.arrayBuffer(); const ct=r.headers.get('content-type')||'image/png'; return {b64:Buffer.from(ab).toString('base64'),mime:ct.split(';')[0]}; }
-async function controlDesign(url){ if(!GEMINI) return {pass:true,reason:'(keine Gemini-Prüfung konfiguriert)'};
-  try{ const {b64,mime}=await fetchB64(url);
-    const prompt='You are a print-shop QA checker. Look at this customer print file (design to be printed on a product). Answer with a single word PASS or FAIL, then a short reason. FAIL only if: the image is essentially empty/blank, extremely low quality/blurry, or contains hateful/illegal/explicit content. Otherwise PASS. Format exactly: PASS - reason  OR  FAIL - reason';
-    const body={contents:[{parts:[{text:prompt},{inline_data:{mime_type:mime,data:b64}}]}]};
-    const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GEMINI)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    const j=await r.json().catch(()=>({}));
-    const t=((j.candidates&&j.candidates[0]&&j.candidates[0].content&&j.candidates[0].content.parts||[]).map(p=>p.text||'').join(' ')).trim();
-    const pass=/^\s*pass/i.test(t)|| (!/^\s*fail/i.test(t) && /pass/i.test(t));
-    return {pass:!/^\s*fail/i.test(t), reason:t.slice(0,180)||'(leere Antwort)'};
-  }catch(e){ return {pass:true,reason:'Prüfung übersprungen ('+e.message+')'}; } }
+// ───────────────────────────────────────────── Shopify
+async function gql(tok, query, variables, wiederholbar = true) {
+  let letzte = new Error('Shopify: kein Versuch');
+  const n = wiederholbar ? 3 : 1;
+  for (let i = 0; i < n; i++) {
+    try {
+      const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query, variables }), signal: AbortSignal.timeout(30000) });
+      if (r.status === 429 || r.status >= 500) { letzte = new Error('Shopify HTTP ' + r.status); if (i < n - 1) await pause(PAUSE_MS * (i + 1)); continue; }
+      const j = await r.json().catch(() => null);
+      if (!j || typeof j !== 'object') { letzte = new Error('Shopify: keine lesbare Antwort (HTTP ' + r.status + ')'); if (i < n - 1) await pause(PAUSE_MS * (i + 1)); continue; }
+      if (j.errors) { const t = JSON.stringify(j.errors).slice(0, 240); letzte = new Error('Shopify: ' + t); if (/throttled/i.test(t) && i < n - 1) { await pause(PAUSE_MS * (i + 1)); continue; } throw letzte; }
+      return j;
+    } catch (e) { letzte = e; if (e && /^Shopify: \{|^Shopify: \[/.test(String(e.message))) throw e; if (i < n - 1) await pause(PAUSE_MS * (i + 1)); }
+  }
+  throw letzte;
+}
+async function works(tok) { try { const r = await gql(tok, '{ shop { name } }', undefined, false); return r && r.data && r.data.shop && r.data.shop.name ? r.data.shop : null; } catch { return null; } }
+async function clientCredentials() {
+  try {
+    const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }), signal: AbortSignal.timeout(30000) });
+    const j = await r.json().catch(() => ({})); return j.access_token || null;
+  } catch { return null; }
+}
+async function resolveToken() {
+  if (ADMIN_TOKEN) { const s = await works(ADMIN_TOKEN); if (s) return ADMIN_TOKEN; }
+  if (CID && CSEC) { const t = await clientCredentials(); if (t && await works(t)) return t; }
+  return null;
+}
 
-// ---------- SKU → Printful-Variante ----------
-function variantFromSku(sku){ const m=String(sku||'').match(/_(\d+)\s*$/); return m?parseInt(m[1],10):null; }
-// Platzierung: aus dem ECHTEN Printful-Produkttyp der Variante (GET /products/variant/<id>), nicht aus der Shopify-productType-Zeichenkette
-// (die heisst «Handy-Zubehör», «Tassen & Becher» … und traf 'PHONE-CASE'/'MUG' nie → diese Produkte bekamen 'front'; der Printful-Katalog führt dort nur 'default' und 'preview').
-// Ist die Variante nicht lesbar (Netz, 429, 5xx: nach Wiederholung; 404), gilt die alte Zuordnung über die Shop-Produktart; ist die nicht belegt, bleibt der Auftrag Entwurf (needReview).
-// Logik: lib/printful_platzierung.mjs (platzierungenFuerDateien, rein); Verhalten dieses Klebers: automation/printful_sync_test.mjs (gefälschtes fetch).
-const PLATZ_PAUSE_MS=Math.max(0,parseInt(process.env.PF_PLATZIERUNG_PAUSE_MS||'2000',10)||0);
-const variantProdukt=neuerPlatzierungsCache(async vid=>{ const r=await pf('/products/variant/'+vid,'GET',null,20000); return {status:r.status,result:r.ok?(r.j&&r.j.result):null,retryAfter:r.retryAfter}; },{pauseMs:PLATZ_PAUSE_MS});
-
-const ORDERS_Q=`query($q:String!,$n:Int!){ orders(first:$n, query:$q, sortKey:CREATED_AT){ edges{ node{
-  id name email tags
+const ORDERS_Q = `query($q:String!,$n:Int!,$c:String){ orders(first:$n, after:$c, query:$q, sortKey:CREATED_AT){ pageInfo{ hasNextPage endCursor } edges{ node{
+  id name email tags cancelledAt
   shippingAddress{ name firstName lastName address1 address2 city provinceCode countryCodeV2 zip phone }
-  lineItems(first:50){ edges{ node{ quantity sku title
+  lineItems(first:50){ pageInfo{ hasNextPage } edges{ node{ id quantity sku title
+    discountedTotalSet{ shopMoney{ amount currencyCode } }
     product{ productType tags metafield(namespace:"custom", key:"print_file"){ value } }
     variant{ sku }
     customAttributes{ key value } } } }
 }}}}`;
+const TAG_ADD = `mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }`;
+const MF_SET = `mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ userErrors{ message } } }`;
 
-function pickFiles(attrs){ // → [{side,url}] aus Properties "🖼️ Druckdatei (Vorne/Hinten)"
-  const out=[]; for(const a of attrs||[]){ const k=a.key||''; if(/Druckdatei|Print file/i.test(k) && /^https?:\/\//.test(a.value||'')){ const side=/Hinten|Back/i.test(k)?'back':'front'; out.push({side,url:a.value}); } } return out; }
-function isPod(li){ const tags=(li.product&&li.product.tags||[]).map(x=>x.toLowerCase()); return tags.includes('wunschdesign')||tags.includes('printful_personalized_product'); }
-
-async function tagOrder(tok,id,tags,pfId){ if(DRY) return;
-  await gql(tok,`mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }`,{id,tags});
-  if(pfId) await gql(tok,`mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ userErrors{ message } } }`,{mf:[{ownerId:id,namespace:'printful',key:'order_id',type:'single_line_text_field',value:String(pfId)}]});
+// Tags (und beim ersten Setzen das Metafeld) schreiben; das Ergebnis wird GEPRÜFT (früher wurde es verworfen: ein Fehler hier führte beim nächsten Lauf zu einem zweiten Auftrag).
+async function tagsSetzen(tok, o, tags, pfId) {
+  if (DRY) return true;
+  try {
+    const a = await gql(tok, TAG_ADD, { id: o.id, tags });
+    const ue = a && a.data && a.data.tagsAdd && a.data.tagsAdd.userErrors;
+    if (!Array.isArray(ue) || ue.length) return false;
+    if (pfId) {
+      const m = await gql(tok, MF_SET, { mf: [{ ownerId: o.id, namespace: 'printful', key: 'order_id', type: 'single_line_text_field', value: String(pfId) }] });
+      const ue2 = m && m.data && m.data.metafieldsSet && m.data.metafieldsSet.userErrors;
+      if (!Array.isArray(ue2) || ue2.length) return false;
+    }
+    o.tags = [...new Set([...(o.tags || []), ...tags])];
+    return true;
+  } catch { return false; }
 }
 
-(async function main(){
-  const tok=await resolveToken();
-  // Bezahlt, unfulfilled, noch nicht synchronisiert
-  const q='financial_status:paid fulfillment_status:unfulfilled -tag:printful-synced';
-  const data=await gql(tok,ORDERS_Q,{q,n:MAX});
-  const edges=(data?.data?.orders?.edges)||[];
-  if(!edges.length){ console.log('Keine offenen POD-Bestellungen zum Synchronisieren.'); process.exit(0); }
-  let created=0, drafts=0, skipped=0, fails=[];
-  for(const {node:o} of edges){
-    const items=[]; let needReview=false, reviewMsg=[];
-    for(const {node:li} of (o.lineItems.edges||[])){
-      if(!isPod(li)) continue;
-      const sku=(li.variant&&li.variant.sku)||li.sku;
-      const vid=variantFromSku(sku);
-      let files=pickFiles(li.customAttributes);
-      // Fertig-Produkte (ohne Editor-Upload): festes Motiv aus Produkt-Metafeld custom.print_file
-      if(!files.length){ const mf=li.product&&li.product.metafield&&li.product.metafield.value; if(mf && /^https?:\/\//.test(mf)) files=[{side:'front',url:mf}]; }
-      if(!vid){ skipped++; reviewMsg.push(`${li.title}: SKU ohne Printful-Variante`); needReview=true; continue; }
-      if(!files.length){ skipped++; reviewMsg.push(`${li.title}: keine Druckdatei (Cloudinary/Metafeld?)`); needReview=true; continue; }
-      const plz=await platzierungenFuerDateien({vid,dateien:files,shopTyp:li.product&&li.product.productType,holeProdukt:variantProdukt});
-      if(plz.needReview){ needReview=true; for(const h of plz.hinweise){ reviewMsg.push(`${li.title}: ${h}`); console.warn(`⚠️ ${o.name}: ${h} → Auftrag bleibt Entwurf`); } }
-      const pfFiles=[];
-      for(const [i,f] of files.entries()){ const ctrl=await controlDesign(f.url); if(!ctrl.pass){ needReview=true; reviewMsg.push(`${li.title}: Kontrolle FAIL – ${ctrl.reason}`); }
-        pfFiles.push(plz.files[i]); }
-      items.push({variant_id:vid,quantity:li.quantity||1,files:pfFiles});
-    }
-    if(!items.length){ continue; }
-    const a=o.shippingAddress||{};
-    const recipient={ name:a.name||[a.firstName,a.lastName].filter(Boolean).join(' ')||'Kunde', address1:a.address1||'', address2:a.address2||'', city:a.city||'', state_code:a.provinceCode||'', country_code:a.countryCodeV2||'CH', zip:a.zip||'', email:o.email||'', phone:a.phone||'' };
-    const confirm = AUTO_CONFIRM && !needReview;
-    if(DRY){ console.log(`[DRY] ${o.name}: ${items.length} Item(s), confirm=${confirm}${needReview?' (REVIEW: '+reviewMsg.join('; ')+')':''}`); continue; }
-    const res=await pf('/orders'+(confirm?'?confirm=1':''),'POST',{recipient,items});
-    if(!res.ok){ fails.push(`${o.name}: Printful ${res.status} ${JSON.stringify(res.j).slice(0,160)}`); await tagOrder(tok,o.id,['printful-review']); drafts++; continue; }
-    const pfId=res.j&&res.j.result&&res.j.result.id;
-    await tagOrder(tok,o.id,['printful-synced',confirm?'printful-confirmed':'printful-review'],pfId);
-    if(confirm){ created++; } else { drafts++; }
-    if(needReview){ await tg(`🟡 LuxeStyle POD: Bestellung <b>${o.name}</b> → Printful-Entwurf #${pfId||'?'} (Kontrolle prüfen):\n${reviewMsg.join('\n')}`); }
-    console.log(`${o.name} → Printful #${pfId||'?'} ${confirm?'BESTÄTIGT':'ENTWURF (Review)'}`);
+// ───────────────────────────────────────────── Printful
+// retryAfter: Sekunden aus dem Kopf «Retry-After» (bei 429). Netzfehler und Zeitüberschreitung ergeben status 0 (wirft nie).
+async function pf(path, method, body, timeoutMs) {
+  const headers = { Authorization: 'Bearer ' + PF_KEY, 'Content-Type': 'application/json' };
+  if (PF_STORE) headers['X-PF-Store-Id'] = PF_STORE;
+  try {
+    const r = await fetch('https://api.printful.com' + path, { method: method || 'GET', headers, body: body ? JSON.stringify(body) : undefined, signal: timeoutMs ? AbortSignal.timeout(timeoutMs) : undefined });
+    const j = await r.json().catch(() => ({}));
+    return { ok: r.ok, status: r.status, j, retryAfter: parseInt((r.headers && r.headers.get && r.headers.get('retry-after')) || '0', 10) || 0 };
+  } catch (e) { return { ok: false, status: 0, j: {}, retryAfter: 0, fehler: String(e && e.message || e) }; }
+}
+// Lesen mit Wiederholung (Netz, 408, 429, 5xx); 404 und andere Antworten sind endgültig.
+async function pfLesen(path, versuche = 3) {
+  let r;
+  for (let i = 0; i < versuche; i++) {
+    r = await pf(path, 'GET', null, 30000);
+    const vorlaeufig = r.status === 0 || r.status === 408 || r.status === 429 || r.status >= 500;
+    if (!vorlaeufig || i === versuche - 1) break;
+    await pause(Math.min(70000, Math.max(PAUSE_MS * (i + 1), r.retryAfter * 1000)));
   }
-  if(fails.length){ await tg(`🔴 LuxeStyle POD-Sync Fehler:\n${fails.join('\n')}`); fails.forEach(f=>console.error('✗',f)); }
-  const summary=`Printful-Sync fertig: ${created} bestätigt, ${drafts} Entwurf/Review, ${skipped} Item übersprungen.`;
+  return r;
+}
+const pfText = (r) => { const e = r && r.j && r.j.error; return `HTTP ${r && r.status}${e && e.message ? ' ' + String(e.message).slice(0, 160) : r && r.j && typeof r.j.result === 'string' ? ' ' + r.j.result.slice(0, 120) : ''}`; };
+
+// Variante → Produkt (Platzierung, Optionen); Logik und Zwischenspeicher: lib/printful_platzierung.mjs
+const variantProdukt = neuerPlatzierungsCache(async (vid) => { const r = await pf('/products/variant/' + vid, 'GET', null, 20000); return { status: r.status, result: r.ok ? (r.j && r.j.result) : null, retryAfter: r.retryAfter }; }, { pauseMs: PLATZ_PAUSE_MS });
+
+// Druckdateien und Vorlagen des Produkts (Mindest-dpi, Konflikte), gemerkt je Produkt; Fehler werden nicht gemerkt
+const druckCache = new Map();
+async function holeDruckdaten(pid) {
+  if (druckCache.has(pid)) return druckCache.get(pid);
+  const a = await pfLesen(`/mockup-generator/printfiles/${pid}`);
+  const b = a.ok ? await pfLesen(`/mockup-generator/templates/${pid}`) : null;
+  const erg = a.ok && b && b.ok && a.j && a.j.result && b.j && b.j.result ? { art: 'ok', printfiles: a.j.result, templates: b.j.result } : { art: 'fehler', text: !a.ok ? 'printfiles ' + pfText(a) : 'templates ' + pfText(b) };
+  if (erg.art === 'ok') druckCache.set(pid, erg);
+  return erg;
+}
+
+// ───────────────────────────────────────────── Datei: Kopfzeile (Pixelgrösse) und KI-Kontrolle
+async function holeKopf(url) {
+  try {
+    const r = await fetch(url, { headers: { Range: 'bytes=0-65535' }, signal: AbortSignal.timeout(30000) });
+    if (!(r.status >= 200 && r.status < 300)) return { status: r.status, bytes: null };
+    let bytes;
+    if (r.body && typeof r.body.getReader === 'function') {            // ein Server, der den Bereich ignoriert, schickt die ganze Datei: nur den Anfang lesen
+      const rd = r.body.getReader(), teile = []; let n = 0;
+      while (n < 65536) { const { done, value } = await rd.read(); if (done) break; teile.push(value); n += value.length; }
+      try { await rd.cancel(); } catch { /* egal */ }
+      bytes = Buffer.concat(teile.map((x) => Buffer.from(x))).subarray(0, 65536);
+    } else bytes = Buffer.from(await r.arrayBuffer()).subarray(0, 65536);
+    return { status: r.status, bytes };
+  } catch { return { status: 0, bytes: null }; }
+}
+const KI_PROMPT = 'You are a print-shop QA checker. Look at this customer print file (design to be printed on a product). Answer with a single word PASS or FAIL, then a short reason. FAIL only if: the image is essentially empty/blank, extremely low quality/blurry, or contains hateful/illegal/explicit content. Otherwise PASS. Format exactly: PASS - reason  OR  FAIL - reason';
+/** @returns {Promise<{art:'ok'|'fail'|'technisch'|'fehlt', text:string}>} Ein Fehler der Kontrolle gibt NIE frei (Codex-Fund 28.10.: früher PASS bei «Prüfung übersprungen»). */
+async function kontrolle(url) {
+  if (KI === 'aus') return { art: 'ok', text: '(KI-Kontrolle ausdrücklich abgeschaltet)' };
+  if (!GEMINI) return { art: 'fehlt', text: 'keine KI-Kontrolle eingerichtet (GEMINI_API_KEY fehlt; PRINTFUL_KI_KONTROLLE=aus verzichtet ausdrücklich darauf)' };
+  try {
+    const r = await fetch(kleineKopieUrl(url), { signal: AbortSignal.timeout(30000) });
+    if (!r.ok) return { art: 'technisch', text: 'Bild für die Kontrolle nicht ladbar (HTTP ' + r.status + ')' };
+    const ab = await r.arrayBuffer();
+    if (ab.byteLength > 15 * 1024 * 1024) return { art: 'technisch', text: 'Bild für die Kontrolle zu gross (' + Math.round(ab.byteLength / 1048576) + ' MB)' };
+    const mime = String((r.headers && r.headers.get && r.headers.get('content-type')) || 'image/png').split(';')[0].trim();
+    if (!/^image\//i.test(mime)) return { art: 'technisch', text: 'Datei ist kein Bild (' + mime + ')' };
+    const body = { contents: [{ parts: [{ text: KI_PROMPT }, { inline_data: { mime_type: mime, data: Buffer.from(ab).toString('base64') } }] }] };
+    const g = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(KI_MODELL)}:generateContent`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI }, body: JSON.stringify(body), signal: AbortSignal.timeout(60000) });
+    const j = await g.json().catch(() => ({}));
+    if (!g.ok) return { art: 'technisch', text: 'KI antwortet HTTP ' + g.status + (j && j.error && j.error.message ? ' ' + String(j.error.message).slice(0, 120) : '') };
+    const t = (((j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts) || []).map((p) => p.text || '').join(' ')).trim();
+    const l = kontrolleLesen(t);
+    if (l === 'pass') return { art: 'ok', text: t.slice(0, 180) };
+    if (l === 'fail') return { art: 'fail', text: t.slice(0, 180) };
+    return { art: 'technisch', text: 'KI-Antwort ohne PASS/FAIL: ' + (t.slice(0, 120) || '(leer)') };
+  } catch (e) { return { art: 'technisch', text: 'KI-Kontrolle gescheitert (' + String(e && e.message || e).slice(0, 100) + ')' }; }
+}
+const io = { produkt: variantProdukt, druckdaten: holeDruckdaten, kopf: holeKopf, kontrolle };
+
+// ───────────────────────────────────────────── Befunde melden: Tags + EINE Telegram-Meldung je neuer Befundart
+async function befundMelden(tok, o, befunde, kopf) {
+  const plan = befundPlan({ tags: o.tags || [], befunde });
+  for (const b of befunde) zeilen.push(`${o.name}: [${b.art}] ${b.text}`);
+  if (plan.alarm) {
+    // Telegram nimmt höchstens 4096 Zeichen: je Zeile 300 Zeichen (VOR dem Maskieren gekürzt, sonst entstünde ein halbes «&amp;»), höchstens 10 Zeilen
+    const texte = plan.neu.slice(0, 10).map((b) => '• ' + esc(String(b.text).slice(0, 300))).join('\n') + (plan.neu.length > 10 ? `\n… und ${plan.neu.length - 10} weitere` : '');
+    const ok = await tg(`${befunde.some((b) => b.hart) ? '🔴' : '🟡'} LuxeStyle POD: Bestellung <b>${esc(o.name)}</b> ${esc(kopf)}:\n${texte}`);
+    if (ok === false) { fehler.push(`${o.name}: Telegram-Meldung nicht zugestellt (${plan.neu.map((b) => b.art).join(', ')})`); return false; }   // ohne Tag: der nächste Lauf meldet erneut
+  }
+  if (plan.hinzu.length && !(await tagsSetzen(tok, o, plan.hinzu))) { fehler.push(`${o.name}: Tags ${plan.hinzu.join(', ')} nicht gesetzt (Befund: ${befunde.map((b) => b.art).join(', ')})`); return false; }
+  return true;
+}
+// Vorübergehender Fehler (Netz, 429, 5xx): nichts angelegt; der Zähler im Tag macht nach MAX_VERSUCHE einen Befund daraus
+async function vorlaeufigerFehler(tok, o, text) {
+  const n = versuche(o.tags || []) + 1;
+  fehler.push(`${o.name}: ${text} (Versuch ${n} von ${MAX_VERSUCHE})`); zaehler.spaeter++;
+  if (DRY) return;
+  if (!(await tagsSetzen(tok, o, [versuchTag(n)]))) fehler.push(`${o.name}: Versuchszähler nicht gesetzt`);
+  if (n >= MAX_VERSUCHE) await befundMelden(tok, o, [{ art: 'wiederholt-gescheitert', text: `${n} Läufe in Folge ohne Erfolg (${text})`, hart: true }], 'wurde nicht an Printful übergeben');
+}
+
+// ───────────────────────────────────────────── Printful-Auftrag lesen (mit Wartezeit, bis Printful die Dateien und Kosten gerechnet hat)
+async function auftragLesen(pfId, fertig) {
+  let r = null;
+  for (let i = 0; i < 4; i++) {
+    r = await pfLesen('/orders/' + pfId, 2);
+    if (r.ok && r.j && r.j.result) { const urteil = fertig(r.j.result); if (urteil) return { order: r.j.result, urteil }; }
+    else if (!r.ok && r.status !== 0 && r.status < 500 && r.status !== 429) break;
+    if (i < 3) await pause(PAUSE_MS * (i + 1));
+  }
+  return { order: r && r.ok && r.j ? r.j.result || null : null, urteil: null, status: r && r.status };
+}
+
+async function bearbeite(tok, o) {
+  const ext = externalId(o.name);
+  if (!ext) { fehler.push(`${o.name}: aus der Bestellnummer lässt sich keine external_id bilden`); return; }
+  // 0. Gibt es den Auftrag schon? (external_id; das Markieren in Shopify kann gescheitert sein)
+  const vorh = await pfLesen('/orders/@' + encodeURIComponent(ext));
+  if (vorh.status === 200 && vorh.j && vorh.j.result) { await vorhandenBehandeln(tok, o, ext, vorh.j.result); return; }
+  if (vorh.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lässt sich nach einem bestehenden Auftrag nicht fragen (${pfText(vorh)}): es wird nichts angelegt`); return; }
+  // 1. Planen
+  const plan = await planeBestellung(o, io, { hosts: HOSTS });
+  const emp = empfaengerAus(o);
+  const befunde = [...plan.befunde, ...emp.befunde];
+  if (!plan.items.length && !befunde.length) befunde.push({ art: 'ohne-artikel', text: 'aus der Bestellung ist kein Printful-Artikel entstanden', hart: true });
+  if (befunde.some((b) => b.hart) || !plan.items.length) {
+    zaehler.ohneAuftrag++;
+    console.warn(`⚠️ ${o.name}: kein Printful-Auftrag (${befunde.filter((b) => b.hart).map((b) => b.art).join(', ')})`);
+    await befundMelden(tok, o, befunde, 'wurde NICHT an Printful übergeben');
+    return;
+  }
+  if (DRY) {
+    console.log(`[DRY] ${o.name}: ${plan.items.length} Artikel, external_id ${ext}, würde als Entwurf angelegt und ${AUTO_CONFIRM && !befunde.length ? 'danach bestätigt (vorbehaltlich Dateistatus und Kosten)' : 'NICHT bestätigt'}${befunde.length ? ' (REVIEW: ' + befunde.map((b) => `[${b.art}] ${b.text}`).join('; ') + ')' : ''}`);
+    return;
+  }
+  // 2. Entwurf anlegen (nie wiederholen: ein Zeitüberschreitung-POST kann «gelang» heissen; darum danach über external_id nachfragen)
+  let res = await pf('/orders', 'POST', { external_id: ext, recipient: emp.recipient, items: plan.items }, 60000);
+  let pfId = res.ok && res.j && res.j.result && res.j.result.id;
+  if (!pfId) {
+    if (res.status === 0 || res.status === 408 || res.status === 429 || res.status >= 500 || res.ok) {
+      await pause(PAUSE_MS);
+      const nach = await pfLesen('/orders/@' + encodeURIComponent(ext), 2);
+      if (nach.status === 200 && nach.j && nach.j.result) { await vorhandenBehandeln(tok, o, ext, nach.j.result, 'Anlegen wurde nicht quittiert, der Auftrag existiert aber'); return; }
+      await vorlaeufigerFehler(tok, o, `Anlegen des Printful-Auftrags nicht quittiert (${pfText(res)}), ein Auftrag mit external_id ${ext} existiert nicht`); return;
+    }
+    if (res.status === 401 || res.status === 403) { fehler.push(`${o.name}: Printful verweigert den Zugriff (${pfText(res)}): Schlüssel oder Store-ID prüfen`); return; }
+    zaehler.ohneAuftrag++;
+    await befundMelden(tok, o, [{ art: 'printful-abgelehnt', text: `Printful lehnt den Auftrag ab (${pfText(res)})`, hart: true }], 'wurde von Printful abgelehnt');
+    return;
+  }
+  // 3. Sofort markieren: Tag + Metafeld. Gelingt das nicht, wird NICHT bestätigt; der nächste Lauf findet den Entwurf über external_id und holt es nach.
+  if (!(await tagsSetzen(tok, o, ['printful-synced'], pfId))) { fehler.push(`${o.name}: Printful-Entwurf #${pfId} angelegt, aber Tag/Metafeld nicht gesetzt (nicht bestätigt; der nächste Lauf findet ihn über external_id ${ext})`); zaehler.entwuerfe++; return; }
+  // 4. Entwurf nachlesen: Dateien und Kosten
+  const weich = befunde.slice();
+  const urteilEntwurf = (ord) => ({ d: dateienStatus(ord), k: kostenPruefen({ costs: ord.costs, erloesChf: plan.erloesChf, nettoMin: NETTO_MIN }) });
+  // fertig = Printful hat die Dateien geprüft (nicht «waiting») UND die Kosten gerechnet (total vorhanden, nicht «calculating»); sonst nach kurzer Pause nochmal lesen
+  const lese = await auftragLesen(pfId, (ord) => { const u = urteilEntwurf(ord), c = ord.costs; const gerechnet = !!c && c.total !== null && c.total !== undefined && c.total !== '' && String(c.calculation_status || 'done').toLowerCase() === 'done'; return u.d.art === 'wartet' || !gerechnet ? null : u; });
+  if (!lese.order) weich.push({ art: 'entwurf-nicht-lesbar', text: `Entwurf #${pfId} lässt sich nicht nachlesen (HTTP ${lese.status || 0}): Dateien und Kosten ungeprüft`, hart: false });
+  else {
+    const { d, k } = lese.urteil || urteilEntwurf(lese.order);
+    if (d.art === 'problem') for (const t of d.texte) weich.push({ art: 'datei-abgelehnt', text: t, hart: false });
+    else if (d.art === 'wartet') weich.push({ art: 'datei-wartet', text: 'Printful hat die Dateien nach mehreren Minuten noch nicht fertig geprüft', hart: false });
+    if (!k.ok) weich.push({ art: k.art, text: k.text, hart: false });
+  }
+  if (!AUTO_CONFIRM) weich.push({ art: 'manuell', text: 'automatisches Bestätigen ist aus (PRINTFUL_AUTO_CONFIRM=0): Entwurf im Printful-Dashboard prüfen und bestätigen', hart: false });
+  if (weich.length) {
+    zaehler.entwuerfe++;
+    console.log(`${o.name} → Printful #${pfId} ENTWURF (Review)`);
+    await befundMelden(tok, o, weich, `→ Printful-Entwurf #${pfId} (nicht bestätigt)`);
+    return;
+  }
+  // 5. Bestätigen und den Status NACHLESEN
+  const c = await pf(`/orders/${pfId}/confirm`, 'POST', null, 60000);
+  const unklar = !c.ok && (c.status === 0 || c.status === 408 || c.status >= 500);
+  if (!c.ok && !unklar) {
+    zaehler.entwuerfe++;
+    console.log(`${o.name} → Printful #${pfId} ENTWURF (Review)`);
+    await befundMelden(tok, o, [{ art: 'bestaetigen-abgelehnt', text: `Printful lehnt das Bestätigen ab (${pfText(c)})`, hart: false }], `→ Printful-Entwurf #${pfId} (nicht bestätigt)`);
+    return;
+  }
+  const nach = await auftragLesen(pfId, (ord) => { const s = statusBewerten(ord); return s.art === 'wartet' ? null : s; });
+  const st = nach.urteil || (nach.order ? statusBewerten(nach.order) : null);
+  if (st && st.art === 'bestaetigt') {
+    zaehler.bestaetigt++;
+    await tagsSetzen(tok, o, ['printful-confirmed']) || fehler.push(`${o.name}: Tag printful-confirmed nicht gesetzt`);
+    console.log(`${o.name} → Printful #${pfId} BESTÄTIGT (Status ${st.text})`);
+    return;
+  }
+  zaehler.entwuerfe++;
+  console.log(`${o.name} → Printful #${pfId} ENTWURF (Review)`);
+  const art = st ? st.befund : 'status-unbekannt';
+  await befundMelden(tok, o, [{ art, text: st ? st.text : `Status von Auftrag #${pfId} nach dem Bestätigen nicht lesbar${unklar ? ' (Bestätigen unklar: ' + pfText(c) + ')' : ''}`, hart: false }], `→ Printful #${pfId}: NICHT als bestätigt gemeldet`);
+}
+
+// Der Auftrag existiert schon (external_id): Tag und Metafeld nachtragen, nie ein zweiter Auftrag
+async function vorhandenBehandeln(tok, o, ext, ord, grund) {
+  zaehler.vorhanden++;
+  const s = statusBewerten(ord);
+  console.log(`${o.name}: Printful-Auftrag #${ord.id} existiert schon (external_id ${ext}, Status ${ord.status})${grund ? ' – ' + grund : ''}: nichts angelegt`);
+  if (!DRY && !(await tagsSetzen(tok, o, ['printful-synced'], ord.id))) fehler.push(`${o.name}: Printful-Auftrag #${ord.id} existiert, Tag/Metafeld konnten nicht nachgetragen werden`);
+  if (s.art === 'problem') await befundMelden(tok, o, [{ art: 'vorhanden-' + s.befund, text: `Printful-Auftrag #${ord.id} existiert schon (${ext}): ${s.text}`, hart: false }], 'hat schon einen Printful-Auftrag');
+  else if (s.art === 'wartet') await befundMelden(tok, o, [{ art: 'vorhanden-entwurf', text: `Printful-Auftrag #${ord.id} existiert schon (${ext}) und ist noch ein Entwurf: im Printful-Dashboard prüfen und bestätigen`, hart: false }], 'hat schon einen Printful-Entwurf');
+}
+
+const hatDruckdatei = (li) => (li.customAttributes || []).some((a) => /Druckdatei|Print file|^_pod_karte$/i.test((a && a.key) || ''));
+
+(async function main() {
+  const tok = await resolveToken();
+  if (!tok) { console.error('❌ Keine funktionierende Shopify-Auth.'); await tg('🔴 LuxeStyle POD-Sync: keine funktionierende Shopify-Anmeldung, der Bestellweg läuft nicht.'); process.exit(1); return; }
+  // Bezahlt, unversendet, noch nicht synchronisiert, nicht in der Prüfung. ALLE Seiten lesen, bis MAX POD-Bestellungen da sind (Nicht-POD-Bestellungen verdrängen sie nicht mehr).
+  const q = 'status:open financial_status:paid fulfillment_status:unfulfilled -tag:printful-synced -tag:printful-review';
+  const kandidaten = []; let cursor = null, seiten = 0, mehr = false;
+  while (kandidaten.length < MAX) {
+    const d = await gql(tok, ORDERS_Q, { q, n: SEITE, c: cursor });
+    const conn = d && d.data && d.data.orders;
+    if (!conn) throw new Error('Shopify: keine Bestellliste in der Antwort');
+    seiten++;
+    for (const e of conn.edges || []) {
+      const n = e && e.node; if (!n) continue;
+      zaehler.gelesen++;
+      if (n.cancelledAt) { console.log(`${n.name}: in Shopify storniert (${n.cancelledAt}), wird nicht an Printful übergeben`); continue; }   // eine stornierte, noch nicht erstattete Bestellung darf nie gedruckt werden
+      const lis = ((n.lineItems && n.lineItems.edges) || []).map((x) => x && x.node).filter(Boolean);
+      // Prüfen, wenn eine Position Editor-Ware ist, eine Druckdatei-Eigenschaft trägt (auch ohne POD-Tag: Befund) oder die Positionsliste länger ist als eine Abfrage (die 51. könnte Editor-Ware sein)
+      if (lis.some((li) => istPod(li) || hatDruckdatei(li)) || (n.lineItems && n.lineItems.pageInfo && n.lineItems.pageInfo.hasNextPage)) kandidaten.push(n);
+    }
+    mehr = !!(conn.pageInfo && conn.pageInfo.hasNextPage);
+    if (!mehr) break;
+    cursor = conn.pageInfo.endCursor;
+    if (seiten >= MAX_SEITEN) { fehler.push(`Seitenlimit (${MAX_SEITEN} Seiten) erreicht: weitere offene Bestellungen blieben ungelesen`); break; }
+  }
+  if (!kandidaten.length) console.log(`Keine offenen POD-Bestellungen zum Synchronisieren (${zaehler.gelesen} offene Bestellung(en) in ${seiten} Seite(n) gelesen).`);
+  for (const o of kandidaten.slice(0, MAX)) {
+    if (Date.now() - START > RUN_LIMIT_MS) { fehler.push(`Zeitlimit (${Math.round(RUN_LIMIT_MS / 1000)} s) erreicht: ${o.name} und die folgenden Bestellungen bleiben für den nächsten Lauf`); break; }
+    try { await bearbeite(tok, o); } catch (e) { fehler.push(`${o.name}: unerwarteter Fehler: ${String(e && e.message || e).slice(0, 200)}`); }
+  }
+  const summary = `Printful-Sync fertig: ${zaehler.bestaetigt} bestätigt, ${zaehler.entwuerfe} Entwurf/Review, ${zaehler.ohneAuftrag} ohne Auftrag (harter Befund), ${zaehler.vorhanden} schon vorhanden, ${zaehler.spaeter} später wieder, ${fehler.length} Fehler${DRY ? ' (DRY_RUN)' : ''}.`;
+  if (process.env.GITHUB_STEP_SUMMARY) { try { appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Printful-Sync\n\n${summary}\n\n${zeilen.length ? zeilen.map((z) => '- ' + z).join('\n') + '\n' : ''}${fehler.length ? '\n**Fehler:**\n' + fehler.map((f) => '- ' + f).join('\n') + '\n' : ''}`); } catch { /* Zusammenfassung ist Zugabe */ } }
+  if (fehler.length) { fehler.forEach((f) => console.error('✗', f)); await tg(`🔴 LuxeStyle POD-Sync Fehler:\n${fehler.slice(0, 8).map(esc).join('\n')}`); process.exitCode = 1; }
+  if ((zaehler.bestaetigt || zaehler.entwuerfe) && !DRY) await tg(`✅ LuxeStyle POD: ${esc(summary)}`);
   console.log(summary);
-  if((created||drafts) && !DRY) await tg(`✅ LuxeStyle POD: ${summary}`);
-})().catch(e=>{ console.error('Fataler Fehler:',e); process.exit(0); });
+})().catch(async (e) => { console.error('Fataler Fehler:', e); await tg(`🔴 LuxeStyle POD-Sync: fataler Fehler ${esc(e && e.message)}`); process.exit(1); });

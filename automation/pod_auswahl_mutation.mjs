@@ -11,13 +11,13 @@ import { fileURLToPath } from 'node:url';
 const REPO = fileURLToPath(new URL('..', import.meta.url));
 const DATEIEN = [
   'automation/pod_auswahl.mjs', 'automation/pod_auswahl_test.mjs', 'automation/printful_sync.mjs', 'automation/printful_sync_test.mjs', 'automation/printful_reprice.mjs',
-  ...['pod_preise', 'printful_platzierung', 'pod_auswahl_spec', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}.mjs`),
-  ...['pod_preise', 'printful_platzierung', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}_test.mjs`),
+  ...['pod_preise', 'printful_platzierung', 'printful_bestellweg', 'pod_auswahl_spec', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}.mjs`),
+  ...['pod_preise', 'printful_platzierung', 'printful_bestellweg', 'pod_auswahl_plan', 'pod_auswahl_daten', 'pod_auswahl_schreiben', 'pod_auswahl_gql'].map((n) => `automation/lib/${n}_test.mjs`),
   'automation/lib/shopify_secret.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_host.mjs',
   ...readdirSync(join(REPO, 'dropship/pod-auswahl')).filter((f) => f.endsWith('.json')).map((f) => `dropship/pod-auswahl/${f}`),
   'dropship/pod-auswahl/README.md', 'automation/pod_auswahl_mutation.mjs',   // vom Test «kein Eszett» gelesen
 ];
-const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_gql_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
+const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/printful_bestellweg_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_gql_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
 const ALLE = [...LIB, 'pod_auswahl_test.mjs', 'printful_sync_test.mjs'];
 
 // { name, datei, von, zu, alle? (alle Vorkommen ersetzen, sonst muss `von` genau einmal vorkommen), tests }
@@ -46,7 +46,7 @@ export const MUTANTEN = [
   { name: 'Preis wird NICHT gegen den Katalogpreis gerechnet (Einkauf 1 USD)', datei: L('pod_auswahl_plan'), von: 'einkaufUsd: Number(kv.price), versandUsd: rate.usd }, ctx.regel)', zu: 'einkaufUsd: 1, versandUsd: rate.usd }, ctx.regel)', alle: true, tests: ALLE },
   // ── Platzierung
   { name: 'PHONE-CASE fehlt in den Einzel-Typen', datei: L('printful_platzierung'), von: "['MUG', 'PHONE-CASE', 'STICKER', 'POSTER', 'FRAMED-POSTER'", zu: "['MUG', 'STICKER', 'POSTER', 'FRAMED-POSTER'", tests: ALLE },
-  { name: 'eine einzige Platzierung wird nicht erkannt', datei: L('printful_platzierung'), von: 'if (dr.length === 1) return { platzierung: dr[0]', zu: 'if (false) return { platzierung: dr[0]', tests: ALLE },
+  { name: 'eine einzige Platzierung wird nicht erkannt', datei: L('printful_platzierung'), von: 'if (dr.length === 1) {', zu: 'if (false) {', tests: ALLE },
   { name: 'Rückseite wird immer zu «front»', datei: L('printful_platzierung'), von: "return { platzierung: s, gesichert, quelle: 'printful-typ'", zu: "return { platzierung: 'front', gesichert, quelle: 'printful-typ'", tests: ALLE },
   { name: 'Rückfall vergisst «POSTER»', datei: L('printful_platzierung'), von: "'STICKER', 'POSTER', 'CANVAS', 'MAGNET']);", zu: "'STICKER', 'CANVAS', 'MAGNET']);", tests: ALLE },
   { name: 'Rückfall vergisst «CANVAS»', datei: L('printful_platzierung'), von: "'STICKER', 'POSTER', 'CANVAS', 'MAGNET']);", zu: "'STICKER', 'POSTER', 'MAGNET']);", tests: ALLE },
@@ -63,16 +63,16 @@ export const MUTANTEN = [
   { name: 'Retry-After von Printful wird ignoriert', datei: L('printful_platzierung'), von: '((r && Number(r.retryAfter)) || 0) * 1000', zu: '0', tests: ALLE },
   { name: 'ungesicherte Platzierung setzt needReview nicht', datei: L('printful_platzierung'), von: 'needReview: hinweise.length > 0,', zu: 'needReview: false,', tests: ALLE },
   // ── Bestellweg (printful_sync.mjs): Verhalten gegen gefälschtes fetch (printful_sync_test.mjs), nicht nur Quelltext
-  { name: 'Bestellweg: Seite der Druckdatei geht verloren (alles «front»)', datei: 'automation/printful_sync.mjs', von: 'pfFiles.push(plz.files[i]);', zu: "pfFiles.push({type:'front',url:f.url});", tests: ALLE },
-  { name: 'Bestellweg: Shop-Produktart wird nicht als Rückfall mitgegeben', datei: 'automation/printful_sync.mjs', von: 'shopTyp:li.product&&li.product.productType', zu: "shopTyp:''", tests: ALLE },
-  { name: 'Bestellweg: falscher Printful-Pfad (/products/<id> statt /products/variant/<id>)', datei: 'automation/printful_sync.mjs', von: "pf('/products/variant/'+vid", zu: "pf('/products/'+vid", tests: ALLE },
-  { name: 'Bestellweg: Variantennummer geht nicht an die Abfrage', datei: 'automation/printful_sync.mjs', von: 'platzierungenFuerDateien({vid,dateien:files', zu: 'platzierungenFuerDateien({vid:0,dateien:files', tests: ALLE },
-  { name: 'Bestellweg: die Druckdateien gehen nicht an die Platzierung', datei: 'automation/printful_sync.mjs', von: 'platzierungenFuerDateien({vid,dateien:files', zu: 'platzierungenFuerDateien({vid,dateien:[]', tests: ALLE },
-  { name: 'Bestellweg: HTTP-Status der Variantenabfrage geht verloren (alles gilt als 200)', datei: 'automation/printful_sync.mjs', von: 'return {status:r.status,result:', zu: 'return {status:200,result:', tests: ALLE },
-  { name: 'Bestellweg: ungesicherte Platzierung macht den Auftrag nicht zum Entwurf', datei: 'automation/printful_sync.mjs', von: 'if(plz.needReview){ needReview=true;', zu: 'if(plz.needReview){', tests: ALLE },
-  { name: 'Bestellweg: Variantenabfrage ohne Zeitlimit', datei: 'automation/printful_sync.mjs', von: 'signal:timeoutMs?AbortSignal.timeout(timeoutMs):undefined', zu: 'signal:undefined', tests: ALLE },
-  { name: 'Bestellweg: die Bestellung selbst bekommt ein Zeitlimit (eine zweite Bestellung wäre möglich)', datei: 'automation/printful_sync.mjs', von: "const res=await pf('/orders'+(confirm?'?confirm=1':''),'POST',{recipient,items});", zu: "const res=await pf('/orders'+(confirm?'?confirm=1':''),'POST',{recipient,items},20000);", tests: ALLE },
-  { name: 'Bestellweg: ein Entwurf wird trotzdem bestätigt', datei: 'automation/printful_sync.mjs', von: 'const confirm = AUTO_CONFIRM && !needReview;', zu: 'const confirm = AUTO_CONFIRM;', tests: ALLE },
+  { name: 'Bestellweg: Seite der Druckdatei geht verloren (alles «front»)', datei: L('printful_platzierung'), von: 'files.push({ type: e.platzierung, url: d.url });', zu: "files.push({ type: 'front', url: d.url });", tests: ALLE },
+  { name: 'Bestellweg: Shop-Produktart wird nicht als Rückfall mitgegeben', datei: L('printful_bestellweg'), von: "shopTyp: (z.product && z.product.productType) || ''", zu: "shopTyp: ''", tests: ALLE },
+  { name: 'Bestellweg: falscher Printful-Pfad (/products/<id> statt /products/variant/<id>)', datei: 'automation/printful_sync.mjs', von: "pf('/products/variant/' + vid", zu: "pf('/products/' + vid", tests: ALLE },
+  { name: 'Bestellweg: Variantennummer geht nicht an die Abfrage', datei: L('printful_bestellweg'), von: 'const prod = await io.produkt(sku.vid);', zu: 'const prod = await io.produkt(0);', tests: ALLE },
+  { name: 'Bestellweg: die Druckdateien gehen nicht an die Platzierung', datei: L('printful_bestellweg'), von: 'dateien: dateien.map((d) => d.platzierung', zu: 'dateien: [].map((d) => d.platzierung', tests: ALLE },
+  { name: 'Bestellweg: HTTP-Status der Variantenabfrage geht verloren (alles gilt als 200)', datei: 'automation/printful_sync.mjs', von: 'return { status: r.status, result: r.ok', zu: 'return { status: 200, result: r.ok', tests: ALLE },
+  { name: 'Bestellweg: ungesicherte Platzierung macht den Auftrag nicht zum Entwurf', datei: L('printful_bestellweg'), von: "for (const h of plz.hinweise) weich('platzierung', vor(h));", zu: "for (const h of []) weich('platzierung', vor(h));", tests: ALLE },
+  { name: 'Bestellweg: Variantenabfrage ohne Zeitlimit', datei: 'automation/printful_sync.mjs', von: 'signal: timeoutMs ? AbortSignal.timeout(timeoutMs) : undefined', zu: 'signal: undefined', tests: ALLE },
+  { name: 'Bestellweg: das Anlegen des Auftrags hat kein Zeitlimit (hängt an einer stummen API)', datei: 'automation/printful_sync.mjs', von: "items: plan.items }, 60000);", zu: "items: plan.items }, 0);", tests: ALLE },
+  { name: 'Bestellweg: ein Entwurf mit Befund wird trotzdem bestätigt', datei: 'automation/printful_sync.mjs', von: '  if (weich.length) {', zu: '  if (false) {', tests: ALLE },
   // ── Schreibweg
   { name: 'Tageslimit wird nicht erkannt', datei: L('pod_auswahl_schreiben'), von: 'const DROSSEL = /VARIANT_THROTTLE|Daily variant creation limit/i;', zu: 'const DROSSEL = /NIE_TREFFER/i;', tests: ALLE },
   { name: 'neue Varianten werden mit Bestandsführung angelegt', datei: L('pod_auswahl_schreiben'), von: 'inventoryItem: { sku: v.sku, tracked: false, requiresShipping: true },', zu: 'inventoryItem: { sku: v.sku, tracked: true, requiresShipping: true },', tests: ALLE },

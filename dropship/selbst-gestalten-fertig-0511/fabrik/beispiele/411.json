@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:41:14.547Z",
+  "am": "2026-11-05T18:54:40.787Z",
   "katalogGeholt": "2026-11-05T17:02:32.275Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -11,6 +11,7 @@
    "ekAufschlagOhneSchaetzung": 1.26,
    "digitalisierungUsd": 6.5,
    "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
    "medienMax": 20,
    "medienOhneFarbe": 6,
    "stufen": [
@@ -1527,7 +1528,7 @@
    "label": "Waldgrün"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>14 bis 16 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"411\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":411,\"klasse\":\"FLACH\",\"technik\":\"DTG\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":961,\"oben\":381,\"breite\":1110,\"hoehe\":1480,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/front/05_ghost_front_base_whitebg.png?v=1744093611\",\"hintergrund\":null},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":943,\"oben\":517,\"breite\":1112,\"hoehe\":1483,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/back/05_ghost_back_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titel\":\"Etikett aussen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":2.6,\"druck\":{\"px\":[450,450],\"dpi\":150,\"cm\":[7.6,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[560,560],\"links\":137,\"oben\":187,\"breite\":288,\"hoehe\":288,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"back\",\"label_inside\",\"label_inside_dtf\"]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titel\":\"Etikett innen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[750,750],\"dpi\":300,\"cm\":[6.4,6.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":251,\"oben\":182,\"breite\":228,\"hoehe\":228,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\",\"label_inside_dtf\"]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titel\":\"Ärmel links\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1512,\"oben\":826,\"breite\":264,\"hoehe\":1057,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titel\":\"Ärmel rechts\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1394,\"oben\":842,\"breite\":264,\"hoehe\":1057,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"label_inside_dtf\",\"dateiTyp\":\"label_inside_dtf\",\"titel\":\"Etikett innen (DTF)\",\"art\":\"etikett\",\"technik\":\"DTFILM\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[750,750],\"dpi\":300,\"cm\":[6.4,6.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":251,\"oben\":182,\"breite\":228,\"hoehe\":228,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\",\"label_inside\"]},{\"id\":\"embroidery_wrist_left\",\"dateiTyp\":\"embroidery_wrist_left\",\"titel\":\"Stickerei Handgelenk links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1507,\"oben\":1550,\"breite\":434,\"hoehe\":650,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/zoomed-in/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_left\",\"sleeve_right\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titel\":\"Stickerei Handgelenk rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1280,\"oben\":1539,\"breite\":434,\"hoehe\":650,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/zoomed-in/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_right\",\"sleeve_left\"]}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Ein klassischer Sweatshirt-Schnitt mit gerippten Rundhalsausschnitt, Ärmelbündchen und geradem Saum. Schicht es über andere Kleidung oder trag es allein für einen zeitgemässen Streetwear-Look.</p>\n<p>Mit dem weichen Fleece innen und der bequemen Passform wird es sofort dein liebster Alltagspullover.</p>\n<ul><li>100 % Baumwolle an der Aussenseite</li><li>65 % Baumwolle, 35 % Polyester</li><li>Anthrazit meliert (bei Printful «Charcoal Heather»): 55 % Baumwolle, 45 % Polyester</li><li>Stoffgewicht: 288,2 g/m²</li><li>Dicht gestricktes 3-End-Fleece</li><li>Mit Seitennähten verarbeitet</li><li>Rückenpatch aus demselben Stoff</li><li>Rippkragen, Bündchen und Saum mit Doppelnadelnaht</li><li>Der unbedruckte Rohling stammt aus Pakistan.</li></ul>\n<p>Hinweis: Dieses Sweatshirt fällt klein aus. Für die perfekte Passform empfehlen wir, eine Grösse grösser als üblich zu bestellen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1800 × 2400 Pixel bei 150 dpi, das sind 30,5 × 40,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>83,8 bis 91,4 cm</td><td>59,7 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>94 bis 101,6 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>104,1 bis 109,2 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>111,8 bis 116,8 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>119,4 bis 124,5 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>127 bis 132,1 cm</td><td>61 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>50,8 cm</td><td>59,7 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>53,3 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>58,4 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>63,5 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>67,3 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>71,1 cm</td><td>61 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>14 bis 16 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"411\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":411,\"typ\":\"T-SHIRT\",\"titelDe\":\"Unisex Premium Sweatshirt\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":300249,\"bildUrl\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/front/05_ghost_front_base_whitebg.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":961,\"flaecheOben\":381,\"flaecheBreite\":1110,\"flaecheHoehe\":1480,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":158536,\"bildUrl\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/back/05_ghost_back_base_whitebg.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":943,\"flaecheOben\":517,\"flaecheBreite\":1112,\"flaecheHoehe\":1483,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titelDe\":\"Etikett aussen\",\"titelEn\":\"Outside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":86972,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":137,\"flaecheOben\":187,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[\"back\",\"label_inside\",\"label_inside_dtf\"]},{\"id\":\"label_inside\",\"dateiTyp\":\"label_inside\",\"titelDe\":\"Etikett innen\",\"titelEn\":\"Inside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":212,\"breitePx\":750,\"hoehePx\":750,\"dpi\":300},\"vorlage\":{\"vorlageId\":47734,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":251,\"flaecheOben\":182,\"flaecheBreite\":228,\"flaecheHoehe\":228,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":0.99,\"aufpreisChf\":1,\"kollidiertMit\":[\"label_outside\",\"label_inside_dtf\"]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titelDe\":\"Ärmel links\",\"titelEn\":\"Left sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":147,\"breitePx\":450,\"hoehePx\":1800,\"dpi\":150},\"vorlage\":{\"vorlageId\":158726,\"bildUrl\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1512,\"flaecheOben\":826,\"flaecheBreite\":264,\"flaecheHoehe\":1057,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titelDe\":\"Ärmel rechts\",\"titelEn\":\"Right sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":147,\"breitePx\":450,\"hoehePx\":1800,\"dpi\":150},\"vorlage\":{\"vorlageId\":159036,\"bildUrl\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1394,\"flaecheOben\":842,\"flaecheBreite\":264,\"flaecheHoehe\":1057,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"label_inside_dtf\",\"dateiTyp\":\"label_inside_dtf\",\"titelDe\":\"Etikett innen (DTF)\",\"titelEn\":\"Inside label\",\"art\":\"etikett\",\"technik\":\"DTFILM\",\"printfile\":{\"printfileId\":212,\"breitePx\":750,\"hoehePx\":750,\"dpi\":300},\"vorlage\":{\"vorlageId\":209087,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":251,\"flaecheOben\":182,\"flaecheBreite\":228,\"flaecheHoehe\":228,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":0.99,\"aufpreisChf\":1,\"kollidiertMit\":[\"label_outside\",\"label_inside\"]},{\"id\":\"embroidery_wrist_left\",\"dateiTyp\":\"embroidery_wrist_left\",\"titelDe\":\"Stickerei Handgelenk links\",\"titelEn\":\"Left wrist\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":338,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":165213,\"bildUrl\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/zoomed-in/05_ghost_left_base_whitebg.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1507,\"flaecheOben\":1550,\"flaecheBreite\":434,\"flaecheHoehe\":650,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[\"sleeve_left\",\"sleeve_right\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titelDe\":\"Stickerei Handgelenk rechts\",\"titelEn\":\"Right wrist\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":338,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":165193,\"bildUrl\":\"https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/zoomed-in/05_ghost_right_base_whitebg.png?v=1744093611\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#101010\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1280,\"flaecheOben\":1539,\"flaecheBreite\":434,\"flaecheHoehe\":650,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[\"sleeve_right\",\"sleeve_left\"]}],\"druckdateien\":{\"1\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"90\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"147\":{\"printfileId\":147,\"breitePx\":450,\"hoehePx\":1800,\"dpi\":150},\"212\":{\"printfileId\":212,\"breitePx\":750,\"hoehePx\":750,\"dpi\":300},\"338\":{\"printfileId\":338,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300}},\"hinweise\":[],\"farben\":{\"#ffffff\":[11249,11250,11251,11252,11253,13261],\"#101010\":[11254,11255,11256,11257,11258,13258],\"#f5e8ce\":[20357,20356,20355,20354,20353,20352],\"#f59382\":[13863,13864,13865,13866,13867,13868],\"#43413d\":[20363,20362,20361,20359,20358],\"#171f2c\":[13252,13253,13254,13255,13256,13257],\"#b2afaa\":[11244,11245,11246,11247,11248,13259],\"#3a3a38\":[11259,11260,11261,11262,11263,13260],\"#ff2d41\":[20369,20368,20367,20366,20365,20364],\"#2d407d\":[13869,13870,13871,13872,13873,13874],\"#335231\":[16156,16157,16158,16159,16160,16161]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Ein klassischer Sweatshirt-Schnitt mit gerippten Rundhalsausschnitt, Ärmelbündchen und geradem Saum. Schicht es über andere Kleidung oder trag es allein für einen zeitgemässen Streetwear-Look.</p>\n<p>Mit dem weichen Fleece innen und der bequemen Passform wird es sofort dein liebster Alltagspullover.</p>\n<ul><li>100 % Baumwolle an der Aussenseite</li><li>65 % Baumwolle, 35 % Polyester</li><li>Anthrazit meliert (bei Printful «Charcoal Heather»): 55 % Baumwolle, 45 % Polyester</li><li>Stoffgewicht: 288,2 g/m²</li><li>Dicht gestricktes 3-End-Fleece</li><li>Mit Seitennähten verarbeitet</li><li>Rückenpatch aus demselben Stoff</li><li>Rippkragen, Bündchen und Saum mit Doppelnadelnaht</li><li>Der unbedruckte Rohling stammt aus Pakistan.</li></ul>\n<p>Hinweis: Dieses Sweatshirt fällt klein aus. Für die perfekte Passform empfehlen wir, eine Grösse grösser als üblich zu bestellen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1800 × 2400 Pixel bei 150 dpi, das sind 30,5 × 40,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>83,8 bis 91,4 cm</td><td>59,7 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>94 bis 101,6 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>104,1 bis 109,2 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>111,8 bis 116,8 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>119,4 bis 124,5 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>127 bis 132,1 cm</td><td>61 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>50,8 cm</td><td>59,7 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>53,3 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>58,4 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>63,5 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>67,3 cm</td><td>61 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>71,1 cm</td><td>61 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -1937,6 +1938,443 @@
   "hinweise": []
  },
  "kompaktBytes": 4759,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 411,
+  "typ": "T-SHIRT",
+  "titelDe": "Unisex Premium Sweatshirt",
+  "klasse": "FLACH",
+  "standardTechnik": "DTG",
+  "minDpi": 75,
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titelDe": "Vorderseite",
+    "titelEn": "Front print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 1,
+     "breitePx": 1800,
+     "hoehePx": 2400,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 300249,
+     "bildUrl": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/front/05_ghost_front_base_whitebg.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 961,
+     "flaecheOben": 381,
+     "flaecheBreite": 1110,
+     "flaecheHoehe": 1480,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titelDe": "Rückseite",
+    "titelEn": "Back print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 1,
+     "breitePx": 1800,
+     "hoehePx": 2400,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 158536,
+     "bildUrl": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/back/05_ghost_back_base_whitebg.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 943,
+     "flaecheOben": 517,
+     "flaecheBreite": 1112,
+     "flaecheHoehe": 1483,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": [
+     "label_outside"
+    ]
+   },
+   {
+    "id": "label_outside",
+    "dateiTyp": "label_outside",
+    "titelDe": "Etikett aussen",
+    "titelEn": "Outside label",
+    "art": "etikett",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 90,
+     "breitePx": 450,
+     "hoehePx": 450,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 86972,
+     "bildUrl": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 560,
+     "vorlageHoehe": 560,
+     "flaecheLinks": 137,
+     "flaecheOben": 187,
+     "flaecheBreite": 288,
+     "flaecheHoehe": 288,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": 2.49,
+    "aufpreisChf": 2.6,
+    "kollidiertMit": [
+     "back",
+     "label_inside",
+     "label_inside_dtf"
+    ]
+   },
+   {
+    "id": "label_inside",
+    "dateiTyp": "label_inside",
+    "titelDe": "Etikett innen",
+    "titelEn": "Inside label",
+    "art": "etikett",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 212,
+     "breitePx": 750,
+     "hoehePx": 750,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 47734,
+     "bildUrl": "https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 728,
+     "vorlageHoehe": 728,
+     "flaecheLinks": 251,
+     "flaecheOben": 182,
+     "flaecheBreite": 228,
+     "flaecheHoehe": 228,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": 0.99,
+    "aufpreisChf": 1,
+    "kollidiertMit": [
+     "label_outside",
+     "label_inside_dtf"
+    ]
+   },
+   {
+    "id": "sleeve_left",
+    "dateiTyp": "sleeve_left",
+    "titelDe": "Ärmel links",
+    "titelEn": "Left sleeve",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 147,
+     "breitePx": 450,
+     "hoehePx": 1800,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 158726,
+     "bildUrl": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/05_ghost_left_base_whitebg.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1512,
+     "flaecheOben": 826,
+     "flaecheBreite": 264,
+     "flaecheHoehe": 1057,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": [
+     "embroidery_wrist_right",
+     "embroidery_wrist_left"
+    ]
+   },
+   {
+    "id": "sleeve_right",
+    "dateiTyp": "sleeve_right",
+    "titelDe": "Ärmel rechts",
+    "titelEn": "Right sleeve",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 147,
+     "breitePx": 450,
+     "hoehePx": 1800,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 159036,
+     "bildUrl": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/05_ghost_right_base_whitebg.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1394,
+     "flaecheOben": 842,
+     "flaecheBreite": 264,
+     "flaecheHoehe": 1057,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": [
+     "embroidery_wrist_right",
+     "embroidery_wrist_left"
+    ]
+   },
+   {
+    "id": "label_inside_dtf",
+    "dateiTyp": "label_inside_dtf",
+    "titelDe": "Etikett innen (DTF)",
+    "titelEn": "Inside label",
+    "art": "etikett",
+    "technik": "DTFILM",
+    "printfile": {
+     "printfileId": 212,
+     "breitePx": 750,
+     "hoehePx": 750,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 209087,
+     "bildUrl": "https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 728,
+     "vorlageHoehe": 728,
+     "flaecheLinks": 251,
+     "flaecheOben": 182,
+     "flaecheBreite": 228,
+     "flaecheHoehe": 228,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 0.99,
+    "aufpreisChf": 1,
+    "kollidiertMit": [
+     "label_outside",
+     "label_inside"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_left",
+    "dateiTyp": "embroidery_wrist_left",
+    "titelDe": "Stickerei Handgelenk links",
+    "titelEn": "Left wrist",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 338,
+     "breitePx": 600,
+     "hoehePx": 900,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 165213,
+     "bildUrl": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/left/zoomed-in/05_ghost_left_base_whitebg.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1507,
+     "flaecheOben": 1550,
+     "flaecheBreite": 434,
+     "flaecheHoehe": 650,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": [
+     "sleeve_left",
+     "sleeve_right"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_right",
+    "dateiTyp": "embroidery_wrist_right",
+    "titelDe": "Stickerei Handgelenk rechts",
+    "titelEn": "Right wrist",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 338,
+     "breitePx": 600,
+     "hoehePx": 900,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 165193,
+     "bildUrl": "https://files.cdn.printful.com/m/fleece_pullover/medium/ghost/right/zoomed-in/05_ghost_right_base_whitebg.png?v=1744093611",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#101010",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1280,
+     "flaecheOben": 1539,
+     "flaecheBreite": 434,
+     "flaecheHoehe": 650,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": [
+     "sleeve_right",
+     "sleeve_left"
+    ]
+   }
+  ],
+  "druckdateien": {
+   "1": {
+    "printfileId": 1,
+    "breitePx": 1800,
+    "hoehePx": 2400,
+    "dpi": 150
+   },
+   "90": {
+    "printfileId": 90,
+    "breitePx": 450,
+    "hoehePx": 450,
+    "dpi": 150
+   },
+   "147": {
+    "printfileId": 147,
+    "breitePx": 450,
+    "hoehePx": 1800,
+    "dpi": 150
+   },
+   "212": {
+    "printfileId": 212,
+    "breitePx": 750,
+    "hoehePx": 750,
+    "dpi": 300
+   },
+   "338": {
+    "printfileId": 338,
+    "breitePx": 600,
+    "hoehePx": 900,
+    "dpi": 300
+   }
+  },
+  "hinweise": [],
+  "farben": {
+   "#ffffff": [
+    11249,
+    11250,
+    11251,
+    11252,
+    11253,
+    13261
+   ],
+   "#101010": [
+    11254,
+    11255,
+    11256,
+    11257,
+    11258,
+    13258
+   ],
+   "#f5e8ce": [
+    20357,
+    20356,
+    20355,
+    20354,
+    20353,
+    20352
+   ],
+   "#f59382": [
+    13863,
+    13864,
+    13865,
+    13866,
+    13867,
+    13868
+   ],
+   "#43413d": [
+    20363,
+    20362,
+    20361,
+    20359,
+    20358
+   ],
+   "#171f2c": [
+    13252,
+    13253,
+    13254,
+    13255,
+    13256,
+    13257
+   ],
+   "#b2afaa": [
+    11244,
+    11245,
+    11246,
+    11247,
+    11248,
+    13259
+   ],
+   "#3a3a38": [
+    11259,
+    11260,
+    11261,
+    11262,
+    11263,
+    13260
+   ],
+   "#ff2d41": [
+    20369,
+    20368,
+    20367,
+    20366,
+    20365,
+    20364
+   ],
+   "#2d407d": [
+    13869,
+    13870,
+    13871,
+    13872,
+    13873,
+    13874
+   ],
+   "#335231": [
+    16156,
+    16157,
+    16158,
+    16159,
+    16160,
+    16161
+   ]
+  }
+ },
+ "karteBytes": 8467,
  "lieferung": {
   "versandart": "STANDARD",
   "rateUsd": 11.39,
@@ -2192,7 +2630,7 @@
   },
   {
    "code": "karte",
-   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -2248,5 +2686,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "f22f4334e10841b3e03b504df3a7b535200d463be73514cc530b33e803868a71"
+ "hash": "4e4c979ccc11bbbdf62a68819b6e53ac7645611a2abd187dde16fc2183ed5fc5"
 }

@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:43:27.721Z",
+  "am": "2026-11-05T18:54:40.955Z",
   "katalogGeholt": "2026-11-05T16:59:00.710Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -11,6 +11,7 @@
    "ekAufschlagOhneSchaetzung": 1.26,
    "digitalisierungUsd": 6.5,
    "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
    "medienMax": 20,
    "medienOhneFarbe": 6,
    "stufen": [
@@ -78,7 +79,7 @@
    "label": "Produktbild"
   }
  ],
- "beschreibungHtml": "<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"464\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":464,\"klasse\":\"FLACH_MIT_HINWEIS\",\"technik\":\"EMBROIDERY\",\"basis\":\"embroidery_large_center\",\"platzierungen\":[{\"id\":\"embroidery_chest_left\",\"dateiTyp\":\"embroidery_chest_left\",\"titel\":\"Stickerei Brust links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[1200,1200],\"dpi\":300,\"cm\":[10.2,10.2],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1918,\"oben\":1316,\"breite\":557,\"hoehe\":557,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_chest_center\",\"embroidery_large_center\"]},{\"id\":\"embroidery_chest_center\",\"dateiTyp\":\"embroidery_chest_center\",\"titel\":\"Stickerei Brust Mitte\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[1200,1200],\"dpi\":300,\"cm\":[10.2,10.2],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1222,\"oben\":1316,\"breite\":557,\"hoehe\":557,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_chest_left\",\"embroidery_large_center\"]},{\"id\":\"embroidery_large_center\",\"dateiTyp\":null,\"titel\":\"Stickerei gross Mitte\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[3000,1800],\"dpi\":300,\"cm\":[25.4,15.2],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":804,\"oben\":1316,\"breite\":1392,\"hoehe\":835,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_chest_left\",\"embroidery_chest_center\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titel\":\"Stickerei Handgelenk rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[2000,2000],\"links\":718,\"oben\":714,\"breite\":316,\"hoehe\":475,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/right/zoomed/05_championtds101_ghost_right_navy_black_base_whitebg.png?v=1744186565\",\"hintergrund\":null}],\"hinweise\":[{\"code\":\"stickerei\",\"quelle\":\"katalog\"}]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Stickerei</li><li><strong>Druckdatei (Stickerei gross Mitte):</strong> 3000 × 1800 Pixel bei 300 dpi, das sind 25,4 × 15,2 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>66 cm</td><td>86,4 bis 91,4 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">M</th><td>68,6 cm</td><td>96,5 bis 101,6 cm</td><td>89,5 cm</td></tr><tr><th scope=\"row\">L</th><td>71,1 cm</td><td>106,7 bis 111,8 cm</td><td>91,4 cm</td></tr><tr><th scope=\"row\">XL</th><td>73,7 cm</td><td>116,8 bis 121,9 cm</td><td>93,3 cm</td></tr><tr><th scope=\"row\">2XL</th><td>76,2 cm</td><td>127 bis 132,1 cm</td><td>95,3 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>66 cm</td><td>50,8 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">M</th><td>68,6 cm</td><td>55,9 cm</td><td>89,5 cm</td></tr><tr><th scope=\"row\">L</th><td>71,1 cm</td><td>61 cm</td><td>91,4 cm</td></tr><tr><th scope=\"row\">XL</th><td>73,7 cm</td><td>66 cm</td><td>93,3 cm</td></tr><tr><th scope=\"row\">2XL</th><td>76,2 cm</td><td>71,1 cm</td><td>95,3 cm</td></tr></tbody></table></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp zur Stickerei: Dein Motiv wird in Garnfarben umgesetzt. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<div class=\"lspod-designer-v6\" data-modell=\"464\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":464,\"typ\":\"T-SHIRT\",\"titelDe\":\"Unisex Hoodie 407 g/m²\",\"klasse\":\"UNGEEIGNET\",\"standardTechnik\":\"EMBROIDERY\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"embroidery_chest_left\",\"dateiTyp\":\"embroidery_chest_left\",\"titelDe\":\"Stickerei Brust links\",\"titelEn\":\"Left chest\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":136,\"breitePx\":1200,\"hoehePx\":1200,\"dpi\":300},\"vorlage\":{\"vorlageId\":267512,\"bildUrl\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#313132\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1918,\"flaecheOben\":1316,\"flaecheBreite\":557,\"flaecheHoehe\":557,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[\"embroidery_chest_center\",\"embroidery_large_center\"]},{\"id\":\"embroidery_chest_center\",\"dateiTyp\":\"embroidery_chest_center\",\"titelDe\":\"Stickerei Brust Mitte\",\"titelEn\":\"Center chest\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":136,\"breitePx\":1200,\"hoehePx\":1200,\"dpi\":300},\"vorlage\":{\"vorlageId\":267479,\"bildUrl\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#313132\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1222,\"flaecheOben\":1316,\"flaecheBreite\":557,\"flaecheHoehe\":557,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[\"embroidery_chest_left\",\"embroidery_large_center\"]},{\"id\":\"embroidery_large_center\",\"dateiTyp\":null,\"titelDe\":\"Stickerei gross Mitte\",\"titelEn\":\"Large center\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":222,\"breitePx\":3000,\"hoehePx\":1800,\"dpi\":300},\"vorlage\":{\"vorlageId\":267515,\"bildUrl\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#313132\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":804,\"flaecheOben\":1316,\"flaecheBreite\":1392,\"flaecheHoehe\":835,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[\"embroidery_chest_left\",\"embroidery_chest_center\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titelDe\":\"Stickerei Handgelenk rechts\",\"titelEn\":\"Right wrist\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":396,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":267473,\"bildUrl\":\"https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/right/zoomed/05_championtds101_ghost_right_navy_black_base_whitebg.png?v=1744186565\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#313132\",\"vorlageBreite\":2000,\"vorlageHoehe\":2000,\"flaecheLinks\":718,\"flaecheOben\":714,\"flaecheBreite\":316,\"flaecheHoehe\":475,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[]}],\"druckdateien\":{\"136\":{\"printfileId\":136,\"breitePx\":1200,\"hoehePx\":1200,\"dpi\":300},\"222\":{\"printfileId\":222,\"breitePx\":3000,\"hoehePx\":1800,\"dpi\":300},\"396\":{\"printfileId\":396,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300}},\"hinweise\":[{\"code\":\"stickerei\",\"art\":\"einschraenkung\"}],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Stickerei</li><li><strong>Druckdatei (Stickerei gross Mitte):</strong> 3000 × 1800 Pixel bei 300 dpi, das sind 25,4 × 15,2 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>66 cm</td><td>86,4 bis 91,4 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">M</th><td>68,6 cm</td><td>96,5 bis 101,6 cm</td><td>89,5 cm</td></tr><tr><th scope=\"row\">L</th><td>71,1 cm</td><td>106,7 bis 111,8 cm</td><td>91,4 cm</td></tr><tr><th scope=\"row\">XL</th><td>73,7 cm</td><td>116,8 bis 121,9 cm</td><td>93,3 cm</td></tr><tr><th scope=\"row\">2XL</th><td>76,2 cm</td><td>127 bis 132,1 cm</td><td>95,3 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>66 cm</td><td>50,8 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">M</th><td>68,6 cm</td><td>55,9 cm</td><td>89,5 cm</td></tr><tr><th scope=\"row\">L</th><td>71,1 cm</td><td>61 cm</td><td>91,4 cm</td></tr><tr><th scope=\"row\">XL</th><td>73,7 cm</td><td>66 cm</td><td>93,3 cm</td></tr><tr><th scope=\"row\">2XL</th><td>76,2 cm</td><td>71,1 cm</td><td>95,3 cm</td></tr></tbody></table></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp zur Stickerei: Dein Motiv wird in Garnfarben umgesetzt. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": false,
@@ -295,6 +296,177 @@
   ]
  },
  "kompaktBytes": 2566,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 464,
+  "typ": "T-SHIRT",
+  "titelDe": "Unisex Hoodie 407 g/m²",
+  "klasse": "UNGEEIGNET",
+  "standardTechnik": "EMBROIDERY",
+  "minDpi": 150,
+  "platzierungen": [
+   {
+    "id": "embroidery_chest_left",
+    "dateiTyp": "embroidery_chest_left",
+    "titelDe": "Stickerei Brust links",
+    "titelEn": "Left chest",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 136,
+     "breitePx": 1200,
+     "hoehePx": 1200,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 267512,
+     "bildUrl": "https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#313132",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1918,
+     "flaecheOben": 1316,
+     "flaecheBreite": 557,
+     "flaecheHoehe": 557,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": [
+     "embroidery_chest_center",
+     "embroidery_large_center"
+    ]
+   },
+   {
+    "id": "embroidery_chest_center",
+    "dateiTyp": "embroidery_chest_center",
+    "titelDe": "Stickerei Brust Mitte",
+    "titelEn": "Center chest",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 136,
+     "breitePx": 1200,
+     "hoehePx": 1200,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 267479,
+     "bildUrl": "https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#313132",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1222,
+     "flaecheOben": 1316,
+     "flaecheBreite": 557,
+     "flaecheHoehe": 557,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": [
+     "embroidery_chest_left",
+     "embroidery_large_center"
+    ]
+   },
+   {
+    "id": "embroidery_large_center",
+    "dateiTyp": null,
+    "titelDe": "Stickerei gross Mitte",
+    "titelEn": "Large center",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 222,
+     "breitePx": 3000,
+     "hoehePx": 1800,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 267515,
+     "bildUrl": "https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/front/embroidery/05_championtds101_ghost_front_navy_black_base_whitebg.png?v=1744186565",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#313132",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 804,
+     "flaecheOben": 1316,
+     "flaecheBreite": 1392,
+     "flaecheHoehe": 835,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": [
+     "embroidery_chest_left",
+     "embroidery_chest_center"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_right",
+    "dateiTyp": "embroidery_wrist_right",
+    "titelDe": "Stickerei Handgelenk rechts",
+    "titelEn": "Right wrist",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 396,
+     "breitePx": 600,
+     "hoehePx": 900,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 267473,
+     "bildUrl": "https://files.cdn.printful.com/m/Champion_Hoodie_TDS101/medium/ghost/right/zoomed/05_championtds101_ghost_right_navy_black_base_whitebg.png?v=1744186565",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#313132",
+     "vorlageBreite": 2000,
+     "vorlageHoehe": 2000,
+     "flaecheLinks": 718,
+     "flaecheOben": 714,
+     "flaecheBreite": 316,
+     "flaecheHoehe": 475,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": []
+   }
+  ],
+  "druckdateien": {
+   "136": {
+    "printfileId": 136,
+    "breitePx": 1200,
+    "hoehePx": 1200,
+    "dpi": 300
+   },
+   "222": {
+    "printfileId": 222,
+    "breitePx": 3000,
+    "hoehePx": 1800,
+    "dpi": 300
+   },
+   "396": {
+    "printfileId": 396,
+    "breitePx": 600,
+    "hoehePx": 900,
+    "dpi": 300
+   }
+  },
+  "hinweise": [
+   {
+    "code": "stickerei",
+    "art": "einschraenkung"
+   }
+  ]
+ },
+ "karteBytes": 3414,
  "lieferung": null,
  "basisPlatzierung": {
   "id": "embroidery_large_center",
@@ -454,7 +626,7 @@
   },
   {
    "code": "karte",
-   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -510,5 +682,5 @@
   }
  ],
  "anlegbar": false,
- "hash": "4a47cc183d1b688144c3fa45c82a258385cb7a9f9bd67d7bf12ceb7e540cba3d"
+ "hash": "608c5650545268ec12b56df0489c5ceb033aa61ce455b69b282bbb77ab7e80ef"
 }

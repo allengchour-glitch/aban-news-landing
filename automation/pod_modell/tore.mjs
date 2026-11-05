@@ -87,9 +87,10 @@ export function pruefeTore(plan, ctx = {}) {
   // Editor-Karte
   const kp = plan.kompakt ?? { platzierungen: [] };
   const hatFlaeche = kp.platzierungen.some((p) => p.art === 'flaeche' && p.inklusive && (p.flaeche?.breite ?? 0) > 0 && (p.druck?.px?.[0] ?? 0) > 0);
-  const max = ctx.kartenMaxBytes ?? 10240;
-  B('karte', `Editor-Karte höchstens ${max} Byte und mit mindestens einer bestellbaren Fläche samt Vorlage`, hatFlaeche && (plan.kompaktBytes ?? 0) <= max && plan.basisPlatzierung != null,
-    !hatFlaeche ? 'keine bestellbare Fläche mit Vorlage' : (plan.kompaktBytes ?? 0) > max ? `${plan.kompaktBytes} Byte` : 'keine Basisfläche');
+  const max = ctx.kartenMaxBytes ?? 10240, maxEd = ctx.editorKartenMaxBytes ?? 24576;
+  const mfGross = (plan.kompaktBytes ?? 0) > max, edGross = (plan.karteBytes ?? 0) > maxEd;
+  B('karte', `Metafeld-Karte höchstens ${max} Byte, Editor-Karte samt Variantenabbildung höchstens ${maxEd} Byte, mindestens eine bestellbare Fläche samt Vorlage`, hatFlaeche && !mfGross && !edGross && plan.basisPlatzierung != null,
+    !hatFlaeche ? 'keine bestellbare Fläche mit Vorlage' : mfGross ? `Metafeld-Karte ${plan.kompaktBytes} Byte` : edGross ? `Editor-Karte ${plan.karteBytes} Byte` : 'keine Basisfläche');
 
   // Hinweise (blockieren nicht)
   H('bestellweg', 'Bestellweg (printful_sync) bestimmt die Platzierung sicher', plan.bestellweg?.gesichert === true, `printful_sync bestimmt «${plan.bestellweg?.platzierung}» nicht gesichert (${plan.bestellweg?.grund ?? 'unbekannt'}): Aufträge blieben Entwurf bei Printful`);

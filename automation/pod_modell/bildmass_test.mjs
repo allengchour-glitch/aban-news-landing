@@ -1,5 +1,5 @@
 // Tests für bildmass.mjs und bilder_messen.mjs (kein Netz: fetch-Attrappe, Bytes von Hand gebaut). Lauf: /opt/node22/bin/node automation/pod_modell/bildmass_test.mjs
-import { writeFileSync, mkdtempSync, readFileSync } from 'node:fs';
+import { writeFileSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { bildMass } from './bildmass.mjs';
@@ -42,4 +42,5 @@ const fehl = await main({ URLS: join(dir, 'u.txt'), OUT: join(dir, 'm2.json'), P
 ist('HTTP 404 wird als Fehler vermerkt, nicht als Grösse', fehl['https://files.cdn.printful.com/x.jpg'].fehler, 'HTTP 404');
 const html = await main({ URLS: join(dir, 'u.txt'), OUT: join(dir, 'm3.json'), PAUSE_MS: '0' }, async () => ({ status: 200, headers: { get: () => null }, arrayBuffer: async () => new TextEncoder().encode('<html>x</html>').buffer }), async () => {});
 ist('Antwort ist kein Bild: Fehler, keine Grösse', html['https://files.cdn.printful.com/x.jpg'].fehler, 'Format nicht erkannt');
+rmSync(dir, { recursive: true, force: true });   // keine Wegwerf-Ordner im Temp-Verzeichnis zurücklassen
 ende();

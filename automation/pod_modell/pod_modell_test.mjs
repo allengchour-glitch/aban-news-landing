@@ -1,6 +1,6 @@
 // Tests für pod_modell.mjs (kein Netz): Trockenlauf, LIVE-Schutz, Rücknahme. Eingaben in einem Temp-Ordner, Shopify = Attrappe.
 // Lauf: /opt/node22/bin/node automation/pod_modell/pod_modell_test.mjs
-import { mkdtempSync, writeFileSync, mkdirSync, readFileSync, existsSync, readdirSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, readFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { main, verwendeteAusAbgleich, bestandAusMatrix, schaetzungAus, tabelleMarkdown, planDatei, modelleAusOrdner } from './pod_modell.mjs';
@@ -79,4 +79,5 @@ ist('ZURUECK ohne LIVE löscht nichts', [await main(basisEnv({ ZURUECK: '1', LED
 ist('ZURUECK ohne LEDGER: Exit 1', await main(basisEnv({ ZURUECK: '1', LIVE: '1' }), liveDeps()), 1);
 ist('ZURUECK mit LIVE: beide Fabrik-Entwürfe weg', [await main(basisEnv({ ZURUECK: '1', LIVE: '1', LEDGER: led }), liveDeps()), fake.st.produkte.size], [0, 0]);
 
+rmSync(wurzel, { recursive: true, force: true });   // keine Wegwerf-Ordner im Temp-Verzeichnis zurücklassen
 ende();

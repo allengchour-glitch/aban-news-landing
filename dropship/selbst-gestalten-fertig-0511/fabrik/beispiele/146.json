@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:41:14.547Z",
+  "am": "2026-11-05T18:54:40.787Z",
   "katalogGeholt": "2026-11-05T17:08:16.248Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -11,6 +11,7 @@
    "ekAufschlagOhneSchaetzung": 1.26,
    "digitalisierungUsd": 6.5,
    "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
    "medienMax": 20,
    "medienOhneFarbe": 6,
    "stufen": [
@@ -2264,7 +2265,7 @@
    "label": "Grau meliert"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>9 bis 12 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"146\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":146,\"klasse\":\"FLACH\",\"technik\":\"DTG\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[2100,2100],\"dpi\":150,\"cm\":[35.6,35.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":927,\"oben\":651,\"breite\":1136,\"hoehe\":1136,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/front/05_gildan18500_ghost_front_base_whitebg.png?v=1774959405\",\"hintergrund\":null},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[1800,2400],\"dpi\":150,\"cm\":[30.5,40.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":946,\"oben\":508,\"breite\":1092,\"hoehe\":1456,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/back/05_gildan18500_ghost_back_base_whitebg.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titel\":\"Etikett aussen\",\"art\":\"etikett\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":2.6,\"druck\":{\"px\":[450,450],\"dpi\":150,\"cm\":[7.6,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[560,560],\"links\":137,\"oben\":187,\"breite\":288,\"hoehe\":288,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"back\",\"label_inside_dtf\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titel\":\"Ärmel rechts\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1318,\"oben\":1065,\"breite\":277,\"hoehe\":1104,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/right/05_gildan18500_ghost_right_base_whitebg.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titel\":\"Ärmel links\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[450,1800],\"dpi\":150,\"cm\":[7.6,30.5],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":1409,\"oben\":1054,\"breite\":278,\"hoehe\":1105,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/left/05_gildan18500_ghost_left_base_whitebg.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"label_inside_dtf\",\"dateiTyp\":\"label_inside_dtf\",\"titel\":\"Etikett innen (DTF)\",\"art\":\"etikett\",\"technik\":\"DTFILM\",\"inklusive\":false,\"aufpreisChf\":1,\"druck\":{\"px\":[450,450],\"dpi\":150,\"cm\":[7.6,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[560,560],\"links\":136,\"oben\":186,\"breite\":288,\"hoehe\":288,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/templates/medium/inside_label__3x3.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"embroidery_wrist_left\",\"dateiTyp\":\"embroidery_wrist_left\",\"titel\":\"Stickerei Handgelenk links\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[2000,2000],\"links\":877,\"oben\":1024,\"breite\":288,\"hoehe\":431,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/left/zoomed/05_gildan18500_ghost_left_base_whitebg.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_left\",\"sleeve_right\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titel\":\"Stickerei Handgelenk rechts\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"inklusive\":false,\"aufpreisChf\":3,\"druck\":{\"px\":[600,900],\"dpi\":300,\"cm\":[5.1,7.6],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[2000,2000],\"links\":839,\"oben\":1122,\"breite\":286,\"hoehe\":431,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/right/zoomed/05_gildan18500_ghost_right_base_whitebg.png?v=1774959405\",\"hintergrund\":null,\"kollidiertMit\":[\"sleeve_right\",\"sleeve_left\"]}],\"hinweise\":[]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Jeder braucht einen kuscheligen Lieblingshoodie zum Einkuscheln, am besten einen, der weich, glatt und stilvoll ist.</p>\n<p>Die perfekte Wahl für kühlere Abende!</p>\n<ul><li>50 % vorgeschrumpfte Baumwolle, 50 % Polyester</li><li>Marineblau meliert (bei Printful «Heather Sport Dark Navy»): 40 % Baumwolle, 60 % Polyester</li><li>Stoffgewicht: 271,25 g/m²</li><li>Luftdüsengesponnenes Garn für ein weiches Gefühl und weniger Pilling</li><li>Doppelt gefütterte Kapuze mit passender Kordel</li><li>Quer gestrickter Körper, damit keine Falte in der Mitte entsteht</li><li>Sportliche 1×1-Rippbündchen an Ärmeln und Bund mit Elasthan</li><li>Kängurutasche vorne</li><li>Kragen, Schultern, Armlöcher, Bündchen und Saum mit Doppelnadelnaht</li><li>Der unbedruckte Rohling stammt aus Bangladesch, Nicaragua, Honduras oder El Salvador.</li></ul>\n<p>Hinweis: Wegen der Stoffeigenschaften kann die Farbe Weiss eher cremeweiss als strahlend weiss wirken.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 2100 × 2100 Pixel bei 150 dpi, das sind 35,6 × 35,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>96,5 bis 104,1 cm</td><td>85,1 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>106,7 bis 114,3 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>116,8 bis 124,5 cm</td><td>90,2 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>127 bis 134,6 cm</td><td>92,7 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>137,2 bis 144,8 cm</td><td>95,3 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>147,3 bis 154,9 cm</td><td>97,8 cm</td></tr><tr><th scope=\"row\">4XL</th><td>83,8 cm</td><td>157,5 bis 165,1 cm</td><td>100,3 cm</td></tr><tr><th scope=\"row\">5XL</th><td>86,4 cm</td><td>167,6 bis 175,3 cm</td><td>102,9 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>50,8 cm</td><td>85,1 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>55,9 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>61 cm</td><td>90,2 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>66 cm</td><td>92,7 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>71,1 cm</td><td>95,3 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>76,2 cm</td><td>97,8 cm</td></tr><tr><th scope=\"row\">4XL</th><td>83,8 cm</td><td>81,3 cm</td><td>100,3 cm</td></tr><tr><th scope=\"row\">5XL</th><td>86,4 cm</td><td>86,4 cm</td><td>102,9 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>9 bis 12 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"146\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":146,\"typ\":\"T-SHIRT\",\"titelDe\":\"Unisex Hoodie 271 g/m²\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":139,\"breitePx\":2100,\"hoehePx\":2100,\"dpi\":150},\"vorlage\":{\"vorlageId\":149880,\"bildUrl\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/front/05_gildan18500_ghost_front_base_whitebg.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":927,\"flaecheOben\":651,\"flaecheBreite\":1136,\"flaecheHoehe\":1136,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"vorlage\":{\"vorlageId\":149893,\"bildUrl\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/back/05_gildan18500_ghost_back_base_whitebg.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":946,\"flaecheOben\":508,\"flaecheBreite\":1092,\"flaecheHoehe\":1456,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"label_outside\",\"dateiTyp\":\"label_outside\",\"titelDe\":\"Etikett aussen\",\"titelEn\":\"Outside label\",\"art\":\"etikett\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":3618,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":137,\"flaecheOben\":187,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":false},\"aufpreisUsd\":2.49,\"aufpreisChf\":2.6,\"kollidiertMit\":[\"back\",\"label_inside_dtf\"]},{\"id\":\"sleeve_right\",\"dateiTyp\":\"sleeve_right\",\"titelDe\":\"Ärmel rechts\",\"titelEn\":\"Right sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":147,\"breitePx\":450,\"hoehePx\":1800,\"dpi\":150},\"vorlage\":{\"vorlageId\":149919,\"bildUrl\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/right/05_gildan18500_ghost_right_base_whitebg.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1318,\"flaecheOben\":1065,\"flaecheBreite\":277,\"flaecheHoehe\":1104,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"sleeve_left\",\"dateiTyp\":\"sleeve_left\",\"titelDe\":\"Ärmel links\",\"titelEn\":\"Left sleeve\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":147,\"breitePx\":450,\"hoehePx\":1800,\"dpi\":150},\"vorlage\":{\"vorlageId\":149906,\"bildUrl\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/left/05_gildan18500_ghost_left_base_whitebg.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":1409,\"flaecheOben\":1054,\"flaecheBreite\":278,\"flaecheHoehe\":1105,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[\"embroidery_wrist_right\",\"embroidery_wrist_left\"]},{\"id\":\"label_inside_dtf\",\"dateiTyp\":\"label_inside_dtf\",\"titelDe\":\"Etikett innen (DTF)\",\"titelEn\":\"Inside label\",\"art\":\"etikett\",\"technik\":\"DTFILM\",\"printfile\":{\"printfileId\":71,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"vorlage\":{\"vorlageId\":133305,\"bildUrl\":\"https://files.cdn.printful.com/m/templates/medium/inside_label__3x3.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":560,\"vorlageHoehe\":560,\"flaecheLinks\":136,\"flaecheOben\":186,\"flaecheBreite\":288,\"flaecheHoehe\":288,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":0.99,\"aufpreisChf\":1,\"kollidiertMit\":[\"label_outside\"]},{\"id\":\"embroidery_wrist_left\",\"dateiTyp\":\"embroidery_wrist_left\",\"titelDe\":\"Stickerei Handgelenk links\",\"titelEn\":\"Left wrist\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":396,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":150062,\"bildUrl\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/left/zoomed/05_gildan18500_ghost_left_base_whitebg.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":2000,\"vorlageHoehe\":2000,\"flaecheLinks\":877,\"flaecheOben\":1024,\"flaecheBreite\":288,\"flaecheHoehe\":431,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[\"sleeve_left\",\"sleeve_right\"]},{\"id\":\"embroidery_wrist_right\",\"dateiTyp\":\"embroidery_wrist_right\",\"titelDe\":\"Stickerei Handgelenk rechts\",\"titelEn\":\"Right wrist\",\"art\":\"flaeche\",\"technik\":\"EMBROIDERY\",\"printfile\":{\"printfileId\":396,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300},\"vorlage\":{\"vorlageId\":150075,\"bildUrl\":\"https://files.cdn.printful.com/m/g18500/medium/ghost/right/zoomed/05_gildan18500_ghost_right_base_whitebg.png?v=1774959405\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#0b0b0b\",\"vorlageBreite\":2000,\"vorlageHoehe\":2000,\"flaecheLinks\":839,\"flaecheOben\":1122,\"flaecheBreite\":286,\"flaecheHoehe\":431,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":2.95,\"aufpreisChf\":3,\"kollidiertMit\":[\"sleeve_right\",\"sleeve_left\"]}],\"druckdateien\":{\"1\":{\"printfileId\":1,\"breitePx\":1800,\"hoehePx\":2400,\"dpi\":150},\"71\":{\"printfileId\":71,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"90\":{\"printfileId\":90,\"breitePx\":450,\"hoehePx\":450,\"dpi\":150},\"139\":{\"printfileId\":139,\"breitePx\":2100,\"hoehePx\":2100,\"dpi\":150},\"147\":{\"printfileId\":147,\"breitePx\":450,\"hoehePx\":1800,\"dpi\":150},\"396\":{\"printfileId\":396,\"breitePx\":600,\"hoehePx\":900,\"dpi\":300}},\"hinweise\":[],\"farben\":{\"#ffffff\":[5522,5523,5524,5525,5526,5527,5528,5529],\"#0b0b0b\":[5530,5531,5532,5533,5534,5535,5536,5537],\"#131928\":[5594,5595,5596,5597,5598,5599,5600,5601],\"#da0a1a\":[5538,5539,5540,5541,5542,5543],\"#1d50a4\":[16850,16851,16852,16853,16854,16855],\"#ff5723\":[22265,22266,22267,22268,22269,22270,22271,22272],\"#4a1c7d\":[21627,21628,21629,21630,21631,21632,21633,21634],\"#47171c\":[5586,5587,5588,5589,5590,5591],\"#e7d3b3\":[12997,12998,12999,13000,13001,13002],\"#ffaf24\":[22118,22119,22120,22121,22122,22123,22124,22125],\"#f63880\":[22257,22258,22259,22260,22261,22262,22263,22264],\"#35241b\":[5554,5555,5556,5557,5558,5559],\"#515a6e\":[17411,17410,17408,17407,17406],\"#9b969c\":[5610,5611,5612,5613,5614,5615,5616,5617]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Jeder braucht einen kuscheligen Lieblingshoodie zum Einkuscheln, am besten einen, der weich, glatt und stilvoll ist.</p>\n<p>Die perfekte Wahl für kühlere Abende!</p>\n<ul><li>50 % vorgeschrumpfte Baumwolle, 50 % Polyester</li><li>Marineblau meliert (bei Printful «Heather Sport Dark Navy»): 40 % Baumwolle, 60 % Polyester</li><li>Stoffgewicht: 271,25 g/m²</li><li>Luftdüsengesponnenes Garn für ein weiches Gefühl und weniger Pilling</li><li>Doppelt gefütterte Kapuze mit passender Kordel</li><li>Quer gestrickter Körper, damit keine Falte in der Mitte entsteht</li><li>Sportliche 1×1-Rippbündchen an Ärmeln und Bund mit Elasthan</li><li>Kängurutasche vorne</li><li>Kragen, Schultern, Armlöcher, Bündchen und Saum mit Doppelnadelnaht</li><li>Der unbedruckte Rohling stammt aus Bangladesch, Nicaragua, Honduras oder El Salvador.</li></ul>\n<p>Hinweis: Wegen der Stoffeigenschaften kann die Farbe Weiss eher cremeweiss als strahlend weiss wirken.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 2100 × 2100 Pixel bei 150 dpi, das sind 35,6 × 35,6 cm</li></ul></div>\n<div class=\"lx-modell-groessen\"><h4>Grössentabelle zum Selbstmessen (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Brustumfang</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>96,5 bis 104,1 cm</td><td>85,1 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>106,7 bis 114,3 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>116,8 bis 124,5 cm</td><td>90,2 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>127 bis 134,6 cm</td><td>92,7 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>137,2 bis 144,8 cm</td><td>95,3 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>147,3 bis 154,9 cm</td><td>97,8 cm</td></tr><tr><th scope=\"row\">4XL</th><td>83,8 cm</td><td>157,5 bis 165,1 cm</td><td>100,3 cm</td></tr><tr><th scope=\"row\">5XL</th><td>86,4 cm</td><td>167,6 bis 175,3 cm</td><td>102,9 cm</td></tr></tbody></table><h4>Masse des Produkts (cm)</h4><table class=\"lx-modell-tabelle\"><thead><tr><th>Grösse</th><th>Länge</th><th>Breite</th><th>Ärmellänge</th></tr></thead><tbody><tr><th scope=\"row\">S</th><td>68,6 cm</td><td>50,8 cm</td><td>85,1 cm</td></tr><tr><th scope=\"row\">M</th><td>71,1 cm</td><td>55,9 cm</td><td>87,6 cm</td></tr><tr><th scope=\"row\">L</th><td>73,7 cm</td><td>61 cm</td><td>90,2 cm</td></tr><tr><th scope=\"row\">XL</th><td>76,2 cm</td><td>66 cm</td><td>92,7 cm</td></tr><tr><th scope=\"row\">2XL</th><td>78,7 cm</td><td>71,1 cm</td><td>95,3 cm</td></tr><tr><th scope=\"row\">3XL</th><td>81,3 cm</td><td>76,2 cm</td><td>97,8 cm</td></tr><tr><th scope=\"row\">4XL</th><td>83,8 cm</td><td>81,3 cm</td><td>100,3 cm</td></tr><tr><th scope=\"row\">5XL</th><td>86,4 cm</td><td>86,4 cm</td><td>102,9 cm</td></tr></tbody></table></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [],
  "uebersetzung": {
   "ok": true,
@@ -2633,6 +2634,453 @@
   "hinweise": []
  },
  "kompaktBytes": 4216,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 146,
+  "typ": "T-SHIRT",
+  "titelDe": "Unisex Hoodie 271 g/m²",
+  "klasse": "FLACH",
+  "standardTechnik": "DTG",
+  "minDpi": 75,
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titelDe": "Vorderseite",
+    "titelEn": "Front print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 139,
+     "breitePx": 2100,
+     "hoehePx": 2100,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 149880,
+     "bildUrl": "https://files.cdn.printful.com/m/g18500/medium/ghost/front/05_gildan18500_ghost_front_base_whitebg.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 927,
+     "flaecheOben": 651,
+     "flaecheBreite": 1136,
+     "flaecheHoehe": 1136,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titelDe": "Rückseite",
+    "titelEn": "Back print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 1,
+     "breitePx": 1800,
+     "hoehePx": 2400,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 149893,
+     "bildUrl": "https://files.cdn.printful.com/m/g18500/medium/ghost/back/05_gildan18500_ghost_back_base_whitebg.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 946,
+     "flaecheOben": 508,
+     "flaecheBreite": 1092,
+     "flaecheHoehe": 1456,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": [
+     "label_outside"
+    ]
+   },
+   {
+    "id": "label_outside",
+    "dateiTyp": "label_outside",
+    "titelDe": "Etikett aussen",
+    "titelEn": "Outside label",
+    "art": "etikett",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 90,
+     "breitePx": 450,
+     "hoehePx": 450,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 3618,
+     "bildUrl": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 560,
+     "vorlageHoehe": 560,
+     "flaecheLinks": 137,
+     "flaecheOben": 187,
+     "flaecheBreite": 288,
+     "flaecheHoehe": 288,
+     "ausrichtung": "any",
+     "vorderansicht": false
+    },
+    "aufpreisUsd": 2.49,
+    "aufpreisChf": 2.6,
+    "kollidiertMit": [
+     "back",
+     "label_inside_dtf"
+    ]
+   },
+   {
+    "id": "sleeve_right",
+    "dateiTyp": "sleeve_right",
+    "titelDe": "Ärmel rechts",
+    "titelEn": "Right sleeve",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 147,
+     "breitePx": 450,
+     "hoehePx": 1800,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 149919,
+     "bildUrl": "https://files.cdn.printful.com/m/g18500/medium/ghost/right/05_gildan18500_ghost_right_base_whitebg.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1318,
+     "flaecheOben": 1065,
+     "flaecheBreite": 277,
+     "flaecheHoehe": 1104,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": [
+     "embroidery_wrist_right",
+     "embroidery_wrist_left"
+    ]
+   },
+   {
+    "id": "sleeve_left",
+    "dateiTyp": "sleeve_left",
+    "titelDe": "Ärmel links",
+    "titelEn": "Left sleeve",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 147,
+     "breitePx": 450,
+     "hoehePx": 1800,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 149906,
+     "bildUrl": "https://files.cdn.printful.com/m/g18500/medium/ghost/left/05_gildan18500_ghost_left_base_whitebg.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 1409,
+     "flaecheOben": 1054,
+     "flaecheBreite": 278,
+     "flaecheHoehe": 1105,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": [
+     "embroidery_wrist_right",
+     "embroidery_wrist_left"
+    ]
+   },
+   {
+    "id": "label_inside_dtf",
+    "dateiTyp": "label_inside_dtf",
+    "titelDe": "Etikett innen (DTF)",
+    "titelEn": "Inside label",
+    "art": "etikett",
+    "technik": "DTFILM",
+    "printfile": {
+     "printfileId": 71,
+     "breitePx": 450,
+     "hoehePx": 450,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 133305,
+     "bildUrl": "https://files.cdn.printful.com/m/templates/medium/inside_label__3x3.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 560,
+     "vorlageHoehe": 560,
+     "flaecheLinks": 136,
+     "flaecheOben": 186,
+     "flaecheBreite": 288,
+     "flaecheHoehe": 288,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 0.99,
+    "aufpreisChf": 1,
+    "kollidiertMit": [
+     "label_outside"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_left",
+    "dateiTyp": "embroidery_wrist_left",
+    "titelDe": "Stickerei Handgelenk links",
+    "titelEn": "Left wrist",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 396,
+     "breitePx": 600,
+     "hoehePx": 900,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 150062,
+     "bildUrl": "https://files.cdn.printful.com/m/g18500/medium/ghost/left/zoomed/05_gildan18500_ghost_left_base_whitebg.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 2000,
+     "vorlageHoehe": 2000,
+     "flaecheLinks": 877,
+     "flaecheOben": 1024,
+     "flaecheBreite": 288,
+     "flaecheHoehe": 431,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": [
+     "sleeve_left",
+     "sleeve_right"
+    ]
+   },
+   {
+    "id": "embroidery_wrist_right",
+    "dateiTyp": "embroidery_wrist_right",
+    "titelDe": "Stickerei Handgelenk rechts",
+    "titelEn": "Right wrist",
+    "art": "flaeche",
+    "technik": "EMBROIDERY",
+    "printfile": {
+     "printfileId": 396,
+     "breitePx": 600,
+     "hoehePx": 900,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 150075,
+     "bildUrl": "https://files.cdn.printful.com/m/g18500/medium/ghost/right/zoomed/05_gildan18500_ghost_right_base_whitebg.png?v=1774959405",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#0b0b0b",
+     "vorlageBreite": 2000,
+     "vorlageHoehe": 2000,
+     "flaecheLinks": 839,
+     "flaecheOben": 1122,
+     "flaecheBreite": 286,
+     "flaecheHoehe": 431,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 2.95,
+    "aufpreisChf": 3,
+    "kollidiertMit": [
+     "sleeve_right",
+     "sleeve_left"
+    ]
+   }
+  ],
+  "druckdateien": {
+   "1": {
+    "printfileId": 1,
+    "breitePx": 1800,
+    "hoehePx": 2400,
+    "dpi": 150
+   },
+   "71": {
+    "printfileId": 71,
+    "breitePx": 450,
+    "hoehePx": 450,
+    "dpi": 150
+   },
+   "90": {
+    "printfileId": 90,
+    "breitePx": 450,
+    "hoehePx": 450,
+    "dpi": 150
+   },
+   "139": {
+    "printfileId": 139,
+    "breitePx": 2100,
+    "hoehePx": 2100,
+    "dpi": 150
+   },
+   "147": {
+    "printfileId": 147,
+    "breitePx": 450,
+    "hoehePx": 1800,
+    "dpi": 150
+   },
+   "396": {
+    "printfileId": 396,
+    "breitePx": 600,
+    "hoehePx": 900,
+    "dpi": 300
+   }
+  },
+  "hinweise": [],
+  "farben": {
+   "#ffffff": [
+    5522,
+    5523,
+    5524,
+    5525,
+    5526,
+    5527,
+    5528,
+    5529
+   ],
+   "#0b0b0b": [
+    5530,
+    5531,
+    5532,
+    5533,
+    5534,
+    5535,
+    5536,
+    5537
+   ],
+   "#131928": [
+    5594,
+    5595,
+    5596,
+    5597,
+    5598,
+    5599,
+    5600,
+    5601
+   ],
+   "#da0a1a": [
+    5538,
+    5539,
+    5540,
+    5541,
+    5542,
+    5543
+   ],
+   "#1d50a4": [
+    16850,
+    16851,
+    16852,
+    16853,
+    16854,
+    16855
+   ],
+   "#ff5723": [
+    22265,
+    22266,
+    22267,
+    22268,
+    22269,
+    22270,
+    22271,
+    22272
+   ],
+   "#4a1c7d": [
+    21627,
+    21628,
+    21629,
+    21630,
+    21631,
+    21632,
+    21633,
+    21634
+   ],
+   "#47171c": [
+    5586,
+    5587,
+    5588,
+    5589,
+    5590,
+    5591
+   ],
+   "#e7d3b3": [
+    12997,
+    12998,
+    12999,
+    13000,
+    13001,
+    13002
+   ],
+   "#ffaf24": [
+    22118,
+    22119,
+    22120,
+    22121,
+    22122,
+    22123,
+    22124,
+    22125
+   ],
+   "#f63880": [
+    22257,
+    22258,
+    22259,
+    22260,
+    22261,
+    22262,
+    22263,
+    22264
+   ],
+   "#35241b": [
+    5554,
+    5555,
+    5556,
+    5557,
+    5558,
+    5559
+   ],
+   "#515a6e": [
+    17411,
+    17410,
+    17408,
+    17407,
+    17406
+   ],
+   "#9b969c": [
+    5610,
+    5611,
+    5612,
+    5613,
+    5614,
+    5615,
+    5616,
+    5617
+   ]
+  }
+ },
+ "karteBytes": 8769,
  "lieferung": {
   "versandart": "STANDARD",
   "rateUsd": 11.39,
@@ -2937,7 +3385,7 @@
   },
   {
    "code": "karte",
-   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -2993,5 +3441,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "2c68beee28ce1295269f055022803ff7cd4717cba4295f181e85338ba5032f19"
+ "hash": "c615789f1141b5164d828906506cc6bae2b65e5f943edb833eb3ac9baa09c411"
 }

@@ -1,7 +1,7 @@
 {
  "schema": "pod-modell-plan/1",
  "erzeugt": {
-  "am": "2026-11-05T18:41:14.547Z",
+  "am": "2026-11-05T18:54:40.787Z",
   "katalogGeholt": "2026-11-05T17:04:15.600Z",
   "glossar": "2026-11-05.1",
   "regel": {
@@ -11,6 +11,7 @@
    "ekAufschlagOhneSchaetzung": 1.26,
    "digitalisierungUsd": 6.5,
    "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
    "medienMax": 20,
    "medienOhneFarbe": 6,
    "stufen": [
@@ -127,7 +128,7 @@
    "label": "Beige"
   }
  ],
- "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer\" data-lspod=\"6\" data-modell=\"378\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"></div>\n<script type=\"application/json\" id=\"lspod-karte\">{\"schema\":\"lspod-karte/1\",\"modell\":378,\"klasse\":\"FLACH_MIT_HINWEIS\",\"technik\":\"DTG\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1500,1500],\"dpi\":150,\"cm\":[25.4,25.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":894,\"oben\":1378,\"breite\":1204,\"hoehe\":1204,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003\",\"hintergrund\":null},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[1500,1500],\"dpi\":150,\"cm\":[25.4,25.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":894,\"oben\":1378,\"breite\":1204,\"hoehe\":1204,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586\",\"hintergrund\":null}],\"hinweise\":[{\"code\":\"tasche\",\"quelle\":\"annahme\"}]}</script>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Verzichte auf Plastik und pack deine Sachen in diese geräumige Tragetasche aus Bio-Baumwolle. Ob Einkäufe, Bücher oder Reisebedarf, es ist Platz für alles!</p>\n<ul><li>100 % zertifizierte Bio-Baumwolle, Köper 3/1</li><li>Stoffgewicht: 272 g/m²</li><li>Masse: 50,8 × 35,6 × 12,7 cm</li><li>Fassungsvermögen: 23 l</li><li>Maximale Belastung: 13,6 kg</li><li>Zwei lange Henkel aus demselben Stoff, 2,5 × 63,5 cm</li><li>Offenes Hauptfach, flacher Boden</li><li>Der unbedruckte Rohling stammt aus China oder Indien.</li></ul>\n<p>Hinweis: Die Pflegehinweise auf dem Abreissetikett können sich beim Waschen lösen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1500 × 1500 Pixel bei 150 dpi, das sind 25,4 × 25,4 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp: Die Druckfläche endet vor Nähten und Henkeln. Setze dein Motiv nicht an den Rand.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>3 bis 6 Werktage</strong> laut Printful <span style=\"opacity:.7;\">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"378\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":378,\"typ\":\"T-SHIRT\",\"titelDe\":\"Grosse Eco Tragetasche\",\"klasse\":\"FLACH_MIT_HINWEIS\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14969,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14970,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[]}],\"druckdateien\":{\"5\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150}},\"hinweise\":[{\"code\":\"tasche\",\"art\":\"einschraenkung\"}],\"farben\":{\"#222222\":[10732],\"#edcea5\":[10733]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Verzichte auf Plastik und pack deine Sachen in diese geräumige Tragetasche aus Bio-Baumwolle. Ob Einkäufe, Bücher oder Reisebedarf, es ist Platz für alles!</p>\n<ul><li>100 % zertifizierte Bio-Baumwolle, Köper 3/1</li><li>Stoffgewicht: 272 g/m²</li><li>Masse: 50,8 × 35,6 × 12,7 cm</li><li>Fassungsvermögen: 23 l</li><li>Maximale Belastung: 13,6 kg</li><li>Zwei lange Henkel aus demselben Stoff, 2,5 × 63,5 cm</li><li>Offenes Hauptfach, flacher Boden</li><li>Der unbedruckte Rohling stammt aus China oder Indien.</li></ul>\n<p>Hinweis: Die Pflegehinweise auf dem Abreissetikett können sich beim Waschen lösen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1500 × 1500 Pixel bei 150 dpi, das sind 25,4 × 25,4 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp: Die Druckfläche endet vor Nähten und Henkeln. Setze dein Motiv nicht an den Rand.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
  "beschreibungWeggelassen": [
   "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (A, B, C, D)"
  ],
@@ -267,6 +268,102 @@
   ]
  },
  "kompaktBytes": 1064,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 378,
+  "typ": "T-SHIRT",
+  "titelDe": "Grosse Eco Tragetasche",
+  "klasse": "FLACH_MIT_HINWEIS",
+  "standardTechnik": "DTG",
+  "minDpi": 75,
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titelDe": "Vorderseite",
+    "titelEn": "Front print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 5,
+     "breitePx": 1500,
+     "hoehePx": 1500,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 14969,
+     "bildUrl": "https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#222222",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 894,
+     "flaecheOben": 1378,
+     "flaecheBreite": 1204,
+     "flaecheHoehe": 1204,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titelDe": "Rückseite",
+    "titelEn": "Back print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 5,
+     "breitePx": 1500,
+     "hoehePx": 1500,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 14970,
+     "bildUrl": "https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#222222",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 894,
+     "flaecheOben": 1378,
+     "flaecheBreite": 1204,
+     "flaecheHoehe": 1204,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": []
+   }
+  ],
+  "druckdateien": {
+   "5": {
+    "printfileId": 5,
+    "breitePx": 1500,
+    "hoehePx": 1500,
+    "dpi": 150
+   }
+  },
+  "hinweise": [
+   {
+    "code": "tasche",
+    "art": "einschraenkung"
+   }
+  ],
+  "farben": {
+   "#222222": [
+    10732
+   ],
+   "#edcea5": [
+    10733
+   ]
+  }
+ },
+ "karteBytes": 1622,
  "lieferung": {
   "versandart": "STANDARD",
   "rateUsd": 10.39,
@@ -439,7 +536,7 @@
   },
   {
    "code": "karte",
-   "name": "Editor-Karte höchstens 10240 Byte und mit mindestens einer bestellbaren Fläche samt Vorlage",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
    "art": "blocker",
    "ergebnis": "bestanden",
    "grund": ""
@@ -495,5 +592,5 @@
   }
  ],
  "anlegbar": true,
- "hash": "23501a42937227e6f7fdaa3d86ec00c5882600831d2ac168b031aacafaeb537c"
+ "hash": "e13e476d890bd11f952c6dd1bd18055b42a4e8695efa17405afcb1ffea06ecb9"
 }

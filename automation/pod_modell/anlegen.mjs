@@ -23,7 +23,7 @@
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { pruefeAntwort, TageslimitFehler, AbweichungFehler, M_SET, M_META, M_UPDATE } from '../lib/pod_auswahl_schreiben.mjs';
-import { PLATZHALTER_VARIANTE, PLATZHALTER_EDITOR, htmlText } from './beschreibung.mjs';
+import { PLATZHALTER_VARIANTE, PLATZHALTER_EDITOR, PLATZHALTER_SHOP, htmlText } from './beschreibung.mjs';
 
 export { TageslimitFehler, AbweichungFehler };
 export const MARKER_TAG = 'sg-fabrik';
@@ -78,8 +78,16 @@ export async function leseFrisch(gql, handle) {
 }
 
 /** Beschreibung, wie sie nach dem letzten Schritt im Shop stehen soll. */
-export function sollBeschreibung(plan, { ersteVarianteNr, editorUrl }) {
-  return plan.beschreibungHtml.split(PLATZHALTER_VARIANTE).join(String(ersteVarianteNr)).split(PLATZHALTER_EDITOR).join(editorUrl);
+export function sollBeschreibung(plan, { ersteVarianteNr, editorUrl, shopVarianten }) {
+  return plan.beschreibungHtml.split(PLATZHALTER_VARIANTE).join(String(ersteVarianteNr)).split(PLATZHALTER_EDITOR).join(editorUrl)
+    .split(JSON.stringify(PLATZHALTER_SHOP)).join(JSON.stringify(shopVarianten ?? {}));
+}
+/** Abbildung Shopify-Variantennummer → Printful-Variante für die Karte des Editors (shop.varianten), aus den frisch gelesenen Varianten und den SKUs des Plans. */
+export function shopVariantenVon(plan, variantenIst) {
+  const jeSku = new Map(plan.varianten.map((v) => [v.sku, v.printfulVariantId]));
+  const o = {};
+  for (const x of variantenIst ?? []) if (jeSku.has(x.sku)) o[nummer(x.id)] = jeSku.get(x.sku);
+  return o;
 }
 const jsonGleich = (a, b) => { try { return JSON.stringify(JSON.parse(a)) === JSON.stringify(JSON.parse(b)); } catch { return a === b; } };
 
@@ -110,8 +118,8 @@ export function vergleiche(plan, ist, { editorUrl, vollstaendig = true } = {}) {
   }
   if (vollstaendig) {
     const ersteNr = nummer((nachSku.get(plan.varianten[0]?.sku) ?? ist.varianten[0])?.id);
-    const soll = sollBeschreibung(plan, { ersteVarianteNr: ersteNr, editorUrl });
-    if (normHtml(ist.descriptionHtml) !== normHtml(soll)) a.push(`Beschreibung weicht ab (Text ${htmlText(ist.descriptionHtml).length} gegen ${htmlText(soll).length} Zeichen; Platzhalter übrig: ${/__ERSTE_VARIANTE__|__LSPOD_EDITOR_URL__/.test(ist.descriptionHtml)})`);
+    const soll = sollBeschreibung(plan, { ersteVarianteNr: ersteNr, editorUrl, shopVarianten: shopVariantenVon(plan, ist.varianten) });
+    if (normHtml(ist.descriptionHtml) !== normHtml(soll)) a.push(`Beschreibung weicht ab (Text ${htmlText(ist.descriptionHtml).length} gegen ${htmlText(soll).length} Zeichen; Platzhalter übrig: ${/__ERSTE_VARIANTE__|__LSPOD_EDITOR_URL__|__SHOP_VARIANTEN__/.test(ist.descriptionHtml)})`);
   }
   if (ist.kanaele !== 0) a.push(`Produkt ist in ${ist.kanaele} Verkaufskanal/-kanälen veröffentlicht (soll: keinem)`);
   return a;
@@ -202,12 +210,12 @@ export async function produktAnlegen(plan, { gql, ledgerPfad, editorUrl, log = c
   // Beschreibung: Platzhalter ersetzen
   ist = await leseFrisch(gql, plan.handle);
   const erste = ist.varianten.find((v) => v.sku === plan.varianten[0].sku) ?? ist.varianten[0];
-  const soll = sollBeschreibung(plan, { ersteVarianteNr: nummer(erste.id), editorUrl });
+  const soll = sollBeschreibung(plan, { ersteVarianteNr: nummer(erste.id), editorUrl, shopVarianten: shopVariantenVon(plan, ist.varianten) });
   if (normHtml(ist.descriptionHtml) !== normHtml(soll)) {
     // nur ersetzen, wenn der Text noch der Plan-Text mit Platzhaltern ist (sonst hat jemand anderes daran geändert)
     if (normHtml(ist.descriptionHtml) !== normHtml(plan.beschreibungHtml)) throw new AbweichungFehler(`${plan.handle}: Beschreibung im Shop ist weder der Plan-Text noch der fertige Text, nichts überschrieben`, ['Beschreibung wurde nach dem Anlegen von anderer Seite geändert (oder Shopify hat das HTML umgeschrieben)']);
     pruefeAntwort(await gql(M_UPDATE, { p: { id, descriptionHtml: soll } }), `${plan.handle}: Editor-Baustein`, 'productUpdate');
-    log('   Editor-Baustein: erste Variante und Editor-Adresse eingetragen');
+    log('   Editor-Baustein: erste Variante, Variantenabbildung und Editor-Adresse eingetragen');
   }
   // FRISCH zurücklesen und vergleichen
   ist = await leseFrisch(gql, plan.handle);

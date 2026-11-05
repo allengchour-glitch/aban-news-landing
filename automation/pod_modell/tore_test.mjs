@@ -83,8 +83,10 @@ ist('gedankenstrich: Bindestrich ist erlaubt', ergebnis(aend((p) => { p.titel = 
 // Beschreibung, Karte
 ist('beschreibung_belegt: Übersetzung ungültig', ergebnis(aend((p) => { p.uebersetzung = { ok: false, fehler: ['x'] }; }), 'beschreibung_belegt'), 'durchgefallen');
 ist('beschreibung_belegt: fehlt ganz', ergebnis(aend((p) => { delete p.uebersetzung; }), 'beschreibung_belegt'), 'durchgefallen');
-ist('karte: zu gross', ergebnis(aend((p) => { p.kompaktBytes = 10241; }), 'karte'), 'durchgefallen');
-ist('karte: genau 10240 Byte erlaubt', ergebnis(aend((p) => { p.kompaktBytes = 10240; }), 'karte'), 'bestanden');
+ist('karte: Metafeld-Karte zu gross', ergebnis(aend((p) => { p.kompaktBytes = 10241; }), 'karte'), 'durchgefallen');
+ist('karte: Metafeld-Karte genau 10240 Byte erlaubt', ergebnis(aend((p) => { p.kompaktBytes = 10240; }), 'karte'), 'bestanden');
+ist('karte: Editor-Karte zu gross', ergebnis(aend((p) => { p.karteBytes = 24577; }), 'karte'), 'durchgefallen');
+ist('karte: Editor-Karte genau 24576 Byte erlaubt (auch wenn sie über 10240 liegt)', ergebnis(aend((p) => { p.karteBytes = 24576; }), 'karte'), 'bestanden');
 ist('karte: keine bestellbare Fläche', ergebnis(aend((p) => { for (const x of p.kompakt.platzierungen) x.inklusive = false; }), 'karte'), 'durchgefallen');
 ist('karte: Fläche ohne Grösse', ergebnis(aend((p) => { for (const x of p.kompakt.platzierungen) x.flaeche.breite = 0; }), 'karte'), 'durchgefallen');
 ist('karte: keine Basisfläche', ergebnis(aend((p) => { p.basisPlatzierung = null; }), 'karte'), 'durchgefallen');
