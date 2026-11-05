@@ -1906,5 +1906,258 @@ pruefe("Seite: im Lesemodus sind Not-Aus, Auto-Schalter, Steuerung, Risiko, Knö
        all(x in _html_c for x in ("html[data-nur-lesen] #notaus", "html[data-nur-lesen] #autoK", "html[data-nur-lesen] #fern", "#steuerung .steuerkopf", "#steuerung .risiko", "#steuerung .knoepfe", "#steuerung .konsole"))
        and "#steuerung #g-box" not in _html_c.split("html[data-nur-lesen]")[-1].split("</style>")[0])
 
+# ── Cockpit-Autostart (Besitzer 05.11.: «cockpit autostart ja»): unsichtbarer Start bei der Anmeldung, Ausschalter, Heilung, Ampel, nie zwei Cockpits, Neustart nach einem Update ──
+import os as _os_cp
+import socket as _socket_cp
+import xml.dom.minidom as _md_cp
+
+_xml_cp = C.aufgabe_xml_cp(benutzer="MEINPC\\Hans & Co")
+_xml_cp_ohne = C.aufgabe_xml_cp(benutzer="")
+pruefe("Autostart-Aufgabe: gültiges XML, alle 15 Minuten (PT15M) UND bei der Anmeldung (mit Benutzer, 30 s Vorlauf), über den UNSICHTBAREN Starter (wscript //B), nie zwei Instanzen, auch auf Akku, ohne Administratorrechte",
+       _md_cp.parseString(_xml_cp.split("?>", 1)[1].strip()) is not None
+       and "<Interval>PT15M</Interval>" in _xml_cp and "<LogonTrigger><Enabled>true</Enabled><UserId>MEINPC\\Hans &amp; Co</UserId><Delay>PT30S</Delay></LogonTrigger>" in _xml_cp
+       and "<Command>wscript.exe</Command>" in _xml_cp and "//B //Nologo" in _xml_cp and C.CP_STARTER in _xml_cp
+       and "<MultipleInstancesPolicy>IgnoreNew" in _xml_cp and "<DisallowStartIfOnBatteries>false" in _xml_cp and "<StopIfGoingOnBatteries>false" in _xml_cp
+       and "<RunLevel>LeastPrivilege</RunLevel>" in _xml_cp, _xml_cp[:300])
+pruefe("Autostart-Aufgabe: ohne bekannten Benutzer kein Anmelde-Auslöser (er bräuchte Administratorrechte), die Wiederholung bleibt, das XML ist gültig",
+       "<LogonTrigger>" not in _xml_cp_ohne and "<Interval>PT15M</Interval>" in _xml_cp_ohne and _md_cp.parseString(_xml_cp_ohne.split("?>", 1)[1].strip()) is not None)
+pruefe("Autostart-Aufgabe: die XML nennt die Datei dieses Ordners", str(C.HIER / C.CP_STARTER).replace("&", "&amp;") in _xml_cp)
+_bef_cp = C.aufgabe_befehl_cp()
+pruefe("Autostart: der Rückfall (einfache Variante) wiederholt alle 15 Minuten über wscript //B, mit eigenem Namen",
+       _bef_cp[:6] == ["schtasks", "/create", "/sc", "minute", "/mo", "15"] and C.AUFGABE_CP in _bef_cp and "wscript.exe //B //Nologo" in _bef_cp[_bef_cp.index("/tr") + 1] and _bef_cp[-1] == "/f")
+pruefe("Autostart: der Aufgabenname unterscheidet sich von den beiden anderen", len({C.AUFGABE, C.AUFGABE_NK, C.AUFGABE_CP}) == 3)
+
+_vbs_b, _bat_b = (C.HIER / C.CP_STARTER).read_bytes(), (C.HIER / C.CP_BAT).read_bytes()
+pruefe("Startdateien: beide da, nur Windows-Zeilenenden (CRLF), reines ASCII", _vbs_b.count(b"\n") == _vbs_b.count(b"\r\n") > 0 and _bat_b.count(b"\n") == _bat_b.count(b"\r\n") > 0 and _vbs_b.isascii() and _bat_b.isascii())
+_vbs_t, _bat_t = _vbs_b.decode("ascii"), _bat_b.decode("ascii")
+pruefe("Starter .vbs: startet die .bat unsichtbar (Fensterstil 0) und wartet nicht (False), den Pfad des eigenen Ordners in Anführungszeichen",
+       'sh.Run "cmd /c """"" & ordner & "\\' + C.CP_BAT + '""""", 0, False' in _vbs_t and "GetParentFolderName(WScript.ScriptFullName)" in _vbs_t)
+_zeilen_bat_cp = [z.strip() for z in _bat_t.splitlines() if z.strip() and not z.lstrip().lower().startswith("rem")]
+pruefe("Starter .bat: die letzte Zeile startet cockpit.py --autostart und endet mit «& exit /b» (cmd liest sie ganz ein, bevor ein Update die Datei ersetzt); kein pause; geht in den Hauptordner",
+       _zeilen_bat_cp[-1].endswith("cockpit.py --autostart & exit /b") and "pause" not in _bat_t.lower() and 'cd /d "%~dp0\\..\\..\\.."' in _bat_t and "set PY=py" in _bat_t and "where py" in _bat_t)
+
+with tempfile.TemporaryDirectory() as _td_cp:
+    _d_cp = Path(_td_cp)
+    pruefe("Autostart: ab Werk gewollt (Besitzer 05.11.)", C.autostart_gewollt({}, _d_cp) is True)
+    (_d_cp / C.CP_AUS).write_text("x", encoding="utf-8")
+    pruefe("Autostart: mit der Ausschalt-Datei nicht gewollt", C.autostart_gewollt({}, _d_cp) is False)
+    (_d_cp / C.CP_AUS).unlink()
+    pruefe("Autostart: KRYPTO_AUTOSTART=aus (auch 0, nein, off, false; gross/klein, mit Leerzeichen) schaltet aus, andere Werte nicht",
+           all(C.autostart_gewollt({"KRYPTO_AUTOSTART": v_}, _d_cp) is False for v_ in ("aus", "AUS", "0", "nein", "off", "False", " aus "))
+           and all(C.autostart_gewollt({"KRYPTO_AUTOSTART": v_}, _d_cp) is True for v_ in ("", "an", "1", "ja")))
+
+    def _schtasks_cp(erg, mit):
+        def f_(cmd, zeit):
+            xml_ = Path(cmd[cmd.index("/xml") + 1]).read_bytes() if "/xml" in cmd else None  # im Aufruf lesen: der Ordner ist danach weg
+            mit.append((list(cmd), xml_))
+            return erg(cmd)
+        return f_
+
+    (_d_cp / C.CP_AUS).write_text("x", encoding="utf-8")
+    _mit = []
+    _ok, _text = C.autostart_einrichten(_schtasks_cp(lambda c_: (True, "ERFOLGREICH"), _mit), daten=_d_cp)
+    pruefe("autostart_einrichten: legt die Aufgabe per XML an (ein Aufruf /create /tn Krypto-Cockpit-Start … /f), nimmt die Ausschalt-Datei weg, meldet Erfolg",
+           _ok and len(_mit) == 1 and _mit[0][0][:4] == ["schtasks", "/create", "/tn", C.AUFGABE_CP] and _mit[0][0][-1] == "/f" and not (_d_cp / C.CP_AUS).exists() and "Cockpit-Autostart ein" in _text, (_mit, _text))
+    pruefe("autostart_einrichten: die XML-Datei ist UTF-16 und enthält die 15 Minuten und den Starter",
+           _mit[0][1][:2] in (b"\xff\xfe", b"\xfe\xff") and "PT15M" in _mit[0][1].decode("utf-16") and C.CP_STARTER in _mit[0][1].decode("utf-16"))
+    _mit = []
+    _ok, _text = C.autostart_einrichten(_schtasks_cp(lambda c_: (False, "Zugriff verweigert") if "/xml" in c_ else (True, "ok"), _mit), daten=_d_cp)
+    pruefe("autostart_einrichten: scheitert die XML-Variante, folgt die einfache (alle 15 Minuten), und der Text nennt, was ihr fehlt",
+           _ok and len(_mit) == 2 and _mit[1][0][:6] == ["schtasks", "/create", "/sc", "minute", "/mo", "15"] and "einfache Variante" in _text and "Akku" in _text, (_mit, _text))
+    _mit = []
+    _ok, _text = C.autostart_einrichten(_schtasks_cp(lambda c_: (False, "Zugriff verweigert"), _mit), daten=_d_cp)
+    pruefe("autostart_einrichten: scheitern beide, steht der Grund da und es gilt als nicht eingerichtet", not _ok and "Zugriff verweigert" in _text and "fehlgeschlagen" in _text and len(_mit) == 2)
+    with tempfile.TemporaryDirectory() as _leer_cp:
+        _hier_alt_cp, C.HIER = C.HIER, Path(_leer_cp)
+        try:
+            _mit = []
+            _ok, _text = C.autostart_einrichten(_schtasks_cp(lambda c_: (True, ""), _mit), daten=_d_cp)
+        finally:
+            C.HIER = _hier_alt_cp
+    pruefe("autostart_einrichten: fehlen die Startdateien in diesem Ordner, wird NICHTS angelegt (kein einziger Aufruf) und der Grund steht da", not _ok and _mit == [] and C.CP_STARTER in _text and C.CP_BAT in _text, (_mit, _text))
+
+    _mit = []
+    _ok, _text = C.autostart_ausschalten(_schtasks_cp(lambda c_: (True, "ERFOLGREICH"), _mit), daten=_d_cp)
+    pruefe("autostart_ausschalten: schreibt die Ausschalt-Datei und löscht die Aufgabe (/delete /tn … /f); die Selbstheilung legt sie dann nicht neu an",
+           _ok and (_d_cp / C.CP_AUS).exists() and len(_mit) == 1 and _mit[0][0] == ["schtasks", "/delete", "/tn", C.AUFGABE_CP, "/f"] and "nicht neu angelegt" in _text and C.autostart_gewollt({}, _d_cp) is False, (_mit, _text))
+    _mit = []
+    _ok, _text = C.autostart_ausschalten(_schtasks_cp(lambda c_: (False, "Der Task existiert nicht"), _mit), daten=_d_cp)
+    pruefe("autostart_ausschalten: gibt es die Aufgabe schon nicht mehr (Abfrage sagt nein), ist das in Ordnung", _ok and any(m_[0][:2] == ["schtasks", "/query"] for m_ in _mit), (_mit, _text))
+    _ok, _text = C.autostart_ausschalten(_schtasks_cp(lambda c_: (False, "Zugriff verweigert") if c_[1] == "/delete" else (True, ""), []), daten=_d_cp)
+    pruefe("autostart_ausschalten: scheitert das Löschen bei vorhandener Aufgabe, steht der Grund und der Weg von Hand da; die Ausschalt-Datei liegt trotzdem",
+           not _ok and "Zugriff verweigert" in _text and "von Hand" in _text and (_d_cp / C.CP_AUS).exists(), _text)
+    (_d_cp / "ist-eine-datei").write_text("x", encoding="utf-8")
+    _mit = []
+    _ok, _text = C.autostart_ausschalten(_schtasks_cp(lambda c_: (True, ""), _mit), daten=_d_cp / "ist-eine-datei" / "unter")
+    pruefe("autostart_ausschalten: lässt sich die Ausschalt-Datei nicht schreiben, bleibt der Autostart AN und die Aufgabe wird nicht angefasst (kein Aufruf)", not _ok and "bleibt an" in _text and _mit == [], (_mit, _text))
+
+    # Knöpfe (aktion) und Ausschalter über die Knöpfe
+    _data_alt_cp, C.DATA = C.DATA, _d_cp
+    try:
+        (_d_cp / C.CP_AUS).unlink(missing_ok=True)
+        _mit = []
+        _e = C.aktion("autostart_an", befehl=_schtasks_cp(lambda c_: (True, "ok"), _mit))
+        pruefe("Knopf «Cockpit-Autostart einschalten»: legt die Aufgabe an", _e["ok"] and _mit and _mit[0][0][3] == C.AUFGABE_CP and C.autostart_gewollt({}) is True, _e)
+        _e = C.aktion("autostart_aus", befehl=_schtasks_cp(lambda c_: (True, "ok"), []))
+        pruefe("Knopf «Cockpit-Autostart ausschalten»: löscht die Aufgabe und schreibt die Ausschalt-Datei (danach nicht mehr gewollt)", _e["ok"] and (_d_cp / C.CP_AUS).exists() and C.autostart_gewollt({}) is False, _e)
+        _e = C.aktion("autostart_an", befehl=_schtasks_cp(lambda c_: (True, ""), []))
+        pruefe("Knopf «Cockpit-Autostart einschalten» nach dem Ausschalten: wieder gewollt, Ausschalt-Datei weg", _e["ok"] and C.autostart_gewollt({}) is True and not (_d_cp / C.CP_AUS).exists())
+
+        # Selbstheilung: fehlt die Aufgabe, wird sie angelegt (auch bei Pause und Not-Aus: das Cockpit handelt nie); ausgeschaltet nie
+        _punkt_fehlt = [{"name": "Cockpit-Autostart (Aufgabenplanung)", "ok": False, "text": "fehlt — Knopf «Cockpit-Autostart einschalten»"}]
+        _mit = []
+        _ok, _text = C.selbstheilung(starter=lambda *a_: (True, ""), befehl=_schtasks_cp(lambda c_: (True, "ok"), _mit), punkte_lesen=lambda: _punkt_fehlt, mit_probelauf=False)
+        pruefe("Selbstheilung: fehlt die Autostart-Aufgabe, legt sie sie an (genau ein /create) und meldet es", _ok and len(_mit) == 1 and _mit[0][0][3] == C.AUFGABE_CP and "Cockpit-Autostart eingerichtet" in _text, (_mit, _text))
+        (_d_cp / C.CP_AUS).write_text("x", encoding="utf-8")
+        _mit = []
+        _ok, _text = C.selbstheilung(starter=lambda *a_: (True, ""), befehl=_schtasks_cp(lambda c_: (True, "ok"), _mit), punkte_lesen=lambda: _punkt_fehlt, mit_probelauf=False)
+        pruefe("Selbstheilung: ist der Autostart ausgeschaltet, legt sie die Aufgabe NIE neu an (kein einziger Aufruf)", _mit == [] and "Cockpit-Autostart eingerichtet" not in _text, (_mit, _text))
+        (_d_cp / C.CP_AUS).unlink()
+        _mit = []
+        _ok, _text = C.selbstheilung(starter=lambda *a_: (True, ""), befehl=_schtasks_cp(lambda c_: (False, "Zugriff verweigert"), _mit), punkte_lesen=lambda: _punkt_fehlt, mit_probelauf=False)
+        pruefe("Selbstheilung: scheitert das Anlegen, steht es als Fehler da und das Gesamtergebnis ist nicht ok", (not _ok) and "Cockpit-Autostart: Einrichten fehlgeschlagen" in _text, _text)
+        _punkt_weg = [{"name": "Cockpit-Autostart (Aufgabenplanung)", "ok": False, "text": "eingerichtet, zeigt aber auf C:\\x\\cockpit-start-still.vbs: diese Datei gibt es nicht mehr"}]
+        _mit = []
+        C.selbstheilung(starter=lambda *a_: (True, ""), befehl=_schtasks_cp(lambda c_: (True, "ok"), _mit), punkte_lesen=lambda: _punkt_weg, mit_probelauf=False)
+        pruefe("Selbstheilung: «zeigt auf eine fehlende Datei» (ohne das Wort «fehlt») wird NICHT ungefragt neu angelegt, nur der Knopf stellt sie um", _mit == [], _mit)
+
+        # Ampel unter vorgetäuschtem Windows
+        class _NT_CP:
+            name = "nt"
+
+            def __getattr__(self, a_):
+                return getattr(_os_cp, a_)
+        _WIN_CP = r"C:\Krypto Neu\tools\trading\krypto_bot"
+        _alt_cp = (C.os, C._befehl, C._soll_cp, C._datei_da, C._selbe_datei, dict(C._CP_CACHE), dict(C._AUFGABE_CACHE))
+        try:
+            C.os = _NT_CP()
+            C._soll_cp = lambda: _WIN_CP + "\\" + C.CP_STARTER
+            C._selbe_datei = lambda a_, b_: False
+
+            def _ampel_cp(da=True, ziel=None, ziel_da=True):
+                C._CP_CACHE.update({"zeit": 0.0, "wert": None, "ziel": None})
+                C._AUFGABE_CACHE.update({"zeit": 0.0, "wert": None, "wert_nk": None, "ziel": None, "ziel_nk": None})
+                xml_ = f"<Task><Actions><Exec><Command>wscript.exe</Command><Arguments>//B //Nologo \"{ziel}\"</Arguments></Exec></Actions></Task>" if ziel else ""
+                aufrufe_ = []
+
+                def b_(cmd, zeit):
+                    aufrufe_.append(list(cmd))
+                    name_ = cmd[cmd.index("/tn") + 1] if "/tn" in cmd else ""
+                    if cmd[:2] == ["schtasks", "/query"]:
+                        if name_ == C.AUFGABE_CP:
+                            return (True, xml_) if "/xml" in cmd else (da, "")
+                        return True, "<Task/>"
+                    return True, ""
+                C._befehl = b_
+                C._datei_da = lambda p_: ziel_da if "Alt" in str(p_) else True
+                return {x_["name"]: x_ for x_ in C.gesundheit({}, {"entscheide": []}, {}, heute)}, aufrufe_
+            _n = "Cockpit-Autostart (Aufgabenplanung)"
+            _a, _auf = _ampel_cp(True, _WIN_CP + "\\" + C.CP_STARTER)
+            pruefe("Ampel Autostart: eingerichtet und zeigt auf diesen Ordner → grün, mit Anmeldung und 15 Minuten im Text", _a[_n]["ok"] is True and "15 Minuten" in _a[_n]["text"] and "warnung" not in _a[_n], _a[_n])
+            _a, _ = _ampel_cp(True, r"C:\Krypto Alt\tools\trading\krypto_bot" + "\\" + C.CP_STARTER)
+            pruefe("Ampel Autostart: zeigt auf eine ANDERE Kopie → graue Warnung mit beiden Ordnern und dem Knopf, nie rot, ohne das Wort «fehlt»",
+                   _a[_n]["ok"] is None and _a[_n].get("warnung") is True and "ANDEREN Ordner" in _a[_n]["text"] and "Krypto Alt" in _a[_n]["text"] and "Krypto Neu" in _a[_n]["text"] and "Cockpit-Autostart einschalten" in _a[_n]["text"] and "fehlt" not in _a[_n]["text"], _a[_n])
+            _a, _ = _ampel_cp(True, r"C:\Krypto Alt\x" + "\\" + C.CP_STARTER, ziel_da=False)
+            pruefe("Ampel Autostart: die Zieldatei gibt es nicht mehr → rot, mit dem Weg zur Reparatur, ohne das Wort «fehlt»", _a[_n]["ok"] is False and "nicht mehr" in _a[_n]["text"] and "Cockpit-Autostart einschalten" in _a[_n]["text"] and "fehlt" not in _a[_n]["text"], _a[_n])
+            _a, _ = _ampel_cp(False)
+            pruefe("Ampel Autostart: die Aufgabe fehlt (und ist gewollt) → rot mit dem Wort «fehlt» (so erkennt die Selbstheilung sie) und dem Knopf", _a[_n]["ok"] is False and "fehlt" in _a[_n]["text"] and "Cockpit-Autostart einschalten" in _a[_n]["text"], _a[_n])
+            (_d_cp / C.CP_AUS).write_text("x", encoding="utf-8")
+            _a, _auf = _ampel_cp(False)
+            pruefe("Ampel Autostart: ausgeschaltet → grau «aus», NICHT rot, ohne das Wort «fehlt», und die Aufgabe wird gar nicht erst abgefragt",
+                   _a[_n]["ok"] is None and "aus" in _a[_n]["text"] and "fehlt" not in _a[_n]["text"] and not any(C.AUFGABE_CP in c_ for c_ in _auf), (_a[_n], _auf))
+            (_d_cp / C.CP_AUS).unlink()
+            _a, _auf = _ampel_cp(True, _WIN_CP + "\\" + C.CP_STARTER)
+            _vor_cp = sum(1 for c_ in _auf if C.AUFGABE_CP in c_)
+            C.gesundheit({}, {"entscheide": []}, {}, heute)
+            pruefe("Ampel Autostart: nur fragen, wenn nötig: ein zweiter Durchgang innerhalb von 5 Minuten fragt die Aufgabe nicht noch einmal", _vor_cp == 2 and _vor_cp == sum(1 for c_ in _auf if C.AUFGABE_CP in c_), (_vor_cp, _auf))
+        finally:
+            C.os, C._befehl, C._soll_cp, C._datei_da, C._selbe_datei = _alt_cp[:5]
+            C._CP_CACHE.clear(); C._CP_CACHE.update(_alt_cp[5])
+            C._AUFGABE_CACHE.clear(); C._AUFGABE_CACHE.update(_alt_cp[6])
+    finally:
+        C.DATA = _data_alt_cp
+
+# nie zwei Cockpits: erkennen, ob eins läuft (echter kleiner Server)
+class _Cp_Stand(BaseHTTPRequestHandler):
+    antwort = {"gesundheit": []}
+
+    def do_GET(self):
+        b_ = json.dumps(self.antwort).encode("utf-8") if self.path == "/api/stand" else b"{}"
+        self.send_response(200 if self.path == "/api/stand" else 404)
+        self.send_header("Content-Type", "application/json"); self.send_header("Content-Length", str(len(b_))); self.end_headers()
+        self.wfile.write(b_)
+
+    def log_message(self, *a_):
+        pass
+
+
+def _server_cp(antwort):
+    h_ = type("H", (_Cp_Stand,), {"antwort": antwort})
+    s_ = ThreadingHTTPServer(("127.0.0.1", 0), h_)
+    threading.Thread(target=s_.serve_forever, daemon=True).start()
+    return s_, s_.server_address[1]
+_s_cp, _port_cp = _server_cp({"gesundheit": [], "zeit": "x"})
+pruefe("cockpit_laeuft: erkennt ein Cockpit an der Antwort von /api/stand (mit dem Schlüssel «gesundheit»)", C.cockpit_laeuft(_port_cp, timeout=5) is True and C.port_belegt(_port_cp) is True)
+_s_cp.shutdown(); _s_cp.server_close()
+pruefe("cockpit_laeuft: nach dem Beenden nicht mehr (und der Port ist frei)", C.cockpit_laeuft(_port_cp, timeout=1) is False and C.port_belegt(_port_cp, timeout=0.5) is False)
+_s_fremd, _port_fremd = _server_cp({"hallo": 1})
+pruefe("cockpit_laeuft: ein anderes Programm auf dem Port (falsche Antwort) zählt nicht als Cockpit, der Port ist aber belegt", C.cockpit_laeuft(_port_fremd, timeout=5) is False and C.port_belegt(_port_fremd) is True)
+_alt_argv_cp = sys.argv
+try:
+    sys.argv = ["cockpit.py", "--autostart", "--port", str(_port_fremd)]
+    _t0_cp = time.time()
+    pruefe("main --autostart: hält etwas anderes den Port, endet der Start still und sofort mit 0 (kein zweiter Server, keine Meldung an den Besitzer)", C.main() == 0 and time.time() - _t0_cp < 20)
+finally:
+    sys.argv = _alt_argv_cp
+    _s_fremd.shutdown(); _s_fremd.server_close()
+_s_cp, _port_cp = _server_cp({"gesundheit": []})
+_alt_argv_cp = sys.argv
+try:
+    for _argv_cp in (["cockpit.py", "--autostart", "--port", str(_port_cp)], ["cockpit.py", "--kein-browser", "--port", str(_port_cp)]):
+        sys.argv = _argv_cp
+        _t0_cp = time.time()
+        pruefe(f"main {' '.join(_argv_cp[1:2])}: läuft schon ein Cockpit auf dem Port, kehrt der Start sofort mit 0 zurück, ohne einen zweiten Server zu binden", C.main() == 0 and time.time() - _t0_cp < 20)
+finally:
+    sys.argv = _alt_argv_cp
+    _s_cp.shutdown(); _s_cp.server_close()
+
+# Neustart nach einem Programm-Update
+pruefe("neustart_noetig: nur bei geänderter Version und ohne laufende Aktion",
+       C.neustart_noetig("v1", "v2", False) is True and C.neustart_noetig("v1", "v1", False) is False and C.neustart_noetig("v1", "v2", True) is False
+       and C.neustart_noetig(None, "v2", False) is False and C.neustart_noetig("v1", None, False) is False and C.neustart_noetig("", "v2", False) is False)
+
+
+class _Srv_Cp:
+    def __init__(self):
+        self.aus = 0
+
+    def shutdown(self):
+        self.aus += 1
+_s1_cp, _vers_cp = _Srv_Cp(), iter(["v1", "v1", "v2", "v2"])
+_e1_cp = C.neustart_wacht(_s1_cp, "v1", minuten=0, schlafen=lambda sek_: None, runden=6, version=lambda: next(_vers_cp))
+pruefe("neustart_wacht: beendet den Server erst bei neuer Version, genau einmal und hört dann auf", _e1_cp is True and _s1_cp.aus == 1)
+_s2_cp = _Srv_Cp()
+pruefe("neustart_wacht: bei gleicher Version nie", C.neustart_wacht(_s2_cp, "v1", 0, lambda sek_: None, 4, lambda: "v1") is False and _s2_cp.aus == 0)
+C._LAUFEND["probe-cp"] = time.time()
+try:
+    _s3_cp = _Srv_Cp()
+    pruefe("neustart_wacht: läuft gerade eine Knopf-Aktion (z. B. ein Handelslauf), wird nicht beendet", C.neustart_wacht(_s3_cp, "v1", 0, lambda sek_: None, 3, lambda: "v2") is False and _s3_cp.aus == 0)
+finally:
+    C._LAUFEND.pop("probe-cp", None)
+_s4_cp = _Srv_Cp()
+pruefe("neustart_wacht: bis die Version ermittelt ist (None), passiert nichts", C.neustart_wacht(_s4_cp, "v1", 0, lambda sek_: None, 3, lambda: None) is False and _s4_cp.aus == 0)
+with tempfile.TemporaryDirectory() as _w_cp:
+    pruefe("version_jetzt: ohne VERSION.json None", C.version_jetzt(_w_cp) is None)
+    (Path(_w_cp) / "tools" / "trading").mkdir(parents=True)
+    (Path(_w_cp) / "tools" / "trading" / "VERSION.json").write_text(json.dumps({"version": "2026-11-05.abc1234", "commit": "abc1234", "gebaut": "2026-11-05T17:16:12Z"}), encoding="utf-8")
+    pruefe("version_jetzt: liest die Version der Installation", C.version_jetzt(_w_cp) == "2026-11-05.abc1234")
+
+# Einbau: Knöpfe, Argument, kein Browser im Autostart
+_src_cp, _html_cp = (C.HIER / "cockpit.py").read_text(encoding="utf-8"), (C.HIER / "cockpit.html").read_text(encoding="utf-8")
+pruefe("Seite: beide Autostart-Knöpfe sind da und die Aktionen gibt es", 'data-a="autostart_an"' in _html_cp and 'data-a="autostart_aus"' in _html_cp and "autostart_an" in C.AKTIONEN and "autostart_aus" in C.AKTIONEN)
+pruefe("Einbau: --autostart öffnet keinen Browser und startet den Wächter für den Neustart nach einem Update; die Handy-Ansicht und Telegram laufen wie sonst",
+       "if not (a.kein_browser or a.autostart):" in _src_cp and "target=neustart_wacht" in _src_cp and "if a.autostart:" in _src_cp)
+pruefe("Einbau: die Prüfung «läuft schon eins?» kommt VOR dem Binden des Ports (nie zwei Cockpits)", _src_cp.index("if cockpit_laeuft(a.port):") < _src_cp.index('ThreadingHTTPServer(("127.0.0.1", a.port), Cockpit)'))
+
 print(f"\n{OK} bestanden, {len(FEHLER)} fehlgeschlagen")
 sys.exit(1 if FEHLER else 0)
