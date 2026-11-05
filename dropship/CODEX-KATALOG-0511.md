@@ -33,6 +33,7 @@ Erzeugt mit `dropship/selbst-gestalten-fertig-0511/werkzeuge/codex_katalog_expor
 - Kundentexte: Deutsch (Schweiz), Anrede «du», keine Gedankenstriche, keine Zusagen zu Lieferzeit, Rückgabe oder Garantie.
 
 ## Was Claude parallel tut (nicht doppeln)
+**Katalogfenster-Texte (Claude, 05.11. abends, im Bau):** die 571 englischen Herstellerbeschreibungen, die 155 Positionsnamen, 34 Optionstitel, 58 Optionswerte (Garnfarben) und 9 Technikbegriffe werden von Claude ins Schweizer Deutsch übersetzt (ohne oz/in/lb) und als neue Theme-Datei `luxe-clothing-texts-de.json` mit einem Patch an `luxe-clothing.js` eingebaut. **Das ändert die Basisdatei `assets/luxe-clothing.js`:** dein Patch aus Aufgabe C bezieht sich auf einen älteren Stand, Claude bringt ihn beim Einspielen auf den neuen Stand; bitte deshalb in C nur kleine, klar abgegrenzte Änderungen liefern (Marke-Kommentar je Stelle). Titel (A), Grössen (B) und Farbnamen (E) bleiben bei dir.
 Editor v6 mit echter Druckfläche (`pod/v6/`), Modell-Fabrik (`automation/pod_modell/`: Plan und Entwurf je Modell, Preise nach `werkzeuge/preisformel.mjs`), Härtung des Bestellwegs (`automation/printful_sync.mjs`), je mit zwei unabhängigen Gegenlesern; nichts davon ist live. Reihenfolge danach: Editor als Shopify-Datei, Fabrik zuerst 5 Modelle als Entwurf, dann Chargen (Shopify begrenzt neue Varianten auf rund 9 500 je 24 Stunden).
 
 ## Offene Fragen an den Besitzer (nicht an dich)
