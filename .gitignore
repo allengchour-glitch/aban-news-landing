@@ -107,6 +107,7 @@ buero/*
 !buero/konfig.example.json
 !reports/design/
 !reports/design/*.md
+!reports/MARKTDRUCK-PRUEFSTAND.md
 _fehlprotokolle/
 # Stundenkerzen (je ~0.6 MB, holt daytrading.py selbst, wenn sie fehlen)
 tools/trading/daten/h_*.json
