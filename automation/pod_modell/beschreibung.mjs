@@ -71,6 +71,7 @@ export const BEHAUPTUNGEN = Object.freeze([
   { de: /vegan/i, en: /vegan/i, name: 'vegan' },
   { de: /\bbio\b|biologisch/i, en: /organic/i, name: 'bio' },
   { de: /recycel/i, en: /recycl/i, name: 'recycelt' },
+  { de: /\beco\b|\böko/i, en: /\beco\b|eco-friendly|environment|sustainab|recycl|organic/i, name: 'Eco/Öko' },
   { de: /hypoallergen|allergiker/i, en: /hypoallergenic/i, name: 'hypoallergen' },
   { de: /spülmaschinen/i, en: /dishwasher/i, name: 'spülmaschinenfest' },
   { de: /mikrowelle/i, en: /microwave/i, name: 'mikrowellengeeignet' },
@@ -82,8 +83,8 @@ export const BEHAUPTUNGEN = Object.freeze([
 /** Nie erlaubt in Übersetzungen: Zusagen zu Lieferung, Rückgabe, Garantie, Preis. Dafür gibt es feste Bausteine. */
 export const VERBOTEN = Object.freeze([
   [/\bgarantie\b|\bgarantiert\b|\bgewährleist/i, 'Garantie'], [/werktag|lieferzeit|lieferdatum|versandzeit|express/i, 'Lieferzeit'], [/rückgabe|umtausch|rücksendung|widerruf/i, 'Rückgabe'],
-  [/gratis|kostenlos|versandkostenfrei|geschenkt/i, 'Gratis'], [/bestseller|testsieger|beliebteste|nr\. ?1/i, 'Superlativ'], [/chf|fr\.\s?\d|€|\busd\b|\$/i, 'Preis'],
-  [/\bzoll\b|\binch|″|\boz\b|\bunzen?\b|\blbs?\b|\bpfund\b/i, 'Zoll/oz/lb'], [/[–—]/, 'Gedankenstrich'],
+  [/gratis|kostenlos|versandkostenfrei|geschenkt/i, 'Gratis'], [/bestseller|testsieger|beliebteste|nr\. ?1|ultimativ|unvergleichlich|unübertroffen|unschlagbar|einzigartig|makellos|erstklassig|\bperfekt|der beste|die beste|das beste|bestmöglich/i, 'Superlativ'], [/chf|fr\.\s?\d|€|\busd\b|\$/i, 'Preis'],
+  [/\bzoll\b|\binch|″|\d\s*["”]|\boz\b|\bunzen?\b|\blbs?\b|\bpfund\b|°\s?f\b|fahrenheit/i, 'Zoll/oz/lb'], [/[–—−‒―]|\s-\s/, 'Gedankenstrich'],
 ]);
 
 const norm = (s) => String(s ?? '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/[“”„«»]/g, '"').replace(/[–—−]/g, '-').replace(/ /g, ' ').replace(/\s+/g, ' ').trim();
@@ -144,10 +145,15 @@ export function spanneText(min, max) {
   return min === max ? `${min} Werktage` : `${min} bis ${max} Werktage`;
 }
 
-export function lieferbox({ tageMin, tageMax }) {
-  const sp = spanneText(tageMin, tageMax);
+/**
+ * Lieferbox im Wortlaut der heutigen «Selbst gestalten»-Produkte (GEMESSEN 05.11.2026, z. B. dad-cap-selbst-gestalten: «Lieferzeit Schweiz: 7–14 Werktage · Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein»),
+ * aber ohne Gedankenstrich («7 bis 14»). KEINE Versandtage von Printful allein (sie enthalten die Fertigung nicht, QUELLE printful.com/shipping) und kein Satz «Datum siehst du in der Kasse» (für Druckartikel nicht belegt).
+ * @param {{min:number,max:number}} lieferzeit
+ */
+export function lieferbox({ min, max }) {
+  const sp = spanneText(min, max);
   if (!sp) return null;
-  return `<p class="ls-liefer" data-tier="pod" style="${LIEFERBOX_STIL}">📦 <strong>Lieferung</strong> Schweiz: voraussichtlich <strong>${sp}</strong> laut Printful <span style="opacity:.7;">· Druck auf Bestellung · das voraussichtliche Lieferdatum siehst du in der Kasse</span></p>`;
+  return `<p class="ls-liefer" data-tier="pod" style="${LIEFERBOX_STIL}">📦 <strong>Lieferzeit</strong> Schweiz: <strong>${sp}</strong> <span style="opacity:.7;">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>`;
 }
 
 function tabelleHtml(t, labelDe) {
@@ -164,13 +170,13 @@ export const messungDe = (l) => MESSUNG_DE[String(l).toLowerCase().trim()] ?? nu
 
 /**
  * Baut die Beschreibung (HTML mit Platzhaltern). Gibt auch zurück, was weggelassen wurde (Tabellen ohne deutsche Beschriftung usw.).
- * @param {{karte:object, plan:{titel:string,lieferung:{tageMin:number,tageMax:number}|null,modell:number,klasse:string,kompakt:object,hinweisCodes:string[],technikDe:string|null,basis:object|null}, uebersetzung:object}} p
+ * @param {{karte:object, lieferzeit:{min:number,max:number}|null, modell:number, klasse:string, kompakt:object, editorKarte:object, technikDe:string|null, basis:object|null, uebersetzung:object}} p
  */
-export function beschreibungBauen({ karte, lieferung, modell, klasse, kompakt, editorKarte, technikDe, basis, uebersetzung }) {
+export function beschreibungBauen({ karte, lieferzeit, modell, klasse, kompakt, editorKarte, technikDe, basis, uebersetzung }) {
   if (!editorKarte || typeof editorKarte !== 'object') throw new Error('beschreibungBauen: editorKarte fehlt (die Karte, die der Editor aus <script id="lspod-karte"> liest)');
   const weggelassen = [];
   const teile = [];
-  const box = lieferung ? lieferbox(lieferung) : null;
+  const box = lieferzeit ? lieferbox(lieferzeit) : null;
   if (box) teile.push(box);
   // Container nach der EINBINDUNG im Kopf von pod/v6/lspod-designer-v6.js: eigene Klasse «lspod-designer-v6» (der live wirksame Editor v5 sucht nur «lspod-designer» und bliebe hier stumm), Karte als Kind.
   teile.push(`<div class="lspod-designer-v6" data-modell="${esc(modell)}" data-klasse="${esc(klasse)}" data-variant="${PLATZHALTER_VARIANTE}"><script type="application/json" id="lspod-karte">${jsonFuerScript(editorKarte)}</script></div>`);
@@ -183,7 +189,11 @@ export function beschreibungBauen({ karte, lieferung, modell, klasse, kompakt, e
   // Eckdaten aus dem Katalog
   const daten = [];
   if (technikDe) daten.push(`<li><strong>Druckverfahren:</strong> ${esc(technikDe)}</li>`);
-  if (basis?.printfile) {
+  // Bei Modellen mit mehreren Druckdateien (Poster, Leinwand, Kissen, Decke, Aufkleber, Tasse: je Grösse eine andere Datei) gälte die Zeile nur für EINE Grösse und wäre für die übrigen falsch
+  // (Gegenleser 05.11.: «42 × 29,7 cm» bei Postern bis 61 × 91,4 cm): dann entfällt sie, der Editor zeigt die Fläche der gewählten Grösse.
+  const basisKarte = (kompakt?.platzierungen ?? []).find((p) => p.id === kompakt?.basis);
+  const mehrereDateien = (basisKarte?.geometrien?.length ?? 0) > 1;
+  if (basis?.printfile && !mehrereDateien) {
     const pf = basis.printfile, cm = pf.groesseCm;
     const f = `${pf.breitePx} × ${pf.hoehePx} Pixel${pf.dpi ? ` bei ${pf.dpi} dpi` : ''}${cm ? `, das sind ${String(cm.breite).replace('.', ',')} × ${String(cm.hoehe).replace('.', ',')} cm` : ''}`;
     daten.push(`<li><strong>Druckdatei (${esc(basis.titel)}):</strong> ${esc(f)}</li>`);

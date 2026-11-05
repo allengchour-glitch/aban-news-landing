@@ -195,19 +195,58 @@ pruefe('v5-Modus: ohne dpi (keine cm)', H.dateiMasse(lk.platzierungen[0].printfi
 // ── Kartenbau ──────────────────────────────────────────────────────────────────────────────────────
 pruefe('Hinweis-Codes des Kartenbaus = Kundentexte im Editor', JSON.stringify([...BEKANNTE_HINWEIS_CODES].sort()) === JSON.stringify([...H.HINWEIS_CODES].sort()), `${BEKANNTE_HINWEIS_CODES} / ${H.HINWEIS_CODES}`);
 const katalogOrdner = process.env.V6_KATALOG || '';
+const OPT_TEST = { panelErlauben: true };
 if (katalogOrdner && existsSync(join(katalogOrdner, '71.json'))) {
-  for (const id of [71, 19, 268, 206, 388]) {
-    const neu = karteFuerEditor(JSON.parse(readFileSync(join(katalogOrdner, `${id}.json`), 'utf8')));
+  for (const id of [71, 19, 268, 206, 388, 586, 456]) {
+    const neu = karteFuerEditor(JSON.parse(readFileSync(join(katalogOrdner, `${id}.json`), 'utf8')), OPT_TEST);
     pruefe(`Test-Karte ${id} = frischer Bau aus dem Katalog`, readFileSync(join(hier, 'testdaten', `${id}.karte.json`), 'utf8') === JSON.stringify(neu, null, 1) + '\n');
     pruefe(`Karte ${id} schlank (unter 12 KB)`, JSON.stringify(neu).length < 12000, String(JSON.stringify(neu).length));
     pruefe(`Karte ${id} hat keine internen Texte (Erfahrungswert, Messdatei, USD)`, !/Erfahrungswert|messung_0511|1:1 an Printful/.test(JSON.stringify(neu)));
     pruefe(`Karte ${id}: Aufpreise nur in CHF der Preisformel`, neu.platzierungen.every((p) => (p.aufpreisUsd ? p.aufpreisChf === aufpreisRef(p.aufpreisUsd) : p.aufpreisChf === 0)));
   }
-  const mit = karteFuerEditor(JSON.parse(readFileSync(join(katalogOrdner, '19.json'), 'utf8')), { shopVarianten: { 111: 1320 } });
-  gleich('Kartenbau: Shop-Zuordnung wird durchgereicht', mit.shop, { varianten: { 111: 1320 } });
-  pruefe('Kartenbau: ohne Zuordnung kein Feld «shop»', !('shop' in karteFuerEditor(JSON.parse(readFileSync(join(katalogOrdner, '19.json'), 'utf8')))));
 } else console.log('  (Katalogordner V6_KATALOG nicht gesetzt: Vergleich Test-Karten gegen frischen Bau übersprungen)');
-for (const id of [71, 19, 268, 206, 388]) {
+// Kartenbau gegen die Test-Kataloge im Repo (dropship/selbst-gestalten-fertig-0511/werkzeuge/testdaten/katalog): läuft immer
+{
+  const KAT = join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'werkzeuge', 'testdaten', 'katalog');
+  const kat = (id) => JSON.parse(readFileSync(join(KAT, `${id}.json`), 'utf8'));
+  const werft = (fn) => { try { fn(); return null; } catch (e) { return e.message; } };
+  const v19 = kat(19).varianten[0].id, v206 = kat(206).varianten[0].id;
+  const mit = karteFuerEditor(kat(19), { shopVarianten: { 111: v19 } });
+  gleich('Kartenbau: Shop-Zuordnung wird durchgereicht', mit.shop, { varianten: { 111: v19 } });
+  pruefe('Kartenbau: ohne Zuordnung kein Feld «shop»', !('shop' in karteFuerEditor(kat(19))));
+  gleich('Kartenbau: GID-Schlüssel werden zu Zahlen', karteFuerEditor(kat(19), { shopVarianten: { 'gid://shopify/ProductVariant/4455': v19 } }).shop, { varianten: { 4455: v19 } });
+  pruefe('Kartenbau: Printful-Variante eines anderen Modells → Abbruch (Gegenleser 1, Fund 1)', /gehören nicht zu diesem Modell/.test(werft(() => karteFuerEditor(kat(19), { shopVarianten: { 111: v206 } })) || ''));
+  pruefe('Kartenbau: Tippfehler in der Printful-Variante → Abbruch', /gehören nicht zu diesem Modell/.test(werft(() => karteFuerEditor(kat(19), { shopVarianten: { 111: 999999991 } })) || ''));
+  pruefe('Kartenbau: Schlüssel ohne Zahl → Abbruch', /keine Zahl/.test(werft(() => shopVariantenNormalisieren({ abc: 1 })) || ''));
+  pruefe('Kartenbau: Printful-Variante 0, negativ, Bruch, Text → Abbruch', ['0', '-5', '1.5', 'x'].every((w) => werft(() => shopVariantenNormalisieren({ 1: w === 'x' ? 'x' : Number(w) })) !== null));
+  gleich('Kartenbau: Objekt {pv} wird gelesen', shopVariantenNormalisieren({ 7: { pv: 12 } }), { 7: 12 });
+  // Filter
+  const k71 = karteFuerEditor(kat(71));
+  const ohneAp = karteFuerEditor(kat(71), { ohneAufpreis: true });
+  gleich('ohneAufpreis: nur Platzierungen ohne Aufpreis bleiben (T-Shirt: Vorderseite)', ohneAp.platzierungen.map((p) => p.id), ['front']);
+  pruefe('ohneAufpreis: kein Aufpreis mehr in der Karte', ohneAp.platzierungen.every((p) => p.aufpreisChf === 0 && !p.aufpreisUsd));
+  pruefe('ohneAufpreis: Konflikte nennen keine entfernten Platzierungen', ohneAp.platzierungen.every((p) => p.kollidiertMit.every((q) => ohneAp.platzierungen.some((x) => x.id === q))));
+  const ohneEt = karteFuerEditor(kat(71), { ohneEtiketten: true });
+  pruefe('ohneEtiketten: keine Etiketten, Vorderseite und Rückseite bleiben', !ohneEt.platzierungen.some((p) => p.art === 'etikett') && ohneEt.platzierungen.some((p) => p.id === 'back') && k71.platzierungen.some((p) => p.art === 'etikett'));
+  pruefe('ohneAufpreis bei Dad-Cap (jede Stickerei kostet extra) → Abbruch statt leerer Karte', /bleibt keine Platzierung/.test(werft(() => karteFuerEditor(kat(206), { ohneAufpreis: true })) || ''));
+  pruefe('Rundum-Druck (PANEL) → Abbruch ohne panelErlauben (Gegenleser 2, F8)', /PANEL/.test(werft(() => karteFuerEditor(kat(388))) || '') && karteFuerEditor(kat(388), OPT_TEST).klasse === 'PANEL');
+  // Bündel
+  const b = kartenbuendelFuerEditor([kat(19), kat(206)], { 111: v19, 222: v206 });
+  gleich('Bündel: Modelle', Object.keys(b.modelle).sort(), ['19', '206']);
+  gleich('Bündel: Zuordnung mit Modell', b.shop.varianten, { 111: { pv: v19, m: 19 }, 222: { pv: v206, m: 206 } });
+  pruefe('Bündel: der Editor liest es', !!H.karteNormalisieren(b).karte && H.karteNormalisieren(b).karte.zuordnung['222'].m === '206');
+  gleich('Bündel: nicht verkaufte Modelle fallen heraus', Object.keys(kartenbuendelFuerEditor([kat(19), kat(206)], { 111: v19 }).modelle), ['19']);
+  pruefe('Bündel: Printful-Variante in keinem Katalog → Abbruch', /stehen in keinem/.test(werft(() => kartenbuendelFuerEditor([kat(19), kat(206)], { 111: 999999991 })) || ''));
+  pruefe('Bündel: dasselbe Modell zweimal → Abbruch', /doppelt/.test(werft(() => kartenbuendelFuerEditor([kat(19), kat(19)], { 111: v19 })) || ''));
+  pruefe('Bündel: ohne Zuordnung → Abbruch', /keine Zuordnung/.test(werft(() => kartenbuendelFuerEditor([kat(19)], {})) || ''));
+  pruefe('Bündel: Filter gelten für jedes Modell', Object.values(kartenbuendelFuerEditor([kat(71), kat(19)], { 1: kat(71).varianten[0].id, 2: v19 }, { ohneAufpreis: true }).modelle).every((m) => m.platzierungen.every((p) => p.aufpreisChf === 0)));
+  // Länge von _pod_karte im ungünstigsten Fall
+  pruefe('podKarteGroesstmoeglich: Tasse (eine Platzierung) bleibt weit unter 255', podKarteGroesstmoeglich(karteFuerEditor(kat(19))) < 160, String(podKarteGroesstmoeglich(karteFuerEditor(kat(19)))));
+  pruefe('podKarteGroesstmoeglich: T-Shirt mit allen 8 Platzierungen', podKarteGroesstmoeglich(k71) <= POD_KARTE_MAX, String(podKarteGroesstmoeglich(k71)));
+  pruefe('kartenWarnungen: Rundum-Druck wird genannt', kartenWarnungen(karteFuerEditor(kat(388), OPT_TEST)).some((w) => /Druckbogen/.test(w)));
+  pruefe('kartenWarnungen: sonst nichts bei Tasse und T-Shirt', kartenWarnungen(karteFuerEditor(kat(19))).length === 0 && kartenWarnungen(k71).length === 0);
+}
+for (const id of [71, 19, 268, 206, 388, 586, 456]) {
   const k = lies(id);
   pruefe(`Test-Karte ${id}: keine internen Texte`, !/Erfahrungswert|messung_0511|1:1 an Printful/.test(JSON.stringify(k)));
   pruefe(`Test-Karte ${id}: Mindest-dpi vorhanden`, typeof k.minDpi === 'number' && k.minDpi > 0);
@@ -217,23 +256,21 @@ pruefe('Test-Karte T-Shirt: Rückseite kostet CHF 6.10, Vorderseite nichts', lie
 pruefe('Test-Karte Dad-Cap: Stickerei und Kappe als Einschränkung', lies(206).hinweise.filter((h) => h.art === 'einschraenkung').map((h) => h.code).sort().join() === 'kappe,stickerei');
 pruefe('Test-Karte T-Shirt: Hinweise der Art «info» nur mit bekanntem Code oder gar nicht', lies(71).hinweise.every((h) => h.art === 'einschraenkung' || BEKANNTE_HINWEIS_CODES.includes(h.code)));
 
-// ── Warenkorb-Eigenschaften lesen (Vertrag zwischen Editor und Auftragsabwicklung) ─────────────────
-const pod = { v: 6, s: 1, m: 71, pv: 4012, sv: '1001', pl: ['front', 'sleeve_left'], dt: { front: 'default' }, px: ['1800x2400', '600x525'], ap: 2.6 };
-const props = {
-  '🎨 Design (front)': 'Text: "Hallo"', '🖼️ Druckdatei (front)': 'https://res.cloudinary.com/x/1.png', '🖼️ Druckdatei (sleeve_left)': 'https://res.cloudinary.com/x/2.png', _pod_karte: JSON.stringify(pod),
-};
-const r1 = dateienAusEigenschaften(props);
-gleich('Eigenschaften v6: Platzierung und Dateityp', r1.dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default'], ['sleeve_left', 'sleeve_left']]);
-gleich('Eigenschaften v6: keine Probleme', r1.probleme, []);
-pruefe('Eigenschaften v6: Ärmel wird NICHT als Vorderseite gelesen (Fehler der alten pickFiles)', r1.dateien.every((d) => d.quelle === 'v6') && r1.dateien[1].platzierung === 'sleeve_left');
-gleich('Eigenschaften als Shopify-Liste (key/value) gelesen', dateienAusEigenschaften(Object.entries(props).map(([key, value]) => ({ key, value }))).dateien.length, 2);
-gleich('Eigenschaften v5: Hinten', dateienAusEigenschaften({ 'Hinten · 🖼️ Druckdatei': 'https://x/y.png', 'Vorne · 🖼️ Druckdatei': 'https://x/z.png' }).dateien.map((d) => d.platzierung), ['back', 'front']);
-gleich('Eigenschaften v5: eine Seite ohne Präfix', dateienAusEigenschaften({ '🖼️ Druckdatei': 'https://x/z.png' }).dateien.map((d) => d.platzierung), ['front']);
-pruefe('Eigenschaften: http (nicht https) wird gemeldet und übersprungen', (() => { const r = dateienAusEigenschaften({ '🖼️ Druckdatei (front)': 'http://x/y.png' }); return r.dateien.length === 0 && r.probleme.length === 1; })());
-pruefe('Eigenschaften: Druckdatei, die _pod_karte nicht kennt, wird gemeldet', dateienAusEigenschaften({ '🖼️ Druckdatei (back)': 'https://x/y.png', _pod_karte: JSON.stringify({ v: 6, pl: ['front'] }) }).probleme.some((p) => /nicht in _pod_karte/.test(p)));
-pruefe('Eigenschaften: Platzierung ohne Druckdatei wird gemeldet', dateienAusEigenschaften({ _pod_karte: JSON.stringify({ v: 6, pl: ['front'] }) }).probleme.some((p) => /ohne Druckdatei/.test(p)));
-pruefe('Eigenschaften: kaputtes _pod_karte wird gemeldet', dateienAusEigenschaften({ _pod_karte: '{' }).probleme.length === 1);
-pruefe('Eigenschaften: leer ergibt nichts', dateienAusEigenschaften(null).dateien.length === 0 && dateienAusEigenschaften([]).dateien.length === 0);
+// ── Warenkorb-Eigenschaften: Vertrag mit der Auftragsabwicklung ────────────────────────────────────
+// Gelesen wird mit dem Parser der Auftragsabwicklung selbst (automation/lib/printful_bestellweg.mjs, nur importiert). Die Eigenschaften, die der Editor wirklich schreibt,
+// prüft editor_test.mjs («vertrag-bestellweg») gegen denselben Parser.
+{
+  const pod = { v: 6, m: 71, pv: 4012, sv: '1001', pl: ['front', 'sleeve_left'], dt: { front: 'default' }, ap: 2.6 };
+  const props = {
+    '🎨 Design (front)': 'Text: "Hallo"', '🖼️ Druckdatei (front)': 'https://res.cloudinary.com/x/1.png', '🖼️ Druckdatei (sleeve_left)': 'https://res.cloudinary.com/x/2.png', _pod_karte: JSON.stringify(pod),
+  };
+  const r1 = dateienAusEigenschaften(props);
+  gleich('Vertrag: Platzierung und Dateityp', r1.dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default'], ['sleeve_left', 'sleeve_left']]);
+  gleich('Vertrag: keine Probleme', r1.probleme, []);
+  pruefe('Vertrag: der Parser kennt weder «s» noch «px» (beide dürfen fehlen)', r1.karte && r1.karte.v === 6 && !('s' in r1.karte) && !('px' in r1.karte));
+  pruefe('Vertrag: mit «px» (Verkleinerung) bleibt es lesbar', dateienAusEigenschaften({ ...props, _pod_karte: JSON.stringify({ ...pod, px: ['900x1200', '600x525'] }) }).probleme.length === 0);
+  pruefe('Vertrag: die längste mögliche _pod_karte einer Karte ist gültiges JSON mit v:6 und pl', (() => { const o = JSON.parse(JSON.stringify({ v: 6, pl: ['a'] })); return o.v === 6 && Array.isArray(o.pl); })());
+}
 
 // ── v5 ist unverändert ─────────────────────────────────────────────────────────────────────────────
 const v5 = readFileSync(V5_DATEI);

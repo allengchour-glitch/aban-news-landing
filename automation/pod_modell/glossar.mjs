@@ -115,6 +115,12 @@ export function familienSchluessel(titelEn) {
   return String(titelEn ?? '').split('|')[0].replace(/[’‘`´]/g, "'").toLowerCase().replace(/\s*\((in|cm|mm|inch|inches)\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+/** Wie familienSchluessel, aber nur für Titel MIT Masseinheit in Klammern («(in)», «(cm)»); sonst null. Zwei Modelle mit gleichem Namen und verschiedener Marke («Bucket Hat») sind keine Fassungen desselben Produkts. */
+export function einheitenFamilie(titelEn) {
+  const name = String(titelEn ?? '').split('|')[0].trim();
+  return /\((in|cm|mm|inch|inches)\)$/i.test(name) ? familienSchluessel(titelEn) : null;
+}
+
 const gross1 = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const ENDUNG = { m: 'er', f: 'e', n: 'es', pl: 'e' };
 

@@ -1,5 +1,5 @@
 // Tests für glossar.mjs (kein Netz). Lauf: /opt/node22/bin/node automation/pod_modell/glossar_test.mjs
-import { titelDe, titelVoll, titelSchluessel, fremdmarkenIn, slug, handleAus, farbeDe, farbRang, HANDLE_MAX, SUFFIX, TITEL_FEST } from './glossar.mjs';
+import { titelDe, titelVoll, titelSchluessel, fremdmarkenIn, slug, handleAus, farbeDe, farbRang, familienSchluessel, HANDLE_MAX, SUFFIX, TITEL_FEST } from './glossar.mjs';
 import { neuerTest } from './testhilfe.mjs';
 
 const { ist, wahr, ende } = neuerTest('glossar');
@@ -9,7 +9,15 @@ const t = (id, en, marke, typ) => titelDe({ printfulProductId: id, titelEn: en, 
 ist('T-Shirt: Handelsname «Staple» und Marke weg, Eco bleibt', t(760, 'Unisex Staple Eco T-Shirt', 'Bella + Canvas', 'T-SHIRT').titel, 'Unisex Eco T-Shirt');
 ist('Hoodie: «Heavy Blend» (Handelsname) fällt weg', t(146, 'Unisex Heavy Blend Hoodie', 'Gildan', 'T-SHIRT').titel, 'Unisex Hoodie');
 ist('Tragetasche: Adjektiv nach Geschlecht (f: -e)', t(378, 'Large Eco Tote', 'Econscious', 'T-SHIRT').titel, 'Grosse Eco Tragetasche');
-ist('Leinwand: «(in)» ist eine Einheit des Herstellers und entfällt', t(616, 'Thin Canvas (in)', null, 'CANVAS').titel, 'Dünne Leinwand');
+ist('Leinwand: «(in)» ist eine Einheit des Herstellers und entfällt (Regel, ohne TITEL_FEST)', t(9616, 'Thin Canvas (in)', null, 'CANVAS').titel, 'Dünne Leinwand');
+ist('Leinwand 616 hat einen festen, besseren Titel (Gegenleser 05.11.: «Dünne Leinwand» klang unglücklich)', [t(616, 'Thin Canvas (in)', null, 'CANVAS').titel, t(616, 'x', null, 'CANVAS').slugFest], ['Schlanke Leinwand', 'schlanke-leinwand']);
+// ── «gestrickt» bei Strickteilen ist doppelt gemoppelt (Gegenleser 2: «Unisex gestrickte Strickjacke», «Gerippte gestrickte Mütze»)
+ist('Strickjacke: «gestrickt» entfällt', t(9781, 'Unisex Knitted Cardigan', null, 'KNITWEAR').titel, 'Unisex Strickjacke');
+ist('Pullover: aus «gestrickt» wird Strickpullover', t(9701, 'Unisex Knitted V Neck Classic Fit Sweater', null, 'KNITWEAR').titel, 'Unisex V-Ausschnitt klassischer Strickpullover');
+ist('Kinder-Pullover: Strickpullover, Relaxed bleibt', t(9702, 'Kids Knitted Relaxed Fit Crewneck Sweater', null, 'KNITWEAR').titel, 'Kinder Relaxed Rundhals Strickpullover');
+ist('Mütze: «Ribbed Knit Beanie» = gerippte Strickmütze', t(9519, 'Ribbed Knit Beanie | Atlantis', 'Atlantis', 'KNITWEAR').titel, 'Gerippte Strickmütze');
+ist('«Knitted» bei einem anderen Nomen (Hoodie) bleibt «gestrickt»', t(9703, 'Unisex Knitted Hoodie', null, 'KNITWEAR').titel, 'Unisex gestrickter Hoodie');
+ist('1411 hat einen festen Titel', t(1411, 'Youth Garment-Dyed Lightweight Hooded Sweatshirt', null, 'T-SHIRT').titel, 'Leichtes stückgefärbtes Kapuzen-Sweatshirt für Jugendliche');
 ist('Aufkleberbogen: Phrase «sticker sheet», Fremdwort bleibt', t(505, 'Kiss-Cut Sticker Sheet', null, 'STICKER').titel, 'Kiss-Cut Aufkleberbogen');
 ist('Aufkleber im Plural: Adjektiv auf -e', t(673, 'Kiss-Cut Holographic Stickers', null, 'STICKER').titel, 'Kiss-Cut holografische Aufkleber');
 ist('Sherpa-Decke: «sublimated» ist Technik und entfällt', t(711, 'Sublimated Sherpa Blanket', null, 'SUBLIMATION').titel, 'Sherpa-Decke');
@@ -71,3 +79,15 @@ ist('Farbrang: unbekannt = 99', farbRang('Tangerine'), 99);
 ist('Farbrang: erstes Farbwort entscheidet («Heather Navy» = Marine, verändert)', farbRang('Heather Navy'), 100 + farbRang('Navy'));
 
 ende();
+
+// ── Familie: die Inch- und die cm-Fassung desselben Modells sind ein Produkt (Gegenleser 1: Poster 1 neben dem aktiven Poster 268)
+ist('Familie: «(in)» und «(cm)» entfallen, Marke entfällt', [familienSchluessel('Enhanced Matte Paper Poster (in)'), familienSchluessel('Enhanced Matte Paper Poster (cm)'), familienSchluessel('Unisex Premium Sweatshirt | Cotton Heritage M2480')], ['enhanced matte paper poster', 'enhanced matte paper poster', 'unisex premium sweatshirt']);
+ist('Familie: eine andere Dicke ist ein anderes Modell', familienSchluessel('Thin Canvas (in)') !== familienSchluessel('Canvas (in)'), true);
+// ── Farben: Zusammensetzungen nur mit einfachen Grundfarben (Gegenleser 2: «Helljeansblau», Kelly Green ist kein Hellgrün)
+ist('Kelly Green ist ein kräftiges Grün, kein Hellgrün', [farbeDe('Kelly Green').de, farbeDe('Kelly').de, farbeDe('Heather Kelly').de, farbeDe('Washed Kelly').de], ['Grün', 'Grün', 'Grün meliert', 'Grün verwaschen']);
+ist('Light Denim: gebeugte Form statt «Helljeansblau»', [farbeDe('Light Denim').de, farbeDe('Light Washed Denim').de], ['Helles Jeansblau', 'Helles Jeansblau verwaschen']);
+ist('einfache Grundfarben werden zusammengesetzt', [farbeDe('Light Blue').de, farbeDe('Dark Green').de, farbeDe('Neon Pink').de, farbeDe('Pale Pink').de, farbeDe('Soft Pink').de, farbeDe('Baby Blue').de], ['Hellblau', 'Dunkelgrün', 'Neonrosa', 'Blassrosa', 'Zartrosa', 'Babyblau']);
+ist('andere Basisfarben: gebeugte Form («Helles Königsblau»)', [farbeDe('Bright Royal').de, farbeDe('Light Steel').de, farbeDe('Heather Deep Royal').de], ['Leuchtendes Königsblau', 'Helles Stahlblau', 'Dunkles Königsblau meliert']);
+ist('Deep wie Dark: «Dunkelpetrol meliert»', farbeDe('Heather Deep Teal').de, 'Dunkelpetrol meliert');
+ist('Neon/Baby mit nicht einfacher Basis: unübersetzt, nicht geraten', [farbeDe('Neon Salmon').de, farbeDe('Baby Navy').de], [null, null]);
+ist('zwei Zusätze: unübersetzt', farbeDe('Dark Soft Blue').de, null);

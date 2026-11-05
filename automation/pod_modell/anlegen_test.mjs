@@ -3,9 +3,8 @@ import { mkdtempSync, readFileSync, writeFileSync, existsSync, rmSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { lauf, produktAnlegen, zuruecknehmen, vergleiche, leseFrisch, ledgerLesen, produktSetEingabe, sollBeschreibung, shopVariantenVon, Q_PRODUKT, Q_SKU, M_BIND, M_DELETE, MARKER_TAG, AbweichungFehler } from './anlegen.mjs';
-import { planeModell } from './plan.mjs';
 import { neueAttrappe } from './fake_shopify.mjs';
-import { lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
+import { planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
 import { M_SET, M_META, M_UPDATE } from '../lib/pod_auswahl_schreiben.mjs';
 
 const { ist, wahr, wirft, ende } = neuerTest('anlegen');

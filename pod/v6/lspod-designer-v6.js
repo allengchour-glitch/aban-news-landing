@@ -629,7 +629,7 @@
     '.lsp6-layer.sel{z-index:600!important}',
     '.lsp6-handle{position:absolute;right:-21px;bottom:-21px;width:30px;height:30px;border-radius:50%;background:var(--ink);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);cursor:nwse-resize;touch-action:none;color:#fff;font-size:13px;line-height:26px;text-align:center}',
     '.lsp6-del{position:absolute;left:-21px;top:-21px;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);cursor:pointer;font-size:14px;line-height:26px;text-align:center;font-weight:900;touch-action:none}',
-    '.lsp6-handle::before,.lsp6-del::before{content:"";position:absolute;inset:-7px}',   // Tippfläche 44 px bei sichtbaren 30 px
+    '.lsp6-handle::before,.lsp6-del::before{content:"";position:absolute;inset:-9px}',   // Tippfläche 44 px (Innenmass 26 px + 2 × 9) bei sichtbaren 30 px
     '.lsp6-sel-frame{position:absolute;inset:-8px;border:1.5px dashed var(--ink);border-radius:6px;pointer-events:none;background:rgba(255,255,255,.04)}',
     '.lsp6-meta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;justify-content:space-between;padding:8px 16px 0;font-size:12px;color:var(--mute)}',
     '.lsp6-linkbtn{border:none;background:none;color:var(--golddk);font-family:inherit;font-weight:700;font-size:12px;line-height:1.2;text-decoration:underline;cursor:pointer;padding:6px 0;min-height:36px}',
@@ -2164,6 +2164,8 @@
         var b = blockiertDurch(verwendet[i].id);
         if (b.length) { meldung(fmt(T.blocked, { a: titelVon(verwendet[i]), b: b.map(function (q) { return titelVon(platzierung(q)); }).join(', ') }), 'err'); return; }   // kann nur eintreten, wenn der Verlauf einen unzulässigen Stand lieferte
       }
+      // Zu viele Druckflächen auf einmal: die Kennung _pod_karte passt dann nicht in eine Warenkorb-Eigenschaft (255 Zeichen). Vorher prüfen, damit nichts hochgeladen wird.
+      if (podKarteWert(verwendet).length > POD_KARTE_MAX) { meldung(T.tooMany, 'err'); return; }
       // Variante und Geometrie jetzt einfrieren: alle Druckdateien und die Eigenschaften gehören zu DIESER Variante, auch wenn die Seite sie während des Bauens wechselt
       eingefroren = { sv: String(shopId), pv: st.pfVariante };
       sperren(true);

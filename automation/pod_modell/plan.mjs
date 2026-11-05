@@ -15,7 +15,9 @@
  *
  * WICHTIGE SETZUNGEN (Besitzer-Entscheid oder Messung nötig, alle im README «Offene Annahmen»):
  *   - SKU «<9100000 + Printful-Nummer>_<Printful-Variantennummer>»: der Teil nach dem Unterstrich bestimmt printful_sync (variantFromSku); der Präfix ist neu und kollidiert mit keinem heutigen.
- *   - Versandrate: EINE Rate je Modell (die der gemessenen Variante) gilt für alle Varianten. Ungemessen: ob grosse Grössen mehr kosten.
+ *   - Versandrate: EINE Rate je Modell gilt für alle Varianten, und sie muss für eine Variante gemessen sein, die im Produkt steckt (Tor `rate_variante`, Messwerkzeug versand_messen.mjs). Ungemessen: ob grosse Grössen mehr kosten (Hinweis `versand_je_groesse`).
+ *   - Lieferzeit: NICHT die Versandtage der Printful-Rate (sie «enthalten nicht die Zeit, ein Produkt herzustellen», QUELLE printful.com/shipping, gelesen 05.11.2026; Fertigung 2 bis 5 Werktage). Es gilt die Angabe der heutigen
+ *     «Selbst gestalten»-Produkte (7 bis 14 Werktage, GEMESSEN 05.11.2026 an 26 Produkten: Metafeld `custom.lieferzeit` = {"ch":"7–14","tier":"pod"}); reichen Versandtage plus Fertigung darüber hinaus, steht die berechnete, längere Spanne.
  *   - Ohne Kostenschätzung rechnet der Kostenboden mit Katalogpreis × 1.26 (grösste gemessene Abweichung der Rechnung nach oben, preisformel.mjs); der Richtwert bleibt auf dem Katalogpreis.
  *   - Zusatzdrucke (Rückseite, Ärmel, Etiketten) sind NICHT bestellbar, solange kein Aufpreis-Mechanismus im Shop besteht: `inklusive:false` in der Editor-Karte. Ist die einzige zeichenbare Fläche
  *     kostenpflichtig (Kappe: Stickerei vorne gross +2.95 USD), ist ihr Aufpreis im Preis jeder Variante enthalten; dazu bei Stickerei die Digitalisierung (6.50 USD, gemessen an einer Schätzung).
@@ -25,9 +27,11 @@ import { modellkarteBauen } from '../../dropship/selbst-gestalten-fertig-0511/we
 import { endpreis, aufpreisChf, abrechnungsEk, REGEL } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { kontextAusKatalog } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
 import { entscheide } from '../lib/printful_platzierung.mjs';
-import { titelDe, titelVoll, titelSchluessel, handleAus, farbeDe, farbRang, GLOSSAR_VERSION } from './glossar.mjs';
+import { karteFuerEditor, BEKANNTE_HINWEIS_CODES } from '../../pod/v6/werkzeug/karte_fuer_editor.mjs';
+import { titelDe, titelVoll, titelSchluessel, handleAus, farbeDe, farbRang, einheitenFamilie, GLOSSAR_VERSION } from './glossar.mjs';
 import { beschreibungBauen, pruefeUebersetzung, technikDeVon, PLATZHALTER_SHOP } from './beschreibung.mjs';
 import { pruefeTore } from './tore.mjs';
+import { kategorieFuer, googleMetafelder } from './kategorien.mjs';
 
 export const PLAN_SCHEMA = 'pod-modell-plan/1';
 export const SKU_BASIS = 9100000;
@@ -42,6 +46,8 @@ export const FABRIK_REGEL = Object.freeze({
   medienMax: 20,
   medienOhneFarbe: 6,         // ohne Farben (Poster, Hüllen): Produktbild plus höchstens 5 Grössen-Bilder
   stufen: [1],                // 1 = FLACH und FLACH_MIT_HINWEIS; 2 = PANEL
+  lieferStandard: { min: 7, max: 14 },   // Angabe der heutigen «Selbst gestalten»-Produkte (GEMESSEN 05.11.2026, 26 Produkte, Metafeld custom.lieferzeit)
+  fertigungWerktage: { min: 2, max: 5 }, // QUELLE printful.com/shipping (gelesen 05.11.2026): «It takes 2–5 business days to create a product and fulfill an order»
 });
 const STUFE_VON_KLASSE = Object.freeze({ FLACH: 1, FLACH_MIT_HINWEIS: 1, PANEL: 2 });
 const zahl = (x) => { const n = Number(x); return Number.isFinite(n) ? n : null; };
@@ -77,6 +83,15 @@ function herkunftVon(rohV) {
   const andere = Object.entries(s).filter(([r, st]) => !/^EU/.test(r) && st === 'in_stock').map(([r]) => r).sort();
   return andere.length ? { herkunft: 'ausserhalb', regionen: andere } : { herkunft: null, regionen: [] };
 }
+/** Fläche in cm² aus einer Grössenangabe mit zwei Massen («29,7 × 42 cm», «A1 (59,4 × 84,1 cm)»); null, wenn keine zwei Zahlen mit «×» dastehen (Kleidergrössen, Millilitern). */
+export function groesseFlaeche(text) {
+  const t = String(text ?? '');
+  const klammer = /\(([^)]*×[^)]*)\)/.exec(t);
+  const m = /(\d+(?:[.,]\d+)?)\s*[×x]\s*(\d+(?:[.,]\d+)?)/.exec(klammer ? klammer[1] : t);
+  if (!m) return null;
+  const n = (x) => Number(x.replace(',', '.'));
+  return Math.round(n(m[1]) * n(m[2]) * 100) / 100;
+}
 const groesseText = (g) => (/^one size$/i.test(String(g ?? '').trim()) ? 'Einheitsgrösse' : g);
 
 /** Wählt die Varianten, die das Produkt bekommt (alles deterministisch, jede Auslassung mit Grund). */
@@ -97,7 +112,8 @@ export function waehleVarianten(karte, katalog, { max = FABRIK_REGEL.maxVariante
   const farbenAus = [];
   const mitFarbe = [];
   for (const v of kand) {
-    if (v.farbe == null || String(v.farbe).trim() === '') { mitFarbe.push({ ...v, farbeDe: null }); continue; }
+    // «Custom» (Strickwaren) heisst: die Farbe legt der Kunde mit seinem Motiv selbst fest, es gibt keine Farbwahl (Gegenleser 2, K3: sonst fielen 11 Modelle komplett aus)
+    if (v.farbe == null || String(v.farbe).trim() === '' || /^custom$/i.test(String(v.farbe).trim())) { mitFarbe.push({ ...v, farbe: null, farbeDe: null }); continue; }
     const f = farbeDe(v.farbe);
     if (f.de === null) { if (!farbenAus.some((x) => x.name === v.farbe)) farbenAus.push({ name: v.farbe, grund: `Farbname nicht übersetzt (Wörter: ${f.unbekannt.join(', ')})` }); continue; }
     mitFarbe.push({ ...v, farbeDe: f.de });
@@ -113,7 +129,12 @@ export function waehleVarianten(karte, katalog, { max = FABRIK_REGEL.maxVariante
   for (const f of farben) { if (summe + f.vs.length <= max) { gewaehlt.push(f); summe += f.vs.length; } else { abgeschnitten = farben.slice(farben.indexOf(f)); break; } }
   for (const f of abgeschnitten) farbenAus.push({ name: f.name, grund: `Obergrenze ${max} Varianten (gängigere Farben zuerst)` });
   const sizeOrder = new Map(karte.optionen.groesse.map((g, i) => [String(g.wert), i]));
-  const varianten = gewaehlt.flatMap((f) => f.vs).sort((a, b) => (gewaehlt.findIndex((f) => f.name === a.farbe) - gewaehlt.findIndex((f) => f.name === b.farbe)) || ((sizeOrder.get(String(a.groesse)) ?? 999) - (sizeOrder.get(String(b.groesse)) ?? 999)));
+  const gewaehltVs = gewaehlt.flatMap((f) => f.vs);
+  // Haben ALLE gewählten Grössen eine Fläche («29,7 × 42 cm», «A1 (59,4 × 84,1 cm)»), geht die Reihenfolge nach Fläche aufsteigend (Poster 1 stand ungeordnet: 29,7 × 42, 21 × 29,7, A1 … 12,7 × 17,8); sonst nach dem Katalog (S, M, L …)
+  const flaeche = new Map(); for (const v of gewaehltVs) flaeche.set(String(v.groesse), groesseFlaeche(v.groesseAnzeige ?? v.groesse));
+  const nachFlaeche = flaeche.size > 1 && [...flaeche.values()].every((x) => x !== null);
+  const rang = (v) => (nachFlaeche ? flaeche.get(String(v.groesse)) : (sizeOrder.get(String(v.groesse)) ?? 999));
+  const varianten = gewaehltVs.sort((a, b) => (gewaehlt.findIndex((f) => f.name === a.farbe) - gewaehlt.findIndex((f) => f.name === b.farbe)) || (rang(a) - rang(b)));
   return { varianten, farbenGewaehlt: gewaehlt.map((f) => ({ name: f.name, de: f.de, anzahl: f.vs.length, rang: f.rang })), farbenAusgelassen: farbenAus, ausgelassen, gesamtVorAuswahl: alle.length, bestellbar: kand.length };
 }
 
@@ -173,45 +194,26 @@ export function kompaktKarte(karte, { varianten, basisId, pflichtAufpreisUsd = 0
   };
 }
 
-/** Hinweis-Codes, zu denen der Editor v6 eigene Kundentexte hat (Quelle: pod/v6/werkzeug/karte_fuer_editor.mjs; der Vertragstest in plan_test.mjs hält beides gleich, solange die Datei vorliegt). */
-export const EDITOR_HINWEIS_CODES = Object.freeze(['stickerei', 'gestrickt', 'allover_einzeldatei', 'kappe', 'tasche', 'rundumdruck']);
+/** Hinweis-Codes, zu denen der Editor v6 eigene Kundentexte hat: kommen aus der Quelle des Editors (pod/v6/werkzeug/karte_fuer_editor.mjs), keine eigene Kopie mehr. */
+export const EDITOR_HINWEIS_CODES = BEKANNTE_HINWEIS_CODES;
 /**
- * Die Karte, die der Editor v6 (pod/v6/lspod-designer-v6.js) aus <script id="lspod-karte"> liest: gleiche Felder wie pod/v6/werkzeug/karte_fuer_editor.mjs (Schema 1), aber
- * `varianten` und `farben` nur für die gewählten Varianten. `shop.varianten` (Shopify-Variante → Printful-Variante) kommt erst beim Anlegen dazu (anlegen.mjs), weil die Nummern vorher nicht
- * bekannt sind; im Plan steht dort der Platzhalter. Ohne `shopPlatzhalter` fehlt der Schlüssel `shop` (so liegt die Karte im Metafeld).
+ * Die Karte, die der Editor v6 (pod/v6/lspod-designer-v6.js) aus <script id="lspod-karte"> liest. Sie wird von `karteFuerEditor` des Editor-Strom gebaut (EINE Quelle statt einer Kopie, die auseinanderlaufen
+ * könnte; Gegenleser 2, K11) und nur angepasst: statt des englischen Katalogtitels mit Fremdmarke steht der deutsche Titel als `titelDe`; `varianten` und `farben` nur für die GEWÄHLTEN Varianten.
+ * `shop.varianten` (Shopify-Variante → Printful-Variante) kommt erst beim Anlegen dazu (anlegen.mjs), weil die Nummern vorher nicht bekannt sind; im Plan steht dort der Platzhalter. Ohne `shopPlatzhalter` fehlt der Schlüssel `shop`
+ * (so liegt die Karte zum Prüfen vor). PANEL-Modelle (Rundum-Druck) erlaubt die Fabrik erst in Stufe 2, das prüft das Tor `klasse`; hier wird nur gebaut.
  */
-export function editorKarte(karte, { varianten, minDpi, titelDe = null, shopPlatzhalter = null }) {
-  const gruppenAnzahl = (karte.druckdateiGruppen ?? []).length;
-  const platzierungen = karte.platzierungen.map((p) => {
-    const aufUsd = typeof p.aufpreisUsd === 'number' && p.aufpreisUsd > 0 ? p.aufpreisUsd : 0;
-    const o = {
-      id: p.id, dateiTyp: p.dateiTyp, titelDe: p.titelDe, titelEn: p.titelEn, art: p.art, technik: p.technik,
-      printfile: { printfileId: p.printfile.printfileId, breitePx: p.printfile.breitePx, hoehePx: p.printfile.hoehePx, dpi: p.printfile.dpi },
-      vorlage: p.vorlage,
-      aufpreisUsd: aufUsd || null, aufpreisChf: aufUsd ? aufpreisChf(aufUsd) : 0,
-      kollidiertMit: p.kollidiertMitImEditor,
-    };
-    if (p.geometrien.length > 1) o.geometrien = p.geometrien;
-    return o;
-  });
-  const druckdateien = {};
-  const gebraucht = new Set(platzierungen.flatMap((p) => [p.printfile.printfileId, ...(p.geometrien ?? []).map((g) => g.printfileId)]));
-  for (const [id, d] of Object.entries(karte.druckdateien)) if (gebraucht.has(Number(id))) druckdateien[id] = { printfileId: d.printfileId, breitePx: d.breitePx, hoehePx: d.hoehePx, dpi: d.dpi };
-  const k = {
-    // Der Katalogtitel (englisch, mit Fremdmarke und Modellnummer, z. B. «… | Gildan 18500») wird NICHT eingebettet: statt `titelEn` steht der deutsche Titel als `titelDe` (das liest der Editor als Titel).
-    schema: 1, printfulProductId: karte.printfulProductId, typ: karte.typ, ...(titelDe ? { titelDe } : {}), klasse: karte.klasse, standardTechnik: karte.standardTechnik,
-    minDpi: Number.isFinite(Number(minDpi)) && Number(minDpi) > 0 ? Number(minDpi) : null,
-    platzierungen, druckdateien,
-    hinweise: (karte.hinweise ?? []).filter((h) => h.art === 'einschraenkung' || EDITOR_HINWEIS_CODES.includes(h.code))
-      .map((h) => (EDITOR_HINWEIS_CODES.includes(h.code) ? { code: h.code, art: h.art } : { code: h.code, art: h.art, text: h.text })),
-  };
+export function editorKarte(katalog, { varianten, titelDe = null, shopPlatzhalter = null }) {
+  const q = karteFuerEditor(katalog, { panelErlauben: true });
+  const k = {};
+  for (const [key, wert] of Object.entries(q)) {
+    if (key === 'titelEn') { if (titelDe) k.titelDe = titelDe; continue; }
+    if (key === 'varianten' || key === 'farben' || key === 'shop') continue;
+    k[key] = wert;
+  }
   const farben = {};
   for (const v of varianten) if (/^#[0-9a-f]{6}$/i.test(v.farbeHex ?? '')) (farben[v.farbeHex.toLowerCase()] ??= []).push(v.printfulVariantId);
   if (Object.keys(farben).length > 1) k.farben = farben;
-  if (gruppenAnzahl > 1) {
-    k.druckdateiGruppen = karte.druckdateiGruppen;
-    k.varianten = varianten.map((v) => ({ printfulVariantId: v.printfulVariantId, druckdateiGruppe: v.druckdateiGruppe }));
-  }
+  if ((q.druckdateiGruppen ?? []).length > 1) k.varianten = varianten.map((v) => ({ printfulVariantId: v.printfulVariantId, druckdateiGruppe: v.druckdateiGruppe }));
   if (shopPlatzhalter) k.shop = { varianten: shopPlatzhalter };
   return k;
 }
@@ -246,7 +248,7 @@ export function medienBauen({ karte, katalog, varianten, titel, bilder, regel = 
     if (l === null) { ungemessen.push(g.url); continue; }
     if (l === false) { unlesbar.push(g.url); continue; }
     const nr = medien.length + 1;
-    const alt = `${titel} ${g.label ?? `Ansicht ${nr}`}`.replace(/[–—]/g, ' ').replace(/\s+/g, ' ').trim();
+    const alt = `${titel} ${g.label ?? `Ansicht ${nr}`}`.replace(/[–—−‒―]/g, ' ').replace(/\s+-\s+/g, ' ').replace(/\s+/g, ' ').trim();
     medien.push({ url: g.url, alt, rolle: g.varianten ? 'variante' : 'haupt', label: g.label });
     for (const id of g.varianten ?? []) jeVariante.set(id, alt);
   }
@@ -260,6 +262,21 @@ function rateAus(versand) {
   const usd = zahl(r.rateUsd);
   if (usd === null || usd <= 0) return null;
   return { id: r.id, rateUsd: usd, tageMin: zahl(r.tageMin), tageMax: zahl(r.tageMax), variante: versand.variante ?? null };
+}
+
+/**
+ * Die Lieferzeit, die die Seite nennt: Versandtage der Rate PLUS Fertigung (Printful: 2 bis 5 Werktage). Liegt das innerhalb der Shop-Angabe «7 bis 14 Werktage», gilt diese (wie bei den heutigen Produkten);
+ * sonst die berechnete Spanne (untere Grenze nie unter 7). Die Tage von Printful sind Werktage (Hypothese, nicht belegt).
+ * @returns {{min:number,max:number,quelle:'shop-standard'|'berechnet',versandTage:[number,number],fertigung:[number,number]}|null}
+ */
+export function lieferzeitAus(lieferung, regel = FABRIK_REGEL) {
+  const a = zahl(lieferung?.tageMin), b = zahl(lieferung?.tageMax);
+  if (a === null || b === null || a < 1 || b < a) return null;
+  const st = regel.lieferStandard, f = regel.fertigungWerktage;
+  const roh = { min: a + f.min, max: b + f.max };
+  const basis = { versandTage: [a, b], fertigung: [f.min, f.max] };
+  if (roh.max <= st.max) return { min: st.min, max: st.max, quelle: 'shop-standard', ...basis };
+  return { min: Math.max(st.min, roh.min), max: roh.max, quelle: 'berechnet', ...basis };
 }
 
 // ─────────────────────────────────────────────────────────────── Titel-Unterscheidung
@@ -278,7 +295,7 @@ export function seoText(titelKomplett) {
 export function planeModell(eingabe, opt = {}) {
   const regel = { ...FABRIK_REGEL, ...(opt.regel ?? {}) };
   const { katalog, versand = null, schaetzung = null, bilder = null, uebersetzung = null } = eingabe;
-  const schonHandles = opt.schonHandles ?? new Set(), schonSkus = opt.schonSkus ?? new Set(), schonTitel = opt.schonTitel ?? new Set(), verwendet = opt.verwendeteModelle ?? new Set();
+  const schonHandles = opt.schonHandles ?? new Set(), schonSkus = opt.schonSkus ?? new Set(), schonTitel = opt.schonTitel ?? new Set(), verwendet = opt.verwendeteModelle ?? new Set(), verwendeteFamilien = opt.verwendeteFamilien ?? new Set();
   const stufen = opt.stufen ?? regel.stufen;
   let karte;
   try { karte = modellkarteBauen(katalog); } catch (e) {
@@ -289,6 +306,8 @@ export function planeModell(eingabe, opt = {}) {
   const stufe = STUFE_VON_KLASSE[klasse] ?? null;
   const rate = rateAus(versand);
   const lieferung = rate ? { versandart: rate.id, rateUsd: rate.rateUsd, tageMin: rate.tageMin, tageMax: rate.tageMax, ratenVariante: rate.variante } : null;
+  const lieferzeit = lieferung ? lieferzeitAus(lieferung, regel) : null;       // was die Seite nennt (NICHT die Versandtage allein, siehe lieferzeitAus)
+  const familie = einheitenFamilie(karte.titelEn);
 
   // Titel und Handle
   const t = titelDe(karte);
@@ -334,10 +353,9 @@ export function planeModell(eingabe, opt = {}) {
 
   // Editor-Karte
   const kompakt = kompaktKarte(karte, { varianten: w.varianten, basisId: basis?.p?.id ?? null, pflichtAufpreisUsd: basis?.pflichtAufpreisUsd ?? 0 });
-  const minDpi = Number(katalog.templates?.min_dpi);
   const kompaktJson = JSON.stringify(kompakt);
-  const edKarte = editorKarte(karte, { varianten: w.varianten, minDpi, titelDe: titel ?? null });                                   // ohne Variantenabbildung (zum Prüfen und Vergleichen)
-  const edKarteMitShop = editorKarte(karte, { varianten: w.varianten, minDpi, titelDe: titel ?? null, shopPlatzhalter: PLATZHALTER_SHOP }); // Beschreibung: Platzhalter, anlegen.mjs trägt die Abbildung ein
+  const edKarte = editorKarte(katalog, { varianten: w.varianten, titelDe: titel ?? null });                                   // ohne Variantenabbildung (zum Prüfen und Vergleichen)
+  const edKarteMitShop = editorKarte(katalog, { varianten: w.varianten, titelDe: titel ?? null, shopPlatzhalter: PLATZHALTER_SHOP }); // Beschreibung: Platzhalter, anlegen.mjs trägt die Abbildung ein
   // Grösse der eingebetteten Karte im ungünstigsten Fall: die Abbildung nach dem Anlegen (14-stellige Shopify-Nummern, GEMESSEN an heutigen Varianten-IDs) ist mitgerechnet
   const abbildungWorst = Object.fromEntries(w.varianten.map((v, i) => [String(40000000000000 + i), v.printfulVariantId]));
   const karteBytes = Buffer.byteLength(JSON.stringify({ ...edKarte, shop: { varianten: abbildungWorst } }), 'utf8');
@@ -346,7 +364,7 @@ export function planeModell(eingabe, opt = {}) {
   const uPruef = pruefeUebersetzung(uebersetzung?.u ?? null, karte.beschreibung.original, { ozArt: kontextAusKatalog(katalog).ozArt });
   if (uebersetzung && uebersetzung.fehler) uPruef.fehler.unshift(uebersetzung.fehler);
   const technikDe = technikDeVon(karte.standardTechnik);
-  const beschr = beschreibungBauen({ karte, lieferung, modell: id, klasse, kompakt, editorKarte: edKarteMitShop, technikDe, basis: basis ? { ...basis.p, titel: basis.p.titelDe ?? basis.p.id } : null, uebersetzung: uebersetzung?.u ?? null });
+  const beschr = beschreibungBauen({ karte, lieferzeit, modell: id, klasse, kompakt, editorKarte: edKarteMitShop, technikDe, basis: basis ? { ...basis.p, titel: basis.p.titelDe ?? basis.p.id } : null, uebersetzung: uebersetzung?.u ?? null });
 
   // Bestellweg (printful_sync): ist die Platzierung der Vorderseite sicher?
   const dateien = (katalog.produkt?.files ?? []).filter((f) => f.type !== 'mockup').map((f) => f.id);
@@ -363,6 +381,7 @@ export function planeModell(eingabe, opt = {}) {
     ...(uebersee ? ['pod-uebersee'] : []), ...(weg.gesichert ? [] : ['pod-bestellweg-manuell'])])].sort();
 
   const kurz = titel ?? '';
+  const kat = kategorieFuer(karte.titelEn);
   const seo = titelKomplett ? { title: `${titelKomplett} | LuxeStyle CH`.length <= 70 ? `${titelKomplett} | LuxeStyle CH` : titelKomplett, description: seoText(titelKomplett) } : null;
   const metafelder = [
     { namespace: 'luxe_sg', key: 'karte', type: 'json', value: kompaktJson },
@@ -371,7 +390,9 @@ export function planeModell(eingabe, opt = {}) {
     { namespace: 'luxe_sg', key: 'quelle', type: 'single_line_text_field', value: `Printful-Katalog, geholt ${karte.erzeugtAus?.katalogGeholt ?? 'unbekannt'}` },
     { namespace: 'mm-google-shopping', key: 'condition', type: 'single_line_text_field', value: 'new' },
     { namespace: 'mm-google-shopping', key: 'custom_product', type: 'boolean', value: 'true' },
-    ...(lieferung && lieferung.tageMin && lieferung.tageMax ? [{ namespace: 'custom', key: 'lieferzeit', type: 'json', value: JSON.stringify({ ch: `${lieferung.tageMin}–${lieferung.tageMax}`, tier: 'pod', weg: 'Druck auf Bestellung', quelle: 'Printful Versandart Standard nach CH' }) }] : []),
+    // Lieferzeit im Wortlaut der heutigen Produkte ({"ch":"7–14","tier":"pod","weg":"Druck auf Bestellung"}, GEMESSEN an 26 Produkten): das Theme liest diese Schlüssel, darum keine Zusatzfelder
+    ...(lieferzeit ? [{ namespace: 'custom', key: 'lieferzeit', type: 'json', value: JSON.stringify({ ch: `${lieferzeit.min}–${lieferzeit.max}`, tier: 'pod', weg: 'Druck auf Bestellung' }) }] : []),
+    ...googleMetafelder(kat, titel),
   ];
 
   const preise = varianten.map((v) => v.preisChf).filter((x) => x !== null);
@@ -386,13 +407,13 @@ export function planeModell(eingabe, opt = {}) {
     varianten, medien: md.medien,
     beschreibungHtml: beschr.html, beschreibungWeggelassen: beschr.weggelassen, uebersetzung: { ok: uPruef.ok, fehler: uPruef.fehler, saetze: uPruef.saetze, nichtUebernommen: uPruef.nichtUebernommen },
     metafelder, kompakt, kompaktBytes: Buffer.byteLength(kompaktJson, 'utf8'), editorKarte: edKarte, karteBytes,
-    lieferung, basisPlatzierung: basis ? { id: basis.p.id, dateiTyp: basis.p.dateiTyp, technik: basis.p.technik, pflichtAufpreisUsd: basis.pflichtAufpreisUsd } : null,
+    lieferung, lieferzeit, familie, kategorie: kat, basisPlatzierung: basis ? { id: basis.p.id, dateiTyp: basis.p.dateiTyp, technik: basis.p.technik, pflichtAufpreisUsd: basis.pflichtAufpreisUsd } : null,
     bestellweg: { platzierung: weg.platzierung, gesichert: weg.gesichert, grund: weg.grund, dateien },
     auswahl: { vorAuswahl: w.gesamtVorAuswahl, bestellbar: w.bestellbar, gewaehlt: varianten.length, farbenGewaehlt: w.farbenGewaehlt, farbenAusgelassen: w.farbenAusgelassen, ausgelassen: w.ausgelassen },
     preis: { min: preise.length ? Math.min(...preise) : null, max: preise.length ? Math.max(...preise) : null, nettoMin: netto.length ? Math.min(...netto) : null, nettoMax: netto.length ? Math.max(...netto) : null, fehler: preisFehler },
     bilder: { gemessen: md.bilderGemessen, unlesbar: md.unlesbar, ungemessen: md.ungemessen, anzahl: md.medien.length, kandidaten: md.kandidaten },
   };
-  plan.tore = pruefeTore(plan, { regel, stufen, schonHandles, schonSkus, verwendeteModelle: verwendet, bilder, kartenMaxBytes: regel.kartenMaxBytes, editorKartenMaxBytes: regel.editorKartenMaxBytes, originalText: karte.beschreibung.original });
+  plan.tore = pruefeTore(plan, { regel, stufen, schonHandles, schonSkus, verwendeteModelle: verwendet, verwendeteFamilien, bilder, versandJeVariante: Boolean(opt.versandVarianten), kartenMaxBytes: regel.kartenMaxBytes, editorKartenMaxBytes: regel.editorKartenMaxBytes, originalText: karte.beschreibung.original });
   plan.anlegbar = plan.tore.filter((x) => x.art === 'blocker').every((x) => x.ergebnis === 'bestanden');
   plan.hash = hashVon({ ...plan, erzeugt: { ...plan.erzeugt, am: null }, hash: undefined });
   return plan;

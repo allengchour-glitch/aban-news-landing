@@ -54,6 +54,19 @@ export function starteServer() {
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
     if (u.pathname === '/v5.js') return senden('text/javascript; charset=utf-8', readFileSync(V5_DATEI));
     let m;
+    if (u.pathname === '/karten/syn.json') {
+      // Künstliche Karte mit n gleichen Platzierungen «teil_01» … (kein echtes Modell): für Tests mit sehr vielen Reitern und sehr langer _pod_karte
+      const n = Math.max(1, Math.min(60, Number(u.searchParams.get('n')) || 25));
+      const k = karteMitShop('71', '', false, false);
+      const vorlage = k.platzierungen.find((p) => p.id === 'front');
+      k.printfulProductId = 99999;
+      k.platzierungen = Array.from({ length: n }, (_, i) => {
+        const id = 'teil_' + String(i + 1).padStart(2, '0');
+        return { ...JSON.parse(JSON.stringify(vorlage)), id, dateiTyp: id, titelDe: 'Schnittteil ' + (i + 1), titelEn: 'Panel ' + (i + 1), kollidiertMit: [], aufpreisChf: 0, aufpreisUsd: null };
+      });
+      k.hinweise = [];
+      return senden('application/json', JSON.stringify(k));
+    }
     if (u.pathname === '/karten/buendel.json') {
       // Kartenbündel: m=71,586 (Modelle aus testdaten/), shop=<Shopify-Id>:<Printful-Variante>:<Modell>,…
       const modelle = {};

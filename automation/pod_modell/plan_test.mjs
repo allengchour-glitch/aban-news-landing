@@ -3,10 +3,10 @@
 //   19 Tasse · 206 Dad-Cap (Stickerei, Pflicht-Aufpreis) · 268 Poster · 798 iPhone-Hülle · 71 T-Shirt (628 Varianten, mehr als 100) · 861 Kerze (ohne bestellbare Variante) · 574 Schuh · 388 Allover-Hoodie (PANEL)
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { planeModell, waehleVarianten, optionenBauen, basisPlatzierung, kompaktKarte, editorKarte, EDITOR_HINWEIS_CODES, medienBauen, hashVon, kanon, seoText, gruppeVon, SKU_BASIS, FABRIK_REGEL } from './plan.mjs';
+import { waehleVarianten, optionenBauen, basisPlatzierung, kompaktKarte, editorKarte, EDITOR_HINWEIS_CODES, medienBauen, hashVon, kanon, seoText, gruppeVon, SKU_BASIS, FABRIK_REGEL } from './plan.mjs';
 import { modellkarteBauen } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs';
 import { endpreis } from '../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
-import { lade, versand, testUebersetzung, bilderFuer, neuerTest, tief } from './testhilfe.mjs';
+import { planeModell, lade, versand, testUebersetzung, bilderFuer, neuerTest, tief } from './testhilfe.mjs';
 
 const { ist, wahr, ende } = neuerTest('plan');
 const plan = (id, extra = {}, opt = {}) => { const k = extra.katalog ?? lade(id); return planeModell({ katalog: k, versand: 'versand' in extra ? extra.versand : versand(), uebersetzung: testUebersetzung(k), bilder: 'bilder' in extra ? extra.bilder : bilderFuer(k), schaetzung: extra.schaetzung ?? null }, { jetzt: 'x', stufen: [1, 2], ...opt }); };

@@ -8,7 +8,8 @@
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { playwright, starteServer, seiteOeffnen, editorBereit, pngErzeugen, hier } from './lib.mjs';
+import { playwright, starteServer, seiteOeffnen, editorBereit, pngErzeugen, pngRauschen, hier } from './lib.mjs';
+import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
 
 const { chromium } = playwright();
 let n = 0; const fehler = [];
@@ -128,9 +129,9 @@ szenario('t-shirt-text-warenkorb', true, async (b, srv) => {
   pruefe('Eigenschaft «🎨 Design (front)»', pr['\u{1F3A8} Design (front)'] === 'Text: "Hallo"', pr['\u{1F3A8} Design (front)']);
   pruefe('genau drei Eigenschaften (Design, Druckdatei, _pod_karte)', Object.keys(pr).length === 3, Object.keys(pr).join('|'));
   const pod = JSON.parse(pr._pod_karte);
-  pruefe('_pod_karte: Modell 71, Version 6, Schema 1', pod.m === 71 && pod.v === 6 && pod.s === 1);
+  pruefe('_pod_karte: Modell 71, Version 6 (ohne Schemafeld «s», um Zeichen zu sparen)', pod.m === 71 && pod.v === 6 && !('s' in pod));
   pruefe('_pod_karte: Printful-Variante 4012 und Shopify-Variante «1001»', pod.pv === 4012 && pod.sv === '1001', JSON.stringify(pod));
-  pruefe('_pod_karte: Platzierung front mit Dateityp default, Pixel 1800x2400, Aufpreis 0', JSON.stringify(pod.pl) === '["front"]' && pod.dt.front === 'default' && JSON.stringify(pod.px) === '["1800x2400"]' && pod.ap === 0, pr._pod_karte);
+  pruefe('_pod_karte: Platzierung front mit Dateityp default, Aufpreis 0, «px» nur bei Abweichung vom Printfile (hier keine)', JSON.stringify(pod.pl) === '["front"]' && pod.dt.front === 'default' && !('px' in pod) && pod.ap === 0, pr._pod_karte);
   pruefe('_pod_karte beginnt mit «_» (für Kunden unsichtbar)', Object.keys(pr).some((k) => k === '_pod_karte'));
   // Inhalt der Datei = Inhalt der Bühne
   const info = await pngInfo(b, s.png(u.url) || Buffer.alloc(0));
@@ -220,7 +221,7 @@ szenario('t-shirt-zwei-dateien', true, async (b, srv) => {
   pruefe('Eigenschaften je Platzierung (front_large und back, nicht front)', !!pr['\u{1F5BC}\uFE0F Druckdatei (front_large)'] && !!pr['\u{1F5BC}\uFE0F Druckdatei (back)'] && !pr['\u{1F5BC}\uFE0F Druckdatei (front)'], Object.keys(pr).join('|'));
   pruefe('zwei verschiedene Adressen', pr['\u{1F5BC}\uFE0F Druckdatei (front_large)'] !== pr['\u{1F5BC}\uFE0F Druckdatei (back)']);
   const pod = JSON.parse(pr._pod_karte);
-  pruefe('_pod_karte: Platzierungen, Pixel, Aufpreis 12.2, kein «dt» (Dateityp = ID)', JSON.stringify(pod.pl) === '["front_large","back"]' && JSON.stringify(pod.px) === '["2250x2700","1800x2400"]' && pod.ap === 12.2 && !('dt' in pod), pr._pod_karte);
+  pruefe('_pod_karte: Platzierungen, Aufpreis 12.2, kein «dt» (Dateityp = ID), kein «px» (Dateien in Printfile-Grösse)', JSON.stringify(pod.pl) === '["front_large","back"]' && pod.ap === 12.2 && !('dt' in pod) && !('px' in pod), pr._pod_karte);
   pruefe('_pod_karte höchstens 255 Zeichen', pr._pod_karte.length <= 255, String(pr._pod_karte.length));
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
@@ -337,6 +338,9 @@ szenario('hoodie-schnittteile', true, async (b, srv) => {
   pruefe('Hinweis Rundum-Druck sichtbar', /Rundum-Druck: Jedes Teil/.test(await p.locator('[data-feld="hinweise"]').innerText()));
   const fr = await rect(p, '.lsp6-frame');
   nahe('Vorderteil: quadratische Druckdatei 6000×6000', fr.w / fr.h, 1, 0.02);
+  const metaH = await p.locator('[data-feld="meta"]').innerText();
+  pruefe('Rundum-Druck: die Masse heissen «Druckbogen», nicht «Druckfläche» (Gegenleser 2, F8)', /Druckbogen \d/.test(metaH) && !/Druckfläche \d/.test(metaH), metaH);
+  pruefe('Rundum-Druck: auch die Beschriftung auf der Bühne heisst «Druckbogen»', /Druckbogen/.test(await p.locator('.lsp6-tag').innerText()));
   const cap = await p.locator('[data-feld="cap"]').innerText();
   pruefe('Hinweis: Druckdatei auf 4096 × 4096 begrenzt', /4096 × 4096/.test(cap), cap);
   await tab(p, 'Kapuze').click();
@@ -353,7 +357,7 @@ szenario('hoodie-schnittteile', true, async (b, srv) => {
 
 // ── 7. Poster: kleine Grenze und echte Grösse 9933×7016 mit data-max-px=0 ───────────────────────
 szenario('poster-pixel', true, async (b, srv) => {
-  const s = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268' });
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515' });
   await editorBereit(s.page);
   const p = s.page;
   const meta = await p.locator('[data-feld="meta"]').innerText();
@@ -364,14 +368,27 @@ szenario('poster-pixel', true, async (b, srv) => {
   const u = s.uploads[0];
   const ist = u.breite * u.hoehe;
   pruefe('Standard: Druckdatei unter 16,7 Mpx, Seitenverhältnis des Printfiles', ist <= 16777216 && Math.abs(u.breite / u.hoehe - 9933 / 7016) < 0.002, JSON.stringify(u));
+  const pod = JSON.parse(s.warenkorb[0].properties._pod_karte);
+  pruefe('_pod_karte nennt die verkleinerte Pixelgrösse (px) der hochgeladenen Datei', JSON.stringify(pod.px) === JSON.stringify([`${u.breite}x${u.hoehe}`]), JSON.stringify(pod));
   await s.schliessen();
-  const s2 = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&maxpx=0' });
+  // data-max-px="0" heisst nicht mehr «keine Grenze»: die absolute Grenze von 25 Mpx (Cloudinary Free und Plus, QUELLE Gegenleser) gilt immer
+  const s2 = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515&maxpx=0' });
   await editorBereit(s2.page);
   await textHinzufuegen(s2.page, 'Poster');
+  const maxPx2 = await s2.page.evaluate(() => window.LSPOD6.editors[0].maxPixel);
   await Promise.all([s2.page.waitForURL('**/cart', { timeout: 120000 }), s2.page.locator('.lsp6-cta').click()]);
   const u2 = s2.uploads[0];
-  pruefe('data-max-px=0: echte Pixelgrösse 9933 × 7016 (69,7 Mpx) wird in Chromium erzeugt', u2 && u2.breite === 9933 && u2.hoehe === 7016, JSON.stringify(u2));
+  pruefe('data-max-px=0: höchstens 25 Mpx (statt 69,7 Mpx), Seitenverhältnis bleibt, mehr als der Standard', u2 && u2.breite * u2.hoehe <= 25000000 && u2.breite * u2.hoehe > 16777216 && Math.abs(u2.breite / u2.hoehe - 9933 / 7016) < 0.002, JSON.stringify(u2));
+  pruefe('data-max-px=0: der Editor kennt die absolute Grenze', maxPx2 === 25000000, String(maxPx2));
   await s2.schliessen();
+  // Ohne Zuordnung der Shopify-Variante ist die Druckdatei nicht bestimmbar (7 Formate): Kauf gesperrt statt Standardformat (Gegenleser 2, F5)
+  const s3 = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268' });
+  await editorBereit(s3.page);
+  await textHinzufuegen(s3.page, 'Poster');
+  await s3.page.locator('.lsp6-cta').click();
+  await s3.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('Poster ohne Zuordnung: Kauf gesperrt, kein Upload, kein Warenkorb', s3.uploads.length === 0 && s3.warenkorb.length === 0 && (await s3.page.locator('.lsp6-cta').isEnabled()));
+  await s3.schliessen();
 });
 
 // ── 7b. T-Shirt: Vorlage in der Farbe der gewählten Variante ────────────────────────────────────
@@ -748,6 +765,421 @@ szenario('foto-bearbeiten', true, async (b, srv) => {
   pruefe('Foto in der Druckdatei sichtbar (viele Pixel)', info.cnt > 50000, JSON.stringify(info));
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
+});
+
+// ════════════════════════════════════════════════════════════════════════════════════════════════
+// Funde der Gegenleser (05.11.2026): jeder Fund wurde mit dem Stand VOR der Korrektur nachgestellt (V6_DATEI = alte Fassung → rot), danach behoben.
+// ════════════════════════════════════════════════════════════════════════════════════════════════
+const BUENDEL = 'karte=buendel&m=71,586&shop=1001:4012:71,1002:15124:586,1003:4013:71&varianten=1001:T-Shirt 71,1002:T-Shirt 586,1003:T-Shirt 71 L,1004:Unbekannt';
+const pngDim = (s, url) => { const u = s.uploads.find((x) => x.url === url); return u ? `${u.breite}x${u.hoehe}` : null; };
+
+// ── F1 (Blocker, beide Gegenleser): ein Shop-Produkt aus mehreren Printful-Modellen ─────────────────
+szenario('buendel-tshirt', true, async (b, srv) => {
+  const k586 = lies(586);
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: BUENDEL });
+  await editorBereit(s.page);
+  const p = s.page;
+  pruefe('Bündel: Editor im Modus «karte» (nicht im Rückfall)', (await p.locator('.lsp6').getAttribute('data-modus')) === 'karte');
+  const reiter = async () => (await p.locator('.lsp6-tab').allInnerTexts()).map((x) => x.split('\n')[0].trim());
+  pruefe('Modell 71: acht Reiter, darunter «Vorderseite gross»', (await reiter()).length === 8 && (await reiter()).includes('Vorderseite gross'), (await reiter()).join('|'));
+  await tab(p, 'Vorderseite gross').click();
+  await textHinzufuegen(p, 'Gross');
+  // Wechsel auf die Variante des Modells 586: dort gibt es «Vorderseite gross» nicht
+  await p.locator('input[name="id"][value="1002"]').check();
+  await p.waitForFunction(() => !document.querySelector('[data-feld="modellhinweis"]').hidden);
+  const nach = await reiter();
+  pruefe('Modell 586: Reiter = die 5 Platzierungen des Modells plus «Vorderseite gross» als fremder Reiter', nach.length === 6 && nach.includes('Vorderseite gross') && !nach.includes('Etikett innen (DTF)'), nach.join('|'));
+  pruefe('fremder Reiter ist markiert (data-fremd) und trägt den Vermerk «hier nicht möglich»', (await p.locator('.lsp6-tab[data-fremd="1"]').count()) === 1 && /hier nicht möglich/.test(await p.locator('.lsp6-tab[data-fremd="1"]').innerText()));
+  const hinweis = await p.locator('[data-feld="modellhinweis"]').innerText();
+  pruefe('Hinweis nennt die fehlende Platzierung und sagt, was zu tun ist', /Vorderseite gross/.test(hinweis) && /Entferne dein Motiv/.test(hinweis), hinweis);
+  const asp586 = k586.platzierungen.find((x) => x.id === 'front').printfile;
+  await p.locator('.lsp6-cta').click();
+  await p.waitForFunction(() => /gibt es .* nicht/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('Kauf mit Motiv auf nicht vorhandener Platzierung gesperrt: kein Upload, kein Warenkorb', s.uploads.length === 0 && s.warenkorb.length === 0);
+  // Das Motiv dort entfernen: der Reiter verschwindet, die Vorderseite des Modells ist aktiv
+  await tab(p, 'Vorderseite gross').click();
+  await p.locator('.lsp6-layer').first().click();
+  await p.locator('.lsp6-del').click();
+  await p.waitForFunction(() => document.querySelectorAll('.lsp6-tab[data-fremd="1"]').length === 0);
+  pruefe('nach dem Entfernen: kein fremder Reiter, Hinweis weg, Vorderseite aktiv', (await reiter()).length === 5 && (await p.locator('[data-feld="modellhinweis"]').isHidden()) && (await tab(p, 'Vorderseite').first().getAttribute('aria-selected')) === 'true', (await reiter()).join('|'));
+  nahe('Bühne zeigt die Fläche des Modells 586 (Seitenverhältnis seiner Vorderseite)', (await rect(p, '.lsp6-frame')).w / (await rect(p, '.lsp6-frame')).h, asp586.breitePx / asp586.hoehePx, 0.02);
+  await tab(p, 'Rückseite').click();
+  await textHinzufuegen(p, 'Hinten');
+  await ctaKlicken(s);
+  const w = s.warenkorb[0];
+  const pod = JSON.parse(w.properties._pod_karte);
+  const back586 = k586.platzierungen.find((x) => x.id === 'back').printfile;
+  pruefe('Warenkorb: Shopify-Variante 1002, Printful-Variante 15124 und Modell 586 (nicht 71)', w.id === '1002' && pod.m === 586 && pod.pv === 15124 && pod.sv === '1002' && JSON.stringify(pod.pl) === '["back"]', JSON.stringify(pod));
+  pruefe('Druckdatei in der Grösse der Rückseite von Modell 586', s.uploads.length === 1 && s.uploads[0].breite === back586.breitePx && s.uploads[0].hoehe === back586.hoehePx, JSON.stringify(s.uploads));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+  // Zurück auf Modell 71 und eine Variante, die in der Zuordnung fehlt
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: BUENDEL });
+  await editorBereit(t.page);
+  await textHinzufuegen(t.page, 'Hallo');
+  await t.page.locator('input[name="id"][value="1002"]').check();
+  await t.page.waitForFunction(() => document.querySelectorAll('.lsp6-tab').length === 5);
+  await t.page.locator('input[name="id"][value="1003"]').check();
+  await t.page.waitForFunction(() => document.querySelectorAll('.lsp6-tab').length === 8);
+  pruefe('Rückwechsel auf Modell 71: acht Reiter, das Motiv auf der Vorderseite ist erhalten', (await t.page.locator('.lsp6-layer').count()) === 1);
+  await t.page.locator('input[name="id"][value="1004"]').check();
+  await t.page.waitForFunction(() => !document.querySelector('[data-feld="modellhinweis"]').hidden);
+  pruefe('Variante ausserhalb der Zuordnung: Hinweis «nicht eingerichtet»', /nicht eingerichtet/.test(await t.page.locator('[data-feld="modellhinweis"]').innerText()));
+  await t.page.locator('.lsp6-cta').click();
+  await t.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('Variante ausserhalb der Zuordnung: Kauf gesperrt (es gibt nie still die Standardgeometrie)', t.uploads.length === 0 && t.warenkorb.length === 0 && (await t.page.locator('.lsp6-cta').isEnabled()));
+  await t.schliessen();
+  // Beschädigtes Bündel (Zuordnung ohne Modell) → Rückfall auf den v5-Modus ohne Seitenfehler
+  const u = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=buendel&m=71&shop=1001:4012:999' });
+  await editorBereit(u.page);
+  pruefe('Bündel ohne gültige Zuordnung: Rückfall auf den v5-Modus', (await u.page.locator('.lsp6').getAttribute('data-modus')) === 'v5' && u.fehler.length === 0, u.fehler.join('|'));
+  await u.schliessen();
+});
+
+// ── F5 (Gegenleser 2): ohne Zuordnung nie still die Standardgeometrie ───────────────────────────────
+szenario('ausfuehrung-ohne-zuordnung', true, async (b, srv) => {
+  const q = 'varianten=1001:11 oz,1002:15 oz,1003:20 oz';
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=19&${q}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  await p.locator('input[name="id"][value="1003"]').check();
+  await textHinzufuegen(p, 'Tasse');
+  await p.locator('.lsp6-cta').click();
+  await p.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('Tasse (3 Druckdateien) ohne Zuordnung: Kauf gesperrt, kein Upload, kein Warenkorb', s.uploads.length === 0 && s.warenkorb.length === 0 && !(await p.locator('[data-feld="modellhinweis"]').isHidden()));
+  await s.schliessen();
+  // Zuordnung nur für zwei Varianten: die dritte bleibt gesperrt, die zugeordneten gehen
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=19&shop=1001:1320,1002:4830&${q}` });
+  await editorBereit(t.page);
+  await textHinzufuegen(t.page, 'Tasse');
+  pruefe('zugeordnete Variante: kein Hinweis', await t.page.locator('[data-feld="modellhinweis"]').isHidden());
+  await t.page.locator('input[name="id"][value="1003"]').check();
+  await t.page.waitForFunction(() => !document.querySelector('[data-feld="modellhinweis"]').hidden);
+  await t.page.locator('.lsp6-cta').click();
+  await t.page.waitForFunction(() => /nicht eingerichtet/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('nicht zugeordnete Variante (20 oz): gesperrt', t.uploads.length === 0 && t.warenkorb.length === 0);
+  await t.page.locator('input[name="id"][value="1002"]').check();
+  await t.page.waitForFunction(() => document.querySelector('[data-feld="modellhinweis"]').hidden);
+  await ctaKlicken(t);
+  pruefe('zugeordnete Variante (15 oz) geht durch', t.warenkorb.length === 1 && t.warenkorb[0].id === '1002');
+  await t.schliessen();
+  // Eine Karte mit Zuordnung, deren Printful-Variante nicht in der Karte steht (Tippfehler): gesperrt
+  const u = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=19&shop=1001:99999999&${q}` });
+  await editorBereit(u.page);
+  pruefe('Printful-Variante, die die Karte nicht kennt: Hinweis sofort sichtbar', !(await u.page.locator('[data-feld="modellhinweis"]').isHidden()));
+  await u.schliessen();
+});
+
+// ── F4 (Gegenleser 2): Variantenwechsel während Bau und Upload ──────────────────────────────────────
+szenario('variante-waehrend-upload', true, async (b, srv) => {
+  const k = lies(19);
+  const dim = (g) => { const d = k.druckdateien[k.druckdateiGruppen[g].platzierungen.default]; return `${d.breitePx}x${d.hoehePx}`; };
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=19&shop=1001:1320,1002:4830,1003:16586&varianten=1001:11 oz,1002:15 oz,1003:20 oz', cloudinaryVerzoegerung: () => 800 });
+  await editorBereit(s.page);
+  const p = s.page;
+  await textHinzufuegen(p, 'Tasse');
+  await p.locator('.lsp6-cta').click();
+  await p.waitForTimeout(300);
+  pruefe('während des Bauens sind die Eingaben gesperrt (inert), der Knopf ist aus', (await p.evaluate(() => document.querySelector('.lsp6').hasAttribute('inert'))) && !(await p.locator('.lsp6-cta').isEnabled()));
+  await p.locator('input[name="id"][value="1003"]').check();   // Kunde wechselt auf 20 oz, während die Datei für 11 oz hochgeladen wird
+  await p.waitForFunction(() => /gewechselt/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 15000 });
+  pruefe('Warenkorb wird NICHT mit gemischten Angaben gefüllt (id 11 oz, Datei und Karte für 20 oz)', s.warenkorb.length === 0, JSON.stringify(s.warenkorb));
+  pruefe('Knopf wieder frei, Sperre aufgehoben', (await p.locator('.lsp6-cta').isEnabled()) && !(await p.evaluate(() => document.querySelector('.lsp6').hasAttribute('inert'))));
+  pruefe('die erste Datei war die für 11 oz (eingefroren), nicht eine Mischung', s.uploads.length === 1 && `${s.uploads[0].breite}x${s.uploads[0].hoehe}` === dim(0), JSON.stringify(s.uploads));
+  await p.waitForFunction((soll) => document.querySelector('[data-feld="meta"]').innerText.includes(soll), `${k.druckdateien[k.druckdateiGruppen[2].platzierungen.default].breitePx} × `);
+  await ctaKlicken(s);
+  const w = s.warenkorb[0];
+  const pod = JSON.parse(w.properties._pod_karte);
+  pruefe('zweiter Versuch: Variante 1003, Karte und Datei stimmen überein', w.id === '1003' && pod.sv === '1003' && pod.pv === 16586 && `${s.uploads[1].breite}x${s.uploads[1].hoehe}` === dim(2), JSON.stringify([w.id, pod, s.uploads[1]]));
+  await s.schliessen();
+});
+
+// ── F3 (Gegenleser 1 und 2): zwei schnelle Foto-Bearbeitungen, der langsamere Upload darf nicht gewinnen ──
+szenario('foto-rennen', true, async (b, srv) => {
+  const foto = { name: 'foto.png', mimeType: 'image/png', buffer: pngErzeugen(1200, 800) };
+  const bereit = async (s) => {
+    await s.page.locator('input[type=file]').setInputFiles(foto);
+    await s.page.waitForFunction(() => window.LSPOD6.editors[0].st.ebenen.front[0] && window.LSPOD6.editors[0].st.ebenen.front[0]._origW === 1200);
+    await s.page.waitForFunction(() => !window.LSPOD6.editors[0].st.ebenen.front[0].uploading);
+  };
+  const ebene = (s) => s.page.evaluate(() => { const e = window.LSPOD6.editors[0].st.ebenen.front[0]; return { up: e.uploading, url: e.printUrl }; });
+  // a) der erste Upload (Spiegeln) ist langsam, der zweite (90°) schnell und kommt zuerst zurück
+  const a = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, cloudinaryVerzoegerung: (nr) => (nr === 2 ? 1000 : 0) });
+  await editorBereit(a.page);
+  await bereit(a);
+  await a.page.getByRole('button', { name: /Spiegeln/ }).click();
+  await a.page.waitForTimeout(350);
+  await a.page.getByRole('button', { name: /90°/ }).click();
+  await warteBis(async () => !(await ebene(a)).up, 5000);
+  const zwischen = await ebene(a);
+  await a.page.waitForTimeout(1400);   // der langsame erste Upload kommt jetzt zurück
+  const ende = await ebene(a);
+  pruefe('langsamer älterer Upload überschreibt die Adresse der neueren Bearbeitung nicht', ende.url === zwischen.url && pngDim(a, ende.url) === '800x1200', `${JSON.stringify(zwischen)} → ${JSON.stringify(ende)} ${pngDim(a, ende.url)}`);
+  pruefe('Ebene bleibt nach dem Eintreffen des alten Uploads «fertig»', ende.up === false);
+  await a.schliessen();
+  // b) der erste Upload kommt zuerst zurück, der zweite ist noch unterwegs: die Ebene gilt weiter als «lädt hoch», die Kasse wartet
+  const c = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, cloudinaryVerzoegerung: (nr) => (nr === 2 ? 250 : nr === 3 ? 1500 : 0) });
+  await editorBereit(c.page);
+  await bereit(c);
+  await c.page.getByRole('button', { name: /Spiegeln/ }).click();
+  await c.page.waitForTimeout(120);
+  await c.page.getByRole('button', { name: /90°/ }).click();
+  await c.page.waitForTimeout(700);   // Upload 2 ist zurück, Upload 3 noch nicht
+  const mitte = await ebene(c);
+  pruefe('erster Upload zurück, zweiter noch unterwegs: Ebene gilt weiter als «lädt hoch» (nicht der alte Stand)', mitte.up === true && mitte.url === '', JSON.stringify(mitte));
+  await c.page.locator('.lsp6-cta').click();
+  await c.page.waitForFunction(() => /lädt noch hoch/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('Kasse wartet statt die alte Datei zu nehmen', c.warenkorb.length === 0);
+  await c.page.waitForFunction(() => !window.LSPOD6.editors[0].st.ebenen.front[0].uploading, null, { timeout: 10000 });
+  const spaet = await ebene(c);
+  pruefe('am Ende gilt die Datei der letzten Bearbeitung (800 × 1200)', pngDim(c, spaet.url) === '800x1200', `${JSON.stringify(spaet)} ${pngDim(c, spaet.url)}`);
+  await c.schliessen();
+  // c) Bearbeiten, bevor der Upload des Originals zurück ist: das Original darf die Bearbeitung nicht überschreiben
+  const d = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, cloudinaryVerzoegerung: (nr) => (nr === 1 ? 1000 : 0) });
+  await editorBereit(d.page);
+  await d.page.locator('input[type=file]').setInputFiles(foto);
+  await d.page.waitForFunction(() => window.LSPOD6.editors[0].st.ebenen.front[0] && window.LSPOD6.editors[0].st.ebenen.front[0]._origW === 1200);
+  await d.page.getByRole('button', { name: /Spiegeln/ }).click();
+  await warteBis(async () => !(await ebene(d)).up, 5000);
+  const z = await ebene(d);
+  await d.page.waitForTimeout(1300);
+  const e2 = await ebene(d);
+  pruefe('Upload des Originals (langsam) überschreibt die Adresse der Bearbeitung nicht', e2.url === z.url && e2.url !== '' && e2.up === false, `${JSON.stringify(z)} → ${JSON.stringify(e2)}`);
+  await d.schliessen();
+});
+
+// ── Fund 6 (Gegenleser 1): dpi-Warnung nach Rückgängig und Wiederholen eines frischen Fotos ─────────
+szenario('dpi-nach-rueckgaengig', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  await p.locator('input[type=file]').setInputFiles({ name: 'klein.png', mimeType: 'image/png', buffer: pngErzeugen(300, 300) });
+  await p.waitForFunction(() => window.LSPOD6.editors[0].st.ebenen.front[0] && window.LSPOD6.editors[0].st.ebenen.front[0]._origW === 300);
+  const dpi = p.locator('[data-feld="dpi"]');
+  await p.waitForFunction(() => !document.querySelector('[data-feld="dpi"]').hidden);
+  const vorher = await dpi.innerText();
+  pruefe('frisches Foto 300 px: Warnung mit dpi', /dpi/.test(vorher), vorher);
+  await p.evaluate(() => { const e = window.LSPOD6.editors[0]; e.zurueck(); e.wiederholen(); });
+  await p.evaluate(() => { const e = window.LSPOD6.editors[0]; e.waehlen(e.st.ebenen.front[0].id); });
+  pruefe('nach Rückgängig und Wiederholen: dieselbe Warnung (Originalgrösse aus dem Zwischenspeicher)', !(await dpi.isHidden()) && (await dpi.innerText()) === vorher, await dpi.innerText());
+  pruefe('wiederhergestellte Ebene kennt ihre Originalgrösse', (await p.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front[0]._origW)) === 300);
+  await s.schliessen();
+});
+
+// ── F2 (Gegenleser 1, F6 Gegenleser 2): Dateigrösse der Druckdatei und Grenzen von Cloudinary ─────────
+szenario('cloudinary-grenzen', true, async (b, srv) => {
+  const rausch = { name: 'rauschen.png', mimeType: 'image/png', buffer: pngRauschen(900, 1200) };
+  const vollbild = async (s) => {
+    await s.page.locator('input[type=file]').setInputFiles(rausch);
+    await s.page.waitForFunction(() => window.LSPOD6.editors[0].st.ebenen.front[0] && window.LSPOD6.editors[0].st.ebenen.front[0]._origW === 900);
+    await s.page.waitForFunction(() => !window.LSPOD6.editors[0].st.ebenen.front[0].uploading);
+  };
+  // a) Der Editor prüft die Dateigrösse vor dem Upload (data-max-bytes) und rechnet kleiner
+  const MAXB = 1500000;
+  const a = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&maxbytes=${MAXB}`, warenkorbVerzoegerung: 800 });
+  await editorBereit(a.page);
+  await vollbild(a);
+  const roh = a.uploads.length;
+  await a.page.locator('.lsp6-cta').click();
+  await a.page.waitForFunction(() => /verkleinert/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 30000 });
+  const hinweisA = await status(a.page).innerText();
+  await a.page.waitForURL('**/cart', { timeout: 20000 });
+  const letzte = a.uploads[a.uploads.length - 1];
+  pruefe('Druckdatei höchstens so schwer wie data-max-bytes (Rest im Warenkorb)', letzte.bytes <= MAXB && a.warenkorb.length === 1, JSON.stringify(letzte));
+  pruefe('verkleinert: kleiner als das Printfile 1800 × 2400, Seitenverhältnis 3:4 bleibt', letzte.breite < 1800 && Math.abs(letzte.breite / letzte.hoehe - 0.75) < 0.01, JSON.stringify(letzte));
+  pruefe('zu schwere Dateien werden gar nicht erst hochgeladen (höchstens zwei Uploads zusätzlich zum Foto)', a.uploads.length - roh <= 2 && a.abgelehnt.length === 0, `${a.uploads.length - roh} / ${a.abgelehnt.length}`);
+  pruefe('Kunde erfährt die tatsächliche Grösse', new RegExp(`${letzte.breite} × ${letzte.hoehe} px`).test(hinweisA), hinweisA);
+  const podA = JSON.parse(a.warenkorb[0].properties._pod_karte);
+  pruefe('_pod_karte.px trägt die tatsächliche Grösse der hochgeladenen Datei', JSON.stringify(podA.px) === JSON.stringify([`${letzte.breite}x${letzte.hoehe}`]), JSON.stringify(podA));
+  await a.schliessen();
+  // b) Der Editor kennt die Grenze nicht (data-max-bytes=0), Cloudinary lehnt ab: neu rechnen und wiederholen
+  const c = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&maxbytes=0`, cloudinaryMaxBytes: 2500000 });
+  await editorBereit(c.page);
+  await vollbild(c);
+  await ctaKlicken(c);
+  pruefe('Cloudinary lehnte die zu grosse Datei ab (HTTP 400), der Editor rechnete kleiner und es ging durch', c.abgelehnt.length >= 1 && c.warenkorb.length === 1 && c.uploads[c.uploads.length - 1].bytes <= 2500000, JSON.stringify({ abgelehnt: c.abgelehnt, letzte: c.uploads[c.uploads.length - 1] }));
+  await c.schliessen();
+  // c) Es geht nie: nach höchstens fünf Versuchen ein klarer Fehler, kein Warenkorb, Knopf frei
+  const d = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&maxbytes=0`, cloudinaryMaxBytes: 100 });
+  await editorBereit(d.page);
+  await textHinzufuegen(d.page, 'Hallo');
+  await d.page.locator('.lsp6-cta').click();
+  await d.page.waitForFunction(() => /zu gross für den Upload/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 30000 });
+  pruefe('unlösbar: höchstens 5 Versuche, klare Meldung, kein Warenkorb, Knopf frei', d.abgelehnt.length <= 5 && d.abgelehnt.length >= 2 && d.warenkorb.length === 0 && (await d.page.locator('.lsp6-cta').isEnabled()), String(d.abgelehnt.length));
+  await d.schliessen();
+  // d) Server meldet zu viele Pixel
+  const e = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515&maxbytes=0', cloudinaryMaxPixel: 8000000 });
+  await editorBereit(e.page);
+  await textHinzufuegen(e.page, 'Poster');
+  await ctaKlicken(e);
+  const lz = e.uploads[e.uploads.length - 1];
+  pruefe('Poster: Cloudinary lehnt über 8 Mpx ab → Editor rechnet kleiner, es geht durch', e.abgelehnt.some((x) => x.grund === 'pixel') && lz.breite * lz.hoehe <= 8000000 && e.warenkorb.length === 1, JSON.stringify({ abgelehnt: e.abgelehnt.length, lz }));
+  await e.schliessen();
+});
+
+// ── Fund 12 (Gegenleser 1): Zeitlimit des Uploads ───────────────────────────────────────────────────
+szenario('upload-zeitlimit', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&uptimeout=700`, cloudinaryHaengt: () => true });
+  await editorBereit(s.page);
+  await textHinzufuegen(s.page, 'Hallo');
+  await s.page.locator('.lsp6-cta').click();
+  await s.page.waitForFunction(() => /dauert zu lange/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 10000 });
+  pruefe('Druckdatei-Upload hängt: nach dem Zeitlimit Meldung, kein Warenkorb, Knopf frei, Sperre aufgehoben', s.warenkorb.length === 0 && (await s.page.locator('.lsp6-cta').isEnabled()) && !(await s.page.evaluate(() => document.querySelector('.lsp6').hasAttribute('inert'))));
+  await s.schliessen();
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&uptimeout=700`, cloudinaryHaengt: () => true });
+  await editorBereit(t.page);
+  await t.page.locator('input[type=file]').setInputFiles({ name: 'f.png', mimeType: 'image/png', buffer: pngErzeugen(400, 400) });
+  await t.page.waitForFunction(() => /dauert zu lange/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 10000 });
+  pruefe('Foto-Upload hängt: Meldung, Ebene gilt nicht mehr als «lädt hoch» (Kasse bleibt nicht gesperrt)', (await t.page.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front[0].uploading)) === false);
+  await t.schliessen();
+});
+
+// ── Fund 3 (Gegenleser 1): der aktive Reiter liegt im Sichtfeld der Leiste ──────────────────────────
+szenario('reiter-sichtbar', true, async (b, srv) => {
+  const sichtbar = (p) => p.evaluate(() => {
+    const t = document.querySelector('.lsp6-tabs'), a = document.querySelector('.lsp6-tab[aria-selected="true"]');
+    const tr = t.getBoundingClientRect(), ar = a.getBoundingClientRect();
+    return { ok: ar.left >= tr.left - 1 && ar.right <= tr.right + 1, tr: [tr.left, tr.right], ar: [ar.left, ar.right], scroll: t.scrollLeft, ueberlauf: t.scrollWidth > t.clientWidth };
+  });
+  for (const [name, opt, query, wahl] of [['Rechner 1440, T-Shirt (8 Reiter)', PC, `karte=71&${SHOP71}`, ['back', 'sleeve_right', 'label_outside', 'front']], ['Handy 390, T-Shirt', MOBIL, `karte=71&${SHOP71}`, ['back', 'sleeve_right', 'front_large']], ['Rechner 1440, 25 Reiter', PC, 'karte=syn&n=25', ['teil_13', 'teil_25', 'teil_02']]]) {
+    const s = await seiteOeffnen(b, srv.url, { ...opt, query });
+    await editorBereit(s.page);
+    const p = s.page;
+    let alle = true, letzte = '', ueberlauf = false;
+    for (const w of wahl) {
+      await p.locator(`.lsp6-tab[data-p="${w}"]`).click();
+      const r = await sichtbar(p);
+      ueberlauf = ueberlauf || r.ueberlauf;
+      if (!r.ok) { alle = false; letzte = `${w}: ${JSON.stringify(r)}`; }
+    }
+    pruefe(`${name}: Leiste läuft über (sonst wäre die Prüfung leer)`, ueberlauf);
+    pruefe(`${name}: der gewählte Reiter liegt nach jedem Wechsel in der sichtbaren Leiste`, alle, letzte);
+    await s.schliessen();
+  }
+});
+
+// ── Fund 2 (Gegenleser 2): der Theme-Knopf «Zuerst dein Design gestalten» springt zum v6-Editor ──────
+szenario('designzwang-sprung', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=19&abstand=1600' });
+  await editorBereit(s.page);
+  const p = s.page;
+  const vor = await p.evaluate(() => ({ y: window.scrollY, top: document.querySelector('.lsp6').getBoundingClientRect().top }));
+  pruefe('Ausgangslage: Editor liegt unterhalb des Fensters', vor.y === 0 && vor.top > 900, JSON.stringify(vor));
+  pruefe('Kennung «lspod-start» steht am Editor (das Theme setzt sie nur an .lspod-designer)', (await p.evaluate(() => document.getElementById('lspod-start') && document.getElementById('lspod-start').classList.contains('lsp6'))) === true);
+  await p.locator('#designzwang').click();
+  await p.waitForFunction(() => window.scrollY > 500, null, { timeout: 5000 }).catch(() => {});
+  const nach = await p.evaluate(() => ({ y: window.scrollY, top: document.querySelector('.lsp6').getBoundingClientRect().top, hash: location.hash }));
+  pruefe('Klick springt zum Editor (oberer Rand im Fenster)', nach.y > 500 && nach.top >= -5 && nach.top < 450 && nach.hash === '#lspod-start', JSON.stringify(nach));
+  await s.schliessen();
+});
+
+// ── Fund 13 (Gegenleser 1): Tippflächen der Griffe mindestens 44 px ─────────────────────────────────
+szenario('griffe-44px', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...MOBIL, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  await textHinzufuegen(p, 'Griff');
+  for (const [name, sel] of [['Skalieren/Drehen', '.lsp6-handle'], ['Löschen', '.lsp6-del']]) {
+    const r = await p.evaluate((sel) => {
+      const el = document.querySelector(sel);
+      el.scrollIntoView({ block: 'center' });
+      const b = el.getBoundingClientRect(), cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+      const treffer = (dx, dy) => { const t = document.elementFromPoint(cx + dx, cy + dy); return !!(t && t.closest(sel)); };
+      return { sichtbar: Math.round(b.width), ecken: [treffer(20, 0), treffer(-20, 0), treffer(0, 20), treffer(0, -20)] };
+    }, sel);
+    pruefe(`${name}: sichtbar ca. 30 px, getroffen wird sie bis 20 px vom Mittelpunkt (Fläche 44 px)`, r.ecken.every(Boolean), JSON.stringify(r));
+  }
+  await s.schliessen();
+});
+
+// ── Fund 5 (Gegenleser 1) / F7 (Gegenleser 2): _pod_karte höchstens 255 Zeichen ─────────────────────
+szenario('pod-karte-grenze', true, async (b, srv) => {
+  // 25 Platzierungen, alle belegt: zu lang für eine Eigenschaft → vorher abgelehnt, nichts wird hochgeladen
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=syn&n=25' });
+  await editorBereit(s.page);
+  const p = s.page;
+  await p.evaluate(() => { const e = window.LSPOD6.editors[0]; for (const id of e.st.ebenen ? Object.keys(e.st.ebenen) : []) { e.wechseln(id); e.neuerText('x'); } });
+  const laenge = await p.evaluate(() => window.LSPOD6.editors[0].eigenschaften()._pod_karte.length);
+  pruefe('Ausgangslage: _pod_karte mit 25 Platzierungen ist länger als 255 Zeichen', laenge > 255, String(laenge));
+  await p.locator('.lsp6-cta').click();
+  await p.waitForFunction(() => /Zu viele Druckflächen/.test(document.querySelector('[data-feld="status"]').innerText));
+  pruefe('zu lang: Meldung, kein Upload, kein Warenkorb, Knopf frei', s.uploads.length === 0 && s.warenkorb.length === 0 && (await p.locator('.lsp6-cta').isEnabled()));
+  await s.schliessen();
+  // das Dad-Cap mit allen vier Stickplätzen und das T-Shirt mit der grössten erlaubten Auswahl bleiben darunter
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=206&shop=1001:4012` });
+  await editorBereit(t.page);
+  for (const name of ['Vorne', 'Hinten', 'Rechts', 'Links']) { const z = t.page.locator('.lsp6-tab').nth(['Vorne', 'Hinten', 'Rechts', 'Links'].indexOf(name)); await z.click(); await textHinzufuegen(t.page, 'x'); }
+  const w = await t.page.evaluate(() => window.LSPOD6.editors[0].eigenschaften()._pod_karte);
+  pruefe('Dad-Cap mit vier Platzierungen: unter 255 Zeichen (früher 280)', w.length <= 255 && JSON.parse(w).pl.length === 4, `${w.length}: ${w}`);
+  await t.schliessen();
+  const u = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&shop=12345678901234:4012` });
+  await editorBereit(u.page);
+  for (const n of ['Vorderseite gross', 'Rückseite', 'Ärmel links', 'Ärmel rechts']) { await tab(u.page, n).first().click(); await textHinzufuegen(u.page, 'x'); }
+  const w2 = await u.page.evaluate(() => window.LSPOD6.editors[0].eigenschaften()._pod_karte);
+  pruefe('T-Shirt mit vier Platzierungen und 14-stelliger Shopify-Variante: unter 255 Zeichen', w2.length <= 255, `${w2.length}: ${w2}`);
+  await u.schliessen();
+});
+
+// ── F11 (Gegenleser 2): nach einem Fehler keine alten Druckdatei-Adressen in den Formularfeldern ─────
+szenario('formular-nach-fehler', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, warenkorbFehler: true });
+  await editorBereit(s.page);
+  const p = s.page;
+  await textHinzufuegen(p, 'Neu');
+  await p.locator('.lsp6-cta').click();
+  await p.waitForFunction(() => /mock-warenkorb-fehler/.test(document.querySelector('[data-feld="status"]').innerText));
+  const namen = () => p.evaluate(() => [...document.querySelectorAll('form input[data-lspod6="1"]')].map((i) => i.name));
+  pruefe('nach dem Fehler: keine Druckdatei-Adresse im Formular', !(await namen()).some((n) => /Druckdatei/.test(n)), (await namen()).join('|'));
+  await p.locator('.lsp6-chip', { hasText: 'Text' }).click();   // nach dem Fehler ist nichts mehr gewählt
+  await p.locator('.lsp6-text').fill('Anders');
+  pruefe('nach einer Änderung weiterhin keine alte Druckdatei-Adresse neben dem neuen Design', !(await namen()).some((n) => /Druckdatei/.test(n)) && (await namen()).some((n) => /Design/.test(n)), (await namen()).join('|'));
+  await s.schliessen();
+});
+
+// ── Vertrag mit der Auftragsabwicklung: der Parser der Bestellstrecke liest, was der Editor wirklich schreibt ──
+szenario('vertrag-bestellweg', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  await tab(p, 'Vorderseite gross').click(); await textHinzufuegen(p, 'Gross');
+  await tab(p, 'Rückseite').click(); await textHinzufuegen(p, 'Hinten');
+  await tab(p, 'Ärmel links').click(); await textHinzufuegen(p, 'Arm');
+  await ctaKlicken(s);
+  const r = dateienAusEigenschaften(s.warenkorb[0].properties, { hosts: ['res.cloudinary.com', 'cdn.shopify.com'] });
+  pruefe('Parser der Bestellstrecke liest drei Dateien ohne Befund', r.dateien.length === 3 && r.probleme.length === 0, JSON.stringify(r.probleme));
+  gleich_('Platzierung → Dateityp (die Vorderseite gross heisst bei Printful front_large)', r.dateien.map((d) => [d.platzierung, d.dateiTyp]).sort(), [['back', 'back'], ['front_large', 'front_large'], ['sleeve_left', 'sleeve_left']]);
+  pruefe('Parser: _pod_karte als Version 6 mit Platzierungen erkannt', r.karte && r.karte.v === 6 && r.karte.pl.length === 3);
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=71&shop=1001:4012' });
+  await editorBereit(t.page);
+  await textHinzufuegen(t.page, 'Vorne');
+  await ctaKlicken(t);
+  const r2 = dateienAusEigenschaften(t.warenkorb[0].properties, { hosts: ['res.cloudinary.com'] });
+  gleich_('Vorderseite: Platzierung front, Dateityp default', r2.dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default']]);
+  await s.schliessen(); await t.schliessen();
+});
+function gleich_(name, ist, soll) { pruefe(name, JSON.stringify(ist) === JSON.stringify(soll), `ist=${JSON.stringify(ist)} soll=${JSON.stringify(soll)}`); }
+
+// ── Kleinigkeiten: Emoji-Text, Kennung am Container, Hinweistext Stickerei ───────────────────────────
+szenario('kleinigkeiten', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  await p.getByRole('button', { name: '➕ Text' }).click();
+  await p.locator('.lsp6-text').fill('a' + '\u{1F600}'.repeat(45));
+  const text = await p.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front[0].text);
+  pruefe('Textfeld kürzt auf 40 Zeichen, ohne ein Emoji (Ersatzzeichenpaar) zu zerschneiden', Array.from(text).length === 40 && !/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/.test(text), JSON.stringify(text));
+  pruefe('Container trägt die Kennung des Modus (Prüfpunkt des Piloten: nicht data-init-v6, das gilt auch im Rückfall)', (await p.locator('.lspod-designer-v6').getAttribute('data-lspod6-modus')) === 'karte');
+  await s.schliessen();
+  const l = await seiteOeffnen(b, srv.url, { ...PC, query: 'modus=legacy6' });
+  await editorBereit(l.page);
+  pruefe('Rückfall: Container meldet den Modus «v5», data-init-v6 ist trotzdem 1', (await l.page.locator('.lspod-designer-v6').getAttribute('data-lspod6-modus')) === 'v5' && (await l.page.locator('.lspod-designer-v6').getAttribute('data-init-v6')) === '1');
+  await l.schliessen();
+  const c = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=206' });
+  await editorBereit(c.page);
+  const h = await c.page.locator('[data-feld="hinweise"]').innerText();
+  pruefe('Stickerei-Hinweis verspricht keine Garnfarben-Wahl', !/Garnfarben/.test(h) && /gestickt/.test(h), h);
+  pruefe('keine Gedankenstriche in der Oberfläche', !/—/.test(await c.page.locator('.lsp6').innerText()));
+  await c.schliessen();
 });
 
 // ── Lauf ────────────────────────────────────────────────────────────────────────────────────────

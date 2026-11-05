@@ -18,7 +18,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   for (const id of Object.keys(MODELLE)) {
     const datei = join(katalogOrdner, `${id}.json`);
     if (!existsSync(datei)) { console.error('fehlt:', datei); process.exit(2); }
-    const neu = JSON.stringify(karteFuerEditor(JSON.parse(readFileSync(datei, 'utf8'))), null, 1) + '\n';
+    const neu = JSON.stringify(karteFuerEditor(JSON.parse(readFileSync(datei, 'utf8')), { panelErlauben: true }), null, 1) + '\n';
     const ziel = join(hier, 'testdaten', `${id}.karte.json`);
     if (flag === '--pruefen') { if (!existsSync(ziel) || readFileSync(ziel, 'utf8') !== neu) { console.log('ABWEICHUNG', id); abweichungen++; } else console.log('gleich', id); }
     else { writeFileSync(ziel, neu); console.log('geschrieben', ziel, neu.length, 'Zeichen'); }

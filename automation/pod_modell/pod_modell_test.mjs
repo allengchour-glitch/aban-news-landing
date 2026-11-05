@@ -5,14 +5,14 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { main, verwendeteAusAbgleich, bestandAusMatrix, schaetzungAus, tabelleMarkdown, planDatei, modelleAusOrdner } from './pod_modell.mjs';
 import { neueAttrappe } from './fake_shopify.mjs';
-import { lade, versand, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
+import { lade, versand, versandAufgeloest, testUebersetzung, bilderFuer, neuerTest } from './testhilfe.mjs';
 
 const { ist, wahr, ende } = neuerTest('pod_modell');
 const wurzel = mkdtempSync(join(tmpdir(), 'pm-'));
 const KAT = join(wurzel, 'katalog'), UE = join(wurzel, 'ue'); mkdirSync(KAT); mkdirSync(UE);
 const bilder = {};
 for (const id of [19, 206, 574]) { const k = lade(id); writeFileSync(join(KAT, `${id}.json`), JSON.stringify({ ...k, geholt: '2026-11-05T10:00:00Z' })); Object.assign(bilder, bilderFuer(k)); if (id !== 574) writeFileSync(join(UE, `${id}.json`), JSON.stringify(testUebersetzung(k).u)); }
-const VERS = join(wurzel, 'versand.json'); writeFileSync(VERS, JSON.stringify({ 19: versand(), 206: versand('10.39', 6, 9), 574: versand() }));
+const VERS = join(wurzel, 'versand.json'); writeFileSync(VERS, JSON.stringify({ 19: versandAufgeloest(lade(19)), 206: versandAufgeloest(lade(206), versand('10.39', 6, 9)), 574: versandAufgeloest(lade(574)) }));
 const BIL = join(wurzel, 'bilder.json'); writeFileSync(BIL, JSON.stringify(bilder));
 const LOG = []; const log = (...a) => LOG.push(a.join(' '));
 const basisEnv = (extra = {}) => ({ KATALOG_DIR: KAT, VERSAND: VERS, UEBERSETZUNGEN: UE, BILDER: BIL, STUFEN: '1', START: '2026-11-06', ...extra });

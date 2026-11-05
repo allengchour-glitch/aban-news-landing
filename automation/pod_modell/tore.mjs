@@ -6,8 +6,9 @@ import { htmlText, spanneText, BEHAUPTUNGEN } from './beschreibung.mjs';
 import { fremdmarkenIn, HANDLE_MAX, SUFFIX, slug } from './glossar.mjs';
 
 /** Nicht-metrische Einheiten in Kundentexten (Zoll, oz, lb, Fuss …). «dpi» ist keine Länge und bleibt erlaubt. */
-export const NICHT_METRISCH = /(\bzoll\b|\binch(es)?\b|″|\boz\b|\bounces?\b|\bunzen?\b|\blbs?\b|\bpounds?\b|\bpfund\b|\bfeet\b|\bfoot\b|\bft\b|\bfuss\b|\bfuß\b|\byards?\b|\bgallons?\b)/i;
-const STRICH = /[–—]/;
+export const NICHT_METRISCH = /(\bzoll\b|\binch(es)?\b|″|\d\s*["”]|\boz\b|\bounces?\b|\bunzen?\b|\blbs?\b|\bpounds?\b|\bpfund\b|\bfeet\b|\bfoot\b|\bft\b|\bfuss(?![a-zäöüß])|\bfuß(?![a-zäöüß])|\byards?\b|\bgallons?\b|°\s?f\b|\bfahrenheit\b|\d\s*in\b(?!\s*(?:\d|[a-zäöüß]{2,})))/i;
+/** Gedankenstriche und Verwandte: Halbgeviert, Geviert, Minuszeichen, Ziffernstrich, Querstrich und der Bindestrich mit Leerzeichen davor und danach. */
+const STRICH = /[–—−‒―]|\s-\s/;
 
 const verglichenAlsText = (plan) => {
   const teile = [['Titel', plan.titel], ['Beschreibung', htmlText(plan.beschreibungHtml)], ['SEO-Titel', plan.seo?.title], ['SEO-Text', plan.seo?.description]];
@@ -29,18 +30,28 @@ export function pruefeTore(plan, ctx = {}) {
   // Klasse und Stufe
   if (plan.stufe == null) B('klasse', 'Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)', false, `Klasse ${plan.klasse}: in dieser Fabrik nicht gestaltbar`);
   else B('klasse', 'Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)', stufen.includes(plan.stufe), `Klasse ${plan.klasse} gehört zu Stufe ${plan.stufe}, freigegeben ist Stufe ${stufen.join(' und ')}`);
-  B('modell_neu', 'Modell wird noch von keinem Shop-Produkt verkauft', !(ctx.verwendeteModelle ?? new Set()).has(plan.printfulProductId), 'Das Printful-Modell steckt schon in einem der heutigen Produkte (doppelt verkaufen vermeiden)');
+  const selbstVerwendet = (ctx.verwendeteModelle ?? new Set()).has(plan.printfulProductId);
+  const geschwisterVerwendet = Boolean(plan.familie) && (ctx.verwendeteFamilien ?? new Set()).has(plan.familie);
+  B('modell_neu', 'Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft', !selbstVerwendet && !geschwisterVerwendet,
+    selbstVerwendet ? 'Das Printful-Modell steckt schon in einem der heutigen Produkte (doppelt verkaufen vermeiden)' : 'Dasselbe Modell in der anderen Masseinheit ((in) gegen (cm)) steckt schon in einem der heutigen Produkte: für Kunden ein doppeltes Angebot');
 
   // Versand und Lieferangabe
   B('ch_rate', 'Printful-Versandrate nach CH vorhanden', plan.lieferung != null, 'keine Versandrate nach CH (Printful lieferte keine oder einen Fehler)');
-  B('lieferangabe', 'Lieferangabe aus der CH-Rate mit Tagen', plan.lieferung != null && spanneText(plan.lieferung.tageMin, plan.lieferung.tageMax) != null, 'die Rate nennt keine gültige Spanne in Werktagen');
+  const vids = new Set((plan.varianten ?? []).map((x) => x.printfulVariantId));
+  B('rate_variante', 'Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt', plan.lieferung == null || vids.has(plan.lieferung.ratenVariante),
+    `Rate für Variante ${plan.lieferung?.ratenVariante} gemessen, die nicht zur Auswahl gehört: Preis und Lieferzeit stützen sich auf eine fremde Variante (versand_messen.mjs misst eine Variante der Auswahl)`);
+  B('lieferangabe', 'Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage', plan.lieferzeit != null && spanneText(plan.lieferzeit.min, plan.lieferzeit.max) != null, 'die Rate nennt keine gültige Spanne in Werktagen');
 
   // Varianten
   const v = plan.varianten ?? [];
   const skus = v.map((x) => x.sku);
   const kombi = v.map((x) => JSON.stringify(x.optionen));
+  const a0 = plan.auswahl ?? {};
+  const grundLeer = a0.vorAuswahl > 0 && a0.bestellbar === 0 ? 'in keiner Region auf Lager (Printful)'
+    : a0.bestellbar > 0 && (a0.farbenAusgelassen ?? []).length ? `alle Farben ausgelassen (${a0.farbenAusgelassen.slice(0, 3).map((x) => `${x.name}: ${x.grund}`).join('; ')}): Farbnamen im Glossar ergänzen`
+    : 'keine Variante gewählt';
   B('varianten', `1 bis ${maxV} Varianten, alle mit Preis, Optionskombination eindeutig`, v.length >= 1 && v.length <= maxV && (plan.preis?.fehler ?? []).length === 0 && new Set(kombi).size === kombi.length,
-    v.length === 0 ? 'keine bestellbare Variante' : v.length > maxV ? `${v.length} Varianten (Grenze ${maxV})` : (plan.preis?.fehler ?? []).length ? `Preis nicht berechenbar: ${plan.preis.fehler[0]}` : 'zwei Varianten mit gleicher Optionskombination');
+    v.length === 0 ? grundLeer : v.length > maxV ? `${v.length} Varianten (Grenze ${maxV})` : (plan.preis?.fehler ?? []).length ? `Preis nicht berechenbar: ${plan.preis.fehler[0]}` : 'zwei Varianten mit gleicher Optionskombination');
   B('sku_eindeutig', 'SKUs eindeutig und im Shop noch frei', new Set(skus).size === skus.length && !skus.some((s) => (ctx.schonSkus ?? new Set()).has(s)),
     new Set(skus).size !== skus.length ? 'doppelte SKU im Plan' : `SKU schon im Shop: ${skus.find((s) => (ctx.schonSkus ?? new Set()).has(s))}`);
   const optFehler = [];
@@ -66,7 +77,8 @@ export function pruefeTore(plan, ctx = {}) {
   const fm = plan.titel ? fremdmarkenIn(plan.titel, plan.typ) : [];
   B('titel_uebersetzt', 'Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke', plan.titel != null && (plan.titelUnbekannt ?? []).length === 0 && fm.length === 0,
     plan.titel == null ? 'kein Titel erzeugt' : (plan.titelUnbekannt ?? []).length ? `Wörter nicht im Glossar: ${plan.titelUnbekannt.join(', ')} (Glossar oder TITEL_FEST ergänzen)` : `Fremdmarke im Titel: ${fm.join(', ')}`);
-  const orig = `${ctx.originalText ?? ''} ${plan.titelEn ?? ''}`;
+  // NUR die Printful-Beschreibung zählt als Beleg, nicht der englische Katalogtitel: der enthält das Wort («Eco», «Organic») ohnehin und belegte jede Behauptung von selbst
+  const orig = String(ctx.originalText ?? '');
   const unbelegt = plan.titel ? BEHAUPTUNGEN.filter((b) => b.de.test(plan.titel) && !b.en.test(orig)).map((b) => b.name) : [];
   B('titel_belegt', 'Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung', unbelegt.length === 0, `unbelegt: ${unbelegt.join(', ')}`);
   const hOk = plan.handle != null && plan.handle.length <= HANDLE_MAX && /^[a-z0-9-]+$/.test(plan.handle) && plan.handle.endsWith(`-${slug(SUFFIX)}`) && !(ctx.schonHandles ?? new Set()).has(plan.handle);
@@ -94,6 +106,10 @@ export function pruefeTore(plan, ctx = {}) {
 
   // Hinweise (blockieren nicht)
   H('bestellweg', 'Bestellweg (printful_sync) bestimmt die Platzierung sicher', plan.bestellweg?.gesichert === true, `printful_sync bestimmt «${plan.bestellweg?.platzierung}» nicht gesichert (${plan.bestellweg?.grund ?? 'unbekannt'}): Aufträge blieben Entwurf bei Printful`);
+  H('lieferzeit_laenger', 'Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage', plan.lieferzeit?.quelle !== 'berechnet', `Versandtage ${plan.lieferzeit?.versandTage?.join(' bis ')} plus Fertigung ${plan.lieferzeit?.fertigung?.join(' bis ')} Werktage: die Seite nennt ${plan.lieferzeit?.min} bis ${plan.lieferzeit?.max} Werktage, länger als bei den übrigen «Selbst gestalten»-Produkten (Besitzer bestätigt)`);
+  H('versand_je_groesse', 'Versand je Grösse gemessen', !((plan.kompakt?.gruppen?.length ?? 1) > 1) || ctx.versandJeVariante === true, 'verschiedene Druckdateien (Grössen) mit EINER Versandrate gerechnet: grosse Grössen können mehr kosten (Marge CHF 4 gilt für die gemessene Rate)');
+  H('kategorie', 'Google- und Shopify-Kategorie bekannt', plan.kategorie != null, 'für diesen Produkttyp fehlt der Eintrag in kategorien.mjs: ohne Kategorie nimmt das Google-Schaufenster das Produkt nicht auf (vor dem Veröffentlichen ergänzen)');
+  H('titel_automatisch', 'Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt', plan.titelQuelle === 'fest', `Titel «${plan.titel}» nach Glossar-Regel erzeugt${plan.titelUnterscheidung ? ` (Zusatz: ${plan.titelUnterscheidung})` : ''}: lesen, bei Bedarf TITEL_FEST eintragen`);
   const ue = v.filter((x) => x.herkunft === 'ausserhalb').length;
   H('lieferherkunft', 'Alle Varianten kommen aus der EU', ue === 0, `${ue} Variante(n) nur ausserhalb der EU lieferbar: Zoll und Einfuhr-MWST für die Schweiz ungemessen`);
   add('bildinhalt', 'Printful-Bilder zeigen keine Fremdmarken oder Logos', 'hinweis', 'ungeprueft', 'nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen');
