@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R97_20261105",
+  "revision": 97,
+  "at": "2026-11-05T18:15:46+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Exactly three ACTIVE Shopify products; title, descriptionHtml, SEO title/description and existing READY image alt text only.",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "timezone": "CET",
+    "identityMatched": true
+  },
+  "taskId": "product-attribute-completeness",
+  "products": [
+    {
+      "productId": "gid://shopify/Product/16606107500935",
+      "publicUrl": "https://luxestyle.ch/products/tennis-pack-mit-grosser-kapazitat-612600",
+      "status": "ACTIVE",
+      "handle": "tennis-pack-mit-grosser-kapazitat-612600",
+      "before": {
+        "title": "Tennistasche mit grosser Kapazität, weiss",
+        "seoTitle": "Tennistasche mit grosser Kapazität, weiss | LuxeStyle",
+        "seoDescription": "Für den schnellen Wechsel zwischen Training und Alltag brauchst du einen geräumigen Rucksack, der deine Ausrüstung sicher aufbewahrt.",
+        "publicHtmlSha256": "013afa70b2ab232793e25d2590698b2c517443c78450415bcf3c47b6c0775cc1",
+        "publicProductJsonSha256": "6a062315b8717dcd2674e60e968db4bbd28809965c0e6b145c9e8a3a8abaa748"
+      },
+      "after": {
+        "title": "Tennistasche in Weiss mit Blau oder Rosa",
+        "seoTitle": "Tennistasche in Weiss mit Blau oder Rosa | LuxeStyle",
+        "seoDescription": "Weisse Tennistasche mit blauen oder rosa Akzenten, zwei Tragegriffen und Schultergurt. Wähle die passende Ausführung.",
+        "descriptionHtml": "<!--ls-seo-r97--><p>Diese weisse Tennistasche ist in zwei Ausführungen erhältlich: mit blauen oder rosa Akzenten. Die Bilder zeigen zwei Tragegriffe, einen Schultergurt mit Karabinerhaken und eine vordere, diagonal verlaufende Tasche für einen Tennisschläger.</p><h3>Das zeichnet sie aus</h3><ul><li>Akzentfarbe: Blau oder Rosa</li><li>Zwei Tragegriffe</li><li>Schultergurt mit Karabinerhaken</li><li>Vordere Tasche für einen Tennisschläger</li></ul><h3>Ausführung wählen</h3><p>Die Farbangabe bezieht sich auf die Akzente und Einfassungen der weissen Tasche.</p>",
+        "descriptionSha256": "997827df0f4562afeff307e4ee6bf4c906ddcc3ca5f15a46957fdf50c37019c5",
+        "imageAltTexts": [
+          "Weisse Tennistasche mit blauen Akzenten und Tennisschläger",
+          "Weisse Tennistasche mit blauen Akzenten, Vorderansicht",
+          "Weisse Tennistasche mit rosa Akzenten beim Tragen auf dem Tennisplatz",
+          "Weisse Tennistasche mit blauen Akzenten, Rückansicht",
+          "Weisse Tennistasche mit blauen Akzenten über der Schulter getragen",
+          "Weisse Tennistasche mit rosa Akzenten und Tennisschläger"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Tennistasche in Weiss mit Blau oder Rosa | LuxeStyle",
+        "publicH1": "Tennistasche in Weiss mit Blau oder Rosa",
+        "canonical": "https://luxestyle.ch/products/tennis-pack-mit-grosser-kapazitat-612600",
+        "publicHtmlSha256": "3c6143f48715a38178821d56a58b332cc36457d18ae1eaa92deaf490a6faffbb",
+        "publicProductJsonSha256": "7f45fb4f3ceb37811df8153977ab74eb45f34486a32596f657f0795d276f2a95",
+        "publicMarkerFound": true,
+        "adminUpdatedAt": "2026-11-05T17:09:43Z",
+        "initialPublicHtmlSha256": "3c6143f48715a38178821d56a58b332cc36457d18ae1eaa92deaf490a6faffbb",
+        "finalIndependentPublicHtmlSha256": "f1f4d53635d85a4bef79d929c8977dd44fa9356641c9724da6ccd70c7cfc7d82",
+        "finalIndependentPublicProductJsonSha256": "7f45fb4f3ceb37811df8153977ab74eb45f34486a32596f657f0795d276f2a95",
+        "finalQaChecksPassed": 20,
+        "finalQaChecksTotal": 20,
+        "finalQaVerdict": "GO"
+      },
+      "write": {
+        "productUpdateAttempts": 1,
+        "fileUpdateAttempts": 1,
+        "fileItemsUpdated": 6,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "incorrect Rucksack identity in the SEO description",
+        "unverified large-capacity statement",
+        "Oxford fabric claim not used without the controlled source in the final copy",
+        "approximately 700 g weight",
+        "generic verified-information claim",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "category": "Sportartikel > Athletik > Tennis > Tennisschlägerzubehör > Tennisschlägertaschen",
+        "variantCount": 2,
+        "priceRangeCHF": [
+          "43.90",
+          "43.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryQuantityValues": [
+          0
+        ],
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 7,
+        "readyImageCount": 6,
+        "allImagesReady": true,
+        "mediaRemovedOrRebound": false,
+        "diffAllowedOnly": true
+      },
+      "judgeMeAutomaticBehaviour": {
+        "automaticRefresh": true,
+        "changedOnly": [
+          "product_name",
+          "metafield_updated_at"
+        ],
+        "reviewCountRatingReviewsUnchanged": true
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/16650219651463",
+      "publicUrl": "https://luxestyle.ch/products/reiserucksack-vertikal-quadratisch-braun-grau-a8be2a",
+      "status": "ACTIVE",
+      "handle": "reiserucksack-vertikal-quadratisch-braun-grau-a8be2a",
+      "before": {
+        "title": "Reiserucksack vertikal quadratisch, braun-grau",
+        "seoTitle": "Reiserucksack vertikal quadratisch, braun-grau | LuxeStyle CH",
+        "seoDescription": "Für deine nächste Geschäftsreise oder den Wochenendausflug bietet dieser Rucksack ausreichend Stauraum und ein ergonomisches Tragegefühl.",
+        "publicHtmlSha256": "d47bef465d9d94b388ccf0f50dba69f53daa7c656ca5dbfe5efc1d967a632b48",
+        "publicProductJsonSha256": "ea9d0c10f1b75b5338a0403d49e0a9da8a2467c15e4c925b3b3ef1471ad183bb"
+      },
+      "after": {
+        "title": "Rolltop-Rucksack in Schwarz oder Braun",
+        "seoTitle": "Rolltop-Rucksack in Schwarz oder Braun | LuxeStyle CH",
+        "seoDescription": "Rolltop-Rucksack in Schwarz oder Braun mit zwei Verschlussriemen und seitlichen Steckfächern. Farbe direkt bei der Variante wählen.",
+        "descriptionHtml": "<!--ls-seo-r97--><p>Dieser hochformatige Rolltop-Rucksack ist in Schwarz und Braun erhältlich. Die Bilder zeigen ein umgeschlagenes Oberteil, zwei vordere Verschlussriemen und seitliche Steckfächer.</p><h3>Auf einen Blick</h3><ul><li>Hochformatiger Rolltop-Schnitt</li><li>Zwei vordere Verschlussriemen</li><li>Seitliche Steckfächer</li><li>Farben: Schwarz und Braun</li></ul><h3>Ausführung wählen</h3><p>Schwarz oder Braun.</p>",
+        "descriptionSha256": "f0fde173eebdbc52f96f1904cb286b30ce1b9289b2f131f2cb2067201f1d2207",
+        "imageAltTexts": [
+          "Brauner Rolltop-Rucksack mit schwarzen Verschlussriemen, schräg von vorn",
+          "Brauner Rolltop-Rucksack am Rücken getragen",
+          "Schwarzer Rolltop-Rucksack am Rücken getragen",
+          "Schwarzer Rolltop-Rucksack mit zwei Verschlussriemen, von vorn",
+          "Brauner Rolltop-Rucksack mit zwei Verschlussriemen, von vorn"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Rolltop-Rucksack in Schwarz oder Braun | LuxeStyle CH",
+        "publicH1": "Rolltop-Rucksack in Schwarz oder Braun",
+        "canonical": "https://luxestyle.ch/products/reiserucksack-vertikal-quadratisch-braun-grau-a8be2a",
+        "publicHtmlSha256": "1d29e03c521067c4c265bbbb5a9a34cdb6dbb88f0a4ee6b7079a8e214d804600",
+        "publicProductJsonSha256": "c8d12fb15651e1e66849d7f2ad427d0388036bf2c96f5d7f89135cc60f08f137",
+        "publicMarkerFound": true,
+        "adminUpdatedAt": "2026-11-05T17:10:46Z",
+        "initialPublicHtmlSha256": "1d29e03c521067c4c265bbbb5a9a34cdb6dbb88f0a4ee6b7079a8e214d804600",
+        "finalIndependentPublicHtmlSha256": "e79b15ca5fa8ace5260e1a2f7acf8e57092378fb2747422bdb0707c77a89eb58",
+        "finalIndependentPublicProductJsonSha256": "c8d12fb15651e1e66849d7f2ad427d0388036bf2c96f5d7f89135cc60f08f137",
+        "finalQaChecksPassed": 20,
+        "finalQaChecksTotal": 20,
+        "finalQaVerdict": "GO"
+      },
+      "write": {
+        "productUpdateAttempts": 1,
+        "fileUpdateAttempts": 1,
+        "fileItemsUpdated": 5,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "contradictory brown-grey colour statement",
+        "business-trip and weekend-use positioning",
+        "unverified capacity and ergonomic-comfort claims",
+        "unverified centimetre measurements",
+        "unverified interior-compartment and polyester claims",
+        "approximately 770 g weight",
+        "generic verified-information claim",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "category": "Bekleidung & Accessoires > Handtaschen, Geldbörsen & Etuis > Handtaschen > Rucksack-Handtaschen",
+        "variantCount": 2,
+        "priceRangeCHF": [
+          "47.90",
+          "47.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryQuantityValues": [
+          0
+        ],
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 7,
+        "readyImageCount": 5,
+        "allImagesReady": true,
+        "mediaRemovedOrRebound": false,
+        "diffAllowedOnly": true
+      },
+      "judgeMeAutomaticBehaviour": {
+        "automaticRefresh": false,
+        "changedOnly": [],
+        "reviewCountRatingReviewsUnchanged": true
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15524856496513",
+      "publicUrl": "https://luxestyle.ch/products/strickshirt-mit-v-ausschnitt-und-reissverschlu-607500",
+      "status": "ACTIVE",
+      "handle": "strickshirt-mit-v-ausschnitt-und-reissverschlu-607500",
+      "before": {
+        "title": "Strickshirt mit V-Ausschnitt und Reissverschluss",
+        "seoTitle": "Strickshirt mit V-Ausschnitt und Reissverschluss | LuxeStyle CH",
+        "seoDescription": "Dieses Strickshirt ist ein vielseitiges Oberteil für deine Garderobe. Aus Acryl und Baumwolle.",
+        "publicHtmlSha256": "9abe3df0c79800ac307b3c195839f908efee7876bac20d20501f9816f7536e26",
+        "publicProductJsonSha256": "b69f52ce4f3b92eb1b3f036b9f68e8e8c2a9d10c69fe096573d031f25633e9b3"
+      },
+      "after": {
+        "title": "Geripptes Strickoberteil mit V-Ausschnitt und Reissverschluss",
+        "seoTitle": "Geripptes Strickoberteil mit Reissverschluss | LuxeStyle",
+        "seoDescription": "Geripptes Strickoberteil mit V-Ausschnitt, langen Ärmeln und Reissverschluss. Varianten in S und M – Auswahl direkt im Shop.",
+        "descriptionHtml": "<!--ls-seo-r97--><p>Geripptes Strickoberteil mit V-Ausschnitt, langen Ärmeln und durchgehendem Reissverschluss.</p><p>Aktuell auswählbar: Beige in S und M sowie Hellgrau in M. Massgebend ist die Variantenwahl auf der Produktseite.</p><h3>Das zeichnet es aus</h3><ul><li>V-Ausschnitt</li><li>Durchgehender Frontreissverschluss</li><li>Lange Ärmel</li><li>Gerippte Strickoptik</li></ul><div class=\"ls-produktdetails\"><h4>Varianten</h4><ul><li><strong>Grössen:</strong> S und M; die verfügbaren Kombinationen stehen in der Auswahl</li></ul></div>",
+        "descriptionSha256": "26b4804feee6d39258c6649abf991e99c50b9e79301e3530dfa698acbd8a3495",
+        "imageAltTexts": [
+          "Cremefarbenes Strickoberteil mit V-Ausschnitt und Reissverschluss, Vorderansicht",
+          "Cremefarbenes Strickoberteil unter einer weissen Jacke",
+          "Dunkles Strickoberteil mit V-Ausschnitt und Reissverschluss",
+          "Hellgraues Strickoberteil mit V-Ausschnitt und Reissverschluss",
+          "Hellgraues Strickoberteil, Vorderansicht",
+          "Cremefarbenes Strickoberteil, Detailansicht von V-Ausschnitt und Reissverschluss",
+          "Cremefarbenes Strickoberteil mit V-Ausschnitt und Reissverschluss, Variantenbild",
+          "Hellgraues Strickoberteil mit V-Ausschnitt und Reissverschluss, Variantenbild"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Geripptes Strickoberteil mit Reissverschluss | LuxeStyle",
+        "publicH1": "Geripptes Strickoberteil mit V-Ausschnitt und Reissverschluss",
+        "canonical": "https://luxestyle.ch/products/strickshirt-mit-v-ausschnitt-und-reissverschlu-607500",
+        "publicHtmlSha256": "8fec004334f37fcb69111e473d15311285037be348d39c263ea72d947d6ad0b3",
+        "publicProductJsonSha256": "163452609fc1a0dec63067916a8f46c892fce201799bdcc079419d90639df7c0",
+        "publicMarkerFound": true,
+        "adminUpdatedAt": "2026-11-05T17:11:41Z",
+        "initialPublicHtmlSha256": "8fec004334f37fcb69111e473d15311285037be348d39c263ea72d947d6ad0b3",
+        "finalIndependentPublicHtmlSha256": "47e887aecf737ba6748e49e51d800aa52a9a937394fb2eeb5c2a616939dc3978",
+        "finalIndependentPublicProductJsonSha256": "163452609fc1a0dec63067916a8f46c892fce201799bdcc079419d90639df7c0",
+        "finalQaChecksPassed": 20,
+        "finalQaChecksTotal": 20,
+        "finalQaVerdict": "GO"
+      },
+      "write": {
+        "productUpdateAttempts": 1,
+        "fileUpdateAttempts": 1,
+        "fileItemsUpdated": 8,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "incorrect statement that only size S is available",
+        "unverified acrylic and cotton claim",
+        "approximately 330–340 g weight",
+        "unverified Regular and Slim-Fit claims",
+        "generic verified-information claim",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "category": "Bekleidung & Accessoires > Bekleidung > Bekleidungsoberteile > T-Shirts",
+        "variantCount": 3,
+        "priceRangeCHF": [
+          "40.90",
+          "40.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryQuantityValues": [
+          0
+        ],
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 8,
+        "readyImageCount": 8,
+        "allImagesReady": true,
+        "mediaRemovedOrRebound": false,
+        "diffAllowedOnly": true
+      },
+      "judgeMeAutomaticBehaviour": {
+        "automaticRefresh": true,
+        "changedOnly": [
+          "product_name",
+          "image_url",
+          "metafield_updated_at"
+        ],
+        "reviewCountRatingReviewsUnchanged": true
+      }
+    }
+  ],
+  "writeSummary": {
+    "productUpdateAttempts": 3,
+    "fileUpdateAttempts": 3,
+    "fileItemsUpdated": 19,
+    "mutationRetries": 0,
+    "productUserErrors": [],
+    "fileUserErrors": [],
+    "completeAdminProductReadbacks": 3,
+    "publicHtmlReadbacksHttp200": 3,
+    "publicProductJsonReadbacksHttp200": 3,
+    "totalVariantsConfirmed": 7,
+    "totalReadyImagesAndAltTextsConfirmed": 19,
+    "totalPublicationNodesConfirmed": 22,
+    "finalQaChecksPassed": 60,
+    "finalQaChecksTotal": 60,
+    "finalQaVerdict": "GO"
+  },
+  "seoMirrorMetafieldsChangedAsExpected": [
+    "global.title_tag",
+    "global.description_tag"
+  ],
+  "unchangedFields": [
+    "product IDs",
+    "handles",
+    "status",
+    "vendor",
+    "product type",
+    "categories",
+    "tags",
+    "options",
+    "variant IDs",
+    "SKUs",
+    "barcodes",
+    "CHF prices",
+    "availability",
+    "inventory quantities",
+    "inventory tracking",
+    "inventory policy",
+    "media IDs",
+    "media URLs",
+    "media order",
+    "variant-media bindings",
+    "publications"
+  ],
+  "catalogProgress": {
+    "currentExactAt": "2026-11-05",
+    "currentActiveProducts": 56506,
+    "currentAllStatusProducts": 87774,
+    "historicalActiveSnapshotProducts": 56630,
+    "historicalOfflineScanAndPriorityCoveragePercentApprox": 100,
+    "strictControlledLiveCorrectedActiveProducts": 27,
+    "strictControlledLiveCorrectedPercent": 0.04778,
+    "strictControlledLiveCorrectedPercentRounded": 0.05,
+    "strictControlledLiveRemainingProducts": 56479,
+    "strictControlledLiveRemainingPercentApprox": 99.95,
+    "interpretation": "Historical offline scan coverage is not live remediation. The strict percentage counts only controlled, fully read-back ACTIVE product corrections through R97."
+  },
+  "openItems": [
+    "The three legacy handles remain unchanged; any handle correction needs a separate redirect-safe review.",
+    "The current Shopify taxonomy categories remain unchanged; collection and template effects must be checked before taxonomy changes.",
+    "The Strickoberteil gallery contains a dark view that is not a selectable current colour; no medium was removed or rebound.",
+    "The duplicated Strickoberteil variant images remain bound; no image was removed or rebound.",
+    "Judge.me reviews were not used as claims and were not edited.",
+    "The catalogue remains open; this is a three-product batch, not catalogue-wide completion.",
+    "Shopify availability and inventory values are not supplier-stock or delivery-time evidence."
+  ],
+  "otherWrites": {
+    "social": 0,
+    "metricool": 0,
+    "merchantFeed": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "discount": 0,
+    "shipping": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0
+  },
+  "independentEvidence": {
+    "plannedDiffPath": "/workspace/luxestyle-review/r97-work/planned-diff.json",
+    "plannedDiffSha256": "3d3a96149930265780d351609601ecc29a3b4f69db9021aa84aa324d70377e1a",
+    "prewriteReviewPath": "/workspace/luxestyle-review/r97-prewrite-review/REPORT.md",
+    "prewriteReviewSha256": "b54ebcedbed7f53893a1fb3b0242765619eed6b3f4a924e5ac37598066bc6209",
+    "prewriteReviewVerdict": "GO",
+    "tennisReportPath": "/workspace/luxestyle-review/r97-tennis-audit/REPORT.md",
+    "tennisReportSha256": "eba373203042b0d37d1baea5bdc57b93419bd358b00711225b3382545ab930fa",
+    "tennisContactSheetPath": "/workspace/luxestyle-review/r97-tennis-audit/contact.jpg",
+    "tennisContactSheetSha256": "76d2093e857d75ccb1d9ac8f7808df81029d4c0e693f1ef788bc1758602c47c3",
+    "backpackReportPath": "/workspace/luxestyle-review/r97-rucksack-audit/REPORT.md",
+    "backpackReportSha256": "0aab61b82060b8c6a2290f350abbb1a6c14c3bcb0f0befa2de2c1d1169387235",
+    "backpackContactSheetPath": "/workspace/luxestyle-review/r97-rucksack-audit/contact.jpg",
+    "backpackContactSheetSha256": "4cb10b961a813a14e087022187742471d008f9fdad0941d665aa96e0606fe6fa",
+    "knitReportPath": "/workspace/luxestyle-review/r97-strick-audit/REPORT.md",
+    "knitReportSha256": "aadf3d86d69328ad61815fb1812e7b2db143a5b80deb2c75b3bf4af9abc7f295",
+    "knitContactSheetPath": "/workspace/luxestyle-review/r97-strick-audit/contact-sheet.jpg",
+    "knitContactSheetSha256": "99bec081a9df4a8e75130ebcecc1c3ddad4d617c24b209badee3f894c6f83519",
+    "finalPublicQaReportPath": "/workspace/luxestyle-review/r97-final-qa/REPORT.md",
+    "finalPublicQaReportSha256": "5ad89b43a4e3c613cdf8bbfeb80bd51f910d928fc93dc47d59e73172472790a9",
+    "finalPublicQaResultsPath": "/workspace/luxestyle-review/r97-final-qa/results.json",
+    "finalPublicQaResultsSha256": "171790852f3c17a78dd0a2e7eee2d26f42f36b3ce26e588bb35990dea46fd21d",
+    "finalPublicQaPassed": 60,
+    "finalPublicQaTotal": 60,
+    "finalPublicQaVerdict": "GO"
+  },
+  "documentationBaselineSha256": {
+    "README.md": "28cbd0ad303cdb4581b8811ae0ee6a90f19b270fd25ea5a810da050e9615d66f",
+    "PROJEKTGEDAECHTNIS.md": "73959404a8472c4b7350f92f477cb0cdfaf5d23bc6f3006ed7cfd8849de35b0f",
+    "ARBEITSSTAND.json": "0bf53955756f5117a54123154dd968dc51ae0013d620db17139cab8fb2bb2607",
+    "TAGESPROTOKOLL.md": "7f645b29196d060962c2942a5d779798c56855b32a9ba8912578819395bc65bc"
+  }
+}
