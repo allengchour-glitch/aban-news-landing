@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R96_20261105",
+  "revision": 96,
+  "at": "2026-11-05T17:36:00+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Exactly three ACTIVE Shopify products; title, descriptionHtml, SEO title/description and existing READY image alt text only.",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "timezone": "CET",
+    "identityMatched": true
+  },
+  "taskId": "product-attribute-completeness",
+  "products": [
+    {
+      "productId": "gid://shopify/Product/16606106255751",
+      "publicUrl": "https://luxestyle.ch/products/kissenbezug-in-weiss-fur-das-schlafzimmer-609800",
+      "status": "ACTIVE",
+      "handle": "kissenbezug-in-weiss-fur-das-schlafzimmer-609800",
+      "before": {
+        "title": "Flauschiger Teppich in Beige, unregelmässige Form",
+        "seoTitle": "Flauschiger Teppich in Beige, unregelmässige Form | LuxeStyle",
+        "seoDescription": "Für ein gemütliches Schlafzimmer sorgt dieser Kissenbezug aus gemischtem Stoff. B.",
+        "publicHtmlSha256": "9016def3ad4a2d4d4c89dd8c7afbd5b837ea82d926a543dc40ea4906cb7a14ba",
+        "publicProductJsonSha256": "a23bdf03a9b4a515b22d5c95e93294fb4cb494018d0650c153b4a6fdecea9fec"
+      },
+      "after": {
+        "title": "Teppich in unregelmässiger Form, 6 Farben",
+        "seoTitle": "Teppich in unregelmässiger Form, 6 Farben | LuxeStyle",
+        "seoDescription": "Teppich in unregelmässiger Form in Weiss, Rosa, Beige, Milchtee sowie zwei Grautönen. Acht Abmessungen von 40 × 60 bis 60 × 200 cm wählen.",
+        "descriptionHtml": "<!-- ls-seo-r96 --><p>Dieser Teppich mit geschwungener Kontur ist in sechs Farben und acht Abmessungen erhältlich. Wähle die Variante passend zu deinem verfügbaren Platz.</p><h3>Farben und Abmessungen</h3><ul><li>Farben: Weiss, Rosa, Beige, Milchtee, Hellgrau oder Mittelgrau</li><li>Abmessungen: 40 × 60, 60 × 90, 60 × 100, 60 × 110, 60 × 120, 60 × 150, 60 × 180 oder 60 × 200 cm</li><li>Form: geschwungene, unregelmässige Kontur</li></ul><p>Prüfe vor dem Kauf die gewählte Farbe, die Abmessung, das Variantenbild und den aktuell angezeigten Preis.</p><!-- /ls-seo-r96 -->",
+        "imageAltTexts": [
+          "Teppich in der Farbe Milchtee mit geschwungener Kontur auf hellem Holzboden",
+          "Weisser Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Beiger Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Weisser Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Rosafarbener Teppich mit geschwungener Kontur auf einem Sofa drapiert",
+          "Mittelgrauer Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Weisser Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Beiger Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Hellgrauer Teppich mit geschwungener Kontur neben einem Bett",
+          "Teppich in der Farbe Milchtee mit geschwungener Kontur auf hellem Holzboden",
+          "Weisser Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Beiger Teppich mit geschwungener Kontur auf hellem Holzboden",
+          "Teppich in der Farbe Milchtee mit geschwungener Kontur auf hellem Holzboden"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Teppich in unregelmässiger Form, 6 Farben | LuxeStyle",
+        "publicH1": "Teppich in unregelmässiger Form, 6 Farben",
+        "canonical": "https://luxestyle.ch/products/kissenbezug-in-weiss-fur-das-schlafzimmer-609800",
+        "publicProductJsonSha256": "da42752a05fbe7cd22a4b67fe3e15a436a92d35216886e9e40a2dc6b473a8b5d",
+        "publicDescriptionSha256": "4599739de12b6a33fa3e8a5e707af4356ac73eeb7c17a795f9ac295a859896ac",
+        "finalQaChecksPassed": 16,
+        "finalQaChecksTotal": 16,
+        "initialPublicHtmlSha256": "f97950cccba6d1333ce82323df1a6c8d1fbe700b4837a8f936215ebbcf20de4d",
+        "finalIndependentPublicHtmlSha256": "3b917d8f0c4fabae27cc4ae00f51d79a0ccb8b16ab8d2281392993516df25311"
+      },
+      "write": {
+        "productUpdateAttempts": 1,
+        "fileUpdateAttempts": 1,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "Kissenbezug identity",
+        "mixed fabric",
+        "hand wash care",
+        "200–960 g weight",
+        "room and placement suitability",
+        "fixed package-content statement",
+        "fixed 10–20 working-day delivery",
+        "review-derived quality claims"
+      ],
+      "protected": {
+        "category": "Heim & Garten > Dekoration > Teppiche",
+        "variantCount": 48,
+        "priceRangeCHF": [
+          "21.90",
+          "31.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 7,
+        "readyImageCount": 13,
+        "allImagesReady": true,
+        "diffAllowedOnly": true
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/16607464391047",
+      "publicUrl": "https://luxestyle.ch/products/plusch-hundepullover-einfarbig-942400",
+      "status": "ACTIVE",
+      "handle": "plusch-hundepullover-einfarbig-942400",
+      "before": {
+        "title": "Plüsch Hundepullover einfarbig",
+        "seoTitle": "Plüsch Hundepullover einfarbig | LuxeStyle CH",
+        "seoDescription": "Für kalte Spaziergänge hält der plüschige Hundepullover deinen Vierbeiner warm. Kein Metall, keine Reissverschlüsse.",
+        "productType": "Spielzeug & Spiele",
+        "publicHtmlSha256": "63361db1364dbcec6b42d6fcdcbd3add0816713fec4c33752a1053d73aaec637",
+        "publicProductJsonSha256": "d57af4a7cace56431abaf6ef16b97c912366a3f7bc8b718b5fbf8ea90b2625d0"
+      },
+      "after": {
+        "title": "Flauschiger Pullover für Hunde und Katzen",
+        "seoTitle": "Flauschiger Haustierpullover | LuxeStyle",
+        "seoDescription": "Flauschiger Pullover für Hunde und Katzen in Rosa, Hellblau oder Helllila. Grössen S bis XL bei LuxeStyle Schweiz ansehen.",
+        "descriptionHtml": "<!-- ls-seo-r96 --><p>Flauschiger Pullover für Hunde und Katzen mit geripptem Kragen und Ärmeln. Wähle Rosa, Hellblau oder Helllila sowie eine Grösse von S bis XL.</p><h3>Farbe und Grösse wählen</h3><ul><li>Farben: Rosa, Hellblau oder Helllila</li><li>Grössen: S, M, L oder XL</li><li>Design: flauschige Oberfläche und gerippte Abschlüsse</li></ul><p>Prüfe vor dem Kauf die gewählte Farbe und Grösse sowie die Produktbilder und den angezeigten Preis.</p><!-- /ls-seo-r96 -->",
+        "imageAltTexts": [
+          "Flauschige Haustierpullover in Rosa an zwei Hunden",
+          "Flauschiger Haustierpullover in Helllila, Detailansicht",
+          "Flauschiger Haustierpullover in Rosa an einem Hund",
+          "Flauschiger Haustierpullover in Hellblau an einem kleinen Hund",
+          "Flauschiger Haustierpullover in Hellblau an einer Katze",
+          "Flauschiger Haustierpullover in Rosa an einem Hund, Vorderansicht"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Flauschiger Haustierpullover | LuxeStyle",
+        "publicH1": "Flauschiger Pullover für Hunde und Katzen",
+        "canonical": "https://luxestyle.ch/products/plusch-hundepullover-einfarbig-942400",
+        "publicProductJsonSha256": "7ad6c509287ef6dd4b003b25a4aacf1e5f03e13cbd76d9d0d4c8df6a9b7f50d5",
+        "publicDescriptionSha256": "8cf7b6baf9a9400b52a509c2890836f4d4dcd7897c5420b47b3a91ff818f4620",
+        "finalQaChecksPassed": 16,
+        "finalQaChecksTotal": 16,
+        "initialPublicHtmlSha256": "92702484485c30aea68785db483c7501111efb7044c94f48be8a796e18bc92ea",
+        "finalIndependentPublicHtmlSha256": "acff240f79a8c21b0d846ac1163c63ea40487c690a4804db42333b54617082ed"
+      },
+      "write": {
+        "productUpdateAttempts": 1,
+        "fileUpdateAttempts": 1,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "wool",
+        "warmth performance",
+        "centimetre measurements",
+        "120–270 g weight",
+        "30 °C hand-wash care",
+        "absolute no-metal and no-zip statement",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "category": "Tiere & Tierbedarf > Haustierbedarf > Tierbekleidung > Pullover für Haustiere",
+        "productTypeUnchanged": "Spielzeug & Spiele",
+        "variantCount": 12,
+        "priceRangeCHF": [
+          "29.90",
+          "42.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 7,
+        "readyImageCount": 6,
+        "allImagesReady": true,
+        "judgeMeAutomaticTitleMirrorRefreshed": true,
+        "judgeMeReviewCountRatingIdsAndBodiesUnchanged": true,
+        "diffAllowedOnly": true
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/16611664888199",
+      "publicUrl": "https://luxestyle.ch/products/rucksack-fur-studenten-mit-wasserabweisender-s-068096",
+      "status": "ACTIVE",
+      "handle": "rucksack-fur-studenten-mit-wasserabweisender-s-068096",
+      "before": {
+        "title": "Rucksack für Studenten mit wasserabweisender Stoff",
+        "seoTitle": "Rucksack für Studenten mit wasserabweisender Stoff | LuxeStyle CH",
+        "seoDescription": "Für den Schulalltag bietet dieser Rucksack Platz für einen 15‑Zoll‑Laptop und weitere Utensilien. Polyester‑Material.",
+        "publicHtmlSha256": "65b4407b4b6cf9e6d889c54517023ca606aa8e636e0e8aa91a3ce84e802ee28b",
+        "publicProductJsonSha256": "fc90ec53fb50113d27ce0545127883e93b1efda8285f790a9869dbc7daff20e2"
+      },
+      "after": {
+        "title": "Rucksack mit Klappe und Fronttaschen",
+        "seoTitle": "Rucksack mit Klappe und Fronttaschen | LuxeStyle",
+        "seoDescription": "Rucksack mit Klappe und Fronttaschen, aktuell in Blau oder Rot. Varianten bei LuxeStyle Schweiz ansehen.",
+        "descriptionHtml": "<!-- ls-seo-r96 --><p>Rucksack mit Klappe und Fronttaschen. Aktuell wählbar in Blau oder Rot.</p><h3>Farbe auswählen</h3><ul><li>Farben: Blau oder Rot</li><li>Ausführung: Klappe und sichtbare Aussentaschen</li></ul><p>Prüfe vor dem Kauf die gewählte Farbe, das zugehörige Variantenbild und den angezeigten Preis.</p><!-- /ls-seo-r96 -->",
+        "imageAltTexts": [
+          "Rucksack in Blau mit Klappe und zwei Fronttaschen",
+          "Rucksack in Schwarz mit Klappe und Schnallen",
+          "Rucksack in Rot mit Klappe und zwei Fronttaschen",
+          "Rucksack in Beige mit Klappe und Schnallen",
+          "Rucksack in Blau mit Klappe und Schnallen"
+        ],
+        "publicHttp": 200,
+        "productJsonHttp": 200,
+        "publicTitle": "Rucksack mit Klappe und Fronttaschen | LuxeStyle",
+        "publicH1": "Rucksack mit Klappe und Fronttaschen",
+        "canonical": "https://luxestyle.ch/products/rucksack-fur-studenten-mit-wasserabweisender-s-068096",
+        "publicProductJsonSha256": "fecd7c2ddd984d28d74952bc1b5b62b1eabc37892bbddd6a840ef5f06031fb54",
+        "publicDescriptionSha256": "5162560d440f0824a8f1f091a29617a6f21636b855357b1c82ff4fec246e37fc",
+        "finalQaChecksPassed": 16,
+        "finalQaChecksTotal": 16,
+        "initialPublicHtmlSha256": "eac23d12e8579f10059bd633d55988fcb5a4e45925fe92efa2fdc0dcfbcad38e",
+        "finalIndependentPublicHtmlSha256": "39cad367cbe5de61604d2a63e571f5731cea6edb81a54d940af31ba3c744e5c6"
+      },
+      "write": {
+        "productUpdateAttempts": 1,
+        "fileUpdateAttempts": 1,
+        "retries": 0,
+        "productUserErrors": [],
+        "fileUserErrors": []
+      },
+      "removedUnverifiedOrContradictoryClaims": [
+        "student and school audience",
+        "water resistance",
+        "polyester",
+        "leather",
+        "15-inch laptop compatibility",
+        "medium size",
+        "560 g weight",
+        "double-strap performance statement",
+        "light-rain protection",
+        "fixed 10–20 working-day delivery"
+      ],
+      "protected": {
+        "category": "Reisegepäck & Taschen > Rucksäcke",
+        "variantCount": 2,
+        "priceRangeCHF": [
+          "29.90",
+          "29.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryTrackedValues": [
+          false
+        ],
+        "inventoryPolicyValues": [
+          "CONTINUE"
+        ],
+        "publicationCount": 7,
+        "readyImageCount": 5,
+        "allImagesReady": true,
+        "selectableVariantColours": [
+          "Blau",
+          "Rot"
+        ],
+        "unboundGalleryColours": [
+          "Schwarz",
+          "Beige",
+          "Blau mit abweichendem Frontdesign"
+        ],
+        "mediaRemovedOrRebound": false,
+        "judgeMeReviewCountRatingIdsAndBodiesUnchanged": true,
+        "judgeMeTitleMirrorAtReadback": "still old or unknown; deliberately not modified",
+        "diffAllowedOnly": true
+      }
+    }
+  ],
+  "writeSummary": {
+    "preDispatchAbortedCombinedAttempt": 1,
+    "preDispatchAbortedCombinedAttemptCausedWrite": false,
+    "productUpdateAttempts": 3,
+    "fileUpdateAttempts": 3,
+    "mutationRetries": 0,
+    "productUserErrors": [],
+    "fileUserErrors": [],
+    "completeAdminProductReadbacks": 3,
+    "publicHtmlReadbacksHttp200": 3,
+    "publicProductJsonReadbacksHttp200": 3,
+    "finalQaChecksPassed": 48,
+    "finalQaChecksTotal": 48
+  },
+  "seoMirrorMetafieldsChangedAsExpected": [
+    "global.title_tag",
+    "global.description_tag"
+  ],
+  "unchangedFields": [
+    "product IDs",
+    "handles",
+    "status",
+    "vendor",
+    "product type",
+    "categories",
+    "tags",
+    "options",
+    "variant IDs",
+    "SKUs",
+    "barcodes",
+    "CHF prices",
+    "availability",
+    "inventory quantities",
+    "inventory tracking",
+    "inventory policy",
+    "media IDs",
+    "media URLs",
+    "media order",
+    "variant-media bindings",
+    "publications"
+  ],
+  "catalogProgress": {
+    "currentExactAt": "2026-11-05",
+    "currentActiveProducts": 56506,
+    "currentAllStatusProducts": 87774,
+    "historicalActiveSnapshotProducts": 56630,
+    "historicalOfflineScanAndPriorityCoveragePercentApprox": 100,
+    "strictControlledLiveCorrectedActiveProducts": 24,
+    "strictControlledLiveCorrectedPercent": 0.04247,
+    "strictControlledLiveCorrectedPercentRounded": 0.04,
+    "strictControlledLiveRemainingPercentApprox": 99.96,
+    "interpretation": "Historical offline scan coverage is not live remediation. The strict percentage counts only controlled, fully read-back ACTIVE product corrections through R96."
+  },
+  "openItems": [
+    "The legacy rug and backpack handles remain unchanged and need a separate redirect-safe review.",
+    "The pet sweater product type remains Spielzeug & Spiele; review Smart Collections and templates before changing it to Tierbekleidung.",
+    "The backpack gallery contains unselectable black and beige views plus a second blue design; no image was removed or rebound in this SEO batch.",
+    "The rug gallery contains duplicate binaries, including variant-bound copies; no image was removed or rebound.",
+    "Judge.me reviews were not used as claims and were not edited.",
+    "The catalogue remains open; this is a three-product batch, not catalogue-wide completion.",
+    "Shopify availability and inventory values are not supplier-stock or delivery-time evidence."
+  ],
+  "otherWrites": {
+    "social": 0,
+    "metricool": 0,
+    "merchantFeed": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "discount": 0,
+    "shipping": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0
+  },
+  "independentEvidence": {
+    "rugReportPath": "/workspace/luxestyle-review/r96-pillow-audit/REPORT.md",
+    "rugReportSha256": "8268cc669fab352a83d97fa6d7507db6bd1d999ba633d480edfc6eb452340768",
+    "rugContactSheetPath": "/workspace/luxestyle-review/r96-pillow-audit/contact-sheet.jpg",
+    "rugContactSheetSha256": "4b5c3d9524ddd21b9fa9bf68f74848f5c5ef90d9d200650e16cecc3f761c8478",
+    "petSweaterReportPath": "/workspace/luxestyle-review/r96-dog-audit/REPORT.md",
+    "petSweaterReportSha256": "051c74b80ece6c5ada5f8579a9c0ae658ad985497cd8e9d9d8159854bc82bda7",
+    "petSweaterContactSheetPath": "/workspace/luxestyle-review/r96-dog-audit/contact-sheet.jpg",
+    "petSweaterContactSheetSha256": "f8028fa2f325f0739ae00154c550e5ace24b091fb561156ef1045ba3ce2feee4",
+    "backpackPublicBaselinePath": "/workspace/luxestyle-review/r96-backpack-audit/public-read.json",
+    "backpackPublicBaselineSha256": "e7cd1500b47451d8cc548bbd49bc57d21ff93605e8061a3081d44f11467fe918",
+    "backpackContactSheetPath": "/workspace/luxestyle-review/r96-backpack-audit/contact-sheet.jpg",
+    "backpackContactSheetSha256": "fb5c90e88e008b1ac25b3a1db2b7decbd8f3000b9475cd7055e711c9220772cf",
+    "finalPublicQaReportPath": "/workspace/luxestyle-review/r96-final-qa/REPORT.md",
+    "finalPublicQaReportSha256": "d20302c2ae1bf72afe14ea36a2358793200ff8446698f0676734f69ed125726a",
+    "finalPublicQaResultsPath": "/workspace/luxestyle-review/r96-final-qa/results.json",
+    "finalPublicQaResultsSha256": "2653e7ed777a2ca1c4254a5900ac927816f086cae21801996ac93644a67569bc",
+    "finalPublicQaPassed": 48,
+    "finalPublicQaTotal": 48,
+    "finalPublicQaVerdict": "GO"
+  },
+  "documentationBaselineSha256": {
+    "README.md": "8502c9dfa7309ba76d86a5df56853f32fb48f2f141879e2a60df1a8fff7d485f",
+    "PROJEKTGEDAECHTNIS.md": "19d920a217a465ad3190e9790737da4f5b061d6aa5d18ec58d82ccad9d926c01",
+    "TAGESPROTOKOLL.md": "c46040b4f6046bcd1b8c2b59819992682839590ff54a9dfa33282c3b98411f8b",
+    "ARBEITSSTAND.json": "2679355285149fe965ccd4dfbee224f69fac08ece568f34af3de41b901500cf9"
+  }
+}
