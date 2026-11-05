@@ -11,11 +11,11 @@ Der Dashboard-Typ lässt als Skript nur **eigene Dateien des Dashboards** zu (je
 | Datei | Aufgabe |
 |---|---|
 | `kb3d-engine.js` | Matrizen, Netzbauer (Quader, Zylinder, Kugel, Ring), Kamera, Zeichner, Treffer-Test |
-| `kb3d-tex.js` | alle Texturen werden zur Laufzeit gezeichnet: Böden, Bildschirminhalte, Himmel, Tafel, Kärtchen, Bildchen |
+| `kb3d-tex.js` | alle Texturen werden zur Laufzeit gezeichnet: Böden, Bildschirminhalte, Himmel, Tafel, Kärtchen, Bildchen, Arbeitsort-Schilder (`T.ortSchild`) |
 | `kb3d-props.js` | Kleinteile aus Quadern (Tischkram, Serverschrank, Paletten, Pflanzen, Kleinmöbel); Rückfall, wenn ein Modell fehlt |
 | `kb3d-model.js` | liest die Modell-Pakete (`window.KB3D_PACK`), rechnet Normalen, Farbpalette, backt Gruppen zusammen |
 | `kb3d-figur.js` | die Menschen aus ihren Teilen: Haltungen tippt, Kaffee, Hand am Kopf, Arme hoch, schläft |
-| `kb3d-world.js` | das Gebäude: Böden, Wände, Fenster, Trennwände, die vier Räume, Förderband, Lieferwagen an der Rampe |
+| `kb3d-world.js` | das Gebäude: Böden, Wände, Fenster, Trennwände, die vier Räume, Förderband, Lieferwagen an der Rampe, je Platz ein Arbeitsort-Schild (`W.ortTex`, Lage nach Blickrichtung) |
 | `kb3d-buero.js` | Zusammenbau: Kamera-Bedienung, Treffer, Beschriftungen, Bildchen, Schleife, Rückfälle (`K.Buero.supported/mount`) |
 | `pack/glb2pack.mjs` | wandelt `models/*.glb` in Pakete um (Liste `LISTE`, je Modell Ziel-Dreiecke) |
 | `bauen.mjs` | bündelt alles für das Dashboard |

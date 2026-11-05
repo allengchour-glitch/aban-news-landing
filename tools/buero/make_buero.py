@@ -9,6 +9,9 @@ Spalten (alle Zeilen haben alle Spalten):
   figur   : arbeiter (Figur am Schreibtisch), paket (Fliessband), tafel (Wandtafel), papier (Blatt auf dem Chefpult)
   menge   : Zahl für paket (Pakete) und tafel (grosse Zahl), sonst 0
   aktiv_h : so viele Stunden nach dem Ereignis zählt die Figur als «arbeitet gerade» (0 = nie)
+  ort_art : cloud (GitHub), claude (Claude-Sitzung oder geplante Aufgabe), pc (dein Windows-PC), shop (Shopify), du (bei dir)
+  ort     : der echte Arbeitsort als kurzer Satzteil;  ort_kurz: höchstens 11 Zeichen für Beschriftung und Schild
+  ort_text: wo und wann es wirklich läuft (belegt in .github/workflows, geplanten Aufgaben, CLAUDE.md);  link: https-Adresse des echten Ortes oder leer
 """
 import json
 import sys
@@ -152,6 +155,54 @@ ROWS = [
 ]
 
 
+# ---- Arbeitsorte (05.11.2026, Besitzer: «echter Arbeitsort»): wo jede Figur wirklich läuft.
+# Belege: .github/workflows/*.yml (Zeitpläne in UTC), geplante Aufgaben der Plattform (list_triggers), CLAUDE.md, docs/KRYPTO-AUTONOMIE.md.
+GH = "https://github.com/allengchour-glitch/aban-news-landing"
+WF = GH + "/actions/workflows/"
+SHOP = "https://admin.shopify.com/store/au3j0y-hq"
+S_SHOP = "https://claude.ai/code/session_01MCYpvsTg9cwVa1SwQZ39f3"
+S_KRYPTO = "https://claude.ai/code/session_01GGjxkpYFvQGRnX9MAzUyAF"
+ORTE = {
+    "auswahl": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei auswahl-lauf.yml. Plan: jede Nacht 21:50 UTC.", WF + "auswahl-lauf.yml"),
+    "schaufenster": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei gmc-schaufenster.yml. Plan: täglich 04:41 UTC.", WF + "gmc-schaufenster.yml"),
+    "waechter": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei lager-waechter.yml. Plan: täglich 05:17 UTC.", WF + "lager-waechter.yml"),
+    "autopilot": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei shop-autopilot.yml. Plan: täglich 06:45 UTC.", WF + "shop-autopilot.yml"),
+    "fortura": ("cloud", "GitHub-Cloud", "GitHub",
+                "GitHub Actions, Datei fortura-bestand.yml. Plan: täglich 03:51 UTC, bisher nie gelaufen. Den heutigen Abgleich hat die Shop-Sitzung von Hand gemacht.",
+                WF + "fortura-bestand.yml"),
+    "shop_sitzung": ("claude", "Claude-Sitzung (Cloud)", "Claude",
+                     "Eine offene Claude-Sitzung in der Cloud (claude.ai/code) mit Zugriff auf Shopify und CJ. Sie arbeitet nur, solange sie offen ist.", S_SHOP),
+    "bestellwaechter": ("claude", "Claude-Cloud (geplante Aufgabe)", "Claude",
+                        "Geplante Aufgabe der Claude-Plattform, alle 2 Stunden (Minute 20, UTC). Jeder Lauf startet eine frische Sitzung in der Cloud.", ""),
+    "printful": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei printful-tracking.yml. Plan: täglich 15:23 UTC.", WF + "printful-tracking.yml"),
+    "cj_anlegen": ("claude", "Claude-Sitzung (Shop)", "Claude",
+                   "Die Shop-Sitzung legt die Bestellungen an, geweckt von der stündlichen Zahlungswache (jeweils Minute 42, geplante Aufgabe auf diese Sitzung). Bezahlen tust du bei CJ.", S_SHOP),
+    "offene": ("shop", "Shopify und CJ", "Shopify",
+               "Die Bestellungen stehen im Shopify-Admin unter Bestellungen. Der Versand der Pakete läuft bei CJ, Zahlung und Sendungsstand siehst du dort.", SHOP + "/orders"),
+    "tagesupdate": ("cloud", "GitHub-Cloud", "GitHub", "GitHub Actions, Datei tages-update.yml. Plan: täglich 04:15 UTC.", WF + "tages-update.yml"),
+    "labor": ("cloud", "GitHub-Cloud und dein PC", "GitHub + PC",
+              "Rechnet in der Cloud (Tages-Update, Job ki-bot-schatten) und täglich auf deinem Windows-PC als letzter Schritt von krypto-auto.bat. Nur Papier.", WF + "tages-update.yml"),
+    "satellit": ("cloud", "GitHub-Cloud", "GitHub",
+                 "Das Papierbuch rechnet die Cloud (Tages-Update, Job ki-bot-schatten). Der Testnetz-Satellit mit Spielgeld läuft getrennt auf deinem PC.", WF + "tages-update.yml"),
+    "paket": ("cloud", "GitHub-Cloud, dann dein PC", "GitHub",
+              "GitHub Actions, Datei krypto-paket.yml: baut bei jeder Änderung an tools/trading/ in main. Dein PC holt das Paket als Release krypto-latest, sobald das Starter-ZIP einmal eingespielt ist.",
+              WF + "krypto-paket.yml"),
+    "krypto_sitzung": ("claude", "Claude-Sitzung (Cloud)", "Claude",
+                       "Eine offene Claude-Sitzung in der Cloud (claude.ai/code). Sie betreut den Krypto-Teil und fasst Shop und CJ nicht an.", S_KRYPTO),
+    "bestellungen7": ("shop", "Shopify", "Shopify", "Die Zahlen stehen im Shopify-Admin unter Bestellungen.", SHOP + "/orders"),
+    "zip": ("pc", "Dein Windows-PC", "Dein PC", "Das ZIP entpackst du einmal über den alten Ordner deines Krypto-Cockpits auf dem Windows-PC.", ""),
+    "cockpitstart": ("pc", "Dein Windows-PC", "Dein PC", "Eine Windows-Aufgabe beim Anmelden auf deinem PC. Das ändert Windows-Einstellungen, darum nur mit deinem Ja.", ""),
+    "geld": ("du", "Bei dir (Entscheid)", "Bei dir", "Das entscheidest du. Danach läuft es in deinem Etsy-Konto oder in Google Ads.", ""),
+    "themes": ("shop", "Shopify-Admin", "Shopify", "Shopify-Admin, Onlineshop, Themes. Löschen kann nur du.", SHOP + "/themes"),
+    "fortura_zugang": ("cloud", "GitHub, Einstellungen des Repos", "GitHub",
+                       "GitHub, Repo-Einstellungen, Secrets and variables, Actions: FORTURA_FTP_USER und FORTURA_FTP_PW. Die Freigabedatei legst du im Repo.",
+                       GH + "/settings/secrets/actions"),
+}
+for _r in ROWS:
+    _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
+    _r.update({"ort_art": _art, "ort": _ort, "ort_kurz": _kurz, "ort_text": _text, "link": _link})
+
+
 def pruefen(rows):
     ids = [r["id"] for r in rows]
     assert len(ids) == len(set(ids)), "doppelte id"
@@ -165,6 +216,10 @@ def pruefen(rows):
         assert len(r["kurz"]) <= 22, (r["id"], r["kurz"])
         if r["figur"] in ("paket", "tafel"):
             assert r["menge"] > 0, r["id"]
+        assert r["ort_art"] in ("cloud", "claude", "pc", "shop", "du"), r["id"]
+        assert 0 < len(r["ort_kurz"]) <= 11 and r["ort"] and r["ort_text"], r["id"]
+        assert len(r["ort_text"]) <= 260, (r["id"], len(r["ort_text"]))
+        assert r["link"] == "" or r["link"].startswith("https://"), r["id"]
 
 
 if __name__ == "__main__":

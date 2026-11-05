@@ -161,6 +161,19 @@
       W.seats.push({ spec: s, idx: idx, key: s.room + ':' + s.i, o: o, screens: [], x: s.x, z: s.z, h: s.h, seed: hs });
     });
 
+    /* Arbeitsort-Schilder: kleine Aufsteller auf dem Tisch. Wer zur Kamera schaut (h = 0), bekommt es vorn in der Mitte vor den Bildschirm,
+       wer wegschaut (h = PI), seitlich am Rand der Figur, damit weder Figur noch Bildschirm das Schild verdecken. Das Chefbüro hat keins. */
+    W.seats.forEach(function (seat) {
+      var s = seat.spec;
+      if (s.boss) return;
+      var c = Math.cos(s.h), sn = Math.sin(s.h);
+      var lx = s.h === 0 ? 0 : -0.62, lz = s.h === 0 ? 1.03 : 0.36;
+      var sx = s.x + lx * c + lz * sn, sz = s.z - lx * sn + lz * c;
+      B.box(sx, 0.757, sz, 0.3, 0.012, 0.075, C.dark);
+      B.box(sx, 0.785, sz - 0.014, 0.05, 0.05, 0.014, C.dark);
+      seat.signPos = { x: sx, y: 0.855, z: sz };
+    });
+
     /* ---------- Chefbüro ---------- */
     P.rug(B, -5.9, -5.4, -1.3, -2.1, '#2f4f5f', '#d8c9a8');
     place('bookshelf', -6.84, 0, -0.9, PI / 2, 1.15);
@@ -292,6 +305,17 @@
         m.screenIndex = k;
         seat.screens.push(m);
       });
+    });
+
+    var ortTex = {};
+    W.ortTex = function (art, kurz) {
+      var key = (art || 'du') + '|' + (kurz || '');
+      if (!ortTex[key]) ortTex[key] = R.texture(T.ortSchild(art || 'du', kurz || ''), {});
+      return ortTex[key];
+    };
+    W.seats.forEach(function (seat) {
+      if (!seat.signPos) return;
+      seat.sign = quad({ x: seat.signPos.x, y: seat.signPos.y, z: seat.signPos.z, rx: -0.42, w: 0.36, h: 0.18, emi: 0.45, tex: null });
     });
 
     /* ---------- Wanduhr ---------- */

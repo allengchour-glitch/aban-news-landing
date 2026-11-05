@@ -61,6 +61,12 @@
 .kb-row .r-meta > div { display: flex; flex-wrap: wrap; column-gap: var(--cds-gap-xs); min-width: 0; }
 .kb-row .r-meta dt { font-weight: var(--cds-font-weight-medium); }
 .kb-row .r-meta dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; min-width: 0; }
+.kb-row .r-meta > div[hidden] { display: none; }
+.kb-row .r-ort { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+.kb-row .r-link { color: var(--color-fg); text-decoration: underline; text-underline-offset: 2px; }
+.kb-row .r-link:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; border-radius: 2px; }
+.kb-row .r-link .lt { display: none; }
+.kb-row .l-github .lt-github, .kb-row .l-claude .lt-claude, .kb-row .l-shopify .lt-shopify { display: inline; }
 
 /* ---------- Szene ---------- */
 .kb { --kb-stuhl: var(--color-border-line); --kb-tisch: var(--color-border-line); --kb-tischfront: var(--color-border-line); --kb-geraet: var(--color-fg-muted); --kb-wand: var(--color-panel); --kb-boden: var(--color-panel); --kb-himmel: var(--color-panel); --kb-karton: #c9a678; --kb-band: var(--color-fg-muted); }
@@ -192,6 +198,7 @@
 .kb3-lb .lamp { display: flex; }
 .kb3-lb .lamp svg, .kb .kb3-lb .shape { width: 0.8rem; height: 0.8rem; }
 .kb .kb3-lb .kb-name { display: block; min-height: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; text-align: left; font-size: inherit; line-height: inherit; hyphens: none; }
+.kb3-ort { color: var(--color-fg-muted); font-size: 0.66rem; font-weight: 400; }
 .kb3-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .kb .kb3-lb .kb-word { display: block; }
 
@@ -391,6 +398,7 @@
       <ul>
         <li class="kb-pose"><span><b>Schwebende Form über der Figur:</b> dieselbe Lampe wie in der Liste. Kugel läuft, Pyramide prüfen, Würfel steht, Raute für dich, Ring alt.</span></li>
         <li class="kb-pose"><span><b>Bildschirm:</b> zeigt, was die Figur gerade tut. Warndreieck bei Prüfen, rotes Kreuz bei Steht, dunkel bei Alt.</span></li>
+        <li class="kb-pose"><span><b>Schild am Schreibtisch und Kürzel hinter dem Namen:</b> der echte Arbeitsort. GitHub: läuft in der GitHub-Cloud. Claude: eine Claude-Sitzung oder geplante Aufgabe. Dein PC: dein Windows-PC. Shopify: im Shopify-Admin. Bei dir: das entscheidest du. Im Detailfeld steht genau wo und wann, und wo es eine Seite im Netz dazu gibt, auch ein Link dorthin.</span></li>
         <li class="kb-pose"><span><b>Pakete auf dem Band:</b> die offenen Bestellungen. Das Band steht, wenn die Zeile rot oder alt ist.</span></li>
       </ul>
     </details>
@@ -418,6 +426,8 @@
         <p class="r-befund" data-source="buero" data-field="befund">—</p>
         <p class="r-old">Diese Messung ist älter als erlaubt. Bitte neu messen lassen.</p>
         <dl class="r-meta">
+          <div><dt>Arbeitsort</dt><dd><b class="r-ort" data-source="buero" data-field="ort">—</b>. <span data-source="buero" data-field="ort_text">—</span></dd></div>
+          <div class="r-linkzeile" hidden><dt>Zum Ort</dt><dd><a class="r-link" target="_blank" rel="noopener noreferrer"><span class="lt lt-github">In GitHub öffnen</span><span class="lt lt-claude">In Claude öffnen</span><span class="lt lt-shopify">Im Shopify-Admin öffnen</span></a></dd></div>
           <div><dt>Stand</dt><dd data-source="buero" data-field="gemessen_text">—</dd></div>
           <div><dt>Quelle</dt><dd data-source="buero" data-field="quelle">—</dd></div>
         </dl>
@@ -565,6 +575,7 @@
       <svg class="s-alt" viewBox="0 0 16 16" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg>
     </span>
     <span class="kb-name" data-source="buero" data-field="kurz">—</span>
+    <span class="kb3-ort" data-source="buero" data-field="ort_kurz">—</span>
     <span class="kb3-sr kb-word"><span class="w-gruen">Läuft</span><span class="w-gelb">Prüfen</span><span class="w-rot">Steht</span><span class="w-du">Für dich</span><span class="w-alt">Alt</span></span>
   </button>
 </template>
@@ -624,6 +635,25 @@
     return x;
   }
 
+  // Links kommen aus den Daten und sind Fremdtext: nur https und nur bekannte Hosts
+  var LINK_HOSTS = { 'github.com': 'github', 'claude.ai': 'claude', 'admin.shopify.com': 'shopify' };
+  function sichererLink(u) {
+    try {
+      var x = new URL(String(u));
+      if (x.protocol !== 'https:' || x.username || x.password || x.port) return null;
+      return Object.prototype.hasOwnProperty.call(LINK_HOSTS, x.hostname) ? { href: x.href, art: LINK_HOSTS[x.hostname] } : null;
+    } catch (e) { return null; }
+  }
+  function ortLink(n, r) {
+    var zeile = n.querySelector('.r-linkzeile');
+    var a = n.querySelector('a.r-link');
+    if (!zeile || !a) return;
+    var l = sichererLink(r.link);
+    zeile.classList.remove('l-github', 'l-claude', 'l-shopify');
+    if (l) { a.setAttribute('href', l.href); zeile.classList.add('l-' + l.art); zeile.hidden = false; }
+    else { a.removeAttribute('href'); zeile.hidden = true; }
+  }
+
   function fuellen(n, r) {
     n.querySelectorAll('[data-field]').forEach(function (f) {
       var v = r[f.dataset.field];
@@ -646,6 +676,7 @@
     var det = li.querySelector('details');
     det.open = Object.prototype.hasOwnProperty.call(was, r.id) ? was[r.id] : e !== 'gruen';
     fuellen(li, r);
+    ortLink(li, r);
     return li;
   }
 
@@ -898,7 +929,7 @@
   function zustand3d(data, now) {
     var ents = data.map(function (r) {
       var e = eff(r, now);
-      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge };
+      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge, ortArt: r.ort_art, ortKurz: r.ort_kurz };
     });
     var es = ents.map(function (e) { return e.state; });
     var blaetter = ents.filter(function (e) { return e.figur === 'papier'; }).length;
