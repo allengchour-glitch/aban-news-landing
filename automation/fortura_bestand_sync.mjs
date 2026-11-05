@@ -1,0 +1,360 @@
+/* fortura_bestand_sync.mjs — führt den Lagerbestand der Fortura-CH-Ware aus dem täglichen Feed nach.
+ *
+ * BEFUND (Fehlersuche 2026-08-14, Abschnitt [bestand]): Der Bestand von 2'593 Fortura-Produkten war
+ * seit dem 23./24.07.2026 eingefroren — ein 21 Tage altes Foto auf genau dem Lager, das mit
+ * «Blitzversand ab CH-Lager in 1–2 Tagen» beworben wird. URSACHE ist strukturell, kein vergessener
+ * Lauf: fortura_import_grouped.mjs schreibt inventoryQuantities NUR im productSet beim Anlegen, und
+ * überspringt danach jedes Produkt, das im Ledger dropship/_fortura_grp_done.txt steht. Im ganzen
+ * Repo gab es keinen Pfad, der den Bestand eines BESTEHENDEN Fortura-Produkts je aktualisiert;
+ * fortura_runner.sh zieht den Feed zwar täglich frisch, benutzt daraus aber nur die neuen Artikel.
+ * tracked=true + DENY schützt nur davor, unter die eingefrorene Zahl zu verkaufen — nicht davor,
+ * dass die Zahl falsch ist. In der Stichprobe standen 231 Varianten auf 1–3 Stück, also genau die
+ * Randbestände, die ein Party-/Fasnachts-Grosshändler binnen Tagen leerräumt.
+ *
+ * DIESES SKRIPT ist die fehlende Gegenrichtung: Feed → Shop, für ALLE Fortura-Varianten (Verbindung
+ * über die SKU `fortura-<ArtNr>`), nicht nur für neue. Gehört nach jedem Feed-Download gestartet;
+ * in fortura_runner.sh ist es dafür fest eingehängt (Regel «zu jedem Nachfüllen gehört die Quelle»).
+ *
+ * ENTSCHEIDUNGEN + FEHLTREFFER-SCHUTZ (aus dem Probelauf):
+ * - Der Feed ist die einzige Wahrheit. Ist er nicht da oder zu klein, bricht das Skript mit Code 2
+ *   ab und meldet OFFEN. Es wird NIE eine Menge geraten, geschätzt oder aus dem alten Wert
+ *   fortgeschrieben — eine gescheiterte Anfrage ist kein Ergebnis.
+ * - SKU, die im Feed FEHLT (Artikel ausgelistet): Menge 0. Das ist die sichere Richtung (DENY +
+ *   0 = nicht verkaufbar) und selbstheilend — kommt der Artikel zurück in den Feed, hebt der
+ *   nächste Lauf die Menge wieder an. Es wird NICHTS gelöscht und NICHTS gedraftet: ein Draft
+ *   müsste beim Restock von Hand zurückgenommen werden, eine 0 nicht.
+ * - PLAUSIBILITÄTSBREMSE gegen halb geladene Feeds: würden mehr als MAX_ZERO_SHARE (Vorgabe 35 %)
+ *   aller Shop-SKU auf 0 fallen, bricht der Lauf ab OHNE zu schreiben. Ein abgeschnittener Download
+ *   darf nicht das halbe CH-Lager auf ausverkauft setzen.
+ * - compareQuantity: geschrieben wird nur gegen den zuvor gelesenen Wert. Verkauft jemand zwischen
+ *   Lesen und Schreiben, scheitert genau diese Zeile (statt den Verkauf zu überschreiben) und gilt
+ *   als offen — der nächste Lauf holt sie.
+ * - Nur Varianten mit tracked=true am CH-Standort werden angefasst. Untracked bleibt untracked:
+ *   das ist Alt-Ware ohne Bestandsführung, dort wäre eine Zahl eine Behauptung.
+ * - Journal dropship/_fortura_bestand_log.tsv wird nach JEDER Zeile geflusht (appendFileSync) und
+ *   enthält den Feed-Fingerabdruck; ein abgebrochener Lauf setzt damit fort, statt neu zu beginnen.
+ *
+ * ⚠️ 20.10.2026 — «LAGERBESTAND TOTAL» WAR FALSCH (Bestellung #1027): Der Feed trägt DREI Bestandsspalten: `Lagerbestand Bazar`
+ * (Fortura-eigener Laden), `Lagerbestand Fortura` (das Lager, aus dem Fortura B2B-/Dropship-Bestellungen ausliefert) und
+ * `Lagerbestand Total` (= Summe). Diese Datei las bis heute Total. Die Schwingerhose HB2887ML stand mit Bazar 2 / Fortura 0 /
+ * Total 2 im Shop als «2 an Lager», wurde verkauft, Fortura stornierte am 20.10. 16:05 («nicht mehr an Lager»). Gemessen im
+ * Feed vom 20.10.: 2'999 Artikel haben Bestand NUR im Bazar (Fortura = 0), 636 weitere nur 1–2 Stück im Fortura-Lager.
+ * Jetzt: Soll = max(0, Lagerbestand Fortura − PUFFER − committed). PUFFER (Vorgabe 1, env FORTURA_PUFFER) fängt Randbestände ab,
+ * die ein Party-Grosshändler binnen Stunden leerräumt; `committed` zieht schon verkaufte, noch nicht ausgelieferte Stücke ab
+ * (sonst setzt der nächste Lauf die Menge wieder auf die Feed-Zahl hoch — Fortura bucht erst nach ihrer Verarbeitung ab).
+ * Fehlt die Spalte `Lagerbestand Fortura` im Feed: ABBRUCH (Exit 2), NIE Rückfall auf Total.
+ *
+ * ENV: FORTURA_CSV (Vorgabe /tmp/fortura_feed.csv), DRY=1, LIMIT, MAX_ZERO_SHARE, MIN_FEED_ROWS, FORTURA_PUFFER,
+ *      SHOPIFY_TOKEN_FILE (Vorgabe /tmp/cj_shop_token.txt) oder SHOPIFY_CLIENT_ID/SECRET.
+ * Exit: 0 = gelaufen, 2 = OFFEN (Feed fehlt/unplausibel — nichts geschrieben).
+ */
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+
+const SHOP = 'au3j0y-hq.myshopify.com';
+const API = `https://${SHOP}/admin/api/2026-01/graphql.json`;
+const LOC = 'gid://shopify/Location/109350125953';
+const CSVPATH = process.env.FORTURA_CSV || '/tmp/fortura_feed.csv';
+const TOKFILE = process.env.SHOPIFY_TOKEN_FILE || '/tmp/cj_shop_token.txt';
+const JOURNAL = 'dropship/_fortura_bestand_log.tsv';
+const REPORT = 'dropship/_fortura_bestand_report.md';
+const DRY = process.env.DRY === '1';
+const LIMIT = parseInt(process.env.LIMIT || '0', 10);
+const MAX_ZERO_SHARE = parseFloat(process.env.MAX_ZERO_SHARE || '0.35');
+const MIN_FEED_ROWS = parseInt(process.env.MIN_FEED_ROWS || '5000', 10);
+// Nur eine explizit gesetzte Ziffer gilt; leer/«abc»/«-2» (verdorbenes Env-Secret) ergibt die Vorgabe 1, NICHT still 0 (Prüfer 20.10.).
+const PUFFER = /^\d+$/.test(process.env.FORTURA_PUFFER ?? '') ? parseInt(process.env.FORTURA_PUFFER, 10) : 1;
+const BESTAND_SPALTE = 'Lagerbestand Fortura';   // NIE 'Lagerbestand Total' (Bazar-Bestand ist für Dropship nicht lieferbar)
+const STAND = 'dropship/_fortura_bestand_stand.json';
+const LOCK = '/tmp/fortura_bestand_sync.lock';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ---------- Feed lesen (| getrennt, cp1252, CRLF) ---------- */
+function parseCSV(text) {
+  const rows = []; let row = [], f = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    // ⚠️ 21.08.2026 — EIN ZOLLZEICHEN HAT EIN DRITTEL DES FEEDS VERSCHLUCKT.
+    // Die Datei ist Pipe-getrennt; ein `"` darin ist Text («Kostüm "Sternenprinzessin"»,
+    // «Orbz "Happy Birthday"», «Badefizzer DINOPARK ADVENTURE"»), kein Feldbegrenzer. Der
+    // Parser schaltete bei JEDEM `"` in den Quote-Modus und fraß alles bis zum nächsten —
+    // über Zeilengrenzen hinweg. Drei Zeilen mit ungerader Anzahl `"` genügten: gelesen
+    // wurden 12'705 von 19'954 Zeilen, 12'085 statt 18'578 Artikelnummern. Die fehlenden
+    // ~6'500 galten dem Abgleich als «nicht mehr im Feed» und wären auf Menge 0 gesetzt
+    // worden — Ware, die im CH-Lager liegt, wäre im Shop unverkäuflich geworden.
+    // Ein `"` zählt jetzt nur als Feldbegrenzer, wenn es am FELDANFANG steht. Das ist die
+    // CSV-Regel und macht ein Zollzeichen mitten im Text wieder zu dem, was es ist.
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"' && f === '') q = true;
+    else if (c === '|') { row.push(f); f = ''; }
+    else if (c === '\n') { row.push(f); rows.push(row); row = []; f = ''; }
+    else if (c !== '\r') f += c;
+  }
+  if (f.length || row.length) { row.push(f); rows.push(row); }
+  return rows.filter(r => r.length > 1);
+}
+const num = s => { const n = parseFloat(String(s ?? '').replace(/[^0-9.,-]/g, '').replace(',', '.')); return isFinite(n) ? n : 0; };
+const artKey = s => String(s ?? '').trim().toUpperCase();
+
+if (!fs.existsSync(CSVPATH)) {
+  console.error(`OFFEN: Feed ${CSVPATH} fehlt. Erst automation/fortura_fetch_feed.sh laufen lassen ` +
+    `(braucht /tmp/fortura_env.sh mit FORTURA_FTP_USER/PW). Es wird NICHTS geschrieben und NICHTS geraten.`);
+  process.exit(2);
+}
+const raw = fs.readFileSync(CSVPATH);
+const rows = parseCSV(raw.toString('latin1'));
+if (rows.length < MIN_FEED_ROWS) {
+  console.error(`OFFEN: Feed hat nur ${rows.length} Zeilen (< ${MIN_FEED_ROWS}) — abgeschnittener Download. Nichts geschrieben.`);
+  process.exit(2);
+}
+const header = rows[0].map(h => h.trim());
+const iArt = header.indexOf('ArtNr'), iStock = header.indexOf(BESTAND_SPALTE);
+if (iArt < 0 || iStock < 0) {
+  console.error(`OFFEN: Feed-Kopfzeile ohne 'ArtNr'/'${BESTAND_SPALTE}' (gefunden: ${header.slice(0, 12).join(', ')}…). Nichts geschrieben — kein Rückfall auf 'Lagerbestand Total'.`);
+  process.exit(2);
+}
+const iVe = header.indexOf('Internet_VE');
+const feed = new Map();
+let unlesbar = 0;
+for (const r of rows.slice(1)) {
+  const k = artKey(r[iArt]); if (!k) continue;
+  // 20.10.2026 (Prüfer): nur reine Ganzzahlen zählen — num() las «ab 15.11.» als 15 und «10 / 20» als 1020. Alles andere = 0 (sichere
+  // Richtung) und wird gezählt; bei > 0,5 % unlesbaren Werten bricht der Lauf ab (Feed-Format geändert?).
+  const roh = String(r[iStock] ?? '').trim();
+  const n0 = /^-?\d+$/.test(roh) ? parseInt(roh, 10) : 0;
+  if (roh !== '' && !/^-?\d+$/.test(roh)) unlesbar++;
+  // Bündelartikel (Internet_VE > 1): der Feed zählt STÜCK, der Shop verkauft Bündel → Bestand in Bündeln (Prüfer 20.10.: 17 verkaufbare
+  // ACTIVE-Varianten standen über floor(Stück/VE)).
+  const ve = iVe >= 0 ? Math.max(1, Math.round(num(r[iVe])) || 1) : 1;
+  const q = Math.max(0, Math.floor(Math.max(0, n0) / ve) - PUFFER);
+  // Doppelte ArtNr im Feed: konservativ die KLEINERE Menge nehmen (Übersell-Schutz).
+  feed.set(k, feed.has(k) ? Math.min(feed.get(k), q) : q);
+}
+// FEED-BREMSEN (Prüfer 20.10.): die Plausibilitätsbremse unten misst nur «SKU fehlt im Feed». Bleibt der Spaltenname, aber der Inhalt
+// ist kaputt (leer/0/Text), setzte der Sync das ganze Lager auf 0 (gemessen: 4'731 Varianten, ACTIVE 2'315 → 0, Exit 0).
+if (unlesbar > Math.max(5, 0.005 * rows.length)) {
+  console.error(`ABBRUCH (Feed-Bremse): ${unlesbar} unlesbare Werte in '${BESTAND_SPALTE}' (> 0,5 % der Zeilen) — Feed-Format geändert? Nichts geschrieben.`);
+  process.exit(2);
+}
+const MIN_FEED_POS = parseFloat(process.env.MIN_FEED_POS || '0.15');
+const feedPos = [...feed.values()].filter(q => q > 0).length / Math.max(1, feed.size);
+if (feedPos < MIN_FEED_POS) {
+  console.error(`ABBRUCH (Feed-Bremse): nur ${(feedPos * 100).toFixed(1)} % der Artikel mit Fortura-Bestand (Grenze ${(MIN_FEED_POS * 100).toFixed(0)} %, heute ~35 %) — Spalte kaputt? Nichts geschrieben.`);
+  process.exit(2);
+}
+// Die Regel (Spalte/Puffer/VE) gehört in den Fingerabdruck: das Journal überspringt Zeilen derselben Feed-Generation — 102 Bündel-Varianten
+// blieben nach der VE-Umstellung auf dem alten Wert, weil der Feed derselbe war (20.10.2026).
+const feedHash = crypto.createHash('sha1').update(raw + `|${BESTAND_SPALTE}|ve1|p${PUFFER}`).digest('hex').slice(0, 12);
+console.log(`Feed ${CSVPATH}: ${rows.length - 1} Zeilen → ${feed.size} Artikelnummern (Fingerabdruck ${feedHash})`);
+
+/* ---------- Shopify ---------- */
+let TOK = fs.existsSync(TOKFILE) ? fs.readFileSync(TOKFILE, 'utf8').trim() : '';
+async function newToken() {
+  const { SHOPIFY_CLIENT_ID: id, SHOPIFY_CLIENT_SECRET: sec } = process.env;
+  if (!id || !sec) return '';
+  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ client_id: id, client_secret: sec, grant_type: 'client_credentials' })
+  });
+  const t = JSON.parse(await r.text()).access_token || '';
+  if (t) { try { fs.writeFileSync(TOKFILE, t, { mode: 0o600 }); } catch {} TOK = t; }
+  return t;
+}
+if (!TOK) TOK = await newToken();
+if (!TOK) { console.error('OFFEN: kein Shopify-Token (weder ' + TOKFILE + ' noch SHOPIFY_CLIENT_ID/SECRET). Nichts geschrieben.'); process.exit(2); }
+
+// 06.10.2026 (zwei PAUSEN rc=2, 16:42 + 20:39 UTC, «Shopify antwortete nicht»): Token gültig, Abfrage nachgemessen
+// 141/141 Seiten ok. Zur selben Zeit brach kategorie_fein «40x gedrosselt» ab — der Eimer war leer, und dieser Helfer
+// gab nach 20 kurzen Versuchen (~3 min) auf, ohne einen Grund zu nennen. Jetzt wie kaufwille_zeile.gql: Wartezeit aus
+// throttleStatus bis wieder max(Anfrage, 600) Punkte da sind (≤ 30 s je Runde), 40 Runden, letzter Grund in gqlGrund.
+let gqlGrund = '';
+async function gql(query, variables) {
+  for (let a = 0; a < 40; a++) {
+    let j;
+    try {
+      const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOK }, body: JSON.stringify({ query, variables }) });
+      if (r.status === 401 || r.status === 403) { gqlGrund = `HTTP ${r.status}`; if (!await newToken()) { gqlGrund += ' (kein neuer Token: SHOPIFY_CLIENT_ID/SECRET fehlen)'; break; } continue; }
+      if (r.status === 429 || r.status >= 500) { gqlGrund = `HTTP ${r.status}`; await sleep(Math.min(30000, 3000 * (a + 1))); continue; }
+      j = JSON.parse(await r.text());
+    } catch (e) { gqlGrund = `Netz: ${String(e && e.message || e).slice(0, 80)}`; await sleep(Math.min(30000, 2000 * (a + 1))); continue; }
+    if (j.data) { gqlGrund = ''; return j; }
+    const err = JSON.stringify(j.errors || '');
+    if (err.includes('Throttled')) {
+      const k = j.extensions?.cost || {}, t = k.throttleStatus || {};
+      const fehlt = Math.max(Number(k.requestedQueryCost) || 0, 600) - (Number(t.currentlyAvailable) || 0);
+      const s = fehlt > 0 ? fehlt / (Number(t.restoreRate) || 50) : 2;
+      gqlGrund = `Throttled (${a + 1}x, Eimer ${t.currentlyAvailable ?? '?'})`;
+      await sleep(Math.min(30, Math.max(2, s + 1)) * 1000); continue;
+    }
+    gqlGrund = `GraphQL: ${err.slice(0, 160)}`;
+    await sleep(2000);
+  }
+  return null; // gescheiterte Anfrage ist KEIN Ergebnis — Aufrufer behandelt das als offen
+}
+
+/* ---------- Lock ---------- */
+if (!DRY) {
+  try { const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd); }
+  catch { const age = (Date.now() - (fs.statSync(LOCK).mtimeMs || 0)) / 60000; if (age < 60) { console.log('läuft bereits, skip (Exit 3 = kein Lauf, kein Erfolg — 05.10.2026: Exit 0 hier setzte in taeglich.sh den Erfolgsstempel, 20 h kein Nachholen)'); process.exit(3); } fs.writeFileSync(LOCK, String(process.pid)); }
+  process.on('exit', () => { try { fs.unlinkSync(LOCK); } catch {} });
+}
+
+/* ---------- Ist-Stand im Shop lesen ---------- */
+const Q = `query($c:String){productVariants(first:60,after:$c,query:"sku:fortura-*"){pageInfo{hasNextPage endCursor}
+ nodes{sku product{id title status} inventoryItem{id tracked inventoryLevels(first:5){nodes{location{id} updatedAt quantities(names:["available","committed"]){name quantity}}}}}}}`;
+const live = [];
+let cursor = null, seiten = 0, leseFehler = 0;
+while (true) {
+  const j = await gql(Q, { c: cursor });
+  if (!j) { leseFehler++; break; }
+  const p = j.data.productVariants;
+  for (const v of p.nodes) {
+    const lvl = (v.inventoryItem?.inventoryLevels?.nodes || []).find(l => l.location.id === LOC);
+    live.push({
+      sku: v.sku, art: artKey(String(v.sku).replace(/^fortura-/i, '')),
+      pid: v.product.id, titel: v.product.title, status: v.product.status,
+      ii: v.inventoryItem?.id, tracked: !!v.inventoryItem?.tracked,
+      ist: lvl ? (lvl.quantities.find(x => x.name === 'available')?.quantity ?? null) : null,
+      committed: lvl ? (lvl.quantities.find(x => x.name === 'committed')?.quantity ?? 0) : 0, seit: lvl?.updatedAt || ''
+    });
+  }
+  seiten++;
+  if (!p.pageInfo.hasNextPage) break;
+  cursor = p.pageInfo.endCursor;
+  await sleep(700);
+}
+if (leseFehler) { console.error(`OFFEN: Varianten-Abfrage abgebrochen nach Seite ${seiten} (Grund: ${gqlGrund || 'unbekannt'}). Nichts geschrieben.`); process.exit(2); }
+console.log(`Shop: ${live.length} Varianten mit SKU fortura-* auf ${seiten} Seiten`);
+
+/* ---------- Abgleich ---------- */
+const plan = [], ohneBestandsfuehrung = [], ohneLevel = [];
+let unveraendert = 0, fehltImFeed = 0;
+// SPERRLISTE (25.09.2026): Fremd-Varianten aus der CK-Fusion vom 06.08. (Asterix als «Kürbis Hexe» M/128 cm,
+// Supergirl als «Hexe Laurelin» S). Löschen ist nicht umkehrbar → die Variante bleibt, steht aber fest auf 0
+// (DENY). Schlüssel = InventoryItem-GID, NICHT die SKU: das gedraftete Original trägt dieselbe SKU und behält
+// seinen echten Bestand. Zeile entfernen = beim nächsten Lauf wieder Feed-Menge.
+const SPERRDATEI = 'dropship/_fortura_sperr_varianten.txt';
+const SPERRE = new Set(fs.existsSync(SPERRDATEI) ? fs.readFileSync(SPERRDATEI, 'utf8').split('\n').map(z => z.split('#')[0].trim()).filter(Boolean) : []);
+for (const v of live) {
+  if (!v.tracked) { ohneBestandsfuehrung.push(v); continue; }
+  if (v.ist === null || !v.ii) { ohneLevel.push(v); continue; }
+  if (SPERRE.has(v.ii)) { if (v.ist !== 0) plan.push({ ...v, soll: 0, grund: 'sperrliste' }); else unveraendert++; continue; }
+  const imFeed = feed.has(v.art);
+  // 20.10.2026: verkaufte, noch nicht ausgelieferte Stücke (committed) gehen vom Fortura-Bestand ab — Fortura bucht sie erst nach
+  // ihrer Verarbeitung ab; ohne diesen Abzug hob der nächste Lauf die Menge wieder auf die Feed-Zahl (Doppelverkauf des letzten Stücks).
+  const soll = imFeed ? Math.max(0, feed.get(v.art) - (v.committed || 0)) : 0;
+  if (!imFeed) fehltImFeed++;
+  if (soll === v.ist) { unveraendert++; continue; }
+  plan.push({ ...v, soll, grund: imFeed ? 'feed' : 'nicht-mehr-im-feed' });
+}
+const nullPlan = plan.filter(p => p.soll === 0).length;
+const zeroShare = live.length ? fehltImFeed / live.length : 0;
+console.log(`\nAbgleich: ${unveraendert} unverändert · ${plan.length} zu ändern (davon ${nullPlan} auf 0) · ` +
+  `${fehltImFeed} SKU nicht mehr im Feed (${(zeroShare * 100).toFixed(1)} %) · ` +
+  `${ohneBestandsfuehrung.length} ohne Bestandsführung (unangetastet) · ${ohneLevel.length} ohne CH-Lagerzeile`);
+{ // 20.10.2026: Wirkung auf das, was Kundinnen sehen — nur ACTIVE-Produkte, verkaufbar (>0) vorher/nachher
+  const akt = live.filter(v => v.status === 'ACTIVE' && v.tracked && v.ist !== null && v.ii);
+  const nachher = v => (plan.find(p => p.ii === v.ii)?.soll) ?? v.ist;
+  const vor = akt.filter(v => v.ist > 0).length, nach = akt.filter(v => nachher(v) > 0).length;
+  const nurBazar = akt.filter(v => v.ist > 0 && nachher(v) === 0).length;
+  console.log(`ACTIVE: ${akt.length} Varianten · verkaufbar vorher ${vor} → nachher ${nach} (${nurBazar} wegen Bazar-/Puffer-/Committed-Abzug nicht mehr bestellbar)`);
+}
+for (const p of plan.slice(0, 25)) console.log(`  ${p.sku.padEnd(22)} ${String(p.ist).padStart(5)} → ${String(p.soll).padStart(5)}  ${p.grund}  ${p.titel.slice(0, 44)}`);
+if (plan.length > 25) console.log(`  … und ${plan.length - 25} weitere`);
+
+{ // NULLUNGS-BREMSE (Prüfer 20.10.): mehr als max(150, 15 %) der heute verkaufbaren Varianten auf einmal auf 0 → Abbruch (FORCE_ZERO=1 hebt auf).
+  // Normale Tagesläufe nullen 5–57 verkaufbare Varianten (Journal 10.–18.10.); nur der Umstellungslauf vom 20.10. nullte 3'188.
+  const verk = live.filter(v => v.tracked && (v.ist || 0) > 0).length;
+  const kill = plan.filter(p => p.soll === 0 && (p.ist || 0) > 0).length;
+  if (kill > Math.max(150, Math.floor(0.15 * verk)) && process.env.FORCE_ZERO !== '1') {
+    console.error(`\nABBRUCH (Nullungs-Bremse): ${kill} von ${verk} verkaufbaren Varianten würden auf 0 fallen (Grenze ${Math.max(150, Math.floor(0.15 * verk))}). ` +
+      `Nichts geschrieben. Gewollt (z. B. neue Bestandsregel)? → FORCE_ZERO=1.`);
+    process.exit(2);
+  }
+}
+if (zeroShare > MAX_ZERO_SHARE) {
+  console.error(`\nABBRUCH (Plausibilitätsbremse): ${(zeroShare * 100).toFixed(1)} % der Shop-SKU fehlen im Feed, ` +
+    `Grenze ${(MAX_ZERO_SHARE * 100).toFixed(0)} %. Das sieht nach halbem Feed aus, nicht nach ausgelisteter Ware. Nichts geschrieben.`);
+  process.exit(2);
+}
+if (DRY) { console.log('\n[DRY] nichts geschrieben.'); process.exit(0); }
+
+/* ---------- Schreiben ---------- */
+// Journal-Wiederaufnahme: was in DIESER Feed-Generation schon gesetzt wurde, wird übersprungen.
+// ⚠️ 21.08.2026 — DIESER SCHLÜSSEL WAR DIE SKU, UND DAS WAR FALSCH.
+// Im Shop hängen 3'746 von 4'426 Fortura-SKU an MEHREREN Varianten: Zu fast jedem gruppierten
+// Produkt («Edelweisshemd langarm geknöpft», ACTIVE, alle Grössen als Varianten) existiert noch
+// das alte Einzelgrössen-Produkt («… · Gr. L», DRAFT) mit derselben SKU — 3'489 SKU in genau
+// dieser Mischung. Wurde die DRAFT-Variante zuerst geschrieben, galt die SKU als erledigt und
+// die AKTIVE, kaufbare Variante wurde übersprungen. Welche zuerst kam, entschied allein die
+// Reihenfolge der Shopify-Antwort. Folge: 2'146 von 8'416 Varianten wichen vom Feed ab, und
+// zwar bevorzugt die verkäuflichen — Ware lag im CH-Lager und war im Shop nicht bestellbar.
+// Der Schlüssel ist jetzt die InventoryItem-ID; die identifiziert genau eine Variante.
+const schonGesetzt = new Set();
+if (fs.existsSync(JOURNAL)) for (const z of fs.readFileSync(JOURNAL, 'utf8').split('\n')) {
+  const f = z.split('\t');
+  if (f[1] === feedHash && f[5] === 'ok' && f[8]) schonGesetzt.add(f[8]);
+}
+// AKTIVE Produkte zuerst: Bricht der Lauf ab, ist die kaufbare Ware bereits richtig; die
+// Entwürfe holt der nächste Durchgang. Vorher war die Reihenfolge dem Zufall überlassen.
+plan.sort((a, b) => (a.status === 'ACTIVE' ? 0 : 1) - (b.status === 'ACTIVE' ? 0 : 1));
+const offen = plan.filter(p => !schonGesetzt.has(p.ii));
+if (schonGesetzt.size) console.log(`Wiederaufnahme: ${plan.length - offen.length} bereits in diesem Feed-Lauf gesetzt.`);
+
+const SET = `mutation($input:InventorySetQuantitiesInput!){inventorySetQuantities(input:$input){
+  inventoryAdjustmentGroup{createdAt} userErrors{field message code}}}`;
+let ok = 0, fehler = 0;
+for (let i = 0; i < offen.length; i += 100) {
+  const batch = offen.slice(i, i + 100);
+  if (LIMIT && ok >= LIMIT) break;
+  const j = await gql(SET, {
+    input: {
+      name: 'available', reason: 'correction', ignoreCompareQuantity: false,
+      quantities: batch.map(p => ({ inventoryItemId: p.ii, locationId: LOC, quantity: p.soll, compareQuantity: p.ist }))
+    }
+  });
+  const errs = j?.data?.inventorySetQuantities?.userErrors || [];
+  if (!j || errs.length) {
+    // Ganzer Stapel abgelehnt (z. B. weil eine Zeile zwischenzeitlich verkauft wurde) → einzeln nachfahren.
+    for (const p of batch) {
+      const r = await gql(SET, { input: { name: 'available', reason: 'correction', ignoreCompareQuantity: false, quantities: [{ inventoryItemId: p.ii, locationId: LOC, quantity: p.soll, compareQuantity: p.ist }] } });
+      const e = r?.data?.inventorySetQuantities?.userErrors || [];
+      const gut = r && !e.length;
+      fs.appendFileSync(JOURNAL, [new Date().toISOString(), feedHash, p.sku, p.ist, p.soll, gut ? 'ok' : 'offen', p.grund, (e[0]?.message || (r ? '' : 'keine Antwort')).slice(0, 80), p.ii, p.status].join('\t') + '\n');
+      if (gut) ok++; else fehler++;
+      await sleep(150);
+    }
+  } else {
+    for (const p of batch) { fs.appendFileSync(JOURNAL, [new Date().toISOString(), feedHash, p.sku, p.ist, p.soll, 'ok', p.grund, '', p.ii, p.status].join('\t') + '\n'); ok++; }
+  }
+  console.log(`… ${Math.min(i + 100, offen.length)}/${offen.length} (ok ${ok}, offen ${fehler})`);
+  await sleep(400);
+}
+
+const bericht = `# Fortura-Bestandsabgleich — ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC
+
+Feed: ${CSVPATH} (${rows.length - 1} Zeilen, ${feed.size} ArtNr, Fingerabdruck ${feedHash})
+Shop: ${live.length} Varianten mit SKU \`fortura-*\`
+
+| | Anzahl |
+|---|---|
+| Menge geändert | ${ok} |
+| unverändert (Feed = Shop) | ${unveraendert} |
+| auf 0 gesetzt (nicht mehr im Feed) | ${plan.filter(p => p.grund === 'nicht-mehr-im-feed').length} |
+| beim Schreiben offen geblieben (nächster Lauf) | ${fehler} |
+| ohne Bestandsführung, unangetastet | ${ohneBestandsfuehrung.length} |
+| ohne CH-Lagerzeile | ${ohneLevel.length} |
+
+Journal (jede Zeile sofort geflusht): \`${JOURNAL}\`
+`;
+fs.writeFileSync(REPORT, bericht);
+// 20.10.2026: Stand für Ampel/Wächter — welche Spalte und welcher Puffer gelten, und was nach dem Lauf noch abweicht.
+fs.writeFileSync(STAND, JSON.stringify({
+  stand: new Date().toISOString().slice(0, 16) + 'Z', feed_hash: feedHash, spalte: BESTAND_SPALTE, puffer: PUFFER,
+  varianten: live.length, geaendert: ok, offen: fehler, unveraendert,
+  verkaufbar_nach_lauf: live.filter(v => v.tracked && ((plan.find(p => p.ii === v.ii)?.soll) ?? v.ist) > 0).length,
+}, null, 1));
+console.log(`\nFERTIG. geändert=${ok} offen=${fehler} unverändert=${unveraendert} → ${REPORT}`);
+// 05.10.2026: Exit-Code = Wahrheit über den Lauf. «offen» geblieben (Shopify sagte nein / keine Antwort) → 1, dann setzt
+// fortura_bestand_taeglich.sh KEINEN Erfolgsstempel und der Aufseher holt in 2 h nach; vorher endete auch ein Lauf mit offenen Zeilen mit 0.
+process.exit(fehler ? 1 : 0);

@@ -1,0 +1,274 @@
+name: "Fortura-Bestand (Abgleich)"
+
+# Führt den Lagerbestand der Fortura-CH-Ware (Tag fortura / ch-lager, ~8 400 Varianten) täglich aus dem Fortura-Feed nach und setzt danach den
+# Frische-Stempel (Shop-Metafeld luxe.fortura_bestand_stand). Hintergrund (GEMESSEN 05.11.2026): echte Bestandszahlen gibt es nur bei diesen
+# 3 998 Fortura-Varianten (verfolgt, Verkauf bei 0 gesperrt); CJ und Druckware haben keine Zahl. Der Abgleich lief zuletzt am 24.10., danach
+# wichen 925 Varianten vom Feed ab (79 kaufbar, obwohl der Feed 0 meldet). Die Zahl darf im Shop nur stehen, solange der Stempel frisch ist.
+#
+# Skripte: automation/fortura_feed_holen.sh (Feed, nur lesen) · automation/fortura_bestand_sync.mjs (Abgleich, byte-gleich mit dem erprobten
+# Stand auf dem Zweig claude/luxestyle-status-tztnn1) · automation/fortura_bestand_stempel.mjs (Stempel mit Gate). Test: dropship/lagerbestand-0511.
+#
+# Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
+#   - Ohne Freigabedatei dropship/FORTURA-BESTAND-FREI.txt: nur LESEN (Feed holen, Abgleich als Trockenlauf). Kein Shopify-Schreibzugriff, kein Stempel.
+#   - Mit Freigabedatei im Repo: der Zeitplan schreibt LIVE (Mengen, dann Nachprüfung, dann Stempel). Datei löschen = Stopp (nächster Lauf liest nur).
+#   - Von Hand (workflow_dispatch) wird nur geschrieben, wenn die Freigabedatei liegt UND «schreiben» angehakt ist.
+# Der Stempel wird nur gesetzt, wenn das Gate besteht (siehe Kopf von fortura_bestand_stempel.mjs). Besteht es nicht, bleibt der alte Stempel stehen
+# und altert von selbst: das Theme fällt dann auf «keine Angabe» zurück. Ein roter Lauf ist also die sichere Richtung.
+# Alter des Feeds: Im Schreibmodus lehnt schon der Abruf einen Feed ab, der auf dem Server älter als 36 Stunden ist (kein Schreiben veralteter Mengen).
+# Kann der Server den Stand der Datei nicht nennen, wird geschrieben wie bisher, aber der Stempel NICHT gesetzt (Dateizeit 1970, Gate c).
+#
+# Zugang: Repo-Secrets FORTURA_FTP_USER, FORTURA_FTP_PW (Feed), SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Shop). Fehlt eines, endet der erste Schritt
+# mit Exit 2 und nennt den Namen. Zeitplan 03:51 UTC (04:51 Schweizer Winterzeit): nach dem Feed auf dem Fortura-Server (~23:02 UTC), vor dem
+# Lager-Wächter (05:17), nicht neben dem Google-Schaufenster (04:41). Einmal täglich (Regel «Crons sparsam, max. 1x/Tag»).
+# Der Feed bleibt im Runner (Lieferantendaten); als Artefakt gehen nur bereinigte Protokolle weg (7 Tage, siehe Schritt «Protokoll bereinigen»).
+#
+# Eingabe «null_erlauben» (nur Handstart): setzt für den Schreiblauf FORCE_ZERO=1 und hebt damit die Nullungs-Bremse des Abgleichs auf. Wann man sie braucht:
+# NUR wenn ein Schreiblauf mit «ABBRUCH (Nullungs-Bremse)» endet und die Zahl dort gewollt ist (Grenze: mehr als max(150, 15 % der verkaufbaren Varianten) gehen auf
+# einmal auf 0, z. B. nach langer Lücke im Abgleich). Vorher die Zahl im Log mit den Zielzahlen des Probelaufs vergleichen; nur bei Übereinstimmung erlauben.
+# Beim ersten Lauf nach der Lücke seit dem 24.10. greift die Bremse voraussichtlich NICHT: der Probelauf vom 05.11. nullt 161 Varianten, die Grenze liegt bei
+# mindestens 338 (15 % von mindestens 2 258 verkaufbaren ACTIVE-Varianten). Die Eingabe ist die Ausweichstelle für den Fall, dass sie doch greift.
+# Sicherungen: wirkt nie im Zeitplan, nie ohne Freigabedatei, nie ohne «schreiben» (gilt nur, wenn der Modus-Schritt live=1 meldet UND das Ereignis ein Handstart
+# ist); wirkt nur auf den Schreiblauf (die Nachprüfung löscht FORCE_ZERO und läuft immer mit scharfer Bremse); der Stempel wird auch danach nur gesetzt, wenn die
+# Nachprüfung höchstens max(40, 1 %) Abweichungen zeigt und ohne ABBRUCH zu Ende lief (Gate des Stempel-Skripts, dort zusätzlich: FORCE_ZERO ist im Stempel-Schritt verboten).
+#
+# Abgeschnittener Feed: MIN_FEED_ROWS=18000 (Abgleich und Nachprüfung; der Feed hatte am 05.11.2026 20 309 Zeilen) und 9 MB Mindestgrösse im Feed-Skript. Beide fangen
+# nur grobe Abschnitte (unter rund 89 % der Zeilen bzw. 77 % der Bytes); ein Download, der bei 90 % endet, geht durch beide.
+on:
+  schedule:
+    - cron: '51 3 * * *'
+  workflow_dispatch:
+    inputs:
+      schreiben:
+        description: 'Wirklich Bestand schreiben und Stempel setzen (nur mit Freigabedatei dropship/FORTURA-BESTAND-FREI.txt); sonst nur lesen'
+        type: boolean
+        default: false
+      null_erlauben:
+        description: 'Nullungs-Bremse aufheben (FORCE_ZERO=1), nur zusammen mit «schreiben» und Freigabedatei: erst setzen, wenn ein Lauf mit ABBRUCH (Nullungs-Bremse) stehen blieb und die Zahl gewollt ist'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fortura-bestand
+  cancel-in-progress: false
+
+jobs:
+  abgleich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
+      NULL_ERLAUBEN_EINGABE: ${{ inputs.null_erlauben }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/fortura_bestand_sync.mjs
+            automation/fortura_feed_holen.sh
+            automation/fortura_bestand_stempel.mjs
+            automation/lib/shopify_gql.mjs
+            automation/lib/shopify_secret.mjs
+            automation/lib/shopify_host.mjs
+            dropship/_fortura_sperr_varianten.txt
+            dropship/FORTURA-BESTAND-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        run: |
+          live=0
+          force_zero=0
+          if [ -f dropship/FORTURA-BESTAND-FREI.txt ]; then
+            if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
+          fi
+          # Nullungs-Bremse aufheben: nur im Schreibmodus (live=1 setzt Freigabedatei voraus), nur bei Handstart, nur wenn die Eingabe wörtlich «true» ist. Im Zeitplan nie.
+          if [ "$live" = "1" ] && [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          echo "force_zero=$force_zero" >> "$GITHUB_OUTPUT"
+          if [ "$live" = "1" ]; then echo "Modus: Bestand schreiben (Freigabe liegt im Repo)"; else echo "Modus: nur lesen (Trockenlauf)"; fi
+          if [ "$force_zero" = "1" ]; then echo "::warning title=Nullungs-Bremse aufgehoben::null_erlauben ist gesetzt: der Schreiblauf darf viele Varianten auf einmal auf 0 setzen. Die Nachprüfung läuft mit scharfer Bremse."; fi
+          if [ "$force_zero" != "1" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then echo "Hinweis: null_erlauben wirkt nur bei Handstart mit Freigabedatei und schreiben=true; hier ignoriert."; fi
+
+      - name: Zugänge prüfen
+        env:
+          FORTURA_FTP_USER: ${{ secrets.FORTURA_FTP_USER }}
+          FORTURA_FTP_PW: ${{ secrets.FORTURA_FTP_PW }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          fehlt=""
+          [ -n "$FORTURA_FTP_USER" ] || fehlt="$fehlt FORTURA_FTP_USER"
+          [ -n "$FORTURA_FTP_PW" ] || fehlt="$fehlt FORTURA_FTP_PW"
+          [ -n "$SHOPIFY_CLIENT_ID" ] || fehlt="$fehlt SHOPIFY_CLIENT_ID"
+          [ -n "$SHOPIFY_CLIENT_SECRET" ] || fehlt="$fehlt SHOPIFY_CLIENT_SECRET"
+          if [ -n "$fehlt" ]; then
+            echo "::error title=Zugang fehlt::Repo-Secrets fehlen:$fehlt (Settings, Secrets and variables, Actions). Es wird nichts geholt und nichts geschrieben."
+            exit 2
+          fi
+          # Arbeitspfade für die folgenden Schritte. Feed und Shopify-Token bleiben im Runner-Temp und gehen nie ins Artefakt.
+          echo "FORTURA_CSV=$RUNNER_TEMP/fortura_feed.csv" >> "$GITHUB_ENV"
+          echo "SHOPIFY_TOKEN_FILE=$RUNNER_TEMP/shop_token.txt" >> "$GITHUB_ENV"
+          echo "Zugänge: alle vier Secrets sind gesetzt."
+
+      - name: Feed holen (nur lesen)
+        id: feed
+        timeout-minutes: 20
+        env:
+          FORTURA_FTP_USER: ${{ secrets.FORTURA_FTP_USER }}
+          FORTURA_FTP_PW: ${{ secrets.FORTURA_FTP_PW }}
+          # Im Schreibmodus nimmt der Abruf einen Feed, der auf dem Server älter als 36 Stunden ist, gar nicht erst an (sonst würden veraltete Mengen
+          # in den Shop geschrieben); im Lesemodus gibt es keine Grenze, damit der Probelauf immer etwas zeigt.
+          FORTURA_MAX_ALTER_H: ${{ steps.modus.outputs.live == '1' && '36' || '' }}
+        run: |
+          set +e
+          bash automation/fortura_feed_holen.sh "$FORTURA_CSV" 2>&1 | tee lauf-feed.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Bestand abgleichen
+        id: sync
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live }}
+          FORCE_ZERO_MODUS: ${{ steps.modus.outputs.force_zero }}
+          # Ein abgeschnittener Feed ohne Netzfehler (Feed hatte am 05.11.2026 20 309 Zeilen) bricht hier ab statt Ware auf 0 zu setzen. Nachprüfung: derselbe Wert.
+          MIN_FEED_ROWS: '18000'
+        run: |
+          set +e
+          # Das Abgleich-Skript liest SHOPIFY_CLIENT_SECRET roh; die Bereinigung der Repo-Bibliothek schneidet ein vertauschtes «…=NAME» ab.
+          SHOPIFY_CLIENT_SECRET="$(node -e "import('./automation/lib/shopify_secret.mjs').then(m=>process.stdout.write(m.shopifyClientSecret()))")"
+          export SHOPIFY_CLIENT_SECRET
+          mkdir -p dropship
+          if [ "$LIVE" = "1" ]; then unset DRY; else export DRY=1; fi
+          # Nullungs-Bremse: aufgehoben wird sie nur im Schreibmodus und nur, wenn der Modus-Schritt es für diesen Handstart gemeldet hat. Sonst wird FORCE_ZERO gelöscht (auch ein von aussen geerbter Wert).
+          if [ "$LIVE" = "1" ] && [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi
+          node automation/fortura_bestand_sync.mjs 2>&1 | tee lauf-sync.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Nachprüfung (erneuter Trockenlauf)
+        id: nach
+        # Der Wächter "rc != ''" ist nötig: GitHub liest eine fehlende Ausgabe als null, und null == '0' ist wahr (beide werden zu Zahl 0).
+        if: ${{ !cancelled() && steps.modus.outputs.live == '1' && steps.sync.outputs.rc != '' && (steps.sync.outputs.rc == '0' || steps.sync.outputs.rc == '1') }}
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          MIN_FEED_ROWS: '18000'
+        run: |
+          set +e
+          # Die Nachprüfung läuft IMMER mit scharfer Nullungs-Bremse: zeigt sie nach einem erlaubten Massen-Nullen noch eine Massenänderung, bricht sie ab (kein Stempel).
+          unset FORCE_ZERO
+          SHOPIFY_CLIENT_SECRET="$(node -e "import('./automation/lib/shopify_secret.mjs').then(m=>process.stdout.write(m.shopifyClientSecret()))")"
+          export SHOPIFY_CLIENT_SECRET
+          DRY=1 node automation/fortura_bestand_sync.mjs 2>&1 | tee lauf-nach.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      # Der Stempel steht nur, wenn die Nachprüfung (scharfe Bremse, DRY) danach wirklich höchstens max(40, 1 %) Abweichungen zeigt und zu Ende lief; FORCE_ZERO ist hier nie gesetzt.
+      - name: Frische-Stempel setzen
+        id: stempel
+        if: ${{ !cancelled() && steps.modus.outputs.live == '1' && steps.sync.outputs.rc != '' }}
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live }}
+          LIVE_EXIT: ${{ steps.sync.outputs.rc }}
+          NACH_EXIT: ${{ steps.nach.outputs.rc }}
+          NACH_DATEI: lauf-nach.txt
+        run: |
+          set +e
+          node automation/fortura_bestand_stempel.mjs 2>&1 | tee lauf-stempel.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Zusammenfassung
+        if: always()
+        env:
+          LIVE: ${{ steps.modus.outputs.live }}
+          FORCE_ZERO_MODUS: ${{ steps.modus.outputs.force_zero }}
+          ERG_FEED: ${{ steps.feed.outcome }}
+          ERG_SYNC: ${{ steps.sync.outcome }}
+          ERG_NACH: ${{ steps.nach.outcome }}
+          ERG_STEMPEL: ${{ steps.stempel.outcome }}
+          RC_SYNC: ${{ steps.sync.outputs.rc }}
+          RC_NACH: ${{ steps.nach.outputs.rc }}
+          RC_STEMPEL: ${{ steps.stempel.outputs.rc }}
+        run: |
+          zeilen() { grep -E "$1" "$2" 2>/dev/null || echo "(kein Lauf)"; }
+          {
+            echo "## Fortura-Bestand (Abgleich)"
+            echo
+            if [ "$LIVE" = "1" ]; then echo "Modus: **Bestand geschrieben, Stempel nach Gate** (Freigabedatei liegt im Repo)."; else echo "Modus: **nur gelesen** (Trockenlauf; keine Freigabedatei oder kein Schreibwunsch). Es wird kein Stempel gesetzt."; fi
+            if [ "$FORCE_ZERO_MODUS" = "1" ]; then echo "Nullungs-Bremse: **aufgehoben** (null_erlauben, nur für den Schreiblauf; die Nachprüfung lief mit scharfer Bremse)."; fi
+            echo
+            echo "| Schritt | Ergebnis | Exit |"
+            echo "|---|---|---|"
+            echo "| Feed holen | ${ERG_FEED:-übersprungen} | |"
+            echo "| Abgleich | ${ERG_SYNC:-übersprungen} | ${RC_SYNC:--} |"
+            echo "| Nachprüfung | ${ERG_NACH:-übersprungen} | ${RC_NACH:--} |"
+            echo "| Stempel | ${ERG_STEMPEL:-übersprungen} | ${RC_STEMPEL:--} |"
+            echo
+            echo '### Feed'
+            echo '```'; zeilen '^(Fortura-Feed|HINWEIS|FEHLER|OFFEN|  )' lauf-feed.txt; echo '```'
+            echo '### Abgleich'
+            echo '```'; zeilen '^(Feed |Shop:|Abgleich:|ACTIVE:|Wiederaufnahme|\[DRY\]|FERTIG|ABBRUCH|OFFEN|läuft bereits)' lauf-sync.txt; echo '```'
+            if [ -f lauf-nach.txt ]; then
+              echo '### Nachprüfung'
+              echo '```'; zeilen '^(Abgleich:|ACTIVE:|\[DRY\]|ABBRUCH|OFFEN)' lauf-nach.txt; echo '```'
+            fi
+            if [ -f lauf-stempel.txt ]; then
+              echo '### Stempel'
+              echo '```'; cat lauf-stempel.txt; echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Das Artefakt enthält NUR bereinigte Dateien aus protokoll/: keine Feed-Datei, keinen Token, keine Produkttitel. Der Abgleich gibt die ersten 25 Planzeilen mit
+      # SKU, Bestand und Produkttitel aus; sie stehen im Log des Schritts, werden hier aber nicht übernommen. Gefiltert wird mit einer Positivliste (nur bekannte
+      # Kopf-/Zahlenzeilen), nicht mit einer Ausschlussliste: eine neue Ausgabezeile des Skripts landet damit nie unbemerkt im Artefakt.
+      - name: Protokoll bereinigen
+        if: always()
+        run: |
+          set +e
+          mkdir -p protokoll
+          cat > protokoll/00-LIESMICH.txt <<'ENDE'
+          Fortura-Bestand (Abgleich): Protokoll dieses Laufs, 7 Tage aufbewahrt.
+          Wofür: Rücknahme und Fehlersuche. Enthalten sind SKU und Bestandszahlen; keine Produkttitel, keine Feed-Datei, keine Zugangsdaten.
+          Rücknahme: dropship/_fortura_bestand_log.tsv hat eine Zeile je Änderung, Spalten durch Tab getrennt:
+            1 Zeit (UTC) · 2 Feed-Fingerabdruck · 3 SKU · 4 alt (Bestand VORHER) · 5 neu (Bestand NACHHER) · 6 ok/offen · 7 Grund · 8 Meldung · 9 InventoryItem-ID · 10 Produktstatus
+          Eine Zeile mit «ok» zurücknehmen = die Menge dieser Position (Spalte 9, Standort CH-Lager) von «neu» wieder auf «alt» setzen. Ein fertiges Rücknahme-Skript gibt es nicht.
+          lauf-*.txt: Ausgabe der Schritte ohne die Planzeilen mit Produkttiteln. _fortura_bestand_report.md / _stand.json: Zahlen des Schreiblaufs.
+          ENDE
+          # Positivliste: Zeilen, die der Abgleich bzw. das Feed-Skript für die Zahlen ausgeben. Planzeilen beginnen mit zwei Leerzeichen + SKU und fehlen hier.
+          ABGLEICH='^(Feed |Shop:|Abgleich:|ACTIVE:|Wiederaufnahme|\[DRY\]|FERTIG|ABBRUCH|OFFEN|läuft bereits|… [0-9])'
+          FEED='^(Fortura-Feed|HINWEIS|FEHLER|OFFEN|  Login|  Download|  Neuer Versuch|  Das sieht|  Zertifikat)'
+          filtern() { [ -f "$2" ] || return 0; grep -a -E "$1" "$2" > "protokoll/$2"; return 0; }
+          filtern "$FEED" lauf-feed.txt
+          filtern "$ABGLEICH" lauf-sync.txt
+          filtern "$ABGLEICH" lauf-nach.txt
+          [ -f lauf-stempel.txt ] && cp lauf-stempel.txt protokoll/lauf-stempel.txt
+          for f in dropship/_fortura_bestand_log.tsv dropship/_fortura_bestand_report.md dropship/_fortura_bestand_stand.json; do
+            [ -f "$f" ] && cp "$f" protokoll/
+          done
+          exit 0
+
+      - name: Protokoll aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortura-bestand-protokoll
+          path: protokoll/
+          if-no-files-found: ignore
+          retention-days: 7

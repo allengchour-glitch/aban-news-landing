@@ -1,0 +1,13 @@
+{
+ "erstellt": "2026-11-05T11:33:44.291Z",
+ "hinweis": "apply_theme.mjs hat templates/product.json (Block lux_delivery) ins MAIN-Theme geschrieben; md5_soll ist der Soll-Stand, md5_vor der Stand davor",
+ "datei": "templates/product.json",
+ "sicherung": "product.json.vor",
+ "md5_vor": "2139c46547040628779150957739a93e",
+ "md5_soll": "41af3663beb87c51366176052c87f018",
+ "bytes_vor": 61641,
+ "bytes_soll": 68813,
+ "block_md5_vor": "bab63e37a934b75accd53a31e5d14c86",
+ "block_md5_neu": "f9b1485dfbef81f9875fa6756bb83f87",
+ "fremd": false
+}
