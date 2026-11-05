@@ -1,0 +1,661 @@
+{
+ "stand": "Shop und Katalog 05.11.2026, v5-Datei = data-ref × data-ref·data-ratio",
+ "ergebnis": [
+  {
+   "handle": "unisex-t-shirt-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422811439489",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 25,
+   "geprueft": 25,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 100,
+   "dpiMin": 100,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "unisex-hoodie-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422815699329",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 13,
+   "geprueft": 13,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 100,
+   "dpiMin": 100,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "bio-jutebeutel-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422819991937",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 2,
+   "geprueft": 2,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 120,
+   "dpiMin": 120,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "keramik-tasse-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422823465345",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 3,
+   "geprueft": 3,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 298.8,
+   "dpiMin": 298.8,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "dad-cap-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422849188225",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 0,
+   "ohneDaten": 1,
+   "zuKlein": 0,
+   "minDpiMin": null,
+   "dpiMin": null,
+   "minDpi": []
+  },
+  {
+   "handle": "urban-umhangetasche-selbst-gestalten",
+   "status": "DRAFT",
+   "productId": "gid://shopify/Product/15422851744129",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 0,
+   "ohneDaten": 1,
+   "zuKlein": 0,
+   "minDpiMin": null,
+   "dpiMin": null,
+   "minDpi": []
+  },
+  {
+   "handle": "alltags-umhangetasche-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422854463873",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 0,
+   "ohneDaten": 1,
+   "zuKlein": 0,
+   "minDpiMin": null,
+   "dpiMin": null,
+   "minDpi": []
+  },
+  {
+   "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422857642369",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 8,
+   "geprueft": 8,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 100,
+   "dpiMin": 100,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "premium-hoodie-selbst-gestalten",
+   "status": "DRAFT",
+   "productId": "gid://shopify/Product/15422860984705",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 6,
+   "geprueft": 6,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 100,
+   "dpiMin": 100,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "baumwolltasche-mit-langen-henkeln-selbst-gestalten",
+   "status": "DRAFT",
+   "productId": "gid://shopify/Product/15422938382721",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 12,
+   "geprueft": 0,
+   "ohneDaten": 12,
+   "zuKlein": 0,
+   "minDpiMin": null,
+   "dpiMin": null,
+   "minDpi": []
+  },
+  {
+   "handle": "boardshorts-mit-allover-druck-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422939267457",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 11,
+   "geprueft": 11,
+   "ohneDaten": 0,
+   "zuKlein": 11,
+   "minDpiMin": 23.5,
+   "dpiMin": 23.5,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422939988353",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 48,
+   "geprueft": 48,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 162.2,
+   "dpiMin": 162.2,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422940447105",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 1,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 172.2,
+   "dpiMin": 172.2,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "baby-jersey-body-selbst-gestalten",
+   "status": "DRAFT",
+   "productId": "gid://shopify/Product/15422941299073",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 3,
+   "geprueft": 3,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 171.4,
+   "dpiMin": 171.4,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "kiss-cut-aufkleber-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422942609793",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 4,
+   "geprueft": 4,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 218.2,
+   "dpiMin": 218.2,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "einteiliger-allover-badeanzug-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422943822209",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 7,
+   "geprueft": 7,
+   "ohneDaten": 0,
+   "zuKlein": 7,
+   "minDpiMin": 34.3,
+   "dpiMin": 34.3,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "allover-yoga-leggings-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422945034625",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 5,
+   "geprueft": 5,
+   "ohneDaten": 0,
+   "zuKlein": 5,
+   "minDpiMin": 25.5,
+   "dpiMin": 25.5,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "allover-rucksack-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422946083201",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 1,
+   "ohneDaten": 0,
+   "zuKlein": 1,
+   "minDpiMin": 58.5,
+   "dpiMin": 58.5,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "recycelter-unisex-allover-pullover-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422949130625",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 11,
+   "geprueft": 11,
+   "ohneDaten": 0,
+   "zuKlein": 11,
+   "minDpiMin": 27.3,
+   "dpiMin": 27.3,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "allover-stoffbeutel-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422950474113",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 1,
+   "ohneDaten": 0,
+   "zuKlein": 1,
+   "minDpiMin": 70.6,
+   "dpiMin": 70.6,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "recycelter-unisex-allover-hoodie-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422953062785",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 11,
+   "geprueft": 11,
+   "ohneDaten": 0,
+   "zuKlein": 11,
+   "minDpiMin": 30,
+   "dpiMin": 30,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "unisex-allover-bomberjacke-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422956798337",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 7,
+   "geprueft": 7,
+   "ohneDaten": 0,
+   "zuKlein": 7,
+   "minDpiMin": 33.3,
+   "dpiMin": 33.3,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "kleid-mit-schlitz-und-allover-druck-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422958338433",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 6,
+   "geprueft": 6,
+   "ohneDaten": 0,
+   "zuKlein": 6,
+   "minDpiMin": 26.1,
+   "dpiMin": 26.1,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "recycelte-allover-jogginghosen-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422959518081",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 7,
+   "geprueft": 0,
+   "ohneDaten": 7,
+   "zuKlein": 0,
+   "minDpiMin": null,
+   "dpiMin": null,
+   "minDpi": []
+  },
+  {
+   "handle": "allover-sport-bh-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15422960501121",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 6,
+   "geprueft": 6,
+   "ohneDaten": 0,
+   "zuKlein": 6,
+   "minDpiMin": 48,
+   "dpiMin": 48,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "poster-zum-selbstgestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15427182330241",
+   "hatEditor": true,
+   "datei": "2400×3394",
+   "ratio": 1.414,
+   "ref": 2400,
+   "varianten": 18,
+   "geprueft": 18,
+   "ohneDaten": 0,
+   "zuKlein": 13,
+   "minDpiMin": 55.8,
+   "dpiMin": 55.8,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "magnet-zum-selbstgestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15427217195393",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 3,
+   "geprueft": 3,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 200,
+   "dpiMin": 200,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "tasse-zum-selbstgestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15427282633089",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 2,
+   "geprueft": 2,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 315.8,
+   "dpiMin": 315.8,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "shirt-zum-selbstgestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15427283157377",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 15,
+   "geprueft": 15,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 100,
+   "dpiMin": 100,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "kissen-zum-selbstgestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15427285123457",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 2,
+   "geprueft": 2,
+   "ohneDaten": 0,
+   "zuKlein": 2,
+   "minDpiMin": 57.1,
+   "dpiMin": 57.1,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "tote-zum-selbstgestalten",
+   "status": "DRAFT",
+   "productId": "gid://shopify/Product/15427285156225",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 1,
+   "ohneDaten": 0,
+   "zuKlein": 1,
+   "minDpiMin": 70.6,
+   "dpiMin": 70.6,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "mauspad-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15451569160577",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 1,
+   "ohneDaten": 0,
+   "zuKlein": 1,
+   "minDpiMin": 133.3,
+   "dpiMin": 133.3,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "strandtuch-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15451569226113",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 2,
+   "geprueft": 2,
+   "ohneDaten": 0,
+   "zuKlein": 2,
+   "minDpiMin": 16.2,
+   "dpiMin": 16.2,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "spiral-notizbuch-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15451569324417",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 1,
+   "geprueft": 1,
+   "ohneDaten": 0,
+   "zuKlein": 1,
+   "minDpiMin": 137.1,
+   "dpiMin": 137.1,
+   "minDpi": [
+    150
+   ]
+  },
+  {
+   "handle": "laptop-sleeve-selbst-gestalten",
+   "status": "DRAFT",
+   "productId": "gid://shopify/Product/15451569357185",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 2,
+   "geprueft": 2,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 77.4,
+   "dpiMin": 77.4,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "kuscheldecke-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/15451569389953",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 2,
+   "geprueft": 2,
+   "ohneDaten": 0,
+   "zuKlein": 2,
+   "minDpiMin": 19,
+   "dpiMin": 19,
+   "minDpi": [
+    75
+   ]
+  },
+  {
+   "handle": "samsung-huelle-selbst-gestalten",
+   "status": "ACTIVE",
+   "productId": "gid://shopify/Product/16672778289543",
+   "hatEditor": true,
+   "datei": "1200×1200",
+   "ratio": 1,
+   "ref": 1200,
+   "varianten": 84,
+   "geprueft": 84,
+   "ohneDaten": 0,
+   "zuKlein": 0,
+   "minDpiMin": 158.7,
+   "dpiMin": 158.7,
+   "minDpi": [
+    150
+   ]
+  }
+ ]
+}

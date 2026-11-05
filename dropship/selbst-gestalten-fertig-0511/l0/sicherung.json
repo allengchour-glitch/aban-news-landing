@@ -1,0 +1,118 @@
+{
+ "gesichert": "vor L0, 05.11.2026",
+ "schwelle": 0.85,
+ "geaendert": [
+  {
+   "handle": "boardshorts-mit-allover-druck-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422939267457",
+   "vorher": "ACTIVE",
+   "dpiMin": 23.5,
+   "minDpi": 75,
+   "anteilVonMin": 0.31
+  },
+  {
+   "handle": "einteiliger-allover-badeanzug-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422943822209",
+   "vorher": "ACTIVE",
+   "dpiMin": 34.3,
+   "minDpi": 75,
+   "anteilVonMin": 0.46
+  },
+  {
+   "handle": "allover-yoga-leggings-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422945034625",
+   "vorher": "ACTIVE",
+   "dpiMin": 25.5,
+   "minDpi": 75,
+   "anteilVonMin": 0.34
+  },
+  {
+   "handle": "allover-rucksack-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422946083201",
+   "vorher": "ACTIVE",
+   "dpiMin": 58.5,
+   "minDpi": 75,
+   "anteilVonMin": 0.78
+  },
+  {
+   "handle": "recycelter-unisex-allover-pullover-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422949130625",
+   "vorher": "ACTIVE",
+   "dpiMin": 27.3,
+   "minDpi": 75,
+   "anteilVonMin": 0.36
+  },
+  {
+   "handle": "recycelter-unisex-allover-hoodie-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422953062785",
+   "vorher": "ACTIVE",
+   "dpiMin": 30,
+   "minDpi": 75,
+   "anteilVonMin": 0.4
+  },
+  {
+   "handle": "unisex-allover-bomberjacke-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422956798337",
+   "vorher": "ACTIVE",
+   "dpiMin": 33.3,
+   "minDpi": 75,
+   "anteilVonMin": 0.44
+  },
+  {
+   "handle": "kleid-mit-schlitz-und-allover-druck-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422958338433",
+   "vorher": "ACTIVE",
+   "dpiMin": 26.1,
+   "minDpi": 75,
+   "anteilVonMin": 0.35
+  },
+  {
+   "handle": "recycelte-allover-jogginghosen-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422959518081",
+   "vorher": "ACTIVE",
+   "dpiMin": 24,
+   "minDpi": 75,
+   "anteilVonMin": 0.32
+  },
+  {
+   "handle": "allover-sport-bh-selbst-gestalten",
+   "productId": "gid://shopify/Product/15422960501121",
+   "vorher": "ACTIVE",
+   "dpiMin": 48,
+   "minDpi": 75,
+   "anteilVonMin": 0.64
+  },
+  {
+   "handle": "poster-zum-selbstgestalten",
+   "productId": "gid://shopify/Product/15427182330241",
+   "vorher": "ACTIVE",
+   "dpiMin": 55.8,
+   "minDpi": 150,
+   "anteilVonMin": 0.37
+  },
+  {
+   "handle": "kissen-zum-selbstgestalten",
+   "productId": "gid://shopify/Product/15427285123457",
+   "vorher": "ACTIVE",
+   "dpiMin": 57.1,
+   "minDpi": 75,
+   "anteilVonMin": 0.76
+  },
+  {
+   "handle": "strandtuch-selbst-gestalten",
+   "productId": "gid://shopify/Product/15451569226113",
+   "vorher": "ACTIVE",
+   "dpiMin": 16.2,
+   "minDpi": 75,
+   "anteilVonMin": 0.22
+  },
+  {
+   "handle": "kuscheldecke-selbst-gestalten",
+   "productId": "gid://shopify/Product/15451569389953",
+   "vorher": "ACTIVE",
+   "dpiMin": 19,
+   "minDpi": 75,
+   "anteilVonMin": 0.25
+  }
+ ]
+}
