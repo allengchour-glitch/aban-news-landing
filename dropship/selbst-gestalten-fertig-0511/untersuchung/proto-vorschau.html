@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vorschau-Prototyp B (Canvas)</title>
+<style>
+  :root{--cw:300px}
+  body{font:13px/1.35 system-ui,sans-serif;margin:0;padding:10px;background:#efece6;color:#222}
+  h1{font-size:15px;margin:0 0 6px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .card{background:#fff;border-radius:6px;padding:6px;box-shadow:0 1px 3px #0002}
+  canvas{display:block;width:var(--cw);height:var(--cw);background:#fff}
+  .lab{font-size:11px;color:#555;margin-top:3px;max-width:var(--cw)}
+  .err{color:#b00020}
+</style>
+</head>
+<body>
+<h1 id="h"></h1>
+<div id="rows"></div>
+<div id="exp" class="lab"></div>
+<script>
+'use strict';
+const P = new URLSearchParams(location.search);
+const MODEL = P.get('m');
+const CW = parseInt(P.get('cw') || '300', 10);       // CSS-Groesse je Karte
+const DPR = parseFloat(P.get('dpr') || '2');
+document.documentElement.style.setProperty('--cw', CW + 'px');
+
+// ---------- Bilder laden (CORS: files.cdn.printful.com sendet access-control-allow-origin:*) ----------
+const cache = new Map();
+window.__tainted = [];
+function loadImg(url) {
+  if (!url) return Promise.resolve(null);
+  if (!cache.has(url)) cache.set(url, new Promise((res, rej) => {
+    const i = new Image(); i.crossOrigin = 'anonymous';
+    i.onload = () => res(i);
+    i.onerror = () => {
+      // Fallback ohne CORS (z.B. files.cdn.printful.com/products/... sendet keinen Access-Control-Allow-Origin):
+      // anzeigen geht, aber die Zeichenflaeche ist danach "tainted" (kein toBlob/getImageData).
+      const j = new Image();
+      j.onload = () => { window.__tainted.push(url.slice(-50)); res(j); };
+      j.onerror = () => rej(new Error('Bild nicht ladbar: ' + url.slice(-60)));
+      j.src = url;
+    };
+    i.src = url;
+  }));
+  return cache.get(url);
+}
+
+// ---------- Platzierung des Designs in der Druckflaeche (alles relativ zur Flaeche) ----------
+// st = {frac, dx, dy}; dx,dy = Versatz des Mittelpunkts in Anteilen der Flaechenbreite/-hoehe
+function placeRect(aw, ah, aspect, mode, st) {
+  let dw, dh;
+  if (mode === 'cover') { // Flaeche fuellen, ueberstehendes abschneiden
+    if (aspect >= aw / ah) { dh = ah; dw = ah * aspect; } else { dw = aw; dh = aw / aspect; }
+  } else {                // 'fit': einpassen, st.frac des Maximums
+    if (aspect >= aw / ah) { dw = aw * st.frac; dh = dw / aspect; } else { dh = ah * st.frac; dw = dh * aspect; }
+  }
+  return { x: (aw - dw) / 2 + st.dx * aw, y: (ah - dh) / 2 + st.dy * ah, w: dw, h: dh };
+}
+
+// ---------- Allgemeiner Weg: Hintergrund -> Design (auf Druckflaeche beschnitten) -> Vorlagenbild ----------
+async function renderGeneric(cv, c, D, st) {
+  const t = c.tpl, ctx = cv.getContext('2d'), W = cv.width, H = cv.height, s = W / t.template_width;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const [bg, ov] = await Promise.all([loadImg(t.background_url), loadImg(t.image_url)]);
+  if (bg) ctx.drawImage(bg, 0, 0, W, H);
+  else if (t.background_color) { ctx.fillStyle = t.background_color; ctx.fillRect(0, 0, W, H); }
+  const ax = t.print_area_left * s, ay = t.print_area_top * s, aw = t.print_area_width * s, ah = t.print_area_height * s;
+  const drawDesign = () => {
+    ctx.save(); ctx.beginPath(); ctx.rect(ax, ay, aw, ah); ctx.clip();
+    const r = placeRect(aw, ah, D.naturalWidth / D.naturalHeight, P.get('fill') || (c.printfile.fill_mode === 'cover' ? 'cover' : 'fit'), st);
+    ctx.drawImage(D, ax + r.x, ay + r.y, r.w, r.h);
+    ctx.restore();
+  };
+  if (t.is_template_on_front) { drawDesign(); ctx.drawImage(ov, 0, 0, W, H); }
+  else { ctx.drawImage(ov, 0, 0, W, H); drawDesign(); }
+}
+
+// ---------- Tasse: Design auf Zylinder abbilden, Katalogfoto darueber multiplizieren ----------
+// Eichung am Foto 1320 (700x1000): Koerper x 220..600, Druckhoehe y 290..735 (Messung per Auge, siehe Bericht)
+async function renderMug(cv, c, D, st) {
+  const ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const photo = await loadImg(c.variant_image);
+  const k = H / 1000, offX = (W - 700 * k) / 2;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pf = c.printfile, aw = pf.width, ah = pf.height;
+  const off = document.createElement('canvas'); off.width = 1350; off.height = Math.round(1350 * ah / aw);
+  const o = off.getContext('2d'); o.fillStyle = '#fff'; o.fillRect(0, 0, off.width, off.height);
+  const r = placeRect(off.width, off.height, D.naturalWidth / D.naturalHeight, 'fit', st);
+  o.drawImage(D, r.x, r.y, r.w, r.h);
+  const cx = 410, R = 190, y0 = 290, y1 = 735;
+  for (let px = Math.ceil(cx - R) + 1; px < cx + R - 1; px++) {
+    const nx = (px - cx) / R, th = Math.asin(nx);        // -90..+90 Grad
+    const u = 0.5 + th / (2 * Math.PI);                  // 360 Grad = ganze Druckbreite, Mitte = Vorderseite
+    const sx = u * off.width;
+    const sw = Math.min(8, off.width / (2 * Math.PI * R) / Math.sqrt(Math.max(1e-3, 1 - nx * nx)));
+    ctx.drawImage(off, sx - sw / 2, 0, sw, off.height, offX + px * k, y0 * k, k + 0.6, (y1 - y0) * k);
+  }
+  ctx.globalCompositeOperation = 'multiply';
+  ctx.drawImage(photo, offX, 0, 700 * k, 1000 * k);
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+// ---------- Poster/Leinwand: Papier mit Schatten (Vorlage ist nur ein Raster mit Beschriftung) ----------
+async function renderFlatPaper(cv, c, D, st) {
+  const ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = '#f3f1ee'; ctx.fillRect(0, 0, W, H);
+  const pf = c.printfile, ar = pf.width / pf.height, m = W * 0.1;
+  let w = W - 2 * m, h = w / ar; if (h > H - 2 * m) { h = H - 2 * m; w = h * ar; }
+  const x = (W - w) / 2, y = (H - h) / 2;
+  ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = W * 0.03; ctx.shadowOffsetY = W * 0.012;
+  ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, h); ctx.restore();
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  const r = placeRect(w, h, D.naturalWidth / D.naturalHeight, 'cover', st);
+  ctx.drawImage(D, x + r.x, y + r.y, r.w, r.h); ctx.restore();
+}
+
+function pickRenderer(id) {
+  if (id === 19) return renderMug;
+  if (id === 171 || id === 3) return renderFlatPaper;
+  return renderGeneric;
+}
+
+// ---------- Druckdatei-Export (Pixelgroesse aus dem Printfile, gleiche relative Platzierung) ----------
+async function exportPrintfile(c, D, st) {
+  const pf = c.printfile, cv = document.createElement('canvas'); cv.width = pf.width; cv.height = pf.height;
+  const ctx = cv.getContext('2d');
+  const r = placeRect(pf.width, pf.height, D.naturalWidth / D.naturalHeight, pf.fill_mode === 'cover' ? 'cover' : 'fit', st);
+  ctx.drawImage(D, r.x, r.y, r.w, r.h);
+  const t0 = performance.now();
+  const blob = await new Promise((res) => cv.toBlob(res, 'image/png'));
+  return { w: pf.width, h: pf.height, bytes: blob.size, ms: Math.round(performance.now() - t0) };
+}
+
+(async () => {
+  const CFG = await (await fetch('config.json')).json();
+  const M = CFG.find((x) => String(x.id) === MODEL);
+  if (!M) { window.__stats = { errors: ['Modell fehlt ' + MODEL] }; window.__done = true; return; }
+  document.getElementById('h').textContent = M ? `${M.id} ${M.title} (${M.placement})` : 'Modell fehlt';
+  const designs = [['Foto', 'photo.jpg'], ['Logo', 'logo.png']];
+  const only = P.get('d');
+  const st = { frac: parseFloat(P.get('frac') || '0.667'), dx: 0, dy: 0 };
+  const stats = { model: M.id, cases: [], errors: [] };
+  const rows = document.getElementById('rows');
+  const render = pickRenderer(M.pid || M.id);
+  for (const [dn, df] of designs) {
+    if (only && only !== dn.toLowerCase()) continue;
+    const D = await loadImg(df);
+    const row = document.createElement('div'); row.className = 'row'; rows.appendChild(row);
+    for (const c of M.cases) {
+      const card = document.createElement('div'); card.className = 'card';
+      const cv = document.createElement('canvas'); cv.width = Math.round(CW * DPR); cv.height = Math.round(CW * DPR);
+      const lab = document.createElement('div'); lab.className = 'lab';
+      card.appendChild(cv); card.appendChild(lab); row.appendChild(card);
+      const t0 = performance.now();
+      try {
+        await render(cv, c, D, st);
+        const ms = Math.round(performance.now() - t0);
+        // Zweiter Durchlauf = Dauer mit warmem Cache (das ist die Zeit beim Verschieben/Farbwechseln)
+        const t1 = performance.now(); await render(cv, c, D, st); const ms2 = Math.round(performance.now() - t1);
+        lab.textContent = `${dn} auf ${c.color || '-'} (Var. ${c.variant_id}) · ${ms} ms kalt, ${ms2} ms warm`;
+        stats.cases.push({ design: dn, color: c.color, variant: c.variant_id, msCold: ms, msWarm: ms2 });
+      } catch (e) { lab.textContent = String(e); lab.className = 'lab err'; stats.errors.push(String(e)); }
+    }
+  }
+  try {
+    const D = await loadImg('photo.jpg');
+    const ex = await exportPrintfile(M.cases[0], D, st);
+    stats.export = ex;
+    document.getElementById('exp').textContent = `Druckdatei-Export ${ex.w}x${ex.h} px: ${(ex.bytes / 1024).toFixed(0)} KB PNG, ${ex.ms} ms (toBlob)`;
+  } catch (e) { stats.errors.push('export ' + e); }
+  window.__stats = stats; window.__done = true;
+})().catch((e) => { document.getElementById('h').textContent = 'FEHLER ' + e; window.__stats = { errors: [String(e)] }; window.__done = true; });
+</script>
+</body>
+</html>
