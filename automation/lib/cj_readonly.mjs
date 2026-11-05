@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 const BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const AUTH_URL = `${BASE}/authentication/getAccessToken`;
 const PRODUCT_URL = `${BASE}/product/query`;
+const INVENTORY_URL = `${BASE}/product/stock/getInventoryByPid`;
 const DOC_URL = 'https://developers.cjdropshipping.com/en/api/api2/api/auth.html';
 const BODY_LIMIT = 2 * 1024 * 1024;
 const TIMEOUT_MS = 15_000;
@@ -10,9 +11,12 @@ const REQUEST_GAP_MS = 1_100;
 const TOKEN_SAFETY_MS = 5 * 60 * 1000;
 const MAX_IMAGE_URLS = 25;
 const MAX_VARIANTS = 50;
+const MAX_COUNTRIES_PER_VARIANT = 20;
+const MAX_INVENTORY_COUNTRY_ROWS = 400;
+const MAX_INVENTORY_REPORT_BYTES = 128 * 1024;
 const MAX_URL_BYTES = 1024;
 const SOFT_CODES = new Map([[1602001, 'product_not_found'], [1602002, 'product_removed'], [1602003, 'variant_removed']]);
-const QUOTA = /insufficient api points|daily.*(?:quota|limit)|points.*exhaust/i;
+const QUOTA = /insufficient api points|daily.*(?:quota|limit)|points.*exhaust|too many requests/i;
 
 function validSecret(value, max = 1024) {
   return typeof value === 'string' && value.length >= 16 && value.length <= max
@@ -26,6 +30,12 @@ function validLookup(args) {
   if (keys[0] === 'pid') return typeof args.pid === 'string' && /^[0-9]{6,40}$/.test(args.pid);
   return keys[0] === 'productSku' && typeof args.productSku === 'string'
     && /^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(args.productSku);
+}
+
+function validPidLookup(args) {
+  return !!args && typeof args === 'object' && !Array.isArray(args)
+    && Object.keys(args).length === 1 && Object.keys(args)[0] === 'pid'
+    && typeof args.pid === 'string' && /^[0-9]{6,40}$/.test(args.pid);
 }
 
 function safeUrl(value) {
@@ -64,6 +74,18 @@ function boundedText(value, maxBytes) {
 function validIdentity(value, maxBytes) {
   const field = boundedText(value, maxBytes);
   return field.state === 'returned' && field.value.length > 0;
+}
+
+function validVid(value) {
+  return typeof value === 'string' && /^[0-9A-Za-z][0-9A-Za-z-]{5,63}$/.test(value);
+}
+
+function validVariantSku(value) {
+  return typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/.test(value);
+}
+
+function variantSkuKey(value) {
+  return value.toUpperCase().replace(/^CJ-(?=CJ)/, '');
 }
 
 async function discardResponseBody(response) {
@@ -132,14 +154,19 @@ function listImages(value) {
 function listVariants(value, pid) {
   if (!Array.isArray(value)) return { state: 'unknown', reported: null, returned: 0, partial: false, records: null };
   const records = [];
+  const vids = new Set(), skus = new Set();
   for (const variant of value.slice(0, MAX_VARIANTS)) {
+    const vidKey = typeof variant?.vid === 'string' ? variant.vid.toUpperCase() : null;
+    const skuKey = typeof variant?.variantSku === 'string' && validVariantSku(variant.variantSku)
+      ? variantSkuKey(variant.variantSku) : null;
     if (!variant || typeof variant !== 'object' || Array.isArray(variant)
-      || !validIdentity(variant.vid, 100)
+      || !validVid(variant.vid)
       || !validIdentity(variant.pid, 40) || variant.pid !== pid
-      || !validIdentity(variant.variantSku, 200)) {
+      || !skuKey || vids.has(vidKey) || skus.has(skuKey)) {
       return { state: 'unknown', reported: value.length, returned: 0, partial: false, records: null,
         reason: 'variant_identity_missing_or_inconsistent' };
     }
+    vids.add(vidKey); skus.add(skuKey);
     const key = boundedText(variant.variantKey, 300), standard = boundedText(variant.variantStandard, 300);
     records.push({ vid: variant.vid, pid: variant.pid, variantSku: variant.variantSku,
       variantKey: key.value, variantKeyState: key.state,
@@ -168,12 +195,131 @@ function normaliseProduct(data, lookup) {
   };
 }
 
+function nonnegativeSafeInteger(value) {
+  return Number.isSafeInteger(value) && value >= 0 ? value : null;
+}
+
+function inventoryCountryRow(value) {
+  const row = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  return {
+    countryCode: typeof row.countryCode === 'string' && /^[A-Z]{2}$/.test(row.countryCode)
+      ? row.countryCode : null,
+    totalInventory: nonnegativeSafeInteger(row.totalInventory),
+    cjInventory: nonnegativeSafeInteger(row.cjInventory),
+    factoryInventory: nonnegativeSafeInteger(row.factoryInventory),
+    verifiedWarehouse: row.verifiedWarehouse === 1 || row.verifiedWarehouse === 2
+      ? row.verifiedWarehouse : null
+  };
+}
+
+function inventoryPoints(value) {
+  const points = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  const result = {
+    total: nonnegativeSafeInteger(points.total),
+    usedToday: nonnegativeSafeInteger(points.usedToday),
+    remaining: nonnegativeSafeInteger(points.remaining)
+  };
+  const known = Object.values(result).filter(item => item !== null).length;
+  return { state: known === 3 ? 'returned' : known === 0 ? 'unknown' : 'partial', ...result };
+}
+
+function normaliseInventory(data, pointsInfo, pid) {
+  if (!data || typeof data !== 'object' || Array.isArray(data)
+    || !Array.isArray(data.variantInventories)) {
+    return { state: 'unknown', reason: 'malformed_inventory_data' };
+  }
+  const source = data.variantInventories;
+  const sourceVids = new Set();
+  for (const value of source) {
+    const variant = value && typeof value === 'object' && !Array.isArray(value) ? value : null;
+    const vidKey = typeof variant?.vid === 'string' ? variant.vid.toUpperCase() : null;
+    if (!variant || !validVid(variant.vid) || sourceVids.has(vidKey)) {
+      return { state: 'unknown', reason: 'malformed_inventory_data' };
+    }
+    sourceVids.add(vidKey);
+  }
+  const records = [];
+  let rowsLeft = MAX_INVENTORY_COUNTRY_ROWS;
+  let countryRowsReturned = 0;
+  let partial = source.length > MAX_VARIANTS;
+  for (const value of source.slice(0, MAX_VARIANTS)) {
+    const variant = value;
+    const vid = variant.vid;
+    if (!Array.isArray(variant.inventory)) {
+      records.push({ vid, countries: { state: 'unknown', reported: null, returned: 0,
+        partial: false, records: null } });
+      continue;
+    }
+    const reported = variant.inventory.length;
+    const returned = Math.min(reported, MAX_COUNTRIES_PER_VARIANT, rowsLeft);
+    const countries = variant.inventory.slice(0, returned).map(inventoryCountryRow);
+    rowsLeft -= countries.length;
+    countryRowsReturned += countries.length;
+    const countryPartial = countries.length !== reported;
+    if (countryPartial) partial = true;
+    records.push({ vid, countries: {
+      state: countryPartial ? 'partial_supplier_inventory_returned' : 'supplier_inventory_returned',
+      reported, returned: countries.length, partial: countryPartial, records: countries
+    } });
+  }
+  return {
+    state: 'inventory_returned', reason: null,
+    inventory: {
+      pid,
+      variants: {
+        state: partial ? 'partial_supplier_inventory_returned' : 'supplier_inventory_returned',
+        reported: source.length, returned: records.length, partial, countryRowsReturned, records
+      },
+      pointsInfo: inventoryPoints(pointsInfo),
+      countryAggregation: false,
+      deliveryToSwitzerland: 'unknown'
+    }
+  };
+}
+
+function enforceInventoryReportLimit(report) {
+  const size = () => Buffer.byteLength(JSON.stringify(report), 'utf8');
+  while (size() > MAX_INVENTORY_REPORT_BYTES && report.inventory?.variants?.records?.length) {
+    const variants = report.inventory.variants;
+    const withCountry = [...variants.records].reverse().find(record => record.countries?.records?.length);
+    if (withCountry) {
+      withCountry.countries.records.pop();
+      withCountry.countries.returned--;
+      withCountry.countries.partial = true;
+      withCountry.countries.state = 'partial_supplier_inventory_returned';
+      variants.countryRowsReturned--;
+    } else {
+      variants.records.pop();
+      variants.returned--;
+    }
+    variants.partial = true;
+    variants.state = 'partial_supplier_inventory_returned';
+  }
+  if (size() > MAX_INVENTORY_REPORT_BYTES) {
+    report.state = 'unknown';
+    report.reason = 'inventory_output_too_large';
+    report.inventory = null;
+  }
+  return report;
+}
+
 function emptyReport(now, lookup) {
   return { checkedAt: new Date(now).toISOString(), provider: 'CJdropshipping', mode: 'read_only',
     lookup, state: 'unknown', reason: null, requests: { authentication: 0, product: 0 },
     product: null, credentialsPersisted: false, tokenPersistence: 'process_memory_only',
     limits: { productRequests: 1, pagination: 0, retries: 0, responseBytes: BODY_LIMIT,
       returnedImageUrls: MAX_IMAGE_URLS, returnedVariants: MAX_VARIANTS, returnedUrlBytes: MAX_URL_BYTES,
+      writes: 0, imports: 0, purchases: 0, renders: 0 } };
+}
+
+function emptyInventoryReport(now, lookup) {
+  return { checkedAt: new Date(now).toISOString(), provider: 'CJdropshipping', mode: 'read_only',
+    lookup, state: 'unknown', reason: null, requests: { authentication: 0, inventory: 0 },
+    inventory: null, credentialsPersisted: false, tokenPersistence: 'process_memory_only',
+    limits: { inventoryRequests: 1, pagination: 0, retries: 0, responseBytes: BODY_LIMIT,
+      reportBytes: MAX_INVENTORY_REPORT_BYTES, returnedVariants: MAX_VARIANTS,
+      returnedCountriesPerVariant: MAX_COUNTRIES_PER_VARIANT,
+      returnedCountryRows: MAX_INVENTORY_COUNTRY_ROWS,
       writes: 0, imports: 0, purchases: 0, renders: 0 } };
 }
 
@@ -184,6 +330,8 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
   let lastAuthenticationAt = null;
   let lastVerifiedReadAt = null;
   let lastProductRead = null;
+  let lastVerifiedInventoryReadAt = null;
+  let lastInventoryRead = null;
   let queue = Promise.resolve();
   const clock = () => { const value = Number(now()); return Number.isFinite(value) ? value : Date.now(); };
   const fingerprint = value => createHash('sha256').update(value).digest('hex');
@@ -248,8 +396,13 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
     const binding = keyState();
     const finish = () => {
       const at = new Date(clock()).toISOString();
+      const variants = report.product?.product?.variants;
       lastProductRead = { at, state: report.state === 'product_identity_verified' ? 'verified' : 'unknown',
-        keyFingerprint: binding.fingerprint || null };
+        keyFingerprint: binding.fingerprint || null,
+        pid: report.state === 'product_identity_verified' ? report.product?.product?.pid || null : null,
+        inventoryEligible: report.state === 'product_identity_verified'
+          && variants?.state === 'supplier_metadata_returned'
+          && Array.isArray(variants.records) && variants.records.length > 0 };
       if (lastProductRead.state === 'verified') lastVerifiedReadAt = at;
       return report;
     };
@@ -283,19 +436,71 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
     report.product = product.state === 'product_identity_verified' ? product : null;
     return finish();
   }
+  async function readInventory(lookup) {
+    const current = clock();
+    const report = emptyInventoryReport(current, lookup);
+    const binding = keyState();
+    const finish = () => {
+      enforceInventoryReportLimit(report);
+      const at = new Date(clock()).toISOString();
+      lastInventoryRead = { at, state: report.state === 'inventory_returned' ? 'returned' : 'unknown',
+        keyFingerprint: binding.fingerprint || null };
+      if (lastInventoryRead.state === 'returned') lastVerifiedInventoryReadAt = at;
+      return report;
+    };
+    if (!validPidLookup(lookup)) { report.reason = 'invalid_pid_lookup'; return finish(); }
+    if (binding.state !== 'bound_unverified') { report.reason = `credential_binding_${binding.state}`; return finish(); }
+    if (!lastProductRead || lastProductRead.state !== 'verified'
+      || lastProductRead.keyFingerprint !== binding.fingerprint
+      || lastProductRead.pid !== lookup.pid || lastProductRead.inventoryEligible !== true) {
+      report.reason = 'product_prerequisite_not_verified'; return finish();
+    }
+    const auth = await authenticate(report, binding);
+    if (!auth) return finish();
+    const url = new URL(INVENTORY_URL);
+    url.searchParams.set('pid', lookup.pid);
+    report.requests.inventory++;
+    let response;
+    try { response = await request(url.href, { method: 'GET', headers: {
+      Accept: 'application/json', 'CJ-Access-Token': auth.accessToken } }); }
+    catch (error) { report.reason = errorReason(error); return finish(); }
+    if (response.status < 200 || response.status >= 300) {
+      await discardResponseBody(response); report.reason = responseReason(response.status); return finish();
+    }
+    let body;
+    try { body = await boundedJson(response); }
+    catch (error) { report.reason = errorReason(error); return finish(); }
+    if (includesSecret(body, [binding.key, auth.accessToken, auth.refreshToken])) {
+      report.reason = 'credential_echo_blocked'; return finish();
+    }
+    if (QUOTA.test(String(body?.message || ''))) { report.reason = 'quota'; return finish(); }
+    if (body?.success !== true || body?.code !== 200) {
+      report.reason = 'inventory_api_response_rejected'; return finish();
+    }
+    const normalised = normaliseInventory(body.data, body.pointsInfo, lookup.pid);
+    report.state = normalised.state;
+    report.reason = normalised.reason || null;
+    report.inventory = normalised.state === 'inventory_returned' ? normalised.inventory : null;
+    return finish();
+  }
   return {
     status() {
       const binding = keyState();
       const cached = !!(cachedToken && cachedToken.keyFingerprint === binding.fingerprint
         && cachedToken.expiresAt - TOKEN_SAFETY_MS > clock());
-      const currentVerified = !!(lastProductRead && lastProductRead.state === 'verified'
-        && lastProductRead.keyFingerprint === binding.fingerprint);
+      const productMatchesBinding = !!(lastProductRead && lastProductRead.keyFingerprint === binding.fingerprint);
+      const inventoryMatchesBinding = !!(lastInventoryRead && lastInventoryRead.keyFingerprint === binding.fingerprint);
+      const currentVerified = !!(productMatchesBinding && lastProductRead.state === 'verified');
       return { checkedAt: new Date(clock()).toISOString(), provider: 'CJdropshipping', mode: 'read_only',
         credentialBinding: binding.state, connection: currentVerified ? 'verified_by_product_read' : 'unknown_until_product_read',
         accessTokenCachedInProcess: cached, lastAuthenticationAt, lastVerifiedReadAt,
-        lastProductReadAt: lastProductRead?.at || null, lastProductReadState: lastProductRead?.state || 'not_attempted',
+        lastProductReadAt: lastProductRead?.at || null,
+        lastProductReadState: productMatchesBinding ? lastProductRead.state : 'not_attempted',
+        lastInventoryReadAt: lastInventoryRead?.at || null,
+        lastInventoryReadState: inventoryMatchesBinding ? lastInventoryRead.state : 'not_attempted',
+        lastVerifiedInventoryReadAt,
         authenticationContract: { requestField: 'apiKey', documentation: DOC_URL },
-        allowedEndpoint: PRODUCT_URL, pagination: false,
+        allowedEndpoint: PRODUCT_URL, allowedInventoryEndpoint: INVENTORY_URL, pagination: false,
         blockedOperations: ['catalogue_search', 'imports', 'orders', 'purchases', 'renders', 'shop_writes'],
         credentialsPersisted: false };
     },
@@ -303,9 +508,16 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
       const run = queue.then(() => readProduct(lookup), () => readProduct(lookup));
       queue = run.then(() => undefined, () => undefined);
       return run;
+    },
+    readInventory(lookup) {
+      const run = queue.then(() => readInventory(lookup), () => readInventory(lookup));
+      queue = run.then(() => undefined, () => undefined);
+      return run;
     }
   };
 }
 
-export const CJ_READ_LIMITS = Object.freeze({ BODY_LIMIT, TIMEOUT_MS, REQUEST_GAP_MS });
+export const CJ_READ_LIMITS = Object.freeze({ BODY_LIMIT, TIMEOUT_MS, REQUEST_GAP_MS,
+  MAX_VARIANTS, MAX_COUNTRIES_PER_VARIANT, MAX_INVENTORY_COUNTRY_ROWS, MAX_INVENTORY_REPORT_BYTES });
 export const isValidCjLookup = validLookup;
+export const isValidCjPidLookup = validPidLookup;

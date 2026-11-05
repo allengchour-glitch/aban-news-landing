@@ -22,7 +22,7 @@ export const SUITES = Object.freeze({
 export const CHECK_INPUTS = Object.freeze({
   core: Object.freeze([...SUITES.core, 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/kanal_sperren.mjs', 'automation/lib/claude_assist_offline.mjs']),
   seo: Object.freeze([...SUITES.seo, 'automation/seo-optimizer.mjs', 'automation/lib/seo_titel.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/claude_assist_offline.mjs']),
-  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', 'automation/cj-read-mcp.mjs', 'automation/cj-read-mcp-probe.mjs', '.github/workflows/diagnose-actions-zugang.yml', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence', 'cj_readonly', 'cj_read_mcp'].map(name => 'automation/lib/' + name + '.mjs')]),
+  assist: Object.freeze([...SUITES.assist, 'automation/claude-assist.mjs', 'automation/cj-read-mcp.mjs', 'automation/cj-read-mcp-probe.mjs', '.github/workflows/diagnose-actions-zugang.yml', 'dropship/assistant/CJ-READ-MCP.md', ...['claude_assist', 'claude_assist_mcp', 'claude_assist_offline', 'claude_assist_changes', 'claude_assist_readiness', 'claude_assist_launch', 'claude_assist_runner', 'claude_assist_commits', 'claude_assist_evidence', 'cj_readonly', 'cj_read_mcp'].map(name => 'automation/lib/' + name + '.mjs')]),
 });
 export const POLICY = Object.freeze({
   scope: 'LuxeStyle / luxestyle.ch only', brandId: 6227837, timezone: 'Europe/Zurich',
