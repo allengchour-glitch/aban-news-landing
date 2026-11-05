@@ -15,7 +15,10 @@
 #          (Vorgabe Zieldatei: $FORTURA_CSV, sonst /tmp/fortura_feed.csv)
 # Exit:    0 = Feed liegt vollständig am Ziel · 2 = Fehler, am Ziel liegt dann KEINE (halbe) Datei
 # Schalter (alle optional):
-#   FORTURA_MIN_BYTES      Mindestgrösse, Vorgabe 5000000 (5 MB; ein abgeschnittener Download oder eine JSON-Fehlerantwort fällt durch)
+#   FORTURA_MIN_BYTES      Mindestgrösse, Vorgabe 9000000 (9 MB; ein abgeschnittener Download oder eine JSON-Fehlerantwort fällt durch).
+#                          Messbasis: der Feed vom 05.11.2026 war 11,7 MB gross (20 309 Zeilen), 9 MB sind 77 % davon. Vorher 5 MB (43 %): ein bei
+#                          rund der Hälfte abgeschnittener Download wäre durchgegangen. Der Feed wächst eher, als dass er schrumpft (19 954 Zeilen im
+#                          August 2026 laut Kommentar im Abgleich-Skript, 20 309 am 05.11.); fällt er legitim unter 9 MB, die Grenze bewusst senken.
 #   FORTURA_VERSUCHE       Versuche bei Netz-/Serverfehlern, Vorgabe 3 (falsche Zugangsdaten werden NIE wiederholt: Sperrgefahr)
 #   FORTURA_PAUSE          Sekunden zwischen den Versuchen, Vorgabe 20
 #   FORTURA_TLS_UNSICHER=1 schaltet die Zertifikatsprüfung ab (wie das Original). Nur nach Prüfung des Zertifikats setzen.
@@ -49,7 +52,7 @@ if [ "${FORTURA_TEST:-}" = "1" ] && [ -n "${FORTURA_BASIS:-}" ]; then B="$FORTUR
 PFAD_FEED="/home/Art_DataFeed.CSV"
 
 OUT="${1:-${FORTURA_CSV:-/tmp/fortura_feed.csv}}"
-MIN_BYTES="${FORTURA_MIN_BYTES:-5000000}"
+MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"
 VERSUCHE="${FORTURA_VERSUCHE:-3}"
 PAUSE="${FORTURA_PAUSE:-20}"
 MAX_ALTER_H="${FORTURA_MAX_ALTER_H:-}"

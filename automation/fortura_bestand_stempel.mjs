@@ -18,6 +18,9 @@
  *   (d) STAND_DATEI    dropship/_fortura_bestand_stand.json (schreibt der Live-Lauf) trägt  offen == 0
  *   Zusätzlich, weil billig und sicher: die Stand-Datei stammt aus diesem Lauf (höchstens 180 Minuten alt), ihr Feed-
  *   Fingerabdruck passt zu dem der Nachprüfung, und ein Exit-Code der Nachprüfung (NACH_EXIT), falls übergeben, ist 0.
+ *   Und: FORCE_ZERO darf im Stempel-Schritt NICHT gesetzt sein. Hat ein Handstart mit «null_erlauben» die Nullungs-Bremse des Abgleichs aufgehoben, gilt
+ *   das nur für den Schreiblauf; die Nachprüfung läuft immer mit scharfer Bremse (der Workflow löscht FORCE_ZERO dort ausdrücklich). Der Stempel steht
+ *   also auch nach einem erlaubten Massen-Nullen nur, wenn die Nachprüfung danach wirklich höchstens max(40, 1 %) Abweichungen zeigt und ohne ABBRUCH zu Ende lief.
  *
  * SCHREIBEN NUR MIT ALLEN DREI: LIVE=1, kein DRY=1, und die Freigabedatei dropship/FORTURA-BESTAND-FREI.txt liegt im Repo.
  * Sonst Trockenlauf (Vorgabe): das Gate wird gerechnet und angezeigt, der Stempel nur angezeigt.
@@ -27,7 +30,7 @@
  *   LIVE=1 LIVE_EXIT=0 NACH_DATEI=lauf-nach.txt NACH_EXIT=0 FEED_DATEI=/tmp/fortura_feed.csv \
  *   SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/fortura_bestand_stempel.mjs
  * Weitere Schalter: STAND_DATEI, FREIGABE_DATEI, SHOPIFY_SHOP (Vorgabe wie fortura_bestand_sync.mjs), SHOPIFY_TOKEN_FILE
- *   (Ersatz, wenn keine Client-Zugangsdaten da sind), FEED_MAX_STUNDEN (36), STAND_MAX_MIN (180), MIN_VARIANTEN (1000).
+ *   (Ersatz, wenn keine Client-Zugangsdaten da sind), FEED_MAX_STUNDEN (36), STAND_MAX_MIN (180), MIN_VARIANTEN (6000).
  * Exit: 0 = Stempel gesetzt (im Trockenlauf: Gate bestanden) · 1 = KEIN Stempel (Gate nicht bestanden oder Schreiben/Zurücklesen
  *       fehlgeschlagen) · 2 = Eingabe oder Zugang fehlt (nichts versucht).
  *
@@ -48,7 +51,10 @@ export const FEED_MAX_STUNDEN = 36;
 export const ABWEICHUNG_MIN = 40;        // erlaubte Restabweichung nach dem Lauf: höchstens max(40, 1 % der Varianten)
 export const ABWEICHUNG_ANTEIL = 0.01;
 export const STAND_MAX_MIN = 180;
-export const MIN_VARIANTEN = 1000;       // weniger Fortura-Varianten in der Nachprüfung = der Shop wurde nicht gelesen
+// Weniger Fortura-Varianten in der Nachprüfung = der Shop wurde nicht (vollständig) gelesen. Messbasis 05.11.2026: die Zeile «Abgleich:» des Probelaufs
+// zählte 6 532 + 1 884 = 8 416 Varianten (alle mit Bestandsführung und CH-Lagerzeile). 6000 sind 71 % davon: eine halb gelesene Seitenliste fällt durch,
+// die normale Schwankung (Ware kommt und geht um einige Hundert) nicht. Sinkt die Zahl dauerhaft darunter, ist das ein Grund zum Nachsehen, nicht zum Senken.
+export const MIN_VARIANTEN = 6000;
 const ZUKUNFT_TOLERANZ_MS = 10 * 60 * 1000;   // Uhrenabweichung zwischen Server und Runner
 
 /* ---------- Zeitstempel ---------- */
@@ -104,9 +110,10 @@ export function nachpruefungZuEnde(text) {
  * @param {number} e.jetztMs       aktuelle Zeit in ms
  * @param {object} e.stand         Inhalt von dropship/_fortura_bestand_stand.json (null = fehlt/unlesbar)
  * @param {object} [e.opt]         feedMaxStunden, standMaxMin, minVarianten
+ * @param {boolean} [e.forceZero]  FORCE_ZERO=1 in der Umgebung des Stempel-Schritts (darf dort nie gesetzt sein)
  * @returns {{ok:boolean, gruende:string[], mess:object}}
  */
-export function stempelEntscheid({ liveExit, nachText, nachExit, feedMtimeMs, jetztMs, stand, opt = {} } = {}) {
+export function stempelEntscheid({ liveExit, nachText, nachExit, feedMtimeMs, jetztMs, stand, opt = {}, forceZero = false } = {}) {
   const feedMax = opt.feedMaxStunden ?? FEED_MAX_STUNDEN;
   const standMax = opt.standMaxMin ?? STAND_MAX_MIN;
   const minVar = opt.minVarianten ?? MIN_VARIANTEN;
@@ -134,6 +141,7 @@ export function stempelEntscheid({ liveExit, nachText, nachExit, feedMtimeMs, je
     mess.nachExit = nachExit;
     if (nachExit !== 0) gruende.push(`(b) Nachprüfung endete mit Exit ${nachExit} (verlangt 0)`);
   }
+  if (forceZero) gruende.push('(b) FORCE_ZERO ist im Stempel-Schritt gesetzt: die Nachprüfung muss mit scharfer Nullungs-Bremse gelaufen sein (null_erlauben gilt nur für den Schreiblauf)');
 
   // (c) Feed-Alter
   if (!Number.isFinite(feedMtimeMs) || !Number.isFinite(jetztMs)) gruende.push('(c) Zeit der Feeddatei unbekannt (Datei fehlt?)');
@@ -227,7 +235,7 @@ export async function lauf({ env = process.env, jetzt = Date.now(), fetchFn = gl
 
   const e = stempelEntscheid({
     liveExit, nachText: leseText(nachDatei), nachExit,
-    feedMtimeMs: feedMtime(feedDatei), jetztMs: jetzt, stand: leseStand(standDatei), opt,
+    feedMtimeMs: feedMtime(feedDatei), jetztMs: jetzt, stand: leseStand(standDatei), opt, forceZero: env.FORCE_ZERO === '1',
   });
   const m = e.mess;
   log(`Gate: Live-Exit ${m.liveExit ?? '?'} · Nachprüfung ${m.unveraendert ?? '?'} unverändert, ${m.zuAendern ?? '?'} zu ändern (erlaubt ${m.grenze ?? '?'})` +

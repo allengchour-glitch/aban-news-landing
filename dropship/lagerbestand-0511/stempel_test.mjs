@@ -7,7 +7,9 @@
 //   4. Attrappe der Shopify-API: richtige Variablen für metafieldsSet, userErrors -> Exit 1, Zurücklesen, Token, fehlende Zugänge -> Exit 2,
 //      bei nicht bestandenem Gate wird NIE ein Aufruf gemacht
 //   5. das Skript als Prozess (Exit-Codes 0/1/2, Trockenlauf, mit vorgeschaltetem fetch)
-//   6. der Workflow: YAML-Schlüssel, Modus-Logik (wirklich ausgeführt), Schritte mit Attrappen-Skripten (Exit-Weitergabe, DRY, Secret-Bereinigung)
+//   6. der Workflow: YAML-Schlüssel, Modus-Logik (wirklich ausgeführt, alle Kombinationen aus Freigabedatei, Ereignis, «schreiben» und «null_erlauben»),
+//      Schritte mit Attrappen-Skripten (Exit-Weitergabe, DRY, Secret-Bereinigung, FORCE_ZERO nur im Schreiblauf, MIN_FEED_ROWS), Protokoll-Bereinigung
+//      (keine Produkttitel, kein Feed, kein Token im Artefakt; 7 Tage)
 // Für die Mutationsprobe (stempel_mutation.mjs) liest der Test seine Dateien relativ zu seinem eigenen Ort: eine Kopie des Baums wird mit
 // derselben Datei geprüft.
 import fs from 'node:fs';
@@ -104,17 +106,25 @@ const hat = (e, teil) => e.gruende.some(g => g.includes(teil));
   const klein = { minVarianten: 10 };
   ok(entscheid({ nachText: nachText(60, 40), opt: klein }).ok, '(b) Y=40 bei 100 Varianten: erlaubt (Mindestgrenze 40)');
   ok(!entscheid({ nachText: nachText(59, 41), opt: klein }).ok && hat(entscheid({ nachText: nachText(59, 41), opt: klein }), '41 Varianten weichen'), '(b) Y=41 bei 100 Varianten: zu viel');
-  ok(entscheid({ nachText: nachText(1960, 40) }).ok, '(b) Y=40 bei 2000 Varianten: erlaubt');
-  ok(!entscheid({ nachText: nachText(1959, 41) }).ok, '(b) Y=41 bei 2000 Varianten: 1 % sind erst 20, Grenze bleibt 40');
+  ok(entscheid({ nachText: nachText(1960, 40), opt: klein }).ok, '(b) Y=40 bei 2000 Varianten: erlaubt');
+  ok(!entscheid({ nachText: nachText(1959, 41), opt: klein }).ok && hat(entscheid({ nachText: nachText(1959, 41), opt: klein }), '41 Varianten weichen'), '(b) Y=41 bei 2000 Varianten: 1 % sind erst 20, Grenze bleibt 40');
   ok(entscheid({ nachText: nachText(9900, 100) }).ok, '(b) Y=100 bei 10000 Varianten: genau 1 % erlaubt');
   ok(!entscheid({ nachText: nachText(9899, 101) }).ok, '(b) Y=101 bei 10000 Varianten: zu viel');
   ok(entscheid({ nachText: nachText(8332, 84) }).ok, '(b) Y=84 bei 8416 Varianten: erlaubt (1 % = 84,16)');
   ok(!entscheid({ nachText: nachText(8331, 85) }).ok, '(b) Y=85 bei 8416 Varianten: zu viel');
   ok(entscheid({ nachText: nachText(8416, 0) }).ok, '(b) Y=0: erlaubt');
   ok(hat(entscheid({ nachText: nachText(6532, 1884) }), '1884 Varianten weichen noch vom Feed ab'), '(b) die Lage vor dem Lauf (1884) besteht das Gate nicht');
-  ok(!entscheid({ nachText: nachText(999, 0) }).ok && hat(entscheid({ nachText: nachText(999, 0) }), 'Shop nicht gelesen'), '(b) unter 1000 Varianten gesehen: Shop nicht gelesen');
-  ok(entscheid({ nachText: nachText(1000, 0) }).ok, '(b) genau 1000 Varianten: genug');
+  // Untergrenze 6000 (Messbasis: 8 416 Varianten im Probelauf vom 05.11.; die Zeile zählt nur Varianten mit Bestandsführung und CH-Lagerzeile)
+  gleich(m.MIN_VARIANTEN, 6000, '(b) Untergrenze der gesehenen Varianten ist 6000');
+  ok(!entscheid({ nachText: nachText(5999, 0) }).ok && hat(entscheid({ nachText: nachText(5999, 0) }), 'weniger als 6000') && hat(entscheid({ nachText: nachText(5999, 0) }), 'Shop nicht gelesen'), '(b) 5999 Varianten gesehen: Shop nicht gelesen');
+  ok(entscheid({ nachText: nachText(6000, 0) }).ok, '(b) genau 6000 Varianten: genug');
+  ok(entscheid({ nachText: nachText(6532, 16) }).ok, '(b) 6548 Varianten (nahe der Untergrenze, 16 Abweichungen): erlaubt');
+  for (const x of [0, 1000, 3998, 4000]) ok(!entscheid({ nachText: nachText(x, 0) }).ok, `(b) nur ${x} Varianten gesehen: kein Stempel (früher genügten 1000)`);
+  ok(entscheid({ nachText: nachText(8400, 16) }).ok, '(b) die echte Grössenordnung des Probelaufs (8 416) besteht');
   ok(entscheid({ nachText: nachText(50, 0), opt: { minVarianten: 10 } }).ok, '(b) minVarianten ist einstellbar');
+  // FORCE_ZERO im Stempel-Schritt: null_erlauben gilt nur für den Schreiblauf, die Nachprüfung läuft mit scharfer Bremse
+  ok(!entscheid({ forceZero: true }).ok && hat(entscheid({ forceZero: true }), 'FORCE_ZERO') && hat(entscheid({ forceZero: true }), 'scharfer Nullungs-Bremse'), '(b) FORCE_ZERO im Stempel-Schritt: kein Stempel, Grund genannt');
+  ok(entscheid({ forceZero: false }).ok && entscheid({ forceZero: undefined }).ok, '(b) ohne FORCE_ZERO bleibt alles wie bisher');
   ok(!entscheid({ nachText: '' }).ok && hat(entscheid({ nachText: '' }), 'Zeile'), '(b) leere Nachprüfung');
   ok(!entscheid({ nachText: undefined }).ok, '(b) Nachprüfung undefined');
   ok(!entscheid({ nachText: nachText(8400, 16).replace('[DRY] nichts geschrieben.', '') }).ok && hat(entscheid({ nachText: nachText(8400, 16).replace('[DRY] nichts geschrieben.', '') }), 'nicht zu Ende'), '(b) ohne Schlusszeile (Lauf abgebrochen)');
@@ -287,6 +297,7 @@ async function laufen(w, a = attrappe()) {
     'Nachprüfung Exit Text': { env: { NACH_EXIT: 'x' } },
     'offen > 0': { stand: { ...gut().stand, offen: 3 } },
     'Stand fehlt': { stand: 'kein json' },
+    'FORCE_ZERO=1 im Stempel-Schritt': { env: { FORCE_ZERO: '1' } },
   };
   for (const [wie, u] of Object.entries(schlecht)) {
     const wk = werkstatt(u);
@@ -294,6 +305,10 @@ async function laufen(w, a = attrappe()) {
     const rr = await laufen(wk);
     gleich([rr.code, rr.a.calls.length], [1, 0], `lauf: Gate nicht bestanden (${wie}): Exit 1 und kein einziger Aufruf`);
     ok(/KEIN STEMPEL gesetzt/.test(rr.err), `lauf: Gate nicht bestanden (${wie}) nennt den Grund`);
+  }
+  for (const fz of ['0', '', 'true']) {
+    const rf = await laufen(werkstatt({ env: { FORCE_ZERO: fz } }));
+    gleich([rf.code, rf.a.calls.length > 0], [0, true], `lauf: FORCE_ZERO=${JSON.stringify(fz)} ist kein «1» und blockiert den Stempel nicht (nur die Bremse des Abgleichs kennt «1»)`);
   }
   let wk = werkstatt(); fs.rmSync(wk.nach);
   let rr = await laufen(wk); gleich([rr.code, rr.a.calls.length], [1, 0], 'lauf: Nachprüfungsdatei fehlt -> Exit 1, kein Aufruf');
@@ -447,12 +462,17 @@ globalThis.fetch = async (url, init = {}) => {
     gleich(Object.keys(wf.on).sort(), ['schedule', 'workflow_dispatch'], 'Auslöser: nur Zeitplan und Handstart');
     gleich(wf.on.workflow_dispatch.inputs.schreiben.type, 'boolean', 'Eingabe «schreiben» ist boolean');
     gleich(wf.on.workflow_dispatch.inputs.schreiben.default, false, 'Eingabe «schreiben» Vorgabe false');
+    gleich(Object.keys(wf.on.workflow_dispatch.inputs).sort(), ['null_erlauben', 'schreiben'], 'Handstart-Eingaben: genau «schreiben» und «null_erlauben»');
+    gleich(wf.on.workflow_dispatch.inputs.null_erlauben.type, 'boolean', 'Eingabe «null_erlauben» ist boolean');
+    gleich(wf.on.workflow_dispatch.inputs.null_erlauben.default, false, 'Eingabe «null_erlauben» Vorgabe false');
+    ok(!('inputs' in (wf.on.schedule[0] || {})), 'der Zeitplan hat keine Eingaben');
     gleich(wf.permissions, { contents: 'read' }, 'permissions: contents read, sonst nichts');
     gleich(wf.concurrency, { group: 'fortura-bestand', 'cancel-in-progress': false }, 'concurrency-Gruppe fortura-bestand, nicht abbrechen');
     gleich(job['timeout-minutes'], 60, 'timeout 60 Minuten');
     gleich(job['runs-on'], 'ubuntu-latest', 'ubuntu-latest');
     gleich(Object.keys(wf.jobs), ['abgleich'], 'ein einziger Job');
-    gleich(job.env, { EREIGNIS: '${{ github.event_name }}', SCHREIBEN_EINGABE: '${{ inputs.schreiben }}' }, 'Job-Umgebung wie beim Lager-Wächter');
+    gleich(job.env, { EREIGNIS: '${{ github.event_name }}', SCHREIBEN_EINGABE: '${{ inputs.schreiben }}', NULL_ERLAUBEN_EINGABE: '${{ inputs.null_erlauben }}' }, 'Job-Umgebung wie beim Lager-Wächter, plus die Eingabe null_erlauben');
+    ok(!/FORCE_ZERO/.test(JSON.stringify(job.env)) && !/FORCE_ZERO/.test(JSON.stringify(wf.env || {})), 'FORCE_ZERO steht weder in der Job- noch in der Workflow-Umgebung (nie für alle Schritte)');
 
     // Actions-Versionen wie in den vorhandenen Workflows
     const nutzt = steps.filter(s => s.uses).map(s => s.uses);
@@ -478,18 +498,58 @@ globalThis.fetch = async (url, init = {}) => {
     // Modus-Logik: Text und AUSFÜHRUNG
     const modus = schritt('modus');
     ok(modus.run.includes('dropship/FORTURA-BESTAND-FREI.txt') && modus.run.includes('"$EREIGNIS" = "schedule"') && modus.run.includes('"$SCHREIBEN_EINGABE" = "true"'), 'Modus-Text: Freigabedatei, schedule, Eingabe');
-    const modusLauf = (frei, ereignis, eingabe) => {
+    // Der Modus-Schritt wird in jeder Kombination wirklich ausgeführt: Freigabedatei × Ereignis × «schreiben» × «null_erlauben».
+    const modusLauf = (frei, ereignis, eingabe, nullEingabe = '') => {
       const d = neuerTmp('modus-'); fs.mkdirSync(path.join(d, 'dropship'));
       if (frei) fs.writeFileSync(path.join(d, 'dropship/FORTURA-BESTAND-FREI.txt'), 'ja');
       const out = path.join(d, 'out'); fs.writeFileSync(out, '');
-      const r = spawnSync('bash', ['-e', '-c', modus.run], { cwd: d, env: { PATH: process.env.PATH, GITHUB_OUTPUT: out, EREIGNIS: ereignis, SCHREIBEN_EINGABE: eingabe }, encoding: 'utf8' });
-      return r.status === 0 ? fs.readFileSync(out, 'utf8').trim() : 'FEHLER ' + r.stderr;
+      const r = spawnSync('bash', ['-e', '-c', modus.run], { cwd: d, env: { PATH: process.env.PATH, GITHUB_OUTPUT: out, EREIGNIS: ereignis, SCHREIBEN_EINGABE: eingabe, NULL_ERLAUBEN_EINGABE: nullEingabe }, encoding: 'utf8' });
+      if (r.status !== 0) return { fehler: r.stderr };
+      const o = Object.fromEntries(fs.readFileSync(out, 'utf8').trim().split('\n').map(z => z.split('=')));
+      return { live: o.live, force_zero: o.force_zero, stdout: r.stdout };
     };
-    for (const [frei, ereignis, eingabe, soll] of [
-      [false, 'schedule', '', 'live=0'], [false, 'workflow_dispatch', 'true', 'live=0'], [false, 'workflow_dispatch', 'false', 'live=0'],
-      [true, 'schedule', '', 'live=1'], [true, 'workflow_dispatch', 'true', 'live=1'], [true, 'workflow_dispatch', 'false', 'live=0'],
-      [true, 'workflow_dispatch', '', 'live=0'], [true, 'push', 'true', 'live=1'], [true, 'push', '', 'live=0'],
-    ]) gleich(modusLauf(frei, ereignis, eingabe), soll, `Modus ausgeführt: Freigabe ${frei}, ${ereignis}, Eingabe «${eingabe}» -> ${soll}`);
+    // 1) Von Hand ausgeschriebene Fälle (unabhängig vom Modell unten)
+    for (const [frei, ereignis, eingabe, nullE, live, fz] of [
+      [false, 'schedule', '', '', '0', '0'], [false, 'workflow_dispatch', 'true', '', '0', '0'], [false, 'workflow_dispatch', 'false', '', '0', '0'],
+      [true, 'schedule', '', '', '1', '0'], [true, 'workflow_dispatch', 'true', '', '1', '0'], [true, 'workflow_dispatch', 'false', '', '0', '0'],
+      [true, 'workflow_dispatch', '', '', '0', '0'], [true, 'push', 'true', '', '1', '0'], [true, 'push', '', '', '0', '0'],
+      // neue Eingabe «null_erlauben»
+      [true, 'workflow_dispatch', 'true', 'true', '1', '1'],      // der einzige Weg zu force_zero=1
+      [true, 'workflow_dispatch', 'true', 'false', '1', '0'], [true, 'workflow_dispatch', 'true', '', '1', '0'],
+      [true, 'workflow_dispatch', 'false', 'true', '0', '0'],     // ohne «schreiben» wirkt sie nicht
+      [true, 'workflow_dispatch', '', 'true', '0', '0'],
+      [true, 'schedule', '', 'true', '1', '0'],                   // im Zeitplan nie (auch wenn ein Auslöser sie mitschickte)
+      [true, 'schedule', 'true', 'true', '1', '0'],
+      [false, 'workflow_dispatch', 'true', 'true', '0', '0'],     // ohne Freigabedatei nie
+      [false, 'schedule', '', 'true', '0', '0'],
+      [true, 'push', 'true', 'true', '1', '0'],                   // fremdes Ereignis: nie
+    ]) {
+      const r = modusLauf(frei, ereignis, eingabe, nullE);
+      gleich([r.live, r.force_zero], [live, fz], `Modus ausgeführt: Freigabe ${frei}, ${ereignis}, schreiben «${eingabe}», null_erlauben «${nullE}» -> live=${live}, force_zero=${fz}`);
+    }
+    // 2) Alle Kombinationen gegen das Modell der Regel + Invarianten
+    {
+      let kombis = 0, verstoesse = [];
+      for (const frei of [true, false]) for (const ereignis of ['schedule', 'workflow_dispatch', 'push', '']) for (const eingabe of ['', 'true', 'false', 'TRUE', '1', 'yes']) for (const nullE of ['', 'true', 'false', 'TRUE', '1', 'yes', 'true ']) {
+        const r = modusLauf(frei, ereignis, eingabe, nullE); kombis++;
+        const live = frei && (ereignis === 'schedule' || eingabe === 'true');
+        const fz = live && ereignis === 'workflow_dispatch' && nullE === 'true';
+        const tag = `${frei ? 'frei' : 'ohne Freigabe'}/${ereignis || '-'}/${eingabe || '-'}/${nullE || '-'}`;
+        if (r.live !== (live ? '1' : '0') || r.force_zero !== (fz ? '1' : '0')) verstoesse.push(`${tag}: live=${r.live} force_zero=${r.force_zero}`);
+        if (!frei && (r.live !== '0' || r.force_zero !== '0')) verstoesse.push(`${tag}: OHNE Freigabedatei geschrieben`);
+        if (ereignis !== 'workflow_dispatch' && r.force_zero !== '0') verstoesse.push(`${tag}: Bremse ausserhalb eines Handstarts aufgehoben`);
+        if (r.force_zero === '1' && r.live !== '1') verstoesse.push(`${tag}: force_zero ohne Schreibmodus`);
+      }
+      gleich(verstoesse, [], `Modus ausgeführt: ${kombis} Kombinationen — ohne Freigabedatei nie Schreiben, force_zero nur bei Handstart im Schreibmodus mit null_erlauben=true`);
+      ok(kombis === 2 * 4 * 6 * 7, 'Modus: alle Kombinationen wurden gefahren');
+    }
+    {
+      const r = modusLauf(true, 'workflow_dispatch', 'true', 'true');
+      ok(/::warning title=Nullungs-Bremse aufgehoben::/.test(r.stdout), 'Modus: bei aufgehobener Bremse steht eine Warnung im Lauf');
+      const r2 = modusLauf(false, 'workflow_dispatch', 'true', 'true');
+      ok(/null_erlauben wirkt nur bei Handstart mit Freigabedatei und schreiben=true; hier ignoriert/.test(r2.stdout) && !/::warning/.test(r2.stdout), 'Modus: ignorierte Eingabe wird gemeldet, ohne Warnung');
+      ok(!/ignoriert|::warning/.test(modusLauf(true, 'schedule', '', '').stdout), 'Modus: im Zeitplan keine Meldung zur Eingabe');
+    }
 
     // Reihenfolge der Schritte
     const namen = steps.map(s => s.id || s.uses);
@@ -529,6 +589,20 @@ globalThis.fetch = async (url, init = {}) => {
     // Nachprüfung und Stempel dürfen nie laufen, wenn der Abgleich keinen Exit-Code hinterlassen hat (Schritt übersprungen oder abgebrochen), auch nicht über null == '0'
     ok(!auswerten(schritt('nach').if, { live: '1', sync: undefined }) && !auswerten(schritt('stempel').if, { live: '1', sync: undefined }), 'ohne Exit-Code des Abgleichs (Schritt übersprungen) laufen weder Nachprüfung noch Stempel');
     ok(schritt('nach').if.includes("steps.sync.outputs.rc != ''"), 'Nachprüfung: Wächter «rc != \'\'» steht in der Bedingung');
+    // Nullungs-Bremse und abgeschnittener Feed: Verdrahtung im Text
+    {
+      const sy = schritt('sync'), na = schritt('nach'), st = schritt('stempel');
+      ok(sy.env.FORCE_ZERO_MODUS === '${{ steps.modus.outputs.force_zero }}' && sy.env.LIVE === '${{ steps.modus.outputs.live }}', 'Abgleich-Schritt bekommt live und force_zero aus dem Modus-Schritt');
+      ok(!('FORCE_ZERO' in sy.env) && !('FORCE_ZERO' in na.env) && !('FORCE_ZERO' in st.env), 'FORCE_ZERO steht in keiner env-Zeile; es wird nur im Abgleich-Skript gesetzt');
+      ok(sy.run.includes('if [ "$LIVE" = "1" ] && [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi'), 'Abgleich: FORCE_ZERO nur im Schreibmodus mit Meldung des Modus-Schritts, sonst gelöscht');
+      ok(/^\s*unset FORCE_ZERO\s*$/m.test(na.run) && !/export FORCE_ZERO/.test(na.run), 'Nachprüfung: FORCE_ZERO wird gelöscht, nie gesetzt');
+      ok(na.run.indexOf('unset FORCE_ZERO') < na.run.indexOf('DRY=1 node'), 'Nachprüfung: FORCE_ZERO wird VOR dem Lauf gelöscht');
+      ok(!/FORCE_ZERO/.test(st.run) && !/FORCE_ZERO/.test(JSON.stringify(st.env)), 'Stempel-Schritt kennt FORCE_ZERO nicht (das Skript lehnt eine geerbte Variable ab)');
+      const syncText = fs.readFileSync(path.join(WURZEL, 'automation/fortura_bestand_sync.mjs'), 'utf8');
+      ok(/process\.env\.MIN_FEED_ROWS/.test(syncText) && /process\.env\.FORCE_ZERO !== '1'/.test(syncText), 'Das Abgleich-Skript liest MIN_FEED_ROWS und FORCE_ZERO unter genau diesen Namen');
+      gleich([sy.env.MIN_FEED_ROWS, na.env.MIN_FEED_ROWS], ['18000', '18000'], 'MIN_FEED_ROWS=18000 im Abgleich UND in der Nachprüfung (Feed vom 05.11.: 20 309 Zeilen)');
+      ok(!('MIN_FEED_ROWS' in schritt('feed').env) && !('MIN_FEED_ROWS' in st.env), 'MIN_FEED_ROWS nur dort, wo das Abgleich-Skript läuft');
+    }
     // Alter des Feeds: Grenze 36 Stunden nur im Schreibmodus; Zeitlimit des Abrufs
     {
       const feed = schritt('feed');
@@ -541,10 +615,17 @@ globalThis.fetch = async (url, init = {}) => {
     const hoch = steps.find(s => s.uses === 'actions/upload-artifact@v4');
     ok(hoch.if === 'always()', 'Artefakt wird immer hochgeladen');
     gleich(hoch.with.name, 'fortura-bestand-protokoll', 'Artefaktname');
+    // Das Artefakt trägt nur den bereinigten Ordner protokoll/ (Schritt «Protokoll bereinigen»), 7 Tage
     const apfade = hoch.with.path.split('\n').map(z => z.trim()).filter(Boolean);
-    for (const p of ['dropship/_fortura_bestand_log.tsv', 'dropship/_fortura_bestand_report.md', 'dropship/_fortura_bestand_stand.json', 'lauf-sync.txt', 'lauf-nach.txt', 'lauf-stempel.txt', 'lauf-feed.txt']) ok(apfade.includes(p), `Artefakt enthält ${p}`);
-    ok(!apfade.some(p => /fortura_feed|feed\.csv|token|\*\*|^\.$/i.test(p)), 'Artefakt enthält weder den Feed noch den Token noch Pauschalpfade');
+    gleich(apfade, ['protokoll/'], 'Artefakt: genau ein Pfad, der bereinigte Ordner protokoll/ (keine Rohdateien, keine Pauschalpfade)');
+    ok(!apfade.some(p => /fortura_feed|feed\.csv|token|\*\*|^\.$|lauf-/i.test(p)), 'Artefakt enthält weder den Feed noch den Token noch Pauschalpfade noch Rohlogs');
+    gleich(hoch.with['retention-days'], 7, 'Artefakt: 7 Tage Aufbewahrung (Repo ist öffentlich)');
     ok(hoch.with['if-no-files-found'] === 'ignore', 'Artefakt: fehlende Dateien sind kein Fehler');
+    {
+      const nr = (name) => steps.findIndex(s => s.name === name);
+      ok(nr('Protokoll bereinigen') > nr('Zusammenfassung') && nr('Protokoll bereinigen') >= 0 && nr('Protokoll bereinigen') < steps.indexOf(hoch), 'Reihenfolge: erst bereinigen, dann hochladen');
+    }
+    gleich(steps.find(s => s.name === 'Protokoll bereinigen').if, 'always()', 'Bereinigung läuft immer (auch nach rotem Schritt)');
 
     // Stempel-Schritt: Eingaben
     const se = schritt('stempel').env;
@@ -578,7 +659,7 @@ globalThis.fetch = async (url, init = {}) => {
       const r = spawnSync('bash', ['-e', '-c', s.run], { cwd: d, encoding: 'utf8', env: { PATH: process.env.PATH, GITHUB_OUTPUT: out, GITHUB_ENV: envd, GITHUB_STEP_SUMMARY: sum, RUNNER_TEMP: path.join(d, 'rt'), ...env } });
       return { ...r, out: fs.readFileSync(out, 'utf8'), envd: fs.readFileSync(envd, 'utf8'), sum: fs.readFileSync(sum, 'utf8') };
     };
-    const STUB = "console.log('STUB DRY=' + (process.env.DRY ?? 'unset') + ' SECRET=' + process.env.SHOPIFY_CLIENT_SECRET + ' ARGS=' + process.argv.slice(2).join(',')); process.exit(Number(process.env.STUB_EXIT || 0));";
+    const STUB = "console.log('STUB DRY=' + (process.env.DRY ?? 'unset') + ' SECRET=' + process.env.SHOPIFY_CLIENT_SECRET + ' ARGS=' + process.argv.slice(2).join(',') + ' FZ=' + (process.env.FORCE_ZERO ?? 'unset') + ' MFR=' + (process.env.MIN_FEED_ROWS ?? 'unset')); process.exit(Number(process.env.STUB_EXIT || 0));";
     const roh = 'shpss_' + '0123456789abcdef'.repeat(2);
     for (const [wie, live, exit, dry] of [['live', '1', '0', 'unset'], ['Trockenlauf', '0', '0', '1'], ['live, Exit 1', '1', '1', 'unset'], ['live, Exit 2', '1', '2', 'unset']]) {
       const d = stubDir({ 'automation/fortura_bestand_sync.mjs': STUB });
@@ -588,6 +669,19 @@ globalThis.fetch = async (url, init = {}) => {
       ok(r.stdout.includes(`STUB DRY=${dry} `), `Abgleich-Schritt (${wie}): DRY=${dry}`);
       ok(r.stdout.includes(`SECRET=${roh} `), `Abgleich-Schritt (${wie}): Client-Secret ist bereinigt`);
       ok(fs.readFileSync(path.join(d, 'lauf-sync.txt'), 'utf8').includes('STUB'), `Abgleich-Schritt (${wie}): Text liegt in lauf-sync.txt`);
+    }
+    // FORCE_ZERO: nur im Schreibmodus UND mit Meldung des Modus-Schritts; ein von aussen geerbter Wert wird nie durchgereicht
+    for (const live of ['1', '0', '']) for (const modusFz of ['1', '0', '']) for (const geerbt of [undefined, '1', '0']) {
+      const d = stubDir({ 'automation/fortura_bestand_sync.mjs': STUB });
+      const r = fuehre(schritt('sync'), d, { LIVE: live, FORCE_ZERO_MODUS: modusFz, FORCE_ZERO: geerbt, MIN_FEED_ROWS: schritt('sync').env.MIN_FEED_ROWS, SHOPIFY_CLIENT_ID: 'i', SHOPIFY_CLIENT_SECRET: roh });
+      const soll = live === '1' && modusFz === '1' ? '1' : 'unset';
+      ok(r.stdout.includes(` FZ=${soll} `), `Abgleich-Schritt: live «${live}», force_zero «${modusFz}», geerbt ${geerbt ?? '-'} -> FORCE_ZERO ${soll} (war: ${(r.stdout.match(/ FZ=(\S+)/) || [])[1]})`);
+      ok(r.stdout.includes(' MFR=18000'), `Abgleich-Schritt (live «${live}»): MIN_FEED_ROWS=18000 kommt beim Skript an`);
+    }
+    for (const geerbt of [undefined, '1', '0', 'true']) {
+      const d = stubDir({ 'automation/fortura_bestand_sync.mjs': STUB });
+      const r = fuehre(schritt('nach'), d, { FORCE_ZERO: geerbt, FORCE_ZERO_MODUS: '1', MIN_FEED_ROWS: schritt('nach').env.MIN_FEED_ROWS, SHOPIFY_CLIENT_ID: 'i', SHOPIFY_CLIENT_SECRET: roh });
+      ok(r.stdout.includes(' FZ=unset ') && r.stdout.includes('STUB DRY=1 ') && r.stdout.includes(' MFR=18000'), `Nachprüfung: FORCE_ZERO wird nie durchgereicht (geerbt ${geerbt ?? '-'}), DRY=1, MIN_FEED_ROWS=18000`);
     }
     for (const exit of ['0', '2']) {
       const d = stubDir({ 'automation/fortura_bestand_sync.mjs': STUB });
@@ -628,6 +722,70 @@ globalThis.fetch = async (url, init = {}) => {
       const r2 = fuehre(steps.find(s => s.name === 'Zusammenfassung'), stubDir({}), { LIVE: '0' });
       gleich(r2.status, 0, 'Zusammenfassung läuft auch ohne jede Datei');
       ok(r2.sum.includes('nur gelesen') && r2.sum.includes('(kein Lauf)'), 'Zusammenfassung im Trockenlauf ohne Dateien');
+      ok(!r.sum.includes('aufgehoben') && !r2.sum.includes('aufgehoben'), 'Zusammenfassung: ohne null_erlauben kein Hinweis auf eine aufgehobene Bremse');
+      const r3 = fuehre(steps.find(s => s.name === 'Zusammenfassung'), d, { LIVE: '1', FORCE_ZERO_MODUS: '1' });
+      ok(r3.sum.includes('Nullungs-Bremse: **aufgehoben**') && r3.sum.includes('Nachprüfung lief mit scharfer Bremse'), 'Zusammenfassung nennt eine aufgehobene Nullungs-Bremse');
+    }
+
+    // Protokoll bereinigen: das Artefakt enthält keine Produkttitel, keinen Feed, keinen Token
+    {
+      const bereinigen = steps.find(s => s.name === 'Protokoll bereinigen');
+      const T1 = 'GEHEIMTITEL-Weihnachtsmann-Kostüm', T2 = 'GEHEIMTITEL-Feed-Abgleich: 5 unverändert';
+      const syncLog = [
+        'Feed /home/runner/work/_temp/fortura_feed.csv: 20308 Zeilen → 18900 Artikelnummern (Fingerabdruck 0a1b2c3d4e5f)',
+        'Shop: 8416 Varianten mit SKU fortura-* auf 141 Seiten', '',
+        'Abgleich: 6532 unverändert · 1884 zu ändern (davon 161 auf 0) · 8 SKU nicht mehr im Feed (0.1 %) · 0 ohne Bestandsführung (unangetastet) · 0 ohne CH-Lagerzeile',
+        'ACTIVE: 2258 Varianten · verkaufbar vorher 2258 → nachher 2195 (63 wegen Bazar-/Puffer-/Committed-Abzug nicht mehr bestellbar)',
+        `  fortura-HB2887ML          3 →     0  feed  ${T1}`,
+        `  fortura-ZZ00000           2 →     0  nicht-mehr-im-feed  ${T2}`,
+        '  fortura-A1                1 →     4  feed  Abgleich: 99 unverändert · 1 zu ändern',
+        '  … und 1859 weitere', '',
+        'Wiederaufnahme: 3 bereits in diesem Feed-Lauf gesetzt.',
+        '… 100/1884 (ok 100, offen 0)', '… 1884/1884 (ok 1884, offen 0)', '',
+        'FERTIG. geändert=1884 offen=0 unverändert=6532 → dropship/_fortura_bestand_report.md',
+        'ABBRUCH (Nullungs-Bremse): 161 von 2500 verkaufbaren Varianten würden auf 0 fallen (Grenze 375). Nichts geschrieben.',
+        'OFFEN: Feed hat nur 12 Zeilen (< 18000) — abgeschnittener Download. Nichts geschrieben.', '[DRY] nichts geschrieben.', '',
+      ].join('\n');
+      const feedLog = ['Fortura-Feed geladen -> /home/runner/work/_temp/fortura_feed.csv (11700000 Bytes, 20309 Zeilen, Stand auf dem Server 2026-11-05T01:00:00Z)',
+        '  Login: HTTP 503', '  Download zu klein: 100 Bytes (Mindestens 9000000). Abgeschnitten oder Fehlerantwort.', '  Neuer Versuch in 20s (1/3)…', 'HINWEIS: Stand nicht lesbar', 'FEHLER (Fortura-Feed): x',
+        'DEBUG _sid=GEHEIMSID-123', '  curl -u GEHEIMUSER:GEHEIMPW https://x', ''].join('\n');
+      const baue = (u = {}) => {
+        const d = stubDir({}); fs.mkdirSync(path.join(d, 'rt'));
+        if (u.logs !== false) {
+          fs.writeFileSync(path.join(d, 'lauf-feed.txt'), feedLog); fs.writeFileSync(path.join(d, 'lauf-sync.txt'), syncLog); fs.writeFileSync(path.join(d, 'lauf-nach.txt'), syncLog);
+          fs.writeFileSync(path.join(d, 'lauf-stempel.txt'), 'Gate: Live-Exit 0 · ...\nSTEMPEL gesetzt: shop.metafields.luxe.fortura_bestand_stand = 2026-11-05T04:00:00Z (frisch zurückgelesen)\n');
+          fs.writeFileSync(path.join(d, 'dropship/_fortura_bestand_log.tsv'), '2026-11-05T04:01:00.000Z\t0a1b2c3d4e5f\tfortura-HB2887ML\t3\t0\tok\tfeed\t\tgid://shopify/InventoryItem/1\tACTIVE\n');
+          fs.writeFileSync(path.join(d, 'dropship/_fortura_bestand_report.md'), '# Fortura-Bestandsabgleich\n');
+          fs.writeFileSync(path.join(d, 'dropship/_fortura_bestand_stand.json'), '{"offen":0}');
+        }
+        // Dinge, die NICHT ins Artefakt gehören und im Arbeitsordner liegen könnten
+        fs.writeFileSync(path.join(d, 'fortura_feed.csv'), 'ArtNr|Bezeichnung\nGEHEIMFEED|x\n'); fs.writeFileSync(path.join(d, 'shop_token.txt'), 'shpat_GEHEIMTOKEN');
+        fs.writeFileSync(path.join(d, 'dropship/_fortura_sperr_varianten.txt'), 'gid://x'); fs.writeFileSync(path.join(d, 'lauf-sonst.txt'), 'GEHEIMSONST');
+        return d;
+      };
+      const d = baue();
+      const r = fuehre(bereinigen, d, { LIVE: '1' });
+      gleich(r.status, 0, 'Protokoll bereinigen: Exit 0');
+      const pdir = path.join(d, 'protokoll');
+      gleich(fs.readdirSync(pdir).sort(), ['00-LIESMICH.txt', '_fortura_bestand_log.tsv', '_fortura_bestand_report.md', '_fortura_bestand_stand.json', 'lauf-feed.txt', 'lauf-nach.txt', 'lauf-stempel.txt', 'lauf-sync.txt'], 'Protokoll: genau diese acht Dateien, sonst nichts (kein Feed, kein Token, keine Sperrliste)');
+      const alles = fs.readdirSync(pdir).map(f => fs.readFileSync(path.join(pdir, f), 'utf8')).join('\n----\n');
+      for (const geheim of ['GEHEIMTITEL', 'Weihnachtsmann', 'GEHEIMFEED', 'GEHEIMTOKEN', 'GEHEIMSONST', 'GEHEIMSID', 'GEHEIMUSER', 'GEHEIMPW', 'fortura-HB2887ML          3']) ok(!alles.includes(geheim), `Protokoll enthält «${geheim}» nicht`);
+      ok(!/^ {2}fortura-/m.test(alles) && !/und 1859 weitere/.test(alles), 'Protokoll: keine Planzeilen (SKU + Bestand + Titel), auch nicht der Rest «… und N weitere»');
+      for (const nutz of ['Feed /home/runner/work/_temp/fortura_feed.csv: 20308 Zeilen', 'Shop: 8416 Varianten', 'Abgleich: 6532 unverändert · 1884 zu ändern (davon 161 auf 0)', 'ACTIVE: 2258 Varianten', 'Wiederaufnahme: 3', '… 100/1884 (ok 100, offen 0)', 'FERTIG. geändert=1884 offen=0', 'ABBRUCH (Nullungs-Bremse): 161 von 2500', 'OFFEN: Feed hat nur 12 Zeilen', '[DRY] nichts geschrieben.']) {
+        ok(fs.readFileSync(path.join(pdir, 'lauf-sync.txt'), 'utf8').includes(nutz) && fs.readFileSync(path.join(pdir, 'lauf-nach.txt'), 'utf8').includes(nutz), `Protokoll behält die Zahlenzeile «${nutz.slice(0, 40)}»`);
+      }
+      const fl = fs.readFileSync(path.join(pdir, 'lauf-feed.txt'), 'utf8');
+      ok(fl.includes('Fortura-Feed geladen') && fl.includes('  Login: HTTP 503') && fl.includes('  Download zu klein: 100 Bytes') && fl.includes('FEHLER (Fortura-Feed)'), 'Protokoll: die Diagnosezeilen des Feed-Abrufs bleiben');
+      ok(fs.readFileSync(path.join(pdir, 'lauf-stempel.txt'), 'utf8').includes('STEMPEL gesetzt'), 'Protokoll: Stempel-Ausgabe bleibt');
+      ok(fs.readFileSync(path.join(pdir, '_fortura_bestand_log.tsv'), 'utf8').includes('fortura-HB2887ML\t3\t0\tok'), 'Protokoll: Journal (SKU, alt, neu) ist vollständig kopiert');
+      const kopf = fs.readFileSync(path.join(pdir, '00-LIESMICH.txt'), 'utf8');
+      ok(kopf.startsWith('Fortura-Bestand (Abgleich): Protokoll dieses Laufs, 7 Tage aufbewahrt.') && !/^ /m.test(kopf.split('\n')[0]) && !kopf.includes('ENDE'), 'LIESMICH: Kopfzeile steht in Spalte 1, die Heredoc-Marke ist nicht im Text');
+      ok(/Rücknahme/.test(kopf) && /4 alt \(Bestand VORHER\)/.test(kopf) && /5 neu \(Bestand NACHHER\)/.test(kopf) && /Spalte 9/.test(kopf) && /Ein fertiges Rücknahme-Skript gibt es nicht/.test(kopf), 'LIESMICH: sagt wofür (Rücknahme über die Journal-Spalten alt/neu) und dass es kein Rücknahme-Skript gibt');
+      ok(/keine Produkttitel, keine Feed-Datei, keine Zugangsdaten/.test(kopf), 'LIESMICH: nennt, was NICHT enthalten ist');
+      // Ohne jede Datei (z. B. Zugang fehlt): läuft durch, nur das LIESMICH
+      const d2 = baue({ logs: false });
+      const r2 = fuehre(bereinigen, d2, { LIVE: '0' });
+      gleich([r2.status, fs.readdirSync(path.join(d2, 'protokoll'))], [0, ['00-LIESMICH.txt']], 'Protokoll ohne Läufe: Exit 0, nur das LIESMICH');
     }
   }
 }

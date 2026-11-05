@@ -7,6 +7,12 @@
 //   2. Schreiblauf + Nachprüfung + Stempel: Shop gleich Feed, offen=0, Nachprüfung 0 zu ändern, Stempel gesetzt
 //   3. Schreiblauf mit 6 Varianten, die Shopify ablehnt: Exit 1, offen=6, KEIN Stempel (auch wenn die Nachprüfung unter der 40er-Grenze liegt)
 //   4. alter Feed (40 Stunden) -> KEIN Stempel
+//   5. Standardgrenzen des Stempel-Skripts im Prozess (MIN_VARIANTEN 6000; FORCE_ZERO im Stempel-Schritt wird abgelehnt)
+//   6. die SCHRITTE DES WORKFLOWS selbst (aus der YAML gelesen, mit aufgelösten ${{ }}-Ausdrücken und den if-Bedingungen) hintereinander, in jeder Lage der Eingaben:
+//      Zeitplan / Handstart × «schreiben» × «null_erlauben» × Freigabedatei, gegen eine Welt, in der die Nullungs-Bremse des Abgleichs anschlägt
+//      (160 von 200 verkaufbaren Varianten gingen auf 0, Grenze 150) — ohne Freigabedatei wird nie geschrieben; die Bremse wird nur im Schreiblauf eines
+//      Handstarts mit null_erlauben aufgehoben; die Nachprüfung läuft immer mit scharfer Bremse; der Stempel steht nur, wenn die Nachprüfung danach ≤ Grenze zeigt.
+//      Testgrössen (nicht die des Betriebs): MIN_FEED_ROWS=100 und MIN_VARIANTEN=100 statt 18000 und 6000, ausser im Fall «echte Feed-Grenze».
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -50,7 +56,7 @@ globalThis.fetch = async (url, init = {}) => {
     s.schreibaufrufe = (s.schreibaufrufe || 0) + 1;
     const fehl = liste.filter(x => { const v = s.varianten.find(w => w.ii === x.inventoryItemId); return !v || v.haengt || v.ist !== x.compareQuantity; });
     if (fehl.length) { speichern(); return antwort({ data: { inventorySetQuantities: { inventoryAdjustmentGroup: null, userErrors: [{ field: ['input'], message: 'compareQuantity passt nicht', code: 'COMPARE_QUANTITY_MISMATCH' }] } } }); }
-    for (const x of liste) s.varianten.find(w => w.ii === x.inventoryItemId).ist = x.quantity;
+    if (!s.ignorieren) for (const x of liste) s.varianten.find(w => w.ii === x.inventoryItemId).ist = x.quantity;
     speichern();
     return antwort({ data: { inventorySetQuantities: { inventoryAdjustmentGroup: { createdAt: '2026-11-05T03:55:00Z' }, userErrors: [] } } });
   }
@@ -64,11 +70,16 @@ globalThis.fetch = async (url, init = {}) => {
 /* ---------- Welt bauen: künstlicher Feed und passender Shop ---------- */
 const ANZAHL = 300, OHNE_FEED = 4;   // 300 Varianten im Shop, vier davon nicht mehr im Feed
 const JETZT = Date.now();
-function welt({ haengen = 0, feedAlterH = 2 } = {}) {
+function arbeitsordner({ frei = true } = {}) {   // wie der Sparse-Checkout des Workflows: nur die nötigen Dateien (echte Kopien, keine Verknüpfung: das Stempel-Skript erkennt seinen Start am Pfad)
   const d = neuerTmp();
-  fs.mkdirSync(path.join(d, 'dropship'));
+  fs.mkdirSync(path.join(d, 'dropship')); fs.mkdirSync(path.join(d, 'automation/lib'), { recursive: true });
   fs.copyFileSync(path.join(WURZEL, 'dropship/_fortura_sperr_varianten.txt'), path.join(d, 'dropship/_fortura_sperr_varianten.txt'));
-  fs.writeFileSync(path.join(d, 'dropship/FORTURA-BESTAND-FREI.txt'), 'ja\n');
+  for (const f of ['fortura_bestand_sync.mjs', 'fortura_bestand_stempel.mjs', 'lib/shopify_gql.mjs', 'lib/shopify_secret.mjs', 'lib/shopify_host.mjs']) fs.copyFileSync(path.join(WURZEL, 'automation', f), path.join(d, 'automation', f));
+  if (frei) fs.writeFileSync(path.join(d, 'dropship/FORTURA-BESTAND-FREI.txt'), 'ja\n');
+  return d;
+}
+function welt({ haengen = 0, feedAlterH = 2, frei = true } = {}) {
+  const d = arbeitsordner({ frei });
   // Feed: 400 Zeilen, Bestand Fortura = i % 7 (6 von 7 Artikeln positiv), Puffer 1 -> Soll max(0, i % 7 - 1)
   const zeilen = ['ArtNr|Bezeichnung|Lagerbestand Bazar|Lagerbestand Fortura|Lagerbestand Total|Internet_VE'];
   for (let i = 0; i < 400; i++) zeilen.push(`A${String(i).padStart(5, '0')}|Artikel ${i}|3|${i % 7}|${3 + (i % 7)}|1`);
@@ -185,6 +196,187 @@ const stempeln = (w, extra) => laufen(STEMPEL, w, env(w, { LIVE: '1', FEED_DATEI
   gleich(st.status, 1, 'alter Feed (40 Stunden): Stempel verweigert');
   ok(/\(c\) Feed ist 40\.\d Stunden alt/.test(st.stdout), 'alter Feed: Grund (c) steht in der Ausgabe');
   gleich(lies(w).stempel, null, 'alter Feed: kein Stempel');
+}
+
+/* ---------- 5. Standardgrenzen des Stempel-Skripts im Prozess ---------- */
+{
+  const w = welt();
+  const live = laufen(SYNC, w, env(w), 'lauf-sync.txt');
+  const nach = laufen(SYNC, w, env(w, { DRY: '1' }), 'lauf-nach.txt');
+  gleich([live.status, nach.status], [0, 0], 'Standardgrenzen: Abgleich und Nachprüfung laufen durch (Shop = Feed)');
+  const ohneGrenze = (extra = {}) => laufen(STEMPEL, w, env(w, { LIVE: '1', FEED_DATEI: w.feed, NACH_DATEI: path.join(w.d, 'lauf-nach.txt'), LIVE_EXIT: '0', NACH_EXIT: '0', ...extra }));
+  let st = ohneGrenze();
+  gleich(st.status, 1, 'Standardgrenzen: ohne MIN_VARIANTEN gilt 6000: 300 gesehene Varianten genügen nicht, Exit 1');
+  ok(/\(b\) Nachprüfung sah nur 300 Fortura-Varianten \(weniger als 6000\)/.test(st.stdout), 'Standardgrenzen: der Grund nennt 6000');
+  gleich(lies(w).stempel, null, 'Standardgrenzen: kein Stempel');
+  // FORCE_ZERO im Stempel-Schritt (geerbt): abgelehnt, auch wenn alles andere stimmt
+  st = stempeln(w, { LIVE_EXIT: '0', NACH_EXIT: '0', FORCE_ZERO: '1' });
+  gleich(st.status, 1, 'FORCE_ZERO im Stempel-Schritt: Exit 1');
+  ok(/FORCE_ZERO ist im Stempel-Schritt gesetzt/.test(st.stdout), 'FORCE_ZERO im Stempel-Schritt: Grund steht in der Ausgabe');
+  gleich(lies(w).stempel, null, 'FORCE_ZERO im Stempel-Schritt: kein Stempel');
+  st = stempeln(w, { LIVE_EXIT: '0', NACH_EXIT: '0' });
+  gleich(st.status, 0, 'Gegenprobe: dieselben Eingaben ohne FORCE_ZERO und mit Testgrenze 100 -> Stempel gesetzt');
+  ok(!!lies(w).stempel, 'Gegenprobe: Stempel liegt in der Attrappe');
+}
+
+/* ---------- 6. Die Schritte des Workflows selbst, in jeder Lage der Eingaben ---------- */
+const WF = path.join(WURZEL, '.github/workflows/fortura-bestand.yml');
+const py = spawnSync('python3', ['-I', '-c', 'import sys,json,yaml\nd=yaml.safe_load(open(sys.argv[1],encoding="utf-8"))\nif True in d: d["on"]=d.pop(True)\njson.dump(d,sys.stdout,default=str)', WF], { encoding: 'utf8' });
+ok(py.status === 0, 'Workflow-Kette: Workflow lesbar (python3 mit PyYAML)');
+if (py.status === 0) {
+  const wf = JSON.parse(py.stdout);
+  const SCHRITTE = wf.jobs.abgleich.steps;
+  const schritt = (id) => SCHRITTE.find(x => x.id === id);
+  const SECRETS = { FORTURA_FTP_USER: 'u', FORTURA_FTP_PW: 'p', SHOPIFY_CLIENT_ID: 'id', SHOPIFY_CLIENT_SECRET: 'secret' };
+
+  // Auflösung der einfachen Ausdrücke (nur die, die in den env-Blöcken dieser Schritte vorkommen)
+  const aufloesen = (wert, ctx) => String(wert).replace(/\$\{\{\s*([^}]+?)\s*\}\}/g, (_, a) => {
+    let mm;
+    if ((mm = a.match(/^steps\.(\w+)\.outputs\.(\w+)$/))) return ctx.steps[mm[1]]?.outputs[mm[2]] ?? '';
+    if ((mm = a.match(/^secrets\.(\w+)$/))) return SECRETS[mm[1]] ?? '';
+    if (a === 'github.event_name') return ctx.ereignis;
+    if ((mm = a.match(/^inputs\.(\w+)$/))) return ctx.inputs[mm[1]] ?? '';
+    throw new Error('Ausdruck nicht auflösbar: ' + a);
+  });
+  // Bedingungen wie bei GitHub (null == '0' ist wahr; fehlende Ausgabe = null): dieselbe Auswertung wie in stempel_test.mjs
+  const ghZahl = (v) => (v === null || v === undefined ? 0 : typeof v === 'boolean' ? Number(v) : typeof v === 'number' ? v : (String(v).trim() === '' ? 0 : Number(v)));
+  const ghGleich = (a, b) => (typeof a === 'string' && typeof b === 'string' ? a.toLowerCase() === b.toLowerCase() : ghZahl(a) === ghZahl(b));
+  const bedingung = (ausdruck, ctx) => {
+    const js = ausdruck.replace(/^\$\{\{\s*|\s*\}\}$/g, '').replace(/([\w.]+)\s*(==|!=)\s*('[^']*')/g, (_, a, op, b) => `${op === '!=' ? '!' : ''}GLEICH(${a}, ${b})`);
+    const steps = new Proxy({}, { get: (_, id) => ({ outputs: new Proxy(ctx.steps[id]?.outputs || {}, { get: (o, k) => (o[k] === undefined || o[k] === '' ? null : o[k]) }) }) });
+    return Boolean(new Function('steps', 'cancelled', 'always', 'GLEICH', `return (${js});`)(steps, () => false, () => true, ghGleich));
+  };
+
+  // Eine Welt, in der die Nullungs-Bremse des Abgleichs anschlägt: 200 Varianten, alle mit Bestand 3; der Feed meldet nur bei jeder fünften Fortura-Bestand
+  // (Soll 4), bei den übrigen 160 keinen (Soll 0). 160 verkaufbare Varianten gehen auf 0: mehr als max(150, 15 % von 200). Der Anteil mit Bestand im Feed
+  // (20 %) liegt über der Feed-Bremse (15 %).
+  const NULL_ANZAHL = 200;
+  const nullSoll = (i) => (i % 5 === 0 ? 4 : 0);
+  function weltNull({ frei = true, ignorieren = false } = {}) {
+    const d = arbeitsordner({ frei });
+    const zeilen = ['ArtNr|Bezeichnung|Lagerbestand Bazar|Lagerbestand Fortura|Lagerbestand Total|Internet_VE'];
+    for (let i = 0; i < NULL_ANZAHL; i++) zeilen.push(`B${String(i).padStart(5, '0')}|Artikel ${i}|0|${i % 5 === 0 ? 5 : 0}|${i % 5 === 0 ? 5 : 0}|1`);
+    const feed = path.join(d, 'feed.csv'); fs.writeFileSync(feed, zeilen.join('\r\n') + '\r\n', 'latin1');
+    const t = new Date(JETZT - 2 * 3600000); fs.utimesSync(feed, t, t);
+    const varianten = [];
+    for (let i = 0; i < NULL_ANZAHL; i++) varianten.push({ sku: `fortura-B${String(i).padStart(5, '0')}`, ii: `gid://shopify/InventoryItem/${200000 + i}`, tracked: true, status: 'ACTIVE', ist: 3, committed: 0, haengt: false });
+    const stand = path.join(d, 'sim.json'); fs.writeFileSync(stand, JSON.stringify({ varianten, stempel: null, ignorieren }));
+    return { d, feed, stand };
+  }
+
+  // Führt modus -> Abgleich -> (Nachprüfung) -> (Stempel) so aus, wie GitHub es täte: Ausdrücke aufgelöst, Bedingungen ausgewertet.
+  // `testgroessen`: false lässt MIN_FEED_ROWS beim echten Wert des Workflows (18000).
+  function kette(w, { ereignis, schreiben = '', nullErlauben = '', testgroessen = true }) {
+    const ctx = { steps: {}, ereignis, inputs: ereignis === 'schedule' ? {} : { schreiben, null_erlauben: nullErlauben } };
+    // Ein Zeitplan-Lauf kennt keine Eingaben. Ein (hypothetisch) mitgeschickter Wert wird über die Job-Umgebung durchgereicht, um den Schutz zu prüfen.
+    const jobEnv = Object.fromEntries(Object.entries(wf.jobs.abgleich.env || {}).map(([k, v]) => [k, aufloesen(v, ctx)]));
+    if (ereignis === 'schedule') { jobEnv.SCHREIBEN_EINGABE = schreiben; jobEnv.NULL_ERLAUBEN_EINGABE = nullErlauben; }
+    const basis = { PATH: `${path.dirname(process.execPath)}:/usr/bin:/bin`, HOME: os.tmpdir(), NODE_OPTIONS: `--import=${pathToFileURL(vorlauf).href}`, SIM_STATE: w.stand,
+      FORTURA_CSV: w.feed, SHOPIFY_TOKEN_FILE: path.join(w.d, 'tok.txt'), RUNNER_TEMP: w.d };
+    const gefahren = {};
+    const fahre = (id) => {
+      const st = schritt(id), out = path.join(w.d, `gh_out_${id}`); fs.writeFileSync(out, '');
+      const e = { ...basis, ...jobEnv, ...Object.fromEntries(Object.entries(st.env || {}).map(([k, v]) => [k, aufloesen(v, ctx)])), GITHUB_OUTPUT: out };
+      if (testgroessen && (id === 'sync' || id === 'nach')) e.MIN_FEED_ROWS = '100';
+      if (testgroessen && id === 'stempel') e.MIN_VARIANTEN = '100';
+      const r = spawnSync('bash', ['-e', '-c', st.run], { cwd: w.d, env: e, encoding: 'utf8', timeout: 170000 });
+      ctx.steps[id] = { outputs: Object.fromEntries(fs.readFileSync(out, 'utf8').split('\n').filter(Boolean).map(z => { const i = z.indexOf('='); return [z.slice(0, i), z.slice(i + 1)]; })) };
+      gefahren[id] = true; return r;
+    };
+    fahre('modus');
+    fahre('sync');
+    const nachLaeuft = bedingung(schritt('nach').if, ctx); if (nachLaeuft) fahre('nach');
+    const stempelLaeuft = bedingung(schritt('stempel').if, ctx); if (stempelLaeuft) fahre('stempel');
+    const text = (f) => (fs.existsSync(path.join(w.d, f)) ? fs.readFileSync(path.join(w.d, f), 'utf8') : '');
+    return {
+      live: ctx.steps.modus.outputs.live, forceZero: ctx.steps.modus.outputs.force_zero,
+      rc: { sync: ctx.steps.sync.outputs.rc, nach: ctx.steps.nach?.outputs.rc, stempel: ctx.steps.stempel?.outputs.rc },
+      nachLaeuft, stempelLaeuft, logSync: text('lauf-sync.txt'), logNach: text('lauf-nach.txt'), logStempel: text('lauf-stempel.txt'),
+    };
+  }
+  const BREMSE = /ABBRUCH \(Nullungs-Bremse\): 160 von 200 verkaufbaren Varianten würden auf 0 fallen \(Grenze 150\)/;
+  const ZEIT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+  const nullZiel = (w) => lies(w).varianten.filter((v, i) => v.ist !== nullSoll(i)).length;
+
+  // 6.0 Grundprobe: normaler Tageslauf über die Schritte des Workflows (Zeitplan, Freigabe, Shop weicht um 71 Varianten ab)
+  {
+    const w = welt(); const r = kette(w, { ereignis: 'schedule' });
+    gleich([r.live, r.forceZero], ['1', '0'], 'Kette Zeitplan (normaler Tag): live=1, Bremse nicht aufgehoben');
+    gleich(r.rc, { sync: '0', nach: '0', stempel: '0' }, 'Kette Zeitplan (normaler Tag): Abgleich, Nachprüfung, Stempel alle Exit 0');
+    gleich(lies(w).varianten.filter((v, i) => v.ist !== w.ziel(v, i)).length, 0, 'Kette Zeitplan (normaler Tag): der Shop steht auf dem Feed-Soll');
+    ok(ZEIT.test(lies(w).stempel?.value || ''), 'Kette Zeitplan (normaler Tag): Stempel gesetzt');
+  }
+
+  // 6.1 Zeitplan mit Freigabe: die Bremse schlägt an, nichts wird geschrieben, kein Stempel — auch wenn ein Auslöser «null_erlauben» mitschickte
+  for (const [name, optionen] of [
+    ['Zeitplan', { ereignis: 'schedule' }],
+    ['Zeitplan mit (hypothetisch) mitgeschicktem null_erlauben=true', { ereignis: 'schedule', schreiben: 'true', nullErlauben: 'true' }],
+    ['Handstart schreiben=true, null_erlauben=false', { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'false' }],
+    ['Handstart schreiben=true ohne null_erlauben', { ereignis: 'workflow_dispatch', schreiben: 'true' }],
+  ]) {
+    const w = weltNull(); const vor = md5(w.stand);
+    const r = kette(w, optionen);
+    gleich([r.live, r.forceZero], ['1', '0'], `Kette ${name}: live=1, Bremse NICHT aufgehoben`);
+    gleich(r.rc.sync, '2', `Kette ${name}: Abgleich bleibt an der Nullungs-Bremse stehen (Exit 2)`);
+    ok(BREMSE.test(r.logSync), `Kette ${name}: das Log nennt die Bremse mit 160 von 200`);
+    gleich(md5(w.stand), vor, `Kette ${name}: im Shop (Attrappe) wurde nichts geändert`);
+    ok(!r.nachLaeuft, `Kette ${name}: keine Nachprüfung nach Exit 2`);
+    gleich([r.stempelLaeuft, r.rc.stempel, lies(w).stempel], [true, '1', null], `Kette ${name}: der Stempel-Schritt läuft, verweigert (Exit 1), kein Stempel`);
+  }
+
+  // 6.2 Handstart mit schreiben=true UND null_erlauben=true: die Bremse ist für den Schreiblauf aufgehoben, danach prüft die Nachprüfung mit scharfer Bremse
+  {
+    const w = weltNull(); const r = kette(w, { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'true' });
+    gleich([r.live, r.forceZero], ['1', '1'], 'Kette null_erlauben: live=1, force_zero=1');
+    gleich(r.rc, { sync: '0', nach: '0', stempel: '0' }, 'Kette null_erlauben: Abgleich, Nachprüfung, Stempel alle Exit 0');
+    ok(/FERTIG\. geändert=200 offen=0 unverändert=0/.test(r.logSync) && !/Nullungs-Bremse/.test(r.logSync), 'Kette null_erlauben: alle 200 Varianten geschrieben, keine Bremse im Log');
+    gleich(nullZiel(w), 0, 'Kette null_erlauben: der Shop steht auf dem Feed-Soll (160 auf 0, 40 auf 4)');
+    ok(/Abgleich: 200 unverändert · 0 zu ändern/.test(r.logNach) && /\[DRY\] nichts geschrieben\./.test(r.logNach), 'Kette null_erlauben: die Nachprüfung zeigt 0 Abweichungen und lief zu Ende');
+    ok(ZEIT.test(lies(w).stempel?.value || '') && /STEMPEL gesetzt/.test(r.logStempel), 'Kette null_erlauben: Stempel gesetzt');
+  }
+  // 6.3 Die Nachprüfung läuft mit scharfer Bremse: «erfolgreiche» Schreibaufrufe, die den Shop nicht ändern, dürfen nie einen Stempel ergeben
+  {
+    const w = weltNull({ ignorieren: true }); const r = kette(w, { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'true' });
+    gleich([r.live, r.forceZero, r.rc.sync], ['1', '1', '0'], 'Kette ohne Wirkung: Schreiblauf meldet Erfolg (Exit 0), Bremse war aufgehoben');
+    ok(r.nachLaeuft && r.rc.nach === '2' && BREMSE.test(r.logNach), 'Kette ohne Wirkung: die Nachprüfung läuft mit SCHARFER Bremse und bricht ab (Exit 2)');
+    ok(/Abgleich: 0 unverändert · 200 zu ändern/.test(r.logNach), 'Kette ohne Wirkung: die Nachprüfung sieht alle 200 Abweichungen');
+    gleich([r.stempelLaeuft, r.rc.stempel, lies(w).stempel], [true, '1', null], 'Kette ohne Wirkung: Stempel verweigert (Exit 1), kein Stempel');
+    ok(/\(b\) Nachprüfung: 200 Varianten weichen noch vom Feed ab/.test(r.logStempel) && /ABBRUCH/.test(r.logStempel), 'Kette ohne Wirkung: der Grund nennt die 200 verbliebenen Abweichungen und den Abbruch');
+  }
+  // 6.4 Handstart ohne «schreiben»: Lesemodus, die Eingabe null_erlauben ändert nichts
+  {
+    const w = weltNull(); const vor = md5(w.stand); const r = kette(w, { ereignis: 'workflow_dispatch', schreiben: 'false', nullErlauben: 'true' });
+    gleich([r.live, r.forceZero], ['0', '0'], 'Kette Lesemodus + null_erlauben: live=0, Bremse nicht aufgehoben');
+    gleich(r.rc.sync, '2', 'Kette Lesemodus + null_erlauben: auch der Trockenlauf bleibt an der Bremse stehen');
+    ok(BREMSE.test(r.logSync) && !/\[DRY\] nichts geschrieben\./.test(r.logSync), 'Kette Lesemodus + null_erlauben: Bremse im Log');
+    gleich([md5(w.stand), r.nachLaeuft, r.stempelLaeuft], [vor, false, false], 'Kette Lesemodus + null_erlauben: nichts geändert, weder Nachprüfung noch Stempel');
+  }
+  // 6.5 Ohne Freigabedatei wird nie geschrieben, in jeder Kombination der Eingaben (normale Welt: ein Schreiblauf wäre am Shop sichtbar)
+  for (const [name, optionen] of [
+    ['Zeitplan', { ereignis: 'schedule' }],
+    ['Zeitplan mit null_erlauben', { ereignis: 'schedule', schreiben: 'true', nullErlauben: 'true' }],
+    ['Handstart schreiben=true', { ereignis: 'workflow_dispatch', schreiben: 'true' }],
+    ['Handstart schreiben=true, null_erlauben=true', { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'true' }],
+  ]) {
+    const w = welt({ frei: false }); const vor = md5(w.stand);
+    const r = kette(w, optionen);
+    gleich([r.live, r.forceZero], ['0', '0'], `Kette ohne Freigabedatei, ${name}: live=0, Bremse nicht aufgehoben`);
+    gleich([r.rc.sync, md5(w.stand), r.nachLaeuft, r.stempelLaeuft, lies(w).stempel], ['0', vor, false, false, null], `Kette ohne Freigabedatei, ${name}: Trockenlauf, Shop unverändert, keine Nachprüfung, kein Stempel`);
+    ok(/\[DRY\] nichts geschrieben\./.test(r.logSync) && !fs.existsSync(path.join(w.d, 'dropship/_fortura_bestand_stand.json')), `Kette ohne Freigabedatei, ${name}: «[DRY] nichts geschrieben.», keine Stand-Datei`);
+  }
+  {
+    const w = weltNull({ frei: false }); const vor = md5(w.stand);
+    const r = kette(w, { ereignis: 'workflow_dispatch', schreiben: 'true', nullErlauben: 'true' });
+    gleich([r.live, r.forceZero, r.rc.sync, md5(w.stand), r.stempelLaeuft], ['0', '0', '2', vor, false], 'Kette ohne Freigabedatei in der Welt mit anschlagender Bremse: Bremse bleibt scharf, nichts geschrieben');
+  }
+  // 6.6 Echte Feed-Grenze des Workflows (MIN_FEED_ROWS=18000): ein 400-Zeilen-Feed gilt als abgeschnitten
+  {
+    const w = welt(); const vor = md5(w.stand);
+    const r = kette(w, { ereignis: 'schedule', testgroessen: false });
+    gleich(r.rc.sync, '2', 'Kette mit MIN_FEED_ROWS des Workflows (18000): Abgleich bricht ab (Exit 2)');
+    ok(/OFFEN: Feed hat nur \d+ Zeilen \(< 18000\) — abgeschnittener Download/.test(r.logSync), 'Kette mit MIN_FEED_ROWS des Workflows: Meldung nennt 18000');
+    gleich([md5(w.stand), r.nachLaeuft, r.rc.stempel, lies(w).stempel], [vor, false, '1', null], 'Kette mit MIN_FEED_ROWS des Workflows: nichts geschrieben, kein Stempel');
+  }
 }
 
 for (const d of tmpDirs) { try { fs.rmSync(d, { recursive: true, force: true }); } catch {} }

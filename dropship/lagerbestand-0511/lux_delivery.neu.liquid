@@ -1,8 +1,10 @@
 {%- comment -%} LUX-LIEFERUNG 05.11.2026 (Verfügbarkeit je Ausführung, ehrliche Bestandsanzeige).
 1. Die Verfügbarkeit gilt für die gewählte Ausführung (selected_or_first_available_variant), nicht mehr für das ganze Produkt. Ist sie ausverkauft: rote Pille «Diese Ausführung ist ausverkauft» (wenn eine andere Ausführung kaufbar ist) bzw. «Momentan ausverkauft», und KEINE Lieferbox.
-2. «Nur noch N» / «Nur noch wenige» (orange) erscheint nur, wenn ALLE Bedingungen gelten: Tag fortura oder ch-lager · Zweig Schweizer Lager · Variante mit inventory_management shopify · inventory_policy deny · Variante kaufbar · Stempel shop.metafields.luxe.fortura_bestand_stand ist ein Zeitstempel mit Datum und Uhrzeit (z. B. 2026-11-05T08:15:00Z), höchstens 26 h (93600 s) alt und höchstens 300 s in der Zukunft · Notschalter nicht aus. Fehlt eine Bedingung oder ist der Stempel leer, alt, zu neu oder kein Datum, steht keine Zahl und kein «Nur noch» (Rückfall: «Auf Lager · versandbereit»). CJ, Druck auf Bestellung und EU-Lager bekommen nie eine Zahl.
+2. «Nur noch N» / «Nur noch wenige» (orange) erscheint nur, wenn ALLE Bedingungen gelten: Tag fortura oder ch-lager · Zweig Schweizer Lager · Variante mit inventory_management shopify · inventory_policy deny · Variante kaufbar · Stempel shop.metafields.luxe.fortura_bestand_stand ist ein Zeitstempel mit Datum und Uhrzeit (z. B. 2026-11-05T08:15:00Z), höchstens 26 h (93600 s) alt und höchstens 300 s in der Zukunft · Notschalter nicht aus (Punkt 6). Fehlt eine Bedingung oder ist der Stempel leer, alt, zu neu oder kein Datum, steht keine Zahl und kein «Nur noch» (Rückfall: «Auf Lager · versandbereit»). CJ, Druck auf Bestellung und EU-Lager bekommen nie eine Zahl.
 3. Stufen: 1 bis 3 Stück = genaue Zahl (bei 1 «Nur noch 1 Stück»), 4 bis 5 = «wenige», ab 6 = «Auf Lager · versandbereit» (grün wie bisher).
-Abschalten der Zahlen: Shop-Metafeld luxe.bestand_anzeige = 0 (auch «false»; fehlt es, ist die Anzeige an). Punkt 1 bleibt dann trotzdem aktiv. Datumsrechnung, Lieferbox-Texte und Versandsätze sind unverändert (Stand 13.10./24.08.2026). {%- endcomment -%}
+4. Variantenwechsel: Pille und Lieferbox liegen zusammen in einem Container mit dem Attribut data-lx-delivery (Wert = Produkt-ID). Das Theme rendert Custom-Liquid-Blöcke beim Variantenwechsel NICHT neu (assets/variant-picker.js tauscht nur das Element variant-picker), die Pille würde dauerhaft die beim Laden gewählte Ausführung beschreiben. Darum hängt am Ende ein kleines Skript (einmal pro Seite, Wächter window.__lxLiefer), das auf das Ereignis variant:update am document hört und den Inhalt des Containers gegen die serverseitig gerenderte Fassung der NEUEN Ausführung (e.detail.data.html, ein Document) tauscht. Nur derselbe Produkt-Wert wird getauscht (eine Schnellkauf-Auswahl eines anderen Produkts fasst die Pille nie an). Das Skript steht ausserhalb des Containers, hat keine Liquid-Werte, kein Netz, kein jQuery, ist ES5, fängt jeden Fehler ab und tut bei jedem unerwarteten Ereignis nichts. Im Skript stehen nie zwei schliessende geschweifte Klammern direkt hintereinander (die Klammerprüfung in apply_theme.mjs zählt Paare).
+5. Ausverkauft und das Fallback-Skript: snippets/meta-tags.liquid fügt bei DOMContentLoaded eine Box «Voraussichtliche Lieferung …» ein, sobald «Lieferung voraussichtlich» NICHT im Seitentext steht. Bei einer ausverkauften Ausführung fehlt die Lieferbox absichtlich, der Fallback würde also ein Datum für Nicht-Lieferbares zeigen. Darum steht im Ausverkauft-Zweig ein versteckter Span (Attribut hidden, für Anzeige und Screenreader unsichtbar, aber im textContent) mit genau diesem Satz; der Fallback findet ihn und lässt die Seite in Ruhe. Diesen Span nicht entfernen, solange das Fallback-Skript besteht.
+6. Abschalten der Zahlen (fail-closed): Shop-Metafeld luxe.bestand_anzeige. Die Zahlen sind nur AN, wenn der Wert fehlt/leer ist ODER (Leerraum und Gross-/Kleinschreibung egal) 1, true, an, ein, ja oder on lautet; JEDER andere Wert (0, false, aus, off, nein, ein Tippfehler …) schaltet sie ab. Punkt 1 bleibt dann trotzdem aktiv. Datumsrechnung, Lieferbox-Texte und Versandsätze sind unverändert (Stand 13.10./24.08.2026). {%- endcomment -%}
 {%- assign now_s = 'now' | date: '%s' | plus: 0 -%}
 {%- comment -%} LUX-KASSENDATUM (Spur A): Notschalter luxe.ch_lager_stufe (Shop-Metafeld, fehlt = 1; 0 = überall das lange Datum). Das kurze Datum gilt nur mit Tag profil-ch-lager — den setzt automation/ch_lager_profil.py für Ware im Profil «CH-Lager» (13.10.2026). {%- endcomment -%}
 {%- assign lx_stufe = shop.metafields.luxe.ch_lager_stufe.value | default: 1 | plus: 0 -%}
@@ -64,7 +66,7 @@ und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endco
 {%- endif -%}
 {%- if lx_bs_an == 1 -%}
   {%- assign lx_bs_sw = shop.metafields.luxe.bestand_anzeige.value | append: '' | strip | downcase -%}
-  {%- if lx_bs_sw == '0' or lx_bs_sw == 'false' -%}{%- assign lx_bs_an = 0 -%}{%- endif -%}
+  {%- if lx_bs_sw != '' and lx_bs_sw != '1' and lx_bs_sw != 'true' and lx_bs_sw != 'an' and lx_bs_sw != 'ein' and lx_bs_sw != 'ja' and lx_bs_sw != 'on' -%}{%- assign lx_bs_an = 0 -%}{%- endif -%}
 {%- endif -%}
 {%- if lx_bs_an == 1 -%}
   {%- assign lx_bs_an = 0 -%}
@@ -82,6 +84,7 @@ und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endco
   {%- endif -%}
 {%- endif -%}
 {%- assign lx_c_text = '#1e7a2e' -%}{%- assign lx_c_punkt = '#2eaf46' -%}{%- assign lx_c_schein = 'rgba(46,175,70,.18)' -%}
+<div data-lx-delivery="{{ closest.product.id }}">
 {%- if lx_ok -%}
   {%- if lager contains 'Schweizer Lager' -%}
     {%- assign zustand = 'Auf Lager &middot; versandbereit' -%}
@@ -106,6 +109,7 @@ und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endco
 {%- else -%}
   {%- if closest.product.available -%}{%- assign zustand = 'Diese Ausführung ist ausverkauft' -%}{%- else -%}{%- assign zustand = 'Momentan ausverkauft' -%}{%- endif -%}
 <div style="display:flex;align-items:center;gap:.45rem;margin:.5rem 0 0;font-size:.92rem;font-weight:600;color:#b3261e;"><span style="display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:#d93025;"></span>{{ zustand }}</div>
+<span hidden data-lx-kein-liefertermin>Lieferung voraussichtlich: erst wieder, wenn diese Ausführung lieferbar ist.</span>
 {%- endif -%}
 {%- if lx_ok -%}
 {%- assign months = 'Jan.,Feb.,März,Apr.,Mai,Juni,Juli,Aug.,Sept.,Okt.,Nov.,Dez.' | split: ',' -%}
@@ -116,4 +120,24 @@ und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endco
 <span>{%- if localization.country.iso_code == 'LI' -%}Lieferung nach Liechtenstein: das voraussichtliche Datum zeigt die Kasse.{%- else -%}Bestelle jetzt &ndash; Lieferung voraussichtlich <strong>{{ d_from | date: '%-d' }}. {{ months[mf] }} &ndash; {{ d_to | date: '%-d' }}. {{ months[mt] }}</strong>{%- endif -%}<br><span style="color:#5a7a5e;">{{ lager }} &middot; {% if closest.product.tags contains 'profil-ch-lager' %}In der Schweiz Gratis-Versand für Ware ab Schweizer Lager (zusammen mit anderer Ware: gratis ab CHF 50 nach Rabatt){% elsif product.price_min >= 5556 %}In der Schweiz gratis Versand inklusive{% elsif product.price_min >= 5000 %}In der Schweiz gratis Versand inklusive (ohne Gutschein){% else %}In der Schweiz gratis ab CHF 50 nach Rabatt{% endif %}</span></span>
 </div>
 {%- endif -%}
+</div>
+<script>
+(function(){try{
+if(window.__lxLiefer)return;window.__lxLiefer=1;
+document.addEventListener('variant:update',function(e){try{
+var d=e&&e.detail,h=d&&d.data&&d.data.html;
+if(typeof h==='string')h=new DOMParser().parseFromString(h,'text/html');
+if(!h||!h.querySelector)return;
+var neu=h.querySelector('[data-lx-delivery]');
+if(!neu)return;
+var pid=neu.getAttribute('data-lx-delivery'),alle=document.querySelectorAll('[data-lx-delivery]'),i,n=0;
+for(i=0;i<alle.length;i++){
+if(alle[i].getAttribute('data-lx-delivery')===pid){n++;if(alle[i].innerHTML!==neu.innerHTML)alle[i].innerHTML=neu.innerHTML;}
+}
+if(!n&&d.data.newProduct&&alle.length){alle[0].setAttribute('data-lx-delivery',pid);alle[0].innerHTML=neu.innerHTML;}
+}catch(x){}
+});
+}catch(x){}
+})();
+</script>
 {%- endif -%}

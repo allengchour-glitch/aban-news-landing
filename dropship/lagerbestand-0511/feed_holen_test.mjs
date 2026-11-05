@@ -30,8 +30,10 @@ function feedKoerper(bytes) {
   while (groesse < bytes) { const z = `A${String(i++).padStart(7, '0')}|Artikel ${i}|1|${i % 7}|${1 + (i % 7)}|1\r\n`; teile.push(z); groesse += z.length; }
   return Buffer.from(teile.join('').slice(0, bytes), 'latin1');
 }
-const GROSS = feedKoerper(5_200_000), ZU_KLEIN = feedKoerper(4_900_000), KLEIN = feedKoerper(2000);
-const OHNE_KOPF = Buffer.from('x'.repeat(5_200_000));
+// Mindestgrösse 9 MB (Messbasis: Feed vom 05.11.2026 = 11,7 MB). GROSS liegt knapp darüber, ZU_KLEIN knapp darunter; die Grenze selbst wird auf das Byte geprüft.
+const GROSS = feedKoerper(9_200_000), ZU_KLEIN = feedKoerper(8_900_000), KLEIN = feedKoerper(2000);
+const GENAU_GRENZE = feedKoerper(9_000_000), EIN_BYTE_DARUNTER = feedKoerper(8_999_999), ALTE_GRENZE = feedKoerper(5_200_000);
+const OHNE_KOPF = Buffer.from('x'.repeat(9_200_000));
 
 function startServer(art, optionen) {
   const log = [];
@@ -105,6 +107,7 @@ const ohneGeheimnis = (r) => !r.alles.includes(PW) && !r.alles.includes(USER) &&
   ok(t.includes('"account@$ARBEIT/u"') && t.includes('"passwd@$ARBEIT/p"'), 'Zugangsdaten gehen per Datei an curl');
   ok(t.includes('B="https://webtransfer.fortura.ch"'), 'feste Adresse webtransfer.fortura.ch auf Port 443');
   ok(/\[ "\$\{FORTURA_TEST:-\}" = "1" \] && \[ -n "\$\{FORTURA_BASIS:-\}" \]/.test(t), 'Ersatzadresse gilt nur zusammen mit FORTURA_TEST=1');
+  ok(t.includes('MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"') && !t.includes('5000000') && /11,7 MB/.test(t) && /Messbasis/.test(t), 'Mindestgrösse 9 MB mit genannter Messbasis (11,7 MB am 05.11.2026), der alte Wert 5 MB ist weg');
   ok(t.includes('/home/Art_DataFeed.CSV') && t.includes('SYNO.FileStation.Download') && t.includes('SYNO.API.Auth') && t.includes('"session=FileStation"'), 'Protokoll und Pfad wie das Original (FileStation, /home/Art_DataFeed.CSV)');
   ok(/TLS=\(-k\)/.test(t) && /FORTURA_TLS_UNSICHER:-\}" = "1"/.test(t) && !/curl[^\n]* -k /.test(t), '-k nur über FORTURA_TLS_UNSICHER=1');
   ok(/max-time 900/.test(t) && /max-time 120/.test(t) && /connect-timeout 30/.test(t), 'Zeitlimits gesetzt');
@@ -123,7 +126,7 @@ const ohneGeheimnis = (r) => !r.alles.includes(PW) && !r.alles.includes(USER) &&
   const r = await skript(basisEnv(sv.port), [out]);
   gleich(r.code, 0, 'Erfolg: Exit 0');
   ok(fs.existsSync(out) && fs.readFileSync(out).equals(GROSS), 'Erfolg: Datei am Ziel ist byte-gleich mit dem Server-Feed');
-  ok(/Fortura-Feed geladen -> .*feed\.csv \(5200000 Bytes, \d+ Zeilen, Stand auf dem Server \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\)/.test(r.out), 'Erfolg: Meldung mit Bytes, Zeilen, Serverstand');
+  ok(/Fortura-Feed geladen -> .*feed\.csv \(9200000 Bytes, \d+ Zeilen, Stand auf dem Server \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\)/.test(r.out), 'Erfolg: Meldung mit Bytes, Zeilen, Serverstand');
   const alterS = Date.now() / 1000 - fs.statSync(out).mtimeMs / 1000;
   ok(alterS > 3 * 3600 - 30 && alterS < 3 * 3600 + 60, `Erfolg: Dateizeit ist der Serverstand (3 Stunden), nicht die Abrufzeit (gemessen ${(alterS / 3600).toFixed(2)} h)`);
   gleich(sv.log.map(l => `${l.api}:${l.apiMethode}`), ['SYNO.API.Auth:login', 'SYNO.FileStation.Download:download', 'SYNO.FileStation.List:getinfo', 'SYNO.API.Auth:logout'], 'Erfolg: Reihenfolge Login, Download, Zeitstempel, Logout');
@@ -200,6 +203,15 @@ const ohneGeheimnis = (r) => !r.alles.includes(PW) && !r.alles.includes(USER) &&
     sv.s.close();
   }
 
+  // genau auf der Grenze: 9 000 000 Bytes gehen durch
+  {
+    const svg = await startServer({}, () => ({ koerper: GENAU_GRENZE, mtime: Math.floor(Date.now() / 1000) - 3600 }));
+    const outg = path.join(neuerTmp(), 'g.csv');
+    const rg = await skript(basisEnv(svg.port, { FORTURA_VERSUCHE: '1' }), [outg]);
+    ok(rg.code === 0 && fs.statSync(outg).size === 9_000_000, 'genau 9 000 000 Bytes: angenommen (die Grenze gehört dazu)');
+    svg.s.close();
+  }
+
   // Mindestgrösse einstellbar
   const opt4 = { koerper: KLEIN, mtime: Math.floor(Date.now() / 1000) };
   const sv4 = await startServer({}, () => opt4);
@@ -235,12 +247,14 @@ await fehlerFall('Login mit HTTP 403 vom Proxy', { login403: true }, {}, { login
 await fehlerFall('Quelladresse gesperrt (API-Code 407)', { gesperrt: true }, {}, {
   logins: 1, pruefe: (r) => ok(/Fehlercode 407/.test(r.err) && /Quelladresse/.test(r.err) && /NICHT wiederholt/.test(r.err), 'Code 407 wird genannt und nicht wiederholt'),
 });
-await fehlerFall('zu kleine Datei (4,9 MB)', { koerper: ZU_KLEIN, mtime: 1_700_000_000 }, {}, {
+await fehlerFall('zu kleine Datei (8,9 MB)', { koerper: ZU_KLEIN, mtime: 1_700_000_000 }, {}, {
   logins: 3, pruefe: (r, sv) => {
-    ok(/zu klein: 4900000 Bytes/.test(r.err), 'zu klein: Grösse in der Meldung');
+    ok(/zu klein: 8900000 Bytes \(Mindestens 9000000\)/.test(r.err), 'zu klein: Grösse und Grenze in der Meldung');
     gleich(sv.log.filter(l => l.apiMethode === 'logout').length, 3, 'zu klein: nach jedem Versuch wird die Sitzung abgemeldet');
   },
 });
+await fehlerFall('ein Byte unter der Grenze (8 999 999)', { koerper: EIN_BYTE_DARUNTER, mtime: 1_700_000_000 }, { FORTURA_VERSUCHE: '1' }, { logins: 1, pruefe: (r) => ok(/zu klein: 8999999 Bytes/.test(r.err), 'ein Byte darunter: abgelehnt') });
+await fehlerFall('der frühere Mindestwert 5 MB (5,2 MB) reicht nicht mehr', { koerper: ALTE_GRENZE, mtime: 1_700_000_000 }, { FORTURA_VERSUCHE: '1' }, { logins: 1, pruefe: (r) => ok(/zu klein: 5200000 Bytes/.test(r.err), 'ein halb abgeschnittener Feed (5,2 von 11,7 MB) wird abgelehnt') });
 await fehlerFall('JSON-Fehlerantwort statt Feed', { downloadJsonFehler: true }, {}, { logins: 3 });
 await fehlerFall('Inhalt ohne Kopfzeile ArtNr', { koerper: OHNE_KOPF }, {}, { logins: 3, pruefe: (r) => ok(/ArtNr/.test(r.err), 'ohne Kopfzeile: Meldung nennt ArtNr') });
 await fehlerFall('Server liefert HTTP 500 beim Download', { download500: true }, {}, { logins: 3 });

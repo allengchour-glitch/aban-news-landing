@@ -1,5 +1,5 @@
 // Mutationsprobe für den Fortura-Bestandsabgleich im Dauerbetrieb: verändert je EINE Stelle in Stempel-Skript, Workflow, Feed-Skript oder dem
-// erprobten Abgleich-Skript und prüft, ob mindestens ein Test rot wird. Überlebt ein Mutant, ist ein Test zu schwach (oder der Mutant gleichwertig:
+// erprobten Abgleich-Skript und prüft, ob mindestens ein Test rot wird (Art «stempel» = stempel_test, «feed» = feed_holen_test, «kette» = kette_test, ~90 s je Lauf). Überlebt ein Mutant, ist ein Test zu schwach (oder der Mutant gleichwertig:
 // dann steht er unten mit Begründung in GLEICHWERTIG). Ein Muster, das nicht genau einmal vorkommt, ist ein Fehler der Probe selbst («nicht anwendbar»).
 //   node dropship/lagerbestand-0511/stempel_mutation.mjs
 // Läuft auf einer Kopie des Baums im Wegwerfordner; das Repo bleibt unberührt.
@@ -16,7 +16,7 @@ const KOPIE = [
   'automation/fortura_bestand_sync.mjs', 'automation/fortura_bestand_stempel.mjs', 'automation/fortura_feed_holen.sh',
   'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/shopify_host.mjs',
   '.github/workflows/fortura-bestand.yml', 'dropship/_fortura_sperr_varianten.txt',
-  'dropship/lagerbestand-0511/stempel_test.mjs', 'dropship/lagerbestand-0511/feed_holen_test.mjs',
+  'dropship/lagerbestand-0511/stempel_test.mjs', 'dropship/lagerbestand-0511/feed_holen_test.mjs', 'dropship/lagerbestand-0511/kette_test.mjs',
 ];
 for (const f of KOPIE) { fs.mkdirSync(path.dirname(path.join(BAUM, f)), { recursive: true }); fs.copyFileSync(path.join(WURZEL, f), path.join(BAUM, f)); }
 
@@ -82,7 +82,7 @@ const M = [
   ['W11 roter Abgleich bleibt grün', W, 'exit "$rc"\n\n      - name: Nachprüfung (erneuter Trockenlauf)', 'exit 0\n\n      - name: Nachprüfung (erneuter Trockenlauf)', 'stempel'],
   ['W12 Stempel bekommt festen Live-Exit 0', W, 'LIVE_EXIT: ${{ steps.sync.outputs.rc }}', "LIVE_EXIT: '0'", 'stempel'],
   ['W13 Artefakt nur bei Erfolg', W, '      - name: Protokoll aufbewahren\n        if: always()\n', '      - name: Protokoll aufbewahren\n', 'stempel'],
-  ['W14 Feed im Artefakt', W, '            dropship/_fortura_bestand_stand.json\n', '            dropship/_fortura_bestand_stand.json\n            ${{ runner.temp }}/fortura_feed.csv\n', 'stempel'],
+  ['W14 Feed im Artefakt', W, '          path: protokoll/\n', '          path: |\n            protokoll/\n            ${{ runner.temp }}/fortura_feed.csv\n', 'stempel'],
   ['W15 Passwort wird ausgegeben', W, 'bash automation/fortura_feed_holen.sh "$FORTURA_CSV" 2>&1 | tee lauf-feed.txt', 'echo "$FORTURA_FTP_PW"; bash automation/fortura_feed_holen.sh "$FORTURA_CSV" 2>&1 | tee lauf-feed.txt', 'stempel'],
   ['W16 Zugangsprüfung ohne Passwort', W, '          [ -n "$FORTURA_FTP_PW" ] || fehlt="$fehlt FORTURA_FTP_PW"\n', '', 'stempel'],
   ['W17 Sparse-Checkout im Cone-Modus', W, 'sparse-checkout-cone-mode: false', 'sparse-checkout-cone-mode: true', 'stempel'],
@@ -100,7 +100,11 @@ const M = [
   // --- Feed-Skript ---
   ['F01 keine Mindestgrösse', F, 'if [ "$BYTES" -lt "$MIN_BYTES" ]; then', 'if [ "$BYTES" -lt 1 ]; then', 'feed'],
   ['F02 falsches Passwort wird wiederholt', F, '[ $rc -eq 20 ] && fehler', '[ $rc -eq 99 ] && fehler', 'feed'],
-  ['F03 Mindestgrösse 50 Bytes', F, 'MIN_BYTES="${FORTURA_MIN_BYTES:-5000000}"', 'MIN_BYTES="${FORTURA_MIN_BYTES:-50}"', 'feed'],
+  ['F03 Mindestgrösse 50 Bytes', F, 'MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"', 'MIN_BYTES="${FORTURA_MIN_BYTES:-50}"', 'feed'],
+  ['F23 Mindestgrösse wieder 5 MB (alter Wert)', F, 'MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"', 'MIN_BYTES="${FORTURA_MIN_BYTES:-5000000}"', 'feed'],
+  ['F24 Mindestgrösse 8 MB', F, 'MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"', 'MIN_BYTES="${FORTURA_MIN_BYTES:-8000000}"', 'feed'],
+  ['F25 Mindestgrösse 10 MB (lehnt 9,2-MB-Feed ab)', F, 'MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"', 'MIN_BYTES="${FORTURA_MIN_BYTES:-10000000}"', 'feed'],
+  ['F26 Grenze selbst wird abgelehnt (-le statt -lt)', F, 'if [ "$BYTES" -lt "$MIN_BYTES" ]; then', 'if [ "$BYTES" -le "$MIN_BYTES" ]; then', 'feed'],
   ['F04 Passwort in der Befehlszeile', F, '--data-urlencode "passwd@$ARBEIT/p"', '--data-urlencode "passwd=$FORTURA_FTP_PW"', 'feed'],
   ['F05 keine Kopfzeilen-Prüfung', F, `elif ! { head -c 4000 "$ARBEIT/feed" > "$ARBEIT/kopf"; grep -a -q 'ArtNr' "$ARBEIT/kopf"; }; then`, 'elif false; then', 'feed'],
   ['F06 Zertifikatsprüfung aus', F, 'TLS=()', 'TLS=(-k)', 'feed'],
@@ -119,6 +123,47 @@ const M = [
   ['F20 Altersgrenze gilt auch ohne bekannten Serverstand', F, 'if [ -n "$MAX_ALTER_H" ] && [ -n "$SERVER" ]; then', 'if [ -n "$MAX_ALTER_H" ]; then', 'feed'],
   ['F21 Dateizeit bleibt bei unbekanntem Serverstand die Abrufzeit', F, 'touch -d "@0" "$ARBEIT/feed" 2>/dev/null || fehler "Dateizeit der Feeddatei nicht setzbar. Am Ziel $OUT wurde nichts geändert."', 'true', 'feed'],
   ['F22 Altersgrenze wird nicht auf Zahl geprüft', F, 'case "$MAX_ALTER_H" in *[!0-9]*|0) fehler "FORTURA_MAX_ALTER_H ist keine Zahl >= 1" ;; esac', ':', 'feed'],
+  // --- 05.11. (Härtung nach Prüferfunden): MIN_VARIANTEN 6000, FORCE_ZERO-Wächter, null_erlauben, MIN_FEED_ROWS, Protokoll-Bereinigung ---
+  ['S42 MIN_VARIANTEN wieder 1000', S, 'export const MIN_VARIANTEN = 6000;', 'export const MIN_VARIANTEN = 1000;', 'stempel'],
+  ['S43 MIN_VARIANTEN 7000 (lehnt 6 548 ab)', S, 'export const MIN_VARIANTEN = 6000;', 'export const MIN_VARIANTEN = 7000;', 'stempel'],
+  ['S44 FORCE_ZERO im Stempel-Schritt wird geduldet', S, 'if (forceZero) gruende.push(', 'if (false) gruende.push(', 'stempel'],
+  ['S45 FORCE_ZERO wird nicht aus der Umgebung gelesen', S, "forceZero: env.FORCE_ZERO === '1',", 'forceZero: false,', 'stempel'],
+  ['S46 MIN_VARIANTEN gilt nur als Kommentar (Vorgabe 0)', S, 'const minVar = opt.minVarianten ?? MIN_VARIANTEN;', 'const minVar = opt.minVarianten ?? 0;', 'stempel'],
+  ['W28 Zeitplan darf die Bremse aufheben', W, 'if [ "$live" = "1" ] && [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'if [ "$live" = "1" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'stempel'],
+  ['W29 Bremse auch ohne Schreibmodus aufheben', W, 'if [ "$live" = "1" ] && [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'if [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'stempel'],
+  ['W30 jede nichtleere Eingabe hebt die Bremse auf (auch «false»)', W, '[ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', '[ -n "$NULL_ERLAUBEN_EINGABE" ]; then force_zero=1; fi', 'stempel'],
+  ['W31 Modus meldet force_zero nicht', W, '          echo "force_zero=$force_zero" >> "$GITHUB_OUTPUT"\n', '', 'stempel'],
+  ['W32 Abgleich hebt die Bremse auch im Lesemodus auf', W, 'if [ "$LIVE" = "1" ] && [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'if [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'stempel'],
+  ['W33 Abgleich löscht ein geerbtes FORCE_ZERO nicht', W, 'then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'then export FORCE_ZERO=1; fi', 'stempel'],
+  ['W34 Abgleich hebt die Bremse immer auf', W, 'if [ "$LIVE" = "1" ] && [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1;', 'if true; then export FORCE_ZERO=1;', 'stempel'],
+  ['W35 Nachprüfung erbt FORCE_ZERO', W, '          unset FORCE_ZERO\n          SHOPIFY_CLIENT_SECRET=', '          SHOPIFY_CLIENT_SECRET=', 'stempel'],
+  ['W36 Nachprüfung hebt die Bremse auf', W, '          unset FORCE_ZERO\n          SHOPIFY_CLIENT_SECRET=', '          export FORCE_ZERO=1\n          SHOPIFY_CLIENT_SECRET=', 'stempel'],
+  ['W37 Abgleich ohne MIN_FEED_ROWS', W, "          MIN_FEED_ROWS: '18000'\n        run: |\n          set +e\n          # Das Abgleich-Skript liest", "        run: |\n          set +e\n          # Das Abgleich-Skript liest", 'stempel'],
+  ['W38 Nachprüfung ohne MIN_FEED_ROWS', W, "          MIN_FEED_ROWS: '18000'\n        run: |\n          set +e\n          # Die Nachprüfung läuft IMMER", "        run: |\n          set +e\n          # Die Nachprüfung läuft IMMER", 'stempel'],
+  ['W39 MIN_FEED_ROWS 5000 im Abgleich', W, "          MIN_FEED_ROWS: '18000'\n        run: |\n          set +e\n          # Das Abgleich-Skript liest", "          MIN_FEED_ROWS: '5000'\n        run: |\n          set +e\n          # Das Abgleich-Skript liest", 'stempel'],
+  ['W40 Artefakt 30 Tage', W, 'retention-days: 7', 'retention-days: 30', 'stempel'],
+  ['W41 Artefakt: ganzer Arbeitsordner', W, 'path: protokoll/', 'path: .', 'stempel'],
+  ['W42 Bereinigung lässt Planzeilen durch (zwei Leerzeichen)', W, "läuft bereits|… [0-9])'", "läuft bereits|… [0-9]|  )'", 'stempel'],
+  ['W43 Journal fehlt im Artefakt', W, 'for f in dropship/_fortura_bestand_log.tsv dropship/_fortura_bestand_report.md', 'for f in dropship/_fortura_bestand_report.md', 'stempel'],
+  ['W44 Bereinigung nur bei Erfolg', W, '      - name: Protokoll bereinigen\n        if: always()\n', '      - name: Protokoll bereinigen\n', 'stempel'],
+  ['W45 Feed-Log wird roh kopiert', W, 'filtern "$FEED" lauf-feed.txt', 'cp lauf-feed.txt protokoll/lauf-feed.txt', 'stempel'],
+  ['W46 LIESMICH nennt die Journal-Spalten alt/neu nicht', W, '· 4 alt (Bestand VORHER) · 5 neu (Bestand NACHHER)', '· 4 · 5', 'stempel'],
+  ['W47 Job-Umgebung ohne NULL_ERLAUBEN_EINGABE', W, '      NULL_ERLAUBEN_EINGABE: ${{ inputs.null_erlauben }}\n', '', 'stempel'],
+  ['W48 null_erlauben ist standardmässig an', W, "die Zahl gewollt ist'\n        type: boolean\n        default: false", "die Zahl gewollt ist'\n        type: boolean\n        default: true", 'stempel'],
+  ['W49 Nachprüfungs-Log wird roh kopiert', W, 'filtern "$ABGLEICH" lauf-nach.txt', 'cp lauf-nach.txt protokoll/lauf-nach.txt', 'stempel'],
+  ['W50 FORCE_ZERO in der Job-Umgebung', W, '      NULL_ERLAUBEN_EINGABE: ${{ inputs.null_erlauben }}\n', "      NULL_ERLAUBEN_EINGABE: ${{ inputs.null_erlauben }}\n      FORCE_ZERO: '1'\n", 'stempel'],
+  ['W51 Warnung bei aufgehobener Bremse nur als Hinweis', W, '::warning title=Nullungs-Bremse aufgehoben::', '::notice title=Nullungs-Bremse aufgehoben::', 'stempel'],
+  ['W52 Zusammenfassung verschweigt die aufgehobene Bremse', W, 'if [ "$FORCE_ZERO_MODUS" = "1" ]; then echo "Nullungs-Bremse: **aufgehoben**', 'if false; then echo "Nullungs-Bremse: **aufgehoben**', 'stempel'],
+  ['W53 Hinweis zur ignorierten Eingabe fehlt', W, 'echo "Hinweis: null_erlauben wirkt nur bei Handstart mit Freigabedatei und schreiben=true; hier ignoriert."', ':', 'stempel'],
+  // Kettentest (ganze Schritte hintereinander, ~90 s je Lauf): nur die Mutanten, deren Wirkung erst im Zusammenspiel sichtbar wird
+  ['K01 Zeitplan darf die Bremse aufheben (Kette)', W, 'if [ "$live" = "1" ] && [ "$EREIGNIS" = "workflow_dispatch" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'if [ "$live" = "1" ] && [ "$NULL_ERLAUBEN_EINGABE" = "true" ]; then force_zero=1; fi', 'kette'],
+  ['K02 Abgleich hebt die Bremse auch im Lesemodus auf (Kette)', W, 'if [ "$LIVE" = "1" ] && [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'if [ "$FORCE_ZERO_MODUS" = "1" ]; then export FORCE_ZERO=1; else unset FORCE_ZERO; fi', 'kette'],
+  ['K03 Nachprüfung erbt FORCE_ZERO (Kette)', W, '          unset FORCE_ZERO\n          SHOPIFY_CLIENT_SECRET=', '          SHOPIFY_CLIENT_SECRET=', 'kette'],
+  ['K04 Nachprüfung hebt die Bremse auf (Kette)', W, '          unset FORCE_ZERO\n          SHOPIFY_CLIENT_SECRET=', '          export FORCE_ZERO=1\n          SHOPIFY_CLIENT_SECRET=', 'kette'],
+  ['K05 FORCE_ZERO im Stempel-Schritt wird geduldet (Kette)', S, 'if (forceZero) gruende.push(', 'if (false) gruende.push(', 'kette'],
+  ['K06 MIN_VARIANTEN wieder 1000 (Kette)', S, 'export const MIN_VARIANTEN = 6000;', 'export const MIN_VARIANTEN = 1000;', 'kette'],
+  ['K07 Abgleich ohne MIN_FEED_ROWS des Workflows (Kette)', W, "          MIN_FEED_ROWS: '18000'\n        run: |\n          set +e\n          # Das Abgleich-Skript liest", "        run: |\n          set +e\n          # Das Abgleich-Skript liest", 'kette'],
+  ['K08 Modus: ohne Freigabedatei wird geschrieben (Kette)', W, 'if [ -f dropship/FORTURA-BESTAND-FREI.txt ]; then', 'if true; then', 'kette'],
   ['F16 Zieldatei wird direkt geschrieben (nicht erst nach der Prüfung)', F, 'cp -p "$ARBEIT/feed" "$TMPZIEL" || { rm -f "$TMPZIEL"; fehler "Zieldatei nicht schreibbar: $OUT"; }\nmv -f "$TMPZIEL" "$OUT" || { rm -f "$TMPZIEL"; fehler "Zieldatei nicht ersetzbar: $OUT"; }', ': > "$OUT"; cp -p "$ARBEIT/feed" "$OUT"', 'feed'],
 ];
 
@@ -133,8 +178,9 @@ const GLEICHWERTIG = {
 const TESTS = {
   stempel: 'dropship/lagerbestand-0511/stempel_test.mjs',
   feed: 'dropship/lagerbestand-0511/feed_holen_test.mjs',
+  kette: 'dropship/lagerbestand-0511/kette_test.mjs',
 };
-const lauf = (art) => spawnSync(process.execPath, [path.join(BAUM, TESTS[art])], { cwd: BAUM, encoding: 'utf8', timeout: 180000, env: { PATH: process.env.PATH, HOME: process.env.HOME, TMPDIR: os.tmpdir() } });
+const lauf = (art) => spawnSync(process.execPath, [path.join(BAUM, TESTS[art])], { cwd: BAUM, encoding: 'utf8', timeout: 300000, env: { PATH: process.env.PATH, HOME: process.env.HOME, TMPDIR: os.tmpdir() } });
 
 // Ausgangslage: beide Tests müssen auf der Kopie grün sein
 for (const art of Object.keys(TESTS)) {
