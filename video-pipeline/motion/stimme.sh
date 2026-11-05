@@ -18,7 +18,7 @@ fail() { echo "FEHLER: $*" >&2; exit 2; }
 [ $# -ge 2 ] || fail "Aufruf: stimme.sh <stimme.txt> <ausgabe.wav> [gesamtdauer_s]"
 txt="$1"; out="$2"; total="${3:-}"; [ -f "$txt" ] || fail "Datei fehlt: $txt"
 command -v piper >/dev/null || fail "piper fehlt (pip install piper-tts)"
-STIMME="${STIMME:-de_DE-thorsten-high}"; [[ "$STIMME" =~ ^de_DE-[a-z]+-[a-z_]+$ ]] || fail "STIMME muss de_DE-<name>-<qualität> heissen"
+STIMME="${STIMME:-de_DE-thorsten-high}"; [[ "$STIMME" =~ ^de_DE-[a-z_]+-[a-z_]+$ ]] || fail "STIMME muss de_DE-<name>-<qualität> heissen"
 tempo="${STIMME_TEMPO:-1.2}"; [[ "$tempo" =~ ^[0-9](\.[0-9]+)?$ ]] && awk -v t="$tempo" 'BEGIN{exit !(t>=0.6 && t<=2)}' || fail "STIMME_TEMPO muss eine Zahl von 0.6 bis 2 sein"
 pause="${STIMME_PAUSE:-0.5}"; [[ "$pause" =~ ^[0-9](\.[0-9]+)?$ ]] || fail "STIMME_PAUSE muss eine Zahl von 0 bis 9.9 sein"
 mdir="${PIPER_MODELLE:-$HOME/.local/share/luxe-stimmen}"; mkdir -p "$mdir"; sp="${STIMME#de_DE-}"; sp="${sp%-*}"; q="${STIMME##*-}"
