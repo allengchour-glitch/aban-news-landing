@@ -114,13 +114,13 @@ export function erzeugeWelt(scene, opt = {}) {
         const rahmen = koerper(new THREE.BoxGeometry(0.95, 0.95, 0.06), 0x6a4a2c, { umriss: 0.012, schatten: false }); rahmen.position.set(sx * w * 0.32, hh * 0.58, d / 2 + 0.02); g.add(rahmen); }
       const sch = koerper(new THREE.BoxGeometry(0.45, 1.2, 0.45), 0x9a8a7a, { umriss: 0.03 }); sch.position.set(w * 0.28, hh + 1.5, -d * 0.2); g.add(sch);
     };
-    haus(11, 1.5, -0.5, 4.2, 3.4, 2.7, 0xf3e3c8, 0xc0553a); haus(18, -1, 0.35, 4.6, 3.6, 3.0, 0xefd9b4, 0x8a5f3a); haus(22.5, -9.5, 0.9, 4.0, 3.4, 2.6, 0xf6ecd8, 0xd1495b); haus(4, -14, -0.2, 4.4, 3.8, 2.8, 0xe9d6b8, 0x5a7a8a);
+    haus(8.5, -9.5, 0.4, 4.2, 3.4, 2.7, 0xf3e3c8, 0xc0553a); haus(25.5, -3.5, -1.35, 4.6, 3.6, 3.0, 0xefd9b4, 0x8a5f3a); haus(22.5, -9.5, 0.9, 4.0, 3.4, 2.6, 0xf6ecd8, 0xd1495b); haus(4, -14, -0.2, 4.4, 3.8, 2.8, 0xe9d6b8, 0x5a7a8a);
   }
 
   /* ---------- Lagerfeuer mit Dreibein, Topf, Dampf, Funken ---------- */
   const feuer = { pos: new THREE.Vector3(14, hoehe(14, -8), -8) };
   {
-    const g = new THREE.Group(); g.position.copy(feuer.pos); scene.add(g);
+    const g = new THREE.Group(); g.position.copy(feuer.pos); g.scale.setScalar(0.62); scene.add(g);   // Feuerstelle passend zur Figurengrösse
     for (let i = 0; i < 8; i++) { const a = i / 8 * 2 * PI; const s = koerper(new THREE.SphereGeometry(0.2, 8, 6), 0x8a8f98, { umriss: 0.03 }); s.scale.set(1, 0.7, 1); s.position.set(Math.cos(a) * 0.8, 0.12, Math.sin(a) * 0.8); g.add(s); }
     for (let i = 0; i < 4; i++) { const l = koerper(new THREE.CylinderGeometry(0.1, 0.12, 1.2, 8), 0x6a4630, { umriss: 0.02 }); l.rotation.z = PI / 2; l.rotation.y = i * PI / 4; l.position.y = 0.18; g.add(l); }
     for (let i = 0; i < 3; i++) { const a = i / 3 * 2 * PI + 0.5; const st = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 2.9, 6), toon(0x6b4a2f, { rim: 0 })); st.position.set(Math.cos(a) * 0.55, 1.35, Math.sin(a) * 0.55); st.rotation.z = -Math.cos(a) * 0.38; st.rotation.x = Math.sin(a) * 0.38; st.castShadow = true; g.add(st); }
@@ -138,7 +138,7 @@ export function erzeugeWelt(scene, opt = {}) {
   /* ---------- Langer Tisch mit Bänken, Speisen, Laternen ---------- */
   const laternen = [];
   {
-    const tg = new THREE.Group(); tg.position.set(16.5, hoehe(16.5, -3), -3); scene.add(tg);
+    const tg = new THREE.Group(); tg.position.set(16.5, hoehe(16.5, -3), -3); tg.scale.set(1, 0.7, 1); scene.add(tg);   // Tisch und Bänke passend zur Figurengrösse (Sitzhöhe 0,35 m)
     const platte = koerper(new THREE.BoxGeometry(10, 0.14, 1.9), 0xd9a458, { umriss: 0.03 }); platte.position.y = 1.18; tg.add(platte);
     const tuch = koerper(new THREE.BoxGeometry(10.2, 0.03, 0.9), 0xfff4e0, { umriss: 0.015 }); tuch.position.y = 1.27; tg.add(tuch);
     for (const sx of [-4.4, -1.5, 1.5, 4.4]) for (const sz of [-0.7, 0.7]) { const b = koerper(new THREE.CylinderGeometry(0.07, 0.08, 1.15, 8), 0x6a4630, { umriss: 0.02 }); b.position.set(sx, 0.58, sz); tg.add(b); }
@@ -146,7 +146,7 @@ export function erzeugeWelt(scene, opt = {}) {
     const speisen = [[0xef476f, 0.16], [0x4fb069, 0.15], [0xf78c1f, 0.14], [0xe3b84a, 0.18]];
     for (let i = 0; i < 11; i++) { const x = -4.4 + i * 0.88, z = (i % 2 ? 0.25 : -0.25); const teller = koerper(new THREE.CylinderGeometry(0.34, 0.3, 0.05, 20), 0xffffff, { umriss: 0.015 }); teller.position.set(x, 1.31, z); tg.add(teller);
       const [f, rr2] = speisen[i % 4]; const sp = koerper(new THREE.SphereGeometry(rr2, 12, 10), f, { umriss: 0.015 }); sp.position.set(x - 0.05, 1.4, z); tg.add(sp); const sp2 = koerper(new THREE.SphereGeometry(rr2 * 0.8, 12, 10), speisen[(i + 1) % 4][0], { umriss: 0.015 }); sp2.position.set(x + 0.1, 1.38, z + 0.06); tg.add(sp2); }
-    const topfT = koerper(new THREE.CylinderGeometry(0.42, 0.36, 0.5, 20), 0x4a4f57, { umriss: 0.03 }); topfT.position.set(0, 1.58, 0); tg.add(topfT);
+    const topfT = koerper(new THREE.CylinderGeometry(0.42, 0.36, 0.5, 20), 0x4a4f57, { umriss: 0.03 }); topfT.position.set(3.4, 1.58, 0); topfT.scale.setScalar(0.7); tg.add(topfT);
     // Laternen an Pfosten und Lichterkette
     for (const sx of [-5.3, 5.3]) { const pf = koerper(new THREE.CylinderGeometry(0.06, 0.08, 3.6, 8), 0x6a4630, { umriss: 0.03 }); pf.position.set(sx, 1.8, 0); tg.add(pf); }
     const kette = []; for (let i = 0; i <= 18; i++) { const u = i / 18, x = -5.3 + u * 10.6, y = 3.55 - 0.7 * Math.sin(u * PI); const b = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 6), new THREE.MeshStandardMaterial({ color: 0xffe9b0, emissive: 0xffc060, emissiveIntensity: 0, roughness: 1 })); b.position.set(x, y, 0.0); tg.add(b); laternen.push(b); }
@@ -197,11 +197,11 @@ export function erzeugeWelt(scene, opt = {}) {
       const nacht = tg.nacht;
       for (const fz of fenster) fz.material.emissiveIntensity = glatt((t - 20) / 6) * 1.4;
       for (const l of laternen) l.material.emissiveIntensity = glatt((t - 20) / 6) * 1.6;
-      alle.lampe.intensity = glatt((t - 20) / 6) * 14;
+      alle.lampe.intensity = glatt((t - 20) / 6) * 4.5;
       // Feuer: Flackern aus Sinussummen
       const F = alle.feuer; const an = glatt((t - 8.5) / 1.2); const fl = (a2, ph) => 0.5 + 0.5 * Math.sin(t * a2 + ph);
       for (const o of F.flammen) { o.m.scale.set(0.85 + 0.25 * fl(13 + o.ph * 3, o.ph * 5), (0.8 + 0.5 * fl(9 + o.ph * 4, o.ph * 3)) * an, 0.85 + 0.25 * fl(11, o.ph)); o.m.position.y = o.y0 * (0.8 + 0.3 * an); o.m.rotation.y = t * 1.3 + o.ph; o.m.visible = an > 0.02; }
-      F.licht.intensity = an * (16 + 5 * fl(17, 1) + 3 * fl(29, 2));
+      F.licht.intensity = an * (3.4 + 1.2 * fl(17, 1) + 0.7 * fl(29, 2));
       F.dampf.forEach((m, i) => { const u = ((t * 0.35 + i / F.dampf.length) % 1); m.position.set(Math.sin(u * 5 + i) * 0.25, 2.0 + u * 2.4, Math.cos(u * 4 + i) * 0.2); m.scale.setScalar(0.6 + u * 1.6); m.material.opacity = 0.5 * Math.sin(u * PI) * glatt((t - 9.5) / 1.5); });
       for (let i = 0; i < 60; i++) { const u = ((t * 0.6 + i * 0.137) % 1), a = i * 2.4; F.fp[i * 3] = Math.sin(a + t * 0.8) * 0.4 * u + Math.sin(a * 3) * 0.1; F.fp[i * 3 + 1] = 0.5 + u * 3.2; F.fp[i * 3 + 2] = Math.cos(a + t * 0.8) * 0.4 * u; } F.funken.geometry.attributes.position.needsUpdate = true; F.funken.material.opacity = an * 0.9;
       // Glühwürmchen (nur abends)
