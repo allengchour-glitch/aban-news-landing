@@ -82,7 +82,7 @@ ok(S.pruefeNeu(NEU_KERN).length === 0, 'Platzhalter-Block besteht die Eingabepr�
   ok(!S.liquidBalance('{% liquid\n assign a = 1 %}').ok, 'liquidBalance: Tag liquid wird abgelehnt');
   // pruefeNeu
   ok(S.pruefeNeu('').length === 1 && S.pruefeNeu('  \n').length === 1, 'pruefeNeu: leer');
-  ok(S.pruefeNeu('a�b').some((x) => /U\+FFFD/.test(x)), 'pruefeNeu: U+FFFD');
+  ok(S.pruefeNeu('a\uFFFDb').some((x) => /U\+FFFD/.test(x)), 'pruefeNeu: U+FFFD');
   ok(S.pruefeNeu('a\u0000b').some((x) => /NUL/.test(x)), 'pruefeNeu: NUL');
   ok(S.pruefeNeu('x'.repeat(120001)).some((x) => /120 KB/.test(x)), 'pruefeNeu: zu gross');
   ok(S.pruefeNeu('{% if a %}').some((x) => /Liquid unplausibel/.test(x)), 'pruefeNeu: Liquid unplausibel');
@@ -125,7 +125,7 @@ const md5 = (s) => createHash('md5').update(s).digest('hex');
 const load = () => JSON.parse(readFileSync(ST, 'utf8')), save = (s) => writeFileSync(ST, JSON.stringify(s));
 export async function shopifyGql(shop, api, tok, query, vars) {
   const s = load();
-  if (query.includes('themes(first:5')) return { themes: { nodes: F.has('keinmain') ? [] : [{ id: 'gid://fake/1', name: 'fake' }] } };
+  if (query.includes('themes(first:5')) return { themes: { nodes: F.has('keinmain') ? [] : F.has('zweimain') ? [{ id: 'gid://fake/1', name: 'fake' }, { id: 'gid://fake/2', name: 'fake2' }] : [{ id: 'gid://fake/1', name: 'fake' }] } };
   if (query.includes('products(first')) { s.produktAnfragen = (s.produktAnfragen || 0) + 1; save(s); return { f: { nodes: [{ handle: 'fortura-test' }] }, c: { nodes: [{ handle: 'cj-test' }] }, a: { nodes: [{ handle: 'fortura-test' }, { handle: 'zufall-test' }] } }; }
   if (query.includes('files(filenames')) {
     s.stale = s.stale || {}; let geaendert = false; const nodes = [];
@@ -134,7 +134,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
       if (st && st.rest > 0) { st.rest--; geaendert = true; c = st.text; }
       if (c == null) continue;
       const url = F.has('url') && n === 'templates/product.json';
-      nodes.push({ filename: n, size: Buffer.byteLength(c), checksumMd5: F.has('nocsum') ? null : md5(c),
+      nodes.push({ filename: n, size: Buffer.byteLength(c), checksumMd5: F.has('nocsum') ? null : F.has('csumfalsch') ? md5(c + 'x') : md5(c),
         body: url ? { __typename: 'OnlineStoreThemeFileBodyUrl', url: 'https://fake.invalid/' + n } : { __typename: 'OnlineStoreThemeFileBodyText', content: c } });
     }
     if (geaendert) save(s);
@@ -147,7 +147,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
       let v = f.body.value;
       if (F.has('usererr') || (F.has('rueckweg_kaputt') && nr >= 2)) { errs.push({ filename: f.filename, message: 'FAKE Syntaxfehler' }); continue; }
       if (F.has('usererr_dirty') && nr === 1) errs.push({ filename: f.filename, message: 'FAKE userError (trotzdem geschrieben)' });
-      if (F.has('norm') && v.includes('NEU-PLATZHALTER')) v += '\\n';
+      if ((F.has('norm') && v.includes('NEU-PLATZHALTER')) || F.has('norm_alles')) v += '\\n';
       if (F.has('verzug')) { s.stale = s.stale || {}; s.stale[f.filename] = { text: s.files[f.filename], rest: 3 }; }
       s.files[f.filename] = v;
     }
@@ -187,14 +187,14 @@ globalThis.fetch = async (u, opt) => {
   let name = 'templates/product.json';
   if (view === 'lxtest' && s.files['templates/product.lxtest.json']) { s.lxcount = (s.lxcount || 0) + 1; if (!(F.has('lxverzug') && s.lxcount <= 3)) name = 'templates/product.lxtest.json'; }
   save(s);
-  const b = block(s.files[name]);
+  const b = block(s.files[name]), geschrieben = (s.calls || []).some((c) => c.op === 'upsert');
   if (b.includes('FAKE_NETZ')) throw new TypeError('fetch failed');
   if (b.includes('FAKE_500')) return new Response('Fehler', { status: 500 });
   if (b.includes('FAKE_HANG')) await new Promise((_, rej) => { setInterval(() => {}, 1000); opt && opt.signal && opt.signal.addEventListener('abort', () => rej(opt.signal.reason)); });
   let body = '<html><body>';
   if (!b.includes('FAKE_LEER') && b.includes('Lieferung voraussichtlich') && !(F.has('blockblind_vorher') && istOrig)) body += 'Bestelle jetzt – Lieferung voraussichtlich 6. Nov.';
   if (b.includes(MARKE)) body += MARKE;
-  if (b.includes('FAKE_LIQUIDFEHLER') || (F.has('seitenfehler_vorher') && istOrig) || (F.has('runde2fehler') && !istOrig && s.nachher > 4)) body += "Liquid error (templates/product line 12): Unknown tag 'x'";
+  if (b.includes('FAKE_LIQUIDFEHLER') || (F.has('seitenfehler_vorher') && istOrig) || (F.has('runde2fehler') && !istOrig && s.nachher > 4) || (F.has('seiten_kaputt_nach_write') && geschrieben)) body += "Liquid error (templates/product line 12): Unknown tag 'x'";
   return new Response(body + '</body></html>', { status: 200 });
 };
 `);
@@ -250,7 +250,7 @@ try {
   gleich(r.code, 0, 'Trockenlauf: Exit'); gleich(calls(), [], 'Trockenlauf: keine Schreib- oder Löschaufrufe'); ok(istOrig(), 'Trockenlauf: Vorlage unverändert'); ok(!existsSync(MERK), 'Trockenlauf: keine Merkliste');
   ok(/Trockenlauf, nichts geschrieben/.test(r.aus) && /Diff-Statistik/.test(r.aus) && /Byte-Vergleich bestanden/.test(r.aus), 'Trockenlauf: Meldung und Diff-Statistik');
   ok(/Datei: +\d+ -> \d+ Byte \([+-]\d+\)/.test(r.aus) && /Prüfsumme: +[0-9a-f]{32} -> Soll [0-9a-f]{32}/.test(r.aus), 'Trockenlauf: Grössen und Prüfsummen in der Statistik');
-  ok(!(stand().urls || []).length, 'Trockenlauf ohne PRUEFEN: keine Seitenabrufe');
+  ok(!(stand().urls || []).length, 'Trockenlauf ohne PRUEFEN: keine Seitenabrufe'); ok(/Empfehlung: vor LIVE=1 erst TESTVORLAGE=1 LIVE=1/.test(r.aus), 'Trockenlauf: Hinweis auf die Testvorlage');
   // 1b. Trockenlauf mit Seitenmessung
   neuerStand(); r = lauf('', { PRUEFEN: '1' });
   gleich(r.code, 0, 'Trockenlauf PRUEFEN: Exit'); ok(/Seiten jetzt/.test(r.aus) && /Lieferblock box/.test(r.aus), 'Trockenlauf PRUEFEN: Seiten gemessen'); gleich(calls(), [], 'Trockenlauf PRUEFEN: nichts geschrieben');
@@ -285,13 +285,13 @@ try {
   // 3b. Blockdatei seitdem geändert: die Prüfsumme der Merkliste erkennt den eingespielten Stand trotzdem
   writeFileSync(NEU, NEU_KERN + '\n{%- comment -%} geändert {%- endcomment -%}'); r = lauf('', { LIVE: '1' });
   gleich(r.code, 3, 'LIVE nach geänderter Blockdatei: Exit 3 (nicht 4)'); gleich(upserts().length, v, 'LIVE nach geänderter Blockdatei: nichts geschrieben'); ok(/Merkliste/.test(r.aus), 'LIVE nach geänderter Blockdatei: nennt die Merkliste');
-  writeFileSync(NEU, NEU_KERN);
 
-  // ----- 4. Rücknahme nach Erfolg -----
+  // ----- 4. Rücknahme nach Erfolg (die Blockdatei ist hier weiter verändert, die Merkliste trägt den Soll-Stand) -----
   r = lauf('', { ZURUECK: '1' });
   gleich(r.code, 0, 'ZURUECK Trockenlauf: Exit'); ok(/zustand .* neu /.test(r.aus) && /Trockenlauf/.test(r.aus), 'ZURUECK Trockenlauf: Zustand «neu»'); gleich(upserts().length, v, 'ZURUECK Trockenlauf: nichts geschrieben'); ok(dateien()[D_] === soll, 'ZURUECK Trockenlauf: Vorlage unverändert');
   r = lauf('', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 0, 'ZURUECK LIVE: Exit'); gleich(upserts().slice(v), [[D_]], 'ZURUECK: genau ein Schreibaufruf'); ok(dateien()[D_] === ORIG, 'ZURUECK: Vorlage Byte-gleich dem Ausgangsstand'); ok(/rücklesen GLEICH/.test(r.aus) && /Seiten nach der Rücknahme/.test(r.aus), 'ZURUECK: Rücklesen und Seitenprüfung');
+  writeFileSync(NEU, NEU_KERN);
   // 5. Rücknahme ohne etwas zu tun
   v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 0, 'ZURUECK im Ausgangsstand: Exit 0'); gleich(upserts().length, v, 'ZURUECK im Ausgangsstand: nichts geschrieben'); ok(/Schon im Ausgangsstand/.test(r.aus), 'ZURUECK im Ausgangsstand: Meldung');
@@ -324,7 +324,7 @@ try {
   { const sn = 'product.json.vor-' + md5(ORIG + '\n').slice(0, 8); ok(existsSync(join(SICH, sn)) && readFileSync(join(SICH, sn), 'utf8') === ORIG + '\n', 'FREMD_UEBERSCHREIBEN=1: Sicherung ist der tatsächliche Live-Stand'); ok(JSON.parse(readFileSync(MERK, 'utf8')).sicherung === sn && JSON.parse(readFileSync(MERK, 'utf8')).fremd === true, 'FREMD_UEBERSCHREIBEN=1: Merkliste nennt diese Sicherung'); }
   r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'Rücknahme nach FREMD_UEBERSCHREIBEN=1: Exit 0'); ok(dateien()[D_] === ORIG + '\n', 'Rücknahme nach FREMD_UEBERSCHREIBEN=1: stellt den fremden Live-Stand her');
   // Prüfsumme fehlt in der API
-  neuerStand(); r = lauf('nocsum', { LIVE: '1' }); gleich(r.code, 4, 'fehlende Prüfsumme: Exit 4'); gleich(calls(), [], 'fehlende Prüfsumme: nichts geschrieben');
+  neuerStand(); r = lauf('nocsum', { LIVE: '1' }); gleich(r.code, 4, 'fehlende Prüfsumme: Exit 4'); gleich(calls(), [], 'fehlende Prüfsumme: nichts geschrieben'); ok(/keine Prüfsumme/.test(r.aus), 'fehlende Prüfsumme: Meldung');
   // Sicherung weicht ab
   neuerStand(); writeFileSync(join(SICH, 'product.json.vor'), ORIG + ' '); r = lauf('', { LIVE: '1' });
   gleich(r.code, 4, 'verfälschte Sicherung: Exit 4'); gleich(calls(), [], 'verfälschte Sicherung: nichts geschrieben');
@@ -333,7 +333,8 @@ try {
   gleich(r.code, 0, 'LIVE ohne Sicherung: Exit 0'); ok(existsSync(join(SICH, 'product.json.vor')) && readFileSync(join(SICH, 'product.json.vor'), 'utf8') === ORIG, 'LIVE ohne Sicherung: legt sie aus dem Live-Stand an');
   // alt.liquid verfälscht
   neuerStand(); writeFileSync(join(PAKET, 'lux_delivery.alt.liquid'), ALT + ' '); r = lauf('', { LIVE: '1' });
-  gleich(r.code, 4, 'verfälschte alt.liquid: Exit 4'); gleich(calls(), [], 'verfälschte alt.liquid: nichts geschrieben'); writeFileSync(join(PAKET, 'lux_delivery.alt.liquid'), ALT);
+  gleich(r.code, 4, 'verfälschte alt.liquid: Exit 4'); gleich(calls(), [], 'verfälschte alt.liquid: nichts geschrieben');
+  r = lauf('', { LIVE: '1', FREMD_UEBERSCHREIBEN: '1' }); gleich(r.code, 4, 'verfälschte alt.liquid trotz FREMD_UEBERSCHREIBEN=1: Exit 4'); ok(/ALT_MD5/.test(r.aus), 'verfälschte alt.liquid: Meldung nennt ALT_MD5'); gleich(calls(), [], 'verfälschte alt.liquid trotz FREMD_UEBERSCHREIBEN=1: nichts geschrieben'); writeFileSync(join(PAKET, 'lux_delivery.alt.liquid'), ALT);
 
   // ----- 9. Doppelte Absicherung: gleiche Datei-MD5, aber anderer Blocktext -----
   {
@@ -408,6 +409,14 @@ try {
   neuerStand(); r = lauf('seitenfehler_vorher', { LIVE: '1' }); gleich(r.code, 4, 'Seiten schon vorher fehlerhaft: Exit 4'); gleich(calls(), [], 'Seiten schon vorher fehlerhaft: nichts geschrieben'); ok(!existsSync(MERK), 'Seiten schon vorher fehlerhaft: keine Merkliste');
   neuerStand(); r = lauf('seitenfehler_vorher', { LIVE: '1', VORFEHLER_OK: '1' }); gleich(r.code, 0, 'Vorfehler mit VORFEHLER_OK=1: Exit 0');
   neuerStand(); r = lauf('blockblind_vorher', { LIVE: '1' }); gleich(r.code, 4, 'kein Lieferblock sichtbar (blind): Exit 4'); gleich(calls(), [], 'kein Lieferblock sichtbar: nichts geschrieben'); ok(/blind/.test(r.aus), 'kein Lieferblock sichtbar: Meldung');
+  // Seiten bleiben auch nach dem Rückweg kaputt: Exit 9 (Rückweg ist nicht «bestätigt»)
+  neuerStand(); r = lauf('seiten_kaputt_nach_write', { LIVE: '1' });
+  gleich(r.code, 9, 'Seiten auch nach dem Rückweg kaputt: Exit 9'); ok(istOrig(), 'Seiten auch nach dem Rückweg kaputt: Datei zurückgeschrieben'); ok(/RÜCKWEG NICHT BESTÄTIGT/.test(r.aus), 'Seiten auch nach dem Rückweg kaputt: Meldung');
+  // Rücknahme: Datei zurück, aber Seiten kaputt -> Exit 7
+  neuerStand(); lauf('', { LIVE: '1' }); r = lauf('seiten_kaputt_nach_write', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 7, 'Rücknahme mit kaputten Seiten: Exit 7'); ok(istOrig(), 'Rücknahme mit kaputten Seiten: Datei trotzdem zurückgeschrieben'); ok(/Seiten sind nicht in Ordnung/.test(r.aus), 'Rücknahme mit kaputten Seiten: Meldung');
+  // Rückweg: Speicher gibt die Sicherung nie unverändert zurück -> nicht bestätigt
+  neuerStand(); r = lauf('norm_alles', { LIVE: '1' }); gleich(r.code, 9, 'Rückweg ohne passendes Rücklesen: Exit 9'); ok(/RÜCKWEG NICHT BESTÄTIGT/.test(r.aus), 'Rückweg ohne passendes Rücklesen: Meldung');
   // Drosselung 429
   neuerStand(); r = lauf('drossel', { LIVE: '1' }); gleich(r.code, 0, '429 bei den Seiten: Exit 0 (wartet und wiederholt)'); ok(dateien()[D_] === soll, '429: Soll-Stand');
   // Produkte aus PRUEF_PRODUKTE, ungültige Einträge werden verworfen
@@ -465,6 +474,17 @@ try {
   r = lauf('', { SHOPIFY_CLIENT_ID: '' }); gleich(r.code, 1, 'ohne Client-ID: Exit 1');
   r = lauf('', { SHOPIFY_SHOP: 'example.com' }); gleich(r.code, 1, 'falsche Shop-Domain: Exit 1');
   r = lauf('keinmain', { LIVE: '1' }); gleich(r.code, 1, 'kein MAIN-Theme: Exit 1'); gleich(calls(), [], 'kein MAIN-Theme: nichts geschrieben');
+  r = lauf('zweimain', { LIVE: '1' }); gleich(r.code, 1, 'zwei MAIN-Themes: Exit 1'); gleich(calls(), [], 'zwei MAIN-Themes: nichts geschrieben');
+  neuerStand(); r = lauf('csumfalsch', { LIVE: '1' }); gleich(r.code, 4, 'Inhalt passt nicht zur Prüfsumme: Exit 4'); gleich(calls(), [], 'Inhalt passt nicht zur Prüfsumme: nichts geschrieben'); ok(/nicht lesbar \(oder passt nicht zur Prüfsumme\)/.test(r.aus), 'Inhalt passt nicht zur Prüfsumme: Meldung');
+  // Merkliste manipuliert: Pfad aus dem Ordner heraus / ungültige Prüfsumme
+  neuerStand(); lauf('', { LIVE: '1' }); { const m = JSON.parse(readFileSync(MERK, 'utf8')); writeFileSync(MERK, JSON.stringify({ ...m, sicherung: '../../evil' })); v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'Merkliste mit Pfad aus dem Ordner: Exit 4'); ok(/Merkliste unvollständig oder ungültig/.test(r.aus), 'Merkliste mit Pfad aus dem Ordner: Meldung'); gleich(upserts().length, v, 'Merkliste mit Pfad aus dem Ordner: nichts geschrieben'); writeFileSync(MERK, JSON.stringify({ ...m, md5_soll: 'xyz' })); r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'Merkliste mit ungültiger Prüfsumme: Exit 4'); ok(/Merkliste unvollständig oder ungültig/.test(r.aus), 'Merkliste mit ungültiger Prüfsumme: Meldung'); writeFileSync(MERK, '{kaputt'); r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 4, 'unlesbare Merkliste: Exit 4'); gleich(upserts().length, v, 'kaputte Merkliste: nichts geschrieben'); }
+  // Sicherung nach dem Einspielen verfälscht: die Rücknahme schreibt sie nicht
+  neuerStand(); lauf('', { LIVE: '1' }); writeFileSync(join(SICH, 'product.json.vor'), ORIG + ' '); v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 4, 'Rücknahme mit verfälschter Sicherung: Exit 4'); gleich(upserts().length, v, 'Rücknahme mit verfälschter Sicherung: nichts geschrieben'); ok(/weicht vom erwarteten Ausgangsstand ab/.test(r.aus), 'Rücknahme mit verfälschter Sicherung: Meldung');
+  neuerStand(); lauf('', { LIVE: '1' }); rmSync(join(SICH, 'product.json.vor')); v = upserts().length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 4, 'Rücknahme ohne Sicherung: Exit 4'); gleich(upserts().length, v, 'Rücknahme ohne Sicherung: nichts geschrieben');
+  // Rücknahme mit Merkliste braucht die Blockdatei nicht
+  neuerStand(); lauf('', { LIVE: '1' }); rmSync(NEU); r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'Rücknahme mit Merkliste ohne Blockdatei: Exit 0'); ok(istOrig(), 'Rücknahme mit Merkliste ohne Blockdatei: Ausgangsstand');
   // nie ein anderer Dateiname
   neuerStand(); lauf('', { LIVE: '1' }); lauf('', { ZURUECK: '1', LIVE: '1' }); lauf('', { TESTVORLAGE: '1', LIVE: '1' }); lauf('', { TESTVORLAGE_WEG: '1', LIVE: '1' });
   ok(calls().every((c) => c.files.every((f) => f === D_ || f === T_)), 'nur templates/product.json und templates/product.lxtest.json werden angefasst');

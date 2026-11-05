@@ -94,7 +94,7 @@ export function liquidBalance(text) {
 export function pruefeNeu(neu) {
   const p = [];
   if (typeof neu !== 'string' || !neu.trim()) return ['Blockdatei ist leer'];
-  if (neu.includes('�')) p.push('enthält ein ungültiges Zeichen (U+FFFD: abgeschnittenes oder falsch kodiertes Zeichen, vielleicht wird die Datei gerade geschrieben)');
+  if (neu.includes('\uFFFD')) p.push('enthält ein ungültiges Zeichen (U+FFFD: abgeschnittenes oder falsch kodiertes Zeichen, vielleicht wird die Datei gerade geschrieben)');
   if (typeof neu.isWellFormed === 'function' && !neu.isWellFormed()) p.push('enthält ein einzelnes Surrogat-Zeichen');
   if (neu.includes('\u0000')) p.push('enthält NUL');
   if (Buffer.byteLength(neu) > 120000) p.push('ist über 120 KB gross');
@@ -423,6 +423,7 @@ async function haupt() {
     const vorhanden = ladeSicherung(sichN, jetzt.md5);
     console.log(vorhanden != null ? `Sicherung vorhanden und gleich dem Live-Stand: sicherung/${sichN}` : `Sicherung sicherung/${sichN} fehlt noch${LIVE ? ': wird vor dem Schreiben angelegt' : ' (wird bei LIVE angelegt)'}`);
   }
+  if (!TEST) console.log(jetztAlle[TESTDATEI] ? `Testvorlage ${TESTDATEI} ist vorhanden (entfernen: TESTVORLAGE_WEG=1 LIVE=1 node dropship/lagerbestand-0511/apply_theme.mjs)` : 'Empfehlung: vor LIVE=1 erst TESTVORLAGE=1 LIVE=1 (zeigt den neuen Block gefahrlos unter ?view=lxtest an jeder Produktseite)');
   if (TEST) console.log(`Testvorlage ${TESTDATEI}: ${jetztAlle[TESTDATEI] ? 'ist schon vorhanden und wird überschrieben (eigene Datei, von keiner Seite ohne ?view=lxtest benutzt)' : 'noch nicht vorhanden'}`);
 
   const pfade = (LIVE || PRUEFEN) ? await pfadeWaehlen() : null;
