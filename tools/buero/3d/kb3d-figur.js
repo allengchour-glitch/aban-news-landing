@@ -18,11 +18,26 @@
     return o;
   };
 
+  /* Schultern und Ellbogen heller (Besitzer 05.11.): Punkte nahe den Gelenken von Rumpf und Armen werden bis +60 % aufgehellt, weich auslaufend.
+     Dort liegen Arme und Schultern sonst im eigenen Schatten und wirken, besonders bei dunkler Haut, fast schwarz. Die Beine bleiben unberührt. */
+  function jointLift(group, x, y, z) {
+    var arm = group.indexOf('arm') === 0;
+    if (!arm && group !== 'torso') return 0;
+    var best = 0, s, d;
+    for (s = -1; s <= 1; s += 2) {
+      d = Math.sqrt((x - s * SHX) * (x - s * SHX) + (y - SHY) * (y - SHY) + z * z);
+      best = Math.max(best, 1 - sstep(0.05, 0.19, d));
+      if (arm) { d = Math.sqrt((x - s * ELX) * (x - s * ELX) + (y - ELY) * (y - ELY) + z * z); best = Math.max(best, 1 - sstep(0.04, 0.16, d)); }
+    }
+    return 0.8 * best;
+  }
+  K.jointLift = jointLift;
+
   /* ---------- Bausatz: Modelle, eingebackene Beine, kleine Zusatzteile (gemeinsam für alle Figuren) ---------- */
   K.figureKit = function (R) {
     var kit = { kinds: {}, extra: {} };
     ['man', 'woman', 'worker'].forEach(function (kind) {
-      var mod = K.model.load(R, kind, { keep: true, crease: 55 });
+      var mod = K.model.load(R, kind, { keep: true, crease: 55, lift: jointLift });
       if (!mod) return;
       var list = [];
       [-1, 1].forEach(function (s) {

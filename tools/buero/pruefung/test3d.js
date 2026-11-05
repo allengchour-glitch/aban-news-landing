@@ -151,6 +151,14 @@ async function lauf(b, optionen, vorher) {
     return d;
   });
   ok('Die Schilder sind im Versandraum im Bild zu sehen', px > 12, px);
+  // Schultern und Ellbogen heller: nur Rumpf und Arme tragen Aufhellung, Beine, Kopf und Augen nicht
+  const lift = await p.evaluate(() => {
+    const k = window.KB3D.Buero.last.debug.seats[0].fig.k.mod.cpu, o = {};
+    Object.keys(k).forEach((g) => { let n = 0, mx = 0; for (let i = 0; i < k[g].n; i++) { const v = k[g].data[i * 12 + 7]; if (v > 0) { n++; if (v > mx) mx = v; } } o[g] = [n, +mx.toFixed(2)]; });
+    return o;
+  });
+  ok('Aufhellung: Rumpf und Arme haben aufgehellte Punkte (höchstens 0,8), Beine, Kopf und Augen keine',
+    ['armUN', 'armLN', 'armUP', 'armLP', 'torso'].every((g) => lift[g] && lift[g][0] > 20 && lift[g][1] > 0.5 && lift[g][1] <= 0.8) && ['thighN', 'shinN', 'thighP', 'shinP', 'head', 'eyes'].every((g) => !lift[g] || lift[g][0] === 0), lift);
   const tippe = async (id) => {
     await p.evaluate(() => { const m = window.KB3D.Buero.last; m.goView('alle', true); m.debug.render(1.7, false); });
     const q = await p.evaluate((i) => window.KB3D.Buero.last.debug.screenOf(i), id);
