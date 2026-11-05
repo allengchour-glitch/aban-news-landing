@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-04T12:03:32Z",
+ "stand": "2026-11-05T12:15:00Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,82 +18,82 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "US-Zwischenwahlen: Eine Klatsche für Musk und die KI-Branche",
-   "u": "https://www.golem.de/news/us-zwischenwahlen-eine-klatsche-fuer-musk-und-die-ki-branche-2611-214835.html",
-   "q": "Golem",
-   "d": "2026-11-04T12:00:01Z",
-   "s": "Die US-Republikaner haben in den Zwischenwahlen eine schwere Niederlage erlitten. Das könnte den ungezügelten Ausbau von Rechenzentren stoppen. Eine Analyse von Friedhelm Greis (Rechenzentrum, Politik…",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Abliterierte KI: Security-Werkzeug oder Weltuntergangswaffe?",
-   "u": "https://www.heise.de/ratgeber/Abliterierte-KI-Security-Werkzeug-oder-Weltuntergangswaffe-11472489.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-11-04T11:00:00Z",
-   "s": "Der renommierte Sicherheitsforscher Costin Raiu erklärt, wie wichtig abliterierte Modelle zur Abwehr sind und welche tatsächlichen Gefahren von ihnen ausgehen.",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: Das Programm steht: secIT-Thementag am 2. Dezember rund um KI & Security",
-   "u": "https://www.heise.de/news/Das-Programm-steht-secIT-Thementag-am-2-Dezember-rund-um-KI-Security-11508529.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-04T11:00:00Z",
-   "s": "Von php2shell bis Agenten-unterstützten Cyberangriffen: KI wirbelt die Cybersecurity tüchtig durcheinander. Der Thementag bringt etwas Ordnung ins Chaos.",
-   "sprache": "de"
-  },
-  {
-   "t": "Smart Reports: Was Vorgesetzte jetzt über die Claude-Nutzung von Mitarbeitenden erfahren können",
-   "u": "https://t3n.de/news/smart-reports-was-vorgesetzte-jetzt-ueber-die-claude-nutzung-von-mitarbeitenden-erfahren-koennen-1771500/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-04T10:08:55Z",
-   "s": "Die neue Claude-Funktion Smart Reports soll Unternehmen dabei helfen, ihre KI-Kosten in den Griff zu bekommen. Gleichzeitig ermöglicht sie Vorgesetzten aber auch, die Leistung ihrer Mitarbeiter:innen …",
-   "sprache": "de"
-  },
-  {
-   "t": "Ohne Zustimmung zu KI: US-Schulen verlieren Zugriff auf Google-Suche",
-   "u": "https://www.golem.de/news/ohne-zustimmung-zu-ki-us-schulen-verlieren-zugriff-auf-google-suche-2611-214831.html",
-   "q": "Golem",
-   "d": "2026-11-04T10:08:01Z",
-   "s": "Wollen Schulen in den USA auf Googles KI-Integration verzichten, streicht der Konzern auch eine Kernfunktion aus seinen Schulanwendungen. (KI, Google)",
-   "sprache": "de"
-  },
-  {
-   "t": "Digitalgipfel: KI-Torschlusspanik",
-   "u": "https://netzpolitik.org/2026/digitalgipfel-ki-torschlusspanik/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-04T08:18:18Z",
-   "s": "Nicht nur Digitalminister Karsten Wildberger, sondern auch Thomas Jarzombek, Gitta Connemann und Markus Richter (v. l. n. r.) vom BMDS waren auf dem Gipfel präsent. – Alle Rechte vorbehalten: Jens Oel…",
-   "sprache": "de"
-  },
-  {
-   "t": "Geht es auch ohne Lightroom? Diese quelloffenen Alternativen gibt es – und das können sie",
-   "u": "https://t3n.de/news/geht-es-auch-ohne-lightroom-diese-quelloffenen-alternativen-gibt-es-und-das-koennen-sie-1771363/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-04T06:30:04Z",
-   "s": "Der Traum der kostenlosen, KI-generierten Lightroom-Alternative entpuppt sich bei genauerer Betrachtung leider doch als Luftschloss. Aber es gibt durchaus einigweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Anthropic is working on a system to prove AI models’ identity",
-   "u": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
+   "t": "Agility is the first pure humanoid robot company on the stock market. Are you buying?",
+   "u": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
    "q": "TechCrunch AI",
-   "d": "2026-11-03T22:41:03Z",
-   "s": "Called FlashProve, the system would let anyone check that an AI response really came from the model it claims to be from.",
+   "d": "2026-11-05T12:00:00Z",
+   "s": "Agility arrives on the Nasdaq today as the first publicly-traded pure-play humanoid robotics company.",
    "sprache": "en"
   },
   {
-   "t": "Data centers are turning to old jet engines as the wait for power grows",
-   "u": "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-03T22:19:53Z",
-   "s": "The years-long wait for access to the grid and new turbines is causing data center builders to turn to an unusual, less-efficient and less environmentally friendly solution: once-discarded jet engines…",
+   "t": "KI-Modelle: Apple-Entwickler sollen sparen",
+   "u": "https://www.heise.de/news/KI-Modelle-Apple-Entwickler-sollen-sparen-11513333.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-05T11:55:00Z",
+   "s": "Nichts mehr mit „Tokenmaxxing“: Bei Apple sind interne KI-Sparmaßnahmen angesagt. Laut einem Bericht sinkt das tägliche Budget um ein Drittel.",
+   "sprache": "de"
+  },
+  {
+   "t": "Modelmaxxing: So stark kürzt Apple jetzt die KI-Budgets seiner Teams",
+   "u": "https://t3n.de/news/modelmaxxing-so-stark-kuerzt-apple-jetzt-die-ki-budgets-seiner-teams-1771796/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-05T11:00:55Z",
+   "s": "Der iPhone-Hersteller befindet sich in einer Zwickmühle: Einerseits will das Unternehmen effizient arbeiten und Innovationen fördern – andererseits sollen die stark gestiegenen Ausgaben wieder reduzie…",
+   "sprache": "de"
+  },
+  {
+   "t": "Pangram Image ist da: KI-Bilder und -Videos aufspüren",
+   "u": "https://www.heise.de/news/Pangram-Image-ist-da-KI-Bilder-und-Videos-aufspueren-11513019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-05T10:56:00Z",
+   "s": "Pangram Labs führt die neuen Modelle Image 1.0 und Image Flash 1.0 ein. Sie sollen KI-generierte Bilder und Videos zuverlässig erkennen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Mit KI-Agenten: OpenAI will in Linux-System fast 1.000 Root-Lücken gefunden haben",
+   "u": "https://www.golem.de/news/mit-ki-agenten-openai-will-in-linux-system-fast-1-000-root-luecken-gefunden-haben-2611-214884.html",
+   "q": "Golem",
+   "d": "2026-11-05T10:17:02Z",
+   "s": "Laut OpenAI haben KI-Agenten bei internen Tests 948 Root-Lücken in einem Linux-System aufgedeckt - und obendrein passende Patches entwickelt. (Sicherheitslücke, Linux-Kernel)",
+   "sprache": "de"
+  },
+  {
+   "t": "Speicherkrise: KI-Boom gefährdet Spielmodule für Nintendo Switch",
+   "u": "https://www.golem.de/news/speicherkrise-ki-boom-gefaehrdet-spielmodule-fuer-nintendo-switch-2611-214883.html",
+   "q": "Golem",
+   "d": "2026-11-05T09:58:01Z",
+   "s": "Ein wichtiger Chiphersteller verabschiedet sich von Nintendo-Spielmodulen. Publisher könnten stärker auf Downloads setzen. (Nintendo Switch 2, Nintendo)",
+   "sprache": "de"
+  },
+  {
+   "t": "40 Jahre .de: Deutschlands digitale Adresse im Wandel",
+   "u": "https://t3n.de/news/40-jahre-de-deutschlands-digitale-adresse-im-wandel-1771737/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-05T08:00:06Z",
+   "s": "Für shopping.de wurden fast zwei Millionen Euro gezahlt, heute gibt es mehr als 18 Millionen .de-Domains. Doch Apps und KI verändern, wie wir Adressen im Netz nutzen.weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Setting a new standard for responsible AI infrastructure",
+   "u": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+   "q": "OpenAI",
+   "d": "2026-11-05T02:00:00Z",
+   "s": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
    "sprache": "en"
   },
   {
-   "t": "StateBench: Testing how language models track state changes over long documents",
-   "u": "https://huggingface.co/blog/allenai/statebench",
+   "t": "Apple is reportedly cutting budgets for its internal AI usage",
+   "u": "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-05T01:26:22Z",
+   "s": "The company is said to be significantly dropping the amount it's spending on AI for its engineering teams.",
+   "sprache": "en"
+  },
+  {
+   "t": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
+   "u": "https://huggingface.co/blog/phonon-tts",
    "q": "Hugging Face",
-   "d": "2026-11-03T17:15:21Z",
+   "d": "2026-11-05T00:00:00Z",
    "s": "",
    "sprache": "en"
   }
