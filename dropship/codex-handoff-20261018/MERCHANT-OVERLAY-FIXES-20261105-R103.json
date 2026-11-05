@@ -1,0 +1,198 @@
+{
+  "revision": 103,
+  "runId": "LUXESTYLE_R103_20261105",
+  "checkedAt": "2026-11-05T21:11:44+01:00",
+  "scope": "Nine remaining Merchant item IDs with promotional overlay on image; exact current variants and all available READY media inspected",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "matched": true
+    }
+  },
+  "input": {
+    "fileName": "product_issues_2026-11-05_09-03-46.csv",
+    "sha256": "0e20c63e1f39db5faf325d4f7ca264677efba8f83111fee53abf8661287b1785",
+    "rows": 22006,
+    "overlayRows": 54,
+    "overlayUniqueItemIds": 10,
+    "alreadyCorrectedInR102": 1,
+    "remainingItemIdsInspected": 9
+  },
+  "writes": [
+    {
+      "itemId": "shopify_ZZ_15524857381249_56222333239681",
+      "productId": "gid://shopify/Product/15524857381249",
+      "variantId": "gid://shopify/ProductVariant/56222333239681",
+      "variantTitle": "Default Title",
+      "sku": "CJ-B25622D2-49E6-41E0-BD64-C4634981D6EC",
+      "priceChf": "38.90",
+      "availableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "beforeVariantMedia": [],
+      "afterMedia": {
+        "id": "gid://shopify/MediaImage/70800517923201",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6410007415048.jpg?v=1788515551",
+        "width": 400,
+        "height": 400,
+        "status": "READY",
+        "visualFinding": "same complete feeder with display, no promotional text or obstructing element"
+      },
+      "mutation": "productVariantsBulkUpdate",
+      "allowPartialUpdates": false,
+      "userErrors": [],
+      "attempts": 1,
+      "retries": 0,
+      "adminReadbackConfirmed": true,
+      "publicReadbackConfirmed": true,
+      "publicProductJsonSha256": "31cf585f09336fb93054a234da4fc7861a2ec13cbfc50e1d8211547f89a30f73",
+      "publicationNodes": 7
+    },
+    {
+      "itemId": "shopify_ZZ_15447629332865_55872852328833",
+      "productId": "gid://shopify/Product/15447629332865",
+      "variantId": "gid://shopify/ProductVariant/55872852328833",
+      "variantTitle": "Default Title",
+      "sku": "CJ-2014618520334143489",
+      "priceChf": "15.90",
+      "availableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "beforeVariantMedia": [],
+      "afterMedia": {
+        "id": "gid://shopify/MediaImage/69851240726913",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/18a25243-a25f-4868-adc7-e20a3eca3185.jpg?v=1783106056",
+        "width": 466,
+        "height": 466,
+        "status": "READY",
+        "visualFinding": "ten actual colour combs with hair view, no visible text, badge, border or watermark"
+      },
+      "mutation": "productVariantsBulkUpdate",
+      "allowPartialUpdates": false,
+      "userErrors": [],
+      "attempts": 1,
+      "retries": 0,
+      "adminReadbackConfirmed": true,
+      "publicReadbackConfirmed": true,
+      "publicProductJsonSha256": "66dd765ce6ddd033837aa896580c09e90a7ed640490fb3c9dc162ccb35f7807f",
+      "retainedBlockTag": "rueckhol-0907",
+      "publicationNodes": 7
+    }
+  ],
+  "blocked": [
+    {
+      "itemId": "shopify_ZZ_16606108123527_67789999440263",
+      "reason": "No clean existing image of the exact red variant; the only clean pedal image is black."
+    },
+    {
+      "itemId": "shopify_ZZ_15450836566401_55889781588353",
+      "reason": "Set 8 cannot be mapped unambiguously to existing cube, sphere, crown or mixed imagery."
+    },
+    {
+      "itemId": "shopify_ZZ_15433464381825_67788517900679",
+      "reason": "No text-free existing media has a proven exact PS4 assignment."
+    },
+    {
+      "itemId": "shopify_ZZ_15450836697473_55889785094529",
+      "reason": "Clean pink one-piece images exist, but the exact mapping to the Pink expensive SKU is unproven."
+    },
+    {
+      "itemId": "shopify_ZZ_15520398311809_67680512835975",
+      "reason": "The only single green image contains a large detached time overlay; other colours would be variant mismatches."
+    },
+    {
+      "itemId": "shopify_ZZ_15450832961921_55889732862337",
+      "reason": "No clean media matches pink, English packaging and three-piece quantity together."
+    },
+    {
+      "itemId": "shopify_ZZ_15450832961921_55889732927873",
+      "reason": "A clean two-ball image exists, but its green-and-pink colour combination is not proven for this variant."
+    }
+  ],
+  "readback": {
+    "adminConfirmedVariants": 2,
+    "publicProductJsonHttp200": 2,
+    "independentReadback": "PASS",
+    "verifiedUnchanged": [
+      "product status",
+      "title",
+      "handle",
+      "SEO",
+      "tags",
+      "options",
+      "variant ID and title",
+      "SKU",
+      "price",
+      "compare-at price",
+      "availability",
+      "inventory tracking",
+      "inventory policy",
+      "gallery media and order",
+      "publications"
+    ],
+    "notMutationFields": [
+      "description",
+      "product type",
+      "category",
+      "barcode",
+      "weight",
+      "media files",
+      "alt text",
+      "other variants"
+    ]
+  },
+  "remaining": {
+    "overlayItemIdsOpen": 7,
+    "googleReprocessingStatus": "unknown",
+    "activeMerchantSourceId": "unknown",
+    "submittedImageUrl": "unknown",
+    "googleIssueResolved": "unknown",
+    "cssCapacityRows": 21862,
+    "capacityClassification": "ACCOUNT_OR_PROGRAM_CAPACITY_NOT_PRODUCT_DATA"
+  },
+  "externalWrites": {
+    "shopifyVariantMediaAssociations": 2,
+    "shopifyProductsOtherwise": 0,
+    "merchant": 0,
+    "metricool": 0,
+    "feed": 0,
+    "country": 0,
+    "shipping": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "orders": 0,
+    "render": 0
+  },
+  "dailyReadsNotRepeated": [
+    "Metricool analytics",
+    "Klaviyo flow report",
+    "orders or ended purchase watch"
+  ],
+  "strictCatalogProgressUnchanged": {
+    "correctedActiveProducts": 32,
+    "activeProducts": 56506,
+    "percent": 0.05663,
+    "roundedPercent": 0.06,
+    "remainingProducts": 56474,
+    "reason": "Two exact variant-media repairs were made, not a complete product SEO/quality pass under the strict catalog procedure."
+  },
+  "nextStep": "After Merchant reprocessing, read the exact active source and submitted image link for the three corrected R102/R103 variants. Continue the seven blocked items only after exact supplier mapping or an exact existing original image is proven."
+}
