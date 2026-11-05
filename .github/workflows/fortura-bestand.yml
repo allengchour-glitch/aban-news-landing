@@ -1,0 +1,211 @@
+name: "Fortura-Bestand (Abgleich)"
+
+# Führt den Lagerbestand der Fortura-CH-Ware (Tag fortura / ch-lager, ~8 400 Varianten) täglich aus dem Fortura-Feed nach und setzt danach den
+# Frische-Stempel (Shop-Metafeld luxe.fortura_bestand_stand). Hintergrund (GEMESSEN 05.11.2026): echte Bestandszahlen gibt es nur bei diesen
+# 3 998 Fortura-Varianten (verfolgt, Verkauf bei 0 gesperrt); CJ und Druckware haben keine Zahl. Der Abgleich lief zuletzt am 24.10., danach
+# wichen 925 Varianten vom Feed ab (79 kaufbar, obwohl der Feed 0 meldet). Die Zahl darf im Shop nur stehen, solange der Stempel frisch ist.
+#
+# Skripte: automation/fortura_feed_holen.sh (Feed, nur lesen) · automation/fortura_bestand_sync.mjs (Abgleich, byte-gleich mit dem erprobten
+# Stand auf dem Zweig claude/luxestyle-status-tztnn1) · automation/fortura_bestand_stempel.mjs (Stempel mit Gate). Test: dropship/lagerbestand-0511.
+#
+# Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
+#   - Ohne Freigabedatei dropship/FORTURA-BESTAND-FREI.txt: nur LESEN (Feed holen, Abgleich als Trockenlauf). Kein Shopify-Schreibzugriff, kein Stempel.
+#   - Mit Freigabedatei im Repo: der Zeitplan schreibt LIVE (Mengen, dann Nachprüfung, dann Stempel). Datei löschen = Stopp (nächster Lauf liest nur).
+#   - Von Hand (workflow_dispatch) wird nur geschrieben, wenn die Freigabedatei liegt UND «schreiben» angehakt ist.
+# Der Stempel wird nur gesetzt, wenn das Gate besteht (siehe Kopf von fortura_bestand_stempel.mjs). Besteht es nicht, bleibt der alte Stempel stehen
+# und altert von selbst: das Theme fällt dann auf «keine Angabe» zurück. Ein roter Lauf ist also die sichere Richtung.
+#
+# Zugang: Repo-Secrets FORTURA_FTP_USER, FORTURA_FTP_PW (Feed), SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Shop). Fehlt eines, endet der erste Schritt
+# mit Exit 2 und nennt den Namen. Zeitplan 03:51 UTC (04:51 Schweizer Winterzeit): nach dem Feed auf dem Fortura-Server (~23:02 UTC), vor dem
+# Lager-Wächter (05:17), nicht neben dem Google-Schaufenster (04:41). Einmal täglich (Regel «Crons sparsam, max. 1x/Tag»).
+# Der Feed bleibt im Runner (Lieferantendaten), nur Protokolle gehen als Artefakt weg.
+on:
+  schedule:
+    - cron: '51 3 * * *'
+  workflow_dispatch:
+    inputs:
+      schreiben:
+        description: 'Wirklich Bestand schreiben und Stempel setzen (nur mit Freigabedatei dropship/FORTURA-BESTAND-FREI.txt); sonst nur lesen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fortura-bestand
+  cancel-in-progress: false
+
+jobs:
+  abgleich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/fortura_bestand_sync.mjs
+            automation/fortura_feed_holen.sh
+            automation/fortura_bestand_stempel.mjs
+            automation/lib/shopify_gql.mjs
+            automation/lib/shopify_secret.mjs
+            automation/lib/shopify_host.mjs
+            dropship/_fortura_sperr_varianten.txt
+            dropship/FORTURA-BESTAND-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        run: |
+          live=0
+          if [ -f dropship/FORTURA-BESTAND-FREI.txt ]; then
+            if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
+          fi
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          if [ "$live" = "1" ]; then echo "Modus: Bestand schreiben (Freigabe liegt im Repo)"; else echo "Modus: nur lesen (Trockenlauf)"; fi
+
+      - name: Zugänge prüfen
+        env:
+          FORTURA_FTP_USER: ${{ secrets.FORTURA_FTP_USER }}
+          FORTURA_FTP_PW: ${{ secrets.FORTURA_FTP_PW }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          fehlt=""
+          [ -n "$FORTURA_FTP_USER" ] || fehlt="$fehlt FORTURA_FTP_USER"
+          [ -n "$FORTURA_FTP_PW" ] || fehlt="$fehlt FORTURA_FTP_PW"
+          [ -n "$SHOPIFY_CLIENT_ID" ] || fehlt="$fehlt SHOPIFY_CLIENT_ID"
+          [ -n "$SHOPIFY_CLIENT_SECRET" ] || fehlt="$fehlt SHOPIFY_CLIENT_SECRET"
+          if [ -n "$fehlt" ]; then
+            echo "::error title=Zugang fehlt::Repo-Secrets fehlen:$fehlt (Settings, Secrets and variables, Actions). Es wird nichts geholt und nichts geschrieben."
+            exit 2
+          fi
+          # Arbeitspfade für die folgenden Schritte. Feed und Shopify-Token bleiben im Runner-Temp und gehen nie ins Artefakt.
+          echo "FORTURA_CSV=$RUNNER_TEMP/fortura_feed.csv" >> "$GITHUB_ENV"
+          echo "SHOPIFY_TOKEN_FILE=$RUNNER_TEMP/shop_token.txt" >> "$GITHUB_ENV"
+          echo "Zugänge: alle vier Secrets sind gesetzt."
+
+      - name: Feed holen (nur lesen)
+        id: feed
+        env:
+          FORTURA_FTP_USER: ${{ secrets.FORTURA_FTP_USER }}
+          FORTURA_FTP_PW: ${{ secrets.FORTURA_FTP_PW }}
+        run: |
+          set +e
+          bash automation/fortura_feed_holen.sh "$FORTURA_CSV" 2>&1 | tee lauf-feed.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Bestand abgleichen
+        id: sync
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live }}
+        run: |
+          set +e
+          # Das Abgleich-Skript liest SHOPIFY_CLIENT_SECRET roh; die Bereinigung der Repo-Bibliothek schneidet ein vertauschtes «…=NAME» ab.
+          SHOPIFY_CLIENT_SECRET="$(node -e "import('./automation/lib/shopify_secret.mjs').then(m=>process.stdout.write(m.shopifyClientSecret()))")"
+          export SHOPIFY_CLIENT_SECRET
+          mkdir -p dropship
+          if [ "$LIVE" = "1" ]; then unset DRY; else export DRY=1; fi
+          node automation/fortura_bestand_sync.mjs 2>&1 | tee lauf-sync.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Nachprüfung (erneuter Trockenlauf)
+        id: nach
+        if: ${{ !cancelled() && steps.modus.outputs.live == '1' && (steps.sync.outputs.rc == '0' || steps.sync.outputs.rc == '1') }}
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          set +e
+          SHOPIFY_CLIENT_SECRET="$(node -e "import('./automation/lib/shopify_secret.mjs').then(m=>process.stdout.write(m.shopifyClientSecret()))")"
+          export SHOPIFY_CLIENT_SECRET
+          DRY=1 node automation/fortura_bestand_sync.mjs 2>&1 | tee lauf-nach.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Frische-Stempel setzen
+        id: stempel
+        if: ${{ !cancelled() && steps.modus.outputs.live == '1' && steps.sync.outputs.rc != '' }}
+        env:
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live }}
+          LIVE_EXIT: ${{ steps.sync.outputs.rc }}
+          NACH_EXIT: ${{ steps.nach.outputs.rc }}
+          NACH_DATEI: lauf-nach.txt
+        run: |
+          set +e
+          node automation/fortura_bestand_stempel.mjs 2>&1 | tee lauf-stempel.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Zusammenfassung
+        if: always()
+        env:
+          LIVE: ${{ steps.modus.outputs.live }}
+          ERG_FEED: ${{ steps.feed.outcome }}
+          ERG_SYNC: ${{ steps.sync.outcome }}
+          ERG_NACH: ${{ steps.nach.outcome }}
+          ERG_STEMPEL: ${{ steps.stempel.outcome }}
+          RC_SYNC: ${{ steps.sync.outputs.rc }}
+          RC_NACH: ${{ steps.nach.outputs.rc }}
+          RC_STEMPEL: ${{ steps.stempel.outputs.rc }}
+        run: |
+          zeilen() { grep -E "$1" "$2" 2>/dev/null || echo "(kein Lauf)"; }
+          {
+            echo "## Fortura-Bestand (Abgleich)"
+            echo
+            if [ "$LIVE" = "1" ]; then echo "Modus: **Bestand geschrieben, Stempel nach Gate** (Freigabedatei liegt im Repo)."; else echo "Modus: **nur gelesen** (Trockenlauf; keine Freigabedatei oder kein Schreibwunsch). Es wird kein Stempel gesetzt."; fi
+            echo
+            echo "| Schritt | Ergebnis | Exit |"
+            echo "|---|---|---|"
+            echo "| Feed holen | ${ERG_FEED:-übersprungen} | |"
+            echo "| Abgleich | ${ERG_SYNC:-übersprungen} | ${RC_SYNC:--} |"
+            echo "| Nachprüfung | ${ERG_NACH:-übersprungen} | ${RC_NACH:--} |"
+            echo "| Stempel | ${ERG_STEMPEL:-übersprungen} | ${RC_STEMPEL:--} |"
+            echo
+            echo '### Feed'
+            echo '```'; zeilen '^(Fortura-Feed|HINWEIS|FEHLER|OFFEN|  )' lauf-feed.txt; echo '```'
+            echo '### Abgleich'
+            echo '```'; zeilen '^(Feed |Shop:|Abgleich:|ACTIVE:|Wiederaufnahme|\[DRY\]|FERTIG|ABBRUCH|OFFEN|läuft bereits)' lauf-sync.txt; echo '```'
+            if [ -f lauf-nach.txt ]; then
+              echo '### Nachprüfung'
+              echo '```'; zeilen '^(Abgleich:|ACTIVE:|\[DRY\]|ABBRUCH|OFFEN)' lauf-nach.txt; echo '```'
+            fi
+            if [ -f lauf-stempel.txt ]; then
+              echo '### Stempel'
+              echo '```'; cat lauf-stempel.txt; echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Protokoll aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortura-bestand-protokoll
+          path: |
+            lauf-feed.txt
+            lauf-sync.txt
+            lauf-nach.txt
+            lauf-stempel.txt
+            dropship/_fortura_bestand_log.tsv
+            dropship/_fortura_bestand_report.md
+            dropship/_fortura_bestand_stand.json
+          if-no-files-found: ignore
+          retention-days: 30

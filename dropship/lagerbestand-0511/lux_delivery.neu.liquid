@@ -1,0 +1,118 @@
+{%- comment -%} LUX-LIEFERUNG 05.11.2026 (Verfügbarkeit je Ausführung, ehrliche Bestandsanzeige).
+1. Die Verfügbarkeit gilt für die gewählte Ausführung (selected_or_first_available_variant), nicht mehr für das ganze Produkt. Ist sie ausverkauft: rote Pille «Diese Ausführung ist ausverkauft» (wenn eine andere Ausführung kaufbar ist) bzw. «Momentan ausverkauft», und KEINE Lieferbox.
+2. «Nur noch N» / «Nur noch wenige» (orange) erscheint nur, wenn ALLE Bedingungen gelten: Tag fortura oder ch-lager · Zweig Schweizer Lager · Variante mit inventory_management shopify · inventory_policy deny · Variante kaufbar · Stempel shop.metafields.luxe.fortura_bestand_stand ist ein Zeitstempel mit Uhrzeit (z. B. 2026-11-05T08:15:00Z), höchstens 26 h (93600 s) alt und höchstens 300 s in der Zukunft · Notschalter nicht aus. Fehlt eine Bedingung oder ist der Stempel leer, alt, zu neu oder kein Datum, steht keine Zahl und kein «Nur noch» (Rückfall: «Auf Lager · versandbereit»). CJ, Druck auf Bestellung und EU-Lager bekommen nie eine Zahl.
+3. Stufen: 1 bis 3 Stück = genaue Zahl (bei 1 «Nur noch 1 Stück»), 4 bis 5 = «wenige», ab 6 = «Auf Lager · versandbereit» (grün wie bisher).
+Abschalten der Zahlen: Shop-Metafeld luxe.bestand_anzeige = 0 (auch «false»; fehlt es, ist die Anzeige an). Punkt 1 bleibt dann trotzdem aktiv. Datumsrechnung, Lieferbox-Texte und Versandsätze sind unverändert (Stand 13.10./24.08.2026). {%- endcomment -%}
+{%- assign now_s = 'now' | date: '%s' | plus: 0 -%}
+{%- comment -%} LUX-KASSENDATUM (Spur A): Notschalter luxe.ch_lager_stufe (Shop-Metafeld, fehlt = 1; 0 = überall das lange Datum). Das kurze Datum gilt nur mit Tag profil-ch-lager — den setzt automation/ch_lager_profil.py für Ware im Profil «CH-Lager» (13.10.2026). {%- endcomment -%}
+{%- assign lx_stufe = shop.metafields.luxe.ch_lager_stufe.value | default: 1 | plus: 0 -%}
+{%- unless closest.product.tags contains 'profil-ch-lager' -%}{%- assign lx_stufe = 0 -%}{%- endunless -%}
+{%- assign lx_tmin = 0 -%}
+{%- if closest.product.tags contains 'fortura' or closest.product.tags contains 'ch-lager' or closest.product.tags contains 'blitzversand' -%}
+  {%- if lx_stufe >= 1 -%}{%- assign lx_tmin = 1 -%}{%- assign lx_tmax = 2 -%}{%- else -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- endif -%}
+  {%- if lx_stufe >= 1 -%}{%- assign lager = '🇨🇭 Blitzversand aus dem Schweizer Lager' -%}{%- else -%}{%- assign lager = '🇨🇭 Ab Schweizer Lager' -%}{%- endif -%}
+{%- elsif closest.product.tags contains 'eu-lager' -%}
+  {%- assign d_from = now_s | plus: 259200 -%}
+  {%- assign d_to = now_s | plus: 864000 -%}
+  {%- assign lager = 'Versand aus EU-Lager' -%}
+{%- elsif closest.product.tags contains 'printful_personalized_product' or closest.product.tags contains 'prodigi_personalized_product' or closest.product.tags contains 'selbst-gestalten' -%}
+  {%- assign lx_druck_key = ',' | append: closest.product.id | append: ',' -%}{%- if shop.metafields.luxe.druck_profil_ids.value contains lx_druck_key -%}{%- assign lx_tmin = 6 -%}{%- assign lx_tmax = 13 -%}{%- else -%}{%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}{%- endif -%}
+  {%- assign lager = 'Druck auf Bestellung' -%}
+{%- else -%}
+  {%- assign lx_tmin = 9 -%}{%- assign lx_tmax = 19 -%}
+  {%- assign lager = 'Direktversand vom Hersteller in Asien — deshalb die längere Lieferzeit' -%}
+{%- endif -%}
+{%- comment -%} LUX-KASSENDATUM 13.10.2026: dieselbe Rechnung wie die Kasse (help.shopify.com …/delivery-dates; geeicht an
+3 Kassen-Messungen 10./13.10.): Werktage Mo–Fr, Annahmeschluss 12 Uhr (Zeitzone Shop = Versandort CH), Bearbeitung P1D
+(deliveryPromiseSettings), Übergabe am Werktag danach, Transit lx_tmin–lx_tmax Werktage (Profil-Tarif). Rechnet ab 12 Uhr
+des heutigen Tages, damit die Sommerzeit-Umstellung kein Datum verschiebt. {%- endcomment -%}
+{%- if lx_tmin > 0 -%}
+  {%- assign lx_h = 'now' | date: '%H' | plus: 0 -%}
+  {%- assign lx_w = 'now' | date: '%w' | plus: 0 -%}
+  {%- assign lx_von = 1 | plus: lx_tmin -%}
+  {%- if lx_h >= 12 or lx_w == 0 or lx_w == 6 -%}{%- assign lx_von = lx_von | plus: 1 -%}{%- endif -%}
+  {%- assign lx_bis = lx_von | plus: lx_tmax | minus: lx_tmin -%}
+  {%- assign lx_t = lx_h | times: -3600 | plus: 43200 | plus: now_s -%}
+  {%- assign lx_n = 0 -%}
+  {%- for lx_i in (1..35) -%}
+    {%- assign lx_t = lx_t | plus: 86400 -%}
+    {%- assign lx_wt = lx_t | date: '%w' | plus: 0 -%}
+    {%- unless lx_wt == 0 or lx_wt == 6 -%}
+      {%- assign lx_n = lx_n | plus: 1 -%}
+      {%- if lx_n == lx_von -%}{%- assign d_from = lx_t -%}{%- endif -%}
+      {%- if lx_n == lx_bis -%}{%- assign d_to = lx_t -%}{%- break -%}{%- endif -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- comment -%} 24.08.2026: Faellt ein Datum auf Sa/So, wird es auf Montag geschoben —
+vorher zeigte der Balken an 2 von 7 Tagen eine reine Wochenend-Spanne (die Zuschlaege
+des else-Zweigs sind 7er-Vielfache, das Datum war immer der Wochentag des Bestelltags),
+und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endcomment -%}
+{%- assign wf = d_from | date: '%w' | plus: 0 -%}
+{%- if wf == 6 -%}{%- assign d_from = d_from | plus: 172800 -%}{%- elsif wf == 0 -%}{%- assign d_from = d_from | plus: 86400 -%}{%- endif -%}
+{%- assign wt = d_to | date: '%w' | plus: 0 -%}
+{%- if wt == 6 -%}{%- assign d_to = d_to | plus: 172800 -%}{%- elsif wt == 0 -%}{%- assign d_to = d_to | plus: 86400 -%}{%- endif -%}
+{%- if closest.product -%}
+{%- assign lx_v = closest.product.selected_or_first_available_variant -%}
+{%- if lx_v -%}{%- assign lx_ok = lx_v.available -%}{%- else -%}{%- assign lx_ok = closest.product.available -%}{%- endif -%}
+{%- comment -%} Bestandsprüfung in Schritten; lx_bs_an bleibt nur 1, solange jede Bedingung hält. {%- endcomment -%}
+{%- assign lx_bs_an = 0 -%}
+{%- if lx_ok and lx_v and lx_tmin > 0 and lager contains 'Schweizer Lager' -%}
+  {%- if closest.product.tags contains 'fortura' or closest.product.tags contains 'ch-lager' -%}
+    {%- if lx_v.inventory_management == 'shopify' and lx_v.inventory_policy == 'deny' -%}{%- assign lx_bs_an = 1 -%}{%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if lx_bs_an == 1 -%}
+  {%- assign lx_bs_sw = shop.metafields.luxe.bestand_anzeige.value | append: '' | strip | downcase -%}
+  {%- if lx_bs_sw == '0' or lx_bs_sw == 'false' -%}{%- assign lx_bs_an = 0 -%}{%- endif -%}
+{%- endif -%}
+{%- if lx_bs_an == 1 -%}
+  {%- assign lx_bs_an = 0 -%}
+  {%- assign lx_bs_roh = shop.metafields.luxe.fortura_bestand_stand.value -%}
+  {%- assign lx_bs_txt = lx_bs_roh | append: '' -%}
+  {%- if lx_bs_txt contains ':' -%}
+    {%- assign lx_bs_st = lx_bs_roh | date: '%s' -%}
+    {%- if lx_bs_st != lx_bs_txt -%}
+      {%- assign lx_bs_st = lx_bs_st | plus: 0 -%}
+      {%- assign lx_bs_alter = now_s | minus: lx_bs_st -%}
+      {%- assign lx_bs_vor = lx_bs_st | minus: now_s -%}
+      {%- if lx_bs_st > 0 and lx_bs_alter <= 93600 and lx_bs_vor <= 300 -%}{%- assign lx_bs_an = 1 -%}{%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- assign lx_c_text = '#1e7a2e' -%}{%- assign lx_c_punkt = '#2eaf46' -%}{%- assign lx_c_schein = 'rgba(46,175,70,.18)' -%}
+{%- if lx_ok -%}
+  {%- if lager contains 'Schweizer Lager' -%}
+    {%- assign zustand = 'Auf Lager &middot; versandbereit' -%}
+  {%- elsif lager contains 'EU-Lager' -%}
+    {%- assign zustand = 'Auf Lager im EU-Lager' -%}
+  {%- elsif lager contains 'Druck auf Bestellung' -%}
+    {%- assign zustand = 'Wird für dich gedruckt' -%}
+  {%- else -%}
+    {%- assign zustand = 'Verfügbar &middot; Direktversand aus Asien' -%}
+  {%- endif -%}
+  {%- if lx_bs_an == 1 -%}
+    {%- assign lx_bs_q = lx_v.inventory_quantity | plus: 0 -%}
+    {%- if lx_bs_q >= 1 and lx_bs_q <= 3 -%}
+      {%- if lx_bs_q == 1 -%}{%- assign zustand = 'Nur noch 1 Stück auf Lager &middot; versandbereit' -%}{%- else -%}{%- assign zustand = 'Nur noch ' | append: lx_bs_q | append: ' auf Lager &middot; versandbereit' -%}{%- endif -%}
+      {%- assign lx_c_text = '#9a5b00' -%}{%- assign lx_c_punkt = '#e8890c' -%}{%- assign lx_c_schein = 'rgba(232,137,12,.18)' -%}
+    {%- elsif lx_bs_q >= 4 and lx_bs_q <= 5 -%}
+      {%- assign zustand = 'Nur noch wenige auf Lager &middot; versandbereit' -%}
+      {%- assign lx_c_text = '#9a5b00' -%}{%- assign lx_c_punkt = '#e8890c' -%}{%- assign lx_c_schein = 'rgba(232,137,12,.18)' -%}
+    {%- endif -%}
+  {%- endif -%}
+<div style="display:flex;align-items:center;gap:.45rem;margin:.5rem 0 0;font-size:.92rem;font-weight:600;color:{{ lx_c_text }};"><span style="display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:{{ lx_c_punkt }};box-shadow:0 0 0 3px {{ lx_c_schein }};"></span>{{ zustand }}</div>
+{%- else -%}
+  {%- if closest.product.available -%}{%- assign zustand = 'Diese Ausführung ist ausverkauft' -%}{%- else -%}{%- assign zustand = 'Momentan ausverkauft' -%}{%- endif -%}
+<div style="display:flex;align-items:center;gap:.45rem;margin:.5rem 0 0;font-size:.92rem;font-weight:600;color:#b3261e;"><span style="display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:#d93025;"></span>{{ zustand }}</div>
+{%- endif -%}
+{%- if lx_ok -%}
+{%- assign months = 'Jan.,Feb.,März,Apr.,Mai,Juni,Juli,Aug.,Sept.,Okt.,Nov.,Dez.' | split: ',' -%}
+{%- assign mf = d_from | date: '%-m' | minus: 1 -%}
+{%- assign mt = d_to | date: '%-m' | minus: 1 -%}
+<div style="display:flex;align-items:flex-start;gap:.5rem;margin:.6rem 0;padding:.6rem .8rem;background:#f3f8f3;border-radius:8px;font-size:.9rem;line-height:1.4;color:#2e6b34;">
+<span style="font-size:1.1rem;">🚚</span>
+<span>{%- if localization.country.iso_code == 'LI' -%}Lieferung nach Liechtenstein: das voraussichtliche Datum zeigt die Kasse.{%- else -%}Bestelle jetzt &ndash; Lieferung voraussichtlich <strong>{{ d_from | date: '%-d' }}. {{ months[mf] }} &ndash; {{ d_to | date: '%-d' }}. {{ months[mt] }}</strong>{%- endif -%}<br><span style="color:#5a7a5e;">{{ lager }} &middot; {% if closest.product.tags contains 'profil-ch-lager' %}In der Schweiz Gratis-Versand für Ware ab Schweizer Lager (zusammen mit anderer Ware: gratis ab CHF 50 nach Rabatt){% elsif product.price_min >= 5556 %}In der Schweiz gratis Versand inklusive{% elsif product.price_min >= 5000 %}In der Schweiz gratis Versand inklusive (ohne Gutschein){% else %}In der Schweiz gratis ab CHF 50 nach Rabatt{% endif %}</span></span>
+</div>
+{%- endif -%}
+{%- endif -%}

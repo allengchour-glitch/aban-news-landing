@@ -1,0 +1,4 @@
+# InventoryItem-GIDs, die fortura_bestand_sync.mjs fest auf 0 hält (Fremdvarianten). Zeile löschen = wieder Feed-Menge.
+gid://shopify/InventoryItem/55413075673473  # kostum-hexe-laurelin-mit-hut-fgssck41881 fortura-CK4188S = Supergirl Damen S (Fremdvariante CK-Fusion 06.08.)
+gid://shopify/InventoryItem/55413075280257  # kostum-kurbis-hexe-mit-hut-fgssck4193k fortura-CK4193M = Asterix Erwachsene M (Fremdvariante CK-Fusion 06.08.)
+gid://shopify/InventoryItem/55413075345793  # kostum-kurbis-hexe-mit-hut-fgssck4193k fortura-CK4193128 = Asterix Kind 128 cm (Fremdvariante CK-Fusion 06.08.)
