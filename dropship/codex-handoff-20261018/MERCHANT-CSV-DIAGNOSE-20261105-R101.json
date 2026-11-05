@@ -1,0 +1,192 @@
+{
+  "revision": 101,
+  "checkedAt": "2026-11-05T20:14:53+01:00",
+  "scope": "Two uploaded Google Merchant issue CSVs, fresh Shopify/Metricool identity, two exact Shopify products, public storefront readback, and current origin/main Merchant generator; no external writes",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "matched": true
+    }
+  },
+  "inputs": [
+    {
+      "fileName": "product_issues_2026-11-05_09-02-47.csv",
+      "sha256": "22d1c1453e1acec76544629e7619498f1ac2ebb115c726e6ac2b950deb57f930",
+      "bytes": 1761205,
+      "rows": 6206,
+      "uniqueItemIds": 3008,
+      "uniqueTitles": 2976,
+      "issues": {
+        "Missing product price": {
+          "rows": 6084,
+          "uniqueItemIds": 3008,
+          "countries": {"Switzerland": 3008, "Liechtenstein": 3008, "Germany": 68}
+        },
+        "Missing attribute: [availability]": {
+          "rows": 120,
+          "uniqueItemIds": 60,
+          "countries": {"Switzerland": 60, "Liechtenstein": 60}
+        },
+        "Item pending processing": {
+          "rows": 2,
+          "uniqueItemIds": 1,
+          "countries": {"Switzerland": 1, "Liechtenstein": 1}
+        }
+      },
+      "shopifyStyleVariantIds": 2873,
+      "shopifyProductPrefixes": 284,
+      "numericOnlyItemIds": 135,
+      "embeddedInstructions": 0,
+      "exactDuplicateRows": 0
+    },
+    {
+      "fileName": "product_issues_2026-11-05_09-03-01.csv",
+      "sha256": "e952ac9cc67def4684c1def3fca99bce072621776ebc39611bca909bce0b9ddf",
+      "bytes": 414383,
+      "rows": 1455,
+      "uniqueItemIds": 1452,
+      "uniqueTitles": 1452,
+      "issues": {
+        "Missing shipping info in some countries": {
+          "rows": 1452,
+          "uniqueItemIds": 1452,
+          "countries": {"Germany": 1452}
+        },
+        "Missing attribute: [availability]": {
+          "rows": 3,
+          "uniqueItemIds": 1,
+          "countries": {"Germany": 1, "Switzerland": 1, "Liechtenstein": 1}
+        }
+      },
+      "shopifyStyleVariantIds": 1445,
+      "shopifyProductPrefixes": 64,
+      "numericOnlyItemIds": 7,
+      "embeddedInstructions": 0,
+      "exactDuplicateRows": 0
+    }
+  ],
+  "crossFile": {
+    "sharedShopifyProductPrefixes": 23,
+    "exactCaseFoldedItemIdOverlap": 0,
+    "activeDataSourceIdPresentInCsv": false,
+    "submittedUrlPresentInCsv": false,
+    "submittedRawPriceOrAvailabilityPresentInCsv": false
+  },
+  "productSamples": [
+    {
+      "productId": "gid://shopify/Product/15421165404545",
+      "variantSku": "CJTZ292404406FU",
+      "csvIssue": "Missing product price",
+      "csvCountries": ["Switzerland", "Liechtenstein"],
+      "status": "DRAFT",
+      "onlineStoreUrl": null,
+      "publicationNodes": 0,
+      "variantCount": 12,
+      "pricesChf": ["44.90"],
+      "allVariantsAvailableForSale": true,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "publicHandleHttp": 200,
+      "publicHandleResult": "Damen category fallback, not a product page",
+      "publicProductJsonHttp": 404,
+      "decision": "NO_WRITE_DRAFT_STALE_OR_OTHER_SOURCE"
+    },
+    {
+      "productId": "gid://shopify/Product/15493863997825",
+      "status": "ACTIVE",
+      "onlineStoreUrl": "https://luxestyle.ch/products/herren-hoodie-mit-fleecefutter-629500",
+      "publicationNodes": 6,
+      "googleAndYoutubePublicationPresent": false,
+      "variantCount": 50,
+      "priceRangeChf": ["17.90", "18.90"],
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "publicHtmlHttp": 200,
+      "publicProductJsonHttp": 200,
+      "publicProductJsonAvailable": true,
+      "publicProductJsonPriceRangeRappen": [1790, 1890],
+      "shippingIssueVariant": {
+        "itemId": "15493863997825_cj-cjwy263443935ir",
+        "sku": "CJ-CJWY263443935IR",
+        "priceChf": "18.90",
+        "availableForSale": true,
+        "publicStructuredDataAvailability": "http://schema.org/InStock"
+      },
+      "priceIssueVariantsChecked": [
+        {"itemSuffix": "cj-cjwy263443922ve", "sku": "CJ-CJWY263443922VE", "priceChf": "17.90", "publicAvailability": "InStock"},
+        {"itemSuffix": "cj-cjwy263443938lo", "sku": "CJ-CJWY263443938LO", "priceChf": "18.90", "publicAvailability": "InStock"}
+      ],
+      "retainedBlockTag": "rueckhol-0907",
+      "decision": "NO_PRODUCT_WRITE_SOURCE_AND_SHIPPING_CONFIGURATION_ISSUE"
+    }
+  ],
+  "publicArtifacts": {
+    "draftHtmlSha256": "dec67896ad450e0e977d75b0189ca653778e0f0860d1947a0eb08c6eb5103027",
+    "draftProductJsonSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hoodieHtmlSha256": "dbe0142e812dd8a74794ffaca894ec7c40601669eb4ad6b70d917b3b3172838d",
+    "hoodieProductJsonSha256": "61aad3436bc3f7ef1298356d9c92567917c30368a4bc82e028250b3c1ddd5043"
+  },
+  "repoCountercheck": {
+    "originMainCommit": "e1e232301a75b2f5d200ec2d79178ac4de6e2f6b",
+    "merchantGenerator": {
+      "path": "automation/autopilot/merchant_feed.mjs",
+      "gitBlobSha": "ccc75c554cb8ec2e1a6bd9a41769f3ba34a5fb8c",
+      "defaultQuery": "status:active||status:active AND tag:fortura",
+      "merchantIdPolicy": "product handle",
+      "variantsReadPerProduct": 1
+    },
+    "itemHelper": {
+      "path": "automation/lib/gmc_feed_item.mjs",
+      "gitBlobSha": "19962f0d651c4c9b4cd90e0ed9ee837d9385d451",
+      "defaultShippingCountry": "CH",
+      "defaultShippingPriceChf": "7.00"
+    },
+    "execution": "GitLab shop-autopilot writes generated feed to brain/intel",
+    "githubShopAutopilotCallsMerchantGenerator": false,
+    "csvIdShapeMatchesGeneratorHandleIds": false,
+    "generatorProvenActiveSourceForCsv": false
+  },
+  "decision": {
+    "status": "DIAGNOSED_NO_SAFE_EXTERNAL_WRITE",
+    "reason": "The CSVs omit the active source and submitted raw values; one exact active product already exposes valid price and availability while one exact price item is DRAFT and unpublished. Shipping for Germany is a source/country configuration decision.",
+    "nextStep": "Use an authenticated Merchant single-item read for one active price item and one Germany shipping item to obtain source id, submitted URL, raw price/currency, raw availability, target country and raw shipping. Prepare a diff only for that proven source.",
+    "ownerApprovalNeededFor": "Any Germany target/shipping/feed configuration change",
+    "merchantReprocessingStatus": "unknown"
+  },
+  "writes": {
+    "shopify": 0,
+    "metricool": 0,
+    "merchant": 0,
+    "feed": 0,
+    "theme": 0,
+    "flow": 0,
+    "dns": 0,
+    "budget": 0,
+    "shipping": 0,
+    "orders": 0,
+    "render": 0
+  },
+  "dailyReadsNotRepeated": ["Metricool analytics", "Klaviyo flow report", "orders or ended purchase watch"],
+  "strictCatalogProgressUnchanged": {
+    "correctedActiveProducts": 32,
+    "activeProducts": 56506,
+    "percent": 0.05663,
+    "roundedPercent": 0.06,
+    "remainingProducts": 56474
+  }
+}
