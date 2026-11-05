@@ -25,11 +25,19 @@ Keine Schlüssel in Chat, Shellhistorie oder Repository schreiben. Nach einer si
 
 Ohne Bindung startet der MCP trotzdem korrekt und meldet `credential_binding_missing` mit null Netzwerkaufrufen. Das ist der aktuell erwartete Zustand in einer Laufzeit ohne CJ-Secret und kein Beweis für einen ungültigen CJ-Zugang.
 
+## Einmalige GitHub-Verifikation
+
+Der bestehende manuelle Workflow `Diagnose Actions-Zugang (Shopify + CJ, nur lesen)` besitzt den getrennten Modus `cj_mcp`. Dieser Modus verlangt einen exakt fixierten Commit und genau eine `pid` oder `productSku`, prüft die ausführbaren MCP-Dateien vor der Secret-Bindung gegen feste SHA-256-Werte und startet danach den exakten `luxestyle-cj-read`-Befehl aus `.mcp.json`. Der historische Shopify-/CJ-Diagnosejob läuft dabei nicht.
+
+Der Actions-Job erhält als Repository-Secret ausschliesslich `CJ_API_KEY`, führt einen Authentifizierungsaufruf und höchstens einen Produktabruf ohne Retry aus und speichert kein Artefakt. Seine Ausgabe enthält nur feste Zustandsfelder, Anfragezähler sowie zurückgelieferte PID/SKU. Namen, Bilder, URLs, Schlüssel, Token, Längen und Hashes werden nicht ausgegeben.
+
+Ein erfolgreicher Actions-Lauf belegt den Remote-Zugriff dieses fixierten Commits. Er bindet das GitHub-Secret nicht dauerhaft an einen lokalen MCP-Host.
+
 ## Prüfung
 
 ```sh
 node --check automation/cj-read-mcp.mjs
-node --test automation/lib/cj_readonly_test.mjs automation/lib/cj_read_mcp_test.mjs automation/lib/claude_assist_mcp_test.mjs
+node --test automation/lib/cj_readonly_test.mjs automation/lib/cj_read_mcp_test.mjs automation/lib/cj_read_mcp_probe_test.mjs automation/lib/claude_assist_mcp_test.mjs
 ```
 
 Die Tests verwenden ausschliesslich synthetische Offline-Schlüssel und Mock-Antworten. Ein echter `initialize`-/`tools/list`-/`tools/call`-Handshake wird gegen den gestarteten stdio-Prozess geprüft. Der Produkttest bei fehlender Bindung bestätigt null Auth- und null Produktanfragen.

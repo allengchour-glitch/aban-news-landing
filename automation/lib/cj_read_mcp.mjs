@@ -9,7 +9,7 @@ const lookupProperties = {
 
 export const CJ_MCP_TOOLS = Object.freeze([
   { name: 'luxe_cj_status',
-    description: 'Prüft lokal, ob der CJdropshipping-API-Key sicher an den Prozess gebunden ist. Kein Netzwerkaufruf.',
+    description: 'Prüft lokal Vorhandensein und Form der CJdropshipping-API-Key-Prozessbindung. Herkunft und CJ-Gültigkeit bleiben unbekannt. Kein Netzwerkaufruf.',
     inputSchema: emptySchema, annotations: { ...externalRead, idempotentHint: true, openWorldHint: false } },
   { name: 'luxe_cj_product_read',
     description: 'Liest genau ein CJdropshipping-Produkt per pid oder productSku. Keine Suche, Pagination, Imports, Käufe oder Shop-Schreibzugriffe.',

@@ -4,6 +4,7 @@ const ROOT_DOCS = new Set(['AGENTS.md', 'CLAUDE.md', 'SHARED-MEMORY.md', 'README
 const ASSIST_CONFIG = new Set([
   '.mcp.json',
   '.claude/commands/luxestyle-assist.md',
+  '.github/workflows/diagnose-actions-zugang.yml',
   '.github/workflows/luxestyle-assist-tests.yml',
 ]);
 const CORE_FILES = new Set([
@@ -18,6 +19,7 @@ const SEO_FILES = new Set([
 const ASSIST_FILES = new Set([
   'automation/claude-assist.mjs',
   'automation/cj-read-mcp.mjs',
+  'automation/cj-read-mcp-probe.mjs',
   'automation/lib/claude_assist.mjs', 'automation/lib/claude_assist_test.mjs',
   'automation/lib/claude_assist_mcp.mjs', 'automation/lib/claude_assist_mcp_test.mjs',
   'automation/lib/claude_assist_offline.mjs',
@@ -29,6 +31,7 @@ const ASSIST_FILES = new Set([
   'automation/lib/claude_assist_evidence.mjs', 'automation/lib/claude_assist_evidence_test.mjs',
   'automation/lib/cj_readonly.mjs', 'automation/lib/cj_readonly_test.mjs',
   'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_read_mcp_test.mjs',
+  'automation/lib/cj_read_mcp_probe_test.mjs',
 ]);
 
 function validPath(file) {
