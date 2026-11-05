@@ -1,0 +1,250 @@
+<meta name="dash-one-writer">
+<style>
+/* Layout: eine schmale Spalte fürs Handy. Oben Titel, Satz und Lampen-Zähler, dann vier Bereiche mit aufklappbaren Zeilen. */
+.kb { max-width: 46rem; margin-inline: auto; display: flex; flex-direction: column; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+.kb *, .kb *::before, .kb *::after { box-sizing: border-box; }
+
+.kb-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+.kb-title { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15; text-wrap: balance; }
+.kb-take { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); line-height: 1.3; text-wrap: balance; }
+.kb-stand { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.kb .kb-stand b { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+
+/* Lampen: Form + Wort + Farbe. Die Farbe kommt aus --lamp. */
+.kb .st-gruen { --lamp: var(--color-ok); }
+.kb .st-gelb { --lamp: var(--color-warn); }
+.kb .st-rot { --lamp: var(--color-bad); }
+.kb .st-du { --lamp: var(--kb-du, var(--color-fg)); }
+.kb .st-alt { --lamp: var(--color-fg-muted); }
+.kb .shape, .kb .lamp svg { flex: none; width: 0.875rem; height: 0.875rem; }
+.kb .shape *, .kb .lamp svg * { fill: var(--lamp); }
+.kb .shape .ring, .kb .lamp svg .ring { fill: none; stroke: var(--lamp); stroke-width: 2; }
+
+.kb-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); }
+.kb-chip { display: inline-flex; align-items: center; gap: var(--cds-gap-xs); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); font-size: var(--cds-font-size-body); }
+.kb .kb-chip b { font-weight: var(--cds-font-weight-medium); font-variant-numeric: tabular-nums; }
+
+.kb-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+.kb-card > h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+.kb-sub { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.kb-list { list-style: none; margin: var(--cds-gap-xs) 0 0; padding: 0; min-height: 3rem; }
+
+.kb-row + .kb-row { border-top: 1px solid var(--color-border-line); }
+.kb-row summary { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "lamp name word chev" "lamp when when chev"; column-gap: var(--cds-gap-sm); row-gap: 0.125rem; align-items: baseline; padding: var(--cds-pad-sm) 0; cursor: pointer; list-style: none; }
+.kb-row summary::-webkit-details-marker { display: none; }
+.kb-row summary:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; border-radius: var(--cds-radius); }
+.kb-row summary::after { grid-area: chev; content: ""; width: 0.4rem; height: 0.4rem; border: solid var(--color-fg-muted); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); align-self: center; margin-left: var(--cds-gap-xs); }
+.kb-row details[open] > summary::after { transform: rotate(-135deg); }
+.kb-row .lamp { grid-area: lamp; align-self: start; padding-top: 0.2rem; display: flex; }
+.kb-row .r-name { grid-area: name; font-weight: var(--cds-font-weight-medium); min-width: 0; overflow-wrap: anywhere; }
+.kb-row .r-word { grid-area: word; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); white-space: nowrap; }
+.kb-row .r-when { grid-area: when; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: anywhere; }
+
+.kb-row .lamp svg, .kb-row .r-word span, .kb-row .r-old { display: none; }
+.kb-row.st-gruen .lamp .s-gruen, .kb-row.st-gelb .lamp .s-gelb, .kb-row.st-rot .lamp .s-rot, .kb-row.st-du .lamp .s-du, .kb-row.st-alt .lamp .s-alt { display: block; }
+.kb-row.st-gruen .r-word .w-gruen, .kb-row.st-gelb .r-word .w-gelb, .kb-row.st-rot .r-word .w-rot, .kb-row.st-du .r-word .w-du, .kb-row.st-alt .r-word .w-alt { display: inline; }
+.kb-row.st-alt .r-old { display: block; }
+
+.kb-row .r-body { padding: 0 0 var(--cds-pad-sm) calc(0.875rem + var(--cds-gap-sm)); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+.kb-row .r-befund { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.45; max-width: 65ch; text-wrap: pretty; }
+.kb-row .r-old { margin: 0; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); }
+.kb-row .r-meta { margin: 0; display: flex; flex-direction: column; gap: 0.125rem; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.kb-row .r-meta > div { display: flex; flex-wrap: wrap; column-gap: var(--cds-gap-xs); min-width: 0; }
+.kb-row .r-meta dt { font-weight: var(--cds-font-weight-medium); }
+.kb-row .r-meta dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; min-width: 0; }
+
+.kb-help summary { cursor: pointer; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
+.kb-help summary:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; border-radius: var(--cds-radius); }
+.kb-help ul { list-style: none; margin: var(--cds-gap-sm) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+.kb-help li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--cds-gap-sm); align-items: start; font-size: var(--cds-font-size-body); line-height: 1.4; }
+.kb-help li .shape { margin-top: 0.2rem; }
+.kb .kb-help li b { font-weight: var(--cds-font-weight-medium); }
+
+.kb-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; max-width: 65ch; }
+</style>
+
+<div class="kb">
+  <header class="kb-head">
+    <h1 class="kb-title">KI-Büro</h1>
+    <p class="kb-take" data-t="rot" hidden>Etwas steht still. Die rote Zeile unten sagt, was.</p>
+    <p class="kb-take" data-t="alt" hidden>Einige Messungen sind zu alt, um ihnen zu trauen.</p>
+    <p class="kb-take" data-t="gelb" hidden>Nichts steht still. Einiges braucht einen Blick.</p>
+    <p class="kb-take" data-t="gruen" hidden>Alles läuft.</p>
+    <p class="kb-stand">Zuletzt gemessen: <b data-draw="stand" data-source="buero">—</b> Schweizer Zeit</p>
+  </header>
+
+  <ul class="kb-chips" aria-label="Zahl der Lampen je Zustand">
+    <li class="kb-chip st-rot"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="2" width="12" height="12" rx="2"/></svg><b data-draw="n" data-st="rot" data-source="buero">—</b><span>Steht</span></li>
+    <li class="kb-chip st-gelb"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg><b data-draw="n" data-st="gelb" data-source="buero">—</b><span>Prüfen</span></li>
+    <li class="kb-chip st-gruen"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg><b data-draw="n" data-st="gruen" data-source="buero">—</b><span>Läuft</span></li>
+    <li class="kb-chip st-du"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg><b data-draw="n" data-st="du" data-source="buero">—</b><span>Für dich</span></li>
+    <li class="kb-chip st-alt" data-alt-line hidden><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><b data-draw="n" data-st="alt" data-source="buero">—</b><span>Alt</span></li>
+  </ul>
+
+  <section class="kb-card">
+    <details class="kb-help">
+      <summary>Was die Lampen bedeuten</summary>
+      <ul>
+        <li class="st-gruen"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg><span><b>Grüner Kreis, läuft.</b> Der letzte Lauf war gut und die Messung ist frisch.</span></li>
+        <li class="st-gelb"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg><span><b>Gelbes Dreieck, prüfen.</b> Es läuft mit Einschränkung, oder ich kann es nicht belegen. Schau mal hin.</span></li>
+        <li class="st-rot"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="2" width="12" height="12" rx="2"/></svg><span><b>Rotes Quadrat, steht.</b> Es steht still. Von selbst passiert nichts.</span></li>
+        <li class="st-du"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg><span><b>Raute, für dich.</b> Wartet auf deinen Entscheid, oder ist eine Zahl zur Information.</span></li>
+        <li class="st-alt"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><span><b>Grauer Ring, alt.</b> Die Messung ist älter als erlaubt. Die Lampe zeigt dann nichts Sicheres mehr.</span></li>
+      </ul>
+      <p class="kb-note">Jede Lampe hat eine eigene Form und ein Wort. Die Farbe allein sagt nichts.</p>
+    </details>
+  </section>
+
+  <section class="kb-card" aria-labelledby="h-shop">
+    <h2 id="h-shop">Shop</h2>
+    <p class="kb-sub">Automaten, die den Shop pflegen.</p>
+    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Shop" data-source="buero"></ul>
+  </section>
+
+  <section class="kb-card" aria-labelledby="h-versand">
+    <h2 id="h-versand">Versand</h2>
+    <p class="kb-sub">Bestellungen und Sendungen.</p>
+    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Versand" data-source="buero"></ul>
+  </section>
+
+  <section class="kb-card" aria-labelledby="h-krypto">
+    <h2 id="h-krypto">Krypto</h2>
+    <p class="kb-sub">Nur Spielgeld und Papier. Kein echtes Geld im Spiel.</p>
+    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Krypto" data-source="buero"></ul>
+  </section>
+
+  <section class="kb-card" aria-labelledby="h-chef">
+    <h2 id="h-chef">Chefbüro</h2>
+    <p class="kb-sub">Was nur du entscheiden oder anklicken kannst.</p>
+    <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Chefbüro" data-source="buero"></ul>
+  </section>
+
+  <p class="kb-note">Alle Zeiten sind Schweizer Zeit. GitHub startet geplante Läufe oft Stunden zu spät. Das zeigt sich hier als späte Uhrzeit und ist kein Fehler. Diese Seite aktualisiert sich nicht von selbst: Sag Claude «Büro neu messen», dann gibt es frische Zeiten.</p>
+</div>
+
+<template id="kb-row">
+  <li class="kb-row">
+    <details>
+      <summary>
+        <span class="lamp" aria-hidden="true">
+          <svg class="s-gruen" viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6.5"/></svg>
+          <svg class="s-gelb" viewBox="0 0 16 16" focusable="false"><polygon points="8,1.5 15,14 1,14"/></svg>
+          <svg class="s-rot" viewBox="0 0 16 16" focusable="false"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+          <svg class="s-du" viewBox="0 0 16 16" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg>
+          <svg class="s-alt" viewBox="0 0 16 16" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg>
+        </span>
+        <span class="r-name" data-source="buero" data-field="name">—</span>
+        <span class="r-word"><span class="w-gruen">Läuft</span><span class="w-gelb">Prüfen</span><span class="w-rot">Steht</span><span class="w-du">Für dich</span><span class="w-alt">Alt</span></span>
+        <span class="r-when" data-source="buero" data-field="ereignis">—</span>
+      </summary>
+      <div class="r-body">
+        <p class="r-befund" data-source="buero" data-field="befund">—</p>
+        <p class="r-old">Diese Messung ist älter als erlaubt. Bitte neu messen lassen.</p>
+        <dl class="r-meta">
+          <div><dt>Stand</dt><dd data-source="buero" data-field="gemessen_text">—</dd></div>
+          <div><dt>Quelle</dt><dd data-source="buero" data-field="quelle">—</dd></div>
+        </dl>
+      </div>
+    </details>
+  </li>
+</template>
+
+<script>
+(function () {
+  var root = document.querySelector('.kb');
+  var c0 = dash.colors && dash.colors[0];
+  if (root && typeof c0 === 'string') root.style.setProperty('--kb-du', c0);
+
+  var ORDER = ['rot', 'gelb', 'alt', 'du', 'gruen'];
+  var tpl = document.getElementById('kb-row');
+
+  // Zustand einer Zeile jetzt: eine Messung, die älter ist als ihre erlaubte Frische, zählt als «alt».
+  function eff(r, now) {
+    var h = Number(r.frisch_h);
+    var t = Date.parse(r.gemessen);
+    if (h > 0 && isFinite(t) && (now - t) / 3600000 > h) return 'alt';
+    return ORDER.indexOf(r.status) < 0 || r.status === 'alt' ? 'gelb' : r.status;
+  }
+
+  function rows() {
+    var g = dash.data('buero');
+    return g.status === 'ok' && Array.isArray(g.data) ? g.data : null;
+  }
+
+  // Zeigt genau einen Satz unter dem Titel und die graue Lampe nur, wenn es eine gibt.
+  dash.onData(function () {
+    var data = rows();
+    var sentences = document.querySelectorAll('.kb [data-t]');
+    var altChip = document.querySelector('.kb [data-alt-line]');
+    if (!data) {
+      sentences.forEach(function (s) { s.hidden = true; });
+      return;
+    }
+    var now = Date.now();
+    var es = data.map(function (r) { return eff(r, now); });
+    var key = es.indexOf('rot') >= 0 ? 'rot' : es.indexOf('alt') >= 0 ? 'alt' : es.indexOf('gelb') >= 0 ? 'gelb' : 'gruen';
+    sentences.forEach(function (s) { s.hidden = s.dataset.t !== key; });
+    if (altChip) altChip.hidden = es.indexOf('alt') < 0;
+  });
+
+  dash.draw('n', function (el) {
+    var data = rows();
+    if (!data) { el.textContent = '—'; return; }
+    var now = Date.now();
+    var n = 0;
+    data.forEach(function (r) { if (eff(r, now) === el.dataset.st) n += 1; });
+    el.textContent = String(n);
+  });
+
+  dash.draw('stand', function (el) {
+    var data = rows();
+    var best = null;
+    var bt = -Infinity;
+    if (data) {
+      data.forEach(function (r) {
+        var t = Date.parse(r.gemessen);
+        if (isFinite(t) && t > bt) { bt = t; best = r; }
+      });
+    }
+    if (!best) { el.textContent = '—'; return; }
+    el.textContent = String(best.gemessen_text);
+    el.dataset.field = 'gemessen_text';
+    el.dataset.where = 'id=' + encodeURIComponent(best.id);
+  });
+
+  function build(r, e, was) {
+    var li = tpl.content.firstElementChild.cloneNode(true);
+    li.classList.add('st-' + e);
+    li.dataset.id = r.id;
+    var det = li.querySelector('details');
+    det.open = Object.prototype.hasOwnProperty.call(was, r.id) ? was[r.id] : e !== 'gruen';
+    li.querySelectorAll('[data-field]').forEach(function (n) {
+      var v = r[n.dataset.field];
+      n.textContent = v == null ? '' : String(v);
+      n.dataset.where = 'id=' + encodeURIComponent(r.id);
+    });
+    return li;
+  }
+
+  dash.draw('rows', function (el) {
+    var data = rows();
+    var was = {};
+    el.querySelectorAll('li[data-id]').forEach(function (li) {
+      var d = li.querySelector('details');
+      if (d) was[li.dataset.id] = d.open;
+    });
+    if (!data || !tpl) {
+      el.replaceChildren();
+      el.classList.add('dash-skeleton');
+      return;
+    }
+    el.classList.remove('dash-skeleton');
+    var now = Date.now();
+    var mine = data
+      .filter(function (r) { return r.bereich === el.dataset.bereich; })
+      .map(function (r) { return { r: r, e: eff(r, now) }; })
+      .sort(function (a, b) { return ORDER.indexOf(a.e) - ORDER.indexOf(b.e); });
+    el.replaceChildren.apply(el, mine.map(function (x) { return build(x.r, x.e, was); }));
+  });
+})();
+</script>
