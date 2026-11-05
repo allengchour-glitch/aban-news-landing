@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 92,
-  "updatedAt": "2026-11-05T13:44:48+01:00",
+  "revision": 93,
+  "updatedAt": "2026-11-05T14:08:01+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1356,12 +1356,12 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r88_sieben_aktuelle_varianten_zielauswahl_offen_18s_plan_rechte_mp4_offen",
+      "state": "r93_sieben_varianten_ziel_offen_18s_hookmaterial_min2s_rechte_mp4_offen",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R88_FRISCHER_SHOPIFY_PRODUKT_VARIANTEN_MEDIENREAD_AKTUALISIERTER_18S_PLAN_KEIN_RENDER",
-      "lastEvidence": "Projektor15521256604033 frisch ACTIVE/HTTP200/kaufbar, PreisbereichCHF34.90–51.90 und sieben aktuelle VariantenA–G, alle availableForSale, trackedfalse/CONTINUE/Menge0. Historische Variante56197916361089/SKUCJ-1477820492730732544 nicht mehr aktuell. Produktvideo27.96s/852×480/25fps trägt alten SKU-Dateinamen, ist keiner heutigen Variante zugeordnet; Filmrechte unbekannt. Tags vorhanden, Wächter und rueckhol ohne Treffer, auswahl-offen bleibt. Derselbe18s/540-Frame-Master mit zwei Hooks, echtem Bild und sechs kanalgetrennten Produkt-UTMs aktualisiert. Pflicht-WAV hashgleich, Build-/Rechte-/Mixfreigabe offen. Keine MP4, kein Render, Upload, Socialwrite oder Ledgerinitialisierung.",
-      "nextAllowedStep": "Zuerst genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter physischer Einheit binden und kommerzielle Bearbeitungs-/Werberechte belegen. Danach nur bei geeigneter Premiumquelle denselben18s-Master schneiden, Pflichtmusikrechte/Mix prüfen, fertige MP4 in9:16/4:5/1:1 abnehmen und erst dann Produkt-/Kanal-/Historien-/Kollisionschecks für einen konkreten Metricool-Post durchführen.",
+      "belegArt": "R93_FRISCHER_ZWEI_PRODUKT_READ_TECHNISCHE_HOOKKORREKTUR_SECHS_UTM_KEIN_RENDER",
+      "lastEvidence": "Projektor15521256604033 05.11.14:07 Zürich frisch ACTIVE/HTTP200/kaufbar, sieben VariantenA–G CHF34.90–51.90, alle trackedfalse/CONTINUE/Menge0/sellableOnlineQuantity0. StandardA68122445283719/SKUCJSN139239101AZ/CHF34.90 ist nicht als Masterziel freigegeben; historische Variante56197916361089/SKUCJ-1477820492730732544 nicht aktuell. Tags vorhanden, Wächter/rueckhol ohne Treffer, auswahl-offen bleibt. Derselbe18s/540-Frame-Master mit HookB und sechs UTMs fortgeführt. Qualitätskorrektur: Detailreferenz17.20–18.80 ist nur1.6s und darf nicht auf2s verlangsamt/eingefroren werden; mindestens2s echtes kontinuierliches30fps-Material derselben Einheit nötig. Pflicht-WAV hashgleich, Build-/Rechte-/Mixfreigabe offen. Keine MP4, kein Render, Upload, Socialwrite oder Ledgerinitialisierung. R91-CJ-Beleg nur datiert fortgeführt: factoryInventory, cjInventory0/verifiedWarehouse2, kein physischer Bestand/CH-Lieferbarkeit/Lieferzeit.",
+      "nextAllowedStep": "Zuerst genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter physischer Einheit binden und kommerzielle Bearbeitungs-/Werberechte belegen. Mindestens2.0s echtes kontinuierliches30fps-Hookmaterial und weitere native9:16-Premiumtakes derselben Einheit beschaffen. Danach denselben18s-Master schneiden, Pflichtmusikrechte/Mix prüfen, fertige MP4 in9:16/4:5/1:1 abnehmen und erst dann Produkt-/Kanal-/Historien-/Kollisionschecks für einen konkreten Metricool-Post durchführen.",
       "blockers": [
         "Aktuelle Zielvariante A–G, Motivset und gefilmte physische Einheit sind nicht gebunden; Tag auswahl-offen bleibt.",
         "Produktvideo852×480/25fps trägt historischen SKU-Dateinamen, ist keiner aktuellen Variante zugeordnet und reicht nicht als native Premium-Hochkantquelle.",
@@ -1581,6 +1581,11 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json",
           "gitBlobSha": "dbc0f29ce14439a39626b12f0421c5d9dd05e7f7",
           "readAt": "2026-11-05T07:20:02Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R93.json",
+          "gitBlobSha": "ab8677abe9c686a59bbbab60bfbd3697a4b30b3b",
+          "readAt": "2026-11-05T14:08:01+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1830,6 +1835,15 @@
             "belegArt": "R79_AKTUELLE_PRODUKT_MUSIK_QUELLEN_UND_GEMESSENER_OVERLAYPLAN",
             "nextAllowedStep": "Denselben Master und R52-/R67-Vertrag fortsetzen: zuerst angebotene Default-Einheit/Motivset eindeutig an Variante 56197916361089 binden und vier geeignete Originaltakes mit Hashes, tatsächlichen Farbmetadaten sowie kommerziellen Bearbeitungs-/Werberechten belegen. Historischen SF2-/Buildbezug der unveränderten kanonischen WAV ergänzen; keine Ersatzmusik, Voiceover oder Ersatzclips. Danach 18 Sekunden/540 Frames und die vermessenen Texte an tatsächlichen Aufnahmen, Export und Plattformansichten prüfen. Schriftwechsel erfordert Neumessung; Farbpaarkontrast und Hausbox sind keine Film-/Plattformabnahme. YouTube-Grundzielgruppe ist geklärt, konkretes Postflag offen; Bioziele, Pinterest-Board und dauerhafte Master-/Kanalhistorie vor Publikation verifizieren. Bestehende Termine erhalten, keine heutigen Reports oder Kauf-Watch-Abfragen wiederholen."
           }
+        },
+        {
+          "at": "2026-11-05T14:08:01+01:00",
+          "sourceRevision": 92,
+          "previousState": "r88_sieben_aktuelle_varianten_zielauswahl_offen_18s_plan_rechte_mp4_offen",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R88_FRISCHER_SHOPIFY_PRODUKT_VARIANTEN_MEDIENREAD_AKTUALISIERTER_18S_PLAN_KEIN_RENDER",
+          "previousLastEvidence": "Projektor15521256604033 frisch ACTIVE/HTTP200/kaufbar, PreisbereichCHF34.90–51.90 und sieben aktuelle VariantenA–G, alle availableForSale, trackedfalse/CONTINUE/Menge0. Historische Variante56197916361089/SKUCJ-1477820492730732544 nicht mehr aktuell. Produktvideo27.96s/852×480/25fps trägt alten SKU-Dateinamen, ist keiner heutigen Variante zugeordnet; Filmrechte unbekannt. Tags vorhanden, Wächter und rueckhol ohne Treffer, auswahl-offen bleibt. Derselbe18s/540-Frame-Master mit zwei Hooks, echtem Bild und sechs kanalgetrennten Produkt-UTMs aktualisiert. Pflicht-WAV hashgleich, Build-/Rechte-/Mixfreigabe offen. Keine MP4, kein Render, Upload, Socialwrite oder Ledgerinitialisierung.",
+          "previousNextAllowedStep": "Zuerst genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter physischer Einheit binden und kommerzielle Bearbeitungs-/Werberechte belegen. Danach nur bei geeigneter Premiumquelle denselben18s-Master schneiden, Pflichtmusikrechte/Mix prüfen, fertige MP4 in9:16/4:5/1:1 abnehmen und erst dann Produkt-/Kanal-/Historien-/Kollisionschecks für einen konkreten Metricool-Post durchführen."
         }
       ],
       "visualAcceptanceDraft": {
@@ -7402,11 +7416,11 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r88_38_objekte_55_pending_threads_leer_pinterest_09_bis_11_luecken_zwei_leere_captions_kein_write",
+      "state": "r93_37_objekte_54_pending_threads_leer_pinterest_ab09_drei_leere_captions_kein_write",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R88_FRISCHE_METRICOOL_IDENTITAET_PLANUNG_METRIKEN_KOLLISIONSPRUEFUNG_KEIN_WRITE",
-      "lastEvidence": "Brand6227837/EuropeZurich und sechs Kanalidentitäten frisch passend. Fenster05.11.07:56–12.11.07:56 Zürich:38Planobjekte/55PENDING. Facebook16,Instagram16,TikTok12,YouTube7 mit Terminabdeckung05.–11.11.; Pinterest4 ohne zurückgelieferte Termine09.–11.11.; Threads0 im ganzen Fenster. Keine exakten kanalgleichen Slot+Volltext+Vollmedien-URL-Doppel; vollständige frühere Masterhistorie unbekannt. Zwei bestehendeFB/IG-Medienposts415033593/UUID-8611238648907481079 und415035691/UUID37985340483322184 mit leerem Text unverändert. Pinterest-Board-ID1111333714239531706 beobachtet, Boardname unbekannt. Sechs kleine Kennzahlreihen29.10.–04.11. einmalig gelesen; Teilreihen unbekannt, keine Verkaufsableitung. Kein Post-, Caption-, Termin- oder Publikationswrite.",
+      "belegArt": "R93_FRISCHE_METRICOOL_IDENTITAET_PLANUNG_KOLLISIONSPRUEFUNG_KEIN_WRITE",
+      "lastEvidence": "Brand6227837/EuropeZurich und sechs Kanalidentitäten 05.11.14:05 Zürich frisch passend. Fenster05.11.14:05–12.11.14:05:37Planobjekte/54PENDING, alle draftfalse/autoPublishtrue. Facebook16,Instagram16,TikTok11,YouTube7,Pinterest4,Threads0. Keine exakten kanalgleichen Slot+Volltext+Vollmedien-URL-Doppel und keine gleiche Medien-URL zweimal auf demselben Kanal; vollständige frühere Masterhistorie unbekannt. Drei bestehendeFB/IG-Medienposts415033593/UUID-8611238648907481079,415035691/UUID37985340483322184 und415077082/UUID-8331410252591837975 mit leerem Text unverändert. Pinterest-Board-ID1111333714239531706 beobachtet, Boardname unbekannt. R88-Kennzahlen29.10.–04.11. datiert wiederverwendet, nicht erneut gelesen; Lückenunknown, keine Verkaufsableitung. Kein Post-, Caption-, Termin- oder Publikationswrite.",
       "nextAllowedStep": "Keine Lücke automatisch füllen und keine Ersatzposts anlegen. Leere Captions nur nach frischem Originalpost-, Medien-, Produkt- und Rechteabgleich bearbeiten. Vor einem neuen Masterpost zuerst eine fertige rechte- und qualitätsgeprüfte MP4, aktuelle Produktvariante, Bio-/Board-/YouTube-Flags, vollständigen Master-/Kanalbeleg und Kollisionsprüfung nachweisen.",
       "blockers": [
         "Kein aktuell varianten- und rechtegebundener professioneller Master; daher keine Lückenfüllung.",
@@ -7474,6 +7488,11 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json",
           "gitBlobSha": "dbc0f29ce14439a39626b12f0421c5d9dd05e7f7",
           "readAt": "2026-11-05T07:20:02Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R93.json",
+          "gitBlobSha": "ab8677abe9c686a59bbbab60bfbd3697a4b30b3b",
+          "readAt": "2026-11-05T14:08:01+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -7656,6 +7675,15 @@
             "belegArt": "R81_AKTUELLES_SIEBEN_TAGE_FENSTER_DOPPEL_UND_LEERFELDPRUEFUNG_KEIN_WRITE",
             "nextAllowedStep": "R81: Beide Originalposts unmittelbar frisch lesen und nur nach konkreter Produkt-, Bild- und Rechtebindung einen Caption-Diff vorbereiten; bestehende UUID, Medien, Slots und Kanalzustände erhalten. Keine Ersatzposts. Vor irgendeiner konkreten Änderung/Übernahme genaue Shop-Produkt-/Variantenbindung und ursprüngliche Film-/Musikquellen samt kommerziellen Bearbeitungs-/Werberechten belegen; bestehenden Post frisch lesen, minimale Änderungen nur im konkret genehmigten Scope. Bestehende Termine/UUIDs erhalten, keine pauschale Löschung oder Aktivierung."
           }
+        },
+        {
+          "at": "2026-11-05T14:08:01+01:00",
+          "sourceRevision": 92,
+          "previousState": "r88_38_objekte_55_pending_threads_leer_pinterest_09_bis_11_luecken_zwei_leere_captions_kein_write",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R88_FRISCHE_METRICOOL_IDENTITAET_PLANUNG_METRIKEN_KOLLISIONSPRUEFUNG_KEIN_WRITE",
+          "previousLastEvidence": "Brand6227837/EuropeZurich und sechs Kanalidentitäten frisch passend. Fenster05.11.07:56–12.11.07:56 Zürich:38Planobjekte/55PENDING. Facebook16,Instagram16,TikTok12,YouTube7 mit Terminabdeckung05.–11.11.; Pinterest4 ohne zurückgelieferte Termine09.–11.11.; Threads0 im ganzen Fenster. Keine exakten kanalgleichen Slot+Volltext+Vollmedien-URL-Doppel; vollständige frühere Masterhistorie unbekannt. Zwei bestehendeFB/IG-Medienposts415033593/UUID-8611238648907481079 und415035691/UUID37985340483322184 mit leerem Text unverändert. Pinterest-Board-ID1111333714239531706 beobachtet, Boardname unbekannt. Sechs kleine Kennzahlreihen29.10.–04.11. einmalig gelesen; Teilreihen unbekannt, keine Verkaufsableitung. Kein Post-, Caption-, Termin- oder Publikationswrite.",
+          "previousNextAllowedStep": "Keine Lücke automatisch füllen und keine Ersatzposts anlegen. Leere Captions nur nach frischem Originalpost-, Medien-, Produkt- und Rechteabgleich bearbeiten. Vor einem neuen Masterpost zuerst eine fertige rechte- und qualitätsgeprüfte MP4, aktuelle Produktvariante, Bio-/Board-/YouTube-Flags, vollständigen Master-/Kanalbeleg und Kollisionsprüfung nachweisen."
         }
       ],
       "latestScheduleReadR67": {
@@ -9223,6 +9251,17 @@
         "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2895"
       },
       "action": "R92: Bereits durch Claude-/Inhaberarbeit aktive Lagerstatus-Anzeige aus PR 2895 von Codex nur gegengeprüft. Shopify-Identität passend; vier öffentliche Rückleseproben bestätigten grüne kaufbare, orange niedrige und rote nicht kaufbare Zustände samt data-lx-delivery/aria-live=polite. Kein eigener Theme-, Produkt-, Bestands-, Shop- oder Socialwrite; Banner/Layout unverändert. Bestellbarkeit nicht als Lieferantenlager oder Lieferzeit ausgegeben."
+    },
+    {
+      "revision": 93,
+      "at": "2026-11-05T14:08:01+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R93.json",
+        "gitBlobSha": "ab8677abe9c686a59bbbab60bfbd3697a4b30b3b",
+        "readAt": "2026-11-05T14:08:01+01:00"
+      },
+      "action": "R93: Shopify und Metricool samt sechs Kanälen frisch passend; aktuelles Sieben-Tage-Fenster 37Objekte/54PENDING ohne exakte kanalgleiche Doppel, Threads leer, Pinterest ab09.11. ohne Termin und drei FB/IG-Medientermine mit leerem Text. Projektor und Katzenhängematte eng gelesen; beide untracked/CONTINUE, keine Bestands-/Lieferzusage, Katzenhängematte öffentlich Stoff statt Holz. Derselbe Projektor-Master um das Verbot ergänzt, die1.6s-Detailreferenz auf2s zu strecken; echte kontinuierliche30fps-Premiumtakes, Zielvariante und Rechte fehlen. R88-Kennzahlen/Klaviyo und R91-CJ-Grenzen datiert wiederverwendet, nicht erneut abgefragt. R79-Preisfilter-Guard bleibt einziger Verkaufsentwurf. Keine externen Writes, kein Render oder Kauf-Watch."
     }
   ],
   "salesGoal": {
@@ -12402,5 +12441,15 @@
     },
     "note": "PR2895 ist gemergte frühere Claude-/Inhaberarbeit. Codex-R92 hat den öffentlichen Stand nur verifiziert: Sensemann XL grün/kaufbar, XXL orange/kaufbar/Nur noch1, XXXL rot/nicht kaufbar; vollständig nicht kaufbares Hippiekleid rot. data-lx-delivery und aria-live=polite vorhanden. Keine eigene Theme-/Produkt-/Bestandsänderung, kein Beleg für Lieferantenlager/Lieferzeit oder den gesamten Katalog.",
     "nextStep": "Bestehenden Status erhalten. Kollektionskarten nur nach separater Anforderung und Varianten-/Performanceprüfung ergänzen; keinen Stock oder Liefertermin aus ungetrackter Shopify-Bestellbarkeit ableiten."
+  },
+  "followUpRunR93": {
+    "at": "2026-11-05T14:08:01+01:00",
+    "source": {
+      "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R93.json",
+      "gitBlobSha": "ab8677abe9c686a59bbbab60bfbd3697a4b30b3b",
+      "readAt": "2026-11-05T14:08:01+01:00"
+    },
+    "note": "Identitäten frisch passend. Metricool05.11.14:05–12.11.14:05:37Objekte/54PENDING, keine exakten Kanal-Doppel, Threads0, Pinterest ab09.11. ohne Termin, drei leere FB/IG-Texte; kein Write. Zwei ACTIVE-Produkte eng gelesen: Projektor sieben A–G CHF34.90–51.90 und Katzenhängematte zwölf CHF34.90–37.90, beide untracked/CONTINUE, keine Bestands-/Lieferzusage; Material der Hängematte öffentlich Stoff. Projektor-Master weiter Storyboard:1.6s-Detailreferenz nicht auf2s strecken, echtes kontinuierliches30fps-Material nötig; Zielvariante/Rechte/MP4 offen. R88-Kennzahlen/Klaviyo und R91-CJ-Beleg datiert wiederverwendet. Genau eine Verkaufsaktion R79-Preisfilter-Guard, unangewendet.",
+    "nextStep": "Projektor-Zielvariante, gefilmte Einheit/Motivset, schriftliche Bearbeitungs-/Werberechte und native Premiumtakes einschliesslich mindestens2.0s kontinuierlichem30fps-Hook binden; erst danach denselben Master rendern und abnehmen. Separat den R79-Preisfilter-Guard nur nach aktuellem MAIN-Hash und vollständiger Entwurfs-QA anwenden. Leere Socialtexte nicht ohne Medien-/Produkt-/Rechtebindung ändern."
   }
 }
