@@ -1,0 +1,37 @@
+# Auftrag an Codex: Katalog «Selbst gestalten» (05.11.2026)
+
+Marken: **GEMESSEN** = von Claude am 05.11.2026 gegen die Printful-API und den Shop gemessen · **QUELLE** = Dritte, nicht geprüft · **Hypothese** = nicht belegt.
+Besitzer-Auftrag vom 05.11.: «selbst gestalten 100 % fertig» und «auf Schweizer Masse und Bearbeitungstool bei jedem Selbst-gestalten-Produkt». Claude arbeitet an Editor, Anlage der Produkte und Bestellweg (Abschnitt «Was Claude parallel tut»). **Dein Teil ist der Katalog**: Titel, Grössen, Logik des Katalogfensters, Zweitmeinung. Du hast keinen Zugang zum Shop und brauchst keinen: alle Daten liegen als Dateien im Repo.
+
+## Ausgangslage (GEMESSEN 05.11.2026)
+- Der Printful-Katalog hat **577 Modelle** mit 13 220 Varianten. Jedes Modell hat mindestens eine Platzierung mit Druckdatei (Pixel, dpi) und Vorlage mit Druckfläche (`/mockup-generator/printfiles`, `/templates`): ein Editor mit echter Druckgeometrie ist für alle möglich.
+- **533 von 577 sind in die Schweiz bestellbar** (Printful nennt eine Schweizer Versandrate und das Modell ist technisch flach oder aus Schnittteilen: FLACH 263, FLACH_MIT_HINWEIS 140, PANEL 130). 44 nicht: 34 ohne Schweizer Rate (8 zurzeit nicht lieferbar, einige nur nach Japan/Brasilien), 10 Schuhe (3D-Leisten, bewusst ausgeschlossen). «Nur in den USA auf Lager» ist KEIN Ausschluss: auch diese Modelle haben eine Schweizer Rate (Beispiel: Anvil 980 T-Shirt 10.39 USD, 6–9 Tage; Kerze 35.29 USD, 6–15 Tage). Zoll bei US-Ware ist ungeklärt (Hypothese: Printful rechnet 8,1 % Steuer auf Ware plus Versand, GEMESSEN an zwei echten Aufträgen).
+- Das Katalogfenster (`/collections/selbst-gestalten-1?view=luxe-gestalten`, Theme-Dateien `sections/luxe-clothing.liquid`, `assets/luxe-clothing.js/.css`, `assets/luxe-clothing-reference-gallery.json`, 51 Datenschalen im Theme) ist seit PR #2893 (04.11.) live: EU-Grössen bei Schuhen, ml/g statt oz, Knopf «Jetzt selbst gestalten». Doku und offene Punkte: `dropship/katalog-einheiten-0411/README.md` (Abschnitt «Was nicht gemacht wurde», Punkte 3, 6, 7, 8, 9 sind jetzt dein Feld). Nur 39 von 572 Modellen haben dort ein Shopprodukt, alle anderen zeigen «Noch nicht bestellbar».
+- Schweizer Masse in den 38 bestehenden Produkten sind seit 05.11. live (`dropship/selbst-gestalten-fertig-0511/masse/`).
+
+## Deine Dateien (Repo, Ordner `dropship/codex-katalog/`)
+| Datei | Inhalt |
+|---|---|
+| `modelle.json` | je Modell: `id`, `typ`, `titelEn`, `titelDe` (Vorschlag aus dem Glossar `automation/pod_modell/glossar.mjs`), `titelDeUnbekannt` (Wörter, die das Glossar nicht kennt), `klasse`, `versandCH` (Rate in USD, Tage), `bestellbarCH`, `grund`, `platzierungen`, `nVarianten`, `farben`, `groessen` (Schweizer Anzeige, soweit umgerechnet), `shopHandles` (bestehende Shopprodukte) |
+| `titel_offen.csv` | 350 Modelle, deren deutscher Titel unfertig ist (unbekannte Wörter oder nicht aus dem Glossar) |
+| `groessen_markiert.csv` | 20 Grössen, die die Umrechnung bewusst unverändert liess oder markierte (Schuhe «(ca.)», US-Bettgrössen King/Queen/Twin, Tiernapf «oz») |
+
+Erzeugt mit `dropship/selbst-gestalten-fertig-0511/werkzeuge/codex_katalog_export.mjs` aus den Rohdaten der Inventur (13 MB, liegen NICHT im Repo; bei Bedarf fordert Claude sie neu an und legt Auszüge ab). Die Schweizer-Masse-Bibliothek `werkzeuge/schweizer_masse.mjs` (Tests inklusive) und das Schema `werkzeuge/modellkarte.mjs` gehören auf Claudes Zweig `claude/luxestyle-selbst-gestalten-0511` und kommen mit dessen PR nach `main`.
+
+## Aufgaben
+**A. Deutsche Titel (wichtigste).** Für die 350 Modelle in `titel_offen.csv`: guter deutscher Schweizer Titel (Schweizer Rechtschreibung «ss», kein «ß»; höchstens 60 Zeichen; kein Fremdmarkenname, ausser er ist Teil des Produkts wie «iPhone», «Samsung Galaxy»; keine Zoll-/oz-Masse; keine unbelegten Eigenschaften; Zielgruppe Damen/Herren/Kinder/Baby/Unisex nur, wenn der englische Titel sie nennt). Abgabe `antwort/titel_de.csv` mit den Spalten `id;titelDe;begruendung`. Mach zusätzlich 20 Stichproben unter den schon gelösten Glossar-Titeln und melde Fehler.
+**B. Grössen.** (1) `groessen_markiert.csv`: für jede Zeile eine Empfehlung (EU-Grösse, cm, Körpergrösse) mit Quelle; wo nur Raten möglich wäre, schreibe «unbekannt». Keine freie Umrechnung von Schuhgrössen (Marken und Leisten streuen bis 1,5 Grössen; Vorgabe: nur belegte Printful-Tabellen). (2) Kinder- und Babygrössen in `modelle.json` (`groessen`, Muster 2T bis 6X, 3M bis 24M, Y, 2 bis 20): Zuordnung zu Körpergrösse in cm aus Printfuls Grössentabellen (QUELLE angeben). Abgabe `antwort/groessen_ch.csv`.
+**C. Katalogfenster-Logik.** Entwurf einer Änderung für `luxe-clothing.js` (und was nötig ist in der Liquid-Sektion), die (a) Modelle mit `bestellbarCH=false` ehrlich kennzeichnet oder ausblendet (Vorschlag mit Begründung), (b) bei `bestellbarCH=true` und `shopHandles` leer «Bald bestellbar» statt «Noch nicht bestellbar» zeigt (Claude legt die Produkte in den nächsten Tagen als Entwurf an und liefert die Zuordnung Modell → Handle nach), (c) die Lieferzeit-Spanne aus `versandCH` zeigt («voraussichtlich N bis M Tage laut Printful», ohne Zusage), (d) die Titel aus `antwort/titel_de.csv` benutzt. Abgabe als Patch-Entwurf mit Basis-Hash (MD5) der Ausgangsdatei und Tests wie in früheren R-Berichten; Claude wendet nach Sicherung und Rücklesen an (Theme-Schreibzugriff nur Claude).
+**D. Zweitmeinung.** Lies `dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte.mjs` (Klassen FLACH/FLACH_MIT_HINWEIS/PANEL/UNGEEIGNET und Begründungen) und `automation/pod_modell/glossar.mjs`. Nenne echte Fehler (mit Beispiel-Modell-ID), keine Stilfragen.
+
+## Regeln
+- Nichts im Shop, bei Printful, CJ oder in Konten schreiben; keine Zugangsdaten ins Repo. Keine Änderungen an Theme-, Workflow- oder Automationsdateien: deine Abgaben liegen NUR in `dropship/codex-katalog/antwort/`.
+- Zweig `codex/luxestyle-katalog-0511`, PR nach `main` als Draft; Claude gegenliest und merged.
+- Jede Zahl mit Marke (GEMESSEN/QUELLE/Hypothese). Wo du etwas nicht belegen kannst: «unbekannt».
+- Kundentexte: Deutsch (Schweiz), Anrede «du», keine Gedankenstriche, keine Zusagen zu Lieferzeit, Rückgabe oder Garantie.
+
+## Was Claude parallel tut (nicht doppeln)
+Editor v6 mit echter Druckfläche (`pod/v6/`), Modell-Fabrik (`automation/pod_modell/`: Plan und Entwurf je Modell, Preise nach `werkzeuge/preisformel.mjs`), Härtung des Bestellwegs (`automation/printful_sync.mjs`), je mit zwei unabhängigen Gegenlesern; nichts davon ist live. Reihenfolge danach: Editor als Shopify-Datei, Fabrik zuerst 5 Modelle als Entwurf, dann Chargen (Shopify begrenzt neue Varianten auf rund 9 500 je 24 Stunden).
+
+## Offene Fragen an den Besitzer (nicht an dich)
+Preise der 38 Bestandsprodukte (203 Varianten lägen nach der Formel höher), MWST-Status des Shops, ob US-Modelle mit unklarem Zoll in den Katalog sollen, Freigabe des Zeitplans für den Printful-Sync.
