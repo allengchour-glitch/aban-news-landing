@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 89,
-  "updatedAt": "2026-11-05T10:40:57+01:00",
+  "revision": 90,
+  "updatedAt": "2026-11-05T12:17:34+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4874,18 +4874,18 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r89_readonly_mcp_draft_pr_runtime_binding_open",
+      "state": "r90_remote_mcp_product_read_verified_local_host_binding_open",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
       "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R89_DRAFT_PR_READONLY_CJ_MCP_OFFLINE_TESTED_NO_LIVE_READ",
-      "lastEvidence": "Am 05.11. GitHub-Branch codex/luxestyle-cj-mcp-20261105 und offener Draft-PR 2896 gegen main-Basis 988c740d3cb58a5435b54cf8eaaacda5ca261950 mit Head 12b450079e29b2b179b6a772a647f86373d63354 geschrieben und frisch geprüft. Der getrennte Server luxestyle-cj-read bietet nur luxe_cj_status und luxe_cj_product_read für genau ein Produkt per pid oder productSku; Suche, Pagination, Imports, Bestellungen, Käufe, Render und Shop-Writes sind ausgeschlossen. Der offizielle CJ-Vertrag verwendet {apiKey}. API-Key und Token werden weder persistiert noch ausgegeben; der bezogene Token bleibt nur im Prozessspeicher, der API-Key wird zur Authentifizierung per HTTPS ausschliesslich an den fest gesetzten offiziellen Auth-Endpunkt https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken gesendet. 224/224 Offline-Tests sowie der exakte initialize-/tools/list-/lokale Status-Handshake sind belegt. Beim frischen PR-Read waren die zielnahen Assist-, Automation-, Quality-, Voice- und Deploy-Prüfungen SUCCESS. Drei sachfremde Workers-Builds waren laut Repo-Regel erwartbar rot; Pre-deploy validation war CANCELLED und wurde von gh pr checks als Fehler dargestellt. Der externe Pages-Check Cloudflare Pages: foerder-radar war pending; der Draft-PR bleibt UNSTABLE. Die CJ_API_KEY-Prozessbindung fehlt; eine sichere Host-Bindung ist nicht belegt, sichere Herkunft und CJ-Gültigkeit bleiben unbekannt. Es gab keinen echten CJ-Login oder Live-Produktread; credential_binding_missing mit null Netzaufrufen belegt keinen ungültigen Schlüssel. Ausser GitHub-Branch und Draft-PR keine CJ-/Shop-/Produktivänderung und kein manueller Workflow-Dispatch.",
-      "nextAllowedStep": "UNSTABLE-Status und den noch offenen externen Pages-Check am unveränderten Draft-Head frisch nachlesen; dafür keinen manuellen Workflow-Dispatch starten. Nach sicherer MCP-Host-Bindung ohne Schlüssel in Repo oder Chat zuerst luxe_cj_status ausführen, danach genau einen Produktread per aktueller pid oder productSku und Produkt-/Varianten-/SKU-Identität gegen den aktuellen Shopify-Fall vergleichen. Kein breiter Katalogscan, Import, Workflowstart oder Blind-Retry. Prime-Status sowie Medien-, Bearbeitungs- und Werberechte nicht aus Connectorantworten ableiten.",
+      "belegArt": "R90_GITHUB_ACTIONS_REMOTE_CJ_MCP_PRODUCT_READ_VERIFIED_LOCAL_BINDING_OPEN",
+      "lastEvidence": "Am 05.11. bestätigte der einmalige manuelle GitHub-Actions-Lauf 42017601295, Job 127211924111, den fixierten Draft-PR-Head 9f9fb58a06c67b34264fd9b3dce9a768246de0da im getrennten Modus cj_mcp. Das GitHub-Secret CJ_API_KEY wurde nicht ausgelesen oder ausgegeben, sondern erst nach Commit-, Datei-Hash- und Eingabeprüfung an den Nur-Lese-Prozess gebunden. Der Lookup productSku=CJSN1392391 führte genau einen Authentifizierungsaufruf und einen Produktabruf aus: vorher credentialBinding bound_unverified, danach readState product_identity_verified, readReason null, returnedPid 1477820492730732544, returnedProductSku CJSN1392391, connectionAfter verified_by_product_read, lastProductReadState verified und verified true. Legacyjob übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Das belegt den Remote-CJ-MCP-Zugriff dieses fixierten Commits, keine dauerhafte lokale Host-Bindung und keine vollständige Shopify-Varianten-, Prime- oder Medienrechte-Aussage.",
+      "nextAllowedStep": "Den erfolgreichen Run 42017601295 als einmaligen Remote-Beleg erhalten und ohne neuen konkreten Grund nicht wiederholen. Für dauerhafte lokale Nutzung CJ_API_KEY separat über die sichere Secret-Verwaltung des MCP-Hosts binden; das GitHub-Secret nicht auslesen, kopieren oder in Chat/Repo schreiben. Danach lokal zuerst luxe_cj_status und höchstens einen identitätsgebundenen Produktread ausführen. PID 1477820492730732544 und productSku CJSN1392391 nur gegen frisch gelesene Shopify-Produkt-/Varianten-/SKU-Daten abgleichen; Prime-Status und Medien-, Bearbeitungs- und Werberechte getrennt belegen.",
       "blockers": [
-        "CJ_API_KEY-Prozessbindung fehlt; eine sichere MCP-Host-Bindung ist nicht belegt und ein GitHub-Actions-Secret ist keine lokale MCP-Host-Bindung",
-        "Kein Live-Login und kein identitätsgebundener Produktread; fehlende Bindung ist kein Nachweis eines ungültigen Schlüssels",
-        "PR 2896 ist Draft, ungemergt und UNSTABLE: zielnahe Assist-/Automation-/Quality-/Voice-/Deploy-Prüfungen SUCCESS; drei sachfremde Workers-Builds laut Repo-Regel erwartbar rot; Pre-deploy validation CANCELLED und von gh pr checks als Fehler dargestellt; externer foerder-radar-Pages-Check pending. Client-Laden und Inhaberabnahme unbekannt",
-        "Der Nur-Lese-Connector löst weder Preis-/SKU-Schreibintegration noch prozessübergreifende Reservation und autorisiert keine Imports oder Merchant-Änderungen",
-        "Aktuelle Produkt-/Varianten-Zuordnung, Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt"
+        "GitHub-Actions-Secret ist nur im kurzlebigen Remote-Job gebunden; keine dauerhafte lokale MCP-Host-Bindung belegt",
+        "PR 2896 ist offen, Draft, ungemergt und beim frischen Read UNSTABLE; Automation, Quality, Pre-deploy und externe Checks waren teilweise noch in Arbeit",
+        "Der erfolgreiche productSku-Read belegt CJ-PID 1477820492730732544, aber nicht die vollständige aktuelle Shopify-Varianten- und Medienzuordnung",
+        "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
+        "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preiswrites, Käufe, Render oder Merchant-Änderungen"
       ],
       "acceptance": [
         "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
@@ -4894,7 +4894,9 @@
         "Sichere MCP-Host-Bindung belegen; API-Key und Token weder persistieren noch ausgeben, Token nur im Prozessspeicher halten und den API-Key für Auth per HTTPS ausschliesslich an den festen offiziellen Endpunkt https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken senden",
         "Status bound_unverified nur als vorhandene Bindung behandeln, nicht als bestätigte CJ-Verbindung",
         "Erfolgreichen exakten Einzelread und die Produkt-/Varianten-/SKU-Identität vor abhängigen Schritten belegen",
-        "Aus dem Read weder Prime-Status oder Medienrechte noch eine Schreib- oder Importfreigabe ableiten"
+        "Aus dem Read weder Prime-Status oder Medienrechte noch eine Schreib- oder Importfreigabe ableiten",
+        "Remote-Lauf 42017601295 nicht als dauerhafte lokale Host-Bindung oder produktive Aktivierung ausgeben",
+        "Den bestätigten productSku-/PID-Bezug vor abhängigen Schritten gegen aktuelle Shopify-Varianten und Rechtequellen prüfen"
       ],
       "sources": [
         {
@@ -4981,6 +4983,27 @@
           "readAt": "2026-11-05T10:32:53+01:00",
           "ref": "12b450079e29b2b179b6a772a647f86373d63354",
           "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": "dropship/assistant/CJ-READ-MCP.md",
+          "gitBlobSha": "ce1f6c6032406f535db2a26bbf4c345a476713af",
+          "readAt": "2026-11-05T12:17:34+01:00",
+          "ref": "9f9fb58a06c67b34264fd9b3dce9a768246de0da",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": "automation/cj-read-mcp-probe.mjs",
+          "gitBlobSha": "6b3833ef5e5093df2c7a752da504b07d6f9ad5cf",
+          "readAt": "2026-11-05T12:17:34+01:00",
+          "ref": "9f9fb58a06c67b34264fd9b3dce9a768246de0da",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": ".github/workflows/diagnose-actions-zugang.yml",
+          "gitBlobSha": "f3a67b72df97c1fce45e105ac485ea8aff400b36",
+          "readAt": "2026-11-05T12:17:34+01:00",
+          "ref": "9f9fb58a06c67b34264fd9b3dce9a768246de0da",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42017601295"
         }
       ],
       "requiresFreshVerification": true,
@@ -5005,6 +5028,18 @@
             "Node22/Voll-CI und produktive Integration unbestätigt; GraphQL-Validator skipped",
             "CJ-Helfer vorhanden, aber legitime Runtime-Zugänge/App-Grants und aktuelle Lieferanten-Katalogbelege hier nicht bestätigt",
             "Keine produktiven Produkt-/SKU-/Preiswrites oder Merchant-Freigabe; Claude-Kenntnisnahme unbekannt"
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "lastEvidence": "Am 05.11. GitHub-Branch codex/luxestyle-cj-mcp-20261105 und offener Draft-PR 2896 gegen main-Basis 988c740d3cb58a5435b54cf8eaaacda5ca261950 mit Head 12b450079e29b2b179b6a772a647f86373d63354 geschrieben und frisch geprüft. Der getrennte Server luxestyle-cj-read bietet nur luxe_cj_status und luxe_cj_product_read für genau ein Produkt per pid oder productSku; Suche, Pagination, Imports, Bestellungen, Käufe, Render und Shop-Writes sind ausgeschlossen. Der offizielle CJ-Vertrag verwendet {apiKey}. API-Key und Token werden weder persistiert noch ausgegeben; der bezogene Token bleibt nur im Prozessspeicher, der API-Key wird zur Authentifizierung per HTTPS ausschliesslich an den fest gesetzten offiziellen Auth-Endpunkt https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken gesendet. 224/224 Offline-Tests sowie der exakte initialize-/tools/list-/lokale Status-Handshake sind belegt. Beim frischen PR-Read waren die zielnahen Assist-, Automation-, Quality-, Voice- und Deploy-Prüfungen SUCCESS. Drei sachfremde Workers-Builds waren laut Repo-Regel erwartbar rot; Pre-deploy validation war CANCELLED und wurde von gh pr checks als Fehler dargestellt. Der externe Pages-Check Cloudflare Pages: foerder-radar war pending; der Draft-PR bleibt UNSTABLE. Die CJ_API_KEY-Prozessbindung fehlt; eine sichere Host-Bindung ist nicht belegt, sichere Herkunft und CJ-Gültigkeit bleiben unbekannt. Es gab keinen echten CJ-Login oder Live-Produktread; credential_binding_missing mit null Netzaufrufen belegt keinen ungültigen Schlüssel. Ausser GitHub-Branch und Draft-PR keine CJ-/Shop-/Produktivänderung und kein manueller Workflow-Dispatch.",
+          "nextAllowedStep": "UNSTABLE-Status und den noch offenen externen Pages-Check am unveränderten Draft-Head frisch nachlesen; dafür keinen manuellen Workflow-Dispatch starten. Nach sicherer MCP-Host-Bindung ohne Schlüssel in Repo oder Chat zuerst luxe_cj_status ausführen, danach genau einen Produktread per aktueller pid oder productSku und Produkt-/Varianten-/SKU-Identität gegen den aktuellen Shopify-Fall vergleichen. Kein breiter Katalogscan, Import, Workflowstart oder Blind-Retry. Prime-Status sowie Medien-, Bearbeitungs- und Werberechte nicht aus Connectorantworten ableiten.",
+          "blockers": [
+            "CJ_API_KEY-Prozessbindung fehlt; eine sichere MCP-Host-Bindung ist nicht belegt und ein GitHub-Actions-Secret ist keine lokale MCP-Host-Bindung",
+            "Kein Live-Login und kein identitätsgebundener Produktread; fehlende Bindung ist kein Nachweis eines ungültigen Schlüssels",
+            "PR 2896 ist Draft, ungemergt und UNSTABLE: zielnahe Assist-/Automation-/Quality-/Voice-/Deploy-Prüfungen SUCCESS; drei sachfremde Workers-Builds laut Repo-Regel erwartbar rot; Pre-deploy validation CANCELLED und von gh pr checks als Fehler dargestellt; externer foerder-radar-Pages-Check pending. Client-Laden und Inhaberabnahme unbekannt",
+            "Der Nur-Lese-Connector löst weder Preis-/SKU-Schreibintegration noch prozessübergreifende Reservation und autorisiert keine Imports oder Merchant-Änderungen",
+            "Aktuelle Produkt-/Varianten-Zuordnung, Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt"
           ]
         }
       ]
@@ -9063,6 +9098,19 @@
         "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
       },
       "action": "R89: GitHub-Branch codex/luxestyle-cj-mcp-20261105 und offener Draft-PR 2896 geschrieben. Zwei eng begrenzte Werkzeuge für lokalen Bindungsstatus und genau einen Produktread per PID oder productSku; 224/224 Offline-Tests und exakter stdio-Handshake belegt. API-Key/Token werden nicht persistiert oder ausgegeben; Token nur im Prozessspeicher, API-Key für Auth per HTTPS nur an https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken. Zielnahe Assist-/Automation-/Quality-/Voice-/Deploy-Prüfungen SUCCESS; sachfremde Workers-Builds erwartbar rot, Pre-deploy CANCELLED/bei gh als Fehler, externer foerder-radar-Pages-Check pending; PR UNSTABLE. Prozessbindung fehlt; sichere Herkunft und CJ-Gültigkeit unbekannt. Kein Live-Login oder Produktread. Ausser Branch/PR keine CJ-/Shop-/Produktivänderung und kein manueller Workflow-Dispatch."
+    },
+    {
+      "revision": 90,
+      "at": "2026-11-05T12:17:34+01:00",
+      "actor": "codex",
+      "source": {
+        "path": ".github/workflows/diagnose-actions-zugang.yml",
+        "gitBlobSha": "f3a67b72df97c1fce45e105ac485ea8aff400b36",
+        "readAt": "2026-11-05T12:17:34+01:00",
+        "ref": "9f9fb58a06c67b34264fd9b3dce9a768246de0da",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42017601295"
+      },
+      "action": "R90: GitHub-Secret im fixierten Nur-Lese-MCP-Job einmalig verwendet, ohne es auszulesen oder auszugeben. Run 42017601295/Job 127211924111 bestätigte mit exakt einem Auth- und einem Produktrequest productSku CJSN1392391, CJ-PID 1477820492730732544 und verified_by_product_read. Legacyjob übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Beleg gilt für den Remote-PR-Commit; lokale Host-Bindung, vollständige Shopify-Variantenbindung, Prime und Rechte bleiben offen."
     }
   ],
   "salesGoal": {
@@ -12206,5 +12254,17 @@
     },
     "note": "GitHub-Branch codex/luxestyle-cj-mcp-20261105 und Draft-PR 2896/Head 12b450079e29b2b179b6a772a647f86373d63354 wurden geschrieben; ungemergt. Keine produktive Ladung belegt; Client-Laden unbekannt. Frischer Checkstatus: zielnahe Assist-/Automation-/Quality-/Voice-/Deploy-Prüfungen SUCCESS, drei sachfremde Workers-Builds erwartbar rot, Pre-deploy CANCELLED/bei gh als Fehler, externer foerder-radar-Pages-Check pending; PR UNSTABLE. API-Key/Token werden nicht persistiert oder ausgegeben; Token nur im Prozessspeicher, API-Key für Auth per HTTPS ausschliesslich an https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken. Die CJ_API_KEY-Prozessbindung fehlt; eine sichere Host-Bindung ist nicht belegt, sichere Herkunft und CJ-Gültigkeit bleiben unbekannt. Kein Live-Login oder Einzelread; credential_binding_missing ist kein Auth-Fehlerbeleg. Ausser Branch/PR keine CJ-/Shop-/Produktivänderung und kein manueller Workflow-Dispatch.",
     "nextStep": "UNSTABLE-Status und pending Pages-Check ohne manuellen Dispatch am unveränderten Head nachlesen. Danach CJ_API_KEY sicher im MCP-Host binden, zuerst luxe_cj_status und anschliessend genau einen Produktread per aktueller pid oder productSku ausführen; Identität gegen Shopify prüfen und Prime-/Rechte-/Write-Fragen getrennt offen halten."
+  },
+  "followUpRunR90": {
+    "at": "2026-11-05T12:17:34+01:00",
+    "source": {
+      "path": ".github/workflows/diagnose-actions-zugang.yml",
+      "gitBlobSha": "f3a67b72df97c1fce45e105ac485ea8aff400b36",
+      "readAt": "2026-11-05T12:17:34+01:00",
+      "ref": "9f9fb58a06c67b34264fd9b3dce9a768246de0da",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42017601295"
+    },
+    "note": "Draft-PR 2896/Head 9f9fb58a06c67b34264fd9b3dce9a768246de0da wurde im einmaligen manuellen GitHub-Actions-Run 42017601295, Job 127211924111, remote geprüft. Lookup productSku CJSN1392391: bound_unverified vor Read, authenticationRequests 1, productRequests 1, product_identity_verified, readReason null, returnedPid 1477820492730732544, returnedProductSku CJSN1392391, connectionAfter verified_by_product_read, lastProductReadState verified, verified true. Secret nicht ausgelesen/ausgegeben; Legacy übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Remote-Zugriff belegt, lokale Host-Bindung und weitergehende Rechte-/Mappingfragen offen.",
+    "nextStep": "Keinen Wiederholungslauf ohne neuen konkreten Grund starten. Für lokale Nutzung CJ_API_KEY separat sicher im MCP-Host binden, danach lokalen Status und höchstens einen identitätsgebundenen Read prüfen. CJ-PID/SKU gegen aktuelle Shopify-Varianten und Medien-/Rechtequellen abgleichen; keine Import- oder Schreibfreigabe ableiten."
   }
 }
