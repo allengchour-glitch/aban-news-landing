@@ -1,0 +1,287 @@
+{
+"erstellt": "05.11.2026",
+"quelle": "Printful-API (GEMESSEN 05.11.): Versandrate CH je Modell (Testvarianten, bei «out of stock» weitere Varianten nachgetestet), availability_status je Variante; «ausverkauft» = keine Variante irgendwo in_stock oder stocked_on_demand",
+"regel": "Modelle in modelle_ausblenden nicht anzeigen; varianten_ausblenden je Modell nicht anzeigen (Farbe/Grösse). Hypothese: die CH-Rate einer Testvariante gilt fuer das ganze Modell (bei regionsgebundenen Produkten wie «ships to Japan only» stimmt das; bei ausverkauften Testvarianten wurden 8 Modelle nachgetestet).",
+"modelle_ausblenden": [
+484,
+485,
+501,
+509,
+513,
+521,
+523,
+525,
+534,
+538,
+539,
+556,
+557,
+560,
+567,
+574,
+575,
+578,
+579,
+588,
+590,
+591,
+597,
+598,
+603,
+610,
+629,
+635,
+638,
+641,
+643,
+657,
+658,
+679,
+716,
+743,
+786,
+793,
+794,
+805
+],
+"grund": {
+"484": "keine Schweizer Versandrate",
+"485": "keine Schweizer Versandrate",
+"501": "keine Schweizer Versandrate; überall ausverkauft (supplier_out_of_stock)",
+"509": "keine Schweizer Versandrate",
+"513": "technisch ungeeignet (schuh_3d_leisten)",
+"521": "keine Schweizer Versandrate",
+"523": "keine Schweizer Versandrate",
+"525": "technisch ungeeignet (schuh_3d_leisten)",
+"534": "keine Schweizer Versandrate",
+"538": "keine Schweizer Versandrate",
+"539": "keine Schweizer Versandrate",
+"556": "keine Schweizer Versandrate",
+"557": "keine Schweizer Versandrate",
+"560": "keine Schweizer Versandrate",
+"567": "keine Schweizer Versandrate",
+"574": "technisch ungeeignet (schuh_3d_leisten)",
+"575": "technisch ungeeignet (schuh_3d_leisten)",
+"578": "technisch ungeeignet (schuh_3d_leisten)",
+"579": "technisch ungeeignet (schuh_3d_leisten)",
+"588": "keine Schweizer Versandrate",
+"590": "keine Schweizer Versandrate",
+"591": "keine Schweizer Versandrate",
+"597": "technisch ungeeignet (schuh_3d_leisten)",
+"598": "technisch ungeeignet (schuh_3d_leisten)",
+"603": "keine Schweizer Versandrate",
+"610": "keine Schweizer Versandrate",
+"629": "keine Schweizer Versandrate",
+"635": "keine Schweizer Versandrate",
+"638": "keine Schweizer Versandrate",
+"641": "keine Schweizer Versandrate",
+"643": "keine Schweizer Versandrate",
+"657": "technisch ungeeignet (schuh_3d_leisten)",
+"658": "technisch ungeeignet (schuh_3d_leisten)",
+"679": "keine Schweizer Versandrate",
+"716": "keine Schweizer Versandrate; überall ausverkauft (supplier_out_of_stock)",
+"743": "keine Schweizer Versandrate",
+"786": "keine Schweizer Versandrate",
+"793": "keine Schweizer Versandrate",
+"794": "keine Schweizer Versandrate",
+"805": "keine Schweizer Versandrate"
+},
+"varianten_ausblenden": {
+"57": [
+23624
+],
+"71": [
+9369
+],
+"233": [
+8322,
+8320,
+8319,
+8318,
+8321,
+8317
+],
+"317": [
+9641
+],
+"340": [
+15440
+],
+"360": [
+46521,
+46520,
+46528
+],
+"399": [
+13435
+],
+"438": [
+21698
+],
+"464": [
+11990,
+11988,
+11987,
+11986,
+11989,
+11995,
+11993,
+11991,
+11994,
+12000,
+11998,
+11997,
+11996
+],
+"515": [
+12965,
+12963,
+12962,
+12964
+],
+"547": [
+13820
+],
+"548": [
+13826
+],
+"655": [
+16408,
+16407
+],
+"684": [
+16920,
+16918,
+16922,
+16921,
+16919,
+16923
+],
+"688": [
+17194,
+17188
+],
+"692": [
+32092,
+32086,
+32083
+],
+"713": [
+17582
+],
+"732": [
+18690
+],
+"748": [
+19226,
+19225
+],
+"765": [
+19731,
+19721,
+19716,
+19726,
+19722,
+19717,
+19712,
+19727,
+19733,
+19723,
+19718,
+19713,
+19728
+],
+"843": [
+22145,
+22146,
+22147,
+22148,
+22149,
+22150,
+22151
+],
+"845": [
+22467
+],
+"849": [
+22202
+],
+"864": [
+22668
+],
+"897": [
+23076
+],
+"902": [
+23140,
+23141,
+23142
+],
+"907": [
+23252,
+23253,
+23254,
+23255,
+23258,
+23259,
+23260,
+23261,
+23262,
+23263,
+23264,
+23265,
+23267,
+23269,
+23270,
+23272,
+23273,
+23274,
+23275,
+23277,
+23278,
+23280
+],
+"917": [
+23600,
+23599,
+23598
+],
+"943": [
+25718
+],
+"967": [
+24601,
+24589,
+24595,
+24591,
+24579,
+24580
+],
+"1412": [
+32064,
+32044,
+32034,
+32024,
+32054,
+32014
+],
+"1539": [
+48485
+],
+"1579": [
+49809,
+49806,
+49803
+],
+"1630": [
+51531,
+51528
+],
+"1632": [
+51577,
+51578,
+51579,
+51580
+]
+}
+}
