@@ -1,0 +1,35 @@
+{
+ "hinzugefuegt": [
+  {
+   "id": "gid://shopify/Product/15470015054209",
+   "handle": "bruder-roadmax-traktor-fga03451"
+  },
+  {
+   "id": "gid://shopify/Product/15470018429313",
+   "handle": "plusch-kaiserpinguin-26-cm-fga17842"
+  },
+  {
+   "id": "gid://shopify/Product/15470017872257",
+   "handle": "bworld-rennrad-mit-radfahrer-fga063110"
+  }
+ ],
+ "sandalen": [
+  {
+   "id": "gid://shopify/Product/15450733412737",
+   "handle": "handbestickte-lowenkopf-sandalen-fur-damen-419458",
+   "status": "ACTIVE"
+  },
+  {
+   "id": "gid://shopify/Product/15450733183361",
+   "handle": "zhensheng-happy-dongguofeng-tiger-head-sandale-133441",
+   "status": "ACTIVE"
+  }
+ ],
+ "kostuem": {
+  "descriptionHtml": "<p>Über 960 Kostüme und Verkleidungen, die bei uns im Schweizer Lager liegen — meist in 2–3 Werktagen bei dir, das genaue Lieferdatum steht auf jeder Produktseite und in der Kasse. Perfekt, wenn Halloween, Fasnacht oder die Motto-Party vor der Tür steht und keine Zeit für lange Versandwege bleibt. Gratis-Versand in der Schweiz ab CHF 50 · 30 Tage Rückgabe.</p><p data-lux-anlass=\"halloween\">🎃 Für Halloween: Kostüme ab Schweizer Lager kommen in der Schweiz am schnellsten an – das genaue Lieferdatum siehst du auf jeder Produktseite und in der Kasse.</p>",
+  "seo": {
+   "title": "Kostüme ab Schweizer Lager kaufen | LuxeStyle",
+   "description": "Über 960 Kostüme und Verkleidungen, die bei uns im Schweizer Lager liegen — meist in 2–3 Werktagen bei dir."
+  }
+ }
+}
