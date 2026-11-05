@@ -385,7 +385,7 @@ export function umrechneText(text, kontext = {}) {
     }
     const art = g.fl || g.vol ? 'volumen' : k.ozArt;
     if (!art) return all; // bleibt, wird unten markiert
-    const punkt = g.pt ? '.' : '';
+    const punkt = g.pt && !g.vol ? '.' : ''; // «32 oz. bottle»: der Punkt gehört zur Abkürzung
     const nach = art === 'gewicht' ? anzeigeG(ozNachG(n)) : anzeigeMl(ozNachMl(n));
     merke(all, nach, art === 'gewicht' ? 'gewicht' : 'volumen', 'rechnung');
     return nach + punkt + nachVol;
