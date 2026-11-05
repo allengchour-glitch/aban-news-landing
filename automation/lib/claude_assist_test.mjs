@@ -271,7 +271,7 @@ test('assist profile runs only its fixed integration files without claiming a ne
   const f=fixture(t,(cmd,args)=>({status:'passed',output:cmd==='git'?remote:'ok'}));
   checkInputs(f.root, 'assist');
   const run=await f.app.checks({suite:'assist'});assert.equal(run.status,'passed');
-  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,12);assert.match(run.caveat,/no network preload/);
+  const call=f.calls.find(c=>c.cmd!=='git');assert.equal(call.args[0],'--test');assert.equal(call.args[1],'--test-reporter=spec');assert.equal(call.args.length,13);assert.match(run.caveat,/no network preload/);
 });
 test('native Git change plan sees a staged change even when the worktree returns to HEAD', async t => {
   const f=checkout(t),file='automation/lib/shopify_gql.mjs';write(f.root,file,'original');
