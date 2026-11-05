@@ -73,7 +73,7 @@ const norm = (s) => s.replace(/\s+/g, ' ').trim();
 const PILLE = /^<div style="display:flex;align-items:center;gap:\.45rem;margin:\.5rem 0 0;font-size:\.92rem;font-weight:600;color:(#[0-9a-f]{6});"><span style="display:inline-block;width:\.6rem;height:\.6rem;border-radius:50%;background:(#[0-9a-f]{6});(?:box-shadow:0 0 0 3px (rgba\([^)]*\));)?"><\/span>([^<]*)<\/div>/;
 const zaehle = (s, t) => s.split(t).length - 1;
 // Aufbau der Ausgabe: <div data-lx-delivery="Produkt-ID"> Pille + Lieferbox </div> LF <script>…</script>, sonst nichts
-const HUELLE = /^<div data-lx-delivery="([^"]*)">([\s\S]*)<\/div>\n<script>([\s\S]*)<\/script>$/;
+const HUELLE = /^<div data-lx-delivery="([^"]*)" aria-live="polite">([\s\S]*)<\/div>\n<script>([\s\S]*)<\/script>$/;
 const zerlege = (html) => { const m = html.match(HUELLE); return m ? { pid: m[1], innen: m[2], skript: m[3] } : null; };
 const SPAN_AUF = '<span hidden data-lx-kein-liefertermin>';
 const SPAN = SPAN_AUF + 'Lieferung voraussichtlich: erst wieder, wenn diese Ausführung lieferbar ist.</span>';
@@ -175,7 +175,9 @@ function lauf(blockText, opt = {}) {
   pruefe('kein concat/include/render/section im Block', !/\b(concat|include|render|section)\b/.test(ohneKommentar.replace(/\{\{[^}]*\}\}/g, '')));
   pruefe('Kommentar nennt Datum 05.11.2026, den Notschalter (fail-closed), den Variantenwechsel und das Fallback-Skript', blockText.includes('05.11.2026') && blockText.includes('luxe.bestand_anzeige') && blockText.includes('fail-closed') && blockText.includes('variant:update') && blockText.includes('meta-tags.liquid'));
   pruefe('genau ein Skript im Blocktext, hinter dem Container, innerhalb von closest.product', zaehle(ohneKommentar, '<script') === 1 && zaehle(ohneKommentar, '</script>') === 1 && ohneKommentar.indexOf('<script>') > ohneKommentar.indexOf('<div data-lx-delivery=') && /<\/script>\s*\{%-\s*endif\s*-%\}\s*$/.test(ohneKommentar));
-  pruefe('genau ein Container-Anfang mit Produkt-ID aus closest.product.id', zaehle(ohneKommentar, '<div data-lx-delivery="{{ closest.product.id }}">') === 1 && zaehle(ohneKommentar, 'data-lx-delivery=') === 1);
+  pruefe('genau ein Container-Anfang mit Produkt-ID aus closest.product.id', zaehle(ohneKommentar, '<div data-lx-delivery="{{ closest.product.id }}" aria-live="polite">') === 1 && zaehle(ohneKommentar, 'data-lx-delivery=') === 1);
+  pruefe('Container sagt Änderungen an (aria-live polite)', zaehle(ohneKommentar, 'aria-live="polite"') === 1);
+  pruefe('Skript hat keinen newProduct-Zweig (kein Überschreiben der Hauptpille durch ein fremdes Produkt)', !ohneKommentar.includes('newProduct'));
   pruefe('versteckter Span mit dem festen Satz steht genau einmal im Block', zaehle(ohneKommentar, SPAN) === 1);
   pruefe('pruefeNeu() aus apply_theme.mjs (Zeichen, Grösse, Klammerpaare, Tag-Paare) beanstandet den Blocktext nicht', pruefeNeu(blockText).length === 0, pruefeNeu(blockText).join(' | '));
   const skriptText = (ohneKommentar.match(/<script>([\s\S]*)<\/script>/) || [])[1] || '';
@@ -360,7 +362,7 @@ function lauf(blockText, opt = {}) {
       const ok = zn2 !== null && norm(a) === norm(n);
       if (ok) gleich++; if (zn2 !== null && a === n) exakt++;
       pruefe(`gleich wie alt (Inhalt des Containers) · ${zn} · ${tags.join('+')} · ${preis} · ${land} · stufe ${stufe} · V${nr % VARIANTEN.length}`, ok, ok ? '' : norm(nRoh).slice(0, 200));
-      pruefe(`Container und Skript genau einmal · ${zn} · ${tags.join('+')} · ${preis} · ${land} · stufe ${stufe}`, zn2 !== null && zaehle(nRoh, '<div data-lx-delivery="123">') === 1 && zaehle(nRoh, '<script') === 1 && !nRoh.includes(SPAN_AUF));
+      pruefe(`Container und Skript genau einmal · ${zn} · ${tags.join('+')} · ${preis} · ${land} · stufe ${stufe}`, zn2 !== null && zaehle(nRoh, '<div data-lx-delivery="123" aria-live="polite">') === 1 && zaehle(nRoh, '<script') === 1 && !nRoh.includes(SPAN_AUF));
     }
   }
   R.gleich = gleich; R.exakt = exakt;
@@ -485,7 +487,7 @@ const MUTANTEN = [
   { id: 'M25', was: 'Pille zeigt nie orange Punktfarbe', von: "{%- assign lx_c_punkt = '#e8890c' -%}", nach: "{%- assign lx_c_punkt = '#2eaf46' -%}", anzahl: 2 },
   { id: 'M26', was: 'Rot-Pille ohne closest.product-Wächter (Block rendert auch ohne Produkt)', von: '{%- if closest.product -%}\n{%- assign lx_v', nach: '{%- if true -%}\n{%- assign lx_v' },
   // --- Variantenwechsel, Container, versteckter Span (browser: true = der Browsertest läuft immer mit; Skript-Mutanten erkennt nur er) ---
-  { id: 'W01', was: 'Container fehlt (kein data-lx-delivery)', browser: true, von: '<div data-lx-delivery="{{ closest.product.id }}">\n{%- if lx_ok -%}', nach: '{%- if lx_ok -%}', zusatz: [['{%- endif -%}\n</div>\n<script>', '{%- endif -%}\n<script>']] },
+  { id: 'W01', was: 'Container fehlt (kein data-lx-delivery)', browser: true, von: '<div data-lx-delivery="{{ closest.product.id }}" aria-live="polite">\n{%- if lx_ok -%}', nach: '{%- if lx_ok -%}', zusatz: [['{%- endif -%}\n</div>\n<script>', '{%- endif -%}\n<script>']] },
   { id: 'W02', was: 'Container ohne Produkt-ID', browser: true, von: 'data-lx-delivery="{{ closest.product.id }}"', nach: 'data-lx-delivery=""' },
   { id: 'W03', was: 'Container umhüllt nur die Pille, die Lieferbox bleibt draussen', browser: true, von: '{%- endif -%}\n</div>\n<script>', nach: '{%- endif -%}\n<script>',
     zusatz: [['{{ zustand }}</div>\n{%- else -%}', '{{ zustand }}</div></div>\n{%- else -%}'], ['lieferbar ist.</span>\n{%- endif -%}\n{%- if lx_ok -%}', 'lieferbar ist.</span></div>\n{%- endif -%}\n{%- if lx_ok -%}']] },
@@ -502,12 +504,13 @@ const MUTANTEN = [
     zusatz: [["document.addEventListener('variant:update',function(e){try{", "document.addEventListener('variant:update',function(e){if(1){"], ['}catch(x){}\n});', '}\n});']] },
   { id: 'W14', was: 'Dokument ohne Container leert die Pille', browser: true, von: '\nif(!neu)return;\n', nach: "\nif(!neu){var a0=document.querySelector('[data-lx-delivery]');if(a0)a0.innerHTML='';return;}\n" },
   { id: 'W15', was: 'Text statt Document wird nicht gelesen', browser: true, von: "if(typeof h==='string')h=new DOMParser().parseFromString(h,'text/html');\n", nach: '' },
-  { id: 'W16', was: 'newProduct-Zweig fehlt', browser: true, von: "if(!n&&d.data.newProduct&&alle.length){alle[0].setAttribute('data-lx-delivery',pid);alle[0].innerHTML=neu.innerHTML;}\n", nach: '' },
+  { id: 'W16', was: 'Skript bekommt wieder einen newProduct-Zweig (überschreibt die Hauptpille mit einem fremden Produkt)', browser: false, von: "if(alle[i].getAttribute('data-lx-delivery')===pid){n++;if(alle[i].innerHTML!==neu.innerHTML)alle[i].innerHTML=neu.innerHTML;}\n}\n", nach: "if(alle[i].getAttribute('data-lx-delivery')===pid){n++;if(alle[i].innerHTML!==neu.innerHTML)alle[i].innerHTML=neu.innerHTML;}\n}\nif(!n&&d.data.newProduct&&alle.length){alle[0].setAttribute('data-lx-delivery',pid);alle[0].innerHTML=neu.innerHTML;}\n" },
   { id: 'W17', was: 'Skript setzt auch bei gleichem Zustand neu (Vergleich entfällt)', browser: true, von: 'if(alle[i].innerHTML!==neu.innerHTML)', nach: '' },
   { id: 'W18', was: 'Skript steht ausserhalb von closest.product (auch ohne Produkt)', browser: true, von: '</div>\n<script>', nach: '</div>\n{%- endif -%}\n<script>', zusatz: [['</script>\n{%- endif -%}', '</script>']] },
   { id: 'W19', was: 'nur der erste passende Container wird getauscht (break)', browser: true, von: '{n++;if(alle[i].innerHTML!==neu.innerHTML)alle[i].innerHTML=neu.innerHTML;}', nach: '{n++;if(alle[i].innerHTML!==neu.innerHTML)alle[i].innerHTML=neu.innerHTML;break;}' },
   { id: 'W20', was: 'zweites Skript im Block', browser: true, von: '</script>\n{%- endif -%}', nach: '</script>\n<script>var lxq=1;</script>\n{%- endif -%}' },
   { id: 'W21', was: 'Skript mit Netzabruf (fetch)', browser: true, von: "if(window.__lxLiefer)return;", nach: "if(window.__lxLiefer)return;fetch('/x');" },
+  { id: 'W22', was: 'Zuhörer verschluckt das Ereignis für spätere document-Zuhörer (stopImmediatePropagation)', browser: true, von: "function(e){try{\nvar d=e&&e.detail", nach: "function(e){try{\ne.stopImmediatePropagation();\nvar d=e&&e.detail" },
   // gleichwertig: Beweis steht daneben
   { id: 'G1', was: 'Bedingung «Zweig Schweizer Lager» in Schritt 1 entfällt', von: " and lager contains 'Schweizer Lager' -%}\n  {%- if closest.product.tags", nach: " -%}\n  {%- if closest.product.tags", gleichwertig: 'Tag fortura/ch-lager führt immer in den ersten Zweig (lager enthält dann immer «Schweizer Lager»)' },
   { id: 'G2', was: 'Bedingung lx_tmin > 0 entfällt', von: ' and lx_tmin > 0', nach: '', gleichwertig: 'im Zweig fortura/ch-lager ist lx_tmin immer 1 oder 9' },

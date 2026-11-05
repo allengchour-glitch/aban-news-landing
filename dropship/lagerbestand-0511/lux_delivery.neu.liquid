@@ -84,7 +84,7 @@ und CH-Lager-Ware versprach auch am Freitag eine Lieferung am Samstag. {%- endco
   {%- endif -%}
 {%- endif -%}
 {%- assign lx_c_text = '#1e7a2e' -%}{%- assign lx_c_punkt = '#2eaf46' -%}{%- assign lx_c_schein = 'rgba(46,175,70,.18)' -%}
-<div data-lx-delivery="{{ closest.product.id }}">
+<div data-lx-delivery="{{ closest.product.id }}" aria-live="polite">
 {%- if lx_ok -%}
   {%- if lager contains 'Schweizer Lager' -%}
     {%- assign zustand = 'Auf Lager &middot; versandbereit' -%}
@@ -134,7 +134,6 @@ var pid=neu.getAttribute('data-lx-delivery'),alle=document.querySelectorAll('[da
 for(i=0;i<alle.length;i++){
 if(alle[i].getAttribute('data-lx-delivery')===pid){n++;if(alle[i].innerHTML!==neu.innerHTML)alle[i].innerHTML=neu.innerHTML;}
 }
-if(!n&&d.data.newProduct&&alle.length){alle[0].setAttribute('data-lx-delivery',pid);alle[0].innerHTML=neu.innerHTML;}
 }catch(x){}
 });
 }catch(x){}

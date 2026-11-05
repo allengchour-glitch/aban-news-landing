@@ -790,6 +790,47 @@ globalThis.fetch = async (url, init = {}) => {
   }
 }
 
+/* ============ 8. Die Anleitung für den Besitzer stimmt mit Workflow, Skripten und Theme überein ============ */
+// Die Anleitung ist das Einzige, was der Besitzer liest. Stimmt eine Zahl oder ein Name dort nicht mehr mit dem Workflow überein, sucht er an der
+// falschen Stelle (Prüfer 05.11.: kein Test las die Anleitung). Zahlen werden aus den Skripten und dem Theme gelesen, nicht noch einmal festgeschrieben.
+{
+  const tausend = (z) => String(z).replace(/\B(?=(\d{3})+$)/g, ' ');
+  const AN = path.join(HIER, 'FORTURA-BESTAND-ANLEITUNG.md');
+  const THEME = path.join(HIER, 'lux_delivery.neu.liquid');
+  const wfT = fs.readFileSync(path.join(WURZEL, '.github/workflows/fortura-bestand.yml'), 'utf8');
+  const a = fs.existsSync(AN) ? fs.readFileSync(AN, 'utf8') : '';
+  const th = fs.existsSync(THEME) ? fs.readFileSync(THEME, 'utf8') : '';
+  ok(a.length > 500 && th.length > 500, 'Anleitung und Theme-Baustein liegen vor');
+  ok(a.includes('«Fortura-Bestand (Abgleich)»') && /^name: "Fortura-Bestand \(Abgleich\)"/m.test(wfT), 'Anleitung nennt den Workflow bei seinem Namen');
+  for (const name of ['FORTURA_FTP_USER', 'FORTURA_FTP_PW', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET']) ok(a.includes(name) && wfT.includes('secrets.' + name), `Anleitung nennt das Secret ${name}, und der Workflow liest es`);
+  for (const eingabe of ['schreiben', 'null_erlauben']) ok(a.includes('**' + eingabe) && new RegExp('^      ' + eingabe + ':', 'm').test(wfT), `Anleitung nennt die Handstart-Eingabe «${eingabe}», und der Workflow hat sie`);
+  // Die Schritte, die der Besitzer anklickt, stehen wörtlich in der Anleitung (jede Eingabe heisst dort genau so wie im Workflow)
+  ok(a.includes('**schreiben** aus (false), **null_erlauben** aus') && a.includes('**schreiben = an**') && a.includes('**schreiben = an UND null_erlauben = an**'), 'Anleitung: Klickfolge nennt «schreiben» und «null_erlauben» wörtlich in allen drei Stellen');
+  ok(a.includes('dropship/FORTURA-BESTAND-FREI.txt') && wfT.includes('dropship/FORTURA-BESTAND-FREI.txt'), 'Freigabedatei: gleicher Pfad in Anleitung und Workflow');
+  const freiNennungen = a.match(/\S*FREI\.txt/g) || [];
+  ok(freiNennungen.length >= 2 && freiNennungen.every(x => x.replace(/[*`]/g, '') === 'dropship/FORTURA-BESTAND-FREI.txt'), `Freigabedatei: jede Nennung in der Anleitung heisst gleich (${freiNennungen.length} gefunden)`);
+  const cron = (wfT.match(/- cron: '(\d+) (\d+) \* \* \*'/) || []);
+  ok(cron.length === 3 && a.includes(`${String(cron[2]).padStart(2, '0')}:${String(cron[1]).padStart(2, '0')} UTC`), 'Uhrzeit des Zeitplans stimmt mit dem Cron-Ausdruck überein');
+  const artefakt = (wfT.match(/name: (fortura-bestand-protokoll)\n/) || [])[1];
+  ok(artefakt && a.includes('«' + artefakt + '»'), 'Name des Artefakts stimmt');
+  const tage = (wfT.match(/retention-days: (\d+)/) || [])[1];
+  ok(tage && a.includes(`${tage} Tage`), 'Aufbewahrung des Artefakts stimmt mit retention-days überein');
+  ok(a.includes(`${m.NAMESPACE}.${m.KEY}`), 'Stempel-Metafeld heisst in der Anleitung wie im Skript');
+  ok(a.includes(`mindestens ${tausend(m.MIN_VARIANTEN)} Varianten`), `Mindestzahl Varianten (${m.MIN_VARIANTEN}) steht in der Anleitung`);
+  ok(a.includes(`Feed höchstens ${m.FEED_MAX_STUNDEN} Stunden alt`), `Feed-Alter (${m.FEED_MAX_STUNDEN} h) steht in der Anleitung`);
+  ok(a.includes(`max(${m.ABWEICHUNG_MIN}, ${Math.round(m.ABWEICHUNG_ANTEIL * 100)} %)`), 'Abweichungsgrenze max(40, 1 %) steht in der Anleitung');
+  const alterS = Number((th.match(/lx_bs_alter <= (\d+)/) || [])[1]);
+  ok(alterS > 0 && a.includes(`**${alterS / 3600} Stunden**`), `Gültigkeit des Stempels im Theme (${alterS} s) steht in der Anleitung`);
+  ok(a.includes('luxe.bestand_anzeige') && th.includes('luxe.bestand_anzeige'), 'Notschalter heisst in Anleitung und Theme gleich');
+  const wortliste = [...th.matchAll(/lx_bs_sw != '([^']*)'/g)].map(x => x[1]).filter(Boolean);
+  ok(wortliste.length === 6 && wortliste.every(w => a.includes('`' + w + '`')), `Notschalter: alle Wörter des Themes (${wortliste.join(', ')}) stehen in der Anleitung`);
+  // Zielzahlen des Probelaufs vom 05.11. (dieselben wie die echte Zeile in Abschnitt 3 dieses Tests)
+  for (const z of [6532, 1884, 161, 2258, 2195]) ok(a.includes(tausend(z)), `Zielzahl ${z} steht in der Anleitung`);
+  ok(a.includes(`mindestens ${Math.floor(0.15 * 2258)}`), 'Bremsen-Grenze (15 % von 2 258 = 338) steht in der Anleitung');
+  ok(/^## [1-6]\. /m.test(a) && (a.match(/^## \d\. /gm) || []).length === 6, 'sechs nummerierte Abschnitte');
+  ok(!/shp(at|ss|ca|pa)_|ghp_|gho_|AKIA[0-9A-Z]{8}|passw(or)?d\s*[:=]|:\/\/[^\s/]*:[^\s/]*@/i.test(a), 'Anleitung enthält kein Geheimnis');
+}
+
 for (const d of tmpDirs) { try { fs.rmSync(d, { recursive: true, force: true }); } catch {} }
 console.log(`\n${n} Prüfungen, ${fehler} Fehler${uebersprungen ? `, ${uebersprungen} übersprungen` : ''}`);
 process.exit(fehler ? 1 : 0);

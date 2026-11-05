@@ -162,7 +162,7 @@ async function lauf() {
     beginne('1 Aufbau');
     for (const [k, h] of Object.entries(BLOECKE)) {
       if (k === 'X' || k === 'LI') continue;
-      const m = h.match(/^<div data-lx-delivery="([^"]*)">([\s\S]*)<\/div>\n<script>([\s\S]*)<\/script>$/);
+      const m = h.match(/^<div data-lx-delivery="([^"]*)" aria-live="polite">([\s\S]*)<\/div>\n<script>([\s\S]*)<\/script>$/);
       pruefe(`${k}: Container vorn, Skript hinten, nichts sonst`, m !== null, h.slice(0, 80));
       pruefe(`${k}: genau ein Container und ein Skript`, (h.match(/<div data-lx-delivery/g) || []).length === 1 && (h.match(/<script/g) || []).length === 1 && (h.match(/<\/script>/g) || []).length === 1);
       pruefe(`${k}: Produkt-ID im Container`, m !== null && m[1] === '123', m && m[1]);
@@ -252,6 +252,13 @@ async function lauf() {
       await feuere(page, 'text', seite(BLOECKE.B)); z = await lesen(page);
       pruefe('Ereignis mit Text statt Document (data.html als String): Zustand B', zeigt(z, SOLL.B) && z.innen === innen.B, z.text);
       await feuere(page, 'normal', seite(BLOECKE.C)); z = await lesen(page);
+      // Der Zuhörer des Blocks lässt das Ereignis weiterlaufen (Prüfer 3, 05.11.): ein SPÄTER am document registrierter Zuhörer (Analyse, App-Skript) bekommt es ebenfalls
+      await page.evaluate(() => { window.__spaet = 0; window.__spaetAbgebrochen = null; document.addEventListener('variant:update', (e) => { window.__spaet++; window.__spaetAbgebrochen = e.defaultPrevented; }); });
+      await feuere(page, 'normal', seite(BLOECKE.B));
+      gleich('Ereignis erreicht einen später am document registrierten Zuhörer (der Block verschluckt es nicht, bricht es nicht ab)', await page.evaluate(() => [window.__spaet, window.__spaetAbgebrochen]), [1, false]);
+      z = await lesen(page);
+      pruefe('… und der Block hat den Zustand B trotzdem übernommen', zeigt(z, SOLL.B), z.text);
+      await feuere(page, 'normal', seite(BLOECKE.C));
       gleich('nach dem Wechsel: Seite hat keinen Fehler und kein Netz verursacht', [t.s.seitenfehler, t.s.konsole, t.s.netz], [[], [], []]);
       await t.context.close();
     }
@@ -292,11 +299,12 @@ async function lauf() {
       await t.context.close();
     }
     {
-      // neues Produkt (Combined Listing): newProduct gesetzt -> Container wird übernommen
+      // Ereignis eines FREMDEN Produkts (newProduct gesetzt, z. B. Schnellkauf auf einer Produktseite): die Hauptpille bleibt unverändert
+      // (05.11. Prüferbefund: ein früherer Rückfallzweig überschrieb sie mit dem Zustand des fremden Produkts; der Zweig ist entfernt)
       const t = await oeffne(browser, seite(BLOECKE.B));
       await feuere(t.page, 'neuesProdukt', seite(BLOECKE.X));
       const z = await lesen(t.page);
-      pruefe('Ereignis mit newProduct: Pille zeigt den Zustand des neuen Produkts («Nur noch 2») und trägt dessen Produkt-ID', zeigt(z, SOLL.A) && z.pid === '999', JSON.stringify({ t: z.text, pid: z.pid }));
+      pruefe('Ereignis mit newProduct eines fremden Produkts: Hauptpille bleibt (Zustand B, eigene Produkt-ID), nicht «Nur noch 2» des fremden', zeigt(z, SOLL.B) && z.pid === '123', JSON.stringify({ t: z.text, pid: z.pid }));
       await t.context.close();
     }
 

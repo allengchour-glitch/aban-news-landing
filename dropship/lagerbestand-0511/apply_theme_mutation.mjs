@@ -116,6 +116,10 @@ const M = [
   ['M85 Block in der Live-Datei nicht lesbar wird hingenommen', "if (blockLive === null) fail(4,", "if (false) fail(4,"],
   ['M86 Merkliste: Block-Prüfsumme vorher falsch', "block_md5_vor: md5(blockLive)", "block_md5_vor: md5(neu)"],
   ['M87 Sicherungsname darf Pfadanteile tragen', "const SICH_NAME = /^product\\.json\\.vor(-[0-9a-f]{8})?$/;", "const SICH_NAME = /^product\\.json\\.vor.*$/;"],
+  // --- Prüfer 3 (05.11.): der versteckte Satz des Ausverkauft-Zweigs darf nicht als Lieferbox zählen ---
+  ['M88 versteckter Satz wird nicht abgezogen (jede ausverkaufte Seite gälte als «box»)', "const text = rohtext.replace(KEIN_TERMIN_SPAN, '');", "const text = rohtext;"],
+  ['M89 Muster des versteckten Satzes nur für genau eine Attributreihenfolge', "/<span\\b[^>]*\\bdata-lx-kein-liefertermin\\b[^>]*>[\\s\\S]*?<\\/span>/g", "/<span hidden data-lx-kein-liefertermin>[\\s\\S]*?<\\/span>/g"],
+  ['M90 Muster des versteckten Satzes gierig (frisst bis zum letzten </span> der Seite)', "[\\s\\S]*?<\\/span>/g;", "[\\s\\S]*<\\/span>/g;"],
 ];
 
 // Gleichwertige oder im Test nicht erzwingbare Mutanten (Begründung)

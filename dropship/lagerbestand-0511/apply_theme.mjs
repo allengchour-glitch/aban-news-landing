@@ -146,7 +146,11 @@ export const sicherungsName = (md5vor) => (md5vor === MD5_VOR ? 'product.json.vo
 
 // Seitenauswertung: Liquid-Fehler, Zustand des Lieferblocks, Testmarke
 const LIEFERBOX = /Lieferung voraussichtlich|Lieferung nach Liechtenstein/, AUSVERKAUFT = /Momentan ausverkauft|Diese Ausführung ist ausverkauft/;
-export function analysiereSeite(text) {
+// Der neue Block setzt bei ausverkaufter Ausführung einen VERSTECKTEN Satz mit «Lieferung voraussichtlich: erst wieder …» (unterdrückt das Fallback-Datum aus meta-tags.liquid).
+// Er ist keine Lieferbox: ohne diesen Abzug gälte jede ausverkaufte Seite als «box», und der Alarm «kaufbar -> ausverkauft» in bewerte() bliebe stumm (Prüferfund 05.11.).
+const KEIN_TERMIN_SPAN = /<span\b[^>]*\bdata-lx-kein-liefertermin\b[^>]*>[\s\S]*?<\/span>/g;
+export function analysiereSeite(rohtext) {
+  const text = rohtext.replace(KEIN_TERMIN_SPAN, '');
   return {
     fehler: [...new Set(text.match(/Liquid (?:syntax )?error[^<\n]{0,160}/gi) || [])],
     art: LIEFERBOX.test(text) ? 'box' : AUSVERKAUFT.test(text) ? 'aus' : 'kein',

@@ -95,6 +95,18 @@ ok(S.pruefeNeu(NEU_KERN).length === 0, 'Platzhalter-Block besteht die Eingabepr�
   gleich(S.analysiereSeite('Diese Ausführung ist ausverkauft').art, 'aus', 'analysiereSeite Ausführung ausverkauft');
   gleich(S.analysiereSeite('Lieferung nach Liechtenstein: x').art, 'box', 'analysiereSeite Liechtenstein');
   gleich(S.analysiereSeite('nichts').art, 'kein', 'analysiereSeite nichts');
+  {
+    // Ausverkauft-Zweig des neuen Blocks: der versteckte Satz ist keine Lieferbox (sonst bliebe der Alarm «kaufbar -> ausverkauft» stumm)
+    const SPAN_T = '<span hidden data-lx-kein-liefertermin>Lieferung voraussichtlich: erst wieder, wenn diese Ausführung lieferbar ist.</span>';
+    gleich(S.analysiereSeite('<div>Diese Ausführung ist ausverkauft</div>' + SPAN_T), { fehler: [], art: 'aus', ausverk: true, marke: false }, 'analysiereSeite: versteckter Satz zählt nicht als Lieferbox (Ausführung)');
+    gleich(S.analysiereSeite('<div>Momentan ausverkauft</div>' + SPAN_T).art, 'aus', 'analysiereSeite: versteckter Satz zählt nicht als Lieferbox (Produkt)');
+    gleich(S.analysiereSeite('<div>Diese Ausführung ist ausverkauft</div><span data-lx-kein-liefertermin hidden="">Lieferung voraussichtlich: erst wieder.</span>').art, 'aus', 'analysiereSeite: versteckter Satz mit anderer Attributreihenfolge');
+    gleich(S.analysiereSeite('<p>Lieferung voraussichtlich 6. Nov.</p><div>Momentan ausverkauft</div>' + SPAN_T).art, 'box', 'analysiereSeite: eine echte Lieferbox neben dem versteckten Satz bleibt «box»');
+    gleich(S.analysiereSeite('<div>Auf Lager</div>' + SPAN_T).art, 'kein', 'analysiereSeite: nur der versteckte Satz, sonst nichts: kein Lieferblock');
+    gleich(S.analysiereSeite('<div>Auf Lager</div>' + SPAN_T + '<p><span>Lieferung nach Liechtenstein: x</span></p>').art, 'box', 'analysiereSeite: nur der Span wird abgezogen, nicht alles bis zum letzten </span> der Seite');
+    gleich(S.bewerte({ status: 200, marke: false, ...S.analysiereSeite('<div>Diese Ausführung ist ausverkauft</div>' + SPAN_T) }, { fehler: [], art: 'box', ausverk: false }), ['Lieferblock zeigt «aus» statt «box»'], 'bewerte: vorher kaufbar (box), nachher ausverkauft meldet Alarm trotz verstecktem Satz');
+    gleich(S.bewerte({ status: 200, marke: false, ...S.analysiereSeite('<div>Momentan ausverkauft</div>' + SPAN_T) }, { fehler: [], art: 'aus', ausverk: true }), [], 'bewerte: vorher schon ausverkauft, nachher ausverkauft mit verstecktem Satz: kein Alarm');
+  }
   gleich(S.analysiereSeite('Liquid error A\nLiquid error A\nLiquid syntax error B <p>Liquid error C</p>').fehler, ['Liquid error A', 'Liquid syntax error B ', 'Liquid error C'], 'analysiereSeite: Liquid-Fehler entdoppelt, Zeilenende und Tag begrenzen');
   const gut = { status: 200, fehler: [], art: 'box', marke: false };
   gleich(S.bewerte(gut, { fehler: [], art: 'box' }), [], 'bewerte: in Ordnung');

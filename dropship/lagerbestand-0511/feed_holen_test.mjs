@@ -108,6 +108,8 @@ const ohneGeheimnis = (r) => !r.alles.includes(PW) && !r.alles.includes(USER) &&
   ok(t.includes('B="https://webtransfer.fortura.ch"'), 'feste Adresse webtransfer.fortura.ch auf Port 443');
   ok(/\[ "\$\{FORTURA_TEST:-\}" = "1" \] && \[ -n "\$\{FORTURA_BASIS:-\}" \]/.test(t), 'Ersatzadresse gilt nur zusammen mit FORTURA_TEST=1');
   ok(t.includes('MIN_BYTES="${FORTURA_MIN_BYTES:-9000000}"') && !t.includes('5000000') && /11,7 MB/.test(t) && /Messbasis/.test(t), 'Mindestgrösse 9 MB mit genannter Messbasis (11,7 MB am 05.11.2026), der alte Wert 5 MB ist weg');
+  // Der Workflow setzt weder FORTURA_VERSUCHE noch FORTURA_PAUSE: es gelten die Vorgaben im Skript. Alle Läufe dieses Tests übersteuern sie (basisEnv), also prüft nur dieser Text, dass es 3 Versuche im Abstand von 20 s bleiben (Prüfer 05.11.: «10 statt 3» überlebte).
+  ok(t.includes('VERSUCHE="${FORTURA_VERSUCHE:-3}"') && t.includes('PAUSE="${FORTURA_PAUSE:-20}"'), 'Vorgaben: 3 Versuche, 20 Sekunden Pause (der Workflow übersteuert sie nicht)');
   ok(t.includes('/home/Art_DataFeed.CSV') && t.includes('SYNO.FileStation.Download') && t.includes('SYNO.API.Auth') && t.includes('"session=FileStation"'), 'Protokoll und Pfad wie das Original (FileStation, /home/Art_DataFeed.CSV)');
   ok(/TLS=\(-k\)/.test(t) && /FORTURA_TLS_UNSICHER:-\}" = "1"/.test(t) && !/curl[^\n]* -k /.test(t), '-k nur über FORTURA_TLS_UNSICHER=1');
   ok(/max-time 900/.test(t) && /max-time 120/.test(t) && /connect-timeout 30/.test(t), 'Zeitlimits gesetzt');

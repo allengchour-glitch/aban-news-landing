@@ -17,10 +17,12 @@ const KOPIE = [
   'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_secret.mjs', 'automation/lib/shopify_host.mjs',
   '.github/workflows/fortura-bestand.yml', 'dropship/_fortura_sperr_varianten.txt',
   'dropship/lagerbestand-0511/stempel_test.mjs', 'dropship/lagerbestand-0511/feed_holen_test.mjs', 'dropship/lagerbestand-0511/kette_test.mjs',
+  'dropship/lagerbestand-0511/FORTURA-BESTAND-ANLEITUNG.md', 'dropship/lagerbestand-0511/lux_delivery.neu.liquid',   // der Test liest die Anleitung und den Theme-Baustein
 ];
 for (const f of KOPIE) { fs.mkdirSync(path.dirname(path.join(BAUM, f)), { recursive: true }); fs.copyFileSync(path.join(WURZEL, f), path.join(BAUM, f)); }
 
 const S = 'automation/fortura_bestand_stempel.mjs', W = '.github/workflows/fortura-bestand.yml', F = 'automation/fortura_feed_holen.sh', Y = 'automation/fortura_bestand_sync.mjs';
+const A = 'dropship/lagerbestand-0511/FORTURA-BESTAND-ANLEITUNG.md';
 // [Name, Datei, von (muss genau einmal vorkommen), zu, Tests]
 const M = [
   // --- Stempel-Skript: das Gate ---
@@ -164,6 +166,15 @@ const M = [
   ['K06 MIN_VARIANTEN wieder 1000 (Kette)', S, 'export const MIN_VARIANTEN = 6000;', 'export const MIN_VARIANTEN = 1000;', 'kette'],
   ['K07 Abgleich ohne MIN_FEED_ROWS des Workflows (Kette)', W, "          MIN_FEED_ROWS: '18000'\n        run: |\n          set +e\n          # Das Abgleich-Skript liest", "        run: |\n          set +e\n          # Das Abgleich-Skript liest", 'kette'],
   ['K08 Modus: ohne Freigabedatei wird geschrieben (Kette)', W, 'if [ -f dropship/FORTURA-BESTAND-FREI.txt ]; then', 'if true; then', 'kette'],
+  // --- 05.11. (unabhängige Prüfung): Vorgaben des Feed-Skripts und die Anleitung des Besitzers ---
+  ['F27 Feed-Skript: 10 Anmeldeversuche statt 3', F, 'VERSUCHE="${FORTURA_VERSUCHE:-3}"', 'VERSUCHE="${FORTURA_VERSUCHE:-10}"', 'feed'],
+  ['F28 Feed-Skript: keine Pause zwischen den Versuchen', F, 'PAUSE="${FORTURA_PAUSE:-20}"', 'PAUSE="${FORTURA_PAUSE:-0}"', 'feed'],
+  ['A01 Anleitung: Stempel gilt «48 Stunden» (Theme sagt 26)', A, '**26 Stunden**', '**48 Stunden**', 'stempel'],
+  ['A02 Anleitung: falscher Name der Handstart-Eingabe', A, '**schreiben = an UND null_erlauben = an**', '**schreiben = an UND nullen = an**', 'stempel'],
+  ['A03 Anleitung: Mindestzahl Varianten 1 000 statt 6 000', A, 'mindestens 6 000 Varianten', 'mindestens 1 000 Varianten', 'stempel'],
+  ['A04 Anleitung: Notschalter-Metafeld falsch benannt', A, 'Shop-Metafeld **luxe.bestand_anzeige**', 'Shop-Metafeld **luxe.bestand_zeigen**', 'stempel'],
+  ['A05 Anleitung: Secret falsch benannt', A, '**FORTURA_FTP_PW**', '**FORTURA_PW**', 'stempel'],
+  ['A06 Anleitung: Freigabedatei in der ersten Nennung falsch benannt', A, 'Datei **dropship/FORTURA-BESTAND-FREI.txt**', 'Datei **dropship/FORTURA-FREI.txt**', 'stempel'],
   ['F16 Zieldatei wird direkt geschrieben (nicht erst nach der Prüfung)', F, 'cp -p "$ARBEIT/feed" "$TMPZIEL" || { rm -f "$TMPZIEL"; fehler "Zieldatei nicht schreibbar: $OUT"; }\nmv -f "$TMPZIEL" "$OUT" || { rm -f "$TMPZIEL"; fehler "Zieldatei nicht ersetzbar: $OUT"; }', ': > "$OUT"; cp -p "$ARBEIT/feed" "$OUT"', 'feed'],
 ];
 
