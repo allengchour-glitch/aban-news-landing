@@ -1,5 +1,16 @@
 # LuxeStyle: Projektgedächtnis und Arbeitsbeginn
 
+## Aktueller Stand – 05.11.2026, Revision 98: Abendpaket, frische Planung und Master-Quellenprüfung
+
+[R98-Abendpaket](ABENDPAKET-20261105-R98.md) · [R98-Belege](LAUFBELEGE-20261105-R98.json) · [derselbe Projektor-Master](MASTER-CONTENT-20261105-R98.md). Shopify LuxeStyle / `luxestyle.ch` / CH / CHF / Europe/Zurich sowie Metricool Brand `6227837` / `Europe/Zurich` mit allen sechs Kanalidentitäten wurden frisch passend gelesen. Das Fenster 05.11. 18:57 bis 12.11. 18:57 enthält 36 Planobjekte und 53 `PENDING`-Kanalzustände. Es gibt keine exakte kanalgleiche Kollision, doppelte UUID oder gleiche Medien-URL zweimal auf demselben Kanal. Threads bleibt leer, Pinterest hat ab 09.11. keine zurückgelieferten Termine und drei Facebook-/Instagram-Termine enthalten leeren Text. Medienbindung und vollständige Masterhistorie sind unbekannt; kein Metricool-Write.
+
+Die heutigen R88-Kennzahlen und der Klaviyo-Flowreport wurden datiert wiederverwendet und nicht erneut abgefragt. Fehlende Tage bleiben unbekannt; aus Views, Impressionen oder Interaktionen wird kein Verkauf abgeleitet. `W7XTVD` bleibt die Shopify-Placed-Order-Metrik; vier gelesene Flows sind `draft`. Genau ein Klaviyo-Entwurf betrifft `TTuuTS`-Trackingparameter nach UTM-/Linkvorschau-Prüfung, nicht angewendet. CHF und USD bleiben getrennt.
+
+Projektor `15521256604033` und Katzenhängematte `16610153759111` wurden frisch eng gelesen. Beide sind ACTIVE, öffentlich HTTP 200 und mit allen Varianten kaufbar; ungetracktes `CONTINUE` sowie Mengen 0 beziehungsweise −1 belegen keinen physischen Bestand oder eine Lieferzeit. Beim Projektor ist die historische Variante nicht mehr aktuell; A–G kosten CHF 34.90–51.90. Der aktuelle reale Produktfilm ist 852×480/25 fps/27.96 s, keiner heutigen Variante eindeutig zugeordnet und ohne belegte kommerzielle Bearbeitungs-/Werberechte. Bei der Hängematte ist die Taxonomie «Reisenäpfe» sachlich unpassend; sie blieb unverändert, ein Ersatz-Leaf wurde nicht geraten.
+
+Derselbe 18-Sekunden-Master wurde mit zwei Hooks, 540-Frame-Schnittplan, echter Bildreferenz, sechs kanalgetrennten Texten und UTMs fortgeschrieben. Er bleibt Storyboard/Skript: Zielvariante, Einheits-/Motivbindung, Film-/Musikrechte, native 9:16-Premiumquelle, fertige MP4, Format-QA und operatives Ledger fehlen. Kein Render oder Social-Write. Einzige Verkaufsaktion zur Freigabe bleibt der enge R79-Preisfilter-Pager-Guard nach aktuellem MAIN-Hash und vollständiger Entwurfs-QA; nicht angewendet. Der strenge Katalogfortschritt bleibt 27/56’506 ACTIVE, rund 0,05 %, ohne Qualitätsaussage über den Rest.
+
+
 ## Aktueller Stand – 05.11.2026, Revision 97: Tennistasche, Rolltop-Rucksack und Strickoberteil live korrigiert
 
 [R97-Live-Bericht](PRODUKT-SEO-LIVE-20261105-R97.md) · [R97-Belege](PRODUKT-SEO-LIVE-20261105-R97.json). Shopify LuxeStyle / `luxestyle.ch` / CHF / Schweiz wurde passend gelesen. Der Lauf korrigierte genau drei ACTIVE-Produkte und ist kein Katalogabschluss.

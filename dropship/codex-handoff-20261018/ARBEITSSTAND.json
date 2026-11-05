@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 97,
-  "updatedAt": "2026-11-05T18:15:46+01:00",
+  "revision": 98,
+  "updatedAt": "2026-11-05T19:09:10+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-05",
     "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
-    "currentDayEvidence": "Vor Reports frischenR87-Stand und fehlenden05.11.-Tagesblock geprüft. Einmalig29.10.–04.11.: sechsMetricool-Definitionen+sechskleineKanalabfragen und genau1Klaviyo-Flowreport nachfrischerW7XTVD-Discovery. Datenlücken unknown, keineShopumsatz-/Sync-/Kaufableitung. Drei gezielte Beauty-Seiten sind eine begrenzte SEO-Gegenprobe, kein breiter Umsatzreport. Kauf-Watch beendet, keineBestellabfrage. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen.",
+    "currentDayEvidence": "Vor Reports frischenR87-Stand und fehlenden05.11.-Tagesblock geprüft. Einmalig29.10.–04.11.: sechsMetricool-Definitionen+sechskleineKanalabfragen und genau1Klaviyo-Flowreport nachfrischerW7XTVD-Discovery. Datenlücken unknown, keineShopumsatz-/Sync-/Kaufableitung. Drei gezielte Beauty-Seiten sind eine begrenzte SEO-Gegenprobe, kein breiter Umsatzreport. Kauf-Watch beendet, keineBestellabfrage. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R98: Tageskennzahlen und Klaviyo nicht erneut gelesen; frische Metricool-Planungs- und zwei gezielte Produkt-/Medienreads sind keine zweite Tagesmessung.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-05",
@@ -1558,18 +1558,18 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r93_sieben_varianten_ziel_offen_18s_hookmaterial_min2s_rechte_mp4_offen",
+      "state": "r98_quelle_852x480_25fps_geprueft_variante_rechte_native9x16_mp4_ledger_offen",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R93_FRISCHER_ZWEI_PRODUKT_READ_TECHNISCHE_HOOKKORREKTUR_SECHS_UTM_KEIN_RENDER",
-      "lastEvidence": "Projektor15521256604033 05.11.14:07 Zürich frisch ACTIVE/HTTP200/kaufbar, sieben VariantenA–G CHF34.90–51.90, alle trackedfalse/CONTINUE/Menge0/sellableOnlineQuantity0. StandardA68122445283719/SKUCJSN139239101AZ/CHF34.90 ist nicht als Masterziel freigegeben; historische Variante56197916361089/SKUCJ-1477820492730732544 nicht aktuell. Tags vorhanden, Wächter/rueckhol ohne Treffer, auswahl-offen bleibt. Derselbe18s/540-Frame-Master mit HookB und sechs UTMs fortgeführt. Qualitätskorrektur: Detailreferenz17.20–18.80 ist nur1.6s und darf nicht auf2s verlangsamt/eingefroren werden; mindestens2s echtes kontinuierliches30fps-Material derselben Einheit nötig. Pflicht-WAV hashgleich, Build-/Rechte-/Mixfreigabe offen. Keine MP4, kein Render, Upload, Socialwrite oder Ledgerinitialisierung. R91-CJ-Beleg nur datiert fortgeführt: factoryInventory, cjInventory0/verifiedWarehouse2, kein physischer Bestand/CH-Lieferbarkeit/Lieferzeit.",
-      "nextAllowedStep": "Zuerst genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter physischer Einheit binden und kommerzielle Bearbeitungs-/Werberechte belegen. Mindestens2.0s echtes kontinuierliches30fps-Hookmaterial und weitere native9:16-Premiumtakes derselben Einheit beschaffen. Danach denselben18s-Master schneiden, Pflichtmusikrechte/Mix prüfen, fertige MP4 in9:16/4:5/1:1 abnehmen und erst dann Produkt-/Kanal-/Historien-/Kollisionschecks für einen konkreten Metricool-Post durchführen.",
+      "belegArt": "R98_FRISCHER_PRODUKT_MEDIEN_READ_MASTERQUELLEN_MUSIK_LEDGER_SECHS_UTM_KEIN_RENDER",
+      "lastEvidence": "Projektor15521256604033 05.11.19:00 Zürich frisch ACTIVE/HTTP200/kaufbar, sieben Varianten A–G CHF34.90–51.90, trackedfalse/CONTINUE/Menge0. Historische Variante/SKU nicht aktuell. Aktueller Shopify-Film READY, reale Bedienung/Projektion, aber nur852×480/25fps/27.96s, SHA256 9ccfdc1b…5795; keiner aktuellen Variante A–G und keinem belegten kommerziellen Film-/Bearbeitungs-/Werberecht zugeordnet. Rohquelle960×540/25fps ebenfalls ungeeignet; alter15sClip kein Master. Derselbe18s/540-Frame-Entwurf mit Hooks Licht im Detail. und Dein Raum. Neues Licht., echtem Bild, CTA und sechs UTMs fortgeführt. Pflicht-WAV hashgleich; Build-/Rechte-/Mixfreigabe offen. Ledgerentwurf nicht deployt, Projektorhistorie unknown_not_initialised. Keine18sMP4, Render-, Upload-, Social- oder Ledgerinitialisierung.",
+      "nextAllowedStep": "Genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter Einheit binden und kommerzielle Film-/Bearbeitungs-/Werberechte schriftlich belegen. Native 1080×1920/30fps-Premiumtakes derselben Einheit einschliesslich mindestens2.0s kontinuierlichem Hookmaterial beschaffen. Danach denselben18s-Master mit ausschliesslich der geprüften Pflichtmusik rendern, Bild/Ton/Text/Produktidentität sowie9:16/4:5/1:1 abnehmen und erst nach frischen Produkt-/Bio-/Board-/YouTube-/Kollisions-/Historienchecks einen konkreten Metricool-Post verwenden.",
       "blockers": [
         "Aktuelle Zielvariante A–G, Motivset und gefilmte physische Einheit sind nicht gebunden; Tag auswahl-offen bleibt.",
-        "Produktvideo852×480/25fps trägt historischen SKU-Dateinamen, ist keiner aktuellen Variante zugeordnet und reicht nicht als native Premium-Hochkantquelle.",
+        "Aktuelle Shopify-Fassung852×480/25fps und Rohquelle960×540/25fps sind keine native Premium-Hochkantquelle; mindestens2s echtes kontinuierliches30fps-Hookmaterial fehlt.",
         "Kommerzielle Film-/Bearbeitungs-/Werberechte sind unbekannt.",
         "Kanonische WAV ist hashgleich, aber historischer Buildbezug sowie finale Rechte-, Hör- und Mixfreigabe fehlen.",
-        "Keine gerenderte und qualitätsgeprüfte Master-MP4; vollständige Master-/Kanalhistorie und abschliessende Bio-/Board-/Postflags bleiben unbekannt."
+        "Keine gerenderte/abgenommene18s-Master-MP4; Ledgerentwurf nicht deployt, Projektor-/Kanalhistorie unknown_not_initialised; Bioziele, Pinterest-Boardname und Master-spezifische YouTube-Zielgruppe offen."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -1788,6 +1788,11 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R93.json",
           "gitBlobSha": "ab8677abe9c686a59bbbab60bfbd3697a4b30b3b",
           "readAt": "2026-11-05T14:08:01+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R98.json",
+          "gitBlobSha": "23371a5223e671065a797ec18f353de4b9bb9dd9",
+          "readAt": "2026-11-05T19:09:10+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -9508,6 +9513,17 @@
         "readAt": "2026-11-05T18:15:46+01:00"
       },
       "action": "R97: Genau drei ACTIVE-Produkte mit vollständiger Varianten-/Medien-/Metafeld-/Publikationsbasis live SEO-bereinigt. Tennistasche, Rolltop-Rucksack und Strickoberteil erhielten je einen productUpdate für belegbaren Titel/Body/SEO und einen fileUpdate für insgesamt19 Alttexte. Sechs Mutationen ohne userErrors/Retries; vollständige Admin-Readbacks und unabhängige öffentliche QA60/60 mit GO bestätigten7 Varianten,19 READY-Bilder,22 Publikationsknoten sowie unveränderte IDs, Handles, SKUs, Preise, Kaufbarkeit, Inventory, Tracking, CONTINUE, Medien und Strukturfelder. Streng kontrolliert27 ACTIVE von56’506=0,04778%, gerundet0,05%;56’479 beziehungsweise rund99,95% offen. Gesamtkatalog und Qualitätsabdeckung offen, keine Lager-/Lieferzusage oder anderen externen Writes."
+    },
+    {
+      "revision": 98,
+      "at": "2026-11-05T19:09:10+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R98.json",
+        "gitBlobSha": "23371a5223e671065a797ec18f353de4b9bb9dd9",
+        "readAt": "2026-11-05T19:09:10+01:00"
+      },
+      "action": "R98: Shopify- und Metricool-Identität frisch passend; Planfenster36Objekte/53PENDING ohne exakte Kanal-Doppel, mit Threads-/Pinterest-Lücken und drei leeren FB/IG-Texten, kein Write. Projektor und Katzenhängematte gezielt aktuell gelesen: beide ACTIVE/HTTP200/kaufbar/untracked/CONTINUE; Bestandszähler keine Lager-/Lieferzusage. Projektorfilm852×480/25fps/27.96s ohne aktuelle Varianten-/Rechtebindung; Hängematte fälschlich als Reisenapf taxonomiert, unverändert. Derselbe18s-Master als Storyboard mit zwei Hooks/sechsUTMs fortgeschrieben; keine MP4/Render/Publikation. Tageskennzahlen/Klaviyo nicht wiederholt; ein TTuuTS- und ein R79-Verkaufsentwurf unangewendet. Keine externen Writes."
     }
   ],
   "salesGoal": {
@@ -12737,5 +12753,15 @@
     },
     "note": "Tennistasche, Rolltop-Rucksack und Strickoberteil live SEO-bereinigt: drei productUpdate plus drei fileUpdate, keine userErrors/Retries. Admin-Gegenproben und unabhängige öffentliche QA60/60 mit GO bestätigten7 Varianten,19 READY-Bilder und22 Publikationsknoten geschützt. Streng kontrolliert27 ACTIVE von56’506 beziehungsweise0,04778%, gerundet0,05%;56’479/rund99,95% offen. Historischer Scan rund100%, keine Live-Qualitätsquote.",
     "nextStep": "Nächsten kleinen Produktstapel frisch lesen und nur belegte Minimaldiffs ausführen. Drei alte Handles separat redirect-/Canonical-sicher prüfen; Taxonomie erst nach Collection-/Template-Gegenprobe; dunkle und doppelte Strickoberteilbilder ohne SKU-Bindung nicht löschen oder neu binden. Kein Katalogabschluss oder Lager-/Lieferzeitversprechen."
+  },
+  "followUpRunR98": {
+    "at": "2026-11-05T19:09:10+01:00",
+    "source": {
+      "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R98.json",
+      "gitBlobSha": "23371a5223e671065a797ec18f353de4b9bb9dd9",
+      "readAt": "2026-11-05T19:09:10+01:00"
+    },
+    "note": "Shopify und Metricool mit allen Kanälen frisch passend. Metricool05.11.18:57–12.11.18:57:36Objekte/53PENDING, keine exakten Kanal-Doppel; Threads0, Pinterest ab09.11. ohne Termin, drei leere FB/IG-Texte; kein Write. Projektor und Katzenhängematte gezielt ACTIVE/HTTP200/kaufbar/untracked/CONTINUE gelesen. Projektor A–G CHF34.90–51.90; aktuelle Filmfassung852×480/25fps/27.96s, keine eindeutige aktuelle Varianten-/Rechtebindung. Hängematte12Varianten CHF34.90–37.90; Taxonomie Reisenäpfe sachlich falsch, unverändert. Derselbe18sMaster mit zwei Hooks/sechsUTMs fortgeführt, weiterhin Storyboard ohneMP4. R88-Kennzahlen/Klaviyo datiert wiederverwendet. R79-Preisfilter-Guard einziger Verkaufsentwurf, unangewendet.",
+    "nextStep": "Für den Projektor genau eine aktuelle Variante A–G samt gefilmter Einheit/Motivset und schriftlichen kommerziellen Film-/Bearbeitungs-/Werberechten binden; native9:16/30fps-Premiumtakes einschliesslich mindestens2s kontinuierlichem Hook beschaffen und erst danach denselben18s-Master rendern/abnehmen. Separat R79-Preisfilter-Guard nur nach aktuellem MAIN-Hash und vollständiger Entwurfs-QA anwenden. Falsche Hängematten-Taxonomie erst nach aktuellem gültigem Shopify-Leaf und Collection-/Merchant-Gegenprobe korrigieren."
   }
 }

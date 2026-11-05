@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "run": "R98",
+  "compiledAtUtc": "2026-11-05T18:07:31Z",
+  "dateEuropeZurich": "2026-11-05",
+  "scope": "LuxeStyle / luxestyle.ch only",
+  "continuity": {
+    "branch": "codex/luxestyle-claude-handoff-20261018",
+    "beforeCommit": "7f107ef7e6f7fe23cdec8a52597d9041fe633a35",
+    "beforeRevision": 97,
+    "projectMemoryRead": true,
+    "dailyLogRead": true,
+    "purchaseWatchEnded": true,
+    "orderQueries": 0
+  },
+  "identity": {
+    "shopify": {
+      "checkedAtEuropeZurich": "2026-11-05T19:00:00+01:00",
+      "name": "LuxeStyle",
+      "primaryDomain": "luxestyle.ch",
+      "country": "CH",
+      "currency": "CHF",
+      "timezone": "Europe/Zurich",
+      "matched": true
+    },
+    "metricool": {
+      "checkedAtEuropeZurich": "2026-11-05T18:57:03+01:00",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "matched": true,
+      "channels": {
+        "facebook": "1049840534888592",
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "writeGate": "identity_passed_but_no_eligible_professional_master_mp4"
+  },
+  "metricool": {
+    "planning": {
+      "windowStart": "2026-11-05T18:57:03+01:00",
+      "windowEnd": "2026-11-12T18:57:03+01:00",
+      "objects": 36,
+      "channelStates": 53,
+      "states": {
+        "PENDING": 53
+      },
+      "draftFalseObjects": 36,
+      "autoPublishTrueObjects": 36,
+      "channels": {
+        "facebook": 16,
+        "instagram": 16,
+        "tiktok": 10,
+        "pinterest": 4,
+        "youtube": 7,
+        "threads": 0
+      },
+      "returnedGaps": {
+        "facebook": [
+          "2026-11-05 after read time"
+        ],
+        "instagram": [
+          "2026-11-05 after read time"
+        ],
+        "tiktok": [
+          "2026-11-05 after read time",
+          "2026-11-12"
+        ],
+        "pinterest": [
+          "2026-11-09",
+          "2026-11-10",
+          "2026-11-11",
+          "2026-11-12"
+        ],
+        "youtube": [
+          "2026-11-12"
+        ],
+        "threads": "entire_window"
+      },
+      "exactSameChannelDuplicates": 0,
+      "duplicateUuids": 0,
+      "sameMediaUrlTwiceOnSameChannel": 0,
+      "completeHistoricalMasterDedupe": null,
+      "emptyTextPosts": [
+        {
+          "id": 415033593,
+          "uuid": "-8611238648907481079",
+          "channels": [
+            "facebook",
+            "instagram"
+          ],
+          "at": "2026-11-09T16:00:00+01:00"
+        },
+        {
+          "id": 415035691,
+          "uuid": "37985340483322184",
+          "channels": [
+            "facebook",
+            "instagram"
+          ],
+          "at": "2026-11-10T12:30:00+01:00"
+        },
+        {
+          "id": 415077082,
+          "uuid": "-8331410252591837975",
+          "channels": [
+            "facebook",
+            "instagram"
+          ],
+          "at": "2026-11-12T12:30:00+01:00"
+        }
+      ],
+      "pinterestBoardId": "1111333714239531706",
+      "pinterestBoardName": null,
+      "existingYoutubePostsMadeForKidsFalse": 7,
+      "writes": 0
+    },
+    "metrics": {
+      "sourceRun": "R88",
+      "sourcePath": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json",
+      "rangeLocalCompletedDays": "2026-10-29/2026-11-04",
+      "newDefinitionCalls": 0,
+      "newDataCalls": 0,
+      "reusedSameDayEvidence": true,
+      "missingMeans": "unknown_not_zero",
+      "salesInferenceMade": false
+    }
+  },
+  "shopify": {
+    "selectionSize": 2,
+    "writes": 0,
+    "products": [
+      {
+        "id": "gid://shopify/Product/15521256604033",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "status": "ACTIVE",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "publicHttp": 200,
+        "variantCount": 7,
+        "variantNames": "A-G",
+        "priceMin": "34.90",
+        "priceMax": "51.90",
+        "currency": "CHF",
+        "allStorefrontSellable": true,
+        "allTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "stockOrDeliveryPromiseMade": false,
+        "tagsNonEmpty": true,
+        "guardMatches": [],
+        "ownerRueckholMatch": false,
+        "selectionOpenTag": true,
+        "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "video": {
+          "status": "READY",
+          "durationSeconds": 27.96,
+          "width": 852,
+          "height": 480,
+          "fps": 25,
+          "sha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+          "commercialEditingAdvertisingRights": null
+        },
+        "historicalBinding": {
+          "variantId": "gid://shopify/ProductVariant/56197916361089",
+          "sku": "CJ-1477820492730732544",
+          "current": false
+        },
+        "publicationNodesReturned": 7,
+        "priorEighthPublicationState": null
+      },
+      {
+        "id": "gid://shopify/Product/16610153759111",
+        "title": "Faltbare Katzenhängematte mit Saugnäpfen",
+        "status": "ACTIVE",
+        "updatedAt": "2026-11-05T04:30:20Z",
+        "url": "https://luxestyle.ch/products/faltbare-katzenhangematte-mit-saugnapfen-639500",
+        "publicHttp": 200,
+        "variantCount": 12,
+        "priceMin": "34.90",
+        "priceMax": "37.90",
+        "currency": "CHF",
+        "allStorefrontSellable": true,
+        "allTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantities": "11 variants 0; M/Milchgelb Basis -1",
+        "stockOrDeliveryPromiseMade": false,
+        "tagsNonEmpty": true,
+        "guardMatches": [],
+        "ownerRueckholMatch": false,
+        "selectionOpenTag": true,
+        "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5162d7cf-d013-4673-b6c9-f08500160bbc.jpg?v=1791349415",
+        "imageSha256": "150972187fe8123ff70a6ee4f77779d546bbd3bbb55512a5b4c61c22f48dc18e",
+        "mediaImagesReady": 11,
+        "taxonomyObserved": "Reisenäpfe under Futter- & Wasserspender",
+        "taxonomyFit": false,
+        "taxonomyChanged": false
+      }
+    ]
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "state": "storyboard_and_cut_plan_only",
+    "professionalMasterMp4": false,
+    "renderTriggered": false,
+    "uploadOrSocialWrite": false,
+    "durationSeconds": 18,
+    "frames": 540,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "voiceover": false,
+    "hooks": [
+      "Licht im Detail.",
+      "Dein Raum. Neues Licht."
+    ],
+    "preferredHook": "Licht im Detail.",
+    "cta": "Produkt ansehen",
+    "channelDraftCount": 6,
+    "currentShopifySource": {
+      "sha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795",
+      "width": 852,
+      "height": 480,
+      "fps": 25,
+      "durationSeconds": 27.96
+    },
+    "historicalSource": {
+      "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "width": 960,
+      "height": 540,
+      "fps": 25,
+      "durationSeconds": 27.96
+    },
+    "old15SecondClip": {
+      "sha256": "0d59f5cafd8b3b7b6f3562c799239c99faf2b42ce45fbd425c63bb7f0c19c27c",
+      "eligible": false
+    },
+    "canonicalMusic": {
+      "path": "automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "gitBlob": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+      "commercialBuildListeningMixApproval": null
+    },
+    "ledger": {
+      "state": "unknown_not_initialised",
+      "localDraftDeployed": false,
+      "operationalProjectorRecord": false
+    },
+    "instagramBioTargetVerified": false,
+    "tiktokBioTargetVerified": false,
+    "pinterestBoardName": null,
+    "youtubeAudienceForThisMasterConfirmed": false,
+    "blockers": [
+      "current target variant A-G not selected",
+      "filmed unit and motif not bound to current variant",
+      "commercial film/editing/advertising rights unknown",
+      "native 1080x1920 30-fps premium material including continuous 2-second hook missing",
+      "music build and final rights/listening/mix approval incomplete",
+      "no rendered and accepted 18-second MP4",
+      "no operational master/channel ledger"
+    ],
+    "contentPath": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261105-R98.md"
+  },
+  "klaviyo": {
+    "sourceRun": "R88",
+    "queriedAgainInR98": false,
+    "account": {
+      "id": "XWqMAD",
+      "organizationName": "LuxeStyle CH",
+      "websiteUrl": "https://luxestyle.ch",
+      "preferredCurrency": "USD",
+      "timezone": "Europe/Zurich"
+    },
+    "placedOrderMetric": {
+      "id": "W7XTVD",
+      "integration": "Shopify"
+    },
+    "flows": [
+      {
+        "id": "Vse76a",
+        "status": "draft",
+        "reportRow": "unknown_missing"
+      },
+      {
+        "id": "XEGbTB",
+        "status": "draft",
+        "reportRow": "unknown_not_in_requested_report"
+      },
+      {
+        "id": "VbLQj6",
+        "status": "draft",
+        "delivered": 2,
+        "opensUnique": 1,
+        "clicksUnique": 0,
+        "conversionsAttributed": 0
+      },
+      {
+        "id": "RnTvsY",
+        "status": "draft",
+        "delivered": 4,
+        "opensUnique": 1,
+        "clicksUnique": 0,
+        "conversionsAttributed": 0
+      }
+    ],
+    "formsApiCount": 0,
+    "endToEndCapture": null,
+    "singleApprovalProposal": "Set TTuuTS add_tracking_params false to true only after account-wide UTM and link-preview checks and before any later Welcome reactivation; not applied.",
+    "shopChfKeptSeparate": true,
+    "klaviyoUsdKeptSeparate": true,
+    "writes": 0,
+    "customersContacted": 0
+  },
+  "salesActionForApproval": {
+    "scope": "price-filter SEO pager guard only",
+    "target": "snippets/product-grid.liquid",
+    "sourceRun": "R79/R88",
+    "additionalPagerLinks": 15,
+    "pagerLinksLosingActiveMaxPrice": 15,
+    "existingPatch": "dropship/codex-handoff-20261018/preisfilter-r79/price-filter.patch",
+    "baselineMd5": "003e7ff97eb7a6312f02e1ae10679576",
+    "currentNativeHash": null,
+    "applied": false,
+    "rankingOrSalesEffectClaimed": false
+  },
+  "catalogSeoProgress": {
+    "strictlyVerifiedProducts": 27,
+    "activeProducts": 56506,
+    "fraction": 0.000477825363677928,
+    "percent": 0.0477825363677928,
+    "roundedPercent": "0.05%",
+    "remaining": 56479,
+    "remainingRoundedPercent": "99.95%",
+    "qualityOfUnreviewedCatalog": null
+  },
+  "externalWrites": {
+    "shopify": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "theme": 0,
+    "dns": 0,
+    "ads": 0,
+    "customersContacted": 0,
+    "renders": 0
+  },
+  "preservedSettings": {
+    "publicFreeShippingThresholdCHF": "50",
+    "internalAfterDiscountThresholdCHF": "45",
+    "customerAccountDomain": "account.luxestyle.com.co",
+    "changed": false
+  },
+  "artifacts": [
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261105-R98.md",
+      "sha256": "3a786b66e84e4095c5020dcb58e6515ef6cbbfdb9ba2d08818599f6dfb8db7d7"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/ABENDPAKET-20261105-R98.md",
+      "sha256": "10a4bd3b99232d3a6093bada3d6f2456e5fe20d7b0f0177045ae1be3fd0acb3a"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R98.json"
+    }
+  ]
+}
