@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 90,
-  "updatedAt": "2026-11-05T12:17:34+01:00",
+  "revision": 91,
+  "updatedAt": "2026-11-05T13:28:30+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4874,29 +4874,32 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r90_remote_mcp_product_read_verified_local_host_binding_open",
+      "state": "r91_remote_inventory_read_verified_factory_only_shopify_variant_mapping_open",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
       "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R90_GITHUB_ACTIONS_REMOTE_CJ_MCP_PRODUCT_READ_VERIFIED_LOCAL_BINDING_OPEN",
-      "lastEvidence": "Am 05.11. bestätigte der einmalige manuelle GitHub-Actions-Lauf 42017601295, Job 127211924111, den fixierten Draft-PR-Head 9f9fb58a06c67b34264fd9b3dce9a768246de0da im getrennten Modus cj_mcp. Das GitHub-Secret CJ_API_KEY wurde nicht ausgelesen oder ausgegeben, sondern erst nach Commit-, Datei-Hash- und Eingabeprüfung an den Nur-Lese-Prozess gebunden. Der Lookup productSku=CJSN1392391 führte genau einen Authentifizierungsaufruf und einen Produktabruf aus: vorher credentialBinding bound_unverified, danach readState product_identity_verified, readReason null, returnedPid 1477820492730732544, returnedProductSku CJSN1392391, connectionAfter verified_by_product_read, lastProductReadState verified und verified true. Legacyjob übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Das belegt den Remote-CJ-MCP-Zugriff dieses fixierten Commits, keine dauerhafte lokale Host-Bindung und keine vollständige Shopify-Varianten-, Prime- oder Medienrechte-Aussage.",
-      "nextAllowedStep": "Den erfolgreichen Run 42017601295 als einmaligen Remote-Beleg erhalten und ohne neuen konkreten Grund nicht wiederholen. Für dauerhafte lokale Nutzung CJ_API_KEY separat über die sichere Secret-Verwaltung des MCP-Hosts binden; das GitHub-Secret nicht auslesen, kopieren oder in Chat/Repo schreiben. Danach lokal zuerst luxe_cj_status und höchstens einen identitätsgebundenen Produktread ausführen. PID 1477820492730732544 und productSku CJSN1392391 nur gegen frisch gelesene Shopify-Produkt-/Varianten-/SKU-Daten abgleichen; Prime-Status und Medien-, Bearbeitungs- und Werberechte getrennt belegen.",
+      "belegArt": "R91_GITHUB_ACTIONS_REMOTE_CJ_INVENTORY_FACTORY_ONLY_SHOPIFY_VARIANT_MAPPING_OPEN",
+      "lastEvidence": "Am 05.11. bestätigte der erfolgreiche einmalige GitHub-Actions-Lauf 42026512823, Job 127241964880, den fixierten Draft-PR-Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 mit genau einem Authentifizierungs-, einem Produkt- und einem Inventory-Aufruf für PID 1477820492730732544 / productSku CJSN1392391. Sieben CJ-Varianten wurden zurückgegeben: CJSN139239101AZ/VID1477826312449167360 CN33714/0/33714/2, CJSN139239102BY/VID1477826312453361664 CN37567/0/37567/2, CJSN139239103CX/VID1477826312453361665 CN43253/0/43253/2, CJSN139239104DW/VID1477826312453361666 CN33773/0/33773/2, CJSN139239105EV/VID1555856292877709312 CN36227/0/36227/2, CJSN139239106FU/VID1555856292877709313 CN40142/0/40142/2 und CJSN139239107GT/VID1589496316504322048 CN13059/0/13059/2; Zahlenfolge jeweils totalInventory/cjInventory/factoryInventory/verifiedWarehouse. Damit liegt ausschliesslich chinesisches factoryInventory vor; cjInventory ist 0 und verifiedWarehouse 2. Das belegt keinen physischen CJ-Bestand, keine Lieferbarkeit in die Schweiz und keine Lieferzeit. Die öffentliche Storefront-Gegenprobe 2026-11-05T12:23:08.908Z zeigte Produkt und sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90 sowie inventory_management=null und inventory_policy=null. Der gleichentägige native Altbeleg tracked=false/CONTINUE/Menge0 wurde nicht neu gemessen und bleibt ebenfalls ohne Bestandszusage. Der neue read-only Inventory-Pfad, fixierte Action-SHAs und die Entfernung des Legacy-Secretjobs sind am Head belegt; 261/261 Tests insgesamt und 87/87 fokussiert bestanden, die CI-Simulation blieb an blockiertem unshare stehen. Keine CJ-/Shop-/Produkt-/Preis-/Bestandswrites.",
+      "nextAllowedStep": "Run 42026512823 ohne neuen konkreten Gegenprüfgrund nicht wiederholen. Die sieben CJ-variantSku/VID-Paare einzeln an frisch gelesene aktuelle Shopify-Varianten-IDs, Ausführungen, SKUs und Preise binden; öffentliche available-Felder und den alten nativen tracked=false/CONTINUE/Menge0-Beleg nicht als Bestand verwenden. Physischen Lieferantenbestand, Lieferbarkeit in die Schweiz, Lieferzeit, Prime-Status und Medien-/Bearbeitungs-/Werberechte separat belegen. Vor jedem möglichen Produkt-, Preis- oder Bestandswrite frische native Shopdaten und eine ausdrückliche enge Freigabe verlangen.",
       "blockers": [
         "GitHub-Actions-Secret ist nur im kurzlebigen Remote-Job gebunden; keine dauerhafte lokale MCP-Host-Bindung belegt",
-        "PR 2896 ist offen, Draft, ungemergt und beim frischen Read UNSTABLE; Automation, Quality, Pre-deploy und externe Checks waren teilweise noch in Arbeit",
-        "Der erfolgreiche productSku-Read belegt CJ-PID 1477820492730732544, aber nicht die vollständige aktuelle Shopify-Varianten- und Medienzuordnung",
+        "PR 2896 ist offen, Draft und ungemergt; eine vollständig grüne Merge-Abnahme ist nicht belegt",
+        "Die CJ-Antwort enthält für CN ausschliesslich factoryInventory; cjInventory ist 0 und verifiedWarehouse 2, ohne Nachweis physischen CJ-Bestands, Schweizer Lieferbarkeit oder Lieferzeit",
+        "Die sieben CJ-variantSku/VID-Paare sind noch nicht vollständig an die aktuellen Shopify-Varianten-IDs, Ausführungen und SKUs gebunden",
+        "Öffentliches available=true mit inventory_management=null/inventory_policy=null und der nicht neu gemessene native Altbeleg tracked=false/CONTINUE/Menge0 erlauben keine Bestandszusage",
         "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
-        "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preiswrites, Käufe, Render oder Merchant-Änderungen"
+        "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preis-/Bestandswrites, Käufe, Render oder Merchant-Änderungen"
       ],
       "acceptance": [
         "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
         "Nicht mit produktivem Fix oder Merchant-Freigabe gleichsetzen",
-        "Enger zulässiger Write erst mit aktuellen Identitäten, Quellen und Rücklesung",
+        "Alle sieben CJ-variantSku/VID-Paare vor abhängigen Schritten einzeln gegen aktuelle Shopify-Varianten-IDs, Ausführungen, SKUs und Preise prüfen",
+        "factoryInventory, cjInventory=0 und verifiedWarehouse=2 nicht als physischen CJ-Bestand, Schweiz-Lieferbarkeit oder Lieferzeit ausgeben",
+        "Öffentliches available=true und null Inventory-Felder sowie tracked=false/CONTINUE/Menge0 nicht als Bestandszusage verwenden",
         "Sichere MCP-Host-Bindung belegen; API-Key und Token weder persistieren noch ausgeben, Token nur im Prozessspeicher halten und den API-Key für Auth per HTTPS ausschliesslich an den festen offiziellen Endpunkt https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken senden",
         "Status bound_unverified nur als vorhandene Bindung behandeln, nicht als bestätigte CJ-Verbindung",
-        "Erfolgreichen exakten Einzelread und die Produkt-/Varianten-/SKU-Identität vor abhängigen Schritten belegen",
-        "Aus dem Read weder Prime-Status oder Medienrechte noch eine Schreib- oder Importfreigabe ableiten",
-        "Remote-Lauf 42017601295 nicht als dauerhafte lokale Host-Bindung oder produktive Aktivierung ausgeben",
-        "Den bestätigten productSku-/PID-Bezug vor abhängigen Schritten gegen aktuelle Shopify-Varianten und Rechtequellen prüfen"
+        "Aus Produkt- oder Inventory-Read weder Prime-Status oder Medienrechte noch eine Schreib- oder Importfreigabe ableiten",
+        "Remote-Lauf 42026512823 nicht als dauerhafte lokale Host-Bindung, produktive Aktivierung oder Bestandsfreigabe ausgeben",
+        "Enger zulässiger Write erst mit aktuellen Identitäten, Quellen, ausdrücklicher Freigabe und Rücklesung"
       ],
       "sources": [
         {
@@ -5004,6 +5007,41 @@
           "readAt": "2026-11-05T12:17:34+01:00",
           "ref": "9f9fb58a06c67b34264fd9b3dce9a768246de0da",
           "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42017601295"
+        },
+        {
+          "path": "automation/lib/cj_readonly.mjs",
+          "gitBlobSha": "d3d93bc79f7b6b35b6ea0bcba3647a6e22b680c5",
+          "readAt": "2026-11-05T13:28:30+01:00",
+          "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": "automation/lib/cj_read_mcp.mjs",
+          "gitBlobSha": "ab9600d320aa115319528c1220380b766d3251a1",
+          "readAt": "2026-11-05T13:28:30+01:00",
+          "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": "automation/cj-read-mcp-probe.mjs",
+          "gitBlobSha": "bc88dd259a79670fbc15601fd939f9c20863d96e",
+          "readAt": "2026-11-05T13:28:30+01:00",
+          "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": "dropship/assistant/CJ-READ-MCP.md",
+          "gitBlobSha": "56be59f4fd7d392c65ba28c231e66fdff7d197a6",
+          "readAt": "2026-11-05T13:28:30+01:00",
+          "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2896"
+        },
+        {
+          "path": ".github/workflows/diagnose-actions-zugang.yml",
+          "gitBlobSha": "46c13bc402427a9bf9f6822e70625c06f18cb915",
+          "readAt": "2026-11-05T13:28:30+01:00",
+          "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42026512823"
         }
       ],
       "requiresFreshVerification": true,
@@ -5040,6 +5078,18 @@
             "PR 2896 ist Draft, ungemergt und UNSTABLE: zielnahe Assist-/Automation-/Quality-/Voice-/Deploy-Prüfungen SUCCESS; drei sachfremde Workers-Builds laut Repo-Regel erwartbar rot; Pre-deploy validation CANCELLED und von gh pr checks als Fehler dargestellt; externer foerder-radar-Pages-Check pending. Client-Laden und Inhaberabnahme unbekannt",
             "Der Nur-Lese-Connector löst weder Preis-/SKU-Schreibintegration noch prozessübergreifende Reservation und autorisiert keine Imports oder Merchant-Änderungen",
             "Aktuelle Produkt-/Varianten-Zuordnung, Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt"
+          ]
+        },
+        {
+          "date": "2026-11-05",
+          "lastEvidence": "Am 05.11. bestätigte der einmalige manuelle GitHub-Actions-Lauf 42017601295, Job 127211924111, den fixierten Draft-PR-Head 9f9fb58a06c67b34264fd9b3dce9a768246de0da im getrennten Modus cj_mcp. Das GitHub-Secret CJ_API_KEY wurde nicht ausgelesen oder ausgegeben, sondern erst nach Commit-, Datei-Hash- und Eingabeprüfung an den Nur-Lese-Prozess gebunden. Der Lookup productSku=CJSN1392391 führte genau einen Authentifizierungsaufruf und einen Produktabruf aus: vorher credentialBinding bound_unverified, danach readState product_identity_verified, readReason null, returnedPid 1477820492730732544, returnedProductSku CJSN1392391, connectionAfter verified_by_product_read, lastProductReadState verified und verified true. Legacyjob übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Das belegt den Remote-CJ-MCP-Zugriff dieses fixierten Commits, keine dauerhafte lokale Host-Bindung und keine vollständige Shopify-Varianten-, Prime- oder Medienrechte-Aussage.",
+          "nextAllowedStep": "Den erfolgreichen Run 42017601295 als einmaligen Remote-Beleg erhalten und ohne neuen konkreten Grund nicht wiederholen. Für dauerhafte lokale Nutzung CJ_API_KEY separat über die sichere Secret-Verwaltung des MCP-Hosts binden; das GitHub-Secret nicht auslesen, kopieren oder in Chat/Repo schreiben. Danach lokal zuerst luxe_cj_status und höchstens einen identitätsgebundenen Produktread ausführen. PID 1477820492730732544 und productSku CJSN1392391 nur gegen frisch gelesene Shopify-Produkt-/Varianten-/SKU-Daten abgleichen; Prime-Status und Medien-, Bearbeitungs- und Werberechte getrennt belegen.",
+          "blockers": [
+            "GitHub-Actions-Secret ist nur im kurzlebigen Remote-Job gebunden; keine dauerhafte lokale MCP-Host-Bindung belegt",
+            "PR 2896 ist offen, Draft, ungemergt und beim frischen Read UNSTABLE; Automation, Quality, Pre-deploy und externe Checks waren teilweise noch in Arbeit",
+            "Der erfolgreiche productSku-Read belegt CJ-PID 1477820492730732544, aber nicht die vollständige aktuelle Shopify-Varianten- und Medienzuordnung",
+            "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
+            "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preiswrites, Käufe, Render oder Merchant-Änderungen"
           ]
         }
       ]
@@ -9111,6 +9161,19 @@
         "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42017601295"
       },
       "action": "R90: GitHub-Secret im fixierten Nur-Lese-MCP-Job einmalig verwendet, ohne es auszulesen oder auszugeben. Run 42017601295/Job 127211924111 bestätigte mit exakt einem Auth- und einem Produktrequest productSku CJSN1392391, CJ-PID 1477820492730732544 und verified_by_product_read. Legacyjob übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Beleg gilt für den Remote-PR-Commit; lokale Host-Bindung, vollständige Shopify-Variantenbindung, Prime und Rechte bleiben offen."
+    },
+    {
+      "revision": 91,
+      "at": "2026-11-05T13:28:30+01:00",
+      "actor": "codex",
+      "source": {
+        "path": ".github/workflows/diagnose-actions-zugang.yml",
+        "gitBlobSha": "46c13bc402427a9bf9f6822e70625c06f18cb915",
+        "readAt": "2026-11-05T13:28:30+01:00",
+        "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42026512823"
+      },
+      "action": "R91: Draft-PR 2896/Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 um den rein lesenden Inventory-Pfad ergänzt, Action-SHAs fixiert und Legacy-Secretjob entfernt. Run 42026512823/Job 127241964880 erfolgreich mit genau 1 Auth+1 Produkt+1 Inventory für PID1477820492730732544/productSku CJSN1392391 und sieben SKU/VID-Zeilen. Alle CN-Werte sind ausschliesslich factoryInventory; cjInventory=0 und verifiedWarehouse=2, ohne Beleg für physischen CJ-Bestand, CH-Lieferbarkeit oder Lieferzeit. Storefront 2026-11-05T12:23:08.908Z: Produkt und sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90, öffentliche Inventory-Felder null; nativer Altbeleg tracked=false/CONTINUE/Menge0 nicht neu gemessen. 261/261 Tests gesamt und 87/87 fokussiert; CI-Simulation an unshare blockiert. Keine Shopwrites oder Bestandszusage."
     }
   ],
   "salesGoal": {
@@ -12266,5 +12329,17 @@
     },
     "note": "Draft-PR 2896/Head 9f9fb58a06c67b34264fd9b3dce9a768246de0da wurde im einmaligen manuellen GitHub-Actions-Run 42017601295, Job 127211924111, remote geprüft. Lookup productSku CJSN1392391: bound_unverified vor Read, authenticationRequests 1, productRequests 1, product_identity_verified, readReason null, returnedPid 1477820492730732544, returnedProductSku CJSN1392391, connectionAfter verified_by_product_read, lastProductReadState verified, verified true. Secret nicht ausgelesen/ausgegeben; Legacy übersprungen; kein Shopify-Zugriff, Import, CJ-/Shop-/Repo-Dateiwrite, Retry oder Artefakt. Remote-Zugriff belegt, lokale Host-Bindung und weitergehende Rechte-/Mappingfragen offen.",
     "nextStep": "Keinen Wiederholungslauf ohne neuen konkreten Grund starten. Für lokale Nutzung CJ_API_KEY separat sicher im MCP-Host binden, danach lokalen Status und höchstens einen identitätsgebundenen Read prüfen. CJ-PID/SKU gegen aktuelle Shopify-Varianten und Medien-/Rechtequellen abgleichen; keine Import- oder Schreibfreigabe ableiten."
+  },
+  "followUpRunR91": {
+    "at": "2026-11-05T13:28:30+01:00",
+    "source": {
+      "path": ".github/workflows/diagnose-actions-zugang.yml",
+      "gitBlobSha": "46c13bc402427a9bf9f6822e70625c06f18cb915",
+      "readAt": "2026-11-05T13:28:30+01:00",
+      "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42026512823"
+    },
+    "note": "Draft-PR 2896/Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 enthält den neuen rein lesenden Inventory-Pfad mit fixierten Action-SHAs und ohne Legacy-Secretjob. Run 42026512823/Job 127241964880 erfolgreich: genau 1 Auth+1 Produkt+1 Inventory, PID1477820492730732544/productSku CJSN1392391 und sieben SKU/VID-Zeilen. CN total/cj/factory/verified A–G:33714/0/33714/2,37567/0/37567/2,43253/0/43253/2,33773/0/33773/2,36227/0/36227/2,40142/0/40142/2,13059/0/13059/2. Ausschliesslich factoryInventory, kein physischer CJ-Bestand, keine CH-Lieferbarkeit oder Lieferzeit. Storefront 2026-11-05T12:23:08.908Z Produkt+sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90, inventory_management/inventory_policy null; nativer Altbeleg tracked=false/CONTINUE/Menge0 nicht neu gemessen. 261/261 gesamt und 87/87 fokussiert bestanden; CI-Simulation an unshare blockiert. Keine Shopwrites oder Bestandszusage.",
+    "nextStep": "Ohne neuen Gegenprüfgrund keinen weiteren Remote-Lauf starten. Die sieben CJ-variantSku/VID-Paare einzeln an aktuelle Shopify-Varianten-IDs, Ausführungen, SKUs und Preise binden; danach physischen Lieferantenbestand, CH-Lieferbarkeit, Lieferzeit, Prime-Status und Rechte separat belegen. Öffentliche available-/null-Inventory-Felder und den alten nativen tracked=false/CONTINUE/Menge0-Beleg nicht als Bestand verwenden; keine Import-, Produkt-, Preis- oder Bestandsfreigabe ableiten."
   }
 }
