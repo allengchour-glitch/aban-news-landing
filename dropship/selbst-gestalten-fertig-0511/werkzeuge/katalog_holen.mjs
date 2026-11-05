@@ -245,7 +245,14 @@ export function indexZeile(d) {
     groessen,
     kosten_usd: { min: preise.length ? Math.min(...preise) : null, max: preise.length ? Math.max(...preise) : null },
     kosten_eu_in_stock_usd: { min: euPreise.length ? Math.min(...euPreise) : null, max: euPreise.length ? Math.max(...euPreise) : null },
-    lieferbar: { eu, us, regionen, nur_usa: eu.in_stock === 0 && us.in_stock > 0, nicht_in_eu: eu.in_stock === 0 },
+    lieferbar: {
+      eu, us, regionen,
+      nur_usa: eu.in_stock === 0 && us.in_stock > 0,                       // EU nirgends in_stock, USA schon
+      nur_region_us: regionen.length > 0 && regionen.every((r) => r === 'US'), // strikt: nur die Region US ist gelistet
+      nicht_in_eu: eu.in_stock === 0,
+      eu_vollstaendig: vs.length > 0 && eu.in_stock === vs.length,
+      eu_teilweise: eu.in_stock > 0 && eu.in_stock < vs.length,
+    },
     has_printfiles: hatPrintfiles,
     has_templates: hatVorlagen,
     min_dpi: tpl?.min_dpi ?? null,
@@ -269,6 +276,11 @@ export function zaehle(zeilen) {
     mehrere_dateien_ohne_mockup: zeilen.filter((x) => x.n_dateien > 1).length,
     genau_eine_druckplatzierung: zeilen.filter((x) => x.n_druckplatzierungen === 1).length,
     nur_usa_lieferbar: zeilen.filter((x) => x.lieferbar.nur_usa).length,
+    nur_region_us_gelistet: zeilen.filter((x) => x.lieferbar.nur_region_us).length,
+    eu_alle_varianten_in_stock: zeilen.filter((x) => x.lieferbar.eu_vollstaendig).length,
+    eu_nur_teilweise: zeilen.filter((x) => x.lieferbar.eu_teilweise).length,
+    ohne_jede_region: zeilen.filter((x) => x.lieferbar.regionen.length === 0).length,
+    eu_varianten_in_stock: zeilen.reduce((a, x) => a + x.lieferbar.eu.in_stock, 0),
     nicht_in_eu_in_stock: zeilen.filter((x) => x.lieferbar.nicht_in_eu).length,
     eu_gelistet_aber_nichts_in_stock: zeilen.filter((x) => x.lieferbar.eu.gelistet > 0 && x.lieferbar.eu.in_stock === 0).length,
     mit_groessentabelle: zeilen.filter((x) => x.hat_groessentabelle).length,
@@ -279,27 +291,43 @@ export function zaehle(zeilen) {
   return z;
 }
 
-/** Abgleich Shop-Produkte (matrix.json) gegen den Katalog. Reine Rechnung. */
-export function gleicheAb(matrix, indexNachId, variantNachProdukt) {
+/**
+ * Abgleich Shop-Produkte (matrix.json) gegen den Katalog. Reine Rechnung.
+ * variantInfo: Map variant_id -> { produkt, eu, us, regionen } (aus den gespeicherten Dateien).
+ * Ein Shop-Produkt kann Varianten aus MEHREREN Katalogprodukten tragen (z. B. T-Shirt: 3 Materialien):
+ * darum wird jedes Katalogprodukt der SKU-Endungen geprüft, nicht nur das der ersten Variante.
+ */
+export function gleicheAb(matrix, indexNachId, variantInfo) {
   const zeilen = [];
   for (const m of matrix) {
     const vids = [...new Set((m.varianten || []).map((v) => v.vid).filter(Boolean))];
-    const produkteAusVids = [...new Set(vids.map((v) => variantNachProdukt.get(v)).filter((x) => x !== undefined))];
-    const vidsFehlend = vids.filter((v) => !variantNachProdukt.has(v));
+    const info = (v) => variantInfo.get(v);
+    const produkteAusVids = [...new Set(vids.map((v) => info(v)?.produkt).filter((x) => x !== undefined))];
+    const vidsFehlend = vids.filter((v) => !info(v));
     const pid = m.pf?.produktId ?? null;
     const katZeile = pid ? indexNachId.get(pid) : null;
+    const katProdukte = [...new Set([...(pid ? [pid] : []), ...produkteAusVids])].map((id) => {
+      const z = indexNachId.get(id);
+      return z ? { id, titel: z.titel, typ: z.typ, has_printfiles: z.has_printfiles, has_templates: z.has_templates,
+        nur_usa: z.lieferbar.nur_usa, nicht_in_eu: z.lieferbar.nicht_in_eu, regionen: z.lieferbar.regionen } : { id, im_katalog: false };
+    });
+    const euOk = vids.filter((v) => info(v)?.eu === 'in_stock');
+    const euNicht = vids.filter((v) => info(v) && info(v).eu !== 'in_stock')
+      .map((v) => ({ variant_id: v, eu: info(v).eu ?? 'nicht gelistet', regionen: info(v).regionen }));
     zeilen.push({
       handle: m.handle, status: m.status, sku_varianten: (m.varianten || []).length,
       printful_produkt_id: pid, printful_typ: m.pf?.typ ?? null,
       im_katalog: !!katZeile,
       katalog_titel: katZeile?.titel ?? null,
       produkte_aus_variant_ids: produkteAusVids,
+      katalog_produkte: katProdukte,
       variant_ids: vids.length, variant_ids_im_katalog: vids.length - vidsFehlend.length, variant_ids_fehlend: vidsFehlend,
-      alle_vids_im_selben_produkt: produkteAusVids.length <= 1 && (pid === null || produkteAusVids.length === 0 || produkteAusVids[0] === pid),
-      katalog_hat_druckdateien: katZeile?.has_printfiles ?? null,
-      katalog_hat_vorlagen: katZeile?.has_templates ?? null,
-      katalog_nur_usa: katZeile?.lieferbar?.nur_usa ?? null,
-      katalog_eu_in_stock_varianten: katZeile?.lieferbar?.eu?.in_stock ?? null,
+      mehrere_katalogprodukte: produkteAusVids.length > 1,
+      vid_produkt_weicht_von_matrix_ab: pid !== null && produkteAusVids.some((x) => x !== pid),
+      katalog_hat_druckdateien: katProdukte.every((k) => k.has_printfiles === true),
+      katalog_hat_vorlagen: katProdukte.every((k) => k.has_templates === true),
+      vids_eu_in_stock: euOk.length,
+      vids_nicht_eu_in_stock: euNicht,
     });
   }
   return zeilen;
@@ -398,20 +426,26 @@ function selbsttest() {
   assert.equal(zz.mehrere_druckplatzierungen, 1);
 
   // 6) Abgleich
-  const idx = new Map([[71, z]]);
-  const vmap = new Map([[1, 71], [2, 71], [3, 99]]);
+  const idx = new Map([[71, z], [99, nurUs]]);
+  const vinfo = new Map([[1, { produkt: 71, eu: 'in_stock', us: 'in_stock', regionen: ['EU', 'US'] }], [2, { produkt: 71, eu: undefined, us: 'in_stock', regionen: ['US'] }],
+    [3, { produkt: 99, eu: 'out_of_stock', us: 'in_stock', regionen: ['EU', 'US'] }]]);
   const ab = gleicheAb([
     { handle: 'a', status: 'ACTIVE', pf: { produktId: 71, typ: 'T-SHIRT' }, varianten: [{ vid: 1 }, { vid: 2 }] },
     { handle: 'b', status: 'DRAFT', pf: { produktId: 55, typ: 'X' }, varianten: [{ vid: 8 }] },
     { handle: 'c', status: 'DRAFT', pf: null, varianten: [{ vid: null }] },
     { handle: 'd', status: 'ACTIVE', pf: { produktId: 71 }, varianten: [{ vid: 1 }, { vid: 3 }] },
-  ], idx, vmap);
+  ], idx, vinfo);
   assert.equal(ab[0].im_katalog, true);
-  assert.equal(ab[0].alle_vids_im_selben_produkt, true);
+  assert.equal(ab[0].mehrere_katalogprodukte, false);
+  assert.equal(ab[0].vids_eu_in_stock, 1);
+  assert.deepEqual(ab[0].vids_nicht_eu_in_stock, [{ variant_id: 2, eu: 'nicht gelistet', regionen: ['US'] }]);
   assert.equal(ab[1].im_katalog, false);
   assert.deepEqual(ab[1].variant_ids_fehlend, [8]);
   assert.equal(ab[2].printful_produkt_id, null);
-  assert.equal(ab[3].alle_vids_im_selben_produkt, false);
+  assert.equal(ab[3].mehrere_katalogprodukte, true);
+  assert.equal(ab[3].vid_produkt_weicht_von_matrix_ab, true);
+  assert.equal(ab[3].katalog_produkte.length, 2);
+  assert.equal(ab[3].vids_nicht_eu_in_stock[0].eu, 'out_of_stock');
   console.log('Selbsttest: alle Prüfungen bestanden');
 }
 
@@ -497,13 +531,13 @@ function dateiLesen(pfad) {
 
 function baueIndexUndAbgleich(liste) {
   const zeilen = [];
-  const variantNachProdukt = new Map();
+  const variantInfo = new Map();
   const fehlen = [];
   for (const p of liste) {
     const d = dateiLesen(join(KAT, `${p.id}.json`));
     if (!d || d.schema !== SCHEMA) { fehlen.push(p.id); continue; }
     zeilen.push(indexZeile(d));
-    for (const v of d.varianten || []) variantNachProdukt.set(v.id, p.id);
+    for (const v of d.varianten || []) variantInfo.set(v.id, { produkt: p.id, eu: v.status?.EU, us: v.status?.US, regionen: Object.keys(v.status || {}) });
   }
   zeilen.sort((a, b) => a.id - b.id);
   const index = { erstellt: new Date().toISOString(), schema: SCHEMA, zaehler: zaehle(zeilen), ohne_datei: fehlen, produkte: zeilen };
@@ -514,7 +548,7 @@ function baueIndexUndAbgleich(liste) {
   if (existsSync(mp)) {
     const matrix = dateiLesen(mp) || [];
     const nachId = new Map(zeilen.map((z) => [z.id, z]));
-    const rows = gleicheAb(matrix, nachId, variantNachProdukt);
+    const rows = gleicheAb(matrix, nachId, variantInfo);
     const mitId = rows.filter((r) => r.printful_produkt_id);
     abgleich = {
       erstellt: new Date().toISOString(),
@@ -528,10 +562,13 @@ function baueIndexUndAbgleich(liste) {
       variant_ids_gesamt: rows.reduce((a, r) => a + r.variant_ids, 0),
       variant_ids_im_katalog: rows.reduce((a, r) => a + r.variant_ids_im_katalog, 0),
       variant_ids_fehlend: rows.flatMap((r) => r.variant_ids_fehlend.map((v) => ({ handle: r.handle, variant_id: v }))),
-      vids_in_fremdem_produkt: rows.filter((r) => !r.alle_vids_im_selben_produkt).map((r) => r.handle),
+      shop_produkte_mit_mehreren_katalogprodukten: rows.filter((r) => r.mehrere_katalogprodukte).map((r) => ({ handle: r.handle, katalogprodukte: r.produkte_aus_variant_ids })),
+      verschiedene_katalogprodukte_aus_sku: [...new Set(rows.flatMap((r) => r.produkte_aus_variant_ids))].length,
       im_katalog_ohne_druckdateien: rows.filter((r) => r.im_katalog && !r.katalog_hat_druckdateien).map((r) => r.handle),
       im_katalog_ohne_vorlagen: rows.filter((r) => r.im_katalog && !r.katalog_hat_vorlagen).map((r) => r.handle),
-      im_katalog_nur_usa: rows.filter((r) => r.im_katalog && r.katalog_nur_usa).map((r) => r.handle),
+      sku_varianten_eu_in_stock: rows.reduce((a, r) => a + r.vids_eu_in_stock, 0),
+      sku_varianten_nicht_eu_in_stock: rows.flatMap((r) => r.vids_nicht_eu_in_stock.map((x) => ({ handle: r.handle, ...x }))),
+      produkte_ohne_jede_eu_variante: rows.filter((r) => r.variant_ids > 0 && r.vids_eu_in_stock === 0).map((r) => ({ handle: r.handle, status: r.status, regionen: [...new Set(r.vids_nicht_eu_in_stock.flatMap((x) => x.regionen))] })),
       zeilen: rows,
     };
     schreibe(join(SG, 'katalog_abgleich.json'), abgleich);
@@ -545,7 +582,8 @@ function berichte({ index, abgleich }) {
   console.log('Produkte (nicht eingestellt):', z.produkte, '| Varianten gesamt:', z.varianten_gesamt, '| ohne Datei (nicht geholt):', index.ohne_datei.length);
   console.log('Ohne Druckdateien:', z.ohne_druckdateien, '| ohne Vorlagen:', z.ohne_vorlagen, '| ohne beides:', z.ohne_beides, '| mindestens eines fehlt:', z.ohne_eines_von_beiden);
   console.log('Mehrere Druckplatzierungen:', z.mehrere_druckplatzierungen, '| genau eine:', z.genau_eine_druckplatzierung, '| mehrere Dateien (ohne Mockup):', z.mehrere_dateien_ohne_mockup);
-  console.log('Nur USA lieferbar:', z.nur_usa_lieferbar, '| nirgends in EU in_stock:', z.nicht_in_eu_in_stock, '| EU gelistet, aber nichts in_stock:', z.eu_gelistet_aber_nichts_in_stock);
+  console.log('Nur USA lieferbar (EU nirgends in_stock, USA schon):', z.nur_usa_lieferbar, '| nur Region US gelistet (strikt):', z.nur_region_us_gelistet, '| EU nirgends in_stock (alle Fälle):', z.nicht_in_eu_in_stock, '| EU gelistet, aber nichts in_stock:', z.eu_gelistet_aber_nichts_in_stock);
+  console.log('EU: alle Varianten in_stock:', z.eu_alle_varianten_in_stock, '| nur teilweise:', z.eu_nur_teilweise, '| Varianten EU in_stock:', z.eu_varianten_in_stock, 'von', z.varianten_gesamt, '| ohne jede Region:', z.ohne_jede_region);
   console.log('Mit Grössentabelle:', z.mit_groessentabelle);
   console.log('Nach Typ:', JSON.stringify(z.nach_typ));
   if (abgleich) {
@@ -554,10 +592,11 @@ function berichte({ index, abgleich }) {
     console.log('Ohne Printful-ID:', abgleich.ohne_printful_id.join(', ') || '-');
     console.log('Nicht im Katalog:', JSON.stringify(abgleich.nicht_im_katalog));
     console.log('Variant-IDs (SKU-Endung):', abgleich.variant_ids_gesamt, '| davon im Katalog:', abgleich.variant_ids_im_katalog, '| fehlend:', abgleich.variant_ids_fehlend.length);
-    console.log('SKU-Varianten in fremdem Katalogprodukt:', abgleich.vids_in_fremdem_produkt.join(', ') || '-');
+    console.log('Shop-Produkte mit Varianten aus mehreren Katalogprodukten:', JSON.stringify(abgleich.shop_produkte_mit_mehreren_katalogprodukten));
+    console.log('SKU-Varianten EU in_stock:', abgleich.sku_varianten_eu_in_stock, 'von', abgleich.variant_ids_gesamt, '| nicht EU in_stock:', abgleich.sku_varianten_nicht_eu_in_stock.length);
+    console.log('Shop-Produkte ohne jede EU-Variante:', JSON.stringify(abgleich.produkte_ohne_jede_eu_variante));
     console.log('Im Katalog, aber ohne Druckdateien:', abgleich.im_katalog_ohne_druckdateien.join(', ') || '-');
     console.log('Im Katalog, aber ohne Vorlagen:', abgleich.im_katalog_ohne_vorlagen.join(', ') || '-');
-    console.log('Im Katalog, nur USA:', abgleich.im_katalog_nur_usa.join(', ') || '-');
   }
 }
 

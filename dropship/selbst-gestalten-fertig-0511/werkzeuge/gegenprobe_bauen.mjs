@@ -12,9 +12,9 @@ const { bericht, zeilen } = JSON.parse(readFileSync(join(OUT, 'auswertung.json')
 const mit = zeilen.filter((z) => z.versandUsd != null);
 const daten = {
   stand: bericht.stand.slice(0, 10),
-  quelle: 'Shopify Admin (Preise, Abfrage) · Printful GET /products/variant/<id> (ek) · POST /shipping/rates CH 8001 STANDARD 1 Stück (versand), gemessen am angegebenen Tag; nur gelesen, nichts geschrieben',
-  spalten: ['handle', 'status', 'sku', 'printfulVariante', 'preisChf', 'ekUsd', 'versandUsd'],
-  zeilen: mit.map((z) => [z.handle, z.status, z.sku, z.vid, z.preis, z.ekUsd, z.versandUsd]),
+  quelle: 'Shopify Admin (Preise, Abfrage) · Printful GET /products/variant/<id> (ekKatalogUsd) · POST /shipping/rates CH 8001 STANDARD 1 Stück (versandUsd) · POST /orders/estimate-costs CH 8001 (ekSchaetzungUsd = Zwischensumme, null wo nicht schätzbar), gemessen am angegebenen Tag; nur gelesen, nichts geschrieben',
+  spalten: ['handle', 'status', 'sku', 'printfulVariante', 'preisChf', 'ekKatalogUsd', 'versandUsd', 'ekSchaetzungUsd'],
+  zeilen: mit.map((z) => [z.handle, z.status, z.sku, z.vid, z.preis, z.ekKatalogUsd, z.versandUsd, z.ekSchaetzungUsd]),
   ohneVersandOderKosten: bericht.varianten.shop - mit.length,
 };
 writeFileSync(ziel, JSON.stringify(daten) + '\n');
