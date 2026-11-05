@@ -1481,3 +1481,11 @@ Die sieben R103-Overlay-Fälle bleiben blockiert: vorhandene CJ-Ledger, PR 2896 
 Keine `userErrors`, Retries oder unklaren Writes. Vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesungen sowie unabhängige QA bestätigen 2/2 GO. ACTIVE-Status, Handles, Vendor, Produkttypen, Kategorien, Tags, Optionen, 34 Varianten-IDs/SKUs, CHF-Preise, Kaufbarkeit, ungetracktes `CONTINUE`, Mengen 0, Medienbindungen und 12 Publikationsknoten blieben erhalten. Strenger Livefortschritt 36/56’506 ACTIVE = 0,06371 %, gerundet 0,06 %; 56’470 beziehungsweise rund 99,94 % offen.
 
 Für keinen der drei geprüften R105-Kandidaten liegt eine exakte CJ-Lieferantenquelle im vorhandenen Ledger vor. Materialien, Passform, Schutzwirkung, Gewicht, Lieferzeit und Funktionsversprechen wurden deshalb entfernt und nicht ersetzt. Keine sonstigen externen Writes oder Tagesreport-Wiederholung; Google-Neuverarbeitung unbekannt.
+
+## 05.11.2026 – R106 Neckholder-Kleid, Revision 106
+
+[Live-Korrektur und Schutzbelege](PRODUKT-SEO-LIVE-20261105-R106.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R106.json). Produkt16610538324359 war als Midikleid mit ausschliesslich Grösse S sowie widersprüchlichen Material-, Gewichts-, Passform- und Lieferangaben beschrieben. Alle sieben aktuellen Bilder zeigen ein kurzes rosafarbenes Neckholder-Kleid mit mehreren Volantstufen; die vier aktuellen Varianten führen S–XL.
+
+Genau ein `productUpdate` und ein `fileUpdate` änderten Titel, belegbaren Body, SEO und sieben Alttexte. Keine userErrors/Retries; vollständige Admin-/Storefront-Rücklesung und unabhängige QA GO. ACTIVE, Handle, Vendor, Produkttyp, Kategorie, Tags, vier Varianten/IDs/SKUs, CHF16.90, Kaufbarkeit, untracked/`CONTINUE`, Mengen0, Medienbindungen und sechs Publikationen erhalten. Historischer Handle und Midi-Sortiertag bleiben wegen Redirect-/Collection-Wirkung separat offen.
+
+Streng37/56’506=0,06548 %, gerundet0,07 %;56’469/rund99,93 % offen. Keine genaue CJ-Quelle, deshalb Material/Gewicht/Passform nicht ersetzt. Keine sonstigen externen Writes oder Tagesreport-Wiederholung.

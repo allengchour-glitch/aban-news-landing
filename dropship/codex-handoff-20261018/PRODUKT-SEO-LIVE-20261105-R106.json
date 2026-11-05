@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "run": "R106",
+  "recordedAt": "2026-11-05T21:48:44+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "sourceBoundary": {
+    "exactCjSupplierRecordsFound": 0,
+    "allowedClaims": [
+      "current Shopify size options",
+      "visible current product images",
+      "current Admin and public product state"
+    ],
+    "unsupportedClaimsRemovedNotReplaced": [
+      "midi length",
+      "materials",
+      "fit",
+      "weight",
+      "occasion",
+      "delivery time"
+    ],
+    "handleAndMidiSortTagPreservedForSeparateStructureReview": true
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 1,
+    "fileUpdateAttemptsSent": 1,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "completeAdminReadbacks": 1,
+    "publicHtmlReadbacksHttp200": 1,
+    "publicProductJsonReadbacksHttp200": 1,
+    "readyImageAltTextsUpdated": 7,
+    "variantsProtected": 4,
+    "publicationNodesProtected": 6,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 1,
+    "independentQaProductsTotal": 1
+  },
+  "product": {
+    "id": "gid://shopify/Product/16610538324359",
+    "handle": "armelloses-midikleid-mit-neckholder-619200",
+    "publicUrl": "https://luxestyle.ch/products/armelloses-midikleid-mit-neckholder-619200",
+    "before": {
+      "title": "Ärmelloses Midikleid mit Neckholder",
+      "seo": {
+        "title": "Ärmelloses Midikleid mit Neckholder | LuxeStyle CH",
+        "description": "Für sommerliche Tage im Freien oder einen entspannten Abend ist dieses ärmellose Midikleid eine gute Wahl. Leichter Polyester-Spandex-Mischstoff."
+      }
+    },
+    "after": {
+      "title": "Ärmelloses Neckholder-Kleid mit Volants",
+      "descriptionHtml": "<p>Dieses ärmellose Neckholder-Kleid zeigt mehrere übereinanderliegende Volantstufen. Es ist in den Grössen S, M, L und XL erhältlich.</p><h2>Ausführungen</h2><ul>\n<li>Grössen: S, M, L, XL</li>\n<li>Design: Neckholder und ärmellos</li>\n<li>Form: kurzes Kleid mit mehreren Volantstufen</li>\n</ul><p>Wähle die passende Grösse direkt bei der Produktauswahl.</p>",
+      "seo": {
+        "title": "Ärmelloses Neckholder-Kleid mit Volants | LuxeStyle",
+        "description": "Kurzes ärmelloses Neckholder-Kleid mit mehreren Volantstufen. Erhältlich in den Grössen S bis XL bei LuxeStyle."
+      }
+    },
+    "options": [
+      {
+        "name": "Grösse",
+        "values": [
+          "S",
+          "M",
+          "L",
+          "XL"
+        ]
+      }
+    ],
+    "variants": {
+      "count": 4,
+      "hasNextPage": false,
+      "ids": [
+        "gid://shopify/ProductVariant/67643692843399",
+        "gid://shopify/ProductVariant/67643692876167",
+        "gid://shopify/ProductVariant/67643692908935",
+        "gid://shopify/ProductVariant/67643692941703"
+      ],
+      "skus": [
+        "CJ-CJLY318009701AZ",
+        "CJ-CJLY318009702BY",
+        "CJ-CJLY318009703CX",
+        "CJ-CJLY318009704DW"
+      ],
+      "prices": [
+        "16.90"
+      ],
+      "availableForSale": [
+        true
+      ],
+      "inventoryPolicy": [
+        "CONTINUE"
+      ],
+      "tracked": [
+        false
+      ],
+      "inventoryQuantity": [
+        0
+      ],
+      "barcodeValues": []
+    },
+    "media": [
+      {
+        "id": "gid://shopify/MediaImage/77469010559367",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5cdd385-f57c-40db-8e4f-a4b273f65703.jpg?v=1791357376",
+        "altText": "Rosafarbenes Neckholder-Kleid mit Volants, Vorderansicht",
+        "width": 748,
+        "height": 998
+      },
+      {
+        "id": "gid://shopify/MediaImage/77469010362759",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b021008e-22c6-4e4b-9688-655e791b0690.jpg?v=1791357376",
+        "altText": "Rosafarbenes Neckholder-Kleid mit Volants auf Schneiderpuppe",
+        "width": 1280,
+        "height": 1707
+      },
+      {
+        "id": "gid://shopify/MediaImage/77469010461063",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1c3c1982-cca6-4a4e-ae21-cdbf1610c58c_fine.jpg?v=1791357376",
+        "altText": "Detailansicht der Volantstufen des Neckholder-Kleids",
+        "width": 748,
+        "height": 748
+      },
+      {
+        "id": "gid://shopify/MediaImage/77469010493831",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/606f6e6c-983c-40d4-a70d-9d7010b4d2ef.jpg?v=1791357376",
+        "altText": "Ärmelloses Neckholder-Kleid mit mehreren Volantstufen",
+        "width": 748,
+        "height": 998
+      },
+      {
+        "id": "gid://shopify/MediaImage/77469010526599",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96b8ed21-3696-4052-a05e-9803b5dd674d.jpg?v=1791357376",
+        "altText": "Kurzes rosafarbenes Neckholder-Kleid, Vorderansicht",
+        "width": 748,
+        "height": 998
+      },
+      {
+        "id": "gid://shopify/MediaImage/77469010592135",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edb9d58b-7981-4627-a757-20cb8c2ef72d.jpg?v=1791357376",
+        "altText": "Rosafarbenes Neckholder-Kleid mit gestuften Volants",
+        "width": 748,
+        "height": 998
+      },
+      {
+        "id": "gid://shopify/MediaImage/77469010690439",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b021008e-22c6-4e4b-9688-655e791b0690_21b489c7-4630-47a3-9968-f3e3d9cbd358.jpg?v=1791357380",
+        "altText": "Rosafarbenes Neckholder-Kleid auf Schneiderpuppe, Variantenbild",
+        "width": 1280,
+        "height": 1707
+      }
+    ],
+    "publications": [
+      {
+        "id": "gid://shopify/Publication/301970915713",
+        "catalogTitle": "Channel Catalog 301970915713 for Online Store",
+        "isPublished": true,
+        "publishDate": "2026-10-07T07:16:21Z"
+      },
+      {
+        "id": "gid://shopify/Publication/301971014017",
+        "catalogTitle": "Channel Catalog 301971014017 for Shop",
+        "isPublished": true,
+        "publishDate": "2026-10-07T07:16:21Z"
+      },
+      {
+        "id": "gid://shopify/Publication/302032716161",
+        "catalogTitle": "Channel Catalog 302032716161 for TikTok",
+        "isPublished": true,
+        "publishDate": "2026-10-07T07:16:21Z"
+      },
+      {
+        "id": "gid://shopify/Publication/302566834561",
+        "catalogTitle": "Channel Catalog 302566834561 for Facebook & Instagram",
+        "isPublished": true,
+        "publishDate": "2026-10-07T07:16:21Z"
+      },
+      {
+        "id": "gid://shopify/Publication/302994456961",
+        "catalogTitle": "Channel Catalog 302994456961 for Pinterest",
+        "isPublished": true,
+        "publishDate": "2026-10-07T07:16:21Z"
+      },
+      {
+        "id": "gid://shopify/Publication/391626359175",
+        "catalogTitle": "Channel Catalog 391626359175 for Luxe Style Headless",
+        "isPublished": true,
+        "publishDate": "2026-10-22T10:03:17Z"
+      }
+    ],
+    "protected": {
+      "status": true,
+      "handle": true,
+      "vendor": true,
+      "productType": true,
+      "tags": true,
+      "category": true,
+      "options": true,
+      "variantIdsSkusPricesAvailabilityInventory": true,
+      "mediaIdsUrlsDimensions": true,
+      "publications": true
+    },
+    "publicReadback": {
+      "htmlHttp": 200,
+      "productJsonHttp": 200,
+      "htmlSha256": "a9a05332661a7e62febe16d288ab9cdd9c8a42fbbd00af08bb6fae9faed1892b",
+      "productJsonSha256": "b2c846f5b25daa82049b9befdb3d1806c662a19e73edb95d7f4760f867fc5cb6",
+      "independentQaHtmlSha256": "a746dbbf199519231ff5ba14cccb67f64eac1e704b47e91054296af72d2e3659",
+      "dynamicHtmlHashesMayDiffer": true
+    },
+    "visualReview": {
+      "contactSheetSha256": "18a0321e2981805d2f3db8556b6b2a0a01e3d24a6a09139d4938786023bad11e"
+    }
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 37,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.06548,
+    "roundedPercent": 0.07,
+    "remainingProducts": 56469,
+    "remainingPercentApprox": 99.93,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsRepeated": false,
+    "klaviyoReportRepeated": false,
+    "googleReprocessingState": "unknown"
+  }
+}

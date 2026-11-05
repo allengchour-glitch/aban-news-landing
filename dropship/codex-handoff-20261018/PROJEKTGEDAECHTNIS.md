@@ -885,3 +885,9 @@ Fortschritt: 34/56’506 ACTIVE = 0,06017 %, gerundet 0,06 %; 56’472 beziehung
 [Live-Korrekturen und Schutzbelege](PRODUKT-SEO-LIVE-20261105-R105.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R105.json). Maxikleid15500282003841 wurde von falschem Beige/Midi-/Materialtext auf die aktuellen Optionen Milchweiss, Himmelblau, Lavendel-Lila und XS–2XL begrenzt. Fitnessschuhe16638316020103 wurden von Grau und unbelegten Schutz-/Material-/Gewichtsclaims auf Weiss, Schwarz und 38–45 begrenzt. Zwei `productUpdate`, zwei `fileUpdate`, 18 Alttexte, keine userErrors/Retries; vollständige Admin-/Storefront-Rücklesung und unabhängige QA 2/2 GO.
 
 34 Varianten, CHF-Preise, Kaufbarkeit, untracked/`CONTINUE`, Mengen0, Handles, Tags, Kategorien, Medienbindungen und 12 Publikationen erhalten. Streng36/56’506=0,06371 %, gerundet0,06 %;56’470/rund99,94 % offen. Keine genaue CJ-Quelle für Material/Funktion, deshalb unbelegte Claims entfernt statt ersetzt. Keine sonstigen externen Writes.
+
+## 05.11.2026 – R106 Neckholder-Kleid, Revision 106
+
+[Live-Korrektur und Schutzbelege](PRODUKT-SEO-LIVE-20261105-R106.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261105-R106.json). Produkt16610538324359 von falscher Midi-/Einzelgrösse und widersprüchlichen Material-/Gewichtsangaben auf die aktuellen S–XL-Optionen und sichtbar kurze Neckholder-/Volantform begrenzt. Ein `productUpdate`, ein `fileUpdate`, sieben Alttexte, keine userErrors/Retries; Admin-/Storefront-Readback und unabhängige QA GO.
+
+Vier Varianten, CHF16.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handle, Tags, Kategorie, Medien und sechs Publikationen erhalten. Handle und `sort-damen-kleider-midi` bleiben getrennt offen. Streng37/56’506=0,06548 %, gerundet0,07 %;56’469/rund99,93 % offen. Keine sonstigen externen Writes.
