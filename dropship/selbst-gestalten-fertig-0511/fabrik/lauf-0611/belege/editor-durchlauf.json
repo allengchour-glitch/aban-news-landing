@@ -1,0 +1,55 @@
+{
+ "log": [
+  {
+   "l": "schwarz-325+text",
+   "sel": "Schwarz/325 ml",
+   "variantId": "68134397575559",
+   "preis": "CHF 26.90",
+   "pod": "{\"v\":6,\"m\":403,\"pv\":11051,\"sv\":\"68134397575559\",\"pl\":[\"default\"],\"ap\":0}",
+   "hinweis": []
+  },
+  {
+   "l": "rot-325",
+   "sel": "Rot/325 ml",
+   "variantId": "68134397641095",
+   "preis": "CHF 26.90",
+   "pod": "{\"v\":6,\"m\":403,\"pv\":11051,\"sv\":\"68134397575559\",\"pl\":[\"default\"],\"ap\":0}",
+   "hinweis": []
+  },
+  {
+   "l": "rot-444",
+   "sel": "Rot/444 ml",
+   "variantId": "68134397673863",
+   "preis": "CHF 27.90",
+   "pod": "{\"v\":6,\"m\":403,\"pv\":11051,\"sv\":\"68134397575559\",\"pl\":[\"default\"],\"ap\":0}",
+   "hinweis": []
+  },
+  {
+   "l": "blau-444",
+   "sel": "Blau/444 ml",
+   "variantId": "68134397739399",
+   "preis": "CHF 27.90",
+   "pod": "{\"v\":6,\"m\":403,\"pv\":11051,\"sv\":\"68134397575559\",\"pl\":[\"default\"],\"ap\":0}",
+   "hinweis": []
+  },
+  {
+   "l": "nach-kauf",
+   "sel": "Blau/444 ml",
+   "variantId": "68134397739399",
+   "preis": "CHF 27.90",
+   "pod": "{\"v\":6,\"m\":403,\"pv\":17197,\"sv\":\"68134397739399\",\"pl\":[\"default\"],\"ap\":0}",
+   "hinweis": []
+  }
+ ],
+ "cartReq": [
+  {
+   "methode": "POST",
+   "ct": "application/json",
+   "body": "{\"id\":\"68134397739399\",\"quantity\":1,\"properties\":{\"🎨 Design (default)\":\"Text: \\\"Test Entwurf\\\"\",\"🖼️ Druckdatei (default)\":\"https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976626/xy1jxggytwmgpyvh4m1v.png\",\"_pod_karte\":\"{\\\"v\\\":6,\\\"m\\\":403,\\\"pv\\\":17197,\\\"sv\\\":\\\"68134397739399\\\",\\\"pl\\\":[\\\"default\\\"],\\\"ap\\\":0}\"}}"
+  }
+ ],
+ "errs": [
+  "console: Product recommendations error: Server returned 404",
+  "PAGEERROR TypeError: Failed to fetch"
+ ]
+}

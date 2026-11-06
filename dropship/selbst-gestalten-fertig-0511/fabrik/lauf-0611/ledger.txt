@@ -1,0 +1,4 @@
+# Modell-Fabrik Ledger: Zeit	Handle	Printful-Nr	Status	Produkt-ID	Detail (VERSUCH, BEGONNEN, OK, ZURUECK, FEHLER)
+2026-11-06T14:39:36.595Z	keramik-tasse-farbige-innenseite-selbst-gestalten	403	VERSUCH		11 Varianten: productSet wird gesendet (steht keine ID dahinter, ging die Antwort verloren oder das Produkt wurde nie angelegt; der nächste Lauf entscheidet am Handle)
+2026-11-06T14:39:38.737Z	keramik-tasse-farbige-innenseite-selbst-gestalten	403	BEGONNEN	gid://shopify/Product/16697144705415	11 Varianten
+2026-11-06T14:39:45.586Z	keramik-tasse-farbige-innenseite-selbst-gestalten	403	OK	gid://shopify/Product/16697144705415	11 Varianten, 7 Medien, frisch gelesen gleich dem Plan
