@@ -149,7 +149,7 @@ const MUTANTEN = [
   ['W60 Export: nur eine JPEG-Qualität (0,85), kein Absenken', "var VORSCHAU_QUALITAET = [0.85, 0.72, 0.6, 0.48];", "var VORSCHAU_QUALITAET = [0.85];"],
   ['W61 Export: Gewichtsgrenze 800 KB statt 80 KB', "var VORSCHAU_MAX_BYTES = 80 * 1024;", "var VORSCHAU_MAX_BYTES = 800 * 1024;"],
   ['W62 Export: 1600 statt 800 Pixel', "var VORSCHAU_PX = 800;", "var VORSCHAU_PX = 1600;"],
-  ['W63 Tasse: Katalogfoto ohne CORS wird trotzdem geladen (kein Spiegel nötig)', "return Promise.all([vorschauBild(t.foto), designLeinwand(p, offW, offH)]).then(function (a) {", "return Promise.all([vorschauBild(t.foto || t.quelle), designLeinwand(p, offW, offH)]).then(function (a) {"],
+  ['W63 Tasse: Katalogfoto ohne CORS wird trotzdem geladen (Wächter in der Vorschauwahl entfällt UND Rückfall auf die Quelle)', ["if (!t || !t.foto) return { art: 'hinweis', code: 'keine' }; }", "return Promise.all([vorschauBild(t.foto), designLeinwand(p, offW, offH)]).then(function (a) {"], ["if (!t) return { art: 'hinweis', code: 'keine' }; }", "return Promise.all([vorschauBild(t.foto || t.quelle), designLeinwand(p, offW, offH)]).then(function (a) {"]],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)
