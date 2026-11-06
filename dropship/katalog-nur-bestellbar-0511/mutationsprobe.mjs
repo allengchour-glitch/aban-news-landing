@@ -5,7 +5,7 @@
 // Pro Mutant läuft eine Kopie des Pakets in einem Wegwerfordner:
 //   - patches_test.mjs (mit PRUEFSUMME_IGNORIEREN=1: die Prüfsumme in daten/pruefstand.json würde jede Änderung sofort melden und nichts über das Verhalten sagen)
 //   - JS-, CSS- und Daten-Mutanten zusätzlich test_nur_bestellbar.cjs gegen die Live-Seite aus dem Zwischenspeicher (LOKAL=1; CSS-Mutanten mit 390 px, die übrigen SCHNELL=1)
-//   - apply.mjs-Mutanten apply_test.mjs
+//   - apply.mjs-Mutanten apply_test.mjs; Wächter-Mutanten (waechter_kern.mjs) waechter_test.mjs
 // Ein Mutant gilt als erkannt, wenn mindestens ein Test fehlschlägt; die Ausgabe nennt, WELCHER Test es war und ob schon der Browsertest allein es bemerkt hätte.
 // Vor den Mutanten läuft der unveränderte Stand einmal durch alle Tests (Referenzlauf, muss grün sein). Ein «?» ist ein Mutant, dessen Muster nicht vorkommt (Fehlalarm der Probe, zu beheben).
 import { cpSync, mkdtempSync, readFileSync, writeFileSync, rmSync, appendFileSync } from 'node:fs';
@@ -27,7 +27,7 @@ const MUTANTEN = [
   ['patches.mjs', 'js', 'JS: Zusatzschutz für Modelle ignoriert', "if(!row || hideModels.has(row.model) || hideVariants.has(vid))return;", "if(!row || hideVariants.has(vid))return;"],
   ['patches.mjs', 'js', 'JS: Zusatzschutz für Varianten ignoriert', "if(!row || hideModels.has(row.model) || hideVariants.has(vid))return;", "if(!row || hideModels.has(row.model))return;"],
   ['patches.mjs', 'js', 'JS: Fehler der Ausblenden-Datei nicht gefangen', "catch{root.dataset.hideState='unavailable';}", "catch(e){throw e;}"],
-  ['patches.mjs', 'js', 'JS: fehlende Variantenkarte wird still als leer behandelt', "const map = await readAsset(config.assets?.variantenkarte);", "const map = await readAsset(config.assets?.variantenkarte).catch(()=>({schemaVersion:1,modelle:{}}));"],
+  ['patches.mjs', 'js', 'JS: fehlende Variantenkarte wird still als leer behandelt', "const map = await lxLoads.map;", "const map = await lxLoads.map.catch(()=>({schemaVersion:1,modelle:{}}));"],
   ['patches.mjs', 'js', 'JS: Ausblenden-Datei mit falschem Schlüssel gelesen (modelle)', "list(hide.modelle).forEach(m=>hideModels.add(id(m)))", "list(hide.modellen).forEach(m=>hideModels.add(id(m)))"],
   ['patches.mjs', 'js', 'JS: Ausblenden-Datei mit falschem Schlüssel gelesen (varianten)', "Object.values(hide.varianten||{})", "Object.values(hide.variante||{})"],
   ['patches.mjs', 'js', 'JS: Modelle nicht eingeschränkt (Filter lässt alle durch)', "products = products.filter(p=>byModel.has(id(p.id))).map(p=>{", "products = products.filter(p=>true).map(p=>{ if(!byModel.has(id(p.id)))return p;"],
@@ -59,7 +59,7 @@ const MUTANTEN = [
   ['patches.mjs', 'css', 'CSS: Abstand zwischen den Knöpfen 40 px', "margin:auto 0 8px;min-height:44px", "margin:auto 0 40px;min-height:44px"],
   ['patches.mjs', 'css', 'CSS: CSS nicht angehängt', "return text.replace(/\\s*$/, '\\n') + CSS_NEU;", "return text;"],
   // ---- Liquid ----
-  ['patches.mjs', 'liquid', 'Liquid: Titelkacheln zeigen noch auf die Vorschau', "return einmal(text, `href=\"{{ cover_product.url }}?view=luxe-studio\"`, `href=\"{{ ${editorLink('cover_product')}`, 'Cover-Link');", "return text;"],
+  ['patches.mjs', 'liquid', 'Liquid: Titelkacheln zeigen noch auf die Vorschau', "let t = einmal(text, `href=\"{{ cover_product.url }}?view=luxe-studio\"`, `href=\"{{ ${editorLink('cover_product')}`, 'Cover-Link');", "let t = text;"],
   ['patches.mjs', 'liquid', 'Liquid: Shopliste Bild-Link zeigt noch auf die Vorschau', "t = einmal(t, `<a class=\"lxc-card-image\" href=\"{{ item.url }}?view=luxe-studio\"`, `<a class=\"lxc-card-image\" href=\"{{ ${editorLink('item')}`, 'Category Bild-Link');", ""],
   ['patches.mjs', 'liquid', 'Liquid: Shopliste Titel-Link zeigt noch auf die Vorschau', "t = einmal(t, `<h3><a href=\"{{ item.url }}?view=luxe-studio\">`, `<h3><a href=\"{{ ${editorLink('item')}>`, 'Category Titel-Link');", ""],
   ['patches.mjs', 'liquid', 'Liquid: Shopliste Held-Link zeigt noch auf die Vorschau', "t = einmal(t, `href=\"{{ hero_product.url }}?view=luxe-studio\"`, `href=\"{{ ${editorLink('hero_product')}`, 'Category Hero-Link');", ""],
@@ -69,14 +69,14 @@ const MUTANTEN = [
   ['patches.mjs', 'liquid', 'Liquid: Manifest ohne Variantenkarte', ", \"variantenkarte\": {{ 'luxe-clothing-variantenkarte.json' | asset_url | json }}", ""],
   ['patches.mjs', 'liquid', 'Liquid: Manifest ohne Ausblenden', ", \"ausblenden\": {{ 'luxe-clothing-ausblenden.json' | asset_url | json }}", ""],
   ['patches.mjs', 'liquid', 'Liquid: Sektion gibt das Label none_orderable nicht weiter', "const neu = NEUE_SCHLUESSEL.map((k) => `      \"${k}\": {{ 'luxe_clothing.${k}' | t | json }},\\n`).join('');", "const neu = NEUE_SCHLUESSEL.slice(1).map((k) => `      \"${k}\": {{ 'luxe_clothing.${k}' | t | json }},\\n`).join('');"],
-  ['patches.mjs', 'liquid', 'Liquid: Sektion ohne json-Filter', "`      \"${k}\": {{ 'luxe_clothing.${k}' | t | json }},\\n`).join('');\n  return einmal(text, anker", "`      \"${k}\": {{ 'luxe_clothing.${k}' | t }},\\n`).join('');\n  return einmal(text, anker"],
+  ['patches.mjs', 'liquid', 'Liquid: Sektion ohne json-Filter', "`      \"${k}\": {{ 'luxe_clothing.${k}' | t | json }},\\n`).join('');\n  let t = einmal(text, anker", "`      \"${k}\": {{ 'luxe_clothing.${k}' | t }},\\n`).join('');\n  let t = einmal(text, anker"],
   // ---- Texte und Sprachdateien ----
   ['patches.mjs', 'text', 'Text: Hinweis sagt noch «alle anderen noch nicht»', "notice: 'Hier siehst du nur Modelle, die du bei LuxeStyle gestalten und bestellen kannst.", "notice: 'Produktkatalog zur Auswahl. Modelle mit dem Knopf «Jetzt selbst gestalten» lassen sich im Shop gestalten und bestellen, alle anderen noch nicht."],
   ['patches.mjs', 'text', 'Text: Satz bei null Modellen mit ß', "none_orderable: 'Im Moment ist kein Modell zum Selbstgestalten bestellbar. Bitte schau später wieder vorbei.'", "none_orderable: 'Im Moment ist kein Modell zum Selbstgestalten bestellbar. Bitte schau später wieder vorbei, wir räumen auf, weiß man ja.'"],
   ['patches.mjs', 'text', 'Text: orderable_variants ohne Zähler', "orderable_variants: '[count] bestellbare Ausführungen'", "orderable_variants: 'bestellbare Ausführungen'"],
   ['patches.mjs', 'text', 'Text: end_note verspricht weiter eine Vorschau (de)', "end_note: 'Grössen, Farben und Ausführungen hängen vom gewählten Produkt ab.',", "end_note: 'Grössen, Farben und Ausführungen hängen vom gewählten Produkt ab. Dein Entwurf bleibt eine Vorschau.',"],
   ['patches.mjs', 'text', 'Text: englischer Hinweis nennt noch die alte Regel', "notice: 'You only see models that you can design and order at LuxeStyle.", "notice: 'Product catalogue. Models with the «Design it yourself now» button can be designed and ordered in the shop, all others not yet."],
-  ['patches.mjs', 'text', 'Text: notice wird angehängt statt ersetzt (doppelter Schlüssel)', "const neu = [...NEUE_SCHLUESSEL];\n  const re = zeilenRegex('notice');", "const neu = [...NEUE_SCHLUESSEL];\n  const re = zeilenRegex('noticeX');"],
+  ['patches.mjs', 'text', 'Text: notice wird angehängt statt ersetzt (doppelter Schlüssel)', "const r = ersetzeZeile(block, k, t[k]);", "const r = k === 'notice' ? null : ersetzeZeile(block, k, t[k]);"],
   ['patches.mjs', 'text', 'Text: Sprachdatei verliert den Kommentarkopf', "let aus = text.slice(0, a) + block + text.slice(e + 1);", "let aus = text.slice(text.indexOf('{')).slice(0, a - text.indexOf('{')) + block + text.slice(e + 1);"],
   ['patches.mjs', 'text', 'Text: Anker-Prüfung gelockert (zweimal reicht)', "if (teile.length !== 2) throw new Error(`Anker «${name}»", "if (teile.length < 2) throw new Error(`Anker «${name}»"],
   ['patches.mjs', 'text', 'Text: Marke nicht an das Ende des JS', "return t.replace(/\\s*$/, '\\n') + `/* ${MARKE} */\\n`;", "return t;"],
@@ -97,10 +97,10 @@ const MUTANTEN = [
   ['apply.mjs', 'apply', 'apply: Rücknahme erkennt fremde Dateien nicht', "if (fremde.length && !FREMD_OK) {", "if (false) {"],
   ['apply.mjs', 'apply', 'apply: Rücknahme schreibt auch unveränderte Dateien', "const zuSchreiben = ALT.filter((n) => zustand[n] === 'neu' || zustand[n] === 'fremd');", "const zuSchreiben = ALT.slice();"],
   ['apply.mjs', 'apply', 'apply: Rücknahme löscht die neuen Dateien nicht', "const zuLoeschen = NEU_BEHALTEN ? [] : NEU.filter((n) => zustand[n] === 'neu' || zustand[n] === 'fremd');", "const zuLoeschen = [];"],
-  ['apply.mjs', 'apply', 'apply: Rücknahme löscht, ohne vorher zurückzuschreiben', "if (zuLoeschen.length) { if (rueck1.length) await warteBisGleich(alt, rueck1, 150000); await loeschen(zuLoeschen); }", "if (zuLoeschen.length) { await loeschen(zuLoeschen); }\n    if (false) {}"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme löscht, ohne vorher zurückzuschreiben', "if (rueck1.length) await schreiben(sich, rueck1);\n    if (zuLoeschen.length) {", "if (zuLoeschen.length) {"],
   ['apply.mjs', 'apply', 'apply: NEUE_BEHALTEN wird ignoriert', "const zuLoeschen = NEU_BEHALTEN ? [] : NEU", "const zuLoeschen = NEU"],
   ['apply.mjs', 'apply', 'apply: Löschfehler ohne Abbruch', "console.error(TEILZUSTAND); process.exit(5); }\n}\n// Wartet", "console.error(TEILZUSTAND); }\n}\n// Wartet"],
-  ['apply.mjs', 'apply', 'apply: Rücknahme Code nach Texten', "if (rueck2.length) await schreiben(sich, rueck2);\n    if (rueck2.length && rueck1.length) await warteBisGleich(alt, rueck2, 150000);\n    if (rueck1.length) await schreiben(sich, rueck1);", "if (rueck1.length) await schreiben(sich, rueck1);\n    if (rueck2.length) await schreiben(sich, rueck2);"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme Code nach Texten', "if (rueck2.length) await schreiben(sich, rueck2);\n    if (rueck2.length && rueck1.length && !(await", "if (rueck1.length) await schreiben(sich, rueck1);\n    if (rueck2.length) await schreiben(sich, rueck2);\n    if (false && rueck2.length && rueck1.length && !(await"],
   ['apply.mjs', 'apply', 'apply: Ausnahme beim Schreiben still', "  process.exit(7);\n}\nprocess.exit(endCode);", "  process.exit(0);\n}\nprocess.exit(endCode);"],
   ['apply.mjs', 'apply', 'apply: Teilzustand beim erneuten LIVE nicht erkannt', "|| NEU.some((n) => jetzt[n]) || (merk && ALT.some((n) => jetzt[n].md5 === merk[n] && merk[n] !== MD5_VOR[n]));", ";"],
   ['apply.mjs', 'apply', 'apply: userErrors ohne Abbruch', "console.error(TEILZUSTAND); process.exit(5); }\n}\nasync function loeschen", "console.error(TEILZUSTAND); }\n}\nasync function loeschen"],
@@ -110,6 +110,77 @@ const MUTANTEN = [
   ['apply.mjs', 'apply', 'apply: Hinweis auf passende Anker fehlt', "console.error('  Hinweis: Die Anker von patches.mjs passen noch auf den aktuellen Live-Stand.", "console.error('  ');void ('  Hinweis: Die Anker von patches.mjs passen noch auf den aktuellen Live-Stand."],
   ['apply.mjs', 'apply', 'apply: Sicherung nur der JS-Datei', "for (const n of ALT) if (!existsSync(sichDatei(n))) writeFileSync(sichDatei(n), alt[n]);", "for (const n of [DATEIEN.JS]) if (!existsSync(sichDatei(n))) writeFileSync(sichDatei(n), alt[n]);"],
   ['apply.mjs', 'apply', 'apply: Löschen mit Dateinamen als Objekte', "{ id: th.id, files: namen })).themeFilesDelete;", "{ id: th.id, files: namen.map((f) => ({ filename: f })) })).themeFilesDelete;"],
+  // ---- Korrekturrunde 06.11.2026: neue JS-Stellen ----
+  ['patches.mjs', 'js', 'JS: Einzahl der Ergebniszeile fehlt', "t(filtered.length===1?'results_one':'results',{count:filtered.length})", "t('results',{count:filtered.length})"],
+  ['patches.mjs', 'js', 'JS: Einzahl der Ergebniszeile gilt auch bei null Treffern', "t(filtered.length===1?'results_one':'results'", "t(filtered.length<2?'results_one':'results'"],
+  ['patches.mjs', 'js', 'JS: Einzahl der bestellbaren Ausführungen fehlt', "(variants.length===1?t('orderable_variants_one'):t('orderable_variants'/* ${MARKE} */,{count:variants.length}))", "t('orderable_variants'/* ${MARKE} */,{count:variants.length})"],
+  ['patches.mjs', 'js', 'JS: Einzahl der bestellbaren Ausführungen gilt auch bei zwei', "variants.length===1?t('orderable_variants_one')", "variants.length<3?t('orderable_variants_one')"],
+  ['patches.mjs', 'js', 'JS: Karte und Ausblenden starten erst nach dem Index', "lxEarly(); /* ${MARKE} */ const raw = await readAsset(config.assets?.index);", "/* ${MARKE} */ const raw = await readAsset(config.assets?.index);"],
+  ['patches.mjs', 'js', 'JS: Karte und Ausblenden starten erst nach dem Index (Nachholen in lxPrepare)', "      if(!lxLoads.map) throw new Error('LX_RELOAD');", "      if(!lxLoads.map) lxEarly();\n      if(!lxLoads.map) throw new Error('LX_RELOAD');"],
+  ['patches.mjs', 'js', 'JS: Vorabruf der Ausblenden-Datei fehlt', "lxLoads.hide=config.assets?.ausblenden?go(config.assets.ausblenden):null;", "lxLoads.hide=config.assets?.ausblenden?readAsset(config.assets.ausblenden):null;"],
+  ['patches.mjs', 'js', 'JS: veraltetes Dokument zeigt den allgemeinen Ladefehler', "t(lxReload?'reload_needed':'load_error')", "t('load_error')"],
+  ['patches.mjs', 'js', 'JS: veraltetes Dokument zeigt den nutzlosen Knopf «Erneut versuchen»', "retry.hidden = lxReload;", "retry.hidden = false;"],
+  ['patches.mjs', 'js', 'JS: veraltetes Dokument zeigt alle 572 Modelle (fail-open)', "      if(!lxLoads.map) throw new Error('LX_RELOAD');", "      if(!lxLoads.map) return;"],
+  ['patches.mjs', 'js', 'JS: Ladefehler der Karte wird zum Neuladen-Satz', "lxReload = !!lxErr && lxErr.message === 'LX_RELOAD';", "lxReload = !!lxErr;"],
+  ['patches.mjs', 'js', 'JS: Direktlink auf ein verborgenes Modell bleibt stumm', "else showMessage(t('model_unavailable'));", ""],
+  ['patches.mjs', 'js', 'JS: Direktlink meldet auch bei einem sichtbaren Modell', "if(product)openDetails(product,null);else showMessage(t('model_unavailable'));", "if(product)openDetails(product,null);showMessage(t('model_unavailable'));"],
+  ['patches.mjs', 'js', 'JS: nicht lieferbare Angebote stehen zur Wahl', "(data.offers.some(item=>item.available!==false)?data.offers.filter(item=>item.available!==false):data.offers /* ${MARKE} */).forEach(", "(data.offers /* ${MARKE} */).forEach("],
+  ['patches.mjs', 'js', 'JS: Angebotsauswahl leer, wenn alle Angebote unlieferbar sind', "?data.offers.filter(item=>item.available!==false):data.offers /* ${MARKE} */)", "?data.offers.filter(item=>item.available!==false):[] /* ${MARKE} */)"],
+  ['patches.mjs', 'js', 'JS: Schuh-Satz immer', "if(products.some(p=>list(p.sizes).some(s=>/^EU\\\\b/i.test(displaySize(s,p))))){", "if(true){"],
+  ['patches.mjs', 'js', 'JS: Schuh-Satz nie', "if(products.some(p=>list(p.sizes).some(s=>/^EU\\\\b/i.test(displaySize(s,p))))){", "if(false){"],
+  ['patches.mjs', 'js', 'JS: Schuh-Satz nur im Kopf, nicht im Dialog', "[['.lcl-notice','notice'],['.lcl-dialog-notice','dialog_notice']]", "[['.lcl-notice','notice']]"],
+  ['patches.mjs', 'js', 'JS: Klasse bei null Modellen fehlt', "root.classList.toggle('lcl-no-models',!products.length);", ""],
+  ['patches.mjs', 'js', 'JS: Klasse bei null Modellen gilt immer', "root.classList.toggle('lcl-no-models',!products.length);", "root.classList.toggle('lcl-no-models',true);"],
+  // ---- CSS, Liquid, Texte ----
+  ['patches.mjs', 'css', 'CSS: leere Filterfläche bleibt bei null Modellen sichtbar', ".lcl-catalog.lcl-no-models .lcl-discovery,.lcl-catalog.lcl-no-models .lcl-result-line{display:none}", ""],
+  ['patches.mjs', 'liquid', 'Liquid: der Dialog trägt weiter den langen Hinweis', "  t = einmal(t, `<p class=\"lcl-dialog-notice\">{{ 'luxe_clothing.notice' | t }}</p>`, `<p class=\"lcl-dialog-notice\">{{ 'luxe_clothing.dialog_notice' | t }}</p>`, 'Section Dialog-Hinweis');", ""],
+  ['patches.mjs', 'liquid', 'Liquid: Vorschau-Skript der Titelkacheln erkennt die Editor-Ziele nicht', "  t = einmal(t, `target.searchParams.get('view') === 'luxe-studio'`, `(target.searchParams.get('view') === 'luxe-studio' || target.hash === '#lspod-start')`, 'Cover Vorschau-Skript');", ""],
+  ['patches.mjs', 'liquid', 'Liquid: Vorschau-Skript der Shopliste erkennt die Editor-Ziele nicht', "  t = einmal(t, `target.searchParams.has('view')`, `(target.searchParams.has('view') || target.hash === '#lspod-start')`, 'Category Vorschau-Skript');", ""],
+  ['patches.mjs', 'text', 'Text: shop_intro verspricht noch einen Entwurf (de)', "shop_intro: 'Wähle ein Produkt und gestalte es auf der Produktseite mit deinem eigenen Motiv.',", "shop_intro: 'Wähle ein vorhandenes Shopprodukt und öffne den Gestaltungsentwurf. Individuelle Motive können hier noch nicht bestellt werden.',"],
+  ['patches.mjs', 'text', 'Text: shop_intro verspricht noch einen Entwurf (en)', "shop_intro: 'Choose a product and design it on the product page with your own artwork.',", "shop_intro: 'Choose an existing shop product and open its design draft. Custom designs cannot yet be ordered here.',"],
+  ['patches.mjs', 'text', 'Text: preview_note sagt noch «nicht möglich» (de)', "preview_note: 'Wähle ein Produkt, gestalte es auf der Produktseite mit deinem eigenen Motiv und bestelle es dort.',", "preview_note: 'Gestaltungsvorschau: Entwurf ausprobieren. Eine Bestellung mit eigenem Design ist hier noch nicht möglich.',"],
+  ['patches.mjs', 'text', 'Text: intro nennt wieder Kinderkleidung (de)', "intro: 'Von T-Shirts und Hoodies bis zu Tassen, Taschen und Handyhüllen.", "intro: 'Von T-Shirts und Kinderkleidung bis zu Tassen, Taschen und Handyhüllen."],
+  ['patches.mjs', 'text', 'Text: intro nennt wieder kidswear (en)', "intro: 'From T-shirts and hoodies to mugs, bags and phone cases.", "intro: 'From T-shirts and kidswear to mugs, bags and phone cases."],
+  ['patches.mjs', 'text', 'Text: Hinweis trägt wieder den Schuh-Satz (de)', "Gestaltet und bestellt wird auf der Produktseite im Shop.',\n    dialog_notice:", "Gestaltet und bestellt wird auf der Produktseite im Shop. Schuhgrössen: Europa-Tabelle des Herstellers, «ca.» = ungefähr.',\n    dialog_notice:"],
+  ['patches.mjs', 'text', 'Text: Dialog-Hinweis wiederholt den Satz zur Produktseite (de)', "dialog_notice: 'Hier siehst du nur Ausführungen, die du bei LuxeStyle gestalten und bestellen kannst.',", "dialog_notice: 'Hier siehst du nur Ausführungen, die du bei LuxeStyle gestalten und bestellen kannst. Gestaltet und bestellt wird auf der Produktseite im Shop.',"],
+  ['patches.mjs', 'text', 'Text: Einzahl «1 Modelle» (de)', "results_one: '1 Modell in dieser Auswahl',", "results_one: '1 Modelle in dieser Auswahl',"],
+  ['patches.mjs', 'text', 'Text: Einzahl «1 bestellbare Ausführungen» (de)', "orderable_variants_one: '1 bestellbare Ausführung',", "orderable_variants_one: '1 bestellbare Ausführungen',"],
+  ['patches.mjs', 'text', 'Text: Einzahl fehlt in der Sektion (ein Label weniger)', "'orderable_variants_one', 'results_one', 'reload_needed'", "'results_one', 'reload_needed'"],
+  // ---- apply.mjs: gleichzeitige Schreiber ----
+  ['apply.mjs', 'apply', 'apply: kein frisches Lesen kurz vor dem Schreiben', "const abw = [...ALT.filter((n) => frisch[n]?.md5 !== MD5_VOR[n]), ...NEU.filter((n) => frisch[n])];", "const abw = [];"],
+  ['apply.mjs', 'apply', 'apply: kein frisches Lesen vor Schritt 2', "const fremdAenderung = SCHRITT2.filter((n) => vorSchritt2[n]?.md5 !== MD5_VOR[n]);", "const fremdAenderung = [];"],
+  ['apply.mjs', 'apply', 'apply: vor Schritt 2 wird nur das JS geprüft', "const fremdAenderung = SCHRITT2.filter((n) => vorSchritt2[n]?.md5 !== MD5_VOR[n]);", "const fremdAenderung = [DATEIEN.JS].filter((n) => vorSchritt2[n]?.md5 !== MD5_VOR[n]);"],
+  ['apply.mjs', 'apply', 'apply: vor Schritt 2 wird nur das CSS geprüft', "const fremdAenderung = SCHRITT2.filter((n) => vorSchritt2[n]?.md5 !== MD5_VOR[n]);", "const fremdAenderung = [DATEIEN.CSS].filter((n) => vorSchritt2[n]?.md5 !== MD5_VOR[n]);"],
+  ['apply.mjs', 'apply', 'apply: Abbruch vor Schritt 2 mit Exit 0', "    process.exit(4);\n  }\n  await schreiben(neu, SCHRITT2);", "    process.exit(0);\n  }\n  await schreiben(neu, SCHRITT2);"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme fasst eine fremd veränderte Datei ohne Marke an (Exit 3)', "'alt' : unberuehrt(n) ? 'unberuehrt' : 'fremd';", "'alt' : 'fremd';"],
+  ['apply.mjs', 'apply', 'apply: «unberührt» erkennt die Marke nicht', "!jetzt[n].content.includes(MARKE);", "jetzt[n].content.includes(MARKE);"],
+  ['apply.mjs', 'apply', 'apply: «unberührt» gilt für alle Dateien', "const unberuehrt = (n) => SCHRITT2.includes(n) && ", "const unberuehrt = (n) => "],
+  ['apply.mjs', 'apply', 'apply: FREMD_UEBERSCHREIBEN schreibt auch unberührte Dateien', "const zuSchreiben = ALT.filter((n) => zustand[n] === 'neu' || zustand[n] === 'fremd');", "const zuSchreiben = ALT.filter((n) => zustand[n] === 'neu' || zustand[n] === 'fremd' || zustand[n] === 'unberuehrt');"],
+  ['apply.mjs', 'apply', 'apply: Rücklesen nach der Rücknahme kennt unberührte Dateien nicht', "...Object.fromEntries(ALT.filter((n) => zustand[n] === 'unberuehrt').map((n) => [n, jetzt[n].md5])), ", ""],
+  ['apply.mjs', 'apply', 'apply: Rücknahme ohne frisches Lesen vor Texten/Liquid', "if (!(await nochGleich([...rueck1, ...zuLoeschen]))) process.exit(3);", ""],
+  ['apply.mjs', 'apply', 'apply: Rücknahme ohne frisches Lesen vor dem Löschen', "if (!(await nochGleich(zuLoeschen))) process.exit(3);", ""],
+  ['apply.mjs', 'apply', 'apply: Rücknahme prüft bei Abweichung nur die Texte, nicht die zu löschenden Dateien', "if (!(await nochGleich([...rueck1, ...zuLoeschen]))) process.exit(3);", "if (!(await nochGleich([...rueck1]))) process.exit(3);"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme ignoriert nicht sichtbares CSS/JS (Exit 6 fehlt)', "if (rueck2.length && rueck1.length && !(await warteBisGleich(alt, rueck2, 150000))) {", "if (rueck2.length && rueck1.length && (await warteBisGleich(alt, rueck2, 150000), false)) {"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme ignoriert nicht sichtbare Texte (Exit 6 fehlt)', "if (rueck1.length && !(await warteBisGleich(alt, rueck1, 150000))) {", "if (rueck1.length && (await warteBisGleich(alt, rueck1, 150000), false)) {"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme wartet nicht auf die Texte vor dem Löschen', "if (rueck1.length && !(await warteBisGleich(alt, rueck1, 150000))) {", "if (false) {"],
+  ['apply.mjs', 'apply', 'apply: Rücknahme meldet nicht sichtbares CSS/JS mit Exit 0', "Texte, Liquid und neue Dateien NICHT angefasst. ' + WIEDERHOLBAR); process.exit(6); }", "Texte, Liquid und neue Dateien NICHT angefasst. ' + WIEDERHOLBAR); process.exit(0); }"],
+  ['apply.mjs', 'apply', 'apply: angehaltene Rücknahme meldet Exit 0', "if (!(await nochGleich([...rueck1, ...zuLoeschen]))) process.exit(3);", "if (!(await nochGleich([...rueck1, ...zuLoeschen]))) process.exit(0);"],
+  // ---- Wächter ----
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Sammlung über der Grenze erst ab 55', "anzahl !== null && anzahl > GRENZE) meld('ALARM'", "anzahl !== null && anzahl > GRENZE + 5) meld('ALARM'"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Warnschwelle erst über 45', "anzahl >= WARNSCHWELLE) meld('WARNUNG'", "anzahl > WARNSCHWELLE) meld('WARNUNG'"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: leere Liste bei getaggten Produkten ist kein Alarm', "if (angebote.length === 0 && ((getaggt ?? 0) > 0 ||", "if (angebote.length === 0 && ((getaggt ?? 0) > 9999 ||"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: leere Liste ohne getaggte Produkte ist auch Alarm', "if (angebote.length === 0 && ((getaggt ?? 0) > 0 ||", "if (angebote.length === 0 && (true ||"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Zusatzschutz-Alter erst ab 15 Tagen', "alterTage > ALTER_TAGE", "alterTage > ALTER_TAGE + 1"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Zusatzschutz ohne Stand ist in Ordnung', "if (alterTage === null) meld('WARNUNG', 'ausblenden-veraltet', 'Die Zusatzschutz-Datei trägt keinen Stand.');", ""],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: ausgeblendete Varianten zählen als sichtbar', "if (hideM.has(m) || hideV.has(vid)) {", "if (hideM.has(m)) {"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: ausgeblendete Modelle zählen als sichtbar', "if (hideM.has(m) || hideV.has(vid)) {", "if (hideV.has(vid)) {"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: nicht lieferbare Angebote zählen als sichtbar', "if (os.some((o) => o.available !== false)) { modelle.add(m);", "if (os.length) { modelle.add(m);"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Angebot ohne Karteneintrag bleibt unbemerkt', "if (!m) { ohneKarte.push(vid); continue; }", "if (!m) { continue; }"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: kein Alarm bei null sichtbaren Modellen', "if (angebote.length > 0 && sichtbar === 0) meld('ALARM'", "if (false) meld('ALARM'"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Produkte ohne Angebot bleiben unbemerkt', "getaggt > produkteMitAngebot.size && ", "false && "],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: Exitcode des Alarms ist 3', "stufe === 'ALARM' ? 4 :", "stufe === 'ALARM' ? 3 :"],
+  ['waechter_kern.mjs', 'waechter', 'Wächter: fehlende Karte bleibt unbemerkt', "if (!karte || !karte.modelle) meld('WARNUNG', 'karte-fehlt',", "if (false) meld('WARNUNG', 'karte-fehlt',"],
+
 ];
 
 const NUR = process.env.NUR || '';
@@ -125,19 +196,20 @@ const lauf = (dir, datei, extra = {}) => new Promise((resolve) => {
 const kopie = () => { const d = mkdtempSync(join(tmpdir(), 'lxmut-')); cpSync(HIER, d, { recursive: true, filter: (s) => !/\/(sicherung\/eingespielt\.json)$/.test(s) }); return d; };
 
 async function testen(dir, art, voll = false) {
-  const erg = { patches: null, apply: null, browser: null };
+  const erg = { patches: null, apply: null, browser: null, waechter: null };
   const p = await lauf(dir, 'patches_test.mjs', { PRUEFSUMME_IGNORIEREN: '1' }); erg.patches = p;
   if (art === 'apply') erg.apply = await lauf(dir, 'apply_test.mjs');
+  if (art === 'waechter') erg.waechter = await lauf(dir, 'waechter_test.mjs');
   if (['js', 'css', 'daten'].includes(art)) erg.browser = await lauf(dir, 'test_nur_bestellbar.cjs', { LOKAL: '1', PRUEFSUMME_IGNORIEREN: '1', ...(art === 'css' || voll ? {} : { SCHNELL: '1' }) });
   return erg;
 }
 
 console.log('Referenzlauf (unveränderter Stand) …');
 {
-  const dir = kopie(); const e = await testen(dir, 'js'); const a = await lauf(dir, 'apply_test.mjs');
+  const dir = kopie(); const e = await testen(dir, 'js'); const a = await lauf(dir, 'apply_test.mjs'); const w = await lauf(dir, 'waechter_test.mjs');
   rmSync(dir, { recursive: true, force: true });
-  if (e.patches.code !== 0 || e.browser.code !== 0 || a.code !== 0) { console.log('Referenzlauf NICHT grün:', { patches: e.patches.code, browser: e.browser.code, apply: a.code }); console.log((e.patches.aus + e.browser.aus + a.aus).split('\n').filter((z) => /✗| - |FEHLER|ABBRUCH/.test(z)).slice(0, 12).join('\n')); process.exit(2); }
-  console.log('Referenzlauf grün (patches_test, Browsertest, apply_test).');
+  if (e.patches.code !== 0 || e.browser.code !== 0 || a.code !== 0 || w.code !== 0) { console.log('Referenzlauf NICHT grün:', { patches: e.patches.code, browser: e.browser.code, apply: a.code, waechter: w.code }); console.log((e.patches.aus + e.browser.aus + a.aus + w.aus).split('\n').filter((z) => /✗| - |FEHLER|ABBRUCH/.test(z)).slice(0, 12).join('\n')); process.exit(2); }
+  console.log('Referenzlauf grün (patches_test, Browsertest, apply_test, waechter_test).');
 }
 writeFileSync(LOG, `Mutationsprobe ${new Date().toISOString()}\n`);
 let erkannt = 0, nurText = 0; const uebrig = [], nichtAnwendbar = []; let naechster = 0;
@@ -148,7 +220,7 @@ async function arbeiter() {
     if (teile.length !== 2) { console.log('  ?', name, '- Muster kommt', teile.length - 1, '× vor (Mutant nicht anwendbar)'); nichtAnwendbar.push(name); rmSync(dir, { recursive: true, force: true }); continue; }
     writeFileSync(p, teile[0] + neu + teile[1]);
     const e = await testen(dir, art, option === 'voll'); rmSync(dir, { recursive: true, force: true });
-    const stufen = ['patches', 'apply', 'browser'].filter((k) => e[k] && e[k].code !== 0);
+    const stufen = ['patches', 'apply', 'browser', 'waechter'].filter((k) => e[k] && e[k].code !== 0);
     const bemerkt = stufen.length > 0;
     if (bemerkt) { erkannt++; if (art !== 'apply' && stufen.length === 1 && stufen[0] === 'patches' && ['js', 'css'].includes(art)) nurText++; } else uebrig.push(name);
     console.log(bemerkt ? `  erkannt (${stufen.join('+')})` : '  ÜBERLEBT', name);

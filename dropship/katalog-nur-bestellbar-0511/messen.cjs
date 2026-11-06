@@ -21,6 +21,7 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
       return {
         status: null,
         ergebniszeile: txt('[data-lcl-results]'), nachricht: txt('[data-lcl-message]'),
+        hinweis: txt('.lcl-notice'), hinweisDialog: txt('.lcl-dialog-notice'), intro: txt('.lcl-intro'), shopIntro: txt('.lxc-collection-heading > p'),
         quelleAnzahl: root.dataset.sourceCount, gefiltert: root.dataset.filteredCount,
         kartenAufSeite: q('.lcl-card').length,
         kartenMitGestaltenKnopf: q('.lcl-card .lcl-design-cta').length,

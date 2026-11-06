@@ -2,7 +2,8 @@
 //   node dropship/katalog-nur-bestellbar-0511/apply_test.mjs
 // Die Attrappe (shopify_gql.mjs im Wegwerfordner) hält die Theme-Dateien in einer JSON-Datei, kennt die Abfragen von apply.mjs (lesen, themeFilesUpsert, themeFilesDelete) und kann
 // gezielt Fehler machen (FAKE=...): userErrors in Schritt 2, ein Speicher, der eine Datei anders ablegt (norm), eine Ausnahme beim zweiten Schreiben, Dateien als URL,
-// fehlende Prüfsumme, userErrors beim Löschen, Löschen ohne Wirkung. APPLY_ZEIT=0.001 verkürzt alle Wartezeiten.
+// fehlende Prüfsumme, userErrors beim Löschen, Löschen ohne Wirkung und ein zweiter Auftrag, der gleichzeitig schreibt (vorlese: de.json ändert sich nach dem ersten Lesen; fremdjs/fremdcss: JS/CSS ändert
+// sich zwischen Schritt 1 und 2; rueckcss: die erste Rücknahme-Schreibung wird nie sichtbar; fremdrueck: de.json ändert sich während der Rücknahme). APPLY_ZEIT=0.001 verkürzt alle Wartezeiten.
 import { cpSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
@@ -46,12 +47,15 @@ export async function shopifyGql(shop, api, tok, query, vars) {
   const s = load();
   if (query.includes('themes(first:5')) return { themes: { nodes: [{ id: 'gid://fake/1', name: 'fake' }] } };
   if (query.includes('files(filenames')) {
-    s.ev = s.ev || []; s.ev.push('R'); save(s);
+    s.ev = s.ev || []; s.ev.push('R'); s.nR = (s.nR || 0) + 1;
     const nodes = vars.f.filter((n) => s.files[n] != null).map((n) => {
       const c = s.files[n], url = FAKE.includes('url') && (n.includes('variantenkarte') || n.endsWith('luxe-clothing.js'));
       return { filename: n, size: Buffer.byteLength(c), checksumMd5: FAKE.includes('nocsum') ? null : md5(c),
         body: url ? { __typename: 'OnlineStoreThemeFileBodyUrl', url: 'https://fake.invalid/' + n } : { __typename: 'OnlineStoreThemeFileBodyText', content: c } };
     });
+    // ein zweiter Auftrag ändert de.json, NACHDEM die erste Antwort geliefert wurde
+    if (FAKE.includes('vorlese') && s.nR === 1) s.files['locales/de.json'] += '\\n';
+    save(s);
     return { theme: { files: { nodes } } };
   }
   if (query.includes('themeFilesUpsert')) {
@@ -61,8 +65,15 @@ export async function shopifyGql(shop, api, tok, query, vars) {
       if ((FAKE.includes('step2err') && f.filename.endsWith('luxe-clothing.js') && callNo === 2) || (FAKE.includes('step2all') && callNo === 2)) { errs.push({ filename: f.filename, message: 'FAKE Syntaxfehler' }); continue; }
       let v = f.body.value;
       if (FAKE.includes('norm') && f.filename.includes('variantenkarte') && callNo === 1) v = v.replace(/\\n$/, '');
+      if (FAKE.includes('rueckcss') && callNo === 3 && f.filename.endsWith('luxe-clothing.css')) v += '\\n';
+      if (FAKE.includes('rueckde') && callNo === 4 && f.filename === 'locales/de.json') v += '\\n';
       s.files[f.filename] = v;
     }
+    // ein zweiter Auftrag schreibt zwischen den Schritten
+    if (FAKE.includes('fremdjs') && callNo === 1) s.files['assets/luxe-clothing.js'] += ' /* FREMDER AUFTRAG Katalogtexte */ ';
+    if (FAKE.includes('fremdcss') && callNo === 1) s.files['assets/luxe-clothing.css'] += ' /* FREMDER AUFTRAG CSS */ ';
+    if (FAKE.includes('fremdrueck') && callNo === 3) s.files['locales/de.json'] += '\\n';
+    if (FAKE.includes('fremdloesch') && callNo === 4) s.files['assets/luxe-clothing-variantenkarte.json'] += '\\n';
     save(s);
     if (FAKE.includes('throw2') && callNo === 2) throw new Error('GraphQL: fetch failed (FAKE)');
     return { themeFilesUpsert: { upsertedThemeFiles: vars.files.filter((f) => !errs.some((e) => e.filename === f.filename)).map((f) => ({ filename: f.filename })), userErrors: errs } };
@@ -232,6 +243,62 @@ try {
   ok(ALT.every((f) => stand().files[f] === sich[f]), 'Löschen mit userErrors: die neun alten Dateien sind trotzdem zurück');
   neuerStand(); lauf('', { LIVE: '1' });
   r = lauf('nodelete', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 6, 'Löschen ohne Wirkung: Exit 6 (Rücklesen weicht ab)'); ok(/ABWEICHUNG/.test(r.aus), 'Löschen ohne Wirkung: ABWEICHUNG gemeldet');
+
+  // 17. Ein zweiter Auftrag (z. B. «Katalogtexte deutsch») schreibt das JS ZWISCHEN Schritt 1 und Schritt 2: Schritt 2 wird NICHT geschrieben, seine Änderung bleibt, die Rücknahme lässt das JS unberührt
+  const FREMD_JS = ' /* FREMDER AUFTRAG Katalogtexte */ ', FREMD_CSS = ' /* FREMDER AUFTRAG CSS */ ';
+  neuerStand(); r = lauf('fremdjs', { LIVE: '1' });
+  gleich(r.code, 4, 'JS zwischen den Schritten fremd verändert: Exit 4'); gleich(stand().calls, [SCHRITT1], 'JS fremd verändert: nur Schritt 1 geschrieben, Schritt 2 nicht');
+  ok(stand().files[DATEIEN.JS] === sich[DATEIEN.JS] + FREMD_JS, 'JS fremd verändert: die Änderung des anderen Auftrags bleibt erhalten'); ok(stand().files[DATEIEN.CSS] === sich[DATEIEN.CSS], 'JS fremd verändert: CSS ebenfalls unberührt');
+  ok(/Schritt 2 NICHT geschrieben/.test(r.aus) && /assets\/luxe-clothing\.js/.test(r.aus) && /Dessen Änderung bleibt unberührt/.test(r.aus), 'JS fremd verändert: Meldung nennt Datei und dass die fremde Änderung bleibt');
+  ok(/Anker von patches\.mjs passen noch auf die veränderte Datei/.test(r.aus), 'JS fremd verändert: Hinweis, dass die Anker noch passen');
+  const v17 = stand().calls.length; r = lauf('', { LIVE: '1' });
+  gleich(r.code, 3, 'LIVE nach abgebrochenem Schritt 2: Exit 3 (Teilzustand erkannt)'); gleich(stand().calls.length, v17, 'LIVE nach abgebrochenem Schritt 2: nichts geschrieben');
+  r = lauf('', { ZURUECK: '1' });
+  ok(/zustand\s+assets\/luxe-clothing\.js\s+unberuehrt/.test(r.aus) && /zustand\s+assets\/luxe-clothing\.css\s+alt/.test(r.aus), 'Rücknahme (Trockenlauf): fremd verändertes JS heisst «unberuehrt», CSS «alt»');
+  r = lauf('', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 0, 'Rücknahme nach fremd verändertem JS: Exit 0 (kein Abbruch wegen «fremd»)');
+  gleich(stand().calls.slice(v17), [RUECK1, ['DEL', ...NEU]], 'Rücknahme nach fremd verändertem JS: schreibt nur die sieben Dateien von Schritt 1 und löscht die zwei neuen, kein CSS/JS');
+  ok(RUECK1.every((f) => stand().files[f] === sich[f]) && NEU.every((f) => stand().files[f] == null), 'Rücknahme nach fremd verändertem JS: sieben Dateien wie vor dem Paket, neue Dateien weg');
+  ok(stand().files[DATEIEN.JS] === sich[DATEIEN.JS] + FREMD_JS, 'Rücknahme nach fremd verändertem JS: die Änderung des anderen Auftrags ist noch da'); gleich((r.aus.match(/GLEICH/g) || []).length, 11, 'Rücknahme nach fremd verändertem JS: Rücklesen 11 × GLEICH');
+  // und mit FREMD_UEBERSCHREIBEN=1 wird die fremde, markenlose Datei trotzdem nie überschrieben
+  neuerStand(); lauf('fremdjs', { LIVE: '1' }); r = lauf('', { ZURUECK: '1', LIVE: '1', FREMD_UEBERSCHREIBEN: '1' });
+  gleich(r.code, 0, 'FREMD_UEBERSCHREIBEN=1: Exit 0'); ok(stand().files[DATEIEN.JS] === sich[DATEIEN.JS] + FREMD_JS, 'FREMD_UEBERSCHREIBEN=1 überschreibt ein fremd verändertes JS ohne unsere Marke NIE');
+
+  // 17b. dasselbe für das CSS
+  neuerStand(); r = lauf('fremdcss', { LIVE: '1' });
+  gleich(r.code, 4, 'CSS zwischen den Schritten fremd verändert: Exit 4'); gleich(stand().calls, [SCHRITT1], 'CSS fremd verändert: Schritt 2 nicht geschrieben');
+  ok(stand().files[DATEIEN.CSS] === sich[DATEIEN.CSS] + FREMD_CSS && stand().files[DATEIEN.JS] === sich[DATEIEN.JS], 'CSS fremd verändert: die Änderung bleibt, das JS ist unberührt');
+  r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'Rücknahme nach fremd verändertem CSS: Exit 0'); ok(stand().files[DATEIEN.CSS] === sich[DATEIEN.CSS] + FREMD_CSS && RUECK1.every((f) => stand().files[f] === sich[f]), 'Rücknahme nach fremd verändertem CSS: CSS unberührt, sieben Dateien zurück');
+
+  // 18. Der Ausgangsstand ändert sich NACH dem ersten Lesen, aber VOR dem Schreiben (de.json): nichts geschrieben, keine Merkliste
+  neuerStand(); r = lauf('vorlese', { LIVE: '1' });
+  gleich(r.code, 4, 'Änderung nach dem ersten Lesen: Exit 4'); gleich(stand().calls, [], 'Änderung nach dem ersten Lesen: nichts geschrieben'); ok(!existsSync(MERK), 'Änderung nach dem ersten Lesen: keine Merkliste');
+  ok(/Kurz vor dem Schreiben/.test(r.aus) && /locales\/de\.json/.test(r.aus), 'Änderung nach dem ersten Lesen: Meldung nennt die Datei');
+
+  // 19. Rücknahme: die Prüfsumme der zurückgeschriebenen Datei wird nie sichtbar → Exit 6, Texte/Liquid und neue Dateien unberührt; der gleiche Befehl macht danach weiter
+  neuerStand(); lauf('', { LIVE: '1' }); const v19 = stand().calls.length;
+  r = lauf('rueckcss', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 6, 'Rücknahme, Prüfsumme nicht sichtbar: Exit 6'); gleich(stand().calls.length, v19 + 1, 'Rücknahme, Prüfsumme nicht sichtbar: nur die CSS/JS-Schreibung, nichts weiter');
+  ok(RUECK1.every((f) => stand().files[f] === soll[f]) && NEU.every((f) => stand().files[f] === soll[f]), 'Rücknahme, Prüfsumme nicht sichtbar: Texte/Liquid und neue Dateien noch im neuen Stand'); ok(/noch nicht auf dem Ausgangsstand sichtbar/.test(r.aus) && /wiederholbar/.test(r.aus), 'Rücknahme, Prüfsumme nicht sichtbar: Meldung');
+  r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'Rücknahme wiederholt: Exit 0'); ok(RUECK1.every((f) => stand().files[f] === sich[f]) && NEU.every((f) => stand().files[f] == null) && stand().files[DATEIEN.JS] === sich[DATEIEN.JS], 'Rücknahme wiederholt: sieben Dateien zurück, neue weg, JS alt');
+
+  // 20. Rücknahme: jemand ändert de.json während der Wartezeit zwischen den Schritten → angehalten (Exit 3), nichts gelöscht, de.json bleibt
+  neuerStand(); lauf('', { LIVE: '1' }); const v20 = stand().calls.length;
+  r = lauf('fremdrueck', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 3, 'Rücknahme, de.json während der Rücknahme verändert: Exit 3'); gleich(stand().calls.length, v20 + 1, 'Rücknahme, de.json verändert: nur die CSS/JS-Schreibung, nichts gelöscht');
+  ok(stand().files[DATEIEN.DE] === soll[DATEIEN.DE] + '\n' && NEU.every((f) => stand().files[f] === soll[f]), 'Rücknahme, de.json verändert: die fremde Änderung bleibt, die neuen Dateien sind noch da'); ok(/Rücknahme angehalten/.test(r.aus) && /locales\/de\.json/.test(r.aus) && /wiederholbar/.test(r.aus), 'Rücknahme, de.json verändert: Meldung nennt die Datei und dass sie wiederholbar ist');
+
+  // 21. Rücknahme: eine der zwei zu löschenden Dateien wird verändert, NACHDEM Texte/Liquid zurückgeschrieben sind → nicht gelöscht (Exit 3), die fremde Änderung bleibt
+  neuerStand(); lauf('', { LIVE: '1' }); const v21 = stand().calls.length;
+  r = lauf('fremdloesch', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 3, 'Rücknahme, zu löschende Datei verändert: Exit 3'); gleich(stand().calls.length, v21 + 2, 'Rücknahme, zu löschende Datei verändert: CSS/JS und Texte geschrieben, nichts gelöscht');
+  ok(stand().files[NEUE_DATEIEN.KARTE] === soll[NEUE_DATEIEN.KARTE] + '\n' && stand().files[NEUE_DATEIEN.AUSBLENDEN] === soll[NEUE_DATEIEN.AUSBLENDEN], 'Rücknahme, zu löschende Datei verändert: beide neuen Dateien noch da, die fremde Änderung bleibt');
+  ok(/Rücknahme angehalten/.test(r.aus) && /variantenkarte/.test(r.aus), 'Rücknahme, zu löschende Datei verändert: Meldung nennt die Datei');
+  // 22. Rücknahme: die Prüfsumme der zurückgeschriebenen Texte wird nie sichtbar → die zwei neuen Dateien werden NICHT gelöscht (Exit 6)
+  neuerStand(); lauf('', { LIVE: '1' }); const v22 = stand().calls.length;
+  r = lauf('rueckde', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 6, 'Rücknahme, Texte nie sichtbar: Exit 6'); gleich(stand().calls.length, v22 + 2, 'Rücknahme, Texte nie sichtbar: nichts gelöscht');
+  ok(NEU.every((f) => stand().files[f] === soll[f]), 'Rücknahme, Texte nie sichtbar: die neuen Dateien sind noch da'); ok(/NICHT gelöscht/.test(r.aus) && /wiederholbar/.test(r.aus), 'Rücknahme, Texte nie sichtbar: Meldung');
 } finally {
   rmSync(D, { recursive: true, force: true });
 }

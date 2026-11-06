@@ -8,7 +8,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import vm from 'node:vm';
-import { DATEIEN, NEUE_DATEIEN, MD5_VOR, MARKE, TEXTE, CSS_NEU, anwenden, ausblendenText } from './patches.mjs';
+import { DATEIEN, NEUE_DATEIEN, MD5_VOR, MARKE, TEXTE, NEUE_SCHLUESSEL, CSS_NEU, anwenden, ausblendenText } from './patches.mjs';
 import { rendere, flach, sprachJson, SNIPPET_ATTRAPPEN, produkt, rubyLiquidGems } from './liquid_helfer.mjs';
 
 const HIER = new URL('.', import.meta.url).pathname;
@@ -42,13 +42,15 @@ const ANKER = {
     'loaded = true; root.dataset.sourceCount = String(products.length); renderGroups(); refreshTypes();', "categoryChildren('0').filter(c=>id(c.id)!=='277')];", 'types.add(option);',
     'node.hidden=!categories.has(key);node.disabled=false;', "node.setAttribute('aria-pressed',String(selected)); const count = node.querySelector('[data-lcl-audience-count]');", ":t('empty'));",
     "const cta = button(t('details'), () => openDetails(product, cta),'lcl-card-cta'); copy.append(cta);", 'const data=offersFor(selected);const offer=data.requiresChoice ?', "t('original_variants',{count:variants.length})",
+    'const raw = await readAsset(config.assets?.index);', "result.textContent = t('results',{count:filtered.length});", "} catch { showMessage(t('load_error'),true); retry.hidden = false; root.dataset.loadState = 'error'; }",
+    'if(product)openDetails(product,null);}', 'data.offers.forEach(item=>chooser.add(new Option(',
   ],
-  [DATEIEN.SECTION]: [`      "offer_unavailable": {{ 'luxe_clothing.offer_unavailable' | t | json }},\n`],
+  [DATEIEN.SECTION]: [`      "offer_unavailable": {{ 'luxe_clothing.offer_unavailable' | t | json }},\n`, `<p class="lcl-dialog-notice">{{ 'luxe_clothing.notice' | t }}</p>`],
   [DATEIEN.MANIFEST]: [`{"index": {{ 'luxe-clothing-index.json' | asset_url | json }}, "details": {`],
-  [DATEIEN.COVER]: ['href="{{ cover_product.url }}?view=luxe-studio"'],
-  [DATEIEN.CATEGORY]: ['href="{{ hero_product.url }}?view=luxe-studio"', '<a class="lxc-card-image" href="{{ item.url }}?view=luxe-studio"', '<h3><a href="{{ item.url }}?view=luxe-studio">', `<a class="lxc-card-cta" href="{{ item.url }}?view=luxe-studio">{% if section.settings.compact_shop_list %}{{ 'luxe_category.draft_cta' | t }}`],
-  [DATEIEN.DE]: ['"shape_tree": "Baum"\n  }', '"notice": "Produktkatalog zur Auswahl.', '"end_note": "Grössen'],
-  [DATEIEN.EN]: ['"shape_tree": "Tree"\n  }', '"notice": "Product catalogue.', '"end_note": "Sizes'],
+  [DATEIEN.COVER]: ['href="{{ cover_product.url }}?view=luxe-studio"', "target.searchParams.get('view') === 'luxe-studio'"],
+  [DATEIEN.CATEGORY]: ['href="{{ hero_product.url }}?view=luxe-studio"', '<a class="lxc-card-image" href="{{ item.url }}?view=luxe-studio"', '<h3><a href="{{ item.url }}?view=luxe-studio">', "target.searchParams.has('view')", `<a class="lxc-card-cta" href="{{ item.url }}?view=luxe-studio">{% if section.settings.compact_shop_list %}{{ 'luxe_category.draft_cta' | t }}`],
+  [DATEIEN.DE]: ['"shape_tree": "Baum"\n  }', '"notice": "Produktkatalog zur Auswahl.', '"end_note": "Grössen', '"intro": "Von T-Shirts und Kinderkleidung', '"shop_intro": "Wähle ein vorhandenes', '"preview_note": "Gestaltungsvorschau'],
+  [DATEIEN.EN]: ['"shape_tree": "Tree"\n  }', '"notice": "Product catalogue.', '"end_note": "Sizes', '"intro": "From T-shirts and kidswear', '"shop_intro": "Choose an existing', '"preview_note": "Design preview'],
   [DATEIEN.FR]: ['"shape_tree": "Sapin"\n  }'],
 };
 for (const [datei, anker] of Object.entries(ANKER)) {
@@ -79,7 +81,7 @@ gleich(unmarkiert.map((x) => x.z.slice(0, 80)), [], 'JS: jede geänderte Zeile t
 // vorhandene Zeilen sind nur geändert, nie gelöscht (ausser den 8 ersetzten Zeilen): alte Zeilen, die im Neuen fehlen, sind genau die Anker-Zeilen
 const neuMenge = new Set(neuZeilen);
 const verschwunden = altZeilen.filter((z) => !neuMenge.has(z));
-ok(verschwunden.length <= 12 && verschwunden.every((z) => /variantsFor|renderCard|const cta = |sourceCount|entries=|types\.add|categoryShortcuts|buttons\.forEach|showMessage|original_variants|const data=offersFor|const count=el|\.hidden/.test(z) || z.includes('const entries')), `JS: nur Ankerzeilen verändert (verschwunden: ${verschwunden.length})`);
+ok(verschwunden.length <= 18 && verschwunden.every((z) => /variantsFor|renderCard|const cta = |sourceCount|entries=|types\.add|categoryShortcuts|buttons\.forEach|showMessage|original_variants|const data=offersFor|const count=el|\.hidden|const raw = await|result\.textContent|initialProduct|data\.requiresChoice && data\.offers\.length/.test(z) || z.includes('const entries')), `JS: nur Ankerzeilen verändert (verschwunden: ${verschwunden.length})`);
 // Zeilen 449 bis 460 der Vorlage (Beschreibung, Optionen, Positionen, Masse: Katalogtexte-Auftrag) kommen unverändert und zusammenhängend im Neuen vor
 const block = altZeilen.slice(448, 460).join('\n');
 ok(jsAlt.split('\n').slice(448, 460).length === 12 && /placements|lcl-description/.test(block), 'Testvoraussetzung: Zeilen 449 bis 460 sind die Texte-Zeilen');
@@ -90,7 +92,11 @@ for (const [teil, text] of [
   ['hide.modelle', 'Ausblenden: Modelle gelesen'], ['hide.varianten', 'Ausblenden: Varianten gelesen'], ["root.dataset.hideState='unavailable'", 'Ausblenden defensiv (Fehler gefangen)'],
   ["throw new Error('Invalid variant map')", 'fehlende Variantenkarte = Ladefehler'], ["x.hash='lspod-start'", 'Ziel mit Editor-Anker'], ["lcl-button lcl-design-cta lcl-card-design", 'Karten-Knopf'],
   ["t('design_cta')+': '+titleForProduct(product)", 'Karten-Knopf mit Namen für Screenreader'], ["t(products.length?'empty':'none_orderable')", 'Satz bei null Modellen'], ['if(count>0)types.add(option)', 'Typ-Liste ohne leere Kategorien'],
-  ["t('orderable_variants'/* " + MARKE + " */,{count:variants.length})", 'Anzahl bestellbarer Ausführungen'], ['data.offers.length>1&&!priceChoiceId', 'Vorwahl bei zwei Angeboten'], ["(match.requiresChoice && match.offers.length<2)", 'unklare Angebote zählen nicht'],
+  ["t('orderable_variants'/* " + MARKE + " */,{count:variants.length})", 'Anzahl bestellbarer Ausführungen'], ["variants.length===1?t('orderable_variants_one')", 'Einzahl bestellbare Ausführung'],
+  ["t(filtered.length===1?'results_one':'results'", 'Einzahl Ergebniszeile'], ["lxEarly(); /* " + MARKE + " */ const raw = await", 'Karte und Ausblenden parallel zum Index'], ["const map = await lxLoads.map", 'Variantenkarte aus dem Vorabruf'],
+  ["throw new Error('LX_RELOAD')", 'veraltetes Dokument = eigener Fehler'], ["t(lxReload?'reload_needed':'load_error')", 'eigener Satz bei veraltetem Dokument'], ["retry.hidden = lxReload", 'kein nutzloser Knopf bei veraltetem Dokument'],
+  ["showMessage(t('model_unavailable'))", 'Satz bei Direktlink auf ein verborgenes Modell'], ["root.classList.toggle('lcl-no-models',!products.length)", 'Klasse bei null Modellen'],
+  ["data.offers.filter(item=>item.available!==false)", 'nicht lieferbare Angebote nicht zur Wahl'], ["t('notice_shoes')", 'Schuh-Satz nur bei Europa-Grössen'], ["/^EU\\b/i.test(displaySize(s,p))", 'Schuh-Satz prüft die angezeigte Grösse'], ['data.offers.length>1&&!priceChoiceId', 'Vorwahl bei zwei Angeboten'], ["(match.requiresChoice && match.offers.length<2)", 'unklare Angebote zählen nicht'],
 ]) ok(jsNeu.includes(teil), `JS enthält: ${text}`);
 ok(!jsNeu.includes('view=luxe-studio'), 'JS: kein Link auf die Vorschau');
 
@@ -99,21 +105,31 @@ const cssNeu = soll[DATEIEN.CSS];
 ok(cssNeu.startsWith(sich[DATEIEN.CSS].replace(/\s*$/, '\n')) && cssNeu.endsWith(CSS_NEU), 'CSS: nur angehängt');
 ok(/\.lcl-card \.lcl-card-design\{[^}]*margin:auto 0 8px;min-height:44px/.test(cssNeu), 'CSS: Knopf auf Karten mindestens 44 px hoch');
 ok(/\.lcl-card \.lcl-card-design\+\.lcl-card-cta\{margin-top:0\}/.test(cssNeu), 'CSS: Details-Knopf direkt unter dem Gestalten-Knopf');
+ok(/\.lcl-catalog\.lcl-no-models \.lcl-discovery,\.lcl-catalog\.lcl-no-models \.lcl-result-line\{display:none\}/.test(cssNeu), 'CSS: bei null Modellen keine leere Filterfläche');
 
 // ---------- 5. Sprachdateien ----------
 const json = { de: sprachJson(soll[DATEIEN.DE]), en: sprachJson(soll[DATEIEN.EN]), fr: sprachJson(soll[DATEIEN.FR]) };
 const jsonAlt = { de: sprachJson(sich[DATEIEN.DE]), en: sprachJson(sich[DATEIEN.EN]), fr: sprachJson(sich[DATEIEN.FR]) };
 for (const sp of ['de', 'en', 'fr']) {
   const neu = json[sp].luxe_clothing, alt = jsAlt0(sp);
+  for (const k of NEUE_SCHLUESSEL) if (TEXTE[sp][k] !== undefined) gleich(neu[k], TEXTE[sp][k], `${sp}: ${k}`);
   gleich(neu.none_orderable, TEXTE[sp].none_orderable, `${sp}: none_orderable`); gleich(neu.orderable_variants, TEXTE[sp].orderable_variants, `${sp}: orderable_variants`); gleich(neu.notice, TEXTE[sp].notice, `${sp}: notice`);
-  ok(neu.orderable_variants.includes('[count]'), `${sp}: orderable_variants trägt [count]`);
-  // alle anderen Schlüssel des Blocks unverändert
-  const erwartet = { ...alt, notice: TEXTE[sp].notice, none_orderable: TEXTE[sp].none_orderable, orderable_variants: TEXTE[sp].orderable_variants };
+  ok(neu.orderable_variants.includes('[count]') && !neu.orderable_variants_one.includes('[count]'), `${sp}: orderable_variants trägt [count], die Einzahl nicht`);
+  // alle anderen Schlüssel des Blocks unverändert (ersetzt: notice, intro; neu: die Schlüssel mit Text in dieser Sprache)
+  const erwartet = { ...alt, notice: TEXTE[sp].notice, ...(TEXTE[sp].intro !== undefined ? { intro: TEXTE[sp].intro } : {}), ...Object.fromEntries(NEUE_SCHLUESSEL.filter((k) => TEXTE[sp][k] !== undefined).map((k) => [k, TEXTE[sp][k]])) };
   gleich(neu, erwartet, `${sp}: luxe_clothing sonst unverändert`);
   const rest = { ...json[sp] }, restAlt = { ...jsonAlt[sp] }; delete rest.luxe_clothing; delete restAlt.luxe_clothing;
-  if (sp !== 'fr') { gleich(rest.luxe_category.end_note, TEXTE[sp].end_note, `${sp}: end_note`); restAlt.luxe_category = { ...restAlt.luxe_category, end_note: TEXTE[sp].end_note }; }
+  if (sp !== 'fr') {
+    for (const k of ['end_note', 'shop_intro', 'preview_note']) gleich(rest.luxe_category[k], TEXTE[sp][k], `${sp}: luxe_category.${k}`);
+    restAlt.luxe_category = { ...restAlt.luxe_category, end_note: TEXTE[sp].end_note, shop_intro: TEXTE[sp].shop_intro, preview_note: TEXTE[sp].preview_note };
+  }
   gleich(rest, restAlt, `${sp}: übrige Blöcke unverändert`);
-  ok(!/Vorschau/.test((json[sp].luxe_category || {}).end_note || ''), `${sp}: end_note verspricht keine Vorschau mehr`);
+  // keiner der sichtbaren Texte widerspricht dem neuen Stand (echter Bestell-Editor, nur Bestellbares)
+  const sichtbar = [neu.notice, neu.dialog_notice, neu.intro || '', (json[sp].luxe_category || {}).end_note || '', (json[sp].luxe_category || {}).shop_intro || '', (json[sp].luxe_category || {}).preview_note || ''].join(' | ');
+  ok(!/Vorschau|preview|noch nicht bestellt|nicht möglich|cannot yet|not yet|Individuelle Motive|Gestaltungsentwurf|design draft|alle anderen/.test(sichtbar.replace(/Produktkatalog/g, '')), `${sp}: kein Text verspricht noch eine Vorschau oder sagt «noch nicht bestellbar»: ${sichtbar.slice(0, 120)}`);
+  ok(!/Kinder|kidswear/.test(neu.intro || '') && !/Schuh|[Ss]hoe/.test(neu.notice + ' ' + neu.dialog_notice), `${sp}: intro nennt keine Kinderkleidung, notice und dialog_notice keine Schuhe (der Schuh-Satz steht in notice_shoes)`);
+  ok(/Schuh|[Ss]hoe|Pointure/.test(neu.notice_shoes), `${sp}: notice_shoes nennt die Schuhe`);
+  ok(!(neu.dialog_notice || '').includes('Produktseite') && !(neu.dialog_notice || '').includes('product page'), `${sp}: dialog_notice wiederholt den Satz «Gestaltet und bestellt wird auf der Produktseite» nicht`);
   ok(soll[{ de: DATEIEN.DE, en: DATEIEN.EN, fr: DATEIEN.FR }[sp]].startsWith(sich[{ de: DATEIEN.DE, en: DATEIEN.EN, fr: DATEIEN.FR }[sp]].match(/^\/\*[\s\S]*?\*\/\n/)[0]), `${sp}: Kommentarkopf der Sprachdatei erhalten`);
 }
 function jsAlt0(sp) { return jsonAlt[sp].luxe_clothing; }
@@ -130,7 +146,9 @@ for (const [sp, f] of [['de', DATEIEN.DE], ['en', DATEIEN.EN], ['fr', DATEIEN.FR
     ok(schluessel.length > 15, `${sp}: Block ${block} gelesen (${schluessel.length} Schlüssel)`);
   }
 }
-ok(!/ß/.test(TEXTE.de.notice + TEXTE.de.none_orderable + TEXTE.de.orderable_variants + TEXTE.de.end_note), 'de: Schweizer Rechtschreibung (kein ß)');
+ok(!/ß/.test(Object.values(TEXTE.de).join(' ')), 'de: Schweizer Rechtschreibung (kein ß)');
+gleich([TEXTE.de.results_one, TEXTE.de.orderable_variants_one, TEXTE.en.results_one, TEXTE.en.orderable_variants_one], ['1 Modell in dieser Auswahl', '1 bestellbare Ausführung', '1 model in this selection', '1 orderable variant'], 'Einzahl-Texte de/en');
+ok(!('results_one' in TEXTE.fr), 'fr: results_one fehlt bewusst (results ist dort auch nicht übersetzt, beide fallen auf Englisch zurück)');
 ok(/nur Modelle/.test(TEXTE.de.notice) && !/alle anderen noch nicht|Produktkatalog zur Auswahl/.test(TEXTE.de.notice), 'de: Hinweis sagt «nur Modelle», nicht mehr «alle anderen noch nicht»');
 ok(/only see models/.test(TEXTE.en.notice) && !/all others not yet/.test(TEXTE.en.notice), 'en: Hinweis sagt «only see models»');
 ok(TEXTE.de.notice.length < 230 && TEXTE.en.notice.length < 230, 'Hinweise bleiben kurz (unter 230 Zeichen)');
@@ -213,7 +231,8 @@ else {
   for (const [sp, spKey] of [['de', DATEIEN.DE], ['en', DATEIEN.EN], ['fr', DATEIEN.FR]]) {
     for (const stand of ['Soll', 'Ist']) {
       const q = stand === 'Soll' ? soll : sich;
-      const tr = flach(sprachJson(q[spKey]));
+      // Shopify fällt bei einem fehlenden Schlüssel auf die Standardsprache (en.default.json) zurück: so auch hier (fr.json hat nur wenige Schlüssel)
+      const tr = { ...flach(sprachJson(q[DATEIEN.EN])), ...flach(sprachJson(q[spKey])) };
       const r = rendere({
         main: q[DATEIEN.SECTION], translations: tr,
         templates: { ...templates, 'luxe-clothing-asset-manifest': q[DATEIEN.MANIFEST], 'luxe-selfdesign-cover': q[DATEIEN.COVER] },
@@ -227,11 +246,13 @@ else {
     }
     const s = labels[`${sp}-Soll`], i = labels[`${sp}-Ist`];
     if (!s.cfg || !i.cfg) continue;
-    gleich(Object.keys(s.cfg.labels).filter((k) => !(k in i.cfg.labels)).sort(), ['none_orderable', 'orderable_variants'], `Sektion ${sp}: genau zwei neue Labels`);
+    gleich(Object.keys(s.cfg.labels).filter((k) => !(k in i.cfg.labels)).sort(), [...NEUE_SCHLUESSEL].sort(), `Sektion ${sp}: genau die ${NEUE_SCHLUESSEL.length} neuen Labels`);
     gleich(Object.keys(i.cfg.labels).filter((k) => !(k in s.cfg.labels)), [], `Sektion ${sp}: kein Label verloren`);
     gleich(s.cfg.labels.none_orderable, TEXTE[sp].none_orderable, `Sektion ${sp}: Label none_orderable trägt den Satz`); gleich(s.cfg.labels.orderable_variants, TEXTE[sp].orderable_variants, `Sektion ${sp}: Label orderable_variants`);
     gleich(s.cfg.labels.notice, TEXTE[sp].notice, `Sektion ${sp}: Label notice trägt den neuen Hinweis`);
-    for (const k of Object.keys(i.cfg.labels)) if (!['notice'].includes(k) && JSON.stringify(i.cfg.labels[k]) !== JSON.stringify(s.cfg.labels[k])) ok(false, `Sektion ${sp}: Label ${k} hat sich unerwartet geändert`);
+    for (const k of Object.keys(i.cfg.labels)) if (!['notice', 'intro'].includes(k) && JSON.stringify(i.cfg.labels[k]) !== JSON.stringify(s.cfg.labels[k])) ok(false, `Sektion ${sp}: Label ${k} hat sich unerwartet geändert`);
+    for (const k of NEUE_SCHLUESSEL) if (TEXTE[sp][k] !== undefined) gleich(s.cfg.labels[k], TEXTE[sp][k], `Sektion ${sp}: Label ${k}`); else gleich(s.cfg.labels[k], TEXTE.en[k], `Sektion ${sp}: Label ${k} fällt auf die Standardsprache (Englisch) zurück`);
+    gleich(s.cfg.labels.intro, TEXTE[sp].intro !== undefined ? TEXTE[sp].intro : TEXTE.en.intro, `Sektion ${sp}: Label intro`);
     gleich(Object.keys(s.cfg.assets).filter((k) => !(k in i.cfg.assets)).sort(), ['ausblenden', 'variantenkarte'], `Sektion ${sp}: Manifest hat genau zwei neue Dateien`);
     ok(/\/assets\/luxe-clothing-ausblenden\.json\?v=/.test(s.cfg.assets.ausblenden) && /\/assets\/luxe-clothing-variantenkarte\.json\?v=/.test(s.cfg.assets.variantenkarte), `Sektion ${sp}: Manifest-Adressen auf die neuen Dateien`);
     ok(/^\/assets\/luxe-clothing-[a-z\d-]+\.json$/i.test(new URL(s.cfg.assets.ausblenden, 'https://luxestyle.ch').pathname.replace(/^.*\/assets/, '/assets')) && /^\/assets\/luxe-clothing-[a-z\d-]+\.json$/i.test(new URL(s.cfg.assets.variantenkarte, 'https://luxestyle.ch').pathname.replace(/^.*\/assets/, '/assets')), `Sektion ${sp}: Dateinamen erfüllen die Prüfung assetUrl() des JS`);
@@ -239,9 +260,13 @@ else {
     gleich(s.cfg.assets.index, i.cfg.assets.index, `Sektion ${sp}: Index-Adresse unverändert`);
     const hinweis = (h) => (h.match(/<p class="lcl-notice">([^<]*)<\/p>/) || [])[1];
     gleich(hinweis(s.html), TEXTE[sp].notice.replace(/&/g, '&amp;'), `Sektion ${sp}: sichtbarer Hinweis im Kopf`);
+    const hinweisDialog = (h) => (h.match(/<p class="lcl-dialog-notice">([^<]*)<\/p>/) || [])[1];
+    gleich(hinweisDialog(s.html), TEXTE[sp].dialog_notice.replace(/&/g, '&amp;'), `Sektion ${sp}: Hinweis im Dialog ist der kürzere Text`);
+    gleich(hinweisDialog(i.html), hinweis(i.html), `Sektion ${sp}: Ist-Stand hatte im Dialog denselben Text wie im Kopf (Messgerät erkennt den Unterschied)`);
   }
   ok(!labels['de-Soll'].html.includes('view=luxe-studio'), 'Sektion: kein Vorschau-Link in den Titelkacheln des Kopfes');
-  gleich((labels['de-Soll'].html.match(/lspod-start/g) || []).length, 3, 'Sektion: drei Titelkacheln auf den Editor');
+  gleich((labels['de-Soll'].html.match(/href="[^"]*lspod-start"/g) || []).length, 3, 'Sektion: drei Titelkacheln auf den Editor');
+ok(/target\.hash === '#lspod-start'/.test(labels['de-Soll'].html) && !/target\.hash === '#lspod-start'/.test(labels['de-Ist'].html), 'Sektion: das Vorschau-Skript der Titelkacheln erkennt die Editor-Ziele (Ist: nicht)');
 }
 
 console.log(`${n} Prüfungen, ${fehler} Fehler`);

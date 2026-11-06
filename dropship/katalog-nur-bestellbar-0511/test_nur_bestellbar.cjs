@@ -99,10 +99,13 @@ function sollDokument(htmlIst, ctx) {
   let html = mitKonfig(htmlIst, (cfg) => {
     const basis = cfg.assets.index.split('luxe-clothing-index.json')[0];
     cfg.assets = { index: cfg.assets.index, ausblenden: basis + 'luxe-clothing-ausblenden.json?v=nb0511', variantenkarte: basis + 'luxe-clothing-variantenkarte.json?v=nb0511', details: cfg.assets.details };
-    for (const k of ['notice', 'none_orderable', 'orderable_variants']) cfg.labels[k] = de[k];
+    for (const k of ['notice', 'intro', ...P.NEUE_SCHLUESSEL]) cfg.labels[k] = de[k];
   });
   const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  html = html.replace(/(<p class="lcl-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(de.notice) + b).replace(/(<p class="lcl-dialog-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(de.notice) + b);
+  html = html.replace(/(<p class="lcl-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(de.notice) + b).replace(/(<p class="lcl-dialog-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(de.dialog_notice) + b).replace(/(<p class="lcl-intro">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(de.intro) + b);
+  // luxe_category (Shopliste unter dem Fenster): die alten Sätze müssen genau einmal im Live-Dokument stehen und werden durch die neuen ersetzt
+  const deAlt = JSON.parse(ctx.alt[P.DATEIEN.DE].replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')).luxe_category, deNeu = JSON.parse(soll[P.DATEIEN.DE].replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')).luxe_category;
+  for (const k of ['shop_intro', 'end_note']) { const stellen = html.split(esc(deAlt[k])).length - 1; erg.daten['alterSatz_' + k] = stellen; if (stellen === 1) html = html.split(esc(deAlt[k])).join(esc(deNeu[k])); else if (stellen > 1) throw new Error('Satz ' + k + ' kommt ' + stellen + '× im Live-Dokument vor'); }
   // Links der Titelkacheln und der Shopliste: genau die Zeichenkette, die das Soll-Liquid ausgibt (echtes Ruby-Liquid, ein Aufruf für alle Produkte)
   const cfg = JSON.parse(htmlIst.match(konfigRegex)[2]);
   const ersteLieferbare = {};
@@ -177,14 +180,14 @@ async function oeffne(browser, vp, o) {
         return await route.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: wert });
       }
       const m = p.match(/\/assets\/(luxe-clothing-(?:index|reference-gallery|details-s\d+)\.json)$/);
-      if (m) return await route.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: await datenAsset(route, m[1]) });
+      if (m) { if (o.indexVerzoegerung && m[1] === 'luxe-clothing-index.json') await schlafen(o.indexVerzoegerung); return await route.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: await datenAsset(route, m[1]) }); }
       if (typ === 'image' || typ === 'media') return LOKAL ? await route.abort() : await route.continue();
       if (/(^|\.)luxestyle\.ch$|cdn\.shopify\.com$/.test(u.hostname) && ['stylesheet', 'script', 'font'].includes(typ) && req.method() === 'GET') return await statisch(route, req.url());
       if (LOKAL && ['fetch', 'xhr'].includes(typ)) return await route.fulfill({ status: 404, body: '' });
       return await route.continue();
     } catch (e) { try { await route.abort(); } catch { /* Seite schon zu */ } }
   });
-  await page.goto(LIVE_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.goto(LIVE_URL + (o.query || ''), { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForFunction(() => { const r = document.querySelector('[data-luxe-clothing]'); return r && (r.dataset.loadState === 'ready' || r.dataset.loadState === 'error'); }, null, { timeout: 40000 });
   if (process.env.DEBUG_TEST === '1' && (await page.evaluate(() => document.querySelector('[data-luxe-clothing]').dataset.loadState)) === 'error') {
     console.log('DIAGNOSE Ladefehler:', JSON.stringify(await page.evaluate(async () => { const c = JSON.parse(document.querySelector('[data-lcl-config]').textContent); const out = {}; for (const k of ['index', 'variantenkarte', 'ausblenden']) { try { const r = await fetch(c.assets[k] || '/nix'); out[k] = r.status + ' ' + c.assets[k]; } catch (e) { out[k] = 'FEHLER ' + e.message; } } return out; })), seite.seitenfehler, seite.konsole);
@@ -204,7 +207,8 @@ const lies = (page) => page.evaluate(() => {
   return {
     ladezustand: root.dataset.loadState, quelleAnzahl: root.dataset.sourceCount, gefiltert: root.dataset.filteredCount, hideState: root.dataset.hideState || '',
     ergebniszeile: txt('[data-lcl-results]'), nachricht: txt('[data-lcl-message]'), nachrichtSichtbar: !document.querySelector('[data-lcl-message]').hidden, retrySichtbar: !document.querySelector('[data-lcl-retry]').hidden,
-    hinweis: txt('.lcl-notice'), hinweisDialog: txt('.lcl-dialog-notice'),
+    hinweis: txt('.lcl-notice'), hinweisDialog: txt('.lcl-dialog-notice'), intro: txt('.lcl-intro'), shopIntro: txt('.lxc-collection-heading > p'),
+    filterFlaeche: getComputedStyle(document.querySelector('.lcl-discovery')).display, ergebnisFlaeche: getComputedStyle(document.querySelector('.lcl-result-line')).display,
     karten: kartenInfo(),
     gruppen: q('.lcl-group').map((g) => ({ key: g.dataset.group, name: g.querySelector('.lcl-group-name')?.textContent.trim(), n: Number(g.querySelector('.lcl-group-count')?.textContent) })),
     gruppenMobil: q('[data-lcl-group-select] option').map((o) => o.value),
@@ -269,7 +273,8 @@ function pruefeListe(tag, d, karten, e, offers) {
   const N = e.sichtbar.size;
   gleich(d.ladezustand, 'ready', `${tag}: Katalog geladen`);
   gleich([d.quelleAnzahl, d.gefiltert], [String(N), String(N)], `${tag}: Quell- und Trefferzahl gleich der Zahl bestellbarer Modelle`);
-  gleich(d.ergebniszeile, `${N} Modelle in dieser Auswahl`, `${tag}: Ergebniszeile`);
+  gleich(d.ergebniszeile, N === 1 ? '1 Modell in dieser Auswahl' : `${N} Modelle in dieser Auswahl`, `${tag}: Ergebniszeile`);
+  pruef(d.filterFlaeche !== 'none' && d.ergebnisFlaeche !== 'none', `${tag}: Filterfläche und Ergebniszeile sind sichtbar, solange es Modelle gibt`);
   gleich(karten.length, N, `${tag}: Kartenzahl über alle Seiten`);
   gleich([...new Set(karten.map((k) => k.id))].sort(), [...e.sichtbar].sort(), `${tag}: genau die erwarteten Modelle erscheinen`);
   const ohneKnopf = karten.filter((k) => k.designAnzahl !== 1);
@@ -335,7 +340,7 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
     const sel = (d.ctaHref.match(/variant=(\d+)/) || [])[1];
     pruef(offers.some((o) => o.variantId === sel && o.available !== false && m.vids.has(o.printfulVariantId)), `${tag}/${pid}: Knopf-Variante ${sel} gehört zu einer bestellbaren Ausführung dieses Modells`);
   }
-  gleich(d.anzahlZeile, `${m.vids.size} bestellbare Ausführungen`, `${tag}/${pid}: Anzahl-Zeile nennt die bestellbaren Ausführungen`);
+  gleich(d.anzahlZeile, m.vids.size === 1 ? '1 bestellbare Ausführung' : `${m.vids.size} bestellbare Ausführungen`, `${tag}/${pid}: Anzahl-Zeile nennt die bestellbaren Ausführungen (Einzahl bei einer)`);
   pruef(d.scrollBreite <= d.fensterBreite + 1, `${tag}/${pid}: Details ohne seitliches Scrollen`);
   await page.keyboard.press('Escape'); await page.waitForTimeout(150);
   await page.fill('[data-lcl-search]', ''); await page.waitForTimeout(200);
@@ -391,7 +396,7 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
     const d = await lies(s.page); const karten = await alleKarten(s.page);
     erg.daten.nachher1440 = { karten: karten.length, kartenMitKnopf: karten.filter((k) => k.designAnzahl === 1).length, studioLinks: d.studioLinks, editorLinksListe: d.editorLinksListe, editorLinksTitel: d.editorLinksTitel, gruppen: d.gruppen.map((g) => `${g.name} ${g.n}`), typOptionen: d.typen.length - 1, farbenFilter: d.farbenFilter.length, groessenFilter: d.groessenFilter.length, ergebniszeile: d.ergebniszeile, hinweis: d.hinweis };
     pruefeListe('1440', d, karten, e0, offers);
-    pruef(d.hinweis === JSON.parse(soll[P.DATEIEN.DE].replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')).luxe_clothing.notice && d.hinweisDialog === d.hinweis, '1440: Hinweis im Kopf und im Dialog ist der neue Wortlaut');
+    { const deN = JSON.parse(soll[P.DATEIEN.DE].replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')).luxe_clothing; pruef(d.hinweis === deN.notice && d.hinweisDialog === deN.dialog_notice && d.hinweis !== d.hinweisDialog, '1440: Hinweis im Kopf und im Dialog ist der neue Wortlaut (Dialog kürzer)'); }
     // Suche ohne Treffer: die Standardmeldung (es gibt bestellbare Modelle, nur keins passt), nicht der Satz für «nichts bestellbar»
     {
       await s.page.fill('[data-lcl-search]', 'zzzzqqxx'); await s.page.waitForTimeout(350);
@@ -522,6 +527,7 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
     gleich([d.ladezustand, d.karten.length, d.quelleAnzahl, d.gefiltert], ['ready', 0, '0', '0'], `G (${name}): geladen, 0 Karten`);
     gleich([d.nachricht, d.nachrichtSichtbar], [deTexte.none_orderable, true], `G (${name}): ehrlicher Satz statt leerer Seite`);
     gleich(d.ergebniszeile, '0 Modelle in dieser Auswahl', `G (${name}): Ergebniszeile`);
+    gleich([d.filterFlaeche, d.ergebnisFlaeche], ['none', 'none'], `G (${name}): bei null Modellen keine leere Filterfläche und keine Ergebniszeile, nur der Satz`);
     pruef(d.gruppen.every((g) => g.key === 'all'), `G (${name}): keine Gruppe ausser «Alle Produkte»`);
     gleich(d.sonderauswahl.map((x) => [x.key, x.sichtbar]), [['all', true], ['baby', false], ['unisex', false]], `G (${name}): Sonderauswahl: nur «Alle» bleibt sichtbar`);
     pruef(d.studioLinks === 0 && s.seitenfehler.length === 0, `G (${name}): keine Vorschau-Links, keine Seitenfehler`);
@@ -575,6 +581,132 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
       gleich([karten.length, karten.some((k) => k.id === einzel)], [e0.sichtbar.size - 1, false], `L: Modell ${einzel} mit nur einer, nun unklaren Ausführung erscheint nicht`);
       await s.ctx.close();
     } else erg.fehler.push('L: kein Modell mit genau einer bestellbaren Ausführung (Testvoraussetzung)');
+  }
+
+  // ===== M. Korrekturrunde 06.11.2026: Einzahl, Hinweise, Direktlink, Angebotsauswahl, veraltetes Dokument, Vorabruf =====
+  {
+    const deL = deTexte;
+    const vp = { width: 1440, height: 900 };
+    const treffer = (suche) => [...e0.sichtbar].filter((p) => e0.zeile.get(p).title.toLowerCase().includes(suche)).length;
+    {
+      const s = await oeffne(browser, vp, grund);
+      // M1 Einzahl und Mehrzahl in der Ergebniszeile
+      for (const [suche, n] of [['spiral', 1], ['tote', 2]]) {
+        pruef(treffer(suche) === n, `M1: Testvoraussetzung: «${suche}» trifft ${n} sichtbare Modelle (gerechnet ${treffer(suche)})`);
+        await s.page.fill('[data-lcl-search]', suche); await s.page.waitForTimeout(450);
+        const dd = await lies(s.page);
+        gleich(dd.ergebniszeile, n === 1 ? deL.results_one : deL.results.replace('[count]', String(n)), `M1: Ergebniszeile bei ${n} Treffer(n)`);
+      }
+      await s.page.fill('[data-lcl-search]', ''); await s.page.waitForTimeout(250);
+      // M2/M3 Details eines Modells mit genau einer bestellbaren Ausführung: Einzahl; der Hinweis im Dialog ist der kürzere Text, der Satz «Gestaltet und bestellt wird auf der Produktseite» steht genau einmal
+      const einzelnes = [...e0.sichtbar].find((p) => e0.modelle[p].vids.size === 1);
+      pruef(!!einzelnes, 'M2: Testvoraussetzung: ein Modell mit genau einer bestellbaren Ausführung');
+      if (einzelnes) {
+        const ok = await modellOeffnen(s.page, einzelnes, e0.zeile.get(einzelnes).title); pruef(ok, `M2: Modell ${einzelnes} auffindbar`);
+        if (ok) {
+          const d2 = await detailLesen(s.page);
+          gleich(d2.anzahlZeile, deL.orderable_variants_one, `M2: Modell ${einzelnes} zeigt «${deL.orderable_variants_one}» (nicht «1 bestellbare Ausführungen»)`);
+          const dl = await s.page.evaluate(() => { const dlg = document.querySelector('[data-lcl-dialog]'); return { hinweis: dlg.querySelector('.lcl-dialog-notice').textContent.trim(), text: dlg.innerText }; });
+          gleich(dl.hinweis, deL.dialog_notice, 'M3: Hinweis im Dialog ist der kürzere Text');
+          gleich((dl.text.match(/Gestaltet und bestellt wird auf der Produktseite im Shop\./g) || []).length, 1, 'M3: der Satz «Gestaltet und bestellt wird auf der Produktseite im Shop.» steht im Dialog genau einmal');
+          pruef(!/Schuh/.test(dl.text.split('\n').slice(0, 6).join(' ')), 'M3: kein Schuh-Satz im Dialog eines Nicht-Schuh-Modells');
+          await s.page.keyboard.press('Escape'); await s.page.waitForTimeout(150);
+        }
+      }
+      // M3b Kopf: kein Schuh-Satz, neuer Einleitungstext, Text über der Shopliste und Schlusssatz
+      const dK = await lies(s.page);
+      pruef(!/Schuh/.test(dK.hinweis) && !/Schuh/.test(dK.hinweisDialog), 'M3b: ohne Schuhmodell kein Schuh-Satz im Hinweis (Kopf und Dialog)');
+      gleich(dK.intro, deL.intro, 'M3b: Einleitung nennt keine Kinderkleidung mehr');
+      gleich(dK.shopIntro, JSON.parse(soll[P.DATEIEN.DE].replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')).luxe_category.shop_intro, 'M3b: Text über der Shopliste verspricht keinen Entwurf mehr');
+      pruef(!/Entwurf|noch nicht bestellt/.test(dK.shopIntro), `M3b: Text über der Shopliste: «${dK.shopIntro}»`);
+      pruef(dK.filterFlaeche !== 'none' && dK.ergebnisFlaeche !== 'none', 'M3b: mit sichtbaren Modellen sind Filterfläche und Ergebniszeile sichtbar');
+      pruef(s.seitenfehler.length === 0 && s.konsole.length === 0, `M: keine Seiten-/Konsolenfehler: ${s.seitenfehler.concat(s.konsole).slice(0, 2).join(' | ')}`);
+      await s.ctx.close();
+    }
+    // M4 Schuh-Satz erscheint, sobald ein Schuhmodell sichtbar ist (Angebote für die ersten Varianten eines Schuhmodells ergänzt; alle Schuhmodelle stehen heute im Zusatzschutz, darum mit leerer Ausblenden-Datei)
+    {
+      const schuh = index.products.find((p) => /slip-on canvas shoes/i.test(p.title) && karte.modelle[String(p.id)]) || index.products.find((p) => /\bshoes?\b/i.test(p.title) && karte.modelle[String(p.id)]);
+      pruef(!!schuh, 'M4: Testvoraussetzung: ein Schuhmodell im Index');
+      if (schuh) {
+        const vids = karte.modelle[String(schuh.id)].slice(0, 6).map((z) => String(z[0]));
+        const s = await oeffne(browser, vp, { ...grund, ausblenden: JSON.stringify({ schemaVersion: 1, modelle: [], varianten: {} }), html: mitKonfig(htmlSoll, (cfg) => { vids.forEach((v) => cfg.shopVariantOffers.push({ ...cfg.shopVariantOffers[0], printfulVariantId: v })); }) });
+        const d = await lies(s.page);
+        pruef(d.karten.some((k) => k.id === String(schuh.id)) || d.gefiltert !== String(e0.sichtbar.size), `M4: das Schuhmodell ${schuh.id} ist sichtbar`);
+        gleich([d.hinweis, d.hinweisDialog], [deL.notice + ' ' + deL.notice_shoes, deL.dialog_notice + ' ' + deL.notice_shoes], 'M4: Hinweis in Kopf und Dialog trägt jetzt den Schuh-Satz');
+        const groessenTexte = await s.page.evaluate(() => [...document.querySelectorAll('[data-lcl-size-filter] option')].map((o) => o.textContent.trim()));
+        pruef(groessenTexte.some((g) => /^EU\b/i.test(g)), `M4: der Grössenfilter zeigt Europa-Grössen (${groessenTexte.slice(0, 4).join(', ')})`);
+        erg.daten.schuhSatz = { modell: schuh.id, titel: schuh.title, hinweis: d.hinweis };
+        pruef(s.seitenfehler.length === 0, `M4: Seitenfehler: ${s.seitenfehler.slice(0, 2).join(' | ')}`);
+        await s.ctx.close();
+      }
+    }
+    // M5 Direktlink auf ein verborgenes oder unbekanntes Modell sagt, warum nichts aufgeht; auf ein sichtbares Modell öffnet er die Details
+    for (const [pid, name, offen] of [[String(ausb.modelle[0]), 'verborgenes Modell', false], ['99999999', 'unbekanntes Modell', false], ['71', 'sichtbares Modell', true]]) {
+      const s = await oeffne(browser, vp, { ...grund, query: '&catalog_product=' + pid });
+      const d = await lies(s.page); const dialogOffen = await s.page.evaluate(() => document.querySelector('[data-lcl-dialog]').open);
+      gleich([dialogOffen, d.nachricht, d.nachrichtSichtbar], offen ? [true, '', false] : [false, deL.model_unavailable, true], `M5: Direktlink auf ${name} (${pid})`);
+      pruef(d.ladezustand === 'ready' && d.karten.length === 12 || offen, `M5: ${name}: Katalog bleibt benutzbar (${d.ladezustand}, ${d.karten.length} Karten)`);
+      await s.ctx.close();
+    }
+    // M6 nicht lieferbare Angebote stehen nicht zur Wahl, solange es ein lieferbares gibt
+    {
+      const zwei = Object.entries(e0.offersProVariante).find(([v, os]) => new Set(os.map((o) => o.variantId)).size > 1 && Object.values(e0.modelle).some((m) => m.vids.has(v)));
+      pruef(!!zwei, 'M6: Testvoraussetzung: Ausführung mit zwei Shopangeboten');
+      if (zwei) {
+        const [vid, os] = zwei; const pid = Object.keys(e0.modelle).find((p) => e0.modelle[p].vids.has(vid));
+        const weg = os[0].variantId, bleibt = os.find((o) => o.variantId !== weg).variantId;
+        const s = await oeffne(browser, vp, { ...grund, html: mitKonfig(htmlSoll, (cfg) => { cfg.shopVariantOffers.forEach((o) => { if (o.variantId === weg) o.available = false; }); }) });
+        const ok = await modellOeffnen(s.page, pid, e0.zeile.get(pid).title); pruef(ok, `M6: Modell ${pid} auffindbar`);
+        if (ok) {
+          const farbe = e0.modelle[pid].farbeVon[vid];
+          if (farbe) await s.page.evaluate((f) => [...document.querySelectorAll('[data-lcl-dialog] .lcl-color-choice')].find((b) => b.dataset.colorKey.split('|')[0] === f).click(), farbe);
+          await s.page.waitForTimeout(100);
+          await s.page.evaluate((v) => { const b = document.querySelector(`[data-lcl-dialog] .lcl-size[data-variant-id="${v}"]`); if (b) b.click(); }, vid);
+          await s.page.waitForTimeout(150);
+          const auswahl = await s.page.evaluate(() => { const sel = document.querySelector('[data-lcl-dialog] [data-lcl-shop-offer-select]'); return sel ? { optionen: [...sel.options].map((o) => o.value), wert: sel.value } : null; });
+          pruef(auswahl !== null, 'M6: die Angebotsauswahl ist da');
+          if (auswahl) gleich([auswahl.optionen, auswahl.wert], [['', bleibt], bleibt], 'M6: nur das lieferbare Angebot steht zur Wahl und ist vorgewählt');
+          const dd = await detailLesen(s.page);
+          gleich([dd.ctaAnzahl, dd.wechselKnopf], [1, 0], 'M6: der Knopf «Jetzt selbst gestalten» ist da, kein «Zu einer bestellbaren Ausführung wechseln»');
+        }
+        await s.ctx.close();
+      }
+    }
+    // M7 veraltetes Dokument (neues JS, im Dokument fehlt der Schlüssel «variantenkarte»): eigener Satz, kein nutzloser Knopf; ein 404 der Karte bleibt der Ladefehler mit «Erneut versuchen» (Gruppe F)
+    {
+      const s = await oeffne(browser, vp, { ...grund, html: mitKonfig(htmlSoll, (cfg) => { delete cfg.assets.variantenkarte; }) });
+      const d = await lies(s.page);
+      gleich([d.ladezustand, d.karten.length, d.retrySichtbar, d.nachrichtSichtbar, d.nachricht], ['error', 0, false, true, deL.reload_needed], 'M7: veraltetes Dokument: Satz «bitte neu laden», kein Knopf «Erneut versuchen»');
+      pruef(s.seitenfehler.length === 0, `M7: Seitenfehler: ${s.seitenfehler.slice(0, 2).join(' | ')}`);
+      await s.ctx.close();
+    }
+    // M8 Vorabruf: Karte und Ausblenden-Datei starten zugleich mit dem Index (der Index antwortet absichtlich erst nach 250 ms; nacheinander begännen sie 250 ms später)
+    {
+      const s = await oeffne(browser, vp, { ...grund, indexVerzoegerung: 250 });
+      const t = await s.page.evaluate(() => { const r = performance.getEntriesByType('resource'); const f = (n) => r.find((e) => e.name.includes(n)); return { index: f('luxe-clothing-index.json')?.startTime, indexEnde: f('luxe-clothing-index.json')?.responseEnd, karte: f('variantenkarte')?.startTime, ausb: f('ausblenden')?.startTime }; });
+      erg.daten.vorabruf = t;
+      pruef([t.index, t.indexEnde, t.karte, t.ausb].every((x) => typeof x === 'number') && t.indexEnde - t.index >= 200 && t.karte - t.index < 80 && t.ausb - t.index < 80, `M8: Karte (${Math.round(t.karte - t.index)} ms) und Ausblenden (${Math.round(t.ausb - t.index)} ms) starten zugleich mit dem Index (Index ${Math.round(t.indexEnde - t.index)} ms unterwegs)`);
+      const d = await lies(s.page); gleich(d.ladezustand, 'ready', 'M8: Katalog lädt mit dem Vorabruf');
+      await s.ctx.close();
+    }
+  }
+
+  // ===== N. Knöpfe unten bündig in jeder Reihe (1440, 1024, 768, 390 px), auch wenn die erste Karte einen sehr langen Titel hat =====
+  for (const breite of SCHNELL ? [1440, 768] : [1440, 1024, 768, 390]) {
+    const s = await oeffne(browser, { width: breite, height: breite === 390 ? 844 : 900 }, grund);
+    for (const langerTitel of [false, true]) {
+      const reihen = await s.page.evaluate((lang) => {
+        const cards = [...document.querySelectorAll('.lcl-card')];
+        if (lang) cards[0].querySelector('h3').textContent = 'Sehr langer Titel zum Prüfen der Ausrichtung '.repeat(6);
+        const rows = new Map();
+        cards.forEach((card) => { const c = card.getBoundingClientRect(), b = card.querySelector('.lcl-design-cta').getBoundingClientRect(), d = card.querySelector('.lcl-card-cta').getBoundingClientRect(); const key = Math.round(c.top); if (!rows.has(key)) rows.set(key, []); rows.get(key).push({ buyTop: b.top, boden: c.bottom - d.bottom }); });
+        return [...rows.values()].map((r) => ({ n: r.length, buyTop: Math.max(...r.map((x) => x.buyTop)) - Math.min(...r.map((x) => x.buyTop)), boden: Math.max(...r.map((x) => x.boden)) - Math.min(...r.map((x) => x.boden)), bodenMax: Math.max(...r.map((x) => x.boden)) }));
+      }, langerTitel);
+      const mehr = reihen.filter((r) => r.n > 1);
+      pruef(mehr.length >= 1 && mehr.every((r) => r.buyTop <= 1.5 && r.boden <= 1.5 && r.bodenMax <= 24), `N ${breite}${langerTitel ? ' (erste Karte mit sehr langem Titel)' : ''}: in jeder Reihe liegen die Knöpfe auf gleicher Höhe und unten bündig: ${JSON.stringify(reihen)}`);
+      erg.daten[`ausrichtung${breite}${langerTitel ? 'Lang' : ''}`] = reihen.map((r) => [r.n, Math.round(r.buyTop), Math.round(r.boden)]);
+    }
+    await s.ctx.close();
   }
 
   // ===== I. Der Knopf führt auf eine echte Produktseite mit dem Bestell-Editor (ein Live-Abruf, nur ohne LOKAL) =====
