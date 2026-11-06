@@ -142,6 +142,10 @@ function dokumentFuer(html, variante, sprachSeite, opt) {
   const schluessel = ['notice', 'intro', ...K.NEUE_SCHLUESSEL_A, ...(variante === 'kombi' ? K.NEUE_SCHLUESSEL_B : [])];
   if (variante === 'kombi') cfg.textsAsset = basis + 'luxe-clothing-texts-de.json?v=lxtest';
   for (const k of schluessel) if (luxe[k] !== undefined) cfg.labels[k] = luxe[k];
+  // Korrektur der Abnahme an einem bestehenden Etikett (nur im gemeinsamen Stand): das Sortier-Etikett, so wie der Server es aus den Sprachdateien liefert
+  if (variante === 'kombi') {
+    for (const k of Object.keys(K.KORREKTUR_SCHLUESSEL.de)) if (luxe[k] !== undefined) cfg.labels[k] = luxe[k];
+  }
   if (variante === 'kombi') {
     if (opt.etikettFehlt) { delete cfg.labels.original_note_translated; for (const k of NEUE_ETIKETTEN) delete cfg.labels[k]; }
     if (opt.etikettMissing) { for (const k of ['original_note_translated', ...NEUE_ETIKETTEN]) cfg.labels[k] = 'translation missing: de.luxe_clothing.' + k; }
@@ -159,6 +163,7 @@ function dokumentFuer(html, variante, sprachSeite, opt) {
   }
   // die drei Absätze, die der Server aus den Sprachdateien in das Dokument schreibt (Hinweis im Kopf, Hinweis im Dialog, Einleitung)
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  if (variante === 'kombi') html = html.replace(/(<option value="variants_desc">)[^<]*(<\/option>)/, (_m, a, b) => a + esc(luxe.sort_variants) + b);
   html = html.replace(/(<p class="lcl-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(luxe.notice) + b).replace(/(<p class="lcl-dialog-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(luxe.dialog_notice) + b).replace(/(<p class="lcl-intro">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(luxe.intro) + b);
   return html.replace(konfigRegex, (_x, a, _b, c) => a + JSON.stringify(cfg) + c);
 }
@@ -509,6 +514,61 @@ async function laufeSzenarien(browser) {
     await schliesse(page);
     await ctx.close().catch(() => {}); await new Promise((r) => setTimeout(r, 4000));
   }
+  // Textdatei hängt, der Dialog bleibt (oder wird wieder) offen: das zweite Öffnen wartet nicht erneut 2,5 s, und trifft die Datei ein, wird die offene Ansicht einmal deutsch neu gezeichnet
+  {
+    console.log('== Textdatei hängt (11 s), Dialog bleibt offen');
+    const { ctx, page, logs, zaehler } = await neuerKontext(browser, { width: 1280, height: 900 }, { texte: 'haengt' });
+    await laden(page);
+    await page.fill('[data-lcl-search]', modelle.get(294).titel); await page.waitForTimeout(320);
+    const t0 = Date.now();
+    await page.locator('.lcl-card[data-product-id="294"] .lcl-card-cta').first().click();
+    await page.waitForFunction(() => document.querySelector('[data-lcl-dialog]').querySelector('.lcl-model-info'), null, { timeout: 20000 });
+    ok(Date.now() - t0 < 4500, 'hängt, offen: erstes Öffnen nach höchstens 4,5 s sichtbar', (Date.now() - t0) + ' ms');
+    let d = await lies(page);
+    ok(ws(d.beschr) === basis[294].beschr && d.notiz === NOTE_ALT, 'hängt, offen: zuerst der Originaltext mit altem Hinweis');
+    await schliesse(page);
+    const t1 = Date.now();
+    await oeffne(page, 294);
+    const dauer2 = Date.now() - t1;
+    ok(dauer2 < 1800, 'hängt, offen: zweites Öffnen ohne erneute Wartezeit von 2,5 s', dauer2 + ' ms (vorher rund 3 s)');
+    d = await lies(page);
+    ok(ws(d.beschr) === basis[294].beschr, 'hängt, offen: zweites Öffnen zeigt zunächst den Originaltext');
+    let deutsch = false; const t2 = Date.now();
+    while (Date.now() - t2 < 20000 && !deutsch) { await page.waitForTimeout(500); d = await lies(page); deutsch = ws(d.beschr) === ws(soll(294, true).beschreibung) && d.notiz === NOTE_DE; }
+    ok(deutsch, 'hängt, offen: trifft die Datei ein, wird die offene Detailansicht deutsch neu gezeichnet', (Date.now() - t2) + ' ms');
+    ok(zaehler.texte === 1, 'hängt, offen: nur eine Anfrage', 'Anfragen: ' + zaehler.texte);
+    ok(logs.fehler.length === 0, 'hängt, offen: keine Seitenfehler', logs.fehler.join(' | '));
+    await schliesse(page);
+    await ctx.close().catch(() => {}); await new Promise((r) => setTimeout(r, 4000));
+  }
+  // Hat der Besucher in der Zwischenzeit eine andere Ausführung gewählt, wird die Ansicht NICHT neu gezeichnet (seine Wahl bleibt)
+  {
+    console.log('== Textdatei hängt (11 s), Besucher wählt inzwischen eine andere Grösse');
+    const { ctx, page, logs } = await neuerKontext(browser, { width: 1280, height: 900 }, { texte: 'haengt' });
+    await laden(page);
+    await oeffne(page, 71);
+    const vorher = await page.evaluate(() => document.querySelector('[data-lcl-dialog]').dataset.variantId);
+    const andere = await page.evaluate((v) => { const b = [...document.querySelectorAll('[data-lcl-dialog] .lcl-size')].find((x) => x.dataset.variantId !== v); if (b) b.click(); return b ? b.dataset.variantId : ''; }, vorher);
+    ok(!!andere && andere !== vorher, 'Wahl: eine andere Ausführung ist wählbar', vorher + ' -> ' + andere);
+    await page.waitForTimeout(12500);
+    const nachher = await page.evaluate(() => document.querySelector('[data-lcl-dialog]').dataset.variantId);
+    ok(nachher === andere, 'Wahl: die Auswahl des Besuchers bleibt, wenn die Textdatei eintrifft (keine Neuzeichnung)', nachher + ' <> ' + andere);
+    ok(logs.fehler.length === 0, 'Wahl: keine Seitenfehler', logs.fehler.join(' | '));
+    await schliesse(page);
+    await ctx.close().catch(() => {}); await new Promise((r) => setTimeout(r, 4000));
+  }
+  // Neues JS mit dem alten (zwischengespeicherten) Dokument von heute: ein verständlicher Satz statt des Rohschlüssels «reload_needed»
+  {
+    console.log('== Neues JS, altes Dokument');
+    const { ctx, page, logs } = await neuerKontext(browser, { width: 1280, height: 900 }, { dokAlt: true });
+    await page.goto(SEITE, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForFunction(() => document.querySelector('[data-luxe-clothing]')?.dataset.loadState === 'error', null, { timeout: 60000 });
+    const z = await page.evaluate(() => ({ text: document.querySelector('[data-lcl-message]').textContent.trim(), retryHidden: document.querySelector('[data-lcl-retry]').hidden, karten: document.querySelectorAll('.lcl-card').length }));
+    ok(z.text === 'Diese Seite ist nicht mehr aktuell. Bitte lade sie neu.', 'altes Dokument: verständlicher Satz statt «reload_needed»', z.text);
+    ok(z.karten === 0 && z.retryHidden === true, 'altes Dokument: keine Karten, kein sinnloser Wiederholen-Knopf', JSON.stringify(z));
+    ok(logs.fehler.length === 0, 'altes Dokument: keine Seitenfehler', logs.fehler.join(' | '));
+    await ctx.close(); await new Promise((r) => setTimeout(r, 3000));
+  }
   // Fehler der Textdatei: innerhalb von 60 s keine Wiederholung bei jedem Öffnen
   {
     console.log('== Textdatei 404: keine Wiederholung innerhalb von 60 s');
@@ -640,7 +700,7 @@ const FARBE_DE = { Black: 'Schwarz', White: 'Weiss', Navy: 'Marineblau', Yellow:
 const ENG_FARBE = /\b(?:Matte|Glossy|Oyster|Fresh|Natural Stone|Black|White|Navy|Yellow|Dotted)\b/;
 // Rundungsregel für umgerechnete Zentimeter, hier unabhängig vom JS gerechnet: unter 10 cm eine Nachkommastelle, ab 10 cm ganze cm
 const rundeCm = (v) => (v >= 10 ? String(Math.round(v)) : String(Math.round(v * 10) / 10).replace('.', ','));
-const cmAusZoll = (roh) => { const m = /^(\d+(?:\.\d+)?)″\s*[×x]\s*(\d+(?:\.\d+)?)″$/.exec(String(roh).trim()); return m ? rundeCm(parseFloat(m[1]) * 2.54) + ' × ' + rundeCm(parseFloat(m[2]) * 2.54) + ' cm' : null; };
+const cmAusZoll = (roh) => { const m = /^(\d+(?:\.\d+)?)["″]\s*[×x]\s*(\d+(?:\.\d+)?)["″]$/.exec(String(roh).trim()); return m ? rundeCm(parseFloat(m[1]) * 2.54) + ' × ' + rundeCm(parseFloat(m[2]) * 2.54) + ' cm' : null; };
 const kernFelder = (d) => ({ titel: d.titel, kartenTitel: d.kartenTitel, beschr: d.beschr === null ? null : ws(d.beschr), notiz: d.notiz, facts: d.facts.map((f) => [f.h, normStatus(f.p)]), optionen: d.optionen, meta: d.meta, kleinTexte: d.kleinTexte, groessen: d.groessen, farben: d.farben, regionen: d.regionen.map(normStatus), materialOptionen: d.materialOptionen });
 
 async function laufeKombi(browser) {
@@ -674,7 +734,7 @@ async function laufeKombi(browser) {
       ok(a.anzahl === einzahlText(m.vids.size) && a.anzahlAttr === String(m.vids.size), n + ' Zeile «' + einzahlText(m.vids.size) + '» (Einzahl/Mehrzahl, nur bestellbare)', a.anzahl);
       // Korrekturen der Abnahme (06.11.2026): deutscher Titel, deutsche Farbnamen, Zentimeter gerundet, «Basisfarbe» nur bei einer echten Farbe
       ok(!!ST.K.TITEL_DE[id] && d.titel === ST.K.TITEL_DE[id] && d.kartenTitel === ST.K.TITEL_DE[id], n + ' deutscher Titel in Dialog und Karte', d.titel + ' | ' + d.kartenTitel);
-      ok(d.titel !== modelle.get(id).titel && /selbst|Originalname/.test(d.dialogText) === /Originalname/.test(d.dialogText) && /Originalname/.test(d.dialogText), n + ' der englische Originaltitel steht als «Originalname» im Dialog', modelle.get(id).titel);
+      ok(d.titel !== modelle.get(id).titel && d.dialogText.includes(LOCALE_DE.original_name + ': ' + modelle.get(id).titel.replace(/\s*\|.*$/, '')) , n + ' der englische Originaltitel steht als «' + LOCALE_DE.original_name + '» im Dialog', modelle.get(id).titel);
       ok(!ENG_FARBE.test(d.farben.join(' | ')), n + ' keine englischen Farbnamen (Matte, Glossy, Oyster, Fresh Pink …)', d.farben.join(' | '));
       ok(JSON.stringify([...d.farben].sort()) === JSON.stringify([...m.farben].map((f) => FARBE_DE[f] ?? '??' + f).sort()), n + ' Farbnamen gleich der unabhängigen Erwartung', d.farben.join(',') + ' | ' + [...m.farben].map((f) => FARBE_DE[f] ?? '??' + f).join(','));
       { const erwCm = [...m.groessen].map(cmAusZoll).filter(Boolean);
@@ -693,6 +753,43 @@ async function laufeKombi(browser) {
     ok(logs.fehler.length === 0, vp.name + ' Kombi: keine Seitenfehler', logs.fehler.join(' | '));
     ok(logs.konsole.length === 0, vp.name + ' Kombi: keine Konsolenfehler des Katalogfensters', logs.konsole.join(' | '));
     await ctx.close(); await new Promise((r) => setTimeout(r, 4000));
+  }
+
+  // ---- Korrekturen der Abnahme: Sortierung nach bestellbaren Ausführungen, deutsche Suchwörter, Reihenfolge des Grössenfilters, Kategoriename ----
+  {
+    console.log('== Kombi, Korrekturen: Sortierung, Suche, Grössenfilter, Kategorie');
+    const { ctx, page, logs } = await neuerKontext(browser, { width: 1280, height: 900 }, { bestellbar: [], ausblendenEcht: true });
+    await laden(page);
+    const kartenIds = async () => { const ids = []; for (let k = 0; k < 8; k++) { ids.push(...await page.evaluate(() => [...document.querySelectorAll('.lcl-card')].map((c) => c.dataset.productId))); const weiter = page.locator('[data-lcl-next]'); if (!(await weiter.isVisible()) || !(await weiter.isEnabled())) break; await weiter.click(); await page.waitForTimeout(150); } return ids; };
+    // Sortierung «Meiste Ausführungen» = Zahl der BESTELLBAREN Ausführungen (nicht die Hersteller-Gesamtzahl), bei Gleichstand nach Modellnummer
+    await page.selectOption('[data-lcl-sort]', 'variants_desc'); await page.waitForTimeout(300);
+    const reihe = await kartenIds(), erwReihe = sichtbar.slice().sort((a, b) => E[b].vids.size - E[a].vids.size || Number(a) - Number(b));
+    gleichKern(reihe, erwReihe, 'Sortierung «Meiste Ausführungen»: Reihenfolge nach Zahl der bestellbaren Ausführungen');
+    const sortText = await page.locator('[data-lcl-sort] option[value="variants_desc"]').textContent();
+    ok(sortText === 'Meiste Ausführungen' && !/Original/.test(sortText), 'Sortierung: Etikett «Meiste Ausführungen» (kein «Originalvarianten» mehr)', sortText);
+    await page.selectOption('[data-lcl-sort]', 'catalog'); await page.waitForTimeout(200);
+    // deutsche Suchwörter finden die Modelle (Titel sind deutsch, dazu Suchwörter für Kappe, Pullover, Beutel, Bio, Hülle)
+    const SUCHE = [['kappe', ['206']], ['pullover', ['145', '821']], ['beutel', ['84', '367']], ['bio', ['456', '821']], ['hülle', ['181', '267', '601', '684', '686', '798']], ['notizbuch', ['474']], ['mauspad', ['518']], ['aufkleber', ['358']], ['magnete', ['656']], ['tasse', ['19']], ['jutebeutel', ['84', '367']], ['handyhülle', ['181', '267']]];
+    for (const [wort, erw] of SUCHE) {
+      await page.fill('[data-lcl-search]', wort); await page.waitForTimeout(450);
+      const treffer = new Set(await kartenIds());
+      ok(erw.every((x) => treffer.has(x)), 'Suche «' + wort + '» findet ' + erw.join(', ') + ' (sichtbar bestellbar)', [...treffer].join(','));
+    }
+    await page.fill('[data-lcl-search]', ''); await page.waitForTimeout(450);
+    // Grössenfilter: Gruppen stehen zusammen (Kleidergrössen, Volumen, Masse, iPhone, Samsung), keine Mischreihenfolge
+    const groessen = (await page.$$eval('[data-lcl-size-filter] option', (os) => os.map((o) => o.textContent.trim()))).slice(1);
+    const klasse = (x) => (/^(?:XS|S|M|L|XL|[2-5]XL)$/.test(x) ? 'kleid' : /\bml$/.test(x) ? 'ml' : /\bcm$/.test(x) ? 'cm' : /^iPhone/.test(x) ? 'iphone' : /^Samsung/.test(x) ? 'samsung' : 'rest');
+    const folge = groessen.map(klasse).filter((k, i, a) => i === 0 || k !== a[i - 1]);
+    ok(groessen.length > 20 && new Set(folge).size === folge.length, 'Grössenfilter: jede Gruppe steht zusammen (' + folge.join(' > ') + ')', groessen.join(' | '));
+    ok(folge[0] === 'kleid', 'Grössenfilter: Kleidergrössen zuerst', groessen.slice(0, 6).join(' | '));
+    const kleid = groessen.filter((x) => klasse(x) === 'kleid'), kleidOrd = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+    ok(kleid.length > 3 && JSON.stringify(kleid) === JSON.stringify(kleidOrd.filter((x) => kleid.includes(x))), 'Grössenfilter: Kleidergrössen von XS bis 5XL in dieser Reihenfolge', kleid.join(' | '));
+    ok(new Set(groessen).size === groessen.length, 'Grössenfilter: keine doppelten Einträge', groessen.join(' | '));
+    // Kategoriename «T-Shirts» (grosses S) in Gruppen, Typ-Liste und auf den Karten
+    const kategorien = await page.evaluate(() => [...document.querySelectorAll('.lcl-category-name, [data-lcl-types] option, .lcl-group-name, .lcl-subcategory')].map((e) => e.textContent));
+    ok(kategorien.length > 5 && !kategorien.some((x) => /\bT-shirts\b/.test(x)) && kategorien.some((x) => /\bT-Shirts\b/.test(x)), 'Kategoriename «T-Shirts» (nicht «T-shirts») in Gruppen, Typ-Liste und Karten', kategorien.filter((x) => /shirt/i.test(x)).join(' | '));
+    ok(logs.fehler.length === 0, 'Korrekturen: keine Seitenfehler', logs.fehler.join(' | '));
+    await ctx.close(); await new Promise((r) => setTimeout(r, 3000));
   }
 
   // ---- Vergleichsstand (A) allein, deutsche Seite, für die Rückfälle ----

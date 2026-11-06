@@ -133,7 +133,9 @@
     const normalizeNames = names => Object.fromEntries(Object.entries(names || {}).map(([key,value])=>[lookupKey(key),value]));
     const categoryTranslations = normalizeNames(labels.category_names);
     const colorTranslations = normalizeNames(labels.color_names);
-    const titleFor = category => german && categoryTranslations[lookupKey(category.title)] || string(category.title);
+    /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): Kategorienamen, die category_names nicht kennt (z. B. «T-shirts» im Katalog) */
+    const categoryFallback = {"t_shirts":"T-Shirts"};
+    const titleFor = category => german && (categoryTranslations[lookupKey(category.title)] || categoryFallback[lookupKey(category.title)]) || string(category.title);
     // LX-KATALOGTEXTE-0511: Farbnamen, die das Locale nicht kennt: wenige allgemeine Wörter und Masse (keine imperialen Einheiten)
     const colorFallback = {custom:'Individuell',wood:'Holz',satin:'Satin',dotted:'Gepunktet',denim_blue:'Jeansblau',white_matte:'Weiss matt',tan:'Hellbraun',white_glossy:'Weiss glänzend','1_pc':'1 Stück',white_aluminum:'Weiss (Aluminium)',white_front_silver_back:'Weiss (Vorderseite), Silber (Rückseite)',rectangle:'Rechteck',glossy:'Glänzend',matte:'Matt',oyster:'Sand',fresh_pink:'Zartrosa',fresh_green:'Zartgrün',natural_stone:'Naturstein'}; /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): Oberflächen und weitere Farbnamen deutsch */
     const colorName = value => {

@@ -16,13 +16,13 @@
   "assets/luxe-clothing-texts-de.json": null
  },
  "md5": {
-  "assets/luxe-clothing.js": "c0bc618a591e618a5b77c551cfe53413",
+  "assets/luxe-clothing.js": "aa759708998cf30c817f71d32e8f9c58",
   "assets/luxe-clothing.css": "d2c8da52a1870ee0c4467cda2ddfaebb",
   "sections/luxe-clothing.liquid": "7d49f52313723b19131ace71ac12a5a2",
   "snippets/luxe-clothing-asset-manifest.liquid": "e384e40aae88e0282e83cbd8e05c36e9",
   "snippets/luxe-selfdesign-cover.liquid": "63f63bfa8c10c5f73aa8ead523bc4650",
   "sections/luxe-category.liquid": "838960ab29d146781d39861a6b8eb7a3",
-  "locales/de.json": "319b7d1fce126491dc1de7dccd5b309f",
+  "locales/de.json": "1dea0b19fa05c68fa82304b826b7edff",
   "locales/en.default.json": "4705e4658f482b3fbc0c38ad2bb6535d",
   "locales/fr.json": "75ff32f03227f6c3f9ca683238f66b1e",
   "assets/luxe-clothing-ausblenden.json": "7f27109aa5049125e80a0f3d0374861a",

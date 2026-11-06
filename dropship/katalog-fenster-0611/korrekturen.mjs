@@ -11,7 +11,7 @@
 //   K5  Sortierung «Meiste Ausführungen» zählt die bestellbaren Ausführungen (vorher die Hersteller-Gesamtzahl), Etikett in de/en/fr angepasst
 //   K6  sortSizes als totale Ordnung (Kleidergrössen, dann Volumen, dann Masse nach Zahl, dann Text); vorher mischten sich iPhone-/Samsung-Modelle und Masse
 //   K7  langsame Textdatei: nach dem ersten Zeitüberschreiten nicht bei jedem Öffnen erneut 2,5 s warten; trifft die Datei ein, wird die offene Detailansicht einmal neu gezeichnet
-//   K8  Kategoriename «T-shirts» → «T-Shirts» (de.json)
+//   K8  Kategoriename «T-shirts» → «T-Shirts» (im Code, wie colorFallback: die Sektion zählt die Kategorienamen einzeln auf, ein neuer Schlüssel in de.json käme nie im Dokument an)
 export const KORREKTUR_MARKE = 'LX-KATALOGTEXTE-0511';
 
 // ---------- K1: deutsche Titel (Schlüssel = Printful-Modellnummer). Marken- und Modellnummern bleiben, wie im Katalogtitel. Stand: die 22 heute bestellbaren Modelle und die 15 weiteren Modelle,
@@ -62,7 +62,7 @@ export const KORREKTUR_SCHLUESSEL = {
   en: { sort_variants: 'Most variants' },
   fr: { sort_variants: 'Le plus de versions' },
 };
-export const KORREKTUR_KATEGORIEN_DE = { t_shirts: 'T-Shirts' }; // zusätzlich in luxe_clothing.category_names (de.json)
+export const KORREKTUR_KATEGORIEN_DE = { t_shirts: 'T-Shirts' }; // Rückfall im Code für Kategorienamen, die category_names der Sprachdatei nicht kennt (die Sektion zählt die Schlüssel einzeln auf)
 
 const JS = 'assets/luxe-clothing.js', DE = 'locales/de.json', EN = 'locales/en.default.json', FR = 'locales/fr.json';
 
@@ -117,6 +117,13 @@ export function korrekturPaare(fallbackDe) {
     "decals:['sticker','decal']};",
     "decals:['sticker','decal'],kappe:['cap','hat'],kappen:['cap','hat'],pullover:['sweatshirt','hoodie'],beutel:['tote'],stoffbeutel:['tote'],jutebeutel:['tote'],bio:['organic'],hulle:['case'],hullen:['case'],handyhulle:['case'],handyhullen:['case']};");
 
+  // K8: Kategoriename «T-Shirts»
+  add(JS, 'K8 titleFor mit Rückfall',
+    "    const titleFor = category => german && categoryTranslations[lookupKey(category.title)] || string(category.title);",
+    "    " + K + "Kategorienamen, die category_names nicht kennt (z. B. «T-shirts» im Katalog) */\n" +
+    "    const categoryFallback = " + JSON.stringify(KORREKTUR_KATEGORIEN_DE) + ";\n" +
+    "    const titleFor = category => german && (categoryTranslations[lookupKey(category.title)] || categoryFallback[lookupKey(category.title)]) || string(category.title);");
+
   // K5: Sortierung nach bestellbaren Ausführungen
   add(JS, 'K5 Zahl der bestellbaren Ausführungen merken',
     "return {...p,colors:list(p.colors).filter(c=>colors.has(colorValue(c))),",
@@ -144,6 +151,5 @@ export function korrekturPaare(fallbackDe) {
   add(DE, 'K5 Etikett sort_variants (de)', '"sort_variants": "Meiste Originalvarianten"', '"sort_variants": "' + KORREKTUR_SCHLUESSEL.de.sort_variants + '"');
   add(EN, 'K5 Etikett sort_variants (en)', '"sort_variants": "Most original variants"', '"sort_variants": "' + KORREKTUR_SCHLUESSEL.en.sort_variants + '"');
   add(FR, 'K5 Etikett sort_variants (fr)', '"sort_variants": "Le plus de variantes d’origine"', '"sort_variants": "' + KORREKTUR_SCHLUESSEL.fr.sort_variants + '"');
-  add(DE, 'K8 Kategoriename T-Shirts', '"category_names": {\n', '"category_names": {\n      "t_shirts": "' + KORREKTUR_KATEGORIEN_DE.t_shirts + '",\n');
   return P;
 }
