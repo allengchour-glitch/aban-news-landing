@@ -8,7 +8,7 @@ import { createRequire } from 'node:module';
 import { createHash } from 'node:crypto';
 import { deflateSync } from 'node:zlib';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { bauen as vorschauBauen, vorschauDatei } from '../werkzeug/vorschau_daten_bauen.mjs';
 
 export const hier = dirname(fileURLToPath(import.meta.url));
@@ -22,8 +22,32 @@ export function playwright() {
   throw new Error('Playwright nicht gefunden');
 }
 
-/** Die geprüfte Fassung des Editors: 6.2.0. Die Rücknahme 6.1.0 (lspod-designer-v6.js) läuft mit V6_DATEI=… und V6_VERSION=6.1.0 durch dieselben Prüfungen. */
-export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.2.0.js');
+/** Die geprüfte Fassung des Editors: Vorgabe 6.2.1 (neueste). Die Rücknahmen laufen durch dieselben Prüfungen: V6_DATEI=…/lspod-designer-v6-6.2.0.js (6.2.0) oder …/lspod-designer-v6.js (6.1.0);
+ *  die Version ergibt sich aus dem Dateinamen oder aus `VERSION = '…'` im Text, sonst (zum Beispiel bei einer vom CDN ausgelieferten, umbenannten Datei) aus V6_VERSION. */
+export const FASSUNG_6_2_0 = join(v6Ordner, 'lspod-designer-v6-6.2.0.js');
+export const FASSUNG_6_2_1 = join(v6Ordner, 'lspod-designer-v6-6.2.1.js');
+/** Alle Fassungen, die ohne V6_DATEI durch die Prüfungen laufen (unit_test.mjs und alle_fassungen.mjs). */
+export const FASSUNGEN = [FASSUNG_6_2_0, FASSUNG_6_2_1];
+export const V6_DATEI = process.env.V6_DATEI || FASSUNG_6_2_1;
+/** Version einer Editor-Datei: Dateiname «lspod-designer-v6-<Version>.js», «lspod-designer-v6.js» (6.1.0, die erste Fassung hatte keine Nummer) oder `VERSION = "…"` im Text (auch minifiziert). */
+export function v6VersionVon(datei) {
+  const m = String(datei).match(/lspod-designer-v6-(\d+\.\d+\.\d+)\.js$/);
+  if (m) return m[1];
+  if (/lspod-designer-v6\.js$/.test(String(datei))) return '6.1.0';
+  const t = existsSync(datei) ? readFileSync(datei, 'utf8') : '';
+  const c = t.match(/\bVERSION\s*=\s*["'](\d+\.\d+\.\d+)["']/);
+  if (c) return c[1];
+  throw new Error(`Fassung von ${datei} nicht erkennbar: V6_VERSION=<x.y.z> setzen`);
+}
+/** Vergleich zweier Versionen «x.y.z»: negativ, 0, positiv. */
+export function versionVergleich(a, b) {
+  const x = String(a).split('.').map(Number), y = String(b).split('.').map(Number);
+  for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0);
+  return 0;
+}
+export const V6_VERSION = process.env.V6_VERSION || v6VersionVon(V6_DATEI);
+/** Ab 6.2.1 schreibt der Editor die Adresse der Druckdatei als «_Druckdatei (<Platzierung>)» (führender Unterstrich), vorher als «🖼️ Druckdatei (<Platzierung>)». */
+export const NEUE_SCHLUESSEL = versionVergleich(V6_VERSION, '6.2.1') >= 0;
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');
 /** Optionaler Ordner mit heruntergeladenen Vorlagenbildern (sha1 der Adresse, 16 Zeichen); ohne ihn gibt es einfache Attrappen. */
 export const BILDCACHE = process.env.V6_BILDCACHE || '';
@@ -31,6 +55,57 @@ export const BILDCACHE = process.env.V6_BILDCACHE || '';
  *  Bewusst NICHT dabei: Zeitüberschreitungen einzelner Warte-Aufrufe (waitFor, Timeout …) und Seitenfehler: das sind Prüfungen, die ein Mutant zu Recht zum Scheitern bringt. */
 const INFRASTRUKTUR = /browser has been closed|Target (page, context or browser )?closed|browserType\.launch|Executable doesn't exist|ENOSPC|EADDRINUSE|spawn .* (ENOENT|EAGAIN)/;
 export const istUmgebungsfehler = (aus) => INFRASTRUKTUR.test(String(aus));
+
+// ── Schlüssel der Warenkorb-Eigenschaften (6.2.1: «_Druckdatei (…)») und der Parser der Bestellstrecke ────────
+/** Schlüssel der Druckdatei-Eigenschaft einer Platzierung, wie die geprüfte Fassung ihn schreibt (V6_VERSION). */
+export const druckdateiSchluessel = (id) => (NEUE_SCHLUESSEL ? '_Druckdatei (' : '\u{1F5BC}\uFE0F Druckdatei (') + id + ')';
+/** Die beiden Schreibweisen des Vertrags. Der Editor 6.2.1 schreibt nur die neue, 6.2.0 nur die alte; der Parser muss beide lesen (Live-Plan: erst Parser, dann Editor). */
+export const SCHLUESSEL_NEU = /^_Druckdatei \(([a-z0-9_]+)\)$/;
+export const SCHLUESSEL_ALT = /^\u{1F5BC}\uFE0F? ?Druckdatei \(([a-z0-9_]+)\)$/u;
+/** Referenz-Leser des Vertrags, unabhängig vom Parser der Bestellstrecke: alle Druckdatei-Zeilen einer Eigenschaftenliste (Objekt) mit Schreibweise, Platzierung und Adresse. */
+export function druckdateiZeilen(props) {
+  const aus = [];
+  for (const [k, v] of Object.entries(props || {})) {
+    let m;
+    if ((m = k.match(SCHLUESSEL_NEU))) aus.push({ schreibweise: 'neu', id: m[1], url: v, schluessel: k });
+    else if ((m = k.match(SCHLUESSEL_ALT))) aus.push({ schreibweise: 'alt', id: m[1], url: v, schluessel: k });
+  }
+  return aus;
+}
+/** Welche Zeilen zeigt der Warenkorb des Themes (snippets/cart-products.liquid, Zeilen 221 bis 236, Abbild vom 06.11.2026)? Nicht leer und erstes Zeichen nicht «_»
+ *  (Liquid `slice: 0` zählt Zeichen, nicht Bytes: ein Emoji am Anfang ist ein Zeichen). Kasse und Bestätigungsmail blenden Schlüssel mit «_» ebenfalls aus (QUELLE community.shopify.dev, NICHT gemessen). */
+export function sichtbareZeilen(props) {
+  return Object.entries(props || {}).filter(([k, v]) => String(v) !== '' && Array.from(String(k))[0] !== '_').map(([k]) => k);
+}
+/** Der Parser der Bestellstrecke (automation/lib/printful_bestellweg.mjs, hier nur importiert). V6_PARSER=<Pfad> lädt eine andere Fassung (Probe, wie der Parser aus Paket A sich verhalten MUSS). */
+const PARSER_PFAD = process.env.V6_PARSER || join(repo, 'automation', 'lib', 'printful_bestellweg.mjs');
+export const dateienAusEigenschaften = (await import(pathToFileURL(PARSER_PFAD).href)).dateienAusEigenschaften;
+/** Kennt der Parser den neuen Schlüssel? Sonst würde er «_Druckdatei (sleeve_left)» nur über die v5-Regel (/Druckdatei|Print file/) lesen: ohne Platzierung. */
+export const PARSER_KENNT_NEUEN_SCHLUESSEL = (() => {
+  try {
+    const r = dateienAusEigenschaften({ '_Druckdatei (sleeve_left)': 'https://res.cloudinary.com/x/image/upload/a.png' });
+    return r.dateien.length === 1 && r.dateien[0].platzierung === 'sleeve_left' && r.dateien[0].dateiTyp === 'sleeve_left';
+  } catch { return false; }
+})();
+/** Prüfungen gegen den Parser laufen nur, wenn der Parser die Schreibweise der geprüften Fassung versteht. Sonst werden sie sichtbar übersprungen (nie still, nie als bestanden gezählt):
+ *  der Vertrag ist dann durch den Referenz-Leser (druckdateiZeilen) geprüft, und die Zusammenfassung nennt die Zahl der übersprungenen Prüfungen. */
+export const PARSER_PASST = !NEUE_SCHLUESSEL || PARSER_KENNT_NEUEN_SCHLUESSEL;
+const uebersprungen = [];
+/** @param pruefe die pruefe-Funktion der Testdatei; @param fn liefert true/false oder { ok, detail } */
+export function parserPruefe(pruefe, name, fn) {
+  if (!PARSER_PASST) {
+    // V6_PARSER_PFLICHT=1 (Tor vor dem Hochladen von 6.2.1, README Live-Plan): ein Parser, der den Schlüssel nicht kennt, ist ein Fehler statt einer übersprungenen Prüfung
+    if (process.env.V6_PARSER_PFLICHT) { pruefe(name, false, 'der Parser der Bestellstrecke kennt «_Druckdatei (…)» nicht (V6_PARSER_PFLICHT=1)'); return; }
+    uebersprungen.push(name); console.log(`  ~ ${name}: übersprungen (der Parser der Bestellstrecke kennt «_Druckdatei (…)» noch nicht, Paket A)`); return;
+  }
+  let r;
+  try { r = fn(); } catch (e) { r = { ok: false, detail: 'Ausnahme: ' + e.message }; }
+  if (typeof r === 'boolean') pruefe(name, r); else pruefe(name, !!r.ok, r.detail || '');
+}
+/** Schlusszeile für die Testdateien: nennt die übersprungenen Prüfungen (leer, wenn keine). */
+export function parserBericht() {
+  return uebersprungen.length ? `${uebersprungen.length} Prüfungen gegen den Parser der Bestellstrecke übersprungen (Parser kennt die neuen Schlüssel noch nicht): ${uebersprungen.join(' | ')}` : '';
+}
 
 // ── Server ──────────────────────────────────────────────────────────────────────────────────────
 export const KATALOG_TEST = join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'werkzeuge', 'testdaten', 'katalog');

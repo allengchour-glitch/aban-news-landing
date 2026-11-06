@@ -3,26 +3,38 @@
  * (werkzeug/karte_fuer_editor.mjs: Einzelkarte, Kartenbündel, Filter, Prüfungen) und der Vertrag der Warenkorb-Eigenschaften mit der Auftragsabwicklung
  * (automation/lib/printful_bestellweg.mjs wird nur gelesen/importiert, nicht verändert).
  * Die Vergleiche mit preisformel.mjs und schweizer_masse.mjs sind der Beleg, dass die in den Editor kopierten Formeln dieselben Zahlen liefern.
- * Aufruf: node unit_test.mjs
+ * Aufruf: node unit_test.mjs   (ohne V6_DATEI laufen ALLE Fassungen, 6.2.0 und 6.2.1, je in einem eigenen Prozess durch dieselben Prüfungen;
+ *          mit V6_DATEI=<Datei> [V6_VERSION=<x.y.z>] genau diese Datei, so ruft sie auch die Mutationsprobe auf)
  */
 import vm from 'node:vm';
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
-import { hier, repo, V6_DATEI, V5_DATEI, istUmgebungsfehler } from './lib.mjs';
+import { hier, repo, V6_DATEI, V5_DATEI, istUmgebungsfehler, V6_VERSION, NEUE_SCHLUESSEL, versionVergleich, FASSUNGEN, FASSUNG_6_2_0, FASSUNG_6_2_1, druckdateiSchluessel, druckdateiZeilen, sichtbareZeilen, dateienAusEigenschaften, parserPruefe, parserBericht } from './lib.mjs';
 import { aufpreisChf as aufpreisRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { schweizerZahl as zahlRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 // V6_KARTENBAUER: andere Fassung des Kartenbauers (für die Mutationsprobe)
 const { karteFuerEditor, kartenbuendelFuerEditor, shopVariantenNormalisieren, podKarteGroesstmoeglich, kartenWarnungen, BEKANNTE_HINWEIS_CODES, POD_KARTE_MAX } =
   await import(process.env.V6_KARTENBAUER ? pathToFileURL(process.env.V6_KARTENBAUER).href : '../werkzeug/karte_fuer_editor.mjs');
-import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
 import { mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 // V6_VORSCHAUBAUER: andere Fassung des Vorschaubauers (für die Mutationsprobe)
 const VB_PFAD = process.env.V6_VORSCHAUBAUER || join(hier, '..', 'werkzeug', 'vorschau_daten_bauen.mjs');
 const VB = await import(pathToFileURL(VB_PFAD).href);
+
+// Ohne Angabe einer Datei laufen alle Fassungen durch dieselben Prüfungen (CI ruft `node pod/v6/test/unit_test.mjs` ohne Umgebung auf: so bleibt auch die Rücknahme 6.2.0 geprüft).
+if (!process.env.V6_DATEI && !process.env.V6_VERSION) {
+  let code = 0;
+  for (const f of FASSUNGEN) {
+    console.log(`\n=== ${f.split('/').pop()} ===`);
+    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url)], { env: { ...process.env, V6_DATEI: f }, stdio: 'inherit' });
+    if (r.status !== 0) code = 1;
+  }
+  console.log(code ? '\nMindestens eine Fassung FEHLGESCHLAGEN' : `\nAlle ${FASSUNGEN.length} Fassungen bestanden`);
+  process.exit(code);
+}
 
 let n = 0; const fehler = [];
 function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); if (process.env.V6_ABBRUCH) process.exit(1); } }   // V6_ABBRUCH=1 (nur Mutationsprobe): beim ersten Fehler beenden, das genügt zum Erkennen
@@ -42,8 +54,8 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-const SOLL_VERSION = process.env.V6_VERSION || '6.2.0';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
-const NEU = SOLL_VERSION !== '6.1.0';   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
+const SOLL_VERSION = V6_VERSION;   // aus dem Dateinamen von V6_DATEI (oder V6_VERSION): …/lspod-designer-v6.js prüft die Rücknahme 6.1.0, …-6.2.0.js die Rücknahme 6.2.0
+const NEU = versionVergleich(SOLL_VERSION, '6.2.0') >= 0;   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
 pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === SOLL_VERSION, win.LSPOD6.version);
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
 {
@@ -271,25 +283,49 @@ pruefe('Test-Karte T-Shirt: Hinweise der Art «info» nur mit bekanntem Code ode
 
 // ── Warenkorb-Eigenschaften: Vertrag mit der Auftragsabwicklung ────────────────────────────────────
 // Gelesen wird mit dem Parser der Auftragsabwicklung selbst (automation/lib/printful_bestellweg.mjs, nur importiert). Die Eigenschaften, die der Editor wirklich schreibt,
-// prüft editor_test.mjs («vertrag-bestellweg») gegen denselben Parser.
+// prüft editor_test.mjs («vertrag-bestellweg», «kaufanfrage-schluessel») gegen denselben Parser. Der Schlüssel der Druckdatei hängt von der Fassung ab (lib.mjs: druckdateiSchluessel):
+// 6.2.1 schreibt «_Druckdatei (<ID>)», 6.2.0 und 6.1.0 «🖼️ Druckdatei (<ID>)». Kennt der Parser die Schreibweise der geprüften Fassung noch nicht, werden die Prüfungen GEGEN DEN PARSER
+// sichtbar übersprungen (Ausgabe «~», Zahl am Ende), der Vertrag selbst steht dann durch den Referenz-Leser aus lib.mjs (druckdateiZeilen) fest.
+const parserGleich = (name, ist, soll) => parserPruefe(pruefe, name, () => { const a = JSON.stringify(ist()); return { ok: a === JSON.stringify(soll), detail: `ist=${a} soll=${JSON.stringify(soll)}` }; });
 {
   const pod = { v: 6, m: 71, pv: 4012, sv: '1001', pl: ['front', 'sleeve_left'], dt: { front: 'default' }, ap: 2.6 };
   const props = {
-    '🎨 Design (front)': 'Text: "Hallo"', '🖼️ Druckdatei (front)': 'https://res.cloudinary.com/x/1.png', '🖼️ Druckdatei (sleeve_left)': 'https://res.cloudinary.com/x/2.png', _pod_karte: JSON.stringify(pod),
+    '🎨 Design (front)': 'Text: "Hallo"', [druckdateiSchluessel('front')]: 'https://res.cloudinary.com/x/1.png', [druckdateiSchluessel('sleeve_left')]: 'https://res.cloudinary.com/x/2.png', _pod_karte: JSON.stringify(pod),
   };
-  const r1 = dateienAusEigenschaften(props);
-  gleich('Vertrag: Platzierung und Dateityp', r1.dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default'], ['sleeve_left', 'sleeve_left']]);
-  gleich('Vertrag: keine Probleme', r1.probleme, []);
-  pruefe('Vertrag: der Parser kennt weder «s» noch «px» (beide dürfen fehlen)', r1.karte && r1.karte.v === 6 && !('s' in r1.karte) && !('px' in r1.karte));
-  pruefe('Vertrag: mit «px» (Verkleinerung) bleibt es lesbar', dateienAusEigenschaften({ ...props, _pod_karte: JSON.stringify({ ...pod, px: ['900x1200', '600x525'] }) }).probleme.length === 0);
-  pruefe('Vertrag: die längste _pod_karte des T-Shirts (alle Platzierungen, 14-stellige Shopify-Variante, 3-stelliges qd) hat höchstens 255 Zeichen, und der Parser der Bestellstrecke liest alle Positionen ohne Befund', (() => {
-    const ids = K[71].platzierungen.map((p) => p.id);
-    const text = JSON.stringify({ v: 6, m: 71, pv: 123456, sv: '55777948008833', pl: ids, dt: { front: 'default' }, ap: 99.95, qd: 999 });
-    const eig = { _pod_karte: text };
-    ids.forEach((id) => { eig['\u{1F5BC}\uFE0F Druckdatei (' + id + ')'] = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/' + id + '.png'; });
-    const g = dateienAusEigenschaften(eig);
-    return ids.length >= 8 && text.length <= 255 && g.dateien.length === ids.length && g.probleme.length === 0;
-  })());
+  const r1 = () => dateienAusEigenschaften(props);
+  parserGleich('Vertrag: Platzierung und Dateityp', () => r1().dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default'], ['sleeve_left', 'sleeve_left']]);
+  parserGleich('Vertrag: keine Probleme', () => r1().probleme, []);
+  parserPruefe(pruefe, 'Vertrag: der Parser kennt weder «s» noch «px» (beide dürfen fehlen)', () => r1().karte && r1().karte.v === 6 && !('s' in r1().karte) && !('px' in r1().karte));
+  parserPruefe(pruefe, 'Vertrag: mit «px» (Verkleinerung) bleibt es lesbar', () => dateienAusEigenschaften({ ...props, _pod_karte: JSON.stringify({ ...pod, px: ['900x1200', '600x525'] }) }).probleme.length === 0);
+  const ids = K[71].platzierungen.map((p) => p.id);
+  const laengste = JSON.stringify({ v: 6, m: 71, pv: 123456, sv: '55777948008833', pl: ids, dt: { front: 'default' }, ap: 99.95, qd: 999 });
+  pruefe('Vertrag: die längste _pod_karte des T-Shirts (alle Platzierungen, 14-stellige Shopify-Variante, 3-stelliges qd) hat höchstens 255 Zeichen', ids.length >= 8 && laengste.length <= 255, String(laengste.length));
+  const eig = { _pod_karte: laengste };
+  ids.forEach((id) => { eig[druckdateiSchluessel(id)] = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/' + id + '.png'; });
+  parserPruefe(pruefe, 'Vertrag: der Parser der Bestellstrecke liest alle Positionen der längsten _pod_karte ohne Befund', () => { const g = dateienAusEigenschaften(eig); return { ok: g.dateien.length === ids.length && g.probleme.length === 0, detail: JSON.stringify(g.probleme) }; });
+  // Referenz-Leser (lib.mjs): unabhängig vom Parser, gilt immer
+  pruefe('Vertrag (Referenz-Leser): alle Druckdatei-Zeilen tragen die Schreibweise der geprüften Fassung (' + (NEUE_SCHLUESSEL ? '_Druckdatei (…)' : '🖼️ Druckdatei (…)') + ')', druckdateiZeilen(eig).length === ids.length && druckdateiZeilen(eig).every((z) => z.schreibweise === (NEUE_SCHLUESSEL ? 'neu' : 'alt')) && druckdateiZeilen(eig).map((z) => z.id).sort().join() === [...ids].sort().join());
+  pruefe('Vertrag (Referenz-Leser): jede der beiden Schreibweisen wird erkannt, andere Schlüssel nicht', druckdateiZeilen({ '_Druckdatei (front)': 'a', '🖼️ Druckdatei (back)': 'b', '🖼 Druckdatei (back2)': 'c', 'Druckdatei (front)': 'd', '_druckdatei (front)': 'e', '_Druckdatei (Front)': 'f', '_Druckdatei': 'g', '🎨 Design (front)': 'h', _vorschau: 'i' }).map((z) => z.schreibweise + ':' + z.id).join() === 'neu:front,alt:back,alt:back2');
+  // Sichtbarkeit nach der Regel des Themes (cart-products.liquid): nur die Design-Zeile soll bei 6.2.1 sichtbar sein, die Adresse nicht
+  const sicht = sichtbareZeilen({ '🎨 Design (front)': 'Text: "Hallo"', [druckdateiSchluessel('front')]: 'https://res.cloudinary.com/x/1.png', _pod_karte: '{}', _vorschau: 'https://res.cloudinary.com/x/v.jpg' });
+  gleich('Sichtbarkeit im Warenkorb des Themes: ' + (NEUE_SCHLUESSEL ? 'nur «Design» (Adresse, Karte und Vorschau mit «_» sind verborgen)' : '«Design» und die Adresse der Druckdatei (alter Schlüssel)'), sicht, NEUE_SCHLUESSEL ? ['🎨 Design (front)'] : ['🎨 Design (front)', druckdateiSchluessel('front')]);
+}
+
+// ── 6.2.1: Quelltext der beiden Fassungen (unabhängig von V6_DATEI) ──────────────────────────────────
+// 6.2.0 ist die Rücknahme und bleibt für immer byte-gleich; 6.2.1 weicht von ihr an genau drei Stellen ab (Kopfkommentar, VERSION, Schlüssel der Druckdatei).
+{
+  const SHA_6_2_0 = 'b6fcfe1a0164069c6cdbbfee8eb08b990501b973adbbc1727c6f57795645018a';
+  const roh0 = readFileSync(FASSUNG_6_2_0), t0 = roh0.toString('utf8'), t1 = readFileSync(FASSUNG_6_2_1, 'utf8');
+  pruefe('Rücknahme 6.2.0 ist byte-gleich (SHA-256 b6fcfe1a…), 206 421 Byte', createHash('sha256').update(roh0).digest('hex') === SHA_6_2_0 && roh0.length === 206421);
+  const ankerNeu = ' * NEU in 6.2.0';
+  const rest0 = t0.slice(t0.indexOf(ankerNeu)), rest1 = t1.slice(t1.indexOf(ankerNeu));
+  const zurueck = rest1.replace("var VERSION = '6.2.1';", "var VERSION = '6.2.0';").replace(/props\['_Druckdatei \(' \+ p\.id \+ '\)'\] = druckUrls\[p\.id\];[^\n]*/, "props['\\u{1F5BC}\\uFE0F Druckdatei (' + p.id + ')'] = druckUrls[p.id];");
+  pruefe('6.2.1 = 6.2.0 ausser Kopfkommentar, VERSION und Schlüssel der Druckdatei (nach Rückübersetzung dieser zwei Stellen Zeichen für Zeichen gleich)', zurueck === rest0, `Längen ${zurueck.length} / ${rest0.length}`);
+  pruefe('6.2.1: Kopfkommentar nennt 6.2.1 und die Rücknahmen, VERSION = 6.2.1', /Editor v6\.2\.1 /.test(t1.slice(0, 400)) && /6\.2\.0 und 6\.1\.0 bleiben unverändert als Rücknahme/.test(t1.slice(0, 400)) && t1.split("var VERSION = '6.2.1';").length === 2);
+  pruefe('6.2.1: der Code schreibt «_Druckdatei (» genau einmal und nirgends mehr «\\u{1F5BC}\\uFE0F Druckdatei (»', rest1.split("props['_Druckdatei ('").length === 2 && !/1F5BC\}\\uFE0F Druckdatei \(/.test(rest1) && !/🖼️ Druckdatei \(/.test(rest1));
+  pruefe('6.2.0: der Code schreibt weiter den alten Schlüssel «\\u{1F5BC}\\uFE0F Druckdatei (» und kennt «_Druckdatei (» nicht', rest0.split("props['\\u{1F5BC}\\uFE0F Druckdatei ('").length === 2 && !/_Druckdatei \(/.test(rest0));
+  pruefe('beide Fassungen: die Zeile «Design» bleibt ohne Unterstrich (sichtbar) und der Rückfall ohne Karte schreibt weiter die Schlüssel von v5 (T.pPrintFile)', [t0, t1].every((t) => t.split("props['\\u{1F3A8} Design (' + p.id + ')']").length === 2 && t.split('props[vor + T.pPrintFile] = druckUrls[p.id];').length === 2));
+  pruefe('beide Fassungen: _pod_karte und _vorschau tragen weiter den Unterstrich', [t0, t1].every((t) => t.includes('props._pod_karte = podKarteWert(verwendet);') && t.includes('props._vorschau = vorschauUrl;')));
 }
 
 // ── 6.2.0: Qualitätstor, Vorschau-Geometrie, Kontrast, Vorschaudaten, Entwurf (reine Funktionen) ───────
@@ -582,4 +618,5 @@ pruefe('v5 (pod/live) ist unverändert: SHA-256 beginnt mit 70140421381326aff999
 pruefe('v6 greift nicht auf die v5-Kennungen zu (Klasse, Guard, Eingabefeld)', (() => { const s = readFileSync(V6_DATEI, 'utf8'); return !/['"]\.lspod-designer['"]/.test(s) && !/__lspodDesignerLoaded\s*=/.test(s) && !/data-lspod="1"/.test(s); })());
 
 console.log(fehler.length ? `\n${fehler.length} von ${n} Prüfungen FEHLGESCHLAGEN` : `\n${n} Prüfungen bestanden`);
+if (parserBericht()) console.log(parserBericht());
 process.exit(fehler.length ? 1 : 0);

@@ -4,12 +4,13 @@
  * Netz: nur der lokale Server; Cloudinary, Printful-CDN und Sticker sind Attrappen (lib.mjs). Die Attrappe von Cloudinary liest die hochgeladenen
  * PNG-Dateien, damit die Pixelgrösse der Druckdatei am IHDR gemessen werden kann.
  * Aufruf: node editor_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = die schnellen für die Mutationsprobe)
- * Umgebung: V6_BILDCACHE (Ordner mit Vorlagenbildern, optional), V6_DATEI (andere Fassung des Editors, für die Mutationsprobe).
+ * Umgebung: V6_BILDCACHE (Ordner mit Vorlagenbildern, optional), V6_DATEI (andere Fassung des Editors: Rücknahme 6.2.0 oder 6.1.0, vom CDN ausgelieferte Datei, Mutant; Vorgabe 6.2.1),
+ * V6_VERSION (nur nötig, wenn Dateiname und Inhalt die Fassung nicht verraten; bestimmt den erwarteten Schlüssel der Druckdatei: ab 6.2.1 «_Druckdatei (…)», vorher «🖼️ Druckdatei (…)»),
+ * V6_PARSER (andere Fassung des Parsers der Bestellstrecke).
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { playwright, starteServer, seiteOeffnen, editorBereit, pngErzeugen, pngRauschen, hier } from './lib.mjs';
-import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
+import { playwright, starteServer, seiteOeffnen, editorBereit, pngErzeugen, pngRauschen, hier, NEUE_SCHLUESSEL, V6_VERSION, druckdateiSchluessel, druckdateiZeilen, sichtbareZeilen, dateienAusEigenschaften, parserPruefe, parserBericht } from './lib.mjs';
 
 const { chromium } = playwright();
 let n = 0; const fehler = [];
@@ -125,7 +126,7 @@ szenario('t-shirt-text-warenkorb', true, async (b, srv) => {
   const w = s.warenkorb[0];
   pruefe('Variante und Menge', w.id === '1001' && w.quantity === 1, JSON.stringify([w.id, w.quantity]));
   const pr = w.properties;
-  pruefe('Eigenschaft «🖼️ Druckdatei (front)» mit https-Adresse', /^https:\/\//.test(pr['\u{1F5BC}️ Druckdatei (front)'] || ''), Object.keys(pr).join('|'));
+  pruefe(`Eigenschaft «${druckdateiSchluessel('front')}» mit https-Adresse`, /^https:\/\//.test(pr[druckdateiSchluessel('front')] || ''), Object.keys(pr).join('|'));
   pruefe('Eigenschaft «🎨 Design (front)»', pr['\u{1F3A8} Design (front)'] === 'Text: "Hallo"', pr['\u{1F3A8} Design (front)']);
   pruefe('genau drei Eigenschaften (Design, Druckdatei, _pod_karte)', Object.keys(pr).length === 3, Object.keys(pr).join('|'));
   const pod = JSON.parse(pr._pod_karte);
@@ -218,8 +219,8 @@ szenario('t-shirt-zwei-dateien', true, async (b, srv) => {
   const dims = s.uploads.map((u) => `${u.breite}x${u.hoehe}`).sort().join(',');
   pruefe('zwei Uploads: 2250×2700 (Vorderseite gross) und 1800×2400 (Rückseite)', s.uploads.length === 2 && dims === '1800x2400,2250x2700', dims);
   const pr = s.warenkorb[0].properties;
-  pruefe('Eigenschaften je Platzierung (front_large und back, nicht front)', !!pr['\u{1F5BC}\uFE0F Druckdatei (front_large)'] && !!pr['\u{1F5BC}\uFE0F Druckdatei (back)'] && !pr['\u{1F5BC}\uFE0F Druckdatei (front)'], Object.keys(pr).join('|'));
-  pruefe('zwei verschiedene Adressen', pr['\u{1F5BC}\uFE0F Druckdatei (front_large)'] !== pr['\u{1F5BC}\uFE0F Druckdatei (back)']);
+  pruefe('Eigenschaften je Platzierung (front_large und back, nicht front)', !!pr[druckdateiSchluessel('front_large')] && !!pr[druckdateiSchluessel('back')] && !pr[druckdateiSchluessel('front')], Object.keys(pr).join('|'));
+  pruefe('zwei verschiedene Adressen', pr[druckdateiSchluessel('front_large')] !== pr[druckdateiSchluessel('back')]);
   const pod = JSON.parse(pr._pod_karte);
   pruefe('_pod_karte: Platzierungen, Aufpreis 12.2, kein «dt» (Dateityp = ID), kein «px» (Dateien in Printfile-Grösse)', JSON.stringify(pod.pl) === '["front_large","back"]' && pod.ap === 12.2 && !('dt' in pod) && !('px' in pod), pr._pod_karte);
   pruefe('_pod_karte höchstens 255 Zeichen', pr._pod_karte.length <= 255, String(pr._pod_karte.length));
@@ -661,6 +662,7 @@ szenario('v5-gleichheit', true, async (b, srv) => {
   pruefe('gleiche Variante und Menge', a.id === c.id && a.qty === c.qty && a.id === '1001');
   pruefe('gleiche Pixelgrösse der Druckdatei (1200 × 1440 bei ratio 1,2)', a.up.breite === 1200 && a.up.hoehe === 1440 && c.up.breite === a.up.breite && c.up.hoehe === a.up.hoehe, JSON.stringify([a.up, c.up]));
   pruefe('v5-Modus schreibt KEIN _pod_karte', !('_pod_karte' in c.props));
+  pruefe('v5-Modus (Rückfall ohne Karte): die Schlüssel bleiben die von v5 («Vorne · 🖼️ Druckdatei», kein Schlüssel mit Unterstrich), auch in 6.2.1', 'Vorne · \u{1F5BC}\uFE0F Druckdatei' in c.props && Object.keys(c.props).every((k) => k[0] !== '_'), Object.keys(c.props).join('|'));
   pruefe('keine Seitenfehler in beiden', a.fehler.length === 0 && c.fehler.length === 0, a.fehler.concat(c.fehler).join(' | '));
 });
 szenario('v5-modus-rueckfall', true, async (b, srv) => {
@@ -1165,19 +1167,76 @@ szenario('vertrag-bestellweg', true, async (b, srv) => {
   await tab(p, 'Rückseite').click(); await textHinzufuegen(p, 'Hinten');
   await tab(p, 'Ärmel links').click(); await textHinzufuegen(p, 'Arm');
   await ctaKlicken(s);
-  const r = dateienAusEigenschaften(s.warenkorb[0].properties, { hosts: ['res.cloudinary.com', 'cdn.shopify.com'] });
-  pruefe('Parser der Bestellstrecke liest drei Dateien ohne Befund', r.dateien.length === 3 && r.probleme.length === 0, JSON.stringify(r.probleme));
-  gleich_('Platzierung → Dateityp (die Vorderseite gross heisst bei Printful front_large)', r.dateien.map((d) => [d.platzierung, d.dateiTyp]).sort(), [['back', 'back'], ['front_large', 'front_large'], ['sleeve_left', 'sleeve_left']]);
-  pruefe('Parser: _pod_karte als Version 6 mit Platzierungen erkannt', r.karte && r.karte.v === 6 && r.karte.pl.length === 3);
+  const r = () => dateienAusEigenschaften(s.warenkorb[0].properties, { hosts: ['res.cloudinary.com', 'cdn.shopify.com'] });
+  parserPruefe(pruefe, 'Parser der Bestellstrecke liest drei Dateien ohne Befund', () => ({ ok: r().dateien.length === 3 && r().probleme.length === 0, detail: JSON.stringify(r().probleme) }));
+  parserGleich_('Platzierung → Dateityp (die Vorderseite gross heisst bei Printful front_large)', () => r().dateien.map((d) => [d.platzierung, d.dateiTyp]).sort(), [['back', 'back'], ['front_large', 'front_large'], ['sleeve_left', 'sleeve_left']]);
+  parserPruefe(pruefe, 'Parser: _pod_karte als Version 6 mit Platzierungen erkannt', () => r().karte && r().karte.v === 6 && r().karte.pl.length === 3);
   const t = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=71&shop=1001:4012' });
   await editorBereit(t.page);
   await textHinzufuegen(t.page, 'Vorne');
   await ctaKlicken(t);
-  const r2 = dateienAusEigenschaften(t.warenkorb[0].properties, { hosts: ['res.cloudinary.com'] });
-  gleich_('Vorderseite: Platzierung front, Dateityp default', r2.dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default']]);
+  const r2 = () => dateienAusEigenschaften(t.warenkorb[0].properties, { hosts: ['res.cloudinary.com'] });
+  parserGleich_('Vorderseite: Platzierung front, Dateityp default', () => r2().dateien.map((d) => [d.platzierung, d.dateiTyp]), [['front', 'default']]);
   await s.schliessen(); await t.schliessen();
 });
 function gleich_(name, ist, soll) { pruefe(name, JSON.stringify(ist) === JSON.stringify(soll), `ist=${JSON.stringify(ist)} soll=${JSON.stringify(soll)}`); }
+function parserGleich_(name, ist, soll) { parserPruefe(pruefe, name, () => { const a = JSON.stringify(ist()); return { ok: a === JSON.stringify(soll), detail: `ist=${a} soll=${JSON.stringify(soll)}` }; }); }
+
+// ── 6.2.1: die Kaufanfrage mit dem Schlüssel «_Druckdatei (…)» (6.2.0: «🖼️ Druckdatei (…)»): vollständig, Design sichtbar, nichts Altes ──
+// Dasselbe Szenario läuft für beide Fassungen; nur die erwartete Schreibweise des Schlüssels unterscheidet sich (lib.mjs: druckdateiSchluessel, NEUE_SCHLUESSEL).
+szenario('kaufanfrage-schluessel', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  const ids = ['front_large', 'back', 'sleeve_left'];
+  const design = (id) => '\u{1F3A8} Design (' + id + ')';
+  await tab(p, 'Vorderseite gross').click(); await textHinzufuegen(p, 'Gross');
+  await tab(p, 'Rückseite').click(); await textHinzufuegen(p, 'Hinten');
+  await tab(p, 'Ärmel links').click(); await textHinzufuegen(p, 'Arm');
+  // Vor dem Kauf tragen die versteckten Felder der Seite Design und Karte, aber noch keine Adresse einer Druckdatei (die entsteht erst beim Upload)
+  const felder = await p.evaluate(() => [...document.querySelectorAll('form input[data-lspod6="1"]')].map((i) => i.name));
+  gleich_('Formular der Seite vor dem Kauf: drei Design-Zeilen und die Karte, keine Druckdatei-Adresse', [...felder].sort(), [...ids.map((id) => 'properties[' + design(id) + ']'), 'properties[_pod_karte]'].sort());
+  await ctaKlicken(s);
+  pruefe('Kaufanfrage: genau ein Aufruf, Variante 1001, Menge 1', s.warenkorb.length === 1 && s.warenkorb[0].id === '1001' && s.warenkorb[0].quantity === 1, JSON.stringify(s.warenkorb.map((w) => [w.id, w.quantity])));
+  const pr = s.warenkorb[0].properties;
+  // Vollständig: Design und Druckdatei je Platzierung plus die Karte, nichts sonst (kein _vorschau: dieses Szenario hat keine Vorschaudaten)
+  gleich_('Kaufanfrage vollständig: Design und Druckdatei je Platzierung plus _pod_karte, sieben Eigenschaften', Object.keys(pr).sort(), [...ids.map(design), ...ids.map(druckdateiSchluessel), '_pod_karte'].sort());
+  const pod = JSON.parse(pr._pod_karte);
+  pruefe(`Kaufanfrage: _pod_karte unter 255 Zeichen (${pr._pod_karte.length}) und gültiges JSON`, pr._pod_karte.length <= 255 && pod.v === 6, pr._pod_karte);
+  gleich_('Kaufanfrage: _pod_karte nennt Platzierungen (in der Reihenfolge der Karte), Shopify-Variante, Printful-Variante und Modell', [pod.pl, pod.sv, pod.pv, pod.m], [ids, '1001', 4012, 71]);
+  gleich_('Kaufanfrage: die Design-Zeilen sind lesbar und gehören zur richtigen Platzierung', ids.map((id) => pr[design(id)]), ['Text: "Gross"', 'Text: "Hinten"', 'Text: "Arm"']);
+  const karte = lies(71);
+  for (const id of ids) {
+    const k = druckdateiSchluessel(id), pf = karte.platzierungen.find((x) => x.id === id).printfile;
+    const up = s.uploads.find((u) => u.url === pr[k]);
+    pruefe(`Kaufanfrage: «${k}» ist die Cloudinary-Adresse genau des Uploads in der Grösse dieser Platzierung (${pf.breitePx} × ${pf.hoehePx})`, !!up && up.typ === 'png' && up.breite === pf.breitePx && up.hoehe === pf.hoehePx && /^https:\/\/res\.cloudinary\.com\//.test(pr[k]), JSON.stringify([pr[k], up && [up.breite, up.hoehe]]));
+  }
+  pruefe('Kaufanfrage: drei verschiedene Adressen', new Set(ids.map((id) => pr[druckdateiSchluessel(id)])).size === 3 && s.uploads.length === 3);
+  // Schreibweise des Schlüssels
+  const zeilen = druckdateiZeilen(pr);
+  pruefe(`Schreibweise: alle drei Druckdatei-Zeilen in der ${NEUE_SCHLUESSEL ? 'neuen Form «_Druckdatei (<Platzierung>)»' : 'alten Form «🖼️ Druckdatei (<Platzierung>)»'}`, zeilen.length === 3 && zeilen.every((z) => z.schreibweise === (NEUE_SCHLUESSEL ? 'neu' : 'alt')) && zeilen.map((z) => z.id).join() === ids.join(), JSON.stringify(Object.keys(pr)));
+  const mitDruckdatei = Object.keys(pr).filter((k) => /Druckdatei/.test(k));
+  if (NEUE_SCHLUESSEL) pruefe('Neu: die alten Schlüssel kommen nicht mehr vor (kein Schlüssel mit 🖼, jeder Schlüssel mit «Druckdatei» beginnt mit «_», keiner doppelt)', !Object.keys(pr).some((k) => /\u{1F5BC}/u.test(k)) && mitDruckdatei.length === 3 && mitDruckdatei.every((k) => k[0] === '_'), JSON.stringify(Object.keys(pr)));
+  else pruefe('Rücknahme: der alte Schlüssel «🖼️ Druckdatei (…)» bleibt, kein Schlüssel mit «_Druckdatei»', mitDruckdatei.length === 3 && mitDruckdatei.every((k) => /^\u{1F5BC}/u.test(k)) && !Object.keys(pr).some((k) => k.startsWith('_Druckdatei')), JSON.stringify(Object.keys(pr)));
+  // Sichtbarkeit nach der Regel des Themes (lib.mjs: sichtbareZeilen): bei 6.2.1 nur die Design-Zeilen, die Adresse nicht
+  gleich_(NEUE_SCHLUESSEL ? 'Sichtbar im Warenkorb des Themes: nur die drei Design-Zeilen (Adresse, Karte mit «_» verborgen)' : 'Sichtbar im Warenkorb des Themes (Rücknahme): Design und Adresse je Platzierung', sichtbareZeilen(pr), NEUE_SCHLUESSEL ? ids.map(design) : ids.flatMap((id) => [design(id), druckdateiSchluessel(id)]));
+  pruefe('Die Design-Zeile steht im Klartext ohne Unterstrich und ohne Adresse', ids.every((id) => !pr[design(id)].includes('http') && Array.from(design(id))[0] !== '_'));
+  // Parser der Bestellstrecke (nur wenn er die Schreibweise der Fassung kennt)
+  parserPruefe(pruefe, 'Parser der Bestellstrecke: drei Dateien ohne Befund, Platzierungen wie in der Karte', () => { const r = dateienAusEigenschaften(pr); return { ok: r.dateien.length === 3 && r.probleme.length === 0 && r.dateien.map((d) => d.platzierung).join() === ids.join(), detail: JSON.stringify(r.probleme) }; });
+  parserPruefe(pruefe, 'Parser: die Dateien werden als v6 gelesen (nicht über die v5-Regel), jede Adresse gehört zur richtigen Platzierung', () => { const r = dateienAusEigenschaften(pr); return r.dateien.length === 3 && r.dateien.every((d) => d.quelle === 'v6' && d.url === pr[druckdateiSchluessel(d.platzierung)]); });
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+  // Die Vorderseite heisst bei Printful «default», in der Karte aber «front»: der Schlüssel nennt die Platzierung (front), der Dateityp steht nur in _pod_karte.dt
+  const t = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=71&shop=1001:4012' });
+  await editorBereit(t.page);
+  await textHinzufuegen(t.page, 'Vorne');
+  await ctaKlicken(t);
+  const pt = t.warenkorb[0].properties;
+  gleich_('Vorderseite: genau Design, Druckdatei (Platzierung «front», nicht der Dateityp «default») und _pod_karte', Object.keys(pt).sort(), [design('front'), druckdateiSchluessel('front'), '_pod_karte'].sort());
+  gleich_('Vorderseite: der Dateityp «default» steht nur in _pod_karte.dt, nicht im Schlüssel', [JSON.parse(pt._pod_karte).dt, Object.keys(pt).some((k) => /default/.test(k))], [{ front: 'default' }, false]);
+  pruefe('Vorderseite: die Adresse gehört zum Upload in Printfile-Grösse 1800 × 2400', t.uploads.length === 1 && pt[druckdateiSchluessel('front')] === t.uploads[0].url && t.uploads[0].breite === 1800 && t.uploads[0].hoehe === 2400, JSON.stringify(t.uploads));
+  await t.schliessen();
+});
 
 // ── Kleinigkeiten: Emoji-Text, Kennung am Container, Hinweistext Stickerei ───────────────────────────
 szenario('kleinigkeiten', true, async (b, srv) => {
@@ -1257,7 +1316,7 @@ szenario('qualitaetstor', true, async (b, srv) => {
   const pod = JSON.parse(pr._pod_karte);
   pruefe('_pod_karte.qd = 100 (kleinste effektive dpi des 600-px-Fotos), ganzzahlig', pod.qd === 100 && Number.isInteger(pod.qd), pr._pod_karte);
   pruefe('_pod_karte mit qd unter 255 Zeichen, qd steht als letztes Feld (nach ap)', pr._pod_karte.length < 255 && pr._pod_karte.indexOf('"qd"') > pr._pod_karte.indexOf('"ap"'), `${pr._pod_karte.length}: ${pr._pod_karte}`);
-  pruefe('der Parser der Bestellstrecke liest die Position mit qd ohne Befund', (() => { const g3 = dateienAusEigenschaften(pr); return g3.dateien.length === 1 && g3.probleme.length === 0; })());
+  parserPruefe(pruefe, 'der Parser der Bestellstrecke liest die Position mit qd ohne Befund', () => { const g3 = dateienAusEigenschaften(pr); return g3.dateien.length === 1 && g3.probleme.length === 0; });
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
   // f) Foto auf der Rückseite sperrt, auch wenn die Vorderseite aktiv ist; qd = Minimum über alle Fotos
@@ -1462,7 +1521,7 @@ szenario('entwurf-speicher-gesperrt', true, async (b, srv) => {
     await p.evaluate(() => { Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' }); document.dispatchEvent(new Event('visibilitychange')); window.dispatchEvent(new Event('pagehide')); });
     await p.waitForTimeout(600);
     await ctaKlicken(s);
-    pruefe(`${name}: Kauf geht durch (Druckdatei, Warenkorb)`, s.warenkorb.length === 1 && /^https:/.test(s.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || ''));
+    pruefe(`${name}: Kauf geht durch (Druckdatei, Warenkorb)`, s.warenkorb.length === 1 && /^https:/.test(s.warenkorb[0].properties[druckdateiSchluessel('front')] || ''));
     pruefe(`${name}: 0 Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
     await s.schliessen();
   }
@@ -1483,7 +1542,8 @@ szenario('qd-entfaellt-bei-255', true, async (b, srv) => {
     pruefe(`${n} Platzierungen: die Sperre im Editor gilt unabhängig von qd (Kauf frei, weil 100 dpi über 75)`, !(await gesperrt(p)));
     await ctaKlicken(s);
     const pr = s.warenkorb[0].properties;
-    pruefe(`${n} Platzierungen: der Kauf geht durch (Warenkorb mit ${n} Druckdateien), der Parser der Bestellstrecke liest sie ohne Befund`, Object.keys(pr).filter((k) => /Druckdatei/.test(k)).length === n && (() => { const g = dateienAusEigenschaften(pr); return g.dateien.length === n && g.probleme.length === 0; })(), JSON.stringify(Object.keys(pr).length));
+    pruefe(`${n} Platzierungen: der Kauf geht durch (Warenkorb mit ${n} Druckdateien)`, Object.keys(pr).filter((k) => /Druckdatei/.test(k)).length === n && druckdateiZeilen(pr).length === n, JSON.stringify(Object.keys(pr).length));
+    parserPruefe(pruefe, `${n} Platzierungen: der Parser der Bestellstrecke liest sie ohne Befund`, () => { const g = dateienAusEigenschaften(pr); return { ok: g.dateien.length === n && g.probleme.length === 0, detail: JSON.stringify(g.probleme) }; });
     await s.schliessen();
   }
 });
@@ -1599,4 +1659,5 @@ for (const sz of auswahl) {
 }
 await browser.close(); await srv.stop();
 console.log(fehler.length ? `\n${fehler.length} von ${n} Prüfungen FEHLGESCHLAGEN` : `\n${n} Prüfungen bestanden`);
+if (parserBericht()) console.log(parserBericht());
 process.exit(fehler.length ? 1 : 0);

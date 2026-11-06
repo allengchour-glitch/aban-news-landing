@@ -4,10 +4,9 @@
  * Die Vorschaudaten kommen vom echten Werkzeug werkzeug/vorschau_daten_bauen.mjs (der Test-Server baut sie aus den Test-Katalogen im Repo); die Vorlagenbilder sind Nachbauten
  * (lib.mjs: geisterPng, tassePng) mit der Struktur der echten Printful-Bilder. Netz: nur der lokale Server.
  * Aufruf: node vorschau_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = die schnellen für die Mutationsprobe)
- * Umgebung: V6_DATEI (andere Fassung des Editors, für die Mutationsprobe).
+ * Umgebung: V6_DATEI (andere Fassung des Editors: Rücknahme 6.2.0, vom CDN ausgelieferte Datei, Mutant; Vorgabe 6.2.1), V6_VERSION (nur wenn Dateiname und Inhalt die Fassung nicht verraten).
  */
-import { playwright, starteServer, seiteOeffnen, editorBereit, pngRauschen, geisterPng, GEISTER_RECHTECK, tassePng, TASSE_FOTO } from './lib.mjs';
-import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
+import { playwright, starteServer, seiteOeffnen, editorBereit, pngRauschen, geisterPng, GEISTER_RECHTECK, tassePng, TASSE_FOTO, NEUE_SCHLUESSEL, druckdateiSchluessel, sichtbareZeilen, dateienAusEigenschaften, parserPruefe, parserBericht } from './lib.mjs';
 
 const { chromium } = playwright();
 let n = 0; const fehler = [];
@@ -453,7 +452,7 @@ szenario('fristen', true, async (b, srv) => {
   await Promise.all([u.page.waitForURL('**/cart', { timeout: 20000 }), u.page.locator('.lsp6-cta').click()]);
   const du = Date.now() - t2;
   pruefe('hängender JPEG-Upload beim Kauf: Warenkorb nach rund 4 s, nicht nach 90 s', du >= 3500 && du < 8000, String(du));
-  pruefe('hängender JPEG-Upload beim Kauf: Druckdatei da, kein _vorschau, keine Seitenfehler', u.warenkorb.length === 1 && !('_vorschau' in u.warenkorb[0].properties) && /^https:/.test(u.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || '') && u.fehler.length === 0, u.fehler.join(' | '));
+  pruefe('hängender JPEG-Upload beim Kauf: Druckdatei da, kein _vorschau, keine Seitenfehler', u.warenkorb.length === 1 && !('_vorschau' in u.warenkorb[0].properties) && /^https:/.test(u.warenkorb[0].properties[druckdateiSchluessel('front')] || '') && u.fehler.length === 0, u.fehler.join(' | '));
   await u.schliessen();
   // D. ohne Hänger kostet die Vorschau fast nichts: der Kauf mit Vorschau dauert nicht annähernd die Frist
   const n = await oeffnen(b, srv, TSHIRT);
@@ -632,9 +631,11 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   const pod = JSON.parse(pr._pod_karte);
   pruefe('_pod_karte unverändert aufgebaut (Modell, Variante, Platzierung), kein qd ohne Foto', pod.m === 71 && pod.pv === 4012 && pod.pl[0] === 'front' && !('qd' in pod) && pr._pod_karte.length <= 255, pr._pod_karte);
   // Vertrag mit der Bestellstrecke: der echte Parser ignoriert _vorschau und liest die Druckdatei
-  const gelesen = dateienAusEigenschaften(pr);
-  pruefe('Parser der Bestellstrecke: eine Druckdatei, kein Befund (_vorschau stört nicht)', gelesen.dateien.length === 1 && gelesen.probleme.length === 0 && gelesen.dateien[0].platzierung === 'front', JSON.stringify(gelesen.probleme));
-  pruefe('Parser: _vorschau wird nicht als Druckdatei gelesen', !gelesen.dateien.some((d) => d.url === pr._vorschau));
+  const gelesen = () => dateienAusEigenschaften(pr);
+  parserPruefe(pruefe, 'Parser der Bestellstrecke: eine Druckdatei, kein Befund (_vorschau stört nicht)', () => ({ ok: gelesen().dateien.length === 1 && gelesen().probleme.length === 0 && gelesen().dateien[0].platzierung === 'front', detail: JSON.stringify(gelesen().probleme) }));
+  parserPruefe(pruefe, 'Parser: _vorschau wird nicht als Druckdatei gelesen', () => !gelesen().dateien.some((d) => d.url === pr._vorschau));
+  // Warenkorb des Themes: «_vorschau» ist nie sichtbar; mit 6.2.1 ist auch die Adresse der Druckdatei verborgen und nur «Design» bleibt sichtbar
+  pruefe('Sichtbar im Warenkorb des Themes: ' + (NEUE_SCHLUESSEL ? 'nur «Design» (Druckdatei, Karte und Vorschau mit «_» verborgen)' : '«Design» und Druckdatei (alter Schlüssel), Karte und Vorschau verborgen'), JSON.stringify(sichtbareZeilen(pr)) === JSON.stringify(NEUE_SCHLUESSEL ? ['\u{1F3A8} Design (front)'] : ['\u{1F3A8} Design (front)', druckdateiSchluessel('front')]), JSON.stringify(sichtbareZeilen(pr)));
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
   // der JPEG-Upload scheitert: die Bestellung geht ohne _vorschau durch
@@ -642,7 +643,7 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   await sichtWarten(t.page);
   await textHinzufuegen(t.page, 'Hallo');
   await Promise.all([t.page.waitForURL('**/cart', { timeout: 20000 }), t.page.locator('.lsp6-cta').click()]);
-  pruefe('JPEG-Upload scheitert: Warenkorb trotzdem gefüllt, ohne _vorschau, Druckdatei da', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && /^https:/.test(t.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || ''), JSON.stringify(Object.keys(t.warenkorb[0]?.properties || {})));
+  pruefe('JPEG-Upload scheitert: Warenkorb trotzdem gefüllt, ohne _vorschau, Druckdatei da', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && /^https:/.test(t.warenkorb[0].properties[druckdateiSchluessel('front')] || ''), JSON.stringify(Object.keys(t.warenkorb[0]?.properties || {})));
   pruefe('JPEG-Upload scheitert: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
   // Der Warenkorb lehnt ab: die hochgeladene Vorschau-Adresse darf weder im Formular der Seite noch nach einer Änderung stehen bleiben (sie gehört zu einem älteren Stand des Entwurfs)
@@ -871,4 +872,5 @@ for (const sz of auswahl) {
 }
 await browser.close(); await srv.stop();
 console.log(fehler.length ? `\n${fehler.length} von ${n} Prüfungen FEHLGESCHLAGEN` : `\n${n} Prüfungen bestanden`);
+if (parserBericht()) console.log(parserBericht());
 process.exit(fehler.length ? 1 : 0);

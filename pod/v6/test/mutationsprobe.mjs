@@ -1,7 +1,8 @@
 /**
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
  * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
- * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), S (Editor 6.2.1: Schlüssel «_Druckdatei (…)», nur wenn die geprüfte Datei 6.2.1 oder neuer ist), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Geprüft wird die Datei V6_DATEI (Vorgabe: 6.2.1). Für die Rücknahme 6.2.0 (V6_DATEI=…/lspod-designer-v6-6.2.0.js) entfallen die S-Mutanten und M10 sucht den alten Schlüssel: es bleiben die 157 Muster von 6.2.0.
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
  * Absicherungen (nach der Gegenlesung vom 06.11.2026): (1) VOR dem ersten Mutanten läuft jede benutzte Stufe auf dem UNVERÄNDERTEN Code; ist sie dort rot, bricht die Probe ab (sonst gälte jeder Mutant
  * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
@@ -16,10 +17,15 @@ import { spawn, spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { pathToFileURL } from 'node:url';
-import { hier, V6_DATEI, istUmgebungsfehler } from './lib.mjs';
+import { hier, V6_DATEI, V6_VERSION, NEUE_SCHLUESSEL, istUmgebungsfehler } from './lib.mjs';
 
 const KARTENBAUER = join(hier, '..', 'werkzeug', 'karte_fuer_editor.mjs');
 const VORSCHAUBAUER = join(hier, '..', 'werkzeug', 'vorschau_daten_bauen.mjs');
+
+// Die Zeile, die die Adresse der Druckdatei in die Eigenschaften schreibt: in 6.2.1 mit Unterstrich, in 6.2.0 mit Emoji (Quelltext der geprüften Datei, Muster müssen genau einmal vorkommen)
+const DK_ALT = "props['\\u{1F5BC}\\uFE0F Druckdatei (' + p.id + ')'] = druckUrls[p.id];";
+const DK_NEU = "props['_Druckdatei (' + p.id + ')'] = druckUrls[p.id];";
+const DK = NEUE_SCHLUESSEL ? DK_NEU : DK_ALT;
 
 // Mutanten des Editors: [Name, altes Muster (muss genau einmal vorkommen), neuer Text]
 const MUTANTEN = [
@@ -32,7 +38,7 @@ const MUTANTEN = [
   ['M07 dpi ohne Obergrenze der Druckdatei', "return Math.min(dpi, pf.dpi * (rg ? rg.k : 1));", "return dpi;"],
   ['M08 Dateigrösse in cm falsch umgerechnet', "breite: pf.breitePx / pf.dpi * 2.54,", "breite: pf.breitePx / pf.dpi * 2.5,"],
   ['M09 Druckdatei in fester Grösse statt Pixelgrösse des Printfiles', "var W = Math.max(1, Math.floor(g.render.w * sk)), H = Math.max(1, Math.floor(g.render.h * sk));", "var W = 1200, H = 1200;"],
-  ['M10 Schlüssel der Druckdatei ohne Platzierung', "props['\\u{1F5BC}\\uFE0F Druckdatei (' + p.id + ')'] = druckUrls[p.id];", "props['\\u{1F5BC}\\uFE0F Druckdatei'] = druckUrls[p.id];"],
+  ['M10 Schlüssel der Druckdatei ohne Platzierung', DK, NEUE_SCHLUESSEL ? "props['_Druckdatei'] = druckUrls[p.id];" : "props['\\u{1F5BC}\\uFE0F Druckdatei'] = druckUrls[p.id];"],
   ['M11 Aufpreis in _pod_karte immer 0', "o.ap = Math.round(ap * 100) / 100;", "o.ap = 0;"],
   ['M12 Aufpreisbox auch ohne Ebenen', "if (ap > 0 && st.ebenen[p.id].length) {", "if (ap > 0) {"],
   ['M13 v5-Modus: falsche Leinwandhöhe', "var hoehe = Math.round(ref * ratio);", "var hoehe = ref;"],
@@ -152,6 +158,23 @@ const MUTANTEN = [
   ['W63 Tasse: Katalogfoto ohne CORS wird trotzdem geladen (Wächter in der Vorschauwahl entfällt UND Rückfall auf die Quelle)', ["if (!t || !t.foto) return { art: 'hinweis', code: 'keine' }; }", "return Promise.all([vorschauBild(t.foto), designLeinwand(p, offW, offH)]).then(function (a) {"], ["if (!t) return { art: 'hinweis', code: 'keine' }; }", "return Promise.all([vorschauBild(t.foto || t.quelle), designLeinwand(p, offW, offH)]).then(function (a) {"]],
   ['W64 Tasse ohne irgendein gespiegeltes Foto bietet den Umschalter «Auf dem Produkt» trotzdem an', "if (m.adapter === 'tasse') return Object.keys(m.tasse).some(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });", ""],
   ['W65 Tasse: der Umschalter verschwindet, sobald EINE Ausführung kein Foto hat (jede statt irgendeine)', "if (m.adapter === 'tasse') return Object.keys(m.tasse).some(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });", "if (m.adapter === 'tasse') return Object.keys(m.tasse).every(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });"],
+  // ── 6.2.1: Schlüssel «_Druckdatei (…)» (nur wenn die geprüfte Datei 6.2.1 oder neuer ist; Prüfungen: editor_test «kaufanfrage-schluessel», «t-shirt-*», vorschau_test, unit_test) ──
+  ...(NEUE_SCHLUESSEL ? [
+    ['S01 Schlüssel der Druckdatei wieder mit Emoji (Rückfall auf 6.2.0)', DK_NEU, DK_ALT],
+    ['S02 Schlüssel ohne führenden Unterstrich («Druckdatei (…)»)', DK_NEU, "props['Druckdatei (' + p.id + ')'] = druckUrls[p.id];"],
+    ['S03 Schlüssel nennt den Dateityp statt der Platzierung (front → default)', DK_NEU, "props['_Druckdatei (' + p.dateiTyp + ')'] = druckUrls[p.id];"],
+    ['S04 Zeile «Design» mit Unterstrich (für Kundin und Mail unsichtbar)', "if (d) props['\\u{1F3A8} Design (' + p.id + ')'] = d;", "if (d) props['_\\u{1F3A8} Design (' + p.id + ')'] = d;"],
+    ['S05 Beide Schlüssel geschrieben (alt und neu)', DK_NEU, "{ " + DK_NEU + " " + DK_ALT + " }"],
+    ['S06 Adresse nur für die erste Platzierung', "if (druckUrls[p.id]) props['_Druckdatei ('", "if (druckUrls[p.id] && p === verwendet[0]) props['_Druckdatei ('"],
+    ['S07 Alle Platzierungen tragen die Adresse der ersten', DK_NEU, "props['_Druckdatei (' + p.id + ')'] = druckUrls[verwendet[0].id];"],
+    ['S08 Schlüssel ohne Leerzeichen vor der Klammer', DK_NEU, "props['_Druckdatei(' + p.id + ')'] = druckUrls[p.id];"],
+    ['S09 Adresse der Druckdatei fehlt in der Kaufanfrage', DK_NEU, "void 0;"],
+    ['S10 Platzierung im Schlüssel gross geschrieben', DK_NEU, "props['_Druckdatei (' + p.id.toUpperCase() + ')'] = druckUrls[p.id];"],
+    ['S11 Rückfall ohne Karte (v5-Schlüssel) bekommt den Unterstrich-Schlüssel', "if (druckUrls[p.id]) props[vor + T.pPrintFile] = druckUrls[p.id];", "if (druckUrls[p.id]) props['_Druckdatei (' + p.id + ')'] = druckUrls[p.id];"],
+    ['S12 Karte ohne Unterstrich («pod_karte»)', "if (verwendet.length) props._pod_karte = podKarteWert(verwendet);", "if (verwendet.length) props.pod_karte = podKarteWert(verwendet);"],
+    ['S13 Vorschau ohne Unterstrich («vorschau»)', "if (verwendet.length && vorschauUrl) props._vorschau = vorschauUrl;", "if (verwendet.length && vorschauUrl) props.vorschau = vorschauUrl;"],
+    ['S14 Version bleibt 6.2.0', "var VERSION = '6.2.1';", "var VERSION = '6.2.0';"],
+  ] : []),
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)
@@ -242,7 +265,7 @@ let naechster = 0;
   const stufen = [['unit_test.mjs', []]];
   if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']]);
   for (const [datei, args] of stufen) {
-    const r = await lauf(datei, args, {});
+    const r = await lauf(datei, args, { V6_DATEI, V6_VERSION });
     if (r.code !== 0) { console.log(`ABBRUCH: Ausgangslage ist rot: ${datei} ${args.join(' ')} endet mit ${r.zeit ? 'Zeitüberschreitung' : 'Exit ' + r.code}. Erste Meldung: ${ersterFehler(r.aus)}`); rmSync(ordner, { recursive: true, force: true }); process.exit(3); }
     console.log(`Ausgangslage grün: ${datei} ${args.join(' ')}`.trim());
   }
@@ -274,7 +297,7 @@ async function arbeiter() {
       writeFileSync(datei, mutiert);
       const fehlerSyntax = pruefeSyntax(datei);
       if (fehlerSyntax) { ergebnis.unanwendbar.push(`${a.name} (Syntaxfehler: ${fehlerSyntax})`); console.log(`?  ${a.name}: Mutant ist kein gültiger Code (${fehlerSyntax})`); continue; }
-      const umg = { V6_DATEI: datei };
+      const umg = { V6_DATEI: datei, V6_VERSION };   // die Mutantendatei heisst «mutant-<n>.js»: die Fassung (und damit der erwartete Schlüssel) kommt von der Originaldatei
       // Reihenfolge nach Herkunft des Mutanten: W betrifft meist die Vorschau (vorschau_test zuerst), M und N den Editor von 6.1.0 (editor_test zuerst)
       const folge = [['unit_test', 'unit_test.mjs', []], ['vorschau_test', 'vorschau_test.mjs', ['kern']], ['editor_test', 'editor_test.mjs', ['kern']]];
       if (!/^W/.test(a.name)) { const t = folge[1]; folge[1] = folge[2]; folge[2] = t; }

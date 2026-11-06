@@ -32,6 +32,7 @@ if (process.argv[2] === '--szenario') {
   const nachOrder = (i = 0) => ({ ...draftOrder(0), status: 'pending', ...(sz.nachConfirm || {}), ...folge(sz.nachFolge, i) });
   // Katalog des Szenarios: echte Auszüge (Tasse, T-Shirt, Kappe, Poster, Jacke, Strick, Hülle), sonst synthetisch aus der Dateiliste des Mitschnitts
   const druck = (pid) => {
+    if (sz.druckEigen && sz.druckEigen[pid]) return sz.druckEigen[pid];            // echter Auszug eines Produkts, das der Katalogauszug nicht führt (WP6: Tasse 403)
     if (KAT[pid]) return KAT[pid];
     const m = MIT[pid]; if (!m) return null;
     const ids = m.produkt.files.filter((f) => f.type !== 'mockup').flatMap((f) => [f.id, f.type]);
@@ -619,6 +620,93 @@ for (const [name, sz, soll] of [
   ist('Kappe, Stickerei «embroidery_front» ohne Garnfarben (früher: kein Befund, BESTÄTIGT): Entwurf, Befund «optionen» (der Katalog führt dort keine Garnfarben-Option)', [bestaetigt(a), tags(a).includes('printful-review-optionen'), /Garnfarben-Option/.test(a.prot.tg[0])], [false, true, true]);
   const b = lauf(kappe([A('🖼️ Druckdatei (default)', V('v')), karte6(['default'])]));
   ist('Kappe, Datei-ID «default» (= Typ embroidery_front): ebenso Entwurf «optionen», und KEIN Auflösungsbefund aus Zufall (Stickerei hat keine Pixelgrösse)', [bestaetigt(b), tags(b).includes('printful-review-optionen'), tags(b).includes('printful-review-aufloesung')], [false, true, false]);
+}
+
+// ═════════════════════════════════════════════════════════════ WP6 (06.11.2026): Attrappen-Bestellungen aus den ECHTEN Eigenschaften der Canary-Tasse
+// Die Kaufanfrage der Canary-Tasse «Keramik-Tasse mit farbiger Innenseite» (Printful 403, SKU 9100403_17197) wurde am 06.11.2026 im Browser abgefangen (fabrik/lauf-0611/README.md);
+// die Printful-Antworten dazu (Variante, Druckdateien, Vorlagen) sind ein Auszug der ECHTEN Antworten desselben Tages. Die Datei der Anfrage misst 2700×1140 px.
+// Verlangt wird: alte und neue Schreibweise des Schlüssels ergeben denselben Auftrag ohne Befund (bestätigt), _vorschau wird nie geholt, qd ist nur ein weicher Hinweis, eine Karte,
+// die der SKU widerspricht, und eine Bestellung ohne Design legen KEINEN Printful-Auftrag an und lösen nichts bei der Kundin aus (kein Shopify-Schreibzugriff ausser den Tags).
+{
+  const TASSE = JSON.parse('{"antwort":{"variant":{"id":17197,"product_id":403,"size":"15 oz","color":"Blue"},"product":{"id":403,"type":"MUG","title":"White Ceramic Mug with Color Inside","files":[{"id":"default","type":"default","title":"Print file","additional_price":null,"options":[]},{"id":"preview","type":"mockup","title":"Mockup","additional_price":null,"options":[]}],"options":[{"id":"license_type","title":"License type","type":"multi_select","values":{"CLC":"Collegiate Licensing Company","AFFINITY":"Affinity","BR":"BR","EX":"EX","NCAA":"NCAA","FAN":"Fan","BCOMPLY":"BrandComply","TAG":"Tag","DLH":"DLH","CORE81":"Core81"},"additional_price":null,"additional_price_breakdown":[]}],"techniques":[{"key":"SUBLIMATION","display_name":"Sublimation","is_default":true}]}},"printfiles":{"product_id":403,"available_placements":{"default":"Print file"},"printfiles":[{"printfile_id":43,"width":2700,"height":1050,"dpi":300,"fill_mode":"fit","can_rotate":false},{"printfile_id":44,"width":2700,"height":1140,"dpi":300,"fill_mode":"fit","can_rotate":false}],"variant_printfiles":[{"variant_id":11051,"placements":{"default":43}},{"variant_id":17197,"placements":{"default":44}}]},"templates":{"min_dpi":150,"conflicting_placements":[]}}');
+  const DATEI_T = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976626/xy1jxggytwmgpyvh4m1v.png';
+  const VORSCHAU_T = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976700/klmnopqrst.jpg';
+  const KARTE_T = { v: 6, m: 403, pv: 17197, sv: '68134397739399', pl: ['default'], ap: 0 };
+  const TEXT_T = A('🎨 Design (default)', 'Text: "Test Entwurf"');
+  const ALT = '🖼️ Druckdatei (default)', NEU = '_Druckdatei (default)';
+  const eigT = (schluessel = ALT, extra = {}, mehr = []) => [TEXT_T, A(schluessel, DATEI_T), A('_pod_karte', JSON.stringify({ ...KARTE_T, ...extra })), ...mehr];
+  const tasseZeile = (props, o = {}) => zeile({ title: 'Keramik-Tasse mit farbiger Innenseite selbst gestalten', sku: '9100403_17197', variant: { sku: '9100403_17197' }, discountedTotalSet: { shopMoney: { amount: '27.90', currencyCode: 'CHF' } },
+    product: { productType: 'Tassen & Becher', tags: ['wunschdesign', 'printful_personalized_product', 'sg-fabrik'], metafield: null }, customAttributes: props, ...o });
+  const szT = (props, extra = {}, zeileO = {}) => ({ vid: 17197, orders: [knoten([tasseZeile(props, zeileO)], extra.order || {})], variant: [{ status: 200, body: { result: TASSE.antwort } }], druckEigen: { 403: { printfiles: TASSE.printfiles, templates: TASSE.templates } }, datei: { px: [2700, 1140] }, ...extra });
+  const nurLookup = (e) => e.prot.pf.filter((x) => !/mockup-generator|products\/variant/.test(x));
+  const SOLL_ARTIKEL = [{ variant_id: 17197, quantity: 1, files: [{ type: 'default', url: DATEI_T }], external_id: '9001' }];
+
+  // (1) alte und neue Schreibweise: derselbe Auftrag, bestätigt, kein Review
+  for (const [n, st] of [['ALTE Schreibweise «🖼️ Druckdatei (default)» (Editor 6.2.0)', ALT], ['NEUE Schreibweise «_Druckdatei (default)» (ab 6.2.1)', NEU]]) {
+    const e = lauf(szT(eigT(st)));
+    ist(`WP6 Sync Canary-Tasse, ${n}: ein Auftrag mit Artikel 17197 und Datei «default», bestätigt, kein Review-Tag, Exit 0`, [e.prot.posts.map((p) => p.body.items), bestaetigt(e), hatReview(e), tags(e).includes('printful-confirmed'), e.prot.exitCode], [[SOLL_ARTIKEL], true, false, true, 0]);
+  }
+  {
+    const a = lauf(szT(eigT(ALT))), n = lauf(szT(eigT(NEU)));
+    ist('WP6 Sync: alte und neue Schreibweise senden BYTE-GLEICH denselben Auftrag (Empfänger, Artikel, external_id)', JSON.stringify(n.prot.posts[0].body), JSON.stringify(a.prot.posts[0].body));
+  }
+  // (4) _vorschau: nie geholt, nie gesendet
+  for (const [n, st] of [['alt', ALT], ['neu', NEU]]) {
+    const e = lauf(szT(eigT(st, {}, [A('_vorschau', VORSCHAU_T)])));
+    ist(`WP6 Sync mit _vorschau (${n}): derselbe Auftrag, bestätigt, nur die Druckdatei wurde abgerufen (die Vorschau nie), kein Review`, [e.prot.posts[0].body.items, bestaetigt(e), e.prot.dateien.map((d) => d.url), hatReview(e)], [SOLL_ARTIKEL, true, [DATEI_T], false]);
+  }
+  // gemischte Schlüssel: harter Befund, kein Auftrag
+  {
+    const e = lauf(szT(eigT(ALT, {}, [A(NEU, DATEI_T)]), { telegram: true }));
+    ist('WP6 Sync gemischte Schlüssel (alt UND neu für «default»): kein Auftrag, Review-Tags «schluessel-gemischt», eine Meldung mit 🔴, nichts abgerufen', [e.prot.posts.length, tags(e).includes('printful-review-schluessel-gemischt'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), e.prot.dateien.length], [0, true, false, 1, true, 0]);
+    const u = lauf(szT([TEXT_T, A('_Druckdatei (Front)', DATEI_T), A('_pod_karte', JSON.stringify(KARTE_T))], { telegram: true }));
+    ist('WP6 Sync nicht lesbarer neuer Schlüssel («_Druckdatei (Front)»): kein Auftrag, Review-Tag «datei-schluessel» (früher: als Vorderseite gedruckt)', [u.prot.posts.length, tags(u).includes('printful-review-datei-schluessel')], [0, true]);
+  }
+  // (2) qd: nur weich
+  for (const [n, qd, bestaetigtSoll, tag] of [['300 (so gut wie die Datei)', 300, true, null], ['150 (Mindest-dpi der Tasse)', 150, true, null], ['149 (unter der Mindest-dpi)', 149, false, 'printful-review-aufloesung-foto'], ['60 (hochgezogenes Foto)', 60, false, 'printful-review-aufloesung-foto'], ['400 (mehr als die Datei trägt)', 400, false, 'printful-review-aufloesung-angabe'], ['"abc" (unbrauchbar)', 'abc', false, 'printful-review-aufloesung-angabe']]) {
+    const e = lauf(szT(eigT(NEU, { qd }), { telegram: true }));
+    ist(`WP6 Sync qd ${n}: Entwurf ${bestaetigtSoll ? 'wird bestätigt' : 'bleibt Entwurf'}${tag ? ', Tag ' + tag : ', kein Review'}, der Auftrag selbst wird in jedem Fall angelegt (nie ein harter Befund)`,
+      [e.prot.posts.length, bestaetigt(e), tag ? tags(e).includes(tag) : !hatReview(e), !/🔴/.test(e.prot.tg.join(' '))], [1, bestaetigtSoll, true, true]);
+  }
+  {
+    const e = lauf(szT(eigT(NEU, { qd: 300 }), { datei: { px: [900, 380] }, telegram: true }));
+    ist('WP6 Sync: ein hohes qd (300) gibt die zu kleine Datei (900×380 = 100 dpi) NICHT frei: Entwurf, Tags «aufloesung» und «aufloesung-angabe»', [bestaetigt(e), tags(e).includes('printful-review-aufloesung'), tags(e).includes('printful-review-aufloesung-angabe')], [false, true, true]);
+  }
+  // (3) Karte gegen SKU
+  for (const [n, extra, text] of [['pv 17196 statt 17197', { pv: 17196 }, /17196/], ['m 404 statt 403', { m: 404 }, /Produkt 404/]]) {
+    const e = lauf(szT(eigT(NEU, extra), { telegram: true }));
+    ist(`WP6 Sync Karte widerspricht der SKU (${n}): KEIN Auftrag, kein Bestätigen, Review-Tags «karte-widerspruch», nicht als synchronisiert markiert, eine 🔴-Meldung, keine Abfrage von Variante oder Datei`,
+      [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-karte-widerspruch'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), text.test(e.prot.tg[0] || ''), e.prot.variantGets.length, e.prot.dateien.length, nurLookup(e)], [0, 0, true, false, 1, true, true, 0, 0, ['GET /orders/@LXT1']]);
+  }
+  // Druckdatei-Eigenschaft in neuer Schreibweise an einem Produkt OHNE POD-Tag (und ohne Karte): die Bestellung wird trotzdem geprüft, nicht still übergangen
+  {
+    const e = lauf(szT([A(NEU, DATEI_T)], { telegram: true }, { product: { productType: 'Tassen & Becher', tags: [], metafield: null } }));
+    ist('WP6 Sync: «_Druckdatei (…)» an einem Produkt ohne POD-Tag und ohne Karte: harter Befund «druckdatei-ohne-pod», kein Auftrag, nichts abgerufen', [e.prot.posts.length, tags(e).includes('printful-review-druckdatei-ohne-pod'), e.prot.dateien.length], [0, true, 0]);
+  }
+  // (5) Bestellung ohne Design
+  {
+    const e = lauf(szT([], { telegram: true }));
+    ist('WP6 Sync ohne Design: KEIN Printful-Auftrag (weder Entwurf noch Bestätigen), Review-Tags «keine-druckdatei», genau eine 🔴-Meldung mit dem Verweis auf OHNE-DESIGN.md, Exit 0', [e.prot.posts.length, e.prot.confirms.length, tags(e).includes('printful-review-keine-druckdatei'), tags(e).includes('printful-synced'), tgAnzahl(e), /🔴/.test(e.prot.tg[0] || ''), /OHNE-DESIGN\.md/.test(e.prot.tg[0] || ''), e.prot.exitCode], [0, 0, true, false, 1, true, true, 0]);
+    ist('WP6 Sync ohne Design: KEIN Kundenkontakt und keine Rückerstattung durch den Sync: die einzige Schreibaktion an Shopify ist das Setzen der Tags (kein Metafeld, keine Erstattung, keine Versandmeldung, keine Stornierung), an Printful geht nur die Abfrage nach einem bestehenden Auftrag',
+      [e.prot.shopOps, nurLookup(e), e.prot.tg.length], [['tagsAdd'], ['GET /orders/@LXT1'], 1]);
+    ist('WP6 Sync ohne Design: das Protokoll (öffentlich) nennt nur Nummer und Befundart, keinen Titel und keinen Kundentext', [e.prot.log.some((l) => /Keramik-Tasse/.test(l)), e.prot.warn.some((l) => /Keramik-Tasse|Test Entwurf/.test(l)), e.prot.warn.some((l) => /keine-druckdatei/.test(l))], [false, false, true]);
+    const zweit = lauf(szT([], { telegram: true, order: { tags: ['printful-review', 'printful-review-keine-druckdatei'] } }));
+    ist('WP6 Sync ohne Design, zweiter Lauf (Tags stehen schon): dieselbe Befundart wird NICHT erneut gemeldet', [zweit.prot.posts.length, tgAnzahl(zweit), zweit.prot.tags.length], [0, 0, 0]);
+    const nurKarte = lauf(szT([TEXT_T, A('_pod_karte', JSON.stringify(KARTE_T))], { telegram: true }));
+    ist('WP6 Sync ohne Design, aber mit Editor-Eintrag: derselbe Ablauf, die Meldung sagt «Editor-Eintrag da» und nennt die Karte NICHT noch einmal als eigenen Befund', [nurKarte.prot.posts.length, tags(nurKarte).includes('printful-review-keine-druckdatei'), tags(nurKarte).includes('printful-review-karte-ohne-datei'), /Editor-Eintrag da/.test(nurKarte.prot.tg[0] || '')], [0, true, false, true]);
+  }
+  // Trockenlauf mit der Attrappe: gelesen, nichts geschrieben
+  {
+    const e = lauf(szT(eigT(NEU), { telegram: true, env: { DRY_RUN: '1' } }));
+    ist('WP6 Sync Trockenlauf mit der Canary-Attrappe (neue Schreibweise): würde als Entwurf angelegt UND bestätigt, nichts geschrieben (kein POST, kein Tag, kein Metafeld, keine Telegram-Meldung)', [e.prot.posts.length, e.prot.shopOps, e.prot.tg.length, e.prot.log.some((l) => /würde als Entwurf angelegt und danach bestätigt/.test(l))], [0, [], 0, true]);
+    const o = lauf(szT([], { telegram: true, env: { DRY_RUN: '1' } }));
+    ist('WP6 Sync Trockenlauf ohne Design: kein POST, keine Tags, keine Meldung', [o.prot.posts.length, o.prot.shopOps, o.prot.tg.length], [0, [], 0]);
+  }
+  // PRINTFUL_AUTO_CONFIRM=0 (Entscheid des Besitzers): der Auftrag bleibt Entwurf, einziger Befund «manuell»
+  {
+    const e = lauf(szT(eigT(NEU), { telegram: true, env: { PRINTFUL_AUTO_CONFIRM: '0' } }));
+    ist('WP6 Sync mit PRINTFUL_AUTO_CONFIRM=0 (Besitzer-Entscheid): derselbe Entwurf wird angelegt, NICHT bestätigt, als einziger Befund «manuell»', [e.prot.posts[0].body.items, bestaetigt(e), tags(e).filter((t) => t.startsWith('printful-review-')), tags(e).includes('printful-synced')], [SOLL_ARTIKEL, false, ['printful-review-manuell'], true]);
+  }
 }
 
 console.log(`${ok} ok, ${fehl} Fehler`);

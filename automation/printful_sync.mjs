@@ -6,9 +6,12 @@
  * Ablauf je Bestellung (reine Logik und Prüfungen: lib/printful_bestellweg.mjs und lib/printful_platzierung.mjs; Verhalten: automation/printful_sync_test.mjs):
  *   0. Gibt es bei Printful schon einen Auftrag mit external_id «LX<Bestellnummer>»? (GET /orders/@<external_id>; GEMESSEN 05.11.: 404 wenn nicht, `GET /orders?external_id=` filtert NICHT)
  *      Ja → nichts anlegen, nur Tag `printful-synced` + Metafeld nachtragen (ein gescheitertes Markieren führt nie mehr zu einem zweiten Auftrag). Nicht prüfbar → nichts anlegen, später wieder.
- *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6: «🖼️ Druckdatei (<Platzierung>)», v5: Vorne/Hinten) mit den ECHTEN Printful-
- *      Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und Mindest-dpi des Katalogs), KI-Kontrolle, Empfänger.
- *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, Adresse unbrauchbar, mehr als 50 Positionen): KEIN Auftrag, Tag `printful-review`, eine Meldung.
+ *   1. Planen: Variante aus der SKU (die der Position zuerst), Druckdateien aus den Eigenschaften (v6 ALT «🖼️ Druckdatei (<Platzierung>)», v6 NEU «_Druckdatei (<Platzierung>)» ab Editor 6.2.1,
+ *      v5: Vorne/Hinten; `_vorschau` ist KEINE Druckdatei) mit den ECHTEN Printful-Platzierungen, Optionen (Garnfarben …), Konflikte, Technik, Auflösung (PNG/JPEG-Kopfzeile gegen Druckdatei und
+ *      Mindest-dpi des Katalogs; dazu als weiche Gegenprobe die Angabe `_pod_karte.qd`), KI-Kontrolle, Empfänger. `_pod_karte.m` und `.pv` müssen zur SKU der Position passen.
+ *      «Harte» Befunde (SKU ohne Variante, keine/unzulässige Datei, gemischte Schlüssel, Karte widerspricht der SKU, Adresse unbrauchbar, mehr als 50 Positionen): KEIN Auftrag, Tag `printful-review`,
+ *      eine Meldung. Eine bezahlte Bestellung OHNE Design (`keine-druckdatei`) bleibt so liegen: keine Mail an die Kundin und keine Rückerstattung durch dieses Skript (dropship/wp6-0611/OHNE-DESIGN.md).
+ *      Stand der Befundnamen und der Messung: dropship/wp6-0611/SYNC.md.
  *   2. Auftrag als ENTWURF anlegen (mit external_id), sofort Metafeld printful.order_id und ZULETZT das Tag `printful-synced` setzen (Fehler dabei werden gemeldet, Exit 1; steht das Tag nicht,
  *      findet der nächste Lauf den Entwurf über external_id und holt beides nach).
  *   3. Entwurf nachlesen (bis zu ~2 Minuten, 7 Lesungen): Dateistatus (Printful prüft die Dateien selbst), Kosten gegen den Shop-Erlös samt bezahltem Versand (Verlust oder weniger als der Mindestgewinn → kein Bestätigen).

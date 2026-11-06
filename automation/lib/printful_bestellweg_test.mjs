@@ -9,6 +9,7 @@ import {
   adresseProblem, dateienAusEigenschaften, variantAusSku, skuWaehlen, istPod, technikFamilie, garnOption, optionenPruefen, technikPruefen, konfliktePruefen,
   dateiMasse, druckdateiFuer, wirklicheDpi, aufloesungPruefen, MIN_DPI_VORGABE, KOSTEN_REGEL, kostenPruefen, statusBewerten, dateienStatus, externalId, empfaengerAus,
   befundTag, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc, kontrolleLesen, kleineKopieUrl, planeBestellung, ERLAUBTE_HOSTS, BESTAETIGT, REVIEW_TAG,
+  modellAusSku, qdPruefen, SKU_BASIS, QD_MIN, QD_MAX, QD_TOLERANZ,
 } from './printful_bestellweg.mjs';
 
 let ok = 0, fehl = 0;
@@ -580,15 +581,224 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   const ok1 = await plane([mit({ m: 71, pv: 4025 })]);
   ist('Karte nennt Produkt 71 und Variante 4025 wie die SKU 5599797_4025: kein Befund', ok1.befunde, []);
   const v = await plane([mit({ m: 71, pv: 4026 })]);
-  ist('Karte nennt Variante 4026, gekauft wurde 4025: weicher Befund «karte-widerspruch» (Entwurf)', [arten(v.befunde), v.befunde[0].hart, /4026/.test(v.befunde[0].text), /4025/.test(v.befunde[0].text)], [['karte-widerspruch'], false, true, true]);
+  ist('Karte nennt Variante 4026, gekauft wurde 4025: HARTER Befund «karte-widerspruch» (WP6: sonst würde das falsche Produkt gedruckt), kein Artikel', [arten(v.befunde), v.befunde[0].hart, /4026/.test(v.befunde[0].text), /4025/.test(v.befunde[0].text), v.items.length], [['karte-widerspruch'], true, true, true, 0]);
   const m = await plane([mit({ m: 19, pv: 4025 })]);
-  ist('Karte nennt Produkt 19, die Variante gehört zu 71: weicher Befund «karte-widerspruch»', [arten(m.befunde), /Produkt 19/.test(m.befunde[0].text)], [['karte-widerspruch'], true]);
+  ist('Karte nennt Produkt 19, die Variante gehört zu 71: HARTER Befund «karte-widerspruch», kein Artikel', [arten(m.befunde), m.befunde[0].hart, /Produkt 19/.test(m.befunde[0].text), m.items.length], [['karte-widerspruch'], true, true, 0]);
   const s2 = await plane([mit({ m: '71', pv: '4025' })]);
   ist('Zahlen als Text («71», «4025») gelten wie Zahlen', s2.befunde, []);
   const x = await plane([mit({ pv: 'abc', m: null })]);
   ist('Unlesbare Angaben in der Karte (kein Zahlenwert): kein Befund (sie sind optional)', x.befunde, []);
   const n = await plane([zeile()]);
   ist('Karte ohne pv und m (wie der Editor v5 es nicht kennt): kein Befund', n.befunde, []);
+}
+// ═══════════════════════════════════════ WP6 (06.11.2026): neue Schreibweise «_Druckdatei», _vorschau, qd, Karte gegen SKU, Bestellung ohne Design
+// Prüfdaten: die ECHTE Kaufanfrage der Canary-Tasse «Keramik-Tasse mit farbiger Innenseite» (Printful 403, Variante 17197 Blau/15 oz; abgefangen im Browser am 06.11.2026,
+// dropship/selbst-gestalten-fertig-0511/fabrik/lauf-0611/README.md) und ein Auszug der ECHTEN Printful-Antworten dazu (GET /products/variant/17197, /mockup-generator/printfiles/403 und /templates/403,
+// gelesen 06.11.2026 ca. 15:00 UTC, auf die benutzten Felder gekürzt). Die Cloudinary-Datei der Anfrage misst 2700×1140 px (Kopfzeile gelesen) = die Druckdatei 44 der Variante.
+{
+  const TASSE = JSON.parse('{"antwort":{"variant":{"id":17197,"product_id":403,"size":"15 oz","color":"Blue"},"product":{"id":403,"type":"MUG","title":"White Ceramic Mug with Color Inside","files":[{"id":"default","type":"default","title":"Print file","additional_price":null,"options":[]},{"id":"preview","type":"mockup","title":"Mockup","additional_price":null,"options":[]}],"options":[{"id":"license_type","title":"License type","type":"multi_select","values":{"CLC":"Collegiate Licensing Company","AFFINITY":"Affinity","BR":"BR","EX":"EX","NCAA":"NCAA","FAN":"Fan","BCOMPLY":"BrandComply","TAG":"Tag","DLH":"DLH","CORE81":"Core81"},"additional_price":null,"additional_price_breakdown":[]}],"techniques":[{"key":"SUBLIMATION","display_name":"Sublimation","is_default":true}]}},"printfiles":{"product_id":403,"available_placements":{"default":"Print file"},"printfiles":[{"printfile_id":43,"width":2700,"height":1050,"dpi":300,"fill_mode":"fit","can_rotate":false},{"printfile_id":44,"width":2700,"height":1140,"dpi":300,"fill_mode":"fit","can_rotate":false}],"variant_printfiles":[{"variant_id":11051,"placements":{"default":43}},{"variant_id":17197,"placements":{"default":44}}]},"templates":{"min_dpi":150,"conflicting_placements":[]}}');
+  const DATEI_T = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976626/xy1jxggytwmgpyvh4m1v.png';
+  const VORSCHAU_T = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1793976700/klmnopqrst.jpg';
+  const KARTE_T = { v: 6, m: 403, pv: 17197, sv: '68134397739399', pl: ['default'], ap: 0 };           // genau so schrieb sie der Editor 6.2.0 beim Kaufklick
+  const TEXT_T = A('🎨 Design (default)', 'Text: "Test Entwurf"');
+  const ALT = '🖼️ Druckdatei (default)', NEU = '_Druckdatei (default)';
+  const eigT = (schluessel = ALT, extra = {}, mehr = []) => [TEXT_T, A(schluessel, DATEI_T), A('_pod_karte', JSON.stringify({ ...KARTE_T, ...extra })), ...mehr];
+  const prodT = { info: produktInfoAusAntwort(TASSE.antwort), roh: TASSE.antwort, art: 'ok', status: 200 };
+  const ioT = (o = {}) => mkIo({ produkt: () => prodT, druckdaten: () => ({ art: 'ok', printfiles: TASSE.printfiles, templates: TASSE.templates }), kopf: () => ({ status: 200, bytes: png(2700, 1140) }), ...o });
+  const TITEL_T = 'Keramik-Tasse mit farbiger Innenseite selbst gestalten';
+  const tasse = (props, o = {}) => zeile({ title: TITEL_T, sku: '9100403_17197', variant: { sku: '9100403_17197' }, discountedTotalSet: { shopMoney: { amount: '27.90', currencyCode: 'CHF' } },
+    product: { productType: 'Tassen & Becher', tags: ['wunschdesign', 'printful_personalized_product', 'sg-fabrik'], metafield: null }, customAttributes: props, ...o });
+  const kurz = (r) => ({ d: r.dateien.map((d) => [d.platzierung, d.dateiTyp, d.seite, d.quelle, d.schluessel, d.url.slice(-8)]), p: r.probleme.map((x) => `${x.hart ? 'H' : 'w'}:${x.art}`) });
+
+  // ── (1) Parser: ALTE und NEUE Schreibweise zu 100 %
+  ist('WP6 alt: die echte Anfrage der Canary-Tasse (v6.2.0) wird gelesen: eine Datei «default», Karte da, kein Problem', kurz(dateienAusEigenschaften(eigT(ALT))), { d: [['default', 'default', 'front', 'v6', 'alt', 'yvh4m1v.png'.slice(-8)]], p: [] });
+  ist('WP6 neu: dieselbe Anfrage mit «_Druckdatei (default)» ergibt dieselbe Datei als v6 (früher: v5, Vorderseite geraten, dazu «karte-ohne-datei»)', kurz(dateienAusEigenschaften(eigT(NEU))), { d: [['default', 'default', 'front', 'v6', 'neu', 'yvh4m1v.png'.slice(-8)]], p: [] });
+  {
+    // Alle Platzierungs-IDs der Muster (Katalog: front, back, Ärmel, Etiketten, Stickerei, DTF, Tasche …): alt und neu liefern Zeile für Zeile dasselbe, nur die Schreibweise unterscheidet sich
+    const ids = ['default', 'front', 'back', 'sleeve_left', 'sleeve_right', 'label_outside', 'label_inside', 'embroidery_chest_left', 'embroidery_front_large', 'front_dtf', 'front_dtfabric', 'long_sleeve_left_dtf', 'left', 'right', 'a1', 'x_1_2'];
+    let gleich = 0, fehlt = [];
+    for (const id of ids) {
+      const karte = A('_pod_karte', JSON.stringify({ v: 6, pl: [id], dt: { [id]: 'dateityp_' + id } }));
+      const a = dateienAusEigenschaften([A(`🖼️ Druckdatei (${id})`, U(id)), karte]), n = dateienAusEigenschaften([A(`_Druckdatei (${id})`, U(id)), karte]);
+      const norm = (r) => JSON.stringify({ ...kurz(r), d: kurz(r).d.map((x) => x.filter((_, i) => i !== 4)) });
+      if (norm(a) === norm(n) && a.dateien.length === 1 && n.dateien[0]?.quelle === 'v6' && n.dateien[0]?.platzierung === id && n.dateien[0]?.dateiTyp === 'dateityp_' + id) gleich++; else fehlt.push(id);
+    }
+    ist(`WP6: alle ${ids.length} Platzierungs-IDs werden in alter und neuer Schreibweise gleich gelesen (ID, Dateityp aus dt, Quelle v6)`, [gleich, fehlt], [ids.length, []]);
+  }
+  {
+    const karte = karte6(['front', 'back', 'sleeve_left'], { dt: { front: 'default' } });
+    const r = dateienAusEigenschaften([A('_Druckdatei (front)', U('v')), A('_Druckdatei (back)', U('h')), A('_Druckdatei (sleeve_left)', U('a')), A('🎨 Design (front)', 'Text: "Hallo"'), karte]);
+    ist('WP6 neu mit drei Platzierungen: Dateityp «default» für die Vorderseite (dt), Rückseite back, Ärmel ohne Seite; kein Problem', [r.dateien.map((d) => [d.platzierung, d.dateiTyp, d.seite]), r.probleme], [[['front', 'default', 'front'], ['back', 'back', 'back'], ['sleeve_left', 'sleeve_left', null]], []]);
+    const o = dateienAusEigenschaften({ '_Druckdatei (embroidery_chest_left)': U('s'), _pod_karte: JSON.stringify({ v: 6, pl: ['embroidery_chest_left'] }) });
+    ist('WP6 neu als Objekt statt Liste (Stickerei-Platzierung)', [o.dateien.map((d) => [d.platzierung, d.quelle]), o.probleme], [[['embroidery_chest_left', 'v6']], []]);
+    const l = dateienAusEigenschaften([A('_Druckdatei (front)', '  '), A('_Druckdatei (back)', '')]);
+    ist('WP6 neu: leere Druckdatei-Eigenschaften = keine Datei, KEIN Problem (wie bei der alten Schreibweise)', [l.dateien.length, l.probleme], [0, []]);
+    const f = dateienAusEigenschaften([A('_Druckdatei (front)', 'https://evil.example.com/x.png')]);
+    ist('WP6 neu: Datei von fremdem Host → harter Befund «datei-adresse», keine Datei', [arten(f.probleme), f.probleme[0]?.hart, f.dateien.length], [['datei-adresse'], true, 0]);
+    const k = dateienAusEigenschaften([A('_Druckdatei (front)', U('v')), A('_Druckdatei (back)', U('h')), A('_pod_karte', '{"v":6,"pl":["front"]}')]);
+    ist('WP6 neu: Datei für «back», aber nicht in der Karte → weicher Befund «datei-ohne-karte» (wie alt)', [arten(k.probleme), k.dateien.length], [['datei-ohne-karte'], 2]);
+    const d = dateienAusEigenschaften([A('_Druckdatei (front)', U('v')), A('_Druckdatei (front)', U('w'))]);
+    ist('WP6 neu: dieselbe Platzierung zweimal in neuer Schreibweise → harter Befund «datei-doppelt», die erste Datei bleibt', [arten(d.probleme), d.probleme[0]?.hart, d.dateien.length, d.dateien[0]?.url.slice(-5)], [['datei-doppelt'], true, 1, 'v.png']);
+  }
+  // gemischte Schlüssel
+  for (const [n, eig, soll] of [
+    ['alt und neu für DIESELBE Platzierung', [A('🖼️ Druckdatei (default)', DATEI_T), A('_Druckdatei (default)', DATEI_T), A('_pod_karte', JSON.stringify(KARTE_T))], ['schluessel-gemischt']],
+    ['alt (front) und neu (back) für verschiedene Platzierungen', [A('🖼️ Druckdatei (front)', U('v')), A('_Druckdatei (back)', U('h'))], ['schluessel-gemischt']],
+    ['neu (front) und Editor 5 («Vorne · 🖼️ Druckdatei»)', [A('_Druckdatei (front)', U('v')), A('Vorne · 🖼️ Druckdatei', U('w'))], ['schluessel-gemischt']],
+    ['alt und Editor 5', [A('🖼️ Druckdatei (front)', U('v')), A('Hinten · 🖼️ Druckdatei', U('w'))], ['schluessel-gemischt']],
+    ['alle drei Schreibweisen', [A('🖼️ Druckdatei (front)', U('v')), A('_Druckdatei (back)', U('w')), A('Vorne · 🖼️ Druckdatei', U('x'))], ['schluessel-gemischt']],
+  ]) {
+    const r = dateienAusEigenschaften(eig);
+    ist(`WP6 gemischte Schlüssel (${n}): genau EIN harter Befund «schluessel-gemischt», kein zusätzliches «datei-doppelt»`, [arten(r.probleme), r.probleme.every((x) => x.hart)], [soll, true]);
+  }
+  {
+    const r = dateienAusEigenschaften(eigT(ALT, {}, [A(NEU, DATEI_T)]));
+    wahr('WP6 gemischt: der Text nennt beide schreibweisen und bleibt unter 300 Zeichen (Telegram-Zeile)', /🖼️ Druckdatei/.test(r.probleme[0]?.text) && /_Druckdatei/.test(r.probleme[0]?.text) && r.probleme[0]?.text.length < 300);
+  }
+  // nicht lesbare neue Schlüssel: nie als Editor 5 (= Vorderseite) deuten
+  for (const [n, k] of [['Grossbuchstabe in der ID', '_Druckdatei (Front)'], ['ohne Klammern', '_Druckdatei'], ['Kleinschreibung des Wortes', '_druckdatei (front)'], ['Leerzeichen in der ID', '_Druckdatei (sleeve left)'], ['Leerzeichen am Ende', '_Druckdatei (front) '], ['leere ID', '_Druckdatei ()'], ['Zusatz hinter der Klammer', '_Druckdatei (front) x']]) {
+    const r = dateienAusEigenschaften([A(k, U('v'))]);
+    ist(`WP6 nicht lesbarer neuer Schlüssel (${n}): harter Befund «datei-schluessel», KEINE Datei (früher: als Editor 5 gelesen, Vorderseite geraten)`, [arten(r.probleme), r.probleme[0]?.hart, r.dateien.length], [['datei-schluessel'], true, 0]);
+  }
+  ist('WP6 nicht lesbarer Schlüssel mit leerem Wert: kein Befund (wie bei jeder leeren Druckdatei-Eigenschaft)', dateienAusEigenschaften([A('_Druckdatei (Front)', '')]).probleme, []);
+  ist('WP6 der Text zum nicht lesbaren Schlüssel kürzt Fremdtext auf 60 Zeichen', dateienAusEigenschaften([A('_Druckdatei (' + 'X'.repeat(500) + ')', U('v'))]).probleme[0]?.text.length < 400, true);
+  ist('WP6 «_Druckdatei» mitten im Schlüssel («Meine _Druckdatei (front)») ist KEIN neuer Schlüssel, sondern wie bisher Editor 5', kurz(dateienAusEigenschaften([A('Meine _Druckdatei (front)', U('v'))])).d.map((x) => [x[3], x[4]]), [['v5', 'v5']]);
+
+  // ── (4) _vorschau ist nie eine Druckdatei
+  {
+    const r1 = dateienAusEigenschaften([A('_vorschau', VORSCHAU_T)]);
+    ist('WP6 _vorschau allein: keine Datei, kein Problem', [r1.dateien.length, r1.probleme], [0, []]);
+    for (const st of [ALT, NEU]) {
+      const r = dateienAusEigenschaften(eigT(st, {}, [A('_vorschau', VORSCHAU_T)]));
+      ist(`WP6 _vorschau neben «${st}»: genau eine Datei (die Druckdatei), die Vorschau wird nicht gelesen, kein Problem`, [r.dateien.map((d) => d.url.slice(-8)), r.probleme], [[DATEI_T.slice(-8)], []]);
+    }
+    const r3 = dateienAusEigenschaften([A('_vorschau', 'https://evil.example.com/v.jpg'), A('_Druckdatei (front)', U('v'))]);
+    ist('WP6 _vorschau von fremdem Host: ignoriert (der Parser prüft und liest sie nie), die Druckdatei gilt', [r3.dateien.length, r3.probleme], [1, []]);
+    const r4 = dateienAusEigenschaften([A('_vorschau', VORSCHAU_T), A('Vorne · 🖼️ Druckdatei', U('v'))]);
+    ist('WP6 _vorschau neben Editor 5: keine Mischung (die Vorschau zählt zu keiner Schreibweise)', [r4.dateien.length, r4.probleme], [1, []]);
+    // in der ganzen Planung: die Vorschau wird nie abgerufen, nie als Datei gesendet
+    const io = ioT();
+    const p = await plane([tasse(eigT(NEU, {}, [A('_vorschau', VORSCHAU_T)]))], io);
+    ist('WP6 Plan mit _vorschau: ein Artikel mit genau EINER Datei (die Druckdatei), Kopfzeile und KI-Kontrolle nur für sie, kein Befund', [p.items[0].files, io.log.kopf, io.log.kontrolle, p.befunde], [[{ type: 'default', url: DATEI_T }], [DATEI_T], [DATEI_T], []]);
+    const io2 = ioT();
+    const ohne = await plane([tasse([TEXT_T, A('_vorschau', VORSCHAU_T), A('_pod_karte', JSON.stringify(KARTE_T))])], io2);
+    ist('WP6 Plan: nur _vorschau und Karte, keine Druckdatei → harter Befund «keine-druckdatei», die Vorschau wird NICHT als Datei genommen und nicht abgerufen', [arten(ohne.befunde), ohne.items.length, io2.log.kopf, io2.log.produkt], [['keine-druckdatei'], 0, [], []]);
+  }
+
+  // ── (2) qd: nur weicher Befund
+  {
+    const q = (qd) => dateienAusEigenschaften(eigT(ALT, { qd }));
+    ist('WP6 qd: ohne qd → qd null, kein Problem (Text ohne Foto, alte Editoren)', [dateienAusEigenschaften(eigT(ALT)).qd, dateienAusEigenschaften(eigT(ALT)).probleme], [null, []]);
+    ist('WP6 qd: 100 wird gelesen, kein Problem', [q(100).qd, q(100).probleme], [100, []]);
+    ist('WP6 qd: Grenzen 1 und 1000 gelten', [q(QD_MIN).qd, q(QD_MAX).qd, q(QD_MIN).probleme, q(QD_MAX).probleme], [1, 1000, [], []]);
+    ist('WP6 qd: die Grenzen sind 1 und 1000', [QD_MIN, QD_MAX], [1, 1000]);
+    for (const [n, w] of [['0', 0], ['1001', 1001], ['-5', -5], ['1.5', 1.5], ['Text «100»', '100'], ['true', true], ['Liste', [100]], ['Objekt', { a: 1 }], ['sehr gross', 1e12]]) {
+      const r = q(w);
+      ist(`WP6 qd unbrauchbar (${n}): qd null, WEICHER Befund «aufloesung-angabe», die Datei bleibt gültig`, [r.qd, arten(r.probleme), r.probleme[0]?.hart, r.dateien.length], [null, ['aufloesung-angabe'], false, 1]);
+    }
+    ist('WP6 qd: JSON null gilt wie «fehlt» (kein Befund)', [q(null).qd, q(null).probleme], [null, []]);
+    ist('WP6 qd im Text des Befunds ist gekürzt (Fremdwert)', q('x'.repeat(5000)).probleme[0]?.text.length < 300, true);
+    ist('WP6 qd wird auch aus einer Karte mit Optionen o und Stickerei gelesen (nur die Karte zählt)', dateienAusEigenschaften([A('_Druckdatei (front)', U('v')), A('_pod_karte', JSON.stringify({ v: 6, pl: ['front'], qd: 222, o: { stitch_color: 'white' } }))]).qd, 222);
+    ist('WP6 qd ohne gültige Karte (kaputtes JSON): qd null', dateienAusEigenschaften([A('_Druckdatei (front)', U('v')), A('_pod_karte', '{"v":6,"qd":150,"pl":[')]).qd, null);
+    ist('WP6 qd mit Karte von Version 5 (nicht lesbar): qd null', dateienAusEigenschaften([A('_Druckdatei (front)', U('v')), A('_pod_karte', '{"v":5,"qd":150,"pl":["front"]}')]).qd, null);
+  }
+  {
+    const arq = (b) => b.map((x) => `${x.hart ? 'H' : 'w'}:${x.art}`);
+    ist('WP6 qdPruefen: qd = Mindest-dpi des Katalogs (150) ist in Ordnung', qdPruefen({ qd: 150, minDpi: 150, gemessen: [300] }), []);
+    ist('WP6 qdPruefen: qd 149 unter 150 → weicher Befund «aufloesung-foto» (nennt beide Zahlen)', [arq(qdPruefen({ qd: 149, minDpi: 150, gemessen: [300] })), /149/.test(qdPruefen({ qd: 149, minDpi: 150, gemessen: [300] })[0]?.text), /150/.test(qdPruefen({ qd: 149, minDpi: 150, gemessen: [300] })[0]?.text)], [['w:aufloesung-foto'], true, true]);
+    ist('WP6 qdPruefen: ohne Mindest-dpi des Katalogs (null, 0, Text) gilt die Vorgabe 72', [qdPruefen({ qd: 72, minDpi: null }), arq(qdPruefen({ qd: 71, minDpi: null })), arq(qdPruefen({ qd: 71, minDpi: 0 })), arq(qdPruefen({ qd: 71, minDpi: 'x' }))], [[], ['w:aufloesung-foto'], ['w:aufloesung-foto'], ['w:aufloesung-foto']]);
+    ist('WP6 qdPruefen: Mindest-dpi als Text («150») zählt', arq(qdPruefen({ qd: 100, minDpi: '150' })), ['w:aufloesung-foto']);
+    const grenze = 300 * (1 + QD_TOLERANZ.relativ) + QD_TOLERANZ.absolut;
+    ist('WP6 qdPruefen: Toleranz 2 % plus 1 dpi (Rundung, verkleinerte Datei): bei Messung 300 ist 307 noch in Ordnung, 308 behauptet zu viel', [grenze, qdPruefen({ qd: 307, minDpi: 150, gemessen: [300] }), arq(qdPruefen({ qd: 308, minDpi: 150, gemessen: [300] }))], [307, [], ['w:aufloesung-angabe']]);
+    ist('WP6 qdPruefen: qd darunter (Foto kleiner als die Datei, 200 bei Messung 300) ist der Normalfall, KEIN Befund', qdPruefen({ qd: 200, minDpi: 150, gemessen: [300] }), []);
+    ist('WP6 qdPruefen: mehrere Dateien → verglichen wird mit der BESTEN Messung (das Foto kann auf der besseren Platzierung liegen)', [qdPruefen({ qd: 250, minDpi: 150, gemessen: [100, 300] }), arq(qdPruefen({ qd: 250, minDpi: 150, gemessen: [100, 150] }))], [[], ['w:aufloesung-angabe']]);
+    ist('WP6 qdPruefen: ohne Messwert (Stickerei, Datei nicht lesbar) entfällt der Vergleich mit der Messung', [qdPruefen({ qd: 999, minDpi: 150, gemessen: [] }), qdPruefen({ qd: 999, minDpi: 150 }), qdPruefen({ qd: 999, minDpi: 150, gemessen: [NaN, 0, -3, null] })], [[], [], []]);
+    ist('WP6 qdPruefen: beides zugleich möglich (zu klein UND mehr behauptet als gemessen), beide weich', arq(qdPruefen({ qd: 120, minDpi: 150, gemessen: [100] })), ['w:aufloesung-foto', 'w:aufloesung-angabe']);
+    ist('WP6 qdPruefen: ungültiges qd (null, 0, 1001, Text, Kommazahl) prüft nichts', [null, 0, 1001, '100', 99.5, undefined].map((qd) => qdPruefen({ qd, minDpi: 150, gemessen: [10] }).length), [0, 0, 0, 0, 0, 0]);
+    ist('WP6 qdPruefen: nichts übergeben', qdPruefen(), []);
+    ist('WP6 qdPruefen: nie ein harter Befund, die Texte bleiben unter 300 Zeichen', [{ qd: 1, minDpi: 150, gemessen: [5] }, { qd: 1000, minDpi: 5000, gemessen: [1] }, { qd: 120, minDpi: 150, gemessen: [100] }].every((a) => qdPruefen(a).length > 0 && qdPruefen(a).every((x) => x.hart === false && x.text.length < 300)), true);
+  }
+  {
+    // planeBestellung mit den echten Tassen-Daten
+    const mitQd = async (qd, o = {}, extraIo = {}) => plane([tasse(eigT(NEU, { qd }), o)], ioT(extraIo));
+    const gut = await plane([tasse(eigT(NEU))], ioT());
+    ist('WP6 Plan Canary-Tasse in NEUER Schreibweise (echte Daten): ein Artikel Variante 17197 mit Datei «default», KEIN Befund (früher: weich «karte-ohne-datei», nie automatisch bestätigt)', [gut.items.map((i) => [i.variant_id, i.quantity, i.files.map((f) => f.type)]), gut.befunde], [[[17197, 1, ['default']]], []]);
+    const alt = await plane([tasse(eigT(ALT))], ioT());
+    ist('WP6 Plan Canary-Tasse in ALTER Schreibweise (echte Daten): derselbe Artikel, kein Befund', [alt.items, alt.befunde], [gut.items, []]);
+    for (const [n, qd, soll] of [['qd 300 (so gut wie die Datei)', 300, []], ['qd 222 (ein 2000-px-Foto)', 222, []], ['qd 150 (genau die Mindest-dpi der Tasse)', 150, []], ['qd 149', 149, ['w:aufloesung-foto']], ['qd 60 (hochgezogenes Foto)', 60, ['w:aufloesung-foto']], ['qd 400 (mehr als die Datei trägt)', 400, ['w:aufloesung-angabe']]]) {
+      const r = await mitQd(qd);
+      ist(`WP6 Plan Tasse mit ${n}: ${soll.length ? soll.join(', ') : 'kein Befund'}, der Artikel bleibt (Entwurf wird es durch den weichen Befund)`, [r.befunde.map((b) => `${b.hart ? 'H' : 'w'}:${b.art}`), r.items.length], [soll, 1]);
+    }
+    // eine zu kleine DATEI bleibt trotz hohem qd ein Befund: die Messung an der Datei gilt, qd ist keine Freigabe
+    const klein = await mitQd(300, {}, { kopf: () => ({ status: 200, bytes: png(900, 380) }) });
+    ist('WP6 Plan: ein hohes qd (300) löscht den Befund «aufloesung» der zu kleinen Datei NICHT (900×380 px = 100 dpi) und fügt die Abweichung hinzu', klein.befunde.map((b) => `${b.hart ? 'H' : 'w'}:${b.art}`), ['w:aufloesung', 'w:aufloesung-angabe']);
+    const ohneMess = await mitQd(500, {}, { druckdaten: () => ({ art: 'fehler', text: 'HTTP 500' }) });
+    ist('WP6 Plan: Druckdaten des Katalogs nicht lesbar → «druckdaten» bleibt, qd 500 wird nicht mit einer Messung verglichen, Vorgabe 72 für die Mindest-dpi', ohneMess.befunde.map((b) => b.art), ['druckdaten', 'aufloesung']);
+    const nied = await mitQd(50, {}, { druckdaten: () => ({ art: 'fehler', text: 'HTTP 500' }) });
+    ist('WP6 Plan: Druckdaten nicht lesbar und qd 50 → zusätzlich «aufloesung-foto» gegen die Vorgabe 72', nied.befunde.map((b) => b.art), ['druckdaten', 'aufloesung', 'aufloesung-foto']);
+    // mehrere Platzierungen: qd gegen die beste Messung (T-Shirt 71: Vorderseite 1800×2400 bei 150 dpi)
+    const shirt = (qd, kopf) => plane([zeile({ customAttributes: [A('_Druckdatei (front)', U('v')), A('_Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, qd })] })], mkIo({ kopf: kopf || (() => ({ status: 200, bytes: png(1800, 2400) })) }));
+    ist('WP6 Plan T-Shirt (150 dpi): qd 150 → kein Befund', (await shirt(150)).befunde, []);
+    ist('WP6 Plan T-Shirt (150 dpi): qd 200 behauptet mehr als die Dateien tragen (≤ 154) → «aufloesung-angabe»', (await shirt(200)).befunde.map((b) => b.art), ['aufloesung-angabe']);
+    ist('WP6 Plan T-Shirt: qd 70 unter der Mindest-dpi 75 → «aufloesung-foto»', (await shirt(70)).befunde.map((b) => b.art), ['aufloesung-foto']);
+  }
+
+  // ── (3) Karte gegen SKU
+  ist('WP6 modellAusSku: Schema <9100000+Modell>_<Variante>', [modellAusSku('9100403_17197'), modellAusSku('9100019_77 '), modellAusSku('9199999_1'), modellAusSku('9100001_1')], [403, 19, 99999, 1]);
+  ist('WP6 modellAusSku: ältere Schemata, Fremdes und Grenzen → null (8481330 und 9448929 sind echte alte Vorsilben, GEMESSEN an sku_index.json)', ['9448929_10774', '8481330_4025', '9000001_8948', '5599797_4025', '9100000_1', '9200000_1', '9100403', '9100403_', 'x9100403_1', '', null, undefined].map(modellAusSku), Array(12).fill(null));
+  ist('WP6 SKU_BASIS ist 9100000 (wie automation/pod_modell/plan.mjs)', SKU_BASIS, 9100000);
+  {
+    const r = await plane([tasse(eigT(NEU))], ioT());
+    ist('WP6 Karte {m:403, pv:17197} gegen SKU 9100403_17197: kein Befund', r.befunde, []);
+    for (const [n, extra, text] of [
+      ['pv weicht von der SKU ab (17196 statt 17197)', { pv: 17196 }, /17196/],
+      ['m weicht vom SKU-Modell ab (404 statt 403)', { m: 404 }, /Produkt 404/],
+      ['beide weichen ab', { m: 404, pv: 17196 }, /17196/],
+      ['pv als Text («17196»)', { pv: '17196' }, /17196/],
+    ]) {
+      const io = ioT();
+      const w = await plane([tasse(eigT(NEU, extra))], io);
+      ist(`WP6 Karte widerspricht der SKU (${n}): HARTER Befund «karte-widerspruch», KEIN Artikel, keine Netzabfrage (Variante, Datei, KI-Kontrolle)`, [arten(w.befunde).filter((x, i, l) => l.indexOf(x) === i), w.befunde.every((b) => b.hart), w.items.length, io.log.produkt, io.log.kopf, io.log.kontrolle, text.test(w.befunde.map((b) => b.text).join(' '))], [['karte-widerspruch'], true, 0, [], [], [], true]);
+    }
+    const bei = await plane([tasse(eigT(NEU, { m: 404, pv: 17196 }))], ioT());
+    ist('WP6 beide Widersprüche zugleich: beide Texte da (Variante UND Produkt), je ein Befund', bei.befunde.length, 2);
+    const nullKarte = await plane([tasse(eigT(NEU, { pv: null, m: null }))], ioT());
+    ist('WP6 Karte mit pv und m = null (Editor kannte sie nicht): kein Befund', nullKarte.befunde, []);
+    const keine = await plane([tasse([TEXT_T, A(NEU, DATEI_T)])], ioT());
+    ist('WP6 FEHLENDE Karte (alte Bestellung, v5-Weg): kein Befund und derselbe Artikel', [keine.befunde, keine.items.length], [[], 1]);
+    const alteSku = await plane([zeile({ customAttributes: [A('_Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, m: 71, pv: 4025 })] })]);
+    ist('WP6 alte SKU «5599797_4025» (kein 91…-Schema): das Modell wird nur gegen das Produkt der Variante geprüft, kein Befund', alteSku.befunde, []);
+    // Produkt der Variante laut Printful gegen m (alte SKU): hart, und danach keine weiteren Netzabfragen für diese Position
+    const io = mkIo();
+    const pm = await planeBestellung(bestellung([zeile({ customAttributes: [A('_Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, m: 19, pv: 4025 })] })]), io);
+    ist('WP6 m der Karte (19) gegen das Produkt der Variante laut Printful (71): HART, kein Artikel, keine Datei-/KI-Abfragen mehr (nur die Variantenabfrage lief)', [arten(pm.befunde), pm.befunde[0]?.hart, pm.items.length, io.log.produkt, io.log.druck, io.log.kopf, io.log.kontrolle], [['karte-widerspruch'], true, 0, [4025], [], [], []]);
+    // zwei Positionen: nur die widersprüchliche scheitert, die andere wird geplant (der Kleber legt wegen des harten Befunds trotzdem keinen Auftrag an)
+    const zwei = await plane([tasse(eigT(NEU)), tasse(eigT(NEU, { pv: 11051 }), { id: 'gid://shopify/LineItem/9002' })], ioT());
+    ist('WP6 zwei Positionen, die zweite mit falscher Karte: ein Artikel geplant, ein harter Befund (der Kleber legt dann keinen Auftrag an)', [zwei.items.length, arten(zwei.befunde), zwei.befunde[0]?.hart], [1, ['karte-widerspruch'], true]);
+  }
+
+  // ── (5) Bestellung ohne Design
+  {
+    const ohne = async (props, o = {}, ioX = ioT()) => ({ r: await plane([tasse(props, o)], ioX), io: ioX });
+    const a = await ohne([]);
+    ist('WP6 ohne Design, ganz ohne Eigenschaften: genau ein HARTER Befund «keine-druckdatei», kein Artikel, KEINE Netzabfrage', [arten(a.r.befunde), a.r.befunde[0]?.hart, a.r.items.length, a.io.log.produkt, a.io.log.kopf, a.io.log.kontrolle], [['keine-druckdatei'], true, 0, [], [], []]);
+    ist('WP6 ohne Design: die Meldung sagt, dass es keinen Printful-Auftrag und keine Nachricht an die Kundin gibt, nennt den Ablauf (OHNE-DESIGN.md) und das Fehlen des Editor-Eintrags', [/KEIN Printful-Auftrag/.test(a.r.befunde[0]?.text), /KEINE Nachricht an die Kundin/.test(a.r.befunde[0]?.text), /dropship\/wp6-0611\/OHNE-DESIGN\.md/.test(a.r.befunde[0]?.text), /kein Editor-Eintrag/.test(a.r.befunde[0]?.text)], [true, true, true, true]);
+    const b = await ohne([TEXT_T, A('_pod_karte', JSON.stringify(KARTE_T))]);
+    ist('WP6 ohne Design, aber mit Editor-Eintrag (Upload gescheitert?): NUR «keine-druckdatei» (das weiche «karte-ohne-datei» ist dieselbe Ursache und steht nicht zusätzlich), Text sagt «Editor-Eintrag da»', [arten(b.r.befunde), /Editor-Eintrag da/.test(b.r.befunde[0]?.text), b.r.items.length], [['keine-druckdatei'], true, 0]);
+    const c = await ohne([A('_vorschau', VORSCHAU_T), TEXT_T]);
+    ist('WP6 ohne Design, nur Vorschau und Designtext: «keine-druckdatei»', arten(c.r.befunde), ['keine-druckdatei']);
+    const lang = await ohne([], { title: 'T'.repeat(255) });
+    ist('WP6 ohne Design bei 255 Zeichen Titel: der Text bleibt unter 300 Zeichen (der Kleber kürzt dort) und der Verweis auf den Ablauf bleibt sichtbar', [lang.r.befunde[0]?.text.length < 300, /OHNE-DESIGN\.md/.test(lang.r.befunde[0]?.text)], [true, true]);
+    const weitere = await ohne([TEXT_T, A('_pod_karte', JSON.stringify({ ...KARTE_T, pl: ['front', 'back'] }))]);
+    ist('WP6 ohne Design, Karte mit zwei Platzierungen: weiter nur EIN Befund (die zwei «karte-ohne-datei» entfallen)', arten(weitere.r.befunde), ['keine-druckdatei']);
+    // eine andere Position der Bestellung bleibt unberührt: ihre weichen Befunde werden nicht gelöscht
+    const gemischt = await plane([tasse([]), tasse(eigT(NEU, { qd: 60 }), { id: 'gid://shopify/LineItem/9002' })], ioT());
+    ist('WP6 zwei Positionen, die erste ohne Design: der Befund der zweiten (qd 60 → «aufloesung-foto») bleibt erhalten', arten(gemischt.befunde), ['keine-druckdatei', 'aufloesung-foto']);
+    const davor = await plane([tasse(eigT(NEU, { pl: ['default', 'back'] }), { id: 'gid://shopify/LineItem/9003' }), tasse([], { id: 'gid://shopify/LineItem/9004' })], ioT());
+    ist('WP6 zwei Positionen, die ERSTE mit einem weichen «karte-ohne-datei» (Karte nennt «back», nur «default» da), die zweite ohne Design: der Befund der ersten bleibt', arten(davor.befunde), ['karte-ohne-datei', 'keine-druckdatei']);
+    const ohneNurKarte = await plane([tasse([A('_pod_karte', '{"v":6,"pl":["front"],"qd":100}')]), tasse(eigT(NEU, {}), { id: 'gid://shopify/LineItem/9002' })], ioT());
+    ist('WP6 «karte-ohne-datei» der ersten Position wird entfernt, sonst nichts: die zweite Position ist gut', [arten(ohneNurKarte.befunde), ohneNurKarte.items.length], [['keine-druckdatei'], 1]);
+  }
 }
 // Workflow: ein Zeitplan, Handstart standardmässig nur lesen, Einstellungen durchgereicht (GL1/GL2 Funde 2, 3, 9)
 {
@@ -600,6 +810,19 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     ist('Workflow: der Handstart steht standardmässig auf «Nur testen» (ein Klick ohne Haken schreibt nichts)', /dry_run:[\s\S]*?default: true/.test(t), true);
     for (const v of ['PRINTFUL_MIN_NETTO_CHF', 'PRINTFUL_STITCH_COLOR', 'PRINTFUL_DATEI_HOSTS', 'PRINTFUL_KI_MODELL', 'PRINTFUL_KI_KONTROLLE', 'PRINTFUL_AUTO_CONFIRM']) ist(`Workflow reicht ${v} durch`, new RegExp(v + ': \\$\\{\\{').test(t), true);
     ist('Workflow: der Zeitplan schreibt nur mit der Freigabedatei', /EREIGNIS" = "schedule"[\s\S]*?PRINTFUL-SYNC-FREI\.txt/.test(t), true);
+    // WP6 (06.11.2026): Standardwerte und Durchreichen der Entscheide des Besitzers
+    ist('Workflow WP6: PRINTFUL_AUTO_CONFIRM hat den Standard «0» (Besitzer-Entscheid 05.11.: Printful-Aufträge bleiben Entwürfe, bis er es ändert)', /PRINTFUL_AUTO_CONFIRM: \$\{\{ secrets\.PRINTFUL_AUTO_CONFIRM \|\| vars\.PRINTFUL_AUTO_CONFIRM \|\| '0' \}\}/.test(t), true);
+    ist('Workflow WP6: PRINTFUL_KI_KONTROLLE hat den Standard «aus» (Besitzer-Entscheid 05.11.: erste Aufträge von Hand sichten)', /PRINTFUL_KI_KONTROLLE: \$\{\{ secrets\.PRINTFUL_KI_KONTROLLE \|\| vars\.PRINTFUL_KI_KONTROLLE \|\| 'aus' \}\}/.test(t), true);
+    ist('Workflow WP6: PRINTFUL_MIN_NETTO_CHF kommt aus Secret oder Variable und hat KEINEN eigenen Standardwert (leer = der Standard des Skripts, 4 CHF)', /PRINTFUL_MIN_NETTO_CHF: \$\{\{ secrets\.PRINTFUL_MIN_NETTO_CHF \|\| vars\.PRINTFUL_MIN_NETTO_CHF \}\}/.test(t), true);
+    ist('Workflow WP6: der Handstart ist der einzige scharfe Weg ohne Freigabedatei (Eingabe «dry_run», Standard true), die Datei bleibt Bedingung des Zeitplans', [/workflow_dispatch:/.test(t), /type: boolean\s+default: true/.test(t)], [true, true]);
+    // jede Datei, die Sync und Bibliothek einlesen, muss im sparse-checkout stehen (sonst «Cannot find module» im Lauf)
+    {
+      const lies = (rel) => readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8');
+      const importe = (quelle, basis) => [...quelle.matchAll(/from '(\.\/[^']+\.mjs)'/g)].map((m) => (basis + m[1].slice(2)));
+      const noetig = ['automation/printful_sync.mjs', ...importe(lies('../printful_sync.mjs'), 'automation/'), ...importe(lies('./printful_bestellweg.mjs'), 'automation/lib/'), ...importe(lies('./printful_platzierung.mjs'), 'automation/lib/')];
+      const fehlen = [...new Set(noetig)].filter((x) => !t.includes('            ' + x + '\n'));
+      ist('Workflow WP6: alle Dateien, die der Sync einliest, stehen im sparse-checkout', fehlen, []);
+    }
   } else console.log('(Workflow-Datei nicht ausgecheckt → Workflow-Prüfungen übersprungen)');
 }
 
