@@ -88,7 +88,7 @@ Alle Läufe: `bash dropship/katalog-fenster-0611/alle_tests.sh` (mit `ESBUILD=<P
 | **Kombi-Fall** `test_texte_kombi.cjs kombi` (echte Verfügbarkeit: Angebote des Live-Dokuments, echte Ausblenden-Datei, keine künstlichen Angebote): **alle 22 sichtbaren Modelle** auf 1280 px (6 auf 390 px) deutsch UND nur bestellbare Farben/Grössen (je Farbe die Grössen der bestellbaren Ausführungen) UND Einzahl/Mehrzahl der Zeile richtig (Modell mit genau einer und mit mehreren Ausführungen); `/fr` und `en` **gegen (A) allein**: Details, Farben, Grössen, Zeile und Knopf gleich; Textdatei gesperrt/404: alle 22 Karten mit Knopf, Beschreibung = Originaltext wie bei (A) allein, nur bestellbare Farben, Zeile, keine Seitenfehler | **KOMBI_FALL_ZAHL** |
 | dieselben drei Browsertests mit der vom CDN verkleinerten Fassung (`MINIFIZIERT=1 ESBUILD=<Pfad>`) | **MINI_ZAHL** |
 | Vollscan `test_texte_kombi.cjs voll` (alle 572 Modelle mit künstlichen Angeboten, damit die Übersetzungen auch der heute unsichtbaren Modelle im gemeinsamen JS geprüft sind) | **VOLL_ZAHL** |
-| `mutationsprobe.mjs`: absichtlich kaputt gemachte Kernstellen (Kollisionszeile, Reihenfolge der Zusammenführung, die drei neuen Assets, Marken, Pins, Verhalten von (B) im gemeinsamen JS, vier Kernzusagen von (A), Einspielskript: Reihenfolge der Schritte, Nutzlast, Fremd-Schutz, Rücknahme), je in einer Kopie der drei Pakete | **PROBE_ZAHL** |
+| `mutationsprobe.mjs`: absichtlich kaputt gemachte Kernstellen (Kollisionszeile, Reihenfolge der Zusammenführung, die drei neuen Assets, Marken, Pins, Verhalten von (B) im gemeinsamen JS, vier Kernzusagen von (A), Einspielskript: Reihenfolge der Schritte, Nutzlast, Fremd-Schutz, Rücknahme), je in einer Kopie der drei Pakete | () => b |
 
 Bewusst und begründet angepasste Zahlen/Erwartungen gegenüber den zwei Original-Browsertests (keine wurde nur angepasst, damit es grün wird):
 1. **Wortlaut der Detail-Zeile** («N bestellbare Ausführung(en)» statt «N Originalvarianten», siehe Kollision).
@@ -99,7 +99,7 @@ Bewusst und begründet angepasste Zahlen/Erwartungen gegenüber den zwei Origina
 Unveränderte Abweichung zwischen /fr, en und (A) allein, die der Test ausdrücklich zulässt: nur Regionen mit Status `supplier_out_of_stock` / `stocked_on_demand` zeigen bei (B) einen lesbaren Text statt des Rohschlüssels (auch auf fr und en; Besitzerentscheid von (B) «Statusschlüssel nie roh anzeigen»).
 
 ## Mutationsprobe (Einzelheiten)
-**PROBE_TEXT**
+() => b
 
 ## Offene Punkte und Entscheide
 1. **Satzentscheid (aus (A), unverändert offen):** `region_note` («Diese Angabe bestätigt noch keine Bestell- oder Liefermöglichkeit in der Schweiz.») und `geometry_note` stehen weiter in jeder Detailansicht. Vorschlag aus (A): `region_note` bei bestellbaren Modellen weglassen. Betrifft Texte des Besitzers, nicht dieses Paket.
