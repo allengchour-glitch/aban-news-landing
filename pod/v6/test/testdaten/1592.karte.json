@@ -1,0 +1,202 @@
+{
+ "schema": 1,
+ "printfulProductId": 1592,
+ "typ": "T-SHIRT",
+ "titelEn": "Unisex Oversized Boxy Tee | Bella+Canvas 3010",
+ "klasse": "UNGEEIGNET",
+ "standardTechnik": "DTG",
+ "minDpi": 150,
+ "platzierungen": [
+  {
+   "id": "front",
+   "dateiTyp": "default",
+   "titelDe": "Vorderseite",
+   "titelEn": "Front print",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 884,
+    "breitePx": 4200,
+    "hoehePx": 4800,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 1133021,
+    "bildUrl": "https://files.cdn.printful.com/m/UnisexOversizedBoxyTee/medium/Flat/front/Front_black.png?v=1781602906",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": null,
+    "vorlageBreite": 2000,
+    "vorlageHoehe": 2000,
+    "flaecheLinks": 634,
+    "flaecheOben": 571,
+    "flaecheBreite": 731,
+    "flaecheHoehe": 835,
+    "ausrichtung": "any",
+    "vorderansicht": false
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "back",
+   "dateiTyp": "back",
+   "titelDe": "Rückseite",
+   "titelEn": "Back print",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 884,
+    "breitePx": 4200,
+    "hoehePx": 4800,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 1133096,
+    "bildUrl": "https://files.cdn.printful.com/m/UnisexOversizedBoxyTee/medium/Flat/back/Back_Black.png?v=1780654289",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": null,
+    "vorlageBreite": 2000,
+    "vorlageHoehe": 2000,
+    "flaecheLinks": 634,
+    "flaecheOben": 460,
+    "flaecheBreite": 731,
+    "flaecheHoehe": 835,
+    "ausrichtung": "any",
+    "vorderansicht": false
+   },
+   "aufpreisUsd": 5.95,
+   "aufpreisChf": 6.1,
+   "kollidiertMit": []
+  },
+  {
+   "id": "label_inside_dtf",
+   "dateiTyp": "label_inside_dtf",
+   "titelDe": "Etikett innen (DTF)",
+   "titelEn": "Inside label",
+   "art": "etikett",
+   "technik": "DTFILM",
+   "printfile": {
+    "printfileId": 212,
+    "breitePx": 750,
+    "hoehePx": 750,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 1136862,
+    "bildUrl": "https://files.cdn.printful.com/m/templates/medium/template1/inside_label_2_5x2_5_native.png?v=1781602841",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#000000",
+    "vorlageBreite": 728,
+    "vorlageHoehe": 728,
+    "flaecheLinks": 250,
+    "flaecheOben": 186,
+    "flaecheBreite": 228,
+    "flaecheHoehe": 228,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 0.99,
+   "aufpreisChf": 1,
+   "kollidiertMit": []
+  }
+ ],
+ "druckdateien": {
+  "212": {
+   "printfileId": 212,
+   "breitePx": 750,
+   "hoehePx": 750,
+   "dpi": 300
+  },
+  "884": {
+   "printfileId": 884,
+   "breitePx": 4200,
+   "hoehePx": 4800,
+   "dpi": 300
+  }
+ },
+ "hinweise": [],
+ "farben": {
+  "#c7c7c5": [
+   50084,
+   50135,
+   50099,
+   50118,
+   50116,
+   50125,
+   50120
+  ],
+  "#000000": [
+   50079,
+   50132,
+   50117,
+   50086,
+   50106,
+   50107,
+   50122
+  ],
+  "#2a2930": [
+   50082,
+   50130,
+   50127,
+   50105,
+   50101,
+   50123,
+   50104
+  ],
+  "#20362f": [
+   50083,
+   50131,
+   50111,
+   50093,
+   50115,
+   50092,
+   50094
+  ],
+  "#fff8ea": [
+   50081,
+   50136,
+   50129,
+   50119,
+   50085,
+   50088,
+   50109
+  ],
+  "#1a1f35": [
+   50076,
+   50138,
+   50112,
+   50128,
+   50091,
+   50114,
+   50098
+  ],
+  "#ffeae5": [
+   50078,
+   50137,
+   50124,
+   50089,
+   50113,
+   50090,
+   50103
+  ],
+  "#ca8447": [
+   50080,
+   50133,
+   50108,
+   50110,
+   50095,
+   50096,
+   50100
+  ],
+  "#ffffff": [
+   50077,
+   50134,
+   50121,
+   50126,
+   50102,
+   50097,
+   50087
+  ]
+ }
+}

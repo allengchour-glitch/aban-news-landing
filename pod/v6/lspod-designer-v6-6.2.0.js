@@ -6,7 +6,9 @@
  *     (Schatten, Falten). Der Platzierungs-Reiter wechselt die Vorlage. Adapter für Tasse (Zylinder) und Poster/Leinwand (Papier mit Schatten). Stickerei und Rundum-Druck
  *     zeigen einen ehrlichen Hinweis statt einer Vorschau. Kontrast-Hinweis bei Design und Stoff mit ähnlicher Helligkeit. Export als JPEG 800 × 800 (Eigenschaft «_vorschau»).
  *     Daten dazu: <div data-vorschau-url="…"> oder <script type="application/json" id="lspod-vorschau"> (Schema 1, gebaut von werkzeug/vorschau_daten_bauen.mjs);
- *     ohne Daten, bei fehlendem Bild oder CORS-Fehler bleibt es bei der Ansicht «Druckfläche» (ohne Fehler).
+ *     ohne Daten, bei fehlendem Bild oder CORS-Fehler bleibt es bei der Ansicht «Druckfläche» (ohne Fehler). Hängt ein Vorlagenbild, gilt data-vorschau-zeit (ms, Vorgabe 10 000) für die sichtbare
+ *     Ansicht; beim Kauf hält die Vorschau die Bestellung höchstens 4 s (oder weniger, wenn data-vorschau-zeit kleiner ist) auf. Platzierungen mit festem Farbfoto der Vorlage («farbfest» in den
+ *     Vorschaudaten) und Tassen ohne gespiegeltes Katalogfoto zeigen einen Hinweis statt einer Vorschau, die die gewählte Farbe oder das Produkt nicht richtig zeigen könnte.
  *   - Qualitätstor: harter Stopp unter der Mindest-dpi der Karte, Warnung darüber bis 150 dpi, Eigenschaft _pod_karte.qd (kleinste effektive dpi der Fotos).
  *   - Entwurf automatisch speichern und wiederherstellen (localStorage, jeder Zugriff in try/catch: ein gesperrter Speicher bricht nichts).
  *
@@ -77,7 +79,8 @@
   var VORSCHAU_PX = 800;                          // Export der Vorschau: JPEG 800 × 800
   var VORSCHAU_QUALITAET = [0.85, 0.72, 0.6, 0.48];   // JPEG-Qualitäten, die erste mit höchstens VORSCHAU_MAX_BYTES gilt
   var VORSCHAU_MAX_BYTES = 80 * 1024;
-  var VORSCHAU_ZEIT_MS = 20000;                   // Zeitlimit für Bilder der Vorschau (sonst Rückfall auf die Druckfläche)
+  var VORSCHAU_ZEIT_MS = 10000;                   // Zeitlimit für Bilder der sichtbaren Ansicht (sonst Rückfall auf die Druckfläche); Attribut data-vorschau-zeit
+  var VORSCHAU_KAUF_MS = 4000;                    // Beim Kauf darf die Vorschau (Zeichnen, Export, Upload) höchstens so lange aufhalten; danach geht die Bestellung ohne «_vorschau» weiter
   var DPI_GUT = 150;                              // ab hier kein Hinweis mehr; zwischen dem Mindestwert der Karte und 150 gibt es eine Warnung
   var KONTRAST_SCHWELLE = 1.8;                    // Kontrastverhältnis (WCAG-Formel) Design gegen Stoff, darunter gilt ein Pixel als schlecht lesbar
   var KONTRAST_ANTEIL = 0.6;                      // so viel der Design-Fläche (alphagewichtet) muss schlecht lesbar sein, damit der Hinweis erscheint
@@ -142,7 +145,8 @@
       sheetInfo: 'Druckbogen {w} \xD7 {h} cm',
       sichtLabel: 'Ansicht', sichtDruck: 'Druckfläche', sichtProdukt: 'Auf dem Produkt',
       pvAlt: 'Vorschau deines Motivs auf dem Produkt', pvLaedt: 'Vorschau wird erstellt …',
-      pvNote: 'Die Vorschau ist eine Annäherung: Farben und Falten können im Druck leicht abweichen.',
+      pvNote: 'Die Vorschau ist eine Annäherung: Farben, Falten und die genaue Lage können im Druck leicht abweichen.',
+      pvFarbe: 'Für diese Fläche zeigen wir keine Produktvorschau: Die Vorlage hat eine feste Stofffarbe und könnte die Farbe deiner Ausführung nicht richtig darstellen. Prüfe dein Motiv in der Ansicht «Druckfläche».',
       pvNichtDa: 'Die Produktvorschau ist für diese Ausführung gerade nicht verfügbar. Du kannst trotzdem gestalten: Die Ansicht «Druckfläche» zeigt dein Motiv so, wie es gedruckt wird.',
       pvStickerei: 'Für Stickerei zeigen wir keine Produktvorschau: Gestickt sieht ein Motiv anders aus als gedruckt (Fäden statt Farbe, keine Verläufe). Prüfe dein Motiv in der Ansicht «Druckfläche».',
       pvRundum: 'Für Rundum-Druck zeigen wir keine Produktvorschau: Das Motiv läuft über Schnittteile und Nähte. Prüfe jedes Teil in der Ansicht «Druckfläche».',
@@ -197,7 +201,8 @@
       sheetInfo: 'Print sheet {w} \xD7 {h} cm',
       sichtLabel: 'View', sichtDruck: 'Print area', sichtProdukt: 'On the product',
       pvAlt: 'Preview of your design on the product', pvLaedt: 'Creating preview …',
-      pvNote: 'The preview is an approximation: colours and folds can differ slightly in print.',
+      pvNote: 'The preview is an approximation: colours, folds and the exact position can differ slightly in print.',
+      pvFarbe: 'We do not show a product preview for this area: the template has a fixed fabric colour and could not show the colour of your option correctly. Check your design in the "Print area" view.',
       pvNichtDa: 'The product preview is not available for this option right now. You can still design: the "Print area" view shows your design as it will be printed.',
       pvStickerei: 'We do not show a product preview for embroidery: a stitched design looks different from a printed one (thread instead of ink, no gradients). Check your design in the "Print area" view.',
       pvRundum: 'We do not show a product preview for all-over print: the design runs across panels and seams. Check every panel in the "Print area" view.',
@@ -735,7 +740,9 @@
         if (/^https:\/\//i.test(k) && (v === null || (typeof v === 'string' && /^https:\/\//i.test(v)))) bilder[k] = v;   // null = noch nicht gespiegelt: dann gilt die Printful-Adresse
       });
       if (m.tasse && typeof m.tasse === 'object') Object.keys(m.tasse).forEach(function (pv) { if (tasseOk(m.tasse[pv])) tasse[pv] = m.tasse[pv]; });
-      modelle[String(pid)] = { adapter: m.adapter, grund: typeof m.grund === 'string' ? m.grund : null, bilder: bilder, tasse: tasse };
+      // farbfest: Platzierungen, deren Vorlage ein Foto in EINER festen Stofffarbe ist, obwohl das Modell mehrere Farben hat: dort zeigt die Ansicht nur einen Hinweis (sie würde die gewählte Farbe nicht zeigen)
+      var farbfest = Array.isArray(m.farbfest) ? m.farbfest.filter(function (id) { return typeof id === 'string' && id; }) : [];
+      modelle[String(pid)] = { adapter: m.adapter, grund: typeof m.grund === 'string' ? m.grund : null, bilder: bilder, tasse: tasse, farbfest: farbfest };
     });
     if (!Object.keys(modelle).length) return { fehler: 'kein brauchbares Modell in den Vorschaudaten' };
     return { daten: { modelle: modelle } };
@@ -859,6 +866,8 @@
     '.lsp6-cta{width:100%;min-height:52px;padding:14px;border:none;border-radius:999px;background:var(--golddk);color:#fff;font-family:inherit;font-weight:800;font-size:16px;line-height:1.2;cursor:pointer;margin-top:4px}',
     '.lsp6-cta:hover{background:#6f500c}',
     '.lsp6-cta:disabled{opacity:.7;cursor:default}',
+    '.lsp6-cta[aria-disabled="true"]{background:#6b6a72;cursor:not-allowed}',
+    '.lsp6-cta[aria-disabled="true"]:hover{background:#6b6a72}',
     '.lsp6-preview{width:100%;min-height:46px;padding:12px;border:1px solid #cfc8bb;border-radius:999px;background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:14px;line-height:1.2;cursor:pointer;margin:2px 0 8px}',
     '.lsp6-status{text-align:center;font-size:13px;margin-top:8px;min-height:18px;color:var(--mute);font-weight:600}',
     '.lsp6-status.err{color:var(--red)}.lsp6-status.ok{color:var(--green)}',
@@ -924,6 +933,9 @@
     var maxBytes = attrBytes !== null && attrBytes !== '' && isFinite(Number(attrBytes)) && Number(attrBytes) >= 0 ? Number(attrBytes) : MAX_BYTES;
     var attrZeit = container.getAttribute('data-upload-timeout');
     var uploadZeit = attrZeit && Number(attrZeit) > 0 ? Number(attrZeit) : UPLOAD_ZEIT_MS;
+    var attrVZeit = container.getAttribute('data-vorschau-zeit');
+    var vorschauZeit = attrVZeit && Number(attrVZeit) > 0 ? Number(attrVZeit) : VORSCHAU_ZEIT_MS;   // Zeitlimit eines Vorlagenbildes in der sichtbaren Ansicht
+    var kaufFrist = Math.min(VORSCHAU_KAUF_MS, vorschauZeit);                                        // Frist der Vorschau beim Kauf (nie länger als das Bildlimit)
     var standardVariante = legacy ? wurzel.standardVariante : (container.getAttribute('data-variant') || '');
     var st = { aktiv: karte.platzierungen[0].id, ebenen: {}, sel: null, ansicht: 'flaeche', sicht: 'druck', shopVariante: null, pfVariante: null };
     (buendel ? wurzel.alleIds : karte.platzierungen.map(function (p) { return p.id; })).forEach(function (id) { st.ebenen[id] = []; });
@@ -946,6 +958,7 @@
     var pvNr = 0;                          // Nummer des letzten Zeichenauftrags der Vorschau: ältere dürfen nicht mehr zeichnen
     var pvPlan = null;                     // geplanter Zeichenauftrag (requestAnimationFrame oder Zeitgeber)
     var vorschauUrl = '';                  // Cloudinary-Adresse des Vorschau-JPEG (erst nach «In den Warenkorb», wie die Druckdateien)
+    var vorschauSendeNr = 0;               // Nummer des letzten Sendeversuchs der Vorschau: nach Fristablauf oder Fehler darf ein später eintreffender Upload nichts mehr eintragen
     var entwurfTimer = null;
     var entwurfBereit = false;             // erst nach dem Lesen eines alten Entwurfs wird gespeichert (sonst überschreibt der leere Start ihn)
     var entwurfAus = false;                // nach dem Warenkorb: der Entwurf ist verbraucht
@@ -1946,7 +1959,10 @@
       if (!m) return { art: 'nein' };
       if (karte.klasse === 'PANEL') return { art: 'hinweis', code: 'rundum' };
       if (p.technik === 'EMBROIDERY' || /^embroidery/.test(p.id)) return { art: 'hinweis', code: 'stickerei' };
-      if (m.adapter === 'keine') return { art: 'hinweis', code: m.grund === 'stickerei' || m.grund === 'rundum' ? m.grund : 'keine' };
+      if (m.adapter === 'keine') return { art: 'hinweis', code: m.grund === 'stickerei' || m.grund === 'rundum' || m.grund === 'farbfest' ? m.grund : 'keine' };
+      if (m.farbfest.indexOf(p.id) >= 0) return { art: 'hinweis', code: 'farbfest' };
+      // Tasse ohne gespiegeltes Katalogfoto (Printful sendet für products/ keinen CORS-Kopf, GEMESSEN): es gäbe nur eine Zeichnung, die sich nicht exportieren lässt; also gar keine Ansicht, aber ein klarer Hinweis
+      if (m.adapter === 'tasse') { var pv = pvVariante(); var t = pv != null ? m.tasse[String(pv)] : null; if (!t || !t.foto) return { art: 'hinweis', code: 'keine' }; }
       return { art: m.adapter, m: m };
     }
     /** Vorlagenbild laden (mit CORS, damit die Zeichenfläche lesbar bleibt und der JPEG-Export klappt). Misslingt es, bleibt es bei der Ansicht «Druckfläche». Fehlschläge werden nicht gemerkt. */
@@ -1954,7 +1970,7 @@
       if (!bildPuffer[url]) {
         var pr = new Promise(function (ok, fehler) {
           var img = new Image();
-          var t = setTimeout(function () { fehler(new Error('Zeit')); }, VORSCHAU_ZEIT_MS);
+          var t = setTimeout(function () { fehler(new Error('Zeit')); }, vorschauZeit);
           img.crossOrigin = 'anonymous';
           img.onload = function () { clearTimeout(t); ok(img); };
           img.onerror = function () { clearTimeout(t); fehler(new Error('Bild')); };
@@ -1997,17 +2013,15 @@
       var bgUrl = !farbe.eigene && vl.hintergrundUrl ? bildAdresse(m, vl.hintergrundUrl) : null;   // eine Textur, die die Daten nicht kennen, fällt auf die Farbfläche zurück
       var r = einpassRechteck(L.aw, L.ah, g.printfile.breitePx / g.printfile.hoehePx, 'einpassen');
       return Promise.all([vorschauBild(ovUrl), bgUrl ? vorschauBild(bgUrl) : null, designLeinwand(p, r.w, r.h)]).then(function (a) {
-        if (opt.veraltet && opt.veraltet()) return { ok: false, grund: 'veraltet' };
+        if (opt.veraltet && opt.veraltet()) { leinwandFreigeben(a[2]); return { ok: false, grund: 'veraltet' }; }
         var ctx = cv.getContext('2d'), ov = a[0], bg = a[1], dcv = a[2];
         pvNeutral(ctx);
         ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
         if (bg) ctx.drawImage(bg, L.ox, L.oy, L.w, L.h);
         else { ctx.fillStyle = farbe.hex || '#ffffff'; ctx.fillRect(L.ox, L.oy, L.w, L.h); }
-        function designZeichnen() {
-          ctx.save(); ctx.beginPath(); ctx.rect(L.ax, L.ay, L.aw, L.ah); ctx.clip();
-          ctx.drawImage(dcv, L.ax + r.x, L.ay + r.y, r.w, r.h);
-          ctx.restore();
-        }
+        // Das Design liegt auf einer Leinwand im Seitenverhältnis der Druckdatei, die ganz in die Druckfläche passt (einpassRechteck, «einpassen»): was über den Rand der Leinwand ragt, ist schon dort
+        // abgeschnitten, ein zusätzlicher Beschnitt der Druckfläche änderte kein Pixel.
+        function designZeichnen() { ctx.drawImage(dcv, L.ax + r.x, L.ay + r.y, r.w, r.h); }
         function vorlageZeichnen() {
           ctx.save();
           if (opt.overlay === 'multiply') ctx.globalCompositeOperation = 'multiply';   // nur für die Messung gegen Printful (README): im Editor gilt «normal»
@@ -2025,7 +2039,7 @@
       if (h > H - 2 * rand) { h = H - 2 * rand; w = h * ar; }
       var x = (W - w) / 2, y = (H - h) / 2;
       return designLeinwand(p, w, h).then(function (dcv) {
-        if (opt.veraltet && opt.veraltet()) return { ok: false, grund: 'veraltet' };
+        if (opt.veraltet && opt.veraltet()) { leinwandFreigeben(dcv); return { ok: false, grund: 'veraltet' }; }
         var ctx = cv.getContext('2d');
         pvNeutral(ctx);
         ctx.fillStyle = '#f3f1ee'; ctx.fillRect(0, 0, W, H);
@@ -2044,8 +2058,8 @@
       var sa = t.ausschnitt || [0, 0, t.fotoBreite, t.fotoHoehe];
       var k = Math.min(W / sa[2], H / sa[3]) * 0.96;
       var dx = (W - sa[2] * k) / 2, dy = (H - sa[3] * k) / 2;
-      return Promise.all([vorschauBild(t.foto || t.quelle), designLeinwand(p, offW, offH)]).then(function (a) {
-        if (opt.veraltet && opt.veraltet()) return { ok: false, grund: 'veraltet' };
+      return Promise.all([vorschauBild(t.foto), designLeinwand(p, offW, offH)]).then(function (a) {
+        if (opt.veraltet && opt.veraltet()) { leinwandFreigeben(a[1]); return { ok: false, grund: 'veraltet' }; }
         var ctx = cv.getContext('2d'), foto = a[0], off = a[1];
         var fx = (foto.naturalWidth || foto.width) / t.fotoBreite, fy = (foto.naturalHeight || foto.height) / t.fotoHoehe;
         pvNeutral(ctx);
@@ -2094,22 +2108,24 @@
       if (!r || !r.ok || !r.dcv || !r.stoff) return;
       var rgb = hexZuRgb(r.stoff);
       if (!rgb) return;
+      var klein = null;
       try {
-        var klein = document.createElement('canvas');
+        klein = document.createElement('canvas');
         klein.width = 48; klein.height = Math.max(8, Math.round(48 * r.dcv.height / r.dcv.width));
         var kx = klein.getContext('2d');
         kx.drawImage(r.dcv, 0, 0, klein.width, klein.height);
         var a = kontrastAnalyse(kx.getImageData(0, 0, klein.width, klein.height).data, rgb);
         if (a.flaeche >= 3 && a.anteil >= KONTRAST_ANTEIL) { ui.pvKontrast.textContent = a.art === 'dunkel' ? T.kontrastDunkel : T.kontrastHell; ui.pvKontrast.hidden = false; }
       } catch (x) { /* Fläche nicht lesbar: dann gibt es keinen Hinweis */ }
+      leinwandFreigeben(klein);   // iOS-Safari hat eine Obergrenze für den Speicher aller Zeichenflächen: nicht liegen lassen
     }
     function pvGroesse() {
       var cw = ui.pv.clientWidth || ui.karte.clientWidth || 560;
       return bereich(300, 1000, Math.round(cw * Math.min(2, window.devicePixelRatio || 1)));
     }
     function pvInfoZeigen(code) {
-      ui.pv.hidden = true; ui.pvNote.hidden = true; ui.pvKontrast.hidden = true;
-      ui.pvInfo.textContent = code === 'stickerei' ? T.pvStickerei : code === 'rundum' ? T.pvRundum : T.pvKeine;
+      ui.pv.hidden = true; ui.pvNote.hidden = true; ui.pvKontrast.hidden = true; ui.pvLaed.hidden = true;
+      ui.pvInfo.textContent = code === 'stickerei' ? T.pvStickerei : code === 'rundum' ? T.pvRundum : code === 'farbfest' ? T.pvFarbe : T.pvKeine;
       ui.pvInfo.hidden = false;
     }
     /** Die Produktansicht ist nicht möglich (Bild fehlt, CORS, keine Daten): zurück zur Druckfläche mit einem ruhigen Hinweis, kein Fehler. */
@@ -2128,11 +2144,16 @@
       ui.pvInfo.hidden = true; ui.pv.hidden = false; ui.pvNote.hidden = false;
       var W = pvGroesse();
       if (ui.pv.width !== W) { ui.pv.width = W; ui.pv.height = W; }
+      // Lädt ein Vorlagenbild länger als einen Augenblick (CDN langsam), steht «Vorschau wird erstellt …» da, statt einer leeren Fläche bis zum Rückfall
+      var ladeTimer = setTimeout(function () { if (nr === pvNr && st.sicht === 'produkt') ui.pvLaed.hidden = false; }, 250);
       vorschauZeichnen(ui.pv, { p: p, veraltet: function () { return nr !== pvNr; } }).then(function (r) {
-        if (nr !== pvNr || st.sicht !== 'produkt') return;
+        clearTimeout(ladeTimer);
+        if (nr === pvNr) ui.pvLaed.hidden = true;
+        if (nr !== pvNr || st.sicht !== 'produkt') { leinwandFreigeben(r && r.dcv); return; }
         if (!r.ok) { if (r.grund !== 'veraltet') vorschauRueckfall(); return; }
         ui.pv.setAttribute('data-gezeichnet', String((Number(ui.pv.getAttribute('data-gezeichnet')) || 0) + 1));
         kontrastHinweisZeigen(r);
+        leinwandFreigeben(r.dcv);   // die Design-Leinwand wird nur für den Kontrast-Hinweis gebraucht
       });
     }
     function vorschauPlanen() {
@@ -2168,6 +2189,7 @@
       var cv = document.createElement('canvas');
       cv.width = VORSCHAU_PX; cv.height = VORSCHAU_PX;
       return vorschauZeichnen(cv, { p: p || pAktiv() }).then(function (r) {
+        leinwandFreigeben(r && r.dcv);
         if (!r.ok) { leinwandFreigeben(cv); return null; }
         return new Promise(function (ok) {
           var i = 0;
@@ -2191,18 +2213,25 @@
       for (var i = 0; i < verwendet.length; i++) if (zeigbar(verwendet[i])) return verwendet[i];
       return null;
     }
-    /** Vorschau-JPEG hochladen (beim Klick auf «In den Warenkorb», nach den Druckdateien). Die Vorschau ist Komfort: misslingt sie, geht die Bestellung ohne «_vorschau» weiter. */
+    /** Vorschau-JPEG hochladen (beim Klick auf «In den Warenkorb», nach den Druckdateien). Die Vorschau ist Komfort: misslingt sie, geht die Bestellung ohne «_vorschau» weiter.
+     *  Sie hält den Kauf höchstens `kaufFrist` (4 s) auf, auch wenn ein Vorlagenbild oder der Upload hängt (GEMESSEN vorher: 20 s Stillstand ohne Meldung); was danach noch eintrifft, wird verworfen. */
     function vorschauSenden(verwendet) {
       vorschauUrl = '';
       if (!vorschauDaten) return Promise.resolve();
       var p = vorschauPlatzierungWaehlen(verwendet);
       if (!p) return Promise.resolve();
-      return vorschauExport(p).then(function (blob) {
-        if (!blob) return null;
+      var nr = ++vorschauSendeNr;
+      var gilt = function () { return nr === vorschauSendeNr; };
+      var arbeit = vorschauExport(p).then(function (blob) {
+        if (!blob || !gilt()) return null;
         return new Promise(function (ok) {
-          hochladen(blob, true, function (err, url) { if (!err && url) vorschauUrl = url; ok(); }, Math.min(uploadZeit, VORSCHAU_ZEIT_MS));
+          hochladen(blob, true, function (err, url) { if (gilt() && !err && url) vorschauUrl = url; ok(); }, Math.min(uploadZeit, kaufFrist));
         });
       }).catch(function () { /* Komfort */ });
+      return new Promise(function (fertig) {
+        var t = setTimeout(function () { vorschauSendeNr++; fertig(); }, kaufFrist);   // Frist abgelaufen: spätere Ergebnisse zählen nicht mehr
+        arbeit.then(function () { clearTimeout(t); fertig(); });
+      });
     }
 
     // ── Entwurf speichern und wiederherstellen (WP4) ────────────────────────────────────────────────
@@ -2231,16 +2260,24 @@
       try { d = JSON.parse(roh); } catch (e) { d = null; }
       if (!d || d.v !== 1 || !istZahl(d.t) || Date.now() - d.t > ENTWURF_MAX_ALTER_MS || !d.ebenen || typeof d.ebenen !== 'object') { speicherLoeschen(entwurfKey); return false; }
       var neu = 0, hoechste = 0;
-      Object.keys(d.ebenen).forEach(function (pid) {
-        if (!st.ebenen[pid] || !Array.isArray(d.ebenen[pid])) return;   // diese Platzierung gibt es nicht mehr
-        d.ebenen[pid].forEach(function (n) {
-          var e = ebeneAusEntwurf(n);
-          if (!e) return;
-          st.ebenen[pid].push(e); neu++;
-          hoechste = Math.max(hoechste, parseInt(e.id.slice(1), 10) || 0);
-          if (e.type === 'image') origMass[e.id] = { w: e._origW, h: e._origH };
+      try {
+        Object.keys(d.ebenen).forEach(function (pid) {
+          // nur eigene Platzierungen: ein Schlüssel wie «__proto__», «constructor» oder «toString» (beschädigter oder fremd geschriebener Entwurf) darf den Bau nicht abstürzen lassen
+          if (!Object.prototype.hasOwnProperty.call(st.ebenen, pid) || !Array.isArray(st.ebenen[pid]) || !Array.isArray(d.ebenen[pid])) return;   // diese Platzierung gibt es nicht mehr
+          d.ebenen[pid].forEach(function (n) {
+            var e = ebeneAusEntwurf(n);
+            if (!e) return;
+            st.ebenen[pid].push(e); neu++;
+            hoechste = Math.max(hoechste, parseInt(e.id.slice(1), 10) || 0);
+            if (e.type === 'image') origMass[e.id] = { w: e._origW, h: e._origH };
+          });
         });
-      });
+      } catch (x) {
+        // unerwartete Form: Entwurf verwerfen, damit der Fehler nicht bei jedem Neuladen wiederkehrt
+        Object.keys(st.ebenen).forEach(function (id) { st.ebenen[id] = []; });
+        speicherLoeschen(entwurfKey);
+        return false;
+      }
       idZaehler = Math.max(idZaehler, hoechste, istZahl(d.z) ? Math.floor(d.z) : 0);
       if (!neu) return false;
       if (typeof d.aktiv === 'string' && platzierungIn(karte, d.aktiv) && !blockiertDurch(d.aktiv).length) st.aktiv = d.aktiv;
@@ -2298,9 +2335,11 @@
     ui.pvInfo = el('p', { class: 'lsp6-pvinfo', role: 'status', 'data-feld': 'produktinfo' });
     ui.pvInfo.hidden = true;
     ui.pvNote = el('p', { class: 'lsp6-pvnote', text: T.pvNote });
+    ui.pvLaed = el('p', { class: 'lsp6-pvnote', role: 'status', 'aria-live': 'polite', 'data-feld': 'pvlaedt', text: T.pvLaedt });
+    ui.pvLaed.hidden = true;
     ui.pvKontrast = el('p', { class: 'lsp6-sh', role: 'status', 'aria-live': 'polite', 'data-feld': 'kontrast', style: 'margin:0 16px 8px' });
     ui.pvKontrast.hidden = true;
-    ui.pvWrap = el('div', { class: 'lsp6-pvwrap', 'data-feld': 'produktansicht' }, [ui.pv, ui.pvInfo, ui.pvNote, ui.pvKontrast]);
+    ui.pvWrap = el('div', { class: 'lsp6-pvwrap', 'data-feld': 'produktansicht' }, [ui.pv, ui.pvInfo, ui.pvLaed, ui.pvNote, ui.pvKontrast]);
     ui.pvWrap.hidden = true;
     ui.karte.appendChild(ui.pvWrap);
 
@@ -2783,7 +2822,7 @@
     // In den Warenkorb
     /** Eingaben während des Bauens der Druckdateien sperren (sonst gehört die hochgeladene Datei zu einem älteren Stand des Entwurfs). */
     function sperren(an) {
-      ui.cta.disabled = an; ui.cta.style.opacity = an ? '0.7' : '1';
+      ui.cta.disabled = an; ui.cta.style.opacity = an ? '0.7' : '';
       try { if (an) ui.karte.setAttribute('inert', ''); else ui.karte.removeAttribute('inert'); } catch (x) { /* egal */ }
     }
     ui.cta.addEventListener('click', function () {
@@ -2893,11 +2932,12 @@
         knotenLoeschen();
         buehneAufbauen(); metaAktualisieren(); knotenNeuAufbauen();
         tabsAufbauen(); felderAktualisieren(); aufpreisSummeAktualisieren(); reiterHinweis('');
-        sichtAktualisieren();
+        sichtAktualisieren(); qualitaetPruefen();
         return;
       }
       buehneAufbauen(); metaAktualisieren(); alleZeichnen();
       var e = gewaehlt(); if (e) { werteSetzen(e); aufloesungPruefen(e); }
+      qualitaetPruefen();   // die Kaufsperre gilt für ALLE Fotos der neuen Ausführung (auch ohne gewählte Ebene)
       modellHinweisAktualisieren();
     }
     function varianteBeobachten() {

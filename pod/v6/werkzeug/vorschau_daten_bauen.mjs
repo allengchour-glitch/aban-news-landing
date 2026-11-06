@@ -22,7 +22,10 @@
  *   { schema: 1, stand, modelle: { "<Printful-Produkt>": {
  *       adapter: 'flach' | 'tasse' | 'papier' | 'keine',   flach = Hintergrund → Design → Vorlagenbild (Kleidung, Taschen, Hüllen), tasse = Zylinder, papier = Poster und Leinwand,
  *                                                           keine = ehrlicher Hinweis statt Vorschau
- *       grund: null | 'rundum' | 'ungeeignet' | 'layout',  warum «keine» (Rundum-Druck, technisch ungeeignet, nur Raster-Layout statt Produktfoto als Vorlage)
+ *       grund: null | 'rundum' | 'ungeeignet' | 'layout' | 'farbfest',  warum «keine» (Rundum-Druck, technisch ungeeignet, nur Raster-Layout statt Produktfoto als Vorlage, Vorlage mit fester Stofffarbe)
+ *       farbfest: [Platzierungs-IDs],   Platzierungen, deren Vorlage ein Foto in EINER festen Stofffarbe ist (kein Hintergrund, keine Hintergrundfarbe), obwohl das Modell mehrere Farben hat: der Editor zeigt
+ *                                       dort nur einen Hinweis. Sind alle Foto-Platzierungen farbfest, ist der Adapter «keine» mit Grund «farbfest». (GEMESSEN am Modell 1592: 9 Farbvorlagen, der verdichtete Katalog
+ *                                       behält nur eine als Beispiel; die Farbvorlagen je Variante aus GET /mockup-generator/templates wären die eigentliche Lösung, siehe README «Offene Punkte».)
  *       titel, klasse,
  *       bilder: { "<Printful-Adresse>": "<Adresse auf Shopify Files>" | null },   alle Vorlagen- und Hintergrundbilder, die FOTOS sind (kein Raster); der Editor zeichnet nur, was hier steht
  *       tasse: { "<Printful-Variante>": { foto, quelle, fotoBreite, fotoHoehe, mitteX, radius, oben, unten, winkel, ausschnitt } },
@@ -77,6 +80,17 @@ function sortiert(obj) {
   return aus;
 }
 
+/** Zahl der verschiedenen Stofffarben des Modells: verschiedene Farbcodes (`color_code`, z. B. #000000) der Katalogvarianten. Nur der Code zählt, nicht der Name: bei der Duftkerze 861 steht im Feld `color`
+ *  der Duft («Apple Harvest», «Clean Cotton» …), der Farbcode fehlt, und die Vorlage ist für alle Düfte dieselbe. */
+export function farbenImModell(katalog) {
+  const f = new Set();
+  for (const v of katalog.varianten ?? []) {
+    const c = String(v.color_code ?? '').trim().toLowerCase();
+    if (c) f.add(c);
+  }
+  return f.size;
+}
+
 /** Eine Vorlage der Modellkarte in die kurze Form der Gegenprobe. */
 function vorlageKurz(vl) {
   if (!vl) return null;
@@ -106,11 +120,22 @@ export function vorschauModell(katalog, spiegel = {}) {
   };
   const vorlagen = {};
   const ohneFoto = [];
+  const farben = farbenImModell(katalog);
+  const farbfest = [];
+  const fotoPlatzierungen = [];
   for (const p of k.platzierungen) {
     vorlagen[p.id] = { technik: p.technik, printfile: { b: p.printfile.breitePx, h: p.printfile.hoehePx, dpi: p.printfile.dpi }, ...vorlageKurz(p.vorlage) };
-    const alle = [p.vorlage, ...(p.geometrien ?? []).map((g) => g.vorlage)];
-    for (const vl of alle) { if (vl) { merke(vl.bildUrl, 'vorlage'); merke(vl.hintergrundUrl, 'hintergrund'); } }
+    // Foto des Kleidungsstücks ohne Hintergrundfarbe und ohne Hintergrundbild: die Farbe der Variante lässt sich nicht einsetzen, die Vorschau zeigte immer die Farbe der Beispielvorlage.
+    // Solche Platzierungen zeigt der Editor nicht; ihre Bilder kommen darum auch nicht in den Spiegelplan.
+    const mitFoto = bildArt(p.vorlage?.bildUrl) === 'foto' && p.technik !== 'EMBROIDERY' && !/^embroidery/.test(p.id);
+    const fest = mitFoto && !p.vorlage.hintergrundUrl && !p.vorlage.hintergrundFarbe && farben > 1;
+    if (fest) farbfest.push(p.id);
+    else {
+      const alle = [p.vorlage, ...(p.geometrien ?? []).map((g) => g.vorlage)];
+      for (const vl of alle) { if (vl) { merke(vl.bildUrl, 'vorlage'); merke(vl.hintergrundUrl, 'hintergrund'); } }
+    }
     if (bildArt(p.vorlage?.bildUrl) !== 'foto') ohneFoto.push(p.id);
+    else if (mitFoto) fotoPlatzierungen.push(p.id);
   }
   let adapter, grund = null;
   const tasse = {};
@@ -131,9 +156,14 @@ export function vorschauModell(katalog, spiegel = {}) {
         dateien.push({ quelle, dateiname: name, art: 'tassenfoto' });
       }
     } else { adapter = 'keine'; grund = 'ungeeignet'; }
-  } else if (k.platzierungen.some((p) => bildArt(p.vorlage?.bildUrl) === 'foto')) adapter = 'flach';
-  else { adapter = 'keine'; grund = 'layout'; }
-  const eintrag = { adapter, grund, titel: k.titelEn ?? null, klasse: k.klasse ?? null, bilder: sortiert(bilder), tasse, vorlagen: sortiert(vorlagen) };
+  } else if (k.platzierungen.some((p) => bildArt(p.vorlage?.bildUrl) === 'foto')) {
+    adapter = 'flach';
+    // alle zeigbaren Platzierungen mit fester Stofffarbe: für dieses Modell gibt es keine ehrliche Vorschau
+    if (fotoPlatzierungen.length > 0 && fotoPlatzierungen.every((id) => farbfest.includes(id))) { adapter = 'keine'; grund = 'farbfest'; }
+  } else { adapter = 'keine'; grund = 'layout'; }
+  // Ohne Vorschau braucht niemand die Bilder: sie kommen nicht in den Spiegelplan (die Tassenfotos gehören zum Adapter «tasse» und bleiben)
+  if (adapter === 'keine') { for (const u of Object.keys(bilder)) delete bilder[u]; for (let i = dateien.length - 1; i >= 0; i--) if (dateien[i].art !== 'tassenfoto') dateien.splice(i, 1); }
+  const eintrag = { adapter, grund, titel: k.titelEn ?? null, klasse: k.klasse ?? null, farbfest: [...farbfest].sort(), bilder: sortiert(bilder), tasse, vorlagen: sortiert(vorlagen) };
   return {
     pid, eintrag, dateien,
     bericht: { pid, titel: k.titelEn, typ: k.typ, klasse: k.klasse, technischeKlasse: technisch, adapter, grund, platzierungen: k.platzierungen.length, ohneFotoVorlage: ohneFoto, dateien: dateien.length },
@@ -166,14 +196,16 @@ export function spiegelPlan(ergebnisse, stand) {
 
 /** Alle oder die gewählten Modelle aus einem Katalogordner bauen. */
 export function bauen({ katalogOrdner, modelle = 'alle', spiegel = {}, stand = new Date().toISOString().slice(0, 10), buendel = {} }) {
+  // katalogOrdner: ein Ordner oder eine Liste (die Katalogdatei eines Modells kommt aus dem ersten Ordner, der sie hat)
+  const ordner = Array.isArray(katalogOrdner) ? katalogOrdner : [katalogOrdner];
   const ids = modelle === 'alle'
-    ? readdirSync(katalogOrdner).map((f) => f.match(/^(\d+)\.json$/)?.[1]).filter(Boolean).map(Number).sort((a, b) => a - b)
+    ? [...new Set(ordner.flatMap((o) => readdirSync(o).map((f) => f.match(/^(\d+)\.json$/)?.[1]).filter(Boolean).map(Number)))].sort((a, b) => a - b)
     : modelle.map(Number);
   const ergebnisse = [];
   const fehler = [];
   for (const id of ids) {
-    const datei = join(katalogOrdner, `${id}.json`);
-    if (!existsSync(datei)) { fehler.push(`Modell ${id}: Katalogdatei fehlt`); continue; }
+    const datei = ordner.map((o) => join(o, `${id}.json`)).find((d) => existsSync(d));
+    if (!datei) { fehler.push(`Modell ${id}: Katalogdatei fehlt`); continue; }
     try { ergebnisse.push(vorschauModell(JSON.parse(readFileSync(datei, 'utf8')), spiegel)); }
     catch (e) { fehler.push(`Modell ${id}: ${e.message}`); }
   }

@@ -30,6 +30,8 @@ export const BILDCACHE = process.env.V6_BILDCACHE || '';
 
 // ── Server ──────────────────────────────────────────────────────────────────────────────────────
 export const KATALOG_TEST = join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'werkzeuge', 'testdaten', 'katalog');
+/** Zusätzliche echte Katalogdatei für diesen Strang: Modell 1592 (Unisex Oversized Boxy Tee, Vorlage mit festem Farbfoto, 9 Farben), kopiert aus dem Katalog vom 05.11.2026. */
+export const KATALOG_ZUSATZ = join(hier, 'testdaten', 'katalog');
 function karteMitShop(id, shopParam, ohneMinDpi, extraHinweise) {
   const datei = join(hier, 'testdaten', `${id}.karte.json`);
   if (!existsSync(datei)) return null;
@@ -81,10 +83,10 @@ export function starteServer() {
     if ((m = u.pathname.match(/^\/vorschau\/([\d,]+)\.json$/))) {
       // Vorschaudaten (Schema 1) aus den Test-Katalogen im Repo, gebaut mit dem echten Werkzeug; spiegel=0: Bilder nicht gespiegelt (null), sonst auf «cdn.shopify.com/s/files/test/»
       const ids = m[1].split(',').map(Number);
-      const erst = vorschauBauen({ katalogOrdner: KATALOG_TEST, modelle: ids, stand: '2026-11-06' });
+      const erst = vorschauBauen({ katalogOrdner: [KATALOG_TEST, KATALOG_ZUSATZ], modelle: ids, stand: '2026-11-06' });
       const spiegel = {};
       if (u.searchParams.get('spiegel') !== '0') for (const d of erst.plan.dateien) spiegel[d.dateiname] = `https://cdn.shopify.com/s/files/test/${d.dateiname}`;
-      const r = vorschauBauen({ katalogOrdner: KATALOG_TEST, modelle: ids, spiegel, stand: '2026-11-06' });
+      const r = vorschauBauen({ katalogOrdner: [KATALOG_TEST, KATALOG_ZUSATZ], modelle: ids, spiegel, stand: '2026-11-06' });
       const datei = vorschauDatei(r.ergebnisse, '2026-11-06');
       const kaputt = u.searchParams.get('kaputt');
       if (kaputt === 'json') return senden('application/json', JSON.stringify(datei).slice(0, 60));
@@ -197,7 +199,7 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
  * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool,
  *                   cloudinaryMaxBytes: Zahl (grössere Uploads → HTTP 400 «File size too large»), cloudinaryMaxPixel: Zahl (mehr Pixel → HTTP 400 «Image dimensions too large»),
  *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms,
- *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
+ *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulHaengt / shopifyHaengt: (url) => bool (Antwort kommt nie), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
  * @returns { page, ctx, fehler: string[], uploads: [], abgelehnt: [], warenkorb: [], png(url), schliessen() }
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
@@ -226,6 +228,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   await page.route('https://files.cdn.printful.com/**', (route) => {
     const u = route.request().url();
     bildAnfragen.push(u);
+    if (opt.printfulHaengt && opt.printfulHaengt(u)) return;   // Antwort bleibt aus (Verbindung offen): Test der Fristen
     const eigene = opt.printfulBild ? opt.printfulBild(u) : null;
     if (eigene) return bildAntwort(route, eigene);
     const b = vorlagenBild(u); route.fulfill({ status: 200, contentType: b.typ, body: b.body, headers: { 'access-control-allow-origin': '*' } });
@@ -234,6 +237,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     const u = route.request().url();
     bildAnfragen.push(u);
     if (/stk-index\.json/.test(u)) return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(['heart-red', 'star-gold', 'crown']), headers: { 'access-control-allow-origin': '*' } });
+    if (opt.shopifyHaengt && opt.shopifyHaengt(u)) return;   // Antwort bleibt aus (Verbindung offen)
     const eigene = opt.shopifyBild ? opt.shopifyBild(u) : null;
     if (eigene) return bildAntwort(route, eigene);
     // gespiegelte Vorlagenbilder der Vorschau (Schema 1, Werkzeug vorschau_daten_bauen.mjs): Nachbau des Geisterbildes, bei .jpg das Tassenfoto
