@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R122_20261106",
+  "checkedAt": "2026-11-06T19:07:40+01:00",
+  "timezone": "Europe/Zurich",
+  "repositoryHeadBeforeDocumentation": "2866673d1f4d598ffb2feb8f5f51ba37b025ff1a",
+  "coordination": {
+    "originMain": "e6fc42e409c6f10db279893aba58096390195704",
+    "originMainPr": 2911,
+    "originMainScope": "self_design_printful_template_images_not_projector_master",
+    "directClaudeOverlapFound": false,
+    "sharedLiveLockOrReceipt": "unknown",
+    "externalRepoWrites": 0
+  },
+  "shopify": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "country": "CH",
+    "currency": "CHF",
+    "timezone": "CET",
+    "identityMatch": true,
+    "writes": 0
+  },
+  "metricool": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "identityMatch": true,
+    "channels": {
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "planningWindow": {
+      "from": "2026-11-06T19:04:00+01:00",
+      "to": "2026-11-13T19:04:00+01:00",
+      "objects": 32,
+      "uniqueUuids": 32,
+      "channelStates": 48,
+      "statuses": [
+        "PENDING"
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "counts": {
+        "facebook": 16,
+        "instagram": 16,
+        "tiktok": 8,
+        "pinterest": 3,
+        "youtube": 5,
+        "threads": 0
+      },
+      "sameChannelExactDuplicates": 0,
+      "sameChannelMediaRepeats": 0,
+      "timeCollisions": 0,
+      "gaps": {
+        "threads": "entire_window",
+        "pinterest": [
+          "2026-11-09",
+          "2026-11-10",
+          "2026-11-11",
+          "2026-11-12",
+          "2026-11-13"
+        ],
+        "tiktok": [
+          "2026-11-06",
+          "2026-11-12",
+          "2026-11-13"
+        ],
+        "youtube": [
+          "2026-11-06",
+          "2026-11-12",
+          "2026-11-13"
+        ],
+        "facebook": [
+          "2026-11-06_after_19:04"
+        ],
+        "instagram": [
+          "2026-11-06_after_19:04"
+        ]
+      },
+      "emptyFacebookInstagramStoryObjects": 4,
+      "emptyChannelTexts": 8
+    },
+    "dailyMetrics": {
+      "repeatedInR122": false,
+      "reason": "daily_limit_already_used_by_R115",
+      "range": "2026-10-30/2026-11-05",
+      "source": "LAUFBELEGE-20261106-R115.json",
+      "instagram": {
+        "ids": [
+          "IGEV05",
+          "IGEV38"
+        ],
+        "views": 420,
+        "interactions": "unknown_incomplete"
+      },
+      "facebook": {
+        "ids": [
+          "FBEV49",
+          "FBEV34"
+        ],
+        "pageMediaViews": 322,
+        "interactions": "unknown_incomplete"
+      },
+      "tiktok": {
+        "ids": [
+          "TKEV12",
+          "TKEV13",
+          "TKEV14",
+          "TKEV15"
+        ],
+        "deliveredDays": 6,
+        "videoViews": 623,
+        "likes": 2,
+        "fullRange": "unknown"
+      },
+      "pinterest": {
+        "ids": [
+          "PIEV01",
+          "PIEV04"
+        ],
+        "deliveredDays": 5,
+        "impressions": 2391,
+        "interactions": 37,
+        "fullRange": "unknown"
+      },
+      "youtube": {
+        "ids": [
+          "YTEV02",
+          "YTEV10",
+          "YTEV12",
+          "YTEV19"
+        ],
+        "deliveredDays": 5,
+        "videoViews": 22,
+        "interactions": "unknown",
+        "fullRange": "unknown"
+      },
+      "threads": {
+        "ids": [
+          "THEV06",
+          "THEV05"
+        ],
+        "result": "unknown"
+      }
+    },
+    "writes": 0
+  },
+  "products": {
+    "projector": {
+      "id": "gid://shopify/Product/15521256604033",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "storefrontUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "storefrontHttp": 200,
+      "variants": 7,
+      "variantLabels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "priceRangeChf": [
+        "34.90",
+        "51.90"
+      ],
+      "allAvailableForSale": true,
+      "inventory": {
+        "quantities": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tracked": false,
+        "policy": "CONTINUE",
+        "stockOrDeliveryPromise": "none"
+      },
+      "media": {
+        "readyImages": 12,
+        "readyVideos": 1,
+        "currentVideo": {
+          "status": "READY",
+          "width": 960,
+          "height": 540,
+          "fps": 25,
+          "durationSeconds": 27.96,
+          "sha256": "unknown_not_downloaded_in_R122"
+        },
+        "localTechnicalReferenceSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57"
+      },
+      "referenceImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "width": 1920,
+        "height": 1919,
+        "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d"
+      },
+      "tagsNonEmpty": true,
+      "channelGuardMatches": [],
+      "rueckhol": false,
+      "contentBlocker": "auswahl-offen",
+      "rights": "unknown"
+    },
+    "pandaHolder": {
+      "id": "gid://shopify/Product/15412301922689",
+      "handle": "panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+      "storefrontUrl": "https://luxestyle.ch/products/panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+      "status": "ACTIVE",
+      "storefrontHttp": 200,
+      "variants": 3,
+      "pricesChf": [
+        "14.90",
+        "14.90",
+        "14.90"
+      ],
+      "allAvailableForSale": true,
+      "inventory": {
+        "quantities": [
+          0,
+          0,
+          0
+        ],
+        "tracked": false,
+        "policy": "CONTINUE",
+        "stockOrDeliveryPromise": "none"
+      },
+      "media": {
+        "images": 6,
+        "videos": 0
+      },
+      "tagsNonEmpty": true,
+      "channelGuardMatches": [],
+      "rueckhol": false,
+      "historyTags": [
+        "ig-gepostet"
+      ],
+      "contentBlocker": "channel_history_check_required"
+    }
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "actualMasterMp4": null,
+    "storyboardPrepared": true,
+    "targetSeconds": 18,
+    "targetPixels": "1080x1920",
+    "targetFps": 30,
+    "targetFrames": 540,
+    "hooks": [
+      "Dein Raum. Neues Licht.",
+      "Licht im Detail."
+    ],
+    "preferredHook": "Licht im Detail.",
+    "voiceover": false,
+    "priceOverlay": false,
+    "music": {
+      "repositoryPath": "automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "finalRightsListenMixApproval": "open"
+    },
+    "requiredNativeTakes": [
+      "operation",
+      "projection",
+      "macro",
+      "hero"
+    ],
+    "blockedBy": [
+      "current_variant_sku_motif_unit_not_bound",
+      "four_native_1080x1920_30fps_takes_missing",
+      "commercial_film_editing_advertising_rights_unknown",
+      "no_rendered_approved_18s_mp4",
+      "music_final_approval_open",
+      "durable_channel_publication_ledger_absent",
+      "instagram_tiktok_bio_targets_unconfirmed",
+      "pinterest_board_name_unknown",
+      "youtube_post_flag_requires_fresh_check"
+    ],
+    "pinterest": {
+      "boardId": "1111333714239531706",
+      "boardName": "unknown"
+    },
+    "youtubeAudience": "general_not_specifically_for_children_owner_decision; madeForKids false requires fresh post check",
+    "renders": 0,
+    "uploads": 0,
+    "socialWrites": 0
+  },
+  "klaviyo": {
+    "reportRepeatedInR122": false,
+    "source": "LAUFBELEGE-20261106-R115.json",
+    "accountCurrency": "USD",
+    "shopCurrencyKeptSeparate": "CHF",
+    "placedOrderMetricId": "W7XTVD",
+    "flows": {
+      "Vse76a": "draft",
+      "VbLQj6": "draft",
+      "RnTvsY": "draft"
+    },
+    "report": {
+      "abandonedCheckout": "unknown_missing_from_report",
+      "welcome": {
+        "delivered": 2,
+        "uniqueOpens": 1,
+        "uniqueClicks": 0,
+        "attributedOrders": 0
+      },
+      "postPurchase": {
+        "delivered": 4,
+        "uniqueOpens": 1,
+        "uniqueClicks": 0,
+        "attributedOrders": 0
+      },
+      "capturePath": "unknown_forms_query_no_rows"
+    },
+    "singleProposal": {
+      "flowId": "Vse76a",
+      "message": "Email 3",
+      "subject": "Dein Warenkorb bei LuxeStyle wartet",
+      "preview": "Prüfe deine Auswahl und setze den Einkauf fort, wenn es für dich passt.",
+      "keepDraft": true
+    },
+    "writes": 0
+  },
+  "salesProposal": {
+    "scope": "global_category_faq_copy_only",
+    "proposalOnly": true,
+    "removeUnsupportedClaims": [
+      "Swiss warehouse",
+      "fixed delivery time",
+      "discount code",
+      "blanket return promise"
+    ],
+    "replacement": {
+      "delivery": "Den aktuellen voraussichtlichen Lieferzeitraum findest du auf der jeweiligen Produktseite und im Checkout.",
+      "returns": "Es gelten die Bedingungen der Rückgaberichtlinie. Für personalisierte Produkte und bestimmte Waren können Ausnahmen gelten.",
+      "shipping": "Gratisversand ab CHF 50."
+    },
+    "discountCodeOmitted": "not_freshly_verified_today",
+    "publicFreeShippingThresholdChf": 50,
+    "internalAfterDiscountThresholdChf": 45,
+    "themeWrites": 0
+  },
+  "externalWrites": {
+    "shopify": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "feed": 0,
+    "dns": 0,
+    "theme": 0,
+    "budget": 0,
+    "discount": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0,
+    "uploads": 0
+  }
+}

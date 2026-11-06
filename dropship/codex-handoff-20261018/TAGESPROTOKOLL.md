@@ -1229,3 +1229,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R121-Bericht, JSON und Projektgedächtnis fortgeschrieben | Revision 121. Keine Shop-, Theme-, Produkt-, Preis-, Printful-Produktions- oder Bestelländerung; Checkout-Erreichbarkeit ist kein Fulfillmentbeleg |
 
 [LUXESTYLE_R121_20261106] [Read-only E2E-Prüfung «Selbst gestalten»](SELBST-GESTALTEN-E2E-PRUEFUNG-20261106-R121.md) · [Maschinenlesbare Belege](SELBST-GESTALTEN-E2E-PRUEFUNG-20261106-R121.json). Drei Desktoppfade bis Checkout erreichbar, aber Gesamt-NO-GO wegen Druckmassstab/DPI, DRAFT-v6.2, Printful-Gates, Mobile und Inhalts-/Katalogwidersprüchen; keine operative Änderung und keine Bestellung.
+
+### R122
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identitäten / Planung | Shopify LuxeStyle/luxestyle.ch/CHF/CH und Metricool6227837/Europe/Zurich samt sechs Kanälen frisch gelesen; 06.–13.11. auf UUIDs, Kanäle, Doppel, Medien und Kollisionen geprüft | 32 Objekte/32 UUIDs/48 PENDING-Zustände, FB16/IG16/TT8/Pinterest3/YouTube5/Threads0; keine exakten Doppel, Medienwiederholungen oder Kollisionen. Kein Metricool-Write |
+| Tageskennzahlen / Klaviyo | Vorher Tagesgrenze geprüft und R115-Belege fortgeschrieben | Keine zweite Kennzahl-, Placed-Order- oder Flowabfrage. Teilreihen und Vse76a-Leistung bleiben unbekannt; CHF/USD getrennt |
+| Produkte | Projektor15521256604033 und Panda-Halter15412301922689 gezielt auf Status, Storefront, Preise, Varianten, Medien, Tracking/Policy und Tags geprüft | Beide ACTIVE/HTTP200/kaufbar/untracked/CONTINUE/Menge0. Projektor READY-MP4 960×540/25fps/27,96s, aber auswahl-offen/Rechte/Bindung blockiert; Panda-Historie offen. Keine Produktänderung |
+| Master / Content | Den einen18s-/540-Frame-Projektor-Master mit zwei Hooks, exaktem Schnitt, echter Referenz, sechs Captions und eindeutigen UTMs fortgeführt | Storyboard, keine MP4. Vier native Hochformat-Takes, aktuelle Varianten-/Motivbindung, Rechte, Musikabnahme, Bio/Board/YouTube-Flag und Ledger offen. Kein Render/Upload/Social-Write |
+| Verkaufsaktion / Klaviyo-Entwurf | Neutralen globalen Kategorie-FAQ-Text und genau einen Vse76a-Email-3-Textdiff zur Freigabe vorbereitet | FAQ entfernt unbelegte CH-Lager-/Lieferzeit-/Rabatt-/Pauschalrückgabeclaims und erhält Gratisversand CHF50. Alle Flows draft. Kein Theme-/Flow-/Kundenwrite |
+| Koordination / Dokumentation | `origin/main e6fc42e40`/PR2911 und offene relevante PRs gegen Scope geprüft; R122-Paket, Master, Belege und Projektgedächtnis fortgeschrieben | Keine direkte Überschneidung; Live-Lock/Receipt unbekannt. Revision122; keine externen operativen Writes |
+
+[LUXESTYLE_R122_20261106] [Abendpaket](ABENDPAKET-20261106-R122.md) · [Masterbriefing](MASTER-CONTENT-20261106-R122.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261106-R122.json). Aktuelle Planung32/48, zwei Produktgegenproben, derselbe blockierte18s-Master und zwei enge Freigabeentwürfe; kein externer Write.
