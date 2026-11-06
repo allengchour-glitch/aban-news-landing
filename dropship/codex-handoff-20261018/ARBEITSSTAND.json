@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 114,
-  "updatedAt": "2026-11-06T07:20:37+01:00",
+  "revision": 115,
+  "updatedAt": "2026-11-06T08:05:33+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,28 +16,29 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-05",
+    "currentDayEvidenceDate": "2026-11-06",
     "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
-    "currentDayEvidence": "Vor Reports frischenR87-Stand und fehlenden05.11.-Tagesblock geprüft. Einmalig29.10.–04.11.: sechsMetricool-Definitionen+sechskleineKanalabfragen und genau1Klaviyo-Flowreport nachfrischerW7XTVD-Discovery. Datenlücken unknown, keineShopumsatz-/Sync-/Kaufableitung. Drei gezielte Beauty-Seiten sind eine begrenzte SEO-Gegenprobe, kein breiter Umsatzreport. Kauf-Watch beendet, keineBestellabfrage. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R98: Tageskennzahlen und Klaviyo nicht erneut gelesen; frische Metricool-Planungs- und zwei gezielte Produkt-/Medienreads sind keine zweite Tagesmessung.",
+    "currentDayEvidence": "Vor den Reports frischen Revision-114-Stand und heutigen Tagesblock geprüft. Einmalig 30.10.–05.11.: sechs kleine kanalgetrennte Metricool-Definitionen/Datenreihen und genau ein Klaviyo-Flowreport nach frischer Placed-Order-ID W7XTVD. Mehrere Metricool-Reihen sowie Vse76a-Leistung bleiben unbekannt; Views/Impressionen/Interaktionen nicht kanalübergreifend verglichen und keine Umsatz-/Kauf-/Syncableitung. Kauf-Watch beendet, keine Bestellabfrage. Breiter Verkaufsreport nicht ausgelöst; genau eine erreichbare BRUDER-Collection gezielt gelesen.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-05",
-        "range": "2026-10-29/2026-11-04",
+        "localDate": "2026-11-06",
+        "range": "2026-10-30/2026-11-05",
         "dataCalls": 6,
         "definitionCalls": 6
       },
       "klaviyo": {
-        "localDate": "2026-11-05",
-        "range": "2026-10-29/2026-11-04",
+        "localDate": "2026-11-06",
+        "range": "rolling_7_days_as_returned",
         "flowReportCalls": 1,
         "metricDiscoveryCalls": 1
       },
       "targetedSeoRead": {
-        "localDate": "2026-11-05",
-        "pages": 3,
-        "reason": "price-filter pager countercheck; no revenue metrics"
+        "localDate": "2026-11-06",
+        "pages": 1,
+        "collection": "ft-bruder",
+        "reason": "one narrow sales improvement; no revenue metrics"
       },
-      "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json"
+      "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261106-R115.json"
     },
     "dayHistory": [
       {
@@ -123,6 +124,38 @@
               "flowReportCalls": 1
             },
             "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json"
+          }
+        }
+      },
+      {
+        "dateZurich": "2026-11-05",
+        "record": {
+          "timezone": "Europe/Zurich",
+          "checkLogBeforeReading": true,
+          "metricsFlowAndBroadSalesMaxPerDay": 1,
+          "exception": "new_concrete_finding_with_recorded_reason",
+          "currentDayEvidenceDate": "2026-11-05",
+          "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+          "currentDayEvidence": "Vor Reports frischenR87-Stand und fehlenden05.11.-Tagesblock geprüft. Einmalig29.10.–04.11.: sechsMetricool-Definitionen+sechskleineKanalabfragen und genau1Klaviyo-Flowreport nachfrischerW7XTVD-Discovery. Datenlücken unknown, keineShopumsatz-/Sync-/Kaufableitung. Drei gezielte Beauty-Seiten sind eine begrenzte SEO-Gegenprobe, kein breiter Umsatzreport. Kauf-Watch beendet, keineBestellabfrage. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R98: Tageskennzahlen und Klaviyo nicht erneut gelesen; frische Metricool-Planungs- und zwei gezielte Produkt-/Medienreads sind keine zweite Tagesmessung.",
+          "completedReports": {
+            "metricool": {
+              "localDate": "2026-11-05",
+              "range": "2026-10-29/2026-11-04",
+              "dataCalls": 6,
+              "definitionCalls": 6
+            },
+            "klaviyo": {
+              "localDate": "2026-11-05",
+              "range": "2026-10-29/2026-11-04",
+              "flowReportCalls": 1,
+              "metricDiscoveryCalls": 1
+            },
+            "targetedSeoRead": {
+              "localDate": "2026-11-05",
+              "pages": 3,
+              "reason": "price-filter pager countercheck; no revenue metrics"
+            },
+            "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json"
           }
         }
       }
@@ -1935,18 +1968,18 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r98_quelle_852x480_25fps_geprueft_variante_rechte_native9x16_mp4_ledger_offen",
+      "state": "r115_current_variant_ids_replace_historical_binding_storyboard_ready_rights_native_mp4_ledger_open",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R98_FRISCHER_PRODUKT_MEDIEN_READ_MASTERQUELLEN_MUSIK_LEDGER_SECHS_UTM_KEIN_RENDER",
-      "lastEvidence": "Projektor15521256604033 05.11.19:00 Zürich frisch ACTIVE/HTTP200/kaufbar, sieben Varianten A–G CHF34.90–51.90, trackedfalse/CONTINUE/Menge0. Historische Variante/SKU nicht aktuell. Aktueller Shopify-Film READY, reale Bedienung/Projektion, aber nur852×480/25fps/27.96s, SHA256 9ccfdc1b…5795; keiner aktuellen Variante A–G und keinem belegten kommerziellen Film-/Bearbeitungs-/Werberecht zugeordnet. Rohquelle960×540/25fps ebenfalls ungeeignet; alter15sClip kein Master. Derselbe18s/540-Frame-Entwurf mit Hooks Licht im Detail. und Dein Raum. Neues Licht., echtem Bild, CTA und sechs UTMs fortgeführt. Pflicht-WAV hashgleich; Build-/Rechte-/Mixfreigabe offen. Ledgerentwurf nicht deployt, Projektorhistorie unknown_not_initialised. Keine18sMP4, Render-, Upload-, Social- oder Ledgerinitialisierung.",
-      "nextAllowedStep": "Genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter Einheit binden und kommerzielle Film-/Bearbeitungs-/Werberechte schriftlich belegen. Native 1080×1920/30fps-Premiumtakes derselben Einheit einschliesslich mindestens2.0s kontinuierlichem Hookmaterial beschaffen. Danach denselben18s-Master mit ausschliesslich der geprüften Pflichtmusik rendern, Bild/Ton/Text/Produktidentität sowie9:16/4:5/1:1 abnehmen und erst nach frischen Produkt-/Bio-/Board-/YouTube-/Kollisions-/Historienchecks einen konkreten Metricool-Post verwenden.",
+      "lastEvidenceDate": "2026-11-06",
+      "belegArt": "R115_FRESH_PRODUCT_MEDIA_METRICOOL_MUSIC_STORYBOARD_NO_RENDER",
+      "lastEvidence": "Projektor15521256604033 frisch ACTIVE/HTTP200/kaufbar; sieben Varianten A–G CHF34.90–51.90, available, tracked=false/CONTINUE/Menge0. Historische Variante56197916361089/SKU CJ-1477820492730732544 existiert nicht mehr; aktuelle Varianten68122445283719–68122445480327 und SKUs CJSN139239101AZ–107GT. Zwölf READY-Bilder und Shopvideo852×480/25fps/27.96s; auswahl-offen, keine aktuelle Varianten-/Motiv-/Filmbindung oder kommerziellen Rechte. Kanalwächter ohne Sperrtreffer/rueckhol. Pflicht-WAV hashgleich; finale Rechte-/Hörabnahme offen. Derselbe18s-Master mit zwei Hooks, Schnitt, echtem Referenzbild, sechs UTMs fortgeführt. Kein Master-MP4, Render, Upload, Social-Write oder Ledgerinitialisierung; Vergangenheit unknown.",
+      "nextAllowedStep": "Eine aktuelle Variante A–G samt SKU, Motivset, Bild und gefilmter Einheit binden; kommerzielle Film-/Bearbeitungs-/Werberechte schriftlich belegen und vier native 1080×1920-/30-fps-Takes derselben Einheit beschaffen. Danach denselben18s-Master mit Pflichtmusik rendern und Bild/Ton/Text/Produktidentität/Ausschnitte abnehmen; erst danach kanalweise Metricool- und Ledgergates frisch prüfen.",
       "blockers": [
-        "Aktuelle Zielvariante A–G, Motivset und gefilmte physische Einheit sind nicht gebunden; Tag auswahl-offen bleibt.",
-        "Aktuelle Shopify-Fassung852×480/25fps und Rohquelle960×540/25fps sind keine native Premium-Hochkantquelle; mindestens2s echtes kontinuierliches30fps-Hookmaterial fehlt.",
-        "Kommerzielle Film-/Bearbeitungs-/Werberechte sind unbekannt.",
-        "Kanonische WAV ist hashgleich, aber historischer Buildbezug sowie finale Rechte-, Hör- und Mixfreigabe fehlen.",
-        "Keine gerenderte/abgenommene18s-Master-MP4; Ledgerentwurf nicht deployt, Projektor-/Kanalhistorie unknown_not_initialised; Bioziele, Pinterest-Boardname und Master-spezifische YouTube-Zielgruppe offen."
+        "Historische Mastervariante ist nicht mehr aktuell; heutige Zielvariante A–G, Motivset und gefilmte Einheit sind ungebunden.",
+        "Shopvideo852×480/25fps und ältere Quelle sind keine native Premium-Hochkantquelle.",
+        "Kommerzielle Film-/Bearbeitungs-/Werberechte sowie finale Musikrechte-/Hörabnahme unbekannt.",
+        "Keine gerenderte/abgenommene18s-MP4; Projektor-Publikationshistorie unknown, operatives Ledger fehlt.",
+        "Pinterest-Board und aktuelles IG-/TikTok-Bioziel nicht passend bestätigt; konkretes YouTube-Made-for-kids-Flag offen."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -2182,7 +2215,7 @@
         "previousBinding": {
           "variantId": "56197916361089",
           "sku": "CJ-1477820492730732544",
-          "status": "HISTORICAL_NOT_CURRENT"
+          "status": "HISTORICAL_NOT_CURRENT_MISSING"
         },
         "currentVariantIds": [
           "68122445283719",
@@ -2428,6 +2461,22 @@
           "previousBelegArt": "R88_FRISCHER_SHOPIFY_PRODUKT_VARIANTEN_MEDIENREAD_AKTUALISIERTER_18S_PLAN_KEIN_RENDER",
           "previousLastEvidence": "Projektor15521256604033 frisch ACTIVE/HTTP200/kaufbar, PreisbereichCHF34.90–51.90 und sieben aktuelle VariantenA–G, alle availableForSale, trackedfalse/CONTINUE/Menge0. Historische Variante56197916361089/SKUCJ-1477820492730732544 nicht mehr aktuell. Produktvideo27.96s/852×480/25fps trägt alten SKU-Dateinamen, ist keiner heutigen Variante zugeordnet; Filmrechte unbekannt. Tags vorhanden, Wächter und rueckhol ohne Treffer, auswahl-offen bleibt. Derselbe18s/540-Frame-Master mit zwei Hooks, echtem Bild und sechs kanalgetrennten Produkt-UTMs aktualisiert. Pflicht-WAV hashgleich, Build-/Rechte-/Mixfreigabe offen. Keine MP4, kein Render, Upload, Socialwrite oder Ledgerinitialisierung.",
           "previousNextAllowedStep": "Zuerst genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter physischer Einheit binden und kommerzielle Bearbeitungs-/Werberechte belegen. Danach nur bei geeigneter Premiumquelle denselben18s-Master schneiden, Pflichtmusikrechte/Mix prüfen, fertige MP4 in9:16/4:5/1:1 abnehmen und erst dann Produkt-/Kanal-/Historien-/Kollisionschecks für einen konkreten Metricool-Post durchführen."
+        },
+        {
+          "at": "2026-11-06T08:05:33+01:00",
+          "sourceRevision": 114,
+          "previousState": "r98_quelle_852x480_25fps_geprueft_variante_rechte_native9x16_mp4_ledger_offen",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R98_FRISCHER_PRODUKT_MEDIEN_READ_MASTERQUELLEN_MUSIK_LEDGER_SECHS_UTM_KEIN_RENDER",
+          "previousLastEvidence": "Projektor15521256604033 05.11.19:00 Zürich frisch ACTIVE/HTTP200/kaufbar, sieben Varianten A–G CHF34.90–51.90, trackedfalse/CONTINUE/Menge0. Historische Variante/SKU nicht aktuell. Aktueller Shopify-Film READY, reale Bedienung/Projektion, aber nur852×480/25fps/27.96s, SHA256 9ccfdc1b…5795; keiner aktuellen Variante A–G und keinem belegten kommerziellen Film-/Bearbeitungs-/Werberecht zugeordnet. Rohquelle960×540/25fps ebenfalls ungeeignet; alter15sClip kein Master. Derselbe18s/540-Frame-Entwurf mit Hooks Licht im Detail. und Dein Raum. Neues Licht., echtem Bild, CTA und sechs UTMs fortgeführt. Pflicht-WAV hashgleich; Build-/Rechte-/Mixfreigabe offen. Ledgerentwurf nicht deployt, Projektorhistorie unknown_not_initialised. Keine18sMP4, Render-, Upload-, Social- oder Ledgerinitialisierung.",
+          "previousNextAllowedStep": "Genau eine heutige Variante A–G mit ID, SKU, Bild, Motivset und gefilmter Einheit binden und kommerzielle Film-/Bearbeitungs-/Werberechte schriftlich belegen. Native 1080×1920/30fps-Premiumtakes derselben Einheit einschliesslich mindestens2.0s kontinuierlichem Hookmaterial beschaffen. Danach denselben18s-Master mit ausschliesslich der geprüften Pflichtmusik rendern, Bild/Ton/Text/Produktidentität sowie9:16/4:5/1:1 abnehmen und erst nach frischen Produkt-/Bio-/Board-/YouTube-/Kollisions-/Historienchecks einen konkreten Metricool-Post verwenden.",
+          "previousBlockers": [
+            "Aktuelle Zielvariante A–G, Motivset und gefilmte physische Einheit sind nicht gebunden; Tag auswahl-offen bleibt.",
+            "Aktuelle Shopify-Fassung852×480/25fps und Rohquelle960×540/25fps sind keine native Premium-Hochkantquelle; mindestens2s echtes kontinuierliches30fps-Hookmaterial fehlt.",
+            "Kommerzielle Film-/Bearbeitungs-/Werberechte sind unbekannt.",
+            "Kanonische WAV ist hashgleich, aber historischer Buildbezug sowie finale Rechte-, Hör- und Mixfreigabe fehlen.",
+            "Keine gerenderte/abgenommene18s-Master-MP4; Ledgerentwurf nicht deployt, Projektor-/Kanalhistorie unknown_not_initialised; Bioziele, Pinterest-Boardname und Master-spezifische YouTube-Zielgruppe offen."
+          ]
         }
       ],
       "visualAcceptanceDraft": {
@@ -6782,17 +6831,15 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r88_preisfilter_pagerverlust_15_von_15_fuenfzeilenpatch_unangewendet",
+      "state": "r115_bruder_collection_claim_gap_copy_proposal_not_applied",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R88_DREI_BEGRUENZTE_SEITEN_PREISFILTER_PAGER_GEGENPROBE_KEIN_THEMEWRITE",
-      "lastEvidence": "Beauty-Seite mit filter.v.price.lte=50 frischHTTP200, zwei Preisfelder50.00, passenderTitel/H1 und Canonical auf ungefilterte Collection. Alle15 zusätzlichen Pagerlinks verlieren die aktive Höchstpreisgrenze. Ungefilterte Collection und Seite2 HTTP200; Firecrawl-finalUrl von page2 meldete ?page=1, daher Redirect-/Canonicalverhalten unbekannt. Genau eine Verkaufsaktion: bestehendenR79-Fünfzeilen-Guard nach frischem nativen Hash eng übernehmen. Aktueller Snippet-Hash und Post-Patch-Render-/Browserabnahme unbekannt; kein Theme-/SEOwrite, keine Ranking-/Kaufwirkung behauptet.",
-      "nextAllowedStep": "Bei Freigabe zuerst aktuelle native snippets/product-grid.liquid lesen und gegen R79-Baseline-MD5 003e7ff97eb7a6312f02e1ae10679576 prüfen. Nur bei passender Basis den Fünfzeilen-Guard übernehmen; bei Drift eng neu bewerten. Danach im tatsächlichen Entwurf ungefiltert, min-only, max-only, beide Grenzen, Filter löschen sowie normale Pagination/Nachladen prüfen und Zielhash d53feb1609ea66e1f85b049e56d06dd0 nur bei Bytegleichheit bestätigen. Kein alter Gesamtentwurf-Publish.",
+      "lastEvidenceDate": "2026-11-06",
+      "belegArt": "R115_ONE_TARGETED_COLLECTION_READ_AND_COPY_DIFF_PROPOSAL",
+      "lastEvidence": "Collection ft-bruder HTTP200, korrekter Canonical,297 Produkte und Regel TAG EQUALS bruder; erste20 Produkte ACTIVE, bebildert und CHF-bepreist. Bestehender pauschaler CH-Lager-Claim ist durch die Collectionregel nicht abgesichert. Enger SEO-Titel-/Meta-/Einleitungsentwurf entfernt diesen Claim und erhält CHF50-Versand. Kein Collection- oder Theme-Write.",
+      "nextAllowedStep": "Nach Inhaberfreigabe nur SEO-Titel, Meta-Beschreibung und sichtbare Einleitung der Collection690577179009 ändern; Handle, H1, Bild, Regel, Sortierung, Produkte, Preise, Bestand, Theme, Versand und Kundendomäne erhalten; anschliessend Admin- und öffentlichen Readback prüfen.",
       "blockers": [
-        "Aktueller nativer Snippet-Hash ist unbekannt; R79-Basis darf nicht blind angenommen werden.",
-        "Geändertes Liquid wurde noch nicht im Shopify-Render oder Browser geprüft.",
-        "Theme-Publikationsweg/MAIN-Write bleibt getrennt und darf nicht aus diesem Entwurf abgeleitet werden.",
-        "Ranking-, Google-Canonical-, Indexierungs- und Verkaufswirkung sind unbekannt."
+        "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
+        "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -6991,6 +7038,21 @@
           "previousLastEvidenceDate": "2026-11-04",
           "previousBelegArt": "R79_FRISCHE_THEME_QUELLEN_HTML_GEGENPROBE_UND_VALIDIERTER_LOKALPATCH",
           "previousNextAllowedStep": "Konkreten Fünfzeilen-Patch für snippets/product-grid.liquid zur Freigabe vorlegen. Vor einer genehmigten Übernahme Theme-Identität und Ausgangshash frisch prüfen; ausschliesslich den Zusatzpager-Guard ändern und keinen gesamten alten Entwurf veröffentlichen. Danach im tatsächlichen Entwurf ungefiltert, Mindestpreis, Höchstpreis, beide Grenzen, ausdrücklich 0 und Filterentfernung sowie normale Pagination/Nachladen begrenzt prüfen. Bei Drift den Diff neu beurteilen; Reverse-Patch als geprüften Rollback erhalten. Der Ist-Fehler bleibt bis bestätigtem Write und Rücklesen offen; vier frühere mobile Checkbox-Timeouts bleiben unbekannt."
+        },
+        {
+          "at": "2026-11-06T08:05:33+01:00",
+          "sourceRevision": 114,
+          "previousState": "r88_preisfilter_pagerverlust_15_von_15_fuenfzeilenpatch_unangewendet",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R88_DREI_BEGRUENZTE_SEITEN_PREISFILTER_PAGER_GEGENPROBE_KEIN_THEMEWRITE",
+          "previousLastEvidence": "Beauty-Seite mit filter.v.price.lte=50 frischHTTP200, zwei Preisfelder50.00, passenderTitel/H1 und Canonical auf ungefilterte Collection. Alle15 zusätzlichen Pagerlinks verlieren die aktive Höchstpreisgrenze. Ungefilterte Collection und Seite2 HTTP200; Firecrawl-finalUrl von page2 meldete ?page=1, daher Redirect-/Canonicalverhalten unbekannt. Genau eine Verkaufsaktion: bestehendenR79-Fünfzeilen-Guard nach frischem nativen Hash eng übernehmen. Aktueller Snippet-Hash und Post-Patch-Render-/Browserabnahme unbekannt; kein Theme-/SEOwrite, keine Ranking-/Kaufwirkung behauptet.",
+          "previousNextAllowedStep": "Bei Freigabe zuerst aktuelle native snippets/product-grid.liquid lesen und gegen R79-Baseline-MD5 003e7ff97eb7a6312f02e1ae10679576 prüfen. Nur bei passender Basis den Fünfzeilen-Guard übernehmen; bei Drift eng neu bewerten. Danach im tatsächlichen Entwurf ungefiltert, min-only, max-only, beide Grenzen, Filter löschen sowie normale Pagination/Nachladen prüfen und Zielhash d53feb1609ea66e1f85b049e56d06dd0 nur bei Bytegleichheit bestätigen. Kein alter Gesamtentwurf-Publish.",
+          "previousBlockers": [
+            "Aktueller nativer Snippet-Hash ist unbekannt; R79-Basis darf nicht blind angenommen werden.",
+            "Geändertes Liquid wurde noch nicht im Shopify-Render oder Browser geprüft.",
+            "Theme-Publikationsweg/MAIN-Write bleibt getrennt und darf nicht aus diesem Entwurf abgeleitet werden.",
+            "Ranking-, Google-Canonical-, Indexierungs- und Verkaufswirkung sind unbekannt."
+          ]
         }
       ],
       "visibilitySupplementR49": {
@@ -7872,15 +7934,16 @@
       "id": "checkout-email3-quality-20261103",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r88_checkout_flows_draft_reportzeilen_teilweise_unbekannt_alter_email3_entwurf_unangewendet",
+      "state": "r115_all_three_flows_draft_email3_placeholder_confirmed_neutral_copy_proposed_not_applied",
       "title": "Dritte Checkout-Mail ohne Platzhalterbetreff oder unbelegte Knappheit/Frist",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R88_PLACED_ORDER_DISCOVERY_EIN_FLOWREPORT_CHECKOUT_STATUS_KEIN_WRITE",
-      "lastEvidence": "KlaviyoXWqMAD/LuxeStyleCH/luxestyle.ch/EuropeZurich/USD und PlacedOrderW7XTVD frisch passend. Für29.10.–04.11. genau ein Report: Vse76a AbandonedCheckout draft ohne Reportzeile, Leistung unbekannt; XEGbTB AbandonedCheckout·1Std draft und nicht im angeforderten Dreierreport, Leistung unbekannt. WelcomeVbLQj6 und PostPurchaseRnTvsY ebenfalls draft. Bestehender R64-Email3-Textdiff bleibt historisch/unangewendet und ist nicht der heutige neue Vorschlag. Keine Flow-/Template-/Statusänderung, kein Versand/Test und keine Kundenansprache; USD/CHF getrennt.",
-      "nextAllowedStep": "Bestehenden Email3-Textdiff unangewendet lassen und heute nicht als zweite Klaviyo-Verbesserung erneut vorschlagen. Vor einer späteren ausdrücklich freigegebenen Textänderung aktuelle IDs, Originalbytes, Consent, Coupon-/Timingbedingungen und Rendering frisch binden; draft erhalten und keine Aktivierung oder Nachricht ableiten. Tagesreport ohne neuen begründeten Befund nicht wiederholen.",
+      "lastEvidenceDate": "2026-11-06",
+      "belegArt": "R115_CURRENT_FLOW_DEFINITIONS_AND_ONE_7_DAY_REPORT_PROPOSAL_ONLY",
+      "lastEvidence": "Klaviyo XWqMAD/LuxeStyle CH/EuropeZurich/USD und Placed Order W7XTVD frisch bestätigt. Vse76a, VbLQj6 und RnTvsY aktuell draft. Welcome2Empfänger/2Zustellungen/1Öffnung/0Klicks/0zugerechnetePlacedOrders; PostPurchase4/4/1/0/0; Vse76a fehlt im Report und bleibt unbekannt. E-Mail3 in Vse76a weiterhin mit Email #3 Subject und leerer Vorschau. Neutraler Betreff/Vorschau als Freigabeentwurf formuliert; kein Flow-/E-Mail-/Versandwrite.",
+      "nextAllowedStep": "Nach Inhaberfreigabe ausschliesslich Betreff und Vorschau von E-Mail3 in Vse76a finalisieren und Flow sowie alle Nachrichten draft lassen; danach Diff und Rücklesung. Aktivierung separat und nur nach erneuter Flow-/Trigger-/Capture-Prüfung.",
       "blockers": [
-        "Konkrete Inhaberfreigabe des R64-Textdiffs fehlt.",
-        "Tatsächliche Couponkonfiguration und Sendeberechtigung/Timing ungeprüft; alle drei Flows draft, keine automatische Reaktivierung."
+        "Inhaberfreigabe für konkreten Betreff/Vorschautext fehlt.",
+        "Vse76a-Leistung im aktuellen Report unbekannt.",
+        "Tatsächlicher Capture-Weg bleibt unbekannt; Formular-API lieferte keine Datensätze."
       ],
       "acceptance": [
         "Exakter Betreff und nur die belegten Bodybereiche ändern.",
@@ -8079,6 +8142,19 @@
             "belegArt": "R77_FRISCHER_FLOWREPORT_UND_EXAKTE_NACHRICHT_TEMPLATE_QUELLENBINDUNG",
             "nextAllowedStep": "Genau bestehenden R64-Betreff/H1/Absatz-Diff zur konkreten Inhaberfreigabe vorlegen; keine zweite aktuelle Klaviyo-Verbesserung. Bei ausdrücklicher Freigabe Originale/IDs/Hashes unmittelbar wieder binden und nur freigegebenen Textscope ändern, übrige Tokens/CTA/HTML/Sender/Delays/Status und SEO-unabhängige Shopwerte erhalten und exakt zurücklesen. Keine Aktivierung, Rabattkonfiguration oder Versandfreigabe daraus ableiten. Coupongültigkeit/Consent/Ereignis-/Kaufbarkeits-/Timingbedingungen getrennt belegen. Ohne neuen konkreten Befund heute keine Reports wiederholen."
           }
+        },
+        {
+          "at": "2026-11-06T08:05:33+01:00",
+          "sourceRevision": 114,
+          "previousState": "r88_checkout_flows_draft_reportzeilen_teilweise_unbekannt_alter_email3_entwurf_unangewendet",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R88_PLACED_ORDER_DISCOVERY_EIN_FLOWREPORT_CHECKOUT_STATUS_KEIN_WRITE",
+          "previousLastEvidence": "KlaviyoXWqMAD/LuxeStyleCH/luxestyle.ch/EuropeZurich/USD und PlacedOrderW7XTVD frisch passend. Für29.10.–04.11. genau ein Report: Vse76a AbandonedCheckout draft ohne Reportzeile, Leistung unbekannt; XEGbTB AbandonedCheckout·1Std draft und nicht im angeforderten Dreierreport, Leistung unbekannt. WelcomeVbLQj6 und PostPurchaseRnTvsY ebenfalls draft. Bestehender R64-Email3-Textdiff bleibt historisch/unangewendet und ist nicht der heutige neue Vorschlag. Keine Flow-/Template-/Statusänderung, kein Versand/Test und keine Kundenansprache; USD/CHF getrennt.",
+          "previousNextAllowedStep": "Bestehenden Email3-Textdiff unangewendet lassen und heute nicht als zweite Klaviyo-Verbesserung erneut vorschlagen. Vor einer späteren ausdrücklich freigegebenen Textänderung aktuelle IDs, Originalbytes, Consent, Coupon-/Timingbedingungen und Rendering frisch binden; draft erhalten und keine Aktivierung oder Nachricht ableiten. Tagesreport ohne neuen begründeten Befund nicht wiederholen.",
+          "previousBlockers": [
+            "Konkrete Inhaberfreigabe des R64-Textdiffs fehlt.",
+            "Tatsächliche Couponkonfiguration und Sendeberechtigung/Timing ungeprüft; alle drei Flows draft, keine automatische Reaktivierung."
+          ]
         }
       ],
       "originalRecheckR67": {
@@ -13684,5 +13760,48 @@
     "merchantWrites": 0,
     "metricoolWrites": 0,
     "otherExternalWrites": 0
+  },
+  "followUpRunR115": {
+    "at": "2026-11-06T08:05:33+01:00",
+    "actualUpdates": [
+      "Fresh Shopify/Metricool/Klaviyo/product/plan/metrics reads",
+      "Prepared one continued projector storyboard and six channel drafts",
+      "Prepared one BRUDER collection copy proposal and one Klaviyo Email3 copy proposal",
+      "No external operational writes"
+    ],
+    "identities": "Shopify LuxeStyle/luxestyle.ch/CHF/CH and Metricool6227837/EuropeZurich/six channel identities matched.",
+    "metricool": {
+      "planningObjects": 34,
+      "uniqueUuids": 34,
+      "channelStates": 51,
+      "sameChannelExactDuplicates": 0,
+      "writes": 0,
+      "masterHistory": "unknown_no_verified_durable_ledger"
+    },
+    "catalogProgress": {
+      "strictLiveCorrectedActiveProducts": 53,
+      "activeProductsDenominatorCarriedForward": 56506,
+      "percent": 0.0938,
+      "remaining": 56453,
+      "denominatorRecountedThisRun": false
+    },
+    "nextStep": "Owner review of the narrow BRUDER collection copy and Klaviyo Email3 copy. Master production remains blocked until one current A–G variant, four native takes and commercial rights are bound.",
+    "blockedBy": [
+      "projector current variant/motif/film binding missing",
+      "commercial film/editing/ad rights unknown",
+      "no approved18s master MP4 or durable publication ledger",
+      "Pinterest board and product-specific bio/YouTube flags open",
+      "authenticated DNS writer absent",
+      "Merchant active source binding unknown"
+    ],
+    "shopifyWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "merchantWrites": 0,
+    "dnsWrites": 0,
+    "themeWrites": 0,
+    "customerMessages": 0,
+    "renders": 0,
+    "orderReads": 0
   }
 }
