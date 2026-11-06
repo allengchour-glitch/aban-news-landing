@@ -2,14 +2,17 @@
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
  * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
  * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
- * Eine Mutation gilt als erkannt, wenn einer der beiden Läufe mit Fehler endet. Überlebt eine, fehlt eine Prüfung.
+ * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
+ * Absicherungen (nach der Gegenlesung vom 06.11.2026): (1) VOR dem ersten Mutanten läuft jede benutzte Stufe auf dem UNVERÄNDERTEN Code; ist sie dort rot, bricht die Probe ab (sonst gälte jeder Mutant
+ * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
+ * (4) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder K oder V)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
  * Umgebung: V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3).
  * Die Kopien liegen in einem eigenen, neu angelegten Temp-Ordner (mkdtemp): parallele Läufe stören sich nicht.
  */
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { pathToFileURL } from 'node:url';
@@ -208,20 +211,38 @@ if (nur === '--muster') {
 }
 
 const ordner = mkdtempSync(join(tmpdir(), 'v6-mutation-'));
+/** Einen Testlauf starten. Gibt { code, signal, zeit, aus } zurück: zeit = vom Zeitlimit beendet, aus = Ausgabe (gekürzt). */
 function lauf(datei, args, env) {
   return new Promise((ok) => {
-    const k = spawn(node, [join(hier, datei), ...args], { env: { ...process.env, ...env }, stdio: 'ignore' });
-    const t = setTimeout(() => k.kill('SIGKILL'), 300000);
-    k.on('close', (code) => { clearTimeout(t); ok(code); });
+    const k = spawn(node, [join(hier, datei), ...args], { env: { ...process.env, ...env }, stdio: ['ignore', 'pipe', 'pipe'] });
+    let aus = '';
+    const sammeln = (d) => { if (aus.length < 40000) aus += d; };
+    k.stdout.on('data', sammeln); k.stderr.on('data', sammeln);
+    let zeit = false;
+    const t = setTimeout(() => { zeit = true; k.kill('SIGKILL'); }, 300000);
+    k.on('close', (code, signal) => { clearTimeout(t); ok({ code, signal, zeit, aus }); });
   });
 }
+/** Erste fehlgeschlagene Prüfung (Zeile mit ✗) für die Anzeige. */
+const ersterFehler = (aus) => ((aus.split('\n').find((z) => /✗/.test(z)) || aus.trim().split('\n').slice(-1)[0] || '').trim().slice(0, 150));
+const gescheitert = (r) => r.code !== 0 && !r.zeit && r.signal === null;
 const aufgaben = [];
 MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'editor', alt, neu, i }));
 KB_MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'kartenbauer', alt, neu, i: 100 + i }));
 VB_MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'vorschaubauer', alt, neu, i: 200 + i }));
 const gewaehlt = aufgaben.filter((a) => !nur || a.name.startsWith(nur) || (nur === 'K' && a.art === 'kartenbauer') || (nur === 'V' && a.art === 'vorschaubauer'));
-const ergebnis = { erkannt: 0, ueberlebt: [], unanwendbar: [] };
+const ergebnis = { erkannt: 0, ueberlebt: [], unanwendbar: [], ungeklaert: [] };
 let naechster = 0;
+// Ausgangslage: die benutzten Stufen auf dem UNVERÄNDERTEN Code müssen grün sein, sonst ist jedes «erkannt» wertlos
+{
+  const stufen = [['unit_test.mjs', []]];
+  if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']]);
+  for (const [datei, args] of stufen) {
+    const r = await lauf(datei, args, {});
+    if (r.code !== 0) { console.log(`ABBRUCH: Ausgangslage ist rot: ${datei} ${args.join(' ')} endet mit ${r.zeit ? 'Zeitüberschreitung' : 'Exit ' + r.code}. Erste Meldung: ${ersterFehler(r.aus)}`); rmSync(ordner, { recursive: true, force: true }); process.exit(3); }
+    console.log(`Ausgangslage grün: ${datei} ${args.join(' ')}`.trim());
+  }
+}
 async function arbeiter() {
   while (naechster < gewaehlt.length) {
     const a = gewaehlt[naechster++];
@@ -234,31 +255,50 @@ async function arbeiter() {
       else mutiert = teile.join(neue[j]);
     });
     if (schlecht) { ergebnis.unanwendbar.push(`${a.name} (Muster ${schlecht} gefunden)`); console.log(`?  ${a.name}: Muster nicht genau einmal gefunden (${schlecht})`); continue; }
+    const pruefeSyntax = (datei) => { const x = spawnSync(node, ['--check', datei], { encoding: 'utf8' }); return x.status === 0 ? null : (x.stderr || '').split('\n').find((z) => /Error/.test(z)) || 'Syntaxfehler'; };
+    // Ergebnis einer Stufe: true = erkannt (weiter zum nächsten Mutanten), 'zeit' = ungeklärt, false = nicht erkannt (nächste Stufe)
+    const stufe = async (name, datei, args, umg) => {
+      const r = await lauf(datei, args, umg);
+      if (r.zeit) { ergebnis.ungeklaert.push(`${a.name} (${name}: Zeitüberschreitung)`); console.log(`?  ${a.name}: ${name} nach 300 s abgebrochen, ungeklärt`); return 'zeit'; }
+      if (gescheitert(r)) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch ${name}: ${ersterFehler(r.aus)}`); return true; }
+      return false;
+    };
+    let ergebnisStufe = false;
     if (a.art === 'editor') {
       const datei = join(ordner, `mutant-${a.i}.js`);
       writeFileSync(datei, mutiert);
+      const fehlerSyntax = pruefeSyntax(datei);
+      if (fehlerSyntax) { ergebnis.unanwendbar.push(`${a.name} (Syntaxfehler: ${fehlerSyntax})`); console.log(`?  ${a.name}: Mutant ist kein gültiger Code (${fehlerSyntax})`); continue; }
       const umg = { V6_DATEI: datei };
-      if (await lauf('unit_test.mjs', [], umg) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch unit_test`); continue; }
-      if (await lauf('vorschau_test.mjs', ['kern'], umg) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch vorschau_test`); continue; }
-      if (await lauf('editor_test.mjs', ['kern'], umg) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch editor_test`); continue; }
+      for (const [name, f, args] of [['unit_test', 'unit_test.mjs', []], ['vorschau_test', 'vorschau_test.mjs', ['kern']], ['editor_test', 'editor_test.mjs', ['kern']]]) {
+        ergebnisStufe = await stufe(name, f, args, umg);
+        if (ergebnisStufe) break;
+      }
     } else if (a.art === 'vorschaubauer') {
       // Der Bauer importiert relativ zu seinem Ort: die Pfade der Kopie zeigen auf die echten Dateien
       const fix = mutiert.replaceAll("'../../../dropship/", `'${pathToFileURL(join(hier, '..', '..', '..', 'dropship')).href}/`);
       const datei = join(ordner, `vorschaubauer-${a.i}.mjs`);
       writeFileSync(datei, fix);
-      if (await lauf('unit_test.mjs', [], { V6_VORSCHAUBAUER: datei }) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch unit_test`); continue; }
+      const fehlerSyntax = pruefeSyntax(datei);
+      if (fehlerSyntax) { ergebnis.unanwendbar.push(`${a.name} (Syntaxfehler: ${fehlerSyntax})`); console.log(`?  ${a.name}: Mutant ist kein gültiger Code (${fehlerSyntax})`); continue; }
+      ergebnisStufe = await stufe('unit_test', 'unit_test.mjs', [], { V6_VORSCHAUBAUER: datei });
     } else {
       // Der Kartenbauer importiert relativ zu seinem Ort: die Pfade der Kopie zeigen auf die echten Dateien
       const fix = mutiert.replaceAll("'../../../dropship/", `'${pathToFileURL(join(hier, '..', '..', '..', 'dropship')).href}/`);
       const datei = join(ordner, `kartenbauer-${a.i}.mjs`);
       writeFileSync(datei, fix);
-      if (await lauf('unit_test.mjs', [], { V6_KARTENBAUER: datei }) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch unit_test`); continue; }
+      const fehlerSyntax = pruefeSyntax(datei);
+      if (fehlerSyntax) { ergebnis.unanwendbar.push(`${a.name} (Syntaxfehler: ${fehlerSyntax})`); console.log(`?  ${a.name}: Mutant ist kein gültiger Code (${fehlerSyntax})`); continue; }
+      ergebnisStufe = await stufe('unit_test', 'unit_test.mjs', [], { V6_KARTENBAUER: datei });
     }
+    if (ergebnisStufe === true || ergebnisStufe === 'zeit') continue;
     ergebnis.ueberlebt.push(a.name); console.log(`✗ ${a.name}: ÜBERLEBT`);
   }
 }
 await Promise.all(Array.from({ length: Math.max(1, Number(process.env.PARALLEL) || 3) }, arbeiter));
 rmSync(ordner, { recursive: true, force: true });
-console.log(`\n${ergebnis.erkannt} erkannt, ${ergebnis.ueberlebt.length} überlebt, ${ergebnis.unanwendbar.length} nicht anwendbar (von ${gewaehlt.length})`);
+console.log(`\n${ergebnis.erkannt} erkannt, ${ergebnis.ueberlebt.length} überlebt, ${ergebnis.unanwendbar.length} nicht anwendbar, ${ergebnis.ungeklaert.length} ungeklärt (von ${gewaehlt.length})`);
 if (ergebnis.ueberlebt.length) console.log('Überlebt:\n  ' + ergebnis.ueberlebt.join('\n  '));
-process.exit(ergebnis.ueberlebt.length || ergebnis.unanwendbar.length ? 1 : 0);
+if (ergebnis.unanwendbar.length) console.log('Nicht anwendbar:\n  ' + ergebnis.unanwendbar.join('\n  '));
+if (ergebnis.ungeklaert.length) console.log('Ungeklärt (Zeitüberschreitung, zählt nicht als erkannt):\n  ' + ergebnis.ungeklaert.join('\n  '));
+process.exit(ergebnis.ueberlebt.length || ergebnis.unanwendbar.length || ergebnis.ungeklaert.length ? 1 : 0);
