@@ -23,7 +23,8 @@ function ok(name, bedingung, info) {
   const ST = (s) => String(rows.filter((r) => r.status === s).length);
 
   const z = async (sel) => p.locator(sel).count();
-  ok('Shop hat 6 Figuren', (await z('.kb-floor[data-bereich="Shop"] .kb-desk')) === 6);
+  const NS = rows.filter((r) => r.bereich === 'Shop' && r.figur === 'arbeiter').length;
+  ok('Shop hat ' + NS + ' Figuren', (await z('.kb-floor[data-bereich="Shop"] .kb-desk')) === NS);
   ok('Versand hat 3 Figuren und 1 Band', (await z('.kb-floor[data-bereich="Versand"] .kb-desk')) === 3 && (await z('.kb-floor[data-bereich="Versand"] .kb-band')) === 1);
   ok('Band zeigt 3 Pakete', (await z('.kb-band .paket')) === 3);
   ok('Krypto hat 5 Figuren', (await z('.kb-floor[data-bereich="Krypto"] .kb-desk')) === 5);

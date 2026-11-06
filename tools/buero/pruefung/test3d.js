@@ -33,6 +33,7 @@ async function lauf(b, optionen, vorher) {
   const gr = await p.locator('.kb3-canvas').evaluate((c) => [c.clientWidth, c.clientHeight, c.width, c.height]);
   ok('Zeichenfläche hat Grösse', gr[0] > 300 && gr[1] > 200 && gr[2] >= gr[0], gr);
   const N = await p.evaluate(() => window.__ROWS.length);   // erwartete Zahlen aus den Daten, nicht fest eingetragen
+  const NA = await p.evaluate(() => window.__ROWS.filter((r) => r.figur === 'arbeiter').length);
   const nl = await p.locator('.kb3-over .kb3-label').count();
   ok((N + 1) + ' Beschriftungen (alle Zeilen der Daten und Du)', nl === N + 1, nl);
   ok('Fehlerhinweis (kein 3D) ist verborgen', !(await p.locator('.kb3-aus').first().evaluate((n) => !n.hidden)));
@@ -79,6 +80,8 @@ async function lauf(b, optionen, vorher) {
   const pos = await p.evaluate(() => window.KB3D.Buero.last.debug.screenOf('fortura'));
   ok('Bildschirmort der Figur «Fortura-Bestand» bekannt', !!pos, pos);
   const box = await p.locator('.kb3-canvas').boundingBox();
+  // Geprüft wird das Treffen der Figur auf der Zeichenfläche; Beschriftungen, die auf dem Handy darüber liegen, fangen den Klick sonst ab (eigener Test unten)
+  const ohneBeschriftung = await p.addStyleTag({ content: '.kb3-over, .kb3-over * { pointer-events: none !important; }' });
   await p.mouse.click(box.x + pos.x, box.y + pos.y);
   await p.waitForTimeout(250);
   const detail = await p.locator('#kb-pane-3d .kb-detail').first().textContent();
@@ -86,6 +89,7 @@ async function lauf(b, optionen, vorher) {
   ok('Die Beschriftung der Figur ist markiert', (await p.locator('.kb3-label.is-sel').count()) === 1);
   await p.mouse.click(box.x + pos.x, box.y + pos.y);
   await p.waitForTimeout(200);
+  await ohneBeschriftung.evaluate((n) => n.remove());
   ok('Zweites Antippen schliesst das Detailfeld', (await p.locator('#kb-pane-3d .kb-detail').first().textContent()).trim() === '');
   // Beschriftung antippen (Knopf im Dokument)
   await p.evaluate(() => { const m = window.KB3D.Buero.last; m.goView('Shop', true); m.debug.render(1.7, false); });
@@ -123,7 +127,7 @@ async function lauf(b, optionen, vorher) {
   await p.locator('#kb-tab-buero').click();
   ok('Tab 2D zeigt die Zeichnung, 3D verborgen', (await sichtbar('#kb-pane-buero')) && !(await sichtbar('#kb-pane-3d')));
   await p.evaluate(() => window.__runAll());
-  ok('2D: Figuren da', (await p.locator('#kb-pane-buero .kb-desk').count()) >= 14);
+  ok('2D: Figuren da', (await p.locator('#kb-pane-buero .kb-desk').count()) >= NA);
   await p.locator('#kb-tab-liste').click();
   await p.evaluate(() => window.__runAll());
   ok('Liste hat ' + N + ' Zeilen', (await p.locator('#kb-pane-liste .kb-row').count()) === N);
@@ -133,11 +137,12 @@ async function lauf(b, optionen, vorher) {
   // ---------- Arbeitsort: Kürzel an den Beschriftungen, Schilder am Tisch, Detailfeld mit Link ----------
   const orte = await p.evaluate(() => Array.from(document.querySelectorAll('.kb3-over .kb3-label')).map((l) => (l.querySelector('.kb3-ort') ? l.querySelector('.kb3-ort').textContent.trim() : '')));
   ok(N + ' Beschriftungen tragen ein Ortskürzel, «Du» keins', orte.filter(Boolean).length === N && orte.filter((t) => !t).length === 1, orte);
-  ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir'].includes(t)), Array.from(new Set(orte)));
+  ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'Metricool', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir'].includes(t)), Array.from(new Set(orte)));
   const schilder = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => !s.spec.boss).map((s) => ({ ent: s.entId, used: !!s.used, mesh: !!s.sign, tex: !!(s.sign && s.sign.tex) })));
-  ok('14 Plätze, alle benutzt, jeder mit Schild und Bild', schilder.length === 14 && schilder.every((s) => s.used && s.mesh && s.tex), schilder.filter((s) => !(s.used && s.mesh && s.tex)));
+  ok(NA + ' Plätze, alle benutzt, jeder mit Schild und Bild', schilder.length === NA && schilder.every((s) => s.used && s.mesh && s.tex), schilder.filter((s) => !(s.used && s.mesh && s.tex)));
   const tafeln = await p.evaluate(() => new Set(window.KB3D.Buero.last.debug.seats.filter((s) => s.sign && s.sign.tex).map((s) => s.sign.tex)).size);
-  ok('Drei verschiedene Schilder (GitHub, Claude, GitHub + PC)', tafeln === 3, tafeln);
+  const tafelnSoll = await p.evaluate(() => new Set(window.__ROWS.filter((r) => r.figur === 'arbeiter').map((r) => r.ort_art + '|' + r.ort_kurz)).size);
+  ok('So viele verschiedene Schilder wie verschiedene Arbeitsorte in den Daten (' + tafelnSoll + ')', tafeln === tafelnSoll && tafelnSoll >= 3, [tafeln, tafelnSoll]);
   const chefSchild = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => s.spec.boss).every((s) => !s.sign));
   ok('Das Chefbüro hat kein Schild', chefSchild);
   // Schild im Bild: ein Bild mit Schildern unterscheidet sich von einem ohne (Schilder kurz abschalten)
@@ -256,7 +261,7 @@ async function lauf(b, optionen, vorher) {
     ok('ohne WebGL: 3D-Tab und 3D-Ansicht sind verborgen', !(await sicht2('#kb-tab-3d')) && !(await sicht2('#kb-pane-3d')));
     ok('ohne WebGL: Hinweis sichtbar', await sicht2('.kb3-aus'));
     await r2.p.evaluate(() => window.__runAll());
-    ok('ohne WebGL: 2D-Figuren werden gezeichnet', (await r2.p.locator('#kb-pane-buero .kb-desk').count()) >= 14);
+    ok('ohne WebGL: 2D-Figuren werden gezeichnet', (await r2.p.locator('#kb-pane-buero .kb-desk').count()) >= NA);
     ok('ohne WebGL: keine Seitenfehler', r2.errs.length === 0, r2.errs.slice(0, 3));
   }
   await r2.ctx.close(); await b2.close();

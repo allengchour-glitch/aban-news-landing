@@ -14,6 +14,10 @@
     { room: 'Shop', i: 3, x: -5.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#3f9a8c', who: 'man' },
     { room: 'Shop', i: 4, x: -3.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#3f9a8c', who: 'woman' },
     { room: 'Shop', i: 5, x: -1.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#3f9a8c', who: 'man' },
+    /* Social-Reihe im Anbau des Shop-Raums (06.11.): drei Plätze am Südrand, blaue Stühle */
+    { room: 'Shop', i: 6, x: -5.0, z: 7.0, h: 0, kind: 'single', style: 'white', chair: '#5b8def', who: 'woman' },
+    { room: 'Shop', i: 7, x: -3.0, z: 7.0, h: 0, kind: 'dual', style: 'white', chair: '#5b8def', who: 'man' },
+    { room: 'Shop', i: 8, x: -1.0, z: 7.0, h: 0, kind: 'single', style: 'white', chair: '#5b8def', who: 'woman' },
     { room: 'Versand', i: 0, x: 1.7, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#e48a3f', items: false, who: 'worker' },
     { room: 'Versand', i: 1, x: 3.45, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#e48a3f', items: false, who: 'worker' },
     { room: 'Versand', i: 2, x: 5.2, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#e48a3f', items: false, who: 'worker' },
@@ -74,13 +78,18 @@
     }
     floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#a9774b', 1); }, 2);
     floorMesh(-7, 0, 0, 6, 'fShop', function () { return T.parquet('#dcc298', 2); }, 2);
+    floorMesh(-7, 6, 0, 8.6, 'fShop', function () { return T.parquet('#dcc298', 2); }, 2);
     floorMesh(0, 0, 7, 6, 'fVersand', function () { return T.concrete('#b0b4b9', 3); }, 2);
     floorMesh(0, -6, 7, 0, 'fKrypto', function () { return T.carpet('#232c45', 4); }, 2);
 
     /* Sockel, Rampe im Osten und weicher Schatten darunter */
     B.box(0, -0.36, 0, 15.2, 0.7, 13.2, '#3a3f4b');
+    B.box(-3.8, -0.36, 7.9, 7.6, 0.7, 2.6, '#3a3f4b');
     B.floor(-7.6, -6.6, 7.6, 6.6, -0.004, '#6f7684', 0);
-    B.floor(-7.6, 6.0, 7.6, 6.06, 0.002, '#a7adb8', 0);
+    B.floor(-7.6, 6.6, 0, 9.2, -0.004, '#6f7684', 0);
+    B.floor(0, 6.0, 7.6, 6.06, 0.002, '#a7adb8', 0);
+    B.floor(-7.6, 8.6, 0.06, 8.66, 0.002, '#a7adb8', 0);
+    B.floor(0, 6.06, 0.06, 8.6, 0.002, '#a7adb8', 0);
     B.floor(7.0, -6.0, 7.06, 6.06, 0.002, '#a7adb8', 0);
     B.box(9.0, -0.36, 3.0, 3.2, 0.7, 6.4, '#3a3f4b');
     B.floor(7.6, -0.2, 10.6, 6.2, -0.004, '#4b505b', 0);
@@ -94,9 +103,9 @@
       B.blk((x0 + x1) / 2, WH, (z0 + z1) / 2, x1 - x0 + 0.02, 0.05, z1 - z0 + 0.02, CAP);
     }
     wall(-7.3, -6.3, 0, -6.0, '#ece4d6'); wall(0, -6.3, 7.3, -6.0, '#252c43');
-    wall(-7.3, -6.0, -7.0, 0, '#ece4d6'); wall(-7.3, 0, -7.0, 6.3, '#f4e3d4');
+    wall(-7.3, -6.0, -7.0, 0, '#ece4d6'); wall(-7.3, 0, -7.0, 8.8, '#f4e3d4');
     B.blk(-3.5, 0, -5.985, 7, 0.14, 0.03, '#6b4f3a'); B.blk(3.5, 0, -5.985, 7, 0.14, 0.03, '#171b2b');
-    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#8a6d55');
+    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 4.3, 0.03, 0.14, 8.6, '#8a6d55');
     B.box(3.5, 0.3, -5.97, 6.8, 0.04, 0.02, '#37c8d8', 1);
     B.box(3.5, 3.15, -5.97, 6.8, 0.05, 0.02, '#c053e8', 1);
 
@@ -240,6 +249,8 @@
     place('planter', -0.5, 0, 0.55, 0, 0.8);
     P.rug(B, -6.0, 2.92, -0.4, 3.46, '#d9748f', '#f3e3d6', 0.012);
     place('bin', -0.4, 0, 3.4, 0, 0.6);
+    sign('SOCIAL', 1.9, 0.55, -6.97, 2.7, 7.75, PI / 2, '#e1ecff', '#2f64c8', '#ffffff', 'Kommentare');
+    place('planter', -6.35, 0, 8.3, 0, 0.8);
     P.extinguisher(B, -0.3, 0.12, PI);
 
     /* ---------- Versand ---------- */
@@ -348,8 +359,8 @@
 
     /* ---------- Kamera-Ansichten ---------- */
     W.views = {
-      alle: { tx: 1.0, ty: 0.7, tz: 0.2, dist: 29 },
-      Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
+      alle: { tx: 0.1, ty: 0.7, tz: 1.3, dist: 31 },
+      Shop: { tx: -3.4, ty: 0.7, tz: 4.4, dist: 15.5 },
       Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
       Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
       'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
