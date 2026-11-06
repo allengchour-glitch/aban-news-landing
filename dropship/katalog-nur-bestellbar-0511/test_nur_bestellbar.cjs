@@ -132,7 +132,7 @@ function erwartung(offers, karte, ausb, index) {
   const unisex = [...sichtbar].filter((p) => /\bunisex\b/i.test(zeile.get(p).title)).length;
   const farben = new Set(), groessen = new Set();
   for (const pid of sichtbar) { modelle[pid].farben.forEach((f) => farben.add(f)); modelle[pid].groessen.forEach((g) => groessen.add(g)); }
-  return { modelle, sichtbar, kategorien, baby, unisex, farben, groessen, zeile, offersProVariante: proVariante };
+  return { modelle, sichtbar, kategorien, baby, unisex, farben, groessen, zeile, offersProVariante: proVariante, karteModelle: karte.modelle };
 }
 
 // ---------- Seite aufbauen ----------
@@ -299,6 +299,11 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
   const page = seite.page, m = e.modelle[pid], titel = e.zeile.get(pid).title;
   const ok = await modellOeffnen(page, pid, titel);
   pruef(ok, `${tag}: Modell ${pid} (${titel}) ist als Karte auffindbar`); if (!ok) return;
+  // unabhängige Gegenprobe der Variantenkarte: die Datenschale, die der Browser für dieses Modell geladen hat, nennt dieselben Varianten mit denselben Farben und Grössen
+  { const key = e.zeile.get(pid).detailShardKey, name = 'luxe-clothing-details-' + key + '.json', roh = memo.get(name) || (fs.existsSync(CACHE + '/daten/' + name) ? fs.readFileSync(CACHE + '/daten/' + name, 'utf8') : null);
+    pruef(!!roh, `${tag}/${pid}: Datenschale ${key} liegt vor`);
+    if (roh) { const j = JSON.parse(roh); const zeilen = Array.isArray(j.products) ? j.products : Object.values(j.products); const r = zeilen.find((x) => String(x.id) === pid);
+      gleich((r.variants || []).map((v) => [Number(v.id), typeof v.color === 'string' && v.color ? v.color : null, typeof v.size === 'string' && v.size ? v.size : null]), e.karteModelle[pid], `${tag}/${pid}: Variantenkarte gleich der Datenschale des Modells (Nummern, Farben, Grössen)`); } }
   let d = await detailLesen(page);
   gleich([...d.farben].sort(), [...m.farben].sort(), `${tag}/${pid}: Details zeigen genau die bestellbaren Farben`);
   const ids = new Set(); const farbenListe = d.farben.length ? d.farben.slice(0, maxFarben) : [''];
@@ -354,13 +359,13 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
   const waehle = (e, bevorzugt, n) => { const sicht = bevorzugt.filter((p) => e.sichtbar.has(p)); for (const p of [...e.sichtbar].sort((a, b) => e.modelle[b].vids.size - e.modelle[a].vids.size)) if (!sicht.includes(p)) sicht.push(p); return sicht.slice(0, n); };
 
   // ===== A. Vorher (Ist-Dateien, Live-Dokument): der Test erkennt den Unterschied =====
-  {
-    const s = await oeffne(browser, { width: 1440, height: 900 }, { ...grund, js: alt[P.DATEIEN.JS], css: alt[P.DATEIEN.CSS], html: htmlIst, ausblenden: '404', karte: '404' });
+  for (const breite of SCHNELL ? [1440] : [1440, 390]) {
+    const s = await oeffne(browser, { width: breite, height: breite === 390 ? 844 : 900 }, { ...grund, js: alt[P.DATEIEN.JS], css: alt[P.DATEIEN.CSS], html: htmlIst, ausblenden: '404', karte: '404' });
     const d = await lies(s.page); const karten = d.karten; // erste Seite genügt (12 von 572 Karten): alle 48 Seiten durchzublättern dauert eine Minute
-    erg.daten.vorher1440 = { treffer: d.gefiltert, kartenErsteSeite: karten.length, kartenMitKnopf: karten.filter((k) => k.designAnzahl > 0).length, studioLinks: d.studioLinks, gruppen: d.gruppen.length, typOptionen: d.typen.length, farbenFilter: d.farbenFilter.length, groessenFilter: d.groessenFilter.length, ergebniszeile: d.ergebniszeile };
+    erg.daten['vorher' + breite] = { treffer: d.gefiltert, kartenErsteSeite: karten.length, kartenMitKnopf: karten.filter((k) => k.designAnzahl > 0).length, studioLinks: d.studioLinks, gruppen: d.gruppen.length, typOptionen: d.typen.length, farbenFilter: d.farbenFilter.length, groessenFilter: d.groessenFilter.length, ergebniszeile: d.ergebniszeile };
     const studioErwartet = (htmlIst.match(/view=luxe-studio/g) || []).length;
-    erg.daten.vorher1440.studioLinksImDokument = studioErwartet; erg.daten.vorher1440.shopKarten = d.shopKarten; erg.daten.vorher1440.shopProdukteInAngeboten = new Set(offers.map((o) => o.shopifyProductId)).size;
-    pruef(d.gefiltert === '572' && karten.length === 12 && karten.every((k) => k.designAnzahl === 0) && d.studioLinks === studioErwartet && studioErwartet === 3 * d.shopKarten + 3, `Vorher: 572 Treffer, Karten der ersten Seite ohne Knopf, Vorschau-Links = 3 je Shopkarte + 3 Titelkacheln (ist ${d.gefiltert}/${karten.length}/${karten.filter((k) => k.designAnzahl).length}/${d.studioLinks}/${d.shopKarten})`);
+    Object.assign(erg.daten['vorher' + breite], { studioLinksImDokument: studioErwartet, shopKarten: d.shopKarten, shopProdukteInAngeboten: new Set(offers.map((o) => o.shopifyProductId)).size, scroll: [d.scrollBreite, d.fensterBreite] });
+    pruef(d.gefiltert === '572' && karten.length === 12 && karten.every((k) => k.designAnzahl === 0) && d.studioLinks === studioErwartet && studioErwartet === 3 * d.shopKarten + 3, `Vorher ${breite}: 572 Treffer, Karten der ersten Seite ohne Knopf, Vorschau-Links = 3 je Shopkarte + 3 Titelkacheln (ist ${d.gefiltert}/${karten.length}/${karten.filter((k) => k.designAnzahl).length}/${d.studioLinks}/${d.shopKarten})`);
     await s.ctx.close();
     if (!LOKAL) await schlafen(4000);
   }
@@ -443,6 +448,8 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
     pruefeListe('390', d, karten, e0, offers);
     // alle 12 Karten der ersten Seite: Knopf mindestens 44 px, in der Karte, direkt über «Auswahl & Details», und «Auswahl & Details» sitzt unten bündig
     const knopf = await s.page.evaluate(() => {
+      // Die erste Karte bekommt einen sehr langen Titel: die Nachbarkarte in derselben Zeile hat dann freien Platz, und nur mit «margin:auto» bleiben ihre Knöpfe unten bündig
+      document.querySelector('.lcl-card h3').textContent = 'Sehr langer Titel zum Prüfen der Ausrichtung '.repeat(6);
       const zeilen = [...document.querySelectorAll('.lcl-card')].map((card) => { const b = card.querySelector('.lcl-design-cta'), det = card.querySelector('.lcl-card-cta'); const r = b.getBoundingClientRect(), c = card.getBoundingClientRect(), d = det.getBoundingClientRect(); return { h: Math.round(r.height), inKarte: r.left >= c.left - 1 && r.right <= c.right + 1, ueberlappt: r.bottom > d.top + 1, abstand: Math.round(d.top - r.bottom), boden: Math.round(c.bottom - d.bottom), klasse: b.classList.contains('lcl-card-design') }; });
       return { karten: zeilen.length, h: Math.min(...zeilen.map((z) => z.h)), inKarte: zeilen.every((z) => z.inKarte), ueberlappt: zeilen.some((z) => z.ueberlappt), abstand: Math.max(...zeilen.map((z) => z.abstand)), abstandMin: Math.min(...zeilen.map((z) => z.abstand)), bodenMax: Math.max(...zeilen.map((z) => z.boden)), klasse: zeilen.every((z) => z.klasse) };
     });

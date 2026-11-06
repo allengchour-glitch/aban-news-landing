@@ -5,7 +5,7 @@
 // das Rendern der Liquid-Dateien mit dem echten Ruby-Liquid (Titelkacheln, Shopliste, Sektion mit Labels und Manifest).
 // PRUEFSUMME_IGNORIEREN=1 überspringt den Vergleich mit daten/pruefstand.json (nur für die Mutationsprobe: sie soll am Verhalten erkannt werden, nicht an der Prüfsumme).
 // OHNE_LIQUID=1 überspringt den Ruby-Teil.
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 import { DATEIEN, NEUE_DATEIEN, MD5_VOR, MARKE, TEXTE, CSS_NEU, anwenden, ausblendenText } from './patches.mjs';
@@ -117,6 +117,19 @@ for (const sp of ['de', 'en', 'fr']) {
   ok(soll[{ de: DATEIEN.DE, en: DATEIEN.EN, fr: DATEIEN.FR }[sp]].startsWith(sich[{ de: DATEIEN.DE, en: DATEIEN.EN, fr: DATEIEN.FR }[sp]].match(/^\/\*[\s\S]*?\*\/\n/)[0]), `${sp}: Kommentarkopf der Sprachdatei erhalten`);
 }
 function jsAlt0(sp) { return jsonAlt[sp].luxe_clothing; }
+// kein Schlüssel kommt in einem Block zweimal vor (JSON.parse liest bei doppelten Schlüsseln nur den letzten und verschweigt den Fehler)
+for (const [sp, f] of [['de', DATEIEN.DE], ['en', DATEIEN.EN], ['fr', DATEIEN.FR]]) {
+  for (const block of ['luxe_clothing', 'luxe_category']) {
+    const text = soll[f]; const m = text.match(new RegExp('"' + block + '": \\{'));
+    if (!m) continue;
+    const start = text.indexOf(m[0]) + m[0].length - 1; let tiefe = 0, inStr = false, esc = false, ende = start;
+    for (let i = start; i < text.length; i++) { const c = text[i]; if (inStr) { if (esc) esc = false; else if (c === '\\') esc = true; else if (c === '"') inStr = false; continue; } if (c === '"') inStr = true; else if (c === '{') tiefe++; else if (c === '}') { tiefe--; if (tiefe === 0) { ende = i; break; } } }
+    const schluessel = [...text.slice(start + 1, ende).matchAll(/^ {4}"([^"]+)": /gm)].map((x) => x[1]);
+    const doppelt = schluessel.filter((k, i) => schluessel.indexOf(k) !== i);
+    gleich(doppelt, [], `${sp}: Block ${block} hat keinen doppelten Schlüssel`);
+    ok(schluessel.length > 15, `${sp}: Block ${block} gelesen (${schluessel.length} Schlüssel)`);
+  }
+}
 ok(!/ß/.test(TEXTE.de.notice + TEXTE.de.none_orderable + TEXTE.de.orderable_variants + TEXTE.de.end_note), 'de: Schweizer Rechtschreibung (kein ß)');
 ok(/nur Modelle/.test(TEXTE.de.notice) && !/alle anderen noch nicht|Produktkatalog zur Auswahl/.test(TEXTE.de.notice), 'de: Hinweis sagt «nur Modelle», nicht mehr «alle anderen noch nicht»');
 ok(/only see models/.test(TEXTE.en.notice) && !/all others not yet/.test(TEXTE.en.notice), 'en: Hinweis sagt «only see models»');
@@ -139,6 +152,15 @@ gleich([karte.schemaVersion, Object.keys(karte.modelle).length, alleV.length, ne
 ok(alleV.every((z) => Number.isInteger(z[0]) && z[0] > 0 && (z[1] === null || typeof z[1] === 'string') && (z[2] === null || typeof z[2] === 'string')), 'Karte: jede Zeile [Nummer, Farbe|null, Grösse|null]');
 ok(karte.modelle['71'].length === 628 && karte.modelle['19'].length === 3 && karte.modelle['686'].length === 46, 'Karte: bekannte Modelle haben die erwartete Variantenzahl (T-Shirt 628, Tasse 3, Samsung 46)');
 ok(Object.keys(aus.varianten).every((m) => aus.varianten[m].every((v) => karte.modelle[m].some((z) => z[0] === v))), 'Karte: jede auszublendende Variante liegt in ihrem Modell');
+// Gegenprobe gegen die 51 Datenschalen (9 MB, nicht im Repo): SCHALEN_DIR oder der Scratch-Ordner mit den Lesekopien; fehlen sie, wird das gemeldet und übersprungen
+{
+  const dir = process.env.SCHALEN_DIR || '/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/ds/work/bauer/schalen';
+  if (existsSync(dir + '/assets__luxe-clothing-details-s001.json')) {
+    const { karteAusSchalen, karteAlsText, pruefeGegenIndex } = await import('./variantenkarte_bauen.mjs');
+    ok(karteAlsText(karteAusSchalen(dir)) === soll[NEUE_DATEIEN.KARTE], 'Karte: gleich dem Neubau aus den 51 Datenschalen (jede Variantennummer, Farbe und Grösse)');
+    if (existsSync(dir + '/assets__luxe-clothing-index.json')) gleich(pruefeGegenIndex(karte.modelle, JSON.parse(readFileSync(dir + '/assets__luxe-clothing-index.json', 'utf8'))), [], 'Karte: stimmt mit dem Index überein');
+  } else console.log('  (Gegenprobe der Variantenkarte gegen die Datenschalen übersprungen: SCHALEN_DIR fehlt)');
+}
 ok(aus.modelle.every((m) => karte.modelle[String(m)]), 'Karte: jedes auszublendende Modell kommt vor');
 
 // ---------- 8. Liquid mit dem echten Ruby-Liquid ----------

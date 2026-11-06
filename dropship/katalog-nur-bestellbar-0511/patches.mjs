@@ -188,7 +188,7 @@ export const JS_HELFER = `    /* ${MARKE}: nur Modelle mit bestellbarem Shopange
       products = products.filter(p=>byModel.has(id(p.id))).map(p=>{
         const colors=new Set(), sizes=new Set(), pairs=new Map();
         byModel.get(id(p.id)).forEach(v=>{const row=rows.get(v);if(row.color)colors.add(row.color);if(row.size)sizes.add(row.size);if(row.color&&row.size){if(!pairs.has(row.color))pairs.set(row.color,new Set());pairs.get(row.color).add(row.size);}});
-        return {...p,colors:list(p.colors).filter(c=>colors.has(colorValue(c))),sizes:list(p.sizes).filter(s=>sizes.has(s)),colorSizes:Object.fromEntries(Object.entries(p.colorSizes||{}).filter(([key])=>colors.has(key)).map(([key,values])=>[key,list(values).filter(s=>pairs.get(key)?.has(s))]))};
+        return {...p,colors:list(p.colors).filter(c=>colors.has(colorValue(c))),sizes:list(p.sizes).filter(s=>sizes.has(s)),colorSizes:Object.fromEntries(Object.entries(p.colorSizes||{}).map(([key,values])=>[key,list(values).filter(s=>pairs.get(key)?.has(s))]))};
       });
     };
     const lxCardCta = product => {

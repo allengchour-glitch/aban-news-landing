@@ -1,5 +1,6 @@
 // Mutationsprobe: verändert je einen Satz in patches.mjs, apply.mjs oder daten/ und prüft, dass die Tests es bemerken.
 //   NODE_PATH=$(/opt/node22/bin/npm root -g) node dropship/katalog-nur-bestellbar-0511/mutationsprobe.mjs
+// Hinweis «voll»: ein sechstes Element im Mutanten lässt den Browsertest ohne SCHNELL laufen (390 px nötig)
 // Umgebung: PARALLEL=3 (Vorgabe) Anzahl gleichzeitiger Mutanten; NUR=<Teil des Namens> nur passende Mutanten; LOG=<Datei> Ausgabe der fehlschlagenden Tests (Vorgabe: Scratch)
 // Pro Mutant läuft eine Kopie des Pakets in einem Wegwerfordner:
 //   - patches_test.mjs (mit PRUEFSUMME_IGNORIEREN=1: die Prüfsumme in daten/pruefstand.json würde jede Änderung sofort melden und nichts über das Verhalten sagen)
@@ -33,7 +34,6 @@ const MUTANTEN = [
   ['patches.mjs', 'js', 'JS: Farben der Karten nicht eingeschränkt', "colors:list(p.colors).filter(c=>colors.has(colorValue(c))),", "colors:list(p.colors),"],
   ['patches.mjs', 'js', 'JS: Grössen der Karten nicht eingeschränkt', "sizes:list(p.sizes).filter(s=>sizes.has(s)),", "sizes:list(p.sizes),"],
   ['patches.mjs', 'js', 'JS: Farbe-Grösse-Paare nicht eingeschränkt', ".filter(s=>pairs.get(key)?.has(s))", ".filter(s=>true)"],
-  ['patches.mjs', 'js', 'JS: Farbe-Grösse-Zeilen fremder Farben bleiben', ".filter(([key])=>colors.has(key))", ".filter(()=>true)"],
   ['patches.mjs', 'js', 'JS: Gruppen ohne Modell bleiben', ".filter(c=>products.some(p=>categoryIds(p).includes(id(c.id))))", ""],
   ['patches.mjs', 'js', 'JS: Typ-Liste zeigt leere Kategorien', "if(count>0)types.add(option);", "types.add(option);"],
   ['patches.mjs', 'js', 'JS: Kurzwahl bleibt ohne Modell sichtbar', "||!products.some(p=>categoryIds(p).includes(key));", ";"],
@@ -46,7 +46,7 @@ const MUTANTEN = [
   ['patches.mjs', 'js', 'JS: Knopf der Karte führt auf die Vorschau', "x.hash='lspod-start';return x.href;", "x.hash='lspod-start';x.searchParams.set('view','luxe-studio');return x.href;"],
   ['patches.mjs', 'js', 'JS: Knopf unter «Auswahl & Details»', `const buy = lxCardCta(product); if (buy) copy.append(buy); /* ${M} */ const cta = button(t('details'), () => openDetails(product, cta),'lcl-card-cta'); copy.append(cta);`, `const cta = button(t('details'), () => openDetails(product, cta),'lcl-card-cta'); copy.append(cta); const buy = lxCardCta(product); if (buy) copy.append(buy); /* ${M} */`],
   ['patches.mjs', 'js', 'JS: Knopf ohne Namen für Screenreader', "link.setAttribute('aria-label',t('design_cta')+': '+titleForProduct(product));", ""],
-  ['patches.mjs', 'js', 'JS: Knopf ohne Kartenklasse', "'lcl-button lcl-design-cta lcl-card-design'", "'lcl-button lcl-design-cta'"],
+  ['patches.mjs', 'js', 'JS: Knopf ohne Kartenklasse', "'lcl-button lcl-design-cta lcl-card-design'", "'lcl-button lcl-design-cta'", 'voll'],
   ['patches.mjs', 'js', 'JS: keine Vorwahl bei zwei Angeboten', "if(data.requiresChoice&&data.offers.length>1&&!priceChoiceId){const first=data.offers.find(item=>item.available!==false);if(first)priceChoiceId=id(first.variantId);}", ""],
   ['patches.mjs', 'js', 'JS: Anzahl-Zeile nennt wieder «Originalvarianten»', "t('orderable_variants'/* ${MARKE} */,{count:variants.length})", "t('original_variants'/* ${MARKE} */,{count:variants.length})"],
   ['patches.mjs', 'js', 'JS: Variantenkarte wird nicht gelesen (Modelle der Karte leer)', "Object.entries(map.modelle).forEach(([model,variants])=>list(variants)", "Object.entries({}).forEach(([model,variants])=>list(variants)"],
@@ -76,7 +76,7 @@ const MUTANTEN = [
   ['patches.mjs', 'text', 'Text: orderable_variants ohne Zähler', "orderable_variants: '[count] bestellbare Ausführungen'", "orderable_variants: 'bestellbare Ausführungen'"],
   ['patches.mjs', 'text', 'Text: end_note verspricht weiter eine Vorschau (de)', "end_note: 'Grössen, Farben und Ausführungen hängen vom gewählten Produkt ab.',", "end_note: 'Grössen, Farben und Ausführungen hängen vom gewählten Produkt ab. Dein Entwurf bleibt eine Vorschau.',"],
   ['patches.mjs', 'text', 'Text: englischer Hinweis nennt noch die alte Regel', "notice: 'You only see models that you can design and order at LuxeStyle.", "notice: 'Product catalogue. Models with the «Design it yourself now» button can be designed and ordered in the shop, all others not yet."],
-  ['patches.mjs', 'text', 'Text: französischer Hinweis fehlt', "const neu = [...NEUE_SCHLUESSEL];\n  const re = zeilenRegex('notice');", "const neu = [...NEUE_SCHLUESSEL];\n  const re = zeilenRegex('noticeX');"],
+  ['patches.mjs', 'text', 'Text: notice wird angehängt statt ersetzt (doppelter Schlüssel)', "const neu = [...NEUE_SCHLUESSEL];\n  const re = zeilenRegex('notice');", "const neu = [...NEUE_SCHLUESSEL];\n  const re = zeilenRegex('noticeX');"],
   ['patches.mjs', 'text', 'Text: Sprachdatei verliert den Kommentarkopf', "let aus = text.slice(0, a) + block + text.slice(e + 1);", "let aus = text.slice(text.indexOf('{')).slice(0, a - text.indexOf('{')) + block + text.slice(e + 1);"],
   ['patches.mjs', 'text', 'Text: Anker-Prüfung gelockert (zweimal reicht)', "if (teile.length !== 2) throw new Error(`Anker «${name}»", "if (teile.length < 2) throw new Error(`Anker «${name}»"],
   ['patches.mjs', 'text', 'Text: Marke nicht an das Ende des JS', "return t.replace(/\\s*$/, '\\n') + `/* ${MARKE} */\\n`;", "return t;"],
@@ -109,7 +109,7 @@ const MUTANTEN = [
   ['apply.mjs', 'apply', 'apply: fremde neue Datei wird nicht erkannt', "if (fremdNeu.length) {", "if (false) {"],
   ['apply.mjs', 'apply', 'apply: Hinweis auf passende Anker fehlt', "console.error('  Hinweis: Die Anker von patches.mjs passen noch auf den aktuellen Live-Stand.", "console.error('  ');void ('  Hinweis: Die Anker von patches.mjs passen noch auf den aktuellen Live-Stand."],
   ['apply.mjs', 'apply', 'apply: Sicherung nur der JS-Datei', "for (const n of ALT) if (!existsSync(sichDatei(n))) writeFileSync(sichDatei(n), alt[n]);", "for (const n of [DATEIEN.JS]) if (!existsSync(sichDatei(n))) writeFileSync(sichDatei(n), alt[n]);"],
-  ['apply.mjs', 'apply', 'apply: Löschen mit Dateinamen als Objekte', "files: namen });\n  console.log('delete'", "files: namen.map((f) => ({ filename: f })) });\n  console.log('delete'"],
+  ['apply.mjs', 'apply', 'apply: Löschen mit Dateinamen als Objekte', "{ id: th.id, files: namen })).themeFilesDelete;", "{ id: th.id, files: namen.map((f) => ({ filename: f })) })).themeFilesDelete;"],
 ];
 
 const NUR = process.env.NUR || '';
@@ -124,11 +124,11 @@ const lauf = (dir, datei, extra = {}) => new Promise((resolve) => {
 });
 const kopie = () => { const d = mkdtempSync(join(tmpdir(), 'lxmut-')); cpSync(HIER, d, { recursive: true, filter: (s) => !/\/(sicherung\/eingespielt\.json)$/.test(s) }); return d; };
 
-async function testen(dir, art) {
+async function testen(dir, art, voll = false) {
   const erg = { patches: null, apply: null, browser: null };
   const p = await lauf(dir, 'patches_test.mjs', { PRUEFSUMME_IGNORIEREN: '1' }); erg.patches = p;
   if (art === 'apply') erg.apply = await lauf(dir, 'apply_test.mjs');
-  if (['js', 'css', 'daten'].includes(art)) erg.browser = await lauf(dir, 'test_nur_bestellbar.cjs', { LOKAL: '1', PRUEFSUMME_IGNORIEREN: '1', ...(art === 'css' ? {} : { SCHNELL: '1' }) });
+  if (['js', 'css', 'daten'].includes(art)) erg.browser = await lauf(dir, 'test_nur_bestellbar.cjs', { LOKAL: '1', PRUEFSUMME_IGNORIEREN: '1', ...(art === 'css' || voll ? {} : { SCHNELL: '1' }) });
   return erg;
 }
 
@@ -143,11 +143,11 @@ writeFileSync(LOG, `Mutationsprobe ${new Date().toISOString()}\n`);
 let erkannt = 0, nurText = 0; const uebrig = [], nichtAnwendbar = []; let naechster = 0;
 async function arbeiter() {
   while (naechster < liste.length) {
-    const [datei, art, name, alt, neu] = liste[naechster++];
+    const [datei, art, name, alt, neu, option] = liste[naechster++];
     const dir = kopie(); const p = join(dir, datei); const text = readFileSync(p, 'utf8'); const teile = text.split(alt);
     if (teile.length !== 2) { console.log('  ?', name, '- Muster kommt', teile.length - 1, '× vor (Mutant nicht anwendbar)'); nichtAnwendbar.push(name); rmSync(dir, { recursive: true, force: true }); continue; }
     writeFileSync(p, teile[0] + neu + teile[1]);
-    const e = await testen(dir, art); rmSync(dir, { recursive: true, force: true });
+    const e = await testen(dir, art, option === 'voll'); rmSync(dir, { recursive: true, force: true });
     const stufen = ['patches', 'apply', 'browser'].filter((k) => e[k] && e[k].code !== 0);
     const bemerkt = stufen.length > 0;
     if (bemerkt) { erkannt++; if (art !== 'apply' && stufen.length === 1 && stufen[0] === 'patches' && ['js', 'css'].includes(art)) nurText++; } else uebrig.push(name);

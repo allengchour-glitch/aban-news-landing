@@ -46,6 +46,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
   const s = load();
   if (query.includes('themes(first:5')) return { themes: { nodes: [{ id: 'gid://fake/1', name: 'fake' }] } };
   if (query.includes('files(filenames')) {
+    s.ev = s.ev || []; s.ev.push('R'); save(s);
     const nodes = vars.f.filter((n) => s.files[n] != null).map((n) => {
       const c = s.files[n], url = FAKE.includes('url') && (n.includes('variantenkarte') || n.endsWith('luxe-clothing.js'));
       return { filename: n, size: Buffer.byteLength(c), checksumMd5: FAKE.includes('nocsum') ? null : md5(c),
@@ -54,7 +55,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
     return { theme: { files: { nodes } } };
   }
   if (query.includes('themeFilesUpsert')) {
-    s.calls = s.calls || []; s.calls.push(vars.files.map((f) => f.filename));
+    s.calls = s.calls || []; s.calls.push(vars.files.map((f) => f.filename)); s.ev = s.ev || []; s.ev.push('U');
     const callNo = s.calls.length, errs = [];
     for (const f of vars.files) {
       if ((FAKE.includes('step2err') && f.filename.endsWith('luxe-clothing.js') && callNo === 2) || (FAKE.includes('step2all') && callNo === 2)) { errs.push({ filename: f.filename, message: 'FAKE Syntaxfehler' }); continue; }
@@ -67,7 +68,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
     return { themeFilesUpsert: { upsertedThemeFiles: vars.files.filter((f) => !errs.some((e) => e.filename === f.filename)).map((f) => ({ filename: f.filename })), userErrors: errs } };
   }
   if (query.includes('themeFilesDelete')) {
-    s.calls = s.calls || []; s.calls.push(['DEL', ...vars.files]);
+    s.calls = s.calls || []; s.calls.push(['DEL', ...vars.files]); s.ev = s.ev || []; s.ev.push('D');
     if (FAKE.includes('delerr')) { save(s); return { themeFilesDelete: { deletedThemeFiles: [], userErrors: vars.files.map((f) => ({ filename: f, message: 'FAKE nicht löschbar' })) } }; }
     const geloescht = [];
     for (const f of vars.files) if (s.files[f] != null && !FAKE.includes('nodelete')) { delete s.files[f]; geloescht.push({ filename: f }); }
@@ -91,7 +92,7 @@ const MERK = join(PAKET, 'sicherung/eingespielt.json');
 const neuerStand = (aenderung = {}) => {
   const files = { ...sich, ...aenderung };
   for (const k of Object.keys(files)) if (files[k] === null) delete files[k];
-  writeFileSync(STATE, JSON.stringify({ files, calls: [] }));
+  writeFileSync(STATE, JSON.stringify({ files, calls: [], ev: [] }));
   rmSync(MERK, { force: true });
 };
 const stand = () => JSON.parse(readFileSync(STATE, 'utf8'));
@@ -102,6 +103,8 @@ const lauf = (fake, env = {}) => {
   });
   return { code: r.status, aus: (r.stdout || '') + (r.stderr || '') };
 };
+// Ereignisfolge ohne Wiederholungen: R R R U R -> RUR
+const folge = (von = 0) => (stand().ev || []).slice(von).join('').replace(/R+/g, 'R');
 const md5Stand = () => Object.fromEntries(ALLE.map((f) => [f, stand().files[f] == null ? null : md5(stand().files[f])]));
 const istSicherung = () => ALT.every((f) => stand().files[f] === sich[f]) && NEU.every((f) => stand().files[f] == null);
 const istSoll = () => ALLE.every((f) => stand().files[f] === soll[f]);
@@ -121,6 +124,7 @@ try {
   ok(istSoll(), 'LIVE: alle elf Dateien gleich dem Soll-Stand'); gleich(md5Stand(), sollMd5, 'LIVE: Prüfsummen gleich dem Soll');
   ok(existsSync(MERK) && JSON.stringify(JSON.parse(readFileSync(MERK, 'utf8')).md5) === JSON.stringify(sollMd5), 'LIVE: Merkliste mit den Soll-Prüfsummen');
   gleich((r.aus.match(/GLEICH/g) || []).length, 11, 'LIVE: Rücklesen meldet 11 × GLEICH'); ok(!/ABWEICHUNG/.test(r.aus), 'LIVE: keine ABWEICHUNG');
+  gleich(folge(), 'RURUR', 'LIVE: Lesen, Schritt 1, Warten (Lesen bis die Prüfsummen stimmen), Schritt 2, Rücklesen');
 
   // 3. Zweites Einspielen wird abgelehnt
   const vorher = stand().calls.length; r = lauf('', { LIVE: '1' });
@@ -130,10 +134,11 @@ try {
   r = lauf('', { ZURUECK: '1' });
   gleich(r.code, 0, 'ZURUECK Trockenlauf: Exit'); gleich((r.aus.match(/zustand .*neu/g) || []).length, 11, 'ZURUECK Trockenlauf: 11 Dateien «neu»'); gleich(stand().calls.length, vorher, 'ZURUECK Trockenlauf: nichts geschrieben');
   ok(/zu löschen: assets\/luxe-clothing-ausblenden\.json, assets\/luxe-clothing-variantenkarte\.json/.test(r.aus), 'ZURUECK Trockenlauf: nennt die zwei zu löschenden Dateien');
-  r = lauf('', { ZURUECK: '1', LIVE: '1' });
+  const ev4 = stand().ev.length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 0, 'ZURUECK LIVE: Exit');
   gleich(stand().calls.slice(vorher), [SCHRITT2, RUECK1, ['DEL', ...NEU]], 'ZURUECK: erst CSS/JS, dann Texte/Liquid, zuletzt die neuen Dateien löschen');
   ok(istSicherung(), 'ZURUECK: neun Dateien gleich der Sicherung, zwei neue Dateien weg'); gleich((r.aus.match(/GLEICH/g) || []).length, 11, 'ZURUECK: Rücklesen meldet 11 × GLEICH');
+  gleich(folge(ev4), 'RURURDR', 'ZURUECK: Lesen, CSS/JS, Warten, Texte/Liquid, Warten, Löschen, Rücklesen (gelöscht wird erst, wenn die Prüfsummen der Texte stimmen)');
 
   // 5. Rücknahme ohne etwas zu tun
   const v5 = stand().calls.length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
@@ -210,6 +215,16 @@ try {
   neuerStand(); lauf('', { LIVE: '1' });
   r = lauf('', { ZURUECK: '1', LIVE: '1', NEUE_BEHALTEN: '1' }); gleich(r.code, 0, 'NEUE_BEHALTEN: Exit'); ok(ALT.every((f) => stand().files[f] === sich[f]) && NEU.every((f) => stand().files[f] === soll[f]), 'NEUE_BEHALTEN: neun alte zurück, zwei neue bleiben');
   ok(!stand().calls.some((c) => c[0] === 'DEL'), 'NEUE_BEHALTEN: kein Löschaufruf');
+
+  // 15b. Erster echter Lauf: die Sicherung gibt es noch nicht und wird aus dem Live-Stand angelegt (alle neun Dateien, byte-gleich dem Ausgangsstand)
+  neuerStand();
+  for (const f of ALT) rmSync(join(PAKET, 'sicherung', sichName(f)), { force: true });
+  r = lauf('', { LIVE: '1' });
+  gleich(r.code, 0, 'ohne vorhandene Sicherung: LIVE Exit 0'); ok(istSoll(), 'ohne vorhandene Sicherung: Soll-Stand erreicht');
+  ok(ALT.every((f) => existsSync(join(PAKET, 'sicherung', sichName(f))) && readFileSync(join(PAKET, 'sicherung', sichName(f)), 'utf8') === sich[f]), 'ohne vorhandene Sicherung: alle neun .vor-Dateien angelegt und gleich dem Ausgangsstand');
+  r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'ohne vorhandene Sicherung: Rücknahme danach geht'); ok(istSicherung(), 'ohne vorhandene Sicherung: Rücknahme stellt den Ausgangsstand her');
+  // die Sicherung des Pakets wieder herstellen (die Folge-Szenarien brauchen sie)
+  for (const f of ALT) writeFileSync(join(PAKET, 'sicherung', sichName(f)), sich[f]);
 
   // 16. Löschen scheitert (userErrors) → Exit 5; Löschen ohne Wirkung → Exit 6 (Rücklesen)
   neuerStand(); lauf('', { LIVE: '1' });
