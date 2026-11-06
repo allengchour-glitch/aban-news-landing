@@ -49,6 +49,11 @@ on:
       - 'dropship/katalog-einheiten-0411/**'
       - 'dropship/lagerbestand-0511/**'
       - 'dropship/selbst-gestalten-fertig-0511/bestellweg/**'
+      - 'dropship/selbst-gestalten-fertig-0511/**'
+      - 'automation/pod_modell/**'
+      - 'pod/v6/**'
+      - 'pod/live/**'
+      - 'dropship/rueckgabe-0611/**'
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
       - 'automation/fortura_feed_holen.sh'
@@ -375,3 +380,47 @@ jobs:
           node dropship/lagerbestand-0511/apply_theme_test.mjs
           LIQUIDJS_DIR="$RUNNER_TEMP/lq" NUR_TEST=1 OHNE_BROWSER=1 node dropship/lagerbestand-0511/delivery_test.mjs
           sha1sum automation/fortura_bestand_sync.mjs | grep -q '^0dc135363bd9c5b7259bb0d49d7dd793057fe3f2 ' && echo "fortura_bestand_sync.mjs unveraendert (SHA1 der erprobten Fassung)"
+
+  # «Selbst gestalten» (05./06.11.2026): Modell-Fabrik, Editor v6 (reine Logik), Einspielskripte (Preise, L0, Masse, Rückgabe-Texte) gegen Attrappen/Daten im Repo.
+  # Kein Netz, keine Geheimnisse. Neue Testordner immer an ZWEI Stellen eintragen: `paths:` oben UND `sparse-checkout` hier.
+  selbst-gestalten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/lib
+            automation/pod_modell
+            dropship/rueckgabe-0611
+            dropship/selbst-gestalten-fertig-0511
+            pod/v6
+            pod/live
+            .github/workflows/luxestyle-automation-tests.yml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Modell-Fabrik (Plan, Tore, Sperre, Glossar, Charge, Anlegen, Beschreibung, Bildmass, Versand)
+        run: |
+          node automation/pod_modell/pod_modell_test.mjs
+          node automation/pod_modell/plan_test.mjs
+          node automation/pod_modell/tore_test.mjs
+          node automation/pod_modell/sperre_test.mjs
+          node automation/pod_modell/glossar_test.mjs
+          node automation/pod_modell/charge_test.mjs
+          node automation/pod_modell/anlegen_test.mjs
+          node automation/pod_modell/beschreibung_test.mjs
+          node automation/pod_modell/bildmass_test.mjs
+          node automation/pod_modell/versand_messen_test.mjs
+      - name: Editor v6 (reine Logik, Fallback auf v5 aus pod/live)
+        run: node pod/v6/test/unit_test.mjs
+      - name: Einspielskripte und Rechner (Preise, L0, Schweizer Masse, Rückgabe-Texte)
+        run: |
+          node dropship/selbst-gestalten-fertig-0511/preise/plan_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/l0/apply_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/masse/masse_bereinigen_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse_test.mjs
+          node dropship/rueckgabe-0611/apply_test.mjs
+          node dropship/rueckgabe-0611/apply2_test.mjs
