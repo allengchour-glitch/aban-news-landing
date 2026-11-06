@@ -12,11 +12,14 @@ gesetzliche Mängelrechte bleiben unberührt. Liechtenstein: Ausnahme für Anfer
 - **Theme `templates/product.json` (MAIN):** nur der Editor-Zweig: Aufklappbereich «Rückgabe & Umtausch» (G7) und Vertrauenszeile (G8, «Ersatz bei Druckfehlern, keine Rückgabe bei Meinungsänderung»); der `else`-Zweig (30 Tage für alle anderen Produkte) bleibt. Rohtext-Ersetzung, Format und Kommentarkopf unverändert. Sicherung `sicherung/product.json.vor` und `sicherung/welle1.json`.
 - Gemessen am Live-Shop (curl, Tasse und T-Shirt): neuer Kasten und Meta-Beschreibung sichtbar, alter Satz «Jedes Stück wird eigens …» und «Rückgabe bei personalisierter Ware» weg; Normalprodukt (Perlencollier) zeigt weiter «30 Tage», kein «Ersatz bei Druckfehlern».
 
-## Welle 2 (NICHT eingespielt, wartet auf das Ja des Besitzers zum Rechtstext)
-Rückgaberichtlinie (neuer Abschnitt `#selbst-gestaltete-artikel`, auf den der Kasten schon verlinkt: bis dahin springt der Link nur auf die Richtlinie), AGB §7/§8, Seiten (Garantie & Rückgabe, Rückgabe & Widerruf, FAQ, Grössen-Guide, Selbst gestalten, Fan-Trikot),
-Warenkorb, Ankündigungsleiste und Fusszeile (zeigen weiter «30 Tage Rückgabe» auf JEDER Seite, auch auf den Editor-Produkten), Chat-Assistent, FR/EN, Sammlungstext, Blog, Merchant Center, Generatoren im Repo, die den alten Satz wieder schreiben
+## Welle 2 (Skript fertig, Trockenlauf 15 von 15 Zielen ohne Problem, NICHT eingespielt)
+`apply2.mjs` (Trockenlauf Vorgabe, `LIVE=1` schreibt, `ZURUECK=1 LIVE=1` nimmt zurück, `ZIELE=theme,richtlinie,seite,sammlung,blog` für Teile), Daten `daten/welle2.json` (30 Einträge), Test `apply2_test.mjs` (19 Prüfungen).
+Ziele: **Rückgaberichtlinie** (neuer Abschnitt `#selbst-gestaltete-artikel`, auf den der Kasten schon verlinkt; Liechtenstein-Satz; Meldefrist) und **AGB §7/§8** (Verweis, Meldefrist 30 Tage), 6 Seiten (Rückgabe & Widerruf, Garantie & Rückgabe, FAQ, Selbst gestalten, Fan-Trikot, Grössen-Guide),
+Sammlung «Selbst gestalten», 1 Blog-Artikel, Theme: Warenkorb-Vertrauensliste, **Ankündigungsleiste und Fusszeile** («30 Tage Rückgabe (ausser selbst gestaltete Artikel)», stehen auf JEDER Seite), Sammlungsseite (USP und FAQ nur für «Selbst gestalten»-Sammlungen), Chat-Assistent (5 Stellen).
+**Der Live-Lauf wurde von der Berechtigungsprüfung der Sitzung abgelehnt** (Rechtstexte und Shop-Richtlinien = geteilte Ressource) und nicht umgangen. Er braucht das ausdrückliche Ja des Besitzers; dann: `LIVE=1 node dropship/rueckgabe-0611/apply2.mjs` (Sicherung zuerst, Rücklesen aller 15 Ziele).
+Noch nicht im Skript: FR-Übersetzungen der Leiste/Fusszeile (`translationsRegister`, Digest nötig), Bausteine EN/FR, Bestellbestätigung, Merchant-Center-Regel, JSON-LD, Quelltext-Generatoren im Repo, die den alten Satz wieder schreiben
 (seo_titel.mjs, pod_modell/beschreibung.mjs, shop_brain.mjs, shop_autopilot.mjs, workers/shop-brain/worker.js, seo_catalog_fix.py, catalog_enrich.py, titel_korrigieren.mjs, seo-optimizer.mjs).
-**Übergangs-Widerspruch (bekannt):** die Produktseite bittet um Meldung innert 30 Tagen, die Rückgaberichtlinie nennt für Defekte noch 7 Tage; die 30 Tage sind für Kundinnen günstiger, niemand wird benachteiligt.
+**Übergangs-Widerspruch (bekannt):** die Produktseite bittet um Meldung innert 30 Tagen, die Rückgaberichtlinie nennt für Defekte noch 7 Tage und die Leiste verspricht überall «30 Tage Rückgabe»; die 30 Tage sind für Kundinnen günstiger, niemand wird benachteiligt.
 
 ## Offene Entscheide des Besitzers
 Fertigprodukte (464, nicht angefasst) · Kulanz nach Tag 30 · «Ersatz oder Erstattung» (wir entscheiden nach Prüfung) · Meldeweg (Mail info@luxestyle.ch mit Bestellnummer und Foto) · Liechtenstein-Satz · Wortlaut der Richtlinie/AGB (Welle 2).
