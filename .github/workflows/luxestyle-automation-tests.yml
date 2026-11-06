@@ -54,6 +54,7 @@ on:
       - 'pod/v6/**'
       - 'pod/live/**'
       - 'dropship/rueckgabe-0611/**'
+      - 'dropship/katalog-nur-bestellbar-0511/**'
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
       - 'automation/fortura_feed_holen.sh'
@@ -392,6 +393,7 @@ jobs:
           sparse-checkout: |
             automation/lib
             automation/pod_modell
+            dropship/katalog-nur-bestellbar-0511
             dropship/rueckgabe-0611
             dropship/selbst-gestalten-fertig-0511
             pod/v6
@@ -424,3 +426,8 @@ jobs:
           node dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse_test.mjs
           node dropship/rueckgabe-0611/apply_test.mjs
           node dropship/rueckgabe-0611/apply2_test.mjs
+      - name: Katalogfenster «nur bestellbar» (Änderungen, Wächter, Einspielskript gegen Attrappe; ohne Ruby-Liquid und Browser)
+        run: |
+          OHNE_LIQUID=1 node dropship/katalog-nur-bestellbar-0511/patches_test.mjs
+          node dropship/katalog-nur-bestellbar-0511/waechter_test.mjs
+          APPLY_ZEIT=0.001 node dropship/katalog-nur-bestellbar-0511/apply_test.mjs
