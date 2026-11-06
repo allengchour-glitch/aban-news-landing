@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R118_20261106",
+  "checkedAt": "2026-11-06T14:36:59+01:00",
+  "timezone": "Europe/Zurich",
+  "repositoryHeadBeforeDocumentation": "9171d0ef2e16d60846229e92a361d7f757b19f2f",
+  "scope": "six_collection_description_and_seo_description_polish_only",
+  "identity": {
+    "shopName": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "CH",
+    "shopTimezone": "CET",
+    "matched": true
+  },
+  "coordination": {
+    "claudeHandleOverlap": false,
+    "claudeThemePullRequest": 2907,
+    "claudeThemePullRequestState": "MERGED_INTO_MAIN",
+    "mainCommit": "8c123bc07",
+    "mergedAt": "2026-11-06T12:49:00Z",
+    "productionThemeExecution": "unknown",
+    "decision": "No theme files changed because PR2907 changed the global category theme in MAIN, a fresh MAIN diff is required, and MAIN theme writes are blocked. Only the six collection descriptions and SEO descriptions were written."
+  },
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/687524381057",
+      "handle": "damen-mode",
+      "title": "Damen-Mode",
+      "descriptionUpdatedAt": "2026-11-06T13:27:14Z",
+      "finalUpdatedAt": "2026-11-06T13:33:13Z",
+      "url": "https://luxestyle.ch/collections/damen-mode",
+      "changedFields": ["descriptionHtml", "seo.description"],
+      "subcategoryLinks": [
+        "/collections/damen-kleider",
+        "/collections/damen-blusen",
+        "/collections/damen-hosen",
+        "/collections/damen-roecke",
+        "/collections/damen-strick-pullover",
+        "/collections/damen-schuhe"
+      ],
+      "removedUnsupportedContent": [
+        "daily newness claims",
+        "fair and price claims",
+        "discount claims",
+        "fragile product links"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/687522283905",
+      "handle": "fur-ihn",
+      "title": "Herren-Mode",
+      "descriptionUpdatedAt": "2026-11-06T13:27:27Z",
+      "finalUpdatedAt": "2026-11-06T13:33:27Z",
+      "url": "https://luxestyle.ch/collections/fur-ihn",
+      "changedFields": ["descriptionHtml", "seo.description"],
+      "subcategoryLinks": [
+        "/collections/herren-shirts",
+        "/collections/herren-pullover",
+        "/collections/herren-jacken",
+        "/collections/herren-hosen",
+        "/collections/herren-schuhe",
+        "/collections/herrenuhren-schmuck"
+      ],
+      "removedUnsupportedContent": [
+        "daily newness claims",
+        "fair and price claims",
+        "blanket return claims"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688564437377",
+      "handle": "sub-baby-kids",
+      "title": "Kinder & Baby",
+      "descriptionUpdatedAt": "2026-11-06T13:27:37Z",
+      "finalUpdatedAt": "2026-11-06T13:33:28Z",
+      "url": "https://luxestyle.ch/collections/sub-baby-kids",
+      "changedFields": ["descriptionHtml", "seo.description"],
+      "subcategoryLinks": [
+        "/collections/babykleidung",
+        "/collections/kinder-baby-kleider-oberteile",
+        "/collections/kinder-sets-outfits",
+        "/collections/kinderschuhe",
+        "/collections/spielzeug",
+        "/collections/schule-kindergarten"
+      ],
+      "removedUnsupportedContent": [
+        "development claims",
+        "quality and hype claims",
+        "fragile product links"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688725197185",
+      "handle": "sport-outdoor",
+      "title": "Sport & Outdoor",
+      "descriptionUpdatedAt": "2026-11-06T13:29:43Z",
+      "finalUpdatedAt": "2026-11-06T13:33:30Z",
+      "url": "https://luxestyle.ch/collections/sport-outdoor",
+      "changedFields": ["descriptionHtml", "seo.description"],
+      "subcategoryLinks": [
+        "/collections/sub-yoga-fitness",
+        "/collections/fitness-geraete",
+        "/collections/camping-outdoor",
+        "/collections/velo-radsport",
+        "/collections/schwimmen-tauchen-wassersport",
+        "/collections/sport-schutzausruestung"
+      ],
+      "removedUnsupportedContent": [
+        "premium claims",
+        "adventure claims",
+        "fragile product links"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/689027416449",
+      "handle": "beauty-pflege",
+      "title": "Beauty & Pflege",
+      "descriptionUpdatedAt": "2026-11-06T13:29:54Z",
+      "finalUpdatedAt": "2026-11-06T13:33:31Z",
+      "url": "https://luxestyle.ch/collections/beauty-pflege",
+      "changedFields": ["descriptionHtml", "seo.description"],
+      "subcategoryLinks": [
+        "/collections/beauty-makeup",
+        "/collections/beauty-naegel",
+        "/collections/wimpern-lashes",
+        "/collections/beauty-hautpflege",
+        "/collections/beauty-haar",
+        "/collections/beauty-geraete",
+        "/collections/beauty-duefte"
+      ],
+      "removedUnsupportedContent": [
+        "beauty effect claims",
+        "hype claims",
+        "discount claims",
+        "blanket return claims"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688564470145",
+      "handle": "sub-haustier",
+      "title": "Haustierwelt",
+      "descriptionUpdatedAt": "2026-11-06T13:30:04Z",
+      "finalUpdatedAt": "2026-11-06T13:33:33Z",
+      "url": "https://luxestyle.ch/collections/sub-haustier",
+      "changedFields": ["descriptionHtml", "seo.description"],
+      "subcategoryLinks": [
+        "/collections/haustier-hunde",
+        "/collections/haustier-katzen",
+        "/collections/tier-leinen-kleidung",
+        "/collections/tierspielzeug",
+        "/collections/tier-naepfe-fuettern",
+        "/collections/tier-pflege-unterwegs"
+      ],
+      "removedUnsupportedContent": [
+        "unsupported product count",
+        "wrong parent collection link",
+        "fragile product links"
+      ]
+    }
+  ],
+  "verification": {
+    "adminExactDescriptionReadbacks": 6,
+    "adminExactSeoDescriptionReadbacks": 6,
+    "adminUnchangedSeoTitleReadbacks": 6,
+    "publicHttp200": 6,
+    "publicCanonicalExact": 6,
+    "publicH1Exact": 6,
+    "publicNewIntroPresent": 6,
+    "publicMetaDescriptionExact": 6,
+    "publicQuickFindHeadingPresent": 6,
+    "verifiedSubcategoryLinks": 37,
+    "expectedSubcategoryLinks": 37,
+    "freeShippingThreshold": {
+      "shopSettingChanged": false,
+      "presentInUpdatedDescriptions": false,
+      "descriptionReadbackHasThresholdCount": 0
+    },
+    "unchangedFields": [
+      "title",
+      "handle",
+      "collection image",
+      "collection image alt text",
+      "collection rules",
+      "sort order",
+      "product assignments",
+      "product prices",
+      "SEO title"
+    ]
+  },
+  "remainingThemeBlocker": {
+    "status": "OPEN",
+    "surface": "live category FAQ rendered by theme",
+    "exampleUnsupportedClaim": "Ab Schweizer Lager meist 2–3 Werktage, im Direktversand 10–20 Werktage",
+    "otherClaimClasses": [
+      "global discount wording",
+      "blanket return wording"
+    ],
+    "reasonNotChanged": "PR2907 was merged into MAIN, but productive theme execution is not separately proven. A fresh MAIN/theme diff is required and MAIN theme writes are blocked."
+  },
+  "writeSummary": {
+    "shopifyCollectionDescriptionWrites": 6,
+    "shopifyCollectionSeoDescriptionWrites": 6,
+    "themeWrites": 0,
+    "productWrites": 0,
+    "priceWrites": 0,
+    "imageWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "customerMessages": 0,
+    "orderWrites": 0,
+    "renders": 0
+  },
+  "progress": {
+    "collectionsPolishedThisRun": 6,
+    "fullCategoryCatalogDenominator": "unknown",
+    "fullCategoryCatalogPercentComplete": "unknown"
+  }
+}

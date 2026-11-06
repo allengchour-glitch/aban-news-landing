@@ -1179,3 +1179,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Verkauf / Dokumentation | BRUDER ft-bruder gelesen und Ersatztext ohne unbelegtes «ab CH-Lager» dokumentiert; Paket, Masterbriefing, Belege und Gedächtnis fortgeschrieben | Collection HTTP200/297 Produkte/TAG EQUALS bruder. Text nur zur Freigabe. Revision117; keine externen operativen Writes |
 
 [LUXESTYLE_R117_20261106] [Mittagspaket](MITTAGSPAKET-20261106-R117.md) · [Masterbriefing](MASTER-CONTENT-20261106-R117.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261106-R117.json). Aktuelle Planung33/49, zwei Produktgegenproben, ein fortgeführter Master und zwei enge Freigabeentwürfe; kein externer Write.
+
+### R118
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/luxestyle.ch/CHF/CH/CET und aktuelle Claude-Arbeit frisch gegengeprüft | Identität passend; keine Überschneidung der sechs Handles. Theme-PR2907 in MAIN gemergt, produktive Ausführung unbekannt; kein Theme-Write |
+| Sechs Collection-Seiten | Bei Damen-Mode, Herren-Mode, Kinder & Baby, Sport & Outdoor, Beauty & Pflege und Haustierwelt nur `descriptionHtml` und SEO-Beschreibung aktualisiert; bestehende Gestaltung und Banner erhalten | Neutrale Einleitungen, «Schnell finden», Auswahlhinweise und37 geprüfte Unterkategorie-Links live. Unbelegte Claims und fragile Produktlinks entfernt. Shop-Schwelle unverändert, aber nicht Teil der sechs Texte |
+| Rücklesung / Schutzfelder | Beide geänderten Felder im Admin und die sechs öffentlichen Seiten gezielt zurückgelesen | Admin6/6 exakt; öffentlich6/6 HTTP200/Canonical/H1/Meta-Description/Einleitung/Schnell-finden, Links37/37 erreichbar. SEO-Titel, Collection-Titel, Handles, Bilder/Alttexte, Regeln, Sortierung, Produkte und Preise unverändert |
+| Offener Theme-Blocker | Separat gerenderte Live-FAQ auf unbelegte Aussagen geprüft | CH-Lager-/Lieferzeit- sowie globale Rabatt-/Rückgabeclaims weiterhin offen. Wegen in MAIN gemergtem PR2907 zuerst frischer MAIN-Theme-Diff; MAIN-Theme-Writes blockiert, kein alter Patch übernommen |
+| Grenzen / Dokumentation | R118-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Revision118; Kategorien-Gesamtfortschritt unbekannt. Keine Produkt-, Preis-, Bild-, Theme-, Merchant-, Feed-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderänderung |
+
+[LUXESTYLE_R118_20261106] [Sechs Hauptkategorien live poliert](KATEGORIEN-POLITUR-20261106-R118.md) · [Maschinenlesbare Belege](KATEGORIEN-POLITUR-20261106-R118.json). Sechs Beschreibungen und sechs SEO-Beschreibungen aktualisiert, 37/37 Unterkategorie-Links geprüft; Theme-FAQ-Blocker offen.
