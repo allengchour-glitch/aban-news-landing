@@ -1,7 +1,7 @@
 // Mutationsprobe für den gemeinsamen Stand: verändert je eine Kernstelle (Kollisionszeile, Reihenfolge der (A)/(B)-Ersetzungen, die drei neuen Assets, Marken, Einspielskript: Reihenfolge der Schritte,
 // Fremd-Schutz, Rücknahme) in einer KOPIE der Pakete und prüft, dass mindestens ein Test es bemerkt.
 //   NODE_PATH=$(/opt/node22/bin/npm root -g) /opt/node22/bin/node dropship/katalog-fenster-0611/mutationsprobe.mjs
-// Umgebung: PARALLEL=3 (Vorgabe) gleichzeitige Mutanten · NUR=<Teil des Namens> nur passende Mutanten · LOG=<Datei> Ausgabe der fehlschlagenden Tests (Vorgabe: Scratch) · CACHE_DIR=<Ordner mit Dokument und Datenschalen>
+// Umgebung: PARALLEL=3 (Vorgabe) gleichzeitige Mutanten · NUR=<Teil des Namens>[|<Teil>…] nur passende Mutanten · LOG=<Datei> Ausgabe der fehlschlagenden Tests (Vorgabe: Scratch) · CACHE_DIR=<Ordner mit Dokument und Datenschalen>
 //   SCHALEN_DIR=<Ordner mit Index und 51 Datenschalen> · MINIFIZIERT=1 ESBUILD=<Pfad> (Browsertests mit der vom CDN verkleinerten Fassung)
 // Pro Mutant läuft eine Kopie von katalog-fenster-0611, katalog-nur-bestellbar-0511 (ohne Tests/Sicherung) und der Texte-Datei in einem Wegwerfordner; die Tests laufen nacheinander und HALTEN beim ersten Fehlschlag:
 //   Stufe 1  kombi_test.mjs (mit PRUEFSUMME_IGNORIEREN=1: die Prüfsumme in daten/pruefstand.json würde jede Änderung sofort melden und nichts über das Verhalten sagen)
@@ -116,6 +116,7 @@ const MUTANTEN = [
   // ---- Korrekturen der Abnahme 06.11.2026 (korrekturen.mjs): Verhalten im Browser (Option 'browser': ohne die statische Stufe kombi_test) ----
   [F + 'korrekturen.mjs', 'kombi', 'K1: deutscher Titel ohne Vorrang vor titleDe', "(lxTitelDe[id(product.id)] || string(extra?.titleDe) || string(product.titleDe))", "(string(extra?.titleDe) || string(product.titleDe))", 'browser'],
   [F + 'korrekturen.mjs', 'kombi', 'K1: Suche kennt den deutschen Titel nicht', "const haystack=normal([product.title,titleForProduct(product),product.titleDe,", "const haystack=normal([product.title,product.titleDe,", 'browser'],
+  [F + 'korrekturen.mjs', 'kombi', 'K1: Titel-Tabelle wird nicht ausgeliefert', "\"    const lxTitelDe = \" + JSON.stringify(TITEL_DE)", "\"    const lxTitelDe = \" + JSON.stringify({})", 'browser'],
   [F + 'korrekturen.mjs', 'kombi', 'K1: Modell 474 bleibt englisch', "474: 'Spiral-Notizbuch',", "474: 'Spiral Notebook',", 'browser'],
   [F + 'korrekturen.mjs', 'kombi', 'K1: Suchwort kappe fehlt', "kappe:['cap','hat'],kappen:['cap','hat'],", "", 'browser'],
   [F + 'korrekturen.mjs', 'kombi', 'K1: Suchwort pullover fehlt', "pullover:['sweatshirt','hoodie'],", "", 'browser'],
@@ -144,7 +145,7 @@ const MUTANTEN = [
   [F + 'texte_ersetzungen.mjs', 'kombi', 'B: Farbe «Holz» bleibt «Wood»', "wood:'Holz'", "wood:'Wood'", 'browser'],
   [F + 'texte_ersetzungen.mjs', 'kombi', 'B: Grösse «Small» bleibt englisch', "small:'Klein'", "small:'Small'", 'browser'],
   // ---- apply.mjs: Korrekturen der Abnahme ----
-  [F + 'apply.mjs', 'apply', 'apply: upsertedThemeFiles = null nicht abgefangen', "(u.upsertedThemeFiles || []).map", "(u.upsertedThemeFiles).map"],
+  // («upsertedThemeFiles = null nicht abgefangen» ist als Mutant GLEICHWERTIG und entfällt: seit die userErrors vor der Dateiliste ausgewertet werden, endet die Ablehnung vor dem `.map`; der Test «nullup» und der Mutant «userErrors erst nach der Dateiliste ausgewertet» decken das Verhalten.)
   [F + 'apply.mjs', 'apply', 'apply: userErrors erst nach der Dateiliste ausgewertet', "  if (u.userErrors?.length) { console.error('userErrors:', JSON.stringify(u.userErrors)); console.error(teilzustandText()); process.exit(5); }\n  console.log('upsert', namen.join(', '), JSON.stringify((u.upsertedThemeFiles || []).map((x) => x.filename)));", "  console.log('upsert', namen.join(', '), JSON.stringify(u.upsertedThemeFiles.map((x) => x.filename)));\n  if (u.userErrors?.length) { console.error('userErrors:', JSON.stringify(u.userErrors)); console.error(teilzustandText()); process.exit(5); }"],
   [F + 'apply.mjs', 'apply', 'apply: Schlussrücklesen ohne Warten auf die API', "  await warteBisGleich(soll, ALLE, 150000);\n  const nach = await lesen(); let ok = true;", "  const nach = await lesen(); let ok = true;"],
   [F + 'apply.mjs', 'apply', 'apply: Fortsetzen abgeschaltet', "if (!werte.includes('fremd') && werte.includes('neu') && werte.includes('alt')) fortsetzen =", "if (false) fortsetzen ="],
@@ -157,7 +158,7 @@ const MUTANTEN = [
 ];
 
 const NUR = process.env.NUR || '';
-const liste = MUTANTEN.filter((m) => !NUR || m[2].includes(NUR));
+const liste = MUTANTEN.filter((m) => !NUR || NUR.split('|').some((teil) => m[2].includes(teil))); // NUR=<Teil>|<Teil> wählt mehrere
 const env = (extra = {}) => ({ ...process.env, CACHE_DIR: CACHE, SHOTS_DIR: tmpdir(), ...extra });
 const lauf = (dir, datei, extra = {}, args = []) => new Promise((resolve) => {
   const p = spawn(process.execPath, [join(dir, F, datei), ...args], { env: env(extra), cwd: dir });

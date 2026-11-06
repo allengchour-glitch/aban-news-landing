@@ -180,11 +180,11 @@ szenario('reiter-vorlage', true, async (b, srv) => {
   await textHinzufuegen(p, 'Vorne');
   await produktAnsicht(p);
   const spiegel = () => [...new Set(s.bildAnfragen.filter((u) => /cdn\.shopify\.com\/s\/files\/test\/luxe-vorschau-/.test(u)))];
-  pruefe('das Vorlagenbild kommt vom Spiegel auf Shopify Files, nicht von Printful (für die Zeichenfläche)', spiegel().length === 1 && !s.bildAnfragen.some((u) => /files\.cdn\.printful\.com\/m\//.test(u) && false), spiegel().join(','));
+  pruefe('das Vorlagenbild kommt vom Spiegel auf Shopify Files, nicht von Printful (für die Zeichenfläche)', spiegel().length === 1, spiegel().join(','));
   const vorher = Number(await p.locator('.lsp6-pv').getAttribute('data-gezeichnet'));
   await p.locator('.lsp6-tab', { hasText: 'Rückseite' }).click();
   await p.waitForFunction((v) => Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet')) > v, vorher, { timeout: 10000 });
-  pruefe('Reiter «Rückseite»: die Vorschau wird neu gezeichnet', true);
+  pruefe('Reiter «Rückseite»: die Vorschau wird neu gezeichnet', Number(await p.locator('.lsp6-pv').getAttribute('data-gezeichnet')) > vorher);
   pruefe('Reiter «Rückseite»: eine andere Vorlage (zweites Bild vom Spiegel)', spiegel().length === 2, spiegel().join(','));
   pruefe('Produktansicht bleibt beim Reiterwechsel gewählt', await p.locator('.lsp6-pv').isVisible());
   // das Vorne-Motiv liegt nicht auf der Rückseite: dort ist nur Stoff

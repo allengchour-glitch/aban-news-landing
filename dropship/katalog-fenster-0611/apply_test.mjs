@@ -441,7 +441,7 @@ try {
   ok([3, 4].includes(r.code) && stand().calls.length === 0 && !/FORTSETZEN/.test(r.aus), 'fremd veränderte Datei neben einer neuen: kein Fortsetzen, nichts geschrieben (Exit ' + r.code + ')');
   // 24f. Kein Fortsetzen ohne Sicherung (der Soll-Stand wäre nicht prüfbar)
   neuerStand({ [NEUE_DATEIEN.KARTE]: soll[NEUE_DATEIEN.KARTE] }); const sv24 = join(PAKET, 'sicherung', sichName(DATEIEN.CSS)), sv24Inhalt = readFileSync(sv24, 'utf8'); rmSync(sv24);
-  r = lauf('', { LIVE: '1' }); ok(r.code !== 0 && stand().calls.length === 0 && !/FORTSETZEN/.test(r.aus), 'ohne Sicherung kein Fortsetzen, nichts geschrieben (Exit ' + r.code + ')'); writeFileSync(sv24, sv24Inhalt);
+  r = lauf('', { LIVE: '1' }); gleich(r.code, 3, 'ohne Sicherung: Exit 3 («Schon eingespielt, oder teilweise»)'); ok(/Schon eingespielt/.test(r.aus) && stand().calls.length === 0 && !/FORTSETZEN/.test(r.aus), 'ohne Sicherung kein Fortsetzen, die vorhandene neue Datei zählt als Teilzustand, nichts geschrieben'); writeFileSync(sv24, sv24Inhalt);
   // 24g. Rücknahme mit FREMD_UEBERSCHREIBEN=1 über eine fremd veränderte Sprachdatei: die Warnung steht in der Meldung, ohne den Schalter Exit 3
   neuerStand(); lauf('', { LIVE: '1' }); const FREMD_SPRACH = '\n'; { const st = stand(); st.files[DATEIEN.EN] += FREMD_SPRACH; writeFileSync(STATE, JSON.stringify(st)); }
   r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 3, 'Rücknahme, fremd veränderte Sprachdatei, ohne Schalter: Exit 3'); ok(stand().files[DATEIEN.EN] === soll[DATEIEN.EN] + FREMD_SPRACH, 'Rücknahme ohne Schalter: die Sprachdatei bleibt unberührt');

@@ -1759,10 +1759,17 @@
       var o = { v: 6, m: karte.printfulProductId, pv: pv, sv: sv == null ? null : String(sv), pl: ids };
       if (Object.keys(dt).length) o.dt = dt;
       if (abweichend) o.px = px;
-      var lage = qualitaetLage();   // qd: kleinste effektive Auflösung aller Fotos in dpi (abgerundet); fehlt, wenn kein Foto mit bekannter Grösse dabei ist
-      if (lage.min !== null) o.qd = Math.floor(lage.min + 1e-9);
       o.ap = Math.round(ap * 100) / 100;
-      return JSON.stringify(o);
+      var text = JSON.stringify(o);
+      // qd: kleinste effektive Auflösung aller Fotos in dpi (abgerundet); fehlt, wenn kein Foto mit bekannter Grösse dabei ist. Reine Angabe für die Bestellstrecke (die Sperre unter dem Mindestwert
+      // steht im Editor): sie darf einen Kauf nie wegen der 255 Zeichen verhindern, darum entfällt sie, wenn sie den Wert über die Grenze brächte (nur bei 4 bis 5 Platzierungen gleichzeitig, GEMESSEN am Katalog).
+      var lage = qualitaetLage();
+      if (lage.min !== null) {
+        o.qd = Math.floor(lage.min + 1e-9);
+        var mit = JSON.stringify(o);
+        if (mit.length <= POD_KARTE_MAX || text.length > POD_KARTE_MAX) text = mit;
+      }
+      return text;
     }
     function eigenschaften() {
       var props = {};

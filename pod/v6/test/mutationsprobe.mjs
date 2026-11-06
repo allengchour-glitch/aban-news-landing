@@ -91,7 +91,7 @@ const MUTANTEN = [
   ['W05 Kaufsperre bei zu kleinem Foto entfällt', "if (qs) { meldung(qs, 'err'); return; }", ""],
   ['W06 Sperrliste rechnet ohne Dichte der Druckdatei', "if (qualitaetStufe(d, karte.minDpi, g.printfile.dpi * g.render.k) === 'sperre') lage.sperren.push(", "if (qualitaetStufe(d, karte.minDpi, null) === 'sperre') lage.sperren.push("],
   ['W07 Anzeige rechnet ohne Dichte der Druckdatei', "var dichte = g.printfile.dpi * g.render.k;\n      var stufe = qualitaetStufe(d, karte.minDpi, dichte);", "var dichte = 0;\n      var stufe = qualitaetStufe(d, karte.minDpi, dichte);"],
-  ['W08 qd fehlt in _pod_karte', "if (lage.min !== null) o.qd = Math.floor(lage.min + 1e-9);", ""],
+  ['W08 qd fehlt in _pod_karte', "o.qd = Math.floor(lage.min + 1e-9);", ""],
   ['W09 qd gerundet statt abgerundet', "o.qd = Math.floor(lage.min + 1e-9);", "o.qd = Math.round(lage.min);"],
   ['W10 Speicher schreiben ohne Schutz (gesperrter Speicher wirft)', "function speicherSchreiben(k, v) { try { var s = window.localStorage; if (!s) return false; s.setItem(k, v); return true; } catch (e) { return false; } }", "function speicherSchreiben(k, v) { var s = window.localStorage; if (!s) return false; s.setItem(k, v); return true; }"],
   ['W11 Speicher lesen ohne Schutz (gesperrter Speicher wirft)', "function speicherLesen(k) { try { var s = window.localStorage; return s ? s.getItem(k) : null; } catch (e) { return null; } }", "function speicherLesen(k) { var s = window.localStorage; return s ? s.getItem(k) : null; }"],
@@ -124,6 +124,8 @@ const MUTANTEN = [
   ['W38 Tassen-Eichung: Winkel über 360 Grad erlaubt', "if (t.winkel != null && !(istZahl(t.winkel) && t.winkel > 90 && t.winkel <= 360)) return false;", "if (t.winkel != null && !istZahl(t.winkel)) return false;"],
   ['W39 Einpassen und Füllen vertauscht', "if ((modus === 'fuellen') === (aspekt >= aw / ah)) { h = ah; w = ah * aspekt; } else { w = aw; h = aw / aspekt; }", "if ((modus !== 'fuellen') === (aspekt >= aw / ah)) { h = ah; w = ah * aspekt; } else { w = aw; h = aw / aspekt; }"],
   ['W40 Kontrastanalyse zählt durchsichtige Pixel mit', "if (a < 0.2) continue;", ""],
+  ['W41 qd bleibt auch dann stehen, wenn es die 255 Zeichen sprengt (Kauf abgelehnt)', "if (mit.length <= POD_KARTE_MAX || text.length > POD_KARTE_MAX) text = mit;", "text = mit;"],
+  ['W42 qd entfällt immer', "if (mit.length <= POD_KARTE_MAX || text.length > POD_KARTE_MAX) text = mit;", "if (false) text = mit;"],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)

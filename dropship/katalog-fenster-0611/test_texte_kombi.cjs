@@ -788,8 +788,11 @@ async function laufeKombi(browser) {
         const weiter = page.locator('[data-lcl-next]'); if (!(await weiter.isVisible()) || !(await weiter.isEnabled())) break; await weiter.click(); await page.waitForTimeout(150);
       }
       ok(karten.length === sichtbar.length, 'Karten: alle ' + sichtbar.length + ' bestellbaren Modelle gelesen', String(karten.length));
+      // unabhängige Titel von Hand (nicht aus TITEL_DE): ein falscher Eintrag in der Tabelle würde sonst mit sich selbst verglichen
+      const TITEL_PIN = { 19: 'Keramik-Tasse, weiss glänzend', 71: 'Unisex-T-Shirt Staple | Bella + Canvas 3001', 474: 'Spiral-Notizbuch', 518: 'Mauspad', 656: 'Magnete mit Konturschnitt', 788: 'Trinkflasche aus Edelstahl mit Strohhalm-Deckel', 1552: 'Alltags-Umhängetasche | QS309' };
       for (const k of karten) {
         const m = E[k.id];
+        if (TITEL_PIN[k.id]) ok(k.titel === TITEL_PIN[k.id], 'Karte M' + k.id + ': Titel gleich dem von Hand geschriebenen «' + TITEL_PIN[k.id] + '»', k.titel);
         ok(k.titel === ST.K.TITEL_DE[k.id], 'Karte M' + k.id + ': deutscher Titel «' + (ST.K.TITEL_DE[k.id] || '?') + '»', k.titel);
         if (m && m.farben.size <= 8) ok(JSON.stringify([...k.farben].sort()) === JSON.stringify([...m.farben].map((f) => FARBE_DE[f] ?? '??' + f).sort()), 'Karte M' + k.id + ': Farbnamen deutsch', k.farben.join(',') + ' | ' + [...m.farben].join(','));
         const erwCm = m ? [...m.groessen].map(cmAusZoll).filter(Boolean) : [];
@@ -810,7 +813,9 @@ async function laufeKombi(browser) {
     ok(sortText === 'Meiste Ausführungen' && !/Original/.test(sortText), 'Sortierung: Etikett «Meiste Ausführungen» (kein «Originalvarianten» mehr)', sortText);
     await page.selectOption('[data-lcl-sort]', 'catalog'); await page.waitForTimeout(200);
     // deutsche Suchwörter finden die Modelle (Titel sind deutsch, dazu Suchwörter für Kappe, Pullover, Beutel, Bio, Hülle)
-    const SUCHE = [['kappe', ['206']], ['pullover', ['145', '821']], ['beutel', ['84', '367']], ['bio', ['456', '821']], ['hülle', ['181', '267', '601', '684', '686', '798']], ['notizbuch', ['474']], ['mauspad', ['518']], ['aufkleber', ['358']], ['magnete', ['656']], ['tasse', ['19']], ['jutebeutel', ['84', '367']], ['handyhülle', ['181', '267']]];
+    // Die letzten sechs Wörter stehen weder in den deutschen Kategorienamen noch in den Suchwörtern: sie finden das Modell nur über den deutschen Titel
+    const SUCHE = [['kappe', ['206']], ['pullover', ['145', '821']], ['beutel', ['84', '367']], ['bio', ['456', '821']], ['hülle', ['181', '267', '601', '684', '686', '798']], ['notizbuch', ['474']], ['mauspad', ['518']], ['aufkleber', ['358']], ['magnete', ['656']], ['tasse', ['19']], ['jutebeutel', ['84', '367']], ['handyhülle', ['181', '267']],
+      ['keramik', ['19']], ['umhängetasche', ['1552']], ['strohhalm', ['788']], ['konturschnitt', ['656']], ['stückgefärbt', ['586']], ['rundhals', ['145']]];
     for (const [wort, erw] of SUCHE) {
       await page.fill('[data-lcl-search]', wort); await page.waitForTimeout(450);
       const treffer = new Set(await kartenIds());

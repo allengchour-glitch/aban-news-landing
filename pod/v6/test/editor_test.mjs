@@ -1256,7 +1256,7 @@ szenario('qualitaetstor', true, async (b, srv) => {
   const pr = s.warenkorb[0].properties;
   const pod = JSON.parse(pr._pod_karte);
   pruefe('_pod_karte.qd = 100 (kleinste effektive dpi des 600-px-Fotos), ganzzahlig', pod.qd === 100 && Number.isInteger(pod.qd), pr._pod_karte);
-  pruefe('_pod_karte mit qd unter 255 Zeichen, Reihenfolge der Felder: px/qd vor ap', pr._pod_karte.length < 255 && pr._pod_karte.indexOf('"qd"') < pr._pod_karte.indexOf('"ap"'), `${pr._pod_karte.length}: ${pr._pod_karte}`);
+  pruefe('_pod_karte mit qd unter 255 Zeichen, qd steht als letztes Feld (nach ap)', pr._pod_karte.length < 255 && pr._pod_karte.indexOf('"qd"') > pr._pod_karte.indexOf('"ap"'), `${pr._pod_karte.length}: ${pr._pod_karte}`);
   pruefe('der Parser der Bestellstrecke liest die Position mit qd ohne Befund', (() => { const g3 = dateienAusEigenschaften(pr); return g3.dateien.length === 1 && g3.probleme.length === 0; })());
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
@@ -1370,9 +1370,9 @@ szenario('entwurf', true, async (b, srv) => {
   const msg = await status(p).innerText();
   pruefe('Reload: Hinweis «Entwurf wurde wiederhergestellt»', /Entwurf wurde wiederhergestellt/.test(msg), msg);
   await p.locator('.lsp6-tab[data-p="front"]').click();
-  pruefe('Reload: Vorderseite zeigt 3 Knoten, das Foto ist geladen', (await p.locator('.lsp6-layer').count()) === 3 && await p.locator('.lsp6-layer img').first().evaluate((i) => i.complete || true));
+  pruefe('Reload: Vorderseite zeigt 3 Knoten, das Foto ist geladen', (await p.locator('.lsp6-layer').count()) === 3 && (await p.locator('.lsp6-layer img').count()) === 1);
   await p.waitForFunction(() => [...document.querySelectorAll('.lsp6-layer img')].every((i) => i.complete && i.naturalWidth > 0), null, { timeout: 8000 });
-  pruefe('Reload: alle Bilder der Bühne geladen', true);
+  pruefe('Reload: alle Bilder der Bühne geladen', await p.evaluate(() => { const l = [...document.querySelectorAll('.lsp6-layer img')]; return l.length === 1 && l.every((i) => i.complete && i.naturalWidth > 0); }));
   const ids = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; return [...e.st.ebenen.front, ...e.st.ebenen.back].map((x) => x.id); });
   await textHinzufuegen(p, 'Neu');
   const ids2 = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; return [...e.st.ebenen.front, ...e.st.ebenen.back].map((x) => x.id); });
@@ -1437,7 +1437,7 @@ szenario('entwurf-grenzen', true, async (b, srv) => {
   // e) alle Ebenen entfernt: der Entwurf verschwindet
   await p.evaluate(() => { const e = window.LSPOD6.editors[0]; e.entfernen(e.st.ebenen.front[0].id); });
   await p.waitForFunction((k) => localStorage.getItem(k) === null, key, { timeout: 5000 });
-  pruefe('ohne Ebenen wird der Entwurf gelöscht', true);
+  pruefe('ohne Ebenen wird der Entwurf gelöscht', (await p.evaluate((k) => localStorage.getItem(k), key)) === null);
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
 });
@@ -1464,6 +1464,26 @@ szenario('entwurf-speicher-gesperrt', true, async (b, srv) => {
     await ctaKlicken(s);
     pruefe(`${name}: Kauf geht durch (Druckdatei, Warenkorb)`, s.warenkorb.length === 1 && /^https:/.test(s.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || ''));
     pruefe(`${name}: 0 Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
+    await s.schliessen();
+  }
+});
+
+// ── qd ist nur eine Angabe: es darf den Kauf nie wegen der 255 Zeichen von _pod_karte verhindern ─────────
+szenario('qd-entfaellt-bei-255', true, async (b, srv) => {
+  // Künstliche Karte mit n Platzierungen, auf jeder ein 600-px-Foto (100 dpi, über dem Mindestwert 75). Berechnet (Test unten prüft die Länge): n=19 ergibt mit qd 252 Zeichen (passt),
+  // n=20 ergibt ohne qd 253, mit qd 262: dann entfällt qd, statt den Kauf mit «Zu viele Druckflächen» abzulehnen.
+  for (const [n, mitQd] of [[19, true], [20, false]]) {
+    const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=syn&n=${n}` });
+    await editorBereit(s.page);
+    const p = s.page;
+    await p.evaluate(([src]) => { const e = window.LSPOD6.editors[0]; for (const id of Object.keys(e.st.ebenen)) { e.wechseln(id); e.neuesBild(src, 600, 600); } }, [dataUrl(600, 600)]);
+    const wert = await p.evaluate(() => window.LSPOD6.editors[0].eigenschaften()._pod_karte);
+    const pod = JSON.parse(wert);
+    pruefe(`${n} Platzierungen mit Foto: _pod_karte höchstens 255 Zeichen, qd ${mitQd ? 'steht (100)' : 'entfällt'}`, wert.length <= 255 && pod.pl.length === n && (mitQd ? pod.qd === 100 : !('qd' in pod)), `${wert.length}: ${wert}`);
+    pruefe(`${n} Platzierungen: die Sperre im Editor gilt unabhängig von qd (Kauf frei, weil 100 dpi über 75)`, !(await gesperrt(p)));
+    await ctaKlicken(s);
+    const pr = s.warenkorb[0].properties;
+    pruefe(`${n} Platzierungen: der Kauf geht durch (Warenkorb mit ${n} Druckdateien), der Parser der Bestellstrecke liest sie ohne Befund`, Object.keys(pr).filter((k) => /Druckdatei/.test(k)).length === n && (() => { const g = dateienAusEigenschaften(pr); return g.dateien.length === n && g.probleme.length === 0; })(), JSON.stringify(Object.keys(pr).length));
     await s.schliessen();
   }
 });
