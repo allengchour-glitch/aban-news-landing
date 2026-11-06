@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 119,
-  "updatedAt": "2026-11-06T16:34:27+01:00",
+  "revision": 120,
+  "updatedAt": "2026-11-06T17:08:28+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14027,5 +14027,80 @@
     "customerMessages": 0,
     "renders": 0,
     "orderReads": 0
+  },
+  "followUpRunR120": {
+    "at": "2026-11-06T17:08:28+01:00",
+    "actualUpdates": [
+      "Six additional live collection descriptionHtml values polished with neutral introductions and quick-find navigation",
+      "Six live collection SEO descriptions updated",
+      "Two collection SEO titles neutralized; four other SEO titles remained exact",
+      "Thirty-eight unique internal collection links verified direct with HTTP 200 and no redirect",
+      "Admin and public readbacks completed for all six collections",
+      "R120 project documentation only after the Shopify collection writes"
+    ],
+    "identities": "Shopify LuxeStyle/luxestyle.ch/CHF/CH/CET matched.",
+    "coordination": "No overlap between the six collection handles and current Claude work at origin/main e6fc42e40. No-go handles remained untouched; no theme file or old patch was applied.",
+    "collections": {
+      "handles": [
+        "kuechenhelfer",
+        "wohnen-bad",
+        "beauty-geraete",
+        "licht-nachtlicht-projektor",
+        "schmuck-uhren",
+        "sub-reise"
+      ],
+      "descriptionHtmlWrites": 6,
+      "seoDescriptionWrites": 6,
+      "seoTitleWrites": 2,
+      "unchangedSeoTitles": 4,
+      "verifiedSubcategoryLinks": 38,
+      "directWithoutRedirect": 38,
+      "descriptionLinkCounts": [
+        6,
+        7,
+        6,
+        6,
+        6,
+        7
+      ],
+      "adminExactDescriptionReadbacks": 6,
+      "adminExactSeoDescriptionReadbacks": 6,
+      "adminChangedSeoTitleReadbacks": 2,
+      "adminUnchangedSeoTitleReadbacks": 4,
+      "publicHttp200ExactUrlCanonicalH1TitleMetaQuickFindAndLinkCountReadbacks": 6,
+      "oldProblemContentAbsentFromCollectionDescriptionBlocks": 6,
+      "unchanged": "collection titles, handles, images/alt texts, sort order, product assignments, product prices and four SEO titles"
+    },
+    "categoryProgress": {
+      "collectionsPolishedThisRun": 6,
+      "collectionsPolishedAcrossR118R120": 18,
+      "fullCategoryCatalogDenominator": "unknown",
+      "fullCategoryCatalogPercentComplete": "unknown"
+    },
+    "remainingCategoryIssues": [
+      "global category FAQ still contains unsupported Swiss-warehouse, delivery-time, discount and blanket return wording; separate blocker, no theme write"
+    ],
+    "nextStep": "Continue category-only polishing on non-overlapping handles after fresh checks. Treat the global FAQ as a separate bounded task.",
+    "shopifyCollectionDescriptionWrites": 6,
+    "shopifyCollectionSeoDescriptionWrites": 6,
+    "shopifyCollectionSeoTitleWrites": 2,
+    "collectionRuleWrites": 0,
+    "productAssignmentWrites": 0,
+    "productWrites": 0,
+    "priceWrites": 0,
+    "imageWrites": 0,
+    "sortOrderWrites": 0,
+    "themeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "customerMessages": 0,
+    "renders": 0,
+    "orderReads": 0,
+    "orderWrites": 0
   }
 }

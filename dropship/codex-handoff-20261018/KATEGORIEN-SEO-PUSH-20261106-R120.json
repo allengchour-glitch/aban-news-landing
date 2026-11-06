@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R120_20261106",
+  "checkedAt": "2026-11-06T17:08:28+01:00",
+  "timezone": "Europe/Zurich",
+  "repositoryHeadBeforeDocumentation": "de96ee8001d8aebec4888aeb43a593fba596eac5",
+  "scope": "six_additional_collection_seo_and_description_polish_only",
+  "identity": {
+    "shopName": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "CH",
+    "shopTimezone": "CET",
+    "matched": true
+  },
+  "coordination": {
+    "claudeOriginMain": "e6fc42e40",
+    "claudeHandleOverlap": false,
+    "noGoHandles": [
+      "kostueme-ch-lager",
+      "aus-tiktok-und-instagram",
+      "weihnachtspyjama-familie",
+      "kuschel-heizdecken"
+    ],
+    "themeDecision": "No theme files changed. MAIN contains newer global category-theme work; older patches were not reused."
+  },
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/689362698625",
+      "handle": "kuechenhelfer",
+      "title": "Küchenhelfer & Gadgets",
+      "finalUpdatedAt": "2026-11-06T16:06:52Z",
+      "url": "https://luxestyle.ch/collections/kuechenhelfer",
+      "productsCount": 437,
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description",
+        "seo.title"
+      ],
+      "subcategoryLinks": [
+        "/collections/kuechen-gadgets",
+        "/collections/kuechen-organizer",
+        "/collections/kuechenmaschinen-geraete",
+        "/collections/geschirr-servieren",
+        "/collections/kochen-backen",
+        "/collections/sub-kueche"
+      ],
+      "removedUnsupportedContent": [
+        "individual appliance focus",
+        "delivery claims",
+        "blanket return claims",
+        "discount-code claims"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/690802131329",
+      "handle": "wohnen-bad",
+      "title": "Badezimmer",
+      "finalUpdatedAt": "2026-11-06T16:06:54Z",
+      "url": "https://luxestyle.ch/collections/wohnen-bad",
+      "productsCount": 128,
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "subcategoryLinks": [
+        "/collections/badematten-badteppiche",
+        "/collections/duschkoepfe-handbrausen",
+        "/collections/handtuchhalter",
+        "/collections/armaturen-duschen",
+        "/collections/duschvorhaenge-duschstangen",
+        "/collections/regale-badregale",
+        "/collections/wohnen-dekoration"
+      ],
+      "removedUnsupportedContent": [
+        "blanket material claims",
+        "blanket mounting and function claims",
+        "payment claims",
+        "delivery claims",
+        "blanket return claims"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/689316692353",
+      "handle": "beauty-geraete",
+      "title": "Beauty-Geräte & Haarentfernung",
+      "finalUpdatedAt": "2026-11-06T16:06:55Z",
+      "url": "https://luxestyle.ch/collections/beauty-geraete",
+      "productsCount": 184,
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "subcategoryLinks": [
+        "/collections/led-masken-lichtgeraete",
+        "/collections/gesichtsreinigungsgeraete",
+        "/collections/haarentfernung-epilierer",
+        "/collections/ipl-haarentfernung",
+        "/collections/beauty-hautpflege",
+        "/collections/beauty-pflege"
+      ],
+      "removedUnsupportedContent": [
+        "skin effect claims",
+        "anti-aging claims",
+        "professional-care claims",
+        "blanket return claims",
+        "fragile guide link"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/690626658689",
+      "handle": "licht-nachtlicht-projektor",
+      "title": "Nachtlicht & Projektoren",
+      "finalUpdatedAt": "2026-11-06T16:06:57Z",
+      "url": "https://luxestyle.ch/collections/licht-nachtlicht-projektor",
+      "productsCount": 134,
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description",
+        "seo.title"
+      ],
+      "subcategoryLinks": [
+        "/collections/nachtlichter-ambiente",
+        "/collections/licht-tischlampe",
+        "/collections/licht-decken-steh",
+        "/collections/licht-led-strip",
+        "/collections/lampen-leuchten",
+        "/collections/sub-beleuchtung"
+      ],
+      "removedUnsupportedContent": [
+        "collection-wide projection claims",
+        "collection-wide music and app claims",
+        "collection-wide sensor and timer claims",
+        "collection-wide material claims",
+        "blanket child-room suitability claims"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/692904526209",
+      "handle": "schmuck-uhren",
+      "title": "Schmuck & Uhren",
+      "finalUpdatedAt": "2026-11-06T16:06:58Z",
+      "url": "https://luxestyle.ch/collections/schmuck-uhren",
+      "productsCount": 3648,
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "subcategoryLinks": [
+        "/collections/sub-halsketten",
+        "/collections/sub-armbaender",
+        "/collections/sub-ringe",
+        "/collections/sub-ohrringe",
+        "/collections/uhren",
+        "/collections/uhrenarmbaender-smartwatch"
+      ],
+      "removedUnsupportedContent": [
+        "blanket price claims",
+        "blanket material claims",
+        "delivery-time claims",
+        "shipping-price claims",
+        "blanket return claims"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688564502913",
+      "handle": "sub-reise",
+      "title": "Reise & Outdoor",
+      "finalUpdatedAt": "2026-11-06T16:06:59Z",
+      "url": "https://luxestyle.ch/collections/sub-reise",
+      "productsCount": 930,
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "subcategoryLinks": [
+        "/collections/reisegepaeck",
+        "/collections/reise-gadgets",
+        "/collections/reise-rucksaecke",
+        "/collections/schlafmasken-nackenkissen",
+        "/collections/camping-outdoor",
+        "/collections/wander-outdoor-rucksaecke",
+        "/collections/sub-taschen"
+      ],
+      "removedUnsupportedContent": [
+        "quality claims",
+        "robustness and comfort claims",
+        "blanket return claims",
+        "weak pool link",
+        "weak jackets link"
+      ]
+    }
+  ],
+  "verification": {
+    "adminExactDescriptionReadbacks": 6,
+    "adminExactSeoDescriptionReadbacks": 6,
+    "adminChangedSeoTitleReadbacks": 2,
+    "adminUnchangedSeoTitleReadbacks": 4,
+    "publicHttp200": 6,
+    "publicEffectiveUrlExact": 6,
+    "publicCanonicalExact": 6,
+    "publicH1Exact": 6,
+    "publicSeoTitleExact": 6,
+    "publicMetaDescriptionExact": 6,
+    "publicQuickFindHeadingPresent": 6,
+    "descriptionLinkCounts": [
+      6,
+      7,
+      6,
+      6,
+      6,
+      7
+    ],
+    "verifiedSubcategoryLinks": 38,
+    "expectedSubcategoryLinks": 38,
+    "directWithoutRedirect": 38,
+    "oldProblemContentAbsentFromCollectionDescriptionBlocks": 6,
+    "unchangedFields": [
+      "collection title",
+      "handle",
+      "collection image",
+      "collection image alt text",
+      "sort order",
+      "product assignments",
+      "product prices",
+      "four SEO titles"
+    ]
+  },
+  "remainingThemeBlocker": {
+    "status": "OPEN",
+    "surface": "global category FAQ rendered by theme",
+    "claimClasses": [
+      "Swiss-warehouse wording",
+      "delivery-time wording",
+      "global discount wording",
+      "blanket return wording"
+    ],
+    "reasonNotChanged": "PR2907 changed global category theme files in MAIN; old patches were not reused and direct MAIN theme writes are blocked."
+  },
+  "progress": {
+    "collectionsPolishedThisRun": 6,
+    "collectionsPolishedAcrossR118R120": 18,
+    "fullCategoryCatalogDenominator": "unknown",
+    "fullCategoryCatalogPercentComplete": "unknown"
+  },
+  "writeSummary": {
+    "shopifyCollectionDescriptionWrites": 6,
+    "shopifyCollectionSeoDescriptionWrites": 6,
+    "shopifyCollectionSeoTitleWrites": 2,
+    "collectionRuleWrites": 0,
+    "productAssignmentWrites": 0,
+    "productWrites": 0,
+    "priceWrites": 0,
+    "imageWrites": 0,
+    "sortOrderWrites": 0,
+    "themeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "customerMessages": 0,
+    "orderWrites": 0,
+    "renders": 0
+  }
+}

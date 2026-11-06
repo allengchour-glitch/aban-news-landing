@@ -1203,3 +1203,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R119-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Revision 119; Kategorien-Gesamtfortschritt unbekannt. Keine Regel-, Produkt-, Preis-, Bild-, Sortier-, Theme-, Merchant-, Feed-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderänderung |
 
 [LUXESTYLE_R119_20261106] [Sechs weitere Kategorien live poliert](KATEGORIEN-POLITUR-20261106-R119.md) · [Maschinenlesbare Belege](KATEGORIEN-POLITUR-20261106-R119.json). Sechs Beschreibungen, sechs SEO-Beschreibungen und ein SEO-Titel aktualisiert; 37/37 neue Ziele direkt erreichbar.
+
+### R120
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/luxestyle.ch/CHF/CH/CET und aktuelle Claude-Arbeit gegen `origin/main` `e6fc42e40` geprüft | Identität passend; keine Überschneidung der sechs Handles. No-go-Handles erhalten; keine Theme-Datei geändert |
+| Sechs weitere Collections | Bei Küchenhelfer & Gadgets, Badezimmer, Beauty-Geräte & Haarentfernung, Nachtlicht & Projektoren, Schmuck & Uhren sowie Reise & Outdoor `descriptionHtml` und SEO-Beschreibung aktualisiert; zwei SEO-Titel zusätzlich neutralisiert | Sachliche Einleitungen, «Schnell finden» und 38 eindeutige Collection-Ziele live. Unbelegte Claims und unpassende Pool-/Jackenlinks aus den jeweiligen Collection-Blöcken entfernt |
+| Rücklesung / Schutzfelder | Admin und öffentliche Seiten gezielt zurückgelesen; alle 38 Ziele einzeln geprüft | Admin 6/6 exakt. Öffentlich 6/6 HTTP 200 mit exakter URL/Canonical/H1/Titel/Meta/«Schnell finden»/Linkzahl; 38/38 Ziele HTTP 200 ohne Redirect. Vier SEO-Titel, Collection-Titel/Handles/Bilder/Alttexte/Sortierung/Produktzuordnungen/Preise unverändert |
+| Offener Theme-Blocker | Globale Kategorie-FAQ getrennt eingeordnet | Unbelegte Schweizer-Lager-, Lieferzeit-, Rabatt- und pauschale Rückgabeclaims bleiben separat offen; kein Theme-Write |
+| Grenzen / Dokumentation | R120-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Revision 120; R118–R120 zusammen 18 Collections, Gesamtnenner und Prozent unbekannt. Keine anderen Writes |
+
+[LUXESTYLE_R120_20261106] [Sechs weitere Kategorien live SEO-poliert](KATEGORIEN-SEO-PUSH-20261106-R120.md) · [Maschinenlesbare Belege](KATEGORIEN-SEO-PUSH-20261106-R120.json). Sechs Beschreibungen, sechs SEO-Beschreibungen und zwei SEO-Titel aktualisiert; 38/38 eindeutige Ziele direkt erreichbar.
