@@ -9,7 +9,7 @@ import vm from 'node:vm';
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
-import { hier, repo, V6_DATEI, V5_DATEI } from './lib.mjs';
+import { hier, repo, V6_DATEI, V5_DATEI, istUmgebungsfehler } from './lib.mjs';
 import { aufpreisChf as aufpreisRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs';
 import { schweizerZahl as zahlRef } from '../../../dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse.mjs';
 import { pathToFileURL } from 'node:url';
@@ -558,6 +558,21 @@ if (NEU) {
       pruefe('CLI: fehlendes Modell = Exit 1 und Meldung', d.status === 1 && /999999/.test(d.stdout), `${d.status}`);
     } finally { rmSync(tmp, { recursive: true, force: true }); }
   }
+}
+
+// ── Mutationsprobe: Umgebungsfehler zählen nie als «erkannt» (Fund Gegenleser 1, Container-Absturz mitten im Lauf: 27 Zeilen «browser has been closed» wären als erkannte Mutanten gezählt worden) ──
+{
+  for (const [text, soll] of [
+    ["  ✗ qd-entfaellt-bei-255: Ausnahme browser.newContext: Target page, context or browser has been closed", true],
+    ["browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium-1234/chrome-linux/headless_shell", true],
+    ["Error: ENOSPC: no space left on device, write", true],
+    ["Error: listen EADDRINUSE: address already in use 127.0.0.1:4455", true],
+    ["Error: spawn /opt/node22/bin/node ENOENT", true],
+    ["  ✗ fristen: Ausnahme locator.waitFor: Timeout 8000ms exceeded.", false],
+    ["  ✗ Sichtfenster: 10 % Rand um die längere Seite ist=736.8 soll=871.4", false],
+    ["  ✗ keine Seitenfehler pageerror: TypeError: Cannot read properties of undefined (reading 'st')", false],
+    ["", false],
+  ]) pruefe('Mutationsprobe: Umgebungsfehler erkannt = ' + soll + ' für «' + text.slice(0, 60) + '»', istUmgebungsfehler(text) === soll);
 }
 
 // ── v5 ist unverändert ─────────────────────────────────────────────────────────────────────────────
