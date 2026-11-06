@@ -575,6 +575,25 @@ szenario('export-jpeg', true, async (b, srv) => {
   const k = await info();
   pruefe('kleineres Rausch-Foto passt unter 80 KB (die Qualität wird gesenkt, die Grösse bleibt 800 × 800)', !!k && k.size <= 81920 && k.w === 800, JSON.stringify(k));
   await s.schliessen();
+  // Poster: die Papierfläche ist gross genug, dass Rauschen die Grenze wirklich reisst (auf dem T-Shirt bleibt selbst Rauschen unter 50 KB, GEMESSEN)
+  const q = await oeffnen(b, srv, 'karte=268&shop=1001:19515&vorschau=268');
+  const pq = q.page; await sichtWarten(pq);
+  const stufen = (px, sc) => pq.evaluate(async ([b64, px2, sc2]) => {
+    const ed = window.LSPOD6.editors[0];
+    ed.st.ebenen[ed.st.aktiv].slice().forEach((x) => ed.entfernen(x.id));
+    const e = ed.neuesBild('data:image/png;base64,' + b64, px2, px2); e.scale = sc2;
+    const cv = document.createElement('canvas'); cv.width = 800; cv.height = 800;
+    const z = await ed.vorschauZeichnen(cv, {});
+    const groessen = []; for (const qq of [0.85, 0.72, 0.6, 0.48]) groessen.push(await new Promise((ok) => cv.toBlob((x) => ok(x.size), 'image/jpeg', qq)));
+    const ex = await ed.vorschauExport();
+    return { ok: z.ok, groessen, export: ex ? ex.size : null };
+  }, [pngRauschen(px, px).toString('base64'), px, sc]);
+  const leiter = await stufen(500, 1.2);
+  pruefe('Qualitätsleiter: bei 0,85 wäre die Datei über 80 KB, der Editor senkt die Qualität und liefert ein Bild unter 80 KB', leiter.ok && leiter.groessen[0] > 81920 && leiter.export !== null && leiter.export > 0 && leiter.export <= 81920 && leiter.export < leiter.groessen[0], JSON.stringify(leiter));
+  const schwer = await stufen(800, 3);
+  pruefe('zu schweres Bild: selbst bei der niedrigsten Qualität über 80 KB, dann liefert der Editor KEIN Bild (nie eine zu grosse Datei)', schwer.ok && schwer.groessen.every((g) => g > 81920) && schwer.export === null, JSON.stringify(schwer));
+  pruefe('Poster-Export: keine Seitenfehler', q.fehler.length === 0, q.fehler.join(' | '));
+  await q.schliessen();
 });
 
 // ── 9. Warenkorb: Eigenschaft «_vorschau» ────────────────────────────────────────────────────────
@@ -605,6 +624,20 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   pruefe('JPEG-Upload scheitert: Warenkorb trotzdem gefüllt, ohne _vorschau, Druckdatei da', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && /^https:/.test(t.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || ''), JSON.stringify(Object.keys(t.warenkorb[0]?.properties || {})));
   pruefe('JPEG-Upload scheitert: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
+  // Der Warenkorb lehnt ab: die hochgeladene Vorschau-Adresse darf weder im Formular der Seite noch nach einer Änderung stehen bleiben (sie gehört zu einem älteren Stand des Entwurfs)
+  const f = await oeffnen(b, srv, TSHIRT, { warenkorbFehler: true });
+  await sichtWarten(f.page);
+  await textHinzufuegen(f.page, 'Hallo');
+  await f.page.locator('.lsp6-cta').click();
+  await f.page.waitForFunction(() => /Could not|Hinzufügen|nicht/i.test(document.querySelector('.lsp6-status').textContent) && !document.querySelector('.lsp6-cta').disabled, null, { timeout: 20000 });
+  const formVorschau = () => f.page.evaluate(() => Array.from(document.querySelectorAll('#produkt-form input[data-lspod6="1"]')).map((i) => i.name));
+  pruefe('Warenkorb lehnt ab: JPEG wurde hochgeladen, aber im Formular der Seite steht keine «_vorschau»', f.uploads.some((u) => u.typ === 'jpeg') && !(await formVorschau()).some((n2) => /_vorschau/.test(n2)), JSON.stringify(await formVorschau()));
+  await f.page.evaluate(() => { const ed = window.LSPOD6.editors[0]; const e = ed.st.ebenen.front[0]; e.text = 'Anderer Text'; ed.waehlen(e.id); });
+  await f.page.locator('.lsp6-text').fill('Noch ein anderer Text');
+  await f.page.waitForTimeout(200);
+  pruefe('nach einer Änderung: weiter keine «_vorschau» im Formular (nur Design, Druckdatei-Platz und _pod_karte)', !(await formVorschau()).some((n2) => /_vorschau/.test(n2)), JSON.stringify(await formVorschau()));
+  pruefe('Warenkorb-Fehler: keine Seitenfehler', f.fehler.length === 0, f.fehler.join(' | '));
+  await f.schliessen();
   // Tasse: Vorschau aus dem Zylinder
   const m = await oeffnen(b, srv, TASSE);
   await sichtWarten(m.page);
@@ -663,6 +696,40 @@ szenario('kontrast', true, async (b, srv) => {
   await warteGezeichnet(v);
   await p.waitForFunction(() => document.querySelector('[data-feld="kontrast"]').hidden, null, { timeout: 8000 });
   pruefe('rotes Motiv auf weissem Stoff: kein Hinweis', await hinweis().isHidden());
+  // Schwelle des Kontrastverhältnisses (1,8 nach WCAG): auf Weiss ein Grau mit Verhältnis 1,5 = Hinweis, mit 2,6 = kein Hinweis
+  const neuZeichnen = async () => {
+    const w = await zaehler();
+    await p.evaluate(() => { const ed = window.LSPOD6.editors[0]; ed.sichtSetzen('druck'); ed.sichtSetzen('produkt'); });
+    await warteGezeichnet(w);
+  };
+  for (const [ver, erwartet] of [[1.5, true], [2.6, false], [1.7, true], [1.95, false]]) {
+    const grau = grauFuerVerhaeltnis(ver);
+    await p.evaluate((c) => { const e = window.LSPOD6.editors[0].st.ebenen.front[0]; e.color = c; e.bold = true; }, grau);
+    await neuZeichnen();
+    pruefe(`Schwelle: Motiv ${grau} auf weissem Stoff (Kontrastverhältnis ${ver}): ${erwartet ? 'Hinweis «hell auf hell»' : 'kein Hinweis'}`, (await hinweis().isVisible()) === erwartet, grau);
+  }
+  // Anteil der schlecht lesbaren Fläche (60 %): auf schwarzem Stoff dunkle und weisse Texte gleicher Grösse; Anteil vorher gemessen (wie im Editor: 48 px breit, nach Alpha gewichtet)
+  await p.locator('input[name="id"][value="1002"]').check();
+  await p.waitForFunction(() => window.LSPOD6.editors[0].st.pfVariante === 4020);
+  const anteil = () => p.evaluate(async () => {
+    const ed = window.LSPOD6.editors[0];
+    const cv = document.createElement('canvas'); cv.width = 800; cv.height = 800;
+    const r = await ed.vorschauZeichnen(cv, {});
+    const k = document.createElement('canvas'); k.width = 48; k.height = Math.max(8, Math.round(48 * r.dcv.height / r.dcv.width));
+    k.getContext('2d').drawImage(r.dcv, 0, 0, k.width, k.height);
+    const rgb = [parseInt(r.stoff.slice(1, 3), 16), parseInt(r.stoff.slice(3, 5), 16), parseInt(r.stoff.slice(5, 7), 16)];
+    return window.LSPOD6.hilfen.kontrastAnalyse(k.getContext('2d').getImageData(0, 0, k.width, k.height).data, rgb).anteil;
+  });
+  const text3 = (farbe, cy) => p.evaluate(([f, y]) => { const ed = window.LSPOD6.editors[0]; const e = ed.neuerText('HHHH'); e.color = f; e.cx = 0.5; e.cy = y; return e.id; }, [farbe, cy]);
+  await p.evaluate(() => { const ed = window.LSPOD6.editors[0]; ed.st.ebenen.front.slice().forEach((x) => ed.entfernen(x.id)); });
+  await text3('#111111', 0.3); await text3('#111111', 0.5); await text3('#ffffff', 0.7);
+  const a21 = await anteil();
+  await neuZeichnen();
+  pruefe(`Anteil: zwei dunkle und ein weisser Text auf Schwarz = ${(a21 * 100).toFixed(0)} % schlecht lesbar (unter 60 %): kein Hinweis`, a21 > 0.45 && a21 < 0.58 && await hinweis().isHidden(), String(a21));
+  await text3('#111111', 0.15);
+  const a31 = await anteil();
+  await neuZeichnen();
+  pruefe(`Anteil: drei dunkle und ein weisser Text auf Schwarz = ${(a31 * 100).toFixed(0)} % schlecht lesbar (über 60 %): Hinweis «dunkel auf dunkel»`, a31 > 0.62 && a31 < 0.85 && await hinweis().isVisible() && /dunkel/.test(await hinweis().innerText()), String(a31));
   // der Hinweis ist nur eine Warnung: der Kauf bleibt möglich
   pruefe('Kontrast-Hinweis sperrt den Kauf nicht', (await p.locator('.lsp6-cta').getAttribute('aria-disabled')) === null);
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
@@ -693,6 +760,29 @@ szenario('live-neuzeichnen', true, async (b, srv) => {
   await p.waitForTimeout(400);
   const v4 = Number(await p.locator('.lsp6-pv').getAttribute('data-gezeichnet'));
   pruefe('25 schnelle Änderungen ergeben höchstens 4 Zeichenläufe', v4 - v3 >= 1 && v4 - v3 <= 4, String(v4 - v3));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+// ── 11b. Zeichenflächen werden freigegeben (iOS-Safari begrenzt den Speicher aller Zeichenflächen) ────────────────
+szenario('leinwaende-freigeben', true, async (b, srv) => {
+  const zaehler = `(() => { const o = document.createElement.bind(document); window.__cvs = []; document.createElement = function (t, ...r) { const e = o(t, ...r); if (String(t).toLowerCase() === 'canvas') window.__cvs.push(e); return e; }; })();`;
+  const s = await oeffnen(b, srv, TSHIRT, { initSkript: zaehler });
+  const p = s.page; await sichtWarten(p);
+  await textHinzufuegen(p, 'Hallo');
+  await produktAnsicht(p);
+  for (let i = 0; i < 12; i++) {
+    const v = Number(await p.locator('.lsp6-pv').getAttribute('data-gezeichnet'));
+    await p.evaluate((i2) => { const ed = window.LSPOD6.editors[0]; const e = ed.st.ebenen.front[0]; e.text = 'Text ' + i2; ed.waehlen(e.id); }, i);
+    await p.waitForFunction((x) => Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet')) > x, v, { timeout: 8000 });
+  }
+  await p.waitForTimeout(300);
+  const z = await p.evaluate(() => ({ gesamt: window.__cvs.length, lebend: window.__cvs.filter((c) => !c.isConnected && c.width > 0 && c.height > 0).length }));
+  pruefe(`nach 12 Neuzeichnungen sind ausserhalb der Seite höchstens 3 Zeichenflächen mit Inhalt übrig (${z.gesamt} wurden angelegt, ${z.lebend} nicht freigegeben)`, z.gesamt >= 24 && z.lebend <= 3, JSON.stringify(z));
+  // der Export gibt seine Flächen ebenfalls frei
+  await p.evaluate(async () => { const ed = window.LSPOD6.editors[0]; for (let i = 0; i < 4; i++) await ed.vorschauExport(); });
+  const z2 = await p.evaluate(() => window.__cvs.filter((c) => !c.isConnected && c.width > 0 && c.height > 0).length);
+  pruefe('nach vier Exporten bleibt es bei höchstens 3 nicht freigegebenen Zeichenflächen', z2 <= 3, String(z2));
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
 });
@@ -744,7 +834,7 @@ szenario('zeichenzeit', false, async (b, srv) => {
     return { median: zeiten[10], max: zeiten[19] };
   });
   console.log(`    Zeichenzeit Tasse bei 1000 px (bis zum Raster): Median ${mt.median.toFixed(1)} ms, max ${mt.max.toFixed(1)} ms`);
-  pruefe('Tasse (Zylinder, 380 Streifen) bei 1000 px: Median höchstens 30 ms', mt.median <= 30, JSON.stringify(mt));
+  pruefe('Tasse (Zylinder, 48 Scheiben) bei 1000 px: Median höchstens 30 ms', mt.median <= 30, JSON.stringify(mt));
   await t.schliessen();
 });
 
