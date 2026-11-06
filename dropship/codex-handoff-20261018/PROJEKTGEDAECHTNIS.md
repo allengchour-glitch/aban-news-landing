@@ -932,3 +932,10 @@ Vor jedem R108-Write wurden Remote-Heads, exakte IDs/Handles und Shopify `update
 [Live-Korrekturen und Schutzbelege](PRODUKT-SEO-LIVE-20261106-R112.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R112.json). Frosch-Halskrause15506878333313 und fünfteiliges Kostümset16604923298183 wurden auf sichtbare Merkmale und aktuelle Optionen begrenzt. Zwei `productUpdate`, zwei `fileUpdate`, zwölf Alttexte, keine userErrors/Retries; Admin-/Storefront-Readbacks und unabhängige QA2/2 GO.
 
 Zehn Varianten, CHF-Preise, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und13 Publikationen erhalten. Frischer Claude-Abgleich vor jedem Produkt ohne exakte Überschneidung; Receipt/Live-Lock unbekannt. Bildrechte unbekannt; Halskrause zusätzlich wegen medizinischer Taxonomie Social-blockiert. Streng49/56’506=0,08672 %, gerundet0,09 %;56’457/rund99,91 % offen. Keine sonstigen externen Writes oder Tagesreport-Wiederholung.
+
+
+## 06.11.2026 – R113 Hundebett und Weinflaschentasche, Revision 113
+
+[Live-Korrekturen und Schutzbelege](PRODUKT-SEO-LIVE-20261106-R113.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R113.json). Hundebett15453794959745 und Weinflaschentasche15449028297089 wurden auf sichtbare Merkmale und aktuelle Optionen begrenzt. Zwei `productUpdate`, zwei `fileUpdate`, elf Alttexte, keine Shopify-userErrors oder Write-Retries; Admin-/Storefront-Readbacks und unabhängige QA2/2 GO.
+
+Sechs Varianten, CHF-Preise, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und16 Publikationen erhalten. Frischer Claude-Abgleich vor jedem Produkt ohne redaktionelle Überschneidung; Receipt/Live-Lock unbekannt. `rueckhol-0907` und Bildrechte blockieren Social. Streng51/56’506=0,09026 %, gerundet0,09 %;56’455/rund99,91 % offen. Keine sonstigen externen Writes.

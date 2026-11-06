@@ -1117,3 +1117,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R112 Dokumentation / Grenzen | Berichte, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeschrieben | Revision112 vorbereitet; keine Merchant-/Feed-/Versand-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung und keine Tagesreport-Wiederholung |
 
 [LUXESTYLE_R112_20261106] [Zwei weitere Produkte live korrigiert](PRODUKT-SEO-LIVE-20261106-R112.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R112.json). Halskrause und Kostümset mit zehn geschützten Varianten, zwölf Alttexten, vollständigen Readbacks, Claude-Overlap-Gegenprobe und unabhängiger QA2/2 GO;49/56’506 streng abgeschlossen.
+
+
+### R113
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Claude-Abgleich | Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/Europe/Zurich samt sechs Kanälen passend gelesen; vor jedem Produkt Remote-Heads, offene PRs, exakte IDs/Handles/SKUs und Shopify `updatedAt` geprüft | Keine redaktionelle Claude-Überschneidung; Receipt/Live-Lock unbekannt. Metricool ohne Write |
+| Hundebett15453794959745 | Unbelegte Material-, Komfort-, Stabilitäts-, Langlebigkeits-, Gewichts-, Liefer-, Rabatt- und Zahlungsclaims entfernt; Titel, Body, SEO und sechs Alttexte auf sichtbare Form und fünf Farben begrenzt | Ein `productUpdate` und ein `fileUpdate`, keine userErrors/Write-Retry; fünf Varianten CHF89.90 und acht Publikationen erhalten |
+| Weinflaschentasche15449028297089 | Unbelegte Kühl-, Temperatur-, Isolations-, Material-, Liefer-, Rabatt- und Zahlungsclaims entfernt; Titel, Body, SEO und fünf Alttexte auf sichtbare Merkmale begrenzt | Ein `productUpdate` und ein `fileUpdate`, keine userErrors/Write-Retry; eine Variante CHF15.90 und acht Publikationen erhalten |
+| QA / Rechte / Fortschritt | Nach jedem gesendeten Write Admin und öffentliche HTML-/Produkt-JSON-Seiten zurückgelesen; unabhängige Schlussprüfung | QA2/2 GO;6 Varianten,11 Alttexte,11 Medien,16 Publikationen geschützt. `rueckhol-0907` und unbekannte Bildrechte blockieren Social. Streng51/56’506=0,09026 %, rund0,09 %;56’455/rund99,91 % offen |
+| Dokumentation / Grenzen | Berichte, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeschrieben | Revision113 vorbereitet; keine Merchant-/Feed-/Versand-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung |
+
+[LUXESTYLE_R113_20261106] [Hundebett und Weinflaschentasche live korrigiert](PRODUKT-SEO-LIVE-20261106-R113.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R113.json). Sechs geschützte Varianten, elf Alttexte, vollständige Readbacks, Claude-Overlap-Gegenprobe und unabhängige QA2/2 GO;51/56’506 streng abgeschlossen.

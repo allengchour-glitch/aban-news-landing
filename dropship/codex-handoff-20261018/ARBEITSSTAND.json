@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 112,
-  "updatedAt": "2026-11-06T00:08:11+01:00",
+  "revision": 113,
+  "updatedAt": "2026-11-06T06:39:57+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13615,6 +13615,35 @@
     "blockedBy": [
       "commercial editing and advertising rights for product images unknown",
       "medical taxonomy for pet collar blocks new social use",
+      "no shared Claude live lock or receipt",
+      "seven R103 overlay SKUs lack exact CJ variant/media mapping",
+      "Google Merchant reprocessing remains unknown"
+    ],
+    "shopifyProductWrites": 2,
+    "shopifyFileWrites": 2,
+    "merchantWrites": 0,
+    "metricoolWrites": 0,
+    "otherExternalWrites": 0
+  },
+  "followUpRunR113": {
+    "at": "2026-11-06T06:39:57+01:00",
+    "actualUpdates": [
+      "Erhöhtes Hundebett15453794959745: title, body, SEO and6 image alt texts",
+      "Weinflaschentasche15449028297089: title, body, SEO and5 image alt texts"
+    ],
+    "coordination": "Before each product, current main/Claude heads, open PRs, exact IDs/handles/SKUs and Shopify updatedAt were checked; no editorial overlap found. New Claude work concerns Printful/catalog-window assets. Receipt/live lock remain unknown.",
+    "qualityAndRights": "Independent QA2/2 GO with11/11 alt texts and6/6 variants. Both retain rueckhol-0907; commercial image rights remain unknown, so new social content is blocked.",
+    "catalogProgress": {
+      "strictLiveCorrectedActiveProducts": 51,
+      "activeProductsExact": 56506,
+      "percent": 0.09026,
+      "remaining": 56455,
+      "remainingPercentApprox": 99.91
+    },
+    "nextStep": "Select the next one or two ACTIVE products only after fresh Claude branch/PR and exact Shopify updatedAt checks; continue evidence-bound minimal copy and alt-text changes.",
+    "blockedBy": [
+      "commercial editing and advertising rights for product images unknown",
+      "both products retain rueckhol-0907",
       "no shared Claude live lock or receipt",
       "seven R103 overlay SKUs lack exact CJ variant/media mapping",
       "Google Merchant reprocessing remains unknown"

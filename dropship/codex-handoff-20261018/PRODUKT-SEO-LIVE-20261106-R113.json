@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "run": "R113",
+  "draft": false,
+  "recordedAt": "2026-11-06T06:39:57+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "schemaValidationRejectionsBeforeSend": 1,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "unclearWrites": 0,
+    "completeAdminAndPublicReadbackAfterEachSentWrite": true,
+    "publicCacheReadRetries": 1,
+    "writeRetryAfterStalePublicRead": false,
+    "readyImageAltTextsUpdated": 11,
+    "variantsProtected": 6,
+    "mediaProtected": 11,
+    "publicationNodesProtected": 16,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15453794959745",
+      "handle": "doppellagige-falt-hundematte-608300",
+      "publicUrl": "https://luxestyle.ch/products/doppellagige-falt-hundematte-608300",
+      "beforeTitle": "Doppellagige Falt-Hundematte",
+      "baselineUpdatedAt": "2026-11-04T02:42:52Z",
+      "finalUpdatedAt": "2026-11-06T05:33:55Z",
+      "after": {
+        "title": "Erhöhtes, faltbares Hundebett in fünf Farben",
+        "descriptionHtml": "<p>Dieses erhöhte Hundebett zeigt eine rechteckige Liegefläche mit mittigem Netzeinsatz und ein faltbares Gestell.</p><h3>Auswahl</h3><ul><li>Farben: Schwarz, Braun, Grau, Khaki oder Purpurrot</li></ul><p>Wähle die Farbe über die Option.</p>",
+        "seo": {
+          "title": "Erhöhtes, faltbares Hundebett | LuxeStyle CH",
+          "description": "Erhöhtes, faltbares Hundebett mit rechteckiger Liegefläche und Netzeinsatz. In Schwarz, Braun, Grau, Khaki oder Purpurrot wählbar."
+        }
+      },
+      "options": [
+        {
+          "name": "Farbe",
+          "values": [
+            "Schwarz",
+            "Braun",
+            "Grau",
+            "Khaki",
+            "Purpurrot"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 5,
+        "pricesCHF": [
+          89.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {
+          "Schwarz": "gid://shopify/MediaImage/77949808214407",
+          "Braun": "gid://shopify/MediaImage/70518247981441",
+          "Grau": "gid://shopify/MediaImage/70518247981441",
+          "Khaki": "gid://shopify/MediaImage/70518247948673",
+          "Purpurrot": "gid://shopify/MediaImage/77949808247175"
+        }
+      },
+      "media": {
+        "count": 6,
+        "readyImageAltTextsUpdated": 6,
+        "altTexts": [
+          "Golden Retriever auf schwarzem erhöhtem Hundebett",
+          "Khakifarbenes erhöhtes Hundebett mit faltbarem Gestell",
+          "Hund auf erhöhtem Hundebett mit dunkler Liegefläche",
+          "Erhöhtes Hundebett mit zusammengefaltetem Gestell und Massgrafik",
+          "Weisser Hund auf schwarzem erhöhtem Hundebett",
+          "Purpurrotes erhöhtes Hundebett mit faltbarem Gestell"
+        ]
+      },
+      "publicationNodesProtected": 8,
+      "removedUnsupportedClaims": [
+        "doppellagiger Stoff",
+        "Metall als Materialangabe",
+        "optimaler Komfort",
+        "Stabilität und Langlebigkeit",
+        "widersprüchliche Gewichtsangaben 3.4/3.5 kg",
+        "produktbezogene Liefer-, Prüf-, Rückgabe-, Rabatt- und Zahlungsclaims"
+      ],
+      "rightsReview": {
+        "visibleSupplierMarks": true,
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "rueckholTagPresent": true,
+        "newSocialPublication": "blocked"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15449028297089",
+      "handle": "kuhlbeutel-fur-rotwein-631000",
+      "publicUrl": "https://luxestyle.ch/products/kuhlbeutel-fur-rotwein-631000",
+      "beforeTitle": "Kühlbeutel für Rotwein",
+      "baselineUpdatedAt": "2026-10-24T06:26:34Z",
+      "finalUpdatedAt": "2026-11-06T05:35:45Z",
+      "after": {
+        "title": "Weinflaschentasche mit Tragegriff und Schultergurt",
+        "descriptionHtml": "<p>Diese schwarze Weinflaschentasche zeigt einen Reissverschlussdeckel, einen Tragegriff, einen Schultergurt und ein silbern wirkendes Innenfutter. Die Produktbilder zeigen die Tasche geschlossen, geöffnet und bei einem Picknick.</p><p>Produktbilder ansehen.</p>",
+        "seo": {
+          "title": "Weinflaschentasche mit Schultergurt | LuxeStyle CH",
+          "description": "Schwarze Weinflaschentasche mit Reissverschlussdeckel, Tragegriff, Schultergurt und silbern wirkendem Innenfutter. Produktbilder ansehen."
+        }
+      },
+      "options": [
+        {
+          "name": "Title",
+          "values": [
+            "Default Title"
+          ]
+        }
+      ],
+      "variants": {
+        "count": 1,
+        "pricesCHF": [
+          15.9
+        ],
+        "available": [
+          true
+        ],
+        "inventoryQuantityAdmin": [
+          0
+        ],
+        "inventoryPolicyAdmin": [
+          "CONTINUE"
+        ],
+        "trackedAdmin": [
+          false
+        ],
+        "featuredMediaBindings": {}
+      },
+      "media": {
+        "count": 5,
+        "readyImageAltTextsUpdated": 5,
+        "altTexts": [
+          "Schwarze Weinflaschentasche mit geöffnetem Reissverschlussdeckel",
+          "Geöffnete schwarze Weinflaschentasche mit silbern wirkendem Innenfutter",
+          "Schwarze Weinflaschentasche bei einem Picknick mit Weinflaschen und Gläsern",
+          "Schwarze Weinflaschentasche mit Tragegriff und Schultergurt",
+          "Schwarze Weinflaschentasche mit Tragegriff bei einem Picknick"
+        ]
+      },
+      "publicationNodesProtected": 8,
+      "removedUnsupportedClaims": [
+        "Kühlleistung",
+        "ideale Trinktemperatur",
+        "Schutz vor Temperaturschwankungen",
+        "isolierendes Material",
+        "produktbezogene Liefer-, Rückgabe-, Rabatt- und Zahlungsclaims"
+      ],
+      "rightsReview": {
+        "commercialModelImageRights": "unknown",
+        "commercialEditingAndAdvertisingRights": "unknown",
+        "rueckholTagPresent": true,
+        "newSocialPublication": "blocked"
+      }
+    }
+  ],
+  "readback": {
+    "homeHtmlSha256": "f63b6a4e7158531d65742203914767025ab49eea455acfe6a6aa54c32ee83de3",
+    "homeProductJsonSha256": "ee1d21440ca58a537d5bdd19c0c63f9ede8aa7a0088cb2acece835731c77a9c7",
+    "wineHtmlSha256": "dd7c8291cbe3515c26a34d925ba6fee48a552f55698036955a6bca6c5c50bcf3",
+    "wineProductJsonSha256": "721e71bc71f70d3336915f081e1ed4d20ca4442a8bc2f63f6447a1c59009ffce",
+    "adminAndPublicConsistent": true
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 51,
+    "currentActiveProductsExact": 56506,
+    "percent": 0.09026,
+    "remainingProducts": 56455,
+    "remainingPercentApprox": 99.90974,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "currentMainObserved": "b46c81e98f1ba26648ff4831c207d5e634c25f06",
+    "latestClaudeHeadObserved": "94f3e9bc87d8d5c71c6a5da2892bbb03a94401d4",
+    "exactR113ProductOverlapInCurrentClaudeRefsAndPullRequests": false,
+    "wineMainFeedReferenceOnly": true,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedReservedBaselinesBeforeWrites": true
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsPerformed": false,
+    "klaviyoReportPerformed": false,
+    "googleReprocessingState": "unknown"
+  }
+}
