@@ -21,6 +21,7 @@
     karte=buendel&m=71,586&shop=1001:4012:71,1002:15124:586   Kartenbündel (ein Produkt aus mehreren Modellen): Shopify-Variante:Printful-Variante:Modell
     maxbytes=N          data-max-bytes (Obergrenze der Dateigrösse vor dem Upload, 0 = keine Prüfung)
     uptimeout=N         data-upload-timeout in Millisekunden
+    vzeit=N             data-vorschau-zeit in Millisekunden (Zeitlimit eines Vorlagenbildes der Vorschau; beim Kauf gilt höchstens dieser Wert)
     vorschau=71         Vorschaudaten (Schema 1) für die Modelle aus den Test-Katalogen im Repo (kommagetrennt: vorschau=19,71), per data-vorschau-url; spiegel=0 = Bilder nicht gespiegelt (null);
                         vkaputt=json|schema|modell beschädigt die Vorschaudaten (Server), vorschauinline=1 legt sie stattdessen als <script id="lspod-vorschau"> in den Container
     karteurl=1          Plan B: Karte per data-karte-url (Datei) statt als Inline-JSON in der Beschreibung
@@ -99,6 +100,7 @@
     if (q.get('maxpx') !== null) d.setAttribute('data-max-px', q.get('maxpx'));
     if (q.get('maxbytes') !== null) d.setAttribute('data-max-bytes', q.get('maxbytes'));
     if (q.get('uptimeout') !== null) d.setAttribute('data-upload-timeout', q.get('uptimeout'));
+    if (q.get('vzeit') !== null) d.setAttribute('data-vorschau-zeit', q.get('vzeit'));
     if (q.get('vorschau') !== null && q.get('vorschauinline') === null) d.setAttribute('data-vorschau-url', '/vorschau/' + q.get('vorschau') + '.json?spiegel=' + (q.get('spiegel') === '0' ? '0' : '1') + (q.get('vkaputt') ? '&kaputt=' + q.get('vkaputt') : ''));
     if (q.get('karteurl') !== null) {
       // Plan B: keine Karte in der Beschreibung, nur die Adresse einer JSON-Datei (data-karte-url)

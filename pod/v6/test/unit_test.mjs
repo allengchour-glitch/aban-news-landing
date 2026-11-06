@@ -433,7 +433,8 @@ if (NEU) {
     }
     // Dateiplan
     const plan = r.plan;
-    pruefe('Plan: eine Zeile je Quelladresse, Dateinamen eindeutig', new Set(plan.dateien.map((d) => d.quelle)).size === plan.dateien.length && new Set(plan.dateien.map((d) => d.dateiname)).size === plan.dateien.length && plan.anzahl === plan.dateien.length && plan.anzahl === 16, `${plan.anzahl}`);
+    pruefe('Plan: eine Zeile je Quelladresse, Dateinamen eindeutig', new Set(plan.dateien.map((d) => d.quelle)).size === plan.dateien.length && new Set(plan.dateien.map((d) => d.dateiname)).size === plan.dateien.length && plan.anzahl === plan.dateien.length && plan.anzahl === 15, `${plan.anzahl}`);
+    pruefe('Plan: Modelle ohne Vorschau (Rundum, ungeeignet, Raster) bringen keine Bilder in den Plan, Tassenfotos und Fotos der Vorschau-Modelle schon', r.ergebnisse.filter((e) => e.eintrag.adapter === 'keine').every((e) => Object.keys(e.eintrag.bilder).length === 0 && e.dateien.length === 0) && r.ergebnisse.find((e) => e.pid === '19').dateien.length === 3 && r.ergebnisse.find((e) => e.pid === '71').dateien.length === 8);
     pruefe('Plan: Dateinamen luxe-vorschau-<10 Hex>.png/jpg/webp, Art bekannt, Modelle sortiert', plan.dateien.every((d) => /^luxe-vorschau-[0-9a-f]{10}\.(png|jpg|webp)$/.test(d.dateiname) && ['vorlage', 'hintergrund', 'tassenfoto'].includes(d.art) && d.modelle.every((m, i, a) => i === 0 || a[i - 1] < m)));
     pruefe('Plan: Dateiname hängt an der ganzen Adresse (mit ?v=), nicht am Pfad', VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=1') !== VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=2') && VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=1') === VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=1'));
     gleich('Plan: Endungen .jpeg wird zu .jpg, ohne Endung .png', [VB.dateiname('https://files.cdn.printful.com/m/x.JPEG?v=1').split('.').pop(), VB.dateiname('https://files.cdn.printful.com/m/x?v=1').split('.').pop()], ['jpg', 'png']);
@@ -450,6 +451,37 @@ if (NEU) {
         const e = VB.vorschauModell(kk).eintrag;
         pruefe(`Bauer: ${name} = keine Vorschau (ungeeignet), keine halbe Eichung`, e.adapter === 'keine' && e.grund === 'ungeeignet' && Object.keys(e.tasse).length === 0, JSON.stringify([e.adapter, e.grund]));
       }
+    }
+    // ── Platzierungen mit festem Farbfoto (farbfest) ──
+    {
+      const farbCodes = (kk, c) => { const x = JSON.parse(JSON.stringify(kk)); x.varianten.forEach((v) => { v.color_code = c; }); return x; };
+      const k71 = JSON.parse(readFileSync(join(KAT, '71.json'), 'utf8'));
+      const strippen = (kk, ids) => { const x = JSON.parse(JSON.stringify(kk)); for (const g of x.templates.gruppen) if (!ids || ids.includes(g.placement)) { g.beispiel.template.background_url = null; g.beispiel.template.background_color = null; } return x; };
+      nahe('farbenImModell: T-Shirt 71 hat viele Farbcodes', VB.farbenImModell(k71) > 20 ? 1 : 0, 1);
+      gleich('farbenImModell: Duftkerze 861 (im Feld color steht der Duft, kein Farbcode) = 0', VB.farbenImModell(JSON.parse(readFileSync(join(KAT, '861.json'), 'utf8'))), 0);
+      gleich('farbenImModell: Gross- und Kleinschreibung und Leerzeichen zählen nicht', VB.farbenImModell({ varianten: [{ color_code: '#ABCDEF' }, { color_code: ' #abcdef ' }, { color_code: '#000000' }, { color_code: null }, {}] }), 2);
+      const e0 = VB.vorschauModell(k71).eintrag;
+      gleich('Modell mit Hintergrundfarbe oder -bild je Vorlage: keine farbfeste Platzierung, Vorschau «flach»', [e0.adapter, e0.farbfest], ['flach', []]);
+      const alle = VB.vorschauModell(strippen(k71));
+      pruefe('alle Vorlagen ohne Farbquelle, mehrere Farben: Adapter «keine», Grund «farbfest», keine Bilder im Plan', alle.eintrag.adapter === 'keine' && alle.eintrag.grund === 'farbfest' && alle.eintrag.farbfest.length >= 4 && Object.keys(alle.eintrag.bilder).length === 0 && alle.dateien.length === 0, JSON.stringify([alle.eintrag.adapter, alle.eintrag.grund, alle.eintrag.farbfest, alle.dateien.length]));
+      const teil = VB.vorschauModell(strippen(k71, ['front']));
+      gleich('nur die Vorderseite ohne Farbquelle: Adapter bleibt «flach», nur «front» ist farbfest', [teil.eintrag.adapter, teil.eintrag.farbfest], ['flach', ['front']]);
+      const vorn = VB.vorschauModell(strippen(k71, ['front', 'front_large']));
+      pruefe('farbfeste Vorderseiten: ihr Vorlagenbild steht weder in «bilder» noch im Plan, das der Rückseite schon', !Object.keys(vorn.eintrag.bilder).some((u) => /ghost\/front\/05_bc3001_ghost_front_base_whitebg/.test(u)) && !vorn.dateien.some((d) => /ghost\/front\//.test(d.quelle)) && Object.keys(vorn.eintrag.bilder).some((u) => /ghost\/back\//.test(u)), JSON.stringify(Object.keys(vorn.eintrag.bilder).map((u) => u.slice(-60))));
+      pruefe('ein von einer anderen, nicht farbfesten Platzierung mitbenutztes Bild bleibt im Plan', Object.keys(teil.eintrag.bilder).some((u) => /ghost\/front\/05_bc3001_ghost_front_base_whitebg/.test(u)), 'front_large nutzt dasselbe Geisterbild');
+      const einf = VB.vorschauModell(farbCodes(strippen(k71), '#000000')).eintrag;
+      gleich('nur EINE Stofffarbe im Modell: kein farbfest (die Vorlage zeigt diese Farbe), Vorschau «flach»', [einf.adapter, einf.farbfest], ['flach', []]);
+      const stick = VB.vorschauModell(strippen(k71)).eintrag.farbfest;
+      pruefe('Stickerei-Platzierungen zählen nicht als farbfest (sie zeigen ohnehin einen Hinweis)', !stick.some((id) => /^embroidery/.test(id)));
+      // echte Katalogdatei: Unisex Oversized Boxy Tee (Modell 1592): 9 Farbvorlagen, der verdichtete Katalog behält nur das Beispiel
+      const k1592 = JSON.parse(readFileSync(join(hier, 'testdaten', 'katalog', '1592.json'), 'utf8'));
+      const e92 = VB.vorschauModell(k1592);
+      gleich('Modell 1592 (echter Katalog): Vorderseite und Rückseite farbfest, Etikett innen mit Hintergrundfarbe nicht; Adapter «flach»', [e92.eintrag.adapter, e92.eintrag.farbfest], ['flach', ['back', 'front']]);
+      pruefe('Modell 1592: Gegenprobe der Zahlen: 9 verschiedene Vorlagen je Platzierung bei 63 Zuordnungen, ohne Hintergrund und ohne Farbe', k1592.templates.gruppen.filter((g) => ['front', 'back'].includes(g.placement)).every((g) => g.anzahl_verschiedene_vorlagen === 9 && g.anzahl_zuordnungen === 63 && !g.beispiel.template.background_url && !g.beispiel.template.background_color) && VB.farbenImModell(k1592) === 9);
+      pruefe('Modell 1592: nur die Bilder des Etiketts im Plan (kein Farbfoto der Vorder- oder Rückseite)', e92.dateien.length > 0 && e92.dateien.every((d) => !/Front_black|Back_Black/.test(d.quelle)), JSON.stringify(e92.dateien.map((d) => d.quelle.slice(-50))));
+      // Editor liest die Liste
+      const nd = vorschauNormalisieren(JSON.parse(JSON.stringify({ schema: 1, modelle: { 1592: e92.eintrag, 5: { adapter: 'flach', farbfest: 'front' }, 6: { adapter: 'flach', farbfest: ['front', 5, '', null, 'back'] }, 7: { adapter: 'flach' } } }))).daten;
+      gleich('Editor: farbfest wird als Liste von Zeichenketten gelesen, alles andere ergibt eine leere Liste', [nd.modelle[1592].farbfest, nd.modelle[5].farbfest, nd.modelle[6].farbfest, nd.modelle[7].farbfest], [['back', 'front'], [], ['front', 'back'], []]);
     }
     const r2 = VB.bauen({ katalogOrdner: KAT, stand: STAND });
     pruefe('Bauer: zweimal gebaut = Byte für Byte gleich (stabil)', JSON.stringify([r.dateien, r.plan, r.bericht]) === JSON.stringify([r2.dateien, r2.plan, r2.bericht]));
@@ -471,6 +503,7 @@ if (NEU) {
     const rb = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71, 19], buendel: { demo: [71, 19] } });
     pruefe('Bündel: eine Datei mit beiden Modellen, nach Nummer sortiert', rb.dateien['buendel-demo.vorschau.json'] && Object.keys(rb.dateien['buendel-demo.vorschau.json'].modelle).join() === '19,71', Object.keys(rb.dateien).join());
     pruefe('Bündel mit nicht gebautem Modell = Fehler, keine halbe Datei', (() => { const x = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71], buendel: { demo: [71, 19] } }); return x.bericht.fehler.some((f) => /Bündel demo/.test(f)) && !('buendel-demo.vorschau.json' in x.dateien); })());
+    pruefe('Bauer: mehrere Katalogordner: die Datei kommt aus dem ersten Ordner, der sie hat; «alle» vereint die Ordner', (() => { const z = VB.bauen({ katalogOrdner: [KAT, join(hier, 'testdaten', 'katalog')], stand: STAND, modelle: [71, 1592] }); const a = VB.bauen({ katalogOrdner: [KAT, join(hier, 'testdaten', 'katalog')], stand: STAND }); return z.bericht.fehler.length === 0 && z.ergebnisse.length === 2 && a.ergebnisse.length === 11 && a.ergebnisse.some((e) => e.pid === '1592'); })());
     pruefe('Fehlende Katalogdatei = Fehler im Bericht, die übrigen Modelle werden gebaut', (() => { const x = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71, 999999] }); return x.bericht.fehler.length === 1 && /999999.*fehlt/.test(x.bericht.fehler[0]) && x.ergebnisse.length === 1; })());
     gleich('bildArt: Foto, Raster, fremder Host, kein https, keine Zeichenkette', [VB.bildArt('https://files.cdn.printful.com/m/57-x/medium/ghost/front/a.png?v=1'), VB.bildArt('https://files.cdn.printful.com/generator/api-template/x.png'), VB.bildArt('https://example.com/m/a.png'), VB.bildArt('http://files.cdn.printful.com/m/a.png'), VB.bildArt(null)], ['foto', 'layout', null, null, null]);
     // Kommandozeile: kein Netz, nur --out, kein Live-Schalter
@@ -492,7 +525,7 @@ if (NEU) {
       const b = lauf('--katalog', KAT, '--stand', STAND, '--out', out, '--buendel', 'demo=71,19');
       const dateien = existsSync(out) ? readdirSync(out).sort() : [];
       pruefe('CLI: --out schreibt genau die Vorschaudateien, den Plan und den Bericht, sonst nirgends', b.status === 0 && readdirSync(tmp).join() === 'aus' && dateien.length === 10 + 1 + 2 && dateien.includes('spiegel_plan.json') && dateien.includes('bericht.json') && dateien.includes('buendel-demo.vorschau.json') && dateien.includes('71.vorschau.json'), `${b.status} ${dateien.join()} ${b.stderr}`);
-      pruefe('CLI: geschriebene Dateien sind gültiges JSON und gleich dem Rechenergebnis', JSON.parse(readFileSync(join(out, '71.vorschau.json'), 'utf8')).modelle[71].adapter === 'flach' && JSON.parse(readFileSync(join(out, 'spiegel_plan.json'), 'utf8')).anzahl === 16 && JSON.parse(readFileSync(join(out, 'bericht.json'), 'utf8')).modelle === 10);
+      pruefe('CLI: geschriebene Dateien sind gültiges JSON und gleich dem Rechenergebnis', JSON.parse(readFileSync(join(out, '71.vorschau.json'), 'utf8')).modelle[71].adapter === 'flach' && JSON.parse(readFileSync(join(out, 'spiegel_plan.json'), 'utf8')).anzahl === 15 && JSON.parse(readFileSync(join(out, 'bericht.json'), 'utf8')).modelle === 10);
       // --spiegel backt ein
       const sp = join(tmp, 'hochgeladen.json'); writeFileSync(sp, JSON.stringify({ [foto.dateiname]: 'https://cdn.shopify.com/s/files/1/0001/files/' + foto.dateiname }));
       const out2 = join(tmp, 'aus2');

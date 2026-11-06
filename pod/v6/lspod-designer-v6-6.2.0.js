@@ -885,7 +885,7 @@
     '.lsp6-sbtn[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}',
     '.lsp6-pvwrap{background:#efece6;padding:8px 0 0}',
     '.lsp6-pv{display:block;width:100%;max-width:78vh;aspect-ratio:1/1;margin:0 auto;background:#fff}',
-    '.lsp6-pvnote{margin:0;padding:6px 14px 8px;font-size:12px;color:var(--mute);text-align:center}',
+    '.lsp6-pvnote,.lsp6-pvlaed{margin:0;padding:6px 14px 8px;font-size:12px;color:var(--mute);text-align:center}',
     '.lsp6-pvinfo{margin:0;padding:18px 16px;font-size:13.5px;font-weight:600;color:#4d3a07;background:#fff8e6;border-top:1px solid #e7d9b4;border-bottom:1px solid #e7d9b4}',
     '.lsp6-ok.lsp6-mid{background:#fff8e6;border-color:#e7d9b4;color:#4d3a07}',
     '@media (max-width:480px){.lsp6-btn,.lsp6-tab{min-height:44px}.lsp6-grid{grid-template-columns:repeat(2,1fr)}}',
@@ -2335,7 +2335,7 @@
     ui.pvInfo = el('p', { class: 'lsp6-pvinfo', role: 'status', 'data-feld': 'produktinfo' });
     ui.pvInfo.hidden = true;
     ui.pvNote = el('p', { class: 'lsp6-pvnote', text: T.pvNote });
-    ui.pvLaed = el('p', { class: 'lsp6-pvnote', role: 'status', 'aria-live': 'polite', 'data-feld': 'pvlaedt', text: T.pvLaedt });
+    ui.pvLaed = el('p', { class: 'lsp6-pvlaed', role: 'status', 'aria-live': 'polite', 'data-feld': 'pvlaedt', text: T.pvLaedt });
     ui.pvLaed.hidden = true;
     ui.pvKontrast = el('p', { class: 'lsp6-sh', role: 'status', 'aria-live': 'polite', 'data-feld': 'kontrast', style: 'margin:0 16px 8px' });
     ui.pvKontrast.hidden = true;

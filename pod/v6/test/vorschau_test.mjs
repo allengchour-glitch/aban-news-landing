@@ -23,6 +23,24 @@ const MOBIL = { breite: 390, hoehe: 844, mobil: true };
 const SHOP = 'shop=1001:4012,1002:4020,1003:4045';
 const TASSE = 'karte=19&shop=1001:1320,1002:4830,1003:16586&vorschau=19';
 const TSHIRT = `karte=71&${SHOP}&vorschau=71`;
+/** Modell 1592 (echter Katalog, im Repo unter testdaten/katalog): Vorder- und Rückseite haben ein festes Farbfoto als Vorlage bei 9 Farben, das Etikett innen hat eine Hintergrundfarbe. */
+const FARBFEST = 'karte=1592&shop=1001:50079,1002:50077,1003:50082&vorschau=1592&varianten=1001:Black,1002:White,1003:DarkGrey';
+/** Vorschaudaten eines Modells vom Test-Server holen, in der Seite verändern und dem Editor geben (für Fälle, die der Bauer nicht erzeugt: fremde oder ältere Daten). */
+async function datenSetzen(p, modell, aendern) {
+  return p.evaluate(async ([m, fn]) => {
+    const roh = await (await fetch('/vorschau/' + m + '.json?spiegel=1')).json();
+    // eslint-disable-next-line no-new-func
+    new Function('d', fn)(roh);
+    return window.LSPOD6.editors[0].vorschauDatenSetzen(roh);
+  }, [modell, aendern]);
+}
+/** Grau, das auf Weiss (Leuchtdichte 1) das Kontrastverhältnis `v` ergibt (WCAG-Formel). */
+function grauFuerVerhaeltnis(v) {
+  const l = 1.05 / v - 0.05;
+  const c = l <= 0.0031308 ? 12.92 * l : 1.055 * Math.pow(l, 1 / 2.4) - 0.055;
+  const h = Math.round(c * 255).toString(16).padStart(2, '0');
+  return '#' + h + h + h;
+}
 const GEISTER_OHNE_SPIEGEL = { printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: geisterPng() } : null) };
 
 async function oeffnen(b, srv, query, opt = {}) {
@@ -169,6 +187,10 @@ szenario('flach-komposition', true, async (b, srv) => {
   const mul = await zeichne(p, { overlay: 'multiply' });
   const [mAussen] = await pixel(p, [[50, 50]]);
   pruefe('mit multiply wäre das Weiss ausserhalb des Kleidungsstücks schwarz (Stofffarbe): darum ist «normal» die Vorgabe', mul.ok && mAussen[0] < 30, mAussen.join(','));
+  const stdr = await zeichne(p);
+  const [sAussen, sInnen] = await pixel(p, [[50, 50], [Math.round(G.x0 * 0.8 + 60), 400]]);
+  pruefe('Standardmodus, schwarze Variante: ausserhalb des Kleidungsstücks bleibt das Weiss der Vorlage weiss (Vorlage wird normal darübergelegt, nie multipliziert)', stdr.ok && nah(sAussen, [255, 255, 255, 255], 1), sAussen.join(','));
+  pruefe('Standardmodus, schwarze Variante: im Kleidungsstück schimmert die Stofffarbe durch den Schatten (dunkel, nicht weiss)', sInnen[0] < 40, sInnen.join(','));
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
 });
@@ -238,17 +260,189 @@ szenario('tasse', true, async (b, srv) => {
   }
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
-  // Tassenfoto nicht gespiegelt (null): Printful sendet für /products/ keinen CORS-Kopf → sauberer Rückfall auf die Druckfläche
+  // Tassenfoto nicht gespiegelt (null): Printful sendet für /products/ keinen CORS-Kopf (GEMESSEN). Es gibt dann gar keine Ansicht, aber einen klaren Hinweis (kein stiller Rückprall, kein Bildaufruf)
   const t = await oeffnen(b, srv, `${TASSE}&spiegel=0`, { corsErwartet: true, printfulBild: (u) => (/\/products\//.test(u) ? { typ: 'image/png', body: tassePng(), cors: false } : null) });
   await sichtWarten(t.page);
   await textHinzufuegen(t.page, 'Hallo');
   await t.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
-  await t.page.waitForFunction(() => document.querySelector('[data-feld="sichthinweis"]').textContent.length > 0, null, { timeout: 12000 });
-  pruefe('Tasse ohne Spiegel (kein CORS): Rückfall auf die Druckfläche mit ruhigem Hinweis', (await t.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'druck' && /nicht verfügbar/.test(await t.page.locator('[data-feld="sichthinweis"]').innerText()) && await t.page.locator('.lsp6-stagewrap').isVisible());
+  await t.page.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
+  const ti = await t.page.locator('[data-feld="produktinfo"]').innerText();
+  pruefe('Tasse ohne gespiegeltes Foto: klarer Hinweis «keine Produktvorschau» mit Verweis auf die Druckfläche (kein Rückprall)', /keine Produktvorschau/.test(ti) && /Druckfläche/.test(ti) && (await t.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'produkt' && await t.page.locator('.lsp6-pv').isHidden(), ti);
+  pruefe('Tasse ohne gespiegeltes Foto: das Katalogfoto (ohne CORS) wird gar nicht erst angefordert', !t.bildAnfragen.some((u) => /\/products\//.test(u)), JSON.stringify(t.bildAnfragen));
   const ex = await t.page.evaluate(async () => { const b2 = await window.LSPOD6.editors[0].vorschauExport(); return b2 ? b2.size : null; });
-  pruefe('Tasse ohne Spiegel: kein JPEG (die Zeichenfläche wäre verschmutzt)', ex === null, String(ex));
+  pruefe('Tasse ohne gespiegeltes Foto: kein JPEG (die Zeichenfläche wäre verschmutzt)', ex === null, String(ex));
+  await Promise.all([t.page.waitForURL('**/cart', { timeout: 20000 }), t.page.locator('.lsp6-cta').click()]);
+  pruefe('Tasse ohne gespiegeltes Foto: Kauf ohne _vorschau und ohne JPEG', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && !t.uploads.some((u) => u.typ === 'jpeg'));
   pruefe('Tasse ohne Spiegel: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
+  // Daten mit Spiegel-Adresse, die nicht lädt (404 auf Shopify Files): sauberer Rückfall auf die Druckfläche mit dem ruhigen Hinweis
+  const kp = await oeffnen(b, srv, TASSE, { shopifyBild: (x) => (/kaputt-tasse/.test(x) ? { status: 404 } : null) });
+  await sichtWarten(kp.page);
+  await textHinzufuegen(kp.page, 'Hallo');
+  await datenSetzen(kp.page, 19, "for (const t of Object.values(d.modelle[19].tasse)) t.foto = 'https://cdn.shopify.com/s/files/test/kaputt-tasse.jpg';");
+  await kp.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await kp.page.waitForFunction(() => document.querySelector('[data-feld="sichthinweis"]').textContent.length > 0, null, { timeout: 12000 });
+  pruefe('Tasse: gespiegeltes Foto lädt nicht (404): Rückfall auf die Druckfläche mit ruhigem Hinweis', (await kp.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'druck' && /nicht verfügbar/.test(await kp.page.locator('[data-feld="sichthinweis"]').innerText()) && await kp.page.locator('.lsp6-stagewrap').isVisible());
+  pruefe('Tasse mit kaputtem Spiegel: keine Seitenfehler', kp.fehler.length === 0, kp.fehler.join(' | '));
+  await kp.schliessen();
+});
+
+// ── 4b. Tasse: Geometrie des Zylinders (Lage eines schmalen Balkens, Winkel, Wölbung, Scheibenzahl) ──────
+szenario('tasse-geometrie', true, async (b, srv) => {
+  const s = await oeffnen(b, srv, TASSE);
+  const p = s.page; await sichtWarten(p);
+  // Ein schwarzer Balken (20 × 400 px) als Foto-Ebene an der Stelle u der Druckbreite (0 bis 1); gemessen wird seine linke und rechte Kante in den Zeilen 300 bis 500 der 800-px-Leinwand.
+  async function balken(u, scale) {
+    return p.evaluate(async ([u2, sc]) => {
+      const ed = window.LSPOD6.editors[0];
+      if (!window.__balken) { const c = document.createElement('canvas'); c.width = 20; c.height = 400; const x = c.getContext('2d'); x.fillStyle = '#000'; x.fillRect(0, 0, 20, 400); window.__balken = ed.neuesBild(c.toDataURL('image/png'), 20, 400); }
+      const e = window.__balken; e.cx = u2; e.cy = 0.5; e.scale = sc;
+      const cv = document.createElement('canvas'); cv.width = 800; cv.height = 800;
+      const z = await ed.vorschauZeichnen(cv, {});
+      const d = cv.getContext('2d').getImageData(0, 0, 800, 800).data;
+      let minx = 9999, maxx = -1, cnt = 0;
+      for (let y = 300; y < 500; y++) for (let x = 0; x < 800; x++) { const i = (y * 800 + x) * 4; if (d[i] < 60 && d[i + 1] < 60 && d[i + 2] < 60) { cnt++; if (x < minx) minx = x; if (x > maxx) maxx = x; } }
+      return { ok: z.ok, minx, maxx, cnt };
+    }, [u, scale]);
+  }
+  // Eichung der 11-oz-Tasse (Katalogfoto 700 × 1000, Ausschnitt [0,165,700,700]) auf 800 × 800: Mitte mx, Radius R
+  const k = (800 / 700) * 0.96, off = (800 - 700 * k) / 2, mx = off + 407 * k, R = 194 * k;
+  const WINKEL = 330, rad = (g) => g * Math.PI / 180;
+  // der Balken ist 0,05 · 2700 · 0,5 = 67,5 Druckpixel breit = 2,5 % der Druckbreite = 8,25 Grad
+  const halb = 0.025 / 2 * WINKEL;
+  function erwartet(u) { const th = (u - 0.5) * WINKEL; return [mx + R * Math.sin(rad(th - halb)), mx + R * Math.sin(rad(th + halb))]; }
+  for (const [u, name] of [[0.5, 'Mitte'], [0.65909, '52,5 Grad nach rechts (mitten in einer 15-Grad-Scheibe)'], [0.3409, '52,5 Grad nach links'], [0.72727, '75 Grad (nahe am Rand der sichtbaren Hälfte)']]) {
+    const m = await balken(u, 0.05);
+    const [e0, e1] = erwartet(u);
+    pruefe(`Balken ${name}: gezeichnet`, m.ok && m.cnt > 20, JSON.stringify(m));
+    nahe(`Balken ${name}: linke Kante auf dem Zylinder (Abweichung höchstens 2 px von ${e0.toFixed(1)})`, m.minx, e0, 2);
+    nahe(`Balken ${name}: rechte Kante auf dem Zylinder (Abweichung höchstens 2 px von ${e1.toFixed(1)})`, m.maxx, e1, 2);
+  }
+  // Wölbung: zur Seite hin wird der Balken schmaler (am Rand um das Mehrfache), ein gerader Streifen bliebe gleich breit
+  const mitte = await balken(0.5, 0.05), rand = await balken(0.72727, 0.05);
+  pruefe('Wölbung: am Rand ist der Balken deutlich schmaler als in der Mitte (Zylinder, nicht gerade)', (rand.maxx - rand.minx) < (mitte.maxx - mitte.minx) * 0.6, JSON.stringify([mitte, rand]));
+  // breiter Balken über die halbe Druckbreite: Kanten bei ± 82,5 Grad · sin
+  const breit = await balken(0.5, 0.5);
+  const hb = 0.5 * 2700 * 0.5 / 2700 / 2 * WINKEL;   // halbe Breite in Grad (Scale 0,5 · Breite 20 px → 0,5 · 2700 · 0,5 = 675 px = 25 % der Druckbreite)
+  const w0 = mx + R * Math.sin(rad(-hb)), w1 = mx + R * Math.sin(rad(hb));
+  pruefe('breiter Balken: Kanten bei sin(± halbe Breite)', Math.abs(breit.minx - w0) <= 4 && Math.abs(breit.maxx - w1) <= 4, JSON.stringify({ breit, w0, w1 }));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+// ── 4c. Platzierungen mit festem Farbfoto der Vorlage: Hinweis statt einer Vorschau in der falschen Farbe ───────
+szenario('farbfest', true, async (b, srv) => {
+  const s = await oeffnen(b, srv, FARBFEST);
+  const p = s.page; await sichtWarten(p);
+  await textHinzufuegen(p, 'Hallo');
+  const anfragenVorher = s.bildAnfragen.length;   // die Bühne («Druckfläche») hat das Vorlagenbild schon geholt
+  await p.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  const info = p.locator('[data-feld="produktinfo"]');
+  await info.waitFor({ state: 'visible', timeout: 8000 });
+  await p.waitForTimeout(300);
+  const t = await info.innerText();
+  pruefe('Vorderseite mit festem Farbfoto (Modell 1592, 9 Farben): Hinweis «feste Stofffarbe» statt Vorschau, Verweis auf die Druckfläche, kein Gedankenstrich', /feste Stofffarbe/.test(t) && /Druckfläche/.test(t) && /keine Produktvorschau/.test(t) && !/—/.test(t), t);
+  pruefe('Vorderseite: kein Canvas, keine Notiz «Annäherung», kein weiteres Bild für die Zeichenfläche angefordert', await p.locator('.lsp6-pv').isHidden() && !(await p.locator('.lsp6-pvnote').isVisible()) && s.bildAnfragen.length === anfragenVorher, JSON.stringify(s.bildAnfragen.slice(anfragenVorher)));
+  const r = await zeichne(p);
+  pruefe('Vorderseite: vorschauZeichnen meldet «hinweis», kein Export', !r.ok && r.grund === 'hinweis' && (await p.evaluate(async () => { const x = await window.LSPOD6.editors[0].vorschauExport(); return x ? x.size : null; })) === null, JSON.stringify(r));
+  // eine andere Farbe ändert daran nichts (die Vorschau würde die Farbe der Beispielvorlage zeigen)
+  await p.locator('input[name="id"][value="1002"]').check();
+  await p.waitForTimeout(700);
+  pruefe('andere Farbe gewählt: weiter der Hinweis, nie eine Vorschau in der falschen Farbe', await info.isVisible() && await p.locator('.lsp6-pv').isHidden());
+  // Etikett innen hat eine Hintergrundfarbe: dort gibt es die Vorschau
+  const v = Number((await p.locator('.lsp6-pv').getAttribute('data-gezeichnet')) || 0);
+  await p.locator('.lsp6-tab', { hasText: 'Etikett innen' }).click();
+  await p.waitForFunction((x) => Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet') || 0) > x, v, { timeout: 10000 });
+  pruefe('Reiter «Etikett innen» (mit Hintergrundfarbe): Canvas sichtbar, Hinweis weg', await p.locator('.lsp6-pv').isVisible() && await info.isHidden());
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  // Kauf nur mit farbfester Platzierung: kein Vorschau-JPEG
+  await p.locator('.lsp6-tab', { hasText: 'Vorderseite' }).click();
+  await Promise.all([p.waitForURL('**/cart', { timeout: 20000 }), p.locator('.lsp6-cta').click()]);
+  pruefe('Kauf der farbfesten Vorderseite: Druckdatei da, kein Vorschau-JPEG, keine Eigenschaft _vorschau', s.warenkorb.length === 1 && !('_vorschau' in s.warenkorb[0].properties) && !s.uploads.some((u) => u.typ === 'jpeg') && s.uploads.some((u) => u.typ === 'png'), JSON.stringify(s.uploads.map((u) => u.typ)));
+  await s.schliessen();
+  // Modell mit Liste «farbfest» (nur die Vorderseite) und Modell «keine» mit Grund «farbfest», von Hand gesetzt
+  const m = await oeffnen(b, srv, TSHIRT);
+  const q = m.page; await sichtWarten(q);
+  await textHinzufuegen(q, 'Vorne');
+  await datenSetzen(q, 71, "d.modelle[71].farbfest = ['front'];");
+  await q.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await q.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
+  pruefe('Liste «farbfest» = [front]: die Vorderseite zeigt den Hinweis', /feste Stofffarbe/.test(await q.locator('[data-feld="produktinfo"]').innerText()));
+  const v2 = Number((await q.locator('.lsp6-pv').getAttribute('data-gezeichnet')) || 0);
+  await q.locator('.lsp6-tab', { hasText: 'Rückseite' }).click();
+  await q.waitForFunction((x) => Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet') || 0) > x, v2, { timeout: 10000 });
+  pruefe('die Rückseite (nicht in der Liste) zeigt weiter die Vorschau', await q.locator('.lsp6-pv').isVisible() && await q.locator('[data-feld="produktinfo"]').isHidden());
+  await datenSetzen(q, 71, "d.modelle[71].adapter = 'keine'; d.modelle[71].grund = 'farbfest';");
+  await q.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  await q.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await q.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
+  pruefe('Modell «keine» mit Grund «farbfest»: Hinweis «feste Stofffarbe» auf allen Platzierungen', /feste Stofffarbe/.test(await q.locator('[data-feld="produktinfo"]').innerText()));
+  await datenSetzen(q, 71, "d.modelle[71].adapter = 'keine'; d.modelle[71].grund = 'ungeeignet';");
+  await q.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  await q.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await q.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
+  pruefe('Grund «ungeeignet»: allgemeiner Hinweis, nicht der Farbhinweis', !/feste Stofffarbe/.test(await q.locator('[data-feld="produktinfo"]').innerText()) && /keine Produktvorschau/.test(await q.locator('[data-feld="produktinfo"]').innerText()));
+  // Rundum-Druck bleibt Hinweis, auch wenn fremde oder ältere Daten dem Modell einen Zeichen-Adapter geben (doppelte Absicherung im Editor)
+  pruefe('keine Seitenfehler (Modell 71)', m.fehler.length === 0, m.fehler.join(' | '));
+  await m.schliessen();
+  const h = await oeffnen(b, srv, 'karte=388&vorschau=388');
+  await sichtWarten(h.page);
+  await textHinzufuegen(h.page, 'Hoodie');
+  await datenSetzen(h.page, 388, "d.modelle[388].adapter = 'flach'; d.modelle[388].grund = null;");
+  await h.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await h.page.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
+  pruefe('Rundum-Druck mit falschen Daten (Adapter «flach»): der Editor zeigt trotzdem nur den Hinweis über Schnittteile und Nähte', /Rundum-Druck/.test(await h.page.locator('[data-feld="produktinfo"]').innerText()) && await h.page.locator('.lsp6-pv').isHidden());
+  const ex = await h.page.evaluate(async () => { const x = await window.LSPOD6.editors[0].vorschauExport(); return x ? x.size : null; });
+  pruefe('Rundum-Druck mit falschen Daten: kein Export', ex === null);
+  await h.schliessen();
+});
+
+// ── 4d. Fristen: ein hängendes Vorlagenbild oder ein hängender Upload darf den Kauf nicht aufhalten ────────────────
+szenario('fristen', true, async (b, srv) => {
+  // A. sichtbare Ansicht: das Vorlagenbild hängt (Verbindung offen), Limit 700 ms (data-vorschau-zeit): Hinweis «Vorschau wird erstellt …», dann Rückfall auf die Druckfläche
+  const a = await oeffnen(b, srv, `${TSHIRT}&spiegel=0&vzeit=700`, { printfulHaengt: (u) => /\/m\//.test(u) });
+  await sichtWarten(a.page);
+  await textHinzufuegen(a.page, 'Hallo');
+  const t0 = Date.now();
+  await a.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await a.page.locator('[data-feld="pvlaedt"]').waitFor({ state: 'visible', timeout: 3000 });
+  const laed = await a.page.locator('[data-feld="pvlaedt"]').innerText();
+  pruefe('hängendes Vorlagenbild: während des Wartens steht «Vorschau wird erstellt …»', /Vorschau wird erstellt/.test(laed), laed);
+  await a.page.waitForFunction(() => window.LSPOD6.editors[0].st.sicht === 'druck' && document.querySelector('[data-feld="sichthinweis"]').textContent.length > 0, null, { timeout: 8000 });
+  const dt = Date.now() - t0;
+  pruefe('hängendes Vorlagenbild: Rückfall auf die Druckfläche nach dem Limit (700 ms), nicht erst nach dem Standardlimit', dt >= 600 && dt < 4000, String(dt));
+  pruefe('hängendes Vorlagenbild: «Vorschau wird erstellt …» ist danach weg, ruhiger Hinweis steht', await a.page.locator('[data-feld="pvlaedt"]').isHidden() && /nicht verfügbar/.test(await a.page.locator('[data-feld="sichthinweis"]').innerText()));
+  pruefe('hängendes Vorlagenbild: keine Seitenfehler', a.fehler.length === 0, a.fehler.join(' | '));
+  await a.schliessen();
+  // B. Kauf: das Vorlagenbild hängt, das Standardlimit der Ansicht wäre 10 s; beim Kauf gilt die Frist von 4 s (GEMESSEN vorher: 20 s Stillstand ohne Meldung)
+  const k = await oeffnen(b, srv, `${TSHIRT}&spiegel=0`, { printfulHaengt: (u) => /\/m\//.test(u) });
+  await sichtWarten(k.page);
+  await textHinzufuegen(k.page, 'Hallo');
+  const t1 = Date.now();
+  await Promise.all([k.page.waitForURL('**/cart', { timeout: 20000 }), k.page.locator('.lsp6-cta').click()]);
+  const dk = Date.now() - t1;
+  pruefe('hängendes Vorlagenbild beim Kauf: Warenkorb nach rund 4 s (Frist der Vorschau), nicht erst nach dem Bildlimit von 10 s', dk >= 3500 && dk < 8000, String(dk));
+  pruefe('hängendes Vorlagenbild beim Kauf: Druckdatei da, kein _vorschau, kein JPEG, keine Seitenfehler', k.warenkorb.length === 1 && !('_vorschau' in k.warenkorb[0].properties) && !k.uploads.some((x) => x.typ === 'jpeg') && k.uploads.some((x) => x.typ === 'png') && k.fehler.length === 0, k.fehler.join(' | '));
+  await k.schliessen();
+  // C. Kauf: der Upload des Vorschau-JPEG hängt (die Druckdatei ging als erster Upload durch)
+  const u = await oeffnen(b, srv, TSHIRT, { cloudinaryHaengt: (nr) => nr >= 2 });
+  await sichtWarten(u.page);
+  await textHinzufuegen(u.page, 'Hallo');
+  const t2 = Date.now();
+  await Promise.all([u.page.waitForURL('**/cart', { timeout: 20000 }), u.page.locator('.lsp6-cta').click()]);
+  const du = Date.now() - t2;
+  pruefe('hängender JPEG-Upload beim Kauf: Warenkorb nach rund 4 s, nicht nach 90 s', du >= 3500 && du < 8000, String(du));
+  pruefe('hängender JPEG-Upload beim Kauf: Druckdatei da, kein _vorschau, keine Seitenfehler', u.warenkorb.length === 1 && !('_vorschau' in u.warenkorb[0].properties) && /^https:/.test(u.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || '') && u.fehler.length === 0, u.fehler.join(' | '));
+  await u.schliessen();
+  // D. ohne Hänger kostet die Vorschau fast nichts: der Kauf mit Vorschau dauert nicht annähernd die Frist
+  const n = await oeffnen(b, srv, TSHIRT);
+  await sichtWarten(n.page);
+  await textHinzufuegen(n.page, 'Hallo');
+  const t3 = Date.now();
+  await Promise.all([n.page.waitForURL('**/cart', { timeout: 20000 }), n.page.locator('.lsp6-cta').click()]);
+  const dn = Date.now() - t3;
+  pruefe('ohne Hänger: Kauf mit Vorschau in unter 3 s, _vorschau da', dn < 3000 && /^https:/.test(n.warenkorb[0].properties._vorschau || ''), String(dn));
+  await n.schliessen();
 });
 
 // ── 5. Poster: Papier mit Schatten ───────────────────────────────────────────────────────────────
