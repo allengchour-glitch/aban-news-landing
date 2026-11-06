@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 120,
-  "updatedAt": "2026-11-06T17:08:28+01:00",
+  "revision": 121,
+  "updatedAt": "2026-11-06T17:37:51+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14100,6 +14100,75 @@
     "budgetWrites": 0,
     "customerMessages": 0,
     "renders": 0,
+    "orderReads": 0,
+    "orderWrites": 0
+  },
+  "followUpRunR121": {
+    "at": "2026-11-06T17:37:51+01:00",
+    "actualUpdates": [
+      "Read-only live self-design audit across header catalog, visible shop items, editor, cart, checkout, mobile, Printful gates and content consistency",
+      "Three limited desktop editor-to-checkout paths observed without customer data or an order",
+      "A 375px agent path technically reached checkout but was not reliably fully operable because of horizontal overflow and clipping",
+      "One 300x300 PNG upload and heart-sticker selection verified in the live v5 editor",
+      "Eighteen of eighteen visible shop items verified HTTP 200 with editor and design-cart CTA",
+      "Overall NO-GO documented for print accuracy, autonomous production and the 375px mobile path",
+      "R121 project documentation only; no shop, product or theme change"
+    ],
+    "identities": "LuxeStyle/luxestyle.ch/CHF/Europe-Zurich/metric/de-primary matched.",
+    "coordination": "origin/main was e6fc42e40. All Claude self-design work through PR2911 is merged; R121 created no duplicate implementation work.",
+    "verdict": {
+      "overall": "NO_GO",
+      "desktopStorefrontToCheckout": "PASS_LIMITED_THREE_PATHS",
+      "mobile375px": "CHECKOUT_REACHED_BUT_NO_GO_FOR_RELIABLE_FULL_USE",
+      "printAccuracy": "NOT_PROVEN",
+      "autonomousProduction": "NOT_PROVEN"
+    },
+    "storefrontE2E": {
+      "headerCatalogModels": 22,
+      "activeWunschdesignProductsOnlineAndPurchasable": 17,
+      "visibleShopItemsHttp200WithEditorAndDesignCartCta": "18/18",
+      "primaryPath": "Classic T-shirt S/text design; CHF24.90 cart with properties Vorne · 🎨 Design and Vorne · 🖼️ Druckdatei; public 1200x1200 RGBA PNG, 45197 bytes, without DPI metadata on Cloudinary; de-CH/CHF checkout reached",
+      "additionalPaths": [
+        "T-shirt CHF27.90 to checkout",
+        "444ml mug CHF25.90 to checkout"
+      ],
+      "mobile375pxCheckoutReached": true,
+      "mobile375pxReliablyFullyOperable": false,
+      "rootInteractionChecks": "300x300 PNG selected through the file chooser appeared in live v5; heart sticker selection worked",
+      "customerAddressOrPaymentDataEntered": false,
+      "orderCreated": false
+    },
+    "printAndProductionBlockers": {
+      "liveEditor": "v5",
+      "knownPreviewToPrintDeviationFactor": "2.8-3.4",
+      "olderProductsBelowMinimumDpi": "18/37",
+      "canary": "v6.2 with cm/mm and DPI lock; 348/348 and 388/388 tests passed; DRAFT only, not live",
+      "printful": "dry-run; PRINTFUL-SYNC-FREI.txt missing; PRINTFUL_AUTO_CONFIRM=0; autonomous production success not proven"
+    },
+    "remainingSelfDesignIssues": [
+      "375px horizontal overflow clips editor, 2XL, Sticker, Bild, Wiederholen, Vorschau and design-cart CTA",
+      "sg-alle has 465 ACTIVE products including 447 fixed designs without wunschdesign; duplicate entries and differing counts",
+      "fan-page link to DRAFT wm-trikot redirects HTTP301 to a collection",
+      "non-Swiss alt/ARIA, breadcrumb, mixed-language labels and mixed formal/informal landing copy",
+      "mostly metric copy still includes 5.8 oz and 11oz/15oz; generic Asian-size warning is not proven Bella-specific",
+      "delivery, dated arrival, global/custom returns and WELCOME10 wording conflict",
+      "mug modal says three variants are orderable and offers the design CTA while Swiss availability is unconfirmed and print templates are unreleased"
+    ],
+    "nextStep": "Keep autonomous production blocked. Prove v6.2 on the public path, resolve physical print scale and the 18 DPI cases, fix the complete 375px path, and obtain a controlled Printful production receipt before reconsidering GO; then reconcile catalog and content promises.",
+    "shopifyProductWrites": 0,
+    "shopifyCollectionWrites": 0,
+    "shopifyPriceWrites": 0,
+    "shopifyThemeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "printfulProductionWrites": 0,
+    "customerMessages": 0,
+    "customerDataWrites": 0,
     "orderReads": 0,
     "orderWrites": 0
   }

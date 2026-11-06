@@ -1215,3 +1215,17 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R120-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Revision 120; R118–R120 zusammen 18 Collections, Gesamtnenner und Prozent unbekannt. Keine anderen Writes |
 
 [LUXESTYLE_R120_20261106] [Sechs weitere Kategorien live SEO-poliert](KATEGORIEN-SEO-PUSH-20261106-R120.md) · [Maschinenlesbare Belege](KATEGORIEN-SEO-PUSH-20261106-R120.json). Sechs Beschreibungen, sechs SEO-Beschreibungen und zwei SEO-Titel aktualisiert; 38/38 eindeutige Ziele direkt erreichbar.
+
+### R121
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | LuxeStyle/luxestyle.ch/CHF/Europe-Zurich/metrisch/Deutsch primär sowie Claude-Arbeit gegen `origin/main e6fc42e40` eingeordnet | Identität passend; sämtliche Claude-Selbstgestalten-Arbeit bis PR 2911 gemergt. Keine Doppelarbeit, kein Shop-/Produkt-/Theme-Write |
+| Live-Katalog / Erreichbarkeit | Header, `wunschdesign`-Produkte und 18 sichtbare Shopartikel read-only geprüft | Header 22 Modelle; 17 ACTIVE+`wunschdesign` online/kaufbar; 18/18 HTTP 200 mit Editor und Design-Warenkorb-CTA |
+| Desktop E2E | Klassisches T-Shirt S mit Textdesign sowie zwei zusätzliche Agentenpfade bis Checkout geprüft; Upload und Sticker separat gegengeprüft | CHF 24.90 mit öffentlichem 1200 × 1200-RGBA-PNG/45’197 Bytes/ohne DPI-Metadaten auf Cloudinary, Properties `Vorne · 🎨 Design` und `Vorne · 🖼️ Druckdatei`, `de-CH`/CHF; zusätzlich T-Shirt CHF 27.90 und Tasse 444 ml CHF 25.90. 300 × 300-PNG per Filechooser und `❤️` funktionieren. Keine Kundendaten, keine Bestellung |
+| Druck / Produktion | Live-v5, v6.2-Canary und Printful-Gates abgegrenzt | Gesamt NO-GO: v5-Abweichung Faktor 2,8–3,4 und 18/37 unter Mindest-DPI; v6.2 cm/mm+DPI-Lock mit 348/348+388/388 nur DRAFT. Printful Dry-run, Freigabedatei fehlt, Auto-Confirm 0; kein autonomer Produktionserfolg |
+| Mobile | Live-Pfad bei 375 px auf Überlauf und Bedienbarkeit geprüft | Checkout technisch erreicht; horizontaler Überlauf und Editor, 2XL, Sticker/Bild/Wiederholen/Vorschau sowie Cart-CTA teilweise abgeschnitten. Nicht zuverlässig vollständig bedienbar, deshalb Mobilpfad NO-GO |
+| Katalog / Inhalte | `sg-alle`, Fan-Link, Sprache, Einheiten, Grössentabelle, Liefer-/Rückgabe-/Rabatt- und Tassenmodaltexte verglichen | 465 ACTIVE, 447 Festdesigns ohne `wunschdesign`, doppelte Einstiege/abweichende Counts, `wm-trikot` 301; Schweizer Sprach- und Konsistenzfehler sowie widersprüchliche Versprechen offen |
+| Grenzen / Dokumentation | R121-Bericht, JSON und Projektgedächtnis fortgeschrieben | Revision 121. Keine Shop-, Theme-, Produkt-, Preis-, Printful-Produktions- oder Bestelländerung; Checkout-Erreichbarkeit ist kein Fulfillmentbeleg |
+
+[LUXESTYLE_R121_20261106] [Read-only E2E-Prüfung «Selbst gestalten»](SELBST-GESTALTEN-E2E-PRUEFUNG-20261106-R121.md) · [Maschinenlesbare Belege](SELBST-GESTALTEN-E2E-PRUEFUNG-20261106-R121.json). Drei Desktoppfade bis Checkout erreichbar, aber Gesamt-NO-GO wegen Druckmassstab/DPI, DRAFT-v6.2, Printful-Gates, Mobile und Inhalts-/Katalogwidersprüchen; keine operative Änderung und keine Bestellung.

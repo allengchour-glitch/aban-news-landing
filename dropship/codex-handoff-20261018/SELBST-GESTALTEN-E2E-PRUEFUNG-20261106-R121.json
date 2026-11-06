@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R121_20261106",
+  "checkedAt": "2026-11-06T17:37:51+01:00",
+  "timezone": "Europe/Zurich",
+  "repositoryHeadBeforeDocumentation": "c5191567ec0ef996606291df0fb82c6f99cf8e10",
+  "scope": "read_only_live_self_design_e2e_audit",
+  "identity": {
+    "shopName": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "shopTimezone": "Europe/Zurich",
+    "unitSystem": "metric",
+    "primaryLanguage": "de",
+    "matched": true
+  },
+  "coordination": {
+    "claudeOriginMain": "e6fc42e40",
+    "claudeSelfDesignWorkThroughPr": 2911,
+    "claudeSelfDesignWorkMerged": true,
+    "duplicateWorkCreated": false,
+    "shopProductOrThemeChange": false
+  },
+  "verdict": {
+    "overall": "NO_GO",
+    "desktopStorefrontToCheckout": "PASS_LIMITED_THREE_PATHS",
+    "mobileStorefrontToCheckout": "REACHED_BUT_NO_GO_FOR_RELIABLE_FULL_USE_AT_375PX",
+    "printAccuracy": "NOT_PROVEN",
+    "autonomousProduction": "NOT_PROVEN",
+    "reason": "Desktop checkout reachability is proven, but live print scale and DPI, the mobile editor path, and autonomous Printful handoff are not release-ready."
+  },
+  "liveCatalog": {
+    "headerModels": 22,
+    "activeWunschdesignProductsOnlineAndPurchasable": 17,
+    "visibleShopItemsChecked": 18,
+    "visibleShopItemsHttp200": 18,
+    "visibleShopItemsWithEditor": 18,
+    "visibleShopItemsWithDesignCartCta": 18,
+    "countsCombinedIntoOneDenominator": false,
+    "sgAlle": {
+      "activeProducts": 465,
+      "fixedDesignProductsWithoutWunschdesign": 447,
+      "containsFixedDesigns": true,
+      "contains11ozAnd15ozLabels": true
+    },
+    "duplicateEntryCollections": true,
+    "entryCollectionCountsDiffer": true,
+    "fanPageDraftLink": {
+      "target": "wm-trikot",
+      "productStatus": "DRAFT",
+      "httpStatus": 301,
+      "redirectsToCollection": true
+    }
+  },
+  "e2eChecks": {
+    "desktopPrimary": {
+      "product": "Klassisches T-Shirt",
+      "option": "S",
+      "designType": "text",
+      "generatedPrintfile": {
+        "format": "PNG",
+        "widthPx": 1200,
+        "heightPx": 1200,
+        "colorMode": "RGBA",
+        "bytes": 45197,
+        "dpiMetadataPresent": false,
+        "storage": "Cloudinary",
+        "publiclyReachable": true
+      },
+      "cart": {
+        "amount": "24.90",
+        "currency": "CHF",
+        "lineProperties": [
+          "Vorne · 🎨 Design",
+          "Vorne · 🖼️ Druckdatei"
+        ]
+      },
+      "checkout": {
+        "reached": true,
+        "locale": "de-CH",
+        "currency": "CHF"
+      }
+    },
+    "rootInteractionChecks": {
+      "fileChooserUpload": {
+        "format": "PNG",
+        "widthPx": 300,
+        "heightPx": 300,
+        "appearedInLiveV5Editor": true
+      },
+      "heartStickerSelectionWorked": true
+    },
+    "agentAdditional": [
+      {
+        "product": "T-Shirt",
+        "amount": "27.90",
+        "currency": "CHF",
+        "checkoutReached": true
+      },
+      {
+        "product": "Tasse",
+        "option": "444 ml",
+        "amount": "25.90",
+        "currency": "CHF",
+        "checkoutReached": true
+      }
+    ],
+    "summary": {
+      "desktopCheckoutPathsReached": 3,
+      "customerAddressOrPaymentDataEntered": false,
+      "orderCreated": false,
+      "fulfillmentProven": false
+    }
+  },
+  "printReadiness": {
+    "liveEditor": {
+      "version": "v5",
+      "knownPreviewToPrintDeviationFactor": {
+        "minimum": 2.8,
+        "maximum": 3.4
+      },
+      "olderProductsBelowMinimumDpi": 18,
+      "olderProductsDpiSample": 37
+    },
+    "canaryEditor": {
+      "version": "v6.2",
+      "status": "DRAFT",
+      "live": false,
+      "centimeterAndMillimeterControls": true,
+      "dpiLock": true,
+      "testSuites": [
+        {
+          "passed": 348,
+          "total": 348
+        },
+        {
+          "passed": 388,
+          "total": 388
+        }
+      ]
+    },
+    "printful": {
+      "syncMode": "dry-run",
+      "requiredApprovalFile": "PRINTFUL-SYNC-FREI.txt",
+      "requiredApprovalFilePresent": false,
+      "PRINTFUL_AUTO_CONFIRM": "0",
+      "autonomousProductionSuccessProven": false
+    }
+  },
+  "mobile": {
+    "viewportWidthPx": 375,
+    "horizontalOverflow": true,
+    "partiallyClippedOrCutOff": [
+      "Editor",
+      "2XL",
+      "Sticker",
+      "Bild",
+      "Wiederholen",
+      "Vorschau",
+      "Design-cart CTA"
+    ],
+    "checkoutReachedInAgentTest": true,
+    "reliablyFullyOperable": false
+  },
+  "contentAndCatalogQuality": {
+    "language": {
+      "altAndAriaNonSwissExamples": [
+        "Weißes...",
+        "Weiße..."
+      ],
+      "breadcrumb": "Home",
+      "mixedTerms": [
+        "Disclaimer",
+        "White",
+        "Natural",
+        "On-demand",
+        "Originalmodell White Glossy Mug"
+      ],
+      "collectionLabels": [
+        "CUT-SEW",
+        "EMBROIDERY",
+        "T-SHIRT"
+      ],
+      "landingNonSwissExample": "Viele Größen",
+      "mixedAddressExample": "Sparen Sie ... bei deiner"
+    },
+    "measurementsAndSizing": {
+      "mostlyMetricCmAndMl": true,
+      "liveClassicTshirtSpec": "5.8 oz",
+      "sgAlleAlsoShows": [
+        "11oz",
+        "15oz"
+      ],
+      "globalSizeTable": "generic",
+      "globalSizeTableHasAsianSizeWarning": true,
+      "bellaSpecificFitProven": false
+    },
+    "promisesAndPolicies": {
+      "delivery": {
+        "landing": "7-14 days",
+        "liveTshirt": "10-20 days",
+        "liveTshirtDatedRange": "23 Nov-7 Dec",
+        "consistent": false
+      },
+      "returns": {
+        "global": "30-day return",
+        "custom": "no change-of-mind return",
+        "consistent": false
+      },
+      "WELCOME10": "mixed"
+    },
+    "catalogModal": {
+      "product": "Tasse",
+      "orderableVariantsText": "3 bestellbare Ausführungen",
+      "cta": "Jetzt selbst gestalten",
+      "saysOrderable": true,
+      "switzerlandCaveat": "Diese Angabe bestätigt noch keine Bestell- oder Liefermöglichkeit in der Schweiz",
+      "switzerlandAvailabilityConfirmed": false,
+      "printTemplateCaveat": "Druckbereiche und Druckvorlagen ... noch nicht ... freigegeben",
+      "printTemplatesReleased": false,
+      "originalModelText": "Originalmodell: White Glossy Mug",
+      "internallyConsistent": false
+    }
+  },
+  "nextReleaseGates": [
+    "Prove v6.2 centimeter/millimeter and DPI protections on the public path after a controlled release",
+    "Resolve the 18 of 37 minimum-DPI cases and validate physical print scale",
+    "Remove 375px horizontal overflow and clipping across the complete editor-to-cart path",
+    "Establish the Printful approval marker and a controlled production receipt before autonomous confirmation",
+    "Separate custom products from fixed designs and reconcile duplicate entries and catalog counts",
+    "Unify Swiss language, units, size guidance, delivery, returns, WELCOME10 and availability wording"
+  ],
+  "writeSummary": {
+    "shopifyProductWrites": 0,
+    "shopifyCollectionWrites": 0,
+    "shopifyPriceWrites": 0,
+    "shopifyThemeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "printfulProductionWrites": 0,
+    "customerMessages": 0,
+    "customerDataWrites": 0,
+    "orderWrites": 0
+  }
+}
