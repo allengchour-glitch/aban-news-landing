@@ -6,14 +6,21 @@
  * POST /shipping/rates mit CH). Unbekannt ist nie ein Befund: eine nicht gelesene oder halb gelesene Antwort ändert nichts am bisherigen Zustand.
  *
  * Begriffe
- *   ausverkauft (Variante)  keine Region mit Status in_stock oder stocked_on_demand (gleiche Regel wie dropship/selbst-gestalten-fertig-0511/werkzeuge/ausblenden_bauen.py)
+ *   ausverkauft (Variante)  keine Region mit Status in_stock oder stocked_on_demand (gleiche Regel wie dropship/selbst-gestalten-fertig-0511/werkzeuge/ausblenden_bauen.py), ODER nur in Regionen lieferbar,
+ *                           in die Printful nicht in die Schweiz liefert (AU, BR, JP, UK: GEMESSEN 06.11.2026, siehe REGIONEN_NICHT_CH). Ein Statuswort, das wir nicht kennen, ist NICHT ausverkauft, sondern unbekannt.
  *   Modell «aus» im Fenster technisch ungeeignet | eingestellt | nicht mehr im Katalog | überall ausverkauft | keine Schweizer Versandrate
  *   Modell «aus» im Shop    wie oben, aber OHNE «technisch ungeeignet» (das betrifft den Editor, nicht die Lieferbarkeit)
  */
 import { createHash } from 'node:crypto';
 
 export const STATUS_LIEFERBAR = new Set(['in_stock', 'stocked_on_demand']);
+/** Nur GEMESSENE Wörter: in der Inventur vom 05.11.2026 (13 220 Varianten, 29 775 Einträge) kommen genau in_stock 29 064, supplier_out_of_stock 670 und stocked_on_demand 41 vor. Jedes andere Wort gilt als unbekannt (kein Befund, nur Meldung). */
+export const STATUS_AUS = new Set(['supplier_out_of_stock']);
+/** Regionen, in denen eine Variante nur lieferbar ist, ohne dass Printful in die Schweiz liefert. GEMESSEN 06.11.2026 mit POST /shipping/rates (CH): Variante nur in AU, BR, JP oder UK = HTTP 400 «ships to … only»; nur US, nur CN und alle EU-Regionen = Rate. */
+export const REGIONEN_NICHT_CH = new Set(['AU', 'BR', 'JP', 'UK']);
 export const POD_TAGS = ['printful_personalized_product', 'wunschdesign'];
+/** Printful-Produkte ohne POD-Tag, aber mit der Shop-SKU-Form 9000001_<Printful-Variante> (GEMESSEN 06.11.2026: 5 Produkte, Sticker, Tasse, Shirt). Nur wenn ALLE SKUs dieses Produkts so aussehen. */
+export const POD_SKU = /^9000001_\d+$/;
 export const FREMD_TAG = /^(fortura|ch-lager|cj-|cj$|cjdropshipping|zendrop|gelato|spocket)/i;   // Ware anderer Lieferanten: nie anfassen
 export const FREMD_SKU = /^(fortura-|cj)/i;
 export const TAG_AUS = 'printful-lager-aus';                    // trägt jedes Produkt, das DIESES Werkzeug auf ENTWURF gesetzt hat (und nur das wird wieder aktiviert)
@@ -46,7 +53,8 @@ export function parseSku(sku) {
   return m ? { shopNr: m[1], variantId: parseInt(m[2], 10) } : null;
 }
 export const istFremdeWare = (p) => (p.tags || []).some((t) => FREMD_TAG.test(String(t))) || (p.variants || []).some((v) => FREMD_SKU.test(String(v.sku || '')));
-export const istPodProdukt = (p) => (p.tags || []).some((t) => POD_TAGS.includes(String(t).toLowerCase())) && !istFremdeWare(p);
+export const hatPodSku = (p) => { const l = (p.variants || []).map((v) => String(v.sku == null ? '' : v.sku).trim()).filter(Boolean); return l.length > 0 && l.every((x) => POD_SKU.test(x)); };
+export const istPodProdukt = (p) => ((p.tags || []).some((t) => POD_TAGS.includes(String(t).toLowerCase())) || hatPodSku(p)) && !istFremdeWare(p);
 
 /** Printful wird nur gelesen: GET /products/<Nummer> und die Preisauskunft POST /shipping/rates (kein Auftrag, kein Entwurf). Alles andere ist verboten. */
 export const pfErlaubt = (methode, pfad) => (methode === 'GET' && /^\/products\/\d+$/.test(String(pfad))) || (methode === 'POST' && pfad === '/shipping/rates');
@@ -55,8 +63,14 @@ export const pfErlaubt = (methode, pfad) => (methode === 'GET' && /^\/products\/
 export function variantenStatus(v) {
   if (!v || ganz(v.id) === null) return { art: 'ungueltig', regionen: [] };
   if (!Array.isArray(v.availability_status)) return { art: 'unbekannt', regionen: [] };
-  const regionen = [...new Set(v.availability_status.filter((s) => s && STATUS_LIEFERBAR.has(s.status) && typeof s.region === 'string').map((s) => s.region))].sort();
-  return { art: regionen.length ? 'ok' : 'aus', regionen };
+  const eintraege = v.availability_status.filter((s) => s && typeof s.region === 'string' && typeof s.status === 'string');
+  const lieferbar = [...new Set(eintraege.filter((s) => STATUS_LIEFERBAR.has(s.status)).map((s) => s.region))].sort();
+  const regionen = lieferbar.filter((r) => !REGIONEN_NICHT_CH.has(r));                    // nur Regionen, die in die Schweiz liefern, zählen
+  if (regionen.length) return { art: 'ok', regionen };
+  const woerter = [...new Set(eintraege.map((s) => s.status).filter((w) => !STATUS_LIEFERBAR.has(w) && !STATUS_AUS.has(w)))].sort();
+  if (woerter.length) return { art: 'unbekannt', regionen: [], woerter };                  // ein neues Statuswort ist kein Beweis für «ausverkauft»
+  if (lieferbar.length) return { art: 'aus', regionen: [], grund: 'nur-ausserhalb-ch' };  // lieferbar, aber nur in AU, BR, JP oder UK
+  return { art: 'aus', regionen: [] };                                                     // auch die leere Liste (69 Varianten der Inventur) gilt wie dort als nicht lieferbar
 }
 export function signatur(varianten) {
   const s = [...varianten].sort((a, b) => a.id - b.id).map((v) => `${v.id}:${v.art}:${v.regionen.join('+')}`).join('|');
@@ -79,7 +93,8 @@ export function modellLesen(antwort, erwarteteId, opt = {}) {
   if (r.product.is_discontinued === true) return { art: 'eingestellt', id: erwarteteId };
   const varianten = r.variants.map((v) => ({ id: ganz(v && v.id), ...variantenStatus(v) })).filter((v) => v.art !== 'ungueltig');
   if (!varianten.length) return { art: 'unbekannt', id: erwarteteId, grund: 'keine gültige Variante' };
-  if (varianten.every((v) => v.art === 'unbekannt')) return { art: 'unbekannt', id: erwarteteId, grund: 'ohne Bestandsstatus' };
+  const fremdeWoerter = [...new Set(varianten.flatMap((v) => v.woerter || []))].sort();
+  if (varianten.every((v) => v.art === 'unbekannt')) return { art: 'unbekannt', id: erwarteteId, grund: fremdeWoerter.length ? `nur unbekannte Statuswörter (${fremdeWoerter.join(', ')})` : 'ohne Bestandsstatus', fremdeWoerter };
   const basis = num(opt.bekannteVarianten);
   if (basis && varianten.length < basis * REGELN.varianteSchwund) return { art: 'unbekannt', id: erwarteteId, grund: `nur ${varianten.length} von ${basis} bekannten Varianten` };
   const nUnbekannt = varianten.filter((v) => v.art === 'unbekannt').length;
@@ -87,6 +102,7 @@ export function modellLesen(antwort, erwarteteId, opt = {}) {
   return {
     art: 'ok', id: erwarteteId, titel: String(r.product.title || ''), varianten, nVarianten: varianten.length, nUnbekannt,
     ausIds, alleAus: nUnbekannt === 0 && ausIds.length === varianten.length, signatur: signatur(varianten),
+    fremdeWoerter, nurAusserhalb: varianten.filter((v) => v.grund === 'nur-ausserhalb-ch').length,
   };
 }
 /** Bis zu `max` Testvarianten für die Versandrate: nur lieferbare, verschiedene Regionsmengen zuerst, viele Regionen zuerst. */
@@ -112,7 +128,7 @@ export function rateAuswerten(antwort) {
   if (st === 429) return { art: 'gedrosselt' };
   if (st === 200 && Array.isArray(j.result)) {
     const raten = j.result.map((x) => ({ usd: num(x && x.rate), min: num(x && x.minDeliveryDays), max: num(x && x.maxDeliveryDays) })).filter((x) => x.usd !== null && x.usd >= 0);
-    if (!raten.length) return { art: 'keine-rate', grund: 'leere Liste' };
+    if (!raten.length) return { art: 'unbekannt', grund: 'HTTP 200 ohne verwertbare Rate' };   // eindeutig ist nur der gemessene 400-Wortlaut «ships to … only»
     raten.sort((a, b) => a.usd - b.usd);
     return { art: 'rate', rateUsd: raten[0].usd, tageMin: raten[0].min, tageMax: raten[0].max };
   }
@@ -284,7 +300,7 @@ export function sperreMoeglich(v) {
  * @param strategie 'B' | 'A' | 'auto'
  */
 export function shopPlan(produkte, katalog, modelle, strategie = 'B') {
-  const aktionen = [], befunde = [];
+  const aktionen = [], befunde = [], katalogLuecken = [];
   const zaehl = { pod: 0, aktiv: 0, fremdOderOhnePod: 0, ohneZuordnung: 0, unvollstaendig: 0, varianten: { ok: 0, aus: 0, unbekannt: 0, sku: 0, 'variante-nicht-im-katalog': 0, 'modell-unbekannt': 0, 'rate-unsicher': 0 } };
   const alsA = strategie === 'A' || strategie === 'auto';
   for (const p of produkte) {
@@ -297,7 +313,7 @@ export function shopPlan(produkte, katalog, modelle, strategie = 'B') {
       const s = parseSku(v.sku);
       if (!s || FREMD_SKU.test(String(v.sku || ''))) { zeilen.push({ v, art: 'unbekannt', grund: 'sku' }); continue; }
       const k = katalog.get(s.variantId);
-      if (!k) { zeilen.push({ v, art: 'unbekannt', grund: 'variante-nicht-im-katalog', variantId: s.variantId }); continue; }
+      if (!k) { zeilen.push({ v, art: 'unbekannt', grund: 'variante-nicht-im-katalog', variantId: s.variantId }); if (p.status === 'ACTIVE') katalogLuecken.push({ handle: p.handle, sku: v.sku }); continue; }
       const m = modelle.get(k.modell);
       if (!m || m.unbekannt || m.shopUnsicher) { zeilen.push({ v, art: 'unbekannt', grund: m && m.shopUnsicher ? 'rate-unsicher' : 'modell-unbekannt', variantId: s.variantId, modell: k.modell }); continue; }
       const aus = m.shopAus || k.art === 'aus';
@@ -308,6 +324,12 @@ export function shopPlan(produkte, katalog, modelle, strategie = 'B') {
     const nAus = zeilen.filter((z) => z.art === 'aus').length, nOk = zeilen.filter((z) => z.art === 'ok').length, nUnb = zeilen.filter((z) => z.art === 'unbekannt').length;
     const hatTag = (p.tags || []).includes(TAG_AUS);
 
+    // Ein AKTIVES Produkt mit unserem Tag ist ein halb fertiger oder von Hand beendeter ENTWURF (Veröffentlichen schlug fehl, Statuswechsel schlug nach dem Tag fehl, jemand hat aktiviert):
+    // zu Ende führen (gemerkte Kanäle nachziehen, Tag und Merkfeld entfernen). So bleibt kein Tag stehen, das später eine fremde Entwurfs-Entscheidung rückgängig machen würde.
+    if (p.status === 'ACTIVE' && hatTag) {
+      aktionen.push({ typ: 'nachziehen', produktId: p.id, handle: p.handle, vorher: 'ACTIVE', kanaele: p.kanaele == null ? null : kanaeleLesen(p.kanaele) });
+      continue;
+    }
     if (p.status === 'ACTIVE' && nAus > 0 && nOk === 0 && nUnb === 0) {
       const gr = [...new Set(zeilen.map((z) => z.grund))].join(', ');
       const jeModell = {};
@@ -333,7 +355,36 @@ export function shopPlan(produkte, katalog, modelle, strategie = 'B') {
       }
     }
   }
-  return { aktionen, befunde, zaehl };
+  return { aktionen, befunde, zaehl, katalogLuecken };
+}
+
+// ───────────────────────────────────────────────── Befunde, die Telegram erreichen (einmal je Befund)
+/** Befundarten, die nichts ändern, aber jemanden angehen: ein ausverkaufter Artikel bleibt im Shop kaufbar (Strategie B), ein Artikel fehlt im Katalog, ein Statuswort ist neu. */
+export const MELDE_ARTEN = new Set(['variante-ausverkauft', 'variante-nicht-im-katalog', 'status-wort-unbekannt']);
+export const befundSchluessel = (b) => `${b.art}:${b.sku || b.wort || b.handle || ''}`;
+/**
+ * @param befunde  [{ art, sku?, wort?, handle?, text }]
+ * @param gemeldet bereits gemeldete Schlüssel { schluessel: ISO } (aus der Zustandsdatei)
+ * @returns { neu: Befund[] (noch nie gemeldet), aktuell: Set<Schlüssel> aller heutigen meldepflichtigen Befunde }
+ */
+export function befundeNeu(befunde, gemeldet) {
+  const g = gemeldet && typeof gemeldet === 'object' ? gemeldet : {};
+  const aktuell = new Set(), neu = [];
+  for (const b of befunde || []) {
+    if (!b || !MELDE_ARTEN.has(b.art)) continue;
+    const k = befundSchluessel(b);
+    if (aktuell.has(k)) continue;
+    aktuell.add(k);
+    if (!Object.prototype.hasOwnProperty.call(g, k)) neu.push(b);
+  }
+  return { neu, aktuell };
+}
+/** Neuer Stand der gemeldeten Befunde: nur was heute noch gilt (verschwindet ein Befund und kehrt zurück, wird er wieder gemeldet); `jetztIso` für neu gemeldete. */
+export function gemeldetFortschreiben(gemeldet, aktuell, neuGemeldet, jetztIso) {
+  const out = {};
+  for (const k of aktuell) { if (gemeldet && Object.prototype.hasOwnProperty.call(gemeldet, k)) out[k] = gemeldet[k]; }
+  for (const b of neuGemeldet || []) out[befundSchluessel(b)] = jetztIso;
+  return out;
 }
 
 // ───────────────────────────────────────────────── Bremsen

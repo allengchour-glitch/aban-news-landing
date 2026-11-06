@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import {
-  STATUS_LIEFERBAR, REGELN, TAG_AUS, parseSku, istPodProdukt, istFremdeWare, variantenStatus, signatur, modellLesen, testKandidaten, rateAuswerten, rateUrteil,
+  STATUS_LIEFERBAR, STATUS_AUS, REGIONEN_NICHT_CH, POD_SKU, hatPodSku, MELDE_ARTEN, befundSchluessel, befundeNeu, gemeldetFortschreiben, REGELN, TAG_AUS, parseSku, istPodProdukt, istFremdeWare, variantenStatus, signatur, modellLesen, testKandidaten, rateAuswerten, rateUrteil,
   pfErlaubt, brauchtRate, modellUrteil, katalogIndex, ausblendenBauen, ausblendenText, ausblendenPruefen, ausblendenGleich, tageSeit, vorzustandLesen, shopModelle, sperreMoeglich,
   shopPlan, bremsen, ledgerZeile, ledgerLesen, REAKTIV_MIN_ANTEIL,
 } from './printful_lager.mjs';
@@ -29,6 +29,14 @@ ok(!istPodProdukt({ tags: ['wunschdesign', 'fortura'], variants: [] }), 'Fortura
 ok(!istPodProdukt({ tags: ['wunschdesign', 'cj-real'], variants: [] }), 'CJ-Tag schliesst aus');
 ok(!istPodProdukt({ tags: ['wunschdesign'], variants: [{ sku: 'fortura-9' }] }), 'Fortura-SKU schliesst aus');
 ok(!istPodProdukt({ tags: ['wunschdesign'], variants: [{ sku: 'CJJT1' }] }), 'CJ-SKU schliesst aus');
+// Produkte ohne POD-Tag, aber mit der Printful-Form 9000001_<Variante> (GEMESSEN 06.11.2026: 5 Produkte, 4 aktiv)
+ok(istPodProdukt({ tags: ['bild-ok'], variants: [{ sku: '9000001_10163' }, { sku: '9000001_10164' }] }), 'SKU 9000001_<Variante> ohne Tag: POD-Produkt');
+ok(!istPodProdukt({ tags: ['bild-ok'], variants: [{ sku: '9000001_10163' }, { sku: '5000_1' }] }), 'SKU-Erkennung nur, wenn ALLE SKUs die Form haben');
+ok(!istPodProdukt({ tags: ['bild-ok'], variants: [{ sku: '9000001_10163' }, { sku: '' }, { sku: 'CJJT1' }] }), 'eine Fremd-SKU verhindert die SKU-Erkennung');
+ok(!istPodProdukt({ tags: ['bild-ok'], variants: [{ sku: '5000_1' }] }), 'andere Nummern ohne Tag zählen nicht');
+ok(!istPodProdukt({ tags: ['bild-ok'], variants: [] }) && !istPodProdukt({ tags: [], variants: [{ sku: '' }] }), 'ohne SKU keine SKU-Erkennung');
+ok(!istPodProdukt({ tags: ['fortura'], variants: [{ sku: '9000001_10163' }] }), 'Fortura-Tag schliesst auch die SKU-Erkennung aus');
+ok(hatPodSku({ variants: [{ sku: ' 9000001_5 ' }] }) && POD_SKU.test('9000001_5') && !POD_SKU.test('9000001_') && !POD_SKU.test('19000001_5'), 'POD_SKU genau');
 ok(istFremdeWare({ tags: ['ch-lager'], variants: [] }), 'ch-lager ist Fremdware');
 ok(!istFremdeWare({ tags: ['tasse'], variants: [{ sku: '5_6' }] }), 'normale POD-Ware ist keine Fremdware');
 
@@ -47,12 +55,27 @@ gleich(variantenStatus({ availability_status: [] }).art, 'ungueltig', 'Variante 
 gleich(variantenStatus(null).art, 'ungueltig', 'null ist ungültig');
 gleich(variantenStatus({ id: 1, availability_status: [{ region: 'EU', status: 'in_stock' }, { region: 'EU', status: 'in_stock' }, null, { status: 'in_stock' }] }).regionen, ['EU'], 'doppelte, leere und regionslose Einträge werden ignoriert');
 ok(STATUS_LIEFERBAR.has('in_stock') && STATUS_LIEFERBAR.has('stocked_on_demand') && !STATUS_LIEFERBAR.has('supplier_out_of_stock'), 'lieferbare Status');
+gleich([...STATUS_AUS], ['supplier_out_of_stock'], 'als ausverkauft gilt nur das gemessene Wort (kein Raten bei out_of_stock, discontinued, temporary_out_of_stock)');
+gleich([...REGIONEN_NICHT_CH].sort(), ['AU', 'BR', 'JP', 'UK'], 'Regionen ohne Versand in die Schweiz (gemessen 06.11.2026)');
+// ein neues Statuswort ist KEIN Beweis für «ausverkauft» (Gegenleser 2)
+gleich(variantenStatus(V(1, { EU: 'low_stock_neu', US: 'low_stock_neu' })), { art: 'unbekannt', regionen: [], woerter: ['low_stock_neu'] }, 'unbekanntes Statuswort: unbekannt, nicht ausverkauft');
+gleich(variantenStatus(V(1, { EU: 'out_of_stock' })).art, 'unbekannt', 'out_of_stock ist nicht gemessen: unbekannt');
+gleich(variantenStatus(V(1, { EU: 'in_stock', US: 'low_stock_neu' })), { art: 'ok', regionen: ['EU'] }, 'eine lieferbare Region genügt, ein fremdes Wort daneben stört nicht');
+gleich(variantenStatus(V(1, { EU: 'supplier_out_of_stock', US: 'low_stock_neu' })).art, 'unbekannt', 'ein bekanntes «aus» plus ein fremdes Wort bleibt unbekannt');
+gleich(variantenStatus({ id: 1, availability_status: [{ region: 'EU', status: 5 }, { region: 7, status: 'in_stock' }] }), { art: 'aus', regionen: [] }, 'Einträge ohne Text als Region oder Status werden ignoriert (leere Liste gilt wie in der Inventur als nicht lieferbar)');
+// Varianten, die nur in Regionen ohne Schweizer Versand lieferbar sind (GEMESSEN 06.11.2026: AU, BR, JP, UK = HTTP 400 «ships to … only»; US, CN und EU liefern)
+for (const r of ['AU', 'BR', 'JP', 'UK']) gleich(variantenStatus(V(1, { [r]: 'in_stock' })), { art: 'aus', regionen: [], grund: 'nur-ausserhalb-ch' }, `nur in ${r} lieferbar: für die Schweiz nicht lieferbar`);
+for (const r of ['US', 'CN', 'EU', 'EU_LV', 'EU_ES', 'CA']) gleich(variantenStatus(V(1, { [r]: 'in_stock' })), { art: 'ok', regionen: [r] }, `nur in ${r} lieferbar: lieferbar`);
+gleich(variantenStatus(V(1, { AU: 'in_stock', EU: 'in_stock', UK: 'stocked_on_demand' })), { art: 'ok', regionen: ['EU'] }, 'Regionen ohne Schweizer Versand fallen aus der Regionsliste, die anderen zählen');
+gleich(variantenStatus(V(1, { AU: 'in_stock', EU: 'supplier_out_of_stock' })), { art: 'aus', regionen: [], grund: 'nur-ausserhalb-ch' }, 'AU lieferbar, EU ausverkauft: für die Schweiz nicht lieferbar');
+gleich(variantenStatus(V(1, { AU: 'in_stock', EU: 'low_stock_neu' })).art, 'unbekannt', 'AU lieferbar, EU mit fremdem Wort: unbekannt (die Schweiz-Region ist unklar)');
 {
   const a = [{ id: 1, art: 'ok', regionen: ['EU'] }, { id: 2, art: 'aus', regionen: [] }];
   gleich(signatur(a), signatur([...a].reverse()), 'Signatur hängt nicht von der Reihenfolge ab');
   ok(signatur(a) !== signatur([{ id: 1, art: 'ok', regionen: ['EU'] }, { id: 2, art: 'ok', regionen: ['US'] }]), 'Signatur ändert sich mit dem Status');
   ok(/^[0-9a-f]{16}$/.test(signatur(a)), 'Signatur ist 16 Hexzeichen');
   ok(signatur([{ id: 1, art: 'ok', regionen: ['EU'] }]) !== signatur([{ id: 1, art: 'ok', regionen: ['US'] }]), 'Signatur ändert sich, wenn die Lieferregion wechselt (EU -> US ändert die Schweizer Rate)');
+  gleich(signatur(modellLesen(antwort(7, [V(1, { EU: 'in_stock', AU: 'in_stock' })]), 7).varianten), signatur(modellLesen(antwort(7, [V(1, { EU: 'in_stock' })]), 7).varianten), 'ein Wechsel in einer Region ohne Schweizer Versand ändert die Signatur nicht (keine unnötige Neumessung)');
 }
 
 // ── Modell lesen
@@ -60,6 +83,14 @@ ok(STATUS_LIEFERBAR.has('in_stock') && STATUS_LIEFERBAR.has('stocked_on_demand')
   const l = modellLesen(antwort(7, [V(71), V(72, AUS), V(73)]), 7);
   gleich([l.art, l.nVarianten, l.ausIds, l.alleAus, l.nUnbekannt], ['ok', 3, [72], false, 0], 'Modell mit einer ausverkauften Variante');
   gleich(modellLesen(antwort(7, [V(71, AUS), V(72, AUS)]), 7).alleAus, true, 'alle Varianten ausverkauft');
+  {
+    const lw = modellLesen(antwort(7, [V(71), V(72, { EU: 'low_stock_neu' }), V(73, AUS), V(74, { AU: 'in_stock' }), V(75, { JP: 'in_stock' })]), 7);
+    gleich([lw.art, lw.nUnbekannt, lw.ausIds, lw.fremdeWoerter, lw.nurAusserhalb, lw.alleAus], ['ok', 1, [73, 74, 75], ['low_stock_neu'], 2, false], 'fremdes Statuswort: unbekannte Variante, Wort gemeldet; nur-ausserhalb-CH zählt als ausverkauft und wird gezählt');
+    const alle = modellLesen(antwort(7, [V(71, { EU: 'low_stock_neu' }), V(72, { US: 'low_stock_neu' })]), 7);
+    gleich([alle.art, alle.fremdeWoerter, /low_stock_neu/.test(alle.grund)], ['unbekannt', ['low_stock_neu'], true], 'nur fremde Wörter: Modell unbekannt, das Wort steht trotzdem im Ergebnis');
+    gleich(modellLesen(antwort(7, [V(71), V(72, AUS)]), 7).fremdeWoerter, [], 'ohne fremde Wörter eine leere Liste');
+    gleich(modellLesen(antwort(7, [V(71, { AU: 'in_stock' }), V(72, { UK: 'in_stock' })]), 7).alleAus, true, 'alle Varianten nur ausserhalb der Schweiz lieferbar: Modell ist für die Schweiz ausverkauft');
+  }
   gleich(modellLesen(antwort(7, [V(71, AUS), { id: 72 }]), 7).alleAus, false, 'eine unbekannte Variante verhindert «alle aus»');
   gleich(modellLesen({ status: 404, json: {} }, 7).art, 'weg', '404 = nicht mehr im Katalog');
   gleich(modellLesen(antwort(7, [V(71)], { is_discontinued: true }), 7).art, 'eingestellt', 'eingestelltes Modell');
@@ -79,6 +110,7 @@ ok(STATUS_LIEFERBAR.has('in_stock') && STATUS_LIEFERBAR.has('stocked_on_demand')
   const l = modellLesen(antwort(7, [V(1, { EU: 'in_stock' }), V(2, { EU: 'in_stock', US: 'in_stock', UK: 'in_stock' }), V(3, AUS), V(4, { EU: 'in_stock', US: 'in_stock', UK: 'in_stock' }), V(5, { US: 'in_stock' })]), 7);
   gleich(testKandidaten(l, 3), [4, 1, 5], 'viele Regionen zuerst, je Regionsmenge eine Variante (die mit der höchsten Nummer), nie eine ausverkaufte');
   gleich(testKandidaten(l, 1), [4], 'höchstens max');
+  gleich(testKandidaten(modellLesen(antwort(7, [V(1, { AU: 'in_stock' }), V(2, { AU: 'in_stock', EU: 'in_stock' })]), 7), 3), [2], 'eine Variante nur in AU ist keine Testvariante für die Schweiz');
   gleich(testKandidaten(modellLesen(antwort(7, [V(1, AUS)]), 7), 3), [], 'nichts lieferbar: keine Testvariante');
   gleich(testKandidaten({ art: 'unbekannt' }, 3), [], 'nicht lesbar: keine Testvariante');
 }
@@ -88,8 +120,11 @@ ok(STATUS_LIEFERBAR.has('in_stock') && STATUS_LIEFERBAR.has('stocked_on_demand')
   const rate = (usd, min, max) => ({ id: 'STANDARD', rate: String(usd), currency: 'USD', minDeliveryDays: min, maxDeliveryDays: max });
   gleich(rateAuswerten({ status: 200, json: { code: 200, result: [rate('10.79', 6, 9)] } }), { art: 'rate', rateUsd: 10.79, tageMin: 6, tageMax: 9 }, 'Rate vorhanden');
   gleich(rateAuswerten({ status: 200, json: { result: [rate('12.00', 5, 8), rate('9.50', 7, 10)] } }).rateUsd, 9.5, 'die günstigste Rate zählt');
-  gleich(rateAuswerten({ status: 200, json: { result: [] } }).art, 'keine-rate', 'leere Liste');
-  gleich(rateAuswerten({ status: 200, json: { result: [{ rate: 'abc' }] } }).art, 'keine-rate', 'Rate ohne Zahl zählt nicht');
+  gleich(rateAuswerten({ status: 200, json: { result: [] } }).art, 'unbekannt', 'HTTP 200 mit leerer Liste: unbekannt (eindeutig ist nur der gemessene 400-Wortlaut)');
+  gleich(rateAuswerten({ status: 200, json: { result: [{ rate: 'abc' }] } }).art, 'unbekannt', 'HTTP 200, Rate ohne Zahl: unbekannt');
+  gleich(rateAuswerten({ status: 200, json: { result: [{ rate: '-3' }] } }).art, 'unbekannt', 'negative Rate zählt nicht');
+  gleich(rateAuswerten({ status: 200, json: { result: [rate('-3', 1, 2), rate('4.5', 3, 4)] } }).rateUsd, 4.5, 'eine negative Rate neben einer gültigen wird übergangen');
+  gleich(rateUrteil([rateAuswerten({ status: 200, json: { result: [] } })]).ch, null, 'leere Antwort allein macht das Modell nicht «ohne Schweizer Rate»');
   const b400 = (m) => ({ status: 400, json: { code: 400, result: m, error: { reason: 'BadRequest', message: m } } });
   gleich(rateAuswerten(b400('This product "AS Colour 5101 Hoodie (Army / XL)" ships to Australia, New Zealand only and the current shipping address is outside of this region.')).art, 'keine-rate', 'regionsgebunden (gemessen 06.11.2026)');
   gleich(rateAuswerten(b400('Order contains products that are out of stock')).art, 'ausverkauft', 'ausverkaufte Testvariante ist KEIN Urteil über die Schweiz');
@@ -302,6 +337,70 @@ const prod = (id, status, varianten, tags = ['printful_personalized_product', 'w
   ], idx, urteile, 'A');
   gleich(pl.aktionen.length + pl.befunde.length, 0, 'Fortura, CJ, Produkte ohne POD-Tag und ohne SKU-Muster: keine Aktion, kein Befund');
   gleich([pl.zaehl.fremdOderOhnePod, pl.zaehl.ohneZuordnung], [4, 1], 'Zähler: fremd/ohne Tag 4 (Fortura, CJ, Mode, gemischt), ohne passende SKU 1');
+}
+
+// ── Shop-Plan: halb fertige Entwürfe, Katalog-Lücken, unbekannte Varianten, SKU-Erkennung
+{
+  const l = (id, vs) => modellLesen(antwort(id, vs), id);
+  const lesungen = new Map([[10, l(10, [V(101), V(102, AUS), V(103)])], [11, l(11, [V(111, AUS), V(112, AUS)])], [12, l(12, [V(121), V(122)])], [13, l(13, [V(131), V(132, AUS), { id: 133 }])]]);
+  const idx = katalogIndex(lesungen);
+  const urteile = new Map([...lesungen.keys()].map((id) => [id, modellUrteil(lesungen.get(id), { ch: true }, { ch: true }, {})]));
+  // Aktives Produkt mit unserem Tag: zu Ende führen (nachziehen), auch wenn gerade alles ausverkauft wäre
+  let pl = shopPlan([prod(1, 'ACTIVE', [var_('a1', '5_121'), var_('a2', '5_122')], ['printful_personalized_product', TAG_AUS])], idx, urteile, 'B');
+  gleich(pl.aktionen.map((a) => [a.typ, a.vorher, a.kanaele]), [['nachziehen', 'ACTIVE', null]], 'aktiv mit unserem Tag, ohne Merkfeld: nachziehen mit «Kanäle unbekannt»');
+  pl = shopPlan([{ ...prod(1, 'ACTIVE', [var_('a1', '5_121'), var_('a2', '5_122')], ['printful_personalized_product', TAG_AUS]), kanaele: '301970915713,301971014017' }], idx, urteile, 'B');
+  gleich(pl.aktionen.map((a) => [a.typ, a.kanaele]), [['nachziehen', ['301970915713', '301971014017']]], 'aktiv mit unserem Tag und Merkfeld: nachziehen mit der gemerkten Kanalliste');
+  pl = shopPlan([{ ...prod(2, 'ACTIVE', [var_('w1', '6_111'), var_('w2', '6_112')], ['printful_personalized_product', TAG_AUS]), kanaele: '-' }], idx, urteile, 'B');
+  gleich(pl.aktionen.map((a) => [a.typ, a.kanaele]), [['nachziehen', []]], 'Merkfeld «-» (keine Kanäle): leere Liste, nicht null');
+  gleich(pl.aktionen.length, 1, 'nachziehen hat Vorrang vor ENTWURF: erst aufräumen, am nächsten Lauf entscheiden');
+  pl = shopPlan([prod(1, 'ACTIVE', [var_('a1', '5_121')], ['mode', TAG_AUS])], idx, urteile, 'B');
+  gleich(pl.aktionen.length, 0, 'ohne POD-Tag bleibt auch ein Produkt mit unserem Tag unberührt');
+  pl = shopPlan([prod(1, 'ARCHIVED', [var_('a1', '5_121')], ['printful_personalized_product', TAG_AUS])], idx, urteile, 'B');
+  gleich(pl.aktionen.length, 0, 'archiviert mit Tag: nichts');
+  pl = shopPlan([prod(1, 'DRAFT', [var_('a1', '5_121')])], idx, urteile, 'B');
+  gleich(pl.aktionen.length, 0, 'Entwurf ohne unser Tag: nichts');
+  pl = shopPlan([prod(1, 'ACTIVE', [var_('a1', 'WM-TRIKOT-1')], ['printful_personalized_product', TAG_AUS])], idx, urteile, 'B');
+  gleich(pl.aktionen.length, 0, 'ohne passende SKU wird auch das Tag nicht angefasst (das Werkzeug hat solche Produkte nie entworfen)');
+
+  // Variante fehlt im Katalog: nur bei aktiven Produkten als Lücke gemeldet, nie als ausverkauft gedeutet
+  pl = shopPlan([prod(1, 'ACTIVE', [var_('a1', '5_121'), var_('a2', '5_99999')]), prod(2, 'DRAFT', [var_('b1', '6_88888')])], idx, urteile, 'B');
+  gleich(pl.katalogLuecken, [{ handle: 'p1', sku: '5_99999' }], 'Katalog-Lücke nur für aktive Produkte, mit SKU');
+  gleich(pl.aktionen.length, 0, 'eine Lücke löst keine Aktion aus');
+  gleich(shopPlan([prod(1, 'ACTIVE', [var_('a1', '5_121')])], idx, urteile, 'B').katalogLuecken, [], 'ohne Lücke eine leere Liste');
+  // Variante mit unbekanntem Status zählt weder als lieferbar noch als ausverkauft
+  pl = shopPlan([prod(4, 'DRAFT', [var_('y2', '8_132'), var_('y3', '8_133')], ['printful_personalized_product', TAG_AUS])], idx, urteile, 'B');
+  gleich(pl.aktionen.length, 0, 'Entwurf mit [ausverkauft, unbekannt]: keine Reaktivierung (die unbekannte Variante zählt nicht als lieferbar)');
+  pl = shopPlan([prod(4, 'ACTIVE', [var_('y1', '8_131'), var_('y2', '8_132'), var_('y3', '8_133')])], idx, urteile, 'B');
+  gleich([pl.zaehl.varianten.ok, pl.zaehl.varianten.aus, pl.zaehl.varianten.unbekannt], [1, 1, 1], 'Zähler: lieferbar 1, ausverkauft 1, unbekannt 1');
+  // Produkt ohne Tag, nur mit SKU 9000001_<Variante>
+  const lS = new Map([[18, l(18, [V(1801), V(1802)])]]);
+  const urS = new Map([[18, modellUrteil(lS.get(18), { ch: true }, { ch: true }, {})]]);
+  const lAus = new Map([[18, l(18, [V(1801, AUS), V(1802, AUS)])]]);
+  const urAus = new Map([[18, modellUrteil(lAus.get(18), null, { ch: true }, {})]]);
+  pl = shopPlan([prod(5, 'ACTIVE', [var_('s1', '9000001_1801'), var_('s2', '9000001_1802')], ['bild-ok'])], katalogIndex(lAus), urAus, 'B');
+  gleich(pl.aktionen.map((a) => a.typ), ['entwurf'], 'Produkt nur mit SKU 9000001_… (ohne POD-Tag) wird behandelt');
+  pl = shopPlan([prod(5, 'ACTIVE', [var_('s1', '9000001_1801'), var_('s2', 'abc')], ['bild-ok'])], katalogIndex(lAus), urAus, 'B');
+  gleich([pl.aktionen.length, pl.zaehl.pod], [0, 0], 'eine fremde SKU daneben: nicht behandelt');
+}
+
+// ── Befunde, die Telegram erreichen
+{
+  const b = (art, o = {}) => ({ art, text: art + ' ' + JSON.stringify(o), ...o });
+  gleich([...MELDE_ARTEN].sort(), ['status-wort-unbekannt', 'variante-ausverkauft', 'variante-nicht-im-katalog'], 'meldepflichtige Befundarten');
+  gleich(befundSchluessel(b('variante-ausverkauft', { sku: '5_1' })), 'variante-ausverkauft:5_1', 'Schlüssel mit SKU');
+  gleich(befundSchluessel(b('status-wort-unbekannt', { wort: 'x' })), 'status-wort-unbekannt:x', 'Schlüssel mit Wort');
+  let r = befundeNeu([b('variante-ausverkauft', { sku: 'a' }), b('variante-ausverkauft', { sku: 'b' }), b('zu-viele-varianten', { handle: 'h' }), b('raten-vertagt'), b('variante-ausverkauft', { sku: 'a' })], {});
+  gleich([r.neu.map((x) => x.sku), [...r.aktuell]], [['a', 'b'], ['variante-ausverkauft:a', 'variante-ausverkauft:b']], 'neu: nur meldepflichtige Arten, jeder Schlüssel einmal');
+  r = befundeNeu([b('variante-ausverkauft', { sku: 'a' }), b('variante-ausverkauft', { sku: 'c' })], { 'variante-ausverkauft:a': '2026-11-05T00:00:00Z' });
+  gleich([r.neu.map((x) => x.sku), [...r.aktuell]], [['c'], ['variante-ausverkauft:a', 'variante-ausverkauft:c']], 'schon gemeldete Befunde sind nicht mehr neu');
+  gleich(befundeNeu([b('variante-ausverkauft', { sku: 'a' })], null).neu.length, 1, 'ohne Zustand ist alles neu');
+  gleich(befundeNeu([b('variante-ausverkauft', { sku: 'constructor' })], {}).neu.length, 1, 'Schlüssel wie «constructor» täuschen den Vergleich nicht');
+  gleich(befundeNeu([], { 'variante-ausverkauft:a': 'x' }).neu, [], 'nichts Neues');
+  gleich(gemeldetFortschreiben({ 'variante-ausverkauft:a': 'T0', 'variante-ausverkauft:alt': 'T0' }, new Set(['variante-ausverkauft:a', 'variante-ausverkauft:c']), [b('variante-ausverkauft', { sku: 'c' })], 'T1'),
+    { 'variante-ausverkauft:a': 'T0', 'variante-ausverkauft:c': 'T1' }, 'fortschreiben: Bestehendes bleibt, neu Gemeldetes kommt dazu, Erledigtes fällt weg');
+  gleich(gemeldetFortschreiben({ 'variante-ausverkauft:a': 'T0' }, new Set(['variante-ausverkauft:a']), [], 'T1'), { 'variante-ausverkauft:a': 'T0' }, 'ohne Neues ändert sich nichts (auch das Datum nicht)');
+  gleich(gemeldetFortschreiben({}, new Set(['x']), [], 'T1'), {}, 'ein Befund, der nicht gesendet werden konnte, wird nicht als gemeldet gemerkt');
+  gleich(gemeldetFortschreiben(null, new Set(), [], 'T1'), {}, 'ohne Zustand eine leere Karte');
 }
 
 // ── Bremsen

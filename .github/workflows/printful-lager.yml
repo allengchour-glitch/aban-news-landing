@@ -15,9 +15,15 @@ name: "Printful-Lager-Wächter (Katalogfenster und Shop)"
 #
 # Bremsen (Abbruch ohne Schreiben, Exit 2, nennt die Zahlen): mehr als 10 % der Modelle nicht lesbar, mehr als max(20, 5 %) Modelle würden neu verschwinden, mehr als max(5, 3 %) aktive Produkte
 # würden auf ENTWURF gehen. «bremse_aufheben» (FORCE=1) hebt die beiden letzten auf, nie die erste; nur Handstart, nur nach Prüfung der Zahlen im Protokoll.
+# Weitere Schutzregeln (Korrekturrunde 06.11.2026, Gegenleser): vor jedem Schreiben wird das Produkt frisch gelesen (hat es jemand inzwischen von Hand geändert, bleibt es unberührt und der Lauf meldet es nur);
+# ein AKTIVES Produkt, das noch unser Tag «printful-lager-aus» trägt (Veröffentlichen oder Statuswechsel schlug fehl, oder von Hand aktiviert), wird am nächsten Lauf zu Ende geführt; einzelne ausverkaufte
+# Varianten, die im Shop kaufbar bleiben (Strategie B), gehen einmal je Variante per Telegram an die Betreuung (gemerkt in der Zustandsdatei).
+# STRATEGIE: der Zeitplan läuft IMMER mit B (nur melden). A (sperren, wo es sicher geht) ist nicht am Wegwerf-Produkt gemessen und nur per Handstart über die Eingabe «strategie» wählbar; eine Repo-Variable schaltet
+# sie bewusst NICHT mehr still um.
 #
 # Zugang: Repo-Secrets PRINTFUL_API_KEY, [PRINTFUL_STORE_ID, darf leer sein], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET; nur im Schreiblauf zusätzlich TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
-# Zeitplan 02:13 UTC (03:13 Schweizer Winterzeit), einmal täglich (Regel «Crons sparsam, max. 1x/Tag»). Nicht auf :00/:30 und nicht neben den anderen Läufen:
+# Zeitplan 02:13 UTC (03:13 Schweizer Winterzeit), einmal täglich (Regel «Crons sparsam, max. 1x/Tag»). Er wird mit dem Merge nach main sofort aktiv, auch ohne Freigabedatei (dann nur Lesen: rund 730 Printful-Anfragen
+# und rund 8 Minuten Laufzeit am Tag). Soll er bis zum dritten Trockenlauf warten, die beiden Zeilen «schedule:» und «- cron: …» zusammen auskommentieren (ein leerer Block ist ungültig) und die drei Trockenläufe per Handstart fahren. Nicht auf :00/:30 und nicht neben den anderen Läufen:
 # Fortura-Bestand 03:51, Tages-Update 04:15, Google-Schaufenster 04:41, Lager-Wächter 05:17, Printful-Sync 13:37, Printful-Rückmeldung 15:23, Auswahl-Lauf 21:50.
 # GitHub startet Zeitpläne hier oft Stunden nach der eingetragenen Zeit; das schadet nicht (nichts hängt von der Reihenfolge ab, der Lauf nutzt nur eigene Gruppen und bremst Shopify selbst).
 # Printful-Grenze: 120 Anfragen je Minute für den ganzen Schlüssel; der Lauf nimmt rund 92 und wartet bei weniger als 5 übrigen bis zum Ende der Minute.
@@ -108,7 +114,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ steps.modus.outputs.live == '1' && secrets.TELEGRAM_BOT_TOKEN || '' }}
           TELEGRAM_CHAT_ID: ${{ steps.modus.outputs.live == '1' && secrets.TELEGRAM_CHAT_ID || '' }}
           LIVE: ${{ steps.modus.outputs.live == '1' && '1' || '' }}
-          STRATEGIE: ${{ inputs.strategie || vars.PRINTFUL_LAGER_STRATEGIE || 'B' }}
+          STRATEGIE: ${{ inputs.strategie || 'B' }}
           VOLL: ${{ inputs.voll == true && '1' || '' }}
           FORCE: ${{ steps.modus.outputs.live == '1' && inputs.bremse_aufheben == true && '1' || '' }}
           ZUSTAND_DATEI: printful-lager-zustand.json

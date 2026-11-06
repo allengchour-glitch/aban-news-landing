@@ -4,8 +4,9 @@
  * Hält zwei Dinge frisch, täglich:
  *   (1) die Datei `assets/luxe-clothing-ausblenden.json` im MAIN-Theme (Katalogfenster «Selbst gestalten»: welche Modelle und Varianten nicht erscheinen),
  *   (2) im Shop die Produkte mit Printful-Zuordnung (SKU `<Nummer>_<Printful-Variante>`): fällt jede Variante eines Produkts aus, geht es auf ENTWURF
- *       (mit Tag `printful-lager-aus`; nur solche Produkte werden später wieder aktiviert); einzelne ausverkaufte Varianten melden wir als Befund
- *       oder sperren sie (Strategie A, siehe unten).
+ *       (mit Tag `printful-lager-aus`; nur solche Produkte werden später wieder aktiviert); einzelne ausverkaufte Varianten melden wir als Befund (einmal je Variante per Telegram)
+ *       oder sperren sie (Strategie A, siehe unten). Ein AKTIVES Produkt, das noch unser Tag trägt (Veröffentlichen schlug fehl, Statuswechsel schlug fehl, von Hand aktiviert), wird zu Ende
+ *       geführt (gemerkte Kanäle nachziehen, Tag und Merkfeld entfernen).
  * Gelesen wird Printful (GET /products/<id> für jedes Modell; POST /shipping/rates mit CH nur bei Änderung, sonst nicht) und Shopify (nur lesend, solange nicht freigegeben).
  *
  * TROCKENLAUF IST VORGABE. Geschrieben wird nur, wenn LIVE=1 gesetzt ist UND die Freigabedatei dropship/PRINTFUL-LAGER-FREI.txt im Repo liegt
@@ -42,6 +43,7 @@ import { normalizeShopifyHost } from './lib/shopify_host.mjs';
 import {
   REGELN, TAG_AUS, MF_NAMESPACE, MF_SPERRE, MF_KANAELE, kanaeleText, kanaeleLesen, kanaeleFehlend, parseSku, modellLesen, testKandidaten, rateAuswerten, rateUrteil, brauchtRate, modellUrteil, katalogIndex,
   ausblendenBauen, ausblendenText, ausblendenPruefen, ausblendenGleich, tageSeit, vorzustandLesen, shopPlan, shopModelle as shopModelleBestimmen, bremsen, ledgerZeile, ledgerLesen, pfErlaubt,
+  befundeNeu, gemeldetFortschreiben,
 } from './lib/printful_lager.mjs';
 
 const API = '2026-01';
@@ -51,6 +53,8 @@ const md5 = (t) => createHash('md5').update(t).digest('hex');
 const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 class PfFehler extends Error { constructor(m, art) { super(m); this.art = art; this.fatal = art === 'fatal'; } }
+/** Das Produkt hat sich seit dem Lesen geändert (z. B. von Hand auf ENTWURF gesetzt): nichts schreiben, als Befund melden, kein Fehler. */
+class Uebersprungen extends Error {}
 
 function konfig(env) {
   const fehler = [];
@@ -80,7 +84,7 @@ function konfig(env) {
 const PRODUKTE_Q = `query($c:String,$q:String!){ products(first:25, after:$c, query:$q){ pageInfo{ hasNextPage endCursor } nodes{ id handle status tags kanaele: metafield(namespace:"${MF_NAMESPACE}", key:"${MF_KANAELE}"){ value }
   variants(first:100){ pageInfo{ hasNextPage } nodes{ id sku inventoryPolicy sperre: metafield(namespace:"${MF_NAMESPACE}", key:"${MF_SPERRE}"){ value }
     inventoryItem{ id tracked inventoryLevels(first:5){ nodes{ quantities(names:["available"]){ name quantity } location{ id isFulfillmentService } } } } } } } } }`;
-const PRODUKT_Q = `query($id:ID!){ product(id:$id){ id handle status tags kanaele: metafield(namespace:"${MF_NAMESPACE}", key:"${MF_KANAELE}"){ value } resourcePublications(first:30){ nodes{ isPublished publication{ id } } } variants(first:100){ nodes{ id sku inventoryPolicy sperre: metafield(namespace:"${MF_NAMESPACE}", key:"${MF_SPERRE}"){ value } } } } }`;
+const PRODUKT_Q = `query($id:ID!){ product(id:$id){ id handle status tags kanaele: metafield(namespace:"${MF_NAMESPACE}", key:"${MF_KANAELE}"){ value } resourcePublications(first:30, onlyPublished:true){ nodes{ isPublished publication{ id } } } variants(first:100){ nodes{ id sku inventoryPolicy sperre: metafield(namespace:"${MF_NAMESPACE}", key:"${MF_SPERRE}"){ value } } } } }`;
 const THEME_Q = `{ themes(first:5, roles:[MAIN]){ nodes{ id name } } }`;
 const DATEI_Q = `query($id:ID!,$f:[String!]!){ theme(id:$id){ files(filenames:$f, first:5){ nodes{ filename checksumMd5 body{ __typename ... on OnlineStoreThemeFileBodyText{ content } ... on OnlineStoreThemeFileBodyUrl{ url } } } userErrors{ code filename } } } }`;
 const M_STATUS = `mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id status } userErrors{ field message } } }`;
@@ -207,22 +211,37 @@ export async function main(env = process.env, deps = {}) {
     const obj = ausblendenPruefen(text);
     return obj ? { zustand: 'ok', themeId, text, md5: n.checksumMd5, obj } : { zustand: 'ungueltig', themeId, text, md5: n.checksumMd5 };
   }
-  // Ein ENTWURF nimmt das Produkt aus allen Verkaufskanälen (GEMESSEN 06.11.2026: 6 von 6 gelesenen Entwürfen haben 0 Kanäle, aktive Produkte 7 bis 8). Darum merkt sich der ENTWURF die
-  // Kanäle im Produktfeld luxe.printful_lager_kanaele, und die Rückkehr veröffentlicht GENAU diese wieder (nie mehr: «Google & YouTube» bleibt, wo es war).
+  // Verkaufskanäle bei Entwürfen (GEMESSEN 06.11.2026): `resourcePublications` (nur veröffentlichte) liefert bei einem ENTWURF 0 Einträge (28 von 28 POD-Entwürfen); `resourcePublicationsCount(onlyPublished:false)`
+  // und `resourcePublicationsV2(onlyPublished:false)` zeigen dagegen 6 bis 9 Verknüpfungen mit isPublished=false. Ob ein Statuswechsel auf ACTIVE sie von selbst wieder veröffentlicht, ist UNGEMESSEN (Wegwerf-Produkt nötig).
+  // Darum merkt sich der ENTWURF die veröffentlichten Kanäle im Produktfeld luxe.printful_lager_kanaele, und die Rückkehr veröffentlicht GENAU die fehlenden davon wieder (nie mehr: «Google & YouTube» bleibt, wo es war).
   const pubNr = (gid) => String(gid).split('/').pop();
   const kanaeleVon = (p) => ((p.resourcePublications && p.resourcePublications.nodes) || []).filter((x) => x.isPublished).map((x) => pubNr(x.publication.id));
   async function produktEntwerfen(produktId, ledgerFn) {
     const p = (await lesenGql(PRODUKT_Q, { id: produktId })).product;
     if (!p) throw new Error('Produkt nicht gefunden');
+    if (p.status !== 'ACTIVE') throw new Uebersprungen(`Status ist ${p.status}, nicht ACTIVE (inzwischen von Hand geändert?)`);   // nie einen Entwurf von Hand mit unserem Tag versehen
     const kan = kanaeleVon(p);
+    const altesMerkfeld = p.kanaele ? p.kanaele.value : null;
+    const merk = kanaeleText([...kanaeleLesen(altesMerkfeld), ...kan]);                          // ein schon gemerktes Feld geht nie verloren
     ledgerFn({ status: p.status, handle: p.handle, kanaele: kan });
-    let d = await schreibenGql(M_MF_SET, { m: [{ ownerId: produktId, namespace: MF_NAMESPACE, key: MF_KANAELE, type: 'single_line_text_field', value: kanaeleText(kan) }] }); let f = userFehler(d, 'metafieldsSet'); if (f) throw new Error('metafieldsSet: ' + f);
-    d = await schreibenGql(M_TAGS_ADD, { id: produktId, tags: [TAG_AUS] }); f = userFehler(d, 'tagsAdd'); if (f) throw new Error('tagsAdd: ' + f);
-    d = await schreibenGql(M_STATUS, { p: { id: produktId, status: 'DRAFT' } }); f = userFehler(d, 'productUpdate'); if (f) throw new Error('productUpdate: ' + f);
+    let d = await schreibenGql(M_MF_SET, { m: [{ ownerId: produktId, namespace: MF_NAMESPACE, key: MF_KANAELE, type: 'single_line_text_field', value: merk }] }); let f = userFehler(d, 'metafieldsSet'); if (f) throw new Error('metafieldsSet: ' + f);
+    try {
+      d = await schreibenGql(M_TAGS_ADD, { id: produktId, tags: [TAG_AUS] }); f = userFehler(d, 'tagsAdd'); if (f) throw new Error('tagsAdd: ' + f);
+      d = await schreibenGql(M_STATUS, { p: { id: produktId, status: 'DRAFT' } }); f = userFehler(d, 'productUpdate'); if (f) throw new Error('productUpdate: ' + f);
+    } catch (e) {
+      // zurückbauen: ein weiter AKTIVES Produkt darf unser Tag und Merkfeld nicht behalten (sonst käme später eine fremde Entwurfs-Entscheidung zurück). Gelingt auch das nicht, räumt der nächste Lauf auf («nachziehen»).
+      try { await schreibenGql(M_TAGS_WEG, { id: produktId, tags: [TAG_AUS] }); if (altesMerkfeld == null) await schreibenGql(M_MF_WEG, { m: [{ ownerId: produktId, namespace: MF_NAMESPACE, key: MF_KANAELE }] }); } catch { /* der nächste Lauf räumt auf */ }
+      throw e;
+    }
   }
-  async function produktReaktivieren(produktId, kanaeleSoll, ledgerFn) {
-    ledgerFn({ status: 'DRAFT', kanaele: kanaeleSoll });
-    let d = await schreibenGql(M_STATUS, { p: { id: produktId, status: 'ACTIVE' } }); let f = userFehler(d, 'productUpdate'); if (f) throw new Error('productUpdate: ' + f);
+  /** `erwartet` = 'DRAFT' (Rückkehr) oder 'ACTIVE' (zu Ende führen: Status stimmt schon, Kanäle und Tag fehlen noch). In beiden Fällen muss unser Tag am Produkt hängen. */
+  async function produktReaktivieren(produktId, kanaeleSoll, ledgerFn, erwartet = 'DRAFT') {
+    const p0 = (await lesenGql(PRODUKT_Q, { id: produktId })).product;
+    if (!p0) throw new Error('Produkt nicht gefunden');
+    if (p0.status !== erwartet || !p0.tags.includes(TAG_AUS)) throw new Uebersprungen(`Stand ist ${p0.status}${p0.tags.includes(TAG_AUS) ? '' : ' ohne unser Tag'}, erwartet ${erwartet} mit unserem Tag`);
+    ledgerFn({ status: p0.status, kanaele: kanaeleSoll });
+    let d, f;
+    if (p0.status === 'DRAFT') { d = await schreibenGql(M_STATUS, { p: { id: produktId, status: 'ACTIVE' } }); f = userFehler(d, 'productUpdate'); if (f) throw new Error('productUpdate: ' + f); }
     if (kanaeleSoll) {
       let fehlt = kanaeleFehlend(kanaeleSoll, kanaeleVon((await lesenGql(PRODUKT_Q, { id: produktId })).product));
       if (fehlt.length) {
@@ -237,7 +256,7 @@ export async function main(env = process.env, deps = {}) {
   async function produkteLesen() {
     const out = []; const gesehen = new Set(); let cur = null;
     for (let seite = 0; seite < 60; seite++) {
-      const d = (await lesenGql(PRODUKTE_Q, { c: cur, q: 'tag:printful_personalized_product OR tag:wunschdesign' })).products;
+      const d = (await lesenGql(PRODUKTE_Q, { c: cur, q: 'tag:printful_personalized_product OR tag:wunschdesign OR sku:9000001_*' })).products;
       for (const p of d.nodes) if (!gesehen.has(p.id)) { gesehen.add(p.id); out.push({ id: p.id, handle: p.handle, status: p.status, tags: p.tags || [], kanaele: p.kanaele ? p.kanaele.value : null, variantenVollstaendig: !(p.variants.pageInfo && p.variants.pageInfo.hasNextPage), variants: p.variants.nodes.map((v) => ({ id: v.id, sku: v.sku, inventoryPolicy: v.inventoryPolicy, sperre: v.sperre ? v.sperre.value : null, inventoryItem: v.inventoryItem })) }); }
       if (!d.pageInfo.hasNextPage) return out;
       if (!d.pageInfo.endCursor || d.pageInfo.endCursor === cur) throw new Error('Shopify-Seitenwechsel hängt (Cursor wiederholt sich oder fehlt)');
@@ -249,7 +268,7 @@ export async function main(env = process.env, deps = {}) {
   function zustandSchreiben(zustand, lesungen, raten, urteile) {
     if (!C.zustandDatei) return;
     const jetztIso = new Date(jetztMs()).toISOString();
-    const neuZ = { schema: 1, stand: jetztIso, modelle: { ...zustand.modelle } };
+    const neuZ = { schema: 1, stand: jetztIso, modelle: { ...zustand.modelle }, gemeldet: zustand.gemeldet || {} };
     for (const [id, l] of lesungen) {
       if (!l || l.art !== 'ok') continue;
       const alt = neuZ.modelle[id] || {};
@@ -283,9 +302,11 @@ export async function main(env = process.env, deps = {}) {
           const ok = p && (e.typ === 'entwurf' ? (p.status === 'DRAFT' && p.tags.includes(TAG_AUS)) : p.status === 'ACTIVE');
           if (!ok) { sagen(`  übersprungen ${e.typ} ${e.vorher.handle || e.ziel}: Stand ist nicht mehr der von uns gesetzte`); uebersprungen++; continue; }
           if (!schreiben) { sagen(`  [würde] ${e.typ} zurück auf ${e.vorher.status}: ${e.vorher.handle || e.ziel}`); continue; }
-          if (e.typ === 'entwurf') await produktReaktivieren(e.ziel, Array.isArray(e.vorher.kanaele) ? e.vorher.kanaele : null, () => {});
+          if (e.typ === 'entwurf') await produktReaktivieren(e.ziel, Array.isArray(e.vorher.kanaele) ? e.vorher.kanaele : null, () => {}, 'DRAFT');
           else await produktEntwerfen(e.ziel, () => {});
           zurueck++;
+        } else if (e.typ === 'nachziehen') {
+          sagen(`  übersprungen nachziehen ${e.vorher.handle || e.ziel}: das Zu-Ende-Führen wird nicht zurückgenommen`); uebersprungen++;
         } else if (e.typ === 'sperre' || e.typ === 'freigabe') {
           const p = (await lesenGql(PRODUKT_Q, { id: e.vorher.produktId })).product;
           const v = p && p.variants.nodes.find((x) => x.id === e.ziel);
@@ -307,7 +328,10 @@ export async function main(env = process.env, deps = {}) {
           const d = await schreibenGql(M_DATEI, { id: th.id, files: [{ filename: C.themeDatei, body: { type: 'TEXT', value: e.vorher.inhalt } }] }); const f = userFehler(d, 'themeFilesUpsert'); if (f) throw new Error(f);
           zurueck++;
         }
-      } catch (ex) { fehler.push(`Rücknahme ${e.typ} ${e.ziel}: ${ex.message}`); }
+      } catch (ex) {
+        if (ex instanceof Uebersprungen) { sagen(`  übersprungen ${e.typ} ${e.vorher.handle || e.ziel}: ${ex.message}`); uebersprungen++; }
+        else fehler.push(`Rücknahme ${e.typ} ${e.ziel}: ${ex.message}`);
+      }
     }
     return await ende(fehler.length ? 1 : 0, `Rücknahme: ${zurueck} zurückgesetzt, ${uebersprungen} übersprungen`);
   }
@@ -336,6 +360,8 @@ export async function main(env = process.env, deps = {}) {
     let zustand = { modelle: {} };
     if (C.zustandDatei && existsSync(C.zustandDatei)) { try { const zz = JSON.parse(readFileSync(C.zustandDatei, 'utf8')); if (zz && zz.schema === 1 && zz.modelle && typeof zz.modelle === 'object') zustand = zz; } catch { sagen('Zustandsdatei nicht lesbar: alles wird gegen die Inventur verglichen.'); } }
 
+    if (!zustand.gemeldet || typeof zustand.gemeldet !== 'object' || Array.isArray(zustand.gemeldet)) zustand.gemeldet = {};
+
     // Phase 1: Modelle lesen
     const lesungen = new Map();
     const t1 = jetztMs();
@@ -347,6 +373,12 @@ export async function main(env = process.env, deps = {}) {
       } catch (e) { if (e.fatal) throw e; lesungen.set(id, { art: 'unbekannt', id, grund: e.message }); }
     }, C.parallel);
     sagen(`Printful: ${z.pfGet} Modelle abgefragt in ${Math.round((jetztMs() - t1) / 1000)} s`);
+    // Statuswörter, die wir nicht kennen (nur in_stock, stocked_on_demand und supplier_out_of_stock sind gemessen): Variante gilt als unbekannt, nicht als ausverkauft
+    const woerter = new Map();
+    for (const [id, l] of lesungen) if (l) for (const w of l.fremdeWoerter || []) { if (!woerter.has(w)) woerter.set(w, []); woerter.get(w).push(id); }
+    for (const [w, ids] of woerter) { const text = `Printful meldet das unbekannte Statuswort «${w}» (Modelle ${ids.slice(0, 8).join(', ')}${ids.length > 8 ? ' …' : ''}): solche Varianten gelten als unbekannt, nicht als ausverkauft`; befunde.push({ art: 'status-wort-unbekannt', wort: w, text }); sagen('  Befund: ' + text); }
+    const nurAussen = [...lesungen.values()].filter((l) => l && l.art === 'ok' && l.nurAusserhalb > 0);
+    if (nurAussen.length) sagen(`  ${nurAussen.reduce((n, l) => n + l.nurAusserhalb, 0)} Varianten in ${nurAussen.length} Modellen sind nur in AU, BR, JP oder UK lieferbar (Printful liefert von dort nicht in die Schweiz): gelten als ausverkauft`);
 
     // Shop: Produkte mit Printful-Zuordnung (lesend); daraus die Modelle mit Shopprodukt
     const produkte = await produkteLesen();
@@ -402,11 +434,15 @@ export async function main(env = process.env, deps = {}) {
     const plan = shopPlan(produkte, idx, urteile, C.strategie);
     const aktive = plan.zaehl.aktiv;
     const nEntwuerfe = plan.aktionen.filter((a) => a.typ === 'entwurf').length;
-    sagen(`Shop: ${plan.zaehl.pod} Produkte mit POD-Tag (${aktive} aktiv), ${plan.zaehl.fremdOderOhnePod} Fremdware oder ohne POD-Tag nicht angefasst, ${plan.zaehl.ohneZuordnung} ohne passende SKU; Aktionen: ENTWURF ${nEntwuerfe}, reaktivieren ${plan.aktionen.filter((a) => a.typ === 'reaktivieren').length}, sperren ${plan.aktionen.filter((a) => a.typ === 'sperre').length}, freigeben ${plan.aktionen.filter((a) => a.typ === 'freigabe').length}; Befunde ${plan.befunde.length}`);
+    sagen(`Shop: ${plan.zaehl.pod} Produkte mit POD-Tag (${aktive} aktiv), ${plan.zaehl.fremdOderOhnePod} Fremdware oder ohne POD-Tag nicht angefasst, ${plan.zaehl.ohneZuordnung} ohne passende SKU; Aktionen: ENTWURF ${nEntwuerfe}, reaktivieren ${plan.aktionen.filter((a) => a.typ === 'reaktivieren').length}, nachziehen ${plan.aktionen.filter((a) => a.typ === 'nachziehen').length}, sperren ${plan.aktionen.filter((a) => a.typ === 'sperre').length}, freigeben ${plan.aktionen.filter((a) => a.typ === 'freigabe').length}; Befunde ${plan.befunde.length}`);
     const zv = plan.zaehl.varianten;
     sagen(`  Varianten der Produkte mit SKU-Muster: lieferbar ${zv.ok}, ausverkauft ${zv.aus}, nicht zuordenbar ${zv.unbekannt} (SKU ${zv.sku}, nicht im Katalog ${zv['variante-nicht-im-katalog']}, Modell unbekannt ${zv['modell-unbekannt']}, Rate unsicher ${zv['rate-unsicher']})`);
     for (const b of plan.befunde.slice(0, 25)) sagen(`  Befund ${b.art}: ${b.text}`);
     befunde.push(...plan.befunde);
+    if (plan.katalogLuecken.length && unbekannt.length === 0 && !C.modelleTeil) {          // nur bei vollständigem Lauf: ein unlesbares Modell würde sonst alle seine Varianten als «fehlend» zeigen
+      for (const l of plan.katalogLuecken) befunde.push({ art: 'variante-nicht-im-katalog', handle: l.handle, sku: l.sku, text: `Variante ${l.sku} (${l.handle}) steht nicht mehr im Printful-Katalog` });
+      for (const b of befunde.filter((x) => x.art === 'variante-nicht-im-katalog').slice(0, 10)) sagen(`  Befund ${b.art}: ${b.text}`);
+    }
     for (const a of plan.aktionen.slice(0, 40)) sagen(`  ${schreiben ? '' : '[würde] '}${a.typ} ${a.handle}${a.grund ? ' (' + a.grund + ')' : ''}${a.sku ? ' ' + a.sku : ''}`);
 
     // Bremsen
@@ -425,6 +461,18 @@ export async function main(env = process.env, deps = {}) {
     // Zustand fortschreiben (auch im Trockenlauf: lokale Datei, kein Shopify/Printful)
     zustandSchreiben(zustand, lesungen, raten, urteile);
 
+    // Neue Befunde (ausverkaufte Variante bleibt kaufbar, Variante fehlt im Katalog, neues Statuswort): einmal je Befund per Telegram. Gemerkt wird nur, was wirklich gesendet wurde.
+    async function befundeMelden() {
+      const mb = befundeNeu(befunde, zustand.gemeldet);
+      let gesendet = [];
+      if (mb.neu.length) {
+        const zeilenT = mb.neu.slice(0, 8).map((b) => '- ' + esc(b.text)).join('\n');
+        const r = await tg(`[Lager] LuxeStyle Printful-Lager: ${mb.neu.length} neue(r) Befund(e), es wurde nichts geändert:\n${zeilenT}${mb.neu.length > 8 ? `\n... und ${mb.neu.length - 8} weitere (siehe Protokoll)` : ''}`);
+        if (r === true) gesendet = mb.neu;
+      }
+      if (schreiben) { zustand.gemeldet = gemeldetFortschreiben(zustand.gemeldet, mb.aktuell, gesendet, new Date(jetztMs()).toISOString()); zustandSchreiben(zustand, lesungen, raten, urteile); }
+    }
+
     if (abbruch) {
       const text = `ABBRUCH ohne Schreiben (Bremse): ${hart.map((v) => v.text).join('; ')}`;
       sagen(text);
@@ -432,6 +480,7 @@ export async function main(env = process.env, deps = {}) {
       return await ende(2, `Bremse: ${hart.map((v) => v.art).join(', ')}`);
     }
     if (!schreiben) {
+      await befundeMelden();
       sagen(geaendert ? `Trockenlauf: ÄNDERN WÜRDE: ${plan.aktionen.length} Shop-Aktion(en), Datei ${dateiNeu ? (dateiGleich ? 'nur Stand' : 'neu') : 'nein'}. Schreibzugriffe: ${z.geschrieben}.` : `Trockenlauf: nichts zu ändern. Schreibzugriffe: ${z.geschrieben}.`);
       return await ende(fehler.length ? 1 : 0, 'Trockenlauf');
     }
@@ -463,9 +512,9 @@ export async function main(env = process.env, deps = {}) {
       try {
         if (a.typ === 'entwurf') {
           await produktEntwerfen(a.produktId, (v) => led('entwurf', a.produktId, v));
-        } else if (a.typ === 'reaktivieren') {
+        } else if (a.typ === 'reaktivieren' || a.typ === 'nachziehen') {
           if (a.kanaele === null) { befunde.push({ art: 'kanaele-unbekannt', handle: a.handle, text: `${a.handle}: keine gemerkte Kanalliste (Feld ${MF_KANAELE} fehlt): Verkaufskanäle nach der Reaktivierung von Hand prüfen` }); sagen(`  Befund ${a.handle}: keine gemerkte Kanalliste`); }
-          await produktReaktivieren(a.produktId, a.kanaele, (v) => led('reaktivieren', a.produktId, { ...v, handle: a.handle }));
+          await produktReaktivieren(a.produktId, a.kanaele, (v) => led(a.typ, a.produktId, { ...v, handle: a.handle }), a.typ === 'nachziehen' ? 'ACTIVE' : 'DRAFT');
         } else if (a.typ === 'sperre') {
           led('sperre', a.varianteId, { produktId: a.produktId, policy: a.vorherPolicy, sku: a.sku });
           const d = await schreibenGql(M_VARIANTE, { p: a.produktId, v: [{ id: a.varianteId, inventoryPolicy: 'DENY', metafields: [{ namespace: MF_NAMESPACE, key: MF_SPERRE, type: 'single_line_text_field', value: a.vorherPolicy }] }] });
@@ -476,7 +525,10 @@ export async function main(env = process.env, deps = {}) {
           d = await schreibenGql(M_MF_WEG, { m: [{ ownerId: a.varianteId, namespace: MF_NAMESPACE, key: MF_SPERRE }] }); f = userFehler(d, 'metafieldsDelete'); if (f) throw new Error('metafieldsDelete: ' + f);
         }
         gemacht.push(a);
-      } catch (e) { fehler.push(`${a.typ} ${a.handle}: ${e.message}`); err(`Fehler ${a.typ} ${a.handle}: ${e.message}`); }
+      } catch (e) {
+        if (e instanceof Uebersprungen) { befunde.push({ art: 'uebersprungen', handle: a.handle, text: `${a.handle}: ${a.typ} übersprungen, ${e.message}` }); sagen(`  ${a.typ} ${a.handle} übersprungen: ${e.message}`); continue; }
+        fehler.push(`${a.typ} ${a.handle}: ${e.message}`); err(`Fehler ${a.typ} ${a.handle}: ${e.message}`);
+      }
     }
     // Rücklesen der Shop-Änderungen (frisch)
     for (const a of gemacht) {
@@ -484,7 +536,7 @@ export async function main(env = process.env, deps = {}) {
       let ok = false;
       if (p) {
         if (a.typ === 'entwurf') ok = p.status === 'DRAFT' && p.tags.includes(TAG_AUS) && !!p.kanaele;
-        else if (a.typ === 'reaktivieren') ok = p.status === 'ACTIVE' && !p.tags.includes(TAG_AUS) && !p.kanaele && kanaeleFehlend(a.kanaele || [], kanaeleVon(p)).length === 0;
+        else if (a.typ === 'reaktivieren' || a.typ === 'nachziehen') ok = p.status === 'ACTIVE' && !p.tags.includes(TAG_AUS) && !p.kanaele && kanaeleFehlend(a.kanaele || [], kanaeleVon(p)).length === 0;
         else { const v = p.variants.nodes.find((x) => x.id === a.varianteId); ok = !!v && (a.typ === 'sperre' ? v.inventoryPolicy === 'DENY' && v.sperre && v.sperre.value === a.vorherPolicy : v.inventoryPolicy === a.policyZurueck && !v.sperre); }
       }
       if (!ok) fehler.push(`Rücklesen ${a.typ} ${a.handle}: Stand weicht vom Soll ab`);
@@ -506,8 +558,9 @@ export async function main(env = process.env, deps = {}) {
         } catch (e) { fehler.push(`${C.themeDatei} schreiben: ${e.message}`); }
       }
     }
-    const kurz = `${gemacht.filter((a) => a.typ === 'entwurf').length} auf ENTWURF, ${gemacht.filter((a) => a.typ === 'reaktivieren').length} reaktiviert, ${gemacht.filter((a) => a.typ === 'sperre').length} gesperrt, ${gemacht.filter((a) => a.typ === 'freigabe').length} freigegeben, Datei ${dateiNeu ? (dateiGleich ? 'Stand erneuert' : 'neu') : 'unverändert'}`;
+    const kurz = `${gemacht.filter((a) => a.typ === 'entwurf').length} auf ENTWURF, ${gemacht.filter((a) => a.typ === 'reaktivieren').length} reaktiviert, ${gemacht.filter((a) => a.typ === 'nachziehen').length} zu Ende geführt, ${gemacht.filter((a) => a.typ === 'sperre').length} gesperrt, ${gemacht.filter((a) => a.typ === 'freigabe').length} freigegeben, Datei ${dateiNeu ? (dateiGleich ? 'Stand erneuert' : 'neu') : 'unverändert'}`;
     if (plan.aktionen.length || (dateiNeu && !dateiGleich) || fehler.length) await tg(`${fehler.length ? '[Fehler]' : '[Lager]'} LuxeStyle Printful-Lager: ${esc(kurz)}${neuAusModelle.length ? `; neu ausgeblendet: ${esc(neuAusModelle.join(', '))}` : ''}${fehler.length ? `\nFehler: ${esc(fehler.slice(0, 5).join(' | '))}` : ''}`);
+    await befundeMelden();
     return await ende(fehler.length ? 1 : 0, kurz);
   } catch (e) {
     fehler.push(e.message);

@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { main } from './printful_lager.mjs';
-import { ausblendenText, ausblendenPruefen, TAG_AUS, REGELN } from './lib/printful_lager.mjs';
+import { ausblendenText, ausblendenPruefen, modellLesen, ledgerZeile, TAG_AUS, REGELN } from './lib/printful_lager.mjs';
 
 let n = 0;
 const ok = (b, t) => { assert.ok(b, t); n++; };
@@ -112,7 +112,7 @@ function fetchFuer(w) {
   };
 }
 function produktAusgabe(p, voll) {
-  return { id: p.id, handle: p.handle, status: p.status, tags: [...p.tags], kanaele: p.marker ? { value: p.marker } : null, resourcePublications: { nodes: p.pubs.map((x) => ({ isPublished: true, publication: { id: 'gid://shopify/Publication/' + x } })) }, variants: { pageInfo: { hasNextPage: !!p.mehrVarianten }, nodes: p.variants.nodes.map((x) => (voll ? x : { id: x.id, sku: x.sku, inventoryPolicy: x.inventoryPolicy, sperre: x.sperre })) } };
+  return { id: p.id, handle: p.handle, status: p.status, tags: [...p.tags], kanaele: p.marker ? { value: p.marker } : null, resourcePublications: { nodes: [...p.pubs.map((x) => ({ isPublished: true, publication: { id: 'gid://shopify/Publication/' + x } })), ...(p.unpub || []).map((x) => ({ isPublished: false, publication: { id: 'gid://shopify/Publication/' + x } }))] }, variants: { pageInfo: { hasNextPage: !!p.mehrVarianten }, nodes: p.variants.nodes.map((x) => (voll ? x : { id: x.id, sku: x.sku, inventoryPolicy: x.inventoryPolicy, sperre: x.sperre })) } };
 }
 function gql(w, q, v) {
   const fehler = (m) => ({ errors: [{ message: m }] });
@@ -127,10 +127,13 @@ function gql(w, q, v) {
   if (q.includes('products(first')) {
     w.productQueries++;
     const start = v.c ? Number(v.c) : 0;
-    const liste = w.produkte.filter((p) => p.tags.some((t) => ['printful_personalized_product', 'wunschdesign'].includes(t)));
+    const passt = (p, term) => { const m = /^(tag|sku):(.+)$/.exec(term.trim()); if (!m) throw new Error('Unbekannter Suchbegriff: ' + term); return m[1] === 'tag' ? p.tags.includes(m[2]) : p.variants.nodes.some((x) => (x.sku || '').startsWith(m[2].replace(/\*$/, ''))); };
+    const liste = w.produkte.filter((p) => String(v.q).split(' OR ').some((t) => passt(p, t)));
     const seite = liste.slice(start, start + w.seite);
     const naechster = start + w.seite;
-    return { data: { products: { pageInfo: { hasNextPage: naechster < liste.length, endCursor: w.cursorHaengt ? String(start) : String(naechster) }, nodes: seite.map((p) => produktAusgabe(p, true)) } } };
+    const antwortSeite = { data: { products: { pageInfo: { hasNextPage: naechster < liste.length, endCursor: w.cursorHaengt ? String(start) : String(naechster) }, nodes: seite.map((p) => produktAusgabe(p, true)) } } };
+    if (naechster >= liste.length && w.nachListe) { const h = w.nachListe; w.nachListe = null; h(); }       // Rennen: jemand ändert ein Produkt, NACHDEM der Wächter die Liste gelesen hat
+    return antwortSeite;
   }
   if (q.includes('product(id:$id)')) { const p = w.produkte.find((x) => x.id === v.id); return { data: { product: p ? produktAusgabe(p, false) : null } }; }
   if (q.startsWith('mutation')) {
@@ -141,8 +144,13 @@ function gql(w, q, v) {
       if (!w.fehler.productUpdateIgnorieren) { p(v.p.id).status = v.p.status; if (v.p.status === 'DRAFT') p(v.p.id).pubs = []; }   // Shopify nimmt einen Entwurf aus allen Kanälen (GEMESSEN 06.11.2026)
       return { data: { productUpdate: { product: { id: v.p.id, status: v.p.status }, userErrors: [] } } };
     }
-    if (q.includes('tagsAdd(')) { w.mut.push({ typ: 'tagsAdd', ziel: v.id, tags: v.tags }); const pp = p(v.id); for (const t of v.tags) if (!pp.tags.includes(t)) pp.tags.push(t); return { data: { tagsAdd: { userErrors: [] } } }; }
-    if (q.includes('tagsRemove(')) { w.mut.push({ typ: 'tagsRemove', ziel: v.id, tags: v.tags }); const pp = p(v.id); pp.tags = pp.tags.filter((t) => !v.tags.includes(t)); return { data: { tagsRemove: { userErrors: [] } } }; }
+    if (q.includes('tagsAdd(')) {
+      w.mut.push({ typ: 'tagsAdd', ziel: v.id, tags: v.tags });
+      if (w.fehler.tagsAddUserErrors) return { data: { tagsAdd: { userErrors: [{ message: 'Tag abgelehnt' }] } } };
+      const pp = p(v.id); if (!w.fehler.tagsAddIgnorieren) for (const t of v.tags) if (!pp.tags.includes(t)) pp.tags.push(t);
+      return { data: { tagsAdd: { userErrors: [] } } };
+    }
+    if (q.includes('tagsRemove(')) { w.mut.push({ typ: 'tagsRemove', ziel: v.id, tags: v.tags }); const pp = p(v.id); pp.tags = pp.tags.filter((t) => !v.tags.includes(t)); if (w.fehler.kanaeleWegNachTag) pp.pubs = []; return { data: { tagsRemove: { userErrors: [] } } }; }
     if (q.includes('productVariantsBulkUpdate(')) {
       w.mut.push({ typ: 'variante', ziel: v.v[0].id, produkt: v.p, eingabe: v.v[0] });
       const pp = p(v.p);
@@ -271,8 +279,9 @@ const dateiObjekt = (w) => ausblendenPruefen(w.theme.text);
   gleich(w.mut[0].ziel, DATEI, '2: richtige Datei');
   ok(r.ledger.includes('printful-lager') && r.ledger.includes(' theme assets/luxe-clothing-ausblenden.json vorher='), '2: Ledger-Zeile mit vorher= vor dem Schreiben');
   ok(r.ledger.includes(JSON.stringify(alt).slice(1, 60)), '2: das Ledger trägt den alten Dateiinhalt');
-  gleich(w.tg.length, 1, '2: ein Telegram');
+  gleich(w.tg.length, 2, '2: zwei Telegram (Datei, neuer Befund)');
   ok(/Datei neu/.test(w.tg[0]), '2: Telegram nennt die Datei');
+  ok(/1 neue\(r\) Befund/.test(w.tg[1]) && /Variante 5000_1002 ist bei Printful ausverkauft/.test(w.tg[1]) && /nichts geändert/.test(w.tg[1]), '2: das zweite Telegram nennt die ausverkaufte Einzelvariante, die im Shop kaufbar bleibt');
   ok(/Datei geschrieben und zurückgelesen/.test(r.text), '2: Rücklesen der Datei bestätigt');
   allgemein(w, '2');
   // zweiter Lauf: unverändert, kein Schreiben, kein Telegram
@@ -715,6 +724,325 @@ const dateiObjekt = (w) => ausblendenPruefen(w.theme.text);
   ok(!r.text.includes('Bearer') && !r.text.includes('X-Shopify-Access-Token') && !/\bpk\b|\bst\b/.test(r.text.replace(/\bst\b-/g, '')), '14: weder Printful-Schlüssel noch Shopify-Token im Log');
   for (const x of w.req.filter((y) => y.host === 'api.printful.com')) ok(!x.pfad.includes('pk'), '14: Schlüssel nicht in der Adresse');
   rmSync(r.dir, { recursive: true, force: true });
+}
+
+// ═════════════════════════════════════════════════════════════ 15. Rennen: ein Produkt ändert sich, NACHDEM der Wächter die Liste gelesen hat (Gegenleser 1 und 2)
+{
+  const p2 = (w) => w.produkte.find((x) => x.id.endsWith('/2'));
+  const marker = (w) => p2(w).marker;
+  // a) geplant: ENTWURF. Jemand setzt das Produkt in der Zwischenzeit von Hand auf ENTWURF: nichts schreiben, nie unser Tag an einen fremden Entwurf
+  const w = standardWelt(); w.modelle.get(11).varianten.forEach((v) => { v.status = AUS; });
+  w.nachListe = () => { const p = p2(w); p.status = 'DRAFT'; p.pubs = []; };
+  const r = await lauf(w, LIVE, { freigabe: true });
+  gleich(r.code, 0, '15a: ein Rennen ist kein Fehler: Exit 0');
+  gleich(w.mut.filter((m) => m.ziel === 'gid://shopify/Product/2'), [], '15a: am inzwischen von Hand entworfenen Produkt wird nichts geschrieben (kein Tag, kein Merkfeld, kein Status)');
+  gleich([tags(w, 2).includes(TAG_AUS), marker(w)], [false, null], '15a: der Entwurf trägt unser Tag nicht');
+  ok(/entwurf produkt-2 übersprungen: Status ist DRAFT, nicht ACTIVE/.test(r.text), '15a: Log nennt den Grund');
+  ok(dateiObjekt(w).modelle.includes(11), '15a: die Datei im Theme wird trotzdem aktualisiert');
+  ok(!r.ledger.includes('entwurf gid://shopify/Product/2'), '15a: keine Ledger-Zeile für eine Änderung, die nicht stattfand');
+  // b) geplant: Rückkehr. Jemand aktiviert das Produkt in der Zwischenzeit von Hand: nichts doppelt schreiben; am Folgetag räumt «nachziehen» das Tag auf
+  const w2 = standardWelt(); alsEntwurfVonUns(w2, 2);
+  w2.nachListe = () => { const p = p2(w2); p.status = 'ACTIVE'; p.pubs = [...KANAELE]; };
+  const r2 = await lauf(w2, LIVE, { freigabe: true });
+  gleich(r2.code, 0, '15b: Exit 0');
+  gleich(w2.mut.filter((m) => m.typ === 'productUpdate'), [], '15b: der Status wird nicht noch einmal gesetzt');
+  ok(/reaktivieren produkt-2 übersprungen: Stand ist ACTIVE/.test(r2.text), '15b: Log nennt den Grund');
+  w2.mut.length = 0;
+  const r3 = await lauf(w2, LIVE, { freigabe: true, dir: r2.dir, uhr: r2.uhr });
+  gleich(r3.code, 0, '15b: Folgetag Exit 0');
+  gleich([status(w2, 2), tags(w2, 2).includes(TAG_AUS), marker(w2)], ['ACTIVE', false, null], '15b: Folgetag: das stehen gebliebene Tag und Merkfeld sind weg');
+  gleich(mutTypen(w2), ['tagsRemove', 'metafeldWeg'], '15b: Folgetag: Kanäle waren vollständig, es wird nur aufgeräumt (kein Status, keine Veröffentlichung)');
+  ok(r3.ledger.includes('nachziehen gid://shopify/Product/2 vorher={"status":"ACTIVE","kanaele":["301970915713","301971014017"],"handle":"produkt-2"}'), '15b: Ledger-Zeile «nachziehen» mit vorher=');
+  // c) tagsAdd wird abgelehnt: Fehler, nichts bleibt stehen
+  const w3 = standardWelt(); w3.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); w3.fehler.tagsAddUserErrors = true;
+  const r4 = await lauf(w3, LIVE, { freigabe: true });
+  gleich(r4.code, 1, '15c: tagsAdd abgelehnt: Exit 1');
+  ok(r4.errs.some((x) => /entwurf produkt-2: tagsAdd: .*Tag abgelehnt/.test(x)), '15c: Meldung nennt tagsAdd');
+  gleich([status(w3, 2), tags(w3, 2).includes(TAG_AUS), marker(w3)], ['ACTIVE', false, null], '15c: das Produkt bleibt aktiv, das Merkfeld wird zurückgebaut');
+  // d) Statuswechsel wird abgelehnt: Tag und Merkfeld werden zurückgebaut (sonst bliebe ein AKTIVES Produkt mit unserem Tag)
+  const w4 = standardWelt(); w4.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); w4.fehler.productUpdateUserErrors = true;
+  const r5 = await lauf(w4, LIVE, { freigabe: true });
+  gleich(r5.code, 1, '15d: Statuswechsel abgelehnt: Exit 1');
+  gleich([status(w4, 2), tags(w4, 2).includes(TAG_AUS), marker(w4)], ['ACTIVE', false, null], '15d: kein stehen gebliebenes Tag und Merkfeld am aktiven Produkt');
+  gleich(w4.mut.filter((m) => m.ziel === 'gid://shopify/Product/2').map((m) => m.typ), ['metafeldSetzen', 'tagsAdd', 'productUpdate', 'tagsRemove', 'metafeldWeg'], '15d: Reihenfolge: merken, Tag, Status (scheitert), Tag weg, Merkfeld weg');
+  // e) das Tag wird still nicht gesetzt: das Rücklesen merkt es
+  const w5 = standardWelt(); w5.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); w5.fehler.tagsAddIgnorieren = true;
+  const r6 = await lauf(w5, LIVE, { freigabe: true });
+  gleich(r6.code, 1, '15e: Tag nicht gesetzt: Exit 1 durch das Rücklesen');
+  ok(r6.errs.some((x) => /Rücklesen entwurf produkt-2: Stand weicht vom Soll ab/.test(x)), '15e: Meldung');
+  // f) ein schon vorhandenes Merkfeld geht beim ENTWURF nicht verloren
+  const w6 = standardWelt(); w6.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); p2(w6).marker = '111';
+  await lauf(w6, LIVE, { freigabe: true });
+  gleich([status(w6, 2), marker(w6)], ['DRAFT', ['111', ...KANAELE].join(',')], '15f: vorhandenes Merkfeld und aktuelle Kanäle werden zusammengeführt');
+  // g) nur VERÖFFENTLICHTE Kanäle werden gemerkt
+  const w7 = standardWelt(); w7.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); p2(w7).unpub = ['302994456961'];
+  const r7 = await lauf(w7, LIVE, { freigabe: true });
+  gleich(marker(w7), KANAELE.join(','), '15g: ein nur verknüpfter, nicht veröffentlichter Kanal wird nicht gemerkt');
+  ok(r7.ledger.includes('"kanaele":["301970915713","301971014017"]') && !r7.ledger.includes('302994456961'), '15g: auch das Ledger nennt nur veröffentlichte Kanäle');
+  // h) Rückkehr geplant, aber jemand entfernt das Tag von Hand (der Entwurf gehört dann nicht mehr uns): nichts schreiben
+  const w8 = standardWelt(); alsEntwurfVonUns(w8, 2);
+  w8.nachListe = () => { p2(w8).tags = p2(w8).tags.filter((t) => t !== TAG_AUS); };
+  const r8 = await lauf(w8, LIVE, { freigabe: true });
+  gleich([r8.code, status(w8, 2), w8.mut.filter((m) => m.ziel === 'gid://shopify/Product/2')], [0, 'DRAFT', []], '15h: ohne unser Tag wird ein Entwurf nicht reaktiviert, auch wenn der Plan es vorsah');
+  ok(/reaktivieren produkt-2 übersprungen: Stand ist DRAFT ohne unser Tag/.test(r8.text), '15h: Log nennt den Grund');
+  // i) die Nachprüfung vor dem ENTWURF ist nicht lesbar: im Zweifel bleibt das Produkt aktiv
+  const w9 = standardWelt(); w9.modelle.set(11, modell(11, { status: [AUS, AUS, AUS], skript: ['', '500', '500', '500', '500'] }));
+  const r9 = await lauf(w9, LIVE, { freigabe: true });
+  gleich([r9.code, status(w9, 2), w9.mut.some((m) => m.typ === 'productUpdate')], [0, 'ACTIVE', false], '15i: nicht lesbare Nachprüfung bestätigt den Ausfall nicht: kein ENTWURF');
+  ok(/Nachprüfung produkt-2: Ausfall nicht bestätigt/.test(r9.text), '15i: Log nennt die Nachprüfung');
+  // j) Statuswechsel scheitert bei vorhandenem Merkfeld: das Merkfeld bleibt (zusammengeführt), das Tag geht
+  const w10 = standardWelt(); w10.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); p2(w10).marker = '111'; w10.fehler.productUpdateUserErrors = true;
+  await lauf(w10, LIVE, { freigabe: true });
+  gleich([status(w10, 2), tags(w10, 2).includes(TAG_AUS), marker(w10)], ['ACTIVE', false, ['111', ...KANAELE].join(',')], '15j: scheitert der Statuswechsel, bleibt ein schon vorhandenes Merkfeld erhalten, das Tag verschwindet');
+  allgemein(w, '15a'); allgemein(w2, '15b'); allgemein(w3, '15c'); allgemein(w4, '15d'); allgemein(w6, '15f'); allgemein(w7, '15g');
+}
+
+// ═════════════════════════════════════════════════════════════ 16. «nachziehen»: halb fertige oder von Hand beendete Entwürfe zu Ende führen
+{
+  const p2 = (w) => w.produkte.find((x) => x.id.endsWith('/2'));
+  // a) Veröffentlichen schlägt fehl (Tag 1), am Folgetag klappt es
+  const w = standardWelt(); alsEntwurfVonUns(w, 2); w.fehler.publishIgnorieren = true;
+  const r1 = await lauf(w, LIVE, { freigabe: true });
+  gleich([r1.code, status(w, 2), tags(w, 2).includes(TAG_AUS), p2(w).marker, p2(w).pubs], [1, 'ACTIVE', true, KANAELE.join(','), []], '16a: Veröffentlichen scheitert: Exit 1, Produkt aktiv ohne Kanäle, Tag und Merkfeld bleiben als Spur');
+  ok(w.tg.some((t) => /\[Fehler\]/.test(t) && /nicht wiederhergestellt/.test(t)), '16a: Telegram meldet den Fehler mit dem Grund');
+  w.fehler.publishIgnorieren = false; w.mut.length = 0; w.tg.length = 0;
+  const t = await lauf(w, {}, { dir: r1.dir, uhr: r1.uhr });
+  gleich(w.mut, [], '16a: Trockenlauf am Folgetag schreibt nichts');
+  ok(/\[würde\] nachziehen produkt-2/.test(t.text) && /nachziehen 1,/.test(t.text), '16a: Trockenlauf kündigt «nachziehen» an');
+  const r2 = await lauf(w, LIVE, { freigabe: true, dir: r1.dir, uhr: r1.uhr });
+  gleich(r2.code, 0, '16a: Folgetag Exit 0');
+  gleich([status(w, 2), tags(w, 2).includes(TAG_AUS), p2(w).marker, [...p2(w).pubs].sort()], ['ACTIVE', false, null, KANAELE], '16a: Folgetag: Kanäle wieder da, Tag und Merkfeld entfernt');
+  gleich(mutTypen(w), ['publish', 'tagsRemove', 'metafeldWeg'], '16a: Folgetag: nur veröffentlichen und aufräumen (der Status wird nicht angefasst)');
+  ok(/1 zu Ende geführt/.test(w.tg[0]), '16a: Telegram nennt das Zu-Ende-Führen');
+  allgemein(w, '16a');
+  // b) von Hand aktiviert, Kanäle vollständig: nur aufräumen
+  const w2 = standardWelt(); p2(w2).tags.push(TAG_AUS); p2(w2).marker = KANAELE.join(',');
+  const r3 = await lauf(w2, LIVE, { freigabe: true });
+  gleich([r3.code, mutTypen(w2), tags(w2, 2).includes(TAG_AUS), p2(w2).marker], [0, ['tagsRemove', 'metafeldWeg'], false, null], '16b: von Hand aktiviert: Tag und Merkfeld verschwinden, sonst nichts');
+  // c) ohne gemerkte Kanäle: Tag entfernen, aber melden
+  const w3 = standardWelt(); p2(w3).tags.push(TAG_AUS);
+  const r4 = await lauf(w3, LIVE, { freigabe: true });
+  gleich([r4.code, mutTypen(w3), tags(w3, 2).includes(TAG_AUS)], [0, ['tagsRemove', 'metafeldWeg'], false], '16c: ohne Merkfeld nur aufräumen');
+  ok(/keine gemerkte Kanalliste/.test(r4.text), '16c: Befund «keine gemerkte Kanalliste»');
+  // d) nachziehen hat Vorrang: erst aufräumen, am nächsten Lauf entscheiden (alles ausverkauft)
+  const w4 = standardWelt(); w4.modelle.get(11).varianten.forEach((v) => { v.status = AUS; }); p2(w4).tags.push(TAG_AUS); p2(w4).marker = KANAELE.join(',');
+  const r5 = await lauf(w4, LIVE, { freigabe: true });
+  gleich([r5.code, w4.mut.filter((m) => m.typ === 'productUpdate').length, tags(w4, 2).includes(TAG_AUS)], [0, 0, false], '16d: erster Lauf räumt nur auf, kein ENTWURF im selben Lauf');
+  const r6 = await lauf(w4, LIVE, { freigabe: true, dir: r5.dir, uhr: r5.uhr });
+  gleich([r6.code, status(w4, 2), tags(w4, 2).includes(TAG_AUS)], [0, 'DRAFT', true], '16d: zweiter Lauf: ENTWURF');
+  // e) Nachziehen scheitert: Tag und Merkfeld bleiben, jeder Lauf meldet es (kein stilles Hängen)
+  const w5 = standardWelt(); p2(w5).tags.push(TAG_AUS); p2(w5).marker = KANAELE.join(','); p2(w5).pubs = []; w5.fehler.publishIgnorieren = true;
+  const r7 = await lauf(w5, LIVE, { freigabe: true });
+  const r8 = await lauf(w5, LIVE, { freigabe: true, dir: r7.dir, uhr: r7.uhr });
+  gleich([r7.code, r8.code, tags(w5, 2).includes(TAG_AUS), p2(w5).marker], [1, 1, true, KANAELE.join(',')], '16e: scheitert das Nachziehen, meldet es jeder Lauf erneut (Exit 1), Tag und Merkfeld bleiben');
+  gleich(w5.tg.filter((x) => /\[Fehler\]/.test(x)).length, 2, '16e: zwei Fehler-Telegram (eines je Lauf)');
+  ok(r7.errs.some((x) => /nachziehen produkt-2: Verkaufskanäle nach dem Aktivieren nicht wiederhergestellt/.test(x)), '16e: Meldung nennt «nachziehen»');
+  // f) das Rücklesen prüft die Kanäle (die Kanäle verschwinden nach dem Tag-Entfernen)
+  const w6 = standardWelt(); alsEntwurfVonUns(w6, 2); w6.fehler.kanaeleWegNachTag = true;
+  const r9 = await lauf(w6, LIVE, { freigabe: true });
+  gleich(r9.code, 1, '16f: fehlende Kanäle nach der Reaktivierung: Exit 1 durch das Rücklesen');
+  ok(r9.errs.some((x) => /Rücklesen reaktivieren produkt-2: Stand weicht vom Soll ab/.test(x)), '16f: Meldung');
+  // g) Ledger der Reaktivierung
+  const w7 = standardWelt(); alsEntwurfVonUns(w7, 2);
+  const r10 = await lauf(w7, LIVE, { freigabe: true });
+  ok(r10.ledger.includes('reaktivieren gid://shopify/Product/2 vorher={"status":"DRAFT","kanaele":["301970915713","301971014017"],"handle":"produkt-2"}'), '16g: Ledger-Zeile der Reaktivierung mit vorher=');
+  ok(r10.ledger.indexOf('reaktivieren gid://shopify/Product/2') >= 0 && r10.ledger.split('\n').length >= 2, '16g: Zeile steht im Ledger');
+}
+
+// ═════════════════════════════════════════════════════════════ 17. Neue Befunde gehen einmal an Telegram
+{
+  const befundTg = (w) => w.tg.filter((x) => /neue\(r\) Befund/.test(x));
+  const zustandVon = (dir) => JSON.parse(readFileSync(join(dir, 'zustand.json'), 'utf8'));
+  // a) ausverkaufte Einzelvariante (Strategie B): Trockenlauf zeigt, sendet nicht, merkt nichts
+  const w = standardWelt(); w.modelle.get(10).varianten[1].status = AUS;
+  const t = await lauf(w);
+  ok(/\[Trockenlauf\] Telegram: [\s\S]*5000_1002/.test(t.text), '17a: Trockenlauf zeigt, was gesendet würde');
+  gleich([w.tg, zustandVon(t.dir).gemeldet], [[], {}], '17a: Trockenlauf sendet nichts und merkt nichts als gemeldet');
+  const r1 = await lauf(w, LIVE, { freigabe: true, dir: t.dir, uhr: t.uhr });
+  gleich(befundTg(w).length, 1, '17a: live: genau ein Telegram für den Befund');
+  ok(/Variante 5000_1002 ist bei Printful ausverkauft/.test(befundTg(w)[0]) && /nichts geändert/.test(befundTg(w)[0]), '17a: Text nennt Variante und «nichts geändert»');
+  gleich(Object.keys(zustandVon(t.dir).gemeldet), ['variante-ausverkauft:5000_1002'], '17a: gemeldet ist im Zustand gemerkt');
+  w.tg.length = 0;
+  const r2 = await lauf(w, LIVE, { freigabe: true, dir: t.dir, uhr: t.uhr });
+  gleich(w.tg, [], '17a: zweiter Lauf: derselbe Befund wird nicht noch einmal gemeldet');
+  // Rückkehr und erneuter Ausfall: wird wieder gemeldet
+  w.modelle.get(10).varianten[1].status = DA;
+  await lauf(w, LIVE, { freigabe: true, dir: t.dir, uhr: t.uhr });
+  gleich(zustandVon(t.dir).gemeldet, {}, '17a: ist die Variante zurück, fällt der Befund aus dem Zustand');
+  w.modelle.get(10).varianten[1].status = AUS; w.tg.length = 0;
+  await lauf(w, LIVE, { freigabe: true, dir: t.dir, uhr: t.uhr });
+  gleich(befundTg(w).length, 1, '17a: fällt sie erneut aus, wird erneut gemeldet');
+  ok(r1.code === 0 && r2.code === 0, '17a: Exit 0');
+  // b) Telegram fällt aus: nicht als gemeldet gemerkt, der nächste Lauf versucht es wieder
+  const w2 = standardWelt(); w2.modelle.get(10).varianten[1].status = AUS; w2.fehler.tgAus = true;
+  const b1 = await lauf(w2, LIVE, { freigabe: true });
+  gleich(zustandVon(b1.dir).gemeldet, {}, '17b: Telegram-Ausfall: nichts als gemeldet gemerkt');
+  w2.fehler.tgAus = false; w2.tg.length = 0;
+  await lauf(w2, LIVE, { freigabe: true, dir: b1.dir, uhr: b1.uhr });
+  gleich(befundTg(w2).length, 1, '17b: der nächste Lauf sendet es');
+  // c) ohne Telegram-Zugang (null): auch nicht gemerkt
+  const w3 = standardWelt(); w3.modelle.get(10).varianten[1].status = AUS;
+  const c1 = await lauf(w3, { ...LIVE, TELEGRAM_BOT_TOKEN: null }, { freigabe: true });
+  gleich([w3.tg, zustandVon(c1.dir).gemeldet], [[], {}], '17c: ohne Telegram-Zugang nichts gesendet und nichts als gemeldet gemerkt');
+  // d) Variante fehlt im Katalog: Befund bei vollständigem Lauf, nie bei Teilmenge oder unlesbarem Modell
+  const bauen = () => { const x = standardWelt(); x.produkte.push(produkt(11, 'ACTIVE', [variante('gid://V/n1', '5000_99991')])); return x; };
+  const w4 = bauen();
+  const d1 = await lauf(w4, LIVE, { freigabe: true });
+  ok(/Befund variante-nicht-im-katalog: Variante 5000_99991 \(produkt-11\) steht nicht mehr im Printful-Katalog/.test(d1.text), '17d: Befund «Variante fehlt im Katalog» mit SKU');
+  gleich(befundTg(w4).length, 1, '17d: genau ein Telegram dazu');
+  ok(/5000_99991/.test(befundTg(w4)[0]), '17d: das Telegram nennt die SKU');
+  gleich(w4.mut.filter((m) => m.ziel === 'gid://shopify/Product/11' || m.produkt === 'gid://shopify/Product/11'), [], '17d: das Produkt wird nicht angefasst');
+  const w5 = bauen();
+  const d2 = await lauf(w5, { MODELLE: '10,11' });
+  ok(!/variante-nicht-im-katalog/.test(d2.text), '17d: bei einer Teilmenge kein solcher Befund (die Modelle fehlen nur, weil sie nicht gelesen wurden)');
+  const w6 = bauen(); w6.modelle.get(13).skript = ['500', '500', '500', '500'];
+  const d3 = await lauf(w6, LIVE, { freigabe: true });
+  ok(/unbekannt 13:/.test(d3.text) && !/variante-nicht-im-katalog/.test(d3.text), '17d: bei einem nicht lesbaren Modell kein solcher Befund');
+  // e) unbekanntes Statuswort: Befund und Telegram einmal, die Variante bleibt unbekannt
+  const w7 = standardWelt();
+  w7.modelle.set(17, modell(17, { status: [DA, { EU: 'neuwort', US: 'neuwort' }, DA] }));
+  w7.modelle.set(16, modell(16, { status: [{ EU: 'neuwort' }, { EU: 'neuwort' }, { EU: 'neuwort' }] }));
+  const e1 = await lauf(w7, LIVE, { freigabe: true });
+  gleich(e1.code, 0, '17e: Exit 0 (ein Modell unbekannt, 1 von 12)');
+  ok(/Befund: Printful meldet das unbekannte Statuswort «neuwort» \(Modelle 16, 17\)/.test(e1.text), '17e: Befund nennt Wort und Modelle');
+  gleich(befundTg(w7).length, 1, '17e: ein Telegram für das Wort (nicht eines je Modell)');
+  ok(!dateiObjekt(w7).modelle.includes(16) && !dateiObjekt(w7).modelle.includes(17) && dateiObjekt(w7).varianten[17] === undefined, '17e: unbekannte Varianten werden nicht ausgeblendet');
+}
+
+// ═════════════════════════════════════════════════════════════ 18. Varianten, die nur ausserhalb der Schweiz lieferbar sind
+{
+  const w = standardWelt();
+  w.modelle.set(15, modell(15, { status: [{ AU: 'in_stock' }, DA, { AU: 'in_stock', EU: 'in_stock' }] }));
+  const r = await lauf(w, LIVE, { freigabe: true });
+  gleich(r.code, 0, '18: Exit 0');
+  gleich(dateiObjekt(w).varianten, { 15: [1501] }, '18: nur die AU-Variante steht in der Datei; AU+EU bleibt lieferbar');
+  ok(/1 Varianten in 1 Modellen sind nur in AU, BR, JP oder UK lieferbar/.test(r.text), '18: Log nennt die Zahl');
+  // alle Varianten eines Modells nur in JP oder BR: Produkt geht auf ENTWURF
+  const w2 = standardWelt();
+  w2.modelle.set(12, modell(12, { status: [{ JP: 'in_stock' }, { JP: 'in_stock' }, { BR: 'in_stock' }] }));
+  const r2 = await lauf(w2, LIVE, { freigabe: true });
+  gleich([r2.code, status(w2, 3)], [0, 'DRAFT'], '18: Produkt, dessen Varianten nur in JP oder BR lieferbar sind: ENTWURF');
+  ok(dateiObjekt(w2).modelle.includes(12), '18: das Modell steht in der Datei');
+  // eine Variante nur in AU ist keine Testvariante für die Preisauskunft
+  const w3 = standardWelt();
+  w3.modelle.set(20, modell(20, { status: [{ AU: 'in_stock' }, { AU: 'in_stock' }, DA], rateSkript: ['ok'] }));
+  const r3 = await lauf(w3);
+  const pa = w3.req.filter((x) => x.pfad === '/shipping/rates' && Math.floor(x.body.items[0].variant_id / 100) === 20);
+  gleich(pa.map((x) => x.body.items[0].variant_id), [2003], '18: die Preisauskunft nimmt die Variante mit Schweizer Region (2003), nicht die AU-Varianten');
+}
+
+// ═════════════════════════════════════════════════════════════ 19. Rücknahme: Stand und Reihenfolge
+{
+  const p2 = (w) => w.produkte.find((x) => x.id.endsWith('/2'));
+  // a) Rücknahme einer Freigabe (Variante wieder sperren, mit dem alten Wert in der Markierung)
+  const w = standardWelt(); w.modelle.get(15).varianten[1].status = AUS;
+  const a1 = await lauf(w, { ...LIVE, STRATEGIE: 'A' }, { freigabe: true });
+  w.modelle.get(15).varianten[1].status = DA;
+  const a2 = await lauf(w, { ...LIVE, STRATEGIE: 'A' }, { freigabe: true, dir: a1.dir, uhr: a1.uhr });
+  const h = () => w.produkte.find((x) => x.id.endsWith('/8')).variants.nodes[1];
+  gleich([h().inventoryPolicy, h().sperre], ['CONTINUE', null], '19a: Ausgangslage: Variante wieder frei');
+  writeFileSync(join(a1.dir, 'nur-freigabe.txt'), a2.ledger.split('\n').filter((x) => / freigabe /.test(x)).join('\n') + '\n');
+  const za = await lauf(w, { ZURUECK: '1', LIVE: '1', LEDGER: join(a1.dir, 'nur-freigabe.txt') }, { dir: a1.dir });
+  gleich(za.code, 0, '19a: Rücknahme Exit 0');
+  gleich([h().inventoryPolicy, h().sperre], ['DENY', { value: 'CONTINUE' }], '19a: die Freigabe ist zurückgenommen: DENY, Markierung mit dem alten Wert CONTINUE');
+  // b) Rücknahme einer Reaktivierung: wieder ENTWURF mit Tag und gemerkten Kanälen
+  const w2 = standardWelt(); alsEntwurfVonUns(w2, 2);
+  const b1 = await lauf(w2, LIVE, { freigabe: true });
+  gleich(status(w2, 2), 'ACTIVE', '19b: Ausgangslage: reaktiviert');
+  const zb = await lauf(w2, { ZURUECK: '1', LIVE: '1' }, { dir: b1.dir });
+  gleich([zb.code, status(w2, 2), tags(w2, 2).includes(TAG_AUS), p2(w2).marker, p2(w2).pubs], [0, 'DRAFT', true, KANAELE.join(','), []], '19b: Reaktivierung zurückgenommen: ENTWURF mit Tag und gemerkten Kanälen');
+  // c) Reihenfolge: ENTWURF, dann Rückkehr; die Rücknahme geht von hinten nach vorn und endet im Ausgangszustand «aktiv»
+  const w3 = standardWelt(); w3.modelle.get(11).varianten.forEach((v) => { v.status = AUS; });
+  const original = w3.theme.text;
+  const c1 = await lauf(w3, LIVE, { freigabe: true });
+  gleich(status(w3, 2), 'DRAFT', '19c: Lauf 1: ENTWURF');
+  w3.modelle.get(11).varianten.forEach((v) => { v.status = DA; });
+  const c2 = await lauf(w3, LIVE, { freigabe: true, dir: c1.dir, uhr: c1.uhr });
+  gleich(status(w3, 2), 'ACTIVE', '19c: Lauf 2: wieder aktiv');
+  const zc = await lauf(w3, { ZURUECK: '1', LIVE: '1' }, { dir: c1.dir });
+  gleich([zc.code, status(w3, 2), tags(w3, 2).includes(TAG_AUS), [...p2(w3).pubs].sort(), w3.theme.text], [0, 'ACTIVE', false, KANAELE, original], '19c: von hinten nach vorn zurückgenommen: aktiv, ohne Tag, Kanäle da, Datei wie am Anfang');
+  ok(/Rücknahme: 4 zurückgesetzt/.test(zc.text), '19c: vier Schritte (zwei Produkte, zwei Dateien)');
+  // d) ein Entwurf ohne unser Tag wird bei der Rücknahme eines ENTWURFS nie angefasst
+  const w4 = standardWelt();
+  const dir = mkdtempSync(join(tmpdir(), 'plager-')); tmpDirs.push(dir);
+  writeFileSync(join(dir, 'fremd.txt'), ledgerZeile('2026-11-06T02:20:00.000Z', 'entwurf', 'gid://shopify/Product/5', { status: 'ACTIVE', handle: 'produkt-5', kanaele: KANAELE }) + '\n');
+  const zd = await lauf(w4, { ZURUECK: '1', LIVE: '1', LEDGER: join(dir, 'fremd.txt') }, { dir });
+  gleich([zd.code, w4.mut.length, status(w4, 5)], [0, 0, 'DRAFT'], '19d: ein Entwurf ohne unser Tag bleibt bei der Rücknahme unberührt');
+  ok(/übersprungen entwurf produkt-5: Stand ist nicht mehr der von uns gesetzte/.test(zd.text), '19d: Log nennt den Grund');
+  // e) «nachziehen» wird nicht zurückgenommen
+  const w5 = standardWelt();
+  writeFileSync(join(dir, 'nz.txt'), ledgerZeile('2026-11-06T02:20:00.000Z', 'nachziehen', 'gid://shopify/Product/2', { status: 'ACTIVE', kanaele: KANAELE, handle: 'produkt-2' }) + '\n');
+  const ze = await lauf(w5, { ZURUECK: '1', LIVE: '1', LEDGER: join(dir, 'nz.txt') }, { dir });
+  gleich([ze.code, w5.mut.length], [0, 0], '19e: Zu-Ende-Führen wird nicht zurückgenommen');
+  ok(/übersprungen nachziehen produkt-2/.test(ze.text), '19e: Log nennt es');
+}
+
+// ═════════════════════════════════════════════════════════════ 20. Zustandsdatei mit fremdem Schema wird nicht geglaubt
+{
+  const sigModell20 = modellLesen({ status: 200, json: { code: 200, result: { product: { id: 20, title: 'x', is_discontinued: false }, variants: [2001, 2002, 2003].map((id) => ({ id, availability_status: stat(DA) })) } } }, 20).signatur;
+  const tagIdx = Math.floor(START / 86400000);
+  ok(20 % REGELN.scheiben !== tagIdx % REGELN.scheiben, '20: Modell 20 liegt heute nicht in der Tagesscheibe (sonst prüfte der Test nichts)');
+  const dateiMit = async (schema) => {
+    const w = standardWelt(); const dir = mkdtempSync(join(tmpdir(), 'plager-')); tmpDirs.push(dir);
+    writeFileSync(join(dir, 'zustand.json'), JSON.stringify({ schema, stand: new Date(START).toISOString(), modelle: { 20: { sig: sigModell20, ch: true, gemessen: new Date(START).toISOString() } } }));
+    const r = await lauf(w, LIVE, { freigabe: true, dir });
+    return { w, r };
+  };
+  const fremd = await dateiMit(2);
+  gleich(fremd.r.code, 0, '20: Zustand mit fremdem Schema: Lauf geht weiter');
+  ok(dateiObjekt(fremd.w).modelle.includes(20), '20: der fremde Zustand («Modell 20 hat eine Schweizer Rate») wird nicht geglaubt: Modell 20 bleibt ausgeblendet');
+  ok(fremd.w.modelle.get(20).rateAnfragen >= 1, '20: Modell 20 wurde neu gemessen');
+  const eigen = await dateiMit(1);
+  ok(eigen.w.modelle.get(20).rateAnfragen === 0 && !dateiObjekt(eigen.w).modelle.includes(20), '20: Gegenprobe: derselbe Zustand mit Schema 1 wird geglaubt (keine Messung, Modell kommt zurück)');
+}
+
+// ═════════════════════════════════════════════════════════════ 21. Preisauskunft: mehrere Testvarianten, Zeitlimit
+{
+  // a) erste Testvariante ausverkauft, zweite liefert eine Rate: das Modell ist für die Schweiz bestellbar
+  const w = standardWelt();
+  w.modelle.set(20, modell(20, { status: [DA, { US: 'in_stock' }, DA], rateSkript: ['aus', 'ok'] }));
+  const r = await lauf(w, LIVE, { freigabe: true });
+  gleich([r.code, w.modelle.get(20).rateAnfragen, dateiObjekt(w).modelle.includes(20)], [0, 2, false], '21a: nach «ausverkauft» wird die zweite Testvariante probiert; mit Rate kommt das Modell zurück');
+  // b) zwei eindeutige Absagen genügen, die dritte Variante wird nicht mehr gefragt
+  const w2 = standardWelt();
+  w2.modelle.set(20, modell(20, { status: [DA, { US: 'in_stock' }, { EU: 'in_stock' }], rateSkript: ['keine', 'keine', 'ok'] }));
+  const r2 = await lauf(w2, LIVE, { freigabe: true });
+  gleich([r2.code, w2.modelle.get(20).rateAnfragen, dateiObjekt(w2).modelle.includes(20)], [0, 2, true], '21b: zwei eindeutige Absagen: Schluss, Modell bleibt ausgeblendet');
+  // c) Zeitlimit gilt auch in der Rate-Phase
+  const voll = standardWelt();
+  const rv = await lauf(voll, { PF_ABSTAND_MS: '2000', PF_PARALLEL: '1', RUN_LIMIT_MS: '9999999' });
+  const nVoll = voll.req.filter((x) => x.pfad === '/shipping/rates').length;
+  const kurz = standardWelt();
+  const rk = await lauf(kurz, { PF_ABSTAND_MS: '2000', PF_PARALLEL: '1', RUN_LIMIT_MS: '27000' });
+  const nKurz = kurz.req.filter((x) => x.pfad === '/shipping/rates').length;
+  ok(rv.code === 0 && rk.code === 0 && nVoll >= 6, `21c: Ausgangslage: ohne Limit ${nVoll} Preisauskünfte, Exit 0`);
+  ok(nKurz >= 1 && nKurz < nVoll, `21c: das Zeitlimit stoppt die Preisauskünfte (${nKurz} statt ${nVoll}), alle Modelle sind gelesen`);
+  gleich(kurz.req.filter((x) => x.methode === 'GET').length, 12, '21c: alle 12 Modelle wurden vor dem Limit gelesen');
+}
+
+// ═════════════════════════════════════════════════════════════ 22. Seitenlimit der Shop-Abfrage
+{
+  const w = standardWelt(); w.seite = 1;
+  for (let i = 0; i < 70; i++) w.produkte.push(produkt(100 + i, 'ACTIVE', [variante('gid://V/z' + i, 'WM-Z-' + i)]));
+  const r = await lauf(w, LIVE, { freigabe: true });
+  gleich([r.code, w.mut.length], [1, 0], '22: mehr als 60 Seiten: Exit 1 ohne Schreiben');
+  ok(r.errs.some((x) => /mehr als 60 Seiten/.test(x)), '22: Meldung');
+}
+
+// ═════════════════════════════════════════════════════════════ 23. Produkt nur mit SKU 9000001_<Variante> (ohne POD-Tag)
+{
+  const w = standardWelt();
+  w.produkte.push(produkt(12, 'ACTIVE', [variante('gid://V/s1', '9000001_1801'), variante('gid://V/s2', '9000001_1802')], ['bild-ok']));
+  w.modelle.get(18).varianten.forEach((v) => { v.status = AUS; });
+  const r = await lauf(w, LIVE, { freigabe: true });
+  gleich([r.code, status(w, 12)], [0, 'DRAFT'], '23: Produkt ohne POD-Tag, aber mit Printful-SKU, geht bei Ausfall auf ENTWURF');
+  ok(tags(w, 12).includes(TAG_AUS) && tags(w, 12).includes('bild-ok'), '23: es trägt unser Tag, die anderen Tags bleiben');
+  // dasselbe Produkt mit einer fremden SKU daneben: nie
+  const w2 = standardWelt();
+  w2.produkte.push(produkt(12, 'ACTIVE', [variante('gid://V/s1', '9000001_1801'), variante('gid://V/s2', 'ZZ-9')], ['bild-ok']));
+  w2.modelle.get(18).varianten.forEach((v) => { v.status = AUS; });
+  await lauf(w2, LIVE, { freigabe: true });
+  gleich(status(w2, 12), 'ACTIVE', '23: mit einer fremden SKU daneben wird das Produkt nicht angefasst');
 }
 
 for (const d of tmpDirs) { try { rmSync(d, { recursive: true, force: true }); } catch { /* aufräumen */ } }
