@@ -5,7 +5,7 @@
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
  * Absicherungen (nach der Gegenlesung vom 06.11.2026): (1) VOR dem ersten Mutanten läuft jede benutzte Stufe auf dem UNVERÄNDERTEN Code; ist sie dort rot, bricht die Probe ab (sonst gälte jeder Mutant
  * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
- * (4) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung.
+ * (4) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder K oder V)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
  * Umgebung: V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3).
@@ -258,7 +258,7 @@ async function arbeiter() {
     const pruefeSyntax = (datei) => { const x = spawnSync(node, ['--check', datei], { encoding: 'utf8' }); return x.status === 0 ? null : (x.stderr || '').split('\n').find((z) => /Error/.test(z)) || 'Syntaxfehler'; };
     // Ergebnis einer Stufe: true = erkannt (weiter zum nächsten Mutanten), 'zeit' = ungeklärt, false = nicht erkannt (nächste Stufe)
     const stufe = async (name, datei, args, umg) => {
-      const r = await lauf(datei, args, umg);
+      const r = await lauf(datei, args, { ...umg, V6_ABBRUCH: '1' });   // beim ersten Fehler beenden: zum Erkennen genügt er
       if (r.zeit) { ergebnis.ungeklaert.push(`${a.name} (${name}: Zeitüberschreitung)`); console.log(`?  ${a.name}: ${name} nach 300 s abgebrochen, ungeklärt`); return 'zeit'; }
       if (gescheitert(r)) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch ${name}: ${ersterFehler(r.aus)}`); return true; }
       return false;
@@ -270,7 +270,10 @@ async function arbeiter() {
       const fehlerSyntax = pruefeSyntax(datei);
       if (fehlerSyntax) { ergebnis.unanwendbar.push(`${a.name} (Syntaxfehler: ${fehlerSyntax})`); console.log(`?  ${a.name}: Mutant ist kein gültiger Code (${fehlerSyntax})`); continue; }
       const umg = { V6_DATEI: datei };
-      for (const [name, f, args] of [['unit_test', 'unit_test.mjs', []], ['vorschau_test', 'vorschau_test.mjs', ['kern']], ['editor_test', 'editor_test.mjs', ['kern']]]) {
+      // Reihenfolge nach Herkunft des Mutanten: W betrifft meist die Vorschau (vorschau_test zuerst), M und N den Editor von 6.1.0 (editor_test zuerst)
+      const folge = [['unit_test', 'unit_test.mjs', []], ['vorschau_test', 'vorschau_test.mjs', ['kern']], ['editor_test', 'editor_test.mjs', ['kern']]];
+      if (!/^W/.test(a.name)) { const t = folge[1]; folge[1] = folge[2]; folge[2] = t; }
+      for (const [name, f, args] of folge) {
         ergebnisStufe = await stufe(name, f, args, umg);
         if (ergebnisStufe) break;
       }

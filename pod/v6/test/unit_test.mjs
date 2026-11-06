@@ -25,7 +25,7 @@ const VB_PFAD = process.env.V6_VORSCHAUBAUER || join(hier, '..', 'werkzeug', 'vo
 const VB = await import(pathToFileURL(VB_PFAD).href);
 
 let n = 0; const fehler = [];
-function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); } }
+function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); if (process.env.V6_ABBRUCH) process.exit(1); } }   // V6_ABBRUCH=1 (nur Mutationsprobe): beim ersten Fehler beenden, das genügt zum Erkennen
 function gleich(name, ist, soll) { pruefe(name, JSON.stringify(ist) === JSON.stringify(soll), `ist=${JSON.stringify(ist)} soll=${JSON.stringify(soll)}`); }
 function nahe(name, ist, soll, eps = 1e-9) { pruefe(name, Math.abs(ist - soll) <= eps, `ist=${ist} soll=${soll}`); }
 
