@@ -1512,3 +1512,6 @@ python3 tools/trading/krypto_bot/hebel_pruefung.py   # Prüfstand: 1× bis 10× 
 python3 tools/trading/krypto_bot/test_gewinner.py     # 12 Tests: tote Coins, keine Zukunftsdaten, Filter, Simulation
 python3 tools/trading/krypto_bot/gewinner_pruefung.py # Prüfstand «Gewinnern folgen» (lädt zuerst alle Binance-Paare)
 ```
+
+## Cockpit-Autostart (05.11.2026)
+Das Cockpit startet bei der Anmeldung unsichtbar (Aufgabe «Krypto-Cockpit-Start», Dateien `cockpit-start-still.vbs` und `.bat`; ohne Browser, nie zwei Cockpits). Die Seite öffnet man weiter mit `cockpit.bat` (öffnet sie im Browser des laufenden Cockpits) oder unter http://127.0.0.1:8765. Ein- und ausschalten: Knöpfe «Cockpit-Autostart» und «Autostart aus» im Cockpit, oder `setx KRYPTO_AUTOSTART aus`. Einzelheiten: `docs/KRYPTO-AUTONOMIE.md`.

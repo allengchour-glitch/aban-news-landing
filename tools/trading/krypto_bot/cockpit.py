@@ -222,6 +222,8 @@ AKTIONEN = {
     "backtest": (["pilot.py", "--backtest"], 600, "Backtest rechnen"),
     "selbsttest": ([], 900, "Selbsttest"),
     "aufgabe": ([], 60, "Täglich automatisch einrichten"),
+    "autostart_an": ([], 60, "Cockpit-Autostart einschalten"),
+    "autostart_aus": ([], 60, "Cockpit-Autostart ausschalten"),
     "heilen": ([], 1500, "Alles prüfen und reparieren"),
     "heilen_auto": ([], 1500, "Automatische Prüfung (ohne Probelauf)"),
     "update": ([], 600, "Update holen"),
@@ -251,6 +253,11 @@ def _skript(args, zeit):
 
 
 AUFGABE = "Krypto-Pilot"
+AUFGABE_CP = "Krypto-Cockpit-Start"  # Autostart (Besitzer 05.11.: «cockpit autostart ja»): das Cockpit unsichtbar bei der Anmeldung und alle 15 Minuten starten; läuft es schon, passiert nichts
+CP_STARTER = "cockpit-start-still.vbs"  # startet cockpit-start-still.bat ohne sichtbares Fenster (wscript //B)
+CP_BAT = "cockpit-start-still.bat"  # cockpit.py --autostart: kein Browser, kein Fenster
+CP_AUS = "krypto-cockpit-autostart-aus.txt"  # data/: der Besitzer hat den Autostart ausgeschaltet (Knopf oder diese Datei): die Selbstheilung legt die Aufgabe dann NICHT neu an
+CP_MIN = 15  # so oft (Minuten) wiederholt die Aufgabe den Start: holt ein Cockpit zurück, das sich nach einem Programm-Update beendet hat oder abgestürzt ist
 AUFGABE_NK = "Krypto-Pilot-Nachkontrolle"  # (17. Prüfung W4) zweite Aufgabe: alle 10 Minuten und bei der Anmeldung die Nachkontrolle von Pilot 2.0
 
 
@@ -396,6 +403,166 @@ def aufgabe_einrichten(befehl=None, ordner=None):
     return False, "❌ Einrichten fehlgeschlagen:\n" + text + "\n" + text2 + "\n" + nk_text
 
 
+def aufgabe_befehl_cp():
+    """Einfacher Rückfall der Autostart-Aufgabe: alle 15 Minuten der unsichtbare Starter (ohne Anmelde-Auslöser: der braucht den Benutzer, siehe aufgabe_xml_cp)."""
+    return ["schtasks", "/create", "/sc", "minute", "/mo", str(CP_MIN), "/tn", AUFGABE_CP, "/tr", f'wscript.exe //B //Nologo "{HIER / CP_STARTER}"', "/f"]
+
+
+def aufgabe_xml_cp(benutzer=None):
+    """Autostart des Cockpits (Besitzer 05.11.: «cockpit autostart ja»): startet cockpit-start-still.vbs (→ cockpit-start-still.bat → `cockpit.py --autostart`) bei der Anmeldung (mit 30 Sekunden Vorlauf fürs Netz) und danach
+    alle 15 Minuten, ohne sichtbares Fenster, auch auf Akku, nie zwei Instanzen der Aufgabe. Läuft das Cockpit schon, beendet sich der Start sofort; so holt die Wiederholung ein Cockpit zurück, das sich nach einem
+    Programm-Update beendet hat oder abgestürzt ist. Ohne bekannten Benutzer fehlt der Anmelde-Auslöser (er bräuchte Administratorrechte), die Wiederholung genügt dann."""
+    from xml.sax.saxutils import escape
+    vbs = escape(str(HIER / CP_STARTER))
+    benutzer = _anmelde_benutzer() if benutzer is None else benutzer
+    logon = f"\n    <LogonTrigger><Enabled>true</Enabled><UserId>{escape(benutzer)}</UserId><Delay>PT30S</Delay></LogonTrigger>" if benutzer else ""
+    return f"""<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo><Description>Krypto-Cockpit: unsichtbarer Autostart (bei der Anmeldung und alle {CP_MIN} Minuten; läuft das Cockpit schon, passiert nichts)</Description></RegistrationInfo>
+  <Triggers>
+    <TimeTrigger>
+      <Repetition><Interval>PT{CP_MIN}M</Interval></Repetition>
+      <StartBoundary>2026-01-01T00:07:00</StartBoundary>
+      <Enabled>true</Enabled>
+    </TimeTrigger>{logon}
+  </Triggers>
+  <Principals><Principal id="Author"><LogonType>InteractiveToken</LogonType><RunLevel>LeastPrivilege</RunLevel></Principal></Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+    <Enabled>true</Enabled>
+  </Settings>
+  <Actions Context="Author">
+    <Exec><Command>wscript.exe</Command><Arguments>//B //Nologo "{vbs}"</Arguments></Exec>
+  </Actions>
+</Task>
+"""
+
+
+def autostart_gewollt(env=None, daten=None):
+    """Soll das Cockpit beim Anmelden von selbst starten? Ab Werk JA (Besitzer 05.11.). Aus mit: Knopf «Cockpit-Autostart ausschalten», Datei data\\krypto-cockpit-autostart-aus.txt oder `setx KRYPTO_AUTOSTART aus`."""
+    env = os.environ if env is None else env
+    if str(env.get("KRYPTO_AUTOSTART", "")).strip().lower() in ("aus", "0", "nein", "off", "false"):
+        return False
+    return not ((Path(daten) if daten else DATA) / CP_AUS).exists()
+
+
+def autostart_einrichten(befehl=None, daten=None, ordner=None):
+    """Legt die Autostart-Aufgabe an (erst die XML-Variante mit Anmeldung, sonst die einfache alle 15 Minuten) und nimmt den Ausschalter weg. → (ok, Text).
+    Legt NIE etwas an, wenn die beiden Startdateien in diesem Ordner fehlen (eine Aufgabe auf eine fehlende Datei wäre nur Lärm)."""
+    befehl = befehl or _befehl
+    fehlt = [n for n in (CP_STARTER, CP_BAT) if not (HIER / n).exists()]
+    if fehlt:
+        return False, "❌ Autostart nicht eingerichtet: " + ", ".join(fehlt) + " fehlt in diesem Ordner — bitte das neueste ZIP entpacken oder das automatische Update abwarten."
+    d = Path(daten) if daten else DATA
+    try:
+        (d / CP_AUS).unlink()
+    except FileNotFoundError:
+        pass
+    except OSError as ex:
+        return False, f"❌ Autostart: die Ausschalt-Datei {CP_AUS} lässt sich nicht entfernen ({type(ex).__name__})."
+    import tempfile
+    with tempfile.TemporaryDirectory(dir=ordner) as td:
+        datei = Path(td) / "krypto-cockpit-start.xml"
+        datei.write_text(aufgabe_xml_cp(), encoding="utf-16")
+        ok, text = befehl(["schtasks", "/create", "/tn", AUFGABE_CP, "/xml", str(datei), "/f"], 60)
+    if ok:
+        return True, ("✅ Cockpit-Autostart ein: das Cockpit startet unsichtbar bei der Anmeldung und prüft alle " + str(CP_MIN) + " Minuten, ob es noch läuft (Aufgabe «" + AUFGABE_CP + "»). "
+                      "Ausschalten: Knopf «Cockpit-Autostart ausschalten».")
+    ok2, text2 = befehl(aufgabe_befehl_cp(), 60)
+    if ok2:
+        return True, ("✅ Cockpit-Autostart ein (einfache Variante, Aufgabe «" + AUFGABE_CP + "»): alle " + str(CP_MIN) + " Minuten wird geprüft, ob das Cockpit läuft; ohne den Anmelde-Auslöser "
+                      "und ohne «auch auf Akku»: nach dem Anmelden dauert es bis zu " + str(CP_MIN) + " Minuten, auf einem Laptop im Akkubetrieb startet es nicht.")
+    return False, "❌ Autostart: Einrichten fehlgeschlagen (" + (text2 or text or "?").strip()[:160] + ")"
+
+
+def autostart_ausschalten(befehl=None, daten=None):
+    """Schaltet den Autostart aus: erst die Ausschalt-Datei (damit die Selbstheilung die Aufgabe nicht neu anlegt), dann die Aufgabe löschen. → (ok, Text).
+    Das gerade laufende Cockpit bleibt bis zum Abmelden oder Neustart (Fenster gibt es keins: Task-Manager → Details → python.exe, oder abmelden)."""
+    befehl = befehl or _befehl
+    d = Path(daten) if daten else DATA
+    try:
+        d.mkdir(parents=True, exist_ok=True)
+        (d / CP_AUS).write_text("Cockpit-Autostart ausgeschaltet. Diese Datei löschen oder den Knopf «Cockpit-Autostart einschalten» drücken, um ihn wieder einzuschalten.\n", encoding="utf-8")
+    except OSError as ex:
+        return False, f"❌ Autostart bleibt an: die Ausschalt-Datei lässt sich nicht schreiben ({type(ex).__name__})."
+    ok, text = befehl(["schtasks", "/delete", "/tn", AUFGABE_CP, "/f"], 30)
+    if ok:
+        return True, "✅ Cockpit-Autostart aus: die Aufgabe «" + AUFGABE_CP + "» ist gelöscht und wird nicht neu angelegt. Das jetzt laufende Cockpit bleibt bis zum Abmelden oder Neustart."
+    if aufgabe_da(befehl, AUFGABE_CP) is False:
+        return True, "✅ Cockpit-Autostart aus: die Aufgabe gab es schon nicht mehr, sie wird nicht neu angelegt."
+    return False, "❌ Autostart: Löschen der Aufgabe fehlgeschlagen (" + (text or "?").strip()[:160] + "). Die Ausschalt-Datei liegt; Aufgabenplanung → «" + AUFGABE_CP + "» von Hand löschen."
+
+
+def cockpit_laeuft(port, timeout=8.0):
+    """Läuft auf 127.0.0.1:<port> schon ein Krypto-Cockpit? Fragt /api/stand und erkennt es an der Antwort (ein anderes Programm auf dem Port zählt nicht). Nur lesend.
+    Nötig, weil Windows beim Binden eines Ports, der schon belegt ist, nicht immer einen Fehler meldet: zwei Cockpits sollen nie zugleich laufen."""
+    import http.client
+    c = None
+    try:
+        c = http.client.HTTPConnection("127.0.0.1", int(port), timeout=timeout)
+        c.request("GET", "/api/stand")
+        r = c.getresponse()
+        if r.status != 200:
+            return False
+        d = json.loads(r.read(4_000_000).decode("utf-8", "replace"))
+        return isinstance(d, dict) and "gesundheit" in d
+    except Exception:  # noqa: BLE001 — jede Störung heisst «läuft nicht (erkennbar)»
+        return False
+    finally:
+        if c is not None:
+            try:
+                c.close()
+            except Exception:  # noqa: BLE001
+                pass
+
+
+def port_belegt(port, timeout=1.5):
+    """Hört auf 127.0.0.1:<port> IRGENDETWAS? (Nur ein Verbindungsversuch, es wird nichts gesendet.)"""
+    import socket
+    try:
+        with socket.create_connection(("127.0.0.1", int(port)), timeout=timeout):
+            return True
+    except OSError:
+        return False
+
+
+def version_jetzt(wurzel=None):
+    """Die Programmversion der Installation (VERSION.json) oder None."""
+    if AU is None:
+        return None
+    try:
+        v = AU.lokale_version(wurzel or _wurzel())
+    except Exception:  # noqa: BLE001
+        return None
+    return v["version"] if v else None
+
+
+def neustart_noetig(start_version, jetzt_version, laufend):
+    """Soll sich das unsichtbare Cockpit beenden, damit die Aufgabe es mit der neuen Fassung neu startet? Nur wenn sich die Version geändert hat und gerade keine Knopf-Aktion läuft."""
+    return bool(start_version and jetzt_version and start_version != jetzt_version and not laufend)
+
+
+def neustart_wacht(srv, start_version, minuten=10.0, schlafen=time.sleep, runden=None, version=None):
+    """Hintergrundfaden des unsichtbaren Cockpits: sieht er nach einem Update eine neue Programmversion, beendet er den Server (die Aufgabe startet das Cockpit innerhalb von CP_MIN Minuten neu)."""
+    version = version or version_jetzt
+    n = 0
+    while runden is None or n < runden:
+        schlafen(minuten * 60)
+        n += 1
+        with _SPERRE:
+            laufend = bool(_LAUFEND)
+        if neustart_noetig(start_version, version(), laufend):
+            print("Neue Programmversion installiert: das Cockpit beendet sich, die Aufgabe startet es neu.", flush=True)
+            srv.shutdown()
+            return True
+    return False
+
+
 def aufgabe_da(befehl=None, name=None):
     """True/False auf Windows, None anderswo. name: die Aufgabe (Standard: die tägliche; AUFGABE_NK = die Nachkontrolle)."""
     if os.name != "nt" and befehl is None:
@@ -440,6 +607,11 @@ def _datei_da(pfad):
 
 def _selbe_datei(a, b):
     return os.path.samefile(a, b)
+
+
+def _soll_cp():
+    """Die Datei in DIESEM Ordner, auf die die Autostart-Aufgabe zeigen muss (der unsichtbare Starter)."""
+    return HIER / CP_STARTER
 
 
 def _soll_ziele():
@@ -506,6 +678,17 @@ def selbstheilung(starter=None, befehl=None, punkte_lesen=None, mit_probelauf=Tr
             grund = next((l.strip() for l in text.splitlines() if l.strip() and "fehlgeschlagen" not in l), "")
             z.append("✅ Aufgabenplanung eingerichtet: täglicher Start und Nachkontrolle." if ok
                      else "❌ Aufgabenplanung: Einrichten fehlgeschlagen" + (f" — {grund[:200]}" if grund else ""))
+            ok_alles = ok_alles and ok
+    # 1b) Autostart des Cockpits (Besitzer 05.11.): fehlt die Aufgabe und ist der Autostart nicht ausgeschaltet, anlegen. Das hat mit Handel nichts zu tun, gilt also auch bei Pause und Not-Aus.
+    _cp_name = "Cockpit-Autostart (Aufgabenplanung)"
+    if vor.get(_cp_name, {}).get("ok") is False and "fehlt" in str(vor[_cp_name].get("text", "")) and autostart_gewollt():
+        if os.name != "nt" and befehl is None:
+            pass  # die Aufgabenplanung gibt es nur unter Windows (die Zeile gibt es dort auch nicht)
+        else:
+            ok, text = autostart_einrichten(befehl)
+            _CP_CACHE["zeit"] = 0.0
+            grund = next((l.strip() for l in text.splitlines() if l.strip() and "fehlgeschlagen" not in l), "")
+            z.append("✅ Cockpit-Autostart eingerichtet." if ok else "❌ Cockpit-Autostart: Einrichten fehlgeschlagen" + (f" — {grund[:200]}" if grund else ""))
             ok_alles = ok_alles and ok
     # 2) veraltete Markt-Infos (öffentliche Daten, ohne Schlüssel)
     if vor.get("Markt-Infos", {}).get("ok") is False:
@@ -577,6 +760,15 @@ def aktion(name, starter=None, befehl=None, update=None):
             else:
                 ok, text = aufgabe_einrichten(befehl)
                 _AUFGABE_CACHE["zeit"] = 0.0  # Ampel sofort neu prüfen, nicht erst nach 5 Minuten
+        elif name == "autostart_an":
+            if os.name != "nt" and befehl is None:
+                ok, text = False, "Die Aufgabenplanung gibt es nur unter Windows. Linux/Mac: das Cockpit mit `python3 tools/trading/krypto_bot/cockpit.py --autostart` aus dem Anmeldeskript starten."
+            else:
+                ok, text = autostart_einrichten(befehl)
+                _CP_CACHE["zeit"] = 0.0  # Ampel sofort neu prüfen
+        elif name == "autostart_aus":
+            ok, text = autostart_ausschalten(befehl)
+            _CP_CACHE["zeit"] = 0.0
         elif name == "heilen":
             ok, text = selbstheilung(starter=starter, befehl=befehl)
         elif name == "heilen_auto":
@@ -879,6 +1071,7 @@ def calls_stand():
 
 
 _AUFGABE_CACHE = {"zeit": 0.0, "wert": None}
+_CP_CACHE = {"zeit": 0.0, "wert": None, "ziel": None}  # Autostart-Aufgabe: wie _AUFGABE_CACHE (5 Minuten), getrennt, damit die anderen Zeilen unberührt bleiben
 
 
 def nk_serie(jetzt=None):
@@ -1088,6 +1281,25 @@ def gesundheit(env, lb, ki, heute=None):
             else:
                 p("Nachkontrolle (Aufgabenplanung)", True, f"eingerichtet (alle 10 Minuten), zuletzt vor {minuten_nk:.0f} Min."
                   + (f" — der letzte Durchgang wurde übersprungen (Lauf-Sperre belegt, {serie['anzahl']}×)" if serie and serie["art"] == "besetzt" else ""))
+    if os.name == "nt":  # Autostart des Cockpits (Besitzer 05.11.)
+        _cp = "Cockpit-Autostart (Aufgabenplanung)"
+        if not autostart_gewollt(env):
+            p(_cp, None, "aus (von dir ausgeschaltet) — Knopf «Cockpit-Autostart einschalten» schaltet ihn wieder ein")
+        else:
+            if time.time() - _CP_CACHE["zeit"] > 300:
+                _w = aufgabe_da(name=AUFGABE_CP)
+                _CP_CACHE.update({"zeit": time.time(), "wert": _w, "ziel": aufgabe_ziel(name=AUFGABE_CP, datei=CP_STARTER) if _w else None})
+            if not _CP_CACHE["wert"]:
+                p(_cp, False, "fehlt — Knopf «Cockpit-Autostart einschalten» (oder «Alles prüfen und reparieren»)")
+            else:
+                _lage_cp = aufgabe_lage(_CP_CACHE.get("ziel"), _soll_cp())
+                if _lage_cp == "anders":
+                    p(_cp, None, f"eingerichtet, startet das Cockpit aber aus einem ANDEREN Ordner: {ntpath.dirname(_CP_CACHE['ziel'])} — dieses Cockpit läuft in {ntpath.dirname(str(_soll_cp()))}. "
+                      "Knopf «Cockpit-Autostart einschalten» stellt sie auf diesen Ordner um.", warnung=True)
+                elif _lage_cp == "weg":
+                    p(_cp, False, f"eingerichtet, zeigt aber auf {_CP_CACHE['ziel']}: diese Datei gibt es nicht mehr (Ordner verschoben oder gelöscht?). Knopf «Cockpit-Autostart einschalten» legt sie für diesen Ordner neu an.")
+                else:
+                    p(_cp, True, f"eingerichtet: startet das Cockpit unsichtbar bei der Anmeldung und prüft alle {CP_MIN} Minuten, ob es noch läuft")
     for _name, _quelle in (("Programm-Update (automatisch)", lambda: AU.ampel(env, _wurzel())),
                            ("Selbstpflege (automatisch)", lambda: PF.ampel(_wurzel()))):
         try:
@@ -1437,11 +1649,23 @@ def main():
     ap.add_argument("--ohne-fern", action="store_true", help="die Handy-Ansicht nicht starten, auch wenn sie eingeschaltet ist")
     ap.add_argument("--heilen", action="store_true", help="ohne Fenster «Alles prüfen und reparieren» einmal ausführen und beenden (Aufgabenplanung; sendet nie Aufträge)")
     ap.add_argument("--probelauf", action="store_true", help="mit --heilen: zusätzlich ein Prüflauf des Piloten ohne Aufträge")
+    ap.add_argument("--autostart", action="store_true", help="unsichtbarer Start (Aufgabe «Krypto-Cockpit-Start»): kein Browser; läuft das Cockpit schon, passiert nichts; beendet sich nach einem Programm-Update, die Aufgabe startet es innerhalb von 15 Minuten neu")
     a = ap.parse_args()
     if a.heilen:
         ok, text = selbstheilung(mit_probelauf=a.probelauf)
         print(text)
         return 0 if ok else 1
+    # Nie zwei Cockpits zugleich (Windows lässt das Binden eines belegten Ports nicht immer scheitern): läuft schon eins, passiert hier nichts (Autostart) oder die Seite wird geöffnet (von Hand)
+    if cockpit_laeuft(a.port):
+        if a.autostart:
+            return 0
+        print(f"Das Krypto-Cockpit läuft schon (unsichtbar, vom Autostart oder in einem anderen Fenster): http://127.0.0.1:{a.port}")
+        if not a.kein_browser:
+            import webbrowser
+            webbrowser.open(f"http://127.0.0.1:{a.port}")
+        return 0
+    if a.autostart and port_belegt(a.port):
+        return 0  # etwas anderes hält den Port: still beenden, die Aufgabe versucht es in einer Viertelstunde wieder
     Cockpit.port = a.port
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), Cockpit)
     adresse = f"http://127.0.0.1:{a.port}"
@@ -1463,7 +1687,9 @@ def main():
     if not a.ohne_pflege:
         threading.Thread(target=pflege_beim_start, daemon=True).start()
         print("Automatische Prüfung aktiv: legt fehlende Aufgaben an und frischt Markt-Infos auf (beim Start und alle 6 Stunden).")
-    if not a.kein_browser:
+    if a.autostart:
+        threading.Thread(target=neustart_wacht, args=(srv, version_jetzt()), daemon=True).start()
+    if not (a.kein_browser or a.autostart):
         import webbrowser
         threading.Timer(1.0, lambda: webbrowser.open(adresse)).start()
     try:
