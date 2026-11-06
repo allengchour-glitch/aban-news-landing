@@ -1191,3 +1191,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R118-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Revision118; Kategorien-Gesamtfortschritt unbekannt. Keine Produkt-, Preis-, Bild-, Theme-, Merchant-, Feed-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderänderung |
 
 [LUXESTYLE_R118_20261106] [Sechs Hauptkategorien live poliert](KATEGORIEN-POLITUR-20261106-R118.md) · [Maschinenlesbare Belege](KATEGORIEN-POLITUR-20261106-R118.json). Sechs Beschreibungen und sechs SEO-Beschreibungen aktualisiert, 37/37 Unterkategorie-Links geprüft; Theme-FAQ-Blocker offen.
+
+### R119
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/luxestyle.ch/CHF/CH/CET und aktuelle Claude-Arbeit gegen `origin/main` `a51c1a64a` geprüft | Identität passend; keine Überschneidung der sechs Handles. Keine Theme-Datei oder alter Patch übernommen |
+| Sechs weitere Collections | Bei BRUDER Fahrzeuge, Herren-Schuhe, Damen-Schuhe, Haarpflege & Styling, Katzen und Camping & Outdoor `descriptionHtml` und SEO-Beschreibung aktualisiert; BRUDER-SEO-Titel zusätzlich symbolfrei gesetzt | Sachliche Einleitungen, «Schnell finden» und 37 direkte Collection-Links live. Unbelegte Claims, falscher Elternlink und fragiler Einzelproduktlink aus den jeweiligen Beschreibungen entfernt |
+| Rücklesung / Schutzfelder | Admin und öffentliche Seiten gezielt zurückgelesen; alle 37 Ziele einzeln geprüft | Admin 6/6 Beschreibungen und SEO-Beschreibungen exakt, BRUDER-Titel bestätigt. Öffentlich 6/6 HTTP 200/Canonical/H1/Meta/«Schnell finden»; Links 37/37 HTTP 200 ohne Redirect. Fünf SEO-Titel, Collection-Titel, Handles, Bilder/Alttexte, Sortierung, Produktzuordnungen und Preise unverändert |
+| Offene Kategoriefehler | `camping-outdoor`-Regellogik und globale FAQ getrennt bewertet | Breite ODER-Titelregeln ziehen weiterhin Katzen-Hängematte und Hundebett ein; kein unsicherer Regelwrite. Theme-FAQ-Claims bleiben offen; kein Theme-Write |
+| Grenzen / Dokumentation | R119-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Revision 119; Kategorien-Gesamtfortschritt unbekannt. Keine Regel-, Produkt-, Preis-, Bild-, Sortier-, Theme-, Merchant-, Feed-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderänderung |
+
+[LUXESTYLE_R119_20261106] [Sechs weitere Kategorien live poliert](KATEGORIEN-POLITUR-20261106-R119.md) · [Maschinenlesbare Belege](KATEGORIEN-POLITUR-20261106-R119.json). Sechs Beschreibungen, sechs SEO-Beschreibungen und ein SEO-Titel aktualisiert; 37/37 neue Ziele direkt erreichbar.

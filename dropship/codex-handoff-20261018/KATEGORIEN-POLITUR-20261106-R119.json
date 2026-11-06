@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R119_20261106",
+  "checkedAt": "2026-11-06T16:34:27+01:00",
+  "timezone": "Europe/Zurich",
+  "repositoryHeadBeforeDocumentation": "0414a273e4b09e73e578677f2555eb4eb5e03b3d",
+  "scope": "six_additional_collection_description_and_seo_polish_only",
+  "identity": {
+    "shopName": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "CH",
+    "shopTimezone": "CET",
+    "matched": true
+  },
+  "coordination": {
+    "claudeOriginMain": "a51c1a64a",
+    "claudeHandleOverlap": false,
+    "noGoHandles": [
+      "aus-tiktok-und-instagram",
+      "kostueme-ch-lager",
+      "weihnachtspyjama-familie",
+      "kuschel-heizdecken"
+    ],
+    "themeDecision": "No theme files changed. MAIN contains newer global category-theme work; older patches were not reused."
+  },
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/690577179009",
+      "handle": "ft-bruder",
+      "title": "BRUDER Fahrzeuge",
+      "finalUpdatedAt": "2026-11-06T15:32:14Z",
+      "url": "https://luxestyle.ch/collections/ft-bruder",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description",
+        "seo.title"
+      ],
+      "descriptionLinkCount": 5,
+      "subcategoryLinks": [
+        "/collections/spielzeug-fahrzeuge",
+        "/collections/spielzeugautos-eisenbahn",
+        "/collections/rollenspiel-spielsets",
+        "/collections/spielzeug",
+        "/collections/sub-baby-kids"
+      ],
+      "removedUnsupportedContent": [
+        "quality claim",
+        "Swiss warehouse claim",
+        "leading symbol in SEO title"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688018227585",
+      "handle": "herren-schuhe",
+      "title": "Herren-Schuhe",
+      "finalUpdatedAt": "2026-11-06T15:30:03Z",
+      "url": "https://luxestyle.ch/collections/herren-schuhe",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "descriptionLinkCount": 6,
+      "subcategoryLinks": [
+        "/collections/herren-sneaker",
+        "/collections/herren-sandalen",
+        "/collections/herren-stiefel",
+        "/collections/herren-businessschuhe",
+        "/collections/herren-hausschuhe",
+        "/collections/fur-ihn"
+      ],
+      "removedUnsupportedContent": [
+        "blanket leather claim",
+        "blanket sole claim",
+        "blanket size range",
+        "size-table-on-every-page claim",
+        "delivery wording",
+        "blanket return wording",
+        "discount wording"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688018194817",
+      "handle": "damen-schuhe",
+      "title": "Damen-Schuhe",
+      "finalUpdatedAt": "2026-11-06T15:30:05Z",
+      "url": "https://luxestyle.ch/collections/damen-schuhe",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "descriptionLinkCount": 6,
+      "subcategoryLinks": [
+        "/collections/damen-sneaker",
+        "/collections/damen-sandalen",
+        "/collections/damen-pumps",
+        "/collections/damen-stiefel",
+        "/collections/damen-wanderschuhe",
+        "/collections/damen-mode"
+      ],
+      "removedUnsupportedContent": [
+        "ongoing assortment growth claim",
+        "delivery wording",
+        "blanket return wording",
+        "discount wording"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/690801967489",
+      "handle": "beauty-haar",
+      "title": "Haarpflege & Styling",
+      "finalUpdatedAt": "2026-11-06T15:30:06Z",
+      "url": "https://luxestyle.ch/collections/beauty-haar",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "descriptionLinkCount": 7,
+      "subcategoryLinks": [
+        "/collections/haarstyling-geraete",
+        "/collections/lockenstaebe",
+        "/collections/glaetteisen",
+        "/collections/haarbuersten-kaemme",
+        "/collections/haartrockner-warmluft",
+        "/collections/haarpflege-oele-shampoo",
+        "/collections/beauty-pflege"
+      ],
+      "removedUnsupportedContent": [
+        "Swiss warehouse claim",
+        "blanket return wording",
+        "every hair structure claim",
+        "shampoo and treatment meta mismatch"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/691318882689",
+      "handle": "haustier-katzen",
+      "title": "Katzen",
+      "finalUpdatedAt": "2026-11-06T15:30:08Z",
+      "url": "https://luxestyle.ch/collections/haustier-katzen",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "descriptionLinkCount": 6,
+      "subcategoryLinks": [
+        "/collections/tier-katzenspielzeug",
+        "/collections/tier-betten-katzen",
+        "/collections/tier-toilette-hygiene",
+        "/collections/trinkbrunnen-katzen",
+        "/collections/tier-halsbaender-katzen",
+        "/collections/sub-haustier"
+      ],
+      "removedUnsupportedContent": [
+        "blanket return wording",
+        "fragile single-product link"
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/689118773633",
+      "handle": "camping-outdoor",
+      "title": "Camping & Outdoor",
+      "finalUpdatedAt": "2026-11-06T15:30:09Z",
+      "url": "https://luxestyle.ch/collections/camping-outdoor",
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "descriptionLinkCount": 7,
+      "subcategoryLinks": [
+        "/collections/camping-kueche",
+        "/collections/campingmoebel-haengematten",
+        "/collections/camping-schlafen",
+        "/collections/camping-licht-zubehoer",
+        "/collections/wandern-trekking",
+        "/collections/wander-outdoor-rucksaecke",
+        "/collections/sport-outdoor"
+      ],
+      "removedUnsupportedContent": [
+        "adventure claims",
+        "narrow product-set claims",
+        "delivery wording",
+        "blanket return wording",
+        "discount wording",
+        "wrong parent link to Sport & Party"
+      ]
+    }
+  ],
+  "verification": {
+    "adminExactDescriptionReadbacks": 6,
+    "adminExactSeoDescriptionReadbacks": 6,
+    "adminUnchangedSeoTitleReadbacks": 5,
+    "adminChangedSeoTitleReadbacks": 1,
+    "publicHttp200": 6,
+    "publicCanonicalExact": 6,
+    "publicH1Exact": 6,
+    "publicMetaDescriptionExact": 6,
+    "publicQuickFindHeadingPresent": 6,
+    "publicSeoTitleExactForChangedTitle": 1,
+    "descriptionLinkCounts": [
+      5,
+      6,
+      6,
+      7,
+      6,
+      7
+    ],
+    "verifiedSubcategoryLinks": 37,
+    "expectedSubcategoryLinks": 37,
+    "directWithoutRedirect": 37,
+    "oldProblemContentAbsentFromCollectionDescriptionBlocks": 6,
+    "unchangedFields": [
+      "collection title",
+      "handle",
+      "collection image",
+      "collection image alt text",
+      "sort order",
+      "product assignments",
+      "product prices",
+      "five SEO titles"
+    ]
+  },
+  "remainingCategoryIssues": [
+    {
+      "handle": "camping-outdoor",
+      "status": "OPEN",
+      "issue": "Broad OR title rules still include at least a cat window hammock and a dog bed. A naive negative rule is unsafe in OR logic; no rule or product assignment changed."
+    },
+    {
+      "surface": "global category FAQ",
+      "status": "OPEN",
+      "issue": "Theme-rendered Swiss-warehouse, delivery-time, discount and blanket-return wording remains outside the six collection descriptions. Current MAIN must be diffed; direct MAIN-theme writes are blocked."
+    }
+  ],
+  "writeSummary": {
+    "shopifyCollectionDescriptionWrites": 6,
+    "shopifyCollectionSeoDescriptionWrites": 6,
+    "shopifyCollectionSeoTitleWrites": 1,
+    "collectionRuleWrites": 0,
+    "productAssignmentWrites": 0,
+    "productWrites": 0,
+    "priceWrites": 0,
+    "imageWrites": 0,
+    "sortOrderWrites": 0,
+    "themeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "customerMessages": 0,
+    "orderWrites": 0,
+    "renders": 0
+  },
+  "progress": {
+    "collectionsPolishedThisRun": 6,
+    "collectionsPolishedAcrossR118R119": 12,
+    "fullCategoryCatalogDenominator": "unknown",
+    "fullCategoryCatalogPercentComplete": "unknown"
+  }
+}
