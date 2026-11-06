@@ -1370,9 +1370,9 @@ szenario('entwurf', true, async (b, srv) => {
   const msg = await status(p).innerText();
   pruefe('Reload: Hinweis «Entwurf wurde wiederhergestellt»', /Entwurf wurde wiederhergestellt/.test(msg), msg);
   await p.locator('.lsp6-tab[data-p="front"]').click();
-  pruefe('Reload: Vorderseite zeigt 3 Knoten, das Foto ist geladen', (await p.locator('.lsp6-layer').count()) === 3 && (await p.locator('.lsp6-layer img').count()) === 1);
+  pruefe('Reload: Vorderseite zeigt 3 Knoten, das Foto ist geladen', (await p.locator('.lsp6-layer').count()) === 3 && (await p.locator('.lsp6-layer img').count()) === 2);   // Foto und Sticker sind Bilder, der Text nicht
   await p.waitForFunction(() => [...document.querySelectorAll('.lsp6-layer img')].every((i) => i.complete && i.naturalWidth > 0), null, { timeout: 8000 });
-  pruefe('Reload: alle Bilder der Bühne geladen', await p.evaluate(() => { const l = [...document.querySelectorAll('.lsp6-layer img')]; return l.length === 1 && l.every((i) => i.complete && i.naturalWidth > 0); }));
+  pruefe('Reload: alle Bilder der Bühne geladen', await p.evaluate(() => { const l = [...document.querySelectorAll('.lsp6-layer img')]; return l.length === 2 && l.every((i) => i.complete && i.naturalWidth > 0); }));
   const ids = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; return [...e.st.ebenen.front, ...e.st.ebenen.back].map((x) => x.id); });
   await textHinzufuegen(p, 'Neu');
   const ids2 = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; return [...e.st.ebenen.front, ...e.st.ebenen.back].map((x) => x.id); });
