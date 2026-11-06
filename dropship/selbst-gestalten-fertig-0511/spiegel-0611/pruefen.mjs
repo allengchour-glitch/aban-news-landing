@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import { masse, sha, vorhandene } from '/home/user/aban-news-landing/dropship/selbst-gestalten-fertig-0511/spiegel-0611/spiegeln.mjs';
+import { shopifyClientSecret } from '/home/user/aban-news-landing/automation/lib/shopify_secret.mjs';
+const S = '/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad';
+const plan = JSON.parse(fs.readFileSync(S + '/sg/v62/daten_final/spiegel_plan.json', 'utf8'));
+const h = JSON.parse(fs.readFileSync(S + '/sg/v62/spiegel_out/hochgeladen.json', 'utf8'));
+const SHOP = process.env.SHOPIFY_SHOP;
+const tr = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET), grant_type: 'client_credentials' }) });
+const token = (await tr.json()).access_token;
+const gqlFn = async (query, variables) => { const r = await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token }, body: JSON.stringify({ query, variables }) }); const j = await r.json(); if (j.errors) throw new Error(JSON.stringify(j.errors)); return j.data; };
+const schon = await vorhandene(gqlFn, {});
+const namen = plan.dateien.map((e) => e.dateiname);
+console.log('Plan', namen.length, '| im Shop (Muster luxe-vorschau-<hash>.<ext>)', Object.keys(schon).length, '| fehlt im Shop', namen.filter((n) => !schon[n]).length, '| im Shop, nicht im Plan', Object.keys(schon).filter((n) => !namen.includes(n)).length, '| hochgeladen.json', Object.keys(h).length);
+console.log('Adressen in hochgeladen.json gleich Shop:', namen.every((n) => (h[n] || '').split('?')[0] === (schon[n]?.url || '').split('?')[0]));
+let gleichMasse = 0; const abw = []; const sample = [];
+let i = 0; const lauf = async () => { for (;;) { const k = i++; if (k >= plan.dateien.length) return; const e = plan.dateien[k];
+  try { const a = Buffer.from(await (await fetch(e.quelle)).arrayBuffer()); const b = Buffer.from(await (await fetch(h[e.dateiname])).arrayBuffer()); const m0 = masse(a), m1 = masse(b);
+    if (m0 && m1 && m0.b === m1.b && m0.h === m1.h) gleichMasse++; else abw.push({ n: e.dateiname, m0, m1 });
+    if (e.dateiname.endsWith('.png') && k % 19 === 0 && sample.length < 60) { fs.writeFileSync(`${S}/spiegel_chk2/q_${e.dateiname}`, a); fs.writeFileSync(`${S}/spiegel_chk2/c_${e.dateiname}`, b); sample.push(e.dateiname); }
+  } catch (err) { abw.push({ n: e.dateiname, fehler: String(err.message) }); } } };
+await Promise.all(Array.from({ length: 8 }, lauf));
+console.log('Abmessungen gleich (Quelle gegen CDN):', gleichMasse, 'von', plan.dateien.length, '| Abweichungen', JSON.stringify(abw.slice(0, 5)));
+fs.writeFileSync(S + '/spiegel_chk2/sample.json', JSON.stringify(sample));
+console.log('Stichprobe PNG für ffmpeg:', sample.length);
