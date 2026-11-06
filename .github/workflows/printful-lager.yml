@@ -1,0 +1,134 @@
+name: "Printful-Lager-Wächter (Katalogfenster und Shop)"
+
+# Hält die Momentaufnahme `assets/luxe-clothing-ausblenden.json` (Katalogfenster «Selbst gestalten») frisch und nimmt ausverkaufte Printful-Varianten im Shop aus dem Verkauf
+# (Bauplan «Selbst gestalten bis zur Bestellung», Paket WP2). Liest Printful (GET /products/<Nummer> für jedes Modell, POST /shipping/rates mit CH nur bei Änderung)
+# und Shopify; Printful wird nie beschrieben. Hintergrund (GEMESSEN 06.11.2026): 577 Modelle, 40 davon im Fenster ausgeblendet (30 ohne Schweizer Versandrate, 10 technisch ungeeignet),
+# 126 überall ausverkaufte Varianten; der Lauf dauert rund 8 Minuten (577 Abrufe in 375 s bei 92 Anfragen je Minute, Grenze des Kontos 120).
+# Skript: automation/printful_lager.mjs · Logik: automation/lib/printful_lager.mjs · Doku und Strategiewahl: dropship/selbst-gestalten-fertig-0511/lager/README.md
+#
+# Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter der Fortura-Ware):
+#   - Ohne Freigabedatei dropship/PRINTFUL-LAGER-FREI.txt: nur LESEN (Trockenlauf). Kein Schreibzugriff, kein Telegram. Der Lauf nennt in der Zusammenfassung, was er ändern WÜRDE.
+#   - Mit der Freigabedatei im Repo: der Zeitplan schreibt LIVE (Datei im Theme, ENTWURF für Produkte ohne lieferbare Variante, Rückkehr), jeweils mit Ledger-Zeile «vorher=» und frischem Rücklesen.
+#     Datei löschen = Stopp (der nächste Lauf liest nur). Rücknahme: ZURUECK=1 LIVE=1 mit dem Ledger des Laufs (Artefakt «printful-lager-protokoll»), siehe README.
+# Die Freigabedatei existiert absichtlich NICHT. Legen darf sie nur der Besitzer, nach drei Trockenläufen in Folge ohne Fehler (Bauplan L2) und nach der Messung der Bestandsmechanik.
+# Von Hand (workflow_dispatch) wird nur geschrieben, wenn die Freigabedatei liegt UND «schreiben» angehakt ist.
+#
+# Bremsen (Abbruch ohne Schreiben, Exit 2, nennt die Zahlen): mehr als 10 % der Modelle nicht lesbar, mehr als max(20, 5 %) Modelle würden neu verschwinden, mehr als max(5, 3 %) aktive Produkte
+# würden auf ENTWURF gehen. «bremse_aufheben» (FORCE=1) hebt die beiden letzten auf, nie die erste; nur Handstart, nur nach Prüfung der Zahlen im Protokoll.
+#
+# Zugang: Repo-Secrets PRINTFUL_API_KEY, [PRINTFUL_STORE_ID, darf leer sein], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET; nur im Schreiblauf zusätzlich TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
+# Zeitplan 02:13 UTC (03:13 Schweizer Winterzeit), einmal täglich (Regel «Crons sparsam, max. 1x/Tag»). Nicht auf :00/:30 und nicht neben den anderen Läufen:
+# Fortura-Bestand 03:51, Tages-Update 04:15, Google-Schaufenster 04:41, Lager-Wächter 05:17, Printful-Sync 13:37, Printful-Rückmeldung 15:23, Auswahl-Lauf 21:50.
+# GitHub startet Zeitpläne hier oft Stunden nach der eingetragenen Zeit; das schadet nicht (nichts hängt von der Reihenfolge ab, der Lauf nutzt nur eigene Gruppen und bremst Shopify selbst).
+# Printful-Grenze: 120 Anfragen je Minute für den ganzen Schlüssel; der Lauf nimmt rund 92 und wartet bei weniger als 5 übrigen bis zum Ende der Minute.
+# Zustand: die Datei printful-lager-zustand.json (Signatur und letzte Versandrate je Modell, keine Zugangsdaten) wird über den Actions-Zwischenspeicher von Lauf zu Lauf weitergegeben; fehlt sie,
+# vergleicht der Lauf gegen die Inventur vom 05.11.2026 (dropship/codex-katalog) und misst etwas mehr Versandraten. Das Protokoll (Ledger) bleibt als Artefakt, es wird nicht ins Repo geschrieben.
+on:
+  schedule:
+    - cron: '13 2 * * *'
+  workflow_dispatch:
+    inputs:
+      schreiben:
+        description: 'Wirklich schreiben (nur mit Freigabedatei dropship/PRINTFUL-LAGER-FREI.txt); sonst nur lesen'
+        type: boolean
+        default: false
+      strategie:
+        description: 'Strategie für einzelne ausverkaufte Varianten: B = nur melden (Vorgabe), A = sperren, wo es sicher geht, auto = A wo erlaubt'
+        type: choice
+        options: ['B', 'A', 'auto']
+        default: 'B'
+      voll:
+        description: 'Alle Versandraten neu messen (dauert länger, rund 577 zusätzliche Anfragen)'
+        type: boolean
+        default: false
+      bremse_aufheben:
+        description: 'FORCE=1: Bremsen «neu verschwindende Modelle» und «Entwürfe» aufheben (nur zusammen mit «schreiben», nur nach Prüfung der Zahlen)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: printful-lager
+  cancel-in-progress: false
+
+jobs:
+  waechter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/printful_lager.mjs
+            automation/lib/printful_lager.mjs
+            automation/lib/shopify_gql.mjs
+            automation/lib/shopify_secret.mjs
+            automation/lib/shopify_host.mjs
+            dropship/codex-katalog/modelle.json
+            dropship/codex-katalog/ausblenden.json
+            dropship/PRINTFUL-LAGER-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Zustand vom letzten Lauf holen
+        uses: actions/cache/restore@v4
+        with:
+          path: printful-lager-zustand.json
+          key: printful-lager-zustand-${{ github.run_id }}
+          restore-keys: |
+            printful-lager-zustand-
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        run: |
+          live=0
+          if [ -f dropship/PRINTFUL-LAGER-FREI.txt ]; then
+            if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
+          fi
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          if [ "$live" = "1" ]; then echo "Modus: LIVE (Freigabe liegt im Repo)"; else echo "Modus: nur lesen (Trockenlauf)"; fi
+
+      - name: Lager prüfen (Katalogfenster und Shop)
+        shell: bash
+        env:
+          PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
+          PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ steps.modus.outputs.live == '1' && secrets.TELEGRAM_BOT_TOKEN || '' }}
+          TELEGRAM_CHAT_ID: ${{ steps.modus.outputs.live == '1' && secrets.TELEGRAM_CHAT_ID || '' }}
+          LIVE: ${{ steps.modus.outputs.live == '1' && '1' || '' }}
+          STRATEGIE: ${{ inputs.strategie || vars.PRINTFUL_LAGER_STRATEGIE || 'B' }}
+          VOLL: ${{ inputs.voll == true && '1' || '' }}
+          FORCE: ${{ steps.modus.outputs.live == '1' && inputs.bremse_aufheben == true && '1' || '' }}
+          ZUSTAND_DATEI: printful-lager-zustand.json
+          LEDGER: printful-lager-ledger.txt
+        run: node automation/printful_lager.mjs 2>&1 | tee lauf.txt
+
+      - name: Zustand für den nächsten Lauf sichern
+        if: always() && hashFiles('printful-lager-zustand.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: printful-lager-zustand.json
+          key: printful-lager-zustand-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Protokoll aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: printful-lager-protokoll
+          path: |
+            lauf.txt
+            printful-lager-ledger.txt
+          if-no-files-found: ignore
+          retention-days: 90

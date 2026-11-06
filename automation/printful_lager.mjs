@@ -246,7 +246,7 @@ export async function main(env = process.env, deps = {}) {
     throw new Error('Shopify-Seitenwechsel: mehr als 60 Seiten');
   }
   // Zustandsdatei (lokal, kein Netz): merkt je Modell Signatur, letzte Versandrate und Messzeit, damit die Rate nur bei Änderung neu gemessen wird.
-  function zustandSchreiben(zustand, lesungen, raten, urteile, shopMod) {
+  function zustandSchreiben(zustand, lesungen, raten, urteile) {
     if (!C.zustandDatei) return;
     const jetztIso = new Date(jetztMs()).toISOString();
     const neuZ = { schema: 1, stand: jetztIso, modelle: { ...zustand.modelle } };
@@ -254,8 +254,8 @@ export async function main(env = process.env, deps = {}) {
       if (!l || l.art !== 'ok') continue;
       const alt = neuZ.modelle[id] || {};
       const r = raten.get(id);
-      if (r && r.urteil.ch !== null) neuZ.modelle[id] = { ...alt, sig: l.signatur, ch: r.urteil.ch, rateUsd: r.urteil.rateUsd ?? null, tageMin: r.urteil.tageMin ?? null, tageMax: r.urteil.tageMax ?? null, gemessen: jetztIso, shop: shopMod.has(id) };
-      else if (!alt.sig) neuZ.modelle[id] = { ...alt, sig: l.signatur, ch: alt.ch ?? (urteile.get(id) || {}).ch ?? null, gemessen: alt.gemessen ?? null, shop: shopMod.has(id) };
+      if (r && r.urteil.ch !== null) neuZ.modelle[id] = { ...alt, sig: l.signatur, ch: r.urteil.ch, rateUsd: r.urteil.rateUsd ?? null, tageMin: r.urteil.tageMin ?? null, tageMax: r.urteil.tageMax ?? null, gemessen: jetztIso };
+      else if (!alt.sig) neuZ.modelle[id] = { ...alt, sig: l.signatur, ch: alt.ch ?? (urteile.get(id) || {}).ch ?? null, gemessen: alt.gemessen ?? null };
     }
     try { writeFileSync(C.zustandDatei, JSON.stringify(neuZ)); } catch { /* Zugabe */ }
   }
@@ -313,7 +313,7 @@ export async function main(env = process.env, deps = {}) {
   }
   // ── Hauptablauf
   try {
-    if (deps.sonde) await deps.sonde({ pf, schreibenGql, lesenGql, schreiben });          // nur für Tests: prüft die Schutzschalter von aussen
+    if (deps.sonde) await deps.sonde({ pf, schreibenGql, lesenGql, tg, schreiben });          // nur für Tests: prüft die Schutzschalter von aussen
     // Eingaben aus dem Repo (Inventur 05.11.)
     let basisDatei, basisAus;
     try { basisDatei = JSON.parse(readFileSync(C.basisModelle, 'utf8')); basisAus = JSON.parse(readFileSync(C.basisAusblenden, 'utf8')); }
@@ -402,7 +402,9 @@ export async function main(env = process.env, deps = {}) {
     const plan = shopPlan(produkte, idx, urteile, C.strategie);
     const aktive = plan.zaehl.aktiv;
     const nEntwuerfe = plan.aktionen.filter((a) => a.typ === 'entwurf').length;
-    sagen(`Shop: ${plan.zaehl.pod} Produkte mit Printful-Zuordnung (${aktive} aktiv), ${plan.zaehl.fremdOderOhnePod} andere nicht angefasst, ${plan.zaehl.ohneZuordnung} ohne passende SKU; Aktionen: ENTWURF ${nEntwuerfe}, reaktivieren ${plan.aktionen.filter((a) => a.typ === 'reaktivieren').length}, sperren ${plan.aktionen.filter((a) => a.typ === 'sperre').length}, freigeben ${plan.aktionen.filter((a) => a.typ === 'freigabe').length}; Befunde ${plan.befunde.length}`);
+    sagen(`Shop: ${plan.zaehl.pod} Produkte mit POD-Tag (${aktive} aktiv), ${plan.zaehl.fremdOderOhnePod} Fremdware oder ohne POD-Tag nicht angefasst, ${plan.zaehl.ohneZuordnung} ohne passende SKU; Aktionen: ENTWURF ${nEntwuerfe}, reaktivieren ${plan.aktionen.filter((a) => a.typ === 'reaktivieren').length}, sperren ${plan.aktionen.filter((a) => a.typ === 'sperre').length}, freigeben ${plan.aktionen.filter((a) => a.typ === 'freigabe').length}; Befunde ${plan.befunde.length}`);
+    const zv = plan.zaehl.varianten;
+    sagen(`  Varianten der Produkte mit SKU-Muster: lieferbar ${zv.ok}, ausverkauft ${zv.aus}, nicht zuordenbar ${zv.unbekannt} (SKU ${zv.sku}, nicht im Katalog ${zv['variante-nicht-im-katalog']}, Modell unbekannt ${zv['modell-unbekannt']}, Rate unsicher ${zv['rate-unsicher']})`);
     for (const b of plan.befunde.slice(0, 25)) sagen(`  Befund ${b.art}: ${b.text}`);
     befunde.push(...plan.befunde);
     for (const a of plan.aktionen.slice(0, 40)) sagen(`  ${schreiben ? '' : '[würde] '}${a.typ} ${a.handle}${a.grund ? ' (' + a.grund + ')' : ''}${a.sku ? ' ' + a.sku : ''}`);
@@ -421,7 +423,7 @@ export async function main(env = process.env, deps = {}) {
     const abbruch = hart.length > 0;
     if (z.vertagt) befunde.push({ art: 'raten-vertagt', text: `${z.vertagt} Versandraten wegen MAX_RATEN vertagt` });
     // Zustand fortschreiben (auch im Trockenlauf: lokale Datei, kein Shopify/Printful)
-    zustandSchreiben(zustand, lesungen, raten, urteile, shopMod);
+    zustandSchreiben(zustand, lesungen, raten, urteile);
 
     if (abbruch) {
       const text = `ABBRUCH ohne Schreiben (Bremse): ${hart.map((v) => v.text).join('; ')}`;

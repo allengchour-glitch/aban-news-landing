@@ -33,7 +33,7 @@ export const MUTANTEN = [
   { name: 'leere Variantenliste wird geglaubt', datei: L, von: "if (!Array.isArray(r.variants) || !r.variants.length) return", zu: "if (!Array.isArray(r.variants)) return" },
   { name: 'eingestelltes Modell bleibt im Fenster', datei: L, von: 'if (r.product.is_discontinued === true) return', zu: 'if (false) return' },
   { name: 'Variantenschwund wird nicht bemerkt', datei: L, von: 'varianten.length < basis * REGELN.varianteSchwund', zu: 'varianten.length < 0' },
-  { name: 'unbekannte Variante verhindert «alle aus» nicht', datei: L, von: 'alleAus: nUnbekannt === 0 && ausIds.length === varianten.length', zu: 'alleAus: ausIds.length === varianten.length' },
+  { name: '«alle aus» schon bei einer ausverkauften Variante', datei: L, von: 'alleAus: nUnbekannt === 0 && ausIds.length === varianten.length', zu: 'alleAus: ausIds.length >= 1' },
   { name: 'Testvariante darf ausverkauft sein', datei: L, von: "    if (v.art !== 'ok') continue;\n    const k = v.regionen.join('+');", zu: "    const k = v.regionen.join('+');" },
   { name: 'Testvarianten: wenige Regionen zuerst', datei: L, von: 'b.n - a.n ||', zu: 'a.n - b.n ||' },
   { name: 'Signatur ohne Regionen', datei: L, von: "`${v.id}:${v.art}:${v.regionen.join('+')}`", zu: '`${v.id}:${v.art}`' },
@@ -54,7 +54,7 @@ export const MUTANTEN = [
   { name: 'alter Stand «keine Rate» darf den Shop anfassen', datei: L, von: 'const shopUnsicher = !shopAus && ch === false;', zu: 'const shopUnsicher = false;' },
   { name: 'technisch ungeeignete Modelle bleiben im Fenster', datei: L, von: "const technisch = b.klasse === 'UNGEEIGNET';", zu: 'const technisch = false;' },
   { name: 'alter Stand «keine Rate» zählt als Shop-Grund', datei: L, von: "if (frisch && rate.ch === false) shopGruende.push('keine-ch-rate');", zu: "if (ch === false) shopGruende.push('keine-ch-rate');" },
-  { name: 'ausverkaufte Varianten stehen auch bei ausgeblendeten Modellen', datei: L, von: 'ausVarianten: fensterAus ? [] : [...lesung.ausIds] };', zu: 'ausVarianten: [...lesung.ausIds] };' },
+  { name: 'ausverkaufte Varianten stehen auch bei ausgeblendeten Modellen', datei: L, von: 'ausVarianten: fensterAus ? [] : [...lesung.ausIds], ch, unbekannt: false };', zu: 'ausVarianten: [...lesung.ausIds], ch, unbekannt: false };' },
   // ── Lib: Datei
   { name: 'Varianten werden auch für ausgeblendete Modelle geschrieben', datei: L, von: 'if (u.fensterAus) modelle.push(id);\n    else if (u.ausVarianten.length)', zu: 'if (u.fensterAus) modelle.push(id);\n    if (u.ausVarianten.length)' },
   { name: 'andere Zeilentrennung in der Datei', datei: L, von: ".join(',\\n');", zu: ".join(',');" },

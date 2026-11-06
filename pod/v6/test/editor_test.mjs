@@ -345,7 +345,7 @@ szenario('hoodie-schnittteile', true, async (b, srv) => {
   pruefe('Hinweis: Druckdatei auf 4096 × 4096 begrenzt', /4096 × 4096/.test(cap), cap);
   await tab(p, 'Kapuze').click();
   await textHinzufuegen(p, 'Kapuze');
-  await tab(p, 'Vorderseite').click();
+  await p.locator('.lsp6-tab[data-p="front"]').click();
   await textHinzufuegen(p, 'Vorne');
   await ctaKlicken(s);
   const dims = s.uploads.map((u) => `${u.breite}x${u.hoehe}`).join(',');
@@ -1200,6 +1200,256 @@ szenario('kleinigkeiten', true, async (b, srv) => {
   pruefe('Stickerei-Hinweis verspricht keine Garnfarben-Wahl', !/Garnfarben/.test(h) && /gestickt/.test(h), h);
   pruefe('keine Gedankenstriche in der Oberfläche', !/—/.test(await c.page.locator('.lsp6').innerText()));
   await c.schliessen();
+});
+
+// ════════════════════════════════════════════════════════════════════════════════════════════════
+// 6.2.0, WP4: Qualitätstor und Entwurf speichern
+// ════════════════════════════════════════════════════════════════════════════════════════════════
+const dataUrl = (w, h) => 'data:image/png;base64,' + pngErzeugen(w, h).toString('base64');
+/** Foto direkt in den Editor legen (Originalgrösse bekannt, Massstab 1, nichts hochgeladen); gibt die Ebenen-ID zurück. */
+const fotoLegen = (p, w, h) => p.evaluate(([src, ww, hh]) => window.LSPOD6.editors[0].neuesBild(src, ww, hh).id, [dataUrl(w, h), w, h]);
+const gesperrt = (p) => p.locator('.lsp6-cta').getAttribute('aria-disabled').then((v) => v === 'true');
+/** Playwright zählt aria-disabled als «nicht anklickbar»; für den Nutzer ist der Knopf anklickbar (nur `disabled` sperrt wirklich). */
+const knopfFrei = (p) => p.locator('.lsp6-cta').evaluate((b) => !b.disabled);
+
+// ── Qualitätstor: harter Stopp unter der Mindest-dpi, Warnung bis 150, Eigenschaft qd ───────────────
+szenario('qualitaetstor', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  const box = p.locator('[data-feld="qualitaet"]');
+  pruefe('ohne Foto: Kauf frei, keine Sperre-Meldung', (await box.isHidden()) && !(await gesperrt(p)));
+  // a) 300-px-Foto auf dem Vorderteil: ca. 50 dpi, Mindestwert der Karte 75
+  await p.locator('input[type=file]').setInputFiles({ name: 'klein.png', mimeType: 'image/png', buffer: pngErzeugen(300, 400) });
+  await p.waitForFunction(() => window.LSPOD6.editors[0].st.ebenen.front[0] && window.LSPOD6.editors[0].st.ebenen.front[0]._origW === 300);
+  await p.waitForFunction(() => !window.LSPOD6.editors[0].st.ebenen.front[0].uploading);
+  const t = await box.innerText();
+  pruefe('300-px-Foto (ca. 50 dpi) sperrt den Kauf: Meldung nennt Platzierung, dpi und Mindestwert', await box.isVisible() && /Kauf gesperrt/.test(t) && /Vorderseite/.test(t) && /ca\. 50 dpi/.test(t) && /mindestens 75 dpi/.test(t), t);
+  pruefe('Knopf trägt aria-disabled', await gesperrt(p));
+  const hoch = s.uploads.length;
+  await p.locator('.lsp6-cta').click({ force: true });
+  const st = await status(p).innerText();
+  pruefe('Klick auf den gesperrten Kauf: Meldung, kein Upload der Druckdatei, kein Warenkorb, Knopf frei', /Kauf gesperrt/.test(st) && s.uploads.length === hoch && s.warenkorb.length === 0 && (await knopfFrei(p)), `${st} / ${s.uploads.length} / ${hoch}`);
+  // b) Sperre löst sich nach Entfernen des Fotos
+  await p.locator('.lsp6-chip', { hasText: 'Bild' }).click();
+  await p.locator('.lsp6-del').click();
+  pruefe('Sperre löst sich, wenn das Foto entfernt ist', (await box.isHidden()) && !(await gesperrt(p)));
+  // c) Grenzwerte ±1 px um die Mindest-dpi (T-Shirt vorne: 6 Zoll breit, Mindestwert 75 dpi → 450 px)
+  for (const [w, soll] of [[449, true], [450, false], [451, false]]) {
+    const id = await fotoLegen(p, w, w);
+    const g = await gesperrt(p), dpiText = await p.locator('[data-feld="dpi"]').innerText();
+    pruefe(`T-Shirt, Foto ${w} px breit: ${soll ? 'gesperrt (74,8 dpi)' : 'frei'}`, g === soll, `gesperrt=${g} ${dpiText}`);
+    if (w === 449) pruefe('Anzeige bei 449 px: «ca. 74 dpi» (abgerundet unter dem Mindestwert, nie «75» neben der Sperre)', /ca\. 74 dpi/.test(dpiText), dpiText);
+    if (w === 450) pruefe('Anzeige bei 450 px: genau 75 dpi, gerade noch frei', /ca\. 75 dpi/.test(dpiText), dpiText);
+    await p.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), id);
+  }
+  // d) Zwischenstufe: 600 px = 100 dpi (über 75, unter 150): frei, aber Warnung «mittel»
+  const mid = await fotoLegen(p, 600, 600);
+  const klasse = await p.locator('[data-feld="dpi"]').getAttribute('class');
+  const dt = await p.locator('[data-feld="dpi"]').innerText();
+  pruefe('100 dpi: frei, Zeile «ok» mit Zusatz «mittel» und Hinweis auf 150 dpi', !(await gesperrt(p)) && /lsp6-ok/.test(klasse) && /lsp6-mid/.test(klasse) && /ca\. 100 dpi/.test(dt) && /150 dpi/.test(dt), `${klasse} / ${dt}`);
+  pruefe('ab 150 dpi keine Warnung mehr: Zeile ohne «mittel»', await (async () => { const g2 = await fotoLegen(p, 900, 900); const k2 = await p.locator('[data-feld="dpi"]').getAttribute('class'); await p.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), g2); return /lsp6-ok/.test(k2) && !/lsp6-mid/.test(k2); })());
+  // e) Eigenschaft qd im Warenkorb (kleinste effektive dpi), _pod_karte bleibt unter 255 Zeichen
+  await p.getByRole('button', { name: '➕ Text' }).click();
+  await p.locator('.lsp6-text').fill('x');
+  await ctaKlicken(s);
+  const pr = s.warenkorb[0].properties;
+  const pod = JSON.parse(pr._pod_karte);
+  pruefe('_pod_karte.qd = 100 (kleinste effektive dpi des 600-px-Fotos), ganzzahlig', pod.qd === 100 && Number.isInteger(pod.qd), pr._pod_karte);
+  pruefe('_pod_karte mit qd unter 255 Zeichen, Reihenfolge der Felder: px/qd vor ap', pr._pod_karte.length < 255 && pr._pod_karte.indexOf('"qd"') < pr._pod_karte.indexOf('"ap"'), `${pr._pod_karte.length}: ${pr._pod_karte}`);
+  pruefe('der Parser der Bestellstrecke liest die Position mit qd ohne Befund', (() => { const g3 = dateienAusEigenschaften(pr); return g3.dateien.length === 1 && g3.probleme.length === 0; })());
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+  // f) Foto auf der Rückseite sperrt, auch wenn die Vorderseite aktiv ist; qd = Minimum über alle Fotos
+  const r = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(r.page);
+  const q = r.page;
+  await textHinzufuegen(q, 'Vorne');
+  await tab(q, 'Rückseite').click();
+  await fotoLegen(q, 300, 300);
+  await q.locator('.lsp6-tab[data-p="front"]').click();
+  const tr = await q.locator('[data-feld="qualitaet"]').innerText();
+  pruefe('Foto auf der Rückseite (50 dpi) sperrt den Kauf, die Meldung nennt «Rückseite»', (await gesperrt(q)) && /Rückseite/.test(tr), tr);
+  await tab(q, 'Rückseite').click();
+  await q.locator('.lsp6-chip', { hasText: 'Bild' }).click();
+  await q.locator('.lsp6-del').click();
+  await fotoLegen(q, 1200, 1200);   // 200 dpi
+  await q.locator('.lsp6-tab[data-p="front"]').click();
+  await fotoLegen(q, 600, 600);     // 100 dpi
+  const lage = await q.evaluate(() => { const l = window.LSPOD6.editors[0].qualitaetLage(); return { min: l.min, fotos: l.fotos, sperren: l.sperren.length }; });
+  pruefe('zwei Fotos: qualitaetLage nennt das schlechtere (100 dpi), keine Sperre', lage.fotos === 2 && Math.abs(lage.min - 100) < 1e-6 && lage.sperren === 0, JSON.stringify(lage));
+  await ctaKlicken(r);
+  const pod2 = JSON.parse(r.warenkorb[0].properties._pod_karte);
+  pruefe('qd = Minimum über beide Platzierungen (100)', pod2.qd === 100 && pod2.pl.length === 2, JSON.stringify(pod2));
+  await r.schliessen();
+  // g) Poster: 1000-px-Foto (ca. 60 dpi, Mindestwert 150) sperrt; Grenzwerte ±1 px (150 dpi = 2483,3 px)
+  const o = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515' });
+  await editorBereit(o.page);
+  const x = o.page;
+  const pid = await fotoLegen(x, 1000, 700);
+  const tp = await x.locator('[data-feld="qualitaet"]').innerText();
+  pruefe('Poster: 1000-px-Foto (ca. 60 dpi, nötig 150) sperrt den Kauf', (await gesperrt(x)) && /ca\. 60 dpi/.test(tp) && /mindestens 150 dpi/.test(tp), tp);
+  await x.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), pid);
+  for (const [w, soll] of [[2483, true], [2484, false], [2485, false]]) {
+    const id = await fotoLegen(x, w, 1800);
+    pruefe(`Poster, Foto ${w} px breit: ${soll ? 'gesperrt (149,98 dpi)' : 'frei'}`, (await gesperrt(x)) === soll, await x.locator('[data-feld="dpi"]').innerText());
+    await x.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), id);
+  }
+  const gutId = await fotoLegen(x, 2600, 1800);
+  pruefe('Poster, 2600 px: frei und ohne «mittel» (Mindestwert gleich 150)', !(await gesperrt(x)) && !/lsp6-mid/.test(await x.locator('[data-feld="dpi"]').getAttribute('class')));
+  void gutId;
+  pruefe('Poster: keine Seitenfehler', o.fehler.length === 0, o.fehler.join(' | '));
+  await o.schliessen();
+  // h) Dad-Cap (Stickerei, Mindestwert 150): ein kleines Foto sperrt ebenfalls; Text und Sticker nie
+  const c = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=206' });
+  await editorBereit(c.page);
+  await textHinzufuegen(c.page, 'Cap');
+  pruefe('Text allein löst nie eine Sperre aus', !(await gesperrt(c.page)));
+  await fotoLegen(c.page, 200, 200);
+  pruefe('Dad-Cap: 200-px-Foto sperrt den Kauf', await gesperrt(c.page));
+  await c.schliessen();
+});
+
+// ── Entwurf: automatisch speichern und nach dem Neuladen wiederherstellen ────────────────────────
+szenario('entwurf', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  const key = await p.evaluate(() => window.LSPOD6.editors[0].entwurfKey);
+  const gespeichert = () => p.evaluate((k) => localStorage.getItem(k), key);
+  pruefe('Schlüssel nennt Seite und Modell', /^lspod6:entwurf:\/mock\.html\|71$/.test(key), key);
+  pruefe('ohne Ebenen steht nichts im Speicher', (await gespeichert()) === null);
+  await textHinzufuegen(p, 'Hallo Welt');
+  await p.waitForFunction((k) => localStorage.getItem(k), key, { timeout: 5000 });
+  pruefe('Text wird von selbst gespeichert (verzögert, ohne Zutun)', JSON.parse(await gespeichert()).ebenen.front.length === 1);
+  // Lage und Stil ändern (Zahlenfelder, Schrift, Farbe)
+  await feldEingabe(p, 'X (cm)').fill('10'); await feldEingabe(p, 'X (cm)').press('Tab');
+  await feldEingabe(p, 'Y (cm)').fill('25'); await feldEingabe(p, 'Y (cm)').press('Tab');
+  await p.locator('.lsp6-sw[data-c="#b3122b"]').click();
+  await p.locator('.lsp6-field', { hasText: 'Drehung' }).locator('input').fill('12'); await p.locator('.lsp6-field', { hasText: 'Drehung' }).locator('input').press('Tab');
+  // Sticker
+  await p.getByRole('button', { name: '⭐ Sticker' }).click();
+  await p.locator('.lsp6-picker-grid button').first().click();
+  // Foto (hochgeladen)
+  await p.locator('input[type=file]').setInputFiles({ name: 'foto.png', mimeType: 'image/png', buffer: pngErzeugen(900, 1200) });
+  await p.waitForFunction(() => { const l = window.LSPOD6.editors[0].st.ebenen.front; return l.length === 3 && l[2]._origW === 900 && !l[2].uploading && l[2].printUrl; });
+  // Rückseite
+  await tab(p, 'Rückseite').click();
+  await textHinzufuegen(p, 'Hinten');
+  const vorher = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; const o = {}; for (const id of Object.keys(e.st.ebenen)) o[id] = e.st.ebenen[id].map((x) => ({ id: x.id, type: x.type, cx: x.cx, cy: x.cy, scale: x.scale, rot: x.rot, text: x.text, color: x.color, name: x.name, printUrl: x.printUrl, ow: x._origW })); return { aktiv: e.st.aktiv, ebenen: o }; });
+  await p.evaluate(() => window.LSPOD6.editors[0].entwurfSofort());
+  const roh = JSON.parse(await gespeichert());
+  pruefe('Speicher trägt 3 Ebenen vorne und 1 hinten, Version 1, Zeitstempel', roh.v === 1 && roh.ebenen.front.length === 3 && roh.ebenen.back.length === 1 && Math.abs(Date.now() - roh.t) < 60000, JSON.stringify(Object.keys(roh)));
+  pruefe('das Foto steht als Adresse der Druckdatei im Speicher, nicht als Bilddaten (kleiner Speicher)', roh.ebenen.front[2].printUrl === vorher.ebenen.front[2].printUrl && (await gespeichert()).length < 4000 && !/data:image/.test(await gespeichert()), String((await gespeichert()).length));
+  // Neu laden
+  await p.reload({ waitUntil: 'domcontentloaded' });
+  await editorBereit(p);
+  const nachher = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; const o = {}; for (const id of Object.keys(e.st.ebenen)) o[id] = e.st.ebenen[id].map((x) => ({ id: x.id, type: x.type, cx: x.cx, cy: x.cy, scale: x.scale, rot: x.rot, text: x.text, color: x.color, name: x.name, printUrl: x.printUrl, ow: x._origW, uploading: x.uploading })); return { aktiv: e.st.aktiv, ebenen: o }; });
+  pruefe('Reload: Ebenenzahl je Platzierung wie vorher (3 vorne, 1 hinten)', nachher.ebenen.front.length === 3 && nachher.ebenen.back.length === 1);
+  pruefe('Reload: die aktive Platzierung ist wieder die Rückseite', nachher.aktiv === 'back' && (await tab(p, 'Rückseite').getAttribute('aria-selected')) === 'true', nachher.aktiv);
+  let maxAbw = 0;
+  for (const id of ['front', 'back']) vorher.ebenen[id].forEach((v, i) => { const a = nachher.ebenen[id][i]; for (const k of ['cx', 'cy', 'scale']) maxAbw = Math.max(maxAbw, Math.abs(v[k] - a[k]) / Math.max(Math.abs(v[k]), 0.01)); maxAbw = Math.max(maxAbw, Math.abs(v.rot - a.rot) / 360); });
+  pruefe('Reload: Lage, Grösse und Drehung aller Ebenen weichen höchstens 1 % ab', maxAbw <= 0.01, String(maxAbw));
+  pruefe('Reload: Text, Farbe und Sticker-Name sind gleich', nachher.ebenen.front[0].text === 'Hallo Welt' && nachher.ebenen.front[0].color === '#b3122b' && nachher.ebenen.front[1].type === 'sticker' && nachher.ebenen.front[1].name === vorher.ebenen.front[1].name && nachher.ebenen.back[0].text === 'Hinten');
+  pruefe('Reload: Foto kommt von der Druckdatei bei Cloudinary zurück, Originalgrösse 900, nicht «lädt hoch»', nachher.ebenen.front[2].printUrl === vorher.ebenen.front[2].printUrl && nachher.ebenen.front[2].ow === 900 && nachher.ebenen.front[2].uploading === false);
+  pruefe('Reload: Ebenen sind auf der Bühne (Rückseite aktiv: ein Knoten)', (await p.locator('.lsp6-layer').count()) === 1);
+  const msg = await status(p).innerText();
+  pruefe('Reload: Hinweis «Entwurf wurde wiederhergestellt»', /Entwurf wurde wiederhergestellt/.test(msg), msg);
+  await p.locator('.lsp6-tab[data-p="front"]').click();
+  pruefe('Reload: Vorderseite zeigt 3 Knoten, das Foto ist geladen', (await p.locator('.lsp6-layer').count()) === 3 && await p.locator('.lsp6-layer img').first().evaluate((i) => i.complete || true));
+  await p.waitForFunction(() => [...document.querySelectorAll('.lsp6-layer img')].every((i) => i.complete && i.naturalWidth > 0), null, { timeout: 8000 });
+  pruefe('Reload: alle Bilder der Bühne geladen', true);
+  const ids = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; return [...e.st.ebenen.front, ...e.st.ebenen.back].map((x) => x.id); });
+  await textHinzufuegen(p, 'Neu');
+  const ids2 = await p.evaluate(() => { const e = window.LSPOD6.editors[0]; return [...e.st.ebenen.front, ...e.st.ebenen.back].map((x) => x.id); });
+  pruefe('neue Ebenen bekommen nie eine schon vergebene ID', new Set(ids2).size === ids2.length && ids2.length === ids.length + 1, ids2.join(','));
+  // Rückgängig geht auf den wiederhergestellten Stand zurück, nicht ins Leere
+  await p.evaluate(() => window.LSPOD6.editors[0].zurueck());
+  pruefe('Rückgängig nach dem Wiederherstellen entfernt nur die neue Ebene', (await p.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front.length)) === 3);
+  // Kauf: der Entwurf ist verbraucht
+  await p.evaluate(() => { const e = window.LSPOD6.editors[0]; e.st.ebenen.back.length = 0; });
+  await ctaKlicken(s);
+  pruefe('nach dem Warenkorb ist der Entwurf gelöscht', (await p.evaluate((k) => localStorage.getItem(k), key)) === null);
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+// ── Entwurf: fremde, alte, kaputte und halbe Entwürfe, Fotos ohne Upload, Tab-Wechsel ────────────────
+szenario('entwurf-grenzen', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, cloudinaryVerzoegerung: (nr, art) => (art === 'png' && nr === 1 ? 6000 : 0) });
+  await editorBereit(s.page);
+  const p = s.page;
+  const key = await p.evaluate(() => window.LSPOD6.editors[0].entwurfKey);
+  const setze = async (obj, k = key) => { await p.evaluate(([kk, v]) => localStorage.setItem(kk, typeof v === 'string' ? v : JSON.stringify(v)), [k, obj]); await p.reload({ waitUntil: 'domcontentloaded' }); await editorBereit(p); };
+  const zahl = () => p.evaluate(() => Object.values(window.LSPOD6.editors[0].st.ebenen).reduce((a, l) => a + l.length, 0));
+  const gut = { id: 'L1', type: 'text', text: 'Alt', font: "'Helvetica Neue',Arial,sans-serif", color: '#111111', cx: 0.5, cy: 0.4, scale: 0.5, rot: 0 };
+  // a) Foto, das noch hochlädt, ist nicht im Entwurf; der Kunde erfährt es nach dem Neuladen
+  await textHinzufuegen(p, 'Text bleibt');
+  await p.locator('input[type=file]').setInputFiles({ name: 'foto.png', mimeType: 'image/png', buffer: pngErzeugen(900, 1200) });
+  await p.waitForFunction(() => window.LSPOD6.editors[0].st.ebenen.front.length === 2);
+  await p.evaluate(() => window.LSPOD6.editors[0].entwurfSofort());
+  const roh = JSON.parse(await p.evaluate((k) => localStorage.getItem(k), key));
+  pruefe('Foto ohne fertigen Upload kommt nicht in den Entwurf (nur der Text), die Zahl der fehlenden steht dabei', roh.ebenen.front.length === 1 && roh.l === 1, JSON.stringify(roh.ebenen.front.map((x) => x.type)) + ' l=' + roh.l);
+  await p.reload({ waitUntil: 'domcontentloaded' }); await editorBereit(p);
+  pruefe('danach: Text zurück, Foto nicht, Hinweis nennt die nicht hochgeladenen Fotos', (await zahl()) === 1 && /nicht hochgeladen waren/.test(await status(p).innerText()), await status(p).innerText());
+  // b) Grenzfälle des Speichers
+  await setze({ v: 1, t: Date.now() - 8 * 24 * 3600 * 1000, aktiv: 'front', z: 1, ebenen: { front: [gut] } });
+  pruefe('Entwurf älter als 7 Tage wird ignoriert und gelöscht', (await zahl()) === 0 && (await p.evaluate((k) => localStorage.getItem(k), key)) === null);
+  await setze('{kein json');
+  pruefe('kaputter Speicher (kein JSON): ignoriert, Editor läuft', (await zahl()) === 0 && await p.locator('.lsp6').isVisible());
+  await setze({ v: 2, t: Date.now(), ebenen: { front: [gut] } });
+  pruefe('unbekannte Version wird ignoriert', (await zahl()) === 0);
+  await setze({ v: 1, t: Date.now(), z: 5, aktiv: 'front', ebenen: { front: [gut, { id: 'L2', type: 'image', printUrl: 'http://unsicher.example/x.png', aw: 100, cx: 0.5, cy: 0.5, scale: 1, rot: 0 }, { id: 'L3', type: 'text' }, { id: 'x', type: 'text', text: 'a', font: 'f', color: '#000', cx: 1, cy: 1, scale: 1, rot: 0 }, { id: 'L4', type: 'sticker', name: '../böse', cx: 0.5, cy: 0.5, scale: 1, rot: 0 }], gibtesnicht: [gut] } });
+  pruefe('nur gültige Ebenen kommen zurück (kein http-Foto, kein Text ohne Felder, keine fremde ID, kein Sticker-Name mit Pfad, keine unbekannte Platzierung)', (await zahl()) === 1 && (await p.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front[0].text)) === 'Alt');
+  // c) Entwurf eines anderen Produkts wird nicht geladen
+  await setze({ v: 1, t: Date.now(), z: 1, aktiv: 'front', ebenen: { front: [gut] } }, key.replace('|71', '|999'));
+  pruefe('Entwurf unter dem Schlüssel eines anderen Modells wird nicht gelesen', (await zahl()) === 0);
+  // d) Tab-Wechsel auf dem Handy: beim Verbergen der Seite sofort sichern (vor dem verzögerten Zeitgeber)
+  await p.evaluate((k) => localStorage.removeItem(k), key);
+  await p.reload({ waitUntil: 'domcontentloaded' }); await editorBereit(p);
+  const sofort = await p.evaluate((k) => {
+    const e = window.LSPOD6.editors[0];
+    const x = e.neuerText('Schnell');
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+    return localStorage.getItem(k);
+  }, key);
+  pruefe('visibilitychange «hidden» sichert sofort (ohne die 400 ms abzuwarten)', !!sofort && JSON.parse(sofort).ebenen.front[0].text === 'Schnell', String(sofort));
+  await p.evaluate((k) => { localStorage.removeItem(k); }, key);
+  const sofort2 = await p.evaluate((k) => { window.dispatchEvent(new Event('pagehide')); return localStorage.getItem(k); }, key);
+  pruefe('pagehide sichert ebenfalls sofort', !!sofort2 && JSON.parse(sofort2).ebenen.front.length === 1, String(sofort2));
+  // e) alle Ebenen entfernt: der Entwurf verschwindet
+  await p.evaluate(() => { const e = window.LSPOD6.editors[0]; e.entfernen(e.st.ebenen.front[0].id); });
+  await p.waitForFunction((k) => localStorage.getItem(k) === null, key, { timeout: 5000 });
+  pruefe('ohne Ebenen wird der Entwurf gelöscht', true);
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+// ── Entwurf: gesperrter Speicher (Privatfenster) darf nichts brechen ─────────────────────────────
+szenario('entwurf-speicher-gesperrt', true, async (b, srv) => {
+  const faelle = [
+    ['Zugriff auf localStorage wirft (SecurityError)', "Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new DOMException('verweigert', 'SecurityError'); } });"],
+    ['setItem wirft (Speicher voll)', "Storage.prototype.setItem = function () { throw new DOMException('voll', 'QuotaExceededError'); };"],
+    ['getItem und setItem werfen', "Storage.prototype.getItem = function () { throw new Error('kaputt'); }; Storage.prototype.setItem = function () { throw new Error('kaputt'); }; Storage.prototype.removeItem = function () { throw new Error('kaputt'); };"],
+    ['localStorage ist null', "Object.defineProperty(window, 'localStorage', { configurable: true, value: null });"],
+    ['localStorage fehlt ganz', "Object.defineProperty(window, 'localStorage', { configurable: true, value: undefined });"],
+  ];
+  for (const [name, skript] of faelle) {
+    const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, initSkript: skript });
+    await editorBereit(s.page);
+    const p = s.page;
+    pruefe(`${name}: Editor läuft im Modus «karte»`, (await p.locator('.lsp6').getAttribute('data-modus')) === 'karte');
+    await textHinzufuegen(p, 'Hallo');
+    await feldEingabe(p, 'X (cm)').fill('8'); await feldEingabe(p, 'X (cm)').press('Tab');
+    await p.evaluate(() => window.LSPOD6.editors[0].entwurfSofort());
+    await p.evaluate(() => { Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' }); document.dispatchEvent(new Event('visibilitychange')); window.dispatchEvent(new Event('pagehide')); });
+    await p.waitForTimeout(600);
+    await ctaKlicken(s);
+    pruefe(`${name}: Kauf geht durch (Druckdatei, Warenkorb)`, s.warenkorb.length === 1 && /^https:/.test(s.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || ''));
+    pruefe(`${name}: 0 Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
+    await s.schliessen();
+  }
 });
 
 // ── Lauf ────────────────────────────────────────────────────────────────────────────────────────

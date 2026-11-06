@@ -6,7 +6,7 @@
  * Aufruf: node vorschau_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = die schnellen für die Mutationsprobe)
  * Umgebung: V6_DATEI (andere Fassung des Editors, für die Mutationsprobe).
  */
-import { playwright, starteServer, seiteOeffnen, editorBereit, pngRauschen, geisterPng, GEISTER_RECHTECK, GEISTER_GROESSE, tassePng, TASSE_FOTO } from './lib.mjs';
+import { playwright, starteServer, seiteOeffnen, editorBereit, pngRauschen, geisterPng, GEISTER_RECHTECK, tassePng, TASSE_FOTO } from './lib.mjs';
 import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
 
 const { chromium } = playwright();
@@ -332,7 +332,8 @@ szenario('rueckfall', true, async (b, srv) => {
   await rueckfallPruefen('Spiegel nicht da (HTTP 404)', TSHIRT, { shopifyBild: (u) => (/luxe-vorschau-/.test(u) ? { status: 404 } : null) });
   await rueckfallPruefen('CORS-Fehler (Bild ohne Freigabe)', `${TSHIRT}&spiegel=0`, { corsErwartet: true, printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: geisterPng(), cors: false } : null) });
   // Daten kaputt oder fremd: es gibt gar keinen Umschalter, nichts bricht
-  for (const [name, query] of [['Daten kein JSON', `${TSHIRT}&vkaputt=json`], ['Schema 2', `${TSHIRT}&vkaputt=schema`], ['unbekannter Adapter', `${TSHIRT}&vkaputt=modell`], ['Daten nur für ein anderes Modell', `karte=19&${SHOP}&vorschau=71`]]) {
+  for (const [name, query] of [['Daten kein JSON', `${TSHIRT}&vkaputt=json`], ['Schema 2', `${TSHIRT}&vkaputt=schema`], ['unbekannter Adapter', `${TSHIRT}&vkaputt=modell`], ['Daten nur für ein anderes Modell', 'karte=19&shop=1001:1320,1002:4830,1003:16586&vorschau=71']]) {
+    if (process.env.V6_LAUT) console.log('    … ' + name);
     const s = await oeffnen(b, srv, query);
     await s.page.waitForTimeout(700);
     pruefe(`${name}: kein Umschalter, Editor läuft`, await s.page.locator('[data-feld="sicht"]').isHidden() && await s.page.locator('.lsp6-stagewrap').isVisible());
@@ -507,17 +508,33 @@ szenario('zeichenzeit', false, async (b, srv) => {
   const s = await oeffnen(b, srv, TSHIRT);
   const p = s.page; await sichtWarten(p);
   await textHinzufuegen(p, 'Zeichenzeit');
+  // Gemessen wird bis zum fertigen Raster (getImageData erzwingt es: ohne das misst man nur das Aufzeichnen der Zeichenbefehle), ausserdem bis zum nächsten Bild des Browsers.
   const mess = await p.evaluate(async () => {
     const ed = window.LSPOD6.editors[0];
     const cv = document.createElement('canvas'); cv.width = 1000; cv.height = 1000;
+    const ctx = cv.getContext('2d', { willReadFrequently: false });
     await ed.vorschauZeichnen(cv, {});   // kalt: Bilder laden
-    const zeiten = [];
-    for (let i = 0; i < 30; i++) { const t0 = performance.now(); const r = await ed.vorschauZeichnen(cv, {}); zeiten.push(performance.now() - t0); if (!r.ok) return { fehler: r.grund }; }
-    zeiten.sort((a, b2) => a - b2);
-    return { median: zeiten[15], max: zeiten[29], min: zeiten[0] };
+    const raster = [], bild = [];
+    for (let i = 0; i < 30; i++) {
+      const t0 = performance.now();
+      const r = await ed.vorschauZeichnen(cv, {});
+      if (!r.ok) return { fehler: r.grund };
+      ctx.getImageData(0, 0, 1, 1);
+      raster.push(performance.now() - t0);
+    }
+    for (let i = 0; i < 30; i++) {
+      const t0 = performance.now();
+      await ed.vorschauZeichnen(cv, {});
+      ctx.getImageData(0, 0, 1, 1);
+      await new Promise((ok) => requestAnimationFrame(() => ok()));
+      bild.push(performance.now() - t0);
+    }
+    raster.sort((a, b2) => a - b2); bild.sort((a, b2) => a - b2);
+    return { median: raster[15], max: raster[29], min: raster[0], bildMedian: bild[15], bildMax: bild[29] };
   });
-  console.log(`    Zeichenzeit bei 1000 px (30 Läufe, warm): min ${mess.min?.toFixed(1)} ms, Median ${mess.median?.toFixed(1)} ms, max ${mess.max?.toFixed(1)} ms`);
-  pruefe('Neuzeichnen bei 1000 px: Median höchstens 30 ms', mess.median <= 30, JSON.stringify(mess));
+  console.log(`    Zeichenzeit bei 1000 px (30 Läufe, warm, bis zum Raster): min ${mess.min?.toFixed(1)} ms, Median ${mess.median?.toFixed(1)} ms, max ${mess.max?.toFixed(1)} ms; bis zum nächsten Bild: Median ${mess.bildMedian?.toFixed(1)} ms, max ${mess.bildMax?.toFixed(1)} ms`);
+  pruefe('Neuzeichnen bei 1000 px: Median höchstens 30 ms (bis zum fertigen Raster)', mess.median <= 30, JSON.stringify(mess));
+  pruefe('Neuzeichnen bei 1000 px: Median höchstens 30 ms bis zum nächsten Bild des Browsers', mess.bildMedian <= 30, JSON.stringify(mess));
   await s.schliessen();
   const t = await oeffnen(b, srv, TASSE);
   await sichtWarten(t.page);
@@ -525,13 +542,14 @@ szenario('zeichenzeit', false, async (b, srv) => {
   const mt = await t.page.evaluate(async () => {
     const ed = window.LSPOD6.editors[0];
     const cv = document.createElement('canvas'); cv.width = 1000; cv.height = 1000;
+    const ctx = cv.getContext('2d');
     await ed.vorschauZeichnen(cv, {});
     const zeiten = [];
-    for (let i = 0; i < 20; i++) { const t0 = performance.now(); await ed.vorschauZeichnen(cv, {}); zeiten.push(performance.now() - t0); }
+    for (let i = 0; i < 20; i++) { const t0 = performance.now(); await ed.vorschauZeichnen(cv, {}); ctx.getImageData(0, 0, 1, 1); zeiten.push(performance.now() - t0); }
     zeiten.sort((a, b2) => a - b2);
     return { median: zeiten[10], max: zeiten[19] };
   });
-  console.log(`    Zeichenzeit Tasse bei 1000 px: Median ${mt.median.toFixed(1)} ms, max ${mt.max.toFixed(1)} ms`);
+  console.log(`    Zeichenzeit Tasse bei 1000 px (bis zum Raster): Median ${mt.median.toFixed(1)} ms, max ${mt.max.toFixed(1)} ms`);
   pruefe('Tasse (Zylinder, 380 Streifen) bei 1000 px: Median höchstens 30 ms', mt.median <= 30, JSON.stringify(mt));
   await t.schliessen();
 });

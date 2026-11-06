@@ -52,6 +52,7 @@ ok(STATUS_LIEFERBAR.has('in_stock') && STATUS_LIEFERBAR.has('stocked_on_demand')
   gleich(signatur(a), signatur([...a].reverse()), 'Signatur hängt nicht von der Reihenfolge ab');
   ok(signatur(a) !== signatur([{ id: 1, art: 'ok', regionen: ['EU'] }, { id: 2, art: 'ok', regionen: ['US'] }]), 'Signatur ändert sich mit dem Status');
   ok(/^[0-9a-f]{16}$/.test(signatur(a)), 'Signatur ist 16 Hexzeichen');
+  ok(signatur([{ id: 1, art: 'ok', regionen: ['EU'] }]) !== signatur([{ id: 1, art: 'ok', regionen: ['US'] }]), 'Signatur ändert sich, wenn die Lieferregion wechselt (EU -> US ändert die Schweizer Rate)');
 }
 
 // ── Modell lesen
@@ -179,6 +180,7 @@ ok(STATUS_LIEFERBAR.has('in_stock') && STATUS_LIEFERBAR.has('stocked_on_demand')
   gleich(o.varianten, { 5: [3, 9], 30: [1] }, 'Varianten nur für sichtbare Modelle, sortiert');
   gleich(o.schemaVersion, 1, 'Schema 1');
   ok(/5 Modelle gelesen/.test(o.quelle) && /GEMESSEN 2026-11-06/.test(o.quelle), 'Quelle nennt Datum und Zahl');
+  gleich(ausblendenBauen(new Map([[3, { fensterAus: true, ausVarianten: [7] }], [4, { fensterAus: false, ausVarianten: [8] }]]), '2026-11-06', 2).varianten, { 4: [8] }, 'ausgeblendete Modelle tragen nie eine Variantenliste');
   const t = ausblendenText(o);
   ok(t.endsWith('}}\n') && t.includes('"varianten":{\n"5":[3,9],\n"30":[1]\n}}'), 'Zeilenformat wie im Paket');
   gleich(ausblendenPruefen(t).modelle, [2, 10], 'Text lässt sich wieder lesen');
@@ -269,6 +271,12 @@ const prod = (id, status, varianten, tags = ['printful_personalized_product', 'w
   pl = shopPlan([prod(2, 'ACTIVE', [var_('w1', '6_111'), var_('w2', '6_112')])], idx, urteileUnbek, 'B');
   gleich(pl.aktionen.length, 0, 'unbekanntes Modell: nichts erraten');
 
+  // unsicheres Modell: ein von uns entworfenes Produkt kommt NICHT zurück, solange nur ein alter Stand «keine Rate» sagt (kein Hin und Her)
+  const lOk = new Map([[12, l(12, [V(121), V(122)])]]);
+  const urtUnsicher = new Map([[12, modellUrteil(lOk.get(12), { ch: null }, { ch: false }, {})]]);
+  gleich(urtUnsicher.get(12).shopUnsicher, true, 'Ausgangslage: Modell unsicher');
+  pl = shopPlan([prod(3, 'DRAFT', [var_('x1', '7_121'), var_('x2', '7_122')], ['printful_personalized_product', TAG_AUS])], katalogIndex(lOk), urtUnsicher, 'B');
+  gleich(pl.aktionen.length, 0, 'unsicheres Modell: keine Reaktivierung (kein Hin und Her bei unklarer Messung)');
   // Szenario 3: Rückkehr (Entwurf von uns -> aktiv; fremde Entwürfe nie)
   const lAlle = new Map([[11, l(11, [V(111), V(112)])]]);
   const idx2 = katalogIndex(lAlle);

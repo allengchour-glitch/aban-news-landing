@@ -70,7 +70,7 @@ function fetchFuer(w) {
     const methode = (init.method || 'GET').toUpperCase();
     const u = new URL(url);
     const body = init.body ? JSON.parse(init.body) : null;
-    w.req.push({ host: u.host, methode, pfad: u.pathname, body });
+    w.req.push({ host: u.host, methode, pfad: u.pathname, body, headers: init.headers || {} });
     if (u.host === 'api.printful.com') {
       if (w.pfAuth) return antwortHttp(w.pfAuth, { code: w.pfAuth, result: 'Forbidden' });
       const gm = /^\/products\/(\d+)$/.exec(u.pathname);
@@ -223,6 +223,9 @@ const dateiObjekt = (w) => ausblendenPruefen(w.theme.text);
   gleich(w.apiVersion, '2026-01', '0: API-Version 2026-01');
   gleich(printfulAnfragen(w).filter((x) => x.methode === 'GET').length, 12, '0: ein Abruf je Modell (12 Modelle)');
   gleich(printfulAnfragen(w).filter((x) => x.methode === 'GET').every((x) => x.body === null), true, '0: GET ohne Körper');
+  const pa = w.req.filter((x) => x.pfad === '/shipping/rates');
+  ok(pa.length > 0 && pa.every((x) => x.body.recipient.country_code === 'CH' && x.body.items.length === 1 && x.body.items[0].quantity === 1 && Number.isInteger(x.body.items[0].variant_id)), '0: Preisauskunft immer nach CH, eine Variante, Menge 1');
+  ok(printfulAnfragen(w).every((x) => x.headers['X-PF-Store-Id'] === '123' && x.headers.Authorization === 'Bearer pk'), '0: Printful-Anfragen tragen Schlüssel und Store-Nummer');
   allgemein(w, '0');
   ok(existsSync(join(r.dir, 'zustand.json')), '0: Zustandsdatei geschrieben (lokal)');
   ok(/Printful-Lager-Wächter/.test(readFileSync(join(r.dir, 'summary.md'), 'utf8')), '0: Zusammenfassung für GitHub geschrieben');
@@ -649,9 +652,12 @@ const dateiObjekt = (w) => ausblendenPruefen(w.theme.text);
   gleich([r2.code, w.req.length], [1, 0], '13: ohne Shopify-Zugang Exit 1, keine Anfrage');
   const r3 = await lauf(w, { SHOPIFY_ADMIN_TOKEN: null, SHOPIFY_CLIENT_ID: 'cid', SHOPIFY_CLIENT_SECRET: 'csec' });
   gleich([r3.code, w.oauth], [0, 1], '13: Client-Credentials-Anmeldung einmal, Exit 0');
-  const r4 = await lauf(w, { SHOPIFY_SHOP: 'https://evil.example.com' });
-  gleich(r4.code, 1, '13: fremde Shop-Adresse wird abgelehnt (Zugangsdaten gehen nie dorthin)');
-  ok(!w.req.some((x) => x.host.includes('evil')), '13: keine Anfrage an die fremde Adresse');
+  const wS = standardWelt();
+  await lauf(wS, { PRINTFUL_STORE_ID: null });
+  ok(printfulAnfragen(wS).length > 0 && printfulAnfragen(wS).every((x) => !('X-PF-Store-Id' in x.headers)), '13: ohne Store-Nummer wird keine leere Kopfzeile gesendet');
+  const wE = standardWelt();
+  const r4 = await lauf(wE, { SHOPIFY_SHOP: 'https://evil.example.com', SHOPIFY_ADMIN_TOKEN: null, SHOPIFY_CLIENT_ID: 'cid', SHOPIFY_CLIENT_SECRET: 'csec' });
+  gleich([r4.code, wE.req.length, wE.oauth], [1, 0, 0], '13: fremde Shop-Adresse wird abgelehnt, bevor Client-ID und Schlüssel irgendwohin gehen');
   const w2 = standardWelt(); w2.modelle.get(11).varianten.forEach((v) => { v.status = AUS; });
   const r5 = await lauf(w2, { ...LIVE, MODELLE: '10,11' }, { freigabe: true });
   gleich(r5.code, 0, '13: Teilmenge Exit 0');
@@ -667,27 +673,35 @@ const dateiObjekt = (w) => ausblendenPruefen(w.theme.text);
 // ═════════════════════════════════════════════════════════════ 13b. Schutzschalter von aussen geprüft (Sonde im Lauf)
 {
   const w = standardWelt();
-  let sondeLief = false;
-  const e = { PRINTFUL_API_KEY: 'pk', SHOPIFY_ADMIN_TOKEN: 'st', BASIS_MODELLE: null, MODELLE: '10' };
   const dir = mkdtempSync(join(tmpdir(), 'plager-')); tmpDirs.push(dir);
   const b = basisDateien(); writeFileSync(join(dir, 'm.json'), JSON.stringify(b.modelle)); writeFileSync(join(dir, 'a.json'), JSON.stringify(b.ausblenden));
-  await main({ ...e, BASIS_MODELLE: join(dir, 'm.json'), BASIS_AUSBLENDEN: join(dir, 'a.json'), PF_ABSTAND_MS: '0', LEDGER: join(dir, 'l.txt') }, {
+  const sondeFehler = []; let sondeLief = false;
+  const pruefe = async (f, muster, text) => { try { await f(); sondeFehler.push(`${text}: wurde NICHT abgelehnt`); } catch (e) { if (!muster.test(e.message)) sondeFehler.push(`${text}: falsche Meldung «${e.message}»`); } };
+  await main({ PRINTFUL_API_KEY: 'pk', SHOPIFY_ADMIN_TOKEN: 'st', TELEGRAM_BOT_TOKEN: 'tt', TELEGRAM_CHAT_ID: 'cc', BASIS_MODELLE: join(dir, 'm.json'), BASIS_AUSBLENDEN: join(dir, 'a.json'), PF_ABSTAND_MS: '0', MODELLE: '10', LEDGER: join(dir, 'l.txt') }, {
     fetch: fetchFuer(w), sleep: async () => {}, now: () => START, log: () => {}, err: () => {},
-    sonde: async ({ pf, schreibenGql, lesenGql, schreiben }) => {
+    sonde: async ({ pf, schreibenGql, lesenGql, tg, schreiben }) => {
       sondeLief = true;
-      gleich(schreiben, false, '13b: Trockenlauf');
-      for (const [m, pfad] of [['POST', '/orders'], ['POST', '/orders/1/confirm'], ['DELETE', '/orders/1'], ['GET', '/orders'], ['POST', '/products/19'], ['PUT', '/products/19']]) {
-        await assert.rejects(() => pf(m, pfad, {}), /nicht erlaubt/, `13b: Printful ${m} ${pfad} wird vor dem Senden abgelehnt`); n++;
-      }
-      gleich(printfulAnfragen(w).length, 0, '13b: dabei ging keine Printful-Anfrage hinaus');
-      for (const q of ['mutation($id:ID!){ tagsAdd(id:$id,tags:["x"]){ userErrors{ message } } }', 'mutation { productUpdate(product:{id:"x",status:DRAFT}){ product{ id } } }']) {
-        await assert.rejects(() => schreibenGql(q, { id: 'gid://shopify/Product/1' }), /Schreibzugriff im Trockenlauf/, '13b: Shopify-Schreiben im Trockenlauf wird abgelehnt'); n++;
-      }
-      gleich(w.mut, [], '13b: dabei wurde nichts geschrieben');
+      if (schreiben !== false) sondeFehler.push('Trockenlauf erwartet');
+      for (const [m, pfad] of [['POST', '/orders'], ['POST', '/orders/1/confirm'], ['DELETE', '/orders/1'], ['GET', '/orders'], ['POST', '/products/19'], ['PUT', '/products/19']]) await pruefe(() => pf(m, pfad, {}), /nicht erlaubt/, `Printful ${m} ${pfad}`);
+      if (printfulAnfragen(w).length !== 0) sondeFehler.push('verbotene Printful-Anfrage ist hinausgegangen');
+      for (const q of ['mutation($id:ID!){ tagsAdd(id:$id,tags:["x"]){ userErrors{ message } } }', 'mutation { productUpdate(product:{id:"x",status:DRAFT}){ product{ id } } }']) await pruefe(() => schreibenGql(q, { id: 'gid://shopify/Product/1' }), /Schreibzugriff im Trockenlauf/, 'Shopify-Schreiben im Trockenlauf');
+      if (w.mut.length) sondeFehler.push('im Trockenlauf wurde geschrieben');
+      if ((await tg('Probe')) !== null) sondeFehler.push('Telegram im Trockenlauf gesendet');
+      if (w.tg.length) sondeFehler.push('Telegram im Trockenlauf hinausgegangen');
       await lesenGql('{ themes(first:5, roles:[MAIN]){ nodes{ id name } } }');
     },
   });
   ok(sondeLief, '13b: Sonde lief');
+  gleich(sondeFehler, [], '13b: Printful-Erlaubnisliste, Trockenlauf-Sperre für Shopify und Telegram halten');
+  // mit Freigabe schreibt dieselbe Sonde-Anfrage durch
+  const w2 = standardWelt(); const sonde2 = [];
+  writeFileSync(join(dir, 'FREI.txt'), 'frei');
+  await main({ PRINTFUL_API_KEY: 'pk', SHOPIFY_ADMIN_TOKEN: 'st', TELEGRAM_BOT_TOKEN: 'tt', TELEGRAM_CHAT_ID: 'cc', BASIS_MODELLE: join(dir, 'm.json'), BASIS_AUSBLENDEN: join(dir, 'a.json'), PF_ABSTAND_MS: '0', MODELLE: '10', LEDGER: join(dir, 'l.txt'), LIVE: '1', FREIGABE_DATEI: join(dir, 'FREI.txt') }, {
+    fetch: fetchFuer(w2), sleep: async () => {}, now: () => START, log: () => {}, err: () => {},
+    sonde: async ({ schreibenGql, tg, schreiben }) => { sonde2.push(schreiben); await schreibenGql('mutation($id:ID!,$tags:[String!]!){ tagsAdd(id:$id,tags:$tags){ userErrors{ message } } }', { id: 'gid://shopify/Product/9', tags: ['probe'] }); sonde2.push(await tg('Probe')); },
+  });
+  gleich(sonde2, [true, true], '13b: mit Freigabe darf geschrieben und Telegram gesendet werden');
+  gleich([w2.mut.length, w2.tg], [1, ['Probe']], '13b: die Probe-Anfragen kamen an');
 }
 
 // ═════════════════════════════════════════════════════════════ 14. Gesamtsicht: fremde Ware, Zugangsschlüssel, Modus

@@ -197,7 +197,7 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
  * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool,
  *                   cloudinaryMaxBytes: Zahl (grössere Uploads → HTTP 400 «File size too large»), cloudinaryMaxPixel: Zahl (mehr Pixel → HTTP 400 «Image dimensions too large»),
  *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms,
- *                   cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
+ *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
  * @returns { page, ctx, fehler: string[], uploads: [], abgelehnt: [], warenkorb: [], png(url), schliessen() }
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
@@ -205,6 +205,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     viewport: { width: opt.breite || 1440, height: opt.hoehe || 900 }, deviceScaleFactor: 1, userAgent: NORMALE_KENNUNG, hasTouch: !!opt.mobil, isMobile: !!opt.mobil, locale: opt.sprache || 'de-CH',
   });
   const page = await ctx.newPage();
+  if (opt.initSkript) await page.addInitScript(opt.initSkript);   // läuft vor jedem Skript der Seite (z. B. gesperrter Speicher)
   const fehler = [];
   const uploads = [];
   const abgelehnt = [];
