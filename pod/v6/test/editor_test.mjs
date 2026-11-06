@@ -1488,6 +1488,105 @@ szenario('qd-entfaellt-bei-255', true, async (b, srv) => {
   }
 });
 
+// ── Korrekturrunde 06.11.2026: kleine Funde der Gegenleser (Entwurf mit fremden Schlüsseln, Optik der Sperre, Sperre nach Variantenwechsel, qd abgerundet) ───────
+szenario('entwurf-fremde-schluessel', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  const key = await p.evaluate(() => window.LSPOD6.editors[0].entwurfKey);
+  const mockUrl = p.url();
+  const ebene = (id, text) => ({ id, type: 'text', cx: 0.5, cy: 0.5, scale: 1, rot: 0, text, font: 'Modern Sans', color: '#111111' });
+  // Der Speicher wird auf einer Seite ohne Editor gesetzt (beim Verlassen sichert pagehide sonst den Stand der Editor-Seite)
+  async function mitEintrag(roh) {
+    await p.goto(srv.url + '/cart'); await p.evaluate(([k, v]) => localStorage.setItem(k, v), [key, roh]);
+    await p.goto(mockUrl, { waitUntil: 'domcontentloaded' });
+    await p.waitForSelector('.lspod-designer-v6[data-init-v6]', { timeout: 15000 });
+    return p.evaluate(() => { const c = document.querySelector('.lspod-designer-v6'); const e = window.LSPOD6.editors[0]; return { init: c.getAttribute('data-init-v6'), editor: !!document.querySelector('.lsp6'), ebenen: e ? Object.fromEntries(Object.entries(e.st.ebenen).map(([k, v]) => [k, v.length])) : null }; });
+  }
+  // JSON.parse legt «__proto__» als EIGENEN Schlüssel an; der Editor-Bau stürzte bei st.ebenen['__proto__'].push ab (data-init-v6 = err, kein Editor, der Fehler kam bei jedem Neuladen wieder)
+  const roh = `{"v":1,"t":${Date.now()},"aktiv":"front","z":3,"l":0,"ebenen":{"__proto__":[${JSON.stringify(ebene('L1', 'Falle'))}],"constructor":[${JSON.stringify(ebene('L2', 'Falle'))}],"toString":[${JSON.stringify(ebene('L3', 'Falle'))}],"hasOwnProperty":[],"front":[${JSON.stringify(ebene('L4', 'Echt'))}]}}`;
+  const r = await mitEintrag(roh);
+  pruefe('Entwurf mit Schlüsseln «__proto__», «constructor», «toString»: Editor baut sich trotzdem (data-init-v6 = 1, Oberfläche da)', r.init === '1' && r.editor, JSON.stringify(r));
+  pruefe('die echte Platzierung «front» wird wiederhergestellt, die fremden Schlüssel nicht (keine Ebene in anderen Platzierungen)', r.ebenen && r.ebenen.front === 1 && Object.entries(r.ebenen).filter(([k]) => k !== 'front').every(([, v]) => v === 0), JSON.stringify(r.ebenen));
+  pruefe('der Text der echten Ebene ist da', (await p.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front[0].text)) === 'Echt');
+  // eine Platzierung, die nur ein Objekt statt einer Liste trägt
+  const r2 = await mitEintrag(`{"v":1,"t":${Date.now()},"aktiv":"front","z":1,"l":0,"ebenen":{"front":{"0":${JSON.stringify(ebene('L1', 'x'))}},"back":"nein"}}`);
+  pruefe('Platzierung mit Objekt oder Zeichenkette statt Liste: Editor baut sich, keine Ebenen', r2.init === '1' && r2.editor && Object.values(r2.ebenen).every((v) => v === 0), JSON.stringify(r2));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+szenario('kaufsperre-optik', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  const stil = () => p.locator('.lsp6-cta').evaluate((e) => { const c = getComputedStyle(e); return { bg: c.backgroundColor, cursor: c.cursor, opacity: c.opacity, inline: e.style.opacity }; });
+  const frei = await stil();
+  await fotoLegen(p, 300, 300);
+  pruefe('Kauf gesperrt: der Knopf sieht gesperrt aus (graue Fläche, Sperr-Zeiger), nicht wie im freien Zustand', (await gesperrt(p)) && (await stil()).bg !== frei.bg && (await stil()).cursor === 'not-allowed' && frei.cursor === 'pointer', JSON.stringify([frei, await stil()]));
+  // Nach einem abgelehnten Klick bleibt die Optik (der Klick setzt keinen Inline-Stil, der sie überdeckt)
+  await p.locator('.lsp6-cta').click({ force: true });
+  const nachKlick = await stil();
+  pruefe('nach dem Klick auf den gesperrten Kauf: Optik unverändert, kein Inline-Stil auf dem Knopf', nachKlick.bg === (await stil()).bg && nachKlick.cursor === 'not-allowed' && nachKlick.inline === '', JSON.stringify(nachKlick));
+  // Sperre löst sich: wieder wie vorher
+  await p.evaluate(() => { const e = window.LSPOD6.editors[0]; e.st.ebenen.front.slice().forEach((x) => e.entfernen(x.id)); });
+  await p.mouse.move(2, 2);   // der Zeiger steht nach dem Klick noch auf dem Knopf (Hover-Farbe)
+  const wieder = await stil();
+  pruefe('Sperre aufgehoben: Optik wie am Anfang', !(await gesperrt(p)) && wieder.bg === frei.bg && wieder.cursor === 'pointer', JSON.stringify(wieder));
+  // Nach einem Fehler beim Kauf (Warenkorb lehnt ab) wird der Knopf wieder frei und trägt keinen Inline-Stil, der eine spätere Sperre überdecken würde
+  await s.schliessen();
+  const w = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, warenkorbFehler: true });
+  await editorBereit(w.page);
+  await textHinzufuegen(w.page, 'Hallo');
+  await w.page.locator('.lsp6-cta').click();
+  await w.page.waitForFunction(() => !document.querySelector('.lsp6-cta').disabled && /mock-warenkorb-fehler/.test(document.querySelector('[data-feld="status"]').textContent), null, { timeout: 20000 });
+  pruefe('nach einem abgelehnten Warenkorb: Knopf frei, ohne Inline-Deckkraft', await w.page.locator('.lsp6-cta').evaluate((e) => !e.disabled && e.style.opacity === ''));
+  await fotoLegen(w.page, 300, 300);
+  const spaet = await w.page.locator('.lsp6-cta').evaluate((e) => { const c = getComputedStyle(e); return { bg: c.backgroundColor, cursor: c.cursor }; });
+  pruefe('danach gesperrt: der Knopf sieht trotzdem gesperrt aus', (await gesperrt(w.page)) && spaet.cursor === 'not-allowed' && spaet.bg !== frei.bg, JSON.stringify(spaet));
+  pruefe('keine Seitenfehler', w.fehler.length === 0, w.fehler.join(' | '));
+  await w.schliessen();
+});
+
+szenario('sperre-nach-variantenwechsel', true, async (b, srv) => {
+  // Tasse: ein 700-px-Foto (Massstab 1) hat auf der 11-oz-Druckdatei (2700 px) rund 155 dpi, auf der 20-oz-Datei (breiter) weniger als den Mindestwert 150
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=19&shop=1001:1320,1002:4830,1003:16586&varianten=1001:11 oz,1002:15 oz,1003:20 oz' });
+  await editorBereit(s.page);
+  const p = s.page;
+  const box = p.locator('[data-feld="qualitaet"]');
+  await fotoLegen(p, 700, 700);
+  await p.evaluate(() => window.LSPOD6.editors[0].waehlen(null));   // keine Ebene gewählt
+  pruefe('11 oz: Foto genügt, keine Sperre', (await box.isHidden()) && !(await gesperrt(p)));
+  await p.locator('input[name="id"][value="1003"]').check();
+  await p.waitForFunction(() => window.LSPOD6.editors[0].st.shopVariante === '1003');
+  await p.waitForTimeout(300);
+  const sperreModell = await p.evaluate(() => window.LSPOD6.editors[0].qualitaetSperre());
+  pruefe('Vorbedingung: für 20 oz berechnet der Editor eine Sperre', !!sperreModell, String(sperreModell));
+  pruefe('Wechsel auf 20 oz OHNE gewählte Ebene: Meldung und Sperre erscheinen sofort, nicht erst nach dem Klick', (await box.isVisible()) && (await gesperrt(p)) && (await box.innerText()) === sperreModell, `${await box.isVisible()} ${await gesperrt(p)}`);
+  await p.locator('input[name="id"][value="1001"]').check();
+  await p.waitForFunction(() => window.LSPOD6.editors[0].st.shopVariante === '1001');
+  await p.waitForTimeout(300);
+  pruefe('zurück auf 11 oz: Meldung und Sperre verschwinden', (await box.isHidden()) && !(await gesperrt(p)));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+szenario('qd-abgerundet', true, async (b, srv) => {
+  const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}` });
+  await editorBereit(s.page);
+  const p = s.page;
+  // T-Shirt vorne: 6 Zoll breit bei Massstab 1; 700 px ergeben 116,67 dpi, abgerundet 116 (Runden gäbe 117)
+  await fotoLegen(p, 700, 700);
+  const lage = await p.evaluate(() => window.LSPOD6.editors[0].qualitaetLage().min);
+  pruefe('Vorbedingung: das Foto hat 116,67 dpi (Nachkommastellen über ,5)', lage > 116.5 && lage < 116.9, String(lage));
+  await textHinzufuegen(p, 'x');
+  await ctaKlicken(s);
+  const pod = JSON.parse(s.warenkorb[0].properties._pod_karte);
+  pruefe('_pod_karte.qd ist abgerundet (116), nie gerundet (117): sonst stünde ein besserer Wert als die Datei trägt', pod.qd === 116, JSON.stringify(pod));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
 // ── Lauf ────────────────────────────────────────────────────────────────────────────────────────
 const srv = await starteServer();
 const browser = await chromium.launch();

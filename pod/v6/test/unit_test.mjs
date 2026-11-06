@@ -282,7 +282,14 @@ pruefe('Test-Karte T-Shirt: Hinweise der Art «info» nur mit bekanntem Code ode
   gleich('Vertrag: keine Probleme', r1.probleme, []);
   pruefe('Vertrag: der Parser kennt weder «s» noch «px» (beide dürfen fehlen)', r1.karte && r1.karte.v === 6 && !('s' in r1.karte) && !('px' in r1.karte));
   pruefe('Vertrag: mit «px» (Verkleinerung) bleibt es lesbar', dateienAusEigenschaften({ ...props, _pod_karte: JSON.stringify({ ...pod, px: ['900x1200', '600x525'] }) }).probleme.length === 0);
-  pruefe('Vertrag: die längste mögliche _pod_karte einer Karte ist gültiges JSON mit v:6 und pl', (() => { const o = JSON.parse(JSON.stringify({ v: 6, pl: ['a'] })); return o.v === 6 && Array.isArray(o.pl); })());
+  pruefe('Vertrag: die längste _pod_karte des T-Shirts (alle Platzierungen, 14-stellige Shopify-Variante, 3-stelliges qd) hat höchstens 255 Zeichen, und der Parser der Bestellstrecke liest alle Positionen ohne Befund', (() => {
+    const ids = K[71].platzierungen.map((p) => p.id);
+    const text = JSON.stringify({ v: 6, m: 71, pv: 123456, sv: '55777948008833', pl: ids, dt: { front: 'default' }, ap: 99.95, qd: 999 });
+    const eig = { _pod_karte: text };
+    ids.forEach((id) => { eig['\u{1F5BC}\uFE0F Druckdatei (' + id + ')'] = 'https://res.cloudinary.com/dwyi6kkrl/image/upload/v1/' + id + '.png'; });
+    const g = dateienAusEigenschaften(eig);
+    return ids.length >= 8 && text.length <= 255 && g.dateien.length === ids.length && g.probleme.length === 0;
+  })());
 }
 
 // ── 6.2.0: Qualitätstor, Vorschau-Geometrie, Kontrast, Vorschaudaten, Entwurf (reine Funktionen) ───────
@@ -471,8 +478,9 @@ if (NEU) {
       pruefe('ein von einer anderen, nicht farbfesten Platzierung mitbenutztes Bild bleibt im Plan', Object.keys(teil.eintrag.bilder).some((u) => /ghost\/front\/05_bc3001_ghost_front_base_whitebg/.test(u)), 'front_large nutzt dasselbe Geisterbild');
       const einf = VB.vorschauModell(farbCodes(strippen(k71), '#000000')).eintrag;
       gleich('nur EINE Stofffarbe im Modell: kein farbfest (die Vorlage zeigt diese Farbe), Vorschau «flach»', [einf.adapter, einf.farbfest], ['flach', []]);
-      const stick = VB.vorschauModell(strippen(k71)).eintrag.farbfest;
-      pruefe('Stickerei-Platzierungen zählen nicht als farbfest (sie zeigen ohnehin einen Hinweis)', !stick.some((id) => /^embroidery/.test(id)));
+      const cap = JSON.parse(readFileSync(join(KAT, '206.json'), 'utf8'));
+      const stick = VB.vorschauModell(strippen(cap)).eintrag;
+      pruefe('Stickerei-Platzierungen zählen nicht als farbfest, auch ohne Hintergrundfarbe und bei 11 Farben (sie zeigen ohnehin einen Hinweis)', VB.farbenImModell(cap) > 1 && stick.farbfest.length === 0 && stick.adapter === 'flach', JSON.stringify([VB.farbenImModell(cap), stick.farbfest, stick.adapter]));
       // echte Katalogdatei: Unisex Oversized Boxy Tee (Modell 1592): 9 Farbvorlagen, der verdichtete Katalog behält nur das Beispiel
       const k1592 = JSON.parse(readFileSync(join(hier, 'testdaten', 'katalog', '1592.json'), 'utf8'));
       const e92 = VB.vorschauModell(k1592);
@@ -504,6 +512,19 @@ if (NEU) {
     pruefe('Bündel: eine Datei mit beiden Modellen, nach Nummer sortiert', rb.dateien['buendel-demo.vorschau.json'] && Object.keys(rb.dateien['buendel-demo.vorschau.json'].modelle).join() === '19,71', Object.keys(rb.dateien).join());
     pruefe('Bündel mit nicht gebautem Modell = Fehler, keine halbe Datei', (() => { const x = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71], buendel: { demo: [71, 19] } }); return x.bericht.fehler.some((f) => /Bündel demo/.test(f)) && !('buendel-demo.vorschau.json' in x.dateien); })());
     pruefe('Bauer: mehrere Katalogordner: die Datei kommt aus dem ersten Ordner, der sie hat; «alle» vereint die Ordner', (() => { const z = VB.bauen({ katalogOrdner: [KAT, join(hier, 'testdaten', 'katalog')], stand: STAND, modelle: [71, 1592] }); const a = VB.bauen({ katalogOrdner: [KAT, join(hier, 'testdaten', 'katalog')], stand: STAND }); return z.bericht.fehler.length === 0 && z.ergebnisse.length === 2 && a.ergebnisse.length === 11 && a.ergebnisse.some((e) => e.pid === '1592'); })());
+    {
+      // Reihenfolge der Ordner: die erste Datei gewinnt
+      const tmp2 = mkdtempSync(join(tmpdir(), 'v6-bauer2-'));
+      try {
+        const k = JSON.parse(readFileSync(join(KAT, '71.json'), 'utf8'));
+        for (const g of k.templates.gruppen) { g.beispiel.template.background_url = null; g.beispiel.template.background_color = null; }
+        writeFileSync(join(tmp2, '71.json'), JSON.stringify(k));
+        const ab = VB.bauen({ katalogOrdner: [KAT, tmp2], stand: STAND, modelle: [71] }).ergebnisse[0].eintrag.adapter;
+        const ba = VB.bauen({ katalogOrdner: [tmp2, KAT], stand: STAND, modelle: [71] }).ergebnisse[0].eintrag.adapter;
+        const einzeln = VB.bauen({ katalogOrdner: tmp2, stand: STAND, modelle: [71] }).ergebnisse[0].eintrag.adapter;
+        gleich('mehrere Katalogordner: der erste Ordner mit der Datei gewinnt (KAT zuerst: flach, Kopie zuerst: keine), ein einzelner Ordner als Zeichenkette geht weiter', [ab, ba, einzeln], ['flach', 'keine', 'keine']);
+      } finally { rmSync(tmp2, { recursive: true, force: true }); }
+    }
     pruefe('Fehlende Katalogdatei = Fehler im Bericht, die übrigen Modelle werden gebaut', (() => { const x = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71, 999999] }); return x.bericht.fehler.length === 1 && /999999.*fehlt/.test(x.bericht.fehler[0]) && x.ergebnisse.length === 1; })());
     gleich('bildArt: Foto, Raster, fremder Host, kein https, keine Zeichenkette', [VB.bildArt('https://files.cdn.printful.com/m/57-x/medium/ghost/front/a.png?v=1'), VB.bildArt('https://files.cdn.printful.com/generator/api-template/x.png'), VB.bildArt('https://example.com/m/a.png'), VB.bildArt('http://files.cdn.printful.com/m/a.png'), VB.bildArt(null)], ['foto', 'layout', null, null, null]);
     // Kommandozeile: kein Netz, nur --out, kein Live-Schalter

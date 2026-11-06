@@ -570,7 +570,7 @@ szenario('export-jpeg', true, async (b, srv) => {
   const rausch = pngRauschen(500, 500).toString('base64');
   await p.evaluate(async (b64) => { const ed = window.LSPOD6.editors[0]; const e2 = ed.neuesBild('data:image/png;base64,' + b64, 500, 500); e2.scale = 0.5; ed.st.ebenen.front.length && 0; }, rausch);
   const g = await info();
-  pruefe('Foto mit viel Rauschen: entweder höchstens 80 KB oder kein Bild, nie eine zu grosse Datei', g === null || g.size <= 81920, JSON.stringify(g));
+  pruefe('Foto mit viel Rauschen auf dem T-Shirt: ein Bild unter 80 KB (die Druckfläche ist klein, selbst Rauschen bleibt unter 52 KB, GEMESSEN); der Grenzfall «zu schwer» steht unten am Poster', !!g && g.size > 0 && g.size <= 81920, JSON.stringify(g));
   await p.evaluate(() => { const ed = window.LSPOD6.editors[0]; const e2 = ed.st.ebenen.front[0]; e2.scale = 0.18; });
   const k = await info();
   pruefe('kleineres Rausch-Foto passt unter 80 KB (die Qualität wird gesenkt, die Grösse bleibt 800 × 800)', !!k && k.size <= 81920 && k.w === 800, JSON.stringify(k));

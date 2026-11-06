@@ -2263,7 +2263,7 @@
       try {
         Object.keys(d.ebenen).forEach(function (pid) {
           // nur eigene Platzierungen: ein Schlüssel wie «__proto__», «constructor» oder «toString» (beschädigter oder fremd geschriebener Entwurf) darf den Bau nicht abstürzen lassen
-          if (!Object.prototype.hasOwnProperty.call(st.ebenen, pid) || !Array.isArray(st.ebenen[pid]) || !Array.isArray(d.ebenen[pid])) return;   // diese Platzierung gibt es nicht mehr
+          if (!Object.prototype.hasOwnProperty.call(st.ebenen, pid) || !Array.isArray(d.ebenen[pid])) return;   // diese Platzierung gibt es nicht mehr
           d.ebenen[pid].forEach(function (n) {
             var e = ebeneAusEntwurf(n);
             if (!e) return;
