@@ -1,6 +1,6 @@
 {
  "hinweis": "Soll-Stand der zwölf Theme-Dateien (MD5 von anwendenKombi() auf sicherung/*.vor mit den drei Datenquellen), die Dateien selbst liegen unter ziel/. Gleich der Nachbildung, die im Browser geprüft wurde (Playwright gegen das Live-Dokument, 1440 und 390 px). md5Alt: Ausgangsstand (null = Datei fehlt im Live-Theme). Nur ändern, nachdem BEIDE Browsertests am neuen Stand wiederholt wurden.",
- "geprueft": "noch nicht im Browser geprüft",
+ "geprueft": "06.11.2026 (Schlusslauf bis 05:35 UTC): alle Tests grün gegen ziel/ und kombi.mjs: kombi_test 1245, apply_test 226, test_bestellbar_kombi 361 (auch verkleinert), test_texte_kombi schnell 1527 (auch verkleinert), szenarien 139, kombi 977 (auch verkleinert), voll 14304; Mutationsprobe 81 von 81 erkannt. Browsertests: Playwright gegen das Live-Dokument, 1440 und 390 px.",
  "md5Alt": {
   "assets/luxe-clothing.js": "198328a67066f91ac776e7953d33f07b",
   "assets/luxe-clothing.css": "feba50324b9f59bf07216b2d46ffdbb5",
