@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import {
   STATUS_LIEFERBAR, REGELN, TAG_AUS, parseSku, istPodProdukt, istFremdeWare, variantenStatus, signatur, modellLesen, testKandidaten, rateAuswerten, rateUrteil,
-  brauchtRate, modellUrteil, katalogIndex, ausblendenBauen, ausblendenText, ausblendenPruefen, ausblendenGleich, tageSeit, vorzustandLesen, shopModelle, sperreMoeglich,
+  pfErlaubt, brauchtRate, modellUrteil, katalogIndex, ausblendenBauen, ausblendenText, ausblendenPruefen, ausblendenGleich, tageSeit, vorzustandLesen, shopModelle, sperreMoeglich,
   shopPlan, bremsen, ledgerZeile, ledgerLesen, REAKTIV_MIN_ANTEIL,
 } from './printful_lager.mjs';
 
@@ -31,6 +31,10 @@ ok(!istPodProdukt({ tags: ['wunschdesign'], variants: [{ sku: 'fortura-9' }] }),
 ok(!istPodProdukt({ tags: ['wunschdesign'], variants: [{ sku: 'CJJT1' }] }), 'CJ-SKU schliesst aus');
 ok(istFremdeWare({ tags: ['ch-lager'], variants: [] }), 'ch-lager ist Fremdware');
 ok(!istFremdeWare({ tags: ['tasse'], variants: [{ sku: '5_6' }] }), 'normale POD-Ware ist keine Fremdware');
+
+// ── Printful wird nur gelesen
+ok(pfErlaubt('GET', '/products/19') && pfErlaubt('POST', '/shipping/rates'), 'erlaubt: Modell lesen und Preisauskunft');
+for (const [m, pf_] of [['POST', '/orders'], ['POST', '/products/19'], ['GET', '/orders'], ['GET', '/products/19/sizes'], ['GET', '/products'], ['PUT', '/products/19'], ['DELETE', '/products/19'], ['GET', '/products/abc'], ['GET', '/products/19?x=1'], ['POST', '/shipping/rates/x'], ['GET', '/shipping/rates'], ['POST', '/orders/123/confirm'], ['GET', '/mockup-generator/create-task/19'], ['POST', undefined]]) ok(!pfErlaubt(m, pf_), `verboten: ${m} ${pf_}`);
 
 // ── Variantenstatus und Signatur
 gleich(variantenStatus(V(1)), { art: 'ok', regionen: ['EU', 'US'] }, 'lieferbar');

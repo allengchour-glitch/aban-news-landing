@@ -313,6 +313,7 @@ export async function main(env = process.env, deps = {}) {
   }
   // ── Hauptablauf
   try {
+    if (deps.sonde) await deps.sonde({ pf, schreibenGql, lesenGql, schreiben });          // nur für Tests: prüft die Schutzschalter von aussen
     // Eingaben aus dem Repo (Inventur 05.11.)
     let basisDatei, basisAus;
     try { basisDatei = JSON.parse(readFileSync(C.basisModelle, 'utf8')); basisAus = JSON.parse(readFileSync(C.basisAusblenden, 'utf8')); }

@@ -664,6 +664,32 @@ const dateiObjekt = (w) => ausblendenPruefen(w.theme.text);
   gleich([r6.code, w3.req.length], [1, 0], '13: fehlende Basisdatei: Exit 1, keine Anfrage');
 }
 
+// ═════════════════════════════════════════════════════════════ 13b. Schutzschalter von aussen geprüft (Sonde im Lauf)
+{
+  const w = standardWelt();
+  let sondeLief = false;
+  const e = { PRINTFUL_API_KEY: 'pk', SHOPIFY_ADMIN_TOKEN: 'st', BASIS_MODELLE: null, MODELLE: '10' };
+  const dir = mkdtempSync(join(tmpdir(), 'plager-')); tmpDirs.push(dir);
+  const b = basisDateien(); writeFileSync(join(dir, 'm.json'), JSON.stringify(b.modelle)); writeFileSync(join(dir, 'a.json'), JSON.stringify(b.ausblenden));
+  await main({ ...e, BASIS_MODELLE: join(dir, 'm.json'), BASIS_AUSBLENDEN: join(dir, 'a.json'), PF_ABSTAND_MS: '0', LEDGER: join(dir, 'l.txt') }, {
+    fetch: fetchFuer(w), sleep: async () => {}, now: () => START, log: () => {}, err: () => {},
+    sonde: async ({ pf, schreibenGql, lesenGql, schreiben }) => {
+      sondeLief = true;
+      gleich(schreiben, false, '13b: Trockenlauf');
+      for (const [m, pfad] of [['POST', '/orders'], ['POST', '/orders/1/confirm'], ['DELETE', '/orders/1'], ['GET', '/orders'], ['POST', '/products/19'], ['PUT', '/products/19']]) {
+        await assert.rejects(() => pf(m, pfad, {}), /nicht erlaubt/, `13b: Printful ${m} ${pfad} wird vor dem Senden abgelehnt`); n++;
+      }
+      gleich(printfulAnfragen(w).length, 0, '13b: dabei ging keine Printful-Anfrage hinaus');
+      for (const q of ['mutation($id:ID!){ tagsAdd(id:$id,tags:["x"]){ userErrors{ message } } }', 'mutation { productUpdate(product:{id:"x",status:DRAFT}){ product{ id } } }']) {
+        await assert.rejects(() => schreibenGql(q, { id: 'gid://shopify/Product/1' }), /Schreibzugriff im Trockenlauf/, '13b: Shopify-Schreiben im Trockenlauf wird abgelehnt'); n++;
+      }
+      gleich(w.mut, [], '13b: dabei wurde nichts geschrieben');
+      await lesenGql('{ themes(first:5, roles:[MAIN]){ nodes{ id name } } }');
+    },
+  });
+  ok(sondeLief, '13b: Sonde lief');
+}
+
 // ═════════════════════════════════════════════════════════════ 14. Gesamtsicht: fremde Ware, Zugangsschlüssel, Modus
 {
   const w = standardWelt();
