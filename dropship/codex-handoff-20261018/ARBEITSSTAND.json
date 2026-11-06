@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 113,
-  "updatedAt": "2026-11-06T06:39:57+01:00",
+  "revision": 114,
+  "updatedAt": "2026-11-06T07:20:37+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13644,6 +13644,37 @@
     "blockedBy": [
       "commercial editing and advertising rights for product images unknown",
       "both products retain rueckhol-0907",
+      "no shared Claude live lock or receipt",
+      "seven R103 overlay SKUs lack exact CJ variant/media mapping",
+      "Google Merchant reprocessing remains unknown"
+    ],
+    "shopifyProductWrites": 2,
+    "shopifyFileWrites": 2,
+    "merchantWrites": 0,
+    "metricoolWrites": 0,
+    "otherExternalWrites": 0
+  },
+  "followUpRunR114": {
+    "at": "2026-11-06T07:20:37+01:00",
+    "actualUpdates": [
+      "BRUDER Mountainbike-Set15470033633665: body, SEO and3 image alt texts",
+      "BRUDER Kajak-Set15470017970561: body, SEO and3 image alt texts"
+    ],
+    "coordination": "Before each product, current main/Claude refs, exact IDs/handles/SKUs and Shopify updatedAt were checked; no editorial overlap found. Receipt/live lock remain unknown.",
+    "qualityAndRights": "Independent QA2/2 GO with6/6 alt texts and2/2 variants. Current individual manufacturer pages are unavailable; unsupported GTIN/material/function/safety claims were excluded. Commercial image rights remain unknown, so no new social use.",
+    "catalogProgress": {
+      "strictLiveCorrectedActiveProducts": 53,
+      "activeProductsDenominatorCarriedForward": 56506,
+      "denominatorRecountedThisRun": false,
+      "percent": 0.0938,
+      "remaining": 56453,
+      "remainingPercentApprox": 99.91
+    },
+    "nextStep": "Select the next one or two ACTIVE products only after fresh Claude branch/PR and exact Shopify updatedAt checks; continue evidence-bound minimal copy and alt-text changes.",
+    "blockedBy": [
+      "current individual BRUDER manufacturer pages for articles63111/63155 are unavailable",
+      "manufacturer confirmation of stored GTINs and complete safety data remains unknown",
+      "commercial editing and advertising rights for product images unknown",
       "no shared Claude live lock or receipt",
       "seven R103 overlay SKUs lack exact CJ variant/media mapping",
       "Google Merchant reprocessing remains unknown"

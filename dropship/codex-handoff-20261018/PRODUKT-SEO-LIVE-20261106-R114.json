@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "run": "R114",
+  "draft": false,
+  "recordedAt": "2026-11-06T07:20:37+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "matched": true,
+      "writes": 0
+    }
+  },
+  "execution": {
+    "productUpdateAttemptsSent": 2,
+    "fileUpdateAttemptsSent": 2,
+    "graphqlReadValidationRejectionsBeforeSend": 2,
+    "mutationRetries": 0,
+    "shopifyUserErrors": 0,
+    "unclearWrites": 0,
+    "completeAdminAndPublicReadbackAfterEachSentWrite": true,
+    "publicCacheReadRetries": 0,
+    "readyImageAltTextsUpdated": 6,
+    "variantsProtected": 2,
+    "mediaProtected": 6,
+    "publicationNodesProtected": 14,
+    "independentQaVerdict": "GO",
+    "independentQaProductsPassed": 2,
+    "independentQaProductsTotal": 2
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15470033633665",
+      "handle": "bworld-mountainbike-mit-radfahrerin-fga063111",
+      "publicUrl": "https://luxestyle.ch/products/bworld-mountainbike-mit-radfahrerin-fga063111",
+      "title": "bworld Mountainbike mit Radfahrerin",
+      "baselineUpdatedAt": "2026-11-05T11:53:21Z",
+      "finalUpdatedAt": "2026-11-06T06:18:06Z",
+      "after": {
+        "seo": {
+          "title": "BRUDER bworld Mountainbike mit Radfahrerin | LuxeStyle",
+          "description": "BRUDER bworld Set 63111 mit gelbem Mountainbike, Radfahrerin und Helm. Jetzt bei LuxeStyle in der Schweiz entdecken."
+        },
+        "bodyScope": [
+          "Radfahrerin",
+          "gelbes Mountainbike",
+          "Fahrradhelm",
+          "Artikelnummer 63111",
+          "Altersempfehlung laut BRUDER ab 4 Jahren"
+        ]
+      },
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55970906833281",
+        "sku": "fortura-063111",
+        "barcodeStoredByShopify": "4001702631116",
+        "priceCHF": 28.9,
+        "inventoryQuantity": 32,
+        "inventoryPolicy": "DENY",
+        "tracked": true,
+        "sellableOnlineQuantity": 32
+      },
+      "media": {
+        "count": 3,
+        "readyImageAltTextsUpdated": 3,
+        "altTexts": [
+          "BRUDER bworld Radfahrerin mit Helm und gelbem Mountainbike",
+          "BRUDER bworld Radfahrerin auf gelbem Mountainbike",
+          "Gelbes BRUDER bworld Mountainbike mit schwarzem Ständer"
+        ]
+      },
+      "publicationNodesProtected": 7,
+      "sourceReview": {
+        "officialManual": "https://www.bruder.de/fileadmin/manuals/02543.pdf",
+        "currentIndividualProductPage": "unavailable_404",
+        "manufacturerConfirmedGTIN": "unknown"
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15470017970561",
+      "handle": "bruder-bworld-kajak-mit-figur-fga063155",
+      "publicUrl": "https://luxestyle.ch/products/bruder-bworld-kajak-mit-figur-fga063155",
+      "title": "BRUDER bworld Kajak mit Figur",
+      "baselineUpdatedAt": "2026-10-27T15:18:40Z",
+      "finalUpdatedAt": "2026-11-06T06:19:45Z",
+      "after": {
+        "seo": {
+          "title": "BRUDER bworld Kajak mit Figur 63155 | LuxeStyle",
+          "description": "BRUDER bworld Set 63155 mit rotem Kajak, Figur, Helm, Weste, Doppelpaddel und Abdeckung. Jetzt bei LuxeStyle entdecken."
+        },
+        "bodyScope": [
+          "rotes Kajak",
+          "Figur mit blauem Helm und orangefarbener Weste",
+          "schwarzes Doppelpaddel",
+          "schwarze Abdeckung",
+          "Artikelnummer 63155"
+        ],
+        "excludedUnverifiedClaims": [
+          "Schwimmfähigkeit",
+          "Material",
+          "Altersempfehlung",
+          "Sicherheitswarnung",
+          "Masse"
+        ]
+      },
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55970883109249",
+        "sku": "fortura-063155",
+        "barcodeStoredByShopify": "4001702631550",
+        "priceCHF": 28.9,
+        "inventoryQuantity": 72,
+        "inventoryPolicy": "DENY",
+        "tracked": true,
+        "sellableOnlineQuantity": 72
+      },
+      "media": {
+        "count": 3,
+        "readyImageAltTextsUpdated": 3,
+        "altTexts": [
+          "BRUDER bworld Figur mit Paddel im roten Kajak",
+          "BRUDER bworld Kajak mit Figur und schwarzem Doppelpaddel",
+          "BRUDER bworld Kajak-Set mit Figur, Helm, Paddel und Abdeckung"
+        ]
+      },
+      "publicationNodesProtected": 7,
+      "sourceReview": {
+        "officialCatalog2022": "https://www.bruder.de/fileadmin/user_upload/02-service/Katalog/10000_Endverbraucher_EU_WEST_2022.pdf",
+        "currentIndividualProductPage": "unavailable_404",
+        "manufacturerConfirmedGTIN": "unknown"
+      }
+    }
+  ],
+  "readback": {
+    "mountainBikeHtmlSha256": "bbccfba9292773cb04c10ae8b99929426f0fdcf846e0cda55fc9eb503da5da75",
+    "mountainBikeProductJsonSha256": "24a301f5aa763eebb84bba5a6b0a229719ec761c922cfcd5d37612cb74eb4fd7",
+    "kayakHtmlSha256": "9a9af72dd14239afbe1937daf51b03b96166d64e99b8aa935adfab716814a822",
+    "kayakProductJsonSha256": "ad90a6065be507fed7e8c9f253a1d31491bc5c72d01998c1299dc32a08db7e61",
+    "adminAndPublicConsistent": true
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 53,
+    "activeProductsDenominatorCarriedForward": 56506,
+    "denominatorRecountedThisRun": false,
+    "percent": 0.0938,
+    "remainingProducts": 56453,
+    "remainingPercentApprox": 99.9062,
+    "historicalQueueIsNotCurrentQualityRate": true
+  },
+  "coordination": {
+    "claudeCodeRemoteReconciliationPerformedBeforeEachProduct": true,
+    "currentMainObserved": "9257012a967b17c6dc1c1629aa3f0d25a7454d10",
+    "latestClaudeHeadObserved": "d31e288a2466ade498cf3c7f1120a81e82570999",
+    "exactR114ProductEditorialOverlap": false,
+    "claudeReceipt": "unknown_missing_receipt",
+    "sharedLiveLock": "unknown_missing_lock",
+    "shopifyUpdatedAtMatchedBaselinesBeforeWrites": true
+  },
+  "rightsReview": {
+    "commercialEditingAndAdvertisingRights": "unknown",
+    "newSocialPublication": "blocked"
+  },
+  "boundaries": {
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "flowWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerContacts": 0,
+    "orderQueries": 0,
+    "paidRenders": 0,
+    "dailyMetricReadsPerformed": false,
+    "klaviyoReportPerformed": false,
+    "googleReprocessingState": "unknown"
+  }
+}

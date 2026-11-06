@@ -1130,3 +1130,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation / Grenzen | Berichte, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeschrieben | Revision113 vorbereitet; keine Merchant-/Feed-/Versand-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung |
 
 [LUXESTYLE_R113_20261106] [Hundebett und Weinflaschentasche live korrigiert](PRODUKT-SEO-LIVE-20261106-R113.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R113.json). Sechs geschützte Varianten, elf Alttexte, vollständige Readbacks, Claude-Overlap-Gegenprobe und unabhängige QA2/2 GO;51/56’506 streng abgeschlossen.
+
+### R114
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Claude-Abgleich | Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz und Metricool6227837/Europe/Zurich samt sechs Kanälen passend gelesen; vor jedem Produkt Claude-Refs, exakte IDs/Handles/SKUs und Shopify `updatedAt` geprüft | Keine redaktionelle Claude-Überschneidung; Receipt/Live-Lock unbekannt. Metricool ohne Write |
+| Mountainbike15470033633665 | Beschreibung auf sichtbaren Setinhalt, Artikel63111 und offiziell belegtes Alter4+ gegliedert; SEO-Rabattclaim entfernt und drei Alttexte präzisiert | Ein `productUpdate` und ein `fileUpdate`, keine userErrors/Write-Retry; CHF28.90, tracked/DENY, Bestand32 und sieben Publikationen erhalten |
+| Kajak15470017970561 | Beschreibung auf sichtbaren Setinhalt und Artikel63155 begrenzt; unbelegte Material-, Schwimm-, Alters-, Sicherheits- und Massclaims ausgelassen; SEO-Rabattclaim entfernt und drei Alttexte präzisiert | Ein `productUpdate` und ein `fileUpdate`, keine userErrors/Write-Retry; CHF28.90, tracked/DENY, Bestand72 und sieben Publikationen erhalten |
+| QA / Quellen / Fortschritt | Nach jedem Write Admin und öffentliche HTML-/Produkt-JSON-Seiten zurückgelesen; Herstellerquellen und sechs Bilder geprüft; unabhängige Schlussprüfung | QA2/2 GO;2 Varianten,6 Alttexte,6 Medien,14 Publikationen geschützt. Bildrechte unbekannt, kein Social-Write. Streng53/56’506=0,09380 %, rund0,09 %;56’453/rund99,91 % offen |
+| Dokumentation / Grenzen | Berichte, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeschrieben | Revision114 vorbereitet; keine Merchant-/Feed-/Versand-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung |
+
+[LUXESTYLE_R114_20261106] [Zwei BRUDER-Spielsets live präzisiert](PRODUKT-SEO-LIVE-20261106-R114.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R114.json). Zwei geschützte Varianten, sechs Alttexte, vollständige Readbacks, Claude-Overlap-Gegenprobe und unabhängige QA2/2 GO;53/56’506 streng abgeschlossen.
