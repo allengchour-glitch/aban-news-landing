@@ -1,0 +1,1034 @@
+{
+ "positionen": [
+  {
+   "en": "Mockup",
+   "vorkommen": 570
+  },
+  {
+   "en": "Front print",
+   "vorkommen": 433
+  },
+  {
+   "en": "Back print",
+   "vorkommen": 352
+  },
+  {
+   "en": "Inside label",
+   "vorkommen": 200
+  },
+  {
+   "en": "Right sleeve",
+   "vorkommen": 154
+  },
+  {
+   "en": "Left sleeve",
+   "vorkommen": 153
+  },
+  {
+   "en": "Left chest",
+   "vorkommen": 147
+  },
+  {
+   "en": "Center chest",
+   "vorkommen": 126
+  },
+  {
+   "en": "Outside label",
+   "vorkommen": 119
+  },
+  {
+   "en": "Front",
+   "vorkommen": 93
+  },
+  {
+   "en": "Print file",
+   "vorkommen": 85
+  },
+  {
+   "en": "Large back print",
+   "vorkommen": 70
+  },
+  {
+   "en": "Right wrist",
+   "vorkommen": 61
+  },
+  {
+   "en": "Left wrist",
+   "vorkommen": 57
+  },
+  {
+   "en": "Large front print",
+   "vorkommen": 45
+  },
+  {
+   "en": "Right sleeve top",
+   "vorkommen": 40
+  },
+  {
+   "en": "Left sleeve top",
+   "vorkommen": 39
+  },
+  {
+   "en": "Long right sleeve",
+   "vorkommen": 38
+  },
+  {
+   "en": "Long left sleeve",
+   "vorkommen": 37
+  },
+  {
+   "en": "Back",
+   "vorkommen": 32
+  },
+  {
+   "en": "Short left sleeve",
+   "vorkommen": 27
+  },
+  {
+   "en": "Short right sleeve",
+   "vorkommen": 27
+  },
+  {
+   "en": "Left side",
+   "vorkommen": 27
+  },
+  {
+   "en": "Branding",
+   "vorkommen": 26
+  },
+  {
+   "en": "Right side",
+   "vorkommen": 23
+  },
+  {
+   "en": "Pocket",
+   "vorkommen": 16
+  },
+  {
+   "en": "Cover",
+   "vorkommen": 10
+  },
+  {
+   "en": "Right leg",
+   "vorkommen": 9
+  },
+  {
+   "en": "Left leg",
+   "vorkommen": 9
+  },
+  {
+   "en": "Right chest",
+   "vorkommen": 9
+  },
+  {
+   "en": "Front waist",
+   "vorkommen": 8
+  },
+  {
+   "en": "Back waist",
+   "vorkommen": 8
+  },
+  {
+   "en": "Label panel",
+   "vorkommen": 8
+  },
+  {
+   "en": "Hood",
+   "vorkommen": 8
+  },
+  {
+   "en": "Details",
+   "vorkommen": 8
+  },
+  {
+   "en": "Front left leg",
+   "vorkommen": 8
+  },
+  {
+   "en": "Front right leg",
+   "vorkommen": 8
+  },
+  {
+   "en": "Top Front print",
+   "vorkommen": 7
+  },
+  {
+   "en": "Top Back print",
+   "vorkommen": 7
+  },
+  {
+   "en": "Back left leg",
+   "vorkommen": 7
+  },
+  {
+   "en": "Back right leg",
+   "vorkommen": 7
+  },
+  {
+   "en": "Outside label front",
+   "vorkommen": 7
+  },
+  {
+   "en": "Outside label back",
+   "vorkommen": 7
+  },
+  {
+   "en": "Bottom print",
+   "vorkommen": 6
+  },
+  {
+   "en": "Top lining",
+   "vorkommen": 6
+  },
+  {
+   "en": "Bottom lining",
+   "vorkommen": 6
+  },
+  {
+   "en": "Left shoe",
+   "vorkommen": 6
+  },
+  {
+   "en": "Right shoe",
+   "vorkommen": 6
+  },
+  {
+   "en": "January",
+   "vorkommen": 6
+  },
+  {
+   "en": "February",
+   "vorkommen": 6
+  },
+  {
+   "en": "March",
+   "vorkommen": 6
+  },
+  {
+   "en": "April",
+   "vorkommen": 6
+  },
+  {
+   "en": "May",
+   "vorkommen": 6
+  },
+  {
+   "en": "June",
+   "vorkommen": 6
+  },
+  {
+   "en": "July",
+   "vorkommen": 6
+  },
+  {
+   "en": "August",
+   "vorkommen": 6
+  },
+  {
+   "en": "September",
+   "vorkommen": 6
+  },
+  {
+   "en": "October",
+   "vorkommen": 6
+  },
+  {
+   "en": "November",
+   "vorkommen": 6
+  },
+  {
+   "en": "December",
+   "vorkommen": 6
+  },
+  {
+   "en": "Top print",
+   "vorkommen": 5
+  },
+  {
+   "en": "Bottom front",
+   "vorkommen": 4
+  },
+  {
+   "en": "Bottom back",
+   "vorkommen": 4
+  },
+  {
+   "en": "Left shoe quarters",
+   "vorkommen": 4
+  },
+  {
+   "en": "Right shoe quarters",
+   "vorkommen": 4
+  },
+  {
+   "en": "Left shoe tongue",
+   "vorkommen": 4
+  },
+  {
+   "en": "Right shoe tongue",
+   "vorkommen": 4
+  },
+  {
+   "en": "First",
+   "vorkommen": 4
+  },
+  {
+   "en": "Second",
+   "vorkommen": 4
+  },
+  {
+   "en": "Third",
+   "vorkommen": 4
+  },
+  {
+   "en": "Collar",
+   "vorkommen": 4
+  },
+  {
+   "en": "Front Right Leg",
+   "vorkommen": 4
+  },
+  {
+   "en": "Front Left Leg",
+   "vorkommen": 4
+  },
+  {
+   "en": "Back Right Leg",
+   "vorkommen": 4
+  },
+  {
+   "en": "Back Left Leg",
+   "vorkommen": 4
+  },
+  {
+   "en": "Inside Pocket",
+   "vorkommen": 3
+  },
+  {
+   "en": "Right corner",
+   "vorkommen": 3
+  },
+  {
+   "en": "Fourth",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 1",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 2",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 3",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 4",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 5",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 6",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 7",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 8",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 9",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 10",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 11",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 12",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 13",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 14",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 15",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 16",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 17",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 18",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 19",
+   "vorkommen": 3
+  },
+  {
+   "en": "Page 20",
+   "vorkommen": 3
+  },
+  {
+   "en": "Top panel",
+   "vorkommen": 2
+  },
+  {
+   "en": "Bottom panel",
+   "vorkommen": 2
+  },
+  {
+   "en": "Outside",
+   "vorkommen": 2
+  },
+  {
+   "en": "Inside",
+   "vorkommen": 2
+  },
+  {
+   "en": "Patch",
+   "vorkommen": 2
+  },
+  {
+   "en": "Base",
+   "vorkommen": 2
+  },
+  {
+   "en": "Pockets",
+   "vorkommen": 2
+  },
+  {
+   "en": "Inside 1",
+   "vorkommen": 2
+  },
+  {
+   "en": "Yoke",
+   "vorkommen": 2
+  },
+  {
+   "en": "Leash front",
+   "vorkommen": 2
+  },
+  {
+   "en": "Leash back",
+   "vorkommen": 2
+  },
+  {
+   "en": "Page 21",
+   "vorkommen": 2
+  },
+  {
+   "en": "Page 22",
+   "vorkommen": 2
+  },
+  {
+   "en": "Page 23",
+   "vorkommen": 2
+  },
+  {
+   "en": "Page 24",
+   "vorkommen": 2
+  },
+  {
+   "en": "Neckline",
+   "vorkommen": 1
+  },
+  {
+   "en": "Front & Pocket",
+   "vorkommen": 1
+  },
+  {
+   "en": "Waist",
+   "vorkommen": 1
+  },
+  {
+   "en": "Bottom Front",
+   "vorkommen": 1
+  },
+  {
+   "en": "Bottom Back",
+   "vorkommen": 1
+  },
+  {
+   "en": "Sides",
+   "vorkommen": 1
+  },
+  {
+   "en": "Left corner",
+   "vorkommen": 1
+  },
+  {
+   "en": "Background",
+   "vorkommen": 1
+  },
+  {
+   "en": "Bow",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inside 2",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inner Hood",
+   "vorkommen": 1
+  },
+  {
+   "en": "Facing",
+   "vorkommen": 1
+  },
+  {
+   "en": "Outside front",
+   "vorkommen": 1
+  },
+  {
+   "en": "Outside back",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inside front",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inside back",
+   "vorkommen": 1
+  },
+  {
+   "en": "Branding outside",
+   "vorkommen": 1
+  },
+  {
+   "en": "Branding inside",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inside yoke",
+   "vorkommen": 1
+  },
+  {
+   "en": "Fifth",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inside pocket",
+   "vorkommen": 1
+  },
+  {
+   "en": "2-Side print",
+   "vorkommen": 1
+  },
+  {
+   "en": "Right hood",
+   "vorkommen": 1
+  },
+  {
+   "en": "Left hood",
+   "vorkommen": 1
+  },
+  {
+   "en": "Outside cover",
+   "vorkommen": 1
+  },
+  {
+   "en": "Inside cover",
+   "vorkommen": 1
+  },
+  {
+   "en": "Page 1 front",
+   "vorkommen": 1
+  },
+  {
+   "en": "Page 1 back",
+   "vorkommen": 1
+  },
+  {
+   "en": "Page 2 front",
+   "vorkommen": 1
+  },
+  {
+   "en": "Page 2 back",
+   "vorkommen": 1
+  },
+  {
+   "en": "Page 3 front",
+   "vorkommen": 1
+  },
+  {
+   "en": "Page 3 back",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 1",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 2",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 3",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 4",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 5",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 6",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 7",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 8",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 9",
+   "vorkommen": 1
+  },
+  {
+   "en": "Spread 10",
+   "vorkommen": 1
+  }
+ ],
+ "optionstitel": [
+  {
+   "en": "Left chest thread colors",
+   "vorkommen": 135
+  },
+  {
+   "en": "Center chest thread colors",
+   "vorkommen": 126
+  },
+  {
+   "en": "Stitch color",
+   "vorkommen": 103
+  },
+  {
+   "en": "Lifelike",
+   "vorkommen": 91
+  },
+  {
+   "en": "Flat thread colors",
+   "vorkommen": 82
+  },
+  {
+   "en": "3D Puff thread colors",
+   "vorkommen": 71
+  },
+  {
+   "en": "Wrist right thread colors",
+   "vorkommen": 61
+  },
+  {
+   "en": "Wrist left thread colors",
+   "vorkommen": 57
+  },
+  {
+   "en": "Embroidery type",
+   "vorkommen": 53
+  },
+  {
+   "en": "Sleeve right top thread colors",
+   "vorkommen": 40
+  },
+  {
+   "en": "Sleeve left top thread colors",
+   "vorkommen": 39
+  },
+  {
+   "en": "Back thread colors",
+   "vorkommen": 27
+  },
+  {
+   "en": "Left side thread colors",
+   "vorkommen": 25
+  },
+  {
+   "en": "Right side thread colors",
+   "vorkommen": 21
+  },
+  {
+   "en": "Base color",
+   "vorkommen": 12
+  },
+  {
+   "en": "Yarn colors",
+   "vorkommen": 12
+  },
+  {
+   "en": "Trim color",
+   "vorkommen": 10
+  },
+  {
+   "en": "Zipper & Stitch color",
+   "vorkommen": 8
+  },
+  {
+   "en": "Right chest thread colors",
+   "vorkommen": 8
+  },
+  {
+   "en": "Outline color",
+   "vorkommen": 6
+  },
+  {
+   "en": "Addon front thread colors",
+   "vorkommen": 4
+  },
+  {
+   "en": "Add inside pocket?",
+   "vorkommen": 3
+  },
+  {
+   "en": "Right corner thread colors",
+   "vorkommen": 3
+  },
+  {
+   "en": "Drawcord & Stitch color",
+   "vorkommen": 2
+  },
+  {
+   "en": "Patch front thread colors",
+   "vorkommen": 2
+  },
+  {
+   "en": "Apparel back thread colors",
+   "vorkommen": 2
+  },
+  {
+   "en": "Neckline thread colors",
+   "vorkommen": 1
+  },
+  {
+   "en": "Neckline text thread colors",
+   "vorkommen": 1
+  },
+  {
+   "en": "Custom border color",
+   "vorkommen": 1
+  },
+  {
+   "en": "Left corner thread colors",
+   "vorkommen": 1
+  },
+  {
+   "en": "Left outside thread colors",
+   "vorkommen": 1
+  },
+  {
+   "en": "Right outside thread colors",
+   "vorkommen": 1
+  },
+  {
+   "en": "Left inside thread colors",
+   "vorkommen": 1
+  },
+  {
+   "en": "Right inside thread colors",
+   "vorkommen": 1
+  }
+ ],
+ "optionswerte": [
+  {
+   "en": "1801 White",
+   "vorkommen": 716
+  },
+  {
+   "en": "1800 Black",
+   "vorkommen": 716
+  },
+  {
+   "en": "1718 Grey",
+   "vorkommen": 716
+  },
+  {
+   "en": "1672 Old Gold",
+   "vorkommen": 716
+  },
+  {
+   "en": "1951 Gold",
+   "vorkommen": 716
+  },
+  {
+   "en": "1987 Orange",
+   "vorkommen": 716
+  },
+  {
+   "en": "1910 Flamingo",
+   "vorkommen": 716
+  },
+  {
+   "en": "1839 Red",
+   "vorkommen": 716
+  },
+  {
+   "en": "1784 Maroon",
+   "vorkommen": 716
+  },
+  {
+   "en": "1966 Navy",
+   "vorkommen": 716
+  },
+  {
+   "en": "1842 Royal",
+   "vorkommen": 716
+  },
+  {
+   "en": "1695 Aqua/Teal",
+   "vorkommen": 716
+  },
+  {
+   "en": "1832 Purple",
+   "vorkommen": 716
+  },
+  {
+   "en": "1751 Kelly Green",
+   "vorkommen": 716
+  },
+  {
+   "en": "1848 Kiwi Green",
+   "vorkommen": 716
+  },
+  {
+   "en": "Black",
+   "vorkommen": 147
+  },
+  {
+   "en": "White",
+   "vorkommen": 104
+  },
+  {
+   "en": "Flat Embroidery",
+   "vorkommen": 53
+  },
+  {
+   "en": "3D Puff (+$1.50)",
+   "vorkommen": 53
+  },
+  {
+   "en": "Partial 3D Puff (+$1.50)",
+   "vorkommen": 53
+  },
+  {
+   "en": "Charcoal",
+   "vorkommen": 34
+  },
+  {
+   "en": "Soil",
+   "vorkommen": 34
+  },
+  {
+   "en": "Chili",
+   "vorkommen": 34
+  },
+  {
+   "en": "Toffee",
+   "vorkommen": 34
+  },
+  {
+   "en": "Peanut",
+   "vorkommen": 34
+  },
+  {
+   "en": "Burnt Orange",
+   "vorkommen": 34
+  },
+  {
+   "en": "Rust",
+   "vorkommen": 34
+  },
+  {
+   "en": "Orange",
+   "vorkommen": 34
+  },
+  {
+   "en": "Coral",
+   "vorkommen": 34
+  },
+  {
+   "en": "Coco",
+   "vorkommen": 34
+  },
+  {
+   "en": "Taupe",
+   "vorkommen": 34
+  },
+  {
+   "en": "Sand",
+   "vorkommen": 34
+  },
+  {
+   "en": "Light Pink",
+   "vorkommen": 34
+  },
+  {
+   "en": "Bone",
+   "vorkommen": 34
+  },
+  {
+   "en": "Bleach",
+   "vorkommen": 34
+  },
+  {
+   "en": "Grey",
+   "vorkommen": 34
+  },
+  {
+   "en": "Mustard",
+   "vorkommen": 34
+  },
+  {
+   "en": "Beige",
+   "vorkommen": 34
+  },
+  {
+   "en": "Mellow",
+   "vorkommen": 34
+  },
+  {
+   "en": "Olive",
+   "vorkommen": 34
+  },
+  {
+   "en": "Grass",
+   "vorkommen": 34
+  },
+  {
+   "en": "Light Grey",
+   "vorkommen": 34
+  },
+  {
+   "en": "Pine",
+   "vorkommen": 34
+  },
+  {
+   "en": "Powder",
+   "vorkommen": 34
+  },
+  {
+   "en": "Yale Blue",
+   "vorkommen": 34
+  },
+  {
+   "en": "Cyan",
+   "vorkommen": 34
+  },
+  {
+   "en": "Dark Grey",
+   "vorkommen": 34
+  },
+  {
+   "en": "Navy",
+   "vorkommen": 34
+  },
+  {
+   "en": "Royal",
+   "vorkommen": 34
+  },
+  {
+   "en": "Denim",
+   "vorkommen": 34
+  },
+  {
+   "en": "Violet",
+   "vorkommen": 34
+  },
+  {
+   "en": "Burgundy",
+   "vorkommen": 34
+  },
+  {
+   "en": "Hot Pink",
+   "vorkommen": 34
+  },
+  {
+   "en": "Pink",
+   "vorkommen": 34
+  },
+  {
+   "en": "Lilac",
+   "vorkommen": 34
+  },
+  {
+   "en": "Clear",
+   "vorkommen": 12
+  },
+  {
+   "en": "Yes",
+   "vorkommen": 3
+  },
+  {
+   "en": "No",
+   "vorkommen": 3
+  }
+ ],
+ "techniken": [
+  {
+   "en": "Embroidery",
+   "vorkommen": 221
+  },
+  {
+   "en": "DTG printing",
+   "vorkommen": 161
+  },
+  {
+   "en": "DTF printing",
+   "vorkommen": 149
+  },
+  {
+   "en": "All-over synthetic",
+   "vorkommen": 115
+  },
+  {
+   "en": "Sublimation",
+   "vorkommen": 73
+  },
+  {
+   "en": "Digital printing",
+   "vorkommen": 49
+  },
+  {
+   "en": "UV printing",
+   "vorkommen": 22
+  },
+  {
+   "en": "All-over cotton",
+   "vorkommen": 21
+  },
+  {
+   "en": "Knitting",
+   "vorkommen": 12
+  }
+ ]
+}
