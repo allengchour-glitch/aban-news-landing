@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-05T12:15:00Z",
+ "stand": "2026-11-06T12:02:44Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Agility is the first pure humanoid robot company on the stock market. Are you buying?",
-   "u": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-05T12:00:00Z",
-   "s": "Agility arrives on the Nasdaq today as the first publicly-traded pure-play humanoid robotics company.",
-   "sprache": "en"
-  },
-  {
-   "t": "KI-Modelle: Apple-Entwickler sollen sparen",
-   "u": "https://www.heise.de/news/KI-Modelle-Apple-Entwickler-sollen-sparen-11513333.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Neue Siri-AI-Funktionen: Datei-Zugriff, Entwicklerverbesserungen und mehr",
+   "u": "https://www.heise.de/news/Siri-AI-Apples-Chatbot-kann-bald-mit-Dateien-operieren-11513459.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-05T11:55:00Z",
-   "s": "Nichts mehr mit „Tokenmaxxing“: Bei Apple sind interne KI-Sparmaßnahmen angesagt. Laut einem Bericht sinkt das tägliche Budget um ein Drittel.",
+   "d": "2026-11-06T11:09:00Z",
+   "s": "Apple liefert mit der Entwicklerbeta von iOS 27.3 größere Verbesserungen für sein KI-System. Dazu gehören auch diverse neue Skills und mehr Developer-Zugriff.",
    "sprache": "de"
   },
   {
-   "t": "Modelmaxxing: So stark kürzt Apple jetzt die KI-Budgets seiner Teams",
-   "u": "https://t3n.de/news/modelmaxxing-so-stark-kuerzt-apple-jetzt-die-ki-budgets-seiner-teams-1771796/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Europäische KI: „Es ist riskanter zu sagen, der Zug ist abgefahren“",
+   "u": "https://t3n.de/news/europaeische-ki-es-ist-riskanter-zu-sagen-der-zug-ist-abgefahren-1772038/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-05T11:00:55Z",
-   "s": "Der iPhone-Hersteller befindet sich in einer Zwickmühle: Einerseits will das Unternehmen effizient arbeiten und Innovationen fördern – andererseits sollen die stark gestiegenen Ausgaben wieder reduzie…",
+   "d": "2026-11-06T11:07:07Z",
+   "s": "Die Politologin Nicole Lemke erklärt im Interview, auf welche Technologie europäische KI-Startups setzen und warum Europa trotzdem nicht auf eigene, große KI-Moweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Pangram Image ist da: KI-Bilder und -Videos aufspüren",
-   "u": "https://www.heise.de/news/Pangram-Image-ist-da-KI-Bilder-und-Videos-aufspueren-11513019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise-Angebot: iX Testing-Guide – Qualitätssicherung in Zeiten von KI",
+   "u": "https://www.heise.de/news/iX-Testing-Guide-Qualitaetssicherung-in-Zeiten-von-KI-11507635.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-05T10:56:00Z",
-   "s": "Pangram Labs führt die neuen Modelle Image 1.0 und Image Flash 1.0 ein. Sie sollen KI-generierte Bilder und Videos zuverlässig erkennen.",
+   "d": "2026-11-06T11:00:00Z",
+   "s": "Testing-Praxis mit, von und ohne KI – das neue Sonderheft von iX developer berichtet über klassische und moderne Testing-Methoden, Know-how und Best Practices.",
    "sprache": "de"
   },
   {
-   "t": "Mit KI-Agenten: OpenAI will in Linux-System fast 1.000 Root-Lücken gefunden haben",
-   "u": "https://www.golem.de/news/mit-ki-agenten-openai-will-in-linux-system-fast-1-000-root-luecken-gefunden-haben-2611-214884.html",
-   "q": "Golem",
-   "d": "2026-11-05T10:17:02Z",
-   "s": "Laut OpenAI haben KI-Agenten bei internen Tests 948 Root-Lücken in einem Linux-System aufgedeckt - und obendrein passende Patches entwickelt. (Sicherheitslücke, Linux-Kernel)",
-   "sprache": "de"
-  },
-  {
-   "t": "Speicherkrise: KI-Boom gefährdet Spielmodule für Nintendo Switch",
-   "u": "https://www.golem.de/news/speicherkrise-ki-boom-gefaehrdet-spielmodule-fuer-nintendo-switch-2611-214883.html",
-   "q": "Golem",
-   "d": "2026-11-05T09:58:01Z",
-   "s": "Ein wichtiger Chiphersteller verabschiedet sich von Nintendo-Spielmodulen. Publisher könnten stärker auf Downloads setzen. (Nintendo Switch 2, Nintendo)",
-   "sprache": "de"
-  },
-  {
-   "t": "40 Jahre .de: Deutschlands digitale Adresse im Wandel",
-   "u": "https://t3n.de/news/40-jahre-de-deutschlands-digitale-adresse-im-wandel-1771737/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Wenn KI die Mathematik übernimmt: Warum die Fachwelt gespalten ist",
+   "u": "https://t3n.de/news/ki-mathematik-openai-kritik-forschung-debatte-1771252/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-05T08:00:06Z",
-   "s": "Für shopping.de wurden fast zwei Millionen Euro gezahlt, heute gibt es mehr als 18 Millionen .de-Domains. Doch Apps und KI verändern, wie wir Adressen im Netz nutzen.weiterlesen auf t3n.de",
+   "d": "2026-11-06T10:55:00Z",
+   "s": "Rund 400 Mathematik-Probleme will OpenAI mithilfe von KI gelöst haben. Das klingt nach großer Hilfe für die Wissenschaft. Tatsächlich sind viele Akademiker aber wenig begeistert. weiterlesen auf t3n.d…",
    "sprache": "de"
   },
   {
-   "t": "Setting a new standard for responsible AI infrastructure",
-   "u": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
-   "q": "OpenAI",
-   "d": "2026-11-05T02:00:00Z",
-   "s": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
-   "sprache": "en"
+   "t": "Jason Momoas Synchronsprecher klagt: Netflix verwendet deutsche Stimme unerlaubt für KI-Training",
+   "u": "https://www.golem.de/news/jason-momoas-synchronsprecher-klagt-netflix-verwendet-deutsche-stimme-unerlaubt-fuer-ki-training-2611-214929.html",
+   "q": "Golem",
+   "d": "2026-11-06T10:20:02Z",
+   "s": "Netflix hat die Stimme von mindestens einem Synchronsprecher ohne Zustimmung für KI-Training genutzt. Dagegen wehrt sich nun ein Betroffener. (Netflix, Urheberrecht)",
+   "sprache": "de"
   },
   {
-   "t": "Apple is reportedly cutting budgets for its internal AI usage",
-   "u": "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/",
+   "t": "Tech-Aktien besonders betroffen: US-Börse verliert 3,2 Billionen US-Dollar an einem Tag",
+   "u": "https://www.golem.de/news/tech-aktien-besonders-betroffen-us-boerse-verliert-3-2-billionen-us-dollar-an-einem-tag-2611-214918.html",
+   "q": "Golem",
+   "d": "2026-11-06T08:21:02Z",
+   "s": "Anleger sehen den Investitionshöhepunkt bei KI-Technologien erreicht und verkaufen Tech-Aktien im großen Stil. (Börse, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M",
+   "u": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/",
    "q": "TechCrunch AI",
-   "d": "2026-11-05T01:26:22Z",
-   "s": "The company is said to be significantly dropping the amount it's spending on AI for its engineering teams.",
+   "d": "2026-11-06T06:28:32Z",
+   "s": "Clutch, backed by Lightspeed and SignalFire, was last valued at $85 million, according to a source.",
    "sprache": "en"
   },
   {
-   "t": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
-   "u": "https://huggingface.co/blog/phonon-tts",
+   "t": "Greenpeace-Studie: Bau von Riesen-Rechenzentren könnte Wasserverbrauch mehr als verdoppeln",
+   "u": "https://netzpolitik.org/2026/greenpeace-studie-bau-von-riesen-rechenzentren-koennte-wasserverbrauch-mehr-als-verdoppeln/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-06T06:00:32Z",
+   "s": "Baustelle eines Rechenzentrums in Lübbenau, Spreewald, in dem 100.000 KI-Chips mit einer Anschlussleistung von rund 200 Megawatt verbaut werden sollen. – Alle Rechte vorbehalten: IMAGO / Jochen Heckel…",
+   "sprache": "de"
+  },
+  {
+   "t": "Egyptian and Nigerian English join the Open ASR Leaderboard",
+   "u": "https://huggingface.co/blog/open-asr-leaderboard-liva",
    "q": "Hugging Face",
-   "d": "2026-11-05T00:00:00Z",
+   "d": "2026-11-06T00:00:00Z",
    "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+   "u": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-05T22:40:55Z",
+   "s": "Airbnb says its upcoming AI agent will help travelers plan trips, compare options, manage bookings, and get assistance throughout their stay.",
    "sprache": "en"
   }
  ]
