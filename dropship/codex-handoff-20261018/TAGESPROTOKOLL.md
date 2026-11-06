@@ -1242,3 +1242,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Koordination / Dokumentation | `origin/main e6fc42e40`/PR2911 und offene relevante PRs gegen Scope geprüft; R122-Paket, Master, Belege und Projektgedächtnis fortgeschrieben | Keine direkte Überschneidung; Live-Lock/Receipt unbekannt. Revision122; keine externen operativen Writes |
 
 [LUXESTYLE_R122_20261106] [Abendpaket](ABENDPAKET-20261106-R122.md) · [Masterbriefing](MASTER-CONTENT-20261106-R122.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261106-R122.json). Aktuelle Planung32/48, zwei Produktgegenproben, derselbe blockierte18s-Master und zwei enge Freigabeentwürfe; kein externer Write.
+
+### R123
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/luxestyle.ch/CHF/CH, `origin/main e6fc42e40`, offene PRs sowie Claude-/Repo-Historie read-only gegengeprüft | Identität passend; kein aktueller Claude-Merchant-, Video- oder 404-Implementierungsscope. Historische GSC-Werkzeuge nicht deployt; kein Doppelpush |
+| Merchant-Export | 17'014 Zeilen/8'374 Item-ID-Strings ausgewertet, mit drei 05.11.-Exporten verglichen und drei Shopify-Produkte gezielt gegengeprüft | CSS −6'145 IDs, Preis −1'410, Verfügbarkeit −13, DE-Versand +35. Ursachenwirkung unbekannt; DRAFT/Preis/Versandbefunde erlauben keinen sicheren Bulk-Write |
+| Bestehende Automation | Zeitgesteuerten Google-Schaufenster-Lauf 42217557695 gelesen | Erfolgreich mit Schritt «Schaufenster (abwählen)»; Zusammenhang zum CSS-Rückgang unbekannt. Kein zusätzlicher Dispatch |
+| GSC Video | 128 ausstehende Zeilen, 103 Grundpfade/Video-IDs und bestehendes `VideoObject` geprüft | Markup bereits von Claude vorhanden; kein Doppelpush. Wiedergabeseiten-Pilot bleibt Entwurf |
+| GSC Coverage | 1'000 ausstehende URLs strukturiert; sechs Pfade begrenzt geprüft; zwei Crawler-Startseitenanzeigen direkt per `curl` gegengeprüft | Vier Crawler-404-Antworten und zwei direkt bestätigte 404 ohne Redirect; keine verifizierte Startseitenweiterleitung. DRAFT bleibt DRAFT; keine Massenredirects |
+| Grenzen / Dokumentation | R123-Bericht, JSON und Projektgedächtnis fortgeschrieben | Revision 123. Keine Shopify-, Merchant-, Feed-, Versand-, Redirect-, Theme-, Google-Sheets-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden- oder Bestelländerung |
+
+[LUXESTYLE_R123_20261106] [Merchant- und GSC-Diagnose](MERCHANT-GSC-DIAGNOSE-20261106-R123.md) · [Maschinenlesbare Belege](MERCHANT-GSC-DIAGNOSE-20261106-R123.json). Neue Exporte klassifiziert, Crawler-Fehlalarm widerlegt und sichere nächste Einzelprüfungen festgelegt; keine externe Änderung.

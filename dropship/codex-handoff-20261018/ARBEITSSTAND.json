@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 122,
-  "updatedAt": "2026-11-06T19:07:40+01:00",
+  "revision": 123,
+  "updatedAt": "2026-11-06T22:06:41+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14525,6 +14525,94 @@
     "budgetWrites": 0,
     "renders": 0,
     "uploads": 0,
+    "customerMessages": 0,
+    "orderReads": 0,
+    "orderWrites": 0
+  },
+  "followUpRunR123": {
+    "at": "2026-11-06T22:06:41+01:00",
+    "actualUpdates": [
+      "Owner-supplied Merchant CSV parsed and compared with three 2026-11-05 exports",
+      "Two owner-linked GSC Sheets read and normalized",
+      "Three bounded Shopify product counterchecks",
+      "Six bounded public 404 checks with direct curl countercheck for two crawler ambiguities",
+      "Existing VideoObject and Claude/MAIN overlap checked",
+      "Existing scheduled Google showcase workflow run read without additional dispatch",
+      "R123 project documentation only"
+    ],
+    "identity": "LuxeStyle/luxestyle.ch/CHF/Switzerland matched.",
+    "coordination": "origin/main e6fc42e409c6f10db279893aba58096390195704. No current Claude Merchant/video/404 implementation overlap. Historical GSC commits are not deployed; PR2911 is unrelated.",
+    "merchant": {
+      "csvSha256": "a631f4dec17909ede81e677da19e43e0bac0b60cca04abda683ee22610f131ae",
+      "rows": 17014,
+      "uniqueItemIdStrings": 8374,
+      "selectedIdDeltasVersus20261105": {
+        "cssCapacity": -6145,
+        "missingPrice": -1410,
+        "missingAvailability": -13,
+        "missingGermanyShipping": 35
+      },
+      "causality": "unknown",
+      "safeBulkWrite": false,
+      "nextRequiredRead": "authenticated source-level Merchant single-item fields"
+    },
+    "existingAutomation": {
+      "workflow": "gmc-schaufenster.yml",
+      "runId": 42217557695,
+      "conclusion": "success",
+      "observedStep": "Schaufenster (abwaehlen)",
+      "causalityForCssReduction": "unknown",
+      "additionalDispatch": false
+    },
+    "gscVideo": {
+      "rows": 128,
+      "statuses": {
+        "Ausstehend": 128
+      },
+      "normalizedBasePaths": 103,
+      "existingVideoObject": true,
+      "duplicatePush": false,
+      "nextStep": "proposal for a one-to-three page video-centric watch-page pilot"
+    },
+    "gscCoverage": {
+      "rows": 1000,
+      "statuses": {
+        "Ausstehend": 1000
+      },
+      "normalizedBasePaths": 874,
+      "queryUrls": 264,
+      "boundedLiveSample": {
+        "size": 6,
+        "crawlerHard404": 4,
+        "directCurlVerifiedHard404": 2,
+        "verifiedHomepageRedirects": 0,
+        "catalogInference": "not permitted"
+      },
+      "draftProductsActivated": false,
+      "redirectsWritten": 0,
+      "nextStep": "classify bounded groups; redirect only exact active successors; otherwise retain legitimate 404/410 and clean source references"
+    },
+    "documentationPreWriteSha": {
+      "README.md": "69ee62be6ca9060883c5ae52064d3188a1e99a71",
+      "PROJEKTGEDAECHTNIS.md": "97c26ed6b4f955eb6649a7a5a6d244b6aaad0b05",
+      "ARBEITSSTAND.json": "58200e1277f6768417434dfeee44e52c9371c46e",
+      "TAGESPROTOKOLL.md": "b83964ceebe604d62e8e453a8c7e05f96518a5b6"
+    },
+    "nextStep": "Read one Merchant source-level active price item and one Germany shipping item; classify bounded GSC 404 groups; prepare only an exact-successor redirect list and a one-to-three page video pilot for approval.",
+    "shopifyProductWrites": 0,
+    "shopifyCollectionWrites": 0,
+    "shopifyPriceWrites": 0,
+    "shopifyThemeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "shippingWrites": 0,
+    "redirectWrites": 0,
+    "googleSheetsWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
     "customerMessages": 0,
     "orderReads": 0,
     "orderWrites": 0

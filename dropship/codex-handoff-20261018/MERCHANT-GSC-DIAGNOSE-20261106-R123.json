@@ -1,0 +1,181 @@
+{
+  "revision": 123,
+  "checkedAt": "2026-11-06T22:06:41+01:00",
+  "scope": "Owner-supplied Merchant CSV plus two owner-linked GSC Google Sheets; fresh bounded Shopify and public-page samples; no external writes",
+  "identity": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "matched": true
+  },
+  "merchantCsv": {
+    "fileName": "product_issues_2026-11-06_12-51-44.csv",
+    "bytes": 5879774,
+    "sha256": "a631f4dec17909ede81e677da19e43e0bac0b60cca04abda683ee22610f131ae",
+    "rows": 17014,
+    "exactDuplicateRows": 0,
+    "uniqueItemIdStrings": 8374,
+    "statuses": {
+      "SEVERITY_DISAPPROVED": 17012,
+      "SEVERITY_PENDING": 2
+    },
+    "issueUniqueItemIds": {
+      "Over capacity for Shopping ads (in CSS program)": 4483,
+      "Missing product price": 1598,
+      "Missing shipping info in some countries": 1487,
+      "Promotional overlay on image": 400,
+      "Personalized advertising: personal hardships": 231,
+      "Missing attribute: [availability]": 48,
+      "Image too small": 41,
+      "Personalized advertising: Sexual interests": 31,
+      "Restricted adult content": 31,
+      "Guns and Parts": 20,
+      "Additional text found": 18,
+      "Tobacco products & related equipment": 16,
+      "Personalized advertising: legal restrictions": 12,
+      "Product page unavailable": 9,
+      "Alcoholic beverages": 8,
+      "Sale of live animals": 8,
+      "Adult-oriented content": 6,
+      "Personalized advertising: Identity and belief": 5,
+      "Image not processed": 1,
+      "Local Requirements": 1,
+      "Weapons": 1,
+      "Item pending processing": 1
+    },
+    "comparisonToThree20261105Exports": {
+      "oldUniqueItemIdUnion": 15088,
+      "persistingItemIds": 7434,
+      "oldOnlyItemIds": 7654,
+      "newOnlyItemIds": 940,
+      "selectedIssueDeltas": {
+        "Missing product price": {"old": 3008, "current": 1598, "delta": -1410},
+        "Over capacity for Shopping ads (in CSS program)": {"old": 10628, "current": 4483, "delta": -6145},
+        "Missing attribute: [availability]": {"old": 61, "current": 48, "delta": -13},
+        "Missing shipping info in some countries": {"old": 1452, "current": 1487, "delta": 35}
+      },
+      "causality": "unknown"
+    },
+    "missingForSafeSourceWrite": [
+      "active Merchant source id",
+      "submitted URL",
+      "submitted raw price and currency",
+      "submitted raw availability",
+      "submitted target country and shipping"
+    ]
+  },
+  "shopifySamples": [
+    {
+      "productId": "gid://shopify/Product/15516154462593",
+      "issue": "Product page unavailable",
+      "status": "DRAFT",
+      "variants": 4,
+      "pricesChf": ["78.90"],
+      "decision": "do not activate"
+    },
+    {
+      "productId": "gid://shopify/Product/16614814843271",
+      "issue": "Promotional overlay / policy context",
+      "status": "ACTIVE",
+      "variants": 2,
+      "pricesChf": ["70.90", "89.90"],
+      "images": 4,
+      "decision": "exact rejected image and licensed replacement unknown"
+    },
+    {
+      "productId": "gid://shopify/Product/15493863997825",
+      "issue": "Missing shipping info in Germany",
+      "status": "ACTIVE",
+      "variants": 50,
+      "priceRangeChf": ["17.90", "18.90"],
+      "decision": "source/country configuration issue; no product price write"
+    }
+  ],
+  "existingAutomation": {
+    "workflow": "gmc-schaufenster.yml",
+    "runId": 42217557695,
+    "startedAtUtc": "2026-11-06T12:25:31Z",
+    "conclusion": "success",
+    "observedStep": "Schaufenster (abwaehlen)",
+    "causalityForCssReduction": "unknown",
+    "additionalDispatchByR123": false
+  },
+  "gscVideo": {
+    "spreadsheetId": "1yYu6SeraZ34q1jp-X-v56vava2YG-qG-QNt-KZHJaKY",
+    "problem": "Das Video befindet sich nicht auf einer Wiedergabeseite",
+    "rows": 128,
+    "statuses": {"Ausstehend": 128},
+    "normalizedBasePaths": 103,
+    "uniqueVideoIds": 103,
+    "duplicateGroups": 20,
+    "frenchUrls": 42,
+    "queryUrls": 21,
+    "existingVideoObject": "implemented by Claude commit 3fba493d3fed7bc3d2f4b1db8e8d7dd7dd17f72a",
+    "mainBlocker": "video not prominent in initial DOM / product pages are not watch pages",
+    "write": false
+  },
+  "gscCoverage": {
+    "spreadsheetId": "1XkUDZOBi_d32JqWsmtfVSTasKElUMQ7_dLSXuCmBzUk",
+    "problem": "Nicht gefunden (404)",
+    "sitemap": "Alle bekannten Seiten",
+    "rows": 1000,
+    "statuses": {"Ausstehend": 1000},
+    "crawlDateRange": ["2026-10-07", "2026-10-24"],
+    "locales": {"default": 910, "en": 53, "it": 32, "fr": 5},
+    "queryUrls": 264,
+    "variantQueryUrls": 227,
+    "normalizedBasePaths": 874,
+    "duplicateGroups": 89,
+    "rowsInDuplicateGroups": 215,
+    "liveSample": {
+      "size": 6,
+      "crawlerHard404": 4,
+      "directCurlVerifiedHard404": 2,
+      "initialCrawlerHomepageHttp200": 2,
+      "verifiedHomepageRedirects": 0,
+      "directCurlCountercheck": "both ambiguous paths returned HTTP404 with no Location header, zero redirects and unchanged effective URL at 2026-11-06T21:06:00Z",
+      "catalogInference": "not permitted from sample"
+    },
+    "directCurlCountercheckHandles": [
+      {
+        "handle": "drei-stab-keramik-glatte-lockenstab-153856",
+        "productId": "gid://shopify/Product/15454105076097",
+        "status": "DRAFT",
+        "urlRedirectRows": 0
+      },
+      {
+        "handle": "sonnensegel-uv-schutz-schattenspender",
+        "productId": "gid://shopify/Product/15411030557057",
+        "status": "DRAFT",
+        "urlRedirectRows": 0
+      }
+    ],
+    "repositoryCountercheck": {
+      "originMain": "e6fc42e409c6f10db279893aba58096390195704",
+      "linkGuard": "collections-only; no products or root redirects",
+      "lastVersionedMainLayoutSnapshot": "no 404/location redirect logic",
+      "fullLiveThemeVersioned": false,
+      "claudeOverlap": "none; historical GSC commits are not ancestors of origin/main and their tools are not deployed"
+    },
+    "write": false
+  },
+  "decision": {
+    "status": "DIAGNOSED_NO_SAFE_BULK_WRITE",
+    "merchantNextStep": "authenticated source-level single-item read for one active price item and one Germany shipping item",
+    "coverageNextStep": "classify bounded URL groups by exact successor and stale query/language/source reference; map only exact successors and keep legitimate 404/410",
+    "videoNextStep": "one to three page watch-page pilot proposal",
+    "unknowns": ["Merchant reprocessing", "GSC validation result", "cause attribution"]
+  },
+  "writes": {
+    "shopify": 0,
+    "merchant": 0,
+    "feed": 0,
+    "shipping": 0,
+    "redirects": 0,
+    "theme": 0,
+    "googleSheets": 0,
+    "metricool": 0,
+    "klaviyo": 0
+  }
+}
