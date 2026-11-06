@@ -63,7 +63,7 @@ export const KOLLISION = {
 };
 
 const zaehle = (text, teil) => text.split(teil).length - 1;
-function einmal(text, alt, neu, name) {
+export function einmal(text, alt, neu, name) {
   const n = zaehle(text, alt);
   if (n !== 1) throw new Error(`Ersetzung «${name}» kommt ${n}× vor (erwartet genau 1): «${alt.slice(0, 70).replace(/\n/g, '\\n')}»`);
   return text.split(alt).join(neu); // split/join statt replace: ein «$» im Ersatztext bleibt erhalten

@@ -150,8 +150,15 @@ function dokumentFuer(html, variante, sprachSeite, opt) {
   const ids = opt.bestellbar || BESTELLBAR;
   if (ids === 'alle' || ids.length) {
     const vorlage = { ...cfg.shopVariantOffers[0], available: true }, bereits = new Set(cfg.shopVariantOffers.map((o) => String(o.printfulVariantId)));
-    for (const pid of ids === 'alle' ? Object.keys(ST.karte.modelle) : ids.map(String)) for (const z of ST.karte.modelle[pid] || []) { const v = String(z[0]); if (!bereits.has(v)) { bereits.add(v); cfg.shopVariantOffers.push({ ...vorlage, printfulVariantId: v }); } }
+    const geprueft = ids === 'alle' ? Object.keys(ST.karte.modelle) : ids.map(String);
+    // Auch die echten Angebote dieser Modelle gelten als lieferbar (heute ist z. B. eine Ausführung des T-Shirts 71 nicht lieferbar): hier prüft der Test Texte, nicht die Lieferbarkeit
+    const vomModell = new Set(); for (const pid of geprueft) for (const z of ST.karte.modelle[pid] || []) vomModell.add(String(z[0]));
+    cfg.shopVariantOffers.forEach((o) => { if (vomModell.has(String(o.printfulVariantId))) o.available = true; });
+    for (const pid of geprueft) for (const z of ST.karte.modelle[pid] || []) { const v = String(z[0]); if (!bereits.has(v)) { bereits.add(v); cfg.shopVariantOffers.push({ ...vorlage, printfulVariantId: v }); } }
   }
+  // die drei Absätze, die der Server aus den Sprachdateien in das Dokument schreibt (Hinweis im Kopf, Hinweis im Dialog, Einleitung)
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  html = html.replace(/(<p class="lcl-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(luxe.notice) + b).replace(/(<p class="lcl-dialog-notice">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(luxe.dialog_notice) + b).replace(/(<p class="lcl-intro">)[^<]*(<\/p>)/, (_m, a, b) => a + esc(luxe.intro) + b);
   return html.replace(konfigRegex, (_x, a, _b, c) => a + JSON.stringify(cfg) + c);
 }
 
@@ -181,6 +188,9 @@ async function neuerKontext(browser, vp, opt) {
       if (m === 'haengt') { await new Promise((r) => setTimeout(r, 11000)); }
       return route.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: textsRoh });
     }
+    // LOKAL=1: Index, Galerie und Datenschalen aus den Lesekopien (keine Live-Abrufe; für die Mutationsprobe)
+    const lokalDatei = process.env.LOKAL === '1' && !opt.beschrAendern && u.pathname.match(/\/assets\/(luxe-clothing-(?:index|reference-gallery|details-s\d+)\.json)$/);
+    if (lokalDatei && fs.existsSync(TH + 'assets__' + lokalDatei[1])) return route.fulfill({ status: 200, contentType: 'application/json; charset=utf-8', body: fs.readFileSync(TH + 'assets__' + lokalDatei[1]) });
     if (opt.beschrAendern && /\/assets\/luxe-clothing-details-s\d+\.json$/.test(u.pathname)) {
       const resp = await route.fetch(); const d = JSON.parse(await resp.text());
       const rows = Array.isArray(d.products) ? d.products : Object.values(d.products);
@@ -721,6 +731,17 @@ async function laufeKombi(browser) {
     ok(konsole.length === 0, n + ': keine Konsolenfehler ausser der erwarteten Netzmeldung', konsole.join(' | '));
   }
 }
+// Modus «bild»: kleine JPEG-Aufnahmen der Detailansicht (echte Verfügbarkeit, deutsch) zur Sichtprüfung; SHOTS_DIR=<Ordner>, IDS=71,19 (Vorgabe: die ersten zwei sichtbaren Modelle)
+async function machBilder(browser) {
+  const E = await erwartungEcht(), ids = (process.env.IDS ? process.env.IDS.split(',') : Object.keys(E).sort((a, b) => Number(a) - Number(b)).slice(0, 2));
+  const ordner = process.env.SHOTS_DIR || CACHE + '/../shots'; fs.mkdirSync(ordner, { recursive: true });
+  for (const vp of [{ n: '1280', w: 1280, h: 900 }, { n: '390', w: 390, h: 844 }]) {
+    const { ctx, page } = await neuerKontext(browser, { width: vp.w, height: vp.h }, { bestellbar: [], ausblendenEcht: true });
+    await laden(page);
+    for (const id of ids) { await oeffne(page, Number(id)); await page.waitForTimeout(400); const datei = ordner + '/detail_' + id + '_' + vp.n + '.jpg'; await page.screenshot({ path: datei, type: 'jpeg', quality: 55 }); console.log('Aufnahme', datei); await schliesse(page); }
+    await ctx.close();
+  }
+}
 function gleichKern(ist, soll, name) { ok(JSON.stringify(ist) === JSON.stringify(soll), name, JSON.stringify(ist).slice(0, 160) + ' <> ' + JSON.stringify(soll).slice(0, 160)); }
 
 (async () => {
@@ -728,9 +749,10 @@ function gleichKern(ist, soll, name) { ok(JSON.stringify(ist) === JSON.stringify
   BESTELLBAR = MODUS === 'voll' ? 'alle' : [...new Set([...TESTMODELLE.map((x) => x[0]), 1, 181, 99, 294, 19, 749, 692])];
   const browser = await chromium.launch();
   const t0 = Date.now();
-  if (MODUS === 'schnell' || MODUS === 'alles') { await pruefeFrische(browser); await laufeSchnell(browser); }
+  if (MODUS === 'schnell' || MODUS === 'alles') { if (process.env.LOKAL !== '1') await pruefeFrische(browser); await laufeSchnell(browser); }
   if (MODUS === 'szenarien' || MODUS === 'alles') { await laufeSzenarien(browser); }
   if (MODUS === 'kombi' || MODUS === 'alles') { await laufeKombi(browser); }
+  if (MODUS === 'bild') { await machBilder(browser); }
   if (MODUS === 'voll') { await laufeVoll(browser); }
   await browser.close();
   if (overflowEingefasst.length) console.log('Hinweis: Elemente rechts ausserhalb des Fensters, aber in scrollenden/abgeschnittenen Containern (Farbreihen, Vorschaubilder) eingefasst, daher kein Seitenüberlauf:', overflowEingefasst.length, 'Fälle, z. B.', overflowEingefasst.slice(0, 4).join(', '));

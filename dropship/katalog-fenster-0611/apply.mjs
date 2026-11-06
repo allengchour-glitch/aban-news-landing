@@ -219,7 +219,7 @@ try {
         process.exit(4);
       }
       console.error(`Schritt ${name} NICHT geschrieben: ` + abw.map((n) => n + ' (jetzt ' + (frisch[n]?.md5 ?? 'fehlt') + ', erwartet ' + (erw[n] ?? 'fehlt') + ')').join(', ') + ' hat sich seit dem Start verändert (ein anderer Auftrag?). Dessen Änderung bleibt unberührt.');
-      console.error(`Bis hierher geschrieben: ${[...geschrieben].join(', ') || '(nichts)'}. Das ist ohne den neuen Code harmlos; nur der Hinweistext oben im Fenster (Schritt 2) sagt schon «nur Modelle …». Weiter: (a) ZURUECK=1 LIVE=1 node ${BEFEHL} nimmt das Geschriebene zurück und lässt eine fremd veränderte Datei ohne unsere Marke unberührt; (b) dann MD5_VOR, sicherung/*.vor und daten/pruefstand.json auf den neuen Stand setzen, die Tests wiederholen und neu einspielen. Oder erst die Änderung des anderen Auftrags prüfen: passen die Anker noch?`);
+      console.error(`Bis hierher geschrieben: ${[...geschrieben].join(', ') || '(nichts)'}. Das ist ohne den neuen Code harmlos` + (geschrieben.has(DATEIEN.DE) ? '; nur der Hinweistext oben im Fenster (Schritt 2) sagt schon «nur Modelle …»' : '') + `. Weiter: (a) ZURUECK=1 LIVE=1 node ${BEFEHL} nimmt das Geschriebene zurück und lässt eine fremd veränderte Datei ohne unsere Marke unberührt; (b) dann MD5_VOR, sicherung/*.vor und daten/pruefstand.json auf den neuen Stand setzen, die Tests wiederholen und neu einspielen. Oder erst die Änderung des anderen Auftrags prüfen: passen die Anker noch?`);
       // Hilfe für den Folgeschritt: passen die Anker auf die verändert vorgefundenen, noch nicht geschriebenen Dateien?
       try {
         const ungeschrieben = abw.filter((n) => ALT.includes(n) && !geschrieben.has(n));

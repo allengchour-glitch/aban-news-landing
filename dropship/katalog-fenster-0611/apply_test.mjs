@@ -289,6 +289,15 @@ try {
   const v14b = stand().calls.length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 3, 'Rücknahme nach fremder Änderung am JS: Exit 3'); gleich(stand().calls.length, v14b, 'Rücknahme nach fremder Änderung am JS: nichts geschrieben');
 
+  // 14c. Das JS trägt nur die Marke EINES der beiden Pakete (jemand hat (A) oder das Texte-Paket allein darübergespielt): das ist «fremd» (es trägt unsere Marke), nicht «unberührt» → Exit 3, nichts geschrieben
+  for (const [name, inhalt] of [['nur die Marke von (B)', textePaket], ['nur die Marke von (A)', aPaket[DATEIEN.JS]]]) {
+    neuerStand(); lauf('', { LIVE: '1' });
+    const sx = stand(); sx.files[DATEIEN.JS] = inhalt; writeFileSync(STATE, JSON.stringify(sx));
+    const vx = stand().calls.length; r = lauf('', { ZURUECK: '1', LIVE: '1' });
+    gleich(r.code, 3, `Rücknahme, JS trägt ${name}: Exit 3 (fremd, nicht unberührt)`); gleich(stand().calls.length, vx, `Rücknahme, JS trägt ${name}: nichts geschrieben`);
+    ok(/fremd: assets\/luxe-clothing\.js/.test(r.aus), `Rücknahme, JS trägt ${name}: Meldung nennt die Datei als fremd`);
+  }
+
   // 15. Neue Dateien bleiben stehen (NEUE_BEHALTEN=1)
   neuerStand(); lauf('', { LIVE: '1' });
   r = lauf('', { ZURUECK: '1', LIVE: '1', NEUE_BEHALTEN: '1' }); gleich(r.code, 0, 'NEUE_BEHALTEN: Exit'); ok(ALT.every((f) => stand().files[f] === sich[f]) && NEU.every((f) => stand().files[f] === soll[f]), 'NEUE_BEHALTEN: neun alte zurück, drei neue bleiben');

@@ -9,7 +9,7 @@ import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 import * as A from '../katalog-nur-bestellbar-0511/patches.mjs';
 import { rendere, flach, sprachJson, SNIPPET_ATTRAPPEN, rubyLiquidGems } from '../katalog-nur-bestellbar-0511/liquid_helfer.mjs';
-import { DATEIEN, NEUE_DATEIEN, MD5_VOR, MARKE, MARKE_TEXTE, MARKEN, DATEN_MD5, KOLLISION, TEXTE, NEUE_SCHLUESSEL_A, NEUE_SCHLUESSEL_B, anwendenKombi, anwendenTexte, lesenDaten } from './kombi.mjs';
+import { DATEIEN, NEUE_DATEIEN, MD5_VOR, MARKE, MARKE_TEXTE, MARKEN, DATEN_MD5, KOLLISION, TEXTE, NEUE_SCHLUESSEL_A, NEUE_SCHLUESSEL_B, anwendenKombi, anwendenTexte, lesenDaten, einmal } from './kombi.mjs';
 import { TEXTE_PAARE, TEXTE_QUELLE, TEXTE_SCHLUESSEL } from './texte_ersetzungen.mjs';
 
 const HIER = new URL('.', import.meta.url).pathname;
@@ -101,6 +101,13 @@ if (process.env.PRUEFSUMME_IGNORIEREN !== '1') {
   wirft(() => anwendenKombi({ ...sich, [DATEIEN.JS]: readFileSync(B_ORDNER + 'theme/assets__luxe-clothing.js', 'utf8') }, daten), /Marke LX-KATALOGTEXTE-0511 schon/, '(B) allein schon eingespielt: abgelehnt');
 }
 
+// ---------- 3b. Ersetzen ohne Ersetzungsmuster: ein «$» im Ersatztext bleibt erhalten ----------
+{
+  const gefaehrlich = "$& $' $` $1 $$ ${x} $<n>";
+  gleich(einmal('abc', 'b', gefaehrlich, 't'), 'a' + gefaehrlich + 'c', 'einmal(): Ersatztext mit $-Mustern bleibt wörtlich erhalten');
+  wirft(() => einmal('abcb', 'b', 'x', 't'), /kommt 2× vor/, 'einmal(): doppelter Anker wird abgelehnt'); wirft(() => einmal('abc', 'z', 'x', 't'), /kommt 0× vor/, 'einmal(): fehlender Anker wird abgelehnt');
+}
+
 // ---------- 4. Beide Marken, die Kollisionszeile ----------
 const js = soll[DATEIEN.JS];
 ok(js.includes(MARKE) && js.includes(MARKE_TEXTE), 'JS trägt beide Marken');
@@ -173,6 +180,8 @@ function doppelteSchluessel(text) {
   gleich(NEUE_SCHLUESSEL_B, Object.keys(TEXTE_SCHLUESSEL.de), 'NEUE_SCHLUESSEL_B');
   ok(NEUE_SCHLUESSEL_A.every((k) => !NEUE_SCHLUESSEL_B.includes(k)), 'Schlüssel von (A) und (B) überschneiden sich nicht');
   ok(!('original_variants_one' in json.fr.luxe_clothing) && !NEUE_SCHLUESSEL_B.some((k) => k in json.fr.luxe_clothing), 'fr.json: keine Schlüssel von (B) (Rückfall auf die Standardsprache)');
+  for (const k of NEUE_SCHLUESSEL_B) ok(k in TEXTE.de && k in TEXTE.en && !(k in TEXTE.fr), `TEXTE (zusammengeführt) enthält den Schlüssel ${k} von (B) in de und en, nicht in fr`);
+  for (const k of NEUE_SCHLUESSEL_A) ok(k in TEXTE.de && k in TEXTE.en, `TEXTE (zusammengeführt) enthält den Schlüssel ${k} von (A) in de und en`);
   ok(!/ß/.test(Object.values(TEXTE.de).join(' ')), 'de: Schweizer Rechtschreibung (kein ß) in allen neuen Texten beider Pakete');
   ok(!/\b(?:oz|lbs?|inch(?:es)?|zoll)\b|″|["']\s*(?:x|×)\s*\d/i.test(Object.values(TEXTE.de).join(' ')), 'de: kein neuer Text nennt oz, lb, Zoll');
   gleich(TEXTE.de.orderable_variants_one, '1 bestellbare Ausführung', 'de: Einzahl');
