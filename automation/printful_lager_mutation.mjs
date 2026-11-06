@@ -187,8 +187,8 @@ export const MUTANTEN = [
 ];
 
 function lauf(dir, test) {
-  const r = spawnSync('/opt/node22/bin/node', [join(dir, test)], { cwd: dir, encoding: 'utf8', timeout: 120000 });
-  return { code: r.status, out: (r.stdout || '') + (r.stderr || '') };
+  const r = spawnSync(process.execPath, [join(dir, test)], { cwd: dir, encoding: 'utf8', timeout: 120000 });
+  return { code: r.status, out: (r.stdout || '') + (r.stderr || '') + (r.error ? `\nStart fehlgeschlagen: ${r.error.message}` : '') };
 }
 
 function main() {
