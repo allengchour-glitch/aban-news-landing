@@ -3,7 +3,7 @@ name: "Printful-Lager-Wächter (Katalogfenster und Shop)"
 # Hält die Momentaufnahme `assets/luxe-clothing-ausblenden.json` (Katalogfenster «Selbst gestalten») frisch und nimmt ausverkaufte Printful-Varianten im Shop aus dem Verkauf
 # (Bauplan «Selbst gestalten bis zur Bestellung», Paket WP2). Liest Printful (GET /products/<Nummer> für jedes Modell, POST /shipping/rates mit CH nur bei Änderung)
 # und Shopify; Printful wird nie beschrieben. Hintergrund (GEMESSEN 06.11.2026): 577 Modelle, 40 davon im Fenster ausgeblendet (30 ohne Schweizer Versandrate, 10 technisch ungeeignet),
-# 126 überall ausverkaufte Varianten; der Lauf dauert rund 8 Minuten (577 Abrufe in 375 s bei 92 Anfragen je Minute, Grenze des Kontos 120).
+# 168 Varianten ausgeblendet (überall ausverkauft oder nur in AU, BR, JP, UK lieferbar, wohin Printful nicht in die Schweiz liefert); der Lauf dauert rund 8 Minuten (577 Abrufe in 375 s bei 92 Anfragen je Minute, Grenze des Kontos 120).
 # Skript: automation/printful_lager.mjs · Logik: automation/lib/printful_lager.mjs · Doku und Strategiewahl: dropship/selbst-gestalten-fertig-0511/lager/README.md
 #
 # Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter der Fortura-Ware):
