@@ -116,7 +116,7 @@ const MUTANTEN = [
   ['patches.mjs', 'js', 'JS: Einzahl der bestellbaren Ausführungen fehlt', "(variants.length===1?t('orderable_variants_one'):t('orderable_variants'/* ${MARKE} */,{count:variants.length}))", "t('orderable_variants'/* ${MARKE} */,{count:variants.length})"],
   ['patches.mjs', 'js', 'JS: Einzahl der bestellbaren Ausführungen gilt auch bei zwei', "variants.length===1?t('orderable_variants_one')", "variants.length<3?t('orderable_variants_one')"],
   ['patches.mjs', 'js', 'JS: Karte und Ausblenden starten erst nach dem Index', "lxEarly(); /* ${MARKE} */ const raw = await readAsset(config.assets?.index);", "/* ${MARKE} */ const raw = await readAsset(config.assets?.index);"],
-  ['patches.mjs', 'js', 'JS: Karte und Ausblenden starten erst nach dem Index (Nachholen in lxPrepare)', "      if(!lxLoads.map) throw new Error('LX_RELOAD');", "      if(!lxLoads.map) lxEarly();\n      if(!lxLoads.map) throw new Error('LX_RELOAD');"],
+  ['patches.mjs', 'js', 'JS: Karte und Ausblenden starten erst nach dem Index (Aufruf hinter den Index-Abruf verschoben)', "lxEarly(); /* ${MARKE} */ const raw = await readAsset(config.assets?.index);", "/* ${MARKE} */ const raw = await readAsset(config.assets?.index); lxEarly();"],
   ['patches.mjs', 'js', 'JS: Vorabruf der Ausblenden-Datei fehlt', "lxLoads.hide=config.assets?.ausblenden?go(config.assets.ausblenden):null;", "lxLoads.hide=config.assets?.ausblenden?readAsset(config.assets.ausblenden):null;"],
   ['patches.mjs', 'js', 'JS: veraltetes Dokument zeigt den allgemeinen Ladefehler', "t(lxReload?'reload_needed':'load_error')", "t('load_error')"],
   ['patches.mjs', 'js', 'JS: veraltetes Dokument zeigt den nutzlosen Knopf «Erneut versuchen»', "retry.hidden = lxReload;", "retry.hidden = false;"],
@@ -125,7 +125,7 @@ const MUTANTEN = [
   ['patches.mjs', 'js', 'JS: Direktlink auf ein verborgenes Modell bleibt stumm', "else showMessage(t('model_unavailable'));", ""],
   ['patches.mjs', 'js', 'JS: Direktlink meldet auch bei einem sichtbaren Modell', "if(product)openDetails(product,null);else showMessage(t('model_unavailable'));", "if(product)openDetails(product,null);showMessage(t('model_unavailable'));"],
   ['patches.mjs', 'js', 'JS: nicht lieferbare Angebote stehen zur Wahl', "(data.offers.some(item=>item.available!==false)?data.offers.filter(item=>item.available!==false):data.offers /* ${MARKE} */).forEach(", "(data.offers /* ${MARKE} */).forEach("],
-  ['patches.mjs', 'js', 'JS: Angebotsauswahl leer, wenn alle Angebote unlieferbar sind', "?data.offers.filter(item=>item.available!==false):data.offers /* ${MARKE} */)", "?data.offers.filter(item=>item.available!==false):[] /* ${MARKE} */)"],
+  // (Mutant «Angebotsauswahl leer, wenn alle Angebote unlieferbar sind» gestrichen: gleichwertig, der Zweig ist unerreichbar, weil variantsFor nur Ausführungen mit mindestens einem lieferbaren Angebot durchlässt)
   ['patches.mjs', 'js', 'JS: Schuh-Satz immer', "if(products.some(p=>list(p.sizes).some(s=>/^EU\\\\b/i.test(displaySize(s,p))))){", "if(true){"],
   ['patches.mjs', 'js', 'JS: Schuh-Satz nie', "if(products.some(p=>list(p.sizes).some(s=>/^EU\\\\b/i.test(displaySize(s,p))))){", "if(false){"],
   ['patches.mjs', 'js', 'JS: Schuh-Satz nur im Kopf, nicht im Dialog', "[['.lcl-notice','notice'],['.lcl-dialog-notice','dialog_notice']]", "[['.lcl-notice','notice']]"],

@@ -73,6 +73,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
     if (FAKE.includes('fremdjs') && callNo === 1) s.files['assets/luxe-clothing.js'] += ' /* FREMDER AUFTRAG Katalogtexte */ ';
     if (FAKE.includes('fremdcss') && callNo === 1) s.files['assets/luxe-clothing.css'] += ' /* FREMDER AUFTRAG CSS */ ';
     if (FAKE.includes('fremdrueck') && callNo === 3) s.files['locales/de.json'] += '\\n';
+    if (FAKE.includes('fremdkarte') && callNo === 3) s.files['assets/luxe-clothing-variantenkarte.json'] += '\\n';
     if (FAKE.includes('fremdloesch') && callNo === 4) s.files['assets/luxe-clothing-variantenkarte.json'] += '\\n';
     save(s);
     if (FAKE.includes('throw2') && callNo === 2) throw new Error('GraphQL: fetch failed (FAKE)');
@@ -299,6 +300,11 @@ try {
   r = lauf('rueckde', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 6, 'Rücknahme, Texte nie sichtbar: Exit 6'); gleich(stand().calls.length, v22 + 2, 'Rücknahme, Texte nie sichtbar: nichts gelöscht');
   ok(NEU.every((f) => stand().files[f] === soll[f]), 'Rücknahme, Texte nie sichtbar: die neuen Dateien sind noch da'); ok(/NICHT gelöscht/.test(r.aus) && /wiederholbar/.test(r.aus), 'Rücknahme, Texte nie sichtbar: Meldung');
+  // 23. Rücknahme: eine der zwei zu löschenden Dateien wird schon NACH dem CSS/JS-Schreiben verändert → Texte/Liquid werden gar nicht erst zurückgeschrieben (Exit 3)
+  neuerStand(); lauf('', { LIVE: '1' }); const v23 = stand().calls.length;
+  r = lauf('fremdkarte', { ZURUECK: '1', LIVE: '1' });
+  gleich(r.code, 3, 'Rücknahme, zu löschende Datei früh verändert: Exit 3'); gleich(stand().calls.length, v23 + 1, 'Rücknahme, zu löschende Datei früh verändert: nur CSS/JS geschrieben, Texte/Liquid noch nicht, nichts gelöscht');
+  ok(RUECK1.every((f) => stand().files[f] === soll[f]) && stand().files[NEUE_DATEIEN.KARTE] === soll[NEUE_DATEIEN.KARTE] + '\n', 'Rücknahme, zu löschende Datei früh verändert: Texte/Liquid noch im neuen Stand, die fremde Änderung an der Karte bleibt');
 } finally {
   rmSync(D, { recursive: true, force: true });
 }
