@@ -9,6 +9,7 @@ import { createHash } from 'node:crypto';
 import { deflateSync } from 'node:zlib';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { bauen as vorschauBauen, vorschauDatei } from '../werkzeug/vorschau_daten_bauen.mjs';
 
 export const hier = dirname(fileURLToPath(import.meta.url));
 export const v6Ordner = join(hier, '..');
@@ -21,12 +22,14 @@ export function playwright() {
   throw new Error('Playwright nicht gefunden');
 }
 
-export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6.js');
+/** Die geprüfte Fassung des Editors: 6.2.0. Die Rücknahme 6.1.0 (lspod-designer-v6.js) läuft mit V6_DATEI=… und V6_VERSION=6.1.0 durch dieselben Prüfungen. */
+export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.2.0.js');
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');
 /** Optionaler Ordner mit heruntergeladenen Vorlagenbildern (sha1 der Adresse, 16 Zeichen); ohne ihn gibt es einfache Attrappen. */
 export const BILDCACHE = process.env.V6_BILDCACHE || '';
 
 // ── Server ──────────────────────────────────────────────────────────────────────────────────────
+export const KATALOG_TEST = join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'werkzeuge', 'testdaten', 'katalog');
 function karteMitShop(id, shopParam, ohneMinDpi, extraHinweise) {
   const datei = join(hier, 'testdaten', `${id}.karte.json`);
   if (!existsSync(datei)) return null;
@@ -75,6 +78,20 @@ export function starteServer() {
       for (const paar of (u.searchParams.get('shop') || '').split(',').filter(Boolean)) { const [sv, pv, mo] = paar.split(':'); if (sv && pv && mo) varianten[sv] = { pv: Number(pv), m: Number(mo) }; }
       return senden('application/json', JSON.stringify({ schema: 1, modelle, shop: { varianten } }));
     }
+    if ((m = u.pathname.match(/^\/vorschau\/([\d,]+)\.json$/))) {
+      // Vorschaudaten (Schema 1) aus den Test-Katalogen im Repo, gebaut mit dem echten Werkzeug; spiegel=0: Bilder nicht gespiegelt (null), sonst auf «cdn.shopify.com/s/files/test/»
+      const ids = m[1].split(',').map(Number);
+      const erst = vorschauBauen({ katalogOrdner: KATALOG_TEST, modelle: ids, stand: '2026-11-06' });
+      const spiegel = {};
+      if (u.searchParams.get('spiegel') !== '0') for (const d of erst.plan.dateien) spiegel[d.dateiname] = `https://cdn.shopify.com/s/files/test/${d.dateiname}`;
+      const r = vorschauBauen({ katalogOrdner: KATALOG_TEST, modelle: ids, spiegel, stand: '2026-11-06' });
+      const datei = vorschauDatei(r.ergebnisse, '2026-11-06');
+      const kaputt = u.searchParams.get('kaputt');
+      if (kaputt === 'json') return senden('application/json', JSON.stringify(datei).slice(0, 60));
+      if (kaputt === 'schema') return senden('application/json', JSON.stringify({ ...datei, schema: 2 }));
+      if (kaputt === 'modell') { for (const e of Object.values(datei.modelle)) e.adapter = 'unbekannt'; return senden('application/json', JSON.stringify(datei)); }
+      return senden('application/json', JSON.stringify(datei));
+    }
     if ((m = u.pathname.match(/^\/karten\/(\d+)\.json$/))) {
       const k = karteMitShop(m[1], u.searchParams.get('shop'), u.searchParams.get('ohneMinDpi'), u.searchParams.get('hinweise'));
       return k ? senden('application/json', JSON.stringify(k)) : senden('text/plain', 'keine Karte', 404);
@@ -108,6 +125,40 @@ export function pngErzeugen(w, h, farbe = [200, 60, 60]) {
     zeile.copy(roh, y * (1 + w * 4));
   }
   return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(roh, { level: 1 })), chunk('IEND', Buffer.alloc(0))]);
+}
+/** PNG (RGBA) aus einer Funktion (x, y) → [r, g, b, a]. */
+export function pngRGBA(w, h, pixel) {
+  const ihdr = Buffer.alloc(13); ihdr.writeUInt32BE(w, 0); ihdr.writeUInt32BE(h, 4); ihdr[8] = 8; ihdr[9] = 6;
+  const roh = Buffer.alloc((1 + w * 4) * h);
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const o = y * (1 + w * 4) + 1 + x * 4; const c = pixel(x, y); roh[o] = c[0]; roh[o + 1] = c[1]; roh[o + 2] = c[2]; roh[o + 3] = c[3]; }
+  return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(roh, { level: 1 })), chunk('IEND', Buffer.alloc(0))]);
+}
+/** Nachbau eines Printful-Vorlagenbildes («whitebg»): ausserhalb des Kleidungsstücks (Rechteck x 250..749, y 100..899 von 1000) opakes Weiss, darin ein halbdurchsichtiger Schatten
+ *  (schwarz, Alpha 22) mit einer dunkleren Falte (x 480..519, Alpha 70). So sieht das echte Bild aus (GEMESSEN: 52 % opakes Weiss, 48 % halbdurchsichtig, Mitte RGBA 121,121,121,21). */
+export const GEISTER_GROESSE = 1000;
+export const GEISTER_RECHTECK = { x0: 250, y0: 100, x1: 749, y1: 899, falteX0: 480, falteX1: 519, alpha: 22, alphaFalte: 70 };
+let geisterPuffer = null;
+export function geisterPng() {
+  if (!geisterPuffer) {
+    const g = GEISTER_RECHTECK;
+    geisterPuffer = pngRGBA(GEISTER_GROESSE, GEISTER_GROESSE, (x, y) => (x >= g.x0 && x <= g.x1 && y >= g.y0 && y <= g.y1 ? [0, 0, 0, x >= g.falteX0 && x <= g.falteX1 ? g.alphaFalte : g.alpha] : [255, 255, 255, 255]));
+  }
+  return geisterPuffer;
+}
+/** Nachbau eines Tassenfotos 700 × 1000 (weisser Grund, Körper x 213..601, y 289..757 in hellem Grau 236, Henkel links als Ring): so gross wie das Katalogfoto 1320. */
+export const TASSE_FOTO = { breite: 700, hoehe: 1000, x0: 213, x1: 601, y0: 289, y1: 757 };
+let tassePuffer = null;
+export function tassePng() {
+  if (!tassePuffer) {
+    const t = TASSE_FOTO;
+    tassePuffer = pngRGBA(t.breite, t.hoehe, (x, y) => {
+      if (x >= t.x0 && x <= t.x1 && y >= t.y0 && y <= t.y1) return [236, 236, 236, 255];
+      const dx = x - 150, dy = y - 520, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 150 && d > 105 && x < t.x0) return [236, 236, 236, 255];
+      return [255, 255, 255, 255];
+    });
+  }
+  return tassePuffer;
 }
 /** PNG mit Zufallsrauschen (fast nicht komprimierbar): so gross wie ein echtes Handyfoto, damit Dateigrössen-Grenzen greifen. Deterministisch (fester Startwert). */
 export function pngRauschen(w, h) {
@@ -161,10 +212,27 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   const gespeichert = new Map();
   page.on('pageerror', (e) => fehler.push('pageerror: ' + e.message));
   page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) fehler.push('console.error: ' + m.text()); });
-  await page.route('https://files.cdn.printful.com/**', (route) => { const b = vorlagenBild(route.request().url()); route.fulfill({ status: 200, contentType: b.typ, body: b.body, headers: { 'access-control-allow-origin': '*' } }); });
+  /** opt.printfulBild / opt.shopifyBild: (url) → { status?, typ, body, cors?: false } oder null (dann gilt die Standard-Attrappe). Zähler: bildAnfragen (Adressen aller Bild-Anfragen an Printful und Shopify Files). */
+  const bildAnfragen = [];
+  function bildAntwort(route, r) {
+    if (r.status && r.status !== 200) return route.fulfill({ status: r.status, contentType: 'text/plain', body: 'nicht da' });
+    return route.fulfill({ status: 200, contentType: r.typ, body: r.body, headers: r.cors === false ? {} : { 'access-control-allow-origin': '*' } });
+  }
+  await page.route('https://files.cdn.printful.com/**', (route) => {
+    const u = route.request().url();
+    bildAnfragen.push(u);
+    const eigene = opt.printfulBild ? opt.printfulBild(u) : null;
+    if (eigene) return bildAntwort(route, eigene);
+    const b = vorlagenBild(u); route.fulfill({ status: 200, contentType: b.typ, body: b.body, headers: { 'access-control-allow-origin': '*' } });
+  });
   await page.route('https://cdn.shopify.com/**', (route) => {
     const u = route.request().url();
+    bildAnfragen.push(u);
     if (/stk-index\.json/.test(u)) return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(['heart-red', 'star-gold', 'crown']), headers: { 'access-control-allow-origin': '*' } });
+    const eigene = opt.shopifyBild ? opt.shopifyBild(u) : null;
+    if (eigene) return bildAntwort(route, eigene);
+    // gespiegelte Vorlagenbilder der Vorschau (Schema 1, Werkzeug vorschau_daten_bauen.mjs): Nachbau des Geisterbildes, bei .jpg das Tassenfoto
+    if (/\/luxe-vorschau-[0-9a-f]+\.(png|jpg)/.test(u)) return bildAntwort(route, /\.jpg/.test(u) ? { typ: 'image/png', body: tassePng() } : { typ: 'image/png', body: geisterPng() });
     return route.fulfill({ status: 200, contentType: 'image/png', body: pngErzeugen(256, 256, [220, 160, 40]), headers: { 'access-control-allow-origin': '*' } });
   });
   await page.route('https://api.cloudinary.com/**', async (route) => {
@@ -172,7 +240,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     const koerper = req.postDataBuffer() || Buffer.alloc(0);
     const p = pngAusKoerper(koerper);
     const dateityp = p ? 'png' : (koerper.indexOf(Buffer.from([0xff, 0xd8, 0xff])) >= 0 ? 'jpeg' : '?');
-    if (opt.cloudinaryFehler) return route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: { message: 'mock-fehler' } }) });
+    if (opt.cloudinaryFehler || (opt.cloudinaryJpegFehler && dateityp === 'jpeg')) return route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: { message: 'mock-fehler' } }), headers: { 'access-control-allow-origin': '*' } });
     const nr = ++eingang;
     if (opt.cloudinaryHaengt && opt.cloudinaryHaengt(nr)) return;   // Antwort bleibt aus (Zeitlimit-Test)
     if (opt.cloudinaryVerzoegerung) { const ms = opt.cloudinaryVerzoegerung(nr, dateityp); if (ms > 0) await new Promise((r) => setTimeout(r, ms)); }
@@ -204,7 +272,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     route.fulfill({ status: opt.warenkorbFehler ? 422 : 200, contentType: 'application/json', body: JSON.stringify(opt.warenkorbFehler ? { description: 'mock-warenkorb-fehler' } : { id: 1, items: [] }) });
   });
   await page.goto(`${basis}/mock.html?${opt.query || ''}`, { waitUntil: 'domcontentloaded' });
-  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
+  return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
 }
 
 /** Warten, bis der v6-Editor gebaut ist. */
