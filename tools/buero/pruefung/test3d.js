@@ -32,8 +32,9 @@ async function lauf(b, optionen, vorher) {
   ok('Zeichenfläche und Überlagerung da', (await p.locator('.kb3-stage canvas.kb3-canvas').count()) === 1 && (await p.locator('.kb3-stage .kb3-over').count()) === 1);
   const gr = await p.locator('.kb3-canvas').evaluate((c) => [c.clientWidth, c.clientHeight, c.width, c.height]);
   ok('Zeichenfläche hat Grösse', gr[0] > 300 && gr[1] > 200 && gr[2] >= gr[0], gr);
+  const N = await p.evaluate(() => window.__ROWS.length);   // erwartete Zahlen aus den Daten, nicht fest eingetragen
   const nl = await p.locator('.kb3-over .kb3-label').count();
-  ok('22 Beschriftungen (14 Figuren, Band, Tafel, 5 Blätter, Du)', nl === 22, nl);
+  ok((N + 1) + ' Beschriftungen (alle Zeilen der Daten und Du)', nl === N + 1, nl);
   ok('Fehlerhinweis (kein 3D) ist verborgen', !(await p.locator('.kb3-aus').first().evaluate((n) => !n.hidden)));
   const blank = await p.evaluate(() => {
     window.KB3D.Buero.last.debug.render(1.7, false);
@@ -125,13 +126,13 @@ async function lauf(b, optionen, vorher) {
   ok('2D: Figuren da', (await p.locator('#kb-pane-buero .kb-desk').count()) >= 14);
   await p.locator('#kb-tab-liste').click();
   await p.evaluate(() => window.__runAll());
-  ok('Liste hat 21 Zeilen', (await p.locator('#kb-pane-liste .kb-row').count()) === 21);
+  ok('Liste hat ' + N + ' Zeilen', (await p.locator('#kb-pane-liste .kb-row').count()) === N);
   await p.locator('#kb-tab-3d').click();
   ok('Tab 3D wieder sichtbar', await sichtbar('#kb-pane-3d'));
 
   // ---------- Arbeitsort: Kürzel an den Beschriftungen, Schilder am Tisch, Detailfeld mit Link ----------
   const orte = await p.evaluate(() => Array.from(document.querySelectorAll('.kb3-over .kb3-label')).map((l) => (l.querySelector('.kb3-ort') ? l.querySelector('.kb3-ort').textContent.trim() : '')));
-  ok('21 Beschriftungen tragen ein Ortskürzel, «Du» keins', orte.filter(Boolean).length === 21 && orte.filter((t) => !t).length === 1, orte);
+  ok(N + ' Beschriftungen tragen ein Ortskürzel, «Du» keins', orte.filter(Boolean).length === N && orte.filter((t) => !t).length === 1, orte);
   ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir'].includes(t)), Array.from(new Set(orte)));
   const schilder = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => !s.spec.boss).map((s) => ({ ent: s.entId, used: !!s.used, mesh: !!s.sign, tex: !!(s.sign && s.sign.tex) })));
   ok('14 Plätze, alle benutzt, jeder mit Schild und Bild', schilder.length === 14 && schilder.every((s) => s.used && s.mesh && s.tex), schilder.filter((s) => !(s.used && s.mesh && s.tex)));
@@ -222,12 +223,12 @@ async function lauf(b, optionen, vorher) {
   };
   const BOESE = ['javascript:alert(1)', 'JaVaScRiPt:alert(1)', 'http://github.com/x', 'https://evil.example/x', 'https://github.com.evil.example/x', 'https://evil.example/https://github.com/x', 'https://user:pw@github.com/x', 'https://github.com:8443/x', 'data:text/html,hi', '//github.com/x', 'github.com/x', '', null, 5];
   const durch = [];
-  for (const w of BOESE) { const l = await linkLage(w); if (l.zeilen !== 21 || l.href !== 0 || l.sichtbar !== 0) durch.push([w, l]); }
+  for (const w of BOESE) { const l = await linkLage(w); if (l.zeilen !== N || l.href !== 0 || l.sichtbar !== 0) durch.push([w, l]); }
   ok('Fremde und fehlerhafte Links werden nie zum Link (14 Fälle)', durch.length === 0, durch);
   const gut = await linkLage('https://github.com/allengchour-glitch/aban-news-landing/actions');
-  ok('Ein erlaubter Link erscheint in allen 21 Zeilen', gut.zeilen === 21 && gut.href === 21 && gut.sichtbar === 21, gut);
+  ok('Ein erlaubter Link erscheint in allen ' + N + ' Zeilen', gut.zeilen === N && gut.href === N && gut.sichtbar === N, gut);
   const hostGrossklein = await linkLage('HTTPS://GitHub.com/x');
-  ok('Gross-/Kleinschreibung des Hosts ändert nichts (wird zu github.com)', hostGrossklein.href === 21, hostGrossklein);
+  ok('Gross-/Kleinschreibung des Hosts ändert nichts (wird zu github.com)', hostGrossklein.href === N, hostGrossklein);
   ok('Fremde Links: keine Seitenfehler', r5.errs.length === 0, r5.errs.slice(0, 3));
   await r5.ctx.close();
 

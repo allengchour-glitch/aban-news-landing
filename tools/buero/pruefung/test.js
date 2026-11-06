@@ -17,16 +17,20 @@ function ok(name, bedingung, info) {
   await p.goto('file://' + dir + '/harness.html');
   await p.locator('#kb-tab-buero').click();
   await p.evaluate(() => window.__runAll());
+  // erwartete Zahlen aus den Daten rechnen (nicht fest eintragen: sie ändern sich mit jeder Auffrischung)
+  const rows = await p.evaluate(() => window.__ROWS);
+  const N = rows.length, BL = rows.filter((r) => r.figur === 'papier').length;
+  const ST = (s) => String(rows.filter((r) => r.status === s).length);
 
   const z = async (sel) => p.locator(sel).count();
   ok('Shop hat 6 Figuren', (await z('.kb-floor[data-bereich="Shop"] .kb-desk')) === 6);
   ok('Versand hat 3 Figuren und 1 Band', (await z('.kb-floor[data-bereich="Versand"] .kb-desk')) === 3 && (await z('.kb-floor[data-bereich="Versand"] .kb-band')) === 1);
   ok('Band zeigt 3 Pakete', (await z('.kb-band .paket')) === 3);
   ok('Krypto hat 5 Figuren', (await z('.kb-floor[data-bereich="Krypto"] .kb-desk')) === 5);
-  ok('Chef: 1 Figur, 5 Blätter, 1 Tafel', (await z('.kb-chef-fig .kb-desk.is-chef')) === 1 && (await z('.kb-blatt')) === 5 && (await z('.kb-tafel')) === 1);
+  ok('Chef: 1 Figur, ' + BL + ' Blätter, 1 Tafel', (await z('.kb-chef-fig .kb-desk.is-chef')) === 1 && (await z('.kb-blatt')) === BL && (await z('.kb-tafel')) === 1);
   ok('Chef ohne markierte Textfelder', (await z('.kb-chef-fig [data-source]')) === 0);
   ok('Tafel zeigt 5', (await p.locator('.kb-tafel .t-zahl').textContent()) === '5');
-  ok('Chef-Blase zeigt 5', (await p.locator('.kb-chef-fig .p-warn .f-bubtxt').textContent()) === '5');
+  ok('Chef-Blase zeigt ' + BL, (await p.locator('.kb-chef-fig .p-warn .f-bubtxt').textContent()) === String(BL));
 
   const posen = await p.evaluate(() => Object.fromEntries([...document.querySelectorAll('.kb-floor[data-draw="raum"] .kb-desk')].map((n) => [n.dataset.pick, [...n.classList].filter((c) => c.startsWith('pose-') || c.startsWith('st-')).join(' ')])));
   ok('Haltungen aus den echten Zeiten', posen.shop_sitzung.includes('pose-busy') && posen.krypto_sitzung.includes('pose-busy') && posen.bestellwaechter.includes('pose-busy') && posen.auswahl.includes('pose-rest') && posen.fortura.includes('pose-warn') && posen.cj_anlegen.includes('pose-warn'), posen);
@@ -73,11 +77,11 @@ function ok(name, bedingung, info) {
   ok('Tab Liste zeigt die Liste und verbirgt das Büro', !(await p.locator('#kb-pane-liste').evaluate((n) => n.hidden)) && (await p.locator('#kb-pane-buero').evaluate((n) => n.hidden)));
   ok('aria-selected wechselt', (await p.locator('#kb-tab-liste').getAttribute('aria-selected')) === 'true' && (await p.locator('#kb-tab-buero').getAttribute('aria-selected')) === 'false');
   await p.evaluate(() => window.__runAll());
-  ok('Liste hat 21 Zeilen', (await z('#kb-pane-liste .kb-row')) === 21);
+  ok('Liste hat ' + N + ' Zeilen', (await z('#kb-pane-liste .kb-row')) === N);
 
   // Zähler
   const zaehler = await p.evaluate(() => Object.fromEntries([...document.querySelectorAll('[data-draw="n"]')].map((n) => [n.dataset.st, n.textContent])));
-  ok('Zähler 12 grün, 3 gelb, 6 für dich, 0 rot', zaehler.gruen === '12' && zaehler.gelb === '3' && zaehler.du === '6' && zaehler.rot === '0', zaehler);
+  ok('Zähler ' + ST('gruen') + ' grün, ' + ST('gelb') + ' gelb, ' + ST('du') + ' für dich, ' + ST('rot') + ' rot', zaehler.gruen === ST('gruen') && zaehler.gelb === ST('gelb') && zaehler.du === ST('du') && zaehler.rot === ST('rot'), zaehler);
 
   ok('keine Seitenfehler', errs.length === 0, errs);
 
