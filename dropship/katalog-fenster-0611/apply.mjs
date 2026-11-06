@@ -15,8 +15,12 @@
 // Zwischen den Schritten wird gewartet, bis die Prüfsummen des Schritts über die API stimmen (höchstens 150 s); vor dem Code-Schritt zusätzlich 15 s Ruhe. Nach dem Schreiben Rücklesen aller zwölf Dateien über die Prüfsumme.
 // Rücknahme (umgekehrt): je Datei «neu» (gleich Soll), «alt» (gleich Sicherung), «fehlt» oder «unberuehrt»; CSS/JS, die weder neu noch alt sind UND keine Marke eines der beiden Pakete tragen, gelten als «unberuehrt»
 // (jemand anderes hat sie verändert, ohne dass unser Code darin steckt: sie werden nie angefasst, auch nicht mit FREMD_UEBERSCHREIBEN=1); jede andere Datei bricht ab (Exit 3, nichts geschrieben), ausser mit
-// FREMD_UEBERSCHREIBEN=1. Es wird nie die Sicherung roh über eine Datei geschrieben, die jemand anderes verändert hat (auch nicht die Sprachdateien). Reihenfolge: CSS/JS zurück, warten, die zu schreibenden und
+// FREMD_UEBERSCHREIBEN=1. Ohne diesen Schalter wird nie die Sicherung roh über eine fremd veränderte Datei geschrieben (auch nicht über die Sprachdateien: Exit 3). MIT FREMD_UEBERSCHREIBEN=1 wird
+// auch eine fremd veränderte Sprachdatei roh mit dem Ausgangsstand überschrieben (Änderungen im Sprach-Editor des Admins daran gehen dann verloren; das Skript warnt davor); CSS/JS ohne Marke bleiben immer unberührt. Reihenfolge: CSS/JS zurück, warten, die zu schreibenden und
 // zu löschenden Dateien frisch lesen (verändert: Exit 3), Texte/Liquid zurück, warten, die zu löschenden Dateien nochmals frisch lesen, zuletzt die drei neuen Dateien löschen (NEUE_BEHALTEN=1 lässt sie stehen: harmlos, unbenutzt).
+// FORTSETZEN nach einem Abbruch (Korrektur der Abnahme 06.11.2026): steht jede der zwölf Dateien entweder noch im Ausgangsstand (neue Dateien: fehlt) oder schon im Soll-Stand (mindestens eine in jedem der beiden
+// Zustände, Sicherung vorhanden), schreibt LIVE=1 nur die noch fehlenden Dateien in der gleichen Reihenfolge der Schritte (Beispiele: Schritt 1b wegen Grösse abgelehnt, Schritt 3 abgelehnt, Rücknahme mit NEUE_BEHALTEN=1).
+// Jede andere Datei (fremd verändert, ein Einzelpaket) verhindert das Fortsetzen: Exit 3 wie bisher. Ist alles im Soll-Stand: Exit 3 «Schon eingespielt».
 // OHNE Merkliste (liegt nur im Scratch/Commit nach dem Einspielen) wird der Soll-Stand aus kombi.mjs und den Datenquellen neu gerechnet.
 // Exit: 0 ok · 1 kein Token / fehlende Variablen / Datenquelle verändert / unerwartete Ausnahme VOR dem Schreiben · 3 schon eingespielt (auch Teilzustand) / Rücknahme nicht möglich ·
 // 4 Ausgangsstand oder Sicherung weicht ab / Änderung eines anderen Auftrags · 5 userErrors · 6 Rücklesen weicht ab · 7 Ausnahme NACH Beginn des Schreibens (Teilzustand möglich)
@@ -41,7 +45,10 @@ const SCHRITTE = [['1a Daten', SCHRITT_1A], ['1b Texte-Datei', SCHRITT_1B], ['2 
 const MERKLISTE = HIER + 'sicherung/eingespielt.json';
 const sichDatei = (n) => HIER + 'sicherung/' + n.replace('/', '__') + '.vor';
 const BEFEHL = 'dropship/katalog-fenster-0611/apply.mjs';
-const TEILZUSTAND = `Teilzustand möglich: ZURUECK=1 LIVE=1 node ${BEFEHL} nimmt auch einen Teilzustand zurück (je Datei); zur Not die Dateien aus sicherung/*.vor von Hand per themeFilesUpsert zurückschreiben und die drei neuen Dateien per themeFilesDelete entfernen.`;
+const geschrieben = new Set(); // Dateien, die dieser Lauf (oder ein früherer abgebrochener) schon im Soll-Stand hinterlassen hat
+const TEILZUSTAND = `Teilzustand möglich: ${ZURUECK ? '' : `LIVE=1 node ${BEFEHL} setzt nach Behebung der Ursache dort fort, wo es aufgehört hat (nur die noch fehlenden Dateien); `}ZURUECK=1 LIVE=1 node ${BEFEHL} nimmt auch einen Teilzustand zurück (je Datei); zur Not die Dateien aus sicherung/*.vor von Hand per themeFilesUpsert zurückschreiben und die drei neuen Dateien per themeFilesDelete entfernen.`;
+// Sind die Texte (Schritt 2) live, aber CSS/JS (Schritt 3) noch nicht, sagt das Fenster schon «nur Modelle …» und zeigt noch alle: das gehört in jede Fehlermeldung
+const teilzustandText = () => TEILZUSTAND + (geschrieben.has(DATEIEN.DE) && !geschrieben.has(DATEIEN.JS) ? ' ACHTUNG: Die Texte (Schritt 2) sind schon live: das Fenster sagt «Hier siehst du nur Modelle, die du bei LuxeStyle gestalten und bestellen kannst», zeigt aber noch alle Modelle, bis CSS/JS (Schritt 3) geschrieben sind. Sofort denselben Befehl noch einmal (LIVE=1 setzt fort) oder ZURUECK=1 LIVE=1.' : '');
 const frageDaten = () => { try { return lesenDaten(); } catch (e) { console.error('Datenquelle nicht lesbar oder verändert: nichts geschrieben:', e.message); process.exit(1); } };
 
 const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
@@ -65,13 +72,14 @@ async function lesen() {
 async function schreiben(dateien, namen) {
   const files = namen.map((n) => ({ filename: n, body: { type: 'TEXT', value: dateien[n] } }));
   const u = (await q(`mutation($id:ID!,$files:[OnlineStoreThemeFilesUpsertFileInput!]!){themeFilesUpsert(themeId:$id,files:$files){upsertedThemeFiles{filename} userErrors{filename message}}}`, { id: th.id, files })).themeFilesUpsert;
-  console.log('upsert', namen.join(', '), JSON.stringify(u.upsertedThemeFiles.map((x) => x.filename)));
-  if (u.userErrors?.length) { console.error('userErrors:', JSON.stringify(u.userErrors)); console.error(TEILZUSTAND); process.exit(5); }
+  // upsertedThemeFiles ist laut Schema nullable (QUELLE shopify.dev ThemeFilesUpsertPayload): bei einer Ablehnung zuerst die userErrors melden, nie an der Liste scheitern
+  if (u.userErrors?.length) { console.error('userErrors:', JSON.stringify(u.userErrors)); console.error(teilzustandText()); process.exit(5); }
+  console.log('upsert', namen.join(', '), JSON.stringify((u.upsertedThemeFiles || []).map((x) => x.filename)));
 }
 async function loeschen(namen) {
   const u = (await q(`mutation($id:ID!,$files:[String!]!){themeFilesDelete(themeId:$id,files:$files){deletedThemeFiles{filename} userErrors{filename message}}}`, { id: th.id, files: namen })).themeFilesDelete;
   console.log('delete', namen.join(', '), JSON.stringify((u.deletedThemeFiles || []).map((x) => x.filename)));
-  if (u.userErrors?.length) { console.error('userErrors:', JSON.stringify(u.userErrors)); console.error(TEILZUSTAND); process.exit(5); }
+  if (u.userErrors?.length) { console.error('userErrors:', JSON.stringify(u.userErrors)); console.error(teilzustandText()); process.exit(5); }
 }
 // Wartet, bis die API für alle genannten Dateien die erwartete Prüfsumme meldet (soll[n] === null heisst: Datei muss fehlen). Rückgabe: true/false.
 async function warteBisGleich(soll, namen, maxMs) {
@@ -86,6 +94,8 @@ async function warteBisGleich(soll, namen, maxMs) {
 }
 async function pruefenNachSchreiben(soll, beschreibung) {
   await warte(75000);
+  // Die API zeigt neue Prüfsummen mit Verzug (Erfahrung: rund eine Minute): bis zu 150 s wiederholt lesen, statt nach einer einzigen Lesung «ABWEICHUNG» zu melden
+  await warteBisGleich(soll, ALLE, 150000);
   const nach = await lesen(); let ok = true;
   for (const n of ALLE) {
     const ist = nach[n]?.md5 ?? null;
@@ -131,6 +141,7 @@ if (ZURUECK) {
     process.exit(3);
   }
   if (fremde.length) console.log('FREMD_UEBERSCHREIBEN=1: auch diese Dateien werden zurückgesetzt:', fremde.map((n) => `${n} (${jetzt[n].md5})`).join(', '));
+  if (fremde.some((n) => n.startsWith('locales/'))) console.log('ACHTUNG: eine fremd veränderte Sprachdatei wird ROH mit dem Ausgangsstand überschrieben (' + fremde.filter((n) => n.startsWith('locales/')).join(', ') + '): Änderungen im Sprach-Editor des Admins daran gehen verloren. Vorher den Unterschied ansehen und merken.');
   const zuSchreiben = ALT.filter((n) => zustand[n] === 'neu' || zustand[n] === 'fremd');
   const zuLoeschen = NEU_BEHALTEN ? [] : NEU.filter((n) => zustand[n] === 'neu' || zustand[n] === 'fremd');
   console.log('Rücknahme auf den Stand vor dem Paket; zu schreiben:', zuSchreiben.length ? zuSchreiben.join(', ') : '(nichts, alles schon im Ausgangsstand)', '| zu löschen:', zuLoeschen.length ? zuLoeschen.join(', ') : '(nichts)');
@@ -162,13 +173,27 @@ if (ZURUECK) {
 }
 
 const ausgang = ALT.every((n) => jetzt[n].md5 === MD5_VOR[n]) && NEU.every((n) => !jetzt[n]);
-if (!ausgang && ALT.every((n) => jetzt[n].md5 === MD5_VOR[n])) {
+// Fortsetzen nach einem Abbruch: jede Datei ist entweder noch im Ausgangsstand (neue Dateien: fehlt) oder schon im Soll-Stand, beides kommt vor, und die Sicherung ist da.
+// Der Soll-Stand wird aus der Sicherung (MD5-geprüft) und den Datenquellen gerechnet, nicht aus dem Live-Stand.
+let fortsetzen = null;
+if (!ausgang) {
+  const sichFort = ladeSicherung();
+  if (sichFort) {
+    try {
+      const sollFort = alsMd5(anwendenKombi(sichFort, lesenDaten()));
+      const z = Object.fromEntries(ALLE.map((n) => [n, jetzt[n] ? (jetzt[n].md5 === sollFort[n] ? 'neu' : MD5_VOR[n] != null && jetzt[n].md5 === MD5_VOR[n] ? 'alt' : 'fremd') : (MD5_VOR[n] == null ? 'alt' : 'fremd')]));
+      const werte = Object.values(z);
+      if (!werte.includes('fremd') && werte.includes('neu') && werte.includes('alt')) fortsetzen = { sich: sichFort, soll: sollFort, zustand: z };
+    } catch { fortsetzen = null; }
+  }
+}
+if (!ausgang && !fortsetzen && ALT.every((n) => jetzt[n].md5 === MD5_VOR[n])) {
   // nur neue Dateien sind da: unsere (Teilzustand, z. B. nach Schritt 1a) oder eine fremde Datei gleichen Namens?
   const d = frageDaten(), erwartet = { [NEUE_DATEIEN.AUSBLENDEN]: md5(ausblendenText(d.ausblenden)), [NEUE_DATEIEN.KARTE]: md5(d.karte), [NEUE_DATEIEN.TEXTE]: md5(d.texte) };
   const fremdNeu = NEU.filter((n) => jetzt[n] && jetzt[n].md5 !== erwartet[n]);
   if (fremdNeu.length) { console.error('Eine der neuen Dateien existiert schon mit anderem Inhalt: nichts geschrieben:', fremdNeu.map((n) => `${n} (${jetzt[n].md5})`).join(', ')); process.exit(4); }
 }
-if (!ausgang) {
+if (!ausgang && !fortsetzen) {
   const merk = existsSync(MERKLISTE) ? JSON.parse(readFileSync(MERKLISTE, 'utf8')).md5 : null;
   const schon = MARKEN.some((m) => jetzt[DATEIEN.JS].content?.includes(m) || jetzt[DATEIEN.CSS].content?.includes(m)) || NEU.some((n) => jetzt[n]) || (merk && ALT.some((n) => jetzt[n].md5 === merk[n] && merk[n] !== MD5_VOR[n]));
   // Ist nur EINES der beiden Einzelpakete eingespielt, passt die Rücknahme dieses Skripts nicht: erst dessen eigene Rücknahme
@@ -186,8 +211,12 @@ if (!ausgang) {
   }
   process.exit(schon ? 3 : 4);
 }
-if (ALT.some((n) => jetzt[n].content == null)) { console.error('Inhalt einer Datei nicht lesbar: nichts geschrieben'); process.exit(4); }
-const alt = Object.fromEntries(ALT.map((n) => [n, jetzt[n].content]));
+if (!fortsetzen && ALT.some((n) => jetzt[n].content == null)) { console.error('Inhalt einer Datei nicht lesbar: nichts geschrieben'); process.exit(4); }
+const alt = fortsetzen ? fortsetzen.sich : Object.fromEntries(ALT.map((n) => [n, jetzt[n].content]));
+if (fortsetzen) {
+  ALLE.filter((n) => fortsetzen.zustand[n] === 'neu').forEach((n) => geschrieben.add(n));
+  console.log('FORTSETZEN: ein früherer Lauf wurde unterbrochen. Schon im Soll-Stand (werden nicht erneut geschrieben):', [...geschrieben].join(', '), '| noch zu schreiben:', ALLE.filter((n) => !geschrieben.has(n)).join(', '));
+}
 const daten = frageDaten();
 let neu;
 try { neu = anwendenKombi(alt, daten); } catch (e) { console.error('Soll-Stand nicht berechenbar (Anker passen nicht): nichts geschrieben:', e.message); process.exit(4); }
@@ -195,12 +224,12 @@ mkdirSync(HIER + 'sicherung', { recursive: true });
 for (const n of ALT) if (!existsSync(sichDatei(n))) writeFileSync(sichDatei(n), alt[n]);
 if (!ladeSicherung()) { console.error('Sicherung unvollständig'); process.exit(4); }
 const sollMd5 = alsMd5(neu);
+if (fortsetzen && ALLE.some((n) => sollMd5[n] !== fortsetzen.soll[n])) { console.error('Soll-Stand weicht vom Soll-Stand des Fortsetzens ab (innerer Fehler): nichts geschrieben'); process.exit(4); }
 console.log('Sicherung vorhanden; neue Grössen', ALLE.map((n) => `${n} ${Buffer.byteLength(neu[n])}`).join(' | '));
-console.log('Schreibschritte:', SCHRITTE.map(([name, dateien]) => `${name} (${dateien.length} Datei${dateien.length > 1 ? 'en' : ''}, ${Math.round(dateien.reduce((s, n) => s + Buffer.byteLength(neu[n]), 0) / 1024)} KB)`).join(' → '));
+console.log('Schreibschritte:', SCHRITTE.map(([name, alle]) => [name, alle.filter((n) => !geschrieben.has(n))]).filter(([, dateien]) => dateien.length).map(([name, dateien]) => `${name} (${dateien.length} Datei${dateien.length > 1 ? 'en' : ''}, ${Math.round(dateien.reduce((s, n) => s + Buffer.byteLength(neu[n]), 0) / 1024)} KB)`).join(' → ') || '(keine)');
 if (!LIVE) { console.log('Trockenlauf, nichts geschrieben'); process.exit(0); }
 
 // Vor JEDEM Schreibschritt: alle zwölf Dateien frisch lesen. Erwartet: noch nicht geschriebene = Ausgangsstand (neue Dateien: fehlen), schon geschriebene = Soll-Stand.
-const geschrieben = new Set();
 const erwartetJetzt = () => Object.fromEntries(ALLE.map((n) => [n, geschrieben.has(n) ? sollMd5[n] : (MD5_VOR[n] ?? null)]));
 async function abweichungen() {
   const frisch = await lesen(), erw = erwartetJetzt();
@@ -208,12 +237,15 @@ async function abweichungen() {
 }
 let endCode = 0;
 try {
+  let ersterSchritt = true; // der erste Schritt, der wirklich schreibt (beim Fortsetzen nicht unbedingt 1a)
   for (let i = 0; i < SCHRITTE.length; i++) {
-    const [name, dateien] = SCHRITTE[i];
+    const [name, alleDateien] = SCHRITTE[i];
+    const dateien = alleDateien.filter((n) => !geschrieben.has(n)); // beim Fortsetzen nur die noch fehlenden
+    if (!dateien.length) { console.log(`Schritt ${name}: schon im Soll-Stand, übersprungen`); continue; }
     if (i === SCHRITTE.length - 1) await warte(15000); // vor dem Code-Schritt 15 s Ruhe (ein anderer Auftrag schreibt oft kurz nach dem ersten Lesen)
     const { frisch, erw, abw } = await abweichungen();
     if (abw.length) {
-      if (i === 0) {
+      if (ersterSchritt) {
         // Zwischen dem ersten Lesen und dem Schreiben liegen Berechnung und Sicherung: hat sich etwas geändert, wird nichts geschrieben (auch keine Merkliste).
         console.error('Kurz vor dem Schreiben hat sich etwas geändert (ein anderer Auftrag?): nichts geschrieben:', abw.map((n) => n + ' (jetzt ' + (frisch[n]?.md5 ?? 'fehlt') + ')').join(', '));
         process.exit(4);
@@ -228,7 +260,8 @@ try {
       } catch (e) { console.error('  Hinweis: Die Anker passen auf die veränderte Datei NICHT mehr:', e.message); }
       process.exit(4);
     }
-    if (i === 0) {
+    if (ersterSchritt) {
+      ersterSchritt = false;
       // Merkliste VOR dem Schreiben: so erkennt die Rücknahme auch einen Teilzustand
       writeFileSync(MERKLISTE, JSON.stringify({ erstellt: new Date().toISOString(), hinweis: 'MD5 der Dateien, die apply.mjs ins MAIN-Theme schreibt (Soll-Stand, zwölf Dateien)', md5: sollMd5 }, null, 1) + '\n');
     }
@@ -236,13 +269,13 @@ try {
     dateien.forEach((n) => geschrieben.add(n));
     if (i < SCHRITTE.length - 1) {
       const nurDiese = Object.fromEntries(dateien.map((n) => [n, sollMd5[n]]));
-      if (!(await warteBisGleich(nurDiese, dateien, 150000))) { console.error(`Schritt ${name} ist nach 150 s noch nicht in der API sichtbar: die folgenden Schritte NICHT geschrieben.`); console.error(TEILZUSTAND); process.exit(6); }
+      if (!(await warteBisGleich(nurDiese, dateien, 150000))) { console.error(`Schritt ${name} ist nach 150 s noch nicht in der API sichtbar: die folgenden Schritte NICHT geschrieben.`); console.error(teilzustandText()); process.exit(6); }
     }
   }
   endCode = (await pruefenNachSchreiben(sollMd5, 'neu')) ? 0 : 6;
 } catch (e) {
   console.error('Ausnahme nach Beginn des Schreibens:', e && e.message ? e.message : e);
-  console.error(TEILZUSTAND);
+  console.error(teilzustandText());
   process.exit(7);
 }
 process.exit(endCode);

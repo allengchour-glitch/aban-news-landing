@@ -725,7 +725,7 @@ async function pruefeDetail(seite, tag, pid, e, offers, maxFarben = 4) {
     await s.route('**/*', (r) => { const h = new URL(r.request().url()).hostname; if (/clarity|facebook|tiktok|google|doubleclick|analytics|klaviyo|judge|hotjar|bing/i.test(h)) return r.abort(); return r.continue(); });
     const resp = await p.goto(href + '#lspod-start', { waitUntil: 'domcontentloaded', timeout: 45000 });
     await p.waitForTimeout(2500);
-    const ed = await p.evaluate(() => ({ anker: !!document.getElementById('lspod-start'), titel: document.title, canvas: !!document.querySelector('canvas, [data-lspod], .lspod'), hash: location.hash }));
+    const ed = await p.evaluate(() => ({ anker: !!document.getElementById('lspod-start'), titel: document.title, canvas: !!document.querySelector('canvas, [data-lspod], .lspod, .lspod-designer'), hash: location.hash }));
     erg.daten.editorSeite = { href, status: resp.status(), ...ed };
     pruef(resp.status() === 200 && ed.anker, `I: Produktseite ${href} hat den Editor-Anker #lspod-start (${JSON.stringify(ed)})`);
     await s.close();

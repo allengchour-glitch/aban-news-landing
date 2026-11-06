@@ -9,6 +9,7 @@
 //   vorlese: de.json ändert sich nach dem ersten Lesen; fremdjs1/fremdjs3/fremdcss3/fremdde2/fremdkarte1/fremdkarte2: ein zweiter Auftrag schreibt nach Aufruf rel 1/3/3/2/1/2;
 //   rueckcss/rueckde: die erste (CSS) bzw. die zweite (de.json) Rücknahme-Schreibung wird nie sichtbar; fremdrueck: de.json ändert sich während der Rücknahme (nach rel 1);
 //   fremdkarte_r1/fremdloesch/fremdtexte_r2: Karte nach rel 1 / Karte nach rel 2 / Texte-Datei nach rel 2 der Rücknahme verändert.
+//   codeverzoegert: CSS/JS werden erst bei der zweiten Lesung nach dem Schreiben sichtbar; nullup: bei Ablehnung ist upsertedThemeFiles null (laut Schema nullable); codeunsichtbar: Schritt 3 meldet Erfolg, aber CSS/JS bleiben in der Leseantwort auf dem alten Stand.
 import { cpSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
@@ -37,7 +38,7 @@ const D = mkdtempSync(join(tmpdir(), 'lxfenster-'));
 const PAKET = join(D, 'dropship/katalog-fenster-0611');
 const PAKET_A = join(D, 'dropship/katalog-nur-bestellbar-0511'), PAKET_B = join(D, 'dropship/katalog-texte-de-0611');
 for (const d of [PAKET, join(PAKET_A, 'daten'), PAKET_B, join(D, 'automation/lib')]) mkdirSync(d, { recursive: true });
-for (const f of ['apply.mjs', 'kombi.mjs', 'texte_ersetzungen.mjs']) cpSync(HIER + f, join(PAKET, f));
+for (const f of ['apply.mjs', 'kombi.mjs', 'texte_ersetzungen.mjs', 'korrekturen.mjs']) cpSync(HIER + f, join(PAKET, f));
 cpSync(HIER + '../katalog-nur-bestellbar-0511/patches.mjs', join(PAKET_A, 'patches.mjs'));
 for (const f of ['ausblenden-quelle.json', 'variantenkarte.json']) cpSync(HIER + '../katalog-nur-bestellbar-0511/daten/' + f, join(PAKET_A, 'daten', f));
 cpSync(HIER + '../katalog-texte-de-0611/luxe-clothing-texts-de.json', join(PAKET_B, 'luxe-clothing-texts-de.json'));
@@ -55,7 +56,9 @@ export async function shopifyGql(shop, api, tok, query, vars) {
   if (query.includes('themes(first:5')) return { themes: { nodes: [{ id: 'gid://fake/1', name: 'fake' }] } };
   if (query.includes('files(filenames')) {
     s.ev = s.ev || []; s.ev.push('R'); s.nR = (s.nR || 0) + 1; s.nRL = (s.nRL || 0) + 1;
-    const nodes = vars.f.filter((n) => s.files[n] != null).map((n) => {
+    if (s.pending && --s.pendingN <= 0) { Object.assign(s.files, s.pending); delete s.pending; }
+    const erste = /first:(\\d+)/.exec(query); // die Attrappe schneidet wie die API bei first:N ab
+    const nodes = vars.f.filter((n) => s.files[n] != null).slice(0, erste ? Number(erste[1]) : Infinity).map((n) => {
       const c = s.files[n], url = FAKE.includes('url') && (n.includes('variantenkarte') || n.includes('texts-de') || n.endsWith('luxe-clothing.js'));
       return { filename: n, size: Buffer.byteLength(c), checksumMd5: FAKE.includes('nocsum') ? null : md5(c),
         body: url ? { __typename: 'OnlineStoreThemeFileBodyUrl', url: 'https://fake.invalid/' + n } : { __typename: 'OnlineStoreThemeFileBodyText', content: c } };
@@ -73,6 +76,8 @@ export async function shopifyGql(shop, api, tok, query, vars) {
       if ((FAKE.includes('step1aerr') && rel === 1 && nm.includes('variantenkarte')) || (FAKE.includes('step1berr') && rel === 2 && nm.includes('texts-de')) || (FAKE.includes('step2err') && rel === 3 && nm === 'locales/de.json')
         || (FAKE.includes('step3js') && rel === 4 && nm.endsWith('luxe-clothing.js')) || (FAKE.includes('step3all') && rel === 4)) { errs.push({ filename: nm, message: 'FAKE abgelehnt' }); continue; }
       let v = f.body.value;
+      if (FAKE.includes('codeverzoegert') && rel === 4) { s.pending = s.pending || {}; s.pending[nm] = f.body.value; s.pendingN = 2; continue; } // CSS/JS werden erst bei der zweiten Lesung nach dem Schreiben sichtbar (die API zeigt neue Prüfsummen mit Verzug)
+      if (FAKE.includes('codeunsichtbar') && rel === 4) continue; // der Speicher meldet Erfolg, die Datei bleibt in der Leseantwort auf dem alten Stand (nie sichtbar)
       if (FAKE.includes('norm') && !FAKE.includes('normtexte') && nm.includes('variantenkarte') && rel === 1) v = v.replace(/\\n$/, '');
       if (FAKE.includes('normtexte') && nm.includes('texts-de') && rel === 2) v += ' ';
       if (FAKE.includes('rueckcss') && rel === 1 && nm.endsWith('luxe-clothing.css') && s.zuruck) v += '\\n';
@@ -92,6 +97,7 @@ export async function shopifyGql(shop, api, tok, query, vars) {
     if (FAKE.includes('fremdtexte_r2') && rel === 2 && s.zuruck) s.files['assets/luxe-clothing-texts-de.json'] += '\\n';
     save(s);
     if ((FAKE.includes('throw1b') && rel === 2) || (FAKE.includes('throw3') && rel === 4)) throw new Error('GraphQL: fetch failed (FAKE)');
+    if (FAKE.includes('nullup') && errs.length) return { themeFilesUpsert: { upsertedThemeFiles: null, userErrors: errs } }; // laut Schema nullable
     return { themeFilesUpsert: { upsertedThemeFiles: vars.files.filter((f) => !errs.some((e) => e.filename === f.filename)).map((f) => ({ filename: f.filename })), userErrors: errs } };
   }
   if (query.includes('themeFilesDelete')) {
@@ -205,8 +211,12 @@ try {
   for (const [datei, name] of [[NEUE_DATEIEN.KARTE, 'Karte'], [NEUE_DATEIEN.TEXTE, 'Texte-Datei'], [NEUE_DATEIEN.AUSBLENDEN, 'Ausblenden-Datei']]) {
     neuerStand({ [datei]: '{"fremd":true}\n' }); r = lauf('', { LIVE: '1' });
     gleich(r.code, 4, `fremde Datei mit dem Namen der neuen ${name}: Exit 4`); ok(/existiert schon mit anderem Inhalt/.test(r.aus), `fremde ${name}: Meldung`); gleich(stand().calls, [], `fremde ${name}: nichts geschrieben`);
+    // Teilzustand eines früheren, abgebrochenen Laufs (nur eine neue Datei da, gleich Soll, alle alten im Ausgangsstand): LIVE setzt fort und schreibt die vorhandene Datei NICHT erneut
     neuerStand({ [datei]: soll[datei] }); r = lauf('', { LIVE: '1' });
-    gleich(r.code, 3, `nur die neue ${name} (gleich Soll) vorhanden: Exit 3`); gleich(stand().calls, [], `nur die neue ${name} vorhanden: nichts geschrieben`);
+    gleich(r.code, 0, `nur die neue ${name} (gleich Soll) vorhanden: LIVE setzt fort, Exit 0`); ok(istSoll(), `nur die neue ${name} vorhanden: danach alle zwölf Dateien gleich Soll`);
+    ok(/FORTSETZEN/.test(r.aus) && stand().calls.flat().filter((f) => f === datei).length === 0, `nur die neue ${name} vorhanden: Meldung «FORTSETZEN», die vorhandene Datei wird nicht erneut geschrieben`);
+    gleich(stand().calls, EINSPIELEN.map((st) => st.filter((f) => f !== datei)).filter((st) => st.length), `nur die neue ${name} vorhanden: die übrigen Schritte in der gewohnten Reihenfolge`);
+    gleich((r.aus.match(/GLEICH/g) || []).length, 12, `nur die neue ${name} vorhanden: Rücklesen 12 × GLEICH`);
   }
 
   // 8. Sicherung weicht ab → Exit 4, nichts geschrieben
@@ -223,16 +233,23 @@ try {
   neuerStand(); r = lauf('step3all', { LIVE: '1' });
   gleich(r.code, 5, 'userErrors Schritt 3: Exit 5'); ok(/Teilzustand/.test(r.aus), 'userErrors: Hinweis auf Teilzustand');
   ok([...S1A, ...S1B, ...S2].every((f) => stand().files[f] === soll[f]) && S3.every((f) => stand().files[f] === sich[f]), 'userErrors: Schritte 1 und 2 geschrieben, CSS/JS nicht');
+  ok(/ACHTUNG: Die Texte \(Schritt 2\) sind schon live/.test(r.aus) && /zeigt aber noch alle Modelle/.test(r.aus) && /LIVE=1 setzt fort/.test(r.aus), 'userErrors Schritt 3: die Meldung warnt, dass das Fenster schon «nur Modelle …» sagt, aber noch alle zeigt, und nennt den Weg (Fortsetzen oder Rücknahme)');
   const v9 = stand().calls.length; r = lauf('', { LIVE: '1' });
-  gleich(r.code, 3, 'LIVE nach den Schritten ohne Code: Exit 3 (nicht 4)'); ok(/Rücknahme: ZURUECK=1/.test(r.aus), 'LIVE nach Teilzustand: nennt die Rücknahme'); gleich(stand().calls.length, v9, 'LIVE nach Teilzustand: nichts geschrieben');
+  gleich(r.code, 0, 'LIVE nach abgelehntem Schritt 3: Exit 0 (setzt fort)'); ok(/FORTSETZEN/.test(r.aus), 'LIVE nach Schritt 3: Meldung «FORTSETZEN»');
+  gleich(stand().calls.slice(v9), [S3], 'LIVE nach Schritt 3: schreibt nur CSS und JS, sonst nichts'); ok(istSoll(), 'LIVE nach Schritt 3: alle zwölf Dateien gleich Soll'); gleich((r.aus.match(/GLEICH/g) || []).length, 12, 'LIVE nach Schritt 3: Rücklesen 12 × GLEICH');
+  // und die Rücknahme aus genau diesem Teilzustand (wie bisher geprüft)
+  neuerStand(); r = lauf('step3all', { LIVE: '1' }); gleich(r.code, 5, 'userErrors Schritt 3 (zweiter Lauf): Exit 5');
+  const v9b = stand().calls.length;
   r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'Rücknahme nach dem Teilzustand: Exit'); ok(istSicherung(), 'Rücknahme nach dem Teilzustand: Sicherung hergestellt');
-  gleich(stand().calls.slice(v9), [S2, ['DEL', ...NEU]], 'Rücknahme nach dem Teilzustand: schreibt nur die sieben alten Dateien von Schritt 2 und löscht die drei neuen');
+  gleich(stand().calls.slice(v9b), [S2, ['DEL', ...NEU]], 'Rücknahme nach dem Teilzustand: schreibt nur die sieben alten Dateien von Schritt 2 und löscht die drei neuen');
 
   // 9b. Fehler beim Anlegen einer NEUEN Datei: Schritt 1a (Karte abgelehnt), Schritt 1b (Texte-Datei abgelehnt): Exit 5, nichts weiter geschrieben, kein bestehende Datei berührt, Rücknahme räumt auf
   neuerStand(); r = lauf('step1aerr', { LIVE: '1' });
   gleich(r.code, 5, 'Karte abgelehnt (Schritt 1a): Exit 5'); ok(/FAKE abgelehnt/.test(r.aus) && /variantenkarte/.test(r.aus), 'Karte abgelehnt: Meldung nennt Datei und Ursache'); gleich(stand().calls.length, 1, 'Karte abgelehnt: nur der erste Aufruf, nichts weiter');
   ok(ALT.every((f) => stand().files[f] === sich[f]) && stand().files[NEUE_DATEIEN.AUSBLENDEN] === soll[NEUE_DATEIEN.AUSBLENDEN] && stand().files[NEUE_DATEIEN.KARTE] == null, 'Karte abgelehnt: neun bestehende Dateien unberührt, Ausblenden-Datei da, Karte und Texte-Datei fehlen');
-  r = lauf('', { LIVE: '1' }); gleich(r.code, 3, 'LIVE nach abgelehnter Karte: Exit 3 (Teilzustand erkannt)');
+  const v9c = stand().calls.length; r = lauf('', { LIVE: '1' }); gleich(r.code, 0, 'LIVE nach abgelehnter Karte: Exit 0 (setzt fort)'); ok(istSoll(), 'LIVE nach abgelehnter Karte: alle zwölf Dateien gleich Soll');
+  gleich(stand().calls.slice(v9c), [[NEUE_DATEIEN.KARTE], S1B, S2, S3], 'LIVE nach abgelehnter Karte: schreibt Karte, Texte-Datei, Texte/Liquid, CSS/JS (die Ausblenden-Datei nicht erneut)');
+  neuerStand({ [NEUE_DATEIEN.AUSBLENDEN]: soll[NEUE_DATEIEN.AUSBLENDEN] });
   r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 0, 'Rücknahme nach abgelehnter Karte: Exit'); ok(istSicherung(), 'Rücknahme nach abgelehnter Karte: Sicherung hergestellt (Ausblenden-Datei gelöscht)');
   neuerStand(); r = lauf('step1berr', { LIVE: '1' });
   gleich(r.code, 5, 'Texte-Datei abgelehnt (Schritt 1b): Exit 5'); ok(/texts-de/.test(r.aus), 'Texte-Datei abgelehnt: Meldung nennt die Datei'); gleich(stand().calls.length, 2, 'Texte-Datei abgelehnt: zwei Aufrufe, Texte/Liquid und Code nicht geschrieben');
@@ -398,6 +415,38 @@ try {
   r = lauf('fremdkarte_r1', { ZURUECK: '1', LIVE: '1' });
   gleich(r.code, 3, 'Rücknahme, zu löschende Datei früh verändert: Exit 3'); gleich(stand().calls.length, v23 + 1, 'Rücknahme, zu löschende Datei früh verändert: nur CSS/JS geschrieben, Texte/Liquid noch nicht, nichts gelöscht');
   ok(S2.every((f) => stand().files[f] === soll[f]) && stand().files[NEUE_DATEIEN.KARTE] === soll[NEUE_DATEIEN.KARTE] + '\n', 'Rücknahme, zu löschende Datei früh verändert: Texte/Liquid noch im neuen Stand, die fremde Änderung an der Karte bleibt');
+
+  // 24. Korrekturen der Abnahme (06.11.2026): upsertedThemeFiles = null bei Ablehnung, Schlussrücklesen wartet, Fortsetzen, Warnung bei Sprachdateien
+  // 24a. Die API liefert bei Ablehnung upsertedThemeFiles: null (laut Schema nullable) → Exit 5 mit den userErrors, nicht Exit 7 («Cannot read properties of null»)
+  for (const [fake, schritt] of [['step1aerr,nullup', 'Karte (Schritt 1a)'], ['step2err,nullup', 'de.json (Schritt 2)'], ['step3all,nullup', 'CSS/JS (Schritt 3)']]) {
+    neuerStand(); r = lauf(fake, { LIVE: '1' });
+    gleich(r.code, 5, `Ablehnung mit upsertedThemeFiles null (${schritt}): Exit 5, nicht 7`); ok(/FAKE abgelehnt/.test(r.aus) && !/Cannot read properties/.test(r.aus), `Ablehnung mit upsertedThemeFiles null (${schritt}): die userErrors stehen in der Meldung`);
+  }
+  // 24b. Das Schlussrücklesen wartet auf die API: wird die Prüfsumme von CSS/JS nie sichtbar, endet der Lauf mit Exit 6 (ABWEICHUNG), nicht mit Exit 0
+  neuerStand(); r = lauf('codeunsichtbar', { LIVE: '1' });
+  gleich(r.code, 6, 'CSS/JS nie sichtbar: Exit 6'); ok(/ABWEICHUNG/.test(r.aus) && /assets\/luxe-clothing\.js/.test(r.aus), 'CSS/JS nie sichtbar: Rücklesen meldet ABWEICHUNG für die Code-Dateien'); ok(/Prüfsumme weicht noch ab bei/.test(r.aus), 'CSS/JS nie sichtbar: das Schlussrücklesen hat wiederholt gelesen (Wartegrenze erreicht)');
+  // 24b2. Die API zeigt CSS/JS erst bei der zweiten Lesung: das Schlussrücklesen liest wiederholt und meldet Erfolg (Exit 0, 12 × GLEICH), nicht ABWEICHUNG nach einer einzigen Lesung
+  neuerStand(); r = lauf('codeverzoegert', { LIVE: '1' });
+  gleich(r.code, 0, 'CSS/JS erst bei der zweiten Lesung sichtbar: Exit 0'); gleich((r.aus.match(/GLEICH/g) || []).length, 12, 'CSS/JS verzögert sichtbar: Rücklesen 12 × GLEICH'); ok(!/ABWEICHUNG/.test(r.aus) && istSoll(), 'CSS/JS verzögert sichtbar: keine ABWEICHUNG, alle zwölf Dateien gleich Soll');
+  // 24c. Fortsetzen nach der Rücknahme mit NEUE_BEHALTEN=1 (Löschen war gesperrt): die drei neuen Dateien stehen, alle alten im Ausgangsstand → LIVE setzt fort statt Exit 3
+  neuerStand(); lauf('', { LIVE: '1' }); r = lauf('', { ZURUECK: '1', LIVE: '1', NEUE_BEHALTEN: '1' });
+  gleich(r.code, 0, 'Rücknahme mit NEUE_BEHALTEN=1: Exit 0'); ok(ALT.every((f) => stand().files[f] === sich[f]) && NEU.every((f) => stand().files[f] === soll[f]), 'NEUE_BEHALTEN: alte Dateien im Ausgangsstand, die drei neuen stehen');
+  const v24 = stand().calls.length; r = lauf('', { LIVE: '1' });
+  gleich(r.code, 0, 'LIVE nach NEUE_BEHALTEN: Exit 0 (setzt fort)'); ok(istSoll(), 'LIVE nach NEUE_BEHALTEN: alle zwölf Dateien gleich Soll'); gleich(stand().calls.slice(v24), [S2, S3], 'LIVE nach NEUE_BEHALTEN: schreibt nur Texte/Liquid und CSS/JS');
+  // 24d. Fortsetzen nach abgelehntem Schritt 2 (Daten sind da, alte Dateien im Ausgangsstand): Schritte 1a und 1b werden übersprungen
+  neuerStand(); lauf('step2err', { LIVE: '1' }); const v24d = stand().calls.length; r = lauf('', { LIVE: '1' });
+  gleich(r.code, 0, 'LIVE nach abgelehntem Schritt 2: Exit 0'); gleich(stand().calls.slice(v24d), [[DATEIEN.DE], S3], 'LIVE nach abgelehntem Schritt 2: nur die abgelehnte de.json (die anderen sechs Dateien von Schritt 2 hatte der Speicher schon angenommen) und danach Schritt 3'); ok(istSoll(), 'LIVE nach abgelehntem Schritt 2: alle zwölf Dateien gleich Soll');
+  // 24e. Kein Fortsetzen, wenn eine Datei fremd verändert ist (auch wenn andere schon im Soll-Stand sind): Exit 3, nichts geschrieben
+  neuerStand({ [NEUE_DATEIEN.AUSBLENDEN]: soll[NEUE_DATEIEN.AUSBLENDEN], [DATEIEN.EN]: sich[DATEIEN.EN] + '\n' }); r = lauf('', { LIVE: '1' });
+  ok([3, 4].includes(r.code) && stand().calls.length === 0 && !/FORTSETZEN/.test(r.aus), 'fremd veränderte Datei neben einer neuen: kein Fortsetzen, nichts geschrieben (Exit ' + r.code + ')');
+  // 24f. Kein Fortsetzen ohne Sicherung (der Soll-Stand wäre nicht prüfbar)
+  neuerStand({ [NEUE_DATEIEN.KARTE]: soll[NEUE_DATEIEN.KARTE] }); const sv24 = join(PAKET, 'sicherung', sichName(DATEIEN.CSS)), sv24Inhalt = readFileSync(sv24, 'utf8'); rmSync(sv24);
+  r = lauf('', { LIVE: '1' }); ok(r.code !== 0 && stand().calls.length === 0 && !/FORTSETZEN/.test(r.aus), 'ohne Sicherung kein Fortsetzen, nichts geschrieben (Exit ' + r.code + ')'); writeFileSync(sv24, sv24Inhalt);
+  // 24g. Rücknahme mit FREMD_UEBERSCHREIBEN=1 über eine fremd veränderte Sprachdatei: die Warnung steht in der Meldung, ohne den Schalter Exit 3
+  neuerStand(); lauf('', { LIVE: '1' }); const FREMD_SPRACH = '\n'; { const st = stand(); st.files[DATEIEN.EN] += FREMD_SPRACH; writeFileSync(STATE, JSON.stringify(st)); }
+  r = lauf('', { ZURUECK: '1', LIVE: '1' }); gleich(r.code, 3, 'Rücknahme, fremd veränderte Sprachdatei, ohne Schalter: Exit 3'); ok(stand().files[DATEIEN.EN] === soll[DATEIEN.EN] + FREMD_SPRACH, 'Rücknahme ohne Schalter: die Sprachdatei bleibt unberührt');
+  r = lauf('', { ZURUECK: '1', LIVE: '1', FREMD_UEBERSCHREIBEN: '1' }); gleich(r.code, 0, 'Rücknahme mit FREMD_UEBERSCHREIBEN=1: Exit 0');
+  ok(/ACHTUNG: eine fremd veränderte Sprachdatei wird ROH/.test(r.aus) && /locales\/en\.default\.json/.test(r.aus) && /Sprach-Editor/.test(r.aus), 'Rücknahme mit FREMD_UEBERSCHREIBEN=1: die Warnung nennt die Sprachdatei und den Sprach-Editor'); ok(stand().files[DATEIEN.EN] === sich[DATEIEN.EN], 'Rücknahme mit FREMD_UEBERSCHREIBEN=1: die Sprachdatei ist roh auf dem Ausgangsstand (die fremde Änderung ist weg, wie angekündigt)');
 } finally {
   rmSync(D, { recursive: true, force: true });
 }

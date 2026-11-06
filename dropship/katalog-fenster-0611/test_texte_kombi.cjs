@@ -344,7 +344,26 @@ const TESTMODELLE = [
   [749, 'Hundehalsband (Ausnahme Halsband)'], [668, 'Bikini-Oberteil (Ausnahme Druck Oberteil)'], [669, 'Bikini-Unterteil (Ausnahme Druck Unterteil)'], [909, 'Tumbler 20 oz'],
   [1564, 'Fotobuch (Seiten)'], [1656, 'Kalender (Monate)'], [389, 'Rucksack mit Laptop-Zoll'], [645, 'Kerze'],
   [81, 'Beanie mit supplier_out_of_stock'], [751, 'Tumbler 16 oz ohne Mengenangabe'], [678, 'Tiernapf oz'], [745, 'Leine ft'], [1013, 'Notizbuch Farbe als Mass'], [886, 'Duvet King/Queen'], [1677, 'Beanie 12 Zoll im Titel'], [653, 'Pint-Glas mit titleDe'], [861, 'Kerze mit titleDe'], [906, 'Aufkleber mit pcs'],
+  [634, 'Holz-Ornamente: Farbe Wood, Grösse Heart'], [891, 'Koffer: Small/Medium/Large'],
 ];
+// Erwartete Anzeige, von Hand gerechnet und unabhängig von den Wörterbüchern und Faktoren im JS (Korrektur der Abnahme 06.11.2026): die Negativprüfungen («keine imperiale Einheit», «kein englisches Wort») sehen falsche Faktoren oder Wörter nicht
+const PINS = {
+  678: { groessen: ['532 ml', '946 ml'] },                                  // 18 oz × 29,5735 = 532,3 · 32 oz × 29,5735 = 946,4
+  745: { groessen: ['183 cm'] },                                            // 6 ft × 30,48 = 182,9
+  1: { groessenEnthalten: ['A1 (59,4 × 84,1 cm)', '25 × 25 cm', '30 × 42 cm'] }, // A1 nach DIN 476 · 10″ = 25,4 cm · 11,69″×16,54″ = 29,7 × 42,0 cm
+  1677: { titelEnthaelt: '30 cm' },                                         // 12″ = 30,48 cm
+  634: { farben: ['Holz'], groessenEnthalten: ['Herz'] },                    // Wood · Heart
+  891: { groessen: ['Gross', 'Klein', 'Mittel'] },                           // Large · Small · Medium
+  886: { groessen: ['King (US)', 'Queen (US)', 'Twin (US)', 'Twin XL (US)'] },
+};
+function pruefePin(id, d, vp) {
+  const pin = PINS[id]; if (!pin) return; const n = 'Pin M' + id + ' ' + vp;
+  const sortiert = (a) => [...a].sort();
+  if (pin.groessen) ok(JSON.stringify(sortiert(d.groessen)) === JSON.stringify(sortiert(pin.groessen)), n + ' Grössen genau ' + pin.groessen.join(' | '), d.groessen.join(' | '));
+  if (pin.groessenEnthalten) ok(pin.groessenEnthalten.every((x) => d.groessen.includes(x)), n + ' Grössen enthalten ' + pin.groessenEnthalten.join(' | '), d.groessen.join(' | '));
+  if (pin.farben) ok(JSON.stringify(sortiert(d.farben)) === JSON.stringify(sortiert(pin.farben)), n + ' Farben genau ' + pin.farben.join(' | '), d.farben.join(' | '));
+  if (pin.titelEnthaelt) ok(d.titel.includes(pin.titelEnthaelt) && d.kartenTitel.includes(pin.titelEnthaelt), n + ' Titel nennt «' + pin.titelEnthaelt + '»', d.titel + ' | ' + d.kartenTitel);
+}
 
 async function pruefeFrische(browser) {
   // Lesekopien gegen Live: JS, Index und zwei Schalen
@@ -382,7 +401,7 @@ async function laufeSchnell(browser) {
       ok(opts.length > 10 && opts.every((x) => !IMP.test(x) && !ENG_GROESSE.test(x)), vp.name + ' Grössenfilter ohne imperiale Einheit und ohne englische Grössenwörter (' + opts.length + ' Einträge)', opts.filter((x) => IMP.test(x) || ENG_GROESSE.test(x)).join(' ; ')); }
     for (const [id, name] of TESTMODELLE) {
       await oeffne(page, id); const d = await lies(page);
-      pruefeDeutsch(id, d, vp.name);
+      pruefeDeutsch(id, d, vp.name); pruefePin(id, d, vp.name);
       if (d.ueberEingefasst) overflowEingefasst.push(vp.name + ' M' + id + ': ' + d.ueberEingefasst);
       if (id === 294 && vp.name === '1280') { console.log('  Beispiel 294 Position:', faktenText(d, 'Positionen laut Modellangaben')); console.log('  Beispiel 294 Optionen:', d.optionen.slice(0, 2).map((o) => o.join(': ').slice(0, 110))); }
       if (id === 294 && vp.name === '1280') ok(zaehler.texte === 1, 'Textdatei nach dem ersten Öffnen genau 1x geladen', 'Anfragen: ' + zaehler.texte);
@@ -761,6 +780,24 @@ async function laufeKombi(browser) {
     const { ctx, page, logs } = await neuerKontext(browser, { width: 1280, height: 900 }, { bestellbar: [], ausblendenEcht: true });
     await laden(page);
     const kartenIds = async () => { const ids = []; for (let k = 0; k < 8; k++) { ids.push(...await page.evaluate(() => [...document.querySelectorAll('.lcl-card')].map((c) => c.dataset.productId))); const weiter = page.locator('[data-lcl-next]'); if (!(await weiter.isVisible()) || !(await weiter.isEnabled())) break; await weiter.click(); await page.waitForTimeout(150); } return ids; };
+    // Alle sichtbaren Karten (auch bei SCHNELL=1): deutscher Titel, deutsche Farbnamen, gerundete Zentimeter-Grössen, ohne einen Dialog zu öffnen
+    {
+      const karten = [];
+      for (let k = 0; k < 8; k++) {
+        karten.push(...await page.evaluate(() => [...document.querySelectorAll('.lcl-card')].map((c) => ({ id: c.dataset.productId, titel: c.querySelector('h3')?.textContent || '', farben: [...c.querySelectorAll('.lcl-card-color')].map((x) => x.title), groessen: c.querySelector('.lcl-card-sizes')?.textContent || '' }))));
+        const weiter = page.locator('[data-lcl-next]'); if (!(await weiter.isVisible()) || !(await weiter.isEnabled())) break; await weiter.click(); await page.waitForTimeout(150);
+      }
+      ok(karten.length === sichtbar.length, 'Karten: alle ' + sichtbar.length + ' bestellbaren Modelle gelesen', String(karten.length));
+      for (const k of karten) {
+        const m = E[k.id];
+        ok(k.titel === ST.K.TITEL_DE[k.id], 'Karte M' + k.id + ': deutscher Titel «' + (ST.K.TITEL_DE[k.id] || '?') + '»', k.titel);
+        if (m && m.farben.size <= 8) ok(JSON.stringify([...k.farben].sort()) === JSON.stringify([...m.farben].map((f) => FARBE_DE[f] ?? '??' + f).sort()), 'Karte M' + k.id + ': Farbnamen deutsch', k.farben.join(',') + ' | ' + [...m.farben].join(','));
+        const erwCm = m ? [...m.groessen].map(cmAusZoll).filter(Boolean) : [];
+        if (erwCm.length && m.groessen.size <= 9) ok(erwCm.every((x) => k.groessen.includes(x)) && !/\d,\d\d/.test(k.groessen), 'Karte M' + k.id + ': Zentimeter-Grössen gerundet', k.groessen + ' <> ' + erwCm.join(' | '));
+      }
+      // zurück auf Seite 1
+      for (let k = 0; k < 8; k++) { const zurueck = page.locator('[data-lcl-previous]'); if (!(await zurueck.isVisible()) || !(await zurueck.isEnabled())) break; await zurueck.click(); await page.waitForTimeout(100); }
+    }
     // Sortierung «Meiste Ausführungen» = Zahl der BESTELLBAREN Ausführungen (nicht die Hersteller-Gesamtzahl), bei Gleichstand nach Modellnummer
     await page.selectOption('[data-lcl-sort]', 'variants_desc'); await page.waitForTimeout(300);
     const reihe = await kartenIds(), erwReihe = sichtbar.slice().sort((a, b) => E[b].vids.size - E[a].vids.size || Number(a) - Number(b));
