@@ -23,7 +23,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 <script>
 window.__ROWS = %%ROWS%%;
 (function () {
-  var NOW = Date.parse('2026-11-05T20:30:00Z');
+  var NOW = Date.parse('2026-11-06T06:35:00Z');
   Date.now = function () { return NOW; };
   var draws = {}, gemountet = new WeakMap();
   window.dash = {
@@ -71,8 +71,8 @@ for r in demo:
     if r["id"] == "autopilot":
         r["status"] = "gelb"
     if r["id"] == "auswahl":
-        r["ereignis_iso"] = "2026-11-05T19:45:00Z"
+        r["ereignis_iso"] = "2026-11-06T05:50:00Z"
     if r["id"] == "tagesupdate":
-        r["ereignis_iso"] = "2026-11-05T20:10:00Z"
+        r["ereignis_iso"] = "2026-11-06T06:15:00Z"
 schreibe("harness_demo.html", demo)
 print("ok", len(rows), "Zeilen")
