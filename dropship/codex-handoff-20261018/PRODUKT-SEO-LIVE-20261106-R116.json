@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R116_20261106",
+  "at": "2026-11-06T13:10:24+01:00",
+  "timezone": "Europe/Zurich",
+  "identity": {"shopName": "LuxeStyle", "primaryDomain": "luxestyle.ch", "currency": "CHF", "country": "CH", "matched": true},
+  "coordination": {
+    "codexBranchBefore": "7e18307d12b6210c87404e110de8a0ad44e6ebef",
+    "claudePullRequest": 2907,
+    "claudeHead": "193f3397090f6db24d896cc19ad104753d1608cd",
+    "claudeProductIds": 43,
+    "overlapWithR116": 0,
+    "sharedLiveLock": "unknown"
+  },
+  "products": [
+    {"id": "15481260048769", "title": "Magnetisches Smartwatch-Ladegerät mit Trageschlaufe", "handle": "tragbares-magnetisches-wireless-ladegerat-fur-756288", "variants": 5, "pricesChf": ["14.90"], "altTexts": 20, "publications": 7},
+    {"id": "15448930812289", "title": "Kabelloser Lockenstab mit USB-Ladefunktion", "handle": "kabelloser-lockenstab-mit-usb-ladefunktion-623000", "variants": 5, "pricesChf": ["18.90", "19.90"], "altTexts": 8, "publications": 8},
+    {"id": "15449512903041", "title": "Damenbluse mit Brusttaschen und ausgestellten Ärmeln", "handle": "franzosisches-taschenhemd-607400", "variants": 15, "pricesChf": ["15.90", "16.90"], "altTexts": 8, "publications": 7},
+    {"id": "15449576767873", "title": "Herrenpullover in 2-in-1-Optik mit Hemdkragen", "handle": "herren-2-in-1-strickpullover-mit-hemdkragen-623200", "variants": 15, "pricesChf": ["22.90", "23.90"], "altTexts": 8, "publications": 7},
+    {"id": "15460665393537", "title": "Mobiler 4G-LTE-Router in Schwarz mit Akku", "handle": "mobiler-4g-lte-router-mit-akku-616500", "variants": 1, "pricesChf": ["49.90"], "altTexts": 5, "publications": 8},
+    {"id": "15448075829633", "title": "Damen-T-Shirt mit Weihnachtsmotiv 2025", "handle": "weihnachts-t-shirt-fur-damen-mit-aufdruck-630400", "variants": 96, "pricesChf": ["14.90", "15.90"], "altTexts": 20, "publications": 7},
+    {"id": "15449475514753", "title": "Schwarzer Herren-Hoodie mit Hai- und Ankermotiv", "handle": "3d-shark-pullover-fur-herren-600300", "variants": 8, "pricesChf": ["15.90", "16.90", "17.90", "18.90"], "altTexts": 2, "publications": 7},
+    {"id": "15449474793857", "title": "Herren-Pullover mit Kontrastkragen und kurzem Reissverschluss", "handle": "herren-hoodie-mit-halb-reissverschluss-609700", "variants": 24, "pricesChf": ["16.90", "17.90", "18.90"], "altTexts": 8, "publications": 7}
+  ],
+  "writeSummary": {
+    "productUpdateSuccess": 8,
+    "fileUpdateSuccess": 9,
+    "distinctFinalAltTexts": 79,
+    "altTextWriteOperations": 80,
+    "mutationCalls": 10,
+    "explicitRejectedFileUpdate": 1,
+    "rejectedFileUpdateEffect": "none",
+    "resolution": "fresh_media_id_read_then_one_targeted_fileUpdate",
+    "languageQaCorrection": "one_alt_text",
+    "blindRetries": 0,
+    "uncertainWrites": 0
+  },
+  "finalQa": {
+    "rootGo": 8,
+    "independentGo": 8,
+    "publicHttp200": 8,
+    "activeProducts": 8,
+    "variants": 169,
+    "publicVariantsAvailable": 169,
+    "uniqueSkus": 169,
+    "imagesReachable": 79,
+    "altTextsPresent": 79,
+    "tracking": false,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "rueckholTagPreserved": 8
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProductsBefore": 53,
+    "strictLiveCorrectedActiveProductsAfter": 61,
+    "activeProductsDenominatorCarriedForward": 56506,
+    "denominatorRecountedThisRun": false,
+    "percent": 0.10795,
+    "remaining": 56445,
+    "remainingPercentApprox": 99.89
+  },
+  "blocked": [
+    "Product15454069555585 Pixel5A variant is bound to a visible Pixel4A image; no safe replacement without supplier or SKU evidence",
+    "adult, medical and policy-sensitive candidates were excluded",
+    "all eight products retain rueckhol-0907 and are blocked for new social distribution",
+    "commercial editing and advertising rights for product images remain unknown",
+    "router product type and historical hoodie handle/sort tags require separate structural review",
+    "Christmas2025 artwork is seasonally outdated in 2026 and cannot be renamed without new genuine media",
+    "three fashion products have no variant-specific image bindings; galleries are intact but a safe mapping is unproven"
+  ],
+  "otherWrites": {"metricool": 0, "klaviyo": 0, "merchant": 0, "theme": 0, "dns": 0, "budgets": 0, "customerMessages": 0, "orders": 0, "renders": 0}
+}

@@ -1154,3 +1154,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Verkauf / Dokumentation | BRUDER-Collection ft-bruder gezielt öffentlich und strukturell geprüft; enger SEO-/Meta-/Einleitungstext ohne unbelegten CH-Lager-Claim vorbereitet. Paket, Masterbriefing, Maschinenbelege und Projektgedächtnis fortgeschrieben | Collection HTTP200/Canonical korrekt/297 Produkte/Regel TAG EQUALS bruder;20/20 Stichprobe ACTIVE, bebildert, CHF. Textänderung nur zur Freigabe. Revision115; keine Shop-, Merchant-, Feed-, Theme-, DNS-, Budget-, Rabatt-, Kunden-, Bestell- oder Renderänderung |
 
 [LUXESTYLE_R115_20261106] [Kompaktes Content- und Verkaufspaket](MORGENPAKET-20261106-R115.md) · [Masterbriefing](MASTER-CONTENT-20261106-R115.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261106-R115.json). Frische Identitäts-, Planungs-, Kennzahl-, Produkt- und Klaviyo-Gegenprobe; zwei enge Freigabeentwürfe, kein externer Write.
+
+### R116
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/luxestyle.ch/CHF/Schweiz frisch bestätigt; Claude-PR2907 bis Head193f3397090f6db24d896cc19ad104753d1608cd und43 Produkt-IDs gegen acht Kandidaten geprüft | Keine ID-/Redaktionsüberschneidung; gemeinsamer Live-Lock/Receipt unbekannt. Jedes Produkt vor Write frisch gelesen |
+| Acht Produktseiten | Smartwatch-Ladegerät, Lockenstab, Damenbluse, 2-in-1-Herrenpullover, 4G-LTE-Router, Damen-Weihnachts-T-Shirt2025, Hai-Hoodie und Herren-Pullover mit Kontrastkragen: Titel, Body, SEO und79 finale Alttexte quellengebunden korrigiert | Acht `productUpdate` und neun erfolgreiche `fileUpdate`; unbelegte Material-/Funktions-/Liefer-/Rabattclaims entfernt. Schutzfelder erhalten |
+| Expliziter Dateifehler | Beim letzten kombinierten Write meldete Shopify acht veraltete Medien-IDs als nicht vorhanden, während die Produktfelder bestätigt geschrieben waren; aktuelle IDs frisch gelesen und nur Alttexte gezielt nachgetragen | Keine Dateiwirkung des abgelehnten Teils, kein unklarer Write und kein blinder Retry; final acht Alttexte bestätigt |
+| QA / Fortschritt | Admin und alle acht öffentlichen Seiten/Produkt-JSONs gemeinsam zurückgelesen; unabhängige QA und eine daraus folgende einzelne Alttext-Sprachkorrektur abgeschlossen | Root- und unabhängige QA8/8 GO;169 Varianten/169 eindeutige SKUs,79 Bilder mit Alttext. Streng61/56’506=0,10795 %, rund0,11 %;56’445/rund99,89 % offen |
+| Blocker / Grenzen | Pixel5A/4A-Medienfehler ohne Write zurückgestellt; Adult-/Medizin-/Policy-Fälle ausgeschlossen. Router-Typ, Hoodie-Struktur, fehlende Variantenbildbindungen und 2025-Saisonmotiv separat eingeordnet | `rueckhol-0907` und unbekannte Bildrechte blockieren Social. Keine Metricool-/Klaviyo-/Merchant-/Theme-/DNS-/Budget-/Kunden-/Bestell-/Renderänderung; keine Tagesreport-Wiederholung |
+
+[LUXESTYLE_R116_20261106] [Acht Produktseiten live korrigiert](PRODUKT-SEO-LIVE-20261106-R116.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R116.json). Beschleunigter kontrollierter Batch mit vollständigen Readbacks;61/56’506 streng abgeschlossen.
