@@ -452,6 +452,10 @@ jobs:
           node dropship/katalog-fenster-0611/ziel_bauen.mjs --pruefen
           OHNE_LIQUID=1 node dropship/katalog-fenster-0611/kombi_test.mjs   # ohne Ruby-Liquid (auf dem Runner nicht installiert); der Ruby-Teil läuft von Hand
           node dropship/katalog-fenster-0611/apply_test.mjs
+      - name: Spiegelwerkzeug für Printful-Vorlagenbilder (Attrappe, Mutationsprobe; kein Netz)
+        run: |
+          node dropship/selbst-gestalten-fertig-0511/spiegel-0611/spiegeln_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/spiegel-0611/spiegeln_mutation.mjs
       - name: Printful-Lager-Wächter (Logik, Verhalten gegen gefälschtes Printful/Shopify/Telegram, Mutationsprobe; rund 40 s, kein Netz)
         run: |
           node automation/lib/printful_lager_test.mjs
