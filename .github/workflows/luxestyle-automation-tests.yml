@@ -438,5 +438,5 @@ jobs:
       - name: Katalogfenster gemeinsames Paket 06.11. (Soll-Stand der Dateien, Kombination, Einspielskript gegen Attrappe; Browsertests laufen nur von Hand, sie holen das Live-Dokument)
         run: |
           node dropship/katalog-fenster-0611/ziel_bauen.mjs --pruefen
-          node dropship/katalog-fenster-0611/kombi_test.mjs
+          OHNE_LIQUID=1 node dropship/katalog-fenster-0611/kombi_test.mjs   # ohne Ruby-Liquid (auf dem Runner nicht installiert); der Ruby-Teil läuft von Hand
           node dropship/katalog-fenster-0611/apply_test.mjs
