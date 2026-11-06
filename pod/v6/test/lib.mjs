@@ -196,7 +196,8 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
  * @param basis    Adresse des Test-Servers
  * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool,
  *                   cloudinaryMaxBytes: Zahl (grössere Uploads → HTTP 400 «File size too large»), cloudinaryMaxPixel: Zahl (mehr Pixel → HTTP 400 «Image dimensions too large»),
- *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms }
+ *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms,
+ *                   cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
  * @returns { page, ctx, fehler: string[], uploads: [], abgelehnt: [], warenkorb: [], png(url), schliessen() }
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
@@ -211,12 +212,15 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
   const warenkorb = [];
   const gespeichert = new Map();
   page.on('pageerror', (e) => fehler.push('pageerror: ' + e.message));
-  page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) fehler.push('console.error: ' + m.text()); });
+  // opt.corsErwartet: der Test lässt ein Bild absichtlich an der CORS-Sperre scheitern; die Meldung «blocked by CORS policy» schreibt Chromium selbst, nicht der Editor
+  page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text()) && !(opt.corsErwartet && /blocked by CORS policy/.test(m.text()))) fehler.push('console.error: ' + m.text()); });
   /** opt.printfulBild / opt.shopifyBild: (url) → { status?, typ, body, cors?: false } oder null (dann gilt die Standard-Attrappe). Zähler: bildAnfragen (Adressen aller Bild-Anfragen an Printful und Shopify Files). */
   const bildAnfragen = [];
   function bildAntwort(route, r) {
     if (r.status && r.status !== 200) return route.fulfill({ status: r.status, contentType: 'text/plain', body: 'nicht da' });
-    return route.fulfill({ status: 200, contentType: r.typ, body: r.body, headers: r.cors === false ? {} : { 'access-control-allow-origin': '*' } });
+    // cors: false = der Server gibt die Freigabe nur einem FREMDEN Ursprung (Chromium lehnt ein Bild mit crossOrigin=anonymous dann ab). Ganz ohne Kopf ginge es nicht: Playwright ergänzt bei
+    // abgefangenen Antworten selbst «access-control-allow-origin: *» (GEMESSEN 06.11.2026), die Attrappe wäre dann freigegeben.
+    return route.fulfill({ status: 200, contentType: r.typ, body: r.body, headers: { 'access-control-allow-origin': r.cors === false ? 'https://fremd.example' : '*' } });
   }
   await page.route('https://files.cdn.printful.com/**', (route) => {
     const u = route.request().url();

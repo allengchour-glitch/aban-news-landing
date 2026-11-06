@@ -239,7 +239,7 @@ szenario('tasse', true, async (b, srv) => {
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
   // Tassenfoto nicht gespiegelt (null): Printful sendet für /products/ keinen CORS-Kopf → sauberer Rückfall auf die Druckfläche
-  const t = await oeffnen(b, srv, `${TASSE}&spiegel=0`, { printfulBild: (u) => (/\/products\//.test(u) ? { typ: 'image/png', body: tassePng(), cors: false } : null) });
+  const t = await oeffnen(b, srv, `${TASSE}&spiegel=0`, { corsErwartet: true, printfulBild: (u) => (/\/products\//.test(u) ? { typ: 'image/png', body: tassePng(), cors: false } : null) });
   await sichtWarten(t.page);
   await textHinzufuegen(t.page, 'Hallo');
   await t.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
@@ -330,7 +330,7 @@ szenario('rueckfall', true, async (b, srv) => {
   }
   await rueckfallPruefen('Bild nicht da (HTTP 404)', `${TSHIRT}&spiegel=0`, { printfulBild: (u) => (/\/m\//.test(u) ? { status: 404 } : null) });
   await rueckfallPruefen('Spiegel nicht da (HTTP 404)', TSHIRT, { shopifyBild: (u) => (/luxe-vorschau-/.test(u) ? { status: 404 } : null) });
-  await rueckfallPruefen('CORS-Fehler (Bild ohne Freigabe)', `${TSHIRT}&spiegel=0`, { printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: geisterPng(), cors: false } : null) });
+  await rueckfallPruefen('CORS-Fehler (Bild ohne Freigabe)', `${TSHIRT}&spiegel=0`, { corsErwartet: true, printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: geisterPng(), cors: false } : null) });
   // Daten kaputt oder fremd: es gibt gar keinen Umschalter, nichts bricht
   for (const [name, query] of [['Daten kein JSON', `${TSHIRT}&vkaputt=json`], ['Schema 2', `${TSHIRT}&vkaputt=schema`], ['unbekannter Adapter', `${TSHIRT}&vkaputt=modell`], ['Daten nur für ein anderes Modell', `karte=19&${SHOP}&vorschau=71`]]) {
     const s = await oeffnen(b, srv, query);
