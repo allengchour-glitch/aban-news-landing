@@ -75,6 +75,7 @@ on:
       - 'automation/lib/pod_editor_bg_test.mjs'
       - 'dropship/taxonomie-2610-b/**'
       - 'dropship/tiktok-cj-videos-0311/**'
+      - 'dropship/wp6-0611/theme/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
@@ -461,3 +462,29 @@ jobs:
           node automation/lib/printful_lager_test.mjs
           node automation/printful_lager_test.mjs
           node automation/printful_lager_mutation.mjs
+
+  # Warenkorb-Miniatur (WP6 Teil C, 06.11.2026): Patch fuer snippets/cart-products.liquid (echtes Liquid: LiquidJS; Ruby-Liquid und Chromium laufen nur von Hand),
+  # Einspielskript gegen Attrappen der Theme-API und der Storefront, Fundstellen der Mutanten (die volle Mutationsprobe dauert rund 5 Minuten und laeuft von Hand). Kein Netz, keine Geheimnisse.
+  # Neue Testordner immer an ZWEI Stellen eintragen: `paths:` oben UND `sparse-checkout` hier.
+  warenkorb-miniatur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/lib
+            dropship/wp6-0611/theme
+            .github/workflows/luxestyle-automation-tests.yml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: LiquidJS 10.30.1
+        run: npm install --silent --no-audit --no-fund --prefix "$RUNNER_TEMP/lq" liquidjs@10.30.1
+      - name: Patch (Liquid-Faelle), Einspielskript gegen Attrappe, Fundstellen der Mutanten
+        run: |
+          LIQUIDJS_DIR="$RUNNER_TEMP/lq" OHNE_BROWSER=1 node dropship/wp6-0611/theme/liquid_test.mjs
+          node dropship/wp6-0611/theme/apply_test.mjs
+          node dropship/wp6-0611/theme/liquid_mutation.mjs --pruefen
+          node dropship/wp6-0611/theme/apply_mutation.mjs --pruefen
