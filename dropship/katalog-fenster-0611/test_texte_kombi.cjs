@@ -798,6 +798,10 @@ async function laufeKombi(browser) {
       // zurück auf Seite 1
       for (let k = 0; k < 8; k++) { const zurueck = page.locator('[data-lcl-previous]'); if (!(await zurueck.isVisible()) || !(await zurueck.isEnabled())) break; await zurueck.click(); await page.waitForTimeout(100); }
     }
+    // «Basisfarbe …» nur bei genau einer echten Farbe: nie bei Oberflächen (Matt/Glänzend), auch bei SCHNELL=1
+    for (const pid of ['601', '684', '798']) if (sichtbar.includes(pid)) { await oeffne(page, Number(pid)); const d = await lies(page); ok(!/Basisfarbe/.test(d.dialogText), 'M' + pid + ' (nur Oberfläche «Matt»): kein Satz «Basisfarbe …»', d.dialogText.match(/Dieses Modell ist in der Basisfarbe[^.]*\./)?.[0] || ''); await schliesse(page); }
+    if (sichtbar.includes('84')) { await oeffne(page, 84); const d = await lies(page); ok(/Dieses Modell ist in der Basisfarbe Gelb erfasst\./.test(d.dialogText), 'M84 (eine echte Farbe): «Dieses Modell ist in der Basisfarbe Gelb erfasst.»'); await schliesse(page); }
+    await page.fill('[data-lcl-search]', ''); await page.waitForTimeout(450);
     // Sortierung «Meiste Ausführungen» = Zahl der BESTELLBAREN Ausführungen (nicht die Hersteller-Gesamtzahl), bei Gleichstand nach Modellnummer
     await page.selectOption('[data-lcl-sort]', 'variants_desc'); await page.waitForTimeout(300);
     const reihe = await kartenIds(), erwReihe = sichtbar.slice().sort((a, b) => E[b].vids.size - E[a].vids.size || Number(a) - Number(b));
