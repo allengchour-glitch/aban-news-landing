@@ -4,6 +4,8 @@
 // Umgebung:  LOKAL=1  kein Zugriff auf die Live-Seite (Dokument und Daten aus dem Zwischenspeicher; für die Mutationsprobe)
 //            SCHNELL=1  nur 1440 px und weniger Detailansichten
 //            PRUEFSUMME_IGNORIEREN=1  Nachbildung nicht gegen daten/pruefstand.json prüfen (nur Mutationsprobe)
+//            MINIFIZIERT=1 ESBUILD=<Pfad zu esbuild>  JS und CSS so ausliefern, wie der Shopify-CDN es tut (GEMESSEN 06.11.2026: `esbuild --minify-whitespace --minify-syntax` ergibt das Live-JS
+//                     Byte für Byte, plus die Zeile //# sourceMappingURL): der Browser führt am echten Shop die verkleinerte Fassung aus, nicht den Quelltext
 //            CACHE_DIR=<Ordner>  Zwischenspeicher (Vorgabe: Scratch); SHOTS_DIR=<Ordner>  kleine JPEG-Bilder (Vorgabe: Scratch)
 // Vor jeder Messung: MD5 der Nachbildung (JS, CSS, Liquid, Sprachdateien, neue Dateien) gegen daten/pruefstand.json.
 // Live-Zugriffe: genau ein Seitenabruf (Dokument) pro Lauf plus die Datenschalen, die geöffnet werden; Cloudflare-Sperre -> Exit 2.
@@ -21,6 +23,19 @@ const LOKAL = process.env.LOKAL === '1', SCHNELL = process.env.SCHNELL === '1';
 const LIVE_URL = 'https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
 const md5 = (s) => crypto.createHash('md5').update(s).digest('hex');
+const MINIFIZIERT = process.env.MINIFIZIERT === '1';
+const miniMemo = new Map();
+const mini = (text, loader) => {
+  if (!MINIFIZIERT) return text;
+  const k = loader + md5(text);
+  if (!miniMemo.has(k)) {
+    if (!process.env.ESBUILD) throw new Error('MINIFIZIERT=1 braucht ESBUILD=<Pfad zu esbuild>');
+    const r = spawnSync(process.env.ESBUILD, ['--minify-whitespace', '--minify-syntax', '--loader=' + loader, '--log-level=error'], { input: text, encoding: 'utf8', maxBuffer: 1 << 28 });
+    if (r.status !== 0 || !r.stdout) throw new Error('esbuild schlug fehl: ' + (r.stderr || '').slice(0, 300));
+    miniMemo.set(k, r.stdout);
+  }
+  return miniMemo.get(k);
+};
 const erg = { fehler: [], daten: {} };
 let pruefungen = 0;
 const pruef = (ok, text) => { pruefungen++; if (!ok) erg.fehler.push(text); };
@@ -153,8 +168,8 @@ async function oeffne(browser, vp, o) {
       if (/clarity|facebook|tiktok|google|doubleclick|analytics|klaviyo|judge|hotjar|bing|pinterest|snap|cookie|shopifycloud|shop\.app|monorail/i.test(u.hostname + u.pathname)) return await route.abort();
       if (typ === 'document' && u.pathname === '/collections/selbst-gestalten-1') return await route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: o.html });
       const p = u.pathname;
-      if (/\/assets\/luxe-clothing\.js$/.test(p)) return await route.fulfill({ status: 200, contentType: 'text/javascript; charset=utf-8', body: o.js });
-      if (/\/assets\/luxe-clothing\.css$/.test(p)) return await route.fulfill({ status: 200, contentType: 'text/css; charset=utf-8', body: o.css });
+      if (/\/assets\/luxe-clothing\.js$/.test(p)) return await route.fulfill({ status: 200, contentType: 'text/javascript; charset=utf-8', body: mini(o.js, 'js') });
+      if (/\/assets\/luxe-clothing\.css$/.test(p)) return await route.fulfill({ status: 200, contentType: 'text/css; charset=utf-8', body: mini(o.css, 'css') });
       for (const [muster, wert] of [[/\/assets\/luxe-clothing-ausblenden\.json$/, o.ausblenden], [/\/assets\/luxe-clothing-variantenkarte\.json$/, o.karte]]) {
         if (!muster.test(p)) continue;
         if (wert === 'abort') return await route.abort();
