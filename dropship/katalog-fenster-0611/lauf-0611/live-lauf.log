@@ -1,0 +1,32 @@
+MAIN gid://shopify/OnlineStoreTheme/213013037447 LuxeStyle – Schrift und Banner 02.11.2026
+assets/luxe-clothing.js                        198328a67066f91ac776e7953d33f07b 54793 Byte
+assets/luxe-clothing.css                       feba50324b9f59bf07216b2d46ffdbb5 22284 Byte
+sections/luxe-clothing.liquid                  71c1406cf5d069e0a23b535d629f1bde 29145 Byte
+snippets/luxe-clothing-asset-manifest.liquid   0539431c5b7f9b15886885d4006d2fd1 3765 Byte
+snippets/luxe-selfdesign-cover.liquid          8006e5ededfe5c22a4dc44fda82ded49 2247 Byte
+sections/luxe-category.liquid                  10674566df5ca93ea7e71caf31d921dd 11581 Byte
+locales/de.json                                74704b4a7583a70276bda37f2b5fed6a 52497 Byte
+locales/en.default.json                        75522c426fe29e23479bbc3e35bffa77 49802 Byte
+locales/fr.json                                0a21cf6b810a2e2fd33552977912948b 31433 Byte
+assets/luxe-clothing-ausblenden.json           fehlt
+assets/luxe-clothing-variantenkarte.json       fehlt
+assets/luxe-clothing-texts-de.json             fehlt
+Sicherung vorhanden; neue Grössen assets/luxe-clothing.js 73490 | assets/luxe-clothing.css 22827 | sections/luxe-clothing.liquid 30450 | snippets/luxe-clothing-asset-manifest.liquid 3917 | snippets/luxe-selfdesign-cover.liquid 2345 | sections/luxe-category.liquid 11838 | locales/de.json 53481 | locales/en.default.json 50716 | locales/fr.json 32187 | assets/luxe-clothing-ausblenden.json 1571 | assets/luxe-clothing-variantenkarte.json 333774 | assets/luxe-clothing-texts-de.json 401815
+Schreibschritte: 1a Daten (2 Dateien, 327 KB) → 1b Texte-Datei (1 Datei, 392 KB) → 2 Texte und Liquid (7 Dateien, 181 KB) → 3 CSS und JS (2 Dateien, 94 KB)
+upsert assets/luxe-clothing-ausblenden.json, assets/luxe-clothing-variantenkarte.json ["assets/luxe-clothing-ausblenden.json","assets/luxe-clothing-variantenkarte.json"]
+upsert assets/luxe-clothing-texts-de.json ["assets/luxe-clothing-texts-de.json"]
+upsert locales/de.json, locales/en.default.json, locales/fr.json, sections/luxe-clothing.liquid, snippets/luxe-clothing-asset-manifest.liquid, snippets/luxe-selfdesign-cover.liquid, sections/luxe-category.liquid ["locales/de.json","locales/en.default.json","locales/fr.json","sections/luxe-clothing.liquid","snippets/luxe-clothing-asset-manifest.liquid","snippets/luxe-selfdesign-cover.liquid","sections/luxe-category.liquid"]
+upsert assets/luxe-clothing.css, assets/luxe-clothing.js ["assets/luxe-clothing.css","assets/luxe-clothing.js"]
+rücklesen neu assets/luxe-clothing.js                        GLEICH aa759708998cf30c817f71d32e8f9c58 73490
+rücklesen neu assets/luxe-clothing.css                       GLEICH d2c8da52a1870ee0c4467cda2ddfaebb 22827
+rücklesen neu sections/luxe-clothing.liquid                  GLEICH 7d49f52313723b19131ace71ac12a5a2 30450
+rücklesen neu snippets/luxe-clothing-asset-manifest.liquid   GLEICH e384e40aae88e0282e83cbd8e05c36e9 3917
+rücklesen neu snippets/luxe-selfdesign-cover.liquid          GLEICH 63f63bfa8c10c5f73aa8ead523bc4650 2345
+rücklesen neu sections/luxe-category.liquid                  GLEICH 838960ab29d146781d39861a6b8eb7a3 11838
+rücklesen neu locales/de.json                                GLEICH 1dea0b19fa05c68fa82304b826b7edff 53481
+rücklesen neu locales/en.default.json                        GLEICH 4705e4658f482b3fbc0c38ad2bb6535d 50716
+rücklesen neu locales/fr.json                                GLEICH 75ff32f03227f6c3f9ca683238f66b1e 32187
+rücklesen neu assets/luxe-clothing-ausblenden.json           GLEICH 7f27109aa5049125e80a0f3d0374861a 1571
+rücklesen neu assets/luxe-clothing-variantenkarte.json       GLEICH 5790968bda235f40049578e0471e9899 333774
+rücklesen neu assets/luxe-clothing-texts-de.json             GLEICH 86cbb8664cddc2e10a3ead2297bc9482 401815
+exit=0
