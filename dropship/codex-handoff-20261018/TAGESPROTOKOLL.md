@@ -1166,3 +1166,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Blocker / Grenzen | Pixel5A/4A-Medienfehler ohne Write zurückgestellt; Adult-/Medizin-/Policy-Fälle ausgeschlossen. Router-Typ, Hoodie-Struktur, fehlende Variantenbildbindungen und 2025-Saisonmotiv separat eingeordnet | `rueckhol-0907` und unbekannte Bildrechte blockieren Social. Keine Metricool-/Klaviyo-/Merchant-/Theme-/DNS-/Budget-/Kunden-/Bestell-/Renderänderung; keine Tagesreport-Wiederholung |
 
 [LUXESTYLE_R116_20261106] [Acht Produktseiten live korrigiert](PRODUKT-SEO-LIVE-20261106-R116.md) · [Maschinenlesbare Belege](PRODUKT-SEO-LIVE-20261106-R116.json). Beschleunigter kontrollierter Batch mit vollständigen Readbacks;61/56’506 streng abgeschlossen.
+
+
+### R117
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identitäten / Planung | Shopify LuxeStyle/luxestyle.ch/CHF/CH/CET und Metricool6227837/Europe/Zurich samt sechs Kanälen frisch gelesen; 06.–13.11. auf UUIDs, Kanäle, Doppel, Medien und Kollisionen geprüft | 33 Objekte/33 UUIDs/49 PENDING-Zustände; keine exakten kanalgleichen Doppel/Medienwiederholungen/Kollisionen. Threads0; weitere Lücken. Kein Metricool-Write |
+| Planungsqualität | Texte und unbelegte Verkaufsclaims gezielt gezählt | Drei leere FB/IG-Texte, neun «Ab Schweizer Lager»- und25 Lieferzeit/-datum-Objekte; unbekannt/unbelegt, nicht geändert |
+| Produkte / Master | Projektor15521256604033 und Panda-Halter15412301922689 auf Status, Storefront, Preise, Varianten, Medien, Tracking/Policy und Tags geprüft; denselben Projektor-Master als540-Frame-Storyboard fortgeführt | Beide ACTIVE/HTTP200/kaufbar/untracked/CONTINUE/Menge0. Projektor auswahl-offen/Rechte/Material/MP4 blockiert; Panda-Historie offen. Kein Produkt-/Render-/Social-Write |
+| Klaviyo | Tagesreport nicht wiederholt; R115-Beleg fortgeschrieben und genau einen Vse76a-Email-3-Textdiff erhalten | Flow bleibt draft, Leistung unbekannt; keine Aktivierung/Kundenansprache; CHF/USD getrennt |
+| Verkauf / Dokumentation | BRUDER ft-bruder gelesen und Ersatztext ohne unbelegtes «ab CH-Lager» dokumentiert; Paket, Masterbriefing, Belege und Gedächtnis fortgeschrieben | Collection HTTP200/297 Produkte/TAG EQUALS bruder. Text nur zur Freigabe. Revision117; keine externen operativen Writes |
+
+[LUXESTYLE_R117_20261106] [Mittagspaket](MITTAGSPAKET-20261106-R117.md) · [Masterbriefing](MASTER-CONTENT-20261106-R117.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261106-R117.json). Aktuelle Planung33/49, zwei Produktgegenproben, ein fortgeführter Master und zwei enge Freigabeentwürfe; kein externer Write.

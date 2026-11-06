@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R117_20261106",
+  "checkedAt": "2026-11-06T14:12:38+01:00",
+  "timezone": "Europe/Zurich",
+  "repositoryHeadBeforeDocumentation": "12e7c429c3e6b089376ad66ec1134f51a9551d7b",
+  "shopify": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "country": "CH",
+    "currency": "CHF",
+    "timezone": "CET",
+    "identityMatch": true,
+    "writes": 0
+  },
+  "metricool": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "identityMatch": true,
+    "channels": {
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "planningWindow": {
+      "from": "2026-11-06T14:06:00+01:00",
+      "to": "2026-11-13T14:06:00+01:00",
+      "objects": 33,
+      "uniqueUuids": 33,
+      "channelStates": 49,
+      "statuses": ["PENDING"],
+      "draft": false,
+      "autoPublish": true,
+      "counts": {"facebook": 16, "instagram": 16, "tiktok": 9, "pinterest": 3, "youtube": 5, "threads": 0},
+      "sameChannelExactDuplicates": 0,
+      "sameChannelMediaRepeats": 0,
+      "timeCollisions": 0,
+      "gaps": {
+        "threads": "entire_window",
+        "tiktok": ["2026-11-12", "2026-11-13_before_14:06"],
+        "pinterest": ["2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13_before_14:06"],
+        "youtube": ["2026-11-06_after_14:06", "2026-11-12", "2026-11-13_before_14:06"]
+      },
+      "emptyFacebookInstagramTexts": [
+        {"uuid": "-8611238648907481079", "at": "2026-11-09T16:00:00+01:00"},
+        {"uuid": "37985340483322184", "at": "2026-11-10T12:30:00+01:00"},
+        {"uuid": "-8331410252591837975", "at": "2026-11-12T12:30:00+01:00"}
+      ],
+      "unverifiedClaims": {"swissWarehouseObjects": 9, "deliveryTimeOrDateObjects": 25},
+      "pinterest": {"boardId": "1111333714239531706", "boardName": "unknown"},
+      "youtube": {"plannedObjectsMadeForKidsFalse": 5, "newMasterAudienceFlag": "requires_fresh_confirmation"}
+    },
+    "dailyMetrics": {
+      "repeatedInR117": false,
+      "reason": "daily_limit_already_used_by_R115",
+      "range": "2026-10-30/2026-11-05",
+      "source": "LAUFBELEGE-20261106-R115.json",
+      "instagram": {"ids": ["IGEV05", "IGEV38"], "views": 420, "interactions": "unknown_incomplete"},
+      "facebook": {"ids": ["FBEV49", "FBEV34"], "pageMediaViews": 322, "interactions": "unknown_incomplete"},
+      "tiktok": {"ids": ["TKEV12", "TKEV13", "TKEV14", "TKEV15"], "deliveredDays": 6, "videoViews": 623, "likes": 2, "fullRange": "unknown"},
+      "pinterest": {"ids": ["PIEV01", "PIEV04"], "deliveredDays": 5, "impressions": 2391, "interactions": 37, "fullRange": "unknown"},
+      "youtube": {"ids": ["YTEV02", "YTEV10", "YTEV12", "YTEV19"], "deliveredDays": 5, "videoViews": 22, "interactions": "unknown", "fullRange": "unknown"},
+      "threads": {"ids": ["THEV06", "THEV05"], "result": "unknown"}
+    },
+    "writes": 0
+  },
+  "products": {
+    "projector": {
+      "id": "gid://shopify/Product/15521256604033",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "storefrontHttp": 200,
+      "currentVariantIds": ["68122445283719", "68122445316487", "68122445349255", "68122445382023", "68122445414791", "68122445447559", "68122445480327"],
+      "priceRangeChf": ["34.90", "51.90"],
+      "allAvailable": true,
+      "inventory": {"quantities": [0, 0, 0, 0, 0, 0, 0], "tracked": false, "policy": "CONTINUE", "stockPromise": "none"},
+      "media": {"images": 12, "videos": 1, "videoSha256": "9ccfdc1b58b6f0b9bd1dd370a92bf21719c52a939467073b8546aefd72365795", "width": 852, "height": 480, "fps": 25, "durationSeconds": 27.96},
+      "tagsNonEmpty": true,
+      "channelGuardMatches": [],
+      "rueckhol": false,
+      "blocker": "auswahl-offen"
+    },
+    "pandaHolder": {
+      "id": "gid://shopify/Product/15412301922689",
+      "handle": "panda-handyhalter-susser-schreibtisch-stander-fur-smartphones",
+      "status": "ACTIVE",
+      "storefrontHttp": 200,
+      "variantIds": ["67788961939847", "67788961972615", "67788962005383"],
+      "pricesChf": ["14.90", "14.90", "14.90"],
+      "allAvailable": true,
+      "inventory": {"quantities": [0, 0, 0], "tracked": false, "policy": "CONTINUE", "stockPromise": "none"},
+      "media": {"images": 6, "videos": 0},
+      "tagsNonEmpty": true,
+      "channelGuardMatches": [],
+      "rueckhol": false,
+      "historyTags": ["ig-gepostet", "ig-seit-2026-10-01"],
+      "blocker": "channel_history_check_required"
+    }
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "actualMasterMp4": null,
+    "storyboardPrepared": true,
+    "targetSeconds": 18,
+    "targetPixels": "1080x1920",
+    "targetFps": 30,
+    "targetFrames": 540,
+    "preferredHook": "Licht im Detail.",
+    "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "musicFinalApproval": "open",
+    "durablePublicationLedger": "absent",
+    "oldPublishedMedia": {"uuid": "2789149365522222304", "laterMetricoolId": 399397274, "approvedForReuse": false},
+    "blockedBy": ["current_variant_motif_unit_not_bound", "four_native_vertical_takes_missing", "commercial_rights_unknown", "no_rendered_approved_18s_mp4", "music_rights_listen_mix_open", "durable_channel_ledger_absent", "channel_prepublication_gates_open"],
+    "renders": 0,
+    "uploads": 0
+  },
+  "klaviyo": {
+    "reportRepeatedInR117": false,
+    "source": "LAUFBELEGE-20261106-R115.json",
+    "accountCurrency": "USD",
+    "shopCurrencyKeptSeparate": "CHF",
+    "placedOrderMetricId": "W7XTVD",
+    "flows": {"Vse76a": "draft", "VbLQj6": "draft", "RnTvsY": "draft"},
+    "report": {
+      "abandonedCheckout": "unknown_missing_from_report",
+      "welcome": {"delivered": 2, "uniqueOpens": 1, "uniqueClicks": 0, "attributedOrders": 0},
+      "postPurchase": {"delivered": 4, "uniqueOpens": 1, "uniqueClicks": 0, "attributedOrders": 0},
+      "capturePath": "unknown_forms_query_no_rows"
+    },
+    "singleProposal": {
+      "flowId": "Vse76a",
+      "message": "Email 3",
+      "subject": "Dein Warenkorb bei LuxeStyle wartet",
+      "preview": "Prüfe deine Auswahl und setze den Einkauf fort, wenn es für dich passt.",
+      "keepDraft": true
+    },
+    "writes": 0
+  },
+  "salesProposal": {
+    "collectionId": "gid://shopify/Collection/690577179009",
+    "handle": "ft-bruder",
+    "storefrontHttp": 200,
+    "productCount": 297,
+    "rule": "TAG EQUALS bruder",
+    "currentUnsupportedDescription": "BRUDER Traktoren, Bagger & LKW – hochwertiges Spielzeug ab CH-Lager.",
+    "replacementHtml": "<p>Entdecke BRUDER Fahrzeuge, Baustellenmodelle und bworld-Spielwelten bei LuxeStyle. Vergleiche die aktuell verfügbaren Produkte, Varianten und Preise direkt in der Auswahl.</p><p>Gratisversand ab CHF 50.</p>",
+    "proposalOnly": true,
+    "writes": 0
+  },
+  "catalogProgress": {
+    "strictLiveCorrectedActiveProducts": 61,
+    "activeProductsDenominatorCarriedForward": 56506,
+    "percent": 0.10795,
+    "remainingApprox": 56445,
+    "denominatorRecountedThisRun": false
+  },
+  "externalWrites": {"shopify": 0, "metricool": 0, "klaviyo": 0, "merchant": 0, "dns": 0, "theme": 0, "budget": 0, "customerMessages": 0, "orders": 0, "renders": 0}
+}

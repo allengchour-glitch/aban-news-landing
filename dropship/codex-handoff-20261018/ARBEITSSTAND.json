@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 116,
-  "updatedAt": "2026-11-06T13:10:24+01:00",
+  "revision": 117,
+  "updatedAt": "2026-11-06T14:12:38+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -13835,6 +13835,69 @@
     "shopifyProductWrites": 8,
     "shopifyFileWrites": 9,
     "shopifyRejectedFileWritesWithoutEffect": 1,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "merchantWrites": 0,
+    "themeWrites": 0,
+    "dnsWrites": 0,
+    "customerMessages": 0,
+    "renders": 0,
+    "orderReads": 0
+  },
+  "followUpRunR117": {
+    "at": "2026-11-06T14:12:38+01:00",
+    "actualUpdates": [
+      "Fresh Shopify and Metricool identity read",
+      "Fresh seven-day Metricool plan read:33 objects,33 UUIDs,49 channel states",
+      "Two targeted ACTIVE product readbacks",
+      "Continued18s projector master storyboard and six channel drafts",
+      "Prepared one BRUDER collection replacement copy and retained one Klaviyo Email3 proposal",
+      "R117 project documentation only"
+    ],
+    "dailyReadStatus": "Metricool metrics and Klaviyo flow report were already completed once in R115 on 2026-11-06 and were not repeated. Partial rows remain unknown; no sales inference.",
+    "metricool": {
+      "planningObjects": 33,
+      "uniqueUuids": 33,
+      "channelStates": 49,
+      "sameChannelExactDuplicates": 0,
+      "sameChannelMediaRepeats": 0,
+      "timeCollisions": 0,
+      "writes": 0,
+      "qualityFindings": {
+        "emptyFacebookInstagramTexts": 3,
+        "unverifiedSwissWarehouseObjects": 9,
+        "unverifiedDeliveryObjects": 25
+      }
+    },
+    "products": {
+      "projector": "ACTIVE/HTTP200/seven available variants CHF34.90-51.90/untracked CONTINUE qty0; auswahl-offen and rights/master blockers",
+      "pandaHolder": "ACTIVE/HTTP200/three available variants CHF14.90/untracked CONTINUE qty0; Instagram history check required"
+    },
+    "master": "luxe_sternenprojektor_master_20261018 remains an18s/540-frame storyboard; no rendered approved MP4. Four native vertical takes, exact current variant/motif/unit binding and commercial rights are missing.",
+    "klaviyoSingleProposal": "Vse76a Email3 subject and preview only; keep draft. No report repeat or write.",
+    "salesProposal": "Replace unsupported BRUDER ab-CH-Lager description with neutral collection copy plus Gratisversand ab CHF50; proposal only.",
+    "catalogProgress": {
+      "strictLiveCorrectedActiveProducts": 61,
+      "activeProductsDenominatorCarriedForward": 56506,
+      "denominatorRecountedThisRun": false,
+      "percent": 0.10795,
+      "remaining": 56445,
+      "remainingPercentApprox": 99.89
+    },
+    "nextStep": "Before their scheduled slots, inspect the three empty-text and unverified stock/delivery claim objects against each original post and product; correct only with evidence. After owner approval, apply only the BRUDER collection copy as a controlled single diff. For the master, acquire four native vertical takes bound to one current A-G variant and verify commercial rights.",
+    "blockedBy": [
+      "projector current variant/motif/filmed-unit binding missing",
+      "four native premium vertical takes missing",
+      "commercial film/editing/advertising rights unknown",
+      "no rendered approved18s MP4",
+      "music final rights/listen/mix approval open",
+      "no verified durable channel publication ledger",
+      "Pinterest board name and new YouTube audience flag open",
+      "Panda Instagram history must be checked before reuse",
+      "three planned FB/IG posts have empty text",
+      "nine Swiss-warehouse and25 delivery claims unverified"
+    ],
+    "shopifyWrites": 0,
     "metricoolWrites": 0,
     "klaviyoWrites": 0,
     "merchantWrites": 0,
