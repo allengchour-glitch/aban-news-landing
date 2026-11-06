@@ -17,6 +17,7 @@ const gleich = (a, b, t) => { assert.deepStrictEqual(a, b, t); n++; };
 const md5 = (t) => createHash('md5').update(t).digest('hex');
 const START = Date.parse('2026-11-06T02:13:00Z');
 const tmpDirs = [];
+process.on('exit', () => { for (const d of tmpDirs) { try { rmSync(d, { recursive: true, force: true }); } catch { /* aufräumen */ } } });    // auch bei einem roten Test (Mutationsprobe) bleibt nichts liegen
 
 // ───────────────────────────────────────────────────────────── die gefälschte Welt
 const AUS = { EU: 'supplier_out_of_stock', US: 'supplier_out_of_stock' }, DA = { EU: 'in_stock', US: 'in_stock' };

@@ -150,6 +150,7 @@
       kontrastDunkel: '⚠\uFE0F Dein Motiv ist dunkel und der Stoff ebenfalls: Im Druck wird man es kaum sehen. Wähle hellere Motivfarben oder eine hellere Stofffarbe.',
       kontrastHell: '⚠\uFE0F Dein Motiv ist hell und der Stoff ebenfalls: Im Druck wird man es kaum sehen. Wähle dunklere Motivfarben oder eine dunklere Stofffarbe.',
       dpiMid: 'Für ein scharfes Ergebnis sind {gut} dpi ideal.',
+      dpiMax: 'Bildauflösung auf dem Produkt: ca. {n} dpi. Mehr trägt die Druckdatei bei diesem Format nicht: Dein Foto ist gross genug.',
       qSperre: 'Kauf gesperrt: «{a}» hat nur ca. {n} dpi, nötig sind mindestens {min} dpi. Skaliere das Foto kleiner, nimm ein grösseres Foto oder entferne es.',
       draftBack: 'Dein Entwurf wurde wiederhergestellt.',
       draftLost: 'Fotos, die noch nicht hochgeladen waren, konnten nicht wiederhergestellt werden. Bitte füge sie noch einmal hinzu.',
@@ -204,6 +205,7 @@
       kontrastDunkel: '⚠\uFE0F Your design is dark and so is the fabric: it will hardly be visible in print. Choose lighter design colours or a lighter fabric colour.',
       kontrastHell: '⚠\uFE0F Your design is light and so is the fabric: it will hardly be visible in print. Choose darker design colours or a darker fabric colour.',
       dpiMid: 'For a sharp result {gut} dpi is ideal.',
+      dpiMax: 'Image resolution on the product: about {n} dpi. The print file cannot carry more at this size: your photo is large enough.',
       qSperre: 'Purchase blocked: "{a}" has only about {n} dpi, at least {min} dpi are needed. Scale the photo down, use a larger photo or remove it.',
       draftBack: 'Your draft was restored.',
       draftLost: 'Photos that had not finished uploading could not be restored. Please add them again.',
@@ -656,11 +658,14 @@
   }
 
   // ── Qualitätstor (WP4) ──────────────────────────────────────────────────────────────────────────
-  /** Stufe einer effektiven Bildauflösung: 'sperre' (unter dem Mindestwert der Karte: der Kauf bleibt gesperrt), 'mittel' (Mindestwert bis DPI_GUT: Warnung), 'gut'. */
-  function qualitaetStufe(dpi, minDpi) {
+  /** Stufe einer effektiven Bildauflösung `dpi` (bildDpi: höchstens die Dichte der Druckdatei): 'sperre' (unter dem Mindestwert: der Kauf bleibt gesperrt), 'mittel' (Mindestwert bis DPI_GUT: Warnung), 'gut'.
+   *  `dichte` = was die Druckdatei überhaupt tragen kann (Printfile-dpi mal Verkleinerung durch die Obergrenze, bei Tasse, T-Shirt und Hülle gleich der Printfile-dpi). Die Anforderung kann nie höher sein als das,
+   *  was die Datei trägt: beim A1-Poster (9933 × 7016 px, nach der Obergrenze von 16,7 Mpx nur 146,6 dpi) wäre der Mindestwert 150 dpi sonst für JEDES Foto unerreichbar und der Kauf immer gesperrt. */
+  function qualitaetStufe(dpi, minDpi, dichte) {
     if (!(dpi >= 0)) return null;
-    if (dpi < minDpi) return 'sperre';
-    return dpi < DPI_GUT ? 'mittel' : 'gut';
+    var d = dichte > 0 ? dichte : Infinity;
+    if (dpi < Math.min(minDpi, d) - 1e-9) return 'sperre';
+    return dpi < Math.min(DPI_GUT, d) - 1e-9 ? 'mittel' : 'gut';
   }
   /** Ganzzahl für die Anzeige und für _pod_karte.qd: unter dem Mindestwert abgerundet (74,8 darf nie als «75» neben der Sperre stehen), sonst gerundet. */
   function dpiGanz(dpi, stufe) { return stufe === 'sperre' ? Math.floor(dpi + 1e-9) : Math.round(dpi); }
@@ -1320,12 +1325,16 @@
       var g = geoAktiv;
       var d = bildDpi(e, g.printfile, g.render);
       if (d === null) { box.hidden = true; return; }
-      var tief = d < karte.minDpi;
-      var stufe = qualitaetStufe(d, karte.minDpi);
+      var dichte = g.printfile.dpi * g.render.k;
+      var stufe = qualitaetStufe(d, karte.minDpi, dichte);
+      var tief = stufe === 'sperre';
       var n = zahlAnzeige(dpiGanz(d, stufe), 0);
-      // Zwischen dem Mindestwert und 150 dpi: gleiche Zeile wie bisher (Klasse lsp6-ok bleibt), dazu die Warnung «mittel» in Bernsteinfarbe; darunter sperrt das Qualitätstor den Kauf
+      // Zwischen dem Mindestwert und 150 dpi: gleiche Zeile wie bisher (Klasse lsp6-ok bleibt), dazu die Warnung «mittel» in Bernsteinfarbe; darunter sperrt das Qualitätstor den Kauf.
+      // Trägt die Druckdatei weniger als der Mindestwert (A1-Poster nach der Obergrenze) und das Foto reicht dafür aus, sagt die Zeile, dass mehr nicht geht (statt «unter 150»).
+      var grenze = dichte < karte.minDpi;
       box.className = tief ? 'lsp6-warn' : (stufe === 'mittel' ? 'lsp6-ok lsp6-mid' : 'lsp6-ok');
       box.textContent = tief ? fmt(T.dpiLow, { n: n, min: zahlAnzeige(karte.minDpi, 0) })
+        : grenze ? fmt(T.dpiMax, { n: n })
         : fmt(T.dpiLine, { n: n, min: zahlAnzeige(karte.minDpi, 0) }) + (stufe === 'mittel' ? ' ' + fmt(T.dpiMid, { gut: DPI_GUT }) : '');
       box.hidden = false;
     }
@@ -1341,7 +1350,7 @@
           if (d === null) return;
           lage.fotos++;
           if (lage.min === null || d < lage.min) lage.min = d;
-          if (qualitaetStufe(d, karte.minDpi) === 'sperre') lage.sperren.push({ p: p, e: e, dpi: d });
+          if (qualitaetStufe(d, karte.minDpi, g.printfile.dpi * g.render.k) === 'sperre') lage.sperren.push({ p: p, e: e, dpi: d });
         });
       });
       lage.sperren.sort(function (a, b) { return a.dpi - b.dpi; });

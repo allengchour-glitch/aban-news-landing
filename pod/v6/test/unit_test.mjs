@@ -17,6 +17,12 @@ import { pathToFileURL } from 'node:url';
 const { karteFuerEditor, kartenbuendelFuerEditor, shopVariantenNormalisieren, podKarteGroesstmoeglich, kartenWarnungen, BEKANNTE_HINWEIS_CODES, POD_KARTE_MAX } =
   await import(process.env.V6_KARTENBAUER ? pathToFileURL(process.env.V6_KARTENBAUER).href : '../werkzeug/karte_fuer_editor.mjs');
 import { dateienAusEigenschaften } from '../../../automation/lib/printful_bestellweg.mjs';
+import { mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { spawnSync } from 'node:child_process';
+// V6_VORSCHAUBAUER: andere Fassung des Vorschaubauers (für die Mutationsprobe)
+const VB_PFAD = process.env.V6_VORSCHAUBAUER || join(hier, '..', 'werkzeug', 'vorschau_daten_bauen.mjs');
+const VB = await import(pathToFileURL(VB_PFAD).href);
 
 let n = 0; const fehler = [];
 function pruefe(name, ok, detail = '') { n++; if (!ok) { fehler.push(`${name} ${detail}`); console.log(`  ✗ ${name} ${detail}`); } }
@@ -36,7 +42,9 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === '6.1.0');
+const SOLL_VERSION = process.env.V6_VERSION || '6.2.0';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
+const NEU = SOLL_VERSION !== '6.1.0';   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
+pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === SOLL_VERSION, win.LSPOD6.version);
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
 {
   const g = ladeV6(); const erste = g.LSPOD6; ladeV6(V6_DATEI, g);
@@ -275,6 +283,227 @@ pruefe('Test-Karte T-Shirt: Hinweise der Art «info» nur mit bekanntem Code ode
   pruefe('Vertrag: der Parser kennt weder «s» noch «px» (beide dürfen fehlen)', r1.karte && r1.karte.v === 6 && !('s' in r1.karte) && !('px' in r1.karte));
   pruefe('Vertrag: mit «px» (Verkleinerung) bleibt es lesbar', dateienAusEigenschaften({ ...props, _pod_karte: JSON.stringify({ ...pod, px: ['900x1200', '600x525'] }) }).probleme.length === 0);
   pruefe('Vertrag: die längste mögliche _pod_karte einer Karte ist gültiges JSON mit v:6 und pl', (() => { const o = JSON.parse(JSON.stringify({ v: 6, pl: ['a'] })); return o.v === 6 && Array.isArray(o.pl); })());
+}
+
+// ── 6.2.0: Qualitätstor, Vorschau-Geometrie, Kontrast, Vorschaudaten, Entwurf (reine Funktionen) ───────
+if (NEU) {
+  const { qualitaetStufe, dpiGanz, einpassRechteck, vorlageLage, kontrastAnalyse, vorschauNormalisieren, tasseOk, ebeneFuerEntwurf, ebeneAusEntwurf } = H;
+  // Qualitätstor: unter dem Mindestwert gesperrt, bis 150 Warnung, darüber nichts; ±0,01 um jede Grenze
+  gleich('Stufe: 74,99 dpi bei Mindestwert 75 = Sperre', qualitaetStufe(74.99, 75, null), 'sperre');
+  gleich('Stufe: genau 75 dpi = nicht mehr gesperrt (Warnung)', qualitaetStufe(75, 75, null), 'mittel');
+  gleich('Stufe: 75,01 dpi = Warnung', qualitaetStufe(75.01, 75, null), 'mittel');
+  gleich('Stufe: 149,99 dpi = Warnung', qualitaetStufe(149.99, 75, null), 'mittel');
+  gleich('Stufe: genau 150 dpi = gut', qualitaetStufe(150, 75, null), 'gut');
+  gleich('Stufe: 300 dpi = gut', qualitaetStufe(300, 75, null), 'gut');
+  gleich('Stufe: 0 dpi = Sperre', qualitaetStufe(0, 75, null), 'sperre');
+  gleich('Stufe: Dichte 0 oder fehlend wird ignoriert', [qualitaetStufe(100, 75, 0), qualitaetStufe(100, 75, undefined), qualitaetStufe(100, 75, -3)], ['mittel', 'mittel', 'mittel']);
+  gleich('Stufe: keine Zahl = null', [qualitaetStufe(NaN, 75, null), qualitaetStufe(-1, 75, null), qualitaetStufe(undefined, 75, null)], [null, null, null]);
+  gleich('Stufe: Mindestwert 150 und Druckdatei trägt nur 146,6 dpi: ab 146,6 gut (sonst wäre jedes Foto gesperrt)', [qualitaetStufe(146.6, 150, 146.6), qualitaetStufe(146.5, 150, 146.6), qualitaetStufe(146.0, 150, 146.6)], ['gut', 'sperre', 'sperre']);
+  gleich('Stufe: Mindestwert 75 und Dichte 146,6: 146,5 = Warnung, 146,6 = gut', [qualitaetStufe(146.5, 75, 146.6), qualitaetStufe(146.6, 75, 146.6)], ['mittel', 'gut']);
+  gleich('Stufe: Dichte niedriger als der Mindestwert (60 gegen 75): ab 60 nicht gesperrt', [qualitaetStufe(59.99, 75, 60), qualitaetStufe(60, 75, 60)], ['sperre', 'gut']);
+  gleich('DPI_GUT ist 150', H.DPI_GUT, 150);
+  // Anzeige: unter der Sperre abgerundet, sonst gerundet
+  gleich('dpiGanz: 74,8 bei Sperre = 74 (nie «75» neben der Sperre)', dpiGanz(74.8, 'sperre'), 74);
+  gleich('dpiGanz: 74,8 bei Warnung = 75', dpiGanz(74.8, 'mittel'), 75);
+  gleich('dpiGanz: 74,0 bei Sperre = 74 (Gleitkomma-Rest)', dpiGanz(73.9999999999, 'sperre'), 74);
+  gleich('dpiGanz: 149,5 = 150, 149,49 = 149', [dpiGanz(149.5, 'mittel'), dpiGanz(149.49, 'mittel')], [150, 149]);
+  // Einpassen und Füllen in eine Fläche (Ursprung links oben)
+  const gl = (name, r, soll) => pruefe(name, ['x', 'y', 'w', 'h'].every((k) => Math.abs(r[k] - soll[k]) < 1e-9), JSON.stringify(r));
+  gl('einpassen: Breitformat in Quadrat', einpassRechteck(100, 100, 2, 'einpassen'), { x: 0, y: 25, w: 100, h: 50 });
+  gl('einpassen: Hochformat in Quadrat', einpassRechteck(100, 100, 0.5, 'einpassen'), { x: 25, y: 0, w: 50, h: 100 });
+  gl('füllen: Breitformat in Quadrat (seitlich beschnitten)', einpassRechteck(100, 100, 2, 'fuellen'), { x: -50, y: 0, w: 200, h: 100 });
+  gl('füllen: Hochformat in Quadrat (oben und unten beschnitten)', einpassRechteck(100, 100, 0.5, 'fuellen'), { x: 0, y: -50, w: 100, h: 200 });
+  gl('einpassen: gleiches Verhältnis füllt die Fläche', einpassRechteck(200, 100, 2, 'einpassen'), { x: 0, y: 0, w: 200, h: 100 });
+  // Lage der Vorlage in der Zeichenfläche
+  {
+    const vl = { vorlageBreite: 3000, vorlageHoehe: 3000, flaecheLinks: 1006, flaecheOben: 530, flaecheBreite: 1010, flaecheHoehe: 1346 };
+    const L = vorlageLage(vl, 800, 800);
+    nahe('Vorlage 3000 px in 800 px: Massstab', L.s, 800 / 3000);
+    nahe('Vorlage: Druckfläche links', L.ax, 1006 * 800 / 3000); nahe('Vorlage: Druckfläche oben', L.ay, 530 * 800 / 3000);
+    nahe('Vorlage: Druckfläche Breite', L.aw, 1010 * 800 / 3000); nahe('Vorlage: Druckfläche Höhe', L.ah, 1346 * 800 / 3000);
+    const Q = vorlageLage({ vorlageBreite: 1000, vorlageHoehe: 500, flaecheLinks: 100, flaecheOben: 50, flaecheBreite: 200, flaecheHoehe: 100 }, 800, 800);
+    nahe('Vorlage im Breitformat: Massstab nach der Breite', Q.s, 0.8); nahe('Vorlage im Breitformat: oberer Rand zentriert', Q.oy, 200); nahe('Vorlage im Breitformat: Druckfläche oben mit Rand', Q.ay, 200 + 50 * 0.8);
+  }
+  // Kontrast Design gegen Stoff (RGBA-Pixel)
+  {
+    const flaeche = (r, g, b, a, n = 100) => { const d = new Uint8ClampedArray(n * 4); for (let i = 0; i < n; i++) d.set([r, g, b, a], i * 4); return d; };
+    const sw = kontrastAnalyse(flaeche(10, 10, 10, 255), [11, 11, 11]);
+    pruefe('Kontrast: Schwarz auf Schwarz = 100 % schlecht, Art «dunkel»', sw.anteil === 1 && sw.art === 'dunkel' && sw.flaeche === 100, JSON.stringify(sw));
+    const ws = kontrastAnalyse(flaeche(250, 250, 250, 255), [255, 255, 255]);
+    pruefe('Kontrast: Weiss auf Weiss = 100 % schlecht, Art «hell»', ws.anteil === 1 && ws.art === 'hell', JSON.stringify(ws));
+    pruefe('Kontrast: Weiss auf Schwarz = gut', kontrastAnalyse(flaeche(255, 255, 255, 255), [10, 10, 10]).anteil === 0);
+    pruefe('Kontrast: Schwarz auf Weiss = gut', kontrastAnalyse(flaeche(0, 0, 0, 255), [255, 255, 255]).anteil === 0);
+    const leer = kontrastAnalyse(flaeche(0, 0, 0, 0), [0, 0, 0]);
+    pruefe('Kontrast: durchsichtiges Design = nichts zu warnen', leer.anteil === 0 && leer.flaeche === 0);
+    pruefe('Kontrast: Pixel unter Alpha 20 % zählen nicht', kontrastAnalyse(flaeche(0, 0, 0, 40), [0, 0, 0]).flaeche === 0);
+    const halb = new Uint8ClampedArray(400); halb.set(flaeche(0, 0, 0, 255, 50), 0); halb.set(flaeche(255, 255, 255, 255, 50), 200);
+    nahe('Kontrast: halb schwarz, halb weiss auf Schwarz = 50 % schlecht', kontrastAnalyse(halb, [0, 0, 0]).anteil, 0.5);
+    nahe('Kontrast-Verhältnis Schwarz zu Weiss = 21', H.kontrastVerhaeltnis(H.leuchtdichte(0, 0, 0), H.leuchtdichte(255, 255, 255)), 21, 1e-9);
+    nahe('Leuchtdichte Weiss = 1', H.leuchtdichte(255, 255, 255), 1, 1e-9);
+  }
+  // Tassen-Eichung und Vorschaudaten
+  const T = { foto: 'https://cdn.shopify.com/s/files/x/luxe-vorschau-abc.png', quelle: 'https://files.cdn.printful.com/products/19/x.jpg', fotoBreite: 700, fotoHoehe: 1000, mitteX: 407, radius: 194, oben: 290, unten: 735, winkel: 330, ausschnitt: [0, 165, 700, 700] };
+  pruefe('tasseOk: gültige Eichung', tasseOk(T));
+  pruefe('tasseOk: nur die Printful-Adresse (noch nicht gespiegelt) genügt', tasseOk({ ...T, foto: null }));
+  pruefe('tasseOk: ohne jede Adresse abgelehnt', !tasseOk({ ...T, foto: null, quelle: null }));
+  pruefe('tasseOk: Adresse ohne https abgelehnt', !tasseOk({ ...T, foto: 'http://x/y.png', quelle: 'ftp://x' }));
+  for (const [k, v] of [['radius', 0], ['radius', -5], ['unten', 290], ['unten', 100], ['fotoBreite', 0], ['fotoHoehe', 0], ['mitteX', 'a'], ['oben', NaN], ['winkel', 90], ['winkel', 361], ['winkel', 'x'], ['ausschnitt', [0, 0, 0, 10]], ['ausschnitt', [0, 0, 10]], ['ausschnitt', [0, 0, 10, 'x']]]) {
+    pruefe(`tasseOk: ${k}=${JSON.stringify(v)} abgelehnt`, !tasseOk({ ...T, [k]: v }));
+  }
+  pruefe('tasseOk: Winkel 360 und ohne Winkel/Ausschnitt gültig', tasseOk({ ...T, winkel: 360 }) && tasseOk({ ...T, winkel: undefined, ausschnitt: undefined }));
+  pruefe('tasseOk: kein Objekt', !tasseOk(null) && !tasseOk('x') && !tasseOk(undefined));
+  const roh = { schema: 1, modelle: { 71: { adapter: 'flach', grund: null, bilder: { 'https://files.cdn.printful.com/m/a.png': 'https://cdn.shopify.com/a.png', 'https://files.cdn.printful.com/m/b.png': null }, tasse: {} },
+    19: { adapter: 'tasse', bilder: {}, tasse: { 1320: T, 4830: { ...T, radius: -1 } } }, 388: { adapter: 'keine', grund: 'rundum' } } };
+  {
+    const r = vorschauNormalisieren(JSON.parse(JSON.stringify(roh)));
+    pruefe('Vorschaudaten: gültig', r.daten && Object.keys(r.daten.modelle).sort().join() === '19,388,71', JSON.stringify(r).slice(0, 200));
+    pruefe('Vorschaudaten: null (noch nicht gespiegelt) bleibt null', r.daten.modelle[71].bilder['https://files.cdn.printful.com/m/b.png'] === null);
+    pruefe('Vorschaudaten: ungültige Tassen-Eichung fällt heraus, die gültige bleibt', Object.keys(r.daten.modelle[19].tasse).join() === '1320');
+    pruefe('Vorschaudaten: «keine» mit Grund bleibt, Felder fehlen nicht', r.daten.modelle[388].grund === 'rundum' && typeof r.daten.modelle[388].bilder === 'object' && r.daten.modelle[388].tasse && Object.keys(r.daten.modelle[388].tasse).length === 0);
+    pruefe('Vorschaudaten: «vorlagen» (Gegenprobe) wird nicht übernommen', !('vorlagen' in r.daten.modelle[71]) && !('titel' in r.daten.modelle[71]));
+  }
+  gleich('Vorschaudaten: Schema 2 abgelehnt', !!vorschauNormalisieren({ ...roh, schema: 2 }).fehler, true);
+  gleich('Vorschaudaten: ohne Schema abgelehnt', !!vorschauNormalisieren({ modelle: roh.modelle }).fehler, true);
+  gleich('Vorschaudaten: kein Objekt abgelehnt', [vorschauNormalisieren(null), vorschauNormalisieren('x'), vorschauNormalisieren(5)].every((r) => !!r.fehler), true);
+  gleich('Vorschaudaten: «modelle» als Liste abgelehnt', !!vorschauNormalisieren({ schema: 1, modelle: [] }).fehler, true);
+  gleich('Vorschaudaten: nur unbekannte Adapter = Fehler', !!vorschauNormalisieren({ schema: 1, modelle: { 1: { adapter: 'gross' }, 2: null, 3: 'x' } }).fehler, true);
+  {
+    const r = vorschauNormalisieren({ schema: 1, modelle: { 1: { adapter: 'gross' }, 71: roh.modelle[71] } });
+    pruefe('Vorschaudaten: ein unbekannter Adapter lässt die übrigen Modelle gelten', r.daten && Object.keys(r.daten.modelle).join() === '71');
+    const f = vorschauNormalisieren({ schema: 1, modelle: { 71: { adapter: 'flach', bilder: { 'http://x/a.png': 'https://cdn.shopify.com/a.png', 'https://x/a.png': 'http://cdn/a.png', 'https://x/c.png': 5, 'https://x/ok.png': 'https://cdn.shopify.com/ok.png' } } } });
+    pruefe('Vorschaudaten: Bilder ohne https (Quelle oder Spiegel) oder mit Fremdtyp fallen heraus', Object.keys(f.daten.modelle[71].bilder).join() === 'https://x/ok.png', JSON.stringify(f.daten.modelle[71].bilder));
+  }
+  // Entwurf: eine Ebene hin und zurück
+  const text = { id: 'L3', type: 'text', cx: 0.4, cy: 0.6, scale: 1.2, rot: 15, op: 0.8, text: 'Hallo', font: 'Pacifico', color: '#112233', bold: true, italic: false, align: 'center', ls: 2, outl: 3, outc: '#fff', lh: 1.1, _cache: {}, edit: {} };
+  {
+    const n = ebeneFuerEntwurf(text);
+    pruefe('Entwurf: Textebene ohne interne Felder (kein _cache, kein edit)', !('_cache' in n) && !('edit' in n) && n.text === 'Hallo' && n.op === 0.8, JSON.stringify(n));
+    const zurueck = ebeneAusEntwurf(JSON.parse(JSON.stringify(n)));
+    pruefe('Entwurf: Textebene kommt gleich zurück', zurueck && zurueck.text === 'Hallo' && zurueck.font === 'Pacifico' && zurueck.color === '#112233' && zurueck.bold === true && zurueck.italic === false && zurueck.align === 'center' && zurueck.ls === 2 && zurueck.outl === 3 && zurueck.outc === '#fff' && zurueck.lh === 1.1 && zurueck.cx === 0.4 && zurueck.rot === 15 && zurueck.op === 0.8);
+  }
+  {
+    const s = ebeneFuerEntwurf({ id: 'L4', type: 'sticker', cx: 0.5, cy: 0.5, scale: 1, rot: 0, name: 'herz-rot', src: 'x' });
+    const z = ebeneAusEntwurf(JSON.parse(JSON.stringify(s)));
+    pruefe('Entwurf: Sticker kommt mit Adresse zurück', z && z.name === 'herz-rot' && /^https:\/\/cdn\.shopify\.com\/.*stk-herz-rot\.png$/.test(z.src) && z.printUrl === z.src && z.uploading === false, JSON.stringify(z));
+    pruefe('Entwurf: Sticker mit Schrägstrich im Namen abgelehnt', ebeneAusEntwurf({ ...s, name: '../x' }) === null && ebeneAusEntwurf({ ...s, name: 'A B' }) === null);
+  }
+  {
+    const bild = { id: 'L5', type: 'image', cx: 0.5, cy: 0.5, scale: 0.7, rot: 0, printUrl: 'https://res.cloudinary.com/x/image/upload/v1/p.png', _origW: 2000, _origH: 1500, edit: { cx0: 0, cy0: 0, cw: 0.5, ch: 0.5, rotQ: 0, flipH: false, flipV: false, bri: 100, con: 100, sat: 100, gray: 0, bg: 0, frame: 0, sharp: 0 } };
+    const n = ebeneFuerEntwurf(bild);
+    pruefe('Entwurf: Foto speichert die Adresse der fertigen Druckdatei und die Ausschnittgrösse (1000 × 750)', n && n.printUrl === bild.printUrl && n.aw === 1000 && n.ah === 750, JSON.stringify(n));
+    const z = ebeneAusEntwurf(JSON.parse(JSON.stringify(n)));
+    pruefe('Entwurf: Foto kommt mit zurückgesetzter Bearbeitung und Ausschnittgrösse als Original zurück', z && z._origW === 1000 && z._origH === 750 && z.edit.cw === 1 && z.edit.ch === 1 && z.src === bild.printUrl && z.uploading === false, JSON.stringify(z));
+    pruefe('Entwurf: Foto ohne Datei (lädt noch) wird nicht gespeichert', ebeneFuerEntwurf({ ...bild, uploading: true }) === null && ebeneFuerEntwurf({ ...bild, printUrl: '' }) === null && ebeneFuerEntwurf({ ...bild, printUrl: 'blob:abc' }) === null && ebeneFuerEntwurf({ ...bild, printUrl: 'http://x/y.png' }) === null);
+    pruefe('Entwurf: Foto mit gedrehtem Ausschnitt tauscht Breite und Höhe', (() => { const g = ebeneFuerEntwurf({ ...bild, edit: { ...bild.edit, cw: 1, ch: 1, rotQ: 1 } }); return g.aw === 1500 && g.ah === 2000; })());
+    pruefe('Entwurf: unbekannter Typ wird nicht gespeichert', ebeneFuerEntwurf({ id: 'L6', type: 'kreis', cx: 0, cy: 0, scale: 1, rot: 0 }) === null);
+    for (const [k, v] of [['printUrl', 'http://x/y.png'], ['printUrl', 'javascript:alert(1)'], ['printUrl', 5], ['aw', 0], ['aw', -4]]) pruefe(`Entwurf: Foto mit ${k}=${JSON.stringify(v)} abgelehnt`, ebeneAusEntwurf({ ...n, [k]: v }) === null);
+  }
+  {
+    const n = ebeneFuerEntwurf(text);
+    for (const [name, aend] of [['ohne Nummer', { id: 'x' }], ['Nummer mit Buchstaben', { id: 'L1a' }], ['ohne cx', { cx: 'a' }], ['cy NaN', { cy: NaN }], ['scale unendlich', { scale: Infinity }], ['rot Text', { rot: '9' }], ['Text keine Zeichenkette', { text: 5 }], ['ohne Schrift', { font: undefined }], ['ohne Farbe', { color: null }], ['unbekannter Typ', { type: 'bild' }]]) {
+      pruefe(`Entwurf: Ebene ${name} abgelehnt`, ebeneAusEntwurf({ ...n, ...aend }) === null);
+    }
+    pruefe('Entwurf: kein Objekt abgelehnt', ebeneAusEntwurf(null) === null && ebeneAusEntwurf('x') === null && ebeneAusEntwurf(undefined) === null);
+    const g = ebeneAusEntwurf({ ...n, cx: 7, cy: -3, scale: 99, op: 4 });
+    pruefe('Entwurf: Lage, Grösse und Deckkraft werden begrenzt', g.cx === 1 && g.cy === 0 && g.scale === 3 && g.op === 1, JSON.stringify(g));
+    pruefe('Entwurf: Text wird auf 200 Zeichen gekürzt', ebeneAusEntwurf({ ...n, text: 'x'.repeat(500) }).text.length === 200);
+    pruefe('Entwurf: ausgerichtet nur links, rechts, mitte', ebeneAusEntwurf({ ...n, align: 'justify' }).align === undefined);
+  }
+  pruefe('VORSCHAU_PX = 800, VORSCHAU_MAX_BYTES = 80 KB', H.VORSCHAU_PX === 800 && H.VORSCHAU_MAX_BYTES === 80 * 1024);
+
+  // ── Vorschaudaten-Bauer (werkzeug/vorschau_daten_bauen.mjs) auf den Test-Katalogen im Repo ──────────
+  {
+    const KAT = join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'werkzeuge', 'testdaten', 'katalog');
+    const STAND = '2026-11-06';
+    const r = VB.bauen({ katalogOrdner: KAT, stand: STAND });
+    const adp = Object.fromEntries(r.ergebnisse.map((e) => [e.pid, e.eintrag.adapter + (e.eintrag.grund ? ':' + e.eintrag.grund : '')]));
+    gleich('Bauer: Adapter je Testmodell', adp, { 19: 'tasse', 71: 'flach', 206: 'flach', 268: 'papier', 388: 'keine:rundum', 574: 'keine:ungeeignet', 764: 'keine:layout', 769: 'keine:layout', 798: 'flach', 861: 'flach' });
+    gleich('Bauer: keine Fehler', r.bericht.fehler, []);
+    pruefe('Bauer: Schema 1 und Stand in jeder Datei', Object.values(r.dateien).every((d) => d.schema === 1 && d.stand === STAND));
+    pruefe('Bauer: jede Datei hat ihre Modellnummer als Schlüssel', Object.entries(r.dateien).every(([name, d]) => Object.keys(d.modelle).join() === name.split('.')[0]));
+    const alleBilder = r.ergebnisse.flatMap((e) => Object.keys(e.eintrag.bilder));
+    pruefe('Bauer: «bilder» enthält nur Fotos von files.cdn.printful.com/m/ (kein Raster, nichts Fremdes)', alleBilder.length > 0 && alleBilder.every((u) => VB.bildArt(u) === 'foto' && new URL(u).hostname === 'files.cdn.printful.com' && /^\/m\//.test(new URL(u).pathname)));
+    pruefe('Bauer: ohne --spiegel steht überall null', r.ergebnisse.every((e) => Object.values(e.eintrag.bilder).every((v) => v === null) && Object.values(e.eintrag.tasse).every((t) => t.foto === null)));
+    pruefe('Bauer: Tasse hat drei geeichte Varianten mit den Zahlen aus TASSEN_EICHUNG', (() => { const t = r.ergebnisse.find((e) => e.pid === '19').eintrag.tasse; return Object.keys(t).sort().join() === '1320,16586,4830' && Object.entries(t).every(([id, v]) => v.radius === VB.TASSEN_EICHUNG[id].radius && v.oben === VB.TASSEN_EICHUNG[id].oben && v.winkel === 330 && /^https:\/\//.test(v.quelle)); })());
+    // Gegenprobe der Geometrie gegen die eingecheckten Karten (anderer Weg: karte_fuer_editor)
+    for (const id of [71, 206, 268, 19]) {
+      const karte = lies(id);
+      const vor = r.ergebnisse.find((e) => e.pid === String(id)).eintrag.vorlagen;
+      pruefe(`Bauer: Vorlagen-Zahlen von Modell ${id} gleich den Zahlen der Karte`, karte.platzierungen.every((p) => p.vorlage && vor[p.id] && vor[p.id].tw === p.vorlage.vorlageBreite && vor[p.id].th === p.vorlage.vorlageHoehe && vor[p.id].fl === p.vorlage.flaecheLinks && vor[p.id].fo === p.vorlage.flaecheOben && vor[p.id].fb === p.vorlage.flaecheBreite && vor[p.id].fh === p.vorlage.flaecheHoehe && vor[p.id].printfile.b === p.printfile.breitePx && vor[p.id].printfile.h === p.printfile.hoehePx && vor[p.id].printfile.dpi === p.printfile.dpi && vor[p.id].vorne === (p.vorlage.vorderansicht !== false)), String(id));
+    }
+    // Dateiplan
+    const plan = r.plan;
+    pruefe('Plan: eine Zeile je Quelladresse, Dateinamen eindeutig', new Set(plan.dateien.map((d) => d.quelle)).size === plan.dateien.length && new Set(plan.dateien.map((d) => d.dateiname)).size === plan.dateien.length && plan.anzahl === plan.dateien.length && plan.anzahl === 16, `${plan.anzahl}`);
+    pruefe('Plan: Dateinamen luxe-vorschau-<10 Hex>.png/jpg/webp, Art bekannt, Modelle sortiert', plan.dateien.every((d) => /^luxe-vorschau-[0-9a-f]{10}\.(png|jpg|webp)$/.test(d.dateiname) && ['vorlage', 'hintergrund', 'tassenfoto'].includes(d.art) && d.modelle.every((m, i, a) => i === 0 || a[i - 1] < m)));
+    pruefe('Plan: Dateiname hängt an der ganzen Adresse (mit ?v=), nicht am Pfad', VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=1') !== VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=2') && VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=1') === VB.dateiname('https://files.cdn.printful.com/m/a/b.png?v=1'));
+    gleich('Plan: Endungen .jpeg wird zu .jpg, ohne Endung .png', [VB.dateiname('https://files.cdn.printful.com/m/x.JPEG?v=1').split('.').pop(), VB.dateiname('https://files.cdn.printful.com/m/x?v=1').split('.').pop()], ['jpg', 'png']);
+    pruefe('Plan: nach Dateiname sortiert', plan.dateien.every((d, i, a) => i === 0 || a[i - 1].dateiname.localeCompare(d.dateiname) < 0));
+    {
+      const t1320 = r.ergebnisse.find((e) => e.pid === '19').eintrag.tasse[1320];
+      gleich('Tasse 11 oz: festgeschriebene Eichung (Körper, Druckband, Ausschnitt)', [t1320.fotoBreite, t1320.fotoHoehe, t1320.mitteX, t1320.radius, t1320.oben, t1320.unten, t1320.winkel, t1320.ausschnitt], [700, 1000, 407, 194, 290, 735, 330, [0, 165, 700, 700]]);
+      const v71 = r.ergebnisse.find((e) => e.pid === '71').eintrag.vorlagen;
+      pruefe('Gegenprobe: eine Vorlage hinter dem Druck (Etikett aussen) trägt vorne=false, die übrigen true', v71.label_outside.vorne === false && v71.front.vorne === true, JSON.stringify([v71.label_outside.vorne, v71.front.vorne]));
+      const k19 = JSON.parse(readFileSync(join(KAT, '19.json'), 'utf8'));
+      const fremd = JSON.parse(JSON.stringify(k19)); fremd.varianten[0].id = 99999;
+      const ohneFoto = JSON.parse(JSON.stringify(k19)); ohneFoto.varianten[0].image = null;
+      for (const [name, kk] of [['Tasse mit einer nicht geeichten Variante', fremd], ['Tasse ohne Katalogfoto einer Variante', ohneFoto]]) {
+        const e = VB.vorschauModell(kk).eintrag;
+        pruefe(`Bauer: ${name} = keine Vorschau (ungeeignet), keine halbe Eichung`, e.adapter === 'keine' && e.grund === 'ungeeignet' && Object.keys(e.tasse).length === 0, JSON.stringify([e.adapter, e.grund]));
+      }
+    }
+    const r2 = VB.bauen({ katalogOrdner: KAT, stand: STAND });
+    pruefe('Bauer: zweimal gebaut = Byte für Byte gleich (stabil)', JSON.stringify([r.dateien, r.plan, r.bericht]) === JSON.stringify([r2.dateien, r2.plan, r2.bericht]));
+    // Zusammenspiel mit dem Editor: was der Bauer schreibt, nimmt der Editor an
+    for (const [name, d] of Object.entries(r.dateien)) {
+      const n = vorschauNormalisieren(JSON.parse(JSON.stringify(d)));
+      pruefe(`Editor liest ${name} ohne Verlust`, n.daten && Object.keys(n.daten.modelle).join() === Object.keys(d.modelle).join() && Object.entries(d.modelle).every(([pid, m]) => Object.keys(n.daten.modelle[pid].bilder).length === Object.keys(m.bilder).length && Object.keys(n.daten.modelle[pid].tasse).length === Object.keys(m.tasse).length), name);
+    }
+    // eingebackene Spiegel-Adressen
+    const erste = plan.dateien.find((d) => d.art === 'vorlage');
+    const foto = plan.dateien.find((d) => d.art === 'tassenfoto');
+    const ziel = 'https://cdn.shopify.com/s/files/1/0001/files/' + erste.dateiname;
+    const rs = VB.bauen({ katalogOrdner: KAT, stand: STAND, spiegel: { [erste.dateiname]: ziel, [foto.dateiname]: 'https://cdn.shopify.com/s/files/1/0001/files/' + foto.dateiname, [plan.dateien[0].dateiname === erste.dateiname ? plan.dateien[1].dateiname : plan.dateien[0].dateiname]: 'http://unsicher.example/x.png' } });
+    const gesetzt = rs.ergebnisse.flatMap((e) => Object.entries(e.eintrag.bilder).filter(([, v]) => v));
+    pruefe('Spiegel: bekannte Datei wird eingebacken, alle anderen bleiben null, http-Adresse wird nie übernommen', gesetzt.length >= 1 && gesetzt.every(([q, v]) => VB.dateiname(q) === erste.dateiname && v === ziel) && rs.ergebnisse.every((e) => Object.values(e.eintrag.bilder).every((v) => v === null || /^https:\/\/cdn\.shopify\.com\//.test(v))), JSON.stringify(gesetzt));
+    pruefe('Spiegel: Tassenfoto gespiegelt, die übrigen zwei Varianten nicht', (() => { const t = Object.values(rs.ergebnisse.find((e) => e.pid === '19').eintrag.tasse); return t.filter((x) => x.foto).length === 1 && t.every((x) => /^https:\/\/files\.cdn\.printful\.com\//.test(x.quelle)); })());
+    pruefe('Spiegel ändert den Plan nicht (der Plan bleibt die Liste der Quellen)', JSON.stringify(rs.plan) === JSON.stringify(r.plan));
+    // Bündel
+    const rb = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71, 19], buendel: { demo: [71, 19] } });
+    pruefe('Bündel: eine Datei mit beiden Modellen, nach Nummer sortiert', rb.dateien['buendel-demo.vorschau.json'] && Object.keys(rb.dateien['buendel-demo.vorschau.json'].modelle).join() === '19,71', Object.keys(rb.dateien).join());
+    pruefe('Bündel mit nicht gebautem Modell = Fehler, keine halbe Datei', (() => { const x = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71], buendel: { demo: [71, 19] } }); return x.bericht.fehler.some((f) => /Bündel demo/.test(f)) && !('buendel-demo.vorschau.json' in x.dateien); })());
+    pruefe('Fehlende Katalogdatei = Fehler im Bericht, die übrigen Modelle werden gebaut', (() => { const x = VB.bauen({ katalogOrdner: KAT, stand: STAND, modelle: [71, 999999] }); return x.bericht.fehler.length === 1 && /999999.*fehlt/.test(x.bericht.fehler[0]) && x.ergebnisse.length === 1; })());
+    gleich('bildArt: Foto, Raster, fremder Host, kein https, keine Zeichenkette', [VB.bildArt('https://files.cdn.printful.com/m/57-x/medium/ghost/front/a.png?v=1'), VB.bildArt('https://files.cdn.printful.com/generator/api-template/x.png'), VB.bildArt('https://example.com/m/a.png'), VB.bildArt('http://files.cdn.printful.com/m/a.png'), VB.bildArt(null)], ['foto', 'layout', null, null, null]);
+    // Kommandozeile: kein Netz, nur --out, kein Live-Schalter
+    const quelle = readFileSync(VB_PFAD, 'utf8');
+    pruefe('Bauer: keine Netz- und Prozessaufrufe im Quelltext', !/\bfetch\s*\(|node:https?|node:net|node:child_process|XMLHttpRequest|\bhttps?\.(get|request)\b|\bspawn|\bexec\w*\(/.test(quelle));
+    const tmp = mkdtempSync(join(tmpdir(), 'v6-bauer-'));
+    try {
+      const lauf = (...args) => spawnSync(process.execPath, [VB_PFAD, ...args], { cwd: tmp, encoding: 'utf8', env: { ...process.env, HTTPS_PROXY: 'http://127.0.0.1:9', HTTP_PROXY: 'http://127.0.0.1:9' } });
+      const a = lauf('--katalog', KAT, '--stand', STAND);
+      pruefe('CLI: ohne --out Exit 0 und nichts geschrieben', a.status === 0 && /nichts geschrieben/.test(a.stdout) && readdirSync(tmp).length === 0, `${a.status} ${a.stderr}`);
+      for (const opt of [['--live'], ['--upload'], ['--hochladen'], ['--shopify'], ['--force']]) {
+        const x = lauf('--katalog', KAT, ...opt);
+        pruefe(`CLI: ${opt[0]} ist unbekannt (Exit 2, nichts geschrieben)`, x.status === 2 && /unbekannte Option/.test(x.stderr) && readdirSync(tmp).length === 0, `${x.status} ${x.stderr.slice(0, 80)}`);
+      }
+      pruefe('CLI: ohne --katalog Exit 2', lauf().status === 2);
+      pruefe('CLI: Option ohne Wert Exit 2', lauf('--katalog').status === 2);
+      pruefe('CLI: --buendel mit ungültigem Namen Exit 2', lauf('--katalog', KAT, '--buendel', 'Gross Name=71').status === 2);
+      const out = join(tmp, 'aus');
+      const b = lauf('--katalog', KAT, '--stand', STAND, '--out', out, '--buendel', 'demo=71,19');
+      const dateien = existsSync(out) ? readdirSync(out).sort() : [];
+      pruefe('CLI: --out schreibt genau die Vorschaudateien, den Plan und den Bericht, sonst nirgends', b.status === 0 && readdirSync(tmp).join() === 'aus' && dateien.length === 10 + 1 + 2 && dateien.includes('spiegel_plan.json') && dateien.includes('bericht.json') && dateien.includes('buendel-demo.vorschau.json') && dateien.includes('71.vorschau.json'), `${b.status} ${dateien.join()} ${b.stderr}`);
+      pruefe('CLI: geschriebene Dateien sind gültiges JSON und gleich dem Rechenergebnis', JSON.parse(readFileSync(join(out, '71.vorschau.json'), 'utf8')).modelle[71].adapter === 'flach' && JSON.parse(readFileSync(join(out, 'spiegel_plan.json'), 'utf8')).anzahl === 16 && JSON.parse(readFileSync(join(out, 'bericht.json'), 'utf8')).modelle === 10);
+      // --spiegel backt ein
+      const sp = join(tmp, 'hochgeladen.json'); writeFileSync(sp, JSON.stringify({ [foto.dateiname]: 'https://cdn.shopify.com/s/files/1/0001/files/' + foto.dateiname }));
+      const out2 = join(tmp, 'aus2');
+      const c = lauf('--katalog', KAT, '--stand', STAND, '--modelle', '19', '--out', out2, '--spiegel', sp);
+      const t19 = c.status === 0 ? Object.values(JSON.parse(readFileSync(join(out2, '19.vorschau.json'), 'utf8')).modelle[19].tasse) : [];
+      pruefe('CLI: --spiegel backt die Adresse ins Tassenfoto ein, ohne sie bleibt null', t19.filter((x) => x.foto).length === 1 && JSON.parse(readFileSync(join(out, '19.vorschau.json'), 'utf8')).modelle[19].tasse[1320].foto === null, `${c.status} ${c.stderr}`);
+      pruefe('CLI: --modelle 19 baut nur dieses Modell', c.status === 0 && readdirSync(out2).filter((f) => /\.vorschau\.json$/.test(f)).join() === '19.vorschau.json');
+      const d = lauf('--katalog', KAT, '--modelle', '71,999999');
+      pruefe('CLI: fehlendes Modell = Exit 1 und Meldung', d.status === 1 && /999999/.test(d.stdout), `${d.status}`);
+    } finally { rmSync(tmp, { recursive: true, force: true }); }
+  }
 }
 
 // ── v5 ist unverändert ─────────────────────────────────────────────────────────────────────────────

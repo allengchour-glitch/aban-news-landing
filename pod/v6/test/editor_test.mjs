@@ -1282,7 +1282,8 @@ szenario('qualitaetstor', true, async (b, srv) => {
   const pod2 = JSON.parse(r.warenkorb[0].properties._pod_karte);
   pruefe('qd = Minimum über beide Platzierungen (100)', pod2.qd === 100 && pod2.pl.length === 2, JSON.stringify(pod2));
   await r.schliessen();
-  // g) Poster: 1000-px-Foto (ca. 60 dpi, Mindestwert 150) sperrt; Grenzwerte ±1 px (150 dpi = 2483,3 px)
+  // g) Poster: 1000-px-Foto (ca. 60 dpi, Mindestwert 150) sperrt. Das A1-Poster 9933 × 7016 px trägt nach der Obergrenze von 16,7 Mpx nur ca. 147 dpi: die Anforderung kann nie höher sein als
+  //    das, was die Datei trägt (sonst wäre der Mindestwert 150 für jedes Foto unerreichbar). Grenzwerte ±1 px an der halben Pixelbreite der Druckdatei.
   const o = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515' });
   await editorBereit(o.page);
   const x = o.page;
@@ -1290,16 +1291,29 @@ szenario('qualitaetstor', true, async (b, srv) => {
   const tp = await x.locator('[data-feld="qualitaet"]').innerText();
   pruefe('Poster: 1000-px-Foto (ca. 60 dpi, nötig 150) sperrt den Kauf', (await gesperrt(x)) && /ca\. 60 dpi/.test(tp) && /mindestens 150 dpi/.test(tp), tp);
   await x.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), pid);
-  for (const [w, soll] of [[2483, true], [2484, false], [2485, false]]) {
+  const rw = await x.evaluate(() => window.LSPOD6.editors[0].geo().render.w);
+  const grenze = Math.ceil(rw / 2);
+  pruefe('A1-Poster: Druckdatei nach der Obergrenze unter 150 dpi (die Obergrenze ist der Grund)', rw / (9933 / 300) < 150 && rw <= 4900, String(rw));
+  for (const [w, soll] of [[grenze - 1, true], [grenze, false], [grenze + 1, false]]) {
     const id = await fotoLegen(x, w, 1800);
-    pruefe(`Poster, Foto ${w} px breit: ${soll ? 'gesperrt (149,98 dpi)' : 'frei'}`, (await gesperrt(x)) === soll, await x.locator('[data-feld="dpi"]').innerText());
+    pruefe(`A1-Poster, Foto ${w} px breit (Grenze ${grenze}): ${soll ? 'gesperrt' : 'frei'}`, (await gesperrt(x)) === soll, await x.locator('[data-feld="dpi"]').innerText());
     await x.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), id);
   }
-  const gutId = await fotoLegen(x, 2600, 1800);
-  pruefe('Poster, 2600 px: frei und ohne «mittel» (Mindestwert gleich 150)', !(await gesperrt(x)) && !/lsp6-mid/.test(await x.locator('[data-feld="dpi"]').getAttribute('class')));
+  const gutId = await fotoLegen(x, 5000, 3500);
+  const gutText = await x.locator('[data-feld="dpi"]').innerText();
+  pruefe('A1-Poster, 5000 px: frei, die Zeile sagt «mehr trägt die Druckdatei nicht» statt «unter 150»', !(await gesperrt(x)) && /Mehr trägt die Druckdatei/.test(gutText) && !/lsp6-mid/.test(await x.locator('[data-feld="dpi"]').getAttribute('class')), gutText);
   void gutId;
   pruefe('Poster: keine Seitenfehler', o.fehler.length === 0, o.fehler.join(' | '));
   await o.schliessen();
+  // g2) mit data-max-px=0 (25 Mpx) trägt die Datei 180 dpi: dann gilt der Mindestwert 150 selbst (2483,3 px)
+  const o2 = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515&maxpx=0' });
+  await editorBereit(o2.page);
+  for (const [w, soll] of [[2483, true], [2484, false]]) {
+    const id = await fotoLegen(o2.page, w, 1800);
+    pruefe(`A1-Poster mit 25 Mpx, Foto ${w} px breit: ${soll ? 'gesperrt (149,98 dpi)' : 'frei (150,04 dpi)'}`, (await gesperrt(o2.page)) === soll, await o2.page.locator('[data-feld="dpi"]').innerText());
+    await o2.page.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), id);
+  }
+  await o2.schliessen();
   // h) Dad-Cap (Stickerei, Mindestwert 150): ein kleines Foto sperrt ebenfalls; Text und Sticker nie
   const c = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=206' });
   await editorBereit(c.page);
@@ -1380,7 +1394,10 @@ szenario('entwurf-grenzen', true, async (b, srv) => {
   await editorBereit(s.page);
   const p = s.page;
   const key = await p.evaluate(() => window.LSPOD6.editors[0].entwurfKey);
-  const setze = async (obj, k = key) => { await p.evaluate(([kk, v]) => localStorage.setItem(kk, typeof v === 'string' ? v : JSON.stringify(v)), [k, obj]); await p.reload({ waitUntil: 'domcontentloaded' }); await editorBereit(p); };
+  // Der Speicher wird auf einer Seite OHNE Editor gesetzt (/cart): beim Verlassen der Editor-Seite sichert pagehide deren Stand und würde einen Eintrag sonst überschreiben
+  const mockUrl = p.url();
+  const vorbereiten = async (fn, arg) => { await p.goto(srv.url + '/cart'); await p.evaluate(fn, arg); await p.goto(mockUrl, { waitUntil: 'domcontentloaded' }); await editorBereit(p); };
+  const setze = (obj, k = key) => vorbereiten(([kk, v]) => localStorage.setItem(kk, typeof v === 'string' ? v : JSON.stringify(v)), [k, obj]);
   const zahl = () => p.evaluate(() => Object.values(window.LSPOD6.editors[0].st.ebenen).reduce((a, l) => a + l.length, 0));
   const gut = { id: 'L1', type: 'text', text: 'Alt', font: "'Helvetica Neue',Arial,sans-serif", color: '#111111', cx: 0.5, cy: 0.4, scale: 0.5, rot: 0 };
   // a) Foto, das noch hochlädt, ist nicht im Entwurf; der Kunde erfährt es nach dem Neuladen
@@ -1402,11 +1419,10 @@ szenario('entwurf-grenzen', true, async (b, srv) => {
   await setze({ v: 1, t: Date.now(), z: 5, aktiv: 'front', ebenen: { front: [gut, { id: 'L2', type: 'image', printUrl: 'http://unsicher.example/x.png', aw: 100, cx: 0.5, cy: 0.5, scale: 1, rot: 0 }, { id: 'L3', type: 'text' }, { id: 'x', type: 'text', text: 'a', font: 'f', color: '#000', cx: 1, cy: 1, scale: 1, rot: 0 }, { id: 'L4', type: 'sticker', name: '../böse', cx: 0.5, cy: 0.5, scale: 1, rot: 0 }], gibtesnicht: [gut] } });
   pruefe('nur gültige Ebenen kommen zurück (kein http-Foto, kein Text ohne Felder, keine fremde ID, kein Sticker-Name mit Pfad, keine unbekannte Platzierung)', (await zahl()) === 1 && (await p.evaluate(() => window.LSPOD6.editors[0].st.ebenen.front[0].text)) === 'Alt');
   // c) Entwurf eines anderen Produkts wird nicht geladen
-  await setze({ v: 1, t: Date.now(), z: 1, aktiv: 'front', ebenen: { front: [gut] } }, key.replace('|71', '|999'));
+  await vorbereiten(([k, k2, v]) => { localStorage.removeItem(k); localStorage.setItem(k2, JSON.stringify(v)); }, [key, key.replace('|71', '|999'), { v: 1, t: Date.now(), z: 1, aktiv: 'front', ebenen: { front: [gut] } }]);
   pruefe('Entwurf unter dem Schlüssel eines anderen Modells wird nicht gelesen', (await zahl()) === 0);
   // d) Tab-Wechsel auf dem Handy: beim Verbergen der Seite sofort sichern (vor dem verzögerten Zeitgeber)
-  await p.evaluate((k) => localStorage.removeItem(k), key);
-  await p.reload({ waitUntil: 'domcontentloaded' }); await editorBereit(p);
+  await vorbereiten((k) => localStorage.removeItem(k), key);
   const sofort = await p.evaluate((k) => {
     const e = window.LSPOD6.editors[0];
     const x = e.neuerText('Schnell');

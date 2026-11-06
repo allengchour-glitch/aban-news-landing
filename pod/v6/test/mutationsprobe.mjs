@@ -1,8 +1,9 @@
 /**
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
- * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von editor_test.mjs.
+ * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
+ * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
  * Eine Mutation gilt als erkannt, wenn einer der beiden Läufe mit Fehler endet. Überlebt eine, fehlt eine Prüfung.
- * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder K)
+ * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder K oder V)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
  * Umgebung: V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3).
  * Die Kopien liegen in einem eigenen, neu angelegten Temp-Ordner (mkdtemp): parallele Läufe stören sich nicht.
@@ -15,6 +16,7 @@ import { pathToFileURL } from 'node:url';
 import { hier, V6_DATEI } from './lib.mjs';
 
 const KARTENBAUER = join(hier, '..', 'werkzeug', 'karte_fuer_editor.mjs');
+const VORSCHAUBAUER = join(hier, '..', 'werkzeug', 'vorschau_daten_bauen.mjs');
 
 // Mutanten des Editors: [Name, altes Muster (muss genau einmal vorkommen), neuer Text]
 const MUTANTEN = [
@@ -34,7 +36,7 @@ const MUTANTEN = [
   ['M14 X in cm mit der Höhe gerechnet', "f.x.input.value = schweizerZahl(e.cx * m.breite, 1).replace(',', '.');", "f.x.input.value = schweizerZahl(e.cx * m.hoehe, 1).replace(',', '.');"],
   ['M15 Variante ändert die Druckdatei nicht', "if (printfulVarianteId != null) {\n      var v = karte.varianten[printfulVarianteId];", "if (false) {\n      var v = karte.varianten[printfulVarianteId];"],
   ['M16 gesperrter Reiter nicht markiert', "b.setAttribute('aria-disabled', 'true');", "b.removeAttribute('aria-disabled');"],
-  ['M17 dpi-Schwelle 50 statt Mindestwert der Karte', "var tief = d < karte.minDpi;", "var tief = d < 50;"],
+  ['M17 dpi-Schwelle 50 statt Mindestwert der Karte', "if (dpi < Math.min(minDpi, d) - 1e-9) return 'sperre';", "if (dpi < Math.min(50, d) - 1e-9) return 'sperre';"],
   ['M18 Bearbeitung markiert die Ebene nicht sofort als «lädt hoch»', "if (CLOUDINARY_AKTIV) { e.uploading = true; e.printUrl = ''; geaendert(); }", ""],
   ['M19 v6 setzt den Guard von v5', "window.__lspodDesignerV6Loaded = true;", "window.__lspodDesignerV6Loaded = true; window.__lspodDesignerLoaded = true;"],
   ['M20 Stickerei-Hinweis wird nicht gezeigt', "if (!h || (h.art !== 'einschraenkung' && !HINWEIS_TEXTE[h.code])) return;", "return;"],
@@ -70,7 +72,7 @@ const MUTANTEN = [
   ['N16 Tippfläche der Griffe nur 40 px', 'content:"";position:absolute;inset:-9px', 'content:"";position:absolute;inset:-5px'],
   ['N17 _pod_karte über 255 Zeichen wird nicht abgelehnt', "if (podKarteWert(verwendet).length > POD_KARTE_MAX) {", "if (false) {"],
   // beide Rücksetzungen zugleich entfernt (jede für sich wird von der anderen gedeckt)
-  ['N18 alte Druckdatei-Adressen bleiben nach Fehler und Änderung', ["eingefroren = null;\n        druckUrls = {};\n        formularSynchronisieren();", "if (!eingefroren) druckUrls = {};"], ["eingefroren = null;", ""]],
+  ['N18 alte Druckdatei-Adressen bleiben nach Fehler und Änderung', ["eingefroren = null;\n        druckUrls = {};\n        vorschauUrl = '';\n        formularSynchronisieren();", "if (!eingefroren) { druckUrls = {}; vorschauUrl = ''; }"], ["eingefroren = null;\n        formularSynchronisieren();", ""]],
   ['N20 Emoji im Text werden zerschnitten', "return Array.from(z).slice(0, 40).join('');", "return z.slice(0, 40);"],
   ['N21 Rundum-Druck: Druckbogen als Druckfläche bezeichnet (Bühne)', "ui.tag.textContent = fmt(karte.klasse === 'PANEL' ? T.sheetInfo : T.areaInfo,", "ui.tag.textContent = fmt(T.areaInfo,"],
   ['N22 Rundum-Druck: Druckbogen als Druckfläche bezeichnet (Meta)', "teile.push(fmt(karte.klasse === 'PANEL' ? T.sheetInfo : T.areaInfo,", "teile.push(fmt(T.areaInfo,"],
@@ -81,6 +83,47 @@ const MUTANTEN = [
   ['N27 px in _pod_karte nennt die geplante statt der tatsächlichen Grösse', "var rg = letzteGroesse[p.id] && fix ? letzteGroesse[p.id] : g.render;", "var rg = g.render;"],
   ['N28 Stickerei-Hinweis verspricht Garnfarben', "de: 'Stickerei: Dein Motiv wird gestickt.", "de: 'Stickerei: Dein Motiv wird in Garnfarben gestickt."],
   ['N29 Modus des Containers wird nicht gesetzt', "container.setAttribute('data-lspod6-modus', legacy ? 'v5' : 'karte');", ""],
+  // ── 6.2.0: Qualitätstor, Vorschau «Auf dem Produkt», Entwurf (Prüfungen: unit_test, vorschau_test, editor_test) ──
+  ['W01 Sperre schon bei der Dichte statt beim Mindestwert (Dichte ignoriert)', "var d = dichte > 0 ? dichte : Infinity;", "var d = Infinity;"],
+  ['W02 Warnstufe endet bei 100 statt 150 dpi', "return dpi < Math.min(DPI_GUT, d) - 1e-9 ? 'mittel' : 'gut';", "return dpi < Math.min(100, d) - 1e-9 ? 'mittel' : 'gut';"],
+  ['W03 Genau der Mindestwert sperrt noch', "if (dpi < Math.min(minDpi, d) - 1e-9) return 'sperre';", "if (dpi < Math.min(minDpi, d) + 1e-9) return 'sperre';"],
+  ['W04 Anzeige rundet unter der Sperre auf («75» neben der Sperre)', "function dpiGanz(dpi, stufe) { return stufe === 'sperre' ? Math.floor(dpi + 1e-9) : Math.round(dpi); }", "function dpiGanz(dpi, stufe) { return Math.round(dpi); }"],
+  ['W05 Kaufsperre bei zu kleinem Foto entfällt', "if (qs) { meldung(qs, 'err'); return; }", ""],
+  ['W06 Sperrliste rechnet ohne Dichte der Druckdatei', "if (qualitaetStufe(d, karte.minDpi, g.printfile.dpi * g.render.k) === 'sperre') lage.sperren.push(", "if (qualitaetStufe(d, karte.minDpi, null) === 'sperre') lage.sperren.push("],
+  ['W07 Anzeige rechnet ohne Dichte der Druckdatei', "var dichte = g.printfile.dpi * g.render.k;\n      var stufe = qualitaetStufe(d, karte.minDpi, dichte);", "var dichte = 0;\n      var stufe = qualitaetStufe(d, karte.minDpi, dichte);"],
+  ['W08 qd fehlt in _pod_karte', "if (lage.min !== null) o.qd = Math.floor(lage.min + 1e-9);", ""],
+  ['W09 qd gerundet statt abgerundet', "o.qd = Math.floor(lage.min + 1e-9);", "o.qd = Math.round(lage.min);"],
+  ['W10 Speicher schreiben ohne Schutz (gesperrter Speicher wirft)', "function speicherSchreiben(k, v) { try { var s = window.localStorage; if (!s) return false; s.setItem(k, v); return true; } catch (e) { return false; } }", "function speicherSchreiben(k, v) { var s = window.localStorage; if (!s) return false; s.setItem(k, v); return true; }"],
+  ['W11 Speicher lesen ohne Schutz (gesperrter Speicher wirft)', "function speicherLesen(k) { try { var s = window.localStorage; return s ? s.getItem(k) : null; } catch (e) { return null; } }", "function speicherLesen(k) { var s = window.localStorage; return s ? s.getItem(k) : null; }"],
+  ['W12 Entwurf bleibt nach dem Warenkorb im Speicher', "entwurfAus = true; clearTimeout(entwurfTimer); speicherLoeschen(entwurfKey);", "entwurfAus = true; clearTimeout(entwurfTimer);"],
+  ['W13 Zu alter Entwurf wird wiederhergestellt', " || Date.now() - d.t > ENTWURF_MAX_ALTER_MS", ""],
+  ['W14 Entwurf wird beim Verlassen der Seite nicht gesichert', "window.addEventListener('pagehide', function () { if (document.body.contains(ui.karte)) entwurfSofort(); });", ""],
+  ['W15 Wiederhergestelltes Foto behält die Höhe des Ausschnitts nicht', "e._origW = n.aw; e._origH = n.ah > 0 ? n.ah : n.aw;", "e._origW = n.aw; e._origH = n.aw;"],
+  ['W16 Entwurf speichert Fotos ohne fertige Datei', "if (e.type !== 'image' || !e.printUrl || e.uploading || !/^https:\\/\\//i.test(e.printUrl)) return null;", "if (e.type !== 'image') return null;"],
+  ['W17 Entwurf: Platzierung der Seite gibt es nicht mehr, wird trotzdem eingesetzt', "if (!st.ebenen[pid] || !Array.isArray(d.ebenen[pid])) return;   // diese Platzierung gibt es nicht mehr", "if (!Array.isArray(d.ebenen[pid])) return;"],
+  ['W18 Vorschau: Vorlage liegt immer hinter dem Design', "if (vl.vorderansicht !== false) { designZeichnen(); vorlageZeichnen(); } else { vorlageZeichnen(); designZeichnen(); }", "{ designZeichnen(); vorlageZeichnen(); }"],
+  ['W19 Vorschau: Design nicht auf die Druckfläche beschnitten', "ctx.save(); ctx.beginPath(); ctx.rect(L.ax, L.ay, L.aw, L.ah); ctx.clip();", "ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.clip();"],
+  ['W20 Vorschau: Vorlage immer multipliziert', "if (opt.overlay === 'multiply') ctx.globalCompositeOperation = 'multiply';", "ctx.globalCompositeOperation = 'multiply';"],
+  ['W21 Vorschau: Bildfehler lässt eine leere Ansicht stehen (kein Rückfall)', "if (!r.ok) { if (r.grund !== 'veraltet') vorschauRueckfall(); return; }", "if (!r.ok) { return; }"],
+  ['W22 Vorschau: Bilder ohne CORS-Anfrage geladen (Export unmöglich)', "img.crossOrigin = 'anonymous';\n          img.onload = function () { clearTimeout(t); ok(img); };", "img.onload = function () { clearTimeout(t); ok(img); };"],
+  ['W23 Export: Dateigewicht nicht begrenzt', "ok(b && b.size > 0 && b.size <= VORSCHAU_MAX_BYTES ? b : null);", "ok(b && b.size > 0 ? b : null);"],
+  ['W24 Export: PNG statt JPEG', "}, 'image/jpeg', VORSCHAU_QUALITAET[i]);", "}, 'image/png');"],
+  ['W25 Export: 400 statt 800 Pixel', "var VORSCHAU_PX = 800;", "var VORSCHAU_PX = 400;"],
+  ['W26 _vorschau wird nicht in die Eigenschaften geschrieben', "if (verwendet.length && vorschauUrl) props._vorschau = vorschauUrl;", ""],
+  ['W27 Alte _vorschau-Adresse bleibt nach einer Änderung des Entwurfs', "if (!eingefroren) { druckUrls = {}; vorschauUrl = ''; }", "if (!eingefroren) { druckUrls = {}; }"],
+  ['W28 Kontrast-Hinweis kommt nie', "var KONTRAST_SCHWELLE = 1.8;", "var KONTRAST_SCHWELLE = 1.0;"],
+  ['W29 Kontrast-Hinweis nennt immer «dunkel»', "ui.pvKontrast.textContent = a.art === 'dunkel' ? T.kontrastDunkel : T.kontrastHell;", "ui.pvKontrast.textContent = T.kontrastDunkel;"],
+  ['W30 Stickerei bekommt eine Vorschau statt des Hinweises', "if (p.technik === 'EMBROIDERY' || /^embroidery/.test(p.id)) return { art: 'hinweis', code: 'stickerei' };", ""],
+  ['W31 Rundum-Druck bekommt eine Vorschau statt des Hinweises', "if (karte.klasse === 'PANEL') return { art: 'hinweis', code: 'rundum' };", ""],
+  ['W32 Tasse: Zylinder gerade statt gewölbt', "var X1 = mx + R * Math.sin(t1), X2 = mx + R * Math.sin(t2);", "var X1 = mx + R * t1 / 1.5707963, X2 = mx + R * t2 / 1.5707963;"],
+  ['W33 Tasse: Katalogfoto nicht multipliziert (Tasse bleibt flach weiss)', "ctx.globalCompositeOperation = 'multiply';\n        ctx.drawImage(foto, sa[0]", "ctx.globalCompositeOperation = 'source-over';\n        ctx.drawImage(foto, sa[0]"],
+  ['W34 Reiter «Rücken» zeichnet die Vorlage der ersten Platzierung', "return weg(cv, p, geo(p), spec.m, opt).then(function (r) {", "return weg(cv, karte.platzierungen[0], geo(karte.platzierungen[0]), spec.m, opt).then(function (r) {"],
+  ['W35 Vorschau: Stoff immer weiss statt Farbe der Variante', "else { ctx.fillStyle = farbe.hex || '#ffffff'; ctx.fillRect(L.ox, L.oy, L.w, L.h); }", "else { ctx.fillStyle = '#ffffff'; ctx.fillRect(L.ox, L.oy, L.w, L.h); }"],
+  ['W36 Vorschaudaten: Bildadressen ohne https werden angenommen', "if (/^https:\\/\\//i.test(k) && (v === null || (typeof v === 'string' && /^https:\\/\\//i.test(v)))) bilder[k] = v;", "bilder[k] = v;"],
+  ['W37 Vorschaudaten: Schema wird nicht geprüft', "if (roh.schema !== 1) return { fehler: 'Vorschauschema ' + roh.schema + ' unbekannt' };", ""],
+  ['W38 Tassen-Eichung: Winkel über 360 Grad erlaubt', "if (t.winkel != null && !(istZahl(t.winkel) && t.winkel > 90 && t.winkel <= 360)) return false;", "if (t.winkel != null && !istZahl(t.winkel)) return false;"],
+  ['W39 Einpassen und Füllen vertauscht', "if ((modus === 'fuellen') === (aspekt >= aw / ah)) { h = ah; w = ah * aspekt; } else { w = aw; h = aw / aspekt; }", "if ((modus !== 'fuellen') === (aspekt >= aw / ah)) { h = ah; w = ah * aspekt; } else { w = aw; h = aw / aspekt; }"],
+  ['W40 Kontrastanalyse zählt durchsichtige Pixel mit', "if (a < 0.2) continue;", ""],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)
@@ -99,9 +142,28 @@ const KB_MUTANTEN = [
   ['K12 Zuordnung mit Bruch als Printful-Variante wird angenommen', "if (!Number.isInteger(pv) || pv <= 0) {", "if (false) {"],
 ];
 
+// Mutanten des Vorschaubauers (nur unit_test.mjs, V6_VORSCHAUBAUER zeigt auf die Kopie)
+const VB_MUTANTEN = [
+  ['V01 Raster- und Fremdbilder landen in «bilder»', "if (typeof url !== 'string' || bildArt(url) !== 'foto' || url in bilder) return;", "if (typeof url !== 'string' || url in bilder) return;"],
+  ['V02 Dateiname ohne ?v= (Printful ändert das Bild, der Name bleibt)', "createHash('sha1').update(String(url))", "createHash('sha1').update(new URL(url).pathname)"],
+  ['V03 Spiegel-Adresse ohne https wird eingebacken', "bilder[url] = typeof spiegel[name] === 'string' && /^https:\\/\\//i.test(spiegel[name]) ? spiegel[name] : null;", "bilder[url] = typeof spiegel[name] === 'string' ? spiegel[name] : null;"],
+  ['V04 Rundum-Druck bekommt eine Vorschau', "if (technisch === 'PANEL') { adapter = 'keine'; grund = 'rundum'; }", "if (false) { adapter = 'keine'; grund = 'rundum'; }"],
+  ['V05 Poster und Leinwand ohne Papier-Adapter', "else if (PAPIER_TYPEN.includes(k.typ)) { adapter = 'papier'; }", "else if (false) { adapter = 'papier'; }"],
+  ['V06 Unbekannte Option wird still überhört (auch --live)', "else throw new Error(`unbekannte Option ${k} (dieses Werkzeug hat nur den Trockenlauf; Hochladen macht der Hauptlauf)`);", "else { /* überhört */ }"],
+  ['V07 Dateiplan nicht nach Dateiname sortiert', "const dateien = [...nach.values()].sort((a, b) => a.dateiname.localeCompare(b.dateiname));", "const dateien = [...nach.values()];"],
+  ['V08 Fehlende Katalogdatei wird nicht gemeldet', "if (!existsSync(datei)) { fehler.push(`Modell ${id}: Katalogdatei fehlt`); continue; }", ""],
+  ['V09 Vorlage hinter dem Druck wird nicht gemerkt', "tw: vl.vorlageBreite, th: vl.vorlageHoehe, fl: vl.flaecheLinks, fo: vl.flaecheOben, fb: vl.flaecheBreite, fh: vl.flaecheHoehe, vorne: vl.vorderansicht !== false,", "tw: vl.vorlageBreite, th: vl.vorlageHoehe, fl: vl.flaecheLinks, fo: vl.flaecheOben, fb: vl.flaecheBreite, fh: vl.flaecheHoehe, vorne: true,"],
+  ['V10 Druckfläche links und oben vertauscht', "fl: vl.flaecheLinks, fo: vl.flaecheOben,", "fl: vl.flaecheOben, fo: vl.flaecheLinks,"],
+  ['V11 Tasse ohne Eichung jeder Variante wird trotzdem «tasse»', "const alleGeeicht = vs.length > 0 && vs.every((id) => TASSEN_EICHUNG[id] && typeof bild.get(id) === 'string');", "const alleGeeicht = true;"],
+  ['V12 Tassen-Radius der 11-oz-Tasse verstellt', "1320: Object.freeze({ fotoBreite: 700, fotoHoehe: 1000, mitteX: 407, radius: 194,", "1320: Object.freeze({ fotoBreite: 700, fotoHoehe: 1000, mitteX: 407, radius: 204,"],
+  ['V13 Bündel mit fehlendem Modell wird trotzdem geschrieben', "else dateien[`buendel-${name}.vorschau.json`] = vorschauDatei(teile, stand);", "dateien[`buendel-${name}.vorschau.json`] = vorschauDatei(teile, stand);"],
+  ['V14 Schema 2 statt 1 in den Dateien', "export const SCHEMA = 1;", "export const SCHEMA = 2;"],
+];
+
 const nur = process.argv[2] || '';
 const original = readFileSync(V6_DATEI, 'utf8');
 const originalKb = readFileSync(KARTENBAUER, 'utf8');
+const originalVb = readFileSync(VORSCHAUBAUER, 'utf8');
 const node = process.execPath;
 
 if (nur === '--muster') {
@@ -109,7 +171,8 @@ if (nur === '--muster') {
   const zaehle = (q, alt) => [].concat(alt).map((a) => q.split(a).length - 1);
   for (const [name, alt] of MUTANTEN) { const c = zaehle(original, alt); if (c.some((x) => x !== 1)) { schlecht++; console.log(`?  ${name}: Muster ${c.join('/')}× gefunden`); } }
   for (const [name, alt] of KB_MUTANTEN) { const c = zaehle(originalKb, alt); if (c.some((x) => x !== 1)) { schlecht++; console.log(`?  ${name}: Muster ${c.join('/')}× gefunden`); } }
-  console.log(`${MUTANTEN.length + KB_MUTANTEN.length} Muster geprüft, ${schlecht} nicht anwendbar`);
+  for (const [name, alt] of VB_MUTANTEN) { const c = zaehle(originalVb, alt); if (c.some((x) => x !== 1)) { schlecht++; console.log(`?  ${name}: Muster ${c.join('/')}× gefunden`); } }
+  console.log(`${MUTANTEN.length + KB_MUTANTEN.length + VB_MUTANTEN.length} Muster geprüft, ${schlecht} nicht anwendbar`);
   process.exit(schlecht ? 1 : 0);
 }
 
@@ -124,13 +187,14 @@ function lauf(datei, args, env) {
 const aufgaben = [];
 MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'editor', alt, neu, i }));
 KB_MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'kartenbauer', alt, neu, i: 100 + i }));
-const gewaehlt = aufgaben.filter((a) => !nur || a.name.startsWith(nur) || (nur === 'K' && a.art === 'kartenbauer'));
+VB_MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'vorschaubauer', alt, neu, i: 200 + i }));
+const gewaehlt = aufgaben.filter((a) => !nur || a.name.startsWith(nur) || (nur === 'K' && a.art === 'kartenbauer') || (nur === 'V' && a.art === 'vorschaubauer'));
 const ergebnis = { erkannt: 0, ueberlebt: [], unanwendbar: [] };
 let naechster = 0;
 async function arbeiter() {
   while (naechster < gewaehlt.length) {
     const a = gewaehlt[naechster++];
-    let mutiert = a.art === 'editor' ? original : originalKb;
+    let mutiert = a.art === 'editor' ? original : a.art === 'kartenbauer' ? originalKb : originalVb;
     const alte = [].concat(a.alt), neue = [].concat(a.neu);
     let schlecht = null;
     alte.forEach((muster, j) => {
@@ -144,7 +208,14 @@ async function arbeiter() {
       writeFileSync(datei, mutiert);
       const umg = { V6_DATEI: datei };
       if (await lauf('unit_test.mjs', [], umg) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch unit_test`); continue; }
+      if (await lauf('vorschau_test.mjs', ['kern'], umg) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch vorschau_test`); continue; }
       if (await lauf('editor_test.mjs', ['kern'], umg) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch editor_test`); continue; }
+    } else if (a.art === 'vorschaubauer') {
+      // Der Bauer importiert relativ zu seinem Ort: die Pfade der Kopie zeigen auf die echten Dateien
+      const fix = mutiert.replaceAll("'../../../dropship/", `'${pathToFileURL(join(hier, '..', '..', '..', 'dropship')).href}/`);
+      const datei = join(ordner, `vorschaubauer-${a.i}.mjs`);
+      writeFileSync(datei, fix);
+      if (await lauf('unit_test.mjs', [], { V6_VORSCHAUBAUER: datei }) !== 0) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch unit_test`); continue; }
     } else {
       // Der Kartenbauer importiert relativ zu seinem Ort: die Pfade der Kopie zeigen auf die echten Dateien
       const fix = mutiert.replaceAll("'../../../dropship/", `'${pathToFileURL(join(hier, '..', '..', '..', 'dropship')).href}/`);

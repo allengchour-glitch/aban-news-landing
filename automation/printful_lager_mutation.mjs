@@ -136,9 +136,10 @@ function lauf(dir, test) {
 
 function main() {
   const dir = mkdtempSync(join(tmpdir(), 'plager-mut-'));
+  let code = 0;
   try {
     for (const f of DATEIEN) { mkdirSync(dirname(join(dir, f)), { recursive: true }); copyFileSync(join(REPO, f), join(dir, f)); }
-    for (const t of TESTS) { const g = lauf(dir, t); if (g.code !== 0) { console.error(`Ausgangslage nicht grün: ${t}\n${g.out.slice(-600)}`); process.exit(2); } }
+    for (const t of TESTS) { const g = lauf(dir, t); if (g.code !== 0) { console.error(`Ausgangslage nicht grün: ${t}\n${g.out.slice(-600)}`); code = 2; return; } }
     let erkannt = 0, ueberlebt = [], unpassend = [];
     for (const [i, m] of MUTANTEN.entries()) {
       const pfad = join(dir, m.datei);
@@ -154,7 +155,7 @@ function main() {
     console.log(`\nMutationsprobe: ${erkannt} von ${MUTANTEN.length} erkannt, ${ueberlebt.length} überlebt, ${unpassend.length} mit unpassendem Muster`);
     for (const x of ueberlebt) console.log(`  überlebt: ${x}`);
     for (const x of unpassend) console.log(`  unpassend: ${x}`);
-    process.exit(unpassend.length ? 2 : ueberlebt.length ? 1 : 0);
-  } finally { rmSync(dir, { recursive: true, force: true }); }
+    code = unpassend.length ? 2 : ueberlebt.length ? 1 : 0;
+  } finally { rmSync(dir, { recursive: true, force: true }); process.exitCode = code; }
 }
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) main();
