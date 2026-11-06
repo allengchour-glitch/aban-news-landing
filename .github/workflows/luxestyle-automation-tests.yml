@@ -55,6 +55,8 @@ on:
       - 'pod/live/**'
       - 'dropship/rueckgabe-0611/**'
       - 'dropship/katalog-nur-bestellbar-0511/**'
+      - 'dropship/katalog-fenster-0611/**'
+      - 'dropship/katalog-texte-de-0611/**'
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
       - 'automation/fortura_feed_holen.sh'
@@ -393,6 +395,8 @@ jobs:
           sparse-checkout: |
             automation/lib
             automation/pod_modell
+            dropship/katalog-fenster-0611
+            dropship/katalog-texte-de-0611
             dropship/katalog-nur-bestellbar-0511
             dropship/rueckgabe-0611
             dropship/selbst-gestalten-fertig-0511
@@ -431,3 +435,8 @@ jobs:
           OHNE_LIQUID=1 node dropship/katalog-nur-bestellbar-0511/patches_test.mjs
           node dropship/katalog-nur-bestellbar-0511/waechter_test.mjs
           APPLY_ZEIT=0.001 node dropship/katalog-nur-bestellbar-0511/apply_test.mjs
+      - name: Katalogfenster gemeinsames Paket 06.11. (Soll-Stand der Dateien, Kombination, Einspielskript gegen Attrappe; Browsertests laufen nur von Hand, sie holen das Live-Dokument)
+        run: |
+          node dropship/katalog-fenster-0611/ziel_bauen.mjs --pruefen
+          node dropship/katalog-fenster-0611/kombi_test.mjs
+          node dropship/katalog-fenster-0611/apply_test.mjs
