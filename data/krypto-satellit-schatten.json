@@ -17,27 +17,43 @@
    "S2": 10000.0,
    "BTC150": 10378.21,
    "BTC": 10378.21
+  },
+  {
+   "tag": "2026-11-05",
+   "S1": 10000.0,
+   "S2": 10000.0,
+   "BTC150": 9808.92,
+   "BTC": 9808.92
   }
  ],
  "preise": {
-  "BTCUSDT": 80504.01
+  "BTCUSDT": 76088.01,
+  "PEPEUSDT": 4.8e-06
  },
  "reihen": {
   "S1": {
    "name": "Regel wie getestet (Top 10 mit Bitcoin und Ether)",
-   "bar": 10000.0,
-   "menge": {},
-   "ziele": {},
-   "entschieden": "2026-10-29",
-   "handel": 0
+   "bar": 8998.65,
+   "menge": {
+    "PEPEUSDT": 208302083.33333334
+   },
+   "ziele": {
+    "PEPEUSDT": 0.1
+   },
+   "entschieden": "2026-11-05",
+   "handel": 1
   },
   "S2": {
    "name": "Satellit (Top 10 ohne Bitcoin und Ether)",
-   "bar": 10000.0,
-   "menge": {},
-   "ziele": {},
-   "entschieden": "2026-10-29",
-   "handel": 0
+   "bar": 8998.65,
+   "menge": {
+    "PEPEUSDT": 208302083.33333334
+   },
+   "ziele": {
+    "PEPEUSDT": 0.1
+   },
+   "entschieden": "2026-11-05",
+   "handel": 1
   },
   "BTC150": {
    "name": "Vergleich: Bitcoin mit Trend 150",
@@ -48,7 +64,7 @@
    "ziele": {
     "BTCUSDT": 1.0
    },
-   "entschieden": "2026-10-29",
+   "entschieden": "2026-11-05",
    "handel": 1
   },
   "BTC": {
@@ -60,10 +76,10 @@
    "ziele": {
     "BTCUSDT": 1.0
    },
-   "entschieden": "2026-10-29",
+   "entschieden": "2026-11-05",
    "handel": 1
   }
  },
- "letzter_stand": "2026-11-04",
+ "letzter_stand": "2026-11-05",
  "fehlende_coins": []
 }
