@@ -6,7 +6,9 @@
   const hex = value => /^#[\da-f]{6}$/i.test(string(value)) ? value : null;
   const unique = values => Array.from(new Set(values.filter(Boolean)));
   const sizeOrder = ['XXS','XS','S','M','L','XL','2XL','XXL','3XL','XXXL','4XL','5XL','6XL','7XL','8XL'];
-  const sortSizes = (a,b) => { const x=sizeOrder.indexOf(a), y=sizeOrder.indexOf(b); return x>=0 && y>=0 ? x-y : a.localeCompare(b,undefined,{numeric:true}); };
+  /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): totale Ordnung: Kleidergrössen in ihrer Reihenfolge, dann Volumen (oz/ml), dann Masse nach der ersten Zahl, dann Text; vorher mischte der Vergleich Gruppen und war nicht transitiv */
+  const sizeRank = s => { const i=sizeOrder.indexOf(s); if(i>=0) return [0,i]; const m=/^\s*(\d+(?:[.,]\d+)?)/.exec(s); if(!m) return [3,0]; const n=parseFloat(m[1].replace(',','.')); return /\b(?:oz|ml)\b/i.test(s) ? [1,/\boz\b/i.test(s)?n*29.5735:n] : [2,n]; };
+  const sortSizes = (a,b) => { const x=sizeRank(a), y=sizeRank(b); return x[0]-y[0] || x[1]-y[1] || String(a).localeCompare(String(b),undefined,{numeric:true}); };
   const normal = value => string(value).toLocaleLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replaceAll('ß','ss');
   const el = (tag, className, text) => {
     const node = document.createElement(tag);
@@ -117,23 +119,27 @@
     let config;
     try { config = JSON.parse(root.querySelector('[data-lcl-config]').textContent); } catch { return; }
     const labels = decodeLabels(config.labels || {});
-    const t = (key, values = {}) => Object.entries(values).reduce((text, [name, value]) => text.replaceAll(`[${name}]`, String(value)), string(labels[key]) || key);
+    /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): Rückfallsätze für die Etiketten von (A): ein neues JS mit einem alten (zwischengespeicherten) Dokument zeigte sonst den Rohschlüssel, z. B. «reload_needed» */
+    const lxFallbackDe = {"none_orderable":"Im Moment ist kein Modell zum Selbstgestalten bestellbar. Bitte schau später wieder vorbei.","orderable_variants":"[count] bestellbare Ausführungen","orderable_variants_one":"1 bestellbare Ausführung","results_one":"1 Modell in dieser Auswahl","reload_needed":"Diese Seite ist nicht mehr aktuell. Bitte lade sie neu.","model_unavailable":"Dieses Modell ist im Moment nicht zum Selbstgestalten bestellbar.","dialog_notice":"Hier siehst du nur Ausführungen, die du bei LuxeStyle gestalten und bestellen kannst.","notice_shoes":"Schuhgrössen: Europa-Tabelle des Herstellers, «ca.» = ungefähr."};
+    const t = (key, values = {}) => Object.entries(values).reduce((text, [name, value]) => text.replaceAll(`[${name}]`, String(value)), string(labels[key]) || (german ? lxFallbackDe[key] : '') || key);
     const german = /^de(?:-|$)/i.test(config.locale || '');
     // LX-KATALOGTEXTE-0511: Etikett nur nehmen, wenn es vorhanden und kein «translation missing» ist (Einspielreihenfolge von Section und Locale-Dateien ist dann unkritisch)
     const labelOr = (key, fallback) => { const text = string(labels[key]); return text && !/^translation missing/i.test(text) ? text : fallback; };
     const metricText = createMetricFormatter(config.locale || 'de');
     const metricTitle = value => metricText(value).replace(/\(\s*in\s*\)(?=\s*(?:$|\|))/gi,'(cm)');
+    /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): umgerechnete Zentimeter höchstens eine Nachkommastelle, ab 10 cm ganze Zentimeter (7,62 → 7,6 · 13,97 → 14 · 38,1 → 38); nur deutsche Seite, nur Mass-Gruppen mit «cm» */
+    const roundCm = text => german ? string(text).replace(/\d+(?:,\d+)?(?:\s*×\s*\d+(?:,\d+)?){0,2}(?=\s*cm\b)/g, group => group.replace(/\d+,\d+/g, num => { const v = Number(num.replace(',','.')); return v >= 10 ? String(Math.round(v)) : String(Math.round(v * 10) / 10).replace('.',','); })) : string(text);
     const lookupKey = value => normal(value).replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
     const normalizeNames = names => Object.fromEntries(Object.entries(names || {}).map(([key,value])=>[lookupKey(key),value]));
     const categoryTranslations = normalizeNames(labels.category_names);
     const colorTranslations = normalizeNames(labels.color_names);
     const titleFor = category => german && categoryTranslations[lookupKey(category.title)] || string(category.title);
     // LX-KATALOGTEXTE-0511: Farbnamen, die das Locale nicht kennt: wenige allgemeine Wörter und Masse (keine imperialen Einheiten)
-    const colorFallback = {custom:'Individuell',wood:'Holz',satin:'Satin',dotted:'Gepunktet',denim_blue:'Jeansblau',white_matte:'Weiss matt',tan:'Hellbraun',white_glossy:'Weiss glänzend','1_pc':'1 Stück',white_aluminum:'Weiss (Aluminium)',white_front_silver_back:'Weiss (Vorderseite), Silber (Rückseite)',rectangle:'Rechteck'};
+    const colorFallback = {custom:'Individuell',wood:'Holz',satin:'Satin',dotted:'Gepunktet',denim_blue:'Jeansblau',white_matte:'Weiss matt',tan:'Hellbraun',white_glossy:'Weiss glänzend','1_pc':'1 Stück',white_aluminum:'Weiss (Aluminium)',white_front_silver_back:'Weiss (Vorderseite), Silber (Rückseite)',rectangle:'Rechteck',glossy:'Glänzend',matte:'Matt',oyster:'Sand',fresh_pink:'Zartrosa',fresh_green:'Zartgrün',natural_stone:'Naturstein'}; /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): Oberflächen und weitere Farbnamen deutsch */
     const colorName = value => {
       const raw = string(value); if (!german) return raw;
       const hit = colorTranslations[lookupKey(raw)] || colorFallback[lookupKey(raw)]; if (hit) return hit;
-      return /\d/.test(raw) ? metricText(raw) : raw;
+      return /\d/.test(raw) ? roundCm(metricText(raw)) : raw;
     };
     // LX-KATALOGTEXTE-0511: Titel ohne Unzen-Angabe (die Menge steht in der deutschen Fassung bzw. in der Beschreibung), Modellzeile nur mit Marke und Modellnummer
     const dropOz = text => string(text).replace(/\s*,?\s*\(?\s*\d+(?:[.,]\d+)?\s*oz\.?\s*\)?/gi,'').trim();
@@ -165,12 +171,14 @@
       const raw = string(value), extra = product && presentationFor(product);
       const variant = list(extra?.variants).find(item => (variantId ? id(item.id) === id(variantId) : true) && item.originalSize === raw);
       if (variant?.shapeKey) return t(variant.shapeKey);
-      return string(variant?.displaySizeCh) || sizeDe(raw,product,metricText(raw));
+      return string(variant?.displaySizeCh) || sizeDe(raw,product,roundCm(metricText(raw)));
     };
-    const joinSizeLabels = (labels, value) => {const u=[...new Set(labels)], cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});if(u.length===1)return u[0];const eu=u.filter(x=>/^EU\s/.test(x));if(eu.length)return eu.sort(cmp).join(' / ');const m=u.map(x=>/^(\d+(?:,\d+)?) (ml|g)$/.exec(x));if(u.length&&m.every(Boolean)&&new Set(m.map(x=>x[2])).size===1){const n=m.map(x=>Number(x[1].replace(',','.'))).sort((p,q)=>p-q), f=v=>String(v).replace('.',',');return n[0]===n[n.length-1]?u[0]:f(n[0])+'–'+f(n[n.length-1])+' '+m[0][2];}return sizeDe(value,null,metricText(value));};
+    const joinSizeLabels = (labels, value) => {const u=[...new Set(labels)], cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});if(u.length===1)return u[0];const eu=u.filter(x=>/^EU\s/.test(x));if(eu.length)return eu.sort(cmp).join(' / ');const m=u.map(x=>/^(\d+(?:,\d+)?) (ml|g)$/.exec(x));if(u.length&&m.every(Boolean)&&new Set(m.map(x=>x[2])).size===1){const n=m.map(x=>Number(x[1].replace(',','.'))).sort((p,q)=>p-q), f=v=>String(v).replace('.',',');return n[0]===n[n.length-1]?u[0]:f(n[0])+'–'+f(n[n.length-1])+' '+m[0][2];}return sizeDe(value,null,roundCm(metricText(value)));};
+    /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): deutsche Modelltitel (Vorrang vor titleDe der Daten, das teils selbst englisch ist); ohne Eintrag der bisherige Titel */
+    const lxTitelDe = {"3":"Leinwand","19":"Keramik-Tasse, weiss glänzend","71":"Unisex-T-Shirt Staple | Bella + Canvas 3001","83":"Kissen mit Allover-Druck","84":"Stoffbeutel mit Allover-Druck","145":"Unisex-Sweatshirt mit Rundhalsausschnitt | Gildan 18000","171":"Premium-Fotoposter auf Luster-Papier","181":"Transparente Hülle für iPhone®","206":"Klassische Dad-Cap | Yupoong 6245CM","242":"Yoga-Leggings mit Allover-Druck","267":"Transparente Hülle für Samsung®","268":"Poster auf mattem Premium-Papier","272":"Badeanzug mit Allover-Druck","279":"Rucksack mit Allover-Druck","282":"Sport-BH mit Allover-Druck","304":"Gerahmtes Poster auf mattem Premium-Papier","320":"Unisex-Sweatshirt aus Recyclingmaterial mit Allover-Druck","358":"Kiss-Cut-Aufkleber","367":"Öko-Stoffbeutel | Econscious EC8000","388":"Unisex-Hoodie aus Recyclingmaterial mit Allover-Druck","390":"Unisex-Bomberjacke mit Allover-Druck","400":"Herren-Jogginghose aus Recyclingmaterial mit Allover-Druck","438":"Klassisches Unisex-T-Shirt | Gildan 5000","456":"Unisex-Bio-Baumwoll-T-Shirt Creator 2.0 | Stanley/Stella STTU169","474":"Spiral-Notizbuch","518":"Mauspad","586":"Schweres Unisex-T-Shirt, stückgefärbt | Comfort Colors 1717","601":"Robuste Hülle für iPhone® (Tough Case)","656":"Magnete mit Konturschnitt","684":"Schlanke Snap-Hülle für Samsung","686":"Robuste Hülle für Samsung (Tough Case)","788":"Trinkflasche aus Edelstahl mit Strohhalm-Deckel","798":"Robuste MagSafe-Hülle für iPhone® (Tough Case)","821":"Unisex-Bio-Hoodie, mittelschwer, Drummer 2.0 | Stanley/Stella SASU009","896":"Slip-Kleid mit Allover-Druck","1483":"Herren-Boardshorts mit Allover-Druck","1552":"Alltags-Umhängetasche | QS309"};
     const titleForProduct = product => {
       const extra = presentationFor(product);
-      return titleCm(metricTitle(german && (string(extra?.titleDe) || string(product.titleDe)) || (german ? dropOz(product.title) : product.title)));
+      return titleCm(metricTitle(german && (lxTitelDe[id(product.id)] || string(extra?.titleDe) || string(product.titleDe)) || (german ? dropOz(product.title) : product.title)));
     };
     const grid = root.querySelector('[data-lcl-grid]');
     const message = root.querySelector('[data-lcl-message]');
@@ -268,10 +276,10 @@
       if (color) return colorsFor(product).some(item => colorValue(item) === color);
       return sizesFor(product).includes(size);
     };
-    const searchAliases={grusskarte:['greeting card'],grusskarten:['greeting card'],karte:['greeting card'],karten:['greeting card'],pintglas:['pint glass'],trinkglas:['glass'],holzornament:['wooden ornament'],holzornamente:['wooden ornament'],weihnachtsanhanger:['wooden ornament'],longsleeve:['long sleeve'],langarmshirt:['long sleeve'],langarmshirts:['long sleeve'],tasse:['mug'],tassen:['mug'],becher:['mug','tumbler'],kapuzenpullover:['hoodie'],rucksack:['backpack'],rucksacke:['backpack'],kissen:['pillow'],decke:['blanket'],decken:['blanket'],handtuch:['towel'],handtucher:['towel'],aufkleber:['sticker','decal'],stickers:['sticker'],decal:['sticker','decal'],decals:['sticker','decal']};
+    const searchAliases={grusskarte:['greeting card'],grusskarten:['greeting card'],karte:['greeting card'],karten:['greeting card'],pintglas:['pint glass'],trinkglas:['glass'],holzornament:['wooden ornament'],holzornamente:['wooden ornament'],weihnachtsanhanger:['wooden ornament'],longsleeve:['long sleeve'],langarmshirt:['long sleeve'],langarmshirts:['long sleeve'],tasse:['mug'],tassen:['mug'],becher:['mug','tumbler'],kapuzenpullover:['hoodie'],rucksack:['backpack'],rucksacke:['backpack'],kissen:['pillow'],decke:['blanket'],decken:['blanket'],handtuch:['towel'],handtucher:['towel'],aufkleber:['sticker','decal'],stickers:['sticker'],decal:['sticker','decal'],decals:['sticker','decal'],kappe:['cap','hat'],kappen:['cap','hat'],pullover:['sweatshirt','hoodie'],beutel:['tote'],stoffbeutel:['tote'],jutebeutel:['tote'],bio:['organic'],hulle:['case'],hullen:['case'],handyhulle:['case'],handyhullen:['case']};
     const matchesSearch = product => {
       const query=normal(search.value).trim();if(!query)return true;
-      const haystack=normal([product.title,product.titleDe,product.brand,product.model,...list(presentationFor(product)?.searchAliases),...categoryIds(product).map(key=>categories.has(key)?titleFor(categories.get(key)):'')].filter(value=>typeof value==='string').join(' '));
+      const haystack=normal([product.title,titleForProduct(product),product.titleDe,product.brand,product.model,...list(presentationFor(product)?.searchAliases),...categoryIds(product).map(key=>categories.has(key)?titleFor(categories.get(key)):'')].filter(value=>typeof value==='string').join(' '));
       if(haystack.includes(query))return true;
       return query.split(/\s+/).every(term=>[term,...(searchAliases[term]||[])].some(alternative=>haystack.includes(alternative)));
     };
@@ -281,7 +289,7 @@
       if (sortSelect.value === 'name_asc' || sortSelect.value === 'name_desc') {
         const direction = sortSelect.value === 'name_desc' ? -1 : 1;
         rows.sort((a,b) => direction * titleForProduct(a).localeCompare(titleForProduct(b),config.locale || 'de-CH',{numeric:true}) || Number(a.id)-Number(b.id));
-      } else if (sortSelect.value === 'variants_desc') rows.sort((a,b) => Number(b.variantCount || b.originalVariantCount || 0)-Number(a.variantCount || a.originalVariantCount || 0) || Number(a.id)-Number(b.id));
+      } else if (sortSelect.value === 'variants_desc') rows.sort((a,b) => Number(b.lxCount || 0)-Number(a.lxCount || 0) || Number(a.id)-Number(b.id));
       return rows;
     };
     const categoryChildren = parent => Array.from(categories.values()).filter(c=>id(c.parent_id)===parent).sort((a,b)=>(Number(a.catalog_position)||0)-(Number(b.catalog_position)||0)||Number(a.id)-Number(b.id));
@@ -397,7 +405,14 @@
       return textsDe;
     };
     // Wartezeit auf die Textdatei begrenzen (hängende Verbindung): danach Originaltext; die Datei lädt im Hintergrund weiter und gilt ab dem nächsten Öffnen
-    const loadTextsLimited = () => { let timer; return Promise.race([loadTexts(), new Promise(resolve => { timer = setTimeout(resolve, 2500); })]).finally(() => clearTimeout(timer)); };
+    /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): nach dem ersten Zeitüberschreiten nicht bei jedem Öffnen erneut 2,5 s warten; die Datei lädt weiter, und trifft sie ein, wird die offene Detailansicht einmal neu gezeichnet (nur wenn die Auswahl unverändert ist) */
+    let textsTimedOut = false;
+    const loadTextsLimited = () => { if (textsTimedOut && textsPending && !textsDe) return Promise.resolve(textsDe); textsTimedOut = false; let timer; return Promise.race([loadTexts(), new Promise(resolve => { timer = setTimeout(() => { if (textsPending && !textsDe) textsTimedOut = true; resolve(); }, 2500); })]).finally(() => clearTimeout(timer)); };
+    const lxTextsNachtragen = (full, token) => {
+      if (!german || textsDe || !textsPending) return;
+      const wartet = textsPending, auswahl = () => [dialog.dataset.variantId, dialog.dataset.color, dialog.dataset.size].join('|'), vorher = auswahl();
+      wartet.then(() => { if (wartet !== textsPending || !textsDe || token !== detailToken || !dialog.open || auswahl() !== vorher) return; renderDetails(full); }, () => {});
+    };
     const own = (object, key) => object && typeof object === 'object' && Object.prototype.hasOwnProperty.call(object, key) ? object[key] : undefined;
     const textHit = (area, value, productId) => {
       const key = string(value);
@@ -445,7 +460,7 @@
       products = products.filter(p=>byModel.has(id(p.id))).map(p=>{
         const colors=new Set(), sizes=new Set(), pairs=new Map();
         byModel.get(id(p.id)).forEach(v=>{const row=rows.get(v);if(row.color)colors.add(row.color);if(row.size)sizes.add(row.size);if(row.color&&row.size){if(!pairs.has(row.color))pairs.set(row.color,new Set());pairs.get(row.color).add(row.size);}});
-        return {...p,colors:list(p.colors).filter(c=>colors.has(colorValue(c))),sizes:list(p.sizes).filter(s=>sizes.has(s)),colorSizes:Object.fromEntries(Object.entries(p.colorSizes||{}).map(([key,values])=>[key,list(values).filter(s=>pairs.get(key)?.has(s))]))};
+        return {...p,lxCount:byModel.get(id(p.id)).length,colors:list(p.colors).filter(c=>colors.has(colorValue(c))),sizes:list(p.sizes).filter(s=>sizes.has(s)),colorSizes:Object.fromEntries(Object.entries(p.colorSizes||{}).map(([key,values])=>[key,list(values).filter(s=>pairs.get(key)?.has(s))]))};
       });
       /* Schuh-Satz nur, wenn ein sichtbares Modell Europa-Grössen zeigt */
       if(products.some(p=>list(p.sizes).some(s=>/^EU\b/i.test(displaySize(s,p))))){[['.lcl-notice','notice'],['.lcl-dialog-notice','dialog_notice']].forEach(([sel,key])=>{const n=root.querySelector(sel);if(n)n.textContent=t(key)+' '+t('notice_shoes');});}
@@ -499,7 +514,7 @@
       detailBody.replaceChildren(el('p','lcl-detail-loading',t('loading_details')));
       if (!dialog.open) dialog.showModal();
       // LX-KATALOGTEXTE-0511: deutsche Textdatei parallel zu den Modelldetails laden, höchstens 2,5 s warten (scheitert sie oder ist sie zu langsam, bleibt es beim Original)
-      try { const [full] = await Promise.all([productDetails(product), loadTextsLimited()]); if(token === detailToken && dialog.open) renderDetails(full); }
+      try { const [full] = await Promise.all([productDetails(product), loadTextsLimited()]); if(token === detailToken && dialog.open) { renderDetails(full); lxTextsNachtragen(full, token); } }
       catch { if(token === detailToken && dialog.open) detailBody.replaceChildren(el('p','lcl-detail-loading',t('details_error')),button(t('retry'),()=>openDetails(product,opener))); }
     }
     function renderDetails(product) {
@@ -545,7 +560,7 @@
       if (!known || !variants.length) panel.append(el('p','lcl-source-warning',t(product.detailStatus === 'error' ? 'details_error' : known ? 'no_variants' : 'details_pending')));
       const colorGroup = el('fieldset','lcl-choices'); colorGroup.append(el('legend','',t('color'))); const colorButtons = el('div','lcl-color-buttons'); colorGroup.append(colorButtons);
       const sizeGroup = el('fieldset','lcl-choices'); sizeGroup.append(el('legend','',t('size'))); const sizeButtons = el('div','lcl-size-buttons'); sizeGroup.append(sizeButtons);
-      if(colors.length===1)colorGroup.append(el('p','lcl-small',t('single_color',{color:colorName(colorValue(colors[0]))})));
+      if(colors.length===1&&!/^(?:glossy|matte)$/i.test(colorValue(colors[0])))colorGroup.append(el('p','lcl-small',t('single_color',{color:colorName(colorValue(colors[0]))})));
       if(colors.length) panel.append(colorGroup); if(materialGroups.size>1) panel.append(materialGroup); if(variants.some(v=>v.size)) panel.append(sizeGroup);
       const variantContent = el('div','lcl-variant-content'); panel.append(variantContent);
       const modelInfo = el('div','lcl-model-info');

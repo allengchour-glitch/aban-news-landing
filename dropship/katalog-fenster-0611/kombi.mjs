@@ -7,11 +7,14 @@
 // Reihenfolge: (A) anwenden() auf die neun Live-Dateien, danach die 22 verankerten Ersetzungen von (B) auf das Ergebnis; jede muss GENAU EINMAL
 // vorkommen, sonst Abbruch mit Dateiname, laufender Nummer und Anfang des Ankers. Eine Ersetzung von (B) trifft nach (A) nicht mehr: die Zeile
 // mit t('original_variants',…) (siehe KOLLISION unten). Alles andere passt unverändert.
+// Danach Stufe 3: die Korrekturen der Abnahme vom 06.11.2026 (korrekturen.mjs, eigene Stufe in diesem Paket).
 // Neue Dateien (drei): assets/luxe-clothing-ausblenden.json, assets/luxe-clothing-variantenkarte.json (beide (A)) und assets/luxe-clothing-texts-de.json ((B)).
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import * as A from '../katalog-nur-bestellbar-0511/patches.mjs';
 import { TEXTE_PAARE, TEXTE_SCHLUESSEL } from './texte_ersetzungen.mjs';
+import { korrekturPaare, KORREKTUR_SCHLUESSEL, KORREKTUR_KATEGORIEN_DE, TITEL_DE } from './korrekturen.mjs';
+export { KORREKTUR_SCHLUESSEL, KORREKTUR_KATEGORIEN_DE, TITEL_DE };
 
 const HIER = new URL('.', import.meta.url).pathname;
 const A_ORDNER = HIER + '../katalog-nur-bestellbar-0511/';
@@ -85,6 +88,16 @@ export function anwendenTexte(out) {
   return out;
 }
 
+// Stufe 3: die Korrekturen aus der Abnahme (korrekturen.mjs): jede Ersetzung genau einmal; die Rückfallsätze des Codes kommen aus den Etiketten von (A)
+export const fallbackSaetzeDe = () => Object.fromEntries(A.NEUE_SCHLUESSEL.map((k) => { if (typeof A.TEXTE.de[k] !== 'string') throw new Error(`Etikett ${k} von (A) fehlt in TEXTE.de`); return [k, A.TEXTE.de[k]]; }));
+export function anwendenKorrekturen(out) {
+  for (const p of korrekturPaare(fallbackSaetzeDe())) {
+    if (typeof out[p.datei] !== 'string') throw new Error(`Korrektur «${p.datei} Nr. ${p.nr} (${p.name})»: Datei fehlt im Ergebnis von (A) und (B)`);
+    out[p.datei] = einmal(out[p.datei], p.alt, p.neu, `Korrektur ${p.datei} Nr. ${p.nr} (${p.name})`);
+  }
+  return out;
+}
+
 // dateien: {Dateiname: Text} der neun Live-Dateien (Ausgangsstand); daten: {ausblenden: Objekt, karte: Text, texte: Text} (lesenDaten())
 // Rückgabe: {Dateiname: neuer Text} für die neun geänderten UND die drei neuen Dateien
 export function anwendenKombi(dateien, daten) {
@@ -92,6 +105,7 @@ export function anwendenKombi(dateien, daten) {
   for (const f of Object.values(DATEIEN)) if (typeof dateien[f] === 'string' && dateien[f].includes(MARKE_TEXTE)) throw new Error(`Datei ${f} trägt die Marke ${MARKE_TEXTE} schon (Texte-Paket schon eingespielt)`);
   const out = A.anwenden(dateien, daten); // wirft selbst, wenn (A) schon eingespielt ist oder ein Anker nicht genau einmal vorkommt
   anwendenTexte(out);
+  anwendenKorrekturen(out);
   out[NEUE_DATEIEN.TEXTE] = daten.texte;
   return out;
 }

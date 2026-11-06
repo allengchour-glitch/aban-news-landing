@@ -130,10 +130,11 @@ async function holeDoc(url) {
 const konfigRegex = /(<script type="application\/json" data-lcl-config>)([\s\S]*?)(<\/script>)/;
 // Das Dokument so, wie der Server es nach dem Einspielen liefern würde: variante 'kombi' (gemeinsamer Stand), 'a' ((A) allein), 'alt' (heute, unverändert)
 function dokumentFuer(html, variante, sprachSeite, opt) {
-  if (variante === 'alt') return html;
+  if (variante === 'alt' || opt.dokAlt) return html; // dokAlt: das Dokument von heute (ohne die neuen Etiketten und Verweise) zum neuen JS
   const stand = variante === 'a' ? ST.nurA : ST.kombi, K = ST.K;
   const lc = (f) => ST.sprachJson(stand[f]).luxe_clothing;
-  const luxe = { ...lc(K.DATEIEN.EN), ...lc(sprachSeite === 'fr' ? K.DATEIEN.FR : K.DATEIEN.DE) }; // Shopify fällt bei fehlendem Schlüssel auf die Standardsprache zurück
+  // Shopify fällt bei fehlendem Schlüssel auf die Standardsprache des Shops zurück: DEUTSCH (GEMESSEN 06.11.2026 am Live-Dokument /fr: design_cta steht deutsch, fr.json kennt den Schlüssel nicht); die simulierte Sprache «en» fällt auf en.default zurück
+  const luxe = { ...lc(sprachSeite === 'fr' ? K.DATEIEN.DE : K.DATEIEN.EN), ...lc(sprachSeite === 'fr' ? K.DATEIEN.FR : K.DATEIEN.DE) };
   const m = html.match(konfigRegex); if (!m) throw new Error('Konfiguration nicht gefunden');
   const cfg = JSON.parse(m[2]);
   const basis = cfg.assets.index.split('luxe-clothing-index.json')[0];
@@ -634,6 +635,12 @@ const liesAuswahl = (page) => page.evaluate(() => {
 });
 const einzahlText = (n) => (n === 1 ? '1 bestellbare Ausführung' : n + ' bestellbare Ausführungen');
 const normStatus = (s) => String(s).replace(/supplier_out_of_stock|stocked_on_demand|currently unavailable from the supplier|ordered from the supplier when needed|beim Lieferanten derzeit nicht verfügbar|wird bei Bedarf beim Lieferanten bestellt/g, '<STATUS>');
+// ---- Korrekturen der Abnahme (06.11.2026): unabhängige Erwartungen, nicht aus dem Code des Pakets abgeleitet ----
+const FARBE_DE = { Black: 'Schwarz', White: 'Weiss', Navy: 'Marineblau', Yellow: 'Gelb', Dotted: 'Gepunktet', Matte: 'Matt', Glossy: 'Glänzend', Oyster: 'Sand', 'Fresh Pink': 'Zartrosa' }; // alle Rohfarben der heute bestellbaren Modelle
+const ENG_FARBE = /\b(?:Matte|Glossy|Oyster|Fresh|Natural Stone|Black|White|Navy|Yellow|Dotted)\b/;
+// Rundungsregel für umgerechnete Zentimeter, hier unabhängig vom JS gerechnet: unter 10 cm eine Nachkommastelle, ab 10 cm ganze cm
+const rundeCm = (v) => (v >= 10 ? String(Math.round(v)) : String(Math.round(v * 10) / 10).replace('.', ','));
+const cmAusZoll = (roh) => { const m = /^(\d+(?:\.\d+)?)″\s*[×x]\s*(\d+(?:\.\d+)?)″$/.exec(String(roh).trim()); return m ? rundeCm(parseFloat(m[1]) * 2.54) + ' × ' + rundeCm(parseFloat(m[2]) * 2.54) + ' cm' : null; };
 const kernFelder = (d) => ({ titel: d.titel, kartenTitel: d.kartenTitel, beschr: d.beschr === null ? null : ws(d.beschr), notiz: d.notiz, facts: d.facts.map((f) => [f.h, normStatus(f.p)]), optionen: d.optionen, meta: d.meta, kleinTexte: d.kleinTexte, groessen: d.groessen, farben: d.farben, regionen: d.regionen.map(normStatus), materialOptionen: d.materialOptionen });
 
 async function laufeKombi(browser) {

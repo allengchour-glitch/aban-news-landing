@@ -909,6 +909,7 @@
     "selected_color": "Gewählte Farbe",
     "selected_size": "Gewählte Grösse",
     "category_names": {
+      "t_shirts": "T-Shirts",
       "men_s_clothing": "Herrenbekleidung",
       "women_s_clothing": "Damenbekleidung",
       "kids_youth_clothing": "Kinder & Jugend",
@@ -1092,7 +1093,7 @@
     "sort_catalog": "Originalreihenfolge",
     "sort_name_asc": "Name A–Z",
     "sort_name_desc": "Name Z–A",
-    "sort_variants": "Meiste Originalvarianten",
+    "sort_variants": "Meiste Ausführungen",
     "parent_category": "Eine Kategorie zurück",
     "variant_gallery": "Originalbilder der Varianten",
     "shape_bell": "Glocke",
