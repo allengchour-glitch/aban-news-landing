@@ -672,6 +672,15 @@ async function laufeKombi(browser) {
       ok(a.daumenIds.every((v) => m.vids.has(v)), n + ' Vorschaubilder nur von bestellbaren Ausführungen');
       ok(a.knopf === 1 && /\/products\/[^?#]+\?variant=\d+#lspod-start$/.test(a.knopfHref), n + ' genau ein Knopf «Jetzt selbst gestalten» mit Editor-Ziel', a.knopfHref);
       ok(a.anzahl === einzahlText(m.vids.size) && a.anzahlAttr === String(m.vids.size), n + ' Zeile «' + einzahlText(m.vids.size) + '» (Einzahl/Mehrzahl, nur bestellbare)', a.anzahl);
+      // Korrekturen der Abnahme (06.11.2026): deutscher Titel, deutsche Farbnamen, Zentimeter gerundet, «Basisfarbe» nur bei einer echten Farbe
+      ok(!!ST.K.TITEL_DE[id] && d.titel === ST.K.TITEL_DE[id] && d.kartenTitel === ST.K.TITEL_DE[id], n + ' deutscher Titel in Dialog und Karte', d.titel + ' | ' + d.kartenTitel);
+      ok(d.titel !== modelle.get(id).titel && /selbst|Originalname/.test(d.dialogText) === /Originalname/.test(d.dialogText) && /Originalname/.test(d.dialogText), n + ' der englische Originaltitel steht als «Originalname» im Dialog', modelle.get(id).titel);
+      ok(!ENG_FARBE.test(d.farben.join(' | ')), n + ' keine englischen Farbnamen (Matte, Glossy, Oyster, Fresh Pink …)', d.farben.join(' | '));
+      ok(JSON.stringify([...d.farben].sort()) === JSON.stringify([...m.farben].map((f) => FARBE_DE[f] ?? '??' + f).sort()), n + ' Farbnamen gleich der unabhängigen Erwartung', d.farben.join(',') + ' | ' + [...m.farben].map((f) => FARBE_DE[f] ?? '??' + f).join(','));
+      { const erwCm = [...m.groessen].map(cmAusZoll).filter(Boolean);
+        ok(d.groessen.filter((x) => /cm$/.test(x)).every((x) => erwCm.includes(x) && !/\d,\d\d/.test(x) && !/\b\d{2,},\d/.test(x)), n + ' Zentimeter-Grössen gerundet (höchstens eine Nachkommastelle, ab 10 cm ganze cm)', d.groessen.join(' | ') + ' <> ' + erwCm.join(' | '));
+        if (m.groessen.size <= 9 && erwCm.length) ok(erwCm.every((x) => d.kartenGroessen.includes(x)), n + ' Karte nennt die gerundeten Zentimeter-Grössen', d.kartenGroessen + ' <> ' + erwCm.join(' | ')); }
+      ok(/Basisfarbe/.test(d.dialogText) === (m.farben.size === 1 && !/^(?:Glossy|Matte)$/.test([...m.farben][0])), n + ' Satz «Basisfarbe …» nur bei genau einer echten Farbe, nie bei Matt/Glänzend', [...m.farben].join(','));
       const farbenListe = a.farben.length ? a.farben.slice(0, 3) : [''];
       for (let i = 0; i < farbenListe.length; i++) {
         if (a.farben.length) { await page.evaluate((idx) => document.querySelectorAll('[data-lcl-dialog] .lcl-color-choice')[idx].click(), i); await page.waitForTimeout(120); }
