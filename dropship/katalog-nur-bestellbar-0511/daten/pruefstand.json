@@ -1,6 +1,6 @@
 {
  "hinweis": "Soll-Stand der elf Theme-Dateien (MD5 von anwenden() auf der Sicherung mit daten/ausblenden-quelle.json und daten/variantenkarte.json). Gleich der Nachbildung, die im Browser geprüft wurde (Playwright gegen das Live-Dokument, 1440 und 390 px, 05.11.2026). Nur ändern, nachdem der Browsertest am neuen Stand wiederholt wurde.",
- "geprueft": "2026-11-05 (Live-Dokument mit 17 Shopprodukten und 22 bestellbaren Modellen)",
+ "geprueft": "2026-11-06 00:25 bis 01:10 UTC (Live-Dokument mit 17 Shopprodukten und 22 bestellbaren Modellen; Browsertest live 310 Prüfungen, auch mit der vom CDN verkleinerten Fassung)",
  "md5": {
   "assets/luxe-clothing-ausblenden.json": "7f27109aa5049125e80a0f3d0374861a",
   "assets/luxe-clothing-variantenkarte.json": "5790968bda235f40049578e0471e9899",
