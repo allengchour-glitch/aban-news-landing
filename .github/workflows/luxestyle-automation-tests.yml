@@ -57,6 +57,13 @@ on:
       - 'dropship/katalog-nur-bestellbar-0511/**'
       - 'dropship/katalog-fenster-0611/**'
       - 'dropship/katalog-texte-de-0611/**'
+      - 'automation/printful_lager.mjs'
+      - 'automation/printful_lager_test.mjs'
+      - 'automation/printful_lager_mutation.mjs'
+      - 'automation/lib/printful_lager.mjs'
+      - 'automation/lib/printful_lager_test.mjs'
+      - 'dropship/codex-katalog/ausblenden.json'
+      - 'dropship/codex-katalog/modelle.json'
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
       - 'automation/fortura_feed_holen.sh'
@@ -397,6 +404,11 @@ jobs:
             automation/pod_modell
             dropship/katalog-fenster-0611
             dropship/katalog-texte-de-0611
+            dropship/codex-katalog/ausblenden.json
+            dropship/codex-katalog/modelle.json
+            automation/printful_lager.mjs
+            automation/printful_lager_test.mjs
+            automation/printful_lager_mutation.mjs
             dropship/katalog-nur-bestellbar-0511
             dropship/rueckgabe-0611
             dropship/selbst-gestalten-fertig-0511
@@ -440,3 +452,8 @@ jobs:
           node dropship/katalog-fenster-0611/ziel_bauen.mjs --pruefen
           OHNE_LIQUID=1 node dropship/katalog-fenster-0611/kombi_test.mjs   # ohne Ruby-Liquid (auf dem Runner nicht installiert); der Ruby-Teil läuft von Hand
           node dropship/katalog-fenster-0611/apply_test.mjs
+      - name: Printful-Lager-Wächter (Logik, Verhalten gegen gefälschtes Printful/Shopify/Telegram, Mutationsprobe; rund 40 s, kein Netz)
+        run: |
+          node automation/lib/printful_lager_test.mjs
+          node automation/printful_lager_test.mjs
+          node automation/printful_lager_mutation.mjs
