@@ -262,14 +262,14 @@ szenario('tasse', true, async (b, srv) => {
   }
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
-  // Tassenfoto nicht gespiegelt (null): Printful sendet für /products/ keinen CORS-Kopf (GEMESSEN). Es gibt dann gar keine Ansicht, aber einen klaren Hinweis (kein stiller Rückprall, kein Bildaufruf)
+  // Tassenfoto nicht gespiegelt (null): Printful sendet für /products/ keinen CORS-Kopf (GEMESSEN). Es gibt dann gar keine Ansicht: der Umschalter wird nicht angeboten (nichts anbieten, was nicht da ist),
+  // das Katalogfoto wird nie angefordert, der Kauf geht ohne _vorschau durch
   const t = await oeffnen(b, srv, `${TASSE}&spiegel=0`, { corsErwartet: true, printfulBild: (u) => (/\/products\//.test(u) ? { typ: 'image/png', body: tassePng(), cors: false } : null) });
-  await sichtWarten(t.page);
+  // die Vorschaudaten kommen asynchron: damit "kein Umschalter" nicht nur heisst "Daten noch nicht da", werden dieselben Daten (ohne Spiegel) hier selbst gesetzt und müssen angenommen werden
+  pruefe('Tasse ohne Spiegel: die Vorschaudaten (Tasse mit Eichung, ohne gespiegeltes Foto) sind gültig', await t.page.evaluate(async () => window.LSPOD6.editors[0].vorschauDatenSetzen(await (await fetch('/vorschau/19.json?spiegel=0')).json())) === true);
   await textHinzufuegen(t.page, 'Hallo');
-  await t.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
-  await t.page.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
-  const ti = await t.page.locator('[data-feld="produktinfo"]').innerText();
-  pruefe('Tasse ohne gespiegeltes Foto: klarer Hinweis «keine Produktvorschau» mit Verweis auf die Druckfläche (kein Rückprall)', /keine Produktvorschau/.test(ti) && /Druckfläche/.test(ti) && (await t.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'produkt' && await t.page.locator('.lsp6-pv').isHidden(), ti);
+  pruefe('Tasse ohne gespiegeltes Foto: der Umschalter «Auf dem Produkt» wird nicht angeboten', await t.page.locator('[data-feld="sicht"]').isHidden() && await t.page.locator('.lsp6-sbtn[data-sicht="produkt"]').isHidden());
+  pruefe('Tasse ohne gespiegeltes Foto: die Ansicht lässt sich auch über die Schnittstelle nicht öffnen (bleibt die Druckfläche)', (await t.page.evaluate(() => { window.LSPOD6.editors[0].sichtSetzen('produkt'); return window.LSPOD6.editors[0].st.sicht; })) === 'druck' && await t.page.locator('.lsp6-pv').isHidden());
   pruefe('Tasse ohne gespiegeltes Foto: das Katalogfoto (ohne CORS) wird gar nicht erst angefordert', !t.bildAnfragen.some((u) => /\/products\//.test(u)), JSON.stringify(t.bildAnfragen));
   const ex = await t.page.evaluate(async () => { const b2 = await window.LSPOD6.editors[0].vorschauExport(); return b2 ? b2.size : null; });
   pruefe('Tasse ohne gespiegeltes Foto: kein JPEG (die Zeichenfläche wäre verschmutzt)', ex === null, String(ex));
@@ -277,6 +277,25 @@ szenario('tasse', true, async (b, srv) => {
   pruefe('Tasse ohne gespiegeltes Foto: Kauf ohne _vorschau und ohne JPEG', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && !t.uploads.some((u) => u.typ === 'jpeg'));
   pruefe('Tasse ohne Spiegel: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
+  // Fehlt das Foto nur bei EINER Ausführung (die anderen sind gespiegelt): der Umschalter bleibt, für diese Ausführung steht der klare Hinweis (kein stiller Rückprall, kein Bildaufruf), für die anderen die Ansicht
+  const m = await oeffnen(b, srv, TASSE);
+  await sichtWarten(m.page);
+  await textHinzufuegen(m.page, 'Hallo');
+  const pv0 = await m.page.evaluate(() => window.LSPOD6.editors[0].st.pfVariante);
+  await datenSetzen(m.page, '19', `var t = d.modelle['19'].tasse['${pv0}']; t.foto = null;`);
+  await m.page.locator('.lsp6-sbtn[data-sicht="produkt"]').waitFor({ state: 'visible', timeout: 5000 });
+  pruefe('Tasse mit Foto bei den übrigen Ausführungen: der Umschalter bleibt', await m.page.locator('.lsp6-sbtn[data-sicht="produkt"]').isVisible());
+  await m.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await m.page.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
+  const ti = await m.page.locator('[data-feld="produktinfo"]').innerText();
+  pruefe('Tasse, Ausführung ohne gespiegeltes Foto: klarer Hinweis «keine Produktvorschau» mit Verweis auf die Druckfläche (kein Rückprall)', /keine Produktvorschau/.test(ti) && /Druckfläche/.test(ti) && (await m.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'produkt' && await m.page.locator('.lsp6-pv').isHidden(), ti);
+  pruefe('Tasse, Ausführung ohne gespiegeltes Foto: das Katalogfoto (ohne CORS) wird nicht angefordert', !m.bildAnfragen.some((u) => /\/products\//.test(u)), JSON.stringify(m.bildAnfragen));
+  await m.page.locator('input[name="id"][value="1002"]').check();
+  await m.page.waitForFunction(() => window.LSPOD6.editors[0].st.shopVariante === '1002');
+  await m.page.waitForFunction(() => !document.querySelector('[data-feld="produktinfo"]') || document.querySelector('[data-feld="produktinfo"]').hidden, null, { timeout: 8000 });
+  pruefe('Tasse, andere Ausführung mit Foto: die Ansicht wird gezeichnet statt des Hinweises', await m.page.locator('.lsp6-pv').isVisible() && await m.page.locator('[data-feld="produktinfo"]').isHidden());
+  pruefe('Tasse mit einzelner Ausführung ohne Foto: keine Seitenfehler', m.fehler.length === 0, m.fehler.join(' | '));
+  await m.schliessen();
   // Daten mit Spiegel-Adresse, die nicht lädt (404 auf Shopify Files): sauberer Rückfall auf die Druckfläche mit dem ruhigen Hinweis
   const kp = await oeffnen(b, srv, TASSE, { shopifyBild: (x) => (/kaputt-tasse/.test(x) ? { status: 404 } : null) });
   await sichtWarten(kp.page);

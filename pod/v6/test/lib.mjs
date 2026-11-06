@@ -27,6 +27,10 @@ export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');
 /** Optionaler Ordner mit heruntergeladenen Vorlagenbildern (sha1 der Adresse, 16 Zeichen); ohne ihn gibt es einfache Attrappen. */
 export const BILDCACHE = process.env.V6_BILDCACHE || '';
+/** Scheitert ein Testlauf an der UMGEBUNG (Chromium weg oder nicht startbar, Platte voll, Port belegt) und nicht an einer Prüfung? Dann sagt er nichts über einen Mutanten (Mutationsprobe: «ungeklärt», nie «erkannt»).
+ *  Bewusst NICHT dabei: Zeitüberschreitungen einzelner Warte-Aufrufe (waitFor, Timeout …) und Seitenfehler: das sind Prüfungen, die ein Mutant zu Recht zum Scheitern bringt. */
+const INFRASTRUKTUR = /browser has been closed|Target (page, context or browser )?closed|browserType\.launch|Executable doesn't exist|ENOSPC|EADDRINUSE|spawn .* (ENOENT|EAGAIN)/;
+export const istUmgebungsfehler = (aus) => INFRASTRUKTUR.test(String(aus));
 
 // ── Server ──────────────────────────────────────────────────────────────────────────────────────
 export const KATALOG_TEST = join(repo, 'dropship', 'selbst-gestalten-fertig-0511', 'werkzeuge', 'testdaten', 'katalog');

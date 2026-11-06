@@ -8,7 +8,7 @@
  *     Daten dazu: <div data-vorschau-url="…"> oder <script type="application/json" id="lspod-vorschau"> (Schema 1, gebaut von werkzeug/vorschau_daten_bauen.mjs);
  *     ohne Daten, bei fehlendem Bild oder CORS-Fehler bleibt es bei der Ansicht «Druckfläche» (ohne Fehler). Hängt ein Vorlagenbild, gilt data-vorschau-zeit (ms, Vorgabe 10 000) für die sichtbare
  *     Ansicht; beim Kauf hält die Vorschau die Bestellung höchstens 4 s (oder weniger, wenn data-vorschau-zeit kleiner ist) auf. Platzierungen mit festem Farbfoto der Vorlage («farbfest» in den
- *     Vorschaudaten) und Tassen ohne gespiegeltes Katalogfoto zeigen einen Hinweis statt einer Vorschau, die die gewählte Farbe oder das Produkt nicht richtig zeigen könnte.
+ *     Vorschaudaten) zeigen einen Hinweis statt einer Vorschau in der falschen Farbe. Eine Tasse ohne gespiegeltes Katalogfoto hat keinen Umschalter (fehlt das Foto nur bei einzelnen Ausführungen: Hinweis).
  *   - Qualitätstor: harter Stopp unter der Mindest-dpi der Karte, Warnung darüber bis 150 dpi, Eigenschaft _pod_karte.qd (kleinste effektive dpi der Fotos).
  *   - Entwurf automatisch speichern und wiederherstellen (localStorage, jeder Zugriff in try/catch: ein gesperrter Speicher bricht nichts).
  *
@@ -2171,9 +2171,18 @@
       ui.viewBtn.hidden = legacy || art === 'produkt';
       if (art === 'produkt') vorschauAnzeigen(); else pvNr++;
     }
-    /** Die Umschalter «Druckfläche | Auf dem Produkt» gibt es nur, wenn die Vorschaudaten das Modell der gewählten Ausführung kennen. */
+    /** Bietet dieses Modell überhaupt eine Ansicht an? Eine Tasse, bei der KEINE Ausführung ein gespiegeltes Katalogfoto hat (Printfuls Tassenfotos unter products/ senden keinen CORS-Kopf, GEMESSEN),
+     *  könnte nur eine Zeichnung zeigen, die sich nicht exportieren lässt: dort gibt es den Umschalter gar nicht (nichts anbieten, was nicht da ist). Fehlt das Foto nur bei einzelnen Ausführungen,
+     *  bleibt der Umschalter, und `vorschauSpec` zeigt für diese Ausführung den Hinweis. */
+    function vorschauAngebot() {
+      var m = vorschauModell();
+      if (!m) return false;
+      if (m.adapter === 'tasse') return Object.keys(m.tasse).some(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });
+      return true;
+    }
+    /** Die Umschalter «Druckfläche | Auf dem Produkt» gibt es nur, wenn die Vorschaudaten das Modell der gewählten Ausführung kennen und es eine Ansicht anbietet (`vorschauAngebot`). */
     function sichtAktualisieren() {
-      var an = !legacy && !!vorschauModell();
+      var an = !legacy && vorschauAngebot();
       ui.sicht.hidden = !an;
       if (!an && st.sicht === 'produkt') sichtSetzen('druck');
     }

@@ -5,7 +5,7 @@
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
  * Absicherungen (nach der Gegenlesung vom 06.11.2026): (1) VOR dem ersten Mutanten läuft jede benutzte Stufe auf dem UNVERÄNDERTEN Code; ist sie dort rot, bricht die Probe ab (sonst gälte jeder Mutant
  * als «erkannt»); (2) ein Mutant mit Syntaxfehler zählt als «nicht anwendbar», nicht als erkannt; (3) ein vom Zeitlimit (300 s) abgebrochener Lauf zählt NICHT als erkannt, sondern als «ungeklärt»;
- * (4) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
+ * (4) ein Lauf, der an der Umgebung scheitert (Chromium weg, Platte voll, Port belegt: lib.mjs: istUmgebungsfehler), zählt ebenfalls als «ungeklärt»; (5) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder K oder V)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
  * Umgebung: V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3).
@@ -16,7 +16,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { pathToFileURL } from 'node:url';
-import { hier, V6_DATEI } from './lib.mjs';
+import { hier, V6_DATEI, istUmgebungsfehler } from './lib.mjs';
 
 const KARTENBAUER = join(hier, '..', 'werkzeug', 'karte_fuer_editor.mjs');
 const VORSCHAUBAUER = join(hier, '..', 'werkzeug', 'vorschau_daten_bauen.mjs');
@@ -150,6 +150,8 @@ const MUTANTEN = [
   ['W61 Export: Gewichtsgrenze 800 KB statt 80 KB', "var VORSCHAU_MAX_BYTES = 80 * 1024;", "var VORSCHAU_MAX_BYTES = 800 * 1024;"],
   ['W62 Export: 1600 statt 800 Pixel', "var VORSCHAU_PX = 800;", "var VORSCHAU_PX = 1600;"],
   ['W63 Tasse: Katalogfoto ohne CORS wird trotzdem geladen (Wächter in der Vorschauwahl entfällt UND Rückfall auf die Quelle)', ["if (!t || !t.foto) return { art: 'hinweis', code: 'keine' }; }", "return Promise.all([vorschauBild(t.foto), designLeinwand(p, offW, offH)]).then(function (a) {"], ["if (!t) return { art: 'hinweis', code: 'keine' }; }", "return Promise.all([vorschauBild(t.foto || t.quelle), designLeinwand(p, offW, offH)]).then(function (a) {"]],
+  ['W64 Tasse ohne irgendein gespiegeltes Foto bietet den Umschalter «Auf dem Produkt» trotzdem an', "if (m.adapter === 'tasse') return Object.keys(m.tasse).some(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });", ""],
+  ['W65 Tasse: der Umschalter verschwindet, sobald EINE Ausführung kein Foto hat (jede statt irgendeine)', "if (m.adapter === 'tasse') return Object.keys(m.tasse).some(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });", "if (m.adapter === 'tasse') return Object.keys(m.tasse).every(function (pv) { return !!(m.tasse[pv] && m.tasse[pv].foto); });"],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)
@@ -226,6 +228,8 @@ function lauf(datei, args, env) {
 /** Erste fehlgeschlagene Prüfung (Zeile mit ✗) für die Anzeige. */
 const ersterFehler = (aus) => ((aus.split('\n').find((z) => /✗/.test(z)) || aus.trim().split('\n').slice(-1)[0] || '').trim().slice(0, 150));
 const gescheitert = (r) => r.code !== 0 && !r.zeit && r.signal === null;
+// Ein Lauf, der an der UMGEBUNG scheitert (lib.mjs: istUmgebungsfehler), hat nichts über den Mutanten gesagt: «ungeklärt», nie «erkannt»
+// (so sahen die Zeilen «Target page, context or browser has been closed» nach einem Absturz des Containers wie 27 erkannte Mutanten aus).
 const aufgaben = [];
 MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'editor', alt, neu, i }));
 KB_MUTANTEN.forEach(([name, alt, neu], i) => aufgaben.push({ name, art: 'kartenbauer', alt, neu, i: 100 + i }));
@@ -256,10 +260,11 @@ async function arbeiter() {
     });
     if (schlecht) { ergebnis.unanwendbar.push(`${a.name} (Muster ${schlecht} gefunden)`); console.log(`?  ${a.name}: Muster nicht genau einmal gefunden (${schlecht})`); continue; }
     const pruefeSyntax = (datei) => { const x = spawnSync(node, ['--check', datei], { encoding: 'utf8' }); return x.status === 0 ? null : (x.stderr || '').split('\n').find((z) => /Error/.test(z)) || 'Syntaxfehler'; };
-    // Ergebnis einer Stufe: true = erkannt (weiter zum nächsten Mutanten), 'zeit' = ungeklärt, false = nicht erkannt (nächste Stufe)
+    // Ergebnis einer Stufe: true = erkannt (weiter zum nächsten Mutanten), 'ungeklaert' = Zeitüberschreitung oder Umgebungsfehler, false = nicht erkannt (nächste Stufe)
     const stufe = async (name, datei, args, umg) => {
       const r = await lauf(datei, args, { ...umg, V6_ABBRUCH: '1' });   // beim ersten Fehler beenden: zum Erkennen genügt er
-      if (r.zeit) { ergebnis.ungeklaert.push(`${a.name} (${name}: Zeitüberschreitung)`); console.log(`?  ${a.name}: ${name} nach 300 s abgebrochen, ungeklärt`); return 'zeit'; }
+      if (r.zeit) { ergebnis.ungeklaert.push(`${a.name} (${name}: Zeitüberschreitung)`); console.log(`?  ${a.name}: ${name} nach 300 s abgebrochen, ungeklärt`); return 'ungeklaert'; }
+      if (gescheitert(r) && istUmgebungsfehler(r.aus)) { ergebnis.ungeklaert.push(`${a.name} (${name}: Umgebung, nicht der Test: ${ersterFehler(r.aus)})`); console.log(`?  ${a.name}: ${name} scheitert an der Umgebung (${ersterFehler(r.aus)}), ungeklärt`); return 'ungeklaert'; }
       if (gescheitert(r)) { ergebnis.erkannt++; console.log(`✓ ${a.name}: erkannt durch ${name}: ${ersterFehler(r.aus)}`); return true; }
       return false;
     };
@@ -294,7 +299,7 @@ async function arbeiter() {
       if (fehlerSyntax) { ergebnis.unanwendbar.push(`${a.name} (Syntaxfehler: ${fehlerSyntax})`); console.log(`?  ${a.name}: Mutant ist kein gültiger Code (${fehlerSyntax})`); continue; }
       ergebnisStufe = await stufe('unit_test', 'unit_test.mjs', [], { V6_KARTENBAUER: datei });
     }
-    if (ergebnisStufe === true || ergebnisStufe === 'zeit') continue;
+    if (ergebnisStufe === true || ergebnisStufe === 'ungeklaert') continue;
     ergebnis.ueberlebt.push(a.name); console.log(`✗ ${a.name}: ÜBERLEBT`);
   }
 }
