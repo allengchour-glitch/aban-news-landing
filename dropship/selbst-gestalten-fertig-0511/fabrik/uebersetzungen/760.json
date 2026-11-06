@@ -1,0 +1,41 @@
+{
+ "modell": 760,
+ "stand": "2026-11-05",
+ "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 760.json); jeder Satz mit englischem Beleg",
+ "intro": [
+  {
+   "de": "Dieses Unisex-T-Shirt ist die Eco-Version eines beliebten Klassikers und besteht aus 100 % recycelten Materialien.",
+   "beleg": "Get an eco version of a beloved classic in this unisex t-shirt made from 100% recycled materials."
+  },
+  {
+   "de": "Der leichte Stoff und die bewährte Passform machen es zum Basic für wärmere Tage.",
+   "beleg": "Its lightweight fabric and time-tested fit make this tee a true staple for warmer days."
+  }
+ ],
+ "punkte": [
+  {
+   "de": "65 % recyceltes Polyester, 35 % recycelte, gekämmte und ringgesponnene Airlume-Baumwolle",
+   "beleg": "65% recycled polyester, 35% recycled Airlume combed and ring-spun cotton"
+  },
+  {
+   "de": "Stoffgewicht: 142 g/m²",
+   "beleg": "Fabric weight: 4.2 oz./yd.² (142 g/m²)"
+  },
+  {
+   "de": "Unisex-Schnitt, normale Passform",
+   "beleg": "Unisex sizing, regular fit"
+  },
+  {
+   "de": "Mit Seitennähten verarbeitet",
+   "beleg": "Side-seamed construction"
+  },
+  {
+   "de": "Der recycelte Anteil dieses Produkts ist nach GRS (Global Recycled Standard) zertifiziert.",
+   "beleg": "The recycled content of this product is certified under GRS (Global Recycled Standard)"
+  },
+  {
+   "de": "Der unbedruckte Rohling stammt aus Nicaragua.",
+   "beleg": "Blank product sourced from Nicaragua"
+  }
+ ]
+}

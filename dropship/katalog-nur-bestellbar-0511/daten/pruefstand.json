@@ -1,0 +1,17 @@
+{
+ "hinweis": "Soll-Stand der elf Theme-Dateien (MD5 von anwenden() auf der Sicherung mit daten/ausblenden-quelle.json und daten/variantenkarte.json). Gleich der Nachbildung, die im Browser geprüft wurde (Playwright gegen das Live-Dokument, 1440 und 390 px). Nur ändern, nachdem der Browsertest am neuen Stand wiederholt wurde.",
+ "geprueft": "06.11.2026 nach der Korrekturrunde (Browsertest live mit Gruppen M und N, auch mit der vom CDN verkleinerten Fassung; Zahlen siehe README «Prüfung»)",
+ "md5": {
+  "assets/luxe-clothing-ausblenden.json": "7f27109aa5049125e80a0f3d0374861a",
+  "assets/luxe-clothing-variantenkarte.json": "5790968bda235f40049578e0471e9899",
+  "locales/de.json": "c0de012a0bbff8c98c12a7555ea7420d",
+  "locales/en.default.json": "2f514e70efedd468e7860f0f5be5de2b",
+  "locales/fr.json": "0ea084c462eb2deb65832a06fa658d6f",
+  "sections/luxe-clothing.liquid": "b04abaf35e9e720759839f2de6e83e74",
+  "snippets/luxe-clothing-asset-manifest.liquid": "e384e40aae88e0282e83cbd8e05c36e9",
+  "snippets/luxe-selfdesign-cover.liquid": "63f63bfa8c10c5f73aa8ead523bc4650",
+  "sections/luxe-category.liquid": "838960ab29d146781d39861a6b8eb7a3",
+  "assets/luxe-clothing.css": "d2c8da52a1870ee0c4467cda2ddfaebb",
+  "assets/luxe-clothing.js": "bb2cd643b6572d2e028f0fa76b1772a0"
+ }
+}

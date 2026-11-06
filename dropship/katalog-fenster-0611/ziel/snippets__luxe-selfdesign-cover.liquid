@@ -1,0 +1,42 @@
+{% doc %}
+  Restores the original self-design cover collage using current eligible Shopify products.
+  The collage is separate from catalogue variant images and does not change a selection.
+  @example
+  {% render 'luxe-selfdesign-cover' %}
+{% enddoc %}
+{%- assign cover_count = 0 -%}
+{%- capture cover_tiles -%}
+  {%- assign cover_handles = 'unisex-t-shirt-selbst-gestalten,bio-jutebeutel-selbst-gestalten,keramik-tasse-selbst-gestalten' | split: ',' -%}
+  {%- for cover_handle in cover_handles -%}
+    {%- assign cover_product = all_products[cover_handle] -%}
+    {%- capture cover_allowed -%}{%- render 'luxe-studio-blank-eligible', candidate: cover_product -%}{%- endcapture -%}
+    {%- assign cover_allowed = cover_allowed | strip -%}
+    {%- if cover_allowed == 'true' and cover_product.featured_image -%}
+      {%- assign cover_count = cover_count | plus: 1 -%}
+      <a class="lcl-cover-image lcl-cover-image--{{ cover_count }}" href="{{ cover_product.url }}?variant={{ cover_product.selected_or_first_available_variant.id }}#lspod-start">
+        {%- assign cover_alt = cover_product.featured_image.alt | default: cover_product.title -%}
+        {{ cover_product.featured_image | image_url: width: 900 | image_tag: widths: '240, 360, 540, 720, 900', sizes: '(min-width: 900px) 36vw, 65vw', loading: 'eager', alt: cover_alt }}
+        <span>{{ cover_product.title | remove: ' – Selbst gestalten' | escape }}</span>
+      </a>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if cover_count > 0 -%}
+  <div class="lcl-cover-images" data-luxe-selfdesign-cover aria-label="{{ 'luxe_category.image_label' | t | escape }}">
+    {{ cover_tiles }}
+    <script>
+      (() => {
+        const root = document.currentScript.closest('[data-luxe-selfdesign-cover]');
+        const theme = new URLSearchParams(location.search).get('preview_theme_id');
+        if (!root || !/^\d+$/.test(theme || '')) return;
+        root.querySelectorAll('a[href]').forEach(link => {
+          const target = new URL(link.href, location.href);
+          if (target.origin === location.origin && (target.searchParams.get('view') === 'luxe-studio' || target.hash === '#lspod-start')) {
+            target.searchParams.set('preview_theme_id', theme);
+            link.href = target.href;
+          }
+        });
+      })();
+    </script>
+  </div>
+{%- endif -%}

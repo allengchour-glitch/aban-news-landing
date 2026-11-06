@@ -1,0 +1,633 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T21:14:20.402Z",
+  "katalogGeholt": "2026-11-05T17:11:52.572Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 505,
+ "stufe": 1,
+ "klasse": "FLACH",
+ "klasseEndgueltig": "FLACH",
+ "typ": "STICKER",
+ "standardTechnik": "DIGITAL",
+ "titelEn": "Kiss-Cut Sticker Sheet",
+ "titel": "Kiss-Cut Aufkleberbogen selbst gestalten",
+ "titelKurz": "Kiss-Cut Aufkleberbogen",
+ "titelQuelle": "glossar",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [],
+ "entfernteMarken": [],
+ "handle": "kiss-cut-aufkleberbogen-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Accessoires",
+ "tags": [
+  "pod-bestellweg-manuell",
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-accessoires",
+  "sg-fabrik",
+  "sg-klasse-flach",
+  "sg-modell-505",
+  "sg-typ-sticker",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Kiss-Cut Aufkleberbogen selbst gestalten | LuxeStyle CH",
+  "description": "Kiss-Cut Aufkleberbogen selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Grösse",
+   "art": "groesse",
+   "werte": [
+    "14,8 × 21 cm"
+   ]
+  }
+ ],
+ "varianten": [
+  {
+   "sku": "9100505_12917",
+   "printfulVariantId": 12917,
+   "optionen": {
+    "Grösse": "14,8 × 21 cm"
+   },
+   "farbe": "Weiss",
+   "groesse": "14,8 × 21 cm",
+   "herkunft": "EU",
+   "kostenUsd": 5.15,
+   "ekRechnungUsd": 6.49,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 0,
+   "preisChf": 21.9,
+   "nettoChf": 4.03,
+   "nettoBeiMesskursChf": 5.31,
+   "bindend": "kosten",
+   "bildAlt": "Kiss-Cut Aufkleberbogen selbst gestalten Ansicht 2"
+  }
+ ],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/76/7658fa12bc07c99e823fbc140595bc24_l",
+   "alt": "Kiss-Cut Aufkleberbogen selbst gestalten Produktbild",
+   "rolle": "haupt",
+   "label": "Produktbild"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/505/12917_1629116996.jpg",
+   "alt": "Kiss-Cut Aufkleberbogen selbst gestalten Ansicht 2",
+   "rolle": "variante",
+   "label": null
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"505\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":505,\"typ\":\"STICKER\",\"titelDe\":\"Kiss-Cut Aufkleberbogen\",\"klasse\":\"FLACH\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titelDe\":\"Druckfläche\",\"titelEn\":\"Print file\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":256,\"breitePx\":1750,\"hoehePx\":2482,\"dpi\":300},\"vorlage\":{\"vorlageId\":71665,\"bildUrl\":\"https://files.cdn.printful.com/m/sticker_sheet/medium/template/sticker_sheet_forsticker.png?v=1649070714\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":127,\"flaecheOben\":29,\"flaecheBreite\":473,\"flaecheHoehe\":670,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"background\",\"dateiTyp\":\"background\",\"titelDe\":\"Hintergrund\",\"titelEn\":\"Background\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":259,\"breitePx\":1822,\"hoehePx\":2554,\"dpi\":300},\"vorlage\":{\"vorlageId\":71667,\"bildUrl\":\"https://files.cdn.printful.com/o/upload/api-template/66/66de8ef4db1694b2b760c925a7696922?v=1627563133\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#ffffff\",\"vorlageBreite\":728,\"vorlageHoehe\":728,\"flaecheLinks\":111,\"flaecheOben\":10,\"flaecheBreite\":505,\"flaecheHoehe\":708,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]}],\"druckdateien\":{\"256\":{\"printfileId\":256,\"breitePx\":1750,\"hoehePx\":2482,\"dpi\":300},\"259\":{\"printfileId\":259,\"breitePx\":1822,\"hoehePx\":2554,\"dpi\":300}},\"hinweise\":[],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Diese glänzenden Aufkleber sind genau für dich gemacht. Gib deinen Lieblingsdingen wie Notizblock, Laptop oder Handyhülle einen zusätzlichen Glanz und eine persönliche Note.</p>\n<ul><li>Folie: MPI 3000 Gloss HOP (EU), Promotional Monomeric PVC (USA)</li><li>0,3 cm weisser Rand</li><li>Glänzende Oberfläche</li><li>Schnell und einfach anzubringen</li><li>Haltbarkeit: 2 bis 3 Jahre</li><li>Für den Innenbereich</li><li>Der unbedruckte Rohling stammt aus Japan.</li></ul>\n<p>Reinige die Oberfläche, bevor du die Aufkleber anbringst.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li><li><strong>Druckdatei (Druckfläche):</strong> 1750 × 2482 Pixel bei 300 dpi, das sind 14,8 × 21 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [],
+ "uebersetzung": {
+  "ok": true,
+  "fehler": [],
+  "saetze": 9,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":505,\"klasse\":\"FLACH\",\"technik\":\"DIGITAL\",\"basis\":\"default\",\"platzierungen\":[{\"id\":\"default\",\"dateiTyp\":\"default\",\"titel\":\"Druckfläche\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1750,2482],\"dpi\":300,\"cm\":[14.8,21],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":127,\"oben\":29,\"breite\":473,\"hoehe\":670,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/sticker_sheet/medium/template/sticker_sheet_forsticker.png?v=1649070714\",\"hintergrund\":null},{\"id\":\"background\",\"dateiTyp\":\"background\",\"titel\":\"Hintergrund\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1822,2554],\"dpi\":300,\"cm\":[15.4,21.6],\"fill\":\"cover\",\"drehen\":false},\"flaeche\":{\"vorlage\":[728,728],\"links\":111,\"oben\":10,\"breite\":505,\"hoehe\":708,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/o/upload/api-template/66/66de8ef4db1694b2b760c925a7696922?v=1627563133\",\"hintergrund\":null}],\"hinweise\":[]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "505"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "FLACH"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T17:11:52.572Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Decorative Stickers"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 505,
+  "klasse": "FLACH",
+  "technik": "DIGITAL",
+  "basis": "default",
+  "platzierungen": [
+   {
+    "id": "default",
+    "dateiTyp": "default",
+    "titel": "Druckfläche",
+    "art": "flaeche",
+    "technik": "DIGITAL",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      1750,
+      2482
+     ],
+     "dpi": 300,
+     "cm": [
+      14.8,
+      21
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      728,
+      728
+     ],
+     "links": 127,
+     "oben": 29,
+     "breite": 473,
+     "hoehe": 670,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/sticker_sheet/medium/template/sticker_sheet_forsticker.png?v=1649070714",
+    "hintergrund": null
+   },
+   {
+    "id": "background",
+    "dateiTyp": "background",
+    "titel": "Hintergrund",
+    "art": "flaeche",
+    "technik": "DIGITAL",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      1822,
+      2554
+     ],
+     "dpi": 300,
+     "cm": [
+      15.4,
+      21.6
+     ],
+     "fill": "cover",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      728,
+      728
+     ],
+     "links": 111,
+     "oben": 10,
+     "breite": 505,
+     "hoehe": 708,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/o/upload/api-template/66/66de8ef4db1694b2b760c925a7696922?v=1627563133",
+    "hintergrund": null
+   }
+  ],
+  "hinweise": []
+ },
+ "kompaktBytes": 1022,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 505,
+  "typ": "STICKER",
+  "titelDe": "Kiss-Cut Aufkleberbogen",
+  "klasse": "FLACH",
+  "standardTechnik": "DIGITAL",
+  "minDpi": 150,
+  "platzierungen": [
+   {
+    "id": "default",
+    "dateiTyp": "default",
+    "titelDe": "Druckfläche",
+    "titelEn": "Print file",
+    "art": "flaeche",
+    "technik": "DIGITAL",
+    "printfile": {
+     "printfileId": 256,
+     "breitePx": 1750,
+     "hoehePx": 2482,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 71665,
+     "bildUrl": "https://files.cdn.printful.com/m/sticker_sheet/medium/template/sticker_sheet_forsticker.png?v=1649070714",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 728,
+     "vorlageHoehe": 728,
+     "flaecheLinks": 127,
+     "flaecheOben": 29,
+     "flaecheBreite": 473,
+     "flaecheHoehe": 670,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "background",
+    "dateiTyp": "background",
+    "titelDe": "Hintergrund",
+    "titelEn": "Background",
+    "art": "flaeche",
+    "technik": "DIGITAL",
+    "printfile": {
+     "printfileId": 259,
+     "breitePx": 1822,
+     "hoehePx": 2554,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 71667,
+     "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/66/66de8ef4db1694b2b760c925a7696922?v=1627563133",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#ffffff",
+     "vorlageBreite": 728,
+     "vorlageHoehe": 728,
+     "flaecheLinks": 111,
+     "flaecheOben": 10,
+     "flaecheBreite": 505,
+     "flaecheHoehe": 708,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   }
+  ],
+  "druckdateien": {
+   "256": {
+    "printfileId": 256,
+    "breitePx": 1750,
+    "hoehePx": 2482,
+    "dpi": 300
+   },
+   "259": {
+    "printfileId": 259,
+    "breitePx": 1822,
+    "hoehePx": 2554,
+    "dpi": 300
+   }
+  },
+  "hinweise": []
+ },
+ "karteBytes": 1581,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 10.39,
+  "tageMin": 3,
+  "tageMax": 6,
+  "ratenVariante": 12917
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "sticker",
+  "google": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Crafting Materials > Embellishments & Trims > Decorative Stickers",
+  "shopify": "gid://shopify/TaxonomyCategory/ae-2-1-2-8-4"
+ },
+ "basisPlatzierung": {
+  "id": "default",
+  "dateiTyp": "default",
+  "technik": "DIGITAL",
+  "pflichtAufpreisUsd": 0
+ },
+ "bestellweg": {
+  "platzierung": "default",
+  "gesichert": false,
+  "grund": "2 Flächen ohne Aufpreis (default, background): printful_sync schickt nur eine Datei",
+  "dateien": [
+   "default",
+   "background"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 1,
+  "bestellbar": 1,
+  "gewaehlt": 1,
+  "farbenGewaehlt": [
+   {
+    "name": "White",
+    "de": "Weiss",
+    "anzahl": 1,
+    "rang": 0
+   }
+  ],
+  "farbenAusgelassen": [],
+  "ausgelassen": []
+ },
+ "preis": {
+  "min": 21.9,
+  "max": 21.9,
+  "nettoMin": 4.03,
+  "nettoMax": 4.03,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [],
+  "ungemessen": [],
+  "anzahl": 2,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/upload/product-catalog-img/76/7658fa12bc07c99e823fbc140595bc24_l",
+   "https://files.cdn.printful.com/products/505/12917_1629116996.jpg"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "nur 2 lesbare Bilder (unlesbar: 0)"
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "karte",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "printful_sync bestimmt «default» nicht gesichert (2 Flächen ohne Aufpreis (default, background): printful_sync schickt nur eine Datei): Aufträge blieben Entwurf bei Printful"
+  },
+  {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Kiss-Cut Aufkleberbogen selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "ohne Schätzung: Kostenboden mit Katalogpreis +26 % (Sicherheit)"
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": false,
+ "hash": "6b9ce6864de4c863243a3af50767daafbc1454b643658dae5ddb087253a32c43"
+}

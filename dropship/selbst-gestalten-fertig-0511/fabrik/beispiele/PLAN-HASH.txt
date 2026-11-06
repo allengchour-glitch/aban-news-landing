@@ -1,0 +1,22 @@
+Plan-Hashes der Beispiele (Stand nach den Gegenlesern, 05.11.2026 abends). Ein Hash gilt NUR mit genau diesen Eingaben: ändert sich eine Eingabedatei, ändert sich der Hash (so soll es sein, LIVE vergleicht ihn).
+Glossar 2026-11-05.1, Preisformel Kurs 0.90, nettoMin 4.00, Katalog geholt 2026-11-05 16:57 UTC.
+
+11 Beispiele (beispiele/*.json), MODELLE=140,146,214,378,403,411,616,673,683,711,760:   4274ddcd9e5f07f2b69b73a794c8e8b0c8d4295cf18379da11193ab75bfeef59
+6 Gegenproben (beispiele/gegenproben), MODELLE=1,83,464,505,574,861:                      2a2d551818c1f585ee3a25194514bb399fdc3758b02f7437f1fe5c4315e2f04e
+Alle 577 Modelle (ALLE, ohne MODELLE):                                                    dd4950cc2a6cc4e660a08827cc4e7206e4253ea4e55ede6d471e1def79056ffb
+
+So wurde gerechnet (alle drei Läufe gleich, nur MODELLE unterscheidet sich); die Konsole zeigt die ersten 16 Zeichen, der volle Hash steht in plan.json:
+
+  KATALOG_DIR=<sg/katalog, 577 Dateien>  VERSAND=<versand_neu.json>  SCHAETZUNG=<schaetzung_alle.json>  ABGLEICH=<katalog_abgleich.json>  BESTAND=<matrix.json>  BILDER=<bilder_masse.json>
+  STUFEN=1,2  START=2026-11-06  OUT=<Ordner>  node automation/pod_modell/pod_modell.mjs
+
+Eingabedateien (SHA-256, erste 12 Zeichen, Grösse in Byte):
+  versand_neu.json        8056a118f019   84715     versand_alle.json vom 05.11. 18:01 UTC, danach mit versand_messen.mjs für 62 Modelle neu gemessen (Rate für eine Variante der Auswahl)
+  schaetzung_alle.json    011fdad316aa   57117     Kostenschätzung nach CH (nur die Varianten der 38 heutigen Produkte)
+  katalog_abgleich.json   8bd8fc16fc4a   33389     Abgleich Katalog gegen Shop vom 05.11. 17:23 UTC
+  matrix.json             42d093079bfa   257496    Bestandsmatrix des Shops vom 05.11. 16:28 UTC
+  bilder_masse.json       97dc377b982b   15646     Bildmessung (114 Adressen)
+  katalog/*.json          777f09c637e3   577 Dateien, SHA-256 der aneinandergehängten Dateien in aufsteigender Namensfolge (cat $(ls | sort) | sha256sum)
+
+Warum die Gegenleser den alten Hash der 577 Modelle (d5d05f85…) nicht nachrechnen konnten: die Einstellung stand nicht im README. Mit den obigen Eingaben (und dem Code VOR den Funden) ergab er sich wieder, nur mit anderen Dateien oder ohne SCHAETZUNG/BILDER/BESTAND nicht.
+Der Hash der 577 Modelle nach den Funden ist ein anderer, weil Code und Versanddatei sich geändert haben.

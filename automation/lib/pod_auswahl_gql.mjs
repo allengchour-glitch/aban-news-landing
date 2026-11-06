@@ -37,9 +37,10 @@ export const istMutation = (query) => /^\s*mutation\b/.test(String(query ?? ''))
  */
 export function gqlFuer({ shop, api, token, fetch: fetchFn, warte, drosselVersuche = 5, basisMs = 1500, shopifyGql: sg = shopifyGql }) {
   const pause = warte ?? ((ms) => new Promise((r) => setTimeout(r, ms)));
-  return async function gql(query, variables) {
+  /** `extra.timeoutMs`: Zeitlimit EINER Anfrage (Vorgabe 30 s von shopifyGql); nur für lange Mutationen wie productSet mit 99 Varianten (Modell-Fabrik). */
+  return async function gql(query, variables, extra = {}) {
     const mutation = istMutation(query);
-    const opt = { ...(fetchFn ? { fetch: fetchFn } : {}), ...(warte ? { warte } : {}), ...(mutation ? { versuche: 1 } : {}) };
+    const opt = { ...(fetchFn ? { fetch: fetchFn } : {}), ...(warte ? { warte } : {}), ...(mutation ? { versuche: 1 } : {}), ...(Number.isFinite(extra?.timeoutMs) && extra.timeoutMs > 0 ? { timeoutMs: extra.timeoutMs } : {}) };
     for (let i = 0; ; i++) {
       try {
         return { data: await sg(shop, api, token, query, variables, opt) };

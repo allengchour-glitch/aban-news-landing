@@ -1,0 +1,170 @@
+<script src="{{ 'luxe-product-reviews.js' | asset_url }}" defer></script>
+{{ 'luxe-category.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign category_handles = 'selbst-gestalten-1,sg-bekleidung,sg-taschen,sg-wohnen,sg-trinken,sg-accessoires' | split: ','
+  assign category_labels = 'all,clothing,bags,home,drinkware,accessories' | split: ','
+  assign category_source = collections['selbst-gestalten-1']
+  if category_handles contains collection.handle
+    assign category_source = collection
+  endif
+  assign eligible_count = 0
+-%}
+{% unless section.settings.compact_shop_list %}
+{% capture hero_images %}
+    {% assign hero_count = 0 %}{% capture hero_tiles %}
+    <div class="lxc-hero-images" aria-label="{{ 'luxe_category.image_label' | t }}">
+      {%- assign hero_handles = 'unisex-t-shirt-selbst-gestalten,bio-jutebeutel-selbst-gestalten,keramik-tasse-selbst-gestalten' | split: ',' -%}
+      {%- for hero_handle in hero_handles -%}
+        {%- assign hero_product = all_products[hero_handle] -%}
+        {%- capture hero_allowed -%}{%- render 'luxe-studio-blank-eligible', candidate: hero_product -%}{%- endcapture -%}
+        {%- assign hero_allowed = hero_allowed | strip -%}
+        {%- if hero_allowed == 'true' and hero_product.featured_image -%}
+          {% assign hero_count = hero_count | plus: 1 %}
+          <a class="lxc-hero-image lxc-hero-image--{{ hero_count }}" href="{{ hero_product.url }}?view=luxe-studio">
+            {%- assign hero_alt = hero_product.featured_image.alt | default: hero_product.title -%}
+            {{ hero_product.featured_image | image_url: width: 900 | image_tag: widths: '240, 360, 540, 720, 900', sizes: '(min-width: 900px) 36vw, 65vw', loading: 'eager', fetchpriority: 'high', alt: hero_alt }}
+            <span>{{ hero_product.title | remove: ' – Selbst gestalten' | escape }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+{% endcapture %}{% if hero_count > 0 %}{{ hero_tiles }}{% endif %}
+{% endcapture %}
+{% endunless %}
+<section class="lx-category{% if section.settings.compact_shop_list %} lx-category--compact{% endif %}" data-luxe-category aria-labelledby="LuxeCategoryTitle-{{ section.id }}">
+  {% unless section.settings.compact_shop_list %}
+  <div class="lxc-hero{% if hero_count == 0 %} lxc-hero--text-only{% endif %}">
+    <div class="lxc-hero-copy">
+      <p class="lxc-eyebrow">{{ 'luxe_category.eyebrow' | t }}</p>
+      <h1 id="LuxeCategoryTitle-{{ section.id }}">{{ 'luxe_category.title' | t }}</h1>
+      <p class="lxc-intro">{{ 'luxe_category.intro' | t }}</p>
+      <a class="lxc-button" href="#LuxeCategoryProducts-{{ section.id }}">{{ 'luxe_category.browse' | t }} <span aria-hidden="true">↗</span></a>
+      <p class="lxc-preview-note">{{ 'luxe_category.preview_note' | t }}</p>
+    </div>
+    {{ hero_images }}
+  </div>
+  <div class="lxc-process" aria-label="{{ 'luxe_category.steps_label' | t }}">
+    <p><span>01</span>{{ 'luxe_category.step_product' | t }}</p>
+    <p><span>02</span>{{ 'luxe_category.step_design' | t }}</p>
+    <p><span>03</span>{{ 'luxe_category.step_preview' | t }}</p>
+  </div>
+  {% endunless %}
+  <div class="lxc-products" id="LuxeCategoryProducts-{{ section.id }}" tabindex="-1">
+    <div class="lxc-collection-heading"><div><p class="lxc-eyebrow">{{ 'luxe_category.collection_eyebrow' | t }}</p><h2{% if section.settings.compact_shop_list %} id="LuxeCategoryTitle-{{ section.id }}"{% endif %}>{% if section.settings.compact_shop_list %}{{ 'luxe_category.shop_title' | t }}{% else %}{{ 'luxe_category.collection_title' | t }}{% endif %}</h2></div><p>{% if section.settings.compact_shop_list %}{{ 'luxe_category.shop_intro' | t }}{% else %}{{ 'luxe_category.collection_intro' | t }}{% endif %}</p></div>
+    <nav class="lxc-categories" aria-label="{{ 'luxe_category.categories_label' | t }}">
+      {%- for category_handle in category_handles -%}
+        {%- assign category_item = collections[category_handle] -%}
+        {%- if category_item != blank -%}
+          {%- assign category_key = 'luxe_category.' | append: category_labels[forloop.index0] -%}
+          <a href="{{ category_item.url }}?view=luxe-gestalten#LuxeCategoryProducts-{{ section.id }}" {% if category_source.handle == category_handle %}aria-current="page"{% endif %}>{{ category_key | t }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    <div class="lxc-grid">
+      {%- for item in category_source.products limit: 50 -%}
+        {%- capture item_allowed -%}{%- render 'luxe-studio-blank-eligible', candidate: item -%}{%- endcapture -%}
+        {%- assign item_allowed = item_allowed | strip -%}
+        {%- if item_allowed == 'true' -%}
+          {%- assign eligible_count = eligible_count | plus: 1 -%}
+          <article class="lxc-card" data-lxc-card data-product-id="{{ item.id }}" {% if eligible_count > 12 %}hidden{% endif %}>
+            <a class="lxc-card-image" href="{{ item.url }}?view=luxe-studio" tabindex="-1" aria-hidden="true">
+              {%- if item.featured_image -%}
+                {%- assign item_alt = item.featured_image.alt | default: item.title -%}
+                {{ item.featured_image | image_url: width: 720 | image_tag: widths: '240, 360, 480, 720', sizes: '(min-width: 1100px) 23vw, (min-width: 750px) 31vw, 46vw', loading: 'lazy', alt: item_alt }}
+              {%- endif -%}
+            </a>
+            <div class="lxc-card-info">
+              <h3><a href="{{ item.url }}?view=luxe-studio">{{ item.title | remove: ' – Selbst gestalten' | escape }}</a></h3>
+              <p class="lxc-price">{% if item.price_varies %}<span>{{ 'luxe_category.from' | t }}</span> {% endif %}{{ item.price_min | money_with_currency }}</p>
+              <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ item.id }}" hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: item %},"locale":{{ request.locale.iso_code | json }},"labels":{"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+              <div class="lxc-options">
+                {%- for option in item.options_with_values -%}
+                  {%- assign first_option_value = option.values.first.name | default: option.values.first -%}
+                  {%- assign remaining_values = option.values.size | minus: 7 -%}
+                  {%- unless option.name == 'Title' and option.values.size == 1 and first_option_value == 'Default Title' -%}
+                    <div class="lxc-option"><span class="lxc-option-name">{{ option.name | escape }}</span><span class="lxc-option-values">{%- for value in option.values limit: 7 -%}{{ value.name | default: value | escape }}{%- unless forloop.last -%}<span aria-hidden="true"> · </span>{%- endunless -%}{%- endfor -%}</span>{% if option.values.size > 7 %}<details class="lxc-option-more"><summary>{{ 'luxe_category.more_values' | t: count: remaining_values }}</summary><span class="lxc-option-values">{% for value in option.values offset: 7 %}{{ value.name | default: value | escape }}{% unless forloop.last %}<span aria-hidden="true"> · </span>{% endunless %}{% endfor %}</span></details>{% endif %}</div>
+                  {%- endunless -%}
+                {%- endfor -%}
+              </div>
+              <div class="lxc-colors" data-lxc-colors></div>
+              <script type="application/json" data-lxc-color-data>{% render 'luxe-studio-catalog-colors', candidate: item %}</script>
+              {%- unless item.available -%}<p class="lxc-unavailable">{{ 'luxe_category.unavailable' | t }}</p>{%- endunless -%}
+              <a class="lxc-card-cta" href="{{ item.url }}?view=luxe-studio">{% if section.settings.compact_shop_list %}{{ 'luxe_category.draft_cta' | t }}{% else %}{{ 'luxe_category.design' | t }}{% endif %}<span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if eligible_count == 0 -%}<p class="lxc-empty">{{ 'luxe_category.empty' | t }}</p>{%- endif -%}
+    <div class="lxc-pagination" data-lxc-pagination hidden>
+      <button type="button" data-lxc-prev>{{ 'luxe_category.previous' | t }}</button>
+      <span data-lxc-page aria-live="polite"></span>
+      <button type="button" data-lxc-next>{{ 'luxe_category.next' | t }}</button>
+    </div>
+    <script type="application/json" data-lxc-labels>{"page": {{ 'luxe_category.page_label' | t | json }}}</script>
+    <p class="lxc-end-note">{{ 'luxe_category.end_note' | t }}</p>
+    <noscript><style>.lx-category [data-lxc-card][hidden]{display:flex!important}</style></noscript>
+  </div>
+</section>
+{% javascript %}
+  function initializeLuxeCategory(root) {
+    if (root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const previewTheme = new URL(location.href).searchParams.get('preview_theme_id');
+    if (previewTheme && /^\d+$/.test(previewTheme)) root.querySelectorAll('a[href]').forEach(link => {
+      const target = new URL(link.href, location.href);
+      if (target.origin === location.origin && target.searchParams.has('view')) {
+        target.searchParams.set('preview_theme_id', previewTheme);
+        link.href = target.href;
+      }
+    });
+    const cards = Array.from(root.querySelectorAll('[data-lxc-card]'));
+    const pagination = root.querySelector('[data-lxc-pagination]');
+    const previous = root.querySelector('[data-lxc-prev]');
+    const next = root.querySelector('[data-lxc-next]');
+    const status = root.querySelector('[data-lxc-page]');
+    const labels = JSON.parse(root.querySelector('[data-lxc-labels]').textContent);
+    const pages = Math.ceil(cards.length / 12);
+    let page = 1;
+    const update = (moveFocus) => {
+      cards.forEach((card, index) => { card.hidden = index < (page - 1) * 12 || index >= page * 12; });
+      previous.disabled = page <= 1;
+      next.disabled = page >= pages;
+      status.textContent = labels.page.replace('[page]', String(page)).replace('[pages]', String(pages));
+      if (moveFocus) {
+        const heading = root.querySelector('.lxc-products');
+        heading.focus({preventScroll:true});
+        heading.scrollIntoView({block:'start', behavior:'auto'});
+      }
+    };
+    previous.addEventListener('click', () => { if (page > 1) { page--; update(true); } });
+    next.addEventListener('click', () => { if (page < pages) { page++; update(true); } });
+    pagination.hidden = pages <= 1;
+    update(false);
+    cards.forEach(card => {
+      const data = card.querySelector('[data-lxc-color-data]');
+      let colors = [];
+      try { colors = JSON.parse(data.textContent); } catch { return; }
+      const row = card.querySelector('[data-lxc-colors]');
+      colors.forEach(color => {
+        if (typeof color.name !== 'string' || !/^#[\da-f]{6}$/i.test(color.hex || '')) return;
+        const chip = document.createElement('span');
+        chip.className = 'lxc-color';
+        chip.title = color.name;
+        chip.setAttribute('aria-label', color.name);
+        chip.style.backgroundColor = color.hex;
+        row.append(chip);
+      });
+    });
+  }
+  document.querySelectorAll('[data-luxe-category]').forEach(initializeLuxeCategory);
+  document.addEventListener('shopify:section:load', event => event.target.querySelectorAll('[data-luxe-category]').forEach(initializeLuxeCategory));
+{% endjavascript %}
+{% schema %}
+{
+  "name": "LuxeStyle Gestaltung",
+  "settings": [{"type":"checkbox","id":"compact_shop_list","label":"Kompakte Shopauswahl","default":false}],
+  "enabled_on": {"templates": ["collection"]}
+}
+{% endschema %}
+

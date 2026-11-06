@@ -1,0 +1,32 @@
+{
+ "hinweis": "Soll-Stand der zwölf Theme-Dateien (MD5 von anwendenKombi() auf sicherung/*.vor mit den drei Datenquellen), die Dateien selbst liegen unter ziel/. Gleich der Nachbildung, die im Browser geprüft wurde (Playwright gegen das Live-Dokument, 1440 und 390 px). md5Alt: Ausgangsstand (null = Datei fehlt im Live-Theme). Nur ändern, nachdem BEIDE Browsertests am neuen Stand wiederholt wurden.",
+ "geprueft": "06.11.2026 (Schlusslauf bis 05:35 UTC): alle Tests grün gegen ziel/ und kombi.mjs: kombi_test 1245, apply_test 226, test_bestellbar_kombi 361 (auch verkleinert), test_texte_kombi schnell 1527 (auch verkleinert), szenarien 139, kombi 977 (auch verkleinert), voll 14304; Mutationsprobe 81 von 81 erkannt. Browsertests: Playwright gegen das Live-Dokument, 1440 und 390 px.",
+ "md5Alt": {
+  "assets/luxe-clothing.js": "198328a67066f91ac776e7953d33f07b",
+  "assets/luxe-clothing.css": "feba50324b9f59bf07216b2d46ffdbb5",
+  "sections/luxe-clothing.liquid": "71c1406cf5d069e0a23b535d629f1bde",
+  "snippets/luxe-clothing-asset-manifest.liquid": "0539431c5b7f9b15886885d4006d2fd1",
+  "snippets/luxe-selfdesign-cover.liquid": "8006e5ededfe5c22a4dc44fda82ded49",
+  "sections/luxe-category.liquid": "10674566df5ca93ea7e71caf31d921dd",
+  "locales/de.json": "74704b4a7583a70276bda37f2b5fed6a",
+  "locales/en.default.json": "75522c426fe29e23479bbc3e35bffa77",
+  "locales/fr.json": "0a21cf6b810a2e2fd33552977912948b",
+  "assets/luxe-clothing-ausblenden.json": null,
+  "assets/luxe-clothing-variantenkarte.json": null,
+  "assets/luxe-clothing-texts-de.json": null
+ },
+ "md5": {
+  "assets/luxe-clothing.js": "aa759708998cf30c817f71d32e8f9c58",
+  "assets/luxe-clothing.css": "d2c8da52a1870ee0c4467cda2ddfaebb",
+  "sections/luxe-clothing.liquid": "7d49f52313723b19131ace71ac12a5a2",
+  "snippets/luxe-clothing-asset-manifest.liquid": "e384e40aae88e0282e83cbd8e05c36e9",
+  "snippets/luxe-selfdesign-cover.liquid": "63f63bfa8c10c5f73aa8ead523bc4650",
+  "sections/luxe-category.liquid": "838960ab29d146781d39861a6b8eb7a3",
+  "locales/de.json": "1dea0b19fa05c68fa82304b826b7edff",
+  "locales/en.default.json": "4705e4658f482b3fbc0c38ad2bb6535d",
+  "locales/fr.json": "75ff32f03227f6c3f9ca683238f66b1e",
+  "assets/luxe-clothing-ausblenden.json": "7f27109aa5049125e80a0f3d0374861a",
+  "assets/luxe-clothing-variantenkarte.json": "5790968bda235f40049578e0471e9899",
+  "assets/luxe-clothing-texts-de.json": "86cbb8664cddc2e10a3ead2297bc9482"
+ }
+}

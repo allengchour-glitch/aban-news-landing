@@ -495,7 +495,9 @@ ist('V15f remainingQuantity null → wie 0', r.prot.fulfills.length, 0);
 // V16: Wächter
 const alter = (h) => new Date(Date.now() - h * 3600 * 1000).toISOString();
 r = lauf({ main: [], waechter: [{ name: '#W1', createdAt: alter(20), tags: [], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10')] }] }] });
-ist('V16 Wächter: alte unsynchronisierte POD-Bestellung → Telegram + Tag wartet', [r.prot.tg.length, /Printful-Dashboard/.test(r.prot.tg[0] || ''), /doppelter Auftrag/.test(r.prot.tg[0] || ''), tagListen(r.prot)], [1, true, true, [['printful-wartet']]]);
+ist('V16 Wächter: alte unsynchronisierte POD-Bestellung → Telegram + Tag wartet; der Text nennt den Weg (Dashboard, external_id) und behauptet keinen Doppelauftrag mehr', [r.prot.tg.length, /Printful-Dashboard/.test(r.prot.tg[0] || ''), /external_id/.test(r.prot.tg[0] || ''), /sonst doppelter Auftrag/.test(r.prot.tg[0] || ''), tagListen(r.prot)], [1, true, true, false, [['printful-wartet']]]);
+r = lauf({ main: [], waechter: [{ name: '#W2', createdAt: alter(20), tags: ['printful-review', 'printful-review-ohne-variante'], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10')] }] }] });
+ist('V16d Wächter: vom Sync angehaltene Bestellung (Tag printful-review) → anderer Text: Ursache beheben, Tag entfernen, kein «Sync starten»', [r.prot.tg.length, /Tag printful-review entfernen/.test(r.prot.tg[0] || ''), /«Printful-Sync» starten/.test(r.prot.tg[0] || '')], [1, true, false]);
 r = lauf({ main: [], waechter: [{ name: '#W1', createdAt: alter(11), tags: [], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10')] }] }] });
 ist('V16b Wächter: 11 h alt → noch nichts', [r.prot.tg.length, r.prot.tagsAdd.length], [0, 0]);
 r = lauf({ main: [], waechter: [{ name: '#W1', createdAt: alter(13), tags: [], fos: [{ id: 'fo9', lines: [pod('w1', '9000001_10')] }] }] });

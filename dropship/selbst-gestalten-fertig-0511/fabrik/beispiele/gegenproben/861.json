@@ -1,0 +1,546 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T21:14:20.402Z",
+  "katalogGeholt": "2026-11-05T17:16:07.479Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 861,
+ "stufe": 1,
+ "klasse": "FLACH",
+ "klasseEndgueltig": "UNGEEIGNET",
+ "typ": "CANDLE",
+ "standardTechnik": "DIGITAL",
+ "titelEn": "Scented Soy Candle, 9oz",
+ "titel": "Kerze 255 g selbst gestalten",
+ "titelKurz": "Kerze 255 g",
+ "titelQuelle": "glossar",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [
+  "Scented",
+  "Soy"
+ ],
+ "entfernteMarken": [],
+ "handle": "kerze-255-g-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Wohnen",
+ "tags": [
+  "pod-bestellweg-manuell",
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-fabrik",
+  "sg-klasse-flach",
+  "sg-modell-861",
+  "sg-typ-candle",
+  "sg-wohnen",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Kerze 255 g selbst gestalten | LuxeStyle CH",
+  "description": "Kerze 255 g selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Ausführung",
+   "art": "standard",
+   "werte": [
+    "Standard"
+   ]
+  }
+ ],
+ "varianten": [],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/28/280cf4f2390e842ed112dd43f290c401_l",
+   "alt": "Kerze 255 g selbst gestalten Produktbild",
+   "rolle": "haupt",
+   "label": "Produktbild"
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>8 bis 20 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"861\" data-klasse=\"FLACH\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":861,\"typ\":\"CANDLE\",\"titelDe\":\"Kerze 255 g\",\"klasse\":\"UNGEEIGNET\",\"standardTechnik\":\"DIGITAL\",\"minDpi\":150,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"printfile\":{\"printfileId\":771,\"breitePx\":900,\"hoehePx\":600,\"dpi\":300},\"vorlage\":{\"vorlageId\":905364,\"bildUrl\":\"https://files.cdn.printful.com/m/pfy_test_soycandle/medium/mockup_gen/candle_3x2.png?v=1773224694\",\"hintergrundUrl\":null,\"hintergrundFarbe\":null,\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":470,\"flaecheOben\":813,\"flaecheBreite\":2060,\"flaecheHoehe\":1373,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]}],\"druckdateien\":{\"771\":{\"printfileId\":771,\"breitePx\":900,\"hoehePx\":600,\"dpi\":300}},\"hinweise\":[],\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Digitaldruck</li><li><strong>Druckdatei (Vorderseite):</strong> 900 × 600 Pixel bei 300 dpi, das sind 7,6 × 5,1 cm</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [],
+ "uebersetzung": {
+  "ok": false,
+  "fehler": [
+   "keine Übersetzungsdatei 861.json",
+   "keine Übersetzung vorhanden"
+  ],
+  "saetze": 0,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":861,\"klasse\":\"FLACH\",\"technik\":\"DIGITAL\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DIGITAL\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[900,600],\"dpi\":300,\"cm\":[7.6,5.1],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":470,\"oben\":813,\"breite\":2060,\"hoehe\":1373,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/pfy_test_soycandle/medium/mockup_gen/candle_3x2.png?v=1773224694\",\"hintergrund\":null}],\"hinweise\":[]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "861"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "FLACH"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T17:16:07.479Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"8–20\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 861,
+  "klasse": "FLACH",
+  "technik": "DIGITAL",
+  "basis": "front",
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titel": "Vorderseite",
+    "art": "flaeche",
+    "technik": "DIGITAL",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      900,
+      600
+     ],
+     "dpi": 300,
+     "cm": [
+      7.6,
+      5.1
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 470,
+     "oben": 813,
+     "breite": 2060,
+     "hoehe": 1373,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/pfy_test_soycandle/medium/mockup_gen/candle_3x2.png?v=1773224694",
+    "hintergrund": null
+   }
+  ],
+  "hinweise": []
+ },
+ "kompaktBytes": 562,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 861,
+  "typ": "CANDLE",
+  "titelDe": "Kerze 255 g",
+  "klasse": "UNGEEIGNET",
+  "standardTechnik": "DIGITAL",
+  "minDpi": 150,
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titelDe": "Vorderseite",
+    "titelEn": "Front print",
+    "art": "flaeche",
+    "technik": "DIGITAL",
+    "printfile": {
+     "printfileId": 771,
+     "breitePx": 900,
+     "hoehePx": 600,
+     "dpi": 300
+    },
+    "vorlage": {
+     "vorlageId": 905364,
+     "bildUrl": "https://files.cdn.printful.com/m/pfy_test_soycandle/medium/mockup_gen/candle_3x2.png?v=1773224694",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": null,
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 470,
+     "flaecheOben": 813,
+     "flaecheBreite": 2060,
+     "flaecheHoehe": 1373,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   }
+  ],
+  "druckdateien": {
+   "771": {
+    "printfileId": 771,
+    "breitePx": 900,
+    "hoehePx": 600,
+    "dpi": 300
+   }
+  },
+  "hinweise": []
+ },
+ "karteBytes": 868,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 35.29,
+  "tageMin": 6,
+  "tageMax": 15,
+  "ratenVariante": 22804
+ },
+ "lieferzeit": {
+  "min": 8,
+  "max": 20,
+  "quelle": "berechnet",
+  "versandTage": [
+   6,
+   15
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": null,
+ "basisPlatzierung": {
+  "id": "front",
+  "dateiTyp": "default",
+  "technik": "DIGITAL",
+  "pflichtAufpreisUsd": 0
+ },
+ "bestellweg": {
+  "platzierung": "default",
+  "gesichert": false,
+  "grund": "printful_sync schickt «default», die Basisfläche heisst «front»",
+  "dateien": [
+   "default"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 9,
+  "bestellbar": 9,
+  "gewaehlt": 0,
+  "farbenGewaehlt": [],
+  "farbenAusgelassen": [
+   {
+    "name": "Apple Harvest",
+    "grund": "Farbname nicht übersetzt (Wörter: apple, harvest)"
+   },
+   {
+    "name": "Christmas Warmth",
+    "grund": "Farbname nicht übersetzt (Wörter: christmas, warmth)"
+   },
+   {
+    "name": "Cinnamon Vanilla",
+    "grund": "Farbname nicht übersetzt (Wörter: cinnamon, vanilla)"
+   },
+   {
+    "name": "Clean Cotton",
+    "grund": "Farbname nicht übersetzt (Wörter: clean, cotton)"
+   },
+   {
+    "name": "Coconut Cream and Cardamom",
+    "grund": "Farbname nicht übersetzt (Wörter: coconut, and, cardamom)"
+   },
+   {
+    "name": "Peppered Passionfruit",
+    "grund": "Farbname nicht übersetzt (Wörter: peppered, passionfruit)"
+   },
+   {
+    "name": "Sea Salt and Orchid",
+    "grund": "Farbname nicht übersetzt (Wörter: sea, salt, and, orchid)"
+   },
+   {
+    "name": "Unscented",
+    "grund": "Farbname nicht übersetzt (Wörter: unscented)"
+   },
+   {
+    "name": "White Sage and Lavender",
+    "grund": "Farbname nicht übersetzt (Wörter: White Sage and Lavender)"
+   }
+  ],
+  "ausgelassen": []
+ },
+ "preis": {
+  "min": null,
+  "max": null,
+  "nettoMin": null,
+  "nettoMax": null,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [],
+  "ungemessen": [],
+  "anzahl": 1,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/upload/product-catalog-img/28/280cf4f2390e842ed112dd43f290c401_l"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "Rate für Variante 22804 gemessen, die nicht zur Auswahl gehört: Preis und Lieferzeit stützen sich auf eine fremde Variante (versand_messen.mjs misst eine Variante der Auswahl)"
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "alle Farben ausgelassen (Apple Harvest: Farbname nicht übersetzt (Wörter: apple, harvest); Christmas Warmth: Farbname nicht übersetzt (Wörter: christmas, warmth); Cinnamon Vanilla: Farbname nicht übersetzt (Wörter: cinnamon, vanilla)): Farbnamen im Glossar ergänzen"
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "keine Varianten"
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "nur 1 lesbare Bilder (unlesbar: 0)"
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "Wörter nicht im Glossar: Scented, Soy (Glossar oder TITEL_FEST ergänzen)"
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "durchgefallen",
+   "grund": "2 Fehler, erster: keine Übersetzungsdatei 861.json"
+  },
+  {
+   "code": "karte",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "printful_sync bestimmt «default» nicht gesichert (printful_sync schickt «default», die Basisfläche heisst «front»): Aufträge blieben Entwurf bei Printful"
+  },
+  {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Versandtage 6 bis 15 plus Fertigung 2 bis 5 Werktage: die Seite nennt 8 bis 20 Werktage, länger als bei den übrigen «Selbst gestalten»-Produkten (Besitzer bestätigt)"
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "für diesen Produkttyp fehlt der Eintrag in kategorien.mjs: ohne Kategorie nimmt das Google-Schaufenster das Produkt nicht auf (vor dem Veröffentlichen ergänzen)"
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Kerze 255 g selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "9 Farbe(n) ausgelassen: Apple Harvest (Farbname nicht übersetzt (Wörter: apple, harvest)); Christmas Warmth (Farbname nicht übersetzt (Wörter: christmas, warmth)); Cinnamon Vanilla (Farbname nicht übersetzt (Wörter: cinnamon, vanilla))"
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": false,
+ "hash": "89f2e9e39a5c2cb9d59afc725082ef24b5b4c5c65c46b36ef27d983c0ce133cc"
+}

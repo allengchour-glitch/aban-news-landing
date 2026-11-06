@@ -1,0 +1,32 @@
+// Tests für charge.mjs (kein Netz). Lauf: /opt/node22/bin/node automation/pod_modell/charge_test.mjs
+import { chargenPlan, CHARGE, TYP_REIHENFOLGE } from './charge.mjs';
+import { neuerTest } from './testhilfe.mjs';
+const { ist, wahr, wirft, ende } = neuerTest('charge');
+const P = (id, n, typ = 'T-SHIRT', stufe = 1, anlegbar = true) => ({ handle: `m${id}`, printfulProductId: id, typ, stufe, anlegbar, varianten: { length: n } });
+const o = { start: '2026-11-06' };
+
+ist('Vorgaben: 3000 je Lauf, Limit 9500, Grundlast 6500', [CHARGE.proLauf, CHARGE.tagesLimit, CHARGE.grundlast], [3000, 9500, 6500]);
+const c = chargenPlan([P(1, 100), P(2, 100)], o);
+ist('kleine Menge: ein Lauf am Starttag', c.tage.map((t) => [t.tag, t.varianten]), [['2026-11-06', 200]]);
+const viele = Array.from({ length: 70 }, (_, i) => P(i + 1, 100));
+const cv = chargenPlan(viele, o);
+ist('7 000 Varianten brauchen 3 Läufe, nie mehr als 3000 je Lauf', [cv.tage.length, Math.max(...cv.tage.map((t) => t.varianten)) <= 3000, cv.gesamtVarianten], [3, true, 7000]);
+ist('aufeinanderfolgende Tage', cv.tage.map((t) => t.tag), ['2026-11-06', '2026-11-07', '2026-11-08']);
+ist('kein Produkt wird geteilt oder doppelt eingeplant', new Set(cv.tage.flatMap((t) => t.handles)).size, 70);
+ist('nichts geht verloren', cv.tage.reduce((s, t) => s + t.handles.length, 0) + cv.nichtEingeplant.length, 70);
+ist('Reihenfolge: Stufe 1 vor Stufe 2, gängiger Typ vor seltenem', chargenPlan([P(3, 10, 'CUT-SEW', 2), P(2, 10, 'EMBROIDERY', 1), P(1, 10, 'MUG', 1), P(4, 10, 'T-SHIRT', 1)], { ...o, proLauf: 20 }).tage.flatMap((t) => t.handles), ['m4', 'm1', 'm2', 'm3']);
+ist('Stufe 1 kommt vor Stufe 2, auch wenn der Typ der Stufe 2 gängiger ist', chargenPlan([P(1, 10, 'T-SHIRT', 2), P(2, 10, 'EMBROIDERY', 1)], { ...o, proLauf: 20 }).tage.flatMap((t) => t.handles), ['m2', 'm1']);
+ist('Lücken füllen: ein kleines Produkt rutscht vor ein grosses', chargenPlan([P(1, 90), P(2, 90), P(3, 10)], { ...o, proLauf: 100, tagesLimit: 6600 }).tage.map((t) => t.handles), [['m1', 'm3'], ['m2']]);
+ist('nicht anlegbare Pläne kommen nicht in die Läufe', chargenPlan([P(1, 10, 'T-SHIRT', 1, false), P(2, 10)], o).nichtEingeplant, [{ handle: 'm1', grund: 'Tore nicht bestanden' }]);
+ist('Verbrauch der letzten 24 h senkt nur Tag 1', (() => { const r = chargenPlan(viele, { ...o, verbraucht24h: 8000 }); return r.tage.map((t) => t.kapazitaet); })(), [1500, 3000, 3000, 3000].slice(0, chargenPlan(viele, { ...o, verbraucht24h: 8000 }).tage.length));
+ist('Tag 1 ohne Kapazität (Limit voll): der erste Lauf beginnt am Tag danach', (() => { const r = chargenPlan([P(1, 100)], { ...o, verbraucht24h: 9500 }); return r.tage.map((t) => t.tag); })(), ['2026-11-07']);
+ist('Grundlast = Limit: keine Kapazität, Hinweis', (() => { const r = chargenPlan([P(1, 100)], { ...o, grundlast: 9500 }); return [r.kapazitaetProTag, r.tage.length, r.hinweis.length > 0]; })(), [0, 0, true]);
+ist('Produkt grösser als die Tageskapazität wird benannt, nicht geteilt', chargenPlan([P(1, 100)], { ...o, proLauf: 50 }).nichtEingeplant.length, 1);
+ist('proLauf wird nie über 3000 gehoben, aber niedriger geht', chargenPlan(viele, { ...o, proLauf: 1000 }).tage.length, 7);
+ist('Kapazität nie über Limit minus Grundlast', chargenPlan([], { ...o, proLauf: 5000 }).kapazitaetProTag, 3000);
+ist('Monatsende', chargenPlan(Array.from({ length: 70 }, (_, i) => P(i + 1, 100)), { start: '2026-11-29' }).tage.map((t) => t.tag), ['2026-11-29', '2026-11-30', '2026-12-01']);
+ist('maxTage begrenzt', chargenPlan(viele, { ...o, maxTage: 1 }).nichtEingeplant.length, 40);
+await wirft('Startdatum fehlt', () => chargenPlan([], {}), 'JJJJ-MM-TT');
+await wirft('Startdatum kaputt', () => chargenPlan([], { start: '5.11.2026' }), 'JJJJ-MM-TT');
+wahr('Typreihenfolge enthält die Alltagstypen', ['T-SHIRT', 'MUG', 'POSTER', 'PHONE-CASE'].every((t) => TYP_REIHENFOLGE.includes(t)));
+ende();

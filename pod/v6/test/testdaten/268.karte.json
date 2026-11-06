@@ -1,0 +1,296 @@
+{
+ "schema": 1,
+ "printfulProductId": 268,
+ "typ": "POSTER",
+ "titelEn": "Enhanced Matte Paper Poster (cm)",
+ "klasse": "FLACH",
+ "standardTechnik": "DIGITAL",
+ "minDpi": 150,
+ "platzierungen": [
+  {
+   "id": "default",
+   "dateiTyp": "default",
+   "titelDe": "Druckfläche",
+   "titelEn": "Print file",
+   "art": "flaeche",
+   "technik": "DIGITAL",
+   "printfile": {
+    "printfileId": 621,
+    "breitePx": 9933,
+    "hoehePx": 7016,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 354203,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/07/07b520a4b331a4deebd82b0037b3eb8d?v=1714470511",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": null,
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 57,
+    "flaecheOben": 480,
+    "flaecheBreite": 2886,
+    "flaecheHoehe": 2040,
+    "ausrichtung": "horizontal",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": [],
+   "geometrien": [
+    {
+     "printfileId": 621,
+     "vorlage": {
+      "vorlageId": 354203,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/07/07b520a4b331a4deebd82b0037b3eb8d?v=1714470511",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 3000,
+      "vorlageHoehe": 3000,
+      "flaecheLinks": 57,
+      "flaecheOben": 480,
+      "flaecheBreite": 2886,
+      "flaecheHoehe": 2040,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 19515
+    },
+    {
+     "printfileId": 624,
+     "vorlage": {
+      "vorlageId": 354201,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/9f/9f6134231bfd693f5ed6033091b76d64?v=1714470562",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 3000,
+      "vorlageHoehe": 3000,
+      "flaecheLinks": 55,
+      "flaecheOben": 478,
+      "flaecheBreite": 2889,
+      "flaecheHoehe": 2044,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 19516
+    },
+    {
+     "printfileId": 106,
+     "vorlage": {
+      "vorlageId": 21394,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/b5/b5d2ad8e1e78224bf77aa1b5edeff481?v=1643381021",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 728,
+      "vorlageHoehe": 728,
+      "flaecheLinks": 30,
+      "flaecheOben": 114,
+      "flaecheBreite": 669,
+      "flaecheHoehe": 469,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 8947
+    },
+    {
+     "printfileId": 153,
+     "vorlage": {
+      "vorlageId": 21395,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/80/80b9443c2870832de8895c52515a4baa?v=1643381502",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 728,
+      "vorlageHoehe": 728,
+      "flaecheLinks": 29,
+      "flaecheOben": 97,
+      "flaecheBreite": 670,
+      "flaecheHoehe": 503,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 8948
+    },
+    {
+     "printfileId": 113,
+     "vorlage": {
+      "vorlageId": 21396,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/15/151842e01bcb6743a3e8221d629e8ea9?v=1643381547",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 728,
+      "vorlageHoehe": 728,
+      "flaecheLinks": 30,
+      "flaecheOben": 110,
+      "flaecheBreite": 670,
+      "flaecheHoehe": 478,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 8952
+    },
+    {
+     "printfileId": 155,
+     "vorlage": {
+      "vorlageId": 21397,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/2a/2a74744fb9cdabe4f8a3989f3c405b83?v=1643381593",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 728,
+      "vorlageHoehe": 728,
+      "flaecheLinks": 30,
+      "flaecheOben": 126,
+      "flaecheBreite": 670,
+      "flaecheHoehe": 447,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 8953
+    },
+    {
+     "printfileId": 115,
+     "vorlage": {
+      "vorlageId": 21398,
+      "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/f3/f355383ad813dafeaf791f39bf15de19?v=1643381648",
+      "hintergrundUrl": null,
+      "hintergrundFarbe": null,
+      "vorlageBreite": 728,
+      "vorlageHoehe": 728,
+      "flaecheLinks": 29,
+      "flaecheOben": 115,
+      "flaecheBreite": 670,
+      "flaecheHoehe": 468,
+      "ausrichtung": "horizontal",
+      "vorderansicht": true
+     },
+     "anzahlVarianten": 1,
+     "beispielVarianteId": 8954
+    }
+   ]
+  }
+ ],
+ "druckdateien": {
+  "106": {
+   "printfileId": 106,
+   "breitePx": 3544,
+   "hoehePx": 2480,
+   "dpi": 300
+  },
+  "113": {
+   "printfileId": 113,
+   "breitePx": 8268,
+   "hoehePx": 5906,
+   "dpi": 300
+  },
+  "115": {
+   "printfileId": 115,
+   "breitePx": 11812,
+   "hoehePx": 8268,
+   "dpi": 300
+  },
+  "153": {
+   "printfileId": 153,
+   "breitePx": 4724,
+   "hoehePx": 3544,
+   "dpi": 300
+  },
+  "155": {
+   "printfileId": 155,
+   "breitePx": 10748,
+   "hoehePx": 7200,
+   "dpi": 300
+  },
+  "621": {
+   "printfileId": 621,
+   "breitePx": 9933,
+   "hoehePx": 7016,
+   "dpi": 300
+  },
+  "624": {
+   "printfileId": 624,
+   "breitePx": 7016,
+   "hoehePx": 4961,
+   "dpi": 300
+  }
+ },
+ "hinweise": [],
+ "druckdateiGruppen": [
+  {
+   "platzierungen": {
+    "default": 621
+   },
+   "anzahlVarianten": 1
+  },
+  {
+   "platzierungen": {
+    "default": 624
+   },
+   "anzahlVarianten": 1
+  },
+  {
+   "platzierungen": {
+    "default": 106
+   },
+   "anzahlVarianten": 1
+  },
+  {
+   "platzierungen": {
+    "default": 153
+   },
+   "anzahlVarianten": 1
+  },
+  {
+   "platzierungen": {
+    "default": 113
+   },
+   "anzahlVarianten": 1
+  },
+  {
+   "platzierungen": {
+    "default": 155
+   },
+   "anzahlVarianten": 1
+  },
+  {
+   "platzierungen": {
+    "default": 115
+   },
+   "anzahlVarianten": 1
+  }
+ ],
+ "varianten": [
+  {
+   "printfulVariantId": 19515,
+   "druckdateiGruppe": 0
+  },
+  {
+   "printfulVariantId": 19516,
+   "druckdateiGruppe": 1
+  },
+  {
+   "printfulVariantId": 8947,
+   "druckdateiGruppe": 2
+  },
+  {
+   "printfulVariantId": 8948,
+   "druckdateiGruppe": 3
+  },
+  {
+   "printfulVariantId": 8952,
+   "druckdateiGruppe": 4
+  },
+  {
+   "printfulVariantId": 8953,
+   "druckdateiGruppe": 5
+  },
+  {
+   "printfulVariantId": 8954,
+   "druckdateiGruppe": 6
+  }
+ ]
+}

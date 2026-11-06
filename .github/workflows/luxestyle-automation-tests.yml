@@ -48,6 +48,24 @@ on:
       - 'dropship/pod-editor-sicherung-2810/**'
       - 'dropship/katalog-einheiten-0411/**'
       - 'dropship/lagerbestand-0511/**'
+      - 'dropship/selbst-gestalten-fertig-0511/bestellweg/**'
+      - 'dropship/selbst-gestalten-fertig-0511/**'
+      - 'automation/pod_modell/**'
+      - 'pod/v6/**'
+      - 'pod/live/**'
+      - 'dropship/rueckgabe-0611/**'
+      - 'dropship/katalog-nur-bestellbar-0511/**'
+      - 'dropship/katalog-fenster-0611/**'
+      - 'dropship/katalog-texte-de-0611/**'
+      - 'automation/printful_lager.mjs'
+      - 'automation/printful_lager_test.mjs'
+      - 'automation/printful_lager_mutation.mjs'
+      - 'automation/lib/printful_lager.mjs'
+      - 'automation/lib/printful_lager_test.mjs'
+      - 'dropship/codex-katalog/ausblenden.json'
+      - 'dropship/codex-katalog/modelle.json'
+      - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
+      - '.github/workflows/printful-sync.yml'
       - 'automation/fortura_feed_holen.sh'
       - '.github/workflows/fortura-bestand.yml'
       - 'pod/editor-hintergruende.json'
@@ -136,6 +154,9 @@ jobs:
             .github/workflows/luxestyle-automation-tests.yml
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
+            .github/workflows/printful-sync.yml
+            dropship/selbst-gestalten-fertig-0511/bestellweg
+            dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -170,6 +191,7 @@ jobs:
           node --check automation/pod_inject_designer.mjs
           node --check automation/pod_editor_hintergruende.mjs
           node --check automation/printful_sync.mjs
+          node --check automation/lib/printful_bestellweg.mjs
           node --check automation/printful_tracking.mjs
           node --check automation/lib/printful_tracking.mjs
           node --check automation/schmuck_gruppen.mjs
@@ -298,7 +320,11 @@ jobs:
           node automation/lib/pod_auswahl_gql_test.mjs
           node automation/lib/pod_auswahl_schreiben_test.mjs
           node automation/pod_auswahl_test.mjs
+          # Bestellweg «bezahlte Bestellung → Printful-Auftrag» (05.11.2026): reine Logik (Optionen, Kosten-Wächter samt Versand, Stickerei nach Typ, Karte), dazu das ganze Skript gegen gefälschtes Netz
+          node automation/lib/printful_bestellweg_test.mjs
           node automation/printful_sync_test.mjs
+          # Die Fundstellen der 162 Mutanten des Bestellwegs müssen noch genau einmal vorkommen (die volle Probe dauert rund 9 Minuten und läuft von Hand: dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs)
+          node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs --pruefen
           # Rückmeldung Printful → Shopify (03.11.2026): reine Zuordnung + Verhalten des Skripts im Kindprozess (gefälschtes Shopify/Printful/Telegram)
           node automation/printful_tracking_test.mjs
           # Editor-Hintergründe ohne eingebranntes «Dein Design» (28.10.2026): Baustein lesen/umschreiben, Übersteuerungstabelle pod/editor-hintergruende.json, Sicherung dropship/pod-editor-sicherung-2810
@@ -364,3 +390,70 @@ jobs:
           node dropship/lagerbestand-0511/apply_theme_test.mjs
           LIQUIDJS_DIR="$RUNNER_TEMP/lq" NUR_TEST=1 OHNE_BROWSER=1 node dropship/lagerbestand-0511/delivery_test.mjs
           sha1sum automation/fortura_bestand_sync.mjs | grep -q '^0dc135363bd9c5b7259bb0d49d7dd793057fe3f2 ' && echo "fortura_bestand_sync.mjs unveraendert (SHA1 der erprobten Fassung)"
+
+  # «Selbst gestalten» (05./06.11.2026): Modell-Fabrik, Editor v6 (reine Logik), Einspielskripte (Preise, L0, Masse, Rückgabe-Texte) gegen Attrappen/Daten im Repo.
+  # Kein Netz, keine Geheimnisse. Neue Testordner immer an ZWEI Stellen eintragen: `paths:` oben UND `sparse-checkout` hier.
+  selbst-gestalten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/lib
+            automation/pod_modell
+            dropship/katalog-fenster-0611
+            dropship/katalog-texte-de-0611
+            dropship/codex-katalog/ausblenden.json
+            dropship/codex-katalog/modelle.json
+            automation/printful_lager.mjs
+            automation/printful_lager_test.mjs
+            automation/printful_lager_mutation.mjs
+            dropship/katalog-nur-bestellbar-0511
+            dropship/rueckgabe-0611
+            dropship/selbst-gestalten-fertig-0511
+            pod/v6
+            pod/live
+            .github/workflows/luxestyle-automation-tests.yml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Modell-Fabrik (Plan, Tore, Sperre, Glossar, Charge, Anlegen, Beschreibung, Bildmass, Versand)
+        run: |
+          node automation/pod_modell/pod_modell_test.mjs
+          node automation/pod_modell/plan_test.mjs
+          node automation/pod_modell/tore_test.mjs
+          node automation/pod_modell/sperre_test.mjs
+          node automation/pod_modell/glossar_test.mjs
+          node automation/pod_modell/charge_test.mjs
+          node automation/pod_modell/anlegen_test.mjs
+          node automation/pod_modell/beschreibung_test.mjs
+          node automation/pod_modell/bildmass_test.mjs
+          node automation/pod_modell/versand_messen_test.mjs
+      - name: Editor v6 (reine Logik, Fallback auf v5 aus pod/live)
+        run: node pod/v6/test/unit_test.mjs
+      - name: Einspielskripte und Rechner (Preise, L0, Schweizer Masse, Rückgabe-Texte)
+        run: |
+          node dropship/selbst-gestalten-fertig-0511/preise/plan_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/l0/apply_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/masse/masse_bereinigen_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/werkzeuge/modellkarte_test.mjs
+          node dropship/selbst-gestalten-fertig-0511/werkzeuge/schweizer_masse_test.mjs
+          node dropship/rueckgabe-0611/apply_test.mjs
+          node dropship/rueckgabe-0611/apply2_test.mjs
+      - name: Katalogfenster «nur bestellbar» (Änderungen, Wächter, Einspielskript gegen Attrappe; ohne Ruby-Liquid und Browser)
+        run: |
+          OHNE_LIQUID=1 node dropship/katalog-nur-bestellbar-0511/patches_test.mjs
+          node dropship/katalog-nur-bestellbar-0511/waechter_test.mjs
+          APPLY_ZEIT=0.001 node dropship/katalog-nur-bestellbar-0511/apply_test.mjs
+      - name: Katalogfenster gemeinsames Paket 06.11. (Soll-Stand der Dateien, Kombination, Einspielskript gegen Attrappe; Browsertests laufen nur von Hand, sie holen das Live-Dokument)
+        run: |
+          node dropship/katalog-fenster-0611/ziel_bauen.mjs --pruefen
+          OHNE_LIQUID=1 node dropship/katalog-fenster-0611/kombi_test.mjs   # ohne Ruby-Liquid (auf dem Runner nicht installiert); der Ruby-Teil läuft von Hand
+          node dropship/katalog-fenster-0611/apply_test.mjs
+      - name: Printful-Lager-Wächter (Logik, Verhalten gegen gefälschtes Printful/Shopify/Telegram, Mutationsprobe; rund 40 s, kein Netz)
+        run: |
+          node automation/lib/printful_lager_test.mjs
+          node automation/printful_lager_test.mjs
+          node automation/printful_lager_mutation.mjs

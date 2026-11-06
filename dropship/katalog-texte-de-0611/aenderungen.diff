@@ -1,0 +1,233 @@
+--- a/assets__luxe-clothing.js
++++ b/assets__luxe-clothing.js
+@@ -119,6 +119,8 @@
+     const labels = decodeLabels(config.labels || {});
+     const t = (key, values = {}) => Object.entries(values).reduce((text, [name, value]) => text.replaceAll(`[${name}]`, String(value)), string(labels[key]) || key);
+     const german = /^de(?:-|$)/i.test(config.locale || '');
++    // LX-KATALOGTEXTE-0511: Etikett nur nehmen, wenn es vorhanden und kein «translation missing» ist (Einspielreihenfolge von Section und Locale-Dateien ist dann unkritisch)
++    const labelOr = (key, fallback) => { const text = string(labels[key]); return text && !/^translation missing/i.test(text) ? text : fallback; };
+     const metricText = createMetricFormatter(config.locale || 'de');
+     const metricTitle = value => metricText(value).replace(/\(\s*in\s*\)(?=\s*(?:$|\|))/gi,'(cm)');
+     const lookupKey = value => normal(value).replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+@@ -126,19 +128,49 @@
+     const categoryTranslations = normalizeNames(labels.category_names);
+     const colorTranslations = normalizeNames(labels.color_names);
+     const titleFor = category => german && categoryTranslations[lookupKey(category.title)] || string(category.title);
+-    const colorName = value => german && colorTranslations[lookupKey(value)] || string(value);
++    // LX-KATALOGTEXTE-0511: Farbnamen, die das Locale nicht kennt: wenige allgemeine Wörter und Masse (keine imperialen Einheiten)
++    const colorFallback = {custom:'Individuell',wood:'Holz',satin:'Satin',dotted:'Gepunktet',denim_blue:'Jeansblau',white_matte:'Weiss matt',tan:'Hellbraun',white_glossy:'Weiss glänzend','1_pc':'1 Stück',white_aluminum:'Weiss (Aluminium)',white_front_silver_back:'Weiss (Vorderseite), Silber (Rückseite)',rectangle:'Rechteck'};
++    const colorName = value => {
++      const raw = string(value); if (!german) return raw;
++      const hit = colorTranslations[lookupKey(raw)] || colorFallback[lookupKey(raw)]; if (hit) return hit;
++      return /\d/.test(raw) ? metricText(raw) : raw;
++    };
++    // LX-KATALOGTEXTE-0511: Titel ohne Unzen-Angabe (die Menge steht in der deutschen Fassung bzw. in der Beschreibung), Modellzeile nur mit Marke und Modellnummer
++    const dropOz = text => string(text).replace(/\s*,?\s*\(?\s*\d+(?:[.,]\d+)?\s*oz\.?\s*\)?/gi,'').trim();
++    const titleCm = text => german ? string(text).replace(/(\d+),(\d+)(?= cm\b)/g,(whole,a,b)=>Number(a+'.'+b)>=10?String(Math.round(Number(a+'.'+b))):whole) : string(text);
++    const modelLine = product => {
++      const brand = string(product.brand).trim(), model = string(product.model).trim();
++      const flat = value => normal(value).replace(/[^a-z0-9]+/g,'');
++      const descriptive = german && model && (model.includes('|') || flat(model) === flat(product.title) || (!/\d/.test(model) && (!brand || (model.match(/[A-Za-zÄÖÜäöü]{3,}/g) || []).length >= 2)));
++      return [brand,descriptive ? '' : metricTitle(model)].filter(Boolean).join(' · ');
++    };
++    // LX-SIZEDE-START
++    const isoPaper = {A0:[84.1,118.9],A1:[59.4,84.1],A2:[42,59.4],A3:[29.7,42],A4:[21,29.7],A5:[14.8,21],A6:[10.5,14.8]};
++    const sizeWords = {'one size':'Einheitsgrösse',small:'Klein',medium:'Mittel',large:'Gross',circle:'Kreis',circular:'Rund',oval:'Oval',rectangle:'Rechteck',square:'Quadrat',heart:'Herz',star:'Stern',snowflake:'Schneeflocke',round:'Rund',bell:'Glocke',tree:'Baum',scalloped:'Wellenrand','pet paw':'Tierpfote',tag:'Etikett','bone shape':'Knochenform','fish shape':'Fischform',unscented:'Ohne Duft',king:'King (US)',queen:'Queen (US)','twin xl':'Twin XL (US)',twin:'Twin (US)'};
++    const sizeDe = (raw, product, converted) => {
++      const text = string(raw).trim(), base = string(converted);
++      if (!german || !text) return base;
++      if (id(product?.id) === '751' && /^16\s*oz\.?$/i.test(text)) return sizeWords['one size'];
++      const iso = /^(A[0-6])\s*\(/.exec(text);
++      if (iso && isoPaper[iso[1]]) return iso[1] + ' (' + isoPaper[iso[1]].map(value => String(value).replace('.',',')).join(' × ') + ' cm)';
++      const ounces = /^(\d+(?:\.\d+)?)\s*oz\.?$/i.exec(text); if (ounces) return Math.round(Number(ounces[1]) * 29.5735) + ' ml';
++      const feet = /^(\d+(?:\.\d+)?)\s*ft\.?$/i.exec(text); if (feet) return Math.round(Number(feet[1]) * 30.48) + ' cm';
++      return base.replace(/\b(\d+)\s*(?:pieces|pcs)\b\.?/gi,'$1 Stück').replace(/^(\d+) pages \((\d+) sheets\)$/i,'$1 Seiten ($2 Blatt)')
++        .replace(/^(one size|small|medium|large|circle|circular|oval|rectangle|square|heart|star|snowflake|round|bell|tree|scalloped|pet paw|tag|bone shape|fish shape|unscented|king|queen|twin xl|twin)(?=$|[\s(\-⌀])/i,(whole,word)=>sizeWords[word.toLowerCase()]).replace(/\bmagnetic$/i,'magnetisch');
++    };
++    // LX-SIZEDE-END
+     const presentation = new Map();
+     const presentationFor = product => presentation.get(id(product.id));
+     const displaySize = (value, product, variantId = '') => {
+       const raw = string(value), extra = product && presentationFor(product);
+       const variant = list(extra?.variants).find(item => (variantId ? id(item.id) === id(variantId) : true) && item.originalSize === raw);
+       if (variant?.shapeKey) return t(variant.shapeKey);
+-      return string(variant?.displaySizeCh) || metricText(raw);
++      return string(variant?.displaySizeCh) || sizeDe(raw,product,metricText(raw));
+     };
+-    const joinSizeLabels = (labels, value) => {const u=[...new Set(labels)], cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});if(u.length===1)return u[0];const eu=u.filter(x=>/^EU\s/.test(x));if(eu.length)return eu.sort(cmp).join(' / ');const m=u.map(x=>/^(\d+(?:,\d+)?) (ml|g)$/.exec(x));if(u.length&&m.every(Boolean)&&new Set(m.map(x=>x[2])).size===1){const n=m.map(x=>Number(x[1].replace(',','.'))).sort((p,q)=>p-q), f=v=>String(v).replace('.',',');return n[0]===n[n.length-1]?u[0]:f(n[0])+'–'+f(n[n.length-1])+' '+m[0][2];}return metricText(value);};
++    const joinSizeLabels = (labels, value) => {const u=[...new Set(labels)], cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});if(u.length===1)return u[0];const eu=u.filter(x=>/^EU\s/.test(x));if(eu.length)return eu.sort(cmp).join(' / ');const m=u.map(x=>/^(\d+(?:,\d+)?) (ml|g)$/.exec(x));if(u.length&&m.every(Boolean)&&new Set(m.map(x=>x[2])).size===1){const n=m.map(x=>Number(x[1].replace(',','.'))).sort((p,q)=>p-q), f=v=>String(v).replace('.',',');return n[0]===n[n.length-1]?u[0]:f(n[0])+'–'+f(n[n.length-1])+' '+m[0][2];}return sizeDe(value,null,metricText(value));};
+     const titleForProduct = product => {
+       const extra = presentationFor(product);
+-      return metricTitle(german && (string(extra?.titleDe) || string(product.titleDe)) || product.title);
++      return titleCm(metricTitle(german && (string(extra?.titleDe) || string(product.titleDe)) || (german ? dropOz(product.title) : product.title)));
+     };
+     const grid = root.querySelector('[data-lcl-grid]');
+     const message = root.querySelector('[data-lcl-message]');
+@@ -194,7 +226,7 @@
+     const isDetailsKnown = product => product.variantState === 'complete' || product.detailStatus === 'verified';
+     const materialParts = variant => list(variant?.material).filter(part=>typeof part.name==='string' && part.name.trim());
+     const materialLabel = variant => materialParts(variant).map(part=>{
+-      const name=materialNames[normal(part.name)]?t(materialNames[normal(part.name)]):part.name;
++      const nameKey=normal(part.name).replace(/\s+/g,' ').trim().replace(/[\s,;.]+$/,'');const name=materialNames[nameKey]?t(materialNames[nameKey]):(textHit('material',nameKey)??part.name);
+       const percentage=Number(part.percentage);
+       return part.percentage!==null && part.percentage!==undefined && part.percentage!=='' && Number.isFinite(percentage) && percentage>=0 && percentage<=100 ? `${percentage}% ${name}` : name;
+     }).join(' · ');
+@@ -353,6 +385,36 @@
+       if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
+       return response.json();
+     };
++    // LX-KATALOGTEXTE-0511: deutsche Katalogtexte (Beschreibung, Positionen, Optionen, Techniken, Regionen, Material). Nur bei deutscher Seitensprache, erst beim ersten Öffnen einer Detailansicht geladen; fehlt die Datei oder ein Eintrag, bleibt der englische Originaltext.
++    let textsDe = null, textsPending = null, textsFailedAt = 0;
++    const loadTexts = async () => {
++      if (!german || textsDe || !config.textsAsset) return textsDe;
++      if (!textsPending && textsFailedAt && Date.now() - textsFailedAt < 60000) return textsDe;
++      textsPending = textsPending || readAsset(config.textsAsset);
++      try { const raw = await textsPending; if (raw && raw.schema === 1 && raw.beschreibungen && typeof raw.beschreibungen === 'object') textsDe = raw; else textsFailedAt = Date.now(); }
++      catch { textsPending = null; textsFailedAt = Date.now(); }
++      return textsDe;
++    };
++    // Wartezeit auf die Textdatei begrenzen (hängende Verbindung): danach Originaltext; die Datei lädt im Hintergrund weiter und gilt ab dem nächsten Öffnen
++    const loadTextsLimited = () => { let timer; return Promise.race([loadTexts(), new Promise(resolve => { timer = setTimeout(resolve, 2500); })]).finally(() => clearTimeout(timer)); };
++    const own = (object, key) => object && typeof object === 'object' && Object.prototype.hasOwnProperty.call(object, key) ? object[key] : undefined;
++    const textHit = (area, value, productId) => {
++      const key = string(value);
++      if (!textsDe || !key) return undefined;
++      const special = productId === undefined ? undefined : own(own(own(textsDe, 'ausnahmen'), area), key);
++      const hit = (special === undefined ? undefined : own(special, id(productId))) ?? own(own(textsDe, area), key);
++      return typeof hit === 'string' && hit ? hit : undefined;
++    };
++    const textDe = (area, value, productId) => textHit(area, value, productId) ?? string(value);
++    const hashText = text => { let h = 0x811c9dc5; for (let k = 0; k < text.length; k++) { h ^= text.charCodeAt(k); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, '0'); };
++    // Übersetzung nur, wenn der Herstellertext noch derselbe ist wie bei der Übersetzung (Quellenhash); sonst bleibt der Originaltext
++    const descriptionDe = product => {
++      const hit = textsDe ? own(textsDe.beschreibungen, id(product.id)) : undefined;
++      if (typeof hit !== 'string') return '';
++      const stamp = own(textsDe.quellenhash, id(product.id));
++      if (typeof stamp === 'string' && !(typeof product.description === 'string' && hashText(product.description) === stamp)) return '';
++      return hit.trim();
++    };
+     const load = async () => {
+       if (loading || loaded) return;
+       loading = true; retry.hidden = true; grid.setAttribute('aria-busy','true'); showMessage(t('loading'));
+@@ -396,7 +458,8 @@
+       detailTitle.textContent = titleForProduct(product); dialog.dataset.productId = id(product.id); delete dialog.dataset.variantId;
+       detailBody.replaceChildren(el('p','lcl-detail-loading',t('loading_details')));
+       if (!dialog.open) dialog.showModal();
+-      try { const full = await productDetails(product); if(token === detailToken && dialog.open) renderDetails(full); }
++      // LX-KATALOGTEXTE-0511: deutsche Textdatei parallel zu den Modelldetails laden, höchstens 2,5 s warten (scheitert sie oder ist sie zu langsam, bleibt es beim Original)
++      try { const [full] = await Promise.all([productDetails(product), loadTextsLimited()]); if(token === detailToken && dialog.open) renderDetails(full); }
+       catch { if(token === detailToken && dialog.open) detailBody.replaceChildren(el('p','lcl-detail-loading',t('details_error')),button(t('retry'),()=>openDetails(product,opener))); }
+     }
+     function renderDetails(product) {
+@@ -411,8 +474,8 @@
+       const photoGroups=new Map();variants.forEach(variant=>{const url=imageUrl(variant.image);if(!url)return;if(!photoGroups.has(url))photoGroups.set(url,[]);photoGroups.get(url).push(variant);});
+       const reference=presentationFor(product)?.reference;const referenceUrl=reference?.approved===true?imageUrl(reference.url):null;let referencePreview=Boolean(referenceUrl && !explicitSelection);
+       const panel = el('div','lcl-detail-panel');
+-      const meta = el('p','lcl-detail-meta',[product.brand,metricTitle(product.model)].filter(Boolean).join(' · ')); panel.append(meta);
+-      if(known && variants.length) {const count=el('p','lcl-small',t('original_variants',{count:variants.length}));count.dataset.lclOriginalVariants=String(variants.length);panel.append(count);}
++      const metaText = modelLine(product); if (metaText) panel.append(el('p','lcl-detail-meta',metaText));
++      if(known && variants.length) {const count=el('p','lcl-small',variants.length===1?labelOr('original_variants_one',t('original_variants',{count:1})):t('original_variants',{count:variants.length}));count.dataset.lclOriginalVariants=String(variants.length);panel.append(count);}
+       const priceBox=el('div','lcl-shop-price');priceBox.dataset.lclShopPrice='';panel.append(priceBox);
+       let priceChoiceVariant='',priceChoiceId='';
+       const designUrl=u=>{try{const x=new URL(u,location.href);x.hash='lspod-start';return x.href;}catch{return u;}};
+@@ -436,7 +499,9 @@
+       const materialGroup=el('fieldset','lcl-choices lcl-material-choices'),materialSelect=el('select','lcl-material-select');materialSelect.setAttribute('aria-label',t('material_select'));materialSelect.dataset.lclMaterialSelect='';materialGroup.append(el('legend','',t('material_select')),materialSelect,el('p','lcl-small',t('material_choice_hint')));
+       const unknownMaterial=new Option(t('material_unverified'),'');unknownMaterial.disabled=true;materialSelect.add(unknownMaterial);materialGroups.forEach((group,key)=>materialSelect.add(new Option(group.label,key)));
+       const materialLive=el('p','lcl-material-live');materialLive.setAttribute('aria-live','polite');materialLive.setAttribute('role','status');materialGroup.append(materialLive);
+-      if (titleForProduct(product)!==product.title) panel.append(el('p','lcl-small',t('original_name')+': '+metricTitle(product.title)));
++      // LX-KATALOGTEXTE-0511: Originalmodell ohne Unzen-Angabe (deutsche Seite)
++      const originalName = titleCm(metricTitle(german ? dropOz(product.title) : product.title));
++      if (german ? titleForProduct(product)!==originalName : titleForProduct(product)!==product.title) panel.append(el('p','lcl-small',t('original_name')+': '+originalName));
+       if (!known || !variants.length) panel.append(el('p','lcl-source-warning',t(product.detailStatus === 'error' ? 'details_error' : known ? 'no_variants' : 'details_pending')));
+       const colorGroup = el('fieldset','lcl-choices'); colorGroup.append(el('legend','',t('color'))); const colorButtons = el('div','lcl-color-buttons'); colorGroup.append(colorButtons);
+       const sizeGroup = el('fieldset','lcl-choices'); sizeGroup.append(el('legend','',t('size'))); const sizeButtons = el('div','lcl-size-buttons'); sizeGroup.append(sizeButtons);
+@@ -445,14 +510,18 @@
+       const variantContent = el('div','lcl-variant-content'); panel.append(variantContent);
+       const modelInfo = el('div','lcl-model-info');
+       const infoRow = (heading, values) => { const part = el('div','lcl-fact'); part.append(el('h4','',heading),el('p','',values.length ? values.join(' · ') : t('not_specified'))); modelInfo.append(part); };
+-      infoRow(t('techniques'),unique(list(product.techniques).map(tech=>techniqueNames[string(tech.key)] ? t(techniqueNames[tech.key]) : string(tech.display_name || tech.displayName || tech.key))));
+-      infoRow(t('placements'),unique(list(product.files).filter(file=>!['preview','mockup'].includes(string(file.type)) && string(file.id)!=='preview').map(file=>positionNames[normal(file.title)] ? t(positionNames[normal(file.title)]) : string(file.title || file.type))));
++      // LX-KATALOGTEXTE-0511: Techniken und Positionen deutsch (Wörterbuch der Textdatei; die festen Namen aus den Übersetzungsdateien haben Vorrang)
++      infoRow(t('techniques'),unique(list(product.techniques).map(tech=>techniqueNames[string(tech.key)] ? t(techniqueNames[tech.key]) : textDe('techniken',string(tech.display_name || tech.displayName || tech.key)))));
++      infoRow(t('placements'),unique(list(product.files).filter(file=>!['preview','mockup'].includes(string(file.type)) && string(file.id)!=='preview').map(file=>positionNames[normal(file.title)] ? t(positionNames[normal(file.title)]) : textDe('positionen',string(file.title || file.type),product.id))));
+       modelInfo.append(el('p','lcl-small',t('geometry_note')));
+-      const description=metricText(plainText(product.description));
+-      if(description){const info=el('details','lcl-description');info.append(el('summary','',t('model_description')),el('p','lcl-small',t('original_note')),el('div','lcl-description-text',description));modelInfo.append(info);}
++      // LX-KATALOGTEXTE-0511: deutsche Beschreibung statt Originaltext (schon metrisch; metricText würde «15 Zoll» beim Laptop zu cm umrechnen), Hinweis dazu ehrlich
++      const descriptionTranslated=descriptionDe(product);
++      const description=descriptionTranslated?plainText(descriptionTranslated):metricText(plainText(product.description));
++      if(description){const info=el('details','lcl-description');info.append(el('summary','',t('model_description')),el('p','lcl-small',descriptionTranslated?labelOr('original_note_translated',t('original_note')):t('original_note')),el('div','lcl-description-text',description));modelInfo.append(info);}
++      // LX-KATALOGTEXTE-0511: Optionstitel und Optionswerte deutsch
+       const options=list(product.options).filter(option=>typeof option.title==='string' && (option.values && typeof option.values==='object' || option.type==='single_line_text'));
+       if(options.length){const info=el('details','lcl-description');info.append(el('summary','',t('catalogue_options')),el('p','lcl-small',t('options_note')));
+-        options.forEach(option=>{const values=Array.isArray(option.values)?option.values:option.values && typeof option.values==='object'?Object.values(option.values):[];const texts=values.map(value=>typeof value==='string'?value:typeof value==='number'?String(value):string(value?.title||value?.name)).filter(Boolean);const freeText=option.type==='single_line_text' && !texts.length;if(!texts.length && !freeText)return;const row=el('div','lcl-option-reference');row.append(el('h4','',metricText(plainText(option.title))),el('p','',freeText?t('manufacturer_text_option'):texts.map(plainText).map(metricText).join(' · ')));info.append(row);});modelInfo.append(info);}
++        options.forEach(option=>{const values=Array.isArray(option.values)?option.values:option.values && typeof option.values==='object'?Object.values(option.values):[];const texts=values.map(value=>typeof value==='string'?value:typeof value==='number'?String(value):string(value?.title||value?.name)).filter(Boolean);const freeText=option.type==='single_line_text' && !texts.length;if(!texts.length && !freeText)return;const row=el('div','lcl-option-reference');row.append(el('h4','',metricText(textDe('optionstitel',plainText(option.title)))),el('p','',freeText?t('manufacturer_text_option'):texts.map(plainText).map(text=>metricText(textDe('optionswerte',text))).join(' · ')));info.append(row);});modelInfo.append(info);}
+       const dimensions=product.dimensions;
+       if(dimensions && typeof dimensions==='object' && Object.keys(dimensions).length){
+         const info=el('details','lcl-description');info.append(el('summary','',t('dimensions')));
+@@ -493,8 +562,11 @@
+           variantContent.append(el('p','lcl-small',Number.isFinite(stamp)?t('source_date',{date:new Intl.DateTimeFormat(config.locale||'de-CH',{dateStyle:'medium',timeZone:'Europe/Zurich'}).format(new Date(stamp))}):t('source_date_unknown')));
+           const statuses=list(selected.availability_status), regions=selected.availability_regions && typeof selected.availability_regions==='object' ? selected.availability_regions : {};
+           if(statuses.length || Object.keys(regions).length){const info=el('details','lcl-regions');info.append(el('summary','',t('regional_status')));const ul=el('ul');
+-            if(statuses.length)statuses.forEach(item=>ul.append(el('li','',`${string(regions[item.region]) || string(item.region)}: ${['in_stock','out_of_stock','not_available'].includes(item.status)?t(item.status):string(item.status)}`)));
+-            else Object.entries(regions).forEach(([key,name])=>ul.append(el('li','',typeof name==='string'?name:key)));
++            // LX-KATALOGTEXTE-0511: Regionsnamen deutsch (Wörterbuch der Textdatei), Statusschlüssel nie roh anzeigen
++            const statusKnown = ['in_stock','out_of_stock','not_available','supplier_out_of_stock','stocked_on_demand'];
++            const statusText = status => { const key = string(status); const fallback = german ? 'Status unbekannt' : key.replace(/_/g,' '); return statusKnown.includes(key) ? labelOr(key,labelOr('status_unknown',fallback)) : labelOr('status_unknown',fallback); };
++            if(statuses.length)statuses.forEach(item=>ul.append(el('li','',`${textDe('regionen',string(regions[item.region]) || string(item.region))}: ${statusText(item.status)}`)));
++            else Object.entries(regions).forEach(([key,name])=>ul.append(el('li','',textDe('regionen',typeof name==='string'?name:key))));
+             info.append(ul);variantContent.append(info);}
+           variantContent.append(el('p','lcl-small',t('region_note')));
+         }
+--- a/sections__luxe-clothing.liquid
++++ b/sections__luxe-clothing.liquid
+@@ -56,6 +56,8 @@
+   {
+     "locale": {{ request.locale.iso_code | json }},
+     "presentationAsset": {{ 'luxe-clothing-reference-gallery.json' | asset_url | json }},
++    {%- comment -%} LX-KATALOGTEXTE-0511: deutsche Katalogtexte (Asset, wird erst beim Öffnen einer Detailansicht geladen) {%- endcomment -%}
++    "textsAsset": {{ 'luxe-clothing-texts-de.json' | asset_url | json }},
+     "assets": {% render 'luxe-clothing-asset-manifest' %},
+     "shopVariantOffers": {% render 'luxe-clothing-shop-offers' %},
+     "labels": {
+@@ -87,6 +89,12 @@
+       "catalogue_options": {{ 'luxe_clothing.catalogue_options' | t | json }},
+       "dimensions": {{ 'luxe_clothing.dimensions' | t | json }},
+       "original_note": {{ 'luxe_clothing.original_note' | t | json }},
++      {%- comment -%} LX-KATALOGTEXTE-0511 {%- endcomment -%}
++      "original_note_translated": {{ 'luxe_clothing.original_note_translated' | t | json }},
++      "original_variants_one": {{ 'luxe_clothing.original_variants_one' | t | json }},
++      "supplier_out_of_stock": {{ 'luxe_clothing.supplier_out_of_stock' | t | json }},
++      "stocked_on_demand": {{ 'luxe_clothing.stocked_on_demand' | t | json }},
++      "status_unknown": {{ 'luxe_clothing.status_unknown' | t | json }},
+       "source_date": {{ 'luxe_clothing.source_date' | t | json }},
+       "source_date_unknown": {{ 'luxe_clothing.source_date_unknown' | t | json }},
+       "options_note": {{ 'luxe_clothing.options_note' | t | json }},
+--- a/locales__de.json
++++ b/locales__de.json
+@@ -1048,6 +1048,11 @@
+     "catalogue_options": "Verarbeitung & Ausführungen",
+     "dimensions": "Masse laut Modellangaben",
+     "original_note": "Originalangaben des Herstellers. Unterschiede nach Farbe, Ausführung oder Produktionsregion beachten.",
++    "original_note_translated": "Aus den Herstellerangaben (Englisch) maschinell übersetzt. Masse und Gewichte, die nur in US-Einheiten genannt waren, sind in Schweizer Einheiten umgerechnet und gerundet. Unterschiede nach Farbe, Ausführung oder Produktionsregion beachten.",
++    "original_variants_one": "1 Originalvariante aus dem Herstellerkatalog",
++    "supplier_out_of_stock": "beim Lieferanten derzeit nicht verfügbar",
++    "stocked_on_demand": "wird bei Bedarf beim Lieferanten bestellt",
++    "status_unknown": "Status unbekannt",
+     "source_date": "Katalogstand: [date]",
+     "source_date_unknown": "Katalogstand nicht bestätigt",
+     "options_note": "Diese Angaben beschreiben Modelloptionen. Eine Auswahl oder Bestellung dieser Bearbeitung ist hier noch nicht möglich.",
+--- a/locales__en.default.json
++++ b/locales__en.default.json
+@@ -1048,6 +1048,11 @@
+     "catalogue_options": "Processing & product options",
+     "dimensions": "Dimensions listed for this model",
+     "original_note": "Original manufacturer information. Note differences by colour, variant or production region.",
++    "original_note_translated": "Machine-translated from the manufacturer information (English). Measurements and weights given only in US units were converted to metric units and rounded. Note differences by colour, variant or production region.",
++    "original_variants_one": "1 original variant from the manufacturer’s catalogue",
++    "supplier_out_of_stock": "currently unavailable from the supplier",
++    "stocked_on_demand": "ordered from the supplier when needed",
++    "status_unknown": "status unknown",
+     "source_date": "Catalogue checked: [date]",
+     "source_date_unknown": "Catalogue date not verified",
+     "options_note": "These entries describe model options. Processing options cannot yet be selected or ordered here.",

@@ -35,16 +35,32 @@ export function alteZuordnung(shopTyp, seite) {
   return seite === 'back' ? 'back' : 'front';
 }
 
-/** Aus der Antwort von GET /products/variant/<id> (das Feld `result`) die nötigen Angaben ziehen; null, wenn unbrauchbar. */
+/**
+ * Aus der Antwort von GET /products/variant/<id> (das Feld `result`) die nötigen Angaben ziehen; null, wenn unbrauchbar.
+ * `aliase` (nur wenn es welche gibt): Datei-ID → Platzierungsname, wo beide abweichen (Bekleidung: Datei «default» hat den Typ «front»). GEMESSEN 05.11.2026 an
+ * GET /products/variant/4025: die Antwort trägt das volle Produkt (options, techniques, files mit additional_price), nicht nur die Dateiliste der Mitschnitte.
+ */
 export function produktInfoAusAntwort(result) {
   const p = result && result.product;
   if (!p || typeof p !== 'object') return null;
   const typ = typeof p.type === 'string' ? p.type.trim().toUpperCase() : '';
-  const dateien = Array.isArray(p.files)
-    ? p.files.filter(f => f && f.type !== 'mockup').map(f => f.id ?? f.type).filter(x => typeof x === 'string' && x)   // Platzierungs-ID wie im Katalog («default», «back» …); Mockup-Dateien zählen nicht
+  const echte = Array.isArray(p.files) ? p.files.filter(f => f && f.type !== 'mockup') : null;
+  const dateien = echte
+    ? echte.map(f => f.id ?? f.type).filter(x => typeof x === 'string' && x)   // Platzierungs-ID wie im Katalog («default», «back» …); Mockup-Dateien zählen nicht
     : null;
   if (!typ && !(dateien && dateien.length)) return null;
-  return { id: Number.isInteger(p.id) ? p.id : null, typ, dateien };
+  const info = { id: Number.isInteger(p.id) ? p.id : null, typ, dateien };
+  const aliase = {};
+  for (const f of echte || []) if (f && typeof f.id === 'string' && f.id && typeof f.type === 'string' && f.type && f.type !== f.id) aliase[f.id] = f.type;
+  if (Object.keys(aliase).length) info.aliase = aliase;
+  return info;
+}
+
+/** Platzierungsname einer Datei-/Typangabe: «default» → «front» (wo der Katalog es so führt), sonst unverändert. Auf dieser Ebene gelten Konflikte und Druckdateien. */
+export function platzierungsName(typ, produkt) {
+  const t = String(typ || '');
+  const a = produkt && produkt.aliase;
+  return a && Object.prototype.hasOwnProperty.call(a, t) ? a[t] : t;
 }
 
 /** Druckbare Platzierungen = alle Dateien ausser Vorschau/Mockup. */
@@ -62,7 +78,12 @@ export function entscheide({ produkt = null, seite = 'front', shopTyp = '' } = {
   if (produkt && (produkt.typ || (produkt.dateien && produkt.dateien.length))) {
     const typ = String(produkt.typ || '').toUpperCase();
     const dr = druckbare(produkt.dateien);
-    if (dr.length === 1) return { platzierung: dr[0], gesichert: true, quelle: 'printful-datei', grund: null };            // 1. genau eine Platzierung
+    if (dr.length === 1) {                                                                                                 // 1. genau eine Platzierung
+      // Codex-Fund 28.10. (pod-preise, wichtig): die einzige Platzierung überschrieb die gewünschte Seite. Eine Rückseiten-Datei auf einem Ein-Platzierungs-Produkt
+      // (Tasse, Hülle) landete still auf «default» und konnte neben der Vorderseite dieselbe Platzierung belegen. Jetzt: Rückseite gewünscht, aber nur «default» → nicht gesichert.
+      if (s === 'back' && dr[0] !== 'back') return { platzierung: dr[0], gesichert: false, quelle: 'printful-datei', grund: `Rückseite gewünscht, das Printful-Produkt hat aber nur die Platzierung «${dr[0]}»` };
+      return { platzierung: dr[0], gesichert: true, quelle: 'printful-datei', grund: null };
+    }
     if (EINZEL_TYPEN.includes(typ)) return { platzierung: 'default', gesichert: true, quelle: 'printful-typ', grund: null };   // 2. bekannter Einzel-Typ (Dateiliste fehlt)
     if (dr.length > 1 || MEHRLAGEN_TYPEN.includes(typ)) {                                                                  // 3. Bekleidung / mehrere Platzierungen
       const kennt = s === 'back' ? dr.includes('back') : (dr.includes('default') || dr.includes('front'));
@@ -73,6 +94,22 @@ export function entscheide({ produkt = null, seite = 'front', shopTyp = '' } = {
   const bekannt = ALTE_LISTE.includes(String(shopTyp || '').toUpperCase());
   const platzierung = alteZuordnung(shopTyp, s);                                                                            // 4. Rückfall
   return { platzierung, gesichert: bekannt, quelle: 'rueckfall', grund: bekannt ? null : `ohne Printful-Produkt nach der Shop-Produktart «${shopTyp || '(leer)'}» geraten («${platzierung}»)` };
+}
+
+/**
+ * Ausdrückliche Platzierung (Editor v6): «🖼️ Druckdatei (<Platzierungs-ID>)» nennt die ID selbst, `_pod_karte.dt` den Dateityp des Auftrags. Es wird NICHTS geraten:
+ * gesichert ist die Angabe nur, wenn sie in der Dateiliste des Printful-Produkts steht (als Datei-ID, z. B. «default», «back», «sleeve_left», oder als deren Platzierungsname, z. B. «front»).
+ * Unbekannte, ungültig geschriebene oder bei nicht lesbarer Dateiliste nicht prüfbare Angaben → nicht gesichert (der Auftrag bleibt Entwurf).
+ */
+export function entscheideExplizit({ produkt = null, typ = '' } = {}) {
+  const t = String(typ || '');
+  if (!/^[a-z0-9_]+$/.test(t)) return { platzierung: t, gesichert: false, quelle: 'karte', grund: `«${t}» ist keine gültige Printful-Platzierung` };
+  const dr = produkt ? druckbare(produkt.dateien) : [];
+  if (!dr.length) return { platzierung: t, gesichert: false, quelle: 'karte', grund: `die Dateiliste des Printful-Produkts ist nicht bekannt, «${t}» lässt sich nicht prüfen` };
+  const al = (produkt && produkt.aliase) || {};
+  const gueltig = dr.includes(t) || Object.entries(al).some(([id, name]) => name === t && dr.includes(id));
+  if (!gueltig) return { platzierung: t, gesichert: false, quelle: 'karte', grund: `«${t}» steht nicht in der Dateiliste des Printful-Produkts (${dr.join(', ')})` };
+  return { platzierung: t, gesichert: true, quelle: 'karte', grund: null };
 }
 
 /**
@@ -99,17 +136,18 @@ export function neuerPlatzierungsCache(holeVariante, { versuche = 3, pauseMs = 2
   return async function produktZuVariante(vid) {
     const k = String(vid);
     if (m.has(k)) return m.get(k);
-    let status = 0, info = null;
+    let status = 0, info = null, roh = null;
     for (let i = 0; i < versuche; i++) {
       let r = null;
       try { r = await holeVariante(vid); status = Number(r && r.status) || 0; } catch { status = 0; }
       info = status >= 200 && status < 300 ? produktInfoAusAntwort(r && r.result) : null;
+      roh = info ? (r && r.result) || null : null;   // die volle Antwort (Optionen, Techniken, Aufpreise) für den Bestellweg; nur bei brauchbarer Antwort
       if (!vorlaeufig(status) || i === versuche - 1) break;
       await pause(Math.min(30000, Math.max(pauseMs * (i + 1), ((r && Number(r.retryAfter)) || 0) * 1000)));
     }
-    const erg = status >= 200 && status < 300 ? { info, art: info ? 'ok' : 'unbekannt', status }
-      : status === 404 ? { info: null, art: 'unbekannt', status }
-      : { info: null, art: 'nicht-lesbar', status };
+    const erg = status >= 200 && status < 300 ? { info, art: info ? 'ok' : 'unbekannt', status, roh }
+      : status === 404 ? { info: null, art: 'unbekannt', status, roh: null }
+      : { info: null, art: 'nicht-lesbar', status, roh: null };
     if (erg.art !== 'nicht-lesbar') m.set(k, erg);
     return erg;
   };
@@ -117,18 +155,27 @@ export function neuerPlatzierungsCache(holeVariante, { versuche = 3, pauseMs = 2
 
 /**
  * Der Kleber des Bestellwegs als reine Funktion (printful_sync.mjs ruft nur diese): für EINE Variante und ihre Druckdateien die Platzierungen bestimmen.
- * @param {{vid:number, dateien:{side:'front'|'back', url:string}[], shopTyp?:string, holeProdukt:(vid:number)=>Promise<{info:object|null, art:string, status:number}>}} p
+ * Eine Datei trägt entweder `side` (v5: 'front'|'back', die Platzierung wird aus dem Printful-Produkt abgeleitet) oder `platzierung` (v6: die ausdrückliche ID,
+ * optional `dateiTyp` = Dateityp des Auftrags, Vorgabe die ID selbst; sie wird gegen die Dateiliste des Produkts geprüft).
+ * @param {{vid:number, dateien:{side?:'front'|'back', platzierung?:string, dateiTyp?:string, url:string}[], shopTyp?:string, holeProdukt:(vid:number)=>Promise<{info:object|null, art:string, status:number}>}} p
  * @returns {Promise<{files:{type:string,url:string}[], needReview:boolean, hinweise:string[], art:string}>}
- *   needReview=true, sobald EINE Platzierung nicht gesichert ist (Rückfall ohne bekannte Shop-Art, Variante vorübergehend nicht lesbar, Seite nicht in der Dateiliste).
+ *   needReview=true, sobald EINE Platzierung nicht gesichert ist (Rückfall ohne bekannte Shop-Art, Variante vorübergehend nicht lesbar, Seite nicht in der Dateiliste,
+ *   unbekannte ausdrückliche Platzierung) ODER zwei Dateien dieselbe Platzierung belegen (Codex-Fund 28.10.: ging bisher ohne Review durch).
  */
 export async function platzierungenFuerDateien({ vid, dateien, shopTyp = '', holeProdukt }) {
   const r = await holeProdukt(vid);
-  const files = [], hinweise = [];
+  const files = [], hinweise = [], belegt = new Map();
   const woher = r.art === 'nicht-lesbar' ? `Printful-Variante ${vid} derzeit nicht lesbar (${r.status ? 'HTTP ' + r.status : 'Netzfehler'})` : r.art === 'unbekannt' ? `Printful-Variante ${vid} ohne Produktangaben (HTTP ${r.status})` : `Printful-Variante ${vid}`;
+  const merke = (h) => { if (!hinweise.includes(h)) hinweise.push(h); };
   for (const d of dateien) {
-    const e = entscheide({ produkt: r.info, seite: d.side, shopTyp });
+    const ausdruecklich = typeof d.platzierung === 'string' && d.platzierung !== '';
+    const e = ausdruecklich ? entscheideExplizit({ produkt: r.info, typ: d.dateiTyp || d.platzierung }) : entscheide({ produkt: r.info, seite: d.side, shopTyp });
     files.push({ type: e.platzierung, url: d.url });
-    if (!e.gesichert) { const h = `Platzierung der ${d.side === 'back' ? 'Rückseite' : 'Vorderseite'} nicht gesichert: ${woher}; ${e.grund}`; if (!hinweise.includes(h)) hinweise.push(h); }
+    const bezeichnung = ausdruecklich ? `Platzierung «${d.dateiTyp || d.platzierung}»` : `Platzierung der ${d.side === 'back' ? 'Rückseite' : 'Vorderseite'}`;
+    if (!e.gesichert) merke(`${bezeichnung} nicht gesichert: ${woher}; ${e.grund}`);
+    const name = platzierungsName(e.platzierung, r.info);
+    if (belegt.has(name)) merke(`zwei Druckdateien für dieselbe Platzierung «${name}» (${belegt.get(name)} und ${bezeichnung}): welche gilt, ist nicht bestimmbar`);
+    else belegt.set(name, bezeichnung);
   }
   return { files, needReview: hinweise.length > 0, hinweise, art: r.art };
 }

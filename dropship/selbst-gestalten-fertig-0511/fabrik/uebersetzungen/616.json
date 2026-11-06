@@ -1,0 +1,33 @@
+{
+ "modell": 616,
+ "stand": "2026-11-05",
+ "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 616.json); jeder Satz mit englischem Beleg",
+ "intro": [
+  {
+   "de": "Gestalte deine Räume mit dieser besonders schlanken Leinwand! Bestellen und gleich aufhängen: Wandhalterungen sind angebracht, Gummipuffer auf der Rückseite schützen vor Beschädigungen.",
+   "beleg": "Style rooms with this slimmer-than-ever thin canvas! Order it and hang it straight away with built-in wall mounts and rubber pads on the back ready to protect against damage."
+  }
+ ],
+ "punkte": [
+  {
+   "de": "Leinwand, 19,05 mm dick",
+   "beleg": "0.75″ (19.05 mm) thick canvas"
+  },
+  {
+   "de": "Stoffgewicht der Leinwand: 344 g/m² ± 25 g/m²",
+   "beleg": "Canvas fabric weight: 10.15 +/- 0.74 oz/yd² (344 g/m² +/- 25g/m²)"
+  },
+  {
+   "de": "Wandhalterungen angebracht",
+   "beleg": "Wall mounts attached"
+  },
+  {
+   "de": "Gummipuffer auf der Rückseite gegen Beschädigungen",
+   "beleg": "Rubber pads on the back to avoid damage"
+  },
+  {
+   "de": "Schlanker als normale Leinwände",
+   "beleg": "Slimmer than regular canvases"
+  }
+ ]
+}

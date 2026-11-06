@@ -1,0 +1,35 @@
+Feed /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/fortura-0611/feed.csv: 20309 Zeilen → 18940 Artikelnummern (Fingerabdruck f246154c37a0)
+Shop: 8416 Varianten mit SKU fortura-* auf 141 Seiten
+
+Abgleich: 8295 unverändert · 121 zu ändern (davon 2 auf 0) · 8 SKU nicht mehr im Feed (0.1 %) · 0 ohne Bestandsführung (unangetastet) · 0 ohne CH-Lagerzeile
+ACTIVE: 3998 Varianten · verkaufbar vorher 2195 → nachher 2198 (0 wegen Bazar-/Puffer-/Committed-Abzug nicht mehr bestellbar)
+  fortura-02026             35 →    34  feed  LEMKEN Solitair 9 Saatkombination
+  fortura-02741             21 →    20  feed  BRUDER MAN TGA Absetzcontainer
+  fortura-03925             48 →    46  feed  BRUDER LKW Tank-Anhänger
+  fortura-17847             47 →    49  feed  Plüsch Nilpferd 30 cm
+  fortura-17848             13 →    14  feed  Plüsch Schneeeule 27 cm
+  fortura-17851             15 →    14  feed  Plüsch Löwin 66 cm
+  fortura-25876             45 →    46  feed  Plüsch Waschbär 26 cm
+  fortura-25879             74 →    78  feed  Plüsch Bär braun dunkel 18 cm
+  fortura-39385             36 →    35  feed  Plüsch Bison
+  fortura-41668             29 →    30  feed  Plüsch Beagle 23 cm
+  fortura-41673             46 →    47  feed  Plüsch Landschildkröte 21 cm
+  fortura-41678             63 →    65  feed  Plüsch Kuh mit Stimme 25 cm
+  fortura-49508             40 →    41  feed  Plüsch Eisbär 25 cm
+  fortura-57721             16 →    15  feed  Plüsch Tiger braun 66 cm
+  fortura-57946             50 →    51  feed  Plüsch Husky liegend 33 cm
+  fortura-81016             38 →    37  feed  Plüsch Schwan
+  fortura-87227            214 →   213  feed  Plüschkamel
+  fortura-98644             46 →    34  feed  Engelsflügel weiss klein
+  fortura-90882-5           15 →    14  feed  Kostüm Feuerwehrmann
+  fortura-922501             1 →     0  feed  Kostüm Gothic Samtmantel · Gr. S
+  fortura-93901-3            5 →     4  feed  Kostüm Priester · Gr. L
+  fortura-87818            494 →   490  feed  Arm - Knicklichter
+  fortura-94035-2            5 →     4  feed  Kostüm Hosenanzug
+  fortura-97585             23 →    22  feed  Gilet Cowboy · Gr. XL
+  fortura-OR798546-48        5 →     4  feed  Set 20er Jahre 4-teilig · Gr. 46/48
+  … und 96 weitere
+… 100/121 (ok 100, offen 0)
+… 121/121 (ok 121, offen 0)
+
+FERTIG. geändert=121 offen=0 unverändert=8295 → dropship/_fortura_bestand_report.md

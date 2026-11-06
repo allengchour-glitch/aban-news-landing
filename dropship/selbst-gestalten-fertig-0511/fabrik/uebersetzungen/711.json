@@ -1,0 +1,33 @@
+{
+ "modell": 711,
+ "stand": "2026-11-05",
+ "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 711.json); jeder Satz mit englischem Beleg",
+ "intro": [
+  {
+   "de": "Diese Sherpa-Decke verbindet ein plüschiges Gefühl mit besonderer Weichheit.",
+   "beleg": "combines a plushie feel with exceptional softness"
+  },
+  {
+   "de": "Ideal für den Alltag auf dem Sofa, für kühle Abende oder zum Einrichten deines Zimmers.",
+   "beleg": "Perfect for daily use while lounging on the couch, snuggling up on chilly evenings, or styling your room"
+  }
+ ],
+ "punkte": [
+  {
+   "de": "Gesamtzusammensetzung: 100 % Polyesterfasern",
+   "beleg": "Integral composition: 100% polyester fibers"
+  },
+  {
+   "de": "Stoff: 100 % Polyester (51,5 % Oberstoff, 48,5 % Sherpa-Stoff)",
+   "beleg": "Fabric: 100% polyester (51.5% surface fabric, 48.5% sherpa fabric)"
+  },
+  {
+   "de": "Glatte Seite: 220 g/m², Sherpa-Stoff: 240 g/m²",
+   "beleg": "Smooth side fabric: 6.49 oz/yd² (220g/m²), sherpa fabric: 7.08 oz/yd² (240g/m²)"
+  },
+  {
+   "de": "Die Rohlinge stammen aus China.",
+   "beleg": "Blank product components sourced from China"
+  }
+ ]
+}

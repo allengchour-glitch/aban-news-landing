@@ -1,0 +1,1914 @@
+{
+ "unsicher": [
+  {
+   "id": 1424,
+   "stapel": "b_01",
+   "text": "«4 oz» und «9 oz» als Gewicht (g) umgerechnet: das Original sagt nicht, ob Gewicht oder Volumen; Nr. 861 nennt «9 oz (255 g)» als Produktgewicht, daher als Gewicht gelesen. Die Masse in Klammern (2.36″ × 2.56″ und 2.87″ × 3.5″) nennen die Reihenfolge nicht (Durchmesser × Höhe?); als «cm × cm» übernommen."
+  },
+  {
+   "id": 614,
+   "stapel": "b_01",
+   "text": "Hinweis 1: «black inside around the canvas» als «Innenseite um die Leinwand schwarz» übersetzt (gemeint ist vermutlich die Innenseite des Rahmens, wo die Leinwand eingelassen ist); wörtlich belassen."
+  },
+  {
+   "id": 189,
+   "stapel": "b_01",
+   "text": "«for fulfillment in the US/EU» (gilt für fast alle Cut-and-Sew-Einträge dieses Stapels) als «bei Produktion in den USA/der EU» wiedergegeben: Printful-«Fulfillment» = Herstellung und Versand durch den Anbieter am jeweiligen Standort; Begriff ggf. stapelübergreifend vereinheitlichen."
+  },
+  {
+   "id": 262,
+   "stapel": "b_01",
+   "text": "Zeile «Fabric weight (may vary by 5%): 6.64 oz/yd² (225 g/m²)\"»: hinter der Klammer steht im Original ein einzelnes Anführungszeichen (Tippfehler), im Deutschen weggelassen."
+  },
+  {
+   "id": 279,
+   "stapel": "b_01",
+   "text": "«15” laptop» als «15-Zoll-Laptop» belassen: Zoll ist hier die Bildschirmdiagonale des Laptops (Regel: Zoll nur bei Bildschirmen); Rucksackmasse (16⅛\", 12¼\", 3⅞\") nicht umgerechnet, da das Original 41, 31 und 10 cm daneben nennt."
+  },
+  {
+   "id": 279,
+   "stapel": "b_01",
+   "text": "«Water-resistant material» als «wasserabweisend» wiedergegeben (wörtlich: wasserbeständig); bewusst nicht «wasserdicht»."
+  },
+  {
+   "id": 350,
+   "stapel": "b_02",
+   "text": "Zeile «1¼″ (2.54 cm) wide adjustable straps»: die Angaben widersprechen sich (1¼″ wären 3,2 cm, 2.54 cm sind 1″); nach Regel nur die Metrik «2,54 cm» übernommen, Herstellerangabe beim Hersteller klären."
+  },
+  {
+   "id": 350,
+   "stapel": "b_02",
+   "text": "Zeile «Dimensions … 2¾″ (7 cm) in diameter»: die dritte Abmessung heisst im Original «diameter» (Durchmesser), gemeint ist bei einer Tasche wohl die Tiefe; wörtlich als «Durchmesser» übersetzt, Entscheid beim Besitzer."
+  },
+  {
+   "id": 350,
+   "stapel": "b_02",
+   "text": "Prüfskript-Fehlalarm: «Zahl(en) aus dem Original fehlen: 1» stammt von «1¼″» (Bruchzeichen wird vom Skript nicht als imperiale Einheit erkannt); die 1¼″ sind bewusst nicht übernommen, es steht nur die Metrik «2,54 cm»."
+  },
+  {
+   "id": 389,
+   "stapel": "b_02",
+   "text": "Zeile «Dimensions … 5.5″ (14 cm) in diameter»: die dritte Abmessung heisst im Original «diameter» (Durchmesser), gemeint ist bei einem Rucksack wohl die Tiefe; wörtlich als «Durchmesser» übersetzt, Entscheid beim Besitzer."
+  },
+  {
+   "id": 389,
+   "stapel": "b_02",
+   "text": "Zeile «separate pocket for a 15” laptop»: «15 Zoll» bleibt als Bildschirmdiagonale des Laptops stehen (Zoll nach Regel nur bei Bildschirmen erlaubt), nicht in cm umgerechnet."
+  },
+  {
+   "id": 458,
+   "stapel": "b_02",
+   "text": "Zeile «Wash at 86°F (30°C)»: nur die Metrik «30 °C» übernommen. Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 86»: Fahrenheit-Werte erkennt das Skript nicht als imperial, die 86 °F sind bewusst weggelassen."
+  },
+  {
+   "id": 477,
+   "stapel": "b_03",
+   "text": "Zeile 2 des Einleitungstexts: «double-layered front and shoulder straps» lässt offen, ob nur die Vorderseite oder auch die Schulterträger doppellagig sind (die Aufzählung nennt nur «Double-layered front»); mehrdeutig übernommen («doppellagiger Vorderseite und Schulterträgern»), nicht geraten."
+  },
+  {
+   "id": 594,
+   "stapel": "b_03",
+   "text": "«T-piping»: Fachbegriff nicht eindeutig; wörtlich als «T-Paspel» übernommen (vermutlich eine T-förmig verlaufende Paspelierung, nicht belegt)."
+  },
+  {
+   "id": 594,
+   "stapel": "b_03",
+   "text": "«fusible backing» als «Fixiereinlage» (textiler Fachbegriff für aufgebügelte Verstärkung) übersetzt."
+  },
+  {
+   "id": 619,
+   "stapel": "b_03",
+   "text": "Widerspruch im Original: der Einleitungstext nennt die Jacke «waterproof» (wasserdicht), die Aufzählung «Water-resistant» (wasserabweisend); beides wörtlich übernommen, nicht angeglichen."
+  },
+  {
+   "id": 630,
+   "stapel": "b_03",
+   "text": "«necktie» (eigentlich Krawatte) als Verwendungsart eines Bandanas sinngemäss mit «Halstuch» übersetzt."
+  },
+  {
+   "id": 667,
+   "stapel": "b_03",
+   "text": "«Color design options for swimwear lining» (Zeile mit Futter-Farbvarianten) ist im Original unklar formuliert; wörtlich als «Farbdesign-Optionen für das Futter der Bademode» übernommen."
+  },
+  {
+   "id": 668,
+   "stapel": "b_03",
+   "text": "«Color design options for swimwear lining» ist im Original unklar formuliert; wörtlich als «Farbdesign-Optionen für das Futter der Bademode» übernommen."
+  },
+  {
+   "id": 669,
+   "stapel": "b_03",
+   "text": "«Color design options for swimwear lining» ist im Original unklar formuliert; wörtlich als «Farbdesign-Optionen für das Futter der Bademode» übernommen."
+  },
+  {
+   "id": 717,
+   "stapel": "b_03",
+   "text": "«Moon patch on the inside of the back»: Bedeutung im Original nicht erklärt (vermutlich Verstärkung am inneren Rückenausschnitt, nicht belegt); darum wörtlich als «Moon-Patch» übernommen, nicht als «Mond-Aufnäher»."
+  },
+  {
+   "id": 730,
+   "stapel": "b_03",
+   "text": "«hockey» bleibt «Hockey» (Eishockey wird im Original nicht ausdrücklich genannt)."
+  },
+  {
+   "id": 743,
+   "stapel": "b_04",
+   "text": "Schlusshinweis «nur in den USA erhältlich» wörtlich übersetzt: für Kundinnen in der Schweiz möglicherweise irreführend bzw. widerspricht dem Angebot im Katalogfenster (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 744,
+   "stapel": "b_04",
+   "text": "«fusible backing» sinngemäss als «Fixiereinlage» wiedergegeben (Fachbegriff für aufgebügelte Verstärkung)."
+  },
+  {
+   "id": 745,
+   "stapel": "b_04",
+   "text": "«sponge» wörtlich als «Polyester-Schwamm» übersetzt (gemeint ist vermutlich eine Schaumstoff-Polsterung); «spandex» als «Elastan» (Textilkennzeichnung)."
+  },
+  {
+   "id": 749,
+   "stapel": "b_04",
+   "text": "«sponge» wörtlich als «Polyester-Schwamm» übersetzt (gemeint ist vermutlich eine Schaumstoff-Polsterung); «spandex» als «Elastan»."
+  },
+  {
+   "id": 750,
+   "stapel": "b_04",
+   "text": "«sponge» wörtlich als «Polyester-Schwamm» übersetzt (gemeint ist vermutlich eine Schaumstoff-Polsterung); «spandex» als «Elastan»."
+  },
+  {
+   "id": 792,
+   "stapel": "b_04",
+   "text": "«Drop tail» als «Hinten verlängerter Saum» wiedergegeben (kein feststehender deutscher Fachbegriff)."
+  },
+  {
+   "id": 836,
+   "stapel": "b_04",
+   "text": "«for fulfillment in the US/EU» als «bei Produktion in den USA/der EU» wiedergegeben (einheitlich mit Stapel 01, 03 und 17): Printful-«Fulfillment» = Herstellung und Versand durch den Anbieter am jeweiligen Standort."
+  },
+  {
+   "id": 870,
+   "stapel": "b_04",
+   "text": "«for fulfillment in the US/EU» als «bei Produktion in den USA/der EU» wiedergegeben (einheitlich mit Stapel 01, 03 und 17): Printful-«Fulfillment» = Herstellung und Versand durch den Anbieter am jeweiligen Standort."
+  },
+  {
+   "id": 871,
+   "stapel": "b_04",
+   "text": "«for fulfillment in the US/EU» als «bei Produktion in den USA/der EU» wiedergegeben (einheitlich mit Stapel 01, 03 und 17): Printful-«Fulfillment» = Herstellung und Versand durch den Anbieter am jeweiligen Standort."
+  },
+  {
+   "id": 872,
+   "stapel": "b_04",
+   "text": "«for fulfillment in the US/EU» als «bei Produktion in den USA/der EU» wiedergegeben (einheitlich mit Stapel 01, 03 und 17): Printful-«Fulfillment» = Herstellung und Versand durch den Anbieter am jeweiligen Standort."
+  },
+  {
+   "id": 896,
+   "stapel": "b_04",
+   "text": "«front side slit» wörtlich als «vorderer Seitenschlitz» übersetzt; die Lage des Schlitzes (vorne oder seitlich) ist im Original nicht eindeutig."
+  },
+  {
+   "id": 1367,
+   "stapel": "b_04",
+   "text": "«football jersey» als «Football-Trikot» übernommen (American Football oder Fussball ist im Original nicht klar); «top/bottom» als oberer/unterer Trikotteil gelesen, nicht als obere/untere Stofflage."
+  },
+  {
+   "id": 1483,
+   "stapel": "b_04",
+   "text": "Original «7.67 oz./yd.² ir (260 g/m²)» enthält ein unklares «ir» (vermutlich Tippfehler); übergangen, nur 260 g/m² übernommen."
+  },
+  {
+   "id": 706,
+   "stapel": "b_05",
+   "text": "«Thickness: 70# uncoated text» wörtlich als «Stärke: 70# ungestrichenes Textpapier» übernommen: «70#» ist das US-Papiergewicht in Pfund (lb, Basis 500 Bogen 25 × 38 in), weder in der Umrechnungstabelle der Aufgabe noch als Dicke oder g/m² belegt, daher nicht eigenmächtig umgerechnet. ENTSCHEID BESITZER (Gegenleser-Fund, nicht eingearbeitet): Faktor 1 lb Text = 1,48 g/m² ist von zwei Drittquellen bestätigt (QUELLE soloprinting.com/resources/paper-weight-conversions und cardstock-warehouse.com Papiergewichts-Tabelle: «70 lb. text, 104 gsm»; 05.11. nachgelesen, nicht selbst gemessen); 70 × 1,48 = 103,6, also ca. 104 g/m². Fertige Ersatzzeile bei «übernehmen»: «• Papiergewicht: ca. 104 g/m² (ungestrichenes Textpapier)» plus Eintrag unter «umgerechnet» (von «70#», nach «ca. 104 g/m²»). Achtung: pruefen_texte.py meldet dann «Zahl(en) aus dem Original fehlen: 70» und braucht eine Ausnahme für «#»; «Thickness» (Dicke) ist im Original selbst falsch beschriftet (gemeint ist das Gewicht). Alternative: Zeile streichen."
+  },
+  {
+   "id": 716,
+   "stapel": "b_05",
+   "text": "«Off-white color fill on the other side» wörtlich als «Auf der anderen Seite gebrochen weisse Farbfüllung» übersetzt: im Original unklar, was gemeint ist (vermutlich unbedruckte Rückseite in gebrochenem Weiss)."
+  },
+  {
+   "id": 793,
+   "stapel": "b_05",
+   "text": "Kreis: Original nennt «3″ (7.8 cm)», aber 3″ sind 7,62 cm. Die Metrik des Originals (7,8 cm) wurde übernommen, der Widerspruch ist beim Hersteller zu klären."
+  },
+  {
+   "id": 793,
+   "stapel": "b_05",
+   "text": "Im Grössen-Satz stand mitten in der Zeile ein verirrter Aufzählungspunkt («, • Circle diameter»); er wurde als Satzzeichen-Fehler weggelassen, die Angaben stehen durch Kommas getrennt in einer Zeile."
+  },
+  {
+   "id": 793,
+   "stapel": "b_05",
+   "text": "«digital-grade acrylic» wörtlich als «Acryl in Digitalqualität» übersetzt (vermutlich: für Digitaldruck geeignet); «Scalloped» als «Wellenrand» gelesen."
+  },
+  {
+   "id": 794,
+   "stapel": "b_05",
+   "text": "Formnamen «Scalloped» als «Wellenrand», «Pet Paw» als «Tierpfote» und «Tag» als «Etikett» übersetzt; der Hersteller nennt dazu keine Erklärung."
+  },
+  {
+   "id": 924,
+   "stapel": "b_05",
+   "text": "Widerspruch im Original: Einleitung «Available in 6 sizes», Aufzählung «3 sizes» mit nur drei Grössen (24″×36″, 36″×60″, 48″×72″). Beide Zahlen wörtlich übernommen."
+  },
+  {
+   "id": 924,
+   "stapel": "b_05",
+   "text": "Original schreibt die Grössen mit doppeltem Zollzeichen («24″×36″″») und die Toleranzen mit geraden Anführungszeichen; als Zoll gelesen und umgerechnet."
+  },
+  {
+   "id": 924,
+   "stapel": "b_05",
+   "text": "«pre-constructed item» als «vorgefertigter Artikel» übersetzt; Bedeutung (bereits genähter/fertiger Teppich) im Original nicht erklärt."
+  },
+  {
+   "id": 1478,
+   "stapel": "b_05",
+   "text": "Einleitung nennt «Cotton Body Dress», der Titel «Bodycon Dress»; wörtlich als «Baumwoll-Bodykleid» übersetzt (vermutlich Bodycon-Kleid gemeint)."
+  },
+  {
+   "id": 1479,
+   "stapel": "b_05",
+   "text": "«Form-fitting silhouette» (körpernahe Silhouette) wörtlich übernommen, obwohl es für eine Hose mit weitem Bein («wide-leg») widersprüchlich wirkt; vermutlich Textbaustein aus anderen Modellen der Serie."
+  },
+  {
+   "id": 382,
+   "stapel": "b_06",
+   "text": "Einleitung «17-ounce»: das Imperiale (17 Unzen) ist bewusst weggelassen, weil die Aufzählung schon «500 ml» nennt; die Prüfung meldet deshalb «Zahl(en) aus dem Original fehlen: 17» (Prüfskript-Fehlalarm, «ounce» ist in seiner Einheitenliste nicht enthalten)."
+  },
+  {
+   "id": 632,
+   "stapel": "b_06",
+   "text": "«Double-wall vacuum seal»: wörtlich als «Doppelwand mit Vakuumversiegelung» übersetzt (gemeint ist vermutlich die Vakuumisolierung zwischen den Wänden, nicht belegt)."
+  },
+  {
+   "id": 751,
+   "stapel": "b_06",
+   "text": "Original widerspricht sich: «16 oz. (590 ml)»; 16 oz wären 473 ml, 590 ml entsprächen 20 oz. Nach Regel gilt nur die Metrik «590 ml»; Titel («16 oz») und Herstellerangabe vor der Veröffentlichung klären."
+  },
+  {
+   "id": 935,
+   "stapel": "b_06",
+   "text": "Schlusssatz der Einleitung «design your own or start selling it today!» und die letzte Zeile «No minimums» sind an Verkäufer gerichtet, nicht an Endkundinnen; wörtlich übersetzt, vor der Anzeige im Katalogfenster prüfen oder streichen. Der Gedankenstrich vor «design your own» wurde durch einen Punkt ersetzt."
+  },
+  {
+   "id": 629,
+   "stapel": "b_06",
+   "text": "Schlusshinweis «nur in den USA erhältlich» wörtlich übersetzt: für Kundinnen in der Schweiz möglicherweise irreführend bzw. widerspricht dem Angebot im Katalogfenster (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 629,
+   "stapel": "b_06",
+   "text": "Fachbegriffe «Reversed zipper tape» (wörtlich «Umgekehrtes Reissverschlussband», gemeint wohl ein Reissverschluss mit nach innen gedrehter Zahnreihe), «Scuba neck» («Scuba-Kragen»), «Self-fabric neck tape» («Nackenband aus Eigenstoff») und «Tightening toggle» («Kordelstopper zum Zusammenziehen des Bundes») nicht eindeutig belegt, sinngemäss übersetzt."
+  },
+  {
+   "id": 629,
+   "stapel": "b_06",
+   "text": "«Waterproof pressure resistance: 600 mm» als «Wasserdruckbeständigkeit: 600 mm» wörtlich übernommen (gemeint wohl die Wassersäule); die Einleitung nennt die Jacke nur «wasserabweisend»."
+  },
+  {
+   "id": 655,
+   "stapel": "b_06",
+   "text": "Widerspruch im Original: die Einleitung sagt «nur innerhalb der EU und des Vereinigten Königreichs erhältlich», der Schlusshinweis «kann nicht ausserhalb der EU versandt werden» (UK ausgeschlossen?); beides wörtlich übernommen. Die Schweiz ist weder in der EU noch im UK: Lieferbarkeit in die Schweiz inhaltlich prüfen (Besitzer)."
+  },
+  {
+   "id": 679,
+   "stapel": "b_06",
+   "text": "Widerspruch im Original: «4 oz/yd² (68 g/m²)»; 4 oz/yd² wären rund 136 g/m², nicht 68 g/m². Nach Regel gilt nur die Metrik «68 g/m²», vor der Veröffentlichung beim Hersteller klären."
+  },
+  {
+   "id": 679,
+   "stapel": "b_06",
+   "text": "Schlusshinweis «nur in den USA erhältlich» wörtlich übersetzt: für Kundinnen in der Schweiz möglicherweise irreführend (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 679,
+   "stapel": "b_06",
+   "text": "«stain release» als «Fleckenablösung» und «snag resistant» als «Beständig gegen ... Fadenziehen» sinngemäss wiedergegeben (Fachbegriffe); «UPF44+» wörtlich als «UPF-44+» übernommen (ungewöhnliche Stufe, möglicher Hersteller-Tippfehler)."
+  },
+  {
+   "id": 787,
+   "stapel": "b_06",
+   "text": "«Yarn diameter: 20 singles» wörtlich als «Garndurchmesser: 20 Singles» übersetzt (gemeint ist wohl die Garnfeinheit 20/1, nicht belegt)."
+  },
+  {
+   "id": 903,
+   "stapel": "b_06",
+   "text": "«Cadet collar» als «Kadettenkragen» wörtlich übernommen (Stehkragen-Form, Fachbegriff nicht eindeutig belegt); «color-locking» als «farbstabil» wiedergegeben."
+  },
+  {
+   "id": 903,
+   "stapel": "b_06",
+   "text": "Widerspruch im Original: 3.8 oz/yd² entsprächen rund 129 g/m², genannt sind 110 g/m². Nach Regel gilt nur die Metrik 110 g/m², vor der Veröffentlichung beim Hersteller (Sport-Tek ST357) klären."
+  },
+  {
+   "id": 1539,
+   "stapel": "b_06",
+   "text": "«22–23\" chest radius in size S»: «radius» (Radius) ist als Brustmass unüblich (gemeint ist vermutlich Brustumfang bzw. Brustbreite); wörtlich als «Brustradius» übersetzt und nur das Imperiale umgerechnet (56 bis 58 cm), nicht geraten. Mit dem Hersteller klären, bevor die Zahl angezeigt wird."
+  },
+  {
+   "id": 1539,
+   "stapel": "b_06",
+   "text": "«corded» / «cord fabric» als «Cord-» bzw. «Cordstoff» übersetzt (Kordsamt/Rippenstruktur, Faserangabe im Original nur «100% cotton»)."
+  },
+  {
+   "id": 1553,
+   "stapel": "b_07",
+   "text": "Einleitungssatz: Das Original endet abrupt («whether you're heading to the shops, carrying books.»), vermutlich fehlt eine Aufzählung; wörtlich übersetzt, nur das für «ob ... oder» nötige «oder» ergänzt"
+  },
+  {
+   "id": 1591,
+   "stapel": "b_07",
+   "text": "«Rolled-forward shoulders»: Fachbegriff (Schulternaht nach vorne verlegt), wörtlich als «nach vorne gerollte Schultern» übersetzt"
+  },
+  {
+   "id": 1594,
+   "stapel": "b_07",
+   "text": "«Contrast dome styling»: Fachbegriff, wörtlich als «Kontrastfarbene Kappenkuppel (Dome)» übersetzt"
+  },
+  {
+   "id": 1629,
+   "stapel": "b_07",
+   "text": "«3-end fleece»: Fachbegriff, wie in Stapel 06 als «3-Faden-Fleece» übersetzt"
+  },
+  {
+   "id": 1629,
+   "stapel": "b_07",
+   "text": "«Athletic Heather» als Farbname des Herstellers unübersetzt gelassen"
+  },
+  {
+   "id": 1631,
+   "stapel": "b_07",
+   "text": "«3-end fleece»: Fachbegriff, wie in Stapel 06 als «3-Faden-Fleece» übersetzt"
+  },
+  {
+   "id": 1631,
+   "stapel": "b_07",
+   "text": "«Athletic Heather» als Farbname des Herstellers unübersetzt gelassen"
+  },
+  {
+   "id": 1632,
+   "stapel": "b_07",
+   "text": "«Adjustable waist strap» (Hüftgurt) im Aufzählungspunkt, der Text spricht von quer über den Körper oder über einer Schulter tragen: wörtlich übersetzt, mögliche Unstimmigkeit im Original"
+  },
+  {
+   "id": 1632,
+   "stapel": "b_07",
+   "text": "«Dyed-to-match metal zipper pulls and molded zipper»: unklar, ob «passend eingefärbt» nur die Schieber oder auch den geformten Reissverschluss meint; wörtlich übersetzt"
+  },
+  {
+   "id": 1632,
+   "stapel": "b_07",
+   "text": "Aufzählungspunkte im Original ohne Leerschlag nach «•»; so belassen"
+  },
+  {
+   "id": 1683,
+   "stapel": "b_07",
+   "text": "«nylon taslon»: Schreibweise im Original (in 1632 «taslan»), als «Nylon-Taslon» übernommen"
+  },
+  {
+   "id": 1683,
+   "stapel": "b_07",
+   "text": "«pinched webbing handles»: genaue Bedeutung unklar, als «zusammengelegte Gurtbandhenkel» wörtlich übersetzt"
+  },
+  {
+   "id": 1683,
+   "stapel": "b_07",
+   "text": "Aufzählungspunkte im Original ohne Leerschlag nach «•»; so belassen"
+  },
+  {
+   "id": 77,
+   "stapel": "b_07",
+   "text": "Kopfumfang: Original nennt «22″–24″ (55–60 cm)»; 22″–24″ wären rechnerisch 56–61 cm. Die Metrik des Herstellers (55–60 cm) übernommen, das Imperiale entfällt"
+  },
+  {
+   "id": 93,
+   "stapel": "b_08",
+   "text": "«12″ (30.5 cm) knit»: unklar, was gemessen wird (vermutlich die Strickhöhe/Länge der Mütze); als «30,5 cm hoher Strick» wiedergegeben, Entscheid bei Printful klären."
+  },
+  {
+   "id": 99,
+   "stapel": "b_08",
+   "text": "«Green Camo» (Farbname) als «Grün-Camouflage» übersetzt: muss zur Übersetzung des Farbnamens in den Optionen passen."
+  },
+  {
+   "id": 99,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 21, 23» stammt von «21⅝″–23⅝″» (Bruchzeichen werden vom Skript nicht als imperiale Einheit erkannt); die Zollwerte sind bewusst nicht übernommen, es steht nur die Metrik «54,9 cm bis 60 cm»."
+  },
+  {
+   "id": 100,
+   "stapel": "b_08",
+   "text": "Kopfumfang «21⅝″–23⅝″ (53.3 cm–60 cm)»: 21⅝″ wären 54,9 cm, 53,3 cm entspricht 21″; die Angaben widersprechen sich, nach Regel nur die Metrik übernommen."
+  },
+  {
+   "id": 100,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 21, 23» stammt von den Bruchzahlen «21⅝″–23⅝″» (Zollwerte bewusst nicht übernommen)."
+  },
+  {
+   "id": 140,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 23» stammt von der Bruchzahl «23⅞”» (Zollwert bewusst nicht übernommen, es steht nur die Metrik)."
+  },
+  {
+   "id": 206,
+   "stapel": "b_08",
+   "text": "«3 ⅛” (7.6 cm) crown»: 3⅛″ wären 7,9 cm, 7,6 cm entspricht 3″; die Angaben widersprechen sich, nach Regel nur die Metrik übernommen."
+  },
+  {
+   "id": 206,
+   "stapel": "b_08",
+   "text": "«Green Camo» (Farbname) als «Grün-Camouflage» übersetzt: muss zur Übersetzung des Farbnamens in den Optionen passen."
+  },
+  {
+   "id": 206,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 3» stammt von der Bruchzahl «3 ⅛”» (Zollwert bewusst nicht übernommen)."
+  },
+  {
+   "id": 252,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 21, 23» stammt von den Bruchzahlen «21⅝″–23⅝″» (Zollwerte bewusst nicht übernommen, es steht nur die Metrik)."
+  },
+  {
+   "id": 253,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 21, 23» stammt von den Bruchzahlen «21 ⅝″–23 ⅛″» (Zollwerte bewusst nicht übernommen, es steht nur die Metrik «55 cm bis 58,7 cm»)."
+  },
+  {
+   "id": 265,
+   "stapel": "b_08",
+   "text": "«2 ½″ (5 cm) crown»: 2½″ wären 6,4 cm, 5 cm entspricht 2″; die Angaben widersprechen sich, nach Regel nur die Metrik übernommen."
+  },
+  {
+   "id": 265,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 2, 23» stammt von den Bruchzahlen «2 ½″» und «23 ⅜″» (Zollwerte bewusst nicht übernommen, es steht nur die Metrik)."
+  },
+  {
+   "id": 379,
+   "stapel": "b_08",
+   "text": "«3 ¾″ (7.6 cm) crown» und «2 ¼″ (5.1 cm) brim»: 3¾″ wären 9,5 cm und 2¼″ 5,7 cm, die genannten 7,6 cm und 5,1 cm entsprechen 3″ und 2″; die Angaben widersprechen sich, nach Regel nur die Metrik übernommen."
+  },
+  {
+   "id": 379,
+   "stapel": "b_08",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 2, 3» stammt von den Bruchzahlen «3 ¾″» und «2 ¼″» (Zollwerte bewusst nicht übernommen)."
+  },
+  {
+   "id": 429,
+   "stapel": "b_08",
+   "text": "«bio-washed chino cotton twill»: «Bio-Wash» ist ein Veredelungsverfahren (Enzymwäsche), keine Bio-Baumwolle; als «Chino-Baumwoll-Twill mit Bio-Wash» wiedergegeben, damit es nicht als biologisch angebaut missverstanden wird."
+  },
+  {
+   "id": 491,
+   "stapel": "b_08",
+   "text": "«hidden tuck-in» (Verschluss aus Eigenstoff mit Messingschieber): unklar, was genau gemeint ist (vermutlich verdecktes Einstecken des Riemenendes); wörtlich als «verdecktem Einsteckteil» wiedergegeben."
+  },
+  {
+   "id": 541,
+   "stapel": "b_09",
+   "text": "«Yarn diameter: 30 singles» wörtlich als «Garndurchmesser: 30 Singles» übersetzt (Fachangabe, vermutlich Garnfeinheit/Garnnummer; nicht umgedeutet)."
+  },
+  {
+   "id": 541,
+   "stapel": "b_09",
+   "text": "«100% cotton face» als «100% Baumwolle auf der Aussenseite» wiedergegeben (face = Warenseite des Stoffes)."
+  },
+  {
+   "id": 541,
+   "stapel": "b_09",
+   "text": "«fly detail» als «Hosenschlitz-Detail» wiedergegeben (Bedeutung im Original nicht näher erklärt)."
+  },
+  {
+   "id": 542,
+   "stapel": "b_09",
+   "text": "«Yarn diameter: 30 singles» wörtlich als «Garndurchmesser: 30 Singles» übersetzt (Fachangabe, vermutlich Garnfeinheit/Garnnummer; nicht umgedeutet)."
+  },
+  {
+   "id": 542,
+   "stapel": "b_09",
+   "text": "«100% cotton face» als «100% Baumwolle auf der Aussenseite» wiedergegeben; die zweite Zeile «80% cotton, 20% polyester blend» nennt eine Mischung, das Original lässt offen, wie beide Angaben zusammenhängen (Aussenseite/Innenseite)."
+  },
+  {
+   "id": 542,
+   "stapel": "b_09",
+   "text": "«Split stitch double needle sewing» als «Split-Stitch-Doppelnadelnaht» wörtlich übernommen (Fachbegriff)."
+  },
+  {
+   "id": 557,
+   "stapel": "b_09",
+   "text": "Schlusshinweis «nur in Ostasien erhältlich» wörtlich übersetzt: für Kundinnen in der Schweiz möglicherweise irreführend bzw. widerspricht dem Angebot im Katalogfenster (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 560,
+   "stapel": "b_09",
+   "text": "Schlusshinweis «nur in Ostasien erhältlich» wörtlich übersetzt: für Kundinnen in der Schweiz möglicherweise irreführend bzw. widerspricht dem Angebot im Katalogfenster (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 635,
+   "stapel": "b_09",
+   "text": "Schlusshinweis «nur in Ostasien erhältlich» wörtlich übersetzt: für Kundinnen in der Schweiz möglicherweise irreführend bzw. widerspricht dem Angebot im Katalogfenster (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 637,
+   "stapel": "b_09",
+   "text": "«4 top-seam knit» als «Strick mit 4 Nähten an der Oberseite» wörtlich wiedergegeben (Bedeutung im Original nicht erklärt)."
+  },
+  {
+   "id": 638,
+   "stapel": "b_09",
+   "text": "Schlusshinweis «kann nicht ausserhalb der EU versendet werden» wörtlich übersetzt: die Schweiz gehört nicht zur EU, der Hinweis widerspricht möglicherweise dem Angebot im Katalogfenster (inhaltliche Prüfung durch den Besitzer)."
+  },
+  {
+   "id": 661,
+   "stapel": "b_09",
+   "text": "Stoffgewicht: Original nennt «7.13 oz./yd.² (202 g/m²)»; 7,13 oz/yd² entspricht rechnerisch rund 242 g/m², nicht 202. Gemäss Regel nur die Metrik (202 g/m²) übernommen; Widerspruch im Original, Herstellerangabe prüfen."
+  },
+  {
+   "id": 664,
+   "stapel": "b_09",
+   "text": "Farbnamen «Sport Grey» und «White» (Weiss) im Hinweis: «Sport Grey» als Herstellerfarbname unübersetzt belassen; der Name muss zur (ggf. übersetzten) Farbauswahl im Katalogfenster passen."
+  },
+  {
+   "id": 674,
+   "stapel": "b_09",
+   "text": "Stoffgewicht: Original nennt «5.3 oz/yd² (237 g/m²)»; 5,3 oz/yd² entspricht rechnerisch rund 180 g/m², nicht 237. Gemäss Regel nur die Metrik (237 g/m²) übernommen; Widerspruch im Original, Herstellerangabe prüfen."
+  },
+  {
+   "id": 674,
+   "stapel": "b_09",
+   "text": "Farbname «Carbon Grey» als Herstellerfarbname unübersetzt belassen; der Name muss zur (ggf. übersetzten) Farbauswahl im Katalogfenster passen."
+  },
+  {
+   "id": 807,
+   "stapel": "b_09",
+   "text": "Widerspruch im Original: Beschreibungstext sagt «structured fit» (strukturierte Passform), die Aufzählung «Unstructured» (unstrukturiert); beides wörtlich übersetzt, nicht aufgelöst."
+  },
+  {
+   "id": 847,
+   "stapel": "b_09",
+   "text": "«32 oz. bottle» als US-Flüssigunzen (Flasche) gerechnet: 946 ml, gerundet auf 950 ml; das Original nennt keine Einheit ausser «oz.», ein Gewichts-Ounce wäre hier unsinnig."
+  },
+  {
+   "id": 847,
+   "stapel": "b_09",
+   "text": "«16″ laptop» als «16 Zoll» belassen: Bildschirmdiagonale eines Laptops (Ausnahme von der Regel «kein Zoll»; Zoll steht bei Bildschirmen auch in der Schweiz); wer es metrisch will, wäre 40,6 cm."
+  },
+  {
+   "id": 847,
+   "stapel": "b_09",
+   "text": "«H/W/D» (Dimensions) als H/B/T (Höhe/Breite/Tiefe) aufgelöst; «UA Storm» als Markenname des Stoffs belassen."
+  },
+  {
+   "id": 1552,
+   "stapel": "b_10",
+   "text": "Aufzählung nennt «Self-fabric adjustable shoulder strap» und direkt darauf «Adjustable shoulder strap» (doppelte Zeile im Original), wörtlich beide übernommen"
+  },
+  {
+   "id": 1663,
+   "stapel": "b_10",
+   "text": "«tuck-in» (Band mit Metallschieber und tuck-in): als «Einsteckfunktion» wörtlich übersetzt, genaue Funktion im Original nicht erklärt"
+  },
+  {
+   "id": 1663,
+   "stapel": "b_10",
+   "text": "«Signature twill label» / «signature flag label»: als «markentypisch» übersetzt (Herstellerlabel mit Markenzeichen)"
+  },
+  {
+   "id": 1676,
+   "stapel": "b_10",
+   "text": "«solid rope trim»: als «einfarbiger Kordelbesatz» gedeutet (solid = einfarbig, könnte auch «durchgehend» heissen)"
+  },
+  {
+   "id": 1676,
+   "stapel": "b_10",
+   "text": "«performance-ready cap»: als «Funktions-Kappe» wiedergegeben (passend zu «Performance sweatband» = «Funktions-Schweissband»); «ready» bleibt unübersetzt"
+  },
+  {
+   "id": 1681,
+   "stapel": "b_10",
+   "text": "«YP four-bar logo»: als «YP-Logo mit vier Balken» übersetzt, genaue Gestaltung des Logos im Original nicht beschrieben"
+  },
+  {
+   "id": 1710,
+   "stapel": "b_10",
+   "text": "Erster Satz ist im Original grammatikalisch fehlerhaft («Add a timeless, relaxed staple ... with perfect for custom embroidery, ...»), sinngemäss ergänzt zu «..., perfekt für ...»"
+  },
+  {
+   "id": 366,
+   "stapel": "b_10",
+   "text": "Fliesstext nennt einen Rahmen aus «semi-hardwood alder» (Erle), die Aufzählung «Ayous wood frame» (Ayous-Holz): Widerspruch im Original, beides wörtlich übernommen"
+  },
+  {
+   "id": 640,
+   "stapel": "b_10",
+   "text": "«Hanger piece thickness: 0.2″ (0.5 mm)»: 0.2″ sind rund 5 mm, das Original nennt aber 0.5 mm. Offensichtlich fehlerhaft, die metrische Angabe 0,5 mm wurde wörtlich übernommen"
+  },
+  {
+   "id": 769,
+   "stapel": "b_10",
+   "text": "«Blank product sourced and fulfilled in China» (steht gleich in den Ids 769, 781, 850, 855, 858, 859, 860, 964, 1699, 1701): «fulfilled» als «abgewickelt» übersetzt, ob damit Fertigung, Druck oder Versand gemeint ist, sagt das Original nicht"
+  },
+  {
+   "id": 769,
+   "stapel": "b_10",
+   "text": "«average fulfillment time ... 7–14 days»: «fulfillment time» als «Bearbeitungszeit» übersetzt"
+  },
+  {
+   "id": 964,
+   "stapel": "b_10",
+   "text": "«Clean, finished edges»: als «saubere, fertig versäuberte Kanten» übersetzt"
+  },
+  {
+   "id": 19,
+   "stapel": "b_11",
+   "text": "«11/15/20 oz» als US-Flüssigunzen (Tassenvolumen) gelesen und in ml umgerechnet; das Original nennt keine Einheit ausser «oz», ein Gewichts-oz wäre bei einer Tasse unsinnig."
+  },
+  {
+   "id": 300,
+   "stapel": "b_11",
+   "text": "«11/15 oz» als US-Flüssigunzen (Tassenvolumen) gelesen und in ml umgerechnet; das Original nennt keine Einheit ausser «oz», ein Gewichts-oz wäre bei einer Tasse unsinnig."
+  },
+  {
+   "id": 403,
+   "stapel": "b_11",
+   "text": "«11/15 oz» als US-Flüssigunzen (Tassenvolumen) gelesen und in ml umgerechnet; das Original nennt keine Einheit ausser «oz», ein Gewichts-oz wäre bei einer Tasse unsinnig."
+  },
+  {
+   "id": 407,
+   "stapel": "b_11",
+   "text": "«soda» als «Soda» wörtlich übernommen: im Original unklar, ob Sodawasser, Natron oder Waschsoda gemeint ist."
+  },
+  {
+   "id": 663,
+   "stapel": "b_11",
+   "text": "Schlusssatz «always open the lid before placing it on a hot drink» ist in sich unklar (Deckel öffnen, bevor man ihn aufsetzt?); wörtlich übersetzt, Sinn nicht geraten."
+  },
+  {
+   "id": 837,
+   "stapel": "b_11",
+   "text": "«12 oz» als US-Flüssigunzen (Tassenvolumen) gelesen und in ml umgerechnet; das Original nennt keine Einheit ausser «oz», ein Gewichts-oz wäre bei einer Tasse unsinnig."
+  },
+  {
+   "id": 181,
+   "stapel": "b_11",
+   "text": "Prüfskript-Fehlalarm erwartet: «Zahl(en) aus dem Original fehlen: 5» stammt von der Schreibweise «.5 mm» im Original (Zahl ohne führende Null); im Deutschen steht korrekt «0,5 mm», das Skript liest «.5» als «5» und kennt «0,5» nicht als dieselbe Zahl. Inhaltlich fehlt nichts."
+  },
+  {
+   "id": 1470,
+   "stapel": "b_11",
+   "text": "«black, white, or wooden base options» wörtlich als «Basis» übersetzt; gemeint ist vermutlich der Rahmen der Uhr (die Aufzählung nennt oben bereits einen Holzrahmen)."
+  },
+  {
+   "id": 474,
+   "stapel": "b_11",
+   "text": "Zeile «US fulfilled notebooks measure 5.5″ × 8.5″ (13 × 21 cm)»: 5.5″ wären 14 cm (13,97 cm), nicht 13 cm; nach Regel nur die Metrik des Herstellers (13 × 21 cm) übernommen, Widerspruch beim Hersteller klären."
+  },
+  {
+   "id": 474,
+   "stapel": "b_11",
+   "text": "«US/EU fulfilled» als «in den USA/der EU abgewickelt» übersetzt (wie «sourced and fulfilled» in Stapel 10): ob Fertigung, Druck oder Versand gemeint ist, sagt das Original nicht."
+  },
+  {
+   "id": 568,
+   "stapel": "b_11",
+   "text": "Original nennt «14.77 oz/yd² (350 g/m²)»: die beiden Werte passen nicht zueinander (14,77 oz/yd² entsprechen rund 500 g/m², 350 g/m² wären 10,32 oz/yd²); nach Regel nur die Metrik 350 g/m² übernommen, Wert beim Hersteller klären."
+  },
+  {
+   "id": 724,
+   "stapel": "b_11",
+   "text": "«Mohawk uncoated cover paper» als «ungestrichenes Mohawk-Kartonpapier» wiedergegeben («cover paper» ist ein Papierfachbegriff für schweres Umschlag-/Kartonpapier; Markenangabe «Mohawk» unverändert)."
+  },
+  {
+   "id": 804,
+   "stapel": "b_11",
+   "text": "Das Original nennt das Jahr 2025; im November 2026 ist das veraltet. Wörtlich übersetzt, Jahr vor der Anzeige prüfen oder streichen."
+  },
+  {
+   "id": 926,
+   "stapel": "b_11",
+   "text": "«Branded Post-it® backing» ist im Original knapp formuliert; sinngemäss als «Rückseite mit Post-it®-Markenaufdruck» wiedergegeben."
+  },
+  {
+   "id": 1435,
+   "stapel": "b_12",
+   "text": "«White Coined Napkins» / «coined edge borders»: als «weisse Servietten mit Prägerand» bzw. «geprägte Ränder» wiedergegeben (gemeint vermutlich ein geprägter Randabschluss)"
+  },
+  {
+   "id": 1435,
+   "stapel": "b_12",
+   "text": "«custom white paper»: als «individuell gefertigtes weisses Papier» wiedergegeben, genaue Bedeutung von «custom» im Original unklar"
+  },
+  {
+   "id": 1435,
+   "stapel": "b_12",
+   "text": "«specks» als «Sprenkel» übersetzt (kleine Punkte oder Flecken)"
+  },
+  {
+   "id": 1563,
+   "stapel": "b_12",
+   "text": "«100 lb archival semi-gloss paper»: «100 lb» ist eine US-Papierklasse (Flächengewicht, nicht Masse). Umrechnung mit der gängigen Tabelle (100 lb Text ≈ 148 g/m²) als «ca. 150 g/m²» angegeben; ob Text- oder Cover-Klasse gemeint ist, steht nicht im Original. Im Zweifel «mit ca. 150 g/m²» streichen."
+  },
+  {
+   "id": 1564,
+   "stapel": "b_12",
+   "text": "«98pt chipboard cover»: «pt» ist die US-Kartonstärke in Punkt (1/1000 Zoll), als «ca. 2,5 mm starker Pappe» umgerechnet; «chipboard» als «Pappe» wiedergegeben"
+  },
+  {
+   "id": 1564,
+   "stapel": "b_12",
+   "text": "«full-bleed, no-gutter layout»: als «randloses Layout ohne Bundsteg» wiedergegeben, Fachbegriff des Druckers, genaue Bedeutung nicht im Original erklärt"
+  },
+  {
+   "id": 1564,
+   "stapel": "b_12",
+   "text": "«case-bound»: als «fest gebundener Einband» wiedergegeben"
+  },
+  {
+   "id": 268,
+   "stapel": "b_12",
+   "text": "«21 × 30 cm posters are size A4»: wörtlich übernommen; A4 misst genau 21 × 29,7 cm, die Angabe 30 cm ist im Original gerundet"
+  },
+  {
+   "id": 534,
+   "stapel": "b_12",
+   "text": "«Pressed paper chipboard with adhesive»: als «Gepresste Pappe mit Klebstoff» wiedergegeben, genaue Bedeutung von «with adhesive» im Original unklar (vermutlich verklebte Pappschichten)"
+  },
+  {
+   "id": 574,
+   "stapel": "b_12",
+   "text": "«Elastic side accents»: wörtlich als «Elastische Akzente an den Seiten» wiedergegeben (gemeint sind vermutlich elastische Seiteneinsätze)"
+  },
+  {
+   "id": 575,
+   "stapel": "b_12",
+   "text": "«Elastic side accents»: wörtlich als «Elastische Akzente an den Seiten» wiedergegeben (gemeint sind vermutlich elastische Seiteneinsätze)"
+  },
+  {
+   "id": 358,
+   "stapel": "b_12",
+   "text": "«95µ density»: wörtlich als «95 µ Dichte» übernommen; µ (Mikron) ist üblicherweise eine Foliendicke, keine Dichte, das Original ist hier vermutlich ungenau"
+  },
+  {
+   "id": 505,
+   "stapel": "b_13",
+   "text": "«Promotional Monomeric PVC (US)»: Fachbegriff sinngemäss als «monomere PVC-Folie in Werbequalität» übersetzt; «MPI 3000 Gloss HOP» unverändert."
+  },
+  {
+   "id": 359,
+   "stapel": "b_13",
+   "text": "«colorful slippers» im Original: im Zusammenhang mit dem Produkt (Flip-Flops) als «bunte Flip-Flops» wiedergegeben; «Toe post style» als «Modell mit Zehensteg»."
+  },
+  {
+   "id": 394,
+   "stapel": "b_13",
+   "text": "«13″» und «15″» sind die Laptop-Bildschirmgrössen, für die die Hülle gedacht ist: als «13-Zoll»/«15-Zoll» belassen (Zoll bei Bildschirmen), nicht in cm umgerechnet."
+  },
+  {
+   "id": 394,
+   "stapel": "b_13",
+   "text": "Widerspruch im Original: «13″ sleeve weight: 6.49 oz (220 g)». 6,49 oz wären rund 184 g, nicht 220 g (die 15″-Zeile «8.8 oz (250 g)» stimmt). Nach Regel gilt nur die Metrik, also 220 g; vor der Veröffentlichung beim Hersteller klären."
+  },
+  {
+   "id": 588,
+   "stapel": "b_13",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 1»: das Skript liest «1/2″» als Zahl 1 und die Fraktion nicht als imperiales Mass; der Wert ist bewusst als «ca. 1,3 cm» umgerechnet."
+  },
+  {
+   "id": 611,
+   "stapel": "b_13",
+   "text": "«Hardboard MDF» im Original: Hartfaserplatte und MDF sind verschiedene Plattenarten, als «Hartfaserplatte (MDF)» wörtlich wiedergegeben."
+  },
+  {
+   "id": 708,
+   "stapel": "b_13",
+   "text": "«broadcloth fabric»: Fachbegriff als «Broadcloth-Stoff» belassen (eine deutsche Entsprechung wie «Popeline» ist nicht sicher belegt)."
+  },
+  {
+   "id": 709,
+   "stapel": "b_13",
+   "text": "«fabric broadcloth»: Fachbegriff als «Broadcloth-Gewebe» belassen (wie bei 708)."
+  },
+  {
+   "id": 746,
+   "stapel": "b_13",
+   "text": "Widerspruch im Original: «1.2 oz./yd.² (34 g/m²)». 1,2 oz/yd² entsprächen rund 41 g/m², nicht 34 g/m². Nach Regel gilt nur die Metrik (34 g/m²); vor der Veröffentlichung beim Hersteller klären."
+  },
+  {
+   "id": 764,
+   "stapel": "b_13",
+   "text": "«Ribbed seams» wörtlich als «Gerippte Nähte» übersetzt (genaue Bauweise unklar); «Dual-size customization» als «Individuelle Gestaltung in zwei Grössen»."
+  },
+  {
+   "id": 805,
+   "stapel": "b_13",
+   "text": "Schlusshinweis «nur in den USA erhältlich» wörtlich übersetzt: widerspricht einem Verkauf in der Schweiz, inhaltliche Prüfung durch den Besitzer (Produkt ggf. nicht anbieten oder Hinweis streichen)."
+  },
+  {
+   "id": 875,
+   "stapel": "b_13",
+   "text": "«vanity plate» als «Deko-Nummernschild» übersetzt (kein amtliches Kennzeichen; Format 12″ × 6″ entspricht einem US-Nummernschild, in der Schweiz nicht als Fahrzeugkennzeichen verwendbar): Begriff vor der Veröffentlichung prüfen."
+  },
+  {
+   "id": 882,
+   "stapel": "b_13",
+   "text": "Grössenangaben in US-Schuhgrössen (Damen/Herren) bleiben nach Regel «Schuhgrössen nicht umrechnen» als «US-Damengrössen»/«US-Herrengrössen» stehen; eine EU-Entsprechung müsste von Printful belegt werden (Besitzer will keine US-Grössen)."
+  },
+  {
+   "id": 883,
+   "stapel": "b_13",
+   "text": "Widerspruch im Original: «14.1 oz./yd.² (400 g/m²)». 14,1 oz/yd² entsprächen rund 478 g/m², nicht 400 g/m². Nach Regel gilt nur die Metrik (400 g/m²); vor der Veröffentlichung beim Hersteller klären."
+  },
+  {
+   "id": 883,
+   "stapel": "b_13",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 90»: Fahrenheit-Werte («max. 90°F / 30°C») erkennt das Skript nicht als imperial; die 90 °F sind bewusst weggelassen, nur «max. 30 °C» übernommen."
+  },
+  {
+   "id": 885,
+   "stapel": "b_14",
+   "text": "«wooden dowel and twine frame»: Original unklar (Rahmen aus Schnur?), wörtlich als «Holzstab und Schnurrahmen» übersetzt."
+  },
+  {
+   "id": 886,
+   "stapel": "b_14",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 90»: Fahrenheit-Wert («max. 90°F / 30°C») erkennt das Skript nicht als imperial; die 90 °F sind bewusst weggelassen, nur «max. 30 °C» übernommen."
+  },
+  {
+   "id": 890,
+   "stapel": "b_14",
+   "text": "«cream sheeting interior lining»: «Sheeting» (Gewebeart, Bettlakenstoff) als Fachbegriff beibehalten, Mischung (50/50) in Klammern nachgestellt."
+  },
+  {
+   "id": 891,
+   "stapel": "b_14",
+   "text": "«Large (...) with optional extended storage»: Unklar, ob sich «optional extended storage» nur auf Large oder auf alle Grössen bezieht; wörtlich an derselben Stelle belassen."
+  },
+  {
+   "id": 891,
+   "stapel": "b_14",
+   "text": "«100% polycarbonate front», «Black ABS back hard-shell»: ABS als «ABS-Hartschale» übersetzt (Original ohne Erklärung des Kürzels)."
+  },
+  {
+   "id": 902,
+   "stapel": "b_14",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 90»: Fahrenheit-Wert («max 90ºF (30ºC)») erkennt das Skript nicht als imperial; die 90 °F sind bewusst weggelassen, nur «max. 30 °C» übernommen."
+  },
+  {
+   "id": 904,
+   "stapel": "b_14",
+   "text": "«license plate» als «Kontrollschild» (Schweizer Begriff) übersetzt. Sachlicher Hinweis für den Besitzer: Mass 31,1 × 16,5 cm ist ein US-Format und passt vermutlich nicht zu Schweizer Kontrollschildern (Rohware aus den USA); Eignung für CH vor dem Verkauf klären."
+  },
+  {
+   "id": 905,
+   "stapel": "b_14",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 90»: Fahrenheit-Wert («max. 90°F / 30°C») erkennt das Skript nicht als imperial; die 90 °F sind bewusst weggelassen, nur «max. 30 °C» übernommen."
+  },
+  {
+   "id": 905,
+   "stapel": "b_14",
+   "text": "«0.75\" (1.95 cm) batting»: 0,75 in wären 1,905 cm; das Original nennt 1,95 cm, nach Regel gilt die Metrik des Herstellers (1,95 cm), auch im Einleitungstext (dort stand nur «0.75”»)."
+  },
+  {
+   "id": 905,
+   "stapel": "b_14",
+   "text": "Bettgrössen «Twin», «Twin XL», «Queen», «King» als US-Grössennamen (Variantennamen) unübersetzt belassen; «Comforter» als «Steppdecke», «batting» als «Wattierung»."
+  },
+  {
+   "id": 906,
+   "stapel": "b_14",
+   "text": "«Pre-die-cut chipboard with non-edge pieces»: Bedeutung von «non-edge pieces» unklar (Teile ohne Randform?), wörtlich als «Nicht-Randteilen» übersetzt; «chipboard» als «Pappe (Chipboard)»."
+  },
+  {
+   "id": 909,
+   "stapel": "b_14",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 20»: «20-oz» im Einleitungstext (mit Bindestrich) erkennt das Skript nicht als imperial; das Imperiale fällt weg, Metrik 600 ml gilt."
+  },
+  {
+   "id": 1428,
+   "stapel": "b_14",
+   "text": "«for shoppers»: Der Satz «a simple way for shoppers to bring warmth ...» ist im Original ein Händlertext und wurde wörtlich («Für Käuferinnen und Käufer ...») übersetzt; für den Shop evtl. streichen oder umformulieren."
+  },
+  {
+   "id": 1652,
+   "stapel": "b_14",
+   "text": "Der erste Satz hat im Original kein Subjekt («Designed to deliver ... it offers ...»; vermutlich fehlt der Produktname): «Diese Flagge» ergänzt. Aufzählungszeichen «-» ohne Leerschlag («-Lightweight fabric», «-Print on both sides») zu «- » vereinheitlicht. «statement-whether» (Bindestrich als Gedankenstrich) durch Doppelpunkt ersetzt."
+  },
+  {
+   "id": 12,
+   "stapel": "b_14",
+   "text": "Gildan-Farbnamen («Sport Grey», «Dark Heather», «Heather», «Graphite Heather») als Eigennamen der Farbvarianten unübersetzt belassen; «Quarter-turned» als «Viertelgedreht» (Fachbegriff, Sinn: gedrehter Schlauch ohne Mittelfalte)."
+  },
+  {
+   "id": 37,
+   "stapel": "b_14",
+   "text": "«tubular construction»: als «Schlauchbauweise» (rundgestrickter Körper ohne Seitennähte) übersetzt, Fachbegriff im Original nicht erklärt."
+  },
+  {
+   "id": 57,
+   "stapel": "b_14",
+   "text": "Prüfskript-Fehlalarm «Zahl(en) aus dem Original fehlen: 7, 8»: «7⁄8'' (2.2 cm)» mit zwei Hochkommas und Bruchstrich erkennt das Skript nicht als imperial; das Imperiale fällt weg, nur die Metrik «2,2 cm» gilt."
+  },
+  {
+   "id": 116,
+   "stapel": "b_14",
+   "text": "«Fabric laundered»: wörtlich als «Gewaschener Stoff» übersetzt (gemeint vermutlich vorgewaschen, im Original nicht erklärt)."
+  },
+  {
+   "id": 145,
+   "stapel": "b_14",
+   "text": "«Subtle orange hue shifts with lighting in the Orange color variant»: Original sprachlich unklar; sinngemäss übersetzt (Orangeton wirkt je nach Licht unterschiedlich). «Air-jet spun yarn» als «Air-Jet-Garn» (Fachbegriff), «athletic rib knit» als «Athletic-Rippstrick»."
+  },
+  {
+   "id": 146,
+   "stapel": "b_14",
+   "text": "Die Zeile «Heather Sport Dark Navy is 40% cotton, 60% polyester» hat im Original keinen Aufzählungspunkt; ohne Punkt belassen (Struktur erhalten). Farbname «Heather Sport Dark Navy» unübersetzt."
+  },
+  {
+   "id": 162,
+   "stapel": "b_14",
+   "text": "«rayon» als «Viskose» übersetzt (Bezeichnung nach Textilkennzeichnung)."
+  },
+  {
+   "id": 163,
+   "stapel": "b_14",
+   "text": "«edgy touch» sinngemäss als «cooler Touch» übersetzt; «raw edge seams» als «Nähte mit Rohkante»."
+  },
+  {
+   "id": 223,
+   "stapel": "b_15",
+   "text": "Farbnamen wie «Dark Grey Heather» bleiben als Varianten-Eigennamen englisch (gilt auch für Athletic Heather, Black Heather, Sport Grey, Ash Grey, Heather Grey, Heather Denim, Oxford Grey Heather, Charcoal Heather, Grey Heather, Heather Prism Lilac/Natural in 233, 271, 307, 342, 356, 360, 373, 411, 412, 438, 482); nur «White» → Weiss und «Natural» → Natur (438) übersetzt."
+  },
+  {
+   "id": 248,
+   "stapel": "b_15",
+   "text": "Triblend-Stoffgewicht: Original nennt «3.8 oz/yd² (90.07 g/m²)», 3,8 oz/yd² entsprechen aber rund 129 g/m²; die Metrik 90,07 g/m² wurde wie im Original übernommen (Regel: nur Metrik), Wert wirkt fehlerhaft."
+  },
+  {
+   "id": 248,
+   "stapel": "b_15",
+   "text": "Triblend-Zusammensetzung «50% polyester/25% combed/25% ringspun cotton/rayon» ist mehrdeutig (Rayon am Ende, Prozente der Baumwolle getrennt); wörtlich übersetzt, «rayon» als Viskose."
+  },
+  {
+   "id": 307,
+   "stapel": "b_15",
+   "text": "Original schreibt «142 g/m2» (ohne Hochzahl); im Deutschen als «142 g/m²» wie in allen anderen Einträgen gesetzt. Das Prüfskript meldet die «2» aus «m2» als fehlende Zahl (Falschmeldung)."
+  },
+  {
+   "id": 308,
+   "stapel": "b_15",
+   "text": "«for easy changing» nennt im Original kein Objekt; als Windelwechsel gelesen und «Wickeln» gesetzt, wie bei 234 («diaper changes» → «Wickeln»)."
+  },
+  {
+   "id": 342,
+   "stapel": "b_15",
+   "text": "«10K run» als «10-km-Lauf» wiedergegeben (K = Kilometer, nicht im Original ausgeschrieben)."
+  },
+  {
+   "id": 367,
+   "stapel": "b_15",
+   "text": "Abmessungen: Original «16″ × 14 ½″ × 5″ (40.6 cm × 35.6 cm × 12.7 cm)»; 14 ½″ wären 36,8 cm, die Metrik nennt 35,6 cm (= 14″). Es gilt wie vorgesehen nur die Metrik. Das Prüfskript meldet die «14» aus «14 ½″» als fehlende Zahl (Falschmeldung, weil sein Imperial-Muster «½» nicht kennt)."
+  },
+  {
+   "id": 412,
+   "stapel": "b_15",
+   "text": "«2 cross pockets in front» wörtlich als «2 Quertaschen vorne» übersetzt; gemeint sind möglicherweise Schräg- bzw. Eingrifftaschen (Fachbegriff im Original unklar)."
+  },
+  {
+   "id": 438,
+   "stapel": "b_15",
+   "text": "Original nennt zwei Gewichtsangaben «5.0–5.3 oz/yd² (170-180 g/m²)»; gemäss Regel nur die Metrik 170–180 g/m² übernommen."
+  },
+  {
+   "id": 440,
+   "stapel": "b_15",
+   "text": "Hersteller schreibt: «nur in Australien und Neuseeland erhältlich». Für den Schweizer Shop damit vermutlich nicht lieferbar/bestellbar; Text wörtlich übersetzt, Verfügbarkeit separat klären (kein Übersetzungsproblem)."
+  },
+  {
+   "id": 464,
+   "stapel": "b_15",
+   "text": "«Reverse Weave® cross-grain cut resists shrinkage» sinngemäss («quer zum Fadenlauf geschnitten, widersteht dem Einlaufen») wiedergegeben; Fachbegriff der Marke Champion, genaue deutsche Herstellerformulierung unbekannt."
+  },
+  {
+   "id": 464,
+   "stapel": "b_15",
+   "text": "«Unique scrunch-dye, tie-dye pattern» parallel als «Scrunch-Dye- und Tie-Dye-Muster» wiedergegeben; ob Scrunch-Dye die Technik und Tie-Dye das Muster meint, sagt das Original nicht."
+  },
+  {
+   "id": 482,
+   "stapel": "b_15",
+   "text": "«100% cotton face yarn» als «Aussengarn aus 100% Baumwolle» und «Tapered knee opening» als «Zulaufende Beinöffnung am Knie» wiedergegeben; Fachbegriffe im Original knapp, Bedeutung sinngemäss."
+  },
+  {
+   "id": 482,
+   "stapel": "b_15",
+   "text": "«Sewn fly detail» wörtlich als «Genähtes Hosenschlitz-Detail» übersetzt; gemeint ist wohl ein angedeuteter Hosenschlitz."
+  },
+  {
+   "id": 483,
+   "stapel": "b_16",
+   "text": "«3 yarns» ist im Original unklar (Garnzahl? Fadenzahl?), wörtlich als «3 Garne» übersetzt."
+  },
+  {
+   "id": 483,
+   "stapel": "b_16",
+   "text": "«Half moon inside collar» wörtlich als «Halbmond im Kragen innen» übersetzt (gemeint ist vermutlich ein Stoffstück im Nacken, Bedeutung nicht belegt)."
+  },
+  {
+   "id": 484,
+   "stapel": "b_16",
+   "text": "«Pullover lined hood» ist im Original knapp und unklar (Pullover-Modell mit gefütterter Kapuze?), als «Pullover mit gefütterter Kapuze» übersetzt."
+  },
+  {
+   "id": 489,
+   "stapel": "b_16",
+   "text": "«Ribbed topstitch on the collar» ist im Original unklar, sinngemäss als «Steppnaht am Rippkragen» übersetzt."
+  },
+  {
+   "id": 489,
+   "stapel": "b_16",
+   "text": "Farbnamen bleiben als Varianten-Eigennamen englisch (Ash, Heather, Charcoal Heather, Carbon Grey, Mixed Grey, Grey Marle, Marle, Charcoal Melange, Grey Heather, Heather Gray, Heather Grey, Athletic Heather, Oatmeal, Deep Navy in 489, 508, 511, 533, 537, 538, 539, 543, 556, 567, 582, 584, 590, 591, 610); nur «White» → Weiss und «Black» → Schwarz übersetzt (590)."
+  },
+  {
+   "id": 506,
+   "stapel": "b_16",
+   "text": "«Frenchy terry knit» im Original mit «Frenchy» geschrieben, als «French-Terry-Strick» übersetzt (vermutlich Schreibweise für French Terry)."
+  },
+  {
+   "id": 508,
+   "stapel": "b_16",
+   "text": "«7/8″» hat im Original keine Bezugsgrösse (Nahtabstand? Breite?), als «(ca. 2 cm)» in Klammern an die Kantensteppnaht gesetzt. Die Prüfung meldet «7» als fehlend: Zähler eines imperialen Bruchs, kein eigener Wert."
+  },
+  {
+   "id": 509,
+   "stapel": "b_16",
+   "text": "Aufzählungspunkt «Fabric weight:» steht im Original ohne Wert, unverändert ohne Wert übernommen (nichts ergänzt)."
+  },
+  {
+   "id": 509,
+   "stapel": "b_16",
+   "text": "Titel/Text sagen «fitted straight cut», die Aufzählung «Regular fit»: Widerspruch im Original, wörtlich übernommen."
+  },
+  {
+   "id": 584,
+   "stapel": "b_16",
+   "text": "«Metal kissing zipper» wörtlich als «Kissing-Reissverschluss aus Metall» übersetzt (Fachbegriff für einen Reissverschluss mit aneinanderliegenden Zahnreihen, im Original nicht erklärt)."
+  },
+  {
+   "id": 586,
+   "stapel": "b_16",
+   "text": "«7/8″» hat im Original keine Bezugsgrösse (Kragenbreite? Nahtabstand?), als «(ca. 2 cm)» in Klammern gesetzt. Die Prüfung meldet «7» als fehlend: Zähler eines imperialen Bruchs, kein eigener Wert."
+  },
+  {
+   "id": 593,
+   "stapel": "b_16",
+   "text": "«7/8″» hat im Original keine Bezugsgrösse (Kragenbreite? Nahtabstand?), als «(ca. 2 cm)» in Klammern gesetzt. Die Prüfung meldet «7» als fehlend: Zähler eines imperialen Bruchs, kein eigener Wert."
+  },
+  {
+   "id": 603,
+   "stapel": "b_16",
+   "text": "Der letzte Satz («If you sell this item on your online store ...») richtet sich im Original an Händler und nicht an Kundschaft; wörtlich übersetzt, für die Anzeige im Shop eventuell zu streichen."
+  },
+  {
+   "id": 610,
+   "stapel": "b_16",
+   "text": "Das Original nennt «8 oz/yd2 (190 g/m2)»: 8 oz/yd² entsprächen rund 271 g/m², die Metrik sagt 190 g/m². Nach Regel nur die Metrik übernommen (190 g/m²), Widerspruch im Original. Die Prüfung meldet «2» als fehlend: Exponent in «yd2»/«m2», kein eigener Wert."
+  },
+  {
+   "id": 665,
+   "stapel": "b_17",
+   "text": "Original widerspricht sich: «fitted t-shirt» im Einleitungstext, aber «Regular fit with a modern silhouette» in der Liste; wörtlich als «körpernah geschnitten» bzw. «Normale Passform mit moderner Silhouette» übersetzt. Aufzählung im Original mit «·» statt «•», so übernommen."
+  },
+  {
+   "id": 677,
+   "stapel": "b_17",
+   "text": "«Air-jetted fleece fabric» wörtlich als «Air-Jet-Fleece-Stoff» übersetzt (Fachbegriff, vermutlich Air-Jet-Garn; Bedeutung nicht geprüft). «Youth» einheitlich als «Jugend» wiedergegeben."
+  },
+  {
+   "id": 689,
+   "stapel": "b_17",
+   "text": "«2-end midweight fleece fabric» als «2-End-Fleece-Stoff, mittelschwer» übersetzt: «2-end» ist ein Fachbegriff der Fleece-Herstellung, Bedeutung nicht geprüft."
+  },
+  {
+   "id": 692,
+   "stapel": "b_17",
+   "text": "Farbname «Safety Green» bleibt als Varianten-Eigenname englisch (wie in Stapel 15 vereinbart)."
+  },
+  {
+   "id": 732,
+   "stapel": "b_17",
+   "text": "Farbname «Sport Grey» bleibt als Varianten-Eigenname englisch (wie in Stapel 15 vereinbart)."
+  },
+  {
+   "id": 733,
+   "stapel": "b_17",
+   "text": "Farbname «Marles» bleibt als Varianten-Eigenname englisch (wie in Stapel 15 vereinbart)."
+  },
+  {
+   "id": 773,
+   "stapel": "b_17",
+   "text": "«Split hem» als «Geteilter Saum» und «Fuller cut» als «Vollerer Schnitt» wörtlich übersetzt (Original knapp, genaue Bedeutung unklar); «Heatseal» als «im Heatseal-Verfahren»; das Zeichen «Ⓡ» hinter Under Armour wie im Original belassen."
+  },
+  {
+   "id": 780,
+   "stapel": "b_17",
+   "text": "Farbname «Athletic Heather» bleibt als Varianten-Eigenname englisch (wie in Stapel 15 vereinbart)."
+  },
+  {
+   "id": 808,
+   "stapel": "b_17",
+   "text": "«Quarter-turned» als «Viertelgedreht» übersetzt (wie in den übrigen Stapeln); Zweck im Original nicht genannt."
+  },
+  {
+   "id": 831,
+   "stapel": "b_17",
+   "text": "«light suede finish» wörtlich als «Wildleder-Finish» übersetzt: gemeint ist vermutlich die Oberflächenanmutung des Stoffs, kein Leder; im Original nicht näher erklärt."
+  },
+  {
+   "id": 833,
+   "stapel": "b_18",
+   "text": "«stitched buttonhole eyelets» wörtlich als «genähte Knopflochösen» übersetzt (gemeint sind vermutlich Ösen in Knopflochstich-Ausführung), «Slanted side seam pockets» als «Schräge Seitennahttaschen»."
+  },
+  {
+   "id": 839,
+   "stapel": "b_18",
+   "text": "«Forward-rolled shoulder» ist ein Fachbegriff (Schulternaht nach vorn versetzt) und wurde wörtlich als «Nach vorn gerollte Schulter» übersetzt."
+  },
+  {
+   "id": 843,
+   "stapel": "b_18",
+   "text": "«Envelope neckline» (überlappender Schlupfausschnitt) als Fachbegriff «Envelope-Ausschnitt» übernommen; «three-snap closure» als «Verschluss mit drei Druckknöpfen» gelesen (snap = Druckknopf)."
+  },
+  {
+   "id": 844,
+   "stapel": "b_18",
+   "text": "«tipped ends» (Kordelenden) als «Endspitzen» übersetzt; ob Metall oder Kunststoff, nennt das Original nicht."
+  },
+  {
+   "id": 857,
+   "stapel": "b_18",
+   "text": "«Self-binding seams» als «Nähte mit Eigenstoffeinfassung» gelesen (Fachbegriff, wörtlich nicht eindeutig)."
+  },
+  {
+   "id": 898,
+   "stapel": "b_18",
+   "text": "«2 front cross jersey-lined pockets» ist knapp formuliert; als «2 vordere Schrägtaschen mit Jerseyfutter» gelesen (cross = Schrägtasche), Bedeutung nicht sicher."
+  },
+  {
+   "id": 956,
+   "stapel": "b_18",
+   "text": "«7/8\"» steht im Original ohne Bezugsgrösse direkt vor «1×1 ribbed collar»; als Breite des Rippkragens gelesen («Ca. 2 cm breiter 1×1-Rippkragen»), die Deutung ist nicht belegt. Die Prüfung meldet «7» als fehlend: Das ist der Zähler eines imperialen Bruchs (7/8 Zoll), kein eigener Wert, und kann im Deutschen nicht stehen, ohne eine imperiale Angabe zu übernehmen."
+  },
+  {
+   "id": 971,
+   "stapel": "b_19",
+   "text": "«Seamless-body» wörtlich als «Nahtloser Rumpf» wiedergegeben (gemeint ist vermutlich ein Rundstrickkörper ohne Seitennähte, Herstellerangabe nicht weiter erklärt)."
+  },
+  {
+   "id": 975,
+   "stapel": "b_19",
+   "text": "Farbname «Heather Grey» als «Grau meliert» übersetzt (nicht im Farbnamen-Wörterbuch der Locales); mit der angezeigten Farboption abgleichen."
+  },
+  {
+   "id": 1411,
+   "stapel": "b_19",
+   "text": "«31 singles» als «31er Einfachgarn» wiedergegeben (Garnfeinheit, vom Hersteller nicht erklärt)."
+  },
+  {
+   "id": 1411,
+   "stapel": "b_19",
+   "text": "«Rolled forward shoulders» wörtlich als «Nach vorne gerollte Schultern» übersetzt; gemeint ist vermutlich nach vorne verlegte Schulternähte, Sinn nicht gesichert."
+  },
+  {
+   "id": 1411,
+   "stapel": "b_19",
+   "text": "«Youth» als «Kinder» wiedergegeben (Herstellergrösse Youth)."
+  },
+  {
+   "id": 1420,
+   "stapel": "b_19",
+   "text": "«Mill-dyed» als «werksgefärbt» wiedergegeben (Stoff vor dem Zuschnitt gefärbt, im Gegensatz zu stückgefärbt); Farbname «Heather Grey» als «Grau meliert»."
+  },
+  {
+   "id": 1421,
+   "stapel": "b_19",
+   "text": "«Tailored fit» als «taillierte Passform» wiedergegeben; Herstellerangabe lässt offen, wie eng der Schnitt ist."
+  },
+  {
+   "id": 1421,
+   "stapel": "b_19",
+   "text": "Farbnamen «Heather» als «Meliert» und «Ash» als «Aschgrau» übersetzt (nicht im Farbnamen-Wörterbuch); mit den Farboptionen abgleichen."
+  },
+  {
+   "id": 1577,
+   "stapel": "b_19",
+   "text": "«for fulfillment in the US/EU» als «bei Abwicklung in den USA/der EU» wiedergegeben (die Zusammensetzung hängt vom Produktionsstandort des Auftrags ab)."
+  },
+  {
+   "id": 1577,
+   "stapel": "b_19",
+   "text": "Schlusshinweis zu US-Kundschaft («US customers should order a size up») steht im Original und wurde übernommen; für einen Schweizer Shop eventuell zu streichen."
+  },
+  {
+   "id": 1589,
+   "stapel": "b_19",
+   "text": "«Seamless body» wörtlich als «Nahtloser Rumpf» wiedergegeben."
+  },
+  {
+   "id": 1592,
+   "stapel": "b_19",
+   "text": "Farbname «Athletic Heather» als «Sportgrau meliert» übersetzt (nicht im Farbnamen-Wörterbuch); mit der Farboption abgleichen."
+  },
+  {
+   "id": 1636,
+   "stapel": "b_19",
+   "text": "«Quarter-turned to help maintain a clean appearance» wörtlich als «Viertelgedreht verarbeitet, damit das Erscheinungsbild sauber bleibt» übersetzt (Verfahren gegen Mittelfalte, Herstellerangabe knapp)."
+  },
+  {
+   "id": 1636,
+   "stapel": "b_19",
+   "text": "«Forward-thrusted shoulder seam» als «Nach vorne versetzte Schulternaht» wiedergegeben."
+  },
+  {
+   "id": 1636,
+   "stapel": "b_19",
+   "text": "Farbnamen «Heather Grey» als «Grau meliert», «Charcoal Grey» als «Anthrazitgrau» übersetzt (nicht im Farbnamen-Wörterbuch)."
+  },
+  {
+   "id": 1636,
+   "stapel": "b_19",
+   "text": "«1″ collar» als Kragenbreite von 2,5 cm gelesen; das Original sagt nur «1″ collar»."
+  },
+  {
+   "id": 1637,
+   "stapel": "b_19",
+   "text": "«7/8″ ... collar» und «1″ ... hems» bezeichnen vermutlich Breiten; als Klammerangabe in cm übernommen, Bezug (Breite) nicht ausdrücklich im Original."
+  },
+  {
+   "id": 1637,
+   "stapel": "b_19",
+   "text": "Prüfskript meldet für diese Zeile «Zahl(en) aus dem Original fehlen: 7»: Falschalarm, weil der Bruch «7/8″» nur zur Hälfte (8″) als imperiale Angabe erkannt wird; die Umrechnung steht im Text."
+  },
+  {
+   "id": 1637,
+   "stapel": "b_19",
+   "text": "«Quarter-turned to eliminate center crease» als «Viertelgedreht verarbeitet, um die Mittelfalte zu vermeiden»; Farbnamen Charcoal Grey, Safety Green, Lime als «Anthrazitgrau», «Warngrün», «Limettengrün» übersetzt."
+  },
+  {
+   "id": 1637,
+   "stapel": "b_19",
+   "text": "«18 singles» als «18er Einfachgarn» wiedergegeben (Garnfeinheit)."
+  },
+  {
+   "id": 1638,
+   "stapel": "b_19",
+   "text": "«Retail fit» als «handelsübliche Passform» wiedergegeben (Herstellerbegriff, genaue Schnittform unklar)."
+  },
+  {
+   "id": 1638,
+   "stapel": "b_19",
+   "text": "«30 singles yarn» als «30er Einfachgarn»; «mid-weight fabric» im Text steht neben 145 g/m² (eher leicht), wörtlich übernommen."
+  },
+  {
+   "id": 1639,
+   "stapel": "b_19",
+   "text": "Original richtet sich an Verkäufer (Printful-Händlertext: «Add your designs ... start selling»); wörtlich übersetzt, für Kundschaft des Shops wahrscheinlich unpassend und kürzenswert."
+  },
+  {
+   "id": 1653,
+   "stapel": "b_19",
+   "text": "Farbnamen Forest, Maroon, Military Green als «Waldgrün», «Kastanienbraun», «Militärgrün» übersetzt (nicht im Farbnamen-Wörterbuch; Light Pink = Hellrosa, Purple = Violett wie dort); mit den Farboptionen abgleichen."
+  },
+  {
+   "id": 1653,
+   "stapel": "b_19",
+   "text": "«Front pouch pocket» als «Kängurutasche vorne» wiedergegeben; «Spandex» als «Elastan»."
+  },
+  {
+   "id": 1657,
+   "stapel": "b_19",
+   "text": "«Open-end cotton» als «Open-End» (Spinnverfahren) belassen, «handfeel» als «Griff» (Textilfachbegriff)."
+  },
+  {
+   "id": 1660,
+   "stapel": "b_19",
+   "text": "«3-end fleece» als «3-Faden-Fleece» wiedergegeben (Fachbegriff für dreifädigen Fleece, vom Hersteller nicht erklärt)."
+  },
+  {
+   "id": 1660,
+   "stapel": "b_19",
+   "text": "Farbname «Natural Raw» als «Natur roh» übersetzt (nicht im Farbnamen-Wörterbuch, dort nur «Natur»); mit der Farboption abgleichen."
+  },
+  {
+   "id": 1661,
+   "stapel": "b_19",
+   "text": "«3-end fleece» als «3-Faden-Fleece»; «zip-up hoodie» als «Kapuzenjacke mit Reissverschluss»."
+  },
+  {
+   "id": 1667,
+   "stapel": "b_19",
+   "text": "«3-end French terry», «face yarn» (hier «Garn auf der Aussenseite») und «back half-moon patch» (hier «halbmondförmiger Einsatz am Rücken») sind knappe Herstellerbegriffe; Sinn nicht gesichert. «French Terry» als Stoffname belassen."
+  },
+  {
+   "id": 1668,
+   "stapel": "b_19",
+   "text": "Wie bei 1667: «3-end», «face yarn» und «back half-moon patch» wörtlich bzw. sinngemäss wiedergegeben, Sinn nicht gesichert."
+  },
+  {
+   "id": 1669,
+   "stapel": "b_19",
+   "text": "«3-end fleece» als «3-Faden-Fleece», «face yarn» als «Garn auf der Aussenseite»; Farbname «Heather Grey» als «Grau meliert»."
+  },
+  {
+   "id": 1670,
+   "stapel": "b_19",
+   "text": "«20 singles yarn» als «20er Einfachgarn»; Farbname «Heather Grey» als «Grau meliert»."
+  },
+  {
+   "id": 1722,
+   "stapel": "b_20",
+   "text": "26 singles: Garnfeinheit (vermutlich Einfachgarn Nm/Ne 26, Herstellerangabe), im Original ohne Einheit und Erklärung, daher wörtlich als «26 Singles» übernommen"
+  },
+  {
+   "id": 1722,
+   "stapel": "b_20",
+   "text": "Ringer Tee: als «Ringer-Shirt» übersetzt (gängiger Fachbegriff für T-Shirt mit kontrastfarbenem Halsbündchen und Ärmelabschlüssen), der Titel selbst ist nicht Teil der Übersetzung"
+  },
+  {
+   "id": 1722,
+   "stapel": "b_20",
+   "text": "Aufzählungszeichen: das Original nutzt «·» (Mittelpunkt) statt «•», unverändert übernommen"
+  }
+ ],
+ "umgerechnet": [
+  {
+   "von": "4 oz",
+   "nach": "113 g",
+   "rechnung": "4 × 28,35 g = 113,4 g, auf ganze g gerundet (Kerzengrösse als Gewicht gelesen, wie bei Nr. 861: 9 oz = 255 g)",
+   "id": 1424,
+   "stapel": "b_01"
+  },
+  {
+   "von": "9 oz",
+   "nach": "255 g",
+   "rechnung": "9 × 28,35 g = 255,15 g, auf ganze g gerundet",
+   "id": 1424,
+   "stapel": "b_01"
+  },
+  {
+   "von": "2,36″ (Grösse 4 oz)",
+   "nach": "ca. 6 cm",
+   "rechnung": "2,36 × 2,54 = 5,99 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 1424,
+   "stapel": "b_01"
+  },
+  {
+   "von": "2,56″ (Grösse 4 oz)",
+   "nach": "ca. 6,5 cm",
+   "rechnung": "2,56 × 2,54 = 6,50 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 1424,
+   "stapel": "b_01"
+  },
+  {
+   "von": "2,87″ (Grösse 9 oz)",
+   "nach": "ca. 7,5 cm",
+   "rechnung": "2,87 × 2,54 = 7,29 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 1424,
+   "stapel": "b_01"
+  },
+  {
+   "von": "3,5″ (Grösse 9 oz)",
+   "nach": "ca. 9 cm",
+   "rechnung": "3,5 × 2,54 = 8,89 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 1424,
+   "stapel": "b_01"
+  },
+  {
+   "von": "One size: 22″ × 11.5″ × 11.5″",
+   "nach": "Einheitsgrösse: 56 × 29 × 29 cm",
+   "rechnung": "22 in × 2,54 = 55,9 cm, gerundet 56 cm; 11,5 in × 2,54 = 29,2 cm, gerundet 29 cm (zweimal)",
+   "id": 465,
+   "stapel": "b_02"
+  },
+  {
+   "von": "14″",
+   "nach": "ca. 36 cm",
+   "rechnung": "14 × 2,54 = 35,56 cm, auf ganze cm gerundet",
+   "id": 672,
+   "stapel": "b_05"
+  },
+  {
+   "von": "27″",
+   "nach": "ca. 69 cm",
+   "rechnung": "27 × 2,54 = 68,58 cm, auf ganze cm gerundet",
+   "id": 672,
+   "stapel": "b_05"
+  },
+  {
+   "von": "24″",
+   "nach": "ca. 61 cm",
+   "rechnung": "24 × 2,54 = 60,96 cm, auf ganze cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "36″",
+   "nach": "ca. 91 cm",
+   "rechnung": "36 × 2,54 = 91,44 cm, auf ganze cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "60″",
+   "nach": "ca. 152 cm",
+   "rechnung": "60 × 2,54 = 152,4 cm, auf ganze cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "48″",
+   "nach": "ca. 122 cm",
+   "rechnung": "48 × 2,54 = 121,92 cm, auf ganze cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "72″",
+   "nach": "ca. 183 cm",
+   "rechnung": "72 × 2,54 = 182,88 cm, auf ganze cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "± 2″",
+   "nach": "± ca. 5 cm",
+   "rechnung": "2 × 2,54 = 5,08 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "± 3″",
+   "nach": "± ca. 7,5 cm",
+   "rechnung": "3 × 2,54 = 7,62 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "± 3.5″",
+   "nach": "± ca. 9 cm",
+   "rechnung": "3,5 × 2,54 = 8,89 cm, unter 10 cm auf 0,5 cm gerundet",
+   "id": 924,
+   "stapel": "b_05"
+  },
+  {
+   "von": "58″",
+   "nach": "ca. 147 cm",
+   "rechnung": "58 × 2,54 = 147,32 cm, auf ganze cm gerundet",
+   "id": 1467,
+   "stapel": "b_05"
+  },
+  {
+   "von": "102″",
+   "nach": "ca. 259 cm",
+   "rechnung": "102 × 2,54 = 259,08 cm, auf ganze cm gerundet",
+   "id": 1467,
+   "stapel": "b_05"
+  },
+  {
+   "von": "22–23\" Brustradius (Grösse S)",
+   "nach": "56 bis 58 cm",
+   "rechnung": "22 × 2,54 = 55,9 cm und 23 × 2,54 = 58,4 cm, auf ganze cm gerundet",
+   "id": 1539,
+   "stapel": "b_06"
+  },
+  {
+   "von": "soft 10 oz fleece (Einleitungstext)",
+   "nach": "weichem Fleece mit 339 g/m²",
+   "rechnung": "«10 oz» im Einleitungstext meint das Stoffgewicht; der erste Aufzählungspunkt des Originals nennt es selbst mit «10 oz./yd.² (339 g/m²)», also gilt 339 g/m² (Kontrolle: 10 × 33,9 = 339)",
+   "id": 1629,
+   "stapel": "b_07"
+  },
+  {
+   "von": "3″ crown",
+   "nach": "7,5 cm hohe Krone",
+   "rechnung": "3 in × 2,54 cm/in = 7,62 cm, gerundet auf 7,5 cm (unter 10 cm auf 0,5 cm)",
+   "id": 253,
+   "stapel": "b_08"
+  },
+  {
+   "von": "32 oz. bottle (Flasche, nur Imperiales)",
+   "nach": "Flaschen mit 950 ml",
+   "rechnung": "32 US-Flüssigunzen (fl oz) × 29,57 ml = 946 ml, gerundet auf 950 ml",
+   "id": 847,
+   "stapel": "b_09"
+  },
+  {
+   "von": "24″ × 36″",
+   "nach": "61 × 91 cm",
+   "rechnung": "24 × 2,54 = 60,96 cm, 36 × 2,54 = 91,44 cm, auf ganze cm gerundet; deckt sich mit der cm-Variante des Posters (Id 304: 61 × 91 cm)",
+   "id": 2,
+   "stapel": "b_10"
+  },
+  {
+   "von": "24″ × 36″",
+   "nach": "61 × 91 cm",
+   "rechnung": "24 × 2,54 = 60,96 cm, 36 × 2,54 = 91,44 cm, auf ganze cm gerundet; deckt sich mit der cm-Variante des Posters (Id 304: 61 × 91 cm)",
+   "id": 172,
+   "stapel": "b_10"
+  },
+  {
+   "von": "10.3 mil",
+   "nach": "0,26 mm",
+   "rechnung": "1 mil = 0,0254 mm; 10,3 × 0,0254 = 0,262 mm, auf 0,26 mm gerundet; deckt sich mit «10.3 mil (0.26 mm)» der übrigen Posterprodukte (Ids 2, 304, 795)",
+   "id": 366,
+   "stapel": "b_10"
+  },
+  {
+   "von": "24″ × 36″",
+   "nach": "61 × 91 cm",
+   "rechnung": "24 × 2,54 = 60,96 cm, 36 × 2,54 = 91,44 cm, auf ganze cm gerundet; deckt sich mit der cm-Variante des Posters (Id 304: 61 × 91 cm)",
+   "id": 795,
+   "stapel": "b_10"
+  },
+  {
+   "von": "11 oz",
+   "nach": "325 ml",
+   "rechnung": "11 US-Flüssigunzen (fl oz) × 29,57 ml = 325 ml",
+   "id": 19,
+   "stapel": "b_11"
+  },
+  {
+   "von": "15 oz",
+   "nach": "444 ml",
+   "rechnung": "15 US-Flüssigunzen (fl oz) × 29,57 ml = 443,6 ml, gerundet auf 444 ml",
+   "id": 19,
+   "stapel": "b_11"
+  },
+  {
+   "von": "20 oz",
+   "nach": "591 ml",
+   "rechnung": "20 US-Flüssigunzen (fl oz) × 29,57 ml = 591,5 ml, auf ganze ml abgerundet (591 ml, wie im Katalogfenster)",
+   "id": 19,
+   "stapel": "b_11"
+  },
+  {
+   "von": "11 oz",
+   "nach": "325 ml",
+   "rechnung": "11 US-Flüssigunzen (fl oz) × 29,57 ml = 325 ml",
+   "id": 300,
+   "stapel": "b_11"
+  },
+  {
+   "von": "15 oz",
+   "nach": "444 ml",
+   "rechnung": "15 US-Flüssigunzen (fl oz) × 29,57 ml = 443,6 ml, gerundet auf 444 ml",
+   "id": 300,
+   "stapel": "b_11"
+  },
+  {
+   "von": "11 oz",
+   "nach": "325 ml",
+   "rechnung": "11 US-Flüssigunzen (fl oz) × 29,57 ml = 325 ml",
+   "id": 403,
+   "stapel": "b_11"
+  },
+  {
+   "von": "15 oz",
+   "nach": "444 ml",
+   "rechnung": "15 US-Flüssigunzen (fl oz) × 29,57 ml = 443,6 ml, gerundet auf 444 ml",
+   "id": 403,
+   "stapel": "b_11"
+  },
+  {
+   "von": "Volume: 12oz",
+   "nach": "Volumen: 355 ml",
+   "rechnung": "12 US-Flüssigunzen (fl oz) × 29,57 ml = 354,9 ml, gerundet auf 355 ml",
+   "id": 837,
+   "stapel": "b_11"
+  },
+  {
+   "von": "5.75\" × 8\"",
+   "nach": "ca. 15 cm × 20 cm",
+   "rechnung": "5,75 × 2,54 = 14,6 cm, auf ganze cm gerundet 15 cm; 8 × 2,54 = 20,3 cm, auf ganze cm gerundet 20 cm",
+   "id": 1013,
+   "stapel": "b_12"
+  },
+  {
+   "von": "luncheon 6.5″ × 6.5″",
+   "nach": "ca. 17 cm × 17 cm",
+   "rechnung": "6,5 × 2,54 = 16,5 cm, auf ganze cm gerundet 17 cm",
+   "id": 1435,
+   "stapel": "b_12"
+  },
+  {
+   "von": "beverage 4.8″ × 4.8″",
+   "nach": "ca. 12 cm × 12 cm",
+   "rechnung": "4,8 × 2,54 = 12,2 cm, auf ganze cm gerundet 12 cm",
+   "id": 1435,
+   "stapel": "b_12"
+  },
+  {
+   "von": "6.25″ × 12.5″",
+   "nach": "ca. 16 cm × 32 cm",
+   "rechnung": "6,25 × 2,54 = 15,9 cm, 12,5 × 2,54 = 31,8 cm, auf ganze cm gerundet",
+   "id": 1466,
+   "stapel": "b_12"
+  },
+  {
+   "von": "10″ × 13″",
+   "nach": "ca. 25 cm × 33 cm",
+   "rechnung": "10 × 2,54 = 25,4 cm, 13 × 2,54 = 33,0 cm, auf ganze cm gerundet",
+   "id": 1466,
+   "stapel": "b_12"
+  },
+  {
+   "von": "8″ × 10.25″",
+   "nach": "ca. 20 cm × 26 cm",
+   "rechnung": "8 × 2,54 = 20,3 cm, 10,25 × 2,54 = 26,0 cm, auf ganze cm gerundet",
+   "id": 1466,
+   "stapel": "b_12"
+  },
+  {
+   "von": "5.5″ × 8.375″",
+   "nach": "ca. 14 cm × 21 cm",
+   "rechnung": "5,5 × 2,54 = 14,0 cm, 8,375 × 2,54 = 21,3 cm, auf ganze cm gerundet",
+   "id": 1466,
+   "stapel": "b_12"
+  },
+  {
+   "von": "1/16″ dicke Seiten",
+   "nach": "ca. 1,6 mm",
+   "rechnung": "1/16 × 25,4 mm = 1,59 mm, auf 0,1 mm gerundet",
+   "id": 1556,
+   "stapel": "b_12"
+  },
+  {
+   "von": "100 lb Papier",
+   "nach": "ca. 150 g/m²",
+   "rechnung": "«100 lb» ist die US-Flächengewichtsklasse für Papier (Basisgewicht je Ries, keine Masse): 100 lb Text entspricht etwa 148 g/m², auf 5 g/m² gerundet 150 g/m²; nicht mit 453,6 g gerechnet",
+   "id": 1563,
+   "stapel": "b_12"
+  },
+  {
+   "von": "11″ × 8.5″",
+   "nach": "ca. 28 cm × 22 cm",
+   "rechnung": "11 × 2,54 = 27,9 cm, 8,5 × 2,54 = 21,6 cm, auf ganze cm gerundet",
+   "id": 1564,
+   "stapel": "b_12"
+  },
+  {
+   "von": "8″ × 8″",
+   "nach": "ca. 20 cm × 20 cm",
+   "rechnung": "8 × 2,54 = 20,3 cm, auf ganze cm gerundet",
+   "id": 1564,
+   "stapel": "b_12"
+  },
+  {
+   "von": "98pt chipboard",
+   "nach": "ca. 2,5 mm starke Pappe",
+   "rechnung": "98 pt = 0,098 Zoll (1 pt = 0,001 Zoll = 0,0254 mm), 98 × 0,0254 = 2,49 mm, auf 0,5 mm gerundet",
+   "id": 1564,
+   "stapel": "b_12"
+  },
+  {
+   "von": "3/8″ Drahtbindung",
+   "nach": "ca. 9,5 mm",
+   "rechnung": "3/8 × 25,4 mm = 9,5 mm",
+   "id": 1656,
+   "stapel": "b_12"
+  },
+  {
+   "von": "10.3 mil",
+   "nach": "0,26 mm",
+   "rechnung": "1 mil = 0,0254 mm; 10,3 × 0,0254 = 0,262 mm, auf 0,26 mm gerundet; deckt sich mit «0.26 mm (10.3 mil)» der cm-Variante (Id 268)",
+   "id": 1,
+   "stapel": "b_12"
+  },
+  {
+   "von": "1/2″ Abstand zur Wand",
+   "nach": "ca. 1,3 cm",
+   "rechnung": "0,5 in × 2,54 = 1,27 cm, auf 1,3 cm gerundet (genauer als die 0,5-cm-Stufe, weil es ein Wandabstand ist)",
+   "id": 588,
+   "stapel": "b_13"
+  },
+  {
+   "von": "Small (22″ × 14″ × 9″)",
+   "nach": "Klein (56 × 36 × 23 cm)",
+   "rechnung": "22 in × 2,54 = 55,9 cm → 56; 14 in × 2,54 = 35,6 → 36; 9 in × 2,54 = 22,9 → 23",
+   "id": 891,
+   "stapel": "b_14"
+  },
+  {
+   "von": "Medium (26″ × 18″ × 10″)",
+   "nach": "Mittel (66 × 46 × 25 cm)",
+   "rechnung": "26 in × 2,54 = 66,0 cm → 66; 18 in × 2,54 = 45,7 → 46; 10 in × 2,54 = 25,4 → 25",
+   "id": 891,
+   "stapel": "b_14"
+  },
+  {
+   "von": "Large (30″ × 20″ × 11″)",
+   "nach": "Gross (76 × 51 × 28 cm)",
+   "rechnung": "30 in × 2,54 = 76,2 cm → 76; 20 in × 2,54 = 50,8 → 51; 11 in × 2,54 = 27,9 → 28",
+   "id": 891,
+   "stapel": "b_14"
+  },
+  {
+   "von": "30 pcs / 110 pcs (10″ × 8″)",
+   "nach": "25 × 20 cm",
+   "rechnung": "10 in × 2,54 = 25,4 cm → 25; 8 in × 2,54 = 20,3 → 20",
+   "id": 906,
+   "stapel": "b_14"
+  },
+  {
+   "von": "252 pcs (14″ × 11″)",
+   "nach": "36 × 28 cm",
+   "rechnung": "14 in × 2,54 = 35,6 cm → 36; 11 in × 2,54 = 27,9 → 28",
+   "id": 906,
+   "stapel": "b_14"
+  },
+  {
+   "von": "500 pcs (21″ × 15.5″)",
+   "nach": "53 × 39 cm",
+   "rechnung": "21 in × 2,54 = 53,3 cm → 53; 15,5 in × 2,54 = 39,4 → 39",
+   "id": 906,
+   "stapel": "b_14"
+  },
+  {
+   "von": "1000 pcs (30″ × 20″)",
+   "nach": "76 × 51 cm",
+   "rechnung": "30 in × 2,54 = 76,2 cm → 76; 20 in × 2,54 = 50,8 → 51",
+   "id": 906,
+   "stapel": "b_14"
+  },
+  {
+   "von": "2000 pcs (40″ × 28″)",
+   "nach": "102 × 71 cm",
+   "rechnung": "40 in × 2,54 = 101,6 cm → 102; 28 in × 2,54 = 71,1 → 71",
+   "id": 906,
+   "stapel": "b_14"
+  },
+  {
+   "von": "20-oz (Einleitungstext)",
+   "nach": "600-ml",
+   "rechnung": "Keine eigene Umrechnung: Das Original nennt im Aufzählungspunkt «Capacity: 20 oz (600 ml)», die Metrik des Herstellers (600 ml) gilt; 20 oz wären rechnerisch 591 ml.",
+   "id": 909,
+   "stapel": "b_14"
+  },
+  {
+   "von": "12″ × 18″",
+   "nach": "30 × 46 cm",
+   "rechnung": "12 in × 2,54 = 30,5 cm → 30; 18 in × 2,54 = 45,7 → 46",
+   "id": 1652,
+   "stapel": "b_14"
+  },
+  {
+   "von": "24″ × 36″",
+   "nach": "61 × 91 cm",
+   "rechnung": "24 in × 2,54 = 61,0 cm → 61; 36 in × 2,54 = 91,4 → 91",
+   "id": 1652,
+   "stapel": "b_14"
+  },
+  {
+   "von": "36″ × 60″",
+   "nach": "91 × 152 cm",
+   "rechnung": "36 in × 2,54 = 91,4 cm → 91; 60 in × 2,54 = 152,4 → 152",
+   "id": 1652,
+   "stapel": "b_14"
+  },
+  {
+   "von": "Single-needle edge stitch 7/8″",
+   "nach": "Einnadel-Kantensteppnaht (ca. 2 cm)",
+   "rechnung": "7/8 in × 2,54 = 2,22 cm, unter 10 cm auf 0,5 cm gerundet = ca. 2 cm",
+   "id": 508,
+   "stapel": "b_16"
+  },
+  {
+   "von": "30 lbs maximum carrying weight (Fliesstext)",
+   "nach": "maximale Tragkraft von 13,6 kg",
+   "rechnung": "30 lbs × 0,4536 = 13,6 kg; derselbe Wert steht im Original im Aufzählungspunkt «30 lbs (13.6 kg)»",
+   "id": 528,
+   "stapel": "b_16"
+  },
+  {
+   "von": "7/8″ double-needle topstitched collar",
+   "nach": "Kragen (ca. 2 cm) mit Doppelnadel-Steppnaht",
+   "rechnung": "7/8 in × 2,54 = 2,22 cm, unter 10 cm auf 0,5 cm gerundet = ca. 2 cm",
+   "id": 586,
+   "stapel": "b_16"
+  },
+  {
+   "von": "7/8″ double-needle topstitched collar",
+   "nach": "Kragen (ca. 2 cm) mit Doppelnadel-Steppnaht",
+   "rechnung": "7/8 in × 2,54 = 2,22 cm, unter 10 cm auf 0,5 cm gerundet = ca. 2 cm",
+   "id": 593,
+   "stapel": "b_16"
+  },
+  {
+   "von": "7/8\" 1×1 ribbed collar",
+   "nach": "Ca. 2 cm breiter 1×1-Rippkragen",
+   "rechnung": "7/8 in × 2,54 = 2,22 cm, unter 10 cm auf 0,5 cm gerundet = ca. 2 cm",
+   "id": 956,
+   "stapel": "b_18"
+  },
+  {
+   "von": "Stretch-proof 1″ collar",
+   "nach": "Dehnungsfester Kragen (2,5 cm)",
+   "rechnung": "1 in × 2,54 = 2,54 cm, auf 0,5 cm gerundet 2,5 cm",
+   "id": 1636,
+   "stapel": "b_19"
+  },
+  {
+   "von": "7/8″ seamless, non-topstitched collar",
+   "nach": "Nahtloser Kragen ohne Absteppung (ca. 2 cm)",
+   "rechnung": "7/8 in = 0,875 × 2,54 = 2,22 cm, auf 0,5 cm gerundet 2 cm",
+   "id": 1637,
+   "stapel": "b_19"
+  },
+  {
+   "von": "1″ double-needle stitched sleeves and bottom hems",
+   "nach": "Ärmelsäume und unterer Saum (2,5 cm) mit Doppelnadelnaht",
+   "rechnung": "1 in × 2,54 = 2,54 cm, auf 0,5 cm gerundet 2,5 cm",
+   "id": 1637,
+   "stapel": "b_19"
+  }
+ ],
+ "unsicher_woerterbuch": [
+  {
+   "en": "Stitch color / Zipper & Stitch color / Drawcord & Stitch color",
+   "grund": "Abweichung vom Beispiel der Aufgabe («Stitch color» = «Stickfarbe»): alle 113 Vorkommen (103 + 8 + 2, GEMESSEN in den Detaildaten) gehören zu Produkten mit der Technik Cut-Sew oder Direct-to-Fabric (Allover-Print: Kissen, Leggings, Tragtaschen, Hoodie, Trikot), dort ist es die Farbe des Nähgarns der Naht, keine Stickerei. «Stickfarbe» würde eine Stickerei vortäuschen, darum «Nahtfarbe», «Reissverschluss- und Nahtfarbe», «Kordel- und Nahtfarbe». Wer das Beispiel der Aufgabe beibehalten will, ersetzt nur diese drei Werte. Zu den Werten: 'Clear' = «Transparent» (transparentes Nähgarn, nur Tragtaschen/Rucksack), 'Black'/'White' = Schwarz/Weiss."
+  },
+  {
+   "en": "Lifelike",
+   "grund": "Printful-Eigenbegriff einer Ja/Nein-Option (Typ bool, ohne Werte), im Katalogdatensatz nicht erklärt. GEMESSEN: 91 Modelle tragen sie, 78 davon mit Technik Stickerei, 13 nur mit DTG/DTF (z. B. Tank Tops, Baby-Body, Tote Bag): es ist also nicht nur eine Stickoption. Wörtlich «naturgetreu» übersetzt; was sie bewirkt, ist im Datensatz nicht belegt. Besser bei Printful klären."
+  },
+  {
+   "en": "Branding / Branding outside / Branding inside",
+   "grund": "Der Platz hat den Typ label_inside bzw. label_outside, ist also dieselbe Fläche wie «Inside label»/«Outside label» (Schuhe, Windjacke, Trainingshose, Bucket Hat). Der Titel «Branding» ist ein Printful-Eigenbegriff, als «Branding-Etikett» übersetzt (nicht als blosses «Etikett», weil Printful die beiden Namen getrennt führt)."
+  },
+  {
+   "en": "Cover / Outside cover / Inside cover",
+   "grund": "Kommt bei Kalendern, Board Book, Malbuch, Fotobuch und Notizbuch vor. «Umschlag» passt für Bücher und Notizbuch, bei Kalendern wäre «Deckblatt» natürlicher. Ein Wörterbuch ohne Produktbezug kann nur einen Begriff liefern."
+  },
+  {
+   "en": "Collar",
+   "grund": "Zwei Bedeutungen: Kragen bei Hemd/Sporttrikot (Modelle 920, 944), aber Halsband bei Pet Collar (749) und Pet Collar & Leash (750, Positionen Typ front/default). «Kragen» gewählt; für 749 und 750 müsste der Code «Halsband» setzen (Unterscheidung über Modell-ID oder file.type: 'collar' = Kragen). UMGESETZT (Gegenleser-Fund F6): «Kragen» bleibt Vorgabe, die Modelle 749 (Pet Collar) und 750 (Pet Collar & Leash) stehen als Ausnahme «Halsband» im Abschnitt «ausnahmen» (GEMESSEN: 749 hat file.type front, 750 default, 920/944 collar)."
+  },
+  {
+   "en": "Mockup",
+   "grund": "Der Platz (id preview, type mockup) wird im Fenster ausgeblendet (luxe-clothing.js Zeile 449 filtert preview/mockup heraus), die Übersetzung «Vorschau» ist nur für den Fall, dass er je angezeigt wird."
+  },
+  {
+   "en": "Print file",
+   "grund": "Printful-Bezeichnung für die einzige Druckfläche bei Produkten ohne Vorder-/Rückseite (Poster, Leinwand, Tassen u. ä., 85 Vorkommen). Wörtlich «Druckdatei», als Positionsname für Kundinnen etwas technisch; «Druckfläche» wäre verständlicher, ist aber nicht wörtlich."
+  },
+  {
+   "en": "Details / Label panel / Base / Bow / Facing / Trim color / Yoke",
+   "grund": "Schnittteil-Fachbegriffe ohne Erklärung im Datensatz: «Details» (Zierteile bei Bomber, Hemd, Tasche u. a., unklar welche Teile), «Label panel» = Etikettenfeld im Nacken (Hoodie/Sweatshirt), «Base» = Hauptteil (Haargummi, Haarband), «Bow» = Schleife (Haargummi), «Facing» = Beleg (Windjacke, Innenseite der Frontblende), «Trim color» = Besatzfarbe (Strickpullover, vermutlich Bündchen an Hals, Ärmeln, Saum), «Yoke» = Passe. Wörtlich bzw. nach Schneiderbegriff übersetzt, nicht am Produkt geprüft."
+  },
+  {
+   "en": "Addon front thread colors / Outline color",
+   "grund": "«Addon front thread colors» kommt nur bei vier Kappen vor (77, 99, 100, 252), «Outline color» dort und bei den gestickten Aufnähern (516, 1439). «Addon» wörtlich «Zusatz», vermutlich eine zusätzliche Umrandung der Frontstickerei, nicht belegt. Übersetzt als «Garnfarben Zusatz vorne» und «Konturfarbe»."
+  },
+  {
+   "en": "Apparel back thread colors",
+   "grund": "Nur bei Cotton Color Tote Bag (1553), Position dort schlicht «Back». Das Wort «Apparel» (Printful-Gruppe für Textilstickerei) bewusst nicht übersetzt, Ergebnis gleich wie «Back thread colors»."
+  },
+  {
+   "en": "Wrist (right/left) / Sleeve ... top",
+   "grund": "«Left wrist» = «Linkes Handgelenk» wie vorgegeben, wörtlich. Gemeint ist vermutlich die Stickfläche am Ärmelabschluss (Bündchen); «Sleeve top» als «Ärmel oben» (Oberarm). Beides im Datensatz nicht erklärt."
+  },
+  {
+   "en": "Top print / Bottom print / Top panel / Bottom panel / Top Front print / Top Back print / Top lining / Bottom lining / Bottom Front / Bottom Back",
+   "grund": "«Top»/«Bottom» heisst je nach Produkt oben/unten (Taschen, Rucksack) oder Oberteil/Unterteil (Bikini, Skater Dress). Einheitlich: «Druck oben/unten» für 'Top print'/'Bottom print' (Fanny Pack, Duffle Bag, Rucksack, Boxer), «Oberseite/Unterseite» für 'Top panel'/'Bottom panel' (Rucksack), «Oberteil/Unterteil» für die Bikini-/Kleiderpositionen. Bei den Bikini-Modellen (667, 668, 669) wirkt «Druck oben/unten» ungenau, gemeint ist Oberteil/Unterteil. UMGESETZT (Gegenleser-Funde F5/F8): «Top Front print»/«Top Back print» heissen jetzt «Oberteil vorne»/«Oberteil hinten» (parallel zu «Unterteil vorne/hinten»); für die Bikinis 667 und 668 («Top print») bzw. 667 und 669 («Bottom print») gilt die Ausnahme «Druck Oberteil»/«Druck Unterteil» im Abschnitt «ausnahmen»."
+  },
+  {
+   "en": "First / Second / Third / Fourth / Fifth",
+   "grund": "Neutrale Zählung der Einzelteile eines Sets (Pin-Buttons 660 mit fünf Teilen, Geschenkpapier-Bögen, Servietten, Platzsets); das passende Wort (Button/Bogen/Serviette/Platzset) hängt vom Produkt ab, darum neutral «1. Stück» bis «5. Stück»."
+  },
+  {
+   "en": "Left/Right shoe quarters, shoe tongue",
+   "grund": "«Quarters» = Seitenteile des Schuhs (Fachwort «Quartier»), als «Seitenteil linker/rechter Schuh» übersetzt; «Zunge linker/rechter Schuh» für 'tongue'."
+  },
+  {
+   "en": "3D Puff (+$1.50) / Partial 3D Puff (+$1.50)",
+   "grund": "Der Zuschlag von 1.50 US-Dollar ist ein Printful-Einkaufsbetrag, kein Preis des Shops (Shop rechnet in CHF). Umgesetzt (Gegenleser-Fund F7, Hinweis, Entscheid des Besitzers): die Klammer fällt weg, «3D Puff (+$1.50)» = «3D-Stickerei» und «Partial 3D Puff (+$1.50)» = «Teilweise 3D-Stickerei», damit Schweizer Kundinnen keinen Dollar-Zuschlag als Preis lesen (GEMESSEN: nur diese zwei Optionswerte tragen einen Dollarbetrag, je 53 Modelle). Rückgängig: früherer Wert war «3D-Stickerei (+USD 1.50)» bzw. «Teilweise 3D-Stickerei (+USD 1.50)». «Partial 3D Puff» als «Teilweise 3D-Stickerei» (Mischung aus flach und 3D)."
+  },
+  {
+   "en": "Garnfarben- und Stoff-Farbnamen ohne gebräuchliches deutsches Wort: Maroon, Aqua/Teal, Purple, Kelly Green, Mellow, Powder, Bleach, Bone, Coco, Soil, Burnt Orange, Hot Pink, Yale Blue, Denim",
+   "grund": "Nur der Name ist gegeben, ein Hexwert gibt (bei den Strickfarben) einen Anhaltspunkt: Maroon (#660000) = «Dunkelrot»; Burgundy (#4c1c29) = «Bordeaux»; Aqua/Teal = «Aqua/Petrol»; Purple = «Violett» (wie 'purple' in locales/de.json color_names), Violet ebenfalls «Violett» (beide kommen nie in derselben Liste vor); Mellow (#eddea4, helles Gelb) = «Zartgelb» (Herstellername, nicht belegt); Powder (#c5d1d0, blaugrau) = «Puderblau» (nicht «Puder», weil das auf Deutsch rosa meint); Bleach (#fdfafa, fast weiss) = «Gebleichtes Weiss»; Bone (#e2dfdc) = «Knochenweiss»; Coco (#c6b5a7) = «Kokos»; Soil (#563c33) = «Erdbraun»; Burnt Orange (#cd5e38) = «Gebranntes Orange»; Hot Pink = «Knallpink»; Yale Blue = «Yale-Blau»; Denim (#566e99) = «Jeansblau»; Kelly Green = «Kellygrün». «Flamingo» und «Toffee» bleiben wie vorgegeben bzw. als gebräuchliches Wort stehen."
+  },
+  {
+   "en": "Yarn colors",
+   "grund": "«Thread colors» ist durchgehend «Garnfarben» (vorgegeben, Stickgarn); damit sich «Yarn colors» (Strickgarn des Pullovers, Modell 769, KNITWEAR) nicht gleich liest, als «Strickgarnfarben» übersetzt."
+  },
+  {
+   "en": "Custom border color",
+   "grund": "Freitextfeld (Typ single_line_text) bei Kiss-Cut-Stickern, im Datensatz ohne Werte; «Eigene Randfarbe» ist wörtlich."
+  },
+  {
+   "en": "Left/Right hood, Inner Hood",
+   "grund": "Kapuze besteht aus zwei Teilen (Warmup-Hoodie 919): «Kapuze links/rechts», nicht «Kapuzenhälfte», um nichts hinzuzufügen. 'Inner Hood' = «Kapuze innen» (Windjacke 615)."
+  }
+ ]
+}

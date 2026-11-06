@@ -1,0 +1,366 @@
+{
+ "schema": 1,
+ "printfulProductId": 456,
+ "typ": "T-SHIRT",
+ "titelEn": "Unisex Organic Cotton Creator 2.0 T-Shirt | Stanley/Stella STTU169",
+ "klasse": "FLACH",
+ "standardTechnik": "DTG",
+ "minDpi": 75,
+ "platzierungen": [
+  {
+   "id": "front",
+   "dateiTyp": "default",
+   "titelDe": "Vorderseite",
+   "titelEn": "Front print",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 1,
+    "breitePx": 1800,
+    "hoehePx": 2400,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 315090,
+    "bildUrl": "https://files.cdn.printful.com/m/Stanley_Stella_STTU755/medium/STTU169/ghost/front/05_sttu169_ghost_front_base_whitebg.png?v=1750080103",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#111111",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 930,
+    "flaecheOben": 409,
+    "flaecheBreite": 1140,
+    "flaecheHoehe": 1520,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": null,
+   "aufpreisChf": 0,
+   "kollidiertMit": []
+  },
+  {
+   "id": "back",
+   "dateiTyp": "back",
+   "titelDe": "Rückseite",
+   "titelEn": "Back print",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 1,
+    "breitePx": 1800,
+    "hoehePx": 2400,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 314901,
+    "bildUrl": "https://files.cdn.printful.com/m/Stanley_Stella_STTU755/medium/STTU169/ghost/back/05_sttu169_ghost_back_base_whitebg.png?v=1752239192",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#111111",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 930,
+    "flaecheOben": 265,
+    "flaecheBreite": 1140,
+    "flaecheHoehe": 1520,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 5.95,
+   "aufpreisChf": 6.1,
+   "kollidiertMit": [
+    "label_outside"
+   ]
+  },
+  {
+   "id": "sleeve_left",
+   "dateiTyp": "sleeve_left",
+   "titelDe": "Ärmel links",
+   "titelEn": "Left sleeve",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 130,
+    "breitePx": 600,
+    "hoehePx": 525,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 324351,
+    "bildUrl": "https://files.cdn.printful.com/m/Stanley_Stella_STTU755/medium/STTU169/ghost/left/zoomed/05_sttu169_ghost_ffrontleft_base_whitebg.png?v=1741081380",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#111111",
+    "vorlageBreite": 2500,
+    "vorlageHoehe": 2500,
+    "flaecheLinks": 1168,
+    "flaecheOben": 1207,
+    "flaecheBreite": 627,
+    "flaecheHoehe": 548,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.49,
+   "aufpreisChf": 2.6,
+   "kollidiertMit": []
+  },
+  {
+   "id": "sleeve_right",
+   "dateiTyp": "sleeve_right",
+   "titelDe": "Ärmel rechts",
+   "titelEn": "Right sleeve",
+   "art": "flaeche",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 130,
+    "breitePx": 600,
+    "hoehePx": 525,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 324414,
+    "bildUrl": "https://files.cdn.printful.com/m/Stanley_Stella_STTU755/medium/STTU169/ghost/right/zoomed/05_sttu169_ghost_frontright_base_whitebg.png?v=1741081380",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#111111",
+    "vorlageBreite": 2500,
+    "vorlageHoehe": 2500,
+    "flaecheLinks": 687,
+    "flaecheOben": 1207,
+    "flaecheBreite": 627,
+    "flaecheHoehe": 548,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.49,
+   "aufpreisChf": 2.6,
+   "kollidiertMit": []
+  },
+  {
+   "id": "label_inside",
+   "dateiTyp": "label_inside",
+   "titelDe": "Etikett innen",
+   "titelEn": "Inside label",
+   "art": "etikett",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 71,
+    "breitePx": 450,
+    "hoehePx": 450,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 49670,
+    "bildUrl": "https://files.cdn.printful.com/m/templates/medium/inside_label__3x3.png?v=1741081380",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#111111",
+    "vorlageBreite": 560,
+    "vorlageHoehe": 560,
+    "flaecheLinks": 137,
+    "flaecheOben": 187,
+    "flaecheBreite": 288,
+    "flaecheHoehe": 288,
+    "ausrichtung": "any",
+    "vorderansicht": false
+   },
+   "aufpreisUsd": 0.99,
+   "aufpreisChf": 1,
+   "kollidiertMit": [
+    "label_outside"
+   ]
+  },
+  {
+   "id": "label_outside",
+   "dateiTyp": "label_outside",
+   "titelDe": "Etikett aussen",
+   "titelEn": "Outside label",
+   "art": "etikett",
+   "technik": "DTG",
+   "printfile": {
+    "printfileId": 90,
+    "breitePx": 450,
+    "hoehePx": 450,
+    "dpi": 150
+   },
+   "vorlage": {
+    "vorlageId": 49656,
+    "bildUrl": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1741081380",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#111111",
+    "vorlageBreite": 560,
+    "vorlageHoehe": 560,
+    "flaecheLinks": 137,
+    "flaecheOben": 187,
+    "flaecheBreite": 288,
+    "flaecheHoehe": 288,
+    "ausrichtung": "any",
+    "vorderansicht": false
+   },
+   "aufpreisUsd": 2.49,
+   "aufpreisChf": 2.6,
+   "kollidiertMit": [
+    "back",
+    "label_inside"
+   ]
+  }
+ ],
+ "druckdateien": {
+  "1": {
+   "printfileId": 1,
+   "breitePx": 1800,
+   "hoehePx": 2400,
+   "dpi": 150
+  },
+  "71": {
+   "printfileId": 71,
+   "breitePx": 450,
+   "hoehePx": 450,
+   "dpi": 150
+  },
+  "90": {
+   "printfileId": 90,
+   "breitePx": 450,
+   "hoehePx": 450,
+   "dpi": 150
+  },
+  "130": {
+   "printfileId": 130,
+   "breitePx": 600,
+   "hoehePx": 525,
+   "dpi": 150
+  }
+ },
+ "hinweise": [],
+ "farben": {
+  "#111111": [
+   53682,
+   11873,
+   17229,
+   17233,
+   17236,
+   11871,
+   11870,
+   11869,
+   11872
+  ],
+  "#ffe9eb": [
+   53666,
+   53665,
+   17416,
+   17414,
+   17413,
+   17412,
+   17415
+  ],
+  "#dcccb4": [
+   53679,
+   12433,
+   17230,
+   12431,
+   12430,
+   12429,
+   12432
+  ],
+  "#112537": [
+   53680,
+   11883,
+   17231,
+   17234,
+   17237,
+   11881,
+   11880,
+   11879,
+   11882
+  ],
+  "#6e6b4d": [
+   53676,
+   53677,
+   53678,
+   53675,
+   17148,
+   17146,
+   17145,
+   17144,
+   17147
+  ],
+  "#3d737d": [
+   53672,
+   53673,
+   53674,
+   53671,
+   12443,
+   12441,
+   12440,
+   12439,
+   12442
+  ],
+  "#ffffff": [
+   53681,
+   11868,
+   17228,
+   17232,
+   17235,
+   11866,
+   11865,
+   11864,
+   11867
+  ],
+  "#3e383e": [
+   12428,
+   12426,
+   12425,
+   12424,
+   12427
+  ],
+  "#801f24": [
+   14948,
+   14946,
+   14945,
+   14944,
+   14947
+  ],
+  "#7a8ca8": [
+   14952,
+   14951,
+   14950,
+   14949,
+   14953
+  ],
+  "#2b2928": [
+   14958,
+   14956,
+   14955,
+   14954,
+   14957
+  ],
+  "#ffd2be": [
+   17138,
+   17136,
+   17135,
+   17134,
+   17137
+  ],
+  "#cfcbc8": [
+   11888,
+   54614,
+   54615,
+   54616,
+   11886,
+   11885,
+   11884,
+   11887,
+   54613
+  ],
+  "#f7ecff": [
+   17426,
+   17424,
+   17423,
+   17422,
+   17425
+  ],
+  "#ed0739": [
+   11878,
+   11876,
+   11875,
+   11874,
+   11877
+  ]
+ }
+}

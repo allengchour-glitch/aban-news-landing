@@ -1,0 +1,18 @@
+{
+ "erstellt": "2026-11-06T11:04:58.536Z",
+ "hinweis": "MD5 der Dateien, die apply.mjs ins MAIN-Theme schreibt (Soll-Stand, zwölf Dateien)",
+ "md5": {
+  "assets/luxe-clothing.js": "aa759708998cf30c817f71d32e8f9c58",
+  "assets/luxe-clothing.css": "d2c8da52a1870ee0c4467cda2ddfaebb",
+  "sections/luxe-clothing.liquid": "7d49f52313723b19131ace71ac12a5a2",
+  "snippets/luxe-clothing-asset-manifest.liquid": "e384e40aae88e0282e83cbd8e05c36e9",
+  "snippets/luxe-selfdesign-cover.liquid": "63f63bfa8c10c5f73aa8ead523bc4650",
+  "sections/luxe-category.liquid": "838960ab29d146781d39861a6b8eb7a3",
+  "locales/de.json": "1dea0b19fa05c68fa82304b826b7edff",
+  "locales/en.default.json": "4705e4658f482b3fbc0c38ad2bb6535d",
+  "locales/fr.json": "75ff32f03227f6c3f9ca683238f66b1e",
+  "assets/luxe-clothing-ausblenden.json": "7f27109aa5049125e80a0f3d0374861a",
+  "assets/luxe-clothing-variantenkarte.json": "5790968bda235f40049578e0471e9899",
+  "assets/luxe-clothing-texts-de.json": "86cbb8664cddc2e10a3ead2297bc9482"
+ }
+}

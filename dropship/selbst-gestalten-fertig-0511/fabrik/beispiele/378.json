@@ -1,0 +1,683 @@
+{
+ "schema": "pod-modell-plan/1",
+ "erzeugt": {
+  "am": "2026-11-05T21:14:20.065Z",
+  "katalogGeholt": "2026-11-05T17:04:15.600Z",
+  "glossar": "2026-11-05.1",
+  "regel": {
+   "maxVarianten": 100,
+   "bilderMin": 3,
+   "bildMinPx": 600,
+   "ekAufschlagOhneSchaetzung": 1.26,
+   "digitalisierungUsd": 6.5,
+   "kartenMaxBytes": 10240,
+   "editorKartenMaxBytes": 24576,
+   "medienMax": 20,
+   "medienOhneFarbe": 6,
+   "stufen": [
+    1
+   ],
+   "lieferStandard": {
+    "min": 7,
+    "max": 14
+   },
+   "fertigungWerktage": {
+    "min": 2,
+    "max": 5
+   },
+   "preis": {
+    "kurs": 0.9,
+    "nettoMin": 4,
+    "mwst": 0.081
+   }
+  }
+ },
+ "printfulProductId": 378,
+ "stufe": 1,
+ "klasse": "FLACH_MIT_HINWEIS",
+ "klasseEndgueltig": "FLACH_MIT_HINWEIS",
+ "typ": "T-SHIRT",
+ "standardTechnik": "DTG",
+ "titelEn": "Large Eco Tote | Econscious EC8001",
+ "titel": "Grosse Eco Tragetasche selbst gestalten",
+ "titelKurz": "Grosse Eco Tragetasche",
+ "titelQuelle": "glossar",
+ "titelUnterscheidung": null,
+ "titelUnbekannt": [],
+ "entfernteMarken": [],
+ "handle": "grosse-eco-tragetasche-selbst-gestalten",
+ "handleKollision": false,
+ "status": "DRAFT",
+ "vendor": "LuxeStyle",
+ "produktart": "Taschen",
+ "tags": [
+  "printful_personalized_product",
+  "selbst-gestalten",
+  "sg-fabrik",
+  "sg-klasse-flach-mit-hinweis",
+  "sg-modell-378",
+  "sg-taschen",
+  "sg-typ-t-shirt",
+  "wunschdesign"
+ ],
+ "seo": {
+  "title": "Grosse Eco Tragetasche selbst gestalten | LuxeStyle CH",
+  "description": "Grosse Eco Tragetasche selbst gestalten: eigenes Motiv hochladen, Vorschau ansehen und dein Einzelstück bestellen. Druck auf Bestellung."
+ },
+ "optionen": [
+  {
+   "name": "Farbe",
+   "art": "farbe",
+   "werte": [
+    "Schwarz",
+    "Beige"
+   ]
+  }
+ ],
+ "varianten": [
+  {
+   "sku": "9100378_10732",
+   "printfulVariantId": 10732,
+   "optionen": {
+    "Farbe": "Schwarz"
+   },
+   "farbe": "Schwarz",
+   "groesse": "Einheitsgrösse",
+   "herkunft": "EU",
+   "kostenUsd": 18.68,
+   "ekRechnungUsd": 23.54,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 0,
+   "preisChf": 39.9,
+   "nettoChf": 4.72,
+   "nettoBeiMesskursChf": 7.29,
+   "bindend": "kosten",
+   "bildAlt": "Grosse Eco Tragetasche selbst gestalten Schwarz"
+  },
+  {
+   "sku": "9100378_10733",
+   "printfulVariantId": 10733,
+   "optionen": {
+    "Farbe": "Beige"
+   },
+   "farbe": "Beige",
+   "groesse": "Einheitsgrösse",
+   "herkunft": "EU",
+   "kostenUsd": 18.68,
+   "ekRechnungUsd": 23.54,
+   "ekQuelle": "katalog+26%",
+   "versandUsd": 10.39,
+   "aufpreisUsd": 0,
+   "preisChf": 39.9,
+   "nettoChf": 4.72,
+   "nettoBeiMesskursChf": 7.29,
+   "bindend": "kosten",
+   "bildAlt": "Grosse Eco Tragetasche selbst gestalten Beige"
+  }
+ ],
+ "medien": [
+  {
+   "url": "https://files.cdn.printful.com/o/upload/product-catalog-img/65/65d87f00b10ba55f54dc0f11de5b29a2_l",
+   "alt": "Grosse Eco Tragetasche selbst gestalten Produktbild",
+   "rolle": "haupt",
+   "label": "Produktbild"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/378/10732_1582200984.jpg",
+   "alt": "Grosse Eco Tragetasche selbst gestalten Schwarz",
+   "rolle": "variante",
+   "label": "Schwarz"
+  },
+  {
+   "url": "https://files.cdn.printful.com/products/378/10733_1642499390.jpg",
+   "alt": "Grosse Eco Tragetasche selbst gestalten Beige",
+   "rolle": "variante",
+   "label": "Beige"
+  }
+ ],
+ "beschreibungHtml": "<p class=\"ls-liefer\" data-tier=\"pod\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>7 bis 14 Werktage</strong> <span style=\"opacity:.7;\">· Druck auf Bestellung · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<div class=\"lspod-designer-v6\" data-modell=\"378\" data-klasse=\"FLACH_MIT_HINWEIS\" data-variant=\"__ERSTE_VARIANTE__\"><script type=\"application/json\" id=\"lspod-karte\">{\"schema\":1,\"printfulProductId\":378,\"typ\":\"T-SHIRT\",\"titelDe\":\"Grosse Eco Tragetasche\",\"klasse\":\"FLACH_MIT_HINWEIS\",\"standardTechnik\":\"DTG\",\"minDpi\":75,\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titelDe\":\"Vorderseite\",\"titelEn\":\"Front print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14969,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":null,\"aufpreisChf\":0,\"kollidiertMit\":[]},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titelDe\":\"Rückseite\",\"titelEn\":\"Back print\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"printfile\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150},\"vorlage\":{\"vorlageId\":14970,\"bildUrl\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586\",\"hintergrundUrl\":null,\"hintergrundFarbe\":\"#222222\",\"vorlageBreite\":3000,\"vorlageHoehe\":3000,\"flaecheLinks\":894,\"flaecheOben\":1378,\"flaecheBreite\":1204,\"flaecheHoehe\":1204,\"ausrichtung\":\"any\",\"vorderansicht\":true},\"aufpreisUsd\":5.95,\"aufpreisChf\":6.1,\"kollidiertMit\":[]}],\"druckdateien\":{\"5\":{\"printfileId\":5,\"breitePx\":1500,\"hoehePx\":1500,\"dpi\":150}},\"hinweise\":[{\"code\":\"tasche\",\"art\":\"einschraenkung\"}],\"farben\":{\"#222222\":[10732],\"#edcea5\":[10733]},\"shop\":{\"varianten\":\"__SHOP_VARIANTEN__\"}}</script></div>\n<script src=\"__LSPOD_EDITOR_URL__\" defer></script>\n<hr>\n<p>Verzichte auf Plastik und pack deine Sachen in diese geräumige Tragetasche aus Bio-Baumwolle. Ob Einkäufe, Bücher oder Reisebedarf, es ist Platz für alles!</p>\n<ul><li>100 % zertifizierte Bio-Baumwolle, Köper 3/1</li><li>Stoffgewicht: 272 g/m²</li><li>Masse: 50,8 × 35,6 × 12,7 cm</li><li>Fassungsvermögen: 23 l</li><li>Maximale Belastung: 13,6 kg</li><li>Zwei lange Henkel aus demselben Stoff, 2,5 × 63,5 cm</li><li>Offenes Hauptfach, flacher Boden</li><li>Der unbedruckte Rohling stammt aus China oder Indien.</li></ul>\n<p>Hinweis: Die Pflegehinweise auf dem Abreissetikett können sich beim Waschen lösen.</p>\n<div class=\"lx-modell-daten\"><h4>Eckdaten</h4><ul><li><strong>Druckverfahren:</strong> Direktdruck auf Textil (DTG)</li><li><strong>Druckdatei (Vorderseite):</strong> 1500 × 1500 Pixel bei 150 dpi, das sind 25,4 × 25,4 cm</li></ul></div>\n<div class=\"lx-modell-tipps\"><h4>Gut zu wissen</h4><ul><li>Tipp: Die Druckfläche endet vor Nähten und Henkeln. Setze dein Motiv nicht an den Rand.</li></ul></div>\n<div class=\"ls-pod-retoure\" style=\"background:#fff7e6;border-left:3px solid #e0a300;border-radius:4px;padding:9px 12px;margin:12px 0;font-size:14px;line-height:1.5;\">↩️ <strong>Rückgabe bei personalisierter Ware:</strong> Jedes Stück wird eigens nach deinem Entwurf gedruckt und lässt sich deshalb nicht weiterverkaufen, darum ist eine Rückgabe aus Meinungsänderung ausgeschlossen. Bei Druckfehlern, Beschädigung oder falscher Lieferung ersetzen wir es selbstverständlich. <a href=\"/policies/refund-policy\">Rückgaberichtlinie</a></div>",
+ "beschreibungWeggelassen": [
+  "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (A, B, C, D)"
+ ],
+ "uebersetzung": {
+  "ok": true,
+  "fehler": [],
+  "saetze": 10,
+  "nichtUebernommen": []
+ },
+ "metafelder": [
+  {
+   "namespace": "luxe_sg",
+   "key": "karte",
+   "type": "json",
+   "value": "{\"schema\":\"lspod-karte/1\",\"modell\":378,\"klasse\":\"FLACH_MIT_HINWEIS\",\"technik\":\"DTG\",\"basis\":\"front\",\"platzierungen\":[{\"id\":\"front\",\"dateiTyp\":\"default\",\"titel\":\"Vorderseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":true,\"aufpreisChf\":0,\"druck\":{\"px\":[1500,1500],\"dpi\":150,\"cm\":[25.4,25.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":894,\"oben\":1378,\"breite\":1204,\"hoehe\":1204,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003\",\"hintergrund\":null},{\"id\":\"back\",\"dateiTyp\":\"back\",\"titel\":\"Rückseite\",\"art\":\"flaeche\",\"technik\":\"DTG\",\"inklusive\":false,\"aufpreisChf\":6.1,\"druck\":{\"px\":[1500,1500],\"dpi\":150,\"cm\":[25.4,25.4],\"fill\":\"fit\",\"drehen\":false},\"flaeche\":{\"vorlage\":[3000,3000],\"links\":894,\"oben\":1378,\"breite\":1204,\"hoehe\":1204,\"ausrichtung\":\"any\"},\"vorlage\":\"https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586\",\"hintergrund\":null}],\"hinweise\":[{\"code\":\"tasche\",\"quelle\":\"annahme\"}]}"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "modell",
+   "type": "number_integer",
+   "value": "378"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "klasse",
+   "type": "single_line_text_field",
+   "value": "FLACH_MIT_HINWEIS"
+  },
+  {
+   "namespace": "luxe_sg",
+   "key": "quelle",
+   "type": "single_line_text_field",
+   "value": "Printful-Katalog, geholt 2026-11-05T17:04:15.600Z"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "condition",
+   "type": "single_line_text_field",
+   "value": "new"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "custom_product",
+   "type": "boolean",
+   "value": "true"
+  },
+  {
+   "namespace": "custom",
+   "key": "lieferzeit",
+   "type": "json",
+   "value": "{\"ch\":\"7–14\",\"tier\":\"pod\",\"weg\":\"Druck auf Bestellung\"}"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "google_product_category",
+   "type": "single_line_text_field",
+   "value": "Luggage & Bags > Shopping Totes"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "gender",
+   "type": "single_line_text_field",
+   "value": "unisex"
+  },
+  {
+   "namespace": "mm-google-shopping",
+   "key": "age_group",
+   "type": "single_line_text_field",
+   "value": "adult"
+  }
+ ],
+ "kompakt": {
+  "schema": "lspod-karte/1",
+  "modell": 378,
+  "klasse": "FLACH_MIT_HINWEIS",
+  "technik": "DTG",
+  "basis": "front",
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titel": "Vorderseite",
+    "art": "flaeche",
+    "technik": "DTG",
+    "inklusive": true,
+    "aufpreisChf": 0,
+    "druck": {
+     "px": [
+      1500,
+      1500
+     ],
+     "dpi": 150,
+     "cm": [
+      25.4,
+      25.4
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 894,
+     "oben": 1378,
+     "breite": 1204,
+     "hoehe": 1204,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003",
+    "hintergrund": null
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titel": "Rückseite",
+    "art": "flaeche",
+    "technik": "DTG",
+    "inklusive": false,
+    "aufpreisChf": 6.1,
+    "druck": {
+     "px": [
+      1500,
+      1500
+     ],
+     "dpi": 150,
+     "cm": [
+      25.4,
+      25.4
+     ],
+     "fill": "fit",
+     "drehen": false
+    },
+    "flaeche": {
+     "vorlage": [
+      3000,
+      3000
+     ],
+     "links": 894,
+     "oben": 1378,
+     "breite": 1204,
+     "hoehe": 1204,
+     "ausrichtung": "any"
+    },
+    "vorlage": "https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586",
+    "hintergrund": null
+   }
+  ],
+  "hinweise": [
+   {
+    "code": "tasche",
+    "quelle": "annahme"
+   }
+  ]
+ },
+ "kompaktBytes": 1064,
+ "editorKarte": {
+  "schema": 1,
+  "printfulProductId": 378,
+  "typ": "T-SHIRT",
+  "titelDe": "Grosse Eco Tragetasche",
+  "klasse": "FLACH_MIT_HINWEIS",
+  "standardTechnik": "DTG",
+  "minDpi": 75,
+  "platzierungen": [
+   {
+    "id": "front",
+    "dateiTyp": "default",
+    "titelDe": "Vorderseite",
+    "titelEn": "Front print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 5,
+     "breitePx": 1500,
+     "hoehePx": 1500,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 14969,
+     "bildUrl": "https://files.cdn.printful.com/m/ec8001/medium/flat/front/04_ec8001_flat_front_base_whitebg.png?v=1782389003",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#222222",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 894,
+     "flaecheOben": 1378,
+     "flaecheBreite": 1204,
+     "flaecheHoehe": 1204,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": null,
+    "aufpreisChf": 0,
+    "kollidiertMit": []
+   },
+   {
+    "id": "back",
+    "dateiTyp": "back",
+    "titelDe": "Rückseite",
+    "titelEn": "Back print",
+    "art": "flaeche",
+    "technik": "DTG",
+    "printfile": {
+     "printfileId": 5,
+     "breitePx": 1500,
+     "hoehePx": 1500,
+     "dpi": 150
+    },
+    "vorlage": {
+     "vorlageId": 14970,
+     "bildUrl": "https://files.cdn.printful.com/m/ec8001/medium/flat/back/04_ec8001_flat_back_base_whitebg.png?v=1773161586",
+     "hintergrundUrl": null,
+     "hintergrundFarbe": "#222222",
+     "vorlageBreite": 3000,
+     "vorlageHoehe": 3000,
+     "flaecheLinks": 894,
+     "flaecheOben": 1378,
+     "flaecheBreite": 1204,
+     "flaecheHoehe": 1204,
+     "ausrichtung": "any",
+     "vorderansicht": true
+    },
+    "aufpreisUsd": 5.95,
+    "aufpreisChf": 6.1,
+    "kollidiertMit": []
+   }
+  ],
+  "druckdateien": {
+   "5": {
+    "printfileId": 5,
+    "breitePx": 1500,
+    "hoehePx": 1500,
+    "dpi": 150
+   }
+  },
+  "hinweise": [
+   {
+    "code": "tasche",
+    "art": "einschraenkung"
+   }
+  ],
+  "farben": {
+   "#222222": [
+    10732
+   ],
+   "#edcea5": [
+    10733
+   ]
+  }
+ },
+ "karteBytes": 1622,
+ "lieferung": {
+  "versandart": "STANDARD",
+  "rateUsd": 10.39,
+  "tageMin": 3,
+  "tageMax": 6,
+  "ratenVariante": 10732
+ },
+ "lieferzeit": {
+  "min": 7,
+  "max": 14,
+  "quelle": "shop-standard",
+  "versandTage": [
+   3,
+   6
+  ],
+  "fertigung": [
+   2,
+   5
+  ]
+ },
+ "familie": null,
+ "kategorie": {
+  "art": "tote",
+  "google": "Luggage & Bags > Shopping Totes",
+  "shopify": "gid://shopify/TaxonomyCategory/lb-11"
+ },
+ "basisPlatzierung": {
+  "id": "front",
+  "dateiTyp": "default",
+  "technik": "DTG",
+  "pflichtAufpreisUsd": 0
+ },
+ "bestellweg": {
+  "platzierung": "front",
+  "gesichert": true,
+  "grund": null,
+  "dateien": [
+   "default",
+   "back",
+   "embroidery_apparel_front",
+   "front_dtf_tote",
+   "back_dtf_tote"
+  ]
+ },
+ "auswahl": {
+  "vorAuswahl": 2,
+  "bestellbar": 2,
+  "gewaehlt": 2,
+  "farbenGewaehlt": [
+   {
+    "name": "Black",
+    "de": "Schwarz",
+    "anzahl": 1,
+    "rang": 1
+   },
+   {
+    "name": "Oyster",
+    "de": "Beige",
+    "anzahl": 1,
+    "rang": 99
+   }
+  ],
+  "farbenAusgelassen": [],
+  "ausgelassen": []
+ },
+ "preis": {
+  "min": 39.9,
+  "max": 39.9,
+  "nettoMin": 4.72,
+  "nettoMax": 4.72,
+  "fehler": []
+ },
+ "bilder": {
+  "gemessen": true,
+  "unlesbar": [],
+  "ungemessen": [],
+  "anzahl": 3,
+  "kandidaten": [
+   "https://files.cdn.printful.com/o/upload/product-catalog-img/65/65d87f00b10ba55f54dc0f11de5b29a2_l",
+   "https://files.cdn.printful.com/products/378/10732_1582200984.jpg",
+   "https://files.cdn.printful.com/products/378/10733_1642499390.jpg"
+  ]
+ },
+ "tore": [
+  {
+   "code": "klasse",
+   "name": "Modell ist gestaltbar (FLACH, FLACH_MIT_HINWEIS, PANEL)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "modell_neu",
+   "name": "Modell (auch in der anderen Masseinheit) wird noch von keinem Shop-Produkt verkauft",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "ch_rate",
+   "name": "Printful-Versandrate nach CH vorhanden",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "rate_variante",
+   "name": "Die Versandrate wurde für eine Variante gemessen, die im Produkt steckt",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferangabe",
+   "name": "Lieferzeit bestimmbar: Versandtage der CH-Rate plus Fertigung, mindestens die Shop-Angabe 7 bis 14 Werktage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "varianten",
+   "name": "1 bis 100 Varianten, alle mit Preis, Optionskombination eindeutig",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "sku_eindeutig",
+   "name": "SKUs eindeutig und im Shop noch frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "option_namen",
+   "name": "Optionen: 1 bis 3, Werte einmalig und nicht leer",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "marge",
+   "name": "Gewinn nach MWST, Gebühr, Ware und Versand mindestens CHF 4.00 in jeder Variante, Preis auf X.90",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bilder",
+   "name": "mindestens 3 verschiedene Bilder in lesbarer Grösse (kürzere Seite ≥ 600 px)",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_uebersetzt",
+   "name": "Titel deutsch, ohne unbekannte Wörter und ohne Fremdmarke",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_belegt",
+   "name": "Behauptungen im Titel (Bio, Eco, recycelt …) stehen in der Printful-Beschreibung",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "handle_frei",
+   "name": "Handle <slug>-selbst-gestalten, höchstens 50 Zeichen, nur a-z 0-9 Bindestrich, im Shop frei",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "masse_einheiten",
+   "name": "Titel, Beschreibung, Optionen und SEO ohne Zoll, oz, lb",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "gedankenstrich",
+   "name": "Kundentexte ohne Gedankenstriche",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "beschreibung_belegt",
+   "name": "Beschreibung: jeder Satz mit Beleg aus der Printful-Beschreibung, keine erfundene Zahl, keine Zusage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "karte",
+   "name": "Metafeld-Karte höchstens 10240 Byte, Editor-Karte samt Variantenabbildung höchstens 24576 Byte, mindestens eine bestellbare Fläche samt Vorlage",
+   "art": "blocker",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bestellweg",
+   "name": "Bestellweg (printful_sync) bestimmt die Platzierung sicher",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "lieferzeit_laenger",
+   "name": "Lieferzeit liegt innerhalb der Shop-Angabe 7 bis 14 Werktage",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "versand_je_groesse",
+   "name": "Versand je Grösse gemessen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "variantenbild",
+   "name": "Jede Variante hat ein eigenes Bild",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kategorie",
+   "name": "Google- und Shopify-Kategorie bekannt",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "titel_automatisch",
+   "name": "Titel von Hand geprüft (fest) statt nur nach Glossar erzeugt",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Titel «Grosse Eco Tragetasche selbst gestalten» nach Glossar-Regel erzeugt: lesen, bei Bedarf TITEL_FEST eintragen"
+  },
+  {
+   "code": "lieferherkunft",
+   "name": "Alle Varianten kommen aus der EU",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "bildinhalt",
+   "name": "Printful-Bilder zeigen keine Fremdmarken oder Logos",
+   "art": "hinweis",
+   "ergebnis": "ungeprueft",
+   "grund": "nur per Sicht prüfbar: vor dem Aktivieren die Galerie ansehen"
+  },
+  {
+   "code": "farben",
+   "name": "Alle bestellbaren Farben übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  },
+  {
+   "code": "kostenschaetzung",
+   "name": "Einkauf aus Printful-Kostenschätzung (nicht nur Katalogpreis)",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "ohne Schätzung: Kostenboden mit Katalogpreis +26 % (Sicherheit)"
+  },
+  {
+   "code": "groessentabelle",
+   "name": "Grössentabelle vollständig übernommen",
+   "art": "hinweis",
+   "ergebnis": "durchgefallen",
+   "grund": "Grössentabelle «measure_yourself» ohne deutsche Beschriftung der Masse (A, B, C, D)"
+  },
+  {
+   "code": "uebersetzung_luecken",
+   "name": "Alle Aufzählungspunkte der Printful-Beschreibung übernommen",
+   "art": "hinweis",
+   "ergebnis": "bestanden",
+   "grund": ""
+  }
+ ],
+ "anlegbar": true,
+ "hash": "b5f688264a52b6cc9f2bffd89f1277d2c09f1e0eaf775c6005bac00d57f41f05"
+}

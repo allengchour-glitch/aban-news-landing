@@ -3,7 +3,7 @@
 // (printful_sync.mjs mit gefälschtem fetch) prüft automation/printful_sync_test.mjs.
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { platzierungFuer, entscheide, alteZuordnung, produktInfoAusAntwort, neuerPlatzierungsCache, platzierungenFuerDateien, druckbare, EINZEL_TYPEN, MEHRLAGEN_TYPEN } from './printful_platzierung.mjs';
+import { platzierungFuer, entscheide, entscheideExplizit, platzierungsName, alteZuordnung, produktInfoAusAntwort, neuerPlatzierungsCache, platzierungenFuerDateien, druckbare, EINZEL_TYPEN, MEHRLAGEN_TYPEN } from './printful_platzierung.mjs';
 let ok = 0, fehl = 0;
 const ist = (n, a, b) => { const gleich = JSON.stringify(a) === JSON.stringify(b); if (gleich) ok++; else { fehl++; console.log(`✗ ${n}\n   ist:  ${JSON.stringify(a)}\n   soll: ${JSON.stringify(b)}`); } };
 const wahr = (n, c, info = '') => ist(n + (c ? '' : ' ' + info), !!c, true);
@@ -17,10 +17,10 @@ const vorne = (pid, shopTyp = '') => entscheide({ produkt: info(pid), seite: 'fr
 const hinten = (pid, shopTyp = '') => entscheide({ produkt: info(pid), seite: 'back', shopTyp });
 const kurz = (e) => [e.platzierung, e.gesichert];
 
-// Orakel AUS DER DATEILISTE (nicht aus dem Typ): genau eine druckbare Platzierung → diese; mehrere → vorne «front» (wenn «default»/«front» existiert), hinten «back» (wenn «back» existiert), sonst ungesichert
+// Orakel AUS DER DATEILISTE (nicht aus dem Typ): genau eine druckbare Platzierung → diese (hinten nur gesichert, wenn sie «back» heisst); mehrere → vorne «front» (wenn «default»/«front» existiert), hinten «back» (wenn «back» existiert), sonst ungesichert
 const orakel = (ids, seite) => {
   const dr = ids.filter((id) => !['preview', 'mockup'].includes(id));
-  if (dr.length === 1) return [dr[0], true];
+  if (dr.length === 1) return [dr[0], seite !== 'back' || dr[0] === 'back'];   // eine einzige Platzierung: die Rückseite ist nur gesichert, wenn diese «back» heisst (Codex-Fund 28.10.)
   return seite === 'back' ? ['back', dr.includes('back')] : ['front', dr.includes('default') || dr.includes('front')];
 };
 
@@ -28,7 +28,8 @@ const orakel = (ids, seite) => {
 for (const [pid, n] of [[268, 'Poster'], [3, 'Leinwand'], [304, 'gerahmtes Poster'], [19, 'Tasse (MUG)'], [798, 'Handyhülle MagSafe'], [686, 'Handyhülle Samsung'], [181, 'Handyhülle klar'],
   [656, 'Magnet (Printful-Typ STICKER)'], [583, 'Mauspad (SUBLIMATION, nur «default»)'], [84, 'Stoffbeutel (CUT-SEW, nur «default»)']]) {
   ist(`${n} (Printful ${pid}) → vorne default, gesichert`, kurz(vorne(pid)), ['default', true]);
-  ist(`${n} (Printful ${pid}) → hinten wird nicht zu «back»: default, gesichert`, kurz(hinten(pid)), ['default', true]);
+  // Codex-Fund 28.10. (wichtig): früher «default, gesichert». Eine Rückseiten-Datei auf einem Produkt mit nur «default» ist nicht gesichert (sie würde still die Vorderseite belegen).
+  ist(`${n} (Printful ${pid}) → hinten wird nicht zu «back»: default, aber NICHT gesichert (Review)`, kurz(hinten(pid)), ['default', false]);
 }
 // ── Bekleidung (echt): vorne «front», hinten «back», gesichert, weil die Dateiliste «default» (type front) und «back» führt
 for (const [pid, n] of [[71, 'T-Shirt Bella 3001'], [146, 'Hoodie Gildan 18500'], [380, 'Premium-Hoodie'], [83, 'Kissen (CUT-SEW mit default+back)']]) {
@@ -168,6 +169,58 @@ ist('druckbare() lässt Vorschau/Mockup weg', druckbare(['default', 'preview', '
   ist('die Variantennummer geht unverändert an die Abfrage, genau einmal je Variante', gefragt, [777]);
 }
 
+// ── Aliase: Datei-ID → Platzierungsname (Bekleidung: Datei «default» ist die Platzierung «front»); nur wo beide abweichen, sonst fehlt der Schlüssel (alte Form bleibt gleich)
+ist('Aliase T-Shirt (echt): default → front', info(71).aliase, { default: 'front' });
+ist('Aliase Hose (echt): right_leg → leg_right, left_leg → leg_left', info(400).aliase, { right_leg: 'leg_right', left_leg: 'leg_left' });
+ist('Aliase Kissen (CUT-SEW mit default+back): default → front', info(83).aliase, { default: 'front' });
+ist('keine Aliase, wenn Datei-ID und Typ gleich sind (Tasse): der Schlüssel fehlt ganz', 'aliase' in info(19), false);
+ist('platzierungsName: default → front beim T-Shirt, back bleibt, Tasse bleibt default', [platzierungsName('default', info(71)), platzierungsName('back', info(71)), platzierungsName('default', info(19)), platzierungsName('default', null)], ['front', 'back', 'default', 'default']);
+
+// ── Ausdrückliche Platzierung (Editor v6): wird nie geraten, nur gegen die Dateiliste des Produkts geprüft
+for (const [n, pid, typ, soll] of [
+  ['T-Shirt: «default» (Datei-ID)', 71, 'default', true], ['T-Shirt: «front» (Platzierungsname, Alias von default)', 71, 'front', true], ['T-Shirt: «back»', 71, 'back', true],
+  ['T-Shirt: «sleeve_left»', 71, 'sleeve_left', true], ['T-Shirt: «label_outside»', 71, 'label_outside', true], ['T-Shirt: Stickerei «embroidery_chest_left»', 71, 'embroidery_chest_left', true],
+  ['T-Shirt: DTF «front_dtf»', 71, 'front_dtf', true], ['T-Shirt: «hood» gibt es nicht', 71, 'hood', false], ['T-Shirt: «sleeve_right_dtf» steht nicht in der Dateiliste', 71, 'sleeve_right_dtf', false],
+  ['Tasse: «default»', 19, 'default', true], ['Tasse: «back» gibt es nicht', 19, 'back', false], ['Hose: «right_leg» (Datei-ID)', 400, 'right_leg', true], ['Hose: «leg_right» (Platzierungsname)', 400, 'leg_right', true],
+  ['Hose: «front» gibt es nicht', 400, 'front', false], ['Schreibweise: Grossbuchstaben', 71, 'BACK', false], ['Schreibweise: Leerzeichen', 71, 'sleeve left', false], ['leer', 71, '', false],
+]) {
+  const e = entscheideExplizit({ produkt: info(pid), typ });
+  ist(`explizit ${n} → ${soll ? 'gesichert' : 'nicht gesichert'}, Platzierung unverändert`, [e.gesichert, e.platzierung], [soll, typ]);
+}
+ist('explizit: ungültig geschriebene ID (Grossbuchstaben, Leerzeichen, Sonderzeichen) nennt den Grund «keine gültige Printful-Platzierung»', ['BACK', 'sleeve left', 'back;x', '../a'].map((t) => /keine gültige Printful-Platzierung/.test(entscheideExplizit({ produkt: info(71), typ: t }).grund)), [true, true, true, true]);
+ist('explizit ohne Produkt (Variante nicht lesbar) → nicht gesichert, Grund nennt die Dateiliste', [entscheideExplizit({ produkt: null, typ: 'back' }).gesichert, /Dateiliste/.test(entscheideExplizit({ produkt: null, typ: 'back' }).grund)], [false, true]);
+ist('explizit: nur Vorschau-Dateien zählen nicht → nicht gesichert', entscheideExplizit({ produkt: { typ: 'X', dateien: ['preview'] }, typ: 'preview' }).gesichert, false);
+wahr('explizit: der Grund nennt die Dateiliste des Produkts', /steht nicht in der Dateiliste des Printful-Produkts \(right_leg, left_leg, label_inside\)/.test(entscheideExplizit({ produkt: info(400), typ: 'front' }).grund), entscheideExplizit({ produkt: info(400), typ: 'front' }).grund);
+
+// ── Kleber mit ausdrücklichen Platzierungen (mehrere Platzierungen, doppelte Platzierung)
+{
+  const von = (pid) => async () => ({ info: info(pid), art: 'ok', status: 200 });
+  const U = (x) => 'https://res.cloudinary.com/x/' + x + '.png';
+  const m1 = await platzierungenFuerDateien({ vid: 4025, dateien: [{ platzierung: 'front', dateiTyp: 'default', url: U('v') }, { platzierung: 'back', dateiTyp: 'back', url: U('h') }, { platzierung: 'sleeve_left', dateiTyp: 'sleeve_left', url: U('a') }], holeProdukt: von(71) });
+  ist('v6 T-Shirt vorne+hinten+Ärmel: die ECHTEN Typen (default/back/sleeve_left), URLs bleiben zugeordnet, kein Review', [m1.files, m1.needReview], [[{ type: 'default', url: U('v') }, { type: 'back', url: U('h') }, { type: 'sleeve_left', url: U('a') }], false]);
+  const m2 = await platzierungenFuerDateien({ vid: 4025, dateien: [{ platzierung: 'sleeve_left', dateiTyp: 'sleeve_left', url: U('a') }], holeProdukt: von(71) });
+  ist('v6 nur Ärmel: bleibt «sleeve_left» (der alte Weg hätte «front» daraus gemacht), gesichert', [m2.files.map((f) => f.type), m2.needReview], [['sleeve_left'], false]);
+  const m3 = await platzierungenFuerDateien({ vid: 4025, dateien: [{ platzierung: 'hood', dateiTyp: 'hood', url: U('k') }], holeProdukt: von(71) });
+  ist('v6 unbekannte Platzierung «hood»: Typ wie angegeben, aber Review mit Hinweis auf die Dateiliste', [m3.files[0].type, m3.needReview, /Platzierung «hood» nicht gesichert/.test(m3.hinweise[0]), /steht nicht in der Dateiliste/.test(m3.hinweise[0])], ['hood', true, true, true]);
+  const m4 = await platzierungenFuerDateien({ vid: 4025, dateien: [{ platzierung: 'front', dateiTyp: 'default', url: U('a') }, { platzierung: 'front', dateiTyp: 'front', url: U('b') }], holeProdukt: von(71) });
+  ist('zwei Dateien für «default» und «front» (dieselbe Platzierung): Review, Hinweis nennt «front»', [m4.needReview, m4.hinweise.length, /zwei Druckdateien für dieselbe Platzierung «front»/.test(m4.hinweise.join('|'))], [true, 1, true]);
+  const m5 = await platzierungenFuerDateien({ vid: 19296, dateien: [{ side: 'front', url: U('a') }, { side: 'back', url: U('b') }], holeProdukt: von(19) });
+  ist('v5 Tasse mit Vorne UND Hinten: beide würden «default» belegen → Review (Rückseite nicht gesichert UND doppelte Platzierung)', [m5.files.map((f) => f.type), m5.needReview, m5.hinweise.length, m5.hinweise.some((h) => /Rückseite gewünscht/.test(h)), m5.hinweise.some((h) => /zwei Druckdateien/.test(h))], [['default', 'default'], true, 2, true, true]);
+  const m6 = await platzierungenFuerDateien({ vid: 1, dateien: [{ platzierung: 'back', dateiTyp: 'back', url: U('a') }], holeProdukt: async () => ({ info: null, art: 'nicht-lesbar', status: 503 }) });
+  ist('v6 bei nicht lesbarer Variante: nicht gesichert, nennt den Grund «derzeit nicht lesbar»', [m6.needReview, /derzeit nicht lesbar \(HTTP 503\)/.test(m6.hinweise[0])], [true, true]);
+  const m7 = await platzierungenFuerDateien({ vid: 1, dateien: [{ platzierung: 'a', dateiTyp: 'a', url: U('a') }, { platzierung: 'b', dateiTyp: 'b', url: U('b') }], holeProdukt: async () => ({ info: null, art: 'unbekannt', status: 404 }) });
+  ist('v6 bei 404: zwei Hinweise (je Platzierung), keine «doppelte Platzierung» bei verschiedenen Namen', [m7.hinweise.length, m7.hinweise.some((h) => /zwei Druckdateien/.test(h))], [2, false]);
+  const m8 = await platzierungenFuerDateien({ vid: 4025, dateien: [{ side: 'front', url: U('a') }, { side: 'back', url: U('b') }], shopTyp: 'T-Shirts', holeProdukt: von(71) });
+  ist('v5 T-Shirt vorne+hinten bleibt wie bisher: front/back, kein Review (kein falscher Doppelalarm)', [m8.files.map((f) => f.type), m8.needReview], [['front', 'back'], false]);
+}
+{ // Cache: die volle Antwort geht mit (Optionen, Techniken), nur bei brauchbarer Antwort
+  const c = neuerPlatzierungsCache(async () => ({ status: 200, result: { product: { ...MIT[19].produkt, options: [{ id: 'x' }] } } }), { pause: async () => {} });
+  const a = await c(1);
+  ist('Cache liefert die volle Antwort (roh.product.options) mit', [a.art, a.roh.product.options], ['ok', [{ id: 'x' }]]);
+  const c2 = neuerPlatzierungsCache(async () => ({ status: 404, result: null }), { pause: async () => {} });
+  ist('Cache: bei 404 gibt es keine Rohdaten', (await c2(1)).roh, null);
+}
+
 // ── Gegen den echten Katalog (Datenpaket katalog.json): Orakel AUS DER DATEILISTE, nicht aus dem Typ
 {
   const pfad = fileURLToPath(new URL('../../dropship/pod-auswahl/katalog.json', import.meta.url));
@@ -188,10 +241,12 @@ ist('druckbare() lässt Vorschau/Mockup weg', druckbare(['default', 'preview', '
   }
 }
 
-// ── printful_sync.mjs nutzt die Bibliothek (Quelltext ohne Kommentare); das VERHALTEN prüft automation/printful_sync_test.mjs
+// ── printful_sync.mjs nutzt die Bibliotheken (Quelltext ohne Kommentare); das VERHALTEN prüft automation/printful_sync_test.mjs
 {
-  const q = readFileSync(fileURLToPath(new URL('../printful_sync.mjs', import.meta.url)), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
-  ist('printful_sync importiert platzierungenFuerDateien + neuerPlatzierungsCache', /import \{[^}]*platzierungenFuerDateien[^}]*\} from '\.\/lib\/printful_platzierung\.mjs'/.test(q) && /neuerPlatzierungsCache/.test(q), true);
+  const roh = (rel) => readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  const q = roh('../printful_sync.mjs'), b = roh('./printful_bestellweg.mjs');
+  ist('printful_sync importiert neuerPlatzierungsCache aus der Platzierungs-Bibliothek und planeBestellung aus dem Bestellweg', /import \{[^}]*neuerPlatzierungsCache[^}]*\} from '\.\/lib\/printful_platzierung\.mjs'/.test(q) && /import \{[^}]*planeBestellung[^}]*\} from '\.\/lib\/printful_bestellweg\.mjs'/.test(q), true);
+  ist('der Bestellweg bestimmt die Platzierungen mit platzierungenFuerDateien', /import \{[^}]*platzierungenFuerDateien[^}]*\} from '\.\/printful_platzierung\.mjs'/.test(b) && /await platzierungenFuerDateien\(/.test(b), true);
   ist('die alte Funktion placementFor ist weg', /function placementFor/.test(q), false);
 }
 

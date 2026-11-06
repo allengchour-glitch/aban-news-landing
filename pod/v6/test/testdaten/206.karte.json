@@ -1,0 +1,194 @@
+{
+ "schema": 1,
+ "printfulProductId": 206,
+ "typ": "EMBROIDERY",
+ "titelEn": "Classic Dad Hat | Yupoong 6245CM",
+ "klasse": "FLACH_MIT_HINWEIS",
+ "standardTechnik": "EMBROIDERY",
+ "minDpi": 150,
+ "platzierungen": [
+  {
+   "id": "embroidery_front_large",
+   "dateiTyp": "embroidery_front_large",
+   "titelDe": "Stickerei vorne gross",
+   "titelEn": "Front",
+   "art": "flaeche",
+   "technik": "EMBROIDERY",
+   "printfile": {
+    "printfileId": 75,
+    "breitePx": 1650,
+    "hoehePx": 600,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 327829,
+    "bildUrl": "https://files.cdn.printful.com/m/y6245cm/medium/flat/front/05_yupoong6245cm_flat_front_base_whitebg.png?v=1747920531",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#181717",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 598,
+    "flaecheOben": 850,
+    "flaecheBreite": 1804,
+    "flaecheHoehe": 656,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.95,
+   "aufpreisChf": 3,
+   "kollidiertMit": []
+  },
+  {
+   "id": "embroidery_back",
+   "dateiTyp": "back",
+   "titelDe": "Stickerei hinten",
+   "titelEn": "Back",
+   "art": "flaeche",
+   "technik": "EMBROIDERY",
+   "printfile": {
+    "printfileId": 76,
+    "breitePx": 600,
+    "hoehePx": 300,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 40162,
+    "bildUrl": "https://files.cdn.printful.com/m/y6245cm/medium/flat/back/05_yupoong6245cm_flat_back_base_whitebg.png?v=1747920531",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#181717",
+    "vorlageBreite": 3000,
+    "vorlageHoehe": 3000,
+    "flaecheLinks": 1158,
+    "flaecheOben": 1331,
+    "flaecheBreite": 683,
+    "flaecheHoehe": 341,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.95,
+   "aufpreisChf": 3,
+   "kollidiertMit": []
+  },
+  {
+   "id": "embroidery_right",
+   "dateiTyp": "right",
+   "titelDe": "Stickerei rechts",
+   "titelEn": "Right side",
+   "art": "flaeche",
+   "technik": "EMBROIDERY",
+   "printfile": {
+    "printfileId": 76,
+    "breitePx": 600,
+    "hoehePx": 300,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 89854,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/11/11055fe78be1e83b174452dca5c1509c?v=1692358180",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#181717",
+    "vorlageBreite": 728,
+    "vorlageHoehe": 728,
+    "flaecheLinks": 93,
+    "flaecheOben": 229,
+    "flaecheBreite": 542,
+    "flaecheHoehe": 271,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.95,
+   "aufpreisChf": 3,
+   "kollidiertMit": []
+  },
+  {
+   "id": "embroidery_left",
+   "dateiTyp": "left",
+   "titelDe": "Stickerei links",
+   "titelEn": "Left side",
+   "art": "flaeche",
+   "technik": "EMBROIDERY",
+   "printfile": {
+    "printfileId": 76,
+    "breitePx": 600,
+    "hoehePx": 300,
+    "dpi": 300
+   },
+   "vorlage": {
+    "vorlageId": 89842,
+    "bildUrl": "https://files.cdn.printful.com/o/upload/api-template/44/44bcce4c6e96068383917e2c9aef43ef?v=1692358161",
+    "hintergrundUrl": null,
+    "hintergrundFarbe": "#181717",
+    "vorlageBreite": 728,
+    "vorlageHoehe": 728,
+    "flaecheLinks": 93,
+    "flaecheOben": 229,
+    "flaecheBreite": 542,
+    "flaecheHoehe": 271,
+    "ausrichtung": "any",
+    "vorderansicht": true
+   },
+   "aufpreisUsd": 2.95,
+   "aufpreisChf": 3,
+   "kollidiertMit": []
+  }
+ ],
+ "druckdateien": {
+  "75": {
+   "printfileId": 75,
+   "breitePx": 1650,
+   "hoehePx": 600,
+   "dpi": 300
+  },
+  "76": {
+   "printfileId": 76,
+   "breitePx": 600,
+   "hoehePx": 300,
+   "dpi": 300
+  }
+ },
+ "hinweise": [
+  {
+   "code": "stickerei",
+   "art": "einschraenkung"
+  },
+  {
+   "code": "kappe",
+   "art": "einschraenkung"
+  }
+ ],
+ "farben": {
+  "#181717": [
+   7854
+  ],
+  "#415446": [
+   9794
+  ],
+  "#b49771": [
+   7855
+  ],
+  "#b5cbda": [
+   7856
+  ],
+  "#182031": [
+   7857
+  ],
+  "#fab2ba": [
+   7858
+  ],
+  "#183a31": [
+   8745
+  ],
+  "#d6bdad": [
+   7859
+  ],
+  "#ffffff": [
+   7853
+  ],
+  "#a3001b": [
+   12735
+  ],
+  "#39353a": [
+   12736
+  ]
+ }
+}

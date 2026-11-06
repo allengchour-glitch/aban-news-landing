@@ -1,0 +1,45 @@
+{
+ "modell": 214,
+ "stand": "2026-11-05",
+ "quelle": "von Hand übersetzt aus der Printful-Beschreibung (Katalogdatei 214.json); jeder Satz mit englischem Beleg",
+ "intro": [
+  {
+   "de": "Du möchtest Farbe in dein Zuhause bringen? Dieses Kissen mit hochwertigem Gefühl und formstabiler Füllung ist genau richtig.",
+   "beleg": "Want to add a splash of color to your home? This premium feel pillow with a shape-retaining insert is just what you're looking for!"
+  }
+ ],
+ "punkte": [
+  {
+   "de": "Bezug aus 100 % Polyester",
+   "beleg": "100% polyester case"
+  },
+  {
+   "de": "Stoffgewicht: 275 g/m²",
+   "beleg": "Fabric weight: 8.1 oz/yd² (275 g/m²)"
+  },
+  {
+   "de": "Stoff mit Leinenoptik",
+   "beleg": "Fabric with a linen feel"
+  },
+  {
+   "de": "Verdeckter Reissverschluss",
+   "beleg": "Hidden zipper"
+  },
+  {
+   "de": "Bezug maschinenwaschbar",
+   "beleg": "Machine-washable case"
+  },
+  {
+   "de": "Formstabile Füllung aus 100 % Polyester im Lieferumfang (nur Handwäsche)",
+   "beleg": "Shape-retaining 100% polyester insert included (handwash only)"
+  },
+  {
+   "de": "Die Rohlinge in Mexiko stammen aus Material aus China und Mexiko.",
+   "beleg": "Blank product components in Mexico sourced from China and Mexico"
+  },
+  {
+   "de": "Die Rohlinge in der EU stammen aus Material aus China und Polen.",
+   "beleg": "Blank product components in the EU sourced from China and Poland"
+  }
+ ]
+}
