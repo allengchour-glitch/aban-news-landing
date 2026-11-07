@@ -133,8 +133,20 @@
     "window": "2026-11-08T00:02:05+01:00/2026-11-15T00:02:05+01:00",
     "totalObjects": 30,
     "totalChannelStates": 47,
+    "activeObjects": 19,
+    "activeAutoPublishChannelStates": 31,
+    "activeByChannel": {"facebook": 14, "instagram": 14, "tiktok": 2, "youtube": 0, "pinterest": 1, "threads": 0},
+    "activeGaps": {
+      "facebook": [],
+      "instagram": [],
+      "tiktok": ["2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14"],
+      "youtube": "entire_window",
+      "pinterest": ["2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14"],
+      "threads": "entire_window"
+    },
     "videoObjects": 11,
     "videoChannelStates": 16,
+    "draftByChannel": {"facebook": 4, "instagram": 4, "tiktok": 4, "youtube": 4, "pinterest": 0, "threads": 0},
     "allVideoObjectsDraft": true,
     "allVideoObjectsAutoPublishFalse": true,
     "instagramAutoPublishFalseWhereApplicable": true,
@@ -162,6 +174,11 @@
     "PROJEKTGEDAECHTNIS.md": "642267cbd8e0631d62363525d7f7dc21e7db17e34d453daffa37a1fd72259840",
     "ARBEITSSTAND.json": "3462e9897fbac0dae276dda814bd9b45bbec1b8c392ab892530d31e89381a936",
     "TAGESPROTOKOLL.md": "502599c0742cec46bdf1fee4d952092faf2f46950f1618810658f052882b8d19"
+  },
+  "gapSupplementPreWriteSha256": {
+    "SOCIAL-AUDIO-PRUEFUNG-20261108-R125.json": "1d7835b27c7b3ce9e9bc0dbb300ad4c5a006a8b05526ebeef6e8d81734909042",
+    "SOCIAL-AUDIO-PRUEFUNG-20261108-R125.md": "929054ece27d5602fcc63db2a74c30ab7e7bd1c5ee884784999086b010deca50",
+    "ARBEITSSTAND.json": "07ea38cd89d45feaf209baffdf21c2e95456d616eaf95e037a5b2e96bda6cb04"
   },
   "sourceCommitBeforeDocumentation": "849764dbf68400f6ba96f809b5a4c3a168482a14"
 }

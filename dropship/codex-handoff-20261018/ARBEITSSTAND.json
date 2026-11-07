@@ -14634,7 +14634,7 @@
     "trigger": "Owner requires no spoken language or voiceover in social; only text, with the already mandated single music file.",
     "finding": "Seven scheduled MP4 URLs resolved to four unique files. Both ASR models detected German speech in one file; none technically matched automation/music/luxe-premium.wav. ASR output and three no-speech detections are not human hearing approvals.",
     "actualChange": "Exactly 11 existing Metricool video objects covering 16 channel states were set to draft=true and autoPublish=false; Instagram auto-publish was also disabled where applicable. Write inputs intentionally changed only these flags; per-UUID current text/media hashes and other readback fields are recorded, but separate prewrite text hashes were not persisted for nine posts. No new post was created.",
-    "readBack": "30 objects/47 channel states remain. All 11 video objects are drafts with auto-publish off. Provider PENDING is not publication evidence.",
+    "readBack": "30 objects/47 channel states remain. All 11 video objects/16 channel states are drafts with auto-publish off; 19 unchanged photo objects/31 channel states remain active auto-publish. Active counts: Facebook14, Instagram14, TikTok2, Pinterest1, YouTube0, Threads0. Provider PENDING is not publication evidence for drafts.",
     "dailyData": "No new Metricool analytics, Klaviyo flow report, Shopify order report or purchase-watch read on 2026-11-08.",
     "nextStep": "Update only the same existing UUID after a compliant MP4 with product binding, rights, text-only creative, required music and channel-crop approval exists; do not create replacement posts."
   }
