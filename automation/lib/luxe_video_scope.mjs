@@ -55,9 +55,9 @@ function listenSchleifenOhneGuard(snippet) {
   return fehler;
 }
 
-export function pruefeLuxeVideoScope({ section, snippet }) {
-  if (typeof section !== 'string' || typeof snippet !== 'string') {
-    throw new TypeError('section und snippet muessen Text sein');
+export function pruefeLuxeVideoScope({ section, snippet, index }) {
+  if (typeof section !== 'string' || typeof snippet !== 'string' || typeof index !== 'string') {
+    throw new TypeError('section, snippet und index muessen Text sein');
   }
   const fehler = [];
   const homeGuard = "if request.page_type == 'index' or template.name == 'index'";
@@ -89,6 +89,18 @@ export function pruefeLuxeVideoScope({ section, snippet }) {
   }
   if (vorkommen(snippet, 'if globale_liste_erlaubt == true') !== 1) {
     fehler.push('Snippet akzeptiert keine eindeutige ausdrueckliche Freigabe');
+  }
+  try {
+    const indexJson = JSON.parse(index.replace(/^\uFEFF?\s*\/\*[\s\S]*?\*\/\s*/, ''));
+    const startseitenLiquid = indexJson?.sections?.trust_advantages?.settings?.custom_liquid;
+    if (typeof startseitenLiquid !== 'string'
+        || !startseitenLiquid.includes("render 'luxe-videos-zeile'")
+        || !startseitenLiquid.includes('liste: shop.metafields.luxe.videos.value')
+        || !startseitenLiquid.includes('globale_liste_erlaubt: true')) {
+      fehler.push('direkter Startseiten-Aufruf gibt die globale Liste nicht ausdruecklich frei');
+    }
+  } catch {
+    fehler.push('Startseiten-Template ist kein gueltiges JSON');
   }
   fehler.push(...listenSchleifenOhneGuard(snippet));
   return fehler;

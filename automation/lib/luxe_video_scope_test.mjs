@@ -9,11 +9,13 @@ const hier = path.dirname(fileURLToPath(import.meta.url));
 const wurzel = path.resolve(hier, '../..');
 const sectionPfad = path.join(wurzel, 'dropship/theme-entwurf-2610/sections/luxe-videos.liquid');
 const snippetPfad = path.join(wurzel, 'dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid');
+const indexPfad = path.join(wurzel, 'dropship/theme-entwurf-2610/templates/index.json');
 const section = readFileSync(sectionPfad, 'utf8');
 const snippet = readFileSync(snippetPfad, 'utf8');
+const index = readFileSync(indexPfad, 'utf8');
 
 test('aktueller Theme-Vertrag blockiert globale Videos auf Produktseiten', () => {
-  assert.deepEqual(pruefeLuxeVideoScope({ section, snippet }), []);
+  assert.deepEqual(pruefeLuxeVideoScope({ section, snippet, index }), []);
 });
 
 test('Section-Schema bleibt gueltiges JSON fuer Start- und Produktseite', () => {
@@ -52,10 +54,15 @@ test('Mutation: globaler Read ausserhalb des Startseiten-Guards wird erkannt', (
     "if request.page_type == 'index' or template.name == 'index'\n    assign lx_liste = shop.metafields.luxe.videos.value",
     "assign lx_liste = shop.metafields.luxe.videos.value\n  if request.page_type == 'index' or template.name == 'index'",
   );
-  assert.match(pruefeLuxeVideoScope({ section: kaputt, snippet }).join('; '), /Startseiten-Guard/);
+  assert.match(pruefeLuxeVideoScope({ section: kaputt, snippet, index }).join('; '), /Startseiten-Guard/);
 });
 
 test('Mutation: ungeschuetzte globale Listenschleife wird erkannt', () => {
   const kaputt = snippet.replace('    if lx_globale_liste_erlaubt\n      for lx_v in liste', '    for lx_v in liste');
-  assert.match(pruefeLuxeVideoScope({ section, snippet: kaputt }).join('; '), /Listenschleife ohne Guard/);
+  assert.match(pruefeLuxeVideoScope({ section, snippet: kaputt, index }).join('; '), /Listenschleife ohne Guard/);
+});
+
+test('Mutation: direkter Startseiten-Aufruf ohne Freigabe wird erkannt', () => {
+  const kaputt = index.replace(', globale_liste_erlaubt: true', '');
+  assert.match(pruefeLuxeVideoScope({ section, snippet, index: kaputt }).join('; '), /Startseiten-Aufruf/);
 });

@@ -39,17 +39,20 @@ test('rejects missing provider identity and invalid limits', () => {
   assert.throws(() => productHandle('Titel', 'pid', { maxLength: 31 }), /between 32 and 255/);
 });
 
-test('all three CJ writers pass an explicit guarded handle to productSet', async () => {
+test('all three CJ writers pass an explicit guarded provider identity to productSet', async () => {
   const files = [
-    '../../dropship/cj_autopilot.mjs',
-    '../cj_gaps_import.mjs',
-    '../cj_trending_import.mjs',
+    ['../../dropship/cj_autopilot.mjs', /productHandle\(title,\s*providerId\)/],
+    ['../cj_gaps_import.mjs', /productHandle\(title,\s*p\.pid\)/],
+    ['../cj_trending_import.mjs', /productHandle\(title,\s*p\.pid\)/],
   ];
 
-  for (const relative of files) {
+  for (const [relative, call] of files) {
     const source = await readFile(new URL(relative, import.meta.url), 'utf8');
     assert.match(source, /import \{ productHandle \}/, relative);
-    assert.match(source, /productHandle\(title,\s*(?:baseSku|p\.pid)\)/, relative);
+    assert.match(source, call, relative);
     assert.match(source, /\bhandle[,}]/, relative);
   }
+  const autopilot = await readFile(new URL('../../dropship/cj_autopilot.mjs', import.meta.url), 'utf8');
+  assert.match(autopilot, /const providerId = String\(p\.pid \|\| ''\)\.trim\(\)/);
+  assert.match(autopilot, /if \(!providerId\).*continue/);
 });

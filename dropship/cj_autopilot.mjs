@@ -218,6 +218,8 @@ async function geminiEnrich(name, rawDesc) {
     for (const p of list) {
       if (done.length >= MAX) break;
       const baseSku = p.productSku;
+      const providerId = String(p.pid || '').trim();
+      if (!providerId) { console.log('  skip(CJ-ID fehlt)'); continue; }
       const dq = await shopify(`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`, { q: `sku:${baseSku}` }).catch(() => null);
       if (dq?.products?.edges?.length) continue; // Dedupe
 
@@ -268,7 +270,7 @@ async function geminiEnrich(name, rawDesc) {
       if (g && g.verdict === 'fail') { console.log(`  ✗ Gemini-FAIL: ${name.slice(0, 50)} (${g.reason || ''})`); continue; }
       const status = (g && g.verdict === 'pass') ? TARGET_STATUS : 'DRAFT';
       const title = (g?.title_de || name).slice(0, 120);
-      const handle = productHandle(title, baseSku);
+      const handle = productHandle(title, providerId);
       const sizeHint = hasSize ? 'Grössen-Hinweis: asiatische Grössen – bitte 1 Nr. grösser wählen. ' : '';
       const html = (g?.html_de
         || `<p><strong>${name.slice(0, 90)}</strong></p><ul><li>✨ Premium-Qualität</li><li>🎨 Mehrere Varianten</li><li>💝 Tolles Geschenk</li><li>🚚 Schneller CH-Versand</li></ul>`)

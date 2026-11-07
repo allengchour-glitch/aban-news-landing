@@ -6,6 +6,7 @@ on:
       - 'automation/lib/**'
       - 'dropship/theme-entwurf-2610/sections/luxe-videos.liquid'
       - 'dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid'
+      - 'dropship/theme-entwurf-2610/templates/index.json'
       - 'codex-mods/**'
       - 'AGENTS.md'
       - 'automation/autopilot/shop_pulse.mjs'
@@ -104,6 +105,7 @@ jobs:
             automation/lib
             dropship/theme-entwurf-2610/sections/luxe-videos.liquid
             dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid
+            dropship/theme-entwurf-2610/templates/index.json
             automation/*.mjs
             dropship/cj_autopilot.mjs
             codex-mods
