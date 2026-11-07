@@ -75,7 +75,7 @@ class ShopLogicTest {
 
     @Test
     fun saisonWechseltMitDemKalender() {
-        assertEquals("jacken-outdoor", seasonFor(9).first)
+        assertEquals("damen-strick-pullover", seasonFor(9).first)
         assertEquals("sommer", seasonFor(7).first)
         assertEquals("premium-geschenke", seasonFor(12).first)
     }
@@ -178,5 +178,52 @@ class ShopLogicTest {
             Storefront.filterInputs(Filters(PriceBand.UNDER_25, onlyAvailable = true)).toString(),
         )
         assertEquals("""[{"price":{"min":100.0}}]""", Storefront.filterInputs(Filters(PriceBand.OVER_100)).toString())
+    }
+
+    @Test
+    fun bewertungenAusJudgeMe() {
+        fun card(rating: String?, count: String?) = Json.parseToJsonElement(
+            """{"id":"1","handle":"h","title":"T","availableForSale":true,
+            "priceRange":{"minVariantPrice":{"amount":"20.0","currencyCode":"CHF"}},
+            "rating":${rating ?: "null"},"ratingCount":${count ?: "null"}}""",
+        ) as JsonObject
+        val r = Parse.card(card("""{"value":"{\"scale_min\":\"1.0\",\"scale_max\":\"5.0\",\"value\":\"4.93\"}"}""", """{"value":"15"}"""))!!.rating!!
+        assertEquals(4.93, r.average, 0.001)
+        assertEquals(15, r.count)
+        assertEquals("4.9", r.label())
+        // Ohne Bewertung oder ohne Token (Felder fehlen) keine Sterne – nie eine erfundene Note
+        assertNull(Parse.card(card(null, null))!!.rating)
+        assertNull(Parse.card(card("""{"value":"{\"value\":\"0\"}"}""", """{"value":"0"}"""))!!.rating)
+    }
+
+    @Test
+    fun bewertungsfelderNurMitToken() {
+        val q = "query Q { products(first: 1) { nodes { id\n ${Storefront.RATING_MARK}\n } } }"
+        assertFalse(Storefront.withRatings(q, enabled = false).contains("metafield"))
+        assertTrue(Storefront.withRatings(q, enabled = true).contains("""metafield(namespace: "reviews", key: "rating")"""))
+    }
+
+    @Test
+    fun kachelbilderNieDoppelt() {
+        val jade1 = Image("https://cdn.shopify.com/s/files/1/c/S00fa75G_8bd6e6ca-6dc6-4934-84b0-e1a6ad240780.webp?v=1")
+        val jade2 = Image("https://cdn.shopify.com/s/files/1/c/S00fa75G_c06b013b-0db3-4ae6-956e-1c130c4bc189.webp?v=2")
+        val uhr = Image("https://cdn.shopify.com/s/files/1/f/uhr.jpg")
+        val kalender = Image("https://cdn.shopify.com/s/files/1/f/kalender.jpg")
+        assertEquals(imageKey(jade1), imageKey(jade2))
+        val picked = pickDistinct(
+            listOf("a", "b", "c", "d"),
+            mapOf("a" to listOf(jade1, uhr), "b" to listOf(jade2, uhr), "c" to listOf(jade2, uhr, kalender), "d" to emptyList()),
+        )
+        assertEquals(jade1, picked["a"])
+        assertEquals(uhr, picked["b"])
+        assertEquals(kalender, picked["c"])
+        assertEquals(null, picked["d"])
+    }
+
+    @Test
+    fun emojiHandleAusMenue() {
+        val m = MenuItem("Geschenke bis CHF 30", "https://luxestyle.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30", emptyList())
+        assertEquals("🎁-geschenke-bis-chf-30", m.collectionHandle)
+        assertEquals("damen-kleider", MenuItem("Kleider", "/collections/damen-kleider?sort=x", emptyList()).collectionHandle)
     }
 }

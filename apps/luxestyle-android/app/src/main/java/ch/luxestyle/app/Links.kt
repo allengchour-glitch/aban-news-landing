@@ -13,6 +13,8 @@ sealed interface Destination {
 
 object Links {
     const val HOME = "https://luxestyle.ch/"
+    const val PACKAGE = "luxestyle.ch"
+    const val PLAY_URL = "https://play.google.com/store/apps/details?id=$PACKAGE"
     private val SHOP_HOSTS = setOf("luxestyle.ch", "www.luxestyle.ch")
 
     /** Shopify-Checkout, Kundenkonto-Portal und Shop Pay laufen auf eigenen Domains. */

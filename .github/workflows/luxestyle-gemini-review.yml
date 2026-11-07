@@ -1,7 +1,8 @@
-name: LuxeStyle-App von Gemini bewerten lassen
+name: LuxeStyle-App von Gemini, ChatGPT und Kimi bewerten lassen
 
 # Nur manuell starten (Cron-Regel: keine automatischen Läufe, siehe CLAUDE.md).
-# Macht Bildschirmfotos der echten App mit echten Shopdaten und lässt Gemini sie beurteilen.
+# Macht Bildschirmfotos der echten App mit echten Shopdaten und lässt Gemini und ChatGPT sie beurteilen.
+# ChatGPT und Kimi laufen nur, wenn die Secrets OPENAI_API_KEY bzw. KIMI_API_KEY gesetzt sind.
 on:
   workflow_dispatch: {}
 
@@ -48,11 +49,27 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node tools/gemini_review.mjs screens-small
 
+      - name: ChatGPT-Bewertung
+        if: always()
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node tools/openai_review.mjs screens-small
+
+      - name: Kimi-Bewertung
+        if: always()
+        env:
+          REVIEW_PROVIDER: kimi
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          OUT_FILE: kimi-review.md
+        run: node tools/openai_review.mjs screens-small
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: gemini-review
           path: |
             apps/luxestyle-android/gemini-review.md
+            apps/luxestyle-android/openai-review.md
+            apps/luxestyle-android/kimi-review.md
             apps/luxestyle-android/screens-small/
           if-no-files-found: warn
