@@ -33,3 +33,7 @@ python3 -I tools/buero/make_buero.py /tmp/buero.json --werkstatt-status /tmp/ent
 ## E-Mail-Beantworter als erstes Verkaufsprodukt
 
 Der Auftrag vom 07.11. konkretisiert das erste Produkt als E-Mail-Beantworter. Version 0.2.0 liest gespeicherte EML-Dateien und erstellt Antworten als ungesendete EML-Entwürfe. Die Werkstatt prüft und paketiert jetzt auch diesen Modus. Postfachanbieter und Kontoverbindung sind noch offen. Der mögliche Pilot umfasst nach Anbieterwahl eine begrenzte Postfachanbindung und eine Prüfung der Antwortqualität anhand freigegebener Beispiele. Automatischer Versand ist nicht eingerichtet.
+
+## Kommentar-Beantworter als zweiter Einsatzfall
+
+Version 0.3.0 ergänzt Social-Media-Kommentare: CSV einlesen, Fragen gegen freigegebene FAQ prüfen, Antwortentwürfe und manuelle Prüffälle ausgeben. Die Werkstatt prüft und paketiert auch diesen Modus. Die Demo enthält nur erfundene Kommentare. Echte Plattformanbindung, Freigabe der Firmenantworten und Veröffentlichung sind noch offen. Ein möglicher Pilot kann E-Mail- oder Kommentarentwürfe anbieten; ein konkreter Kundenbedarf ist weiterhin zu prüfen.

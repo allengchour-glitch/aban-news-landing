@@ -11,7 +11,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parent
 PRODUKT = ROOT / "anfragen_assistent"
-DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "test_email_antworter.py", "demo-email.eml"]
+DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "test_email_antworter.py", "demo-email.eml", "kommentar_antworter.py", "test_kommentar_antworter.py", "demo-kommentare.csv", "demo-faq.json"]
 
 
 def lauf(out):
@@ -43,6 +43,12 @@ def lauf(out):
         status["stationen"]["bauen"] = "offen"
         speichern()
         raise ValueError("E-Mail-Demo konnte nicht gebaut werden; kein Lieferpaket freigegeben.")
+    kommentar_demo = subprocess.run([sys.executable, "-B", str(PRODUKT / "kommentar_antworter.py"), str(PRODUKT / "demo-kommentare.csv"),
+                                     str(out / "kommentar-demo"), "--wissen", str(PRODUKT / "demo-faq.json")],
+                                    cwd=ROOT, capture_output=True, text=True, timeout=30)
+    if kommentar_demo.returncode:
+        speichern()
+        raise ValueError("Kommentar-Demo konnte nicht gebaut werden; kein Lieferpaket freigegeben.")
     with zipfile.ZipFile(out / "anfragen-assistent.zip", "w", zipfile.ZIP_DEFLATED) as z:
         for name in DATEIEN:
             z.write(PRODUKT / name, arcname="anfragen-assistent/" + name)

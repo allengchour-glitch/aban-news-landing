@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 REGELN = [
     ("reklamation", r"\b(reklamation|beschwerde|mangel|defekt|kaputt|retoure|rückgabe)\b"),
     ("rechnung", r"\b(rechnung|zahlung|mahnung|gutschrift)\b"),

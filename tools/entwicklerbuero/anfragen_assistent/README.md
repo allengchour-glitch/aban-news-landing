@@ -1,6 +1,6 @@
 # Anfragen Assistent für kleine Betriebe
 
-Version 0.2.0 ist ein vorführbarer Prototyp für Schweizer Handwerks- und Dienstleistungsbetriebe. Eine CSV mit Anfragen wird nach Offerten, Terminen, Rechnungen, Reklamationen und allgemeinen Anliegen sortiert. Dringlichkeitswörter erzeugen eine Markierung zur Sichtung. Zu jeder Anfrage entsteht ein Antwortentwurf aus einer festen Vorlage.
+Version 0.3.0 ist ein vorführbarer Prototyp für Schweizer Handwerks- und Dienstleistungsbetriebe. Eine CSV mit Anfragen wird nach Offerten, Terminen, Rechnungen, Reklamationen und allgemeinen Anliegen sortiert. Dringlichkeitswörter erzeugen eine Markierung zur Sichtung. Zu jeder Anfrage entsteht ein Antwortentwurf aus einer festen Vorlage.
 
 ```bash
 python3 assistent.py demo.csv /tmp/anfragen-demo --firma "Beispielbetrieb (Demo)"
@@ -30,3 +30,15 @@ Als Eingabe geht auch ein Ordner mit EML-Dateien. Der neue Ausgabeordner enthäl
 Text-Mails und einfache HTML-Mails werden unterstützt; Anhänge werden nicht gelesen oder kopiert. Newsletter, Zustellberichte, automatische Antworten, eigene Absender und No-Reply-Adressen werden ausgesondert. Mehrere oder unklare Antwortadressen gehen in die manuelle Prüfung. Die Erkennung ist heuristisch und ersetzt keine Prüfung der Empfänger oder des Inhalts. Doppelte Message-IDs werden innerhalb eines Stapels ausgesondert; es gibt noch keine dauerhafte Postfach-Synchronisierung.
 
 Die Entwürfe nutzen weiterhin feste Vorlagen. Eine kontextbezogene KI-Antwort, die verbindliche Firmendaten, vollständige Mailverläufe oder Anhänge versteht, ist noch nicht angebunden. Die Gmail-/Outlook-Anbindung ist offen; Zugangsdaten gehören nicht in das Repository oder in den Chat.
+
+## Kommentar-Beantworter im Entwurfsmodus
+
+```bash
+python3 kommentar_antworter.py demo-kommentare.csv /tmp/kommentar-demo --wissen demo-faq.json
+```
+
+Eingabe: CSV mit `id,plattform,text`, eindeutige Kennungen, höchstens 5000 Kommentare. Plattformwerte: instagram, facebook, tiktok, youtube, linkedin, pinterest, threads, andere. Ausgabe: `antwortentwuerfe.csv` und ein Bericht mit null veröffentlichten Antworten. Die Plattformspalte ist nur eine Zuordnung; keine Plattform-API ist verbunden.
+
+Die FAQ-Datei enthält `faq` mit Einträgen aus `stichwoerter` (Liste) und `antwort`. Für einen Kunden müssen die Demoantworten durch dessen freigegebene Angaben ersetzt werden. Ein eindeutiger Stichworttreffer übernimmt die hinterlegte Antwort. Lob erhält einen kurzen Dank. Unbekannte oder mehrere Fragen bleiben ohne Antwortentwurf; Beschwerden erhalten einen Hinweisentwurf zur privaten Klärung und bleiben manuell zu prüfen. Hinweise auf persönliche Daten sowie Spamverdacht erhalten keine Antwort.
+
+Worterkennung ist keine vollständige Inhaltsmoderation: Sarkasmus, Verneinungen, Mehrsprachigkeit und nicht erkannte persönliche Daten können falsch eingeordnet werden. Vor jeder Veröffentlichung müssen Inhalt, Kontext und Datenschutz geprüft werden. Das Programm veröffentlicht, löscht und versteckt nichts; Antworten und Empfänger sind nicht mit Social-Media-Konten synchronisiert. Es gibt keine automatische dauerhafte Entdoppelung über mehrere CSV-Dateien hinweg.
