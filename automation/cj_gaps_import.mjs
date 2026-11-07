@@ -11,6 +11,7 @@
  */
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { productHandle } from './lib/product_handle.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -249,7 +250,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const p = picks[i];
       const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').trim();
       const price = chf(p.cost);
-      const handle = (title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 60) || ('cj-' + p.pid);
+      const handle = productHandle(title, p.pid);
       // Varianten: Farbe/Grösse aus CJ ableiten (sonst Einheit)
       const rows = p.vs.map(v => { const key = (v.variantKey || v.variantNameEn || '').trim(); const parts = key.split('-').map(s => s.trim()); let size = '', color = key; const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, ''); if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); } return { color: color || 'Standard', size: size || 'Einheit', sku: v.variantSku }; });
       let colors = [...new Set(rows.map(r => r.color))].slice(0, 12);

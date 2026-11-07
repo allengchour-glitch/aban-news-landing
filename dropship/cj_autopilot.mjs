@@ -25,6 +25,7 @@
  */
 import https from 'node:https';
 import { shopifyClientSecret } from '../automation/lib/shopify_secret.mjs';
+import { productHandle } from '../automation/lib/product_handle.mjs';
 
 const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, GEMINI_API_KEY } = process.env;
 // s. automation/lib/shopify_secret.mjs — vertauschte Env-Felder
@@ -267,6 +268,7 @@ async function geminiEnrich(name, rawDesc) {
       if (g && g.verdict === 'fail') { console.log(`  ✗ Gemini-FAIL: ${name.slice(0, 50)} (${g.reason || ''})`); continue; }
       const status = (g && g.verdict === 'pass') ? TARGET_STATUS : 'DRAFT';
       const title = (g?.title_de || name).slice(0, 120);
+      const handle = productHandle(title, baseSku);
       const sizeHint = hasSize ? 'Grössen-Hinweis: asiatische Grössen – bitte 1 Nr. grösser wählen. ' : '';
       const html = (g?.html_de
         || `<p><strong>${name.slice(0, 90)}</strong></p><ul><li>✨ Premium-Qualität</li><li>🎨 Mehrere Varianten</li><li>💝 Tolles Geschenk</li><li>🚚 Schneller CH-Versand</li></ul>`)
@@ -279,7 +281,7 @@ async function geminiEnrich(name, rawDesc) {
         return o;
       });
 
-      const input = { title, descriptionHtml: html, vendor: 'LuxeStyle', productType: d.categoryName || 'Mode',
+      const input = { title, handle, descriptionHtml: html, vendor: 'LuxeStyle', productType: d.categoryName || 'Mode',
         status, tags, productOptions, files, variants };
       const cm = await shopify(
         `mutation($in:ProductSetInput!){productSet(synchronous:true,input:$in){product{id media(first:30){nodes{status}}}userErrors{message}}}`,
