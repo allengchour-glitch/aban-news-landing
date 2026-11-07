@@ -1,5 +1,6 @@
 {
   "status": "proposed_edl_not_rendered_not_publishable",
+  "reviewed_at": "2026-11-07T23:42:40+01:00",
   "master_count": 1,
   "source": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
   "source_sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
@@ -117,9 +118,9 @@
       },
       "text": [
         "Produkt ansehen",
-        "CHF 34.90 · luxestyle.ch"
+        "LuxeStyle · luxestyle.ch"
       ],
-      "price_recheck_before_publication": true,
+      "price_overlay": false,
       "source_first_frame": 588,
       "source_out_exclusive_frame": 688,
       "source_frame_count": 100,
@@ -131,10 +132,29 @@
   "open_gates": [
     "native_premium_source_quality",
     "commercial_video_editing_rights",
-    "default_sku_motif_assignment",
+    "current_variant_sku_motif_assignment",
     "final_motion_platform_crop_and_audio_review",
     "fresh_identity_tags_availability_price_link_preflight"
   ],
+  "current_product_review": {
+    "product_id": "gid://shopify/Product/15521256604033",
+    "product_updated_at": "2026-11-05T14:32:38Z",
+    "historical_variant_id": "gid://shopify/ProductVariant/56197916361089",
+    "historical_variant_state": "absent_do_not_use",
+    "current_variants": [
+      {"id": "gid://shopify/ProductVariant/68122445283719", "sku": "CJSN139239101AZ", "title": "A", "price_chf": "34.90"},
+      {"id": "gid://shopify/ProductVariant/68122445316487", "sku": "CJSN139239102BY", "title": "B", "price_chf": "37.90"},
+      {"id": "gid://shopify/ProductVariant/68122445349255", "sku": "CJSN139239103CX", "title": "C", "price_chf": "40.90"},
+      {"id": "gid://shopify/ProductVariant/68122445382023", "sku": "CJSN139239104DW", "title": "D", "price_chf": "49.90"},
+      {"id": "gid://shopify/ProductVariant/68122445414791", "sku": "CJSN139239105EV", "title": "E", "price_chf": "51.90"},
+      {"id": "gid://shopify/ProductVariant/68122445447559", "sku": "CJSN139239106FU", "title": "F", "price_chf": "44.90"},
+      {"id": "gid://shopify/ProductVariant/68122445480327", "sku": "CJSN139239107GT", "title": "G", "price_chf": "35.90"}
+    ],
+    "variant_motif_filmed_unit_binding": "unknown",
+    "source_sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "reference_image_sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "music_sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688"
+  },
   "master_id": "luxe_sternenprojektor_master_20261018",
   "alternate_hook_b": {
     "master_in": "0.00",

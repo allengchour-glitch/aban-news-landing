@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 123,
-  "updatedAt": "2026-11-06T22:06:41+01:00",
+  "revision": 124,
+  "updatedAt": "2026-11-07T23:42:40+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14616,5 +14616,15 @@
     "customerMessages": 0,
     "orderReads": 0,
     "orderWrites": 0
+  },
+  "followUpRunR124": {
+    "at": "2026-11-07T23:42:40+01:00",
+    "evidence": "dropship/codex-handoff-20261018/LAUFBELEGE-20261107-R124.json",
+    "package": "dropship/codex-handoff-20261018/ABENDPAKET-20261107-R124.md",
+    "contentDraft": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261107-R124.md",
+    "summary": "Shopify- und Metricool-Identitaeten stimmen. Planung: 30 UUIDs/47 PENDING-Kanalzustaende ohne belegte kanalgleiche Doppelposts, Medienwiederholungen oder Zeitkollisionen. Kennzahlen und Klaviyo einmalig klein gelesen; Datenluecken bleiben unbekannt. Zwei Produkte gezielt geprueft. Projektor-Varianten, Quelle, Referenzbild und Pflichtmusik technisch neu belegt; Variantenbindung und kommerzielle Bearbeitungs-/Werberechte bleiben offen. Kein Master-MP4 und kein Social-Write.",
+    "actualChange": "MASTER-CUT-PLAN auf aktuelle Variantenbelege umgestellt und unbelegten Preis-Overlay entfernt; Social-Briefing ohne gesprochene Sprache oder Voiceover fortgeschrieben.",
+    "coordination": "Claude-PR2912 gezielt geprueft und nicht dupliziert; gemeinsamer Kenntnisnahmebeleg bleibt unbekannt.",
+    "nextStep": "Produkt-/Variantenbindung und kommerzielle Bearbeitungs-/Werberechte der Projektorquelle belegen; danach einen professionellen 18-Sekunden-Master rendern, pruefen und dem Inhaber vorlegen."
   }
 }

@@ -1255,3 +1255,17 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R123-Bericht, JSON und Projektgedächtnis fortgeschrieben | Revision 123. Keine Shopify-, Merchant-, Feed-, Versand-, Redirect-, Theme-, Google-Sheets-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden- oder Bestelländerung |
 
 [LUXESTYLE_R123_20261106] [Merchant- und GSC-Diagnose](MERCHANT-GSC-DIAGNOSE-20261106-R123.md) · [Maschinenlesbare Belege](MERCHANT-GSC-DIAGNOSE-20261106-R123.json). Neue Exporte klassifiziert, Crawler-Fehlalarm widerlegt und sichere nächste Einzelprüfungen festgelegt; keine externe Änderung.
+
+## 07.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| R124 Identität / Koordination | Shopify-Shop, Metricool-Marke, Zeitzone und sechs Kanäle frisch gelesen; origin/main, offene PRs und Claude-PR2912 geprüft | Identitäten passend. Claudes FAQ-/fr-noindex-/Handle-Scope öffentlich gegengeprüft und nicht dupliziert; gemeinsamer Receipt/Live-Lock weiterhin unbekannt |
+| R124 Metricool-Planung | 07.–14.11. vollständig mit IDs, UUIDs, Medien, Zuständen und Kanalzeiten gelesen; kanalgleiche Text-/Medienkopien und Kollisionen geprüft | 30 Objekte/30 UUIDs/47 PENDING-Zustände;0 exakte kanalgleiche Doppelungen,0 Medienwiederholungen,0 Zeitkollisionen. Threads/Pinterest/TikTok/YouTube mit Lücken; kein Write |
+| R124 Kennzahlen | Gültige evolution-IDs neu entdeckt und31.10.–06.11. einmalig klein abgefragt | Kanalbezogene Teilmessung dokumentiert; fehlende Tageswerte unbekannt, keine Verkaufsableitung |
+| R124 Produkte | Projektor und Panda mit Admin-GraphQL, Varianten, CHF-Preisen, Bildern, Storefront, Tracking, Policy, Menge und Wächtertags geprüft | Beide ACTIVE/HTTP200/kaufbar, untracked/CONTINUE/Menge0. Keine Lager-/Lieferzusage. Projektor weiter durch auswahl-offen, Varianten-/Motivbindung und Rechte blockiert |
+| R124 Master | Reale Projektorquelle und Referenzbild frisch geladen/gehasht, Musik gegengeprüft, Source visuell gesichtet; kanonischen Schnittplan eng korrigiert | Quelle960×540/25fps, keine Premium-MP4. Veraltetes Preis-Overlay entfernt, aktuelle Varianten-IDs/SKUs als ungebunden dokumentiert. Keine gesprochene Sprache, kein Render/Upload/Social-Write |
+| R124 Klaviyo / DNS | Placed-Order-Metrik, drei Flows, Sieben-Tage-Flowreport, Formularabfrage, Kontowährung sowie vier genehmigte DNS-Ziele gelesen | Alle Flows draft; Vse76a-Report unbekannt; Welcome/Post-Purchase kleine Teilwerte; Formularabfrage ohne sichtbare Zeilen, Capture-Weg unbekannt. USD/CHF getrennt. Drei CNAMEs NXDOMAIN, Klaviyo-TXT fehlt; kein Flow-/DNS-Write |
+| R124 Dokumentation | R124-Paket, Masterbriefing, Belegdatei und bestehendes Projektgedächtnis fortgeschrieben | Revision124 vorbereitet. Keine Shopify-/Merchant-/Feed-/Theme-/Rabatt-/Budget-/Kunden-/Bestelländerung; Kauf-Watch nicht wiederholt |
+
+[LUXESTYLE_R124_20261107] [Kompaktes Paket](ABENDPAKET-20261107-R124.md) · [Masterbriefing](MASTER-CONTENT-20261107-R124.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261107-R124.json). Ein kanonischer Draftfehler korrigiert; alle externen produktiven Writes blieben aus.
