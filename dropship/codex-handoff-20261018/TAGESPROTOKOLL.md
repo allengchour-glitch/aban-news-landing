@@ -1269,3 +1269,13 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R124 Dokumentation | R124-Paket, Masterbriefing, Belegdatei und bestehendes Projektgedächtnis fortgeschrieben | Revision124 vorbereitet. Keine Shopify-/Merchant-/Feed-/Theme-/Rabatt-/Budget-/Kunden-/Bestelländerung; Kauf-Watch nicht wiederholt |
 
 [LUXESTYLE_R124_20261107] [Kompaktes Paket](ABENDPAKET-20261107-R124.md) · [Masterbriefing](MASTER-CONTENT-20261107-R124.md) · [Maschinenlesbare Belege](LAUFBELEGE-20261107-R124.json). Ein kanonischer Draftfehler korrigiert; alle externen produktiven Writes blieben aus.
+
+## 08.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| R125 Social-Audio | Sieben geplante MP4-URLs geladen, vier eindeutige Dateihashes sowie Audioformat, ASR und Signalabgleich mit `luxe-premium.wav` geprüft | Zwei ASR-Modelle erkennen in einer Datei deutsche Sprache; keine der vier Audiospuren technisch der Pflichtmusik zugeordnet. Drei Dateien ohne erkannte ASR-Sprachsegmente, menschliche Hör-/Rechteabnahme weiter offen |
+| R125 Metricool-Sperre | Marke/Kanäle und11 Originalposts frisch gelesen; vollständigen Diff je stabile UUID geprüft; ausschliesslich Draft-/Auto-Publish-Flags geändert |11 Videoobjekte/16 Kanalzustände jetzt `draft=true`, global und Instagram `autoPublish=false`; aktuelle Text-/Medienhashes, UUID/Termin/Kanäle/YT-Zielgruppe je Post zurückgelesen. Für neun Posts Prewrite-Text-Hash unbekannt.19 Fotoobjekte unverändert |
+| R125 Grenzen / Daten | Fehlgeschlagene Vorvalidierungen als No-Write eingeordnet; keine Ersatzposts oder Medien erzeugt | Kein Post neu angelegt, kein Upload/Render/Publish. Keine Kennzahl-, Klaviyo-, Bestell- oder Kauf-Watch-Abfrage am neuen Tag. Revision125 dokumentiert |
+
+[LUXESTYLE_R125_20261108] [Social-Audio-Bericht](SOCIAL-AUDIO-PRUEFUNG-20261108-R125.md) · [Maschinenlesbare Belege](SOCIAL-AUDIO-PRUEFUNG-20261108-R125.json). Sprach- und Musikregel auf alle aktuell geplanten MP4-Objekte angewendet; Foto-Planung erhalten.

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_SOCIAL_AUDIO_R125_20261108",
+  "checkedAt": "2026-11-08T00:06:18+01:00",
+  "timezone": "Europe/Zurich",
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "facebook": "1049840534888592",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+    "result": "matched_before_writes"
+  },
+  "policy": {
+    "spokenLanguage": "not_allowed",
+    "voiceover": "not_allowed",
+    "visualCopy": "short_german_text_overlays_and_german_captions",
+    "onlyAllowedMusicPath": "automation/music/luxe-premium.wav",
+    "onlyAllowedMusicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688"
+  },
+  "audioAudit": {
+    "scheduledVideoUrls": 7,
+    "uniqueFiles": 4,
+    "allFilesHaveAacAudio": true,
+    "speechChecks": ["faster-whisper-tiny", "faster-whisper-base"],
+    "musicComparison": "mono_16000hz_normalized_sliding_cross_correlation_against_required_wav",
+    "files": [
+      {
+        "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88",
+        "durationSeconds": 9.28,
+        "urls": [
+          "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4",
+          "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+        ],
+        "speechSegments": 0,
+        "maxAbsoluteMusicCorrelation": 0.079422,
+        "requiredMusicMatch": false
+      },
+      {
+        "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350",
+        "durationSeconds": 10.16,
+        "urls": [
+          "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4",
+          "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+        ],
+        "speechSegments": 0,
+        "maxAbsoluteMusicCorrelation": 0.090047,
+        "requiredMusicMatch": false
+      },
+      {
+        "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9",
+        "durationSeconds": 9.4,
+        "urls": [
+          "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+        ],
+        "speechLanguage": "de",
+        "speechDetections": [
+          {
+            "model": "faster-whisper-tiny",
+            "languageProbability": 0.9969,
+            "segments": 2,
+            "rawTranscript": "8 Christian Spitzen in einer Holzbox. Naturpur für den Zuhause bei Luxestyle."
+          },
+          {
+            "model": "faster-whisper-base",
+            "languageProbability": 0.9984,
+            "segments": 1,
+            "rawTranscript": "acht Kristall-Spitzen in einer Holzbox. Naturpuhr für den Zuhause bei Luxestyle."
+          }
+        ],
+        "speechSummary": "German speech detected by both ASR models; exact wording remains uncertain without human hearing review.",
+        "maxAbsoluteMusicCorrelation": 0.05244,
+        "requiredMusicMatch": false
+      },
+      {
+        "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c",
+        "durationSeconds": 12.0,
+        "urls": [
+          "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4",
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "speechSegments": 0,
+        "maxAbsoluteMusicCorrelation": 0.075525,
+        "requiredMusicMatch": false
+      }
+    ],
+    "caveat": "ASR output is not a human hearing approval. No detected speech segment does not prove silence. Low correlation means the required WAV was not technically matched; it is not a rights conclusion."
+  },
+  "prevalidationErrorsWithoutWrite": [
+    {
+      "targetUuid": "1744402171830094170",
+      "stage": "local_media_upload_preprocessor",
+      "error": "existing HTTPS media URL treated as local mediaFiles path",
+      "writeReached": false
+    },
+    {
+      "targetUuid": "1744402171830094170",
+      "stage": "request_validation",
+      "error": "default twitterData present although Twitter was not a provider",
+      "writeReached": false
+    }
+  ],
+  "postUpdates": [
+    {"oldId": 414940715, "newId": 420321517, "uuid": "1744402171830094170", "dateTime": "2026-11-08T16:00:00", "channels": ["facebook", "instagram", "tiktok"], "mediaSha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9"},
+    {"oldId": 417054489, "newId": 420321593, "uuid": "-4472725258033347244", "dateTime": "2026-11-08T17:30:00", "channels": ["youtube"], "mediaSha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9"},
+    {"oldId": 416121336, "newId": 420323597, "uuid": "-7257455683644011058", "dateTime": "2026-11-09T12:30:00", "channels": ["tiktok"], "mediaSha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"},
+    {"oldId": 416121358, "newId": 420323611, "uuid": "3863915044291300024", "dateTime": "2026-11-09T19:30:00", "channels": ["facebook", "instagram"], "mediaSha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"},
+    {"oldId": 416122901, "newId": 420323616, "uuid": "2172266762404316928", "dateTime": "2026-11-10T18:00:00", "channels": ["tiktok"], "mediaSha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"},
+    {"oldId": 416122936, "newId": 420323622, "uuid": "3963843144054620883", "dateTime": "2026-11-11T20:30:00", "channels": ["facebook", "instagram"], "mediaSha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"},
+    {"oldId": 416122966, "newId": 420323631, "uuid": "-7768329881687535680", "dateTime": "2026-11-11T12:00:00", "channels": ["tiktok"], "mediaSha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88"},
+    {"oldId": 416123077, "newId": 420323639, "uuid": "-2435184774283179178", "dateTime": "2026-11-13T20:30:00", "channels": ["facebook", "instagram"], "mediaSha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88"},
+    {"oldId": 417054506, "newId": 420323647, "uuid": "-3553911421145298799", "dateTime": "2026-11-09T21:00:00", "channels": ["youtube"], "mediaSha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"},
+    {"oldId": 417054542, "newId": 420323653, "uuid": "-7002936161864562103", "dateTime": "2026-11-10T19:30:00", "channels": ["youtube"], "mediaSha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"},
+    {"oldId": 417054575, "newId": 420323659, "uuid": "5681760339256165072", "dateTime": "2026-11-11T19:00:00", "channels": ["youtube"], "mediaSha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88"}
+  ],
+  "perPostReadBack": [
+    {"id": 420321517, "uuid": "1744402171830094170", "publicationDate": {"dateTime": "2026-11-08T16:00:00", "timezone": "Europe/Zurich"}, "prewriteTextSha256": "5660fd6886b0b88dfb6bc96f579a65b6f505025bc25b965419bbe14684b896b8", "textSha256": "5660fd6886b0b88dfb6bc96f579a65b6f505025bc25b965419bbe14684b896b8", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"facebook": "PENDING", "instagram": "PENDING", "tiktok": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4", "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9"}], "draft": true, "autoPublish": false, "instagramAutoPublish": false},
+    {"id": 420321593, "uuid": "-4472725258033347244", "publicationDate": {"dateTime": "2026-11-08T17:30:00", "timezone": "Europe/Zurich"}, "prewriteTextSha256": "b51d30b2e94dd7d9cdd70525e4d91b7d75796d2b4debcd24c05f68d988442565", "textSha256": "b51d30b2e94dd7d9cdd70525e4d91b7d75796d2b4debcd24c05f68d988442565", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"youtube": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4", "sha256": "fd335d43a5657a9a6cf2e427aba87b33bf39308f830226e91733fccc338fe9f9"}], "draft": true, "autoPublish": false, "youtubeMadeForKids": false},
+    {"id": 420323597, "uuid": "-7257455683644011058", "publicationDate": {"dateTime": "2026-11-09T12:30:00", "timezone": "Europe/Zurich"}, "textSha256": "01ac3253770830d965cb81e9ab5558727ae9fde1b31d7b48ccf2a96378d2ca43", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"tiktok": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4", "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"}], "draft": true, "autoPublish": false},
+    {"id": 420323611, "uuid": "3863915044291300024", "publicationDate": {"dateTime": "2026-11-09T19:30:00", "timezone": "Europe/Zurich"}, "textSha256": "2e65eae3daee0d0b2b38340fc396d27ca13f51ef8a20308949aa6ffd8db31dcf", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"facebook": "PENDING", "instagram": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4", "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"}], "draft": true, "autoPublish": false, "instagramAutoPublish": false},
+    {"id": 420323647, "uuid": "-3553911421145298799", "publicationDate": {"dateTime": "2026-11-09T21:00:00", "timezone": "Europe/Zurich"}, "textSha256": "1fc2d4012bd9666eb8231ec8da8ab0708f10a692e341d5ccdaf308c70aa7eea9", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"youtube": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4", "sha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"}], "draft": true, "autoPublish": false, "youtubeMadeForKids": false},
+    {"id": 420323616, "uuid": "2172266762404316928", "publicationDate": {"dateTime": "2026-11-10T18:00:00", "timezone": "Europe/Zurich"}, "textSha256": "f8904d4c4f08c83e04a023e64c5446209762381d6ceec6c053c30605aef44513", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"tiktok": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4", "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"}], "draft": true, "autoPublish": false},
+    {"id": 420323653, "uuid": "-7002936161864562103", "publicationDate": {"dateTime": "2026-11-10T19:30:00", "timezone": "Europe/Zurich"}, "textSha256": "e8b607d5e6a88566dd6fb2d94c02c81f0f09a6b86ef78fb1d12cd942d66c9336", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"youtube": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4", "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"}], "draft": true, "autoPublish": false, "youtubeMadeForKids": false},
+    {"id": 420323631, "uuid": "-7768329881687535680", "publicationDate": {"dateTime": "2026-11-11T12:00:00", "timezone": "Europe/Zurich"}, "textSha256": "56f582ba8801ef4c9ee298845218947538fb6eb9e820af7f71e3d744d1cdf96d", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"tiktok": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4", "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88"}], "draft": true, "autoPublish": false},
+    {"id": 420323659, "uuid": "5681760339256165072", "publicationDate": {"dateTime": "2026-11-11T19:00:00", "timezone": "Europe/Zurich"}, "textSha256": "8ea87f83ab9a82e8e254118d86c0bc23d122fa63f4c7633a9b1aceb930e0536a", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"youtube": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4", "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88"}], "draft": true, "autoPublish": false, "youtubeMadeForKids": false},
+    {"id": 420323622, "uuid": "3963843144054620883", "publicationDate": {"dateTime": "2026-11-11T20:30:00", "timezone": "Europe/Zurich"}, "textSha256": "1ce4ccf77a954fc233949ea7f806371b84559e78f7055db7fb9d2dbc0f42db16", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"facebook": "PENDING", "instagram": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4", "sha256": "fb633ea57cd8612ad2523ded5fe152b011bdcbf034729aa4396fbe430191e350"}], "draft": true, "autoPublish": false, "instagramAutoPublish": false},
+    {"id": 420323639, "uuid": "-2435184774283179178", "publicationDate": {"dateTime": "2026-11-13T20:30:00", "timezone": "Europe/Zurich"}, "textSha256": "5a4d4c7a316a82cd17b03d009ad26f46cc6047e0137d2046fa87a3aa0b61cf97", "firstCommentTextSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "providerStates": {"facebook": "PENDING", "instagram": "PENDING"}, "media": [{"url": "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4", "sha256": "e0b91202c1b338cd2e8d2fbf78eaa8039dba881faf9e2421ba2e2ae8b8a8ce88"}], "draft": true, "autoPublish": false, "instagramAutoPublish": false}
+  ],
+  "postUpdateReadBack": {
+    "window": "2026-11-08T00:02:05+01:00/2026-11-15T00:02:05+01:00",
+    "totalObjects": 30,
+    "totalChannelStates": 47,
+    "videoObjects": 11,
+    "videoChannelStates": 16,
+    "allVideoObjectsDraft": true,
+    "allVideoObjectsAutoPublishFalse": true,
+    "instagramAutoPublishFalseWhereApplicable": true,
+    "youtubeMadeForKidsFalsePreserved": true,
+    "perPostSnapshots": 11,
+    "prewriteTextHashesPersisted": 2,
+    "textHashEqualityConfirmed": 2,
+    "textHashEqualityUnknown": 9,
+    "providerStatus": "PENDING_but_not_publication_evidence_for_drafts"
+  },
+  "writes": {
+    "metricoolPostUpdates": 11,
+    "newPosts": 0,
+    "mediaReplacements": 0,
+    "uploads": 0,
+    "renders": 0,
+    "publications": 0,
+    "shopify": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "orders": 0
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "0bba4a96951afe0b941e3848c731d1216a0529f7d50c8435d4ad243b67742e85",
+    "PROJEKTGEDAECHTNIS.md": "642267cbd8e0631d62363525d7f7dc21e7db17e34d453daffa37a1fd72259840",
+    "ARBEITSSTAND.json": "3462e9897fbac0dae276dda814bd9b45bbec1b8c392ab892530d31e89381a936",
+    "TAGESPROTOKOLL.md": "502599c0742cec46bdf1fee4d952092faf2f46950f1618810658f052882b8d19"
+  },
+  "sourceCommitBeforeDocumentation": "849764dbf68400f6ba96f809b5a4c3a168482a14"
+}

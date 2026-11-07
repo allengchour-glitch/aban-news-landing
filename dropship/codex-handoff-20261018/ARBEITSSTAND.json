@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 124,
-  "updatedAt": "2026-11-07T23:42:40+01:00",
+  "revision": 125,
+  "updatedAt": "2026-11-08T00:06:18+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14626,5 +14626,16 @@
     "actualChange": "MASTER-CUT-PLAN auf aktuelle Variantenbelege umgestellt und unbelegten Preis-Overlay entfernt; Social-Briefing ohne gesprochene Sprache oder Voiceover fortgeschrieben.",
     "coordination": "Claude-PR2912 gezielt geprueft und nicht dupliziert; gemeinsamer Kenntnisnahmebeleg bleibt unbekannt.",
     "nextStep": "Produkt-/Variantenbindung und kommerzielle Bearbeitungs-/Werberechte der Projektorquelle belegen; danach einen professionellen 18-Sekunden-Master rendern, pruefen und dem Inhaber vorlegen."
+  },
+  "followUpRunR125": {
+    "at": "2026-11-08T00:06:18+01:00",
+    "evidence": "dropship/codex-handoff-20261018/SOCIAL-AUDIO-PRUEFUNG-20261108-R125.json",
+    "report": "dropship/codex-handoff-20261018/SOCIAL-AUDIO-PRUEFUNG-20261108-R125.md",
+    "trigger": "Owner requires no spoken language or voiceover in social; only text, with the already mandated single music file.",
+    "finding": "Seven scheduled MP4 URLs resolved to four unique files. Both ASR models detected German speech in one file; none technically matched automation/music/luxe-premium.wav. ASR output and three no-speech detections are not human hearing approvals.",
+    "actualChange": "Exactly 11 existing Metricool video objects covering 16 channel states were set to draft=true and autoPublish=false; Instagram auto-publish was also disabled where applicable. Write inputs intentionally changed only these flags; per-UUID current text/media hashes and other readback fields are recorded, but separate prewrite text hashes were not persisted for nine posts. No new post was created.",
+    "readBack": "30 objects/47 channel states remain. All 11 video objects are drafts with auto-publish off. Provider PENDING is not publication evidence.",
+    "dailyData": "No new Metricool analytics, Klaviyo flow report, Shopify order report or purchase-watch read on 2026-11-08.",
+    "nextStep": "Update only the same existing UUID after a compliant MP4 with product binding, rights, text-only creative, required music and channel-crop approval exists; do not create replacement posts."
   }
 }
