@@ -1,0 +1,92 @@
+name: Büro-Tagespflege (Seiten und Suchmaschinen)
+on:
+  workflow_dispatch:
+    inputs:
+      melden:
+        description: 'Geänderte URLs an IndexNow melden (Schlüssel erforderlich)'
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      melden:
+        type: boolean
+        default: false
+    secrets:
+      INDEXNOW_KEY:
+        required: false
+      GOOGLE_SEARCH_CONSOLE_CREDENTIALS:
+        required: false
+  pull_request:
+    paths:
+      - 'tools/buero/tagespflege.py'
+      - 'tools/buero/test_tagespflege.py'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/buero-tagespflege.yml'
+      - '.github/workflows/tages-update.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: buero-tagespflege-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: tools/buero
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -B -m unittest discover -s tools/buero -p test_tagespflege.py
+  pflege:
+    if: github.event_name != 'pull_request'
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*.html
+            /**/*.html
+            /sitemap.xml
+            /robots.txt
+            /tools/buero/
+            /.github/workflows/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/indexnow-state.json
+          key: buero-indexnow-v1-${{ github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: buero-indexnow-v1-${{ github.ref_name }}-
+      - name: Optionale Google-Anmeldung vorbereiten
+        env:
+          GOOGLE_SEARCH_CONSOLE_CREDENTIALS: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CREDENTIALS }}
+        shell: bash
+        run: |
+          if [ -n "$GOOGLE_SEARCH_CONSOLE_CREDENTIALS" ]; then
+            python3 -m pip install 'google-auth[requests]>=2,<3'
+          fi
+      - name: Prüfen und optional Änderungen melden
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          GOOGLE_SEARCH_CONSOLE_CREDENTIALS: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CREDENTIALS }}
+          MELDEN: ${{ inputs.melden && github.ref == 'refs/heads/main' && '1' || '0' }}
+        shell: bash
+        run: |
+          args=(--root . --ausgabe "$RUNNER_TEMP/buero-pflege" --state "$RUNNER_TEMP/indexnow-state.json" --github)
+          if [ "$MELDEN" = '1' ]; then args+=(--melden); fi
+          python3 -B tools/buero/tagespflege.py "${args[@]}"
+          # Öffentliche Artefakte enthalten keine Bestell-, Konto- oder privaten Sitzungsdaten.
+          python3 -I tools/buero/make_buero.py "$RUNNER_TEMP/buero-pflege/github-buero.json" --pflege-status "$RUNNER_TEMP/buero-pflege/pflege.json" --nur-github
+      - uses: actions/upload-artifact@v4
+        with:
+          name: buero-tagespflege
+          path: ${{ runner.temp }}/buero-pflege/
+          retention-days: 14

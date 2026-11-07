@@ -1,0 +1,32 @@
+name: Entwicklerbüro prüfen
+on:
+  pull_request:
+    paths:
+      - 'tools/entwicklerbuero/**'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/entwicklerbuero-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/entwicklerbuero/**'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/entwicklerbuero-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/entwicklerbuero
+            tools/buero
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gegenproben der Werkstatt
+        run: python3 -B -m unittest discover -s tools/entwicklerbuero -p 'test_werkstatt.py'
+      - name: Selbsttests und Demopaket
+        run: python3 -B tools/entwicklerbuero/werkstatt.py "$RUNNER_TEMP/werkstatt-pruefung"

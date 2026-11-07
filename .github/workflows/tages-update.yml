@@ -214,3 +214,14 @@ jobs:
     if: always()
     uses: ./.github/workflows/markets-build.yml
     secrets: inherit
+
+  buero-pflege:
+    # Nutzt den bestehenden Tages-Cron; kein zusätzlicher Zeitplan.
+    needs: ki-news
+    if: always()
+    uses: ./.github/workflows/buero-tagespflege.yml
+    with:
+      melden: true
+    secrets:
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      GOOGLE_SEARCH_CONSOLE_CREDENTIALS: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CREDENTIALS }}

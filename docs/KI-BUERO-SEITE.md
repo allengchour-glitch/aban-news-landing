@@ -135,3 +135,72 @@ Die Seite läuft nur im Dashboard. Zum Ansehen und Prüfen ohne Dashboard gibt e
 - Arbeitsort: der Link zeigt auf die Lauf-Liste des Workflows, nicht auf den einzelnen Lauf, und auf die Sitzung, nicht auf deren Stand.
 - Arbeitsort: die Kürzel machen die Beschriftungen breiter. Gemessen auf dem Handy (390 px) überdecken sich die Beschriftungen in der Versand-Ansicht zu 19 % der Fläche ohne und 26 % mit Kürzel (Chefbüro 27 und 29 %), auf Tablet und Desktop kaum. Wird es dem Besitzer zu eng, genügt `.kb3-ort { display: none; }` in `seite.html`; Schild und Detailfeld bleiben.
 - 3D: sieben der 21 Modelle haben keinen Herkunftsvermerk in den Credit-Dateien des Repos (siehe `tools/buero/3d/README.md`). Die Seite ist privat.
+
+## Gestaltung und Steuerung vom 07.11.2026 (GitHub-Entwurf)
+
+Die Quellen enthalten wärmere Materialien, feinere Gesichter und einen offenen Social-Media-Anbau vor dem Shop mit drei Arbeitsplätzen, Ringlicht und Sitzecke. Der Raum ist über «Social Media» erreichbar und auch in 2D und Liste enthalten. Für die private Claude-Seite ist eine gesonderte Übertragung erforderlich; diese Änderungen sind dort noch nicht veröffentlicht.
+
+- «Verschieben» + Ziehen bewegt den Bildausschnitt in der Bildebene; «Drehen» + Ziehen dreht wie bisher. Richtungsknöpfe verschieben ebenfalls. Umschalt + Ziehen, rechte/mittlere Maustaste und Umschalt + Pfeiltasten verschieben unabhängig vom Modus.
+- Zwei Finger verschieben über ihren Mittelpunkt und zoomen über ihren Abstand. Innerhalb der Zeichenfläche übernimmt die Seite die Gesten; zum Scrollen außerhalb der Fläche wischen. «Zurück» und Raumknöpfe setzen den Ausschnitt zurück.
+- QUELLE: `.github/workflows/social-meta-autopost.yml`, `pinterest-publish.yml` und `linkedin-autopost.yml`, gelesen am 07.11.2026. Die Zeitpläne sind auskommentiert; Handstart ist vorgesehen. Neue Zeilen stehen gelb auf «Prüfen», mit «Keine Laufmessung». Kontoverbindung, letzter Lauf und Beiträge wurden nicht gemessen. Das ist keine Auffrischung der bisherigen Messungen vom 05.11.
+- Dashboard-Übertragung: zuerst das gebaute `files/kb3d-code.js`, dann die neue `buero.json` als Quelle von `datasets/buero`, zuletzt `seite.html` als `files/index.html`, jeweils mit aktuellen Versionswächtern. Modellpakete bleiben unverändert. Die Datenquelle wird benötigt, damit die drei neuen Figuren zu sehen sind.
+
+## Entwicklerbüro und erstes Produkt vom 07.11.2026 (Entwurf)
+
+Ein zweiter offener Anbau vor dem Versand enthält die Stationen «Produktbau», «Prüfstand» und «Verkaufsunterlagen». Der Raum ist in 3D, 2D und Liste enthalten. Erstes Produkt: der lokale Anfragen-Assistent für Schweizer Handwerks- und Dienstleistungsbetriebe, unter `tools/entwicklerbuero/`.
+
+`werkstatt.py <neuer Ausgabeordner>` führt die Produkttests aus, erzeugt eine Demo aus erfundenen Anfragen und paketiert ausgewählte Produktdateien. Ein fehlgeschlagener Test gibt kein ZIP frei. Der Bericht `status.json` lässt sich mit `make_buero.py <Ausgabe>.json --werkstatt-status <Bericht>` übernehmen. Ohne Bericht sind alle drei Stationen ungeprüft gelb. Mit Bericht werden nur tatsächlich abgeschlossene Schritte grün; das Angebot bleibt ein Entscheid für den Besitzer. Nach 24 Stunden altert dieser Stand. `aktiv_h=0`: Die Figuren behaupten zu keinem Zeitpunkt, im Hintergrund zu arbeiten.
+
+Der Assistent nutzt feste Wortregeln und Antwortvorlagen, kein Sprachmodell. Die erste Version verarbeitet CSV und sendet nichts. E-Mail-/CRM-Anbindung, Pilotkunde, Preis und Verkaufskanal sind offen. Der Ablauf startet auf Befehl; selbständige Produktentwicklung, laufender Agent und automatische Verkäufe sind nicht eingerichtet. Projekt und Pilotvorgehen: `tools/entwicklerbuero/PROJEKT.md`.
+
+
+### E-Mail-Beantworter Version 0.2.0
+
+Das erste Produkt ist zum E-Mail-Beantworter konkretisiert: `email_antworter.py` liest lokal gespeicherte EML-Dateien und erzeugt ungesendete Antwortdateien. Die Werkstatt führt Produkttests sowie eine EML-Demo aus und nimmt die E-Mail-Dateien ins Lieferpaket auf. Der Bürobericht beschreibt weiter nur diesen lokalen Durchlauf. Ein Postfachanbieter, eine Kontoverbindung und automatischer Versand sind noch nicht eingerichtet.
+
+
+## Neue Charaktermodelle vom 07.11.2026 (GitHub-Entwurf)
+
+Die bisherigen `th30_*`-Menschen werden durch eigene runde Figuren mit grösseren Köpfen, Augen mit Iris und Lichtpunkten, Nase, Ohren, Frisuren, weicheren Armen und Händen ersetzt. Die neuen Modelle verwenden weiterhin die bestehenden Gelenke und alle fünf Statushaltungen. Die Abbildung ist stilisiert, kein Abbild realer Beschäftigter. Quellen und Grenzen: `tools/buero/3d/README.md`, Abschnitt «Neue Figuren». In Claude noch nicht veröffentlicht; die Übertragung braucht das neu gebaute `files/kb3d-code.js`.
+
+
+### Arme mit weicheren Übergängen
+
+Auf Wunsch des Besitzers sind die kugelartigen Schulter- und Ellbogenteile durch durchgehende Ärmelprofile ersetzt. Die Handfläche ist schmaler und trägt Daumen und angedeutete Finger. Oberkörper und Schulteranschluss sind durchgehend geformt; die Aufhellung der Gelenke beträgt höchstens 21 Prozent. Die fünf Haltungen wurden in der lokalen Modellgalerie angesehen. Aktualisierung wiederum über `files/kb3d-code.js`; keine neue Messung und keine Übertragung nach Claude erfolgt.
+
+## Arbeitsübersicht und tägliche Pflege (vorbereitet)
+
+Über den Ansichten stehen Arbeitskarten für Tagespflege, Google/Bing und den bestehenden Verbesserungsablauf. Jede Datenzeile hat zusätzlich «Nächster Schritt», einen Arbeitslink und eine Erklärung zur Wirkung. Ein Link öffnet das Werkzeug; er löst keinen Workflow aus. In GitHub muss zum Handstart zusätzlich «Run workflow» geklickt werden. Der bestehende Verbesserungsablauf kann HTML ändern und einen Telegram-Bericht senden; sein alter Zeitplan bleibt pausiert.
+
+### Täglicher Ablauf
+
+`buero-tagespflege.yml` wird nach Übernahme über den bestehenden Tageslauf `tages-update.yml` (04:15 UTC; tatsächlicher Start kann später sein) aufgerufen. Es wird kein zusätzlicher Cron angelegt. Die Pflege prüft lokale, in der Sitemap genannte HTML-Dateien auf Titel, Beschreibung, Canonical und noindex. Fehlende Dateien gelten als nicht prüfbar, insbesondere in einem unvollständigen Checkout. Live-HTTP und der Suchindex werden damit nicht geprüft. Der Bericht nennt konkrete nächste Schritte. Inhalte werden nicht automatisch umgeschrieben oder veröffentlicht.
+
+GitHub-Laufstände werden nur für die ausdrücklich zugeordneten Workflows auf `main` gelesen. Ein Workflow-Ergebnis bestätigt keine Bestelldaten, Lagerzahlen oder privaten Krypto-Bücher. Auskommentierte Zeitpläne bleiben auch nach einem erfolgreichen Handlauf gelb. Fehlgeschlagene Abrufe machen alte Angaben nicht frisch. Bei 403 oder 429 stoppen weitere GitHub-Abfragen dieses Durchgangs.
+
+Die Artefakte des Laufs enthalten `bericht.md`, `pflege.json` und `github-buero.json`. Der letzte Export enthält nur GitHub-Zeilen und die Seitenpflege, keine Bestellungen, Beträge oder privaten Sitzungen. Für das vollständige private Büro kann der Besitzer den Bericht lokal in die vorhandene Datei übernehmen:
+
+```bash
+python3 -I tools/buero/make_buero.py /tmp/buero-neu.json --pflege-status /pfad/pflege.json
+```
+
+Die Datenquelle des privaten Claude-Artefakts ist weiterhin gesondert zu aktualisieren. Ohne authentifizierte Verbindung zu diesem Speicher ist eine vollständige Ein-Klick-Aktualisierung direkt aus Claude noch nicht möglich. GitHub-Artefakte allein aktualisieren die private Seite nicht.
+
+### Suchmaschinen einmalig einrichten
+
+Google wird über die vorhandene Sitemap und Search Console bedient. In `robots.txt` wird die Sitemap bereits genannt. Die allgemeine Google Indexing API ist für JobPosting bzw. bestimmte Livestream-Seiten vorgesehen und wird hier nicht für normale Webseiten eingesetzt.
+
+Für IndexNow braucht der Besitzer `INDEXNOW_KEY` als GitHub-Secret und eine UTF-8-Datei `https://abannews.com/<Schlüssel>.txt` mit demselben Inhalt auf der veröffentlichten Website. Die Pflege prüft diese Datei vor einer Meldung. Ohne Einrichtung wird nichts gesendet. Nur neue oder tatsächlich geänderte, lokale Canonical-Seiten ohne noindex werden gemeldet, höchstens 100 je Lauf. Ein Cache merkt bestätigte Dateihashes; tägliche Cache-Löschung kann eine erneute Meldung auslösen. Unveränderte Seiten werden nicht absichtlich täglich erneut gemeldet. Gelöschte Seiten werden in dieser Fassung nicht gemeldet.
+
+HTTP 200 bedeutet «gemeldet», nicht «indexiert». Bei 202 bleibt die Schlüsselprüfung offen, bei Fehlern oder Drosselung wird nichts als bestätigt gespeichert und in diesem Durchgang nicht erneut gesendet. Ohne `--melden` bleibt das Werkzeug ein lokaler Trockenlauf. Meldungen aus dem GitHub-Workflow sind auf `main` beschränkt. Laufstände, IndexNow-Meldung und tatsächliche Indexaufnahme werden getrennt dargestellt.
+
+Quellen: [Google Indexing API](https://developers.google.com/search/apis/indexing-api/v3/quickstart), [Google Sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [IndexNow-Protokoll](https://www.indexnow.org/documentation).
+
+
+### Automatische Google-Sitemap-Meldung
+
+Optional meldet die Pflege die veröffentlichte Sitemap über die Search Console API. Dazu braucht `GOOGLE_SEARCH_CONSOLE_CREDENTIALS` in GitHub den JSON-Zugang eines Dienstkontos mit Zugriff auf die bestätigte Domain-Property `sc-domain:abannews.com`; die Search Console API muss für dessen Projekt aktiviert sein. Der Zugang wird nicht im Quelltext, Frontend oder Bericht gespeichert. Der Workflow installiert bei eingerichtetem Google-Zugang `google-auth[requests]` (Version 2) und erzeugt ein kurzlebiges Token ausschließlich mit dem Webmasters-Scope.
+
+Vor einer Meldung muss die live geladene Sitemap exakt der geprüften Sitemap entsprechen. Bei abweichender Veröffentlichung wird ausgesetzt. Ein Hash aus Sitemap und geprüften HTML-Dateien verhindert absichtliche Wiederholungen ohne Änderung. Ein erfolgreicher PUT an `sitemaps.submit` bestätigt nur die Übermittlung; eine Indexaufnahme wird nicht behauptet. Ohne Zugang, im Trockenlauf oder bei API-Fehlern wird keine erfolgreiche Meldung gespeichert. Die erste Nutzung mit einem echten Dienstkonto ist noch nicht erfolgt.
+
+Referenzen: [Search Console sitemaps.submit](https://developers.google.com/webmaster-tools/v1/sitemaps/submit), [Google Service-Account-Bibliothek](https://google-auth.readthedocs.io/en/latest/reference/google.oauth2.service_account.html).

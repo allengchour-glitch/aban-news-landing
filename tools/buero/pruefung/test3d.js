@@ -47,6 +47,31 @@ async function lauf(b, optionen, vorher) {
   });
   ok('Zeichenfläche ist nicht leer', blank > 600, blank);
 
+  // Verschieben verändert den Ausschnitt in der Bildebene, nicht den Drehwinkel.
+  const ziel = () => p.evaluate(() => ({ ...window.KB3D.Buero.last.debug.cam.g }));
+  for (const cmd of ['panLeft', 'panRight', 'panUp', 'panDown']) {
+    const vor = await ziel();
+    await p.locator('[data-cmd="' + cmd + '"]').click();
+    const nach = await ziel();
+    ok(cmd + ' verschiebt ohne Drehen', (vor.tx !== nach.tx || vor.ty !== nach.ty || vor.tz !== nach.tz) && vor.az === nach.az && vor.el === nach.el);
+  }
+  await p.locator('[data-cmd="move"]').click();
+  ok('Verschieben-Modus gewählt', await p.locator('[data-cmd="move"]').getAttribute('aria-pressed') === 'true');
+  const dragStart = await ziel();
+  const canvasBox = await p.locator('.kb3-canvas').boundingBox();
+  await p.mouse.move(canvasBox.x + 50, canvasBox.y + 50);
+  await p.mouse.down();
+  await p.mouse.move(canvasBox.x + 100, canvasBox.y + 80, { steps: 4 });
+  await p.mouse.up();
+  const dragEnd = await ziel();
+  ok('Ziehen verschiebt im Modus ohne Drehen', dragStart.tx !== dragEnd.tx && dragStart.az === dragEnd.az);
+  await p.locator('[data-cmd="rotate"]').click();
+  await p.locator('[data-cmd="view:Social Media"]').click();
+  const social = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => s.spec.room === 'Social Media').map((s) => ({ used: s.used, state: s.state })));
+  ok('Social Media: drei belegte Plätze, ungeprüfte Abläufe gelb', social.length === 3 && social.every((s) => s.used && s.state === 'gelb'), social);
+  await p.locator('[data-cmd="reset"]').click();
+  ok('Zurück setzt den Ausschnitt zurück', (await ziel()).tx === 1 && (await ziel()).tz === 2);
+
   // Raumknöpfe
   await p.locator('.kb3-chip[data-cmd="view:Shop"]').click();
   ok('Raumknopf Shop ist gedrückt, Alles nicht', (await p.locator('.kb3-chip[data-cmd="view:Shop"]').getAttribute('aria-pressed')) === 'true' && (await p.locator('.kb3-chip[data-cmd="view:alle"]').getAttribute('aria-pressed')) === 'false');
@@ -133,11 +158,13 @@ async function lauf(b, optionen, vorher) {
   // ---------- Arbeitsort: Kürzel an den Beschriftungen, Schilder am Tisch, Detailfeld mit Link ----------
   const orte = await p.evaluate(() => Array.from(document.querySelectorAll('.kb3-over .kb3-label')).map((l) => (l.querySelector('.kb3-ort') ? l.querySelector('.kb3-ort').textContent.trim() : '')));
   ok(N + ' Beschriftungen tragen ein Ortskürzel, «Du» keins', orte.filter(Boolean).length === N && orte.filter((t) => !t).length === 1, orte);
-  ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir'].includes(t)), Array.from(new Set(orte)));
+  ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir', 'Werkstatt'].includes(t)), Array.from(new Set(orte)));
   const schilder = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => !s.spec.boss).map((s) => ({ ent: s.entId, used: !!s.used, mesh: !!s.sign, tex: !!(s.sign && s.sign.tex) })));
-  ok('14 Plätze, alle benutzt, jeder mit Schild und Bild', schilder.length === 14 && schilder.every((s) => s.used && s.mesh && s.tex), schilder.filter((s) => !(s.used && s.mesh && s.tex)));
+  const arbeiterN = await p.evaluate(() => window.__ROWS.filter((r) => r.figur === 'arbeiter').length);
+  ok(arbeiterN + ' Plätze, alle benutzt, jeder mit Schild und Bild', schilder.length === arbeiterN && schilder.every((s) => s.used && s.mesh && s.tex), schilder.filter((s) => !(s.used && s.mesh && s.tex)));
   const tafeln = await p.evaluate(() => new Set(window.KB3D.Buero.last.debug.seats.filter((s) => s.sign && s.sign.tex).map((s) => s.sign.tex)).size);
-  ok('Drei verschiedene Schilder (GitHub, Claude, GitHub + PC)', tafeln === 3, tafeln);
+  const schildArten = await p.evaluate(() => new Set(window.__ROWS.filter((r) => r.figur === 'arbeiter' && r.ort_art).map((r) => r.ort_art + '|' + r.ort_kurz)).size);
+  ok('Schilder entsprechen den Arbeitsorten der Daten', tafeln === schildArten, tafeln);
   const chefSchild = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => s.spec.boss).every((s) => !s.sign));
   ok('Das Chefbüro hat kein Schild', chefSchild);
   // Schild im Bild: ein Bild mit Schildern unterscheidet sich von einem ohne (Schilder kurz abschalten)
@@ -158,8 +185,8 @@ async function lauf(b, optionen, vorher) {
     Object.keys(k).forEach((g) => { let n = 0, mx = 0; for (let i = 0; i < k[g].n; i++) { const v = k[g].data[i * 12 + 7]; if (v > 0) { n++; if (v > mx) mx = v; } } o[g] = [n, +mx.toFixed(2)]; });
     return o;
   });
-  ok('Aufhellung: Rumpf und Arme haben aufgehellte Punkte (höchstens 0,8), Beine, Kopf und Augen keine',
-    ['armUN', 'armLN', 'armUP', 'armLP', 'torso'].every((g) => lift[g] && lift[g][0] > 20 && lift[g][1] > 0.5 && lift[g][1] <= 0.8) && ['thighN', 'shinN', 'thighP', 'shinP', 'head', 'eyes'].every((g) => !lift[g] || lift[g][0] === 0), lift);
+  ok('Aufhellung: Rumpf und Arme haben aufgehellte Punkte (höchstens 0,28), Beine, Kopf und Augen keine',
+    ['armUN', 'armLN', 'armUP', 'armLP', 'torso'].every((g) => lift[g] && lift[g][0] > 20 && lift[g][1] > 0.2 && lift[g][1] <= 0.28) && ['thighN', 'shinN', 'thighP', 'shinP', 'head', 'eyes'].every((g) => !lift[g] || lift[g][0] === 0), lift);
   const tippe = async (id) => {
     await p.evaluate(() => { const m = window.KB3D.Buero.last; m.goView('alle', true); m.debug.render(1.7, false); });
     const q = await p.evaluate((i) => window.KB3D.Buero.last.debug.screenOf(i), id);
