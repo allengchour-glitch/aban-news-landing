@@ -136,12 +136,6 @@
     B.box(0, 1.709, -0.19, 0.045, 0.004, 0.004, '#1c1f27');
     kit.extra.glasses = R.mesh(B);
     B = new K.Builder();
-    [-1, 1].forEach(function (s) {
-      B.push().t(s * 0.047, 1.45, -0.126).rz(s * 0.36).sph(0, 0, 0, 0.033, 0.042, 0.012, 10, 6, '#f5eee2').pop();
-    });
-    for (var j = 0; j < 3; j++) B.sph(0, 1.34 - j * 0.065, -0.14, 0.009, 0.009, 0.005, 6, 4, '#ece5d8');
-    kit.extra.collar = R.mesh(B);
-    B = new K.Builder();
     B.push().t(0, 1.75, 0).torus(0, 0, 0, 0.205, 0.009, 18, 4, '#20242e', 0, 0, PI);
     B.pop();
     [-1, 1].forEach(function (s) { B.cyl(s * 0.205, 1.72, 0, 0.034, 0.034, 0.035, 10, '#e2503c'); });
@@ -281,7 +275,6 @@
       if (i === 0 || i === 1 || i === 3 || i === 5) R.shadow(g[n], m[n]);
     }
     R.draw(ex.mouth, m.mouth);
-    if (this.opt.kind !== 'worker') R.draw(ex.collar, m.torso);
     if (this.glasses) R.draw(ex.glasses, m.extraHead);
     if (this.phones) R.draw(ex.phones, m.extraHead);
     if (this.opt.boss) R.draw(ex.tie, m.tie);
