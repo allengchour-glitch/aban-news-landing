@@ -279,7 +279,7 @@ def aktionen(rows):
         r["aktion_hinweis"] = "Der Link öffnet den Arbeitsort. Er startet oder ändert noch nichts."
         if "/actions/workflows/" in link:
             r["aktion_text"] = "Ablauf öffnen"
-            r["aktion_hinweis"] = "Zum Handstart in GitHub zusätzlich auf Run workflow klicken."
+            r["aktion_hinweis"] = "Falls GitHub einen Handstart anbietet, zusätzlich auf Run workflow klicken."
         if r["id"].startswith("social_"):
             r["naechster_schritt"] = "Letzten Lauf und vorbereitete Beiträge prüfen. Ein Handstart dieses Ablaufs kann Beiträge veröffentlichen."
 
@@ -323,7 +323,7 @@ def pflege_einlesen(pfad, rows):
         frisch = 0 <= (now - event).total_seconds() <= 48 * 3600
         r["status"] = "rot" if status == "completed" and conclusion in ("failure", "timed_out", "action_required") else "gruen" if status == "completed" and conclusion == "success" and frisch and run["geplant"] else "gelb"
         r["ereignis"], r["ereignis_iso"] = "Lauf " + zeit(ev), ev
-        plan = "Zeitplan in der Datei vorhanden" if run["geplant"] else "kein aktiver Cron in der Datei; Handstart vorgesehen"
+        plan = "Zeitplan in der Datei vorhanden" if run["geplant"] else "kein Tages-Cron in der Datei; andere Auslöser im Ablauf prüfen"
         r["befund"] = f"Letzter Workflow-Lauf: {status}, Ergebnis {conclusion or 'noch offen'}. {plan}. Das ist ein Workflow-Ergebnis, keine neue Messung von Bestellungen, Lagerbestand oder Krypto-Büchern."
 
 
