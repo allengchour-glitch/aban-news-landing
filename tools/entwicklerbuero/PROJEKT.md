@@ -6,7 +6,7 @@ Ziel ist, kleine wiederverwendbare Automationen als betreutes Einrichtungspaket 
 
 «Wir richten einen Assistenten ein, der Ihre Kundenanfragen vorsortiert und Antwortentwürfe vorbereitet. Ihr Betrieb prüft und versendet die Antworten.»
 
-Lieferumfang des möglichen Pilots: ein Betrieb, eine vereinbarte Eingabequelle, angepasste Kategorien und Vorlagen, begleitete Prüfung und Übergabe. Aktuell vorhanden ist ausschließlich die lokale CSV-Demo. Eine produktive Postfach- oder CRM-Anbindung muss für den jeweiligen Betrieb erst gebaut und getestet werden.
+Lieferumfang des möglichen Pilots: ein Betrieb, eine vereinbarte Eingabequelle, angepasste Kategorien und Vorlagen, begleitete Prüfung und Übergabe. Aktuell vorhanden sind eine lokale CSV-Demo und ein EML-Beantworter im Entwurfsmodus. Eine produktive Postfach- oder CRM-Anbindung muss für den jeweiligen Betrieb erst gebaut und getestet werden.
 
 Preis und Supportumfang sind offen. Der Besitzer entscheidet den tatsächlichen Verkaufspreis. Kein Checkout und kein Zahlungsanbieter sind eingerichtet. Es gibt keine bestätigten Kunden oder Einnahmen für dieses neue Projekt.
 
@@ -29,3 +29,7 @@ Neue Produkte selbständig erfinden, Code mit einem Sprachmodell erzeugen und Ä
 python3 tools/entwicklerbuero/werkstatt.py /tmp/entwicklerbuero-lauf
 python3 -I tools/buero/make_buero.py /tmp/buero.json --werkstatt-status /tmp/entwicklerbuero-lauf/status.json
 ```
+
+## E-Mail-Beantworter als erstes Verkaufsprodukt
+
+Der Auftrag vom 07.11. konkretisiert das erste Produkt als E-Mail-Beantworter. Version 0.2.0 liest gespeicherte EML-Dateien und erstellt Antworten als ungesendete EML-Entwürfe. Die Werkstatt prüft und paketiert jetzt auch diesen Modus. Postfachanbieter und Kontoverbindung sind noch offen. Der mögliche Pilot umfasst nach Anbieterwahl eine begrenzte Postfachanbindung und eine Prüfung der Antwortqualität anhand freigegebener Beispiele. Automatischer Versand ist nicht eingerichtet.

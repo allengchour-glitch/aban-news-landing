@@ -262,7 +262,7 @@ def werkstatt_einlesen(pfad, rows):
     if stationen["bauen"] == "bestanden" and stationen["pruefen"] != "bestanden":
         raise ValueError("Ein Paket darf nur nach bestandener Prüfung freigegeben sein.")
     texte = {
-        "bauen": "Demo und ZIP-Lieferpaket des Anfragen-Assistenten wurden erstellt. CSV-Prototyp; Postfach- und CRM-Anbindung sind noch nicht gebaut.",
+        "bauen": "Demo und ZIP-Lieferpaket des E-Mail-Beantworters wurden erstellt. CSV-/EML-Prototyp; Postfach- und CRM-Anbindung sind noch nicht gebaut.",
         "pruefen": "Der lokale Selbsttest des Anfragen-Assistenten hat bestanden. Kein Nachweis für Daten oder Systeme eines echten Kunden.",
         "angebot": "Ein Angebotsentwurf liegt vor. Preis, Verkaufskanal und Kundenpilot sind offen; keine Verkäufe gemessen.",
     }

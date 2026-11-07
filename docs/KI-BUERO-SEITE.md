@@ -152,3 +152,8 @@ Ein zweiter offener Anbau vor dem Versand enthält die Stationen «Produktbau»,
 `werkstatt.py <neuer Ausgabeordner>` führt die Produkttests aus, erzeugt eine Demo aus erfundenen Anfragen und paketiert ausgewählte Produktdateien. Ein fehlgeschlagener Test gibt kein ZIP frei. Der Bericht `status.json` lässt sich mit `make_buero.py <Ausgabe>.json --werkstatt-status <Bericht>` übernehmen. Ohne Bericht sind alle drei Stationen ungeprüft gelb. Mit Bericht werden nur tatsächlich abgeschlossene Schritte grün; das Angebot bleibt ein Entscheid für den Besitzer. Nach 24 Stunden altert dieser Stand. `aktiv_h=0`: Die Figuren behaupten zu keinem Zeitpunkt, im Hintergrund zu arbeiten.
 
 Der Assistent nutzt feste Wortregeln und Antwortvorlagen, kein Sprachmodell. Die erste Version verarbeitet CSV und sendet nichts. E-Mail-/CRM-Anbindung, Pilotkunde, Preis und Verkaufskanal sind offen. Der Ablauf startet auf Befehl; selbständige Produktentwicklung, laufender Agent und automatische Verkäufe sind nicht eingerichtet. Projekt und Pilotvorgehen: `tools/entwicklerbuero/PROJEKT.md`.
+
+
+### E-Mail-Beantworter Version 0.2.0
+
+Das erste Produkt ist zum E-Mail-Beantworter konkretisiert: `email_antworter.py` liest lokal gespeicherte EML-Dateien und erzeugt ungesendete Antwortdateien. Die Werkstatt führt Produkttests sowie eine EML-Demo aus und nimmt die E-Mail-Dateien ins Lieferpaket auf. Der Bürobericht beschreibt weiter nur diesen lokalen Durchlauf. Ein Postfachanbieter, eine Kontoverbindung und automatischer Versand sind noch nicht eingerichtet.

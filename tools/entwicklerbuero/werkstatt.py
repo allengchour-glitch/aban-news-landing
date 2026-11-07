@@ -11,7 +11,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parent
 PRODUKT = ROOT / "anfragen_assistent"
-DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md"]
+DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "test_email_antworter.py", "demo-email.eml"]
 
 
 def lauf(out):
@@ -36,6 +36,13 @@ def lauf(out):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     module.verarbeiten(PRODUKT / "demo.csv", out / "demo", "Beispielbetrieb (Demo)")
+    email_demo = subprocess.run([sys.executable, "-B", str(PRODUKT / "email_antworter.py"), str(PRODUKT / "demo-email.eml"),
+                                 str(out / "email-demo"), "--firma", "Beispielbetrieb (Demo)", "--absender", "buero@example.invalid"],
+                                cwd=ROOT, capture_output=True, text=True, timeout=30)
+    if email_demo.returncode:
+        status["stationen"]["bauen"] = "offen"
+        speichern()
+        raise ValueError("E-Mail-Demo konnte nicht gebaut werden; kein Lieferpaket freigegeben.")
     with zipfile.ZipFile(out / "anfragen-assistent.zip", "w", zipfile.ZIP_DEFLATED) as z:
         for name in DATEIEN:
             z.write(PRODUKT / name, arcname="anfragen-assistent/" + name)
