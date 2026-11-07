@@ -13,6 +13,9 @@
  * Pinterest verlangt zusätzlich pinterestData{boardId,pinTitle}: dafür die Queue-Spalten
  * pin_board_id, pin_title und (optional) pin_link füllen. Fehlen sie, wird die Zeile mit
  * genanntem Grund NICHT gesendet, statt still zu scheitern (Metricool antwortet sonst HTTP 400).
+ * YouTube ist über diese generische Queue bewusst gesperrt: ihr fehlen ein eigener Titel,
+ * madeForKids und ein kanalgerechter CTA. Insbesondere sind Adressen in Shorts-Beschreibungen
+ * nicht klickbar. YouTube erst über einen eigenen, vollständig geprüften Datensatz planen.
  *
  * ENV: METRICOOL_USER_TOKEN (Pflicht) · METRICOOL_USER_ID (Default 4801419) ·
  *      METRICOOL_BLOG_ID (explizit erforderlich für Live) · MC_TZ (Default Europe/Zurich) ·
@@ -173,6 +176,14 @@ for (let i = 0; i < data.length; i++) {
   // Schluessel stoeren es nicht.
   const record = Object.fromEntries([...COLS, ...PIN_COLS].map(key => [key, get(source,key)]));
   const validation = validateMetricoolRow(record, { row:i + 2, timeZone:TZ });
+  // Ein gemeinsames `text`-Feld reicht fuer YouTube nicht: Metricool verlangt Titel und
+  // Zielgruppe, und eine rohe Produktadresse ist in einer Shorts-Beschreibung kein
+  // klickbarer Kaufpfad. Vor JEDEM Netzaufruf abbrechen, damit kein teilweise geplanter
+  // Queue-Stapel entsteht. Ein spaeterer eigener YouTube-Pfad muss diese Felder explizit
+  // modellieren und den CTA gegen einen verifizierten Profil-/Shopping-Link pruefen.
+  if (validation.networks.includes('youtube')) {
+    throw new QueueInputError('YouTube ist in der generischen Queue gesperrt: youtube_title, madeForKids und ein verifizierter Shorts-CTA fehlen', i + 2);
+  }
   record.networks = validation.networks.join(' ');
   record.media_url = validation.mediaUrl;
   prepared.set(source, record);
