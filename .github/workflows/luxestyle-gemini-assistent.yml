@@ -1,0 +1,79 @@
+name: LuxeStyle – Gemini-Assistent (manuell)
+on:
+  workflow_dispatch:
+    inputs:
+      auftrag:
+        description: 'Auftrag (keine Geheimnisse oder Kundendaten)'
+        required: true
+        type: string
+        default: 'Entwirf drei konkrete Verbesserungen für die LuxeStyle-Startseite und drei organische Marketing-Ideen ohne Werbebudget.'
+      free_tier_bestaetigt:
+        description: 'In AI Studio geprüft: Projekt des GEMINI_API_KEY ist Free Tier, ohne verknüpftes Abrechnungskonto'
+        type: boolean
+        required: true
+        default: false
+
+permissions: {}
+concurrency:
+  group: luxestyle-gemini-manuell
+  cancel-in-progress: false
+
+jobs:
+  entwurf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Einzelnen Textentwurf erstellen
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FREE_TIER_CONFIRMED: ${{ inputs.free_tier_bestaetigt }}
+          AUFTRAG: ${{ inputs.auftrag }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request, urllib.error
+          if os.environ.get("FREE_TIER_CONFIRMED") != "true":
+              sys.exit("Abbruch ohne API-Aufruf: Free Tier in AI Studio zuerst prüfen und bestätigen.")
+          key = os.environ.get("GEMINI_API_KEY", "").strip()
+          if not key:
+              sys.exit("Abbruch ohne API-Aufruf: GitHub-Secret GEMINI_API_KEY fehlt.")
+          prompt = os.environ.get("AUFTRAG", "").strip()
+          if not 1 <= len(prompt) <= 6000:
+              sys.exit("Abbruch ohne API-Aufruf: Auftrag muss 1 bis 6000 Zeichen enthalten.")
+          context = (
+              "Du berätst LuxeStyle CH zu Webdesign und Marketing. Deutsch (Schweiz), kurz und konkret. "
+              "Markenrichtung: hochwertig, clean, Taupe/Cream, echte Produktbilder. "
+              "Keine erfundenen Preise, Bewertungen, Rabatte oder Leistungsversprechen. "
+              "Unbestätigtes als Vorschlag kennzeichnen. Nur Entwürfe, nichts veröffentlichen."
+          )
+          body = {"systemInstruction": {"parts": [{"text": context}]},
+                  "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+                  "generationConfig": {"maxOutputTokens": 2048, "temperature": 0.5}}
+          req = urllib.request.Request(
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
+              data=json.dumps(body).encode(), method="POST",
+              headers={"Content-Type": "application/json", "x-goog-api-key": key})
+          try:
+              with urllib.request.urlopen(req, timeout=90) as response:
+                  data = json.load(response)
+          except urllib.error.HTTPError as exc:
+              sys.exit(f"Abbruch: HTTP {exc.code}. Keine Wiederholung, kein Ersatzmodell. Kontingent/Zugang in AI Studio prüfen.")
+          except (urllib.error.URLError, TimeoutError, ValueError):
+              sys.exit("Abbruch: Netzwerkfehler oder ungültige Antwort. Keine Wiederholung.")
+          candidates = data.get("candidates", [])
+          if not candidates or candidates[0].get("finishReason") != "STOP":
+              sys.exit("Abbruch: Antwort fehlt, wurde blockiert oder am Tokenlimit beendet.")
+          answer = "\n".join(p.get("text", "") for p in candidates[0].get("content", {}).get("parts", []) if not p.get("thought"))
+          if not answer.strip():
+              sys.exit("Abbruch: leere Textantwort.")
+          with open("luxestyle-gemini-entwurf.md", "w", encoding="utf-8") as out:
+              out.write("# LuxeStyle – Gemini-Entwurf\n\nUngeprüfter KI-Vorschlag.\n\n" + answer)
+          print("Fertig: Entwurf als Artefakt gespeichert. Keine Veröffentlichung.")
+          PY
+      - name: Entwurf herunterladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: luxestyle-gemini-entwurf
+          path: luxestyle-gemini-entwurf.md
+          retention-days: 3
+          if-no-files-found: error
