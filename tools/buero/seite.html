@@ -4,6 +4,7 @@
    «Büro» (gezeichnete Szene mit Figuren, die den echten Stand spielen) und «Liste» (alle Zeilen mit Text). */
 .kb { max-width: 46rem; margin-inline: auto; display: flex; flex-direction: column; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
 .kb *, .kb *::before, .kb *::after { box-sizing: border-box; }
+.kb [hidden] { display: none !important; }
 
 .kb-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
 .kb-title { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15; text-wrap: balance; }
@@ -255,6 +256,17 @@
 .kb-help h3 { margin: var(--cds-gap-md) 0 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
 .kb-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; max-width: 65ch; }
 @media (prefers-color-scheme: dark) { .kb3-stage { background: radial-gradient(ellipse at 50% 38%, #34464a 0%, #25363b 58%, #19292e 100%); } }
+.kb-arbeiten { margin: 1rem 0; }
+.kb-arbeiten h2 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+.kb-aufgaben { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 0.75rem; }
+.kb-aufgabe, .r-aufgabe { padding: 0.9rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); }
+.kb-aufgabe h3 { margin: 0; font-size: 1rem; }
+.kb-aufgabe p, .r-aufgabe p { margin: 0.5rem 0 0.75rem; }
+.kb-aufgabe small, .r-aufgabe small { display: block; margin-top: 0.6rem; color: var(--color-fg-muted); line-height: 1.45; }
+.kb-aktion { display: inline-flex; align-items: center; min-height: 2.5rem; box-sizing: border-box; padding: 0.45rem 0.75rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); font: inherit; font-weight: 600; text-decoration: none; }
+.kb-aktion:hover { text-decoration: underline; }
+.kb-aktion:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 3px; }
+.kb-aktionslinks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 </style>
 
 <div class="kb">
@@ -274,6 +286,16 @@
     <li class="kb-chip st-du"><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg><b data-draw="n" data-st="du" data-source="buero">—</b><span>Für dich</span></li>
     <li class="kb-chip st-alt" data-alt-line hidden><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><b data-draw="n" data-st="alt" data-source="buero">—</b><span>Alt</span></li>
   </ul>
+
+  <section class="kb-arbeiten" aria-labelledby="kb-arbeiten-titel">
+    <h2 id="kb-arbeiten-titel">Was du jetzt tun kannst</h2>
+    <p class="kb-hint">Aufgabe öffnen → Stand prüfen → nächsten Schritt erledigen. Die Links öffnen die passenden Werkzeuge.</p>
+    <div class="kb-aufgaben">
+      <article class="kb-aufgabe"><h3>Täglich prüfen und auffrischen</h3><p>Seitenbefunde, GitHub-Laufstände und eine neue Bürodatei in einem Ablauf.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/buero-tagespflege.yml" target="_blank" rel="noopener noreferrer">Tagespflege öffnen ↗</a><small>Noch nicht eingeschaltet: wartet auf Übernahme und Einrichtung. In GitHub ist zum Start ein weiterer Klick nötig.</small></article>
+      <article class="kb-aufgabe"><h3>Google und Bing</h3><p>Sitemap und Indexierung prüfen. Die Suchmaschinen entscheiden, welche Seiten aufgenommen werden.</p><div class="kb-aktionslinks"><a class="kb-aktion" href="https://search.google.com/search-console?resource_id=sc-domain%3Aabannews.com" target="_blank" rel="noopener noreferrer">Google öffnen ↗</a><a class="kb-aktion" href="https://www.bing.com/webmasters/" target="_blank" rel="noopener noreferrer">Bing öffnen ↗</a></div><small>IndexNow-Meldungen brauchen einmalig einen Schlüssel und die öffentliche Schlüsseldatei.</small></article>
+      <article class="kb-aufgabe"><h3>Verbesserungen bearbeiten</h3><p>Konkrete Seitenbefunde ansehen. Der bestehende Handstart kann einfache HTML-Korrekturen anwenden.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/daily-improvement.yml" target="_blank" rel="noopener noreferrer">Verbesserungsablauf öffnen ↗</a><small>Der bestehende Ablauf schreibt bei Handstart HTML und kann einen Telegram-Bericht senden. Sein Zeitplan ist pausiert.</small></article>
+    </div>
+  </section>
 
   <div class="kb-tabs" role="tablist" aria-label="Ansicht">
     <button type="button" class="kb-tab" role="tab" id="kb-tab-3d" data-tab="3d" aria-selected="true" aria-controls="kb-pane-3d">Büro 3D</button>
@@ -440,7 +462,7 @@
     </details>
   </section>
 
-  <p class="kb-note">Alle Zeiten sind Schweizer Zeit. GitHub startet geplante Läufe oft Stunden zu spät. Das zeigt sich hier als späte Uhrzeit und ist kein Fehler. Diese Seite aktualisiert sich nicht von selbst: Sag Claude «Büro neu messen», dann gibt es frische Zeiten.</p>
+  <p class="kb-note">Alle Zeiten sind Schweizer Zeit. GitHub startet geplante Läufe oft Stunden zu spät. Das zeigt sich hier als späte Uhrzeit und ist kein Fehler. Die vorbereitete Tagespflege erstellt täglich neue GitHub-Laufstände und eine Bürodatei als Download. Diese Ansicht wird erst frisch, wenn ihre Datenquelle aktualisiert wird. Bestellungen, lokale Bots und Claude-Sitzungen brauchen weiterhin eine eigene Messung.</p>
 </div>
 
 <template id="kb-row">
@@ -460,6 +482,7 @@
       </summary>
       <div class="r-body">
         <p class="r-befund" data-source="buero" data-field="befund">—</p>
+        <div class="r-aufgabe"><b>Nächster Schritt</b><p data-source="buero" data-field="naechster_schritt">Stand am Arbeitsort prüfen.</p><a class="kb-aktion r-aktion" target="_blank" rel="noopener noreferrer" hidden>Aufgabe öffnen ↗</a><small data-source="buero" data-field="aktion_hinweis"></small></div>
         <p class="r-old">Diese Messung ist älter als erlaubt. Bitte neu messen lassen.</p>
         <dl class="r-meta">
           <div><dt>Arbeitsort</dt><dd><b class="r-ort" data-source="buero" data-field="ort">—</b>. <span data-source="buero" data-field="ort_text">—</span></dd></div>
@@ -713,6 +736,16 @@
     det.open = Object.prototype.hasOwnProperty.call(was, r.id) ? was[r.id] : e !== 'gruen';
     fuellen(li, r);
     ortLink(li, r);
+    var aktion = li.querySelector('.r-aktion');
+    if (aktion) {
+      try {
+        var u = new URL(String(r.aktion_url));
+        var erlaubt = { 'github.com': true, 'claude.ai': true, 'admin.shopify.com': true, 'search.google.com': true, 'www.bing.com': true };
+        if (u.protocol === 'https:' && !u.username && !u.password && !u.port && erlaubt[u.hostname]) {
+          aktion.href = u.href; aktion.textContent = (r.aktion_text || 'Aufgabe öffnen') + ' ↗'; aktion.hidden = false;
+        }
+      } catch (e) { /* Ohne gültigen Arbeitslink kein Aktionsknopf. */ }
+    }
     return li;
   }
 

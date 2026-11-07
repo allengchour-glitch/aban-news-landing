@@ -218,6 +218,13 @@ for _id, _name in [("dev_bauen", "Produktbau"), ("dev_pruefen", "Prüfstand"), (
                  "werkstatt.py läuft auf dem Rechner, auf dem es gestartet wird. Kein Dauerlauf; keine automatische Veröffentlichung oder Kontaktaufnahme.",
                  "https://github.com/allengchour-glitch/aban-news-landing/tree/main/tools/entwicklerbuero")
 
+ROWS.append(frage("seitenpflege", "Tägliche Seitenpflege", "Seiten & Suchmaschinen",
+                  "Die tägliche Prüfung und GitHub-Aktualisierung sind vorbereitet, aber noch nicht auf main übernommen. IndexNow braucht einen eingerichteten Schlüssel; die Indexaufnahme ist nicht gemessen.",
+                  "Noch nicht eingeschaltet", "Nicht gemessen", "tools/buero/tagespflege.py; buero-tagespflege.yml"))
+ORTE["seitenpflege"] = ("cloud", "GitHub-Cloud nach Übernahme", "GitHub",
+                         "Vorbereitet als Teil von tages-update.yml (04:15 UTC). Kein zusätzlicher Zeitplan. Das Büro braucht die neue buero.json als Datenquelle.",
+                         WF + "buero-tagespflege.yml")
+
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
     _r.update({"ort_art": _art, "ort": _ort, "ort_kurz": _kurz, "ort_text": _text, "link": _link})
@@ -240,6 +247,80 @@ def pruefen(rows):
         assert 0 < len(r["ort_kurz"]) <= 11 and r["ort"] and r["ort_text"], r["id"]
         assert len(r["ort_text"]) <= 260, (r["id"], len(r["ort_text"]))
         assert r["link"] == "" or r["link"].startswith("https://"), r["id"]
+
+
+def aktionen(rows):
+    schritte = {
+        "auswahl": "Ergebnisliste ansehen und die vorgeschlagenen Produkte prüfen.",
+        "schaufenster": "Letzten Feed-Lauf ansehen und abgewiesene Artikel prüfen.",
+        "waechter": "Lager- und Lieferbarkeitsbefunde im letzten Lauf ansehen.",
+        "autopilot": "Letzten Lauf und dessen konkrete Änderungen prüfen.",
+        "fortura": "Bestandsabgleich ansehen; Freigaben bleiben beim Besitzer.",
+        "offene": "Offene Bestellungen im Shopify-Admin prüfen und den Versandstatus abgleichen.",
+        "bestellungen7": "Die aktuellen Bestellungen im Shopify-Admin ansehen.",
+        "dev_bauen": "Werkstatt in GitHub öffnen, bei Bedarf starten und das ZIP im Lauf herunterladen.",
+        "dev_pruefen": "Werkstatt-Prüfung öffnen und fehlgeschlagene Tests ansehen.",
+        "dev_angebot": "Angebotsentwurf prüfen und Pilotumfang sowie Preis festlegen.",
+        "seitenpflege": "Tagespflege öffnen: Seitenbericht und neue buero.json im letzten Lauf herunterladen. Für Google die Sitemap in Search Console prüfen.",
+        "zip": "Aktuelles Cockpit-Paket herunterladen und auf deinem PC einspielen.",
+        "cockpitstart": "Cockpit-Anleitung öffnen und den Start auf deinem PC prüfen.",
+    }
+    for r in rows:
+        link = r["link"] or GH + "/blob/main/docs/KI-BUERO-SEITE.md"
+        if r["id"] in ("dev_bauen", "dev_pruefen"):
+            link = WF + "entwicklerbuero-tests.yml"
+        if r["id"] == "dev_angebot":
+            link = GH + "/blob/main/tools/entwicklerbuero/PROJEKT.md"
+        if r["id"] == "zip":
+            link = GH + "/releases/tag/krypto-latest"
+        r["naechster_schritt"] = schritte.get(r["id"], "Arbeitsort öffnen und den dort belegten Stand prüfen. Alte Messwerte zuerst aktualisieren.")
+        r["aktion_url"] = link
+        r["aktion_text"] = "Aufgabe öffnen"
+        r["aktion_hinweis"] = "Der Link öffnet den Arbeitsort. Er startet oder ändert noch nichts."
+        if "/actions/workflows/" in link:
+            r["aktion_text"] = "Ablauf öffnen"
+            r["aktion_hinweis"] = "Zum Handstart in GitHub zusätzlich auf Run workflow klicken."
+        if r["id"].startswith("social_"):
+            r["naechster_schritt"] = "Letzten Lauf und vorbereitete Beiträge prüfen. Ein Handstart dieses Ablaufs kann Beiträge veröffentlichen."
+
+
+def pflege_einlesen(pfad, rows):
+    from pathlib import Path
+    report = json.loads(Path(pfad).read_text(encoding="utf-8"))
+    if not isinstance(report, dict) or report.get("version") != 1 or report.get("seite") != "abannews.com":
+        raise ValueError("Unbekannter Tagespflege-Bericht.")
+    gem = report["gemessen"]
+    now = datetime.fromisoformat(gem.replace("Z", "+00:00"))
+    if now.tzinfo is None or not isinstance(report.get("github"), dict):
+        raise ValueError("Tagespflege braucht eine Zeitzone und GitHub-Stände.")
+    for r in rows:
+        if r["id"] == "seitenpflege":
+            index = report["indexnow"]
+            findings = len(report["seiten"]["befunde"])
+            r.update({"status": "gelb" if findings or index["status"] not in ("Keine Änderungen", "URLs gemeldet; Indexierung nicht bestätigt") else "gruen",
+                      "gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 30,
+                      "ereignis": "Prüfung " + zeit(gem), "ereignis_iso": gem,
+                      "befund": f"{report['seiten']['html_geprueft']} HTML-Seiten geprüft, {findings} Befunde. IndexNow: {index['status']}. Google-Indexierung und Live-HTTP nicht gemessen. Neue Bürodatei liegt im Lauf als Download bereit."})
+            continue
+        run = report["github"].get(r["id"])
+        if not isinstance(run, dict):
+            continue  # Andere Quellen werden nicht künstlich frisch gemacht.
+        r.update({"gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 30, "aktiv_h": 0,
+                  "quelle": "GitHub Actions API, letzter Workflow-Lauf; tagespflege.py"})
+        if run.get("fehler"):
+            r.update({"status": "gelb", "befund": "Aktueller GitHub-Stand nicht messbar: " + str(run["fehler"])[:120] + ". Vorherige Aussagen sind damit nicht neu bestätigt.",
+                      "ereignis": "Abruf nicht messbar", "ereignis_iso": ""})
+            continue
+        ev = run["zeit"]
+        event = datetime.fromisoformat(ev.replace("Z", "+00:00"))
+        if event.tzinfo is None:
+            raise ValueError("Workflow-Zeit braucht eine Zeitzone.")
+        status, conclusion = run["status"], run.get("conclusion")
+        frisch = 0 <= (now - event).total_seconds() <= 48 * 3600
+        r["status"] = "rot" if status == "completed" and conclusion in ("failure", "timed_out", "action_required") else "gruen" if status == "completed" and conclusion == "success" and frisch and run["geplant"] else "gelb"
+        r["ereignis"], r["ereignis_iso"] = "Lauf " + zeit(ev), ev
+        plan = "Zeitplan in der Datei vorhanden" if run["geplant"] else "kein aktiver Cron in der Datei; Handstart vorgesehen"
+        r["befund"] = f"Letzter Workflow-Lauf: {status}, Ergebnis {conclusion or 'noch offen'}. {plan}. Das ist ein Workflow-Ergebnis, keine neue Messung von Bestellungen, Lagerbestand oder Krypto-Büchern."
 
 
 def werkstatt_einlesen(pfad, rows):
@@ -283,12 +364,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("ausgabe")
     parser.add_argument("--werkstatt-status")
+    parser.add_argument("--pflege-status")
+    parser.add_argument("--nur-github", action="store_true")
     args = parser.parse_args()
     if args.werkstatt_status:
         try:
             werkstatt_einlesen(args.werkstatt_status, ROWS)
         except (OSError, ValueError, KeyError, TypeError) as e:
             parser.exit(2, "Werkstatt-Bericht abgelehnt: " + str(e) + "\n")
+    if args.pflege_status:
+        try:
+            pflege_einlesen(args.pflege_status, ROWS)
+        except (OSError, ValueError, KeyError, TypeError) as e:
+            parser.exit(2, "Tagespflege-Bericht abgelehnt: " + type(e).__name__ + "\n")
+    if args.nur_github:
+        if not args.pflege_status:
+            parser.exit(2, "--nur-github braucht --pflege-status.\n")
+        report = json.loads(open(args.pflege_status, encoding="utf-8").read())
+        ROWS = [r for r in ROWS if r["id"] in report["github"] or r["id"] == "seitenpflege"]
+    aktionen(ROWS)
     pruefen(ROWS)
     out = args.ausgabe
     with open(out, "w", encoding="utf-8") as f:

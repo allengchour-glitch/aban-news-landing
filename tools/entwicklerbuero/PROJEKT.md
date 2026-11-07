@@ -4,7 +4,7 @@ Ziel ist, kleine wiederverwendbare Automationen als betreutes Einrichtungspaket 
 
 ## Angebot als Entwurf
 
-«Wir richten einen Assistenten ein, der Ihre Kundenanfragen vorsortiert und Antwortentwürfe vorbereitet. Ihr Betrieb prüft und versendet die Antworten.»
+«Wir richten dir einen Assistenten ein, der deine Kundenanfragen vorsortiert und Antwortentwürfe vorbereitet. Dein Betrieb prüft und versendet die Antworten.»
 
 Lieferumfang des möglichen Pilots: ein Betrieb, eine vereinbarte Eingabequelle, angepasste Kategorien und Vorlagen, begleitete Prüfung und Übergabe. Aktuell vorhanden sind eine lokale CSV-Demo und ein EML-Beantworter im Entwurfsmodus. Eine produktive Postfach- oder CRM-Anbindung muss für den jeweiligen Betrieb erst gebaut und getestet werden.
 
@@ -21,7 +21,7 @@ Akquise-Nachrichten sind nicht versendet. Kontaktaufnahme und Veröffentlichunge
 
 ## Arbeitsweise des Entwicklerbüros
 
-`werkstatt.py` führt Tests aus, erzeugt eine Demo und baut ein ZIP mit ausgewählten Produktdateien. Ein Bericht dokumentiert diesen tatsächlichen Durchlauf und kann ins Büro übernommen werden. Die Stationen zeigen Bau, Prüfung und Angebotsvorbereitung. Sie stellen keine dauerhaft laufenden KI-Agenten dar.
+`werkstatt.py` führt Tests aus, erzeugt eine Demo und baut ein ZIP mit ausgewählten Produktdateien. Ein Bericht dokumentiert diesen tatsächlichen Durchlauf und kann ins Büro übernommen werden. Die Stationen zeigen Bau, Prüfung und Angebotsvorbereitung. Dauerhaft laufende KI-Agenten sind nicht eingerichtet.
 
 Neue Produkte selbständig erfinden, Code mit einem Sprachmodell erzeugen und Änderungen unbeaufsichtigt veröffentlichen ist nicht eingerichtet. Dafür fehlen ein begrenzter Aufgabenbestand, ein laufender Dienst, der Modellzugang und ein Kostenlimit. Die jetzige Werkstatt hat keine Netzabhängigkeiten oder Modellkosten und startet auf Befehl.
 

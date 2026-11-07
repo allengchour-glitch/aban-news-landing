@@ -167,3 +167,31 @@ Die bisherigen `th30_*`-Menschen werden durch eigene runde Figuren mit grössere
 ### Arme mit weicheren Übergängen
 
 Auf Wunsch des Besitzers sind die kugelartigen Schulter- und Ellbogenteile durch durchgehende Ärmelprofile ersetzt. Die Handfläche ist schmaler und trägt Daumen und angedeutete Finger. Oberkörper und Schulteranschluss sind durchgehend geformt; die Aufhellung der Gelenke beträgt höchstens 21 Prozent. Die fünf Haltungen wurden in der lokalen Modellgalerie angesehen. Aktualisierung wiederum über `files/kb3d-code.js`; keine neue Messung und keine Übertragung nach Claude erfolgt.
+
+## Arbeitsübersicht und tägliche Pflege (vorbereitet)
+
+Über den Ansichten stehen Arbeitskarten für Tagespflege, Google/Bing und den bestehenden Verbesserungsablauf. Jede Datenzeile hat zusätzlich «Nächster Schritt», einen Arbeitslink und eine Erklärung zur Wirkung. Ein Link öffnet das Werkzeug; er löst keinen Workflow aus. In GitHub muss zum Handstart zusätzlich «Run workflow» geklickt werden. Der bestehende Verbesserungsablauf kann HTML ändern und einen Telegram-Bericht senden; sein alter Zeitplan bleibt pausiert.
+
+### Täglicher Ablauf
+
+`buero-tagespflege.yml` wird nach Übernahme über den bestehenden Tageslauf `tages-update.yml` (04:15 UTC; tatsächlicher Start kann später sein) aufgerufen. Es wird kein zusätzlicher Cron angelegt. Die Pflege prüft lokale, in der Sitemap genannte HTML-Dateien auf Titel, Beschreibung, Canonical und noindex. Fehlende Dateien gelten als nicht prüfbar, insbesondere in einem unvollständigen Checkout. Live-HTTP und der Suchindex werden damit nicht geprüft. Der Bericht nennt konkrete nächste Schritte. Inhalte werden nicht automatisch umgeschrieben oder veröffentlicht.
+
+GitHub-Laufstände werden nur für die ausdrücklich zugeordneten Workflows auf `main` gelesen. Ein Workflow-Ergebnis bestätigt keine Bestelldaten, Lagerzahlen oder privaten Krypto-Bücher. Auskommentierte Zeitpläne bleiben auch nach einem erfolgreichen Handlauf gelb. Fehlgeschlagene Abrufe machen alte Angaben nicht frisch. Bei 403 oder 429 stoppen weitere GitHub-Abfragen dieses Durchgangs.
+
+Die Artefakte des Laufs enthalten `bericht.md`, `pflege.json` und `github-buero.json`. Der letzte Export enthält nur GitHub-Zeilen und die Seitenpflege, keine Bestellungen, Beträge oder privaten Sitzungen. Für das vollständige private Büro kann der Besitzer den Bericht lokal in die vorhandene Datei übernehmen:
+
+```bash
+python3 -I tools/buero/make_buero.py /tmp/buero-neu.json --pflege-status /pfad/pflege.json
+```
+
+Die Datenquelle des privaten Claude-Artefakts ist weiterhin gesondert zu aktualisieren. Ohne authentifizierte Verbindung zu diesem Speicher ist eine vollständige Ein-Klick-Aktualisierung direkt aus Claude noch nicht möglich. GitHub-Artefakte allein aktualisieren die private Seite nicht.
+
+### Suchmaschinen einmalig einrichten
+
+Google wird über die vorhandene Sitemap und Search Console bedient. In `robots.txt` wird die Sitemap bereits genannt. Die allgemeine Google Indexing API ist für JobPosting bzw. bestimmte Livestream-Seiten vorgesehen und wird hier nicht für normale Webseiten eingesetzt.
+
+Für IndexNow braucht der Besitzer `INDEXNOW_KEY` als GitHub-Secret und eine UTF-8-Datei `https://abannews.com/<Schlüssel>.txt` mit demselben Inhalt auf der veröffentlichten Website. Die Pflege prüft diese Datei vor einer Meldung. Ohne Einrichtung wird nichts gesendet. Nur neue oder tatsächlich geänderte, lokale Canonical-Seiten ohne noindex werden gemeldet, höchstens 100 je Lauf. Ein Cache merkt bestätigte Dateihashes; tägliche Cache-Löschung kann eine erneute Meldung auslösen. Unveränderte Seiten werden nicht absichtlich täglich erneut gemeldet. Gelöschte Seiten werden in dieser Fassung nicht gemeldet.
+
+HTTP 200 bedeutet «gemeldet», nicht «indexiert». Bei 202 bleibt die Schlüsselprüfung offen, bei Fehlern oder Drosselung wird nichts als bestätigt gespeichert und in diesem Durchgang nicht erneut gesendet. Ohne `--melden` bleibt das Werkzeug ein lokaler Trockenlauf. Meldungen aus dem GitHub-Workflow sind auf `main` beschränkt. Laufstände, IndexNow-Meldung und tatsächliche Indexaufnahme werden getrennt dargestellt.
+
+Quellen: [Google Indexing API](https://developers.google.com/search/apis/indexing-api/v3/quickstart), [Google Sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [IndexNow-Protokoll](https://www.indexnow.org/documentation).
