@@ -185,7 +185,8 @@
 .kb3-chip:focus-visible, .kb3-tool:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
 .kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: radial-gradient(ellipse at 50% 38%, #e8ede4 0%, #d9e2d9 58%, #c5d1c9 100%); user-select: none; -webkit-user-select: none; }
 .kb3-stage.is-gross { aspect-ratio: 3 / 4; }
-.kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+.kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.kb3-tool[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
 .kb3-canvas:active { cursor: grabbing; }
 .kb3-canvas:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
 .kb3-over { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -281,22 +282,29 @@
   </div>
 
   <div class="kb-pane" id="kb-pane-3d" data-pane="3d" role="tabpanel" aria-labelledby="kb-tab-3d">
-    <p class="kb-hint">Das Büro als 3D-Modell. Ziehen dreht es, zwei Finger oder die Knöpfe zoomen. Tippe auf eine Figur, das Förderband, die Tafel oder ein Kärtchen, dann siehst du die Einzelheiten. Die Haltung jeder Figur ist gemessen, die Figuren selbst sind Modelle.</p>
+    <p class="kb-hint">Das Büro als 3D-Modell. Wähle Drehen oder Verschieben und ziehe das Bild. Zwei Finger verschieben und zoomen. Mit der Maus geht Verschieben auch mit Umschalt + Ziehen; Umschalt + Pfeiltasten verschiebt ebenfalls. Tippe auf eine Figur, das Förderband, die Tafel oder ein Kärtchen, dann siehst du die Einzelheiten. Die Figuren sind Modelle. Ihre Haltung folgt dem angegebenen Stand; ungeprüfte Abläufe stehen auf Prüfen.</p>
     <div class="kb3-bar" role="group" aria-label="Raum wählen">
       <button type="button" class="kb3-chip" data-cmd="view:alle" aria-pressed="true">Alles</button>
       <button type="button" class="kb3-chip" data-cmd="view:Shop" aria-pressed="false">Shop</button>
       <button type="button" class="kb3-chip" data-cmd="view:Versand" aria-pressed="false">Versand</button>
       <button type="button" class="kb3-chip" data-cmd="view:Krypto" aria-pressed="false">Krypto</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Social Media" aria-pressed="false">Social Media</button>
       <button type="button" class="kb3-chip" data-cmd="view:Chefbüro" aria-pressed="false">Chefbüro</button>
     </div>
     <div class="kb3-stage" data-draw="szene3d" data-source="buero">—</div>
     <div class="kb3-tools" role="group" aria-label="Kamera">
+      <button type="button" class="kb3-tool" data-cmd="rotate" aria-pressed="true">Drehen</button>
+      <button type="button" class="kb3-tool" data-cmd="move" aria-pressed="false">Verschieben</button>
+      <button type="button" class="kb3-tool" data-cmd="panLeft" aria-label="Bild nach links verschieben">←</button>
+      <button type="button" class="kb3-tool" data-cmd="panRight" aria-label="Bild nach rechts verschieben">→</button>
+      <button type="button" class="kb3-tool" data-cmd="panUp" aria-label="Bild nach oben verschieben">↑</button>
+      <button type="button" class="kb3-tool" data-cmd="panDown" aria-label="Bild nach unten verschieben">↓</button>
       <button type="button" class="kb3-tool" data-cmd="zoomOut" aria-label="Herauszoomen">−</button>
       <button type="button" class="kb3-tool" data-cmd="zoomIn" aria-label="Hineinzoomen">+</button>
       <button type="button" class="kb3-tool" data-cmd="turnLeft" aria-label="Nach links drehen">⟲</button>
       <button type="button" class="kb3-tool" data-cmd="turnRight" aria-label="Nach rechts drehen">⟳</button>
-      <button type="button" class="kb3-tool" data-cmd="tiltUp" aria-label="Steiler von oben">↑</button>
-      <button type="button" class="kb3-tool" data-cmd="tiltDown" aria-label="Flacher von der Seite">↓</button>
+      <button type="button" class="kb3-tool" data-cmd="tiltUp" aria-label="Steiler von oben">Steiler</button>
+      <button type="button" class="kb3-tool" data-cmd="tiltDown" aria-label="Flacher von der Seite">Flacher</button>
       <button type="button" class="kb3-tool" data-cmd="reset">Zurück</button>
       <button type="button" class="kb3-tool" data-cmd="gross" aria-pressed="false">Grösser</button>
     </div>
@@ -326,6 +334,13 @@
       <p class="kb-sub">Nur Spielgeld und Papier. Kein echtes Geld im Spiel.</p>
       <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Krypto" data-source="buero"></div>
       <div class="kb-detail" data-draw="detail" data-bereich="Krypto" data-source="buero"></div>
+    </section>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-social">
+      <h2 id="r-social">Social Media</h2>
+      <p class="kb-sub">Instagram und Facebook, Pinterest und LinkedIn. Der Stand steht bei jeder Figur.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Social Media" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Social Media" data-source="buero"></div>
     </section>
 
     <section class="kb-card kb-raum" aria-labelledby="r-chef">
@@ -367,6 +382,12 @@
       <h2 id="h-krypto">Krypto</h2>
       <p class="kb-sub">Nur Spielgeld und Papier. Kein echtes Geld im Spiel.</p>
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Krypto" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-social">
+      <h2 id="h-social">Social Media</h2>
+      <p class="kb-sub">Veröffentlichungsabläufe und ihre belegten Einstellungen.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Social Media" data-source="buero"></ul>
     </section>
 
     <section class="kb-card" aria-labelledby="h-chef">
@@ -968,7 +989,10 @@
       var an = knopf.getAttribute('aria-pressed') !== 'true';
       knopf.setAttribute('aria-pressed', an ? 'true' : 'false');
       root.querySelectorAll('.kb3-stage').forEach(function (st) { st.classList.toggle('is-gross', an); });
-    } else if (made3d && made3d.cmd) made3d.cmd(cmd);
+    } else if (made3d && made3d.cmd) {
+      made3d.cmd(cmd);
+      if (cmd === 'move' || cmd === 'rotate') root.querySelectorAll('[data-cmd="move"], [data-cmd="rotate"]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cmd') === cmd ? 'true' : 'false'); });
+    }
   }
 
   dash.draw('szene3d', {

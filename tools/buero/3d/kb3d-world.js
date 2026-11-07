@@ -22,6 +22,9 @@
     { room: 'Krypto', i: 2, x: 5.7, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
     { room: 'Krypto', i: 3, x: 2.4, z: -1.4, h: 0, kind: 'single', style: 'dark', chair: '#8a6fb0', who: 'woman' },
     { room: 'Krypto', i: 4, x: 4.6, z: -1.4, h: 0, kind: 'dual', style: 'dark', chair: '#8a6fb0', who: 'man' },
+    { room: 'Social Media', i: 0, x: -5.4, z: 8.0, h: 0, kind: 'dual', style: 'oak', chair: '#a093b7', who: 'woman' },
+    { room: 'Social Media', i: 1, x: -3.3, z: 8.0, h: 0, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
+    { room: 'Social Media', i: 2, x: -1.2, z: 8.0, h: 0, kind: 'dual', style: 'oak', chair: '#769b8a', who: 'woman' },
     { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
   ];
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
@@ -85,7 +88,7 @@
     B.box(9.0, -0.36, 3.0, 3.2, 0.7, 6.4, '#3a3f4b');
     B.floor(7.6, -0.2, 10.6, 6.2, -0.004, '#4b505b', 0);
     for (j = 0; j < 8; j++) B.floor(10.1, 0.1 + j * 0.8, 10.18, 0.55 + j * 0.8, -0.002, '#e8e6e0', 0);
-    stat(quad({ x: 1.2, y: -0.72, z: 0.3, rx: -PI / 2, w: 27, h: 21, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
+    stat(quad({ x: 1.2, y: -0.72, z: 2.0, rx: -PI / 2, w: 27, h: 27, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
 
     /* ---------- Wände ---------- */
     var WH = 3.4, CAP = '#f6f3ec';
@@ -317,6 +320,21 @@
     place('planter', 6.55, 0, -0.45, 0, 0.65);
     P.rug(B, -5.8, -5.25, -1.45, -2.25, '#708d83', '#ddd2b5', 0.016);
 
+    /* Social-Media-Studio als offener Anbau vor dem Shop. */
+    floorMesh(-7, 6.3, 0, 10.8, 'fSocial', function () { return T.parquet('#d6c2ac', 8); }, 2);
+    B.box(-3.5, -0.36, 8.55, 7.6, 0.7, 4.8, '#3a3f4b');
+    B.box(-7.12, 0.5, 8.55, 0.18, 1.0, 4.5, '#d7cddd');
+    B.box(-3.5, 0.03, 6.35, 7, 0.05, 0.12, '#b8a18a');
+    P.rug(B, -6.5, 7.3, -0.4, 9.3, '#a397af', '#e0d5c4', 0.012);
+    sign('SOCIAL MEDIA', 3.1, 0.55, -3.5, 1.9, 6.42, 0, '#f8f3eb', '#766b87', '#d9cba9', 'Instagram · Pinterest · LinkedIn');
+    // Ringlicht, Kamera, Storyboard und kleine Sitzecke.
+    B.cylb(-6.5, 0, 9.8, 0.2, 0.2, 0.035, 16, '#39424b');
+    B.box(-6.5, 0.7, 9.8, 0.035, 1.4, 0.035, '#636974');
+    B.torus(-6.5, 1.65, 9.8, 0.28, 0.035, 24, 6, '#fff0cf', 0.7);
+    B.box(-6.5, 1.62, 9.79, 0.13, 0.19, 0.06, '#303643');
+    place('plant', -0.4, 0, 10.0, 0, 0.75);
+    place('sofa', -3.1, 0, 10.35, PI, 0.65, { sofapolster: '#a093b7', sofakorpus: '#786c88' });
+
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
     W.statics.unshift(base);
@@ -379,10 +397,11 @@
 
     /* ---------- Kamera-Ansichten ---------- */
     W.views = {
-      alle: { tx: 1.0, ty: 0.7, tz: 0.2, dist: 29 },
+      alle: { tx: 1.0, ty: 0.7, tz: 2.0, dist: 35 },
       Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
       Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
       Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
+      'Social Media': { tx: -3.5, ty: 0.7, tz: 8.3, dist: 12.5 },
       'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
     };
     return W;

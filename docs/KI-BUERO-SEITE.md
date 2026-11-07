@@ -135,3 +135,12 @@ Die Seite läuft nur im Dashboard. Zum Ansehen und Prüfen ohne Dashboard gibt e
 - Arbeitsort: der Link zeigt auf die Lauf-Liste des Workflows, nicht auf den einzelnen Lauf, und auf die Sitzung, nicht auf deren Stand.
 - Arbeitsort: die Kürzel machen die Beschriftungen breiter. Gemessen auf dem Handy (390 px) überdecken sich die Beschriftungen in der Versand-Ansicht zu 19 % der Fläche ohne und 26 % mit Kürzel (Chefbüro 27 und 29 %), auf Tablet und Desktop kaum. Wird es dem Besitzer zu eng, genügt `.kb3-ort { display: none; }` in `seite.html`; Schild und Detailfeld bleiben.
 - 3D: sieben der 21 Modelle haben keinen Herkunftsvermerk in den Credit-Dateien des Repos (siehe `tools/buero/3d/README.md`). Die Seite ist privat.
+
+## Gestaltung und Steuerung vom 07.11.2026 (GitHub-Entwurf)
+
+Die Quellen enthalten wärmere Materialien, feinere Gesichter und einen offenen Social-Media-Anbau vor dem Shop mit drei Arbeitsplätzen, Ringlicht und Sitzecke. Der Raum ist über «Social Media» erreichbar und auch in 2D und Liste enthalten. Für die private Claude-Seite ist eine gesonderte Übertragung erforderlich; diese Änderungen sind dort noch nicht veröffentlicht.
+
+- «Verschieben» + Ziehen bewegt den Bildausschnitt in der Bildebene; «Drehen» + Ziehen dreht wie bisher. Richtungsknöpfe verschieben ebenfalls. Umschalt + Ziehen, rechte/mittlere Maustaste und Umschalt + Pfeiltasten verschieben unabhängig vom Modus.
+- Zwei Finger verschieben über ihren Mittelpunkt und zoomen über ihren Abstand. Innerhalb der Zeichenfläche übernimmt die Seite die Gesten; zum Scrollen außerhalb der Fläche wischen. «Zurück» und Raumknöpfe setzen den Ausschnitt zurück.
+- QUELLE: `.github/workflows/social-meta-autopost.yml`, `pinterest-publish.yml` und `linkedin-autopost.yml`, gelesen am 07.11.2026. Die Zeitpläne sind auskommentiert; Handstart ist vorgesehen. Neue Zeilen stehen gelb auf «Prüfen», mit «Keine Laufmessung». Kontoverbindung, letzter Lauf und Beiträge wurden nicht gemessen. Das ist keine Auffrischung der bisherigen Messungen vom 05.11.
+- Dashboard-Übertragung: zuerst das gebaute `files/kb3d-code.js`, dann die neue `buero.json` als Quelle von `datasets/buero`, zuletzt `seite.html` als `files/index.html`, jeweils mit aktuellen Versionswächtern. Modellpakete bleiben unverändert. Die Datenquelle wird benötigt, damit die drei neuen Figuren zu sehen sind.

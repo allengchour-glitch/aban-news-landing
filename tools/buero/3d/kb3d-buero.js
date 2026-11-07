@@ -210,7 +210,17 @@
       };
 
       /* ---------- Bedienung ---------- */
-      var ptrs = {}, nptr = 0, down = null, pinch = 0;
+      var ptrs = {}, nptr = 0, down = null, pinch = 0, moveMode = false;
+      // Pixelbewegung in der Bildebene; abhängig von Zoom, Blickwinkel und Höhe.
+      function pan(dx, dy) {
+        var scale = 2 * cam.g.dist * Math.tan(cam.fov / 2) / Math.max(1, made.h);
+        var a = cam.g.az, e = cam.g.el;
+        cam.g.tx = clamp(cam.g.tx + scale * (-dx * Math.cos(a) - dy * Math.sin(a) * Math.sin(e)), -18, 18);
+        cam.g.ty = clamp(cam.g.ty + scale * dy * Math.cos(e), -6, 12);
+        cam.g.tz = clamp(cam.g.tz + scale * (dx * Math.sin(a) - dy * Math.cos(a) * Math.sin(e)), -16, 22);
+        cam.tx = cam.g.tx; cam.ty = cam.g.ty; cam.tz = cam.g.tz;
+        made.dirty = true;
+      }
       function rectOf() { return cv.getBoundingClientRect(); }
       function ndc(ev) { var r = rectOf(); return [((ev.clientX - r.left) / r.width) * 2 - 1, -(((ev.clientY - r.top) / r.height) * 2 - 1)]; }
       function doPick(ev) {
@@ -224,7 +234,7 @@
       cv.addEventListener('pointerdown', function (ev) {
         ptrs[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; nptr++;
         try { cv.setPointerCapture(ev.pointerId); } catch (e) { /* nichts */ }
-        if (nptr === 1) down = { x: ev.clientX, y: ev.clientY, t: performance.now(), moved: 0 };
+        if (nptr === 1) down = { x: ev.clientX, y: ev.clientY, t: performance.now(), moved: 0, pan: moveMode || ev.shiftKey || ev.button === 1 || ev.button === 2 };
         if (nptr === 2) { var k = Object.keys(ptrs); pinch = Math.hypot(ptrs[k[0]].x - ptrs[k[1]].x, ptrs[k[0]].y - ptrs[k[1]].y); if (down) down.moved = 99; }
       });
       cv.addEventListener('pointermove', function (ev) {
@@ -237,49 +247,63 @@
         p.x = ev.clientX; p.y = ev.clientY;
         if (nptr === 1) {
           if (down) down.moved += Math.abs(dx) + Math.abs(dy);
-          cam.g.az = clamp(cam.g.az - dx * 0.006, 0.0, 1.5);
-          cam.g.el = clamp(cam.g.el + dy * 0.004, 0.3, 1.2);
-          cam.az = cam.g.az; cam.el = cam.g.el;
+          if (down && down.pan) pan(dx, dy);
+          else {
+            cam.g.az = clamp(cam.g.az - dx * 0.006, 0.0, 1.5);
+            cam.g.el = clamp(cam.g.el + dy * 0.004, 0.3, 1.2);
+            cam.az = cam.g.az; cam.el = cam.g.el;
+          }
           made.dirty = true;
         } else if (nptr === 2) {
+          pan(dx / 2, dy / 2);
           var k = Object.keys(ptrs), d = Math.hypot(ptrs[k[0]].x - ptrs[k[1]].x, ptrs[k[0]].y - ptrs[k[1]].y);
-          if (pinch > 0 && d > 0) { cam.g.dist = clamp(cam.g.dist * pinch / d, 5.5, 38); cam.dist = cam.g.dist; made.dirty = true; }
+          if (pinch > 0 && d > 0) { cam.g.dist = clamp(cam.g.dist * pinch / d, 5.5, 60); cam.dist = cam.g.dist; made.dirty = true; }
           pinch = d;
         }
       });
       function up(ev) {
         var had = !!ptrs[ev.pointerId];
         delete ptrs[ev.pointerId]; nptr = Math.max(0, nptr - 1);
-        if (had && nptr === 0 && down && down.moved < 9 && performance.now() - down.t < 600) {
+        if (had && ev.button === 0 && nptr === 0 && down && down.moved < 9 && performance.now() - down.t < 600) {
           var id = doPick(ev);
           if (cfg.onPick) cfg.onPick(id);
         }
         if (nptr === 0) down = null;
       }
       cv.addEventListener('pointerup', up);
+      cv.addEventListener('contextmenu', function (ev) { ev.preventDefault(); });
       cv.addEventListener('pointercancel', function (ev) { if (ptrs[ev.pointerId]) { delete ptrs[ev.pointerId]; nptr = Math.max(0, nptr - 1); } if (nptr === 0) down = null; });
       cv.addEventListener('wheel', function (ev) {
         if (!(ev.ctrlKey || ev.metaKey)) return;
         ev.preventDefault();
-        cam.g.dist = clamp(cam.g.dist * Math.exp(ev.deltaY * 0.0018), 5.5, 38);
+        cam.g.dist = clamp(cam.g.dist * Math.exp(ev.deltaY * 0.0018), 5.5, 60);
         made.dirty = true;
       }, { passive: false });
       cv.addEventListener('keydown', function (ev) {
         var k = ev.key, used2 = true;
-        if (k === 'ArrowLeft') cam.g.az = clamp(cam.g.az + 0.1, 0, 1.5);
+        if (ev.shiftKey && /^Arrow(Left|Right|Up|Down)$/.test(k)) pan(k === 'ArrowLeft' ? -50 : k === 'ArrowRight' ? 50 : 0, k === 'ArrowUp' ? -50 : k === 'ArrowDown' ? 50 : 0);
+        else if (k === 'ArrowLeft') cam.g.az = clamp(cam.g.az + 0.1, 0, 1.5);
         else if (k === 'ArrowRight') cam.g.az = clamp(cam.g.az - 0.1, 0, 1.5);
         else if (k === 'ArrowUp') cam.g.el = clamp(cam.g.el + 0.06, 0.3, 1.2);
         else if (k === 'ArrowDown') cam.g.el = clamp(cam.g.el - 0.06, 0.3, 1.2);
-        else if (k === '+' || k === '=') cam.g.dist = clamp(cam.g.dist * 0.85, 5.5, 38);
-        else if (k === '-') cam.g.dist = clamp(cam.g.dist / 0.85, 5.5, 38);
+        else if (k === '+' || k === '=') cam.g.dist = clamp(cam.g.dist * 0.85, 5.5, 60);
+        else if (k === '-') cam.g.dist = clamp(cam.g.dist / 0.85, 5.5, 60);
         else if (k === 'Home') goView('alle');
         else if (k === 'Escape') { if (cfg.onPick) cfg.onPick(null); }
         else used2 = false;
         if (used2) { ev.preventDefault(); made.dirty = true; }
       });
       made.cmd = function (name) {
-        if (name === 'zoomIn') cam.g.dist = clamp(cam.g.dist * 0.8, 5.5, 38);
-        else if (name === 'zoomOut') cam.g.dist = clamp(cam.g.dist / 0.8, 5.5, 38);
+        if (name === 'move' || name === 'rotate') {
+          moveMode = name === 'move';
+          cv.style.touchAction = 'none';
+        }
+        else if (name === 'panLeft') pan(-50, 0);
+        else if (name === 'panRight') pan(50, 0);
+        else if (name === 'panUp') pan(0, -50);
+        else if (name === 'panDown') pan(0, 50);
+        else if (name === 'zoomIn') cam.g.dist = clamp(cam.g.dist * 0.8, 5.5, 60);
+        else if (name === 'zoomOut') cam.g.dist = clamp(cam.g.dist / 0.8, 5.5, 60);
         else if (name === 'tiltUp') cam.g.el = clamp(cam.g.el + 0.12, 0.3, 1.2);
         else if (name === 'tiltDown') cam.g.el = clamp(cam.g.el - 0.12, 0.3, 1.2);
         else if (name === 'turnLeft') cam.g.az = clamp(cam.g.az + 0.2, 0, 1.5);

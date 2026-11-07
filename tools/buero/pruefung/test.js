@@ -38,7 +38,7 @@ function ok(name, bedingung, info) {
   // Klick auf eine Figur öffnet das Detailfeld nur im eigenen Raum
   await p.locator('.kb-desk[data-pick="fortura"]').click();
   const d1 = await p.evaluate(() => [...document.querySelectorAll('#kb-pane-buero .kb-detail')].map((d) => d.textContent.trim().length > 0));
-  ok('Detail nur im Shop-Raum', JSON.stringify(d1) === JSON.stringify([true, false, false, false]), d1);
+  ok('Detail nur im Shop-Raum', d1[0] && d1.slice(1).every((x) => !x), d1);
   const t1 = await p.locator('.kb-raum').first().locator('.kb-detail').textContent();
   ok('Detail nennt Fortura-Bestand und den Befund', t1.includes('Fortura-Bestand') && t1.includes('Freigabedatei'));
   const lw = await p.locator('.kb-raum').first().locator('.kb-detail .r-linkzeile').evaluate((zl) => ({
@@ -54,11 +54,11 @@ function ok(name, bedingung, info) {
   ok('Zweiter Klick schliesst das Detail', (await p.evaluate(() => [...document.querySelectorAll('#kb-pane-buero .kb-detail')].every((d) => d.textContent.trim() === ''))));
   // Blatt im Chefbüro, Schliessen-Knopf
   await p.locator('.kb-blatt[data-pick="zip"]').click();
-  const t2 = await p.locator('.kb-raum').nth(3).locator('.kb-detail').textContent();
+  const t2 = await p.locator('.kb-raum[aria-labelledby="r-chef"]').locator('.kb-detail').textContent();
   ok('Blatt öffnet Detail im Chefbüro', t2.includes('Starter-ZIP einspielen'));
-  const zl2 = await p.locator('.kb-raum').nth(3).locator('.kb-detail .r-linkzeile').evaluate((zl) => ({ hidden: zl.hidden, href: zl.querySelector('a.r-link').getAttribute('href') }));
+  const zl2 = await p.locator('.kb-raum[aria-labelledby="r-chef"]').locator('.kb-detail .r-linkzeile').evaluate((zl) => ({ hidden: zl.hidden, href: zl.querySelector('a.r-link').getAttribute('href') }));
   ok('Blatt «ZIP»: Arbeitsort Dein Windows-PC, kein Link', t2.includes('Dein Windows-PC') && zl2.hidden && zl2.href === null, zl2);
-  await p.locator('.kb-raum').nth(3).locator('.kb-x').click();
+  await p.locator('.kb-raum[aria-labelledby="r-chef"]').locator('.kb-x').click();
   ok('Schliessen-Knopf leert das Detail', (await p.evaluate(() => [...document.querySelectorAll('#kb-pane-buero .kb-detail')].every((d) => d.textContent.trim() === ''))));
   // Tastatur: Fokus + Enter
   await p.locator('.kb-desk[data-pick="auswahl"]').focus();

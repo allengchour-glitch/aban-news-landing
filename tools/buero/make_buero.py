@@ -186,6 +186,25 @@ ORTE = {
     "cockpitstart": ("pc", "Dein Windows-PC", "Dein PC", "Eine Windows-Aufgabe beim Anmelden auf deinem PC (Aufgabe «Krypto-Cockpit-Start»). Du hast Ja gesagt; ausschalten kannst du sie im Cockpit.", ""),
     "geld": ("du", "Bei dir (Entscheid)", "Bei dir", "Das entscheidest du. Danach läuft es in deinem Etsy-Konto oder in Google Ads.", ""),
 }
+# QUELLE: Workflow-Konfigurationen am 07.11.2026 gelesen, keine Laufmessung.
+# Auskommentierte Zeitpläne sind kein laufender Automat; gelb bleibt ausdrücklich unbestätigt.
+for _id, _kurz, _file in [
+    ("social_meta", "Instagram / Facebook", "social-meta-autopost.yml"),
+    ("social_pinterest", "Pinterest", "pinterest-publish.yml"),
+    ("social_linkedin", "LinkedIn", "linkedin-autopost.yml"),
+]:
+    ROWS.append({
+        "id": _id, "bereich": "Social Media", "name": _kurz, "kurz": _kurz,
+        "status": "gelb", "befund": "Der automatische Zeitplan ist in der Workflow-Datei auskommentiert. Handstart ist vorgesehen. Letzter Lauf, Kontoverbindung und veröffentlichte Beiträge wurden nicht geprüft.",
+        "ereignis": "Zeitplan pausiert (Dateistand 07.11.)", "ereignis_iso": "",
+        "gemessen": "", "gemessen_text": "Keine Laufmessung", "frisch_h": 0,
+        "quelle": ".github/workflows/" + _file + " (Konfiguration gelesen 07.11.2026)",
+        "figur": "arbeiter", "menge": 0, "aktiv_h": 0,
+    })
+    ORTE[_id] = ("cloud", "GitHub-Cloud (Handstart)", "GitHub",
+                 "Workflow " + _file + ": Zeitplan auskommentiert. Handstart über GitHub Actions; letzter Lauf und Kontoverbindung nicht geprüft.",
+                 "https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/" + _file)
+
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
     _r.update({"ort_art": _art, "ort": _ort, "ort_kurz": _kurz, "ort_text": _text, "link": _link})
@@ -196,7 +215,7 @@ def pruefen(rows):
     assert len(ids) == len(set(ids)), "doppelte id"
     for r in rows:
         assert r["status"] in ("gruen", "gelb", "rot", "du"), r["id"]
-        assert r["bereich"] in ("Shop", "Versand", "Krypto", "Chefbüro"), r["id"]
+        assert r["bereich"] in ("Shop", "Versand", "Krypto", "Chefbüro", "Social Media"), r["id"]
         assert r["figur"] in ("arbeiter", "paket", "tafel", "papier"), r["id"]
         assert isinstance(r["frisch_h"], int) and isinstance(r["aktiv_h"], int) and isinstance(r["menge"], int)
         assert (r["frisch_h"] == 0) == (r["gemessen"] == ""), r["id"]
