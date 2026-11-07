@@ -289,6 +289,7 @@
       <button type="button" class="kb3-chip" data-cmd="view:Versand" aria-pressed="false">Versand</button>
       <button type="button" class="kb3-chip" data-cmd="view:Krypto" aria-pressed="false">Krypto</button>
       <button type="button" class="kb3-chip" data-cmd="view:Social Media" aria-pressed="false">Social Media</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Entwicklerbüro" aria-pressed="false">Entwicklerbüro</button>
       <button type="button" class="kb3-chip" data-cmd="view:Chefbüro" aria-pressed="false">Chefbüro</button>
     </div>
     <div class="kb3-stage" data-draw="szene3d" data-source="buero">—</div>
@@ -343,6 +344,13 @@
       <div class="kb-detail" data-draw="detail" data-bereich="Social Media" data-source="buero"></div>
     </section>
 
+    <section class="kb-card kb-raum" aria-labelledby="r-dev">
+      <h2 id="r-dev">Entwicklerbüro</h2>
+      <p class="kb-sub">Automationen für Unternehmen: Produktbau, Prüfung und Angebot. Die Stationen zeigen den letzten Werkstatt-Bericht, keinen Dauerlauf.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Entwicklerbüro" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Entwicklerbüro" data-source="buero"></div>
+    </section>
+
     <section class="kb-card kb-raum" aria-labelledby="r-chef">
       <h2 id="r-chef">Chefbüro</h2>
       <p class="kb-sub">Was nur du entscheiden oder anklicken kannst. Jedes Blatt ist ein offener Punkt, die Tafel zählt die Bestellungen.</p>
@@ -388,6 +396,12 @@
       <h2 id="h-social">Social Media</h2>
       <p class="kb-sub">Veröffentlichungsabläufe und ihre belegten Einstellungen.</p>
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Social Media" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-dev">
+      <h2 id="h-dev">Entwicklerbüro</h2>
+      <p class="kb-sub">Erstes Produkt: Anfragen-Assistent für kleine Betriebe. Ein gebautes Paket ist noch kein Verkauf.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Entwicklerbüro" data-source="buero"></ul>
     </section>
 
     <section class="kb-card" aria-labelledby="h-chef">

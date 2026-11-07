@@ -13,6 +13,7 @@ Spalten (alle Zeilen haben alle Spalten):
   ort     : der echte Arbeitsort als kurzer Satzteil;  ort_kurz: höchstens 11 Zeichen für Beschriftung und Schild
   ort_text: wo und wann es wirklich läuft (belegt in .github/workflows, geplanten Aufgaben, CLAUDE.md);  link: https-Adresse des echten Ortes oder leer
 """
+import argparse
 import json
 import sys
 from datetime import datetime
@@ -205,6 +206,18 @@ for _id, _kurz, _file in [
                  "Workflow " + _file + ": Zeitplan auskommentiert. Handstart über GitHub Actions; letzter Lauf und Kontoverbindung nicht geprüft.",
                  "https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/" + _file)
 
+# Die Werkstatt ist ein lokaler Ablauf auf Befehl, kein dauerhaft arbeitender Agent.
+for _id, _name in [("dev_bauen", "Produktbau"), ("dev_pruefen", "Prüfstand"), ("dev_angebot", "Verkaufsunterlagen")]:
+    ROWS.append({
+        "id": _id, "bereich": "Entwicklerbüro", "name": _name, "kurz": _name,
+        "status": "gelb", "befund": "Kein Werkstatt-Bericht geladen. Die Station zeigt keinen laufenden Agenten. werkstatt.py prüft und paketiert den Anfragen-Assistenten auf Befehl.",
+        "ereignis": "Kein Durchlauf gemessen", "ereignis_iso": "", "gemessen": "", "gemessen_text": "Nicht gemessen",
+        "frisch_h": 0, "quelle": "tools/entwicklerbuero/werkstatt.py", "figur": "arbeiter", "menge": 0, "aktiv_h": 0,
+    })
+    ORTE[_id] = ("pc", "Ausführungsrechner der Werkstatt", "Werkstatt",
+                 "werkstatt.py läuft auf dem Rechner, auf dem es gestartet wird. Kein Dauerlauf; keine automatische Veröffentlichung oder Kontaktaufnahme.",
+                 "https://github.com/allengchour-glitch/aban-news-landing/tree/main/tools/entwicklerbuero")
+
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
     _r.update({"ort_art": _art, "ort": _ort, "ort_kurz": _kurz, "ort_text": _text, "link": _link})
@@ -215,7 +228,7 @@ def pruefen(rows):
     assert len(ids) == len(set(ids)), "doppelte id"
     for r in rows:
         assert r["status"] in ("gruen", "gelb", "rot", "du"), r["id"]
-        assert r["bereich"] in ("Shop", "Versand", "Krypto", "Chefbüro", "Social Media"), r["id"]
+        assert r["bereich"] in ("Shop", "Versand", "Krypto", "Chefbüro", "Social Media", "Entwicklerbüro"), r["id"]
         assert r["figur"] in ("arbeiter", "paket", "tafel", "papier"), r["id"]
         assert isinstance(r["frisch_h"], int) and isinstance(r["aktiv_h"], int) and isinstance(r["menge"], int)
         assert (r["frisch_h"] == 0) == (r["gemessen"] == ""), r["id"]
@@ -229,9 +242,55 @@ def pruefen(rows):
         assert r["link"] == "" or r["link"].startswith("https://"), r["id"]
 
 
+def werkstatt_einlesen(pfad, rows):
+    from pathlib import Path
+    p = Path(pfad)
+    if p.stat().st_size > 16384:
+        raise ValueError("Werkstatt-Bericht ist zu gross.")
+    report = json.loads(p.read_text(encoding="utf-8"))
+    if not isinstance(report, dict):
+        raise ValueError("Werkstatt-Bericht muss ein Objekt sein.")
+    if report.get("version") != 1 or report.get("projekt") != "anfragen-assistent" or report.get("dauerlauf") is not False:
+        raise ValueError("Unbekannter Werkstatt-Bericht.")
+    gem = report["gemessen"]
+    if datetime.fromisoformat(gem.replace("Z", "+00:00")).tzinfo is None:
+        raise ValueError("Werkstatt-Zeit braucht eine Zeitzone.")
+    stationen = report["stationen"]
+    erlaubt = {"bauen": {"offen", "bestanden"}, "pruefen": {"offen", "bestanden", "fehlgeschlagen"}, "angebot": {"offen", "entwurf"}}
+    if not isinstance(stationen, dict) or set(stationen) != set(erlaubt) or any(stationen[k] not in erlaubt[k] for k in erlaubt):
+        raise ValueError("Unbekannter Werkstatt-Zustand.")
+    if stationen["bauen"] == "bestanden" and stationen["pruefen"] != "bestanden":
+        raise ValueError("Ein Paket darf nur nach bestandener Prüfung freigegeben sein.")
+    texte = {
+        "bauen": "Demo und ZIP-Lieferpaket des Anfragen-Assistenten wurden erstellt. CSV-Prototyp; Postfach- und CRM-Anbindung sind noch nicht gebaut.",
+        "pruefen": "Der lokale Selbsttest des Anfragen-Assistenten hat bestanden. Kein Nachweis für Daten oder Systeme eines echten Kunden.",
+        "angebot": "Ein Angebotsentwurf liegt vor. Preis, Verkaufskanal und Kundenpilot sind offen; keine Verkäufe gemessen.",
+    }
+    for row in rows:
+        if not row["id"].startswith("dev_"):
+            continue
+        key = row["id"][4:]
+        wert = stationen[key]
+        row.update({"gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 24,
+                    "ereignis_iso": gem, "ereignis": "Werkstatt " + zeit(gem), "quelle": "werkstatt.py: status.json (lokaler Durchlauf)"})
+        row["status"] = {"bestanden": "gruen", "fehlgeschlagen": "rot", "entwurf": "du", "offen": "gelb"}[wert]
+        row["befund"] = (texte[key] if wert in ("bestanden", "entwurf") else
+                         "Die lokale Prüfung ist fehlgeschlagen; kein Lieferpaket freigegeben." if wert == "fehlgeschlagen" else
+                         "Station noch offen. Dieser Bericht bestätigt keinen abgeschlossenen Schritt.") + " Kein Dauerlauf."
+
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("ausgabe")
+    parser.add_argument("--werkstatt-status")
+    args = parser.parse_args()
+    if args.werkstatt_status:
+        try:
+            werkstatt_einlesen(args.werkstatt_status, ROWS)
+        except (OSError, ValueError, KeyError, TypeError) as e:
+            parser.exit(2, "Werkstatt-Bericht abgelehnt: " + str(e) + "\n")
     pruefen(ROWS)
-    out = sys.argv[1]
+    out = args.ausgabe
     with open(out, "w", encoding="utf-8") as f:
         json.dump(ROWS, f, ensure_ascii=False, indent=1)
         f.write("\n")

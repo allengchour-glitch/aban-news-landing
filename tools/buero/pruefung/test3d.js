@@ -158,12 +158,13 @@ async function lauf(b, optionen, vorher) {
   // ---------- Arbeitsort: Kürzel an den Beschriftungen, Schilder am Tisch, Detailfeld mit Link ----------
   const orte = await p.evaluate(() => Array.from(document.querySelectorAll('.kb3-over .kb3-label')).map((l) => (l.querySelector('.kb3-ort') ? l.querySelector('.kb3-ort').textContent.trim() : '')));
   ok(N + ' Beschriftungen tragen ein Ortskürzel, «Du» keins', orte.filter(Boolean).length === N && orte.filter((t) => !t).length === 1, orte);
-  ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir'].includes(t)), Array.from(new Set(orte)));
+  ok('Ortskürzel sind nur die bekannten Wörter', orte.filter(Boolean).every((t) => ['GitHub', 'Claude', 'GitHub + PC', 'Dein PC', 'Shopify', 'Bei dir', 'Werkstatt'].includes(t)), Array.from(new Set(orte)));
   const schilder = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => !s.spec.boss).map((s) => ({ ent: s.entId, used: !!s.used, mesh: !!s.sign, tex: !!(s.sign && s.sign.tex) })));
   const arbeiterN = await p.evaluate(() => window.__ROWS.filter((r) => r.figur === 'arbeiter').length);
   ok(arbeiterN + ' Plätze, alle benutzt, jeder mit Schild und Bild', schilder.length === arbeiterN && schilder.every((s) => s.used && s.mesh && s.tex), schilder.filter((s) => !(s.used && s.mesh && s.tex)));
   const tafeln = await p.evaluate(() => new Set(window.KB3D.Buero.last.debug.seats.filter((s) => s.sign && s.sign.tex).map((s) => s.sign.tex)).size);
-  ok('Drei verschiedene Schilder (GitHub, Claude, GitHub + PC)', tafeln === 3, tafeln);
+  const schildArten = await p.evaluate(() => new Set(window.__ROWS.filter((r) => r.figur === 'arbeiter' && r.ort_art).map((r) => r.ort_art + '|' + r.ort_kurz)).size);
+  ok('Schilder entsprechen den Arbeitsorten der Daten', tafeln === schildArten, tafeln);
   const chefSchild = await p.evaluate(() => window.KB3D.Buero.last.debug.seats.filter((s) => s.spec.boss).every((s) => !s.sign));
   ok('Das Chefbüro hat kein Schild', chefSchild);
   // Schild im Bild: ein Bild mit Schildern unterscheidet sich von einem ohne (Schilder kurz abschalten)

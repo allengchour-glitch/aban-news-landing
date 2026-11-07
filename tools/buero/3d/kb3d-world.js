@@ -25,6 +25,9 @@
     { room: 'Social Media', i: 0, x: -5.4, z: 8.0, h: 0, kind: 'dual', style: 'oak', chair: '#a093b7', who: 'woman' },
     { room: 'Social Media', i: 1, x: -3.3, z: 8.0, h: 0, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
     { room: 'Social Media', i: 2, x: -1.2, z: 8.0, h: 0, kind: 'dual', style: 'oak', chair: '#769b8a', who: 'woman' },
+    { room: 'Entwicklerbüro', i: 0, x: 1.3, z: 8.0, h: 0, kind: 'dual', style: 'white', chair: '#679aa0', who: 'man' },
+    { room: 'Entwicklerbüro', i: 1, x: 3.4, z: 8.0, h: 0, kind: 'tri', style: 'white', chair: '#a093b7', who: 'woman' },
+    { room: 'Entwicklerbüro', i: 2, x: 5.5, z: 8.0, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
     { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
   ];
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
@@ -335,6 +338,20 @@
     place('plant', -0.4, 0, 10.0, 0, 0.75);
     place('sofa', -3.1, 0, 10.35, PI, 0.65, { sofapolster: '#a093b7', sofakorpus: '#786c88' });
 
+    /* Entwicklerbüro: Produktbau, Prüfstand und Verkaufsunterlagen. */
+    floorMesh(0, 6.3, 7, 10.8, 'fDev', function () { return T.parquet('#d0d5c7', 9); }, 2);
+    B.box(3.5, -0.36, 8.55, 7.0, 0.7, 4.8, '#3a3f4b');
+    B.box(6.98, 0.5, 8.55, 0.12, 1.0, 4.5, '#bfd0c9');
+    P.rug(B, 0.4, 7.3, 6.6, 9.3, '#7f9e9c', '#d8ddcf', 0.012);
+    sign('ENTWICKLERBÜRO', 3.5, 0.55, 3.5, 1.9, 6.42, 0, '#f8f3eb', '#456e74', '#a7c7bc', 'Bauen · Prüfen · Angebot');
+    place('planter', 6.5, 0, 10.1, 0, 0.65);
+    place('bookshelf', 0.5, 0, 10.25, 0, 0.8);
+    // Prototypentisch mit kleinen Bausteinen, keine zusätzliche Datenanzeige.
+    P.table(B, 3.4, 10.1, 0, 0.72, '#d9c5a5');
+    B.box(3.2, 0.76, 10.1, 0.18, 0.12, 0.18, '#7da6a6');
+    B.box(3.45, 0.80, 10.1, 0.15, 0.20, 0.15, '#c4aa7c');
+    B.box(3.65, 0.74, 10.15, 0.16, 0.08, 0.16, '#a093b7');
+
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
     W.statics.unshift(base);
@@ -397,10 +414,11 @@
 
     /* ---------- Kamera-Ansichten ---------- */
     W.views = {
-      alle: { tx: 1.0, ty: 0.7, tz: 2.0, dist: 35 },
+      alle: { tx: 1.0, ty: 0.7, tz: 2.0, dist: 37 },
       Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
       Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
       Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
+      'Entwicklerbüro': { tx: 3.5, ty: 0.7, tz: 8.3, dist: 12.5 },
       'Social Media': { tx: -3.5, ty: 0.7, tz: 8.3, dist: 12.5 },
       'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
     };
