@@ -219,10 +219,10 @@ for _id, _name in [("dev_bauen", "Produktbau"), ("dev_pruefen", "Prüfstand"), (
                  "https://github.com/allengchour-glitch/aban-news-landing/tree/main/tools/entwicklerbuero")
 
 ROWS.append(frage("seitenpflege", "Tägliche Seitenpflege", "Seiten & Suchmaschinen",
-                  "Die tägliche Prüfung und GitHub-Aktualisierung sind vorbereitet, aber noch nicht auf main übernommen. IndexNow braucht einen eingerichteten Schlüssel; die Indexaufnahme ist nicht gemessen.",
-                  "Noch nicht eingeschaltet", "Nicht gemessen", "tools/buero/tagespflege.py; buero-tagespflege.yml"))
-ORTE["seitenpflege"] = ("cloud", "GitHub-Cloud nach Übernahme", "GitHub",
-                         "Vorbereitet als Teil von tages-update.yml (04:15 UTC). Kein zusätzlicher Zeitplan. Das Büro braucht die neue buero.json als Datenquelle.",
+                  "Kein Tagespflege-Bericht geladen. Den letzten Lauf und seine Berichte öffnen. Suchmaschinen-Meldungen brauchen eingerichtete Zugänge; eine Indexaufnahme ist nicht gemessen.",
+                  "Kein Durchlauf geladen", "Nicht gemessen", "tools/buero/tagespflege.py; buero-tagespflege.yml"))
+ORTE["seitenpflege"] = ("cloud", "GitHub-Cloud", "GitHub",
+                         "Teil von tages-update.yml (04:15 UTC). Kein zusätzlicher Zeitplan. Das Büro braucht die neue buero.json als Datenquelle.",
                          WF + "buero-tagespflege.yml")
 
 for _r in ROWS:

@@ -168,7 +168,7 @@ Die bisherigen `th30_*`-Menschen werden durch eigene runde Figuren mit grössere
 
 Auf Wunsch des Besitzers sind die kugelartigen Schulter- und Ellbogenteile durch durchgehende Ärmelprofile ersetzt. Die Handfläche ist schmaler und trägt Daumen und angedeutete Finger. Oberkörper und Schulteranschluss sind durchgehend geformt; die Aufhellung der Gelenke beträgt höchstens 21 Prozent. Die fünf Haltungen wurden in der lokalen Modellgalerie angesehen. Aktualisierung wiederum über `files/kb3d-code.js`; keine neue Messung und keine Übertragung nach Claude erfolgt.
 
-## Arbeitsübersicht und tägliche Pflege (vorbereitet)
+## Arbeitsübersicht und tägliche Pflege
 
 Über den Ansichten stehen Arbeitskarten für Tagespflege, Google/Bing und den bestehenden Verbesserungsablauf. Jede Datenzeile hat zusätzlich «Nächster Schritt», einen Arbeitslink und eine Erklärung zur Wirkung. Ein Link öffnet das Werkzeug; er löst keinen Workflow aus. In GitHub muss zum Handstart zusätzlich «Run workflow» geklickt werden. Der bestehende Verbesserungsablauf kann HTML ändern und einen Telegram-Bericht senden; sein alter Zeitplan bleibt pausiert.
 
@@ -204,3 +204,8 @@ Optional meldet die Pflege die veröffentlichte Sitemap über die Search Console
 Vor einer Meldung muss die live geladene Sitemap exakt der geprüften Sitemap entsprechen. Bei abweichender Veröffentlichung wird ausgesetzt. Ein Hash aus Sitemap und geprüften HTML-Dateien verhindert absichtliche Wiederholungen ohne Änderung. Ein erfolgreicher PUT an `sitemaps.submit` bestätigt nur die Übermittlung; eine Indexaufnahme wird nicht behauptet. Ohne Zugang, im Trockenlauf oder bei API-Fehlern wird keine erfolgreiche Meldung gespeichert. Die erste Nutzung mit einem echten Dienstkonto ist noch nicht erfolgt.
 
 Referenzen: [Search Console sitemaps.submit](https://developers.google.com/webmaster-tools/v1/sitemaps/submit), [Google Service-Account-Bibliothek](https://google-auth.readthedocs.io/en/latest/reference/google.oauth2.service_account.html).
+
+
+### Aktivierung und erster Prüflauf
+
+Die Arbeitszentrale und die Tagespflege sind mit PR #2913 nach `main` übernommen. Nach Änderungen am Pflegewerkzeug oder Büro-Generator erzeugt der Workflow zusätzlich einen ersten Bericht auf `main`; dieser Push-Lauf ist immer ein Trockenlauf für Suchmaschinen. Er prüft die echte GitHub-Anbindung, veröffentlicht keine Antworten und startet den bestehenden Tageslauf nicht von Hand. Tägliche Suchmaschinen-Meldungen bleiben an die einmalig eingerichteten Zugänge gebunden. Ohne geladenen Bericht sagt die Seitenpflege ausdrücklich «Kein Durchlauf geladen» und behauptet keinen Betriebsstand.
