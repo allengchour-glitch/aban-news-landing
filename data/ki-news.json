@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-06T12:02:44Z",
+ "stand": "2026-11-07T11:01:05Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Neue Siri-AI-Funktionen: Datei-Zugriff, Entwicklerverbesserungen und mehr",
-   "u": "https://www.heise.de/news/Siri-AI-Apples-Chatbot-kann-bald-mit-Dateien-operieren-11513459.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-06T11:09:00Z",
-   "s": "Apple liefert mit der Entwicklerbeta von iOS 27.3 größere Verbesserungen für sein KI-System. Dazu gehören auch diverse neue Skills und mehr Developer-Zugriff.",
-   "sprache": "de"
-  },
-  {
-   "t": "Europäische KI: „Es ist riskanter zu sagen, der Zug ist abgefahren“",
-   "u": "https://t3n.de/news/europaeische-ki-es-ist-riskanter-zu-sagen-der-zug-ist-abgefahren-1772038/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Digitalgipfel 2026: Deutschland soll an die KI-Weltspitze – scheitert aber am Wesentlichen",
+   "u": "https://t3n.de/news/digitalgipfel-2026-ki-weltspitze-deutschland-kommentar-1771341/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-06T11:07:07Z",
-   "s": "Die Politologin Nicole Lemke erklärt im Interview, auf welche Technologie europäische KI-Startups setzen und warum Europa trotzdem nicht auf eigene, große KI-Moweiterlesen auf t3n.de",
+   "d": "2026-11-07T10:05:00Z",
+   "s": "Wieder ein Digitalgipfel, wiederholt große Ziele und Versprechen für ein souveränes Deutschland. KI-Weltspitze möchte man werden. Was es eher braucht, sind realisierbare Ziele, mehr Tempo und Verbindl…",
    "sprache": "de"
   },
   {
-   "t": "heise-Angebot: iX Testing-Guide – Qualitätssicherung in Zeiten von KI",
-   "u": "https://www.heise.de/news/iX-Testing-Guide-Qualitaetssicherung-in-Zeiten-von-KI-11507635.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-06T11:00:00Z",
-   "s": "Testing-Praxis mit, von und ohne KI – das neue Sonderheft von iX developer berichtet über klassische und moderne Testing-Methoden, Know-how und Best Practices.",
+   "t": "(g+) Surveillance Pricing: Wie weit dürfen Händler Preise personalisieren?",
+   "u": "https://www.golem.de/news/surveillance-pricing-wie-weit-duerfen-haendler-preise-personalisieren-2611-214937.html",
+   "q": "Golem",
+   "d": "2026-11-07T09:00:01Z",
+   "s": "Ein Produkt, zwei Kunden, zwei unterschiedliche Preise: Wir erklären, wann Händler in der EU Kundendaten zur Preisgestaltung nutzen dürfen und wo Datenschutz- und Verbraucherrecht Grenzen setzen. Eine…",
    "sprache": "de"
   },
   {
-   "t": "Wenn KI die Mathematik übernimmt: Warum die Fachwelt gespalten ist",
-   "u": "https://t3n.de/news/ki-mathematik-openai-kritik-forschung-debatte-1771252/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Trotz offiziellem Aus: So wirst du Gemini auf deinem Smartphone wieder los – zumindest vorübergehend",
+   "u": "https://t3n.de/news/gemini-wieder-loswerden-google-1768131/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-06T10:55:00Z",
-   "s": "Rund 400 Mathematik-Probleme will OpenAI mithilfe von KI gelöst haben. Das klingt nach großer Hilfe für die Wissenschaft. Tatsächlich sind viele Akademiker aber wenig begeistert. weiterlesen auf t3n.d…",
+   "d": "2026-11-07T09:00:00Z",
+   "s": "Einige Android-User:innen wollen den Google Assistant zurück haben. Da Google den Helfer aber Gemini ausgetauscht hatten, nehmen sie jetzt große Umwege in Kauf, um die alten Zeiten auf ihrem Smartphon…",
    "sprache": "de"
   },
   {
-   "t": "Jason Momoas Synchronsprecher klagt: Netflix verwendet deutsche Stimme unerlaubt für KI-Training",
-   "u": "https://www.golem.de/news/jason-momoas-synchronsprecher-klagt-netflix-verwendet-deutsche-stimme-unerlaubt-fuer-ki-training-2611-214929.html",
+   "t": "Leipzig: Fahnder suchen mutmaßlichen Drohnen-Täter mit KI-Gesicht",
+   "u": "https://www.golem.de/news/leipzig-fahnder-suchen-mutmasslichen-drohnen-taeter-mit-ki-gesicht-2611-214948.html",
    "q": "Golem",
-   "d": "2026-11-06T10:20:02Z",
-   "s": "Netflix hat die Stimme von mindestens einem Synchronsprecher ohne Zustimmung für KI-Training genutzt. Dagegen wehrt sich nun ein Betroffener. (Netflix, Urheberrecht)",
+   "d": "2026-11-07T08:26:02Z",
+   "s": "Nach dem Drohnenanschlag auf den Flughafen Leipzig suchen Generalbundesanwalt und BKA mit einem ungewöhnlichen Mittel nach einer unbekannten Person. (KI, Security)",
    "sprache": "de"
   },
   {
-   "t": "Tech-Aktien besonders betroffen: US-Börse verliert 3,2 Billionen US-Dollar an einem Tag",
-   "u": "https://www.golem.de/news/tech-aktien-besonders-betroffen-us-boerse-verliert-3-2-billionen-us-dollar-an-einem-tag-2611-214918.html",
-   "q": "Golem",
-   "d": "2026-11-06T08:21:02Z",
-   "s": "Anleger sehen den Investitionshöhepunkt bei KI-Technologien erreicht und verkaufen Tech-Aktien im großen Stil. (Börse, KI)",
+   "t": "Sichere Architektur für KI-Agenten im Backoffice",
+   "u": "https://www.heise.de/hintergrund/Sichere-Architektur-fuer-KI-Agenten-im-Backoffice-11514414.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-07T07:21:00Z",
+   "s": "KI-Agenten lassen sich nur sicher in Systeme einbinden, wenn die Architektur für eine Trennung von Daten und Handlungen sorgt.",
    "sprache": "de"
   },
   {
-   "t": "Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M",
-   "u": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/",
+   "t": "Developer-Häppchen: JetBrains ohne eMudhra-Lücke, Ruby nativ in C, VS Code 1.145",
+   "u": "https://www.heise.de/news/Developer-Haeppchen-JetBrains-ohne-eMudhra-Luecke-Ruby-nativ-in-C-VS-Code-1-145-11512904.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-07T07:17:00Z",
+   "s": "Kleine, aber interessante Meldungshäppchen vom News-Buffet zu BoxLang AI, VS Code, Google DevFest, JetBrains, Apache Spark, Devart, Laravel und Spinel.",
+   "sprache": "de"
+  },
+  {
+   "t": "Crusoe sells troubled Wyoming data center project to Google",
+   "u": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
    "q": "TechCrunch AI",
-   "d": "2026-11-06T06:28:32Z",
-   "s": "Clutch, backed by Lightspeed and SignalFire, was last valued at $85 million, according to a source.",
+   "d": "2026-11-07T01:40:28Z",
+   "s": "The deal highlights the challenges of developing massive AI data centers.",
    "sprache": "en"
   },
   {
-   "t": "Greenpeace-Studie: Bau von Riesen-Rechenzentren könnte Wasserverbrauch mehr als verdoppeln",
-   "u": "https://netzpolitik.org/2026/greenpeace-studie-bau-von-riesen-rechenzentren-koennte-wasserverbrauch-mehr-als-verdoppeln/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-06T06:00:32Z",
-   "s": "Baustelle eines Rechenzentrums in Lübbenau, Spreewald, in dem 100.000 KI-Chips mit einer Anschlussleistung von rund 200 Megawatt verbaut werden sollen. – Alle Rechte vorbehalten: IMAGO / Jochen Heckel…",
-   "sprache": "de"
+   "t": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
+   "u": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-06T22:53:46Z",
+   "s": "OpenAI has reportedly raised an additional $11 billion as part of a funding round that hasn't closed yet but is expected to in the coming weeks.",
+   "sprache": "en"
   },
   {
-   "t": "Egyptian and Nigerian English join the Open ASR Leaderboard",
-   "u": "https://huggingface.co/blog/open-asr-leaderboard-liva",
+   "t": "ToyBlocks: A controlled world for robot learning and evaluation",
+   "u": "https://huggingface.co/blog/allenai/toyblocks",
    "q": "Hugging Face",
-   "d": "2026-11-06T00:00:00Z",
+   "d": "2026-11-06T14:00:48Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
-   "u": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-05T22:40:55Z",
-   "s": "Airbnb says its upcoming AI agent will help travelers plan trips, compare options, manage bookings, and get assistance throughout their stay.",
+   "t": "The Download: a humanoid cleans house and Samsung builds for the AI boom",
+   "u": "https://www.technologyreview.com/2026/11/06/1148154/the-download-humanoid-robot-cleaner-samsung-ai-chip-boom/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-06T13:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. I watched a humanoid robot clean my apartment. It felt like a …",
    "sprache": "en"
   }
  ]
