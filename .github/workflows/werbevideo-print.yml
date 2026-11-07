@@ -1,6 +1,6 @@
-name: Werbevideo Print (Selbst gestalten — Gemini-Copy + 3 Schritte)
+name: "Werbevideo Print [GESPERRT: Altworkflow mit Voiceover]"
 
-# Eigenständiger Print-Werbespot-Workflow für LuxeStyle ("Selbst gestalten"):
+# Historischer Print-Werbespot-Workflow für LuxeStyle ("Selbst gestalten"):
 #  - Copy (Hook + Voiceover + 3 On-Screen-Schritte, DE+EN) kommt von Gemini
 #    (automation/gemini_ad_copy.mjs); ohne GEMINI_API_KEY → bewährte Fallback-Texte.
 #  - 3-Schritte werden als zusätzliche Still-Captions in die bestehende Engine
@@ -9,6 +9,9 @@ name: Werbevideo Print (Selbst gestalten — Gemini-Copy + 3 Schritte)
 # Bewusst getrennt von werbevideo.yml (die die Video-Session pflegt).
 #
 # Secrets: GEMINI_API_KEY (Copy, optional) · ELEVENLABS_API_KEY (+ ELEVENLABS_VOICE_ID, optional).
+# Die Besitzerregel vom 07.11.2026 verlangt deutsche Bildschirmtexte ohne gesprochene Sprache,
+# ausschliesslich luxe-premium.wav und keinen kostenpflichtigen Video-Render. Der Job bleibt deshalb
+# vor jedem Checkout, Secret- oder API-Zugriff fail-closed gesperrt.
 
 on:
   workflow_dispatch:
@@ -24,7 +27,7 @@ on:
         default: '0.15'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: werbevideo-print
@@ -32,6 +35,7 @@ concurrency:
 
 jobs:
   render:
+    if: ${{ false }} # erst durch einen neuen, vollständig geprüften Text-only-Master ersetzen
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

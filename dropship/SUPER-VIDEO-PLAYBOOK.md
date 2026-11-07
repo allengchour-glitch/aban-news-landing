@@ -1,4 +1,4 @@
-# 🎬 Super-Video-Playbook — LuxeStyle (für den autonomen Video-Bot)
+# Super-Video-Playbook — LuxeStyle (für den autonomen Video-Bot)
 
 > Praxis-Tipps, WIE man Mode/Dropship-Kurzvideos baut, die wirklich ziehen. Gilt zusätzlich zu
 > `dropship/VIDEO-PRAEFERENZEN.md` (kein Voiceover, on-screen Text, Musik `automation/music/luxe-premium.wav`)
@@ -35,12 +35,11 @@
 - **Safe-Zone TikTok/IG:** untere ~15 % + rechte ~10 % frei lassen (UI/Buttons überdecken Text).
 
 ## 5. Musik & Ton
-- Default **`automation/music/luxe-premium.wav`** (elegant). Für „krasse"/Schmuck-Clips `luxe-hype-pro.mp3`.
-- **Leise/still starten** fällt im Feed auf; Musik leicht ducken, falls Sprache (gibt's hier nicht → kein Problem).
-- Für TikTok zusätzlich eine **`-clean.mp4`-Variante** (tonarm) → User kann dort einen Trend-Sound drüberlegen.
+- Ausschliesslich **`automation/music/luxe-premium.wav`**, nach aktueller Datei-, Hör- und Rechteprüfung.
+- Keine Stimme, kein Voiceover und keine automatisch erzeugte Sprachspur. Der deutsche Bildschirmtext und die Caption tragen die Information.
 
 ## 6. CTA & Caption (pro Kanal unterschiedlich!)
-- **Im Video (letzte 3s):** „luxestyle.ch" + „−10 PROZENT WELCOME10". Ein klares Ziel.
+- **Im Video (letzte 3s):** kurzer, belegbarer CTA wie „Produkt ansehen". Keine ungeprüften Preise, Rabatte oder Lieferangaben.
 - **Caption:**
   - **Instagram:** keine klickbaren Links → **„Link in Bio"**. 3–5 gezielte Hashtags.
   - **Facebook:** Link ok → `luxestyle.ch/products/<handle>`.
@@ -55,8 +54,8 @@ Ziel: **Produkt bleibt exakt, nur sanfte, glaubwürdige Bewegung** (kein Morphin
 - **Mode-spezifisch:** Stoff-Bewegung, Schmuck-Glanz/Funkeln, Lifestyle-Setting wirken; statische Freisteller animieren = langweilig → lieber echte Model-/Lifestyle-Shots (Regel 1).
 
 ## 8. Conversion-Booster (Mode/Dropship)
-- **Preis-Anker** schlägt generisch: „CHF 34.90 — gleicher Look, fairer Preis" (real verifiziert, 20:1 in eurer TikTok-Analyse).
-- Trust dezent: „Schweizer Shop · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe" (ehrlich, kein „Swiss made").
+- Produktdetails nur verwenden, wenn sie unmittelbar vor dem Schnitt am beworbenen Produkt und an der gewählten Variante verifiziert wurden.
+- Versand, Rückgabe, Bestand und Lieferzeit nur nennen, wenn der konkrete Beleg für diesen Inhalt vorliegt.
 - **Nur gut bewertete / echte Lifestyle-Produkte** zeigen (good_products.csv), keine Weiss-Freisteller.
 
 ## 9. Was den Bot „lernen" lässt (Daten → besser)
@@ -64,9 +63,9 @@ Ziel: **Produkt bleibt exakt, nur sanfte, glaubwürdige Bewegung** (kein Morphin
 - Nach dem Posten: `reel-analytics.mjs` → welche Reels liefen → mehr davon (Format/Hook wiederholen).
 
 ## 10. Verboten (zerstört Marke/Reichweite)
-- ❌ Fake-Dringlichkeit („nur heute"), erfundene Zahlen, Angstmache.
-- ❌ Marken-Logos/Promi (IP), uncanny KI-Gesichter, % im drawtext, Emoji im drawtext.
-- ❌ Doppelposts: Generator schreibt nur `status=ready`; **EIN Poster (Video-Session) postet** jede Zeile genau einmal.
+- Fake-Dringlichkeit („nur heute"), erfundene Zahlen, Angstmache.
+- Marken-Logos/Promi (IP), verzerrte KI-Gesichter, `%` im drawtext, Emoji im drawtext.
+- Doppelposts: Generator schreibt nur `status=ready`; **ein Poster** plant jede freigegebene Zeile genau einmal.
 
 ---
-**Kurzformel:** Hook in 3s · 2–4s-Schnitte · großer Text (kein VO) · Preis-Anker · luxe-premium-Musik · klarer CTA · echte Produkte · KI nur für sanfte Bewegung · 1 Poster, kein Doppelpost.
+**Kurzformel:** Hook in 3 s · 2–4-s-Schnitte · grosser Text · keine Stimme · luxe-premium-Musik · klarer CTA · echtes Produkt · ein Poster · kein Doppelpost.

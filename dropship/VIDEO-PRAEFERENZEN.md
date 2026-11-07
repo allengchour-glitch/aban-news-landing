@@ -1,24 +1,20 @@
-# 🎬 Video-Präferenzen — LuxeStyle (FEST, vom User 2026-06-12)
+# Video-Präferenzen — LuxeStyle
 
-> Diese Regeln gelten für ALLE Marken-/Marketing-Videos (Reels, TikTok, FB/IG). Bei jeder neuen
-> Session ZUERST lesen und befolgen. Geändert nur auf ausdrücklichen User-Wunsch.
+> Stand 07.11.2026. Diese Fassung ersetzt frühere Piper-, Mixkit- und Mehrsprachen-Regeln für neue LuxeStyle-Social-Videos.
 
-## Standing Rules
-1. **Stimme: seit 2.11.2026 erlaubt und erwünscht (Besitzer: «mit Hochdeutsch … gesprochene Stimme»), vorher galt «KEIN Voiceover» (12.6.2026).**
-   Hochdeutsch (nicht Mundart), kurze Sätze (≤ 160 Zeichen, ≈ 8 s), keine Preise, Rabatte, Lieferzeiten, Bewertungen oder Versprechen.
-   Stimme lokal und gratis mit Piper (`SPRECHER=…` in `dropship/reel-vorlage/reel_karte.sh`, Vorgabe `de_DE-thorsten-high`, Alternative `de_DE-ramona-low`);
-   die Musik duckt unter der Stimme. On-screen-Text bleibt zusätzlich. Ältere Marken-Videos (`*-text.mp4`) bleiben stumm.
-2. **Musik rotiert, nie zweimal hintereinander dasselbe Stück, und kommt von Mixkit** (Besitzer 2.11.2026: «kann man andere Musik nehmen … nie das gleiche»,
-   danach «die selbst gemachte ist das Schrecklichste … nimm von irgendwo lieber»; löst die Festlegung auf `luxe-premium.wav` ab). Wahl:
-   `dropship/reel-vorlage/musik_waehlen.sh` (fünf Mixkit-Stücke, Lizenz ohne Namensnennung, Log `dropship/reel-vorlage/musik-log.txt`).
-   **Keine selbst synthetisierten `luxe-*`-Stücke mehr in Reels.** Kevin-MacLeod-Stücke (CC BY) nur mit Quellenangabe in der Caption.
-3. **Text statt `%`** in ffmpeg-`drawtext` → „PROZENT" schreiben (sonst unsichtbar). Keine Emoji in `drawtext`
-   (fehlen in DejaVu → leere Kästchen); Emoji nur in Captions.
-4. **Render-Outputs IMMER nach `reels/` kopieren**, bevor man sie sendet/postet (sonst hängt der Download).
-5. **Captions:** IG = „Link in Bio" (keine klickbaren Links); FB = Link ok. Ehrliche Claims (weltweiter
-   Versand 8–14 Tage, kein „Swiss made").
+## Verbindliche Regeln
 
-## Aktiver Stand (2026-06-12)
-- Marken-Video: `reels/luxestyle-brand-{60s,30s}-text.mp4` (kein VO, Premium-Musik) = bevorzugt.
-  Die `-mann.mp4`/`*.mp4`-Stimmen-Varianten existieren noch, werden aber NICHT mehr für neue Posts genutzt.
-- Schmuck-TikTok: `reels/luxestyle-schmuck-tiktok.mp4` (Text + Hype-Beat) → 13.06. auf IG+FB eingeplant.
+1. **Keine gesprochene Sprache und kein Voiceover.** Produktinformation erscheint ausschliesslich als deutscher Text im Bild und in der kanalgerechten Caption. Schweizer Rechtschreibung verwenden.
+2. **Musik nur aus `automation/music/luxe-premium.wav`.** Vor jedem Render müssen Datei, Hörqualität und kommerzielle Bearbeitungs-/Werberechte aktuell geprüft sein. Eine vorhandene Datei oder ein grüner Test belegt die Rechte nicht.
+3. **Zuerst ein professioneller Master.** 1080 × 1920, 30 fps, 15–20 Sekunden, echtes passendes Produktmaterial, kontrollierte Beleuchtung und Farbkorrektur, präziser Schnitt und lesbare Safe-Zones. Ein Storyboard oder Schnittplan ist kein fertiger Film. Einfache Foto-Zoom-Slideshows sind kein Ersatz.
+4. **Produkt bleibt nachweisbar echt.** Form, Farbe, Logo und Funktion müssen zum verifizierten Produkt und zur gewählten Variante passen. Keine erfundenen Eigenschaften, Masse, Materialien, Reviews, Bestands- oder Lieferzeitangaben.
+5. **Nur der geprüfte Master darf in die Planung.** Vor dem Push: Produktzuordnung, kommerzielle Rechte, MP4-Datei und Hash, Bildqualität, Ton, Textlesbarkeit und Plattform-Ausschnitt prüfen. Derselbe Master wird je geeignetem Kanal höchstens einmal veröffentlicht.
+
+## Kanaltexte und Links
+
+- Instagram und TikTok: «Link in Bio» nur verwenden, wenn das aktuelle Profilziel verifiziert ist. Produktadressen in der Caption nicht als klickbar bezeichnen.
+- YouTube Shorts: Produktadressen in der Beschreibung nicht als klickbaren CTA bezeichnen. Erst einen verifizierten Profil-, Related-Video- oder YouTube-Shopping-Link entsprechend benennen. Titel und Made-for-kids-Einstellung müssen vor einer Planung feststehen.
+- Facebook und Threads: Linkdarstellung vor der Planung am jeweiligen Kanal prüfen.
+- Pinterest: nur ein aktuell bestätigtes Board und einen eindeutigen Produktlink verwenden.
+
+Der Metricool-Push bleibt an Shop-, Marken-, Kanal-, Sperrtag-, Doppelpost- und Publikationsregister-Prüfungen gebunden. Die generische Queue sperrt YouTube, solange eigener Titel, Zielgruppe und ein verifizierter Shorts-CTA fehlen.

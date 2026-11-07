@@ -1,7 +1,8 @@
-name: "🎬 Werbevideo erstellen (1 Klick, DE+EN)"
+name: "Werbevideo LuxeStyle [GESPERRT: Altworkflow mit Voiceover/Bezahlrender]"
 
-# EIN Tool, 2 Konzepte: 'fashion' (Katalog) oder 'print' (Selbst gestalten). Generiert optional Veo-Bewegung
-# + rendert die fertige Werbung 9:16 hook-first DE+EN (ElevenLabs-Stimme, sonst Google-Fallback; Musik + Clean).
+# Historischer Workflow. Die Besitzerregel vom 07.11.2026 verlangt deutsche Bildschirmtexte ohne
+# gesprochene Sprache, ausschliesslich luxe-premium.wav und keinen kostenpflichtigen Video-Render.
+# Der Job bleibt deshalb vor jedem Checkout, Secret- oder API-Zugriff fail-closed gesperrt.
 
 on:
   workflow_dispatch:
@@ -45,7 +46,7 @@ on:
         default: ''
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: werbevideo
@@ -53,6 +54,7 @@ concurrency:
 
 jobs:
   make:
+    if: ${{ false }} # erst durch einen neuen, vollständig geprüften Text-only-Master ersetzen
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:

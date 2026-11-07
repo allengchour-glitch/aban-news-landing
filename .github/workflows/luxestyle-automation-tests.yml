@@ -43,6 +43,12 @@ on:
       - 'dropship/cj_enrich_test.mjs'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
+      - 'dropship/reel-vorlage/reel_karte.sh'
+      - 'dropship/reel-vorlage/reel_karte_test.sh'
+      - 'dropship/VIDEO-PRAEFERENZEN.md'
+      - 'dropship/SUPER-VIDEO-PLAYBOOK.md'
+      - '.github/workflows/werbevideo.yml'
+      - '.github/workflows/werbevideo-print.yml'
       - 'dropship/mode-taxonomie-2610/**'
       - 'dropship/pod-auswahl/**'
       - 'dropship/pod-editor-sicherung-2810/**'
@@ -138,6 +144,10 @@ jobs:
             dropship/cj_enrich_test.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
+            dropship/reel-vorlage/reel_karte.sh
+            dropship/reel-vorlage/reel_karte_test.sh
+            .github/workflows/werbevideo.yml
+            .github/workflows/werbevideo-print.yml
             dropship/mode-taxonomie-2610
             dropship/pod-auswahl
             dropship/pod-editor-sicherung-2810
@@ -165,7 +175,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Renderer stays text-only (no rendering or network)
-        run: python3 -B -m unittest -v dropship/ads/test_render_brand_video.py
+        run: |
+          python3 -B -m unittest -v dropship/ads/test_render_brand_video.py
+          bash dropship/reel-vorlage/reel_karte_test.sh
       - name: Syntax
         run: |
           node --check automation/cj_reviews_import.mjs
@@ -217,6 +229,7 @@ jobs:
         run: |
           node automation/lib/shopify_gql_test.mjs
           node automation/lib/shopify_secret_test.mjs
+          node automation/lib/social_media_policy_test.mjs
           node automation/lib/locale_publish_guard_test.mjs
           node --test automation/lib/cart_shipping_progress_test.mjs
           node automation/autopilot/merchant_feed_auth_test.mjs
