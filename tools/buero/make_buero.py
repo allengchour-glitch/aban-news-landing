@@ -19,6 +19,9 @@ import sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+GITHUB_IDS = {"auswahl", "schaufenster", "waechter", "autopilot", "fortura", "printful",
+              "tagesupdate", "paket", "social_meta", "social_pinterest", "social_linkedin"}
+
 CH = ZoneInfo("Europe/Zurich")
 GEM = "2026-11-05T20:27:00Z"  # Messung dieses Durchgangs (GitHub, Shopify, geplante Aufgaben, Sitzungen)
 
@@ -306,6 +309,8 @@ def pflege_einlesen(pfad, rows):
                       "ereignis": "Prüfung " + zeit(gem), "ereignis_iso": gem,
                       "befund": f"{report['seiten']['html_geprueft']} HTML-Seiten geprüft, {findings} Inhaltshinweise, {unklar} Sitemap-URLs lokal nicht prüfbar. Google: {google_status}. IndexNow: {index['status']}. Google-Indexierung und Live-HTTP nicht gemessen. Neue Bürodatei liegt im Lauf als Download bereit."})
             continue
+        if r["id"] not in GITHUB_IDS:
+            continue
         run = report["github"].get(r["id"])
         if not isinstance(run, dict):
             continue  # Andere Quellen werden nicht künstlich frisch gemacht.
@@ -385,7 +390,7 @@ if __name__ == "__main__":
         if not args.pflege_status:
             parser.exit(2, "--nur-github braucht --pflege-status.\n")
         report = json.loads(open(args.pflege_status, encoding="utf-8").read())
-        ROWS = [r for r in ROWS if r["id"] in report["github"] or r["id"] == "seitenpflege"]
+        ROWS = [r for r in ROWS if (r["id"] in GITHUB_IDS and r["id"] in report["github"]) or r["id"] == "seitenpflege"]
     aktionen(ROWS)
     pruefen(ROWS)
     out = args.ausgabe

@@ -128,7 +128,7 @@ class PflegeTest(unittest.TestCase):
         rows = deepcopy(mod.ROWS)
         privat = deepcopy(next(r for r in rows if r["id"] == "offene"))
         report = {"version": 1, "seite": HOST, "gemessen": "2026-11-07T23:00:00Z", "indexnow": {"status": "Trockenlauf"},
-                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "HTTP 403"}}}
+                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "HTTP 403"}, "offene": {"fehler": "Falsche Quellenzuordnung"}}}
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "report.json"
             p.write_text(json.dumps(report))
@@ -139,7 +139,7 @@ class PflegeTest(unittest.TestCase):
 
     def test_export_enthaelt_nur_github_und_keine_bestelldaten(self):
         report = {"version": 1, "seite": HOST, "gemessen": "2026-11-07T23:00:00Z", "indexnow": {"status": "Trockenlauf"},
-                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "Nicht messbar"}}}
+                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "Nicht messbar"}, "offene": {"fehler": "Nicht öffentlich exportieren"}}}
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / "pflege.json").write_text(json.dumps(report))
