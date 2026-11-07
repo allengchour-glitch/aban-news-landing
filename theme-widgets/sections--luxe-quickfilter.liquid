@@ -1,0 +1,41 @@
+{%- comment -%} LuxeStyle Quick-Filter — Kategorie-Pills, gespeist aus dem Hauptmenue (selbst-synchron mit main-menu) {%- endcomment -%}
+{%- assign qf_menu = linklists['main-menu'] -%}
+{%- if qf_menu.links.size > 0 -%}
+  <div class="luxe-qf-wrap color-{{ section.settings.color_scheme }}" style="--qf-pbs: {{ section.settings.padding-block-start }}px; --qf-pbe: {{ section.settings.padding-block-end }}px;">
+    <nav class="luxe-qf page-width" aria-label="Kategorie-Schnellfilter">
+      <a href="{{ routes.all_products_collection_url }}" class="luxe-qf__pill{% if collection.handle == 'all' %} is-active{% endif %}">Alle</a>
+      {%- for link in qf_menu.links -%}
+        {%- if link.links.size > 0 -%}
+          {%- for child in link.links -%}
+            <a href="{{ child.url }}" class="luxe-qf__pill{% if collection.url != blank and child.url == collection.url %} is-active{% endif %}">{{ child.title }}</a>
+          {%- endfor -%}
+        {%- else -%}
+          <a href="{{ link.url }}" class="luxe-qf__pill{% if collection.url != blank and link.url == collection.url %} is-active{% endif %}">{{ link.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+  </div>
+  <style>
+    .luxe-qf-wrap{ padding-block-start: var(--qf-pbs, 10px); padding-block-end: var(--qf-pbe, 4px); }
+    .luxe-qf{ display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .luxe-qf::-webkit-scrollbar{ display:none; }
+    .luxe-qf__pill{ flex:0 0 auto; white-space:nowrap; font-size:13px; line-height:1; padding:9px 15px; border:1px solid rgba(139,115,85,.45); border-radius:999px; text-decoration:none; color:#2c2c2c; background:#ffffff; transition:background .15s, border-color .15s, color .15s; }
+    .luxe-qf__pill:hover{ border-color:#8b7355; background:#f3ece1; }
+    .luxe-qf__pill.is-active{ background:#2c2c2c; color:#faf7f2; border-color:#2c2c2c; }
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Quick-Filter",
+  "tag": "section",
+  "class": "luxe-quickfilter-section",
+  "enabled_on": { "templates": ["collection", "search"] },
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 4 }
+  ],
+  "presets": [ { "name": "Quick-Filter" } ]
+}
+{% endschema %}
