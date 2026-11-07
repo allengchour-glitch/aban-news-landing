@@ -15,6 +15,7 @@ Spalten (alle Zeilen haben alle Spalten):
 """
 import argparse
 import json
+import re
 import sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -269,7 +270,7 @@ def aktionen(rows):
         "cockpitstart": "Cockpit-Anleitung öffnen und den Start auf deinem PC prüfen.",
     }
     for r in rows:
-        link = r["link"] or GH + "/blob/main/docs/KI-BUERO-SEITE.md"
+        link = r.get("letzter_lauf_url") or r["link"] or GH + "/blob/main/docs/KI-BUERO-SEITE.md"
         if r["id"] in ("dev_bauen", "dev_pruefen"):
             link = WF + "entwicklerbuero-tests.yml"
         if r["id"] == "dev_angebot":
@@ -283,6 +284,9 @@ def aktionen(rows):
         if "/actions/workflows/" in link:
             r["aktion_text"] = "Ablauf öffnen"
             r["aktion_hinweis"] = "Falls GitHub einen Handstart anbietet, zusätzlich auf Run workflow klicken."
+        if r.get("letzter_lauf_url"):
+            r["aktion_text"] = "Letzten Lauf öffnen"
+            r["aktion_hinweis"] = "Öffnet direkt den gemessenen Lauf und sein Ergebnis. Startet nichts."
         if r["id"].startswith("social_"):
             r["naechster_schritt"] = "Letzten Lauf und vorbereitete Beiträge prüfen. Ein Handstart dieses Ablaufs kann Beiträge veröffentlichen."
 
@@ -314,6 +318,10 @@ def pflege_einlesen(pfad, rows):
         run = report["github"].get(r["id"])
         if not isinstance(run, dict):
             continue  # Andere Quellen werden nicht künstlich frisch gemacht.
+        r.pop("letzter_lauf_url", None)
+        run_url = run.get("html_url", "")
+        if isinstance(run_url, str) and re.fullmatch(re.escape(GH) + r"/actions/runs/[0-9]+", run_url):
+            r["letzter_lauf_url"] = run_url
         r.update({"gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 30, "aktiv_h": 0,
                   "quelle": "GitHub Actions API, letzter Workflow-Lauf; tagespflege.py"})
         if run.get("fehler"):
