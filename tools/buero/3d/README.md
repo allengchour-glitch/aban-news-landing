@@ -14,7 +14,7 @@ Der Dashboard-Typ lässt als Skript nur **eigene Dateien des Dashboards** zu (je
 | `kb3d-tex.js` | alle Texturen werden zur Laufzeit gezeichnet: Böden, Bildschirminhalte, Himmel, Tafel, Kärtchen, Bildchen, Arbeitsort-Schilder (`T.ortSchild`) |
 | `kb3d-props.js` | Kleinteile aus Quadern (Tischkram, Serverschrank, Paletten, Pflanzen, Kleinmöbel); Rückfall, wenn ein Modell fehlt |
 | `kb3d-model.js` | liest die Modell-Pakete (`window.KB3D_PACK`), rechnet Normalen, Farbpalette, backt Gruppen zusammen |
-| `kb3d-figur.js` | die Menschen aus ihren Teilen: Haltungen tippt, Kaffee, Hand am Kopf, Arme hoch, schläft; `jointLift` hellt Schultern und Ellbogen auf (Wert je Eckpunkt, im Shader `vL`) |
+| `kb3d-figur.js` | eigene runde Charaktere mit gemeinsamen Gelenken: Haltungen tippt, Kaffee, Hand am Kopf, Arme hoch, schläft; `jointLift` hellt Schultern und Ellbogen auf (Wert je Eckpunkt, im Shader `vL`) |
 | `kb3d-world.js` | das Gebäude: Böden, Wände, Fenster, Trennwände, die vier Räume, Förderband, Lieferwagen an der Rampe, je Platz ein Arbeitsort-Schild (`W.ortTex`, Lage nach Blickrichtung) |
 | `kb3d-buero.js` | Zusammenbau: Kamera-Bedienung, Treffer, Beschriftungen, Bildchen, Schleife, Rückfälle (`K.Buero.supported/mount`) |
 | `pack/glb2pack.mjs` | wandelt `models/*.glb` in Pakete um (Liste `LISTE`, je Modell Ziel-Dreiecke) |
@@ -41,3 +41,10 @@ Verkleinert wird je Teil durch Zusammenfassen von Eckpunkten in einem Raster (Ve
 - Nur im Nachbau gesehen (Chromium mit Software-WebGL), nicht im echten Dashboard auf einem Handy. Bildrate und Aufwärmzeit auf echten Handys sind ungemessen.
 - Gemessen im Nachbau: Aufbau rund 150 ms, 437 Zeichenaufrufe und rund 230 000 Dreiecke je Bild, CPU rund 1,3 ms je Bild. Wird es zu langsam (Mittel über 40 Bilder über 42 ms), sinkt die Auflösung auf 1, dann entfallen die Schatten.
 - Die Haltung einer Figur ist aus dem Alter des letzten Ereignisses abgeleitet (wie in 2D), kein Livesignal.
+
+
+## Neue Figuren vom 07.11.2026
+
+Die Figuren werden jetzt in `kb3d-figur.js` als eigene, runde Charaktere gebaut. Sie ersetzen die bisher gezeichneten Menschen aus den `th30_*`-GLB-Modellen. Kopf, Ohren, Nase, Augen mit Iris und Lichtpunkten, Frisuren, Hände, Kleidung und Schuhe entstehen aus glatten Grundkörpern. Drei Grundformen teilen Farbpalette und Gelenkkoordinaten; Haut, Haare und Kleidung variieren je Platz. Brille und Kopfhörer passen zum grösseren Kopf. Vorhandene Haltungen und Gelenkaufhellung bleiben aktiv.
+
+Es kommen keine externen Assets oder Bibliotheken hinzu. Die alten Menschen bleiben im unveränderten Modellpaket enthalten, werden aber nicht mehr für die Figuren geladen. Zum Übertragen genügt das neu gebaute `files/kb3d-code.js`. Die Zahl der gezeichneten Dreiecke steigt; die bestehende Anpassung der Auflösung und Schatten bleibt aktiv. Darstellung und Haltungen wurden im lokalen Chromium-Nachbau angesehen, die Leistung auf einem echten Handy ist nicht gemessen.

@@ -157,3 +157,8 @@ Der Assistent nutzt feste Wortregeln und Antwortvorlagen, kein Sprachmodell. Die
 ### E-Mail-Beantworter Version 0.2.0
 
 Das erste Produkt ist zum E-Mail-Beantworter konkretisiert: `email_antworter.py` liest lokal gespeicherte EML-Dateien und erzeugt ungesendete Antwortdateien. Die Werkstatt führt Produkttests sowie eine EML-Demo aus und nimmt die E-Mail-Dateien ins Lieferpaket auf. Der Bürobericht beschreibt weiter nur diesen lokalen Durchlauf. Ein Postfachanbieter, eine Kontoverbindung und automatischer Versand sind noch nicht eingerichtet.
+
+
+## Neue Charaktermodelle vom 07.11.2026 (GitHub-Entwurf)
+
+Die bisherigen `th30_*`-Menschen werden durch eigene runde Figuren mit grösseren Köpfen, Augen mit Iris und Lichtpunkten, Nase, Ohren, Frisuren, weicheren Armen und Händen ersetzt. Die neuen Modelle verwenden weiterhin die bestehenden Gelenke und alle fünf Statushaltungen. Die Abbildung ist stilisiert, kein Abbild realer Beschäftigter. Quellen und Grenzen: `tools/buero/3d/README.md`, Abschnitt «Neue Figuren». In Claude noch nicht veröffentlicht; die Übertragung braucht das neu gebaute `files/kb3d-code.js`.
