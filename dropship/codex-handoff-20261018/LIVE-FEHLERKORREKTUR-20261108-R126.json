@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_LIVE_FIX_R126_20261108",
+  "checkedAt": "2026-11-08T00:32:25+01:00",
+  "timezone": "Europe/Zurich",
+  "identity": {
+    "shop": "LuxeStyle",
+    "shopDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "metricoolBrandId": 6227837,
+    "metricoolTimezone": "Europe/Zurich",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "facebook": "1049840534888592",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+    "result": "matched_before_writes"
+  },
+  "liveSeo": {
+    "frenchProductPages": {
+      "sampleSize": 2,
+      "paths": [
+        "/fr/products/unterwasche-fur-damen-639300",
+        "/fr/products/elegantes-halterneck-kleid-639800"
+      ],
+      "httpStatus": 200,
+      "declaredLanguage": "fr",
+      "canonical": "self_referencing_fr",
+      "hreflang": "fr_present",
+      "contentLanguage": "de",
+      "robots": "noindex, follow",
+      "customerExperience": "open_mixed_language",
+      "indexingRisk": "temporarily_reduced_not_resolved",
+      "writes": 0
+    },
+    "alreadyFixedNotDuplicated": {
+      "collectionDuplicatePhrase": "absent_on_blitzversand_schweiz",
+      "switzerlandOnlyShippingPhrase": "absent_on_checked_hamster_page",
+      "tiktokPlaceholderLinks": "absent_on_two_checked_product_pages",
+      "claudePr": 2912,
+      "claudePrState": "draft_unmerged"
+    }
+  },
+  "shopifyHandleUpdate": {
+    "productId": "gid://shopify/Product/15402554229121",
+    "variantId": "gid://shopify/ProductVariant/55713378402689",
+    "title": "Top-3-Bestseller Bundle – Slim Wallet, Herrenuhr & ANC-Kopfhörer",
+    "oldHandle": "🦃-black-friday-mega-deal-40-auf-premium-set",
+    "newHandle": "black-friday-mega-deal-40-auf-premium-set",
+    "targetCollisionCheck": "only_target_product",
+    "statusBefore": "DRAFT",
+    "statusAfter": "DRAFT",
+    "price": {
+      "amount": "149.90",
+      "currency": "CHF"
+    },
+    "inventoryPolicy": "CONTINUE",
+    "tracked": false,
+    "quantity": 0,
+    "onlineStoreUrl": null,
+    "updatedAt": "2026-11-07T23:22:04Z",
+    "mutationUserErrors": [],
+    "readBack": "exact_new_handle_and_protected_fields_confirmed",
+    "oldPublicUrlStatus": 404,
+    "newPublicUrlStatus": 404,
+    "publicRedirect": "not_observed_while_product_is_unpublished_draft",
+    "productActivated": false
+  },
+  "metricoolDraftCaptionUpdates": [
+    {
+      "oldId": 420321593,
+      "newId": 420335468,
+      "uuid": "-4472725258033347244",
+      "dateTime": "2026-11-08T17:30:00",
+      "timezone": "Europe/Zurich",
+      "searchTerm": "Kristallspitzen-Set 8-teilig",
+      "rawHttpUrlInText": false,
+      "draft": true,
+      "autoPublish": false,
+      "madeForKids": false,
+      "providerStatus": "PENDING_not_publication_evidence",
+      "mediaIdentity": "same_media_url_as_prewrite_and_readback; sha256_not_recomputed_in_R126"
+    },
+    {
+      "oldId": 420323647,
+      "newId": 420335551,
+      "uuid": "-3553911421145298799",
+      "dateTime": "2026-11-09T21:00:00",
+      "timezone": "Europe/Zurich",
+      "searchTerm": "Ewige Rose mit LED-Licht",
+      "rawHttpUrlInText": false,
+      "draft": true,
+      "autoPublish": false,
+      "madeForKids": false,
+      "providerStatus": "PENDING_not_publication_evidence",
+      "mediaIdentity": "same_media_url_as_prewrite_and_readback; sha256_not_recomputed_in_R126"
+    },
+    {
+      "oldId": 420323653,
+      "newId": 420335619,
+      "uuid": "-7002936161864562103",
+      "dateTime": "2026-11-10T19:30:00",
+      "timezone": "Europe/Zurich",
+      "searchTerm": "3-in-1 Gemüsehobel",
+      "rawHttpUrlInText": false,
+      "draft": true,
+      "autoPublish": false,
+      "madeForKids": false,
+      "providerStatus": "PENDING_not_publication_evidence",
+      "mediaIdentity": "same_media_url_as_prewrite_and_readback; sha256_not_recomputed_in_R126"
+    },
+    {
+      "oldId": 420323659,
+      "newId": 420335708,
+      "uuid": "5681760339256165072",
+      "dateTime": "2026-11-11T19:00:00",
+      "timezone": "Europe/Zurich",
+      "searchTerm": "Wasserwellen-Projektionsleuchte",
+      "rawHttpUrlInText": false,
+      "draft": true,
+      "autoPublish": false,
+      "madeForKids": false,
+      "providerStatus": "PENDING_not_publication_evidence",
+      "mediaIdentity": "same_media_url_as_prewrite_and_readback; sha256_not_recomputed_in_R126"
+    }
+  ],
+  "pipelineGuard": {
+    "branch": "codex/luxestyle-pipeline-guards-20261108",
+    "draftPr": 2914,
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2914",
+    "headCommit": "2ec8a8bc195a487ed5c869dfa31f7a1dc72e13de",
+    "baseCommit": "2ec699b71bc6c2b008dece2ea2ed41c379457f26",
+    "commits": [
+      "e5f34445b4bffad9e730cf3495bf2ef67d7a6a67",
+      "cb2d95f904",
+      "0c493fbe72",
+      "2ec8a8bc19"
+    ],
+    "socialPolicy": "no_spoken_language_or_voiceover; german_swiss_visual_text_and_captions_only; required_music_after_file_hearing_rights_check",
+    "localeGuard": "blocks_new_locale_publication_without_fresh_complete_shop_and_sha_bound_translation_proof",
+    "cartGuard": "separates_public_chf50_from_internal_chf45_after_discount_and_refuses_ambiguous_source_patch",
+    "tests": {
+      "locale": "12/12 passed",
+      "cart": "8/8 passed",
+      "metricoolCheckpoint": "19/19 passed",
+      "socialQueue": "38/38 passed",
+      "other": "video-row, syntax, JSON and diff checks passed"
+    },
+    "merged": false,
+    "deployed": false,
+    "initialCheckState": "UNSTABLE_checks_running",
+    "cloudflarePagesJob": "ran_with_deploy_steps_explicitly_skipped",
+    "deploymentEffect": "none"
+  },
+  "cartBlocker": {
+    "liveExamples": [
+      {
+        "cartChf": "22.90",
+        "displayedRemainingChf": "32.66",
+        "correctRemainingChf": "27.10"
+      },
+      {
+        "cartChf": "27.90",
+        "displayedRemainingChf": "27.66",
+        "correctRemainingChf": "22.10"
+      }
+    ],
+    "publicThresholdChf": 50,
+    "internalAfterDiscountThresholdChf": 45,
+    "candidateTested": true,
+    "liveThemeWrite": false,
+    "blocker": "productive_MAIN_theme_source_absent_from_origin_main"
+  },
+  "selfDesign": {
+    "desktopEditorToCartAndDeChCheckout": "works_in_bounded_test_without_order",
+    "open": [
+      "verified_size_measurements_missing_for_4XL_and_5XL",
+      "generic_size_table_ends_at_3XL",
+      "5.8_oz_non_metric_value",
+      "some_english_ui_and_provider_strings",
+      "delivery_and_production_statements_conflict"
+    ],
+    "inventedMeasurementsMaterialsColorsOrDeliveryClaims": false,
+    "writes": 0
+  },
+  "dailyData": "No Metricool analytics, Klaviyo flow report, Shopify order report or purchase-watch read in R126.",
+  "writes": {
+    "shopifyProductHandleUpdates": 1,
+    "shopifyProductActivations": 0,
+    "metricoolExistingDraftCaptionUpdates": 4,
+    "metricoolNewPosts": 0,
+    "metricoolPublications": 0,
+    "theme": 0,
+    "locale": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "budget": 0,
+    "discount": 0,
+    "shipping": 0,
+    "uploads": 0,
+    "renders": 0,
+    "customerMessages": 0,
+    "orders": 0
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "63143915d014622a103c0f6887bf2b71b1098d32e26354341b79d43ed074a5d8",
+    "PROJEKTGEDAECHTNIS.md": "49efd79c0ff9be99bf6259480a37c6872323c36779cbc4779883182ded58a778",
+    "ARBEITSSTAND.json": "792a4709bf68d437b9b507c1648b06a695dbc793011343107922936af54351fd",
+    "TAGESPROTOKOLL.md": "338019844fd4fcf94edc038822a2ed12137d54638e3270c2189b344076cc54d9"
+  },
+  "sourceCommitBeforeDocumentation": "02fe8841a28454b38e28831d6ee85616c7068657"
+}

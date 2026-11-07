@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 125,
-  "updatedAt": "2026-11-08T00:06:18+01:00",
+  "revision": 126,
+  "updatedAt": "2026-11-08T00:36:53+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14637,5 +14637,52 @@
     "readBack": "30 objects/47 channel states remain. All 11 video objects/16 channel states are drafts with auto-publish off; 19 unchanged photo objects/31 channel states remain active auto-publish. Active counts: Facebook14, Instagram14, TikTok2, Pinterest1, YouTube0, Threads0. Provider PENDING is not publication evidence for drafts.",
     "dailyData": "No new Metricool analytics, Klaviyo flow report, Shopify order report or purchase-watch read on 2026-11-08.",
     "nextStep": "Update only the same existing UUID after a compliant MP4 with product binding, rights, text-only creative, required music and channel-crop approval exists; do not create replacement posts."
+  },
+  "followUpRunR126": {
+    "at": "2026-11-08T00:36:53+01:00",
+    "evidence": "dropship/codex-handoff-20261018/LIVE-FEHLERKORREKTUR-20261108-R126.json",
+    "report": "dropship/codex-handoff-20261018/LIVE-FEHLERKORREKTUR-20261108-R126.md",
+    "identity": "Shopify LuxeStyle/luxestyle.ch/CHF/Switzerland and Metricool brandId6227837/Europe-Zurich with six expected channels matched before writes.",
+    "liveFindings": "Two /fr/ product samples still return German content under fr declarations but noindex, follow is live. Checked collection duplicate, old Switzerland-only shipping phrase and two TikTok placeholder cases are already absent and were not rewritten.",
+    "actualChanges": "One Shopify DRAFT product handle changed from emoji to collision-free ASCII with status and variant fields preserved. Four existing YouTube drafts were updated on stable UUIDs from raw non-clickable product URLs to neutral shop-search CTAs; media URL, title, schedule, madeForKids=false, draft=true and autoPublish=false were preserved and read back.",
+    "pipelineReview": {
+      "draftPr": 2914,
+      "head": "2ec8a8bc195a487ed5c869dfa31f7a1dc72e13de",
+      "localTests": "locale12/12_cart8/8_metricool19/19_social38/38_and_other_checks_passed",
+      "githubInitialState": "UNSTABLE_checks_running",
+      "cloudflarePages": "job_ran_deploy_steps_skipped",
+      "merged": false,
+      "deployed": false
+    },
+    "openBlockers": [
+      "Live cart shipping progress still shows incorrect remaining amounts; tested candidate cannot be applied without the productive MAIN theme source.",
+      "French customer content remains untranslated.",
+      "Self-design needs verified 4XL/5XL measurements and provider-backed language/delivery normalization.",
+      "Professional text-only social master still lacks verified product footage/rights and final allowed-music acceptance."
+    ],
+    "dailyData": "No Metricool analytics, Klaviyo report, Shopify order report or purchase-watch read in R126.",
+    "nextStep": "After review, merge/deploy neither guard nor theme candidate blindly. Obtain the exact productive MAIN theme source for a fresh single-hunk cart diff, and obtain verified provider measurements/translations before content writes. Keep all video drafts blocked until text-only, rights- and music-approved masters exist.",
+    "shopifyProductHandleWrites": 1,
+    "shopifyProductActivations": 0,
+    "metricoolExistingDraftCaptionWrites": 4,
+    "metricoolNewPosts": 0,
+    "metricoolPublications": 0,
+    "shopifyThemeWrites": 0,
+    "localeWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "budgetWrites": 0,
+    "discountWrites": 0,
+    "customerMessages": 0,
+    "orderReads": 0,
+    "orderWrites": 0,
+    "renders": 0,
+    "uploads": 0,
+    "documentationPreWriteSha256": {
+      "README.md": "63143915d014622a103c0f6887bf2b71b1098d32e26354341b79d43ed074a5d8",
+      "PROJEKTGEDAECHTNIS.md": "49efd79c0ff9be99bf6259480a37c6872323c36779cbc4779883182ded58a778",
+      "ARBEITSSTAND.json": "792a4709bf68d437b9b507c1648b06a695dbc793011343107922936af54351fd",
+      "TAGESPROTOKOLL.md": "338019844fd4fcf94edc038822a2ed12137d54638e3270c2189b344076cc54d9"
+    }
   }
 }

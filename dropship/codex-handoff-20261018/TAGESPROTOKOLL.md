@@ -1279,3 +1279,17 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | R125 Grenzen / Daten | Fehlgeschlagene Vorvalidierungen als No-Write eingeordnet; keine Ersatzposts oder Medien erzeugt | Kein Post neu angelegt, kein Upload/Render/Publish. Keine Kennzahl-, Klaviyo-, Bestell- oder Kauf-Watch-Abfrage am neuen Tag. Revision125 dokumentiert |
 
 [LUXESTYLE_R125_20261108] [Social-Audio-Bericht](SOCIAL-AUDIO-PRUEFUNG-20261108-R125.md) · [Maschinenlesbare Belege](SOCIAL-AUDIO-PRUEFUNG-20261108-R125.json). Sprach- und Musikregel auf alle aktuell geplanten MP4-Objekte angewendet; Foto-Planung erhalten.
+
+### R126
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/luxestyle.ch/CHF/CH und Metricool6227837/Europe-Zurich samt sechs Kanälen frisch geprüft; Claude-PR2912 und Live-Befunde abgeglichen | Identitäten passend. Bereits behobene Collection-/Versand-/TikTok-Punkte nicht erneut geschrieben; PR2912 bleibt Draft/ungemergt |
+| Live SEO / Sprache | Zwei `/fr/`-Produktpfade direkt auf Status, Sprache, Canonical, hreflang, Metadaten und Robots geprüft | HTTP200 und `noindex, follow`, aber weiterhin deutsche Inhalte unter `fr`; Indexierungsrisiko vorläufig reduziert, Kundenerlebnis offen. Keine Locale-Änderung |
+| Shopify Handle | Genau Produkt15402554229121 nach Kollisionsprüfung von Emoji- auf ASCII-Handle umgestellt und frisch zurückgelesen | Mutation ohne userErrors; Produkt blieb DRAFT, Variante/CHF149.90/CONTINUE/trackedfalse/Menge0 erhalten. Alte/neue öffentliche URL 404, keine Aktivierung |
+| Metricool YouTube | Vier vorhandene YouTube-Entwürfe auf denselben UUIDs von Roh-URLs auf neutrale Produktsuchtexte geändert und je Datum zurückgelesen | IDs neu 420335468/420335551/420335619/420335708; Medien, Titel, Termine, madeForKidsfalse, drafttrue und autoPublishfalse erhalten. Kein neuer Post/Publish |
+| Pipeline-Guards | Social-, Locale- und Freiversand-Guards in Draft-PR2914 gebündelt und lokal begrenzt getestet | Locale12/12, Cart8/8, Metricool19/19, Social38/38 und weitere Prüfungen grün. GitHub initial UNSTABLE wegen laufender Checks; Cloudflare-Deploy-Schritte skipped. Kein Merge/Deployment |
+| Warenkorb / Selbst gestalten | Live-Freiversandbeispiele und Desktop-Editor bis `de-CH`-Checkout geprüft; getesteten, quellsensitiven Patch-Kandidaten dokumentiert | Falsche CHF-Restbeträge live; MAIN-Theme-Quelle fehlt, kein Write. Editorpfad funktioniert ohne Bestellung; 4XL/5XL-Masse, generische Tabelle, oz-/englische Texte und Lieferwidersprüche bleiben providerabhängig offen |
+| Grenzen | R126-Beleg und Projektgedächtnis fortgeschrieben; Tagesreports nicht wiederholt | 1 Shopify-Handle-Write, 4 Metricool-Draft-Captionupdates. Keine Aktivierung, Neuanlage, Veröffentlichung, Theme-/Locale-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung |
+
+[LUXESTYLE_R126_20261108] [Live-Fehlerkorrektur](LIVE-FEHLERKORREKTUR-20261108-R126.md) · [Maschinenlesbare Belege](LIVE-FEHLERKORREKTUR-20261108-R126.json). Ein enger DRAFT-Handle-Fix, vier bestehende YouTube-Entwurftexte und dauerhafte Review-Guards; offene Live-/Providerblocker klar abgegrenzt.
