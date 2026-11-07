@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { sauber, plan, ASCII_RE } from './apply_handles.mjs';
+let n = 0; const ok = (b, m) => { assert.ok(b, m); n++; };
+ok(sauber('king-queen-tassen-set-👑') === 'king-queen-tassen-set', 'Emoji am Ende');
+ok(sauber('hubby-wifey-mit-herz-❤️') === 'hubby-wifey-mit-herz', 'Emoji mit Variantenselektor');
+ok(sauber('hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten') === 'hardcase-iphone-hulle-mit-magsafe-selbst-gestalten', '®');
+ok(sauber('a--b---c') === 'a-b-c', 'Mehrfachstriche');
+ok(sauber('😀') === '', 'nur Emoji');
+const P = [{ id: '1', handle: 'tasse-👑', title: 'T' }, { id: '2', handle: 'tasse', title: 'T2' }, { id: '3', handle: 'ok-handle', title: 'O' }, { id: '4', handle: 'lampe-💡', title: 'L' }, { id: '5', handle: 'lampe-🔥', title: 'L2' }, { id: '6', handle: '🙂', title: 'leer' }];
+const pl = plan(P);
+ok(pl.length === 4, 'nur Nicht-ASCII-Handles');
+const nach = id => pl.find(e => e.id === id);
+ok(nach('1').neu === 'tasse-2', 'Kollision mit vorhandenem Handle → -2');
+ok(nach('4').neu === 'lampe' && nach('5').neu === 'lampe-2', 'zwei Neue mit gleichem Ergebnis bekommen verschiedene Handles');
+ok(nach('6').neu === null && nach('6').grund === 'leer', 'leerer Handle wird übersprungen');
+ok(pl.filter(e => e.neu).every(e => ASCII_RE.test(e.neu)), 'alle neuen Handles ASCII');
+ok(new Set(pl.filter(e => e.neu).map(e => e.neu)).size === pl.filter(e => e.neu).length, 'keine doppelten Ziele');
+console.log(`apply_handles_test: ${n} Prüfungen bestanden`);
