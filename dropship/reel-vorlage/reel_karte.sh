@@ -32,9 +32,7 @@ check_text TITEL1 "$TITEL1" 16 1; check_text TITEL2 "$TITEL2" 16 0; check_text T
 check_text TEXT_MITTE "$TEXT_MITTE" 18 1; check_text NAME_KURZ "$NAME_KURZ" 36 1; check_text ENDZEILE "$ENDZEILE" 28 1
 for v in FOTO_A FOTO_B FOTO_C; do case "${!v:-}" in https://*) ;; *) fail "$v fehlt oder ist keine https-Adresse" ;; esac; done
 for v in CROP_B CROP_C; do [ -z "${!v:-}" ] || [[ "${!v}" =~ ^[0-9]+:[0-9]+:[0-9]+:[0-9]+$ ]] || fail "$v muss «x:y:breite:hoehe» sein"; done
-for cmd in ffmpeg ffprobe curl sha256sum; do command -v "$cmd" >/dev/null || fail "$cmd fehlt"; done
 font_serif=/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf; font_sans=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-[ -f "$font_serif" ] && [ -f "$font_sans" ] || fail "DejaVu-Schriften fehlen"
 PRODUKT="${PRODUKT:-$NAME_KURZ}"; OUT="${OUT:-./reel-karte.mp4}"; MUSIK="${MUSIK:-luxe-premium.wav}"
 [ "$MUSIK" = luxe-premium.wav ] || fail "MUSIK muss automation/music/luxe-premium.wav sein"
 music_path="$repo_root/automation/music/$MUSIK"; [ -f "$music_path" ] || fail "Musikdatei fehlt: $music_path"
@@ -43,6 +41,10 @@ mstart="${MUSIK_START:-0}"; [[ "$mstart" =~ ^[0-9]+$ ]] || fail "MUSIK_START mus
 mend=$((mstart + 10))
 SPRECHER="${SPRECHER:-}"; [ -z "$SPRECHER" ] || fail "SPRECHER ist gesperrt: Social-Videos verwenden nur Text im Bild und Musik"
 [ "${TROCKEN:-0}" = 1 ] || [ "${MUSIK_RECHTE_BESTAETIGT:-0}" = 1 ] || fail "Vor dem Render MUSIK_RECHTE_BESTAETIGT=1 nach aktueller Datei-/Rechteprüfung setzen"
+if [ "${TROCKEN:-0}" != 1 ]; then
+  for cmd in ffmpeg ffprobe curl sha256sum; do command -v "$cmd" >/dev/null || fail "$cmd fehlt"; done
+  [ -f "$font_serif" ] && [ -f "$font_sans" ] || fail "DejaVu-Schriften fehlen"
+fi
 work="$(mktemp -d)"; trap 'rm -rf -- "$work"' EXIT
 fetch() { local n="$1" url="$2" sha="${3:-}"; curl --fail --location --silent --show-error --max-time 45 --output "$work/$n" "$url"
   [ -z "$sha" ] || printf '%s  %s\n' "$sha" "$work/$n" | sha256sum --check --status || fail "SHA-256 von $n weicht ab"

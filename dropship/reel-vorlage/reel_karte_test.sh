@@ -11,6 +11,10 @@ ok()  { echo "ok:   $1"; }
 bad() { echo "FEHLER: $1"; fehler=$((fehler+1)); }
 laeuft() { bash "$dir/reel_karte.sh" >"$tmp/out.txt" 2>"$tmp/err.txt"; }
 laeuft && ok "Grundfall läuft" || bad "Grundfall: $(cat "$tmp/err.txt")"
+mkdir -p "$tmp/minpath"
+for cmd in dirname mktemp cat rm; do ln -s "$(command -v "$cmd")" "$tmp/minpath/$cmd"; done
+( export PATH="$tmp/minpath"; /bin/bash "$dir/reel_karte.sh" ) >/dev/null 2>"$tmp/err.txt"
+[ $? -eq 0 ] && ok "Trockenlauf braucht keine Renderprogramme" || bad "Trockenlauf verlangt Renderprogramm: $(cat "$tmp/err.txt")"
 grep -q "MUSIK=luxe-premium.wav" "$tmp/out.txt" && ok "feste Markenmusik" || bad "Markenmusik fehlt"
 grep -q "^START=[0-9][0-9]*$" "$tmp/out.txt" && ok "Startsekunde im Trockenlauf" || bad "START fehlt"
 ( export MUSIK_START=7; bash "$dir/reel_karte.sh" ) | grep -q "atrim=start=7:end=17," && ok "Startsekunde 7 kommt im Filter an (atrim=start=7:end=17)" || bad "MUSIK_START erreicht den Filter nicht"
