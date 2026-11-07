@@ -127,7 +127,9 @@ def seiten_pruefen(root):
                 findings.append({"url": url, "problem": problem, "schritt": step})
         if not blockiert and not head.noindex and head.canonical == url:
             inventar[url] = hashlib.sha256(content).hexdigest()
-    return {"sitemap_urls": len(urls), "html_geprueft": len(seen) - sum(f["problem"] == "Datei oder URL nicht prüfbar" for f in findings),
+    unklar = sum(f["problem"] == "Datei oder URL nicht prüfbar" for f in findings)
+    return {"sitemap_urls": len(urls), "html_geprueft": len(seen) - unklar,
+            "nicht_pruefbar": unklar, "inhaltshinweise": len(findings) - unklar,
             "befunde": findings, "inventar": inventar}
 
 
@@ -265,9 +267,9 @@ def lauf(root, out, state_path=None, github=False, melden=False, call=http):
     out.mkdir(parents=True)
     (out / "pflege.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     lines = ["# Tägliche Seitenpflege", "", f"Gemessen: {report['gemessen']}", "",
-             f"HTML geprüft: {scan['html_geprueft']} · Befunde: {len(scan['befunde'])}", "",
+             f"HTML geprüft: {scan['html_geprueft']} · Inhaltshinweise: {scan['inhaltshinweise']} · Lokal nicht prüfbar: {scan['nicht_pruefbar']}", "",
              "IndexNow: " + index["status"], "", "Google: " + google["status"], "", report["grenze"], ""]
-    for item in scan["befunde"][:100]:
+    for item in sorted(scan["befunde"], key=lambda f: f["problem"] == "Datei oder URL nicht prüfbar")[:100]:
         lines.append(f"- {item['url']}: {item['problem']}. Nächster Schritt: {item['schritt']}")
     (out / "bericht.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     if state_path and neu != state:
@@ -291,5 +293,5 @@ if __name__ == "__main__":
         r = lauf(a.root, a.ausgabe, a.state, a.github, a.melden)
     except (ValueError, OSError, ET.ParseError) as e:
         p.exit(2, "Tagespflege abgebrochen: " + type(e).__name__ + "\n")
-    print(json.dumps({"html_geprueft": r["seiten"]["html_geprueft"], "befunde": len(r["seiten"]["befunde"]),
+    print(json.dumps({"html_geprueft": r["seiten"]["html_geprueft"], "inhaltshinweise": r["seiten"]["inhaltshinweise"], "nicht_pruefbar": r["seiten"]["nicht_pruefbar"],
                       "indexnow": r["indexnow"]["status"], "google": r["google"]["status"]}, ensure_ascii=False))
