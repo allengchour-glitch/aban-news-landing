@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'automation/lib/**'
+      - 'dropship/theme-entwurf-2610/sections/luxe-videos.liquid'
+      - 'dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid'
       - 'codex-mods/**'
       - 'AGENTS.md'
       - 'automation/autopilot/shop_pulse.mjs'
@@ -100,6 +102,8 @@ jobs:
         with:
           sparse-checkout: |
             automation/lib
+            dropship/theme-entwurf-2610/sections/luxe-videos.liquid
+            dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid
             automation/*.mjs
             dropship/cj_autopilot.mjs
             codex-mods
@@ -239,6 +243,7 @@ jobs:
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
+          node --test automation/lib/luxe_video_scope_test.mjs
       - name: Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)
         # 28.10.2026: luxe-codex (codex-mods/) und der Läufer automation/codex_zweitmeinung.mjs; die Tests prüfen die Hook-Ausgabe gegen die Schemas aus der Codex-Binärdatei
         # (codex-mods/luxe-codex/test/schemas) und nutzen einen falschen codex. Fake-Zugangsdaten entstehen darin erst zur Laufzeit (GitHub-Push-Protection).

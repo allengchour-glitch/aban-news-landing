@@ -5,6 +5,7 @@
 
   @param {array} [liste] - Einträge {plattform, titel, url, vorschau}, neueste zuerst (aus shop.metafields.luxe.videos)
   @param {string} [erstes_url] - Video, das zuerst stehen soll (z. B. product.metafields.luxe.video_url)
+  @param {boolean} [globale_liste_erlaubt] - nur auf der Startseite true; ohne ausdrückliches true wird liste ignoriert
   @param {string} [ueberschrift] - Titel der Zeile
   @param {number} [maximal] - höchstens so viele Karten (4 bis 12)
   @param {number} [abstand_oben] - Abstand oberhalb der Zeile in px (nur wenn die Zeile erscheint)
@@ -12,7 +13,7 @@
   @param {string} [schluessel] - eindeutige Kennung (Abschnitts-ID) für das Beschriftungs-Attribut
 
   @example
-  {% render 'luxe-videos-zeile', liste: shop.metafields.luxe.videos.value, ueberschrift: 'Videos', maximal: 8, schluessel: section.id %}
+  {% render 'luxe-videos-zeile', liste: shop.metafields.luxe.videos.value, globale_liste_erlaubt: true, ueberschrift: 'Videos', maximal: 8, schluessel: section.id %}
 {%- enddoc -%}
 
 {%- liquid
@@ -23,18 +24,24 @@
   assign lx_anzahl = 0
   assign lx_erste = erstes_url | strip
   assign lx_gesehen = '|'
+  assign lx_globale_liste_erlaubt = false
+  if globale_liste_erlaubt == true
+    assign lx_globale_liste_erlaubt = true
+  endif
 
   capture lx_karten
-    # 1) das Video dieses Produkts zuerst; Titel/Vorschau aus der Liste, wenn dieselbe Adresse dort steht
+    # 1) das explizite Video dieses Produkts zuerst; globale Metadaten nur bei Startseiten-Freigabe
     if lx_erste != blank
       assign lx_e_titel = null
       assign lx_e_bild = null
-      for lx_v in liste
-        if lx_v.url == lx_erste and lx_e_titel == blank
-          assign lx_e_titel = lx_v.titel
-          assign lx_e_bild = lx_v.vorschau
-        endif
-      endfor
+      if lx_globale_liste_erlaubt
+        for lx_v in liste
+          if lx_v.url == lx_erste and lx_e_titel == blank
+            assign lx_e_titel = lx_v.titel
+            assign lx_e_bild = lx_v.vorschau
+          endif
+        endfor
+      endif
       assign lx_e_titel = lx_e_titel | default: 'Video zu diesem Artikel'
       capture lx_eine
         render 'luxe-video-karte', url: lx_erste, titel: lx_e_titel, vorschau: lx_e_bild
@@ -47,25 +54,27 @@
       endif
     endif
 
-    # 2) die Liste, ohne Dubletten und ohne das schon gezeigte Video
-    for lx_v in liste
-      if lx_anzahl >= lx_max
-        break
-      endif
-      assign lx_marke = '|' | append: lx_v.url | append: '|'
-      if lx_gesehen contains lx_marke
-        continue
-      endif
-      capture lx_karte
-        render 'luxe-video-karte', url: lx_v.url, titel: lx_v.titel, vorschau: lx_v.vorschau
-      endcapture
-      assign lx_karte_roh = lx_karte | strip
-      if lx_karte_roh != blank
-        echo lx_karte_roh
-        assign lx_anzahl = lx_anzahl | plus: 1
-        assign lx_gesehen = lx_gesehen | append: lx_v.url | append: '|'
-      endif
-    endfor
+    # 2) die globale Liste nur nach ausdruecklicher Startseiten-Freigabe
+    if lx_globale_liste_erlaubt
+      for lx_v in liste
+        if lx_anzahl >= lx_max
+          break
+        endif
+        assign lx_marke = '|' | append: lx_v.url | append: '|'
+        if lx_gesehen contains lx_marke
+          continue
+        endif
+        capture lx_karte
+          render 'luxe-video-karte', url: lx_v.url, titel: lx_v.titel, vorschau: lx_v.vorschau
+        endcapture
+        assign lx_karte_roh = lx_karte | strip
+        if lx_karte_roh != blank
+          echo lx_karte_roh
+          assign lx_anzahl = lx_anzahl | plus: 1
+          assign lx_gesehen = lx_gesehen | append: lx_v.url | append: '|'
+        endif
+      endfor
+    endif
   endcapture
 -%}
 {%- if lx_anzahl > 0 -%}
