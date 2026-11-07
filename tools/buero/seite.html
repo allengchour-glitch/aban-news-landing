@@ -183,7 +183,7 @@
 .kb3-chip, .kb3-tool { appearance: none; min-height: 2.25rem; padding: var(--cds-pad-xs) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); color: var(--color-fg); font: inherit; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); cursor: pointer; }
 .kb3-chip[aria-pressed="true"], .kb3-tool[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
 .kb3-chip:focus-visible, .kb3-tool:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
-.kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: var(--color-panel); user-select: none; -webkit-user-select: none; }
+.kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: radial-gradient(ellipse at 50% 38%, #e8ede4 0%, #d9e2d9 58%, #c5d1c9 100%); user-select: none; -webkit-user-select: none; }
 .kb3-stage.is-gross { aspect-ratio: 3 / 4; }
 .kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
 .kb3-canvas:active { cursor: grabbing; }
@@ -253,6 +253,7 @@
 .kb .kb-help li b { font-weight: var(--cds-font-weight-medium); }
 .kb-help h3 { margin: var(--cds-gap-md) 0 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
 .kb-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; max-width: 65ch; }
+@media (prefers-color-scheme: dark) { .kb3-stage { background: radial-gradient(ellipse at 50% 38%, #34464a 0%, #25363b 58%, #19292e 100%); } }
 </style>
 
 <div class="kb">

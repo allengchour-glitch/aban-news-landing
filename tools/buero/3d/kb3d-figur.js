@@ -54,12 +54,29 @@
     });
     // Zusatzteile in Modellkoordinaten (Blick nach -z)
     var B = new K.Builder();
-    B.sph(0, 1.612, -0.108, 0.026, 0.008, 0.012, 8, 4, '#7a2f2a');
+    // Ein sanftes Lächeln, mit der Mundmatrix auch für Alarm und Schlaf verformt.
+    for (var j = 0; j < 9; j++) {
+      var x = (j - 4) * 0.005;
+      B.sph(x, 1.608 + 0.007 * (x * x / 0.0004), -0.113, 0.004, 0.003, 0.004, 6, 4, '#80504a');
+    }
     kit.extra.mouth = R.mesh(B);
     B = new K.Builder();
     [-1, 1].forEach(function (s) { B.torus(s * 0.042, 1.672, -0.118, 0.028, 0.0045, 14, 4, '#1c1f27', 0); });
     B.box(0, 1.676, -0.118, 0.03, 0.004, 0.004, '#1c1f27');
     kit.extra.glasses = R.mesh(B);
+    B = new K.Builder();
+    [-1, 1].forEach(function (s) {
+      // Brauen und Lichtpunkte machen den Blick auch ohne Brille lesbar.
+      B.push().t(s * 0.043, 1.702, -0.115).rz(s * -0.12).box(0, 0, 0, 0.035, 0.006, 0.006, '#60483d').pop();
+      B.sph(s * 0.044 - 0.004, 1.679, -0.127, 0.004, 0.004, 0.003, 6, 4, '#fff8ed', 0.4);
+    });
+    kit.extra.face = R.mesh(B);
+    B = new K.Builder();
+    [-1, 1].forEach(function (s) {
+      B.push().t(s * 0.047, 1.45, -0.126).rz(s * 0.36).box(0, 0, 0, 0.065, 0.075, 0.015, '#f5eee2').pop();
+    });
+    for (var j = 0; j < 3; j++) B.sph(0, 1.34 - j * 0.065, -0.14, 0.009, 0.009, 0.005, 6, 4, '#ece5d8');
+    kit.extra.collar = R.mesh(B);
     B = new K.Builder();
     B.push().t(0, 1.69, 0).torus(0, 0, 0, 0.125, 0.009, 18, 4, '#20242e', 0, 0, PI);
     B.pop();
@@ -80,7 +97,7 @@
 
   var HAUT = ['#f3d3b6', '#e2b48c', '#c68a5f', '#8d5b3e'];
   var HAAR = ['#2b1d14', '#5a3a22', '#a8672a', '#d9b45a', '#8f8f93', '#1b1b1f', '#7a2e1c'];
-  var HEMD = ['#4f6fa5', '#5d9a86', '#b8695a', '#8a6fb0', '#c4a24a', '#5a8fa8', '#7d8a99', '#d9748f', '#58a56b'];
+  var HEMD = ['#698ca6', '#81a591', '#c38a73', '#a093b7', '#c5aa74', '#78a6ad', '#8d99a3', '#c896a4', '#93aa77'];
   var HOSE = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var SCHUH = ['#2a2a2e', '#e8e6e0', '#6b4a35', '#1f3a5f'];
 
@@ -197,6 +214,8 @@
       if (i === 0 || i === 1 || i === 3 || i === 5) R.shadow(g[n], m[n]);
     }
     R.draw(ex.mouth, m.mouth);
+    R.draw(ex.face, m.extraHead);
+    if (this.opt.kind !== 'worker') R.draw(ex.collar, m.torso);
     if (this.glasses) R.draw(ex.glasses, m.extraHead);
     if (this.phones) R.draw(ex.phones, m.extraHead);
     if (this.opt.boss) R.draw(ex.tie, m.tie);

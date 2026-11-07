@@ -8,18 +8,18 @@
 
   /* Plätze: Raum, Nummer in der Reihenfolge der Datei, Lage, Blickrichtung (0 = nach Süden, PI = nach Norden), Art der Menschen. */
   var SEATS = [
-    { room: 'Shop', i: 0, x: -5.0, z: 2.35, h: PI, kind: 'single', style: 'oak', chair: '#d9748f', who: 'woman' },
-    { room: 'Shop', i: 1, x: -3.0, z: 2.35, h: PI, kind: 'single', style: 'oak', chair: '#d9748f', who: 'man' },
-    { room: 'Shop', i: 2, x: -1.0, z: 2.35, h: PI, kind: 'dual', style: 'oak', chair: '#d9748f', who: 'woman' },
-    { room: 'Shop', i: 3, x: -5.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#3f9a8c', who: 'man' },
-    { room: 'Shop', i: 4, x: -3.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#3f9a8c', who: 'woman' },
-    { room: 'Shop', i: 5, x: -1.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#3f9a8c', who: 'man' },
-    { room: 'Versand', i: 0, x: 1.7, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#e48a3f', items: false, who: 'worker' },
-    { room: 'Versand', i: 1, x: 3.45, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#e48a3f', items: false, who: 'worker' },
-    { room: 'Versand', i: 2, x: 5.2, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#e48a3f', items: false, who: 'worker' },
-    { room: 'Krypto', i: 0, x: 1.3, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#37c8d8', who: 'man' },
-    { room: 'Krypto', i: 1, x: 3.5, z: -3.0, h: PI, kind: 'tri', style: 'dark', chair: '#37c8d8', who: 'woman' },
-    { room: 'Krypto', i: 2, x: 5.7, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#37c8d8', who: 'man' },
+    { room: 'Shop', i: 0, x: -5.0, z: 2.35, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'woman' },
+    { room: 'Shop', i: 1, x: -3.0, z: 2.35, h: PI, kind: 'single', style: 'oak', chair: '#ba8997', who: 'man' },
+    { room: 'Shop', i: 2, x: -1.0, z: 2.35, h: PI, kind: 'dual', style: 'oak', chair: '#ba8997', who: 'woman' },
+    { room: 'Shop', i: 3, x: -5.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
+    { room: 'Shop', i: 4, x: -3.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'woman' },
+    { room: 'Shop', i: 5, x: -1.0, z: 4.05, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
+    { room: 'Versand', i: 0, x: 1.7, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
+    { room: 'Versand', i: 1, x: 3.45, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
+    { room: 'Versand', i: 2, x: 5.2, z: 1.15, h: 0, kind: 'single', style: 'metal', chair: '#c69563', items: false, who: 'worker' },
+    { room: 'Krypto', i: 0, x: 1.3, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
+    { room: 'Krypto', i: 1, x: 3.5, z: -3.0, h: PI, kind: 'tri', style: 'dark', chair: '#679aa0', who: 'woman' },
+    { room: 'Krypto', i: 2, x: 5.7, z: -3.0, h: PI, kind: 'dual', style: 'dark', chair: '#679aa0', who: 'man' },
     { room: 'Krypto', i: 3, x: 2.4, z: -1.4, h: 0, kind: 'single', style: 'dark', chair: '#8a6fb0', who: 'woman' },
     { room: 'Krypto', i: 4, x: 4.6, z: -1.4, h: 0, kind: 'dual', style: 'dark', chair: '#8a6fb0', who: 'man' },
     { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
@@ -72,10 +72,10 @@
       m.tex = tex(key, make, { repeat: true });
       stat(m);
     }
-    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#a9774b', 1); }, 2);
-    floorMesh(-7, 0, 0, 6, 'fShop', function () { return T.parquet('#dcc298', 2); }, 2);
-    floorMesh(0, 0, 7, 6, 'fVersand', function () { return T.concrete('#b0b4b9', 3); }, 2);
-    floorMesh(0, -6, 7, 0, 'fKrypto', function () { return T.carpet('#232c45', 4); }, 2);
+    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#b18b66', 1); }, 2);
+    floorMesh(-7, 0, 0, 6, 'fShop', function () { return T.parquet('#dfcdae', 2); }, 2);
+    floorMesh(0, 0, 7, 6, 'fVersand', function () { return T.concrete('#c4c7c1', 3); }, 2);
+    floorMesh(0, -6, 7, 0, 'fKrypto', function () { return T.carpet('#354550', 4); }, 2);
 
     /* Sockel, Rampe im Osten und weicher Schatten darunter */
     B.box(0, -0.36, 0, 15.2, 0.7, 13.2, '#3a3f4b');
@@ -93,12 +93,12 @@
       B.blk((x0 + x1) / 2, 0, (z0 + z1) / 2, x1 - x0, WH, z1 - z0, col);
       B.blk((x0 + x1) / 2, WH, (z0 + z1) / 2, x1 - x0 + 0.02, 0.05, z1 - z0 + 0.02, CAP);
     }
-    wall(-7.3, -6.3, 0, -6.0, '#ece4d6'); wall(0, -6.3, 7.3, -6.0, '#252c43');
-    wall(-7.3, -6.0, -7.0, 0, '#ece4d6'); wall(-7.3, 0, -7.0, 6.3, '#f4e3d4');
+    wall(-7.3, -6.3, 0, -6.0, '#ece4d6'); wall(0, -6.3, 7.3, -6.0, '#31444b');
+    wall(-7.3, -6.0, -7.0, 0, '#ece4d6'); wall(-7.3, 0, -7.0, 6.3, '#e7e4d7');
     B.blk(-3.5, 0, -5.985, 7, 0.14, 0.03, '#6b4f3a'); B.blk(3.5, 0, -5.985, 7, 0.14, 0.03, '#171b2b');
     B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#8a6d55');
-    B.box(3.5, 0.3, -5.97, 6.8, 0.04, 0.02, '#37c8d8', 1);
-    B.box(3.5, 3.15, -5.97, 6.8, 0.05, 0.02, '#c053e8', 1);
+    B.box(3.5, 0.3, -5.97, 6.8, 0.04, 0.02, '#8db8b3', 0.6);
+    B.box(3.5, 3.15, -5.97, 6.8, 0.05, 0.02, '#d2ba88', 1);
 
     /* ---------- Trennwände mit Durchgängen ---------- */
     function part(x0, z0, x1, z1, col) {
@@ -285,6 +285,37 @@
     for (j = 0; j < 4; j++) { B.push().t(3.35 + j * 0.34, 0.35, 0.45); P.parcel(B, 0.28, 0.24, 0.3, j % 2 ? C.card : C.cardD); B.pop(); }
     // Lieferwagen an der Laderampe
     place('van', 8.8, 0, 3.0, PI, 0.62);
+
+    /* Innenausbau: warme Holzlamellen, gerahmte Bilder und gepolsterte Zonen.
+       Alle Ergänzungen gehen in das vorhandene statische Netz. */
+    for (j = 0; j < 13; j++) {
+      B.box(-6.975, 0.63, 0.2 + j * 0.46, 0.055, 1.12, 0.045, '#b99b78');
+    }
+    B.box(-6.96, 1.21, 3.0, 0.06, 0.045, 5.9, '#d4bea0');
+    // Gerahmte botanische Miniaturen oberhalb der Shop-Regale.
+    [-0.0, 2.75, 5.5].forEach(function (z, k) {
+      B.box(-6.94, 2.15, z, 0.09, 0.83, 0.63, '#a78661');
+      B.box(-6.88, 2.15, z, 0.025, 0.74, 0.54, '#f5f0e4');
+      B.box(-6.855, 2.12, z, 0.015, 0.44, 0.015, '#78957b');
+      for (var n = 0; n < 4; n++) {
+        B.sph(-6.84, 1.99 + n * 0.09, z + (n % 2 ? 0.07 : -0.07), 0.018, 0.065, 0.105, 8, 5, k % 2 ? '#8caa8c' : '#b2ba8e');
+      }
+    });
+    // Akustikpaneele mit sanfter Messingkante im Technikraum.
+    for (j = 0; j < 8; j++) {
+      B.box(0.35 + j * 0.86, 3.0, -5.94, 0.72, 0.10, 0.07, '#adc0b7');
+    }
+    // Schreibtischunterlagen geben jedem Arbeitsplatz eine klare, ruhige Fläche.
+    SEATS.forEach(function (s) {
+      var sc = s.sc || 1;
+      B.push().t(s.x, 0, s.z).ry(s.h);
+      B.box(0, 0.755 * sc, 0.67 * sc, 0.78 * sc, 0.008, 0.38 * sc, s.room === 'Krypto' ? '#647c7c' : s.room === 'Shop' ? '#b0bdac' : s.boss ? '#50685f' : '#879a99');
+      B.pop();
+    });
+    // Kleine bepflanzte Inseln an den offenen Raumkanten.
+    place('planter', -6.4, 0, 0.45, 0, 0.65);
+    place('planter', 6.55, 0, -0.45, 0, 0.65);
+    P.rug(B, -5.8, -5.25, -1.45, -2.25, '#708d83', '#ddd2b5', 0.016);
 
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
