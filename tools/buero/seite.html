@@ -291,9 +291,9 @@
     <h2 id="kb-arbeiten-titel">Was du jetzt tun kannst</h2>
     <p class="kb-hint">Aufgabe öffnen → Stand prüfen → nächsten Schritt erledigen. Die Links öffnen die passenden Werkzeuge.</p>
     <div class="kb-aufgaben">
-      <article class="kb-aufgabe"><h3>Täglich prüfen und auffrischen</h3><p>Seitenbefunde, GitHub-Laufstände und eine neue Bürodatei in einem Ablauf.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/buero-tagespflege.yml" target="_blank" rel="noopener noreferrer">Tagespflege öffnen ↗</a><small>Noch nicht eingeschaltet: wartet auf Übernahme und Einrichtung. In GitHub ist zum Start ein weiterer Klick nötig.</small></article>
-      <article class="kb-aufgabe"><h3>Google und Bing</h3><p>Sitemap und Indexierung prüfen. Die Suchmaschinen entscheiden, welche Seiten aufgenommen werden.</p><div class="kb-aktionslinks"><a class="kb-aktion" href="https://search.google.com/search-console?resource_id=sc-domain%3Aabannews.com" target="_blank" rel="noopener noreferrer">Google öffnen ↗</a><a class="kb-aktion" href="https://www.bing.com/webmasters/" target="_blank" rel="noopener noreferrer">Bing öffnen ↗</a></div><small>IndexNow-Meldungen brauchen einmalig einen Schlüssel und die öffentliche Schlüsseldatei.</small></article>
-      <article class="kb-aufgabe"><h3>Verbesserungen bearbeiten</h3><p>Konkrete Seitenbefunde ansehen. Der bestehende Handstart kann einfache HTML-Korrekturen anwenden.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/daily-improvement.yml" target="_blank" rel="noopener noreferrer">Verbesserungsablauf öffnen ↗</a><small>Der bestehende Ablauf schreibt bei Handstart HTML und kann einen Telegram-Bericht senden. Sein Zeitplan ist pausiert.</small></article>
+      <article class="kb-aufgabe"><h3>Täglich prüfen und auffrischen</h3><p>Seitenbefunde, GitHub-Laufstände und eine neue Bürodatei in einem Ablauf.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/buero-tagespflege.yml" target="_blank" rel="noopener noreferrer">Tagespflege öffnen</a><small>Noch nicht eingeschaltet: wartet auf Übernahme und Einrichtung. In GitHub ist zum Start ein weiterer Klick nötig.</small></article>
+      <article class="kb-aufgabe"><h3>Google und Bing</h3><p>Sitemap und Indexierung prüfen. Die Suchmaschinen entscheiden, welche Seiten aufgenommen werden.</p><div class="kb-aktionslinks"><a class="kb-aktion" href="https://search.google.com/search-console?resource_id=sc-domain%3Aabannews.com" target="_blank" rel="noopener noreferrer">Google öffnen</a><a class="kb-aktion" href="https://www.bing.com/webmasters/" target="_blank" rel="noopener noreferrer">Bing öffnen</a></div><small>Einmalig einrichten: Google-Dienstkonto für die Sitemap und IndexNow-Schlüssel samt Schlüsseldatei.</small></article>
+      <article class="kb-aufgabe"><h3>Verbesserungen bearbeiten</h3><p>Konkrete Seitenbefunde ansehen. Der bestehende Handstart kann einfache HTML-Korrekturen anwenden.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/daily-improvement.yml" target="_blank" rel="noopener noreferrer">Verbesserungsablauf öffnen</a><small>Der bestehende Ablauf schreibt bei Handstart HTML und kann einen Telegram-Bericht senden. Sein Zeitplan ist pausiert.</small></article>
     </div>
   </section>
 
@@ -482,7 +482,7 @@
       </summary>
       <div class="r-body">
         <p class="r-befund" data-source="buero" data-field="befund">—</p>
-        <div class="r-aufgabe"><b>Nächster Schritt</b><p data-source="buero" data-field="naechster_schritt">Stand am Arbeitsort prüfen.</p><a class="kb-aktion r-aktion" target="_blank" rel="noopener noreferrer" hidden>Aufgabe öffnen ↗</a><small data-source="buero" data-field="aktion_hinweis"></small></div>
+        <div class="r-aufgabe"><b>Nächster Schritt</b><p data-source="buero" data-field="naechster_schritt">Stand am Arbeitsort prüfen.</p><a class="kb-aktion r-aktion" target="_blank" rel="noopener noreferrer" hidden>Aufgabe öffnen</a><small data-source="buero" data-field="aktion_hinweis"></small></div>
         <p class="r-old">Diese Messung ist älter als erlaubt. Bitte neu messen lassen.</p>
         <dl class="r-meta">
           <div><dt>Arbeitsort</dt><dd><b class="r-ort" data-source="buero" data-field="ort">—</b>. <span data-source="buero" data-field="ort_text">—</span></dd></div>
@@ -742,7 +742,7 @@
         var u = new URL(String(r.aktion_url));
         var erlaubt = { 'github.com': true, 'claude.ai': true, 'admin.shopify.com': true, 'search.google.com': true, 'www.bing.com': true };
         if (u.protocol === 'https:' && !u.username && !u.password && !u.port && erlaubt[u.hostname]) {
-          aktion.href = u.href; aktion.textContent = (r.aktion_text || 'Aufgabe öffnen') + ' ↗'; aktion.hidden = false;
+          aktion.href = u.href; aktion.textContent = (r.aktion_text || 'Aufgabe öffnen'); aktion.hidden = false;
         }
       } catch (e) { /* Ohne gültigen Arbeitslink kein Aktionsknopf. */ }
     }

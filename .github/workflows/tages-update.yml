@@ -224,3 +224,4 @@ jobs:
       melden: true
     secrets:
       INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      GOOGLE_SEARCH_CONSOLE_CREDENTIALS: ${{ secrets.GOOGLE_SEARCH_CONSOLE_CREDENTIALS }}

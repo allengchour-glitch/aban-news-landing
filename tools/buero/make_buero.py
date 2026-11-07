@@ -297,10 +297,13 @@ def pflege_einlesen(pfad, rows):
         if r["id"] == "seitenpflege":
             index = report["indexnow"]
             findings = len(report["seiten"]["befunde"])
-            r.update({"status": "gelb" if findings or index["status"] not in ("Keine Änderungen", "URLs gemeldet; Indexierung nicht bestätigt") else "gruen",
+            google = report.get("google", {})
+            google_status = google.get("status", "Nicht eingerichtet") if isinstance(google, dict) else "Nicht eingerichtet"
+            google_ok = google_status in ("Keine Änderungen", "Sitemap gemeldet; Indexierung nicht bestätigt")
+            r.update({"status": "gelb" if findings or not google_ok or index["status"] not in ("Keine Änderungen", "URLs gemeldet; Indexierung nicht bestätigt") else "gruen",
                       "gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 30,
                       "ereignis": "Prüfung " + zeit(gem), "ereignis_iso": gem,
-                      "befund": f"{report['seiten']['html_geprueft']} HTML-Seiten geprüft, {findings} Befunde. IndexNow: {index['status']}. Google-Indexierung und Live-HTTP nicht gemessen. Neue Bürodatei liegt im Lauf als Download bereit."})
+                      "befund": f"{report['seiten']['html_geprueft']} HTML-Seiten geprüft, {findings} Befunde. Google: {google_status}. IndexNow: {index['status']}. Google-Indexierung und Live-HTTP nicht gemessen. Neue Bürodatei liegt im Lauf als Download bereit."})
             continue
         run = report["github"].get(r["id"])
         if not isinstance(run, dict):

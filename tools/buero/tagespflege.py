@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 import re
 from urllib.error import HTTPError, URLError
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urlsplit, quote
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 from urllib.robotparser import RobotFileParser
 import xml.etree.ElementTree as ET
@@ -195,8 +195,56 @@ def indexnow(inventar, state, key, melden=False, limit=100, call=http):
     report["http"] = status
     if status == 200:
         report.update({"status": "URLs gemeldet; Indexierung nicht bestätigt", "gemeldet": len(chosen)})
-        return report, {"host": HOST, "bestaetigt": {**ack, **{u: inventar[u] for u in chosen}}}
+        return report, {**state, "host": HOST, "bestaetigt": {**ack, **{u: inventar[u] for u in chosen}}}
     report["status"] = "Empfangen; Schlüsselprüfung ausstehend" if status == 202 else "Meldung nicht bestätigt; kein automatischer Wiederholungsversuch"
+    return report, state
+
+
+def google_token(credentials_json):
+    # Optionale Abhängigkeit nur im eingerichteten Live-Lauf. Schlüssel bleiben im Speicher.
+    from google.oauth2 import service_account
+    from google.auth.transport.requests import Request as GoogleRequest
+    info = json.loads(credentials_json)
+    # Kein frei wählbarer Token-Endpunkt aus einer fremden JSON-Datei.
+    if info.get("token_uri") != "https://oauth2.googleapis.com/token":
+        raise ValueError("Unbekannter Google-Token-Endpunkt.")
+    credentials = service_account.Credentials.from_service_account_info(
+        info, scopes=["https://www.googleapis.com/auth/webmasters"])
+    credentials.refresh(GoogleRequest())
+    return credentials.token
+
+
+def google_sitemap(sitemap, inventar, state, credentials_json, melden=False, call=http, token_loader=google_token):
+    fingerprint = hashlib.sha256(sitemap + json.dumps(inventar, sort_keys=True).encode()).hexdigest()
+    report = {"status": "Trockenlauf", "gemeldet": False, "indexierung": "Nicht gemessen"}
+    if state.get("host") == HOST and state.get("google_sitemap") == fingerprint:
+        report["status"] = "Keine Änderungen"
+        return report, state
+    if not melden:
+        return report, state
+    if not credentials_json:
+        report["status"] = "Einrichtung fehlt: Google-Dienstkonto mit Search-Console-Zugriff"
+        return report, state
+    # Nur die tatsächlich veröffentlichte Sitemap melden, keine unveröffentlichten Entwürfe.
+    status, body = call("GET", "https://" + HOST + "/sitemap.xml")
+    if status != 200 or body != sitemap:
+        report["status"] = "Veröffentlichte Sitemap nicht bestätigt oder abweichend; nichts gemeldet"
+        return report, state
+    try:
+        token = token_loader(credentials_json)
+        if not token:
+            raise ValueError("Kein Token")
+    except Exception:
+        report["status"] = "Google-Anmeldung fehlgeschlagen; nichts gemeldet"
+        return report, state
+    endpoint = ("https://www.googleapis.com/webmasters/v3/sites/" + quote("sc-domain:" + HOST, safe="")
+                + "/sitemaps/" + quote("https://" + HOST + "/sitemap.xml", safe=""))
+    status, _ = call("PUT", endpoint, {"Authorization": "Bearer " + token})
+    report["http"] = status
+    if status in (200, 204):
+        report.update({"status": "Sitemap gemeldet; Indexierung nicht bestätigt", "gemeldet": True})
+        return report, {**state, "host": HOST, "google_sitemap": fingerprint}
+    report["status"] = "Google-Meldung nicht bestätigt; kein automatischer Wiederholungsversuch"
     return report, state
 
 
@@ -207,16 +255,18 @@ def lauf(root, out, state_path=None, github=False, melden=False, call=http):
     scan = seiten_pruefen(root)
     state = json.loads(Path(state_path).read_text()) if state_path and Path(state_path).exists() else {}
     index, neu = indexnow(scan["inventar"], state, os.environ.get("INDEXNOW_KEY", ""), melden, call=call)
+    google, neu = google_sitemap((root / "sitemap.xml").read_bytes(), scan["inventar"], neu,
+                                 os.environ.get("GOOGLE_SEARCH_CONSOLE_CREDENTIALS", ""), melden, call=call)
     report = {"version": 1, "gemessen": datetime.now(timezone.utc).isoformat(),
               "seite": HOST, "seiten": {k: v for k, v in scan.items() if k != "inventar"},
               "indexnow": index, "github": github_lesen(root, os.environ.get("GITHUB_TOKEN", ""), call) if github else {},
-              "google": "Sitemap in Search Console prüfen; keine allgemeine Google-Indexing-API verwendet.",
+              "google": google,
               "grenze": "Repository-Dateien geprüft. Live-HTTP, Suchindex, Bestellungen, lokale Bots und Claude-Sitzungen nicht neu gemessen."}
     out.mkdir(parents=True)
     (out / "pflege.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     lines = ["# Tägliche Seitenpflege", "", f"Gemessen: {report['gemessen']}", "",
              f"HTML geprüft: {scan['html_geprueft']} · Befunde: {len(scan['befunde'])}", "",
-             "IndexNow: " + index["status"], "", report["google"], "", report["grenze"], ""]
+             "IndexNow: " + index["status"], "", "Google: " + google["status"], "", report["grenze"], ""]
     for item in scan["befunde"][:100]:
         lines.append(f"- {item['url']}: {item['problem']}. Nächster Schritt: {item['schritt']}")
     (out / "bericht.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -242,4 +292,4 @@ if __name__ == "__main__":
     except (ValueError, OSError, ET.ParseError) as e:
         p.exit(2, "Tagespflege abgebrochen: " + type(e).__name__ + "\n")
     print(json.dumps({"html_geprueft": r["seiten"]["html_geprueft"], "befunde": len(r["seiten"]["befunde"]),
-                      "indexnow": r["indexnow"]["status"]}, ensure_ascii=False))
+                      "indexnow": r["indexnow"]["status"], "google": r["google"]["status"]}, ensure_ascii=False))

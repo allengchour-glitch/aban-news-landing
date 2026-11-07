@@ -195,3 +195,12 @@ Für IndexNow braucht der Besitzer `INDEXNOW_KEY` als GitHub-Secret und eine UTF
 HTTP 200 bedeutet «gemeldet», nicht «indexiert». Bei 202 bleibt die Schlüsselprüfung offen, bei Fehlern oder Drosselung wird nichts als bestätigt gespeichert und in diesem Durchgang nicht erneut gesendet. Ohne `--melden` bleibt das Werkzeug ein lokaler Trockenlauf. Meldungen aus dem GitHub-Workflow sind auf `main` beschränkt. Laufstände, IndexNow-Meldung und tatsächliche Indexaufnahme werden getrennt dargestellt.
 
 Quellen: [Google Indexing API](https://developers.google.com/search/apis/indexing-api/v3/quickstart), [Google Sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [IndexNow-Protokoll](https://www.indexnow.org/documentation).
+
+
+### Automatische Google-Sitemap-Meldung
+
+Optional meldet die Pflege die veröffentlichte Sitemap über die Search Console API. Dazu braucht `GOOGLE_SEARCH_CONSOLE_CREDENTIALS` in GitHub den JSON-Zugang eines Dienstkontos mit Zugriff auf die bestätigte Domain-Property `sc-domain:abannews.com`; die Search Console API muss für dessen Projekt aktiviert sein. Der Zugang wird nicht im Quelltext, Frontend oder Bericht gespeichert. Der Workflow installiert bei eingerichtetem Google-Zugang `google-auth[requests]` (Version 2) und erzeugt ein kurzlebiges Token ausschließlich mit dem Webmasters-Scope.
+
+Vor einer Meldung muss die live geladene Sitemap exakt der geprüften Sitemap entsprechen. Bei abweichender Veröffentlichung wird ausgesetzt. Ein Hash aus Sitemap und geprüften HTML-Dateien verhindert absichtliche Wiederholungen ohne Änderung. Ein erfolgreicher PUT an `sitemaps.submit` bestätigt nur die Übermittlung; eine Indexaufnahme wird nicht behauptet. Ohne Zugang, im Trockenlauf oder bei API-Fehlern wird keine erfolgreiche Meldung gespeichert. Die erste Nutzung mit einem echten Dienstkonto ist noch nicht erfolgt.
+
+Referenzen: [Search Console sitemaps.submit](https://developers.google.com/webmaster-tools/v1/sitemaps/submit), [Google Service-Account-Bibliothek](https://google-auth.readthedocs.io/en/latest/reference/google.oauth2.service_account.html).

@@ -6,7 +6,7 @@ import tempfile
 import subprocess
 import sys
 import unittest
-from tagespflege import HOST, WORKFLOWS, github_lesen, indexnow, seiten_pruefen
+from tagespflege import HOST, WORKFLOWS, github_lesen, indexnow, seiten_pruefen, google_sitemap
 
 KEY = "example-key-1234"
 URL = "https://abannews.com/"
@@ -165,6 +165,63 @@ class PflegeTest(unittest.TestCase):
         row = next(r for r in rows if r["id"] == "social_meta")
         self.assertEqual(row["status"], "gelb")
         self.assertEqual(row["aktiv_h"], 0)
+
+
+    def test_google_trockenlauf_ohne_netzzugriff(self):
+        r, state = google_sitemap(b"sitemap", {URL: "h"}, {}, "", call=lambda *a: self.fail("Kein Netz im Trockenlauf"))
+        self.assertEqual(r["status"], "Trockenlauf")
+        self.assertFalse(r["gemeldet"])
+        self.assertEqual(state, {})
+
+    def test_google_zugang_fehlt_kein_netzzugriff(self):
+        r, state = google_sitemap(b"sitemap", {URL: "h"}, {}, "", True, call=lambda *a: self.fail("Kein Netz ohne Zugang"))
+        self.assertIn("Einrichtung fehlt", r["status"])
+        self.assertEqual(state, {})
+
+    def test_google_nur_veroeffentlichte_sitemap(self):
+        calls = []
+        def fake(method, *args):
+            calls.append(method)
+            return 200, b"abweichende Live-Datei"
+        r, state = google_sitemap(b"sitemap", {URL: "h"}, {}, "Demo", True, call=fake,
+                                  token_loader=lambda _: self.fail("Keine Anmeldung vor Live-Prüfung"))
+        self.assertEqual(calls, ["GET"])
+        self.assertFalse(r["gemeldet"])
+        self.assertEqual(state, {})
+
+    def test_google_204_merkt_meldung_aber_nicht_indexierung(self):
+        calls = []
+        def fake(method, url, headers=None, data=None):
+            calls.append((method, url, headers, data))
+            return (200, b"sitemap") if method == "GET" else (204, b"")
+        r, state = google_sitemap(b"sitemap", {URL: "h"}, {"host": HOST, "bestaetigt": {URL: "h"}}, "Demo", True,
+                                  call=fake, token_loader=lambda _: "nur-test-token")
+        self.assertTrue(r["gemeldet"])
+        self.assertEqual(r["indexierung"], "Nicht gemessen")
+        self.assertEqual(calls[1][0], "PUT")
+        self.assertIn("sc-domain%3Aabannews.com", calls[1][1])
+        self.assertIsNone(calls[1][3])
+        self.assertNotIn("nur-test-token", json.dumps(r))
+        self.assertEqual(state["bestaetigt"], {URL: "h"})
+        r2, _ = google_sitemap(b"sitemap", {URL: "h"}, state, "Demo", True,
+                                call=lambda *a: self.fail("Unverändert nicht erneut melden"))
+        self.assertEqual(r2["status"], "Keine Änderungen")
+
+    def test_google_429_keine_bestaetigung_oder_wiederholung(self):
+        calls = []
+        def fake(method, *args):
+            calls.append(method)
+            return (200, b"sitemap") if method == "GET" else (429, b"")
+        r, state = google_sitemap(b"sitemap", {URL: "h"}, {}, "Demo", True, call=fake, token_loader=lambda _: "Demo")
+        self.assertEqual(calls, ["GET", "PUT"])
+        self.assertFalse(r["gemeldet"])
+        self.assertEqual(state, {})
+
+    def test_indexnow_erhaelt_google_bestaetigung(self):
+        def fake(method, *args):
+            return (200, KEY.encode()) if method == "GET" else (200, b"")
+        _, state = indexnow({URL: "h"}, {"host": HOST, "google_sitemap": "hash"}, KEY, True, call=fake)
+        self.assertEqual(state["google_sitemap"], "hash")
 
 
 if __name__ == "__main__":
