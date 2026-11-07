@@ -1,15 +1,24 @@
 {%- comment -%}
   LuxeStyle 26.10.2026: Video-Zeile (TikTok / YouTube).
-  Daten: Shop-Metafeld luxe.videos (Typ json), Liste von {plattform, titel, url, vorschau}, neueste zuerst.
+  Daten auf der Startseite: Shop-Metafeld luxe.videos (Typ json), Liste von
+  {plattform, titel, url, vorschau}, neueste zuerst.
   Gepflegt wird es von automation/videos_zeile.mjs (Trockenlauf Vorgabe, LIVE=1 schreibt).
-  Auf Produktseiten steht zuerst das Video aus product.metafields.luxe.video_url (Typ url), falls vorhanden.
+  Produktseiten lesen ausschliesslich product.metafields.luxe.video_url (Typ url), falls vorhanden.
+  Die globale Shop-Liste wird dort bewusst nicht gelesen oder an das Snippet weitergegeben.
   Ist keine gültige Karte da, gibt der Abschnitt NICHTS aus. Rücknahme: Abschnitt aus templates/index.json und
   templates/product.json entfernen (oder im Theme-Editor löschen).
 {%- endcomment -%}
 
 {%- liquid
-  assign lx_liste = shop.metafields.luxe.videos.value
+  assign lx_liste = null
+  assign lx_globale_liste_erlaubt = false
   assign lx_produkt_video = null
+
+  if request.page_type == 'index' or template.name == 'index'
+    assign lx_liste = shop.metafields.luxe.videos.value
+    assign lx_globale_liste_erlaubt = true
+  endif
+
   if product != blank
     assign lx_produkt_video = product.metafields.luxe.video_url.value
   endif
@@ -19,6 +28,7 @@
     {%- render 'luxe-videos-zeile',
       liste: lx_liste,
       erstes_url: lx_produkt_video,
+      globale_liste_erlaubt: lx_globale_liste_erlaubt,
       ueberschrift: section.settings.heading,
       maximal: section.settings.max_items,
       abstand_oben: section.settings.padding_top,
@@ -39,7 +49,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Zeigt die neuesten TikTok- und YouTube-Videos als Vorschaukarten. Die Liste kommt aus dem Shop-Metafeld luxe.videos und wird mit automation/videos_zeile.mjs gepflegt. Ist die Liste leer, erscheint nichts. Auf Produktseiten steht zuerst das Video aus dem Produkt-Metafeld luxe.video_url."
+      "content": "Auf der Startseite zeigt dieser Abschnitt die globale Liste aus luxe.videos. Auf Produktseiten erscheint ausschliesslich das explizit am Produkt hinterlegte Metafeld luxe.video_url; globale Videos werden dort nie ergänzt. Ist keine passende Quelle vorhanden, erscheint nichts."
     },
     {
       "type": "text",

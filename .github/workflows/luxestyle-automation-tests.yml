@@ -4,14 +4,19 @@ on:
   pull_request:
     paths:
       - 'automation/lib/**'
+      - 'dropship/theme-entwurf-2610/sections/luxe-videos.liquid'
+      - 'dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid'
+      - 'dropship/theme-entwurf-2610/templates/index.json'
       - 'codex-mods/**'
       - 'AGENTS.md'
       - 'automation/autopilot/shop_pulse.mjs'
       - 'automation/autopilot/merchant_feed.mjs'
       - 'automation/autopilot/merchant_feed_auth_test.mjs'
       - 'automation/*.mjs'
+      - 'dropship/cj_autopilot.mjs'
       - 'tools/versandregel*.mjs'
       - 'automation/seo-optimizer.mjs'
+      - '.github/workflows/seo-optimizer.yml'
       - 'automation/metricool-schedule.mjs'
       - 'automation/price_guard.mjs'
       - 'automation/cross_sell.mjs'
@@ -98,7 +103,11 @@ jobs:
         with:
           sparse-checkout: |
             automation/lib
+            dropship/theme-entwurf-2610/sections/luxe-videos.liquid
+            dropship/theme-entwurf-2610/snippets/luxe-videos-zeile.liquid
+            dropship/theme-entwurf-2610/templates/index.json
             automation/*.mjs
+            dropship/cj_autopilot.mjs
             codex-mods
             AGENTS.md
             automation/autopilot/shop_pulse.mjs
@@ -180,6 +189,10 @@ jobs:
           node --check automation/shop_brain.mjs
           node --check automation/video-autopost-meta.mjs
           node --check automation/seo-optimizer.mjs
+          node --check automation/lib/product_handle.mjs
+          node --check automation/cj_gaps_import.mjs
+          node --check automation/cj_trending_import.mjs
+          node --check dropship/cj_autopilot.mjs
           node --check automation/fortura_galaxus_lauf.mjs
           node --check automation/lib/galaxus_treffer.mjs
           node --check automation/fortura_preis_kandidaten.mjs
@@ -210,6 +223,10 @@ jobs:
           node --check codex-mods/luxe-codex/hooks/leitplanken.mjs
           node --check codex-mods/luxe-codex/hooks/schreibzaehler.mjs
           node --check codex-mods/luxe-codex/hooks/kontext.mjs
+      - name: Targeted SEO optimizer regressions (offline, no credentials or network)
+        run: |
+          node --test automation/seo-optimizer_test.mjs
+          node --test automation/lib/product_handle_test.mjs
       - name: Existing helper checks
         run: |
           node automation/lib/shopify_gql_test.mjs
@@ -228,6 +245,7 @@ jobs:
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
+          node --test automation/lib/luxe_video_scope_test.mjs
       - name: Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)
         # 28.10.2026: luxe-codex (codex-mods/) und der Läufer automation/codex_zweitmeinung.mjs; die Tests prüfen die Hook-Ausgabe gegen die Schemas aus der Codex-Binärdatei
         # (codex-mods/luxe-codex/test/schemas) und nutzen einen falschen codex. Fake-Zugangsdaten entstehen darin erst zur Laufzeit (GitHub-Push-Protection).

@@ -6,6 +6,7 @@
  */
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+import { productHandle } from './lib/product_handle.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -204,13 +205,13 @@ for(const p of cand){
  if(!g){console.log('  skip(copy)',nm.slice(0,30));continue;}
  const title=g.title.slice(0,70);
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title} | listed ${p.listedNum}`);total++;continue;}
- const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
+ const handle=productHandle(title,p.pid);
  const html=`${g.html}\n${TRUST}`;
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
  const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
- const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
+ const input={title,handle,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
   tags:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
   productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
