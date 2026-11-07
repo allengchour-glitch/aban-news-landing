@@ -48,3 +48,8 @@ Verkleinert wird je Teil durch Zusammenfassen von Eckpunkten in einem Raster (Ve
 Die Figuren werden jetzt in `kb3d-figur.js` als eigene, runde Charaktere gebaut. Sie ersetzen die bisher gezeichneten Menschen aus den `th30_*`-GLB-Modellen. Kopf, Ohren, Nase, Augen mit Iris und Lichtpunkten, Frisuren, Hände, Kleidung und Schuhe entstehen aus glatten Grundkörpern. Drei Grundformen teilen Farbpalette und Gelenkkoordinaten; Haut, Haare und Kleidung variieren je Platz. Brille und Kopfhörer passen zum grösseren Kopf. Vorhandene Haltungen und Gelenkaufhellung bleiben aktiv.
 
 Es kommen keine externen Assets oder Bibliotheken hinzu. Die alten Menschen bleiben im unveränderten Modellpaket enthalten, werden aber nicht mehr für die Figuren geladen. Zum Übertragen genügt das neu gebaute `files/kb3d-code.js`. Die Zahl der gezeichneten Dreiecke steigt; die bestehende Anpassung der Auflösung und Schatten bleibt aktiv. Darstellung und Haltungen wurden im lokalen Chromium-Nachbau angesehen, die Leistung auf einem echten Handy ist nicht gemessen.
+
+
+### Verfeinerung der Arme
+
+Die Arme verwenden durchgehende, verjüngte Ärmel mit Radiusprofil statt überlagerter Kugeln. Schulter, Ellbogen und Handgelenk sind schmaler; die Hände bestehen aus einer flacheren Handfläche, einem Daumen und angedeuteten Fingern. Ein durchgehend geformter Oberkörper glättet den Schulteranschluss. Die lokale Gelenkaufhellung ist auf höchstens 21 Prozent reduziert, damit die Gelenke keine hellen Kugeln bilden. Gelenkkoordinaten und Haltungen bleiben kompatibel.

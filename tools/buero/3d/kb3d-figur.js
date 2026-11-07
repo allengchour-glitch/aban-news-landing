@@ -18,7 +18,7 @@
     return o;
   };
 
-  /* Schultern und Ellbogen heller (Besitzer 05.11.): Punkte nahe den Gelenken von Rumpf und Armen werden bis +60 % aufgehellt, weich auslaufend.
+  /* Schultern und Ellbogen heller (Besitzer 05.11.): Punkte nahe den Gelenken von Rumpf und Armen werden bis +21 % aufgehellt, weich auslaufend.
      Dort liegen Arme und Schultern sonst im eigenen Schatten und wirken, besonders bei dunkler Haut, fast schwarz. Die Beine bleiben unberührt. */
   function jointLift(group, x, y, z) {
     var arm = group.indexOf('arm') === 0;
@@ -29,7 +29,7 @@
       best = Math.max(best, 1 - sstep(0.05, 0.19, d));
       if (arm) { d = Math.sqrt((x - s * ELX) * (x - s * ELX) + (y - ELY) * (y - ELY) + z * z); best = Math.max(best, 1 - sstep(0.04, 0.16, d)); }
     }
-    return 0.8 * best;
+    return 0.28 * best;
   }
   K.jointLift = jointLift;
 
@@ -52,9 +52,31 @@
       var mesh = R.meshRaw(data, B.n, cast); mesh.pal = true; mesh.palette = model.pal;
       model.groups[name] = mesh; model.cpu[name] = { data: data, n: B.n };
     }
+    // Geschlossene Ärmel aus einem weichen Radiusprofil entlang des Knochens.
+    // Gemeinsame Endpunkte halten die Silhouette auch beim Beugen zusammen.
+    function sleeve(B, ax, ay, bx, by, rings, depth) {
+      depth = depth || 1;
+      var dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy), ux = dy / len, uy = -dx / len;
+      dx /= len; dy /= len;
+      B._c([0, 0, 0], 0); // Farbplatz Shirt
+      function vertex(ring, angle) {
+        var row = rings[ring], prev = rings[Math.max(0, ring - 1)], next = rings[Math.min(rings.length - 1, ring + 1)];
+        var slope = (next[1] - prev[1]) / Math.max(0.0001, next[0] - prev[0]);
+        var c = Math.cos(angle), z = Math.sin(angle), radius = row[1], t = row[0];
+        B._v(ax + dx * t + ux * radius * c, ay + dy * t + uy * radius * c, radius * z * depth,
+             ux * c - dx * slope, uy * c - dy * slope, z / depth, angle / (2 * PI), t / len);
+      }
+      for (var j = 0; j < rings.length - 1; j++) for (var i = 0; i < 16; i++) {
+        var a = i / 16 * 2 * PI, b = (i + 1) / 16 * 2 * PI;
+        vertex(j, a); vertex(j + 1, a); vertex(j + 1, b);
+        vertex(j, a); vertex(j + 1, b); vertex(j, b);
+      }
+    }
+
     group('torso', function (B, sp) {
-      sp(0, 1.23, 0, 0.16, 0.245, 0.115, 0);
-      sp(0, 1.425, 0, 0.18, 0.085, 0.105, 0);
+      sleeve(B, 0, 0.99, 0, 1.51,
+        [[-0.01, 0], [0, 0.12], [0.04, 0.148], [0.17, 0.16], [0.32, 0.16],
+         [0.415, 0.166], [0.455, 0.152], [0.48, 0.11], [0.505, 0.06], [0.52, 0]], 0.65);
       sp(0, 0.99, 0.005, 0.145, 0.10, 0.105, 1);
       sp(0, 1.51, 0, 0.055, 0.07, 0.055, 2);
     });
@@ -90,15 +112,26 @@
     });
     [-1, 1].forEach(function (d) {
       var side = d < 0 ? 'N' : 'P';
-      group('armU' + side, function (B, sp) {
-        B.push().t(d * 0.19, 1.315, 0).rz(-Math.atan2(d * 0.10, -0.31));
-        sp(0, 0, 0, 0.06, 0.18, 0.06, 0); B.pop();
-        sp(d * SHX, SHY, 0, 0.065, 0.065, 0.065, 0);
+      group('armU' + side, function (B) {
+        var len = Math.hypot(ELX - SHX, ELY - SHY);
+        sleeve(B, d * SHX, SHY, d * ELX, ELY,
+          [[-0.025, 0], [-0.015, 0.036], [0, 0.049], [0.045, 0.051],
+           [0.14, 0.046], [len - 0.025, 0.040], [len + 0.012, 0.036], [len + 0.035, 0]]);
       });
       group('armL' + side, function (B, sp) {
-        sp(d * 0.245, 1.045, 0, 0.052, 0.14, 0.052, 0);
-        sp(d * ELX, ELY, 0, 0.055, 0.055, 0.055, 0);
-        sp(d * 0.25, 0.905, -0.005, 0.05, 0.065, 0.043, 2);
+        var wx = d * 0.25, wy = 0.935, len = Math.hypot(wx - d * ELX, wy - ELY);
+        sleeve(B, d * ELX, ELY, wx, wy,
+          [[-0.028, 0], [-0.014, 0.032], [0, 0.040], [0.05, 0.040],
+           [0.13, 0.034], [len - 0.018, 0.029], [len + 0.008, 0.029], [len + 0.018, 0]]);
+        // Schmaleres Handgelenk, flache Handfläche, angedeutete Finger und Daumen.
+        sp(wx, 0.92, 0, 0.026, 0.030, 0.024, 2);
+        sp(wx, 0.883, -0.004, 0.033, 0.040, 0.022, 2);
+        for (var i = 0; i < 4; i++) {
+          var length = i === 1 || i === 2 ? 0.022 : 0.018;
+          sp(wx + (i - 1.5) * 0.014, 0.846, -0.005, 0.0085, length, 0.009, 2);
+        }
+        B.push().t(wx - d * 0.033, 0.884, 0.002).rz(-d * 0.45);
+        sp(0, 0, 0, 0.012, 0.024, 0.013, 2); B.pop();
       });
       group('thigh' + side, function (B, sp) { sp(d * LEGX, 0.73, 0, 0.067, 0.24, 0.075, 1); });
       group('shin' + side, function (B, sp) {

@@ -162,3 +162,8 @@ Das erste Produkt ist zum E-Mail-Beantworter konkretisiert: `email_antworter.py`
 ## Neue Charaktermodelle vom 07.11.2026 (GitHub-Entwurf)
 
 Die bisherigen `th30_*`-Menschen werden durch eigene runde Figuren mit grösseren Köpfen, Augen mit Iris und Lichtpunkten, Nase, Ohren, Frisuren, weicheren Armen und Händen ersetzt. Die neuen Modelle verwenden weiterhin die bestehenden Gelenke und alle fünf Statushaltungen. Die Abbildung ist stilisiert, kein Abbild realer Beschäftigter. Quellen und Grenzen: `tools/buero/3d/README.md`, Abschnitt «Neue Figuren». In Claude noch nicht veröffentlicht; die Übertragung braucht das neu gebaute `files/kb3d-code.js`.
+
+
+### Arme mit weicheren Übergängen
+
+Auf Wunsch des Besitzers sind die kugelartigen Schulter- und Ellbogenteile durch durchgehende Ärmelprofile ersetzt. Die Handfläche ist schmaler und trägt Daumen und angedeutete Finger. Oberkörper und Schulteranschluss sind durchgehend geformt; die Aufhellung der Gelenke beträgt höchstens 21 Prozent. Die fünf Haltungen wurden in der lokalen Modellgalerie angesehen. Aktualisierung wiederum über `files/kb3d-code.js`; keine neue Messung und keine Übertragung nach Claude erfolgt.
