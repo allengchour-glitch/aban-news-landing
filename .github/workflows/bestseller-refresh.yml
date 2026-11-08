@@ -23,6 +23,7 @@ on:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 20   # Zeitlimit statt Standard 360 Minuten (läuft rund 2 Minuten)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

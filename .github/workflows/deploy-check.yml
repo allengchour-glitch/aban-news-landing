@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -25,21 +27,37 @@ jobs:
         with:
           python-version: '3.11'
 
+      # Vorher: jede der 2 726 HTML-Dateien einzeln mit npx (gemessen mindestens 0,4 s je Aufruf, also über 18 Minuten bei 8 Minuten Zeitlimit). Es griff
+      # darum bei JEDEM Lauf, der Job endete als «cancelled», und die danach liegenden, blockierenden Schritte (JSON-LD, launch.html) liefen nie.
+      # Jetzt: nur die geänderten HTML-Dateien, in einem einzigen Aufruf.
+      - name: Geänderte HTML-Dateien bestimmen
+        id: html
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BASE" "$HEAD" -- '*.html' 2>/dev/null || true)
+          else
+            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.html' 2>/dev/null || true)
+          fi
+          printf '%s\n' "$FILES" | grep -v '^$' | head -200 > "$RUNNER_TEMP/html_geaendert.txt" || true
+          N=$(wc -l < "$RUNNER_TEMP/html_geaendert.txt")
+          echo "anzahl=$N" >> "$GITHUB_OUTPUT"
+          echo "Geänderte HTML-Dateien: $N"
+
       - name: Install html-validate
+        if: steps.html.outputs.anzahl != '0'
         run: npm install --no-save html-validate@8
 
-      - name: Validate HTML files
+      - name: Validate HTML files (nur geänderte, nicht blockierend)
+        if: steps.html.outputs.anzahl != '0'
         run: |
           set +e
-          FAIL=0
-          for f in $(find . -maxdepth 3 -name '*.html' -not -path './node_modules/*' -not -path './.git/*'); do
-            echo "::group::html-validate $f"
-            npx html-validate --formatter stylish "$f" || FAIL=1
-            echo "::endgroup::"
-          done
-          if [ "$FAIL" = "1" ]; then
+          xargs -a "$RUNNER_TEMP/html_geaendert.txt" npx html-validate --formatter stylish
+          if [ $? -ne 0 ]; then
             echo "::warning::HTML validation reported issues (non-blocking for now)"
           fi
+          exit 0
 
       - name: Verify no broken internal links
         run: |
