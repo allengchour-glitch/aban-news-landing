@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "revision": 151,
+  "createdAt": "2026-11-08T20:45:45+01:00",
+  "timezone": "Europe/Zurich",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "status": "BLOCKED_UNTIL_ALL_GATES_TRUE",
+  "constraints": {
+    "oneProfessionalMasterOnly": true,
+    "voiceoverAllowed": false,
+    "paidRenderAllowed": false,
+    "customerOrSupplierContactByCodex": false,
+    "onlyMusicPath": "automation/music/luxe-premium.wav",
+    "publishBeforeReleaseGate": false
+  },
+  "currentEvidence": {
+    "shopifyIdentity": {
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "verifiedAt": "2026-11-08T20:42:00+01:00"
+    },
+    "metricoolIdentity": {
+      "brandId": "6227837",
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "verifiedAt": "2026-11-08T20:42:00+01:00"
+    },
+    "shopifyVideo": {
+      "productId": "15521256604033",
+      "videoMediaId": "77496185356679",
+      "filename": "cj-1477820492730732544.mp4",
+      "status": "READY",
+      "durationMilliseconds": 27960,
+      "originalSource": {
+        "width": 960,
+        "height": 540,
+        "fileSize": 3679836,
+        "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57"
+      },
+      "derivedSources": [
+        {
+          "format": "mp4",
+          "width": 852,
+          "height": 480
+        },
+        {
+          "format": "m3u8",
+          "width": 852,
+          "height": 480,
+          "renditionCount": 1
+        }
+      ],
+      "additionalOrHigherResolutionSource": false,
+      "variantVideoAssociation": false,
+      "gate": "NO_GO_NOT_NATIVE_PREMIUM_VERTICAL"
+    },
+    "connectedRightsSearch": {
+      "driveExactPidHits": 0,
+      "driveExactSkuHits": 0,
+      "driveExactFilenameHits": 0,
+      "gmailExactPidHits": 0,
+      "gmailExactSkuHits": 0,
+      "gmailExactFilenameHits": 0,
+      "uuidHit": "SEARCH_CONSOLE_VIDEO_INDEX_SHEET_SD_RENDITION_ONLY",
+      "unrelatedCjSourcingRequest": "CJSPU960265902_FOR_PRODUCT_1633069064715251712_DO_NOT_USE",
+      "scope": "LIMITED_CONNECTED_SCOPE_NOT_PROOF_OF_GLOBAL_ABSENCE",
+      "gate": "NO_GO_MISSING_HASH_BOUND_GRANT"
+    },
+    "publicReelFalseLead": {
+      "url": "https://www.instagram.com/reel/DetXOKeEz6K/",
+      "metricoolId": "399397274",
+      "metricoolUuid": "2789149365522222304",
+      "durationSeconds": 15.124,
+      "actualResolution": "720x1280",
+      "actualFps": 30,
+      "currentCdnSha256": "2d7e437e53cbd9a8038a52bd00ebdc3b99f62562a03128d2ce203bc6185e83d8",
+      "currentCdnBytes": 1173136,
+      "historicalMetricoolExportSha256": "0d59f5cafd8b3b7b6f3562c799239c99faf2b42ce45fbd425c63bb7f0c19c27c",
+      "historicalMetricoolExportResolution": "1080x1920",
+      "historicalMetricoolExportDurationSeconds": 15.0,
+      "instagramCopyrightBlocked": false,
+      "instagramFlagInterpretation": "PLAYBACK_ENFORCEMENT_FLAG_NOT_A_LICENSE_GRANT",
+      "contentStatus": "OLD_15S_EXPORT_NOT_OPEN_18S_MASTER",
+      "visualStatus": "SOFT_PIXELATED_FRAMED_LANDSCAPE_SOURCE",
+      "canonicalMusicMatch": false,
+      "rightsAndMotifBinding": "UNKNOWN_BLOCKED",
+      "reuseAllowed": false
+    }
+  },
+  "productSelection": {
+    "shopifyProductId": "15521256604033",
+    "cjPid": "1477820492730732544",
+    "allowedSelections": {
+      "A": {
+        "variantId": "68122445283719",
+        "sku": "CJSN139239101AZ",
+        "cjVid": "1477826312449167360"
+      },
+      "B": {
+        "variantId": "68122445316487",
+        "sku": "CJSN139239102BY",
+        "cjVid": "1477826312453361664"
+      },
+      "C": {
+        "variantId": "68122445349255",
+        "sku": "CJSN139239103CX",
+        "cjVid": "1477826312453361665"
+      },
+      "D": {
+        "variantId": "68122445382023",
+        "sku": "CJSN139239104DW",
+        "cjVid": "1477826312453361666"
+      },
+      "E": {
+        "variantId": "68122445414791",
+        "sku": "CJSN139239105EV",
+        "cjVid": "1555856292877709312"
+      },
+      "F": {
+        "variantId": "68122445447559",
+        "sku": "CJSN139239106FU",
+        "cjVid": "1555856292877709313"
+      },
+      "G": {
+        "variantId": "68122445480327",
+        "sku": "CJSN139239107GT",
+        "cjVid": "1589496316504322048"
+      }
+    },
+    "selectedLabel": null,
+    "selectedVariantId": null,
+    "selectedSku": null,
+    "selectedCjVid": null,
+    "freshShopifySnapshotSha256": null,
+    "selectionVerified": false
+  },
+  "physicalUnitBinding": {
+    "unitToken": null,
+    "uncutIdentityClip": {
+      "filename": null,
+      "sha256": null,
+      "showsPackageOrModelLabel": false,
+      "showsSelectedSkuOrVid": false,
+      "continuousPanFromLabelToDevice": false,
+      "showsSameDeviceAndMotif": false
+    },
+    "unitMarksReferenceSha256": null,
+    "sameUnitAcrossAllTakes": false,
+    "accepted": false
+  },
+  "takeMinimums": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "orientation": "portrait",
+    "preferredResolution": "2160x3840",
+    "nativeCaptureRequired": true,
+    "opticalFlowAllowed": false,
+    "upscaledSourceAllowed": false,
+    "sourceAudioUsed": false
+  },
+  "takes": [
+    {
+      "id": "P_OPERATION",
+      "minimumSeconds": 7.6,
+      "action": "Bedienung; Hand, Gerät und Kontaktpunkt vollständig sichtbar",
+      "filename": null,
+      "sha256": null,
+      "probe": null,
+      "sameUnitVerified": false,
+      "accepted": false
+    },
+    {
+      "id": "P_PROJECTION",
+      "minimumSeconds": 8.8,
+      "action": "Projektion des exakt gebundenen Motivsets",
+      "filename": null,
+      "sha256": null,
+      "probe": null,
+      "sameUnitVerified": false,
+      "accepted": false
+    },
+    {
+      "id": "P_DETAIL",
+      "minimumSeconds": 5.6,
+      "action": "Gehäuse, Linse, Tasten und Anschluss produktgetreu",
+      "filename": null,
+      "sha256": null,
+      "probe": null,
+      "sameUnitVerified": false,
+      "accepted": false
+    },
+    {
+      "id": "P_HERO",
+      "minimumSeconds": 6.0,
+      "action": "Ruhiger Hero-Take mit CTA-Freiraum",
+      "filename": null,
+      "sha256": null,
+      "probe": null,
+      "sameUnitVerified": false,
+      "accepted": false
+    }
+  ],
+  "rights": {
+    "licensorLegalEntity": null,
+    "licensorAuthorityDocumentSha256": null,
+    "signedGrantSha256": null,
+    "assetScheduleCoversExactTakeHashes": false,
+    "creatorCameraTalentAndPropertyReleasesCovered": false,
+    "editing": false,
+    "cropAndReencode": false,
+    "colourCorrection": false,
+    "audioReplacement": false,
+    "textMusicAndBrandOverlays": false,
+    "commercialShopUse": false,
+    "organicCommercialSocial": false,
+    "paidAdvertising": false,
+    "metricoolUpload": false,
+    "channels": {
+      "instagram": false,
+      "tiktok": false,
+      "youtube": false,
+      "facebook": false,
+      "threads": false,
+      "pinterest": false
+    },
+    "territory": null,
+    "termStart": null,
+    "termEnd": null,
+    "attribution": null,
+    "sublicensing": null,
+    "revocationTerms": null,
+    "allAssetsCovered": false,
+    "accepted": false
+  },
+  "music": {
+    "path": "automation/music/luxe-premium.wav",
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "buildManifestSha256": null,
+    "soundfontNameVersion": null,
+    "soundfontSha256": null,
+    "licenseFileSha256": null,
+    "licenseNoticeBound": false,
+    "commercialRightsAccepted": false,
+    "finalListeningAccepted": false,
+    "finalMixAccepted": false
+  },
+  "render": {
+    "mode": "LOCAL_EXISTING_TOOLCHAIN_ONLY",
+    "durationSeconds": 18.0,
+    "decodedFrames": 540,
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1_CFR",
+    "video": "H264_HIGH_YUV420P",
+    "audio": "ONE_AAC_STEREO_STREAM_CANONICAL_WAV_ONLY",
+    "discardSourceAudio": true,
+    "mp4Path": null,
+    "mp4Sha256": null,
+    "rendered": false
+  },
+  "finalQa": {
+    "productIdentity": false,
+    "samePhysicalUnit": false,
+    "formColourLogoFunction": false,
+    "realActionOnly": false,
+    "cutBoundaryFrames": false,
+    "blackFreezeSignalStats": false,
+    "finalEbuR128AndTruePeak": false,
+    "noVoiceOrForeignEffects": false,
+    "textMaxTwoLinesMin48px": false,
+    "uiSafeZones": false,
+    "handAndContactPointVisible": false,
+    "instagramCrop": false,
+    "tiktokCrop": false,
+    "youtubeShortsCrop": false,
+    "facebookCrop": false,
+    "threadsCrop": false,
+    "pinterestCrop": false,
+    "ownerContentApprovalReference": null,
+    "accepted": false
+  },
+  "publicationPreflight": {
+    "freshProductActive": false,
+    "storefrontBuyable": false,
+    "currentPriceChfVerified": false,
+    "tagsNonEmpty": false,
+    "channelGuardPassed": false,
+    "rightsStillValid": false,
+    "metricoolIdentityVerified": false,
+    "historyAndLedgerChecked": false,
+    "collisionCheckPassed": false,
+    "accepted": false
+  },
+  "gateLogic": {
+    "intakeGo": "ONE_CURRENT_A_TO_G_SELECTION_AND_FRESH_ID_SKU_VID_MATCH_AND_PHYSICAL_UNIT_BINDING_AND_ALL_NATIVE_TAKES_ACCEPTED_AND_EXACT_HASH_RIGHTS_SCHEDULE_AND_RIGHTS_ACCEPTED_AND_MUSIC_PROVENANCE_ACCEPTED",
+    "renderGo": "INTAKE_GO_AND_FREE_LOCAL_RENDER_AND_NO_UPSCALING_OPTICAL_FLOW_SOURCE_AUDIO_OR_VOICEOVER",
+    "releaseGo": "RENDER_GO_AND_REAL_MP4_SHA256_AND_ALL_FINAL_QA_TRUE_AND_OWNER_APPROVAL_REFERENCE",
+    "publishGo": "RELEASE_GO_AND_PUBLICATION_PREFLIGHT_ACCEPTED_AND_FRESH_CHANNEL_METRICOOL_READBACK",
+    "missingFieldPolicy": "MISSING_EMPTY_EXPIRED_OR_CONTRADICTORY_MEANS_BLOCKED"
+  }
+}
