@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "revision": 137,
+  "observedAt": "2026-11-08T11:45:25+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "Luxestyle Selbstgestalten, begrenzte aktuelle Produkt- und Variantenmatrix",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF"
+  },
+  "coverage": {
+    "products": 41,
+    "variants": 398,
+    "activeProducts": 19,
+    "activeVariants": 245,
+    "draftProducts": 22,
+    "draftVariants": 153,
+    "activePrintfulProducts": 18,
+    "activePrintfulVariants": 244,
+    "allExactPrintfulProducts": 39,
+    "allExactPrintfulVariants": 377,
+    "activeMisterDtfProductsBlocked": 1,
+    "activeMisterDtfVariantsBlocked": 1,
+    "draftUnknownProviderProductsBlocked": 1,
+    "draftUnknownProviderVariantsBlocked": 20,
+    "identityConflicts": 0
+  },
+  "printfulCatalogEvidence": {
+    "relevantProductsRead": 45,
+    "variantsRead": 2257,
+    "exactShopifyPrintfulPairs": 377,
+    "catalogManifestSha256": "0634449e2d5a5f7a9791afbeacdf38f1a7229ab3d20c47a0c6721a2e92a07d3d"
+  },
+  "imageAndMockupEvidence": {
+    "allShopifyProductImagesReferenced": true,
+    "dynamicOverlayRightsConfirmedProducts": 0,
+    "exactLocalMockupProducts": 1,
+    "exactLocalMockupVariants": 3,
+    "exactLocalMockupScope": "Keramiktasse, Printful-Modell 19",
+    "contactSheetSha256": "a2a3177d834889f28c6b5592df333d9613ffa7f0efcbd4cae2cb87031cc1818b",
+    "genericOrInventedProjectionAllowed": false
+  },
+  "candidate": {
+    "mode": "local_review_draft_fail_closed",
+    "officialEditor": "Printful Embedded Design Maker",
+    "copiesPrintfulUiOrAssets": false,
+    "deployed": false,
+    "mainThemeChanged": false,
+    "live": false,
+    "edmEligibleProducts": 0,
+    "edmEligibleVariants": 0,
+    "mockupRelaySha256": "b6506a0b815c14b7f3c8b9fdb010d0e4e1c4bbb9d3335a14c2c6b2206d7cd3fa",
+    "nonceServiceSha256": "0d8f4d13891259f99c8f4a9a21ad4eaa465ca7e9b6a150f2e48d535bf1692e64"
+  },
+  "blocker": {
+    "status": "HTTP_403_SCOPE_AND_DOMAIN_ACCESS_NOT_CONFIRMED",
+    "nonceEndpoint": "POST /embedded-designer/nonces",
+    "nonceResult": "HTTP 403, product_templates/write fehlt",
+    "templateEndpoint": "GET /product-templates",
+    "templateResult": "HTTP 403, product_templates/read fehlt",
+    "required": [
+      "legitimer Printful Account-Token im bestehenden Secret-Store",
+      "embedded_designer-Erweiterung",
+      "product_templates/read und product_templates/write",
+      "erlaubte Domain luxestyle.ch",
+      "erfolgreicher frischer redigierter Nonce-Test",
+      "begrenzter Editor-Save- und Bestellpfad-Nachweis"
+    ]
+  },
+  "blocked": {
+    "draftProducts": true,
+    "nonPrintfulProducts": true,
+    "missingVariantPairings": true,
+    "missingImageOrGeometryEvidence": true,
+    "missingEdmAccess": true
+  },
+  "writes": {
+    "shopifyProduct": 0,
+    "theme": 0,
+    "themePublish": 0,
+    "printfulTemplate": 0,
+    "printfulOrder": 0,
+    "cart": 0,
+    "checkout": 0,
+    "order": 0,
+    "deploy": 0,
+    "paidRender": 0
+  },
+  "sourceWorktree": "/workspace/luxestyle-review/printful-original-editor-20261108/dropship/printful-edm-r137"
+}

@@ -1443,3 +1443,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Freigabevorbereitung | MAIN-/Draft-Dateien auf eine enge Publish-Allowlist gegenlesen lassen | Ziel-Allowlist dokumentiert; OptionB blockiert, bis das aktuelle UNPUBLISHED-Asset SHA`9166…` interaktiv mit realem Clean-E2E und proportionaler Draft-Projektionsabnahme geprüft ist. Kein Theme-Publish oder Shopify-Produktobjektwrite |
 
 [LUXESTYLE_R136_20261108] [E2E-/Livebericht](DRUCKVORSCHAU-E2E-20261108-R136.md) · [Maschinenbeleg](DRUCKVORSCHAU-E2E-20261108-R136.json) · [Harness](DRUCKVORSCHAU-E2E-20261108-R136.mjs) · [Laufergebnis](DRUCKVORSCHAU-E2E-20261108-R136-result.json).
+
+### R137
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Produkt-/Variantenmatrix | 41 Selbstgestalten-Produkte mit 398 Shopify-Varianten und 45 relevanten Printful-Modellen/2’257 Varianten begrenzt und deterministisch abgeglichen | 19 ACTIVE/245, davon 18 Printful-Produkte/244 Varianten exakt; 22 DRAFT/153 gesperrt. Insgesamt 39 Printful-Produkte/377 Varianten exakt. Keine Katalogquote ausserhalb dieses Scopes |
+| Provider-Sperren | Nicht-Printful- und ungeklärte Produkte getrennt behandelt | ACTIVE Mister-DTF-Bügeltransfer/1 Variante blockiert; DRAFT-WM-Trikot/20 Varianten ungeklärt und blockiert; keine Aktivierung oder Providerbehauptung |
+| Offizieller Editor | Fail-closed Host-/Nonce-/Manifest-Kandidat für den offiziellen Printful Embedded Design Maker vorbereitet | Lokaler Review-Entwurf, nicht deployt/live. Keine Printful-UI/-Assets kopiert; ohne erfolgreiche Zugangsgates 0 EDM-Freigaben |
+| Bilder / Mockup | Shopify-Bildreferenzen und exakte lokale Druckgeometrie getrennt geprüft | Dynamische Overlay-Rechte 0/41 bestätigt. Nur Keramiktasse Modell 19/3 Varianten lokal mockupfähig; alle übrigen Produkte ausschliesslich über offiziellen EDM vorgesehen |
+| Zugang / Blocker | Aktuellen Printful-Zugriffsbefund in den Sicherheitsvertrag übernommen | Nonce-POST und Templates-GET HTTP 403 wegen fehlendem `product_templates/write/read`; Account-Token mit `embedded_designer`, Domain `luxestyle.ch`, frischer Nonce- und Save-/Bestellpfad-Nachweis fehlen |
+| Grenzen / Dokumentation | R137-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Kein Shopify-/Theme-/MAIN-/Produkt-/Printful-/Cart-/Checkout-/Order-/Social-/Flow-/DNS-/Budget-/Rabatt-/Deploy-/Renderwrite |
+
+[LUXESTYLE_R137_20261108] [Printful-EDM-Bericht](PRINTFUL-ORIGINAL-EDITOR-20261108-R137.md) · [Maschinenbeleg](PRINTFUL-ORIGINAL-EDITOR-20261108-R137.json). Vollständige begrenzte Produkt-/Variantenmatrix und offizieller EDM-Kandidat; produktive Aktivierung durch fehlende Account-Scopes/Domainbindung und Rechte-/E2E-Nachweise gesperrt.

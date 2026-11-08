@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 136,
-  "updatedAt": "2026-11-08T10:52:10+01:00",
+  "revision": 137,
+  "updatedAt": "2026-11-08T11:45:25+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -6038,13 +6038,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r136_unpublished_projection_and_metric_written_firecrawl_draft_200_326g_proportion_real_e2e_open_main_unchanged",
+      "state": "r137_official_edm_candidate_18_active_244_exact_access_403_no_deploy",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R136_CLEAN_PRECORRECTION_E2E_TWO_UNPUBLISHED_WRITES_POSTWRITE_HTTP503_NINE_IMAGE_EVIDENCE",
-      "lastEvidence": "UNPUBLISHED Theme213482963335/Tasse15422823465345: Der reproduzierbare Clean-E2E gegen die damalige v6.3-Datei SHA38e4 ist vollständig grün (3 Varianten, DPI-Sperre, Invalidierungen, Review/Upload-PNG bytegleich87'216B/SHA09f4ac75,2xCloudinary200, genau1CartAdd200, Clear200/Count0, keine Checkout-/Order-Requests, pageErrors=[]). Der Inhaber verwarf danach die unproportionale Produktprojektion. Der lokal korrigierte Kandidat SHA9166 (neue Tassen-Texte Scale0.35; bestehende0.55-Entwürfe/Nicht-Tassen erhalten) bestand12+32+76 Tests,3 Varianten und lokale Bytegleichheit; genau dieses JS-Asset wurde als ein UNPUBLISHED-Write MD5403cbd9f->b6d3eac0 zurückgelesen. Separat wurde der handle-begrenzte metrische Gewichtsdiff325/444/591ml->326/454/536g als genau ein templates/product.json-Write MD56b44c449->2e72a6ad im UNPUBLISHED Theme zurückgelesen. MAIN blieb bei v5/layout/product.json unverändert und ohne v6.3; kein Publish. Ein Header-Write wurde wegen abweichender Draft-Baseline vor Mutation abgebrochen. Ein unabhängiger Firecrawl-Mobile-Fetch erreichte die Draft-URL danach HTTP200, zeigte Preview-Bar «Draft», Vorschau-UI und sichtbar326g. Die interaktive Mockup-Version/Proportion sowie der reale Clean-E2E für SHA9166 bleiben unbekannt; der lokale Vergleich ist Proportionsbeleg. Direkter Screenshot HTTP503, kein Retry. Vier Live-MAIN-, zwei verworfene Draft- und drei lokale Kandidatenbilder sind dauerhaft gesichert. FR bleibt deutscher Fallback; physische Druck-/Bildrechte offen. PR2944 gezielt grün, systemischer Deploy-Timeout; kein Retry/Dispatch/Merge/Deploy.",
+      "belegArt": "R137_COMPLETE_BOUNDED_PRODUCT_VARIANT_MATRIX_OFFICIAL_EDM_CANDIDATE_FAIL_CLOSED",
+      "lastEvidence": "Aktueller begrenzter Abgleich:41 Selbstgestalten-Produkte/398 Shopify-Varianten,19 ACTIVE/245 und22 DRAFT/153. 18 ACTIVE Printful-Produkte/244 Varianten sind über eindeutige Shopify-Variant-GIDs und aktuelle Ownership aus45 relevanten Printful-Modellen/2’257 Varianten exakt zugeordnet. ACTIVE Mister-DTF-Transfer/1 Variante, alle DRAFT und das ungeklärte DRAFT-WM-Trikot/20 Varianten bleiben blockiert. Insgesamt39 Printful-Produkte/377 Varianten exakt, ohne DRAFT-Freigabe. Lokaler fail-closed Kandidat verwendet den offiziellen Printful Embedded Design Maker und kopiert keine Printful-UI/-Assets. Bildidentität ist keine Overlay-Berechtigung:0/41 dynamische Overlay-Rechte bestätigt; nur Keramiktasse Modell19/3 Varianten hat exakte lokale Bild-/Druckgeometrie für den eng begrenzten Mockup-Relay. Nonce-POST und Product-Templates-GET bleiben HTTP403 wegen fehlendem product_templates/write/read; Account-Token mit embedded_designer, Domain luxestyle.ch, frischer Nonce- sowie Save-/Bestellpfad-Nachweis fehlen. EDM-Freigaben0. Kein Deploy, MAIN-/Theme-/Produkt-/Printful-/Cart-/Checkout-/Order-/Renderwrite.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen. Das aktuelle Draft-v6.3-Asset SHA9166 und templates/product.json MD52e72 interaktiv gegenlesen, den vollständigen realen Clean-E2E erneut ausführen und die proportionale Draft-Projektion für375/1440px abnehmen. Bis dahin OptionB blockiert. Danach nur nach ausdrücklicher Inhaberfreigabe auf einer frischen MAIN-Kopie exakt die fünf Option-B-Operationen erwägen: v5 ersetzen, drei v6.3-Assets hinzufügen und nur den41/1-Handle-Hunk für keramik-tasse-selbst-gestalten; niemals ganzen Draft/Layout/Header übernehmen. Der separate Gewichtsdiff, Header, FR, Legacy-CDN und physische Druck-/Bildrechte bleiben eigene Scopes. Vor/nach jedem Write aktuelle Hashes, Allowlist und Readback;0Cart vor Zustimmung, genau1CartAdd+Properties, Clear0, kein Checkout/Order.",
+      "nextAllowedStep": "Token nicht im Chat bereitstellen. Nach sicherer Hinterlegung eines legitimen Printful-Account-Tokens mit embedded_designer und product_templates/read+write im bestehenden Secret-Store sowie bestätigter erlaubter Domain luxestyle.ch genau eine redigierte serverseitige Nonce-Gegenprobe ausführen. Erst nach Erfolg höchstens ein exakt zugeordnetes ACTIVE-Produkt im UNPUBLISHED-Theme mit Produkt-/Variantenauswahl, Druckflächen, Template-Save, Bildern, Mobilansicht und weiterhin nicht ausgelöstem Bestellpfad prüfen. Keine katalogweite Aktivierung, kein MAIN-Publish und keine Wiederverwendung lokaler Fantasieprojektionen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6302,19 +6302,11 @@
         }
       ],
       "blockers": [
-        "Erweiterte UI mit 31 Herstelleransichten liegt im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Dateiwrites/Publikation; noch keine öffentliche Abnahme dieses Stands.",
-        "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
-        "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
-        "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
-        "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung.",
-        "R134: /fr/pages/selbst-gestalten und verlinkte FR-Produkte enthalten deutsche Inhalte; v5 hat nur EN oder DE-Fallback.",
-        "R134: Globale Theme-FAQ/Chatbot enthält weiter7–14/10–20-Tage-Claims; 4XL/5XL-Masse fehlen; Material→Modell braucht Checkout-/Sync-Test.",
-        "R134: Warenkorb-Fortschritt zeigt bei CHF27.90 fälschlich CHF27.66 statt CHF22.10 bis zur öffentlichen CHF-50-Schwelle.",
-        "R134: Draft-PR2940 ist Draft/ungemergt; Pre-deploy und externe Pages liefen bei Schlusslesung, drei bekannte Workers waren rot.",
-        "R136: Korrigierte Projektion SHA9166 und metrisches product.json MD52e72 liegen nur im UNPUBLISHED Theme213482963335. Der grüne Clean-E2E gilt der ersetzten Vor-Korrektur-Datei SHA38e4; Firecrawl bestätigte Draft-Seite/UI/326g, aber interaktive Mockup-Proportion und realer Clean-E2E bleiben unbekannt. OptionB bleibt blockiert.",
-        "R136: Physische Mustertasse, Farb-/Schärfe-/Naht-/Henkel-/Positionsabnahme und separate Katalogbildrechte fehlen; lokale kalibrierte Projektion ist kein physischer Mockup-Beleg.",
-        "R136: MAIN zeigt weiter11.5oz; FR-Seite/Produkt liefern deutsche Fallbacks. Header-Draft-Baseline wich von MAIN ab, daher wurde vor dem Upsert abgebrochen. Gewicht, FR, Header, Claims und Legacy-CDN sind separate Scopes und nicht OptionB.",
-        "R136: PR2944 bleibt Draft/ungemergt; repo-weite Deploy-Checks timeouten systemisch, externe Workers/Pages sind nicht PR-spezifisch. Kein Retry/Dispatch/Merge/Deploy."
+        "Printful Account-Token mit embedded_designer und product_templates/read+write ist nicht im Runtime-Secret-Store verfügbar; aktuelle Endpunkte antworten HTTP403.",
+        "Erlaubte Domain luxestyle.ch, erfolgreicher frischer Nonce-Test und begrenzter EDM-Save-/Bestellpfad sind nicht belegt.",
+        "Dynamische Overlay-/Mockup-Rechte sind für0/41 Produkte bestätigt; exakte lokale Bild-/Druckgeometrie liegt nur für Keramiktasse Modell19/3 Varianten vor.",
+        "Mister-DTF-Transfer ist kein Printful-Produkt; alle DRAFT und das WM-Trikot mit20 ungeklärten Varianten bleiben gesperrt.",
+        "Kandidat ist lokal, nicht deployt, nicht im MAIN-Theme und nicht live."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -6528,6 +6520,16 @@
           "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136-theme-write.json",
           "gitBlobSha": "ca4a352f444155a5c7c9de76770333a1aa242056",
           "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-ORIGINAL-EDITOR-20261108-R137.md",
+          "gitBlobSha": "b9df5e05677353cef1710bdcf1d81f0e5b4e3a25",
+          "readAt": "2026-11-08T11:45:25+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-ORIGINAL-EDITOR-20261108-R137.json",
+          "gitBlobSha": "42720376458de486fa47898f625ea412ba2d7e9f",
+          "readAt": "2026-11-08T11:45:25+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6814,6 +6816,29 @@
             "previousLastEvidenceLength": 795
           },
           "previousLastEvidencePreserved": true
+        },
+        {
+          "revision": 136,
+          "date": "2026-11-08",
+          "state": "r136_unpublished_projection_and_metric_written_firecrawl_draft_200_326g_proportion_real_e2e_open_main_unchanged",
+          "belegArt": "R136_CLEAN_PRECORRECTION_E2E_TWO_UNPUBLISHED_WRITES_POSTWRITE_HTTP503_NINE_IMAGE_EVIDENCE",
+          "lastEvidence": "UNPUBLISHED Theme213482963335/Tasse15422823465345: Der reproduzierbare Clean-E2E gegen die damalige v6.3-Datei SHA38e4 ist vollständig grün (3 Varianten, DPI-Sperre, Invalidierungen, Review/Upload-PNG bytegleich87'216B/SHA09f4ac75,2xCloudinary200, genau1CartAdd200, Clear200/Count0, keine Checkout-/Order-Requests, pageErrors=[]). Der Inhaber verwarf danach die unproportionale Produktprojektion. Der lokal korrigierte Kandidat SHA9166 (neue Tassen-Texte Scale0.35; bestehende0.55-Entwürfe/Nicht-Tassen erhalten) bestand12+32+76 Tests,3 Varianten und lokale Bytegleichheit; genau dieses JS-Asset wurde als ein UNPUBLISHED-Write MD5403cbd9f->b6d3eac0 zurückgelesen. Separat wurde der handle-begrenzte metrische Gewichtsdiff325/444/591ml->326/454/536g als genau ein templates/product.json-Write MD56b44c449->2e72a6ad im UNPUBLISHED Theme zurückgelesen. MAIN blieb bei v5/layout/product.json unverändert und ohne v6.3; kein Publish. Ein Header-Write wurde wegen abweichender Draft-Baseline vor Mutation abgebrochen. Ein unabhängiger Firecrawl-Mobile-Fetch erreichte die Draft-URL danach HTTP200, zeigte Preview-Bar «Draft», Vorschau-UI und sichtbar326g. Die interaktive Mockup-Version/Proportion sowie der reale Clean-E2E für SHA9166 bleiben unbekannt; der lokale Vergleich ist Proportionsbeleg. Direkter Screenshot HTTP503, kein Retry. Vier Live-MAIN-, zwei verworfene Draft- und drei lokale Kandidatenbilder sind dauerhaft gesichert. FR bleibt deutscher Fallback; physische Druck-/Bildrechte offen. PR2944 gezielt grün, systemischer Deploy-Timeout; kein Retry/Dispatch/Merge/Deploy.",
+          "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen. Das aktuelle Draft-v6.3-Asset SHA9166 und templates/product.json MD52e72 interaktiv gegenlesen, den vollständigen realen Clean-E2E erneut ausführen und die proportionale Draft-Projektion für375/1440px abnehmen. Bis dahin OptionB blockiert. Danach nur nach ausdrücklicher Inhaberfreigabe auf einer frischen MAIN-Kopie exakt die fünf Option-B-Operationen erwägen: v5 ersetzen, drei v6.3-Assets hinzufügen und nur den41/1-Handle-Hunk für keramik-tasse-selbst-gestalten; niemals ganzen Draft/Layout/Header übernehmen. Der separate Gewichtsdiff, Header, FR, Legacy-CDN und physische Druck-/Bildrechte bleiben eigene Scopes. Vor/nach jedem Write aktuelle Hashes, Allowlist und Readback;0Cart vor Zustimmung, genau1CartAdd+Properties, Clear0, kein Checkout/Order.",
+          "blockers": [
+            "Erweiterte UI mit 31 Herstelleransichten liegt im UNPUBLISHED-Entwurf 212978598279. Connector blockiert MAIN-Dateiwrites/Publikation; noch keine öffentliche Abnahme dieses Stands.",
+            "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
+            "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
+            "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
+            "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung.",
+            "R134: /fr/pages/selbst-gestalten und verlinkte FR-Produkte enthalten deutsche Inhalte; v5 hat nur EN oder DE-Fallback.",
+            "R134: Globale Theme-FAQ/Chatbot enthält weiter7–14/10–20-Tage-Claims; 4XL/5XL-Masse fehlen; Material→Modell braucht Checkout-/Sync-Test.",
+            "R134: Warenkorb-Fortschritt zeigt bei CHF27.90 fälschlich CHF27.66 statt CHF22.10 bis zur öffentlichen CHF-50-Schwelle.",
+            "R134: Draft-PR2940 ist Draft/ungemergt; Pre-deploy und externe Pages liefen bei Schlusslesung, drei bekannte Workers waren rot.",
+            "R136: Korrigierte Projektion SHA9166 und metrisches product.json MD52e72 liegen nur im UNPUBLISHED Theme213482963335. Der grüne Clean-E2E gilt der ersetzten Vor-Korrektur-Datei SHA38e4; Firecrawl bestätigte Draft-Seite/UI/326g, aber interaktive Mockup-Proportion und realer Clean-E2E bleiben unbekannt. OptionB bleibt blockiert.",
+            "R136: Physische Mustertasse, Farb-/Schärfe-/Naht-/Henkel-/Positionsabnahme und separate Katalogbildrechte fehlen; lokale kalibrierte Projektion ist kein physischer Mockup-Beleg.",
+            "R136: MAIN zeigt weiter11.5oz; FR-Seite/Produkt liefern deutsche Fallbacks. Header-Draft-Baseline wich von MAIN ab, daher wurde vor dem Upsert abgebrochen. Gewicht, FR, Header, Claims und Legacy-CDN sind separate Scopes und nicht OptionB.",
+            "R136: PR2944 bleibt Draft/ungemergt; repo-weite Deploy-Checks timeouten systemisch, externe Workers/Pages sind nicht PR-spezifisch. Kein Retry/Dispatch/Merge/Deploy."
+          ]
         }
       ],
       "liveThemeId": "212971061639",
@@ -10497,6 +10522,17 @@
         "readAt": "2026-11-08T10:52:10+01:00"
       },
       "action": "R136: The clean combined E2E is durably preserved and explicitly scoped to the replaced pre-correction Draft v6.3 SHA38e4. Owner-rejected Draft images remain labelled as rejected before evidence. A proportional candidate SHA9166 and a handle-scoped metric-weight product-template diff were each written once to UNPUBLISHED theme213482963335 and read back; MAIN and publication state stayed unchanged. An independent Firecrawl mobile fetch confirmed Draft HTTP200, preview UI and visible 326g; interactive projection proportion and the real postwrite clean E2E remain open, so option B is blocked. Nine durable images separate four Live MAIN views, two rejected Draft views and three local candidate comparisons. Header mutation aborted before write on baseline mismatch; no product object, cart, checkout, order, publish, merge or deploy."
+    },
+    {
+      "revision": 137,
+      "at": "2026-11-08T11:45:25+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/PRINTFUL-ORIGINAL-EDITOR-20261108-R137.json",
+        "gitBlobSha": "42720376458de486fa47898f625ea412ba2d7e9f",
+        "readAt": "2026-11-08T11:45:25+01:00"
+      },
+      "action": "R137:41 self-design products/398 Shopify variants and45 relevant Printful models/2,257 variants were reconciled. 18 ACTIVE Printful products/244 variants are exact; ACTIVE Mister-DTF transfer,22 DRAFT products and unresolved20-variant World-Cup jersey remain blocked. A local fail-closed official Printful EDM candidate plus mug-only exact mockup relay was prepared. Dynamic overlay rights remain0/41; only mug model19/3 variants has exact local geometry. Current token endpoints remain HTTP403 for missing product_templates scopes/domain-access proof. No deploy, MAIN/theme/product/Printful/cart/checkout/order/render write."
     }
   ],
   "salesGoal": {
@@ -16076,5 +16112,84 @@
       "realCleanE2E": false,
       "directScreenshot": "HTTP503 no retry"
     }
+  },
+  "selfDesignOfficialEditorR137": {
+    "at": "2026-11-08T11:45:25+01:00",
+    "status": "official_printful_edm_candidate_complete_bounded_matrix_access_403_no_deploy",
+    "report": {
+      "path": "dropship/codex-handoff-20261018/PRINTFUL-ORIGINAL-EDITOR-20261108-R137.md",
+      "gitBlobSha": "b9df5e05677353cef1710bdcf1d81f0e5b4e3a25",
+      "sha256": "efe2ef11043f98d59c457df26c2b1791a7658fea1ecad922cfde968d04eeb1e4"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/PRINTFUL-ORIGINAL-EDITOR-20261108-R137.json",
+      "gitBlobSha": "42720376458de486fa47898f625ea412ba2d7e9f",
+      "sha256": "d6414d5c781718a7f58ba62111208603a96c658cc9ea752f452110cbd8181973"
+    },
+    "coverage": {
+      "products": 41,
+      "variants": 398,
+      "activeProducts": 19,
+      "activeVariants": 245,
+      "draftProducts": 22,
+      "draftVariants": 153,
+      "activePrintfulProducts": 18,
+      "activePrintfulVariants": 244,
+      "allExactPrintfulProducts": 39,
+      "allExactPrintfulVariants": 377,
+      "activeMisterDtfProductsBlocked": 1,
+      "activeMisterDtfVariantsBlocked": 1,
+      "draftUnknownProviderProductsBlocked": 1,
+      "draftUnknownProviderVariantsBlocked": 20,
+      "printfulModelsRead": 45,
+      "printfulVariantsRead": 2257,
+      "identityConflicts": 0
+    },
+    "candidate": {
+      "editor": "official Printful Embedded Design Maker",
+      "mode": "local fail-closed review draft",
+      "copiesPrintfulUiOrAssets": false,
+      "deployed": false,
+      "mainThemeChanged": false,
+      "live": false,
+      "edmEligibleProducts": 0,
+      "edmEligibleVariants": 0
+    },
+    "images": {
+      "shopifyReferencesPresent": true,
+      "dynamicOverlayRightsConfirmedProducts": 0,
+      "exactLocalMockupProducts": 1,
+      "exactLocalMockupVariants": 3,
+      "scope": "Keramiktasse Printful-Modell19"
+    },
+    "access": {
+      "nonce": "HTTP403 missing product_templates/write",
+      "productTemplates": "HTTP403 missing product_templates/read",
+      "accountTokenAvailableInRuntime": false,
+      "embeddedDesignerConfirmed": false,
+      "allowedDomainConfirmed": false,
+      "requiredDomain": "luxestyle.ch"
+    },
+    "blocked": {
+      "draftProducts": true,
+      "nonPrintfulProducts": true,
+      "missingVariantPairing": true,
+      "missingImageOrGeometryEvidence": true,
+      "missingEdmAccess": true
+    },
+    "writesPerformed": [],
+    "writesNotPerformed": [
+      "Shopify product",
+      "theme",
+      "MAIN",
+      "theme publish",
+      "Printful template",
+      "Printful order",
+      "cart",
+      "checkout",
+      "order",
+      "deploy",
+      "paid render"
+    ]
   }
 }
