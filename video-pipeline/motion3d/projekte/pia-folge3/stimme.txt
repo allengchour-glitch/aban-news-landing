@@ -5,4 +5,4 @@ S4	Rund siebzig Prozent des Süsswassers, das wir entnehmen, fliessen in die Lan
 S5	Über achtzig Milliarden Landtiere werden jedes Jahr für Fleisch getötet. Jedes von ihnen kann Schmerz fühlen.	Über 80 Milliarden Landtiere pro Jahr
 S6	Essen verursacht ein Viertel der weltweiten Treibhausgase. Das ist keine Nebensache.	Essen: ¼ der Treibhausgase
 S7	Wir greifen nicht dich an. Wir greifen ein System an, das Leid zur Ware macht.	Nicht du, das System
-S8	Merk dir drei Zahlen: drei Viertel, siebenundsiebzig, siebzig. Und heute Abend darf dein Teller pflanzlich sein.	Merk dir: ¾ · 77 · 70
+S8	Drei Zahlen bleiben hängen: drei Viertel, siebenundsiebzig, siebzig. Und dein Teller kann heute Abend pflanzlich sein.	Drei Zahlen: ¾ · 77 · 70
