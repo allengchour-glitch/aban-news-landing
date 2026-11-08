@@ -1,0 +1,119 @@
+{
+  "stand": "2026-11-08",
+  "messung": "GEMESSEN: API-Zählung und einzelne Live-Korrekturen; keine vollständige Inhaltsquote.",
+  "katalog": {
+    "aktiv": 56492,
+    "gesamt": 87775,
+    "precision": "EXACT",
+    "quelle": "productsCount(limit:null), Shopify Admin API"
+  },
+  "merchant": {
+    "beleg": "QUELLE: Inhaber-Screenshot Countries, am 08.11.2026 übermittelt; Aufnahmezeit unbekannt.",
+    "schweiz": {
+      "genehmigt": 344727,
+      "gesamt": "349,20…; rechts abgeschnitten",
+      "quote_ungefaehr_prozent": 98.7,
+      "einrichtung": "Complete"
+    },
+    "deutschland": {
+      "genehmigt": 0,
+      "gesamt": 1389,
+      "quote_prozent": 0,
+      "einrichtung": "Incomplete"
+    },
+    "liechtenstein": {
+      "genehmigt": 81259,
+      "gesamt": 276796,
+      "quote_gerundet_prozent": 29.4,
+      "einrichtung": "Incomplete"
+    },
+    "grenze": "Länderbezogene Feed-Einträge/Varianten; kein Anteil einzigartiger vollständig sauberer Shopify-Produkte. Länder nicht addieren."
+  },
+  "bulk": {
+    "id": "gid://shopify/BulkOperation/12955623391623",
+    "status": "COMPLETED",
+    "produkte": 56492,
+    "objekte": 530241,
+    "abgeschlossen": "2026-11-08T17:13:16Z",
+    "auswertung": "UNKNOWN: Connector liefert signierte Exportlinks nicht aus. Kein Datenexport ausgewertet und keine technische Katalogquote berechnet."
+  },
+  "korrekturen": [
+    {
+      "id": "gid://shopify/Product/15469993394561",
+      "titel": "Engelsflügel Glam rosa",
+      "vorher": "Pauschale Qualitätsbehauptung; generische Rabatt-/Versand-SEO; nummerierte Alttexte.",
+      "einleitung": "<p>Rosafarbene Engelsflügel Glam mit metallisch wirkender Oberfläche und gestaffelter Federoptik. Ein Kostümaccessoire für Fasnacht und Verkleidung.</p>",
+      "seo": {
+        "title": "Engelsflügel Glam rosa | LuxeStyle CH",
+        "description": "Rosafarbene Engelsflügel Glam mit glänzender Oberfläche und Federoptik. Produktansicht, Tragebeispiel und Rückseite bei LuxeStyle ansehen."
+      },
+      "bildtexte": [
+        {
+          "id": "gid://shopify/MediaImage/70130664833409",
+          "alt": "Rosafarbene Engelsflügel Glam mit glänzender Federoptik, ausgebreitet"
+        },
+        {
+          "id": "gid://shopify/MediaImage/70164120043905",
+          "alt": "Rosafarbene Engelsflügel Glam am Rücken einer Person, seitliche Ansicht"
+        },
+        {
+          "id": "gid://shopify/MediaImage/70164120076673",
+          "alt": "Rückseite der rosafarbenen Engelsflügel Glam mit zwei elastischen Schlaufen"
+        }
+      ],
+      "gegenprobe": "GEMESSEN: frischer Admin-Read; HTTP 200 und mobile öffentliche Produktseite mit neuen Texten und sämtlichen Alttexten, 08.11.2026 17:27 UTC.",
+      "unveraendert": [
+        "Titel",
+        "Handle",
+        "Status",
+        "Varianten/SKUs",
+        "Preise",
+        "Bestände",
+        "Tags",
+        "Bilddateien/-zuordnung",
+        "vorhandene Versand-/Rückgabetexte"
+      ],
+      "offen": "Kein vollständiges Qualitätszertifikat: vorhandene Liefer-/Rückgabe-/Zahlungsbehauptungen und Bildrechte in dieser begrenzten Korrektur nicht neu verifiziert."
+    },
+    {
+      "id": "gid://shopify/Product/15470001521025",
+      "titel": "Engelsflügel Yara 49x44 cm",
+      "vorher": "Pauschale Qualitätsbehauptung; generische Rabatt-/Versand-SEO; nummerierte Alttexte.",
+      "einleitung": "<p>Kostümflügel Yara in Rosa, Grün und Blau mit silberfarbenen Glitzerlinien. Die angegebene Grösse beträgt 49 × 44 cm; die Produktbilder zeigen die ausgebreiteten Flügel und ein Tragebeispiel.</p>",
+      "seo": {
+        "title": "Engelsflügel Yara 49x44 cm | LuxeStyle CH",
+        "description": "Kostümflügel Yara, 49 × 44 cm, in Rosa, Grün und Blau mit silberfarbenen Glitzerlinien. Produktansicht und Tragebeispiel bei LuxeStyle ansehen."
+      },
+      "bildtexte": [
+        {
+          "id": "gid://shopify/MediaImage/70130681545089",
+          "alt": "Pastellfarbene Kostümflügel Yara am Rücken einer Person, seitliche Ansicht"
+        },
+        {
+          "id": "gid://shopify/MediaImage/70164266647937",
+          "alt": "Ausgebreitete Kostümflügel Yara in Rosa, Grün und Blau mit silberfarbenen Glitzerlinien"
+        }
+      ],
+      "gegenprobe": "GEMESSEN: frischer Admin-Read; HTTP 200 und mobile öffentliche Produktseite mit neuen Texten und sämtlichen Alttexten, 08.11.2026 17:27 UTC.",
+      "unveraendert": [
+        "Titel",
+        "Handle",
+        "Status",
+        "Varianten/SKUs",
+        "Preise",
+        "Bestände",
+        "Tags",
+        "Bilddateien/-zuordnung",
+        "vorhandene Versand-/Rückgabetexte"
+      ],
+      "offen": "Kein vollständiges Qualitätszertifikat: vorhandene Liefer-/Rückgabe-/Zahlungsbehauptungen und Bildrechte in dieser begrenzten Korrektur nicht neu verifiziert."
+    }
+  ],
+  "tests": {
+    "zaehler": "56 ok, 0 Fehler; positive/negative Attrappen, zwei Mutanten durch Hauptagent gegengeprüft (Objektzählung, READY).",
+    "live": "2 öffentliche mobile Produktseiten, 5 visuell geprüfte Bild-Alttexte; kein Cart/Checkout/Kauf.",
+    "ci": "Zähler PR2978 bleibt Entwurf: Run42505331368, selbst-gestalten rot, bestehender Schrift-/SRI-Konflikt nach PR2977. Lokal 1/354 POD-Prüfungen rot reproduziert. Neuer Zähler separat 56 Tests grün. Übergabe und bereits live korrigierte Produkte davon unabhängig."
+  },
+  "wirtschaft": "Klarere Artikelinformationen und passende Suchtexte; finanzielle Wirkung noch nicht gemessen.",
+  "naechster_schritt": "Vorhandenen lesenden Bulk-Export über erlaubten Datenweg für vollständige technische Mindestfeldmessung beschaffen. Erst danach konkrete Produkte frisch prüfen und begrenzt korrigieren. Länderprobleme separat diagnostizieren; keine Einstellungen aus Screenshot ändern."
+}
