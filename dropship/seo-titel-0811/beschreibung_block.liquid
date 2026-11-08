@@ -1,0 +1,14 @@
+{%- liquid
+  # 08.11.2026 SEO: Artikel-Beschreibungen kamen bis 320 Zeichen lang aus dem Seitentext (Google schneidet bei ~155).
+  # Nur Artikel, nur wenn länger als 160: an einer Wortgrenze auf höchstens 155 Zeichen kürzen und «…» anhängen.
+  assign lx_md = meta_desc | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>'
+  if request.page_type == 'article' and lx_md.size > 160
+    assign lx_w = lx_md | truncate: 155, '' | split: ' '
+    assign lx_r = lx_md | slice: 155, 1
+    if lx_r != ' '
+      assign lx_m = lx_w.size | minus: 1
+      assign lx_w = lx_w | slice: 0, lx_m
+    endif
+    assign lx_md = lx_w | join: ' ' | append: '…'
+  endif
+-%}
