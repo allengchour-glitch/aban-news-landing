@@ -1,6 +1,6 @@
 /** Test fuer seoTitel. Die Titel unten sind ECHT, am 2026-10-17 aus dem Live-Katalog gelesen.
  *  Lauf: /opt/node22/bin/node automation/lib/seo_titel_test.mjs   */
-import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG, seoNachtrag } from './seo_titel.mjs';
+import { seoTitel, seoOffen, titelNormalisieren, kuerzen, MAX_TITEL, MAX_BESCHREIBUNG, seoNachtrag, titelDeutschGenug } from './seo_titel.mjs';
 let fehler = 0;
 const pruef = (n, ok, extra = '') => { if (!ok) { fehler++; console.log(`FAIL ${n}  ${extra}`); } else console.log(`ok   ${n}`); };
 
@@ -115,6 +115,26 @@ pruef('titelgleicher Fall mit vorhandener Beschreibung → leerer Patch',
 pruef('titelgleicher Fall ohne Beschreibung → nur die Beschreibung, kein titelgleicher Titel',
   JSON.stringify(Object.keys(seoNachtrag(GLEICH, null))) === JSON.stringify(['description']),
   JSON.stringify(seoNachtrag(GLEICH, null)));
+
+// ── Sprachwaechter vor automatischem SEO ────────────────────────────────────
+// Die ersten zwei Titel wurden am 08.11.2026 auf erreichbaren LuxeStyle-Seiten gefunden. Ohne
+// Waechter kopiert seoTitel() sie wortgleich in Google-Titel und Meta-Description; der dritte
+// ist die bisherige Gegenprobe dieses Tests.
+for (const titel of ['Small Blanket Nap Blanket', 'Baby Gentleman Jumpsuit aus Baumwolle', 'Wireless Game Handle']) {
+  const urteil = titelDeutschGenug(titel);
+  pruef(`klar englischer Rest wird blockiert: ${titel}`, urteil.ok === false && urteil.treffer.length > 0, JSON.stringify(urteil));
+  pruef(`  seoOffen löst keinen automatischen Write aus`, seoOffen(titel, null) === false);
+  pruef(`  seoNachtrag bleibt leer`, Object.keys(seoNachtrag(titel, null)).length === 0, JSON.stringify(seoNachtrag(titel, null)));
+}
+for (const titel of [
+  'Tanz- & Fitness-Armbänder für Switch Joy-Con',
+  'Ausziehbarer Gaming-Controller für Mobilgeräte',
+  'Baby-Jumpsuit aus Baumwolle',
+  'Keramik-Tasse selbst gestalten',
+]) {
+  pruef(`deutscher Titel bzw. gebräuchliches Fachwort bleibt erlaubt: ${titel}`, titelDeutschGenug(titel).ok === true, JSON.stringify(titelDeutschGenug(titel)));
+}
+pruef('leerer Titel ist keine Grundlage für automatisches SEO', titelDeutschGenug('  ').ok === false);
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Tests gruen');
 process.exit(fehler ? 1 : 0);

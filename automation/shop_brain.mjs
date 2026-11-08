@@ -20,7 +20,7 @@ import { shopifyGql } from './lib/shopify_gql.mjs';
 // ab CHF 65" — die Schwelle ist CHF 50 (dropship/VERSAND-SCHWELLE.md, bewusst 50 wegen WELCOME10).
 // Live gemessen am 2026-10-18: 0 von 4000 SEO-Beschreibungen tragen das falsche Versprechen, 3682
 // tragen die richtige Zahl — der Fehler war also noch nicht geschrieben, sondern nur geladen.
-import { seoTitel } from './lib/seo_titel.mjs';
+import { seoTitel, titelDeutschGenug } from './lib/seo_titel.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || "";
 const CID = process.env.SHOPIFY_CLIENT_ID || "";
 const SECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || "";
@@ -131,13 +131,16 @@ async function runMutations(token,items,build){
   const pq=`{ products(first:${LIMIT}, query:"status:active tag:cj-real", sortKey:CREATED_AT, reverse:true){ nodes{ id title productType category{id} seo{title description} featuredImage{ url } priceRangeV2{ minVariantPrice{ amount } } } } }`;
   const pdata=await gql(token,pq);
   const nodes=pdata?.data?.products?.nodes||[];
-  const prodFixes=[]; const noImage=[]; const dupes=[]; const priceZero=[]; const seenTitles={}; let aiUsed=0;
+  const prodFixes=[]; const noImage=[]; const dupes=[]; const priceZero=[]; const sprachBlockiert=[]; const seenTitles={}; let aiUsed=0;
   for(const n of nodes){
     const t=clean(n.title);
     if(t){ if(seenTitles[t]) dupes.push(t.slice(0,50)); else seenTitles[t]=1; }
     if(!(parseFloat(n.priceRangeV2&&n.priceRangeV2.minVariantPrice&&n.priceRangeV2.minVariantPrice.amount||"0")>0)) priceZero.push(t.slice(0,50));
     if(!n.featuredImage) noImage.push(t.slice(0,60));
-    const needSeo=!(n.seo&&n.seo.title&&n.seo.description);
+    const seoFehlt=!(n.seo&&n.seo.title&&n.seo.description);
+    const sprache=titelDeutschGenug(n.title);
+    const needSeo=seoFehlt&&sprache.ok;
+    if(seoFehlt&&!sprache.ok) sprachBlockiert.push(`${t.slice(0,60)} [${sprache.treffer.join(', ')||'Titel leer'}]`);
     const needCat=!n.category && CAT[(n.productType||"").trim()];
     if(!needSeo&&!needCat) continue;
     let input=`id: "${n.id}"`;
@@ -165,14 +168,16 @@ async function runMutations(token,items,build){
     if(!cc.pageInfo.hasNextPage) break;
     ccur=cc.pageInfo.endCursor;
   }
-  const colFixes=[]; const colSeoFixes=[];
+  const colFixes=[]; const colSeoFixes=[]; const colSprachBlockiert=[];
   for(const c of colls){
     const hasProd=(c.products?.nodes||[]).length>0;
     if(!c.image && colFixes.length<COL_MAX){
       const img=(c.products?.nodes||[]).map(p=>p.featuredImage&&p.featuredImage.url).find(Boolean);
       if(img) colFixes.push({id:c.id, handle:c.handle, src:img, alt:clean(c.title)||"LuxeStyle"});
     }
-    if(hasProd && c.handle!=="frontpage" && !(c.seo&&c.seo.title) && colSeoFixes.length<COL_MAX){
+    const colSprache=titelDeutschGenug(c.title);
+    if(hasProd && c.handle!=="frontpage" && !(c.seo&&c.seo.title) && !colSprache.ok) colSprachBlockiert.push(`${c.handle} [${colSprache.treffer.join(', ')||'Titel leer'}]`);
+    if(hasProd && c.handle!=="frontpage" && !(c.seo&&c.seo.title) && colSprache.ok && colSeoFixes.length<COL_MAX){
       const ct=clean(c.title)||"Kollektion";
       let title=ct; if(title.length>54){let x=title.slice(0,54); if(x.includes(" "))x=x.slice(0,x.lastIndexOf(" ")); title=x.replace(/[ ,;:·–-]+$/,"");}
       title=(title+" | LuxeStyle").slice(0,70);
@@ -183,6 +188,8 @@ async function runMutations(token,items,build){
 
   console.log(`🧠 Produkte: ${nodes.length} geprüft · ${prodFixes.length} zu veredeln · ${noImage.length} ohne Bild`);
   console.log(`🖼️ Collections: ${colls.length} geprüft · ${colFixes.length} Cover · ${colSeoFixes.length} SEO${DRY?" (DRY)":""}`);
+  if(sprachBlockiert.length) console.log('  ⚠️ Produkt-SEO wegen englischem Rest blockiert:',sprachBlockiert.join(' · '));
+  if(colSprachBlockiert.length) console.log('  ⚠️ Collection-SEO wegen englischem Rest blockiert:',colSprachBlockiert.join(' · '));
 
   let pDone=0, cDone=0, csDone=0;
   if(!DRY){
