@@ -1,0 +1,251 @@
+{
+ "stand": "2026-11-08",
+ "shop": "luxestyle.ch",
+ "sourceGeneratedAt": "2026-11-08T10:36:55.078550Z",
+ "ready": [
+  {
+   "productId": "gid://shopify/Product/15422854463873",
+   "handle": "alltags-umhangetasche-selbst-gestalten",
+   "variants": 1,
+   "models": [
+    1552
+   ],
+   "assets": {
+    "card": "lspod-15422854463873.karte.json",
+    "preview": "lspod-15422854463873.vorschau.json",
+    "mapping": "lspod-15422854463873.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15422819991937",
+   "handle": "bio-jutebeutel-selbst-gestalten",
+   "variants": 2,
+   "models": [
+    367
+   ],
+   "assets": {
+    "card": "lspod-15422819991937.karte.json",
+    "preview": "lspod-15422819991937.vorschau.json",
+    "mapping": "lspod-15422819991937.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15422823465345",
+   "handle": "keramik-tasse-selbst-gestalten",
+   "variants": 3,
+   "models": [
+    19
+   ],
+   "assets": {
+    "card": "lspod-15422823465345.karte.json",
+    "preview": "lspod-15422823465345.vorschau.json",
+    "mapping": "lspod-15422823465345.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15422942609793",
+   "handle": "kiss-cut-aufkleber-selbst-gestalten",
+   "variants": 4,
+   "models": [
+    358
+   ],
+   "assets": {
+    "card": "lspod-15422942609793.karte.json",
+    "preview": "lspod-15422942609793.vorschau.json",
+    "mapping": "lspod-15422942609793.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15422857642369",
+   "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+   "variants": 8,
+   "models": [
+    438
+   ],
+   "assets": {
+    "card": "lspod-15422857642369.karte.json",
+    "preview": "lspod-15422857642369.vorschau.json",
+    "mapping": "lspod-15422857642369.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15427283157377",
+   "handle": "shirt-zum-selbstgestalten",
+   "variants": 15,
+   "models": [
+    71
+   ],
+   "assets": {
+    "card": "lspod-15427283157377.karte.json",
+    "preview": "lspod-15427283157377.vorschau.json",
+    "mapping": "lspod-15427283157377.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15427282633089",
+   "handle": "tasse-zum-selbstgestalten",
+   "variants": 2,
+   "models": [
+    19
+   ],
+   "assets": {
+    "card": "lspod-15427282633089.karte.json",
+    "preview": "lspod-15427282633089.vorschau.json",
+    "mapping": "lspod-15427282633089.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15422815699329",
+   "handle": "unisex-hoodie-selbst-gestalten",
+   "variants": 13,
+   "models": [
+    145,
+    821
+   ],
+   "assets": {
+    "card": "lspod-15422815699329.karte.json",
+    "preview": "lspod-15422815699329.vorschau.json",
+    "mapping": "lspod-15422815699329.shop-varianten.json"
+   }
+  },
+  {
+   "productId": "gid://shopify/Product/15422811439489",
+   "handle": "unisex-t-shirt-selbst-gestalten",
+   "variants": 25,
+   "models": [
+    71,
+    456,
+    586
+   ],
+   "assets": {
+    "card": "lspod-15422811439489.karte.json",
+    "preview": "lspod-15422811439489.vorschau.json",
+    "mapping": "lspod-15422811439489.shop-varianten.json"
+   }
+  }
+ ],
+ "blocked": [
+  {
+   "productId": "gid://shopify/Product/15422950474113",
+   "handle": "allover-stoffbeutel-selbst-gestalten",
+   "variants": 1,
+   "models": [
+    84
+   ],
+   "reasons": [
+    "keine_ehrliche_produktvorschau:84:layout"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15423895830913",
+   "handle": "buegeltransfer-selbst-gestalten",
+   "variants": 0,
+   "models": [],
+   "reasons": [
+    "keine_printful_varianten",
+    "manifest:NON_PRINTFUL_FULFILLMENT"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15422849188225",
+   "handle": "dad-cap-selbst-gestalten",
+   "variants": 1,
+   "models": [
+    206
+   ],
+   "reasons": [
+    "baufehler:Modell 206: nach den Filtern (ohneAufpreis/ohneEtiketten) bleibt keine Platzierung"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15422940447105",
+   "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+   "variants": 1,
+   "models": [
+    788
+   ],
+   "reasons": [
+    "keine_ehrliche_produktvorschau:788:ungeeignet"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15422939988353",
+   "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+   "variants": 48,
+   "models": [
+    181,
+    601,
+    798
+   ],
+   "reasons": [
+    "keine_ehrliche_produktvorschau:181:layout",
+    "keine_ehrliche_produktvorschau:601:layout"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15427217195393",
+   "handle": "magnet-zum-selbstgestalten",
+   "variants": 3,
+   "models": [
+    656
+   ],
+   "reasons": [
+    "ungeeignet:656"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15451569160577",
+   "handle": "mauspad-selbst-gestalten",
+   "variants": 1,
+   "models": [
+    518
+   ],
+   "reasons": [
+    "keine_ehrliche_produktvorschau:518:layout"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/16672778289543",
+   "handle": "samsung-huelle-selbst-gestalten",
+   "variants": 84,
+   "models": [
+    267,
+    684,
+    686
+   ],
+   "reasons": [
+    "keine_ehrliche_produktvorschau:684:layout",
+    "keine_ehrliche_produktvorschau:686:layout"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15451569324417",
+   "handle": "spiral-notizbuch-selbst-gestalten",
+   "variants": 1,
+   "models": [
+    474
+   ],
+   "reasons": [
+    "druckflaeche_nicht_default:474:back:back"
+   ]
+  },
+  {
+   "productId": "gid://shopify/Product/15422946804097",
+   "handle": "transparente-iphone®-hulle-selbst-gestalten",
+   "variants": 31,
+   "models": [
+    181
+   ],
+   "reasons": [
+    "keine_ehrliche_produktvorschau:181:layout"
+   ]
+  }
+ ],
+ "totals": {
+  "active": 19,
+  "ready": 9,
+  "blocked": 10,
+  "variantsReady": 73,
+  "variantsBlocked": 171
+ }
+}

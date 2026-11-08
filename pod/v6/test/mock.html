@@ -78,6 +78,12 @@
     fs.appendChild(l);
   });
   document.getElementById('produkt-form').addEventListener('submit', function (e) { e.preventDefault(); window.__themeKnopf = (window.__themeKnopf || 0) + 1; });
+  if (q.get('mehrformen') === '1') {
+    var sticky = document.createElement('form'); sticky.id = 'sticky-produkt-form'; sticky.method = 'post'; sticky.action = '/cart/add';
+    var stickyButton = document.createElement('button'); stickyButton.id = 'sticky-kaufen'; stickyButton.textContent = 'Sticky-Kaufknopf';
+    sticky.appendChild(stickyButton); document.querySelector('.rechts').appendChild(sticky);
+    sticky.addEventListener('submit', function (e) { e.preventDefault(); window.__stickyThemeKnopf = (window.__stickyThemeKnopf || 0) + 1; });
+  }
 
   var beschr = document.getElementById('beschreibung');
   if (q.get('abstand')) document.getElementById('abstand').style.height = q.get('abstand') + 'px';

@@ -172,7 +172,7 @@
       reviewPrint: 'Verbindliche Druckdatei', reviewOnProduct: 'Auf dem Produkt', reviewMugView: 'Auf dem Produkt – Vorderansicht',
       reviewMugNote: 'Kontrollierte Vorderansicht: Die Druckdatei links ist verbindlich. Teile eines Rundum-Motivs können seitlich liegen und hier nicht sichtbar sein.',
       reviewFallback: 'Produktansicht nicht verfügbar. Die gezeigte Druckdatei ist massgebend.',
-      cardRequired: 'Gestalten ist derzeit nicht verfügbar. Die verbindlichen Druckdaten konnten nicht geladen werden. Bitte lade die Seite neu. Dieses Produkt kann ohne geprüfte Druckdaten nicht bestellt werden.',
+      cardRequired: 'Gestalten ist derzeit nicht verfügbar. Die verbindlichen Druckdaten konnten nicht sicher geladen und geprüft werden. Bitte lade die Seite neu. Dieses Produkt kann ohne geprüfte Druckdaten nicht bestellt werden.',
       reviewAccept: 'Ich habe alle Druckflächen und die gewählte Ausführung geprüft.',
       reviewConfirm: 'Druckvorschau bestätigen und in den Warenkorb', reviewBack: 'Weiter gestalten',
       reviewBuilding: 'Druckvorschau wird erstellt …',
@@ -238,7 +238,7 @@
       reviewPrint: 'Binding print file', reviewOnProduct: 'On the product', reviewMugView: 'On the product – front view',
       reviewMugNote: 'Controlled front view: the print file on the left is binding. Parts of a wraparound design can sit at the sides and may not be visible here.',
       reviewFallback: 'Product preview unavailable. The shown print file is authoritative.',
-      cardRequired: 'Customisation is currently unavailable because the binding print data could not be loaded. Please reload the page. This product cannot be ordered without verified print data.',
+      cardRequired: 'Customisation is currently unavailable because the binding print data could not be loaded and verified safely. Please reload the page. This product cannot be ordered without verified print data.',
       reviewAccept: 'I have checked every print area and the selected option.',
       reviewConfirm: 'Confirm print preview and add to cart', reviewBack: 'Keep designing',
       reviewBuilding: 'Creating print preview …',
@@ -3340,16 +3340,16 @@
       class: 'lsp6-card-required', role: 'alert', text: T.cardRequired,
       style: 'padding:16px;border:1px solid #9b2c2c;border-radius:10px;background:#fff5f5;color:#681b1b;font-weight:700;line-height:1.45',
     }));
-    var form = document.querySelector('form[action*="/cart/add"]');
-    if (!form) return;
-    form.setAttribute('data-lspod6-karte-blockiert', '1');
-    Array.prototype.forEach.call(form.querySelectorAll('button[type="submit"],input[type="submit"]'), function (button) {
-      button.disabled = true; button.setAttribute('aria-disabled', 'true');
+    Array.prototype.forEach.call(document.querySelectorAll('form[action*="/cart/add"]'), function (form) {
+      form.setAttribute('data-lspod6-karte-blockiert', '1');
+      Array.prototype.forEach.call(form.querySelectorAll('button[type="submit"],input[type="submit"],button:not([type])'), function (button) {
+        button.disabled = true; button.setAttribute('aria-disabled', 'true');
+      });
+      form.addEventListener('submit', function (ev) {
+        if (form.getAttribute('data-lspod6-karte-blockiert') !== '1') return;
+        ev.preventDefault(); ev.stopImmediatePropagation();
+      }, true);
     });
-    form.addEventListener('submit', function (ev) {
-      if (form.getAttribute('data-lspod6-karte-blockiert') !== '1') return;
-      ev.preventDefault(); ev.stopImmediatePropagation();
-    }, true);
   }
 
   function mounten(container) {
@@ -3371,7 +3371,11 @@
         // Die Vorschaudaten kommen nach dem Bau und blockieren den Start nicht; ohne sie (oder im v5-Modus) bleibt der Editor, wie er ist
         if (karte) vorschauLesen(container).then(function (roh) { if (roh) editor.vorschauDatenSetzen(roh); });
       } catch (err) {
-        container.setAttribute('data-init-v6', 'err');
+        if (container.getAttribute('data-karte-pflicht') === '1') {
+          warnung('Pflichtkarte konnte keinen sicheren Editor erzeugen: Warenkorb ist blockiert');
+          pflichtKarteBlockieren(container);
+          container.setAttribute('data-init-v6', 'blocked');
+        } else container.setAttribute('data-init-v6', 'err');
         if (window.console && console.error) console.error('[lspod6] build error:', err);
       }
     });

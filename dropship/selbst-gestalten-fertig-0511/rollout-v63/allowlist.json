@@ -1,0 +1,1696 @@
+{
+  "schema": 1,
+  "stand": "2026-11-08T10:36:55.078550Z",
+  "source": {
+    "manifest": {
+      "path": "source/product-manifest-r137.json",
+      "sha256": "2eaea47a2a0028dacc9b3234da6dfa95009eccb92d7dfe085281d3316c29d306",
+      "branchCommit": "eb5db1e8e04c8b6e865714a3c936fc61aceceb20"
+    },
+    "catalog": {
+      "workflowRun": 42475585326,
+      "branchCommit": "68975230b",
+      "path": "../target-katalog-20261108/katalog",
+      "errorFileSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "files": [
+        {
+          "model": 19,
+          "sha256": "4ad16b5663d19e94e7ea7308989ff85b4a93173529c608df57b5f5ed982877a0",
+          "bytes": 5645
+        },
+        {
+          "model": 71,
+          "sha256": "6f66454e2a8f99af7b6f8981d4f90b37de69cc9286f2fc5c4e6c18706435130c",
+          "bytes": 319385
+        },
+        {
+          "model": 84,
+          "sha256": "5e35e93357a54970d45c7ea1ba1b0a6d1b7c09bc8d95b603c834b4129b7db4ba",
+          "bytes": 6275
+        },
+        {
+          "model": 145,
+          "sha256": "4bda169cab6cfac7ac3e51de490423f84fb43f5e67529ccfc68cac633788da7d",
+          "bytes": 104870
+        },
+        {
+          "model": 181,
+          "sha256": "38db0a839116d5c1fd6a9c92ea71b8b8156812fbe03a389fb653d1786019a073",
+          "bytes": 22382
+        },
+        {
+          "model": 206,
+          "sha256": "fbd66158308a147e804e95c53cf53725899e5f5d6dbd760ab35203d89551520b",
+          "bytes": 17489
+        },
+        {
+          "model": 267,
+          "sha256": "03b5a61d0a5f5332c5f2558a56a4c529ea178c86594dda8aeeffb9604ca72081",
+          "bytes": 20423
+        },
+        {
+          "model": 358,
+          "sha256": "7cd5be18499757c17ad14d5ada0ec30c8149e4f72cf33f08f649df49e98fbdb0",
+          "bytes": 7305
+        },
+        {
+          "model": 367,
+          "sha256": "749d30d3fe07a1b32aac2fe56d1af2ed0269b25a6870a88e5844b2dc8bb667ca",
+          "bytes": 7286
+        },
+        {
+          "model": 438,
+          "sha256": "0b3998a595d1db61547914f9a6d4f369b1ff700ecd6bab56099c37c2b84a23e4",
+          "bytes": 131259
+        },
+        {
+          "model": 456,
+          "sha256": "c6c1ea4b28b4bd4ebf3933db83ef418072aeda8e25c6355b27d0cc922f7a56b7",
+          "bytes": 64054
+        },
+        {
+          "model": 474,
+          "sha256": "3ea45321f1c1431150940e8a0fb90eabb8f6bd0042be38803dc50a14892f16ac",
+          "bytes": 4130
+        },
+        {
+          "model": 518,
+          "sha256": "604d1c66eb9cdcb0f45e7a4de21b771bebae0a586e93bdfe0ceff450cf586eb8",
+          "bytes": 3568
+        },
+        {
+          "model": 586,
+          "sha256": "de9196f9ec66d2b505d2c38fa9608e2702d9154910fc3f339a4a3d46367a8fae",
+          "bytes": 160618
+        },
+        {
+          "model": 601,
+          "sha256": "86f45d5af3461ba96a322ce50711153ba3a850c032665fa1d8d3a031f205c394",
+          "bytes": 27117
+        },
+        {
+          "model": 656,
+          "sha256": "3336c982deb088163f3e2060902fa86de082051be984a600541cefcf197993b8",
+          "bytes": 5368
+        },
+        {
+          "model": 684,
+          "sha256": "18cb16af87569bc2f708f17673555d54bd0dd0e1eb3d790de974fd5e818a401b",
+          "bytes": 23049
+        },
+        {
+          "model": 686,
+          "sha256": "1d89fdb6b8ba43d12674f102b8d4367679e6a87dd63924665af04bab443628a4",
+          "bytes": 22484
+        },
+        {
+          "model": 788,
+          "sha256": "87ddd130acd0099d7e1fed4e994e5f9c3c942b75ac57549c8631982d605bce26",
+          "bytes": 4334
+        },
+        {
+          "model": 798,
+          "sha256": "ba149b16d652bc47c7827a7469709666824d6349c199ca24a6b81e887485cd51",
+          "bytes": 19253
+        },
+        {
+          "model": 821,
+          "sha256": "b9db022b5a549b1dd95772f4f37e63ff516ee0365d07e0167fa2e9bf7825c307",
+          "bytes": 34685
+        },
+        {
+          "model": 1552,
+          "sha256": "9e8c85f8ce2a060a9ff4bdbcb41ab7b74756ad074bbe7529c32406f78e648afe",
+          "bytes": 7195
+        }
+      ]
+    },
+    "audit": {
+      "report": "source/audit/rollout-report.json",
+      "reportSha256": "40e6e71b3ff6e4c3d27326da27b2ac53ce2954e93922a86595beaa2a7e55915b",
+      "scriptSha256": "d28b5c0a5845a8d1b4827ad43bf2d9a1939734a0d96326f2d47aa99fea8cc1de",
+      "readyProducts": 9,
+      "readyVariants": 73,
+      "bindingOnlyProducts": 7,
+      "bindingOnlyVariants": 167,
+      "blockedPrintfulProducts": 2,
+      "blockedPrintfulVariants": 4
+    }
+  },
+  "editorSha256": "7bebcfdb21e76cf9f387a76cf1fbce7290288590a23f4a5b16a98bf71177a56d",
+  "policy": {
+    "onlyActive": true,
+    "paidPlacements": false,
+    "labels": false,
+    "productProjection": "nine-audited-products-only",
+    "panelModels": [
+      84
+    ],
+    "panelCandidateModels": [
+      84
+    ],
+    "panelEvaluation": "--panel=84: binding-print-area-only-after-geometry-check",
+    "reason": "Neun Produkte erhalten eine gepruefte proportionale Produktvorschau, sieben nur die verbindliche Druckflaeche. Cap und Magnet bleiben mit deterministischem Blocker-Asset fail-closed."
+  },
+  "products": [
+    {
+      "shopifyProductId": "gid://shopify/Product/15422950474113",
+      "handle": "allover-stoffbeutel-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-15422950474113.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        84
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778472591745",
+          "printfulProductId": 84,
+          "printfulVariantId": 8905
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422854463873",
+      "handle": "alltags-umhangetasche-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422854463873.karte.json",
+      "previewAsset": "lspod-15422854463873.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "7f5936065ce9aaab40a2fcc958e3bb8e7e1d5cf0b461e9ffff09f7ca0395c5a8",
+        "previewSha256": "dfa00bd1cb4f2cc9b44d2a6d3db7fef3742ac3f3dc1e2da3eb499a7ab06d9bd1"
+      },
+      "models": [
+        1552
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778075017601",
+          "printfulProductId": 1552,
+          "printfulVariantId": 49310
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422819991937",
+      "handle": "bio-jutebeutel-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422819991937.karte.json",
+      "previewAsset": "lspod-15422819991937.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "3c943b34ab49fb9163cb589807afc1f24e4528d9c49f173e26a6a82d7797b83e",
+        "previewSha256": "7d9cb7e162440fdb1f0819a617dc04f74eacbe42ba30a6e1bc98e013bfdd04fc"
+      },
+      "models": [
+        367
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55777965539713",
+          "printfulProductId": 367,
+          "printfulVariantId": 10458
+        },
+        {
+          "shopifyVariantId": "67668293124487",
+          "printfulProductId": 367,
+          "printfulVariantId": 10457
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422849188225",
+      "handle": "dad-cap-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "blocked",
+      "asset": "lspod-15422849188225.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [
+        "EMBROIDERY_OPTIONS_UNVERIFIED",
+        "NO_FREE_NON_LABEL_PLACEMENT"
+      ],
+      "sourceAssets": null,
+      "models": [
+        206
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778063843713",
+          "printfulProductId": 206,
+          "printfulVariantId": 7853
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422940447105",
+      "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-15422940447105.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        788
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778346172801",
+          "printfulProductId": 788,
+          "printfulVariantId": 20175
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-15422939988353.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        798,
+        601,
+        181
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778337358209",
+          "printfulProductId": 798,
+          "printfulVariantId": 20688
+        },
+        {
+          "shopifyVariantId": "55778337390977",
+          "printfulProductId": 798,
+          "printfulVariantId": 20692
+        },
+        {
+          "shopifyVariantId": "55778337423745",
+          "printfulProductId": 798,
+          "printfulVariantId": 20690
+        },
+        {
+          "shopifyVariantId": "55778337456513",
+          "printfulProductId": 798,
+          "printfulVariantId": 20694
+        },
+        {
+          "shopifyVariantId": "55778337489281",
+          "printfulProductId": 798,
+          "printfulVariantId": 20318
+        },
+        {
+          "shopifyVariantId": "55778337522049",
+          "printfulProductId": 798,
+          "printfulVariantId": 20322
+        },
+        {
+          "shopifyVariantId": "55778337554817",
+          "printfulProductId": 798,
+          "printfulVariantId": 20320
+        },
+        {
+          "shopifyVariantId": "55778337587585",
+          "printfulProductId": 798,
+          "printfulVariantId": 20324
+        },
+        {
+          "shopifyVariantId": "55778337620353",
+          "printfulProductId": 798,
+          "printfulVariantId": 20326
+        },
+        {
+          "shopifyVariantId": "55778337653121",
+          "printfulProductId": 798,
+          "printfulVariantId": 20332
+        },
+        {
+          "shopifyVariantId": "55778337685889",
+          "printfulProductId": 798,
+          "printfulVariantId": 20328
+        },
+        {
+          "shopifyVariantId": "55778337718657",
+          "printfulProductId": 798,
+          "printfulVariantId": 20330
+        },
+        {
+          "shopifyVariantId": "55778337751425",
+          "printfulProductId": 798,
+          "printfulVariantId": 34002
+        },
+        {
+          "shopifyVariantId": "55778337784193",
+          "printfulProductId": 798,
+          "printfulVariantId": 34004
+        },
+        {
+          "shopifyVariantId": "55778337816961",
+          "printfulProductId": 798,
+          "printfulVariantId": 34006
+        },
+        {
+          "shopifyVariantId": "55778337849729",
+          "printfulProductId": 798,
+          "printfulVariantId": 34008
+        },
+        {
+          "shopifyVariantId": "67814160073095",
+          "printfulProductId": 601,
+          "printfulVariantId": 16125
+        },
+        {
+          "shopifyVariantId": "67814160105863",
+          "printfulProductId": 601,
+          "printfulVariantId": 16129
+        },
+        {
+          "shopifyVariantId": "67814160138631",
+          "printfulProductId": 601,
+          "printfulVariantId": 16127
+        },
+        {
+          "shopifyVariantId": "67814160171399",
+          "printfulProductId": 601,
+          "printfulVariantId": 16131
+        },
+        {
+          "shopifyVariantId": "67814160204167",
+          "printfulProductId": 601,
+          "printfulVariantId": 17715
+        },
+        {
+          "shopifyVariantId": "67814160236935",
+          "printfulProductId": 601,
+          "printfulVariantId": 17717
+        },
+        {
+          "shopifyVariantId": "67814160269703",
+          "printfulProductId": 601,
+          "printfulVariantId": 17719
+        },
+        {
+          "shopifyVariantId": "67814160302471",
+          "printfulProductId": 601,
+          "printfulVariantId": 17721
+        },
+        {
+          "shopifyVariantId": "67814160335239",
+          "printfulProductId": 601,
+          "printfulVariantId": 20306
+        },
+        {
+          "shopifyVariantId": "67814160368007",
+          "printfulProductId": 601,
+          "printfulVariantId": 20307
+        },
+        {
+          "shopifyVariantId": "67814160400775",
+          "printfulProductId": 601,
+          "printfulVariantId": 20308
+        },
+        {
+          "shopifyVariantId": "67814160433543",
+          "printfulProductId": 601,
+          "printfulVariantId": 20309
+        },
+        {
+          "shopifyVariantId": "67814160466311",
+          "printfulProductId": 601,
+          "printfulVariantId": 33989
+        },
+        {
+          "shopifyVariantId": "67814160499079",
+          "printfulProductId": 601,
+          "printfulVariantId": 33990
+        },
+        {
+          "shopifyVariantId": "67814160531847",
+          "printfulProductId": 601,
+          "printfulVariantId": 33991
+        },
+        {
+          "shopifyVariantId": "67814160564615",
+          "printfulProductId": 601,
+          "printfulVariantId": 33992
+        },
+        {
+          "shopifyVariantId": "67814160597383",
+          "printfulProductId": 181,
+          "printfulVariantId": 16240
+        },
+        {
+          "shopifyVariantId": "67814160630151",
+          "printfulProductId": 181,
+          "printfulVariantId": 16242
+        },
+        {
+          "shopifyVariantId": "67814160662919",
+          "printfulProductId": 181,
+          "printfulVariantId": 16241
+        },
+        {
+          "shopifyVariantId": "67814160695687",
+          "printfulProductId": 181,
+          "printfulVariantId": 16243
+        },
+        {
+          "shopifyVariantId": "67814160728455",
+          "printfulProductId": 181,
+          "printfulVariantId": 17616
+        },
+        {
+          "shopifyVariantId": "67814160761223",
+          "printfulProductId": 181,
+          "printfulVariantId": 17617
+        },
+        {
+          "shopifyVariantId": "67814160793991",
+          "printfulProductId": 181,
+          "printfulVariantId": 17618
+        },
+        {
+          "shopifyVariantId": "67814160826759",
+          "printfulProductId": 181,
+          "printfulVariantId": 17619
+        },
+        {
+          "shopifyVariantId": "67814160859527",
+          "printfulProductId": 181,
+          "printfulVariantId": 20290
+        },
+        {
+          "shopifyVariantId": "67814160892295",
+          "printfulProductId": 181,
+          "printfulVariantId": 20291
+        },
+        {
+          "shopifyVariantId": "67814160925063",
+          "printfulProductId": 181,
+          "printfulVariantId": 20292
+        },
+        {
+          "shopifyVariantId": "67814160957831",
+          "printfulProductId": 181,
+          "printfulVariantId": 20293
+        },
+        {
+          "shopifyVariantId": "67814160990599",
+          "printfulProductId": 181,
+          "printfulVariantId": 33993
+        },
+        {
+          "shopifyVariantId": "67814161023367",
+          "printfulProductId": 181,
+          "printfulVariantId": 33994
+        },
+        {
+          "shopifyVariantId": "67814161056135",
+          "printfulProductId": 181,
+          "printfulVariantId": 33995
+        },
+        {
+          "shopifyVariantId": "67814161088903",
+          "printfulProductId": 181,
+          "printfulVariantId": 33996
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "handle": "keramik-tasse-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422823465345.karte.json",
+      "previewAsset": "lspod-15422823465345.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "b89831069f4efb9b5d043567924afb70b24e897edff3a9a9634a5fc4087bf3b5",
+        "previewSha256": "8fbdaa5857b81fd95198d95f98414e4c278d10d1cfec354260678659907ac73b"
+      },
+      "models": [
+        19
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55777979629953",
+          "printfulProductId": 19,
+          "printfulVariantId": 1320
+        },
+        {
+          "shopifyVariantId": "55777979662721",
+          "printfulProductId": 19,
+          "printfulVariantId": 4830
+        },
+        {
+          "shopifyVariantId": "55777979695489",
+          "printfulProductId": 19,
+          "printfulVariantId": 16586
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422942609793",
+      "handle": "kiss-cut-aufkleber-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422942609793.karte.json",
+      "previewAsset": "lspod-15422942609793.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "f726c68464808b248aedb75297a10055fc1d0538e5b2c22304aae2b8adb76ad6",
+        "previewSha256": "40a17269b3786803bd643a4486ad519b21233b72daa80c0558fde19a214ebaa6"
+      },
+      "models": [
+        358
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778363376001",
+          "printfulProductId": 358,
+          "printfulVariantId": 10163
+        },
+        {
+          "shopifyVariantId": "55778363408769",
+          "printfulProductId": 358,
+          "printfulVariantId": 10164
+        },
+        {
+          "shopifyVariantId": "55778363441537",
+          "printfulProductId": 358,
+          "printfulVariantId": 10165
+        },
+        {
+          "shopifyVariantId": "55778363474305",
+          "printfulProductId": 358,
+          "printfulVariantId": 16362
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422857642369.karte.json",
+      "previewAsset": "lspod-15422857642369.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "69464a0de4f9b6957135a248be0eaec68c56b0f89a9432e19acd6d20a6259c52",
+        "previewSha256": "78cebe4502c46ff7ad529d9ad4f6274167d2202a69b0daece0d918535df5df34"
+      },
+      "models": [
+        438
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778083996033",
+          "printfulProductId": 438,
+          "printfulVariantId": 11576
+        },
+        {
+          "shopifyVariantId": "55778084028801",
+          "printfulProductId": 438,
+          "printfulVariantId": 11577
+        },
+        {
+          "shopifyVariantId": "55778084061569",
+          "printfulProductId": 438,
+          "printfulVariantId": 11578
+        },
+        {
+          "shopifyVariantId": "55778084094337",
+          "printfulProductId": 438,
+          "printfulVariantId": 11579
+        },
+        {
+          "shopifyVariantId": "55778084127105",
+          "printfulProductId": 438,
+          "printfulVariantId": 11580
+        },
+        {
+          "shopifyVariantId": "55778084159873",
+          "printfulProductId": 438,
+          "printfulVariantId": 12650
+        },
+        {
+          "shopifyVariantId": "55778084192641",
+          "printfulProductId": 438,
+          "printfulVariantId": 12651
+        },
+        {
+          "shopifyVariantId": "55778084225409",
+          "printfulProductId": 438,
+          "printfulVariantId": 12652
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427217195393",
+      "handle": "magnet-zum-selbstgestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "blocked",
+      "asset": "lspod-15427217195393.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [
+        "REGIONAL_AVAILABILITY_UNKNOWN"
+      ],
+      "sourceAssets": null,
+      "models": [
+        656
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55791941812609",
+          "printfulProductId": 656,
+          "printfulVariantId": 16366
+        },
+        {
+          "shopifyVariantId": "55791941845377",
+          "printfulProductId": 656,
+          "printfulVariantId": 16367
+        },
+        {
+          "shopifyVariantId": "55791941878145",
+          "printfulProductId": 656,
+          "printfulVariantId": 16465
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15451569160577",
+      "handle": "mauspad-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-15451569160577.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        518
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55893188149633",
+          "printfulProductId": 518,
+          "printfulVariantId": 13097
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "handle": "samsung-huelle-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-16672778289543.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        686,
+        267,
+        684
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "67813421941127",
+          "printfulProductId": 686,
+          "printfulVariantId": 16982
+        },
+        {
+          "shopifyVariantId": "67813421973895",
+          "printfulProductId": 686,
+          "printfulVariantId": 16978
+        },
+        {
+          "shopifyVariantId": "67813422006663",
+          "printfulProductId": 686,
+          "printfulVariantId": 16980
+        },
+        {
+          "shopifyVariantId": "67813422039431",
+          "printfulProductId": 686,
+          "printfulVariantId": 16976
+        },
+        {
+          "shopifyVariantId": "67813422072199",
+          "printfulProductId": 686,
+          "printfulVariantId": 16990
+        },
+        {
+          "shopifyVariantId": "67813422104967",
+          "printfulProductId": 686,
+          "printfulVariantId": 16986
+        },
+        {
+          "shopifyVariantId": "67813422137735",
+          "printfulProductId": 686,
+          "printfulVariantId": 16988
+        },
+        {
+          "shopifyVariantId": "67813422170503",
+          "printfulProductId": 686,
+          "printfulVariantId": 16984
+        },
+        {
+          "shopifyVariantId": "67813422203271",
+          "printfulProductId": 686,
+          "printfulVariantId": 16996
+        },
+        {
+          "shopifyVariantId": "67813422236039",
+          "printfulProductId": 686,
+          "printfulVariantId": 16992
+        },
+        {
+          "shopifyVariantId": "67813422268807",
+          "printfulProductId": 686,
+          "printfulVariantId": 16994
+        },
+        {
+          "shopifyVariantId": "67813422301575",
+          "printfulProductId": 686,
+          "printfulVariantId": 17002
+        },
+        {
+          "shopifyVariantId": "67813422334343",
+          "printfulProductId": 686,
+          "printfulVariantId": 16998
+        },
+        {
+          "shopifyVariantId": "67813422367111",
+          "printfulProductId": 686,
+          "printfulVariantId": 17000
+        },
+        {
+          "shopifyVariantId": "67813422399879",
+          "printfulProductId": 686,
+          "printfulVariantId": 18746
+        },
+        {
+          "shopifyVariantId": "67813422432647",
+          "printfulProductId": 686,
+          "printfulVariantId": 18747
+        },
+        {
+          "shopifyVariantId": "67813422465415",
+          "printfulProductId": 686,
+          "printfulVariantId": 18748
+        },
+        {
+          "shopifyVariantId": "67813422498183",
+          "printfulProductId": 686,
+          "printfulVariantId": 21470
+        },
+        {
+          "shopifyVariantId": "67813422530951",
+          "printfulProductId": 686,
+          "printfulVariantId": 21472
+        },
+        {
+          "shopifyVariantId": "67813422563719",
+          "printfulProductId": 686,
+          "printfulVariantId": 21474
+        },
+        {
+          "shopifyVariantId": "67813422596487",
+          "printfulProductId": 686,
+          "printfulVariantId": 49332
+        },
+        {
+          "shopifyVariantId": "67813422629255",
+          "printfulProductId": 686,
+          "printfulVariantId": 49330
+        },
+        {
+          "shopifyVariantId": "67813422662023",
+          "printfulProductId": 686,
+          "printfulVariantId": 49331
+        },
+        {
+          "shopifyVariantId": "67813422694791",
+          "printfulProductId": 686,
+          "printfulVariantId": 16981
+        },
+        {
+          "shopifyVariantId": "67813422727559",
+          "printfulProductId": 686,
+          "printfulVariantId": 16977
+        },
+        {
+          "shopifyVariantId": "67813422760327",
+          "printfulProductId": 686,
+          "printfulVariantId": 16979
+        },
+        {
+          "shopifyVariantId": "67813422793095",
+          "printfulProductId": 686,
+          "printfulVariantId": 16975
+        },
+        {
+          "shopifyVariantId": "67813422825863",
+          "printfulProductId": 686,
+          "printfulVariantId": 16989
+        },
+        {
+          "shopifyVariantId": "67813422858631",
+          "printfulProductId": 686,
+          "printfulVariantId": 16985
+        },
+        {
+          "shopifyVariantId": "67813422891399",
+          "printfulProductId": 686,
+          "printfulVariantId": 16987
+        },
+        {
+          "shopifyVariantId": "67813422924167",
+          "printfulProductId": 686,
+          "printfulVariantId": 16983
+        },
+        {
+          "shopifyVariantId": "67813422956935",
+          "printfulProductId": 686,
+          "printfulVariantId": 16995
+        },
+        {
+          "shopifyVariantId": "67813422989703",
+          "printfulProductId": 686,
+          "printfulVariantId": 16991
+        },
+        {
+          "shopifyVariantId": "67813423022471",
+          "printfulProductId": 686,
+          "printfulVariantId": 16993
+        },
+        {
+          "shopifyVariantId": "67813423055239",
+          "printfulProductId": 686,
+          "printfulVariantId": 17001
+        },
+        {
+          "shopifyVariantId": "67813423088007",
+          "printfulProductId": 686,
+          "printfulVariantId": 16997
+        },
+        {
+          "shopifyVariantId": "67813423120775",
+          "printfulProductId": 686,
+          "printfulVariantId": 16999
+        },
+        {
+          "shopifyVariantId": "67813423153543",
+          "printfulProductId": 686,
+          "printfulVariantId": 18743
+        },
+        {
+          "shopifyVariantId": "67813423186311",
+          "printfulProductId": 686,
+          "printfulVariantId": 18744
+        },
+        {
+          "shopifyVariantId": "67813423219079",
+          "printfulProductId": 686,
+          "printfulVariantId": 18745
+        },
+        {
+          "shopifyVariantId": "67813423251847",
+          "printfulProductId": 686,
+          "printfulVariantId": 21469
+        },
+        {
+          "shopifyVariantId": "67813423284615",
+          "printfulProductId": 686,
+          "printfulVariantId": 21471
+        },
+        {
+          "shopifyVariantId": "67813423317383",
+          "printfulProductId": 686,
+          "printfulVariantId": 21473
+        },
+        {
+          "shopifyVariantId": "67813423350151",
+          "printfulProductId": 686,
+          "printfulVariantId": 49327
+        },
+        {
+          "shopifyVariantId": "67813423382919",
+          "printfulProductId": 686,
+          "printfulVariantId": 49328
+        },
+        {
+          "shopifyVariantId": "67813423415687",
+          "printfulProductId": 686,
+          "printfulVariantId": 49329
+        },
+        {
+          "shopifyVariantId": "67813423448455",
+          "printfulProductId": 267,
+          "printfulVariantId": 11347
+        },
+        {
+          "shopifyVariantId": "67813423481223",
+          "printfulProductId": 267,
+          "printfulVariantId": 11348
+        },
+        {
+          "shopifyVariantId": "67813423513991",
+          "printfulProductId": 267,
+          "printfulVariantId": 11349
+        },
+        {
+          "shopifyVariantId": "67813423546759",
+          "printfulProductId": 267,
+          "printfulVariantId": 12025
+        },
+        {
+          "shopifyVariantId": "67813423579527",
+          "printfulProductId": 267,
+          "printfulVariantId": 12027
+        },
+        {
+          "shopifyVariantId": "67813423612295",
+          "printfulProductId": 267,
+          "printfulVariantId": 12026
+        },
+        {
+          "shopifyVariantId": "67813423645063",
+          "printfulProductId": 267,
+          "printfulVariantId": 14633
+        },
+        {
+          "shopifyVariantId": "67813423677831",
+          "printfulProductId": 267,
+          "printfulVariantId": 14634
+        },
+        {
+          "shopifyVariantId": "67813423710599",
+          "printfulProductId": 267,
+          "printfulVariantId": 14635
+        },
+        {
+          "shopifyVariantId": "67813423743367",
+          "printfulProductId": 267,
+          "printfulVariantId": 18749
+        },
+        {
+          "shopifyVariantId": "67813423776135",
+          "printfulProductId": 267,
+          "printfulVariantId": 18750
+        },
+        {
+          "shopifyVariantId": "67813423808903",
+          "printfulProductId": 267,
+          "printfulVariantId": 18751
+        },
+        {
+          "shopifyVariantId": "67813423841671",
+          "printfulProductId": 267,
+          "printfulVariantId": 18734
+        },
+        {
+          "shopifyVariantId": "67813423874439",
+          "printfulProductId": 267,
+          "printfulVariantId": 18735
+        },
+        {
+          "shopifyVariantId": "67813423907207",
+          "printfulProductId": 267,
+          "printfulVariantId": 18736
+        },
+        {
+          "shopifyVariantId": "67813423939975",
+          "printfulProductId": 267,
+          "printfulVariantId": 21481
+        },
+        {
+          "shopifyVariantId": "67813423972743",
+          "printfulProductId": 267,
+          "printfulVariantId": 21482
+        },
+        {
+          "shopifyVariantId": "67813424005511",
+          "printfulProductId": 267,
+          "printfulVariantId": 21483
+        },
+        {
+          "shopifyVariantId": "67813424038279",
+          "printfulProductId": 684,
+          "printfulVariantId": 16925
+        },
+        {
+          "shopifyVariantId": "67813424071047",
+          "printfulProductId": 684,
+          "printfulVariantId": 16927
+        },
+        {
+          "shopifyVariantId": "67813424103815",
+          "printfulProductId": 684,
+          "printfulVariantId": 16929
+        },
+        {
+          "shopifyVariantId": "67813424136583",
+          "printfulProductId": 684,
+          "printfulVariantId": 16931
+        },
+        {
+          "shopifyVariantId": "67813424169351",
+          "printfulProductId": 684,
+          "printfulVariantId": 16935
+        },
+        {
+          "shopifyVariantId": "67813424202119",
+          "printfulProductId": 684,
+          "printfulVariantId": 16937
+        },
+        {
+          "shopifyVariantId": "67813424234887",
+          "printfulProductId": 684,
+          "printfulVariantId": 16939
+        },
+        {
+          "shopifyVariantId": "67813424267655",
+          "printfulProductId": 684,
+          "printfulVariantId": 16933
+        },
+        {
+          "shopifyVariantId": "67813424300423",
+          "printfulProductId": 684,
+          "printfulVariantId": 16941
+        },
+        {
+          "shopifyVariantId": "67813424333191",
+          "printfulProductId": 684,
+          "printfulVariantId": 16943
+        },
+        {
+          "shopifyVariantId": "67813424365959",
+          "printfulProductId": 684,
+          "printfulVariantId": 16945
+        },
+        {
+          "shopifyVariantId": "67813424398727",
+          "printfulProductId": 684,
+          "printfulVariantId": 16947
+        },
+        {
+          "shopifyVariantId": "67813424431495",
+          "printfulProductId": 684,
+          "printfulVariantId": 16949
+        },
+        {
+          "shopifyVariantId": "67813424464263",
+          "printfulProductId": 684,
+          "printfulVariantId": 16951
+        },
+        {
+          "shopifyVariantId": "67813424497031",
+          "printfulProductId": 684,
+          "printfulVariantId": 18740
+        },
+        {
+          "shopifyVariantId": "67813424529799",
+          "printfulProductId": 684,
+          "printfulVariantId": 18741
+        },
+        {
+          "shopifyVariantId": "67813424562567",
+          "printfulProductId": 684,
+          "printfulVariantId": 18742
+        },
+        {
+          "shopifyVariantId": "67813424595335",
+          "printfulProductId": 684,
+          "printfulVariantId": 21476
+        },
+        {
+          "shopifyVariantId": "67813424628103",
+          "printfulProductId": 684,
+          "printfulVariantId": 21478
+        },
+        {
+          "shopifyVariantId": "67813424660871",
+          "printfulProductId": 684,
+          "printfulVariantId": 21480
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "handle": "shirt-zum-selbstgestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15427283157377.karte.json",
+      "previewAsset": "lspod-15427283157377.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "bb956b41b356288d8bdaec0d72a6f96a95bc7e986c060aa351d2b980ce2ccf53",
+        "previewSha256": "df04b815eb4ce35b09b8a402561a9ba136d731ee878c014e6f9a276f8ac7cee6"
+      },
+      "models": [
+        71
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55792263954817",
+          "printfulProductId": 71,
+          "printfulVariantId": 4011
+        },
+        {
+          "shopifyVariantId": "55792263987585",
+          "printfulProductId": 71,
+          "printfulVariantId": 4012
+        },
+        {
+          "shopifyVariantId": "55792264020353",
+          "printfulProductId": 71,
+          "printfulVariantId": 4013
+        },
+        {
+          "shopifyVariantId": "55792264053121",
+          "printfulProductId": 71,
+          "printfulVariantId": 4014
+        },
+        {
+          "shopifyVariantId": "55792264085889",
+          "printfulProductId": 71,
+          "printfulVariantId": 4015
+        },
+        {
+          "shopifyVariantId": "55794951258497",
+          "printfulProductId": 71,
+          "printfulVariantId": 4016
+        },
+        {
+          "shopifyVariantId": "55794951291265",
+          "printfulProductId": 71,
+          "printfulVariantId": 4017
+        },
+        {
+          "shopifyVariantId": "55794951324033",
+          "printfulProductId": 71,
+          "printfulVariantId": 4018
+        },
+        {
+          "shopifyVariantId": "55794951356801",
+          "printfulProductId": 71,
+          "printfulVariantId": 4019
+        },
+        {
+          "shopifyVariantId": "55794951389569",
+          "printfulProductId": 71,
+          "printfulVariantId": 4020
+        },
+        {
+          "shopifyVariantId": "55794951422337",
+          "printfulProductId": 71,
+          "printfulVariantId": 4111
+        },
+        {
+          "shopifyVariantId": "55794951455105",
+          "printfulProductId": 71,
+          "printfulVariantId": 4112
+        },
+        {
+          "shopifyVariantId": "55794951487873",
+          "printfulProductId": 71,
+          "printfulVariantId": 4113
+        },
+        {
+          "shopifyVariantId": "55794951520641",
+          "printfulProductId": 71,
+          "printfulVariantId": 4114
+        },
+        {
+          "shopifyVariantId": "55794951553409",
+          "printfulProductId": 71,
+          "printfulVariantId": 4115
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15451569324417",
+      "handle": "spiral-notizbuch-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-15451569324417.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        474
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55893188411777",
+          "printfulProductId": 474,
+          "printfulVariantId": 12141
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427282633089",
+      "handle": "tasse-zum-selbstgestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15427282633089.karte.json",
+      "previewAsset": "lspod-15427282633089.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "70c35335e312acdba5971ea400f458ef6f4ee8dd16ae76b4bc3357efa9149912",
+        "previewSha256": "8fbdaa5857b81fd95198d95f98414e4c278d10d1cfec354260678659907ac73b"
+      },
+      "models": [
+        19
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55792263233921",
+          "printfulProductId": 19,
+          "printfulVariantId": 1320
+        },
+        {
+          "shopifyVariantId": "55792263266689",
+          "printfulProductId": 19,
+          "printfulVariantId": 4830
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "handle": "transparente-iphone®-hulle-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-binding",
+      "asset": "lspod-15422946804097.karte.json",
+      "previewAsset": null,
+      "reasonCodes": [],
+      "sourceAssets": null,
+      "models": [
+        181
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55778422849921",
+          "printfulProductId": 181,
+          "printfulVariantId": 10996
+        },
+        {
+          "shopifyVariantId": "55778422882689",
+          "printfulProductId": 181,
+          "printfulVariantId": 10995
+        },
+        {
+          "shopifyVariantId": "55778422915457",
+          "printfulProductId": 181,
+          "printfulVariantId": 10994
+        },
+        {
+          "shopifyVariantId": "55778422948225",
+          "printfulProductId": 181,
+          "printfulVariantId": 11703
+        },
+        {
+          "shopifyVariantId": "55778422980993",
+          "printfulProductId": 181,
+          "printfulVariantId": 11705
+        },
+        {
+          "shopifyVariantId": "55778423013761",
+          "printfulProductId": 181,
+          "printfulVariantId": 11808
+        },
+        {
+          "shopifyVariantId": "55778423046529",
+          "printfulProductId": 181,
+          "printfulVariantId": 11704
+        },
+        {
+          "shopifyVariantId": "55778423079297",
+          "printfulProductId": 181,
+          "printfulVariantId": 13428
+        },
+        {
+          "shopifyVariantId": "55778423112065",
+          "printfulProductId": 181,
+          "printfulVariantId": 13801
+        },
+        {
+          "shopifyVariantId": "55778423144833",
+          "printfulProductId": 181,
+          "printfulVariantId": 13800
+        },
+        {
+          "shopifyVariantId": "55778423177601",
+          "printfulProductId": 181,
+          "printfulVariantId": 13427
+        },
+        {
+          "shopifyVariantId": "55778423210369",
+          "printfulProductId": 181,
+          "printfulVariantId": 16242
+        },
+        {
+          "shopifyVariantId": "55778423243137",
+          "printfulProductId": 181,
+          "printfulVariantId": 16243
+        },
+        {
+          "shopifyVariantId": "55778423275905",
+          "printfulProductId": 181,
+          "printfulVariantId": 16241
+        },
+        {
+          "shopifyVariantId": "55778423308673",
+          "printfulProductId": 181,
+          "printfulVariantId": 16240
+        },
+        {
+          "shopifyVariantId": "55778423341441",
+          "printfulProductId": 181,
+          "printfulVariantId": 17617
+        },
+        {
+          "shopifyVariantId": "55778423374209",
+          "printfulProductId": 181,
+          "printfulVariantId": 17619
+        },
+        {
+          "shopifyVariantId": "55778423406977",
+          "printfulProductId": 181,
+          "printfulVariantId": 17618
+        },
+        {
+          "shopifyVariantId": "55778423439745",
+          "printfulProductId": 181,
+          "printfulVariantId": 17616
+        },
+        {
+          "shopifyVariantId": "55778423472513",
+          "printfulProductId": 181,
+          "printfulVariantId": 20291
+        },
+        {
+          "shopifyVariantId": "55778423505281",
+          "printfulProductId": 181,
+          "printfulVariantId": 20293
+        },
+        {
+          "shopifyVariantId": "55778423538049",
+          "printfulProductId": 181,
+          "printfulVariantId": 20292
+        },
+        {
+          "shopifyVariantId": "55778423570817",
+          "printfulProductId": 181,
+          "printfulVariantId": 20290
+        },
+        {
+          "shopifyVariantId": "55778423603585",
+          "printfulProductId": 181,
+          "printfulVariantId": 33994
+        },
+        {
+          "shopifyVariantId": "55778423636353",
+          "printfulProductId": 181,
+          "printfulVariantId": 33996
+        },
+        {
+          "shopifyVariantId": "55778423669121",
+          "printfulProductId": 181,
+          "printfulVariantId": 33995
+        },
+        {
+          "shopifyVariantId": "55778423701889",
+          "printfulProductId": 181,
+          "printfulVariantId": 33993
+        },
+        {
+          "shopifyVariantId": "55778423734657",
+          "printfulProductId": 181,
+          "printfulVariantId": 7910
+        },
+        {
+          "shopifyVariantId": "55778423767425",
+          "printfulProductId": 181,
+          "printfulVariantId": 11452
+        },
+        {
+          "shopifyVariantId": "55778423800193",
+          "printfulProductId": 181,
+          "printfulVariantId": 8933
+        },
+        {
+          "shopifyVariantId": "55778423832961",
+          "printfulProductId": 181,
+          "printfulVariantId": 9621
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "handle": "unisex-hoodie-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422815699329.karte.json",
+      "previewAsset": "lspod-15422815699329.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "807d5b8671a83fe05166e49917bfcf2584579f6fb657760a647c684966496847",
+        "previewSha256": "98dbe3431dd6c5cc185ac558355513c58f467e1759a9838d5e0f259ab5721fbf"
+      },
+      "models": [
+        145,
+        821
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55777955643777",
+          "printfulProductId": 145,
+          "printfulVariantId": 5426
+        },
+        {
+          "shopifyVariantId": "55777955676545",
+          "printfulProductId": 145,
+          "printfulVariantId": 5427
+        },
+        {
+          "shopifyVariantId": "55777955709313",
+          "printfulProductId": 145,
+          "printfulVariantId": 5428
+        },
+        {
+          "shopifyVariantId": "55777955742081",
+          "printfulProductId": 145,
+          "printfulVariantId": 5429
+        },
+        {
+          "shopifyVariantId": "55777955774849",
+          "printfulProductId": 145,
+          "printfulVariantId": 5430
+        },
+        {
+          "shopifyVariantId": "55777955807617",
+          "printfulProductId": 145,
+          "printfulVariantId": 5431
+        },
+        {
+          "shopifyVariantId": "55777955840385",
+          "printfulProductId": 145,
+          "printfulVariantId": 5432
+        },
+        {
+          "shopifyVariantId": "55777955873153",
+          "printfulProductId": 145,
+          "printfulVariantId": 5433
+        },
+        {
+          "shopifyVariantId": "67814157877639",
+          "printfulProductId": 821,
+          "printfulVariantId": 20805
+        },
+        {
+          "shopifyVariantId": "67814157910407",
+          "printfulProductId": 821,
+          "printfulVariantId": 20811
+        },
+        {
+          "shopifyVariantId": "67814157943175",
+          "printfulProductId": 821,
+          "printfulVariantId": 20817
+        },
+        {
+          "shopifyVariantId": "67814157975943",
+          "printfulProductId": 821,
+          "printfulVariantId": 20823
+        },
+        {
+          "shopifyVariantId": "67814158008711",
+          "printfulProductId": 821,
+          "printfulVariantId": 20830
+        }
+      ]
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "handle": "unisex-t-shirt-selbst-gestalten",
+      "status": "ACTIVE",
+      "rolloutStatus": "ready-preview",
+      "asset": "lspod-15422811439489.karte.json",
+      "previewAsset": "lspod-15422811439489.vorschau.json",
+      "reasonCodes": [],
+      "sourceAssets": {
+        "cardSha256": "bce8a029e80e174f0eb16d802efd0b58be02d3c2486d2600096671aa83454d6e",
+        "previewSha256": "f836b1ab94198d851ebedce354d45fef73494864e245e4efe4f5a190b1521023"
+      },
+      "models": [
+        71,
+        456,
+        586
+      ],
+      "variants": [
+        {
+          "shopifyVariantId": "55777948008833",
+          "printfulProductId": 71,
+          "printfulVariantId": 9526
+        },
+        {
+          "shopifyVariantId": "55777948041601",
+          "printfulProductId": 71,
+          "printfulVariantId": 4011
+        },
+        {
+          "shopifyVariantId": "55777948074369",
+          "printfulProductId": 71,
+          "printfulVariantId": 4012
+        },
+        {
+          "shopifyVariantId": "55777948107137",
+          "printfulProductId": 71,
+          "printfulVariantId": 4013
+        },
+        {
+          "shopifyVariantId": "55777948139905",
+          "printfulProductId": 71,
+          "printfulVariantId": 4014
+        },
+        {
+          "shopifyVariantId": "55777948172673",
+          "printfulProductId": 71,
+          "printfulVariantId": 4015
+        },
+        {
+          "shopifyVariantId": "55777948205441",
+          "printfulProductId": 71,
+          "printfulVariantId": 5294
+        },
+        {
+          "shopifyVariantId": "55777948238209",
+          "printfulProductId": 71,
+          "printfulVariantId": 5309
+        },
+        {
+          "shopifyVariantId": "55777948270977",
+          "printfulProductId": 71,
+          "printfulVariantId": 12872
+        },
+        {
+          "shopifyVariantId": "67814156730759",
+          "printfulProductId": 456,
+          "printfulVariantId": 53681
+        },
+        {
+          "shopifyVariantId": "67814156763527",
+          "printfulProductId": 456,
+          "printfulVariantId": 11864
+        },
+        {
+          "shopifyVariantId": "67814156796295",
+          "printfulProductId": 456,
+          "printfulVariantId": 11865
+        },
+        {
+          "shopifyVariantId": "67814156829063",
+          "printfulProductId": 456,
+          "printfulVariantId": 11866
+        },
+        {
+          "shopifyVariantId": "67814156861831",
+          "printfulProductId": 456,
+          "printfulVariantId": 11867
+        },
+        {
+          "shopifyVariantId": "67814156894599",
+          "printfulProductId": 456,
+          "printfulVariantId": 11868
+        },
+        {
+          "shopifyVariantId": "67814156927367",
+          "printfulProductId": 456,
+          "printfulVariantId": 17228
+        },
+        {
+          "shopifyVariantId": "67814156960135",
+          "printfulProductId": 456,
+          "printfulVariantId": 17232
+        },
+        {
+          "shopifyVariantId": "67814156992903",
+          "printfulProductId": 456,
+          "printfulVariantId": 17235
+        },
+        {
+          "shopifyVariantId": "67814157091207",
+          "printfulProductId": 586,
+          "printfulVariantId": 15124
+        },
+        {
+          "shopifyVariantId": "67814157123975",
+          "printfulProductId": 586,
+          "printfulVariantId": 15125
+        },
+        {
+          "shopifyVariantId": "67814157156743",
+          "printfulProductId": 586,
+          "printfulVariantId": 15126
+        },
+        {
+          "shopifyVariantId": "67814157189511",
+          "printfulProductId": 586,
+          "printfulVariantId": 15127
+        },
+        {
+          "shopifyVariantId": "67814157222279",
+          "printfulProductId": 586,
+          "printfulVariantId": 15128
+        },
+        {
+          "shopifyVariantId": "67814157255047",
+          "printfulProductId": 586,
+          "printfulVariantId": 16335
+        },
+        {
+          "shopifyVariantId": "67814157287815",
+          "printfulProductId": 586,
+          "printfulVariantId": 17508
+        }
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "shopifyProductId": "gid://shopify/Product/15423895830913",
+      "handle": "buegeltransfer-selbst-gestalten",
+      "variantCount": 0,
+      "reasons": [
+        "NON_PRINTFUL_FULFILLMENT"
+      ]
+    }
+  ]
+}
