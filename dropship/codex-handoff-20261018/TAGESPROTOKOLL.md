@@ -1330,3 +1330,14 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Zugriff / Grenzen | Repository-/Environment-Metadaten und fehlgeschlagenen Job gezielt gelesen; PR-Beschreibung und gemeinsames Memory korrigiert | Secretlisten-API403, nur `github-pages` sichtbar. Kein Blind-Retry, kein Secretwert gelesen; keine Website-/Shop-/Social-/Flow-/DNS-/Budget-/Kunden-/Bestell-/Renderänderung |
 
 [LUXESTYLE_R129_20261108] [Gemini-Free-Tier-Zugang](GEMINI-FREE-TIER-ZUGANG-20261108-R129.md) · [Maschinenbeleg](GEMINI-FREE-TIER-ZUGANG-20261108-R129.json). Zugriff blockiert vor API; sichere nächste Bindung dokumentiert.
+
+### R130
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| HYPD / Identität | Search-Console-Properties und Merchant-Shop live read-only aufgelistet | LuxeStyle bestätigt: `sc-domain:luxestyle.ch`, `https://luxestyle.ch/`, Merchant5797470070 |
+| Search Console | Finalisierte 28-Tage-Webdaten klein gelesen; Rizinusöl-Seite/Query und eine FR-URL gezielt geprüft |65 Klicks/10’949 Impressionen gesamt; Rizinusöl13/156. FR-URL indexiert mit deutschem Titel. Vorperiode unbekannt; keine Verkaufsableitung |
+| Merchant | Summary5’000/truncated und genau erste25 Disapproval-Zeilen gelesen; neun Overlay-Varianten an Shopify gebunden | Vier Produkte/neun Varianten konkret. Umfang darüber hinaus unbekannt; Ersatzbild/Rechte blockiert, kein Bild-/Feedwrite |
+| Koordination / Grenzen | Claude-Scope PR2912/2916 und bestehende Aufgaben gegengeprüft; R130-Belege fortgeschrieben | Kein Doppelpatch, kein Shop-/Theme-/Feed-/Ads-/Socialwrite |
+
+[LUXESTYLE_R130_20261108] [HYPD-Live-Audit](HYPD-LIVE-AUDIT-20261108-R130.md) · [Maschinenbeleg](HYPD-LIVE-AUDIT-20261108-R130.json). Read-only Diagnose; konkrete Bild- und SEO-Diffs zur Freigabe vorbereitet.

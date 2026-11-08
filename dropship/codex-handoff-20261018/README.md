@@ -1639,3 +1639,9 @@ Draft-PR2924 misst die vollständigen84 Gruppen-Landingpages fail-closed. Alle84
 ## 08.11.2026 – R129 Gemini Free-Tier-Zugang
 
 [Bericht](GEMINI-FREE-TIER-ZUGANG-20261108-R129.md) · [Beleg](GEMINI-FREE-TIER-ZUGANG-20261108-R129.json). PR2915 auf aktuelles Main gebracht. Ein begrenzter GitHub-Testlauf brach vor dem API-Aufruf ab, weil `GEMINI_API_KEY2` im Job leer war. Keine Gemini-Anfrage, Antwort, Wiederholung oder belegte Kosten. Vor erneutem Lauf Secret für dieses Repository freigeben und Free-Tier-Projekt ohne Billing bestätigen; Wert nie im Chat senden.
+
+## 08.11.2026 – R130 HYPD-Live-Audit
+
+[Prüfbericht](HYPD-LIVE-AUDIT-20261108-R130.md) · [Maschinenlesbare Belege](HYPD-LIVE-AUDIT-20261108-R130.json). HYPD bestätigte Search Console `sc-domain:luxestyle.ch`/URL-Präfix und Merchant-Shop `LuxeStyle CH`/5797470070. Finalisierte Webdaten09.10.–05.11.:65 Klicks/10’949 Impressionen; keine Verkaufsableitung. Die Rizinusöl-Wickel-Seite erzielte13/156 bei Position7,10; ein einzelner CH-Titelentwurf bleibt unangewendet. Eine selbstkanonische FR-Produkt-URL ist mit deutschem Namen indexiert; Claudes bestehender FR-Draft wurde nicht dupliziert.
+
+Merchant las5’000 Produkte mit `truncated=true`; die erste Disapproval-Seite war ebenfalls nicht vollständig. Neun konkrete Overlay-Varianten aus vier Produkten wurden exakt an Shopify-IDs gebunden. Fremdtexte, Masse, `Deep Space Gray`, `USA Stock` und USPS-Logo sind die belegten Bildgründe. Ersatzbilder und Rechte fehlen; kein Bild-/Feed-/Shopwrite. Sitemap-`indexed=0` wurde wegen gleichzeitig belegter indexierter Einzel-URL als widersprüchlich verworfen. Revision130 dokumentiert ausschliesslich read-only Belege.

@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "revision": 130,
+  "dateZurich": "2026-11-08",
+  "mode": "read_only",
+  "connections": {
+    "searchConsole": [
+      {
+        "site_url": "https://luxestyle.ch/",
+        "permission_level": "siteOwner"
+      },
+      {
+        "site_url": "sc-domain:luxestyle.ch",
+        "permission_level": "siteOwner"
+      }
+    ],
+    "merchant": {
+      "name": "LuxeStyle CH",
+      "shop_id": "5797470070"
+    }
+  },
+  "gsc": {
+    "period": {
+      "start": "2026-10-09",
+      "end": "2026-11-05",
+      "data_state": "final",
+      "search_type": "web"
+    },
+    "aggregate": {
+      "clicks": 65,
+      "impressions": 10949,
+      "ctr": 0.005936615216001462,
+      "position": 53.11334368435474
+    },
+    "previousPeriod": "unknown_empty_aggregate_response_not_zero",
+    "opportunity": {
+      "url": "https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken",
+      "page": {
+        "clicks": 13,
+        "impressions": 156,
+        "ctr": 0.08333333333333333,
+        "position": 7.102564102564102
+      },
+      "query": "rizinusöl wickel schweiz",
+      "queryMetrics": {
+        "clicks": 0,
+        "impressions": 9,
+        "position": 2.78
+      },
+      "titleProposal": "Rizinusöl-Wickel Schweiz: Bauch & Nacken | LuxeStyle",
+      "applied": false,
+      "inspection": {
+        "indexed": true,
+        "canonical": "https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken",
+        "crawlingAllowed": true,
+        "lastCrawlDate": "2026-10-23"
+      }
+    },
+    "frInspection": {
+      "url": "https://luxestyle.ch/fr/products/elegantes-halterneck-kleid-639800",
+      "verdict": "PASS",
+      "coverageState": "Gesendet und indexiert",
+      "googleCanonical": "https://luxestyle.ch/fr/products/elegantes-halterneck-kleid-639800",
+      "userCanonical": "https://luxestyle.ch/fr/products/elegantes-halterneck-kleid-639800",
+      "lastCrawlTime": "2026-11-07T01:27:50Z",
+      "observedGermanProductName": "Elegantes Halterneck-Kleid",
+      "frPageRowsReturned": 50,
+      "frPageRowsTruncated": true,
+      "catalogInference": false
+    },
+    "sitemap": {
+      "path": "https://luxestyle.ch/sitemap.xml",
+      "lastDownloaded": "2026-11-07T20:06:01.279Z",
+      "reportedWebSubmitted": 112508,
+      "reportedImageSubmitted": 111129,
+      "reportedIndexed": 0,
+      "interpretation": "discard_as_inconclusive_because_url_inspection_proves_indexed_url"
+    }
+  },
+  "merchant": {
+    "summary": {
+      "scanned_products": 5000,
+      "truncated": true,
+      "safeCatalogRate": false
+    },
+    "disapprovedPage": {
+      "page_size": 25,
+      "rows": 25,
+      "next_page_token_present": true,
+      "image_unwanted_overlays_rows": 23,
+      "other_policy_rows": 2
+    },
+    "overlaySummaryConflict": "summary_product_count_9_conflicts_with_first_page_23_rows_and_truncation; no_catalog_total",
+    "variants": [
+      {
+        "product_id": "15433464381825",
+        "variant_id": "67788517867911",
+        "offer_id": "shopify_ZZ_15433464381825_67788517867911",
+        "option": "PS5"
+      },
+      {
+        "product_id": "15433464381825",
+        "variant_id": "67788517900679",
+        "offer_id": "shopify_ZZ_15433464381825_67788517900679",
+        "option": "PS4"
+      },
+      {
+        "product_id": "15433464381825",
+        "variant_id": "67788517933447",
+        "offer_id": "shopify_ZZ_15433464381825_67788517933447",
+        "option": "XBOX"
+      },
+      {
+        "product_id": "15433464381825",
+        "variant_id": "67788517966215",
+        "offer_id": "shopify_ZZ_15433464381825_67788517966215",
+        "option": "Switchpro"
+      },
+      {
+        "product_id": "15433464381825",
+        "variant_id": "67788518064519",
+        "offer_id": "shopify_ZZ_15433464381825_67788518064519",
+        "option": "XBOX Elite Griff"
+      },
+      {
+        "product_id": "15445274919297",
+        "variant_id": "56061669147009",
+        "offer_id": "shopify_ZZ_15445274919297_56061669147009",
+        "option": "Butterfly 304"
+      },
+      {
+        "product_id": "15447560978817",
+        "variant_id": "56063588598145",
+        "offer_id": "shopify_ZZ_15447560978817_56063588598145",
+        "option": "Grau-Einzeln"
+      },
+      {
+        "product_id": "15447567040897",
+        "variant_id": "56063606096257",
+        "offer_id": "shopify_ZZ_15447567040897_56063606096257",
+        "option": "2 Stück Ladegerät"
+      },
+      {
+        "product_id": "15447567040897",
+        "variant_id": "56063606129025",
+        "offer_id": "shopify_ZZ_15447567040897_56063606129025",
+        "option": "4 Stück Ladegerät"
+      }
+    ],
+    "writes": 0,
+    "products": [
+      {
+        "product_id": "15433464381825",
+        "url": "https://luxestyle.ch/products/ps5-gamepad-618700",
+        "publicHttpStatus": 200,
+        "buyableInTargetedCheck": true
+      },
+      {
+        "product_id": "15445274919297",
+        "url": "https://luxestyle.ch/products/painless-fast-nail-art-extension-set-621900",
+        "publicHttpStatus": 200,
+        "buyableInTargetedCheck": true
+      },
+      {
+        "product_id": "15447560978817",
+        "url": "https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500",
+        "publicHttpStatus": 200,
+        "buyableInTargetedCheck": true
+      },
+      {
+        "product_id": "15447567040897",
+        "url": "https://luxestyle.ch/products/li-ion-akku-ladegerat-set-3000mah-626433",
+        "publicHttpStatus": 200,
+        "buyableInTargetedCheck": true
+      }
+    ]
+  },
+  "coordination": {
+    "claudeDraftPr2912Scope": [
+      "fr_noindex",
+      "faq_copy",
+      "14_emoji_handles"
+    ],
+    "overlap": "none_for_hypd_live_reads_or_merchant_variant_binding",
+    "frPatchDuplicated": false
+  },
+  "writes": {
+    "shopify": 0,
+    "merchant": 0,
+    "feed": 0,
+    "theme": 0,
+    "metricool": 0,
+    "ads": 0,
+    "customerMessages": 0
+  }
+}

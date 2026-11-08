@@ -1044,3 +1044,11 @@ PR2916 erweitert gestapelt auf PR2912 die temporäre FR-Noindex-Eindämmung;44/4
 - Inhaber verlangt `GEMINI_API_KEY2` und ausschliesslich Free Tier. Draft-PR2915 auf aktuelles Main gebracht.
 - Lauf42430952176 brach fail-closed vor Netzwerk ab: Secret im Job leer. Null API-Requests, Antworten, Retries oder Fallbacks; kein Gemini-Ergebnis.
 - Nächster Schritt erst nach sicherer Actions-Secretfreigabe für dieses Repo und AI-Studio-Free-Tier-Gegenprobe. Keine Secretwerte im Chat, kein blinder Retry.
+
+# R130 – HYPD-Live-Audit, 08.11.2026
+
+- HYPD-Verbindungen frisch belegt: GSC `sc-domain:luxestyle.ch`/`https://luxestyle.ch/`, Merchant `LuxeStyle CH`/5797470070.
+- GSC09.10.–05.11. final:65 Klicks/10’949 Impressionen. Rizinusöl-Seite13/156, Position7,10; Query «rizinusöl wickel schweiz»0/9, Position2,78. Titelentwurf nicht angewendet. Vorperiode leer=unbekannt.
+- `/fr/products/elegantes-halterneck-kleid-639800` ist indexiert, selbstkanonisch und liefert den deutschen Produktnamen. FR-Abfrage50 Zeilen/truncated; kein Gesamtschluss. Sitemap-Indexed-Null wegen Einzelindexbeleg verworfen.
+- Merchant-Summary5’000/truncated; erste25 Disapproval-Zeilen mit next-page-token. Neun Overlay-Varianten aus vier Produkten exakt gebunden; text-/logofreie, rechtegeprüfte Ersatzbilder fehlen. Keine Katalogquote, kein Write.
+- Claude-PR2912/2916 deckt FR-Noindex ab; kein Doppelpatch. Belege: [HYPD-LIVE-AUDIT-20261108-R130.md](HYPD-LIVE-AUDIT-20261108-R130.md) und [HYPD-LIVE-AUDIT-20261108-R130.json](HYPD-LIVE-AUDIT-20261108-R130.json).
