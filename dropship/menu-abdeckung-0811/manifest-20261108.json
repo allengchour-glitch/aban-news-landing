@@ -1,0 +1,3540 @@
+{
+  "art": "GEMESSEN",
+  "zeitUtc": "2026-11-08T00:23:12.054Z",
+  "quelle": "https://luxestyle.ch/",
+  "grenzen": {
+    "gruppenMax": 100,
+    "alternativeSeitenMax": 30,
+    "geleseneSeiten": 103,
+    "parallel": 4,
+    "netzSchreibzugriffe": 0
+  },
+  "menue": {
+    "gruppenKnoten": 86,
+    "gruppenUrls": 84,
+    "kinderKanten": 520,
+    "kinderUrls": 514,
+    "mobileAlleBelegt": 0,
+    "fehler": []
+  },
+  "abdeckung": {
+    "gruppen": 84,
+    "voll": 13,
+    "teilweise": 8,
+    "ohneKinderlinksImMain": 63,
+    "fehler": 0,
+    "unbekannt": 0,
+    "fehlendeKanten": 397,
+    "gepruefteKanten": 520
+  },
+  "alternativen": {
+    "seiten": [
+      {
+        "pfad": "/pages/alle-kategorien",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/pages/alle-kategorien",
+        "mainLinks": 412
+      },
+      {
+        "pfad": "/collections/premium-geschenke",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/premium-geschenke",
+        "mainLinks": 44
+      },
+      {
+        "pfad": "/collections/damen-mode",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/damen-mode",
+        "mainLinks": 56
+      },
+      {
+        "pfad": "/collections/fur-ihn",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/fur-ihn",
+        "mainLinks": 53
+      },
+      {
+        "pfad": "/collections/schuhe",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/schuhe",
+        "mainLinks": 34
+      },
+      {
+        "pfad": "/collections/sub-taschen",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/sub-taschen",
+        "mainLinks": 51
+      },
+      {
+        "pfad": "/collections/schmuck",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/schmuck",
+        "mainLinks": 36
+      },
+      {
+        "pfad": "/collections/uhren",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/uhren",
+        "mainLinks": 32
+      },
+      {
+        "pfad": "/collections/beauty-pflege",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/beauty-pflege",
+        "mainLinks": 44
+      },
+      {
+        "pfad": "/collections/kueche-kochen",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/kueche-kochen",
+        "mainLinks": 29
+      },
+      {
+        "pfad": "/collections/geschirr-tisch",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/geschirr-tisch",
+        "mainLinks": 28
+      },
+      {
+        "pfad": "/collections/wohnen-dekoration",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/wohnen-dekoration",
+        "mainLinks": 41
+      },
+      {
+        "pfad": "/collections/elektronik-technik",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/elektronik-technik",
+        "mainLinks": 44
+      },
+      {
+        "pfad": "/collections/auto-kfz-zubehoer",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/auto-kfz-zubehoer",
+        "mainLinks": 32
+      },
+      {
+        "pfad": "/collections/gaming",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/gaming",
+        "mainLinks": 37
+      },
+      {
+        "pfad": "/collections/sub-baby-kids",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/sub-baby-kids",
+        "mainLinks": 40
+      },
+      {
+        "pfad": "/collections/sub-haustier",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/sub-haustier",
+        "mainLinks": 39
+      },
+      {
+        "pfad": "/collections/bestseller",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/bestseller",
+        "mainLinks": 36
+      },
+      {
+        "pfad": "/collections/jacken-outdoor",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/jacken-outdoor",
+        "mainLinks": 43
+      },
+      {
+        "pfad": "/collections/fitness-training",
+        "zustand": "voll",
+        "grund": null,
+        "status": 200,
+        "canonical": "/collections/fitness-training",
+        "mainLinks": 46
+      }
+    ],
+    "eindeutigeMainLinks": 975,
+    "abgedeckteKinderUrls": 43
+  },
+  "cap6": {
+    "cap": 6,
+    "versteckteKanten": 84,
+    "versteckteUrls": 83,
+    "sichereKanten": 40,
+    "unsichereKanten": 44,
+    "unsichereUrls": 44,
+    "sicherDurchAndereNavigation": 3,
+    "sicherDurchAlternativeSeite": 10,
+    "sicherDurchGruppenMain": 27,
+    "mobileAlleFehltKnoten": 86,
+    "activeCurrentBewahrt": "unbekannt",
+    "freigegeben": false,
+    "grund": "Kindziele würden ihre belegte Erreichbarkeit verlieren",
+    "kanten": [
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-wickel",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-traeger",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-figurbetont",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-ruesche",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-freizeit",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-satin",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-samt",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-gemustert",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-blazer",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-kunstfell",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-kapuze",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-cape",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-kapuze",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-outdoor",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-hemdjacke",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-pantoletten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-flip-flops",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-stiefel",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-winterschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-wanderschuhe",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-hausschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-freizeitschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-winterschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-wanderschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-hausschuhe",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/kinderschuhe",
+        "kind": "/collections/kinder-freizeitschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/skateschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/inline-skates-rollschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/wanderschuhe-trekking",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/wasser-aquaschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/radschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/rucksaecke",
+        "kind": "/collections/kinder-wickelrucksaecke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-ringe",
+        "kind": "/collections/verstellbare-offene-ringe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/halsketten-alle",
+        "kind": "/collections/zirkonia-moissanit-ketten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/silberarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/edelstahl-titanarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/vergoldete-armbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/zirkonia-strassarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/make-up",
+        "kind": "/collections/make-up-pinsel-tools",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/make-up",
+        "kind": "/collections/schminkspiegel",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/vorratsdosen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/kuechenwaagen-feinwaagen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/waagen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/kuechengeraete-weitere",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/kuechengeraete-zubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/messerschaerfer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/haushaltsgeraete",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/moebel-hocker-tische",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/waeschekoerbe",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/wandregale",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/aufbewahrung-sub",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/kissen",
+        "kind": "/collections/teppiche-fussmatten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kissen",
+        "kind": "/collections/kissen-wohntextilien",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/vorhaenge-gardinen-rollos",
+        "kind": "/collections/wecker",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/vasen-blumenvasen",
+        "kind": "/collections/geschenkverpackung",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/vasen-blumenvasen",
+        "kind": "/collections/sub-deko",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/sub-beleuchtung",
+        "kind": "/collections/schreibtischlampen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/basteln-diy",
+        "kind": "/collections/sticker-aufkleber",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/grills-grillzubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/pool-sonnenschutz-gartenmoebel",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/regen-sonnenschirme",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/haengematten",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/werkzeug-maschinen",
+        "kind": "/collections/taschenlampen-kopflampen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/handy-zubehoer",
+        "kind": "/collections/handyhuellen-displayschutz",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/handy-zubehoer",
+        "kind": "/collections/selfie-stative-foto",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/kopfhoerer-audio",
+        "kind": "/collections/funkgeraete-megaphone",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/laptop-taschen-huellen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/usb-hubs-docks",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/pc-bauteile",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/netzwerk-router",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/laptop-business-rucksaecke",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/aktentaschen-messenger",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/schreibtischlampen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/babykleidung",
+        "kind": "/collections/kinder-familien-looks",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-holz-magnet-gross",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-kinder-mikro",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-weitere-sets",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/baby-ausstattung",
+        "kind": "/collections/kindergeschirr-trinken",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/baby-ausstattung",
+        "kind": "/collections/baby-zubehoer-geschenke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/leinen-halsbaender-geschirre",
+        "kind": "/collections/tier-auto",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tierspielzeug",
+        "kind": "/collections/tier-weiteres-spielzeug",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/fitness-training",
+        "kind": "/collections/trainingsgeraete-arm-bein-ganzkoerper",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/fitness-training",
+        "kind": "/collections/taillentrainer-hula-hoop",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/camping-outdoor",
+        "kind": "/collections/camping-licht-zubehoer",
+        "sicher": true,
+        "grund": "gruppen-main"
+      }
+    ]
+  },
+  "cap4": {
+    "cap": 4,
+    "versteckteKanten": 193,
+    "versteckteUrls": 192,
+    "sichereKanten": 73,
+    "unsichereKanten": 120,
+    "unsichereUrls": 120,
+    "sicherDurchAndereNavigation": 6,
+    "sicherDurchAlternativeSeite": 16,
+    "sicherDurchGruppenMain": 51,
+    "mobileAlleFehltKnoten": 86,
+    "activeCurrentBewahrt": "unbekannt",
+    "freigegeben": false,
+    "grund": "Kindziele würden ihre belegte Erreichbarkeit verlieren",
+    "kanten": [
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-schulterfrei",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-aline",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-wickel",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-traeger",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-figurbetont",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-ruesche",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-strand",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-strick",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-freizeit",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-jeans",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-plissee",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-satin",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-samt",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-kleider",
+        "kind": "/collections/damen-kleider-gemustert",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-uebergang",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-westen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-blazer",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-kunstfell",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-kapuze",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-jacken-maentel",
+        "kind": "/collections/damen-jacken-cape",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-leder",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-baseball-bomber",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-kapuze",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-outdoor",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-jacken-maentel",
+        "kind": "/collections/herren-jacken-hemdjacke",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-sandalen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-keilsandalen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-pantoletten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-flip-flops",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-stiefel",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-winterschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-wanderschuhe",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-hausschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/damen-schuhe",
+        "kind": "/collections/damen-freizeitschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-stiefel",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-sandalen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-winterschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-wanderschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/herren-schuhe",
+        "kind": "/collections/herren-hausschuhe",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/kinderschuhe",
+        "kind": "/collections/kinder-ballerinas",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kinderschuhe",
+        "kind": "/collections/kinder-hausschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kinderschuhe",
+        "kind": "/collections/kinder-freizeitschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/hallen-kampfsportschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/tanz-ballettschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/skateschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/inline-skates-rollschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/wanderschuhe-trekking",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/wasser-aquaschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sneaker-sportschuhe",
+        "kind": "/collections/radschuhe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/rucksaecke",
+        "kind": "/collections/velo-lauf-trinkrucksaecke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/rucksaecke",
+        "kind": "/collections/freizeit-sportrucksaecke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/rucksaecke",
+        "kind": "/collections/kinder-wickelrucksaecke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-ringe",
+        "kind": "/collections/zirkonia-strassringe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-ringe",
+        "kind": "/collections/ringsets-stapelringe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-ringe",
+        "kind": "/collections/verstellbare-offene-ringe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-ohrringe",
+        "kind": "/collections/perlen-ohrringe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-ohrringe",
+        "kind": "/collections/zirkonia-strass-ohrringe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/halsketten-alle",
+        "kind": "/collections/silberketten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/halsketten-alle",
+        "kind": "/collections/edelstahl-titanketten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/halsketten-alle",
+        "kind": "/collections/zirkonia-moissanit-ketten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/kupfer-magnetarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/geflochtene-wickelarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/silberarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/edelstahl-titanarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/vergoldete-armbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-armbaender",
+        "kind": "/collections/zirkonia-strassarmbaender",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/schmuck-motiv-gruppe",
+        "kind": "/collections/gluecks-schutzschmuck",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/schmuck-motiv-gruppe",
+        "kind": "/collections/kreuz-schmuck",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/schmuck-stil-gruppe",
+        "kind": "/collections/geometrischer-schmuck",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/schmuck-stil-gruppe",
+        "kind": "/collections/korea-frankreich-oldmoney-schmuck",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/schmuck-sets-gruppe",
+        "kind": "/collections/premium-schmuck",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/make-up",
+        "kind": "/collections/teint-make-up",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/make-up",
+        "kind": "/collections/make-up-sets",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/make-up",
+        "kind": "/collections/make-up-pinsel-tools",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/make-up",
+        "kind": "/collections/schminkspiegel",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/hautpflege-skincare",
+        "kind": "/collections/lippenpflege",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/hautpflege-skincare",
+        "kind": "/collections/sonnenschutz-braeunung",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/beauty-haar",
+        "kind": "/collections/sub-bart-rasur",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/beauty-haar",
+        "kind": "/collections/haarentfernung-epilierer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/naegel-manikuere",
+        "kind": "/collections/nagellampen-fraeser",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/naegel-manikuere",
+        "kind": "/collections/nagelpflege-werkzeuge",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/gesichtspflege-geraete",
+        "kind": "/collections/gua-sha-gesichtsroller",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/gesichtspflege-geraete",
+        "kind": "/collections/mikrostrom-lifting-geraete",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/nacken-ruecken-massagegeraete",
+        "kind": "/collections/schlafmasken-nackenkissen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/haltungsgurte-ruecken",
+        "kind": "/collections/brillen-brillenzubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kochen-grillen-backen",
+        "kind": "/collections/grillpfannen-elektrogrills",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kochen-grillen-backen",
+        "kind": "/collections/sub-kueche",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/kuechengadgets",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/kuechen-organizer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/vorratsdosen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/kuechenwaagen-feinwaagen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechenhelfer-vorrat",
+        "kind": "/collections/waagen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/waffeleisen-sandwichmaker-toaster",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/nudel-eis-snackmaschinen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/kuechengeraete-weitere",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/kuechengeraete-zubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/messerschaerfer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kuechengeraete-alle",
+        "kind": "/collections/haushaltsgeraete",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/geschirr-besteck-tisch",
+        "kind": "/collections/lunchboxen-kuehltaschen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kaffee-tee-trinken",
+        "kind": "/collections/bar-weinzubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/reinigungsmittel-buersten-mopps",
+        "kind": "/collections/ersatzteile-zubehoer",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/haken-garderobenhalter",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/regale-wandregale",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/moebel-hocker-tische",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/waeschekoerbe",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/wandregale",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/koerbe-behaelter",
+        "kind": "/collections/aufbewahrung-sub",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/badematten-badteppiche",
+        "kind": "/collections/handtuecher-badetuecher",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/badematten-badteppiche",
+        "kind": "/collections/armaturen-duschen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kissen",
+        "kind": "/collections/bettwaesche-bettbezuege",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kissen",
+        "kind": "/collections/decken-plaids",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kissen",
+        "kind": "/collections/teppiche-fussmatten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/kissen",
+        "kind": "/collections/kissen-wohntextilien",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/vorhaenge-gardinen-rollos",
+        "kind": "/collections/wecker-radiowecker",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/vorhaenge-gardinen-rollos",
+        "kind": "/collections/wandbilder-poster",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/vorhaenge-gardinen-rollos",
+        "kind": "/collections/wecker",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/vasen-blumenvasen",
+        "kind": "/collections/raeucherwerk-duftoele",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/vasen-blumenvasen",
+        "kind": "/collections/vasen-blumentoepfe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/vasen-blumenvasen",
+        "kind": "/collections/geschenkverpackung",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/vasen-blumenvasen",
+        "kind": "/collections/sub-deko",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/sub-beleuchtung",
+        "kind": "/collections/deckenleuchten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-beleuchtung",
+        "kind": "/collections/nachtlichter-ambiente",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/sub-beleuchtung",
+        "kind": "/collections/schreibtischlampen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/basteln-diy",
+        "kind": "/collections/harz-giessformen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/basteln-diy",
+        "kind": "/collections/modellbau",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/basteln-diy",
+        "kind": "/collections/sticker-aufkleber",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/garten-aussenleuchten",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/hochdruckreiniger-schaumkanonen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/grills-grillzubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/pool-sonnenschutz-gartenmoebel",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/regen-sonnenschirme",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/outdoor-garten",
+        "kind": "/collections/haengematten",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/werkzeug-maschinen",
+        "kind": "/collections/werkzeugkoffer-sets",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/werkzeug-maschinen",
+        "kind": "/collections/werkzeugtaschen-aufbewahrung",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/werkzeug-maschinen",
+        "kind": "/collections/taschenlampen-kopflampen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/handy-zubehoer",
+        "kind": "/collections/ladekabel-datenkabel",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/handy-zubehoer",
+        "kind": "/collections/handyhalter-staender",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/handy-zubehoer",
+        "kind": "/collections/handyhuellen-displayschutz",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/handy-zubehoer",
+        "kind": "/collections/selfie-stative-foto",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/kopfhoerer-audio",
+        "kind": "/collections/radios-audioplayer-diktiergeraete",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/kopfhoerer-audio",
+        "kind": "/collections/audio-zubehoer-adapter",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/kopfhoerer-audio",
+        "kind": "/collections/funkgeraete-megaphone",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/smartwatches-wearables",
+        "kind": "/collections/smarte-brillen-ki",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/drohnen-kameras",
+        "kind": "/collections/fernglaeser-nachtsicht",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/gaming",
+        "kind": "/collections/vr-brillen-headsets",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/speicherkarten-kartenleser",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/laptop-tablet-staender",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/laptop-taschen-huellen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/usb-hubs-docks",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/pc-bauteile",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/pc-homeoffice",
+        "kind": "/collections/netzwerk-router",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/schreibwaren-stifte",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/bueroelektronik",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/laptop-business-rucksaecke",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/aktentaschen-messenger",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/buro-home-office",
+        "kind": "/collections/schreibtischlampen",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/ueberwachungskameras",
+        "kind": "/collections/arbeitsschutz-masken",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/lenkradbezuege",
+        "kind": "/collections/auto-duft-luft",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/lenkradbezuege",
+        "kind": "/collections/auto-komfort-reise",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/babykleidung",
+        "kind": "/collections/kinder-oberteile-kleider-hosen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/babykleidung",
+        "kind": "/collections/kinder-nachtwaesche-bademode",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/babykleidung",
+        "kind": "/collections/kinder-familien-looks",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-blumen-deko",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-tiere-weltraum",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-holz-magnet-gross",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-kinder-mikro",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bausteine-konstruktion",
+        "kind": "/collections/bausteine-weitere-sets",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/spielzeug-fahrzeuge",
+        "kind": "/collections/drohnen-fpv",
+        "sicher": true,
+        "grund": "alternative-seite-main"
+      },
+      {
+        "gruppe": "/collections/baby-ausstattung",
+        "kind": "/collections/baby-spielen-entdecken",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/baby-ausstattung",
+        "kind": "/collections/baby-sicherheit-babyphone",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/baby-ausstattung",
+        "kind": "/collections/kindergeschirr-trinken",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/baby-ausstattung",
+        "kind": "/collections/baby-zubehoer-geschenke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/leinen-halsbaender-geschirre",
+        "kind": "/collections/tier-tracker",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/leinen-halsbaender-geschirre",
+        "kind": "/collections/tier-transport",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/leinen-halsbaender-geschirre",
+        "kind": "/collections/tier-auto",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tierspielzeug",
+        "kind": "/collections/tier-intelligenzspielzeug",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tierspielzeug",
+        "kind": "/collections/tier-interaktives-spielzeug",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tierspielzeug",
+        "kind": "/collections/tier-weiteres-spielzeug",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tier-naepfe-fuettern",
+        "kind": "/collections/tier-erhoehte-naepfe",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tier-naepfe-fuettern",
+        "kind": "/collections/tier-napfzubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tierbetten-kratzbaeume",
+        "kind": "/collections/tier-halskrausen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/tierbetten-kratzbaeume",
+        "kind": "/collections/tier-hilfsmittel",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/fitness-training",
+        "kind": "/collections/balance-gymnastik",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/fitness-training",
+        "kind": "/collections/kraftsport-handschuhe-guertel",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/fitness-training",
+        "kind": "/collections/trainingsgeraete-arm-bein-ganzkoerper",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/fitness-training",
+        "kind": "/collections/taillentrainer-hula-hoop",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/wandern-trekking",
+        "kind": "/collections/schwimmen-tauchen-wassersport",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/camping-outdoor",
+        "kind": "/collections/camping-geschirr-kochsets",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/camping-outdoor",
+        "kind": "/collections/picknick-kuehlrucksaecke",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/camping-outdoor",
+        "kind": "/collections/camping-licht-zubehoer",
+        "sicher": true,
+        "grund": "gruppen-main"
+      },
+      {
+        "gruppe": "/collections/velo-radsport",
+        "kind": "/collections/velo-teile-zubehoer",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/bastelsets-diy-kits",
+        "kind": "/collections/epoxidharz-giessformen",
+        "sicher": false,
+        "grund": "nicht-abgedeckt"
+      },
+      {
+        "gruppe": "/collections/geschenkverpackung-boxen",
+        "kind": "/collections/hochzeitsgeschenke",
+        "sicher": true,
+        "grund": "andere-dauerhafte-navigation"
+      }
+    ]
+  },
+  "gruppen": [
+    {
+      "url": "/collections/damen-kleider",
+      "titel": [
+        "Kleider nach Länge & Schnitt",
+        "Kleider nach Anlass & Saison",
+        "Kleider nach Material & Muster"
+      ],
+      "knoten": 3,
+      "kinder": 26,
+      "zustand": "voll",
+      "abgedeckt": 26,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/damen-kleider",
+      "canonical": "/collections/damen-kleider"
+    },
+    {
+      "url": "/collections/damen-jacken-maentel",
+      "titel": [
+        "Jacken & Mäntel"
+      ],
+      "knoten": 1,
+      "kinder": 10,
+      "zustand": "voll",
+      "abgedeckt": 10,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/damen-jacken-maentel",
+      "canonical": "/collections/damen-jacken-maentel"
+    },
+    {
+      "url": "/collections/herren-jacken-maentel",
+      "titel": [
+        "Jacken & Mäntel"
+      ],
+      "knoten": 1,
+      "kinder": 9,
+      "zustand": "voll",
+      "abgedeckt": 9,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/herren-jacken-maentel",
+      "canonical": "/collections/herren-jacken-maentel"
+    },
+    {
+      "url": "/collections/damen-schuhe",
+      "titel": [
+        "Damenschuhe"
+      ],
+      "knoten": 1,
+      "kinder": 13,
+      "zustand": "teilweise",
+      "abgedeckt": 5,
+      "fehlend": [
+        "/collections/damen-sportschuhe",
+        "/collections/damen-ballerinas",
+        "/collections/damen-keilsandalen",
+        "/collections/damen-pantoletten",
+        "/collections/damen-flip-flops",
+        "/collections/damen-winterschuhe",
+        "/collections/damen-hausschuhe",
+        "/collections/damen-freizeitschuhe"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/damen-schuhe",
+      "canonical": "/collections/damen-schuhe"
+    },
+    {
+      "url": "/collections/herren-schuhe",
+      "titel": [
+        "Herrenschuhe"
+      ],
+      "knoten": 1,
+      "kinder": 9,
+      "zustand": "teilweise",
+      "abgedeckt": 5,
+      "fehlend": [
+        "/collections/herren-sportschuhe",
+        "/collections/herren-freizeitschuhe",
+        "/collections/herren-winterschuhe",
+        "/collections/herren-wanderschuhe"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/herren-schuhe",
+      "canonical": "/collections/herren-schuhe"
+    },
+    {
+      "url": "/collections/kinderschuhe",
+      "titel": [
+        "Kinderschuhe"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/kinder-lauflernschuhe",
+        "/collections/kinder-sneaker",
+        "/collections/kinder-stiefel",
+        "/collections/kinder-sandalen",
+        "/collections/kinder-ballerinas",
+        "/collections/kinder-hausschuhe",
+        "/collections/kinder-freizeitschuhe"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/kinderschuhe",
+      "canonical": "/collections/kinderschuhe"
+    },
+    {
+      "url": "/collections/sneaker-sportschuhe",
+      "titel": [
+        "Sportschuhe"
+      ],
+      "knoten": 1,
+      "kinder": 11,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/laufschuhe-running",
+        "/collections/trainings-fitnessschuhe",
+        "/collections/allround-sportschuhe",
+        "/collections/ballsportschuhe",
+        "/collections/hallen-kampfsportschuhe",
+        "/collections/tanz-ballettschuhe",
+        "/collections/skateschuhe",
+        "/collections/inline-skates-rollschuhe",
+        "/collections/wanderschuhe-trekking",
+        "/collections/wasser-aquaschuhe",
+        "/collections/radschuhe"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sneaker-sportschuhe",
+      "canonical": "/collections/sneaker-sportschuhe"
+    },
+    {
+      "url": "/collections/rucksaecke",
+      "titel": [
+        "Rucksäcke"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/laptop-business-rucksaecke",
+        "/collections/schul-studentenrucksaecke",
+        "/collections/wander-outdoor-rucksaecke",
+        "/collections/reise-rucksaecke",
+        "/collections/velo-lauf-trinkrucksaecke",
+        "/collections/freizeit-sportrucksaecke",
+        "/collections/kinder-wickelrucksaecke"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/rucksaecke",
+      "canonical": "/collections/rucksaecke"
+    },
+    {
+      "url": "/collections/rucksaecke-spezial-gruppe",
+      "titel": [
+        "Spezial-Rucksäcke"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/taktische-tarn-rucksaecke",
+        "/collections/foto-drohnen-rucksaecke",
+        "/collections/rucksaecke-motorrad"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/rucksaecke-spezial-gruppe",
+      "canonical": "/collections/rucksaecke-spezial-gruppe"
+    },
+    {
+      "url": "/collections/rucksaecke-material-gruppe",
+      "titel": [
+        "Material & Ausstattung"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/leder-kunstleder-rucksaecke",
+        "/collections/canvas-vintage-rucksaecke",
+        "/collections/usb-lade-rucksaecke",
+        "/collections/wasserdichte-rucksaecke"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/rucksaecke-material-gruppe",
+      "canonical": "/collections/rucksaecke-material-gruppe"
+    },
+    {
+      "url": "/collections/sub-ringe",
+      "titel": [
+        "Ringe"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/silberringe",
+        "/collections/edelstahl-titanringe",
+        "/collections/moissanit-ringe",
+        "/collections/edelstein-geburtsstein-ringe",
+        "/collections/zirkonia-strassringe",
+        "/collections/ringsets-stapelringe",
+        "/collections/verstellbare-offene-ringe"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sub-ringe",
+      "canonical": "/collections/sub-ringe"
+    },
+    {
+      "url": "/collections/sub-ohrringe",
+      "titel": [
+        "Ohrringe"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/ohrstecker",
+        "/collections/ohrhaenger-tropfenohrringe",
+        "/collections/creolen-ohrclips",
+        "/collections/silber-ohrringe",
+        "/collections/perlen-ohrringe",
+        "/collections/zirkonia-strass-ohrringe"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sub-ohrringe",
+      "canonical": "/collections/sub-ohrringe"
+    },
+    {
+      "url": "/collections/halsketten-alle",
+      "titel": [
+        "Halsketten & Anhänger"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/perlenketten",
+        "/collections/choker-layering-ketten",
+        "/collections/glieder-hiphop-ketten",
+        "/collections/ketten-mit-anhaenger",
+        "/collections/silberketten",
+        "/collections/edelstahl-titanketten",
+        "/collections/zirkonia-moissanit-ketten"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/halsketten-alle",
+      "canonical": "/collections/halsketten-alle"
+    },
+    {
+      "url": "/collections/sub-armbaender",
+      "titel": [
+        "Armbänder & Armreifen"
+      ],
+      "knoten": 1,
+      "kinder": 10,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/armreifen-bangles",
+        "/collections/lederarmbaender",
+        "/collections/perlen-edelsteinarmbaender",
+        "/collections/gliederarmbaender",
+        "/collections/kupfer-magnetarmbaender",
+        "/collections/geflochtene-wickelarmbaender",
+        "/collections/silberarmbaender",
+        "/collections/edelstahl-titanarmbaender",
+        "/collections/vergoldete-armbaender",
+        "/collections/zirkonia-strassarmbaender"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sub-armbaender",
+      "canonical": "/collections/sub-armbaender"
+    },
+    {
+      "url": "/collections/schmuck-herren-gruppe",
+      "titel": [
+        "Für Herren"
+      ],
+      "knoten": 1,
+      "kinder": 2,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/herrenringe",
+        "/collections/herrenarmbaender"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schmuck-herren-gruppe",
+      "canonical": "/collections/schmuck-herren-gruppe"
+    },
+    {
+      "url": "/collections/schmuck-personalisiert-gruppe",
+      "titel": [
+        "Gravur & Namen"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/personalisierte-ringe",
+        "/collections/personalisierte-armbaender",
+        "/collections/personalisierte-ketten"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schmuck-personalisiert-gruppe",
+      "canonical": "/collections/schmuck-personalisiert-gruppe"
+    },
+    {
+      "url": "/collections/schmuck-motiv-gruppe",
+      "titel": [
+        "Motive"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/herz-schmuck",
+        "/collections/blumen-schmetterlingsschmuck",
+        "/collections/stern-mond-schmuck",
+        "/collections/tier-schmuck",
+        "/collections/gluecks-schutzschmuck",
+        "/collections/kreuz-schmuck"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schmuck-motiv-gruppe",
+      "canonical": "/collections/schmuck-motiv-gruppe"
+    },
+    {
+      "url": "/collections/schmuck-stil-gruppe",
+      "titel": [
+        "Stile"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/minimalistischer-schmuck",
+        "/collections/vintage-retro-schmuck",
+        "/collections/boho-ethno-schmuck",
+        "/collections/punk-gothic-schmuck",
+        "/collections/geometrischer-schmuck",
+        "/collections/korea-frankreich-oldmoney-schmuck"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schmuck-stil-gruppe",
+      "canonical": "/collections/schmuck-stil-gruppe"
+    },
+    {
+      "url": "/collections/schmuck-sets-gruppe",
+      "titel": [
+        "Sets & Besonderes"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/schmuck-sets",
+        "/collections/kombisets-kette-armband-ohrringe",
+        "/collections/broschen-pins",
+        "/collections/koerper-fussschmuck",
+        "/collections/premium-schmuck"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schmuck-sets-gruppe",
+      "canonical": "/collections/schmuck-sets-gruppe"
+    },
+    {
+      "url": "/collections/schmuck-zubehoer-gruppe",
+      "titel": [
+        "Zubehör"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/schmuck-selbermachen",
+        "/collections/schluessel-taschenanhaenger",
+        "/collections/schmuckaufbewahrung",
+        "/collections/sonnenbrillen-alle"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schmuck-zubehoer-gruppe",
+      "canonical": "/collections/schmuck-zubehoer-gruppe"
+    },
+    {
+      "url": "/collections/make-up",
+      "titel": [
+        "Make-up & Wimpern"
+      ],
+      "knoten": 1,
+      "kinder": 8,
+      "zustand": "teilweise",
+      "abgedeckt": 1,
+      "fehlend": [
+        "/collections/augen-make-up",
+        "/collections/augenbrauen-wimpernpflege",
+        "/collections/kuenstliche-wimpern",
+        "/collections/lippen-make-up",
+        "/collections/teint-make-up",
+        "/collections/make-up-sets",
+        "/collections/make-up-pinsel-tools"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/make-up",
+      "canonical": "/collections/make-up"
+    },
+    {
+      "url": "/collections/hautpflege-skincare",
+      "titel": [
+        "Gesicht & Haut"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/gesichtscreme-serum",
+        "/collections/gesichtsmasken-peelings",
+        "/collections/gesichtsreinigung-toner",
+        "/collections/hautpflege-sets",
+        "/collections/lippenpflege",
+        "/collections/sonnenschutz-braeunung"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/hautpflege-skincare",
+      "canonical": "/collections/hautpflege-skincare"
+    },
+    {
+      "url": "/collections/beauty-haar",
+      "titel": [
+        "Haare, Rasur & Haarentfernung"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "teilweise",
+      "abgedeckt": 2,
+      "fehlend": [
+        "/collections/glaetteisen-locken-foehn",
+        "/collections/haarschneider-trimmer",
+        "/collections/sub-bart-rasur",
+        "/collections/haarentfernung-epilierer"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/beauty-haar",
+      "canonical": "/collections/beauty-haar"
+    },
+    {
+      "url": "/collections/naegel-manikuere",
+      "titel": [
+        "Nägel & Maniküre"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/kunstnaegel-press-on",
+        "/collections/nagellack-gel-lack",
+        "/collections/nagelsticker-nail-art",
+        "/collections/nagelverlaengerung-gel",
+        "/collections/nagellampen-fraeser",
+        "/collections/nagelpflege-werkzeuge"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/naegel-manikuere",
+      "canonical": "/collections/naegel-manikuere"
+    },
+    {
+      "url": "/collections/parfum-duefte",
+      "titel": [
+        "Körper, Mund & Düfte"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/koerperpflege-bad",
+        "/collections/fusspflege",
+        "/collections/mundpflege"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/parfum-duefte",
+      "canonical": "/collections/parfum-duefte"
+    },
+    {
+      "url": "/collections/gesichtspflege-geraete",
+      "titel": [
+        "Beauty-Geräte fürs Gesicht"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/led-masken-lichtgeraete",
+        "/collections/gesichtsreinigungsgeraete",
+        "/collections/porenreiniger-mitesser",
+        "/collections/gesichtsdampfer-nanospray",
+        "/collections/gua-sha-gesichtsroller",
+        "/collections/mikrostrom-lifting-geraete"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/gesichtspflege-geraete",
+      "canonical": "/collections/gesichtspflege-geraete"
+    },
+    {
+      "url": "/collections/nacken-ruecken-massagegeraete",
+      "titel": [
+        "Massage & Entspannung"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/augenmassagegeraete",
+        "/collections/faszien-massagepistolen",
+        "/collections/massagekissen-matten",
+        "/collections/gesichts-kopf-massagegeraete",
+        "/collections/schlafmasken-nackenkissen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/nacken-ruecken-massagegeraete",
+      "canonical": "/collections/nacken-ruecken-massagegeraete"
+    },
+    {
+      "url": "/collections/haltungsgurte-ruecken",
+      "titel": [
+        "Rücken, Gelenke & Alltagshilfen"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/bandagen-gelenkstuetzen",
+        "/collections/lendenstuetzen-rueckenkissen",
+        "/collections/heizkissen-waermegurte",
+        "/collections/gesundheit-alltagshilfen",
+        "/collections/brillen-brillenzubehoer"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/haltungsgurte-ruecken",
+      "canonical": "/collections/haltungsgurte-ruecken"
+    },
+    {
+      "url": "/collections/kochen-grillen-backen",
+      "titel": [
+        "Kochen, Grillen & Backen"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/pfannen-woks",
+        "/collections/toepfe-kochgeschirr-sets",
+        "/collections/backformen-backbleche",
+        "/collections/kuechenformen-tortendeko",
+        "/collections/grillpfannen-elektrogrills",
+        "/collections/sub-kueche"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/kochen-grillen-backen",
+      "canonical": "/collections/kochen-grillen-backen"
+    },
+    {
+      "url": "/collections/kuechenhelfer-vorrat",
+      "titel": [
+        "Küchenhelfer & Vorrat"
+      ],
+      "knoten": 1,
+      "kinder": 9,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/schneidebretter-bretter",
+        "/collections/schneiden-reiben-schaelen",
+        "/collections/kochutensilien-sets",
+        "/collections/siebe-muehlen-messhilfen",
+        "/collections/kuechengadgets",
+        "/collections/kuechen-organizer",
+        "/collections/vorratsdosen",
+        "/collections/kuechenwaagen-feinwaagen",
+        "/collections/waagen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/kuechenhelfer-vorrat",
+      "canonical": "/collections/kuechenhelfer-vorrat"
+    },
+    {
+      "url": "/collections/kuechengeraete-alle",
+      "titel": [
+        "Küchengeräte"
+      ],
+      "knoten": 1,
+      "kinder": 10,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/mixer-entsafter-zerkleinerer",
+        "/collections/wasserkocher-kaffeemaschinen",
+        "/collections/fritteusen-kochfelder-oefen",
+        "/collections/reiskocher-dampfgarer",
+        "/collections/waffeleisen-sandwichmaker-toaster",
+        "/collections/nudel-eis-snackmaschinen",
+        "/collections/kuechengeraete-weitere",
+        "/collections/kuechengeraete-zubehoer",
+        "/collections/messerschaerfer",
+        "/collections/haushaltsgeraete"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/kuechengeraete-alle",
+      "canonical": "/collections/kuechengeraete-alle"
+    },
+    {
+      "url": "/collections/geschirr-besteck-tisch",
+      "titel": [
+        "Geschirr, Besteck & Tisch"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/teller-schalen-geschirrsets",
+        "/collections/servierplatten-etageren",
+        "/collections/besteck-essstaebchen",
+        "/collections/tischdecken-schuerzen",
+        "/collections/lunchboxen-kuehltaschen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/geschirr-besteck-tisch",
+      "canonical": "/collections/geschirr-besteck-tisch"
+    },
+    {
+      "url": "/collections/kaffee-tee-trinken",
+      "titel": [
+        "Kaffee, Tee & Trinken"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/teekannen-kaffeeservice",
+        "/collections/tassen-kaffeebecher",
+        "/collections/thermobecher-trinkbecher",
+        "/collections/trinkflaschen-thermosflaschen",
+        "/collections/bar-weinzubehoer"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/kaffee-tee-trinken",
+      "canonical": "/collections/kaffee-tee-trinken"
+    },
+    {
+      "url": "/collections/reinigungsmittel-buersten-mopps",
+      "titel": [
+        "Putzen & Haushalt"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/staubsauger-zubehoer",
+        "/collections/desinfektion-reinigungsgeraete",
+        "/collections/waesche-buegeln-fusselentferner",
+        "/collections/muelleimer-abfall",
+        "/collections/ersatzteile-zubehoer"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/reinigungsmittel-buersten-mopps",
+      "canonical": "/collections/reinigungsmittel-buersten-mopps"
+    },
+    {
+      "url": "/collections/koerbe-behaelter",
+      "titel": [
+        "Aufbewahrung & Möbel"
+      ],
+      "knoten": 1,
+      "kinder": 10,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/aufbewahrungsbeutel-taschen",
+        "/collections/schubladen-organizer",
+        "/collections/kosmetik-schmuck-organizer",
+        "/collections/kleiderbuegel-schuhregale",
+        "/collections/haken-garderobenhalter",
+        "/collections/regale-wandregale",
+        "/collections/moebel-hocker-tische",
+        "/collections/waeschekoerbe",
+        "/collections/wandregale",
+        "/collections/aufbewahrung-sub"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/koerbe-behaelter",
+      "canonical": "/collections/koerbe-behaelter"
+    },
+    {
+      "url": "/collections/badematten-badteppiche",
+      "titel": [
+        "Bad"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/duschvorhaenge-duschstangen",
+        "/collections/seifenspender-bad-accessoires",
+        "/collections/wc-zubehoer-taschentuchboxen",
+        "/collections/handtuchhalter-badregale",
+        "/collections/handtuecher-badetuecher",
+        "/collections/armaturen-duschen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/badematten-badteppiche",
+      "canonical": "/collections/badematten-badteppiche"
+    },
+    {
+      "url": "/collections/kissen",
+      "titel": [
+        "Kissen, Decken & Bettwäsche"
+      ],
+      "knoten": 1,
+      "kinder": 8,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/kissenbezuege",
+        "/collections/sitz-rueckenkissen",
+        "/collections/sofa-moebelueberzuege",
+        "/collections/kopfkissen-nackenkissen",
+        "/collections/bettwaesche-bettbezuege",
+        "/collections/decken-plaids",
+        "/collections/teppiche-fussmatten",
+        "/collections/kissen-wohntextilien"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/kissen",
+      "canonical": "/collections/kissen"
+    },
+    {
+      "url": "/collections/vorhaenge-gardinen-rollos",
+      "titel": [
+        "Fenster, Wand & Uhren"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/wandbilder-wanddeko",
+        "/collections/wandteppiche-wandbehaenge",
+        "/collections/bilderrahmen-wandtattoos-tapeten",
+        "/collections/wanduhren-tischuhren",
+        "/collections/wecker-radiowecker",
+        "/collections/wandbilder-poster",
+        "/collections/wecker"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/vorhaenge-gardinen-rollos",
+      "canonical": "/collections/vorhaenge-gardinen-rollos"
+    },
+    {
+      "url": "/collections/vasen-blumenvasen",
+      "titel": [
+        "Deko & Kerzen"
+      ],
+      "knoten": 1,
+      "kinder": 8,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/figuren-skulpturen",
+        "/collections/deko-objekte-accessoires",
+        "/collections/saison-weihnachtsdeko",
+        "/collections/kerzen-kerzenhalter",
+        "/collections/raeucherwerk-duftoele",
+        "/collections/vasen-blumentoepfe",
+        "/collections/geschenkverpackung",
+        "/collections/sub-deko"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/vasen-blumenvasen",
+      "canonical": "/collections/vasen-blumenvasen"
+    },
+    {
+      "url": "/collections/aroma-diffuser-duftlampen",
+      "titel": [
+        "Raumluft & Klima"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/luftbefeuchter-raumbefeuchter",
+        "/collections/ventilatoren-handventilatoren",
+        "/collections/luftreiniger-klimageraete",
+        "/collections/sub-aroma-diffuser"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/aroma-diffuser-duftlampen",
+      "canonical": "/collections/aroma-diffuser-duftlampen"
+    },
+    {
+      "url": "/collections/sub-beleuchtung",
+      "titel": [
+        "Beleuchtung"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/led-streifen-lichterketten",
+        "/collections/tisch-nachttischlampen",
+        "/collections/nachttischlampen",
+        "/collections/wandleuchten",
+        "/collections/deckenleuchten",
+        "/collections/nachtlichter-ambiente",
+        "/collections/schreibtischlampen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sub-beleuchtung",
+      "canonical": "/collections/sub-beleuchtung"
+    },
+    {
+      "url": "/collections/basteln-diy",
+      "titel": [
+        "Basteln & DIY"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "teilweise",
+      "abgedeckt": 1,
+      "fehlend": [
+        "/collections/malen-nach-zahlen",
+        "/collections/diamond-painting",
+        "/collections/notizbuecher-journaling",
+        "/collections/naehen-sticken-stricken",
+        "/collections/harz-giessformen",
+        "/collections/modellbau"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/basteln-diy",
+      "canonical": "/collections/basteln-diy"
+    },
+    {
+      "url": "/collections/outdoor-garten",
+      "titel": [
+        "Garten & Outdoor"
+      ],
+      "knoten": 1,
+      "kinder": 10,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/gartengeraete-gartenpflege",
+        "/collections/bewaesserung-gartenschlauch",
+        "/collections/pflanztoepfe-pflanzenzubehoer",
+        "/collections/gartendeko-windspiele",
+        "/collections/garten-aussenleuchten",
+        "/collections/hochdruckreiniger-schaumkanonen",
+        "/collections/grills-grillzubehoer",
+        "/collections/pool-sonnenschutz-gartenmoebel",
+        "/collections/regen-sonnenschirme",
+        "/collections/haengematten"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/outdoor-garten",
+      "canonical": "/collections/outdoor-garten"
+    },
+    {
+      "url": "/collections/werkzeug-maschinen",
+      "titel": [
+        "Werkzeug & Maschinen"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/handwerkzeug",
+        "/collections/elektrowerkzeug",
+        "/collections/messwerkzeug",
+        "/collections/bohrer-saegen-zubehoer",
+        "/collections/werkzeugkoffer-sets",
+        "/collections/werkzeugtaschen-aufbewahrung",
+        "/collections/taschenlampen-kopflampen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/werkzeug-maschinen",
+      "canonical": "/collections/werkzeug-maschinen"
+    },
+    {
+      "url": "/collections/wasserhaehne-armaturen",
+      "titel": [
+        "Sanitär & Wasser"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/duschkoepfe-handbrausen",
+        "/collections/abfluss-sanitaerzubehoer",
+        "/collections/rohre-ventile-pumpen",
+        "/collections/wasserfilter-wasserspender"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/wasserhaehne-armaturen",
+      "canonical": "/collections/wasserhaehne-armaturen"
+    },
+    {
+      "url": "/collections/tueren-fenster-moebelbeschlaege",
+      "titel": [
+        "Bau, Türen & Befestigung"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/schrauben-duebel-befestigung",
+        "/collections/kleber-klebebaender-reparatur",
+        "/collections/maler-spachtel-renovieren",
+        "/collections/elektro-installation"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/tueren-fenster-moebelbeschlaege",
+      "canonical": "/collections/tueren-fenster-moebelbeschlaege"
+    },
+    {
+      "url": "/collections/handy-zubehoer",
+      "titel": [
+        "Handy & Laden"
+      ],
+      "knoten": 1,
+      "kinder": 8,
+      "zustand": "voll",
+      "abgedeckt": 8,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/handy-zubehoer",
+      "canonical": "/collections/handy-zubehoer"
+    },
+    {
+      "url": "/collections/kopfhoerer-audio",
+      "titel": [
+        "Kopfhörer & Audio"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "voll",
+      "abgedeckt": 7,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/kopfhoerer-audio",
+      "canonical": "/collections/kopfhoerer-audio"
+    },
+    {
+      "url": "/collections/smartwatches-wearables",
+      "titel": [
+        "Smartwatches & Wearables"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "voll",
+      "abgedeckt": 5,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/smartwatches-wearables",
+      "canonical": "/collections/smartwatches-wearables"
+    },
+    {
+      "url": "/collections/drohnen-kameras",
+      "titel": [
+        "Kamera, Foto & Drohnen"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "voll",
+      "abgedeckt": 5,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/drohnen-kameras",
+      "canonical": "/collections/drohnen-kameras"
+    },
+    {
+      "url": "/collections/beamer-heimkino",
+      "titel": [
+        "TV, Beamer & Streaming"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "voll",
+      "abgedeckt": 3,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/beamer-heimkino",
+      "canonical": "/collections/beamer-heimkino"
+    },
+    {
+      "url": "/collections/gaming",
+      "titel": [
+        "Gaming & VR"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "voll",
+      "abgedeckt": 5,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/gaming",
+      "canonical": "/collections/gaming"
+    },
+    {
+      "url": "/collections/pc-homeoffice",
+      "titel": [
+        "PC & Computer"
+      ],
+      "knoten": 1,
+      "kinder": 10,
+      "zustand": "voll",
+      "abgedeckt": 10,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/pc-homeoffice",
+      "canonical": "/collections/pc-homeoffice"
+    },
+    {
+      "url": "/collections/buro-home-office",
+      "titel": [
+        "Büro & Drucker"
+      ],
+      "knoten": 1,
+      "kinder": 9,
+      "zustand": "voll",
+      "abgedeckt": 9,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/buro-home-office",
+      "canonical": "/collections/buro-home-office"
+    },
+    {
+      "url": "/collections/ueberwachungskameras",
+      "titel": [
+        "Sicherheit & Überwachung"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "voll",
+      "abgedeckt": 5,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/ueberwachungskameras",
+      "canonical": "/collections/ueberwachungskameras"
+    },
+    {
+      "url": "/collections/solar-energie",
+      "titel": [
+        "Strom, Batterien & Solar"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "voll",
+      "abgedeckt": 3,
+      "fehlend": [],
+      "http": 200,
+      "finalerPfad": "/collections/solar-energie",
+      "canonical": "/collections/solar-energie"
+    },
+    {
+      "url": "/collections/lenkradbezuege",
+      "titel": [
+        "Innenraum & Komfort"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/autositzbezuege-auflagen",
+        "/collections/auto-kissen-stuetzen",
+        "/collections/auto-organizer-ablagen",
+        "/collections/auto-interieur-zierteile",
+        "/collections/auto-duft-luft",
+        "/collections/auto-komfort-reise"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/lenkradbezuege",
+      "canonical": "/collections/lenkradbezuege"
+    },
+    {
+      "url": "/collections/auto-aussen-dekor-licht",
+      "titel": [
+        "Aussen, Schlüssel & Sicherheit"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/auto-karosserie-wetterschutz",
+        "/collections/auto-schluessel-etuis",
+        "/collections/auto-diebstahlschutz-sicherheit"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/auto-aussen-dekor-licht",
+      "canonical": "/collections/auto-aussen-dekor-licht"
+    },
+    {
+      "url": "/collections/dashcams-rueckfahrkameras",
+      "titel": [
+        "Auto-Elektronik & Laden"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/auto-multimedia-navi",
+        "/collections/starthilfe-batterie-wandler",
+        "/collections/auto-diagnose-messgeraete",
+        "/collections/auto-ladegeraete"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/dashcams-rueckfahrkameras",
+      "canonical": "/collections/dashcams-rueckfahrkameras"
+    },
+    {
+      "url": "/collections/autowaesche-reinigung",
+      "titel": [
+        "Pflege & Werkzeug"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/autopflege-politur-lack",
+        "/collections/auto-reparatur-karosseriewerkzeug",
+        "/collections/reifen-luftpumpen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/autowaesche-reinigung",
+      "canonical": "/collections/autowaesche-reinigung"
+    },
+    {
+      "url": "/collections/motorrad-taschen-gepaeck",
+      "titel": [
+        "Motorrad, E-Scooter & Velo"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/motorrad-helme-bekleidung",
+        "/collections/motorrad-zubehoer-teile",
+        "/collections/e-scooter-e-bike-zubehoer",
+        "/collections/velo-radsport"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/motorrad-taschen-gepaeck",
+      "canonical": "/collections/motorrad-taschen-gepaeck"
+    },
+    {
+      "url": "/collections/babykleidung",
+      "titel": [
+        "👶 Babykleidung & Kindermode"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/kinder-baby-sets",
+        "/collections/kinder-baby-strampler-bodys",
+        "/collections/kinder-baby-kleider-oberteile",
+        "/collections/kinder-sets-outfits",
+        "/collections/kinder-oberteile-kleider-hosen",
+        "/collections/kinder-nachtwaesche-bademode",
+        "/collections/kinder-familien-looks"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/babykleidung",
+      "canonical": "/collections/babykleidung"
+    },
+    {
+      "url": "/collections/bausteine-konstruktion",
+      "titel": [
+        "Bausteine & Bausätze"
+      ],
+      "knoten": 1,
+      "kinder": 9,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/klemmbausteine-bausaetze",
+        "/collections/bausteine-fahrzeug-bausaetze",
+        "/collections/bausaetze-roboter-technik",
+        "/collections/bausteine-gebaeude-staedte",
+        "/collections/bausteine-blumen-deko",
+        "/collections/bausteine-tiere-weltraum",
+        "/collections/bausteine-holz-magnet-gross",
+        "/collections/bausteine-kinder-mikro",
+        "/collections/bausteine-weitere-sets"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/bausteine-konstruktion",
+      "canonical": "/collections/bausteine-konstruktion"
+    },
+    {
+      "url": "/collections/puppen-spielfiguren",
+      "titel": [
+        "Plüsch, Puppen & Spielwelten"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/pluesch-kuscheltiere",
+        "/collections/puppen-figuren-miniaturen",
+        "/collections/rollenspiel-spielsets",
+        "/collections/holzspielzeug-spielwelten"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/puppen-spielfiguren",
+      "canonical": "/collections/puppen-spielfiguren"
+    },
+    {
+      "url": "/collections/spielzeug-fahrzeuge",
+      "titel": [
+        "Fahrzeuge & Ferngesteuertes"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/rc-autos-trucks",
+        "/collections/rc-helikopter-flugzeuge",
+        "/collections/spielzeug-roboter",
+        "/collections/spielzeugautos-eisenbahn",
+        "/collections/drohnen-fpv"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/spielzeug-fahrzeuge",
+      "canonical": "/collections/spielzeug-fahrzeuge"
+    },
+    {
+      "url": "/collections/puzzles-spiele",
+      "titel": [
+        "Lernen, Puzzles & Spiele"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/puzzles-3d-holz",
+        "/collections/spiele-karten-geschick",
+        "/collections/lernspielzeug-experimentieren",
+        "/collections/kinder-malen-basteln"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/puzzles-spiele",
+      "canonical": "/collections/puzzles-spiele"
+    },
+    {
+      "url": "/collections/baby-ausstattung",
+      "titel": [
+        "Baby & Kleinkind"
+      ],
+      "knoten": 1,
+      "kinder": 8,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/baby-stillen-fuettern",
+        "/collections/baby-kinderwagen-unterwegs",
+        "/collections/baby-baden-wickeln-pflege",
+        "/collections/baby-schlafen-kuscheln",
+        "/collections/baby-spielen-entdecken",
+        "/collections/baby-sicherheit-babyphone",
+        "/collections/kindergeschirr-trinken",
+        "/collections/baby-zubehoer-geschenke"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/baby-ausstattung",
+      "canonical": "/collections/baby-ausstattung"
+    },
+    {
+      "url": "/collections/schule-kindergarten",
+      "titel": [
+        "Schule, Kinderzimmer & Draussen"
+      ],
+      "knoten": 1,
+      "kinder": 2,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/kinderzimmer-textilien-deko",
+        "/collections/draussen-wasser-seifenblasen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/schule-kindergarten",
+      "canonical": "/collections/schule-kindergarten"
+    },
+    {
+      "url": "/collections/leinen-halsbaender-geschirre",
+      "titel": [
+        "Spazieren & Unterwegs"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/tier-leinen",
+        "/collections/tier-halsbaender",
+        "/collections/tier-geschirre",
+        "/collections/tier-halsband-leine-sets",
+        "/collections/tier-tracker",
+        "/collections/tier-transport",
+        "/collections/tier-auto"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/leinen-halsbaender-geschirre",
+      "canonical": "/collections/leinen-halsbaender-geschirre"
+    },
+    {
+      "url": "/collections/hunde-katzen-kleidung",
+      "titel": [
+        "Kleidung & Accessoires"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/tier-pullover",
+        "/collections/tier-maentel-jacken",
+        "/collections/tier-kleider-shirts",
+        "/collections/tier-accessoires"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/hunde-katzen-kleidung",
+      "canonical": "/collections/hunde-katzen-kleidung"
+    },
+    {
+      "url": "/collections/tierspielzeug",
+      "titel": [
+        "Spielzeug"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/tier-katzenspielzeug",
+        "/collections/tier-kauspielzeug",
+        "/collections/tier-baelle",
+        "/collections/tier-plueschspielzeug",
+        "/collections/tier-intelligenzspielzeug",
+        "/collections/tier-interaktives-spielzeug",
+        "/collections/tier-weiteres-spielzeug"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/tierspielzeug",
+      "canonical": "/collections/tierspielzeug"
+    },
+    {
+      "url": "/collections/tier-naepfe-fuettern",
+      "titel": [
+        "Futter & Trinken"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/tier-naepfe",
+        "/collections/tier-futterautomaten",
+        "/collections/tier-trinkbrunnen",
+        "/collections/tier-anti-schling",
+        "/collections/tier-erhoehte-naepfe",
+        "/collections/tier-napfzubehoer"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/tier-naepfe-fuettern",
+      "canonical": "/collections/tier-naepfe-fuettern"
+    },
+    {
+      "url": "/collections/tierbetten-kratzbaeume",
+      "titel": [
+        "Schlafen, Möbel & Pflege"
+      ],
+      "knoten": 1,
+      "kinder": 6,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/tier-betten-koerbe",
+        "/collections/tier-kratzmoebel",
+        "/collections/tier-pflege",
+        "/collections/tier-toilette-hygiene",
+        "/collections/tier-halskrausen",
+        "/collections/tier-hilfsmittel"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/tierbetten-kratzbaeume",
+      "canonical": "/collections/tierbetten-kratzbaeume"
+    },
+    {
+      "url": "/collections/fitness-training",
+      "titel": [
+        "Fitness & Training"
+      ],
+      "knoten": 1,
+      "kinder": 8,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/hanteln-kettlebells",
+        "/collections/widerstandsbaender-expander",
+        "/collections/springseile",
+        "/collections/bauchtrainer-liegestuetz-klimmzug",
+        "/collections/balance-gymnastik",
+        "/collections/kraftsport-handschuhe-guertel",
+        "/collections/trainingsgeraete-arm-bein-ganzkoerper",
+        "/collections/taillentrainer-hula-hoop"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/fitness-training",
+      "canonical": "/collections/fitness-training"
+    },
+    {
+      "url": "/collections/sub-yoga-fitness",
+      "titel": [
+        "Yoga, Pilates & Dehnen"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/yogamatten-fitnessmatten",
+        "/collections/yoga-pilates-zubehoer",
+        "/collections/faszienrollen-massagebaelle"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sub-yoga-fitness",
+      "canonical": "/collections/sub-yoga-fitness"
+    },
+    {
+      "url": "/collections/wandern-trekking",
+      "titel": [
+        "Wandern, Angeln & Wasser"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "teilweise",
+      "abgedeckt": 1,
+      "fehlend": [
+        "/collections/wander-kletter-survival",
+        "/collections/rucksaecke-sport",
+        "/collections/angeln-angelzubehoer",
+        "/collections/schwimmen-tauchen-wassersport"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/wandern-trekking",
+      "canonical": "/collections/wandern-trekking"
+    },
+    {
+      "url": "/collections/camping-outdoor",
+      "titel": [
+        "Camping"
+      ],
+      "knoten": 1,
+      "kinder": 7,
+      "zustand": "teilweise",
+      "abgedeckt": 2,
+      "fehlend": [
+        "/collections/zelte-zeltzubehoer",
+        "/collections/schlafsaecke-isomatten-luftbetten",
+        "/collections/camping-kocher-gaskocher",
+        "/collections/camping-geschirr-kochsets",
+        "/collections/picknick-kuehlrucksaecke"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/camping-outdoor",
+      "canonical": "/collections/camping-outdoor"
+    },
+    {
+      "url": "/collections/velo-radsport",
+      "titel": [
+        "Rad & Velo"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/velohelme",
+        "/collections/velolichter-reflektoren",
+        "/collections/velotaschen-rucksaecke",
+        "/collections/velo-werkzeug-reparatur",
+        "/collections/velo-teile-zubehoer"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/velo-radsport",
+      "canonical": "/collections/velo-radsport"
+    },
+    {
+      "url": "/collections/boxen-kampfsport",
+      "titel": [
+        "Ballsport, Kampfsport & Schutz"
+      ],
+      "knoten": 1,
+      "kinder": 4,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/ballsport-teamsport",
+        "/collections/schlagsport-tischtennis-tennis",
+        "/collections/golf-billard",
+        "/collections/sport-schutzausruestung"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/boxen-kampfsport",
+      "canonical": "/collections/boxen-kampfsport"
+    },
+    {
+      "url": "/collections/malen-nach-zahlen-sets",
+      "titel": [
+        "Malen, Zeichnen & Mosaik"
+      ],
+      "knoten": 1,
+      "kinder": 2,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/diamond-painting",
+        "/collections/mal-zeichenbedarf"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/malen-nach-zahlen-sets",
+      "canonical": "/collections/malen-nach-zahlen-sets"
+    },
+    {
+      "url": "/collections/bastelsets-diy-kits",
+      "titel": [
+        "Basteln & Verzieren"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/baender-borten-verzierungen",
+        "/collections/bastelwerkzeug-schneiden-kleben",
+        "/collections/kunstleder-lederhandwerk",
+        "/collections/kerzen-seifenformen",
+        "/collections/epoxidharz-giessformen"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/bastelsets-diy-kits",
+      "canonical": "/collections/bastelsets-diy-kits"
+    },
+    {
+      "url": "/collections/stoffe-meterware",
+      "titel": [
+        "Nähen, Sticken & Stricken"
+      ],
+      "knoten": 1,
+      "kinder": 3,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/handarbeitssets-sticken-haekeln",
+        "/collections/naehmaschinen-naehzubehoer",
+        "/collections/garn-wolle-nadeln"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/stoffe-meterware",
+      "canonical": "/collections/stoffe-meterware"
+    },
+    {
+      "url": "/collections/sticker-aufkleber",
+      "titel": [
+        "Sticker, Journaling & Modelle"
+      ],
+      "knoten": 1,
+      "kinder": 2,
+      "zustand": "keine",
+      "abgedeckt": 0,
+      "fehlend": [
+        "/collections/notizbuecher-journaling",
+        "/collections/modellbau"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/sticker-aufkleber",
+      "canonical": "/collections/sticker-aufkleber"
+    },
+    {
+      "url": "/collections/geschenkverpackung-boxen",
+      "titel": [
+        "Party, Deko & Geschenk"
+      ],
+      "knoten": 1,
+      "kinder": 5,
+      "zustand": "teilweise",
+      "abgedeckt": 1,
+      "fehlend": [
+        "/collections/kunstblumen-kraenze-girlanden",
+        "/collections/party-zubehoer-effekte",
+        "/collections/ornamente-anhaenger-dekofiguren",
+        "/collections/hochzeitsgeschenke"
+      ],
+      "http": 200,
+      "finalerPfad": "/collections/geschenkverpackung-boxen",
+      "canonical": "/collections/geschenkverpackung-boxen"
+    }
+  ]
+}
