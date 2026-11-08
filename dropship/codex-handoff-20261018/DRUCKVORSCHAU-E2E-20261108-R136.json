@@ -1,0 +1,492 @@
+{
+  "revision": 136,
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "status": "current_unpublished_projection_and_metric_template_written_readback_independent_draft_http200_326g_confirmed_proportion_and_real_e2e_open_main_unchanged",
+  "scope": "UNPUBLISHED theme 213482963335 mug product 15422823465345: one v6.3 asset write and one handle-scoped product-template weight write, both read back; live/CI/Printful checks read-only",
+  "combinedHarness": {
+    "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.mjs",
+    "sha256": "32cf0c22ba16bf57d8b54953bfd9dce7f1c2bd0656bc9947a0ec720d1f984887",
+    "resultPath": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136-result.json",
+    "resultSha256": "79d5f53b0bc129ee6e9359253e80ea9d4f31819e9eb988d447606da187351900",
+    "completedAtUtc": "2026-11-08T09:08:49.412Z",
+    "viewport": "375x812",
+    "locale": "de-CH",
+    "status": "PASS",
+    "reviewPrint": {
+      "type": "image/png",
+      "bytes": 87216,
+      "sha256": "09f4ac759df7e41d3933625932b55b0329115d443c60dad1002427e571aae3bb"
+    },
+    "uploadPrint": {
+      "type": "image/png",
+      "bytes": 87216,
+      "sha256": "09f4ac759df7e41d3933625932b55b0329115d443c60dad1002427e571aae3bb"
+    },
+    "cloudinary200": 2,
+    "cartAdd200": 1,
+    "cartClear": {
+      "status": 200,
+      "count": 0
+    },
+    "checkoutOrOrderRequests": 0,
+    "nonBlockingPageErrors": [],
+    "rootCausePreviousHarness": [
+      "artificial inconsistent checked/data-current-checked radio state",
+      "Chromium postDataBuffer did not expose streamed multipart body"
+    ],
+    "productBugFound": false,
+    "pageErrors": [],
+    "cleanHarnessCorrection": "Earlier showPopover errors were caused by removing the Shopify preview-bar wrapper in the diagnostic harness; clean harness keeps it and has pageErrors=[]",
+    "validatedDraftV63Sha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+    "currentDraftV63Sha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991",
+    "appliesToCurrentDraft": false,
+    "currentDraftPostwriteE2E": "unknown; Firecrawl page fetch HTTP200 but no full interactive clean E2E"
+  },
+  "variants": [
+    {
+      "size": "325 ml",
+      "shopifyVariantId": "55777979629953",
+      "sku": "9365183_1320",
+      "printfulVariantId": 1320,
+      "pixels": "2700x1050",
+      "cm": "22.86x8.89",
+      "dpi": 300
+    },
+    {
+      "size": "444 ml",
+      "shopifyVariantId": "55777979662721",
+      "sku": "9365183_4830",
+      "printfulVariantId": 4830,
+      "pixels": "2700x1140",
+      "cm": "22.86x9.65",
+      "dpi": 300
+    },
+    {
+      "size": "591 ml",
+      "shopifyVariantId": "55777979695489",
+      "sku": "9365183_16586",
+      "printfulVariantId": 16586,
+      "pixels": "3071x1205",
+      "cm": "26.00x10.20",
+      "dpi": 300
+    }
+  ],
+  "printfulEvidence": {
+    "currentPublicProductRead": "available",
+    "currentPrintfileTemplateRead": "HTTP 401 without runtime credentials",
+    "lastAuthenticatedGeometryRead": "2026-11-05",
+    "minimumFullBleedAt150Dpi": [
+      "1350x525",
+      "1350x570",
+      "approximately 1536x603"
+    ],
+    "metricVolumeCrossCheckMl": [
+      325.31,
+      443.6,
+      591.47
+    ],
+    "physicalSample": "not produced or measured",
+    "exactSeamHandlePlacement": "unknown",
+    "catalogImageRights": "not separately documented"
+  },
+  "liveQa": {
+    "mainThemeId": "213013037447",
+    "selfDesignPage": {
+      "http": 200,
+      "lang": "de",
+      "canonical": "self",
+      "desktopWidth": "1440/1440",
+      "mobileWidth": "375/375",
+      "pageErrors": 0
+    },
+    "mainV5Sha256": "70140421381326aff999bd84094b9997eda3e9432037def69185d65ff003e808",
+    "draftV5Sha256": "0cc241059ef8dc9cfca6f2a162db8c32f99dc85c131e75aa7e4dbebeb8b28a47",
+    "previewDialogSemantics": false,
+    "previewConfirmation": false,
+    "productPreview": false,
+    "duplicateLegacyScriptLoaded": true,
+    "publicImperialWeight": "11.5 oz",
+    "frPageContentLanguage": "German content under lang=fr",
+    "frProductContentLanguage": "German content under lang=fr",
+    "deliveryDiscountClaims": "not substantiated in this run",
+    "writes": 0,
+    "screenshots": [
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-selbstgestalten-desktop.png",
+        "viewport": "1440x1000",
+        "scope": "live MAIN self-design page",
+        "sha256": "2c1f400ad5f67140ee16de5e4fe4d4918231be45ba5bb5810412aef72fec23a1"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-selbstgestalten-mobil.png",
+        "viewport": "375x812",
+        "scope": "live MAIN self-design page",
+        "sha256": "199869a9f75f14d15d019528dbe3417b1d8893ddce01f8ebef6d17a20620e7e8"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-druckvorschau-desktop.png",
+        "viewport": "1440x1000",
+        "scope": "live MAIN current print preview without mandatory confirmation",
+        "sha256": "7c7c931b7c7ac8051d0047d2aa6a626723b46a1cd346a9a790c65565329761bb"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-druckvorschau-mobil.png",
+        "viewport": "375x812",
+        "scope": "live MAIN current print preview without mandatory confirmation",
+        "sha256": "db978e06000f2592e06bb11ba223b5eafae7a0021a212e2600093cda6be9a3a4"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/rejected-unpublished-v63-review-desktop.png",
+        "viewport": "1440x1100",
+        "capturedPanel": "920x624",
+        "scope": "UNPUBLISHED v6.3 mug review; not live; unchecked confirmation; confirm disabled",
+        "sha256": "8d3e625dbc9ba1122b4885b73f7c5713eef6f25c6e273ddcff8b27d926bda946",
+        "captureNote": "screenshot harness removal of Shopify preview bar caused showPopover; final clean E2E pageErrors=[]",
+        "status": "rejected_by_owner_unproportional_projection_not_approvable_after_image"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/rejected-unpublished-v63-review-mobil.png",
+        "viewport": "375x1400",
+        "capturedPanel": "359x1010",
+        "scope": "UNPUBLISHED v6.3 mug review; not live; unchecked confirmation; confirm disabled",
+        "sha256": "18d9525dd4f004a8e0103acbcb9dd5c50c79fbcbc05a5589e4f204c0d0881f5b",
+        "captureNote": "screenshot harness removal of Shopify preview bar caused showPopover; final clean E2E pageErrors=[]",
+        "status": "rejected_by_owner_unproportional_projection_not_approvable_after_image"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/rejected-unpublished-v63-review-evidence.json",
+        "scope": "read-only capture evidence; Cloudinary/cart/checkout/order all 0",
+        "sha256": "6716c6a9a21f0684590ba9acf7e8253c078d8599f30d3dbc22b1a1c492b25582",
+        "captureNote": "screenshot harness removal of Shopify preview bar caused showPopover; final clean E2E pageErrors=[]",
+        "status": "rejected_by_owner_unproportional_projection_not_approvable_after_image"
+      }
+    ],
+    "variantWeightsAdmin": {
+      "325 ml": "11.5 oz",
+      "444 ml": "16 oz",
+      "591 ml": "18.9 oz"
+    },
+    "weightTemplateSource": "templates/product.json: v.weight | weight_with_unit: v.weight_unit",
+    "weightVariantSwitchBug": "live remains 11.5 oz after variant switch; dynamic metric solution needed; no static replacement written",
+    "translationLists": {
+      "Page698444710273": [],
+      "Product15422823465345": []
+    },
+    "frFallback": "German fallback content under lang=fr",
+    "headerCopyProposal": {
+      "before": "Lieferung nur in die Schweiz & nach Liechtenstein",
+      "after": "Versand in die Schweiz und nach Liechtenstein",
+      "restUnchanged": true,
+      "written": false,
+      "partOfPublishOptionB": false,
+      "mutationAttempted": false,
+      "abortedBeforeUpsert": true,
+      "abortReason": "Draft header baseline omitted the MAIN phrase nach Rabatt; safe exact-baseline guard failed",
+      "draftHeaderMd5Prefix": "d6dc242e",
+      "draftCurrentEnding": "ab CHF 50 Warenwert",
+      "mainHeaderMd5Prefix": "d62af614",
+      "mainCurrentEnding": "nach Rabatt",
+      "requiredFutureBase": "fresh MAIN clone and exact bounded hunk; never whole Draft header"
+    }
+  },
+  "pr2944": {
+    "head": "ea877d4487c52eaf2290cd92dd988f61f14d1aa1",
+    "draft": true,
+    "merged": false,
+    "deployed": false,
+    "targetedRetestAssertions": 120,
+    "relevantChecks": "PASS",
+    "productCodePatchNeeded": false,
+    "deployCheck": "systemic timeout while validating 1150 HTML files individually; last 20 main/PR runs cancelled",
+    "externalWorkers": "three failures without annotations; same on adjacent PR",
+    "workflowDispatchOrRetry": false
+  },
+  "publishDiff": {
+    "main": {
+      "themeId": "213013037447",
+      "role": "MAIN",
+      "updatedAtUtc": "2026-11-07T19:56:09Z",
+      "processing": false,
+      "processingFailed": false,
+      "v5": {
+        "bytes": 51378,
+        "md5": "be85494be069a484807b65ee32261a8a"
+      },
+      "layout": {
+        "bytes": 61986,
+        "md5": "cf5ee5a64ca940edf4120b09c073e58f"
+      },
+      "v63Assets": "absent",
+      "productJson": {
+        "bytes": 69405,
+        "md5": "6b44c4493538e99f42d2397ae330a828"
+      }
+    },
+    "draft": {
+      "themeId": "213482963335",
+      "role": "UNPUBLISHED",
+      "updatedAtUtc": "2026-11-08T09:42:26Z",
+      "processing": false,
+      "processingFailed": false,
+      "v5": {
+        "bytes": 63950,
+        "md5": "abc4e9d6dee7716e1bd3439d8280ebfb",
+        "sha256": "0cc241059ef8dc9cfca6f2a162db8c32f99dc85c131e75aa7e4dbebeb8b28a47"
+      },
+      "layout": {
+        "bytes": 62235,
+        "md5": "fe3e85d7da50eb8f0b8152350d1a79f1"
+      },
+      "v63Js": {
+        "bytes": 225915,
+        "md5": "b6d3eac0e62208f216ef8dae3d1b0711",
+        "sha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991"
+      },
+      "karte": {
+        "bytes": 2690,
+        "md5": "f6aafc1cf13e9456cd78602ad02399b4",
+        "sha256Prefix": "b8983106"
+      },
+      "preview": {
+        "bytes": 1410,
+        "md5": "45f219ece6df8d8e93733d6adf191c05",
+        "sha256Prefix": "8fbdaa58"
+      },
+      "productJson": {
+        "bytes": 71420,
+        "md5": "2e72a6ad93d535435ecf224c9b68b1dc",
+        "scope": "separate handle-scoped metric weight diff; excluded from option B"
+      }
+    },
+    "optionA": {
+      "operations": 1,
+      "description": "replace v5 asset only on a fresh MAIN clone; general mandatory preview, no v6.3 mug pilot",
+      "risk": "broad v5 effect; evidence limited to hoodie smoke and T-shirt E2E"
+    },
+    "optionBRecommended": {
+      "operations": 5,
+      "description": "on a fresh MAIN clone replace v5, add three v6.3 assets and apply only the exact 41-insert/1-delete layout hunk scoped to the mug handle",
+      "layoutScope": "41 insertions / 1 deletion replacing one script line; only product.handle == 'keramik-tasse-selbst-gestalten', v5 else",
+      "status": "BLOCKED: Firecrawl confirms Draft page/UI/326 g after writes, but interactive projection proportion and full real clean E2E remain unverified"
+    },
+    "never": "copy or publish the current draft wholesale; pre-v6 draft layout already differed from MAIN",
+    "excluded": [
+      "all other theme files",
+      "product copy and 11.5 oz",
+      "FR content",
+      "discount/delivery claims",
+      "variants/SKUs/prices/inventory",
+      "checkout/order",
+      "legacy CDN cleanup"
+    ],
+    "published": false,
+    "requiredValidation": [
+      "load current UNPUBLISHED v63 sha9166 after HTTP503 clears",
+      "fresh MAIN hashes",
+      "exact allowlist",
+      "postwrite readback",
+      "three variants",
+      "DPI hard block",
+      "design and variant invalidation",
+      "dialog and accessibility",
+      "375 and 1440 px",
+      "review/upload PNG byte identity",
+      "zero cart adds before consent",
+      "exactly one cart add with properties",
+      "cart clear count 0",
+      "no checkout/order requests"
+    ],
+    "knownRisks": [
+      "legacy CDN script still loads; guard prevents current double initialization",
+      "calibrated projection without physical mockup or sample mug",
+      "catalog image rights separately open",
+      "dynamic metric variant weight, FR translations and header copy are separate scopes, not option B"
+    ],
+    "comparisonReadOnly": true
+  },
+  "writesNotPerformed": [
+    "MAIN theme, theme publish, layout, v5 asset or Shopify product-object write",
+    "cart, checkout or order",
+    "Printful order",
+    "Metricool or Klaviyo repeat read/write",
+    "workflow dispatch, merge or deployment",
+    "header upsert (aborted before mutation because Draft baseline differed from MAIN)"
+  ],
+  "metricWeightCandidate": {
+    "status": "written_to_unpublished_readback_confirmed_firecrawl_326g_visible_full_dynamic_draft_sequence_not_rerun_main_unchanged",
+    "scope": "keramik-tasse-selbst-gestalten only",
+    "values": {
+      "325 ml": "326 g",
+      "444 ml": "454 g",
+      "591 ml": "536 g"
+    },
+    "roundTrip": "326 g -> 454 g -> 536 g -> 326 g",
+    "otherProducts": "existing weight behavior preserved",
+    "mobile375": "PASS",
+    "pageErrors": [],
+    "uploads": 0,
+    "cartAdds": 0,
+    "checkoutOrOrderRequests": 0,
+    "writes": 1,
+    "report": {
+      "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136.md",
+      "sha256": "0282e69a468a4e8c11f907840d7c0d61b65c525e21ea2f851a6351aa1b1879c3"
+    },
+    "patch": {
+      "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136.patch",
+      "sha256": "cb760ce545209fc0489d36d19c40ee4f96e9de6c17b898dbb0045961800a1db5"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136.json",
+      "sha256": "57ceb7c834bcff0ed664e6f93df17d837880948d1f7beab01580c7f14d498473"
+    },
+    "test": {
+      "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136-test.mjs",
+      "sha256": "c37a66b64bb9288820ec329a6ca5de32cb00f3317013948113f2308c7d6ef6c4"
+    },
+    "testResult": {
+      "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136-test-result.json",
+      "sha256": "dba7016fe8031a69df97363f2121b14cf2139b2bb0a2727348e3611c4d73d397"
+    },
+    "themeWrite": {
+      "themeId": "213482963335",
+      "role": "UNPUBLISHED",
+      "file": "templates/product.json",
+      "semanticScope": "only sections.main.blocks.product-details.blocks.lux_spezifikationen.settings.custom_liquid; exact mug handle guard",
+      "beforeMd5": "6b44c4493538e99f42d2397ae330a828",
+      "afterMd5": "2e72a6ad93d535435ecf224c9b68b1dc",
+      "bytes": 71420,
+      "updatedAtUtc": "2026-11-08T09:42:26Z",
+      "userErrors": [],
+      "projectionAssetPreservedMd5": "b6d3eac0e62208f216ef8dae3d1b0711",
+      "mainProductJsonPreservedMd5": "6b44c4493538e99f42d2397ae330a828",
+      "postwriteDraftVisual": "partial: Firecrawl HTTP200 confirms Draft and 326 g; direct screenshot HTTP503; full variant sequence remains local-test evidence",
+      "evidencePath": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136-theme-write.json",
+      "evidenceSha256": "9629044f45063dd6a5e21988cf013066941413820554b4eb9a6cfdd27236a936"
+    }
+  },
+  "projectionCorrection": {
+    "status": "written_to_unpublished_readback_confirmed_firecrawl_page_http200_projection_proportion_and_real_e2e_open",
+    "ownerRejectedDraftProjection": true,
+    "rejectedDraftV63Sha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+    "candidate": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136.js",
+      "sha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991",
+      "newMugTextScale": 0.35,
+      "existingMugScalePreserved": 0.55,
+      "nonMugScalePreserved": 0.55,
+      "frontViewDisclosure": true
+    },
+    "tests": {
+      "unit": 12,
+      "editor": 32,
+      "preview": 76,
+      "threeVariantVisual": "PASS",
+      "browserErrors": []
+    },
+    "localIdentity": [
+      {
+        "size": "325 ml",
+        "bytes": 84278,
+        "sha256": "c0997993618109d0d2e25890f5250d75a7449baca97f599f95f3ca145c5a3f00",
+        "byteIdentical": true
+      },
+      {
+        "size": "444 ml",
+        "bytes": 89127,
+        "sha256": "220e06b22243bdd234cd3dbeb857eabb9dad63d052c94e3ea9abaef954d58a37",
+        "byteIdentical": true
+      },
+      {
+        "size": "591 ml",
+        "bytes": 104362,
+        "sha256": "85c8daa68e4d38d371316bb5fce02b1d67e356d68b166fa1bf4cf6cb502592fe",
+        "byteIdentical": true
+      }
+    ],
+    "identityEvidence": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136-identity.json",
+      "sha256": "d6c7b48f8bcdb047f86d3501e3bb5aa9b9696aa48be74928051d0423d725d488"
+    },
+    "compatEvidence": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136-compat.json",
+      "sha256": "abd90e86f58e8426c2249bcb6703c7c382a54ad8d01c13b818dafd5a09283172"
+    },
+    "images": [
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/local-candidate-before-after-325ml-desktop.png",
+        "sha256": "411687fe3223fd77ef85a239e4abda26e542d4e3d85d1eb7a5658c55c20f18fb"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/local-candidate-before-after-325ml-mobile.png",
+        "sha256": "289249f94486a1812004f698b6bfc4a49c820b3353e771ae4fef0dc6c8aa558b"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/local-candidate-after-all-variants-desktop.png",
+        "sha256": "94ef9aa34b87a7ae998a41037ed00322b3b847aa64753825f6ad23a6a14e977e"
+      }
+    ],
+    "realUploadOrCart": false,
+    "nextStep": "load current UNPUBLISHED asset interactively, rerun full clean real E2E and capture proportional Draft images; only then reconsider MAIN option B",
+    "themeWrite": {
+      "themeId": "213482963335",
+      "role": "UNPUBLISHED",
+      "file": "assets/lspod-designer-v6-6.3.0.js",
+      "beforeMd5": "403cbd9ff0883b0676daf209b33765e6",
+      "afterMd5": "b6d3eac0e62208f216ef8dae3d1b0711",
+      "afterSha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991",
+      "bytes": 225915,
+      "updatedAtUtc": "2026-11-08T09:37:48Z",
+      "userErrors": [],
+      "processing": false,
+      "processingFailed": false,
+      "evidencePath": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136-theme-write.json",
+      "evidenceSha256": "e8f84f2f02949c8046a383faa19cad8bc108c7edfea949209b44c86e4b4b92ce"
+    },
+    "postwriteDraftVisual": {
+      "status": "partial",
+      "firecrawlHttp": 200,
+      "draftBar": true,
+      "visibleWeight": "326 g",
+      "previewUiVisible": true,
+      "projectionProportion": "unknown from Firecrawl; local controlled comparison only",
+      "directScreenshotHttp": 503,
+      "blindRetry": false
+    }
+  },
+  "writePerformed": {
+    "scope": "UNPUBLISHED theme only",
+    "operations": 2,
+    "files": [
+      "assets/lspod-designer-v6-6.3.0.js",
+      "templates/product.json"
+    ],
+    "readbackConfirmed": true,
+    "published": false,
+    "mainChanged": false
+  },
+  "postwriteIndependentFetch": {
+    "tool": "Firecrawl",
+    "scrapeId": "01a1ba8f-33a7-76fe-b8e2-8a91622d04bd",
+    "feedbackId": "01a1ba8f-f6ab-70e4-aee2-7b722a2c7970",
+    "http": 200,
+    "mobile": true,
+    "finalUrlVariant": "55777979629953",
+    "shopifyPreviewBar": "Draft",
+    "visibleWeight": "326 g",
+    "printPreviewUiVisible": true,
+    "robots": "none",
+    "confirmed": [
+      "Draft page reachable",
+      "first metric weight visible",
+      "print-preview UI visible"
+    ],
+    "notConfirmed": [
+      "interactive mockup version",
+      "post-interaction projection proportions",
+      "full real combined E2E"
+    ],
+    "directScreenshotDownload": "HTTP503; not retried"
+  }
+}

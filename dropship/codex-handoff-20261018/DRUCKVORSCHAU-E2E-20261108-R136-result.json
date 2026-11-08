@@ -1,0 +1,202 @@
+{
+  "url": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
+  "viewport": "375x812",
+  "assets": [
+    {
+      "url": "https://luxestyle.ch/cdn/shop/t/27/assets/lspod-designer-v6-6.3.0.js?v=137313312572072828081794120104",
+      "status": 200
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541",
+      "status": 200
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/t/27/assets/lspod-karte-19.json?v=4305830588203977731794120104",
+      "status": 200
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/t/27/assets/lspod-vorschau-19.json?v=46437622367270603471794120104",
+      "status": 200
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/t/27/assets/lspod-designer-v6-6.3.0.js?v=137313312572072828081794120104",
+      "status": 200
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lspod-designer-v5.js?v=1791803541",
+      "status": 200
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/t/27/assets/lspod-karte-19.json?v=4305830588203977731794120104",
+      "status": 200
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/t/27/assets/lspod-vorschau-19.json?v=46437622367270603471794120104",
+      "status": 200
+    }
+  ],
+  "cloudinary": [
+    {
+      "url": "https://api.cloudinary.com/v1_1/dwyi6kkrl/auto/upload",
+      "status": 200
+    },
+    {
+      "url": "https://api.cloudinary.com/v1_1/dwyi6kkrl/auto/upload",
+      "status": 200
+    }
+  ],
+  "cartAdd": [
+    {
+      "url": "https://luxestyle.ch/cart/add.js",
+      "status": 200
+    }
+  ],
+  "forbiddenRequests": [],
+  "pageErrors": [],
+  "variants": [
+    {
+      "value": "325 ml",
+      "id": "55777979629953",
+      "printfulVariant": 1320,
+      "dimensions": "2700 × 1050",
+      "preview": {
+        "width": 341,
+        "height": 341,
+        "alphaSamples": 117
+      },
+      "state": {
+        "version": "6.3.0",
+        "mode": "karte",
+        "init": "1",
+        "sv": "55777979629953",
+        "pv": 1320,
+        "model": 19,
+        "meta": "Druckfläche 22,9 × 8,9 cm · Druckdatei 2700 × 1050 px · 300 dpi",
+        "legacy": 0
+      }
+    },
+    {
+      "value": "444 ml",
+      "id": "55777979662721",
+      "printfulVariant": 4830,
+      "dimensions": "2700 × 1140",
+      "preview": {
+        "width": 341,
+        "height": 341,
+        "alphaSamples": 117
+      },
+      "state": {
+        "version": "6.3.0",
+        "mode": "karte",
+        "init": "1",
+        "sv": "55777979662721",
+        "pv": 4830,
+        "model": 19,
+        "meta": "Druckfläche 22,9 × 9,7 cm · Druckdatei 2700 × 1140 px · 300 dpi",
+        "legacy": 0
+      }
+    },
+    {
+      "value": "591 ml",
+      "id": "55777979695489",
+      "printfulVariant": 16586,
+      "dimensions": "3071 × 1205",
+      "preview": {
+        "width": 341,
+        "height": 341,
+        "alphaSamples": 117
+      },
+      "state": {
+        "version": "6.3.0",
+        "mode": "karte",
+        "init": "1",
+        "sv": "55777979695489",
+        "pv": 16586,
+        "model": 19,
+        "meta": "Druckfläche 26 × 10,2 cm · Druckdatei 3071 × 1205 px · 300 dpi",
+        "legacy": 0
+      }
+    }
+  ],
+  "steps": [
+    "edit-invalidated",
+    "variant-invalidated"
+  ],
+  "formBlobs": [
+    {
+      "name": "file",
+      "filename": null,
+      "type": "image/png",
+      "bytes": 87216,
+      "sha256": "09f4ac759df7e41d3933625932b55b0329115d443c60dad1002427e571aae3bb"
+    },
+    {
+      "name": "file",
+      "filename": null,
+      "type": "image/jpeg",
+      "bytes": 24883,
+      "sha256": "9f1e39db6d15530d2f43870ac5c23a696524d28eeb4b4b47752170f39ecde3c1"
+    }
+  ],
+  "initial": {
+    "version": "6.3.0",
+    "mode": "karte",
+    "init": "1",
+    "sv": "55777979629953",
+    "pv": 1320,
+    "model": 19,
+    "meta": "Druckfläche 22,9 × 8,9 cm · Druckdatei 2700 × 1050 px · 300 dpi",
+    "legacy": 0
+  },
+  "dpi": {
+    "text": "Kauf gesperrt: «Druckfläche» hat nur ca. 3 dpi, nötig sind mindestens 150 dpi. Skaliere das Foto kleiner, nimm ein grösseres Foto oder entferne es.",
+    "min": 3.9075219798111367,
+    "blocks": 1
+  },
+  "reviewSummary": "Produkt: Keramik-Tasse – Selbst gestalten\nAusführung: 325 ml\nPrintful-Modell: 19\nDruckflächen: Druckfläche",
+  "mobile": {
+    "left": 8,
+    "right": 367,
+    "width": 359,
+    "viewport": 375,
+    "scrollWidth": 359,
+    "clientWidth": 359
+  },
+  "reviewPrint": {
+    "type": "image/png",
+    "bytes": 87216,
+    "sha256": "09f4ac759df7e41d3933625932b55b0329115d443c60dad1002427e571aae3bb"
+  },
+  "uploadPrint": {
+    "name": "file",
+    "filename": null,
+    "type": "image/png",
+    "bytes": 87216,
+    "sha256": "09f4ac759df7e41d3933625932b55b0329115d443c60dad1002427e571aae3bb"
+  },
+  "cartItem": {
+    "variantId": "55777979629953",
+    "properties": {
+      "🎨 Design (default)": "Text: \"V6.3 PILOT R136\"",
+      "🖼️ Druckdatei (default)": "https://res.cloudinary.com/dwyi6kkrl/image/upload/v1794128923/mh5cmw6jnttispmdwf0h.png",
+      "_pod_karte": "{\"v\":6,\"m\":19,\"pv\":1320,\"sv\":\"55777979629953\",\"pl\":[\"default\"],\"ap\":0}",
+      "_vorschau": "https://res.cloudinary.com/dwyi6kkrl/image/upload/v1794128924/fyrl7nhdqnqgyzyfjfhz.jpg"
+    },
+    "pod": {
+      "v": 6,
+      "m": 19,
+      "pv": 1320,
+      "sv": "55777979629953",
+      "pl": [
+        "default"
+      ],
+      "ap": 0
+    }
+  },
+  "cartClear": {
+    "status": 200,
+    "count": 0
+  },
+  "cartAddRequests": 1,
+  "completedAt": "2026-11-08T09:08:49.412Z"
+}

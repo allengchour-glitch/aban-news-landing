@@ -1,0 +1,31 @@
+{
+  "url": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?variant=55777979629953",
+  "variants": [
+    {
+      "value": "325 ml",
+      "id": "55777979629953",
+      "text": "326 g"
+    },
+    {
+      "value": "444 ml",
+      "id": "55777979662721",
+      "text": "454 g"
+    },
+    {
+      "value": "591 ml",
+      "id": "55777979695489",
+      "text": "536 g"
+    },
+    {
+      "value": "325 ml",
+      "id": "55777979629953",
+      "text": "326 g"
+    }
+  ],
+  "cartAdd": [],
+  "cloudinary": [],
+  "forbidden": [],
+  "pageErrors": [],
+  "status": "PASS",
+  "completedAt": "2026-11-08T09:15:11.993Z"
+}

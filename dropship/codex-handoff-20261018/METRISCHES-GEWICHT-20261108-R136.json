@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "status": "local_candidate_validated_no_write",
+  "source": {
+    "themeId": "gid://shopify/OnlineStoreTheme/213013037447",
+    "role": "MAIN",
+    "updatedAt": "2026-11-07T19:56:09Z",
+    "filename": "templates/product.json",
+    "checksumMd5": "6b44c4493538e99f42d2397ae330a828",
+    "snapshot": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/main-product.json",
+      "bytes": 69405,
+      "sha256": "a793dd55690c58c6b8a2d8ce2c8314333333c704f37ff45fb96e1d1ddb05c101"
+    }
+  },
+  "product": {
+    "id": "gid://shopify/Product/15422823465345",
+    "handle": "keramik-tasse-selbst-gestalten",
+    "variants": [
+      {
+        "id": "55777979629953",
+        "title": "325 ml",
+        "adminWeight": {
+          "value": 11.5,
+          "unit": "OUNCES"
+        },
+        "shopifyLiquidGrams": 326
+      },
+      {
+        "id": "55777979662721",
+        "title": "444 ml",
+        "adminWeight": {
+          "value": 16,
+          "unit": "OUNCES"
+        },
+        "shopifyLiquidGrams": 454
+      },
+      {
+        "id": "55777979695489",
+        "title": "591 ml",
+        "adminWeight": {
+          "value": 18.9,
+          "unit": "OUNCES"
+        },
+        "shopifyLiquidGrams": 536
+      }
+    ]
+  },
+  "scope": "only sections.main.blocks.product-details.blocks.lux_spezifikationen.settings.custom_liquid changes; exact product handle guard; all other products preserve existing output",
+  "artifacts": {
+    "main-product.candidate.json": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/main-product.candidate.json",
+      "bytes": 71420,
+      "sha256": "a0c4bf7a6f4772a78257864d99159faef1c13e5bf2b80e483c71e8e7250a8eed"
+    },
+    "lux_spezifikationen.patch": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/lux_spezifikationen.patch",
+      "bytes": 4117,
+      "sha256": "cb760ce545209fc0489d36d19c40ee4f96e9de6c17b898dbb0045961800a1db5"
+    },
+    "lux_spezifikationen.before.liquid": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/lux_spezifikationen.before.liquid",
+      "bytes": 5312,
+      "sha256": "00b2041a93c5ad53efddd49f021884c1462e316b05cfcea591d3fa111133dfce"
+    },
+    "lux_spezifikationen.after.liquid": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/lux_spezifikationen.after.liquid",
+      "bytes": 7263,
+      "sha256": "d5e8f61f680849e8ca7bccbff43ddeeb4d9b436135a90a179d0d396a3858a353"
+    },
+    "lux-variant-weight-runtime.js": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/lux-variant-weight-runtime.js",
+      "bytes": 1274,
+      "sha256": "f771c5163a3aa18095dfe4173449ac6e05fadd263b2919af12b6aac22c50f308"
+    },
+    "test_metric_weight_candidate.mjs": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/test_metric_weight_candidate.mjs",
+      "bytes": 3889,
+      "sha256": "c37a66b64bb9288820ec329a6ca5de32cb00f3317013948113f2308c7d6ef6c4"
+    },
+    "test-result.json": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/test-result.json",
+      "bytes": 619,
+      "sha256": "dba7016fe8031a69df97363f2121b14cf2139b2bb0a2727348e3611c4d73d397"
+    },
+    "REPORT.md": {
+      "path": "/workspace/luxestyle-review/metric-weight-r136/REPORT.md",
+      "bytes": 2300,
+      "sha256": "0282e69a468a4e8c11f907840d7c0d61b65c525e21ea2f851a6351aa1b1879c3"
+    }
+  },
+  "validation": {
+    "jsonValid": true,
+    "semanticScopeOnly": true,
+    "sequence": [
+      "326 g",
+      "454 g",
+      "536 g",
+      "326 g"
+    ],
+    "selectedRadioAndCartFormIdMatched": true,
+    "pageErrors": [],
+    "cloudinaryUploads": 0,
+    "cartAdds": 0,
+    "checkoutOrOrderRequests": 0
+  },
+  "writesNotPerformed": [
+    "Shopify theme",
+    "Shopify product",
+    "cart",
+    "checkout",
+    "order",
+    "publish",
+    "commit",
+    "push"
+  ]
+}

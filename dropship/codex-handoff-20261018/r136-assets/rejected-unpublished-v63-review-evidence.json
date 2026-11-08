@@ -1,0 +1,45 @@
+{
+  "url": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
+  "runs": [
+    {
+      "name": "desktop",
+      "viewport": "1440x1100",
+      "cloudinary": 0,
+      "cartAdd": 0,
+      "checkoutOrOrder": 0,
+      "pageErrors": [
+        "Uncaught InvalidStateError: Failed to execute 'showPopover' on 'HTMLElement': Invalid on disconnected popover elements."
+      ],
+      "path": "/tmp/r136-draft-review-desktop.png",
+      "panel": {
+        "width": 920,
+        "height": 622,
+        "scrollWidth": 920,
+        "clientWidth": 920
+      },
+      "summary": "Produkt: Keramik-Tasse – Selbst gestalten\nAusführung: 325 ml\nPrintful-Modell: 19\nDruckflächen: Druckfläche",
+      "checkboxChecked": false,
+      "confirmDisabled": true
+    },
+    {
+      "name": "mobile",
+      "viewport": "375x1400",
+      "cloudinary": 0,
+      "cartAdd": 0,
+      "checkoutOrOrder": 0,
+      "pageErrors": [
+        "Uncaught InvalidStateError: Failed to execute 'showPopover' on 'HTMLElement': Invalid on disconnected popover elements."
+      ],
+      "path": "/tmp/r136-draft-review-mobile.png",
+      "panel": {
+        "width": 359,
+        "height": 1010,
+        "scrollWidth": 359,
+        "clientWidth": 359
+      },
+      "summary": "Produkt: Keramik-Tasse – Selbst gestalten\nAusführung: 325 ml\nPrintful-Modell: 19\nDruckflächen: Druckfläche",
+      "checkboxChecked": false,
+      "confirmDisabled": true
+    }
+  ]
+}

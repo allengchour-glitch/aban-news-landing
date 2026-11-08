@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 135,
-  "updatedAt": "2026-11-08T08:08:38+01:00",
+  "revision": 136,
+  "updatedAt": "2026-11-08T10:52:10+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -6038,13 +6038,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r135_unpublished_v5_preview_and_v63_mug_pilot_go_main_unchanged",
+      "state": "r136_unpublished_projection_and_metric_written_firecrawl_draft_200_326g_proportion_real_e2e_open_main_unchanged",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R135_V5_PREVIEW_V63_MUG_PILOT_SEPARATED_EVIDENCE_DAILY_PACKAGE",
-      "lastEvidence": "UNPUBLISHED Theme213482963335: v5-Pflichtvorschau plus begrenzter v6.3-Tassen-Pilot. R135 insgesamt5 Draft-Dateiwrites; v6.3-Pilot Layout fe3e85d7, v6 403cbd9f, Karte f6aafc1c, Vorschau45f219ec; MAIN213013037447 unverändert. Tasse15422823465345 ACTIVE/unverändert, 325/444/591ml→PF1320/4830/16586. Matrix/DPI/Invalidierung/375px PASS; Review-PNG=FormData 88'716B SHA384401a5, im instrumentierten Lauf kein Netzrequest und Netzstatus unbekannt; isolierte325/591 Wege Cloudinary200/cart200/clear0. Kein vollständig grüner Kombiharness behauptet. PR2944 ea877d4487 Draft:1'057 v6.3+589 v6.2 Tests, relevante CI grün, Deploy-Timeout/externe Checks offen. Kein Publish/Checkout/Order. Tagespaket Shopify/Metricool/Klaviyo einmalig geprüft; Master bleibt Storyboard ohne MP4 und alle Kanäle blockiert.",
-      "previewUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259",
-      "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen. Nach restlichen externen PR-Checks Draft/Main frisch vergleichen und nur einen begrenzten Publish-Diff zur separaten Inhaberfreigabe vorlegen. Keine physische Produktion, Checkout-/Order-Reife oder Katalogabdeckung aus den getrennten Pilotbelegen ableiten.",
+      "belegArt": "R136_CLEAN_PRECORRECTION_E2E_TWO_UNPUBLISHED_WRITES_POSTWRITE_HTTP503_NINE_IMAGE_EVIDENCE",
+      "lastEvidence": "UNPUBLISHED Theme213482963335/Tasse15422823465345: Der reproduzierbare Clean-E2E gegen die damalige v6.3-Datei SHA38e4 ist vollständig grün (3 Varianten, DPI-Sperre, Invalidierungen, Review/Upload-PNG bytegleich87'216B/SHA09f4ac75,2xCloudinary200, genau1CartAdd200, Clear200/Count0, keine Checkout-/Order-Requests, pageErrors=[]). Der Inhaber verwarf danach die unproportionale Produktprojektion. Der lokal korrigierte Kandidat SHA9166 (neue Tassen-Texte Scale0.35; bestehende0.55-Entwürfe/Nicht-Tassen erhalten) bestand12+32+76 Tests,3 Varianten und lokale Bytegleichheit; genau dieses JS-Asset wurde als ein UNPUBLISHED-Write MD5403cbd9f->b6d3eac0 zurückgelesen. Separat wurde der handle-begrenzte metrische Gewichtsdiff325/444/591ml->326/454/536g als genau ein templates/product.json-Write MD56b44c449->2e72a6ad im UNPUBLISHED Theme zurückgelesen. MAIN blieb bei v5/layout/product.json unverändert und ohne v6.3; kein Publish. Ein Header-Write wurde wegen abweichender Draft-Baseline vor Mutation abgebrochen. Ein unabhängiger Firecrawl-Mobile-Fetch erreichte die Draft-URL danach HTTP200, zeigte Preview-Bar «Draft», Vorschau-UI und sichtbar326g. Die interaktive Mockup-Version/Proportion sowie der reale Clean-E2E für SHA9166 bleiben unbekannt; der lokale Vergleich ist Proportionsbeleg. Direkter Screenshot HTTP503, kein Retry. Vier Live-MAIN-, zwei verworfene Draft- und drei lokale Kandidatenbilder sind dauerhaft gesichert. FR bleibt deutscher Fallback; physische Druck-/Bildrechte offen. PR2944 gezielt grün, systemischer Deploy-Timeout; kein Retry/Dispatch/Merge/Deploy.",
+      "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
+      "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen. Das aktuelle Draft-v6.3-Asset SHA9166 und templates/product.json MD52e72 interaktiv gegenlesen, den vollständigen realen Clean-E2E erneut ausführen und die proportionale Draft-Projektion für375/1440px abnehmen. Bis dahin OptionB blockiert. Danach nur nach ausdrücklicher Inhaberfreigabe auf einer frischen MAIN-Kopie exakt die fünf Option-B-Operationen erwägen: v5 ersetzen, drei v6.3-Assets hinzufügen und nur den41/1-Handle-Hunk für keramik-tasse-selbst-gestalten; niemals ganzen Draft/Layout/Header übernehmen. Der separate Gewichtsdiff, Header, FR, Legacy-CDN und physische Druck-/Bildrechte bleiben eigene Scopes. Vor/nach jedem Write aktuelle Hashes, Allowlist und Readback;0Cart vor Zustimmung, genau1CartAdd+Properties, Clear0, kein Checkout/Order.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6311,10 +6311,10 @@
         "R134: Globale Theme-FAQ/Chatbot enthält weiter7–14/10–20-Tage-Claims; 4XL/5XL-Masse fehlen; Material→Modell braucht Checkout-/Sync-Test.",
         "R134: Warenkorb-Fortschritt zeigt bei CHF27.90 fälschlich CHF27.66 statt CHF22.10 bis zur öffentlichen CHF-50-Schwelle.",
         "R134: Draft-PR2940 ist Draft/ungemergt; Pre-deploy und externe Pages liefen bei Schlusslesung, drei bekannte Workers waren rot.",
-        "R135: v5-Pflichtvorschau und v6.3-Tassen-Pilot liegen nur im UNPUBLISHED Theme213482963335; MAIN bleibt unverändert.",
-        "R135: Kein einzelner v6.3-Kombiharness lief vollständig grün; Matrix, Bytegleichheit und isolierte Netzwege sind getrennte Belege.",
-        "R135: Andere Produkte/Medienarten sowie physische Printful-DPI-/Druckqualität, Produktion, Checkout und Bestellung bleiben offen.",
-        "R135: PR2944 ist Draft/ungemergt; Deploy-Check cancelled, drei externe Workers rot und ein externer Check zuletzt pending."
+        "R136: Korrigierte Projektion SHA9166 und metrisches product.json MD52e72 liegen nur im UNPUBLISHED Theme213482963335. Der grüne Clean-E2E gilt der ersetzten Vor-Korrektur-Datei SHA38e4; Firecrawl bestätigte Draft-Seite/UI/326g, aber interaktive Mockup-Proportion und realer Clean-E2E bleiben unbekannt. OptionB bleibt blockiert.",
+        "R136: Physische Mustertasse, Farb-/Schärfe-/Naht-/Henkel-/Positionsabnahme und separate Katalogbildrechte fehlen; lokale kalibrierte Projektion ist kein physischer Mockup-Beleg.",
+        "R136: MAIN zeigt weiter11.5oz; FR-Seite/Produkt liefern deutsche Fallbacks. Header-Draft-Baseline wich von MAIN ab, daher wurde vor dem Upsert abgebrochen. Gewicht, FR, Header, Claims und Legacy-CDN sind separate Scopes und nicht OptionB.",
+        "R136: PR2944 bleibt Draft/ungemergt; repo-weite Deploy-Checks timeouten systemisch, externe Workers/Pages sind nicht PR-spezifisch. Kein Retry/Dispatch/Merge/Deploy."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -6478,6 +6478,56 @@
           "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-UX-20261108-R135.json",
           "gitBlobSha": "e620c8707a7ac005a6a39e3a2ffeee78f0045a71",
           "readAt": "2026-11-08T08:08:38+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.md",
+          "gitBlobSha": "abc1d65acc37e4322c94cb8712749858e5801111",
+          "readAt": "2026-11-08T10:52:10+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.json",
+          "gitBlobSha": "7b0e3db51c42edea79984f6b1f65d5d666831ffb",
+          "readAt": "2026-11-08T10:52:10+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.mjs",
+          "gitBlobSha": "bc9825ceaa43caa4dd489efed0c5bcf9c4cf0141",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136-result.json",
+          "gitBlobSha": "60145bb8c1d2d40937e131e8fd734e56f090e76e",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136.js",
+          "gitBlobSha": "ee60a27ddd2376b0c37dd54028fb0531220f5c0a",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136-theme-write.json",
+          "gitBlobSha": "fbeef9005da94c4ea5ffe5340b0e586e26ed8bdb",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136.md",
+          "gitBlobSha": "4c0268d4238b7f90b25fed114743ab3491bf221b",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136.patch",
+          "gitBlobSha": "21511699ad619c1deee3368007c2510785e2b3a0",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136.json",
+          "gitBlobSha": "f15756bcb59d67bc4c24a9acff5baf004e550f23",
+          "readAt": "2026-11-08T10:47:28+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136-theme-write.json",
+          "gitBlobSha": "ca4a352f444155a5c7c9de76770333a1aa242056",
+          "readAt": "2026-11-08T10:47:28+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6749,6 +6799,19 @@
             "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen und vor jeder weiteren Aktion frisch gegen MAIN213013037447 lesen; Preview-QA ist keine Live-Publikationsabnahme. Draft-PR2940 erst nach restlichen Checks prüfen; kein Merge/Dispatch/Deploy aus Teilbelegen ableiten. Upload-/Upstream-Blocker getrennt diagnostizieren und danach mit neu erzeugter Druckdatei Mobil/Desktop bis vor die zahlungspflichtige Bestellung wiederholen. FR-Inhalte, verifizierte4XL/5XL-Masse, Material→Modell und Printful-DPI/Produktionsmapping getrennt prüfen.",
             "previousLastEvidenceSha256": "d87c0cbee3791975113630c8e7e67f3c8b2dee0d50604c96eb9d10565999037e",
             "previousLastEvidenceLength": 1116
+          },
+          "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-08T10:09:05+01:00",
+          "sourceRevision": 135,
+          "previous": {
+            "state": "r135_unpublished_v5_preview_and_v63_mug_pilot_go_main_unchanged",
+            "lastEvidenceDate": "2026-11-08",
+            "belegArt": "R135_V5_PREVIEW_V63_MUG_PILOT_SEPARATED_EVIDENCE_DAILY_PACKAGE",
+            "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen. Nach restlichen externen PR-Checks Draft/Main frisch vergleichen und nur einen begrenzten Publish-Diff zur separaten Inhaberfreigabe vorlegen. Keine physische Produktion, Checkout-/Order-Reife oder Katalogabdeckung aus den getrennten Pilotbelegen ableiten.",
+            "previousLastEvidenceSha256": "e5d429c24ec7c4c84eed8f5859e3a9f39711e9527fb7c54fc6ad44cdee0027e9",
+            "previousLastEvidenceLength": 795
           },
           "previousLastEvidencePreserved": true
         }
@@ -10423,6 +10486,17 @@
         "readAt": "2026-11-08T08:08:38+01:00"
       },
       "action": "R135: v5 per-page print preview and a four-file v6.3 mug pilot were validated in UNPUBLISHED theme213482963335; MAIN unchanged. Evidence deliberately separates matrix/DPI/invalidation, exact-byte wrapper with unknown network status, and isolated Cloudinary/cart/clear paths; no fully green combined-harness claim. PR2944 remains Draft. Daily Shopify/Metricool/Klaviyo package read once; no publish, checkout or order."
+    },
+    {
+      "revision": 136,
+      "at": "2026-11-08T10:52:10+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.json",
+        "gitBlobSha": "7b0e3db51c42edea79984f6b1f65d5d666831ffb",
+        "readAt": "2026-11-08T10:52:10+01:00"
+      },
+      "action": "R136: The clean combined E2E is durably preserved and explicitly scoped to the replaced pre-correction Draft v6.3 SHA38e4. Owner-rejected Draft images remain labelled as rejected before evidence. A proportional candidate SHA9166 and a handle-scoped metric-weight product-template diff were each written once to UNPUBLISHED theme213482963335 and read back; MAIN and publication state stayed unchanged. An independent Firecrawl mobile fetch confirmed Draft HTTP200, preview UI and visible 326g; interactive projection proportion and the real postwrite clean E2E remain open, so option B is blocked. Nine durable images separate four Live MAIN views, two rejected Draft views and three local candidate comparisons. Header mutation aborted before write on baseline mismatch; no product object, cart, checkout, order, publish, merge or deploy."
     }
   ],
   "salesGoal": {
@@ -15756,5 +15830,251 @@
       "PR2944 remains Draft/unmerged with cancelled repository-wide deploy check, three external Worker failures and one pending external check."
     ],
     "nextStep": "Keep theme213482963335 unpublished. After remaining external PR checks, fresh-countercheck Draft vs MAIN and prepare a bounded publish diff for separate owner approval; do not infer production or order readiness."
+  },
+  "selfDesignPreviewR136": {
+    "at": "2026-11-08T10:52:10+01:00",
+    "status": "unpublished_projection_and_metric_written_readback_firecrawl_draft_http200_326g_confirmed_proportion_real_e2e_open_main_unchanged",
+    "report": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.md",
+      "gitBlobSha": "abc1d65acc37e4322c94cb8712749858e5801111",
+      "sha256": "61cf79db0b104d965d89df84ed0e2aadc2fbb1d25c44fafa9790da0430390b82"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.json",
+      "gitBlobSha": "7b0e3db51c42edea79984f6b1f65d5d666831ffb",
+      "sha256": "0d527558d88942ce059d5d66969c1a7b9680f19aab337e9d1f17631b049c0899"
+    },
+    "harness": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136.mjs",
+      "sha256": "32cf0c22ba16bf57d8b54953bfd9dce7f1c2bd0656bc9947a0ec720d1f984887",
+      "gitBlobSha": "bc9825ceaa43caa4dd489efed0c5bcf9c4cf0141"
+    },
+    "result": {
+      "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-E2E-20261108-R136-result.json",
+      "sha256": "79d5f53b0bc129ee6e9359253e80ea9d4f31819e9eb988d447606da187351900",
+      "gitBlobSha": "60145bb8c1d2d40937e131e8fd734e56f090e76e"
+    },
+    "combinedE2E": {
+      "status": "PASS_PRECORRECTION_ONLY",
+      "validatedDraftV63Sha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+      "currentDraftV63Sha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991",
+      "appliesToCurrentDraft": false,
+      "currentDraftPostwriteE2E": "unknown; Firecrawl HTTP200 page fetch is not a full interactive E2E",
+      "viewport": "375x812",
+      "variants": [
+        "55777979629953",
+        "55777979662721",
+        "55777979695489"
+      ],
+      "reviewUploadPngBytes": 87216,
+      "reviewUploadPngSha256": "09f4ac759df7e41d3933625932b55b0329115d443c60dad1002427e571aae3bb",
+      "cloudinary200": 2,
+      "cartAdd200": 1,
+      "cartClearCount": 0,
+      "checkoutOrOrderRequests": 0,
+      "pageErrors": [],
+      "productBugFound": false,
+      "popoverDiagnosis": "old error was caused by diagnostic harness removing Shopify Preview Bar; clean harness pageErrors=[]"
+    },
+    "currentUnpublished": {
+      "themeId": "213482963335",
+      "role": "UNPUBLISHED",
+      "published": false,
+      "projectionAsset": {
+        "path": "assets/lspod-designer-v6-6.3.0.js",
+        "beforeMd5": "403cbd9ff0883b0676daf209b33765e6",
+        "md5": "b6d3eac0e62208f216ef8dae3d1b0711",
+        "sha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991",
+        "bytes": 225915,
+        "updatedAtUtc": "2026-11-08T09:37:48Z",
+        "writeOperations": 1,
+        "readback": true,
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136-theme-write.json",
+          "gitBlobSha": "fbeef9005da94c4ea5ffe5340b0e586e26ed8bdb",
+          "sha256": "e8f84f2f02949c8046a383faa19cad8bc108c7edfea949209b44c86e4b4b92ce"
+        }
+      },
+      "metricTemplate": {
+        "path": "templates/product.json",
+        "beforeMd5": "6b44c4493538e99f42d2397ae330a828",
+        "md5": "2e72a6ad93d535435ecf224c9b68b1dc",
+        "bytes": 71420,
+        "updatedAtUtc": "2026-11-08T09:42:26Z",
+        "writeOperations": 1,
+        "semanticScope": "only lux_spezifikationen custom_liquid, exact mug handle guard",
+        "expected": [
+          "326 g",
+          "454 g",
+          "536 g"
+        ],
+        "readback": true,
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/METRISCHES-GEWICHT-20261108-R136-theme-write.json",
+          "gitBlobSha": "ca4a352f444155a5c7c9de76770333a1aa242056",
+          "sha256": "9629044f45063dd6a5e21988cf013066941413820554b4eb9a6cfdd27236a936"
+        }
+      },
+      "postwritePreview": "partial: Firecrawl HTTP200 confirms Draft UI and 326 g; interactive projection proportion/real E2E open; direct screenshot HTTP503 no retry"
+    },
+    "main": {
+      "themeId": "213013037447",
+      "role": "MAIN",
+      "unchanged": true,
+      "v5Md5": "be85494be069a484807b65ee32261a8a",
+      "layoutMd5": "cf5ee5a64ca940edf4120b09c073e58f",
+      "productJsonMd5": "6b44c4493538e99f42d2397ae330a828",
+      "v63": "NOT_FOUND"
+    },
+    "projectionCorrection": {
+      "candidate": {
+        "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-PROJEKTION-20261108-R136.js",
+        "gitBlobSha": "ee60a27ddd2376b0c37dd54028fb0531220f5c0a",
+        "sha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991"
+      },
+      "newMugTextScale": 0.35,
+      "existingMugAndNonMugScalePreserved": 0.55,
+      "frontViewDisclosure": true,
+      "unitTests": 12,
+      "editorTests": 32,
+      "previewTests": 76,
+      "threeVariantLocalVisual": "PASS",
+      "localMockUploadOnly": true,
+      "localIdentity": [
+        {
+          "size": "325 ml",
+          "bytes": 84278,
+          "sha256": "c0997993618109d0d2e25890f5250d75a7449baca97f599f95f3ca145c5a3f00"
+        },
+        {
+          "size": "444 ml",
+          "bytes": 89127,
+          "sha256": "220e06b22243bdd234cd3dbeb857eabb9dad63d052c94e3ea9abaef954d58a37"
+        },
+        {
+          "size": "591 ml",
+          "bytes": 104362,
+          "sha256": "85c8daa68e4d38d371316bb5fce02b1d67e356d68b166fa1bf4cf6cb502592fe"
+        }
+      ]
+    },
+    "images": [
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-selbstgestalten-desktop.png",
+        "sha256": "2c1f400ad5f67140ee16de5e4fe4d4918231be45ba5bb5810412aef72fec23a1",
+        "scope": "LIVE MAIN desktop"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-selbstgestalten-mobil.png",
+        "sha256": "199869a9f75f14d15d019528dbe3417b1d8893ddce01f8ebef6d17a20620e7e8",
+        "scope": "LIVE MAIN mobile"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-druckvorschau-desktop.png",
+        "sha256": "7c7c931b7c7ac8051d0047d2aa6a626723b46a1cd346a9a790c65565329761bb",
+        "scope": "LIVE MAIN preview desktop; no mandatory confirmation"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/live-main-druckvorschau-mobil.png",
+        "sha256": "db978e06000f2592e06bb11ba223b5eafae7a0021a212e2600093cda6be9a3a4",
+        "scope": "LIVE MAIN preview mobile; no mandatory confirmation"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/rejected-unpublished-v63-review-desktop.png",
+        "sha256": "8d3e625dbc9ba1122b4885b73f7c5713eef6f25c6e273ddcff8b27d926bda946",
+        "scope": "rejected UNPUBLISHED before; unproportional; not approvable"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/rejected-unpublished-v63-review-mobil.png",
+        "sha256": "18d9525dd4f004a8e0103acbcb9dd5c50c79fbcbc05a5589e4f204c0d0881f5b",
+        "scope": "rejected UNPUBLISHED before; unproportional; not approvable"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/local-candidate-before-after-325ml-desktop.png",
+        "sha256": "411687fe3223fd77ef85a239e4abda26e542d4e3d85d1eb7a5658c55c20f18fb",
+        "scope": "local controlled comparison; not Draft/live"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/local-candidate-before-after-325ml-mobile.png",
+        "sha256": "289249f94486a1812004f698b6bfc4a49c820b3353e771ae4fef0dc6c8aa558b",
+        "scope": "local controlled comparison; not Draft/live"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/r136-assets/local-candidate-after-all-variants-desktop.png",
+        "sha256": "94ef9aa34b87a7ae998a41037ed00322b3b847aa64753825f6ad23a6a14e977e",
+        "scope": "local 3-variant candidate; not Draft/live"
+      }
+    ],
+    "headerCopy": {
+      "written": false,
+      "abortedBeforeMutation": true,
+      "draftMd5Prefix": "d6dc242e",
+      "draftEnding": "ab CHF 50 Warenwert",
+      "mainMd5Prefix": "d62af614",
+      "mainContains": "nach Rabatt",
+      "reason": "baseline mismatch; preserve MAIN; never whole Draft header"
+    },
+    "publishAllowlist": {
+      "optionA": "fresh MAIN clone, v5-only; broad effect; limited Hoodie/T-shirt evidence",
+      "optionB": "fresh MAIN clone, exactly five operations: replace v5, add three v6 assets, exact 41-insert/1-delete mug-handle layout hunk",
+      "optionBStatus": "BLOCKED until current SHA9166 plus metric template passes real Draft Clean E2E and interactive proportional Draft review",
+      "metricTemplatePartOfOptionB": false,
+      "never": "copy/publish whole Draft, full layout or whole header"
+    },
+    "pr2944": {
+      "head": "ea877d4487c52eaf2290cd92dd988f61f14d1aa1",
+      "targetedAssertions": 120,
+      "status": "Draft unmerged undeployed; targeted checks green; deploy timeout systemic; no retry/dispatch/merge/deploy"
+    },
+    "writesPerformed": [
+      {
+        "theme": "213482963335",
+        "role": "UNPUBLISHED",
+        "file": "assets/lspod-designer-v6-6.3.0.js",
+        "readback": true
+      },
+      {
+        "theme": "213482963335",
+        "role": "UNPUBLISHED",
+        "file": "templates/product.json",
+        "readback": true
+      }
+    ],
+    "writesNotPerformed": [
+      "MAIN theme",
+      "theme publish",
+      "layout",
+      "v5 asset",
+      "Shopify product object",
+      "header upsert",
+      "cart",
+      "checkout",
+      "order",
+      "Printful order",
+      "Metricool/Klaviyo repeat",
+      "workflow retry/dispatch/merge/deploy"
+    ],
+    "remainingUnknowns": [
+      "interactive current Draft projection proportion and real Clean E2E after two writes",
+      "physical sample mug and exact print placement",
+      "catalog image rights",
+      "fresh authenticated Printful template read",
+      "FR translations",
+      "header copy on safe MAIN baseline",
+      "delivery/discount claim substantiation"
+    ],
+    "postwriteIndependentFetch": {
+      "tool": "Firecrawl",
+      "scrapeId": "01a1ba8f-33a7-76fe-b8e2-8a91622d04bd",
+      "feedbackId": "01a1ba8f-f6ab-70e4-aee2-7b722a2c7970",
+      "http": 200,
+      "mobile": true,
+      "draftBar": true,
+      "visibleWeight": "326 g",
+      "previewUiVisible": true,
+      "projectionProportionConfirmed": false,
+      "realCleanE2E": false,
+      "directScreenshot": "HTTP503 no retry"
+    }
   }
 }

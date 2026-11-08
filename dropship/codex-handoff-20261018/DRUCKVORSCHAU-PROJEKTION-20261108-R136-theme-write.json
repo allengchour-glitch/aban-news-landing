@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "status": "draft_asset_written_readback_confirmed_live_draft_visual_unknown_http_503",
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/213482963335",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-08T09:37:48Z",
+    "processing": false,
+    "processingFailed": false
+  },
+  "file": {
+    "filename": "assets/lspod-designer-v6-6.3.0.js",
+    "beforeMd5": "403cbd9ff0883b0676daf209b33765e6",
+    "afterMd5": "b6d3eac0e62208f216ef8dae3d1b0711",
+    "afterSha256": "9166bb8b9c4ae9f16b63b90ca3770cd6a0d3ad51602659c4b17e0e5f2a3a0991",
+    "afterBytes": 225915,
+    "updatedAt": "2026-11-08T09:37:48Z",
+    "userErrors": []
+  },
+  "unchangedDraftFiles": {
+    "assets/lspod-designer-v5-safe.js": "abc4e9d6dee7716e1bd3439d8280ebfb",
+    "layout/theme.liquid": "fe3e85d7da50eb8f0b8152350d1a79f1"
+  },
+  "mainReadback": {
+    "id": "gid://shopify/OnlineStoreTheme/213013037447",
+    "role": "MAIN",
+    "updatedAt": "2026-11-07T19:56:09Z",
+    "assets/lspod-designer-v5-safe.js": "be85494be069a484807b65ee32261a8a",
+    "layout/theme.liquid": "cf5ee5a64ca940edf4120b09c073e58f",
+    "v63": "NOT_FOUND"
+  },
+  "liveDraftVisualQa": {
+    "attemptsAfterWrite": 1,
+    "httpStatus": 503,
+    "result": "unknown",
+    "blindRetry": false
+  },
+  "writesNotPerformed": [
+    "MAIN theme",
+    "theme publish",
+    "product",
+    "layout",
+    "v5 asset",
+    "cart",
+    "checkout",
+    "order"
+  ]
+}

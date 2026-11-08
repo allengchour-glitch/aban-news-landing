@@ -1,0 +1,102 @@
+{
+  "kind": "local-mocked-pipeline",
+  "noRealCheckoutOrOrder": true,
+  "variants": [
+    {
+      "name": "325 ml",
+      "pv": 1320,
+      "reviewBytes": 84278,
+      "reviewSha256": "c0997993618109d0d2e25890f5250d75a7449baca97f599f95f3ca145c5a3f00",
+      "uploadBytes": 84278,
+      "uploadSha256": "c0997993618109d0d2e25890f5250d75a7449baca97f599f95f3ca145c5a3f00",
+      "byteIdentical": true,
+      "mockUploads": 2,
+      "mockUploadMeta": [
+        {
+          "n": 1,
+          "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+          "typ": "png",
+          "breite": 2700,
+          "hoehe": 1050,
+          "bytes": 84278,
+          "hatPreset": true
+        },
+        {
+          "n": 2,
+          "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+          "typ": "jpeg",
+          "breite": null,
+          "hoehe": null,
+          "bytes": 25728,
+          "hatPreset": true
+        }
+      ],
+      "mockCartPosts": 1,
+      "browserErrors": []
+    },
+    {
+      "name": "444 ml",
+      "pv": 4830,
+      "reviewBytes": 89127,
+      "reviewSha256": "220e06b22243bdd234cd3dbeb857eabb9dad63d052c94e3ea9abaef954d58a37",
+      "uploadBytes": 89127,
+      "uploadSha256": "220e06b22243bdd234cd3dbeb857eabb9dad63d052c94e3ea9abaef954d58a37",
+      "byteIdentical": true,
+      "mockUploads": 2,
+      "mockUploadMeta": [
+        {
+          "n": 1,
+          "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+          "typ": "png",
+          "breite": 2700,
+          "hoehe": 1140,
+          "bytes": 89127,
+          "hatPreset": true
+        },
+        {
+          "n": 2,
+          "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+          "typ": "jpeg",
+          "breite": null,
+          "hoehe": null,
+          "bytes": 24911,
+          "hatPreset": true
+        }
+      ],
+      "mockCartPosts": 1,
+      "browserErrors": []
+    },
+    {
+      "name": "591 ml",
+      "pv": 16586,
+      "reviewBytes": 104362,
+      "reviewSha256": "85c8daa68e4d38d371316bb5fce02b1d67e356d68b166fa1bf4cf6cb502592fe",
+      "uploadBytes": 104362,
+      "uploadSha256": "85c8daa68e4d38d371316bb5fce02b1d67e356d68b166fa1bf4cf6cb502592fe",
+      "byteIdentical": true,
+      "mockUploads": 2,
+      "mockUploadMeta": [
+        {
+          "n": 1,
+          "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/1.png",
+          "typ": "png",
+          "breite": 3071,
+          "hoehe": 1205,
+          "bytes": 104362,
+          "hatPreset": true
+        },
+        {
+          "n": 2,
+          "url": "https://res.cloudinary.com/dwyi6kkrl/image/upload/mock/2.png",
+          "typ": "jpeg",
+          "breite": null,
+          "hoehe": null,
+          "bytes": 28444,
+          "hatPreset": true
+        }
+      ],
+      "mockCartPosts": 1,
+      "browserErrors": []
+    }
+  ]
+}

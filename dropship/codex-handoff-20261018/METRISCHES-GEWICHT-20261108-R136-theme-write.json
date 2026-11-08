@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "status": "unpublished_theme_written_readback_live_preview_unknown_http503",
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/213482963335",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-08T09:42:26Z",
+    "processing": false,
+    "processingFailed": false
+  },
+  "write": {
+    "operations": 1,
+    "filename": "templates/product.json",
+    "beforeMd5": "6b44c4493538e99f42d2397ae330a828",
+    "afterMd5": "2e72a6ad93d535435ecf224c9b68b1dc",
+    "afterBytes": 71420,
+    "updatedAt": "2026-11-08T09:42:26Z",
+    "userErrors": []
+  },
+  "semanticScope": "only sections.main.blocks.product-details.blocks.lux_spezifikationen.settings.custom_liquid changed; exact handle keramik-tasse-selbst-gestalten",
+  "expectedVariantWeights": {
+    "55777979629953": "326 g",
+    "55777979662721": "454 g",
+    "55777979695489": "536 g"
+  },
+  "projectionAssetPreserved": {
+    "filename": "assets/lspod-designer-v6-6.3.0.js",
+    "md5": "b6d3eac0e62208f216ef8dae3d1b0711",
+    "bytes": 225915,
+    "updatedAt": "2026-11-08T09:37:48Z"
+  },
+  "mainReadback": {
+    "id": "gid://shopify/OnlineStoreTheme/213013037447",
+    "role": "MAIN",
+    "updatedAt": "2026-11-07T19:56:09Z",
+    "productJsonMd5": "6b44c4493538e99f42d2397ae330a828",
+    "productJsonBytes": 69405,
+    "v63Asset": "NOT_FOUND"
+  },
+  "validation": {
+    "priorBoundedCandidateBrowserSequence": [
+      "326 g",
+      "454 g",
+      "536 g",
+      "326 g"
+    ],
+    "priorPageErrors": [],
+    "priorCartAdds": 0,
+    "priorCheckoutOrOrder": 0,
+    "postWriteDraftPreview": "unknown_http503",
+    "blindRetries": 0
+  },
+  "writesNotPerformed": [
+    "MAIN theme",
+    "theme publish",
+    "product",
+    "cart",
+    "checkout",
+    "order"
+  ]
+}

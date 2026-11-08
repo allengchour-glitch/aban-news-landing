@@ -1,0 +1,66 @@
+--- /workspace/luxestyle-review/metric-weight-r136/lux_spezifikationen.before.liquid	2026-11-08 09:11:13.021048482 +0000
++++ /workspace/luxestyle-review/metric-weight-r136/lux_spezifikationen.after.liquid	2026-11-08 09:13:17.824068247 +0000
+@@ -53,13 +53,61 @@
+ {%- assign hat_groesse = false -%}{%- if optnames contains 'grösse' or optnames contains 'größe' or optnames contains 'size' or detailrows contains '<th>Grösse</th>' or detailrows contains '<th>Masse</th>' -%}{%- assign hat_groesse = true -%}{%- endif -%}
+ {%- if hat_groesse == false and product.title contains ' cm' -%}{%- assign tcm = product.title | split: ' cm' | first | split: ' ' | last | strip -%}{%- assign tnum = tcm | plus: 0 -%}{%- if tnum > 0 -%}<tr><th>Masse</th><td>{{ tcm }} cm</td></tr>{%- assign zeilen = zeilen | plus: 1 -%}{%- endif -%}{%- endif -%}
+ {%- if g.material and hat_material == false -%}<tr><th>Material</th><td>{{ g.material.value }}</td></tr>{%- assign zeilen = zeilen | plus: 1 -%}{%- endif -%}
+-{%- if v.weight > 0 and hat_gewicht == false -%}<tr><th>Gewicht</th><td>{{ v.weight | weight_with_unit: v.weight_unit }}</td></tr>{%- assign zeilen = zeilen | plus: 1 -%}{%- endif -%}
++{%- if v.weight > 0 and hat_gewicht == false -%}
++{%- if product.handle == 'keramik-tasse-selbst-gestalten' -%}<tr><th>Gewicht</th><td data-lux-variant-weight="{{ product.id }}">{{ v.weight | round }} g</td></tr>
++{%- else -%}<tr><th>Gewicht</th><td>{{ v.weight | weight_with_unit: v.weight_unit }}</td></tr>{%- endif -%}
++{%- assign zeilen = zeilen | plus: 1 -%}{%- endif -%}
+ {%- if g.condition -%}{%- if g.condition.value == 'new' -%}<tr><th>Zustand</th><td>Neu</td></tr>{%- assign zeilen = zeilen | plus: 1 -%}{%- endif -%}{%- endif -%}
+ {%- endcapture -%}
+ {%- if zeilen > 0 -%}
+ <div id="lux-spezi" style="margin:20px 0 6px;">
+ <h3 style="font-size:1.05rem;font-weight:600;margin:0 0 8px;">Spezifikationen &amp; Details</h3>
+ <table style="width:100%;border-collapse:collapse;font-size:.92rem;line-height:1.5">{{ rows }}</table>
++{%- if product.handle == 'keramik-tasse-selbst-gestalten' and v.weight > 0 and hat_gewicht == false -%}
++<script type="application/json" data-lux-variant-weight-map="{{ product.id }}">{
++{%- assign lx_weight_first = true -%}
++{%- for lxv in product.variants -%}{%- if lxv.weight > 0 -%}{%- unless lx_weight_first -%},{%- endunless -%}"{{ lxv.id }}":{{ lxv.weight | round | json }}{%- assign lx_weight_first = false -%}{%- endif -%}{%- endfor -%}
++}</script>
++<script>
++(function () {
++  var mapNode = document.querySelector('script[data-lux-variant-weight-map]');
++  var cell = document.querySelector('[data-lux-variant-weight]');
++  if (!mapNode || !cell) return;
++
++  var weights;
++  try {
++    weights = JSON.parse(mapNode.textContent || '{}');
++  } catch (_error) {
++    return;
++  }
++
++  function render(variantId) {
++    var grams = weights[String(variantId || '')];
++    if (!Number.isFinite(grams) || grams <= 0) return;
++    cell.textContent = Math.round(grams) + ' g';
++  }
++
++  function selectedVariantId() {
++    var selected = document.querySelector('variant-picker input[type="radio"][data-variant-id]:checked');
++    if (selected) return selected.getAttribute('data-variant-id');
++    var hidden = document.querySelector('form[action*="/cart/add"] input[name="id"]');
++    return hidden && hidden.value;
++  }
++
++  document.addEventListener('change', function (event) {
++    var target = event.target;
++    if (!target || !target.matches || !target.matches('variant-picker input[type="radio"][data-variant-id]')) return;
++    render(target.getAttribute('data-variant-id'));
++  });
++
++  document.addEventListener('variant:update', function () {
++    window.setTimeout(function () { render(selectedVariantId()); }, 0);
++  });
++
++  render(selectedVariantId());
++})();
++</script>
++{%- endif -%}
+ <style>#lux-spezi th{width:38%;min-width:110px;text-align:left;font-weight:500;color:#666;vertical-align:top}#lux-spezi th,#lux-spezi td{padding:7px 8px;border-bottom:1px solid #ececec}#lux-spezi tr:nth-child(odd){background:#fafafa}</style>
+ </div>
+ {%- endif -%}
+\ No newline at end of file

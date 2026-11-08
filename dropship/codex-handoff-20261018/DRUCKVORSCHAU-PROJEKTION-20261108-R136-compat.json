@@ -1,0 +1,16 @@
+{
+  "existingScaleBefore": 0.55,
+  "existingScaleAfterLoad": 0.55,
+  "layers": [
+    {
+      "text": "Bestehendes Design",
+      "scale": 0.55
+    },
+    {
+      "text": "",
+      "scale": 0.35
+    }
+  ],
+  "existingUnchanged": true,
+  "newMugDefault": 0.35
+}
