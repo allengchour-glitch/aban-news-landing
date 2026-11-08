@@ -86,6 +86,20 @@ test('Blocker ersetzt v5 sichtbar und sperrt Submit, Klick, Dynamic Checkout und
   assert.match(beschreibungPlanen(old, b, { blocked: true }).nachher, /data-lspod-blocked/);
   assert.equal(blockerProduktPruefen(p, BLOCKLIST[0], ['9']), true);
 });
+test('Alle Blocker verwenden Shopifys kanonische Block-Zeilenumbrüche und bleiben beim Rücklesen bytegleich', () => {
+  for (const blocker of BLOCKLIST) {
+    const p = blockedLive(blocker);
+    const b = blockerBaustein({ product: p, blocker });
+    const sichtbar = `<div id="lspod-start" class="lspod-v63-blocked" data-lspod-blocked="${blocker.numericId}" role="status" style="padding:20px;border:1px solid #b9a998;border-radius:12px;background:#f8f4ef;color:#2a2521">\n` +
+      `<h2 style="margin:0 0 8px">Personalisierung derzeit nicht bestellbar</h2>\n` +
+      `<p style="margin:0">${blocker.reason} Wir schalten die Gestaltung erst nach der technischen Prüfung frei.</p>\n` +
+      `</div>\n`;
+    assert.ok(b.includes(sichtbar), `${blocker.handle}: Block-Markup nicht kanonisch`);
+    const geplant = beschreibungPlanen(`<p>A</p>${b}<p>B</p>`, b, { blocked: true });
+    assert.equal(geplant.geaendert, false, `${blocker.handle}: kanonisches Readback nicht idempotent`);
+    assert.equal(geplant.nachher, `<p>A</p>${b}<p>B</p>`, `${blocker.handle}: Beschreibung nicht bytegleich`);
+  }
+});
 test('Kein oder doppelter Block wird abgelehnt', () => {
   const b = baustein({ product: live(), releaseProduct: products[0], editor }); wirft(() => beschreibungPlanen('<p>x</p>', b), /Kein bestehender/);
   const old = '<div class="lspod-designer"></div><script src="https://x/lspod-designer-v5.js"></script>'; wirft(() => beschreibungPlanen(old + old, b), /nicht eindeutig/);
