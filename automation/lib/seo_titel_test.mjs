@@ -38,10 +38,11 @@ pruef('Mehrfache Leerzeichen weg', titelNormalisieren('A   B') === 'A B');
 // ── 4. Die Beschreibung verspricht NICHTS, was nicht stimmt ──
 {
   const d = seoTitel('Wireless Game Handle').description;
-  pruef('keine Lieferzeit-Zusage', !/schnelle? Lieferung|express|sofort/i.test(d), d);
-  pruef('nennt Gratis-Versand ab CHF 50', d.includes('Gratis-Versand ab CHF 50'), d);
-  pruef('nennt 30 Tage Rückgabe', d.includes('30 Tage Rückgabe'), d);
-  pruef('nennt WELCOME10', d.includes('WELCOME10'), d);
+  pruef('keine Lieferzeit-Zusage', !/Lieferung|express|sofort/i.test(d), d);
+  pruef('kein Gratisversand-Versprechen', !/gratis.?versand|kostenlos.*versand/i.test(d), d);
+  pruef('keine feste Rückgabefrist', !/\d+\s*(?:Tage|Werktage)\s+Rückgabe/i.test(d), d);
+  pruef('kein Rabattcode', !/WELCOME10|Rabatt|Gutschein|\bCode\s+[A-Z0-9]/i.test(d), d);
+  pruef('verweist sachlich auf verfügbare Ausführungen', d.includes('verfügbare Ausführungen'), d);
   pruef('höchstens 155 Zeichen', d.length <= MAX_BESCHREIBUNG, String(d.length));
 }
 

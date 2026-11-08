@@ -226,6 +226,7 @@ jobs:
           node automation/lib/lieferbarkeit_test.mjs
           # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
           node automation/lib/seo_titel_test.mjs
+          node automation/lib/produkt_richtlinien_text_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/galaxus_treffer_test.mjs
           node automation/lib/trend_auswahl_test.mjs

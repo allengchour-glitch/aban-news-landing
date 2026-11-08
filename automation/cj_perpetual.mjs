@@ -7,11 +7,20 @@
  * Der Treiber ERKENNT das und WARTET auf den Tages-Reset (statt zu crashen) → grindet jeden Tag
  * die vollen Punkte, unbeaufsichtigt, Richtung 100k Produkte.
  *
- * ENV: SHOPIFY_CLIENT_ID/SECRET · GEMINI (/tmp/gemini_key) · CJ_TOKEN (oder /tmp/cj_token.json).
+ * ENV: LIVE=1 zwingend · DRY=1 zusaetzliche Sperre · SHOPIFY_CLIENT_ID/SECRET
+ * · GEMINI (/tmp/gemini_key) · CJ_TOKEN (oder /tmp/cj_token.json).
  * Optional: ONCE=1 (nur eine Welle, kein Endlos) · CLOTHES_CAP=80 · REST_CAP=40.
  */
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
+import { importModus } from './lib/import_live_guard.mjs';
+
+const MODUS = importModus(process.env);
+if (!MODUS.schreiben) {
+  const grund = MODUS.live ? 'DRY=1 sperrt den Dauerimport.' : 'LIVE=1 fehlt.';
+  console.log(`GESPERRT: cj_perpetual. ${grund} Keine CJ-, Gemini-, Kindprozess- oder Shopify-Aktion.`);
+  process.exit(0);
+}
 
 let CJT = (process.env.CJ_TOKEN || '').trim();
 if (!CJT && fs.existsSync('/tmp/cj_token.json')) {

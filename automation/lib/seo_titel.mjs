@@ -13,11 +13,11 @@
  * Zweiter Fund: `clip(titel + ' | LuxeStyle CH', 60)` schnitt bei langen Titeln die Marke ab und
  * hinterliess ein hängendes „|…" (255 von 2415 = 11 %). Die Marke kommt jetzt nur dran, wenn sie passt.
  *
- * Dritter Fund: die Beschreibung versprach „schnelle Lieferung". CJ-Produkte liefern in **10–20
- * Werktagen** — das wäre eine falsche Zusage auf tausenden Seiten. Stattdessen nur geprüfte Fakten:
- * Schweizer Shop · Gratis-Versand ab CHF 50 (bewusst 50, s. dropship/VERSAND-SCHWELLE.md) ·
- * 30 Tage Rückgabe · WELCOME10 (live geprüft: ACTIVE bis 31.12.2027).
+ * Dritter Fund: Standardtexte mit Liefer-, Rueckgabe-, Versand- oder Aktionsversprechen veralten
+ * und koennen fuer die konkrete Ausfuehrung unbelegt sein. Die Beschreibung bleibt deshalb
+ * sachlich und verweist auf die Auswahl auf der Produktseite.
  */
+import { produktSeoBeschreibung } from './produkt_richtlinien_text.mjs';
 export const MARKE = ' | LuxeStyle CH';
 export const MAX_TITEL = 60;
 export const MAX_BESCHREIBUNG = 155;
@@ -51,9 +51,7 @@ export function seoTitel(roh) {
   const title = (basis.length + MARKE.length <= MAX_TITEL)
     ? basis + MARKE
     : kuerzen(basis, MAX_TITEL);
-  const description = kuerzen(
-    `${basis} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. `
-    + `Jetzt –10% mit Code WELCOME10.`, MAX_BESCHREIBUNG);
+  const description = kuerzen(produktSeoBeschreibung(basis), MAX_BESCHREIBUNG);
   return { title, description };
 }
 
