@@ -33,8 +33,23 @@ async function textHinzufuegen(page, text) {
   await page.getByRole('button', { name: '➕ Text' }).click();
   await page.locator('.lsp6-text').fill(text);
 }
-async function ctaKlicken(s) {
-  await Promise.all([s.page.waitForURL('**/cart', { timeout: 20000 }), s.page.locator('.lsp6-cta').click()]);
+async function reviewBestaetigenWennNoetig(page) {
+  const v63 = await page.evaluate(() => window.LSPOD6 && window.LSPOD6.version === '6.3.0');
+  if (!v63) return;
+  const dialog = page.locator('[data-lsp6-review="1"]');
+  await dialog.waitFor({ state: 'visible', timeout: 30000 });
+  await dialog.locator('.lsp6-review-accept').check();
+  await dialog.locator('.lsp6-review-confirm').click();
+}
+const istV63 = (page) => page.evaluate(() => window.LSPOD6 && window.LSPOD6.version === '6.3.0');
+async function ctaAusloesen(page, selector = '.lsp6-cta') {
+  await page.locator(selector).first().click();
+  await reviewBestaetigenWennNoetig(page);
+}
+async function ctaKlicken(s, timeout = 20000) {
+  const navigation = s.page.waitForURL('**/cart', { timeout });
+  await ctaAusloesen(s.page);
+  await navigation;
 }
 async function rect(page, selector) { return page.locator(selector).first().evaluate((e) => { const r = e.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; }); }
 /** PNG in einer leeren Seite lesen: Grösse, Anzahl nicht durchsichtiger Pixel, Umriss. */
@@ -376,7 +391,7 @@ szenario('poster-pixel', true, async (b, srv) => {
   await editorBereit(s2.page);
   await textHinzufuegen(s2.page, 'Poster');
   const maxPx2 = await s2.page.evaluate(() => window.LSPOD6.editors[0].maxPixel);
-  await Promise.all([s2.page.waitForURL('**/cart', { timeout: 120000 }), s2.page.locator('.lsp6-cta').click()]);
+  await ctaKlicken(s2, 120000);
   const u2 = s2.uploads[0];
   pruefe('data-max-px=0: höchstens 25 Mpx (statt 69,7 Mpx), Seitenverhältnis bleibt, mehr als der Standard', u2 && u2.breite * u2.hoehe <= 25000000 && u2.breite * u2.hoehe > 16777216 && Math.abs(u2.breite / u2.hoehe - 9933 / 7016) < 0.002, JSON.stringify(u2));
   pruefe('data-max-px=0: der Editor kennt die absolute Grenze', maxPx2 === 25000000, String(maxPx2));
@@ -521,7 +536,7 @@ szenario('fehlerabsicherung', true, async (b, srv) => {
   pruefe('leerer Text: Fehler, kein Warenkorb-Aufruf, Knopf wieder frei', s.warenkorb.length === 0 && (await p.locator('.lsp6-cta').isEnabled()));
   await p.locator('.lsp6-chip', { hasText: 'Text' }).click();   // nach dem Fehler ist nichts mehr gewählt (wie v5)
   await p.locator('.lsp6-text').fill('Test');
-  await p.locator('.lsp6-cta').click();
+  await ctaAusloesen(p);
   await p.waitForFunction(() => /Konnte nicht hinzufügen/.test(document.querySelector('[data-feld="status"]').innerText));
   const t = await status(p).innerText();
   pruefe('Upload-Fehler (HTTP 500): Meldung, kein Warenkorb-Aufruf, Knopf wieder frei', /Druckdatei konnte nicht erstellt werden/.test(t) && s.warenkorb.length === 0 && (await p.locator('.lsp6-cta').isEnabled()), t);
@@ -530,7 +545,7 @@ szenario('fehlerabsicherung', true, async (b, srv) => {
   const s2 = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, warenkorbFehler: true });
   await editorBereit(s2.page);
   await textHinzufuegen(s2.page, 'Test');
-  await s2.page.locator('.lsp6-cta').click();
+  await ctaAusloesen(s2.page);
   await s2.page.waitForFunction(() => /mock-warenkorb-fehler/.test(document.querySelector('[data-feld="status"]').innerText));
   pruefe('Warenkorb lehnt ab (422): Text des Shops wird gezeigt, keine Weiterleitung, Knopf frei', !/\/cart$/.test(s2.page.url()) && (await s2.page.locator('.lsp6-cta').isEnabled()));
   await s2.schliessen();
@@ -646,7 +661,10 @@ async function v5Lauf(b, srv, modus) {
   const wurzel = modus === 'v5' ? '.lspod-designer' : '.lspod-designer-v6';
   await s.page.locator(`${wurzel} button`, { hasText: '➕ Text' }).first().click();
   await s.page.locator(`${wurzel} textarea`).first().fill('Gleich');
-  await Promise.all([s.page.waitForURL('**/cart', { timeout: 20000 }), s.page.locator(`${wurzel} button`, { hasText: 'Mit meinem Design in den Warenkorb' }).first().click()]);
+  const nav = s.page.waitForURL('**/cart', { timeout: 20000 });
+  if (modus === 'v5') await s.page.locator(`${wurzel} button`, { hasText: 'Mit meinem Design in den Warenkorb' }).first().click();
+  else await ctaAusloesen(s.page, `${wurzel} .lsp6-cta`);
+  await nav;
   const out = { props: s.warenkorb[0] && s.warenkorb[0].properties, id: s.warenkorb[0] && s.warenkorb[0].id, qty: s.warenkorb[0] && s.warenkorb[0].quantity, up: s.uploads[0], fehler: s.fehler };
   await s.schliessen();
   return out;
@@ -886,11 +904,11 @@ szenario('variante-waehrend-upload', true, async (b, srv) => {
   await editorBereit(s.page);
   const p = s.page;
   await textHinzufuegen(p, 'Tasse');
-  await p.locator('.lsp6-cta').click();
+  await ctaAusloesen(p);
   await p.waitForTimeout(300);
   pruefe('während des Bauens sind die Eingaben gesperrt (inert), der Knopf ist aus', (await p.evaluate(() => document.querySelector('.lsp6').hasAttribute('inert'))) && !(await p.locator('.lsp6-cta').isEnabled()));
   await p.locator('input[name="id"][value="1003"]').check();   // Kunde wechselt auf 20 oz, während die Datei für 11 oz hochgeladen wird
-  await p.waitForFunction(() => /gewechselt/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 15000 });
+  await p.waitForFunction(() => /gewechselt|geändert/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 15000 });
   pruefe('Warenkorb wird NICHT mit gemischten Angaben gefüllt (id 11 oz, Datei und Karte für 20 oz)', s.warenkorb.length === 0, JSON.stringify(s.warenkorb));
   pruefe('Knopf wieder frei, Sperre aufgehoben', (await p.locator('.lsp6-cta').isEnabled()) && !(await p.evaluate(() => document.querySelector('.lsp6').hasAttribute('inert'))));
   pruefe('die erste Datei war die für 11 oz (eingefroren), nicht eine Mischung', s.uploads.length === 1 && `${s.uploads[0].breite}x${s.uploads[0].hoehe}` === dim(0), JSON.stringify(s.uploads));
@@ -904,12 +922,15 @@ szenario('variante-waehrend-upload', true, async (b, srv) => {
   const t = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=19&shop=1001:1320,1002:4830,1003:16586&varianten=1001:11 oz,1002:15 oz,1003:20 oz' });
   await editorBereit(t.page);
   await textHinzufuegen(t.page, 'Tasse');
+  const neuGate = await istV63(t.page);
   await t.page.evaluate(() => {
     document.querySelector('.lsp6-cta').click();
     const r = document.querySelector('input[name="id"][value="1003"]'); r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true }));
   });
-  await t.page.waitForFunction(() => /gewechselt/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 15000 });
-  pruefe('Wechsel im Moment des Klicks: Datei bleibt die der Variante des Klicks (11 oz), Warenkorb unberührt', t.uploads.length === 1 && `${t.uploads[0].breite}x${t.uploads[0].hoehe}` === dim(0) && t.warenkorb.length === 0, JSON.stringify(t.uploads));
+  await t.page.waitForFunction(() => /gewechselt|geändert/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 15000 });
+  pruefe('Wechsel im Moment des Klicks: keine gemischten Angaben und Warenkorb unberührt', neuGate
+    ? t.uploads.length === 0 && t.warenkorb.length === 0
+    : t.uploads.length === 1 && `${t.uploads[0].breite}x${t.uploads[0].hoehe}` === dim(0) && t.warenkorb.length === 0, JSON.stringify(t.uploads));
   await t.schliessen();
 });
 
@@ -999,7 +1020,7 @@ szenario('cloudinary-grenzen', true, async (b, srv) => {
   await editorBereit(a.page);
   await vollbild(a);
   const roh = a.uploads.length;
-  await a.page.locator('.lsp6-cta').click();
+  await ctaAusloesen(a.page);
   await a.page.waitForFunction(() => /verkleinert/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 30000 });
   const hinweisA = await status(a.page).innerText();
   await a.page.waitForURL('**/cart', { timeout: 20000 });
@@ -1015,24 +1036,36 @@ szenario('cloudinary-grenzen', true, async (b, srv) => {
   const c = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&maxbytes=0`, cloudinaryMaxBytes: 2500000 });
   await editorBereit(c.page);
   await vollbild(c);
-  await ctaKlicken(c);
-  pruefe('Cloudinary lehnte die zu grosse Datei ab (HTTP 400), der Editor rechnete kleiner und es ging durch', c.abgelehnt.length >= 1 && c.warenkorb.length === 1 && c.uploads[c.uploads.length - 1].bytes <= 2500000, JSON.stringify({ abgelehnt: c.abgelehnt, letzte: c.uploads[c.uploads.length - 1] }));
+  if (await istV63(c.page)) {
+    await ctaAusloesen(c.page);
+    await c.page.waitForFunction(() => /zu gross für den Upload/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 30000 });
+    pruefe('6.3: Cloudinary-Ablehnung nach der Freigabe bleibt fail-closed (kein Neurendern, kein Warenkorb)', c.abgelehnt.length >= 1 && c.warenkorb.length === 0 && (await c.page.locator('.lsp6-cta').isEnabled()), JSON.stringify({ abgelehnt: c.abgelehnt, uploads: c.uploads }));
+  } else {
+    await ctaKlicken(c);
+    pruefe('Cloudinary lehnte die zu grosse Datei ab (HTTP 400), der Editor rechnete kleiner und es ging durch', c.abgelehnt.length >= 1 && c.warenkorb.length === 1 && c.uploads[c.uploads.length - 1].bytes <= 2500000, JSON.stringify({ abgelehnt: c.abgelehnt, letzte: c.uploads[c.uploads.length - 1] }));
+  }
   await c.schliessen();
   // c) Es geht nie: nach höchstens fünf Versuchen ein klarer Fehler, kein Warenkorb, Knopf frei
   const d = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&maxbytes=0`, cloudinaryMaxBytes: 100 });
   await editorBereit(d.page);
   await textHinzufuegen(d.page, 'Hallo');
-  await d.page.locator('.lsp6-cta').click();
+  await ctaAusloesen(d.page);
   await d.page.waitForFunction(() => /zu gross für den Upload/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 30000 });
-  pruefe('unlösbar: höchstens 5 Versuche, klare Meldung, kein Warenkorb, Knopf frei', d.abgelehnt.length <= 5 && d.abgelehnt.length >= 2 && d.warenkorb.length === 0 && (await d.page.locator('.lsp6-cta').isEnabled()), String(d.abgelehnt.length));
+  pruefe('unlösbar: begrenzte Versuche, klare Meldung, kein Warenkorb, Knopf frei', d.abgelehnt.length <= 5 && d.abgelehnt.length >= ((await istV63(d.page)) ? 1 : 2) && d.warenkorb.length === 0 && (await d.page.locator('.lsp6-cta').isEnabled()), String(d.abgelehnt.length));
   await d.schliessen();
   // d) Server meldet zu viele Pixel
   const e = await seiteOeffnen(b, srv.url, { ...PC, query: 'karte=268&shop=1001:19515&maxbytes=0', cloudinaryMaxPixel: 8000000 });
   await editorBereit(e.page);
   await textHinzufuegen(e.page, 'Poster');
-  await ctaKlicken(e);
-  const lz = e.uploads[e.uploads.length - 1];
-  pruefe('Poster: Cloudinary lehnt über 8 Mpx ab → Editor rechnet kleiner, es geht durch', e.abgelehnt.some((x) => x.grund === 'pixel') && lz.breite * lz.hoehe <= 8000000 && e.warenkorb.length === 1, JSON.stringify({ abgelehnt: e.abgelehnt.length, lz }));
+  if (await istV63(e.page)) {
+    await ctaAusloesen(e.page);
+    await e.page.waitForFunction(() => /zu gross für den Upload/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 30000 });
+    pruefe('6.3: Pixel-Ablehnung nach der Freigabe bleibt fail-closed (kein Neurendern, kein Warenkorb)', e.abgelehnt.some((x) => x.grund === 'pixel') && e.warenkorb.length === 0, JSON.stringify({ abgelehnt: e.abgelehnt }));
+  } else {
+    await ctaKlicken(e);
+    const lz = e.uploads[e.uploads.length - 1];
+    pruefe('Poster: Cloudinary lehnt über 8 Mpx ab → Editor rechnet kleiner, es geht durch', e.abgelehnt.some((x) => x.grund === 'pixel') && lz.breite * lz.hoehe <= 8000000 && e.warenkorb.length === 1, JSON.stringify({ abgelehnt: e.abgelehnt.length, lz }));
+  }
   await e.schliessen();
 });
 
@@ -1041,7 +1074,7 @@ szenario('upload-zeitlimit', true, async (b, srv) => {
   const s = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}&uptimeout=700`, cloudinaryHaengt: () => true });
   await editorBereit(s.page);
   await textHinzufuegen(s.page, 'Hallo');
-  await s.page.locator('.lsp6-cta').click();
+  await ctaAusloesen(s.page);
   await s.page.waitForFunction(() => /dauert zu lange/.test(document.querySelector('[data-feld="status"]').innerText), null, { timeout: 10000 });
   pruefe('Druckdatei-Upload hängt: nach dem Zeitlimit Meldung, kein Warenkorb, Knopf frei, Sperre aufgehoben', s.warenkorb.length === 0 && (await s.page.locator('.lsp6-cta').isEnabled()) && !(await s.page.evaluate(() => document.querySelector('.lsp6').hasAttribute('inert'))));
   await s.schliessen();
@@ -1146,7 +1179,7 @@ szenario('formular-nach-fehler', true, async (b, srv) => {
   await editorBereit(s.page);
   const p = s.page;
   await textHinzufuegen(p, 'Neu');
-  await p.locator('.lsp6-cta').click();
+  await ctaAusloesen(p);
   await p.waitForFunction(() => /mock-warenkorb-fehler/.test(document.querySelector('[data-feld="status"]').innerText));
   const namen = () => p.evaluate(() => [...document.querySelectorAll('form input[data-lspod6="1"]')].map((i) => i.name));
   pruefe('nach dem Fehler: keine Druckdatei-Adresse im Formular', !(await namen()).some((n) => /Druckdatei/.test(n)), (await namen()).join('|'));
@@ -1538,7 +1571,7 @@ szenario('kaufsperre-optik', true, async (b, srv) => {
   const w = await seiteOeffnen(b, srv.url, { ...PC, query: `karte=71&${SHOP71}`, warenkorbFehler: true });
   await editorBereit(w.page);
   await textHinzufuegen(w.page, 'Hallo');
-  await w.page.locator('.lsp6-cta').click();
+  await ctaAusloesen(w.page);
   await w.page.waitForFunction(() => !document.querySelector('.lsp6-cta').disabled && /mock-warenkorb-fehler/.test(document.querySelector('[data-feld="status"]').textContent), null, { timeout: 20000 });
   pruefe('nach einem abgelehnten Warenkorb: Knopf frei, ohne Inline-Deckkraft', await w.page.locator('.lsp6-cta').evaluate((e) => !e.disabled && e.style.opacity === ''));
   await fotoLegen(w.page, 300, 300);
