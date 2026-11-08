@@ -99,12 +99,13 @@ Besitzer: «echter arbeiteisort». Auf Rückfrage gewählt: jede Figur zeigt den
 | `ort_text` | wo und wann es wirklich läuft (Datei, Zeitplan in UTC, Einschränkung), höchstens 260 Zeichen |
 | `link` | `https`-Adresse des echten Ortes (GitHub, Claude oder Shopify-Admin) oder leer |
 
-## Auffrischen (auf Zuruf «Büro neu messen»; es gibt keinen Zeitplan)
-1. Messen, nur lesend (Rezepte unten).
-2. `GEM` und `ROWS` in `tools/buero/make_buero.py` anpassen, dann `python3 -I tools/buero/make_buero.py <Ausgabe>.json`.
-3. Hochladen: Artifact-Werkzeug mit `url` der Seite, `file_path` der JSON-Datei und `asset: true`. Die Antwort nennt `/_blob/<id>`.
-4. `ArtifactData update` auf `datasets/buero`: `source.url`, `updated`, `edit`, mit `if_version` der aktuellen Version.
-5. Änderungen an der Seite selbst: `files/index.html` per `set` (aus einer JSON-Datei `{text, edit}`) oder `str_replace`, jeweils mit `if_version`; danach `tools/buero/seite.html` nachführen.
+## Auffrischen (auf Zuruf «Büro neu messen»; seit 08.11. mit Messhelfern)
+1. `python3 -I tools/buero/messen.py messung.json` liest ohne Anmeldung die GitHub-Läufe (zwölf Abläufe, darunter Tagespflege und Bewertungsimporter), das Release des Cockpit-Pakets, die Krypto-Bücher und die Freigabedateien (rund 15 Anfragen; anonym sind 60 je Stunde erlaubt).
+2. Was nur Plattform-Werkzeuge messen, schreibt die Sitzung in `mcp.json` (Format im Kopf von `aktualisieren.py`): Bestellungen (Shopify), geplante Aufgaben (`get_trigger`), Sitzungen (`get_session`). Metricool: `getScheduledPosts` für die nächsten sieben Tage zählt die Planungseinträge, `getAnalyticsDataByMetrics` mit `IGEV01` gibt die Instagram-Follower (letzter Tageswert). Beides geht in `metricool.json` im festen Kurzformat (`version, gemessen, zeitraum, geplante_eintraege, instagram_follower, instagram_stand, kanaele`; `make_buero.py` lehnt jede andere Form ab, Rohdaten kommen nie in die Datei).
+3. `python3 -I tools/buero/aktualisieren.py messung.json mcp.json werte.json` macht Lampen, Zeiten und die Sätze «Letzte Läufe …»: Lauf erfolgreich = grün, fehlgeschlagen = rot, sonst gelb. Fortura bleibt gelb, solange `dropship/FORTURA-BESTAND-FREI.txt` fehlt. Der Bewertungsimporter bleibt gelb, weil ein erfolgreicher Lauf nichts über veröffentlichte Bewertungen sagt (Vorgabe der Codex-Übergabe). Die Seitenpflege bleibt ein Blatt «für dich», ausser sie schlägt fehl.
+4. `python3 -I tools/buero/web_zeilen.py web_zeilen.json` holt die Zeilen des Entwickler- und des YouTube-Studios aus der öffentlichen Webansicht (https://abannews.com/ki-buero): ihre Berichte entstehen nur in der Cloud und sind ohne Anmeldung nicht herunterladbar. Bricht der Aufruf ab (Seitenaufbau geändert), bleiben diese Zeilen auf dem Stand von `make_buero.py`.
+5. `python3 -I tools/buero/make_buero.py buero.json --metricool-status metricool.json --web-zeilen web_zeilen.json --werte werte.json`. Zeilen, die `werte.json` nicht nennt, behalten Text und alte Messzeit; die Seite setzt sie von selbst auf «Alt».
+6. Hochladen: Artifact-Werkzeug mit `url` der Seite, `file_path` der JSON-Datei und `asset: true` (Antwort: `/_blob/<id>`). Dann EINE `ArtifactData batch`-Anfrage (atomar, höchstens 1 MiB): `files/kb3d-code.js` (set), `datasets/buero` (update von `source.url`, `updated`, `edit`), `files/kb-geldmanager.js` und `files/index.html` (set), jeweils mit `if_version` der aktuellen Version (ein falscher Wert nennt die richtige). Die Dokumente `{text, edit}` baut ein kleines Skript aus dem Bauordner (`node tools/buero/3d/bauen.mjs <Ordner>` liefert `kb3d-*.js`; `seite.html` und `geldmanager.js` kopieren). Die drei Modell-Pakete `kb3d-pack-1..3.js` sind zusammen rund 670 KB und gehen in eine eigene Anfrage, nur wenn sie sich ändern.
 
 ## Messrezepte
 | Zeile | Quelle und Aufruf |
@@ -116,13 +117,15 @@ Besitzer: «echter arbeiteisort». Auf Rückfrage gewählt: jede Figur zeigt den
 | Krypto-Bücher | `git show origin/main:data/krypto-scalping-labor.json` (`letzter_lauf`), `data/krypto-satellit-schatten.json` (`letzter_stand`) |
 | Cockpit-Paket | `get_release_by_tag` mit `krypto-latest`: der Text nennt Version und Bauzeit |
 | Freigabedateien | `git cat-file -e origin/main:<Pfad>` |
+| Metricool (Social Media) | `getScheduledPosts` (`brandId` 6227837, `timezone` Europe/Zurich, nächste sieben Tage; Entwürfe tragen `draft: true`) und `getAnalyticsDataByMetrics` mit `IGEV01` (Instagram-Follower, `LAST`); Antworten sind gross, nur die Zahlen übernehmen |
 
 ## Lokale Sicht und Funktionsprüfung (`tools/buero/pruefung/`)
-Die Seite läuft nur im Dashboard. Zum Ansehen und Prüfen ohne Dashboard gibt es einen Nachbau der Dashboard-Werte (`dash.data`, `dash.draw`, `dash.onData`, `dash.colors`, feste Uhrzeit 05.11. 20:30 UTC):
+Die Seite läuft nur im Dashboard. Zum Ansehen und Prüfen ohne Dashboard gibt es einen Nachbau der Dashboard-Werte (`dash.data`, `dash.draw`, `dash.onData`, `dash.colors`, Uhrzeit: zwei Minuten nach der jüngsten Messung der Daten, so ändert sich der Prüfstand nicht mit jeder Auffrischung):
 1. Ordner mit `seite.html` und `buero.json` anlegen (Datei aus `make_buero.py`), `python3 -I harness.py <Ordner>` schreibt `harness.html` und `harness_demo.html` (mit Rot, Alt und Gelb zum Ansehen aller Haltungen).
 2. `node shot.js <Ordner>` macht Bilder je Raum (Handy 390 px, Handy-Demo, Desktop dunkel) und meldet Seitenfehler und seitliches Scrollen.
 3. `node test3d.js <Ordner>` prüft die 3D-Ansicht (Software-WebGL von Chromium reicht); vorher `node tools/buero/3d/bauen.mjs <Ordner>`, damit `kb3d-*.js` neben `harness.html` liegen.
 4. `node test.js <Ordner>` prüft die 2D-Ansicht im Browser: Zahl der Figuren, Haltungen aus den Zeiten, Detailfeld, Tastatur, Ansichtswechsel, Markierungen, Zähler, reduzierte Bewegung. Die erwarteten Zahlen rechnet der Test aus den Daten der Seite (`window.__ROWS`: Zeilen, Farben, Blätter), sie stehen nicht mehr fest im Test.
+5. `node rauchprobe.js <Ordner> <Bilderordner>` (Stand 08.11., für die Fassung `campus-einheitlich-7`): Seitenfehler, Figuren je Bereich gegen die Zeilen der Daten, Liste, 3D-Fläche, seitliches Scrollen; schreibt je ein Bild der 2D- und der 3D-Ansicht für Handy und Desktop. **`test.js` und `test3d.js` stammen aus der Fassung vom 05.11. und passen nicht mehr zu der Seite vom 08.11.:** sie erwarten feste Zahlen (Shop mit 6 Figuren, Band mit 3 Paketen) und den alten Aufbau des Detailfeldes und schlagen schon auf den Standarddaten von `make_buero.py` fehl (geprüft 08.11.). Bis sie nachgezogen sind, gilt die Rauchprobe.
 `playwright` muss in Node verfügbar sein (in der Cloud-Sitzung vorinstalliert). Das ist ein Nachbau: dass das echte Dashboard dasselbe zeigt, belegt er nicht.
 
 ## Grenzen

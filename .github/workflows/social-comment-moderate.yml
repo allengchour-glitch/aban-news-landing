@@ -5,8 +5,8 @@ name: Social Spam-Moderation (FB + IG)
 # Echte Kundenfragen bleiben unangetastet. No-op ohne Tokens.
 
 on:
-  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
-    # - cron: '0 12 * * *'   # 3×/Tag (≈ 08/14/20 Uhr CH)
+  schedule:  # WIEDER AN seit 2026-11-06 (Besitzer «ja»), nur 1×/Tag; am 2026-06-13 pausiert (Cron-Nulldiaet — GitHub Fair-Use)
+    - cron: '23 12 * * *'   # täglich 12:23 UTC (≈ 13:23 CH); GitHub startet oft Stunden später, bei Moderation egal
   workflow_dispatch:
     inputs:
       dry_run:

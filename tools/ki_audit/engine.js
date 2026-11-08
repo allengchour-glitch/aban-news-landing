@@ -80,9 +80,9 @@
   /** Einordnung in Worten. Null, solange nichts gezählt wurde. */
   function urteil(z) {
     if (!z || z.gezaehlt === 0) return null;
-    if (z.punkte >= 70) return { stufe: "gut", text: "Die KI nennt dich in den meisten Fällen. Halte den Stand und miss in 90 Tagen nach." };
-    if (z.punkte >= 35) return { stufe: "mittel", text: "Du kommst vor, aber unzuverlässig. Die Ursachen unten sind der Hebel." };
-    return { stufe: "schwach", text: "Die KI nennt dich fast nie. Fang oben im Plan an — Daten und Verzeichnisse zuerst." };
+    if (z.punkte >= 70) return { stufe: "gut", text: "Deine Firma kommt in vielen deiner ausgefüllten Testfelder vor. Prüfe den Umfang der Stichprobe und vergleiche später dieselben Fragen." };
+    if (z.punkte >= 35) return { stufe: "mittel", text: "Deine bisherigen Einträge zeigen ein gemischtes Bild. Prüfe die Antworten und mögliche Lücken in deinen Firmeninformationen." };
+    return { stufe: "schwach", text: "In deinen bisherigen Testfeldern wird deine Firma selten genannt. Prüfe zunächst Firmendaten und Verzeichnisse." };
   }
 
   /* --------------------------------------------------------------- Ursachen */
@@ -90,13 +90,13 @@
   /* Die fünf Ursachenfelder der Verkaufsseite, mit Gewicht für die Reihenfolge
      im Plan. Höheres Gewicht = wirkt früher und breiter. */
   var URSACHEN = [
-    { id: "daten", titel: "Konsistente Firmendaten (NAP)", gewicht: 5,
+    { id: "daten", titel: "Einheitliche Firmendaten (Name, Adresse, Telefon)", gewicht: 5,
       frage: "Stehen Name, Adresse und Telefon überall identisch — Website, Google, Verzeichnisse?",
-      massnahme: "Schreibweise festlegen und überall angleichen. Eine Abweichung reicht, damit die KI zwei Betriebe sieht." },
+      massnahme: "Schreibweise von Name, Adresse und Telefon festlegen und abgleichen. Einheitliche Angaben erleichtern die Zuordnung." },
     { id: "verzeichnisse", titel: "Einträge in Verzeichnissen", gewicht: 4,
       frage: "Bist du in den Verzeichnissen deiner Branche und deiner Region eingetragen?",
       massnahme: "Die wichtigsten Verzeichnisse deiner Branche eintragen oder beanspruchen." },
-    { id: "schema", titel: "Schema-Markup auf der Website", gewicht: 3,
+    { id: "schema", titel: "Maschinenlesbare Firmendaten (Schema-Markup)", gewicht: 3,
       frage: "Hat deine Website maschinenlesbare Angaben zu Firma, Leistung, Ort und Öffnungszeiten?",
       massnahme: "LocalBusiness-Markup ergänzen, damit die Angaben nicht nur im Fliesstext stehen." },
     { id: "bewertungen", titel: "Bewertungen", gewicht: 3,
