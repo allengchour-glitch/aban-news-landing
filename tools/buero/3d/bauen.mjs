@@ -14,7 +14,7 @@ const LIMIT = 232 * 1024;
 const MODULE = ['kb3d-engine.js', 'kb3d-tex.js', 'kb3d-props.js', 'kb3d-model.js', 'kb3d-figur.js', 'kb3d-world.js', 'kb3d-buero.js'];
 const code = MODULE.map((f) => '/* ==== ' + f + ' ==== */\n' + fs.readFileSync(path.join(HIER, f), 'utf8')).join('\n');
 fs.writeFileSync(path.join(out, 'kb3d-code.js'), code);
-fs.writeFileSync(path.join(out, 'kb-geldmanager.js'), fs.readFileSync(path.join(HIER, '../finanzmonitor.js'),'utf8')+'\n'+fs.readFileSync(path.join(HIER, '../geldmanager.js'),'utf8'));
+fs.writeFileSync(path.join(out, 'kb-geldmanager.js'), fs.readFileSync(path.join(HIER, '../finanzmonitor.js'),'utf8')+'\n'+fs.readFileSync(path.join(HIER, '../geldmanager.js'),'utf8')+'\n'+fs.readFileSync(path.join(HIER, '../quellenmonitor.js'),'utf8'));
 console.log('kb3d-code.js', Math.round(code.length / 1024) + ' KB');
 
 // 2) Modelle: je Modell eine Zeile, auf Dateien verteilt (grösste zuerst)
