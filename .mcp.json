@@ -11,6 +11,19 @@
         "NODE_OPTIONS": "",
         "NODE_PATH": ""
       }
+    },
+    "luxestyle-cj-read": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "-e",
+        "(async () => {\n  try {\n    const fs = require('node:fs');\n    const path = require('node:path');\n    const { createHash } = require('node:crypto');\n    const { spawn, spawnSync } = require('node:child_process');\n    const gitEnv = {\n      PATH: process.env.PATH || '/usr/bin:/bin', LANG: 'C.UTF-8', TZ: 'Europe/Zurich',\n      GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',\n      GIT_TERMINAL_PROMPT: '0'\n    };\n    const git = args => {\n      const result = spawnSync('git', ['--no-optional-locks', '-C', process.cwd(),\n        '-c', 'core.fsmonitor=false', ...args],\n        { env: gitEnv, encoding: 'utf8', timeout: 3000, maxBuffer: 4096, windowsHide: true });\n      if (result.error || result.status !== 0 || result.signal || typeof result.stdout !== 'string') throw Error();\n      const value = result.stdout.replace(/\\r?\\n$/, '');\n      if (!value || /[\\r\\n\\0]/.test(value)) throw Error();\n      return value;\n    };\n    const root = fs.realpathSync(git(['rev-parse', '--show-toplevel']));\n    const origin = git(['config', '--local', '--get', 'remote.origin.url']);\n    if (!/^(?:https:\\/\\/github\\.com\\/|git@github\\.com:|ssh:\\/\\/git@github\\.com\\/)allengchour-glitch\\/aban-news-landing(?:\\.git)?\\/?$/i.test(origin)) throw Error();\n    const expected = new Map([\n      ['automation/cj-read-mcp.mjs', 'ef986b11c17d707aa78208c2fd51d4b35486a86e85c2883618daa2e8f8c80ffc'],\n      ['automation/lib/cj_identity.mjs', '1fef93809ba5e8cf2204203abdf3d38ee1ebedbb833167f50a78b8ad1fce024b'],\n      ['automation/lib/cj_read_mcp.mjs', '593cb778745742f8818295ba8785a0902145c745cdd64751ff79786f80b94097'],\n      ['automation/lib/cj_readonly.mjs', '8b114bc3fdf92a34e7aa4b72809cc57fdf7013a486068ab2496509237419a0ef'],\n      ['automation/lib/claude_assist_mcp.mjs', '228be1d0783fb688e2f6971f39fd6a29457a24138bc5242de2f648345793a671']\n    ]);\n    for (const [relative, digest] of expected) {\n      if (git(['ls-files', '--error-unmatch', relative]) !== relative) throw Error();\n      const file = path.join(root, relative);\n      const stat = fs.lstatSync(file);\n      if (!stat.isFile() || stat.isSymbolicLink() || stat.size > 1024 * 1024\n        || fs.realpathSync(file) !== file\n        || createHash('sha256').update(fs.readFileSync(file)).digest('hex') !== digest) throw Error();\n    }\n    const target = path.join(root, 'automation/cj-read-mcp.mjs');\n    const childEnv = { LANG: 'C.UTF-8', TZ: 'Europe/Zurich', NODE_OPTIONS: '', NODE_PATH: '', NODE_USE_ENV_PROXY: '1' };\n    if (process.env.CJ_API_KEY !== undefined) childEnv.CJ_API_KEY = process.env.CJ_API_KEY;\n    const child = spawn(process.execPath, [target], { cwd: root, env: childEnv, stdio: 'inherit', windowsHide: true });\n    for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => child.kill(signal));\n    const result = await new Promise((resolve, reject) => {\n      child.once('error', reject);\n      child.once('exit', (code, signal) => resolve({ code, signal }));\n    });\n    if (result.signal || result.code !== 0) throw Error();\n  } catch {\n    process.stderr.write('LuxeStyle CJ Read konnte nicht sicher gestartet werden.\\n');\n    process.exitCode = 1;\n  }\n})();\n"
+      ],
+      "env": {
+        "NODE_OPTIONS": "",
+        "NODE_PATH": "",
+        "NODE_USE_ENV_PROXY": "1"
+      }
     }
   }
 }
