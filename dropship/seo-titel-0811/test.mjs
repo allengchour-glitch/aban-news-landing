@@ -17,6 +17,14 @@ const t1 = 'WM-Trikot selbst gestalten: Name, Nummer & Farbe online bedrucken (2
 let r = await titel(t1); pruef('langer Titel: an Wortgrenze, ≤ 58', r, '[WM-Trikot selbst gestalten: Name, Nummer &amp; Farbe online|WM-Trikot selbst gestalten: Name, Nummer & Farbe online]');
 r = await titel('Trinkbrunnen für Katzen: Grösse, Material und Lautstärke — worauf es ankommt'); const m1 = r.slice(1, -1).split('|')[1]; pruef('Trinkbrunnen: ≤ 58 und endet nicht mitten im Wort', [m1.length <= 58, 'Trinkbrunnen für Katzen: Grösse, Material und Lautstärke — worauf es ankommt'.startsWith(m1), /[a-zäöüß]$/i.test(m1) ? 'Trinkbrunnen für Katzen: Grösse, Material und Lautstärke — worauf es ankommt'.charAt(m1.length) === ' ' : true], [true, true, true]);
 r = await titel('Trinkbrunnen für Katzen: Grösse, Material und Lautstärke — worauf es ankommt'); pruef('Gedankenstrich am Ende wird entfernt', r, '[Trinkbrunnen für Katzen: Grösse, Material und Lautstärke|Trinkbrunnen für Katzen: Grösse, Material und Lautstärke]');
+const kern = async (t) => (await titel(t)).slice(1, -1).split('|')[1];
+pruef('Füllwort am Ende fällt weg («in der»)', await kern('Fussballtrikots WM 2026: Adidas, Puma & Joma in der Schweiz kaufen – das grosse Sortiment'), 'Fussballtrikots WM 2026: Adidas, Puma & Joma');
+pruef('Füllwort «für dein» fällt weg', await kern('Fitness zuhause 2026: Die richtige Ausrüstung für dein Heimtraining im Überblick'), 'Fitness zuhause 2026: Die richtige Ausrüstung');
+pruef('Füllwort nach Gedankenstrich («– der») fällt samt Strich weg', await kern('Parfum finden: EdP vs. EdT & die 4 Duftfamilien – der grosse Überblick für alle'), 'Parfum finden: EdP vs. EdT & die 4 Duftfamilien');
+pruef('Fragezeichen bleibt, Füllwort danach fällt weg', await kern('Kaffeevollautomat, Siebträger oder Kapsel? Der Kaufratgeber 2026 für Einsteiger'), 'Kaffeevollautomat, Siebträger oder Kapsel?');
+pruef('Grossgeschriebenes Füllwort («Die») fällt weg', await kern('Camping & Outdoor 2026: Die wichtigste Ausrüstung für Einsteiger und Profis'), 'Camping & Outdoor 2026: Die wichtigste Ausrüstung');
+pruef('Füllwort in der Mitte bleibt, nur das am Ende («und») fällt weg', await kern('Gartenschlauch: Sprinkler & smarte Systeme für Rasen und Beet im grossen Test'), 'Gartenschlauch: Sprinkler & smarte Systeme für Rasen');
+pruef('ungekürzter Titel behält Füllwort am Ende', await kern('Alles für dein'), 'Alles für dein');
 r = await titel('Kurzer Titel'); pruef('kurzer Titel bleibt', r, '[Kurzer Titel|Kurzer Titel]');
 r = await titel('A'.repeat(58)); pruef('genau 58 Zeichen bleibt', r, '[' + 'A'.repeat(58) + '|' + 'A'.repeat(58) + ']');
 r = await titel('Ein sehr langer Titel mit Doppelpunkt am Ende der Kürzung: weiterer Text hier folgt noch'); const m2 = r.slice(1, -1).split('|')[1]; pruef('kein Satzzeichen am Ende', /[:,&|(+–-]$/.test(m2), false);

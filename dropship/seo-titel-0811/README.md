@@ -15,8 +15,12 @@ Alle anderen Seitentypen laufen unverändert durch (`lx_title = page_title`, `lx
 - `apply.mjs` (Trockenlauf Vorgabe, `LIVE=1` sichert die Live-Datei nach `sicherung/meta-tags.liquid.vor`, schreibt, liest zurück; `ERSETZEN=1 LIVE=1` legt eine neue Fassung der Blöcke über den eingespielten Stand; `ZURUECK=1 LIVE=1` stellt die Sicherung wieder her, nur wenn die Live-Datei dem eingespielten Stand gleicht).
 - Erste Fassung kürzte «… — worauf es ankommt» zu «… Lautstärke — – LuxeStyle» (Gedankenstrich blieb stehen): Live gemessen, behoben (`—`, `·`, `/` in die Liste), erneut eingespielt (`ERSETZEN=1`).
 
-## Nach dem Einspielen gemessen
-Siehe Zeile im Stand-Block von `CLAUDE.md` (Nachmessung aller 342 Artikel: Titel über 70 Zeichen, Beschreibung über 160, Artikel mit eigenem SEO-Titel unverändert, Liquid-Fehler).
+## Nach dem Einspielen gemessen (LIVE, 08.11.2026 abends, alle 339 deutschen Artikel einzeln abgerufen)
+- Abruf: 339 von 339 gelesen, 0 Fehler, **0 Liquid-Fehler**.
+- **Titel:** 121 über 70 Zeichen vorher, jetzt 7. Alle 7 sind Artikel **mit eigenem SEO-Titel** (Metafeld `global.title_tag`, Suffix « | LuxeStyle» oder bewusst lang), die der Block nicht anfasst; **0 Titel geändert, obwohl der alte schon kurz genug war** (Artikel mit eigenem Titel unberührt). 114 Titel gekürzt, der längste hat jetzt 70 Zeichen, 0 über 70.
+- **Beschreibung:** 225 über 160 Zeichen vorher, jetzt **0**.
+- **Zweite Fassung nach der ersten Messung** (Erstmessung: 39 von 114 gekürzten Titeln endeten auf ein Füllwort, z. B. «…Ausrüstung für dein – LuxeStyle», «…Adidas, Puma & Joma in der – LuxeStyle»): nach dem Kürzen fallen jetzt auch Füllwörter am Ende weg (Liste `lx_stop` im Block: Artikel, Präpositionen, «und/oder», «dein/deine», «vs.» u. a., bis zu sechs Durchgänge zusammen mit den Satzzeichen). Nachmessung: **0 von 114 enden auf ein Füllwort.** Ein Rest wirkt weiter abgehackt, weil kein Füllwort, sondern ein Adverb oder Adjektiv am Ende steht («…Maus, Headset & Tastatur richtig – LuxeStyle», 5 Titel auf «richtig»): bewusst nicht weiter verfeinert (Wortart ohne Wörterbuch nicht sicher zu erkennen).
+- Test `test.mjs`: 20 Prüfungen, Ersetzen mit `ERSETZEN=1 LIVE=1` (Trockenlauf zuerst), Rücklesen gleich.
 
 ## Grenzen
 - Shopify-Liquid selbst wurde nicht lokal ausgeführt (nur LiquidJS und die echte Seite nach dem Einspielen); die Filter (`truncate`, `slice` auf Zeichenketten und Listen, `split`, `join`, `remove_last`) sind Standard.

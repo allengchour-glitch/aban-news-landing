@@ -1,6 +1,7 @@
 {%- liquid
   # 08.11.2026 SEO: Shopify kürzt page_title bei 70 Zeichen hart (mitten im Wort: «…worauf es a – LuxeStyle»).
-  # Nur Artikel ohne eigenen SEO-Titel: auf höchstens 58 Zeichen an einer Wortgrenze kürzen (plus « – LuxeStyle» ≤ 70).
+  # Nur Artikel ohne eigenen SEO-Titel: auf höchstens 58 Zeichen an einer Wortgrenze kürzen (plus « – LuxeStyle» ≤ 70);
+  # nach dem Kürzen Satzzeichen UND Füllwörter am Ende entfernen («…Ausrüstung für dein» → «…Ausrüstung»).
   assign lx_title = page_title
   if request.page_type == 'article' and article.metafields.global.title_tag == blank
     assign lx_t = article.title | strip
@@ -12,10 +13,17 @@
         assign lx_words = lx_words | slice: 0, lx_n
       endif
       assign lx_t = lx_words | join: ' '
-      for lx_i in (1..3)
+      assign lx_stop = ' der die das den dem des ein eine einen einem einer eines in im ins für und oder mit zu zum zur von vom auf bei nach aus an am als wie wird ist sind so um über vs. bis durch gegen ohne unter vor pro dein deine deinen deiner dir du sie ihr ihre '
+      for lx_i in (1..6)
         assign lx_last = lx_t | slice: -1, 1
         if lx_last == ':' or lx_last == ',' or lx_last == '&' or lx_last == '-' or lx_last == '–' or lx_last == '|' or lx_last == '(' or lx_last == '+' or lx_last == '—' or lx_last == '·' or lx_last == '/'
           assign lx_t = lx_t | remove_last: lx_last | strip
+        else
+          assign lx_w = lx_t | split: ' ' | last
+          assign lx_needle = ' ' | append: lx_w | downcase | append: ' '
+          if lx_w != blank and lx_stop contains lx_needle
+            assign lx_t = lx_t | remove_last: lx_w | strip
+          endif
         endif
       endfor
     endif
