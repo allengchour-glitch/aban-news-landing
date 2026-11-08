@@ -34,7 +34,7 @@ jobs:
         run: python3 -B tools/entwicklerbuero/werkstatt.py "$RUNNER_TEMP/werkstatt-pruefung"
       - name: Projektfortschritt ins Büro übernehmen
         run: |
-          python3 -B tools/buero/make_buero.py "$RUNNER_TEMP/buero-intern.json" --werkstatt-status "$RUNNER_TEMP/werkstatt-pruefung/status.json"
+          python3 -B tools/buero/make_buero.py "$RUNNER_TEMP/buero-intern.json" --werkstatt-status "$RUNNER_TEMP/werkstatt-pruefung/status.json" > /dev/null
           python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"]); rows=json.loads((p/"buero-intern.json").read_text()); (p/"werkstatt-pruefung/buero.json").write_text(json.dumps([r for r in rows if r["id"] in ("dev_bauen","dev_pruefen","dev_angebot")],ensure_ascii=False))'
       - uses: actions/upload-artifact@v4
         with:
