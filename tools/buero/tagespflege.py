@@ -23,6 +23,7 @@ WORKFLOWS = {
     "tagesupdate": "tages-update.yml", "paket": "krypto-paket.yml",
     "social_meta": "social-meta-autopost.yml", "social_pinterest": "pinterest-publish.yml",
     "social_linkedin": "linkedin-autopost.yml",
+    "yt_video": "youtube-studio.yml",
 }
 
 
