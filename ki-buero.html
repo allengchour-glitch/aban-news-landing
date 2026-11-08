@@ -335,6 +335,32 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
 .kb-reparatur {padding:18px;border:1px solid var(--color-border-line);border-radius:14px;background:var(--color-panel);}
 .kb-reparatur p {line-height:1.5;}
 @media(max-width:640px){.kb-head{padding:18px;}.kb-schnell{grid-template-columns:1fr;gap:8px;}.kb-schnell button{min-height:74px;padding:14px 16px;gap:4px;}.kb-schnell small{display:none;}.kb-schnell strong{font-size:16px;}.kb-infowand{padding:16px;}.kb-chip{padding:9px 11px;}.kb-listenfilter button{margin-bottom:4px;}}
+.kb3-viewer {position:relative;border:1px solid var(--color-border-line);border-radius:18px;padding:12px;background:var(--color-panel);}
+.kb3-viewer-head {display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;}
+.kb3-room-label {display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-fg-muted);min-width:0;}
+.kb3-room-select {min-height:44px;max-width:100%;border:1px solid var(--color-border-line);border-radius:10px;padding:8px 12px;background:var(--color-bg);color:var(--color-fg);font:inherit;}
+.kb3-full {min-height:44px;flex-shrink:0;background:#245c64;color:#fff;border-color:#245c64;}
+.kb3-bar {margin-bottom:10px;}
+.kb3-tools {margin-top:10px;}
+.kb3-touch-hint {font-size:12px;color:var(--color-fg-muted);margin:10px 0 0;}
+.kb3-viewer.is-fullscreen,.kb3-viewer:fullscreen {position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-height:none!important;z-index:2147483000;background:var(--color-bg);border:0;border-radius:0;display:flex;flex-direction:column;padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));}
+.kb3-viewer.is-fullscreen .kb3-stage {flex:1;min-height:0;max-height:none;aspect-ratio:auto;}
+.kb3-viewer.is-fullscreen .kb3-bar {display:none;}
+.kb3-viewer.is-fullscreen .kb3-tools {flex-shrink:0;}
+.kb3-viewer.is-fullscreen .kb-detail {flex-shrink:0;max-height:30dvh;overflow:auto;}
+.kb3-viewer.is-fullscreen .kb-detail:empty {display:none;}
+@media(max-width:640px){
+ .kb-head {order:0;}.kb-tabs{order:1;}#kb-pane-3d,#kb-pane-buero,#kb-pane-liste{order:2;}
+ .kb-chips{order:3;}.kb-schnell{order:4;}.kb-zentrale-panel{order:5;}.kb-reparatur{order:6;}.kb-werkzeuge{order:7;}.kb-note{order:8;}
+ .kb3-viewer {padding:8px;border-radius:14px;}
+ .kb3-bar {display:none;}
+ .kb3-stage {aspect-ratio:3/4;max-height:65dvh;min-height:260px;}
+ .kb3-room-label {font-size:0;flex:1;}.kb3-room-select{font-size:16px;width:100%;}
+ .kb3-tools {display:grid;grid-template-columns:1fr 1.4fr .7fr .7fr 1fr;gap:6px;}
+ .kb3-tools .kb3-tool {padding:8px 4px;min-height:44px;}
+ .kb3-tools [data-cmd^="pan"],.kb3-tools [data-cmd^="turn"],.kb3-tools [data-cmd^="tilt"],.kb3-tools [data-cmd="gross"] {display:none;}
+ .kb3-touch-hint {line-height:1.4;}
+}
 </style>
 
 <div class="kb">
@@ -386,7 +412,14 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
   </div>
 
   <div class="kb-pane" id="kb-pane-3d" data-pane="3d" role="tabpanel" aria-labelledby="kb-tab-3d">
-    <p class="kb-hint">Das Büro als 3D-Modell. Wähle Drehen oder Verschieben und ziehe das Bild. Zwei Finger verschieben und zoomen. Mit der Maus geht Verschieben auch mit Umschalt + Ziehen; Umschalt + Pfeiltasten verschiebt ebenfalls. Tippe auf eine Figur, das Förderband, die Tafel oder ein Kärtchen, dann siehst du die Einzelheiten. Die Figuren sind Modelle. Ihre Haltung folgt dem angegebenen Stand; ungeprüfte Abläufe stehen auf Prüfen.</p>
+    <p class="kb-hint">Wähle einen Raum. Ziehen dreht die Ansicht; „Verschieben“ bewegt sie. Zwei Finger zoomen und verschieben. Tippe auf eine Figur für Details.</p>
+    <div class="kb3-viewer" tabindex="-1" aria-label="Interaktives Büro">
+    <div class="kb3-viewer-head">
+      <label class="kb3-room-label">Raum <select class="kb3-room-select" aria-label="Büroraum auswählen">
+        <option value="alle">Alle Büros</option><option value="Shop">Shop</option><option value="Versand">Versand</option><option value="Krypto">Krypto</option><option value="Social Media">Social Media</option><option value="Entwicklerbüro">Entwicklung</option><option value="YouTube-Studio">YouTube</option><option value="Chefbüro">Chefbüro</option>
+      </select></label>
+      <button type="button" class="kb3-tool kb3-full" data-cmd="fullscreen" aria-pressed="false">Vollbild</button>
+    </div>
     <div class="kb3-bar" role="group" aria-label="Raum wählen">
       <button type="button" class="kb3-chip" data-cmd="view:alle" aria-pressed="true">Alles</button>
       <button type="button" class="kb3-chip" data-cmd="view:Shop" aria-pressed="false">Shop</button>
@@ -412,9 +445,11 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       <button type="button" class="kb3-tool" data-cmd="tiltUp" aria-label="Steiler von oben">Steiler</button>
       <button type="button" class="kb3-tool" data-cmd="tiltDown" aria-label="Flacher von der Seite">Flacher</button>
       <button type="button" class="kb3-tool" data-cmd="reset">Zurück</button>
-      <button type="button" class="kb3-tool" data-cmd="gross" aria-pressed="false">Grösser</button>
+      <button type="button" class="kb3-tool" data-cmd="gross" aria-pressed="false">Mehr Höhe</button>
     </div>
+    <p class="kb3-touch-hint">Ein Finger bewegt die gewählte Ansicht. Zwei Finger zoomen und verschieben.</p>
     <div class="kb-detail" data-draw="detail" data-bereich="*" data-source="buero"></div>
+    </div>
   </div>
 
   <div class="kb-pane" id="kb-pane-buero" data-pane="buero" role="tabpanel" aria-labelledby="kb-tab-buero" hidden>
@@ -3064,7 +3099,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     B.box(9.0, -0.36, 3.0, 3.2, 0.7, 6.4, '#3a3f4b');
     B.floor(7.6, -0.2, 10.6, 6.2, -0.004, '#4b505b', 0);
     for (j = 0; j < 8; j++) B.floor(10.1, 0.1 + j * 0.8, 10.18, 0.55 + j * 0.8, -0.002, '#e8e6e0', 0);
-    stat(quad({ x: 1.2, y: -0.72, z: 2.0, rx: -PI / 2, w: 27, h: 27, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
+    stat(quad({ x: 0, y: -0.72, z: 8.0, rx: -PI / 2, w: 34, h: 39, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
 
     /* ---------- Wände ---------- */
     var WH = 3.4, CAP = '#f6f3ec';
@@ -3346,6 +3381,21 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     place('sofa', -2.0, 0, 15.0, 0, 0.65, {sofapolster:'#697b9b'});
 
     endWing();
+
+    /* Durchgehende Gänge: Hauptgebäude, beide Studios und YouTube bilden einen Campus. */
+    function gang(x0,z0,x1,z1) {
+      B.box((x0+x1)/2,-0.36,(z0+z1)/2,x1-x0,0.7,z1-z0,'#3a3f4b');
+      B.floor(x0,z0,x1,z1,0.009,'#dce2d9',0);
+      // Feine Bodenfugen und ein ruhiger Leitstreifen statt zusätzlicher Wände.
+      for (var z=z0+0.8;z<z1;z+=0.8) B.floor(x0,z,x1,z+0.012,0.012,'#b8c5bc',0);
+      B.floor(x0+0.08,z0,x0+0.13,z1,0.016,'#66a6a0',0.15);
+    }
+    gang(-1.9,5.9,-0.3,22.4);
+    gang(-3.5,13.8,3.4,15.0);
+    gang(-3.5,21.0,-0.3,22.4);
+    place('planter',-2.3,0,16.0,0,0.55);
+    place('planter',0.15,0,18.5,0,0.55);
+    stat(quad({x:-1.1,y:0.025,z:16.5,rx:-PI/2,w:1.2,h:0.4,tex:tex('gang-studios',function(){return T.sign('STUDIOS','#345d59','#dce2d9','#dce2d9');})}));
 
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
@@ -4440,6 +4490,7 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
     return n;
   }
   function raumKnopf(name) {
+    root.querySelectorAll('.kb3-room-select').forEach(function(s){s.value=name;});
     root.querySelectorAll('.kb3-chip').forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-cmd') === 'view:' + name ? 'true' : 'false'); });
   }
   function ohne3d() {
@@ -4452,8 +4503,45 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
     made3d = null;
     zeige('buero');
   }
+  var viewer = root && root.querySelector('.kb3-viewer');
+  var lastFocus = null, oldOverflow = '';
+  function vollbildStatus(an) {
+    if (!viewer) return;
+    var vorher = viewer.classList.contains('is-fullscreen');
+    viewer.classList.toggle('is-fullscreen',an);
+    root.querySelectorAll('[data-cmd="fullscreen"]').forEach(function(b){b.setAttribute('aria-pressed',String(an));b.textContent=an?'Vollbild schließen':'Vollbild';});
+    if (an && !vorher) { lastFocus=document.activeElement;oldOverflow=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';viewer.focus(); }
+    if (!an && vorher) { document.documentElement.style.overflow=oldOverflow;if(lastFocus && lastFocus.focus)lastFocus.focus(); }
+    window.dispatchEvent(new Event('resize'));
+  }
+  function vollbildWechsel() {
+    if (!viewer) return;
+    if (viewer.classList.contains('is-fullscreen')) {
+      vollbildStatus(false);
+      if (document.fullscreenElement === viewer && document.exitFullscreen) document.exitFullscreen().catch(function(){});
+      return;
+    }
+    vollbildStatus(true);
+    if (viewer.requestFullscreen) {
+      try { var promise=viewer.requestFullscreen();if(promise && promise.catch)promise.catch(function(){/* CSS-Vollbild bleibt verfügbar, etwa auf dem iPhone. */}); } catch(e) {}
+    }
+  }
+  document.addEventListener('fullscreenchange',function(){if(viewer && !document.fullscreenElement)vollbildStatus(false);});
+  document.addEventListener('keydown',function(e){
+    if (!viewer || !viewer.classList.contains('is-fullscreen')) return;
+    if(e.key==='Escape'){vollbildStatus(false);if(document.fullscreenElement===viewer && document.exitFullscreen)document.exitFullscreen().catch(function(){});}
+    if(e.key==='Tab'){
+      var nodes=Array.from(viewer.querySelectorAll('a[href],button,select,input,[tabindex="0"]')).filter(function(n){return n.offsetParent!==null;});
+      if(!nodes.length)return;
+      var first=nodes[0],last=nodes[nodes.length-1];
+      if(e.shiftKey && (document.activeElement===first || document.activeElement===viewer)){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && (document.activeElement===last || document.activeElement===viewer)){e.preventDefault();first.focus();}
+    }
+  });
+  if(root)root.querySelectorAll('.kb3-room-select').forEach(function(s){s.addEventListener('change',function(){if(made3d && made3d.cmd)made3d.cmd('view:'+s.value);});});
   function befehl3d(knopf) {
     var cmd = knopf.getAttribute('data-cmd');
+    if (cmd === 'fullscreen') { vollbildWechsel(); return; }
     if (cmd === 'gross') {
       var an = knopf.getAttribute('aria-pressed') !== 'true';
       knopf.setAttribute('aria-pressed', an ? 'true' : 'false');

@@ -100,7 +100,7 @@
     B.box(9.0, -0.36, 3.0, 3.2, 0.7, 6.4, '#3a3f4b');
     B.floor(7.6, -0.2, 10.6, 6.2, -0.004, '#4b505b', 0);
     for (j = 0; j < 8; j++) B.floor(10.1, 0.1 + j * 0.8, 10.18, 0.55 + j * 0.8, -0.002, '#e8e6e0', 0);
-    stat(quad({ x: 1.2, y: -0.72, z: 2.0, rx: -PI / 2, w: 27, h: 27, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
+    stat(quad({ x: 0, y: -0.72, z: 8.0, rx: -PI / 2, w: 34, h: 39, tex: tex('groundshadow', T.shadow), alpha: 0.9 }));
 
     /* ---------- Wände ---------- */
     var WH = 3.4, CAP = '#f6f3ec';
@@ -382,6 +382,21 @@
     place('sofa', -2.0, 0, 15.0, 0, 0.65, {sofapolster:'#697b9b'});
 
     endWing();
+
+    /* Durchgehende Gänge: Hauptgebäude, beide Studios und YouTube bilden einen Campus. */
+    function gang(x0,z0,x1,z1) {
+      B.box((x0+x1)/2,-0.36,(z0+z1)/2,x1-x0,0.7,z1-z0,'#3a3f4b');
+      B.floor(x0,z0,x1,z1,0.009,'#dce2d9',0);
+      // Feine Bodenfugen und ein ruhiger Leitstreifen statt zusätzlicher Wände.
+      for (var z=z0+0.8;z<z1;z+=0.8) B.floor(x0,z,x1,z+0.012,0.012,'#b8c5bc',0);
+      B.floor(x0+0.08,z0,x0+0.13,z1,0.016,'#66a6a0',0.15);
+    }
+    gang(-1.9,5.9,-0.3,22.4);
+    gang(-3.5,13.8,3.4,15.0);
+    gang(-3.5,21.0,-0.3,22.4);
+    place('planter',-2.3,0,16.0,0,0.55);
+    place('planter',0.15,0,18.5,0,0.55);
+    stat(quad({x:-1.1,y:0.025,z:16.5,rx:-PI/2,w:1.2,h:0.4,tex:tex('gang-studios',function(){return T.sign('STUDIOS','#345d59','#dce2d9','#dce2d9');})}));
 
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
