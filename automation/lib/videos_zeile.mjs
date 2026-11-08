@@ -82,29 +82,43 @@ export const youtubeOembedUrl = (videoUrl) => `https://www.youtube.com/oembed?fo
 
 /**
  * Quellendatei prüfen und aufteilen. Schlüssel mit führendem „_" (z. B. _hinweis) sind Kommentare.
- * -> { tiktok: [url], youtube: [{ art: 'kanal', id } | { art: 'video', url }], abgelehnt: [{ quelle, grund }] }
+ * Ein Objekt mit `aktiv:false` bleibt als nachvollziehbare Quelle in der Datei, wird aber weder
+ * abgerufen noch in das Shop-Metafeld geschrieben.
+ * -> { tiktok: [url], youtube: [{ art: 'kanal', id } | { art: 'video', url }],
+ *      abgelehnt: [{ quelle, grund }], deaktiviert: [{ quelle, grund }] }
  */
 export function parseQuellen(obj) {
-  const aus = { tiktok: [], youtube: [], abgelehnt: [] };
+  const aus = { tiktok: [], youtube: [], abgelehnt: [], deaktiviert: [] };
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) { aus.abgelehnt.push({ quelle: String(obj), grund: 'Quellendatei ist kein Objekt' }); return aus; }
   for (const eintrag of Array.isArray(obj.tiktok) ? obj.tiktok : []) {
     const roh = tiktokQuellUrl(eintrag);
+    if (quelleDeaktiviert(eintrag)) {
+      aus.deaktiviert.push({ quelle: String(roh), grund: 'aktiv=false' });
+      continue;
+    }
     const e = erkenneUrl(roh);
     if (e && e.plattform === 'tiktok') aus.tiktok.push(e.url);
     else aus.abgelehnt.push({ quelle: String(roh), grund: 'keine gültige TikTok-Videoadresse (nur https://…tiktok.com/…)' });
   }
   for (const eintrag of Array.isArray(obj.youtube) ? obj.youtube : []) {
-    const k = kanalId(eintrag);
+    const roh = youtubeQuellWert(eintrag);
+    if (quelleDeaktiviert(eintrag)) {
+      aus.deaktiviert.push({ quelle: String(roh), grund: 'aktiv=false' });
+      continue;
+    }
+    const k = kanalId(roh);
     if (k) { aus.youtube.push({ art: 'kanal', id: k }); continue; }
-    const e = erkenneUrl(eintrag);
+    const e = erkenneUrl(roh);
     if (e && e.plattform === 'youtube') aus.youtube.push({ art: 'video', url: e.url });
-    else aus.abgelehnt.push({ quelle: String(eintrag), grund: 'weder Kanal-ID (UC…) noch gültige YouTube-Videoadresse; @Handle-Adressen lassen sich nicht auflösen' });
+    else aus.abgelehnt.push({ quelle: String(roh), grund: 'weder Kanal-ID (UC…) noch gültige YouTube-Videoadresse; @Handle-Adressen lassen sich nicht auflösen' });
   }
   return aus;
 }
 
 /** Ein TikTok-Eintrag der Quellendatei ist eine Adresse (Text) oder ein Objekt {url, titel?, vorschau?}. */
 const tiktokQuellUrl = (eintrag) => (eintrag && typeof eintrag === 'object' && !Array.isArray(eintrag) ? eintrag.url : eintrag);
+const youtubeQuellWert = (eintrag) => (eintrag && typeof eintrag === 'object' && !Array.isArray(eintrag) ? (eintrag.url ?? eintrag.id) : eintrag);
+const quelleDeaktiviert = (eintrag) => Boolean(eintrag && typeof eintrag === 'object' && !Array.isArray(eintrag) && eintrag.aktiv === false);
 
 /**
  * Handgesetzte Titel und Vorschaubilder für TikTok-Einträge: Adresse (bereinigt) -> {titel, vorschau}.
@@ -116,7 +130,7 @@ export function tiktokZusatz(obj) {
   const aus = {};
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return aus;
   for (const eintrag of Array.isArray(obj.tiktok) ? obj.tiktok : []) {
-    if (!eintrag || typeof eintrag !== 'object' || Array.isArray(eintrag)) continue;
+    if (!eintrag || typeof eintrag !== 'object' || Array.isArray(eintrag) || quelleDeaktiviert(eintrag)) continue;
     const e = erkenneUrl(eintrag.url);
     if (!e || e.plattform !== 'tiktok') continue;
     const titel = saubererTitel(eintrag.titel, '');
@@ -298,7 +312,7 @@ export async function holeMitGeduld(url, opt = {}) {
 export async function sammle(quellenObj, opt = {}) {
   const q = parseQuellen(quellenObj);
   const zusatz = tiktokZusatz(quellenObj);
-  const bericht = { quellen: 0, ausgefallen: 0, abgelehnt: q.abgelehnt, uebersprungen: [], nachgefasst: 0, eintraege: 0 };
+  const bericht = { quellen: 0, ausgefallen: 0, abgelehnt: q.abgelehnt, deaktiviert: q.deaktiviert, uebersprungen: [], nachgefasst: 0, eintraege: 0 };
   const alle = [];
   const pause = opt.pauseMs ?? 0;
   const warte = opt.warte ?? ((ms) => new Promise((r) => setTimeout(r, ms)));

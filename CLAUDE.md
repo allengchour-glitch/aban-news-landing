@@ -79,9 +79,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **PC-FAKT (User 2026-06-12): der PC mit Brave-Agent (Port 9222, eingeloggt) LÄUFT IMMER** → Browser-Aufgaben
   jederzeit an PC-Claude delegierbar; Skripte: `automation/local/profil-politur-browser.mjs` (Playwright, lädt
   Profilbild automatisch) + `automation/social-profile-polish.mjs` (puppeteer).
-- **🎬 Video-Präferenzen (FEST, User 2026-06-12 — `dropship/VIDEO-PRAEFERENZEN.md`):** Marketing-
-  Videos: **seit 2.11.2026 mit Hochdeutsch-Stimme erlaubt** (Piper, `SPRECHER=`; vorher OHNE Voiceover) + Musik **rotierend aus fünf Mixkit-Stücken**
-  (`dropship/reel-vorlage/musik_waehlen.sh`, User 2.11.: keine Eigenproduktion mehr, nie zweimal dasselbe). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
+- **Video-Präferenzen (AKTUELL, Inhaber 07.11.2026; ersetzt die älteren Piper-/Mixkit-Regeln):**
+  Social-Videos haben **kein Voiceover und keine gesprochene Sprache**; Sprache erscheint nur als deutscher
+  Text im Bild und in der Caption. Musik ausschliesslich `automation/music/luxe-premium.wav`, und erst nach
+  aktueller Datei-, Hör- und Rechteprüfung. Neue Reels nicht pauschal als YouTube-Short spiegeln: höchstens
+  denselben vollständig abgenommenen Master einmal je geeignetem Kanal. Produktadressen in Shorts-
+  Beschreibungen sind nicht klickbar und dürfen nicht als klickbarer CTA bezeichnet werden; erst einen
+  tatsächlich verifizierten Kanalprofil-, Related-Video- oder YouTube-Shopping-Link entsprechend benennen.
+  Ältere Standblöcke zu Piper-Stimmen, rotierender Mixkit-Musik und «immer auch als YouTube-Short» sind
+  historische Befunde und keine gültige Arbeitsanweisung mehr.
 - **🤖 Modellwahl (FEST, User 2026-10-25: „ändere model haiku selber für einfache aufgaben, automatisch"):** Das
   Hauptmodell einer Sitzung stellt nur der User per `/model` um. Dafür **einfache, mechanische Teilaufgaben
   automatisch an Subagenten mit `model: "haiku"` geben** (Agent-Tool; in `Workflow` per `agent(..., {model:'haiku'})`):

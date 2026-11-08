@@ -61,9 +61,15 @@ pruef('Quellen: gültige TikTok-Adresse', q.tiktok.length, 1);
 pruef('Quellen: Kanal + Video', q.youtube.map((y) => y.art), ['kanal', 'video']);
 pruef('Quellen: Ablehnungen genannt', q.abgelehnt.map((a) => a.quelle), ['https://evil.example/x', 'https://www.youtube.com/@luxestyle']);
 pruef('Quellen: Kommentarfeld _hinweis wird nicht gelesen', q.abgelehnt.some((a) => a.quelle.includes('Konto')), false);
-pruef('LEERE Quelle liefert leere Liste', parseQuellen({ _hinweis: 'x', tiktok: [], youtube: [] }), { tiktok: [], youtube: [], abgelehnt: [] });
+pruef('LEERE Quelle liefert leere Liste', parseQuellen({ _hinweis: 'x', tiktok: [], youtube: [] }), { tiktok: [], youtube: [], abgelehnt: [], deaktiviert: [] });
 pruef('Quelle fehlt ganz -> nichts, kein Absturz', parseQuellen({}).tiktok.length + parseQuellen({}).youtube.length, 0);
 pruef('Quelle ist kein Objekt', parseQuellen(null).abgelehnt.length, 1);
+const deaktiviert = parseQuellen({
+  tiktok: [{ url: ttUrl('2026-10-02T00:00:00Z'), titel: 'Alt', aktiv: false }],
+  youtube: [{ id: 'UCabcdefghijklmnopqrstuv', aktiv: false }],
+});
+pruef('aktiv=false: keine Quelle wird übernommen', [deaktiviert.tiktok.length, deaktiviert.youtube.length], [0, 0]);
+pruef('aktiv=false: beide Einträge werden nachvollziehbar genannt', deaktiviert.deaktiviert.map((e) => e.grund), ['aktiv=false', 'aktiv=false']);
 
 // ── 5. Liste bilden ──
 pruef('baueListe: leere Eingabe -> leere Liste', baueListe([]), []);
@@ -201,6 +207,15 @@ pruef('metafieldsSet: Wert ist die Liste als JSON-Text (verlustfrei)', JSON.pars
 // ── 9. Netz: 429/5xx nachfassen, Fehler überspringen (fetch nachgebaut) ──
 const antwort = (status, body = '') => ({ status, text: async () => body });
 const keinWarten = () => Promise.resolve();
+{
+  let netz = 0;
+  const { liste, bericht } = await sammle({
+    tiktok: [{ url: ttUrl('2026-10-02T00:00:00Z'), aktiv: false }],
+    youtube: [{ id: 'UCabcdefghijklmnopqrstuv', aktiv: false }],
+  }, { fetch: async () => { netz++; throw new Error('kein Netz für deaktivierte Quelle'); }, warte: keinWarten });
+  pruef('sammle: deaktivierte Quellen lösen keinen Netzaufruf aus', [netz, liste.length, bericht.quellen], [0, 0, 0]);
+  pruef('sammle: deaktivierte Quellen stehen im Bericht', bericht.deaktiviert.length, 2);
+}
 {
   let n = 0;
   const r = await holeMitGeduld('https://x/', { fetch: async () => (++n < 3 ? antwort(429) : antwort(200, 'ok')), warte: keinWarten });

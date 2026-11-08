@@ -46,6 +46,7 @@ const { liste, bericht } = await sammle(quellen, { pauseMs: 400 });
 
 console.log(`Quellen gelesen: ${bericht.quellen} · abgelehnt (fremde/ungültige Adresse): ${bericht.abgelehnt.length} · ausgefallen: ${bericht.ausgefallen} · Nachfassungen: ${bericht.nachgefasst}`);
 for (const a of bericht.abgelehnt) console.log(`  abgelehnt:    ${a.quelle}  (${a.grund})`);
+for (const d of bericht.deaktiviert) console.log(`  deaktiviert:  ${d.quelle}  (${d.grund})`);
 for (const u of bericht.uebersprungen) console.log(`  übersprungen: ${u.quelle}  (${u.grund})`);
 console.log(`Liste: ${liste.length} Einträge (neueste zuerst)`);
 liste.forEach((e, i) => console.log(`  ${String(i + 1).padStart(2)}. [${e.plattform}] ${e.titel}  ${e.url}${e.vorschau ? '' : '  (ohne Vorschau)'}`));

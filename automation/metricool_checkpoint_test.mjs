@@ -267,3 +267,18 @@ test('Queue ohne Pinterest-Spalten plant andere Kanäle unverändert', t => {
   assert.equal(r.status, 0, r.stderr);
   assert.equal(records(f)[0].status, 'scheduled');
 });
+
+test('YouTube-Zeile wird vor jedem Netzaufruf gesperrt', t => {
+  const f = fixture(t, 1);
+  const before = fs.readFileSync(f.csv, 'utf8');
+  fs.writeFileSync(f.csv, before.replace(',instagram,ready,', ',youtube,ready,'));
+  const youtubeBefore = fs.readFileSync(f.csv, 'utf8');
+  const r = run(f, `globalThis.fetch=async()=>{
+    fs.writeFileSync('unexpected-network','bad');
+    throw new Error('YOUTUBE DARF NICHT GESENDET WERDEN');
+  };`);
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /YouTube ist in der generischen Queue gesperrt.*youtube_title.*madeForKids.*Shorts-CTA/);
+  assert.equal(fs.readFileSync(f.csv, 'utf8'), youtubeBefore);
+  assert.equal(fs.existsSync(path.join(f.root, 'unexpected-network')), false);
+});
