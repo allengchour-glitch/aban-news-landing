@@ -1,4 +1,4 @@
-name: IG-DM-Auto-Antwort
+name: 'GESPERRT: IG-DM-Auto-Antwort'
 
 on:
   # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
@@ -11,7 +11,7 @@ on:
         default: true
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ig-dm-reply
@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   dm:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

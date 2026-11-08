@@ -1,4 +1,4 @@
-name: Veo Hero-Clip
+name: 'GESPERRT: Veo Hero-Clip'
 
 # Generiert 1+ cineastische 9:16-Hero-Clip(s) aus Produktbild(ern) (good_products.csv) und reiht sie
 # als Reel (mit Produktlink) ein. No-op ohne GEMINI_API_KEY.
@@ -33,7 +33,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: veo-hero-clip
@@ -41,6 +41,7 @@ concurrency:
 
 jobs:
   render:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:

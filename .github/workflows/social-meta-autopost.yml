@@ -1,4 +1,4 @@
-name: Social Meta Auto-Post (IG + FB + Threads)
+name: 'GESPERRT: Social Meta Auto-Post (IG + FB + Threads)'
 
 # Postet den nächsten fälligen Bild-Post aus social/posts_image.csv direkt per Meta-Graph-API
 # an Instagram + Facebook-Page + Threads. KEIN Drittanbieter. JPG-Pflicht, Throttle eingebaut.
@@ -23,7 +23,7 @@ on:
         default: false
 
 permissions:
-  contents: write          # um den 'posted'-Status zurückzuschreiben
+  contents: read
 
 concurrency:
   group: social-meta-autopost
@@ -31,6 +31,7 @@ concurrency:
 
 jobs:
   post:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:

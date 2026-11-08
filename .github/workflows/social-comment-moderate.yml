@@ -1,4 +1,4 @@
-name: Social Spam-Moderation (FB + IG)
+name: 'GESPERRT: Social Spam-Moderation (FB + IG)'
 
 # Blendet Solicitation/Spam-Kommentare ("grow your page / DM me / cheap followers / Geld /
 # Krypto / Links") auf den letzten FB- & IG-Posts automatisch aus (hide, reversibel).
@@ -14,12 +14,16 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
 concurrency:
   group: social-comment-moderate
   cancel-in-progress: false
 
 jobs:
   moderate:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
