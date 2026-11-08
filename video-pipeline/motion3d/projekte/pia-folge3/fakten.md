@@ -10,5 +10,6 @@ Jeder Satz im Video braucht eine Zeile hier. Prozentwerte sind Rundungen der Que
 | Über 80 Milliarden Landtiere werden jährlich für Fleisch geschlachtet (2022: 83 Milliarden). | Our World in Data, Data Insight zu Schlachttieren (Welternährungsorganisation) | Nur Landtiere, keine Fische. |
 | Essen verursacht etwa ein Viertel der weltweiten Treibhausgase (26 Prozent). | Our World in Data, food-ghg-emissions (Poore und Nemecek 2018) | Gelesen und bestätigt am 5.11.2026. |
 | Rund ein Viertel der erzeugten Kalorien geht verloren oder wird weggeworfen. | Our World in Data, Food waste is responsible for 6% of global greenhouse gas emissions | Lebensmittelverluste verursachen etwa 6 Prozent der Treibhausgase. |
+| Eine Modellrechnung: bei pflanzlicher Ernährung der Welt sänke die Agrarfläche von etwa 4 auf etwa 1 Milliarde Hektar. | Our World in Data, Hannah Ritchie 2021, If the world adopted a plant-based diet | Modellrechnung, keine Prognose; im Text immer «Modellrechnung». |
 
 Nicht verwenden ohne weitere Prüfung: Gesundheitsaussagen, Vergleiche mit Personen, Zahlen ohne Jahr, Zahlen aus Social-Media-Beiträgen.
