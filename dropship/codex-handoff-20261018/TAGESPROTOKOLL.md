@@ -1523,3 +1523,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | FR-Blocker / Grenzen | Snapshot-Vertrauenskette gegen den Write-Scope geprüft | MEDIUM bleibt Merge-/Write-Blocker: kein unabhängiger aktueller Live-Katalog-Snapshot-Produzent; Source-SHA vergleicht nur externe Werte. Kein Locale-/Shopwrite und keine Mutation |
 
 [LUXESTYLE_R142_20261108] [Tracking-Guard PR2961](https://github.com/allengchour-glitch/aban-news-landing/pull/2961), Merge `e7993f58e4b37dfaa26ff5f1a28e149d37f5cb9b` · [Post-Merge-UNKNOWN-Beleg](/workspace/luxestyle-review/tracking-fix-20261108/merged-guard-live-result.json), SHA-256 `564ae336d7bcd0b03cdd2ff2fa95d0084ffbb53574f73b9098156c871dd2e5f5` · [FR-Coverage-Guard PR2962](https://github.com/allengchour-glitch/aban-news-landing/pull/2962), Head `ff50da64d560736a16bf1ad1efb2c77597c06125`. Aufgabenbestand24; keine operative Shop-/Locale-/Tracking-Einstellungsänderung.
+
+### R143
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Live-Sprache / SEO | Sechs aktuelle Seiten statisch und dynamisch begrenzt auf Sprache, Title/Meta/H1, Canonical und UI gegengeprüft | `Home`, `Powered by Shopify`, `Small blanket nap blanket`, `Baby Gentleman Jumpsuit`, `Product mockup` und gemischtes indexierbares `/fr` bestätigt. Selbstgestalten-Hauptflow deutsch. Teilmessung, kein Vollkatalog |
+| FR-Blitzcollection | Aktuelle Metadaten und Robots rein lesend geprüft | `noindex, follow`/`none`; «livraison en 1–2 jours» weiter vorhanden, aktuelle Grundlage unbekannt. Kein Claim-/Locale-/Shopwrite |
+| SEO-Automation | PR2963 geprüft, auf Ready gesetzt und Merge zurückgelesen | Merge `fd46447f…`; neue klar englische/mischtsprachige Titel werden vor automatischem SEO-Write blockiert und gemeldet. Bestehende Live-Texte nicht geändert |
+| Storefront-Wächter | PR2964 nach Review-Nachbesserung geprüft und gemergt | Merge `a017420e…`; read-only, max.12 URLs, UI-/Alttext-/DE-FR-Prüfung, Fehler bleiben `UNKNOWN`. Kein Shopify-Write |
+| Selbstgestalten / POD | PR2965 mit metrischen Volumen, deutscher Copy, CHF50 und deutschen v6-Schriftlabels geprüft und gemergt | Merge `ec00032c…`; technische Fonts/EN-Locale unverändert. Live-v5 und dessen englische Labels bleiben offen; keine Produkt-/Theme-Änderung |
+| Grenzen | Writes und offene Livekorrekturen getrennt dokumentiert | Nur Repo-Merges und LuxeStyle-Dokumentation. Kein Kundenkontakt, Cart/Checkout/Order, MAIN-/Shop-/Locale-/Feed-/Flow-/DNS-/Budget-/Rabattwrite |
+
+[LUXESTYLE_R143_20261108] [Statischer Live-Beleg](/workspace/luxestyle-review/live-language-sample-20261108.json), SHA-256 `732903a40359cb463751f0cd11241a965a470c38bae1d1b5016d4ca0f52a06a8` · [Dynamischer Live-Beleg](/workspace/luxestyle-review/live-language-dynamic-20261108.jsonl), SHA-256 `c76e972938cad78193e6e7e0c9a0a59e4572f538831ed28d03f4b236e3edc384` · [PR2963](https://github.com/allengchour-glitch/aban-news-landing/pull/2963) · [PR2964](https://github.com/allengchour-glitch/aban-news-landing/pull/2964) · [PR2965](https://github.com/allengchour-glitch/aban-news-landing/pull/2965).

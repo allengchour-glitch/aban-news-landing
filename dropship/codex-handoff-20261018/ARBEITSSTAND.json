@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 142,
-  "updatedAt": "2026-11-08T15:33:44+01:00",
+  "revision": 143,
+  "updatedAt": "2026-11-08T16:03:28+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -6331,13 +6331,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r139_v63_live_16_ready_3_fail_closed_notebook_pass_dtf_runtime_unknown",
+      "state": "r143_v63_live_generator_language_fixed_in_main_live_v5_labels_open",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R139_MERGED_PR2944_2950_2953_2956_DEPLOY_FULL_PLAN_APPLY_AND_PARTIAL_LIVE_DOM_QA",
-      "lastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion.",
+      "belegArt": "R143_PR2965_MERGED_POD_GENERATOR_AND_V6_LABELS_NO_LIVE_V5_WRITE",
+      "lastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion. R143: PR2965 als ec00032c gemergt. Neue Generatorausgaben verwenden 325/444 ml, Rundumdruck, Auf Bestellung, Gestaltungswerkzeug und CHF50; sichtbare deutsche v6-Schriftlabels wurden übersetzt, technische Fontfamilien und EN-Locale blieben gleich. Das änderte weder den live wirksamen v5-Editor noch Shopify-Inhalte; dessen englische Schriftlabels bleiben offen.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF-Runtime erst bei gesundem Browserzugang gezielt erneut prüfen; unknown nicht als PASS ausgeben. Dad Cap, Magnet oder DTF erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe freigeben. Offiziellen EDM separat erst mit legitimen product_templates/read+write/embedded_designer-Scopes und Domainbindung prüfen. Keine DRAFT-Aktivierung oder erfundene Projektion.",
+      "nextAllowedStep": "Live-v5-Schriftlabels und Product-mockup-Alttext nur als engen Theme-Diff gegen den aktuellen MAIN-/Asset-Hash vorbereiten, v5-Funktion/Proportion/Druckvorschau byte- bzw. browsergenau gegenprüfen und erst mit zulässigem Theme-Write anwenden/rücklesen. Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF-Runtime erst bei gesundem Browserzugang gezielt erneut prüfen; unknown nicht als PASS ausgeben. Dad Cap, Magnet oder DTF erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe freigeben. Offiziellen EDM separat erst mit legitimen product_templates/read+write/embedded_designer-Scopes und Domainbindung prüfen. Keine DRAFT-Aktivierung oder erfundene Projektion. Neue Generatorprodukte erst nach Produkt-/Rechte-/Preis-/Variantenprüfung erzeugen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6599,7 +6599,8 @@
         "Dad Cap: Stickplatzierung/Produktionsoptionen nicht vollständig geprüft; Magnet: Produktion und Schweiz-Lieferung nicht bestätigt.",
         "Offizieller Printful-EDM weiter ohne bestätigte product_templates/read+write/embedded_designer-Scopes und Domainbindung.",
         "Dynamische Overlay-/Mockup-Rechte und physische Produktionsabnahme sind nicht katalogweit belegt.",
-        "22 DRAFT-Produkte/153 Varianten bleiben gesperrt; der lokale Liverollout erweitert deren Status nicht."
+        "22 DRAFT-Produkte/153 Varianten bleiben gesperrt; der lokale Liverollout erweitert deren Status nicht.",
+        "R143: PR2965 ändert nur Repo-Generator/v6-Entwürfe; live v5 sichtbare englische Schriftlabels bleiben unverändert."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -7419,12 +7420,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r142_fr_guard_high_bypass_fixed_review_ok_medium_snapshot_producer_blocker_draft",
+      "state": "r143_read_only_language_guard_merged_live_english_and_mixed_fr_texts_open",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R142_PR2962_HIGH_BYPASS_FIXED_20_TESTS_MEDIUM_SOURCE_SNAPSHOT_BLOCKER_DRAFT",
-      "lastEvidence": "Draft-PR2962 bleibt offen. Commit ff50da64d560736a16bf1ad1efb2c77597c06125 schliesst die HIGH-Umgehung LOCALES=it: Der Guard prüft die Vereinigung aus WANT und allen publizierten nichtprimären Locales, sodass publiziertes unbelegtes FR nicht übersprungen werden kann. 20/20 lokale Tests sind grün und der HIGH-Fix ist im Review ohne neuen Blocker. MEDIUM bleibt expliziter Merge-/Write-Blocker: Es fehlt ein unabhängiger Produzent eines aktuellen Live-Katalog-Snapshots; der Source-SHA vergleicht nur extern gelieferte Werte. Kein Merge, keine Mutation und kein Locale-/Shopwrite.",
-      "nextAllowedStep": "Einen unabhängigen aktuellen Live-Katalog-Snapshot-Produzenten mit belegter Herkunft, Erfassungszeit und SHA-Vertrauenskette bereitstellen; erst dann PR2962 erneut prüfen und mergen. Die Locale-Entscheidung bleibt separat: FR depublizieren oder vollständig fachlich übersetzen. Keine Mutation, solange Snapshot-Vertrauen und ausdrückliche Locale-Entscheidung fehlen.",
+      "belegArt": "R143_LIMITED_LIVE_LANGUAGE_SAMPLE_AND_MERGED_PR2963_PR2964_NO_SHOPWRITE",
+      "lastEvidence": "Draft-PR2962 bleibt offen. Commit ff50da64d560736a16bf1ad1efb2c77597c06125 schliesst die HIGH-Umgehung LOCALES=it: Der Guard prüft die Vereinigung aus WANT und allen publizierten nichtprimären Locales, sodass publiziertes unbelegtes FR nicht übersprungen werden kann. 20/20 lokale Tests sind grün und der HIGH-Fix ist im Review ohne neuen Blocker. MEDIUM bleibt expliziter Merge-/Write-Blocker: Es fehlt ein unabhängiger Produzent eines aktuellen Live-Katalog-Snapshots; der Source-SHA vergleicht nur extern gelieferte Werte. Kein Merge, keine Mutation und kein Locale-/Shopwrite. R143: Begrenzte aktuelle Live-Stichprobe bestätigt weiterhin Home, Powered by Shopify, Small blanket nap blanket, Baby Gentleman Jumpsuit sowie gemischte indexierbare /fr-Inhalte. PR2963 (fd46447f) stoppt neue klar englische/mischtsprachige automatische SEO-Writes; PR2964 (a017420e) ergänzt einen schreibfreien Sprach-/DE-FR-Duplikatwächter. Beide sind in main, haben aber keine bestehenden Live-Texte, Locales oder Märkte geändert. Die FR-Blitzcollection ist noindex und nennt weiterhin unbelegte 1–2 Tage; keine Versandzusage wurde freigegeben.",
+      "nextAllowedStep": "Die konkret belegten bestehenden Texte als getrennten Shopify-Inhalts-/Theme-/Locale-Diff vorbereiten: Home→Startseite, Powered-by-Text entfernen/übersetzen, zwei Produkttexte vollständig deutsch, Product-mockup-Alttext deutsch und /fr entweder vollständig fachlich übersetzen oder bewusst depublizieren. Den 1–2-Tage-Claim nur mit aktuellem Nachweis behalten. Vor jedem Write frische Identität, Originalwerte, Diff und Rücklesung; PR2964 als read-only Gegenprobe verwenden. Für PR2962 bleibt ein unabhängiger aktueller Live-Katalog-Snapshot-Produzent mit belegter Herkunft, Erfassungszeit und SHA-Vertrauenskette erforderlich; erst danach erneut prüfen und mergen.",
       "blockers": [
         "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
         "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
@@ -7438,7 +7439,8 @@
         "R141: Drei Produktsamples sind noindex, bleiben aber deutsch und in62 FR-Child-Sitemaps; Katalogvollständigkeit ist unbekannt.",
         "R141: Draft-PR2962 schliesst die Guard-Logiklücke lokal, aber Remote-CI läuft; ungemergt und nicht produktiv. Er trifft keine Locale-Entscheidung und führt keine Mutation aus.",
         "R142: Draft-PR2962 schliesst die HIGH-Umgehung, bleibt aber wegen fehlendem unabhängig aktuellem Live-Katalog-Snapshot-Produzenten explizit merge- und write-gesperrt.",
-        "R142: Der Source-SHA bindet nur extern gelieferte Werte aneinander und ist ohne unabhängige Snapshot-Herkunft kein Vollständigkeitsbeleg."
+        "R142: Der Source-SHA bindet nur extern gelieferte Werte aneinander und ist ohne unabhängige Snapshot-Herkunft kein Vollständigkeitsbeleg.",
+        "R143: Bestehende englische/mischtsprachige Live-Texte sind bestätigt; die gemergten Guards erkennen/verhindern neue Fehler, korrigieren aber keine bestehenden Shopinhalte."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -11014,6 +11016,28 @@
         "readAt": "2026-11-08T15:33:44+01:00"
       },
       "action": "R142: PR2961 merged the read-only tracking guard after the green LuxeStyle automation matrix; no settings change or event-delivery proof. Its one-GET post-merge probe returned UNKNOWN/Exit2 on fetch failed with no HTTP status, mutation or retry. Draft PR2962 fixed the LOCALES=it HIGH bypass at ff50da64d with20/20 local tests and review okay, but remains merge/write-blocked because no independent current live-catalog snapshot producer exists. Tasks remain24."
+    },
+    {
+      "revision": 143,
+      "at": "2026-11-08T16:03:28+01:00",
+      "actor": "codex",
+      "source": {
+        "paths": [
+          "/workspace/luxestyle-review/live-language-sample-20261108.json",
+          "/workspace/luxestyle-review/live-language-dynamic-20261108.jsonl"
+        ],
+        "sha256": [
+          "732903a40359cb463751f0cd11241a965a470c38bae1d1b5016d4ca0f52a06a8",
+          "c76e972938cad78193e6e7e0c9a0a59e4572f538831ed28d03f4b236e3edc384"
+        ],
+        "mergeCommits": [
+          "fd46447fbb8a50275c5a365929e684897e828ed0",
+          "a017420e82d201c44eddd8809420b699c601c83f",
+          "ec00032c73c417d0c26de055e5e8769dd18cdfad"
+        ],
+        "readAt": "2026-11-08T16:03:28+01:00"
+      },
+      "action": "R143: A limited current live sample confirms remaining English/mixed storefront text and an indexable mixed /fr homepage; the FR Blitz collection is noindex but retains an unverified 1–2-day claim. PR2963 merged a fail-closed guard before automatic SEO writes; PR2964 merged a bounded read-only storefront/DE-FR language guard; PR2965 merged German POD-generator/v6 labels and the CHF50 threshold. These repository merges did not change existing Shopify texts, locales, MAIN theme, or the live v5 labels. Tasks remain24; no full-catalog claim."
     }
   ],
   "salesGoal": {
@@ -17594,5 +17618,107 @@
       "blind retry after fetch failure"
     ],
     "taskCount": 24
+  },
+  "languageSeoAuditR143": {
+    "at": "2026-11-08T16:03:28+01:00",
+    "mode": "read_only_limited_live_sample",
+    "sampleScope": {
+      "urls": 6,
+      "fullCatalogClaim": false,
+      "allEnglishRemovedClaim": false
+    },
+    "confirmedLiveFindings": [
+      "Home remains visible in breadcrumbs on sampled German product pages",
+      "Powered by Shopify remains visible in the footer",
+      "Small blanket nap blanket remains inside one visible German product description",
+      "Baby Gentleman Jumpsuit remains in title, meta, H1 and description of one indexable product",
+      "/fr is indexable and mixes French, German and English metadata/content",
+      "Self-design main flow and mug instructions are German in the sampled dynamic view",
+      "Product mockup remains as an English image alt text on the self-design page"
+    ],
+    "frBlitzCollection": {
+      "path": "/fr/collections/blitzversand-schweiz",
+      "robots": [
+        "noindex, follow",
+        "none"
+      ],
+      "claim": "livraison en 1–2 jours",
+      "deliveryPromiseVerified": false,
+      "writePerformed": false
+    },
+    "evidence": [
+      {
+        "path": "/workspace/luxestyle-review/live-language-sample-20261108.json",
+        "sha256": "732903a40359cb463751f0cd11241a965a470c38bae1d1b5016d4ca0f52a06a8"
+      },
+      {
+        "path": "/workspace/luxestyle-review/live-language-dynamic-20261108.jsonl",
+        "sha256": "c76e972938cad78193e6e7e0c9a0a59e4572f538831ed28d03f4b236e3edc384"
+      }
+    ],
+    "shopWrites": 0
+  },
+  "englishSeoGuardsR143": {
+    "at": "2026-11-08T16:03:28+01:00",
+    "merged": [
+      {
+        "pullRequest": 2963,
+        "mergeCommit": "fd46447fbb8a50275c5a365929e684897e828ed0",
+        "scope": "fail-closed automatic SEO writes for clearly English or mixed supplier titles"
+      },
+      {
+        "pullRequest": 2964,
+        "mergeCommit": "a017420e82d201c44eddd8809420b699c601c83f",
+        "scope": "read-only limited storefront language and DE/FR duplicate guard"
+      }
+    ],
+    "guardCapabilities": [
+      "title/meta/H1",
+      "short nav/breadcrumb/footer UI text",
+      "bounded image alt text",
+      "DE/FR duplicate pairs",
+      "UNKNOWN on 429/auth/timeout"
+    ],
+    "liveContentCorrected": false,
+    "settingsChanged": false
+  },
+  "selfDesignLanguageR143": {
+    "at": "2026-11-08T16:03:28+01:00",
+    "pullRequest": 2965,
+    "mergeCommit": "ec00032c73c417d0c26de055e5e8769dd18cdfad",
+    "repositoryChanges": [
+      "325/444 ml instead of 11/15 oz",
+      "Rundumdruck instead of All-Over",
+      "Auf Bestellung instead of On-demand",
+      "Gestaltungswerkzeug instead of Editor",
+      "CHF 50 instead of CHF 65",
+      "German v6 font labels"
+    ],
+    "technicalFontFamiliesChanged": false,
+    "englishLocaleChanged": false,
+    "liveV5Changed": false,
+    "liveV5EnglishFontLabelsOpen": true,
+    "shopWrites": 0
+  },
+  "followUpRunR143": {
+    "at": "2026-11-08T16:03:28+01:00",
+    "scope": "limited_live_language_seo_audit_and_merged_fail_closed_language_guards",
+    "actualWrites": [
+      "PR2963 merged into repository main",
+      "PR2964 merged into repository main",
+      "PR2965 merged into repository main",
+      "LuxeStyle handoff documentation"
+    ],
+    "notPerformed": [
+      "Shopify product/title/body/theme/locale/market write",
+      "MAIN theme write",
+      "v5 live editor label change",
+      "delivery promise approval",
+      "customer contact",
+      "cart/checkout/order",
+      "Ads/budget/discount/flow/DNS/feed write"
+    ],
+    "taskCount": 24,
+    "fullCatalogClaim": false
   }
 }
