@@ -8,7 +8,7 @@ on:
       - 'automation/lib/claude_assist*.mjs'
       - 'automation/lib/cj_read*.mjs'
       - '.mcp.json'
-      - '.github/workflows/diagnose-actions-zugang.yml'
+      - '.github/workflows/cj-read-mcp-diagnose.yml'
       - '.github/workflows/luxestyle-assist-tests.yml'
       - 'dropship/assistant/CJ-READ-MCP.md'
 permissions:
@@ -26,9 +26,10 @@ jobs:
             automation/cj-read-mcp.mjs
             automation/cj-read-mcp-probe.mjs
             automation/lib/claude_assist*.mjs
+            automation/lib/cj_identity.mjs
             automation/lib/cj_read*.mjs
             .mcp.json
-            .github/workflows/diagnose-actions-zugang.yml
+            .github/workflows/cj-read-mcp-diagnose.yml
             .github/workflows/luxestyle-assist-tests.yml
             dropship/assistant/CJ-READ-MCP.md
           sparse-checkout-cone-mode: false

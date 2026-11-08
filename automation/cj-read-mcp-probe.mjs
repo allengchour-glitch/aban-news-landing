@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isValidCjPid } from './lib/cj_identity.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const SERVER = 'luxestyle-cj-read';
@@ -23,7 +24,8 @@ const REASONS = new Set([
   'product_identity_mismatch', 'malformed_product_data', 'malformed_inventory_data',
   'missing_or_invalid_pid', 'credential_binding_missing', 'credential_binding_invalid',
   'invalid_lookup', 'invalid_pid_lookup', 'inventory_output_too_large',
-  'product_prerequisite_not_verified'
+  'product_prerequisite_not_verified', 'inventory_variant_set_mismatch',
+  'product_request_budget_exhausted', 'inventory_request_budget_exhausted'
 ]);
 
 const request = (id, method, params) => JSON.stringify({ jsonrpc: '2.0', id, method,
@@ -42,12 +44,12 @@ export function lookupFromValues(pid = '', productSku = '', operation = 'product
   const p = String(pid || '').trim();
   const s = String(productSku || '').trim();
   if (selected === 'inventory') {
-    if (!/^[0-9]{6,40}$/.test(p) || s) throw Error('inventory_pid_only_required');
+    if (!isValidCjPid(p) || s) throw Error('inventory_pid_only_required');
     return { pid: p };
   }
   if ((p ? 1 : 0) + (s ? 1 : 0) !== 1) throw Error('exactly_one_lookup_required');
   if (p) {
-    if (!/^[0-9]{6,40}$/.test(p)) throw Error('invalid_pid');
+    if (!isValidCjPid(p)) throw Error('invalid_pid');
     return { pid: p };
   }
   if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(s)) throw Error('invalid_product_sku');
@@ -103,6 +105,8 @@ function vidIdentity(value) {
   return identity(value, /^[0-9A-Za-z][0-9A-Za-z-]{5,63}$/, 64);
 }
 
+function pidIdentity(value) { return isValidCjPid(value) ? value : null; }
+
 function safeCountryRow(value) {
   if (!object(value)) return null;
   return {
@@ -123,44 +127,76 @@ function productFields(read) {
     readReason: read.reason === null ? null : allowed(read.reason, REASONS),
     authenticationRequests: requestCount(read.requests?.authentication),
     productRequests: requestCount(read.requests?.product),
-    returnedPid: identity(read.product?.product?.pid, /^[0-9]{6,40}$/, 40),
+    returnedPid: pidIdentity(read.product?.product?.pid),
     returnedProductSku: identity(read.product?.product?.productSku,
       /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/, 200)
   };
 }
 
-function inventoryVariants(productRead, inventoryRead) {
-  const product = productRead.product?.product?.variants?.records;
-  const inventory = inventoryRead.inventory?.variants?.records;
-  if (!Array.isArray(product) || product.length > MAX_VARIANTS || !Array.isArray(inventory)
-    || inventory.length > MAX_VARIANTS) return null;
-  const byVid = new Map();
-  const duplicates = new Set();
-  for (const value of inventory) {
-    if (!object(value)) continue;
-    const vid = vidIdentity(value.vid);
-    if (!vid) continue;
-    if (byVid.has(vid)) duplicates.add(vid);
-    byVid.set(vid, value);
+function productIdentityMatchesLookup(product, lookup) {
+  if (!object(lookup) || Object.keys(lookup).length !== 1
+    || product.returnedPid === null || product.returnedProductSku === null) return false;
+  if (typeof lookup.pid === 'string') return product.returnedPid === lookup.pid;
+  return typeof lookup.productSku === 'string' && product.returnedProductSku === lookup.productSku;
+}
+
+function completeVariantRecords(value, expectedState, identityField) {
+  if (!object(value) || value.state !== expectedState || value.partial !== false
+    || !Number.isInteger(value.reported) || value.reported <= 0 || value.reported > MAX_VARIANTS
+    || value.returned !== value.reported || !Array.isArray(value.records)
+    || value.records.length !== value.reported) return null;
+  const records = [];
+  const identities = new Set();
+  const skus = new Set();
+  for (const record of value.records) {
+    if (!object(record)) return null;
+    const vid = vidIdentity(record.vid);
+    const vidKey = vid?.toUpperCase();
+    if (!vid || identities.has(vidKey)) return null;
+    identities.add(vidKey);
+    if (identityField === 'product') {
+      const variantSku = identity(record.variantSku, /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/, 200);
+      const skuKey = variantSku?.toUpperCase();
+      if (!variantSku || skus.has(skuKey)) return null;
+      skus.add(skuKey);
+      records.push({ record, vid, vidKey, variantSku });
+    } else records.push({ record, vid, vidKey });
   }
-  return product.map(value => {
-    if (!object(value)) return null;
-    const vid = vidIdentity(value.vid);
-    const variantSku = identity(value.variantSku, /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/, 200);
-    if (!vid || !variantSku) return null;
-    const found = byVid.get(vid);
-    if (!found || duplicates.has(vid) || !object(found.countries)
-      || !Array.isArray(found.countries.records)
-      || found.countries.records.length > MAX_COUNTRIES_PER_VARIANT) {
-      return { vid, variantSku, inventoryState: 'unknown', countries: null };
+  return { records, identities };
+}
+
+function inventoryVariants(productRead, inventoryRead) {
+  const product = completeVariantRecords(productRead.product?.product?.variants,
+    'supplier_metadata_returned', 'product');
+  const inventory = completeVariantRecords(inventoryRead.inventory?.variants,
+    'supplier_inventory_returned', 'inventory');
+  if (!product || !inventory || product.records.length !== inventory.records.length
+    || [...product.identities].some(vid => !inventory.identities.has(vid))) return null;
+  const byVid = new Map();
+  for (const value of inventory.records) byVid.set(value.vidKey, value.record);
+  const records = product.records.map(value => {
+    const found = byVid.get(value.vidKey);
+    const countries = found?.countries;
+    if (!found || !object(countries) || countries.state !== 'supplier_inventory_returned'
+      || countries.partial !== false || !Number.isInteger(countries.reported)
+      || countries.reported < 0 || countries.reported > MAX_COUNTRIES_PER_VARIANT
+      || countries.returned !== countries.reported || !Array.isArray(countries.records)
+      || countries.records.length !== countries.reported) {
+      return { vid: value.vid, variantSku: value.variantSku,
+        inventoryState: 'unknown', countries: null };
     }
-    const countries = found.countries.records.map(safeCountryRow);
-    if (countries.some(row => row === null)) {
-      return { vid, variantSku, inventoryState: 'unknown', countries: null };
+    const safeCountries = countries.records.map(safeCountryRow);
+    if (safeCountries.some(row => row === null)) {
+      return { vid: value.vid, variantSku: value.variantSku,
+        inventoryState: 'unknown', countries: null };
     }
-    return { vid, variantSku,
-      inventoryState: found.countries.partial === true ? 'partial' : 'returned', countries };
+    return { vid: value.vid, variantSku: value.variantSku,
+      inventoryState: 'returned', countries: safeCountries };
   });
+  const hasMappedInventory = records.some(value => value.inventoryState !== 'unknown'
+    && value.countries?.some(country => country.totalInventory !== null
+      || country.cjInventory !== null || country.factoryInventory !== null));
+  return { records, hasMappedInventory };
 }
 
 function parseResponses(stdout, expected) {
@@ -192,10 +228,11 @@ export function summariseProbe(stdout, lookup, operation = 'product') {
   const product = productFields(productRead);
   const connection = allowed(after.connection, new Set(['unknown_until_product_read', 'verified_by_product_read']));
   const lastRead = allowed(after.lastProductReadState, new Set(['not_attempted', 'unknown', 'verified']));
+  const productIdentityBound = productIdentityMatchesLookup(product, lookup);
   if (selected === 'product') {
     const verified = binding === 'bound_unverified' && product.readState === 'product_identity_verified'
       && product.readReason === null && product.authenticationRequests === 1 && product.productRequests === 1
-      && connection === 'verified_by_product_read' && lastRead === 'verified';
+      && productIdentityBound && connection === 'verified_by_product_read' && lastRead === 'verified';
     return {
       provider: 'CJdropshipping', mode: 'read_only', operation: selected, transport: 'ok', lookup,
       credentialBinding: binding, authenticationRequests: product.authenticationRequests,
@@ -212,8 +249,9 @@ export function summariseProbe(stdout, lookup, operation = 'product') {
   const inventoryRequests = requestCount(inventoryRead.requests?.inventory);
   const authenticationRequests = product.authenticationRequests === null || inventoryAuthentication === null
     ? null : product.authenticationRequests + inventoryAuthentication;
-  const inventoryPid = identity(inventoryRead.inventory?.pid, /^[0-9]{6,40}$/, 40);
-  const variants = inventoryVariants(productRead, inventoryRead);
+  const inventoryPid = pidIdentity(inventoryRead.inventory?.pid);
+  const variantBinding = inventoryVariants(productRead, inventoryRead);
+  const variants = variantBinding?.records ?? null;
   const inventoryPartial = inventoryRead.inventory?.variants?.partial === true;
   const lastInventoryRead = allowed(after.lastInventoryReadState,
     new Set(['not_attempted', 'unknown', 'returned']));
@@ -221,8 +259,8 @@ export function summariseProbe(stdout, lookup, operation = 'product') {
     && product.readReason === null && product.authenticationRequests === 1 && product.productRequests === 1
     && inventoryState === 'inventory_returned' && inventoryReason === null
     && inventoryAuthentication === 0 && authenticationRequests === 1 && inventoryRequests === 1
-    && product.returnedPid === lookup.pid && inventoryPid === lookup.pid
-    && product.returnedProductSku !== null && variants !== null && variants.every(Boolean)
+    && productIdentityBound && inventoryPid === lookup.pid
+    && variantBinding?.hasMappedInventory === true
     && connection === 'verified_by_product_read' && lastRead === 'verified'
     && lastInventoryRead === 'returned';
   const summary = {

@@ -1,12 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { PassThrough } from 'node:stream';
 import { fileURLToPath } from 'node:url';
+import { dirname, relative, resolve } from 'node:path';
 import { serveMcp } from './claude_assist_mcp.mjs';
 import { CJ_MCP_TOOLS, CJ_MCP_SERVER, CJ_MCP_INSTRUCTIONS,
   validateCjMcpArguments, createCjMcpHandlers } from './cj_read_mcp.mjs';
+import { CJ_PID_JSON_PATTERN } from './cj_identity.mjs';
 
 const request = (id, method, params) => JSON.stringify({ jsonrpc: '2.0', id, method,
   ...(params === undefined ? {} : { params }) });
@@ -41,6 +44,11 @@ test('CJ server advertises exactly three bounded read-only tools', async () => {
   assert.deepEqual(tools[2].inputSchema.required, ['pid']);
   assert.deepEqual(Object.keys(tools[2].inputSchema.properties), ['pid']);
   assert.equal(tools[2].inputSchema.additionalProperties, false);
+  assert.equal(tools[2].inputSchema.properties.pid.pattern, CJ_PID_JSON_PATTERN);
+  const pidPattern = new RegExp(CJ_PID_JSON_PATTERN);
+  assert.ok(pidPattern.test('1477820492730732544'));
+  assert.ok(pidPattern.test('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7'));
+  assert.ok(!pidPattern.test('0fcca35a-2f9e-4cb3-90ad'));
 });
 
 test('valid status and product lookups reach only their selected handlers', async () => {
@@ -54,10 +62,13 @@ test('valid status and product lookups reach only their selected handlers', asyn
     request(1, 'tools/call', { name: 'luxe_cj_status', arguments: {} }) + '\n',
     request(2, 'tools/call', { name: 'luxe_cj_product_read', arguments: { pid: '1477820492730732544' } }) + '\n',
     request(3, 'tools/call', { name: 'luxe_cj_product_read', arguments: { productSku: 'CJJJJTJT22925' } }) + '\n',
-    request(4, 'tools/call', { name: 'luxe_cj_inventory_read', arguments: { pid: '1477820492730732544' } }) + '\n'
+    request(4, 'tools/call', { name: 'luxe_cj_inventory_read', arguments: { pid: '1477820492730732544' } }) + '\n',
+    request(5, 'tools/call', { name: 'luxe_cj_product_read',
+      arguments: { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' } }) + '\n'
   ], handlers);
   assert.deepEqual(seen, [['status', {}], ['product', { pid: '1477820492730732544' }],
-    ['product', { productSku: 'CJJJJTJT22925' }], ['inventory', { pid: '1477820492730732544' }]]);
+    ['product', { productSku: 'CJJJJTJT22925' }], ['inventory', { pid: '1477820492730732544' }],
+    ['product', { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' }]]);
   assert.ok(responses.every(response => response.result.isError === false));
 });
 
@@ -133,8 +144,34 @@ test('project MCP config launches both servers without storing CJ credentials', 
   assert.equal(cj.type, 'stdio'); assert.equal(cj.command, 'node');
   assert.ok(!cj.args.includes('--use-env-proxy'));
   assert.match(cj.args.at(-1), /cj-read-mcp\.mjs/);
-  const serialized = JSON.stringify(cj);
-  assert.ok(!/CJ_API_KEY|CJ_EMAIL|CJ_ACCESS_TOKEN/.test(serialized));
+  const launcher = cj.args.at(-1);
+  assert.ok(!launcher.includes('...process.env'));
+  assert.match(launcher, /const childEnv = \{[^}]+NODE_OPTIONS: ''[^}]+\}/);
+  assert.match(launcher, /childEnv\.CJ_API_KEY = process\.env\.CJ_API_KEY/);
+  assert.match(launcher, /spawn\(process\.execPath, \[target\], \{ cwd: root, env: childEnv/);
+  assert.ok(!/CJ_EMAIL|CJ_ACCESS_TOKEN/.test(launcher));
+  const expectedFiles = ['automation/cj-read-mcp.mjs', 'automation/lib/cj_identity.mjs',
+    'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_readonly.mjs',
+    'automation/lib/claude_assist_mcp.mjs'];
+  for (const file of expectedFiles) {
+    const digest = createHash('sha256').update(readFileSync(new URL(`../../${file}`, import.meta.url))).digest('hex');
+    assert.ok(launcher.includes(`['${file}', '${digest}']`), file);
+  }
+  const root = fileURLToPath(new URL('../../', import.meta.url));
+  const pending = ['automation/cj-read-mcp.mjs'];
+  const imports = new Set();
+  while (pending.length) {
+    const file = pending.pop();
+    if (imports.has(file)) continue;
+    imports.add(file);
+    const source = readFileSync(resolve(root, file), 'utf8');
+    for (const match of source.matchAll(/\b(?:import|export)\s+(?:[^'";]*?\s+from\s+)?['"](\.{1,2}\/[^'"]+)['"]/g)) {
+      const child = relative(root, resolve(root, dirname(file), match[1])).replaceAll('\\', '/');
+      assert.ok(!child.startsWith('../') && child.endsWith('.mjs'), match[1]);
+      pending.push(child);
+    }
+  }
+  assert.deepEqual([...imports].sort(), [...expectedFiles].sort());
   assert.deepEqual(Object.keys(cj.env).sort(), ['NODE_OPTIONS', 'NODE_PATH', 'NODE_USE_ENV_PROXY']);
   assert.equal(cj.env.NODE_USE_ENV_PROXY, '1');
 });

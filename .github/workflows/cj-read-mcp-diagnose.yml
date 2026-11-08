@@ -1,0 +1,125 @@
+name: "CJ-MCP-Diagnose (nur lesen)"
+
+# Prüft ausschliesslich den eng begrenzten CJ-Nur-Lese-MCP an einem fixierten Commit.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Prüfmodus'
+        type: choice
+        options:
+          - cj_mcp
+        default: cj_mcp
+        required: true
+      approved_commit:
+        description: 'Nur cj_mcp: freigegebener 40-stelliger Commit des gewählten Refs'
+        type: string
+        required: true
+        default: ''
+      operation:
+        description: 'Nur cj_mcp: product oder inventory'
+        type: choice
+        options:
+          - product
+          - inventory
+        default: product
+        required: true
+      pid:
+        description: 'CJ-PID; inventory verlangt ausschliesslich PID'
+        type: string
+        required: false
+      productSku:
+        description: 'CJ-productSku; genau PID oder productSku setzen'
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cj-read-mcp-diagnose-${{ github.repository }}-${{ github.ref }}-${{ inputs.mode }}-${{ inputs.operation }}
+  cancel-in-progress: false
+
+jobs:
+  cj_mcp:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'cj_mcp' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fixierten Auftrag prüfen
+        shell: bash
+        env:
+          APPROVED_COMMIT: ${{ inputs.approved_commit }}
+          CJ_MCP_OPERATION: ${{ inputs.operation }}
+          CJ_MCP_PID: ${{ inputs.pid }}
+          CJ_MCP_PRODUCT_SKU: ${{ inputs.productSku }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_EVENT_NAME" = workflow_dispatch
+          test "$GITHUB_REPOSITORY" = allengchour-glitch/aban-news-landing
+          [[ "$APPROVED_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          test "$APPROVED_COMMIT" = "$GITHUB_SHA"
+          [[ "$CJ_MCP_OPERATION" == product || "$CJ_MCP_OPERATION" == inventory ]]
+          if [[ "$CJ_MCP_OPERATION" == inventory ]]; then
+            if [[ -z "$CJ_MCP_PID" || -n "$CJ_MCP_PRODUCT_SKU" ]]; then
+              echo 'inventory verlangt genau eine PID und kein productSku.' >&2
+              exit 1
+            fi
+          else
+            if [[ -n "$CJ_MCP_PID" && -n "$CJ_MCP_PRODUCT_SKU" ]] || [[ -z "$CJ_MCP_PID" && -z "$CJ_MCP_PRODUCT_SKU" ]]; then
+              echo 'product verlangt genau PID oder productSku.' >&2
+              exit 1
+            fi
+          fi
+          if [[ -n "$CJ_MCP_PRODUCT_SKU" ]]; then [[ "$CJ_MCP_PRODUCT_SKU" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; fi
+
+      - name: Freigegebenen Commit minimal auschecken
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.approved_commit }}
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: |
+            .mcp.json
+            automation/cj-read-mcp.mjs
+            automation/cj-read-mcp-probe.mjs
+            automation/lib/claude_assist_mcp.mjs
+            automation/lib/cj_identity.mjs
+            automation/lib/cj_read_mcp.mjs
+            automation/lib/cj_readonly.mjs
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+
+      - name: Commit und geprüfte Dateien gegenlesen
+        shell: bash
+        env:
+          APPROVED_COMMIT: ${{ inputs.approved_commit }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$APPROVED_COMMIT"
+          cat <<'HASHES' | sha256sum -c -
+          1d04ef587cfafae75e9f2d6df6f6f69c39187ff321a51d5674d53f498b6ae7d5  .mcp.json
+          ef986b11c17d707aa78208c2fd51d4b35486a86e85c2883618daa2e8f8c80ffc  automation/cj-read-mcp.mjs
+          dc487afbd55c7cff3c9fa264884e4c0e953cac1b0cb512c88c18d0cc2d57fa58  automation/cj-read-mcp-probe.mjs
+          228be1d0783fb688e2f6971f39fd6a29457a24138bc5242de2f648345793a671  automation/lib/claude_assist_mcp.mjs
+          1fef93809ba5e8cf2204203abdf3d38ee1ebedbb833167f50a78b8ad1fce024b  automation/lib/cj_identity.mjs
+          593cb778745742f8818295ba8785a0902145c745cdd64751ff79786f80b94097  automation/lib/cj_read_mcp.mjs
+          8b114bc3fdf92a34e7aa4b72809cc57fdf7013a486068ab2496509237419a0ef  automation/lib/cj_readonly.mjs
+          HASHES
+
+      - name: PID mit zentralem Validator prüfen
+        if: ${{ inputs.pid != '' }}
+        env:
+          CJ_MCP_PID: ${{ inputs.pid }}
+        run: node --input-type=module -e "import { isValidCjPid } from './automation/lib/cj_identity.mjs'; if (!isValidCjPid(process.env.CJ_MCP_PID)) process.exit(1)"
+
+      - name: CJ-MCP einmalig nur lesend prüfen
+        env:
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          CJ_MCP_OPERATION: ${{ inputs.operation }}
+          CJ_MCP_PID: ${{ inputs.pid }}
+          CJ_MCP_PRODUCT_SKU: ${{ inputs.productSku }}
+        run: node automation/cj-read-mcp-probe.mjs

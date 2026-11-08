@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { isValidCjPid } from './cj_identity.mjs';
 
 const BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const AUTH_URL = `${BASE}/authentication/getAccessToken`;
@@ -27,7 +28,7 @@ function validLookup(args) {
   if (!args || typeof args !== 'object' || Array.isArray(args)) return false;
   const keys = Object.keys(args);
   if (keys.length !== 1) return false;
-  if (keys[0] === 'pid') return typeof args.pid === 'string' && /^[0-9]{6,40}$/.test(args.pid);
+  if (keys[0] === 'pid') return isValidCjPid(args.pid);
   return keys[0] === 'productSku' && typeof args.productSku === 'string'
     && /^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(args.productSku);
 }
@@ -35,7 +36,7 @@ function validLookup(args) {
 function validPidLookup(args) {
   return !!args && typeof args === 'object' && !Array.isArray(args)
     && Object.keys(args).length === 1 && Object.keys(args)[0] === 'pid'
-    && typeof args.pid === 'string' && /^[0-9]{6,40}$/.test(args.pid);
+    && isValidCjPid(args.pid);
 }
 
 function safeUrl(value) {
@@ -161,7 +162,7 @@ function listVariants(value, pid) {
       ? variantSkuKey(variant.variantSku) : null;
     if (!variant || typeof variant !== 'object' || Array.isArray(variant)
       || !validVid(variant.vid)
-      || !validIdentity(variant.pid, 40) || variant.pid !== pid
+      || !isValidCjPid(variant.pid) || variant.pid !== pid
       || !skuKey || vids.has(vidKey) || skus.has(skuKey)) {
       return { state: 'unknown', reported: value.length, returned: 0, partial: false, records: null,
         reason: 'variant_identity_missing_or_inconsistent' };
@@ -180,7 +181,7 @@ function listVariants(value, pid) {
 
 function normaliseProduct(data, lookup) {
   if (!data || typeof data !== 'object' || Array.isArray(data)) return { state: 'unknown', reason: 'malformed_product_data' };
-  if (typeof data.pid !== 'string' || !/^[0-9]{6,40}$/.test(data.pid)) return { state: 'unknown', reason: 'missing_or_invalid_pid' };
+  if (!isValidCjPid(data.pid)) return { state: 'unknown', reason: 'missing_or_invalid_pid' };
   const [lookupKey, lookupValue] = Object.entries(lookup)[0];
   if (data[lookupKey] !== lookupValue) return { state: 'mismatch', reason: 'product_identity_mismatch' };
   const sku = boundedText(data.productSku, 200), name = boundedText(data.productNameEn, 1000);
@@ -277,6 +278,20 @@ function normaliseInventory(data, pointsInfo, pid) {
   };
 }
 
+function inventoryVariantSetMatches(expectedVids, variants) {
+  if (!Array.isArray(expectedVids) || expectedVids.length === 0 || !variants
+    || variants.reported !== expectedVids.length || variants.returned !== expectedVids.length
+    || !Array.isArray(variants.records) || variants.records.length !== expectedVids.length) return false;
+  const actual = new Set();
+  for (const record of variants.records) {
+    if (!record || !validVid(record.vid)) return false;
+    const key = record.vid.toUpperCase();
+    if (actual.has(key)) return false;
+    actual.add(key);
+  }
+  return expectedVids.every(vid => actual.has(vid));
+}
+
 function enforceInventoryReportLimit(report) {
   const size = () => Buffer.byteLength(JSON.stringify(report), 'utf8');
   while (size() > MAX_INVENTORY_REPORT_BYTES && report.inventory?.variants?.records?.length) {
@@ -332,6 +347,9 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
   let lastProductRead = null;
   let lastVerifiedInventoryReadAt = null;
   let lastInventoryRead = null;
+  let productRequestUsed = false;
+  let inventoryRequestUsed = false;
+  let invalidRequestSequence = false;
   let queue = Promise.resolve();
   const clock = () => { const value = Number(now()); return Number.isFinite(value) ? value : Date.now(); };
   const fingerprint = value => createHash('sha256').update(value).digest('hex');
@@ -393,16 +411,26 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
   async function readProduct(lookup) {
     const current = clock();
     const report = emptyReport(current, lookup);
+    if (productRequestUsed) {
+      report.reason = 'product_request_budget_exhausted';
+      invalidRequestSequence = true;
+      return report;
+    }
+    productRequestUsed = true;
     const binding = keyState();
     const finish = () => {
       const at = new Date(clock()).toISOString();
       const variants = report.product?.product?.variants;
+      const completeVariants = variants?.state === 'supplier_metadata_returned'
+        && variants.partial === false && Number.isInteger(variants.reported)
+        && variants.reported > 0 && variants.reported === variants.returned
+        && Array.isArray(variants.records) && variants.records.length === variants.reported;
       lastProductRead = { at, state: report.state === 'product_identity_verified' ? 'verified' : 'unknown',
         keyFingerprint: binding.fingerprint || null,
         pid: report.state === 'product_identity_verified' ? report.product?.product?.pid || null : null,
-        inventoryEligible: report.state === 'product_identity_verified'
-          && variants?.state === 'supplier_metadata_returned'
-          && Array.isArray(variants.records) && variants.records.length > 0 };
+        inventoryEligible: report.state === 'product_identity_verified' && completeVariants,
+        variantVids: report.state === 'product_identity_verified' && completeVariants
+          ? variants.records.map(record => record.vid.toUpperCase()) : null };
       if (lastProductRead.state === 'verified') lastVerifiedReadAt = at;
       return report;
     };
@@ -439,6 +467,12 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
   async function readInventory(lookup) {
     const current = clock();
     const report = emptyInventoryReport(current, lookup);
+    if (inventoryRequestUsed) {
+      report.reason = 'inventory_request_budget_exhausted';
+      invalidRequestSequence = true;
+      return report;
+    }
+    inventoryRequestUsed = true;
     const binding = keyState();
     const finish = () => {
       enforceInventoryReportLimit(report);
@@ -450,7 +484,7 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
     };
     if (!validPidLookup(lookup)) { report.reason = 'invalid_pid_lookup'; return finish(); }
     if (binding.state !== 'bound_unverified') { report.reason = `credential_binding_${binding.state}`; return finish(); }
-    if (!lastProductRead || lastProductRead.state !== 'verified'
+    if (invalidRequestSequence || !lastProductRead || lastProductRead.state !== 'verified'
       || lastProductRead.keyFingerprint !== binding.fingerprint
       || lastProductRead.pid !== lookup.pid || lastProductRead.inventoryEligible !== true) {
       report.reason = 'product_prerequisite_not_verified'; return finish();
@@ -478,6 +512,11 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
       report.reason = 'inventory_api_response_rejected'; return finish();
     }
     const normalised = normaliseInventory(body.data, body.pointsInfo, lookup.pid);
+    if (normalised.state === 'inventory_returned'
+      && !inventoryVariantSetMatches(lastProductRead.variantVids, normalised.inventory?.variants)) {
+      report.reason = 'inventory_variant_set_mismatch';
+      return finish();
+    }
     report.state = normalised.state;
     report.reason = normalised.reason || null;
     report.inventory = normalised.state === 'inventory_returned' ? normalised.inventory : null;
@@ -490,7 +529,8 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
         && cachedToken.expiresAt - TOKEN_SAFETY_MS > clock());
       const productMatchesBinding = !!(lastProductRead && lastProductRead.keyFingerprint === binding.fingerprint);
       const inventoryMatchesBinding = !!(lastInventoryRead && lastInventoryRead.keyFingerprint === binding.fingerprint);
-      const currentVerified = !!(productMatchesBinding && lastProductRead.state === 'verified');
+      const currentVerified = !!(!invalidRequestSequence
+        && productMatchesBinding && lastProductRead.state === 'verified');
       return { checkedAt: new Date(clock()).toISOString(), provider: 'CJdropshipping', mode: 'read_only',
         credentialBinding: binding.state, connection: currentVerified ? 'verified_by_product_read' : 'unknown_until_product_read',
         accessTokenCachedInProcess: cached, lastAuthenticationAt, lastVerifiedReadAt,
@@ -499,6 +539,9 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
         lastInventoryReadAt: lastInventoryRead?.at || null,
         lastInventoryReadState: inventoryMatchesBinding ? lastInventoryRead.state : 'not_attempted',
         lastVerifiedInventoryReadAt,
+        requestBudget: { productRemaining: productRequestUsed ? 0 : 1,
+          inventoryRemaining: inventoryRequestUsed ? 0 : 1 },
+        requestSequenceValid: !invalidRequestSequence,
         authenticationContract: { requestField: 'apiKey', documentation: DOC_URL },
         allowedEndpoint: PRODUCT_URL, allowedInventoryEndpoint: INVENTORY_URL, pagination: false,
         blockedOperations: ['catalogue_search', 'imports', 'orders', 'purchases', 'renders', 'shop_writes'],
@@ -521,3 +564,4 @@ export const CJ_READ_LIMITS = Object.freeze({ BODY_LIMIT, TIMEOUT_MS, REQUEST_GA
   MAX_VARIANTS, MAX_COUNTRIES_PER_VARIANT, MAX_INVENTORY_COUNTRY_ROWS, MAX_INVENTORY_REPORT_BYTES });
 export const isValidCjLookup = validLookup;
 export const isValidCjPidLookup = validPidLookup;
+export { isValidCjPid };

@@ -1,9 +1,10 @@
 import { isValidCjLookup, isValidCjPidLookup } from './cj_readonly.mjs';
+import { CJ_PID_JSON_PATTERN } from './cj_identity.mjs';
 
 const emptySchema = { type: 'object', properties: {}, additionalProperties: false };
 const externalRead = { readOnlyHint: true, destructiveHint: false, idempotentHint: false, openWorldHint: true };
 const lookupProperties = {
-  pid: { type: 'string', minLength: 6, maxLength: 40, pattern: '^[0-9]{6,40}$' },
+  pid: { type: 'string', minLength: 6, maxLength: 40, pattern: CJ_PID_JSON_PATTERN },
   productSku: { type: 'string', minLength: 1, maxLength: 100, pattern: '^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$' }
 };
 

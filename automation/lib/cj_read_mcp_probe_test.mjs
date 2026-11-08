@@ -32,19 +32,24 @@ const inventoryOutput = ({ marker = 'MUST_NOT_LEAK' } = {}) => [
   response(4, { state: 'product_identity_verified', reason: null,
     requests: { authentication: 1, product: 1 }, product: { product: {
       pid: '2601010101010101001', productSku: 'CJSN1392391', productNameEn: marker,
-      mainImage: { url: `https://example.invalid/${marker}` }, variants: { records: [
+      mainImage: { url: `https://example.invalid/${marker}` }, variants: {
+        state: 'supplier_metadata_returned', reported: 2, returned: 2, partial: false, records: [
         { vid: '2601010101010101002', variantSku: 'CJSN1392391-A', variantKey: marker },
         { vid: '2601010101010101003', variantSku: 'CJSN1392391-B' }
       ] } } } }),
   response(5, { state: 'inventory_returned', reason: null,
     requests: { authentication: 0, inventory: 1 }, raw: marker, inventory: {
-      pid: '2601010101010101001', variants: { partial: false, records: [
-        { vid: '2601010101010101002', countries: { partial: false, records: [
+      pid: '2601010101010101001', variants: {
+        state: 'supplier_inventory_returned', reported: 2, returned: 2, partial: false, records: [
+        { vid: '2601010101010101002', countries: {
+          state: 'supplier_inventory_returned', reported: 2, returned: 2, partial: false, records: [
           { countryCode: 'CN', totalInventory: 0, cjInventory: 0, factoryInventory: 0,
             verifiedWarehouse: 1, supplierNote: marker },
           { countryCode: 'DE', totalInventory: 7, cjInventory: null, factoryInventory: 7,
             verifiedWarehouse: 2 }
-        ] } }
+        ] } },
+        { vid: '2601010101010101003', countries: {
+          state: 'unknown', reported: null, returned: 0, partial: false, records: null } }
       ] }, pointsInfo: { remaining: 0, raw: marker } } }),
   response(6, { connection: 'verified_by_product_read', lastProductReadState: 'verified',
     lastInventoryReadState: 'returned' })
@@ -56,6 +61,10 @@ test('probe lookup requires exactly one bounded pid or productSku', () => {
   assert.deepEqual(lookupFromValues('2601010101010101001', ''), { pid: '2601010101010101001' });
   assert.deepEqual(lookupFromValues('', 'CJSN1392391'), { productSku: 'CJSN1392391' });
   assert.deepEqual(lookupFromValues('2601010101010101001', '', 'inventory'), { pid: '2601010101010101001' });
+  assert.deepEqual(lookupFromValues('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7', ''),
+    { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' });
+  assert.deepEqual(lookupFromValues('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7', '', 'inventory'),
+    { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' });
   assert.throws(() => lookupFromValues('', 'CJSN1392391', 'inventory'));
   assert.throws(() => lookupFromValues('2601010101010101001', 'CJSN1392391', 'inventory'));
   for (const values of [['', ''], ['123', ''], ['', '../bad'], ['2601010101010101001', 'CJSN1392391']]) {
@@ -97,6 +106,19 @@ test('successful output is reduced to the fixed summary without names, urls or r
   assert.ok(!JSON.stringify(result).includes('example.invalid'));
 });
 
+test('product verification independently binds returned PID and productSku to the requested lookup', () => {
+  assert.equal(summariseProbe(successOutput(), { productSku: 'DIFFERENT-SKU' }).verified, false);
+  assert.equal(summariseProbe(successOutput(), { pid: '2601010101010101999' }).verified, false);
+  const lines = successOutput().trim().split('\n').map(JSON.parse);
+  const read = JSON.parse(lines[3].result.content[0].text);
+  read.product.product.pid = 'invalid';
+  lines[3] = response(4, read);
+  const missingPid = summariseProbe(lines.map(JSON.stringify).join('\n') + '\n',
+    { productSku: 'CJSN1392391' });
+  assert.equal(missingPid.returnedPid, null);
+  assert.equal(missingPid.verified, false);
+});
+
 test('inventory summary maps SKU to VID, keeps zero and redacts names, URLs and raw data', () => {
   const marker = 'SECRET_OR_SUPPLIER_TEXT_MUST_NOT_LEAK';
   const result = summariseProbe(inventoryOutput({ marker }), { pid: '2601010101010101001' }, 'inventory');
@@ -121,6 +143,57 @@ test('inventory summary maps SKU to VID, keeps zero and redacts names, URLs and 
   assert.ok(!serialized.includes('pointsInfo'));
   assert.equal(result.countryAggregation, false);
   assert.equal(result.deliveryToSwitzerland, 'unknown');
+});
+
+test('inventory verification requires a complete nonempty exact VID set with a mapped record', () => {
+  const base = () => inventoryOutput().trim().split('\n').map(JSON.parse);
+  const mutate = change => {
+    const lines = base();
+    const product = JSON.parse(lines[3].result.content[0].text);
+    const inventory = JSON.parse(lines[4].result.content[0].text);
+    change(product.product.product.variants, inventory.inventory.variants);
+    lines[3] = response(4, product);
+    lines[4] = response(5, inventory);
+    return summariseProbe(lines.map(JSON.stringify).join('\n') + '\n',
+      { pid: '2601010101010101001' }, 'inventory');
+  };
+  const cases = {
+    empty: (product, inventory) => {
+      product.reported = 0; product.returned = 0; product.records = [];
+      inventory.reported = 0; inventory.returned = 0; inventory.records = [];
+    },
+    partial: product => {
+      product.state = 'partial_supplier_metadata_returned'; product.partial = true;
+    },
+    foreign: (_product, inventory) => {
+      inventory.records[1].vid = '2601010101010101999';
+    },
+    duplicate: (_product, inventory) => {
+      inventory.records[1].vid = inventory.records[0].vid;
+    },
+    countMismatch: (_product, inventory) => {
+      inventory.reported = 1; inventory.returned = 1; inventory.records.pop();
+    },
+    allUnknown: (_product, inventory) => {
+      for (const record of inventory.records) record.countries = {
+        state: 'unknown', reported: null, returned: 0, partial: false, records: null };
+    },
+    emptyMappings: (_product, inventory) => {
+      for (const record of inventory.records) record.countries = {
+        state: 'supplier_inventory_returned', reported: 0, returned: 0,
+        partial: false, records: [] };
+    },
+    valuesUnknown: (_product, inventory) => {
+      for (const record of inventory.records) record.countries = {
+        state: 'supplier_inventory_returned', reported: 1, returned: 1,
+        partial: false, records: [{ countryCode: 'CN', totalInventory: null,
+          cjInventory: null, factoryInventory: null, verifiedWarehouse: 1 }] };
+    }
+  };
+  for (const [name, change] of Object.entries(cases)) {
+    const result = mutate(change);
+    assert.equal(result.verified, false, name);
+  }
 });
 
 test('unknown responses stay bounded and cannot turn into a verified connection', () => {
@@ -196,9 +269,12 @@ test('real probe process fails closed for a missing or malformed binding without
 });
 
 test('manual workflow isolates the secret-bound MCP job and pins all executable inputs by hash', () => {
-  const workflow = readFileSync(new URL('../../.github/workflows/diagnose-actions-zugang.yml', import.meta.url), 'utf8');
+  const workflow = readFileSync(new URL('../../.github/workflows/cj-read-mcp-diagnose.yml', import.meta.url), 'utf8');
   const ci = readFileSync(new URL('../../.github/workflows/luxestyle-assist-tests.yml', import.meta.url), 'utf8');
-  assert.match(ci, /sparse-checkout:[\s\S]*\.github\/workflows\/diagnose-actions-zugang\.yml/);
+  const legacy = readFileSync(new URL('../../.github/workflows/diagnose-actions-zugang.yml', import.meta.url), 'utf8');
+  assert.match(legacy, /SHOPIFY_SHOP/);
+  assert.match(legacy, /automation\/diagnose_actions_zugang\.mjs/);
+  assert.match(ci, /sparse-checkout:[\s\S]*\.github\/workflows\/cj-read-mcp-diagnose\.yml/);
   const checkoutPin = 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262';
   const nodePin = 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020';
   const actionUses = text => [...text.matchAll(/^\s*(?:-\s*)?uses:\s+(\S+)/gm)].map(match => match[1]);
@@ -226,11 +302,14 @@ test('manual workflow isolates the secret-bound MCP job and pins all executable 
   assert.ok(!/SHOPIFY_|CJ_EMAIL|upload-artifact|retry/i.test(job));
   assert.match(job, /sha256sum -c -/);
   assert.match(workflow, /operation:[\s\S]*- product[\s\S]*- inventory/);
+  assert.match(workflow, /approved_commit:[\s\S]*required: true/);
   assert.match(job, /CJ_MCP_OPERATION: \$\{\{ inputs\.operation \}\}/);
   assert.match(job, /inventory verlangt genau eine PID und kein productSku/);
+  assert.match(job, /import \{ isValidCjPid \} from '\.\/automation\/lib\/cj_identity\.mjs'/);
   assert.match(job, /run: node automation\/cj-read-mcp-probe\.mjs/);
   for (const file of ['.mcp.json', 'automation/cj-read-mcp.mjs', 'automation/cj-read-mcp-probe.mjs',
-    'automation/lib/claude_assist_mcp.mjs', 'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_readonly.mjs']) {
+    'automation/lib/claude_assist_mcp.mjs', 'automation/lib/cj_identity.mjs',
+    'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_readonly.mjs']) {
     assert.ok(job.includes(`${sha256(file)}  ${file}`), file);
   }
 });

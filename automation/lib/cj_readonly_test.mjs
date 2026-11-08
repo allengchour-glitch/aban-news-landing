@@ -93,7 +93,7 @@ test('success sends apiKey auth then exactly one paced product GET and whitelist
   assert.ok(status.lastAuthenticationAt); assert.ok(status.lastVerifiedReadAt);
 });
 
-test('a second read reuses only the in-memory access token', async () => {
+test('the process consumes one product-read budget and invalidates a repeated sequence', async () => {
   const calls = [];
   const c = client(async (url, init) => {
     calls.push({ url, init });
@@ -103,10 +103,16 @@ test('a second read reuses only the in-memory access token', async () => {
   const first = await c.readProduct(LOOKUP);
   const second = await c.readProduct(LOOKUP);
   assert.equal(first.requests.authentication, 1);
-  assert.equal(second.requests.authentication, 0);
-  assert.equal(calls.length, 3);
+  assert.deepEqual(second.requests, { authentication: 0, product: 0 });
+  assert.equal(second.reason, 'product_request_budget_exhausted');
+  assert.equal(calls.length, 2);
   assert.equal(calls.filter(call => call.init.method === 'POST').length, 1);
-  assert.equal(calls.filter(call => call.init.method === 'GET').length, 2);
+  assert.equal(calls.filter(call => call.init.method === 'GET').length, 1);
+  const inventory = await c.readInventory(LOOKUP);
+  assert.equal(inventory.reason, 'product_prerequisite_not_verified');
+  assert.equal(calls.length, 2);
+  assert.deepEqual(c.status().requestBudget, { productRemaining: 0, inventoryRemaining: 0 });
+  assert.equal(c.status().requestSequenceValid, false);
 });
 
 test('auth HTTP and protocol failures remain unknown and never call product', async t => {
@@ -157,18 +163,11 @@ test('a rejected error-body cancel cannot bypass auth or product unknown reports
   });
   await t.test('product 429', async () => {
     let calls = 0;
-    const c = client(async () => {
-      calls++;
-      if (calls === 1) return authResponse();
-      if (calls === 2) return productResponse();
-      return rejectedBody(429);
-    });
-    assert.equal((await c.readProduct(LOOKUP)).state, 'product_identity_verified');
-    assert.equal(c.status().connection, 'verified_by_product_read');
+    const c = client(async () => ++calls === 1 ? authResponse() : rejectedBody(429));
     const report = await c.readProduct(LOOKUP);
     assert.equal(report.state, 'unknown');
     assert.equal(report.reason, 'throttled');
-    assert.deepEqual(report.requests, { authentication: 0, product: 1 });
+    assert.deepEqual(report.requests, { authentication: 1, product: 1 });
     assert.equal(c.status().lastProductReadState, 'unknown');
     assert.equal(c.status().connection, 'unknown_until_product_read');
   });
@@ -212,7 +211,7 @@ test('oversized streamed product response is unknown and is not retried', async 
   assert.equal(report.product, null);
 });
 
-test('rotating the API key discards the previous account token before another product read', async () => {
+test('rotating the API key does not reset the one-product session budget', async () => {
   const KEY2 = 'CJUserNum@api@OFFLINE_ROTATED_KEY_0987654321';
   const TOKEN2 = 'OFFLINE_ROTATED_ACCESS_TOKEN_0987654321';
   const REFRESH2 = 'OFFLINE_ROTATED_REFRESH_TOKEN_0987654321';
@@ -223,10 +222,7 @@ test('rotating the API key discards the previous account token before another pr
       calls.push({ url, init });
       if (calls.length === 1) return authResponse();
       if (calls.length === 2) return productResponse();
-      if (calls.length === 3) return response({ result: true, code: 200, data: {
-        accessToken: TOKEN2, refreshToken: REFRESH2, accessTokenExpiryDate: '2027-04-22T22:33:41+08:00'
-      } });
-      return productResponse();
+      throw new Error('second session read must not reach the network');
     } });
   const first = await c.readProduct(LOOKUP);
   env.CJ_API_KEY = KEY2;
@@ -234,32 +230,32 @@ test('rotating the API key discards the previous account token before another pr
   assert.equal(c.status().accessTokenCachedInProcess, false);
   const second = await c.readProduct(LOOKUP);
   assert.equal(first.state, 'product_identity_verified');
-  assert.equal(second.state, 'product_identity_verified');
-  assert.deepEqual(second.requests, { authentication: 1, product: 1 });
-  assert.deepEqual(calls.map(call => call.init.method), ['POST', 'GET', 'POST', 'GET']);
+  assert.equal(second.state, 'unknown');
+  assert.equal(second.reason, 'product_request_budget_exhausted');
+  assert.deepEqual(second.requests, { authentication: 0, product: 0 });
+  assert.deepEqual(calls.map(call => call.init.method), ['POST', 'GET']);
   assert.deepEqual(JSON.parse(calls[0].init.body), { apiKey: KEY });
-  assert.deepEqual(JSON.parse(calls[2].init.body), { apiKey: KEY2 });
   assert.equal(calls[1].init.headers['CJ-Access-Token'], TOKEN);
-  assert.equal(calls[3].init.headers['CJ-Access-Token'], TOKEN2);
   const serialized = JSON.stringify(second);
   for (const secret of [KEY, TOKEN, REFRESH, KEY2, TOKEN2, REFRESH2]) assert.ok(!serialized.includes(secret));
 });
 
-test('cached authentication continues to block a refresh-token echo on the next read', async () => {
+test('cached authentication continues to block a refresh-token echo in the inventory read', async () => {
   let calls = 0;
   const c = client(async () => {
     calls++;
     if (calls === 1) return authResponse();
     if (calls === 2) return productResponse();
-    return productResponse({ productNameEn: `supplier echo ${REFRESH}` });
+    return inventoryResponse([{ vid: '9876543210123456789', inventory: [] }], undefined,
+      { supplierEcho: REFRESH });
   });
   assert.equal((await c.readProduct(LOOKUP)).state, 'product_identity_verified');
-  const blocked = await c.readProduct(LOOKUP);
+  const blocked = await c.readInventory(LOOKUP);
   assert.equal(calls, 3);
-  assert.deepEqual(blocked.requests, { authentication: 0, product: 1 });
+  assert.deepEqual(blocked.requests, { authentication: 0, inventory: 1 });
   assert.equal(blocked.state, 'unknown');
   assert.equal(blocked.reason, 'credential_echo_blocked');
-  assert.equal(blocked.product, null);
+  assert.equal(blocked.inventory, null);
   assertNoSecrets(blocked);
 });
 
@@ -330,13 +326,13 @@ test('very long whitelisted supplier fields are bounded below the MCP output cei
   assert.ok(Buffer.byteLength(JSON.stringify(report), 'utf8') < 256 * 1024);
 });
 
-test('a later failed read makes current connection unknown while preserving historical verification time', async () => {
+test('a repeated product read makes the current session unusable while preserving historical verification time', async () => {
   let calls = 0;
   const c = client(async () => {
     calls++;
     if (calls === 1) return authResponse();
     if (calls === 2) return productResponse();
-    return new Response('', { status: 429 });
+    throw new Error('repeated read must not reach network');
   });
   assert.equal((await c.readProduct(LOOKUP)).state, 'product_identity_verified');
   const before = c.status();
@@ -344,11 +340,12 @@ test('a later failed read makes current connection unknown while preserving hist
   assert.equal(before.lastProductReadState, 'verified');
   const failed = await c.readProduct(LOOKUP);
   assert.equal(failed.state, 'unknown');
-  assert.equal(failed.reason, 'throttled');
-  assert.deepEqual(failed.requests, { authentication: 0, product: 1 });
+  assert.equal(failed.reason, 'product_request_budget_exhausted');
+  assert.deepEqual(failed.requests, { authentication: 0, product: 0 });
   const after = c.status();
   assert.equal(after.connection, 'unknown_until_product_read');
-  assert.equal(after.lastProductReadState, 'unknown');
+  assert.equal(after.lastProductReadState, 'verified');
+  assert.equal(after.requestSequenceValid, false);
   assert.ok(after.lastProductReadAt);
   assert.equal(after.lastVerifiedReadAt, before.lastVerifiedReadAt);
 });
@@ -492,20 +489,20 @@ test('inventory accepts only strict success true and numeric code 200, with no r
   });
 });
 
-test('inventory PID input, variants, country rows and total report bytes are bounded', async () => {
+test('inventory PID input, country rows and total report bytes are bounded after exact VID binding', async () => {
   let calls = 0;
   const invalid = await client(async () => { calls++; throw new Error('must not run'); })
     .readInventory({ productSku: 'CJSN1392391' });
   assert.equal(calls, 0);
   assert.equal(invalid.reason, 'invalid_pid_lookup');
 
-  const variants = Array.from({ length: 60 }, (_, variantIndex) => ({
-    vid: String(8000000000000000000n + BigInt(variantIndex)),
-    inventory: Array.from({ length: 30 }, (_, countryIndex) => ({
+  const variants = [{
+    vid: '9876543210123456789',
+    inventory: Array.from({ length: 500 }, (_, countryIndex) => ({
       countryCode: countryIndex % 2 ? 'CN' : 'DE', totalInventory: countryIndex,
       cjInventory: countryIndex, factoryInventory: countryIndex, verifiedWarehouse: 2
     }))
-  }));
+  }];
   calls = 0;
   const c = client(async () => ++calls === 1 ? authResponse()
     : calls === 2 ? productResponse() : inventoryResponse(variants));
@@ -513,19 +510,18 @@ test('inventory PID input, variants, country rows and total report bytes are bou
   const report = await c.readInventory(LOOKUP);
   assert.equal(calls, 3);
   assert.equal(report.state, 'inventory_returned');
-  assert.equal(report.inventory.variants.reported, 60);
-  assert.equal(report.inventory.variants.returned, 50);
+  assert.equal(report.inventory.variants.reported, 1);
+  assert.equal(report.inventory.variants.returned, 1);
   assert.equal(report.inventory.variants.partial, true);
   assert.ok(report.inventory.variants.countryRowsReturned <= CJ_READ_LIMITS.MAX_INVENTORY_COUNTRY_ROWS);
   assert.ok(report.inventory.variants.records.every(record => record.countries.returned
     <= CJ_READ_LIMITS.MAX_COUNTRIES_PER_VARIANT));
   assert.ok(Buffer.byteLength(JSON.stringify(report), 'utf8') <= CJ_READ_LIMITS.MAX_INVENTORY_REPORT_BYTES);
 
-  const duplicateAfterLimit = Array.from({ length: 51 }, (_, index) => ({
-    vid: index === 50 ? '8000000000000000000' : String(8000000000000000000n + BigInt(index)),
-    inventory: [{ countryCode: 'CN', totalInventory: index, cjInventory: 0,
-      factoryInventory: index, verifiedWarehouse: 1 }]
-  }));
+  const duplicateAfterLimit = [
+    { vid: '9876543210123456789', inventory: [] },
+    { vid: '9876543210123456789', inventory: [] }
+  ];
   calls = 0;
   const duplicateClient = client(async () => ++calls === 1 ? authResponse()
     : calls === 2 ? productResponse() : inventoryResponse(duplicateAfterLimit));
@@ -535,6 +531,59 @@ test('inventory PID input, variants, country rows and total report bytes are bou
   assert.equal(duplicateReport.state, 'unknown');
   assert.equal(duplicateReport.reason, 'malformed_inventory_data');
   assert.equal(duplicateReport.inventory, null);
+});
+
+test('inventory rejects missing, foreign and additional supplier VIDs after a verified product read', async t => {
+  for (const [name, rows] of [
+    ['missing', []],
+    ['foreign', [{ vid: '9876543210123456799', inventory: [] }]],
+    ['additional', [
+      { vid: '9876543210123456789', inventory: [] },
+      { vid: '9876543210123456799', inventory: [] }
+    ]]
+  ]) await t.test(name, async () => {
+    let calls = 0;
+    const c = client(async () => ++calls === 1 ? authResponse()
+      : calls === 2 ? productResponse() : inventoryResponse(rows));
+    assert.equal((await c.readProduct(LOOKUP)).state, 'product_identity_verified');
+    const report = await c.readInventory(LOOKUP);
+    assert.equal(calls, 3);
+    assert.equal(report.state, 'unknown');
+    assert.equal(report.reason, 'inventory_variant_set_mismatch');
+    assert.equal(report.inventory, null);
+  });
+});
+
+test('numeric and UUID CJ PIDs use the same exact identity contract', async () => {
+  const pid = '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7';
+  const lookup = { pid };
+  let calls = 0;
+  const c = client(async () => ++calls === 1 ? authResponse()
+    : calls === 2 ? productResponse({ pid, variants: [{
+      vid: '9876543210123456789', pid, variantSku: 'CJ-VARIANT',
+      variantKey: 'Dark, EU', variantImage: 'https://cf.cjdropshipping.com/variant.jpg'
+    }] }) : inventoryResponse([{ vid: '9876543210123456789', inventory: [] }]));
+  const product = await c.readProduct(lookup);
+  const inventory = await c.readInventory(lookup);
+  assert.equal(product.state, 'product_identity_verified');
+  assert.equal(product.product.product.pid, pid);
+  assert.equal(inventory.state, 'inventory_returned');
+  assert.equal(inventory.inventory.pid, pid);
+  assert.equal(calls, 3);
+});
+
+test('a second inventory read consumes no network and cannot retry the session', async () => {
+  let calls = 0;
+  const c = client(async () => ++calls === 1 ? authResponse()
+    : calls === 2 ? productResponse()
+      : inventoryResponse([{ vid: '9876543210123456789', inventory: [] }]));
+  assert.equal((await c.readProduct(LOOKUP)).state, 'product_identity_verified');
+  assert.equal((await c.readInventory(LOOKUP)).state, 'inventory_returned');
+  const repeated = await c.readInventory(LOOKUP);
+  assert.equal(calls, 3);
+  assert.equal(repeated.state, 'unknown');
+  assert.equal(repeated.reason, 'inventory_request_budget_exhausted');
+  assert.deepEqual(repeated.requests, { authentication: 0, inventory: 0 });
 });
 
 test('inventory points fields are independently numbers or unknown and countries are never added', async () => {
