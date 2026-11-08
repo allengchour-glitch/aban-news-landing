@@ -905,7 +905,7 @@
   }
 
   // Links kommen aus den Daten und sind Fremdtext: nur https und nur bekannte Hosts
-  var LINK_HOSTS = { 'app.metricool.com':'metricool', 'claude.ai':'claude', 'admin.shopify.com':'shopify' };
+  var LINK_HOSTS = { 'app.metricool.com':'metricool', 'claude.ai':'claude', 'admin.shopify.com':'shopify', 'judge.me':'judgeme' };
   function sichererLink(u) {
     try {
       var x = new URL(String(u));
@@ -1020,7 +1020,7 @@
     if (aktion) {
       try {
         var u = new URL(String(r.aktion_url));
-        var erlaubt = { 'app.metricool.com':true, 'claude.ai': true, 'admin.shopify.com': true, 'search.google.com': true, 'www.bing.com': true };
+        var erlaubt = { 'app.metricool.com':true, 'claude.ai': true, 'admin.shopify.com': true, 'search.google.com': true, 'www.bing.com': true, 'judge.me': true };
         if (u.protocol === 'https:' && !u.username && !u.password && !u.port && erlaubt[u.hostname]) {
           aktion.href = u.href; aktion.textContent = (r.aktion_text || 'Aufgabe öffnen'); aktion.hidden = false;
         }
