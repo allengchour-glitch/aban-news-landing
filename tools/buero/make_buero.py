@@ -368,6 +368,8 @@ def werkstatt_einlesen(pfad, rows):
         if not row["id"].startswith("dev_"):
             continue
         key = row["id"][4:]
+        if key == "bauen":
+            row["projekte"] = report.get("projekte", [])
         wert = stationen[key]
         row.update({"gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 24,
                     "ereignis_iso": gem, "ereignis": "Werkstatt " + zeit(gem), "quelle": "werkstatt.py: status.json (lokaler Durchlauf)"})

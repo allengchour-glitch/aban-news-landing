@@ -746,6 +746,44 @@
         }
       } catch (e) { /* Ohne gültigen Arbeitslink kein Aktionsknopf. */ }
     }
+    if (r.id === 'dev_bauen' && Array.isArray(r.projekte)) {
+      var portfolio = document.createElement('section');
+      portfolio.setAttribute('aria-label', 'Automationsprojekte');
+      r.projekte.forEach(function (p) {
+        if (!Array.isArray(p.schritte) || !p.schritte.length) return;
+        var card = document.createElement('article');
+        card.style.cssText = 'padding:14px;margin-top:12px;border:1px solid var(--color-border-line);border-radius:10px';
+        var title = document.createElement('strong');
+        title.textContent = p.buero + ' · ' + p.name;
+        card.appendChild(title);
+        var done = p.schritte.filter(function (s) { return s.fertig === true; }).length;
+        var percent = Math.round(100 * done / p.schritte.length);
+        var caption = document.createElement('p');
+        caption.textContent = percent + ' % · ' + done + '/' + p.schritte.length + ' Meilensteine belegt';
+        card.appendChild(caption);
+        var bar = document.createElement('progress');
+        bar.max = p.schritte.length; bar.value = done;
+        bar.setAttribute('aria-label', p.name + ': ' + percent + ' Prozent');
+        bar.style.width = '100%'; card.appendChild(bar);
+        var list = document.createElement('ul');
+        p.schritte.forEach(function (step) {
+          var item = document.createElement('li');
+          item.textContent = (step.fertig === true ? 'Erledigt: ' : 'Offen: ') + step.name;
+          list.appendChild(item);
+        }); card.appendChild(list);
+        var next = document.createElement('p'); next.textContent = 'Nächster Schritt: ' + p.naechstes; card.appendChild(next);
+        var pay = document.createElement('p'); pay.textContent = p.zahlung; card.appendChild(pay);
+        [['Projekt öffnen', p.link], ['Zahlungsanbindung öffnen', p.zahlung_link]].forEach(function (entry) {
+          try {
+            var url = new URL(entry[1]);
+            if (url.origin !== 'https://github.com' || url.username || url.password || !url.pathname.startsWith('/allengchour-glitch/aban-news-landing/')) return;
+            var link = document.createElement('a'); link.href = url.href; link.textContent = entry[0];
+            link.target = '_blank'; link.rel = 'noopener noreferrer'; link.style.marginRight = '16px'; card.appendChild(link);
+          } catch (e) {}
+        }); portfolio.appendChild(card);
+      });
+      li.appendChild(portfolio);
+    }
     return li;
   }
 

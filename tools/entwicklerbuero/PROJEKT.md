@@ -8,7 +8,7 @@ Ziel ist, kleine wiederverwendbare Automationen als betreutes Einrichtungspaket 
 
 Lieferumfang des möglichen Pilots: ein Betrieb, eine vereinbarte Eingabequelle, angepasste Kategorien und Vorlagen, begleitete Prüfung und Übergabe. Aktuell vorhanden sind eine lokale CSV-Demo und ein EML-Beantworter im Entwurfsmodus. Eine produktive Postfach- oder CRM-Anbindung muss für den jeweiligen Betrieb erst gebaut und getestet werden.
 
-Preis und Supportumfang sind offen. Der Besitzer entscheidet den tatsächlichen Verkaufspreis. Kein Checkout und kein Zahlungsanbieter sind eingerichtet. Es gibt keine bestätigten Kunden oder Einnahmen für dieses neue Projekt.
+Preis und Supportumfang sind offen. Der Besitzer entscheidet den tatsächlichen Verkaufspreis. Für diese Automationen ist noch kein eigener Checkout eingerichtet. Im Gesamtprojekt besteht bereits eine Stripe-Anbindung mit geschützter Download-Auslieferung; Details stehen in PROJEKTE.md. Es gibt keine bestätigten Kunden oder Einnahmen für dieses neue Projekt.
 
 ## Nächster wirtschaftlicher Nachweis
 
@@ -37,3 +37,7 @@ Der Auftrag vom 07.11. konkretisiert das erste Produkt als E-Mail-Beantworter. V
 ## Kommentar-Beantworter als zweiter Einsatzfall
 
 Version 0.3.0 ergänzt Social-Media-Kommentare: CSV einlesen, Fragen gegen freigegebene FAQ prüfen, Antwortentwürfe und manuelle Prüffälle ausgeben. Die Werkstatt prüft und paketiert auch diesen Modus. Die Demo enthält nur erfundene Kommentare. Echte Plattformanbindung, Freigabe der Firmenantworten und Veröffentlichung sind noch offen. Ein möglicher Pilot kann E-Mail- oder Kommentarentwürfe anbieten; ein konkreter Kundenbedarf ist weiterhin zu prüfen.
+
+## Projektbüros und Fortschritt
+
+Vier Projekte sind in `projekte.py` verbunden: E-Mail, Kommentare, Angebots-Nachfassen und Webseiten-Prüfung. Die tägliche Werkstatt exportiert überprüfte Meilensteine und Lieferpakete. Die Büroanzeige berechnet daraus den Prozentstand. Details und Grenzen stehen in `PROJEKTE.md`.
