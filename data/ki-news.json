@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-07T11:01:05Z",
+ "stand": "2026-11-08T11:15:18Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,12 +18,60 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Digitalgipfel 2026: Deutschland soll an die KI-Weltspitze – scheitert aber am Wesentlichen",
-   "u": "https://t3n.de/news/digitalgipfel-2026-ki-weltspitze-deutschland-kommentar-1771341/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-07T10:05:00Z",
-   "s": "Wieder ein Digitalgipfel, wiederholt große Ziele und Versprechen für ein souveränes Deutschland. KI-Weltspitze möchte man werden. Was es eher braucht, sind realisierbare Ziele, mehr Tempo und Verbindl…",
+   "t": "Sorgen um Weihnachtsgeschäft wegen teurer Elektronik",
+   "u": "https://www.heise.de/news/Sorgen-um-Weihnachtsgeschaeft-wegen-teurer-Elektronik-11516579.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-08T11:02:00Z",
+   "s": "Teure Speicherchips trüben das Festgeschäft: Weil gedrosselte Produktion auf weltweiten KI-Boom trifft, sind Preise für Laptops, Handys und Hardware hoch.",
    "sprache": "de"
+  },
+  {
+   "t": "Von Überbevölkerung zur KI: Die erstaunliche Prognose von 1960",
+   "u": "https://t3n.de/news/doomsday-formel-1960-prognose-ki-singularitaet-1771528/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-08T10:45:00Z",
+   "s": "Weltuntergang am 13. November 2026? Eine 1960 in Science veröffentlichte Formel, die für 2026 eine katastrophale Überbevölkerung vorhersagte, hat sich nicht besweiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Mathe-Professor kapituliert: Warum Hausaufgaben durch KI sinnlos sind",
+   "u": "https://t3n.de/news/ki-mathe-studium-zukunft-hausaufgaben-kapitulation-1769844/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-08T09:35:00Z",
+   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu stud…",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: iX-Workshop: Weniger Zeit, mehr Code – schneller programmieren mit Claude Code",
+   "u": "https://www.heise.de/news/iX-Workshop-Claude-Code-in-der-Praxis-effizienter-entwickeln-mit-KI-Agenten-11503304.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-08T09:00:00Z",
+   "s": "Erfahren Sie, wie Sie Ihre Entwicklungsaufgaben mit Claude Code autonom bearbeiten lassen und Ihre Workflows mit KI-Agenten spürbar beschleunigen können.",
+   "sprache": "de"
+  },
+  {
+   "t": "Degitalisierung: Agilität",
+   "u": "https://netzpolitik.org/2026/degitalisierung-agilitaet/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-08T07:09:23Z",
+   "s": "\"Hauptsache schnell\" ist das Motto aktueller KI-Entwicklung. – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Jorgen HendriksenDeutschland soll beim KI-Ausbau schneller werden, dafür braucht es an…",
+   "sprache": "de"
+  },
+  {
+   "t": "After the midterms, things are looking rocky for Elon Musk and data centers",
+   "u": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-07T22:07:22Z",
+   "s": "On Equity, we unpacked what the midterms mean for the tech industry.",
+   "sprache": "en"
+  },
+  {
+   "t": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
+   "u": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-07T21:17:08Z",
+   "s": "A memo circulated earlier this year reportedly claimed that China’s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
+   "sprache": "en"
   },
   {
    "t": "(g+) Surveillance Pricing: Wie weit dürfen Händler Preise personalisieren?",
@@ -34,52 +82,12 @@
    "sprache": "de"
   },
   {
-   "t": "Trotz offiziellem Aus: So wirst du Gemini auf deinem Smartphone wieder los – zumindest vorübergehend",
-   "u": "https://t3n.de/news/gemini-wieder-loswerden-google-1768131/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-07T09:00:00Z",
-   "s": "Einige Android-User:innen wollen den Google Assistant zurück haben. Da Google den Helfer aber Gemini ausgetauscht hatten, nehmen sie jetzt große Umwege in Kauf, um die alten Zeiten auf ihrem Smartphon…",
-   "sprache": "de"
-  },
-  {
-   "t": "Leipzig: Fahnder suchen mutmaßlichen Drohnen-Täter mit KI-Gesicht",
+   "t": "Flughafen Leipzig: BKA sucht mit KI-Bild nach mutmaßlichem Drohnenangreifer",
    "u": "https://www.golem.de/news/leipzig-fahnder-suchen-mutmasslichen-drohnen-taeter-mit-ki-gesicht-2611-214948.html",
    "q": "Golem",
    "d": "2026-11-07T08:26:02Z",
-   "s": "Nach dem Drohnenanschlag auf den Flughafen Leipzig suchen Generalbundesanwalt und BKA mit einem ungewöhnlichen Mittel nach einer unbekannten Person. (KI, Security)",
+   "s": "Die ukrainische Transportmaschine wurde mit einer Sprengstoffdrohne attackiert. Die Ermittler vermuten russische Sabotage. (KI, Security)",
    "sprache": "de"
-  },
-  {
-   "t": "Sichere Architektur für KI-Agenten im Backoffice",
-   "u": "https://www.heise.de/hintergrund/Sichere-Architektur-fuer-KI-Agenten-im-Backoffice-11514414.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-07T07:21:00Z",
-   "s": "KI-Agenten lassen sich nur sicher in Systeme einbinden, wenn die Architektur für eine Trennung von Daten und Handlungen sorgt.",
-   "sprache": "de"
-  },
-  {
-   "t": "Developer-Häppchen: JetBrains ohne eMudhra-Lücke, Ruby nativ in C, VS Code 1.145",
-   "u": "https://www.heise.de/news/Developer-Haeppchen-JetBrains-ohne-eMudhra-Luecke-Ruby-nativ-in-C-VS-Code-1-145-11512904.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-07T07:17:00Z",
-   "s": "Kleine, aber interessante Meldungshäppchen vom News-Buffet zu BoxLang AI, VS Code, Google DevFest, JetBrains, Apache Spark, Devart, Laravel und Spinel.",
-   "sprache": "de"
-  },
-  {
-   "t": "Crusoe sells troubled Wyoming data center project to Google",
-   "u": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-07T01:40:28Z",
-   "s": "The deal highlights the challenges of developing massive AI data centers.",
-   "sprache": "en"
-  },
-  {
-   "t": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
-   "u": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-06T22:53:46Z",
-   "s": "OpenAI has reportedly raised an additional $11 billion as part of a funding round that hasn't closed yet but is expected to in the coming weeks.",
-   "sprache": "en"
   },
   {
    "t": "ToyBlocks: A controlled world for robot learning and evaluation",
@@ -87,14 +95,6 @@
    "q": "Hugging Face",
    "d": "2026-11-06T14:00:48Z",
    "s": "",
-   "sprache": "en"
-  },
-  {
-   "t": "The Download: a humanoid cleans house and Samsung builds for the AI boom",
-   "u": "https://www.technologyreview.com/2026/11/06/1148154/the-download-humanoid-robot-cleaner-samsung-ai-chip-boom/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-06T13:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. I watched a humanoid robot clean my apartment. It felt like a …",
    "sprache": "en"
   }
  ]
