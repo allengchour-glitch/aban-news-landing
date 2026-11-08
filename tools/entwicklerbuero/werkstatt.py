@@ -8,6 +8,9 @@ from pathlib import Path
 import subprocess
 import sys
 import zipfile
+import projekte
+import automationen
+from datetime import date
 
 ROOT = Path(__file__).resolve().parent
 PRODUKT = ROOT / "anfragen_assistent"
@@ -32,6 +35,12 @@ def lauf(out):
     speichern()
     if test.returncode:
         return 1
+    extra = subprocess.run([sys.executable, "-B", "-m", "unittest", "test_automationen"], cwd=ROOT, capture_output=True, text=True, timeout=30)
+    (out / "automation-pruefung.txt").write_text(extra.stdout + extra.stderr, encoding="utf-8")
+    if extra.returncode:
+        status["stationen"]["pruefen"] = "fehlgeschlagen"
+        speichern()
+        return 1
     spec = importlib.util.spec_from_file_location("anfragen_assistent", PRODUKT / "assistent.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -52,6 +61,13 @@ def lauf(out):
     with zipfile.ZipFile(out / "anfragen-assistent.zip", "w", zipfile.ZIP_DEFLATED) as z:
         for name in DATEIEN:
             z.write(PRODUKT / name, arcname="anfragen-assistent/" + name)
+    (out / "angebote-demo.json").write_text(json.dumps(automationen.nachfassen([
+        {"id": "DEMO-1", "datum": "2026-11-01", "status": "offen"}], date(2026, 11, 8)), ensure_ascii=False), encoding="utf-8")
+    (out / "webseiten-demo.json").write_text(json.dumps(automationen.seite_pruefen('<title>Demobetrieb</title>'), ensure_ascii=False), encoding="utf-8")
+    with zipfile.ZipFile(out / "automationen.zip", "w", zipfile.ZIP_DEFLATED) as z:
+        for name in ("automationen.py", "test_automationen.py", "PROJEKTE.md"):
+            z.write(ROOT / name, arcname=name)
+    status["projekte"] = projekte.bericht(out, True)
     status["stationen"]["bauen"] = "bestanden"
     (out / "angebotsentwurf.txt").write_text((ROOT / "PROJEKT.md").read_text(encoding="utf-8"), encoding="utf-8")
     status["stationen"]["angebot"] = "entwurf"
