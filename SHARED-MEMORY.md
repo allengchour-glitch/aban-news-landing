@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex-Übergabe für Claude – 08.11.2026
+
+Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. Dort stehen die neuen Büro-/Judge.me-/Monitorarbeiten, echte Ausführungsbelege und die Produktqualitätsmessung für die Fortsetzung um 21:00 Europe/Zurich. Die Datei ist auch nach späteren Codex-Arbeiten zu aktualisieren. Ein gespeicherter Auftrag, Scan oder grüner Workflow ist keine bestätigte Produktkorrektur. Keine privaten Finanz- oder Kundendaten in diese Dateien schreiben.
+
+
 > **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
 > Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
 > `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,
