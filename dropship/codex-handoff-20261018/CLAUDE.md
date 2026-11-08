@@ -1,5 +1,13 @@
 # LuxeStyle: Arbeitsbeginn für Claude Code
 
+## Aktueller Stand – 08.11.2026, Revision 152: #1039 bei CJ bezahlt, Versand noch offen
+
+Zuerst `README.md`, `PROJEKTGEDAECHTNIS.md`, `ARBEITSSTAND.json` und den heutigen Block in `TAGESPROTOKOLL.md` frisch lesen. Shopify #1039 wurde kontrolliert genau einmal als `LX1039` / `SD2611081956340669600` bei CJ angelegt. Nach Inhabermeldung «bezahlt» bestätigt ein separater Trocken-/Leselauf weiterhin `count=1` und Status `UNSHIPPED`. Nicht erneut anlegen oder bezahlen. Shopify bleibt `PAID`/`UNFULFILLED`; erst einen echten, zur gleichen CJ-ID gehörenden Versand-/Trackingbeleg lesen, bevor Fulfillment oder Tracking erwogen wird. Keine Kundenmeldung. [Bericht](CJ-BESTELLUNG-1039-20261108-R152.md) · [Beleg](CJ-BESTELLUNG-1039-20261108-R152.json).
+
+## Aktueller Stand – 08.11.2026, Revision 151: Master nur mit neuen nativen Takes fortsetzen
+
+[Produktionsvertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.md) und [Gatevertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.json) sind massgebend. Shopify besitzt keine versteckte Premiumquelle; das alte Reel ist kein Ersatz. Kein Render oder Social-Push, bis genau eine heutige A–G-Ausführung, ein ungeschnittener Einheitenbeleg, vier native Hochkanttakes derselben physischen Einheit und ein hashgebundener Rechtegrant vollständig vorliegen.
+
 ## Aktueller Stand – 08.11.2026, Revision 129: Gemini Free Tier noch nicht gebunden
 
 PR2915 ist auf aktuellem Main und referenziert korrekt `secrets.GEMINI_API_KEY2`. Lauf42430952176 brach vor jedem API-Aufruf ab, weil das Secret im Job leer war. Keine Gemini-Antwort oder Kosten behaupten und nicht blind erneut starten. Erst Actions-Secret für dieses Repository freigeben sowie AI-Studio-Free-Tier ohne Billing bestätigen; Wert nie im Chat senden. [Bericht](GEMINI-FREE-TIER-ZUGANG-20261108-R129.md) · [Beleg](GEMINI-FREE-TIER-ZUGANG-20261108-R129.json).
