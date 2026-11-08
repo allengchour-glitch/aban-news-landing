@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 132,
-  "updatedAt": "2026-11-08T05:16:20+01:00",
+  "revision": 133,
+  "updatedAt": "2026-11-08T05:42:31+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3168,12 +3168,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r130_hypd_overlay_variants_live_bound_no_write",
+      "state": "r133_nine_csvs_deduplicated_three_product_corrections_live_google_reprocessing_unknown",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R130_HYPD_LIVE_MERCHANT_PARTIAL_READ",
-      "lastEvidence": "HYPD bestätigte Merchant5797470070. Summary5000/truncated und erste25 Disapproval-Zeilen mit next-page-token erlauben keine Katalogquote. Neun image_unwanted_overlays-Varianten aus vier Produkten wurden exakt an Shopify-Produkt-/Varianten-/Offer-IDs gebunden; Bildgründe sind Texte/Masse, Deep Space Gray sowie USA Stock/USPS. Alle vier Seiten HTTP200/kaufbar in enger Gegenprobe. Authentische textfreie Ersatzbilder und Rechte fehlen; kein Bild-, Feed- oder Merchantwrite.",
-      "nextAllowedStep": "Für genau die neun R130-Varianten authentische, rechtegeprüfte, text-/badge-/fremdlogofreie Ersatzbilder mit exakter Farbe/Ausführung/Menge prüfen. Erst einen Varianten-Diff zur Freigabe vorlegen; danach eng schreiben, öffentlich zurücklesen und dieselben Offer-IDs in HYPD erneut prüfen. Keine Pagination/Massenänderung ohne neuen Anlass.",
+      "belegArt": "R133_NINE_MERCHANT_CSV_DEDUP_THREE_SHOPIFY_PRODUCTS_16_ALTS_PUBLIC_READBACK",
+      "lastEvidence": "Vier neue Merchant-CSVs mit fünf vorherigen Dateien dedupliziert:252 IDs im Neuscope,15 Überschneidungen und5’662 eindeutige Item-IDs über neun Dateien; keine Katalogquote. Drei ACTIVE-Produkte nach Bild-/Varianten-/Overlap-Gegenprobe live korrigiert: Transfergurt15447901208961, Schirm-Aufsatz15448954896769 und Ventileinsatz-Werkzeug16606127161735. 3 productUpdate+3 fileUpdate,16 Alttexte,0 userErrors; drei neue Handles/301. Admin/Public/independent QA3/3 GO; Varianten, SKUs, CHF-Preise, Tags, Inventory und Medienbindungen erhalten. Sechs Product-page-unavailable-Fälle sind DRAFT und wurden nicht aktiviert; acht Live-animals-Fälle sind aktives Tierzubehör im FR-/Deutsch-Kontext und wurden nicht verfälscht. CSS ist Konto-/Programmthema. Google-Neuverarbeitung unbekannt; kein Merchant-/Feedwrite.",
+      "nextAllowedStep": "Nach Google-Neuverarbeitung genau die drei R133-Offers gezielt lesen und erst dann eine Richtlinienauflösung behaupten. Die sechs DRAFT-Angebote nicht aktivieren; Feedentfernung/Reprocessing prüfen. Die acht Tierzubehör-Fälle quellen-/localegebunden prüfen. CSS-Kapazität separat auf Konto-/Programmseite behandeln. Preis/Availability nur an der verantwortlichen Datenquelle nach exakter Source-/Rohfeldbindung bearbeiten; keine breite Pagination oder Massenmutation.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -3191,7 +3191,10 @@
         "R102: Google-Neuverarbeitung, aktive Merchant-Source-ID und tatsächlich eingereichter image_link der korrigierten Rollball-Variante sind unbekannt; Shopify-Readback ist kein Google-Status.",
         "R102: Neun weitere Overlay-IDs bleiben offen; für die Drei-Pink-Variante wurde kein sauberes Bild derselben Menge belegt, daher kein Ersatz durch ein Einproduktfoto.",
         "R102: CSS-Kapazitätsgrenze betrifft 10’628 IDs, ist aber Konto-/Programmstatus und weder Produktfehlerquote noch Auftrag für Produkt-/Feedwrites.",
-        "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung."
+        "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung.",
+        "R133: Google-Neuverarbeitung der drei korrigierten Angebote ist unbekannt; Shopify-Rücklesung ist kein Google-Freigabebeleg.",
+        "R133: CSS-Kapazität ist Konto-/Programmstatus; fr-Feed mit deutschen Inhalten sowie getrennte CH-Datenquelle bleiben quellenbezogen offen.",
+        "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -3383,6 +3386,16 @@
           "path": "dropship/codex-handoff-20261018/HYPD-LIVE-AUDIT-20261108-R130.json",
           "gitBlobSha": "7fb3857041064ffcd9856238eb79c46eae7b23e1",
           "readAt": "2026-11-08T01:54:56+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PRODUKTKORREKTUREN-20261108-R133.md",
+          "gitBlobSha": "2e6a1ceade70282fcbb7ca54f60874aa72dbf5b9",
+          "readAt": "2026-11-08T05:42:31+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PRODUKTKORREKTUREN-20261108-R133.json",
+          "gitBlobSha": "6b5edbdc2db89a6e2ee4efea0717fd8c917c58e6",
+          "readAt": "2026-11-08T05:42:31+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3620,6 +3633,19 @@
           "previousLastEvidenceSha256": "7f93ada6aac7d77f14904809753b56ca314ac91fdc6bc859f8b45ce51a1d240f",
           "previousLastEvidenceLength": 15918,
           "previousLastEvidenceRetainedInRevision": 129
+        },
+        {
+          "at": "2026-11-08T05:42:31+01:00",
+          "sourceRevision": 132,
+          "previous": {
+            "state": "r130_hypd_overlay_variants_live_bound_no_write",
+            "lastEvidenceDate": "2026-11-08",
+            "belegArt": "R130_HYPD_LIVE_MERCHANT_PARTIAL_READ",
+            "nextAllowedStep": "Für genau die neun R130-Varianten authentische, rechtegeprüfte, text-/badge-/fremdlogofreie Ersatzbilder mit exakter Farbe/Ausführung/Menge prüfen. Erst einen Varianten-Diff zur Freigabe vorlegen; danach eng schreiben, öffentlich zurücklesen und dieselben Offer-IDs in HYPD erneut prüfen. Keine Pagination/Massenänderung ohne neuen Anlass.",
+            "previousLastEvidenceSha256": "d23dfb16f81ce7e7263ecc1a43d4fd6481c0810746ff039d9b286853a9c12c71",
+            "previousLastEvidenceLength": 473
+          },
+          "previousLastEvidencePreserved": true
         }
       ],
       "resolvedBlockers": [
@@ -10310,6 +10336,17 @@
         "readAt": "2026-11-08T01:54:56+01:00"
       },
       "action": "R130: HYPD-Verbindungen live bestätigt und begrenzte read-only GSC-/Merchant-Prüfung dokumentiert. GSC-Finaldaten09.10.–05.11. mit Rizinusöl-SEO-Chance und indexierter deutscher FR-URL; Vorperiode leer=unbekannt. Merchant-Summary5000/truncated plus erste25 Disapprovals; neun Overlay-Varianten exakt gebunden, Ersatzbilder/Rechte offen. Claude-FR-Scope nicht dupliziert. Keine operativen Writes."
+    },
+    {
+      "revision": 133,
+      "at": "2026-11-08T05:42:31+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-PRODUKTKORREKTUREN-20261108-R133.json",
+        "gitBlobSha": "6b5edbdc2db89a6e2ee4efea0717fd8c917c58e6",
+        "readAt": "2026-11-08T05:42:31+01:00"
+      },
+      "action": "R133: Nine Merchant CSVs deduplicated to 5662 unique item IDs without treating contexts as products. Three image/variant-backed ACTIVE products corrected via three productUpdate and three fileUpdate calls, 16 alt texts, three redirected handles, exact admin/public/independent QA. Google reprocessing unknown; no Merchant/feed/CSS/social write."
     }
   ],
   "salesGoal": {
@@ -15138,5 +15175,81 @@
       "TAGESPROTOKOLL.md": "a8a178791ce81306cd40afaa89b5acaf03d2372d41f276ad3021a2160fb79c43"
     },
     "nextStep": "Handle and rock tags only as a separate taxonomy/redirect task; keep social blocked by rueckhol-0907. Then source-check foreign-language root pages and Firmen/Vereine/product candidates individually."
+  },
+  "merchantProductCorrectionsR133": {
+    "at": "2026-11-08T05:42:31+01:00",
+    "report": "dropship/codex-handoff-20261018/MERCHANT-PRODUKTKORREKTUREN-20261108-R133.md",
+    "evidence": "dropship/codex-handoff-20261018/MERCHANT-PRODUKTKORREKTUREN-20261108-R133.json",
+    "identity": "Shopify LuxeStyle/luxestyle.ch/CHF/Switzerland and Metricool6227837/Europe-Zurich with six expected channels matched.",
+    "csv": {
+      "files": 9,
+      "unionUniqueItemIds": 5662,
+      "newFiles": 4,
+      "newScopeUniqueItemIds": 252,
+      "overlapWithPriorFive": 15,
+      "newUniqueItemIds": 237,
+      "notCatalogCompletionMetric": true
+    },
+    "products": [
+      {
+        "id": "15447901208961",
+        "title": "Transfergurt mit vier Griffen",
+        "handle": "transfergurt-mit-vier-griffen-629400",
+        "price": "CHF15.90",
+        "variants": 1,
+        "mediaAltWrites": 5,
+        "socialBlock": "rueckhol-0907"
+      },
+      {
+        "id": "15448954896769",
+        "title": "Schirm-Aufsatz für Reithelm",
+        "handle": "schirm-aufsatz-fur-reithelm-600000",
+        "price": "CHF34.90",
+        "variants": 2,
+        "mediaAltWrites": 6,
+        "socialBlock": "rueckhol-0907"
+      },
+      {
+        "id": "16606127161735",
+        "title": "Ventileinsatz-Werkzeug für Tubeless-Reifen",
+        "handle": "ventileinsatz-werkzeug-tubeless-reifen-832000",
+        "price": "CHF21.90",
+        "variants": 1,
+        "mediaAltWrites": 5,
+        "priorR63AltWriteAcknowledged": true
+      }
+    ],
+    "mutations": {
+      "successfulCalls": 6,
+      "productUpdateCalls": 3,
+      "fileUpdateCalls": 3,
+      "successfulInputTargets": 19,
+      "allUserErrorsEmpty": true,
+      "schemaRejectedNoWriteCalls": 1,
+      "unclearWrites": 0
+    },
+    "qa": "3/3 Admin and public GO; new URLs HTTP200/self-canonical/H1/meta/add-to-cart; old handles HTTP301; variants/SKUs/prices/tags/inventory/media preserved",
+    "merchantReprocessing": "unknown",
+    "draftProductsActivated": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "themeWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "customerMessages": 0,
+    "orderReads": 0,
+    "orderWrites": 0,
+    "renders": 0,
+    "publications": 0,
+    "documentationPreWriteSha256": {
+      "README.md": "62011bfcb193ae3c04a0eab0aa93065504c66a5ef1a02a2afc9f98acd5f6c8ee",
+      "PROJEKTGEDAECHTNIS.md": "61b7b333ff6fe2ecb622a0fddc2995b7598516460abdb686091db9bbaa57e5a8",
+      "ARBEITSSTAND.json": "58bbd54e12c50476bdbf4dd386d510e5d2e15798cd8a728747f9e768bd627c7b",
+      "TAGESPROTOKOLL.md": "a2bc0eb37a69daf5ee8b85ee4baebde0c7f9752c20368adef21953d302e61577"
+    },
+    "nextStep": "Wait for Google reprocessing; then exact-offer reads. Fix locale/source and CSS separately without content distortion or DRAFT activation."
   }
 }

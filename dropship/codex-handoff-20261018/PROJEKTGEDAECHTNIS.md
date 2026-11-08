@@ -1075,3 +1075,11 @@ PR2916 erweitert gestapelt auf PR2912 die temporäre FR-Noindex-Eindämmung;44/4
 - Handle und Rock-Tags bleiben separate Taxonomie-/Redirect-Aufgabe; `rueckhol-0907` blockiert Social. Kein Handle-/Tag-/Socialwrite.
 - Exakte Zählung:6 erfolgreiche Mutationscalls,10 Inputziele,5 logische Ziele; keine unklaren Writes. Firecrawl begrenzt8 Produkte/12 Pages/1 Collection, alle HTTP200,2 Credits. Fremdsprachige Root-Pages mit `html lang=de` und Firmen-/Produktkandidaten offen. Keine Kennzahl-/Flow-/Bestell-/Kauf-Watch-Wiederholung und keine anderen externen Writes.
 - Neue Belege: [R132-Bericht](KATEGORIEN-PRODUKT-LIVE-20261108-R132.md) und [R132-JSON](KATEGORIEN-PRODUKT-LIVE-20261108-R132.json).
+
+# R133 – Merchant-CSV-Diagnose und drei Produktkorrekturen, 08.11.2026
+
+- Vier neue Merchant-Exporte wurden mit fünf vorherigen Dateien per Item-ID dedupliziert: neue Union252, davon15 Überschneidungen; neun Dateien zusammen5’662 eindeutige Item-IDs. Das ist kein Katalog-Fortschrittsnenner. Sechs nicht erreichbare Produkte sind DRAFT und wurden nicht aktiviert; acht «Live animals»-Treffer sind aktives Tierzubehör im fehlerverdächtigen FR-/Deutsch-Kontext und wurden nicht umgetextet. CSS-Kapazität bleibt ein Konto-/Programmthema.
+- Produkte15447901208961,15448954896769 und16606127161735 wurden nach Bild-, Varianten-, Live- und Claude-Overlap-Gegenprobe eng korrigiert: neutraler Titel/Body/SEO, drei neue Handles mit301, beim Gurt der Produkttyp und insgesamt16 Alttexte. Drei `productUpdate` und drei `fileUpdate`, `userErrors=[]`; eine Schemaablehnung war ein No-Write.
+- Admin und unabhängige Public-QA bestätigen3/3 HTTP200, Self-Canonical, H1/Meta/Add-to-cart und3/3 alte Handles301. Varianten/IDs/SKUs, CHF-Preise, ACTIVE-Status, Tags, untracked/CONTINUE, Mengen0 sowie Medien-IDs/-URLs/READY blieben erhalten. `rueckhol-0907` blockiert Gurt und Reithelm weiterhin für Social.
+- Google-Neuverarbeitung und Richtlinienauflösung bleiben unbekannt. Keine Feed-, CSS-, Merchant-, Theme-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell-, Render- oder Publikationsänderung.
+- Neue Belege: [R133-Bericht](MERCHANT-PRODUKTKORREKTUREN-20261108-R133.md) und [R133-JSON](MERCHANT-PRODUKTKORREKTUREN-20261108-R133.json).

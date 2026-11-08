@@ -1377,3 +1377,14 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R132-Bericht, JSON und Projektgedächtnis fortgeschrieben |6 erfolgreiche Mutationscalls,10 Inputziele,5 logische Ziele,0 unklare Writes. Keine weiteren Theme-/Feed-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Render-/Publikationswrites |
 
 [LUXESTYLE_R132_20261108] [Kategorien-/Produkt-Livebericht](KATEGORIEN-PRODUKT-LIVE-20261108-R132.md) · [Maschinenbeleg](KATEGORIEN-PRODUKT-LIVE-20261108-R132.json). Vier Kategorien und ein falsch als Rock bezeichnetes Damenkleid eng korrigiert; Taxonomie/Redirect und weitere Auditkandidaten offen.
+
+### R133
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant CSV | Vier neue Exporte mit fünf früheren Dateien per Item-ID dedupliziert und Ziel-/Land-Wiederholungen getrennt | Neue Union252 IDs,15 Überschneidungen;9 Dateien/5’662 IDs. Keine Katalogquote. Sechs DRAFT-URLs nicht aktiviert, acht Tierzubehör-Fehlklassifizierungs-Kandidaten nicht umgetextet, CSS-Kapazität nicht als Produktfehler behandelt |
+| Shopify Produkte | Transfergurt15447901208961, Reithelm-Schirm15448954896769 und Ventileinsatz-Werkzeug16606127161735 nach Live-/Bild-/Overlap-Gegenprobe mit3 `productUpdate` und3 `fileUpdate` korrigiert |6 erfolgreiche Calls/19 Inputs/3 Produkte,0 `userErrors`. Titel/Body/SEO, drei Handles+301, Gurt-Produkttyp und16 Alttexte korrigiert; Varianten/SKUs/CHF-Preise/Status/Tags/Inventory/Medien erhalten |
+| Live-QA | Admin- und öffentliche Rücklesung der drei Produkte und alten Handles |3/3 HTTP200/self-canonical/H1/Meta/Add-to-cart;3/3 alte Handles301. Google-Neuverarbeitung unbekannt |
+| Grenzen / Dokumentation | R133-Bericht, JSON und Projektgedächtnis fortgeschrieben; Tageskennzahlen/Flows/Bestellungen nicht erneut gelesen | Kein Feed-/CSS-/Merchant-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Render-/Publikationswrite |
+
+[LUXESTYLE_R133_20261108] [Merchant-/Produkt-Livebericht](MERCHANT-PRODUKTKORREKTUREN-20261108-R133.md) · [Maschinenbeleg](MERCHANT-PRODUKTKORREKTUREN-20261108-R133.json).

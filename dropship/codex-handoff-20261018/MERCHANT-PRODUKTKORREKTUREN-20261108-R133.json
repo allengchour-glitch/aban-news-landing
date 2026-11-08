@@ -1,0 +1,229 @@
+{
+  "revision": 133,
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "shopIdentity": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "matched": true
+  },
+  "csvScope": {
+    "allFiles": 9,
+    "allUniqueItemIds": 5662,
+    "newFiles": 4,
+    "newRows": 761,
+    "newUniqueItemIds": 252,
+    "overlapWithPriorFive": 15,
+    "newToNineFileUnion": 237,
+    "files": [
+      {
+        "name": "product_issues_2026-11-07_20-28-59.csv",
+        "sha256": "2e0cab881635db632ae3ed8dca9bf9b19c5bbbf6b82236e4e7fc58b9edf07720",
+        "rows": 669,
+        "uniqueItemIds": 230,
+        "summary": "personal hardships 639 rows/230 IDs; CSS capacity 30 rows/15 IDs, subset"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-27-53.csv",
+        "sha256": "7dd1dbc47dd9cf41c7347eb9f3a3ab392a9a4ad6c41ac701d6124abedf34aa09",
+        "rows": 32,
+        "uniqueItemIds": 8,
+        "summary": "alcoholic beverages 16 and personalized legal restrictions 16; same eight IDs"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-28-16.csv",
+        "sha256": "d88fdd67eff9a9d92d24d4c709f0f4d599f9fb50eac1279cb147f96baccd33da",
+        "rows": 24,
+        "uniqueItemIds": 8,
+        "summary": "sale of live animals; eight active pet-accessory offers across three destinations"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-28-41.csv",
+        "sha256": "cbfc5c464694c2d5ae729715a308b5f280b215e6d2a72eaeb8f2d07e33d6bd4b",
+        "rows": 36,
+        "uniqueItemIds": 6,
+        "summary": "product page unavailable; all six current Shopify products DRAFT with onlineStoreUrl null"
+      }
+    ],
+    "notCatalogCompletionMetric": true,
+    "priorFiles": [
+      {
+        "name": "product_issues_2026-11-07_20-23-29.csv",
+        "sha256": "8e9ed0d2f3780e7dabe428929d10c4524c9e86f1750fed6d52b002d4a93a3e92",
+        "rows": 119,
+        "uniqueItemIds": 20,
+        "summary": "Guns and Parts"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-23-16.csv",
+        "sha256": "00f2efa84a119cd9b81c8eb56bb158f94e2af88bdc897a829e9b9aa2eaafe53e",
+        "rows": 114,
+        "uniqueItemIds": 43,
+        "summary": "Image too small"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-22-35.csv",
+        "sha256": "46f3fac934c0147dd2f74c6d0257dee4437f825aa5c40f624bedc6f4fa8e2384",
+        "rows": 388,
+        "uniqueItemIds": 185,
+        "summary": "availability 370 rows/185 IDs; price 16/8; tobacco 2/1"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-22-12.csv",
+        "sha256": "0ec267cab0c9d4423309a1a2fee38a3090b79ad1166f5bcc9859454c92099dc1",
+        "rows": 2613,
+        "uniqueItemIds": 1291,
+        "summary": "price 2595 rows/1291 IDs; availability 16/8; pending 2/1"
+      },
+      {
+        "name": "product_issues_2026-11-07_20-21-38.csv",
+        "sha256": "66ce0b5e4230ab36915b3b141aacd1a4919eee392bf2627ac35c87e857f0fd73",
+        "rows": 7930,
+        "uniqueItemIds": 3894,
+        "summary": "CSS 7876 rows/3894 IDs plus smaller policy/overlay groups"
+      }
+    ]
+  },
+  "shopifyCorrections": {
+    "successfulProductUpdateCalls": 3,
+    "successfulFileUpdateCalls": 3,
+    "successfulMutationCalls": 6,
+    "successfulInputTargets": 19,
+    "logicalProducts": 3,
+    "preDispatchValidationFailureNoWrite": 1,
+    "userErrors": 0,
+    "products": [
+      {
+        "id": "gid://shopify/Product/15447901208961",
+        "title": "Transfergurt mit vier Griffen",
+        "handle": "transfergurt-mit-vier-griffen-629400",
+        "productType": "Alltagshilfen",
+        "variantIds": [
+          "gid://shopify/ProductVariant/55873495761281"
+        ],
+        "priceChf": [
+          "15.90"
+        ],
+        "mediaAltTargets": 5,
+        "socialBlockedByRueckhol": true
+      },
+      {
+        "id": "gid://shopify/Product/15448954896769",
+        "title": "Schirm-Aufsatz für Reithelm",
+        "handle": "schirm-aufsatz-fur-reithelm-600000",
+        "productType": "Sport & Outdoor",
+        "variantIds": [
+          "gid://shopify/ProductVariant/56065573421441",
+          "gid://shopify/ProductVariant/56065573454209"
+        ],
+        "priceChf": [
+          "34.90",
+          "34.90"
+        ],
+        "mediaAltTargets": 6,
+        "socialBlockedByRueckhol": true
+      },
+      {
+        "id": "gid://shopify/Product/16606127161735",
+        "title": "Ventileinsatz-Werkzeug für Tubeless-Reifen",
+        "handle": "ventileinsatz-werkzeug-tubeless-reifen-832000",
+        "productType": "Werkzeug & Heimwerken",
+        "variantIds": [
+          "gid://shopify/ProductVariant/67622324535687"
+        ],
+        "priceChf": [
+          "21.90"
+        ],
+        "mediaAltTargets": 5,
+        "r63PriorAltWriteAcknowledged": true
+      }
+    ],
+    "preserved": "status ACTIVE; tags; variant IDs/SKUs/prices; quantity0, tracked=false, CONTINUE; media IDs/URLs/READY",
+    "publicReadback": "3/3 HTTP200, self-canonical, expected H1/title/meta and add-to-cart; 3/3 old handles 301 to new handles",
+    "successfulProductInputs": 3,
+    "successfulFileInputs": 16
+  },
+  "merchant": {
+    "feedWrites": 0,
+    "cssWrites": 0,
+    "googleReprocessing": "unknown",
+    "policyResolutionConfirmed": false,
+    "draftProductsActivated": 0,
+    "petAccessoryTextsDistorted": 0,
+    "nextStep": "After reprocessing, query the same three offer IDs. For pet accessories and six DRAFT offers, inspect source/locale/removal state instead of changing truthful product copy."
+  },
+  "otherExternalWrites": 0,
+  "atZurich": "2026-11-08T05:37:24+01:00",
+  "metricoolIdentity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "facebook": "1049840534888592",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+    "matched": true,
+    "writes": 0
+  },
+  "merchantCurrentPartial": {
+    "shopId": "5797470070",
+    "shopName": "LuxeStyle CH",
+    "accountIssues": [],
+    "scanned": 5000,
+    "truncated": true,
+    "eligible": 4761,
+    "eligibleLimited": 230,
+    "notEligibleOrDisapproved": 9,
+    "catalogTotalInferenceAllowed": false
+  },
+  "dataSourceDiagnosis": {
+    "shopifyThirdParty": {
+      "id": "accounts/5797470070/dataSources/10762220830",
+      "feedLabel": "CHF_99383214465"
+    },
+    "separateFreeListings": {
+      "id": "accounts/5797470070/dataSources/10678939025",
+      "feedLabel": "CH"
+    },
+    "countercheck": "Small current CH-source sample had price and availability; no catalog-wide conclusion.",
+    "locale": "Shopify-source fr records can carry German title/description; unresolved."
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "62011bfcb193ae3c04a0eab0aa93065504c66a5ef1a02a2afc9f98acd5f6c8ee",
+    "PROJEKTGEDAECHTNIS.md": "61b7b333ff6fe2ecb622a0fddc2995b7598516460abdb686091db9bbaa57e5a8",
+    "ARBEITSSTAND.json": "58bbd54e12c50476bdbf4dd386d510e5d2e15798cd8a728747f9e768bd627c7b",
+    "TAGESPROTOKOLL.md": "a2bc0eb37a69daf5ee8b85ee4baebde0c7f9752c20368adef21953d302e61577"
+  },
+  "boundedOpenFindings": {
+    "draftUnavailableProductIds": [
+      "15516154462593",
+      "15493853544833",
+      "15519834636673",
+      "15516156395905",
+      "15524696949121",
+      "15522193998209"
+    ],
+    "draftAction": "not activated",
+    "liveAnimalGroup": "eight ACTIVE pet accessories; strong false-positive candidates in fr/German locale mismatch; no copy distortion",
+    "alcoholGroup": "policy applicability not safely dismissible; no blanket change",
+    "medicalOverlays": "no exact clean rights-proven replacement",
+    "cssCapacity": "account/program limit, not product-content fix"
+  },
+  "otherWritesByType": {
+    "merchant": 0,
+    "feed": 0,
+    "theme": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "discount": 0,
+    "budget": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0,
+    "publications": 0
+  }
+}
