@@ -13,6 +13,7 @@
           v5            Container mit Klasse lspod-designer und das echte v5 aus pod/live (live wirksame Datei)
           v5,v6 / v5,legacy6   beides auf einer Seite
     kaputt=json|schema|leer   Karte absichtlich beschädigen (Rückfall prüfen)
+    pflicht=1            data-karte-pflicht=1: beschädigte/fehlende Karte blockiert Editor und Warenkorb statt Legacy-Rückfall
     maxpx=0             data-max-px am Container (0 = keine Obergrenze der Druckdatei)
     ohneMinDpi=1        Server lässt minDpi aus der Karte weg (Vorgabe 100 prüfen)
     hinweise=1          Server fügt vier zusätzliche Hinweise ein (unbekannte Einschränkung, unbekannte Info, eigener Kundentext, Einschränkung ohne Text)
@@ -77,6 +78,12 @@
     fs.appendChild(l);
   });
   document.getElementById('produkt-form').addEventListener('submit', function (e) { e.preventDefault(); window.__themeKnopf = (window.__themeKnopf || 0) + 1; });
+  if (q.get('mehrformen') === '1') {
+    var sticky = document.createElement('form'); sticky.id = 'sticky-produkt-form'; sticky.method = 'post'; sticky.action = '/cart/add';
+    var stickyButton = document.createElement('button'); stickyButton.id = 'sticky-kaufen'; stickyButton.textContent = 'Sticky-Kaufknopf';
+    sticky.appendChild(stickyButton); document.querySelector('.rechts').appendChild(sticky);
+    sticky.addEventListener('submit', function (e) { e.preventDefault(); window.__stickyThemeKnopf = (window.__stickyThemeKnopf || 0) + 1; });
+  }
 
   var beschr = document.getElementById('beschreibung');
   if (q.get('abstand')) document.getElementById('abstand').style.height = q.get('abstand') + 'px';
@@ -91,12 +98,14 @@
   function legacyContainer() {
     var d = document.createElement('div'); d.className = 'lspod-designer-v6'; d.id = 'ed-v6';
     d.setAttribute('data-img-front', bildA); d.setAttribute('data-img-back', bildB); d.setAttribute('data-variant', '1001'); d.setAttribute('data-ratio', '1.2');
+    if (q.get('pflicht') === '1') d.setAttribute('data-karte-pflicht', '1');
     beschr.appendChild(d); return d;
   }
   function karteContainer(text) {
     var d = document.createElement('div'); d.className = 'lspod-designer-v6'; d.id = 'ed-v6'; d.setAttribute('data-variant', '1001');
     // wie in einer echten Produktbeschreibung: die Attribute des alten Editors bleiben stehen, sie gelten nur für den Rückfall ohne Karte
     d.setAttribute('data-img-front', bildA); d.setAttribute('data-img-back', bildB); d.setAttribute('data-ratio', '1.2');
+    if (q.get('pflicht') === '1') d.setAttribute('data-karte-pflicht', '1');
     if (q.get('maxpx') !== null) d.setAttribute('data-max-px', q.get('maxpx'));
     if (q.get('maxbytes') !== null) d.setAttribute('data-max-bytes', q.get('maxbytes'));
     if (q.get('uptimeout') !== null) d.setAttribute('data-upload-timeout', q.get('uptimeout'));

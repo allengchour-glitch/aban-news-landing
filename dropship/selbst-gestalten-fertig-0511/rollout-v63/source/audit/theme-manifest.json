@@ -1,0 +1,143 @@
+{
+ "schema": 1,
+ "stand": "2026-11-08",
+ "shop": "luxestyle.ch",
+ "products": {
+  "allover-stoffbeutel-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15422950474113",
+   "reasons": [
+    "keine_ehrliche_produktvorschau:84:layout"
+   ]
+  },
+  "alltags-umhangetasche-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422854463873",
+   "card": "lspod-15422854463873.karte.json",
+   "preview": "lspod-15422854463873.vorschau.json",
+   "mapping": "lspod-15422854463873.shop-varianten.json"
+  },
+  "bio-jutebeutel-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422819991937",
+   "card": "lspod-15422819991937.karte.json",
+   "preview": "lspod-15422819991937.vorschau.json",
+   "mapping": "lspod-15422819991937.shop-varianten.json"
+  },
+  "buegeltransfer-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15423895830913",
+   "reasons": [
+    "keine_printful_varianten",
+    "manifest:NON_PRINTFUL_FULFILLMENT"
+   ]
+  },
+  "dad-cap-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15422849188225",
+   "reasons": [
+    "baufehler:Modell 206: nach den Filtern (ohneAufpreis/ohneEtiketten) bleibt keine Platzierung"
+   ]
+  },
+  "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15422940447105",
+   "reasons": [
+    "keine_ehrliche_produktvorschau:788:ungeeignet"
+   ]
+  },
+  "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15422939988353",
+   "reasons": [
+    "keine_ehrliche_produktvorschau:181:layout",
+    "keine_ehrliche_produktvorschau:601:layout"
+   ]
+  },
+  "keramik-tasse-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422823465345",
+   "card": "lspod-15422823465345.karte.json",
+   "preview": "lspod-15422823465345.vorschau.json",
+   "mapping": "lspod-15422823465345.shop-varianten.json"
+  },
+  "kiss-cut-aufkleber-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422942609793",
+   "card": "lspod-15422942609793.karte.json",
+   "preview": "lspod-15422942609793.vorschau.json",
+   "mapping": "lspod-15422942609793.shop-varianten.json"
+  },
+  "klassisches-unisex-t-shirt-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422857642369",
+   "card": "lspod-15422857642369.karte.json",
+   "preview": "lspod-15422857642369.vorschau.json",
+   "mapping": "lspod-15422857642369.shop-varianten.json"
+  },
+  "magnet-zum-selbstgestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15427217195393",
+   "reasons": [
+    "ungeeignet:656"
+   ]
+  },
+  "mauspad-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15451569160577",
+   "reasons": [
+    "keine_ehrliche_produktvorschau:518:layout"
+   ]
+  },
+  "samsung-huelle-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/16672778289543",
+   "reasons": [
+    "keine_ehrliche_produktvorschau:684:layout",
+    "keine_ehrliche_produktvorschau:686:layout"
+   ]
+  },
+  "shirt-zum-selbstgestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15427283157377",
+   "card": "lspod-15427283157377.karte.json",
+   "preview": "lspod-15427283157377.vorschau.json",
+   "mapping": "lspod-15427283157377.shop-varianten.json"
+  },
+  "spiral-notizbuch-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15451569324417",
+   "reasons": [
+    "druckflaeche_nicht_default:474:back:back"
+   ]
+  },
+  "tasse-zum-selbstgestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15427282633089",
+   "card": "lspod-15427282633089.karte.json",
+   "preview": "lspod-15427282633089.vorschau.json",
+   "mapping": "lspod-15427282633089.shop-varianten.json"
+  },
+  "transparente-iphone®-hulle-selbst-gestalten": {
+   "status": "blocked",
+   "productId": "gid://shopify/Product/15422946804097",
+   "reasons": [
+    "keine_ehrliche_produktvorschau:181:layout"
+   ]
+  },
+  "unisex-hoodie-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422815699329",
+   "card": "lspod-15422815699329.karte.json",
+   "preview": "lspod-15422815699329.vorschau.json",
+   "mapping": "lspod-15422815699329.shop-varianten.json"
+  },
+  "unisex-t-shirt-selbst-gestalten": {
+   "status": "ready",
+   "productId": "gid://shopify/Product/15422811439489",
+   "card": "lspod-15422811439489.karte.json",
+   "preview": "lspod-15422811439489.vorschau.json",
+   "mapping": "lspod-15422811439489.shop-varianten.json"
+  }
+ }
+}

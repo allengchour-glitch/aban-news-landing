@@ -53,6 +53,22 @@ async function textHinzufuegen(p, text) {
   await p.getByRole('button', { name: '➕ Text' }).click();
   await p.locator('.lsp6-text').fill(text);
 }
+async function reviewBestaetigenWennNoetig(p) {
+  if (!(await p.evaluate(() => window.LSPOD6 && window.LSPOD6.version === '6.3.0'))) return;
+  const dialog = p.locator('[data-lsp6-review="1"]');
+  await dialog.waitFor({ state: 'visible', timeout: 30000 });
+  await dialog.locator('.lsp6-review-accept').check();
+  await dialog.locator('.lsp6-review-confirm').click();
+}
+async function kaufAusloesen(s) {
+  await s.page.locator('.lsp6-cta').click();
+  await reviewBestaetigenWennNoetig(s.page);
+}
+async function kaufen(s, timeout = 20000) {
+  const navigation = s.page.waitForURL('**/cart', { timeout });
+  await kaufAusloesen(s);
+  await navigation;
+}
 async function produktAnsicht(p) {
   const vorher = Number(await p.locator('.lsp6-pv').getAttribute('data-gezeichnet')) || 0;
   await p.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
@@ -273,7 +289,7 @@ szenario('tasse', true, async (b, srv) => {
   pruefe('Tasse ohne gespiegeltes Foto: das Katalogfoto (ohne CORS) wird gar nicht erst angefordert', !t.bildAnfragen.some((u) => /\/products\//.test(u)), JSON.stringify(t.bildAnfragen));
   const ex = await t.page.evaluate(async () => { const b2 = await window.LSPOD6.editors[0].vorschauExport(); return b2 ? b2.size : null; });
   pruefe('Tasse ohne gespiegeltes Foto: kein JPEG (die Zeichenfläche wäre verschmutzt)', ex === null, String(ex));
-  await Promise.all([t.page.waitForURL('**/cart', { timeout: 20000 }), t.page.locator('.lsp6-cta').click()]);
+  await kaufen(t);
   pruefe('Tasse ohne gespiegeltes Foto: Kauf ohne _vorschau und ohne JPEG', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && !t.uploads.some((u) => u.typ === 'jpeg'));
   pruefe('Tasse ohne Spiegel: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
@@ -378,7 +394,7 @@ szenario('farbfest', true, async (b, srv) => {
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   // Kauf nur mit farbfester Platzierung: kein Vorschau-JPEG
   await p.locator('.lsp6-tab', { hasText: 'Vorderseite' }).click();
-  await Promise.all([p.waitForURL('**/cart', { timeout: 20000 }), p.locator('.lsp6-cta').click()]);
+  await kaufen(s);
   pruefe('Kauf der farbfesten Vorderseite: Druckdatei da, kein Vorschau-JPEG, keine Eigenschaft _vorschau', s.warenkorb.length === 1 && !('_vorschau' in s.warenkorb[0].properties) && !s.uploads.some((u) => u.typ === 'jpeg') && s.uploads.some((u) => u.typ === 'png'), JSON.stringify(s.uploads.map((u) => u.typ)));
   await s.schliessen();
   // Modell mit Liste «farbfest» (nur die Vorderseite) und Modell «keine» mit Grund «farbfest», von Hand gesetzt
@@ -440,7 +456,7 @@ szenario('fristen', true, async (b, srv) => {
   await sichtWarten(k.page);
   await textHinzufuegen(k.page, 'Hallo');
   const t1 = Date.now();
-  await Promise.all([k.page.waitForURL('**/cart', { timeout: 20000 }), k.page.locator('.lsp6-cta').click()]);
+  await kaufen(k);
   const dk = Date.now() - t1;
   pruefe('hängendes Vorlagenbild beim Kauf: Warenkorb nach rund 4 s (Frist der Vorschau), nicht erst nach dem Bildlimit von 10 s', dk >= 3500 && dk < 8000, String(dk));
   pruefe('hängendes Vorlagenbild beim Kauf: Druckdatei da, kein _vorschau, kein JPEG, keine Seitenfehler', k.warenkorb.length === 1 && !('_vorschau' in k.warenkorb[0].properties) && !k.uploads.some((x) => x.typ === 'jpeg') && k.uploads.some((x) => x.typ === 'png') && k.fehler.length === 0, k.fehler.join(' | '));
@@ -450,7 +466,7 @@ szenario('fristen', true, async (b, srv) => {
   await sichtWarten(u.page);
   await textHinzufuegen(u.page, 'Hallo');
   const t2 = Date.now();
-  await Promise.all([u.page.waitForURL('**/cart', { timeout: 20000 }), u.page.locator('.lsp6-cta').click()]);
+  await kaufen(u);
   const du = Date.now() - t2;
   pruefe('hängender JPEG-Upload beim Kauf: Warenkorb nach rund 4 s, nicht nach 90 s', du >= 3500 && du < 8000, String(du));
   pruefe('hängender JPEG-Upload beim Kauf: Druckdatei da, kein _vorschau, keine Seitenfehler', u.warenkorb.length === 1 && !('_vorschau' in u.warenkorb[0].properties) && /^https:/.test(u.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || '') && u.fehler.length === 0, u.fehler.join(' | '));
@@ -460,7 +476,7 @@ szenario('fristen', true, async (b, srv) => {
   await sichtWarten(n.page);
   await textHinzufuegen(n.page, 'Hallo');
   const t3 = Date.now();
-  await Promise.all([n.page.waitForURL('**/cart', { timeout: 20000 }), n.page.locator('.lsp6-cta').click()]);
+  await kaufen(n);
   const dn = Date.now() - t3;
   pruefe('ohne Hänger: Kauf mit Vorschau in unter 3 s, _vorschau da', dn < 3000 && /^https:/.test(n.warenkorb[0].properties._vorschau || ''), String(dn));
   await n.schliessen();
@@ -538,7 +554,7 @@ szenario('rueckfall', true, async (b, srv) => {
     pruefe(`${name}: Umschalter zeigt «Druckfläche»`, (await p.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-pressed')) === 'true');
     // weiter gestalten und kaufen geht
     await p.locator('.lsp6-text').fill('Weiter');
-    await Promise.all([p.waitForURL('**/cart', { timeout: 20000 }), p.locator('.lsp6-cta').click()]);
+    await kaufen(s);
     pruefe(`${name}: der Kauf geht trotzdem durch (Druckdatei, ohne _vorschau)`, s.warenkorb.length === 1 && !('_vorschau' in s.warenkorb[0].properties) && !s.uploads.some((u) => u.typ === 'jpeg'), JSON.stringify(Object.keys(s.warenkorb[0]?.properties || {})));
     pruefe(`${name}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
     await s.schliessen();
@@ -553,7 +569,7 @@ szenario('rueckfall', true, async (b, srv) => {
     await s.page.waitForTimeout(700);
     pruefe(`${name}: kein Umschalter, Editor läuft`, await s.page.locator('[data-feld="sicht"]').isHidden() && await s.page.locator('.lsp6-stagewrap').isVisible());
     await textHinzufuegen(s.page, 'Hallo');
-    await Promise.all([s.page.waitForURL('**/cart', { timeout: 20000 }), s.page.locator('.lsp6-cta').click()]);
+    await kaufen(s);
     pruefe(`${name}: Kauf ohne _vorschau, keine Seitenfehler`, s.warenkorb.length === 1 && !('_vorschau' in s.warenkorb[0].properties) && s.fehler.length === 0, s.fehler.join(' | '));
     await s.schliessen();
   }
@@ -622,7 +638,7 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   const s = await oeffnen(b, srv, TSHIRT);
   const p = s.page; await sichtWarten(p);
   await textHinzufuegen(p, 'Hallo');
-  await Promise.all([p.waitForURL('**/cart', { timeout: 20000 }), p.locator('.lsp6-cta').click()]);
+  await kaufen(s);
   const jpg = s.uploads.filter((u) => u.typ === 'jpeg'), png = s.uploads.filter((u) => u.typ === 'png');
   pruefe('ein PNG (Druckdatei) und ein JPEG (Vorschau) hochgeladen, die Druckdatei zuerst', png.length === 1 && jpg.length === 1 && s.uploads[0].typ === 'png', JSON.stringify(s.uploads.map((x) => x.typ)));
   pruefe('JPEG höchstens 80 KB', jpg[0].bytes <= 81920, String(jpg[0].bytes));
@@ -641,7 +657,7 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   const t = await oeffnen(b, srv, TSHIRT, { cloudinaryJpegFehler: true });
   await sichtWarten(t.page);
   await textHinzufuegen(t.page, 'Hallo');
-  await Promise.all([t.page.waitForURL('**/cart', { timeout: 20000 }), t.page.locator('.lsp6-cta').click()]);
+  await kaufen(t);
   pruefe('JPEG-Upload scheitert: Warenkorb trotzdem gefüllt, ohne _vorschau, Druckdatei da', t.warenkorb.length === 1 && !('_vorschau' in t.warenkorb[0].properties) && /^https:/.test(t.warenkorb[0].properties['\u{1F5BC}️ Druckdatei (front)'] || ''), JSON.stringify(Object.keys(t.warenkorb[0]?.properties || {})));
   pruefe('JPEG-Upload scheitert: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
   await t.schliessen();
@@ -649,7 +665,7 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   const f = await oeffnen(b, srv, TSHIRT, { warenkorbFehler: true });
   await sichtWarten(f.page);
   await textHinzufuegen(f.page, 'Hallo');
-  await f.page.locator('.lsp6-cta').click();
+  await kaufAusloesen(f);
   await f.page.waitForFunction(() => /Could not|Hinzufügen|nicht/i.test(document.querySelector('.lsp6-status').textContent) && !document.querySelector('.lsp6-cta').disabled, null, { timeout: 20000 });
   const formVorschau = () => f.page.evaluate(() => Array.from(document.querySelectorAll('#produkt-form input[data-lspod6="1"]')).map((i) => i.name));
   pruefe('Warenkorb lehnt ab: JPEG wurde hochgeladen, aber im Formular der Seite steht keine «_vorschau»', f.uploads.some((u) => u.typ === 'jpeg') && !(await formVorschau()).some((n2) => /_vorschau/.test(n2)), JSON.stringify(await formVorschau()));
@@ -663,14 +679,14 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   const m = await oeffnen(b, srv, TASSE);
   await sichtWarten(m.page);
   await textHinzufuegen(m.page, 'Tasse');
-  await Promise.all([m.page.waitForURL('**/cart', { timeout: 20000 }), m.page.locator('.lsp6-cta').click()]);
+  await kaufen(m);
   pruefe('Tasse: Vorschau-JPEG im Warenkorb', m.uploads.some((u) => u.typ === 'jpeg') && /^https:/.test(m.warenkorb[0].properties._vorschau || ''), JSON.stringify(Object.keys(m.warenkorb[0]?.properties || {})));
   await m.schliessen();
   // Stickerei: keine Vorschau, also auch kein JPEG
   const c = await oeffnen(b, srv, 'karte=206&vorschau=206');
   await sichtWarten(c.page);
   await textHinzufuegen(c.page, 'Cap');
-  await Promise.all([c.page.waitForURL('**/cart', { timeout: 20000 }), c.page.locator('.lsp6-cta').click()]);
+  await kaufen(c);
   pruefe('Stickerei: kein Vorschau-JPEG, keine Eigenschaft _vorschau', !c.uploads.some((u) => u.typ === 'jpeg') && !('_vorschau' in c.warenkorb[0].properties), JSON.stringify(c.uploads.map((u) => u.typ)));
   await c.schliessen();
   // zwei Platzierungen: die aktive gilt, sonst die erste benutzte, die sich zeigen lässt
@@ -679,7 +695,7 @@ szenario('warenkorb-vorschau', true, async (b, srv) => {
   await textHinzufuegen(z.page, 'Vorne');
   await z.page.locator('.lsp6-tab', { hasText: 'Rückseite' }).click();
   await textHinzufuegen(z.page, 'Hinten');
-  await Promise.all([z.page.waitForURL('**/cart', { timeout: 20000 }), z.page.locator('.lsp6-cta').click()]);
+  await kaufen(z);
   pruefe('zwei Platzierungen: genau ein Vorschau-JPEG, zwei Druckdateien', z.uploads.filter((u) => u.typ === 'jpeg').length === 1 && z.uploads.filter((u) => u.typ === 'png').length === 2, JSON.stringify(z.uploads.map((u) => u.typ)));
   await z.schliessen();
 });
