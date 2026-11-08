@@ -42,8 +42,13 @@ def bauen(ziel, design_paket=None, werkstatt_status=None):
             json.dump(report, f, ensure_ascii=False)
             f.flush()
             module.werkstatt_einlesen(f.name, rows)
+        expert_spec = importlib.util.spec_from_file_location('buero_experten', ROOT.parent/'entwicklerbuero/experten.py')
+        expert_mod = importlib.util.module_from_spec(expert_spec)
+        expert_spec.loader.exec_module(expert_mod)
+        team = expert_mod.planen(report)
         for row in rows:
             if row['id'] not in IDS: continue
+            if row['id'] == 'dev_bauen': row['expertenplan'] = team
             row['quelle'] = 'Automatischer Projektbau und Selbsttests'
             row['ereignis'] = 'Projektstand automatisch geprüft'
             row['naechster_schritt'] = {

@@ -226,12 +226,25 @@
     this.rootM = new Float32Array(16);
     this.glasses = !opt.boss && (hs >>> 11) % 3 === 0;
     this.phones = !opt.boss && (hs >>> 13) % 4 === 0 && !this.glasses;
+    this.standardPal=new Float32Array(this.pal);this.standardGlasses=this.glasses;this.standardPhones=this.phones;this.rolle=null;
     this.blink = 0;
     this.hx = seat.x; this.hz = seat.z;
     this.mugMesh = null;
     this.state = { s: 0 };
   }
   Figure.prototype.setPose = function (name) { this.pose = name; };
+  // Fachrollen ändern Kleidung und Hilfsmittel, nicht das gemessene Arbeitssignal.
+  Figure.prototype.setRole = function (name) {
+    var farben={entwicklung:'#739eae',analyse:'#91ad99',kommunikation:'#b698ba',logistik:'#c1a479',leitung:'#6d839c'};
+    name=Object.prototype.hasOwnProperty.call(farben,name)?name:'';
+    if(this.rolle===name)return;
+    this.rolle=name;this.pal.set(this.standardPal);
+    this.glasses=this.standardGlasses;this.phones=this.standardPhones;
+    if(!name||this.opt.boss)return;
+    var c=K.col(farben[name]);this.pal.set([c[0],c[1],c[2],0],0);
+    this.glasses=name==='analyse';this.phones=name==='kommunikation';
+  };
+
 
   /* Berechnet alle Matrizen für die Zeit t (Sekunden) in der aktuellen Haltung. */
   Figure.prototype.compute = function (t, still) {

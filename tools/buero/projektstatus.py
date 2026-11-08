@@ -55,11 +55,18 @@ def bauen(ziel):
         out = Path(tmp) / 'werkstatt'
         pfad = out / 'status.json'
         try:
-            lauf = subprocess.run([sys.executable, '-B', str(DEV / 'werkstatt.py'), str(out)],
-                                  capture_output=True, text=True, timeout=120)
-            report = bericht_lesen(pfad)
-            if lauf.returncode != 0 and report['stationen']['bauen'] == 'bestanden':
-                raise ValueError('Fehlgeschlagener Lauf bestätigt keinen abgeschlossenen Bau.')
+            qa = subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', str(DEV), '-p', 'test_*.py'],
+                                capture_output=True, text=True, timeout=60)
+            if qa.returncode:
+                report = {'version':1, 'projekt':'anfragen-assistent', 'dauerlauf':False,
+                          'gemessen':datetime.now(timezone.utc).isoformat(),
+                          'stationen':{'bauen':'offen','pruefen':'fehlgeschlagen','angebot':'offen'},'projekte':[]}
+            else:
+                lauf = subprocess.run([sys.executable, '-B', str(DEV / 'werkstatt.py'), str(out)],
+                                      capture_output=True, text=True, timeout=120)
+                report = bericht_lesen(pfad)
+                if lauf.returncode != 0 and report['stationen']['bauen'] == 'bestanden':
+                    raise ValueError('Fehlgeschlagener Lauf bestätigt keinen abgeschlossenen Bau.')
         except (OSError, ValueError, KeyError, TypeError, zipfile.BadZipFile, subprocess.TimeoutExpired):
             report = {'version': 1, 'projekt': 'anfragen-assistent', 'dauerlauf': False,
                       'gemessen': datetime.now(timezone.utc).isoformat(),

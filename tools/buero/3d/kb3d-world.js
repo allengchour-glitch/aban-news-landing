@@ -39,7 +39,7 @@
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
   var WINGS = { 'Social Media': [-3, 3], 'Entwicklerbüro': [3, 3], 'YouTube-Studio': [-3, 6] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-2';
+  K.DESIGN_VERSION = 'campus-einheitlich-3';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {

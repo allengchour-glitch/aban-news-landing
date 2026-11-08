@@ -41,6 +41,9 @@ class ProjektstatusTest(unittest.TestCase):
             self.assertTrue(all(r['ereignis'] != 'Nicht verbunden' and r['gemessen'] for r in dev.values()))
             self.assertTrue(all(r['ereignis'] == 'Nicht verbunden' for r in rows if r['id'] not in projektstatus.IDS))
             self.assertEqual([p['prozent'] for p in dev['dev_bauen']['projekte']], [57]*4)
+            team=dev['dev_bauen']['expertenplan']
+            self.assertEqual(next(r for r in team['rollen'] if r['id']=='community')['buero'],'Social Media')
+            self.assertEqual(next(j for j in team['auftraege'] if j['id']=='projekt_email')['zustand'],'Eingang fehlt')
             self.assertNotIn('PRIVATER-INHALT', (root / 'index.html').read_text())
             self.assertTrue(all('link' not in p for p in dev['dev_bauen']['projekte']))
             self.assertIn('__aktualisiereProjektstatus', (root / 'index.html').read_text())
@@ -83,6 +86,17 @@ class ProjektstatusTest(unittest.TestCase):
             p = self.quelle(root)
             data = json.loads(p.read_text()); data['stationen']['bauen'] = []; p.write_text(json.dumps(data))
             with self.assertRaises(ValueError): projektstatus.bericht_lesen(p)
+
+    def test_fachteam_tests_mit_fehler_verhindern_erfolgreichen_bau(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            def seite(ziel, werkstatt_status):
+                report=json.loads(Path(werkstatt_status).read_text())
+                self.assertEqual(report['stationen']['pruefen'],'fehlgeschlagen')
+                self.assertEqual(report['stationen']['bauen'],'offen')
+                return [{'id':'dev_pruefen','status':'rot'}]
+            with patch.object(projektstatus.subprocess,'run',return_value=subprocess.CompletedProcess([],1)) as run, patch.object(webseite,'bauen',side_effect=seite):
+                projektstatus.bauen(Path(tmp)/'ki-buero.html')
+                self.assertEqual(run.call_count,1)
 
     def test_abgebrochener_lauf_publiziert_keinen_erfolg(self):
         with tempfile.TemporaryDirectory() as tmp:

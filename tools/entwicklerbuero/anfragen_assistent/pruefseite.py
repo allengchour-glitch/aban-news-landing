@@ -52,8 +52,13 @@ karten.forEach(k=>{const button=k.querySelector('button');if(!button)return;butt
 </script></body></html>'''
 
 
-def kommentare_erstellen(eintraege):
+def kommentare_erstellen(eintraege, luecken=None):
     karten = ['<p><a href="antwortentwuerfe.csv" download>Antwortliste herunterladen</a></p>']
+    if luecken:
+        karten.append('<details class="faq-luecken"><summary>Wiederkehrende offene Fragen · ' + str(len(luecken)) + '</summary><p>Vorschläge zur FAQ-Pflege. Antworten müssen aus freigegebenem Wissen ergänzt werden.</p><ul>')
+        for l in luecken:
+            karten.append('<li>' + str(l['anzahl']) + ' × ' + escape(l['frage']) + '</li>')
+        karten.append('</ul><a href="wissensluecken.json" download>Fragen herunterladen</a></details>')
     for n, row in enumerate(eintraege, 1):
         status = row['status']
         art = 'entwurf' if status == 'Entwurf prüfen' else 'übersprungen' if status == 'Bereits vorbereitet' else 'manuell'

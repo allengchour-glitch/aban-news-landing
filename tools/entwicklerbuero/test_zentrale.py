@@ -34,5 +34,7 @@ class GehirnTest(unittest.TestCase):
             out=Path(tmp)/'export'
             zentrale.exportieren(r,out)
             self.assertTrue((out/'obsidian-buero.zip').is_file())
+            self.assertTrue((out/'expertenplan.json').is_file())
+            self.assertIn('Workflow-Architekt',(out/'Obsidian-Buero/Team.md').read_text())
             self.assertIn('[[Planung]]',(out/'Obsidian-Buero/Start.md').read_text())
             self.assertNotIn('nicht exportieren',(out/'zentrale.json').read_text())

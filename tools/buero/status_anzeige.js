@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var ids = ['dev_bauen', 'dev_pruefen', 'dev_angebot'];
-  var felder = ['status','gemessen','gemessen_text','frisch_h','ereignis','ereignis_iso','befund','quelle','naechster_schritt','projekte'];
+  var felder = ['status','gemessen','gemessen_text','frisch_h','ereignis','ereignis_iso','befund','quelle','naechster_schritt','projekte','expertenplan'];
   var laeuft = false;
   function alterSignatur() {
     return window.__ROWS.filter(function(r){return ids.indexOf(r.id)>=0;}).map(function(r){
