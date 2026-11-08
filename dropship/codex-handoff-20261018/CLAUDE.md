@@ -1,5 +1,16 @@
 # LuxeStyle: Arbeitsbeginn für Claude Code
 
+## Aktueller Stand – 08.11.2026, Revision 128: kein Doppelstart, sicherer Vault und Menü-Cap gesperrt
+
+Zuerst `README.md`, `PROJEKTGEDAECHTNIS.md`, `ARBEITSSTAND.json` und den heutigen Block in `TAGESPROTOKOLL.md` frisch lesen. Diese Datei ergänzt den Einstieg; eine tatsächliche Claude-Code-Übernahme ist weiterhin nicht quittiert.
+
+- Draft-PR2922 stellt den nach unabhängiger Gegenprobe gehärteten lokalen Obsidian-Builder bereit. Er ersetzt oder löscht keine bestehenden Ziele, blockiert fremde Git-Repositories und dirty/nicht kanonische Quellen, scannt auch Task-Titel und ist mit 11 Tests in CI eingebunden. Sicherer Build gegen Revision128/24 Aufgaben; alte Vaults nicht importieren.
+- Draft-PR2924 misst84 Gruppen-Landingpages. Nur13 decken alle Kinder im Hauptinhalt ab;397/520 Kanten fehlen. Cap6 würde44 Ziele ohne belegten Fallback verstecken; Mobile-«Alle in …» fehlt 0/86. Keinen Menü-Cap anwenden. Zuerst mobile Gruppenziele und die44 Linklücken in einem unveröffentlichten Theme lösen, danach Tastatur/Mobil/Desktop/No-JS sowie active/current prüfen.
+- PR2915 bleibt ein begrenzter Flash-Lite-Draft; kein Gemini-Pro-Aufruf ohne ausdrückliches Kostenbudget und geprüfte Billing-Zuordnung. PR2896 ist der vorhandene CJ-Nur-Lese-MCP, aber55 Main-Commits zurück: erst aktualisieren, Hashes/Tests neu prüfen, danach netzlosen Status und höchstens ein bekanntes Produkt lesen.
+- Offene PR2912/2914/2916/2918/2919 nicht duplizieren oder ihre Writer starten. R125–R127 nicht als neue Umsetzung wiederholen.
+
+[R128-Bericht](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.md) · [R128-Belege](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.json). Keine Shop-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderänderung in R128.
+
 ## Aktueller Stand – 04.11.2026, Revision 79: geprüfter Preisfilterentwurf und präzisierter Master
 
 **Prüf- und Freigabepaket: Der Preisfilterpatch ist lokal vorbereitet und nicht im Theme gespeichert. Es gibt keinen neuen professionellen Masterfilm.** [Mittagspaket](MITTAGSPAKET-20261104-R79.md) · [Nachweise](LAUFBELEGE-20261104-R79.json).

@@ -1308,3 +1308,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Daten | R127-Bericht, JSON und Projektgedächtnis fortgeschrieben; keine Tagesdaten nur für die Tabelle neu gelesen | Revision127. Keine Shopify-/Theme-/Produkt-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestelländerung; keine Kennzahl-, Klaviyo-, Bestell- oder Kauf-Watch-Wiederholung |
 
 [LUXESTYLE_R127_20261108] [Website- und SEO-Push](WEBSITE-SEO-PUSH-20261108-R127.md) · [Maschinenlesbare Belege](WEBSITE-SEO-PUSH-20261108-R127.json). Drei getrennte Draft-PRs mit begrenzten Guards, kein Merge oder produktiver Write; offene FR-, Linkmengen-, Versand- und CI-Blocker erhalten.
+
+### R128
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Gedächtnis / Koordination | Revision127, vier kanonische Dateien,24 Aufgaben und offene Claude-/Codex-PRs frisch gelesen; Shop und Metricool-Identität gegengeprüft | Keine bestätigte Claude-Quittung; alte Writer nicht wiederholt. LuxeStyle/luxestyle.ch/CHF und Metricool6227837/Europe-Zurich samt sechs Kanälen passend |
+| Obsidian | Zwei alte Vaults abgegrenzt; unabhängige Gegenprobe des neuen Builders ausgewertet und fünf Sicherheitslücken fail-closed behoben; Draft-PR2922 aktualisiert | Bestehende Ziele/Nachbarpfade werden nie gelöscht, fremde Git-Ziele und dirty/nicht kanonische Quellen blockiert, Task-Titel mitgescannt, CI-Test ergänzt. Revision128/24 Aufgaben, keine erkannten Kunden-/Secretwerte, Sync/Publish/Plugins aus; 11/11 Tests, Compile, Build/Check grün. Voll-CI an `unshare` blockiert |
+| Mega-Menü | Alle84 Gruppen-Landingpages sowie520 Kind-Kanten und dauerhafte Alternativseiten read-only gemessen; fail-closed Prüfer und Manifest als Draft-PR2924 gespeichert |84/84 HTTP200 ohne Redirect/Canonical passend; nur13 volle Gruppen,397 Kanten fehlen. Cap6 hat44 Ziele ohne Fallback, Mobile-Alle-Link0/86; kein Cap/Theme-Write.36 Tests grün |
+| Gemini / CJ | Vorhandene PR2915/2896, aktuelle Laufzeitbindungen, Modellkosten und frühere Read-only-Belege geprüft | Kein direkter Gemini-/CJ-MCP, keine Runtime-Secrets. Pro kostenpflichtig und ohne Budget/Billing blockiert; CJ-PR55 Main-Commits zurück. Kein Dispatch/API-Aufruf/Kauf |
+| Grenzen / Dokumentation | R128-Bericht, JSON, Claude-Einstieg und Projektgedächtnis fortgeschrieben; Tagesdaten nicht nochmals gelesen | Zwei neue Draft-PRs und lokaler Vault, kein Shop-/Theme-/Produkt-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderwrite |
+
+[LUXESTYLE_R128_20261108] [Systeme- und Website-Fortsetzung](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.md) · [Maschinenlesbare Belege](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.json). Sichere Arbeitsgrundlagen erstellt; Live-Menü bewusst unverändert.

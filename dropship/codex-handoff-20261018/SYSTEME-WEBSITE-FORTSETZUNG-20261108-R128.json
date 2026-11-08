@@ -1,0 +1,65 @@
+{
+  "art": "GEMESSEN_UND_REVIEWBAR_VORBEREITET",
+  "revision": 128,
+  "timeEuropeZurich": "2026-11-08T01:27:02+01:00",
+  "identity": {
+    "shop": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "channelsMatched": 6
+  },
+  "memory": {
+    "sourceRevision": 127,
+    "sourceCommit": "9f1d79694c94c7b17026b96207f626f1086cfac2",
+    "taskCount": 24,
+    "claudeReceipt": "unknown_missing_receipt"
+  },
+  "obsidian": {
+    "draftPr": 2922,
+    "commit": "9a2c075a65363bc8c2571d47ddb98f4285dedc8a",
+    "localVault": "/workspace/luxestyle-review/local-vaults/luxestyle-r128-safe",
+    "rawSourceFilesCopied": false,
+    "customerDataCopied": false,
+    "sync": false,
+    "publish": false,
+    "communityPlugins": 0,
+    "unitTests": { "passed": 11, "failed": 0 },
+    "fullCi": "blocked_unshare_operation_not_permitted"
+  },
+  "menuCoverage": {
+    "draftPr": 2924,
+    "commit": "e2f856c7d75674da37118007e5c003ddce577882",
+    "groupNodes": 86,
+    "groupUrls": 84,
+    "childEdges": 520,
+    "landingPagesHttp200NoRedirectCanonicalOk": 84,
+    "fullyCoveredGroups": 13,
+    "missingMainEdges": 397,
+    "cap6HiddenUrlsWithoutVerifiedFallback": 44,
+    "mobileAllLinks": 0,
+    "cap6Approved": false,
+    "tests": { "passed": 36, "failed": 0 }
+  },
+  "access": {
+    "geminiDirectMcp": false,
+    "cjDropshippingDirectMcp": false,
+    "runtimeSecretsBound": false,
+    "geminiProCall": false,
+    "cjApiCall": false,
+    "workflowDispatches": 0,
+    "customerContacts": 0
+  },
+  "externalWrites": {
+    "shopify": 0,
+    "theme": 0,
+    "metricool": 0,
+    "flows": 0,
+    "dns": 0,
+    "budgets": 0,
+    "orders": 0,
+    "renders": 0
+  }
+}
