@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 139,
-  "updatedAt": "2026-11-08T14:25:46+01:00",
+  "revision": 140,
+  "updatedAt": "2026-11-08T14:39:44+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3078,16 +3078,19 @@
       "id": "ads-pyjama-start-24403263741",
       "priority": 8,
       "priorityKind": "SETZUNG",
-      "state": "blockiert",
+      "state": "r140_hypd_read_only_campaigns_expired_tracking_gap_no_write",
       "title": "Bestehenden Pyjama-Ads-Entwurf eng auf Startvoraussetzungen prüfen",
-      "lastEvidenceDate": "2026-11-03",
-      "belegArt": "SCREENSHOT_VIER_GROWTH_KARTEN_DREI_KONFIGURATIONSLESUNGEN_LEER_ODER_INKOMPATIBEL_AKTUELLER_STATUS_UNBEKANNT",
-      "lastEvidence": "Konto 719-826-3241 CHF: Kampagne 24403263741 PAUSED, Gruppe/Anzeige/acht Keywords ENABLED. CUSTOM_PERIOD 58 Mio. Micros CHF und 30.10.–05.11. direkt gelesen. Auto-Tagging neu True; kampagnenspezifische Kaufzielbindung und vollständige finale Startprüfung weiter offen. Kein Write, Force-Refresh oder Upgrade. Pyjama-Einstieg HTTP200 und Preis-pro-Person-Klarstellung vorhanden. Neue echte Shopify-Käufe sind kein Ads-Zuordnungs- oder Conversion-Tracking-Beleg. R66, 03.11.2026: Neuer Merchant-Screenshot enthält vier Growth-Empfehlungen, keine konkrete Produktdiagnose. Konto 5797470070, Shopify luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich mit sechs Kanalidentitäten frisch passend. Ads-Konto 719-826-3241 frisch verbunden, aber keine aktuelle Einrichtung allein daraus bestätigt. Genau drei eng begrenzte Konfigurationsabfragen nach frischer Feldentdeckung: Kunde ohne auswertbare Zeilen; Kaufaktion zunächst inkompatible Feldkombination, einmal begründet korrigiert und dann ebenfalls ohne auswertbare Zeilen. Keine neuen Kennzahlen-/Ereignis-/Bestell-/Flowdaten. Aktueller Tracking-/Kaufaktionszustand unbekannt; nicht als fehlend, null oder deaktiviert ausgegeben. Kampagnenspezifische Goal-Felder nicht in entdeckter Connector-Feldliste verfügbar. Screenshot-Setupkarte ist kein Trackingfehlernachweis. Wettbewerbswerte 0 Tage/CHF6.02 nicht als eigene Versandzusage übernommen; keine Rabatte oder Einstellungen geändert. Keine blind weiteren Retries, Force-Refresh, Aktivierung, Testkäufe oder Kauf-Watch-Abfrage.",
-      "nextAllowedStep": "Rein lesend im nativen bereits verbundenen Google-Ads-Konto die bestehende Kaufaktion 7840141331 samt Diagnose und die kampagnenspezifische Kaufzielbindung von 24403263741 prüfen. Leere Windsor-Konfigurationsantworten nicht wiederholen oder als fehlendes Tracking interpretieren; kein Force-Refresh/Upgrade und keine neue Kauf-Watch-Abfrage. Native kampagnenspezifische Kaufzielbindung sowie übrige ursprüngliche Startparameter belegen, dann finale Startprüfung des bestehenden CHF-58-Entwurfs. Keine automatische Aktivierung oder Verlängerung; ursprüngliches Enddatum 05.11. erhalten.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R140_HYPD_ADS_GA4_GTM_READ_ONLY_CROSS_SOURCE_AUDIT",
+      "lastEvidence": "HYPD bestätigte Ads7198263241/CHF/Europe-Zurich.09.10.–07.11.:711 Impressionen,24 Klicks,CTR3.38%,CHF11.51,CPC CHF0.48,0 getrackte Conversions; Auto-Tagging true. Shopping24340093418 ist ENABLED, aber seit17.10. abgelaufen und trug alle Kosten; nicht reaktivieren. Xmas24403263741 ist PAUSED, seit05.11. abgelaufen und hatte0 Traffic/Kosten, obwohl Kindobjekte enabled erscheinen. Kaufaktion7840141331 ist enabled/webpage/purchase/primary/many und kampagnenseitig biddable; Einzelaktionsreport leer. GA4 hat keine Ecommerce-Events, GTM kein explizites Purchase-/Ads-Tag; externe Shopify-Trackingwege unbekannt. Keine Ads-/Budget-/Ziel-/GTM-Änderung.",
+      "nextAllowedStep": "P0: End-to-end Ecommerce-Tracking mit Shopify→GA4/GTM→Ads und Consent/Page-/Session-Kontext rein lesend diagnostizieren, dann einen minimalen Messplan zur Freigabe vorlegen. Abgelaufene Kampagnen24340093418/24403263741 nicht reaktivieren oder verlängern; keine Budget-/Conversion-Zieländerung. 0 getrackte Conversions niemals als 0 Shopify-Käufe ausgeben.",
       "blockers": [
         "Kampagnenspezifische Kaufzielbindung und übrige finale Startparameter nicht vollständig aktuell belegt; Auto-Tagging jetzt True",
         "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration",
-        "R66: Aktuelle Konfiguration über drei eng begrenzte Windsor-Setup-Lesungen nicht bestätigt; leere bzw. inkompatible Daten bedeuten unbekannt. Kampagnenspezifische Goal-Felder nicht exponiert. Allgemeine Merchant-Growth-Karte ist keine Tagdiagnose oder Ereignisbestätigung."
+        "R66: Aktuelle Konfiguration über drei eng begrenzte Windsor-Setup-Lesungen nicht bestätigt; leere bzw. inkompatible Daten bedeuten unbekannt. Kampagnenspezifische Goal-Felder nicht exponiert. Allgemeine Merchant-Growth-Karte ist keine Tagdiagnose oder Ereignisbestätigung.",
+        "R140: Beide Kampagnen sind abgelaufen; Xmas bleibt PAUSED und ohne Auslieferung. Kein Reaktivierungsauftrag.",
+        "R140: GA4-Ecommerce-Events fehlen; GTM enthält kein explizites Purchase-/Ads-Conversion-Tag, externe Shopify-Trackingwege sind unbekannt.",
+        "R140: Leerer Einzelaktionsreport und0 getrackte Conversions belegen weder fehlende Shopify-Käufe noch funktionierende Conversion-Auslösung."
       ],
       "acceptance": [
         "BestehendeEntitäten behalten, keineDuplikate",
@@ -3147,6 +3150,17 @@
             "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration"
           ],
           "previousLastEvidencePreserved": "Exact historical evidence retained as prefix; not freshly reconfirmed by empty setup reads."
+        },
+        {
+          "at": "2026-11-08T14:39:44+01:00",
+          "sourceRevision": 140,
+          "previousState": "blockiert",
+          "previousLastEvidenceDate": "2026-11-03",
+          "previousBelegArt": "SCREENSHOT_VIER_GROWTH_KARTEN_DREI_KONFIGURATIONSLESUNGEN_LEER_ODER_INKOMPATIBEL_AKTUELLER_STATUS_UNBEKANNT",
+          "previousLastEvidence": "Konto 719-826-3241 CHF: Kampagne 24403263741 PAUSED, Gruppe/Anzeige/acht Keywords ENABLED. CUSTOM_PERIOD 58 Mio. Micros CHF und 30.10.–05.11. direkt gelesen. Auto-Tagging neu True; kampagnenspezifische Kaufzielbindung und vollständige finale Startprüfung weiter offen. Kein Write, Force-Refresh oder Upgrade. Pyjama-Einstieg HTTP200 und Preis-pro-Person-Klarstellung vorhanden. Neue echte Shopify-Käufe sind kein Ads-Zuordnungs- oder Conversion-Tracking-Beleg. R66, 03.11.2026: Neuer Merchant-Screenshot enthält vier Growth-Empfehlungen, keine konkrete Produktdiagnose. Konto 5797470070, Shopify luxestyle.ch/CHF und Metricool 6227837/Europe/Zurich mit sechs Kanalidentitäten frisch passend. Ads-Konto 719-826-3241 frisch verbunden, aber keine aktuelle Einrichtung allein daraus bestätigt. Genau drei eng begrenzte Konfigurationsabfragen nach frischer Feldentdeckung: Kunde ohne auswertbare Zeilen; Kaufaktion zunächst inkompatible Feldkombination, einmal begründet korrigiert und dann ebenfalls ohne auswertbare Zeilen. Keine neuen Kennzahlen-/Ereignis-/Bestell-/Flowdaten. Aktueller Tracking-/Kaufaktionszustand unbekannt; nicht als fehlend, null oder deaktiviert ausgegeben. Kampagnenspezifische Goal-Felder nicht in entdeckter Connector-Feldliste verfügbar. Screenshot-Setupkarte ist kein Trackingfehlernachweis. Wettbewerbswerte 0 Tage/CHF6.02 nicht als eigene Versandzusage übernommen; keine Rabatte oder Einstellungen geändert. Keine blind weiteren Retries, Force-Refresh, Aktivierung, Testkäufe oder Kauf-Watch-Abfrage.",
+          "previousNextAllowedStep": "Rein lesend im nativen bereits verbundenen Google-Ads-Konto die bestehende Kaufaktion 7840141331 samt Diagnose und die kampagnenspezifische Kaufzielbindung von 24403263741 prüfen. Leere Windsor-Konfigurationsantworten nicht wiederholen oder als fehlendes Tracking interpretieren; kein Force-Refresh/Upgrade und keine neue Kauf-Watch-Abfrage. Native kampagnenspezifische Kaufzielbindung sowie übrige ursprüngliche Startparameter belegen, dann finale Startprüfung des bestehenden CHF-58-Entwurfs. Keine automatische Aktivierung oder Verlängerung; ursprüngliches Enddatum 05.11. erhalten.",
+          "previousLastEvidencePreserved": true,
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "setupReviewR66": {
@@ -3168,12 +3182,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r133_nine_csvs_deduplicated_three_product_corrections_live_google_reprocessing_unknown",
+      "state": "r140_hypd_first5000_truncated_overlay_and_policy_read_only_no_feed_write",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R133_NINE_MERCHANT_CSV_DEDUP_THREE_SHOPIFY_PRODUCTS_16_ALTS_PUBLIC_READBACK",
-      "lastEvidence": "Vier neue Merchant-CSVs mit fünf vorherigen Dateien dedupliziert:252 IDs im Neuscope,15 Überschneidungen und5’662 eindeutige Item-IDs über neun Dateien; keine Katalogquote. Drei ACTIVE-Produkte nach Bild-/Varianten-/Overlap-Gegenprobe live korrigiert: Transfergurt15447901208961, Schirm-Aufsatz15448954896769 und Ventileinsatz-Werkzeug16606127161735. 3 productUpdate+3 fileUpdate,16 Alttexte,0 userErrors; drei neue Handles/301. Admin/Public/independent QA3/3 GO; Varianten, SKUs, CHF-Preise, Tags, Inventory und Medienbindungen erhalten. Sechs Product-page-unavailable-Fälle sind DRAFT und wurden nicht aktiviert; acht Live-animals-Fälle sind aktives Tierzubehör im FR-/Deutsch-Kontext und wurden nicht verfälscht. CSS ist Konto-/Programmthema. Google-Neuverarbeitung unbekannt; kein Merchant-/Feedwrite.",
-      "nextAllowedStep": "Nach Google-Neuverarbeitung genau die drei R133-Offers gezielt lesen und erst dann eine Richtlinienauflösung behaupten. Die sechs DRAFT-Angebote nicht aktivieren; Feedentfernung/Reprocessing prüfen. Die acht Tierzubehör-Fälle quellen-/localegebunden prüfen. CSS-Kapazität separat auf Konto-/Programmseite behandeln. Preis/Availability nur an der verantwortlichen Datenquelle nach exakter Source-/Rohfeldbindung bearbeiten; keine breite Pagination oder Massenmutation.",
+      "belegArt": "R140_HYPD_MERCHANT_TRUNCATED_5000_SUMMARY_DISAPPROVAL_SAMPLE_AND_PERFORMANCE_READ_ONLY",
+      "lastEvidence": "Merchant5797470070/LuxeStyle CH wurde bestätigt. Exakt erste5’000 Produkte mit truncated=true:4’768 eligible,223 limited,9 not eligible/disapproved; keine Katalogquote. Issues: item_limit_reached_ads_css218,image_unwanted_overlays9,personal_hardships3,identity/belief2; account issues leer. Separate12er-Disapproved-Stichprobe zeigt ausschliesslich Overlay-Sperren für Free Listings/Shopping/Display in CH/LI, widerspricht Summary9 und wird nicht addiert; next page vorhanden. Performance11.10.–07.11. nur zwei konsistente Zeilen (Eidgenoss-T-Shirt24 Impressionen/0 Klicks; Kinder-Smartwatch23/0); vier Klickzeilen mit0 Impressionen als NaN verworfen. Preisprobe20, keine Preisänderung; keine Sichtbarkeitsabfrage ohne Kategoriecode. Kein Merchant-/Feed-/Preiswrite.",
+      "nextAllowedStep": "P1: Overlay-Angebote einzeln an exakte aktive Source, eingereichten image_link, Shopify-Variante, aktuelle Policy und rechtegeprüftes sauberes Ersatzbild binden. Erst je Offer einen Diff prüfen; Summary9 und12er-Stichprobe getrennt halten. CSS-Limit als Konto-/Programmthema behandeln. Keine Massenpagination, Feed-/Preisänderung oder Hochrechnung aus dem truncated5000-Scope.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -3194,7 +3208,11 @@
         "R103: Sieben Overlay-Varianten besitzen aktuell kein zweifelsfrei passendes sauberes bestehendes Medium. Exakte CJ-/Lieferanten-Mappings oder neue rechtegeprüfte Originalbilder fehlen. Google-Neuverarbeitung, aktive Merchant-Source-ID und eingereichte image_links bleiben unbekannt; zwei bestätigte Shopify-Medienbindungen sind keine bestätigte Google-Behebung.",
         "R133: Google-Neuverarbeitung der drei korrigierten Angebote ist unbekannt; Shopify-Rücklesung ist kein Google-Freigabebeleg.",
         "R133: CSS-Kapazität ist Konto-/Programmstatus; fr-Feed mit deutschen Inhalten sowie getrennte CH-Datenquelle bleiben quellenbezogen offen.",
-        "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt."
+        "R133: Medizinische Overlaybilder haben kein exaktes sauberes rechtegeprüftes Ersatzbild; keine Bilddatei ersetzt.",
+        "R140: 5’000er-Merchant-Scope ist truncated; next page vorhanden und keine Katalogquote.",
+        "R140: Summary9 und separate12er-Disapproved-Stichprobe widersprechen sich; Werte dürfen nicht addiert oder als identischer Nenner behandelt werden.",
+        "R140: Overlay-Ersatzbilder brauchen exakte Produkt-/Variantenidentität und Rechte; aktive Source/image_link bleiben pro Offer zu belegen.",
+        "R140: Vier Performancezeilen mit Klicks bei0 Impressionen sind inkonsistent/NaN und wurden verworfen."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -3646,6 +3664,17 @@
             "previousLastEvidenceLength": 473
           },
           "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-08T14:39:44+01:00",
+          "sourceRevision": 140,
+          "previousState": "r133_nine_csvs_deduplicated_three_product_corrections_live_google_reprocessing_unknown",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R133_NINE_MERCHANT_CSV_DEDUP_THREE_SHOPIFY_PRODUCTS_16_ALTS_PUBLIC_READBACK",
+          "previousLastEvidence": "Vier neue Merchant-CSVs mit fünf vorherigen Dateien dedupliziert:252 IDs im Neuscope,15 Überschneidungen und5’662 eindeutige Item-IDs über neun Dateien; keine Katalogquote. Drei ACTIVE-Produkte nach Bild-/Varianten-/Overlap-Gegenprobe live korrigiert: Transfergurt15447901208961, Schirm-Aufsatz15448954896769 und Ventileinsatz-Werkzeug16606127161735. 3 productUpdate+3 fileUpdate,16 Alttexte,0 userErrors; drei neue Handles/301. Admin/Public/independent QA3/3 GO; Varianten, SKUs, CHF-Preise, Tags, Inventory und Medienbindungen erhalten. Sechs Product-page-unavailable-Fälle sind DRAFT und wurden nicht aktiviert; acht Live-animals-Fälle sind aktives Tierzubehör im FR-/Deutsch-Kontext und wurden nicht verfälscht. CSS ist Konto-/Programmthema. Google-Neuverarbeitung unbekannt; kein Merchant-/Feedwrite.",
+          "previousNextAllowedStep": "Nach Google-Neuverarbeitung genau die drei R133-Offers gezielt lesen und erst dann eine Richtlinienauflösung behaupten. Die sechs DRAFT-Angebote nicht aktivieren; Feedentfernung/Reprocessing prüfen. Die acht Tierzubehör-Fälle quellen-/localegebunden prüfen. CSS-Kapazität separat auf Konto-/Programmseite behandeln. Preis/Availability nur an der verantwortlichen Datenquelle nach exakter Source-/Rohfeldbindung bearbeiten; keine breite Pagination oder Massenmutation.",
+          "previousLastEvidencePreserved": true,
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "resolvedBlockers": [
@@ -4273,18 +4302,21 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r128_menu_84_group_pages_measured_cap_blocked_no_theme_write",
+      "state": "r140_hypd_home_selfdesign_performance_profile_read_only_no_theme_write",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R128_READ_ONLY_84_GROUP_103_PAGE_LINK_COVERAGE_AND_FAIL_CLOSED_CAP_GUARD_PR2924",
-      "lastEvidence": "Live84 eindeutige Gruppen-Landingpages/86 Knoten/520 Kind-Kanten gemessen.84/84 HTTP200 ohne Redirect und mit erwartetem Canonical; nur13 Gruppen decken alle Kinder im main ab,397 Kanten fehlen. Cap6 hätte44 eindeutige Ziele ohne belegten Fallback; mobile Alle-in-Ziele0/86 und active/current unbekannt. Fail-closed Prüfer mit36 Tests grün in Draft-PR2924, Commit e2f856c7d75674da37118007e5c003ddce577882. Kein Cap oder Theme-Write.",
+      "belegArt": "R140_HYPD_ONPAGE_AND_MOBILE_LIGHTHOUSE_READ_ONLY_PROFILE",
+      "lastEvidence": "HYPD Siteaudit: Homepage und Selbstgestalten HTTP200, Onpage91.59/94.51, Canonicals/H1 korrekt. Homepage121 Scripts,28 render-blocking,HTML1.06MB,DOM2.77MB,27 Closing-Mismatches; Selbstgestalten118/28,1.23MB/3.52MB,2. Mobile Lighthouse Homepage Performance33/A94/BP73,FCP2.9s,LCP14s,TBT7.02s,TTI26.9s,CLS0.002,Payload7335KiB; Selbstgestalten Performance39/A90/BP73,FCP2.7s,LCP6.1s,TBT3.79s,TTI21.2s,Payload3557KiB. Homepage-Ressourcenaudit Timeout, daher unbekannt. Versandclaim im Meta braucht Beleg. Kein Theme-/Shopwrite.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
-      "nextAllowedStep": "PR2924 reviewen. In einem unveröffentlichten Theme zuerst je Mobile-Gruppe einen direkten Alle-in-Link auf die bestehende Gruppen-URL ergänzen, ohne Kindlinks zu entfernen. Danach die44 Cap-6-Lücken auf Gruppen-/Alternativseiten schliessen und Tastatur/Mobil/Desktop/No-JS sowie active/current prüfen; erst dann Cap erneut bewerten.",
+      "nextAllowedStep": "P1: Script-/Drittanbieter- und Renderblocking-Profil für Homepage und Selbstgestalten in einem unveröffentlichten Theme erstellen; grösste verantwortliche Ressourcen zuerst messen. Keine pauschale Entfernung. HTML-/DOM- und Closing-Mismatch-Ursachen eng lokalisieren. Ressourcenaudit-Timeout als unbekannt erhalten; Versandclaim erst nach Beleg ändern.",
       "blockers": [
         "397 von520 Kind-Kanten fehlen im Hauptinhalt der Gruppen-Landingpages.",
         "Cap6 würde44 eindeutige Ziele ohne belegten Fallback verstecken.",
         "Mobile Alle-in-Link fehlt0/86; active/current ist ohne unveröffentlichten Theme-Test unbekannt.",
-        "Kein Theme-Write/Publish in R128; bestehende MAIN-/PR-Diffs vor späterer Arbeit frisch prüfen."
+        "Kein Theme-Write/Publish in R128; bestehende MAIN-/PR-Diffs vor späterer Arbeit frisch prüfen.",
+        "R140: Mobile Performance33/39, lange LCP/TBT/TTI und grosse Payloads; konkrete Ressourcenverursacher noch nicht vollständig gebunden.",
+        "R140: Homepage-Ressourcenaudit endete im Timeout und bleibt unbekannt.",
+        "R140: Versandclaim im Meta ist nicht aktuell belegt; keine Textänderung ohne Quellenbeleg."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -4959,6 +4991,17 @@
             "Keine Checkout-/Tracking-/vollständige FR-/Wishlist-Persistenz-Abnahme. Initiale synthetische Touchtests bei320/390 unklar, erfolgreiche echte Touch-/Tastatur-Gegenprobe bei320 dokumentiert."
           ],
           "previousLastEvidencePreserved": "Vollständig in der unmittelbar vorherigen Revision erhalten."
+        },
+        {
+          "at": "2026-11-08T14:39:44+01:00",
+          "sourceRevision": 140,
+          "previousState": "r128_menu_84_group_pages_measured_cap_blocked_no_theme_write",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R128_READ_ONLY_84_GROUP_103_PAGE_LINK_COVERAGE_AND_FAIL_CLOSED_CAP_GUARD_PR2924",
+          "previousLastEvidence": "Live84 eindeutige Gruppen-Landingpages/86 Knoten/520 Kind-Kanten gemessen.84/84 HTTP200 ohne Redirect und mit erwartetem Canonical; nur13 Gruppen decken alle Kinder im main ab,397 Kanten fehlen. Cap6 hätte44 eindeutige Ziele ohne belegten Fallback; mobile Alle-in-Ziele0/86 und active/current unbekannt. Fail-closed Prüfer mit36 Tests grün in Draft-PR2924, Commit e2f856c7d75674da37118007e5c003ddce577882. Kein Cap oder Theme-Write.",
+          "previousNextAllowedStep": "PR2924 reviewen. In einem unveröffentlichten Theme zuerst je Mobile-Gruppe einen direkten Alle-in-Link auf die bestehende Gruppen-URL ergänzen, ohne Kindlinks zu entfernen. Danach die44 Cap-6-Lücken auf Gruppen-/Alternativseiten schliessen und Tastatur/Mobil/Desktop/No-JS sowie active/current prüfen; erst dann Cap erneut bewerten.",
+          "previousLastEvidencePreserved": true,
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "followUpFindings": [
@@ -7162,15 +7205,19 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r115_bruder_collection_claim_gap_copy_proposal_not_applied",
+      "state": "r140_gsc_fr_duplicate_and_selfdesign_url_identity_read_only_no_seo_write",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
-      "lastEvidenceDate": "2026-11-06",
-      "belegArt": "R115_ONE_TARGETED_COLLECTION_READ_AND_COPY_DIFF_PROPOSAL",
-      "lastEvidence": "Collection ft-bruder HTTP200, korrekter Canonical,297 Produkte und Regel TAG EQUALS bruder; erste20 Produkte ACTIVE, bebildert und CHF-bepreist. Bestehender pauschaler CH-Lager-Claim ist durch die Collectionregel nicht abgesichert. Enger SEO-Titel-/Meta-/Einleitungsentwurf entfernt diesen Claim und erhält CHF50-Versand. Kein Collection- oder Theme-Write.",
-      "nextAllowedStep": "Nach Inhaberfreigabe nur SEO-Titel, Meta-Beschreibung und sichtbare Einleitung der Collection690577179009 ändern; Handle, H1, Bild, Regel, Sortierung, Produkte, Preise, Bestand, Theme, Versand und Kundendomäne erhalten; anschliessend Admin- und öffentlichen Readback prüfen.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R140_HYPD_GSC_FINAL_RANGE_FR_DUPLICATE_URL_IDENTITY_AND_STRUCTURED_DATA_READ_ONLY",
+      "lastEvidence": "GSC sc-domain:luxestyle.ch09.10.–05.11.:65 Klicks,10’949 Impressionen,CTR0.594%,Position53.11; Vorperiode ohne Zeilen, Vergleich unbekannt; CH60/10’057. /fr/:161 Seitenzeilen,703 Impressionen,0 Klicks; inspiziertes FR-Produkt indexiert und selbstkanonisch mit deutschem Titel. Selbstgestalten-Seite indexiert31 Impressionen/Position63.1. Neuer T-Shirt-Handle nicht indexiert; Legacy-Shirt selbstkanonisch493 Impressionen/Position89.6, deshalb Identität vor Redirect/Canonical. Quick wins: Feed-Maschine45/Position18, gepolsterte Taschen Kannibalisierung, GPS16/9.81, Rizinus13 Klicks ohne medizinische Claims. Strukturierte Daten teilweise ohne description/shippingDetails/return policy; keine Reviews erfinden. Sitemap ohne Fehler/Warnungen; indexed=0 ist kein Beleg für keine Indexierung. Kein SEO-/Shopwrite.",
+      "nextAllowedStep": "P0: FR-Strategie festlegen und für indexierte selbstkanonische DE-Inhalte unter /fr/ je URL prüfen, ob echte Übersetzung oder kontrollierte Deindexierung/Canonical nötig ist. Parallel Selfdesign- und T-Shirt-Handle-Identität anhand aktueller Produkt-/Redirect-/Canonicalquellen klären, erst danach Redirect/Canonical-Diff. P1: Quick-Wins und strukturierte Daten eng quellenbasiert bearbeiten; keine medizinischen Claims oder erfundenen Reviews.",
       "blockers": [
         "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
-        "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden."
+        "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
+        "R140: Indexiertes selbstkanonisches FR-Produkt trägt deutschen Titel; FR-Duplikatstrategie ist offen.",
+        "R140: Neuer und Legacy-T-Shirt-Handle haben widersprüchliche Indexsignale; Identität muss vor Redirect/Canonical geklärt werden.",
+        "R140: GSC-Vorperiode hat keine Zeilen; Trendvergleich unbekannt.",
+        "R140: Strukturierte Daten fehlen teilweise bei Beschreibung, Versanddetails und Rückgaberichtlinie; Versand-/Rückgabeclaims brauchen aktuelle Belege."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -7384,6 +7431,17 @@
             "Theme-Publikationsweg/MAIN-Write bleibt getrennt und darf nicht aus diesem Entwurf abgeleitet werden.",
             "Ranking-, Google-Canonical-, Indexierungs- und Verkaufswirkung sind unbekannt."
           ]
+        },
+        {
+          "at": "2026-11-08T14:39:44+01:00",
+          "sourceRevision": 140,
+          "previousState": "r115_bruder_collection_claim_gap_copy_proposal_not_applied",
+          "previousLastEvidenceDate": "2026-11-06",
+          "previousBelegArt": "R115_ONE_TARGETED_COLLECTION_READ_AND_COPY_DIFF_PROPOSAL",
+          "previousLastEvidence": "Collection ft-bruder HTTP200, korrekter Canonical,297 Produkte und Regel TAG EQUALS bruder; erste20 Produkte ACTIVE, bebildert und CHF-bepreist. Bestehender pauschaler CH-Lager-Claim ist durch die Collectionregel nicht abgesichert. Enger SEO-Titel-/Meta-/Einleitungsentwurf entfernt diesen Claim und erhält CHF50-Versand. Kein Collection- oder Theme-Write.",
+          "previousNextAllowedStep": "Nach Inhaberfreigabe nur SEO-Titel, Meta-Beschreibung und sichtbare Einleitung der Collection690577179009 ändern; Handle, H1, Bild, Regel, Sortierung, Produkte, Preise, Bestand, Theme, Versand und Kundendomäne erhalten; anschliessend Admin- und öffentlichen Readback prüfen.",
+          "previousLastEvidencePreserved": true,
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "visibilitySupplementR49": {
@@ -10614,6 +10672,17 @@
         "readAt": "2026-11-08T14:25:46+01:00"
       },
       "action": "R139: v6.3 Selfdesign was deployed through merged PRs2944/2950/2953/2956 and guarded full plan/apply runs;16 Printful products are editor-ready, Dad Cap/Magnet/external DTF remain visibly fail-closed. Notebook live DOM passed; DTF runtime remains unknown after Envoy timeouts despite HTTP200 fail-closed server markup. Shopify #1038 is paid and its existing CJ order is UNSHIPPED; no fulfillment/tracking/contact. Metricool identities and31 objects/49 channel states were freshly checked; four existing objects were guardedly corrected, no new post. R135 metrics/Klaviyo reused without a second query. Projector remains storyboard/no MP4; rights open. No real cart/order, flow/DNS/budget/discount/customer or paid-render action."
+    },
+    {
+      "revision": 140,
+      "at": "2026-11-08T14:39:44+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "/workspace/luxestyle-review/hypd-20261108/GSC-AUDIT.md",
+        "sha256": "8d40cb176ce462dcce4605d3ccf66ac56a2c89f50adce0bce02454adea189eb8",
+        "readAt": "2026-11-08T14:39:44+01:00"
+      },
+      "action": "R140: A read-only HYPD cross-source audit confirmed LuxeStyle Ads/Merchant/GA4/GSC/GTM identities. GA4 has no ecommerce events and 68.2% landing-page not-set; this is a tracking finding, not evidence of zero Shopify purchases. Ads campaigns are expired and unchanged. Merchant first5000 is truncated; summary9 and separate sample12 overlay counts conflict and were not combined. GSC confirms German content on an indexed self-canonical FR URL and unresolved selfdesign/T-shirt URL identity. Site performance is weak; resource timeout remains unknown. No HYPD, Ads, Merchant, GTM, GA4, GSC, feed, theme or shop write."
     }
   ],
   "salesGoal": {
@@ -16620,5 +16689,384 @@
       "selfDesignApply": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42483371177",
       "selfDesignQaSha256": "561e8c64aabd8de838fe42468242923b67c0dad0726ba45714ca27a667af63e6"
     }
+  },
+  "hypdAuditR140": {
+    "at": "2026-11-08T14:39:44+01:00",
+    "mode": "read_only",
+    "sourceArtifact": {
+      "path": "/workspace/luxestyle-review/hypd-20261108/GSC-AUDIT.md",
+      "sha256": "8d40cb176ce462dcce4605d3ccf66ac56a2c89f50adce0bce02454adea189eb8",
+      "readAt": "2026-11-08T14:39:44+01:00"
+    },
+    "connectedSources": {
+      "googleAds": {
+        "accountId": "7198263241",
+        "currency": "CHF",
+        "timezone": "Europe/Zurich"
+      },
+      "merchantCenter": {
+        "merchantId": "5797470070",
+        "name": "LuxeStyle CH",
+        "country": "CH"
+      },
+      "ga4": {
+        "propertyId": "561291627"
+      },
+      "searchConsole": {
+        "property": "sc-domain:luxestyle.ch",
+        "abanChecked": false
+      },
+      "tagManager": {
+        "accountId": "6357659712",
+        "containerId": "253711335",
+        "publicTag": "GT-WVRZQPLZ"
+      },
+      "emptyAdConnections": [
+        "Meta Ads",
+        "Microsoft Ads",
+        "LinkedIn Ads",
+        "TikTok Ads"
+      ]
+    },
+    "ga4": {
+      "range": "2026-10-09/2026-11-05",
+      "propertyCreated": "2026-10-28",
+      "sessions": 534,
+      "channels": {
+        "Direct": 361,
+        "AI assistant": 110,
+        "Organic Search": 30,
+        "Unassigned": 16,
+        "Organic Social": 13
+      },
+      "landingPageNotSet": {
+        "sessions": 364,
+        "sharePercent": 68.2
+      },
+      "missingEcommerceEvents": [
+        "view_item",
+        "add_to_cart",
+        "begin_checkout",
+        "purchase"
+      ],
+      "trackedConversions": 0,
+      "trackedRevenue": 0,
+      "interpretation": "tracking_finding_not_zero_shopify_purchases"
+    },
+    "gtm": {
+      "liveVersion": 2,
+      "destinationTags": [
+        "MC-CW38CV2EJ1",
+        "G-YJXJVC5KRX"
+      ],
+      "ownTriggers": 0,
+      "ownVariables": 0,
+      "draftPresent": false,
+      "consentStatus": "notSet",
+      "automaticFirstPartyData": [
+        "email",
+        "phone",
+        "address"
+      ],
+      "explicitPurchaseOrAdsConversionTag": false,
+      "externalShopifyTracking": "unknown"
+    },
+    "googleAds": {
+      "range": "2026-10-09/2026-11-07",
+      "impressions": 711,
+      "clicks": 24,
+      "ctrPercent": 3.38,
+      "cost": {
+        "amount": 11.51,
+        "currency": "CHF"
+      },
+      "averageCpc": {
+        "amount": 0.48,
+        "currency": "CHF"
+      },
+      "trackedConversions": 0,
+      "autoTagging": true,
+      "campaigns": {
+        "24340093418": {
+          "status": "ENABLED",
+          "endDate": "2026-10-17",
+          "expired": true,
+          "allObservedSpend": true,
+          "reactivate": false
+        },
+        "24403263741": {
+          "status": "PAUSED",
+          "endDate": "2026-11-05",
+          "expired": true,
+          "spend": 0,
+          "traffic": 0,
+          "childrenReportedEnabled": true,
+          "delivery": false
+        }
+      },
+      "purchaseAction": {
+        "id": "7840141331",
+        "enabled": true,
+        "type": "WEBPAGE",
+        "category": "PURCHASE",
+        "primary": true,
+        "counting": "MANY",
+        "campaignBiddable": true,
+        "perActionReport": "empty"
+      },
+      "writes": 0
+    },
+    "merchant": {
+      "scannedProducts": 5000,
+      "truncated": true,
+      "catalogQuote": false,
+      "nextPagePresent": true,
+      "summary": {
+        "eligible": 4768,
+        "limited": 223,
+        "notEligibleOrDisapproved": 9
+      },
+      "issues": {
+        "item_limit_reached_ads_css": 218,
+        "image_unwanted_overlays": 9,
+        "personal_hardships": 3,
+        "identity_or_belief": 2
+      },
+      "accountIssues": [],
+      "disapprovedSample": {
+        "rows": 12,
+        "allImageOverlay": true,
+        "blockedDestinations": [
+          "free listings",
+          "shopping",
+          "display"
+        ],
+        "countries": [
+          "CH",
+          "LI"
+        ],
+        "conflictsWithSummaryNine": true,
+        "combinedWithSummary": false
+      },
+      "performance": {
+        "range": "2026-10-11/2026-11-07",
+        "consistentRows": [
+          {
+            "product": "Eidgenoss T-Shirt",
+            "impressions": 24,
+            "clicks": 0
+          },
+          {
+            "product": "Kinder-Smartwatch",
+            "impressions": 23,
+            "clicks": 0
+          }
+        ],
+        "discardedNaNRows": 4
+      },
+      "priceSampleProducts": 20,
+      "priceChanges": 0,
+      "visibilityQuery": "unknown_without_category_code",
+      "writes": 0
+    },
+    "gsc": {
+      "range": "2026-10-09/2026-11-05",
+      "clicks": 65,
+      "impressions": 10949,
+      "ctrPercent": 0.594,
+      "averagePosition": 53.11,
+      "priorPeriodRows": 0,
+      "comparison": "unknown",
+      "countryCH": {
+        "clicks": 60,
+        "impressions": 10057
+      },
+      "fr": {
+        "pageRows": 161,
+        "impressions": 703,
+        "clicks": 0,
+        "inspectedProduct": {
+          "indexed": true,
+          "selfCanonical": true,
+          "titleLanguage": "de",
+          "finding": "language_duplicate"
+        }
+      },
+      "selfDesign": {
+        "indexed": true,
+        "impressions": 31,
+        "clicks": 0,
+        "averagePosition": 63.1
+      },
+      "tshirtUrls": {
+        "newHandleIndexed": false,
+        "legacyHandle": {
+          "indexed": true,
+          "selfCanonical": true,
+          "impressions": 493,
+          "clicks": 0,
+          "averagePosition": 89.6
+        },
+        "requiredOrder": "identity_before_redirect_or_canonical"
+      },
+      "quickWins": [
+        {
+          "topic": "Feed-Maschine",
+          "impressions": 45,
+          "position": 18
+        },
+        {
+          "topic": "Gepolsterte Taschen",
+          "finding": "cannibalization"
+        },
+        {
+          "topic": "GPS",
+          "impressions": 16,
+          "position": 9.81
+        },
+        {
+          "topic": "Rizinus",
+          "clicks": 13,
+          "constraint": "no_medical_claims"
+        }
+      ],
+      "structuredDataMissing": [
+        "description",
+        "shippingDetails",
+        "returnPolicy"
+      ],
+      "inventedReviewsAllowed": false,
+      "sitemapErrors": 0,
+      "sitemapWarnings": 0,
+      "indexedZeroMeansNoneIndexed": false
+    },
+    "siteAudit": {
+      "homepage": {
+        "http": 200,
+        "onPageScore": 91.59,
+        "canonicalCorrect": true,
+        "h1Correct": true,
+        "scripts": 121,
+        "renderBlocking": 28,
+        "htmlMB": 1.06,
+        "domMB": 2.77,
+        "closingMismatches": 27,
+        "lighthouseMobile": {
+          "performance": 33,
+          "accessibility": 94,
+          "bestPractices": 73,
+          "fcpSeconds": 2.9,
+          "lcpSeconds": 14,
+          "tbtSeconds": 7.02,
+          "ttiSeconds": 26.9,
+          "cls": 0.002,
+          "payloadKiB": 7335
+        }
+      },
+      "selfDesign": {
+        "http": 200,
+        "onPageScore": 94.51,
+        "canonicalCorrect": true,
+        "h1Correct": true,
+        "scripts": 118,
+        "renderBlocking": 28,
+        "htmlMB": 1.23,
+        "domMB": 3.52,
+        "closingMismatches": 2,
+        "lighthouseMobile": {
+          "performance": 39,
+          "accessibility": 90,
+          "bestPractices": 73,
+          "fcpSeconds": 2.7,
+          "lcpSeconds": 6.1,
+          "tbtSeconds": 3.79,
+          "ttiSeconds": 21.2,
+          "payloadKiB": 3557
+        }
+      },
+      "homepageResourceAudit": "unknown_timeout",
+      "shippingMetaClaimEvidence": "required"
+    },
+    "keywordEstimatesCHDE": [
+      {
+        "keyword": "personalisierte Geschenke",
+        "monthlySearches": 6600,
+        "competition": "high"
+      },
+      {
+        "keyword": "T-Shirt",
+        "monthlySearches": 480,
+        "competition": "high"
+      },
+      {
+        "keyword": "Tasse",
+        "monthlySearches": 260,
+        "competition": "high"
+      }
+    ],
+    "top10SampleContainsLuxeStyle": false,
+    "priorityQueue": [
+      {
+        "priority": "P0",
+        "item": "end_to_end_ecommerce_tracking_and_cross_source_diagnosis"
+      },
+      {
+        "priority": "P0",
+        "item": "fr_language_duplicate_strategy"
+      },
+      {
+        "priority": "P1",
+        "item": "overlay_images_product_by_product"
+      },
+      {
+        "priority": "P1",
+        "item": "performance_and_third_party_profile"
+      },
+      {
+        "priority": "P1",
+        "item": "selfdesign_url_consolidation_after_identity"
+      },
+      {
+        "priority": "P1",
+        "item": "structured_data"
+      }
+    ],
+    "interpretationGuards": [
+      "zero_tracked_conversions_is_not_zero_shopify_purchases",
+      "merchant5000_is_truncated_not_catalog_quote",
+      "summary9_and_sample12_not_combined",
+      "gsc_prior_period_unknown",
+      "homepage_resource_audit_unknown_timeout",
+      "external_shopify_tracking_unknown"
+    ],
+    "writes": {
+      "hypd": 0,
+      "ads": 0,
+      "merchant": 0,
+      "gtm": 0,
+      "ga4": 0,
+      "gsc": 0,
+      "feed": 0,
+      "theme": 0,
+      "shop": 0
+    }
+  },
+  "followUpRunR140": {
+    "at": "2026-11-08T14:39:44+01:00",
+    "source": "hypdAuditR140",
+    "revision": 140,
+    "taskCount": 24,
+    "updatedTaskIds": [
+      "ads-pyjama-start-24403263741",
+      "merchant-missing-price-20261029",
+      "homepage-redesign-20261029",
+      "seo-landing-visibility-20261101"
+    ],
+    "preservedTaskIds": true,
+    "preservedHistory": true,
+    "r139SelfDesignPreserved": true,
+    "r138Order1038Preserved": true,
+    "externalWrites": 0,
+    "nextFocus": "P0 ecommerce tracking and FR duplicate strategy; P1 offer-level overlays, performance, URL identity, structured data"
   }
 }

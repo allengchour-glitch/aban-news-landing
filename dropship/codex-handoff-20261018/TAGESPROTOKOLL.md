@@ -1485,3 +1485,17 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Tatsächliche Writes und Nicht-Writes getrennt dokumentiert | Keine echte Upload-/Warenkorb-/Checkout-/Kunden-/Printful-Bestellung, kein Kundenkontakt, Flow-/DNS-/Budget-/Rabattwrite oder kostenpflichtiger Render |
 
 [LUXESTYLE_R139_20261108] [PR2956](https://github.com/allengchour-glitch/aban-news-landing/pull/2956) · [Deploy42482820662](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42482820662) · [Plan42483190027](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42483190027) · [Apply42483371177](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42483371177). Selfdesign begrenzt live, Planung korrigiert und Tagespaket fortgeschrieben; verbleibende DTF-Browserabnahme unbekannt.
+
+### R140
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| HYPD-Identitäten | Verbundene LuxeStyle-Quellen rein lesend gegengeprüft | Ads7198263241/CHF/Europe-Zurich, Merchant5797470070, GA4-561291627, GSC `sc-domain:luxestyle.ch`, GTM6357659712/253711335/`GT-WVRZQPLZ` passend. ABAN nicht geprüft; Meta/Microsoft/LinkedIn/TikTok Ads leer |
+| GA4 / GTM | Zeitraum09.10.–05.11. und Live-Container v2 auf Ecommerce-Signale geprüft |534 Sessions; keine vier Ecommerce-Events,0 getrackte Conversions/Umsatz ist Trackingbefund.364/68,2% Landingpage `(not set)`. GTM nur zwei Destination-Tags,0 eigene Trigger/Variablen, kein explizites Purchase-/Ads-Tag; externe Shopify-Pfade unbekannt, Consent `notSet` |
+| Google Ads | Zeitraum09.10.–07.11., Kampagnen und Kaufaktion gelesen |711 Impressionen/24 Klicks/CHF11.51/0 getrackte Conversions. Shopping24340093418 abgelaufen; Xmas24403263741 pausiert/abgelaufen/0 Traffic. Kaufaktion7840141331 konfiguriert, Einzelaktionsreport leer. Keine Reaktivierung, Ziel-, Budget- oder Statusänderung |
+| Merchant | Begrenzte Summary, erste Disapproval-Seite, Performance- und20er-Preisprobe bewertet | Erste5’000 `truncated`:4’768 eligible/223 limited/9 not eligible-disapproved.218 CSS-Limit,9 Overlay,3 Personal Hardships,2 Identity/Belief. Separate12er-Overlaystichprobe widerspricht Summary9 und wurde nicht addiert. Next page vorhanden; keine Katalogquote, kein Feed-/Preiswrite |
+| GSC / SEO | Finalisierte Daten09.10.–05.11., FR-, Selfdesign- und Handle-Signale ausgewertet |65 Klicks/10’949 Impressionen; Vorperiode unbekannt. `/fr/`161 Seitenzeilen/703/0 und indexiertes selbstkanonisches DE-Produkt auf FR-URL. Selfdesign31/Position63,1; neuer T-Shirt-Handle nicht indexiert, Legacy493/89,6. Identität vor Redirect/Canonical; strukturierte Daten teilweise unvollständig |
+| Site / Leistung | Homepage und Selfdesign mit Onpage- und Mobile-Lighthouse-Werten dokumentiert | HTTP200, Canonical/H1 korrekt. Performance33/39; LCP14s/6,1s, TBT7,02s/3,79s, Payload7’335/3’557KiB. Viele Scripts/render-blocking und grosse DOMs. Homepage-Ressourcenaudit Timeout, deshalb unbekannt |
+| Priorität / Grenzen | Nächste Arbeit geordnet und Interpretationsgrenzen festgehalten | P0 Tracking/Cross-Source und FR-Duplikate; P1 Overlaybilder produktweise, Performance/Drittanbieter, URL-Konsolidierung nach Identität und strukturierte Daten. Keine HYPD-/Ads-/Merchant-/GTM-/GA4-/GSC-/Feed-/Theme-/Shopänderung; keine Verkaufsableitung |
+
+[LUXESTYLE_R140_20261108] [Lokaler HYPD-/GSC-Audit](/workspace/luxestyle-review/hypd-20261108/GSC-AUDIT.md), SHA-256 `8d40cb176ce462dcce4605d3ccf66ac56a2c89f50adce0bce02454adea189eb8`. Read-only; keine operativen Writes.
