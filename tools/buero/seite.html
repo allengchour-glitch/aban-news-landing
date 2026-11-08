@@ -267,9 +267,16 @@
 .kb-aktion:hover { text-decoration: underline; }
 .kb-aktion:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 3px; }
 .kb-aktionslinks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.kb-infowand { background:linear-gradient(135deg,#102337,#183f49);color:#e8f6fa;border:1px solid #58878b;border-radius:18px;padding:22px;margin-bottom:22px;box-shadow:0 12px 40px #07162222; }
+.kb-infowand h2 {font-size:clamp(24px,5vw,38px);margin:0 0 12px;letter-spacing:-1px;}
+.kb-infowand p {line-height:1.5;}
+.kb-infowand-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;}
+.kb-infowand article {background:#ffffff0c;border:1px solid #ffffff25;border-radius:12px;padding:16px;}
+.kb-infowand a {color:#92e2ed;}
 </style>
 
 <div class="kb">
+  <section class="kb-infowand" data-draw="infowand" data-source="buero" aria-label="Große Infowand"></section>
   <header class="kb-head">
     <h1 class="kb-title">KI-Büro</h1>
     <p class="kb-take" data-t="rot" hidden>Etwas steht still. Die rote Zeile unten sagt, was.</p>
@@ -846,6 +853,35 @@
     var key = es.indexOf('rot') >= 0 ? 'rot' : es.indexOf('alt') >= 0 ? 'alt' : es.indexOf('gelb') >= 0 ? 'gelb' : 'gruen';
     sentences.forEach(function (s) { s.hidden = s.dataset.t !== key; });
     if (altChip) altChip.hidden = es.indexOf('alt') < 0;
+  });
+
+  dash.draw('infowand', function (el) {
+    el.replaceChildren();
+    var data = rows() || [];
+    var dev = data.filter(function (r) { return r.id === 'dev_bauen'; })[0];
+    var central = dev && dev.zentrale;
+    var h = document.createElement('h2'); h.textContent = 'Büro-Zentrale'; el.appendChild(h);
+    var sub = document.createElement('p');
+    sub.textContent = central ? central.takt + ' Messstand: ' + central.gemessen : 'Zwei Gehirne · Planung, Wissen und Gegenprüfung. Noch kein Zentralenbericht geladen.';
+    el.appendChild(sub);
+    var grid = document.createElement('div'); grid.className = 'kb-infowand-grid';
+    var check = central && central.hirn_pruefung;
+    var age = central ? (Date.now() - Date.parse(central.gemessen)) / 3600000 : NaN;
+    var fresh = age >= 0 && age <= 24;
+    if (central && !fresh) sub.textContent += ' Bericht nicht frisch bestätigt.';
+    var info = [
+      ['01 · Planung & Wissen', central ? central.hirn_planung.aufgaben.length + ' priorisierte Aufgaben. Obsidian-Vault im letzten Lauf verfügbar.' : 'Wissen verknüpfen und nächste Aufgaben planen.'],
+      ['02 · Prüfung & Ausführung', check ? (check.tests_frisch_bestanden && fresh ? 'Frische Selbsttests bestanden.' : 'Frische Selbsttests nicht bestätigt.') : 'Prüfergebnisse und Lieferpakete verbinden.'],
+      ['Shop-Kontrolle', check ? check.shoplaeufe_gelesen + ' Läufe gelesen · ' + check.shoplaeufe_fehlgeschlagen + ' ohne Erfolg · ' + check.shoplaeufe_unbekannt + ' unbekannt.' : 'Noch keine aktuelle Messung.'],
+      ['Ziel: Fehler abbauen', 'Gesamtzahl der Shopfehler: nicht gemessen. Ein grüner Lauf bestätigt nur seinen Prüfumfang.']
+    ];
+    info.forEach(function (pair) { var card=document.createElement('article'); var title=document.createElement('strong');title.textContent=pair[0];var text=document.createElement('p');text.textContent=pair[1];card.append(title,text);grid.appendChild(card); });
+    el.appendChild(grid);
+    if (central) {
+      var list=document.createElement('ol');central.hirn_planung.aufgaben.slice(0,3).forEach(function(a){var item=document.createElement('li');item.textContent=a.titel + ': ' + a.grund;list.appendChild(item);});el.appendChild(list);
+    }
+    var link=document.createElement('a'); link.href='https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/buero-zentrale.yml';link.textContent='Zentralenbericht und Obsidian-Vault öffnen';link.target='_blank';link.rel='noopener noreferrer';el.appendChild(link);
+    var note=document.createElement('p');note.textContent='Geplanter Takt ist kein unterbrechungsfreier Betrieb. Planung und Prüfung sind regelbasiert; bestehende Shop-Abläufe führen ihre eigenen Aufgaben aus.';el.appendChild(note);
   });
 
   dash.draw('n', function (el) {

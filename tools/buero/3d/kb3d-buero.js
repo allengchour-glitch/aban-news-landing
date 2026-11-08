@@ -147,6 +147,11 @@
         state = state || {};
         var ents = state.ents || [];
         made.ents = ents;
+        if (W.updateInfo) {
+          var stopped = ents.filter(function(e){return e.state === 'rot';}).length;
+          var stale = ents.filter(function(e){return e.state === 'alt';}).length;
+          W.updateInfo(ents.length + ' Stationen  /  ' + stopped + ' rote Signale  /  ' + stale + ' alte Messungen');
+        }
         if (state.colors) Object.keys(DEF).forEach(function (k) { if (state.colors[k]) col[k] = K.col(state.colors[k]); });
         sel = state.sel || null;
         W.seats.forEach(function (seat) { if (!seat.spec.boss) { seat.entId = null; seat.used = false; seat.state = 'alt'; seat.ent = null; } });

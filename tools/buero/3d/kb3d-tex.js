@@ -33,6 +33,17 @@
     return x;
   }
   var FONT = 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
+  T.infowand = function (info) {
+    var o = mk(1024, 512), g = o.g;
+    g.fillStyle='#0b1729'; g.fillRect(0,0,1024,512);
+    var grad=g.createLinearGradient(0,0,1024,512);grad.addColorStop(0,'#153c51');grad.addColorStop(1,'#16243c');g.fillStyle=grad;g.fillRect(12,12,1000,488);
+    g.fillStyle='#84e5de';g.font='bold 26px '+FONT;g.fillText('KI-BÜRO / ZENTRALE',48,66);
+    g.fillStyle='#f3f8ff';g.font='bold 46px '+FONT;g.fillText('Planen. Prüfen. Verbessern.',48,133);
+    ['01  PLANUNG & WISSEN','02  PRÜFUNG & AUSFÜHRUNG'].forEach(function(t,i){g.fillStyle='#254759';g.fillRect(48+i*478,173,450,145);g.fillStyle='#a5e9df';g.font='bold 22px '+FONT;g.fillText(t,68+i*478,214);g.fillStyle='#edf7fa';g.font='28px '+FONT;g.fillText(i===0?'Obsidian + Aufgaben':'Tests + Lieferpakete',68+i*478,274);});
+    g.fillStyle='#eff8fa';g.font='27px '+FONT;g.fillText(info || 'Noch kein Messstand geladen',48,375);
+    g.fillStyle='#9cb8c8';g.font='22px '+FONT;g.fillText('Statussignale sind keine vollständige Shopprüfung.',48,446);
+    return o.c;
+  };
   T.rng = rng; T.mk = mk; T.rr = rr; T.hashStr = hashStr; T.FONT = FONT;
 
   /* ---------- Böden ---------- */
