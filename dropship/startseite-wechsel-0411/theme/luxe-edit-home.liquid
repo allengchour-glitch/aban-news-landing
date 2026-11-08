@@ -132,7 +132,7 @@
           {% unless lx_trend_blocked %}
             {% assign lx_trend_count = lx_trend_count | plus: 1 %}
             <div class="lx-wishcard"><a class="lx-trend-card" href="{{ lx_trend.url }}" data-trend-product-id="{{ lx_trend.id }}" data-trend-handle="{{ lx_trend.handle | escape }}" aria-labelledby="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">
-              <div class="lx-trend-image">{{ lx_trend.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(max-width: 760px) 42vw, (max-width: 1100px) 28vw, 21vw', alt: '' }}</div>
+              <div class="lx-trend-image">{{ lx_trend.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(max-width: 760px) 42vw, (max-width: 1100px) 28vw, 21vw', alt: lx_trend.title }}</div>
               <div class="lx-trend-info">
                 <h3 id="lx-trend-name-{{ section.id }}-{{ lx_trend.id }}">{{ lx_trend.title | escape }}</h3>
                 <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_trend.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_trend %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
@@ -227,7 +227,7 @@
               {% assign lx_edit_count = lx_edit_count | plus: 1 %}
               {% assign lx_edit_name_key = 'luxe_home.extra.' | append: lx_edit_fields[2] %}
               <div class="lx-wishcard"><a class="lx-edit-product-card" href="{{ lx_edit_product.url }}" data-edit-product-id="{{ lx_edit_product.id }}" data-edit-handle="{{ lx_edit_product.handle | escape }}" aria-labelledby="lx-edit-name-{{ section.id }}-{{ lx_edit_product.id }}">
-                <div class="lx-edit-product-image">{{ lx_edit_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '280, 420, 560, 700', sizes: '(max-width: 760px) 68vw, 31vw', alt: '' }}</div>
+                <div class="lx-edit-product-image">{{ lx_edit_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '280, 420, 560, 700', sizes: '(max-width: 760px) 68vw, 31vw', alt: lx_edit_product.title }}</div>
                 <div class="lx-edit-product-info"><h3 id="lx-edit-name-{{ section.id }}-{{ lx_edit_product.id }}">{% if lx_edit_fields[2] == 'title' %}{{ lx_edit_product.title | escape }}{% else %}{{ lx_edit_name_key | t }}{% endif %}</h3>
                   <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_edit_product.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_edit_product %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
                   <p class="lx-edit-product-price">{% if lx_edit_product.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_edit_product.price_min | money_with_currency }}</p>
@@ -349,7 +349,7 @@
               {% assign lx_more_count = lx_more_count | plus: 1 %}
               {% assign lx_more_seen = lx_more_seen | append: lx_more_product_id | append: '|' %}
               <div class="lx-wishcard"><a class="lx-more-card" href="{{ lx_more_product.url }}" data-more-product-id="{{ lx_more_product.id }}" data-more-handle="{{ lx_more_product.handle | escape }}" aria-labelledby="lx-more-name-{{ section.id }}-{{ lx_more_product.id }}">
-                <div class="lx-more-photo">{{ lx_more_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '240, 360, 480, 560, 700', sizes: '(max-width: 760px) 44vw, 22vw', alt: '' }}</div>
+                <div class="lx-more-photo">{{ lx_more_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '240, 360, 480, 560, 700', sizes: '(max-width: 760px) 44vw, 22vw', alt: lx_more_product.title }}</div>
                 <div class="lx-more-info"><h3 id="lx-more-name-{{ section.id }}-{{ lx_more_product.id }}">{% if lx_more_name_key == '' %}{{ lx_more_product.title | escape }}{% else %}{{ lx_more_name_key | t }}{% endif %}</h3>
                   <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ lx_more_product.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: lx_more_product %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
                   <p class="lx-more-price">{% if lx_more_product.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ lx_more_product.price_min | money_with_currency }}</p>

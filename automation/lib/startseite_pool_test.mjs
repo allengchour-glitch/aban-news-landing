@@ -109,6 +109,9 @@ import { readFileSync } from 'node:fs';
   pruef('Vertrag: Poolgrösse wird auf 50 begrenzt (collection.products liefert höchstens 50)', (sec.match(/products_count \| at_most: 50/g) || []).length === 3);
   pruef('Vertrag: Gültigkeits-Snippet prüft kaufbar, Bild, Preis, Tags und «nicht-…-bewerben»', hat(ok, /p\.available and p\.featured_image and p\.price_min > 0 and p\.tags\.size > 0/) && hat(ok, /'nicht-' and tl contains 'bewerben'/));
   pruef('Vertrag: jede Reihe prüft Karten über lx-rot-ok (Trends, Schmuck/Wohnen, Mehr je zwei Schleifen)', (sec.match(/render 'lx-rot-ok'/g) || []).length === 6);
+  pruef('Vertrag: Trendbilder nennen das angezeigte Produkt', hat(sec, /class="lx-trend-image"[^\n]*alt: lx_trend\.title/));
+  pruef('Vertrag: Schmuck- und Wohnbilder nennen das angezeigte Produkt', hat(sec, /class="lx-edit-product-image"[^\n]*alt: lx_edit_product\.title/));
+  pruef('Vertrag: weitere Produktbilder nennen das angezeigte Produkt', hat(sec, /class="lx-more-photo"[^\n]*alt: lx_more_product\.title/));
 }
 
 console.log(fehler ? `\n${fehler} FEHLER` : '\nalle Prüfungen bestanden');
