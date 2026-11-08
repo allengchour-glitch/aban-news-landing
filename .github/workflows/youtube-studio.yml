@@ -34,6 +34,10 @@ jobs:
           python-version: '3.12'
       - name: Studiologik prüfen
         run: python3 -B -m unittest discover -s tools/youtube_studio -p 'test_*.py'
+      - name: Video-Werkzeuge installieren
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
       - name: Drei vorhandene Folgen als Entwurf bauen
         run: |
           command -v ffmpeg
