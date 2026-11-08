@@ -28,6 +28,7 @@ on:
       - 'tools/buero/test_tagespflege.py'
       - 'tools/buero/auto_reparatur.py'
       - 'tools/buero/test_auto_reparatur.py'
+      - 'tools/buero/test_metricool_anzeige.py'
       - 'build-pages.sh'
       - '.github/workflows/cf-deploy-mainsite.yml'
       - 'tools/buero/make_buero.py'
