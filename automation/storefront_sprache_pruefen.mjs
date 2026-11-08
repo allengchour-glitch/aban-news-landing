@@ -5,6 +5,7 @@
  * Aufruf: node automation/storefront_sprache_pruefen.mjs snapshot.json
  * Live:   URLS='https://luxestyle.ch/a,https://luxestyle.ch/fr/a' \
  *         node automation/storefront_sprache_pruefen.mjs
+ * Streng: STRICT_DE=1 blockiert auch Titel mit mehreren englischen Lehnwoertern.
  * JSON: {"pages":[{"url":"https://luxestyle.ch/...","locale":"de", "title":"...",
  *        "metaDescription":"...", "h1":"...", "uiTexts":["..."], "visibleText":"..."}]}
  * Der Snapshot-Modus macht keine Netzabfrage. Der Live-Modus nutzt nur GET auf den expliziten
@@ -53,6 +54,25 @@ export function seiteAusHtml(url, html) {
     const text = attribute(tag, 'aria-label') || attribute(tag, 'value');
     if (text) uiTexts.push(text);
   }
+  // Kurze sichtbare Texte nur aus Navigation, Breadcrumbs und Footer. Die ganze Seite als
+  // UI-Phrase zu behandeln wuerde Produktbeschreibungen und Skriptfragmente falsch markieren.
+  const regionen = [];
+  for (const match of String(html).matchAll(/<(nav|footer)\b[^>]*>([\s\S]*?)<\/\1>/gi)) regionen.push(match[2]);
+  for (const match of String(html).matchAll(/<([a-z][a-z0-9]*)\b[^>]*(?:class|id)\s*=\s*["'][^"']*breadcrumb[^"']*["'][^>]*>([\s\S]*?)<\/\1>/gi)) regionen.push(match[2]);
+  for (const region of regionen.slice(0, 12)) {
+    for (const match of region.matchAll(/<(a|span|p|li)\b[^>]*>([\s\S]*?)<\/\1>/gi)) {
+      const text = htmlText(match[2]);
+      if (text && text.length <= 80) uiTexts.push(text);
+      if (uiTexts.length >= 80) break;
+    }
+    if (uiTexts.length >= 80) break;
+  }
+  const imageAltTexts = [];
+  for (const tag of String(html).match(/<img\b[^>]*\balt\s*=[^>]*>/gi) || []) {
+    const text = attribute(tag, 'alt');
+    if (text && text.length <= 160) imageAltTexts.push(text);
+    if (imageAltTexts.length >= 80) break;
+  }
   const langTag = String(html).match(/<html\b[^>]*>/i)?.[0] || '';
   const locale = attribute(langTag, 'lang') || (/^\/fr(?:\/|$)/.test(pfad(url)) ? 'fr' : 'de');
   return {
@@ -62,6 +82,7 @@ export function seiteAusHtml(url, html) {
     metaDescription,
     h1,
     uiTexts: [...new Set(uiTexts)].slice(0, 80),
+    imageAltTexts: [...new Set(imageAltTexts)].slice(0, 80),
     visibleText: htmlText(html),
   };
 }
@@ -122,7 +143,7 @@ function dePfadVonFr(url) {
   return pathname.replace(/^\/fr(?=\/|$)/, '') || '/';
 }
 
-export function pruefeSnapshot(snapshot) {
+export function pruefeSnapshot(snapshot, { strictDe = false } = {}) {
   if (!snapshot || !Array.isArray(snapshot.pages)) throw new Error('Snapshot braucht ein pages-Array');
   const pages = snapshot.pages;
   const deNachPfad = new Map(pages
@@ -140,7 +161,7 @@ export function pruefeSnapshot(snapshot) {
     if (isFr) {
       locales.push({ url: page.url || '', fehler: page.fetchError || '', ...pruefeFrDeutschDuplikat({ de: deNachPfad.get(dePfadVonFr(page.url)), fr: page }) });
     } else if (!locale || locale.startsWith('de')) {
-      seiten.push({ url: page.url || '', fehler: page.fetchError || '', ...pruefeDeSeite(page) });
+      seiten.push({ url: page.url || '', fehler: page.fetchError || '', ...pruefeDeSeite(page, { strictDe }) });
     }
   }
   const blocked = [...seiten, ...locales].filter(row => row.status === 'BLOCKED').length;
@@ -158,7 +179,7 @@ async function main() {
   const snapshot = liveUrls.length
     ? { pages: await holeSeiten(liveUrls, { host: process.env.STOREFRONT_HOST || 'luxestyle.ch' }) }
     : JSON.parse(readFileSync(file, 'utf8'));
-  const result = pruefeSnapshot(snapshot);
+  const result = pruefeSnapshot(snapshot, { strictDe: process.env.STRICT_DE === '1' });
   console.log(JSON.stringify(result, null, 2));
   if (result.status === 'BLOCKED') process.exitCode = 1;
   else if (result.status === 'UNKNOWN') process.exitCode = 2;

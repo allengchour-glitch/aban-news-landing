@@ -10,7 +10,7 @@
 const EN_UI = new Set([
   'add to cart', 'buy it now', 'choose options', 'continue shopping', 'view product',
   'sold out', 'out of stock', 'in stock', 'checkout', 'search', 'account', 'cart',
-  'quantity', 'color', 'colour', 'size',
+  'quantity', 'color', 'colour', 'size', 'home', 'powered by shopify', 'product mockup',
 ]);
 
 // Bewusst ohne im Deutschen uebliche Shopwoerter wie Beauty, Gaming, Hoodie, T-Shirt oder Yoga.
@@ -22,6 +22,7 @@ const EN_KATALOG = new Set([
   'nap', 'soft', 'solid', 'strap', 'wireless', 'women', 'womens',
 ]);
 const EN_EINDEUTIG = new Set(['blanket', 'jellyfish', 'jumpsuit']);
+const EN_STRIKT = new Set(['beauty', 'lifestyle', 'premium', 'shop']);
 
 const DE_MARKER = new Set([
   'ab', 'aus', 'bei', 'damen', 'dein', 'deine', 'der', 'die', 'entdecken', 'farbe',
@@ -62,9 +63,9 @@ function norm(value) {
 
 /**
  * @param {unknown} value
- * @param {{feld?: string, art?: 'titel'|'meta'|'ui'}} optionen
+ * @param {{feld?: string, art?: 'titel'|'meta'|'ui', strictDe?: boolean}} optionen
  */
-export function pruefeDeText(value, { feld = 'text', art = 'titel' } = {}) {
+export function pruefeDeText(value, { feld = 'text', art = 'titel', strictDe = false } = {}) {
   const text = sichtbarerText(value);
   if (!text) return { status: 'UNKNOWN', feld, grund: 'Text fehlt' };
 
@@ -77,28 +78,32 @@ export function pruefeDeText(value, { feld = 'text', art = 'titel' } = {}) {
   const funktion = einzigartigeTreffer(tokens, EN_FUNKTION);
   const katalog = einzigartigeTreffer(tokens, EN_KATALOG);
   const eindeutig = einzigartigeTreffer(tokens, EN_EINDEUTIG);
+  const strikt = einzigartigeTreffer(tokens, EN_STRIKT);
   const deutlichEnglisch = art === 'meta'
     ? funktion.length >= 2 || (funktion.length >= 1 && katalog.length >= 1) || katalog.length >= 3
-    : funktion.length >= 1 || katalog.length >= 2 || eindeutig.length >= 1;
+    : funktion.length >= 1 || katalog.length >= 2 || eindeutig.length >= 1 || (strictDe && strikt.length >= 2);
 
   if (deutlichEnglisch) {
     return {
       status: 'BLOCKED',
       feld,
-      grund: `deutlich englische Woerter: ${[...new Set([...funktion, ...katalog, ...eindeutig])].join(', ')}`,
+      grund: `deutlich englische Woerter: ${[...new Set([...funktion, ...katalog, ...eindeutig, ...(strictDe ? strikt : [])])].join(', ')}`,
     };
   }
   return { status: 'OK', feld };
 }
 
 /** Prueft nur die gelieferten Felder; das Ergebnis ist kein Vollkatalog-Beleg. */
-export function pruefeDeSeite(seite = {}) {
+export function pruefeDeSeite(seite = {}, { strictDe = false } = {}) {
   const pruefungen = [
-    pruefeDeText(seite.title, { feld: 'title', art: 'titel' }),
-    pruefeDeText(seite.metaDescription, { feld: 'metaDescription', art: 'meta' }),
-    pruefeDeText(seite.h1, { feld: 'h1', art: 'titel' }),
+    pruefeDeText(seite.title, { feld: 'title', art: 'titel', strictDe }),
+    pruefeDeText(seite.metaDescription, { feld: 'metaDescription', art: 'meta', strictDe }),
+    pruefeDeText(seite.h1, { feld: 'h1', art: 'titel', strictDe }),
     ...(Array.isArray(seite.uiTexts)
       ? seite.uiTexts.map((text, index) => pruefeDeText(text, { feld: `uiTexts[${index}]`, art: 'ui' }))
+      : []),
+    ...(Array.isArray(seite.imageAltTexts)
+      ? seite.imageAltTexts.map((text, index) => pruefeDeText(text, { feld: `imageAltTexts[${index}]`, art: 'ui' }))
       : []),
   ];
   const blocker = pruefungen.filter(pruefung => pruefung.status === 'BLOCKED');

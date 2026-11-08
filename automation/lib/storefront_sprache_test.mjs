@@ -16,6 +16,11 @@ test('deutsche UI bleibt erlaubt', () => {
     assert.equal(pruefeDeText(text, { art: 'ui' }).status, 'OK', text);
   }
 });
+test('belegte englische Navigation, Fusszeile und Bildbeschriftung werden blockiert', () => {
+  for (const text of ['Home', 'Powered by Shopify', 'Product mockup']) {
+    assert.equal(pruefeDeText(text, { art: 'ui' }).status, 'BLOCKED', text);
+  }
+});
 test('eindeutig englische und gemischte Produkttitel werden blockiert', () => {
   for (const text of [
     'Small Blanket Nap Blanket',
@@ -36,6 +41,13 @@ test('übliche deutsche Shop-Titel mit Lehnwörtern schlagen nicht an', () => {
     'Yoga-Set für Damen',
     'Sternenlicht-Projektor fürs Schlafzimmer',
   ]) assert.equal(pruefeDeText(text).status, 'OK', text);
+});
+test('strenger Modus blockiert stark englisch geprägten Startseitentitel', () => {
+  const title = 'Premium Mode, Beauty & Lifestyle Shop Schweiz';
+  assert.equal(pruefeDeText(title).status, 'OK');
+  assert.equal(pruefeDeText(title, { strictDe: true }).status, 'BLOCKED');
+  assert.equal(pruefeDeText('Beauty & Pflege', { strictDe: true }).status, 'OK');
+  assert.equal(pruefeDeText('Premium Schmuck', { strictDe: true }).status, 'OK');
 });
 test('englische Meta-Beschreibung wird blockiert', () => {
   assert.equal(pruefeDeText('Discover our new blanket collection with selected products.', { art: 'meta' }).status, 'BLOCKED');
@@ -84,6 +96,20 @@ test('HTML-Extraktion liest Title, Meta, H1 und UI ohne Skripte auszuführen', (
   assert.equal(page.metaDescription, 'Discover our products with care.');
   assert.deepEqual(page.uiTexts, ['Add to cart']);
   assert.equal(pruefeSnapshot({ pages: [page] }).status, 'BLOCKED');
+});
+test('HTML-Extraktion findet echte kurze Texte in Breadcrumb, Footer und img alt', () => {
+  const page = seiteAusHtml('https://luxestyle.ch/pages/selbst-gestalten', `<html lang="de"><head>
+    <title>Premium Mode, Beauty & Lifestyle Shop Schweiz</title></head><body>
+    <nav><a href="/">Home</a><span>Selbst gestalten</span></nav>
+    <main><h1>Selbst gestalten</h1><img src="mockup.jpg" alt="Product mockup"></main>
+    <footer><p><a href="https://shopify.com">Powered by Shopify</a></p></footer></body></html>`);
+  assert.ok(page.uiTexts.includes('Home'));
+  assert.ok(page.uiTexts.includes('Powered by Shopify'));
+  assert.deepEqual(page.imageAltTexts, ['Product mockup']);
+  const standard = pruefeSnapshot({ pages: [page] });
+  assert.equal(standard.status, 'BLOCKED');
+  assert.ok(standard.seiten[0].blocker.some(item => item.feld.startsWith('imageAltTexts')));
+  assert.equal(pruefeSnapshot({ pages: [{ ...page, uiTexts: [], imageAltTexts: [] }] }, { strictDe: true }).status, 'BLOCKED');
 });
 test('Live-Leser begrenzt URLs, bleibt beim Host und macht nur GET', async () => {
   const calls = [];
