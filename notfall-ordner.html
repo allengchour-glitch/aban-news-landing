@@ -112,12 +112,12 @@ footer a{color:var(--muted)}
   <section id="kaufen">
     <div class="buybox">
       <div class="price">19 €<small> · ausfüllbares PDF · A4 · einmalig</small></div>
-      <p>Sofort-Download. Einmal zahlen, für die ganze Familie nutzen.</p>
-      <p id="buywrap"><a class="btn" id="buybtn" href="#">Jetzt kaufen</a></p>
+      <p>Digitale Ausgabe für die ganze Familie. Lieferweg und Verfügbarkeit werden vor der Zahlung bestätigt.</p>
+      <p id="buywrap"><a class="btn" id="buybtn" href="mailto:hallo@abannews.com?subject=Der%20Notfall-Ordner&amp;body=Hallo%20Aban%2C%20ich%20interessiere%20mich%20f%C3%BCr%20den%20Notfall-Ordner.%20Bitte%20best%C3%A4tige%20Verf%C3%BCgbarkeit%2C%20Zahlungsweg%20und%20Lieferung.">Per E-Mail anfragen</a></p>
       <p style="margin-top:10px">
         <a href="/downloads/notfall-ordner-leseprobe.pdf" download>Gratis-Leseprobe mit der kompletten Notfall-Seite ↓</a>
       </p>
-      <p class="note">Zahlung über Lemon Squeezy (Karte/PayPal, MwSt automatisch, Rechnung inklusive).</p>
+      <p class="note" id="bestellhinweis">Der Knopf öffnet eine vorbereitete E-Mail. Noch keine Zahlung oder Bestellung: Verfügbarkeit, Zahlungsweg und Lieferung werden zuerst geklärt.</p>
     </div>
     <p class="note">Also available in English (made for expats in DACH): <a href="/emergency-binder.html">The Emergency Binder</a>.</p>
     <p class="note">Passt dazu: die <a href="/vorlagen-set.html">Klartext-Vorlagen</a> für Selbstständige und der kostenlose <a href="/online-tools.html">Werkzeugkasten</a>.</p>
@@ -135,10 +135,10 @@ footer a{color:var(--muted)}
 var NOTFALL_BUY_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.NOTFALL_BUY_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
-  if(NOTFALL_BUY_URL){ b.href=NOTFALL_BUY_URL; b.target="_blank"; b.rel="noopener"; }
-  else{
-    b.href="mailto:hallo@abannews.com?subject=Der%20Notfall-Ordner&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20den%20Notfall-Ordner%20(ausf%C3%BCllbares%20PDF)%20kaufen.";
-    b.textContent="Per Mail bestellen";
+  if(NOTFALL_BUY_URL){
+    b.href=NOTFALL_BUY_URL; b.target="_blank"; b.rel="noopener";
+    b.textContent="Zum Checkout";
+    document.getElementById("bestellhinweis").textContent="Der Knopf öffnet den Checkout für den Notfall-Ordner. Bitte prüfe die Zahlungs- und Lieferangaben vor dem Kauf.";
   }
 })();
 </script>
