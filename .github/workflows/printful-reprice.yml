@@ -79,13 +79,3 @@ jobs:
             ${{ runner.temp }}/printful-katalog/katalog_index.json
           if-no-files-found: error
           retention-days: 1
-
-      - name: Begrenzter Log-Fallback für gesperrten Artifact-Host
-        env:
-          SG_DIR: ${{ runner.temp }}/printful-katalog
-        run: |
-          set -euo pipefail
-          tar -C "$SG_DIR" -czf "$RUNNER_TEMP/printful-katalog-target.tgz" katalog katalog_fehler.json katalog_index.json
-          echo 'CATALOG_TGZ_BASE64_BEGIN'
-          base64 -w 76 "$RUNNER_TEMP/printful-katalog-target.tgz"
-          echo 'CATALOG_TGZ_BASE64_END'
