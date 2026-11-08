@@ -182,6 +182,8 @@ jobs:
           node --check automation/shop_brain.mjs
           node --check automation/video-autopost-meta.mjs
           node --check automation/seo-optimizer.mjs
+          node --check automation/storefront_sprache_pruefen.mjs
+          node --check automation/lib/storefront_sprache.mjs
           node --check automation/fortura_galaxus_lauf.mjs
           node --check automation/lib/galaxus_treffer.mjs
           node --check automation/fortura_preis_kandidaten.mjs
@@ -226,6 +228,7 @@ jobs:
           node automation/lib/lieferbarkeit_test.mjs
           # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
           node automation/lib/seo_titel_test.mjs
+          node automation/lib/storefront_sprache_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/galaxus_treffer_test.mjs
           node automation/lib/trend_auswahl_test.mjs
