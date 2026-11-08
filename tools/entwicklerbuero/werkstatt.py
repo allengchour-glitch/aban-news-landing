@@ -65,8 +65,10 @@ def lauf(out):
         {"id": "DEMO-1", "datum": "2026-11-01", "status": "offen"}], date(2026, 11, 8)), ensure_ascii=False), encoding="utf-8")
     (out / "webseiten-demo.json").write_text(json.dumps(automationen.seite_pruefen('<title>Demobetrieb</title>'), ensure_ascii=False), encoding="utf-8")
     with zipfile.ZipFile(out / "automationen.zip", "w", zipfile.ZIP_DEFLATED) as z:
-        for name in ("automationen.py", "test_automationen.py", "PROJEKTE.md"):
+        for name in ("automationen.py", "test_automationen.py", "projekte.py", "PROJEKTE.md"):
             z.write(ROOT / name, arcname=name)
+        for name in DATEIEN:
+            z.write(PRODUKT / name, arcname="anfragen_assistent/" + name)
     status["projekte"] = projekte.bericht(out, True)
     status["stationen"]["bauen"] = "bestanden"
     (out / "angebotsentwurf.txt").write_text((ROOT / "PROJEKT.md").read_text(encoding="utf-8"), encoding="utf-8")
