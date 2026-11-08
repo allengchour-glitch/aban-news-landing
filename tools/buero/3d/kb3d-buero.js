@@ -139,7 +139,7 @@
         if (!el2) return;
         el2.classList.add('kb3-label');
         over.appendChild(el2);
-        labels.push({ el: el2, id: ent.id, p: [ax, ay, az], sel: ent.id === sel });
+        labels.push({ el: el2, id: ent.id, room: ent.bereich || (ent.id === '__chef' ? 'Chefbüro' : ''), p: [ax, ay, az], sel: ent.id === sel });
       }
 
       /* Neue Daten: ents = [{id, bereich, figur, kurz, name, state, pose, menge}], chef = {pose, blaetter} */
@@ -389,7 +389,7 @@
         // Beschriftungen
         var pw = made.w, ph = made.h, near = cam.dist < LABEL_DIST, pr = {};
         for (i = 0; i < labels.length; i++) {
-          var lb = labels[i], show = near || lb.sel;
+          var lb = labels[i], show = (near || lb.sel) && (viewName === 'alle' || lb.room === viewName || lb.sel);
           if (show) {
             var q = cam.project(lb.p[0], lb.p[1], lb.p[2], pw, ph, pr);
             if (q && q.x > -60 && q.x < pw + 60 && q.y > -20 && q.y < ph + 40) { lb.el.style.display = ''; lb.el.style.transform = 'translate(' + Math.round(q.x) + 'px,' + Math.round(q.y) + 'px) translate(-50%,-100%)'; lb.el.style.zIndex = String(Math.round(1000 - q.w * 10)); }

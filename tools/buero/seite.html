@@ -273,16 +273,35 @@
 .kb-infowand-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;}
 .kb-infowand article {background:#ffffff0c;border:1px solid #ffffff25;border-radius:12px;padding:16px;}
 .kb-infowand a {color:#92e2ed;}
+/* Raum für das Büro, klare Bedienung auf dem Handy. */
+.kb {max-width:78rem;gap:20px;}
+.kb-head {padding:24px;border:1px solid var(--color-border-line);border-radius:20px;background:linear-gradient(120deg,var(--color-panel),var(--color-bg));}
+.kb-eyebrow {font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-fg-muted);}
+.kb-title {font-family:var(--font-anthropic-sans);font-weight:650;font-size:clamp(30px,5vw,46px);letter-spacing:-.04em;}
+.kb-schnell {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.kb-schnell button {display:flex;flex-direction:column;gap:8px;align-items:flex-start;text-align:left;min-height:130px;padding:20px;background:var(--color-panel);color:var(--color-fg);border:1px solid var(--color-border-line);border-radius:16px;cursor:pointer;}
+.kb-schnell button:hover {border-color:#4b9f9d;box-shadow:0 4px 18px #163f4914;}
+.kb-schnell span,.kb-schnell small {font-size:12px;color:var(--color-fg-muted);}
+.kb-schnell strong {font-size:18px;}
+.kb-zentrale-panel,.kb-werkzeuge {border:1px solid var(--color-border-line);border-radius:14px;padding:14px 18px;}
+.kb summary {cursor:pointer;min-height:28px;line-height:28px;}
+.kb-tabs {position:sticky;top:0;background:var(--color-bg);z-index:20;padding-top:8px;}
+.kb-listenfilter {display:flex;flex-direction:column;gap:12px;margin-bottom:20px;padding:18px;background:var(--color-panel);border-radius:14px;}
+.kb-listenfilter input {width:100%;min-height:46px;padding:12px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);font:inherit;}
+.kb-listenfilter button {padding:10px 14px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);cursor:pointer;}
+.kb-listenfilter button[aria-pressed=true] {background:#1d545d;color:white;}
+.kb3-stage {scroll-margin-top:65px;}
+@media(max-width:640px){.kb-head{padding:18px;}.kb-schnell{grid-template-columns:1fr;gap:8px;}.kb-schnell button{min-height:74px;padding:14px 16px;gap:4px;}.kb-schnell small{display:none;}.kb-schnell strong{font-size:16px;}.kb-infowand{padding:16px;}.kb-chip{padding:9px 11px;}.kb-listenfilter button{margin-bottom:4px;}}
 </style>
 
 <div class="kb">
-  <section class="kb-infowand" data-draw="infowand" data-source="buero" aria-label="Große Infowand"></section>
   <header class="kb-head">
+    <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
     <p class="kb-take" data-t="rot" hidden>Etwas steht still. Die rote Zeile unten sagt, was.</p>
     <p class="kb-take" data-t="alt" hidden>Einige Messungen sind zu alt, um ihnen zu trauen.</p>
-    <p class="kb-take" data-t="gelb" hidden>Nichts steht still. Einiges braucht einen Blick.</p>
-    <p class="kb-take" data-t="gruen" hidden>Alles läuft.</p>
+    <p class="kb-take" data-t="gelb" hidden>Einige Stationen brauchen eine Prüfung.</p>
+    <p class="kb-take" data-t="gruen" hidden>Die gemessenen Stationen zeigen kein Warnsignal.</p>
     <p class="kb-stand">Zuletzt gemessen: <b data-draw="stand" data-source="buero">—</b> Schweizer Zeit</p>
   </header>
 
@@ -294,6 +313,13 @@
     <li class="kb-chip st-alt" data-alt-line hidden><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><b data-draw="n" data-st="alt" data-source="buero">—</b><span>Alt</span></li>
   </ul>
 
+  <nav class="kb-schnell" aria-label="Direkt ins Büro">
+    <button type="button" data-open-room data-cmd="view:Shop"><span>01 / Shop</span><strong>Shop betreuen</strong><small>Auswahl, Bestand und Versand</small></button>
+    <button type="button" data-open-room data-cmd="view:Entwicklerbüro"><span>02 / Entwicklung</span><strong>Projekte weiterbringen</strong><small>Automationen, Tests und Fortschritt</small></button>
+    <button type="button" data-open-room data-cmd="view:YouTube-Studio"><span>03 / YouTube</span><strong>Inhalte produzieren</strong><small>Skripte, Videos und Auswertung</small></button>
+  </nav>
+  <details class="kb-zentrale-panel"><summary>Infowand · Planung, Wissen und Prüfungen</summary><section class="kb-infowand" data-draw="infowand" data-source="buero" aria-label="Große Infowand"></section></details>
+  <details class="kb-werkzeuge"><summary>Aufgaben und Werkzeuge öffnen</summary>
   <section class="kb-arbeiten" aria-labelledby="kb-arbeiten-titel">
     <h2 id="kb-arbeiten-titel">Was du jetzt tun kannst</h2>
     <p class="kb-hint">Aufgabe öffnen → Stand prüfen → nächsten Schritt erledigen. Die Links öffnen die passenden Werkzeuge.</p>
@@ -304,6 +330,7 @@
     </div>
   </section>
 
+  </details>
   <div class="kb-tabs" role="tablist" aria-label="Ansicht">
     <button type="button" class="kb-tab" role="tab" id="kb-tab-3d" data-tab="3d" aria-selected="true" aria-controls="kb-pane-3d">Büro 3D</button>
     <button type="button" class="kb-tab" role="tab" id="kb-tab-buero" data-tab="buero" aria-selected="false" aria-controls="kb-pane-buero" tabindex="-1">Büro 2D</button>
@@ -410,6 +437,11 @@
   </div>
 
   <div class="kb-pane" id="kb-pane-liste" data-pane="liste" role="tabpanel" aria-labelledby="kb-tab-liste" hidden>
+    <div class="kb-listenfilter">
+      <label for="kb-suche">Aufgaben, Projekte oder Räume suchen</label>
+      <input id="kb-suche" type="search" placeholder="Zum Beispiel: Video, Bestand, E-Mail" autocomplete="off">
+      <div><button type="button" data-filter="alle" aria-pressed="true">Alle Einträge</button> <button type="button" data-filter="offen" aria-pressed="false">Braucht Aufmerksamkeit</button></div>
+    </div>
     <section class="kb-card" aria-labelledby="h-shop">
       <h2 id="h-shop">Shop</h2>
       <p class="kb-sub">Automaten, die den Shop pflegen.</p>
@@ -920,6 +952,7 @@
     el.dataset.where = 'id=' + encodeURIComponent(best.id);
   });
 
+  var suchtext = '', nurOffen = false;
   dash.draw('rows', function (el) {
     var data = rows();
     var was = {};
@@ -935,7 +968,7 @@
     el.classList.remove('dash-skeleton');
     var now = Date.now();
     var mine = data
-      .filter(function (r) { return r.bereich === el.dataset.bereich; })
+      .filter(function (r) { return r.bereich === el.dataset.bereich && (!nurOffen || eff(r, now) !== 'gruen') && (!suchtext || [r.name,r.bereich,r.befund,r.naechster_schritt].join(' ').toLocaleLowerCase('de').indexOf(suchtext) >= 0); })
       .map(function (r) { return { r: r, e: eff(r, now) }; })
       .sort(function (a, b) { return ORDER.indexOf(a.e) - ORDER.indexOf(b.e); });
     el.replaceChildren.apply(el, mine.map(function (x) { return build(x.r, x.e, was); }));
@@ -1041,14 +1074,27 @@
 
   if (root) {
     root.addEventListener('click', function (ev) {
-      var t = ev.target && ev.target.closest ? ev.target.closest('[data-pick],[data-schliessen],[data-cmd]') : null;
+      var t = ev.target && ev.target.closest ? ev.target.closest('[data-pick],[data-schliessen],[data-cmd],[data-filter]') : null;
       if (!t || !root.contains(t)) return;
+      if (t.hasAttribute('data-filter')) {
+        nurOffen = t.getAttribute('data-filter') === 'offen';
+        root.querySelectorAll('[data-filter]').forEach(function(b){b.setAttribute('aria-pressed',String(b === t));});
+        dash.draw('rows'); return;
+      }
+      if (t.hasAttribute('data-open-room')) {
+        zeige('3d'); dash.draw('szene3d'); befehl3d(t);
+        var stage = root.querySelector('.kb3-stage'); if (stage) stage.scrollIntoView({block:'start',behavior:'auto'});
+        return;
+      }
       if (t.hasAttribute('data-cmd')) { befehl3d(t); return; }
       if (t.hasAttribute('data-schliessen')) waehle(null, false);
       else waehle(t.getAttribute('data-pick'), true);
     });
   }
 
+  if (root) root.querySelectorAll('.kb-zentrale-panel,.kb-werkzeuge').forEach(function(d){d.addEventListener('toggle',function(){if(d.open) dash.draw('infowand');});});
+  var suche = root && root.querySelector('#kb-suche');
+  if (suche) suche.addEventListener('input',function(){suchtext=suche.value.trim().toLocaleLowerCase('de');dash.draw('rows');});
   // Ansichten: 3D, 2D, Liste
   function zeige(name) {
     document.querySelectorAll('.kb-tab').forEach(function (b) {
