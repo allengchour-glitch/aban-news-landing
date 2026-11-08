@@ -100,7 +100,7 @@ async function bildHolen(url, fetchFn, sleepFn, zeitlimitMs) {
 }
 
 export async function bildKlassifizieren({
-  url, key, keyFallback = null, model, base, prompt,
+  url, key, keyFallback = null, model, modelFallback = null, base, prompt,
   fetchFn = fetch, sleepFn = warte, versuche = 4, zeitlimitMs = 45000, bildZeitlimitMs = 30000, maxTokens = 1024,
 }) {
   // 1) Bild holen (einmal, auch wenn danach der Schlüssel wechselt).
@@ -111,11 +111,14 @@ export async function bildKlassifizieren({
     contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: mime, data: bild.buf.toString('base64') } }] }],
     generationConfig: { temperature: 0, maxOutputTokens: maxTokens, responseMimeType: 'application/json' },
   });
-  const gemeinsam = { endpoint: `${base}/models/${model}:generateContent`, body, fetchFn, sleepFn, zeitlimitMs };
+  const gemeinsam = { body, fetchFn, sleepFn, zeitlimitMs };
+  // Der Gratis-Schlüssel darf oft nur das kleine Modell (GEMESSEN 08.11.: gemini-3.8-flash sofort 429, gemini-flash-lite-latest 200), darum
+  // kann der Ersatzschlüssel ein anderes Modell bekommen.
+  const endpunkt = (m) => `${base}/models/${m}:generateContent`;
   // 2) Mit dem ersten Schlüssel fragen. Gibt es einen Ersatz, genügen zwei Versuche: ein klemmender Gratis-Schlüssel soll nicht Minuten kosten.
-  const erst = await fragen({ ...gemeinsam, schluessel: key, maxV: keyFallback ? Math.min(versuche, 2) : versuche });
+  const erst = await fragen({ ...gemeinsam, endpoint: endpunkt(model), schluessel: key, maxV: keyFallback ? Math.min(versuche, 2) : versuche });
   if ((erst.ausfall || erst.fatal) && keyFallback) {
-    const zweit = await fragen({ ...gemeinsam, schluessel: keyFallback, maxV: versuche });
+    const zweit = await fragen({ ...gemeinsam, endpoint: endpunkt(modelFallback || model), schluessel: keyFallback, maxV: versuche });
     return abschluss({ ...zweit, wechsel: true, wechselGrund: erst.fatal ? `http-${erst.fatal.status}` : erst.grund });
   }
   return abschluss(erst);

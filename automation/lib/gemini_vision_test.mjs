@@ -206,4 +206,19 @@ const ok = (name) => { n += 1; console.log('ok    ', name); };
   assert.equal(JSON.parse(png.gemini()[0].opt.body).contents[0].parts[1].inline_data.mime_type, 'image/png', 'ohne brauchbaren Dateityp entscheidet die Endung');
   ok('Bild einmal geholt; Dateityp aus dem Kopf, sonst aus der Endung');
 }
+{ // 18) Der Ersatzschlüssel kann ein anderes Modell bekommen (Gratis-Schlüssel: kleines Modell, Ersatz: grosses)
+  const modelle = [];
+  const f = async (u, opt) => {
+    if (istBild(u)) return antwort(200, null);
+    modelle.push(u.split('/models/')[1].split(':')[0] + '@' + opt.headers['x-goog-api-key']);
+    return opt.headers['x-goog-api-key'] === 'gratis' ? antwort(429, { error: {} }) : gut('{"zeigt_produkt":true}');
+  };
+  const r = await bildKlassifizieren({ ...stamm, model: 'klein', modelFallback: 'gross', key: 'gratis', keyFallback: 'bezahlt', fetchFn: f, sleepFn });
+  assert.equal(r.ok, true); assert.deepEqual(modelle, ['klein@gratis', 'klein@gratis', 'gross@bezahlt']);
+  const g = [];
+  const h = async (u, opt) => { if (istBild(u)) return antwort(200, null); g.push(u.split('/models/')[1].split(':')[0]); return opt.headers['x-goog-api-key'] === 'gratis' ? antwort(503, { error: {} }) : gut('{}'); };
+  await bildKlassifizieren({ ...stamm, model: 'einziges', key: 'gratis', keyFallback: 'bezahlt', fetchFn: h, sleepFn });
+  assert.deepEqual(g, ['einziges', 'einziges', 'einziges'], 'ohne modelFallback bleibt das Modell gleich');
+  ok('Ersatzschlüssel mit eigenem Modell; ohne Angabe bleibt das erste Modell');
+}
 console.log(`ALLES OK (${n} Gruppen)`);

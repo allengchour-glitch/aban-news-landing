@@ -22,7 +22,7 @@
  * Report (kein Umsortieren). No-op ohne GEMINI_API_KEY bzw. Shopify-Creds.
  *
  * ENV (GitHub-Secrets): GEMINI_API_KEY · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID · SHOPIFY_CLIENT_SECRET
- *      GEMINI_MODEL (Default gemini-3.8-flash) · BATCH (40) · MIN_PX (800) · APPLY=1 (Vorgabe: nur Bericht)
+ *      GEMINI_MODEL (Default gemini-3.8-flash) · GEMINI_MODEL_FALLBACK (Modell des Ersatzschlüssels) · BATCH (40) · MIN_PX (800) · APPLY=1 (Vorgabe: nur Bericht)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -37,6 +37,8 @@ const SHOP = process.env.SHOPIFY_SHOP || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+const MODEL_FALLBACK = process.env.GEMINI_MODEL_FALLBACK || MODEL; // Modell für den Ersatzschlüssel (der Gratis-Schlüssel darf oft nur das kleine Modell)
+let MODEL_AKTIV = MODEL;
 const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
 const API_VER = process.env.SHOPIFY_API_VERSION || '2025-01';
 const BATCH = Math.max(1, parseInt(process.env.BATCH || '40', 10) || 40);
@@ -84,8 +86,8 @@ const PROMPT = 'Du bewertest die handwerkliche Qualität eines Produktbilds für
 // Ehrliche Zählung: ein Aufruf ohne echte Antwort gilt NIE als «Bild in Ordnung» (siehe lib/gemini_vision.mjs).
 const gem = { ok: 0, fehler: 0, folge: 0, gruende: {}, letzterGrund: '' };
 async function classify(url) {
-  const r = await bildKlassifizieren({ url, key: KEY_AKTIV, keyFallback: KEY_FALLBACK && KEY_FALLBACK !== KEY_AKTIV ? KEY_FALLBACK : null, model: MODEL, base: GBASE, prompt: PROMPT });
-  if (r.wechsel) { KEY_AKTIV = KEY_FALLBACK; log(`⚠️ Gratis-Schlüssel fiel aus (${r.wechselGrund || '?'}): ab jetzt der erste Schlüssel.`); }
+  const r = await bildKlassifizieren({ url, key: KEY_AKTIV, keyFallback: KEY_FALLBACK && KEY_FALLBACK !== KEY_AKTIV ? KEY_FALLBACK : null, model: MODEL_AKTIV, modelFallback: MODEL_FALLBACK, base: GBASE, prompt: PROMPT });
+  if (r.wechsel) { KEY_AKTIV = KEY_FALLBACK; MODEL_AKTIV = MODEL_FALLBACK; log(`⚠️ Gratis-Schlüssel fiel aus (${r.wechselGrund || '?'}): ab jetzt der erste Schlüssel mit ${MODEL_FALLBACK}.`); }
   if (r.ok) { gem.ok++; gem.folge = 0; gem.letzterGrund = ''; return r.c; }
   gem.fehler++; gem.letzterGrund = r.grund; gem.gruende[r.grund] = (gem.gruende[r.grund] || 0) + 1;
   if (r.grund !== 'bild-nicht-lesbar' && r.grund !== 'bild-abgelehnt') {
@@ -97,6 +99,7 @@ async function classify(url) {
 
 (async () => {
   log(`Bild-Audit start · APPLY=${APPLY} · BATCH=${BATCH} · MIN_PX=${MIN_PX} · geprüft bisher: ${seen.size}`);
+  log(`Modelle: ${KEY_FALLBACK && KEY_FALLBACK !== KEY ? `Gratis-Schlüssel ${MODEL}, Ersatzschlüssel ${MODEL_FALLBACK}` : MODEL} · Pause ${PAUSE} ms`);
   TOKEN = await shopToken();
   if (!TOKEN) { log('❌ Kein Shopify-Token.'); process.exit(0); }
 
