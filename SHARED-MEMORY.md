@@ -1,5 +1,15 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Übergabe an Claude · Gemini für LuxeStyle · 2026-11-08
+
+- **Aktuelle User-Angabe:** Der vorhandene GitHub-Secret-Name ist exakt **`GEMINI_API_KEY2`**. Frühere Vermutungen `KEY2` bzw. `GEMINI_API_KEY_2` sind falsch. Secret-Wert nicht auslesen, nicht in Chat/Logs/Dateien schreiben.
+- **User-Ziel:** Gemini kostenlos für die Suche nach doppelten Produkten und demselben Modell in anderen Farben bei LuxeStyle nutzen. Keine Produktänderung oder Löschung aus dieser Anfrage ableiten.
+- **Vorbereitet:** Draft-PR **#2915**, Branch `codex/luxestyle-gemini-manuell-20261107`, Workflow `.github/workflows/luxestyle-gemini-assistent.yml`. Referenz `secrets.GEMINI_API_KEY2` frisch zurückgelesen und bestätigt. Bisher nur manueller **Textassistent**, noch kein Produktbildvergleich; noch nicht gemergt oder gestartet.
+- **Gratis-Status unklar:** Screenshot zeigte ein Rechnungskonto mit „Kostenpflichtig 2“ und vorausbezahltem Guthaben. Zu welchem Google-Projekt `GEMINI_API_KEY2` gehört und ob dieses im Free Tier ohne verknüpftes Abrechnungskonto ist, wurde **nicht bestätigt**. Der Secret-Name beweist keinen kostenlosen Tarif. Keine bezahlten Aufrufe durch „nutze gratis tier“ autorisiert. Die manuelle Free-Tier-Bestätigung im Workflow ist keine technische Prüfung des Google-Abrechnungsstatus.
+- **Validierung:** Vor der Secret-Umbenennung Python-Syntax, drei Abbrüche vor Netzwerkzugriff und simulierte Erfolgs-/HTTP-429/403/500-Antworten geprüft. Secret-Umbenennungen per GitHub-Readback geprüft. Vollständige `automation/ci_simulation.sh` nicht ausgeführt; kein echter Gemini-Aufruf. GitHub-Anbindung dieser Session bietet keinen Workflow-Dispatch, lokaler gh-Zugang war ungültig.
+- **Shop-Stichprobe:** 50 aktive Produkte live über Shopify geladen; keine vollständige Katalogprüfung, keine bestätigten Duplikate und keine Änderungen. Produkt-/Bildvergleich als nächsten Schritt implementieren, falls der Auftrag fortgesetzt wird.
+
+
 > **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
 > Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
 > `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,
