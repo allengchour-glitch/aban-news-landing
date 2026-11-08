@@ -466,7 +466,7 @@ ist('Mode: jedes Variantenbild steht auch in files (Schema-Regel von ProductVari
 ist('Mode: Variantenbild je Farbe (zwei verschiedene)', new Set(E.variants.map(v => v.file.originalSource)).size, 2);
 ist('Mode: Beschreibung = Marker + Text des Aufrufers', E.descriptionHtml, VAR_MARKER + '<p>Ein Text.</p>');
 ist('Mode: die Textkette (text_prosa.zerlege) erkennt den Marker als Kopf und lässt die Prosa unberührt', (() => { const z = zerlege(E.descriptionHtml); return [z.kopf, z.prosa, z.rest]; })(), [VAR_MARKER, '<p>Ein Text.</p>', '']);
-ist('Mode: SEO aus dem Titel (seoTitel)', [E.seo.title.includes('LuxeStyle') || E.seo.title.length > 0, E.seo.description.includes('Gratis-Versand ab CHF 50')], [true, true]);
+ist('Mode: SEO aus dem Titel (seoTitel)', [E.seo.title.includes('LuxeStyle') || E.seo.title.length > 0, E.seo.description.includes('verfügbare Ausführungen')], [true, true]);
 ist('Mode: nur Felder aus dem echten Schema', schemaPruefen(E), []);
 ist('Mode: in sich stimmig', konsistenzPruefen(E), []);
 ist('Mode: Eingabe ist reines JSON (keine Funktionen, kein undefined)', JSON.stringify(E) === JSON.stringify(JSON.parse(JSON.stringify(E))), true);

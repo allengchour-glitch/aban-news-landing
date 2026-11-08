@@ -1,19 +1,22 @@
 #!/usr/bin/env node
 /* cj_category_fill.mjs — allgemeiner CJ-Import mit ECHTEN Produktnamen (Gemini→DE-Titel+Beschreibung).
  * CJ-Kategorie-Browse → product/query (echter Name, Bilder, Preis) → Gemini DE-Titel+Galaxus-Beschreibung
- * (grounded, nichts erfinden) → productSet+Media+Publish(6 Kanäle) → Ledger. Dedup dropship/cj_niche_done.txt.
- * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
+ * (grounded, nichts erfinden) → productSet+Media als DRAFT → Ledger. Dedup dropship/cj_niche_done.txt.
+ * ENV: LIVE=1 zwingend · DRY=1 zusaetzliche Schreibsperre · CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET
+ * · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40
  */
 import { PRODUKT_RICHTLINIEN_HTML, produktSeoBeschreibung } from './lib/produkt_richtlinien_text.mjs';
+import { importModus } from './lib/import_live_guard.mjs';
 import fs from 'node:fs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
+const MODUS=importModus(process.env);
+if(!MODUS.live){console.log('GESPERRT: cj_trending_import braucht LIVE=1. Keine CJ-, Gemini- oder Shopify-Abfrage.');process.exit(0);}
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
-const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
+const DRY=MODUS.trockenlauf, CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
-const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;const p=Math.max(u*m,4.90);return (Math.floor(p)+0.90).toFixed(2);};
 
@@ -117,7 +120,6 @@ async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_t
 async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
-const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 
 async function gemini(nameEn,feats,kat){
  const prompt=`Du textest für einen Schweizer Beauty-Shop. Aus dem englischen Produktnamen (und Feature-Text) mache:
@@ -210,7 +212,7 @@ for(const p of cand){
  const fash=looksFashion?buildFashion(d):null;
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
  const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
- const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
+ const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'DRAFT',
   tags:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:produktSeoBeschreibung(title)},
   productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
@@ -219,7 +221,6 @@ for(const p of cand){
  const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
  if(d.productVideo&&/^https/.test(d.productVideo))media.push({originalSource:d.productVideo,mediaContentType:'VIDEO'});
  if(media.length)await sgql(st,MED,{id:pid,m:media});
- await sgql(st,PUB,{id:pid,p:PUBS});
  fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
  total++; console.log(`✅ [${p.listedNum}] ${title} → ${pid.split('/').pop()}`);
  await sleep(300);
