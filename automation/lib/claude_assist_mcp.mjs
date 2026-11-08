@@ -88,7 +88,7 @@ function errorResult(message) {
   return { content: [{ type: 'text', text: JSON.stringify({ error: message }) }], isError: true };
 }
 
-async function dispatch(request, handlers) {
+async function dispatch(request, handlers, { tools, validateArguments, serverInfo, instructions }) {
   if (!object(request)) return rpcError(null, -32600, 'JSON-RPC-Batches und Nicht-Objekte sind nicht unterstützt.');
   // Responses are not requests. Never answer them (including an unsolicited
   // response), otherwise two peers can enter an error-response loop.
@@ -118,23 +118,21 @@ async function dispatch(request, handlers) {
       return rpcError(id, -32602, 'initialize erwartet protocolVersion und gültige Clientdaten.');
     }
     return result({ protocolVersion: PROTOCOLS.has(params.protocolVersion) ? params.protocolVersion : '2025-06-18',
-      capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: 'luxestyle-claude-assist', version: '2.4.0' },
-      instructions: 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' });
+      capabilities: { tools: { listChanged: false } }, serverInfo, instructions });
   }
   if (request.method === 'ping' || request.method === 'tools/list') {
     if (params !== undefined && (!object(params) || Object.keys(params).some(key => key !== '_meta'))) {
       return rpcError(id, -32602, 'Diese Methode erwartet keine Argumente.');
     }
-    return result(request.method === 'ping' ? {} : { tools: MCP_TOOLS });
+    return result(request.method === 'ping' ? {} : { tools });
   }
   if (request.method !== 'tools/call') return rpcError(id, -32601, 'Methode nicht unterstützt.');
   if (!object(params) || Object.keys(params).some(key => !['name', 'arguments', '_meta'].includes(key))
-    || typeof params.name !== 'string' || !MCP_TOOLS.some(tool => tool.name === params.name)) {
+    || typeof params.name !== 'string' || !tools.some(tool => tool.name === params.name)) {
     return rpcError(id, -32602, 'Unbekanntes Tool oder ungültige Tool-Parameter.');
   }
   const args = own(params, 'arguments') ? params.arguments : {};
-  if (!validArguments(params.name, args)) return rpcError(id, -32602, 'Ungültige oder zusätzliche Tool-Argumente.');
+  if (!validateArguments(params.name, args)) return rpcError(id, -32602, 'Ungültige oder zusätzliche Tool-Argumente.');
   if (!own(handlers, params.name) || typeof handlers[params.name] !== 'function') {
     return result(errorResult('Dieser lokale Handler ist nicht verfügbar.'));
   }
@@ -153,11 +151,19 @@ async function dispatch(request, handlers) {
 }
 
 /** Serve newline-delimited JSON-RPC, processing one request at a time. */
-export async function serveMcp({ input, output, handlers = {} }) {
+export async function serveMcp({ input, output, handlers = {}, tools = MCP_TOOLS,
+  validateArguments = validArguments,
+  serverInfo = { name: 'luxestyle-claude-assist', version: '2.4.0' },
+  instructions = 'Lokaler LuxeStyle-Helfer. Keine Live-APIs, Publikationen oder Modellaufrufe. Übergaben sind datierte Belege.' }) {
   if (!input?.[Symbol.asyncIterator] || typeof output?.write !== 'function'
-    || typeof output.on !== 'function' || typeof output.removeListener !== 'function' || !object(handlers)) {
-    throw new TypeError('input, output und ein Handler-Objekt sind erforderlich.');
+    || typeof output.on !== 'function' || typeof output.removeListener !== 'function' || !object(handlers)
+    || !Array.isArray(tools) || !tools.length || !tools.every(tool => object(tool) && validText(tool.name, 120))
+    || typeof validateArguments !== 'function' || !object(serverInfo)
+    || !validText(serverInfo.name, 120) || !validText(serverInfo.version, 80)
+    || typeof instructions !== 'string' || instructions.length > 4000) {
+    throw new TypeError('input, output und eine gültige MCP-Konfiguration sind erforderlich.');
   }
+  const config = { tools, validateArguments, serverInfo, instructions };
   const buffer = Buffer.alloc(MAX_MCP_LINE_BYTES);
   const decoder = new TextDecoder('utf-8', { fatal: true });
   let length = 0;
@@ -210,7 +216,7 @@ export async function serveMcp({ input, output, handlers = {} }) {
       let request;
       try { request = JSON.parse(decoder.decode(buffer.subarray(0, length))); }
       catch { await send(rpcError(null, -32700, 'Ungültiges JSON oder UTF-8.')); length = 0; return; }
-      await send(await dispatch(request, handlers));
+      await send(await dispatch(request, handlers, config));
     }
     length = 0;
     oversized = false;
