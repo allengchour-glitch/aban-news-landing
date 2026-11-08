@@ -1,10 +1,10 @@
-name: CJ Bestellung 1038 kontrolliert pushen
+name: CJ Bestellung 1039 kontrolliert pushen
 
 on:
   workflow_dispatch:
     inputs:
       live:
-        description: 'Unbezahlten CJ-Auftrag LX1038 nach allen Gegenprüfungen anlegen'
+        description: 'Unbezahlten CJ-Auftrag LX1039 nach allen Gegenprüfungen anlegen'
         required: true
         type: boolean
         default: false
@@ -13,12 +13,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: cj-order-1038-push
+  group: cj-order-1039-push
   cancel-in-progress: false
 
 jobs:
-  order-1038:
-    if: github.ref_name == 'codex/luxestyle-order-1038-push-20261108'
+  order-1039:
+    if: github.ref_name == 'codex/luxestyle-order-1039-push-20261108'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -30,7 +30,7 @@ jobs:
           ENGINE_BRANCH: claude/luxestyle-status-tztnn1
         run: |
           set -euo pipefail
-          runtime="$RUNNER_TEMP/order1038"
+          runtime="$RUNNER_TEMP/order1039"
           mkdir -p "$runtime/repo/dropship"
           git fetch --no-tags --depth=1 origin "$ENGINE_BRANCH"
           git archive FETCH_HEAD \
@@ -111,7 +111,7 @@ jobs:
           cd "$CJ_ENGINE_ROOT"
           REPO="$CJ_ENGINE_ROOT" python3 automation/cj_order_engine.py --selbsttest
 
-      - name: Bestellung 1038 prüfen oder einmalig anlegen
+      - name: Bestellung 1039 prüfen oder einmalig anlegen
         env:
           LIVE_INPUT: ${{ inputs.live }}
         run: |
@@ -125,9 +125,9 @@ jobs:
           fi
           CLOUD_WARTE_MIN=0 \
           CJ_ENGINE_ROOT="$CJ_ENGINE_ROOT" \
-          python3 dropship/cj-zahlungswache-0411/lauf_einzeln_1038.py
+          python3 dropship/cj-zahlungswache-0411/lauf_einzeln_1039.py
 
-      - name: LX1038 bei CJ gezielt zurücklesen
+      - name: LX1039 bei CJ gezielt zurücklesen
         if: always()
         run: |
           set -euo pipefail
@@ -153,12 +153,12 @@ jobs:
               if str(result.get("code")) != "200":
                   raise SystemExit("CJ-Rücklesung fehlgeschlagen; Zustand unbekannt")
               rows = (result.get("data") or {}).get("list") or []
-              matches.extend(row for row in rows if str(row.get("orderNum") or "").upper() == "LX1038")
+              matches.extend(row for row in rows if str(row.get("orderNum") or "").upper() == "LX1039")
               if len(rows) < 100:
                   break
               time.sleep(1.2)
 
-          print(f"CJ_READBACK LX1038 count={len(matches)}")
+          print(f"CJ_READBACK LX1039 count={len(matches)}")
           for row in matches:
               order_id = str(row.get("orderId") or "")
               detail = {}
