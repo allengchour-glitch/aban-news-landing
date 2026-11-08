@@ -1,4 +1,4 @@
-// Audit 07.11.2026: (1) noindex für nicht übersetzte /fr/-Produkt-, Sammlungs- und Blogseiten,
+// Audit 07./08.11.2026: (1) noindex für nicht übersetzte /fr/-Seiten,
 // (2) FAQ-Satz in templates/collection.json ohne eingesetzten Sammlungstitel.
 // Trockenlauf Vorgabe; LIVE=1 schreibt (themeFilesUpsert) und liest zurück; ZURUECK=1 LIVE=1 stellt die Sicherungen (.vor) wieder her.
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -10,10 +10,24 @@ const TOKEN_DATEI = process.env.TOKEN_DATEI || '/tmp/cj_shop_token.txt';
 const LIVE = process.env.LIVE === '1';
 const ZURUECK = process.env.ZURUECK === '1';
 const MARKE = 'lx-audit-0711';
+const MARKE_V2 = 'lx-audit-0711-v2';
 
-export const NOINDEX_BLOCK = `  {%- comment -%} ${MARKE}: 07.11.2026 GEMESSEN: 0 von 120 zufälligen Produkten haben eine französische Übersetzung, /fr/ zeigt deutschen Text. Nicht übersetzte Seiten bleiben aus dem Index (Nutzer sehen sie weiter). Startseite und Seiten unberührt. Rücknahme: diesen Block löschen. {%- endcomment -%}
+export const LEGACY_NOINDEX_BLOCK = `  {%- comment -%} ${MARKE}: 07.11.2026 GEMESSEN: 0 von 120 zufälligen Produkten haben eine französische Übersetzung, /fr/ zeigt deutschen Text. Nicht übersetzte Seiten bleiben aus dem Index (Nutzer sehen sie weiter). Startseite und Seiten unberührt. Rücknahme: diesen Block löschen. {%- endcomment -%}
   {%- if request.locale.primary == false -%}
     {%- if template.name == 'product' or template.name == 'collection' or template.name == 'article' or template.name == 'blog' -%}
+      <meta name="robots" content="noindex, follow">
+    {%- endif -%}
+  {%- endif -%}
+`;
+export const NOINDEX_TEMPLATES = Object.freeze(['product', 'collection', 'article', 'blog', 'index', 'page', 'list-collections']);
+const NOINDEX_TEMPLATE_CONDITION = NOINDEX_TEMPLATES.map(name => `template.name == '${name}'`).join(' or ');
+export const NOINDEX_BLOCK = `  {%- comment -%} ${MARKE_V2}: 08.11.2026 GEGENPROBE: Der Warenkorb ist sprachunabhängig keine Such-Landeseite. /fr/, /fr/pages/* und die bereits gesperrten Katalog-/Blogpfade sind erst nach vollständig belegter französischer Abdeckung indexierbar. Das boolesche Shop-Metafeld luxe.fr_index_ready darf erst nach dieser Prüfung true sein. Rücknahme: diesen Block löschen. {%- endcomment -%}
+  {%- assign lx_locale_prefix = request.locale.iso_code | slice: 0, 2 -%}
+  {%- assign lx_fr_index_ready = shop.metafields.luxe.fr_index_ready.value | default: false -%}
+  {%- if template.name == 'cart' -%}
+    <meta name="robots" content="noindex, follow">
+  {%- elsif request.locale.primary == false and lx_locale_prefix == 'fr' and lx_fr_index_ready != true -%}
+    {%- if ${NOINDEX_TEMPLATE_CONDITION} -%}
       <meta name="robots" content="noindex, follow">
     {%- endif -%}
   {%- endif -%}
@@ -22,10 +36,27 @@ export const FAQ_ALT = 'Alles rund um {{ collection.title }} bei LuxeStyle – k
 export const FAQ_NEU = 'Kuratierte Auswahl, faire Preise, Lieferdatum beim Artikel und in der Kasse – bei LuxeStyle.';
 
 export function aendereLayout(src) {
-  if (src.includes(MARKE)) return { text: src, geaendert: false };
+  if (src.includes(NOINDEX_BLOCK)) {
+    if (src.split(NOINDEX_BLOCK).length !== 2) throw new Error('neuer noindex-Block mehrfach vorhanden');
+    return { text: src, geaendert: false };
+  }
+  if (src.includes(MARKE_V2)) throw new Error('neuer noindex-Block weicht vom geprüften Zieltext ab');
+  if (src.includes(LEGACY_NOINDEX_BLOCK)) {
+    if (src.split(LEGACY_NOINDEX_BLOCK).length !== 2) throw new Error('alter noindex-Block mehrfach vorhanden');
+    return { text: src.replace(LEGACY_NOINDEX_BLOCK, NOINDEX_BLOCK), geaendert: true };
+  }
+  if (src.includes(MARKE)) throw new Error('alter noindex-Block weicht vom geprüften Ausgangstext ab');
   const n = (src.match(/<\/head>/g) || []).length;
   if (n !== 1) throw new Error(`</head> kommt ${n}x vor, erwartet 1`);
   return { text: src.replace('</head>', NOINDEX_BLOCK + '</head>'), geaendert: true };
+}
+
+export function sollNoindex({ primary, isoCode, templateName, frIndexReady = false }) {
+  return templateName === 'cart'
+    || (primary === false
+    && String(isoCode || '').slice(0, 2).toLowerCase() === 'fr'
+    && frIndexReady !== true
+    && NOINDEX_TEMPLATES.includes(templateName));
 }
 export function aendereCollection(src) {
   if (!src.includes(FAQ_ALT)) {
