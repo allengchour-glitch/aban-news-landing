@@ -384,6 +384,7 @@ if __name__ == "__main__":
     parser.add_argument("ausgabe")
     parser.add_argument("--werkstatt-status")
     parser.add_argument("--pflege-status")
+    parser.add_argument("--zentrale-status")
     parser.add_argument("--nur-github", action="store_true")
     args = parser.parse_args()
     if args.werkstatt_status:
@@ -396,6 +397,12 @@ if __name__ == "__main__":
             pflege_einlesen(args.pflege_status, ROWS)
         except (OSError, ValueError, KeyError, TypeError) as e:
             parser.exit(2, "Tagespflege-Bericht abgelehnt: " + type(e).__name__ + "\n")
+    if args.zentrale_status:
+        report = json.loads(open(args.zentrale_status, encoding="utf-8").read())
+        if report.get("version") != 1 or not isinstance(report.get("hirn_pruefung"), dict):
+            parser.exit(2, "Unbekannter Zentralenbericht.\n")
+        for row in ROWS:
+            if row["id"] == "dev_bauen": row["zentrale"] = report
     if args.nur_github:
         if not args.pflege_status:
             parser.exit(2, "--nur-github braucht --pflege-status.\n")

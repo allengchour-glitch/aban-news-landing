@@ -343,7 +343,13 @@
     B.box(3.5, -0.36, 8.55, 7.0, 0.7, 4.8, '#3a3f4b');
     B.box(6.98, 0.5, 8.55, 0.12, 1.0, 4.5, '#bfd0c9');
     P.rug(B, 0.4, 7.3, 6.6, 9.3, '#7f9e9c', '#d8ddcf', 0.012);
-    sign('ENTWICKLERBÜRO', 3.5, 0.55, 3.5, 1.9, 6.42, 0, '#f8f3eb', '#456e74', '#a7c7bc', 'Bauen · Prüfen · Angebot');
+    // Große Infowand mit echtem Status aus den geladenen Bürozeilen.
+    B.box(3.5, 2.45, 6.42, 6.25, 3.18, 0.14, '#17283b');
+    B.box(3.5, 0.82, 6.46, 6.1, 0.045, 0.07, '#68cfc5');
+    var infoTex = R.texture(T.infowand());
+    stat(quad({x:3.5,y:2.45,z:6.51,w:6.0,h:3.0,emi:0.85,tex:infoTex}));
+    var infoLast = '';
+    W.updateInfo = function (text) { if (text !== infoLast) { R.retex(infoTex, T.infowand(text)); infoLast = text; } };
     place('planter', 6.5, 0, 10.1, 0, 0.65);
     place('bookshelf', 0.5, 0, 10.25, 0, 0.8);
     // Prototypentisch mit kleinen Bausteinen, keine zusätzliche Datenanzeige.
@@ -418,7 +424,7 @@
       Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
       Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
       Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
-      'Entwicklerbüro': { tx: 3.5, ty: 0.7, tz: 8.3, dist: 12.5 },
+      'Entwicklerbüro': { tx: 3.5, ty: 1.4, tz: 8.3, dist: 14.3 },
       'Social Media': { tx: -3.5, ty: 0.7, tz: 8.3, dist: 12.5 },
       'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
     };
