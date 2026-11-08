@@ -73,6 +73,8 @@ on:
       - 'dropship/codex-katalog/modelle.json'
       - 'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs'
       - '.github/workflows/printful-sync.yml'
+      - '.github/workflows/pod-page-update.yml'
+      - '.github/workflows/pod-inject-designer.yml'
       - 'automation/fortura_feed_holen.sh'
       - '.github/workflows/fortura-bestand.yml'
       - 'pod/editor-hintergruende.json'
@@ -167,6 +169,8 @@ jobs:
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
             .github/workflows/printful-sync.yml
+            .github/workflows/pod-page-update.yml
+            .github/workflows/pod-inject-designer.yml
             dropship/selbst-gestalten-fertig-0511/bestellweg
             dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs
           sparse-checkout-cone-mode: false
@@ -213,6 +217,7 @@ jobs:
           node --check automation/material_nachtragen.mjs
           node --check automation/pod_auswahl.mjs
           node --check automation/pod_inject_designer.mjs
+          node --check automation/update_pod_page.mjs
           node --check automation/pod_editor_hintergruende.mjs
           node --check automation/printful_sync.mjs
           node --check automation/lib/printful_bestellweg.mjs
@@ -362,6 +367,8 @@ jobs:
           node automation/printful_tracking_test.mjs
           # Editor-Hintergründe ohne eingebranntes «Dein Design» (28.10.2026): Baustein lesen/umschreiben, Übersteuerungstabelle pod/editor-hintergruende.json, Sicherung dropship/pod-editor-sicherung-2810
           node automation/lib/pod_editor_bg_test.mjs
+          # Shopify-Seite «Selbst gestalten»: Trockenlauf-Vorgabe, feste Identität, Vorher-Hash, Zweitlesung und unabhängige Rücklesung (nur Attrappen, kein Netz)
+          node automation/update_pod_page_test.mjs
           # Variantenbilder aus dem Printful-Katalog (04.11.2026): reine Planung, welche Variante welches Farb-/Materialbild bekommt
           node automation/lib/pod_variantenbilder_test.mjs
           node automation/lib/startseite_pool_test.mjs
