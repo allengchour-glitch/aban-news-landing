@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "revision": 153,
+  "observedAt": "2026-11-08T22:02:24+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "LuxeStyle ranking push using installed plugins; one bounded product SEO write and readback",
+  "identities": {
+    "shopify": {"name": "LuxeStyle", "domain": "luxestyle.ch", "country": "Switzerland", "currency": "CHF", "matched": true},
+    "searchConsole": {"property": "sc-domain:luxestyle.ch", "permission": "siteOwner", "matched": true},
+    "merchantCenter": {"name": "LuxeStyle CH", "shopId": "5797470070", "matched": true},
+    "youtube": {"expectedChannelId": "UCSfCEYjAsdOyYxyfTClXRZA", "vidiqAuthorizedChannels": 0, "matched": false}
+  },
+  "plugins": {
+    "firecrawl": {"used": true, "writes": 0},
+    "hypdSearchConsole": {"used": true, "writes": 0},
+    "hypdMerchantCenter": {"used": true, "writes": 0},
+    "vidiq": {"used": true, "privateChannelReads": 0, "metadataWrites": 0, "creditsUsed": 10},
+    "shopify": {"used": true, "productWrites": 2}
+  },
+  "gscOpportunity": {
+    "period": {"start": "2026-10-09", "end": "2026-11-05", "state": "final", "type": "web"},
+    "query": "elektrischer futterspender für katzen",
+    "page": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+    "clicks": 0,
+    "impressions": 45,
+    "ctrPercent": 0,
+    "position": 18.0222,
+    "inspection": {"indexing": "PASS", "submittedAndIndexed": true, "robotsAllowed": true, "fetch": "SUCCESSFUL", "mobileCrawl": true, "userCanonicalMatchesGoogleCanonical": true, "lastCrawl": "2026-10-15"},
+    "constraint": "The word elektrisch was not proven and was not added. Metrics do not establish sales."
+  },
+  "liveChange": {
+    "productId": "gid://shopify/Product/15523986473345",
+    "variantId": "gid://shopify/ProductVariant/56217490391425",
+    "sku": "CJ-1418384701726527488",
+    "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+    "handleChanged": false,
+    "before": {
+      "title": "Futterautomat für Katze",
+      "seoTitle": "Futterautomat für Katze | LuxeStyle CH",
+      "seoDescription": "Dieser Futterautomat versorgt deine Katze zuverlässig mit Futter, auch wenn du nicht zu Hause bist. Aus Edelstahl gefertigt.",
+      "productSpecificShippingClaim": "Lieferung 10–20 Werktage"
+    },
+    "after": {
+      "title": "Automatischer Futterspender für Katzen",
+      "seoTitle": "Automatischer Futterspender für Katzen | LuxeStyle CH",
+      "seoDescription": "Automatischer Futterspender für Katzen mit Fütterungsfunktion. Aus Edelstahl gefertigt und für die Futterausgabe während deiner Abwesenheit.",
+      "productSpecificShippingClaim": null,
+      "status": "ACTIVE",
+      "price": "96.90",
+      "currency": "CHF",
+      "inventoryQuantity": 0,
+      "inventoryTracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "tagsNonEmpty": true
+    },
+    "preserved": ["URL handle", "product and variant IDs", "SKU", "status", "price", "images", "tags", "inventory fields"],
+    "claimsNotAdded": ["elektrisch", "availability promise", "delivery time", "review", "Swiss made"]
+  },
+  "readback": {
+    "shopifyAdmin": {"matched": true, "userErrors": 0},
+    "firecrawl": {
+      "statusCode": 200,
+      "language": "de",
+      "title": "Automatischer Futterspender für Katzen | LuxeStyle CH",
+      "metaDescription": "Automatischer Futterspender für Katzen mit Fütterungsfunktion. Aus Edelstahl gefertigt und für die Futterausgabe während deiner Abwesenheit.",
+      "h1": "Automatischer Futterspender für Katzen",
+      "ogUrl": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "scrapeId": "01a1bcf5-901f-7766-9f99-d5e17cdda9b7",
+      "creditsUsed": 1
+    }
+  },
+  "remainingConfirmedRankingIssues": {
+    "globalNavigation": {"sampledUniqueCollectionLinksPerPageApprox": 746, "sampledTotalLinkEntriesRange": [790, 826], "htmlBytesExamples": {"home": 1043857, "productCup": 1118134, "blitzCollection": 1717723}, "action": "Reduce server-rendered global navigation only after theme preview and desktop/mobile QA."},
+    "frLocale": [
+      "The FR homepage has French title/H1 but German meta description.",
+      "The FR self-design page is indexable with German title, meta description and H1.",
+      "Two sampled FR product pages advertise fr hreflang and self-canonical but render German content; current noindex reduces duplication but blocks FR ranking.",
+      "The FR blitz collection is noindex and has a 1–2 day claim inconsistent with the German 2–3 day statement."
+    ],
+    "merchant": {
+      "evidenceSha256": "2b236b67c806e8532c76dffc2641707aac1f645eb54e2601b951bf10d31b7473",
+      "frGermanOfferExamples": ["shopify_ZZ_15453997465985_67790129758599", "shopify_ZZ_16617705865607_67676279472519"],
+      "liechtensteinShippingExampleCount": 3,
+      "performanceRowDiscarded": "clicks 1, impressions 0, CTR NaN",
+      "competitiveVisibility": "unknown_no_rows"
+    },
+    "staleEmojiUrl": {"url": "https://luxestyle.ch/products/%F0%9F%A6%83-black-friday-mega-deal-40-auf-premium-set", "liveStatus": 404, "mapMayBeStale": true},
+    "judgeMeClientLocale": "Rendered DOM still contains English review-widget strings; no app-setting write was made.",
+    "youtube": "vidIQ did not return an authorized LuxeStyle channel; no private analysis or metadata write. Professional master MP4 and rights remain blocked."
+  },
+  "prohibitedActionsPerformed": {
+    "budgets": 0,
+    "discounts": 0,
+    "shopSettings": 0,
+    "merchantSettings": 0,
+    "localePublication": 0,
+    "dns": 0,
+    "flows": 0,
+    "customerContacts": 0,
+    "paidRenders": 0,
+    "socialWrites": 0
+  }
+}
