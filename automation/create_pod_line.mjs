@@ -26,13 +26,13 @@ const TYPES={
     blurb:n=>`«${n}» auf einem weichen Unisex-T-Shirt (Bella+Canvas 3001, 100% gekämmte Baumwolle). Schweizer Mundart &amp; Motive zum Anziehen.`,
     bullets:['100% Baumwolle, angenehm weich','Unisex-Schnitt, S–2XL','Direktdruck, langlebig','Perfektes Geschenk'] },
   mug:{ pt:'Tasse', prefix:'tasse', opt:'Grösse', tags:['tasse','geschenk','kueche'],
-    sizes:[['11 oz (Standard)','1320','16.90'],['15 oz (Gross)','4830','19.90']],
+    sizes:[['325 ml (Standard)','1320','16.90'],['444 ml (Gross)','4830','19.90']],
     blurb:n=>`«${n}» auf einer glänzenden Keramik-Tasse. Spülmaschinen- &amp; mikrowellenfest – der perfekte Start in den Tag.`,
-    bullets:['Hochwertige Keramik, glänzend','Spülmaschinen- & mikrowellenfest','11 oz oder 15 oz','Schönes CH-Geschenk'] },
+    bullets:['Hochwertige Keramik, glänzend','Spülmaschinen- & mikrowellenfest','325 ml oder 444 ml','Schönes CH-Geschenk'] },
   tote:{ pt:'Tasche', prefix:'tote', opt:'Grösse', tags:['tasche','accessoire','nachhaltig'],
     sizes:[['38 × 38 cm','4533','21.90']],
-    blurb:n=>`«${n}» auf einer robusten All-Over-Stofftasche. Gross, langlebig und alltagstauglich – für Einkauf, Uni &amp; Strand.`,
-    bullets:['Robustes Gewebe, grosses Volumen','All-Over-Druck','Wiederverwendbar & nachhaltig','Tolles Geschenk'] },
+    blurb:n=>`«${n}» auf einer robusten Stofftasche mit Rundumdruck. Gross, langlebig und alltagstauglich – für Einkauf, Uni &amp; Strand.`,
+    bullets:['Robustes Gewebe, grosses Volumen','Rundumdruck','Wiederverwendbar & nachhaltig','Tolles Geschenk'] },
   mousepad:{ pt:'Mauspad', prefix:'mousepad', opt:'Grösse', tags:['mauspad','buero','gaming','tech'],
     sizes:[['18 × 16 cm','14943','17.90']],
     blurb:n=>`«${n}» auf einem rutschfesten Mauspad. Glatte Oberfläche für präzises Tracking – Büro &amp; Gaming.`,
@@ -40,7 +40,7 @@ const TYPES={
   cushion:{ pt:'Kissen', prefix:'kissen', opt:'Grösse', tags:['kissen','wohnen','dekoration'],
     sizes:[['45 × 45 cm','4532','29.90'],['56 × 30 cm','9513','29.90']],
     blurb:n=>`«${n}» auf einem kuscheligen Deko-Kissen (inkl. Füllung). Bringt Schweizer Charme aufs Sofa.`,
-    bullets:['Weiche Füllung inklusive','All-Over-Druck beidseitig möglich','Versteckter Reissverschluss','Wohn-Deko & Geschenk'] },
+    bullets:['Weiche Füllung inklusive','Rundumdruck auf Vorder- und Rückseite möglich','Versteckter Reissverschluss','Wohn-Deko & Geschenk'] },
 };
 const CFG=TYPES[TYPE]; if(!CFG){ console.error('Unbekannter TYPE (shirt|mug|tote|mousepad|cushion).'); process.exit(1); }
 const LEDGER=`social/designs/_pod_${TYPE}_created.txt`;
@@ -78,8 +78,8 @@ if(process.env.PERSONALIZED==='1'){
   // generisches „Dein Motiv hier"-Platzhalterbild (vorhanden); Editor ersetzt es beim Gestalten
   const IMG=`https://abannews.com/pod/magnet-blank.png`;
   const input={ title, handle, productType:CFG.pt, vendor:'LuxeStyle', status:'ACTIVE',
-    descriptionHtml:`<p>Dein eigenes Foto oder Motiv auf ${CFG.pt==='T-Shirt'?'einem':CFG.pt==='Mauspad'?'einem':'einer'} <strong>${CFG.pt}</strong> – gestalte direkt hier im Editor (Bild hochladen, Text &amp; Sticker frei platzieren). On-demand in Europa gedruckt.</p><ul><li>Lade dein Bild hoch &amp; gestalte selbst</li>${CFG.bullets.slice(0,2).map(b=>`<li>${b}</li>`).join('')}<li>Tolles persönliches Geschenk</li></ul><p>🇨🇭 LuxeStyle</p>`,
-    seo:{ title:`${CFG.pt} selbst gestalten – dein Foto | LuxeStyle`, description:`${CFG.pt} mit deinem eigenen Foto/Motiv gestalten. Editor inklusive, in Europa gedruckt.` },
+    descriptionHtml:`<p>Dein eigenes Foto oder Motiv auf ${CFG.pt==='T-Shirt'?'einem':CFG.pt==='Mauspad'?'einem':'einer'} <strong>${CFG.pt}</strong> – gestalte direkt hier im Gestaltungswerkzeug (Bild hochladen, Text &amp; Sticker frei platzieren). Auf Bestellung in Europa gedruckt.</p><ul><li>Lade dein Bild hoch &amp; gestalte selbst</li>${CFG.bullets.slice(0,2).map(b=>`<li>${b}</li>`).join('')}<li>Tolles persönliches Geschenk</li></ul><p>🇨🇭 LuxeStyle</p>`,
+    seo:{ title:`${CFG.pt} selbst gestalten – dein Foto | LuxeStyle`, description:`${CFG.pt} mit deinem eigenen Foto/Motiv gestalten. Gestaltungswerkzeug inklusive, in Europa gedruckt.` },
     tags:['wunschdesign','printful_personalized_product',`pod-${TYPE}`,'selbst-gestalten',...CFG.tags],
     productOptions:[{name:CFG.opt, values:CFG.sizes.map(s=>({name:s[0]}))}],
     variants:CFG.sizes.map(s=>({ optionValues:[{optionName:CFG.opt,name:s[0]}], price:(parseFloat(s[2])+3).toFixed(2), sku:`${PREFIX}_${s[1]}`, inventoryPolicy:'CONTINUE' })),
@@ -99,8 +99,8 @@ for(const n of names){
   const title=`${CFG.pt} «${name}»`;
   const tags=['printful_personalized_product',`fertig-${TYPE}`,...CFG.tags]; if(th==='schweiz') tags.push('schweiz-edition');
   const input={ title, handle:`${CFG.prefix}-`+n.replace(/^ch-/,''), productType:CFG.pt, vendor:'LuxeStyle', status:'ACTIVE',
-    descriptionHtml:`<p><strong>${CFG.blurb(name)}</strong></p><ul>${CFG.bullets.map(b=>`<li>${b}</li>`).join('')}</ul><p>🇨🇭 On-demand in Europa gedruckt · LuxeStyle</p>`,
-    seo:{ title:`${CFG.pt} «${name}» | LuxeStyle`, description:`${CFG.pt} mit Motiv «${name}». In Europa gedruckt, Premium-Qualität. Gratis-Versand ab CHF 65.` },
+    descriptionHtml:`<p><strong>${CFG.blurb(name)}</strong></p><ul>${CFG.bullets.map(b=>`<li>${b}</li>`).join('')}</ul><p>🇨🇭 Auf Bestellung in Europa gedruckt · LuxeStyle</p>`,
+    seo:{ title:`${CFG.pt} «${name}» | LuxeStyle`, description:`${CFG.pt} mit Motiv «${name}». In Europa gedruckt. Gratis-Versand ab CHF 50.` },
     tags,
     productOptions:[{name:CFG.opt, values:CFG.sizes.map(s=>({name:s[0]}))}],
     variants:CFG.sizes.map(s=>({ optionValues:[{optionName:CFG.opt,name:s[0]}], price:s[2], sku:`${PREFIX}_${s[1]}`, inventoryPolicy:'CONTINUE' })),

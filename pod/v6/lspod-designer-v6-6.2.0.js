@@ -90,7 +90,7 @@
 
   // ── Schriften und Farben (wie v5) ───────────────────────────────────────────────────────────────
   var SCHRIFT_NAMEN = EN ? ['Modern Sans', 'Elegant Serif', 'Handwriting', 'Bold Display', 'Mono']
-    : ['Modern Sans', 'Elegant Serif', 'Handschrift', 'Bold Display', 'Mono'];
+    : ['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine'];
   var SCHRIFT_CSS = ["'Helvetica Neue',Arial,sans-serif", "Georgia,'Times New Roman',serif", "'Brush Script MT','Segoe Script',cursive",
     "'Arial Black','Helvetica Neue',sans-serif", "'Courier New',monospace"];
   var SCHRIFT_CANVAS = ['bold {S}px Arial,Helvetica,sans-serif', "bold {S}px Georgia,'Times New Roman',serif", "{S}px 'Brush Script MT','Segoe Script',cursive",

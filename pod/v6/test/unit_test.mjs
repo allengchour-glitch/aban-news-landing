@@ -581,5 +581,18 @@ pruefe('v5 (pod/live) ist unverändert: 51 378 Byte', v5.length === 51378, Strin
 pruefe('v5 (pod/live) ist unverändert: SHA-256 beginnt mit 70140421381326aff999', createHash('sha256').update(v5).digest('hex').startsWith('70140421381326aff999'));
 pruefe('v6 greift nicht auf die v5-Kennungen zu (Klasse, Guard, Eingabefeld)', (() => { const s = readFileSync(V6_DATEI, 'utf8'); return !/['"]\.lspod-designer['"]/.test(s) && !/__lspodDesignerLoaded\s*=/.test(s) && !/data-lspod="1"/.test(s); })());
 
+// Die Namen sind nur sichtbare Auswahlbeschriftungen. Die technisch verwendeten CSS-Schriften
+// stehen separat in SCHRIFT_CSS und bleiben unverändert. Darum dürfen die deutschen Labels in
+// allen drei v6-Fassungen vollständig deutsch sein, während die englische Locale englisch bleibt.
+for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.0.js']) {
+  const s = readFileSync(join(hier, '..', name), 'utf8');
+  pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,
+    s.includes("['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine']")
+      && !s.includes(": ['Modern Sans', 'Elegant Serif', 'Handschrift', 'Bold Display', 'Mono']"));
+  pruefe(`${name}: englische Locale und fünf technische CSS-Schriften bleiben erhalten`,
+    s.includes("EN ? ['Modern Sans', 'Elegant Serif', 'Handwriting', 'Bold Display', 'Mono']")
+      && /var SCHRIFT_CSS = \[[^;]+\];/.test(s));
+}
+
 console.log(fehler.length ? `\n${fehler.length} von ${n} Prüfungen FEHLGESCHLAGEN` : `\n${n} Prüfungen bestanden`);
 process.exit(fehler.length ? 1 : 0);
