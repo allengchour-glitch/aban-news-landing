@@ -38,6 +38,10 @@ on:
         description: 'Debug: CJ-Resolver-Strategien loggen'
         type: boolean
         default: false
+      breit:
+        description: 'Breiter Handlauf mit denselben Schutzregeln wie der Regelbetrieb (alle Sterne 1-5, Quellenhinweis, älteste Produkte zuerst), aber mit den Grenzen oben'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -97,6 +101,7 @@ jobs:
           PER: ${{ inputs.per }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
           DEBUG: ${{ inputs.debug && '1' || '0' }}
+          BREIT: ${{ inputs.breit && '1' || '0' }}
         run: |
           mkdir -p dropship
           if [ "$REGELBETRIEB" = "true" ]; then
@@ -110,6 +115,11 @@ jobs:
             if [ -z "$SHOPIFY_ADMIN_TOKEN" ] && { [ -z "$SHOPIFY_CLIENT_ID" ] || [ -z "$SHOPIFY_CLIENT_SECRET" ]; }; then
               echo "Shopify-Zugang fehlt; kein Import." >&2; exit 1
             fi
+          fi
+          if [ "$REGELBETRIEB" != "true" ] && [ "$BREIT" = "1" ]; then
+            # Handlauf mit eigenen Grenzen, aber ohne die Schutzregeln des Regelbetriebs zu verlieren:
+            # alle Sterne (nie nur die guten), Quellenhinweis am Text, älteste Produkte zuerst (der Regelbetrieb liest die neuesten).
+            export MIN_SCORE=1 CJ_REVIEW_SOURCE_NOTE=1 SORT=CREATED_AT
           fi
           node automation/cj_reviews_import.mjs
       - name: Save review import recovery checkpoints
