@@ -44,6 +44,7 @@ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { nachDeutsch, wirktDeutsch } from './lib/uebersetzen.mjs';
 import { maskiereName } from './lib/kundenstimmen.mjs';
 import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
+import { scanLesen, scanSpeichern } from './lib/cj_review_scan.mjs';
 import { bewerteAntwort } from './lib/judgeme_antwort.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { reviewKey, loadReviewStates, recordReviewState, reviewBody } from './lib/cj_review_ledger.mjs';
@@ -67,6 +68,7 @@ const PER = Math.max(1, parseInt(process.env.PER || '8', 10) || 8);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
 // Live NUR bei ausdrücklich DRY_RUN=0 (Vorgabe = Trockenlauf). Ein Tippfehler ('true', 'TRUE', leer) kostet sonst echte, nicht zurückholbare Bewertungen.
 const DRY = process.env.DRY_RUN !== '0';
+const REGELBETRIEB = !!process.env.CJ_REVIEW_SCAN_STATE;
 const ALLOW_ORIGINAL = process.env.ALLOW_ORIGINAL === '1';   // bewusstes Original (ohne Übersetzung) nur mit ausdrücklichem Schalter
 const LEER_TAGE = Math.max(1, parseInt(process.env.LEER_TAGE || '60', 10) || 60);  // so lange gilt „CJ hat nichts"
 const SORT = (process.env.SORT || '').toUpperCase();        // z. B. UPDATED_AT, CREATED_AT, TITLE
@@ -87,9 +89,9 @@ const LEER = 'dropship/cj_reviews_leer.txt';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // ── Guards (No-op statt Fehler) ──
-if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds (CJ_EMAIL/CJ_API_KEY) → No-op.'); process.exit(0); }
-if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → No-op.'); process.exit(0); }
-if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
+if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds (CJ_EMAIL/CJ_API_KEY) → kein Import.'); process.exit(REGELBETRIEB?1:0); }
+if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → kein Import.'); process.exit(REGELBETRIEB?1:0); }
+if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → kein Import.'); process.exit(REGELBETRIEB?1:0); }
 
 // Vor dem Lesen des Review-Ledgers exklusiv sperren. Auch zwei lokale Aufrufe
 // dürfen nicht denselben sending-Checkpoint unabhängig voneinander anlegen.
@@ -312,13 +314,16 @@ const merkeLeer = (id, grund) => {
 
 (async () => {
   const stok = await sToken();
-  if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op. (Grund steht in der Zeile darueber.)'); process.exit(0); }
+  if (!stok) { console.log('Shopify-Auth fehlgeschlagen → kein Import. (Grund steht in der Zeile darueber.)'); process.exit(REGELBETRIEB?1:0); }
 
   // Produkte holen
   const q = ONLY.length ? ONLY.map(h => `handle:${h}`).join(' OR ') : QUERY;
   // Cursor-Pagination: sammelt bis LIMIT Produkte ueber mehrere Seiten (Shopify max 250/Seite)
   const prods = [];
-  let cursor = null;
+  const scanDatei = process.env.CJ_REVIEW_SCAN_STATE || '';
+  const scanKontext = JSON.stringify({query:q,sort:SORT,reverse:REVERSE});
+  let cursor = scanLesen(scanDatei,scanKontext);
+  const besuchteCursor = new Set(cursor ? [cursor] : []);
   let scanned = 0, hasMore = false;
   while (prods.length < LIMIT && scanned < SCAN) {
     const page = Math.min(250, LIMIT - prods.length, SCAN - scanned);
@@ -328,22 +333,28 @@ const merkeLeer = (id, grund) => {
     if (!conn || !Array.isArray(conn.edges)) throw new Error('Shopify: Produktliste fehlt, Scan nicht als leer werten');
     scanned += conn.edges.length;
     hasMore = !!conn.pageInfo?.hasNextPage;
+    if (hasMore && !conn.edges.length) throw new Error('CJ_REVIEW_SCAN: Leere Seite mit Fortsetzung');
     console.log(`SCAN: ${scanned}/${SCAN}, ${prods.length}/${LIMIT} Kandidaten vor dieser Seite`);
     const roh = (conn?.edges || []).map(e => e.node).filter(x => !done.has(numId(x.id)));
     const batch = roh.filter(x => { if (leerFrisch(numId(x.id))) { leerUebersprungen++; return false; } return true; });
     prods.push(...batch);
     if (!hasMore) break;
     cursor = conn.pageInfo.endCursor;
+    if (typeof cursor!=='string' || !cursor || besuchteCursor.has(cursor)) throw new Error('CJ_REVIEW_SCAN: Fortsetzungscursor fehlt oder wiederholt sich');
+    besuchteCursor.add(cursor);
     await sleep(250);
   }
   console.log(`Teilmessung: ${scanned} Produkte geprüft; weitere Seiten: ${hasMore ? 'ja' : 'nein'}.`);
   if (DRY) console.log('TROCKENLAUF: nichts wird gesendet oder gespeichert (live nur mit DRY_RUN=0).');
   console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT}${SORT ? `, SORT=${SORT}${REVERSE ? ' umgekehrt' : ''}` : ''})${DRY ? ' [DRY]' : ''}`
     + (leerUebersprungen ? ` · ${leerUebersprungen} übersprungen, weil CJ dort vor < ${LEER_TAGE} Tagen nichts hatte` : ''));
-  if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
+  if (!prods.length) {
+    if (!DRY) scanSpeichern(scanDatei,scanKontext,hasMore?cursor:null);
+    console.log('Nichts zu tun; Suchfortschritt nur im echten Lauf gespeichert.'); process.exit(0);
+  }
 
   const ctok = await cjToken();
-  if (!ctok) process.exit(0);
+  if (!ctok) process.exit(REGELBETRIEB?1:0);
   console.log('CJ-Token ok.');
 
   const DEBUG = process.env.DEBUG === '1';
@@ -506,6 +517,10 @@ const merkeLeer = (id, grund) => {
           created_at: (c.commentDate || '').slice(0, 10) || undefined,
           picture_urls: (Array.isArray(c.commentUrls) ? c.commentUrls : []).filter(u => /^https?:\/\//.test(u)),
         };
+        if (process.env.CJ_REVIEW_SOURCE_NOTE==='1') {
+          const hinweis='Quelle: CJ-Produktbewertung. Kein verifizierter Kauf im LuxeStyle-Shop.';
+          if (!rev.body.endsWith(hinweis)) rev.body+='\n\n'+hinweis;
+        }
         if (DRY) { console.log(`  [DRY] ${p.handle} ★${rev.rating} ${rev.body.slice(0, 50)}`); sent++; continue; }
         // Liegt genau dieser Text beim Produkt schon im Shop, ist er importiert — egal unter
         // welchem Schluessel. Dann nur den Zustand nachfuehren, nicht erneut senden.
@@ -608,6 +623,7 @@ const merkeLeer = (id, grund) => {
       fails++; console.error(`✗ ${p.handle}: ${e.message}`);
     }
   }
+  if (!DRY && !fails) scanSpeichern(scanDatei,scanKontext,hasMore?cursor:null);
   console.log(`\nFertig: ${totalReviews} echte Reviews auf ${prodWith} Produkt(e)${DRY ? ' [DRY]' : ''}${fails ? `, ${fails} Fehler` : ''}${ausgelistet ? `, ${ausgelistet} bei CJ ausgelistet (Bewertungen trotzdem lesbar)` : ''}.`);
   process.exit(fails ? 1 : 0);
 })();

@@ -240,7 +240,7 @@ ROWS.append({"id": "bewertungen", "bereich": "Shop", "name": "Bewertungsimporter
              "status": "gelb", "befund": "Vorhandener CJ→Judge.me-Importer. Echte Quellbewertungen müssen zum exakt selben Produkt gehören. Noch kein Importbeleg geladen; Anzahl und Veröffentlichung unbekannt.",
              "ereignis": "Importbeleg prüfen", "ereignis_iso": "", "gemessen": "", "gemessen_text": "Nicht gemessen",
              "frisch_h": 0, "quelle": "Vorhandener CJ→Judge.me-Importer", "figur": "arbeiter", "menge": 0, "aktiv_h": 0})
-ORTE['bewertungen'] = ('cloud', 'CJ→Judge.me-Importer', 'Judge.me', 'Vorhandener Ablauf mit Testlauf als Vorgabe und Dublettenschutz. Kein Dauerlauf; keine bestätigte Importmenge.', WF + 'cj-reviews.yml')
+ORTE['bewertungen'] = ('cloud', 'CJ→Judge.me-Importer', 'Judge.me', 'Alle sechs Stunden geplant: höchstens fünf aktive Produkte und zwei echte CJ-Quellbewertungen je Produkt. Dublettenschutz und gespeicherter Suchfortschritt; kein Dauerlauf.', WF + 'cj-reviews.yml')
 
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]

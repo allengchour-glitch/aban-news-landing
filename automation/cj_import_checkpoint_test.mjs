@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import * as ledger from './lib/cj_review_ledger.mjs';
+import { scanLesen, scanSpeichern } from './lib/cj_review_scan.mjs';
 const { reviewKey } = ledger;
 
 // Every process gets a disposable working directory and a fetch replacement.
@@ -47,11 +48,12 @@ function run(f, config = {}) {
       fs.appendFileSync('api-calls.jsonl',JSON.stringify({host:url.hostname,path:url.pathname,signal:opts.signal instanceof AbortSignal})+'\\n');
       if(url.hostname==='test.myshopify.com' && url.pathname.endsWith('/graphql.json')) {
         const query=JSON.parse(opts.body).query;
-        const produkte=config.products || [{id:'${PRODUCT_ID}',handle:'test-bag'}];
+        const seite=(config.pages||{})[JSON.parse(opts.body).variables?.c || 'start'];
+        const produkte=seite?.products || config.products || [{id:'${PRODUCT_ID}',handle:'test-bag'}];
         return response(200,{data:query.includes('products(')?{products:{edges:produkte.map(x=>({node:{
           id:'gid://shopify/Product/'+x.id,handle:x.handle,title:'Test bag',
           variants:{edges:[{node:{sku:'CJ-TEST-SKU'}}]}
-        }})),pageInfo:{hasNextPage:false}}}:{shop:{name:'Test shop'}}});
+        }})),pageInfo:seite?.pageInfo || {hasNextPage:false}}}:{shop:{name:'Test shop'}}});
       }
       if(url.hostname==='developers.cjdropshipping.com' && url.pathname.endsWith('/product/query')) {
         return response(200,config.queryResponse || {result:true,data:{pid:'${CJ_PID}'}});
@@ -963,3 +965,97 @@ test('K8/W4: die Docs behaupten nicht mehr, der Importer schreibe ohne DRY_RUN=1
 //   K8 + W4 (Docs: 1 Test), W5 (Logzeile: im Fund-2-Test). Harness neu: widgetStatusPid, widgetAb, Groq-Attrappe (config.groq).
 //   Mutationsprobe 2: /tmp/cm/cjrev_mut/mutprobe2.mjs (alte 12 + 6 Zusatz, 14 aus Prüfung 2 und 14 für den neuen Code).
 // ════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+test('Suchstand: fehlend, anderer Kontext und unlesbarer Inhalt bleiben getrennt', t => {
+  const f=fixture(t), file=path.join(f.root,'dropship/scan.json');
+  assert.equal(scanLesen(file,'a'),null);
+  scanSpeichern(file,'a','next-1');
+  assert.equal(scanLesen(file,'a'),'next-1');
+  assert.equal(scanLesen(file,'b'),null);
+  fs.writeFileSync(file,'kaputt');
+  assert.throws(()=>scanLesen(file,'a'),/CJ_REVIEW_SCAN/);
+  fs.writeFileSync(file,JSON.stringify({version:1,kontext:'a',cursor:42}));
+  assert.throws(()=>scanLesen(file,'a'),/CJ_REVIEW_SCAN/);
+  assert.throws(()=>scanSpeichern(file,'a',undefined),/CJ_REVIEW_SCAN/);
+});
+
+test('Regelbetrieb geht nach begrenztem Leerlauf auf der nächsten Seite weiter', t => {
+  const f=fixture(t);
+  fs.writeFileSync(path.join(f.root,'dropship/cj_reviews_done.txt'),'101\n102\n');
+  const config={env:{CJ_REVIEW_SCAN_STATE:'dropship/scan.json'},pages:{
+    start:{products:[{id:'101',handle:'alt'}],pageInfo:{hasNextPage:true,endCursor:'next-1'}},
+    'next-1':{products:[{id:'102',handle:'auch-alt'}],pageInfo:{hasNextPage:false,endCursor:'ende'}}}};
+  let r=run(f,config);assert.equal(r.status,0,r.stderr);
+  const file=path.join(f.root,'dropship/scan.json');
+  assert.equal(JSON.parse(fs.readFileSync(file)).cursor,'next-1');
+  r=run(f,config);assert.equal(r.status,0,r.stderr);
+  assert.equal(JSON.parse(fs.readFileSync(file)).cursor,null);
+  assert.equal(lines(f,'api-calls.jsonl').map(JSON.parse).filter(r=>r.host==='developers.cjdropshipping.com').length,0);
+  assert.equal(posts(f).length,0);
+});
+
+test('Trockenlauf verändert auch den Suchfortschritt nicht', t => {
+  const f=fixture(t), file=path.join(f.root,'dropship/scan.json');
+  const context=JSON.stringify({query:'tag:cj-real',sort:'',reverse:false});
+  scanSpeichern(file,context,'next-1');const before=fs.readFileSync(file,'utf8');
+  fs.writeFileSync(path.join(f.root,'dropship/cj_reviews_done.txt'),'101\n');
+  const r=run(f,{env:{DRY_RUN:'1',CJ_REVIEW_SCAN_STATE:'dropship/scan.json'}});
+  assert.equal(r.status,0,r.stderr);assert.equal(fs.readFileSync(file,'utf8'),before);
+  assert.equal(posts(f).length,0);
+});
+
+test('Fehler beim Import überspringt keine Produktseite im nächsten Lauf', t => {
+  const f=fixture(t),file=path.join(f.root,'dropship/scan.json');
+  const context=JSON.stringify({query:'tag:cj-real',sort:'',reverse:false});
+  scanSpeichern(file,context,null);const before=fs.readFileSync(file,'utf8');
+  const r=run(f,{env:{CJ_REVIEW_SCAN_STATE:'dropship/scan.json'},widgetStatus:500,
+    pages:{start:{products:[{id:'101',handle:'test-bag'}],pageInfo:{hasNextPage:true,endCursor:'next-1'}}}});
+  assert.equal(r.status,1,r.stderr);assert.equal(fs.readFileSync(file,'utf8'),before);
+  assert.equal(posts(f).length,0);
+});
+
+
+test('Regelbetrieb kennzeichnet CJ-Herkunft und erfindet keinen Shop-Kauf', t => {
+  const f=fixture(t),r=run(f,{env:{CJ_REVIEW_SOURCE_NOTE:'1',MIN_SCORE:'1'},comments:[{...COMMENTS[0],score:2}]});
+  assert.equal(r.status,0,r.stderr);
+  const out=posts(f);assert.equal(out.length,1);assert.equal(out[0].rating,2);
+  assert.equal(out[0].body,COMMENTS[0].comment+'\n\nQuelle: CJ-Produktbewertung. Kein verifizierter Kauf im LuxeStyle-Shop.');
+});
+
+
+test('Wiederholter Fortsetzungscursor beendet den Lauf vor einer Suchschleife', t => {
+  const f=fixture(t),file=path.join(f.root,'dropship/scan.json');
+  const context=JSON.stringify({query:'tag:cj-real',sort:'',reverse:false});
+  scanSpeichern(file,context,'same');
+  fs.writeFileSync(path.join(f.root,'dropship/cj_reviews_done.txt'),'101\n');
+  const r=run(f,{env:{CJ_REVIEW_SCAN_STATE:'dropship/scan.json'},pages:{same:{products:[{id:'101',handle:'alt'}],pageInfo:{hasNextPage:true,endCursor:'same'}}}});
+  assert.equal(r.status,1);assert.match(r.stderr,/CJ_REVIEW_SCAN/);
+  assert.equal(JSON.parse(fs.readFileSync(file)).cursor,'same');assert.equal(posts(f).length,0);
+});
+
+test('Workflow: feste Grenzen im Regelbetrieb, Testschalter und fehlende Zugänge', t => {
+  const file=new URL('../.github/workflows/cj-reviews.yml',import.meta.url);
+  if (!fs.existsSync(file)) return t.skip('Workflow nicht im Sparse-Checkout');
+  const text=fs.readFileSync(file,'utf8');
+  const script=text.split('name: CJ-Reviews importieren')[1].split('        run: |\n')[1].split('\n      - name:')[0].replace(/^          /gm,'');
+  assert.match(text,/cron: '47 \*\/6 \* \* \*'/);
+  for (const [event,dry,regular,missing] of [['schedule','1','true',false],['workflow_dispatch','1','true',false],['workflow_dispatch','1','false',false],['schedule','1','true',true]]) {
+    const f=fixture(t),bin=path.join(f.root,'bin');fs.mkdirSync(bin);
+    fs.writeFileSync(path.join(bin,'node'),'#!/bin/sh\nprintf "%s" "$DRY_RUN,$LIMIT,$SCAN,$PER,$MIN_SCORE,$CJ_REVIEW_SOURCE_NOTE,$ONLY,$QUERY" > aufgerufen.txt\n',{mode:0o755});
+    const r=spawnSync('bash',['-e','-c',script],{cwd:f.root,encoding:'utf8',env:{PATH:bin+':'+process.env.PATH,REGELBETRIEB:regular,STARTEREIGNIS:event,DRY_RUN:dry,LIMIT:'7',SCAN:'9',PER:'3',ONLY:'eigener-handle',QUERY:'eigene-abfrage',CJ_EMAIL:'demo',CJ_API_KEY:missing?'':'demo',JUDGEME_PRIVATE_TOKEN:'demo',SHOPIFY_ADMIN_TOKEN:'demo'}});
+    assert.equal(r.error,undefined);
+    if(missing){assert.notEqual(r.status,0);assert.equal(fs.existsSync(path.join(f.root,'aufgerufen.txt')),false);continue;}
+    assert.equal(r.status,0,r.stderr);const out=fs.readFileSync(path.join(f.root,'aufgerufen.txt'),'utf8');
+    assert.equal(out,regular==='true'?(event==='schedule'?'0':'1')+',5,50,2,1,1,,tag:cj-real status:active':'1,7,9,3,,,eigener-handle,eigene-abfrage');
+  }
+});
+
+
+test('Regelbetrieb verschweigt fehlende Zugänge nicht als grünen No-op', t => {
+  for(const key of ['CJ_EMAIL','CJ_API_KEY','JUDGEME_PRIVATE_TOKEN','SHOPIFY_ADMIN_TOKEN']) {
+    const f=fixture(t),r=run(f,{env:{CJ_REVIEW_SCAN_STATE:'dropship/scan.json',[key]:''}});
+    assert.equal(r.status,1,key);assert.equal(posts(f).length,0);
+    assert.equal(fs.existsSync(path.join(f.root,'api-calls.jsonl')),false);
+  }
+});

@@ -2,8 +2,14 @@ name: "POD Reviews-Import (echte CJ-Kommentare zu Judge.me)"
 
 # Importiert echte CJ-Kommentare. Ohne Credentials kein Import; Testlauf ist Standard.
 on:
+  schedule:
+    - cron: '47 */6 * * *'
   workflow_dispatch:
     inputs:
+      regular_run:
+        description: 'Begrenzten Regelbetrieb prüfen oder ausführen (Testschalter bleibt wirksam)'
+        type: boolean
+        default: false
       query:
         description: 'Shopify-Produktfilter (Default tag:cj-real)'
         type: string
@@ -53,6 +59,7 @@ jobs:
             automation/lib
             dropship/cj_reviews_done.txt
             dropship/cj_reviews_leer.txt
+            dropship/cj_review_scan.json
             dropship/cj_review_items.jsonl
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
@@ -81,6 +88,8 @@ jobs:
           GROQ_API_KEY3: ${{ secrets.GROQ_API_KEY3 }}
           GROQ_API_KEY4: ${{ secrets.GROQ_API_KEY4 }}
           GROQ_API_KEY5: ${{ secrets.GROQ_API_KEY5 }}
+          REGELBETRIEB: ${{ github.event_name == 'schedule' || inputs.regular_run }}
+          STARTEREIGNIS: ${{ github.event_name }}
           QUERY: ${{ inputs.query }}
           ONLY: ${{ inputs.only }}
           LIMIT: ${{ inputs.limit }}
@@ -90,6 +99,18 @@ jobs:
           DEBUG: ${{ inputs.debug && '1' || '0' }}
         run: |
           mkdir -p dropship
+          if [ "$REGELBETRIEB" = "true" ]; then
+            export QUERY='tag:cj-real status:active' ONLY='' LIMIT=5 SCAN=50 PER=2
+            export SORT=CREATED_AT REVERSE=1 MIN_SCORE=1 CJ_REVIEW_SOURCE_NOTE=1
+            export CJ_REVIEW_SCAN_STATE=dropship/cj_review_scan.json
+            if [ "$STARTEREIGNIS" = "schedule" ]; then export DRY_RUN=0; fi
+            for key in CJ_EMAIL CJ_API_KEY JUDGEME_PRIVATE_TOKEN; do
+              if [ -z "${!key}" ]; then echo "Zugang fehlt: $key; kein Import." >&2; exit 1; fi
+            done
+            if [ -z "$SHOPIFY_ADMIN_TOKEN" ] && { [ -z "$SHOPIFY_CLIENT_ID" ] || [ -z "$SHOPIFY_CLIENT_SECRET" ]; }; then
+              echo "Shopify-Zugang fehlt; kein Import." >&2; exit 1
+            fi
+          fi
           node automation/cj_reviews_import.mjs
       - name: Save review import recovery checkpoints
         if: ${{ always() && steps.import.outcome != 'skipped' }}
@@ -100,6 +121,7 @@ jobs:
             dropship/cj_reviews_done.txt
             dropship/cj_reviews_leer.txt
             dropship/cj_review_items.jsonl
+            dropship/cj_review_scan.json
           if-no-files-found: warn
           retention-days: 30
       - name: Ledger committen, auch nach Teilfehlern
@@ -108,7 +130,7 @@ jobs:
           TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           ledger_paths=()
-          for path in dropship/cj_reviews_done.txt dropship/cj_reviews_leer.txt dropship/cj_review_items.jsonl; do
+          for path in dropship/cj_reviews_done.txt dropship/cj_reviews_leer.txt dropship/cj_review_items.jsonl dropship/cj_review_scan.json; do
             if [ -f "$path" ]; then ledger_paths+=("$path"); fi
           done
           if [ "${#ledger_paths[@]}" -eq 0 ]; then
