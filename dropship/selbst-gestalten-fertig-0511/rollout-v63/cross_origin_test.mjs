@@ -14,8 +14,26 @@ const mapName = readdirSync(MAPS).filter((name) => name.endsWith('.karte.json'))
 if (!mapName) throw new Error('Keine öffentliche v6-Karte für die Cross-Origin-Prüfung');
 const map = readFileSync(resolve(MAPS, mapName));
 const headersText = readFileSync(resolve(REPO, '_headers'), 'utf8');
-if (!/\/pod\/v6\/\*\s+Access-Control-Allow-Origin:\s*\*\s+Cross-Origin-Resource-Policy:\s*cross-origin/m.test(headersText)) {
-  throw new Error('_headers enthält keinen vollständigen Cross-Origin-Override für /pod/v6/*');
+const blocks = new Map();
+let current = null;
+for (const raw of headersText.split(/\r?\n/)) {
+  const line = raw.trim();
+  if (!line || line.startsWith('#')) continue;
+  if (!/^\s/.test(raw)) { current = line; blocks.set(current, []); continue; }
+  if (current) blocks.get(current).push(line);
+}
+const pod = blocks.get('/pod/v6/*') || [];
+const editorHeaders = blocks.get('/pod/v6/lspod-designer-v6-*.js') || [];
+const exaktEinmal = (lines, value) => lines.filter((line) => line === value).length === 1;
+if (!exaktEinmal(pod, '! Cross-Origin-Resource-Policy')
+  || !exaktEinmal(pod, 'Access-Control-Allow-Origin: *')
+  || !exaktEinmal(pod, 'Cross-Origin-Resource-Policy: cross-origin')) {
+  throw new Error('_headers entfernt den globalen CORP-Wert für /pod/v6/* nicht eindeutig');
+}
+if (!exaktEinmal(editorHeaders, '! Cache-Control')
+  || !exaktEinmal(editorHeaders, 'Cache-Control: public, max-age=31536000, immutable')
+  || editorHeaders.some((line) => /^(?:Access-Control-Allow-Origin|Cross-Origin-Resource-Policy):/.test(line))) {
+  throw new Error('_headers verdoppelt Editor-CORS/CORP oder den Cache-Control-Wert');
 }
 
 function listen(server, host = '127.0.0.1') {
