@@ -56,6 +56,15 @@ test('Allowlist hat exakt 16 eindeutige Produkte und keine drei gesperrten Produ
   assert.ok(BLOCKLIST.every((x) => !ALLOWLIST.some((a) => a.id === x.id)));
 });
 test('Kanonische v6.3-Allowlist wird deterministisch in das Release übersetzt', () => assert.deepEqual(releaseAusAllowlist(sourceAllowlist, { editorSha256: H, assetSha256: sourceAssets }), release));
+test('Produktiver Editor und Allowlist sind auf denselben Release-Hash gebunden', () => {
+  const root = fileURLToPath(new URL('../../../', import.meta.url));
+  const produktiv = JSON.parse(readFileSync(root + 'dropship/selbst-gestalten-fertig-0511/rollout-v63/allowlist.json', 'utf8'));
+  const editorDatei = readFileSync(root + 'pod/v6/lspod-designer-v6-6.3.0.js');
+  assert.equal(produktiv.editorSha256, sha256(editorDatei));
+  assert.equal(produktiv.editorSha256, 'c7de546c39ef9dbdead16ee1f5d72c24bd54779622a2915be35c1a82b3a251fc');
+  assert.equal(assetUrl(editor.url, produktiv.editorSha256), `${editor.url}?v=c7de546c39ef9dbd`);
+  assert.equal(integritySha256(produktiv.editorSha256), 'sha256-x95UbDnvnb3q0W7h9dcsJL1Ud5YiopFb41wagrOiUfw=');
+});
 test('Release exakt vollständig', () => assert.equal(releasePruefen(release), true));
 test('Release lehnt fehlendes Produkt ab', () => wirft(() => releasePruefen({ ...release, products: products.slice(1) }), /erwartet 16/));
 test('Release bindet die neun Vorschauen und Karten an die exakte Produkt-ID', () => {
