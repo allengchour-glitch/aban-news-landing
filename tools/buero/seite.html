@@ -577,8 +577,8 @@
     </section>
     <section class="kb-card kb-raum" aria-labelledby="r-chef">
       <h2 id="r-chef">Chefbüro</h2>
-      <section class="kb-chef-kontrolle" data-draw="chef-kontrolle" data-source="buero" aria-label="Deine Kontrolle"></section>
-      <p class="kb-sub">Direkt zu deinen Entscheidungen und Aufgaben. Die Automatik arbeitet im Hintergrund.</p>
+      <section class="kb-chef-kontrolle" data-draw="chef-kontrolle" data-source="buero" aria-label="Arbeitsübersicht des Assistenten"></section>
+      <p class="kb-sub">Überblick über die Arbeit der Assistenten und die verfügbaren Zahlen.</p>
       <div class="kb-floor kb-floor-chef">
         <div class="kb-fenster" aria-hidden="true"></div>
         <svg class="kb-uhr" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
@@ -640,7 +640,7 @@
     </section>
     <section class="kb-card" aria-labelledby="h-chef">
       <h2 id="h-chef">Chefbüro</h2>
-      <section class="kb-chef-kontrolle" data-draw="chef-kontrolle" data-source="buero" aria-label="Deine Kontrolle"></section>
+      <section class="kb-chef-kontrolle" data-draw="chef-kontrolle" data-source="buero" aria-label="Arbeitsübersicht des Assistenten"></section>
       <p class="kb-sub">Was nur du entscheiden oder anklicken kannst.</p>
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Chefbüro" data-source="buero"></ul>
     </section>
@@ -1160,29 +1160,34 @@
   });
 
   dash.draw('chef-kontrolle',function(el){
-    var alterMonitor=el.querySelector('[data-money-panel]'),monitorOffen=alterMonitor?alterMonitor.open:true;
+    var alterMonitor=el.querySelector('[data-money-panel]'),monitorOffen=alterMonitor?alterMonitor.open:false;
+    var alteKonten=el.querySelector('[data-konten-quellen]'),kontenOffen=!!(alteKonten&&alteKonten.open);
     el.replaceChildren();
-    var title=document.createElement('strong');title.textContent='Kurz erledigen';el.appendChild(title);
+    var title=document.createElement('strong');title.textContent='Arbeitsübersicht des Assistenten';el.appendChild(title);
+    var zustand=document.createElement('p');zustand.setAttribute('data-assistenten-hinweis','');zustand.textContent='Shop, Inhalte und Zahlen: Diese Prüfungen übernimmt der Assistent im beauftragten Arbeitslauf. Ein Ergebnis gilt erst mit geprüftem Nachweis als erledigt.';el.appendChild(zustand);
+    var konten=document.createElement('details');konten.className='kb-dienste';konten.setAttribute('data-konten-quellen','');konten.open=kontenOffen;
+    var kontenTitel=document.createElement('summary');kontenTitel.textContent='Konten und Quellen ansehen (optional)';konten.appendChild(kontenTitel);
     var grid=document.createElement('div');grid.className='kb-chef-links';
     [
-      ['Bestellungen','Offene Fälle im Shop prüfen.','Shop öffnen','https://admin.shopify.com/store/au3j0y-hq/orders'],
-      ['Social Media','Beiträge planen und Ergebnisse ansehen.','Metricool','https://app.metricool.com/'],
-      ['Zahlungen','Zahlungseingänge und Erstattungen ansehen.','Stripe öffnen','https://dashboard.stripe.com/payments'],
-      ['Geschäftsmails','Nachrichten an info@luxestyle.ch sichten und Antwortentwürfe prüfen.','Mails suchen','https://mail.google.com/mail/#search/to%3Ainfo%40luxestyle.ch'],
-      ['LuxeStyle-Videos','Videoentwürfe, Titel und Veröffentlichungen im Shop-Kanal prüfen.','YouTube Studio','https://studio.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA/videos'],
-      ['Produkte','Produktseiten, Bilder und verfügbare Varianten kontrollieren.','Produkte öffnen','https://admin.shopify.com/store/au3j0y-hq/products'],
-      ['Auszahlungen','Ausgezahlte Beträge und noch verfügbare Guthaben ansehen.','Guthaben prüfen','https://dashboard.stripe.com/balance'],
-      ['ABAN-Kaufwege','Vorhandene Angebote und ihre Kaufknöpfe ansehen.','ABAN-Shop','https://abannews.com/shop']
+      ['Bestellungen','Bestell- und Versandfälle als Prüfquelle.','Shopify-Bestellungen','https://admin.shopify.com/store/au3j0y-hq/orders'],
+      ['Social Media','Vorhandene Planung und Leistungsdaten.','Metricool','https://app.metricool.com/'],
+      ['Zahlungen','Zahlungseingänge und Erstattungen als Datenquelle.','Stripe-Zahlungen','https://dashboard.stripe.com/payments'],
+      ['Geschäftsmails','Geschäftspost-Zuordnung und vorhandene Antwortentwürfe.','Gmail','https://mail.google.com/mail/#search/to%3Ainfo%40luxestyle.ch'],
+      ['LuxeStyle-Videos','Videoentwürfe und Veröffentlichungen des Shop-Kanals.','YouTube Studio','https://studio.youtube.com/channel/UCSfCEYjAsdOyYxyfTClXRZA/videos'],
+      ['Produkte','Produktseiten, Bilder und Varianten als Prüfquelle.','Shopify-Produkte','https://admin.shopify.com/store/au3j0y-hq/products'],
+      ['Auszahlungen','Ausgezahlte Beträge und verfügbare Guthaben als Datenquelle.','Stripe-Guthaben','https://dashboard.stripe.com/balance'],
+      ['ABAN-Kaufwege','Vorhandene Angebote und ihre Kaufwege.','ABAN-Shop','https://abannews.com/shop']
     ].forEach(function(item){
       var card=document.createElement('article');var h=document.createElement('b');h.textContent=item[0];var p=document.createElement('p');p.textContent=item[1];
       var a=document.createElement('a');a.className='kb-aktion';a.href=item[3];a.textContent=item[2];a.target='_blank';a.rel='noopener noreferrer';card.append(h,p,a);grid.appendChild(card);
-    });el.appendChild(grid);
+    });konten.appendChild(grid);
     var geld=document.createElement('details');geld.className='kb-geld';geld.setAttribute('data-money-panel','');
     geld.open=monitorOffen;
     var geldTitle=document.createElement('summary');geldTitle.textContent='Finanzmonitor · Umsatz, Ausgaben und Gewinn';geld.appendChild(geldTitle);
     var geldBody=document.createElement('div');geld.appendChild(geldBody);el.appendChild(geld);
     var dev=rows()&&rows().find(function(r){return r.id==='dev_bauen';});
     if(window.KBGeld)window.KBGeld.mount(geldBody,{projekte:dev&&dev.projekte});else geldBody.textContent='Die Geldmanager-Datei fehlt. Bitte das vollständige aktuelle Designpaket übernehmen.';
+    el.appendChild(konten);
     var mehr=document.createElement('details');mehr.className='kb-dienste';
     var summary=document.createElement('summary');summary.textContent='Weitere Dienste mit dem Assistenten nutzen';mehr.appendChild(summary);
     var erklaerung=document.createElement('p');erklaerung.textContent='Auftrag kopieren und in diesem verbundenen Chat einfügen. Diese Webseite führt keine Kontoaktion aus. Zugriff und Umfang werden bei der Ausführung geprüft.';mehr.appendChild(erklaerung);

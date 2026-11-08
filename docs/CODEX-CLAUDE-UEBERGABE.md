@@ -2,6 +2,15 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Inhabervorgabe: Routinearbeit gehört zum Assistenten
+
+Der Inhaber hat am08.11.2026 ausdrücklich klargestellt: «ich erledige nichts, das solltest du machen nachher». Die acht Konto-Verknüpfungen im bisherigen Bereich «Kurz erledigen» sind keine manuellen Inhaberaufträge. Routineprüfungen mit vorhandenen Zugängen/Freigaben übernimmt der Assistent im beauftragten Arbeitslauf. Bei echten Zugriffshürden unabhängig mögliche Arbeit fortsetzen; nur notwendige Entscheidungen konkret benennen. Keine zusätzliche Freigabe für Kundennachrichten, Veröffentlichung, Zahlungen, Preis/Budget, Konten, DNS oder Secrets daraus ableiten.
+
+- Umsetzung auf Branch `codex/buero-assistentenarbeit`: Überschrift «Arbeitsübersicht des Assistenten», ausdrückliche Zuständigkeit, Konto-Verknüpfungen in zunächst geschlossenem Bereich «Konten und Quellen ansehen (optional)». Imperative Navigationsbeschriftungen durch Quellenbezeichnungen ersetzt. Finanzmonitor bleibt vor den optionalen Quellen zugänglich, seine manuelle Kalkulation startet eingeklappt. Gewählte Aufklappzustände bleiben beim Neuzeichnen erhalten. Keine neue Rolle, neue Automation oder Frequenzänderung.
+- **GEMESSEN:** 66 Büro- und25 Entwicklerprüfungen lokal grün; Desktop1440×1000 und Handy390×844 geprüft: acht Quellen anfangs verborgen, Finanzmonitor erhalten, optionales Öffnen/Schliessen und Neuzeichnen funktionieren. Keine Konto-Verknüpfung im Test geöffnet. Quelle und öffentliche HTML-Datei gleich geändert.
+- Diese Oberfläche startet keinen laufenden KI-Dienst und beweist keine bereits ausgeführten Kontoaufgaben. Finanzielle Wirkung nicht gemessen. Aktuellen Merge-/Deploystand über den Branch und zugehörigen PR prüfen. Lokaler Browserbeleg: `/workspace/buero-assistentenarbeit-nachweis/lokal.json`.
+- Vorheriger Downloadauftrag **abgeschlossen**: PR2981 als `93f93e4acc674bed6cf45deabd8489fc98280e53` übernommen; Produktionslauf42509488776 erfolgreich. Sichere Live-Gegenprobe nach Deploy mit derselben ungültigen Kennung/User-Agent wie vorher: HTTP400/«Ungültige Session», kein Download-Link. Keine echte Zahlung, Stripe-Abfrage oder geschützter Download ausgelöst. Lokaler Beleg: `/workspace/download-bereitschaft-20261108/live-after.json`. Bezahlter Live-Download weiterhin nicht durch einen echten Kauf verifiziert.
+
 ## Verkaufsweg: Download-Bereitschaft vom 08.11.2026
 
 - Auf aktuellem main `924c022b50c22ebf9238f1ffe81742077b6c034e` begonnen; AGENTS, CLAUDE, Shared Memory und Übergabe gelesen. Der Pro-Audit-Redirect bleibt erledigt. Keine weitere Büro-/Planungsrolle und kein neuer Ablauf.
