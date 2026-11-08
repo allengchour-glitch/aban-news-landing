@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 138,
-  "updatedAt": "2026-11-08T12:01:35+01:00",
+  "revision": 139,
+  "updatedAt": "2026-11-08T14:25:46+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2043,12 +2043,12 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r115_current_variant_ids_replace_historical_binding_storyboard_ready_rights_native_mp4_ledger_open",
+      "state": "r139_active_7_variants_18s_storyboard_6_channel_drafts_no_mp4_rights_open",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-06",
-      "belegArt": "R115_FRESH_PRODUCT_MEDIA_METRICOOL_MUSIC_STORYBOARD_NO_RENDER",
-      "lastEvidence": "Projektor15521256604033 frisch ACTIVE/HTTP200/kaufbar; sieben Varianten A–G CHF34.90–51.90, available, tracked=false/CONTINUE/Menge0. Historische Variante56197916361089/SKU CJ-1477820492730732544 existiert nicht mehr; aktuelle Varianten68122445283719–68122445480327 und SKUs CJSN139239101AZ–107GT. Zwölf READY-Bilder und Shopvideo852×480/25fps/27.96s; auswahl-offen, keine aktuelle Varianten-/Motiv-/Filmbindung oder kommerziellen Rechte. Kanalwächter ohne Sperrtreffer/rueckhol. Pflicht-WAV hashgleich; finale Rechte-/Hörabnahme offen. Derselbe18s-Master mit zwei Hooks, Schnitt, echtem Referenzbild, sechs UTMs fortgeführt. Kein Master-MP4, Render, Upload, Social-Write oder Ledgerinitialisierung; Vergangenheit unknown.",
-      "nextAllowedStep": "Eine aktuelle Variante A–G samt SKU, Motivset, Bild und gefilmter Einheit binden; kommerzielle Film-/Bearbeitungs-/Werberechte schriftlich belegen und vier native 1080×1920-/30-fps-Takes derselben Einheit beschaffen. Danach denselben18s-Master mit Pflichtmusik rendern und Bild/Ton/Text/Produktidentität/Ausschnitte abnehmen; erst danach kanalweise Metricool- und Ledgergates frisch prüfen.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R139_FRESH_PRODUCT_IMAGE_VARIANTS_AND_18S_MASTER_SCRIPT_NO_RENDER",
+      "lastEvidence": "Projektor ACTIVE und öffentlich kaufbar; sieben aktuelle Varianten A-G CHF34.90-51.90, historische Variante56197916361089 nicht mehr vorhanden. Produktweites echtes Bild1920x1919 SHA256 bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d; exakte A-G-/Motivbindung und kommerzielle Bearbeitungs-/Werberechte unbekannt. Derselbe18s-Master als1080x1920/30fps-Skript mit zwei Hooks, Schnittplan, sechs Kanaltexten und eindeutigen UTMs fortgeschrieben. Pflichtmusik SHA256 a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688 hashgleich; finale Rechte-/Hör-/Mixabnahme offen. Keine MP4, kein Render oder Social-Write.",
+      "nextAllowedStep": "Eine aktuelle Variante A-G samt Motivset, Bild und gefilmter Einheit binden; kommerzielle Film-/Bearbeitungs-/Werberechte belegen und native 1080x1920-/30-fps-Takes derselben Einheit beschaffen. Pflichtmusik final rechtlich und hörtechnisch abnehmen, dann denselben18s-Master rendern und Bild/Ton/Text/Produktidentität/Ausschnitte prüfen. Erst danach kanalweise Metricool-/Ledgergates frisch prüfen.",
       "blockers": [
         "Historische Mastervariante ist nicht mehr aktuell; heutige Zielvariante A–G, Motivset und gefilmte Einheit sind ungebunden.",
         "Shopvideo852×480/25fps und ältere Quelle sind keine native Premium-Hochkantquelle.",
@@ -5814,16 +5814,16 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r138_shopify_1038_cj_created_readback_one_payment_fulfillment_tracking_open",
+      "state": "r139_shopify_paid_cj_unshipped_no_fulfillment_tracking_contact",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R138_GITHUB_ACTIONS_CJ_ORDER_CREATED_TARGETED_READBACK_ONE_NO_PAYMENT_OR_FULFILLMENT",
-      "lastEvidence": "GitHub-Actions-Run42473578050/Job128709810825 wurde frisch completed/success zurückgelesen. Der kontrollierte Push für Shopify #1038 führte zu CJ orderNum LX1038, cjOrderId SD2611081059350666900, Status CREATED; die gezielte Rücklesung lieferte count=1. CJ-Kosten: Ware USD7.44 plus DHL Official USD37.19 = Total USD44.63; Shopify-CHF bleibt getrennt. CREATED belegt nur Auftragserstellung, nicht Zahlung, Versandbeginn oder Zustellung. Keine CJ-Zahlung, kein Shopify-Fulfilment, kein Tracking-Write, keine Kundenmail/-ansprache und keine PII-Dokumentation. Kein erneutes Anlegen oder blinder Retry.",
-      "nextAllowedStep": "LX1038 nicht erneut anlegen und Run42473578050 nicht ohne neuen konkreten Grund wiederholen. Falls ein operativer Folgeentscheid in einem bestehenden Lauf eine Statusprüfung benötigt, ausschliesslich LX1038 beziehungsweise SD2611081059350666900 gezielt zurücklesen und unbekannte Antworten nicht wiederholen. CJ-Payment, Shopify-Fulfilment, Tracking und Kundenkommunikation bleiben getrennte Schritte ausserhalb dieses Belegs; vor jedem davon aktuelle Zustände, bestehenden Auftrag, Kosten/Währung, Freigabe und Rücklesung prüfen. USD-Kosten nie mit Shopify-CHF-Umsatz summieren.",
+      "belegArt": "R139_TARGETED_SHOPIFY_PAYMENT_AND_EXISTING_CJ_UNSHIPPED_READBACK",
+      "lastEvidence": "Shopify #1038 aktuell bezahlt. Derselbe einmalige CJ-Auftrag LX1038/SD2611081059350666900 aktuell UNSHIPPED. CJ-Ware USD7.44 plus Versand USD37.19 = USD44.63, getrennt von Shopify-CHF. R138s CREATED-Zustand bleibt historisch. Kein erneutes Anlegen, CJ-Payment, Shopify-Fulfilment, Tracking-Write, Kundenkontakt oder Retry.",
+      "nextAllowedStep": "LX1038 nicht erneut anlegen. Status nur bei einem konkreten operativen Folgeentscheid gezielt über LX1038/SD2611081059350666900 lesen. UNSHIPPED ist kein Lieferzeit- oder Versandbeginnbeleg. Fulfilment, Tracking und Kundenkommunikation bleiben ohne neue ausdrückliche Freigabe unverändert; USD nie mit Shopify-CHF summieren.",
       "blockers": [
-        "CJ-Status ist nur CREATED; CJ-Payment ist nicht erfolgt.",
+        "CJ-Status ist UNSHIPPED; daraus folgen weder Versandbeginn noch Lieferzeit oder Zustellung.",
         "Shopify-Fulfilment und Tracking/Tracking-Write sind nicht erfolgt.",
-        "Keine Kundenmail oder sonstige Kundenansprache; Versandbeginn, Lieferzeit und Zustellung sind unbekannt.",
+        "Keine Kundenmail oder sonstige Kundenansprache.",
         "CJ-Kosten liegen in USD, Shopify-Shop führt CHF; keine gemischte Revenue-/Margenrechnung.",
         "Jeder unklare Folgewrite bleibt unknown und darf nicht blind wiederholt werden."
       ],
@@ -6074,13 +6074,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r137_official_edm_candidate_18_active_244_exact_access_403_no_deploy",
+      "state": "r139_v63_live_16_ready_3_fail_closed_notebook_pass_dtf_runtime_unknown",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R137_COMPLETE_BOUNDED_PRODUCT_VARIANT_MATRIX_OFFICIAL_EDM_CANDIDATE_FAIL_CLOSED",
-      "lastEvidence": "Aktueller begrenzter Abgleich:41 Selbstgestalten-Produkte/398 Shopify-Varianten,19 ACTIVE/245 und22 DRAFT/153. 18 ACTIVE Printful-Produkte/244 Varianten sind über eindeutige Shopify-Variant-GIDs und aktuelle Ownership aus45 relevanten Printful-Modellen/2’257 Varianten exakt zugeordnet. ACTIVE Mister-DTF-Transfer/1 Variante, alle DRAFT und das ungeklärte DRAFT-WM-Trikot/20 Varianten bleiben blockiert. Insgesamt39 Printful-Produkte/377 Varianten exakt, ohne DRAFT-Freigabe. Lokaler fail-closed Kandidat verwendet den offiziellen Printful Embedded Design Maker und kopiert keine Printful-UI/-Assets. Bildidentität ist keine Overlay-Berechtigung:0/41 dynamische Overlay-Rechte bestätigt; nur Keramiktasse Modell19/3 Varianten hat exakte lokale Bild-/Druckgeometrie für den eng begrenzten Mockup-Relay. Nonce-POST und Product-Templates-GET bleiben HTTP403 wegen fehlendem product_templates/write/read; Account-Token mit embedded_designer, Domain luxestyle.ch, frischer Nonce- sowie Save-/Bestellpfad-Nachweis fehlen. EDM-Freigaben0. Kein Deploy, MAIN-/Theme-/Produkt-/Printful-/Cart-/Checkout-/Order-/Renderwrite.",
+      "belegArt": "R139_MERGED_PR2944_2950_2953_2956_DEPLOY_FULL_PLAN_APPLY_AND_PARTIAL_LIVE_DOM_QA",
+      "lastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Token nicht im Chat bereitstellen. Nach sicherer Hinterlegung eines legitimen Printful-Account-Tokens mit embedded_designer und product_templates/read+write im bestehenden Secret-Store sowie bestätigter erlaubter Domain luxestyle.ch genau eine redigierte serverseitige Nonce-Gegenprobe ausführen. Erst nach Erfolg höchstens ein exakt zugeordnetes ACTIVE-Produkt im UNPUBLISHED-Theme mit Produkt-/Variantenauswahl, Druckflächen, Template-Save, Bildern, Mobilansicht und weiterhin nicht ausgelöstem Bestellpfad prüfen. Keine katalogweite Aktivierung, kein MAIN-Publish und keine Wiederverwendung lokaler Fantasieprojektionen.",
+      "nextAllowedStep": "Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF-Runtime erst bei gesundem Browserzugang gezielt erneut prüfen; unknown nicht als PASS ausgeben. Dad Cap, Magnet oder DTF erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe freigeben. Offiziellen EDM separat erst mit legitimen product_templates/read+write/embedded_designer-Scopes und Domainbindung prüfen. Keine DRAFT-Aktivierung oder erfundene Projektion.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6338,11 +6338,11 @@
         }
       ],
       "blockers": [
-        "Printful Account-Token mit embedded_designer und product_templates/read+write ist nicht im Runtime-Secret-Store verfügbar; aktuelle Endpunkte antworten HTTP403.",
-        "Erlaubte Domain luxestyle.ch, erfolgreicher frischer Nonce-Test und begrenzter EDM-Save-/Bestellpfad sind nicht belegt.",
-        "Dynamische Overlay-/Mockup-Rechte sind für0/41 Produkte bestätigt; exakte lokale Bild-/Druckgeometrie liegt nur für Keramiktasse Modell19/3 Varianten vor.",
-        "Mister-DTF-Transfer ist kein Printful-Produkt; alle DRAFT und das WM-Trikot mit20 ungeklärten Varianten bleiben gesperrt.",
-        "Kandidat ist lokal, nicht deployt, nicht im MAIN-Theme und nicht live."
+        "DTF-Live-Runtime wegen Envoy-/Lade-Timeout unbekannt; Server-HTML belegt nur den ausgelieferten Fail-closed-Code.",
+        "Dad Cap: Stickplatzierung/Produktionsoptionen nicht vollständig geprüft; Magnet: Produktion und Schweiz-Lieferung nicht bestätigt.",
+        "Offizieller Printful-EDM weiter ohne bestätigte product_templates/read+write/embedded_designer-Scopes und Domainbindung.",
+        "Dynamische Overlay-/Mockup-Rechte und physische Produktionsabnahme sind nicht katalogweit belegt.",
+        "22 DRAFT-Produkte/153 Varianten bleiben gesperrt; der lokale Liverollout erweitert deren Status nicht."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -6566,6 +6566,27 @@
           "path": "dropship/codex-handoff-20261018/PRINTFUL-ORIGINAL-EDITOR-20261108-R137.json",
           "gitBlobSha": "42720376458de486fa47898f625ea412ba2d7e9f",
           "readAt": "2026-11-08T11:45:25+01:00"
+        },
+        {
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2956",
+          "headSha": "f661f38d3b6ca26ae02f38bf7f833a0233bcabda",
+          "mergeSha": "4392cb871235b93430d4db05cd17cf3f2502ebd7",
+          "state": "MERGED",
+          "readAt": "2026-11-08T14:25:46+01:00"
+        },
+        {
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42483371177",
+          "runId": 42483371177,
+          "status": "completed",
+          "conclusion": "success",
+          "changed": 19,
+          "readAt": "2026-11-08T14:25:46+01:00"
+        },
+        {
+          "path": "/workspace/luxestyle-review/live-qa-20261108/final-dom-summary.json",
+          "sha256": "561e8c64aabd8de838fe42468242923b67c0dad0726ba45714ca27a667af63e6",
+          "readAt": "2026-11-08T14:25:46+01:00",
+          "durability": "local_runtime_evidence"
         }
       ],
       "requiresFreshVerification": true,
@@ -8547,12 +8568,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r93_37_objekte_54_pending_threads_leer_pinterest_ab09_drei_leere_captions_kein_write",
+      "state": "r139_31_objects_49_channel_states_four_guarded_updates_gaps_preserved",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R93_FRISCHE_METRICOOL_IDENTITAET_PLANUNG_KOLLISIONSPRUEFUNG_KEIN_WRITE",
-      "lastEvidence": "Brand6227837/EuropeZurich und sechs Kanalidentitäten 05.11.14:05 Zürich frisch passend. Fenster05.11.14:05–12.11.14:05:37Planobjekte/54PENDING, alle draftfalse/autoPublishtrue. Facebook16,Instagram16,TikTok11,YouTube7,Pinterest4,Threads0. Keine exakten kanalgleichen Slot+Volltext+Vollmedien-URL-Doppel und keine gleiche Medien-URL zweimal auf demselben Kanal; vollständige frühere Masterhistorie unbekannt. Drei bestehendeFB/IG-Medienposts415033593/UUID-8611238648907481079,415035691/UUID37985340483322184 und415077082/UUID-8331410252591837975 mit leerem Text unverändert. Pinterest-Board-ID1111333714239531706 beobachtet, Boardname unbekannt. R88-Kennzahlen29.10.–04.11. datiert wiederverwendet, nicht erneut gelesen; Lückenunknown, keine Verkaufsableitung. Kein Post-, Caption-, Termin- oder Publikationswrite.",
-      "nextAllowedStep": "Keine Lücke automatisch füllen und keine Ersatzposts anlegen. Leere Captions nur nach frischem Originalpost-, Medien-, Produkt- und Rechteabgleich bearbeiten. Vor einem neuen Masterpost zuerst eine fertige rechte- und qualitätsgeprüfte MP4, aktuelle Produktvariante, Bio-/Board-/YouTube-Flags, vollständigen Master-/Kanalbeleg und Kollisionsprüfung nachweisen.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R139_FRESH_METRICOOL_IDENTITY_PLAN_COLLISION_AND_GUARDED_EXISTING_POST_UPDATES",
+      "lastEvidence": "Shopify und alle sechs Metricool-Identitäten frisch passend.31 Planobjekte/49 Kanalzustände:19 aktiv/12 Draft,3 PUBLISHED/46 PENDING. IG/FB08.-15.11. aktiv abgedeckt; keine aktuelle Slotkollision oder exakte Text-/Medienkopie. JCB-TikTok09.11.18:00 autoAddMusic entfernt, ID420725256/UUID-7893674518673470896 aktiv/PENDING. USB-Flaschenöffner15.11. wegen rueckhol-0907 ID420724799/UUID-3833193365444016309 Draft/Auto aus. Versandkarussells15.11.16:00 IG420726136/UUID6199136659928140012 und FB420728374/UUID7768651932591999367 aktiv/PENDING; FB-UTM20261115. TikTok10.-15.11., Pinterest09.-15.11., YouTube/Threads aktive Lücken. Pinterest08.11.20:00 ID413266978/UUID5938318811609320266/Board1111333714239531706. Vier YT-Drafts madeForKids=false;11 Videoobjekte Draft/Auto aus. Kristallkorrekturdatei fehlt; kein Upload. Keine Kennzahlwiederholung.",
+      "nextAllowedStep": "Keine Lücke automatisch füllen. Kristallkorrekturdatei erst nach tatsächlichem Auffinden, Hash-/Bild-/Ton-/Rechteprüfung und Masterledger verwenden. Vor Pinterest/YouTube/Threads weiterhin aktuelle Produkt-, Medien-, Board-/Zielgruppen-, Rechte-, Historien- und Kollisionsgates prüfen. Bestehende IDs/UUIDs erhalten; unknown nicht duplizieren.",
       "blockers": [
         "Kein aktuell varianten- und rechtegebundener professioneller Master; daher keine Lückenfüllung.",
         "Vollständige frühere Masterhistorie ist unbekannt; unterschiedliche Export-URLs können denselben Inhalt darstellen.",
@@ -10580,6 +10601,19 @@
         "readAt": "2026-11-08T12:01:35+01:00"
       },
       "action": "R138: GitHub Actions run42473578050/job128709810825 was read back completed/success. Shopify #1038 has exactly one confirmed CJ order LX1038/SD2611081059350666900 in CREATED state; targeted readback count=1. Goods USD7.44 plus DHL Official USD37.19 equals USD44.63, kept separate from Shopify CHF. No CJ payment, Shopify fulfillment, tracking write, customer email/contact or PII documentation. No retry."
+    },
+    {
+      "revision": 139,
+      "at": "2026-11-08T14:25:46+01:00",
+      "actor": "codex",
+      "source": {
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42483371177",
+        "runId": 42483371177,
+        "localQaPath": "/workspace/luxestyle-review/live-qa-20261108/final-dom-summary.json",
+        "localQaSha256": "561e8c64aabd8de838fe42468242923b67c0dad0726ba45714ca27a667af63e6",
+        "readAt": "2026-11-08T14:25:46+01:00"
+      },
+      "action": "R139: v6.3 Selfdesign was deployed through merged PRs2944/2950/2953/2956 and guarded full plan/apply runs;16 Printful products are editor-ready, Dad Cap/Magnet/external DTF remain visibly fail-closed. Notebook live DOM passed; DTF runtime remains unknown after Envoy timeouts despite HTTP200 fail-closed server markup. Shopify #1038 is paid and its existing CJ order is UNSHIPPED; no fulfillment/tracking/contact. Metricool identities and31 objects/49 channel states were freshly checked; four existing objects were guardedly corrected, no new post. R135 metrics/Klaviyo reused without a second query. Projector remains storyboard/no MP4; rights open. No real cart/order, flow/DNS/budget/discount/customer or paid-render action."
     }
   ],
   "salesGoal": {
@@ -16290,6 +16324,301 @@
       "cj": "USD",
       "shopify": "CHF",
       "mixed": false
+    }
+  },
+  "selfDesignLiveRolloutR139": {
+    "at": "2026-11-08T14:25:46+01:00",
+    "status": "live_16_ready_three_visible_fail_closed_notebook_pass_dtf_runtime_unknown",
+    "pullRequests": {
+      "2944": {
+        "state": "MERGED",
+        "mergeSha": "9fed2dd5c08e96fea5b6570c29adbaab6b56cd21"
+      },
+      "2950": {
+        "state": "MERGED",
+        "mergeSha": "56e5079fdb6e1b6e2c395c5a506b2edbfb36f28b"
+      },
+      "2953": {
+        "state": "MERGED",
+        "mergeSha": "62e141415eca40e89f0d7d55ffe070ec7265a038"
+      },
+      "2956": {
+        "state": "MERGED",
+        "headSha": "f661f38d3b6ca26ae02f38bf7f833a0233bcabda",
+        "mergeSha": "4392cb871235b93430d4db05cd17cf3f2502ebd7"
+      }
+    },
+    "runs": {
+      "publicDeploy": {
+        "runId": 42482820662,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "fullPlan": {
+        "runId": 42483190027,
+        "status": "completed",
+        "conclusion": "success",
+        "products": 19
+      },
+      "fullApply": {
+        "runId": 42483371177,
+        "status": "completed",
+        "conclusion": "success",
+        "changed": 19
+      }
+    },
+    "scope": {
+      "activePrintfulProducts": 18,
+      "activePrintfulVariants": 244,
+      "readyProducts": 16,
+      "readyVariants": 240,
+      "blockedPrintfulProducts": 2,
+      "blockedPrintfulVariants": 4,
+      "externalDtfBlockedProducts": 1,
+      "proportionalProductProjectionProducts": 9,
+      "exactPrintfileOnlyProducts": 7,
+      "draftActivated": 0
+    },
+    "editor": {
+      "version": "6.3.0",
+      "sha256": "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+      "sri": "sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=",
+      "headers": {
+        "accessControlAllowOrigin": "*",
+        "crossOriginResourcePolicy": "cross-origin",
+        "cacheControl": "public, max-age=31536000, immutable"
+      }
+    },
+    "liveQa": {
+      "tshirtAssetAndInitConfirmed": true,
+      "notebook": {
+        "status": "PASS",
+        "summaryVariant": "Standardausführung",
+        "rawVariantIdAbsent": true,
+        "printAreas": [
+          {
+            "width": 1725,
+            "height": 2625
+          },
+          {
+            "width": 1725,
+            "height": 2625
+          }
+        ],
+        "productProjections": 0,
+        "viewportWidth": 390,
+        "overflow": false,
+        "cartRequests": 0,
+        "firstPartyHttpErrors": 0
+      },
+      "dtf": {
+        "runtime": "UNKNOWN",
+        "reason": [
+          "domcontentloaded timeout after 60s",
+          "attached-selector timeout after 30s"
+        ],
+        "server": {
+          "httpStatus": 200,
+          "bytes": 974139,
+          "blockerMarkup": true,
+          "scopedCta": true,
+          "failClosedCode": true,
+          "cartRequests": 0
+        }
+      },
+      "source": {
+        "path": "/workspace/luxestyle-review/live-qa-20261108/final-dom-summary.json",
+        "sha256": "561e8c64aabd8de838fe42468242923b67c0dad0726ba45714ca27a667af63e6",
+        "durability": "local_runtime_evidence"
+      },
+      "completeThreeBlockerVisualAcceptance": false
+    },
+    "blockedProducts": [
+      "dad-cap-selbst-gestalten",
+      "magnet-zum-selbstgestalten",
+      "buegeltransfer-selbst-gestalten"
+    ],
+    "actionsNotPerformed": [
+      "DRAFT activation",
+      "real upload",
+      "real cart add",
+      "checkout",
+      "customer order",
+      "Printful order",
+      "customer contact",
+      "paid render"
+    ]
+  },
+  "cjOrderStatusR139": {
+    "at": "2026-11-08T14:25:46+01:00",
+    "shopifyOrder": "#1038",
+    "shopifyPaymentStatus": "PAID",
+    "cjOrderNum": "LX1038",
+    "cjOrderId": "SD2611081059350666900",
+    "cjStatus": "UNSHIPPED",
+    "currency": "USD",
+    "goodsAmount": "7.44",
+    "shippingAmount": "37.19",
+    "totalAmount": "44.63",
+    "r138CreatedEvidencePreserved": true,
+    "fulfillmentWritten": false,
+    "trackingWritten": false,
+    "customerContacted": false
+  },
+  "metricoolScheduleR139": {
+    "at": "2026-11-08T14:25:46+01:00",
+    "identityMatched": true,
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "objects": 31,
+    "channelStates": 49,
+    "activeObjects": 19,
+    "draftObjects": 12,
+    "publishedChannelStates": 3,
+    "pendingChannelStates": 46,
+    "instagramFacebookActiveCoverage": "2026-11-08..2026-11-15",
+    "currentExactCollision": false,
+    "currentExactTextMediaDuplicate": false,
+    "updates": [
+      {
+        "platform": "TikTok",
+        "id": "420725256",
+        "uuid": "-7893674518673470896",
+        "scheduledAt": "2026-11-09T18:00:00+01:00",
+        "change": "autoAddMusic_removed",
+        "draft": false,
+        "autoPublish": true,
+        "state": "PENDING"
+      },
+      {
+        "platform": "multi",
+        "id": "420724799",
+        "uuid": "-3833193365444016309",
+        "scheduledAt": "2026-11-15",
+        "change": "blocked_rueckhol_0907",
+        "draft": true,
+        "autoPublish": false
+      },
+      {
+        "platform": "Instagram",
+        "id": "420726136",
+        "uuid": "6199136659928140012",
+        "scheduledAt": "2026-11-15T16:00:00+01:00",
+        "draft": false,
+        "autoPublish": true,
+        "state": "PENDING"
+      },
+      {
+        "platform": "Facebook",
+        "id": "420728374",
+        "uuid": "7768651932591999367",
+        "scheduledAt": "2026-11-15T16:00:00+01:00",
+        "change": "utm_20261115",
+        "draft": false,
+        "autoPublish": true,
+        "state": "PENDING"
+      }
+    ],
+    "gaps": {
+      "tiktok": "2026-11-10..2026-11-15",
+      "pinterest": "2026-11-09..2026-11-15",
+      "youtube": "no_active_dates",
+      "threads": "no_dates"
+    },
+    "pinterestCurrent": {
+      "id": "413266978",
+      "uuid": "5938318811609320266",
+      "scheduledAt": "2026-11-08T20:00:00+01:00",
+      "boardId": "1111333714239531706",
+      "state": "PENDING"
+    },
+    "youtubeDraftsMadeForKidsFalse": 4,
+    "videoObjectsDraftAutoOff": 11,
+    "crystalCorrectedFileAvailable": false,
+    "metricsRequeried": false
+  },
+  "contentSalesPackageR139": {
+    "at": "2026-11-08T14:25:46+01:00",
+    "projector": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "status": "ACTIVE",
+      "storefrontPurchasable": true,
+      "variants": "A-G",
+      "priceRange": {
+        "min": "34.90",
+        "max": "51.90",
+        "currency": "CHF"
+      },
+      "historicalVariantCurrent": false,
+      "masterStatus": "storyboard_script_no_mp4",
+      "durationSeconds": 18,
+      "format": "1080x1920",
+      "fps": 30,
+      "hooks": 2,
+      "channelDrafts": 6,
+      "rightsBinding": "unknown",
+      "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "musicFinalRightsHearingMixAcceptance": false
+    },
+    "bruderSample": {
+      "status": "ACTIVE",
+      "price": "36.90",
+      "currency": "CHF",
+      "variantId": "55970901557633",
+      "sku": "fortura-062650",
+      "inventoryQuantity": 45,
+      "inventoryTracked": true,
+      "inventoryPolicy": "DENY",
+      "imageRights": "unknown",
+      "contentPush": false
+    },
+    "klaviyo": {
+      "requeried": false,
+      "sourceRevision": 135,
+      "placedOrderMetricId": "W7XTVD",
+      "accountCurrency": "USD",
+      "shopCurrency": "CHF",
+      "flows": {
+        "Vse76a": "draft",
+        "VbLQj6": "draft",
+        "RnTvsY": "draft",
+        "XEGbTB": "draft"
+      },
+      "singleProposal": "Email2 XEGbTB: unbelegten 10%-Claim neutralisieren",
+      "applied": false
+    },
+    "dailyMetrics": {
+      "requeried": false,
+      "sourceRevision": 135,
+      "missingDays": "unknown",
+      "salesInferred": false
+    },
+    "dns": {
+      "approvedRecords": 4,
+      "authenticatedWriteAccess": false,
+      "changed": false
+    }
+  },
+  "followUpRunR139": {
+    "at": "2026-11-08T14:25:46+01:00",
+    "scope": "self_design_live_rollout_metricool_schedule_cj_status_and_compact_content_sales_package",
+    "actualWrites": [
+      "19 guarded Shopify description updates via workflow42483371177",
+      "four existing Metricool object updates with targeted readback",
+      "LuxeStyle handoff documentation"
+    ],
+    "notPerformed": [
+      "new Metricool post",
+      "new video upload",
+      "Klaviyo flow activation",
+      "DNS write",
+      "customer contact",
+      "budget or discount change",
+      "paid render"
+    ],
+    "evidence": {
+      "selfDesignApply": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42483371177",
+      "selfDesignQaSha256": "561e8c64aabd8de838fe42468242923b67c0dad0726ba45714ca27a667af63e6"
     }
   }
 }
