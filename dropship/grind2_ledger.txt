@@ -87,3 +87,63 @@ D3B1346A-82AD-4AF1-B3AE-09C068AF6F24 · 2026-11-03T18:23:06.361Z · UEBERSPRUNGE
 1623267571191525376 · 2026-11-03T18:23:06.366Z · UEBERSPRUNGEN · zurückgestellt: Text offen: zu wenig belegte Angaben (2, 1 verworfen)
 FFD2DE83-7A2A-4AFD-9072-FE53CCCBBC67 · 2026-11-03T18:23:17.433Z · GESCHRIEBEN · 8 Varianten · choker-halskette-damen-voll-kristall-strass-sc-cbbc67 · gid://shopify/Product/16690384765319 · kronleuchter
 2406120341111620600 · 2026-11-03T18:23:23.151Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+38F72844-9DCB-4FCE-B6A4-7B6102FAF50C · 2026-11-08T22:28:36.163Z · UEBERSPRUNGEN · zurückgestellt: variantenzahl: viele Varianten (72 > 40) — später, wenn das Tageskontingent reicht; optionswerte-sicher: nicht sicher überse
+308227CA-3DA0-44D0-A1E1-5E5D29313B80 · 2026-11-08T22:28:36.169Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Event & Party Supplies» ist unrein (häufigster Pfad nur 100 % von 1) und der Titel ne
+1504765008830541824 · 2026-11-08T22:28:36.175Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Apparel & Accessories > Clothing Accessories > Cufflinks
+1656115777298247680 · 2026-11-08T22:28:36.180Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Home Office Storage» ist unrein (häufigster Pfad nur 8 % von 65) und der Titel nennt 
+1697806323154427904 · 2026-11-08T22:28:36.185Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+638DC491-5F0C-47A4-A3F7-C320DF20E4FF · 2026-11-08T22:28:36.190Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1362711367378931712 · 2026-11-08T22:28:56.453Z · GESCHRIEBEN · 1 Varianten · webcam-outdoor-wifi-931712 · gid://shopify/Product/16700385264007 · webcams
+6B7A5344-5DD7-4190-AE01-38D92468A12E · 2026-11-08T22:29:02.221Z · UEBERSPRUNGEN · zurückgestellt: keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: CJPacket Postal 12-50, PostNL 15-45)
+1503573182048120832 · 2026-11-08T22:29:02.227Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-sicher: nicht sicher übersetzt: [{"option":"Farbe","wert":"Matcha green"},{"option":"Farbe","wert":"Dark night 
+1387331169699368960 · 2026-11-08T22:29:34.475Z · GESCHRIEBEN · 1 Varianten · damen-perucke-lockig-flauschig-pony-368960 · gid://shopify/Product/16700385657223 · peruecken
+1580135104826060800 · 2026-11-08T22:29:40.207Z · UEBERSPRUNGEN · zurückgestellt: variantenzahl: viele Varianten (51 > 40) — später, wenn das Tageskontingent reicht; optionswerte-sicher: nicht sicher überse
+1600129237883826176 · 2026-11-08T22:29:40.215Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Event & Party Supplies» ist unrein (häufigster Pfad nur 100 % von 1) und der Titel ne
+1681173337520746496 · 2026-11-08T22:29:40.221Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+0A4BA026-70FA-49CD-83A7-51B446A9C201 · 2026-11-08T22:29:40.226Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+86C9ED90-DD3D-4CBB-8D2C-31160D8F4EC7 · 2026-11-08T22:29:40.231Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+2410261112591607400 · 2026-11-08T22:29:40.238Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1409769908136448000 · 2026-11-08T22:29:59.449Z · GESCHRIEBEN · 2 Varianten · webcam-1080p2k-hd-videokonferenz-treiberlos-us-448000 · gid://shopify/Product/16700385689991 · webcams
+1662354067189927936 · 2026-11-08T22:30:05.210Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Holders & Stands» ist unrein (häufigster Pfad nur 50 % von 10) und der Titel nennt ke
+1592025987603247104 · 2026-11-08T22:30:05.218Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1387996346287525888 · 2026-11-08T22:30:05.226Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1453996246795685888 · 2026-11-08T22:30:05.233Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+9B68508B-FA9A-417F-A293-FC556028AB12 · 2026-11-08T22:30:05.239Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Event & Party Supplies» ist unrein (häufigster Pfad nur 100 % von 1) und der Titel ne
+1461152224561467392 · 2026-11-08T22:30:05.244Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+2583E371-7EC6-4E2A-BAD3-8412294312E6 · 2026-11-08T22:30:05.249Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Aprons) passt zu keinem
+2409210911441605300 · 2026-11-08T22:30:05.255Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Woman Hats & Caps» ist unrein (häufigster Pfad nur 100 % von 3) und der Titel nennt k
+9A5E83E7-8B8E-496C-B91B-4E1E842903FE · 2026-11-08T22:30:05.260Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1411132898387562496 · 2026-11-08T22:30:28.586Z · GESCHRIEBEN · 1 Varianten · webcam-hd-fur-notebook-usb-2-0-mini-smart-562496 · gid://shopify/Product/16700385853831 · webcams
+7A626955-EE50-447D-9AC7-4190C68AD6A4 · 2026-11-08T22:30:34.283Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Holders & Stands» ist unrein (häufigster Pfad nur 50 % von 10) und der Titel nennt ke
+6C026DE5-E8F5-47D2-BC7F-8E3687CF164D · 2026-11-08T22:30:34.292Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Electronics > Audio > Audio Components > Audio Amplifiers
+1419172768519426048 · 2026-11-08T22:31:00.088Z · GESCHRIEBEN · 12 Varianten · perucken-und-haarteile-echthaar-426048 · gid://shopify/Product/16700386115975 · peruecken
+F4183865-73BE-4509-87A1-3F4D4C1855CE · 2026-11-08T22:31:05.896Z · UEBERSPRUNGEN · zurückgestellt: optionswerte-deutsch: englische/fremdsprachige Optionswerte: «22M200 hell», «12M100 hell», «5M20 hell»
+1381184374883618816 · 2026-11-08T22:31:05.902Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Event & Party Supplies» ist unrein (häufigster Pfad nur 100 % von 1) und der Titel ne
+1380083388333035520 · 2026-11-08T22:31:05.908Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Apparel & Accessories > Clothing Accessories > Cufflinks
+122125A0-E459-4986-B512-F92C606B99BB · 2026-11-08T22:31:05.915Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Christmas Decoration Supplies» ist unrein (häufigster Pfad nur 50 % von 4) und der Ti
+6391A8E3-AB8F-4671-89D8-D640938092FD · 2026-11-08T22:31:05.920Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1388767992162160640 · 2026-11-08T22:31:05.924Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1387300139118497792 · 2026-11-08T22:31:05.928Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Cameras & Optics > Cameras > Webcams) passt zu keinem der beobachteten Pfade des Blat
+1424257508926689280 · 2026-11-08T22:31:05.933Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Holders & Stands» ist unrein (häufigster Pfad nur 50 % von 10) und der Titel nennt ke
+AEC9C1DE-B104-42AD-A526-B2EB04D8FFE9 · 2026-11-08T22:31:05.937Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1587687854195617792 · 2026-11-08T22:31:33.351Z · GESCHRIEBEN · 8 Varianten · damen-perucken-gewellt-617792 · gid://shopify/Product/16700386443655 · peruecken
+5D9D64E8-5CA1-48A0-BB1F-D09A4CC55969 · 2026-11-08T22:31:39.117Z · UEBERSPRUNGEN · stecker: nur Fremdstecker (US/UK/AU/JP) bei CJ — nicht für die Schweiz (1 Varianten)
+EC58C239-D958-4D9F-A377-D61B3B6C982D · 2026-11-08T22:31:39.125Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Event & Party Supplies» ist unrein (häufigster Pfad nur 100 % von 1) und der Titel ne
+1547879095781044224 · 2026-11-08T22:31:39.132Z · UEBERSPRUNGEN · zurückgestellt: keine passende Kategorie (kein sort-Tag) für Apparel & Accessories > Clothing Accessories > Cufflinks
+D60CB67B-7276-4DC4-98A1-2B0445EFC1C8 · 2026-11-08T22:31:39.138Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+13F4F27B-CB94-441E-9472-0537D8F64E96 · 2026-11-08T22:31:39.143Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Home Office Storage» ist unrein (häufigster Pfad nur 8 % von 65) und der Titel nennt 
+45565988-8A5A-466B-BB81-351C738C2933 · 2026-11-08T22:31:39.149Z · UEBERSPRUNGEN · zurückgestellt: Text offen: zu wenig belegte Angaben (2)
+1606885492832874496 · 2026-11-08T22:31:39.154Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Cameras & Optics > Cameras > Webcams) passt zu keinem der beobachteten Pfade des Blat
+1378266715670056960 · 2026-11-08T22:31:39.159Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Holders & Stands» ist unrein (häufigster Pfad nur 50 % von 10) und der Titel nennt ke
+C0248372-A6D0-4F2A-B4AD-EFD311844636 · 2026-11-08T22:31:55.614Z · GESCHRIEBEN · 3 Varianten · laptoptasche-einfach-844636 · gid://shopify/Product/16700386607495 · tablethuellen
+02277515-ABA1-4C90-ABE8-385E69540155 · 2026-11-08T22:32:01.349Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+0B5076F2-EA2B-4303-9938-7655F946908C · 2026-11-08T22:32:01.357Z · UEBERSPRUNGEN · zurückgestellt: keine normale Versandlinie CN→CH mit höchstens 20 Tagen Lieferzeit (Linien: CJPacket Postal 12-50, PostNL 15-45)
+1715258004301422592 · 2026-11-08T22:32:01.363Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Event & Party Supplies» ist unrein (häufigster Pfad nur 100 % von 1) und der Titel ne
+1680850892913905664 · 2026-11-08T22:32:01.369Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1382652829021376512 · 2026-11-08T22:32:30.625Z · GESCHRIEBEN · 18 Varianten · herren-halskette-mit-eisen-nagelkreuz-anhanger-376512 · gid://shopify/Product/16700386640263 · geschenkband
+1476075517156397056 · 2026-11-08T22:32:36.316Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1636901327638900736 · 2026-11-08T22:32:36.324Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+1392035402734505984 · 2026-11-08T22:32:36.330Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Titel (Cameras & Optics > Cameras > Webcams) passt zu keinem der beobachteten Pfade des Blat
+1424681496672866304 · 2026-11-08T22:32:36.336Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt «Holders & Stands» ist unrein (häufigster Pfad nur 50 % von 10) und der Titel nennt ke
+7BCDF4EB-436C-419F-8B55-AC0AD2E08574 · 2026-11-08T22:32:36.342Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart
+AB10107F-BB63-454E-BE52-C565C987BE22 · 2026-11-08T22:32:36.347Z · UEBERSPRUNGEN · zurückgestellt: keine sichere Google-Kategorie: Blatt unbekannt und der Titel nennt keine bekannte Warenart

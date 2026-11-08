@@ -1,0 +1,72 @@
+[
+ {
+  "id": "gid://shopify/UrlRedirect/2102027583879",
+  "path": "/products/polyester-aufbewahrungstasche-634900",
+  "target": "/products/polyester-aufbewahrungstasche-460096",
+  "grund": "CJ entfernt; Geschwisterprodukt aktiv; Google-Suche «gepolsterte tasche» Position 9,7",
+  "angelegt": "2026-11-08T22:44:48.820Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102027714951",
+  "path": "/products/bartpflege-set-600400",
+  "target": "/products/bartpflege-set-mit-mikro-nadel-roller-d5add9",
+  "grund": "CJ nicht versendbar CH; ähnliches Bartpflege-Set aktiv",
+  "angelegt": "2026-11-08T22:44:49.853Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102027944327",
+  "path": "/products/bartburste-540865",
+  "target": "/collections/herren-grooming",
+  "grund": "CJ nicht mehr verfügbar",
+  "angelegt": "2026-11-08T22:44:50.971Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102027977095",
+  "path": "/products/mobelfolie-selbstklebend-mit-holzmaserung-772546",
+  "target": "/collections/wohnen-dekoration",
+  "grund": "CJ nicht versendbar CH",
+  "angelegt": "2026-11-08T22:44:51.975Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102028140935",
+  "path": "/products/schwingerhose-fgahb2887ml",
+  "target": "/collections/ft-herrenkostuem",
+  "grund": "Fortura beim Lieferanten ausverkauft; 3 Klicks in 3 Monaten; bei Wiederkehr Weiterleitung löschen",
+  "angelegt": "2026-11-08T22:44:53.042Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102028239239",
+  "path": "/products/recycelter-unisex-allover-hoodie-selbst-gestalten",
+  "target": "/collections/selbst-gestalten",
+  "grund": "Entwurf seit 05.11. (Druckdatei zu klein); bei Rückkehr Weiterleitung löschen",
+  "angelegt": "2026-11-08T22:44:54.048Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102028403079",
+  "path": "/products/recycelte-allover-jogginghosen-selbst-gestalten",
+  "target": "/collections/selbst-gestalten",
+  "grund": "wie Hoodie",
+  "angelegt": "2026-11-08T22:44:55.067Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102028566919",
+  "path": "/products/unisex-allover-bomberjacke-selbst-gestalten",
+  "target": "/collections/selbst-gestalten",
+  "grund": "wie Hoodie",
+  "angelegt": "2026-11-08T22:44:56.049Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102028632455",
+  "path": "/products/kissen-zum-selbstgestalten",
+  "target": "/collections/selbst-gestalten",
+  "grund": "wie Hoodie",
+  "angelegt": "2026-11-08T22:44:57.053Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102028796295",
+  "path": "/products/kuscheldecke-selbst-gestalten",
+  "target": "/collections/selbst-gestalten",
+  "grund": "wie Hoodie",
+  "angelegt": "2026-11-08T22:44:58.036Z"
+ }
+]
