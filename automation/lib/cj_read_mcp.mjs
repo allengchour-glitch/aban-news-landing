@@ -1,4 +1,4 @@
-import { isValidCjLookup, isValidCjPidLookup } from './cj_readonly.mjs';
+import { isValidCjLookup, isValidCjPidLookup, isValidCjRouteLookup } from './cj_readonly.mjs';
 import { CJ_PID_JSON_PATTERN } from './cj_identity.mjs';
 
 const emptySchema = { type: 'object', properties: {}, additionalProperties: false };
@@ -20,30 +20,40 @@ export const CJ_MCP_TOOLS = Object.freeze([
   { name: 'luxe_cj_inventory_read',
     description: 'Liest genau einen begrenzten CJ-Lagerbericht per pid. Länder bleiben getrennt; Bestand belegt keine Lieferbarkeit in die Schweiz.',
     inputSchema: { type: 'object', properties: { pid: lookupProperties.pid },
-      required: ['pid'], additionalProperties: false }, annotations: externalRead }
+      required: ['pid'], additionalProperties: false }, annotations: externalRead },
+  { name: 'luxe_cj_ch_route_read',
+    description: 'Liest nach exakt gebundener Produktvariante höchstens einmal die von CJ für diese variantSku gemeldeten Versandmethoden CN→CH. Keine Frachtpreise oder Lieferzeitversprechen.',
+    inputSchema: { type: 'object', properties: {
+      pid: lookupProperties.pid,
+      variantSku: { type: 'string', minLength: 1, maxLength: 100,
+        pattern: '^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$' }
+    }, required: ['pid', 'variantSku'], additionalProperties: false }, annotations: externalRead }
 ]);
 
-export const CJ_MCP_SERVER = Object.freeze({ name: 'luxestyle-cj-read', version: '1.2.0' });
+export const CJ_MCP_SERVER = Object.freeze({ name: 'luxestyle-cj-read', version: '1.3.0' });
 export const CJ_MCP_INSTRUCTIONS = 'Rein lesender CJdropshipping-Quellenzugriff für LuxeStyle. '
   + 'Fehlende Bindung, Auth-/Quota-/Drosselungsfehler und unlesbare Antworten bleiben unbekannt. '
   + 'Lagerwerte bleiben je Variante und Land getrennt und belegen keine Lieferbarkeit in die Schweiz. '
+  + 'Eine CN→CH-Routenlesung bindet PID und variantSku an den vorangehenden vollständigen Produktread; sie ist kein Lieferzeit- oder Zustellversprechen. '
   + 'Keine Suche, Pagination, Imports, Bestellungen, Käufe, Render- oder Shop-Schreibzugriffe.';
 
 export function validateCjMcpArguments(name, args) {
   if (!args || typeof args !== 'object' || Array.isArray(args)) return false;
   if (name === 'luxe_cj_status') return Object.keys(args).length === 0;
   if (name === 'luxe_cj_product_read') return isValidCjLookup(args);
-  return name === 'luxe_cj_inventory_read' && isValidCjPidLookup(args);
+  if (name === 'luxe_cj_inventory_read') return isValidCjPidLookup(args);
+  return name === 'luxe_cj_ch_route_read' && isValidCjRouteLookup(args);
 }
 
 export function createCjMcpHandlers(client) {
   if (!client || typeof client.status !== 'function' || typeof client.readProduct !== 'function'
-    || typeof client.readInventory !== 'function') {
+    || typeof client.readInventory !== 'function' || typeof client.readRoute !== 'function') {
     throw new TypeError('Ein gültiger CJ-Leseclient ist erforderlich.');
   }
   return {
     luxe_cj_status: () => client.status(),
     luxe_cj_product_read: args => client.readProduct(args),
-    luxe_cj_inventory_read: args => client.readInventory(args)
+    luxe_cj_inventory_read: args => client.readInventory(args),
+    luxe_cj_ch_route_read: args => client.readRoute(args)
   };
 }

@@ -21,6 +21,8 @@ const productResponse = (extra = {}) => response({ result: true, code: 200, data
 const inventoryResponse = (variantInventories = [], pointsInfo = { total: 70000, usedToday: 10, remaining: 69990 }, extra = {}) =>
   response({ success: true, code: 200, data: { inventories: [{ must: 'stay ignored' }], variantInventories },
     pointsInfo, ...extra });
+const routeResponse = (data = [{ logisticsName: 'CJPacket Ordinary' }], extra = {}) =>
+  response({ result: true, code: 200, data, ...extra });
 
 function client(fetchImpl, extra = {}) {
   return createCjReadOnlyClient({ env: { CJ_API_KEY: KEY }, fetchImpl, wait: async () => {}, now: () => NOW, ...extra });
@@ -161,7 +163,8 @@ test('the process consumes one product-read budget and invalidates a repeated se
   const inventory = await c.readInventory(LOOKUP);
   assert.equal(inventory.reason, 'product_prerequisite_not_verified');
   assert.equal(calls.length, 2);
-  assert.deepEqual(c.status().requestBudget, { productRemaining: 0, inventoryRemaining: 0 });
+  assert.deepEqual(c.status().requestBudget,
+    { productRemaining: 0, inventoryRemaining: 0, routeRemaining: 1 });
   assert.equal(c.status().requestSequenceValid, false);
 });
 
@@ -676,4 +679,150 @@ test('inventory timeout and oversized response stay unknown without retry', asyn
     assert.equal(report.reason, 'response_too_large');
     assert.deepEqual(report.requests, { authentication: 0, inventory: 1 });
   });
+});
+
+test('exact variant product read then bounded CN to CH route read shares one auth token', async () => {
+  const calls = [], waits = [];
+  const c = createCjReadOnlyClient({ env: { CJ_API_KEY: KEY }, now: () => NOW,
+    wait: async ms => { waits.push(ms); }, fetchImpl: async (url, init) => {
+      calls.push({ url, init });
+      if (calls.length === 1) return authResponse();
+      if (calls.length === 2) return productResponse();
+      return routeResponse([{ logisticsName: 'CJPacket Ordinary' }, { logisticsName: 'PostNL' }]);
+    } });
+  const product = await c.readProduct({ variantSku: 'CJ-VARIANT' });
+  const route = await c.readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' });
+  assert.equal(product.state, 'product_identity_verified');
+  assert.equal(calls.length, 3);
+  assert.equal(new URL(calls[2].url).pathname, '/api2.0/v1/logistic/getAvailableLogistics');
+  assert.equal(calls[2].init.method, 'POST');
+  assert.deepEqual(JSON.parse(calls[2].init.body), {
+    sku: 'CJ-VARIANT', startCountryCode: 'CN', destCountryCode: 'CH'
+  });
+  assert.equal(calls[2].init.headers['CJ-Access-Token'], TOKEN);
+  assert.deepEqual(waits, [CJ_READ_LIMITS.REQUEST_GAP_MS, CJ_READ_LIMITS.REQUEST_GAP_MS]);
+  assert.equal(route.state, 'route_returned');
+  assert.deepEqual(route.requests, { authentication: 0, route: 1 });
+  assert.equal(route.route.pid, LOOKUP.pid);
+  assert.equal(route.route.variantSku, 'CJ-VARIANT');
+  assert.equal(route.route.vid, '9876543210123456789');
+  assert.equal(route.route.startCountryCode, 'CN');
+  assert.equal(route.route.destinationCountryCode, 'CH');
+  assert.deepEqual(route.route.options.records,
+    [{ logisticsName: 'CJPacket Ordinary' }, { logisticsName: 'PostNL' }]);
+  assert.equal(route.route.freightPrice, 'unknown');
+  assert.equal(route.route.deliveryTime, 'unknown');
+  assert.equal(route.route.deliveryPromise, false);
+  assert.equal(route.route.primeEntitlement, 'unknown');
+  assert.equal(c.status().lastRouteReadState, 'returned');
+  assert.deepEqual(c.status().requestBudget,
+    { productRemaining: 0, inventoryRemaining: 1, routeRemaining: 0 });
+  assertNoSecrets(route);
+});
+
+test('empty successful CN to CH method list remains an explicit supplier route result', async () => {
+  let calls = 0;
+  const c = client(async () => ++calls === 1 ? authResponse()
+    : calls === 2 ? productResponse() : routeResponse([]));
+  await c.readProduct({ variantSku: 'CJ-VARIANT' });
+  const route = await c.readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' });
+  assert.equal(calls, 3);
+  assert.equal(route.state, 'route_returned');
+  assert.equal(route.reason, null);
+  assert.deepEqual(route.route.options, {
+    state: 'no_supplier_shipping_method_returned', reported: 0, returned: 0,
+    partial: false, records: []
+  });
+  assert.equal(route.route.deliveryPromise, false);
+});
+
+test('route read requires one exact PID and variantSku bound by a complete product read', async t => {
+  const invalid = [{}, { pid: LOOKUP.pid }, { variantSku: 'CJ-VARIANT' },
+    { pid: '123', variantSku: 'CJ-VARIANT' },
+    { pid: LOOKUP.pid, variantSku: '../bad' },
+    { pid: LOOKUP.pid, variantSku: 'CJ-VARIANT', destinationCountryCode: 'DE' }];
+  for (const lookup of invalid) await t.test(`invalid ${JSON.stringify(lookup)}`, async () => {
+    let calls = 0;
+    const report = await client(async () => { calls++; throw new Error('must not run'); }).readRoute(lookup);
+    assert.equal(calls, 0);
+    assert.equal(report.state, 'unknown');
+    assert.equal(report.reason, 'invalid_route_lookup');
+  });
+  await t.test('no product prerequisite', async () => {
+    let calls = 0;
+    const report = await client(async () => { calls++; throw new Error('must not run'); })
+      .readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' });
+    assert.equal(calls, 0);
+    assert.equal(report.reason, 'product_prerequisite_not_verified');
+  });
+  for (const [name, routeLookup] of [
+    ['foreign pid', { pid: '1477820492730739999', variantSku: 'CJ-VARIANT' }],
+    ['foreign variant', { pid: LOOKUP.pid, variantSku: 'CJ-OTHER' }]
+  ]) await t.test(name, async () => {
+    let calls = 0;
+    const c = client(async () => ++calls === 1 ? authResponse() : productResponse());
+    await c.readProduct({ variantSku: 'CJ-VARIANT' });
+    const report = await c.readRoute(routeLookup);
+    assert.equal(calls, 2);
+    assert.equal(report.reason, 'product_prerequisite_not_verified');
+    assert.deepEqual(report.requests, { authentication: 0, route: 0 });
+  });
+});
+
+test('route response fails closed on malformed, duplicated or excessive method data', async t => {
+  const cases = [
+    ['null', null, 'malformed_route_data'],
+    ['record', {}, 'malformed_route_data'],
+    ['missing name', [{}], 'malformed_route_data'],
+    ['blank name', [{ logisticsName: ' ' }], 'malformed_route_data'],
+    ['untrimmed name', [{ logisticsName: ' PostNL' }], 'malformed_route_data'],
+    ['control name', [{ logisticsName: 'CJ\nPacket' }], 'malformed_route_data'],
+    ['duplicate', [{ logisticsName: 'PostNL' }, { logisticsName: 'PostNL' }], 'malformed_route_data'],
+    ['too many', Array.from({ length: 51 }, (_, index) => ({ logisticsName: `Line ${index}` })),
+      'route_options_exceeded']
+  ];
+  for (const [name, data, reason] of cases) await t.test(name, async () => {
+    let calls = 0;
+    const c = client(async () => ++calls === 1 ? authResponse()
+      : calls === 2 ? productResponse() : routeResponse(data));
+    await c.readProduct({ variantSku: 'CJ-VARIANT' });
+    const report = await c.readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' });
+    assert.equal(calls, 3);
+    assert.equal(report.state, 'unknown');
+    assert.equal(report.reason, reason);
+    assert.equal(report.route, null);
+  });
+});
+
+test('route errors, credential echoes and repeated reads remain unknown without retry', async t => {
+  const cases = [
+    ['http 429', new Response('', { status: 429 }), 'throttled'],
+    ['quota', response({ result: false, code: 1600200, message: 'Insufficient API points' }), 'quota'],
+    ['api reject', response({ result: false, code: 1605002, data: null }), 'route_api_response_rejected'],
+    ['echo', routeResponse([{ logisticsName: `echo ${TOKEN}` }]), 'credential_echo_blocked']
+  ];
+  for (const [name, third, reason] of cases) await t.test(name, async () => {
+    let calls = 0;
+    const c = client(async () => ++calls === 1 ? authResponse()
+      : calls === 2 ? productResponse() : third);
+    await c.readProduct({ variantSku: 'CJ-VARIANT' });
+    const report = await c.readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' });
+    assert.equal(calls, 3);
+    assert.equal(report.state, 'unknown');
+    assert.equal(report.reason, reason);
+    assert.equal(report.route, null);
+    assertNoSecrets(report);
+  });
+
+  let calls = 0;
+  const c = client(async () => ++calls === 1 ? authResponse()
+    : calls === 2 ? productResponse() : routeResponse());
+  await c.readProduct({ variantSku: 'CJ-VARIANT' });
+  assert.equal((await c.readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' })).state, 'route_returned');
+  const repeated = await c.readRoute({ pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' });
+  assert.equal(calls, 3);
+  assert.equal(repeated.state, 'unknown');
+  assert.equal(repeated.reason, 'route_request_budget_exhausted');
+  assert.deepEqual(repeated.requests, { authentication: 0, route: 0 });
+  assert.equal(c.status().requestSequenceValid, false);
 });

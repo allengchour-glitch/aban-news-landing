@@ -5,7 +5,9 @@ const BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const AUTH_URL = `${BASE}/authentication/getAccessToken`;
 const PRODUCT_URL = `${BASE}/product/query`;
 const INVENTORY_URL = `${BASE}/product/stock/getInventoryByPid`;
+const ROUTE_URL = `${BASE}/logistic/getAvailableLogistics`;
 const DOC_URL = 'https://developers.cjdropshipping.com/en/api/api2/api/auth.html';
+const ROUTE_DOC_URL = 'https://developers.cjdropshipping.com/en/api/api2/api/logistic.html#_1-4-available-shipping-methods-by-sku-post';
 const BODY_LIMIT = 2 * 1024 * 1024;
 const TIMEOUT_MS = 15_000;
 const REQUEST_GAP_MS = 1_100;
@@ -15,6 +17,7 @@ const MAX_VARIANTS = 50;
 const MAX_COUNTRIES_PER_VARIANT = 20;
 const MAX_INVENTORY_COUNTRY_ROWS = 400;
 const MAX_INVENTORY_REPORT_BYTES = 128 * 1024;
+const MAX_LOGISTICS = 50;
 const MAX_URL_BYTES = 1024;
 const SOFT_CODES = new Map([[1602001, 'product_not_found'], [1602002, 'product_removed'], [1602003, 'variant_removed']]);
 const QUOTA = /insufficient api points|daily.*(?:quota|limit)|points.*exhaust|too many requests/i;
@@ -38,6 +41,14 @@ function validPidLookup(args) {
   return !!args && typeof args === 'object' && !Array.isArray(args)
     && Object.keys(args).length === 1 && Object.keys(args)[0] === 'pid'
     && isValidCjPid(args.pid);
+}
+
+function validRouteLookup(args) {
+  if (!args || typeof args !== 'object' || Array.isArray(args)) return false;
+  const keys = Object.keys(args).sort();
+  return keys.length === 2 && keys[0] === 'pid' && keys[1] === 'variantSku'
+    && isValidCjPid(args.pid) && validVariantSku(args.variantSku)
+    && args.variantSku.length <= 100;
 }
 
 function safeUrl(value) {
@@ -292,6 +303,36 @@ function normaliseInventory(data, pointsInfo, pid) {
   };
 }
 
+function normaliseRoute(data, lookup, matchedVid) {
+  if (!Array.isArray(data)) return { state: 'unknown', reason: 'malformed_route_data' };
+  if (data.length > MAX_LOGISTICS) return { state: 'unknown', reason: 'route_options_exceeded' };
+  const names = [];
+  const seen = new Set();
+  for (const value of data) {
+    const rawName = value?.logisticsName;
+    const name = boundedText(rawName, 200);
+    if (!value || typeof value !== 'object' || Array.isArray(value)
+      || name.state !== 'returned' || name.value.length === 0
+      || rawName !== rawName.trim() || seen.has(name.value)) {
+      return { state: 'unknown', reason: 'malformed_route_data' };
+    }
+    seen.add(name.value);
+    names.push(name.value);
+  }
+  return {
+    state: 'route_returned', reason: null,
+    route: {
+      pid: lookup.pid, variantSku: lookup.variantSku, vid: matchedVid,
+      startCountryCode: 'CN', destinationCountryCode: 'CH',
+      options: { state: names.length ? 'supplier_shipping_methods_returned' : 'no_supplier_shipping_method_returned',
+        reported: names.length, returned: names.length, partial: false,
+        records: names.map(logisticsName => ({ logisticsName })) },
+      freightPrice: 'unknown', deliveryTime: 'unknown', deliveryPromise: false,
+      commercialTerms: 'unknown', primeEntitlement: 'unknown'
+    }
+  };
+}
+
 function inventoryVariantSetMatches(expectedVids, variants) {
   if (!Array.isArray(expectedVids) || expectedVids.length === 0 || !variants
     || variants.reported !== expectedVids.length || variants.returned !== expectedVids.length
@@ -352,6 +393,15 @@ function emptyInventoryReport(now, lookup) {
       writes: 0, imports: 0, purchases: 0, renders: 0 } };
 }
 
+function emptyRouteReport(now, lookup) {
+  return { checkedAt: new Date(now).toISOString(), provider: 'CJdropshipping', mode: 'read_only',
+    lookup, state: 'unknown', reason: null, requests: { authentication: 0, route: 0 },
+    route: null, credentialsPersisted: false, tokenPersistence: 'process_memory_only',
+    limits: { routeRequests: 1, pagination: 0, retries: 0, responseBytes: BODY_LIMIT,
+      returnedLogistics: MAX_LOGISTICS, fixedStartCountryCode: 'CN', fixedDestinationCountryCode: 'CH',
+      writes: 0, imports: 0, purchases: 0, renders: 0 } };
+}
+
 export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalThis.fetch,
   wait = ms => new Promise(resolve => setTimeout(resolve, ms)), now = () => Date.now() } = {}) {
   let cachedToken = null;
@@ -361,8 +411,11 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
   let lastProductRead = null;
   let lastVerifiedInventoryReadAt = null;
   let lastInventoryRead = null;
+  let lastVerifiedRouteReadAt = null;
+  let lastRouteRead = null;
   let productRequestUsed = false;
   let inventoryRequestUsed = false;
+  let routeRequestUsed = false;
   let invalidRequestSequence = false;
   let queue = Promise.resolve();
   const clock = () => { const value = Number(now()); return Number.isFinite(value) ? value : Date.now(); };
@@ -444,7 +497,9 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
         pid: report.state === 'product_identity_verified' ? report.product?.product?.pid || null : null,
         inventoryEligible: report.state === 'product_identity_verified' && completeVariants,
         variantVids: report.state === 'product_identity_verified' && completeVariants
-          ? variants.records.map(record => record.vid.toUpperCase()) : null };
+          ? variants.records.map(record => record.vid.toUpperCase()) : null,
+        variantIdentity: report.state === 'product_identity_verified' && completeVariants
+          ? variants.records.map(record => ({ variantSku: record.variantSku, vid: record.vid })) : null };
       if (lastProductRead.state === 'verified') lastVerifiedReadAt = at;
       return report;
     };
@@ -536,6 +591,62 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
     report.inventory = normalised.state === 'inventory_returned' ? normalised.inventory : null;
     return finish();
   }
+  async function readRoute(lookup) {
+    const current = clock();
+    const report = emptyRouteReport(current, lookup);
+    if (routeRequestUsed) {
+      report.reason = 'route_request_budget_exhausted';
+      invalidRequestSequence = true;
+      return report;
+    }
+    routeRequestUsed = true;
+    const binding = keyState();
+    const finish = () => {
+      const at = new Date(clock()).toISOString();
+      lastRouteRead = { at, state: report.state === 'route_returned' ? 'returned' : 'unknown',
+        keyFingerprint: binding.fingerprint || null };
+      if (lastRouteRead.state === 'returned') lastVerifiedRouteReadAt = at;
+      return report;
+    };
+    if (!validRouteLookup(lookup)) { report.reason = 'invalid_route_lookup'; return finish(); }
+    if (binding.state !== 'bound_unverified') { report.reason = `credential_binding_${binding.state}`; return finish(); }
+    const matches = Array.isArray(lastProductRead?.variantIdentity)
+      ? lastProductRead.variantIdentity.filter(value => value.variantSku === lookup.variantSku) : [];
+    if (invalidRequestSequence || !lastProductRead || lastProductRead.state !== 'verified'
+      || lastProductRead.keyFingerprint !== binding.fingerprint
+      || lastProductRead.pid !== lookup.pid || matches.length !== 1 || !validVid(matches[0]?.vid)) {
+      report.reason = 'product_prerequisite_not_verified'; return finish();
+    }
+    const auth = await authenticate(report, binding);
+    if (!auth) return finish();
+    report.requests.route++;
+    let response;
+    try {
+      response = await request(ROUTE_URL, { method: 'POST', headers: {
+        Accept: 'application/json', 'Content-Type': 'application/json',
+        'CJ-Access-Token': auth.accessToken }, body: JSON.stringify({
+        sku: lookup.variantSku, startCountryCode: 'CN', destCountryCode: 'CH'
+      }) });
+    } catch (error) { report.reason = errorReason(error); return finish(); }
+    if (response.status < 200 || response.status >= 300) {
+      await discardResponseBody(response); report.reason = responseReason(response.status); return finish();
+    }
+    let body;
+    try { body = await boundedJson(response); }
+    catch (error) { report.reason = errorReason(error); return finish(); }
+    if (includesSecret(body, [binding.key, auth.accessToken, auth.refreshToken])) {
+      report.reason = 'credential_echo_blocked'; return finish();
+    }
+    if (QUOTA.test(String(body?.message || ''))) { report.reason = 'quota'; return finish(); }
+    if (body?.result !== true || Number(body?.code) !== 200) {
+      report.reason = 'route_api_response_rejected'; return finish();
+    }
+    const normalised = normaliseRoute(body.data, lookup, matches[0].vid);
+    report.state = normalised.state;
+    report.reason = normalised.reason || null;
+    report.route = normalised.state === 'route_returned' ? normalised.route : null;
+    return finish();
+  }
   return {
     status() {
       const binding = keyState();
@@ -553,11 +664,17 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
         lastInventoryReadAt: lastInventoryRead?.at || null,
         lastInventoryReadState: inventoryMatchesBinding ? lastInventoryRead.state : 'not_attempted',
         lastVerifiedInventoryReadAt,
+        lastRouteReadAt: lastRouteRead?.at || null,
+        lastRouteReadState: lastRouteRead && lastRouteRead.keyFingerprint === binding.fingerprint
+          ? lastRouteRead.state : 'not_attempted',
+        lastVerifiedRouteReadAt,
         requestBudget: { productRemaining: productRequestUsed ? 0 : 1,
-          inventoryRemaining: inventoryRequestUsed ? 0 : 1 },
+          inventoryRemaining: inventoryRequestUsed ? 0 : 1,
+          routeRemaining: routeRequestUsed ? 0 : 1 },
         requestSequenceValid: !invalidRequestSequence,
         authenticationContract: { requestField: 'apiKey', documentation: DOC_URL },
-        allowedEndpoint: PRODUCT_URL, allowedInventoryEndpoint: INVENTORY_URL, pagination: false,
+        allowedEndpoint: PRODUCT_URL, allowedInventoryEndpoint: INVENTORY_URL,
+        allowedRouteEndpoint: ROUTE_URL, routeDocumentation: ROUTE_DOC_URL, pagination: false,
         blockedOperations: ['catalogue_search', 'imports', 'orders', 'purchases', 'renders', 'shop_writes'],
         credentialsPersisted: false };
     },
@@ -570,12 +687,19 @@ export function createCjReadOnlyClient({ env = process.env, fetchImpl = globalTh
       const run = queue.then(() => readInventory(lookup), () => readInventory(lookup));
       queue = run.then(() => undefined, () => undefined);
       return run;
+    },
+    readRoute(lookup) {
+      const run = queue.then(() => readRoute(lookup), () => readRoute(lookup));
+      queue = run.then(() => undefined, () => undefined);
+      return run;
     }
   };
 }
 
 export const CJ_READ_LIMITS = Object.freeze({ BODY_LIMIT, TIMEOUT_MS, REQUEST_GAP_MS,
-  MAX_VARIANTS, MAX_COUNTRIES_PER_VARIANT, MAX_INVENTORY_COUNTRY_ROWS, MAX_INVENTORY_REPORT_BYTES });
+  MAX_VARIANTS, MAX_COUNTRIES_PER_VARIANT, MAX_INVENTORY_COUNTRY_ROWS,
+  MAX_INVENTORY_REPORT_BYTES, MAX_LOGISTICS });
 export const isValidCjLookup = validLookup;
 export const isValidCjPidLookup = validPidLookup;
+export const isValidCjRouteLookup = validRouteLookup;
 export { isValidCjPid };

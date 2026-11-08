@@ -10,6 +10,7 @@ const SERVER = 'luxestyle-cj-read';
 const TOOL_STATUS = 'luxe_cj_status';
 const TOOL_PRODUCT = 'luxe_cj_product_read';
 const TOOL_INVENTORY = 'luxe_cj_inventory_read';
+const TOOL_ROUTE = 'luxe_cj_ch_route_read';
 const MAX_OUTPUT = 512 * 1024;
 const MAX_SUMMARY = 128 * 1024;
 const TIMEOUT_MS = 45_000;
@@ -21,11 +22,13 @@ const REASONS = new Set([
   'response_body_unavailable', 'response_invalid_utf8', 'response_invalid_json', 'redirect_rejected',
   'network_error', 'transport_unknown', 'product_not_found', 'product_removed', 'variant_removed',
   'api_response_rejected', 'inventory_api_response_rejected', 'credential_echo_blocked',
+  'route_api_response_rejected', 'malformed_route_data', 'route_options_exceeded',
   'product_identity_mismatch', 'malformed_product_data', 'malformed_inventory_data',
   'missing_or_invalid_pid', 'credential_binding_missing', 'credential_binding_invalid',
-  'invalid_lookup', 'invalid_pid_lookup', 'inventory_output_too_large',
+  'invalid_lookup', 'invalid_pid_lookup', 'invalid_route_lookup', 'inventory_output_too_large',
   'product_prerequisite_not_verified', 'inventory_variant_set_mismatch',
-  'product_request_budget_exhausted', 'inventory_request_budget_exhausted'
+  'product_request_budget_exhausted', 'inventory_request_budget_exhausted',
+  'route_request_budget_exhausted'
 ]);
 
 const request = (id, method, params) => JSON.stringify({ jsonrpc: '2.0', id, method,
@@ -35,7 +38,7 @@ function object(value) { return value !== null && typeof value === 'object' && !
 
 export function operationFromValue(value = 'product') {
   const operation = String(value || 'product').trim();
-  if (operation !== 'product' && operation !== 'inventory') throw Error('invalid_operation');
+  if (!['product', 'inventory', 'route'].includes(operation)) throw Error('invalid_operation');
   return operation;
 }
 
@@ -44,6 +47,11 @@ export function lookupFromValues(pid = '', productSku = '', operation = 'product
   const p = String(pid || '').trim();
   const s = String(productSku || '').trim();
   const v = String(variantSku || '').trim();
+  if (selected === 'route') {
+    if (!isValidCjPid(p) || s
+      || !/^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(v)) throw Error('route_pid_and_variant_sku_required');
+    return { pid: p, variantSku: v };
+  }
   if (selected === 'inventory') {
     if (!isValidCjPid(p) || s || v) throw Error('inventory_pid_only_required');
     return { pid: p };
@@ -63,15 +71,19 @@ export function lookupFromValues(pid = '', productSku = '', operation = 'product
 
 export function probeInput(lookup, operation = 'product') {
   const selected = operationFromValue(operation);
+  const productLookup = selected === 'route' ? { variantSku: lookup.variantSku } : lookup;
   const frames = [
     request(1, 'initialize', { protocolVersion: '2025-06-18', capabilities: {},
       clientInfo: { name: 'luxestyle-cj-actions-probe', version: '1' } }),
     request(2, 'tools/list'),
     request(3, 'tools/call', { name: TOOL_STATUS, arguments: {} }),
-    request(4, 'tools/call', { name: TOOL_PRODUCT, arguments: lookup })
+    request(4, 'tools/call', { name: TOOL_PRODUCT, arguments: productLookup })
   ];
   if (selected === 'inventory') {
     frames.push(request(5, 'tools/call', { name: TOOL_INVENTORY, arguments: lookup }));
+    frames.push(request(6, 'tools/call', { name: TOOL_STATUS, arguments: {} }));
+  } else if (selected === 'route') {
+    frames.push(request(5, 'tools/call', { name: TOOL_ROUTE, arguments: lookup }));
     frames.push(request(6, 'tools/call', { name: TOOL_STATUS, arguments: {} }));
   } else {
     frames.push(request(5, 'tools/call', { name: TOOL_STATUS, arguments: {} }));
@@ -222,23 +234,26 @@ function parseResponses(stdout, expected) {
   if (responses[0]?.result?.serverInfo?.name !== SERVER
     || responses[0]?.result?.protocolVersion !== '2025-06-18') throw Error('unexpected_mcp_server');
   const tools = responses[1]?.result?.tools;
-  if (!Array.isArray(tools) || tools.length !== 3
+  if (!Array.isArray(tools) || tools.length !== 4
     || tools[0]?.name !== TOOL_STATUS || tools[1]?.name !== TOOL_PRODUCT
-    || tools[2]?.name !== TOOL_INVENTORY) throw Error('unexpected_mcp_tools');
+    || tools[2]?.name !== TOOL_INVENTORY || tools[3]?.name !== TOOL_ROUTE) {
+    throw Error('unexpected_mcp_tools');
+  }
   return responses;
 }
 
 export function summariseProbe(stdout, lookup, operation = 'product') {
   const selected = operationFromValue(operation);
-  const responses = parseResponses(stdout, selected === 'inventory' ? 6 : 5);
+  const responses = parseResponses(stdout, selected === 'product' ? 5 : 6);
   const before = content(responses[2], 3);
   const productRead = content(responses[3], 4);
-  const after = content(responses[selected === 'inventory' ? 5 : 4], selected === 'inventory' ? 6 : 5);
+  const after = content(responses[selected === 'product' ? 4 : 5], selected === 'product' ? 5 : 6);
   const binding = allowed(before.credentialBinding, new Set(['missing', 'invalid', 'bound_unverified']));
   const product = productFields(productRead);
   const connection = allowed(after.connection, new Set(['unknown_until_product_read', 'verified_by_product_read']));
   const lastRead = allowed(after.lastProductReadState, new Set(['not_attempted', 'unknown', 'verified']));
-  const productIdentityBound = productIdentityMatchesLookup(product, lookup);
+  const productLookup = selected === 'route' ? { variantSku: lookup.variantSku } : lookup;
+  const productIdentityBound = productIdentityMatchesLookup(product, productLookup);
   if (selected === 'product') {
     const verified = binding === 'bound_unverified' && product.readState === 'product_identity_verified'
       && product.readReason === null && product.authenticationRequests === 1 && product.productRequests === 1
@@ -251,6 +266,67 @@ export function summariseProbe(stdout, lookup, operation = 'product') {
       matchedVariantSku: productIdentityBound && typeof lookup.variantSku === 'string' ? lookup.variantSku : null,
       variantSetComplete: typeof lookup.variantSku === 'string' ? product.returnedVariants !== null : null,
       connectionAfter: connection, lastProductReadState: lastRead, verified
+    };
+  }
+
+  if (selected === 'route') {
+    const routeRead = content(responses[4], 5);
+    const routeState = allowed(routeRead.state, new Set(['unknown', 'route_returned']));
+    const routeReason = routeRead.reason === null ? null : allowed(routeRead.reason, REASONS);
+    const routeAuthentication = requestCount(routeRead.requests?.authentication);
+    const routeRequests = requestCount(routeRead.requests?.route);
+    const authenticationRequests = product.authenticationRequests === null || routeAuthentication === null
+      ? null : product.authenticationRequests + routeAuthentication;
+    const route = routeRead.route;
+    const routePid = pidIdentity(route?.pid);
+    const routeSku = identity(route?.variantSku, /^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/, 100);
+    const routeVid = vidIdentity(route?.vid);
+    const options = route?.options;
+    const optionState = allowed(options?.state,
+      new Set(['supplier_shipping_methods_returned', 'no_supplier_shipping_method_returned']));
+    const reported = Number.isInteger(options?.reported) && options.reported >= 0 && options.reported <= 50
+      ? options.reported : null;
+    const returned = Number.isInteger(options?.returned) && options.returned >= 0 && options.returned <= 50
+      ? options.returned : null;
+    const names = Array.isArray(options?.records) ? options.records.map(record => {
+      const value = identity(record?.logisticsName, /^[^\u0000-\u001f\u007f]{1,200}$/u, 200);
+      return value !== null && value === value.trim() ? value : null;
+    }) : null;
+    const uniqueNames = Array.isArray(names) && names.every(Boolean)
+      && new Set(names).size === names.length ? names : null;
+    const exactVariants = product.returnedVariants?.records
+      .filter(record => record.variantSku === lookup.variantSku) ?? [];
+    const expectedVid = exactVariants.length === 1 ? exactVariants[0].vid : null;
+    const optionStateMatchesCount = reported === 0
+      ? optionState === 'no_supplier_shipping_method_returned'
+      : reported !== null && reported > 0 && optionState === 'supplier_shipping_methods_returned';
+    const routeShapeValid = routePid === lookup.pid && routeSku === lookup.variantSku
+      && routeVid !== null && routeVid === expectedVid
+      && route?.startCountryCode === 'CN' && route?.destinationCountryCode === 'CH'
+      && options?.partial === false
+      && reported !== null && returned === reported && uniqueNames !== null && uniqueNames.length === reported
+      && optionStateMatchesCount && route?.freightPrice === 'unknown'
+      && route?.deliveryTime === 'unknown' && route?.deliveryPromise === false
+      && route?.primeEntitlement === 'unknown';
+    const lastRouteRead = allowed(after.lastRouteReadState, new Set(['not_attempted', 'unknown', 'returned']));
+    const verified = binding === 'bound_unverified' && product.readState === 'product_identity_verified'
+      && product.readReason === null && product.authenticationRequests === 1 && product.productRequests === 1
+      && routeState === 'route_returned' && routeReason === null
+      && routeAuthentication === 0 && authenticationRequests === 1 && routeRequests === 1
+      && productIdentityBound && routeShapeValid
+      && connection === 'verified_by_product_read' && lastRead === 'verified' && lastRouteRead === 'returned';
+    return {
+      provider: 'CJdropshipping', mode: 'read_only', operation: selected, transport: 'ok', lookup,
+      credentialBinding: binding, authenticationRequests, productRequests: product.productRequests,
+      routeRequests, productReadState: product.readState, productReadReason: product.readReason,
+      routeReadState: routeState, routeReadReason: routeReason,
+      returnedPid: product.returnedPid, returnedProductSku: product.returnedProductSku,
+      matchedVariantSku: productIdentityBound ? lookup.variantSku : null,
+      route: routeShapeValid ? { vid: routeVid, startCountryCode: 'CN', destinationCountryCode: 'CH',
+        optionState, logisticsNames: uniqueNames, freightPrice: 'unknown', deliveryTime: 'unknown',
+        deliveryPromise: false, primeEntitlement: 'unknown' } : null,
+      connectionAfter: connection, lastProductReadState: lastRead,
+      lastRouteReadState: lastRouteRead, verified
     };
   }
 
