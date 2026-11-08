@@ -21,10 +21,12 @@ export const LEGACY_NOINDEX_BLOCK = `  {%- comment -%} ${MARKE}: 07.11.2026 GEME
 `;
 export const NOINDEX_TEMPLATES = Object.freeze(['product', 'collection', 'article', 'blog', 'index', 'page', 'list-collections']);
 const NOINDEX_TEMPLATE_CONDITION = NOINDEX_TEMPLATES.map(name => `template.name == '${name}'`).join(' or ');
-export const NOINDEX_BLOCK = `  {%- comment -%} ${MARKE_V2}: 08.11.2026 GEGENPROBE: /fr/, /fr/pages/* und die bereits gesperrten Katalog-/Blogpfade sind erst nach vollständig belegter französischer Abdeckung indexierbar. Das boolesche Shop-Metafeld luxe.fr_index_ready darf erst nach dieser Prüfung true sein. Rücknahme: diesen Block löschen. {%- endcomment -%}
+export const NOINDEX_BLOCK = `  {%- comment -%} ${MARKE_V2}: 08.11.2026 GEGENPROBE: Der Warenkorb ist sprachunabhängig keine Such-Landeseite. /fr/, /fr/pages/* und die bereits gesperrten Katalog-/Blogpfade sind erst nach vollständig belegter französischer Abdeckung indexierbar. Das boolesche Shop-Metafeld luxe.fr_index_ready darf erst nach dieser Prüfung true sein. Rücknahme: diesen Block löschen. {%- endcomment -%}
   {%- assign lx_locale_prefix = request.locale.iso_code | slice: 0, 2 -%}
   {%- assign lx_fr_index_ready = shop.metafields.luxe.fr_index_ready.value | default: false -%}
-  {%- if request.locale.primary == false and lx_locale_prefix == 'fr' and lx_fr_index_ready != true -%}
+  {%- if template.name == 'cart' -%}
+    <meta name="robots" content="noindex, follow">
+  {%- elsif request.locale.primary == false and lx_locale_prefix == 'fr' and lx_fr_index_ready != true -%}
     {%- if ${NOINDEX_TEMPLATE_CONDITION} -%}
       <meta name="robots" content="noindex, follow">
     {%- endif -%}
@@ -50,10 +52,11 @@ export function aendereLayout(src) {
 }
 
 export function sollNoindex({ primary, isoCode, templateName, frIndexReady = false }) {
-  return primary === false
+  return templateName === 'cart'
+    || (primary === false
     && String(isoCode || '').slice(0, 2).toLowerCase() === 'fr'
     && frIndexReady !== true
-    && NOINDEX_TEMPLATES.includes(templateName);
+    && NOINDEX_TEMPLATES.includes(templateName));
 }
 export function aendereCollection(src) {
   if (!src.includes(FAQ_ALT)) {

@@ -25,7 +25,10 @@ assert.throws(() => aendereLayout('<html><body></body></html>'), /erwartet 1/); 
 assert.throws(() => aendereLayout('</head></head>'), /erwartet 1/); n++;
 ok(NOINDEX_TEMPLATES.join(',') === 'product,collection,article,blog,index,page,list-collections', 'begrenzte Vorlagenliste');
 for (const t of NOINDEX_TEMPLATES) ok(sollNoindex({ primary: false, isoCode: 'fr', templateName: t }), `fr ${t} noindex`);
-for (const t of ['cart', 'search', 'customers/login']) ok(!sollNoindex({ primary: false, isoCode: 'fr', templateName: t }), `fr ${t} nicht ergänzt`);
+ok(sollNoindex({ primary: false, isoCode: 'fr', templateName: 'cart' }), 'fr cart noindex');
+ok(sollNoindex({ primary: true, isoCode: 'de', templateName: 'cart' }), 'de cart noindex');
+ok(sollNoindex({ primary: false, isoCode: 'fr-CH', templateName: 'cart', frIndexReady: true }), 'cart bleibt bei fertiger FR-Abdeckung noindex');
+for (const t of ['search', 'customers/login']) ok(!sollNoindex({ primary: false, isoCode: 'fr', templateName: t }), `fr ${t} nicht ergänzt`);
 ok(!sollNoindex({ primary: true, isoCode: 'fr', templateName: 'page' }), 'primäre Sprache bleibt indexierbar');
 ok(!sollNoindex({ primary: false, isoCode: 'en', templateName: 'page' }), 'andere Nebensprache bleibt unberührt');
 ok(!sollNoindex({ primary: false, isoCode: 'fr-CH', templateName: 'page', frIndexReady: true }), 'belegte FR-Abdeckung hebt Sperre auf');
@@ -46,7 +49,10 @@ if (Liquid) {
     shop: { metafields: { luxe: { fr_index_ready: { value: ready } } } },
   });
   for (const t of NOINDEX_TEMPLATES) ok(render({ primary: false, isoCode: 'fr', tpl: t }).includes('noindex'), `Liquid fr ${t} noindex`);
-  for (const t of ['cart', 'search']) ok(!render({ primary: false, isoCode: 'fr', tpl: t }).includes('noindex'), `Liquid fr ${t} ohne Zusatz`);
+  ok(render({ primary: false, isoCode: 'fr', tpl: 'cart' }).includes('noindex'), 'Liquid fr cart noindex');
+  ok(render({ primary: true, isoCode: 'de', tpl: 'cart' }).includes('noindex'), 'Liquid de cart noindex');
+  ok(render({ primary: false, isoCode: 'fr', tpl: 'cart', ready: true }).includes('noindex'), 'Liquid cart bleibt bei fertiger FR-Abdeckung noindex');
+  ok(!render({ primary: false, isoCode: 'fr', tpl: 'search' }).includes('noindex'), 'Liquid fr search ohne Zusatz');
   for (const t of NOINDEX_TEMPLATES) ok(!render({ primary: true, isoCode: 'de', tpl: t }).includes('noindex'), `Liquid de ${t} ohne noindex`);
   ok(!render({ primary: false, isoCode: 'fr', tpl: 'page', ready: true }).includes('noindex'), 'Liquid belegte FR-Abdeckung indexierbar');
 } else console.log('LiquidJS fehlt (LIQUIDJS setzen), Liquid-Fälle übersprungen');
