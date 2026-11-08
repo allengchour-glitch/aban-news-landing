@@ -8,7 +8,7 @@ on:
         type: string
         default: 'Entwirf drei konkrete Verbesserungen für die LuxeStyle-Startseite und drei organische Marketing-Ideen ohne Werbebudget.'
       free_tier_bestaetigt:
-        description: 'In AI Studio geprüft: Projekt des GEMINI_API_KEY ist Free Tier, ohne verknüpftes Abrechnungskonto'
+        description: 'In AI Studio geprüft: Projekt des KEY2 ist Free Tier, ohne verknüpftes Abrechnungskonto'
         type: boolean
         required: true
         default: false
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Einzelnen Textentwurf erstellen
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.KEY2 }}
           FREE_TIER_CONFIRMED: ${{ inputs.free_tier_bestaetigt }}
           AUFTRAG: ${{ inputs.auftrag }}
         shell: bash
@@ -36,7 +36,7 @@ jobs:
               sys.exit("Abbruch ohne API-Aufruf: Free Tier in AI Studio zuerst prüfen und bestätigen.")
           key = os.environ.get("GEMINI_API_KEY", "").strip()
           if not key:
-              sys.exit("Abbruch ohne API-Aufruf: GitHub-Secret GEMINI_API_KEY fehlt.")
+              sys.exit("Abbruch ohne API-Aufruf: GitHub-Secret KEY2 fehlt.")
           prompt = os.environ.get("AUFTRAG", "").strip()
           if not 1 <= len(prompt) <= 6000:
               sys.exit("Abbruch ohne API-Aufruf: Auftrag muss 1 bis 6000 Zeichen enthalten.")
