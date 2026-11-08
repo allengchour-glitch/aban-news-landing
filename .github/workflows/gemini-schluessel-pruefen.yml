@@ -1,6 +1,6 @@
 name: Gemini-Schlüssel prüfen (nur Statuscodes, nie der Schlüssel)
 
-# Prüft, welche Gemini-Schlüssel als Repository-Secret ankommen und was sie dürfen.
+# Prüft, welche Gemini-Schlüssel als Repository-Secret ankommen (viele mögliche Namen) und was sie dürfen.
 # Gibt NIE einen Schlüssel oder eine Antwort aus, nur: gesetzt ja/nein, HTTP-Status, Zahl der Modelle, Modellnamen mit Fähigkeit.
 # Läuft von Hand und bei Änderungen an dieser Datei; ändert nichts, schreibt nichts, kostet auf dem Gratis-Tarif nichts.
 on:
@@ -30,6 +30,16 @@ jobs:
           SCHLUESSEL_2: ${{ secrets.GEMINI_API_KEY2 }}
           SCHLUESSEL_2B: ${{ secrets.GEMINI_API_KEY_2 }}
           SCHLUESSEL_G: ${{ secrets.GOOGLE_API_KEY }}
+          SCHLUESSEL_X0: ${{ secrets.GEMINI_API_KEY_FREE }}
+          SCHLUESSEL_X1: ${{ secrets.GEMINI_KEY }}
+          SCHLUESSEL_X2: ${{ secrets.GEMINI_KEY2 }}
+          SCHLUESSEL_X3: ${{ secrets.GEMINI_KEY_2 }}
+          SCHLUESSEL_X4: ${{ secrets.GEMINI2_API_KEY }}
+          SCHLUESSEL_X5: ${{ secrets.GEMINI_PRO_API_KEY }}
+          SCHLUESSEL_X6: ${{ secrets.GEMINI_API_KEY_PRO }}
+          SCHLUESSEL_X7: ${{ secrets.GOOGLE_AI_API_KEY }}
+          SCHLUESSEL_X8: ${{ secrets.GOOGLE_GENAI_API_KEY }}
+          SCHLUESSEL_X9: ${{ secrets.AI_STUDIO_API_KEY }}
         shell: bash
         run: |
           cat > pruefen.mjs <<'EOF'
@@ -39,6 +49,16 @@ jobs:
             ['GEMINI_API_KEY2', process.env.SCHLUESSEL_2],
             ['GEMINI_API_KEY_2', process.env.SCHLUESSEL_2B],
             ['GOOGLE_API_KEY', process.env.SCHLUESSEL_G],
+            ['GEMINI_API_KEY_FREE', process.env.SCHLUESSEL_X0],
+            ['GEMINI_KEY', process.env.SCHLUESSEL_X1],
+            ['GEMINI_KEY2', process.env.SCHLUESSEL_X2],
+            ['GEMINI_KEY_2', process.env.SCHLUESSEL_X3],
+            ['GEMINI2_API_KEY', process.env.SCHLUESSEL_X4],
+            ['GEMINI_PRO_API_KEY', process.env.SCHLUESSEL_X5],
+            ['GEMINI_API_KEY_PRO', process.env.SCHLUESSEL_X6],
+            ['GOOGLE_AI_API_KEY', process.env.SCHLUESSEL_X7],
+            ['GOOGLE_GENAI_API_KEY', process.env.SCHLUESSEL_X8],
+            ['AI_STUDIO_API_KEY', process.env.SCHLUESSEL_X9],
           ];
           const kurz = (t) => String(t || '').replace(/AIza[0-9A-Za-z_\-]{20,}/g, '[Schlüssel]').replace(/\s+/g, ' ').slice(0, 160);
           async function anfrage(url, schluessel, koerper) {

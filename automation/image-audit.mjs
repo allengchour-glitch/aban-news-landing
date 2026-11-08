@@ -25,6 +25,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { istSchwach, istBessereAlternative, groesserUndSauber, grund } from './lib/bild_befund.mjs';
+import { bildKlassifizieren, GeminiFatal } from './lib/gemini_vision.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
 const SHOP = process.env.SHOPIFY_SHOP || '';
@@ -35,6 +36,7 @@ const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googlea
 const API_VER = process.env.SHOPIFY_API_VERSION || '2025-01';
 const BATCH = Math.max(1, parseInt(process.env.BATCH || '40', 10) || 40);
 const MIN_PX = Math.max(200, parseInt(process.env.MIN_PX || '800', 10) || 800);
+const PAUSE = Math.max(0, parseInt(process.env.PAUSE_MS || '400', 10) || 0);
 const APPLY = process.env.APPLY === '1'; // Vorgabe: nur Bericht. Umsortieren ist ausdruecklich anzufordern.
 
 const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
@@ -67,27 +69,24 @@ async function gql(query, variables) {
 }
 
 // ---- Gemini Vision: klassifiziert ein Bild ----
+const PROMPT = 'Du bewertest die handwerkliche Qualität eines Produktbilds für einen Online-Shop. ' +
+  'Antworte NUR mit kompaktem JSON (keine Erklärung): ' +
+  '{"zeigt_produkt":bool,"unscharf":bool,"wasserzeichen":bool,"text_overlay":bool,"collage":bool}. ' +
+  '"zeigt_produkt"=das verkaufte Produkt ist klar und vollständig zu erkennen. ' +
+  '"unscharf"=verwackelt, verpixelt oder stark komprimiert. "wasserzeichen"=fremdes Logo oder Schriftzug im Bild. ' +
+  '"text_overlay"=Werbetext, Preis oder Pfeile ins Bild montiert. "collage"=mehrere Einzelbilder in einem Raster. ' +
+  'Beurteile NUR das Bild selbst — niemals das Aussehen, Geschlecht, Alter oder die Herkunft abgebildeter Menschen.';
+// Ehrliche Zählung: ein Aufruf ohne echte Antwort gilt NIE als «Bild in Ordnung» (siehe lib/gemini_vision.mjs).
+const gem = { ok: 0, fehler: 0, folge: 0, gruende: {}, letzterGrund: '' };
 async function classify(url) {
-  try {
-    const img = await fetch(url); if (!img.ok) return null;
-    const buf = Buffer.from(await img.arrayBuffer());
-    const mime = url.toLowerCase().includes('.png') ? 'image/png' : 'image/jpeg';
-    const prompt = 'Du bewertest die handwerkliche Qualität eines Produktbilds für einen Online-Shop. ' +
-      'Antworte NUR mit kompaktem JSON (keine Erklärung): ' +
-      '{"zeigt_produkt":bool,"unscharf":bool,"wasserzeichen":bool,"text_overlay":bool,"collage":bool}. ' +
-      '"zeigt_produkt"=das verkaufte Produkt ist klar und vollständig zu erkennen. ' +
-      '"unscharf"=verwackelt, verpixelt oder stark komprimiert. "wasserzeichen"=fremdes Logo oder Schriftzug im Bild. ' +
-      '"text_overlay"=Werbetext, Preis oder Pfeile ins Bild montiert. "collage"=mehrere Einzelbilder in einem Raster. ' +
-      'Beurteile NUR das Bild selbst — niemals das Aussehen, Geschlecht, Alter oder die Herkunft abgebildeter Menschen.';
-    const body = { contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: mime, data: buf.toString('base64') } }] }],
-      generationConfig: { temperature: 0, maxOutputTokens: 80 } };
-    const r = await fetch(`${GBASE}/models/${MODEL}:generateContent?key=${encodeURIComponent(KEY)}`,
-      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    const j = await r.json();
-    const txt = j?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    const m = txt.match(/\{[^}]*\}/); if (!m) return null;
-    return JSON.parse(m[0]);
-  } catch { return null; }
+  const r = await bildKlassifizieren({ url, key: KEY, model: MODEL, base: GBASE, prompt: PROMPT });
+  if (r.ok) { gem.ok++; gem.folge = 0; gem.letzterGrund = ''; return r.c; }
+  gem.fehler++; gem.letzterGrund = r.grund; gem.gruende[r.grund] = (gem.gruende[r.grund] || 0) + 1;
+  if (r.grund !== 'bild-nicht-lesbar' && r.grund !== 'bild-abgelehnt') {
+    gem.folge++;
+    if (gem.folge >= 5) throw new GeminiFatal(0, `5 Aufrufe in Folge ohne Antwort (${r.grund})`);
+  }
+  return null;
 }
 
 (async () => {
@@ -96,6 +95,7 @@ async function classify(url) {
   if (!TOKEN) { log('❌ Kein Shopify-Token.'); process.exit(0); }
 
   let after = null, processed = 0, flagged = 0, reordered = 0;
+  const befund = { overlay: 0, wasserzeichen: 0, collage: 0, unscharf: 0, keinProdukt: 0 };
   outer:
   while (processed < BATCH) {
     const q = `query($after:String){ products(first:50, after:$after, query:"status:active"){ pageInfo{ hasNextPage endCursor }
@@ -111,7 +111,20 @@ async function classify(url) {
       const feat = imgs[0];
       const w = feat.image.width || 0, h = feat.image.height || 0;
       const lowres = (w && w < MIN_PX) || (h && h < MIN_PX);
-      const c = await classify(feat.image.url); await sleep(400);
+      const c = await classify(feat.image.url); await sleep(PAUSE);
+      if (c === null) {
+        // Gemini hat dieses Bild nicht beurteilt. Nicht als «in Ordnung» merken: ein Ausfall darf das Ledger nicht füllen.
+        if (gem.letzterGrund === 'bild-nicht-lesbar' || gem.letzterGrund === 'bild-abgelehnt') {
+          report([p.handle, 'bild-nicht-lesbar', 'FLAG: Hauptbild nicht lesbar (Bild ersetzen)', w, h, feat.image.url]);
+          flagged++; remember(p.id);
+        } else { processed--; }
+        continue;
+      }
+      if (c.text_overlay) befund.overlay++;
+      if (c.wasserzeichen) befund.wasserzeichen++;
+      if (c.collage) befund.collage++;
+      if (c.unscharf) befund.unscharf++;
+      if (c.zeigt_produkt === false) befund.keinProdukt++;
       const badFeat = istSchwach(c);
       let action = 'ok';
       if (lowres) { action = 'NIEDRIGE-AUFLOESUNG'; flagged++; }
@@ -130,7 +143,7 @@ async function classify(url) {
           // Bei reiner Auflösungsschwäche gar nicht erst fragen, wenn das Bild nicht grösser ist —
           // das spart Vision-Aufrufe, die ohnehin nichts ändern können.
           if (!badFeat && (mass.breite <= w && mass.hoehe <= h)) continue;
-          const ca = await classify(imgs[i].image.url); await sleep(400);
+          const ca = await classify(imgs[i].image.url); await sleep(PAUSE);
           if (badFeat ? istBessereAlternative(ca) : groesserUndSauber(jetzt, mass, ca, MIN_PX)) { altIdx = i; break; }
         }
         if (altIdx > 0 && APPLY) {
@@ -151,4 +164,8 @@ async function classify(url) {
     after = conn.pageInfo.endCursor;
   }
   log(`Fertig: ${processed} Produkte geprüft · ${flagged} geflaggt · ${reordered} umsortiert. Report: dropship/image-audit-report.csv`);
-})();
+  log(`Gemini: ${gem.ok} Antworten, ${gem.fehler} ohne Antwort ${JSON.stringify(gem.gruende)} · Hauptbilder mit Werbetext/Preis: ${befund.overlay}, fremdes Logo: ${befund.wasserzeichen}, Collage: ${befund.collage}, unscharf: ${befund.unscharf}, Produkt nicht klar: ${befund.keinProdukt}`);
+})().catch((e) => {
+  log(`❌ Bild-Audit abgebrochen: ${e && e.message ? e.message : e}`);
+  process.exit(e instanceof GeminiFatal ? 1 : 2);
+});
