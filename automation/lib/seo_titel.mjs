@@ -22,6 +22,30 @@ export const MARKE = ' | LuxeStyle CH';
 export const MAX_TITEL = 60;
 export const MAX_BESCHREIBUNG = 155;
 
+// Wörter, die in einem deutschen Produkttitel kein blosses Fachwort wie «Hoodie», «Gaming»
+// oder «T-Shirt» sind. Der Wächter ist bewusst eng: Er soll einen automatischen SEO-Write
+// stoppen, wenn der Lieferantentitel klar englisch oder gemischtsprachig geblieben ist. Er
+// übersetzt nichts und beurteilt keine Eigennamen. Dadurch kann ein Mensch den Produkttitel
+// zuerst gezielt korrigieren, statt dass der Fehler zusätzlich in Titel und Meta-Description
+// vervielfacht wird.
+const KLAR_ENGLISCH = /(^|[^a-zäöüß])(and|with|without|from|only|small|medium|large|blanket|nap|wireless|handle|gentleman|black|white|red|blue|green|yellow|grey|gray|brown|purple|colou?r|size|sleeve|leather|cotton|silk|wool|lace|women|woman|men|ladies|lady|girl|boy|kids|gift|shell|frame|ordinary|plastic|steel|packaging|insole|friday|deal)(?![a-zäöüß])/gi;
+
+/**
+ * Findet einen klaren englischen Rest in einem angeblich deutschen Produkttitel.
+ *
+ * Rueckgabe statt blossem Boolean, damit ein schreibender Lauf den konkreten Blocker melden
+ * kann. Das ist ein Fail-closed-Waechter vor automatischem SEO, kein allgemeiner
+ * Sprachklassifikator.
+ *
+ * @returns {{ok:boolean, treffer:string[]}}
+ */
+export function titelDeutschGenug(roh) {
+  const titel = String(roh || '').trim();
+  if (!titel) return { ok: false, treffer: [] };
+  const treffer = [...titel.matchAll(KLAR_ENGLISCH)].map((m) => m[2].toLowerCase());
+  return { ok: treffer.length === 0, treffer: [...new Set(treffer)] };
+}
+
 /** Nur ECHTE Trennzeichen vereinheitlichen — niemals den Bindestrich innerhalb eines Wortes. */
 export function titelNormalisieren(roh) {
   return String(roh || '')
@@ -72,6 +96,7 @@ export function seoTitel(roh) {
  * Luecke. Darum gilt `null` als „wie der Produkttitel", sobald genau das erzeugt wuerde.
  */
 export function seoOffen(produktTitel, seo) {
+  if (!titelDeutschGenug(produktTitel).ok) return false;      // erst den sichtbaren Titel korrigieren
   const erzeugt = seoTitel(produktTitel);
   if (!erzeugt.title && !erzeugt.description) return false;   // es gibt nichts zu setzen
   if (!seo?.description) return true;                         // Beschreibung fehlt — nachtragen
@@ -107,6 +132,7 @@ export function seoOffen(produktTitel, seo) {
  * dann FRISCH lesen — zeigt, ob ein Feld ein Patch oder ein Ersetzen ist.
  */
 export function seoNachtrag(produktTitel, seo) {
+  if (!titelDeutschGenug(produktTitel).ok) return {};         // englischen Rest nicht vervielfachen
   const erzeugt = seoTitel(produktTitel);
   const vorhandenTitel = seo?.title || '';
   const vorhandenBeschreibung = seo?.description || '';
