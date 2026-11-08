@@ -28,6 +28,9 @@
     { room: 'Entwicklerbüro', i: 0, x: 1.3, z: 8.0, h: 0, kind: 'dual', style: 'white', chair: '#679aa0', who: 'man' },
     { room: 'Entwicklerbüro', i: 1, x: 3.4, z: 8.0, h: 0, kind: 'tri', style: 'white', chair: '#a093b7', who: 'woman' },
     { room: 'Entwicklerbüro', i: 2, x: 5.5, z: 8.0, h: 0, kind: 'single', style: 'white', chair: '#769b8a', who: 'man' },
+    { room: 'YouTube-Studio', i: 0, x: -5.3, z: 13.1, h: 0, kind: 'dual', style: 'dark', chair: '#a093b7', who: 'woman' },
+    { room: 'YouTube-Studio', i: 1, x: -3.2, z: 13.1, h: 0, kind: 'tri', style: 'dark', chair: '#679aa0', who: 'man' },
+    { room: 'YouTube-Studio', i: 2, x: -1.1, z: 13.1, h: 0, kind: 'single', style: 'white', chair: '#ba8997', who: 'woman' },
     { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
   ];
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
@@ -358,6 +361,15 @@
     B.box(3.45, 0.80, 10.1, 0.15, 0.20, 0.15, '#c4aa7c');
     B.box(3.65, 0.74, 10.15, 0.16, 0.08, 0.16, '#a093b7');
 
+    /* YouTube-Studio: Redaktion, Produktion und Wachstumsmessung. */
+    floorMesh(-7, 11.2, 0, 15.7, 'fYoutube', function () { return T.parquet('#b4bacd', 12); }, 2);
+    B.box(-3.5, -0.36, 13.45, 7, 0.7, 4.8, '#273449');
+    B.box(-6.98, 0.5, 13.45, 0.12, 1.0, 4.5, '#65738b');
+    P.rug(B, -6.6, 12.2, -0.4, 14.9, '#596f91', '#a7bcd4', 0.012);
+    sign('YOUTUBE-STUDIO', 5.8, 1.2, -3.5, 2.15, 11.32, 0, '#fff5ed', '#263c59', '#ee886f', 'Originale Ideen · Videos · echte Messwerte');
+    place('plant', -6.4, 0, 15.1, 0, 0.8);
+    place('sofa', -2.0, 0, 15.0, 0, 0.65, {sofapolster:'#697b9b'});
+
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
     W.statics.unshift(base);
@@ -420,12 +432,13 @@
 
     /* ---------- Kamera-Ansichten ---------- */
     W.views = {
-      alle: { tx: 1.0, ty: 0.7, tz: 2.0, dist: 37 },
+      alle: { tx: 1.0, ty: 0.7, tz: 4.0, dist: 43 },
       Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
       Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
       Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
       'Entwicklerbüro': { tx: 3.5, ty: 1.4, tz: 8.3, dist: 14.3 },
       'Social Media': { tx: -3.5, ty: 0.7, tz: 8.3, dist: 12.5 },
+      'YouTube-Studio': { tx: -3.5, ty: 1.0, tz: 13.5, dist: 13.5 },
       'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
     };
     return W;
