@@ -17,12 +17,17 @@ on:
         description: 'Nur suchen + Kandidaten listen (nichts anlegen)'
         type: boolean
         default: true
+      write_approved:
+        description: 'Gesperrte DRAFTs schreiben (zweites Write-Gate)'
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: write
 
 concurrency:
-  group: pod-cj-gaps
+  group: luxestyle-cj-import-writes
   cancel-in-progress: false
 
 jobs:
@@ -45,14 +50,18 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CATS: ${{ github.event.inputs.cats }}
           PER: ${{ github.event.inputs.per }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && github.event.inputs.write_approved == 'true' && '0' || '1' }}
+          CJ_IMPORT_WRITE_APPROVED: ${{ github.event.inputs.dry_run == 'false' && github.event.inputs.write_approved == 'true' && '1' || '0' }}
         run: node automation/cj_gaps_import.mjs
       - name: Ledger committen
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+        if: ${{ always() && github.event.inputs.dry_run == 'false' && github.event.inputs.write_approved == 'true' }}
         run: |
+          set -euo pipefail
           if [ -n "$(git status --porcelain dropship/cj_gaps_done.txt)" ]; then
             git config user.name "luxestyle-autopilot"; git config user.email "bot@users.noreply.github.com"
             git add dropship/cj_gaps_done.txt
             git commit -m "POD: Marktluecken-Import Ledger [skip ci]"
-            for i in 1 2 3 4 5; do git push origin HEAD:main && break; git pull --rebase --autostash origin main || true; sleep 3; done
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           else echo "kein Ledger-Update"; fi

@@ -1,15 +1,14 @@
-name: CJ Autopilot (VOLL-AUTO Produkt-Sourcing)
+name: CJ Autopilot (gesperrte Produktentwürfe)
 
 # Füllt den Shop autonom auf: sourct CJ-Produkte, filtert (§5), verifiziert Bilder, baut
 # Varianten (Farbe×Grösse + Farbbilder) via productSet. Mit GEMINI_API_KEY schreibt es
-# deutsche Copy + QA-Gate und schaltet bestandene Produkte ACTIVE + publiziert in alle 6
-# Kanäle. Ohne Gemini → DRAFT (Tag 'autopilot-needs-copy'). Nichts geht ungeprüft live.
+# deutsche Copy + Sprach-/QA-Gate und legt bestandene Produkte als gesperrte DRAFTs mit
+# `compliance-pruefen` an. Ohne Gemini oder bei unsicherer Sprache gibt es keinen Produkt-Write.
 #
 # Repository-Secrets (Settings → Secrets and variables → Actions):
 #   PFLICHT: CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com), SHOPIFY_ADMIN_TOKEN
-#            (Custom-App-Token, Scopes: write_products, write_publications)
-#   OPTIONAL: GEMINI_API_KEY (→ DE-Copy + ACTIVE-Schaltung)
-#   Repo-Variable optional: AUTOPILOT_STATUS = ACTIVE | DRAFT (Default ACTIVE)
+#            (Custom-App-Token, Scope: write_products)
+#   PFLICHT FÜR PRODUKT-WRITES: GEMINI_API_KEY (→ DE-Copy + QA; Ergebnis bleibt DRAFT)
 # Ohne Pflicht-Secrets ist der Lauf ein sauberer No-Op.
 
 on:
@@ -22,10 +21,6 @@ on:
         description: 'Wie viele Produkte pro Lauf'
         required: false
         default: '6'
-      status:
-        description: 'Ziel-Status bei QA-PASS (ACTIVE oder DRAFT)'
-        required: false
-        default: 'ACTIVE'
       pool:
         description: 'Themen-Pool: men-tech | gadgets | (leer = Damen-Mode-Rotation)'
         required: false
@@ -38,13 +33,22 @@ on:
         description: 'Zusätzliche Tags, komma-getrennt (z.B. gadgets,tech oder herren,herren-mode)'
         required: false
         default: ''
+      write_approved:
+        description: 'Gesperrte DRAFTs schreiben (zusaetzlich zum Code-Gate)'
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: read
 
+concurrency:
+  group: luxestyle-cj-import-writes
+  cancel-in-progress: false
+
 jobs:
   autopilot:
-    name: CJ → Shopify (Voll-Auto)
+    name: CJ → Shopify (DRAFT)
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -66,8 +70,9 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AUTOPILOT_MAX: ${{ github.event.inputs.max || '6' }}
-          AUTOPILOT_STATUS: ${{ github.event.inputs.status || vars.AUTOPILOT_STATUS || 'ACTIVE' }}
           AUTOPILOT_POOL: ${{ github.event.inputs.pool }}
           AUTOPILOT_KEYWORDS: ${{ github.event.inputs.keywords }}
           AUTOPILOT_TAGS: ${{ github.event.inputs.extra_tags }}
+          DRY_RUN: ${{ github.event.inputs.write_approved == 'true' && '0' || '1' }}
+          CJ_IMPORT_WRITE_APPROVED: ${{ github.event.inputs.write_approved == 'true' && '1' || '0' }}
         run: node dropship/cj_autopilot.mjs

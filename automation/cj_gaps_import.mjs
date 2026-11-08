@@ -2,14 +2,24 @@
 /* LuxeStyle — cj_gaps_import.mjs  (Marktlücken füllen: Grill/BBQ + Auto/Handy aus CJ)
  *
  * Sucht bei CJ passende Produkte zu den Katalog-Lücken, prüft Bilder (HTTP-200), legt sie sauber als
- * Shopify-Produkte an (ACTIVE, DE-Titel via Gemini, gesunde CHF-Marge, Tags+SEO), publiziert in alle
- * Kanäle und sortiert sie in Smart-Collections. Idempotent (Ledger). No-op ohne Creds.
+ * Shopify-Produkte als gesperrte DRAFTs an (DE-Titel via Gemini, gesunde CHF-Marge, Tags+SEO) und
+ * sortiert sie in Smart-Collections. Freigabe/Publikation erfolgt getrennt. Idempotent (Ledger).
  *
  * DRY_RUN=1 → nur suchen + Kandidaten listen (nichts anlegen).
  * ENV: CJ_EMAIL, CJ_API_KEY · SHOPIFY_CLIENT_ID/SECRET (o. ADMIN_TOKEN), SHOPIFY_SHOP · [GEMINI_API_KEY]
  *      [CATS=grill,auto] · [PER=4] (pro Kategorie) · [MARGIN=3.2] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import {
+  cjImportSicherheitsdaten,
+  cjImportWriteFreigegeben,
+  pruefeCjImportText,
+  pruefeCjShopIdentitaet,
+} from './lib/cj_import_guard.mjs';
+import { cjFetch } from './lib/cj_fetch.mjs';
+import { uebersetzeCjFarbe } from './lib/cj_optionen_de.mjs';
+import { pruefeCjProduktNachWrite } from './lib/cj_write_guard.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
@@ -19,17 +29,17 @@ const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
 let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
-if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const API = '2025-01';
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const TOKEN_FILE = '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_gaps_done.txt';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-const PER = Math.max(1, parseInt(process.env.PER || '4', 10) || 4);
+const PER = Math.min(4, Math.max(1, parseInt(process.env.PER || '4', 10) || 4));
 const MARGIN = parseFloat(process.env.MARGIN || '3.2') || 3.2;
 const USD_CHF = 0.90;
-const DRY = process.env.DRY_RUN === '1';
+const WRITE = cjImportWriteFreigegeben(process.env);
+const DRY = !WRITE;
 const CATS = (process.env.CATS || 'grill,auto').split(',').map(s => s.trim()).filter(Boolean);
 
 // Kategorie-Konfig: Suchbegriffe (EN, für CJ), Pflichtwort, Collection, Tags, DE-Beschreibungsbausteine.
@@ -123,50 +133,52 @@ const MAX_COST = 9;   // USD-Deckel → CHF ~26 (Impulskauf), filtert teure Fehl
 const MIN_LISTED = parseInt(process.env.MIN_LISTED || '0', 10) || 0; // Popularität (CJ liefert Feld oft nicht → Default 0)
 
 // ── Shopify ──
-async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
-  return r.json();
+async function sgql(tok, q, v, opt = {}) {
+  return { data: await shopifyGql(SHOP, API, tok, q, v, { context: 'CJ-Lueckenimport', ...opt }) };
 }
-async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
-async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); const j = await r.json().catch(() => ({})); return j.access_token || null; }
+async function sWorks(t) { const r = await sgql(t, '{shop{name myshopifyDomain currencyCode primaryDomain{host}}}', {}); return r?.data?.shop || null; }
+async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', signal: AbortSignal.timeout(30000), headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); if (!r.ok) throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`); const j = await r.json(); if (!j.access_token) throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt'); return j.access_token; }
 async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return ADMIN_TOKEN; if (CID && CSEC) { const t = await sCC(); if (t && await sWorks(t)) return t; } return null; }
 
 // ── CJ ──
 async function cjToken() {
   try { if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8')); if (t.exp > Date.now() + 60000) return t.accessToken; } } catch {}
-  const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) });
-  const j = await r.json().catch(() => ({}));
-  if (!j.result || !j?.data?.accessToken) { console.log('⚠️ CJ-Auth fehlgeschlagen → No-op: ' + (j.message || '')); return null; }
+  const j = await cjFetch(`${CJ_BASE}/authentication/getAccessToken`, {
+    context: 'CJ-Authentifizierung Lueckenimport',
+    init: { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) },
+  });
+  if (!j?.data?.accessToken) throw new Error('CJ_AUTH_UNKNOWN: accessToken fehlt');
   try { fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 })); } catch {}
   return j.data.accessToken;
 }
 async function cjGet(tok, path, params) {
-  for (let a = 0; a < 4; a++) {
-    const qs = new URLSearchParams(params).toString();
-    const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-    const j = await r.json().catch(() => ({}));
-    if (j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 2500); continue; }
-    return j;
-  }
-  return {};
+  const qs = new URLSearchParams(params).toString();
+  return cjFetch(`${CJ_BASE}${path}?${qs}`, { context: `CJ ${path}`, headers: { 'CJ-Access-Token': tok } });
 }
-async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); if (r.ok) return true; const g = await fetch(u); return g.ok; } catch { return false; } }
+async function img200(u) { const r = await fetch(u, { method: 'HEAD', signal: AbortSignal.timeout(30000) }); if (r.status === 429 || r.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${r.status}`); if (r.ok) return true; const g = await fetch(u, { signal: AbortSignal.timeout(30000) }); if (g.status === 429 || g.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${g.status}`); return g.ok; }
 
 // ── Gemini Batch-Übersetzung EN-Produktname → knackiger DE-Titel ──
 async function titlesDE(names) {
-  if (!GKEY || !names.length) return names;
+  if (!names.length) return [];
+  if (!GKEY) throw new Error('COPY_STATUS_UNKNOWN: GEMINI_API_KEY fehlt');
   const prompt = `Mach aus diesen englischen Produktnamen je einen knackigen, verkaufsstarken DEUTSCHEN Shop-Titel `
     + `(max 60 Zeichen, kein Marken-/Wholesale-Wort, mit kurzem Nutzen). Gib NUR ein JSON-Array gleicher Reihenfolge zurück.\n` + JSON.stringify(names);
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GKEY)}`;
+  let r;
   try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GKEY)}`;
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.4 } }) });
-    const j = await r.json().catch(() => ({}));
-    let t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').replace(/^```(json)?/i, '').replace(/```$/, '').trim();
-    const arr = JSON.parse(t);
-    if (Array.isArray(arr) && arr.length === names.length) return arr.map((s, i) => (s && String(s).trim().slice(0, 70)) || names[i]);
-  } catch (e) { console.error('  Titel-Übersetzung fehlgeschlagen:', e.message); }
-  return names;
+    r = await fetch(url, { method: 'POST', signal: AbortSignal.timeout(30000), headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.4 } }) });
+  } catch (e) { throw new Error(`COPY_STATUS_UNKNOWN: Gemini-Netzfehler (${e.message})`); }
+  if (r.status === 401 || r.status === 403) throw new Error(`COPY_AUTH_UNKNOWN: Gemini HTTP ${r.status}`);
+  if (r.status === 429) throw new Error('COPY_QUOTA_UNKNOWN: Gemini HTTP 429');
+  if (!r.ok) throw new Error(`COPY_STATUS_UNKNOWN: Gemini HTTP ${r.status}`);
+  let j; try { j = await r.json(); } catch { throw new Error('COPY_STATUS_UNKNOWN: Gemini-JSON unlesbar'); }
+  if (j?.error) throw new Error(`COPY_STATUS_UNKNOWN: Gemini ${j.error.code || 'Fehler'}`);
+  const t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').replace(/^```(json)?/i, '').replace(/```$/, '').trim();
+  let arr; try { arr = JSON.parse(t); } catch { throw new Error('COPY_STATUS_UNKNOWN: Gemini-Copy unlesbar'); }
+  if (!Array.isArray(arr) || arr.length !== names.length || arr.some(s => !String(s ?? '').trim())) {
+    throw new Error('COPY_STATUS_UNKNOWN: Gemini-Copy unvollstaendig');
+  }
+  return arr.map(s => String(s).trim().slice(0, 70));
 }
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL'];
@@ -177,31 +189,60 @@ if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds → No-op.'); proces
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 const SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,input:$input){ product{ id handle } userErrors{ field message } } }`;
-const PUBQ = `{ publications(first:20){ edges{ node{ id } } } }`;
-const PUB = `mutation($id:ID!,$pubs:[PublicationInput!]!){ publishablePublish(id:$id,input:$pubs){ userErrors{ message } } }`;
-const COLL_FIND = `query($q:String!){ collections(first:1, query:$q){ edges{ node{ id handle } } } }`;
-const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$input){ collection{ id handle } userErrors{ message } } }`;
+
+function quellTag(pid) {
+  const wert = String(pid ?? '').trim().replace(/[^a-zA-Z0-9-]/g, '');
+  if (!wert) throw new Error('DUPLIKAT_STATUS_UNKNOWN: CJ-pid fehlt');
+  return `cj-pid-${wert}`;
+}
+
+async function shopifyProduktVorhanden(tok, pid, skus) {
+  const schluessel = [
+    `tag:${JSON.stringify(quellTag(pid))}`,
+    ...[...new Set((skus || []).map(s => String(s ?? '').trim()).filter(Boolean))]
+      .map(sku => `sku:${JSON.stringify(sku)}`),
+  ];
+  if (schluessel.length < 2) {
+    throw new Error('DUPLIKAT_STATUS_UNKNOWN: keine erzeugte Varianten-SKU');
+  }
+  for (let i = 0; i < schluessel.length; i += 20) {
+    const r = await sgql(tok,
+      'query($q:String!){products(first:1,query:$q){pageInfo{hasNextPage}nodes{id handle}}}',
+      { q: schluessel.slice(i, i + 20).join(' OR ') });
+    const verbindung = r?.data?.products;
+    if (!Array.isArray(verbindung?.nodes)) {
+      throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Antwort unvollstaendig');
+    }
+    if (verbindung.nodes.length) return verbindung.nodes[0];
+    if (verbindung.pageInfo?.hasNextPage) {
+      throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Gegenprobe unvollstaendig');
+    }
+  }
+  return null;
+}
+
+function ledgerMerken(done, pid) {
+  const zeile = `pid:${String(pid).trim()}`;
+  if (done.has(zeile)) return;
+  const fd = fs.openSync(LEDGER, 'a');
+  try {
+    fs.writeSync(fd, `${zeile}\n`);
+    fs.fsyncSync(fd);
+  } finally {
+    fs.closeSync(fd);
+  }
+  done.add(zeile);
+}
 
 (async () => {
   const stok = await sToken(); if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op.'); process.exit(0); }
+  if (WRITE) {
+    const identity = pruefeCjShopIdentitaet(await sWorks(stok), SHOP);
+    if (identity.status !== 'OK') throw new Error(`SHOP_IDENTITY_BLOCKED: ${identity.gruende.join(' | ')}`);
+  }
   const ctok = await cjToken(); if (!ctok) process.exit(0);
   console.log('CJ + Shopify ok.' + (DRY ? ' [DRY]' : ''));
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
-  const pubs = DRY ? [] : ((await sgql(stok, PUBQ))?.data?.publications?.edges || []).map(e => ({ publicationId: e.node.id }));
-
-  // Smart-Collection je Kategorie sicherstellen (per Tag)
-  async function ensureColl(cfg) {
-    if (DRY) return null;
-    const f = await sgql(stok, COLL_FIND, { q: `handle:${cfg.coll.handle}` });
-    const ex = f?.data?.collections?.edges?.[0]?.node;
-    if (ex) return ex.id;
-    const r = await sgql(stok, COLL_CREATE, { input: { handle: cfg.coll.handle, title: cfg.coll.title,
-      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 65.</p>`,
-      ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: cfg.coll.tag }] } } });
-    const id = r?.data?.collectionCreate?.collection?.id;
-    console.log(`  Collection ${cfg.coll.title}: ${id ? 'angelegt' : 'FEHLER ' + JSON.stringify(r?.data?.collectionCreate?.userErrors)}`);
-    return id;
-  }
 
   let created = 0, fails = [];
   for (const cat of CATS) {
@@ -244,34 +285,68 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
 
     // 3) Titel übersetzen + anlegen
     const titles = await titlesDE(picks.map(p => p.nameEn));
-    const collId = await ensureColl(cfg);
     for (let i = 0; i < picks.length; i++) {
       const p = picks[i];
-      const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').trim();
+      const title = String(titles[i] || '').replace(/["<>]/g, '').trim();
+      const desc = `<p><strong>${title}</strong></p>`
+        + `<p>Entwurf: Produktangaben, Varianten und Bilder müssen vor der Freigabe anhand der CJ-Quelle geprüft werden.</p>`;
+      const textPruefung = pruefeCjImportText({ sourceTitle: p.nameEn, title, html: desc });
+      if (textPruefung.status !== 'OK') {
+        console.log(`  skip(Textpruefung) ${p.nameEn.slice(0, 45)}: ${textPruefung.gruende.join(' | ')}`);
+        continue;
+      }
       const price = chf(p.cost);
       const handle = (title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 60) || ('cj-' + p.pid);
       // Varianten: Farbe/Grösse aus CJ ableiten (sonst Einheit)
-      const rows = p.vs.map(v => { const key = (v.variantKey || v.variantNameEn || '').trim(); const parts = key.split('-').map(s => s.trim()); let size = '', color = key; const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, ''); if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); } return { color: color || 'Standard', size: size || 'Einheit', sku: v.variantSku }; });
+      const rows = p.vs.map(v => {
+        const key = (v.variantKey || v.variantNameEn || '').trim();
+        const parts = key.split('-').map(s => s.trim());
+        let size = '', color = key;
+        const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, '');
+        if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); }
+        const farbe = uebersetzeCjFarbe(color || 'Standard');
+        return { color: farbe.status === 'OK' ? farbe.wert : null, farbBlocker: farbe.status === 'OK' ? '' : farbe.grund,
+          size: size || 'Einheit', sku: v.variantSku };
+      });
+      const farbBlocker = rows.find(row => row.farbBlocker)?.farbBlocker;
+      if (farbBlocker) { console.log(`  skip(Optionssprache) ${p.nameEn.slice(0, 40)}: ${farbBlocker}`); continue; }
       let colors = [...new Set(rows.map(r => r.color))].slice(0, 12);
       if (!colors.length) colors = ['Standard'];
-      const tags = [cfg.coll.tag, ...cfg.extraTags, 'cj-real'];
-      const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
-        + `<p>📦 Lieferung CH/EU 6–12 Tage · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
-      const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: 'ACTIVE', tags,
-        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, Gratis-Versand ab CHF 65.` },
+      const sicherheit = cjImportSicherheitsdaten([cfg.coll.tag, ...cfg.extraTags, 'cj-real', quellTag(p.pid)]);
+      const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: sicherheit.status, tags: sicherheit.tags,
+        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} bei LuxeStyle Schweiz.` },
         productOptions: [{ name: 'Farbe', values: colors.map(c => ({ name: c })) }],
         variants: colors.map(c => ({ optionValues: [{ optionName: 'Farbe', name: c }], price, inventoryItem: { sku: `CJ-${p.sku}-${c}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' })),
         files: p.imgs.map(u => ({ originalSource: u, contentType: 'IMAGE' })) };
-      const r = await sgql(stok, SET, { input }); const e = r?.data?.productSet?.userErrors || [];
-      const pid = r?.data?.productSet?.product?.id;
-      if (e.length || !pid) { fails.push(`${title.slice(0,40)}: ${JSON.stringify(e.length ? e : r).slice(0, 160)}`); continue; }
-      if (pubs.length) await sgql(stok, PUB, { id: pid, pubs });
-      fs.appendFileSync(LEDGER, 'pid:' + p.pid + '\n');
-      created++; console.log(`  ✅ ${title.slice(0, 50)} → CHF ${price} (${handle})`);
+      const vorhanden = await shopifyProduktVorhanden(stok, p.pid, input.variants.map(v => v.inventoryItem.sku));
+      if (vorhanden) {
+        ledgerMerken(done, p.pid);
+        console.log(`  skip(Dublette) ${title.slice(0, 45)}: ${vorhanden.handle || vorhanden.id}`);
+        continue;
+      }
+      const r = await sgql(stok, SET, { input }, { versuche: 1 });
+      const mutation = r?.data?.productSet;
+      if (!mutation || !Array.isArray(mutation.userErrors)) {
+        throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet-Antwort unvollstaendig');
+      }
+      if (mutation.userErrors.length) { fails.push(`${title.slice(0,40)}: ${JSON.stringify(mutation.userErrors).slice(0, 160)}`); continue; }
+      const pid = mutation.product?.id;
+      if (!pid) throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet ohne Produkt und ohne userErrors');
+      await pruefeCjProduktNachWrite({
+        gql: async (query, variables) => (await sgql(stok, query, variables)).data,
+        id: pid,
+        sourceTag: quellTag(p.pid),
+        erwarteteSkus: input.variants.map(v => v.inventoryItem.sku),
+      });
+      ledgerMerken(done, p.pid);
+      created++; console.log(`  DRAFT ${title.slice(0, 50)} → CHF ${price} (${handle}; ${sicherheit.sperrTags.join(', ')})`);
       await sleep(400);
     }
   }
   if (fails.length) fails.slice(0, 15).forEach(f => console.error('✗', f));
   console.log(`\nFertig: ${created} Produkt(e) angelegt${DRY ? ' [DRY]' : ''}${fails.length ? `, ${fails.length} Fehler` : ''}.`);
   process.exit(0);
-})();
+})().catch(e => {
+  console.error(`Lueckenimport UNKNOWN/abgebrochen: ${e.message}`);
+  process.exitCode = 2;
+});

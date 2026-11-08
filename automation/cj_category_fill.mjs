@@ -1,33 +1,39 @@
 #!/usr/bin/env node
 /* cj_category_fill.mjs — allgemeiner CJ-Import mit ECHTEN Produktnamen (Gemini→DE-Titel+Beschreibung).
  * CJ-Kategorie-Browse → product/query (echter Name, Bilder, Preis) → Gemini DE-Titel+Galaxus-Beschreibung
- * (grounded, nichts erfinden) → productSet+Media+Publish(6 Kanäle) → Ledger. Dedup dropship/cj_niche_done.txt.
+ * (grounded, nichts erfinden) → gesperrter DRAFT+Media → Ledger. Dedup dropship/cj_niche_done.txt.
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import { cjImportSicherheitsdaten, cjImportWriteFreigegeben, pruefeCjImportText, pruefeCjShopIdentitaet } from './lib/cj_import_guard.mjs';
+import { cjFetch } from './lib/cj_fetch.mjs';
+import { uebersetzeCjFarbe, uebersetzeCjGroesse } from './lib/cj_optionen_de.mjs';
+import { pruefeCjProduktNachWrite } from './lib/cj_write_guard.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
-const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
+const WRITE=cjImportWriteFreigegeben(process.env), DRY=!WRITE, CAP=Math.min(20,Math.max(1,parseInt(process.env.CAP||'12',10)||12));
 const LEDGER='dropship/cj_niche_done.txt';
-const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;const p=Math.max(u*m,4.90);return (Math.floor(p)+0.90).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
-const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
-const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
 const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);};
 const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
 function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
  if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=b.toUpperCase();}else color=k;}
  else if(isSize(k))size=k.toUpperCase();else color=k||null;
- return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
+ const farbe=color?uebersetzeCjFarbe(color):null,groesse=size?uebersetzeCjGroesse(size):null;
+ return {color:farbe?.status==='OK'?farbe.wert:null,farbBlocker:farbe&&farbe.status!=='OK'?farbe.grund:'',size:groesse?.status==='OK'?groesse.wert:null,
+  groessenBlocker:groesse&&groesse.status!=='OK'?groesse.grund:'',price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
 function buildFashion(d){
- const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
+ const alle=(d.variants||[]).map(parseVar);const blocker=alle.find(v=>v.farbBlocker||v.groessenBlocker);const grund=blocker&&(blocker.farbBlocker||blocker.groessenBlocker);
+ if(grund)return {blockiert:true,grund};
+ const vs=alle.filter(v=>v.color||v.size); if(!vs.length)return null;
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
  const sizes=[...new Set(vs.map(v=>v.size).filter(Boolean))].sort((a,b)=>{const ia=SORDER.indexOf(a),ib=SORDER.indexOf(b);if(ia>=0&&ib>=0)return ia-ib;return (parseInt(a)||99)-(parseInt(b)||99)||a.localeCompare(b);});
  const useC=colors.length>1||(colors.length===1&&!sizes.length), useS=sizes.length>0;
@@ -109,15 +115,25 @@ if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
  for(const k in ext){const g=ext[k]; if(typeof g.ban==='string')g.ban=new RegExp(g.ban,'i'); GROUPS[k]=g;}
 }
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
-const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
+const MAXPAGE=Math.min(5,Math.max(1,Number(process.env.MAXPAGE||5)||5)), PERCAT=Math.min(10,Math.max(0,Number(process.env.PERCAT||0)||0));
 
-async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
-async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
-async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
+async function cj(path){return cjFetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{context:`CJ ${path.split('?')[0]}`,headers:{'CJ-Access-Token':CJT}});}
+async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',signal:AbortSignal.timeout(30000),headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});if(!r.ok)throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`);const j=await r.json();if(!j.access_token)throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt');return j.access_token;}
+async function sgql(t,q,v,opt={}){return {data:await shopifyGql(SHOP,API,t,q,v,opt)};}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
-const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
-const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung ca. 10–20 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+const TRUST=`<p>Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>`;
+
+const quellTag=pid=>`cj-pid-${String(pid??'').trim().replace(/[^a-zA-Z0-9-]/g,'')}`;
+async function vorhandenesProdukt(t,pid,skus){
+ const tag=quellTag(pid);if(tag==='cj-pid-')throw new Error('DUPLIKAT_STATUS_UNKNOWN: CJ-pid fehlt');
+ const teile=[`tag:${JSON.stringify(tag)}`,...[...new Set((skus||[]).filter(Boolean))].map(s=>`sku:${JSON.stringify(s)}`)];
+ for(let i=0;i<teile.length;i+=20){const r=await sgql(t,'query($q:String!){products(first:1,query:$q){pageInfo{hasNextPage}nodes{id handle}}}',{q:teile.slice(i,i+20).join(' OR ')});const c=r?.data?.products;
+  if(!Array.isArray(c?.nodes))throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Antwort unvollstaendig');
+  if(c.nodes.length)return c.nodes[0];if(c.pageInfo?.hasNextPage)throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Gegenprobe unvollstaendig');}
+ return null;
+}
+function ledgerMerken(pid){const wert=String(pid).trim();if(done.has(wert))return;const fd=fs.openSync(LEDGER,'a');try{fs.writeSync(fd,`cj:${wert}\n`);fs.fsyncSync(fd);}finally{fs.closeSync(fd);}done.add(wert);}
 
 async function gemini(nameEn,feats,kat){
  const prompt=`Du textest für einen Schweizer Beauty-Shop. Aus dem englischen Produktnamen (und Feature-Text) mache:
@@ -127,45 +143,59 @@ Kategorie: ${kat}
 Name (EN): ${nameEn}
 Features (EN): ${(feats||'').slice(0,700)}
 Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß, keine Markdown-Fences).`;
- for(let i=0;i<3;i++){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GK}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.5,maxOutputTokens:1500,thinkingConfig:{thinkingBudget:0},responseMimeType:'application/json'}})});
-  const j=await r.json(); if(j.error){if(j.error.code===429){await sleep(15000);continue;}break;}
-  try{const t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';const o=JSON.parse(t);if(o.title&&o.html)return o;}catch{}
+ const fehler=[];
+ if(GK){
+  for(let i=0;i<3;i++){
+   let r;
+   try{r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GK}`,{method:'POST',signal:AbortSignal.timeout(30000),headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.5,maxOutputTokens:1500,thinkingConfig:{thinkingBudget:0},responseMimeType:'application/json'}})});}
+   catch(e){fehler.push(`Gemini Netz: ${e.message}`);break;}
+   if(r.status===429){fehler.push('Gemini HTTP 429');if(i<2)await sleep(5000);continue;}
+   if(r.status===401||r.status===403){fehler.push(`Gemini HTTP ${r.status}`);break;}
+   if(!r.ok){fehler.push(`Gemini HTTP ${r.status}`);break;}
+   let j;try{j=await r.json();}catch{fehler.push('Gemini JSON unlesbar');break;}
+   try{const t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';const o=JSON.parse(t);if(o.title&&o.html)return o;fehler.push('Gemini Pflichtfelder fehlen');}
+   catch{fehler.push('Gemini Copy-JSON unlesbar');}
+  }
  }
- return await groq(prompt);
+ const g=await groq(prompt,fehler);if(g)return g;
+ const d=await deepseek(prompt,fehler);if(d)return d;
+ throw new Error(`COPY_STATUS_UNKNOWN: ${fehler.length?fehler.slice(-6).join(' | '):'kein Copy-Provider konfiguriert'}`);
 }
 
-// Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
+// Fallback: Groq (OpenAI-kompatibel), falls Gemini nicht belastbar antwortet.
 const GROQ_KEYS=[(process.env.GROQ_API_KEY||''),(process.env.GROQ_API_KEY2||'')].map(s=>s.trim()).filter(Boolean);
 const GROQ_MODELS=['llama-3.3-70b-versatile','qwen/qwen3-32b','meta-llama/llama-4-scout-17b-16e-instruct'];
-async function groq(prompt){
+async function groq(prompt,fehler){
  for(const model of GROQ_MODELS)for(const key of GROQ_KEYS){
-  try{
-   const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`},
-    body:JSON.stringify({model,temperature:0.5,max_tokens:1200,
-     response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
-   if(r.status===429)continue;
-   const j=await r.json(); if(j.error)continue;
-   const o=JSON.parse(j.choices?.[0]?.message?.content||''); if(o.title&&o.html)return o;
-  }catch{}
+  let r;
+  try{r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',signal:AbortSignal.timeout(30000),
+   headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`},
+   body:JSON.stringify({model,temperature:0.5,max_tokens:1200,response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});}
+  catch(e){fehler.push(`Groq Netz: ${e.message}`);continue;}
+  if(r.status===429){fehler.push(`Groq ${model} HTTP 429`);continue;}
+  if(!r.ok){fehler.push(`Groq ${model} HTTP ${r.status}`);continue;}
+  let j;try{j=await r.json();}catch{fehler.push(`Groq ${model} JSON unlesbar`);continue;}
+  try{const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;fehler.push(`Groq ${model} Pflichtfelder fehlen`);}
+  catch{fehler.push(`Groq ${model} Copy-JSON unlesbar`);}
  }
- return await deepseek(prompt);
+ return null;
 }
 
-// 3. Stufe: DeepSeek (OpenAI-kompatibel), falls auch Groq klemmt.
+// 3. Stufe: DeepSeek (OpenAI-kompatibel), falls auch Groq nicht belastbar antwortet.
 const DS_KEY=(process.env.DEEPSEEK_API_KEY||'').trim();
-async function deepseek(prompt){
+async function deepseek(prompt,fehler){
  if(!DS_KEY)return null;
  for(let i=0;i<2;i++){
-  try{
-   const r=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${DS_KEY}`},
-    body:JSON.stringify({model:'deepseek-chat',temperature:0.5,max_tokens:1200,
-     response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
-   if(r.status===429){await sleep(10000);continue;}
-   const j=await r.json(); if(j.error)return null;
-   const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;
-  }catch{}
+  let r;
+  try{r=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',signal:AbortSignal.timeout(30000),
+   headers:{'Content-Type':'application/json','Authorization':`Bearer ${DS_KEY}`},
+   body:JSON.stringify({model:'deepseek-chat',temperature:0.5,max_tokens:1200,response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});}
+  catch(e){fehler.push(`DeepSeek Netz: ${e.message}`);break;}
+  if(r.status===429){fehler.push('DeepSeek HTTP 429');if(i<1)await sleep(5000);continue;}
+  if(!r.ok){fehler.push(`DeepSeek HTTP ${r.status}`);break;}
+  let j;try{j=await r.json();}catch{fehler.push('DeepSeek JSON unlesbar');break;}
+  try{const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;fehler.push('DeepSeek Pflichtfelder fehlen');}
+  catch{fehler.push('DeepSeek Copy-JSON unlesbar');}
  }
  return null;
 }
@@ -173,6 +203,7 @@ async function deepseek(prompt){
 const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP');process.exit(1);}
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
+if(WRITE){const ident=pruefeCjShopIdentitaet((await sgql(st,'{shop{name myshopifyDomain currencyCode primaryDomain{host}}}',{})).data?.shop,SHOP);if(ident.status!=='OK')throw new Error(`SHOP_IDENTITY_BLOCKED: ${ident.gruende.join(' | ')}`);}
 let total=0;
 for(const [cat,label] of grp.cats){
  if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
@@ -189,28 +220,37 @@ for(const [cat,label] of grp.cats){
    const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
    const g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
    if(!g){console.log('  skip(gemini)',nm.slice(0,30));continue;}
+   const textPruefung=pruefeCjImportText({sourceTitle:nm,title:g.title,html:g.html});
+   if(textPruefung.status!=='OK'){console.log('  skip(Textpruefung)',nm.slice(0,30),textPruefung.gruende.join(' | '));continue;}
    const title=g.title.slice(0,70);
    if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`;
    const fash=grp.fashion?buildFashion(d):null;
+   if(fash?.blockiert){console.log('  skip(Optionssprache)',nm.slice(0,30),fash.grund);continue;}
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
-   const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:'ACTIVE',tags:grp.tags,descriptionHtml:html,
+   const sourceTag=quellTag(p.pid);
+   const sicherheit=cjImportSicherheitsdaten([...grp.tags,sourceTag]);
+   const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:sicherheit.status,tags:sicherheit.tags,descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
    // Google-Merchant-Pflichtattribute bei Mode: Gender + Altersgruppe (Farbe/Grösse kommen aus Varianten)
    if(grp.fashion){const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
     input.metafields=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},{namespace:'mm-google-shopping',key:'age_group',value:'adult',type:'single_line_text_field'}];}
-   const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
-   if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
+   const vorhanden=await vorhandenesProdukt(st,p.pid,variants.map(v=>v.inventoryItem?.sku));
+   if(vorhanden){ledgerMerken(p.pid);console.log('  skip(Dublette)',vorhanden.handle||vorhanden.id);continue;}
+   const r=await sgql(st,SET,{i:input},{versuche:1});const mutation=r.data?.productSet;
+   if(!mutation||!Array.isArray(mutation.userErrors))throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet-Antwort unvollstaendig');
+   if(mutation.userErrors.length){console.log('  ✗',title.slice(0,30),JSON.stringify(mutation.userErrors).slice(0,80));continue;}
+   const pid=mutation.product?.id;if(!pid)throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet ohne Produkt und ohne userErrors');
+   await pruefeCjProduktNachWrite({gql:async(q,v)=>(await sgql(st,q,v)).data,id:pid,sourceTag,erwarteteSkus:variants.map(v=>v.inventoryItem.sku)});
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
  if(d.productVideo&&/^https/.test(d.productVideo))media.push({originalSource:d.productVideo,mediaContentType:'VIDEO'});
- if(media.length)await sgql(st,MED,{id:pid,m:media});
-   await sgql(st,PUB,{id:pid,p:PUBS});
-   fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
-   got++;total++; console.log(`✅ ${title} → ${pid.split('/').pop()}`);
+ if(media.length)await sgql(st,MED,{id:pid,m:media},{versuche:1});
+   ledgerMerken(p.pid);
+   got++;total++; console.log(`DRAFT ${title} → ${pid.split('/').pop()} (${sicherheit.sperrTags.join(', ')})`);
    await sleep(300);
   }
  }
