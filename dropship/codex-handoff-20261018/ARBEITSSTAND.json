@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 141,
-  "updatedAt": "2026-11-08T15:26:43+01:00",
+  "revision": 142,
+  "updatedAt": "2026-11-08T15:33:44+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -3113,12 +3113,12 @@
       "id": "ads-pyjama-start-24403263741",
       "priority": 8,
       "priorityKind": "SETZUNG",
-      "state": "r141_public_shopify_pixel_route_ga4_missing_consent_granted_no_settings_write",
+      "state": "r142_tracking_guard_merged_read_only_live_probe_unknown_no_settings_or_delivery_proof",
       "title": "Bestehenden Pyjama-Ads-Entwurf eng auf Startvoraussetzungen prüfen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R141_PUBLIC_STOREFRONT_DATALAYER_AND_NETWORK_ROUTE_AUDIT_NO_CART_CHECKOUT_ORDER",
-      "lastEvidence": "Begrenzte öffentliche Gegenprobe an Projektorprodukt und Selbstgestalten: Shopify Google-&-YouTube-Pixel apiClientId1780363. Projektorseite HTTP200; analytics_storage granted. Explizite page_view-/view_item-Routen senden an Ads AW-18174567886 und Merchant MC-CW38CV2EJ1, nicht an GA4 G-YJXJVC5KRX. view_item enthält CHF34.90, Produkt15521256604033, Variante68122445283719/A und SKU CJSN139239101AZ. Keine Cart-/Checkout-/Order-Aktion. Das ist eine Routinglücke, nicht der Beleg fehlender Käufe. Kein Tracking-/Ads-/GTM-/Shop-Settings-Write. Draft-PR2961/Head bc553765c986164753546eb11bf65cb05f1637e1 behebt die Reviewblocker mit streng direktem Pixelarray, HTTPS/luxestyle.ch/Produktpfad, manueller Redirectprüfung und genau einem GET, exakter GA4-ID, separatem UNKNOWN für Consent/Auslieferung sowie Doppelpixelbefund. 46/46 lokale Tests grün; gespeicherter aktueller Payload GA4 FAIL, Ads/MC PASS, Exit1. Remote-Checks laufen; Draft/ungemergt, nicht produktiv.",
-      "nextAllowedStep": "Nur nach ausdrücklicher Settings-Freigabe im bestehenden Google-&-YouTube-/Google-Tag-Pfad GA4 G-YJXJVC5KRX zu den expliziten Shopify-Ereignisrouten ergänzen, Ads/MC erhalten und Doppelung verhindern. Danach view_item rein lesend und einen bereits vorhandenen echten Purchase-Beleg auf genau eine GA4-/Ads-Zuordnung und Deduplizierung prüfen; keinen Testkauf und kein manuelles Theme-gtag. Kampagnen bleiben abgelaufen/pausiert und werden nicht reaktiviert.",
+      "belegArt": "R142_PR2961_MERGED_READ_ONLY_GUARD_ONE_GET_UNKNOWN_NO_SETTINGS_WRITE",
+      "lastEvidence": "PR2961 wurde nach vollständig grüner LuxeStyle-Automation-Testmatrix auf Ready gesetzt und am 08.11.2026 14:29:10Z als e7993f58e4b37dfaa26ff5f1a28e149d37f5cb9b gemergt. Der Merge betrifft nur den rein lesenden Tracking-Wächter; keine Google-/Shop-Einstellung wurde geändert und tatsächliche Ereignisauslieferung ist nicht belegt. Eine einmalige post-merge Ausführung gegen die Default-Produkt-URL endete nach genau einem GET wegen Netzfehler: fetch failed korrekt UNKNOWN/Exit2, ohne HTTP-Status und ohne Mutation. Kein blinder Retry; weder 404 noch leere Daten. Der öffentliche Browserbeleg aus R141 bleibt der konkrete Routingnachweis.",
+      "nextAllowedStep": "Nur nach ausdrücklicher Settings-Freigabe im bestehenden Google-&-YouTube-/Google-Tag-Pfad GA4 G-YJXJVC5KRX zu den expliziten Shopify-Ereignisrouten ergänzen, Ads/MC erhalten und Doppelung verhindern. Danach die öffentliche Ereignisauslieferung und Deduplizierung getrennt prüfen; keinen Testkauf und kein manuelles Theme-gtag. Kampagnen bleiben abgelaufen/pausiert und werden nicht reaktiviert.",
       "blockers": [
         "Kampagnenspezifische Kaufzielbindung und übrige finale Startparameter nicht vollständig aktuell belegt; Auto-Tagging jetzt True",
         "Kein Nachweis eines Google-Ads-Kaufereignisses oder einer Ads-Zuordnung allein durch Shopify-Zahlung bzw. Kontokonfiguration",
@@ -3129,7 +3129,9 @@
         "R141: GA4 G-YJXJVC5KRX fehlt in den expliziten page_view-/view_item-send_to-Routen; Ads und Merchant sind vorhanden.",
         "R141: Aktuelle Inhabervorgabe erlaubt keinen Shop-/Tracking-Settings-Write; manuelles Theme-gtag würde Doppelungs-/Deduplizierungsrisiken erzeugen.",
         "R141: Purchase-Routing und Deduplizierung wurden ohne Testkauf nicht ausgelöst; ihr tatsächlicher Zustand bleibt unbekannt.",
-        "R141: Draft-PR2961 ist lokal46/46 grün, aber Remote-Checks laufen; ungemergt und nicht produktiv. Statischer Routing-PASS ersetzt keine Browserauslieferung oder Consentbeobachtung."
+        "R141: Draft-PR2961 ist lokal46/46 grün, aber Remote-Checks laufen; ungemergt und nicht produktiv. Statischer Routing-PASS ersetzt keine Browserauslieferung oder Consentbeobachtung.",
+        "R142: Der gemergte rein lesende Wächter verändert keine Google-/Shop-Einstellungen und belegt keine tatsächliche Ereignisauslieferung.",
+        "R142: Die einmalige post-merge Liveprobe endete wegen fetch failed korrekt UNKNOWN/Exit2; kein HTTP-Status, keine Mutation und kein blinder Retry."
       ],
       "acceptance": [
         "BestehendeEntitäten behalten, keineDuplikate",
@@ -3210,6 +3212,16 @@
           "previousLastEvidence": "HYPD bestätigte Ads7198263241/CHF/Europe-Zurich.09.10.–07.11.:711 Impressionen,24 Klicks,CTR3.38%,CHF11.51,CPC CHF0.48,0 getrackte Conversions; Auto-Tagging true. Shopping24340093418 ist ENABLED, aber seit17.10. abgelaufen und trug alle Kosten; nicht reaktivieren. Xmas24403263741 ist PAUSED, seit05.11. abgelaufen und hatte0 Traffic/Kosten, obwohl Kindobjekte enabled erscheinen. Kaufaktion7840141331 ist enabled/webpage/purchase/primary/many und kampagnenseitig biddable; Einzelaktionsreport leer. GA4 hat keine Ecommerce-Events, GTM kein explizites Purchase-/Ads-Tag; externe Shopify-Trackingwege unbekannt. Keine Ads-/Budget-/Ziel-/GTM-Änderung.",
           "previousNextAllowedStep": "P0: End-to-end Ecommerce-Tracking mit Shopify→GA4/GTM→Ads und Consent/Page-/Session-Kontext rein lesend diagnostizieren, dann einen minimalen Messplan zur Freigabe vorlegen. Abgelaufene Kampagnen24340093418/24403263741 nicht reaktivieren oder verlängern; keine Budget-/Conversion-Zieländerung. 0 getrackte Conversions niemals als 0 Shopify-Käufe ausgeben.",
           "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-08T15:33:44+01:00",
+          "sourceRevision": 142,
+          "previousState": "r141_public_shopify_pixel_route_ga4_missing_consent_granted_no_settings_write",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R141_PUBLIC_STOREFRONT_DATALAYER_AND_NETWORK_ROUTE_AUDIT_NO_CART_CHECKOUT_ORDER",
+          "previousLastEvidence": "Begrenzte öffentliche Gegenprobe an Projektorprodukt und Selbstgestalten: Shopify Google-&-YouTube-Pixel apiClientId1780363. Projektorseite HTTP200; analytics_storage granted. Explizite page_view-/view_item-Routen senden an Ads AW-18174567886 und Merchant MC-CW38CV2EJ1, nicht an GA4 G-YJXJVC5KRX. view_item enthält CHF34.90, Produkt15521256604033, Variante68122445283719/A und SKU CJSN139239101AZ. Keine Cart-/Checkout-/Order-Aktion. Das ist eine Routinglücke, nicht der Beleg fehlender Käufe. Kein Tracking-/Ads-/GTM-/Shop-Settings-Write. Draft-PR2961/Head bc553765c986164753546eb11bf65cb05f1637e1 behebt die Reviewblocker mit streng direktem Pixelarray, HTTPS/luxestyle.ch/Produktpfad, manueller Redirectprüfung und genau einem GET, exakter GA4-ID, separatem UNKNOWN für Consent/Auslieferung sowie Doppelpixelbefund. 46/46 lokale Tests grün; gespeicherter aktueller Payload GA4 FAIL, Ads/MC PASS, Exit1. Remote-Checks laufen; Draft/ungemergt, nicht produktiv.",
+          "previousNextAllowedStep": "Nur nach ausdrücklicher Settings-Freigabe im bestehenden Google-&-YouTube-/Google-Tag-Pfad GA4 G-YJXJVC5KRX zu den expliziten Shopify-Ereignisrouten ergänzen, Ads/MC erhalten und Doppelung verhindern. Danach view_item rein lesend und einen bereits vorhandenen echten Purchase-Beleg auf genau eine GA4-/Ads-Zuordnung und Deduplizierung prüfen; keinen Testkauf und kein manuelles Theme-gtag. Kampagnen bleiben abgelaufen/pausiert und werden nicht reaktiviert.",
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "setupReviewR66": {
@@ -3265,6 +3277,36 @@
           "draft": true,
           "merged": false,
           "productive": false
+        }
+      },
+      "run142": {
+        "at": "2026-11-08T15:33:44+01:00",
+        "guard": {
+          "pullRequest": 2961,
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2961",
+          "head": "bc553765c986164753546eb11bf65cb05f1637e1",
+          "luxeStyleAutomationMatrix": "pass",
+          "isDraft": false,
+          "state": "MERGED",
+          "mergedAt": "2026-11-08T14:29:10Z",
+          "mergeCommit": "e7993f58e4b37dfaa26ff5f1a28e149d37f5cb9b",
+          "readOnly": true,
+          "settingsChanged": false,
+          "eventDeliveryProven": false
+        },
+        "postMergeProbe": {
+          "status": "UNKNOWN",
+          "exit": 2,
+          "reason": "Netzfehler: fetch failed",
+          "httpStatus": null,
+          "method": "GET",
+          "requests": 1,
+          "mutations": 0,
+          "retried": false,
+          "proof": {
+            "path": "/workspace/luxestyle-review/tracking-fix-20261108/merged-guard-live-result.json",
+            "sha256": "564ae336d7bcd0b03cdd2ff2fa95d0084ffbb53574f73b9098156c871dd2e5f5"
+          }
         }
       }
     },
@@ -7377,12 +7419,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r141_fr_published_without_verified_translations_live_duplicate_no_locale_write",
+      "state": "r142_fr_guard_high_bypass_fixed_review_ok_medium_snapshot_producer_blocker_draft",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R141_SHOPIFY_LOCALE_MARKET_TRANSLATION_AND_RAW_FR_STOREFRONT_READ_ONLY_AUDIT",
-      "lastEvidence": "Shopify-Locale-Gegenprobe: de primär/publiziert, fr publiziert, en/it unveröffentlicht; nur Markt Schweiz aktiv. Übersetzungslisten des geprüften Produkts und pages/selbst-gestalten für fr leer. /fr/ und /fr/pages/selbst-gestalten HTTP200, indexierbar, lang=fr, FR-Self-Canonical/Hreflang, aber deutscher Titel/Body. Drei aktuelle FR-Produkte sind noindex, bleiben deutsch und in62 FR-Child-Sitemaps. Die zuvor inspizierte Yoga-URL ist jetzt404 und damit historischer GSC-Status; die GSC-Gesamtreihe161 Seiten/703 Impressionen/0 Klicks bleibt relevant. Draft-PR2914 mischt Scope und prüft bereits publiziertes FR vor Coverage; nicht übernehmen. Kein Locale-/Markt-/Themewrite. Draft-PR2962/Commit d94cf29fe5b8aad3ffba6090656eda47b8bb6ba8 ersetzt den unsicheren Scope durch vier enge Guard-/Test-/Workflowdateien: publiziertes FR wird vor Skip geprüft; fehlender, unvollständiger, veralteter oder sample-Coverage-Beleg stoppt nonzero vor Mutation. complete_catalog-Beleg ist an Shop, Datei-SHA, Quellkatalog-SHA und Zeit gebunden. 18 lokale Tests, Syntax und Diffcheck grün; Remote-CI läuft. Draft/ungemergt, nicht produktiv.",
-      "nextAllowedStep": "Ausdrückliche Locale-Entscheidung: FR vorübergehend depublizieren, bis vollständige geprüfte Übersetzungen existieren, oder FR fachlich vollständig übersetzen. Vor einer Mutation Scope und Coverage vollständig belegen; danach /fr/-Startseite, Selbstgestalten, Produkt-/Collection-Stichprobe, Canonical, Hreflang, Sitemaps und GSC prüfen. PR2914 nicht mergen; enger Guard muss Coverage vor dem bereits-publiziert-Abbruch prüfen.",
+      "belegArt": "R142_PR2962_HIGH_BYPASS_FIXED_20_TESTS_MEDIUM_SOURCE_SNAPSHOT_BLOCKER_DRAFT",
+      "lastEvidence": "Draft-PR2962 bleibt offen. Commit ff50da64d560736a16bf1ad1efb2c77597c06125 schliesst die HIGH-Umgehung LOCALES=it: Der Guard prüft die Vereinigung aus WANT und allen publizierten nichtprimären Locales, sodass publiziertes unbelegtes FR nicht übersprungen werden kann. 20/20 lokale Tests sind grün und der HIGH-Fix ist im Review ohne neuen Blocker. MEDIUM bleibt expliziter Merge-/Write-Blocker: Es fehlt ein unabhängiger Produzent eines aktuellen Live-Katalog-Snapshots; der Source-SHA vergleicht nur extern gelieferte Werte. Kein Merge, keine Mutation und kein Locale-/Shopwrite.",
+      "nextAllowedStep": "Einen unabhängigen aktuellen Live-Katalog-Snapshot-Produzenten mit belegter Herkunft, Erfassungszeit und SHA-Vertrauenskette bereitstellen; erst dann PR2962 erneut prüfen und mergen. Die Locale-Entscheidung bleibt separat: FR depublizieren oder vollständig fachlich übersetzen. Keine Mutation, solange Snapshot-Vertrauen und ausdrückliche Locale-Entscheidung fehlen.",
       "blockers": [
         "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
         "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
@@ -7394,7 +7436,9 @@
         "R141: Inhabervorgabe erlaubt keinen Locale-/Markt-Settings-Write; Depublish oder vollständige Übersetzung braucht eine ausdrückliche Entscheidung.",
         "R141: PR2914 hat gemischten Scope und eine Coverage-Logiklücke für bereits publizierte Sprachen.",
         "R141: Drei Produktsamples sind noindex, bleiben aber deutsch und in62 FR-Child-Sitemaps; Katalogvollständigkeit ist unbekannt.",
-        "R141: Draft-PR2962 schliesst die Guard-Logiklücke lokal, aber Remote-CI läuft; ungemergt und nicht produktiv. Er trifft keine Locale-Entscheidung und führt keine Mutation aus."
+        "R141: Draft-PR2962 schliesst die Guard-Logiklücke lokal, aber Remote-CI läuft; ungemergt und nicht produktiv. Er trifft keine Locale-Entscheidung und führt keine Mutation aus.",
+        "R142: Draft-PR2962 schliesst die HIGH-Umgehung, bleibt aber wegen fehlendem unabhängig aktuellem Live-Katalog-Snapshot-Produzenten explizit merge- und write-gesperrt.",
+        "R142: Der Source-SHA bindet nur extern gelieferte Werte aneinander und ist ohne unabhängige Snapshot-Herkunft kein Vollständigkeitsbeleg."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -7628,6 +7672,16 @@
           "previousBelegArt": "R140_HYPD_GSC_FINAL_RANGE_FR_DUPLICATE_URL_IDENTITY_AND_STRUCTURED_DATA_READ_ONLY",
           "previousLastEvidence": "GSC sc-domain:luxestyle.ch09.10.–05.11.:65 Klicks,10’949 Impressionen,CTR0.594%,Position53.11; Vorperiode ohne Zeilen, Vergleich unbekannt; CH60/10’057. /fr/:161 Seitenzeilen,703 Impressionen,0 Klicks; inspiziertes FR-Produkt indexiert und selbstkanonisch mit deutschem Titel. Selbstgestalten-Seite indexiert31 Impressionen/Position63.1. Neuer T-Shirt-Handle nicht indexiert; Legacy-Shirt selbstkanonisch493 Impressionen/Position89.6, deshalb Identität vor Redirect/Canonical. Quick wins: Feed-Maschine45/Position18, gepolsterte Taschen Kannibalisierung, GPS16/9.81, Rizinus13 Klicks ohne medizinische Claims. Strukturierte Daten teilweise ohne description/shippingDetails/return policy; keine Reviews erfinden. Sitemap ohne Fehler/Warnungen; indexed=0 ist kein Beleg für keine Indexierung. Kein SEO-/Shopwrite.",
           "previousNextAllowedStep": "P0: FR-Strategie festlegen und für indexierte selbstkanonische DE-Inhalte unter /fr/ je URL prüfen, ob echte Übersetzung oder kontrollierte Deindexierung/Canonical nötig ist. Parallel Selfdesign- und T-Shirt-Handle-Identität anhand aktueller Produkt-/Redirect-/Canonicalquellen klären, erst danach Redirect/Canonical-Diff. P1: Quick-Wins und strukturierte Daten eng quellenbasiert bearbeiten; keine medizinischen Claims oder erfundenen Reviews.",
+          "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-08T15:33:44+01:00",
+          "sourceRevision": 142,
+          "previousState": "r141_fr_published_without_verified_translations_live_duplicate_no_locale_write",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R141_SHOPIFY_LOCALE_MARKET_TRANSLATION_AND_RAW_FR_STOREFRONT_READ_ONLY_AUDIT",
+          "previousLastEvidence": "Shopify-Locale-Gegenprobe: de primär/publiziert, fr publiziert, en/it unveröffentlicht; nur Markt Schweiz aktiv. Übersetzungslisten des geprüften Produkts und pages/selbst-gestalten für fr leer. /fr/ und /fr/pages/selbst-gestalten HTTP200, indexierbar, lang=fr, FR-Self-Canonical/Hreflang, aber deutscher Titel/Body. Drei aktuelle FR-Produkte sind noindex, bleiben deutsch und in62 FR-Child-Sitemaps. Die zuvor inspizierte Yoga-URL ist jetzt404 und damit historischer GSC-Status; die GSC-Gesamtreihe161 Seiten/703 Impressionen/0 Klicks bleibt relevant. Draft-PR2914 mischt Scope und prüft bereits publiziertes FR vor Coverage; nicht übernehmen. Kein Locale-/Markt-/Themewrite. Draft-PR2962/Commit d94cf29fe5b8aad3ffba6090656eda47b8bb6ba8 ersetzt den unsicheren Scope durch vier enge Guard-/Test-/Workflowdateien: publiziertes FR wird vor Skip geprüft; fehlender, unvollständiger, veralteter oder sample-Coverage-Beleg stoppt nonzero vor Mutation. complete_catalog-Beleg ist an Shop, Datei-SHA, Quellkatalog-SHA und Zeit gebunden. 18 lokale Tests, Syntax und Diffcheck grün; Remote-CI läuft. Draft/ungemergt, nicht produktiv.",
+          "previousNextAllowedStep": "Ausdrückliche Locale-Entscheidung: FR vorübergehend depublizieren, bis vollständige geprüfte Übersetzungen existieren, oder FR fachlich vollständig übersetzen. Vor einer Mutation Scope und Coverage vollständig belegen; danach /fr/-Startseite, Selbstgestalten, Produkt-/Collection-Stichprobe, Canonical, Hreflang, Sitemaps und GSC prüfen. PR2914 nicht mergen; enger Guard muss Coverage vor dem bereits-publiziert-Abbruch prüfen.",
           "previousBlockersRetainedInCurrentTask": true
         }
       ],
@@ -7899,6 +7953,22 @@
           "draft": true,
           "merged": false,
           "productive": false
+        }
+      },
+      "run142": {
+        "at": "2026-11-08T15:33:44+01:00",
+        "coverageGuard": {
+          "pullRequest": 2962,
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2962",
+          "head": "ff50da64d560736a16bf1ad1efb2c77597c06125",
+          "highBypassFixed": true,
+          "localeSet": "WANT union published non-primary locales",
+          "localTests": "20/20 pass",
+          "review": "high_fix_ok",
+          "draft": true,
+          "merged": false,
+          "mutations": 0,
+          "mediumBlocker": "no independent current live-catalog snapshot producer; source SHA only compares externally supplied values"
         }
       }
     },
@@ -10933,6 +11003,17 @@
         "readAt": "2026-11-08T15:26:43+01:00"
       },
       "action": "R141: A narrow public storefront audit bound Shopify Google & YouTube pixel1780363 and showed explicit page_view/view_item routing to Ads and Merchant but not GA4 G-YJXJVC5KRX with analytics consent granted; no cart/order or settings write. Draft PR2961 contains the hardened read-only guard with46/46 local tests; remote checks run, unmerged and not productive. PR2959 merged the 25-product-image alttext code and tests, but the connector safety policy blocked the live MAIN theme upsert; live hash stayed unchanged. FR is published with empty sampled translations and indexable German fallback paths; Draft PR2962 adds a fail-closed complete-catalog coverage guard with18 local tests, remote CI running, unmerged and no locale write. Three ACTIVE Merchant overlay offers were exactly bound but have no rights-proven clean replacements; no image/feed write."
+    },
+    {
+      "revision": 142,
+      "at": "2026-11-08T15:33:44+01:00",
+      "actor": "codex",
+      "source": {
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2961",
+        "mergeCommit": "e7993f58e4b37dfaa26ff5f1a28e149d37f5cb9b",
+        "readAt": "2026-11-08T15:33:44+01:00"
+      },
+      "action": "R142: PR2961 merged the read-only tracking guard after the green LuxeStyle automation matrix; no settings change or event-delivery proof. Its one-GET post-merge probe returned UNKNOWN/Exit2 on fetch failed with no HTTP status, mutation or retry. Draft PR2962 fixed the LOCALES=it HIGH bypass at ff50da64d with20/20 local tests and review okay, but remains merge/write-blocked because no independent current live-catalog snapshot producer exists. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -17459,5 +17540,59 @@
       "frCoverageGuard": "https://github.com/allengchour-glitch/aban-news-landing/pull/2962",
       "frCoverageGuardCommit": "d94cf29fe5b8aad3ffba6090656eda47b8bb6ba8"
     }
+  },
+  "trackingGuardR142": {
+    "at": "2026-11-08T15:33:44+01:00",
+    "pullRequest": 2961,
+    "state": "MERGED",
+    "mergedAt": "2026-11-08T14:29:10Z",
+    "mergeCommit": "e7993f58e4b37dfaa26ff5f1a28e149d37f5cb9b",
+    "luxeStyleAutomationMatrix": "pass",
+    "readOnly": true,
+    "settingsChanged": false,
+    "eventDeliveryProven": false,
+    "postMergeProbe": {
+      "status": "UNKNOWN",
+      "exit": 2,
+      "reason": "Netzfehler: fetch failed",
+      "httpStatus": null,
+      "method": "GET",
+      "requests": 1,
+      "mutations": 0,
+      "retried": false,
+      "proof": {
+        "path": "/workspace/luxestyle-review/tracking-fix-20261108/merged-guard-live-result.json",
+        "sha256": "564ae336d7bcd0b03cdd2ff2fa95d0084ffbb53574f73b9098156c871dd2e5f5"
+      }
+    }
+  },
+  "frCoverageGuardR142": {
+    "at": "2026-11-08T15:33:44+01:00",
+    "pullRequest": 2962,
+    "head": "ff50da64d560736a16bf1ad1efb2c77597c06125",
+    "state": "OPEN_DRAFT",
+    "highBypassFixed": true,
+    "localeSet": "WANT union published non-primary locales",
+    "localTests": "20/20 pass",
+    "review": "high_fix_ok",
+    "merged": false,
+    "mutations": 0,
+    "mediumMergeWriteBlocker": "no independent current live-catalog snapshot producer; source SHA only compares externally supplied values"
+  },
+  "followUpRunR142": {
+    "at": "2026-11-08T15:33:44+01:00",
+    "scope": "tracking_guard_merge_one_get_unknown_and_fr_guard_review_status_only",
+    "actualWrites": [
+      "PR2961 merged into repository main",
+      "LuxeStyle handoff documentation"
+    ],
+    "blockedOrNotPerformed": [
+      "Google/Shop tracking settings change",
+      "event-delivery claim",
+      "PR2962 merge",
+      "FR locale/shop mutation",
+      "blind retry after fetch failure"
+    ],
+    "taskCount": 24
   }
 }
