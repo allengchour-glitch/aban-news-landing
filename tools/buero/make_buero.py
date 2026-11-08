@@ -229,6 +229,13 @@ ORTE["seitenpflege"] = ("cloud", "GitHub-Cloud", "GitHub",
                          "Teil von tages-update.yml (04:15 UTC). Kein zusätzlicher Zeitplan. Das Büro braucht die neue buero.json als Datenquelle.",
                          WF + "buero-tagespflege.yml")
 
+for _id, _name in [("yt_skript", "Themen & Skripte"), ("yt_video", "Videoproduktion"), ("yt_wachstum", "Kanal & Wachstum")]:
+    ROWS.append({"id": _id, "bereich": "YouTube-Studio", "name": _name, "kurz": _name,
+                 "status": "gelb", "befund": "Kein Studiobericht geladen. Zielkanal laut Screenshot: @oio-o7s. Kontozuordnung, Veröffentlichung und Reichweite sind nicht bestätigt.",
+                 "ereignis": "Kein Bericht geladen", "ereignis_iso": "", "gemessen": "", "gemessen_text": "Nicht gemessen",
+                 "frisch_h": 0, "quelle": "tools/youtube_studio/studio.py", "figur": "arbeiter", "menge": 0, "aktiv_h": 0})
+    ORTE[_id] = ("cloud", "YouTube-Entwurfswerkstatt", "Studio", "Originale Skripte und Textvideo-Entwürfe. Kein bestätigter Upload und keine gemessenen Follower.", WF + "youtube-studio.yml")
+
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
     _r.update({"ort_art": _art, "ort": _ort, "ort_kurz": _kurz, "ort_text": _text, "link": _link})
@@ -239,7 +246,7 @@ def pruefen(rows):
     assert len(ids) == len(set(ids)), "doppelte id"
     for r in rows:
         assert r["status"] in ("gruen", "gelb", "rot", "du"), r["id"]
-        assert r["bereich"] in ("Shop", "Versand", "Krypto", "Chefbüro", "Social Media", "Entwicklerbüro"), r["id"]
+        assert r["bereich"] in ("Shop", "Versand", "Krypto", "Chefbüro", "Social Media", "Entwicklerbüro", "YouTube-Studio"), r["id"]
         assert r["figur"] in ("arbeiter", "paket", "tafel", "papier"), r["id"]
         assert isinstance(r["frisch_h"], int) and isinstance(r["aktiv_h"], int) and isinstance(r["menge"], int)
         assert (r["frisch_h"] == 0) == (r["gemessen"] == ""), r["id"]
@@ -265,6 +272,9 @@ def aktionen(rows):
         "dev_bauen": "Werkstatt in GitHub öffnen, bei Bedarf starten und das ZIP im Lauf herunterladen.",
         "dev_pruefen": "Werkstatt-Prüfung öffnen und fehlgeschlagene Tests ansehen.",
         "dev_angebot": "Angebotsentwurf prüfen und Pilotumfang sowie Preis festlegen.",
+        "yt_skript": "Originalskript und Kanalbeschreibungsentwurf im Studiopaket ansehen.",
+        "yt_video": "Videoentwurf herunterladen und Lesbarkeit, Ton und Inhalt prüfen.",
+        "yt_wachstum": "Zielkanal @oio-o7s zuordnen und dessen Upload- und Analysezugriff verbinden.",
         "seitenpflege": "Tagespflege öffnen: Seitenbericht und neue buero.json im letzten Lauf herunterladen. Für Google die Sitemap in Search Console prüfen.",
         "zip": "Aktuelles Cockpit-Paket herunterladen und auf deinem PC einspielen.",
         "cockpitstart": "Cockpit-Anleitung öffnen und den Start auf deinem PC prüfen.",
@@ -385,6 +395,7 @@ if __name__ == "__main__":
     parser.add_argument("--werkstatt-status")
     parser.add_argument("--pflege-status")
     parser.add_argument("--zentrale-status")
+    parser.add_argument("--youtube-status")
     parser.add_argument("--nur-github", action="store_true")
     args = parser.parse_args()
     if args.werkstatt_status:
@@ -397,6 +408,26 @@ if __name__ == "__main__":
             pflege_einlesen(args.pflege_status, ROWS)
         except (OSError, ValueError, KeyError, TypeError) as e:
             parser.exit(2, "Tagespflege-Bericht abgelehnt: " + type(e).__name__ + "\n")
+    if args.youtube_status:
+        report = json.loads(open(args.youtube_status, encoding="utf-8").read())
+        if report.get("version") != 1 or report.get("skript_gebaut") is not True or report.get("veroeffentlicht") is not False or report.get("kanal_bestaetigt") is not False:
+            parser.exit(2, "Unbekannter YouTube-Entwurfsbericht.\n")
+        gem = report["gemessen"]
+        if datetime.fromisoformat(gem.replace("Z", "+00:00")).tzinfo is None:
+            parser.exit(2, "YouTube-Bericht braucht eine Zeitzone.\n")
+        for row in ROWS:
+            if not row["id"].startswith("yt_"): continue
+            row.update({"gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 192,
+                        "ereignis_iso": gem, "ereignis": "Studio " + zeit(gem)})
+            if row["id"] == "yt_skript":
+                row["status"] = "gruen" if report.get("skript_gebaut") is True else "gelb"
+                row["befund"] = "Originales Kurzskript und Kanalbeschreibungsentwurf gebaut. Thematischer Vorschlag: KI und Automationen für kleine Betriebe. Kein Upload."
+            elif row["id"] == "yt_video":
+                row["status"] = "gruen" if report.get("video_gebaut") is True else "gelb"
+                row["befund"] = "Stummer Textvideo-Entwurf (28 Sekunden, 720 × 1280) gebaut. Noch keine Veröffentlichung." if report.get("video_gebaut") is True else "Video-Bau nicht bestätigt; Skript allein ist kein fertiges Video."
+            else:
+                row["status"] = "du"
+                row["befund"] = "Kanal-ID von @oio-o7s und Upload-Verbindung noch nicht bestätigt. Follower, Reichweite und Einnahmen nicht gemessen. Kein Kanal erstellt oder umbenannt."
     if args.zentrale_status:
         report = json.loads(open(args.zentrale_status, encoding="utf-8").read())
         if report.get("version") != 1 or not isinstance(report.get("hirn_pruefung"), dict):
