@@ -1,0 +1,217 @@
+[
+ {
+  "handle": "impressum",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 16,
+    "laenge_de": 9
+   },
+   {
+    "key": "body_html",
+    "laenge": 2174,
+    "laenge_de": 2066
+   },
+   {
+    "key": "meta_title",
+    "laenge": 31,
+    "laenge_de": 24
+   },
+   {
+    "key": "meta_description",
+    "laenge": 139,
+    "laenge_de": 120
+   }
+  ],
+  "probleme": []
+ },
+ {
+  "handle": "rabatt-newsletter",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 30,
+    "laenge_de": 23
+   },
+   {
+    "key": "body_html",
+    "laenge": 2195,
+    "laenge_de": 2028
+   },
+   {
+    "key": "meta_title",
+    "laenge": 45,
+    "laenge_de": 38
+   },
+   {
+    "key": "meta_description",
+    "laenge": 141,
+    "laenge_de": 119
+   }
+  ],
+  "probleme": []
+ },
+ {
+  "handle": "tracking",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 36,
+    "laenge_de": 45
+   },
+   {
+    "key": "body_html",
+    "laenge": 3571,
+    "laenge_de": 3236
+   },
+   {
+    "key": "meta_title",
+    "laenge": 51,
+    "laenge_de": 60
+   },
+   {
+    "key": "meta_description",
+    "laenge": 108,
+    "laenge_de": 124
+   }
+  ],
+  "probleme": []
+ },
+ {
+  "handle": "versand-lieferung",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 31,
+    "laenge_de": 29
+   },
+   {
+    "key": "body_html",
+    "laenge": 3500,
+    "laenge_de": 3237
+   },
+   {
+    "key": "meta_title",
+    "laenge": 46,
+    "laenge_de": 44
+   },
+   {
+    "key": "meta_description",
+    "laenge": 139,
+    "laenge_de": 141
+   }
+  ],
+  "probleme": []
+ },
+ {
+  "handle": "kontakt-support",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 17,
+    "laenge_de": 17
+   },
+   {
+    "key": "body_html",
+    "laenge": 3780,
+    "laenge_de": 3624
+   },
+   {
+    "key": "meta_title",
+    "laenge": 32,
+    "laenge_de": 32
+   },
+   {
+    "key": "meta_description",
+    "laenge": 140,
+    "laenge_de": 137
+   }
+  ],
+  "probleme": []
+ },
+ {
+  "handle": "ueber-uns",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 49,
+    "laenge_de": 44
+   },
+   {
+    "key": "body_html",
+    "laenge": 5779,
+    "laenge_de": 5417
+   },
+   {
+    "key": "meta_title",
+    "laenge": 58,
+    "laenge_de": 55
+   },
+   {
+    "key": "meta_description",
+    "laenge": 154,
+    "laenge_de": 146
+   }
+  ],
+  "probleme": []
+ },
+ {
+  "handle": "cookie-richtlinie",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 31,
+    "laenge_de": 17
+   },
+   {
+    "key": "body_html",
+    "laenge": 3855,
+    "laenge_de": 3619
+   },
+   {
+    "key": "meta_title",
+    "laenge": 46,
+    "laenge_de": 32
+   },
+   {
+    "key": "meta_description",
+    "laenge": 119,
+    "laenge_de": 117
+   }
+  ],
+  "probleme": [
+   {
+    "art": "mehrfach",
+    "n": 2,
+    "de": "<td>13 Monate (max.)</td>",
+    "k": "body_html"
+   }
+  ]
+ },
+ {
+  "handle": "pflegehinweise",
+  "felder": [
+   {
+    "key": "title",
+    "laenge": 20,
+    "laenge_de": 14
+   },
+   {
+    "key": "body_html",
+    "laenge": 4883,
+    "laenge_de": 4522
+   },
+   {
+    "key": "meta_title",
+    "laenge": 35,
+    "laenge_de": 29
+   },
+   {
+    "key": "meta_description",
+    "laenge": 121,
+    "laenge_de": 111
+   }
+  ],
+  "probleme": []
+ }
+]

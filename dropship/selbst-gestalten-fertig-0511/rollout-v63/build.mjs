@@ -5,6 +5,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { karteFuerEditor, kartenbuendelFuerEditor } from '../../../pod/v6/werkzeug/karte_fuer_editor.mjs';
+import { korrigiereKartenJson, korrigiereVorschauJson } from '../../../pod/v6/werkzeug/geometrie_korrektur.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HIER, '../../../');
@@ -193,6 +194,9 @@ export function bauen({ write = true, panelModels = [] } = {}) {
       preview = scopePreview(JSON.parse(previewBytes), card, product);
     } else if (product.rolloutStatus === 'ready-binding') card = buildBindingCard(product, catalogs, requestedPanels);
     else card = blockedCard(product);
+    // Gemessene Druckfläche je Modell (pod/v6/werkzeug/geometrie_korrektur.json, Messung 08.11.2026, Referenz Printfuls Mockup-Generator):
+    // nur die Ansicht (Bühne, «Auf dem Produkt»); Katalog, Audit-Belege und die allgemeinen Karten-Werkzeuge bleiben bei den Zahlen von GET /templates.
+    card = korrigiereKartenJson(card); if (preview) preview = korrigiereVorschauJson(preview);
     const text = JSON.stringify(card) + '\n';
     const previewText = preview ? JSON.stringify(preview) + '\n' : null;
     outputs.push({ handle: product.handle, productId: product.shopifyProductId, status: product.rolloutStatus, variants: product.variants.length, models: product.models,

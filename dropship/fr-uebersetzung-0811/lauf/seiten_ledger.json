@@ -1,0 +1,85 @@
+{
+ "stand": "2026-11-08T20:42:38.338Z",
+ "geschrieben": [
+  {
+   "handle": "impressum",
+   "id": "gid://shopify/Page/697899417985",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "rabatt-newsletter",
+   "id": "gid://shopify/Page/697938641281",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "tracking",
+   "id": "gid://shopify/Page/697900073345",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "versand-lieferung",
+   "id": "gid://shopify/Page/697899450753",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "kontakt-support",
+   "id": "gid://shopify/Page/697900106113",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "ueber-uns",
+   "id": "gid://shopify/Page/697899549057",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "cookie-richtlinie",
+   "id": "gid://shopify/Page/697899909505",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  },
+  {
+   "handle": "pflegehinweise",
+   "id": "gid://shopify/Page/697900007809",
+   "keys": [
+    "title",
+    "body_html",
+    "meta_title",
+    "meta_description"
+   ]
+  }
+ ]
+}

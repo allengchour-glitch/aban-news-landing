@@ -55,6 +55,7 @@ on:
       - 'dropship/lagerbestand-0511/**'
       - 'dropship/selbst-gestalten-fertig-0511/bestellweg/**'
       - 'dropship/selbst-gestalten-fertig-0511/**'
+      - 'dropship/fr-uebersetzung-0811/**'
       - 'automation/pod_modell/**'
       - 'pod/v6/**'
       - '_headers'
@@ -443,6 +444,7 @@ jobs:
             automation/printful_lager_mutation.mjs
             dropship/katalog-nur-bestellbar-0511
             dropship/rueckgabe-0611
+            dropship/fr-uebersetzung-0811
             dropship/selbst-gestalten-fertig-0511
             pod/v6
             pod/live
@@ -467,6 +469,12 @@ jobs:
           node automation/pod_modell/versand_messen_test.mjs
       - name: Editor v6 (reine Logik, Fallback auf v5 aus pod/live)
         run: node pod/v6/test/unit_test.mjs
+      - name: Gemessene Druckflächen-Korrektur der T-Shirt-Vorschau (Tabelle, Schutz, ausgelieferte Karten = Rollout-Bau; kein Netz)
+        run: node pod/v6/test/geometrie_korrektur_test.mjs
+      - name: Französische Seitenübersetzung (Paare, Struktur, Rückstände; kein Netz)
+        run: |
+          node dropship/fr-uebersetzung-0811/seiten_test.mjs
+          node dropship/fr-uebersetzung-0811/titel_test.mjs
       - name: Direkter v6.3-Beschreibungs-Rollout (Scope, Assetbindung, SRI, Blocker und Header; kein Netz)
         run: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout_test.mjs
       - name: Einspielskripte und Rechner (Preise, L0, Schweizer Masse, Rückgabe-Texte)
