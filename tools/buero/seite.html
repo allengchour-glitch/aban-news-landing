@@ -354,6 +354,7 @@
 .kb-auftraege select{width:100%;font-size:16px}.kb-auftrags-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
 .kb-auftrags-grid button{text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0;overflow-wrap:anywhere}.kb-auftrags-grid small{line-height:1.45;color:var(--color-fg-muted)}
 .kb-auftrags-grid button[aria-pressed="true"]{border:2px solid var(--color-ok);background:var(--color-panel)}
+.kb-auftrag-kurz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.kb-auftrag-kurz button{min-height:48px;padding:12px;text-align:left;font:inherit;font-weight:600;color:var(--color-fg);background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:10px;cursor:pointer}
 .kb-auftraege [data-auftrag-auswahl]{margin-top:16px;padding-top:12px;border-top:1px solid var(--color-border-line)}
 .kb-auftraege textarea{font-size:14px;resize:vertical}.kb-auftraege summary{cursor:pointer;min-height:44px;padding:10px 0}.kb-auftraege :focus-visible{outline:3px solid var(--color-ok);outline-offset:3px}
 @media(max-width:600px){.kb-auftrags-grid{grid-template-columns:1fr}.kb-auftraege{padding:12px}}
@@ -401,6 +402,12 @@
     <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-projects>Alle Projekte</button>
     <button type="button" class="kb-aktion" data-open-orders aria-expanded="false" aria-controls="kb-auftraege">Fertige Aufträge</button>
   </section>
+  <nav class="kb-auftrag-kurz" aria-label="Direkt einen fertigen Auftrag auswählen">
+    <button type="button" data-auftrag="tagesrunde">Tagesrunde erledigen</button>
+    <button type="button" data-auftrag="shop">Shop verbessern</button>
+    <button type="button" data-auftrag="antworten">E-Mail-Entwürfe</button>
+    <button type="button" data-auftrag="metricool">Social-Plan prüfen</button>
+  </nav>
   <section id="kb-auftraege" class="kb-auftraege kb-dienste" aria-labelledby="kb-auftrag-titel" hidden>
     <div class="kb-auftrag-kopf"><h2 id="kb-auftrag-titel" tabindex="-1">Was soll erledigt werden?</h2><button type="button" data-close-orders>Schließen</button></div>
     <p>Fertigen Auftrag auswählen – nichts tippen. Im Chat öffnen oder kopieren. Die Büro-Webseite startet dadurch noch keinen Arbeitslauf.</p>
