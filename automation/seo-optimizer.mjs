@@ -11,7 +11,7 @@
  *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
-import { seoOffen, seoNachtrag } from './lib/seo_titel.mjs';
+import { seoOffen, seoNachtrag, titelDeutschGenug } from './lib/seo_titel.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const TOK_STATIC = process.env.SHOPIFY_ADMIN_TOKEN || '';
@@ -65,7 +65,7 @@ async function gql(query, variables){
 TOKEN = await getToken();
 if(!TOKEN){ console.error('Kein Token.'); process.exit(0); }
 
-let after = null, scanned = 0, updated = 0, failedImgs = [];
+let after = null, scanned = 0, updated = 0, failedImgs = [], sprachBlockiert = [];
 // Abfragekosten am echten Shop gemessen (2026-10-18), je Seite mit 50 Produkten:
 //   51 = wie bisher · 44 = ohne das nie gelesene `featuredMedia` · 16 = ohne die Bildpruefung.
 // `featuredMedia` wurde geholt und nirgends benutzt — reine Kosten, darum ersatzlos weg.
@@ -88,6 +88,11 @@ while(true){
   for(const p of conn.nodes){
     scanned++;
     if(p.media?.nodes?.some(m => m.status && m.status !== 'READY')) failedImgs.push(p.title);
+    const sprache = titelDeutschGenug(p.title);
+    if(!sprache.ok){
+      sprachBlockiert.push(`${p.title} [${sprache.treffer.join(', ') || 'Titel leer'}]`);
+      continue; // keinen englischen Lieferantentitel in weitere SEO-Felder kopieren
+    }
     // Nicht `!seo.title` pruefen: Shopify speichert keinen SEO-Titel, der dem Produkttitel
     // gleicht, und genau den erzeugt seoTitel fuer mittellange Titel. Begruendung + Tests in
     // automation/lib/seo_titel.mjs (seoOffen) — sonst meldet jeder Lauf dieselben Produkte
@@ -114,10 +119,11 @@ while(true){
 }
 
 const msg = `🔎 SEO-Optimizer: ${scanned} Produkte gescannt (${PQUERY}, ${SORT}${REVERSE?'':' aufsteigend'}) · ${updated} SEO ${DRY?'(DRY)':'gefüllt'}`
+  + (sprachBlockiert.length ? `\n⚠️ ${sprachBlockiert.length} SEO blockiert (Titel zuerst auf Deutsch korrigieren): ${sprachBlockiert.slice(0,8).join(' · ')}` : '')
   + (!BILDCHECK ? `\n· Bilder nicht geprueft (BILDCHECK=0)`
      : failedImgs.length ? `\n⚠️ ${failedImgs.length} Produkt(e) mit FAILED-Bild: ${failedImgs.slice(0,8).join(', ')}` : `\n✅ keine FAILED-Bilder`);
 console.log(msg);
-if(TG_T && TG_C && (updated>0 || failedImgs.length)){
+if(TG_T && TG_C && (updated>0 || failedImgs.length || sprachBlockiert.length)){
   try{ await fetch(`https://api.telegram.org/bot${TG_T}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({chat_id:TG_C,text:msg,disable_web_page_preview:true})}); }catch(e){}
 }
