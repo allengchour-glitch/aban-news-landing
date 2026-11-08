@@ -29,8 +29,9 @@ function validLookup(args) {
   const keys = Object.keys(args);
   if (keys.length !== 1) return false;
   if (keys[0] === 'pid') return isValidCjPid(args.pid);
-  return keys[0] === 'productSku' && typeof args.productSku === 'string'
+  if (keys[0] === 'productSku') return typeof args.productSku === 'string'
     && /^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(args.productSku);
+  return keys[0] === 'variantSku' && validVariantSku(args.variantSku);
 }
 
 function validPidLookup(args) {
@@ -183,14 +184,27 @@ function normaliseProduct(data, lookup) {
   if (!data || typeof data !== 'object' || Array.isArray(data)) return { state: 'unknown', reason: 'malformed_product_data' };
   if (!isValidCjPid(data.pid)) return { state: 'unknown', reason: 'missing_or_invalid_pid' };
   const [lookupKey, lookupValue] = Object.entries(lookup)[0];
-  if (data[lookupKey] !== lookupValue) return { state: 'mismatch', reason: 'product_identity_mismatch' };
   const sku = boundedText(data.productSku, 200), name = boundedText(data.productNameEn, 1000);
+  const variants = listVariants(data.variants, data.pid);
+  if (lookupKey === 'variantSku') {
+    if (sku.state !== 'returned' || !validVariantSku(sku.value)
+      || variants.state !== 'supplier_metadata_returned' || variants.partial !== false
+      || variants.reported <= 0 || variants.returned !== variants.reported
+      || !Array.isArray(variants.records)) {
+      return { state: 'unknown', reason: 'malformed_product_data' };
+    }
+    if (variants.records.filter(record => record.variantSku === lookupValue).length !== 1) {
+      return { state: 'mismatch', reason: 'product_identity_mismatch' };
+    }
+  }
+  const lookupMatches = lookupKey === 'variantSku' || data[lookupKey] === lookupValue;
+  if (!lookupMatches) return { state: 'mismatch', reason: 'product_identity_mismatch' };
   return {
     state: 'product_identity_verified', matchedBy: { key: lookupKey, value: lookupValue },
     product: { pid: data.pid, productSku: sku.value, productSkuState: sku.state,
       productNameEn: name.value, productNameEnState: name.state,
       mainImage: imageField(data.bigImage), imageSet: listImages(data.productImageSet),
-      variants: listVariants(data.variants, data.pid) },
+      variants },
     verificationScope: 'exact CJ product identity and supplier-returned metadata only',
     commercialMediaRights: 'unknown', primeEntitlement: 'unknown', storefrontMapping: 'unknown'
   };

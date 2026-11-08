@@ -29,7 +29,11 @@ on:
         type: string
         required: false
       productSku:
-        description: 'CJ-productSku; genau PID oder productSku setzen'
+        description: 'CJ-productSku; product verlangt genau einen Schlüssel'
+        type: string
+        required: false
+      variantSku:
+        description: 'CJ-variantSku; product verlangt genau einen Schlüssel'
         type: string
         required: false
 
@@ -53,6 +57,7 @@ jobs:
           CJ_MCP_OPERATION: ${{ inputs.operation }}
           CJ_MCP_PID: ${{ inputs.pid }}
           CJ_MCP_PRODUCT_SKU: ${{ inputs.productSku }}
+          CJ_MCP_VARIANT_SKU: ${{ inputs.variantSku }}
         run: |
           set -euo pipefail
           test "$GITHUB_EVENT_NAME" = workflow_dispatch
@@ -61,17 +66,22 @@ jobs:
           test "$APPROVED_COMMIT" = "$GITHUB_SHA"
           [[ "$CJ_MCP_OPERATION" == product || "$CJ_MCP_OPERATION" == inventory ]]
           if [[ "$CJ_MCP_OPERATION" == inventory ]]; then
-            if [[ -z "$CJ_MCP_PID" || -n "$CJ_MCP_PRODUCT_SKU" ]]; then
-              echo 'inventory verlangt genau eine PID und kein productSku.' >&2
+            if [[ -z "$CJ_MCP_PID" || -n "$CJ_MCP_PRODUCT_SKU" || -n "$CJ_MCP_VARIANT_SKU" ]]; then
+              echo 'inventory verlangt genau eine PID und keine SKU.' >&2
               exit 1
             fi
           else
-            if [[ -n "$CJ_MCP_PID" && -n "$CJ_MCP_PRODUCT_SKU" ]] || [[ -z "$CJ_MCP_PID" && -z "$CJ_MCP_PRODUCT_SKU" ]]; then
-              echo 'product verlangt genau PID oder productSku.' >&2
+            lookup_count=0
+            [[ -n "$CJ_MCP_PID" ]] && lookup_count=$((lookup_count + 1))
+            [[ -n "$CJ_MCP_PRODUCT_SKU" ]] && lookup_count=$((lookup_count + 1))
+            [[ -n "$CJ_MCP_VARIANT_SKU" ]] && lookup_count=$((lookup_count + 1))
+            if [[ "$lookup_count" -ne 1 ]]; then
+              echo 'product verlangt genau PID, productSku oder variantSku.' >&2
               exit 1
             fi
           fi
           if [[ -n "$CJ_MCP_PRODUCT_SKU" ]]; then [[ "$CJ_MCP_PRODUCT_SKU" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; fi
+          if [[ -n "$CJ_MCP_VARIANT_SKU" ]]; then [[ "$CJ_MCP_VARIANT_SKU" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$ ]]; fi
 
       - name: Freigegebenen Commit minimal auschecken
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -101,13 +111,13 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$APPROVED_COMMIT"
           cat <<'HASHES' | sha256sum -c -
-          1d04ef587cfafae75e9f2d6df6f6f69c39187ff321a51d5674d53f498b6ae7d5  .mcp.json
+          3cfe5087feca5ce82d3d467f457c1ebdf97be9358dbe95a8ae5c6fe3a1161bff  .mcp.json
           ef986b11c17d707aa78208c2fd51d4b35486a86e85c2883618daa2e8f8c80ffc  automation/cj-read-mcp.mjs
-          dc487afbd55c7cff3c9fa264884e4c0e953cac1b0cb512c88c18d0cc2d57fa58  automation/cj-read-mcp-probe.mjs
+          f0e3eca58da71577d7842ba28fc1d6c1e63545cb4359d62430b51a8b256d0ab4  automation/cj-read-mcp-probe.mjs
           228be1d0783fb688e2f6971f39fd6a29457a24138bc5242de2f648345793a671  automation/lib/claude_assist_mcp.mjs
           1fef93809ba5e8cf2204203abdf3d38ee1ebedbb833167f50a78b8ad1fce024b  automation/lib/cj_identity.mjs
-          593cb778745742f8818295ba8785a0902145c745cdd64751ff79786f80b94097  automation/lib/cj_read_mcp.mjs
-          8b114bc3fdf92a34e7aa4b72809cc57fdf7013a486068ab2496509237419a0ef  automation/lib/cj_readonly.mjs
+          1b800495d06f2ed5c1046e8549dd3f2703278fcb6957acf6bf44fc1ff48ca8a3  automation/lib/cj_read_mcp.mjs
+          29710b1a68d17506424dbbf1554f1a92b46e87ce81f2b87ec3ad46d8fcb9c6de  automation/lib/cj_readonly.mjs
           HASHES
 
       - name: PID mit zentralem Validator prüfen
@@ -122,4 +132,5 @@ jobs:
           CJ_MCP_OPERATION: ${{ inputs.operation }}
           CJ_MCP_PID: ${{ inputs.pid }}
           CJ_MCP_PRODUCT_SKU: ${{ inputs.productSku }}
+          CJ_MCP_VARIANT_SKU: ${{ inputs.variantSku }}
         run: node automation/cj-read-mcp-probe.mjs

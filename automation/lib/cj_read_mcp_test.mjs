@@ -40,7 +40,8 @@ test('CJ server advertises exactly three bounded read-only tools', async () => {
   assert.equal(tools[0].annotations.openWorldHint, false);
   assert.equal(tools[1].annotations.openWorldHint, true);
   assert.equal(tools[1].inputSchema.additionalProperties, false);
-  assert.deepEqual(tools[1].inputSchema.oneOf, [{ required: ['pid'] }, { required: ['productSku'] }]);
+  assert.deepEqual(tools[1].inputSchema.oneOf, [{ required: ['pid'] }, { required: ['productSku'] },
+    { required: ['variantSku'] }]);
   assert.deepEqual(tools[2].inputSchema.required, ['pid']);
   assert.deepEqual(Object.keys(tools[2].inputSchema.properties), ['pid']);
   assert.equal(tools[2].inputSchema.additionalProperties, false);
@@ -62,21 +63,26 @@ test('valid status and product lookups reach only their selected handlers', asyn
     request(1, 'tools/call', { name: 'luxe_cj_status', arguments: {} }) + '\n',
     request(2, 'tools/call', { name: 'luxe_cj_product_read', arguments: { pid: '1477820492730732544' } }) + '\n',
     request(3, 'tools/call', { name: 'luxe_cj_product_read', arguments: { productSku: 'CJJJJTJT22925' } }) + '\n',
-    request(4, 'tools/call', { name: 'luxe_cj_inventory_read', arguments: { pid: '1477820492730732544' } }) + '\n',
-    request(5, 'tools/call', { name: 'luxe_cj_product_read',
+    request(4, 'tools/call', { name: 'luxe_cj_product_read', arguments: { variantSku: 'CJJJJTJT2292501AZ' } }) + '\n',
+    request(5, 'tools/call', { name: 'luxe_cj_inventory_read', arguments: { pid: '1477820492730732544' } }) + '\n',
+    request(6, 'tools/call', { name: 'luxe_cj_product_read',
       arguments: { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' } }) + '\n'
   ], handlers);
   assert.deepEqual(seen, [['status', {}], ['product', { pid: '1477820492730732544' }],
-    ['product', { productSku: 'CJJJJTJT22925' }], ['inventory', { pid: '1477820492730732544' }],
+    ['product', { productSku: 'CJJJJTJT22925' }], ['product', { variantSku: 'CJJJJTJT2292501AZ' }],
+    ['inventory', { pid: '1477820492730732544' }],
     ['product', { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' }]]);
   assert.ok(responses.every(response => response.result.isError === false));
 });
 
 test('missing, duplicate, malformed and additional lookup arguments never reach handlers', async () => {
   const invalid = [{}, { pid: '1477820492730732544', productSku: 'CJJJJTJT22925' },
+    { pid: '1477820492730732544', variantSku: 'CJJJJTJT2292501AZ' },
+    { productSku: 'CJJJJTJT22925', variantSku: 'CJJJJTJT2292501AZ' },
     { pid: '123' }, { pid: '1477820492730732544 ' }, { pid: '1477820492730732544', page: 2 },
     { productSku: '' }, { productSku: '../secret' }, { productSku: 'SKU with space' },
-    { productSku: 'x'.repeat(101) }, { variantSku: 'CJ-VARIANT' }, null, [], true];
+    { productSku: 'x'.repeat(101) }, { variantSku: '' }, { variantSku: '../secret' },
+    { variantSku: 'SKU with space' }, { variantSku: 'x'.repeat(201) }, null, [], true];
   let calls = 0;
   const responses = await exchange([
     ...invalid.map((arguments_, id) => request(id, 'tools/call', { name: 'luxe_cj_product_read', arguments: arguments_ }) + '\n'),
