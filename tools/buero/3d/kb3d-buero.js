@@ -168,6 +168,7 @@
             if (!seat) return;
             seat.entId = e.id; seat.ent = e; seat.used = true; seat.state = e.state; seat.pose = e.pose;
             seat.fig.setPose(e.pose);
+            if(seat.fig.setRole)seat.fig.setRole(e.rolle);
             applyScreen(seat, screenKindFor(e.bereich, e.pose, true));
             if (seat.sign) seat.sign.tex = e.ortArt ? W.ortTex(e.ortArt, e.ortKurz) : null;
             var h = seat.h, c = Math.cos(h), s = Math.sin(h);

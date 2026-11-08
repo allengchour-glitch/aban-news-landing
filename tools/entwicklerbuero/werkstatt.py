@@ -10,11 +10,12 @@ import sys
 import zipfile
 import projekte
 import automationen
+import experten
 from datetime import date
 
 ROOT = Path(__file__).resolve().parent
 PRODUKT = ROOT / "anfragen_assistent"
-DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "pruefseite.py", "test_email_antworter.py", "demo-email.eml", "kommentar_antworter.py", "test_kommentar_antworter.py", "demo-kommentare.csv", "demo-faq.json"]
+DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "pruefseite.py", "test_email_antworter.py", "demo-email.eml", "kommentar_antworter.py", "wissenspflege.py", "test_wissenspflege.py", "test_kommentar_antworter.py", "demo-kommentare.csv", "demo-faq.json"]
 
 
 def lauf(out):
@@ -26,6 +27,7 @@ def lauf(out):
               "stationen": {"bauen": "offen", "pruefen": "offen", "angebot": "offen"},
               "dauerlauf": False, "verkaeufe_gemessen": False}
     def speichern():
+        (out / "expertenplan.json").write_text(json.dumps(experten.planen(status), ensure_ascii=False, indent=2), encoding="utf-8")
         (out / "status.json").write_text(json.dumps(status, ensure_ascii=False, indent=2), encoding="utf-8")
     speichern()
     test = subprocess.run([sys.executable, "-B", "-m", "unittest", "discover", "-s", str(PRODUKT), "-p", "test_*.py"],

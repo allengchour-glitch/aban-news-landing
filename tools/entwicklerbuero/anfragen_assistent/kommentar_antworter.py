@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 from assistent import tabellenwert
 from pruefseite import kommentare_erstellen
+from wissenspflege import faq_luecken
 
 PLATTFORMEN = {"instagram", "facebook", "tiktok", "youtube", "linkedin", "pinterest", "threads", "andere"}
 
@@ -143,8 +144,10 @@ def stapel_verarbeiten(eingabe, ausgabe, wissen, bekannt=None):
         writer = csv.DictWriter(f, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows({k: tabellenwert(v) for k, v in r.items()} for r in rows)
-    (out / "index.html").write_text(kommentare_erstellen(ansicht), encoding="utf-8")
-    bericht = {"kommentare": len(rows), "bereits_vorbereitet": sum(r["status"] == "Bereits vorbereitet" for r in rows), "entwurf_pruefen": sum(r["status"] == "Entwurf prüfen" for r in rows),
+    luecken = faq_luecken(ansicht)
+    (out / "wissensluecken.json").write_text(json.dumps({'version':1, 'fragen':luecken, 'antworten_erstellt':0}, ensure_ascii=False, indent=2), encoding="utf-8")
+    (out / "index.html").write_text(kommentare_erstellen(ansicht, luecken), encoding="utf-8")
+    bericht = {"kommentare": len(rows), "faq_luecken": len(luecken), "bereits_vorbereitet": sum(r["status"] == "Bereits vorbereitet" for r in rows), "entwurf_pruefen": sum(r["status"] == "Entwurf prüfen" for r in rows),
                "manuell_pruefen": sum(r["status"] == "Manuell prüfen" for r in rows), "veroeffentlicht": 0,
                "verfahren": "Feste Regeln und bereitgestellte FAQ; kein Sprachmodell"}
     (out / "bericht.json").write_text(json.dumps(bericht, ensure_ascii=False, indent=2), encoding="utf-8")

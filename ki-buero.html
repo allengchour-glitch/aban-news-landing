@@ -388,9 +388,17 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
 .kb-dienst-aktionen button,.kb-dienst-aktionen a {font:inherit;font-size:12px;min-height:44px;display:inline-flex;align-items:center;padding:8px 10px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);cursor:pointer;text-decoration:none;}
 @media(max-width:640px){.kb-dienste-grid{grid-template-columns:1fr;}}
 .kb .kb-dienste [hidden]{display:none!important}
+.kb-fachteam{margin-top:14px;border-top:1px solid var(--color-border-line);padding-top:10px}
+.kb-fachteam summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:600}
+.kb-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kb-team-filter{display:flex;flex-direction:column;gap:6px;margin:12px 0}.kb-team-filter select{width:100%;min-height:44px;padding:8px;font:inherit;font-size:16px;color:var(--color-fg);background:var(--color-bg);border:1px solid var(--color-border-line);border-radius:8px}.kb-team-grid [hidden]{display:none!important}
+.kb-team-grid article{padding:14px;border:1px solid var(--color-border-line);border-radius:12px;overflow-wrap:anywhere}
+.kb-team-grid strong,.kb-team-grid small{display:block}.kb-team-grid small{color:var(--color-fg-muted);margin-top:6px}
+.kb-team-grid p{font-size:14px;line-height:1.5;margin-bottom:0}
+@media(max-width:600px){.kb-team-grid{grid-template-columns:1fr}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-2">
+<div class="kb" data-design="campus-einheitlich-3">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -576,6 +584,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     </section>
   </div>
 
+  <script type="application/json" id="kb-fachrollen">[{"id":"leitung","name":"Automations-Leitung","buero":"Chefbüro","station":"__chef","stil":"leitung","aufgabe":"Fachrollen, Prioritäten und offene Voraussetzungen koordinieren."},{"id":"entwicklung","name":"Software-Entwickler","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Lokale Prototypen weiterentwickeln und Änderungen mit Tests absichern."},{"id":"automation","name":"Workflow-Architekt","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Abläufe verbinden und geprüfte Lieferpakete bauen."},{"id":"integration","name":"Integrations-Experte","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Datenquellen, Übergaben und Zugangsvoraussetzungen planen."},{"id":"qualitaet","name":"Qualitätssicherung","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Selbsttests ausführen und unbelegte Fortschritte verhindern."},{"id":"fehleranalyse","name":"Fehleranalyse","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Fehlgeschlagene Prüfungen zuerst untersuchen."},{"id":"produkt","name":"Produktmanager","buero":"Entwicklerbüro","station":"dev_angebot","stil":"leitung","aufgabe":"Pilotumfang, Abnahme und nächste Ausbauschritte ordnen."},{"id":"zahlung","name":"Checkout-Experte","buero":"Entwicklerbüro","station":"dev_angebot","stil":"analyse","aufgabe":"Eigenen Produkt-Checkout und Lieferung vorbereiten."},{"id":"support","name":"Kundenservice","buero":"Shop","station":"autopilot","stil":"kommunikation","aufgabe":"E-Mail-Entwürfe prüfen und den Postfach-Pilot vorbereiten."},{"id":"sortiment","name":"Sortiments-Experte","buero":"Shop","station":"auswahl","stil":"analyse","aufgabe":"Produktdaten und belegte Verbesserungsmöglichkeiten prüfen."},{"id":"seo","name":"SEO- und Feed-Experte","buero":"Shop","station":"schaufenster","stil":"analyse","aufgabe":"Webseiten-Prototyp, Suchsichtbarkeit und Produktfeed betreuen."},{"id":"lieferbarkeit","name":"Lieferbarkeits-Prüfer","buero":"Shop","station":"waechter","stil":"logistik","aufgabe":"Bestätigte Lieferprobleme von unbekannten Messungen trennen."},{"id":"bestand","name":"Bestands-Experte","buero":"Shop","station":"fortura","stil":"logistik","aufgabe":"Bestandsabgleich und Aktualität der Daten überwachen."},{"id":"versand","name":"Versand-Spezialist","buero":"Versand","station":"printful","stil":"logistik","aufgabe":"Tracking und offene Übergaben prüfen."},{"id":"community","name":"Community- und FAQ-Experte","buero":"Social Media","station":"social_meta","stil":"kommunikation","aufgabe":"Kommentarentwürfe und wiederkehrende offene Fragen aufbereiten."},{"id":"marketing","name":"Marketing-Analyst","buero":"Social Media","station":"social_pinterest","stil":"analyse","aufgabe":"Ergebnisse auswerten und nächste Inhalte priorisieren."},{"id":"redaktion","name":"Skriptredaktion","buero":"YouTube-Studio","station":"yt_skript","stil":"kommunikation","aufgabe":"Themen, Skripte und nachvollziehbare Quellen vorbereiten."},{"id":"video","name":"Video-Experte","buero":"YouTube-Studio","station":"yt_video","stil":"entwicklung","aufgabe":"Videoentwürfe und Qualitätsprüfung vorbereiten."},{"id":"wachstum","name":"Kanal-Analyst","buero":"YouTube-Studio","station":"yt_wachstum","stil":"analyse","aufgabe":"Belegte Ergebnisse und offene Kanalmaßnahmen ordnen."}]</script>
   <script type="application/json" id="kb-steuerdienste">[{"id":"shopify","name":"Shopify","gruppe":"Shop","art":"chat","text":"Produkte und Bestellungen prüfen; konkrete Änderungen beauftragen.","url":"https://admin.shopify.com/store/au3j0y-hq","auftrag":"Prüfe meinen verbundenen Shopify-Shop auf offene Bestellungen und bestätigte Produktprobleme. Nenne die nächsten sinnvollen Schritte."},{"id":"metricool","name":"Metricool","gruppe":"Social Media","art":"chat","text":"Beiträge, Kalender und Ergebnisse deiner verbundenen Kanäle.","url":"https://app.metricool.com/","auftrag":"Prüfe meine geplanten Beiträge und die letzten Ergebnisse in Metricool. Bereite konkrete Verbesserungen für die nächsten Beiträge vor."},{"id":"gmail","name":"Gmail","gruppe":"Kommunikation","art":"chat","text":"E-Mail-Posteingang prüfen und Antworten als Entwürfe vorbereiten.","url":"https://mail.google.com/","auftrag":"Prüfe meine neuen Gmail-Nachrichten, sortiere offene Anliegen und bereite passende Antwortentwürfe zur Sichtung vor."},{"id":"klaviyo","name":"Klaviyo","gruppe":"Kommunikation","art":"chat","text":"Newsletter und Abläufe auswerten; Verbesserungen vorbereiten.","url":"https://www.klaviyo.com/dashboard","auftrag":"Prüfe meine Klaviyo-Abläufe und Kampagnen und bereite einen priorisierten Verbesserungsplan vor."},{"id":"drive","name":"Google Drive","gruppe":"Dateien","art":"chat","text":"Dateien, Dokumente, Tabellen und Präsentationen bearbeiten.","url":"https://drive.google.com/","auftrag":"Finde in meinem verbundenen Google Drive die Unterlagen zu meinen Automationsprojekten und fasse den aktuellen Stand geordnet zusammen."},{"id":"canva","name":"Canva","gruppe":"Design","art":"chat","text":"Bilder, Gestaltungen und Inhalte für Shop und Social Media vorbereiten.","url":"https://www.canva.com/","auftrag":"Erstelle in meinem verbundenen Canva einen passenden Social-Media-Entwurf für meinen Shop mit einer Vorschau zur Prüfung."},{"id":"google_ads","name":"Google Ads","gruppe":"Marketing","art":"chat","text":"Kampagnen auswerten und konkrete Änderungen vorbereiten.","url":"https://ads.google.com/","auftrag":"Analysiere mein verbundenes Google-Ads-Konto und zeige, welche Kampagnen Aufmerksamkeit brauchen. Bereite konkrete Änderungsvorschläge mit ihren Auswirkungen vor."},{"id":"merchant","name":"Merchant Center","gruppe":"Marketing","art":"lesen","text":"Produktablehnungen und Feed-Probleme auswerten.","url":"https://merchants.google.com/","auftrag":"Prüfe mein verbundenes Merchant Center auf Produktablehnungen und priorisiere die Ursachen mit passenden Korrekturvorschlägen."},{"id":"analytics","name":"Google Analytics","gruppe":"Marketing","art":"lesen","text":"Besucher, Kaufwege und Shop-Ergebnisse auswerten.","url":"https://analytics.google.com/","auftrag":"Analysiere die letzten sieben vollständigen Tage meiner verbundenen Google-Analytics-Property und zeige die wichtigsten Verbesserungsmöglichkeiten im Kaufweg."},{"id":"searchconsole","name":"Search Console","gruppe":"Marketing","art":"lesen","text":"SEO: Suchanfragen, Seiten und organische Sichtbarkeit auswerten.","url":"https://search.google.com/search-console","auftrag":"Prüfe meine verbundenen Search-Console-Seiten und nenne die wichtigsten Suchanfragen und Seiten mit Verbesserungspotenzial."},{"id":"tagmanager","name":"Tag Manager","gruppe":"Marketing","art":"lesen","text":"Vorhandene Tracking-Einrichtung prüfen.","url":"https://tagmanager.google.com/","auftrag":"Prüfe die lesend erreichbare Tag-Manager-Einrichtung meines Shops und benenne bestätigte Lücken oder unklare Messungen."},{"id":"entwicklung","name":"Website & Entwicklung","gruppe":"Entwicklung","art":"chat","text":"Das Büro und bestehende Automationsprojekte verbessern.","auftrag":"Verbessere mein KI-Büro und die bestehenden Automationsprojekte selbständig im bestätigten Aufgabenbereich. Prüfe Änderungen und melde konkrete Ergebnisse."},{"id":"stripe","name":"Stripe","gruppe":"Zahlungen","art":"zugang","text":"Direkte Verbindung im Chat noch prüfen beziehungsweise einrichten.","url":"https://dashboard.stripe.com/payments","auftrag":"Prüfe, ob meine Stripe-Verbindung jetzt eingerichtet ist, und zeige den tatsächlich verfügbaren Zugriff."},{"id":"obsidian","name":"Obsidian","gruppe":"Wissen","art":"export","text":"Vault-Dateien exportieren; keine bestätigte direkte App-Steuerung.","url":"https://obsidian.md/","auftrag":"Erstelle einen aktuellen Obsidian-Vault für mein KI-Büro mit verknüpften Aufgaben, Wissen und datierten Messbelegen."},{"id":"claude","name":"Claude-Büro","gruppe":"Wissen","art":"import","text":"Gemeinsames Designpaket erstellen; Import in Claude nötig.","url":"https://claude.ai/","auftrag":"Erstelle das aktuelle einheitliche Designpaket für mein vorhandenes Claude-KI-Büro, ohne private Arbeitsdaten zu ersetzen."}]</script>
   <p class="kb-note">Tippe auf einen Arbeitsplatz für den nächsten Schritt. Social Media verwaltest du in Metricool. Zahlen erscheinen nur mit einem datierten Datenstand.</p>
 </div>
@@ -2881,12 +2890,25 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     this.rootM = new Float32Array(16);
     this.glasses = !opt.boss && (hs >>> 11) % 3 === 0;
     this.phones = !opt.boss && (hs >>> 13) % 4 === 0 && !this.glasses;
+    this.standardPal=new Float32Array(this.pal);this.standardGlasses=this.glasses;this.standardPhones=this.phones;this.rolle=null;
     this.blink = 0;
     this.hx = seat.x; this.hz = seat.z;
     this.mugMesh = null;
     this.state = { s: 0 };
   }
   Figure.prototype.setPose = function (name) { this.pose = name; };
+  // Fachrollen ändern Kleidung und Hilfsmittel, nicht das gemessene Arbeitssignal.
+  Figure.prototype.setRole = function (name) {
+    var farben={entwicklung:'#739eae',analyse:'#91ad99',kommunikation:'#b698ba',logistik:'#c1a479',leitung:'#6d839c'};
+    name=Object.prototype.hasOwnProperty.call(farben,name)?name:'';
+    if(this.rolle===name)return;
+    this.rolle=name;this.pal.set(this.standardPal);
+    this.glasses=this.standardGlasses;this.phones=this.standardPhones;
+    if(!name||this.opt.boss)return;
+    var c=K.col(farben[name]);this.pal.set([c[0],c[1],c[2],0],0);
+    this.glasses=name==='analyse';this.phones=name==='kommunikation';
+  };
+
 
   /* Berechnet alle Matrizen für die Zeit t (Sekunden) in der aktuellen Haltung. */
   Figure.prototype.compute = function (t, still) {
@@ -3025,7 +3047,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
   var WINGS = { 'Social Media': [-3, 3], 'Entwicklerbüro': [3, 3], 'YouTube-Studio': [-3, 6] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-2';
+  K.DESIGN_VERSION = 'campus-einheitlich-3';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {
@@ -3695,6 +3717,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
             if (!seat) return;
             seat.entId = e.id; seat.ent = e; seat.used = true; seat.state = e.state; seat.pose = e.pose;
             seat.fig.setPose(e.pose);
+            if(seat.fig.setRole)seat.fig.setRole(e.rolle);
             applyScreen(seat, screenKindFor(e.bereich, e.pose, true));
             if (seat.sign) seat.sign.tex = e.ortArt ? W.ortTex(e.ortArt, e.ortKurz) : null;
             var h = seat.h, c = Math.cos(h), s = Math.sin(h);
@@ -4158,6 +4181,42 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
   }
 
   // Zeile der Liste (auch im Detailfeld der Szene benutzt)
+  function fachTeam() {
+    var g=dash.data('buero'), data=g.status==='ok'&&Array.isArray(g.data)?g.data:[];
+    var dev=data.find(function(r){return r.id==='dev_bauen';});
+    var plan=dev&&(dev.expertenplan||(dev.zentrale&&dev.zentrale.expertenplan));
+    var katalog=[];
+    try{katalog=JSON.parse(document.getElementById('kb-fachrollen').textContent);}catch(e){}
+    var vorhanden=plan&&Array.isArray(plan.rollen);
+    var alt=vorhanden&&(!isFinite(Date.parse(plan.gemessen))||Date.now()-Date.parse(plan.gemessen)>24*3600000);
+    return katalog.map(function(meta){
+      var r=vorhanden?plan.rollen.find(function(x){return x&&x.id===meta.id;})||{}:{};
+      return Object.assign({},meta,{zustand:alt?'Plan veraltet':typeof r.zustand==='string'?r.zustand:'Auftrag vorbereitet',naechster:typeof r.naechster==='string'?r.naechster:meta.aufgabe,prioritaet:Number.isFinite(r.prioritaet)?Math.max(0,Math.min(5,r.prioritaet)):5});
+    }).sort(function(a,b){return a.prioritaet-b.prioritaet||a.name.localeCompare(b.name,'de');});
+  }
+  function teamKarten(rollen, titel) {
+    var team=document.createElement('details');team.className='kb-fachteam';
+    var summary=document.createElement('summary');summary.textContent=titel+' · '+rollen.length+' Rollen';team.appendChild(summary);
+    var note=document.createElement('p');note.className='kb-note';note.textContent='Fachrollen für bestehende Abläufe. Die Aufgabenplanung ist regelbasiert; es sind keine ständig laufenden KI-Agenten.';team.appendChild(note);
+    var grid=document.createElement('div');grid.className='kb-team-grid';
+    rollen.forEach(function(r){
+      var card=document.createElement('article');card.dataset.experte=r.id;card.dataset.buero=r.buero;
+      var name=document.createElement('strong');name.textContent=r.name;
+      var status=document.createElement('small');status.textContent=r.buero+' · '+r.zustand;
+      var scope=document.createElement('p');scope.textContent=r.aufgabe;
+      card.append(name,status,scope);
+      if(r.naechster!==r.aufgabe){var task=document.createElement('p');task.textContent='Nächster Schritt: '+r.naechster;card.appendChild(task);}grid.appendChild(card);
+    });
+    var bueros=Array.from(new Set(rollen.map(function(r){return r.buero;})));
+    if(bueros.length>1){
+      var label=document.createElement('label');label.className='kb-team-filter';label.textContent='Büro auswählen';
+      var select=document.createElement('select');select.setAttribute('aria-label','Fachteam nach Büro filtern');
+      [''].concat(bueros.sort(function(a,b){return a.localeCompare(b,'de');})).forEach(function(b){var o=document.createElement('option');o.value=b;o.textContent=b||'Alle Büros';select.appendChild(o);});
+      select.addEventListener('change',function(){grid.querySelectorAll('[data-buero]').forEach(function(c){c.hidden=!!select.value&&c.dataset.buero!==select.value;});});
+      label.appendChild(select);team.appendChild(label);
+    }
+    team.appendChild(grid);return team;
+  }
   function build(r, e, was) {
     var li = klon('kb-row');
     if (!li) return document.createDocumentFragment();
@@ -4203,11 +4262,13 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
           list.appendChild(item);
         }); card.appendChild(list);
         var next = document.createElement('p'); next.textContent = 'Nächster Schritt: ' + p.naechstes; card.appendChild(next);
-        var pay = document.createElement('p'); pay.textContent = p.zahlung; card.appendChild(pay);
+        if(p.zahlung){var pay=document.createElement('p');pay.textContent=p.zahlung;card.appendChild(pay);}
  portfolio.appendChild(card);
       });
       li.appendChild(portfolio);
     }
+    var rollen=fachTeam().filter(function(x){return x.station===r.id;});
+    if(rollen.length)li.querySelector('.r-body').appendChild(teamKarten(rollen,'Fachteam'));
     return li;
   }
 
@@ -4309,6 +4370,7 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
     });
     suche.addEventListener('input',function(){var q=suche.value.trim().toLocaleLowerCase('de');gridDienste.querySelectorAll('[data-dienst]').forEach(function(c){c.hidden=!!q&&c.dataset.suche.indexOf(q)<0;});});
     el.appendChild(mehr);
+    el.appendChild(teamKarten(fachTeam(),'Fachteams und nächste Aufträge'));
     var hint=document.createElement('p');hint.className='kb-chef-auto';hint.textContent='Prüfungen, sichere Webseitenkorrekturen und Projektpakete laufen automatisch weiter. Die Links öffnen deinen persönlichen Bereich; Anmeldung bei Bedarf.';el.appendChild(hint);
   });
 
@@ -4514,7 +4576,7 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
   function zustand3d(data, now) {
     var ents = data.map(function (r) {
       var e = eff(r, now);
-      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge, ortArt: r.ort_art, ortKurz: r.ort_kurz };
+      return { id: r.id, bereich: r.bereich, figur: r.figur || 'arbeiter', kurz: r.kurz, name: r.name, state: e, pose: haltung(e, aktiv(r, now)), menge: r.menge, ortArt: r.ort_art, ortKurz: r.ort_kurz, rolle: (fachTeam().find(function(x){return x.station===r.id;})||{}).stil };
     });
     var es = ents.map(function (e) { return e.state; });
     var blaetter = ents.filter(function (e) { return e.figur === 'papier'; }).length;
