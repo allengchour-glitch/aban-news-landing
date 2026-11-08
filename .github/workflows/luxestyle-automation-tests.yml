@@ -186,6 +186,7 @@ jobs:
           node --check automation/fortura_preisvergleich.mjs
           node --check automation/cj_video_produkte.mjs
           node --check automation/lib/cj_video.mjs
+          node --check automation/lib/luxestyle_menu_abdeckung.mjs
           node --check automation/material_nachtragen.mjs
           node --check automation/pod_auswahl.mjs
           node --check automation/pod_inject_designer.mjs
@@ -273,6 +274,8 @@ jobs:
           node automation/lib/kategorien_verengt_test.mjs
           node automation/lib/mode_taxonomie_test.mjs
           node automation/lib/mode_menue_test.mjs
+          # Fail-closed: ein Menü-Cap braucht Gruppen-Main, dauerhafte Alternativlinks, Mobile-Alle-Link und active/current-Beleg; kein Netz.
+          node automation/lib/luxestyle_menu_abdeckung_test.mjs
           # Schmuck-Taxonomie (Bereichsdatei schmuck-uhren.json): Adapter gegen das Orakel des Messwerkzeugs, Menue-Umbau, Gruppen-Sammlungen; ohne Netz
           node automation/lib/bereich_taxonomie_test.mjs
           node automation/lib/schmuck_menue_test.mjs
