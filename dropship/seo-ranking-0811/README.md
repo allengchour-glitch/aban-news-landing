@@ -24,8 +24,11 @@ Von 271 priorisierten Adressen mit Impressionen lieferten 18 HTTP 404 (1 138 Imp
 - fünf «Selbst gestalten»-Entwürfe (Allover-Hoodie, Jogginghosen, Bomberjacke, Kissen, Kuscheldecke; zusammen 697 Impressionen auf Position 49–82) → `/collections/selbst-gestalten`
 
 Gelesen nach dem Anlegen: **10 von 10 liefern HTTP 301 auf das richtige Ziel** (curl mit Browser-Kennung). Das Skript lenkt nie ein aktives Produkt um und prüft, dass das Ziel existiert.
-**Achtung bei Rückkehr:** wird eines dieser Produkte wieder aktiviert, zuerst seine Weiterleitung löschen (Shopify liefert eine vorhandene Weiterleitung vor der Produktseite aus, belegt ist das nur für Weiterleitung gegen Weiterleitung; für Produktseiten ist es meine Annahme).
+**Bei Rückkehr:** wird eines dieser Produkte wieder aktiviert, Weiterleitung trotzdem löschen (sauber halten). Gemessen am Blog «News»: eine Weiterleitung auf einen **lebenden** Blog greift nicht (HTTP 200 bleibt); für Produktseiten ist das nicht gemessen, vermutlich gleich.
 Nicht angefasst: Emoji-Handles (`transportbox-petgo-…🐾`, `🌙-sleep-ritual-box-…`: Position über 100, Kodierung heikel), die 23 bestehenden 301 (teils auf wechselnde Sammlungen: drei Sternenprojektoren auf drei Ziele; Vereinheitlichung ist offen).
+
+## Leerer Blog «News» (nicht gelöscht)
+Der Blog `news` hat 0 Artikel, steht aber in der Sitemap (`sitemap_blogs_1.xml`), trägt keine Meta-Beschreibung (`/blogs/news` und `/fr/blogs/news`) und wird von nichts verlinkt (Startseite und Fusszeile geprüft). Das Löschen (`blogDelete`) lehnte die Berechtigungsprüfung als nicht umkehrbar ab und wurde **nicht** umgangen. Stattdessen liegen zwei Weiterleitungen (`/blogs/news` → `/blogs/ratgeber`, `/fr/blogs/news` → `/fr/blogs/ratgeber`, IDs `gid://shopify/UrlRedirect/2102048358791` und `…2102048424327`) bereit: **wirkungslos, solange der Blog existiert** (HTTP 200 gemessen), sie greifen, sobald der Besitzer den Blog «News» im Shopify-Admin löscht (Inhalte → Blogbeiträge → Blogs verwalten). Sicherung der Blog-Daten: Titel «News», Kommentare geschlossen, keine Vorlage.
 
 ## Offene Chancen (Reihenfolge laut Workflow, alle Hypothesen)
 2. Organische Sitzungen/Käufe je Landingpage per ShopifyQL lesen und prüfen, ob es eine Search-Console-Domain-Property mit längerem Verlauf gibt.
