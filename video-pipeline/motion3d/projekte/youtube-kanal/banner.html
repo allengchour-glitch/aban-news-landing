@@ -1,0 +1,31 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>YouTube-Banner Pia (ohne Text)</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { erzeugeWelt, hoehe } from '../../lib/welt3d.js';
+import { erzeugePia, spieler } from '../../lib/pia3d.js';
+import { nachbearbeitung } from '../../lib/post.js';
+const W = 2560, H = 1440;
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(40, W / H, 0.1, 700);
+const welt = erzeugeWelt(scene, { dauer: 40, schattenGroesse: 4096 });
+const post = nachbearbeitung(renderer, scene, cam, W, H, { samples: 4 });
+const y = (x, z) => hoehe(x, z) + 0.04;
+const mk = (opt, x, z, clip, req) => { const f = erzeugePia(opt); scene.add(f.wurzel); return spieler(f, [{ t0: 0, t1: 99, clip, requisit: req }], [{ t: 0, x, z, ry: 0 }], { y }); };
+const figs = [mk({ skala: 0.7 }, 16.5, -4.65, 'anstossen', 'becher'),
+  mk({ kleid: 0x4f7fb8, flicken: 0xf2d9a0, haar: 0x7a3b1c, schleife: null, skala: 0.73 }, 15.0, -4.65, 'sitzen'),
+  mk({ kleid: 0x5f9b6a, flicken: 0xe9c46a, haar: 0xd9a441, schleife: null, skala: 0.67 }, 18.0, -4.65, 'anstossen', 'becher')];
+window.__seek3d = async (t) => {
+  for (const f of figs) f.setzeZeit(1.2);
+  welt.update(21.5, new THREE.Vector3(16.5, 0, -3));
+  cam.position.set(16.5, 2.5, 9.5); cam.lookAt(16.5, 1.35, -4.2); cam.updateProjectionMatrix();
+  post.setze({ blende: 1, bild: 3, waerme: 0.6 }); post.render();
+};
+Motion.fertig(1);
+</script>
