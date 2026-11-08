@@ -40,6 +40,7 @@ Die Quelle beschreibt den beobachteten Inhalt am Datum oben, nicht einen unverä
 ## Gemini-Zugang
 
 GitHub-Secret: GEMINI_API_KEY2. Workflow: .github/workflows/luxestyle-gemini-assistent.yml, PR #2915.
-Noch kein Gemini-Lauf. Free-Tier-Zuordnung des Schlüssels weiterhin unbestätigt.
+Lauf 42430952176 wurde gestartet und brach vor dem API-Aufruf ab, weil das Secret im Job leer war.
+Damit gab es keine Gemini-Nutzung. Free-Tier-Zuordnung des Schlüssels weiterhin unbestätigt.
 Nur nach Prüfung des Free Tier ohne verknüpftes Abrechnungskonto starten.
 Der Workflow kann den Abrechnungsstatus nicht automatisch prüfen.
