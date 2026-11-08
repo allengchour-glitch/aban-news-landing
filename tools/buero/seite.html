@@ -384,9 +384,20 @@
 .kb-geld-ergebnis>p{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.kb-geld-ergebnis small,.kb-geld-import small{color:var(--color-fg-muted)}
 .kb-geld-szenario,.kb-geld-chancen{margin:14px 0}.kb-geld-import{margin:18px 0}.kb-geld-chancen article{padding:12px;border:1px solid var(--color-border-line);border-radius:10px;margin:8px 0}
 @media(max-width:600px){.kb-geld-form{grid-template-columns:1fr}.kb-geld-aktionen button{flex:1}}
+
+.kb-mobile-nav{display:none}
+@media(max-width:640px){
+  .kb{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  .kb-mobile-nav{position:fixed;z-index:40;left:10px;right:10px;bottom:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:7px 7px calc(7px + env(safe-area-inset-bottom,0px));border:1px solid var(--color-border-line);border-radius:18px;background:var(--color-panel);box-shadow:0 8px 32px #0005}
+  .kb-mobile-nav button{min-width:0;min-height:52px;padding:8px 3px;border:0;border-radius:12px;font:inherit;font-size:12px;font-weight:650;color:var(--color-fg);background:transparent;cursor:pointer}
+  .kb-mobile-nav button:focus-visible{outline:3px solid var(--color-ok);outline-offset:1px}
+  .kb-mobile-nav button:active{background:var(--color-bg)}
+  .kb.kb-fullscreen .kb-mobile-nav{display:none}
+  .kb-auftraege,[data-money-panel],.kb-pane{scroll-margin-top:16px}
+}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-5">
+<div class="kb" data-design="campus-einheitlich-6">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -593,6 +604,13 @@
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Chefbüro" data-source="buero"></ul>
     </section>
   </div>
+
+  <nav class="kb-mobile-nav" aria-label="Büro-Schnellzugriff auf dem Handy">
+    <button type="button" data-mobile-nav="buero">Büro 2D</button>
+    <button type="button" data-mobile-nav="auftraege">Aufträge</button>
+    <button type="button" data-mobile-nav="finanzen">Finanzen</button>
+    <button type="button" data-mobile-nav="liste">Liste</button>
+  </nav>
 
   <script type="application/json" id="kb-fachrollen">[{"id":"geldmanager","name":"Geldmanager","buero":"Chefbüro","station":"__chef","stil":"leitung","aufgabe":"Erfasste Einnahmen, Kosten und Rücklagen vergleichen und Pilotangebote kalkulieren."},{"id":"leitung","name":"Automations-Leitung","buero":"Chefbüro","station":"__chef","stil":"leitung","aufgabe":"Fachrollen, Prioritäten und offene Voraussetzungen koordinieren."},{"id":"entwicklung","name":"Software-Entwickler","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Lokale Prototypen weiterentwickeln und Änderungen mit Tests absichern."},{"id":"automation","name":"Workflow-Architekt","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Abläufe verbinden und geprüfte Lieferpakete bauen."},{"id":"integration","name":"Integrations-Experte","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Datenquellen, Übergaben und Zugangsvoraussetzungen planen."},{"id":"qualitaet","name":"Qualitätssicherung","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Selbsttests ausführen und unbelegte Fortschritte verhindern."},{"id":"fehleranalyse","name":"Fehleranalyse","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Fehlgeschlagene Prüfungen zuerst untersuchen."},{"id":"produkt","name":"Produktmanager","buero":"Entwicklerbüro","station":"dev_angebot","stil":"leitung","aufgabe":"Pilotumfang, Abnahme und nächste Ausbauschritte ordnen."},{"id":"zahlung","name":"Checkout-Experte","buero":"Entwicklerbüro","station":"dev_angebot","stil":"analyse","aufgabe":"Eigenen Produkt-Checkout und Lieferung vorbereiten."},{"id":"support","name":"Kundenservice","buero":"Shop","station":"autopilot","stil":"kommunikation","aufgabe":"E-Mail-Entwürfe prüfen und den Postfach-Pilot vorbereiten."},{"id":"sortiment","name":"Sortiments-Experte","buero":"Shop","station":"auswahl","stil":"analyse","aufgabe":"Produktdaten und belegte Verbesserungsmöglichkeiten prüfen."},{"id":"seo","name":"SEO- und Feed-Experte","buero":"Shop","station":"schaufenster","stil":"analyse","aufgabe":"Webseiten-Prototyp, Suchsichtbarkeit und Produktfeed betreuen."},{"id":"lieferbarkeit","name":"Lieferbarkeits-Prüfer","buero":"Shop","station":"waechter","stil":"logistik","aufgabe":"Bestätigte Lieferprobleme von unbekannten Messungen trennen."},{"id":"bestand","name":"Bestands-Experte","buero":"Shop","station":"fortura","stil":"logistik","aufgabe":"Bestandsabgleich und Aktualität der Daten überwachen."},{"id":"versand","name":"Versand-Spezialist","buero":"Versand","station":"printful","stil":"logistik","aufgabe":"Tracking und offene Übergaben prüfen."},{"id":"community","name":"Community- und FAQ-Experte","buero":"Social Media","station":"social_meta","stil":"kommunikation","aufgabe":"Kommentarentwürfe und wiederkehrende offene Fragen aufbereiten."},{"id":"marketing","name":"Marketing-Analyst","buero":"Social Media","station":"social_pinterest","stil":"analyse","aufgabe":"Ergebnisse auswerten und nächste Inhalte priorisieren."},{"id":"redaktion","name":"Skriptredaktion","buero":"YouTube-Studio","station":"yt_skript","stil":"kommunikation","aufgabe":"Themen, Skripte und nachvollziehbare Quellen vorbereiten."},{"id":"video","name":"Video-Experte","buero":"YouTube-Studio","station":"yt_video","stil":"entwicklung","aufgabe":"Videoentwürfe und Qualitätsprüfung vorbereiten."},{"id":"wachstum","name":"Kanal-Analyst","buero":"YouTube-Studio","station":"yt_wachstum","stil":"analyse","aufgabe":"Belegte Ergebnisse und offene Kanalmaßnahmen ordnen."}]</script>
   <script type="application/json" id="kb-projektverbund">[{"id":"kits","name":"KI-Starter-Kits","buero":"Shop","rolle":"produkt","pfad":"/shop","verkaufsweg":"Stripe-Kaufbuttons vorhanden","naechster":"Kaufweg und geschützte Lieferung eines vorhandenen Kits prüfen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"finanzen","name":"Finanz- und Alltagspakete","buero":"Shop","rolle":"produkt","pfad":"/finanz-kompass-schweiz","verkaufsweg":"Stripe-Kaufbutton vorhanden","naechster":"Finanz-, Budget-, Schulden-, Mietzins-, Umzugs-, Krankenkassen- und Pensionspakete im Shop gemeinsam prüfen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"cockpit","name":"Business-Cockpit","buero":"Entwicklerbüro","rolle":"entwicklung","pfad":"/business-cockpit","verkaufsweg":"Gratis-App und Pro-Kaufweg vorhanden","naechster":"Pro-Lizenz und Extras gegen die Kaufbeschreibung prüfen; vom KI-Studio unterscheiden.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"studio","name":"KI-Studio","buero":"Entwicklerbüro","rolle":"entwicklung","pfad":"/ki-studio","verkaufsweg":"Abo-Kaufweg vorhanden","naechster":"Demo, Lizenzfreischaltung und Modellbetrieb getrennt prüfen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"monitor","name":"Sichtbarkeits-Monitor","buero":"Entwicklerbüro","rolle":"integration","pfad":"/ki-sichtbarkeit-monitor","verkaufsweg":"Abo-Kaufbutton vorhanden","naechster":"Einrichtung, geplanten Reportlauf und tatsächliche Lieferung nachweisen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"audit","name":"Sichtbarkeits-Workbook","buero":"Entwicklerbüro","rolle":"zahlung","pfad":"/ki-sichtbarkeit-audit","verkaufsweg":"Bestellung per E-Mail","naechster":"Pro-Report und Workbook getrennt prüfen; eigenen Workbook-Kaufweg vorbereiten.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"sichtbarkeit","name":"Sichtbarkeits-Komplettpaket","buero":"Shop","rolle":"zahlung","pfad":"/ki-sichtbarkeit-paket","verkaufsweg":"Bestellung per E-Mail","naechster":"Eigenen Checkout, Download und Monitor-Einrichtung zuordnen und prüfen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"notfall","name":"Notfall-Ordner","buero":"Shop","rolle":"zahlung","pfad":"/notfall-ordner","verkaufsweg":"Bestellung per E-Mail","naechster":"Eigenen Kaufweg und geschützte PDF-Lieferung vor Automatisierung prüfen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"automation","name":"Automationen für Unternehmen","buero":"Entwicklerbüro","rolle":"automation","pfad":"/ki-automation","verkaufsweg":"Anfrageweg vorhanden","naechster":"E-Mail-, Kommentar- und Angebots-Assistenten zu einem begrenzten Kundenpilot verbinden; Zugänge und Abnahme fehlen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"services","name":"Websites, Shops und Texte","buero":"Entwicklerbüro","rolle":"produkt","pfad":"/leistungen","verkaufsweg":"Anfrageweg vorhanden","naechster":"Anfrage, klaren Leistungsumfang und passende Übergabe vorbereiten.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"buecher","name":"Bücher und Trilogie","buero":"Social Media","rolle":"redaktion","pfad":"/buch","verkaufsweg":"Kostenlose Downloads vorhanden","naechster":"Amazon-Platzhalter und widersprüchliche Verfügbarkeitsangaben prüfen; Trilogie und weitere Bücher passend verlinken.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"newsletter","name":"Newsletter und Gratis-Werkzeuge","buero":"Social Media","rolle":"marketing","pfad":"/","verkaufsweg":"Inhalte und Anmeldeweg vorhanden","naechster":"Passende eigene Produkte aus Ratgebern und Werkzeugen erreichbar machen; Wirkung messen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"luxestyle","name":"LuxeStyle","buero":"Shop","rolle":"sortiment","pfad":"/luxestyle","verkaufsweg":"Shop-Verlinkung vorhanden","naechster":"Bestehenden Shop-Ablauf nutzen und Kaufhindernisse nachweisen; keine parallelen Publisher starten.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."},{"id":"marktplatz","name":"Marktplatz und Affiliate-Angebote","buero":"Social Media","rolle":"marketing","pfad":"/marktplatz","verkaufsweg":"Such- und Weiterleitungswege vorhanden","naechster":"Relevante Angebote und funktionierende Weiterleitungen prüfen; Provisionen getrennt nachweisen.","messung":"Käufe, Lieferung und Ertrag nicht durch den Link bestätigt."}]</script>
@@ -1287,6 +1305,19 @@
 
   if (root) {
     root.addEventListener('click', function (ev) {
+      var mobil=ev.target.closest&&ev.target.closest('[data-mobile-nav]');
+      if(mobil&&root.contains(mobil)){
+        var ziel=mobil.dataset.mobileNav;
+        if(ziel==='auftraege'){root.querySelector('[data-open-orders]').click();return;}
+        if(ziel==='finanzen'){root.querySelector('[data-open-money]').click();return;}
+        root.querySelector('#kb-auftraege').hidden=true;
+        root.querySelector('[data-open-orders]').setAttribute('aria-expanded','false');
+        zeige(ziel);dash.draw(ziel==='buero'?'raum':'rows');
+        if(ziel==='liste')dash.draw('chef-kontrolle');
+        var pane=root.querySelector('#kb-pane-'+ziel);
+        pane.tabIndex=-1;pane.focus({preventScroll:true});pane.scrollIntoView({block:'start',behavior:'auto'});return;
+      }
+
       var order=ev.target.closest&&ev.target.closest('[data-auftrag],[data-open-orders],[data-close-orders]');
       if(order&&root.contains(order)){
         if(order.hasAttribute('data-auftrag'))auftragWaehlen(order.dataset.auftrag);
@@ -1302,10 +1333,13 @@
         dash.draw('rows'); return;
       }
       if(t.hasAttribute('data-open-money')||t.hasAttribute('data-open-projects')){
-        zeige('3d');dash.draw('szene3d');
-        if(made3d)befehl3d(t);else{zeige('liste');dash.draw('rows');dash.draw('chef-kontrolle');}
+        var mobilGeld=t.hasAttribute('data-open-money')&&window.matchMedia('(max-width:640px)').matches;
+        if(mobilGeld){root.querySelector('#kb-auftraege').hidden=true;root.querySelector('[data-open-orders]').setAttribute('aria-expanded','false');zeige('liste');dash.draw('rows');dash.draw('chef-kontrolle');}
+        else{zeige('3d');dash.draw('szene3d');
+          if(made3d)befehl3d(t);else{zeige('liste');dash.draw('rows');dash.draw('chef-kontrolle');}}
+
         var geld=Array.from(root.querySelectorAll(t.hasAttribute('data-open-projects')?'.kb-projektverbund':'[data-money-panel]')).find(function(n){return !n.closest('[hidden]');});
-        if(geld){geld.open=true;geld.scrollIntoView({block:'start',behavior:'auto'});}return;
+        if(geld){geld.open=true;var titel=geld.querySelector('summary');if(titel)titel.focus({preventScroll:true});geld.scrollIntoView({block:'start',behavior:'auto'});}return;
       }
       if (t.hasAttribute('data-open-room')) {
         zeige('3d'); dash.draw('szene3d'); befehl3d(t);
@@ -1335,6 +1369,9 @@
   document.querySelectorAll('.kb-tab').forEach(function (b) {
     b.addEventListener('click', function () { zeige(b.dataset.tab); });
   });
+
+  // Auf kleinen Bildschirmen zuerst die leichte Zeichnung; 3D bleibt wählbar.
+  if(root&&window.matchMedia('(max-width:640px)').matches)zeige('buero');
 
   // 3D-Büro: Zustand aus den Zeilen, Farben der Lampen aus dem Theme, Beschriftungen aus den Vorlagen
   function cssHex(name, fb) {
@@ -1398,6 +1435,7 @@
     if (!viewer) return;
     var vorher = viewer.classList.contains('is-fullscreen');
     viewer.classList.toggle('is-fullscreen',an);
+    root.classList.toggle('kb-fullscreen',an);
     root.querySelectorAll('[data-cmd="fullscreen"]').forEach(function(b){b.setAttribute('aria-pressed',String(an));b.textContent=an?'Vollbild schließen':'Vollbild';});
     if (an && !vorher) { lastFocus=document.activeElement;oldOverflow=document.documentElement.style.overflow;document.documentElement.style.overflow='hidden';viewer.focus(); }
     if (!an && vorher) { document.documentElement.style.overflow=oldOverflow;if(lastFocus && lastFocus.focus)lastFocus.focus(); }
