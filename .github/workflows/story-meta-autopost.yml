@@ -1,4 +1,4 @@
-name: Social Meta Story Auto-Post (IG + FB Stories)
+name: 'GESPERRT: Social Meta Story Auto-Post (IG + FB Stories)'
 
 # Postet die nächste fällige Story aus social/story_queue.csv per Meta-Graph-API:
 #   Instagram Stories (Bild/Video) + Facebook-Page Stories (Foto-/Video-Story).
@@ -22,7 +22,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: story-meta-autopost
@@ -30,6 +30,7 @@ concurrency:
 
 jobs:
   post:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:

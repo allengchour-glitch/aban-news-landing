@@ -1,4 +1,4 @@
-name: TikTok Auto-Post
+name: 'GESPERRT: TikTok Auto-Post'
 
 # Postet das nächste fällige Reel aus automation/reels_seed.csv direkt per TikTok-Content-Posting-API v2.
 # Tokens NUR aus GitHub-Secrets:
@@ -22,7 +22,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: tiktok-autopost
@@ -30,6 +30,7 @@ concurrency:
 
 jobs:
   post:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

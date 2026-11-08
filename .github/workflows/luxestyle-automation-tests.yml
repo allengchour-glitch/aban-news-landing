@@ -78,6 +78,17 @@ on:
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/masterpiece-ad.yml'
+      - '.github/workflows/social-comment-reply.yml'
+      - '.github/workflows/reel-autopost.yml'
+      - '.github/workflows/social-meta-autopost.yml'
+      - '.github/workflows/story-meta-autopost.yml'
+      - '.github/workflows/tiktok-autopost.yml'
+      - '.github/workflows/tiktok-cloud-autopost.yml'
+      - '.github/workflows/veo-hero-clip.yml'
+      - '.github/workflows/luma-hero-clip.yml'
+      - '.github/workflows/veo-queue.yml'
+      - '.github/workflows/ig-dm-reply.yml'
+      - '.github/workflows/social-comment-moderate.yml'
       - '.github/workflows/cj-reviews.yml'
       - '.github/workflows/metricool-schedule.yml'
       - '.github/workflows/auswahl-lauf.yml'
@@ -154,6 +165,18 @@ jobs:
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
             .github/workflows/masterpiece-ad.yml
+            .github/workflows/social-comment-reply.yml
+            .github/workflows/reel-autopost.yml
+            .github/workflows/social-meta-autopost.yml
+            .github/workflows/story-meta-autopost.yml
+            .github/workflows/tiktok-autopost.yml
+            .github/workflows/tiktok-cloud-autopost.yml
+            .github/workflows/veo-hero-clip.yml
+            .github/workflows/luma-hero-clip.yml
+            .github/workflows/veo-queue.yml
+            .github/workflows/ig-dm-reply.yml
+            .github/workflows/social-comment-moderate.yml
+            .github/workflows/video-meta-autopost.yml
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
             .github/workflows/printful-sync.yml
@@ -224,6 +247,7 @@ jobs:
           node automation/lib/lieferbarkeit_test.mjs
           # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
           node automation/lib/seo_titel_test.mjs
+          node automation/lib/luxestyle_legacy_workflow_policy_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/galaxus_treffer_test.mjs
           node automation/lib/trend_auswahl_test.mjs

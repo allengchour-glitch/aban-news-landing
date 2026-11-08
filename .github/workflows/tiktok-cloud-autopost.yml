@@ -1,4 +1,4 @@
-name: TikTok Cloud Auto-Post (Browserbase)
+name: 'GESPERRT: TikTok Cloud Auto-Post (Browserbase)'
 
 # AUTONOM: postet 1×/Tag das nächste fällige Video aus social/tiktok_queue.csv über den
 # eingeloggten Browserbase-Context (kein PC nötig). No-op ohne Secrets / ohne fällige Zeile /
@@ -15,7 +15,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: tiktok-cloud-autopost
@@ -23,6 +23,7 @@ concurrency:
 
 jobs:
   post:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

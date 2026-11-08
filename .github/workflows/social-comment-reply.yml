@@ -1,4 +1,4 @@
-name: Social Comment Auto-Reply (IG + FB)
+name: 'GESPERRT: Social Comment Auto-Reply (IG + FB)'
 
 # Antwortet 3×/Tag automatisch auf echte Kommentare (Komplimente + Kundenfragen) der letzten
 # IG/FB-Posts — herzlich + markengerecht, Spam wird übersprungen, nie doppelt (State-Datei).
@@ -15,7 +15,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: social-comment-reply
@@ -23,6 +23,7 @@ concurrency:
 
 jobs:
   reply:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

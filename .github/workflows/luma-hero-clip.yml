@@ -1,4 +1,4 @@
-name: Luma Hero-Clip (Bild→Video → Meta-Queue)
+name: 'GESPERRT: Luma Hero-Clip (Bild→Video → Meta-Queue)'
 
 # Generiert 1 Luma-Dream-Machine-Clip aus einem Produktfoto (kategorie-rotierend),
 # lädt ihn auf die Shopify-CDN und reiht ihn in social/video_queue.csv ein →
@@ -25,7 +25,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: luma-hero-clip
@@ -33,6 +33,7 @@ concurrency:
 
 jobs:
   luma:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

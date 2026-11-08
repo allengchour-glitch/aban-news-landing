@@ -1,4 +1,4 @@
-name: Veo-Clips in Meta-Queue
+name: 'GESPERRT: Veo-Clips in Meta-Queue'
 
 # Lädt die fertigen Veo-Hero-Clips (reels/veo-hero-*.mp4) auf die Shopify-CDN und reiht sie
 # gestaffelt in social/video_queue.csv (status=ready) ein → video-meta-autopost postet sie
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: veo-queue
@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   queue:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

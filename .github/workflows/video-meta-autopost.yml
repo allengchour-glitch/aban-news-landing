@@ -1,4 +1,4 @@
-name: Social Meta Video Auto-Post (IG Reels + FB + Threads)
+name: 'GESPERRT: Social Meta Video Auto-Post (IG Reels + FB + Threads)'
 
 # Postet das nächste fällige VIDEO aus social/video_queue.csv per Meta-Graph-API an
 # Instagram (Reels) + Facebook-Page (Video) + Threads (Video). 1 Video pro Lauf (gestaffelt).
@@ -28,7 +28,7 @@ on:
         default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: video-meta-autopost
@@ -36,6 +36,7 @@ concurrency:
 
 jobs:
   post:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
