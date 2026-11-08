@@ -54,11 +54,11 @@
     }
     // Geschlossene Ärmel aus einem weichen Radiusprofil entlang des Knochens.
     // Gemeinsame Endpunkte halten die Silhouette auch beim Beugen zusammen.
-    function sleeve(B, ax, ay, bx, by, rings, depth) {
+    function sleeve(B, ax, ay, bx, by, rings, depth, slot) {
       depth = depth || 1;
       var dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy), ux = dy / len, uy = -dx / len;
       dx /= len; dy /= len;
-      B._c([0, 0, 0], 0); // Farbplatz Shirt
+      B._c([(slot || 0) / 16, 0, 0], 0); // Gemeinsame Palette für Stoff und Bündchen
       function vertex(ring, angle) {
         var row = rings[ring], prev = rings[Math.max(0, ring - 1)], next = rings[Math.min(rings.length - 1, ring + 1)];
         var slope = (next[1] - prev[1]) / Math.max(0.0001, next[0] - prev[0]);
@@ -79,20 +79,27 @@
          [0.415, 0.166], [0.455, 0.152], [0.48, 0.11], [0.505, 0.06], [0.52, 0]], 0.65);
       sp(0, 0.99, 0.005, 0.145, 0.10, 0.105, 1);
       sp(0, 1.51, 0, 0.055, 0.07, 0.055, 2);
+      // Stoffkragen statt eines harten Übergangs vom Rumpf zum Hals.
+      B.push().t(0, 1.493, 0).rx(PI / 2);
+      B.torus(0, 0, 0, 0.057, 0.009, 16, 5, [6 / 16, 0, 0]); B.pop();
     });
     group('head', function (B, sp) {
       sp(0, 1.69, 0, 0.178, 0.205, 0.16, 2);
       [-1, 1].forEach(function (d) {
         sp(d * 0.177, 1.685, 0.0, 0.03, 0.045, 0.03, 2);
-        sp(d * 0.099, 1.645, -0.135, 0.033, 0.018, 0.012, 7);
-        B.push().t(d * 0.065, 1.763, -0.148).rz(d * -0.12);
-        sp(0, 0, 0, 0.036, 0.007, 0.009, 3); B.pop();
+        sp(d * 0.099, 1.645, -0.135, 0.027, 0.014, 0.009, 7);
+        B.push().t(d * 0.065, 1.753, -0.153).rz(d * -0.12);
+        sp(0, 0, 0, 0.030, 0.006, 0.008, 3); B.pop();
       });
-      sp(0, 1.66, -0.157, 0.024, 0.03, 0.026, 2);
+      sp(0, 1.66, -0.157, 0.020, 0.026, 0.023, 2);
       // Haar liegt über und hinter der Stirn, nicht als starre Kappe im Gesicht.
       sp(0, 1.835, 0.028, 0.184, 0.09, 0.155, 3);
       sp(0, 1.73, 0.105, 0.16, 0.15, 0.075, 3);
-      if (kind === 'woman') {
+      if (kind === 'worker') {
+        // Kurze, seitlich strukturierte Frisur für die dritte Grundform.
+        sp(-0.105, 1.81, -0.06, 0.075, 0.046, 0.09, 3);
+        sp(0.075, 1.835, -0.055, 0.09, 0.045, 0.085, 3);
+      } else if (kind === 'woman') {
         sp(-0.15, 1.72, 0.055, 0.055, 0.13, 0.09, 3);
         sp(0.15, 1.72, 0.055, 0.055, 0.13, 0.09, 3);
         sp(0.035, 1.82, 0.16, 0.08, 0.075, 0.065, 3);
@@ -104,10 +111,10 @@
     });
     group('eyes', function (B, sp) {
       [-1, 1].forEach(function (d) {
-        sp(d * 0.064, 1.706, -0.15, 0.038, 0.044, 0.022, 6);
-        sp(d * 0.064, 1.704, -0.171, 0.020, 0.027, 0.009, 8);
-        sp(d * 0.064, 1.704, -0.179, 0.012, 0.020, 0.005, 4);
-        sp(d * 0.064 - 0.005, 1.716, -0.184, 0.006, 0.008, 0.003, 6);
+        sp(d * 0.064, 1.706, -0.15, 0.031, 0.036, 0.020, 6);
+        sp(d * 0.064, 1.704, -0.171, 0.016, 0.022, 0.009, 8);
+        sp(d * 0.064, 1.704, -0.179, 0.010, 0.016, 0.005, 4);
+        sp(d * 0.064 - 0.005, 1.716, -0.184, 0.005, 0.006, 0.003, 6);
       });
     });
     [-1, 1].forEach(function (d) {
@@ -115,7 +122,7 @@
       group('armU' + side, function (B) {
         var len = Math.hypot(ELX - SHX, ELY - SHY);
         sleeve(B, d * SHX, SHY, d * ELX, ELY,
-          [[-0.025, 0], [-0.015, 0.036], [0, 0.049], [0.045, 0.051],
+          [[-0.025, 0], [-0.015, 0.040], [0, 0.053], [0.045, 0.052],
            [0.14, 0.046], [len - 0.025, 0.040], [len + 0.012, 0.036], [len + 0.035, 0]]);
       });
       group('armL' + side, function (B, sp) {
@@ -123,12 +130,15 @@
         sleeve(B, d * ELX, ELY, wx, wy,
           [[-0.028, 0], [-0.014, 0.032], [0, 0.040], [0.05, 0.040],
            [0.13, 0.034], [len - 0.018, 0.029], [len + 0.008, 0.029], [len + 0.018, 0]]);
+        // Schmale Stoffbündchen verdecken die Naht am Handgelenk.
+        sleeve(B, d * ELX, ELY, wx, wy,
+          [[len - 0.030, 0.031], [len - 0.010, 0.031], [len + 0.006, 0.029]], 1, 6);
         // Schmaleres Handgelenk, flache Handfläche, angedeutete Finger und Daumen.
         sp(wx, 0.92, 0, 0.026, 0.030, 0.024, 2);
-        sp(wx, 0.883, -0.004, 0.033, 0.040, 0.022, 2);
+        sp(wx, 0.883, -0.004, 0.031, 0.037, 0.021, 2);
         for (var i = 0; i < 4; i++) {
           var length = i === 1 || i === 2 ? 0.022 : 0.018;
-          sp(wx + (i - 1.5) * 0.014, 0.846, -0.005, 0.0085, length, 0.009, 2);
+          sp(wx + (i - 1.5) * 0.013, 0.846, -0.005, 0.0075, length, 0.008, 2);
         }
         B.push().t(wx - d * 0.033, 0.884, 0.002).rz(-d * 0.45);
         sp(0, 0, 0, 0.012, 0.024, 0.013, 2); B.pop();
@@ -230,12 +240,12 @@
     var uN = 0.6, aN = -0.2, fN = 1.05, uP = 0.6, aP = -0.2, fP = 1.05;
     var sip = 0;
     var blinkT = (tt * 0.25 + ph) % 1;
-    var blink = blinkT > 0.96 && name !== 'sleep' ? 0.1 : 1;
+    var blink = !still && blinkT > 0.96 && name !== 'sleep' ? 0.1 : 1;
     switch (name) {
       case 'busy':
-        lean = 0.10; hx = 0.16 + 0.03 * sin(1.3 * tt + ph); hy = 0.10 * sin(0.6 * tt + ph);
-        uN = 0.30 + 0.04 * sin(7.5 * tt + ph); aN = -0.28; fN = 1.40 + 0.08 * sin(9 * tt + ph + 1.3);
-        uP = 0.30 + 0.04 * sin(7.5 * tt + ph + PI); aP = -0.28; fP = 1.40 + 0.08 * sin(9 * tt + ph + 4.4);
+        lean = 0.10; hx = 0.16 + 0.018 * sin(0.9 * tt + ph); hy = 0.055 * sin(0.45 * tt + ph);
+        uN = 0.30 + 0.018 * sin(4.2 * tt + ph); aN = -0.28; fN = 1.40 + 0.045 * sin(5.2 * tt + ph + 1.3);
+        uP = 0.30 + 0.018 * sin(4.2 * tt + ph + PI); aP = -0.28; fP = 1.40 + 0.045 * sin(5.2 * tt + ph + 4.4);
         break;
       case 'rest': {
         lean = 0.03;
@@ -249,17 +259,17 @@
       case 'warn':
         lean = 0.05; hx = 0.06; hz = 0.12 + 0.05 * sin(0.9 * tt + ph); hy = 0.08 * sin(0.5 * tt);
         uN = 0.35; aN = -0.25; fN = 1.35;
-        uP = 1.0; aP = -0.5; fP = 2.6 + 0.12 * sin(6 * tt + ph); mw = 0.8;
+        uP = 1.0; aP = -0.5; fP = 2.6 + 0.035 * sin(2 * tt + ph); mw = 0.8;
         break;
       case 'alarm':
-        lean = -0.04; hx = -0.12; eye = 1.25; mo = 2.2; mw = 1.3;
-        uN = 2.75 + 0.12 * sin(9 * tt + ph); uP = 2.75 + 0.12 * sin(9 * tt + ph + PI);
-        aN = -0.5 - 0.22 * sin(9 * tt + ph); aP = -0.5 - 0.22 * sin(9 * tt + ph + PI);
-        fN = 0.2; fP = 0.2; bounce = 0.035 * Math.abs(sin(5.5 * tt + ph));
+        lean = 0.01; hx = -0.04; eye = 1.12; mo = 1.4; mw = 1.05;
+        uN = 0.4; uP = 2.4 + 0.045 * sin(2 * tt + ph);
+        aN = -0.25; aP = -0.38;
+        fN = 1.3; fP = 0.35;
         break;
       case 'sleep':
-        lean = 0.62 + 0.02 * sin(1.6 * tt + ph); hx = 0.78; hz = 0.1; eye = 0.06; mo = 0.5; mw = 0.7;
-        uN = 0.9; aN = -0.12; fN = 1.45; uP = 0.9; aP = -0.12; fP = 1.45;
+        lean = 0.22 + 0.012 * sin(1.2 * tt + ph); hx = 0.28; hz = 0.06; eye = 0.06; mo = 0.5; mw = 0.7;
+        uN = 0.38; aN = -0.23; fN = 1.3; uP = 0.38; aP = -0.23; fP = 1.3;
         break;
       default: break;
     }
