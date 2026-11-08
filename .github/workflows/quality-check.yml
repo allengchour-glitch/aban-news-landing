@@ -8,11 +8,15 @@ on:
       - '**/*.py'
       - '**/*.json'
       - '*.html'
+      - 'build-pages.sh'
+      - '.github/workflows/quality-check.yml'
   pull_request:
     paths:
       - '**/*.py'
       - '**/*.json'
       - '*.html'
+      - 'build-pages.sh'
+      - '.github/workflows/quality-check.yml'
   workflow_dispatch:
 
 jobs:
@@ -69,6 +73,9 @@ jobs:
         # Prueft Preis gegen Katalog, dass das Workbook offline laeuft und dass
         # der ausgelieferte Stand neu gebaut dem Quelltext entspricht.
         run: python -B -m unittest tools.ki_audit.test_produkt
+
+      - name: Geschützte Kit-ZIPs vollständig bauen (nur Testdateien)
+        run: python -B -m unittest discover -s tools -p 'test_kit_build.py'
 
       - name: Generatoren bauen ohne Fehler (Smoke-Test)
         run: |

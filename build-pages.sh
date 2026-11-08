@@ -20,8 +20,15 @@ mkdir -p _site
 # Geschützte Kit-ZIPs aus DOWNLOAD_SALT (Cloudflare-Pages-Env) bauen →
 # downloads/kits/<sha256(slug:salt)[:24]>.zip, exakt wie kit-download.js sie ausliefert.
 # So funktioniert der Kauf-Download mit JEDEM dauerhaften Salt, ganz ohne GitHub Actions.
-# No-op ohne DOWNLOAD_SALT; tolerant (bricht den Build nicht ab).
-( command -v python3 >/dev/null 2>&1 && python3 automation/build_kit_zips.py ) || echo "build_kit_zips übersprungen"
+# Ohne Salt weiterhin no-op; mit Salt darf ein unvollständiger Kit-Satz nicht live.
+if command -v python3 >/dev/null 2>&1; then
+  python3 automation/build_kit_zips.py
+elif [ -n "${DOWNLOAD_SALT:-}" ]; then
+  echo "FEHLER: Geschützte Kit-ZIPs benötigen Python — Deploy abgebrochen." >&2
+  exit 1
+else
+  echo "Kit-Bau ohne DOWNLOAD_SALT übersprungen"
+fi
 
 # Seitensuche-Index aktuell halten (data/site-index.json) — damit die eigene Suche
 # (suchmaschine.html) immer alle neuen Seiten findet. Tolerant; bricht den Build nicht ab.
