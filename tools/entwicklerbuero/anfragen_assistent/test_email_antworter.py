@@ -84,6 +84,38 @@ class EmailTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.run_mail(root, root / "out")
 
+    def test_pruefseite_zeigt_original_entwurf_und_uebersprungene(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.mail(root, "a.eml")
+            self.mail(root, "b.eml", **{"Auto-Submitted": "auto-replied"})
+            self.run_mail(root, root / "out")
+            html = (root / "out/index.html").read_text()
+            self.assertIn('data-art="entwurf"', html)
+            self.assertIn('data-art="übersprungen"', html)
+            self.assertIn("Bitte heute eine Offerte vorbereiten.", html)
+            self.assertIn("Ausführungsort", html)
+            self.assertIn("Automatische Nachricht", html)
+            self.assertIn('href="antwort-0001.eml"', html)
+            self.assertNotIn('href="antwort-0002.eml"', html)
+            self.assertIn("sendet keine E-Mails", html)
+
+    def test_pruefseite_behandelt_fremden_inhalt_als_text(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            p = self.mail(root, Subject='<img src=x onerror=alert(1)>')
+            mail = BytesParser(policy=policy.default).parsebytes(p.read_bytes())
+            mail.set_content('</textarea><script>alert(2)</script> & Originaltext')
+            p.write_bytes(mail.as_bytes())
+            verarbeiten(p, root / "out", '<script>alert(3)</script>', "buero@example.invalid")
+            html = (root / "out/index.html").read_text()
+            self.assertNotIn('<img src=x', html)
+            self.assertNotIn('<script>alert(', html)
+            self.assertIn('&lt;/textarea&gt;&lt;script&gt;alert(2)', html)
+            self.assertEqual(html.count('<script>'), 1)
+            self.assertIn("connect-src 'none'", html)
+            self.assertIn('&lt;script&gt;alert(3)', html)
+
     def test_re_betreff_wird_nicht_verdoppelt(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

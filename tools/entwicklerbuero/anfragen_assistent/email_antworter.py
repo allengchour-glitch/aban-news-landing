@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 
 from assistent import VERSION, einordnen, entwurf
+from pruefseite import erstellen
 
 MAX_BYTES = 2 * 1024 * 1024
 
@@ -128,7 +129,7 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text):
     # Erst einlesen und prüfen; Anhänge bleiben unberührt und werden nicht übernommen.
     gelesen = [mail_lesen(p, absender) for p in dateien]
     out.mkdir(parents=True)
-    seen, ergebnisse = set(), []
+    seen, ergebnisse, ansicht = set(), [], []
     for nummer, (mail, grund) in enumerate(gelesen, 1):
         if mail and mail["message_id"] in seen:
             mail, grund = None, "Message-ID in diesem Stapel bereits verarbeitet"
@@ -138,10 +139,15 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text):
             reply, kategorie, prioritaet = antwort_erstellen(mail, absender, firma)
             name = f"antwort-{nummer:04d}.eml"
             (out / name).write_bytes(reply.as_bytes())
+            ansicht.append({"nummer": nummer, "betreff": mail["betreff"], "empfaenger": str(mail["ziel"]),
+                            "original": mail["text"], "entwurf": reply.get_content(),
+                            "kategorie": kategorie, "prioritaet": prioritaet})
             ergebnisse.append({"nummer": nummer, "status": "Entwurf prüfen", "datei": name,
                                "kategorie": kategorie, "prioritaet": prioritaet})
         else:
+            ansicht.append({"nummer": nummer, "grund": grund})
             ergebnisse.append({"nummer": nummer, "status": "Übersprungen", "grund": grund})
+    (out / "index.html").write_text(erstellen(ansicht, firma), encoding="utf-8")
     bericht = {"version": VERSION, "gelesen": len(dateien), "entwuerfe": sum("datei" in r for r in ergebnisse),
                "versendet": 0, "verfahren": "Lokale Regeln und Vorlagen, kein Sprachmodell",
                "ergebnisse": ergebnisse}

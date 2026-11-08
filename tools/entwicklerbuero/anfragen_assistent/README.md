@@ -25,7 +25,9 @@ Produktive Kundendaten gehören in den freigegebenen Speicher des Betriebs, niem
 python3 email_antworter.py demo-email.eml /tmp/email-demo --firma "Beispielbetrieb (Demo)" --absender buero@example.invalid
 ```
 
-Als Eingabe geht auch ein Ordner mit EML-Dateien. Der neue Ausgabeordner enthält Antwortdateien `antwort-0001.eml` usw. und einen Bericht. Sie sind ungesendete Entwürfe mit Empfänger, Betreff und Thread-Bezug. Ob der eigene Mailclient EML als bearbeitbaren Entwurf importiert, muss dort geprüft werden. Es werden keine Postfächer gelesen und keine E-Mails verschickt.
+Als Eingabe geht auch ein Ordner mit EML-Dateien. Der neue Ausgabeordner enthält eine lokale Prüfseite `index.html`, Antwortdateien `antwort-0001.eml` usw. und einen Bericht. Sie sind ungesendete Entwürfe mit Empfänger, Betreff und Thread-Bezug. Ob der eigene Mailclient EML als bearbeitbaren Entwurf importiert, muss dort geprüft werden. Es werden keine Postfächer gelesen und keine E-Mails verschickt.
+
+Öffne `index.html` im Browser, auch auf dem Handy. Die Seite zeigt ursprünglichen Text und Antwortentwurf, sucht nach Inhalt oder Empfänger und filtert übersprungene Nachrichten. Mit „Antwort kopieren“ übernimmst du den Text ins Mailprogramm; ohne Zwischenablage-Zugriff wird der Text zur manuellen Kopie ausgewählt. „EML herunterladen“ öffnet beziehungsweise speichert den unveränderten Entwurf. Die Prüfseite ist schreibgeschützt, funktioniert ohne externe Dienste und enthält lokale Nachrichten: im freigegebenen Speicher behalten. Es gibt keine Versandfunktion und keine gespeicherten Freigaben.
 
 Text-Mails und einfache HTML-Mails werden unterstützt; Anhänge werden nicht gelesen oder kopiert. Newsletter, Zustellberichte, automatische Antworten, eigene Absender und No-Reply-Adressen werden ausgesondert. Mehrere oder unklare Antwortadressen gehen in die manuelle Prüfung. Die Erkennung ist heuristisch und ersetzt keine Prüfung der Empfänger oder des Inhalts. Doppelte Message-IDs werden innerhalb eines Stapels ausgesondert; es gibt noch keine dauerhafte Postfach-Synchronisierung.
 
