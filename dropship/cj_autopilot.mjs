@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * CJ-Autopilot (VOLL-AUTO) — autonomer Sourcing- & Live-Lauf für GitHub Actions / Cron.
+ * CJ-Autopilot — autonomer Sourcing-Lauf für gesperrte Produktentwürfe.
  * ----------------------------------------------------------------------------------
  * Läuft OHNE Claude-Session. Pro Lauf:
  *   1. CJ-Keyword-Suche (rotierend nach Tag) + Relevanzfilter + Hartfilter (§5)
@@ -8,22 +8,23 @@
  *   3. Detail-Anreicherung (echte variantSku, Kost, Bilder, Varianten)
  *   4. Bild-URLs per HTTP-200 verifizieren (nur funktionierende übernehmen)
  *   5. Varianten bauen (Farbe×Grösse + Farbbild je Variante) → Shopify `productSet`
- *   6. **Gemini-Gate (optional):** deutsche Verkaufs-Copy + Qualitäts-Urteil.
- *        • Gemini PASS  → Produkt **ACTIVE** + publishablePublish in alle 6 Kanäle
- *        • Gemini FAIL / kein Key → **DRAFT** (Tag `autopilot-needs-copy`), nichts geht ungeprüft live
+ *   6. **Gemini-Gate:** deutsche Verkaufs-Copy + Qualitäts-Urteil.
+ *        • nur sprachlich geprüfter Gemini-PASS → gesperrter **DRAFT** mit `compliance-pruefen`
+ *        • Gemini FAIL / kein Key / englische Ausgabe → kein Produkt-Write
  *
  * Secrets (NUR aus der Umgebung — niemals im Repo):
  *   CJ_EMAIL, CJ_API_KEY                — CJ Developer API
  *   SHOPIFY_SHOP                        — z.B. au3j0y-hq.myshopify.com
- *   SHOPIFY_ADMIN_TOKEN                 — Admin API Token (shpat_…/shpca_…), Scope: write_products, write_publications
+ *   SHOPIFY_ADMIN_TOKEN                 — Admin API Token (shpat_…/shpca_…), Scope: write_products
+ * Für Produkt-Writes erforderlich:
+ *   GEMINI_API_KEY                      — generativelanguage-Key → DE-Copy + QA
  * Optional:
- *   GEMINI_API_KEY                      — generativelanguage-Key → DE-Copy + QA + ACTIVE-Schaltung
  *   AUTOPILOT_MAX (Default 6)           — wie viele Produkte pro Lauf
- *   AUTOPILOT_STATUS (ACTIVE|DRAFT)     — Ziel-Status bei Gemini-PASS (Default ACTIVE)
  *
  * Fehlt ein Pflicht-Secret → sauberer No-Op (exit 0). Keine Secrets im Log.
  */
 import https from 'node:https';
+import { cjImportSicherheitsdaten, pruefeCjImportText } from '../automation/lib/cj_import_guard.mjs';
 import { shopifyClientSecret } from '../automation/lib/shopify_secret.mjs';
 
 const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, GEMINI_API_KEY } = process.env;
@@ -31,21 +32,19 @@ const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_
 const SHOPIFY_CLIENT_SECRET = shopifyClientSecret();
 let SHOP_TOKEN = SHOPIFY_ADMIN_TOKEN || '';  // wird ggf. per Client-Credentials befüllt
 const MAX = Number(process.env.AUTOPILOT_MAX || 6);
-const TARGET_STATUS = (process.env.AUTOPILOT_STATUS || 'ACTIVE').toUpperCase() === 'DRAFT' ? 'DRAFT' : 'ACTIVE';
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const API_VER = '2024-10';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-// 6 Publication-IDs (alle Verkaufskanäle von LuxeStyle, siehe AUTONOMER-MODUS.md §2)
-const PUBLICATIONS = [
-  '301970915713', '301971014017', '302032716161', '302566834561', '302872297857', '302994456961',
-].map(id => ({ publicationId: `gid://shopify/Publication/${id}` }));
-
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL', '4XL', '5XL', 'XXXL'];
 
 if (!CJ_EMAIL || !CJ_API_KEY || !SHOPIFY_SHOP || !(SHOPIFY_ADMIN_TOKEN || (SHOPIFY_CLIENT_ID && SHOPIFY_CLIENT_SECRET))) {
   console.log('No-Op: Secrets fehlen (CJ_EMAIL/CJ_API_KEY/SHOPIFY_SHOP + SHOPIFY_ADMIN_TOKEN ODER SHOPIFY_CLIENT_ID/SECRET).');
+  process.exit(0);
+}
+if (!GEMINI_API_KEY) {
+  console.log('No-Op: GEMINI_API_KEY fehlt; ohne geprüfte deutsche Copy kein CJ-Produkt-Write.');
   process.exit(0);
 }
 
@@ -164,7 +163,7 @@ async function geminiEnrich(name, rawDesc) {
   const aj = JSON.parse(ar.body);
   if (!aj.result) { console.log('CJ Auth fehlgeschlagen (Key prüfen/rotieren).'); process.exit(0); }
   const tok = aj.data.accessToken;
-  console.log(`Autopilot VOLL-AUTO · Ziel-Status bei QA-PASS: ${TARGET_STATUS} · Gemini: ${GEMINI_API_KEY ? 'AN' : 'aus (→ DRAFT)'} · MAX ${MAX}`);
+  console.log(`Autopilot · geprüfte Produkte bleiben DRAFT · Gemini: AN · MAX ${MAX}`);
   await ensureShopToken();
   if (!SHOP_TOKEN) { console.log('Shopify-Auth fehlgeschlagen (SHOPIFY_ADMIN_TOKEN oder CLIENT_ID/SECRET prüfen).'); process.exit(0); }
 
@@ -265,13 +264,15 @@ async function geminiEnrich(name, rawDesc) {
       // Gemini-Gate
       const g = await geminiEnrich(name, d.description);
       if (g && g.verdict === 'fail') { console.log(`  ✗ Gemini-FAIL: ${name.slice(0, 50)} (${g.reason || ''})`); continue; }
-      const status = (g && g.verdict === 'pass') ? TARGET_STATUS : 'DRAFT';
-      const title = (g?.title_de || name).slice(0, 120);
-      const sizeHint = hasSize ? 'Grössen-Hinweis: asiatische Grössen – bitte 1 Nr. grösser wählen. ' : '';
-      const html = (g?.html_de
-        || `<p><strong>${name.slice(0, 90)}</strong></p><ul><li>✨ Premium-Qualität</li><li>🎨 Mehrere Varianten</li><li>💝 Tolles Geschenk</li><li>🚚 Schneller CH-Versand</li></ul>`)
-        + `<p><em>${sizeHint}Versand: ca. 7–14 Tage. 🇨🇭 Gratis-Versand ab CHF 65 · WELCOME10 –10%.</em></p>`;
-      const tags = ['cj-real', 'neu', 'dropship', 'autopilot'].concat(EXTRA_TAGS).concat(status === 'DRAFT' ? ['autopilot-needs-copy'] : []);
+      if (!g || g.verdict !== 'pass') { console.log(`  skip(Copy-Gate): ${name.slice(0, 50)}`); continue; }
+      const textPruefung = pruefeCjImportText({ sourceTitle: name, title: g.title_de, html: g.html_de });
+      if (textPruefung.status !== 'OK') {
+        console.log(`  skip(Textpruefung): ${name.slice(0, 50)} (${textPruefung.gruende.join(' | ')})`);
+        continue;
+      }
+      const title = g.title_de.slice(0, 120);
+      const html = `${g.html_de}<p>Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>`;
+      const sicherheit = cjImportSicherheitsdaten(['cj-real', 'neu', 'dropship', 'autopilot', ...EXTRA_TAGS]);
 
       const variants = vars.map(v => {
         const o = { optionValues: mkOV(v), price: priceCHF(v.cost || d.sellPrice), inventoryItem: { sku: v.sku, tracked: false } };
@@ -280,31 +281,21 @@ async function geminiEnrich(name, rawDesc) {
       });
 
       const input = { title, descriptionHtml: html, vendor: 'LuxeStyle', productType: d.categoryName || 'Mode',
-        status, tags, productOptions, files, variants };
+        status: sicherheit.status, tags: sicherheit.tags, productOptions, files, variants };
       const cm = await shopify(
         `mutation($in:ProductSetInput!){productSet(synchronous:true,input:$in){product{id media(first:30){nodes{status}}}userErrors{message}}}`,
         { in: input }).catch(e => ({ error: e.message }));
       const prod = cm?.productSet?.product;
       if (!prod?.id) { console.log(`  skip ${baseSku}: ${cm?.error || JSON.stringify(cm?.productSet?.userErrors)}`); continue; }
 
-      // Media-Falle: FAILED → auf DRAFT zurückstufen (nichts Kaputtes live)
-      let finalStatus = status;
+      // Media-Falle bleibt sichtbar; der Import bleibt unabhaengig davon DRAFT.
+      const finalStatus = sicherheit.status;
       const failed = (prod.media?.nodes || []).some(m => m.status === 'FAILED');
-      if (failed && finalStatus === 'ACTIVE') {
-        await shopify(`mutation($id:ID!){productUpdate(input:{id:$id,status:DRAFT}){userErrors{message}}}`, { id: prod.id }).catch(() => {});
-        finalStatus = 'DRAFT';
-      }
-      // Publizieren wenn ACTIVE
-      if (finalStatus === 'ACTIVE') {
-        await shopify(`mutation($id:ID!,$in:[PublicationInput!]!){publishablePublish(id:$id,input:$in){userErrors{message}}}`,
-          { id: prod.id, in: PUBLICATIONS }).catch(() => {});
-      }
-      done.push({ title: title.slice(0, 50), sku: baseSku, status: finalStatus, variants: variants.length, images: files.length });
-      console.log(`  ✔ ${finalStatus}: ${title.slice(0, 48)} | ${variants.length} Var | ${files.length} Bilder | SKU ${baseSku}`);
+      done.push({ title: title.slice(0, 50), sku: baseSku, status: finalStatus, mediaFailed: failed, variants: variants.length, images: files.length });
+      console.log(`  DRAFT: ${title.slice(0, 48)} | ${variants.length} Var | ${files.length} Bilder | ${sicherheit.sperrTags.join(', ')} | SKU ${baseSku}`);
     }
   }
 
-  const active = done.filter(d => d.status === 'ACTIVE').length;
-  console.log(`\nAutopilot fertig: ${done.length} Produkt(e) (${active} ACTIVE+publiziert, ${done.length - active} DRAFT).`);
+  console.log(`\nAutopilot fertig: ${done.length} gesperrte DRAFT-Produkte; keine Kanalpublikation.`);
   if (done.length) console.log(JSON.stringify(done, null, 2));
 })().catch(e => { console.error('Autopilot-Fehler:', e.message); process.exit(0); });

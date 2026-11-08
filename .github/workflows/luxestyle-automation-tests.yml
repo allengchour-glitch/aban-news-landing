@@ -41,6 +41,8 @@ on:
       - 'automation/lib/cj_video_test.mjs'
       - 'dropship/cj_enrich.mjs'
       - 'dropship/cj_enrich_test.mjs'
+      - 'dropship/cj_autopilot.mjs'
+      - '.github/workflows/cj-autopilot.yml'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - 'dropship/mode-taxonomie-2610/**'
@@ -138,6 +140,7 @@ jobs:
             automation/lib/cj_video_test.mjs
             dropship/cj_enrich.mjs
             dropship/cj_enrich_test.mjs
+            dropship/cj_autopilot.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
@@ -171,9 +174,14 @@ jobs:
       - name: Syntax
         run: |
           node --check automation/cj_reviews_import.mjs
+          node --check automation/cj_gaps_import.mjs
+          node --check automation/cj_category_fill.mjs
+          node --check automation/cj_trending_import.mjs
+          node --check automation/lib/cj_import_guard.mjs
           node --check automation/autopilot/merchant_feed.mjs
           node --check automation/autopilot/merchant_feed_auth_test.mjs
           node --check dropship/cj_enrich.mjs
+          node --check dropship/cj_autopilot.mjs
           node --check automation/publish_guard.mjs
           node --check automation/cross_sell.mjs
           node --check automation/lieferbarkeit_guard.mjs
@@ -229,6 +237,7 @@ jobs:
           # Lief bisher in KEINEM Workflow — ein Test, der nie laeuft, ist kein Test.
           node automation/lib/seo_titel_test.mjs
           node automation/lib/storefront_sprache_test.mjs
+          node automation/lib/cj_import_guard_test.mjs
           node automation/create_pod_line_text_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/galaxus_treffer_test.mjs

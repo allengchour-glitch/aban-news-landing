@@ -2,14 +2,15 @@
 /* LuxeStyle — cj_gaps_import.mjs  (Marktlücken füllen: Grill/BBQ + Auto/Handy aus CJ)
  *
  * Sucht bei CJ passende Produkte zu den Katalog-Lücken, prüft Bilder (HTTP-200), legt sie sauber als
- * Shopify-Produkte an (ACTIVE, DE-Titel via Gemini, gesunde CHF-Marge, Tags+SEO), publiziert in alle
- * Kanäle und sortiert sie in Smart-Collections. Idempotent (Ledger). No-op ohne Creds.
+ * Shopify-Produkte als gesperrte DRAFTs an (DE-Titel via Gemini, gesunde CHF-Marge, Tags+SEO) und
+ * sortiert sie in Smart-Collections. Freigabe/Publikation erfolgt getrennt. Idempotent (Ledger).
  *
  * DRY_RUN=1 → nur suchen + Kandidaten listen (nichts anlegen).
  * ENV: CJ_EMAIL, CJ_API_KEY · SHOPIFY_CLIENT_ID/SECRET (o. ADMIN_TOKEN), SHOPIFY_SHOP · [GEMINI_API_KEY]
  *      [CATS=grill,auto] · [PER=4] (pro Kategorie) · [MARGIN=3.2] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { cjImportSicherheitsdaten, pruefeCjImportText } from './lib/cj_import_guard.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
@@ -155,7 +156,8 @@ async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); i
 
 // ── Gemini Batch-Übersetzung EN-Produktname → knackiger DE-Titel ──
 async function titlesDE(names) {
-  if (!GKEY || !names.length) return names;
+  if (!names.length) return [];
+  if (!GKEY) return names.map(() => null);
   const prompt = `Mach aus diesen englischen Produktnamen je einen knackigen, verkaufsstarken DEUTSCHEN Shop-Titel `
     + `(max 60 Zeichen, kein Marken-/Wholesale-Wort, mit kurzem Nutzen). Gib NUR ein JSON-Array gleicher Reihenfolge zurück.\n` + JSON.stringify(names);
   try {
@@ -164,9 +166,9 @@ async function titlesDE(names) {
     const j = await r.json().catch(() => ({}));
     let t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').replace(/^```(json)?/i, '').replace(/```$/, '').trim();
     const arr = JSON.parse(t);
-    if (Array.isArray(arr) && arr.length === names.length) return arr.map((s, i) => (s && String(s).trim().slice(0, 70)) || names[i]);
+    if (Array.isArray(arr) && arr.length === names.length) return arr.map(s => (s && String(s).trim().slice(0, 70)) || null);
   } catch (e) { console.error('  Titel-Übersetzung fehlgeschlagen:', e.message); }
-  return names;
+  return names.map(() => null);
 }
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL'];
@@ -177,8 +179,6 @@ if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds → No-op.'); proces
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 const SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,input:$input){ product{ id handle } userErrors{ field message } } }`;
-const PUBQ = `{ publications(first:20){ edges{ node{ id } } } }`;
-const PUB = `mutation($id:ID!,$pubs:[PublicationInput!]!){ publishablePublish(id:$id,input:$pubs){ userErrors{ message } } }`;
 const COLL_FIND = `query($q:String!){ collections(first:1, query:$q){ edges{ node{ id handle } } } }`;
 const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$input){ collection{ id handle } userErrors{ message } } }`;
 
@@ -187,7 +187,6 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
   const ctok = await cjToken(); if (!ctok) process.exit(0);
   console.log('CJ + Shopify ok.' + (DRY ? ' [DRY]' : ''));
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
-  const pubs = DRY ? [] : ((await sgql(stok, PUBQ))?.data?.publications?.edges || []).map(e => ({ publicationId: e.node.id }));
 
   // Smart-Collection je Kategorie sicherstellen (per Tag)
   async function ensureColl(cfg) {
@@ -196,7 +195,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     const ex = f?.data?.collections?.edges?.[0]?.node;
     if (ex) return ex.id;
     const r = await sgql(stok, COLL_CREATE, { input: { handle: cfg.coll.handle, title: cfg.coll.title,
-      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 65.</p>`,
+      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz und Liechtenstein. Gratis-Versand ab CHF 50.</p>`,
       ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: cfg.coll.tag }] } } });
     const id = r?.data?.collectionCreate?.collection?.id;
     console.log(`  Collection ${cfg.coll.title}: ${id ? 'angelegt' : 'FEHLER ' + JSON.stringify(r?.data?.collectionCreate?.userErrors)}`);
@@ -247,27 +246,31 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     const collId = await ensureColl(cfg);
     for (let i = 0; i < picks.length; i++) {
       const p = picks[i];
-      const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').trim();
+      const title = String(titles[i] || '').replace(/["<>]/g, '').trim();
+      const desc = `<p><strong>${title}</strong></p>`
+        + `<p>Entwurf: Produktangaben, Varianten und Bilder müssen vor der Freigabe anhand der CJ-Quelle geprüft werden.</p>`;
+      const textPruefung = pruefeCjImportText({ sourceTitle: p.nameEn, title, html: desc });
+      if (textPruefung.status !== 'OK') {
+        console.log(`  skip(Textpruefung) ${p.nameEn.slice(0, 45)}: ${textPruefung.gruende.join(' | ')}`);
+        continue;
+      }
       const price = chf(p.cost);
       const handle = (title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 60) || ('cj-' + p.pid);
       // Varianten: Farbe/Grösse aus CJ ableiten (sonst Einheit)
       const rows = p.vs.map(v => { const key = (v.variantKey || v.variantNameEn || '').trim(); const parts = key.split('-').map(s => s.trim()); let size = '', color = key; const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, ''); if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); } return { color: color || 'Standard', size: size || 'Einheit', sku: v.variantSku }; });
       let colors = [...new Set(rows.map(r => r.color))].slice(0, 12);
       if (!colors.length) colors = ['Standard'];
-      const tags = [cfg.coll.tag, ...cfg.extraTags, 'cj-real'];
-      const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
-        + `<p>📦 Lieferung CH/EU 6–12 Tage · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
-      const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: 'ACTIVE', tags,
-        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, Gratis-Versand ab CHF 65.` },
+      const sicherheit = cjImportSicherheitsdaten([cfg.coll.tag, ...cfg.extraTags, 'cj-real']);
+      const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: sicherheit.status, tags: sicherheit.tags,
+        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} bei LuxeStyle Schweiz.` },
         productOptions: [{ name: 'Farbe', values: colors.map(c => ({ name: c })) }],
         variants: colors.map(c => ({ optionValues: [{ optionName: 'Farbe', name: c }], price, inventoryItem: { sku: `CJ-${p.sku}-${c}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' })),
         files: p.imgs.map(u => ({ originalSource: u, contentType: 'IMAGE' })) };
       const r = await sgql(stok, SET, { input }); const e = r?.data?.productSet?.userErrors || [];
       const pid = r?.data?.productSet?.product?.id;
       if (e.length || !pid) { fails.push(`${title.slice(0,40)}: ${JSON.stringify(e.length ? e : r).slice(0, 160)}`); continue; }
-      if (pubs.length) await sgql(stok, PUB, { id: pid, pubs });
       fs.appendFileSync(LEDGER, 'pid:' + p.pid + '\n');
-      created++; console.log(`  ✅ ${title.slice(0, 50)} → CHF ${price} (${handle})`);
+      created++; console.log(`  DRAFT ${title.slice(0, 50)} → CHF ${price} (${handle}; ${sicherheit.sperrTags.join(', ')})`);
       await sleep(400);
     }
   }
