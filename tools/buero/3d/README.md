@@ -64,3 +64,7 @@ Für Webansicht und Claude das vollständige aktuelle Designpaket übernehmen. D
 ### Fachrollen im gemeinsamen Design
 
 `campus-einheitlich-3` ergänzt kompakte Fachteam-Karten an den vorhandenen Arbeitsplätzen und im Chefbüro. Analyse trägt Brille, Kommunikation Headset; Stofffarben unterscheiden Entwicklung, Analyse, Kommunikation, Logistik und Leitung. Die Rolle wird aus der Aufgabenverteilung gewählt; Haut, Haar und gemessene Haltung bleiben erhalten. Die zusätzliche Darstellung erzeugt keine neuen Hintergrund-Agenten. Webansicht und Claude erhalten dasselbe vollständige Designpaket; die fachlichen Planungsdaten stammen aus den Berichten.
+
+### Modernes Chefbüro und Geldmanager-Wand
+
+`campus-einheitlich-4` verwendet im Chefbüro helle Tischflächen, kühlere Bodenfarben, Akustikflächen und dezente Lichtleisten. Die große Wand zeigt qualitative Hinweise zur Kostenbasis und Pilotkalkulation, keine erfundenen Gewinne oder Kontowerte. Antippen öffnet den privaten Rechner. `bauen.mjs` schreibt zusätzlich `kb-geldmanager.js`; dieses eigene Dokument gehört zusammen mit HTML, 3D-Code und drei Modellpaketen ins vollständige Claude-Designpaket. Der Rechner selbst ist vom 3D-Modell unabhängig und funktioniert auch ohne WebGL.

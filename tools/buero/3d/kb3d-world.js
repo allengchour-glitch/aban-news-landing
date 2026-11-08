@@ -34,12 +34,12 @@
     { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
   ];
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
-  var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#6f4a31', metal: '#c3c9d1' };
+  var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
 
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
   var WINGS = { 'Social Media': [-3, 3], 'Entwicklerbüro': [3, 3], 'YouTube-Studio': [-3, 6] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-3';
+  K.DESIGN_VERSION = 'campus-einheitlich-4';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {
@@ -88,7 +88,7 @@
       m.tex = tex(key, make, { repeat: true });
       stat(m);
     }
-    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#b18b66', 1); }, 2);
+    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#b4c6c3', 1); }, 2);
     floorMesh(-7, 0, 0, 6, 'fShop', function () { return T.parquet('#dfcdae', 2); }, 2);
     floorMesh(0, 0, 7, 6, 'fVersand', function () { return T.concrete('#c4c7c1', 3); }, 2);
     floorMesh(0, -6, 7, 0, 'fKrypto', function () { return T.carpet('#354550', 4); }, 2);
@@ -112,7 +112,7 @@
     wall(-7.3, -6.3, 0, -6.0, '#d8dfd7'); wall(0, -6.3, 7.3, -6.0, '#d8dfd7');
     wall(-7.3, -6.0, -7.0, 0, '#d8dfd7'); wall(-7.3, 0, -7.0, 6.3, '#d8dfd7');
     B.blk(-3.5, 0, -5.985, 7, 0.14, 0.03, '#6b4f3a'); B.blk(3.5, 0, -5.985, 7, 0.14, 0.03, '#171b2b');
-    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#8a6d55');
+    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#506b6c');
     B.box(3.5, 0.3, -5.97, 6.8, 0.04, 0.02, '#8db8b3', 0.6);
     B.box(3.5, 3.15, -5.97, 6.8, 0.05, 0.02, '#d2ba88', 1);
 
@@ -163,7 +163,7 @@
       var zc = 0.30 + 0.4 * sc, dc = loc(0, zc), top = TOP[s.style] || TOP.oak;
       var hasDesk = !!mdl('desk');
       if (hasDesk) {
-        place('desk', dc[0], 0, dc[1], s.h, sc, { tischplatte: top, kante: K.shade(top, 0.78), gestell: s.style === 'dark' ? '#2b303c' : s.style === 'exec' ? '#3a2a1e' : '#4b5260', container: s.style === 'dark' ? '#30343f' : s.style === 'exec' ? '#5b3a26' : '#e6e3dc' });
+        place('desk', dc[0], 0, dc[1], s.h, sc, { tischplatte: top, kante: K.shade(top, 0.78), gestell: s.style === 'dark' ? '#2b303c' : s.style === 'exec' ? '#344a53' : '#4b5260', container: s.style === 'dark' ? '#30343f' : s.style === 'exec' ? '#dce6e3' : '#e6e3dc' });
         place('chair', s.x, 0, s.z, s.h + PI, s.boss ? 1.1 : 1, { polster: s.chair, akzent: K.shade(s.chair, 1.25) });
         var sp = loc(0, zc + 0.17 * sc - 0.004);
         o.screens.push({ x: sp[0], y: 1.12 * sc, z: sp[1], ry: s.h + PI, tilt: 0, w: 0.53 * sc, h: 0.29 * sc });
@@ -190,12 +190,18 @@
       seat.signPos = { x: sx, y: 0.855, z: sz };
     });
 
-    /* ---------- Chefbüro ---------- */
+    /* ---------- Modernes Chefbüro mit Geldmanager-Wand ---------- */
+    W.moneyPanel={mn:[-6.24,0.8,-5.98],mx:[-1.32,3.2,-5.75]};
+    B.box(-3.8,2.0,-5.94,4.95,2.32,0.09,'#233d48');
+    B.box(-3.8,0.79,-5.87,4.72,0.045,0.05,'#7ad6c4',0.4);
+    stat(quad({x:-3.8,y:2.0,z:-5.88,w:4.72,h:2.12,emi:0.7,tex:tex('geldwand',T.geldwand)}));
+    // Zurückhaltende Lichtleisten und helle Materialien statt zusätzlicher Raumwände.
+    B.box(-3.6,3.27,-5.76,5.8,0.035,0.035,'#c5f4e5',0.5);
+    B.box(-6.88,3.27,-3.0,0.035,0.035,4.6,'#c5f4e5',0.5);
     P.rug(B, -5.9, -5.4, -1.3, -2.1, '#2f4f5f', '#d8c9a8');
     place('bookshelf', -6.84, 0, -0.9, PI / 2, 1.15);
-    B.box(-6.975, 1.75, -3.25, 0.05, 1.4, 3.4, '#8a6d55');
-    B.box(-6.955, 1.75, -3.25, 0.02, 1.3, 3.3, '#c79a5f');
-    B.box(-6.3, 1.75, -5.975, 1.42, 0.78, 0.05, C.metal);
+    B.box(-6.975, 1.75, -3.25, 0.05, 1.4, 3.4, '#506b6c');
+    B.box(-6.955, 1.75, -3.25, 0.02, 1.3, 3.3, '#a6c9bd');
     stat(quad({ x: -6.97, y: 2.05, z: -5.5, ry: PI / 2, w: 0.7, h: 0.9, tex: tex('poster0', function () { return T.poster(0); }), emi: 0.15 }));
     B.box(-6.985, 2.05, -5.5, 0.03, 0.96, 0.76, C.white);
     (function () {

@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 
 # Kennung, Rolle, Büro, vorhandener Arbeitsplatz, Darstellung, Zuständigkeit.
 ROLLEN = [
+    ('geldmanager', 'Geldmanager', 'Chefbüro', '__chef', 'leitung', 'Erfasste Einnahmen, Kosten und Rücklagen vergleichen und Pilotangebote kalkulieren.'),
     ('leitung', 'Automations-Leitung', 'Chefbüro', '__chef', 'leitung', 'Fachrollen, Prioritäten und offene Voraussetzungen koordinieren.'),
     ('entwicklung', 'Software-Entwickler', 'Entwicklerbüro', 'dev_bauen', 'entwicklung', 'Lokale Prototypen weiterentwickeln und Änderungen mit Tests absichern.'),
     ('automation', 'Workflow-Architekt', 'Entwicklerbüro', 'dev_bauen', 'entwicklung', 'Abläufe verbinden und geprüfte Lieferpakete bauen.'),
