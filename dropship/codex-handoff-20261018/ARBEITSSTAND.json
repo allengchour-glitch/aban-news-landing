@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 144,
-  "updatedAt": "2026-11-08T17:19:09+01:00",
+  "revision": 145,
+  "updatedAt": "2026-11-08T17:50:45+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-08",
     "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
-    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung.",
+    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-08",
@@ -3314,12 +3314,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r144_two_target_offers_source_fix_and_exact_image_blocker_bound_no_write",
+      "state": "r145_yoga_live_language_seo_fixed_cj_identity_inventory_bound_exact_image_blocker_open",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R144_TWO_TARGET_MERCHANT_OFFERS_BOUND_TO_DRAFT_EXCLUSION_AND_EXACT_IMAGE_BLOCKER",
-      "lastEvidence": "Genau zwei Angebote gezielt an aktuelle Shopify-Quellen gebunden. Offer15453942776193_cj-cjly298079706fu hat im Merchant-Center keinen Preis und ist in CH/LI abgelehnt; Shopify-Produkt15453942776193 ist DRAFT, die exakte Variante ist CHF15.90, kaufbar und untracked/CONTINUE. Sichere Behebung ist Quellausschluss des DRAFT-Produkts, nicht Preis erfinden oder DRAFT aktivieren. Offer15448641012097_cj-cjdk296677412lo ist CHF15.90/IN_STOCK; das exakt blaue XL-Variantenbild ist nur240x320, grössere Bilder zeigen andere Farben. Ein echtes, kommerziell nutzbares exaktes Bild ab500x500 fehlt. Keine Feed-, Bild-, Preis- oder Produktmutation; alte10–20-Tage-Claims bleiben ungeprüft.",
-      "nextAllowedStep": "Für das preislose Offer die aktive Merchant-Datenquelle exakt zurücklesen und das DRAFT-Produkt nur dort ausschliessen; weder Preis erfinden noch Produkt aktivieren. Für das blaue XL-Offer ein echtes, exakt passendes, rechtegeprüftes Quellbild ab500x500 beschaffen und erst danach genau diese Variantenbindung ändern und zurücklesen. Bestehende Overlayfälle getrennt halten, keine Hochrechnung oder Fremdfarbe.",
+      "belegArt": "R145_ACTIVE_YOGA_LANGUAGE_SEO_LIVE_FIX_AND_EXACT_CJ_VARIANT_INVENTORY_READ",
+      "lastEvidence": "Offer15448641012097_cj-cjdk296677412lo ist jetzt live als Capri-Yogahose mit hohem Bund und Bauchkontrolle mit deutschem Handle/Redirect, Beschreibung, SEO und6 Alttexten; der produktbezogene10–20-Tage- und Rabattclaim ist entfernt. ACTIVE,12 Varianten zu CHF15.90, untracked/CONTINUE und rueckhol-0907 erhalten. PR2971 Merge47f1e77f erweitert den fail-closed Reader um variantSku. Run42501861632 bindet CJDK296677412LO exakt an PID2607031647441600100/productSkuCJDK2966774; Run42501905917 bindet alle12 Varianten vollständig. Alle Mengen sind CN factoryInventory, cjInventory0; CH-Lieferung unbekannt. Exaktes rechtegeprüftes blaues >=500x500 Bild bleibt offen; kein Merchant-/Feed-/Bildwrite. Preisloses Offer15453942776193_cj-cjly298079706fu bleibt DRAFT-Quellausschlussfall.",
+      "nextAllowedStep": "Für das aktive blaue XL-Offer ein echtes, exakt passendes, kommerziell rechtegeprüftes Quellbild ab500x500 beschaffen; CJ-Identität und Variantenset sind jetzt exakt belegt, Bildrechte/CH-Lieferbarkeit aber nicht. Erst danach genau die Variantenbindung ändern und zurücklesen. Das preislose DRAFT-Offer nur an der aktiven Merchant-Quelle ausschliessen; weder Preis erfinden noch Produkt aktivieren. FactoryInventory nie als physischer CJ-/CH-Bestand ausgeben.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -6071,12 +6071,12 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r144_cj_readonly_and_writer_guards_merged_no_dispatch_prime_unknown_existing_order_unchanged",
+      "state": "r145_variant_sku_reader_merged_exact_product_inventory_reads_prime_and_delivery_unknown_order_unchanged",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R144_PR2967_AND_PR2966_MERGED_CJ_READ_ONLY_AND_FAIL_CLOSED_WRITER_GUARDS_NO_DISPATCH",
-      "lastEvidence": "PR2967 wurde als9265caa696cdb4e7077d5fa2e8a4931eea02b4c1 gemergt: bounded read-only CJ-Job mit numerischer/UUID-PID, exakter nichtleerer VID-Bindung, komplettem Importgraph-Hash und UNKNOWN bei unvollständigem Beleg. PR2966 wurde als352c9010ca3e70fd7132faedadf46746cbe71e79 gemergt: default DRY/no-op, explizites Write-Gate, frische LuxeStyle/Domain/CHF-Identität, nur DRAFT plus compliance-pruefen, stabile Dedupe/Checkpoint-/Readback-Sperren. Kein Workflow-Dispatch, CJ-Livecall oder Shopify-Import. Offizielle CJ-Dokumentation beschreibt Prime als kostenpflichtige Mitgliedschaft, aber keinen Read-only-Statusendpunkt; LuxeStyle-Entitlement unbekannt. Bestehender Auftrag LX1038/SD2611081059350666900 bleibt UNSHIPPED; kein erneutes Anlegen, Payment, Fulfilment, Tracking oder Kundenkontakt.",
-      "nextAllowedStep": "Für CJ-Produktarbeit zuerst den gemergten PR2967-Reader nur über den bereits vorgesehenen manuellen, begrenzten Workflow mit legitimen Runtime-Credentials und genau einer PID plus optional einer VID ausführen; UNKNOWN nicht wiederholen oder in Freigabe umdeuten. Erst nach vollständiger Produkt-/Varianten-/Rechte-/Schweiz-Liefergegenprobe darf PR2966 mit explizitem Gate höchstens DRAFT plus compliance-pruefen erzeugen. Prime-Status nur im authentifizierten CJ-Konto prüfen, keinen Tarif kaufen. LX1038 nicht erneut anlegen; UNSHIPPED bleibt kein Lieferzeitbeleg.",
+      "belegArt": "R145_PR2971_MERGED_EXACT_VARIANTSKU_PRODUCT_AND_INVENTORY_READS_NO_IMPORT",
+      "lastEvidence": "PR2971 wurde als47f1e77f89cb5c71494f2df017cba0c39b71ecc1 gemergt: product akzeptiert exakt einen Schlüssel PID/productSku/variantSku, inventory weiterhin nur PID; unvollständige/mehrdeutige Variantensets bleiben UNKNOWN. Tests106/106 fokussiert,280/280 Assist und volle LuxeStyle-Matrix grün, unabhängiger Review GO. Run42501861632: genau1 Auth+1 Produkt, CJDK296677412LO→PID2607031647441600100/productSkuCJDK2966774, variants complete, verified. Run42501905917: genau1 Auth+1 Produkt+1 Inventory,12 Varianten vollständig; ausschliesslich CN factoryInventory, überall cjInventory0/verifiedWarehouse2, deliveryToSwitzerland unknown. Kein Search/Pagination/Import/Shopwrite. Prime-Entitlement unbekannt. LX1038/SD2611081059350666900 bleibt UNSHIPPED und unverändert.",
+      "nextAllowedStep": "Die bestätigte PID/Variantenbindung nur für gezielte Rechte-, Bild-, Fracht- und Schweiz-Liefergegenproben verwenden; factoryInventory nicht als physischer CJ- oder Schweiz-Bestand ausgeben. Kein weiterer Inventoryread ohne neuen konkreten Grund. Ein Import bleibt trotz PR2966 nur nach vollständiger Quellen-/Rechte-/Liefer-/Preisprüfung und explizitem Gate als DRAFT plus compliance-pruefen zulässig. Prime-Status nur authentifiziert lesen, keinen Tarif kaufen. LX1038 nicht erneut anlegen; UNSHIPPED bleibt kein Lieferzeitbeleg.",
       "blockers": [
         "CJ-Status ist UNSHIPPED; daraus folgen weder Versandbeginn noch Lieferzeit oder Zustellung.",
         "Shopify-Fulfilment und Tracking/Tracking-Write sind nicht erfolgt.",
@@ -7420,12 +7420,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r144_two_products_and_market_texts_live_fixed_fr_mixed_main_meta_blocked",
+      "state": "r145_three_target_products_live_german_fr_mixed_main_meta_blocked",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R144_TWO_PRODUCTS_MEDIA_ALT_MARKET_TEXTS_LIVE_FIXED_FR_MAIN_META_AND_TRANSLATIONS_OPEN",
-      "lastEvidence": "Shopify-Identität LuxeStyle/luxestyle.ch/CHF frisch bestätigt. Produkt15450854752641 ist live deutsch mit Handle kuscheldecke-klein-fuers-nickerchen-61368a und Redirect; Produkt15450854785409 ist live als Festlicher Baby-Strampler aus Baumwolle mit deutscher Beschreibung/SEO, Wie abgebildet, Handle und17 deutschen Alttexten. Media69634683011457 lautet Produktvorschau. Beide ACTIVE/kaufbar und wegen rueckhol-0907 socialgesperrt. Schweizer Logo-/Shopify-Texte und FR-Footer sind korrigiert; französischer Shop-Titel live. /fr bleibt gemischt: registrierte FR-Beschreibung wird durch hart codiertes Deutsch in MAIN snippets/meta-tags.liquid übersteuert, geprüfte FR-Produkte nutzen deutsche Fallbacks. MAIN unverändert/connector-blockiert; keine Vollkatalog- oder alles-deutsch-Aussage.",
-      "nextAllowedStep": "Den locale-aware Meta-Diff für MAIN snippets/meta-tags.liquid über einen zulässigen Theme-Workflow gegen MD5 de2a6f9cf9200f49fe65ad6ca42f1643 einspielen und öffentlich DE/FR zurücklesen. Danach fachliche FR-Produkt-/Collectionübersetzungen nur quellengebunden und begrenzt ergänzen oder eine ausdrücklich freigegebene Locale-Strategie anwenden. R144-Produkte und Media nicht blind erneut schreiben; rueckhol-Sperren erhalten. FR-Blitz-1–2-Tage-Claim nur mit aktuellem Nachweis behalten.",
+      "belegArt": "R145_THREE_TARGET_PRODUCTS_LIVE_GERMAN_FR_MAIN_META_AND_TRANSLATIONS_OPEN",
+      "lastEvidence": "R144-Kuscheldecke, Baby-Strampler und Media-Alttext bleiben live korrigiert. R145 ergänzt ACTIVE Produkt15448641012097: Capri-Yogahose mit hohem Bund und Bauchkontrolle, deutscher Handle mit Redirect, deutsche Beschreibung/SEO ohne produktbezogenen10–20-Tage-/Rabattclaim und sechs deutsche Alttexte;12 Varianten CHF15.90 und rueckhol-Sperre erhalten. Öffentlicher Readback enthält alten High-Waist-/Rabatttext nicht. /fr bleibt gemischt: registrierte FR-Beschreibung wird durch hart codiertes Deutsch in MAIN snippets/meta-tags.liquid übersteuert, geprüfte FR-Produkte nutzen deutsche Fallbacks. MAIN unverändert/connector-blockiert; Teilmessung, keine Vollkatalog- oder alles-deutsch-Aussage.",
+      "nextAllowedStep": "Den locale-aware Meta-Diff für MAIN snippets/meta-tags.liquid über einen zulässigen Theme-Workflow gegen MD5 de2a6f9cf9200f49fe65ad6ca42f1643 einspielen und öffentlich DE/FR zurücklesen. Danach fachliche FR-Produkt-/Collectionübersetzungen nur quellengebunden und begrenzt ergänzen oder eine ausdrücklich freigegebene Locale-Strategie anwenden. Bereits in R144/R145 korrigierte Produkte und Medien nicht blind erneut schreiben; rueckhol-Sperren erhalten. FR-Blitz-1–2-Tage-Claim nur mit aktuellem Nachweis behalten.",
       "blockers": [
         "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
         "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
@@ -11061,6 +11061,22 @@
         "readAt": "2026-11-08T17:19:09+01:00"
       },
       "action": "R144: Two verified products and one media alt text were corrected live in German with safe redirects; Swiss market/footer translations were read back. FR remains mixed because MAIN meta-tags.liquid hardcodes German and direct MAIN writes are connector-blocked. Two targeted Merchant offers were bound to a DRAFT-source exclusion and an exact-image blocker; no feed/image/price write. PR2967 and PR2966 merged reviewed CJ read-only and fail-closed writer safeguards; no CJ call or dispatch. Official docs expose no Prime-status endpoint, so entitlement remains unknown. Existing #1038 remains UNSHIPPED and unchanged. Tasks remain24."
+    },
+    {
+      "revision": 145,
+      "at": "2026-11-08T17:50:45+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "/workspace/luxestyle-review/r145-yoga-cj-variantsku-20261108.json",
+        "sha256": "f66e7d0ad35474ee392b7d4c801c427518ff2d490597df0b6650e184466076a5",
+        "mergeCommit": "47f1e77f89cb5c71494f2df017cba0c39b71ecc1",
+        "workflowRuns": [
+          42501861632,
+          42501905917
+        ],
+        "readAt": "2026-11-08T17:50:45+01:00"
+      },
+      "action": "R145: The ACTIVE Yoga product was corrected live to German title, handle/redirect, description, SEO and six alt texts; the product-specific unverified 10–20-day and invalid discount claims were removed while status, twelve CHF15.90 variants, inventory behaviour and rueckhol tag were preserved. PR2971 merged exact fail-closed variantSku support. One fixed product read and one subsequent PID inventory read bound all twelve variants; every reported quantity is CN factoryInventory with cjInventory zero, and Switzerland delivery/Prime remain unknown. No search, pagination, import, product creation, inventory write, customer contact or order change. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -17787,6 +17803,51 @@
       "purchaseOrAccountWrite": false
     },
     "existingOrder1038": "UNSHIPPED_UNCHANGED",
+    "taskCount": 24
+  },
+  "run145": {
+    "at": "2026-11-08T17:50:45+01:00",
+    "scope": "targeted_active_yoga_language_seo_fix_exact_cj_variantsku_product_and_inventory_reads",
+    "shopify": {
+      "productId": "gid://shopify/Product/15448641012097",
+      "title": "Capri-Yogahose mit hohem Bund und Bauchkontrolle",
+      "handle": "capri-yogahose-mit-hohem-bund-und-bauchkontrolle-600100",
+      "redirectConfirmed": true,
+      "mediaAltTextsUpdated": 6,
+      "status": "ACTIVE",
+      "variantCount": 12,
+      "priceCHF": "15.90",
+      "inventoryTracking": false,
+      "inventoryPolicy": "CONTINUE",
+      "socialBlockerTag": "rueckhol-0907",
+      "productClaimRemoved": "Lieferung 10–20 Werktage",
+      "seoClaimRemoved": "Jetzt –10% mit Code…"
+    },
+    "cjReader": {
+      "pullRequest": 2971,
+      "mergeCommit": "47f1e77f89cb5c71494f2df017cba0c39b71ecc1",
+      "productRun": 42501861632,
+      "inventoryRun": 42501905917,
+      "variantSku": "CJDK296677412LO",
+      "pid": "2607031647441600100",
+      "productSku": "CJDK2966774",
+      "variantsBound": 12,
+      "inventoryPartial": false,
+      "inventoryCountry": "CN",
+      "allCjInventoryZero": true,
+      "allQuantitiesFactoryInventory": true,
+      "deliveryToSwitzerland": "UNKNOWN",
+      "primeEntitlement": "UNKNOWN",
+      "searches": 0,
+      "pagination": 0,
+      "imports": 0,
+      "shopWrites": 0
+    },
+    "existingOrder1038": "UNSHIPPED_UNCHANGED",
+    "evidence": {
+      "path": "/workspace/luxestyle-review/r145-yoga-cj-variantsku-20261108.json",
+      "sha256": "f66e7d0ad35474ee392b7d4c801c427518ff2d490597df0b6650e184466076a5"
+    },
     "taskCount": 24
   }
 }

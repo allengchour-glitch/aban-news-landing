@@ -1551,3 +1551,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Kontinuität | Belege gehasht, Tagesgrenze erhalten und #1038 nicht erneut bearbeitet | Keine breite zweite Kennzahl-/Flow-/Bestellabfrage. #1038 bleibt UNSHIPPED; kein Fulfilment, Tracking-Write, Kundenkontakt oder Währungsmix |
 
 [LUXESTYLE_R144_20261108] [Live-/CJ-Beleg](/workspace/luxestyle-review/r144-live-cj-20261108.json), SHA-256 `cb72d6e4a7a1ab3e3386ba214a4586921f0c838dbbdae9896246ec178ff986d4` · [MAIN-Fixplan](/workspace/luxestyle-review/r144-main-theme-fix-plan-20261108.md), SHA-256 `ad3d33140de23cb66684c590f4013c4faa9d19a048ac7dd04e94f15de82e4635` · [CJ-Prime-Beleg](/workspace/luxestyle-review/r144-cj-prime-public-docs-20261108.json), SHA-256 `def38e62c2ce31fc82bcce66509b24d03521db46972899eaf43ac2bc114d678c` · PR2967 Merge `9265caa696cdb4e7077d5fa2e8a4931eea02b4c1` · PR2966 Merge `352c9010ca3e70fd7132faedadf46746cbe71e79`.
+
+### R145
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Aktives Produkt / SEO | Yoga-Produkt15448641012097 frisch gelesen, Titel/Handle/Beschreibung/SEO und sechs Alttexte korrigiert, danach Admin und öffentlich zurückgelesen | Live deutsch; alter Handle leitet sicher um. Produktbezogener 10–20-Tage- und Rabattclaim entfernt. ACTIVE,12 Varianten/CHF15.90, untracked/CONTINUE, Optionen/Tags erhalten; `rueckhol-0907` blockiert Social |
+| CJ Reader | Echte Shopify-Varianten-SKU als fehlenden sicheren Schlüssel erkannt; PR2971 implementiert, unabhängig geprüft und nach grüner Vollmatrix gemergt | Merge `47f1e77f…`; product akzeptiert genau PID/productSku/variantSku, inventory nur PID; unvollständige oder uneindeutige Variantensets bleiben UNKNOWN |
+| CJ Produktread | Genau einen fixierten manuellen Nur-Lese-Lauf für Blau/XL gestartet und zurückgelesen | Run42501861632 success: ein Auth-/Produktrequest, `CJDK296677412LO` exakt gebunden an PID2607031647441600100 und productSkuCJDK2966774; vollständige Variantenliste, verified=true |
+| CJ Inventar | Nach bestätigter PID genau einen getrennten Nur-Lese-Inventarlauf gestartet | Run42501905917 success: ein Auth-/Produkt-/Inventoryrequest,12 Varianten vollständig. Nur CN factoryInventory, überall cjInventory0/verifiedWarehouse2; CH-Lieferung unbekannt |
+| Grenzen | Produkt- und CJ-Befunde getrennt interpretiert | Keine Suche/Pagination, kein CJ-Import, Produkt-/Preis-/Bestandswrite, keine Lieferzeit-/Bestandszusage, kein Prime-Kauf, Kundenkontakt, Fulfilment oder Tracking. #1038 unverändert UNSHIPPED |
+
+[LUXESTYLE_R145_20261108] [Beleg](/workspace/luxestyle-review/r145-yoga-cj-variantsku-20261108.json), SHA-256 `f66e7d0ad35474ee392b7d4c801c427518ff2d490597df0b6650e184466076a5` · [PR2971](https://github.com/allengchour-glitch/aban-news-landing/pull/2971), Merge `47f1e77f89cb5c71494f2df017cba0c39b71ecc1` · [Produktread42501861632](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42501861632) · [Inventarread42501905917](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42501905917).
