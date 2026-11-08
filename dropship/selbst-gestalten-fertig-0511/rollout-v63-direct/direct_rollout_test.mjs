@@ -10,6 +10,31 @@ import {
 let ok = 0;
 const test = (name, fn) => { try { fn(); ok++; } catch (e) { console.error(`FEHLER ${name}: ${e.message}`); process.exitCode = 1; } };
 const wirft = (fn, rx) => { let e; try { fn(); } catch (x) { e = x; } assert.ok(e && rx.test(e.message), e?.message || 'warf nicht'); };
+function effektiveHeaders(text, path) {
+  const rules = [];
+  let rule = null;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line || line.startsWith('#')) continue;
+    if (!/^\s/.test(raw)) { rule = { pattern: line, lines: [] }; rules.push(rule); }
+    else if (rule) rule.lines.push(line);
+  }
+  const values = new Map();
+  const matches = (pattern) => {
+    if (!pattern.startsWith('/')) return false;
+    const rx = '^' + pattern.split('*').map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*') + '$';
+    return new RegExp(rx).test(path);
+  };
+  for (const r of rules.filter((candidate) => matches(candidate.pattern))) {
+    for (const line of r.lines.filter((value) => value.startsWith('! '))) values.delete(line.slice(2).toLowerCase());
+    for (const line of r.lines.filter((value) => !value.startsWith('! '))) {
+      const colon = line.indexOf(':'); if (colon < 1) continue;
+      const name = line.slice(0, colon).toLowerCase(); const value = line.slice(colon + 1).trim();
+      values.set(name, [...(values.get(name) || []), value]);
+    }
+  }
+  return values;
+}
 const H = 'a'.repeat(64);
 const editor = { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js', sha256: H };
 const products = ALLOWLIST.map((a, i) => ({ id: a.id, handle: a.handle, cardUrl: `https://abannews.com/pod/v6/maps/lspod-${a.numericId}.karte.json`, cardSha256: H, previewUrl: PREVIEW_IDS.includes(a.numericId) ? `https://abannews.com/pod/v6/maps/lspod-${a.numericId}.vorschau.json` : null, previewSha256: PREVIEW_IDS.includes(a.numericId) ? H : null, variantIds: [String(i + 1)] }));
@@ -75,10 +100,23 @@ test('Produktgate lehnt DRAFT, falsche Variante und nicht kaufbar ab', () => {
 test('Cloudflare-Headers erlauben nur den versionierten pod/v6-Pfad cross-origin', () => {
   const root = fileURLToPath(new URL('../../../', import.meta.url));
   const h = readFileSync(root + '_headers', 'utf8');
-  assert.match(h, /\/pod\/v6\/\*[\s\S]*Cross-Origin-Resource-Policy: cross-origin[\s\S]*Access-Control-Allow-Origin: \*/);
+  assert.match(h, /\/pod\/v6\/\*\s+! Cross-Origin-Resource-Policy\s+Access-Control-Allow-Origin: \*\s+Cross-Origin-Resource-Policy: cross-origin/m);
   assert.match(h, /\/pod\/v6\/\*[\s\S]*Cache-Control: public, max-age=86400, must-revalidate/);
-  assert.match(h, /\/pod\/v6\/lspod-designer-v6-\*\.js[\s\S]*Cache-Control: public, max-age=31536000, immutable/);
+  assert.match(h, /\/pod\/v6\/lspod-designer-v6-\*\.js\s+! Cache-Control\s+Cache-Control: public, max-age=31536000, immutable/m);
+  const editorBlock = h.match(/\/pod\/v6\/lspod-designer-v6-\*\.js\n((?:[ \t]+[^\n]+\n?)*)/)?.[1] || '';
+  assert.doesNotMatch(editorBlock, /(?:Access-Control-Allow-Origin|Cross-Origin-Resource-Policy):/);
   assert.match(h, /\/\*[\s\S]*Cross-Origin-Resource-Policy: same-site/);
+  const editorEffective = effektiveHeaders(h, '/pod/v6/lspod-designer-v6-6.3.0.js');
+  assert.deepEqual(editorEffective.get('access-control-allow-origin'), ['*']);
+  assert.deepEqual(editorEffective.get('cross-origin-resource-policy'), ['cross-origin']);
+  assert.deepEqual(editorEffective.get('cache-control'), ['public, max-age=31536000, immutable']);
+  const mapEffective = effektiveHeaders(h, '/pod/v6/maps/lspod-15422823465345.karte.json');
+  assert.deepEqual(mapEffective.get('access-control-allow-origin'), ['*']);
+  assert.deepEqual(mapEffective.get('cross-origin-resource-policy'), ['cross-origin']);
+  assert.deepEqual(mapEffective.get('cache-control'), ['public, max-age=86400, must-revalidate']);
+  const pageEffective = effektiveHeaders(h, '/index.html');
+  assert.equal(pageEffective.has('access-control-allow-origin'), false);
+  assert.deepEqual(pageEffective.get('cross-origin-resource-policy'), ['same-site']);
 });
 test('Workflow ist manuell, Default-Branch-gebunden, bestätigt Writes exakt und sichert Artefakte', () => {
   const root = fileURLToPath(new URL('../../../', import.meta.url));

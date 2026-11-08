@@ -68,7 +68,8 @@ let panelBlocked = false; try { panel84Pruefen(badPanel, panelCatalog, panelProd
 test('PANEL84-Geometrieabweichung blockiert', panelBlocked);
 
 const headers = readFileSync(resolve('_headers'), 'utf8');
-test('Map-Route ist explizit CORS/CORP-freigegeben', /\/pod\/v6\/maps\/\*[\s\S]*Access-Control-Allow-Origin: \*[\s\S]*Cross-Origin-Resource-Policy: cross-origin/.test(headers));
+test('Pod-v6-Route entfernt globales CORP und setzt CORS/CORP einmal', /\/pod\/v6\/\*\s+! Cross-Origin-Resource-Policy\s+Access-Control-Allow-Origin: \*\s+Cross-Origin-Resource-Policy: cross-origin/m.test(headers));
+test('Editor-Route ersetzt nur Cache-Control und verdoppelt CORS/CORP nicht', /\/pod\/v6\/lspod-designer-v6-\*\.js\s+! Cache-Control\s+Cache-Control: public, max-age=31536000, immutable/m.test(headers));
 
 if (errors.length) { console.error(`\n${errors.length} von ${n} Pruefungen fehlgeschlagen`); process.exit(1); }
 console.log(`\n${n} Pruefungen bestanden`);
