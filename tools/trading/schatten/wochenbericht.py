@@ -6,13 +6,14 @@
 
 Verglichen werden Pilot (alles Futures), Pilot 2.0 (Spot-Long + Parkplatz) und «gekauft und gehalten» (BTC, ETH, je zur Hälfte).
 Kürzer als 8 Wochen ist KEIN Urteil: der Bericht sagt das jedes Mal dazu. Keine Anlageberatung.
+Am Ende steht «Gesundheit der Messreihen»: fehlende, doppelte oder veraltete Tage, ein ausgefallenes Labor, fehlende Satelliten-Kurse (Backlog 6).
 """
 from __future__ import annotations
 
 import argparse
 import json
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
@@ -22,6 +23,9 @@ SATELLIT = ROOT / "data" / "krypto-satellit-schatten.json"
 LABOR = ROOT / "data" / "krypto-scalping-labor.json"
 BERICHT = ROOT / "docs" / "KRYPTO-WOCHENBERICHT.md"
 MIN_WOCHEN = 8
+MAX_ALTER_TAGE = 2            # der Lauf von heute schreibt den Stand von gestern; ein Tag Spielraum für einen verspäteten Zeitplan (GitHub startet hier oft Stunden zu spät)
+MAX_ALTER_LABOR_STUNDEN = 48  # das Labor holt verpasste Minuten nach (kein Datenverlust); über zwei Tage ohne Lauf ist trotzdem ein Ausfall des Tageslaufs
+MAX_NENNEN = 5                # so viele Tage oder Coins stehen im Wortlaut, der Rest als «…»
 KOPF = ("# Krypto-Wochenbericht (Spielgeld)\n\n"
         "Automatisch erzeugt aus `data/krypto-pilot-schatten.json`, dem Satelliten-Schattenbuch und dem Scalping-Labor (`tools/trading/schatten/wochenbericht.py`). Nur gemessene Zahlen, "
         "vereinfacht: ohne Börsen-Stops und Liquidation. Kürzer als 8 Wochen ist kein Urteil. Keine Anlageberatung.\n")
@@ -113,8 +117,119 @@ def labor_abschnitt(lab: dict | None) -> list[str]:
         return []
 
 
-def abschnitt(lb: dict, sb: dict | None = None, lab: dict | None = None) -> tuple[str, str]:
-    """→ (Stand, Markdown-Abschnitt). Zu wenig Tage → Stand '' und ein Satz. sb: das Satelliten-Schattenbuch, lab: das Scalping-Labor-Buch (beide optional)."""
+def _datum(s) -> date | None:
+    """ISO-Datum oder Zeitstempel → date, sonst None (nie ein Fehler)."""
+    try:
+        return date.fromisoformat(str(s)[:10])
+    except ValueError:
+        return None
+
+
+def _felder(buch, schluessel: str, feld: str) -> list:
+    """Das Feld `feld` aller Tageseinträge `buch[schluessel]`. Kein Buch, keine Liste oder ein Eintrag ohne Feld gibt None an dieser Stelle (wird als «unlesbar» gemeldet)."""
+    t = buch.get(schluessel) if isinstance(buch, dict) else None
+    return [x.get(feld) if isinstance(x, dict) else None for x in t] if isinstance(t, list) else []
+
+
+def _nennen(werte: list[str]) -> str:
+    return ", ".join(werte[:MAX_NENNEN]) + (", …" if len(werte) > MAX_NENNEN else "")
+
+
+def reihe_pruefen(name: str, staende: list) -> list[str]:
+    """Befunde zu einer Tagesreihe (die Datumstexte in der Reihenfolge des Buchs): fehlende Tage, doppelte Tage, falsche Reihenfolge, unlesbare Daten. Leer = lückenlos.
+    Fehlende Tage werden aus den sortierten, einmaligen Tagen gerechnet: eine durcheinander geratene, aber vollständige Reihe meldet nur die Reihenfolge, keine Lücken."""
+    ds = [d for d in (_datum(s) for s in staende) if d is not None]
+    funde = []
+    if len(ds) < len(staende):
+        n = len(staende) - len(ds)
+        funde.append(f"{name}: " + ("1 Eintrag" if n == 1 else f"{n} Einträge") + " ohne lesbares Datum")
+    einmal = sorted(set(ds))
+    fehlend = [(a + timedelta(days=k)).isoformat() for a, b in zip(einmal, einmal[1:]) for k in range(1, (b - a).days)]
+    if fehlend:
+        funde.append(f"{name}: " + ("1 Tag fehlt" if len(fehlend) == 1 else f"{len(fehlend)} Tage fehlen") + f" ({_nennen(fehlend)})")
+    doppelt = sorted({d.isoformat() for d in ds if ds.count(d) > 1})
+    if doppelt:
+        funde.append(f"{name}: Tag doppelt eingetragen ({_nennen(doppelt)})")
+    if ds != sorted(ds):
+        funde.append(f"{name}: Einträge nicht nach Datum geordnet")
+    return funde
+
+
+def alter_pruefen(name: str, staende: list, heute: date) -> list[str]:
+    """Ist der jüngste Tag der Reihe zu alt? (MAX_ALTER_TAGE: genau so alt ist noch in Ordnung.)"""
+    ds = [d for d in (_datum(s) for s in staende) if d is not None]
+    if not ds:
+        return []
+    tage = (heute - max(ds)).days
+    if tage > MAX_ALTER_TAGE:
+        return [f"{name}: letzter Eintrag vom {max(ds).isoformat()}, {tage} Tage her (hat der Tageslauf nicht geschrieben?)"]
+    return []
+
+
+def _labor_zeit(lab) -> datetime | None:
+    """Zeitpunkt des letzten Labor-Laufs (UTC), None wenn es keinen gibt oder er unlesbar ist."""
+    lauf = lab.get("letzter_lauf") if isinstance(lab, dict) else None
+    if not isinstance(lauf, dict) or lauf.get("zeit") is None:
+        return None
+    try:
+        z = datetime.fromisoformat(str(lauf["zeit"]).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return (z if z.tzinfo else z.replace(tzinfo=timezone.utc)).astimezone(timezone.utc)
+
+
+def labor_pruefen(lab, jetzt: datetime) -> list[str]:
+    """Das Labor hat einen eigenen Takt (verpasste Minuten holt es nach): hier nur, ob der Tageslauf es in den letzten MAX_ALTER_LABOR_STUNDEN Stunden bedient hat, und seine eigenen Hinweise."""
+    lauf = lab.get("letzter_lauf") if isinstance(lab, dict) else None
+    if not isinstance(lauf, dict):
+        return []
+    funde = []
+    z = _labor_zeit(lab)
+    if z is None:
+        funde.append("Labor: Zeitstempel des letzten Laufs fehlt oder ist unlesbar")
+    elif (jetzt - z).total_seconds() / 3600 > MAX_ALTER_LABOR_STUNDEN:
+        funde.append(f"Labor: letzter Lauf vor {(jetzt - z).total_seconds() / 3600:.0f} Stunden ({z:%Y-%m-%d %H:%M} UTC), der Tageslauf hat es nicht bedient?")
+    hinweise = lauf.get("hinweise")
+    funde += [f"Labor-Hinweis: {h}" for h in (hinweise[:3] if isinstance(hinweise, list) else [])]
+    return funde
+
+
+def satellit_pruefen(sb) -> list[str]:
+    """Coins, für die dem Satelliten die Kurse fehlten (steht im Buch als `fehlende_coins`)."""
+    f = sb.get("fehlende_coins") if isinstance(sb, dict) else None
+    if isinstance(f, list) and f:
+        return [f"Satellit: für {len(f)} " + ("Coin" if len(f) == 1 else "Coins") + f" fehlten die Kurse ({_nennen([str(x) for x in f])})"]
+    return []
+
+
+def gesundheit_abschnitt(lb: dict, sb: dict | None = None, lab: dict | None = None, jetzt: datetime | None = None) -> list[str]:
+    """Zeilen «Gesundheit der Messreihen»: sind Pilot, Pilot 2.0 und Satellit lückenlos und frisch, lief das Labor, fehlten Kurse? Die Kennzahlen des Berichts rechnen mit den
+    vorhandenen Tagen: fehlende Tage würden Rendite und Einbruch stillschweigend verzerren, darum steht der Befund IM Bericht. Ein unlesbares Buch macht daraus nie einen Absturz."""
+    jetzt = jetzt or datetime.now(timezone.utc)
+    jetzt = jetzt if jetzt.tzinfo else jetzt.replace(tzinfo=timezone.utc)
+    kopf = ["", "### Gesundheit der Messreihen", ""]
+    try:
+        reihen = [(n, r) for n, r in (("Pilot", _felder(lb, "tage", "stand")), ("Pilot 2.0", _felder(lb, "tage_p2", "stand")), ("Satellit", _felder(sb, "tage", "tag"))) if r]
+        funde = []
+        for name, r in reihen:
+            funde += reihe_pruefen(name, r) + alter_pruefen(name, r, jetzt.date())
+        funde += satellit_pruefen(sb) + labor_pruefen(lab, jetzt)
+        if funde:
+            return kopf + ["Auffälligkeiten (die Kennzahlen oben rechnen mit den vorhandenen Tagen; fehlende Tage verzerren Rendite und Einbruch):", ""] + [f"- {f}" for f in funde]
+        teile = [f"{n} {len([d for d in map(_datum, r) if d])} Tage bis {max(d for d in map(_datum, r) if d).isoformat()}" for n, r in reihen]
+        z = _labor_zeit(lab)
+        if z is not None:
+            teile.append(f"Labor zuletzt {z:%Y-%m-%d %H:%M} UTC")
+        if not teile:
+            return kopf + ["Keine Messreihe zum Prüfen."]
+        return kopf + ["Alle Messreihen lückenlos und aktuell: " + "; ".join(teile) + "."]
+    except Exception:  # noqa: BLE001 — ein kaputtes Buch darf den Bericht nie verhindern
+        return kopf + ["Prüfung nicht möglich: die Daten sind unlesbar."]
+
+
+def abschnitt(lb: dict, sb: dict | None = None, lab: dict | None = None, jetzt: datetime | None = None) -> tuple[str, str]:
+    """→ (Stand, Markdown-Abschnitt). Zu wenig Tage → Stand '' und ein Satz. sb: das Satelliten-Schattenbuch, lab: das Scalping-Labor-Buch (beide optional).
+    jetzt: die Uhrzeit (UTC) für die Frische-Prüfung der Messreihen; ohne Angabe die echte."""
     t = lb.get("tage") or []
     if len(t) < 2:
         return "", "Noch zu wenig Tage im Schattenkonto für einen Bericht."
@@ -135,14 +250,15 @@ def abschnitt(lb: dict, sb: dict | None = None, lab: dict | None = None) -> tupl
     md += ["", f"Aktuelle Position des Piloten: {pos}."]
     md += satellit_abschnitt(sb)
     md += labor_abschnitt(lab)
+    md += gesundheit_abschnitt(lb, sb, lab, jetzt)
     md += [""]
     return stand, "\n".join(md)
 
 
-def schreiben(lb: dict, datei: Path | None = None, sb: dict | None = None, lab: dict | None = None) -> str:
+def schreiben(lb: dict, datei: Path | None = None, sb: dict | None = None, lab: dict | None = None, jetzt: datetime | None = None) -> str:
     """Hängt den Abschnitt an die Berichtsdatei an. → 'geschrieben', 'schon drin' oder 'zu wenig Tage'."""
     datei = datei or BERICHT
-    stand, md = abschnitt(lb, sb, lab)
+    stand, md = abschnitt(lb, sb, lab, jetzt)
     if not stand:
         return "zu wenig Tage"
     alt = datei.read_text(encoding="utf-8") if datei.exists() else ""
