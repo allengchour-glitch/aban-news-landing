@@ -209,3 +209,11 @@ Referenzen: [Search Console sitemaps.submit](https://developers.google.com/webma
 ### Aktivierung und erster Prüflauf
 
 Die Arbeitszentrale und die Tagespflege sind mit PR #2913 nach `main` übernommen. Nach Änderungen am Pflegewerkzeug oder Büro-Generator erzeugt der Workflow zusätzlich einen ersten Bericht auf `main`; dieser Push-Lauf ist immer ein Trockenlauf für Suchmaschinen. Er prüft die echte GitHub-Anbindung, veröffentlicht keine Antworten und startet den bestehenden Tageslauf nicht von Hand. Tägliche Suchmaschinen-Meldungen bleiben an die einmalig eingerichteten Zugänge gebunden. Ohne geladenen Bericht sagt die Seitenpflege ausdrücklich «Kein Durchlauf geladen» und behauptet keinen Betriebsstand.
+
+### Öffentliche Statusverbindung des Entwicklerbüros
+
+Der Seitenbau startet `tools/buero/projektstatus.py`: Werkstatt und Selbsttests laufen neu, erfolgreiche Lieferpakete werden geprüft. Nur die drei Entwicklerstationen Produktbau, Prüfstand und Verkaufsunterlagen werden in die öffentliche Webansicht übernommen. Projektfortschritt wird aus den vorhandenen Paketen neu abgeleitet; beliebige Zusatzfelder und Projekttexte aus Berichten werden verworfen. Konto-, Kunden- und Sitzungsdaten werden nicht exportiert. Bei fehlenden oder ungültigen Belegen bleiben Schritte offen; ein fehlgeschlagener Test darf keinen abgeschlossenen Bau bestätigen.
+
+`/buero-projektstatus.json` liefert denselben begrenzten Stand. Die geöffnete Webansicht fragt bei Sichtbarkeit alle fünf Minuten nach und übernimmt nur neuere Berichte für diese drei Stationen. Nach 24 Stunden wird ein Stand als alt angezeigt. Ein Netzfehler löscht keinen vorherigen Messbeleg und macht ihn nicht frischer. Der Hauptseiten-Deploy wird nach abgeschlossenen Hauptzweig-Läufen der Büro-Zentrale ausgelöst, die alle sechs Stunden geplant sind; zusätzlich bleibt der tägliche Veröffentlichungslauf bestehen. Zeitpläne können verzögert werden.
+
+Diese Verbindung liefert Projektbau- und Teststatus. Sie verbindet keine Kundenpostfächer, Kommentar-APIs oder Kontosteuerung mit der öffentlichen Seite. Übrige Stationen ohne Statusquelle bleiben ungemessen. Das private Claude-Artefakt braucht weiterhin seinen eigenen Datenimport; das reine Designpaket aktiviert dort keine fremde Datenquelle.

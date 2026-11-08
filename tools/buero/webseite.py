@@ -16,7 +16,7 @@ PUBLIC_IDS = {'auswahl','schaufenster','waechter','autopilot','fortura','printfu
               'yt_skript','yt_video','yt_wachstum'}
 
 
-def bauen(ziel, design_paket=None):
+def bauen(ziel, design_paket=None, werkstatt_status=None):
     spec=importlib.util.spec_from_file_location('buero',ROOT/'make_buero.py')
     module=importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -35,6 +35,22 @@ def bauen(ziel, design_paket=None):
         row["link"] = row["aktion_url"] = ""
         row["aktion_hinweis"] = ""
         row["naechster_schritt"] = "Den nächsten Schritt im passenden Arbeitsbereich ansehen."
+    if werkstatt_status:
+        from projektstatus import bericht_lesen, IDS
+        report = bericht_lesen(werkstatt_status)
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', encoding='utf-8') as f:
+            json.dump(report, f, ensure_ascii=False)
+            f.flush()
+            module.werkstatt_einlesen(f.name, rows)
+        for row in rows:
+            if row['id'] not in IDS: continue
+            row['quelle'] = 'Automatischer Projektbau und Selbsttests'
+            row['ereignis'] = 'Projektstand automatisch geprüft'
+            row['naechster_schritt'] = {
+                'dev_bauen': 'Projektfortschritt ansehen und die noch offene Kundenanbindung vorbereiten.',
+                'dev_pruefen': 'Letzte Prüfergebnisse und offene Pilotfragen ansehen.',
+                'dev_angebot': 'Leistungsumfang, Preis und eigenen Produkt-Checkout festlegen.'}[row['id']]
+            row['befund'] = row['befund'].replace('Lokaler Prototyp;', 'Geprüfter Prototyp;').replace('Kein Dauerlauf.', 'Automatischer Prüflauf geplant alle sechs Stunden; kein ständig aktiver Agent.')
     tree=ast.parse((ROOT/'pruefung/harness.py').read_text())
     template=next(ast.literal_eval(n.value) for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='KOPF' for t in n.targets))
     template=template.replace("  var NOW = Date.parse('2026-11-05T20:30:00Z');\n  Date.now = function () { return NOW; };\n",'')
@@ -65,6 +81,8 @@ def bauen(ziel, design_paket=None):
     body=notice+body
     result=template.replace('%%ROWS%%',json.dumps(rows,ensure_ascii=False)).replace('%%BODY%%',body)
     result=result.replace("</body>", "<script>window.__runAll();document.querySelectorAll('.kb-tab').forEach(function(b){b.addEventListener('click',function(){window.__runAll();});});setTimeout(window.__runAll,0);</script></body>")
+    if werkstatt_status:
+        result = result.replace('</body>', '<script>' + (ROOT/'status_anzeige.js').read_text() + '</script></body>')
     Path(ziel).write_text(result,encoding='utf-8')
     return rows
 

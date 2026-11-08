@@ -34,3 +34,7 @@
 # Index
 /
   Cache-Control: public, max-age=3600, must-revalidate
+
+# Gemessener Büro-Projektstatus: kurz cachen, keine Konto- oder Kundendaten.
+/buero-projektstatus.json
+  Cache-Control: public, max-age=60, must-revalidate

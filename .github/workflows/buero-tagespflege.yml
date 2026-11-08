@@ -29,6 +29,10 @@ on:
       - 'tools/buero/auto_reparatur.py'
       - 'tools/buero/test_auto_reparatur.py'
       - 'tools/buero/test_metricool_anzeige.py'
+      - 'tools/buero/projektstatus.py'
+      - 'tools/buero/test_projektstatus.py'
+      - 'tools/buero/webseite.py'
+      - 'tools/buero/status_anzeige.js'
       - 'build-pages.sh'
       - '.github/workflows/cf-deploy-mainsite.yml'
       - 'tools/buero/make_buero.py'
@@ -46,7 +50,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: tools/buero
+          sparse-checkout: |
+            tools/buero
+            tools/entwicklerbuero
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

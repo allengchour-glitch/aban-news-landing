@@ -143,6 +143,9 @@ if [ -e _site/downloads/packs ]; then echo "FEHLER: downloads/packs/ ist im Depl
 # lokalen "bash build-pages.sh" mit vorhandenen Rechnungen. Gemessen 04.10.2026: ein Testlauf legte
 # buero/2026-001-rechnung.html an, und build-pages.sh haette sie mitkopiert.
 if [ -e _site/buero ]; then echo "FEHLER: buero/ ist im Deploy (Rechnungen mit Kundendaten und IBAN oeffentlich) — Abbruch." >&2; exit 1; fi
+# Projektbau frisch prüfen und nur drei öffentliche Entwicklerstationen verbinden.
+python3 -B tools/buero/projektstatus.py _site/ki-buero.html
+
 # Begrenzte technische Reparatur mit Gegenprüfung; Fehler stoppen die Veröffentlichung.
 python3 -B tools/buero/auto_reparatur.py _site --anwenden --bericht _site/buero-reparatur.json
 
