@@ -52,6 +52,7 @@ on:
       - 'dropship/selbst-gestalten-fertig-0511/**'
       - 'automation/pod_modell/**'
       - 'pod/v6/**'
+      - '_headers'
       - 'pod/live/**'
       - 'dropship/rueckgabe-0611/**'
       - 'dropship/katalog-nur-bestellbar-0511/**'
@@ -76,6 +77,7 @@ on:
       - 'dropship/taxonomie-2610-b/**'
       - 'dropship/tiktok-cj-videos-0311/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
+      - '.github/workflows/pod-v63-description-rollout.yml'
       - '.github/workflows/video-meta-autopost.yml'
       - '.github/workflows/cj-reviews.yml'
       - '.github/workflows/metricool-schedule.yml'
@@ -414,7 +416,9 @@ jobs:
             dropship/selbst-gestalten-fertig-0511
             pod/v6
             pod/live
+            _headers
             .github/workflows/luxestyle-automation-tests.yml
+            .github/workflows/pod-v63-description-rollout.yml
           sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v4
         with:
@@ -433,6 +437,8 @@ jobs:
           node automation/pod_modell/versand_messen_test.mjs
       - name: Editor v6 (reine Logik, Fallback auf v5 aus pod/live)
         run: node pod/v6/test/unit_test.mjs
+      - name: Direkter v6.3-Beschreibungs-Rollout (Scope, Assetbindung, SRI, Blocker und Header; kein Netz)
+        run: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout_test.mjs
       - name: Einspielskripte und Rechner (Preise, L0, Schweizer Masse, Rückgabe-Texte)
         run: |
           node dropship/selbst-gestalten-fertig-0511/preise/plan_test.mjs

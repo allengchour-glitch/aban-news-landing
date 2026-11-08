@@ -1,0 +1,111 @@
+name: POD v6.3 Beschreibungs-Rollout
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Planen, anwenden oder einen früheren Apply-Lauf zurücknehmen
+        type: choice
+        required: true
+        default: plan
+        options: [plan, apply, rollback]
+      scope:
+        description: Nur Tassen-Canary oder gesamter geprüfter Scope
+        type: choice
+        required: true
+        default: canary
+        options: [canary, full]
+      confirmation:
+        description: Apply/Rollback erfordert den dokumentierten exakten Bestätigungstext
+        type: string
+        required: false
+        default: ''
+      source_run_id:
+        description: 'Nur Rollback: numerische Run-ID des ursprünglichen Apply-Artefakts'
+        type: string
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pod-v63-description-rollout
+  cancel-in-progress: false
+
+jobs:
+  rollout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Eingaben und Default-Branch prüfen
+        env:
+          OPERATION: ${{ inputs.operation }}
+          SCOPE: ${{ inputs.scope }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          REF_NAME: ${{ github.ref_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          test "$REF_NAME" = "$DEFAULT_BRANCH" || { echo "Nur der Default-Branch darf ausrollen" >&2; exit 2; }
+          case "$OPERATION:$SCOPE" in
+            plan:canary|plan:full) test -z "$CONFIRMATION"; test -z "$SOURCE_RUN_ID" ;;
+            apply:canary) test "$CONFIRMATION" = V63_CANARY_TASSE; test -z "$SOURCE_RUN_ID" ;;
+            apply:full) test "$CONFIRMATION" = V63_FULL_19_SAFE; test -z "$SOURCE_RUN_ID" ;;
+            rollback:canary) test "$CONFIRMATION" = V63_ROLLBACK_TASSE; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
+            rollback:full) test "$CONFIRMATION" = V63_ROLLBACK_19_SAFE; [[ "$SOURCE_RUN_ID" =~ ^[0-9]+$ ]] ;;
+            *) echo "Unzulässige Eingabekombination" >&2; exit 2 ;;
+          esac
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Ursprüngliches Apply-Artefakt für Rollback laden
+        if: ${{ inputs.operation == 'rollback' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: pod-v63-rollout-${{ inputs.source_run_id }}
+          path: ${{ runner.temp }}/pod-v63-source
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.source_run_id }}
+
+      - name: Lokaltests vor jedem Lauf
+        run: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout_test.mjs
+
+      - name: Planen oder kontrolliert schreiben
+        env:
+          OPERATION: ${{ inputs.operation }}
+          SCOPE: ${{ inputs.scope }}
+          ACK: ${{ inputs.confirmation }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          OUT_DIR: ${{ runner.temp }}/pod-v63-run
+          ROLLBACK_PLAN: ${{ runner.temp }}/pod-v63-source
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUT_DIR"
+          SCRIPT=dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout.mjs
+          case "$OPERATION" in
+            plan) MODE=plan SCOPE="$SCOPE" node "$SCRIPT" ;;
+            apply) MODE=apply LIVE=1 SCOPE="$SCOPE" node "$SCRIPT" ;;
+            rollback) MODE=rollback LIVE=1 SCOPE="$SCOPE" node "$SCRIPT" ;;
+            *) exit 2 ;;
+          esac
+
+      - name: Plan, Sicherungen und Ledger hochladen
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pod-v63-rollout-${{ github.run_id }}
+          path: ${{ runner.temp }}/pod-v63-run/
+          if-no-files-found: warn
+          retention-days: 30
