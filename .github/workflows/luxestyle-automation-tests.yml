@@ -30,6 +30,8 @@ on:
       - 'automation/publish_guard_test.mjs'
       - 'automation/content_preflight.py'
       - 'automation/test_content_preflight.py'
+      - 'automation/luxestyle_obsidian_vault.py'
+      - 'automation/test_luxestyle_obsidian_vault.py'
       - 'automation/fortura_galaxus_lauf.mjs'
       - 'automation/lib/galaxus_treffer.mjs'
       - 'automation/lib/galaxus_treffer_test.mjs'
@@ -125,6 +127,8 @@ jobs:
             automation/publish_guard_test.mjs
             automation/content_preflight.py
             automation/test_content_preflight.py
+            automation/luxestyle_obsidian_vault.py
+            automation/test_luxestyle_obsidian_vault.py
             automation/fortura_galaxus_lauf.mjs
             automation/lib/galaxus_treffer.mjs
             automation/lib/galaxus_treffer_test.mjs
@@ -352,6 +356,8 @@ jobs:
           node --test automation/lib/shopify_host_test.mjs automation/social_queue_test.mjs automation/publish_guard_test.mjs dropship/cj_enrich_test.mjs
       - name: Content preflight (offline evidence only)
         run: python3 -B -m unittest discover -s automation -p 'test_content_preflight.py' -v
+      - name: Local Obsidian vault safety (offline only)
+        run: python3 -B -m unittest -v automation/test_luxestyle_obsidian_vault.py
 
   # Lagerbestand 05.11.2026: Fortura-Abgleich (Freigabedatei, null_erlauben nur bei Handstart, Stempel-Gate, Feed-Skript), Einspielskript fuer
   # templates/product.json (Attrappe der Theme-API) und der Liefer-/Bestandsblock (LiquidJS; Ruby-Liquid und Browsertest laufen nur lokal). Kein Netz, keine Geheimnisse.

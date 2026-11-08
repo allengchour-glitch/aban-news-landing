@@ -17,6 +17,12 @@ SPEC.loader.exec_module(vault)
 
 
 class ObsidianVaultTests(unittest.TestCase):
+    def commit_all(self, repo: Path, message: str = "fixture update") -> None:
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(
+            ["git", "-C", str(repo), "commit", "-qm", message], check=True
+        )
+
     def make_repo(self, root: Path) -> Path:
         repo = root / "repo"
         memory = repo / vault.MEMORY_REL
@@ -53,8 +59,7 @@ class ObsidianVaultTests(unittest.TestCase):
             ["git", "-C", str(repo), "config", "user.email", "test@example.invalid"],
             check=True,
         )
-        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
-        subprocess.run(["git", "-C", str(repo), "commit", "-qm", "fixture"], check=True)
+        self.commit_all(repo, "fixture")
         return repo
 
     def test_build_is_local_curated_and_checkable(self) -> None:
@@ -112,12 +117,83 @@ class ObsidianVaultTests(unittest.TestCase):
                 vault.build(repo, repo / vault.MEMORY_REL, output)
             self.assertTrue((output / "private-note.md").exists())
 
+    def test_refuses_managed_existing_output_without_deleting_it(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            repo = self.make_repo(base)
+            output = base / "vault"
+            vault.build(repo, repo / vault.MEMORY_REL, output)
+            manifest_before = (output / "VAULT-MANIFEST.json").read_bytes()
+            with self.assertRaises(vault.VaultError):
+                vault.build(repo, repo / vault.MEMORY_REL, output)
+            self.assertEqual(
+                (output / "VAULT-MANIFEST.json").read_bytes(), manifest_before
+            )
+
+    def test_does_not_touch_previous_named_neighbour(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            repo = self.make_repo(base)
+            output = base / "vault"
+            neighbour = base / "vault.previous"
+            neighbour.mkdir()
+            (neighbour / "private-note.md").write_text("behalten", encoding="utf-8")
+            vault.build(repo, repo / vault.MEMORY_REL, output)
+            self.assertEqual(
+                (neighbour / "private-note.md").read_text(encoding="utf-8"),
+                "behalten",
+            )
+
+    def test_refuses_output_inside_unrelated_git_repo(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            repo = self.make_repo(base)
+            other = base / "other"
+            other.mkdir()
+            subprocess.run(["git", "init", "-q", str(other)], check=True)
+            with self.assertRaises(vault.VaultError):
+                vault.build(repo, repo / vault.MEMORY_REL, other / "vault")
+
+    def test_refuses_dirty_canonical_source(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            repo = self.make_repo(base)
+            source = repo / vault.MEMORY_REL / "README.md"
+            source.write_text("# Übergabe\n\nNoch nicht committed.\n", encoding="utf-8")
+            with self.assertRaises(vault.VaultError):
+                vault.build(repo, repo / vault.MEMORY_REL, base / "vault")
+
+    def test_refuses_noncanonical_source_folder(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            repo = self.make_repo(base)
+            other = repo / "other-memory"
+            other.mkdir()
+            for name in (*vault.SOURCE_FILES, vault.WORKSTATE_FILE):
+                (other / name).write_bytes((repo / vault.MEMORY_REL / name).read_bytes())
+            self.commit_all(repo)
+            with self.assertRaises(vault.VaultError):
+                vault.build(repo, other, base / "vault")
+
     def test_secret_in_copied_source_blocks_build(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             base = Path(temp)
             repo = self.make_repo(base)
             source = repo / vault.MEMORY_REL / "README.md"
             source.write_text("# Übergabe\n\napi_key=supersecretvalue123\n", encoding="utf-8")
+            self.commit_all(repo)
+            with self.assertRaises(vault.VaultError):
+                vault.build(repo, repo / vault.MEMORY_REL, base / "vault")
+
+    def test_secret_in_task_title_blocks_build(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            repo = self.make_repo(base)
+            state_path = repo / vault.MEMORY_REL / vault.WORKSTATE_FILE
+            state = json.loads(state_path.read_text(encoding="utf-8"))
+            state["tasks"][0]["title"] = "SHOPIFY_CLIENT_SECRET=<Dummywert123>"
+            state_path.write_text(json.dumps(state), encoding="utf-8")
+            self.commit_all(repo)
             with self.assertRaises(vault.VaultError):
                 vault.build(repo, repo / vault.MEMORY_REL, base / "vault")
 
@@ -127,6 +203,7 @@ class ObsidianVaultTests(unittest.TestCase):
             repo = self.make_repo(base)
             source = repo / vault.MEMORY_REL / "README.md"
             source.write_text("# Übergabe\n\nname@example.net\n", encoding="utf-8")
+            self.commit_all(repo)
             with self.assertRaises(vault.VaultError):
                 vault.build(repo, repo / vault.MEMORY_REL, base / "vault")
 

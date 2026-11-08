@@ -25,7 +25,7 @@ import hashlib
 import json
 import os
 import re
-import shutil
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -56,7 +56,7 @@ SECRET_PATTERNS = (
     (
         "credential_assignment",
         re.compile(
-            r"(?i)\b(?:api[_ -]?key|client[_ -]?secret|password|passwd|"
+            r"(?i)(?:api[_ -]?key|client[_ -]?secret|password|passwd|"
             r"access[_ -]?token|refresh[_ -]?token|authorization|bearer)"
             r"[\"' ]*[:=][\"' ]*[^\s\"']{8,}"
         ),
@@ -106,6 +106,28 @@ def ensure_external_output(output: Path, root: Path) -> Path:
     return output
 
 
+def ensure_outside_any_git_repo(output: Path) -> Path:
+    """Refuse a vault beneath any Git worktree, including an unrelated repo."""
+
+    probe = output.expanduser().absolute()
+    while not probe.exists() and probe != probe.parent:
+        probe = probe.parent
+    result = subprocess.run(
+        ["git", "-C", str(probe), "rev-parse", "--show-toplevel"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        git_root = Path(result.stdout.strip()).resolve()
+        if is_within(output, git_root):
+            raise VaultError(
+                "Ausgabe liegt in einem Git-Repository. "
+                "Einen lokalen Pfad ausserhalb aller Repositories verwenden."
+            )
+    return output
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -136,6 +158,40 @@ def git_value(root: Path, *args: str) -> str:
         text=True,
     )
     return result.stdout.strip()
+
+
+def validate_canonical_clean_source(source: Path, source_repo: Path) -> None:
+    try:
+        relative = source.relative_to(source_repo)
+    except ValueError as exc:
+        raise VaultError("Quelle liegt nicht im erkannten Git-Repository") from exc
+    if relative != MEMORY_REL:
+        raise VaultError(
+            f"Quelle muss der kanonische Handoff-Pfad {MEMORY_REL} sein"
+        )
+
+    paths = [str(relative / name) for name in (*SOURCE_FILES, WORKSTATE_FILE)]
+    for path in paths:
+        tracked = subprocess.run(
+            ["git", "-C", str(source_repo), "ls-files", "--error-unmatch", path],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if tracked.returncode != 0:
+            raise VaultError(f"Quelle ist nicht in Git versioniert: {path}")
+    status = git_value(
+        source_repo,
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        *paths,
+    )
+    if status:
+        raise VaultError(
+            "Kanonische Quelldateien sind nicht sauber auf HEAD; zuerst committen oder zurücksetzen"
+        )
 
 
 def clean_cell(value: Any) -> str:
@@ -238,9 +294,16 @@ def source_note(source_repo: Path, documents: dict[str, dict[str, str]]) -> str:
 
 
 def operation_note(builder_root: Path, source: Path, output: Path) -> str:
-    command = (
-        f"python3 {builder_root / 'automation' / 'luxestyle_obsidian_vault.py'} build "
-        f"--source {source} --output {output}"
+    command = shlex.join(
+        [
+            "python3",
+            str(builder_root / "automation" / "luxestyle_obsidian_vault.py"),
+            "build",
+            "--source",
+            str(source),
+            "--output",
+            str(output),
+        ]
     )
     return "\n".join(
         [
@@ -266,13 +329,15 @@ def operation_note(builder_root: Path, source: Path, output: Path) -> str:
             "",
             "## Aktualisieren",
             "",
-            "Nach dem frischen Lesen des Handoff-Branches lokal neu bauen:",
+            "Nach dem frischen Lesen des Handoff-Branches in einen neuen lokalen Zielpfad bauen:",
             "",
             "```bash",
             command,
             "```",
             "",
-            "Danach denselben Pfad in der lokal installierten Obsidian-App als Vault öffnen.",
+            "Ein vorhandener Zielpfad wird absichtlich nie ersetzt oder gelöscht. Für eine neue",
+            "Revision im Befehl einen neuen `--output`-Pfad wählen und diesen danach in der",
+            "lokal installierten Obsidian-App als Vault öffnen.",
             "Auf diesem Rechner ist die App nicht Teil des Builders und wird nicht installiert.",
             "",
         ]
@@ -327,23 +392,14 @@ def expected_config() -> dict[str, Any]:
     }
 
 
-def existing_vault_is_managed(output: Path) -> bool:
-    manifest = output / "VAULT-MANIFEST.json"
-    if not manifest.is_file():
-        return False
-    try:
-        data = json.loads(manifest.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return False
-    return data.get("managedBy") == MANAGED_BY
-
-
 def build(builder_root: Path, source: Path, output: Path) -> dict[str, Any]:
     builder_root = builder_root.resolve()
     source = source.expanduser().resolve()
     source_repo = repo_root(source)
     output = ensure_external_output(output, builder_root)
     output = ensure_external_output(output, source_repo)
+    output = ensure_outside_any_git_repo(output)
+    validate_canonical_clean_source(source, source_repo)
     required = [source / name for name in (*SOURCE_FILES, WORKSTATE_FILE)]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
@@ -376,8 +432,8 @@ def build(builder_root: Path, source: Path, output: Path) -> dict[str, Any]:
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    if output.exists() and not existing_vault_is_managed(output):
-        raise VaultError(f"Vorhandenes, nicht verwaltetes Ziel wird nicht überschrieben: {output}")
+    if output.exists():
+        raise VaultError(f"Vorhandenes Ziel wird nicht überschrieben oder gelöscht: {output}")
 
     with tempfile.TemporaryDirectory(prefix="luxestyle-obsidian-", dir=output.parent) as temp:
         stage = Path(temp) / "vault"
@@ -430,19 +486,7 @@ def build(builder_root: Path, source: Path, output: Path) -> dict[str, Any]:
 
         check(stage, source_root=builder_root, require_external=False)
 
-        backup = output.with_name(output.name + ".previous")
-        if backup.exists():
-            shutil.rmtree(backup)
-        if output.exists():
-            output.rename(backup)
-        try:
-            stage.rename(output)
-        except Exception:
-            if backup.exists() and not output.exists():
-                backup.rename(output)
-            raise
-        if backup.exists():
-            shutil.rmtree(backup)
+        stage.rename(output)
 
     return manifest
 
@@ -462,6 +506,7 @@ def check(
         raise VaultError(f"Vault fehlt: {output}")
     if source_root is not None and require_external:
         ensure_external_output(output, source_root)
+        ensure_outside_any_git_repo(output)
 
     manifest_path = output / "VAULT-MANIFEST.json"
     if not manifest_path.is_file():
