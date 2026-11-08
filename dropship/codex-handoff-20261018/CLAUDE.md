@@ -1,5 +1,11 @@
 # LuxeStyle: Arbeitsbeginn für Claude Code
 
+## Aktueller Stand – 08.11.2026, Revision 153: Plugin-Ranking-Push live
+
+Zuerst `README.md`, `PROJEKTGEDAECHTNIS.md`, `ARBEITSSTAND.json` und den heutigen Block in `TAGESPROTOKOLL.md` frisch lesen. Search Console bestätigte Produkt15523986473345 als Position-18-Chance. Titel/H1/SEO sind live auf «Automatischer Futterspender für Katzen» ausgerichtet; der unbelegte produktspezifische10–20-Tage-Block ist entfernt. Firecrawl bestätigte HTTP200, `lang=de`, neuen Titel, H1, Meta und unveränderte saubere Produkt-URL. Nicht wiederholen oder «elektrisch» ergänzen. Nächster Ranking-Hebel: serverseitige globale Navigation mit rund746 Collection-Links nur in einer Theme-Preview reduzieren und mobil/desktop prüfen; FR-/Merchant-/LI-Probleme nur nach vollständiger Übersetzung bzw. Source-/Versandbeleg. vidIQ hat keinen autorisierten LuxeStyle-Kanal. [Bericht](PLUGIN-RANKING-PUSH-20261108-R153.md) · [Beleg](PLUGIN-RANKING-PUSH-20261108-R153.json).
+
+[LUXESTYLE_R153_20261108]
+
 ## Aktueller Stand – 08.11.2026, Revision 152: #1039 bei CJ bezahlt, Versand noch offen
 
 Zuerst `README.md`, `PROJEKTGEDAECHTNIS.md`, `ARBEITSSTAND.json` und den heutigen Block in `TAGESPROTOKOLL.md` frisch lesen. Shopify #1039 wurde kontrolliert genau einmal als `LX1039` / `SD2611081956340669600` bei CJ angelegt. Nach Inhabermeldung «bezahlt» bestätigt ein separater Trocken-/Leselauf weiterhin `count=1` und Status `UNSHIPPED`. Nicht erneut anlegen oder bezahlen. Shopify bleibt `PAID`/`UNFULFILLED`; erst einen echten, zur gleichen CJ-ID gehörenden Versand-/Trackingbeleg lesen, bevor Fulfillment oder Tracking erwogen wird. Keine Kundenmeldung. [Bericht](CJ-BESTELLUNG-1039-20261108-R152.md) · [Beleg](CJ-BESTELLUNG-1039-20261108-R152.json).
