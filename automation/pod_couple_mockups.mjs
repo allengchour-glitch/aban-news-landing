@@ -41,14 +41,14 @@ const PROMPT = {
 
 // handle, type, [designA, designB]
 const PRODUCTS = [
-  ['king-queen-tassen-set-2-tassen-fur-paare-👑', 'mug', ['king', 'queen']],
-  ['mr-mrs-tassen-set-2-tassen-zur-hochzeit-💍', 'mug', ['mr', 'mrs']],
-  ['her-king-his-queen-tassen-set-2-tassen-fur-verliebte-👑', 'mug', ['her-king', 'his-queen']],
-  ['hubby-wifey-tassen-set-2-tassen-mit-herz-❤️', 'mug', ['hubby', 'wifey']],
-  ['king-queen-partner-shirts-couple-t-shirts-👑', 'shirt', ['king', 'queen']],
-  ['mr-mrs-partner-shirts-couple-t-shirts-zur-hochzeit-💍', 'shirt', ['mr', 'mrs']],
-  ['her-king-his-queen-partner-shirts-couple-t-shirts-👑', 'shirt', ['her-king', 'his-queen']],
-  ['hubby-wifey-partner-shirts-couple-t-shirts-mit-herz-❤️', 'shirt', ['hubby', 'wifey']],
+  ['king-queen-tassen-set-2-tassen-fur-paare', 'mug', ['king', 'queen']],
+  ['mr-mrs-tassen-set-2-tassen-zur-hochzeit', 'mug', ['mr', 'mrs']],
+  ['her-king-his-queen-tassen-set-2-tassen-fur-verliebte', 'mug', ['her-king', 'his-queen']],
+  ['hubby-wifey-tassen-set-2-tassen-mit-herz', 'mug', ['hubby', 'wifey']],
+  ['king-queen-partner-shirts-couple-t-shirts', 'shirt', ['king', 'queen']],
+  ['mr-mrs-partner-shirts-couple-t-shirts-zur-hochzeit', 'shirt', ['mr', 'mrs']],
+  ['her-king-his-queen-partner-shirts-couple-t-shirts', 'shirt', ['her-king', 'his-queen']],
+  ['hubby-wifey-partner-shirts-couple-t-shirts-mit-herz', 'shirt', ['hubby', 'wifey']],
 ];
 
 async function fetchImage(url) {
