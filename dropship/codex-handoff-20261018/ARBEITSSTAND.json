@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 130,
-  "updatedAt": "2026-11-08T01:54:56+01:00",
+  "revision": 131,
+  "updatedAt": "2026-11-08T02:38:47+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14968,5 +14968,116 @@
       "ARBEITSSTAND.json": "76ddaff8ca3480b2b01c1928488e004a162a7602eae187ebbaffb37fae814adc",
       "TAGESPROTOKOLL.md": "d4b84cbbd6586b40e48940f44f8bc6dae268c1bc847768900c8978a071c8f9a6"
     }
+  },
+  "autonomousErrorRunR131": {
+    "at": "2026-11-08T02:34:24+01:00",
+    "report": "dropship/codex-handoff-20261018/AUTONOMER-FEHLERLAUF-20261108-R131.md",
+    "evidence": "dropship/codex-handoff-20261018/AUTONOMER-FEHLERLAUF-20261108-R131.json",
+    "identity": "Shopify LuxeStyle/luxestyle.ch/CHF/Switzerland and Metricool6227837/Europe-Zurich with six expected channels matched.",
+    "liveContentChanges": {
+      "rizinusProduct": "SEO title changed to Rizinusöl-Wickel Schweiz: Bauch & Nacken | LuxeStyle; final title and original description publicly exact at HTTP200.",
+      "collections": [
+        "trinkbrunnen-katzen",
+        "holzuhren"
+      ],
+      "collectionScope": "descriptionHtml and SEO description only; titles, handles, rules, sort and 123 product assignments preserved.",
+      "transientIncident": "First incomplete SEO payload cleared the product SEO description for seven seconds; exact prior description restored. Public/cache exposure in the interval unknown.",
+      "rizinusBody": "Old Sorglos-shoppen block with fixed delivery and blanket return claim removed; decorative guide symbols neutralized. Two prewrite schema/payload attempts were confirmed no-writes; third validated write succeeded. Product facts, status and both SEO fields preserved. Live return policy supports 30 days with personalized-goods exception; existing unplayed draft rueckgabe-0611/welle2 covers global UI synchronization.",
+      "mediaAltTexts": [
+        "15427283157377/69656871567745 Weißes→Weisses",
+        "15427282633089/69656871534977 Weiße→Weisse"
+      ],
+      "selfDesignPage": "Page698444710273 selbst-gestalten: Print-on-Demand→Druck auf Bestellung; published/handle/title/template and delivery/prices/products preserved; Admin/public exact."
+    },
+    "boundedAudit": "13 pages, robots/sitemap, 89 internal targets and five alt samples. FR language/indexing, cart robots, Offer schema, remaining global claims and navigation size remain open. Three bound Swiss wording samples were corrected; catalog coverage remains unknown. 89/89 targets HTTP200 without redirect.",
+    "merchant": {
+      "variants": 9,
+      "readyMediaReviewed": 47,
+      "safeFixes": 0,
+      "blocked": 9,
+      "reason": "no exact clean rights-proven replacement",
+      "writes": 0
+    },
+    "draftPullRequests": {
+      "2916": {
+        "commit": "834641afe1377b14e9e97b96351b68bc589df9d7",
+        "scope": "cart noindex follow",
+        "tests": "48 passed",
+        "deployed": false
+      },
+      "2928": {
+        "commit": "9b260299097f74695792e4bf0c6fb9206150654b",
+        "scope": "Printful qd versus measurable files guard",
+        "tests": "384/384, 181/181, 348/348, 81/81",
+        "deployed": false
+      },
+      "2929": {
+        "commit": "3561d848c",
+        "scope": "masterpiece-ad fail closed",
+        "independentReview": "GO",
+        "tests": "policy4/4 archivedCI9/9",
+        "deployed": false
+      },
+      "2932": {
+        "state": "OPEN",
+        "mergeable": "MERGEABLE",
+        "base": "codex/luxestyle-automation-guard-r130",
+        "head": "8c765b9b3",
+        "scope": "12 LuxeStyle-only external action paths fail closed",
+        "tests": "masterpiece4/4 legacy60/60 14 YAML",
+        "independentReview": "GO",
+        "deployed": false,
+        "dispatches": 0
+      },
+      "2931": {
+        "state": "OPEN",
+        "mergeable": "MERGEABLE",
+        "commits": [
+          "644b36a31",
+          "3513a23d1"
+        ],
+        "scope": "two CJ importers and seo_titel fail closed; LIVE=1 required; DRY=1 blocks; products DRAFT; no publication calls",
+        "tests": "56/56 seo green grind_plan382/382",
+        "independentReview": "GO",
+        "imports": 0,
+        "apiCalls": 0,
+        "shopifyWrites": 0
+      }
+    },
+    "dailyReads": "GSC/Merchant, Metricool metrics, Klaviyo flows, orders and purchase watch not repeated.",
+    "finalDraftPrReadback": {
+      "atZurich": "2026-11-08T02:38:47+01:00",
+      "allOpenDraft": true,
+      "luxestyleCoreChecks": "green",
+      "knownWorkersChecks": "three_red",
+      "pages": "some_in_progress",
+      "preDeploy": "PR2928/2929 cancelled; PR2931 in progress",
+      "mergeability": "PR2916/2932 MERGEABLE_UNSTABLE; PR2928/2929/2931 UNKNOWN",
+      "merges": 0,
+      "deployments": 0
+    },
+    "nextStep": "Require authoritative French content/market decision and exact rights-proven replacement images before dependent writes.",
+    "shopifyProductWrites": 3,
+    "logicalProductsChanged": 1,
+    "shopifyCollectionWrites": 2,
+    "shopifyThemeWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0,
+    "metricoolWrites": 0,
+    "klaviyoWrites": 0,
+    "dnsWrites": 0,
+    "discountWrites": 0,
+    "budgetWrites": 0,
+    "customerMessages": 0,
+    "orderReads": 0,
+    "orderWrites": 0,
+    "renders": 0,
+    "publications": 0,
+    "claimsCountercheck": "Live return policy supports 30 days with personalized-goods exception; existing unplayed rueckgabe-0611/welle2 covers header/footer/chatbot; self-design 7-14 days general versus 4-6 weeks selected allover is consistent; chatbot source missing in main, no theme write.",
+    "successfulShopifyMutationCalls": 7,
+    "successfulShopifyMutationInputTargets": 8,
+    "logicalContentTargetsChanged": 6,
+    "shopifyMediaAltWrites": 2,
+    "shopifyPageWrites": 1
   }
 }

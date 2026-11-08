@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "revision": 131,
+  "dateZurich": "2026-11-08",
+  "mode": "controlled_live_content_and_read_only_audit",
+  "identities": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "primaryDomain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channelsMatched": true,
+      "writes": 0
+    }
+  },
+  "liveContentWrites": {
+    "shopifyProductWrites": 3,
+    "logicalProductsChanged": 1,
+    "shopifyCollectionWrites": 2,
+    "products": [
+      {
+        "id": "gid://shopify/Product/16592643817863",
+        "handle": "rizinusol-wickel-wiederverwendbar-bauch-nacken",
+        "url": "https://luxestyle.ch/products/rizinusol-wickel-wiederverwendbar-bauch-nacken",
+        "status": "ACTIVE",
+        "variants": 22,
+        "allAvailableForSale": true,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "seoTitleBefore": "Rizinusöl-Wickel wiederverwendbar · Bauch & Nacken | LuxeStyle",
+        "seoTitleAfter": "Rizinusöl-Wickel Schweiz: Bauch & Nacken | LuxeStyle",
+        "seoDescriptionFinal": "Wiederverwendbarer Rizinusöl-Wickel für Bauch und Nacken – mit Knöpfen, Klett oder Gummiband. 4 Farben, Versand in die Schweiz.",
+        "transientReplaceSemanticsIncident": {
+          "at": "2026-11-08T01:06:29Z",
+          "result": "seo_description_temporarily_null",
+          "restoredAt": "2026-11-08T01:06:36Z",
+          "restoredExact": true,
+          "publicExposure": "unknown_not_sampled_during_seven_second_window"
+        },
+        "finalPublicReadback": {
+          "httpStatus": 200,
+          "titleExact": true,
+          "descriptionExact": true
+        },
+        "bodyCleanup": {
+          "at": "2026-11-08T01:18:29Z",
+          "removed": [
+            "Sorglos shoppen block",
+            "Geprüfte Angaben",
+            "Lieferung 10–20 Werktage",
+            "30 Tage Rückgabe",
+            "decorative guide emoji and arrow"
+          ],
+          "productFactsPreserved": true,
+          "statusPreserved": true,
+          "bothSeoFieldsPreserved": true,
+          "prewriteNoWriteAttempts": 2,
+          "successfulWriteUserErrors": [],
+          "finalPublicHttpStatus": 200,
+          "finalSelfCanonical": true,
+          "liveReturnPolicySupports30Days": true,
+          "personalizedGoodsExcluded": true,
+          "existingUnplayedUiDraft": "rueckgabe-0611/welle2"
+        }
+      }
+    ],
+    "collections": [
+      {
+        "id": "gid://shopify/Collection/754315067783",
+        "handle": "trinkbrunnen-katzen",
+        "url": "https://luxestyle.ch/collections/trinkbrunnen-katzen",
+        "productCount": 24,
+        "descriptionHtmlAfter": "<p>Hier findest du Trinkbrunnen für Katzen und Hunde. Modelle unterscheiden sich bei Material, Fassungsvermögen, Filter und Stromversorgung.</p><p>Prüfe die genauen Angaben und verfügbaren Ausführungen direkt auf der jeweiligen Produktseite.</p>",
+        "seoTitlePreserved": "Trinkbrunnen für Katzen & Hunde kaufen | LuxeStyle",
+        "seoDescriptionAfter": "Trinkbrunnen für Katzen und Hunde entdecken. Vergleiche Material, Filter, Fassungsvermögen und Stromversorgung direkt auf der jeweiligen Produktseite.",
+        "rulePreserved": true,
+        "sortOrderPreserved": "BEST_SELLING",
+        "publicHttpStatus": 200,
+        "publicContentExact": true
+      },
+      {
+        "id": "gid://shopify/Collection/754037981575",
+        "handle": "holzuhren",
+        "url": "https://luxestyle.ch/collections/holzuhren",
+        "productCount": 99,
+        "descriptionHtmlAfter": "<p>Hier findest du Holzuhren für Damen und Herren. Modelle unterscheiden sich bei Gehäuse, Armband, Werk und Ausführung.</p><p>Prüfe die genauen Angaben und verfügbaren Varianten direkt auf der jeweiligen Produktseite.</p>",
+        "seoTitlePreserved": "Holzuhren für Herren & Damen kaufen | LuxeStyle",
+        "seoDescriptionAfter": "Holzuhren für Damen und Herren entdecken. Vergleiche Gehäuse, Armband und Werk direkt auf der jeweiligen Produktseite.",
+        "rulePreserved": true,
+        "sortOrderPreserved": "BEST_SELLING",
+        "publicHttpStatus": 200,
+        "publicContentExact": true
+      }
+    ],
+    "successfulShopifyMutationCalls": 7,
+    "successfulShopifyMutationInputTargets": 8,
+    "logicalContentTargetsChanged": 6,
+    "shopifyMediaAltWrites": 2,
+    "shopifyPageWrites": 1,
+    "mediaAltTexts": [
+      {
+        "productId": "15427283157377",
+        "mediaId": "69656871567745",
+        "productStatus": "ACTIVE",
+        "before": "Weißes",
+        "after": "Weisses",
+        "userErrors": [],
+        "adminExact": true,
+        "publicHttpStatus": 200,
+        "publicExact": true,
+        "productAndImageIdentityPreserved": true
+      },
+      {
+        "productId": "15427282633089",
+        "mediaId": "69656871534977",
+        "productStatus": "ACTIVE",
+        "before": "Weiße",
+        "after": "Weisse",
+        "userErrors": [],
+        "adminExact": true,
+        "publicHttpStatus": 200,
+        "publicExact": true,
+        "productAndImageIdentityPreserved": true
+      }
+    ],
+    "pages": [
+      {
+        "id": "gid://shopify/Page/698444710273",
+        "handle": "selbst-gestalten",
+        "url": "https://luxestyle.ch/pages/selbst-gestalten",
+        "publishedPreserved": true,
+        "titlePreserved": true,
+        "templatePreserved": true,
+        "before": "Print-on-Demand",
+        "after": "Druck auf Bestellung",
+        "userErrors": [],
+        "updatedAt": "2026-11-08T01:32:19Z",
+        "adminExact": true,
+        "publicHttpStatus": 200,
+        "publicOldAbsent": true,
+        "publicNewPresent": true,
+        "deliveryTextsPricesProductsPreserved": true
+      }
+    ]
+  },
+  "liveAudit": {
+    "pages": 13,
+    "internalTargets": 89,
+    "internalTargetHttp200NoRedirect": 89,
+    "altSamples": 5,
+    "fr": {
+      "indexableGermanContentExamples": [
+        "/fr/",
+        "/fr/pages/selbst-gestalten"
+      ],
+      "frProductChildSitemaps": 62,
+      "status": "incomplete_and_not_a_catalog_total"
+    },
+    "cart": {
+      "paths": [
+        "/cart",
+        "/fr/cart"
+      ],
+      "httpStatus": 200,
+      "selfCanonical": true,
+      "robotsMeta": "missing",
+      "xRobotsTag": "missing",
+      "draftPr": 2916,
+      "commit": "834641afe1377b14e9e97b96351b68bc589df9d7",
+      "tests": "48_passed",
+      "liveWrite": false
+    },
+    "rizinusJsonLd": {
+      "offers": 22,
+      "missingSampleFields": [
+        "description",
+        "shippingDetails",
+        "hasMerchantReturnPolicy",
+        "itemCondition",
+        "seller",
+        "priceValidUntil"
+      ],
+      "schemaWrite": false
+    },
+    "htmlBytesApprox": "940000-1720000",
+    "anchorsApprox": "1500-1606",
+    "uniqueTargetsApprox": "773-812",
+    "swissTermSample": {
+      "resolved": [
+        {
+          "before": "Weißes",
+          "after": "Weisses"
+        },
+        {
+          "before": "Weiße",
+          "after": "Weisse"
+        },
+        {
+          "before": "Print-on-Demand",
+          "after": "Druck auf Bestellung"
+        }
+      ],
+      "catalogCoverage": "unknown_not_inferred"
+    }
+  },
+  "merchantOverlayCountercheck": {
+    "variants": 9,
+    "readyGalleryMediaReviewed": 47,
+    "safeFixes": 0,
+    "blocked": 9,
+    "reason": "no_exact_clean_rights_proven_replacement",
+    "cjRuntimeCredentials": "unavailable",
+    "githubSecretList": "http_403",
+    "imageWrites": 0,
+    "merchantWrites": 0,
+    "feedWrites": 0
+  },
+  "selfDesignGuard": {
+    "draftPr": 2928,
+    "commit": "9b260299097f74695792e4bf0c6fb9206150654b",
+    "scope": "compare_pod_karte_qd_with_measurable_print_files_fail_closed",
+    "tests": {
+      "orderPath": "384/384",
+      "printfulSync": "181/181",
+      "v6Unit": "348/348",
+      "focusedBrowser": "81/81"
+    },
+    "githubChecksAtRead": "lagerbestand_and_selbstgestalten_green; tests_and_predeploy_running; three_known_workers_red",
+    "deployed": false,
+    "orders": 0,
+    "printfulProductionWrites": 0
+  },
+  "automationGuard": {
+    "draftPr": 2929,
+    "branch": "codex/luxestyle-automation-guard-r130",
+    "commit": "3561d848c",
+    "scope": "masterpiece_ad_fail_closed_and_contents_read",
+    "independentReview": "GO",
+    "policyTests": "4/4",
+    "archivedCi": "9/9",
+    "githubChecksAtRead": "core_running; three_known_workers_red",
+    "workflowDispatches": 0,
+    "deployed": false
+  },
+  "dailyReads": {
+    "gscMerchantRepeated": false,
+    "metricoolMetricsRepeated": false,
+    "klaviyoFlowReportRepeated": false,
+    "orderReads": 0,
+    "purchaseWatchReads": 0
+  },
+  "otherWrites": {
+    "theme": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "discount": 0,
+    "budget": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0,
+    "publications": 0
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "c496e5db6e0736185180114b9aebe8cc2897bf73aeadfa4dc7787fe42cf6218d",
+    "PROJEKTGEDAECHTNIS.md": "a24110090b6d98c32b61b0750a689f58f666db1ca48461e8bd7178b3152f09db",
+    "ARBEITSSTAND.json": "4913a872b103e97bcd402e30cd339d8ac256ecbe2a565f31d35eb295ed7e3c59",
+    "TAGESPROTOKOLL.md": "7b7caeebd87a3bd9bb421e9b022e846161aa3389a18f65b051ee59031815eb90"
+  },
+  "finalDraftPrReadback": {
+    "atZurich": "2026-11-08T02:38:47+01:00",
+    "allOpenDraft": true,
+    "luxestyleCoreChecks": "green",
+    "knownWorkersChecks": "three_red",
+    "pages": "some_in_progress",
+    "preDeploy": {
+      "2928": "cancelled",
+      "2929": "cancelled",
+      "2931": "in_progress"
+    },
+    "mergeability": {
+      "2916": "MERGEABLE_UNSTABLE",
+      "2928": "UNKNOWN",
+      "2929": "UNKNOWN",
+      "2931": "UNKNOWN",
+      "2932": "MERGEABLE_UNSTABLE"
+    },
+    "merges": 0,
+    "deployments": 0
+  },
+  "nextStep": "Keep FR locale and Merchant image changes blocked until authoritative content and rights evidence exist.",
+  "updatedAtZurich": "2026-11-08T02:38:47+01:00",
+  "claimsCountercheck": {
+    "returnPolicy": "30_days_live_verified_personalized_goods_excluded",
+    "existingUnplayedDraft": "rueckgabe-0611/welle2 neutralizes header footer chatbot; no duplicate patch",
+    "selfDesignDelivery": "7-14_days_general_and_4-6_weeks_for_selected_allover_products_contextually_consistent",
+    "chatbotSourceInMain": "missing_no_theme_write",
+    "remainingOpen": [
+      "free_shipping_after_discount_wording",
+      "WELCOME10",
+      "warehouse_and_delivery_promises"
+    ]
+  },
+  "extendedAutomationGuard": {
+    "draftPr": 2932,
+    "state": "OPEN",
+    "mergeable": "MERGEABLE",
+    "base": "codex/luxestyle-automation-guard-r130",
+    "head": "8c765b9b3",
+    "scope": "12_luxestyle_only_external_action_paths_fail_closed",
+    "tests": {
+      "masterpiece": "4/4",
+      "legacy": "60/60",
+      "yamlFiles": 14
+    },
+    "independentReview": "GO",
+    "workflowDispatches": 0,
+    "deployed": false
+  },
+  "cjImporterGuard": {
+    "draftPr": 2931,
+    "state": "OPEN",
+    "mergeable": "MERGEABLE",
+    "commits": [
+      "644b36a31",
+      "3513a23d1"
+    ],
+    "scope": "two_cj_importers_and_seo_titel_without_unverified_claims",
+    "liveGate": "LIVE=1 required",
+    "dryGate": "DRY=1 blocks",
+    "newProductStatus": "DRAFT",
+    "publishablePublish": false,
+    "publicationIds": false,
+    "tests": {
+      "focused": "56/56",
+      "seo": "green",
+      "grindPlan": "382/382"
+    },
+    "independentReview": "GO",
+    "imports": 0,
+    "apiCalls": 0,
+    "shopifyWrites": 0
+  }
+}
