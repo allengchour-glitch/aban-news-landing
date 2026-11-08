@@ -220,9 +220,9 @@
       function pan(dx, dy) {
         var scale = 2 * cam.g.dist * Math.tan(cam.fov / 2) / Math.max(1, made.h);
         var a = cam.g.az, e = cam.g.el;
-        cam.g.tx = clamp(cam.g.tx + scale * (-dx * Math.cos(a) - dy * Math.sin(a) * Math.sin(e)), -18, 18);
+        cam.g.tx = clamp(cam.g.tx + scale * (-dx * Math.cos(a) - dy * Math.sin(a) * Math.sin(e)), -24, 24);
         cam.g.ty = clamp(cam.g.ty + scale * dy * Math.cos(e), -6, 12);
-        cam.g.tz = clamp(cam.g.tz + scale * (dx * Math.sin(a) - dy * Math.cos(a) * Math.sin(e)), -16, 22);
+        cam.g.tz = clamp(cam.g.tz + scale * (dx * Math.sin(a) - dy * Math.cos(a) * Math.sin(e)), -18, 36);
         cam.tx = cam.g.tx; cam.ty = cam.g.ty; cam.tz = cam.g.tz;
         made.dirty = true;
       }
@@ -262,7 +262,7 @@
         } else if (nptr === 2) {
           pan(dx / 2, dy / 2);
           var k = Object.keys(ptrs), d = Math.hypot(ptrs[k[0]].x - ptrs[k[1]].x, ptrs[k[0]].y - ptrs[k[1]].y);
-          if (pinch > 0 && d > 0) { cam.g.dist = clamp(cam.g.dist * pinch / d, 5.5, 60); cam.dist = cam.g.dist; made.dirty = true; }
+          if (pinch > 0 && d > 0) { cam.g.dist = clamp(cam.g.dist * pinch / d, 5.5, 160); cam.dist = cam.g.dist; made.dirty = true; }
           pinch = d;
         }
       });
@@ -281,7 +281,7 @@
       cv.addEventListener('wheel', function (ev) {
         if (!(ev.ctrlKey || ev.metaKey)) return;
         ev.preventDefault();
-        cam.g.dist = clamp(cam.g.dist * Math.exp(ev.deltaY * 0.0018), 5.5, 60);
+        cam.g.dist = clamp(cam.g.dist * Math.exp(ev.deltaY * 0.0018), 5.5, 160);
         made.dirty = true;
       }, { passive: false });
       cv.addEventListener('keydown', function (ev) {
@@ -291,8 +291,8 @@
         else if (k === 'ArrowRight') cam.g.az = clamp(cam.g.az - 0.1, 0, 1.5);
         else if (k === 'ArrowUp') cam.g.el = clamp(cam.g.el + 0.06, 0.3, 1.2);
         else if (k === 'ArrowDown') cam.g.el = clamp(cam.g.el - 0.06, 0.3, 1.2);
-        else if (k === '+' || k === '=') cam.g.dist = clamp(cam.g.dist * 0.85, 5.5, 60);
-        else if (k === '-') cam.g.dist = clamp(cam.g.dist / 0.85, 5.5, 60);
+        else if (k === '+' || k === '=') cam.g.dist = clamp(cam.g.dist * 0.85, 5.5, 160);
+        else if (k === '-') cam.g.dist = clamp(cam.g.dist / 0.85, 5.5, 160);
         else if (k === 'Home') goView('alle');
         else if (k === 'Escape') { if (cfg.onPick) cfg.onPick(null); }
         else used2 = false;
@@ -307,8 +307,8 @@
         else if (name === 'panRight') pan(50, 0);
         else if (name === 'panUp') pan(0, -50);
         else if (name === 'panDown') pan(0, 50);
-        else if (name === 'zoomIn') cam.g.dist = clamp(cam.g.dist * 0.8, 5.5, 60);
-        else if (name === 'zoomOut') cam.g.dist = clamp(cam.g.dist / 0.8, 5.5, 60);
+        else if (name === 'zoomIn') cam.g.dist = clamp(cam.g.dist * 0.8, 5.5, 160);
+        else if (name === 'zoomOut') cam.g.dist = clamp(cam.g.dist / 0.8, 5.5, 160);
         else if (name === 'tiltUp') cam.g.el = clamp(cam.g.el + 0.12, 0.3, 1.2);
         else if (name === 'tiltDown') cam.g.el = clamp(cam.g.el - 0.12, 0.3, 1.2);
         else if (name === 'turnLeft') cam.g.az = clamp(cam.g.az + 0.2, 0, 1.5);
