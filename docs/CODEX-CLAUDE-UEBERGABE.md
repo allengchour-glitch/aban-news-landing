@@ -75,6 +75,8 @@ QUELLE: `dropship/codex-handoff-20261018/TAGESPROTOKOLL.md` auf `codex/luxestyle
 
 ## Produktqualität – ausgeführter Auftrag vom 08.11.2026
 
+Code-/Übergabeänderung: **PR2978** (`codex/produktqualitaet-claude-memory`). Aktuellen Merge- und Prüfstatus vor Fortsetzung über diesen PR frisch abgleichen; die unten bestätigten Shopify-Live-Korrekturen sind davon unabhängig. Kein neuer Website-Flow oder Zeitplan durch diesen Auftrag.
+
 ### Messung und Grenzen
 
 - **GEMESSEN:** Frische `productsCount(limit:null)`-Abfrage: exakt **56’492 ACTIVE-Produkte**, **87’775 Produkte aller Status**, Präzision jeweils `EXACT`. Nach den beiden Korrekturen erneut 56’492 ACTIVE. Die früheren 56’506 sind historisch.

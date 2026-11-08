@@ -112,7 +112,7 @@
   "tests": {
     "zaehler": "56 ok, 0 Fehler; positive/negative Attrappen, zwei Mutanten durch Hauptagent gegengeprüft (Objektzählung, READY).",
     "live": "2 öffentliche mobile Produktseiten, 5 visuell geprüfte Bild-Alttexte; kein Cart/Checkout/Kauf.",
-    "ci": "Remote-Prüfung des Entwurfs-PR vor Merge erforderlich; lokaler Simulationsstart scheitert am schreibgeschützten HOME."
+    "ci": "PR2978: echten Remote-Prüf-/Mergestand frisch lesen. Lokal 56 Tests grün; CI-Simulationsstart am schreibgeschützten HOME blockiert. Kein bestandenes lokales CI behauptet."
   },
   "wirtschaft": "Klarere Artikelinformationen und passende Suchtexte; finanzielle Wirkung noch nicht gemessen.",
   "naechster_schritt": "Vorhandenen lesenden Bulk-Export über erlaubten Datenweg für vollständige technische Mindestfeldmessung beschaffen. Erst danach konkrete Produkte frisch prüfen und begrenzt korrigieren. Länderprobleme separat diagnostizieren; keine Einstellungen aus Screenshot ändern."
