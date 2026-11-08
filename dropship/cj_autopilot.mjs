@@ -24,18 +24,22 @@
  * Fehlt ein Pflicht-Secret → sauberer No-Op (exit 0). Keine Secrets im Log.
  */
 import https from 'node:https';
-import { cjImportSicherheitsdaten, pruefeCjImportText } from '../automation/lib/cj_import_guard.mjs';
+import { cjImportSicherheitsdaten, cjImportWriteFreigegeben, pruefeCjImportText, pruefeCjShopIdentitaet } from '../automation/lib/cj_import_guard.mjs';
+import { cjFetch } from '../automation/lib/cj_fetch.mjs';
+import { shopifyGql } from '../automation/lib/shopify_gql.mjs';
+import { baueIndex, istDublette, kandidatAus, pidNorm, produktSkuOk, skuNorm } from '../automation/lib/grind_dubletten.mjs';
 import { shopifyClientSecret } from '../automation/lib/shopify_secret.mjs';
 
 const { CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP, SHOPIFY_ADMIN_TOKEN, SHOPIFY_CLIENT_ID, GEMINI_API_KEY } = process.env;
 // s. automation/lib/shopify_secret.mjs — vertauschte Env-Felder
 const SHOPIFY_CLIENT_SECRET = shopifyClientSecret();
 let SHOP_TOKEN = SHOPIFY_ADMIN_TOKEN || '';  // wird ggf. per Client-Credentials befüllt
-const MAX = Number(process.env.AUTOPILOT_MAX || 6);
+const MAX = Math.min(6, Math.max(1, Number(process.env.AUTOPILOT_MAX || 6) || 6));
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const API_VER = '2024-10';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const WRITE = cjImportWriteFreigegeben(process.env);
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL', '4XL', '5XL', 'XXXL'];
 
@@ -45,6 +49,10 @@ if (!CJ_EMAIL || !CJ_API_KEY || !SHOPIFY_SHOP || !(SHOPIFY_ADMIN_TOKEN || (SHOPI
 }
 if (!GEMINI_API_KEY) {
   console.log('No-Op: GEMINI_API_KEY fehlt; ohne geprüfte deutsche Copy kein CJ-Produkt-Write.');
+  process.exit(0);
+}
+if (!WRITE) {
+  console.log('No-Op: CJ-Schreibfreigabe fehlt; erforderlich sind DRY_RUN=0 und CJ_IMPORT_WRITE_APPROVED=1.');
   process.exit(0);
 }
 
@@ -77,13 +85,7 @@ function req(method, url, headers = {}, body) {
 }
 async function cjGet(path, params = {}, tok) {
   const qs = new URLSearchParams(params).toString();
-  for (let a = 0; a < 4; a++) {
-    const r = await req('GET', `${CJ_BASE}${path}?${qs}`, tok ? { 'CJ-Access-Token': tok } : {});
-    const j = JSON.parse(r.body);
-    if (j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 2500); continue; }
-    return j;
-  }
-  throw new Error('CJ rate limit: ' + path);
+  return cjFetch(`${CJ_BASE}${path}?${qs}`, { context: `CJ ${path}`, headers: tok ? { 'CJ-Access-Token': tok } : {} });
 }
 async function imgOk(url) {
   try { let r = await req('HEAD', url); if (r.status >= 200 && r.status < 300) return true;
@@ -97,17 +99,32 @@ async function ensureShopToken() {
     const r = await req('POST', `https://${SHOPIFY_SHOP}/admin/oauth/access_token`,
       { 'Content-Type': 'application/json' },
       { client_id: SHOPIFY_CLIENT_ID, client_secret: SHOPIFY_CLIENT_SECRET, grant_type: 'client_credentials' });
-    try { const t = JSON.parse(r.body).access_token; if (t) { SHOP_TOKEN = t; return SHOP_TOKEN; } } catch {}
+    if (r.status < 200 || r.status >= 300) throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`);
+    const t = JSON.parse(r.body).access_token;
+    if (!t) throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt');
+    SHOP_TOKEN = t; return SHOP_TOKEN;
   }
   return SHOP_TOKEN; // statischer Token als Fallback
 }
 async function shopify(query, variables) {
-  const r = await req('POST', `https://${SHOPIFY_SHOP}/admin/api/${API_VER}/graphql.json`,
-    { 'X-Shopify-Access-Token': SHOP_TOKEN, 'Content-Type': 'application/json' },
-    { query, variables });
-  const j = JSON.parse(r.body);
-  if (j.errors) throw new Error('Shopify: ' + JSON.stringify(j.errors).slice(0, 300));
-  return j.data;
+  return shopifyGql(SHOPIFY_SHOP, API_VER, SHOP_TOKEN, query, variables);
+}
+
+async function pruefeDublette(d) {
+  const k = kandidatAus(d);
+  const teile = [];
+  if (k.pid) teile.push(`sku:CJ-${k.pid}`);
+  if (k.productSku && produktSkuOk(k.productSku)) teile.push(`sku:${k.productSku}*`);
+  for (const sku of k.variantSkus.slice(0, 4)) teile.push(`sku:${JSON.stringify(sku)}`);
+  if (!teile.length) throw new Error('DUPLIKAT_STATUS_UNKNOWN: keine pruefbare pid/productSku/variantSku');
+  const data = await shopify(`query($q:String!){products(first:25,query:$q){pageInfo{hasNextPage} nodes{id handle title status variants(first:100){pageInfo{hasNextPage} nodes{sku}}}}}`, { q: teile.join(' OR ') });
+  const nodes = data?.products?.nodes;
+  if (!Array.isArray(nodes)) throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Antwort unvollstaendig');
+  if (data.products.pageInfo?.hasNextPage || nodes.some(p => p.variants?.pageInfo?.hasNextPage)) {
+    throw new Error('DUPLIKAT_STATUS_UNKNOWN: begrenzte Shopify-Gegenprobe unvollstaendig');
+  }
+  const ix = baueIndex({ produkte: nodes.map(p => ({ id:p.id, handle:p.handle, title:p.title, status:p.status, skus:(p.variants?.nodes||[]).map(v=>v.sku) })) });
+  return istDublette({ ...d, pid: pidNorm(d.pid), productSku: skuNorm(d.productSku) }, ix);
 }
 
 // ── Hartfilter (siehe AUTONOMER-MODUS.md §5) ──
@@ -158,14 +175,15 @@ async function geminiEnrich(name, rawDesc) {
 }
 
 (async () => {
-  const ar = await req('POST', `${CJ_BASE}/authentication/getAccessToken`,
-    { 'Content-Type': 'application/json' }, { email: CJ_EMAIL, apiKey: CJ_API_KEY });
-  const aj = JSON.parse(ar.body);
-  if (!aj.result) { console.log('CJ Auth fehlgeschlagen (Key prüfen/rotieren).'); process.exit(0); }
+  const aj = await cjFetch(`${CJ_BASE}/authentication/getAccessToken`, { context: 'CJ Autopilot Auth', init: {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }),
+  } });
   const tok = aj.data.accessToken;
   console.log(`Autopilot · geprüfte Produkte bleiben DRAFT · Gemini: AN · MAX ${MAX}`);
   await ensureShopToken();
   if (!SHOP_TOKEN) { console.log('Shopify-Auth fehlgeschlagen (SHOPIFY_ADMIN_TOKEN oder CLIENT_ID/SECRET prüfen).'); process.exit(0); }
+  const identity = pruefeCjShopIdentitaet((await shopify('{shop{name myshopifyDomain currencyCode primaryDomain{host}}}', {}))?.shop, SHOPIFY_SHOP);
+  if (identity.status !== 'OK') throw new Error(`SHOP_IDENTITY_BLOCKED: ${identity.gruende.join(' | ')}`);
 
   // Eingebaute Themen-Pools (für gezieltes Sourcing via AUTOPILOT_POOL=men-tech | gadgets | …)
   const POOLS = {
@@ -206,7 +224,7 @@ async function geminiEnrich(name, rawDesc) {
   const done = [];
   for (const [kw, must] of picks) {
     if (done.length >= MAX) break;
-    let r; try { r = await cjGet('/product/list', { pageNum: 1, pageSize: 40, productNameEn: kw }, tok); } catch { continue; }
+    const r = await cjGet('/product/list', { pageNum: 1, pageSize: 40, productNameEn: kw }, tok);
     await sleep(1600);
     const list = (r.data?.list || []).filter(p => {
       const n = (p.productNameEn || '').toLowerCase();
@@ -215,13 +233,13 @@ async function geminiEnrich(name, rawDesc) {
 
     for (const p of list) {
       if (done.length >= MAX) break;
-      const baseSku = p.productSku;
-      const dq = await shopify(`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`, { q: `sku:${baseSku}` }).catch(() => null);
-      if (dq?.products?.edges?.length) continue; // Dedupe
-
-      let d; try { d = (await cjGet('/product/query', { pid: p.pid }, tok)).data; } catch { continue; }
+      const d = (await cjGet('/product/query', { pid: p.pid }, tok)).data;
       await sleep(1600);
       if (!d) continue;
+      const duplikat = await pruefeDublette(d);
+      if (duplikat.unbekannt) throw new Error(`DUPLIKAT_STATUS_UNKNOWN: ${duplikat.grund}`);
+      if (duplikat.dublette) { console.log(`  skip(Dublette): ${duplikat.grund}`); continue; }
+      const baseSku = d.productSku || p.productSku;
       const name = (d.productNameEn || kw);
       if (BAD.test(name.toLowerCase())) continue;
 
@@ -298,4 +316,4 @@ async function geminiEnrich(name, rawDesc) {
 
   console.log(`\nAutopilot fertig: ${done.length} gesperrte DRAFT-Produkte; keine Kanalpublikation.`);
   if (done.length) console.log(JSON.stringify(done, null, 2));
-})().catch(e => { console.error('Autopilot-Fehler:', e.message); process.exit(0); });
+})().catch(e => { console.error('Autopilot UNKNOWN/abgebrochen:', e.message); process.exitCode = 2; });

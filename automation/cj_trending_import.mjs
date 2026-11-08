@@ -5,13 +5,15 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
-import { cjImportSicherheitsdaten, pruefeCjImportText } from './lib/cj_import_guard.mjs';
+import { cjImportSicherheitsdaten, cjImportWriteFreigegeben, pruefeCjImportText, pruefeCjShopIdentitaet } from './lib/cj_import_guard.mjs';
+import { cjFetch } from './lib/cj_fetch.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
-const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
+const WRITE=cjImportWriteFreigegeben(process.env), DRY=!WRITE, CAP=Math.min(20,Math.max(1,parseInt(process.env.CAP||'12',10)||12));
 const LEDGER='dropship/cj_niche_done.txt';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;const p=Math.max(u*m,4.90);return (Math.floor(p)+0.90).toFixed(2);};
@@ -111,9 +113,9 @@ if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
 const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
 
-async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
-async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
-async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
+async function cj(path){return cjFetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{context:`CJ ${path.split('?')[0]}`,headers:{'CJ-Access-Token':CJT}});}
+async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});if(!r.ok)throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`);const j=await r.json();if(!j.access_token)throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt');return j.access_token;}
+async function sgql(t,q,v){return {data:await shopifyGql(SHOP,API,t,q,v)};}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 const TRUST=`<p>Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>`;
@@ -170,11 +172,12 @@ async function deepseek(prompt){
 }
 
 // ── TRENDING-Modus: Top-Produkte nach listedNum (CJ "Trending/Video Products") ──
-const CAPT=parseInt(process.env.CAP||'108',10);
-const PAGES=parseInt(process.env.PAGES||'8',10);
+const CAPT=CAP;
+const PAGES=Math.min(5,Math.max(1,parseInt(process.env.PAGES||'5',10)||5));
 const BAN=/wholesale|\bsample\b|disney|marvel|frozen|spider|barbie|pokemon|nintendo|halloween|christmas|weihnacht|sex|adult|vibrat|cigarette|vape|hookah|shisha|knife|gun|weapon|swimming ring|swim ring|arm ?band.*swim/i;
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
+if(WRITE){const ident=pruefeCjShopIdentitaet((await sgql(st,'{shop{name myshopifyDomain currencyCode primaryDomain{host}}}',{})).data?.shop,SHOP);if(ident.status!=='OK')throw new Error(`SHOP_IDENTITY_BLOCKED: ${ident.gruende.join(' | ')}`);}
 
 // 1) Top-N nach listedNum einsammeln
 const cand=[];

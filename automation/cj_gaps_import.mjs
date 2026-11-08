@@ -10,7 +10,14 @@
  *      [CATS=grill,auto] · [PER=4] (pro Kategorie) · [MARGIN=3.2] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
-import { cjImportSicherheitsdaten, pruefeCjImportText } from './lib/cj_import_guard.mjs';
+import {
+  cjImportSicherheitsdaten,
+  cjImportWriteFreigegeben,
+  pruefeCjImportText,
+  pruefeCjShopIdentitaet,
+} from './lib/cj_import_guard.mjs';
+import { cjFetch } from './lib/cj_fetch.mjs';
+import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
@@ -20,17 +27,17 @@ const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
 const CSEC = (shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '').trim();
 let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
-if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const API = '2025-01';
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const TOKEN_FILE = '/tmp/cj_token.json';
 const LEDGER = 'dropship/cj_gaps_done.txt';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-const PER = Math.max(1, parseInt(process.env.PER || '4', 10) || 4);
+const PER = Math.min(4, Math.max(1, parseInt(process.env.PER || '4', 10) || 4));
 const MARGIN = parseFloat(process.env.MARGIN || '3.2') || 3.2;
 const USD_CHF = 0.90;
-const DRY = process.env.DRY_RUN === '1';
+const WRITE = cjImportWriteFreigegeben(process.env);
+const DRY = !WRITE;
 const CATS = (process.env.CATS || 'grill,auto').split(',').map(s => s.trim()).filter(Boolean);
 
 // Kategorie-Konfig: Suchbegriffe (EN, für CJ), Pflichtwort, Collection, Tags, DE-Beschreibungsbausteine.
@@ -125,34 +132,28 @@ const MIN_LISTED = parseInt(process.env.MIN_LISTED || '0', 10) || 0; // Populari
 
 // ── Shopify ──
 async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
-  return r.json();
+  return { data: await shopifyGql(SHOP, API, tok, q, v, { context: 'CJ-Lueckenimport' }) };
 }
-async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
-async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); const j = await r.json().catch(() => ({})); return j.access_token || null; }
+async function sWorks(t) { const r = await sgql(t, '{shop{name myshopifyDomain currencyCode primaryDomain{host}}}', {}); return r?.data?.shop || null; }
+async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); if (!r.ok) throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`); const j = await r.json(); if (!j.access_token) throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt'); return j.access_token; }
 async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return ADMIN_TOKEN; if (CID && CSEC) { const t = await sCC(); if (t && await sWorks(t)) return t; } return null; }
 
 // ── CJ ──
 async function cjToken() {
   try { if (fs.existsSync(TOKEN_FILE)) { const t = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8')); if (t.exp > Date.now() + 60000) return t.accessToken; } } catch {}
-  const r = await fetch(`${CJ_BASE}/authentication/getAccessToken`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) });
-  const j = await r.json().catch(() => ({}));
-  if (!j.result || !j?.data?.accessToken) { console.log('⚠️ CJ-Auth fehlgeschlagen → No-op: ' + (j.message || '')); return null; }
+  const j = await cjFetch(`${CJ_BASE}/authentication/getAccessToken`, {
+    context: 'CJ-Authentifizierung Lueckenimport',
+    init: { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: CJ_EMAIL, apiKey: CJ_API_KEY }) },
+  });
+  if (!j?.data?.accessToken) throw new Error('CJ_AUTH_UNKNOWN: accessToken fehlt');
   try { fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 })); } catch {}
   return j.data.accessToken;
 }
 async function cjGet(tok, path, params) {
-  for (let a = 0; a < 4; a++) {
-    const qs = new URLSearchParams(params).toString();
-    const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-    const j = await r.json().catch(() => ({}));
-    if (j.code === 1600200 || /Too Many|QPS/i.test(j.message || '')) { await sleep((a + 1) * 2500); continue; }
-    return j;
-  }
-  return {};
+  const qs = new URLSearchParams(params).toString();
+  return cjFetch(`${CJ_BASE}${path}?${qs}`, { context: `CJ ${path}`, headers: { 'CJ-Access-Token': tok } });
 }
-async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); if (r.ok) return true; const g = await fetch(u); return g.ok; } catch { return false; } }
+async function img200(u) { const r = await fetch(u, { method: 'HEAD' }); if (r.status === 429 || r.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${r.status}`); if (r.ok) return true; const g = await fetch(u); if (g.status === 429 || g.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${g.status}`); return g.ok; }
 
 // ── Gemini Batch-Übersetzung EN-Produktname → knackiger DE-Titel ──
 async function titlesDE(names) {
@@ -179,28 +180,16 @@ if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds → No-op.'); proces
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 const SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,input:$input){ product{ id handle } userErrors{ field message } } }`;
-const COLL_FIND = `query($q:String!){ collections(first:1, query:$q){ edges{ node{ id handle } } } }`;
-const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$input){ collection{ id handle } userErrors{ message } } }`;
 
 (async () => {
   const stok = await sToken(); if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op.'); process.exit(0); }
+  if (WRITE) {
+    const identity = pruefeCjShopIdentitaet(await sWorks(stok), SHOP);
+    if (identity.status !== 'OK') throw new Error(`SHOP_IDENTITY_BLOCKED: ${identity.gruende.join(' | ')}`);
+  }
   const ctok = await cjToken(); if (!ctok) process.exit(0);
   console.log('CJ + Shopify ok.' + (DRY ? ' [DRY]' : ''));
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
-
-  // Smart-Collection je Kategorie sicherstellen (per Tag)
-  async function ensureColl(cfg) {
-    if (DRY) return null;
-    const f = await sgql(stok, COLL_FIND, { q: `handle:${cfg.coll.handle}` });
-    const ex = f?.data?.collections?.edges?.[0]?.node;
-    if (ex) return ex.id;
-    const r = await sgql(stok, COLL_CREATE, { input: { handle: cfg.coll.handle, title: cfg.coll.title,
-      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz und Liechtenstein. Gratis-Versand ab CHF 50.</p>`,
-      ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: cfg.coll.tag }] } } });
-    const id = r?.data?.collectionCreate?.collection?.id;
-    console.log(`  Collection ${cfg.coll.title}: ${id ? 'angelegt' : 'FEHLER ' + JSON.stringify(r?.data?.collectionCreate?.userErrors)}`);
-    return id;
-  }
 
   let created = 0, fails = [];
   for (const cat of CATS) {
@@ -243,7 +232,6 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
 
     // 3) Titel übersetzen + anlegen
     const titles = await titlesDE(picks.map(p => p.nameEn));
-    const collId = await ensureColl(cfg);
     for (let i = 0; i < picks.length; i++) {
       const p = picks[i];
       const title = String(titles[i] || '').replace(/["<>]/g, '').trim();
@@ -277,4 +265,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
   if (fails.length) fails.slice(0, 15).forEach(f => console.error('✗', f));
   console.log(`\nFertig: ${created} Produkt(e) angelegt${DRY ? ' [DRY]' : ''}${fails.length ? `, ${fails.length} Fehler` : ''}.`);
   process.exit(0);
-})();
+})().catch(e => {
+  console.error(`Lueckenimport UNKNOWN/abgebrochen: ${e.message}`);
+  process.exitCode = 2;
+});

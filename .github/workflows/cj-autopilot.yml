@@ -33,6 +33,11 @@ on:
         description: 'Zusätzliche Tags, komma-getrennt (z.B. gadgets,tech oder herren,herren-mode)'
         required: false
         default: ''
+      write_approved:
+        description: 'Gesperrte DRAFTs schreiben (zusaetzlich zum Code-Gate)'
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: read
@@ -64,4 +69,6 @@ jobs:
           AUTOPILOT_POOL: ${{ github.event.inputs.pool }}
           AUTOPILOT_KEYWORDS: ${{ github.event.inputs.keywords }}
           AUTOPILOT_TAGS: ${{ github.event.inputs.extra_tags }}
+          DRY_RUN: ${{ github.event.inputs.write_approved == 'true' && '0' || '1' }}
+          CJ_IMPORT_WRITE_APPROVED: ${{ github.event.inputs.write_approved == 'true' && '1' || '0' }}
         run: node dropship/cj_autopilot.mjs

@@ -3,6 +3,7 @@
    Aufruf: node cj_full_create.mjs <PID> <PRICE> <TYPE> <TAGS> <TITLE> <DESCFILE> <OUT>  (token-basiert) */
 import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 import fs from 'fs';
+import { cjImportSicherheitsdaten, pruefeCjImportText } from '../automation/lib/cj_import_guard.mjs';
 const [PID,PRICE,TYPE,TAGS,TITLE,DESCFILE,OUT]=process.argv.slice(2);
 const BASE='https://developers.cjdropshipping.com/api2.0/v1';
 const tok=JSON.parse(fs.readFileSync('/tmp/cj_token.json')).accessToken;
@@ -31,7 +32,11 @@ const opts=[{name:'Farbe',values:colors.map(n=>({name:n}))}];
 if(hasSize)opts.push({name:'Grösse',values:sizes.map(n=>({name:n}))});
 const used=new Set();const variants=[];
 for(const v of rows){const ov=[{optionName:'Farbe',name:cmap[v.color]}];if(hasSize)ov.push({optionName:'Grösse',name:v.size});const k=ov.map(o=>o.name).join('|');if(used.has(k))continue;used.add(k);const cI=cimg[cmap[v.color]];const vv={optionValues:ov,price:PRICE,inventoryItem:{sku:v.sku,tracked:false}};if(cI&&goodSet.has(cI))vv.file={originalSource:cI,contentType:'IMAGE'};variants.push(vv);}
-const input={title:TITLE,descriptionHtml:fs.readFileSync(DESCFILE,'utf8'),vendor:'LuxeStyle',productType:TYPE,status:'ACTIVE',tags:TAGS.split(','),productOptions:opts,files,variants};
+const descriptionHtml=fs.readFileSync(DESCFILE,'utf8');
+const textPruefung=pruefeCjImportText({sourceTitle:d.productNameEn,title:TITLE,html:descriptionHtml});
+if(textPruefung.status!=='OK'){await b.close();throw new Error(`TEXT_BLOCKED: ${textPruefung.gruende.join(' | ')}`);}
+const sicherheit=cjImportSicherheitsdaten(TAGS.split(','));
+const input={title:TITLE,descriptionHtml,vendor:'LuxeStyle',productType:TYPE,status:sicherheit.status,tags:sicherheit.tags,productOptions:opts,files,variants};
 fs.writeFileSync(OUT,JSON.stringify({input}));
 await b.close();
 console.log(`${OUT}: ${colors.length}F x ${hasSize?sizes.length:1} = ${variants.length}var, ${files.length} Bilder (Galerie+Farbe)`);

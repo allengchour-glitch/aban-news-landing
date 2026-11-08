@@ -42,7 +42,10 @@ on:
       - 'dropship/cj_enrich.mjs'
       - 'dropship/cj_enrich_test.mjs'
       - 'dropship/cj_autopilot.mjs'
+      - 'dropship/cj_full_create.mjs'
+      - 'dropship/cj_variants_new.mjs'
       - '.github/workflows/cj-autopilot.yml'
+      - '.github/workflows/cj-gaps.yml'
       - 'dropship/ads/render_brand_video.py'
       - 'dropship/ads/test_render_brand_video.py'
       - 'dropship/mode-taxonomie-2610/**'
@@ -141,6 +144,8 @@ jobs:
             dropship/cj_enrich.mjs
             dropship/cj_enrich_test.mjs
             dropship/cj_autopilot.mjs
+            dropship/cj_full_create.mjs
+            dropship/cj_variants_new.mjs
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
@@ -177,11 +182,14 @@ jobs:
           node --check automation/cj_gaps_import.mjs
           node --check automation/cj_category_fill.mjs
           node --check automation/cj_trending_import.mjs
+          node --check automation/cj_perpetual.mjs
           node --check automation/lib/cj_import_guard.mjs
           node --check automation/autopilot/merchant_feed.mjs
           node --check automation/autopilot/merchant_feed_auth_test.mjs
           node --check dropship/cj_enrich.mjs
           node --check dropship/cj_autopilot.mjs
+          node --check dropship/cj_full_create.mjs
+          node --check dropship/cj_variants_new.mjs
           node --check automation/publish_guard.mjs
           node --check automation/cross_sell.mjs
           node --check automation/lieferbarkeit_guard.mjs

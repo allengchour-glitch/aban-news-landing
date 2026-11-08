@@ -4,6 +4,19 @@ import { pruefeDeText } from './storefront_sprache.mjs';
 
 export const CJ_IMPORT_STATUS = 'DRAFT';
 export const CJ_IMPORT_SPERRTAG = 'compliance-pruefen';
+export const CJ_IMPORT_SHOP = 'au3j0y-hq.myshopify.com';
+export const CJ_IMPORT_SHOP_NAME = 'LuxeStyle';
+export const CJ_IMPORT_PRIMARY_DOMAIN = 'luxestyle.ch';
+export const CJ_IMPORT_WAEHRUNG = 'CHF';
+
+// Kleine, absichtlich konservative Wortlisten. Die allgemeine Storefront-Pruefung faengt
+// bekannte UI-/Meta-Faelle ab; diese zweite Schranke verhindert, dass fluessige englische
+// KI-Ausgaben ohne eines der bekannten Einzelwoerter als angeblich deutsch durchlaufen.
+const EN = new Set(('a an and are as at breathable comfort comfortable dashboard dress elegant fabric for from '
+  + 'holder home in is linen magnetic mount of on phone product silhouette soft styling summer the this to '
+  + 'versatile with women your').split(/\s+/));
+const DE = new Set(('am an auf aus bei das dem den der des die ein eine einem einen einer eines fuer für '
+  + 'fuers fürs im in ist mit ohne oder sowie und vom von zum zur').split(/\s+/));
 
 function norm(value) {
   return String(value ?? '')
@@ -13,6 +26,47 @@ function norm(value) {
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function woerter(value) {
+  return norm(value).split(' ').filter(Boolean);
+}
+
+function sprachSignal(value) {
+  const tokens = woerter(value);
+  let en = 0, de = 0;
+  for (const token of tokens) {
+    if (EN.has(token)) en++;
+    if (DE.has(token)) de++;
+  }
+  return { tokens: tokens.length, en, de };
+}
+
+/**
+ * Schreiblaeufe sind absichtlich doppelt verriegelt. Ein leerer/anders geschriebener Wert
+ * bedeutet Vorschau. Damit wird aus einem fehlenden Workflow-Input niemals ein Live-Lauf.
+ */
+export function cjImportWriteFreigegeben(env = process.env) {
+  return String(env.DRY_RUN ?? env.DRY ?? '1') === '0'
+    && String(env.CJ_IMPORT_WRITE_APPROVED ?? '') === '1';
+}
+
+/** Live gelesene Shop-Identitaet; fehlende Felder und Abweichungen blockieren jeden Write. */
+export function pruefeCjShopIdentitaet(shop, configuredHost) {
+  const host = String(configuredHost ?? '').trim().toLowerCase();
+  const gelesen = {
+    name: String(shop?.name ?? ''),
+    myshopifyDomain: String(shop?.myshopifyDomain ?? '').toLowerCase(),
+    primaryDomain: String(shop?.primaryDomain?.host ?? '').toLowerCase(),
+    currencyCode: String(shop?.currencyCode ?? '').toUpperCase(),
+  };
+  const gruende = [];
+  if (host !== CJ_IMPORT_SHOP) gruende.push('konfigurierter Shopify-Shop weicht ab');
+  if (gelesen.name !== CJ_IMPORT_SHOP_NAME) gruende.push('Shopname weicht ab oder fehlt');
+  if (gelesen.myshopifyDomain !== CJ_IMPORT_SHOP) gruende.push('myshopifyDomain weicht ab oder fehlt');
+  if (gelesen.primaryDomain !== CJ_IMPORT_PRIMARY_DOMAIN) gruende.push('primaere Domain weicht ab oder fehlt');
+  if (gelesen.currencyCode !== CJ_IMPORT_WAEHRUNG) gruende.push('Shopwaehrung weicht ab oder fehlt');
+  return { status: gruende.length ? 'BLOCKED' : 'OK', gruende, shop: gelesen };
 }
 
 /**
@@ -47,6 +101,20 @@ export function pruefeCjImportText({ sourceTitle, title, html } = {}) {
   const beschreibungSprache = pruefeDeText(html, { feld: 'descriptionHtml', art: 'meta', strictDe: true });
   for (const pruefung of [titelSprache, beschreibungSprache]) {
     if (pruefung.status !== 'OK') gruende.push(`${pruefung.feld}: ${pruefung.grund || pruefung.status}`);
+  }
+
+  const titelSignal = sprachSignal(title);
+  const beschreibungSignal = sprachSignal(html);
+  if (titelSignal.en >= 2 && titelSignal.en > titelSignal.de) {
+    gruende.push(`Titel hat ueberwiegend englische Sprachsignale (${titelSignal.en}:${titelSignal.de})`);
+  }
+  if (beschreibungSignal.en >= 2 && beschreibungSignal.en > beschreibungSignal.de) {
+    gruende.push(`Beschreibung hat ueberwiegend englische Sprachsignale (${beschreibungSignal.en}:${beschreibungSignal.de})`);
+  }
+  // Ein laengerer Satz ohne irgendein deutsches Funktionswort ist fuer einen autonomen Import
+  // nicht hinreichend als Deutsch belegt. Kurze Nomen-Titel bleiben zulaessig.
+  if (beschreibungSignal.tokens >= 5 && beschreibungSignal.de === 0) {
+    gruende.push('Beschreibung enthaelt kein belastbares deutsches Sprachsignal');
   }
 
   return gruende.length ? { status: 'BLOCKED', gruende } : { status: 'OK', gruende: [] };

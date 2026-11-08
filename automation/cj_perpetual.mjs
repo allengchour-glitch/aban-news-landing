@@ -12,6 +12,14 @@
  */
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
+import { cjFetch } from './lib/cj_fetch.mjs';
+import { cjImportWriteFreigegeben } from './lib/cj_import_guard.mjs';
+
+if (!cjImportWriteFreigegeben(process.env)) {
+  console.error('Abbruch: Dauerimport benoetigt DRY=0 und CJ_IMPORT_WRITE_APPROVED=1; Vorgabe ist Vorschau.');
+  process.exit(2);
+}
+const ENDLOS = process.env.ONCE === '0' && process.env.CJ_IMPORT_PERPETUAL_APPROVED === '1';
 
 let CJT = (process.env.CJ_TOKEN || '').trim();
 if (!CJT && fs.existsSync('/tmp/cj_token.json')) {
@@ -27,18 +35,17 @@ const CLOTHES = ['cjdamen', 'cjherren'];
 const REST = ['cjtaschen', 'cjschmuck', 'cjuhren', 'cjhome', 'cjbeautytools', 'cjhaustier',
   'cjelektronik', 'cjgadgets', 'skincare', 'makeup', 'nagel', 'kueche', 'storage', 'sport', 'pet', 'gaming', 'musik', 'cj3d'];
 
-const CLOTHES_CAP = Number(process.env.CLOTHES_CAP || 80);
-const REST_CAP = Number(process.env.REST_CAP || 40);
+const CLOTHES_CAP = Math.min(20, Math.max(1, Number(process.env.CLOTHES_CAP || 12) || 12));
+const REST_CAP = Math.min(20, Math.max(1, Number(process.env.REST_CAP || 12) || 12));
 const MINPTS = 200;            // unter so vielen Restpunkten lohnt keine Welle mehr
 const WAIT_EXHAUST = 1800000;  // 30 Min warten, wenn Punkte leer (Reset abwarten)
 const PROBE_CAT = 'D2432903-0D4E-4787-886F-D3D9DA7890D9'; // Lady Dresses (Kleider)
 
 async function points() {
-  try {
-    const r = await fetch(`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageSize=1&pageNum=1&categoryId=${PROBE_CAT}`, { headers: { 'CJ-Access-Token': CJT } });
-    const j = await r.json();
-    return { code: j.code, remaining: j.pointsInfo?.remaining ?? null, used: j.pointsInfo?.usedToday ?? null };
-  } catch (e) { return { code: -1, remaining: null, used: null }; }
+  const j = await cjFetch(`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageSize=1&pageNum=1&categoryId=${PROBE_CAT}`, {
+    context: 'CJ-Punkteprobe Dauerimport', headers: { 'CJ-Access-Token': CJT },
+  });
+  return { code: j.code, remaining: j.pointsInfo?.remaining ?? null, used: j.pointsInfo?.usedToday ?? null };
 }
 
 function run(grp, cap, extra) {
@@ -78,6 +85,6 @@ do {
   }
   console.log(`[${now()}] Runde ${round} fertig.`);
   await sleep(8000);
-} while (process.env.ONCE !== '1');
+} while (ENDLOS);
 
-console.log(`[${now()}] cj_perpetual beendet (ONCE).`);
+console.log(`[${now()}] cj_perpetual beendet (${ENDLOS ? 'Endlosschalter beendet' : 'eine Welle, Vorgabe'}).`);

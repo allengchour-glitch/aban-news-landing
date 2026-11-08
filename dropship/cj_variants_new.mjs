@@ -12,6 +12,7 @@
  * Farbnamen bleiben (wie bei den Bestandsartikeln) englisch; jede Farbe → erstes Variantenbild.
  */
 import fs from 'fs';
+import { cjImportSicherheitsdaten, pruefeCjImportText } from '../automation/lib/cj_import_guard.mjs';
 const [VFILE, PRICE, PRODUCTTYPE, TAGS, TITLE, DESCFILE, OUT] = process.argv.slice(2);
 const j = JSON.parse(fs.readFileSync(VFILE));
 // Produktwörter aus Farbnamen entfernen (CJ packt manchmal Produkttext rein)
@@ -33,13 +34,17 @@ let variants=j.variants.map(v=>{
 // dedupe gleiche Optionskombis
 const key=v=>v.optionValues.map(o=>o.name).join('|'); const used=new Set(); const uniq=[];
 for(const v of variants){const k=key(v);if(used.has(k))continue;used.add(k);uniq.push(v);}
+const descriptionHtml=fs.readFileSync(DESCFILE,'utf8');
+const textPruefung=pruefeCjImportText({sourceTitle:j.productNameEn||j.nameEn,title:TITLE,html:descriptionHtml});
+if(textPruefung.status!=='OK')throw new Error(`TEXT_BLOCKED: ${textPruefung.gruende.join(' | ')}`);
+const sicherheit=cjImportSicherheitsdaten(TAGS.split(','));
 const input={
   title:TITLE,
-  descriptionHtml:fs.readFileSync(DESCFILE,'utf8'),
+  descriptionHtml,
   vendor:'LuxeStyle',
   productType:PRODUCTTYPE,
-  status:'ACTIVE',
-  tags:TAGS.split(','),
+  status:sicherheit.status,
+  tags:sicherheit.tags,
   productOptions:opts,
   files,
   variants:uniq,
