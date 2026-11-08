@@ -581,10 +581,16 @@ pruefe('v5 (pod/live) ist unverändert: 51 378 Byte', v5.length === 51378, Strin
 pruefe('v5 (pod/live) ist unverändert: SHA-256 beginnt mit 70140421381326aff999', createHash('sha256').update(v5).digest('hex').startsWith('70140421381326aff999'));
 pruefe('v6 greift nicht auf die v5-Kennungen zu (Klasse, Guard, Eingabefeld)', (() => { const s = readFileSync(V6_DATEI, 'utf8'); return !/['"]\.lspod-designer['"]/.test(s) && !/__lspodDesignerLoaded\s*=/.test(s) && !/data-lspod="1"/.test(s); })());
 
+// 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
+// liegt deshalb ausschliesslich auf dem neuen unveränderlichen 6.3.1-Pfad.
+const v630 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.3.0.js'));
+pruefe('v6.3.0 bleibt für bestehende SRI-Tags bytegleich',
+  createHash('sha256').update(v630).digest('hex') === 'e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b');
+
 // Die Namen sind nur sichtbare Auswahlbeschriftungen. Die technisch verwendeten CSS-Schriften
-// stehen separat in SCHRIFT_CSS und bleiben unverändert. Darum dürfen die deutschen Labels in
-// allen drei v6-Fassungen vollständig deutsch sein, während die englische Locale englisch bleibt.
-for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.0.js']) {
+// stehen separat in SCHRIFT_CSS und bleiben unverändert. Darum müssen die aktiv weiterentwickelten
+// v6-Fassungen vollständig deutsch sein, während die englische Locale englisch bleibt.
+for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js']) {
   const s = readFileSync(join(hier, '..', name), 'utf8');
   pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,
     s.includes("['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine']")

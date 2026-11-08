@@ -1,5 +1,5 @@
 /**
- * Browser-Vertrag fuer die verbindliche Druckpruefung des Editors v6.3.0.
+ * Browser-Vertrag fuer die verbindliche Druckpruefung des Editors v6.3.1.
  * Die im Dialog gezeigten PNG-Blobs werden bytegenau gegen die spaeteren Uploads geprueft.
  *
  * Aufruf: node pod/v6/test/review_gate_editor_test.mjs
@@ -9,8 +9,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const hier = dirname(fileURLToPath(import.meta.url));
-process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.0.js');
-process.env.V6_VERSION = '6.3.0';
+process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.1.js');
+process.env.V6_VERSION = '6.3.1';
 
 const { playwright, starteServer, seiteOeffnen, editorBereit } = await import('./lib.mjs');
 const { chromium } = playwright();
@@ -73,7 +73,7 @@ async function desktopSzenario(browser, srv) {
   const p = s.page;
   try {
     await editorBereit(p);
-    pruefe('v6.3.0 ist geladen', await p.evaluate(() => window.LSPOD6 && window.LSPOD6.version) === '6.3.0');
+    pruefe('v6.3.1 ist geladen', await p.evaluate(() => window.LSPOD6 && window.LSPOD6.version) === '6.3.1');
     await textAuf(p, 'front', 'Vorne geprueft');
     await textAuf(p, 'back', 'Hinten geprueft');
 

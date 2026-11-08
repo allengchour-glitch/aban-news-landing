@@ -10,8 +10,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const hier = dirname(fileURLToPath(import.meta.url));
-process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.0.js');
-process.env.V6_VERSION = '6.3.0';
+process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.1.js');
+process.env.V6_VERSION = '6.3.1';
 
 // lib.mjs liest V6_DATEI beim Import. Darum muss der Import nach obiger Auswahl erfolgen.
 const {

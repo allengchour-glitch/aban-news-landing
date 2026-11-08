@@ -54,7 +54,7 @@ async function textHinzufuegen(p, text) {
   await p.locator('.lsp6-text').fill(text);
 }
 async function reviewBestaetigenWennNoetig(p) {
-  if (!(await p.evaluate(() => window.LSPOD6 && window.LSPOD6.version === '6.3.0'))) return;
+  if (!(await p.evaluate(() => window.LSPOD6 && /^6\.3\./.test(window.LSPOD6.version || '')))) return;
   const dialog = p.locator('[data-lsp6-review="1"]');
   await dialog.waitFor({ state: 'visible', timeout: 30000 });
   await dialog.locator('.lsp6-review-accept').check();

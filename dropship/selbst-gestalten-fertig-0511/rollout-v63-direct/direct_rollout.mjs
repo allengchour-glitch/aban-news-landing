@@ -6,7 +6,7 @@ import { shopifyGql } from '../../../automation/lib/shopify_gql.mjs';
 import { shopifyClientSecret } from '../../../automation/lib/shopify_secret.mjs';
 import {
   ALLOWLIST, BLOCKLIST, PREVIEW_IDS, assetUrl, baustein, beschreibungPlanen,
-  blockerBaustein, blockerProduktPruefen, numericId, produktPruefen,
+  blockerBaustein, blockerProduktPruefen, editorReleasePlanen, numericId, produktPruefen,
   releaseAusAllowlist, releasePruefen, sha256,
 } from './direct_rollout_lib.mjs';
 
@@ -101,7 +101,7 @@ async function assetPruefen(url, soll, art) {
 
 function releaseLokalBauen() {
   const allowlist = JSON.parse(readFileSync(SOURCE_ALLOWLIST, 'utf8'));
-  const editorPfad = join(ASSET_ROOT, 'lspod-designer-v6-6.3.0.js');
+  const editorPfad = join(ASSET_ROOT, 'lspod-designer-v6-6.3.1.js');
   if (!existsSync(editorPfad)) throw new Error(`Lokaler v6.3-Editor fehlt: ${editorPfad}`);
   const assetSha256 = new Map();
   for (const id of ALLOWLIST.map((x) => x.numericId)) {
@@ -138,7 +138,7 @@ async function planen(tok, release) {
     await storefrontPruefen(p);
     await assetPruefen(rp.cardUrl, rp.cardSha256, 'karte');
     if (rp.previewUrl) await assetPruefen(rp.previewUrl, rp.previewSha256, 'vorschau');
-    const diff = beschreibungPlanen(p.descriptionHtml, baustein({ product: p, releaseProduct: rp, editor: release.editor }));
+    const diff = editorReleasePlanen(p.descriptionHtml, baustein({ product: p, releaseProduct: rp, editor: release.editor }), release.editor);
     plaene.push({ kind: 'editor', id: p.id, numericId: numericId(p.id), handle: p.handle, title: p.title, updatedAt: p.updatedAt, onlineStoreUrl: p.onlineStoreUrl, expectedVariantIds: rp.variantIds.map(String), ...diff });
   }
   for (const b of BLOCKLIST) {
@@ -147,6 +147,7 @@ async function planen(tok, release) {
     await storefrontPruefen(p);
     const variantIds = (p.variants?.nodes || []).map((v) => numericId(v.id));
     const diff = beschreibungPlanen(p.descriptionHtml, blockerBaustein({ product: p, blocker: b }), { blocked: true });
+    if (diff.geaendert) throw new Error(`${p.handle}: Blockprodukt muss bei diesem Editor-Release bytegleich bleiben`);
     plaene.push({ kind: 'blocked', blockerReason: b.reason, id: p.id, numericId: numericId(p.id), handle: p.handle, title: p.title, updatedAt: p.updatedAt, onlineStoreUrl: p.onlineStoreUrl, expectedVariantIds: variantIds, ...diff });
   }
   return plaene;

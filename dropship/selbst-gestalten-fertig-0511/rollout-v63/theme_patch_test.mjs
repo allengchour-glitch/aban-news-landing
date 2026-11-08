@@ -19,7 +19,7 @@ const patched = patchThemeLayout(basis, allowlist);
 
 assert.notEqual(patched, basis, 'der bekannte Basisblock muss ersetzt werden');
 assert.equal(patched.split(MARKER).length - 1, 1, 'stabiler Marker genau einmal');
-assert.equal(patched.split("'lspod-designer-v6-6.3.0.js' | asset_url").length - 1, 1, 'v6.3 genau einmal');
+assert.equal(patched.split("'lspod-designer-v6-6.3.1.js' | asset_url").length - 1, 1, 'v6.3.1 genau einmal');
 assert.equal(patched.split("'lspod-designer-v5-safe.js' | asset_url").length - 1, 1, 'v5 bleibt genau einmal als Fallback');
 assert.match(patched, /case product\.handle/);
 assert.match(patched, /if request\.page_type == 'product'/);
@@ -55,7 +55,7 @@ for (const product of allowlist.products.filter((entry) => entry.rolloutStatus !
 assert.equal(patchThemeLayout(patched, allowlist), patched, 'vollstaendiger Patch ist idempotent');
 assert.throws(() => patchThemeLayout('<head></head>', allowlist), /V63_THEME_BASE_MISMATCH/);
 assert.throws(() => patchThemeLayout(`${basis}\n${ERWARTETER_BLOCK}`, allowlist), /V63_THEME_BASE_MISMATCH/);
-assert.throws(() => patchThemeLayout(patched.replace("'lspod-designer-v6-6.3.0.js'", "'kaputt.js'"), allowlist), /V63_PATCH_AMBIGUOUS/);
+assert.throws(() => patchThemeLayout(patched.replace("'lspod-designer-v6-6.3.1.js'", "'kaputt.js'"), allowlist), /V63_PATCH_AMBIGUOUS/);
 assert.throws(() => patchThemeLayout(`${patched}\n${MARKER}`, allowlist), /V63_PATCH_AMBIGUOUS/);
 
 const invalid = structuredClone(allowlist);
@@ -127,7 +127,7 @@ const synthetic18 = {
 const block18 = rolloutBlock(synthetic18);
 assert.equal(block18.split('{%- when ').length - 1, 18, '18 Produkte werden exakt abgebildet');
 assert.equal(block18.split("setAttribute('data-karte-pflicht', '1')").length - 1, 1, 'Kartenpflicht wird einmal fuer jeden erlaubten Seitenaufruf gesetzt');
-assert.equal(block18.split("'lspod-designer-v6-6.3.0.js' | asset_url").length - 1, 1, 'ein gemeinsamer v6-Loader');
+assert.equal(block18.split("'lspod-designer-v6-6.3.1.js' | asset_url").length - 1, 1, 'ein gemeinsamer v6-Loader');
 assert.equal((block18.match(/assign lspod_v63_vorschau = 'lspod-[^']+\.json'/g) || []).length, 9, 'neun Produkte erhalten eine belegte Produktvorschau');
 for (const product of synthetic18.products.filter((entry) => entry.rolloutStatus === 'READY' && !entry.previewAsset)) {
   const segment = caseSegment(block18, product.handle);

@@ -8,7 +8,7 @@ import { playwright } from '../../../pod/v6/test/lib.mjs';
 const HIER = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HIER, '../../../');
 const MAPS = resolve(REPO, 'pod/v6/maps');
-const EDITOR_NAME = 'lspod-designer-v6-6.3.0.js';
+const EDITOR_NAME = 'lspod-designer-v6-6.3.1.js';
 const editor = readFileSync(resolve(REPO, 'pod/v6', EDITOR_NAME));
 const mapName = readdirSync(MAPS).filter((name) => name.endsWith('.karte.json')).sort()[0];
 if (!mapName) throw new Error('Keine öffentliche v6-Karte für die Cross-Origin-Prüfung');
@@ -69,7 +69,7 @@ try {
   // würde diesen klassischen Script-Load blockieren.
   await page.goto(`http://localhost:${pagePort}/`, { waitUntil: 'load' });
   const version = await page.evaluate(() => window.LSPOD6?.version || null);
-  if (version !== '6.3.0') throw new Error(`Cross-Origin-Script nicht geladen (Version ${version})`);
+  if (version !== '6.3.1') throw new Error(`Cross-Origin-Script nicht geladen (Version ${version})`);
   const fetched = await page.evaluate(async (url) => {
     const response = await fetch(url);
     return { ok: response.ok, body: await response.json() };

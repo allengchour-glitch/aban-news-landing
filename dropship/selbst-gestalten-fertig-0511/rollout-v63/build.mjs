@@ -11,7 +11,7 @@ const REPO = resolve(HIER, '../../../');
 const ALLOWLIST = resolve(HIER, 'allowlist.json');
 const KATALOG = resolve(REPO, 'dropship/selbst-gestalten-fertig-0511/target-katalog-20261108/katalog');
 const MAPS = resolve(REPO, 'pod/v6/maps');
-const EDITOR = resolve(REPO, 'pod/v6/lspod-designer-v6-6.3.0.js');
+const EDITOR = resolve(REPO, 'pod/v6/lspod-designer-v6-6.3.1.js');
 const AUDIT_ASSETS = resolve(HIER, 'source/audit/assets');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 

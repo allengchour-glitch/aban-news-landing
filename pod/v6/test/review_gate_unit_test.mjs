@@ -1,5 +1,5 @@
 /**
- * Reine Vertragstests fuer den verbindlichen Review-Stand des Editors v6.3.0.
+ * Reine Vertragstests fuer den verbindlichen Review-Stand des Editors v6.3.1.
  * Kein Browser, kein Netz, keine Dateien werden geschrieben.
  *
  * Aufruf: node pod/v6/test/review_gate_unit_test.mjs
@@ -10,8 +10,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const hier = dirname(fileURLToPath(import.meta.url));
-process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.0.js');
-process.env.V6_VERSION = '6.3.0';
+process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.1.js');
+process.env.V6_VERSION = '6.3.1';
 
 let n = 0;
 const fehler = [];
@@ -40,12 +40,12 @@ function editorLaden(datei) {
     addEventListener() {},
   };
   const ctx = vm.createContext(g);
-  vm.runInContext(readFileSync(datei, 'utf8'), ctx, { filename: 'lspod-designer-v6-6.3.0.js' });
+  vm.runInContext(readFileSync(datei, 'utf8'), ctx, { filename: 'lspod-designer-v6-6.3.1.js' });
   return g.LSPOD6;
 }
 
 const editor = editorLaden(process.env.V6_DATEI);
-pruefe('Editorversion ist v6.3.0', editor?.version === process.env.V6_VERSION, String(editor?.version));
+pruefe('Editorversion ist v6.3.1', editor?.version === process.env.V6_VERSION, String(editor?.version));
 const gueltig = editor?.hilfen?.reviewStandGueltig;
 pruefe('pure Hilfe reviewStandGueltig ist exportiert', typeof gueltig === 'function');
 
