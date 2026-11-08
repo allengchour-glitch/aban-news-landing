@@ -1,9 +1,9 @@
 # Artikel-Titel und -Beschreibungen kürzen (08.11.2026 abends)
 
-Teil von «mach die webseite fix fertig mit 0 fehler». Anlass (GEMESSEN mit eigenem Crawl am 08.11.2026, 342 deutsche Ratgeber-/Magazin-Artikel):
-- **Titel:** Shopify kürzt `page_title` bei 70 Zeichen hart, mitten im Wort («…Lautstärke — worauf es a – LuxeStyle»). Bei 268 von 342 Artikeln (78 %) war der `<title>` damit 71 bis 82 Zeichen lang und endete abgeschnitten.
-- **Beschreibung:** bei 225 von 342 Artikeln (66 %) war die Meta-Beschreibung länger als 160 Zeichen (Auszug aus dem Seitentext).
-- Keine Seite eines anderen Typs ist betroffen (Sammlungen: 16 von 210 Titel über 60 Zeichen, 0 Beschreibungen über 160; Seiten 14 Titel über 60).
+Teil von «mach die webseite fix fertig mit 0 fehler». Anlass (GEMESSEN mit eigenem Crawl am 08.11.2026, 339 deutsche Ratgeber-/Magazin-Artikel):
+- **Titel:** Shopify kürzt `page_title` bei 70 Zeichen hart, mitten im Wort («…Lautstärke — worauf es a – LuxeStyle»). Bei **121 von 339 Artikeln** (36 %) war der `<title>` damit 71 bis 82 Zeichen lang (21 Artikel genau 82, also hart gekürzt), bei 268 (79 %) über 60 Zeichen.
+- **Beschreibung:** bei **225 von 339 Artikeln** (66 %) war die Meta-Beschreibung länger als 160 Zeichen (bis 320, Auszug aus dem Seitentext).
+- Andere Seitentypen (Crawl-Stichprobe, deutsche Seiten): Sammlungen 340 Seiten, 1 Titel über 70 Zeichen, 0 Beschreibungen über 160; Seiten 105, 1 Titel über 70, 7 Beschreibungen über 160; Produkte 299, 6 Titel über 70, 0 Beschreibungen über 160. Dort besteht kein flächiger Fehler, daher nicht angefasst.
 
 ## Umsetzung (LIVE 08.11.2026 abends, MAIN-Theme, nur `snippets/meta-tags.liquid`)
 Zwei Liquid-Blöcke, **nur für Artikelseiten** (`request.page_type == 'article'`):
