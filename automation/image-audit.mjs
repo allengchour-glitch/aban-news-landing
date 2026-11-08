@@ -14,6 +14,9 @@
  * automation/lib/bild_befund.mjs. Ausserdem war APPLY standardmässig AN — bei einem
  * Werkzeug, das Hauptbilder vertauscht, ist das die falsche Vorgabe.
  *
+ * GEMESSEN 08.11.2026: bis dahin hat dieser Audit KEIN Bild je beurteilt. Gemini lieferte wegen maxOutputTokens 80 (Gedanken-Tokens
+ * frassen den Platz) abgeschnittenes JSON, und der alte Code wertete das als «Bild in Ordnung». Ursache und Test: lib/gemini_vision.mjs.
+ *
  * Sicher & günstig: BATCH pro Lauf (Default 40), idempotenter Ledger (überspringt schon
  * geprüfte Produkte), max. wenige Vision-Calls pro Produkt, Report als CSV. APPLY=0 = nur
  * Report (kein Umsortieren). No-op ohne GEMINI_API_KEY bzw. Shopify-Creds.
@@ -60,13 +63,13 @@ let TOKEN = '';
 async function shopToken() {
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ client_id: CID, client_secret: CSECRET, grant_type: 'client_credentials' }) });
+    body: JSON.stringify({ client_id: CID, client_secret: CSECRET, grant_type: 'client_credentials' }), signal: AbortSignal.timeout(60000) });
   const j = await r.json(); return j.access_token || '';
 }
 async function gql(query, variables) {
   const r = await fetch(`https://${SHOP}/admin/api/${API_VER}/graphql.json`, {
     method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOKEN },
-    body: JSON.stringify({ query, variables }) });
+    body: JSON.stringify({ query, variables }), signal: AbortSignal.timeout(60000) });
   return r.json();
 }
 
@@ -82,7 +85,7 @@ const PROMPT = 'Du bewertest die handwerkliche Qualität eines Produktbilds für
 const gem = { ok: 0, fehler: 0, folge: 0, gruende: {}, letzterGrund: '' };
 async function classify(url) {
   const r = await bildKlassifizieren({ url, key: KEY_AKTIV, keyFallback: KEY_FALLBACK && KEY_FALLBACK !== KEY_AKTIV ? KEY_FALLBACK : null, model: MODEL, base: GBASE, prompt: PROMPT });
-  if (r.wechsel) { KEY_AKTIV = KEY_FALLBACK; log('⚠️ Gratis-Schlüssel erschöpft (429): ab jetzt der erste Schlüssel.'); }
+  if (r.wechsel) { KEY_AKTIV = KEY_FALLBACK; log(`⚠️ Gratis-Schlüssel fiel aus (${r.wechselGrund || '?'}): ab jetzt der erste Schlüssel.`); }
   if (r.ok) { gem.ok++; gem.folge = 0; gem.letzterGrund = ''; return r.c; }
   gem.fehler++; gem.letzterGrund = r.grund; gem.gruende[r.grund] = (gem.gruende[r.grund] || 0) + 1;
   if (r.grund !== 'bild-nicht-lesbar' && r.grund !== 'bild-abgelehnt') {

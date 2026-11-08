@@ -30,6 +30,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 45   # ohne Angabe gelten 360 Minuten: Lauf 7 hing 20 Minuten an einem klemmenden Gratis-Schlüssel
     steps:
       - uses: actions/checkout@v4
         with: { ref: main }

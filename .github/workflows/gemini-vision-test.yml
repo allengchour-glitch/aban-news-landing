@@ -1,0 +1,39 @@
+name: Gemini-Vision Selbsttest
+
+# Offline-Test (keine Schlüssel, kein Netz) für den Gemini-Bildaufruf des Bild-Audits.
+# Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe,
+# eine zusätzliche Zeile dort würde nur Zusammenführungs-Konflikte erzeugen.
+on:
+  pull_request:
+    paths:
+      - 'automation/lib/gemini_vision.mjs'
+      - 'automation/lib/gemini_vision_test.mjs'
+      - 'automation/image-audit.mjs'
+      - '.github/workflows/gemini-vision-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gemini-vision-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/lib
+            automation/image-audit.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Selbsttest der Gemini-Anbindung
+        run: node automation/lib/gemini_vision_test.mjs
+      - name: Audit-Skript lädt (Syntax)
+        run: node --check automation/image-audit.mjs
