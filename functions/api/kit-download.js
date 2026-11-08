@@ -2,6 +2,7 @@
 // Gibt den Kit-Download erst frei, NACHDEM die Stripe-Zahlung serverseitig
 // verifiziert wurde. Dateiname ist mit DOWNLOAD_SALT gehasht (unrätbar).
 // Env (Pages-Projekt): STRIPE_API_KEY (geheim), DOWNLOAD_SALT (geheim).
+// ASSETS stellt Cloudflare Pages bereit; HEAD prüft Verfügbarkeit, nicht ZIP-Inhalte.
 
 const SECURITY = {
   "Access-Control-Allow-Origin": "*",
@@ -26,7 +27,10 @@ export async function onRequestGet(context) {
   // Derselbe normalisierte Salt wie beim Paketbau; ohne ihn gibt es keinen
   // belegten Dateinamen. Niemals einen scheinbar fertigen Link berechnen.
   const salt = (env.DOWNLOAD_SALT || "").trim();
-  if (!key || !salt) return json({ error: "Download derzeit nicht verfügbar. Bitte den Support kontaktieren." }, 503);
+  const assets = env.ASSETS;
+  if (!key || !salt || !assets || typeof assets.fetch !== "function") {
+    return json({ error: "Download derzeit nicht verfügbar. Bitte den Support kontaktieren." }, 503);
+  }
 
   const id = new URL(request.url).searchParams.get("session_id") || "";
   if (!/^cs_[A-Za-z0-9_]+$/.test(id)) return json({ error: "Ungültige Session." }, 400);
@@ -53,9 +57,33 @@ export async function onRequestGet(context) {
 
   if (session.payment_status !== "paid") return json({ error: "Zahlung nicht abgeschlossen.", status: session.payment_status }, 402);
   const slug = (session.metadata && session.metadata.slug) || "";
-  if (!slug) return json({ error: "Kein Produkt zugeordnet." }, 422);
+  if (typeof slug !== "string" || !slug) {
+    return json({ error: "Kein gültiges Produkt zugeordnet." }, 422);
+  }
 
   const url = `/downloads/kits/${await dlHash(slug, salt)}.zip`;
+  // Erst nach bestätigter Zahlung intern nur die Dateiköpfe prüfen. Keine
+  // ZIP-Inhalte laden und weder Stripe-Zugang noch Käufer-Cookies weitergeben.
+  const fileController = new AbortController();
+  let fileTimeout;
+  try {
+    const deadline = new Promise((_, reject) => {
+      fileTimeout = setTimeout(() => { fileController.abort(); reject(new Error("Dateiprüfung abgelaufen")); }, 4000);
+    });
+    const file = await Promise.race([assets.fetch(new Request(new URL(url, request.url), {
+      method: "HEAD", redirect: "manual", signal: fileController.signal,
+    })), deadline]);
+    const type = (file.headers.get("Content-Type") || "").split(";", 1)[0].trim().toLowerCase();
+    const size = file.headers.get("Content-Length");
+    if (file.status !== 200 || !["application/zip", "application/x-zip-compressed", "application/octet-stream"].includes(type)
+        || (size !== null && (!/^\d+$/.test(size) || Number(size) < 22))) {
+      return json({ error: "Die bezahlte Datei ist derzeit nicht verfügbar. Bitte nicht nochmals kaufen und den Support kontaktieren." }, 503);
+    }
+  } catch {
+    return json({ error: "Die bezahlte Datei ist derzeit nicht prüfbar. Bitte später erneut prüfen oder den Support kontaktieren." }, 503);
+  } finally {
+    clearTimeout(fileTimeout);
+  }
   return json({ ok: true, slug, url });
 }
 

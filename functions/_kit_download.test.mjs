@@ -6,29 +6,40 @@ import vm from 'node:vm';
 const source=readFileSync(new URL('./api/kit-download.js',import.meta.url),'utf8');
 const api=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 let checks=0;
-const env={STRIPE_API_KEY:'demo-key',DOWNLOAD_SALT:'demo-salt'};
+const env={STRIPE_API_KEY:'demo-key',DOWNLOAD_SALT:'demo-salt',ASSETS:{}};
 const paid={payment_status:'paid',metadata:{slug:'demo-kit'}};
-async function request({config=env,id='cs_test_demo',status=200,body=paid,fail=false}={}){
- let calls=0;
+async function request({config=env,id='cs_test_demo',status=200,body=paid,fail=false,
+   fileStatus=200,fileType='application/zip',fileSize='1024',fileFail=false,fileHang=false}={}){
+ let calls=0,assetCalls=0;
  globalThis.fetch=async(url,options)=>{
   calls++;assert.equal(url,'https://api.stripe.com/v1/checkout/sessions/cs_test_demo');
   assert.equal(options.headers.Authorization,'Bearer demo-key');assert.ok(options.signal);
   if(fail)throw new Error('Demo-Netzfehler');
   return new Response(JSON.stringify(body),{status});
  };
- const response=await api.onRequestGet({request:new Request('https://demo.invalid/api/kit-download?session_id='+encodeURIComponent(id)),env:config});
+ const assets={fetch:async req=>{
+  assetCalls++;
+  assert.equal(req.method,'HEAD');assert.equal(req.redirect,'manual');assert.ok(req.signal);
+  assert.equal(req.url,'https://demo.invalid/downloads/kits/'+createHash('sha256').update(body.metadata.slug+':demo-salt').digest('hex').slice(0,24)+'.zip');
+  assert.equal(req.headers.get('authorization'),null);assert.equal(req.headers.get('cookie'),null);
+  if(fileFail)throw new Error('Demo-Dateifehler');
+  if(fileHang)return new Promise(()=>{});
+  const headers={};if(fileType!==null)headers['Content-Type']=fileType;if(fileSize!==null)headers['Content-Length']=fileSize;
+  return new Response(null,{status:fileStatus,headers});
+ }};
+ const response=await api.onRequestGet({request:new Request('https://demo.invalid/api/kit-download?session_id='+encodeURIComponent(id),{headers:{Cookie:'nur-demo=privat'}}),env:{...config,...(config.ASSETS?{ASSETS:assets}:{})}});
  assert.equal(response.headers.get('cache-control'),'no-store');
- return {status:response.status,data:await response.json(),calls};
+ return {status:response.status,data:await response.json(),calls,assetCalls};
 }
 for(const config of [{STRIPE_API_KEY:'demo-key'},{...env,DOWNLOAD_SALT:'  '},{DOWNLOAD_SALT:'demo-salt'}]){
  const r=await request({config});assert.equal(r.status,503);assert.equal(r.calls,0);assert.ok(!r.data.url);checks++;
 }
 {
- const r=await request({config:{STRIPE_API_KEY:' demo-key ',DOWNLOAD_SALT:' demo-salt\n'}});
+ const r=await request({config:{...env,STRIPE_API_KEY:' demo-key ',DOWNLOAD_SALT:' demo-salt\n'}});
  assert.equal(r.status,200);assert.equal(r.data.url,'/downloads/kits/'+createHash('sha256').update('demo-kit:demo-salt').digest('hex').slice(0,24)+'.zip');checks++;
 }
 for(const payment_status of ['unpaid','no_payment_required']){
- const r=await request({body:{...paid,payment_status}});assert.equal(r.status,402);assert.ok(!r.data.url);checks++;
+ const r=await request({body:{...paid,payment_status}});assert.equal(r.status,402);assert.ok(!r.data.url);assert.equal(r.assetCalls,0);checks++;
 }
 for(const status of [401,403,429,500]){
  const r=await request({status});assert.equal(r.status,503);assert.ok(!r.data.url);assert.equal(r.calls,1);checks++;
@@ -37,6 +48,33 @@ assert.equal((await request({status:404})).status,404);checks++;
 assert.equal((await request({fail:true})).status,502);checks++;
 for(const body of [null,{},'kein Objekt']){assert.equal((await request({body})).status,502);checks++;}
 assert.equal((await request({body:{payment_status:'paid',metadata:{}}})).status,422);checks++;
+for(const slug of [123,{},[],true]){
+ const r=await request({body:{...paid,metadata:{slug}}});assert.equal(r.status,422);assert.equal(r.assetCalls,0);assert.ok(!r.data.url);checks++;
+}
+{
+ const r=await request({body:{...paid,metadata:{slug:'Demo_Kit'}}});assert.equal(r.status,200);assert.equal(r.assetCalls,1);checks++;
+}
+{
+ const r=await request({config:{...env,ASSETS:null}});assert.equal(r.status,503);assert.equal(r.calls,0);assert.equal(r.assetCalls,0);checks++;
+}
+for(const fileStatus of [301,302,404,429,500]){
+ const r=await request({fileStatus});assert.equal(r.status,503);assert.equal(r.calls,1);assert.equal(r.assetCalls,1);assert.ok(!r.data.url);checks++;
+}
+for(const fileType of ['text/html','application/json',null]){
+ const r=await request({fileType});assert.equal(r.status,503);assert.ok(!r.data.url);checks++;
+}
+for(const fileSize of ['0','21','kaputt']){
+ const r=await request({fileSize});assert.equal(r.status,503);assert.ok(!r.data.url);checks++;
+}
+for(const fileType of ['application/zip','application/x-zip-compressed','application/octet-stream','Application/ZIP; charset=binary']){
+ const r=await request({fileType,fileSize:null});assert.equal(r.status,200);assert.equal(r.assetCalls,1);assert.ok(r.data.url);checks++;
+}
+{
+ const r=await request({fileFail:true});assert.equal(r.status,503);assert.equal(r.assetCalls,1);assert.ok(!r.data.url);checks++;
+}
+{
+ const start=Date.now(),r=await request({fileHang:true});assert.equal(r.status,503);assert.ok(Date.now()-start<6000);assert.equal(r.assetCalls,1);assert.ok(!r.data.url);checks++;
+}
 {
  const r=await request({id:'../fremd'});assert.equal(r.status,400);assert.equal(r.calls,0);checks++;
 }
