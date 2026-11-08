@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>R137 Host-Prüfung</title>
+  <link rel="stylesheet" href="../client/fullscreen.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.4 system-ui, sans-serif; }
+    .proof-placeholder { display: grid; place-items: center; width: 100%; height: 100%; padding: 2rem; background: #f2eee8; color: #48423c; text-align: center; }
+    .proof-placeholder p { max-width: 42rem; margin: 0; padding: 1rem; border: 1px dashed #82786e; border-radius: .75rem; background: #fcfaf7; }
+  </style>
+</head>
+<body>
+  <main id="host"></main>
+  <script type="module">
+    import { mountDesignerHost } from '../client/host.mjs';
+    class OfflineProofSdk {
+      constructor(config) {
+        const frame = document.getElementById(config.elemId);
+        const proof = document.createElement('div');
+        proof.className = 'proof-placeholder';
+        const message = document.createElement('p');
+        message.textContent = 'Lokaler Hüllentest. Der offizielle Printful-Editor wird in diesem Beleg nicht vorgetäuscht: Der aktuelle EDM-Nonce-Zugriff ist durch HTTP 403 blockiert.';
+        proof.append(message);
+        frame.append(proof);
+      }
+      sendMessage() {}
+    }
+    mountDesignerHost({
+      root: document.getElementById('host'),
+      PFDesignMaker: OfflineProofSdk,
+      session: {
+        externalProductId: 'luxe-edm-00000000-0000-4000-8000-000000000000',
+        nonce: 'offline-proof-only',
+        expiresAt: Math.floor(Date.now() / 1000) + 3600,
+        initProduct: { productId: 19, technique: 'SUBLIMATION' },
+        productPolicy: {
+          shopifyProductId: 'gid://shopify/Product/15422823465345',
+          shopifyHandle: 'keramik-tasse-selbst-gestalten',
+          shopifyVariantId: 'gid://shopify/ProductVariant/55777979629953',
+          eligibleVariantIds: [1320],
+          eligiblePlacements: ['default'],
+          disabledPlacements: [],
+        },
+      },
+      productTitle: 'Keramik-Tasse – Selbst gestalten',
+      variantTitle: '325 ml',
+      retailPriceCHF: 22.90,
+      onSaved() {},
+      onClose() {},
+    });
+  </script>
+</body>
+</html>

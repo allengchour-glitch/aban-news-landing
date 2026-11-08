@@ -1,0 +1,19 @@
+{
+  "mapping": {
+    "path": "/workspace/luxestyle-review/printful-original-editor-20261108/dropship/printful-edm-r137/mapping.json",
+    "sha256": "400c8081791361001955e9721f9b156a6a49c6a0579d8ee9bbb8ab7d50b21db2",
+    "bytes": 1302949
+  },
+  "products": 41,
+  "shopifyVariants": 398,
+  "uniqueHandles": 41,
+  "active": 19,
+  "draft": 22,
+  "activePrintfulProductsWithCompleteVariantIdentity": 18,
+  "activePrintfulVariantsWithExactIdentity": 244,
+  "draftPrintfulProductsWithCompleteVariantIdentity": 21,
+  "draftPrintfulVariantsWithExactIdentity": 133,
+  "allFailClosed": true,
+  "allFullVariantImageMappingsFailClosed": true,
+  "missingLocalFiles": []
+}
