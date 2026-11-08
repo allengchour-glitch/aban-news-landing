@@ -12,6 +12,14 @@ on:
         description: 'Produkte pro Lauf'
         type: string
         default: '60'
+      modell:
+        description: 'Gemini-Modell'
+        type: string
+        default: 'gemini-3.8-flash'
+      pause_ms:
+        description: 'Pause zwischen Gemini-Aufrufen in ms (Gratis-Tarif: 6500)'
+        type: string
+        default: '400'
 
 concurrency:
   group: image-audit
@@ -29,7 +37,12 @@ jobs:
         with: { node-version: '22' }
       - name: Vision-Audit
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # Zweiter Gemini-Schlüssel (Gratis-Tarif) hat Vorrang, sobald das Secret GEMINI_API_KEY2 gesetzt ist; sonst der erste.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY2 || secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_FALLBACK: ${{ secrets.GEMINI_API_KEY2 && secrets.GEMINI_API_KEY || '' }}
+          PAUSE_MS: ${{ inputs.pause_ms || '400' }}
+          # Neue Schlüssel dürfen gemini-2.5-flash nicht mehr benutzen (404); gemini-3.8-flash geht mit beiden.
+          GEMINI_MODEL: ${{ inputs.modell || 'gemini-3.8-flash' }}
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
@@ -38,6 +51,7 @@ jobs:
           BATCH: ${{ inputs.batch || '60' }}
         run: node automation/image-audit.mjs
       - name: Report/Ledger zurueckschreiben
+        if: ${{ always() }}  # auch nach einem Abbruch: ins Ledger kommen nur Produkte mit echter Beurteilung
         run: |
           git config user.name "luxestyle-bot"
           git config user.email "bot@users.noreply.github.com"

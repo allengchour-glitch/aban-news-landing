@@ -1,6 +1,6 @@
 name: Gemini-Schlüssel prüfen (nur Statuscodes, nie der Schlüssel)
 
-# Prüft, welche Gemini-Schlüssel als Repository-Secret ankommen und was sie dürfen.
+# Prüft, welche Gemini-Schlüssel als Repository-Secret ankommen (viele mögliche Namen) und was sie dürfen.
 # Gibt NIE einen Schlüssel oder eine Antwort aus, nur: gesetzt ja/nein, HTTP-Status, Zahl der Modelle, Modellnamen mit Fähigkeit.
 # Läuft von Hand und bei Änderungen an dieser Datei; ändert nichts, schreibt nichts, kostet auf dem Gratis-Tarif nichts.
 on:
@@ -30,6 +30,16 @@ jobs:
           SCHLUESSEL_2: ${{ secrets.GEMINI_API_KEY2 }}
           SCHLUESSEL_2B: ${{ secrets.GEMINI_API_KEY_2 }}
           SCHLUESSEL_G: ${{ secrets.GOOGLE_API_KEY }}
+          SCHLUESSEL_X0: ${{ secrets.GEMINI_API_KEY_FREE }}
+          SCHLUESSEL_X1: ${{ secrets.GEMINI_KEY }}
+          SCHLUESSEL_X2: ${{ secrets.GEMINI_KEY2 }}
+          SCHLUESSEL_X3: ${{ secrets.GEMINI_KEY_2 }}
+          SCHLUESSEL_X4: ${{ secrets.GEMINI2_API_KEY }}
+          SCHLUESSEL_X5: ${{ secrets.GEMINI_PRO_API_KEY }}
+          SCHLUESSEL_X6: ${{ secrets.GEMINI_API_KEY_PRO }}
+          SCHLUESSEL_X7: ${{ secrets.GOOGLE_AI_API_KEY }}
+          SCHLUESSEL_X8: ${{ secrets.GOOGLE_GENAI_API_KEY }}
+          SCHLUESSEL_X9: ${{ secrets.AI_STUDIO_API_KEY }}
         shell: bash
         run: |
           cat > pruefen.mjs <<'EOF'
@@ -39,6 +49,16 @@ jobs:
             ['GEMINI_API_KEY2', process.env.SCHLUESSEL_2],
             ['GEMINI_API_KEY_2', process.env.SCHLUESSEL_2B],
             ['GOOGLE_API_KEY', process.env.SCHLUESSEL_G],
+            ['GEMINI_API_KEY_FREE', process.env.SCHLUESSEL_X0],
+            ['GEMINI_KEY', process.env.SCHLUESSEL_X1],
+            ['GEMINI_KEY2', process.env.SCHLUESSEL_X2],
+            ['GEMINI_KEY_2', process.env.SCHLUESSEL_X3],
+            ['GEMINI2_API_KEY', process.env.SCHLUESSEL_X4],
+            ['GEMINI_PRO_API_KEY', process.env.SCHLUESSEL_X5],
+            ['GEMINI_API_KEY_PRO', process.env.SCHLUESSEL_X6],
+            ['GOOGLE_AI_API_KEY', process.env.SCHLUESSEL_X7],
+            ['GOOGLE_GENAI_API_KEY', process.env.SCHLUESSEL_X8],
+            ['AI_STUDIO_API_KEY', process.env.SCHLUESSEL_X9],
           ];
           const kurz = (t) => String(t || '').replace(/AIza[0-9A-Za-z_\-]{20,}/g, '[Schlüssel]').replace(/\s+/g, ' ').slice(0, 160);
           async function anfrage(url, schluessel, koerper) {
@@ -77,6 +97,17 @@ jobs:
               const ok = g.j && g.j.candidates && g.j.candidates[0] && g.j.candidates[0].content;
               console.log(`  Websuche (google_search) mit ${flash}: HTTP ${g.status} ${ok ? 'Antwort erhalten' : g.fehler}`);
             }
+            // Feste Modellnamen: die Liste nennt auch Modelle, die ein neuer Schlüssel nicht mehr benutzen darf (404 «no longer available to new users»).
+            for (const m of ['gemini-3.8-flash', 'gemini-flash-lite-latest', 'gemini-3.1-pro-preview']) {
+              const a = await anfrage(`${BASIS}/models/${m}:generateContent`, wert, { contents: [{ parts: [{ text: 'Antworte nur mit dem Wort OK.' }] }], generationConfig: { maxOutputTokens: 64 } });
+              const ok = a.j && a.j.candidates && a.j.candidates[0] && a.j.candidates[0].content;
+              console.log(`  fest ${m}: HTTP ${a.status} ${ok ? 'Antwort erhalten' : a.fehler}`);
+            }
+            const PNG = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+            const bild = await anfrage(`${BASIS}/models/gemini-3.8-flash:generateContent`, wert, { contents: [{ parts: [{ text: 'Antworte nur mit dem Wort OK.' }, { inline_data: { mime_type: 'image/png', data: PNG } }] }], generationConfig: { maxOutputTokens: 64 } });
+            console.log(`  Bild-Eingabe (gemini-3.8-flash): HTTP ${bild.status} ${bild.j && bild.j.candidates ? 'Antwort erhalten' : bild.fehler}`);
+            const such = await anfrage(`${BASIS}/models/gemini-3.8-flash:generateContent`, wert, { contents: [{ parts: [{ text: 'Nenne die Hauptstadt der Schweiz in einem Wort.' }] }], tools: [{ google_search: {} }], generationConfig: { maxOutputTokens: 128 } });
+            console.log(`  Websuche (gemini-3.8-flash): HTTP ${such.status} ${such.j && such.j.candidates ? 'Antwort erhalten' : such.fehler}`);
           }
           console.log(`\nZusammenfassung: ${gesetzt} von ${quellen.length} Namen sind als Secret gesetzt.`);
           EOF
