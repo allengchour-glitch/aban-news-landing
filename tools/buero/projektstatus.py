@@ -51,6 +51,7 @@ def bericht_lesen(pfad):
 
 def bauen(ziel):
     import webseite
+    import ablaufstatus
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / 'werkstatt'
         pfad = out / 'status.json'
@@ -73,7 +74,10 @@ def bauen(ziel):
                       'stationen': {'bauen': 'offen', 'pruefen': 'offen', 'angebot': 'offen'}, 'projekte': []}
         out.mkdir(parents=True, exist_ok=True)
         pfad.write_text(json.dumps(report, ensure_ascii=False), encoding='utf-8')
-        rows = webseite.bauen(ziel, werkstatt_status=pfad)
+        ablaeufe = ablaufstatus.lesen()
+        rows = webseite.bauen(ziel, werkstatt_status=pfad, ablauf_status=ablaeufe)
+        Path(ziel).with_name('buero-ablaufstatus.json').write_text(json.dumps(
+            {'version':1,'gemessen':datetime.now(timezone.utc).isoformat(),'arbeitsplaetze':ablaeufe},ensure_ascii=False),encoding='utf-8')
         payload = {'version': 1, 'gemessen': report['gemessen'],
                    'arbeitsplaetze': [r for r in rows if r['id'] in IDS]}
         Path(ziel).with_name('buero-projektstatus.json').write_text(json.dumps(payload, ensure_ascii=False), encoding='utf-8')
