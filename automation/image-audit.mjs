@@ -19,7 +19,7 @@
  * Report (kein Umsortieren). No-op ohne GEMINI_API_KEY bzw. Shopify-Creds.
  *
  * ENV (GitHub-Secrets): GEMINI_API_KEY · SHOPIFY_SHOP · SHOPIFY_CLIENT_ID · SHOPIFY_CLIENT_SECRET
- *      GEMINI_MODEL (Default gemini-2.5-flash) · BATCH (40) · MIN_PX (800) · APPLY=1 (Vorgabe: nur Bericht)
+ *      GEMINI_MODEL (Default gemini-3.8-flash) · BATCH (40) · MIN_PX (800) · APPLY=1 (Vorgabe: nur Bericht)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -31,7 +31,7 @@ const KEY = process.env.GEMINI_API_KEY || '';
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 const GBASE = process.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
 const API_VER = process.env.SHOPIFY_API_VERSION || '2025-01';
 const BATCH = Math.max(1, parseInt(process.env.BATCH || '40', 10) || 40);

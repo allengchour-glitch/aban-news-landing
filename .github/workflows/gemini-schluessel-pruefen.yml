@@ -97,6 +97,17 @@ jobs:
               const ok = g.j && g.j.candidates && g.j.candidates[0] && g.j.candidates[0].content;
               console.log(`  Websuche (google_search) mit ${flash}: HTTP ${g.status} ${ok ? 'Antwort erhalten' : g.fehler}`);
             }
+            // Feste Modellnamen: die Liste nennt auch Modelle, die ein neuer Schlüssel nicht mehr benutzen darf (404 «no longer available to new users»).
+            for (const m of ['gemini-3.8-flash', 'gemini-flash-lite-latest', 'gemini-3.1-pro-preview']) {
+              const a = await anfrage(`${BASIS}/models/${m}:generateContent`, wert, { contents: [{ parts: [{ text: 'Antworte nur mit dem Wort OK.' }] }], generationConfig: { maxOutputTokens: 64 } });
+              const ok = a.j && a.j.candidates && a.j.candidates[0] && a.j.candidates[0].content;
+              console.log(`  fest ${m}: HTTP ${a.status} ${ok ? 'Antwort erhalten' : a.fehler}`);
+            }
+            const PNG = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+            const bild = await anfrage(`${BASIS}/models/gemini-3.8-flash:generateContent`, wert, { contents: [{ parts: [{ text: 'Antworte nur mit dem Wort OK.' }, { inline_data: { mime_type: 'image/png', data: PNG } }] }], generationConfig: { maxOutputTokens: 64 } });
+            console.log(`  Bild-Eingabe (gemini-3.8-flash): HTTP ${bild.status} ${bild.j && bild.j.candidates ? 'Antwort erhalten' : bild.fehler}`);
+            const such = await anfrage(`${BASIS}/models/gemini-3.8-flash:generateContent`, wert, { contents: [{ parts: [{ text: 'Nenne die Hauptstadt der Schweiz in einem Wort.' }] }], tools: [{ google_search: {} }], generationConfig: { maxOutputTokens: 128 } });
+            console.log(`  Websuche (gemini-3.8-flash): HTTP ${such.status} ${such.j && such.j.candidates ? 'Antwort erhalten' : such.fehler}`);
           }
           console.log(`\nZusammenfassung: ${gesetzt} von ${quellen.length} Namen sind als Secret gesetzt.`);
           EOF
