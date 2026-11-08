@@ -472,7 +472,9 @@ jobs:
       - name: Gemessene Druckflächen-Korrektur der T-Shirt-Vorschau (Tabelle, Schutz, ausgelieferte Karten = Rollout-Bau; kein Netz)
         run: node pod/v6/test/geometrie_korrektur_test.mjs
       - name: Französische Seitenübersetzung (Paare, Struktur, Rückstände; kein Netz)
-        run: node dropship/fr-uebersetzung-0811/seiten_test.mjs
+        run: |
+          node dropship/fr-uebersetzung-0811/seiten_test.mjs
+          node dropship/fr-uebersetzung-0811/titel_test.mjs
       - name: Direkter v6.3-Beschreibungs-Rollout (Scope, Assetbindung, SRI, Blocker und Header; kein Netz)
         run: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout_test.mjs
       - name: Einspielskripte und Rechner (Preise, L0, Schweizer Masse, Rückgabe-Texte)

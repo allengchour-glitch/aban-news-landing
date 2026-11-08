@@ -7,8 +7,9 @@
 |---|---|
 | Theme-Texte (`ONLINE_STORE_THEME_LOCALE_CONTENT`) | 4 888 von 5 186 Feldern (94 %) |
 | Shop-Richtlinien | 6 von 6 |
-| Sammlungen | 95 von 200 Feldern (Stichprobe) |
-| Menüs | 17 von 40 (Stichprobe) |
+| Sammlungen (Titel) | 170 von 1 724 (10 %, vollständig gezählt; die Stichprobe der ersten 40 hatte 48 % gezeigt und war nicht repräsentativ) |
+| Menü-Links | 120 von 801 (15 %) |
+| Menüs | 17 von 108 |
 | Seiten | 0 (223 Ressourcen, 49 veröffentlicht, davon 12 Servicepages und 37 Ratgeber, rund 125 000 Zeichen) |
 | Artikel / Blogs | 0 |
 | Produkte | 0 von 50 (Stichprobe; 56 492 aktive Produkte) |
@@ -39,3 +40,9 @@ Acht Servicepages, je vier Felder (`title`, `body_html`, `meta_title`, `meta_des
 1. Menüs und Sammlungen vollständig (Stichprobe 47 % bzw. 43 %): Titel und Beschreibung der Menü-Sammlungen.
 2. Nach Rückgabe-Welle 2: `rueckgabe`, `garantie`, `faq`, `groessentabelle`.
 3. Produkte: nur die meistbesuchten (Titel, Beschreibung, Optionen) mit der bestehenden Pipeline (`automation/translate_content.mjs`, braucht Gemini-Guthaben, oder Groq-Schlüssel über `automation/lib/uebersetzen.mjs`), dann erst `noindex` für diese aufheben.
+
+## Stufe 2: Menü-Navigation (LIVE 08.11.2026 ca. 21:10 UTC)
+* **666 Menü-Link-Titel und 91 Menü-Titel** auf Französisch (`apply_titel.mjs`, Wörterbuch `menue_fr_1/2/3.mjs`, 671 Einträge deutsch → französisch). Geschrieben wird nur das Feld `title`, nur wo noch keine französische Übersetzung stand (vorhandene bleiben); Rücklesen 757 von 757 gleich; vorher Stichprobe mit 15 Titeln, `/fr` zeigt «Montres», «Animaux de compagnie», «Jouets».
+* Test `titel_test.mjs` (im Job `selbst-gestalten`). Rücknahme: `ZURUECK=1 LIVE=1 TYP=LINK,MENU node dropship/fr-uebersetzung-0811/apply_titel.mjs` (Ledger `lauf/titel_ledger.json`).
+* **Offen:** Sammlungstitel (1 554 ohne französischen Titel, 1 462 verschiedene; 463 davon stehen schon im Wörterbuch), Sammlungsbeschreibungen und Meta-Texte (rund 760 000 Zeichen insgesamt, nur nach Nutzen), Produkte.
+* Die Menüs «Main menu», «Footer», «Customer account main menu» tragen englische Namen und sind nicht Teil der Übersetzung (interne Namen).
