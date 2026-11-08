@@ -199,6 +199,7 @@
           }
         });
         W.cards.forEach(function (cd, k) { cd.on = k < cardEnts.length; });
+        if(W.moneyPanel)picks.push({id:'__geldmanager',mn:W.moneyPanel.mn,mx:W.moneyPanel.mx});
         // Chef
         var boss = W.seats[W.seats.length - 1];
         var cp = state.chef || { pose: 'rest', blaetter: 0 };

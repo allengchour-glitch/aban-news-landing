@@ -396,9 +396,19 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
 .kb-team-grid strong,.kb-team-grid small{display:block}.kb-team-grid small{color:var(--color-fg-muted);margin-top:6px}
 .kb-team-grid p{font-size:14px;line-height:1.5;margin-bottom:0}
 @media(max-width:600px){.kb-team-grid{grid-template-columns:1fr}}
+.kb3-viewer.is-fullscreen .kb-chef-kontrolle:has(.kb-geld[open]){max-height:70dvh}
+.kb-geld{margin:16px 0;border:1px solid var(--color-border-line);border-radius:14px;padding:12px;background:var(--color-panel)}
+.kb-geld summary{cursor:pointer;min-height:44px;padding:8px 0;font-weight:600}.kb-geld-hinweis{font-size:13px;color:var(--color-fg-muted);line-height:1.55}
+.kb-geld-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.kb-geld label{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.kb-geld input,.kb-geld select{width:100%;min-width:0;min-height:46px;padding:10px;border-radius:9px;border:1px solid var(--color-border-line);background:var(--color-bg);color:var(--color-fg);font:inherit;font-size:16px}
+.kb-geld button{min-height:44px;padding:10px 14px;background:var(--color-bg);color:var(--color-fg);border:1px solid var(--color-border-line);border-radius:9px;font:inherit;cursor:pointer}
+.kb-geld-aktionen{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.kb-geld-ergebnis{border-top:1px solid var(--color-border-line);padding-top:14px;margin:14px 0;overflow-wrap:anywhere}
+.kb-geld-ergebnis>p{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.kb-geld-ergebnis small,.kb-geld-import small{color:var(--color-fg-muted)}
+.kb-geld-szenario,.kb-geld-chancen{margin:14px 0}.kb-geld-import{margin:18px 0}.kb-geld-chancen article{padding:12px;border:1px solid var(--color-border-line);border-radius:10px;margin:8px 0}
+@media(max-width:600px){.kb-geld-form{grid-template-columns:1fr}.kb-geld-aktionen button{flex:1}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-3">
+<div class="kb" data-design="campus-einheitlich-4">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -418,6 +428,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
   <section class="kb-arbeitslinks" aria-label="Deine Werkzeuge">
     <a class="kb-aktion" href="https://app.metricool.com/" target="_blank" rel="noopener noreferrer">Metricool öffnen</a>
     <a class="kb-aktion" href="https://admin.shopify.com/" target="_blank" rel="noopener noreferrer">Shop verwalten</a>
+    <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-money>Geldmanager</button>
   </section>
   <div class="kb-tabs" role="tablist" aria-label="Ansicht">
     <button type="button" class="kb-tab" role="tab" id="kb-tab-3d" data-tab="3d" aria-selected="true" aria-controls="kb-pane-3d">Büro 3D</button>
@@ -584,7 +595,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     </section>
   </div>
 
-  <script type="application/json" id="kb-fachrollen">[{"id":"leitung","name":"Automations-Leitung","buero":"Chefbüro","station":"__chef","stil":"leitung","aufgabe":"Fachrollen, Prioritäten und offene Voraussetzungen koordinieren."},{"id":"entwicklung","name":"Software-Entwickler","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Lokale Prototypen weiterentwickeln und Änderungen mit Tests absichern."},{"id":"automation","name":"Workflow-Architekt","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Abläufe verbinden und geprüfte Lieferpakete bauen."},{"id":"integration","name":"Integrations-Experte","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Datenquellen, Übergaben und Zugangsvoraussetzungen planen."},{"id":"qualitaet","name":"Qualitätssicherung","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Selbsttests ausführen und unbelegte Fortschritte verhindern."},{"id":"fehleranalyse","name":"Fehleranalyse","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Fehlgeschlagene Prüfungen zuerst untersuchen."},{"id":"produkt","name":"Produktmanager","buero":"Entwicklerbüro","station":"dev_angebot","stil":"leitung","aufgabe":"Pilotumfang, Abnahme und nächste Ausbauschritte ordnen."},{"id":"zahlung","name":"Checkout-Experte","buero":"Entwicklerbüro","station":"dev_angebot","stil":"analyse","aufgabe":"Eigenen Produkt-Checkout und Lieferung vorbereiten."},{"id":"support","name":"Kundenservice","buero":"Shop","station":"autopilot","stil":"kommunikation","aufgabe":"E-Mail-Entwürfe prüfen und den Postfach-Pilot vorbereiten."},{"id":"sortiment","name":"Sortiments-Experte","buero":"Shop","station":"auswahl","stil":"analyse","aufgabe":"Produktdaten und belegte Verbesserungsmöglichkeiten prüfen."},{"id":"seo","name":"SEO- und Feed-Experte","buero":"Shop","station":"schaufenster","stil":"analyse","aufgabe":"Webseiten-Prototyp, Suchsichtbarkeit und Produktfeed betreuen."},{"id":"lieferbarkeit","name":"Lieferbarkeits-Prüfer","buero":"Shop","station":"waechter","stil":"logistik","aufgabe":"Bestätigte Lieferprobleme von unbekannten Messungen trennen."},{"id":"bestand","name":"Bestands-Experte","buero":"Shop","station":"fortura","stil":"logistik","aufgabe":"Bestandsabgleich und Aktualität der Daten überwachen."},{"id":"versand","name":"Versand-Spezialist","buero":"Versand","station":"printful","stil":"logistik","aufgabe":"Tracking und offene Übergaben prüfen."},{"id":"community","name":"Community- und FAQ-Experte","buero":"Social Media","station":"social_meta","stil":"kommunikation","aufgabe":"Kommentarentwürfe und wiederkehrende offene Fragen aufbereiten."},{"id":"marketing","name":"Marketing-Analyst","buero":"Social Media","station":"social_pinterest","stil":"analyse","aufgabe":"Ergebnisse auswerten und nächste Inhalte priorisieren."},{"id":"redaktion","name":"Skriptredaktion","buero":"YouTube-Studio","station":"yt_skript","stil":"kommunikation","aufgabe":"Themen, Skripte und nachvollziehbare Quellen vorbereiten."},{"id":"video","name":"Video-Experte","buero":"YouTube-Studio","station":"yt_video","stil":"entwicklung","aufgabe":"Videoentwürfe und Qualitätsprüfung vorbereiten."},{"id":"wachstum","name":"Kanal-Analyst","buero":"YouTube-Studio","station":"yt_wachstum","stil":"analyse","aufgabe":"Belegte Ergebnisse und offene Kanalmaßnahmen ordnen."}]</script>
+  <script type="application/json" id="kb-fachrollen">[{"id":"geldmanager","name":"Geldmanager","buero":"Chefbüro","station":"__chef","stil":"leitung","aufgabe":"Erfasste Einnahmen, Kosten und Rücklagen vergleichen und Pilotangebote kalkulieren."},{"id":"leitung","name":"Automations-Leitung","buero":"Chefbüro","station":"__chef","stil":"leitung","aufgabe":"Fachrollen, Prioritäten und offene Voraussetzungen koordinieren."},{"id":"entwicklung","name":"Software-Entwickler","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Lokale Prototypen weiterentwickeln und Änderungen mit Tests absichern."},{"id":"automation","name":"Workflow-Architekt","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Abläufe verbinden und geprüfte Lieferpakete bauen."},{"id":"integration","name":"Integrations-Experte","buero":"Entwicklerbüro","station":"dev_bauen","stil":"entwicklung","aufgabe":"Datenquellen, Übergaben und Zugangsvoraussetzungen planen."},{"id":"qualitaet","name":"Qualitätssicherung","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Selbsttests ausführen und unbelegte Fortschritte verhindern."},{"id":"fehleranalyse","name":"Fehleranalyse","buero":"Entwicklerbüro","station":"dev_pruefen","stil":"analyse","aufgabe":"Fehlgeschlagene Prüfungen zuerst untersuchen."},{"id":"produkt","name":"Produktmanager","buero":"Entwicklerbüro","station":"dev_angebot","stil":"leitung","aufgabe":"Pilotumfang, Abnahme und nächste Ausbauschritte ordnen."},{"id":"zahlung","name":"Checkout-Experte","buero":"Entwicklerbüro","station":"dev_angebot","stil":"analyse","aufgabe":"Eigenen Produkt-Checkout und Lieferung vorbereiten."},{"id":"support","name":"Kundenservice","buero":"Shop","station":"autopilot","stil":"kommunikation","aufgabe":"E-Mail-Entwürfe prüfen und den Postfach-Pilot vorbereiten."},{"id":"sortiment","name":"Sortiments-Experte","buero":"Shop","station":"auswahl","stil":"analyse","aufgabe":"Produktdaten und belegte Verbesserungsmöglichkeiten prüfen."},{"id":"seo","name":"SEO- und Feed-Experte","buero":"Shop","station":"schaufenster","stil":"analyse","aufgabe":"Webseiten-Prototyp, Suchsichtbarkeit und Produktfeed betreuen."},{"id":"lieferbarkeit","name":"Lieferbarkeits-Prüfer","buero":"Shop","station":"waechter","stil":"logistik","aufgabe":"Bestätigte Lieferprobleme von unbekannten Messungen trennen."},{"id":"bestand","name":"Bestands-Experte","buero":"Shop","station":"fortura","stil":"logistik","aufgabe":"Bestandsabgleich und Aktualität der Daten überwachen."},{"id":"versand","name":"Versand-Spezialist","buero":"Versand","station":"printful","stil":"logistik","aufgabe":"Tracking und offene Übergaben prüfen."},{"id":"community","name":"Community- und FAQ-Experte","buero":"Social Media","station":"social_meta","stil":"kommunikation","aufgabe":"Kommentarentwürfe und wiederkehrende offene Fragen aufbereiten."},{"id":"marketing","name":"Marketing-Analyst","buero":"Social Media","station":"social_pinterest","stil":"analyse","aufgabe":"Ergebnisse auswerten und nächste Inhalte priorisieren."},{"id":"redaktion","name":"Skriptredaktion","buero":"YouTube-Studio","station":"yt_skript","stil":"kommunikation","aufgabe":"Themen, Skripte und nachvollziehbare Quellen vorbereiten."},{"id":"video","name":"Video-Experte","buero":"YouTube-Studio","station":"yt_video","stil":"entwicklung","aufgabe":"Videoentwürfe und Qualitätsprüfung vorbereiten."},{"id":"wachstum","name":"Kanal-Analyst","buero":"YouTube-Studio","station":"yt_wachstum","stil":"analyse","aufgabe":"Belegte Ergebnisse und offene Kanalmaßnahmen ordnen."}]</script>
   <script type="application/json" id="kb-steuerdienste">[{"id":"shopify","name":"Shopify","gruppe":"Shop","art":"chat","text":"Produkte und Bestellungen prüfen; konkrete Änderungen beauftragen.","url":"https://admin.shopify.com/store/au3j0y-hq","auftrag":"Prüfe meinen verbundenen Shopify-Shop auf offene Bestellungen und bestätigte Produktprobleme. Nenne die nächsten sinnvollen Schritte."},{"id":"metricool","name":"Metricool","gruppe":"Social Media","art":"chat","text":"Beiträge, Kalender und Ergebnisse deiner verbundenen Kanäle.","url":"https://app.metricool.com/","auftrag":"Prüfe meine geplanten Beiträge und die letzten Ergebnisse in Metricool. Bereite konkrete Verbesserungen für die nächsten Beiträge vor."},{"id":"gmail","name":"Gmail","gruppe":"Kommunikation","art":"chat","text":"E-Mail-Posteingang prüfen und Antworten als Entwürfe vorbereiten.","url":"https://mail.google.com/","auftrag":"Prüfe meine neuen Gmail-Nachrichten, sortiere offene Anliegen und bereite passende Antwortentwürfe zur Sichtung vor."},{"id":"klaviyo","name":"Klaviyo","gruppe":"Kommunikation","art":"chat","text":"Newsletter und Abläufe auswerten; Verbesserungen vorbereiten.","url":"https://www.klaviyo.com/dashboard","auftrag":"Prüfe meine Klaviyo-Abläufe und Kampagnen und bereite einen priorisierten Verbesserungsplan vor."},{"id":"drive","name":"Google Drive","gruppe":"Dateien","art":"chat","text":"Dateien, Dokumente, Tabellen und Präsentationen bearbeiten.","url":"https://drive.google.com/","auftrag":"Finde in meinem verbundenen Google Drive die Unterlagen zu meinen Automationsprojekten und fasse den aktuellen Stand geordnet zusammen."},{"id":"canva","name":"Canva","gruppe":"Design","art":"chat","text":"Bilder, Gestaltungen und Inhalte für Shop und Social Media vorbereiten.","url":"https://www.canva.com/","auftrag":"Erstelle in meinem verbundenen Canva einen passenden Social-Media-Entwurf für meinen Shop mit einer Vorschau zur Prüfung."},{"id":"google_ads","name":"Google Ads","gruppe":"Marketing","art":"chat","text":"Kampagnen auswerten und konkrete Änderungen vorbereiten.","url":"https://ads.google.com/","auftrag":"Analysiere mein verbundenes Google-Ads-Konto und zeige, welche Kampagnen Aufmerksamkeit brauchen. Bereite konkrete Änderungsvorschläge mit ihren Auswirkungen vor."},{"id":"merchant","name":"Merchant Center","gruppe":"Marketing","art":"lesen","text":"Produktablehnungen und Feed-Probleme auswerten.","url":"https://merchants.google.com/","auftrag":"Prüfe mein verbundenes Merchant Center auf Produktablehnungen und priorisiere die Ursachen mit passenden Korrekturvorschlägen."},{"id":"analytics","name":"Google Analytics","gruppe":"Marketing","art":"lesen","text":"Besucher, Kaufwege und Shop-Ergebnisse auswerten.","url":"https://analytics.google.com/","auftrag":"Analysiere die letzten sieben vollständigen Tage meiner verbundenen Google-Analytics-Property und zeige die wichtigsten Verbesserungsmöglichkeiten im Kaufweg."},{"id":"searchconsole","name":"Search Console","gruppe":"Marketing","art":"lesen","text":"SEO: Suchanfragen, Seiten und organische Sichtbarkeit auswerten.","url":"https://search.google.com/search-console","auftrag":"Prüfe meine verbundenen Search-Console-Seiten und nenne die wichtigsten Suchanfragen und Seiten mit Verbesserungspotenzial."},{"id":"tagmanager","name":"Tag Manager","gruppe":"Marketing","art":"lesen","text":"Vorhandene Tracking-Einrichtung prüfen.","url":"https://tagmanager.google.com/","auftrag":"Prüfe die lesend erreichbare Tag-Manager-Einrichtung meines Shops und benenne bestätigte Lücken oder unklare Messungen."},{"id":"entwicklung","name":"Website & Entwicklung","gruppe":"Entwicklung","art":"chat","text":"Das Büro und bestehende Automationsprojekte verbessern.","auftrag":"Verbessere mein KI-Büro und die bestehenden Automationsprojekte selbständig im bestätigten Aufgabenbereich. Prüfe Änderungen und melde konkrete Ergebnisse."},{"id":"stripe","name":"Stripe","gruppe":"Zahlungen","art":"zugang","text":"Direkte Verbindung im Chat noch prüfen beziehungsweise einrichten.","url":"https://dashboard.stripe.com/payments","auftrag":"Prüfe, ob meine Stripe-Verbindung jetzt eingerichtet ist, und zeige den tatsächlich verfügbaren Zugriff."},{"id":"obsidian","name":"Obsidian","gruppe":"Wissen","art":"export","text":"Vault-Dateien exportieren; keine bestätigte direkte App-Steuerung.","url":"https://obsidian.md/","auftrag":"Erstelle einen aktuellen Obsidian-Vault für mein KI-Büro mit verknüpften Aufgaben, Wissen und datierten Messbelegen."},{"id":"claude","name":"Claude-Büro","gruppe":"Wissen","art":"import","text":"Gemeinsames Designpaket erstellen; Import in Claude nötig.","url":"https://claude.ai/","auftrag":"Erstelle das aktuelle einheitliche Designpaket für mein vorhandenes Claude-KI-Büro, ohne private Arbeitsdaten zu ersetzen."}]</script>
   <p class="kb-note">Tippe auf einen Arbeitsplatz für den nächsten Schritt. Social Media verwaltest du in Metricool. Zahlen erscheinen nur mit einem datierten Datenstand.</p>
 </div>
@@ -762,6 +773,94 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
   <span class="kb3-lb st-du"><span class="lamp" aria-hidden="true"><svg class="s-du" viewBox="0 0 16 16" focusable="false"><polygon points="8,1 15,8 8,15 1,8"/></svg></span><span class="kb-name">Du</span></span>
 </template>
 
+<script>/* Geldplan: Cent-Rechnung und private Eingaben im Tab, ohne Netzwerk oder automatische dauerhafte Ablage. */
+(function(root){
+  'use strict';
+  var FELDER=[['einnahmen','Einnahmen ohne Umsatzsteuer'],['erstattungen','Erstattungen'],['ware','Waren- / Leistungskosten'],['versand','Versandkosten'],['gebuehren','Zahlungsgebühren'],['werbung','Werbung'],['fixkosten','Laufende Kosten'],['ruecklage','Geplante Rücklage']];
+  var KOSTEN=['ware','versand','gebuehren','werbung','fixkosten'];
+  var WAEHRUNGEN=['CHF','EUR','USD'];
+  function cent(text){
+    if(text==null||String(text).trim()==='')return null;
+    var s=String(text).trim();
+    if(!/^\d{1,9}(?:[.,]\d{1,2})?$/.test(s))throw Error('Bitte einen positiven Betrag oder 0 mit höchstens zwei Nachkommastellen eingeben, ohne Tausenderzeichen.');
+    var p=s.replace(',','.').split('.');return Number(p[0])*100+Number(((p[1]||'')+'00').slice(0,2));
+  }
+  function berechnen(werte){
+    var n={},fehlend=[];
+    FELDER.forEach(function(f){try{n[f[0]]=cent(werte[f[0]]);}catch(e){throw Error(f[1]+': '+e.message);}if(n[f[0]]===null)fehlend.push(f[1]);});
+    var kosten=KOSTEN.reduce(function(s,k){return s+(n[k]===null?0:n[k]);},0);
+    var netto=n.einnahmen!==null&&n.erstattungen!==null?n.einnahmen-n.erstattungen:null;
+    var basis=netto!==null&&KOSTEN.every(function(k){return n[k]!==null;});
+    var ergebnis=basis?netto-kosten:null;
+    var rest=ergebnis!==null&&n.ruecklage!==null?ergebnis-n.ruecklage:null;
+    var groesster=KOSTEN.filter(function(k){return n[k]!==null;}).sort(function(a,b){return n[b]-n[a]||a.localeCompare(b);})[0]||null;
+    var schritte=[];
+    if(fehlend.length)schritte.push('Daten ergänzen: '+fehlend.join(', ')+'. Unbekannte Kosten bleiben offen; 0 nur bei tatsächlich keinen Kosten eintragen.');
+    if(ergebnis!==null&&ergebnis<0)schritte.push('Die erfassten Ausgaben übersteigen die Einnahmen nach Erstattungen. Zuerst die Deckungslücke prüfen.');
+    if(groesster&&n[groesster]>0)schritte.push('Größter erfasster Kostenblock: '+FELDER.find(function(f){return f[0]===groesster;})[1]+'. Wirtschaftlichkeit prüfen und mögliche Einsparungen vergleichen.');
+    if(rest!==null&&rest<0&&ergebnis>=0)schritte.push('Die geplante Rücklage ist höher als das Ergebnis aus den Angaben. Liquiditätsbedarf und Rücklagenziel prüfen.');
+    if(ergebnis!==null&&ergebnis>0)schritte.push('Positives Ergebnis aus den erfassten Angaben. Vor zusätzlichen Ausgaben Zahlungsstand, Rücklagen und offene Verpflichtungen prüfen.');
+    if(!schritte.length)schritte.push('Für eine belastbare Planung Einnahmen und vollständige Kosten desselben Zeitraums eintragen.');
+    return {fehlend:fehlend,kosten:KOSTEN.some(function(k){return n[k]!==null;})?kosten:null,kostenVollstaendig:KOSTEN.every(function(k){return n[k]!==null;}),netto:netto,ergebnis:ergebnis,verbleibend:rest,marge:ergebnis!==null&&netto>0?100*ergebnis/netto:null,schritte:schritte};
+  }
+  function angebot(preis,variabel,fix){
+    var p=cent(preis),v=cent(variabel),f=cent(fix);
+    if(p===null||v===null||f===null)return {status:'Angaben fehlen',beitrag:null,auftraege:null};
+    var b=p-v;
+    return {status:b>0?'Kalkuliertes Szenario':'Preis deckt variable Kosten nicht',beitrag:b,auftraege:b>0?Math.ceil(f/b):null};
+  }
+  function importieren(text){
+    var data=JSON.parse(text);
+    if(!data||data.version!==1||WAEHRUNGEN.indexOf(data.waehrung)<0||!data.werte||typeof data.werte!=='object'||Array.isArray(data.werte))throw Error('Unbekanntes Importformat.');
+    var werte={};
+    Object.keys(data.werte).forEach(function(k){if(!FELDER.some(function(f){return f[0]===k;}))throw Error('Unbekanntes Betragsfeld.');});
+    FELDER.forEach(function(f){var value=data.werte[f[0]];if(value!=null&&typeof value!=='string')throw Error('Beträge müssen als Text angegeben werden.');cent(value);werte[f[0]]=value==null?'':value;});
+    if(data.zeitraum!=null&&(typeof data.zeitraum!=='string'||data.zeitraum.length>80))throw Error('Zeitraum ist ungültig.');
+    return {waehrung:data.waehrung,zeitraum:data.zeitraum||'',werte:werte};
+  }
+  var hosts=[];
+  var zustand={waehrung:'CHF',zeitraum:'',werte:{},preis:'',variabel:'',fix:''};
+  function mount(el,opt){
+    opt=opt||{};hosts=hosts.filter(function(h){return h.el.isConnected||h.el===el;});
+    if(!hosts.some(function(h){return h.el===el;}))hosts.push({el:el,opt:opt});
+    el.replaceChildren();
+    function node(tag,text,cls){var n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n;}
+    function geld(n){return n===null?'Noch offen':new Intl.NumberFormat('de-CH',{style:'currency',currency:zustand.waehrung}).format(n/100);}
+    var info=node('p','Privater Plan aus deinen Angaben. Alle Beträge für denselben Zeitraum und ohne Umsatzsteuer erfassen. Eingaben bleiben im Tab und werden nicht an die Büro-Statusquelle gesendet. Keine Währungsumrechnung.','kb-geld-hinweis');el.appendChild(info);
+    var form=node('form');form.autocomplete='off';form.noValidate=true;
+    var grid=node('div',null,'kb-geld-form');form.appendChild(grid);
+    var periode=node('label','Zeitraum');var zeit=node('input');zeit.type='text';zeit.maxLength=80;zeit.placeholder='Zum Beispiel: November 2026';zeit.value=zustand.zeitraum;zeit.addEventListener('input',function(){zustand.zeitraum=zeit.value;});periode.appendChild(zeit);grid.appendChild(periode);
+    var wl=node('label','Währung');var currency=node('select');WAEHRUNGEN.forEach(function(c){var o=node('option',c);o.value=c;currency.appendChild(o);});currency.value=zustand.waehrung;currency.addEventListener('change',function(){zustand.waehrung=currency.value;auswerten();});wl.appendChild(currency);grid.appendChild(wl);
+    FELDER.forEach(function(f){var label=node('label',f[1]);var input=node('input');input.type='text';input.inputMode='decimal';input.autocomplete='off';input.placeholder='Offen – 0 nur wenn bestätigt';input.value=zustand.werte[f[0]]||'';input.dataset.geld=f[0];input.addEventListener('input',function(){zustand.werte[f[0]]=input.value;});label.appendChild(input);grid.appendChild(label);});
+    var aktionen=node('div',null,'kb-geld-aktionen');var calc=node('button','Geldplan berechnen');calc.type='submit';aktionen.appendChild(calc);var reset=node('button','Eingaben löschen');reset.type='button';reset.addEventListener('click',function(){zustand={waehrung:'CHF',zeitraum:'',werte:{},preis:'',variabel:'',fix:''};hosts.filter(function(h){return h.el.isConnected||h.el===el;}).slice().forEach(function(h){mount(h.el,h.opt);});});aktionen.appendChild(reset);form.appendChild(aktionen);el.appendChild(form);
+    var result=node('section',null,'kb-geld-ergebnis');result.setAttribute('aria-label','Ergebnis des Geldplans');result.setAttribute('aria-live','polite');el.appendChild(result);
+    function auswerten(){result.replaceChildren();try{
+      var r=berechnen(zustand.werte);var head=node('strong','Plan · '+(zustand.zeitraum||'Zeitraum noch offen'));result.appendChild(head);
+      [['Einnahmen nach Erstattungen',r.netto],['Erfasste Ausgaben'+(r.kostenVollstaendig?'':' (unvollständig)'),r.kosten],['Ergebnis aus deinen Angaben',r.ergebnis],['Nach geplanter Rücklage',r.verbleibend]].forEach(function(pair){var p=node('p');p.append(node('span',pair[0]),node('b',geld(pair[1])));result.appendChild(p);});
+      if(r.marge!==null)result.appendChild(node('p','Rechnerischer Ergebnisanteil: '+r.marge.toFixed(1).replace('.',',')+' %'));
+      var ul=node('ul');r.schritte.forEach(function(s){ul.appendChild(node('li',s));});result.appendChild(ul);
+      result.appendChild(node('small','Das ist eine Planung aus erfassten Beträgen, kein bestätigter Kontostand oder Jahresgewinn.'));
+    }catch(e){result.appendChild(node('p',e.message));}}
+    form.addEventListener('submit',function(e){e.preventDefault();auswerten();});auswerten();
+    var scenario=node('details',null,'kb-geld-szenario');scenario.appendChild(node('summary','Pilotangebot kalkulieren'));
+    scenario.appendChild(node('p','Rechenszenario für ein eigenes Angebot. Es ändert keine Verkaufspreise und sagt keine Kunden oder Einnahmen voraus.'));
+    var sf=node('form');sf.autocomplete='off';sf.noValidate=true;var sg=node('div',null,'kb-geld-form');sf.appendChild(sg);
+    [['preis','Nettoverkaufspreis pro Auftrag'],['variabel','Variable Kosten pro Auftrag'],['fix','Zu deckende fixe Kosten im Zeitraum']].forEach(function(f){var l=node('label',f[1]);var inp=node('input');inp.type='text';inp.inputMode='decimal';inp.dataset.angebot=f[0];inp.value=zustand[f[0]];inp.addEventListener('input',function(){zustand[f[0]]=inp.value;});l.appendChild(inp);sg.appendChild(l);});
+    var sb=node('button','Angebot durchrechnen');sb.type='submit';sf.appendChild(sb);var sr=node('p');sr.setAttribute('role','status');sf.addEventListener('submit',function(e){e.preventDefault();try{var r=angebot(zustand.preis,zustand.variabel,zustand.fix);sr.textContent=r.status+'. '+(r.beitrag===null?'Alle drei Beträge ergänzen.':'Beitrag je Auftrag: '+geld(r.beitrag)+'. ')+(r.auftraege===null?'Keine positive Deckungsrechnung möglich.':'Rechnerisch nötige Aufträge zur Deckung der angegebenen Fixkosten: '+r.auftraege+'.');}catch(e){sr.textContent=e.message;}});scenario.append(sf,sr);el.appendChild(scenario);
+    var importLabel=node('label','Privaten Geldplan importieren (JSON)');importLabel.className='kb-geld-import';var file=node('input');file.type='file';file.accept='.json,application/json';var status=node('p');status.setAttribute('role','status');
+    file.addEventListener('change',async function(){if(!file.files.length)return;try{if(file.files[0].size>20000)throw Error('Datei ist zu groß.');var neu=importieren(await file.files[0].text());zustand=Object.assign({},neu,{preis:'',variabel:'',fix:''});hosts.filter(function(h){return h.el.isConnected||h.el===el;}).slice().forEach(function(h){mount(h.el,h.opt);});}catch(e){status.textContent=e.message;}});importLabel.append(file,node('small','Import ersetzt alle Eingaben; nicht enthaltene Beträge bleiben offen. Die Datei wird lokal gelesen.'));el.append(importLabel,status);
+    var download=node('button','Angaben herunterladen');download.type='button';download.addEventListener('click',function(){try{berechnen(zustand.werte);var data={version:1,waehrung:zustand.waehrung,zeitraum:zustand.zeitraum,werte:zustand.werte};var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});var url=URL.createObjectURL(blob);var a=node('a');a.href=url;a.download='mein-geldplan.json';a.click();setTimeout(function(){URL.revokeObjectURL(url);},1000);}catch(e){status.textContent=e.message;}});el.appendChild(download);
+    var chance=node('details',null,'kb-geld-chancen');chance.appendChild(node('summary','Umsatzchancen vorbereiten'));
+    chance.appendChild(node('p','Für einen ersten Verkauf ein klares Pilotangebot ausarbeiten: Umfang, Eingabequelle, Abnahme, Preis und Lieferung prüfen.'));
+    var projekte=Array.isArray(opt.projekte)?opt.projekte:[];
+    projekte.forEach(function(p){if(!p||typeof p.name!=='string'||!Array.isArray(p.schritte)||p.schritte.length!==7||p.schritte.some(function(s){return !s||typeof s.fertig!=='boolean';}))return;var next=p.schritte.find(function(s){return s.fertig!==true;});var card=node('article');card.append(node('b',p.name),node('p',next?'Offener Meilenstein: '+next.name:'Belegte Meilensteine vollständig. Verkaufserfolg getrennt messen.'));chance.appendChild(card);});
+    if(!projekte.length)chance.appendChild(node('p','Projektstand im Entwicklerbüro prüfen; aktuell ist hier kein Projektbericht geladen.'));
+    el.appendChild(chance);
+  }
+  var api={cent:cent,berechnen:berechnen,angebot:angebot,importieren:importieren,mount:mount};
+  if(typeof module!=='undefined'&&module.exports)module.exports=api;if(typeof window!=='undefined')root.KBGeld=api;
+})(typeof window!=='undefined'?window:globalThis);
+</script>
 <script>/* ==== kb3d-engine.js ==== */
 /* KB3D: kleine WebGL-Engine für das KI-Büro.
    Eigener Code, keine Bibliothek: der Dashboard-Typ lässt nur Dateien des Dashboards als Skript zu.
@@ -1522,6 +1621,17 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     g.fillStyle='#eff8fa';g.font='27px '+FONT;g.fillText(info || 'Noch kein Messstand geladen',48,375);
     g.fillStyle='#9cb8c8';g.font='22px '+FONT;g.fillText('Raum wählen und den nächsten Schritt öffnen.',48,446);
     return o.c;
+  };
+  T.geldwand=function(){
+    var o=mk(1024,512),g=o.g,grad=g.createLinearGradient(0,0,1024,512);
+    grad.addColorStop(0,'#102e3c');grad.addColorStop(1,'#1e4949');g.fillStyle=grad;g.fillRect(0,0,1024,512);
+    g.fillStyle='#9af0d4';g.font='bold 26px '+FONT;g.fillText('CHEFBÜRO / GELDMANAGER',42,64);
+    g.fillStyle='#f0faf7';g.font='bold 43px '+FONT;g.fillText('Kosten verstehen. Chancen prüfen.',42,132);
+    [['KOSTENBASIS','Angaben ergänzen'],['PILOTANGEBOT','Preis kalkulieren'],['NÄCHSTER SCHRITT','Wirtschaftlichkeit prüfen']].forEach(function(pair,i){
+      g.fillStyle='#244b52';rr(g,42+i*318,184,300,154,18);g.fill();g.fillStyle='#a6e5d0';g.font='bold 19px '+FONT;g.fillText(pair[0],58+i*318,223);g.fillStyle='#f1faf5';g.font='22px '+FONT;g.fillText(pair[1],58+i*318,285);
+    });
+    g.fillStyle='#c3dfd6';g.font='24px '+FONT;g.fillText('Bildschirm antippen und privaten Geldplan öffnen.',42,405);
+    g.font='20px '+FONT;g.fillText('Echte Kosten erfassen · Rücklagen planen · Pilotangebot prüfen',42,463);return o.c;
   };
   T.rng = rng; T.mk = mk; T.rr = rr; T.hashStr = hashStr; T.FONT = FONT;
 
@@ -3042,12 +3152,12 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     { room: 'Chefbüro', i: 0, x: -3.6, z: -4.75, h: 0, kind: 'dual', style: 'exec', chair: '#1f2430', boss: true, who: 'man', sc: 1.25 }
   ];
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
-  var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#6f4a31', metal: '#c3c9d1' };
+  var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
 
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
   var WINGS = { 'Social Media': [-3, 3], 'Entwicklerbüro': [3, 3], 'YouTube-Studio': [-3, 6] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-3';
+  K.DESIGN_VERSION = 'campus-einheitlich-4';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {
@@ -3096,7 +3206,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       m.tex = tex(key, make, { repeat: true });
       stat(m);
     }
-    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#b18b66', 1); }, 2);
+    floorMesh(-7, -6, 0, 0, 'fChef', function () { return T.parquet('#b4c6c3', 1); }, 2);
     floorMesh(-7, 0, 0, 6, 'fShop', function () { return T.parquet('#dfcdae', 2); }, 2);
     floorMesh(0, 0, 7, 6, 'fVersand', function () { return T.concrete('#c4c7c1', 3); }, 2);
     floorMesh(0, -6, 7, 0, 'fKrypto', function () { return T.carpet('#354550', 4); }, 2);
@@ -3120,7 +3230,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     wall(-7.3, -6.3, 0, -6.0, '#d8dfd7'); wall(0, -6.3, 7.3, -6.0, '#d8dfd7');
     wall(-7.3, -6.0, -7.0, 0, '#d8dfd7'); wall(-7.3, 0, -7.0, 6.3, '#d8dfd7');
     B.blk(-3.5, 0, -5.985, 7, 0.14, 0.03, '#6b4f3a'); B.blk(3.5, 0, -5.985, 7, 0.14, 0.03, '#171b2b');
-    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#8a6d55');
+    B.blk(-6.985, 0, -3.0, 0.03, 0.14, 6, '#6b4f3a'); B.blk(-6.985, 0, 3.0, 0.03, 0.14, 6, '#506b6c');
     B.box(3.5, 0.3, -5.97, 6.8, 0.04, 0.02, '#8db8b3', 0.6);
     B.box(3.5, 3.15, -5.97, 6.8, 0.05, 0.02, '#d2ba88', 1);
 
@@ -3171,7 +3281,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       var zc = 0.30 + 0.4 * sc, dc = loc(0, zc), top = TOP[s.style] || TOP.oak;
       var hasDesk = !!mdl('desk');
       if (hasDesk) {
-        place('desk', dc[0], 0, dc[1], s.h, sc, { tischplatte: top, kante: K.shade(top, 0.78), gestell: s.style === 'dark' ? '#2b303c' : s.style === 'exec' ? '#3a2a1e' : '#4b5260', container: s.style === 'dark' ? '#30343f' : s.style === 'exec' ? '#5b3a26' : '#e6e3dc' });
+        place('desk', dc[0], 0, dc[1], s.h, sc, { tischplatte: top, kante: K.shade(top, 0.78), gestell: s.style === 'dark' ? '#2b303c' : s.style === 'exec' ? '#344a53' : '#4b5260', container: s.style === 'dark' ? '#30343f' : s.style === 'exec' ? '#dce6e3' : '#e6e3dc' });
         place('chair', s.x, 0, s.z, s.h + PI, s.boss ? 1.1 : 1, { polster: s.chair, akzent: K.shade(s.chair, 1.25) });
         var sp = loc(0, zc + 0.17 * sc - 0.004);
         o.screens.push({ x: sp[0], y: 1.12 * sc, z: sp[1], ry: s.h + PI, tilt: 0, w: 0.53 * sc, h: 0.29 * sc });
@@ -3198,12 +3308,18 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       seat.signPos = { x: sx, y: 0.855, z: sz };
     });
 
-    /* ---------- Chefbüro ---------- */
+    /* ---------- Modernes Chefbüro mit Geldmanager-Wand ---------- */
+    W.moneyPanel={mn:[-6.24,0.8,-5.98],mx:[-1.32,3.2,-5.75]};
+    B.box(-3.8,2.0,-5.94,4.95,2.32,0.09,'#233d48');
+    B.box(-3.8,0.79,-5.87,4.72,0.045,0.05,'#7ad6c4',0.4);
+    stat(quad({x:-3.8,y:2.0,z:-5.88,w:4.72,h:2.12,emi:0.7,tex:tex('geldwand',T.geldwand)}));
+    // Zurückhaltende Lichtleisten und helle Materialien statt zusätzlicher Raumwände.
+    B.box(-3.6,3.27,-5.76,5.8,0.035,0.035,'#c5f4e5',0.5);
+    B.box(-6.88,3.27,-3.0,0.035,0.035,4.6,'#c5f4e5',0.5);
     P.rug(B, -5.9, -5.4, -1.3, -2.1, '#2f4f5f', '#d8c9a8');
     place('bookshelf', -6.84, 0, -0.9, PI / 2, 1.15);
-    B.box(-6.975, 1.75, -3.25, 0.05, 1.4, 3.4, '#8a6d55');
-    B.box(-6.955, 1.75, -3.25, 0.02, 1.3, 3.3, '#c79a5f');
-    B.box(-6.3, 1.75, -5.975, 1.42, 0.78, 0.05, C.metal);
+    B.box(-6.975, 1.75, -3.25, 0.05, 1.4, 3.4, '#506b6c');
+    B.box(-6.955, 1.75, -3.25, 0.02, 1.3, 3.3, '#a6c9bd');
     stat(quad({ x: -6.97, y: 2.05, z: -5.5, ry: PI / 2, w: 0.7, h: 0.9, tex: tex('poster0', function () { return T.poster(0); }), emi: 0.15 }));
     B.box(-6.985, 2.05, -5.5, 0.03, 0.96, 0.76, C.white);
     (function () {
@@ -3748,6 +3864,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
           }
         });
         W.cards.forEach(function (cd, k) { cd.on = k < cardEnts.length; });
+        if(W.moneyPanel)picks.push({id:'__geldmanager',mn:W.moneyPanel.mn,mx:W.moneyPanel.mx});
         // Chef
         var boss = W.seats[W.seats.length - 1];
         var cp = state.chef || { pose: 'rest', blaetter: 0 };
@@ -4345,6 +4462,11 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
       var card=document.createElement('article');var h=document.createElement('b');h.textContent=item[0];var p=document.createElement('p');p.textContent=item[1];
       var a=document.createElement('a');a.className='kb-aktion';a.href=item[3];a.textContent=item[2];a.target='_blank';a.rel='noopener noreferrer';card.append(h,p,a);grid.appendChild(card);
     });el.appendChild(grid);
+    var geld=document.createElement('details');geld.className='kb-geld';geld.setAttribute('data-money-panel','');
+    var geldTitle=document.createElement('summary');geldTitle.textContent='Geldmanager · privat planen';geld.appendChild(geldTitle);
+    var geldBody=document.createElement('div');geld.appendChild(geldBody);el.appendChild(geld);
+    var dev=rows()&&rows().find(function(r){return r.id==='dev_bauen';});
+    if(window.KBGeld)window.KBGeld.mount(geldBody,{projekte:dev&&dev.projekte});else geldBody.textContent='Die Geldmanager-Datei fehlt. Bitte das vollständige aktuelle Designpaket übernehmen.';
     var mehr=document.createElement('details');mehr.className='kb-dienste';
     var summary=document.createElement('summary');summary.textContent='Weitere Dienste mit dem Assistenten nutzen';mehr.appendChild(summary);
     var erklaerung=document.createElement('p');erklaerung.textContent='Auftrag kopieren und in diesem verbundenen Chat einfügen. Diese Webseite führt keine Kontoaktion aus. Zugriff und Umfang werden bei der Ausführung geprüft.';mehr.appendChild(erklaerung);
@@ -4528,6 +4650,12 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
         root.querySelectorAll('[data-filter]').forEach(function(b){b.setAttribute('aria-pressed',String(b === t));});
         dash.draw('rows'); return;
       }
+      if(t.hasAttribute('data-open-money')){
+        zeige('3d');dash.draw('szene3d');
+        if(made3d)befehl3d(t);else{zeige('liste');dash.draw('rows');dash.draw('chef-kontrolle');}
+        var geld=Array.from(root.querySelectorAll('[data-money-panel]')).find(function(n){return !n.closest('[hidden]');});
+        if(geld){geld.open=true;geld.scrollIntoView({block:'start',behavior:'auto'});}return;
+      }
       if (t.hasAttribute('data-open-room')) {
         zeige('3d'); dash.draw('szene3d'); befehl3d(t);
         var stage = root.querySelector('.kb3-stage'); if (stage) stage.scrollIntoView({block:'start',behavior:'auto'});
@@ -4670,7 +4798,7 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
         return {ok:false};
       }
       var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var m = K3.Buero.mount(el, { colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
+      var m = K3.Buero.mount(el, { colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
       made3d = m && m.ok ? m : null;
       return m;
     },

@@ -64,22 +64,22 @@ def bauen(ziel, design_paket=None, werkstatt_status=None):
     with tempfile.TemporaryDirectory() as tmp:
         subprocess.run(['node',str(ROOT/'3d/bauen.mjs'),tmp],check=True,capture_output=True)
         def inline(match):
-            content=(Path(tmp)/match.group(1)).read_text().replace('</script','<\\/script')
+            content=((ROOT/'geldmanager.js') if match.group(1)=='kb-geldmanager.js' else Path(tmp)/match.group(1)).read_text().replace('</script','<\\/script')
             return '<script>'+content+'</script>'
-        body=re.sub(r'<script src="(kb3d-[^"]+\.js)"></script>',inline,body)
+        body=re.sub(r'<script src="(kb3d-[^"]+\.js|kb-geldmanager\.js)"></script>',inline,body)
         if design_paket:
             version=re.search(r'data-design="([^"]+)"',body).group(1)
             code=(Path(tmp)/'kb3d-code.js').read_text()
             if "K.DESIGN_VERSION = '"+version+"'" not in code:
                 raise ValueError("Darstellungsdateien haben unterschiedliche Versionen.")
-            dateien={'seite.html':(ROOT/'seite.html').read_bytes()}
+            dateien={'seite.html':(ROOT/'seite.html').read_bytes(),'kb-geldmanager.js':(ROOT/'geldmanager.js').read_bytes()}
             for name in ('kb3d-code.js','kb3d-pack-1.js','kb3d-pack-2.js','kb3d-pack-3.js'):
                 dateien[name]=(Path(tmp)/name).read_bytes()
             if any(len(value)>256*1024 for value in dateien.values()):
                 raise ValueError("Eine Darstellungsdatei überschreitet das Claude-Dokumentlimit.")
             manifest={'design':version,'buero_daten_enthalten':False,'dateien':{name:{'sha256':hashlib.sha256(value).hexdigest(),'bytes':len(value)} for name,value in dateien.items()}}
             dateien['design-manifest.json']=(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n').encode()
-            dateien['IN-CLAUDE-AKTUALISIEREN.txt']=('Bitte im vorhandenen KI-Büro nur die Darstellung aktualisieren. Zuerst kb3d-code.js und die Modellpakete, danach seite.html aus diesem Paket übernehmen. Bestehende private Büro-Daten, Metricool-Zahlen und neuere Messstände erhalten. Dieses Paket enthält keine buero.json und keine privaten Daten. Alle Darstellungsdateien müssen gemeinsam zur Designversion '+version+' gehören. Die äußere Claude-Oberfläche wird dadurch nicht verändert.').encode()
+            dateien['IN-CLAUDE-AKTUALISIEREN.txt']=('Bitte im vorhandenen KI-Büro nur die Darstellung aktualisieren. Zuerst kb-geldmanager.js, kb3d-code.js und die Modellpakete, danach seite.html aus diesem Paket übernehmen. Bestehende private Büro-Daten, Metricool-Zahlen und neuere Messstände erhalten. Dieses Paket enthält keine buero.json und keine privaten Daten. Alle Darstellungsdateien müssen gemeinsam zur Designversion '+version+' gehören. Die äußere Claude-Oberfläche wird dadurch nicht verändert.').encode()
             with zipfile.ZipFile(design_paket,'w',zipfile.ZIP_DEFLATED) as z:
                 for name,value in dateien.items():z.writestr(name,value)
     notice='<p style="padding:14px;background:#fff2ce;color:#352900;border-radius:12px">Dein Büro für Shop, Projekte und Social Media. Private Kanalzahlen und geplante Beiträge bleiben in Metricool.</p>'

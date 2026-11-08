@@ -33,6 +33,8 @@ on:
       - 'tools/buero/test_projektstatus.py'
       - 'tools/buero/webseite.py'
       - 'tools/buero/status_anzeige.js'
+      - 'tools/buero/geldmanager.js'
+      - 'tools/buero/test_geldmanager.py'
       - 'build-pages.sh'
       - '.github/workflows/cf-deploy-mainsite.yml'
       - 'tools/buero/make_buero.py'

@@ -44,6 +44,17 @@
     g.fillStyle='#9cb8c8';g.font='22px '+FONT;g.fillText('Raum wählen und den nächsten Schritt öffnen.',48,446);
     return o.c;
   };
+  T.geldwand=function(){
+    var o=mk(1024,512),g=o.g,grad=g.createLinearGradient(0,0,1024,512);
+    grad.addColorStop(0,'#102e3c');grad.addColorStop(1,'#1e4949');g.fillStyle=grad;g.fillRect(0,0,1024,512);
+    g.fillStyle='#9af0d4';g.font='bold 26px '+FONT;g.fillText('CHEFBÜRO / GELDMANAGER',42,64);
+    g.fillStyle='#f0faf7';g.font='bold 43px '+FONT;g.fillText('Kosten verstehen. Chancen prüfen.',42,132);
+    [['KOSTENBASIS','Angaben ergänzen'],['PILOTANGEBOT','Preis kalkulieren'],['NÄCHSTER SCHRITT','Wirtschaftlichkeit prüfen']].forEach(function(pair,i){
+      g.fillStyle='#244b52';rr(g,42+i*318,184,300,154,18);g.fill();g.fillStyle='#a6e5d0';g.font='bold 19px '+FONT;g.fillText(pair[0],58+i*318,223);g.fillStyle='#f1faf5';g.font='22px '+FONT;g.fillText(pair[1],58+i*318,285);
+    });
+    g.fillStyle='#c3dfd6';g.font='24px '+FONT;g.fillText('Bildschirm antippen und privaten Geldplan öffnen.',42,405);
+    g.font='20px '+FONT;g.fillText('Echte Kosten erfassen · Rücklagen planen · Pilotangebot prüfen',42,463);return o.c;
+  };
   T.rng = rng; T.mk = mk; T.rr = rr; T.hashStr = hashStr; T.FONT = FONT;
 
   /* ---------- Böden ---------- */
