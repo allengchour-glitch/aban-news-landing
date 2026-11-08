@@ -229,3 +229,25 @@ Designversion `campus-einheitlich-4` ergänzt einen privaten Geldplan, eine Ange
 Der Rechner nutzt explizit eingegebene Beträge derselben Währung und desselben Zeitraums ohne Umsatzsteuer. Cent-Arithmetik verhindert typische Rundungsfehler. Unbekannte Beträge bleiben offen, statt als null zu gelten. Ausgaben, Ergebnis aus erfassten Angaben und geplanter Rest nach Rücklage werden getrennt dargestellt. Das Ergebnis ist kein bestätigter Kontostand oder Jahresgewinn. Die Angebotskalkulation berechnet den Beitrag pro Auftrag und die rechnerisch zur Deckung angegebener Fixkosten nötige Auftragszahl. Das sind Szenarien, keine Umsatzprognosen; Verkaufspreise oder Kontobudgets werden nicht verändert.
 
 Eingaben bleiben im Arbeitsspeicher dieses Tabs. Sie werden weder an den Server gesendet noch in Browserablagen, öffentlichen Statusdateien oder Quelltext gespeichert. Nur der ausdrücklich ausgelöste Download legt eine JSON-Datei auf dem Gerät an. Der lokale JSON-Import ersetzt vorherige Angaben, erhält fehlende Werte als offen und prüft Währung, Felder und Betragsformat. Ein Währungswechsel rechnet keine Beträge um. Die öffentliche Projektstatusquelle enthält nur die neue Geldmanager-Fachrolle, keine Finanzwerte. Die vorhandenen Kontozugänge im Chat sind keine automatische Live-Finanzverbindung dieser Seite.
+
+
+## Desktop-Steuerung und direkte Aufgaben vom 08.11.2026
+
+Die Desktopansicht mit Maus startet im Modus «Verschieben». Linkes Ziehen verschiebt, Rechtsziehen oder Alt + Ziehen dreht. Das Mausrad zoomt über der Zeichenfläche ohne zusätzliche Taste; ausserhalb scrollt es die Seite. Pfeiltasten verschieben das fokussierte Bild, Umschalt + Pfeiltasten drehen. Die Modusknöpfe bleiben bedienbar. Die bisherigen Handygesten und der mobile 2D-Start bleiben erhalten.
+
+Die 3D-Ansicht nutzt am grossen Bildschirm bis zu 92 rem Breite und mehr Höhe. Aufträge sind direkt am 3D-Büro erreichbar. Zehn Kurzaufträge öffnen vorbereitete Aufträge; acht Karten im Chefbüro öffnen passende Arbeitsbereiche mit einem kurzen nächsten Schritt. Ein vorbereiteter Auftrag ist noch kein ausgeführter Lauf. E-Mail-Entwürfe beziehen sich auf die Geschäftsadresse info@luxestyle.ch; die Postfachzuordnung ist bei Ausführung erneut zu prüfen. Private Postfachadressen gehören nicht in die öffentliche Oberfläche.
+
+HTML und 3D-Code gehören gemeinsam zur Designversion `campus-einheitlich-7`. Für die private Claude-Seite das gesamte Designpaket übertragen und vorhandene private Daten erhalten.
+
+## Metricool und Video-Automation: geprüfte Grundlage vom 08.11.2026
+
+Recherche, noch keine eingerichtete Generator-Verbindung:
+
+- Der geprüfte KI-Assistent erzeugt Texte, Ideen, Bildunterschriften und Handlungsaufforderungen. Eine eigenständige MP4-Erzeugung ist in diesem Funktionsumfang nicht dokumentiert: https://metricool.com/ai-social-media-post-generator/
+- Der Import aus Canva im Metricool-Planer unterstützt MP4 und kombiniert bei Videoexport alle Designseiten. Er setzt einen kostenpflichtigen Metricool-Plan und eine Canva-Verbindung voraus. Der andere Exportweg aus Canvas Teilen-Menü unterstützt derzeit nur einzelne Bilder, keine Videos oder Karussells: https://help.metricool.com/import-content-from-canva-to-your-posts-w5xbq
+- Metricool kann lokale Dateien oder eine direkt erreichbare öffentliche Medien-URL importieren. Eine YouTube-Seitenadresse ist keine zulässige Video-Datei-URL. Private lokale Dateien oder private GitHub-Artefakte sind keine solche Online-Medienquelle: https://help.metricool.com/how-to-add-images-and-videos-to-your-posts-in-metricool-b26gi
+- Der Planer-Editor kann unter anderem schneiden, skalieren und Audio beim Speichern abschalten. Das ersetzt keine Prüfung der vorgeschriebenen Musik und der kommerziellen Rechte: https://help.metricool.com/edit-images-and-videos-while-scheduling-your-content-wputz
+- Die dokumentierte Make/API-Anbindung benötigt öffentlich erreichbare Medien und API-Zugang im Advanced- oder Custom-Plan. Aktuellen Kontoplan und Zugangsrechte vor einer Umsetzung prüfen; nichts neu abonnieren oder automatisch hochstufen: https://help.metricool.com/make-integration-with-metricool-84rbq
+- Für Videoübergaben MP4 bevorzugen und die aktuellen Vorgaben des jeweiligen Kanals prüfen: https://help.metricool.com/publishing-requirements-for-images-and-videos-from-metricool-vfc8n
+
+Zielablauf mit den vorhandenen Mitteln: Generator oder Renderer → Marken-, Produkt-, Rechte-, Bild- und Tonprüfung → freigegebene Online-MP4 → bestehende Metricool-Planung ohne Duplikate ergänzen → Zustand je Zielkanal frisch kontrollieren → gemessene Ergebnisse auswerten. LuxeStyle und oio getrennt halten. Die aktuelle ChatGPT-Verbindung bietet Termin- und Beitragsfunktionen, aber keinen Aufruf zum Hochladen einer lokalen Videodatei. Das ist eine Grenze des vorhandenen Connectors; Metricool selbst unterstützt den Dateiupload. Die Medienübergabe ist vor einer behaupteten Vollautomation nachzuweisen.
