@@ -1,0 +1,33 @@
+name: LuxeStyle MAIN SEO und Alttexte
+
+on:
+  pull_request:
+    paths:
+      - 'dropship/main-theme-seo-alt-0811/**'
+      - 'dropship/startseite-wechsel-0411/theme/luxe-edit-home.liquid'
+      - '.github/workflows/luxestyle-main-theme-seo-alt.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luxestyle-main-theme-seo-alt
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Engen Dateidiff prüfen
+        run: |
+          node --check dropship/main-theme-seo-alt-0811/patch.mjs
+          node --check dropship/main-theme-seo-alt-0811/plan.mjs
+          node dropship/main-theme-seo-alt-0811/patch_test.mjs
+          OUT_DIR="$RUNNER_TEMP/luxestyle-main-theme-seo-alt" node dropship/main-theme-seo-alt-0811/plan.mjs
