@@ -36,6 +36,7 @@
  *   <script src="…/lspod-designer-v6.js" defer></script>
  * Die Karte kann auch als data-karte="…JSON…" oder per data-karte-url="…" kommen. Ohne gültige Karte arbeitet der Editor im
  * v5-Modus (Rückfall): Vorne/Hinten aus data-img-front / data-img-back, Leinwand data-ref × data-ratio, gleiche Warenkorb-Eigenschaften wie v5.
+ * data-karte-pflicht="1" schaltet diesen Rückfall für exakte Produktkarten aus: fehlt die Karte, blockiert der Editor den Kaufpfad.
  * Weitere Attribute (alle optional): data-img-map (Variante → Bild, nur v5-Modus), data-max-px (Obergrenze der Druckdatei in Pixeln; 0 = nur die
  * absolute Grenze von 25 Mpx), data-max-bytes (Obergrenze der Dateigrösse vor dem Upload, Vorgabe 9 MB, 0 = keine Prüfung), data-upload-timeout (ms).
  *
@@ -171,6 +172,7 @@
       reviewPrint: 'Verbindliche Druckdatei', reviewOnProduct: 'Auf dem Produkt', reviewMugView: 'Auf dem Produkt – Vorderansicht',
       reviewMugNote: 'Kontrollierte Vorderansicht: Die Druckdatei links ist verbindlich. Teile eines Rundum-Motivs können seitlich liegen und hier nicht sichtbar sein.',
       reviewFallback: 'Produktansicht nicht verfügbar. Die gezeigte Druckdatei ist massgebend.',
+      cardRequired: 'Gestalten ist derzeit nicht verfügbar. Die verbindlichen Druckdaten konnten nicht geladen werden. Bitte lade die Seite neu. Dieses Produkt kann ohne geprüfte Druckdaten nicht bestellt werden.',
       reviewAccept: 'Ich habe alle Druckflächen und die gewählte Ausführung geprüft.',
       reviewConfirm: 'Druckvorschau bestätigen und in den Warenkorb', reviewBack: 'Weiter gestalten',
       reviewBuilding: 'Druckvorschau wird erstellt …',
@@ -236,6 +238,7 @@
       reviewPrint: 'Binding print file', reviewOnProduct: 'On the product', reviewMugView: 'On the product – front view',
       reviewMugNote: 'Controlled front view: the print file on the left is binding. Parts of a wraparound design can sit at the sides and may not be visible here.',
       reviewFallback: 'Product preview unavailable. The shown print file is authoritative.',
+      cardRequired: 'Customisation is currently unavailable because the binding print data could not be loaded. Please reload the page. This product cannot be ordered without verified print data.',
       reviewAccept: 'I have checked every print area and the selected option.',
       reviewConfirm: 'Confirm print preview and add to cart', reviewBack: 'Keep designing',
       reviewBuilding: 'Creating print preview …',
@@ -3329,11 +3332,37 @@
     return Promise.resolve(null);
   }
 
+  /** Exakter Rollout: Ohne gültige Produktkarte darf weder ein Legacy-Editor noch ein Warenkorb-Pfad entstehen. */
+  function pflichtKarteBlockieren(container) {
+    container.textContent = '';
+    container.setAttribute('data-lspod6-modus', 'blockiert');
+    container.appendChild(el('div', {
+      class: 'lsp6-card-required', role: 'alert', text: T.cardRequired,
+      style: 'padding:16px;border:1px solid #9b2c2c;border-radius:10px;background:#fff5f5;color:#681b1b;font-weight:700;line-height:1.45',
+    }));
+    var form = document.querySelector('form[action*="/cart/add"]');
+    if (!form) return;
+    form.setAttribute('data-lspod6-karte-blockiert', '1');
+    Array.prototype.forEach.call(form.querySelectorAll('button[type="submit"],input[type="submit"]'), function (button) {
+      button.disabled = true; button.setAttribute('aria-disabled', 'true');
+    });
+    form.addEventListener('submit', function (ev) {
+      if (form.getAttribute('data-lspod6-karte-blockiert') !== '1') return;
+      ev.preventDefault(); ev.stopImmediatePropagation();
+    }, true);
+  }
+
   function mounten(container) {
     if (container.getAttribute('data-init-v6')) return;
     container.setAttribute('data-init-v6', 'busy');
     karteLesen(container).then(function (karte) {
       try {
+        if (!karte && container.getAttribute('data-karte-pflicht') === '1') {
+          warnung('Pflichtkarte fehlt: Legacy-Rückfall und Warenkorb sind blockiert');
+          pflichtKarteBlockieren(container);
+          container.setAttribute('data-init-v6', 'blocked');
+          return;
+        }
         var k = karte || legacyKarte(container);
         if (!karte) warnung('keine gültige Karte: Editor läuft im v5-Modus');
         var editor = baueEditor(container, k);
@@ -3375,6 +3404,7 @@
       ebeneFuerEntwurf: ebeneFuerEntwurf, ebeneAusEntwurf: ebeneAusEntwurf, VORSCHAU_PX: VORSCHAU_PX, VORSCHAU_MAX_BYTES: VORSCHAU_MAX_BYTES,
       // Neu in 6.3.0
       reviewStandGueltig: reviewStandGueltig,
+      pflichtKarteBlockieren: pflichtKarteBlockieren,
     },
   };
 })();
