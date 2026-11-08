@@ -350,6 +350,7 @@
 .kb-fachteam{margin-top:14px;border-top:1px solid var(--color-border-line);padding-top:10px}
 .kb-fachteam summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:600}
 .kb-team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kb-team-filter{display:flex;flex-direction:column;gap:6px;margin:12px 0}.kb-team-filter select{width:100%;min-height:44px;padding:8px;font:inherit;font-size:16px;color:var(--color-fg);background:var(--color-bg);border:1px solid var(--color-border-line);border-radius:8px}.kb-team-grid [hidden]{display:none!important}
 .kb-team-grid article{padding:14px;border:1px solid var(--color-border-line);border-radius:12px;overflow-wrap:anywhere}
 .kb-team-grid strong,.kb-team-grid small{display:block}.kb-team-grid small{color:var(--color-fg-muted);margin-top:6px}
 .kb-team-grid p{font-size:14px;line-height:1.5;margin-bottom:0}
@@ -850,13 +851,22 @@
     var note=document.createElement('p');note.className='kb-note';note.textContent='Fachrollen für bestehende Abläufe. Die Aufgabenplanung ist regelbasiert; es sind keine ständig laufenden KI-Agenten.';team.appendChild(note);
     var grid=document.createElement('div');grid.className='kb-team-grid';
     rollen.forEach(function(r){
-      var card=document.createElement('article');card.dataset.experte=r.id;
+      var card=document.createElement('article');card.dataset.experte=r.id;card.dataset.buero=r.buero;
       var name=document.createElement('strong');name.textContent=r.name;
       var status=document.createElement('small');status.textContent=r.buero+' · '+r.zustand;
       var scope=document.createElement('p');scope.textContent=r.aufgabe;
       card.append(name,status,scope);
       if(r.naechster!==r.aufgabe){var task=document.createElement('p');task.textContent='Nächster Schritt: '+r.naechster;card.appendChild(task);}grid.appendChild(card);
-    });team.appendChild(grid);return team;
+    });
+    var bueros=Array.from(new Set(rollen.map(function(r){return r.buero;})));
+    if(bueros.length>1){
+      var label=document.createElement('label');label.className='kb-team-filter';label.textContent='Büro auswählen';
+      var select=document.createElement('select');select.setAttribute('aria-label','Fachteam nach Büro filtern');
+      [''].concat(bueros.sort(function(a,b){return a.localeCompare(b,'de');})).forEach(function(b){var o=document.createElement('option');o.value=b;o.textContent=b||'Alle Büros';select.appendChild(o);});
+      select.addEventListener('change',function(){grid.querySelectorAll('[data-buero]').forEach(function(c){c.hidden=!!select.value&&c.dataset.buero!==select.value;});});
+      label.appendChild(select);team.appendChild(label);
+    }
+    team.appendChild(grid);return team;
   }
   function build(r, e, was) {
     var li = klon('kb-row');
