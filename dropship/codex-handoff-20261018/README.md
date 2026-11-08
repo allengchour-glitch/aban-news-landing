@@ -1840,3 +1840,21 @@ Die Shopify-SKUs A–G sind anhand des erfolgreichen CJ-Nur-Lese-Laufs 420265128
 Die offizielle CJ-Dokumentation erlaubt in bestimmten Fotografieaufträgen Download und Nutzung beziehungsweise das Listen eines CJ-Produktvideos in einem verbundenen Shop. Es fehlt aber ein Auftrag, Copyright-Kauf oder anderer hashgebundener Nachweis für genau diese Datei sowie eine ausdrückliche Erlaubnis für Schnitt, Crop, Re-Encoding, Tonersatz, Overlays und Social-/Werbenutzung. Das CJ User Agreement liefert keinen allgemeinen Bearbeitungs- und Werberechtegrant. Die kanonische Musik ist technisch geeignet, aber historisches Soundfont-Buildmanifest, Lizenzhinweisbindung und finale Hör-/Mixabnahme fehlen.
 
 Die Quelle ist 960×540 bei25fps. Ein bildfüllender9:16-Crop nutzt ungefähr304×540 Quellpixel, verwirft rund68,3Prozent der Breite und benötigt etwa3,55-fache Vergrösserung; 25→30fps würde ohne künstliche Zwischenbilder90 Bildplätze wiederholen. Daher kein professioneller Render, keine MP4 und kein Metricool-Upload. Nächster zulässiger Schritt sind vier native Hochkanttakes derselben aktuellen, SKU-belegten Einheit plus hashgebundener Film-/Bearbeitungs-/Werberechtebeleg. Erst danach wird derselbe18-Sekunden-Master gerendert und vollständig geprüft.
+
+## Aktueller Stand – 08.11.2026, Revision 151: ausführbarer Master-Aufnahme- und Rechtevertrag
+
+[Produktionsvertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.md) · [maschinenlesbarer Gatevertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.json). Shopify und Metricool wurden passend verifiziert. Die gezielte Shopify-Medienabfrage schliesst eine versteckte Premiumquelle aus: genau ein Video, Original 960×540/25 fps/3'679'836 Bytes; die einzige Ableitung ist 852×480. Varianten A–G besitzen nur Bilder und keine Filmzuordnung. Drive/Gmail und die Repo-/Web-Forensik lieferten keinen exakten Rechtebeleg oder bessere native Quelle.
+
+Das alte öffentliche Projektor-Reel ist als False Lead geschlossen: historischer Metricool-Export 1080×1920/30 fps/15 s, aber nur eingerahmte weiche Landschaftsquelle, falscher Ton und weiterhin ohne Motiv-/Varianten-/Rechtebindung. Es darf nicht als neuer Master wiederverwendet werden.
+
+Der neue fail-closed Vertrag verlangt genau eine aktuelle A–G-Ausführung, einen ungeschnittenen Einheitenbeleg, vier native Hochkanttakes derselben physischen Einheit (`P_OPERATION`, `P_PROJECTION`, `P_DETAIL`, `P_HERO`) und einen unterschriebenen, auf alle Take-Hashes bezogenen Rechtegrant für Bearbeitung, Tonersatz, Overlays, Shop, alle sechs Socialkanäle, Metricool und Ads. Fehlende Felder blockieren. Kein Render, keine Master-MP4, kein Upload oder Socialwrite.
+
+
+## Aktueller Stand – 08.11.2026, Revision 152: Shopify #1039 genau einmal an CJ übergeben und Zahlung zurückgelesen
+
+[CJ-Bericht](CJ-BESTELLUNG-1039-20261108-R152.md) · [Maschinenbeleg](CJ-BESTELLUNG-1039-20261108-R152.json). Shopify #1039 wurde vor dem Write ohne Kundendaten als echt, `PAID`, nicht storniert, CHF34.90, erfolgreiche Nicht-Test-SALE über `shopify_payments`, Risiko `ACCEPT` und offen/unfulfilled verifiziert. Die einzige Position SKU `CJSL269105308HS` wurde über CJs exakte `variantSku`-Route gebunden.
+
+Der isolierte Live-Run [42517332990](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42517332990) erstellte nach vollständiger und unmittelbar wiederholter CJ-Doppelprüfung genau `LX1039` / `SD2611081956340669600`. Die erste Rücklesung ergab `count=1`, `CREATED`, USD6.90 Ware plus USD6.70 Versand gleich USD13.60. Kein Retry.
+
+Nach Inhabermeldung «bezahlt» bestätigte der reine Trocken-/Leselauf [42517703485](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42517703485) weiterhin genau einen identischen Auftrag und Status `UNSHIPPED`; es wurde nichts neu angelegt. Shopify blieb `PAID`/`UNFULFILLED`, Fulfillment-Request `UNSUBMITTED`, ohne Fulfillment. Keine CJ-Zahlung durch Codex, kein Shopify-Fulfillment, Tracking-Write oder Kundenkontakt. `UNSHIPPED` belegt keinen Versandbeginn oder Liefertermin. CHF und USD bleiben getrennt.
+
