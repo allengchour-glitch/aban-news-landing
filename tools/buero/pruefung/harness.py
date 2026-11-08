@@ -2,10 +2,25 @@
 """Baut harness.html und harness_demo.html: die Seite mit nachgebauten Dashboard-Werten (nur für die lokale Sicht)."""
 import json
 import sys
+from datetime import datetime, timedelta, timezone
 
 DIR = sys.argv[1]
 body = open(f"{DIR}/seite.html", encoding="utf-8").read()
 rows = json.load(open(f"{DIR}/buero.json", encoding="utf-8"))
+
+
+def _zeit(s):
+    try:
+        d = datetime.fromisoformat(s.replace("Z", "+00:00"))
+        return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
+    except (ValueError, AttributeError):
+        return None
+
+
+# «Jetzt» der Seite: zwei Minuten nach der jüngsten Messung der Daten (so ändert sich der Prüfstand nicht mit jeder Auffrischung)
+_stempel = [z for z in (_zeit(r.get("gemessen", "")) for r in rows) if z]
+JETZT = (max(_stempel) + timedelta(minutes=2)) if _stempel else datetime(2026, 11, 5, 20, 30, tzinfo=timezone.utc)
+iso = lambda d: d.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 KOPF = """<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +38,7 @@ body { margin: 0; background: var(--color-bg); color: var(--color-fg); font-fami
 <script>
 window.__ROWS = %%ROWS%%;
 (function () {
-  var NOW = Date.parse('2026-11-05T20:30:00Z');
+  var NOW = Date.parse('%%JETZT%%');
   Date.now = function () { return NOW; };
   var draws = {}, gemountet = new WeakMap();
   window.dash = {
@@ -56,7 +71,7 @@ window.__ROWS = %%ROWS%%;
 
 
 def schreibe(name, daten):
-    seite = KOPF.replace("%%ROWS%%", json.dumps(daten, ensure_ascii=False)).replace("%%BODY%%", body)
+    seite = KOPF.replace("%%ROWS%%", json.dumps(daten, ensure_ascii=False)).replace("%%JETZT%%", iso(JETZT)).replace("%%BODY%%", body)
     open(f"{DIR}/{name}", "w", encoding="utf-8").write(seite)
 
 
@@ -67,12 +82,12 @@ for r in demo:
     if r["id"] == "waechter":
         r["status"] = "rot"
     if r["id"] == "schaufenster":
-        r["gemessen"] = "2026-11-03T08:00:00Z"
+        r["gemessen"] = iso(JETZT - timedelta(days=2, hours=12))
     if r["id"] == "autopilot":
         r["status"] = "gelb"
     if r["id"] == "auswahl":
-        r["ereignis_iso"] = "2026-11-05T19:45:00Z"
+        r["ereignis_iso"] = iso(JETZT - timedelta(minutes=45))
     if r["id"] == "tagesupdate":
-        r["ereignis_iso"] = "2026-11-05T20:10:00Z"
+        r["ereignis_iso"] = iso(JETZT - timedelta(minutes=20))
 schreibe("harness_demo.html", demo)
 print("ok", len(rows), "Zeilen")
