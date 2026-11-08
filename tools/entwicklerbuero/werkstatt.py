@@ -53,7 +53,7 @@ def lauf(out):
         speichern()
         raise ValueError("E-Mail-Demo konnte nicht gebaut werden; kein Lieferpaket freigegeben.")
     kommentar_demo = subprocess.run([sys.executable, "-B", str(PRODUKT / "kommentar_antworter.py"), str(PRODUKT / "demo-kommentare.csv"),
-                                     str(out / "kommentar-demo"), "--wissen", str(PRODUKT / "demo-faq.json")],
+                                     str(out / "kommentar-demo"), "--wissen", str(PRODUKT / "demo-faq.json"), "--verlauf", str(out / "kommentar-verlauf.json")],
                                     cwd=ROOT, capture_output=True, text=True, timeout=30)
     if kommentar_demo.returncode:
         speichern()
