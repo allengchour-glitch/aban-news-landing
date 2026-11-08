@@ -321,6 +321,16 @@
  .kb3-tools [data-cmd^="pan"],.kb3-tools [data-cmd^="turn"],.kb3-tools [data-cmd^="tilt"],.kb3-tools [data-cmd="gross"] {display:none;}
  .kb3-touch-hint {line-height:1.4;}
 }
+.kb3-boss {min-height:44px;flex-shrink:0;border-color:#638b85;}
+.kb-chef-kontrolle {padding:14px;background:var(--color-bg);border:1px solid var(--color-border-line);border-radius:14px;margin:10px 0;}
+.kb-chef-links {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px;}
+.kb-chef-links article {display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;background:var(--color-panel);border-radius:10px;min-width:0;}
+.kb-chef-links p {font-size:12px;line-height:1.4;margin:0;flex:1;}
+.kb-chef-links b {font-size:13px;overflow-wrap:anywhere;}
+.kb-chef-links a {display:flex;align-items:center;justify-content:center;min-height:44px;width:100%;padding:8px;font-size:12px;}
+.kb-chef-auto {font-size:12px;line-height:1.4;color:var(--color-fg-muted);margin:12px 0 0;}
+.kb3-viewer.is-fullscreen .kb-chef-kontrolle {flex-shrink:0;max-height:32dvh;overflow:auto;}
+@media(max-width:640px){.kb3-viewer-head{gap:6px;}.kb3-boss,.kb3-full{font-size:12px;padding:8px;}.kb-chef-kontrolle{padding:10px;}.kb-chef-links{gap:6px;}.kb-chef-links article{padding:8px;}.kb-chef-auto{font-size:11px;}}
 </style>
 
 <div class="kb">
@@ -357,8 +367,10 @@
       <label class="kb3-room-label">Raum <select class="kb3-room-select" aria-label="Büroraum auswählen">
         <option value="alle">Alle Büros</option><option value="Shop">Shop</option><option value="Versand">Versand</option><option value="Krypto">Krypto</option><option value="Social Media">Social Media</option><option value="Entwicklerbüro">Entwicklung</option><option value="YouTube-Studio">YouTube</option><option value="Chefbüro">Chefbüro</option>
       </select></label>
+      <button type="button" class="kb3-tool kb3-boss" data-cmd="view:Chefbüro" aria-label="Chefbüro-Kontrolle öffnen">Kontrolle</button>
       <button type="button" class="kb3-tool kb3-full" data-cmd="fullscreen" aria-pressed="false">Vollbild</button>
     </div>
+    <section class="kb-chef-kontrolle" data-chef-panel data-draw="chef-kontrolle" data-source="buero" aria-label="Chefbüro-Kontrolle" hidden></section>
     <div class="kb3-bar" role="group" aria-label="Raum wählen">
       <button type="button" class="kb3-chip" data-cmd="view:alle" aria-pressed="true">Alles</button>
       <button type="button" class="kb3-chip" data-cmd="view:Shop" aria-pressed="false">Shop</button>
@@ -438,7 +450,8 @@
     </section>
     <section class="kb-card kb-raum" aria-labelledby="r-chef">
       <h2 id="r-chef">Chefbüro</h2>
-      <p class="kb-sub">Was nur du entscheiden oder anklicken kannst. Jedes Blatt ist ein offener Punkt, die Tafel zählt die Bestellungen.</p>
+      <section class="kb-chef-kontrolle" data-draw="chef-kontrolle" data-source="buero" aria-label="Deine Kontrolle"></section>
+      <p class="kb-sub">Direkt zu deinen Entscheidungen und Aufgaben. Die Automatik arbeitet im Hintergrund.</p>
       <div class="kb-floor kb-floor-chef">
         <div class="kb-fenster" aria-hidden="true"></div>
         <svg class="kb-uhr" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
@@ -500,6 +513,7 @@
     </section>
     <section class="kb-card" aria-labelledby="h-chef">
       <h2 id="h-chef">Chefbüro</h2>
+      <section class="kb-chef-kontrolle" data-draw="chef-kontrolle" data-source="buero" aria-label="Deine Kontrolle"></section>
       <p class="kb-sub">Was nur du entscheiden oder anklicken kannst.</p>
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Chefbüro" data-source="buero"></ul>
     </section>
@@ -906,6 +920,21 @@
     if (altChip) altChip.hidden = es.indexOf('alt') < 0;
   });
 
+  dash.draw('chef-kontrolle',function(el){
+    el.replaceChildren();
+    var title=document.createElement('strong');title.textContent='Kurz erledigen';el.appendChild(title);
+    var grid=document.createElement('div');grid.className='kb-chef-links';
+    [
+      ['Bestellungen','Offene Fälle im Shop prüfen.','Shop öffnen','https://admin.shopify.com/store/au3j0y-hq/orders'],
+      ['Social Media','Beiträge planen und Ergebnisse ansehen.','Metricool','https://app.metricool.com/'],
+      ['Zahlungen','Stripe-Zahlungen und Auszahlungen prüfen.','Stripe','https://dashboard.stripe.com/payments']
+    ].forEach(function(item){
+      var card=document.createElement('article');var h=document.createElement('b');h.textContent=item[0];var p=document.createElement('p');p.textContent=item[1];
+      var a=document.createElement('a');a.className='kb-aktion';a.href=item[3];a.textContent=item[2];a.target='_blank';a.rel='noopener noreferrer';card.append(h,p,a);grid.appendChild(card);
+    });el.appendChild(grid);
+    var hint=document.createElement('p');hint.className='kb-chef-auto';hint.textContent='Prüfungen, sichere Webseitenkorrekturen und Projektpakete laufen automatisch weiter. Die Links öffnen deinen persönlichen Bereich; Anmeldung bei Bedarf.';el.appendChild(hint);
+  });
+
   dash.draw('n', function (el) {
     var data = rows();
     if (!data) { el.textContent = '—'; return; }
@@ -1128,6 +1157,8 @@
     return n;
   }
   function raumKnopf(name) {
+    root.querySelectorAll('[data-chef-panel]').forEach(function(p){p.hidden=name!=='Chefbüro';});
+    if(name==='Chefbüro')dash.draw('chef-kontrolle');
     root.querySelectorAll('.kb3-room-select').forEach(function(s){s.value=name;});
     root.querySelectorAll('.kb3-chip').forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-cmd') === 'view:' + name ? 'true' : 'false'); });
   }
