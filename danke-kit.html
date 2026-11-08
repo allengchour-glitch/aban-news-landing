@@ -15,26 +15,35 @@
 <body>
   <p style="color:#9a3412;font-weight:700">☕ aban news</p>
   <h1>Danke für deinen Kauf!</h1>
-  <div class="box" id="box"><p>Zahlung wird geprüft …</p></div>
+  <div class="box" id="box" role="status" aria-live="polite"><p>Zahlung wird geprüft …</p></div>
+  <button class="btn" id="erneut" type="button" hidden>Zahlung erneut prüfen</button>
   <p class="muted">Problem mit dem Download? Schreib mir: <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
   <p class="muted"><a href="/" style="color:#6b7280">← zur Startseite</a> · <a href="/shop.html" style="color:#6b7280">weitere Kits</a></p>
 <script>
   (function(){
     var box=document.getElementById('box');
+    var erneut=document.getElementById('erneut');
     var sid=new URLSearchParams(location.search).get('session_id');
     if(!sid){box.innerHTML='<p>Kein gültiger Kauf-Link. Bitte über den Shop kaufen.</p>';return;}
-    fetch('/api/kit-download?session_id='+encodeURIComponent(sid))
+    function pruefen(){
+    erneut.hidden=true;erneut.disabled=true;
+    box.textContent='Zahlung wird geprüft …';
+    fetch('/api/kit-download?session_id='+encodeURIComponent(sid),{cache:'no-store',referrerPolicy:'no-referrer'})
       .then(function(r){return r.json();})
       .then(function(d){
-        if(d&&d.ok&&d.url){
+        if(d&&d.ok&&/^\/downloads\/kits\/[a-f0-9]{24}\.zip$/.test(d.url)){
           box.innerHTML='<p>Dein Kit ist bereit:</p><a class="btn" href="'+d.url+'">📦 Kit herunterladen</a>'+
                         '<p class="muted">Link gilt für dich — bitte nicht öffentlich teilen.</p>';
         } else {
-          box.innerHTML='<p>'+((d&&d.error)||'Konnte den Download nicht freischalten.')+'</p>'+
-                        '<p class="muted">Falls du gerade gezahlt hast: kurz warten und Seite neu laden.</p>';
+          box.textContent=((d&&d.error)||'Konnte den Download nicht freischalten.')+' Falls du gerade gezahlt hast: kurz warten und erneut prüfen. Bitte nicht nochmals kaufen.';
+          erneut.hidden=false;
         }
       })
-      .catch(function(){box.innerHTML='<p>Netzwerkfehler. Seite neu laden oder mir schreiben.</p>';});
+      .catch(function(){box.textContent='Netzwerkfehler. Bitte erneut prüfen oder den Support kontaktieren. Bitte nicht nochmals kaufen.';erneut.hidden=false;})
+      .finally(function(){erneut.disabled=false;});
+    }
+    erneut.addEventListener('click',pruefen);
+    pruefen();
   })();
 </script>
 <script defer src="/js/announce.js"></script>

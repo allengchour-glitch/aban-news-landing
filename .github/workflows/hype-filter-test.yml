@@ -8,10 +8,14 @@ on:
     paths:
       - 'functions/**'
       - 'hype-filter.html'
+      - 'danke-kit.html'
+      - '.github/workflows/hype-filter-test.yml'
   pull_request:
     paths:
       - 'functions/**'
       - 'hype-filter.html'
+      - 'danke-kit.html'
+      - '.github/workflows/hype-filter-test.yml'
   workflow_dispatch:
 
 jobs:
@@ -28,6 +32,9 @@ jobs:
       # Engine-Unit-Tests (läuft immer)
       - name: Engine-Tests (_engine.test.mjs)
         run: node functions/_engine.test.mjs
+
+      - name: Bezahlte Kit-Downloads und erneute Prüfung
+        run: node functions/_kit_download.test.mjs
 
       # API-Tests nur ausführen, wenn die Datei bereits existiert
       - name: API-Tests (_api.test.mjs, optional)
