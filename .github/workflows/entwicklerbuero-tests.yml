@@ -19,6 +19,7 @@ permissions:
 jobs:
   pruefen:
     runs-on: ubuntu-latest
+    timeout-minutes: 10   # Zeitlimit statt Standard 360 Minuten (läuft unter 1 Minute)
     steps:
       - uses: actions/checkout@v4
         with:

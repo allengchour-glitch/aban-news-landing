@@ -21,6 +21,7 @@ on:
 jobs:
   guards:
     runs-on: ubuntu-latest
+    timeout-minutes: 60   # Zeitlimit statt Standard 360 Minuten (lief zuletzt 27 Minuten)
     env:
       SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
       SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}

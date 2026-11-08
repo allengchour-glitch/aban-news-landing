@@ -26,6 +26,7 @@ on:
 jobs:
   autopilot:
     runs-on: ubuntu-latest
+    timeout-minutes: 30   # Zeitlimit statt Standard 360 Minuten (läuft rund 1 Minute)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
