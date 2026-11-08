@@ -4788,7 +4788,7 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
   });
 
   dash.draw('chef-kontrolle',function(el){
-    var alterMonitor=el.querySelector('[data-money-panel]'),monitorOffen=alterMonitor?alterMonitor.open:true;
+    var alterMonitor=el.querySelector('[data-money-panel]'),monitorOffen=alterMonitor?alterMonitor.open:false;
     var alteKonten=el.querySelector('[data-konten-quellen]'),kontenOffen=!!(alteKonten&&alteKonten.open);
     el.replaceChildren();
     var title=document.createElement('strong');title.textContent='Arbeitsübersicht des Assistenten';el.appendChild(title);
