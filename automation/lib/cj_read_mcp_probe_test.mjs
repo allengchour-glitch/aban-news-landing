@@ -13,19 +13,23 @@ const sha256 = file => createHash('sha256').update(readFileSync(new URL(`../../$
 const response = (id, value) => ({ jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: JSON.stringify(value) }], isError: false } });
 const successOutput = ({ secretText = 'MUST_NOT_LEAK' } = {}) => [
   { jsonrpc: '2.0', id: 1, result: { protocolVersion: '2025-06-18', capabilities: { tools: {} },
-    serverInfo: { name: 'luxestyle-cj-read', version: '1.1.0' } } },
+    serverInfo: { name: 'luxestyle-cj-read', version: '1.2.0' } } },
   { jsonrpc: '2.0', id: 2, result: { tools: [{ name: 'luxe_cj_status' },
     { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' }] } },
   response(3, { credentialBinding: 'bound_unverified', connection: 'unknown_until_product_read' }),
   response(4, { state: 'product_identity_verified', reason: null, requests: { authentication: 1, product: 1 },
     product: { product: { pid: '2601010101010101001', productSku: 'CJSN1392391',
-      productNameEn: secretText, bigImage: `https://example.invalid/${secretText}` } } }),
+      productNameEn: secretText, bigImage: `https://example.invalid/${secretText}`, variants: {
+        state: 'supplier_metadata_returned', reported: 2, returned: 2, partial: false, records: [
+          { vid: '2601010101010101002', variantSku: 'CJSN139239101AZ' },
+          { vid: '2601010101010101003', variantSku: 'CJSN139239102BY' }
+        ] } } } }),
   response(5, { connection: 'verified_by_product_read', lastProductReadState: 'verified' })
 ].map(JSON.stringify).join('\n') + '\n';
 
 const inventoryOutput = ({ marker = 'MUST_NOT_LEAK' } = {}) => [
   { jsonrpc: '2.0', id: 1, result: { protocolVersion: '2025-06-18', capabilities: { tools: {} },
-    serverInfo: { name: 'luxestyle-cj-read', version: '1.1.0' } } },
+    serverInfo: { name: 'luxestyle-cj-read', version: '1.2.0' } } },
   { jsonrpc: '2.0', id: 2, result: { tools: [{ name: 'luxe_cj_status' },
     { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' }] } },
   response(3, { credentialBinding: 'bound_unverified', connection: 'unknown_until_product_read' }),
@@ -55,21 +59,26 @@ const inventoryOutput = ({ marker = 'MUST_NOT_LEAK' } = {}) => [
     lastInventoryReadState: 'returned' })
 ].map(JSON.stringify).join('\n') + '\n';
 
-test('probe lookup requires exactly one bounded pid or productSku', () => {
+test('probe lookup requires exactly one bounded pid, productSku or variantSku', () => {
   assert.equal(operationFromValue('inventory'), 'inventory');
   assert.throws(() => operationFromValue('stock'));
   assert.deepEqual(lookupFromValues('2601010101010101001', ''), { pid: '2601010101010101001' });
   assert.deepEqual(lookupFromValues('', 'CJSN1392391'), { productSku: 'CJSN1392391' });
+  assert.deepEqual(lookupFromValues('', '', 'product', 'CJSN139239101AZ'),
+    { variantSku: 'CJSN139239101AZ' });
   assert.deepEqual(lookupFromValues('2601010101010101001', '', 'inventory'), { pid: '2601010101010101001' });
   assert.deepEqual(lookupFromValues('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7', ''),
     { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' });
   assert.deepEqual(lookupFromValues('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7', '', 'inventory'),
     { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' });
   assert.throws(() => lookupFromValues('', 'CJSN1392391', 'inventory'));
+  assert.throws(() => lookupFromValues('2601010101010101001', '', 'inventory', 'CJSN139239101AZ'));
   assert.throws(() => lookupFromValues('2601010101010101001', 'CJSN1392391', 'inventory'));
   for (const values of [['', ''], ['123', ''], ['', '../bad'], ['2601010101010101001', 'CJSN1392391']]) {
     assert.throws(() => lookupFromValues(...values));
   }
+  assert.throws(() => lookupFromValues('', '', 'product', '../bad'));
+  assert.throws(() => lookupFromValues('', 'CJSN1392391', 'product', 'CJSN139239101AZ'));
 });
 
 test('inventory probe sends status, one product read, one inventory read and status in one stream', () => {
@@ -117,6 +126,30 @@ test('product verification independently binds returned PID and productSku to th
     { productSku: 'CJSN1392391' });
   assert.equal(missingPid.returnedPid, null);
   assert.equal(missingPid.verified, false);
+});
+
+test('variantSku verification requires one exact match in a complete nonempty variant set', () => {
+  const exact = summariseProbe(successOutput(), { variantSku: 'CJSN139239101AZ' });
+  assert.equal(exact.verified, true);
+  assert.equal(exact.matchedVariantSku, 'CJSN139239101AZ');
+  assert.equal(exact.variantSetComplete, true);
+  assert.equal(summariseProbe(successOutput(), { variantSku: 'cjsn139239101az' }).verified, false);
+  assert.equal(summariseProbe(successOutput(), { variantSku: 'CJSN139239199ZZ' }).verified, false);
+
+  const mutate = change => {
+    const lines = successOutput().trim().split('\n').map(JSON.parse);
+    const read = JSON.parse(lines[3].result.content[0].text);
+    change(read.product.product);
+    lines[3] = response(4, read);
+    return summariseProbe(lines.map(JSON.stringify).join('\n') + '\n',
+      { variantSku: 'CJSN139239101AZ' });
+  };
+  assert.equal(mutate(product => { product.variants.partial = true;
+    product.variants.state = 'partial_supplier_metadata_returned'; }).verified, false);
+  assert.equal(mutate(product => { product.variants.reported = 0;
+    product.variants.returned = 0; product.variants.records = []; }).verified, false);
+  assert.equal(mutate(product => { product.variants.records[1].variantSku = 'CJSN139239101AZ'; }).verified, false);
+  assert.equal(mutate(product => { product.productSku = null; }).verified, false);
 });
 
 test('inventory summary maps SKU to VID, keeps zero and redacts names, URLs and raw data', () => {
@@ -243,6 +276,22 @@ test('configured inventory probe passes only PID to one product and one inventor
     .map(frame => frame.params.arguments), [{ pid: '2601010101010101001' }]);
 });
 
+test('configured product probe forwards only the selected variantSku', () => {
+  const config = { mcpServers: { 'luxestyle-cj-read': { type: 'stdio', command: 'node',
+    args: ['-e', 'safe launcher'], env: { NODE_OPTIONS: '', NODE_PATH: '', NODE_USE_ENV_PROXY: '1' } } } };
+  let frames;
+  const result = runConfiguredProbe({ root: '/repo', env: {
+    CJ_API_KEY: 'synthetic-key-that-must-never-appear', CJ_MCP_OPERATION: 'product',
+    CJ_MCP_VARIANT_SKU: 'CJSN139239101AZ' }, read: () => JSON.stringify(config),
+  spawn: (_command, _args, options) => {
+    frames = options.input.trim().split('\n').map(JSON.parse);
+    return { status: 0, signal: null, stdout: successOutput(), stderr: '' };
+  } });
+  assert.equal(result.verified, true);
+  assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_product_read')
+    .map(frame => frame.params.arguments), [{ variantSku: 'CJSN139239101AZ' }]);
+});
+
 test('configuration cannot inject CJ credentials outside the secret-bound probe process', () => {
   const config = { mcpServers: { 'luxestyle-cj-read': { type: 'stdio', command: 'node', args: ['x'],
     env: { CJ_API_KEY: 'embedded-secret' } } } };
@@ -301,7 +350,9 @@ test('manual workflow isolates the secret-bound MCP job and pins all executable 
   assert.match(workflow, /operation:[\s\S]*- product[\s\S]*- inventory/);
   assert.match(workflow, /approved_commit:[\s\S]*required: true/);
   assert.match(job, /CJ_MCP_OPERATION: \$\{\{ inputs\.operation \}\}/);
-  assert.match(job, /inventory verlangt genau eine PID und kein productSku/);
+  assert.match(job, /inventory verlangt genau eine PID und keine SKU/);
+  assert.match(job, /product verlangt genau PID, productSku oder variantSku/);
+  assert.match(job, /CJ_MCP_VARIANT_SKU: \$\{\{ inputs\.variantSku \}\}/);
   assert.match(job, /import \{ isValidCjPid \} from '\.\/automation\/lib\/cj_identity\.mjs'/);
   assert.match(job, /run: node automation\/cj-read-mcp-probe\.mjs/);
   for (const file of ['.mcp.json', 'automation/cj-read-mcp.mjs', 'automation/cj-read-mcp-probe.mjs',

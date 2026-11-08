@@ -93,6 +93,56 @@ test('success sends apiKey auth then exactly one paced product GET and whitelist
   assert.ok(status.lastAuthenticationAt); assert.ok(status.lastVerifiedReadAt);
 });
 
+test('variantSku lookup is exact and requires a complete nonempty supplier variant set', async t => {
+  const lookup = { variantSku: 'CJ-VARIANT' };
+  const calls = [];
+  const c = client(async (url, init) => {
+    calls.push({ url, init });
+    return calls.length === 1 ? authResponse() : productResponse();
+  });
+  const verified = await c.readProduct(lookup);
+  assert.equal(verified.state, 'product_identity_verified');
+  assert.deepEqual(verified.product.matchedBy, { key: 'variantSku', value: 'CJ-VARIANT' });
+  assert.equal(new URL(calls[1].url).search, '?variantSku=CJ-VARIANT');
+
+  const cases = [
+    ['case mismatch', { variantSku: 'cj-variant' }, {}, 'mismatch', 'product_identity_mismatch'],
+    ['missing variant', lookup, { variants: [{ vid: '9876543210123456789', pid: LOOKUP.pid,
+      variantSku: 'CJ-OTHER' }] }, 'mismatch', 'product_identity_mismatch'],
+    ['empty variant set', lookup, { variants: [] }, 'unknown', 'malformed_product_data'],
+    ['partial variant set', lookup, { variants: Array.from({ length: 51 }, (_, index) => ({
+      vid: String(9000000000000000000n + BigInt(index)), pid: LOOKUP.pid,
+      variantSku: index === 0 ? 'CJ-VARIANT' : `CJ-OTHER-${index}` })) },
+    'unknown', 'malformed_product_data'],
+    ['invalid returned productSku', lookup, { productSku: null }, 'unknown', 'malformed_product_data'],
+    ['duplicate normalised variant', lookup, { variants: [
+      { vid: '9876543210123456789', pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' },
+      { vid: '9876543210123456790', pid: LOOKUP.pid, variantSku: 'CJ-CJ-VARIANT' }
+    ] }, 'unknown', 'malformed_product_data']
+  ];
+  for (const [name, candidate, extra, state, reason] of cases) await t.test(name, async () => {
+    let n = 0;
+    const report = await client(async () => ++n === 1 ? authResponse() : productResponse(extra))
+      .readProduct(candidate);
+    assert.equal(report.state, state);
+    assert.equal(report.reason, reason);
+    assert.equal(report.product, null);
+  });
+});
+
+test('malformed and combined variantSku lookups fail before authentication', async () => {
+  for (const lookup of [{ variantSku: '' }, { variantSku: '../bad' },
+    { variantSku: 'x'.repeat(201) }, { pid: LOOKUP.pid, variantSku: 'CJ-VARIANT' },
+    { productSku: 'CJ-PROJECTOR', variantSku: 'CJ-VARIANT' }]) {
+    let calls = 0;
+    const report = await client(async () => { calls++; throw new Error('must not run'); })
+      .readProduct(lookup);
+    assert.equal(calls, 0);
+    assert.equal(report.state, 'unknown');
+    assert.equal(report.reason, 'invalid_lookup');
+  }
+});
+
 test('the process consumes one product-read budget and invalidates a repeated sequence', async () => {
   const calls = [];
   const c = client(async (url, init) => {

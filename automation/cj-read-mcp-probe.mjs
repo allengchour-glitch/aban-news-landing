@@ -39,21 +39,26 @@ export function operationFromValue(value = 'product') {
   return operation;
 }
 
-export function lookupFromValues(pid = '', productSku = '', operation = 'product') {
+export function lookupFromValues(pid = '', productSku = '', operation = 'product', variantSku = '') {
   const selected = operationFromValue(operation);
   const p = String(pid || '').trim();
   const s = String(productSku || '').trim();
+  const v = String(variantSku || '').trim();
   if (selected === 'inventory') {
-    if (!isValidCjPid(p) || s) throw Error('inventory_pid_only_required');
+    if (!isValidCjPid(p) || s || v) throw Error('inventory_pid_only_required');
     return { pid: p };
   }
-  if ((p ? 1 : 0) + (s ? 1 : 0) !== 1) throw Error('exactly_one_lookup_required');
+  if ((p ? 1 : 0) + (s ? 1 : 0) + (v ? 1 : 0) !== 1) throw Error('exactly_one_lookup_required');
   if (p) {
     if (!isValidCjPid(p)) throw Error('invalid_pid');
     return { pid: p };
   }
-  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(s)) throw Error('invalid_product_sku');
-  return { productSku: s };
+  if (s) {
+    if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/.test(s)) throw Error('invalid_product_sku');
+    return { productSku: s };
+  }
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/.test(v)) throw Error('invalid_variant_sku');
+  return { variantSku: v };
 }
 
 export function probeInput(lookup, operation = 'product') {
@@ -122,6 +127,8 @@ function safeCountryRow(value) {
 }
 
 function productFields(read) {
+  const variants = completeVariantRecords(read.product?.product?.variants,
+    'supplier_metadata_returned', 'product');
   return {
     readState: allowed(read.state, new Set(['unknown', 'mismatch', 'product_identity_verified'])),
     readReason: read.reason === null ? null : allowed(read.reason, REASONS),
@@ -129,7 +136,8 @@ function productFields(read) {
     productRequests: requestCount(read.requests?.product),
     returnedPid: pidIdentity(read.product?.product?.pid),
     returnedProductSku: identity(read.product?.product?.productSku,
-      /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/, 200)
+      /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/, 200),
+    returnedVariants: variants
   };
 }
 
@@ -137,7 +145,9 @@ function productIdentityMatchesLookup(product, lookup) {
   if (!object(lookup) || Object.keys(lookup).length !== 1
     || product.returnedPid === null || product.returnedProductSku === null) return false;
   if (typeof lookup.pid === 'string') return product.returnedPid === lookup.pid;
-  return typeof lookup.productSku === 'string' && product.returnedProductSku === lookup.productSku;
+  if (typeof lookup.productSku === 'string') return product.returnedProductSku === lookup.productSku;
+  return typeof lookup.variantSku === 'string' && product.returnedVariants !== null
+    && product.returnedVariants.records.filter(record => record.variantSku === lookup.variantSku).length === 1;
 }
 
 function completeVariantRecords(value, expectedState, identityField) {
@@ -238,6 +248,8 @@ export function summariseProbe(stdout, lookup, operation = 'product') {
       credentialBinding: binding, authenticationRequests: product.authenticationRequests,
       productRequests: product.productRequests, readState: product.readState, readReason: product.readReason,
       returnedPid: product.returnedPid, returnedProductSku: product.returnedProductSku,
+      matchedVariantSku: productIdentityBound && typeof lookup.variantSku === 'string' ? lookup.variantSku : null,
+      variantSetComplete: typeof lookup.variantSku === 'string' ? product.returnedVariants !== null : null,
       connectionAfter: connection, lastProductReadState: lastRead, verified
     };
   }
@@ -281,7 +293,8 @@ export function summariseProbe(stdout, lookup, operation = 'product') {
 export function runConfiguredProbe({ root = ROOT, env = process.env, spawn = spawnSync,
   read = readFileSync } = {}) {
   const operation = operationFromValue(env.CJ_MCP_OPERATION || 'product');
-  const lookup = lookupFromValues(env.CJ_MCP_PID, env.CJ_MCP_PRODUCT_SKU, operation);
+  const lookup = lookupFromValues(env.CJ_MCP_PID, env.CJ_MCP_PRODUCT_SKU, operation,
+    env.CJ_MCP_VARIANT_SKU);
   let config;
   try { config = JSON.parse(read(path.join(root, '.mcp.json'), 'utf8')); }
   catch { throw Error('invalid_mcp_config'); }
