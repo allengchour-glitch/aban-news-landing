@@ -1,8 +1,9 @@
-name: LuxeStyle Meisterwerk-Werbung (DE + EN)
+name: 'GESPERRT: LuxeStyle Meisterwerk-Werbung (alter Voiceover-Workflow)'
 
-# Rendert die Premium-Werbung (9:16, HOOK-FIRST, ~20-25s) aus Veo-Clips (echte Bewegung, falls vorhanden)
-# + Ken-Burns-Stills + animierter Typo/Logo + ElevenLabs-Voiceover (Fallback Google-TTS) + geduckter Musik.
-# DE & EN. Output: reels/luxestyle-werbung-meisterwerk-{de,en}.mp4 (+ -clean). Nur manuell.
+# Historischer Workflow. Aktuelle Inhabervorgabe: kein Voiceover, keine bezahlten
+# Render-Aufrufe und ausschliesslich die gepruefte Datei luxe-premium.wav.
+# Der alte Render- und Commit-Weg bleibt zur Nachvollziehbarkeit erhalten, ist
+# aber fail-closed und darf erst nach einem vollstaendigen Neubau geoeffnet werden.
 
 on:
   workflow_dispatch:
@@ -17,7 +18,7 @@ on:
         default: '8'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: masterpiece-ad
@@ -25,6 +26,7 @@ concurrency:
 
 jobs:
   render:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
