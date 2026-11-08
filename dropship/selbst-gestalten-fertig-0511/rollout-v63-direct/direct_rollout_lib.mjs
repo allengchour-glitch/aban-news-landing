@@ -37,6 +37,10 @@ export const sortIds = (ids) => [...ids].map(String).sort((a, b) => a.localeComp
 
 const MARKER = /<!-- lx-v63-editor:start\b[\s\S]*?<!-- lx-v63-editor:end -->\s*/giu;
 const LEGACY = /<div\b[^>]*class=(['"])[^'"]*\blspod-designer(?:-v6)?\b[^'"]*\1[^>]*>\s*<\/div>\s*<script\b[^>]*\bsrc=(['"])[^'"]*lspod-designer[^'"]*\.js(?:\?[^'"]*)?\2[^>]*>\s*<\/script>\s*(?:<hr\b[^>]*>\s*)?/giu;
+export const VORHER_EDITOR = Object.freeze({
+  url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js',
+  sha256: 'e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b',
+});
 
 export function attr(wert) {
   return String(wert == null ? '' : wert)
@@ -102,12 +106,12 @@ export function releaseAusAllowlist(allowlist, { editorSha256, assetSha256 }) {
     const p = rows.get(b.id);
     if (!p || p.handle !== b.handle || p.status !== 'ACTIVE' || p.rolloutStatus !== 'blocked') throw new Error(`Quell-Allowlist: Printful-Blocker weicht ab: ${b.handle}`);
   }
-  return { schema: 1, editor: { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js', sha256: editorSha256 }, products };
+  return { schema: 1, editor: { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.1.js', sha256: editorSha256 }, products };
 }
 
 export function releasePruefen(release) {
   if (!release || release.schema !== 1 || !Array.isArray(release.products)) throw new Error('Release-Manifest: Schema 1/products fehlt');
-  if (!release.editor || !assetPfad(release.editor.url, '/pod/v6/lspod-designer-v6-6.3.0.js') || !/^[a-f0-9]{64}$/.test(release.editor.sha256 || '')) {
+  if (!release.editor || !assetPfad(release.editor.url, '/pod/v6/lspod-designer-v6-6.3.1.js') || !/^[a-f0-9]{64}$/.test(release.editor.sha256 || '')) {
     throw new Error('Release-Manifest: Editor-URL oder SHA-256 unbrauchbar');
   }
   const erlaubt = new Map(ALLOWLIST.map((x) => [x.id, x]));
@@ -146,6 +150,31 @@ export function baustein({ product, releaseProduct, editor }) {
   if (releaseProduct.previewUrl) attrs.push(['data-vorschau-url', assetUrl(releaseProduct.previewUrl, releaseProduct.previewSha256)]);
   const div = attrs.map(([k, v]) => `${k}="${attr(v)}"`).join(' ');
   return `<!-- lx-v63-editor:start product=${releaseProduct.id} card=${releaseProduct.cardSha256} -->\n<div ${div}></div>\n<script src="${attr(assetUrl(editor.url, editor.sha256))}" integrity="${attr(integritySha256(editor.sha256))}" crossorigin="anonymous" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n`;
+}
+
+function editorScript(editor) {
+  return `<script src="${attr(assetUrl(editor.url, editor.sha256))}" integrity="${attr(integritySha256(editor.sha256))}" crossorigin="anonymous" defer></script>`;
+}
+
+/** Release 6.3.1 darf in bestehenden Produktbeschreibungen ausschliesslich
+ * den unveränderlichen Editorpfad, dessen URL-Version und SRI ersetzen.
+ * Karten-, Vorschau-, Varianten- und Titelattribute müssen bytegleich bleiben. */
+export function editorReleasePlanen(alt, neuerBaustein, editor) {
+  const text = String(alt || '');
+  const marker = text.match(/<!-- lx-v63-editor:start\b[\s\S]*?<!-- lx-v63-editor:end -->\s*/giu) || [];
+  if (marker.length !== 1) throw new Error(`Editor-Release braucht genau einen bestehenden v6-Marker, gefunden ${marker.length}`);
+  const vorher = editorScript(VORHER_EDITOR);
+  const nachher = editorScript(editor);
+  const vorherAnzahl = text.split(vorher).length - 1;
+  const nachherAnzahl = text.split(nachher).length - 1;
+  const geplant = beschreibungPlanen(text, neuerBaustein);
+  if (vorherAnzahl === 1 && nachherAnzahl === 0) {
+    const nurEditor = text.replace(vorher, nachher);
+    if (geplant.nachher !== nurEditor) throw new Error('Editor-Release würde ausser Dateiname, URL-Version oder SRI weitere Beschreibungsbytes ändern');
+    return geplant;
+  }
+  if (vorherAnzahl === 0 && nachherAnzahl === 1 && geplant.nachher === text) return geplant;
+  throw new Error(`Editor-Release-Ausgangslage unzulässig (alt=${vorherAnzahl}, neu=${nachherAnzahl})`);
 }
 
 export function blockerBaustein({ product, blocker }) {

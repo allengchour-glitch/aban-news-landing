@@ -1,10 +1,12 @@
-# Editor v6 «Selbst gestalten» mit echter Druckfläche, Druckprüfung und Qualitätstor (6.3.0, Entwurf 08.11.2026, NICHT live)
+# Editor v6 «Selbst gestalten» mit echter Druckfläche, Druckprüfung und Qualitätstor
 
 Stand: gebaut und getestet, **nichts im Shop, im Theme, bei Printful oder bei CJ geschrieben**. Der live wirksame Editor (`pod/live/lspod-designer-v5-safe.js`,
 51 378 Byte, SHA-256 beginnt mit `70140421381326aff999`) ist **unverändert** (ein Test prüft Grösse und Prüfsumme). Die 38 bestehenden Produkte ändern sich nicht:
 v6 sucht nur Container der Klasse `lspod-designer-v6` und fasst `.lspod-designer` nie an.
 
-**Version 6.3.0** (08.11.2026, Datei `lspod-designer-v6-6.3.0.js`) ergänzt **WP5**: Vor jedem Upload und Warenkorb-POST muss der Kunde alle verwendeten Druckflächen in einem Dialog prüfen und ausdrücklich bestätigen. Der Dialog zeigt Produkt, gewählte Ausführung, Printful-Modell, Platzierungen und die exakten PNG-Blobs. Genau diese bereits bestätigten Blobs werden danach hochgeladen; es gibt nach der Bestätigung keinen neuen Render- oder Verkleinerungsversuch. Design-, Varianten-, Modell- und Platzierungsänderungen verwerfen die Prüfung. Eine Produktansicht ist zusätzlicher Komfort; fehlt sie, bleibt die verbindliche Druckdatei mit einem offenen Hinweis sichtbar. Die Fassung ist lokal getestet und **weder hochgeladen noch in ein Theme eingebunden**.
+**Version 6.3.0** (08.11.2026, Datei `lspod-designer-v6-6.3.0.js`) ergänzt **WP5**: Vor jedem Upload und Warenkorb-POST muss der Kunde alle verwendeten Druckflächen in einem Dialog prüfen und ausdrücklich bestätigen. Der Dialog zeigt Produkt, gewählte Ausführung, Printful-Modell, Platzierungen und die exakten PNG-Blobs. Genau diese bereits bestätigten Blobs werden danach hochgeladen; es gibt nach der Bestätigung keinen neuen Render- oder Verkleinerungsversuch. Design-, Varianten-, Modell- und Platzierungsänderungen verwerfen die Prüfung. Eine Produktansicht ist zusätzlicher Komfort; fehlt sie, bleibt die verbindliche Druckdatei mit einem offenen Hinweis sichtbar.
+
+**Version 6.3.1** verwendet einen neuen unveränderlichen Dateipfad und stellt in der mobilen Druckprüfung Druckdatei und Produktansicht proportional und einspaltig dar. `6.3.0` bleibt bytegleich als Rückfall für bestehende SRI-Tags erhalten. Die Umschaltung auf `6.3.1` erfolgt erst nach öffentlichem Hash-Readback, Plan, Canary und E2E-Abnahme.
 
 **Version 6.2.0** (06.11.2026, Datei `lspod-designer-v6-6.2.0.js`, eine Kopie von 6.1.0 mit zwei Paketen des Bauplans): **WP3** zweite Ansicht «Auf dem Produkt» (Canvas im Browser, Vorlagenbild von Printful, JPEG-Export 800 × 800 als Warenkorb-Eigenschaft `_vorschau`), **WP4** Qualitätstor (harter Stopp unter der Mindest-dpi der Karte, Warnung bis 150 dpi, `_pod_karte.qd`) und Entwurf speichern und wiederherstellen; dazu `werkzeug/vorschau_daten_bauen.mjs` (Vorschaudaten aus den Katalogdateien). `lspod-designer-v6.js` (6.1.0) bleibt **Byte für Byte unverändert** als Rücknahme (SHA-256 beginnt mit `ffdaa9afc48b`, gleich dem Stand im Repo). Einzelheiten im Abschnitt «Version 6.2.0».
 
@@ -21,6 +23,7 @@ Kennzeichnung der Zahlen: GEMESSEN (in der Sitzung am 05. oder 06.11.2026 gemess
 | Datei | Zweck |
 |---|---|
 | `lspod-designer-v6-6.3.0.js` | Editor 6.3.0 mit verbindlichem Review-Gate vor Upload und Warenkorb; eigenständiger Entwurf auf Basis 6.2.0, nicht live. |
+| `lspod-designer-v6-6.3.1.js` | Editor 6.3.1 mit proportionaler mobiler Druckprüfung; neuer unveränderlicher Releasepfad. |
 | `lspod-designer-v6-6.2.0.js` | **Die Fassung für den Live-Plan:** Editor 6.2.0, **unminifiziert** lesbar (3 090 Zeilen, 206 421 Byte; vor der Korrekturrunde 3 041 Zeilen, 200 413 Byte). Eine Datei, keine Abhängigkeiten. |
 | `lspod-designer-v6.js` | Editor 6.1.0 (2 370 Zeilen, 150 254 Byte; v5 hat 51 378 Byte in 5 Zeilen), **unverändert**, die Rücknahme. Dieselben Tests laufen mit `V6_DATEI=…/lspod-designer-v6.js V6_VERSION=6.1.0` gegen sie (Unit-Test 169 Prüfungen grün, alle Szenarien ausser den neuen 6.2.0-Szenarien grün). |
 | `werkzeug/vorschau_daten_bauen.mjs` | Baut aus den Katalogdateien (`katalog/<id>.json`) je Modell die **Vorschaudaten** (Schema 1: Adapter, Bildadressen, Tassen-Eichung, Liste `farbfest`, Vorlagen-Gegenprobe) und den **Spiegelplan** (welche Printful-Bilder auf Shopify Files gespiegelt werden müssten; Modelle ohne Vorschau und farbfeste Platzierungen bringen keine Bilder in den Plan). `bauen()` nimmt einen Katalogordner oder eine Liste von Ordnern (der erste mit der Datei gewinnt). Nur Trockenlauf: schreibt höchstens in `--out`, kein Netz, hat keine Live-Option (eine unbekannte Option bricht mit Exit 2 ab). |
@@ -43,7 +46,7 @@ V6_KATALOG=<Ordner mit katalog/<id>.json> node unit_test.mjs       # Katalog nur
 V6_BILDCACHE=<Ordner mit Vorlagenbildern> node editor_test.mjs     # Bildcache nur für schönere Aufnahmen; ohne ihn gibt es Attrappen (rund 2 Minuten)
 node vorschau_test.mjs                                             # Ansicht «Auf dem Produkt» (rund 45 s, davon 10 s für die Fristen bei hängenden Verbindungen)
 node review_gate_unit_test.mjs && node review_gate_editor_test.mjs && node review_gate_preview_test.mjs   # WP5 / 6.3.0
-env V6_DATEI=../lspod-designer-v6-6.3.0.js V6_VERSION=6.3.0 node unit_test.mjs && env V6_DATEI=../lspod-designer-v6-6.3.0.js V6_VERSION=6.3.0 node editor_test.mjs && env V6_DATEI=../lspod-designer-v6-6.3.0.js V6_VERSION=6.3.0 node vorschau_test.mjs   # vollständige Hauptsuiten auch gegen 6.3.0
+env V6_DATEI=../lspod-designer-v6-6.3.1.js V6_VERSION=6.3.1 node unit_test.mjs && env V6_DATEI=../lspod-designer-v6-6.3.1.js V6_VERSION=6.3.1 node editor_test.mjs && env V6_DATEI=../lspod-designer-v6-6.3.1.js V6_VERSION=6.3.1 node vorschau_test.mjs   # vollständige Hauptsuiten gegen 6.3.1
 node mutationsprobe.mjs [Teil]                                     # Mutationsprobe (Teil: V, K, W, M, N oder ein Mutantenname); Dauer siehe «Tests und Messungen»
 V6_DATEI=<alte Fassung> V6_VERSION=6.1.0 node unit_test.mjs        # dieselben Tests gegen eine andere Fassung (so wurden die Funde nachgestellt; die Rücknahme 6.1.0 besteht den Unit-Test)
 V6_VORSCHAUBAUER=<Kopie> node unit_test.mjs                        # andere Fassung des Vorschaudaten-Bauers (für die Mutationsprobe)

@@ -1,4 +1,4 @@
-# Gesicherter v6.3-Rollout
+# Gesicherter v6.3.1-Rollout
 
 Die Bau- und Prüfschritte in diesem Verzeichnis arbeiten rein lokal. Das
 separate Werkzeug `apply_theme.mjs` kann erst nach den unten beschriebenen
@@ -15,7 +15,9 @@ Shop-Zuordnungen im Repository.
 - Katalog: 22 von 22 erwarteten Modelldateien; `katalog_fehler.json` enthält `[]`
 - Karten-/Vorschau-Audit: `source/audit/rollout-report.json`
 - Editor-SHA-256: wird beim Allowlist-Bau frisch aus
-  `pod/v6/lspod-designer-v6-6.3.0.js` berechnet
+  `pod/v6/lspod-designer-v6-6.3.1.js` berechnet. Die bestehende Datei
+  `lspod-designer-v6-6.3.0.js` bleibt für bereits veröffentlichte SRI-Tags
+  bytegleich erhalten.
 
 Der Scope enthält 18 ACTIVE-Printful-Produkte und exakt 244 Shopify-Varianten:
 

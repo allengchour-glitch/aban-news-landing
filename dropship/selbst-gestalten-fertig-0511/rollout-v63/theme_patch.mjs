@@ -136,7 +136,7 @@ ${cases}
         }
       }());
         </script>
-        <script src="{{ 'lspod-designer-v6-6.3.0.js' | asset_url }}" defer></script>
+        <script src="{{ 'lspod-designer-v6-6.3.1.js' | asset_url }}" defer></script>
         <script>
       window.addEventListener('load', function () {
         window.setTimeout(function () {

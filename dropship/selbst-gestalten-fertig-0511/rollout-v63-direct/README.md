@@ -1,10 +1,10 @@
-# Direkter v6.3-Rollout ohne MAIN-Theme-Write
+# Direkter v6.3.1-Rollout ohne MAIN-Theme-Write
 
 Der Helfer ersetzt ausschliesslich den vorhandenen Editor-Baustein in den Produktbeschreibungen. 16 ACTIVE-Printful-Produkte erhalten den v6.3-Editor: neun mit belegter proportionaler Produktvorschau und sieben mit exakter Druckflächen-/Druckdateiansicht. Dad-Cap 206, Magnet 656 und der extern erfüllte Bügeltransfer erhalten stattdessen einen sichtbaren Sperrbaustein; ihr normaler Produktformular-, Ajax-Klick- und Dynamic-Checkout-Weg wird im Browser gesperrt. Produktstatus, Preis, Varianten, Themes und Printful werden nicht geändert.
 
 Die drei Sperren sind bewusst eine Produktseiten-Sperre. Eine direkt konstruierte Anfrage an Shopifys öffentliche Cart-API kann eine Beschreibung nicht serverseitig verhindern. Darum gehören vor dem Full-Lauf echte Browserproben für «In den Warenkorb» und «Jetzt kaufen» auf allen drei Seiten zum Pflicht-Gate. Ein serverseitiges Gate würde eine gesonderte Theme-/App-/Produktverfügbarkeitsänderung brauchen und ist nicht Teil dieses engen Rollouts.
 
-Editor, Karten und Vorschauen werden aus `rollout-v63/allowlist.json` und den lokalen Dateien unter `pod/v6/` deterministisch gebunden. Der Lauf akzeptiert nur die fest codierten 16 Editorprodukte, die exakt belegten neun Vorschau-IDs und die drei Sperrprodukte. Jede Asset-URL trägt einen SHA-Parameter; der Editor trägt zusätzlich ein SRI-Attribut. `_headers` gibt `/pod/v6/*` mit CORS und `Cross-Origin-Resource-Policy: cross-origin` frei. Stabile Karten/Vorschauen werden einen Tag mit Revalidation gecacht; nur die benannte Editorversion `lspod-designer-v6-6.3.0.js` ist ein Jahr immutable.
+Editor, Karten und Vorschauen werden aus `rollout-v63/allowlist.json` und den lokalen Dateien unter `pod/v6/` deterministisch gebunden. Der Lauf akzeptiert nur die fest codierten 16 Editorprodukte, die exakt belegten neun Vorschau-IDs und die drei Sperrprodukte. Jede Asset-URL trägt einen SHA-Parameter; der Editor trägt zusätzlich ein SRI-Attribut. `_headers` gibt `/pod/v6/*` mit CORS und `Cross-Origin-Resource-Policy: cross-origin` frei. Stabile Karten/Vorschauen werden einen Tag mit Revalidation gecacht; die Editorversionen `6.3.0` und `6.3.1` haben getrennte unveränderliche Dateipfade. Bestehende Produktseiten behalten funktionierende `6.3.0`-Bytes, bis Plan, Canary und Full-Apply ihren Script-Tag kontrolliert auf `6.3.1` umstellen.
 
 ## Schutzregeln
 
@@ -13,6 +13,7 @@ Editor, Karten und Vorschauen werden aus `rollout-v63/allowlist.json` und den lo
 - vor dem ersten Write: SHA-256, Content-Type, CORS/CORP und abgestufte Cache-Regeln aller bereits produktiv ausgelieferten Assets;
 - `data-karte-pflicht=1`: eine fehlende oder kaputte Karte fällt nicht auf v5 zurück;
 - SRI bindet das geladene Editor-JavaScript an den geprüften SHA-256;
+- der 6.3.1-Plan akzeptiert nur exakt einen vorhandenen v6-Marker und darf bei den 16 Editorprodukten ausschliesslich Dateiname, URL-Version und SRI ändern; die drei Sperrprodukte müssen bytegleich bleiben;
 - Plan, Release, Vorher-/Nachher-HTML und ihre Hashes werden vor dem Write gespeichert und zurückgelesen;
 - unmittelbar vor jedem Update werden Produkt- und Beschreibungsscope nochmals frisch geprüft;
 - Mutation ohne Retry, sofortige bytegenaue Rücklesung und fortlaufendes Ledger; eine unklare Antwort wird nicht wiederholt;
@@ -23,7 +24,7 @@ Editor, Karten und Vorschauen werden aus `rollout-v63/allowlist.json` und den lo
 
 ## Sicherer Actions-Pfad
 
-Der manuelle Workflow `.github/workflows/pod-v63-description-rollout.yml` läuft nur auf dem Default-Branch, akzeptiert ausschliesslich die Auswahlfelder `plan|apply|rollback` und `canary|full`, verwendet die vorhandenen Secrets `SHOPIFY_CLIENT_ID` und `SHOPIFY_CLIENT_SECRET` und lädt Plan, Sicherungen sowie Ledger als 30-Tage-Artefakt hoch. Er enthält keine freie Befehlseingabe.
+Der manuelle Workflow `.github/workflows/pod-v63-description-rollout.yml` läuft nur auf dem Default-Branch, checkt exakt den beim Dispatch aufgezeichneten `${{ github.sha }}` aus, akzeptiert ausschliesslich die Auswahlfelder `plan|apply|rollback` und `canary|full`, verwendet die vorhandenen Secrets `SHOPIFY_CLIENT_ID` und `SHOPIFY_CLIENT_SECRET` und lädt Plan, Sicherungen sowie Ledger als 30-Tage-Artefakt hoch. Er enthält keine freie Befehlseingabe.
 
 Reihenfolge nach Merge und bestätigtem Cloudflare-Deploy:
 

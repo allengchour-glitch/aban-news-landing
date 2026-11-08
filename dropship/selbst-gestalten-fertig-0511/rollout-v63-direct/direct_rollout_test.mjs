@@ -4,8 +4,9 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import {
   ALLOWLIST, BLOCKLIST, PREVIEW_IDS, assetUrl, attr, baustein, beschreibungPlanen,
-  blockerBaustein, blockerProduktPruefen, integritySha256, produktPruefen,
+  blockerBaustein, blockerProduktPruefen, editorReleasePlanen, integritySha256, produktPruefen,
   releaseAusAllowlist, releasePruefen, sha256,
+  VORHER_EDITOR,
 } from './direct_rollout_lib.mjs';
 
 let ok = 0;
@@ -37,7 +38,7 @@ function effektiveHeaders(text, path) {
   return values;
 }
 const H = 'a'.repeat(64);
-const editor = { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js', sha256: H };
+const editor = { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.1.js', sha256: H };
 const products = ALLOWLIST.map((a, i) => ({ id: a.id, handle: a.handle, cardUrl: `https://abannews.com/pod/v6/maps/lspod-${a.numericId}.karte.json`, cardSha256: H, previewUrl: PREVIEW_IDS.includes(a.numericId) ? `https://abannews.com/pod/v6/maps/lspod-${a.numericId}.vorschau.json` : null, previewSha256: PREVIEW_IDS.includes(a.numericId) ? H : null, variantIds: [String(i + 1)] }));
 const release = { schema: 1, editor, products };
 const live = (a = ALLOWLIST[0]) => ({ id: a.id, handle: a.handle, title: 'Tasse & <Test>', status: 'ACTIVE', onlineStoreUrl: `https://luxestyle.ch/products/${a.handle}`, variants: { pageInfo: { hasNextPage: false }, nodes: [{ id: 'gid://shopify/ProductVariant/1', availableForSale: true }] } });
@@ -56,6 +57,17 @@ test('Allowlist hat exakt 16 eindeutige Produkte und keine drei gesperrten Produ
   assert.ok(BLOCKLIST.every((x) => !ALLOWLIST.some((a) => a.id === x.id)));
 });
 test('Kanonische v6.3-Allowlist wird deterministisch in das Release übersetzt', () => assert.deepEqual(releaseAusAllowlist(sourceAllowlist, { editorSha256: H, assetSha256: sourceAssets }), release));
+test('Produktiver Editor und Allowlist sind auf denselben Release-Hash gebunden', () => {
+  const root = fileURLToPath(new URL('../../../', import.meta.url));
+  const produktiv = JSON.parse(readFileSync(root + 'dropship/selbst-gestalten-fertig-0511/rollout-v63/allowlist.json', 'utf8'));
+  const editorDatei = readFileSync(root + 'pod/v6/lspod-designer-v6-6.3.1.js');
+  const vorherDatei = readFileSync(root + 'pod/v6/lspod-designer-v6-6.3.0.js');
+  assert.equal(sha256(vorherDatei), VORHER_EDITOR.sha256);
+  assert.equal(produktiv.editorSha256, sha256(editorDatei));
+  assert.equal(produktiv.editorSha256, '1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0');
+  assert.equal(assetUrl(editor.url, produktiv.editorSha256), `${editor.url}?v=1e15aab9486f0b60`);
+  assert.equal(integritySha256(produktiv.editorSha256), 'sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA=');
+});
 test('Release exakt vollständig', () => assert.equal(releasePruefen(release), true));
 test('Release lehnt fehlendes Produkt ab', () => wirft(() => releasePruefen({ ...release, products: products.slice(1) }), /erwartet 16/));
 test('Release bindet die neun Vorschauen und Karten an die exakte Produkt-ID', () => {
@@ -78,6 +90,22 @@ test('Alter v5-Block wird genau ersetzt, Rest bytegleich', () => {
 });
 test('Markierter v6-Block ist idempotent aktualisierbar', () => {
   const b = baustein({ product: live(), releaseProduct: products[0], editor }); const p = beschreibungPlanen(`<p>A</p>${b}<p>B</p>`, b); assert.equal(p.geaendert, false);
+});
+test('6.3.1-Release ändert im bestehenden v6-Block nur Dateiname, URL-Version und SRI', () => {
+  const vorher = baustein({ product: live(), releaseProduct: products[0], editor: VORHER_EDITOR });
+  const ziel = baustein({ product: live(), releaseProduct: products[0], editor });
+  const alt = `<p>A</p>${vorher}<p>B</p>`;
+  const geplant = editorReleasePlanen(alt, ziel, editor);
+  assert.equal(geplant.geaendert, true);
+  assert.equal(geplant.nachher, `<p>A</p>${ziel}<p>B</p>`);
+  assert.equal(editorReleasePlanen(geplant.nachher, ziel, editor).geaendert, false);
+});
+test('6.3.1-Release stoppt bei Drift ausserhalb des Editor-Script-Tags', () => {
+  const vorher = baustein({ product: live(), releaseProduct: products[0], editor: VORHER_EDITOR });
+  const ziel = baustein({ product: live(), releaseProduct: products[0], editor });
+  const drift = vorher.replace('data-produkttitel="Tasse &amp; &lt;Test&gt;"', 'data-produkttitel="Fremder Titel"');
+  wirft(() => editorReleasePlanen(drift, ziel, editor), /weitere Beschreibungsbytes/);
+  wirft(() => editorReleasePlanen(vorher + vorher, ziel, editor), /genau einen bestehenden v6-Marker/);
 });
 test('Blocker ersetzt v5 sichtbar und sperrt Submit, Klick, Dynamic Checkout und spätere DOM-Formulare', () => {
   const p = blockedLive(); const b = blockerBaustein({ product: p, blocker: BLOCKLIST[0] });
@@ -169,7 +197,7 @@ test('Cloudflare-Headers erlauben nur den versionierten pod/v6-Pfad cross-origin
   const editorBlock = h.match(/\/pod\/v6\/lspod-designer-v6-\*\.js\n((?:[ \t]+[^\n]+\n?)*)/)?.[1] || '';
   assert.doesNotMatch(editorBlock, /(?:Access-Control-Allow-Origin|Cross-Origin-Resource-Policy):/);
   assert.match(h, /\/\*[\s\S]*Cross-Origin-Resource-Policy: same-site/);
-  const editorEffective = effektiveHeaders(h, '/pod/v6/lspod-designer-v6-6.3.0.js');
+  const editorEffective = effektiveHeaders(h, '/pod/v6/lspod-designer-v6-6.3.1.js');
   assert.deepEqual(editorEffective.get('access-control-allow-origin'), ['*']);
   assert.deepEqual(editorEffective.get('cross-origin-resource-policy'), ['cross-origin']);
   assert.deepEqual(editorEffective.get('cache-control'), ['public, max-age=31536000, immutable']);
@@ -186,6 +214,8 @@ test('Workflow ist manuell, Default-Branch-gebunden, bestätigt Writes exakt und
   const w = readFileSync(root + '.github/workflows/pod-v63-description-rollout.yml', 'utf8');
   assert.match(w, /workflow_dispatch:/); assert.doesNotMatch(w, /\bschedule:/);
   assert.match(w, /test "\$REF_NAME" = "\$DEFAULT_BRANCH"/);
+  assert.match(w, /ref: \$\{\{ github\.sha \}\}/);
+  assert.doesNotMatch(w, /ref: \$\{\{ github\.event\.repository\.default_branch \}\}/);
   for (const ack of ['V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE']) assert.match(w, new RegExp(ack));
   assert.match(w, /SHOPIFY_CLIENT_ID: \$\{\{ secrets\.SHOPIFY_CLIENT_ID \}\}/); assert.match(w, /SHOPIFY_CLIENT_SECRET: \$\{\{ secrets\.SHOPIFY_CLIENT_SECRET \}\}/);
   assert.match(w, /actions\/upload-artifact@v4/); assert.match(w, /actions\/download-artifact@v4/);

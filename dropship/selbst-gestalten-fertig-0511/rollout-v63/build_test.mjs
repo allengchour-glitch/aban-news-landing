@@ -11,7 +11,7 @@ function editorHelpers() {
   g.window = g;
   g.document = { readyState: 'complete', documentElement: { lang: 'de-CH' }, querySelectorAll: () => [], getElementById: () => null, addEventListener() {} };
   const context = vm.createContext(g);
-  vm.runInContext(readFileSync(resolve('pod/v6/lspod-designer-v6-6.3.0.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(resolve('pod/v6/lspod-designer-v6-6.3.1.js'), 'utf8'), context);
   return g.LSPOD6.hilfen;
 }
 

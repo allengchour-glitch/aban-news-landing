@@ -27,7 +27,7 @@ const HIER = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HIER, '../../../');
 const SICHERUNG = resolve(HIER, 'sicherung');
 export const LAYOUT = 'layout/theme.liquid';
-export const EDITOR = 'assets/lspod-designer-v6-6.3.0.js';
+export const EDITOR = 'assets/lspod-designer-v6-6.3.1.js';
 export const LUXESTYLE_PRIMARY_DOMAIN = 'luxestyle.ch';
 export const md5 = (value) => createHash('md5').update(value).digest('hex');
 export const sha256 = (value) => createHash('sha256').update(value).digest('hex');
@@ -126,7 +126,7 @@ export function quellDateien({ panelModels = [] } = {}) {
     || report.excludedActiveCount !== expectedExcluded || report.blockedActiveCount !== byStatus('blocked').length + expectedExcluded) {
     fail('Builder-Scope weicht von der expliziten Allowlist ab', 4);
   }
-  const editor = readFileSync(resolve(REPO, 'pod/v6/lspod-designer-v6-6.3.0.js'), 'utf8');
+  const editor = readFileSync(resolve(REPO, 'pod/v6/lspod-designer-v6-6.3.1.js'), 'utf8');
   if (!/^[0-9a-f]{64}$/.test(allow.editorSha256 || '') || sha256(editor) !== allow.editorSha256) {
     fail('Editor-SHA256 weicht von der expliziten Allowlist ab', 4);
   }
