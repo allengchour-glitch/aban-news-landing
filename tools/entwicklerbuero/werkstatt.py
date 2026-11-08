@@ -14,7 +14,7 @@ from datetime import date
 
 ROOT = Path(__file__).resolve().parent
 PRODUKT = ROOT / "anfragen_assistent"
-DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "test_email_antworter.py", "demo-email.eml", "kommentar_antworter.py", "test_kommentar_antworter.py", "demo-kommentare.csv", "demo-faq.json"]
+DATEIEN = ["assistent.py", "test_assistent.py", "demo.csv", "README.md", "email_antworter.py", "pruefseite.py", "test_email_antworter.py", "demo-email.eml", "kommentar_antworter.py", "test_kommentar_antworter.py", "demo-kommentare.csv", "demo-faq.json"]
 
 
 def lauf(out):
