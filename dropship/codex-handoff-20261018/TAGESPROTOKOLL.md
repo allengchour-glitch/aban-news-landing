@@ -1653,3 +1653,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 
 [LUXESTYLE_R152_20261108] [CJ-Bericht](CJ-BESTELLUNG-1039-20261108-R152.md) · [Beleg](CJ-BESTELLUNG-1039-20261108-R152.json). `LX1039` nicht erneut anlegen oder bezahlen; erst echten Versandbeleg gezielt zurücklesen.
 
+### R153
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Plugins / Identitäten | Firecrawl, HYPD Search Console, HYPD Merchant Center, vidIQ und Shopify eng für LuxeStyle geprüft | luxestyle.ch/GSC/Merchant5797470070 passend; vidIQ ohne autorisierten LuxeStyle-Kanal, dort keine privaten Reads/Writes |
+| Search Console | Eine neue Query-Seiten-Gegenprobe statt breitem Tagesreport gelesen | 09.10.–05.11.: «elektrischer futterspender für katzen» → Produktseite,45 Impressionen,0 Klicks, Position18.0222; indexiert, Canonical passend; keine Verkaufsableitung |
+| Produkt-SEO live | Produkt15523986473345 auf belegten deutschen Suchbegriff ausgerichtet und produktspezifischen unbelegten10–20-Tage-Block entfernt | Titel/H1 «Automatischer Futterspender für Katzen», neuer SEO-Titel und Meta; «elektrisch» nicht ergänzt |
+| Gegenprobe | Shopify Admin und Firecrawl nach Write frisch gelesen | ACTIVE, URL/IDs/SKU/CHF96.90/Bilder/Tags/Inventory unverändert; HTTP200/lang=de/neuer Titel/H1/Meta/og:url bestätigt |
+| Weitere Ranking-Befunde | Navigation, FR, Merchant, Emoji-404 und Judge.me in begrenzter Stichprobe geprüft | Rund746 Collection-Links pro Seite; FR-/LI-/Client-Locale-Blocker erhalten. Keine Theme-, Locale-, Merchant-, Versand- oder App-Einstellung geändert |
+| YouTube | vidIQ-Verbindung und begrenzte öffentliche Nachfrage geprüft | Erwarteter Kanal nicht autorisiert; keine Metadatenänderung, Film weiter durch Master-/Rechte-Gates blockiert |
+
+[LUXESTYLE_R153_20261108] [Bericht](PLUGIN-RANKING-PUSH-20261108-R153.md) · [Beleg](PLUGIN-RANKING-PUSH-20261108-R153.json). Keine Budgets, Rabatte, Preise, Kundenkontakte, Socialwrites oder kostenpflichtigen Aktionen.
+
