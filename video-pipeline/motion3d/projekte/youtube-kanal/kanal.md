@@ -14,12 +14,12 @@ Eigenständiger Kanal, ohne Shop und ohne Link zu luxestyle.ch. Verfügbarkeit v
 Der Alias darf 3 bis 30 Zeichen haben (Buchstaben, Zahlen, Unterstrich, Punkt, Bindestrich). Ist er vergeben, hilft eine Ziffer oder ein anderer Rang.
 
 ## Beschreibung (Kanal, höchstens 1000 Zeichen)
-Pia ist eine kleine Figur mit einer grossen Frage: Wie sieht eine friedliche Welt aus? In kurzen Animationen geht sie dem nach, mal im Garten, mal am Lagerfeuer, mal an einem langen Tisch für alle. Das Hauptthema ist pflanzliche Ernährung: freundlich erzählt, mit Zahlen nur dann, wenn eine Quelle dabeisteht. Ohne Zeigefinger, ohne Schockbilder, ohne Heilsversprechen. Neue Kurzfilme in loser Folge.
+Pia ist eine kleine Figur mit einer grossen Frage: Wie sieht eine friedliche Welt aus? In dieser Serie kurzer Animationen geht sie dem nach: im Garten, im Dorf, am Lagerfeuer, an einem langen Tisch für alle. Das Hauptthema ist pflanzliche Ernährung: freundlich erzählt, mit Zahlen nur dann, wenn eine Quelle dabeisteht. Ohne Zeigefinger, ohne Schockbilder, ohne Heilsversprechen. Neue Kurzfilme in loser Folge.
 
 ## Einstellungen
 - Land: Schweiz. Sprache: Deutsch.
 - Stichwörter: Pia, vegan, pflanzlich, friedliche Welt, Animation, Kurzfilm, Shorts, Nachhaltigkeit.
 - Kennzeichnung: Stimme und Bilder sind KI- und computererzeugt (in YouTube Studio bei jedem Upload «veränderte oder synthetische Inhalte: Ja»).
 - Zielgruppe: nicht speziell für Kinder.
-- Banner und Profilbild: `ausgabe/youtube-kanal/` (Profilbild 800×800, Banner 2560×1440, Banner ohne Text).
+- Banner und Profilbild: `ausgabe/youtube-kanal/` (Profilbild 800×800; Banner `pia-banner-serie-2560x1440.png` ohne Text: Pia vorn, dahinter Garten, Dorf, Lagerfeuer und langer Tisch als Schauplätze der Serie).
 - Kontakt-Mail und Links: leer lassen, bis der Besitzer sie ausdrücklich vorgibt.

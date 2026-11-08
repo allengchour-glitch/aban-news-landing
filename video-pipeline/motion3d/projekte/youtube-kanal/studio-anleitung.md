@@ -8,7 +8,7 @@ Das Anlegen selbst geht nur im eigenen Konto: Anmeldung, Handy-Bestätigung und 
 3. Erstellen. Damit stimmst du den Nutzungsbedingungen zu. Der Kanal hängt an einem Brand-Konto des Hauptkontos.
 
 ## 2. Aussehen
-Studio, Anpassen, Branding: Banner `pia-banner-2560x1440.png` hochladen. YouTube zeigt die Vorschau für Handy, Tablet, Computer und Fernseher; wichtig liegt in der Mitte, die Vorschau bestätigt das.
+Studio, Anpassen, Branding: Banner `pia-banner-serie-2560x1440.png` hochladen. YouTube zeigt die Vorschau für Handy, Tablet, Computer und Fernseher; wichtig liegt in der Mitte, die Vorschau bestätigt das.
 
 ## 3. Grundinformationen
 Studio, Anpassen, Grundinformationen: Beschreibung aus `kanal.md` einfügen, Land Schweiz, keine Links. Studio, Einstellungen, Kanal: Land, Stichwörter, «Nicht speziell für Kinder».
