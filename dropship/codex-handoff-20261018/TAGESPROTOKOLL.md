@@ -1361,3 +1361,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R131-Bericht, JSON und Projektgedächtnis fortgeschrieben | Keine Preis-, Merchant-, Feed-, Social-, Flow-, DNS-, Budget-, Rabatt-, Kunden-, Bestell-, Render- oder Publikationsänderung ausser den sechs eng begrenzten Shopify-Inhalten |
 
 [LUXESTYLE_R131_20261108] [Autonomer Fehlerlauf](AUTONOMER-FEHLERLAUF-20261108-R131.md) · [Maschinenbeleg](AUTONOMER-FEHLERLAUF-20261108-R131.json). Sechs live zurückgelesene Inhaltskorrekturen, enges Fehleraudit und fünf getestete Draft-Guards; offene Rechte-/Locale-/Themeblocker erhalten.
+
+
+### R132
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Koordination | Shopify LuxeStyle/`luxestyle.ch`/CHF/CH und Metricool6227837/Europe-Zurich samt sechs Kanälen frisch geprüft; R131 und offene Taxonomie-/Locale-Aufgaben berücksichtigt | Identitäten exakt passend. Kein Metricool-Write; keine Tageskennzahl-, Flow-, Bestell- oder Kauf-Watch-Wiederholung |
+| Shopify Kategorien | Hautpflege, Schuhe, Trends/Gadgets und Ladegeräte/Powerbanks mit je einem `collectionUpdate` auf sachliche Body- und SEO-Beschreibungen begrenzt |4 Calls,4 Inputziele, `userErrors=[]`. Nur `descriptionHtml`+SEO-Beschreibung geändert; Titel/Handle/SEO-Titel/Bild/Alt/Sortierung/Zahl/Regeln/Zuweisungen erhalten |
+| Kategorien Public-QA | Vier Live-Seiten und sieben erhaltene Links zurückgelesen |4/4 HTTP200, Canonical/H1/Body/Meta exakt, alte Zielclaims abwesend;7/7 Links HTTP200 |
+| Shopify Produkt | Produkt15449508577665 anhand von fünf Bildern/23 Varianten als Kleid korrigiert; neutralen Titel, Body und SEO mit einem `productUpdate` gesetzt | `userErrors=[]`, final04:12:40Z. ACTIVE, alter Handle/Canonical, Damenmode, Vendor, Tags,23 IDs/SKUs, CHF55.90, available, qty0, untracked/CONTINUE erhalten |
+| Shopify Medien | Fünf READY-Bilder mit einem Batch-`fileUpdate` auf exakte Schweizer Alttexte gesetzt und zurückgelesen |1 Call/5 Inputziele, `userErrors=[]`; IDs, URLs und Bindungen erhalten. Alte English-/Rock-/Sorglos-/White-Zielwerte öffentlich abwesend |
+| Taxonomie / Social | Historischen Rock-Handle, `kategorie-rock`, `sort-damen-roecke` und `rueckhol-0907` bewusst nicht geändert | Separate Taxonomie-/Redirect-Aufgabe offen; wegen `rueckhol-0907` kein Social-Write |
+| Begrenzter Audit | Firecrawl auf8 Produkte,12 Pages und1 Collection begrenzt |21/21 HTTP200,2 Credits. Fremdsprachige Root-Pages mit `html lang=de`, Firmen-/Vereine-Claims und Produktkandidaten offen; keine Katalogvollmessung |
+| Grenzen / Dokumentation | R132-Bericht, JSON und Projektgedächtnis fortgeschrieben |6 erfolgreiche Mutationscalls,10 Inputziele,5 logische Ziele,0 unklare Writes. Keine weiteren Theme-/Feed-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Render-/Publikationswrites |
+
+[LUXESTYLE_R132_20261108] [Kategorien-/Produkt-Livebericht](KATEGORIEN-PRODUKT-LIVE-20261108-R132.md) · [Maschinenbeleg](KATEGORIEN-PRODUKT-LIVE-20261108-R132.json). Vier Kategorien und ein falsch als Rock bezeichnetes Damenkleid eng korrigiert; Taxonomie/Redirect und weitere Auditkandidaten offen.

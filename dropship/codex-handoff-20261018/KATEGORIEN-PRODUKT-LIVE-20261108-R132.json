@@ -1,0 +1,827 @@
+{
+  "schemaVersion": 1,
+  "revision": 132,
+  "generatedAt": "2026-11-08T05:16:20+01:00",
+  "dateZurich": "2026-11-08",
+  "mode": "controlled_live_collection_and_product_content",
+  "sourceCommitBeforeDocumentation": "fbe9fb958651ef8af1e63e4ffc9b3800971573b6",
+  "identities": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "primaryDomain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "freshlyMatchedBeforeWrites": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "instagram": "luxestyle.ch",
+        "threads": "luxestyle.ch",
+        "tiktok": "luxestyle.ch",
+        "facebook": "1049840534888592",
+        "pinterest": "luxestyleCH",
+        "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+      },
+      "freshlyMatchedBeforeWrites": true,
+      "writes": 0
+    }
+  },
+  "mutationSummary": {
+    "successfulShopifyMutationCalls": 6,
+    "collectionUpdateCalls": 4,
+    "productUpdateCalls": 1,
+    "fileUpdateCalls": 1,
+    "successfulShopifyMutationInputTargets": 10,
+    "collectionInputTargets": 4,
+    "productInputTargets": 1,
+    "fileInputTargets": 5,
+    "logicalContentTargetsChanged": 5,
+    "allUserErrorsEmpty": true,
+    "unclearWrites": 0,
+    "blindRetries": 0
+  },
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/688391979393",
+      "numericId": "688391979393",
+      "title": "Hautpflege & Skincare",
+      "handle": "hautpflege-skincare",
+      "updatedAt": "2026-11-08T04:08:11Z",
+      "productsCount": 1333,
+      "sortOrder": "MANUAL",
+      "descriptionHtml": "<p>Hier findest du Produkte für Gesichts- und Körperpflege sowie ausgewählte Pflegegeräte. Die Artikel unterscheiden sich nach Anwendung, Inhalt und Ausführung.</p><p>Prüfe die genaue Produktbeschreibung, verfügbare Varianten und Anwendungshinweise direkt beim jeweiligen Artikel.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt-eltern\">Zur Übersicht: <a href=\"/collections/beauty-pflege\">Beauty &amp; Pflege</a></p><!-- /ls-verwandt -->",
+      "seoTitle": "Skincare-Produkte: Cremes, Masken & Pflege-Sets | LuxeStyle",
+      "seoDescription": "Hautpflege und Skincare bei LuxeStyle entdecken. Anwendung, Inhalt, Varianten und produktspezifische Hinweise direkt beim jeweiligen Artikel prüfen.",
+      "ruleSet": "AND: tag equals beauty; tag equals hautpflege",
+      "links": [
+        "/collections/beauty-pflege"
+      ],
+      "oldTargetClaimsAbsent": [
+        "exklusive Hautpflege",
+        "strahlendes und gesundes Aussehen",
+        "hochwirksame Gesichtsseren",
+        "beste Pflege",
+        "Schönheitsroutine revolutionieren",
+        "Gratis-Versand im Collection-Body",
+        "30-Tage-Rückgabe im Collection-Body",
+        "TWINT/Klarna in Meta-Description"
+      ],
+      "mutation": "collectionUpdate",
+      "userErrors": [],
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "preservedFields": [
+        "title",
+        "handle",
+        "seo.title",
+        "image",
+        "image.altText",
+        "sortOrder",
+        "productsCount",
+        "ruleSet",
+        "product assignments"
+      ],
+      "publicReadback": {
+        "httpStatus": 200,
+        "canonical": "https://luxestyle.ch/collections/hautpflege-skincare",
+        "canonicalExact": true,
+        "h1Exact": true,
+        "descriptionHtmlExact": true,
+        "metaDescriptionExact": true,
+        "oldTargetClaimsAbsent": true
+      },
+      "linkReadback": [
+        {
+          "path": "/collections/beauty-pflege",
+          "httpStatus": 200,
+          "preserved": true
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688018162049",
+      "numericId": "688018162049",
+      "title": "Schuhe",
+      "handle": "schuhe",
+      "updatedAt": "2026-11-08T04:08:41Z",
+      "productsCount": 5230,
+      "sortOrder": "MANUAL",
+      "descriptionHtml": "<p>Hier findest du Schuhe für Damen, Herren und Kinder, darunter Sneaker, Sandalen, Pumps, Stiefel, Loafer und Hausschuhe. Prüfe Grösse, Ausführung und weitere Angaben direkt auf der jeweiligen Produktseite.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt\"><strong>Passend dazu:</strong> <a href=\"/collections/sneaker-sportschuhe\">Sneaker &amp; Sportschuhe</a> · <a href=\"/collections/sub-hausschuhe\">Hausschuhe &amp; Slipper</a> · <a href=\"/collections/sub-ballerinas\">Ballerinas, Flats &amp; Loafers</a> · <a href=\"/products/ballettschuhe-aus-leder-622800\">Ballettschuhe</a></p><!-- /ls-verwandt -->",
+      "seoTitle": "Schuhe online kaufen – Sandalen, Pumps & Sneaker | LuxeStyle CH",
+      "seoDescription": "Schuhe für Damen, Herren und Kinder entdecken: Sneaker, Sandalen, Pumps, Stiefel und Loafer. Grösse und Ausführung direkt beim Produkt prüfen.",
+      "ruleSet": "AND: tag equals schuhe; product type not equals Kinderschuhe",
+      "links": [
+        "/collections/sneaker-sportschuhe",
+        "/collections/sub-hausschuhe",
+        "/collections/sub-ballerinas",
+        "/products/ballettschuhe-aus-leder-622800"
+      ],
+      "oldTargetClaimsAbsent": [
+        "für jeden Anlass",
+        "täglich neue Modelle",
+        "faire Preise",
+        "Gratis-Versand im Collection-Body",
+        "30-Tage-Rückgabe im Collection-Body",
+        "bequem & stilvoll in Meta-Description",
+        "pauschale Lieferzeit in Meta-Description"
+      ],
+      "mutation": "collectionUpdate",
+      "userErrors": [],
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "preservedFields": [
+        "title",
+        "handle",
+        "seo.title",
+        "image",
+        "image.altText",
+        "sortOrder",
+        "productsCount",
+        "ruleSet",
+        "product assignments"
+      ],
+      "publicReadback": {
+        "httpStatus": 200,
+        "canonical": "https://luxestyle.ch/collections/schuhe",
+        "canonicalExact": true,
+        "h1Exact": true,
+        "descriptionHtmlExact": true,
+        "metaDescriptionExact": true,
+        "oldTargetClaimsAbsent": true
+      },
+      "linkReadback": [
+        {
+          "path": "/collections/sneaker-sportschuhe",
+          "httpStatus": 200,
+          "preserved": true
+        },
+        {
+          "path": "/collections/sub-hausschuhe",
+          "httpStatus": 200,
+          "preserved": true
+        },
+        {
+          "path": "/collections/sub-ballerinas",
+          "httpStatus": 200,
+          "preserved": true
+        },
+        {
+          "path": "/products/ballettschuhe-aus-leder-622800",
+          "httpStatus": 200,
+          "preserved": true
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/688577577345",
+      "numericId": "688577577345",
+      "title": "Trends & Gadgets",
+      "handle": "trends-gadgets",
+      "updatedAt": "2026-11-08T04:09:33Z",
+      "productsCount": 4015,
+      "sortOrder": "MANUAL",
+      "descriptionHtml": "<p>Hier findest du Trends und Gadgets aus verschiedenen Produktbereichen. Die Auswahl kann sich laufend verändern.</p><p>Prüfe Funktionen, Kompatibilität, Varianten und Verfügbarkeit direkt auf der jeweiligen Produktseite.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt-eltern\">Zur Übersicht: <a href=\"/collections/elektronik-technik\">Technik &amp; Gaming</a></p><!-- /ls-verwandt -->",
+      "seoTitle": "Trends & Gadgets kaufen | LuxeStyle Schweiz",
+      "seoDescription": "Trends und Gadgets entdecken. Funktionen, Kompatibilität, Varianten und Verfügbarkeit direkt auf der jeweiligen Produktseite prüfen.",
+      "ruleSet": "tag equals trend",
+      "links": [
+        "/collections/elektronik-technik"
+      ],
+      "oldTargetClaimsAbsent": [
+        "brandneue Kollektion",
+        "innovative Technik",
+        "hochmodern",
+        "leistungsstark",
+        "effizient",
+        "Alltag smarter und einfacher",
+        "Gratis-Versand im Collection-Body",
+        "30-Tage-Rückgaberecht im Collection-Body"
+      ],
+      "mutation": "collectionUpdate",
+      "userErrors": [],
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "preservedFields": [
+        "title",
+        "handle",
+        "seo.title",
+        "image",
+        "image.altText",
+        "sortOrder",
+        "productsCount",
+        "ruleSet",
+        "product assignments"
+      ],
+      "publicReadback": {
+        "httpStatus": 200,
+        "canonical": "https://luxestyle.ch/collections/trends-gadgets",
+        "canonicalExact": true,
+        "h1Exact": true,
+        "descriptionHtmlExact": true,
+        "metaDescriptionExact": true,
+        "oldTargetClaimsAbsent": true
+      },
+      "linkReadback": [
+        {
+          "path": "/collections/elektronik-technik",
+          "httpStatus": 200,
+          "preserved": true
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/690802262401",
+      "numericId": "690802262401",
+      "title": "Ladegeräte & Powerbanks",
+      "handle": "elektronik-laden",
+      "updatedAt": "2026-11-08T04:09:54Z",
+      "productsCount": 591,
+      "sortOrder": "MANUAL",
+      "descriptionHtml": "<p>Hier findest du Ladegeräte, Powerbanks und Zubehör für verschiedene Geräte. Prüfe Anschluss, Ausgangsleistung, Steckertyp, Kapazität und Kompatibilität direkt auf der jeweiligen Produktseite.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt-eltern\">Zur Übersicht: <a href=\"/collections/elektronik-technik\">Technik &amp; Gaming</a></p><!-- /ls-verwandt -->",
+      "seoTitle": "Ladegeräte & Powerbanks | LuxeStyle Schweiz",
+      "seoDescription": "Ladegeräte und Powerbanks entdecken. Anschluss, Leistung, Steckertyp, Kapazität und Kompatibilität direkt auf der Produktseite prüfen.",
+      "ruleSet": "tag equals kat-laden",
+      "links": [
+        "/collections/elektronik-technik"
+      ],
+      "oldTargetClaimsAbsent": [
+        "Stecker-Symbol im Collection-Body",
+        "kuratierte Auswahl",
+        "Gratis-Versand in Meta-Description",
+        "30-Tage-Rückgabe in Meta-Description"
+      ],
+      "mutation": "collectionUpdate",
+      "userErrors": [],
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "preservedFields": [
+        "title",
+        "handle",
+        "seo.title",
+        "image",
+        "image.altText",
+        "sortOrder",
+        "productsCount",
+        "ruleSet",
+        "product assignments"
+      ],
+      "publicReadback": {
+        "httpStatus": 200,
+        "canonical": "https://luxestyle.ch/collections/elektronik-laden",
+        "canonicalExact": true,
+        "h1Exact": true,
+        "descriptionHtmlExact": true,
+        "metaDescriptionExact": true,
+        "oldTargetClaimsAbsent": true
+      },
+      "linkReadback": [
+        {
+          "path": "/collections/elektronik-technik",
+          "httpStatus": 200,
+          "preserved": true
+        }
+      ]
+    }
+  ],
+  "product": {
+    "id": "gid://shopify/Product/15449508577665",
+    "numericId": "15449508577665",
+    "status": "ACTIVE",
+    "titleBefore": "Elegante Taille-Verjüngung-Rock für Frauen",
+    "titleAfter": "Damenkleid mit asymmetrischer Drapierung",
+    "handle": "elegante-taille-verjungung-rock-fur-frauen-609600",
+    "handlePreserved": true,
+    "canonical": "https://luxestyle.ch/products/elegante-taille-verjungung-rock-fur-frauen-609600",
+    "vendor": "LuxeStyle",
+    "productType": "Damenmode",
+    "tags": [
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "damen",
+      "dropship",
+      "kategorie-rock",
+      "mode",
+      "rueckhol-0907",
+      "sort-damen-roecke",
+      "verjuengung"
+    ],
+    "bodyHtml": "<p>Dieses knielange Damenkleid hat einen runden Ausschnitt und ein asymmetrisch drapiertes Vorderteil. Die verfügbaren Ausführungen kombinieren Weiss oder Schwarz mit unterschiedlichen Ärmellängen.</p><h3>Auswahl</h3><ul>\n<li><strong>Farbe und Ärmel:</strong> Weiss mit Langarm, Kurzarm, ärmellos oder Dreiviertelarm; Schwarz mit Kurzarm</li>\n<li><strong>Grössen:</strong> S bis 2XL, abhängig von der gewählten Ausführung</li>\n</ul><p>Prüfe die gewählte Farbe, Ärmellänge und Grösse vor dem Hinzufügen zum Warenkorb.</p>\n<!-- ls-xsell-v1 --><p><strong>Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+    "seoTitle": "Damenkleid mit Drapierung | LuxeStyle Schweiz",
+    "seoDescription": "Knielanges Damenkleid mit asymmetrischer Drapierung. Farbe, Ärmelvariante und Grösse direkt auf der Produktseite auswählen.",
+    "visualEvidence": "Five current product images and the current variant options show a knee-length dress with asymmetrical draping, not a skirt.",
+    "productUpdate": {
+      "at": "2026-11-08T04:12:23Z",
+      "userErrors": [],
+      "changedFields": [
+        "title",
+        "descriptionHtml",
+        "seo.title",
+        "seo.description"
+      ]
+    },
+    "fileUpdateBatch": {
+      "at": "2026-11-08T04:12:39Z",
+      "calls": 1,
+      "inputTargets": 5,
+      "userErrors": []
+    },
+    "finalReadbackAt": "2026-11-08T04:12:40Z",
+    "variantsCount": 23,
+    "variants": [
+      {
+        "id": "gid://shopify/ProductVariant/55882332078465",
+        "numericId": "55882332078465",
+        "sku": "CJ-CJLY296825401AZ",
+        "title": "Weiss-Langarm / S",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332111233",
+        "numericId": "55882332111233",
+        "sku": "CJ-CJLY296825402BY",
+        "title": "Weiss-Langarm / M",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332144001",
+        "numericId": "55882332144001",
+        "sku": "CJ-CJLY296825403CX",
+        "title": "Weiss-Langarm / L",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332176769",
+        "numericId": "55882332176769",
+        "sku": "CJ-CJLY296825404DW",
+        "title": "Weiss-Langarm / XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332209537",
+        "numericId": "55882332209537",
+        "sku": "CJ-CJLY296825405EV",
+        "title": "Weiss-Langarm / 2XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332242305",
+        "numericId": "55882332242305",
+        "sku": "CJ-CJLY296825406FU",
+        "title": "Weiss-Kurzarm / S",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332275073",
+        "numericId": "55882332275073",
+        "sku": "CJ-CJLY296825407GT",
+        "title": "Weiss-Kurzarm / M",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332307841",
+        "numericId": "55882332307841",
+        "sku": "CJ-CJLY296825408HS",
+        "title": "Weiss-Kurzarm / L",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332340609",
+        "numericId": "55882332340609",
+        "sku": "CJ-CJLY296825409IR",
+        "title": "Weiss-Kurzarm / XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332373377",
+        "numericId": "55882332373377",
+        "sku": "CJ-CJLY296825410JQ",
+        "title": "Weiss-Kurzarm / 2XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332406145",
+        "numericId": "55882332406145",
+        "sku": "CJ-CJLY296825411KP",
+        "title": "Weiss-Ärmellos / S",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332438913",
+        "numericId": "55882332438913",
+        "sku": "CJ-CJLY296825412LO",
+        "title": "Weiss-Ärmellos / M",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332471681",
+        "numericId": "55882332471681",
+        "sku": "CJ-CJLY296825413MN",
+        "title": "Weiss-Ärmellos / L",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332504449",
+        "numericId": "55882332504449",
+        "sku": "CJ-CJLY296825414NM",
+        "title": "Weiss-Ärmellos / XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332537217",
+        "numericId": "55882332537217",
+        "sku": "CJ-CJLY296825415OL",
+        "title": "Weiss-Ärmellos / 2XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332569985",
+        "numericId": "55882332569985",
+        "sku": "CJ-CJLY296825417QJ",
+        "title": "Weiss, Dreiviertelarm / M",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332602753",
+        "numericId": "55882332602753",
+        "sku": "CJ-CJLY296825418RI",
+        "title": "Weiss, Dreiviertelarm / L",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332635521",
+        "numericId": "55882332635521",
+        "sku": "CJ-CJLY296825419SH",
+        "title": "Weiss, Dreiviertelarm / XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332668289",
+        "numericId": "55882332668289",
+        "sku": "CJ-CJLY296825420TG",
+        "title": "Weiss, Dreiviertelarm / 2XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332701057",
+        "numericId": "55882332701057",
+        "sku": "CJ-CJLY296825426ZA",
+        "title": "Schwarz-Kurzarm / S",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332733825",
+        "numericId": "55882332733825",
+        "sku": "CJ-CJLY296825427AZ",
+        "title": "Schwarz-Kurzarm / M",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332766593",
+        "numericId": "55882332766593",
+        "sku": "CJ-CJLY296825428BY",
+        "title": "Schwarz-Kurzarm / L",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/55882332799361",
+        "numericId": "55882332799361",
+        "sku": "CJ-CJLY296825429CX",
+        "title": "Schwarz-Kurzarm / XL",
+        "price": {
+          "amount": "55.90",
+          "currencyCode": "CHF"
+        },
+        "availableForSale": true,
+        "inventoryQuantity": 0,
+        "tracked": false,
+        "inventoryPolicy": "CONTINUE"
+      }
+    ],
+    "mediaCount": 5,
+    "media": [
+      {
+        "id": "gid://shopify/MediaImage/69874277941633",
+        "numericId": "69874277941633",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5e898c54-243a-42a2-874f-46667bb7a549.jpg?v=1783311353",
+        "alt": "Weisses knielanges Damenkleid mit Dreiviertelarm und asymmetrischer Drapierung",
+        "bindingPreserved": true
+      },
+      {
+        "id": "gid://shopify/MediaImage/69874277974401",
+        "numericId": "69874277974401",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5fe8554c-d3a1-4ce9-b7a1-b7043bfc61ac.jpg?v=1783311354",
+        "alt": "Weisses knielanges Damenkleid mit Langarm und asymmetrischer Drapierung",
+        "bindingPreserved": true
+      },
+      {
+        "id": "gid://shopify/MediaImage/69874278007169",
+        "numericId": "69874278007169",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c9b13067-ff33-4fbc-a5a8-089fe9ab9636.jpg?v=1783311354",
+        "alt": "Weisses knielanges Damenkleid mit Kurzarm und asymmetrischer Drapierung",
+        "bindingPreserved": true
+      },
+      {
+        "id": "gid://shopify/MediaImage/69874278039937",
+        "numericId": "69874278039937",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/524c3020-7aaa-4082-a454-9f22a51ffaca.jpg?v=1783311354",
+        "alt": "Weisses ärmelloses knielanges Damenkleid mit asymmetrischer Drapierung",
+        "bindingPreserved": true
+      },
+      {
+        "id": "gid://shopify/MediaImage/69874278072705",
+        "numericId": "69874278072705",
+        "status": "READY",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a38f74a1-c9e6-45c4-8813-b610bdf70b30.jpg?v=1783311354",
+        "alt": "Schwarzes knielanges Damenkleid mit Kurzarm und asymmetrischer Drapierung",
+        "bindingPreserved": true
+      }
+    ],
+    "sharedInventoryEvidence": {
+      "price": {
+        "amount": "55.90",
+        "currencyCode": "CHF"
+      },
+      "allAvailableForSale": true,
+      "inventoryQuantity": 0,
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE"
+    },
+    "preservedFields": [
+      "status",
+      "handle",
+      "vendor",
+      "productType",
+      "tags",
+      "variant IDs",
+      "variant SKUs",
+      "variant option values",
+      "prices",
+      "availability",
+      "inventory quantities",
+      "inventory tracking",
+      "inventory policy",
+      "media IDs",
+      "media URLs",
+      "media bindings"
+    ],
+    "publicReadback": {
+      "httpStatus": 200,
+      "selfCanonicalExact": true,
+      "titleExact": true,
+      "bodyExact": true,
+      "metaTitleExact": true,
+      "metaDescriptionExact": true,
+      "productJsonExact": true,
+      "available": true,
+      "all23VariantsAvailable": true,
+      "oldEnglishBodyAbsent": true,
+      "oldRockDescriptionAbsent": true,
+      "oldSorglosBlockAbsent": true,
+      "oldWhiteEnglishValuesAbsent": true,
+      "linksPreservedAndHttp200": true
+    },
+    "openTaxonomyTask": {
+      "handleStillContainsRock": true,
+      "classificationTagsStillContainRock": true,
+      "requiresSeparateTaxonomyAndRedirectDecision": true,
+      "socialBlockedByTag": "rueckhol-0907",
+      "socialWrites": 0
+    }
+  },
+  "boundedFirecrawlAudit": {
+    "products": 8,
+    "pages": 12,
+    "collections": 1,
+    "totalUrls": 21,
+    "allHttpStatus200": true,
+    "creditsUsed": 2,
+    "catalogCoverage": "unknown_bounded_sample_only",
+    "foreignLanguageRootPagesHtmlLangDe": [
+      "/pages/about-us-en",
+      "/pages/why-luxestyle-en",
+      "/pages/privacy-policy-en",
+      "/pages/refund-policy-en",
+      "/pages/a-propos-fr",
+      "/pages/chi-siamo-it"
+    ],
+    "firmenVereineOpen": true,
+    "productCandidatesOpen": true,
+    "openClaimsOnFirmenVereine": [
+      "ab 10 Stück",
+      "7–14 Tage",
+      "CH warehouse 2–3 days",
+      "reply within 24h",
+      "-10% from 2",
+      "payment-method claims",
+      "10–20 days"
+    ],
+    "writes": 0
+  },
+  "dailyReads": {
+    "metricoolMetricsRepeated": false,
+    "klaviyoFlowsRepeated": false,
+    "ordersRepeated": false,
+    "purchaseWatchRepeated": false
+  },
+  "otherExternalWrites": {
+    "theme": 0,
+    "metricool": 0,
+    "merchant": 0,
+    "feed": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "discounts": 0,
+    "budgets": 0,
+    "customers": 0,
+    "orders": 0,
+    "renders": 0,
+    "publications": 0
+  },
+  "documentation": {
+    "preWriteSha256": {
+      "README.md": "2fd2ae192f95525df1b7b3f2887ac51a7f9912133b4775ed32195eb759299ab5",
+      "PROJEKTGEDAECHTNIS.md": "0629ce52804fae43cd98bfeffe5d8d46b4e3b8503a7b96b0c7f092354cbbc8ef",
+      "ARBEITSSTAND.json": "1bbe8e50b703e8ff0306c1b2753083b801413675744afdfaa5f23703c320ed3c",
+      "TAGESPROTOKOLL.md": "a8a178791ce81306cd40afaa89b5acaf03d2372d41f276ad3021a2160fb79c43"
+    },
+    "filesToUpdate": [
+      "README.md",
+      "PROJEKTGEDAECHTNIS.md",
+      "ARBEITSSTAND.json",
+      "TAGESPROTOKOLL.md",
+      "KATEGORIEN-PRODUKT-LIVE-20261108-R132.md",
+      "KATEGORIEN-PRODUKT-LIVE-20261108-R132.json"
+    ]
+  },
+  "nextStep": "Treat the stale product handle and rock classification tags as a separate taxonomy/redirect task. Keep social blocked by rueckhol-0907. Resolve foreign-language root pages and the Firmen/Vereine and product candidates only after source-backed review."
+}

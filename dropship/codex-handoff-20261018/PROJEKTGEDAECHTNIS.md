@@ -1065,3 +1065,13 @@ PR2916 erweitert gestapelt auf PR2912 die temporäre FR-Noindex-Eindämmung;44/4
 - Draft-PR2916/Commit`834641afe1…`: Cart sprachunabhängig `noindex, follow`,48 Tests grün. Draft-PR2928/Commit`9b260299…`: QD-vs.-Druckdatei fail-closed, Tests384/384,181/181,348/348,81/81 grün. Draft-PR2929/Commit`3561d848c`: `masterpiece-ad.yml` fail-closed, Policy4/4 und archivierte CI9/9, unabhängiges GO. Kein Deploy, Dispatch oder Auftrag.
 - Draft-PR2932 ist OPEN/MERGEABLE auf PR2929-Base, Head`8c765b9b3`: zwölf LuxeStyle-Aussenaktionspfade fail-closed; Masterpiece4/4, Legacy60/60,14 YAML, unabhängiges GO. Draft-PR2931 ist OPEN/MERGEABLE, Commits`644b36a31`/`3513a23d1`: zwei CJ-Importer und SEO-Titel fail-closed/DRAFT;56/56, SEO und grind_plan382/382 grün. Kein Dispatch, Deploy, Import, API- oder Shopwrite.
 - Neue Belege: [R131-Bericht](AUTONOMER-FEHLERLAUF-20261108-R131.md) und [R131-JSON](AUTONOMER-FEHLERLAUF-20261108-R131.json). Tageskennzahlen/Flows/Bestellungen nicht wiederholt.
+
+
+# R132 – vier Kategorien und ein Damenkleid live korrigiert, 08.11.2026
+
+- Shopify LuxeStyle/`luxestyle.ch`/CHF/Schweiz und Metricool6227837/Europe-Zurich samt sechs erwarteten Kanälen wurden unmittelbar vor den Writes frisch passend gelesen; kein Metricool-Write.
+- Vier `collectionUpdate` (`hautpflege-skincare`688391979393, `schuhe`688018162049, `trends-gadgets`688577577345, `elektronik-laden`690802262401) änderten nur Body und SEO-Beschreibung; `userErrors=[]`. Titel, Handles, SEO-Titel, Bilder/Alttexte, MANUAL-Sortierung, Regeln, Produktzahlen und Zuweisungen blieben erhalten. Public4/4 HTTP200, Canonical/H1/Body/Meta exakt;7/7 Links erhalten und HTTP200.
+- Produkt15449508577665 ist bild-/variantenbelegt ein Kleid. Neuer Titel «Damenkleid mit asymmetrischer Drapierung», neutraler Body/SEO und fünf exakte Alttexte; `productUpdate`04:12:23Z, Batch-`fileUpdate`04:12:39Z, final04:12:40Z. ACTIVE, alter Handle/Canonical, Damenmode, Vendor, Tags,23 IDs/SKUs, CHF55.90, available, qty0, untracked/CONTINUE und5 READY-Medien erhalten. Alte English-/Rock-/Sorglos-/White-Zielwerte öffentlich abwesend.
+- Handle und Rock-Tags bleiben separate Taxonomie-/Redirect-Aufgabe; `rueckhol-0907` blockiert Social. Kein Handle-/Tag-/Socialwrite.
+- Exakte Zählung:6 erfolgreiche Mutationscalls,10 Inputziele,5 logische Ziele; keine unklaren Writes. Firecrawl begrenzt8 Produkte/12 Pages/1 Collection, alle HTTP200,2 Credits. Fremdsprachige Root-Pages mit `html lang=de` und Firmen-/Produktkandidaten offen. Keine Kennzahl-/Flow-/Bestell-/Kauf-Watch-Wiederholung und keine anderen externen Writes.
+- Neue Belege: [R132-Bericht](KATEGORIEN-PRODUKT-LIVE-20261108-R132.md) und [R132-JSON](KATEGORIEN-PRODUKT-LIVE-20261108-R132.json).

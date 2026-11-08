@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 131,
-  "updatedAt": "2026-11-08T02:38:47+01:00",
+  "revision": 132,
+  "updatedAt": "2026-11-08T05:16:20+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -15079,5 +15079,64 @@
     "logicalContentTargetsChanged": 6,
     "shopifyMediaAltWrites": 2,
     "shopifyPageWrites": 1
+  },
+  "categoryProductLiveR132": {
+    "at": "2026-11-08T05:16:20+01:00",
+    "report": "dropship/codex-handoff-20261018/KATEGORIEN-PRODUKT-LIVE-20261108-R132.md",
+    "evidence": "dropship/codex-handoff-20261018/KATEGORIEN-PRODUKT-LIVE-20261108-R132.json",
+    "identity": "Shopify LuxeStyle/luxestyle.ch/CHF/Switzerland and Metricool6227837/Europe-Zurich with six expected channels matched freshly before writes.",
+    "collections": {
+      "ids": [
+        "gid://shopify/Collection/688391979393",
+        "gid://shopify/Collection/688018162049",
+        "gid://shopify/Collection/688577577345",
+        "gid://shopify/Collection/690802262401"
+      ],
+      "handles": [
+        "hautpflege-skincare",
+        "schuhe",
+        "trends-gadgets",
+        "elektronik-laden"
+      ],
+      "changedFields": [
+        "descriptionHtml",
+        "seo.description"
+      ],
+      "preserved": "title, handle, seo.title, image/alt, MANUAL sort, product counts, rules and assignments",
+      "adminPublicReadback": "4/4 exact, HTTP200, canonical/H1/body/meta exact, seven links preserved and HTTP200"
+    },
+    "product": {
+      "id": "gid://shopify/Product/15449508577665",
+      "title": "Damenkleid mit asymmetrischer Drapierung",
+      "handle": "elegante-taille-verjungung-rock-fur-frauen-609600",
+      "status": "ACTIVE",
+      "variants": 23,
+      "price": "CHF55.90",
+      "available": true,
+      "inventory": "quantity0 tracked=false CONTINUE",
+      "mediaReady": 5,
+      "preserved": "handle/canonical, Damenmode, vendor, tags, variant IDs/SKUs, price, inventory and media IDs/URLs/bindings",
+      "taxonomyOpen": "old rock handle and classification tags require separate redirect/taxonomy decision; rueckhol-0907 blocks social"
+    },
+    "mutations": {
+      "successfulCalls": 6,
+      "collectionUpdateCalls": 4,
+      "productUpdateCalls": 1,
+      "fileUpdateCalls": 1,
+      "inputTargets": 10,
+      "logicalTargets": 5,
+      "allUserErrorsEmpty": true,
+      "unclearWrites": 0
+    },
+    "boundedFirecrawlAudit": "8 products + 12 pages + 1 collection; all HTTP200; 2 credits; foreign-language root pages html lang de and Firmen/Vereine/product candidates remain open; no catalog-wide conclusion.",
+    "dailyReads": "Metricool metrics, Klaviyo flows, orders and ended purchase watch not repeated.",
+    "otherExternalWrites": 0,
+    "documentationPreWriteSha256": {
+      "README.md": "2fd2ae192f95525df1b7b3f2887ac51a7f9912133b4775ed32195eb759299ab5",
+      "PROJEKTGEDAECHTNIS.md": "0629ce52804fae43cd98bfeffe5d8d46b4e3b8503a7b96b0c7f092354cbbc8ef",
+      "ARBEITSSTAND.json": "1bbe8e50b703e8ff0306c1b2753083b801413675744afdfaa5f23703c320ed3c",
+      "TAGESPROTOKOLL.md": "a8a178791ce81306cd40afaa89b5acaf03d2372d41f276ad3021a2160fb79c43"
+    },
+    "nextStep": "Handle and rock tags only as a separate taxonomy/redirect task; keep social blocked by rueckhol-0907. Then source-check foreign-language root pages and Firmen/Vereine/product candidates individually."
   }
 }
