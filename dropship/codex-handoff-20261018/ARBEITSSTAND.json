@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 152,
-  "updatedAt": "2026-11-08T21:01:03+01:00",
+  "revision": 153,
+  "updatedAt": "2026-11-08T22:02:24+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -7742,27 +7742,20 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r148_targeted_seo_fixes_confirmed_two_fr_selfcanonical_pages_still_german_main_draft",
+      "state": "r153_gsc_position18_product_title_h1_seo_live_firecrawl_readback_remaining_navigation_fr_merchant_blockers",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R148_EIGHT_URL_TARGETED_LIVE_SEO_LANGUAGE_SHIPPING_PLACEHOLDER_CHECK_AND_MERCHANT_CSV_DEDUP",
-      "lastEvidence": "Gezielte Live-Stichprobe19:12: Blitzversand-Collection ohne Doppelsatz; Plüschhamster mit Schweiz-und-Liechtenstein statt CH-only; Maxikleid und Sandalen ohne beanstandete TikTok-Platzhalter; DE-Selbstgestalten HTTP200/langde/selfcanonical mit deutschem Titel/Meta/H1. Alte konkrete Emoji-URL404, Redirect unbekannt. FR-Produkt /fr/products/elegantes-halterneck-kleid-639800 und /fr/pages/selbst-gestalten liefern HTTP200/content-language fr-CH/fr-Selfcanonical, aber deutsche Titel/Meta/H1/Inhalte; Duplicate-/Mischsprachrisiko offen. PR2975 weiter Draft/ungemergt. Zehn deduplizierte lokale Merchant-Exporte: wichtigster aktueller abgegrenzter Hebel fehlende Liechtenstein-Versandinformationen für3227 eindeutige Artikel; Zeilen/Kanäle nicht addiert, ältere gefilterte Exporte kein Live-Statusbeleg. Keine Theme-/Locale-/Merchant-/Versandeinstellung geändert.",
-      "nextAllowedStep": "PR2975 bleibt Draft. Den aktuellen Head und Preview gegen den heutigen MAIN-Stand prüfen, die zwei konkret belegten FR-Mischseiten abdecken und eine klare Locale-Entscheidung treffen: vollständige fachlich geprüfte FR-Übersetzung oder ausdrücklich freigegebene temporäre Deindexierung/Depublish-Strategie. Erst nach grüner Preview und Diff einen zulässigen Theme-Workflow erwägen und öffentlich DE/FR zurücklesen. Liechtenstein-Merchant-Versanddaten nur nach belegter realer Versandfähigkeit/Kosten und separater Freigabe ändern. Bereits korrigierte Produkte nicht blind erneut schreiben.",
+      "belegArt": "R153_PLUGIN_GSC_QUICK_WIN_SHOPIFY_LIVE_PRODUCT_SEO_WRITE_AND_FIRECRAWL_PUBLIC_READBACK",
+      "lastEvidence": "HYPD GSC bestätigte sc-domain:luxestyle.ch und für09.10.–05.11.2026 die indexierte Produktseite futterautomat-fur-katze-527488 zur Anfrage «elektrischer futterspender für katzen» mit45 Impressionen,0 Klicks und Position18.0222. Elektrisch ist nicht belegt und wurde nicht ergänzt. Shopify-Produkt15523986473345 wurde eng auf «Automatischer Futterspender für Katzen» ausgerichtet; H1, SEO-Titel und140-Zeichen-Meta wurden geändert und der produktspezifische unbelegte10–20-Werktage-/Symbolblock entfernt. Handle/URL, IDs, SKU, ACTIVE, CHF96.90, Bilder, Tags und Inventory blieben unverändert. Shopify-Readback ohne UserError; Firecrawl danach HTTP200/langde mit neuem Titel/H1/Meta und sauberer og:url. Firecrawl bestätigt zusätzlich rund746 serverseitige Collection-Links pro Stichprobenseite, FR-Mischtexte, möglicherweise veraltete Emoji-404 und englische Judge.me-Clienttexte. Merchant bestätigt zwei fr-Angebote mit deutschen Inhalten und drei LI-Versandlücken. Kein Theme-/Locale-/Merchant-/Versandwrite.",
+      "nextAllowedStep": "Den live korrigierten Futterspender nicht ohne neuen Befund erneut ändern und keine Rankingwirkung behaupten. Nächster technische Hebel ist eine eng begrenzte, unveröffentlichte Theme-Preview, welche die rund746 global gerenderten Collection-Links auf priorisierte Hauptkategorien und Hubseiten reduziert; Desktop,390px, Tastatur, No-JS, Canonical, Hreflang und tatsächliche interne Links vor jedem MAIN-Weg prüfen. FR nur vollständig fachlich übersetzen und QAen oder kontrolliert deindexieren/depublizieren; kein blindes noindex-Entfernen. Zwei Merchant-fr Beispiele an der aktiven Quelle korrigieren und LI-Versand nur nach belegter Lieferfähigkeit/Kosten sowie Source-Diff. Emoji-404 zuerst gegen aktuelle Produkt-Sitemap und interne Links prüfen. Judge.me-Locale als App-Setting separat prüfen; keine Einstellung aus diesem Auftrag ändern.",
       "blockers": [
-        "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
-        "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
-        "R140: Indexiertes selbstkanonisches FR-Produkt trägt deutschen Titel; FR-Duplikatstrategie ist offen.",
-        "R140: Neuer und Legacy-T-Shirt-Handle haben widersprüchliche Indexsignale; Identität muss vor Redirect/Canonical geklärt werden.",
-        "R140: GSC-Vorperiode hat keine Zeilen; Trendvergleich unbekannt.",
-        "R140: Strukturierte Daten fehlen teilweise bei Beschreibung, Versanddetails und Rückgaberichtlinie; Versand-/Rückgabeclaims brauchen aktuelle Belege.",
-        "R141: FR ist publiziert, obwohl geprüfte fr-Translations leer sind; indexierbare FR-Start-/Page-Pfade liefern deutschen Inhalt.",
-        "R141: Inhabervorgabe erlaubt keinen Locale-/Markt-Settings-Write; Depublish oder vollständige Übersetzung braucht eine ausdrückliche Entscheidung.",
-        "R141: PR2914 hat gemischten Scope und eine Coverage-Logiklücke für bereits publizierte Sprachen.",
-        "R141: Drei Produktsamples sind noindex, bleiben aber deutsch und in62 FR-Child-Sitemaps; Katalogvollständigkeit ist unbekannt.",
-        "R141: Draft-PR2962 schliesst die Guard-Logiklücke lokal, aber Remote-CI läuft; ungemergt und nicht produktiv. Er trifft keine Locale-Entscheidung und führt keine Mutation aus.",
-        "R142: Draft-PR2962 schliesst die HIGH-Umgehung, bleibt aber wegen fehlendem unabhängig aktuellem Live-Katalog-Snapshot-Produzenten explizit merge- und write-gesperrt.",
-        "R142: Der Source-SHA bindet nur extern gelieferte Werte aneinander und ist ohne unabhängige Snapshot-Herkunft kein Vollständigkeitsbeleg.",
-        "R143: Bestehende englische/mischtsprachige Live-Texte sind bestätigt; die gemergten Guards erkennen/verhindern neue Fehler, korrigieren aber keine bestehenden Shopinhalte."
+        "Rund746 eindeutige Collection-Links werden in der Stichprobe global serverseitig gerendert; sichere Reduktion braucht Theme-Preview und Desktop/Mobile/No-JS-QA.",
+        "FR-Startseite, FR-Selbstgestalten und geprüfte FR-Produkte/Collection bleiben sprachlich oder indexseitig inkonsistent; vollständige fachliche Übersetzung/Locale-Entscheidung fehlt.",
+        "Zwei aktuelle Merchant-fr-Angebote tragen deutsche Inhalte, ohne Merchant-Issue; Source-Mapping muss vor Änderung geklärt werden.",
+        "Drei eng geprüfte Legacy-Angebote sind in CH freigegeben und in LI ohne Versandservice abgelehnt; Lieferfähigkeit und Kosten für LI sind nicht belegt.",
+        "Firecrawl-Map nennt eine Emoji-Produkt-URL mit live404; Aktualität der Produkt-Sitemap, Ersatzidentität und interne Links sind noch nicht gegengeprüft.",
+        "Judge.me lädt clientseitig englische UI-Texte; App-Locale und sichere Änderungsoberfläche sind nicht geprüft.",
+        "vidIQ lieferte keinen autorisierten LuxeStyle-Kanal; private YouTube-Analyse und Metadatenwrite bleiben blockiert."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -7845,11 +7838,23 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json",
           "gitBlobSha": "dbc0f29ce14439a39626b12f0421c5d9dd05e7f7",
           "readAt": "2026-11-05T07:20:02Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.md",
+          "gitBlobSha": "befad4940a1ca5ee07f96ff0f4a55868c940a1fe",
+          "sha256": "9a0845486c72dfaf0ad84738e86c356aef8eb7dbcae72d42f5d7d67670b83fed",
+          "readAt": "2026-11-08T22:02:24+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.json",
+          "gitBlobSha": "6735b09edebb65e35dc80685a08a6e404843e62d",
+          "sha256": "757d87faab75436d045f9c3284c119768d78db48bb51ad896b7164919ba606c1",
+          "readAt": "2026-11-08T22:02:24+01:00"
         }
       ],
       "requiresFreshVerification": true,
-      "assignedRole": "claude",
-      "ownerApprovalState": "current_followup_requests_optimization_same_displayed_two_fields_applied",
+      "assignedRole": "codex_preparation_claude_coordination",
+      "ownerApprovalState": "current_plugin_ranking_push_product_seo_applied_with_live_readback",
       "evidenceHistory": [
         {
           "at": "2026-11-02T07:11:58.785394Z",
@@ -8294,6 +8299,33 @@
           "mutations": 0,
           "mediumBlocker": "no independent current live-catalog snapshot producer; source SHA only compares externally supplied values"
         }
+      },
+      "run153": {
+        "at": "2026-11-08T22:02:24+01:00",
+        "plugins": [
+          "Firecrawl",
+          "HYPD Search Console",
+          "HYPD Merchant Center",
+          "vidIQ",
+          "Shopify"
+        ],
+        "productId": "15523986473345",
+        "variantId": "56217490391425",
+        "gscImpressions": 45,
+        "gscClicks": 0,
+        "gscPosition": 18.0222,
+        "titleBefore": "Futterautomat für Katze",
+        "titleAfter": "Automatischer Futterspender für Katzen",
+        "seoTitleAfter": "Automatischer Futterspender für Katzen | LuxeStyle CH",
+        "publicHttp": 200,
+        "publicLanguage": "de",
+        "firecrawlScrapeId": "01a1bcf5-901f-7766-9f99-d5e17cdda9b7",
+        "handleChanged": false,
+        "priceChanged": false,
+        "inventoryChanged": false,
+        "themeWrites": 0,
+        "merchantWrites": 0,
+        "socialWrites": 0
       }
     },
     {
@@ -11523,6 +11555,23 @@
         "readAt": "2026-11-08T21:01:03+01:00"
       },
       "action": "R152: Bestellung#1039 wurde als echte bezahlte Shopify-Bestellung ohne Kundendaten geprüft und über den isolierten, doppelt geschützten CJ-Pfad exakt einmal als LX1039/CJ-ID SD2611081956340669600 angelegt. Der Live-Lauf42517332990 war erfolgreich; die anschliessende Nur-Lese-Gegenprobe42517703485 fand genau einen Datensatz und führte keinen Create-Aufruf aus. CJ meldet nun UNSHIPPED. Shopify bleibt korrekt PAID/UNFULFILLED mit offenem, nicht eingereichtem Fulfillmentauftrag; kein Tracking, kein Fulfillment und keine Kundenansprache. Shopbetrag CHF34.90 und CJ-Betrag USD13.60 bleiben getrennt. Tasks bleiben24."
+    },
+    {
+      "revision": 153,
+      "at": "2026-11-08T22:02:24+01:00",
+      "actor": "codex",
+      "source": {
+        "gscProperty": "sc-domain:luxestyle.ch",
+        "merchantShopId": "5797470070",
+        "shopifyProductId": "15523986473345",
+        "firecrawlScrapeId": "01a1bcf5-901f-7766-9f99-d5e17cdda9b7",
+        "reportPath": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.md",
+        "reportGitBlobSha": "befad4940a1ca5ee07f96ff0f4a55868c940a1fe",
+        "evidencePath": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.json",
+        "evidenceGitBlobSha": "6735b09edebb65e35dc80685a08a6e404843e62d",
+        "readAt": "2026-11-08T22:02:24+01:00"
+      },
+      "action": "R153: Firecrawl, HYPD Search Console/Merchant Center, vidIQ and Shopify were used in a bounded LuxeStyle scope. GSC identified product15523986473345 at45 impressions/0 clicks/position18.0222 for a cat-feeder query. The product title/H1/SEO were changed to the truthful German phrase «Automatischer Futterspender für Katzen» and the unproven product-specific10–20-day block was removed; electrically powered was not claimed. Admin and public Firecrawl readback confirmed the change while URL, IDs, SKU, price, images, tags and inventory stayed unchanged. Remaining confirmed blockers are global navigation link bloat, FR mixed-language pages/offers, LI shipping evidence, stale emoji404 and Judge.me English UI. No theme, locale, Merchant, shipping, budget, social or customer write. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -11732,18 +11781,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 152,
+    "documentationRevision": 153,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "d92a899df2a1a93ba2ed7d4f2fa670993b806ab7",
+    "gitBlobSha": "a7a1087c459d75836eab05a28a472065bf0d153b",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "dac6db2c965e5f5fdea569b3b9b11b302816772e",
+    "entryGitBlobSha": "f2cd9f5387dc3f13e7c634a744ef1244524e5e63",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "r152_order_1039_cj_unshipped_after_payment_and_r151_master_contract",
-    "latestCanonicalRevision": 152,
-    "snapshotNote": "R151: verbindlicher Aufnahme-/Rechte-/Render-/Freigabevertrag für denselben Projektor-Master gespeichert; keine native Premiumquelle, konkrete Einheitenbindung oder hashgebundenen Rechte gefunden, alle Gates BLOCKED, keine MP4/Publikation. R152: echte bezahlte Shopify-Bestellung#1039 als LX1039/CJ-ID SD2611081956340669600 exakt einmal angelegt; Nur-Lese-Gegenprobe findet genau einen CJ-Datensatz im Status UNSHIPPED. Shopify bleibt PAID/UNFULFILLED, kein Tracking/Fulfillment/Kundenkontakt. CHF34.90 und USD13.60 getrennt.",
+    "scope": "r153_plugin_ranking_push_live_product_seo_and_remaining_navigation_fr_merchant_gates",
+    "latestCanonicalRevision": 153,
+    "snapshotNote": "R153: Firecrawl/HYPD/vidIQ/Shopify eng eingesetzt. GSC-Chance Produkt15523986473345 mit45 Impressionen/Position18.0222; Titel/H1/SEO live auf «Automatischer Futterspender für Katzen» ausgerichtet, produktspezifischer unbelegter10–20-Tage-Block entfernt, «elektrisch» nicht behauptet. Admin/Public HTTP200/langde/Titel/H1/Meta/og:url zurückgelesen; URL/IDs/SKU/CHF96.90/Bilder/Tags/Inventory erhalten. Offen: rund746 globale Collection-Links, FR-Mischtexte/fr-Feed, LI-Versandbeleg, Emoji404-Sitemapcheck, Judge.me-Englisch. vidIQ-Kanal nicht autorisiert. Keine Theme-/Locale-/Merchant-/Versand-/Social-/Budgetänderung.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -19077,6 +19126,56 @@
     "evidence": {
       "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1039-20261108-R152.json",
       "gitBlobSha": "d8bf58b75310e914be8f8b0c5a499ff2b3268f4c"
+    }
+  },
+  "pluginRankingPushR153": {
+    "at": "2026-11-08T22:02:24+01:00",
+    "identities": {
+      "shopify": "LuxeStyle/luxestyle.ch",
+      "gsc": "sc-domain:luxestyle.ch",
+      "merchant": "LuxeStyle CH/5797470070",
+      "vidiqLuxeStyleAuthorized": false
+    },
+    "gsc": {
+      "period": "2026-10-09/2026-11-05",
+      "query": "elektrischer futterspender für katzen",
+      "clicks": 0,
+      "impressions": 45,
+      "position": 18.0222,
+      "salesInferred": false
+    },
+    "shopify": {
+      "productId": "15523986473345",
+      "title": "Automatischer Futterspender für Katzen",
+      "seoUpdated": true,
+      "productShippingClaimRemoved": true,
+      "handleChanged": false,
+      "priceChanged": false,
+      "inventoryChanged": false
+    },
+    "publicReadback": {
+      "http": 200,
+      "language": "de",
+      "titleH1MetaMatched": true,
+      "ogUrl": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "firecrawlScrapeId": "01a1bcf5-901f-7766-9f99-d5e17cdda9b7"
+    },
+    "remaining": {
+      "globalCollectionLinksApprox": 746,
+      "frLocaleMixed": true,
+      "merchantFrGermanExamples": 2,
+      "liShippingExamples": 3,
+      "emoji404NeedsSitemapCheck": true,
+      "judgeMeEnglishClientText": true,
+      "youtubeAuthorizationMatched": false
+    },
+    "report": {
+      "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.md",
+      "gitBlobSha": "befad4940a1ca5ee07f96ff0f4a55868c940a1fe"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/PLUGIN-RANKING-PUSH-20261108-R153.json",
+      "gitBlobSha": "6735b09edebb65e35dc80685a08a6e404843e62d"
     }
   }
 }
