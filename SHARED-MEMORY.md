@@ -1,5 +1,16 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Übergabe an Claude · Gemini für LuxeStyle · 2026-11-08
+
+- **Aktuelle User-Angabe:** Der vorhandene GitHub-Secret-Name ist exakt **`GEMINI_API_KEY2`**. Frühere Vermutungen `KEY2` bzw. `GEMINI_API_KEY_2` sind falsch. Secret-Wert nicht auslesen, nicht in Chat/Logs/Dateien schreiben.
+- **User-Ziel:** Gemini kostenlos für die Suche nach doppelten Produkten und demselben Modell in anderen Farben bei LuxeStyle nutzen. Keine Produktänderung oder Löschung aus dieser Anfrage ableiten.
+- **Vorbereitet:** Draft-PR **#2915**, Branch `codex/luxestyle-gemini-manuell-20261107`, Workflow `.github/workflows/luxestyle-gemini-assistent.yml`. Der Workflow referenziert exakt `secrets.GEMINI_API_KEY2`; der Secretwert selbst ist nicht lesbar.
+- **Aktuelle Gegenprobe:** Der einmalige manuelle Lauf [42430952176](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42430952176) brach vor jedem API-Aufruf ab, weil `GEMINI_API_KEY2` im Job leer war. Es gab keine Gemini-Nutzung, keine Wiederholung und keinen Ersatzmodell-Aufruf. Der Key muss als für `allengchour-glitch/aban-news-landing` freigegebenes Actions-Repository- oder Organisations-Secret verfügbar sein; niemals im Chat senden.
+- **Gratis-Status unklar:** Screenshot zeigte ein Rechnungskonto mit „Kostenpflichtig 2“ und vorausbezahltem Guthaben. Zu welchem Google-Projekt `GEMINI_API_KEY2` gehört und ob dieses im Free Tier ohne verknüpftes Abrechnungskonto ist, wurde **nicht bestätigt**. Der Secret-Name beweist keinen kostenlosen Tarif. Keine bezahlten Aufrufe durch „nutze gratis tier“ autorisiert. Die manuelle Free-Tier-Bestätigung im Workflow ist keine technische Prüfung des Google-Abrechnungsstatus.
+- **Validierung:** Python-Syntax, drei Abbrüche vor Netzwerkzugriff und simulierte Erfolgs-/HTTP-429/403/500-Antworten geprüft. Branch am 08.11. ohne Force-Push auf aktuelles Main gebracht. Der echte GitHub-Dispatch war verfügbar und bestätigte fail-closed den fehlenden Secretzugriff; kein echter Gemini-Aufruf.
+- **Shop-Stichprobe:** 50 aktive Produkte live über Shopify geladen; keine vollständige Katalogprüfung, keine bestätigten Duplikate und keine Änderungen. Produkt-/Bildvergleich als nächsten Schritt implementieren, falls der Auftrag fortgesetzt wird.
+
+
 > **📌 2026-09-30 · PINTEREST = andere Session (User-Entscheid).** Die abannews-Session hat einen fertigen, getesteten
 > Pinterest-Autopiloten für **abannews.com** gebaut, aber seinen Cron **pausiert**, damit nichts doppelt gepostet wird:
 > `automation/pinterest_aban/` (LIESMICH.md, 30 Tests, Gemini+ChatGPT mit Fakten-Prüfer, 4 Pin-Layouts, Lernschleife,
