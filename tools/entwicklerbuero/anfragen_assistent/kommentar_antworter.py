@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 """Kommentar-CSV lokal auswerten; Antwortentwürfe und manuelle Prüffälle ausgeben."""
 import argparse
+from contextlib import contextmanager
+import hashlib
+import os
+import tempfile
 import csv
 import json
 from pathlib import Path
 import re
 from assistent import tabellenwert
+from pruefseite import kommentare_erstellen
 
 PLATTFORMEN = {"instagram", "facebook", "tiktok", "youtube", "linkedin", "pinterest", "threads", "andere"}
 
@@ -49,13 +54,66 @@ def beurteilen(text, faq):
     return "unklar", "Manuell prüfen", ""
 
 
-def verarbeiten(eingabe, ausgabe, wissen):
+@contextmanager
+def arbeitsverlauf(pfad):
+    p = Path(pfad)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    lock = p.with_name(p.name + '.lock')
+    try:
+        fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+    except FileExistsError:
+        raise ValueError('Arbeitsverlauf ist gesperrt; laufenden Durchlauf oder zurückgebliebene Sperre prüfen.') from None
+    os.close(fd)
+    try:
+        data = {'version': 1, 'vorbereitet': []}
+        if p.exists():
+            if p.stat().st_size > 8000000:
+                raise ValueError('Arbeitsverlauf ist zu gross.')
+            data = json.loads(p.read_text(encoding='utf-8'))
+        keys = data.get('vorbereitet') if isinstance(data, dict) else None
+        if (not isinstance(data, dict) or data.get('version') != 1 or not isinstance(keys, list)
+                or len(keys) > 100000 or any(not isinstance(k, str) or not re.fullmatch('[0-9a-f]{64}', k) for k in keys)):
+            raise ValueError('Arbeitsverlauf ungültig; vorhandene Datei bleibt erhalten.')
+        bekannt = set(keys)
+        yield bekannt
+        if len(bekannt) > 100000:
+            raise ValueError('Arbeitsverlauf voll; keine Einträge automatisch entfernt.')
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=p.parent, delete=False) as f:
+            tmp = Path(f.name)
+            try:
+                json.dump({'version': 1, 'vorbereitet': sorted(bekannt)}, f, ensure_ascii=False)
+                f.flush()
+                os.fsync(f.fileno())
+            except BaseException:
+                tmp.unlink(missing_ok=True)
+                raise
+        try:
+            tmp.replace(p)
+        finally:
+            tmp.unlink(missing_ok=True)
+    finally:
+        lock.unlink()
+
+
+def verarbeiten(eingabe, ausgabe, wissen, verlauf=None):
+    if verlauf is None:
+        return stapel_verarbeiten(eingabe, ausgabe, wissen)
+    state = Path(verlauf).resolve()
+    out = Path(ausgabe).resolve()
+    if state == out or out in state.parents or state in (Path(eingabe).resolve(), Path(wissen).resolve()):
+        raise ValueError('Arbeitsverlauf muss ausserhalb der Ausgabe und getrennt von Eingabe und FAQ liegen.')
+    with arbeitsverlauf(state) as bekannt:
+        return stapel_verarbeiten(eingabe, ausgabe, wissen, bekannt)
+
+
+def stapel_verarbeiten(eingabe, ausgabe, wissen, bekannt=None):
     faq = wissen_lesen(wissen)
+    faq_key = json.dumps(faq, ensure_ascii=False, sort_keys=True)
     with Path(eingabe).open(encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         if not {"id", "plattform", "text"}.issubset(reader.fieldnames or []):
             raise ValueError("CSV braucht id, plattform und text.")
-        rows, ids = [], set()
+        rows, ids, ansicht = [], set(), []
         for nummer, row in enumerate(reader, 2):
             if nummer > 5001:
                 raise ValueError("Höchstens 5000 Kommentare pro Stapel.")
@@ -66,7 +124,15 @@ def verarbeiten(eingabe, ausgabe, wissen):
                 raise ValueError(f"Kennung, Text oder Plattform in Zeile {nummer} ungültig.")
             ids.add(ident)
             kat, status, antwort = beurteilen(row["text"], faq)
-            rows.append({"id": ident, "plattform": plattform, "kategorie": kat, "status": status, "antwortentwurf": antwort})
+            if bekannt is not None and status == 'Entwurf prüfen' and antwort:
+                key = hashlib.sha256(json.dumps(['kommentar-v1', ident, plattform, row['text'], faq_key, antwort], ensure_ascii=False).encode('utf-8')).hexdigest()
+                if key in bekannt:
+                    status, antwort = 'Bereits vorbereitet', ''
+                else:
+                    bekannt.add(key)
+            result = {"id": ident, "plattform": plattform, "kategorie": kat, "status": status, "antwortentwurf": antwort}
+            rows.append(result)
+            ansicht.append(dict(result, text=row['text']))
     if not rows:
         raise ValueError("Keine Kommentare enthalten.")
     out = Path(ausgabe)
@@ -77,7 +143,8 @@ def verarbeiten(eingabe, ausgabe, wissen):
         writer = csv.DictWriter(f, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows({k: tabellenwert(v) for k, v in r.items()} for r in rows)
-    bericht = {"kommentare": len(rows), "entwurf_pruefen": sum(r["status"] == "Entwurf prüfen" for r in rows),
+    (out / "index.html").write_text(kommentare_erstellen(ansicht), encoding="utf-8")
+    bericht = {"kommentare": len(rows), "bereits_vorbereitet": sum(r["status"] == "Bereits vorbereitet" for r in rows), "entwurf_pruefen": sum(r["status"] == "Entwurf prüfen" for r in rows),
                "manuell_pruefen": sum(r["status"] == "Manuell prüfen" for r in rows), "veroeffentlicht": 0,
                "verfahren": "Feste Regeln und bereitgestellte FAQ; kein Sprachmodell"}
     (out / "bericht.json").write_text(json.dumps(bericht, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -89,9 +156,10 @@ if __name__ == "__main__":
     parser.add_argument("eingabe", type=Path)
     parser.add_argument("ausgabe", type=Path)
     parser.add_argument("--wissen", required=True, type=Path)
+    parser.add_argument("--verlauf", type=Path, help="Optionaler gemeinsamer Verlauf für wiederholte Durchläufe; keine Veröffentlichung.")
     args = parser.parse_args()
     try:
-        bericht = verarbeiten(args.eingabe, args.ausgabe, args.wissen)
+        bericht = verarbeiten(args.eingabe, args.ausgabe, args.wissen, args.verlauf)
     except (ValueError, OSError, csv.Error) as e:
         parser.exit(2, "Abbruch: " + str(e) + "\n")
     print(json.dumps(bericht, ensure_ascii=False))

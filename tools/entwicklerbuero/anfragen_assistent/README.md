@@ -39,8 +39,16 @@ Die Entwürfe nutzen weiterhin feste Vorlagen. Eine kontextbezogene KI-Antwort, 
 python3 kommentar_antworter.py demo-kommentare.csv /tmp/kommentar-demo --wissen demo-faq.json
 ```
 
-Eingabe: CSV mit `id,plattform,text`, eindeutige Kennungen, höchstens 5000 Kommentare. Plattformwerte: instagram, facebook, tiktok, youtube, linkedin, pinterest, threads, andere. Ausgabe: `antwortentwuerfe.csv` und ein Bericht mit null veröffentlichten Antworten. Die Plattformspalte ist nur eine Zuordnung; keine Plattform-API ist verbunden.
+Eingabe: CSV mit `id,plattform,text`, eindeutige Kennungen, höchstens 5000 Kommentare. Plattformwerte: instagram, facebook, tiktok, youtube, linkedin, pinterest, threads, andere. Ausgabe: eine lokale Prüfseite `index.html`, `antwortentwuerfe.csv` und ein Bericht mit null veröffentlichten Antworten. Die Plattformspalte ist nur eine Zuordnung; keine Plattform-API ist verbunden.
 
 Die FAQ-Datei enthält `faq` mit Einträgen aus `stichwoerter` (Liste) und `antwort`. Für einen Kunden müssen die Demoantworten durch dessen freigegebene Angaben ersetzt werden. Ein eindeutiger Stichworttreffer übernimmt die hinterlegte Antwort. Lob erhält einen kurzen Dank. Unbekannte oder mehrere Fragen bleiben ohne Antwortentwurf; Beschwerden erhalten einen Hinweisentwurf zur privaten Klärung und bleiben manuell zu prüfen. Hinweise auf persönliche Daten sowie Spamverdacht erhalten keine Antwort.
 
-Worterkennung ist keine vollständige Inhaltsmoderation: Sarkasmus, Verneinungen, Mehrsprachigkeit und nicht erkannte persönliche Daten können falsch eingeordnet werden. Vor jeder Veröffentlichung müssen Inhalt, Kontext und Datenschutz geprüft werden. Das Programm veröffentlicht, löscht und versteckt nichts; Antworten und Empfänger sind nicht mit Social-Media-Konten synchronisiert. Es gibt keine automatische dauerhafte Entdoppelung über mehrere CSV-Dateien hinweg.
+Worterkennung ist keine vollständige Inhaltsmoderation: Sarkasmus, Verneinungen, Mehrsprachigkeit und nicht erkannte persönliche Daten können falsch eingeordnet werden. Vor jeder Veröffentlichung müssen Inhalt, Kontext und Datenschutz geprüft werden. Das Programm veröffentlicht, löscht und versteckt nichts; Antworten und Empfänger sind nicht mit Social-Media-Konten synchronisiert. Für wiederholte Durchläufe kann derselbe lokale Verlauf verwendet werden:
+
+```bash
+python3 kommentar_antworter.py demo-kommentare.csv /tmp/kommentar-neu --wissen demo-faq.json --verlauf /tmp/kommentar-verlauf.json
+```
+
+Mit `--verlauf` werden bereits vorbereitete Entwürfe bei unverändertem Kommentar, Kennung, Plattform und FAQ nicht erneut erzeugt. Sie stehen als „Bereits vorbereitet“ in der neuen Übersicht; den ursprünglichen Entwurf im vorherigen Ausgabeordner aufbewahren. Das bedeutet weder veröffentlicht noch erledigt. Geänderter Text, geänderte FAQ oder eine geänderte Antwortvorlage erzeugt einen neuen Entwurf. Manuelle Prüffälle bleiben bei jedem Durchlauf sichtbar. Ohne `--verlauf` bleibt jeder Stapel unabhängig.
+
+Der Verlauf enthält SHA-256-Prüfsummen statt Nachrichten oder Kennungen im Klartext und wird nach erfolgreicher Ausgabe atomar gespeichert. Eine Sperrdatei verhindert parallele Zugriffe auf denselben Verlauf. Beschädigte Verläufe werden nicht ersetzt; zurückgebliebene Sperren müssen nach Prüfung des laufenden Prozesses entfernt werden. Pro Betrieb einen eigenen Verlauf im freigegebenen Speicher verwenden und aufbewahren. Die Prüfseite selbst enthält Originalkommentare und Entwürfe und gehört ebenfalls in diesen Speicher. Sie bietet Suche, Statusfilter und eine Kopierhilfe mit manueller Alternative. Der tägliche Projektbau testet diese Funktionen mit Demodaten; Kundeneingänge und Zeitpläne für deren Verarbeitung sind dadurch nicht neu angebunden.
