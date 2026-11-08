@@ -1,10 +1,11 @@
-S1	Dein Teller ist eine Stimme. Jede Mahlzeit stimmt für etwas ab.	Dein Teller ist eine Stimme
-S2	Drei Viertel der Agrarfläche gehören Tieren, und sie liefern nur etwa achtzehn Prozent der Kalorien.	Rund ¾ der Fläche, etwa 18 % der Kalorien
-S3	Siebenundsiebzig Prozent aller Sojabohnen landen im Futtertrog. Nur sieben Prozent werden zu Tofu und Sojamilch.	77 % Soja für Tiere, 7 % für Menschen
-S4	Rund siebzig Prozent des Süsswassers, das wir entnehmen, fliessen in die Landwirtschaft.	Rund 70 % des Süsswassers
-S5	Über achtzig Milliarden Landtiere werden jedes Jahr für Fleisch getötet. Jedes von ihnen kann Schmerz fühlen.	Über 80 Milliarden Landtiere pro Jahr
-S6	Essen verursacht ein Viertel der weltweiten Treibhausgase. Das ist keine Nebensache.	Essen: ¼ der Treibhausgase
-S7	Rund ein Viertel der erzeugten Kalorien geht verloren oder landet im Müll. Auch das gehört zum System.	Rund ¼ der Kalorien gehen verloren
-S8	Eine Modellrechnung zeigt: Ernährte sich die Welt pflanzlich, brauchte die Landwirtschaft statt vier nur noch etwa eine Milliarde Hektar.	Statt 4 nur etwa 1 Milliarde Hektar
-S9	Wir greifen nicht dich an. Wir greifen ein System an, das Leid zur Ware macht.	Nicht du, das System
-S10	Drei Zahlen bleiben hängen: drei Viertel, siebenundsiebzig, siebzig. Und dein Teller kann heute Abend pflanzlich sein.	Drei Zahlen: ¾ · 77 · 70
+S1	Dreimal am Tag stimmst du ab, ohne je eine Wahlurne zu sehen: mit der Gabel.	Dein Teller ist eine Stimme
+S2	Drei Viertel der Agrarfläche gehören Tieren, als Weide und als Futteracker. Sie liefern daraus nur etwa achtzehn Prozent der Kalorien.	Rund ¾ der Fläche, etwa 18 % der Kalorien
+S2	Das ist wie ein Garten, in dem drei Viertel der Beete fast nichts zum Essen tragen.	Drei Viertel der Beete, fast kein Ertrag
+S3	Soja klingt nach Tofu. Doch siebenundsiebzig Prozent landen im Futtertrog, nur sieben Prozent direkt auf dem Teller.	77 % Soja für Tiere, 7 % für Menschen
+S4	Wasser merkt man am Hahn nicht. Rund siebzig Prozent des Süsswassers, das wir entnehmen, fliessen in die Landwirtschaft.	Rund 70 % des Süsswassers
+S5	Über achtzig Milliarden Landtiere werden jedes Jahr für Fleisch getötet, rund zehn für jeden Menschen. Jedes von ihnen kann Schmerz fühlen.	Über 80 Milliarden, rund 10 pro Mensch
+S6	Ein Viertel der weltweiten Treibhausgase stammt aus dem, was wir essen. Wer das Klima ernst nimmt, kommt am Teller nicht vorbei.	Essen: ¼ der Treibhausgase
+S7	Dazu geht rund ein Viertel der erzeugten Kalorien verloren oder landet im Müll: erst angebaut, dann weggeworfen.	Rund ¼ der Kalorien gehen verloren
+S8	Eine Modellrechnung zeigt: Bei pflanzlicher Ernährung bräuchte die Welt statt vier nur etwa eine Milliarde Hektar Agrarland.	Statt 4 nur etwa 1 Milliarde Hektar
+S9	Das Problem ist nicht dein Teller allein. Es ist ein System, das Leid zur Ware macht.	Nicht du allein, das System
+S10	Drei Zahlen zum Mitnehmen: Fläche drei Viertel, Soja siebenundsiebzig, Wasser siebzig. Und der nächste Teller kann schon pflanzlich sein.	Fläche ¾ · Soja 77 · Wasser 70

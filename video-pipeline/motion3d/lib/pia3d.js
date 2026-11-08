@@ -42,7 +42,10 @@ export const CLIPS = {
   anstossen: (tl) => { const s = glatt(0.5 + 0.5 * Math.sin(tl * 1.7 - 1.2)); return mit({ aR_vor: 0.7 + 0.6 * s, aR_ab: 0.5 + 0.5 * s, eR: 1.4 - 0.4 * s, aL_vor: 0.3, eL: 0.5, kz: -0.1, ky: -0.25, lach: 1, froh: 0.7, sx: -0.03, hy: 0.01 * Math.sin(tl * 2) }); },
   sitzen: (tl) => mit({ hy: -0.50, sx: 0.05 + 0.02 * Math.sin(tl * 2), bL_vor: 1.45, bR_vor: 1.45, kL: 1.45, kR: 1.45, fL: 0.1, fR: 0.1, aL_vor: 0.65, aR_vor: 0.7, eL: 0.9, eR: 0.7, lach: 0.7, ky: 0.2 * Math.sin(tl * 0.7), kz: 0.05 }),
   winkenKlein: (tl) => mit({ aR_vor: 0.3, aR_ab: 1.9, eR: 0.5 + 0.5 * Math.sin(tl * 9), lach: 0.7, kz: 0.08, sx: 0.03 }),
-  staunen: (tl) => mit({ kx: -0.12, sx: -0.06, aL_ab: 0.7, aR_ab: 0.7, aL_vor: 0.3, aR_vor: 0.3, eL: 0.4, eR: 0.4, hy: 0.01 * Math.sin(tl * 3), lach: 0.2, froh: 0 })
+  staunen: (tl) => mit({ kx: -0.12, sx: -0.06, aL_ab: 0.7, aR_ab: 0.7, aL_vor: 0.3, aR_vor: 0.3, eL: 0.4, eR: 0.4, hy: 0.01 * Math.sin(tl * 3), lach: 0.2, froh: 0 }),
+  zeigen: (tl) => mit({ aR_vor: 1.55, aR_ab: 0.3, eR: 0.08, aL_vor: 0.1, kx: -0.04, ky: -0.2, kz: 0.05, sx: 0.04, lach: 0.15, hy: 0.008 * Math.sin(tl * 2.2) }),
+  ernst: (tl) => mit({ sorge: 0.9, kx: 0.16, aL_vor: 0.55, aR_vor: 0.55, aL_ab: 0.3, aR_ab: 0.3, eL: 1.3, eR: 1.3, sx: 0.05, hy: 0.01 * Math.sin(tl * 1.7), ky: 0.1 * Math.sin(tl * 0.5) }),
+  rennen: (tl) => CLIPS.gehen(tl, { frq: 1.7, amp: 0.95 })
 };
 
 const SCHUH = 0x16161a, HAUT = 0xf9f7f1;
