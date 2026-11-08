@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
 import {
   ALLOWLIST, BLOCKLIST, PREVIEW_IDS, assetUrl, attr, baustein, beschreibungPlanen,
   blockerBaustein, blockerProduktPruefen, integritySha256, produktPruefen,
@@ -98,6 +99,54 @@ test('Alle Blocker verwenden Shopifys kanonische Block-Zeilenumbrüche und bleib
     const geplant = beschreibungPlanen(`<p>A</p>${b}<p>B</p>`, b, { blocked: true });
     assert.equal(geplant.geaendert, false, `${blocker.handle}: kanonisches Readback nicht idempotent`);
     assert.equal(geplant.nachher, `<p>A</p>${b}<p>B</p>`, `${blocker.handle}: Beschreibung nicht bytegleich`);
+  }
+});
+test('Alle Blocker ersetzen nur die echte Theme-CTA durch den Grundlink und sperren nur ihre Varianten', () => {
+  for (const blocker of BLOCKLIST) {
+    const p = blockedLive(blocker);
+    const b = blockerBaustein({ product: p, blocker });
+    const skript = b.match(/<script>([\s\S]+)<\/script>/)?.[1];
+    assert.ok(skript, `${blocker.handle}: Sperrskript fehlt`);
+    const attribute = new Map([['href', '#lspod-start']]);
+    const cta = {
+      textContent: 'Zuerst dein Design gestalten',
+      setAttribute(name, value) { attribute.set(name, value); },
+      getAttribute(name) { return attribute.get(name); },
+    };
+    const fremdeCta = { textContent: 'Andere CTA' };
+    const submitButton = { disabled: false, setAttribute(name, value) { this[name] = value; } };
+    const zahlung = { hidden: false, setAttribute(name, value) { this[name] = value; } };
+    const eigenesFormular = {
+      querySelector(sel) { return sel === '[name="id"]' ? { value: '9' } : null; },
+      querySelectorAll(sel) { return sel === '.shopify-payment-button' ? [zahlung] : [submitButton]; },
+    };
+    const fremdesFormular = {
+      querySelector(sel) { return sel === '[name="id"]' ? { value: '10' } : null; },
+      querySelectorAll() { throw new Error('Fremdes Formular darf nicht verändert werden'); },
+    };
+    const root = { scrollIntoView() {} };
+    const document = {
+      currentScript: { previousElementSibling: root },
+      readyState: 'complete',
+      documentElement: {},
+      addEventListener() {},
+      querySelectorAll(sel) {
+        if (sel === 'div.lspod-designzwang > a.button.lspod-designzwang__button[href="#lspod-start"]') return [cta];
+        if (sel.includes('lspod-designzwang')) return [cta, fremdeCta];
+        if (sel === 'form[action*="/cart/add"]') return [eigenesFormular, fremdesFormular];
+        return [];
+      },
+    };
+    class MutationObserver { observe() {} }
+    vm.runInNewContext(skript, { document, MutationObserver });
+    assert.equal(cta.textContent, 'Personalisierung derzeit nicht bestellbar', `${blocker.handle}: CTA-Text`);
+    assert.equal(cta.getAttribute('title'), 'Personalisierung derzeit nicht bestellbar', `${blocker.handle}: CTA-Titel`);
+    assert.equal(cta.getAttribute('aria-label'), 'Personalisierung derzeit nicht bestellbar', `${blocker.handle}: CTA-Label`);
+    assert.equal(cta.getAttribute('href'), '#lspod-start', `${blocker.handle}: Grundlink blieb nicht erhalten`);
+    assert.equal(cta.getAttribute('data-lspod-v63-blocked-cta'), '1', `${blocker.handle}: Sperrmarker`);
+    assert.equal(fremdeCta.textContent, 'Andere CTA', `${blocker.handle}: fremde CTA wurde verändert`);
+    assert.equal(submitButton.disabled, true, `${blocker.handle}: eigener Kaufknopf nicht gesperrt`);
+    assert.equal(zahlung.hidden, true, `${blocker.handle}: eigener Dynamic-Checkout nicht gesperrt`);
   }
 });
 test('Kein oder doppelter Block wird abgelehnt', () => {
