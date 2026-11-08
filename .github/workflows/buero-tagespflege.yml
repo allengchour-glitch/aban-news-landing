@@ -26,6 +26,10 @@ on:
     paths:
       - 'tools/buero/tagespflege.py'
       - 'tools/buero/test_tagespflege.py'
+      - 'tools/buero/auto_reparatur.py'
+      - 'tools/buero/test_auto_reparatur.py'
+      - 'build-pages.sh'
+      - '.github/workflows/cf-deploy-mainsite.yml'
       - 'tools/buero/make_buero.py'
       - '.github/workflows/buero-tagespflege.yml'
       - '.github/workflows/tages-update.yml'
@@ -45,7 +49,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python3 -B -m unittest discover -s tools/buero -p test_tagespflege.py
+      - run: python3 -B -m unittest discover -s tools/buero -p 'test_*.py'
   pflege:
     if: github.event_name != 'pull_request'
     needs: tests

@@ -28,10 +28,9 @@ on:
       - 'ki-schriftsteller/**'
       - '**/*.md'
       - '.github/**'
-  # Sicherheitsnetz: regelmäßig deployen (fängt auch Bot-Commits mit [skip ci]
-  # ab, z. B. frische Märkte-Daten).
-  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
-    # - cron: '20 */6 * * *'
+  # Ein täglicher Reparatur- und Veröffentlichungsdurchlauf, keine Dauerschleife.
+  schedule:
+    - cron: '45 6 * * *'
   workflow_dispatch:
     inputs:
       project:
@@ -67,6 +66,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Automatische Reparatur gegenprüfen
+        run: python3 -B -m unittest discover -s tools/buero -p 'test_auto_reparatur.py'
       # ⚠️ Frueher kopierte dieser Schritt das Repo per rsync selbst. Das wich vom Server-Build ab:
       # ohne inject-engine (Navigation + JSON-LD fehlten), ohne Kit-ZIP-Bau, und server/ + game/
       # wurden mit veroeffentlicht. Jetzt DERSELBE Build wie auf dem Server (build-pages.sh).
@@ -74,6 +75,12 @@ jobs:
         env:
           DOWNLOAD_SALT: ${{ secrets.DOWNLOAD_SALT }}
         run: bash build-pages.sh
+      - name: Reparaturbericht bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: technische-reparatur
+          path: _site/buero-reparatur.json
+          retention-days: 14
       - name: Pages-Projekt anlegen (idempotent)
         run: npx --yes wrangler@3 pages project create "${{ env.PROJECT }}" --production-branch=main || true
 

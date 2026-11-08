@@ -332,6 +332,8 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
 .kb-listenfilter button {padding:10px 14px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);cursor:pointer;}
 .kb-listenfilter button[aria-pressed=true] {background:#1d545d;color:white;}
 .kb3-stage {scroll-margin-top:65px;}
+.kb-reparatur {padding:18px;border:1px solid var(--color-border-line);border-radius:14px;background:var(--color-panel);}
+.kb-reparatur p {line-height:1.5;}
 @media(max-width:640px){.kb-head{padding:18px;}.kb-schnell{grid-template-columns:1fr;gap:8px;}.kb-schnell button{min-height:74px;padding:14px 16px;gap:4px;}.kb-schnell small{display:none;}.kb-schnell strong{font-size:16px;}.kb-infowand{padding:16px;}.kb-chip{padding:9px 11px;}.kb-listenfilter button{margin-bottom:4px;}}
 </style>
 
@@ -360,6 +362,11 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
     <button type="button" data-open-room data-cmd="view:YouTube-Studio"><span>03 / YouTube</span><strong>Inhalte produzieren</strong><small>Skripte, Videos und Auswertung</small></button>
   </nav>
   <details class="kb-zentrale-panel"><summary>Infowand · Planung, Wissen und Prüfungen</summary><section class="kb-infowand" data-draw="infowand" data-source="buero" aria-label="Große Infowand"></section></details>
+  <section class="kb-reparatur" aria-label="Automatische technische Reparatur">
+    <strong>Automatische technische Reparatur</strong>
+    <p data-reparatur-stand>Der tägliche Veröffentlichungsablauf prüft fehlenden Linkschutz und fehlende Handy-Viewport-Angaben. Andere Fehler bleiben offen.</p>
+    <a href="https://abannews.com/buero-reparatur.json" target="_blank" rel="noopener noreferrer">Letzten Reparaturbericht öffnen</a>
+  </section>
   <details class="kb-werkzeuge"><summary>Aufgaben und Werkzeuge öffnen</summary>
   <section class="kb-arbeiten" aria-labelledby="kb-arbeiten-titel">
     <h2 id="kb-arbeiten-titel">Was du jetzt tun kannst</h2>
@@ -4499,4 +4506,4 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
 })();
 </script>
 
-</div><script>window.__runAll();document.querySelectorAll('.kb-tab').forEach(function(b){b.addEventListener('click',function(){window.__runAll();});});setTimeout(window.__runAll,0);</script></body></html>
+</div><script>window.__runAll();document.querySelectorAll('.kb-tab').forEach(function(b){b.addEventListener('click',function(){window.__runAll();});});setTimeout(window.__runAll,0);fetch('/buero-reparatur.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('Bericht fehlt');return r.json();}).then(function(r){if(r.version!==1||r.modus!=='angewendet'||r.alle_fehler_gemessen!==false||!Number.isInteger(r.gepruefte_html)||!Number.isInteger(r.geaenderte_dateien)||!Number.isFinite(Date.parse(r.gemessen)))return;var n=document.querySelector('[data-reparatur-stand]');if(n)n.textContent='Letzter Reparatur-Bau: '+r.gemessen+' · '+r.gepruefte_html+' HTML-Seiten geprüft · '+r.geaenderte_dateien+' Dateien korrigiert. Andere Fehler sind damit nicht vollständig geprüft.';}).catch(function(){});</script></body></html>

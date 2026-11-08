@@ -43,7 +43,7 @@ def bauen(ziel):
     notice='<p style="padding:14px;background:#fff2ce;color:#352900;border-radius:12px">Direkt auf dem Handy nutzbar. Diese Webansicht enthält keine privaten Daten und ist noch nicht mit deinen Live-Arbeitsständen verbunden.</p>'
     body=notice+body
     result=template.replace('%%ROWS%%',json.dumps(rows,ensure_ascii=False)).replace('%%BODY%%',body)
-    result=result.replace("</body>", "<script>window.__runAll();document.querySelectorAll('.kb-tab').forEach(function(b){b.addEventListener('click',function(){window.__runAll();});});setTimeout(window.__runAll,0);</script></body>")
+    result=result.replace("</body>", "<script>window.__runAll();document.querySelectorAll('.kb-tab').forEach(function(b){b.addEventListener('click',function(){window.__runAll();});});setTimeout(window.__runAll,0);fetch('/buero-reparatur.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('Bericht fehlt');return r.json();}).then(function(r){if(r.version!==1||r.modus!=='angewendet'||r.alle_fehler_gemessen!==false||!Number.isInteger(r.gepruefte_html)||!Number.isInteger(r.geaenderte_dateien)||!Number.isFinite(Date.parse(r.gemessen)))return;var n=document.querySelector('[data-reparatur-stand]');if(n)n.textContent='Letzter Reparatur-Bau: '+r.gemessen+' · '+r.gepruefte_html+' HTML-Seiten geprüft · '+r.geaenderte_dateien+' Dateien korrigiert. Andere Fehler sind damit nicht vollständig geprüft.';}).catch(function(){});</script></body>")
     Path(ziel).write_text(result,encoding='utf-8')
     return rows
 
