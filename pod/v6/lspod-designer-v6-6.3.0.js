@@ -168,7 +168,8 @@
       draftLost: 'Fotos, die noch nicht hochgeladen waren, konnten nicht wiederhergestellt werden. Bitte füge sie noch einmal hinzu.',
       reviewHead: 'Druckvorschau prüfen', reviewIntro: 'Prüfe jede Druckfläche. Hochgeladen wird genau die hier gezeigte PNG-Datei.',
       reviewProduct: 'Produkt', reviewVariant: 'Ausführung', reviewModel: 'Printful-Modell', reviewPlacements: 'Druckflächen',
-      reviewPrint: 'Verbindliche Druckdatei', reviewOnProduct: 'Auf dem Produkt',
+      reviewPrint: 'Verbindliche Druckdatei', reviewOnProduct: 'Auf dem Produkt', reviewMugView: 'Auf dem Produkt – Vorderansicht',
+      reviewMugNote: 'Kontrollierte Vorderansicht: Die Druckdatei links ist verbindlich. Teile eines Rundum-Motivs können seitlich liegen und hier nicht sichtbar sein.',
       reviewFallback: 'Produktansicht nicht verfügbar. Die gezeigte Druckdatei ist massgebend.',
       reviewAccept: 'Ich habe alle Druckflächen und die gewählte Ausführung geprüft.',
       reviewConfirm: 'Druckvorschau bestätigen und in den Warenkorb', reviewBack: 'Weiter gestalten',
@@ -232,7 +233,8 @@
       draftLost: 'Photos that had not finished uploading could not be restored. Please add them again.',
       reviewHead: 'Review print preview', reviewIntro: 'Check every print area. The exact PNG shown here will be uploaded.',
       reviewProduct: 'Product', reviewVariant: 'Option', reviewModel: 'Printful model', reviewPlacements: 'Print areas',
-      reviewPrint: 'Binding print file', reviewOnProduct: 'On the product',
+      reviewPrint: 'Binding print file', reviewOnProduct: 'On the product', reviewMugView: 'On the product – front view',
+      reviewMugNote: 'Controlled front view: the print file on the left is binding. Parts of a wraparound design can sit at the sides and may not be visible here.',
       reviewFallback: 'Product preview unavailable. The shown print file is authoritative.',
       reviewAccept: 'I have checked every print area and the selected option.',
       reviewConfirm: 'Confirm print preview and add to cart', reviewBack: 'Keep designing',
@@ -919,14 +921,15 @@
     '.lsp6-review .lsp6-modal-s{color:#5b5a62;max-width:none;text-align:left;margin:0 0 14px}',
     '.lsp6-review-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 16px;background:#f7f4ee;border:1px solid #e3dccf;border-radius:12px;padding:12px;margin-bottom:14px;font-size:13px}',
     '.lsp6-review-summary b{font-weight:800}',
-    '.lsp6-review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}',
+    '.lsp6-review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:14px}',
     '.lsp6-review-card{border:1px solid #ddd6ca;border-radius:12px;padding:12px;min-width:0}',
     '.lsp6-review-card h3{font-size:16px;margin:0 0 8px}',
     '.lsp6-review-meta{font-size:12px;color:#5b5a62;margin:0 0 9px}',
     '.lsp6-review-pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}',
     '.lsp6-review-figure{margin:0;min-width:0}',
     '.lsp6-review-figure figcaption{font-size:12px;font-weight:800;margin-bottom:5px}',
-    '.lsp6-review-img{display:block;width:100%;max-height:320px;object-fit:contain;border-radius:9px;background:#f2f0ec}',
+    '.lsp6-review-img{display:block;width:100%;height:clamp(140px,28vw,280px);object-fit:contain;border-radius:9px;background:#f2f0ec}',
+    '.lsp6-review-pvnote{margin:6px 0 0;color:#5b5a62;font-size:11.5px;line-height:1.35}',
     '.lsp6-review-print{background-color:#fff;background-image:linear-gradient(45deg,#e6e6e6 25%,transparent 25%),linear-gradient(-45deg,#e6e6e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e6e6 75%),linear-gradient(-45deg,transparent 75%,#e6e6e6 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}',
     '.lsp6-review-fallback{display:flex;align-items:center;min-height:120px;border-radius:9px;padding:12px;background:#fff8e6;color:#4d3a07;font-size:12.5px;font-weight:650}',
     '.lsp6-review-check{display:flex;align-items:flex-start;gap:10px;min-height:44px;margin:16px 0 10px;font-size:14px;font-weight:750}',
@@ -945,7 +948,7 @@
     '.lsp6-pvnote,.lsp6-pvlaed{margin:0;padding:6px 14px 8px;font-size:12px;color:var(--mute);text-align:center}',
     '.lsp6-pvinfo{margin:0;padding:18px 16px;font-size:13.5px;font-weight:600;color:#4d3a07;background:#fff8e6;border-top:1px solid #e7d9b4;border-bottom:1px solid #e7d9b4}',
     '.lsp6-ok.lsp6-mid{background:#fff8e6;border-color:#e7d9b4;color:#4d3a07}',
-    '@media (max-width:600px){.lsp6-btn,.lsp6-tab{min-height:44px}.lsp6-grid{grid-template-columns:repeat(2,1fr)}.lsp6-review{padding:8px;justify-content:flex-start}.lsp6-review-panel{max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);padding:14px}.lsp6-review-summary,.lsp6-review-grid,.lsp6-review-pics{grid-template-columns:1fr}.lsp6-review-actions{flex-direction:column-reverse}.lsp6-review-actions button{width:100%}}',
+    '@media (max-width:600px){.lsp6-btn,.lsp6-tab{min-height:44px}.lsp6-grid{grid-template-columns:repeat(2,1fr)}.lsp6-review{padding:8px;justify-content:flex-start}.lsp6-review-panel{max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);padding:14px}.lsp6-review-summary,.lsp6-review-grid{grid-template-columns:1fr}.lsp6-review-pics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.lsp6-review-img{height:clamp(128px,39vw,150px)}.lsp6-review-card{padding:10px}.lsp6-review-actions{flex-direction:column-reverse}.lsp6-review-actions button{width:100%}}',
   ].join('\n');
 
   function stilEinfuegen() {
@@ -1650,7 +1653,13 @@
       tabsAktualisieren(); aufpreisSummeAktualisieren(); speichern();
     }
     function neuerText() {
-      return { id: neueId(), type: 'text', text: '', font: SCHRIFTEN[0].css, color: '#111111', cx: 0.5, cy: 0.42, scale: 0.55, rot: 0 };
+      // Eine Tasse zeigt von der Rundum-Druckfläche nur die Vorderseite. Neue Texte
+      // starten deshalb kleiner und bleiben mit Rand vollständig sichtbar. Bereits
+      // gespeicherte Ebenen behalten ihre individuelle Grösse unverändert.
+      var modell = vorschauModell();
+      var istTasse = String(karte.typ || '').toUpperCase() === 'MUG' || (modell && modell.adapter === 'tasse');
+      var startSkala = istTasse ? 0.35 : 0.55;
+      return { id: neueId(), type: 'text', text: '', font: SCHRIFTEN[0].css, color: '#111111', cx: 0.5, cy: 0.42, scale: startSkala, rot: 0 };
     }
     function neuesBild(src, druckUrl, laedt) {
       return { id: neueId(), type: 'image', src: src, origSrc: src, printUrl: druckUrl || '', uploading: !!laedt, cx: 0.5, cy: 0.5, scale: 1, rot: 0, edit: neueBearbeitung() };
@@ -3022,11 +3031,13 @@
           el('img', { class: 'lsp6-review-img lsp6-review-print', src: druckUrl, alt: T.reviewPrint + ' – ' + titelVon(datei.p), 'data-review-print': datei.p.id }),
         ]));
         var produkt = el('figure', { class: 'lsp6-review-figure' });
-        produkt.appendChild(el('figcaption', { text: T.reviewOnProduct }));
+        var produktArt = vorschauSpec(datei.p).art;
+        produkt.appendChild(el('figcaption', { text: produktArt === 'tasse' ? T.reviewMugView : T.reviewOnProduct }));
         if (datei.produktBlob) {
           var produktUrl = URL.createObjectURL(datei.produktBlob); r.urls.push(produktUrl);
           produkt.appendChild(el('img', { class: 'lsp6-review-img', src: produktUrl, alt: T.pvAlt + ' – ' + titelVon(datei.p), 'data-review-product': datei.p.id }));
         } else produkt.appendChild(el('div', { class: 'lsp6-review-fallback', text: T.reviewFallback, 'data-review-fallback': datei.p.id }));
+        if (produktArt === 'tasse') produkt.appendChild(el('p', { class: 'lsp6-review-pvnote', text: T.reviewMugNote }));
         pics.appendChild(produkt);
         karteEl.appendChild(pics);
         raster.appendChild(karteEl);
