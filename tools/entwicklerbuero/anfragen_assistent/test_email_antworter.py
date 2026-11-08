@@ -3,11 +3,61 @@ from email.message import EmailMessage
 from email.parser import BytesParser
 from pathlib import Path
 import tempfile
+import json
 import unittest
 from email_antworter import verarbeiten
 
 
 class EmailTest(unittest.TestCase):
+    def faq_lauf(self, root, text, faq):
+        p = self.mail(root, Subject="Anfrage")
+        m = BytesParser(policy=policy.default).parsebytes(p.read_bytes())
+        m.set_content(text)
+        p.write_bytes(m.as_bytes())
+        wissen = root / "wissen.json"
+        wissen.write_text(json.dumps({"faq": faq}))
+        return verarbeiten(p, root / "out", "Demo", "buero@example.invalid", wissen)
+
+    def test_firmenwissen_unveraendert_als_ungesendeter_entwurf(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            antwort = "Unsere Öffnungszeiten: Montag bis Freitag, 09–12 Uhr."
+            bericht = self.faq_lauf(root, "Welche Öffnungszeiten haben Sie?", [
+                {"stichwoerter": ["Öffnungszeiten"], "antwort": antwort}])
+            reply = BytesParser(policy=policy.default).parsebytes((root / "out/antwort-0001.eml").read_bytes())
+            self.assertIn(antwort, reply.get_content())
+            self.assertNotIn("Bitte beschreiben Sie kurz", reply.get_content())
+            self.assertEqual(reply["X-Unsent"], "1")
+            self.assertEqual((bericht["entwuerfe"], bericht["versendet"]), (1, 0))
+
+    def test_unbekannte_mehrdeutige_und_einzelfaelle_bleiben_manuell(self):
+        faq = [{"stichwoerter": ["Kontakt"], "antwort": "Unser Team hilft."},
+               {"stichwoerter": ["Zeiten"], "antwort": "Montags."}]
+        for text in ["Unbekannte Frage?", "Kontakt und Zeiten?", "Kontakt wegen defekt", "Kontakt wegen Rechnung", "Kontakt sofort", "Kontaktperson?"]:
+            with self.subTest(text=text), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                bericht = self.faq_lauf(root, text, faq)
+                self.assertEqual((bericht["entwuerfe"], bericht["manuell_pruefen"]), (0, 1))
+                self.assertFalse(list((root / "out").glob("*.eml")))
+                html = (root / "out/index.html").read_text()
+                self.assertIn('data-art="manuell"', html)
+                self.assertIn(text, html)
+
+    def test_manueller_inhalt_ist_in_pruefseite_escaped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self.faq_lauf(root, '<script>alert(7)</script>', [])
+            html = (root / "out/index.html").read_text()
+            self.assertIn('&lt;script&gt;alert(7)', html)
+            self.assertNotIn('<script>alert(7)', html)
+
+    def test_ungueltiges_firmenwissen_stoppt_vor_ausgabe(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with self.assertRaises(ValueError):
+                self.faq_lauf(root, "Kontakt", [{"stichwoerter": [], "antwort": "A"}])
+            self.assertFalse((root / "out").exists())
+
     def mail(self, root, name="eingang.eml", **headers):
         m = EmailMessage()
         for k, v in {"From": "Kunde <kunde@example.invalid>", "To": "buero@example.invalid", "Subject": "Offerte", "Message-ID": "<original@example.invalid>", **headers}.items():

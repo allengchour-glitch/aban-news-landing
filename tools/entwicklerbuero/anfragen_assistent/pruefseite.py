@@ -7,7 +7,10 @@ def erstellen(eintraege, firma):
     for eintrag in eintraege:
         nummer = eintrag['nummer']
         if 'entwurf' not in eintrag:
-            karten.append(f'<article data-art="übersprungen"><h2>Nachricht {nummer}</h2><p class="marke">Übersprungen</p><p>{escape(eintrag["grund"])}</p></article>')
+            manuell = eintrag.get('status') == 'Manuell prüfen'
+            art, status = ('manuell', 'Manuell prüfen') if manuell else ('übersprungen', 'Übersprungen')
+            original = ('<h3>' + escape(eintrag['betreff']) + '</h3><pre>' + escape(eintrag['original']) + '</pre>') if manuell else ''
+            karten.append(f'<article data-art="{art}"><h2>Nachricht {nummer}</h2><p class="marke">{status}</p><p>{escape(eintrag["grund"])}</p>{original}</article>')
             continue
         karten.append(f'''<article data-art="entwurf">
 <h2>{escape(eintrag['betreff'])}</h2>
@@ -22,7 +25,7 @@ def erstellen(eintraege, firma):
     return rahmen(karten, firma)
 
 
-def rahmen(karten, firma, name='E-Mail-Assistent', titel='Antworten in Ruhe prüfen', hinweis='Diese Datei arbeitet lokal und sendet keine E-Mails. Die Antworten stammen aus festen Vorlagen. Prüfe Empfänger und Inhalt vor dem Versand im Mailprogramm. Anhänge sind nicht enthalten.'):
+def rahmen(karten, firma, name='E-Mail-Assistent', titel='Antworten in Ruhe prüfen', hinweis='Diese Datei arbeitet lokal und sendet keine E-Mails. Die Antworten stammen aus festen Vorlagen oder bereitgestelltem Firmenwissen. Prüfe Empfänger und Inhalt vor dem Versand im Mailprogramm. Anhänge sind nicht enthalten.'):
     return '''<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">

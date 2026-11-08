@@ -12,6 +12,7 @@ import re
 
 from assistent import VERSION, einordnen, entwurf
 from pruefseite import erstellen
+from kommentar_antworter import wissen_lesen
 
 MAX_BYTES = 2 * 1024 * 1024
 
@@ -98,7 +99,21 @@ def mail_lesen(datei, absender):
     return {"ziel": ziel, "betreff": betreff, "text": text, "message_id": mid, "references": refs}, None
 
 
-def antwort_erstellen(mail, absender, firma):
+def firmenantwort(mail, faq):
+    """Nur einen eindeutigen Stichworttreffer als prüfbaren Entwurf übernehmen."""
+    text = (mail["betreff"] + " " + mail["text"]).casefold()
+    kategorie, prioritaet = einordnen(mail["betreff"], mail["text"])
+    if kategorie in ("reklamation", "rechnung") or prioritaet != "normal":
+        return None, "Beschwerde, Zahlung oder dringendes Anliegen persönlich prüfen."
+    treffer = [item for item in faq if any(
+        re.search(r"(?<!\w)" + re.escape(k.strip().casefold()) + r"(?!\w)", text)
+        for k in item["stichwoerter"])]
+    if len(treffer) != 1:
+        return None, "Keine eindeutige Firmenantwort hinterlegt; Inhalt persönlich prüfen."
+    return treffer[0]["antwort"].strip(), None
+
+
+def antwort_erstellen(mail, absender, firma, antwort=None):
     kategorie, prioritaet = einordnen(mail["betreff"], mail["text"])
     reply = EmailMessage(policy=policy.SMTP)
     reply["From"] = absender
@@ -112,12 +127,15 @@ def antwort_erstellen(mail, absender, firma):
         reply["In-Reply-To"] = mail["message_id"]
         refs = list(dict.fromkeys(mail["references"] + [mail["message_id"]]))[-20:]
         reply["References"] = " ".join(refs)
-    reply.set_content(entwurf(kategorie, firma))
+    reply.set_content(entwurf(kategorie, firma) if antwort is None else
+                      "Guten Tag\n\n" + antwort + "\n\nFreundliche Grüsse\n" + firma
+                      + "\n\n[Entwurf aus Firmenwissen: Inhalt und Kontext vor dem Versand prüfen.]")
     return reply, kategorie, prioritaet
 
 
-def verarbeiten(eingabe, ausgabe, firma, absender_text):
+def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
     absender = adresse(absender_text)
+    faq = wissen_lesen(wissen) if wissen is not None else None
     if not firma.strip() or len(firma) > 120 or "\n" in firma or "\r" in firma:
         raise ValueError("Firmenname braucht 1 bis 120 Zeichen in einer Zeile.")
     source, out = Path(eingabe), Path(ausgabe)
@@ -135,8 +153,16 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text):
             mail, grund = None, "Message-ID in diesem Stapel bereits verarbeitet"
         if mail and mail["message_id"]:
             seen.add(mail["message_id"])
+        antwort = None
+        if mail and faq is not None:
+            antwort, grund = firmenantwort(mail, faq)
+            if antwort is None:
+                ansicht.append({"nummer": nummer, "status": "Manuell prüfen", "grund": grund,
+                                "betreff": mail["betreff"], "original": mail["text"]})
+                ergebnisse.append({"nummer": nummer, "status": "Manuell prüfen", "grund": grund})
+                continue
         if mail:
-            reply, kategorie, prioritaet = antwort_erstellen(mail, absender, firma)
+            reply, kategorie, prioritaet = antwort_erstellen(mail, absender, firma, antwort)
             name = f"antwort-{nummer:04d}.eml"
             (out / name).write_bytes(reply.as_bytes())
             ansicht.append({"nummer": nummer, "betreff": mail["betreff"], "empfaenger": str(mail["ziel"]),
@@ -149,7 +175,8 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text):
             ergebnisse.append({"nummer": nummer, "status": "Übersprungen", "grund": grund})
     (out / "index.html").write_text(erstellen(ansicht, firma), encoding="utf-8")
     bericht = {"version": VERSION, "gelesen": len(dateien), "entwuerfe": sum("datei" in r for r in ergebnisse),
-               "versendet": 0, "verfahren": "Lokale Regeln und Vorlagen, kein Sprachmodell",
+               "manuell_pruefen": sum(r["status"] == "Manuell prüfen" for r in ergebnisse),
+               "versendet": 0, "verfahren": "Freigegebenes Firmenwissen und Wortregeln, kein Sprachmodell" if faq is not None else "Lokale Regeln und Vorlagen, kein Sprachmodell",
                "ergebnisse": ergebnisse}
     (out / "bericht.json").write_text(json.dumps(bericht, ensure_ascii=False, indent=2), encoding="utf-8")
     return bericht
@@ -161,9 +188,10 @@ def main():
     parser.add_argument("ausgabe", type=Path)
     parser.add_argument("--firma", required=True)
     parser.add_argument("--absender", required=True)
+    parser.add_argument("--wissen", type=Path, help="Freigegebene Firmen-FAQ; unbekannte oder mehrdeutige Anliegen bleiben manuell.")
     args = parser.parse_args()
     try:
-        bericht = verarbeiten(args.eingabe, args.ausgabe, args.firma, args.absender)
+        bericht = verarbeiten(args.eingabe, args.ausgabe, args.firma, args.absender, args.wissen)
     except (ValueError, OSError) as e:
         parser.exit(2, "Abbruch: " + str(e) + "\n")
     print(json.dumps({k: bericht[k] for k in ("gelesen", "entwuerfe", "versendet")}, ensure_ascii=False))
