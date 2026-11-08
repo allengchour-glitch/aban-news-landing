@@ -396,6 +396,25 @@ def werkstatt_einlesen(pfad, rows):
                          "Station noch offen. Dieser Bericht bestätigt keinen abgeschlossenen Schritt.") + " Kein Dauerlauf."
 
 
+def anwenden(rows, werte):
+    """Überschreibt je Zeile Felder aus werte.json (tägliche Auffrischung, siehe aktualisieren.py); «_gem» ist die Messzeit der Zeilen, die in werte.json stehen."""
+    gem = werte.get("_gem")
+    for r in rows:
+        w = werte.get(r["id"])
+        if not w:
+            continue  # nicht gemessen: Text und Messzeit bleiben, die Seite setzt die Zeile von selbst auf «Alt»
+        if gem and (r["gemessen"] or w.get("frisch_h")):  # ein Blatt ohne Messzeit bekommt eine, sobald werte.json es misst (frisch_h > 0)
+            r["gemessen"], r["gemessen_text"] = gem, zeit(gem)
+        for k in ("status", "befund", "menge", "aktiv_h", "frisch_h", "quelle"):
+            if k in w:
+                r[k] = w[k]
+        if "ereignis_iso" in w:
+            r["ereignis_iso"] = w["ereignis_iso"]
+            r["ereignis"] = w.get("ereignis_text") or f"{w.get('wort', 'Lauf')} {zeit(w['ereignis_iso'])}"
+        elif "ereignis_text" in w:
+            r["ereignis"] = w["ereignis_text"]
+
+
 def metricool_einlesen(pfad, rows):
     from pathlib import Path
     report = json.loads(Path(pfad).read_text(encoding="utf-8"))
@@ -412,6 +431,30 @@ def metricool_einlesen(pfad, rows):
         if row["id"] in ("social_meta","social_pinterest"): row["metricool"] = dict(report)
 
 
+WEB_IDS = ("dev_bauen", "dev_pruefen", "dev_angebot", "yt_skript", "yt_video", "yt_wachstum")
+WEB_FELDER = ("status", "befund", "gemessen", "gemessen_text", "ereignis_iso", "ereignis", "frisch_h", "aktiv_h", "menge", "quelle", "expertenplan", "projekte", "zentrale", "werkstatt")
+
+
+def web_zeilen_einlesen(pfad, rows):
+    """Übernimmt die Zeilen des Entwickler- und YouTube-Studios aus der öffentlichen Webansicht (web_zeilen.py holt sie).
+    Deren Berichte entstehen nur in der Cloud und sind dort nicht abrufbar; die Webansicht trägt dieselben Zeilen mit dem Stand der letzten Cloud-Messung.
+    Es werden nur die Zeilen WEB_IDS und nur die Felder WEB_FELDER übernommen, alles andere (Texte, Orte, Links) bleibt, wie make_buero.py es setzt."""
+    from pathlib import Path
+    live = json.loads(Path(pfad).read_text(encoding="utf-8"))
+    if not isinstance(live, list):
+        raise ValueError("Web-Zeilen müssen eine Liste sein.")
+    nach_id = {z.get("id"): z for z in live if isinstance(z, dict)}
+    for row in rows:
+        z = nach_id.get(row["id"])
+        if row["id"] not in WEB_IDS or not z:
+            continue
+        if z.get("status") not in ("gruen", "gelb", "rot", "du", "alt"):
+            raise ValueError("Unbekannter Status in Web-Zeile " + row["id"])
+        for k in WEB_FELDER:
+            if k in z:
+                row[k] = z[k]
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("ausgabe")
@@ -420,6 +463,8 @@ if __name__ == "__main__":
     parser.add_argument("--zentrale-status")
     parser.add_argument("--youtube-status")
     parser.add_argument("--metricool-status")
+    parser.add_argument("--werte", help="werte.json aus aktualisieren.py (tägliche Auffrischung durch Claude)")
+    parser.add_argument("--web-zeilen", help="web_zeilen.json aus web_zeilen.py (Entwickler- und YouTube-Studio, in der Cloud gemessen)")
     parser.add_argument("--nur-github", action="store_true")
     args = parser.parse_args()
     if args.werkstatt_status:
@@ -460,6 +505,13 @@ if __name__ == "__main__":
             parser.exit(2, "Unbekannter Zentralenbericht.\n")
         for row in ROWS:
             if row["id"] == "dev_bauen": row["zentrale"] = report
+    if args.web_zeilen:
+        try:
+            web_zeilen_einlesen(args.web_zeilen, ROWS)
+        except (OSError, ValueError, KeyError, TypeError) as e:
+            parser.exit(2, "Web-Zeilen abgelehnt: " + type(e).__name__ + "\n")
+    if args.werte:
+        anwenden(ROWS, json.load(open(args.werte, encoding="utf-8")))
     if args.nur_github:
         if not args.pflege_status:
             parser.exit(2, "--nur-github braucht --pflege-status.\n")
