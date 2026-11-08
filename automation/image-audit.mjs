@@ -28,6 +28,8 @@ import { istSchwach, istBessereAlternative, groesserUndSauber, grund } from './l
 import { bildKlassifizieren, GeminiFatal } from './lib/gemini_vision.mjs';
 
 const KEY = process.env.GEMINI_API_KEY || '';
+const KEY_FALLBACK = process.env.GEMINI_API_KEY_FALLBACK || ''; // erster Schlüssel, wenn der Gratis-Schlüssel (GEMINI_API_KEY2) erschöpft ist
+let KEY_AKTIV = KEY;
 const SHOP = process.env.SHOPIFY_SHOP || '';
 const CID = process.env.SHOPIFY_CLIENT_ID || '';
 const CSECRET = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET) || '';
@@ -79,7 +81,8 @@ const PROMPT = 'Du bewertest die handwerkliche Qualität eines Produktbilds für
 // Ehrliche Zählung: ein Aufruf ohne echte Antwort gilt NIE als «Bild in Ordnung» (siehe lib/gemini_vision.mjs).
 const gem = { ok: 0, fehler: 0, folge: 0, gruende: {}, letzterGrund: '' };
 async function classify(url) {
-  const r = await bildKlassifizieren({ url, key: KEY, model: MODEL, base: GBASE, prompt: PROMPT });
+  const r = await bildKlassifizieren({ url, key: KEY_AKTIV, keyFallback: KEY_FALLBACK && KEY_FALLBACK !== KEY_AKTIV ? KEY_FALLBACK : null, model: MODEL, base: GBASE, prompt: PROMPT });
+  if (r.wechsel) { KEY_AKTIV = KEY_FALLBACK; log('⚠️ Gratis-Schlüssel erschöpft (429): ab jetzt der erste Schlüssel.'); }
   if (r.ok) { gem.ok++; gem.folge = 0; gem.letzterGrund = ''; return r.c; }
   gem.fehler++; gem.letzterGrund = r.grund; gem.gruende[r.grund] = (gem.gruende[r.grund] || 0) + 1;
   if (r.grund !== 'bild-nicht-lesbar' && r.grund !== 'bild-abgelehnt') {

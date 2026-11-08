@@ -14,7 +14,7 @@ export class GeminiFatal extends Error {
 
 const warte = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export async function bildKlassifizieren({ url, key, model, base, prompt, fetchFn = fetch, sleepFn = warte, versuche = 4 }) {
+export async function bildKlassifizieren({ url, key, keyFallback = null, model, base, prompt, fetchFn = fetch, sleepFn = warte, versuche = 4, zeitlimitMs = 60000 }) {
   // 1) Bild holen. Ein Fehler hier ist KEIN Gemini-Fehler.
   let buf;
   try {
@@ -38,6 +38,7 @@ export async function bildKlassifizieren({ url, key, model, base, prompt, fetchF
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
         body,
+        signal: AbortSignal.timeout(zeitlimitMs),
       });
       try { j = await r.json(); } catch { j = null; }
     } catch {
@@ -52,7 +53,14 @@ export async function bildKlassifizieren({ url, key, model, base, prompt, fetchF
       try { return { ok: true, c: JSON.parse(m[0]) }; } catch { return { ok: false, grund: 'json-defekt', c: null }; }
     }
     if (r.status === 429 || r.status === 500 || r.status === 503) {
-      if (v === versuche) return { ok: false, grund: `http-${r.status}`, c: null };
+      if (v === versuche) {
+        // Gratis-Schlüssel erschöpft: mit dem Ersatzschlüssel weitermachen, statt das Bild unbeurteilt zu lassen.
+        if (r.status === 429 && keyFallback) {
+          const r2 = await bildKlassifizieren({ url, key: keyFallback, keyFallback: null, model, base, prompt, fetchFn, sleepFn, versuche, zeitlimitMs });
+          return { ...r2, wechsel: true };
+        }
+        return { ok: false, grund: `http-${r.status}`, c: null };
+      }
       const hinweis = JSON.stringify(j?.error?.details || []).match(/"retryDelay":"(\d+)(?:\.\d+)?s"/);
       await sleepFn((hinweis ? Math.min(90, Number(hinweis[1]) + 2) : 20 * v) * 1000);
       continue;

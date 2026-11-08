@@ -39,6 +39,7 @@ jobs:
         env:
           # Zweiter Gemini-Schlüssel (Gratis-Tarif) hat Vorrang, sobald das Secret GEMINI_API_KEY2 gesetzt ist; sonst der erste.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY2 || secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_FALLBACK: ${{ secrets.GEMINI_API_KEY2 && secrets.GEMINI_API_KEY || '' }}
           PAUSE_MS: ${{ inputs.pause_ms || '400' }}
           # Neue Schlüssel dürfen gemini-2.5-flash nicht mehr benutzen (404); gemini-3.8-flash geht mit beiden.
           GEMINI_MODEL: ${{ inputs.modell || 'gemini-3.8-flash' }}

@@ -83,4 +83,24 @@ const ok = (name) => { n += 1; console.log('ok    ', name); };
   assert.equal(r.ok, false); assert.equal(r.grund, 'netz'); assert.deepEqual(warten, [5000]);
   ok('Netzfehler: ein Wiederholversuch, dann «netz»');
 }
+{ // 9) Gratis-Schlüssel erschöpft: Ersatzschlüssel übernimmt und wird gemeldet
+  warten.length = 0;
+  const schluessel = [];
+  const f = async (u, opt) => {
+    if (u === BILD) return antwort(200, null);
+    schluessel.push(opt.headers['x-goog-api-key']);
+    return opt.headers['x-goog-api-key'] === 'gratis' ? antwort(429, { error: { message: 'quota' } }) : gut('{"zeigt_produkt":true}');
+  };
+  const r = await bildKlassifizieren({ ...stamm, key: 'gratis', keyFallback: 'bezahlt', fetchFn: f, sleepFn, versuche: 2 });
+  assert.equal(r.ok, true); assert.equal(r.wechsel, true); assert.deepEqual(schluessel, ['gratis', 'gratis', 'bezahlt']);
+  ok('erschöpfter Gratis-Schlüssel: Wechsel auf den Ersatzschlüssel, mit Meldung');
+}
+{ // 10) Ohne Ersatzschlüssel bleibt es bei der ehrlichen Aufgabe; Zeitlimit wird mitgegeben
+  const aufrufe = [];
+  const f = async (u, opt) => { aufrufe.push(opt); return u === BILD ? antwort(200, null) : antwort(429, { error: {} }); };
+  const r = await bildKlassifizieren({ ...stamm, fetchFn: f, sleepFn, versuche: 1 });
+  assert.equal(r.ok, false); assert.equal(r.grund, 'http-429'); assert.ok(!r.wechsel);
+  assert.ok(aufrufe.find((o) => o && o.signal), 'Zeitlimit (AbortSignal) wird an Gemini mitgegeben');
+  ok('ohne Ersatzschlüssel: ehrliches Aufgeben; Zeitlimit für hängende Aufrufe');
+}
 console.log(`ALLES OK (${n} Gruppen)`);
