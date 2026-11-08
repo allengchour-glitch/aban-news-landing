@@ -344,6 +344,7 @@
       function lamp(state) { return col[state] || col.alt; }
 
       function draw(t, still) {
+        if(W.updateMoney)W.updateMoney(window.KBFinanzen?window.KBFinanzen.anzeige():null);
         resize();
         cam.update(made.aspect || 1.33);
         R.begin(cam, env());
@@ -457,6 +458,7 @@
       made.start = start; made.stop = stop;
       var onVis = function () { if (document.hidden) { if (raf) { cancelAnimationFrame(raf); raf = 0; } } else { made.dirty = true; schedule(); } };
       document.addEventListener('visibilitychange', onVis);
+      document.addEventListener('kb-finanz-change',onVis);
       if (typeof IntersectionObserver !== 'undefined') {
         io = new IntersectionObserver(function (es) { visible = es[0] ? es[0].isIntersecting : true; if (visible) { made.dirty = true; schedule(); } else if (raf) { cancelAnimationFrame(raf); raf = 0; } });
         io.observe(el);
@@ -468,6 +470,7 @@
       made.destroy = function () {
         made.destroyed = true; stop();
         document.removeEventListener('visibilitychange', onVis);
+        document.removeEventListener('kb-finanz-change',onVis);
         if (io) io.disconnect(); if (ro) ro.disconnect();
         try { R.dispose(); } catch (e) { /* nichts */ }
       };

@@ -39,7 +39,7 @@
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
   var WINGS = { 'Social Media': [-3, 3], 'Entwicklerbüro': [3, 3], 'YouTube-Studio': [-3, 6] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-4';
+  K.DESIGN_VERSION = 'campus-einheitlich-5';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {
@@ -194,7 +194,9 @@
     W.moneyPanel={mn:[-6.24,0.8,-5.98],mx:[-1.32,3.2,-5.75]};
     B.box(-3.8,2.0,-5.94,4.95,2.32,0.09,'#233d48');
     B.box(-3.8,0.79,-5.87,4.72,0.045,0.05,'#7ad6c4',0.4);
-    stat(quad({x:-3.8,y:2.0,z:-5.88,w:4.72,h:2.12,emi:0.7,tex:tex('geldwand',T.geldwand)}));
+    var geldTex=tex('geldwand',T.geldwand),geldKey='';
+    stat(quad({x:-3.8,y:2.0,z:-5.88,w:4.72,h:2.12,emi:0.7,tex:geldTex}));
+    W.updateMoney=function(info){var key=JSON.stringify(info);if(key!==geldKey){R.retex(geldTex,T.geldwand(info));geldKey=key;}};
     // Zurückhaltende Lichtleisten und helle Materialien statt zusätzlicher Raumwände.
     B.box(-3.6,3.27,-5.76,5.8,0.035,0.035,'#c5f4e5',0.5);
     B.box(-6.88,3.27,-3.0,0.035,0.035,4.6,'#c5f4e5',0.5);
