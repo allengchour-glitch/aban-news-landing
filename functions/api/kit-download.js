@@ -22,21 +22,33 @@ async function dlHash(slug, salt) {
 
 export async function onRequestGet(context) {
   const { request, env } = context;
-  const key = env.STRIPE_API_KEY, salt = env.DOWNLOAD_SALT || "";
-  if (!key) return json({ error: "Shop nicht konfiguriert." }, 503);
+  const key = (env.STRIPE_API_KEY || "").trim();
+  // Derselbe normalisierte Salt wie beim Paketbau; ohne ihn gibt es keinen
+  // belegten Dateinamen. Niemals einen scheinbar fertigen Link berechnen.
+  const salt = (env.DOWNLOAD_SALT || "").trim();
+  if (!key || !salt) return json({ error: "Download derzeit nicht verfügbar. Bitte den Support kontaktieren." }, 503);
 
   const id = new URL(request.url).searchParams.get("session_id") || "";
   if (!/^cs_[A-Za-z0-9_]+$/.test(id)) return json({ error: "Ungültige Session." }, 400);
 
   let session;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
   try {
     const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${id}`, {
       headers: { Authorization: `Bearer ${key}` },
+      signal: controller.signal,
     });
-    if (!r.ok) return json({ error: "Zahlung nicht gefunden." }, 404);
+    if (r.status === 404) return json({ error: "Zahlung nicht gefunden." }, 404);
+    if (!r.ok) return json({ error: "Zahlung derzeit nicht prüfbar. Bitte später erneut prüfen." }, 503);
     session = await r.json();
+    if (!session || typeof session !== "object" || typeof session.payment_status !== "string") {
+      return json({ error: "Verifizierung fehlgeschlagen." }, 502);
+    }
   } catch (e) {
     return json({ error: "Verifizierung fehlgeschlagen." }, 502);
+  } finally {
+    clearTimeout(timeout);
   }
 
   if (session.payment_status !== "paid") return json({ error: "Zahlung nicht abgeschlossen.", status: session.payment_status }, 402);
