@@ -53,3 +53,10 @@ Es kommen keine externen Assets oder Bibliotheken hinzu. Die alten Menschen blei
 ### Verfeinerung der Arme
 
 Die Arme verwenden durchgehende, verjüngte Ärmel mit Radiusprofil statt überlagerter Kugeln. Schulter, Ellbogen und Handgelenk sind schmaler; die Hände bestehen aus einer flacheren Handfläche, einem Daumen und angedeuteten Fingern. Ein durchgehend geformter Oberkörper glättet den Schulteranschluss. Die lokale Gelenkaufhellung ist auf höchstens 21 Prozent reduziert, damit die Gelenke keine hellen Kugeln bilden. Gelenkkoordinaten und Haltungen bleiben kompatibel.
+
+
+### Verfeinerte Mitarbeiter und ruhigere Bewegungen
+
+Die gemeinsame Designversion `campus-einheitlich-2` ergänzt kleinere Augen, feinere Hände, Stoffkragen, Ärmelbündchen und eine eigene kurze Frisur für die dritte Grundform. Arbeiten und Prüfen bewegen sich langsamer; Alarm hebt eine Hand ohne Springen. Die Ruhehaltung bleibt aufrechter. Bei reduzierten Bewegungen bleiben die Augen außerhalb der Schlafhaltung offen, statt zufällig mitten im Blinzeln stehenzubleiben.
+
+Für Webansicht und Claude das vollständige aktuelle Designpaket übernehmen. Der Versionsschutz lehnt eine Mischung mit der vorigen Darstellung ab. Die Haltungen zeigen weiterhin nur den aus den geladenen Daten abgeleiteten Zustand; sie bestätigen keine neuen Fähigkeiten oder aktiven Hintergrundläufe.
