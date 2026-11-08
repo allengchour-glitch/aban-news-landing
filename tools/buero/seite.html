@@ -369,6 +369,14 @@
 .kb3-viewer.is-fullscreen .kb-chef-kontrolle:has(.kb-geld[open]){max-height:70dvh}
 .kb-geld{margin:16px 0;border:1px solid var(--color-border-line);border-radius:14px;padding:12px;background:var(--color-panel)}
 .kb-geld summary{cursor:pointer;min-height:44px;padding:8px 0;font-weight:600}.kb-geld-hinweis{font-size:13px;color:var(--color-fg-muted);line-height:1.55}
+.kb-finanzmonitor h2{font-size:22px;margin:8px 0}.kb-finanz-hinweis{font-size:13px;line-height:1.5;color:var(--color-fg-muted)}.kb-finanz-alt{padding:10px;border:1px solid var(--color-warn);border-radius:10px}
+.kb-finanz-zeit{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.kb-finanz-zeit button[aria-pressed="true"]{background:var(--color-fg);color:var(--color-bg)}
+.kb-finanz-karten{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.kb-finanz-karten article{display:flex;flex-direction:column;gap:8px;padding:14px;background:var(--color-bg);border:1px solid var(--color-border-line);border-radius:12px;min-width:0}.kb-finanz-karten strong{font-size:clamp(18px,3vw,25px);overflow-wrap:anywhere}.kb-finanz-karten small{color:var(--color-fg-muted)}
+.kb-finanz-tabelle{overflow-x:auto;border:1px solid var(--color-border-line);border-radius:12px;background:var(--color-bg)}.kb-finanz-tabelle table{border-collapse:collapse;width:100%;font-size:13px}.kb-finanz-tabelle caption{text-align:left;font-weight:650;padding:12px}.kb-finanz-tabelle th,.kb-finanz-tabelle td{padding:11px 10px;border-bottom:1px solid var(--color-border-line);text-align:left;vertical-align:top;overflow-wrap:anywhere}.kb-finanz-tabelle th[scope="row"]{font-weight:500}.kb-finanz-tabelle td:nth-child(2){text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:650}.kb-finanz-tabelle td:last-child{color:var(--color-fg-muted)}.kb-finanz-tabelle tr:last-child{background:var(--color-panel)}
+.kb-finanz-chart{margin:20px 0}.kb-finanz-balkenzeile{display:grid;grid-template-columns:65px minmax(20px,1fr) 100px;gap:8px;align-items:center;margin:10px 0;font-size:12px}.kb-finanz-balkenzeile b{text-align:right;font-variant-numeric:tabular-nums}.kb-finanz-spur{background:var(--color-bg);height:16px;border-radius:5px;overflow:hidden}.kb-finanz-balken{display:block;height:100%;background:var(--color-ok);border-radius:5px}.kb-finanz-balken.negativ{background:var(--color-bad)}
+.kb-finanzmonitor button{min-height:44px}.kb-finanzmonitor input[type="file"]{font-size:14px}.kb-finanzmonitor details{margin:12px 0}.kb-geld-manuell{margin-top:18px;border-top:1px solid var(--color-border-line)}
+.kb-finanz-quelle-mobil{display:none}
+@media(max-width:600px){.kb-finanz-karten{grid-template-columns:1fr}.kb-finanz-karten article{display:grid;grid-template-columns:1fr 1fr}.kb-finanz-karten strong{text-align:right}.kb-finanz-karten small{grid-column:1/-1}.kb-finanz-tabelle th,.kb-finanz-tabelle td{padding:10px 10px;font-size:13px}.kb-finanz-tabelle th:nth-child(3),.kb-finanz-tabelle td:nth-child(3){display:none}.kb-finanz-quelle-mobil{display:block;font-size:11px;font-weight:400;color:var(--color-fg-muted);margin-top:5px}.kb-finanz-balkenzeile{grid-template-columns:60px minmax(12px,1fr) 86px}}
 .kb-geld-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.kb-geld label{display:flex;flex-direction:column;gap:6px;font-size:13px}
 .kb-geld input,.kb-geld select{width:100%;min-width:0;min-height:46px;padding:10px;border-radius:9px;border:1px solid var(--color-border-line);background:var(--color-bg);color:var(--color-fg);font:inherit;font-size:16px}
 .kb-geld button{min-height:44px;padding:10px 14px;background:var(--color-bg);color:var(--color-fg);border:1px solid var(--color-border-line);border-radius:9px;font:inherit;cursor:pointer}
@@ -378,7 +386,7 @@
 @media(max-width:600px){.kb-geld-form{grid-template-columns:1fr}.kb-geld-aktionen button{flex:1}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-4">
+<div class="kb" data-design="campus-einheitlich-5">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -398,7 +406,7 @@
   <section class="kb-arbeitslinks" aria-label="Deine Werkzeuge">
     <a class="kb-aktion" href="https://app.metricool.com/" target="_blank" rel="noopener noreferrer">Metricool öffnen</a>
     <a class="kb-aktion" href="https://admin.shopify.com/" target="_blank" rel="noopener noreferrer">Shop verwalten</a>
-    <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-money>Geldmanager</button>
+    <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-money>Finanzmonitor</button>
     <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-projects>Alle Projekte</button>
     <button type="button" class="kb-aktion" data-open-orders aria-expanded="false" aria-controls="kb-auftraege">Fertige Aufträge</button>
   </section>
@@ -1068,6 +1076,7 @@
   });
 
   dash.draw('chef-kontrolle',function(el){
+    var alterMonitor=el.querySelector('[data-money-panel]'),monitorOffen=alterMonitor?alterMonitor.open:true;
     el.replaceChildren();
     var title=document.createElement('strong');title.textContent='Kurz erledigen';el.appendChild(title);
     var grid=document.createElement('div');grid.className='kb-chef-links';
@@ -1080,7 +1089,8 @@
       var a=document.createElement('a');a.className='kb-aktion';a.href=item[3];a.textContent=item[2];a.target='_blank';a.rel='noopener noreferrer';card.append(h,p,a);grid.appendChild(card);
     });el.appendChild(grid);
     var geld=document.createElement('details');geld.className='kb-geld';geld.setAttribute('data-money-panel','');
-    var geldTitle=document.createElement('summary');geldTitle.textContent='Geldmanager · privat planen';geld.appendChild(geldTitle);
+    geld.open=monitorOffen;
+    var geldTitle=document.createElement('summary');geldTitle.textContent='Finanzmonitor · Umsatz, Ausgaben und Gewinn';geld.appendChild(geldTitle);
     var geldBody=document.createElement('div');geld.appendChild(geldBody);el.appendChild(geld);
     var dev=rows()&&rows().find(function(r){return r.id==='dev_bauen';});
     if(window.KBGeld)window.KBGeld.mount(geldBody,{projekte:dev&&dev.projekte});else geldBody.textContent='Die Geldmanager-Datei fehlt. Bitte das vollständige aktuelle Designpaket übernehmen.';

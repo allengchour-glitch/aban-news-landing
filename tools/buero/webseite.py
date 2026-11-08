@@ -68,7 +68,7 @@ def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
     with tempfile.TemporaryDirectory() as tmp:
         subprocess.run(['node',str(ROOT/'3d/bauen.mjs'),tmp],check=True,capture_output=True)
         def inline(match):
-            content=((ROOT/'geldmanager.js') if match.group(1)=='kb-geldmanager.js' else Path(tmp)/match.group(1)).read_text().replace('</script','<\\/script')
+            content=((ROOT/'finanzmonitor.js').read_text()+'\n'+(ROOT/'geldmanager.js').read_text() if match.group(1)=='kb-geldmanager.js' else (Path(tmp)/match.group(1)).read_text()).replace('</script','<\\/script')
             return '<script>'+content+'</script>'
         body=re.sub(r'<script src="(kb3d-[^"]+\.js|kb-geldmanager\.js)"></script>',inline,body)
         if design_paket:
@@ -76,7 +76,7 @@ def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
             code=(Path(tmp)/'kb3d-code.js').read_text()
             if "K.DESIGN_VERSION = '"+version+"'" not in code:
                 raise ValueError("Darstellungsdateien haben unterschiedliche Versionen.")
-            dateien={'seite.html':(ROOT/'seite.html').read_bytes(),'kb-geldmanager.js':(ROOT/'geldmanager.js').read_bytes()}
+            dateien={'seite.html':(ROOT/'seite.html').read_bytes(),'kb-geldmanager.js':(Path(tmp)/'kb-geldmanager.js').read_bytes()}
             for name in ('kb3d-code.js','kb3d-pack-1.js','kb3d-pack-2.js','kb3d-pack-3.js'):
                 dateien[name]=(Path(tmp)/name).read_bytes()
             if any(len(value)>256*1024 for value in dateien.values()):

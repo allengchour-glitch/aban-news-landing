@@ -82,6 +82,12 @@
     if(!projekte.length)chance.appendChild(node('p','Projektstand im Entwicklerbüro prüfen; aktuell ist hier kein Projektbericht geladen.'));
     el.appendChild(chance);
   }
-  var api={cent:cent,berechnen:berechnen,angebot:angebot,importieren:importieren,mount:mount};
+  function monitor(el,opt){
+    if(!root.KBFinanzen){mount(el,opt);return;}
+    el.replaceChildren();var table=document.createElement('div');el.appendChild(table);root.KBFinanzen.mount(table);
+    var details=document.createElement('details');details.className='kb-geld-manuell';var summary=document.createElement('summary');summary.textContent='Eigene Planung (optional)';details.appendChild(summary);var plan=document.createElement('div');details.appendChild(plan);el.appendChild(details);
+    var gestartet=false;details.addEventListener('toggle',function(){if(details.open&&!gestartet){gestartet=true;mount(plan,opt);}});
+  }
+  var api={cent:cent,berechnen:berechnen,angebot:angebot,importieren:importieren,mount:monitor};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;if(typeof window!=='undefined')root.KBGeld=api;
 })(typeof window!=='undefined'?window:globalThis);
