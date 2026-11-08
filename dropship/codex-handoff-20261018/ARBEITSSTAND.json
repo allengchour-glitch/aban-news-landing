@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 128,
-  "updatedAt": "2026-11-08T01:27:02+01:00",
+  "revision": 129,
+  "updatedAt": "2026-11-08T01:44:13+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -1777,16 +1777,17 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r128_memory_loaded_obsidian_safe_vault_reviewable_claude_receipt_unknown",
+      "state": "r129_gemini_free_tier_dispatch_blocked_secret_empty_no_api_call",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R128_FOUR_CANONICAL_FILES_READ_24_TASKS_SAFE_LOCAL_VAULT_PR2922_NO_CLAUDE_RECEIPT",
-      "lastEvidence": "Revision127 mit24 Aufgaben frisch gelesen. Alte divergierte Vaults aus PR1608/PR2514 nicht importiert. Unabhängige Gegenprobe fand fünf Sicherheitslücken im ersten Builder-Draft; Commit 9a2c075a65363bc8c2571d47ddb98f4285dedc8a blockiert vorhandene Ziele, fremde Git-Repositories, dirty/nicht kanonische Quellen und Secrets in Task-Titeln, quotiert Pfade und bindet 11 Tests in CI ein. Neuer lokaler Vault aus Revision128/24 Aufgaben gebaut; keine Rohdateien oder erkannten Kunden-/Secretwerte, Sync/Publish/Plugins aus.11/11 Tests, Compile, Build/Check grün. Claude-Code-Übernahme unbekannt; kein Workflow/Deploy.",
-      "nextAllowedStep": "Claude Code liest Revision128 frisch und bestätigt Kenntnisnahme nur mit echtem Beleg. PR2922 reviewen; Vault ausschliesslich lokal öffnen, Sync/Publish/Plugins aus lassen. Keine alten Vaults oder Writer übernehmen.",
+      "belegArt": "R129_GITHUB_WORKFLOW_RUN_42430952176_FAILED_BEFORE_API_SECRET_EMPTY",
+      "lastEvidence": "Inhaber verlangt GEMINI_API_KEY2 und ausschliesslich Free Tier. PR2915 ohne Force-Push auf aktuelles Main gebracht. Ein begrenzter manueller Lauf mit ausschliesslich öffentlichem LuxeStyle-Menübefund brach vor dem API-Aufruf ab, weil GEMINI_API_KEY2 im Job leer war:0 Requests,0 Antworten,0 Retries,0 Fallbacks. Secretlisten-API403; keine Secretwerte gelesen. Kein Blind-Retry oder Website-/Shopwrite.",
+      "nextAllowedStep": "GEMINI_API_KEY2 als Actions-Repository-Secret für allengchour-glitch/aban-news-landing hinterlegen oder ein Organisations-Secret ausdrücklich für dieses Repository freigeben; Wert nie im Chat senden. Danach AI-Studio-Projekt Free Tier ohne Billing bestätigen und genau einen kleinen Flash-Lite-Textlauf ausführen.",
       "blockers": [
-        "Tatsächliche Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_missing_receipt.",
-        "Obsidian Desktop/CLI ist in dieser Laufzeit nicht installiert; der Vault ist lokal vorbereitet, nicht als Cloud-App aktiviert.",
-        "Repo-CI-Simulation stoppt vor Tests mit unshare: Operation not permitted; kein grüner Voll-CI-Beleg."
+        "GEMINI_API_KEY2 war in GitHub-Lauf42430952176 leer; kein API-Aufruf möglich.",
+        "Secretmetadaten sind für die Integration mit HTTP403 nicht auflistbar; Repo-/Org-Bindung unbekannt.",
+        "Zuordnung des Keys zu einem AI-Studio-Free-Tier-Projekt ohne Billing technisch unbestätigt.",
+        "Tatsächliche Claude-Code-Kenntnisnahme/Übernahme bleibt unknown_missing_receipt."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -1897,6 +1898,20 @@
             "Ältere R3-Codeintegration und vollständige CI bleiben separat offen; R5-Quellenprüfung ersetzt sie nicht.",
             "Übergabehelfer nur lokal versionsgeprüft; geprüfte Remote-Rootpfade 404, Verfügbarkeit im tatsächlichen Claude-Kontext unbekannt.",
             "R55 präzisiert R53: authentifiziertes GitHub und MiniMax-Video-Workflow vorhanden; tatsächlicher Claude-Coding-/Website-Ausführungsweg und Empfang nicht verifiziert. Lokale CLI-Abwesenheit ist nur eine datierte lokale Teilmessung."
+          ],
+          "previousLastEvidencePreserved": "Vollständig in der unmittelbar vorherigen Revision erhalten."
+        },
+        {
+          "at": "2026-11-08T01:44:13+01:00",
+          "sourceRevision": 128,
+          "previousState": "r128_memory_loaded_obsidian_safe_vault_reviewable_claude_receipt_unknown",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R128_FOUR_CANONICAL_FILES_READ_24_TASKS_SAFE_LOCAL_VAULT_PR2922_NO_CLAUDE_RECEIPT",
+          "previousNextAllowedStep": "Claude Code liest Revision128 frisch und bestätigt Kenntnisnahme nur mit echtem Beleg. PR2922 reviewen; Vault ausschliesslich lokal öffnen, Sync/Publish/Plugins aus lassen. Keine alten Vaults oder Writer übernehmen.",
+          "previousBlockers": [
+            "Tatsächliche Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_missing_receipt.",
+            "Obsidian Desktop/CLI ist in dieser Laufzeit nicht installiert; der Vault ist lokal vorbereitet, nicht als Cloud-App aktiviert.",
+            "Repo-CI-Simulation stoppt vor Tests mit unshare: Operation not permitted; kein grüner Voll-CI-Beleg."
           ],
           "previousLastEvidencePreserved": "Vollständig in der unmittelbar vorherigen Revision erhalten."
         }
@@ -10431,18 +10446,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 128,
-    "path": "dropship/codex-handoff-20261018/SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.md",
-    "gitBlobSha": "2df4a4081317d5f0e2aa35f00cd9bb2d22e6fbf9",
+    "documentationRevision": 129,
+    "path": "dropship/codex-handoff-20261018/GEMINI-FREE-TIER-ZUGANG-20261108-R129.md",
+    "gitBlobSha": "6c12757c18f2b7e00c957336394d600c710ce91c",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "9c86ba8de468bb49d2b175b0fef7c5ec6d5356d6",
+    "entryGitBlobSha": "164c0b523de41d6dec21c9fc5fa8219eff891b17",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_missing_receipt",
-    "scope": "current_memory_safe_obsidian_and_menu_link_coverage",
-    "latestCanonicalRevision": 128,
-    "snapshotNote": "R128: Revision127/24 Aufgaben frisch gelesen; sicherer lokaler Obsidian-Vault als PR2922; vollständige84-Gruppen-Linkmessung und fail-closed Cap-Guard als PR2924. Kein Claude-Empfang, Menü-Cap, Gemini-/CJ-Aufruf oder produktiver Write.",
+    "scope": "gemini_free_tier_access_fail_closed_secret_binding",
+    "latestCanonicalRevision": 129,
+    "snapshotNote": "R129: PR2915 auf aktuelles Main; Lauf42430952176 brach vor API ab, weil GEMINI_API_KEY2 im Job leer war.0 Requests/Antworten/Retries/Fallbacks; keine Kosten oder Gemini-Ergebnisse behauptet. Sichere Repo-/Org-Secretfreigabe und Free-Tier-ohne-Billing-Gegenprobe offen.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -14828,5 +14843,25 @@
     "workflowDispatches": 0,
     "runtimeSecretsBound": false,
     "secureSecretValuesRead": false
+  },
+  "geminiFreeTierR129": {
+    "source": {
+      "path": "dropship/codex-handoff-20261018/GEMINI-FREE-TIER-ZUGANG-20261108-R129.md",
+      "gitBlobSha": "6c12757c18f2b7e00c957336394d600c710ce91c",
+      "readAt": "2026-11-08T01:44:13+01:00"
+    },
+    "draftPr": 2915,
+    "draftHead": "8e6793a517e07711e44c171fb2ba9170d0a5f207",
+    "model": "gemini-2.5-flash-lite",
+    "runId": 42430952176,
+    "conclusion": "failure_before_api_call",
+    "reason": "GEMINI_API_KEY2_empty_in_job",
+    "apiRequests": 0,
+    "responses": 0,
+    "retries": 0,
+    "fallbackModels": 0,
+    "secretValueRead": false,
+    "billing": "unknown_requires_free_tier_without_billing",
+    "operationalWrites": 0
   }
 }

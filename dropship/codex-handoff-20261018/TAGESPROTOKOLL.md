@@ -1320,3 +1320,13 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R128-Bericht, JSON, Claude-Einstieg und Projektgedächtnis fortgeschrieben; Tagesdaten nicht nochmals gelesen | Zwei neue Draft-PRs und lokaler Vault, kein Shop-/Theme-/Produkt-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Renderwrite |
 
 [LUXESTYLE_R128_20261108] [Systeme- und Website-Fortsetzung](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.md) · [Maschinenlesbare Belege](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.json). Sichere Arbeitsgrundlagen erstellt; Live-Menü bewusst unverändert.
+
+
+### R129
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Gemini Free Tier | PR2915 ohne Force-Push auf aktuelles Main gebracht; genau einen begrenzten manuellen Test mit öffentlichem Menübefund gestartet | Lauf42430952176 brach vor API-Aufruf ab, weil `GEMINI_API_KEY2` im Job leer war. Null Requests/Antworten/Retries/Fallbacks; kein Gemini-Ergebnis oder Kostenbeleg |
+| Zugriff / Grenzen | Repository-/Environment-Metadaten und fehlgeschlagenen Job gezielt gelesen; PR-Beschreibung und gemeinsames Memory korrigiert | Secretlisten-API403, nur `github-pages` sichtbar. Kein Blind-Retry, kein Secretwert gelesen; keine Website-/Shop-/Social-/Flow-/DNS-/Budget-/Kunden-/Bestell-/Renderänderung |
+
+[LUXESTYLE_R129_20261108] [Gemini-Free-Tier-Zugang](GEMINI-FREE-TIER-ZUGANG-20261108-R129.md) · [Maschinenbeleg](GEMINI-FREE-TIER-ZUGANG-20261108-R129.json). Zugriff blockiert vor API; sichere nächste Bindung dokumentiert.

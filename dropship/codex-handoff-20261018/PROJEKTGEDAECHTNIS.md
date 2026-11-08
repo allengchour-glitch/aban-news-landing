@@ -1037,3 +1037,10 @@ PR2916 erweitert gestapelt auf PR2912 die temporäre FR-Noindex-Eindämmung;44/4
 - Draft-PR2924 prüft alle84 Gruppen-Landingpages und blockiert Menü-Caps fail-closed. Alle84 HTTP200/kein Redirect/Canonical passend; nur13 volle Gruppen,397/520 Kind-Kanten fehlen im Hauptinhalt, Cap6 hat44 Ziele ohne Fallback, Mobile-«Alle in …» 0/86. Kein Cap oder Theme-Write.
 - Gemini Pro nicht aufgerufen: aktuelle Pro-Modelle kostenpflichtig, Budget/Billing-Zuordnung unbestätigt. CJ-Nur-Lese-MCP besteht als Draft-PR2896, ist55 Main-Commits zurück und braucht vor Aktivierung neue Hash-/Testgegenprobe. Keine Schlüssel im Chat.
 - Neue Belege: [R128-Bericht](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.md) und [R128-JSON](SYSTEME-WEBSITE-FORTSETZUNG-20261108-R128.json).
+
+
+# R129 – Gemini Free Tier, 08.11.2026
+
+- Inhaber verlangt `GEMINI_API_KEY2` und ausschliesslich Free Tier. Draft-PR2915 auf aktuelles Main gebracht.
+- Lauf42430952176 brach fail-closed vor Netzwerk ab: Secret im Job leer. Null API-Requests, Antworten, Retries oder Fallbacks; kein Gemini-Ergebnis.
+- Nächster Schritt erst nach sicherer Actions-Secretfreigabe für dieses Repo und AI-Studio-Free-Tier-Gegenprobe. Keine Secretwerte im Chat, kein blinder Retry.

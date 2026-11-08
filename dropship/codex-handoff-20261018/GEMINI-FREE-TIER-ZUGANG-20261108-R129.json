@@ -1,0 +1,27 @@
+{
+  "revision": 129,
+  "timeEuropeZurich": "2026-11-08T01:44:13+01:00",
+  "ownerInstruction": "GEMINI_API_KEY2; free version only",
+  "draftPr": 2915,
+  "draftHead": "8e6793a517e07711e44c171fb2ba9170d0a5f207",
+  "model": "gemini-2.5-flash-lite",
+  "run": {
+    "id": 42430952176,
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42430952176",
+    "conclusion": "failure_before_api_call",
+    "reason": "GEMINI_API_KEY2 empty in job",
+    "apiRequests": 0,
+    "responses": 0,
+    "retries": 0,
+    "fallbackModels": 0,
+    "cost": "not_observed_no_api_call"
+  },
+  "secret": {
+    "name": "GEMINI_API_KEY2",
+    "valueRead": false,
+    "actionsBinding": "blocked_empty_in_job",
+    "metadataList": "403_resource_not_accessible_by_integration"
+  },
+  "billing": "unknown_requires_ai_studio_free_tier_without_billing",
+  "externalOperationalWrites": 0
+}

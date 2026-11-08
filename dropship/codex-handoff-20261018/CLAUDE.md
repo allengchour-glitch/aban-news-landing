@@ -1,5 +1,9 @@
 # LuxeStyle: Arbeitsbeginn für Claude Code
 
+## Aktueller Stand – 08.11.2026, Revision 129: Gemini Free Tier noch nicht gebunden
+
+PR2915 ist auf aktuellem Main und referenziert korrekt `secrets.GEMINI_API_KEY2`. Lauf42430952176 brach vor jedem API-Aufruf ab, weil das Secret im Job leer war. Keine Gemini-Antwort oder Kosten behaupten und nicht blind erneut starten. Erst Actions-Secret für dieses Repository freigeben sowie AI-Studio-Free-Tier ohne Billing bestätigen; Wert nie im Chat senden. [Bericht](GEMINI-FREE-TIER-ZUGANG-20261108-R129.md) · [Beleg](GEMINI-FREE-TIER-ZUGANG-20261108-R129.json).
+
 ## Aktueller Stand – 08.11.2026, Revision 128: kein Doppelstart, sicherer Vault und Menü-Cap gesperrt
 
 Zuerst `README.md`, `PROJEKTGEDAECHTNIS.md`, `ARBEITSSTAND.json` und den heutigen Block in `TAGESPROTOKOLL.md` frisch lesen. Diese Datei ergänzt den Einstieg; eine tatsächliche Claude-Code-Übernahme ist weiterhin nicht quittiert.
