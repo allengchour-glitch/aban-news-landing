@@ -1,33 +1,39 @@
-# Index-Liste vom 08.11.2026 (OpenSEO `inspect_urls`, Search Console, nur lesend, Messung 08.11.2026 ca. 20:10 bis 20:30 UTC)
+# Index-Liste vom 08.11.2026 (OpenSEO `inspect_urls`, Search Console, nur lesend, Messung 08.11.2026 ca. 20:50 bis 21:10 UTC)
 
-Marken: **GEMESSEN** = hier abgefragt · **Besitzer-Angabe** = nicht nachgemessen · **unbekannt** = nicht gemessen.
+Marken: **GEMESSEN** = hier abgefragt · **unbekannt** = nicht gemessen.
 
 ## Stand
-- **Liste vom 06.11. (zehn Seiten plus Reserve) GEMESSEN: 10 von 11 «Gesendet und indexiert»** (letzter Abruf 06.11. 20:41 bis 20:43 UTC): `kopfhoerer-audio`, `uhren-damen`, `fitness-tracker-smartbands`, `westen-gilets`, `wandern-trekking`, `babykleidung`, `drohnen-kameras`, `pc-gaming`, `glaetteisen-locken-foehn`, Reserve `auto-kfz-zubehoer`. **Offen:** `smartwatches` («URL ist Google nicht bekannt», jetzt die dritte Messung in Folge; gleiches Thema wie `smartwatches-wearables`, siehe unten).
-- **Google hat am 07.11. abends (21:20 bis 21:26 UTC) viele weitere Menüseiten gecrawlt und indexiert**, auch solche, die in keiner Liste standen: `sub-baby-kids`, `trends-gadgets`, `hautpflege-skincare`, `naegel-manikuere`, `elektronik-kleinteile`, `tierspielzeug`, `tier-halsbaender`, `haarstyling-geraete`, `spielzeug-fahrzeuge`. Dazu schon länger indexiert: `kostueme-fasnacht` (Crawl 31.10.), `kostueme-ch-lager` (02.11.), `blitzversand-schweiz` (04.11.), `adventskalender`, `damen-geldboersen`, `herren-geldboersen`, `herren-hosen-cargo` (28.10.).
-- **Gesamt dieser Messung: 36 Seiten abgefragt, 26 indexiert, 10 nicht.** Die 36 sind eine Auswahl (Kandidaten, die am 02.11. nicht indexiert waren, plus die Listen vom 06.11.), keine Stichprobe über alle 735 Menüseiten: nicht hochrechnen. Ob die Seitenverschlankung vom 04.11. oder die Anträge des Besitzers den Schub vom 07.11. ausgelöst haben, ist nicht belegt (Hypothese: beides hilft; nicht trennbar).
+- **Liste vom 06.11. GEMESSEN: 9 von 10 «Submitted and indexed»** (letzter Abruf durch Google 06.11. 20:41 bis 20:43 UTC): `kopfhoerer-audio`, `uhren-damen`, `fitness-tracker-smartbands`, `westen-gilets`, `wandern-trekking`, `babykleidung`, `drohnen-kameras`, `pc-gaming`, `glaetteisen-locken-foehn`.
+- **Noch offen:** `smartwatches` («URL ist Google nicht bekannt», unverändert seit 06.11.; Ursache nicht belegt, Hypothese: der Antrag wurde nicht gestellt oder abgelehnt).
 
-## Liste für heute (zehn Seiten, Reihenfolge nach Kaufnähe: Geschenke, Winter, Weihnachten)
-Alle zehn: HTTP 200, kein `noindex`, 1 493 291 bis 1 917 882 Byte (unter 2 097 152), je Seite 35 Produktkarten im ersten Abruf (GEMESSEN 08.11. ca. 20:25 UTC, `curl` mit Browser-Kennung, nacheinander mit Pausen).
+## Nächste Liste (zehn Seiten)
+Auswahl: Menü-Sammlungen aus `dropship/index-analyse-0311/index_menue_0311.csv` (Stand 02.11.), die in keiner früheren Liste stehen und nicht indexiert sind, 20 bis 2 500 Produkte, nach Kaufnähe (Weihnachten, Winter, Kinder, Geschenk). Alle zehn: HTTP 200, kein `noindex`, 28 Produktlinks im ausgelieferten HTML, unter 2 097 152 Byte (GEMESSEN 08.11. ca. 20:55 bis 21:05 UTC, `curl` mit Browser-Kennung, nacheinander mit Pausen; drei Seiten wurden zuerst von Cloudflare gedrosselt, HTTP 429, und danach sauber gelesen).
 
-| # | Seite | Google-Stand 08.11. | HTML (Byte) | Direktlink (Anmeldung als Betreiber nötig) |
-|---|---|---|---|---|
-| 1 | smartwatches-wearables | Gefunden – zurzeit nicht indexiert | 1 618 576 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=a_JTelV5CB1Bmssfo5NMcA&utm_medium=link&utm_source=api |
-| 2 | smartwatches | URL ist Google nicht bekannt | 1 513 808 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=opC80ZZCOH_QpA_0S2CZyg&utm_medium=link&utm_source=api |
-| 3 | uhren-herren | Gefunden – zurzeit nicht indexiert | 1 493 291 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Ij9SYp4GFKigltarAsawlQ&utm_medium=link&utm_source=api |
-| 4 | outdoor-garten | Gecrawlt – zurzeit nicht indexiert (Crawl 07.11. 21:22 UTC) | 1 917 882 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=pzfwqSI-g27V9PHZVb71Qg&utm_medium=link&utm_source=api |
-| 5 | herren-weitere-taschen | URL ist Google nicht bekannt | 1 650 458 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=_n8aaRsppJRv_Ms9wykTCA&utm_medium=link&utm_source=api |
-| 6 | damen-weitere-taschen | Gefunden – zurzeit nicht indexiert | 1 663 788 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=87_KjdcwW4me8cvaB5wQTw&utm_medium=link&utm_source=api |
-| 7 | wimpern-lashes | Gefunden – zurzeit nicht indexiert | 1 631 883 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=Z_P8Iv0k9d13wqBQ9qJRoA&utm_medium=link&utm_source=api |
-| 8 | tier-leinen | URL ist Google nicht bekannt | 1 682 202 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=rLKemiI2CYxcRSBS8EyFuA&utm_medium=link&utm_source=api |
-| 9 | rucksaecke-material-gruppe | Gefunden – zurzeit nicht indexiert | 1 557 653 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=8aCi-e-ZWwdEHIrjherS5w&utm_medium=link&utm_source=api |
-| 10 | damen-sandalen | Gefunden – zurzeit nicht indexiert | 1 651 009 | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=2DW2uL40_VEB9R8XmeBt0w&utm_medium=link&utm_source=api |
+| # | Seite | Google-Stand 08.11. | HTML (Byte) | Produkte (Stand 02.11.) | Grund |
+|---|---|---|---|---|---|
+| 1 | `/collections/saison-weihnachtsdeko` | URL ist Google nicht bekannt | 1 528 398 | 90 | Weihnachtsdeko, Saison |
+| 2 | `/collections/herren-handschuhe` | Gefunden – zurzeit nicht indexiert | 1 522 344 | 35 | Winter, Geschenk |
+| 3 | `/collections/damen-winterschuhe` | URL ist Google nicht bekannt | 1 589 932 | 26 | Winter |
+| 4 | `/collections/herren-jacken-outdoor` | Gefunden – zurzeit nicht indexiert | 1 617 235 | 39 | Winter |
+| 5 | `/collections/smartwatches` | URL ist Google nicht bekannt (seit 06.11. unverändert) | 1 513 808 | – | Übrig von der Liste vom 06.11., Geschenk |
+| 6 | `/collections/kinder-nachtwaesche-bademode` | URL ist Google nicht bekannt | 1 642 491 | 37 | Pyjama, Weihnachtsgeschenk |
+| 7 | `/collections/kuechengadgets` | URL ist Google nicht bekannt | 1 508 972 | 77 | Küche, Geschenk |
+| 8 | `/collections/kinder-freizeitschuhe` | URL ist Google nicht bekannt | 1 756 429 | 215 | Kinder, Winter |
+| 9 | `/collections/haustier-tech` | URL ist Google nicht bekannt | 1 595 191 | 382 | Haustier-Geschenke |
+| 10 | `/collections/kinderzimmer-textilien-deko` | URL ist Google nicht bekannt | 1 540 280 | 35 | Kinder, Deko |
 
-Klickweg: Link öffnen (Anmeldung in der Search Console) → «Indexierung beantragen». Die Kennung im Link ändert sich bei jeder Messung; bei einem Fehler neu messen lassen. Bei «Kontingent überschritten» den Rest morgen; bitte sagen, ab welcher Nummer das Kontingent kam.
+## Direktlinks (frische Messung 08.11.2026)
+Anmeldung als Betreiber nötig; Klickweg: Link öffnen → «Indexierung beantragen». Die Kennung im Link ändert sich bei jeder Messung; bei einem Fehler neu messen lassen.
+1. saison-weihnachtsdeko: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=sNXMrp6QT539uNNuIfgiRA&utm_medium=link&utm_source=api
+2. herren-handschuhe: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=FZX70bxKEYq1vzkOWXVqSg&utm_medium=link&utm_source=api
+3. damen-winterschuhe: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=efpc8UGoZJQ2-5ss2fg--w&utm_medium=link&utm_source=api
+4. herren-jacken-outdoor: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=4QvuRx0g5gKo5TWOMi8YNA&utm_medium=link&utm_source=api
+5. smartwatches: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=lbRBMGDHAa7MMkquD-ugKA&utm_medium=link&utm_source=api
+6. kinder-nachtwaesche-bademode: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=OAFPfn2ENyxTf1FMVApmjA&utm_medium=link&utm_source=api
+7. kuechengadgets: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=6jDqAa8zKjayKsNphJbS9g&utm_medium=link&utm_source=api
+8. kinder-freizeitschuhe: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=7KIJmZo3vcWpPJze-KdbZg&utm_medium=link&utm_source=api
+9. haustier-tech: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=ZqxZArdwIwOVS4zGeU0ZiQ&utm_medium=link&utm_source=api
+10. kinderzimmer-textilien-deko: https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=9Mgoz44yO7Gy4RQE05soXA&utm_medium=link&utm_source=api
 
-## Hinweise
-- **`outdoor-garten` (Nr. 4) ist «gecrawlt, nicht indexiert»:** Google hat die Seite gelesen und bewusst nicht aufgenommen. Ein Antrag allein ändert das vermutlich nicht (Hypothese); die Seite ist mit 1,92 MB die schwerste der Liste und im November saisonfern (Garten). Zuletzt beantragen, eher abwarten.
-- **`smartwatches` und `smartwatches-wearables` (Nr. 1 und 2) behandeln dasselbe Thema.** Möglicherweise bevorzugt Google nur eine der beiden (Hypothese, Doppelthema). Erst Nr. 1 beantragen, Nr. 2 danach.
-- `damen-sandalen` (Nr. 10) ist saisonfern, steht nur der Vollständigkeit halber am Ende.
-- **Nächste Schritte:** Gegenmessung dieser Liste am 09.11. früh (nie am selben Tag: `inspect_urls` hinkt dem Antrag um Stunden hinterher). Weitere Kandidaten aus `dropship/index-analyse-0311/index_menue_0311.csv` (466 Zeilen, am 02.11. nicht indexiert und in keiner Liste): `parfum-duefte` (Admin 1 284 Produkte, `products.json` nur 35: erst klären, warum), `tier-naepfe`, `haustier-tech`, `handwerkzeug`, `damen-kleider-traeger`, `sticker-aufkleber`.
-- Wirkung auf Rang und Verkäufe: unbekannt (Search Console 7 und 14 Tage nach der Indexierung).
+## Hinweis
+Der Besitzer kann die ganze Liste an einem Tag durchbringen (06.11.: zehn von zehn bis auf eine); die Grenze schwankt. Gegenmessung der Liste am nächsten Morgen, nicht am selben Tag (`inspect_urls` hinkt dem Antrag um Stunden hinterher).

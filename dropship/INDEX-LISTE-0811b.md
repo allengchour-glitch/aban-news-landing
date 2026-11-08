@@ -15,5 +15,5 @@ Neue Seiten, die in keiner früheren Liste standen und am 08.11. bei Google **ni
 | 9 | teller-schalen-geschirrsets | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=eP3Ap0_vsOxK_O7f8zlU_A&utm_medium=link&utm_source=api |
 | 10 | uhrenarmbaender-smartwatch | URL ist Google nicht bekannt | https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=0-oW4KW9ZJWSiVmwatVzdw&utm_medium=link&utm_source=api |
 
-Klickweg: Link öffnen (Anmeldung in der Search Console) → «Indexierung beantragen». Bei «Kontingent überschritten» den Rest morgen; bitte sagen, ab welcher Nummer. Die Kennung im Link ändert sich bei jeder Messung. Die Liste vom 08.11. (`INDEX-LISTE-0811.md`) bleibt davon unberührt (Stand dort: 9 «gefunden/unbekannt», eine «gecrawlt»).
+Klickweg: Link öffnen (Anmeldung in der Search Console) → «Indexierung beantragen». Bei «Kontingent überschritten» den Rest morgen; bitte sagen, ab welcher Nummer. Die Kennung im Link ändert sich bei jeder Messung. Die Liste vom 08.11. (`INDEX-LISTE-0811a.md`) bleibt davon unberührt (Stand dort: 9 «gefunden/unbekannt», eine «gecrawlt»).
 Gegenmessung am 09.11. früh (nie am selben Tag: `inspect_urls` hinkt dem Antrag um Stunden hinterher). Wirkung auf Rang und Verkäufe: unbekannt.
