@@ -34,7 +34,7 @@ jobs:
       - name: Zielmodelle nur lesend abrufen
         env:
           PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
-          PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
+          PRINTFUL_STORE_ID: '18288470'
           ONLY: ${{ inputs.ids }}
           SG_DIR: ${{ runner.temp }}/printful-katalog
           PAUSE_MS: '700'
