@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 133,
-  "updatedAt": "2026-11-08T05:42:31+01:00",
+  "revision": 134,
+  "updatedAt": "2026-11-08T06:36:19+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -6038,13 +6038,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r73_enge_touch_ergaenzung_im_entwurf_vollstaendige_personalizer_abnahme_offen",
+      "state": "r134_live_content_and_unpublished_theme_preview_fixed_full_personalizer_acceptance_open",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
-      "lastEvidenceDate": "2026-11-04",
-      "belegArt": "R73_ENGE_ZUSAETZLICHE_CSS_NATIVE_READBACK_MOBILE_STICHPROBE",
-      "lastEvidence": "Auf konkrete Printful-Screenshots und weitere Fotowünsche sieben bereits vorhandene Modelle mit 397 Originalvarianten frisch abgeglichen; keine Duplikate importiert. Im bestehenden UNPUBLISHED-Entwurf 212978598279 Originalbildgalerie, 31 aktuelle Hersteller-Hauptansichten (sieben Screenshotmodelle plus 24 weitere Modelle aus acht Kategorien), Kategorien mit tatsächlichen Zählern, Sortierung und deutsche Suchaliase umgesetzt. Grusskarten zeigen native 10,1×15,2 /12,7×17,8 /14,8×21 cm, Pint-Glas 473 ml, Badehandtuch 76×152 /91,4×182,9 cm; sechs Ornamentformen deutsch. Original-IDs, Rohgrössen, Farben, Variantenbilder und alle 572 datierten Katalogmodelle/13’160 Varianten erhalten. 24 weitere Detail-/Bildquellen HTTP200 und 789 Variantenidentitäten gleich; 31 Blank-Hauptansichten nach dokumentierter Printful-Store-Nutzung und visueller Zuordnung aktiviert, keine fremden Druckgrafiken. Kleine Bilder auf positive Quellbreite begrenzt. Zwei native Schreibbatches: sieben Dateien, danach nur JS/Sidecar; sieben finale Texte exakt rückgelesen. Erste zweite Rücklesung hatte neue MD5/alte Cache-Bodies; getrennte Zielabfrage klärte ohne weiteren Write. 30 isolierte DOM-Funktionsprüfungen plus neun separate Bildbreitentests, relevante Validatoren grün, 466 unveränderte FR-Diagnosen. Keine vollständige native Premium-/EDM-/Checkoutabnahme. Restliche 541 zusätzliche Hauptbildquellen nur datiert inventarisiert, vorhandene Variantenbilder bleiben. Keine Shopprodukte, Preise, Reviews, Bestellungen oder Fulfilment-Einstellungen geändert; MAIN unverändert. Claude-Übergabe R40 mit tatsächlichen Dateihashes gespeichert, Empfang unbekannt. R44 auf neue Bildwünsche: Pullover und T-Shirt-Modell links aus Collage entfernt, mehr Farbe mit Salbei/Terrakotta/Ocker und eigenem Postermotiv. Zwei textfreie Wohnen-/Schmuckbanner im bestehenden Directory-Snippet, keine globale Collection-Bildänderung. Drei neue Shopify-Bilder READY/CDN200/pixelgleich. 21 weitere aktuelle blanke Printful-Hauptansichten ergänzt, jetzt52; alte31Objekte/397Variantenanzeigen exakt erhalten. 24Detail-/Fotoreads und233Variantenvergleiche ohneAbweichung, drei generischeSticker-Schriftbeispiele nichtaktiviert. SiebenDateien in zweiBatches nur in bestehendemEntwurf212978598279 gespeichert und exakt nativ bestätigt. EchteVorschau mit19Bild-/Layoutbedingungen auf390/1440px bestanden, Screenshotsgesehen. GET/HEAD-Schutz blockierte190andereRequests und protokollierte16Fetchfehler; keineCheckout-/Trackingabnahme. Bekannte466FRDiagnosen unverändert, zusätzlicheSnippet/CSS/JSONPrüfung ohneBlockierfehler nachFixture-Abhängigkeitskorrektur. MAIN212971061639 unverändert, keinPublish. Herstellerkatalog572/13’160 unverändert; Originalvariantenbilder sind bereitsFallback, keine541leerenKarten behauptet. ScopedClaudeEinstieg aufR44 aktualisiert; tatsächlicherEmpfang unbekannt. R50 neueRollenbeobachtung: aktuellerMAIN213013037447 «LuxeStyle – Schrift und Banner 02.11.2026». FrühererMAIN212971061639 undbisherigerEntwurf212978598279 sindUNPUBLISHED. Kein eigenerTheme-/Publishwrite. NurrelevantePreisfilterdateien gezieltgleichbefunden undbegrenzteLiveKategorien geprüft; keinevollständigeÜbernahme allerR47/R46-/Selbstgestalten-Funktionen behauptet. VorweitererVeröffentlichung vollständigenaktuellenMAIN-/Entwurfsdiff undneueSchrift-/Banneränderungen abgleichen. R43Bestseller-Zwei-Felder-Korrektur unterR49erledigt, nichterneutfragen. R53 nach ausdrücklicher Klärung «Die Website-Verbesserungen»: 13 bereits bekannte frühere Releasepfade gezielt per aktuellem MAIN-/Entwurfs-MD5 verglichen. Elf sind identisch, einschliesslich der Galerie-JSON mit den dokumentierten 52 Referenzen, Editor-JS/CSS/Section, DE/EN/FR-Locale-Dateien, Index, Startseiten-Section und Kategorie-Directory. Zwei Pfade unterscheiden sich: assets/luxe-edit.css und templates/collection.json. Frischer Bodyvergleich bestätigt: Das aktuelle MAIN-Stylesheet enthält den vollständigen Entwurfsinhalt und zusätzlich acht Zeilen zur mobilen Hero-Kürzung; diese aktuelle Ergänzung erhalten. Die Breitenkorrektur der Collectiondatei bleibt offen. Elf bekannte Pfade sind damit nativ bereits im tatsächlichen MAIN belegt; daraus folgen weder eine vollständige Theme-/öffentliche Personalizer-/Kaufbarkeitsabnahme noch eine eigene Veröffentlichung. Keinen alten Gesamtentwurf publizieren. Die aktuelle Freigabe gilt ausschliesslich den Website-Verbesserungen. R54: Den offenen R53-Schritt mit vier tatsächlichen öffentlichen DE-/FR-Kontexten bei 390/1440 px rein lesend weiterbearbeitet, ohne Vorschau-ID, DOM-/CSS-Override, Warenkorb, Checkout oder Shopwrite. MAIN 213013037447 in beiden DE-Ansichten nativ im Browser bestätigt. DE 390 bestand 21/21 Bedingungen für Kategorien, Suche, echte Grusskarten-Herstellerbilder, drei metrische Grössenanzeigen und exakte Variantenbindung; keine neue physische Massvalidierung. Der vorhandene T-Shirt-Angebotsdialog zeigt Hersteller-Variante 4018 Schwarz/L, eingebettete Shopify-Variante 55794951324033, CHF 24.90 und bestehenden Produktlink. Das ist Anzeige-/Zuordnungsbeleg, kein erneuter nativer Produkt-, Warenkorb- oder Checkoutnachweis. DE 1440 bestand die 15 aufgezeichneten Bedingungen bis zum Grusskartendialog; anschliessender Reset-Timeout liess die Angebotsfolge unbekannt. FR 390/1440 lud aktuelle Katalog-Assets mit HTTP 200, die frühere UI-/Scroll-Zeitüberschreitung liess UI, Bilder, Preis und Theme-ID unbekannt. 36 aufgezeichnete Bedingungen bestanden, drei Ablauf-Timeouts; keine volle Vier-Ansichten-, Personalizer- oder Kaufbarkeitsabnahme und kein belegter Shopfehler. Die eng begrenzte Auswertung gespeicherter Zustände zeigt: FR 390 protokollierte den sprachneutralen Katalogselektor als sichtbar mit data-initialized=true, FR 1440 lief beim Scrollen in den Timeout; der DE-Desktop-Reset war als type=button sichtbar/aktiviert und begann den Klick. Die konkrete Ursache bleibt unbekannt, kein falscher sprachabhängiger Selektor oder Frontendfehler belegt. Wegen gekürzter Fehlermeldungen fehlen vollständige Trace-/Fehlerzeitpunktdaten. Fünf gespeicherte Screenshots wurden angesehen. Die sichtbaren 572 Modelle sind datierte Herstellerreferenzen, keine 572 kaufbaren Shopangebote; 13’160 historische Varianten hier nicht vollständig neu gezählt. Der Hinweis auf noch nicht verknüpfte Gestaltung/Bestellung bleibt sichtbar. Keine eigene Veröffentlichung oder Themeänderung. R53-Website-Freigabe, aktuelle zusätzliche MAIN-Hero-CSS-Zeilen und eng gebundener offener Collectionbreitenfix bleiben erhalten. R64, 03.11.2026: Verwandten Collectionbreiten-Teil neu gebunden: aktuelle Regel bereits im aktiven Theme/öffentlich vorhanden, alter R53-Patch darf nicht erneut angewandt werden. Keine neue vollständige Personalizer-/FR-/Desktopabnahme behauptet. R73,04.11.2026: Ausschliesslich zusätzliche Touch-/Fokusregeln in assets/luxe-category.css, Originalpräfix bytegleich. Nativ im bestehenden Entwurf bestätigt; ursprüngliche390px-Probe zeigt44px-Publikum/Reset und weiterhin den Hinweis zur fehlenden individuellen Bestellbarkeit. Kein Katalog-,SKU-,Preis-,Bild-,JavaScript-,Bestell- oderFulfilmentumfang geändert. Teil des endgültigen engen Ergänzungspakets; MAIN unverändert. Bisherige vollständige FR-/Desktop-/Kaufbarkeitsgrenzen bleiben offen.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R134_17_ACTIVE_CONTENT_13_IMAGE_BINDINGS_DRAFT_THEME_7_WRITES_PREVIEW_QA",
+      "lastEvidence": "Shopify LuxeStyle/luxestyle.ch/CHF/CH bestätigt. Page698444710273 publiziert, Collection689870963073 live;17/17 ACTIVE-Selbstgestalten-Produkte mit neutralem Lieferbanner und je einmal v5. Produkt15422815699329 als Sweatshirt & Bio-Hoodie getrennt,17 Alts,13 data-img-map-Bindungen; Varianten/SKUs/Preise/Inventory/Tags erhalten. Echter v5-Neuupload durch Cloudinary POST ERR_FAILED/OPTIONS503 blockiert; vorhandener Druckfile bestätigte cart/add200, de-CH/CHF/CH+LI, keine Bestellung. Draft-PR2940/Head3a0e9261 fail-closed; lokal70/70+75/75+4/4,3/3 Mutanten,Sparse-CI,zwei Reviews grün; Remote Kernprüfungen grün, Pre-deploy/externe Pages laufend,drei bekannte Workers rot; Draft/ungemergt. MAIN213013037447 unverändert. UNPUBLISHED Theme213482963335 daraus dupliziert;7 bestätigte Datei-Writes/5 Dateien. Finale MD5 Layout4447,Collection4592,Headerd6dc,Footerc2e6,Cart5047. Preview1440/375 ohne Overflow; CHF39.90→CHF10.10 oben/rechts, Header und normale FAQ ohne nach Rabatt/Fixzeit/immer Tracking, POD-FAQ getrennt,sg-alle korrekt. MAIN fünf MD5/updatedAt unverändert; Cart geleert, keine Bestellung/Publikation.",
       "previewUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259",
-      "nextAllowedStep": "Zusätzliche R73-Touch-CSS nur zusammen mit dem endgültigen Kategorie-Ergänzungspaket auf frischer MAIN-Basis übernehmen. Alle früheren offenen FR-/Desktop-/SKU-/Bildrechte-/Kaufbarkeits-/Fulfilmentschritte bleiben separat bestehen;44px-Probe ist keine vollständige Personalizerabnahme. Keine spekulative Fehlerkorrektur oder ganze alte Kopie; vorhandene Websitefreigabe und MAIN-Grenzen erhalten.",
+      "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen und vor jeder weiteren Aktion frisch gegen MAIN213013037447 lesen; Preview-QA ist keine Live-Publikationsabnahme. Draft-PR2940 erst nach restlichen Checks prüfen; kein Merge/Dispatch/Deploy aus Teilbelegen ableiten. Upload-/Upstream-Blocker getrennt diagnostizieren und danach mit neu erzeugter Druckdatei Mobil/Desktop bis vor die zahlungspflichtige Bestellung wiederholen. FR-Inhalte, verifizierte4XL/5XL-Masse, Material→Modell und Printful-DPI/Produktionsmapping getrennt prüfen.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6306,7 +6306,15 @@
         "Vollständige Shopify-/SKU-/Variantenmatrix weiterhin nicht belegt. Historischer Bulkjob COMPLETED, Exportlink vom Connector gesperrt; in diesem Lauf keine Wiederholung oder Umgehung.",
         "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
         "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
-        "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung."
+        "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung.",
+        "R134: Live-Editor bleibt v5; v6.2 ist nicht breit live und der Canary ist DRAFT.",
+        "R134: Neuer Cloudinary-v5-Upload im Browserlauf durch POST ERR_FAILED und OPTIONS HTTP503/Upstream-Reset blockiert; kein neuer Druckfile, Ursache unbekannt.",
+        "R134: Vollständige Mobil/Desktop-Abnahme mit neuem Upload, Vorschau und Printful-DPI/Produktion fehlt; vorhandener Druckfile belegt nur den nachgelagerten Cart-/Checkoutpfad.",
+        "R134: /fr/pages/selbst-gestalten und verlinkte FR-Produkte enthalten deutsche Inhalte; v5 hat nur EN oder DE-Fallback.",
+        "R134: Globale Theme-FAQ/Chatbot enthält weiter7–14/10–20-Tage-Claims; 4XL/5XL-Masse fehlen; Material→Modell braucht Checkout-/Sync-Test.",
+        "R134: Warenkorb-Fortschritt zeigt bei CHF27.90 fälschlich CHF27.66 statt CHF22.10 bis zur öffentlichen CHF-50-Schwelle.",
+        "R134: Draft-PR2940 ist Draft/ungemergt; Pre-deploy und externe Pages liefen bei Schlusslesung, drei bekannte Workers waren rot.",
+        "R134: Theme213482963335 ist UNPUBLISHED; MAIN213013037447 unverändert. Preview-QA ersetzt keine Live-Publikationsabnahme."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -6450,6 +6458,16 @@
           "path": "dropship/codex-handoff-20261018/KATEGORIEN-ERGAENZUNGEN-20261104-R73.json",
           "gitBlobSha": "6aafcb996784bee7eb81137d5b56e908a7f7da49",
           "readAt": "2026-11-03T23:27:31.048780+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.md",
+          "gitBlobSha": "d082cfcdae53569b5ea4063c2e4ec53667ae6777",
+          "readAt": "2026-11-08T06:36:19+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.json",
+          "gitBlobSha": "0247203d7069993c7eefe362a372353fe7b7aa6f",
+          "readAt": "2026-11-08T06:36:19+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6697,6 +6715,19 @@
             "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung."
           ],
           "previousLastEvidencePreserved": "Exact prior evidence is retained as prefix; R73 has narrow final additive scope."
+        },
+        {
+          "at": "2026-11-08T06:07:11+01:00",
+          "sourceRevision": 133,
+          "previous": {
+            "state": "r73_enge_touch_ergaenzung_im_entwurf_vollstaendige_personalizer_abnahme_offen",
+            "lastEvidenceDate": "2026-11-04",
+            "belegArt": "R73_ENGE_ZUSAETZLICHE_CSS_NATIVE_READBACK_MOBILE_STICHPROBE",
+            "nextAllowedStep": "Zusätzliche R73-Touch-CSS nur zusammen mit dem endgültigen Kategorie-Ergänzungspaket auf frischer MAIN-Basis übernehmen. Alle früheren offenen FR-/Desktop-/SKU-/Bildrechte-/Kaufbarkeits-/Fulfilmentschritte bleiben separat bestehen;44px-Probe ist keine vollständige Personalizerabnahme. Keine spekulative Fehlerkorrektur oder ganze alte Kopie; vorhandene Websitefreigabe und MAIN-Grenzen erhalten.",
+            "previousLastEvidenceSha256": "6017fd7ba3757108c571c6d660cb599acc300b35e36ea6a94f89294f1e7456fb",
+            "previousLastEvidenceLength": 7256
+          },
+          "previousLastEvidencePreserved": true
         }
       ],
       "liveThemeId": "212971061639",
@@ -10347,6 +10378,17 @@
         "readAt": "2026-11-08T05:42:31+01:00"
       },
       "action": "R133: Nine Merchant CSVs deduplicated to 5662 unique item IDs without treating contexts as products. Three image/variant-backed ACTIVE products corrected via three productUpdate and three fileUpdate calls, 16 alt texts, three redirected handles, exact admin/public/independent QA. Google reprocessing unknown; no Merchant/feed/CSS/social write."
+    },
+    {
+      "revision": 134,
+      "at": "2026-11-08T06:36:19+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.json",
+        "gitBlobSha": "0247203d7069993c7eefe362a372353fe7b7aa6f",
+        "readAt": "2026-11-08T06:36:19+01:00"
+      },
+      "action": "R134: Self-design page/collection and17 ACTIVE products corrected/read back; mixed sweatshirt/hoodie separated and13 image bindings set. New upload blocked upstream; existing print-file cart/checkout confirmed without order. Draft PR2940 adds unmerged fail-closed guards. MAIN unchanged; UNPUBLISHED theme213482963335 created with7 file writes/5 files and passed desktop/mobile preview QA including correct CHF50 calculations and separated FAQs. No theme publish, Printful order or customer order."
     }
   ],
   "salesGoal": {
@@ -15251,5 +15293,109 @@
       "TAGESPROTOKOLL.md": "a2bc0eb37a69daf5ee8b85ee4baebde0c7f9752c20368adef21953d302e61577"
     },
     "nextStep": "Wait for Google reprocessing; then exact-offer reads. Fix locale/source and CSS separately without content distortion or DRAFT activation."
+  },
+  "selfDesignCorrectionsR134": {
+    "at": "2026-11-08T06:36:19+01:00",
+    "report": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.md",
+    "evidence": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.json",
+    "identity": "Shopify LuxeStyle/luxestyle.ch/CHF/Switzerland matched.",
+    "page": {
+      "id": "698444710273",
+      "published": true,
+      "updatedAtUtc": "2026-11-08T04:57:54Z",
+      "sgAlleLink": false,
+      "fixedDeliveryClaim": false
+    },
+    "collection": {
+      "id": "689870963073",
+      "updatedAtUtc": "2026-11-08T04:56:53Z",
+      "blanketEuPrintClaim": false
+    },
+    "products": {
+      "activeReadback": "17/17",
+      "neutralDeliveryBanner": 17,
+      "designerV5ExactlyOnce": 17,
+      "checkedFixedDeliveryOzEnglishWelcome10ThirtyDayMetaClaims": 0,
+      "variantsSkusPricesInventoryTagsPreserved": true
+    },
+    "mixedModelProduct": {
+      "id": "15422815699329",
+      "title": "Unisex Sweatshirt & Bio-Hoodie – Selbst gestalten",
+      "productType": "Hoodies & Sweatshirts",
+      "models": [
+        "Gildan 18000 round-neck sweatshirt",
+        "Stanley/Stella SASU009 organic hoodie"
+      ],
+      "mediaAltTexts": 17,
+      "variantImageBindings": 13,
+      "roundNeckBindings": 8,
+      "organicHoodie20805Bindings": 5,
+      "finalApiReadback": "ACTIVE,13 variants,13 data-img-map bindings,v5 once,17 alts",
+      "variantSkuPriceInventoryMappingPreserved": true
+    },
+    "browser": {
+      "newUpload": "blocked: Cloudinary POST ERR_FAILED; OPTIONS HTTP503 upstream reset",
+      "newPrintFile": false,
+      "existingPrintFileCartAddHttp": 200,
+      "cartProductVariantDesignAndLinkCorrect": true,
+      "checkout": "de-CH, CHF, CH/LI only",
+      "orderPlaced": false,
+      "shopPayAutoRedirect": "unknown upstream block",
+      "cartThresholdBug": "CHF27.90 cart shows CHF27.66 instead of CHF22.10 remaining to CHF50"
+    },
+    "writesNotPerformed": [
+      "order",
+      "Printful order",
+      "theme publish",
+      "deployment",
+      "variant/SKU/price/inventory/tag mutation"
+    ],
+    "documentationPreWriteSha256": {
+      "README.md": "fe3c3675ca6208acaff33402c4f15797aaa1ccc259c5003700656f9d87e53bb0",
+      "PROJEKTGEDAECHTNIS.md": "5609bada13f907d7ef004db0cc2b736f329a6c90c95625b0ec18b7942019cbef",
+      "ARBEITSSTAND.json": "a164b44ab7983db164664b423760f92b4c503b37ec69b104854a033d0b1a304b",
+      "TAGESPROTOKOLL.md": "7d1121c33af0e14994d3d3f10d6a916a217cb8f3fc2daa65b3f5cc6f53f07a68"
+    },
+    "nextStep": "Keep theme213482963335 unpublished and countercheck against MAIN before any action. Wait for remaining PR2940 checks. Diagnose upload blocker and repeat with new print file; keep FR,4XL/5XL and Printful DPI/production mapping separate.",
+    "repositoryGuard": {
+      "pullRequest": 2940,
+      "headAndRemote": "3a0e9261d0b46e72bdd9c666aeb437b6ea44ed09",
+      "local": "70/70 guard;75/75 editor;4/4 host;3/3 mutants;2 no-blocker reviews; sparse fallback CI pass",
+      "officialCiSimulation": "blocked only by unshare: Operation not permitted",
+      "remote": "tests/self-design/inventory/Pages pass; Pre-deploy/external Pages running;3 known Workers failed",
+      "draft": true,
+      "merged": false,
+      "deployed": false
+    },
+    "themeDraft": {
+      "mainThemeId": "213013037447",
+      "mainUnchanged": true,
+      "mainUpdatedAtUtc": "2026-11-07T19:56:09Z",
+      "draftThemeId": "213482963335",
+      "draftName": "LuxeStyle – Printful Fix 08.11.2026",
+      "role": "UNPUBLISHED",
+      "processing": false,
+      "processingFailed": false,
+      "fileWriteOperations": 7,
+      "uniqueFiles": 5,
+      "finalMd5": {
+        "layout": "4447d5a9a0410ec9190cd57819f4bc2f",
+        "collection": "45925c29ff6b8d99e52e265be410996e",
+        "header": "d6dc242ecb7992b11d0a794ab2da0790",
+        "footer": "c2e6ce9d12ca172f84c7a19130c905e8",
+        "cartSummary": "50477696df6cfb1cf832a54a1cbb178f"
+      },
+      "preview": "HTTP200;1440/375 no overflow;CHF39.90→CHF10.10 top+summary;header/normal FAQ neutral;POD FAQ separate;sg-alle mixed exception",
+      "cartEmptied": true,
+      "orderPlaced": false,
+      "published": false,
+      "mainFinalMd5": {
+        "layout": "cf5ee5a64ca940edf4120b09c073e58f",
+        "collection": "3ba28c329b5f8ccb03c99893a210cccd",
+        "header": "d62af614af5a66f6f2ff60de226cfbb0",
+        "footer": "9ff28afd87a683c7ce0d66e0d2facfdc",
+        "cartSummary": "88e224946155647e7ec46498b5aac870"
+      }
+    }
   }
 }

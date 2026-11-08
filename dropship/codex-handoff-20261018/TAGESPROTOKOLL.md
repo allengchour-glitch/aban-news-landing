@@ -1388,3 +1388,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R133-Bericht, JSON und Projektgedächtnis fortgeschrieben; Tageskennzahlen/Flows/Bestellungen nicht erneut gelesen | Kein Feed-/CSS-/Merchant-/Theme-/Social-/Flow-/DNS-/Budget-/Rabatt-/Kunden-/Bestell-/Render-/Publikationswrite |
 
 [LUXESTYLE_R133_20261108] [Merchant-/Produkt-Livebericht](MERCHANT-PRODUKTKORREKTUREN-20261108-R133.md) · [Maschinenbeleg](MERCHANT-PRODUKTKORREKTUREN-20261108-R133.json).
+
+### R134
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Scope | Shopify und den begrenzten Selbstgestalten-Scope frisch gegengeprüft | LuxeStyle/`luxestyle.ch`/CHF/CH passend; genau Page 698444710273, Collection 689870963073 und 17 ACTIVE-Produkte bearbeitet |
+| Page / Collection | Page-Ablauf, Retourenlink, Meta und Collection-Body/Meta sachlich bereinigt; `sg-alle`-Link und pauschalen EU-Druckclaim entfernt | Page veröffentlicht, updated04:57:54Z; Collection updated04:56:53Z. Kein fester Lieferclaim im geprüften Page-Body, kein EU-Druckclaim in Collection |
+| Produkttexte / SEO | 17 aktive Selbstgestalten-Produkte auf neutrale Liefertexte und gezielte deutsche Body-/SEO-Felder korrigiert | 17/17 ACTIVE; keine geprüften Festliefer-/oz-/englischen Rest-/WELCOME10-/30-Tage-Meta-Claims. Varianten, SKUs, Preise, Inventory und Tags erhalten; v5 je genau einmal |
+| Mischprodukt / Bilder | Produkt 15422815699329 in Sweatshirt und Bio-Hoodie sachlich getrennt, Produkttyp/SEO/17 Alttexte korrigiert; anschliessend 13 Varianten-Bildbindungen gesetzt | Titel «Unisex Sweatshirt & Bio-Hoodie – Selbst gestalten»; acht Rundhalsvarianten auf weisses Sweatshirtbild, fünf Bio-Hoodievarianten auf offizielles Bild 20805. Finale API-Lesung ACTIVE/13 Bindungen/v5 einmal/17 Alts |
+| Weitere Inhalte | Aufkleber-/iPhone-Titel, Notizbuch, Mauspad, T-Shirt-Resttexte und Tassenclaim gezielt bereinigt | Deutsche, produktgebundene Texte; iPhone-Handle und Modelloption `Material` wegen Redirect-/Checkout-/Sync-Risiko erhalten |
+| Browser / Editor | Echten v5-Upload versucht und nach technischem Fehler abgebrochen; nachgelagerten Pfad kontrolliert mit bestehender Druckdatei geprüft | Cloudinary POST `ERR_FAILED`, OPTIONS HTTP 503/Upstream-Reset; kein neuer Druckfile. Cart-Add HTTP 200, richtiges Produkt/Variante/Design/Drucklink; Checkout de-CH/CHF/nur CH+LI; keine Bestellung |
+| Neuer Themebefund | CHF-50-Warenkorbfortschritt mit CHF 27.90 gegengeprüft | MAIN live falsch CHF 27.66 Rest statt CHF 22.10; im unveröffentlichten R134-Entwurf korrigiert und per Preview gegengeprüft. MAIN unverändert |
+| Workflow-Guards | POD-Seiten-/Designerpfade fail-closed gehärtet, lokal und zweimal unabhängig geprüft, als Draft-PR2940 gepusht | Head/Remote `3a0e9261…`;70/70+75/75+4/4,3/3 Mutanten, Sparse-CI/YAML/Syntax/Diff grün, keine Reviewblocker. Remote Kernprüfungen grün; Pre-deploy/externe Pages liefen, drei bekannte Workers rot. Draft/ungemergt, kein Deploy/Livewrite |
+| Theme-Entwurf | MAIN213013037447 read-only geprüft und unverändert gelassen; UNPUBLISHED Theme213482963335 dupliziert und mit sieben Writes auf fünf Dateien korrigiert | Finale MD5 exakt. Preview1440/375 ohne Overflow; CHF39.90→CHF10.10 oben/rechts; Header/normaler FAQ-Zweig ohne Rabatt-/Fixzeit-/Trackingclaim, POD getrennt, `sg-alle` korrekt. MAIN fünf MD5/updatedAt unverändert; Cart geleert, keine Bestellung/Publikation |
+| Grenzen / Dokumentation | R134-Bericht, JSON und Projektgedächtnis fortgeschrieben | Kein Printful-Auftrag, Theme-Publish, Deploy oder Bestellung. Live-v5/Mobile-Neuupload, DPI/Produktion, FR, globale Lieferclaims und 4XL/5XL-Masse offen |
+
+[LUXESTYLE_R134_20261108] [Selbstgestalten-Livebericht](SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.md) · [Maschinenbeleg](SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.json).

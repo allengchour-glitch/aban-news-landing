@@ -1,0 +1,316 @@
+{
+  "revision": 134,
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "atZurich": "2026-11-08T06:36:19+01:00",
+  "shopIdentity": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "matched": true
+  },
+  "scope": {
+    "page": "gid://shopify/Page/698444710273",
+    "collection": "gid://shopify/Collection/689870963073",
+    "activeProducts": 17,
+    "catalogCompletionClaim": false,
+    "themeAcceptanceClaim": false,
+    "printfulProductionAcceptanceClaim": false,
+    "checkoutAcceptanceClaim": false
+  },
+  "page": {
+    "id": "gid://shopify/Page/698444710273",
+    "handle": "selbst-gestalten",
+    "templateSuffix": "selbst-gestalten",
+    "published": true,
+    "changes": [
+      "four-step choose-design-preview-order explanation",
+      "neutral delivery wording",
+      "personalized-return policy link",
+      "removed /collections/sg-alle link",
+      "SEO description aligned to T-shirt, sweatshirt, organic hoodie, mug, CHF, Switzerland and Liechtenstein"
+    ],
+    "finalReadback": {
+      "published": true,
+      "updatedAtUtc": "2026-11-08T04:57:54Z",
+      "containsSgAlleLink": false,
+      "checkedFixedDeliveryRangeInBody": false
+    }
+  },
+  "collection": {
+    "id": "gid://shopify/Collection/689870963073",
+    "handle": "selbst-gestalten",
+    "changes": [
+      "factual editor and preview explanation",
+      "CHF order wording",
+      "production and delivery estimate varies by article, variant and destination",
+      "removed blanket EU printing claim",
+      "SEO description aligned to self-design intent"
+    ],
+    "finalReadback": {
+      "updatedAtUtc": "2026-11-08T04:56:53Z",
+      "blanketEuPrintingClaim": false
+    }
+  },
+  "products": {
+    "finalActive": 17,
+    "finalActiveExpected": 17,
+    "neutralDeliveryBanner": 17,
+    "designerV5ExactlyOnce": 17,
+    "checkedClaimScan": {
+      "scope": "descriptionHtml and SEO fields of the 17 ACTIVE self-design products",
+      "fixedDeliveryRanges": 0,
+      "ounceOrImperialClaims": 0,
+      "checkedEnglishTokens": 0,
+      "welcome10": 0,
+      "thirtyDayMetaClaims": 0
+    },
+    "preserved": [
+      "variant IDs and option values",
+      "SKUs",
+      "CHF prices",
+      "inventory values, tracking and policy",
+      "tags",
+      "Printful mapping"
+    ]
+  },
+  "mixedModelProduct": {
+    "id": "gid://shopify/Product/15422815699329",
+    "title": "Unisex Sweatshirt & Bio-Hoodie – Selbst gestalten",
+    "productType": "Hoodies & Sweatshirts",
+    "models": [
+      {
+        "name": "Gildan 18000",
+        "kind": "round-neck sweatshirt without hood",
+        "sizes": "S–5XL",
+        "composition": "50% cotton / 50% polyester",
+        "color": "white"
+      },
+      {
+        "name": "Stanley/Stella SASU009",
+        "kind": "organic hoodie with hood",
+        "sizes": "S–2XL",
+        "composition": "80–85% organic cotton / 15–20% recycled polyester depending on production location",
+        "color": "white",
+        "fitNote": "European fit; one size down"
+      }
+    ],
+    "mediaAltTexts": 17,
+    "editorImageBindingFix": {
+      "atUtc": "2026-11-08T05:02:00Z",
+      "field": "data-img-map",
+      "variants": 13,
+      "roundNeckSweatshirtVariants": 8,
+      "roundNeckImage": "white sweatshirt image",
+      "organicHoodieVariants": 5,
+      "organicHoodieImage": "official Printful 20805 hoodie image",
+      "finalApiReadback": "ACTIVE; 13 variants; 13 data-img-map bindings; lspod-designer-v5.js exactly once; 17 alt texts",
+      "finalBrowserReadback": "bounded downstream cart/checkout path confirmed with an existing print file; new v5 upload blocked by upstream error"
+    },
+    "preservedOptionLabel": "Material",
+    "preservedOptionValue": "Bio-Baumwolle",
+    "optionRenameBlocker": "requires checkout and sync test",
+    "variantsSkusPricesInventoryAndMappingPreserved": true
+  },
+  "targetedCorrections": [
+    {
+      "product": "Kiss-Cut sticker",
+      "visibleTitle": "Aufkleber mit Konturschnitt – Selbst gestalten",
+      "productType": "Aufkleber",
+      "notes": "German body/SEO and fixed delivery claim removed"
+    },
+    {
+      "product": "iPhone case",
+      "visibleTitle": "iPhone-Hülle – Selbst gestalten",
+      "notes": "SEO corrected; existing handle containing registered-mark character preserved"
+    },
+    {
+      "product": "notebook",
+      "notes": "Cover/Bullet Journaling replaced with Umschlag/Planungen; SEO completed"
+    },
+    {
+      "product": "mousepad",
+      "notes": "SEO uses Mauspad"
+    },
+    {
+      "product": "classic and other unisex T-shirts",
+      "notes": "bad translations and checked English residuals removed"
+    },
+    {
+      "product": "mug",
+      "notes": "unsupported leuchtender Aufdruck claim removed"
+    }
+  ],
+  "browserValidation": {
+    "newV5Upload": {
+      "completed": false,
+      "cloudinaryPost": "net::ERR_FAILED",
+      "browserOptions": "HTTP 503 upstream reset",
+      "interpretation": "current technical blocker; not evidence of an empty or permanently broken Cloudinary configuration",
+      "newPrintFileCreated": false,
+      "newCartItemFromThisUpload": false
+    },
+    "controlledExistingPrintFileFallback": {
+      "cartAddHttp": 200,
+      "productCorrect": true,
+      "variant": "Ringgarn-Baumwolle / XS",
+      "designTextVisible": true,
+      "printFileLinkClickable": true,
+      "checkoutLocale": "de-CH",
+      "currency": "CHF",
+      "shippingCountries": [
+        "CH",
+        "LI"
+      ],
+      "orderPlaced": false,
+      "shopPayAutoRedirect": "unknown; upstream blocked"
+    },
+    "cartThresholdBug": {
+      "cartValueChf": "27.90",
+      "publicThresholdChf": "50.00",
+      "displayedRemainingChf": "27.66",
+      "correctRemainingChf": "22.10",
+      "fixedInR134": false
+    }
+  },
+  "repositoryGuard": {
+    "pullRequest": 2940,
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2940",
+    "head": "3a0e9261d0b46e72bdd9c666aeb437b6ea44ed09",
+    "stateAtReadback": "OPEN/DRAFT/MERGEABLE",
+    "scope": [
+      "POD page update defaults to dry run",
+      "live page write restricted to main and exact shop/page identity",
+      "fresh before and target hashes required",
+      "second pre-mutation read and independent post-write readback",
+      "no blind retry after ambiguous write",
+      "designer injection defaults to dry run and live mode is explicit"
+    ],
+    "localValidation": {
+      "guardTests": "70/70",
+      "editorBackgroundTests": "75/75",
+      "shopifyHostTests": "4/4",
+      "mutantsDetected": "3/3",
+      "independentReviews": "2/2 no blockers",
+      "yamlSyntaxAndDiffCheck": "pass",
+      "exactCiSimulation": "blocked: unshare Operation not permitted",
+      "sparseFallbackCi": "pass"
+    },
+    "remoteAtReadback": "tests, selbst-gestalten, lagerbestand and Cloudflare Pages passed; Pre-deploy and external Pages still running; three known Workers failures; no production execution inferred",
+    "merged": false,
+    "deployed": false,
+    "liveWrites": 0,
+    "remoteSha": "3a0e9261d0b46e72bdd9c666aeb437b6ea44ed09"
+  },
+  "openBlockers": [
+    "live editor remains v5; v6.2 is not broadly live and canary is DRAFT",
+    "full mobile/editor/preview/cart/checkout acceptance incomplete",
+    "Printful production and DPI end-to-end acceptance incomplete",
+    "French page and linked products declare fr but contain German content; v5 has only English or German fallback",
+    "global live theme FAQ/chatbot retains blanket 7–14 and 10–20 day delivery claims",
+    "verified 4XL/5XL body measurements missing; generic size table ends at 3XL",
+    "global checkout-to-Printful production mapping not proven",
+    "public Printful GET attempt ended with upstream connection failure; result unknown",
+    "new v5 Cloudinary upload blocked in browser environment by POST failure and OPTIONS HTTP 503 upstream reset",
+    "cart threshold progress shows CHF27.66 instead of CHF22.10 remaining at CHF27.90 cart value",
+    "draft PR2940 is unmerged; Pre-deploy and external Pages were still running and three known Workers were red at final readback",
+    "draft theme213482963335 is UNPUBLISHED; main theme213013037447 remains unchanged and preview QA is not live publication acceptance"
+  ],
+  "writesNotPerformed": {
+    "orders": 0,
+    "printfulOrders": 0,
+    "themePublishes": 0,
+    "draftThemeFileWrites": 7,
+    "mainThemeFileWrites": 0,
+    "deployments": 0,
+    "variantWrites": 0,
+    "skuWrites": 0,
+    "priceWrites": 0,
+    "inventoryWrites": 0,
+    "tagWrites": 0,
+    "draftThemeUniqueFiles": 5
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "fe3c3675ca6208acaff33402c4f15797aaa1ccc259c5003700656f9d87e53bb0",
+    "PROJEKTGEDAECHTNIS.md": "5609bada13f907d7ef004db0cc2b736f329a6c90c95625b0ec18b7942019cbef",
+    "ARBEITSSTAND.json": "a164b44ab7983db164664b423760f92b4c503b37ec69b104854a033d0b1a304b",
+    "TAGESPROTOKOLL.md": "7d1121c33af0e14994d3d3f10d6a916a217cb8f3fc2daa65b3f5cc6f53f07a68"
+  },
+  "nextStep": "After the upload/upstream blocker is resolved, repeat bounded mobile and desktop acceptance with a newly created print file through preview, variant switch, cart and checkout stopping before the paid order. Review draft PR2940 after remaining checks. Keep theme draft213482963335 unpublished and freshly countercheck it against MAIN before any further action; preview QA is not live publication acceptance. Keep French translation, verified 4XL/5XL measurements and Printful DPI/production mapping separate.",
+  "themeReviewAndDraft": {
+    "mainThemeId": "213013037447",
+    "mainRole": "MAIN",
+    "mainChanged": false,
+    "initialContradictions": [
+      "POD collection FAQ/USP had blanket stock, tracking and 10–20 day claims",
+      "collection FAQ/USP and header/footer had blanket 30-day return claims",
+      "cart progress showed wrong remaining amounts and used after-discount wording"
+    ],
+    "validatedPatchArtifacts": [
+      "/workspace/luxestyle-review/printful-theme-patch-review-20261108/theme.patch",
+      "/workspace/luxestyle-review/printful-theme-patch-review-20261108/manifest.json"
+    ],
+    "draftTheme": {
+      "id": "213482963335",
+      "name": "LuxeStyle – Printful Fix 08.11.2026",
+      "sourceMainThemeId": "213013037447",
+      "role": "UNPUBLISHED",
+      "processing": false,
+      "processingFailed": false,
+      "errors": [],
+      "fileWriteOperations": 7,
+      "uniqueFiles": 5,
+      "writeSequence": [
+        "initial layout/theme.liquid",
+        "initial templates/collection.json",
+        "initial sections/header-group.json",
+        "initial sections/footer-group.json",
+        "snippets/cart-summary.liquid",
+        "final sections/header-group.json",
+        "final templates/collection.json"
+      ],
+      "finalReadbackMd5": {
+        "layout/theme.liquid": "4447d5a9a0410ec9190cd57819f4bc2f",
+        "templates/collection.json": "45925c29ff6b8d99e52e265be410996e",
+        "sections/header-group.json": "d6dc242ecb7992b11d0a794ab2da0790",
+        "sections/footer-group.json": "c2e6ce9d12ca172f84c7a19130c905e8",
+        "snippets/cart-summary.liquid": "50477696df6cfb1cf832a54a1cbb178f"
+      },
+      "collectionUpdatedAtUtc": "2026-11-08T05:32:06Z",
+      "publicPreviewQa": {
+        "http": 200,
+        "serverTimingTheme": "213482963335",
+        "desktopPx": 1440,
+        "mobilePx": 375,
+        "horizontalOverflow": false,
+        "header": "Lieferung nur in die Schweiz & nach Liechtenstein · in der Schweiz gratis ab CHF 50 Warenwert",
+        "headerAfterDiscountTextPresent": false,
+        "cartValueChf": "39.90",
+        "topRemainingChf": "10.10",
+        "summaryRemainingChf": "10.10",
+        "oldRemainingChf15_66Present": false,
+        "cartAfterDiscountTextPresent": false,
+        "normalDamenModeFaq": "neutral; CHF50 Warenwert and CHF7; no fixed 2–3/10–20 day, always-tracking or after-discount claim",
+        "podFaqSeparatedAndCorrect": true,
+        "mixedSgAlleExceptionCorrect": true,
+        "cartEmptied": true,
+        "orderPlaced": false
+      },
+      "published": false
+    },
+    "mainPostDraftReadback": {
+      "unchanged": true,
+      "updatedAtUtc": "2026-11-07T19:56:09Z",
+      "md5": {
+        "layout/theme.liquid": "cf5ee5a64ca940edf4120b09c073e58f",
+        "templates/collection.json": "3ba28c329b5f8ccb03c99893a210cccd",
+        "sections/header-group.json": "d62af614af5a66f6f2ff60de226cfbb0",
+        "sections/footer-group.json": "9ff28afd87a683c7ce0d66e0d2facfdc",
+        "snippets/cart-summary.liquid": "88e224946155647e7ec46498b5aac870"
+      }
+    },
+    "pullRequest": null,
+    "themePublished": false
+  }
+}
