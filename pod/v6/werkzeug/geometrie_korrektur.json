@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "gemessen": "2026-11-08",
+  "quelle": "dropship/tshirt-nachmessung-0811/README.md",
+  "regel": "Referenz ist Printfuls Mockup-Generator (Entscheid des Besitzers 08.11.2026: «es soll wie im Printful Shop sein, kopiere es»). Die Zahlen sind die wirksame Druckfläche in Vorlagenpixeln (Vorlage 3000 x 3000), gemessen mit zwei Lagen des Designs je Modell; gleichmässiger Massstab, damit das 3:4 der Druckdatei bleibt. Gilt nur für die Platzierung «front». Weicht der Katalog von «katalog» ab, bricht der Bau ab (neu messen).",
+  "modelle": {
+    "71": {
+      "front": {
+        "katalog": { "links": 1006, "oben": 530, "breite": 1010, "hoehe": 1346 },
+        "wirksam": { "links": 1006.0, "oben": 498.8, "breite": 1021.2, "hoehe": 1361.0 },
+        "rest_px": "höchstens 0,125 px (800-px-Bild) an zwei Lagen, Weiss M, Editor 6.2.0 und 6.3.1"
+      }
+    },
+    "586": {
+      "front": {
+        "katalog": { "links": 958, "oben": 473, "breite": 1074, "hoehe": 1432 },
+        "wirksam": { "links": 952.8, "oben": 473.7, "breite": 1089.8, "hoehe": 1453.1 },
+        "rest_px": "höchstens 0,25 px (800-px-Bild) an zwei Lagen, Weiss M, Editor 6.2.0"
+      }
+    }
+  },
+  "ohne_korrektur": {
+    "456": "Vorschau und Printful stimmen auf höchstens 0,25 px überein (Messung 08.11.2026)"
+  }
+}
