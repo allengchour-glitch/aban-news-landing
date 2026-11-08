@@ -46,6 +46,7 @@
       cv.tabIndex = 0;
       cv.setAttribute('role', 'img');
       cv.setAttribute('aria-label', cfg.ariaLabel || '3D-Ansicht des Büros');
+      if(cfg.instructionsId)cv.setAttribute('aria-describedby',cfg.instructionsId);
       var over = document.createElement('div');
       over.className = 'kb3-over';
       el.replaceChildren(cv, over);
@@ -96,7 +97,7 @@
       /* ---------- Kamera ---------- */
       var cam = new K.Camera();
       var viewName = 'alle', userDist = null;
-      function fitDist(base, aspect) { return base * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
+      function fitDist(base, aspect) { return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
       function goView(name, now) {
         var v = W.views[name] || W.views.alle;
         viewName = W.views[name] ? name : 'alle';
@@ -217,7 +218,7 @@
       };
 
       /* ---------- Bedienung ---------- */
-      var ptrs = {}, nptr = 0, down = null, pinch = 0, moveMode = false;
+      var ptrs = {}, nptr = 0, down = null, pinch = 0, moveMode = !!cfg.desktopControls;
       // Pixelbewegung in der Bildebene; abhängig von Zoom, Blickwinkel und Höhe.
       function pan(dx, dy) {
         var scale = 2 * cam.g.dist * Math.tan(cam.fov / 2) / Math.max(1, made.h);
@@ -241,7 +242,9 @@
       cv.addEventListener('pointerdown', function (ev) {
         ptrs[ev.pointerId] = { x: ev.clientX, y: ev.clientY }; nptr++;
         try { cv.setPointerCapture(ev.pointerId); } catch (e) { /* nichts */ }
-        if (nptr === 1) down = { x: ev.clientX, y: ev.clientY, t: performance.now(), moved: 0, pan: moveMode || ev.shiftKey || ev.button === 1 || ev.button === 2 };
+        if (ev.pointerType === 'mouse') { cv.focus({preventScroll:true}); cv.style.cursor = 'grabbing'; }
+        var drehen = cfg.desktopControls && ev.pointerType === 'mouse' && (ev.button === 2 || ev.altKey);
+        if (nptr === 1) down = { x: ev.clientX, y: ev.clientY, t: performance.now(), moved: 0, pan: !drehen && (moveMode || ev.shiftKey || ev.button === 1 || ev.button === 2) };
         if (nptr === 2) { var k = Object.keys(ptrs); pinch = Math.hypot(ptrs[k[0]].x - ptrs[k[1]].x, ptrs[k[0]].y - ptrs[k[1]].y); if (down) down.moved = 99; }
       });
       cv.addEventListener('pointermove', function (ev) {
@@ -275,20 +278,21 @@
           var id = doPick(ev);
           if (cfg.onPick) cfg.onPick(id);
         }
-        if (nptr === 0) down = null;
+        if (nptr === 0) { down = null; cv.style.cursor = 'grab'; }
       }
       cv.addEventListener('pointerup', up);
       cv.addEventListener('contextmenu', function (ev) { ev.preventDefault(); });
       cv.addEventListener('pointercancel', function (ev) { if (ptrs[ev.pointerId]) { delete ptrs[ev.pointerId]; nptr = Math.max(0, nptr - 1); } if (nptr === 0) down = null; });
       cv.addEventListener('wheel', function (ev) {
-        if (!(ev.ctrlKey || ev.metaKey)) return;
+        if (!(cfg.desktopControls || ev.ctrlKey || ev.metaKey)) return;
         ev.preventDefault();
-        cam.g.dist = clamp(cam.g.dist * Math.exp(ev.deltaY * 0.0018), 5.5, 160);
+        var delta = ev.deltaY * (ev.deltaMode === 1 ? 16 : ev.deltaMode === 2 ? made.h : 1);
+        cam.g.dist = clamp(cam.g.dist * Math.exp(clamp(delta, -120, 120) * 0.0018), 5.5, 160);
         made.dirty = true;
       }, { passive: false });
       cv.addEventListener('keydown', function (ev) {
         var k = ev.key, used2 = true;
-        if (ev.shiftKey && /^Arrow(Left|Right|Up|Down)$/.test(k)) pan(k === 'ArrowLeft' ? -50 : k === 'ArrowRight' ? 50 : 0, k === 'ArrowUp' ? -50 : k === 'ArrowDown' ? 50 : 0);
+        if ((cfg.desktopControls ? !ev.shiftKey : ev.shiftKey) && /^Arrow(Left|Right|Up|Down)$/.test(k)) pan(k === 'ArrowLeft' ? -50 : k === 'ArrowRight' ? 50 : 0, k === 'ArrowUp' ? -50 : k === 'ArrowDown' ? 50 : 0);
         else if (k === 'ArrowLeft') cam.g.az = clamp(cam.g.az + 0.1, 0, 1.5);
         else if (k === 'ArrowRight') cam.g.az = clamp(cam.g.az - 0.1, 0, 1.5);
         else if (k === 'ArrowUp') cam.g.el = clamp(cam.g.el + 0.06, 0.3, 1.2);
