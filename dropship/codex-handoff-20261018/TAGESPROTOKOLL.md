@@ -1632,3 +1632,24 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation | R150-Gatebericht und maschinenlesbaren Gatebeleg erstellt; Übergabe und Arbeitsstand fortgeführt | Shopify-Medienzuordnung zum Produkt geschlossen; Filmvarianten-/Einheitenbindung, Rechte und native Takes als konkrete Blocker erhalten. Keine Kunden-, Shop-, Flow-, DNS-, Budget-, Rabatt-, Bestell- oder kostenpflichtige Renderaktion |
 
 [LUXESTYLE_R150_20261108] [Gatebericht](MASTER-GATE-20261108-R150.md) SHA-256 `94f78eedd52acb40e6aa6bc0cd9e37086d4eac3d8eb772446044eafb15674a37` · [Gatebeleg](MASTER-GATE-20261108-R150.json) SHA-256 `567b86c84f8638a78c9f76a0bb743ce1792bfe11be973c6b00b9b56e539599b1` · Shopify-Medienzuordnung zum Produkt verifiziert · keine MP4/Publikation.
+
+### R151
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Master / Quellenforensik | Shopify-Medien, Repo, Drive/Gmail, CJ-Lesebelege und öffentliches altes Reel gezielt auf bessere Quelle, Variantenbindung und Rechte geprüft | Nur 960×540/25-fps-Original und 852×480-Ableitung; kein nativer Hochkantfilm und kein hashgebundener Rechtegrant. Altes Reel als False Lead gesperrt |
+| Master / Produktionsvertrag | Einen maschinenlesbaren fail-closed Vertrag für genau eine A–G-Ausführung, dieselbe physische Einheit, vier native Hochkanttakes, Rechte, Musik, Render und QA erstellt | Fehlende Auswahl-, Take-, Rechte-, Musik- oder QA-Felder blockieren. Kein Render, keine MP4, kein Upload oder Socialwrite |
+
+[LUXESTYLE_R151_20261108] [Produktionsvertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.md) · [Gatevertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.json). Konkreter nächster Schritt: vier native Takes derselben SKU-/VID-belegten Einheit plus hashgebundener Rechtegrant.
+
+### R152
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify #1039 | Shop und Bestellung ohne Kundendaten geprüft | LuxeStyle/luxestyle.ch/CHF; #1039 echt, PAID, nicht storniert, CHF34.90, erfolgreiche Nicht-Test-SALE, Risiko ACCEPT, SKU CJSL269105308HS, UNFULFILLED |
+| CJ-Übergabe | Exakte variantSku-Bindung, Engine-Selbsttest und zwei CJ-Doppelprüfungen ausgeführt; genau einen one-shot Create gesendet und zurückgelesen | Run42517332990 success; genau LX1039/SD2611081956340669600, count1, CREATED; USD6.90+6.70=13.60. Kein Retry |
+| CJ-Zahlungsstatus | Nach Inhabermeldung einen reinen Trocken-/Leselauf ausgeführt | Run42517703485 success; bestehender Auftrag nicht neu angelegt, count1, Status UNSHIPPED. Kein Versand-/Trackingbeleg |
+| Grenzen | Shopify nach CJ-Readback erneut gelesen | PAID/UNFULFILLED, Fulfillment-Request UNSUBMITTED; kein Fulfillment, Tracking-Write, Kundenkontakt oder Währungsmix |
+
+[LUXESTYLE_R152_20261108] [CJ-Bericht](CJ-BESTELLUNG-1039-20261108-R152.md) · [Beleg](CJ-BESTELLUNG-1039-20261108-R152.json). `LX1039` nicht erneut anlegen oder bezahlen; erst echten Versandbeleg gezielt zurücklesen.
+
