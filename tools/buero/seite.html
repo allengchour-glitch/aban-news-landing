@@ -335,6 +335,18 @@
 .kb {--cds-gap-xs:4px;--cds-gap-sm:8px;--cds-gap-md:12px;--cds-gap-lg:20px;--cds-pad-xs:4px;--cds-pad-sm:8px;--cds-pad-md:12px;--cds-pad-lg:16px;--cds-radius:8px;--cds-font-size-caption:12px;--cds-font-size-body:14px;--cds-font-size-heading:16px;--cds-font-size-title:28px;--cds-font-weight-medium:550;color-scheme:light;line-height:1.45;--color-fg:#24383b;--color-fg-muted:#596e70;--color-bg:#f6f8f4;--color-panel:#eaf0e8;--color-border-line:#becdc2;--color-ok:#28785d;--color-warn:#9b7023;--color-bad:#b34242;--font-anthropic-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--font-anthropic-serif:system-ui,-apple-system,"Segoe UI",sans-serif;font-family:var(--font-anthropic-sans);font-size:14px;background:var(--color-bg);border-radius:20px;padding:16px;}
 @media(prefers-color-scheme:dark){.kb{color-scheme:dark;--color-fg:#e2ede6;--color-fg-muted:#a4b8ad;--color-bg:#172522;--color-panel:#223630;--color-border-line:#425c50;--color-ok:#75c69b;--color-warn:#e0b86a;--color-bad:#f18484;}}
 @media(max-width:640px){.kb{padding:10px;border-radius:14px;}}
+.kb-dienste {margin-top:14px;border-top:1px solid var(--color-border-line);padding-top:10px;}
+.kb-dienste>p {font-size:12px;line-height:1.5;}
+.kb-dienste label {display:flex;flex-direction:column;gap:6px;font-size:12px;}
+.kb-dienste input,.kb-dienste textarea {box-sizing:border-box;width:100%;font:inherit;font-size:16px;padding:10px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);}
+.kb-dienste-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px;}
+.kb-dienste-grid article {min-width:0;display:flex;flex-direction:column;gap:8px;padding:14px;background:var(--color-panel);border-radius:10px;}
+.kb-dienste-grid small {color:var(--color-fg-muted);}
+.kb-dienste-grid p {margin:0;font-size:13px;line-height:1.5;}
+.kb-dienst-aktionen {display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;}
+.kb-dienst-aktionen button,.kb-dienst-aktionen a {font:inherit;font-size:12px;min-height:44px;display:inline-flex;align-items:center;padding:8px 10px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);cursor:pointer;text-decoration:none;}
+@media(max-width:640px){.kb-dienste-grid{grid-template-columns:1fr;}}
+.kb .kb-dienste [hidden]{display:none!important}
 </style>
 
 <div class="kb" data-design="campus-einheitlich-1">
@@ -523,6 +535,7 @@
     </section>
   </div>
 
+  <script type="application/json" id="kb-steuerdienste">[{"id":"shopify","name":"Shopify","gruppe":"Shop","art":"chat","text":"Produkte und Bestellungen prüfen; konkrete Änderungen beauftragen.","url":"https://admin.shopify.com/store/au3j0y-hq","auftrag":"Prüfe meinen verbundenen Shopify-Shop auf offene Bestellungen und bestätigte Produktprobleme. Nenne die nächsten sinnvollen Schritte."},{"id":"metricool","name":"Metricool","gruppe":"Social Media","art":"chat","text":"Beiträge, Kalender und Ergebnisse deiner verbundenen Kanäle.","url":"https://app.metricool.com/","auftrag":"Prüfe meine geplanten Beiträge und die letzten Ergebnisse in Metricool. Bereite konkrete Verbesserungen für die nächsten Beiträge vor."},{"id":"gmail","name":"Gmail","gruppe":"Kommunikation","art":"chat","text":"E-Mail-Posteingang prüfen und Antworten als Entwürfe vorbereiten.","url":"https://mail.google.com/","auftrag":"Prüfe meine neuen Gmail-Nachrichten, sortiere offene Anliegen und bereite passende Antwortentwürfe zur Sichtung vor."},{"id":"klaviyo","name":"Klaviyo","gruppe":"Kommunikation","art":"chat","text":"Newsletter und Abläufe auswerten; Verbesserungen vorbereiten.","url":"https://www.klaviyo.com/dashboard","auftrag":"Prüfe meine Klaviyo-Abläufe und Kampagnen und bereite einen priorisierten Verbesserungsplan vor."},{"id":"drive","name":"Google Drive","gruppe":"Dateien","art":"chat","text":"Dateien, Dokumente, Tabellen und Präsentationen bearbeiten.","url":"https://drive.google.com/","auftrag":"Finde in meinem verbundenen Google Drive die Unterlagen zu meinen Automationsprojekten und fasse den aktuellen Stand geordnet zusammen."},{"id":"canva","name":"Canva","gruppe":"Design","art":"chat","text":"Bilder, Gestaltungen und Inhalte für Shop und Social Media vorbereiten.","url":"https://www.canva.com/","auftrag":"Erstelle in meinem verbundenen Canva einen passenden Social-Media-Entwurf für meinen Shop mit einer Vorschau zur Prüfung."},{"id":"google_ads","name":"Google Ads","gruppe":"Marketing","art":"chat","text":"Kampagnen auswerten und konkrete Änderungen vorbereiten.","url":"https://ads.google.com/","auftrag":"Analysiere mein verbundenes Google-Ads-Konto und zeige, welche Kampagnen Aufmerksamkeit brauchen. Bereite konkrete Änderungsvorschläge mit ihren Auswirkungen vor."},{"id":"merchant","name":"Merchant Center","gruppe":"Marketing","art":"lesen","text":"Produktablehnungen und Feed-Probleme auswerten.","url":"https://merchants.google.com/","auftrag":"Prüfe mein verbundenes Merchant Center auf Produktablehnungen und priorisiere die Ursachen mit passenden Korrekturvorschlägen."},{"id":"analytics","name":"Google Analytics","gruppe":"Marketing","art":"lesen","text":"Besucher, Kaufwege und Shop-Ergebnisse auswerten.","url":"https://analytics.google.com/","auftrag":"Analysiere die letzten sieben vollständigen Tage meiner verbundenen Google-Analytics-Property und zeige die wichtigsten Verbesserungsmöglichkeiten im Kaufweg."},{"id":"searchconsole","name":"Search Console","gruppe":"Marketing","art":"lesen","text":"SEO: Suchanfragen, Seiten und organische Sichtbarkeit auswerten.","url":"https://search.google.com/search-console","auftrag":"Prüfe meine verbundenen Search-Console-Seiten und nenne die wichtigsten Suchanfragen und Seiten mit Verbesserungspotenzial."},{"id":"tagmanager","name":"Tag Manager","gruppe":"Marketing","art":"lesen","text":"Vorhandene Tracking-Einrichtung prüfen.","url":"https://tagmanager.google.com/","auftrag":"Prüfe die lesend erreichbare Tag-Manager-Einrichtung meines Shops und benenne bestätigte Lücken oder unklare Messungen."},{"id":"entwicklung","name":"Website & Entwicklung","gruppe":"Entwicklung","art":"chat","text":"Das Büro und bestehende Automationsprojekte verbessern.","auftrag":"Verbessere mein KI-Büro und die bestehenden Automationsprojekte selbständig im bestätigten Aufgabenbereich. Prüfe Änderungen und melde konkrete Ergebnisse."},{"id":"stripe","name":"Stripe","gruppe":"Zahlungen","art":"zugang","text":"Direkte Verbindung im Chat noch prüfen beziehungsweise einrichten.","url":"https://dashboard.stripe.com/payments","auftrag":"Prüfe, ob meine Stripe-Verbindung jetzt eingerichtet ist, und zeige den tatsächlich verfügbaren Zugriff."},{"id":"obsidian","name":"Obsidian","gruppe":"Wissen","art":"export","text":"Vault-Dateien exportieren; keine bestätigte direkte App-Steuerung.","url":"https://obsidian.md/","auftrag":"Erstelle einen aktuellen Obsidian-Vault für mein KI-Büro mit verknüpften Aufgaben, Wissen und datierten Messbelegen."},{"id":"claude","name":"Claude-Büro","gruppe":"Wissen","art":"import","text":"Gemeinsames Designpaket erstellen; Import in Claude nötig.","url":"https://claude.ai/","auftrag":"Erstelle das aktuelle einheitliche Designpaket für mein vorhandenes Claude-KI-Büro, ohne private Arbeitsdaten zu ersetzen."}]</script>
   <p class="kb-note">Tippe auf einen Arbeitsplatz für den nächsten Schritt. Social Media verwaltest du in Metricool. Zahlen erscheinen nur mit einem datierten Datenstand.</p>
 </div>
 
@@ -936,6 +949,31 @@
       var card=document.createElement('article');var h=document.createElement('b');h.textContent=item[0];var p=document.createElement('p');p.textContent=item[1];
       var a=document.createElement('a');a.className='kb-aktion';a.href=item[3];a.textContent=item[2];a.target='_blank';a.rel='noopener noreferrer';card.append(h,p,a);grid.appendChild(card);
     });el.appendChild(grid);
+    var mehr=document.createElement('details');mehr.className='kb-dienste';
+    var summary=document.createElement('summary');summary.textContent='Weitere Dienste mit dem Assistenten nutzen';mehr.appendChild(summary);
+    var erklaerung=document.createElement('p');erklaerung.textContent='Auftrag kopieren und in diesem verbundenen Chat einfügen. Diese Webseite führt keine Kontoaktion aus. Zugriff und Umfang werden bei der Ausführung geprüft.';mehr.appendChild(erklaerung);
+    var label=document.createElement('label');label.textContent='Dienst oder Aufgabe suchen';var suche=document.createElement('input');suche.type='search';suche.placeholder='Zum Beispiel: E-Mail, Bilder, SEO';label.appendChild(suche);mehr.appendChild(label);
+    var gridDienste=document.createElement('div');gridDienste.className='kb-dienste-grid';mehr.appendChild(gridDienste);
+    var feedback=document.createElement('p');feedback.setAttribute('role','status');mehr.appendChild(feedback);
+    var auftrag=document.createElement('textarea');auftrag.readOnly=true;auftrag.rows=4;auftrag.hidden=true;auftrag.setAttribute('aria-label','Auftrag für den verbundenen Chat');mehr.appendChild(auftrag);
+    var modi={chat:'Im Chat beauftragen',lesen:'Auswertung im Chat',zugang:'Zugang prüfen',export:'Datei-Export',import:'Design-Import'};
+    var katalog=[];try{katalog=JSON.parse(document.getElementById('kb-steuerdienste').textContent);}catch(e){}
+    katalog.forEach(function(d){
+      var card=document.createElement('article');card.dataset.dienst=d.id;
+      var h=document.createElement('b');h.textContent=d.name;var badge=document.createElement('small');badge.textContent=modi[d.art]||'Zugriff prüfen';var text=document.createElement('p');text.textContent=d.text;card.append(h,badge,text);
+      var controls=document.createElement('div');controls.className='kb-dienst-aktionen';
+      var kopieren=document.createElement('button');kopieren.type='button';kopieren.textContent='Auftrag kopieren';
+      kopieren.addEventListener('click',function(){
+        auftrag.value=d.auftrag;auftrag.hidden=false;
+        function manuell(){feedback.textContent='Auftrag unten auswählen, kopieren und im verbundenen Chat senden. Es wurde noch nichts ausgeführt.';auftrag.focus();auftrag.select();}
+        if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(d.auftrag).then(function(){feedback.textContent='Kopiert. Im verbundenen Chat einfügen und senden. Es wurde noch nichts ausgeführt.';}).catch(manuell);}else manuell();
+      });controls.appendChild(kopieren);
+      if(d.url){try{var u=new URL(d.url);var hosts=['admin.shopify.com','app.metricool.com','mail.google.com','www.klaviyo.com','drive.google.com','www.canva.com','ads.google.com','merchants.google.com','analytics.google.com','search.google.com','tagmanager.google.com','dashboard.stripe.com','obsidian.md','claude.ai'];if(u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&hosts.indexOf(u.hostname)>=0){var link=document.createElement('a');link.href=u.href;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Konto öffnen';controls.appendChild(link);}}catch(e){}}
+      card.appendChild(controls);gridDienste.appendChild(card);
+      card.dataset.suche=[d.name,d.gruppe,d.text].join(' ').toLocaleLowerCase('de');
+    });
+    suche.addEventListener('input',function(){var q=suche.value.trim().toLocaleLowerCase('de');gridDienste.querySelectorAll('[data-dienst]').forEach(function(c){c.hidden=!!q&&c.dataset.suche.indexOf(q)<0;});});
+    el.appendChild(mehr);
     var hint=document.createElement('p');hint.className='kb-chef-auto';hint.textContent='Prüfungen, sichere Webseitenkorrekturen und Projektpakete laufen automatisch weiter. Die Links öffnen deinen persönlichen Bereich; Anmeldung bei Bedarf.';el.appendChild(hint);
   });
 
