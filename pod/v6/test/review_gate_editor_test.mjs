@@ -80,6 +80,8 @@ async function desktopSzenario(browser, srv) {
     pruefe('vor dem CTA gibt es weder Upload noch Warenkorb-POST', s.uploads.length === 0 && s.warenkorb.length === 0);
     let dialog = await reviewOeffnen(p);
     pruefe('CTA oeffnet den Review vor jedem Upload und Warenkorb-POST', s.uploads.length === 0 && s.warenkorb.length === 0);
+    const zusammenfassung = await dialog.locator('[data-review-summary="1"]').innerText();
+    pruefe('Review zeigt den echten Variantentitel', /Ausführung:\s+Weiss/.test(zusammenfassung), zusammenfassung);
 
     const placements = await dialog.locator('[data-review-placement]').evaluateAll((k) => k.map((x) => x.getAttribute('data-review-placement')));
     pruefe('Review zeigt genau Vorder- und Rueckseite', JSON.stringify(placements) === JSON.stringify(['front', 'back']), JSON.stringify(placements));
@@ -145,6 +147,39 @@ async function desktopSzenario(browser, srv) {
     pruefe('Desktop-Lauf ohne Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   } finally {
     await s.schliessen();
+  }
+}
+
+async function standardAusfuehrungSzenario(browser, srv) {
+  const id = '55893188411777';
+  for (const fall of [
+    { name: 'rohe Varianten-ID', sprache: 'de-CH', lang: 'de', titel: id, label: 'Ausführung', erwartet: 'Standardausführung' },
+    { name: 'Default Title', sprache: 'en-GB', lang: 'en', titel: 'Default%20Title', label: 'Option', erwartet: 'Standard option' },
+    { name: 'numerischer echter Titel', sprache: 'de-CH', lang: 'de', titel: '38', label: 'Ausführung', erwartet: '38' },
+  ]) {
+    const s = await seiteOeffnen(browser, srv.url, {
+      breite: 1024,
+      hoehe: 800,
+      sprache: fall.sprache,
+      query: `lang=${fall.lang}&karte=71&shop=${id}:4012&varianten=${id}:${fall.titel}`,
+    });
+    const p = s.page;
+    try {
+      await editorBereit(p);
+      await textAuf(p, 'front', 'Variantenpruefung');
+      const dialog = await reviewOeffnen(p, 1);
+      const zusammenfassung = await dialog.locator('[data-review-summary="1"]').innerText();
+      pruefe(
+        `${fall.sprache}: ${fall.name} wird korrekt benannt`,
+        new RegExp(`${fall.label}:\\s+${fall.erwartet}`).test(zusammenfassung) && !zusammenfassung.includes(id) && !/Default Title/i.test(zusammenfassung),
+        zusammenfassung,
+      );
+      pruefe(`${fall.sprache}: Varianten-Review ohne Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
+      await p.keyboard.press('Escape');
+      await dialog.waitFor({ state: 'detached' });
+    } finally {
+      await s.schliessen();
+    }
   }
 }
 
@@ -254,6 +289,7 @@ const srv = await starteServer();
 const browser = await chromium.launch();
 try {
   await desktopSzenario(browser, srv);
+  await standardAusfuehrungSzenario(browser, srv);
   await staleRunSzenario(browser, srv);
   await mobilSzenario(browser, srv);
 } catch (e) {

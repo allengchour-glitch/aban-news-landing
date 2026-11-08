@@ -168,7 +168,7 @@
       draftBack: 'Dein Entwurf wurde wiederhergestellt.',
       draftLost: 'Fotos, die noch nicht hochgeladen waren, konnten nicht wiederhergestellt werden. Bitte füge sie noch einmal hinzu.',
       reviewHead: 'Druckvorschau prüfen', reviewIntro: 'Prüfe jede Druckfläche. Hochgeladen wird genau die hier gezeigte PNG-Datei.',
-      reviewProduct: 'Produkt', reviewVariant: 'Ausführung', reviewModel: 'Printful-Modell', reviewPlacements: 'Druckflächen',
+      reviewProduct: 'Produkt', reviewVariant: 'Ausführung', standardVariant: 'Standardausführung', reviewModel: 'Printful-Modell', reviewPlacements: 'Druckflächen',
       reviewPrint: 'Verbindliche Druckdatei', reviewOnProduct: 'Auf dem Produkt', reviewMugView: 'Auf dem Produkt – Vorderansicht',
       reviewMugNote: 'Kontrollierte Vorderansicht: Die Druckdatei links ist verbindlich. Teile eines Rundum-Motivs können seitlich liegen und hier nicht sichtbar sein.',
       reviewFallback: 'Produktansicht nicht verfügbar. Die gezeigte Druckdatei ist massgebend.',
@@ -234,7 +234,7 @@
       draftBack: 'Your draft was restored.',
       draftLost: 'Photos that had not finished uploading could not be restored. Please add them again.',
       reviewHead: 'Review print preview', reviewIntro: 'Check every print area. The exact PNG shown here will be uploaded.',
-      reviewProduct: 'Product', reviewVariant: 'Option', reviewModel: 'Printful model', reviewPlacements: 'Print areas',
+      reviewProduct: 'Product', reviewVariant: 'Option', standardVariant: 'Standard option', reviewModel: 'Printful model', reviewPlacements: 'Print areas',
       reviewPrint: 'Binding print file', reviewOnProduct: 'On the product', reviewMugView: 'On the product – front view',
       reviewMugNote: 'Controlled front view: the print file on the left is binding. Parts of a wraparound design can sit at the sides and may not be visible here.',
       reviewFallback: 'Product preview unavailable. The shown print file is authoritative.',
@@ -1737,7 +1737,10 @@
         });
         if (teile.length) n = teile.join(' / ');
       }
-      return String(n || st.shopVariante || '').replace(/\s+/g, ' ').trim();
+      n = String(n || '').replace(/\s+/g, ' ').trim();
+      var variantenId = String((c && c.value) || st.shopVariante || '').trim();
+      if (!n || /^default title$/i.test(n) || (variantenId && n === variantenId)) return T.standardVariant;
+      return n;
     }
     /** Vergleichstext eines Standes: lange Bildadressen gekürzt, damit der Vergleich schnell bleibt. */
     function stand(s) {
