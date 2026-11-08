@@ -2,6 +2,15 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Agentenverbesserung vom 08.11.2026
+
+- **GEMESSEN:** `experten.planen` meldete bei fehlgeschlagener oder veralteter Prüfung für Test-/Paketaufträge gleichzeitig «Wartet auf Prüfung» und `automatisch=true`. Reproduktion mit offenem Meilenstein2 und fehlgeschlagener Gesamtprüfung bestätigt.
+- Korrektur: Projektarbeit erhält das Automatik-Kennzeichen nur beim Zustand «Nächster Schritt». Fehlgeschlagene, fehlende, ältere als24 Stunden und zukünftige Prüfstempel sperren es. Vorgesehene lokale Prüf-/Paketarbeit mit frischem bestandenem Prüfstand bleibt möglich. Es wird kein neuer Agentendienst gestartet.
+- Alle27 vorhandenen Chat-Aufträge verlangen jetzt ausdrücklich Shared Memory und diese Übergabe, Abgleich laufender Arbeit, konkrete Fehlerreproduktion und frische Gegenprobe. Bei Drosselung oder unklarem schreibendem Ergebnis stoppen; keine neuen Automationen, Frequenz-, Konto-, DNS- oder Secretänderungen. Abgeschlossene Arbeit und Blocker ohne private Daten hier festhalten.
+- **GEMESSEN:** 25 Entwickler- und66 Bürotests lokal bestanden. Regressionstest wird rot, wenn die Korrektur rückgängig gemacht wird. Desktop1440×1000 und Handy390×844: Erledigen-Link enthält neue Regeln, alle27 Aufträge aktuell; keine Chatnachricht gesendet. Lokale vollständige CI-Simulation weiterhin am schreibgeschützten HOME blockiert; keine erfolgreiche Simulation behaupten.
+- Source und veröffentlichte HTML-Vorlage synchronisiert, vorhandene Statusdaten erhalten. Änderung in **PR2980**, Branch `codex/agenten-verbessern`: aktuellen Remote-Test-, Merge- und Bereitstellungsstand dort frisch prüfen. Echter lokaler Werkstattlauf `/workspace/agenten-nachweis-20261108` erfolgreich: Demo und Lieferpakete gebaut, Angebot bleibt Entwurf. Änderungen sind Aufgabenplanung und Chat-Instruktionen, kein Nachweis für ständig laufende KI-Arbeiter. Finanzielle Wirkung nicht gemessen.
+- Die vorangehende reine Übergabe wurde mit ausdrücklicher Inhaberfreigabe trotz ausstehender Prüfungen in PR2979 übernommen, Merge `8aab972b23dfbe21562da36e35209a1777383842`. Diese einzelne Freigabe gilt nicht pauschal für neue Codeänderungen. Zähler-PR2978 bleibt Entwurf.
+
 ## Ausgangsstand und Reihenfolge
 
 - Arbeitsbeginn von `origin/main` `1cf3fa734a8c02dc2fbe29ca6f908d8aee0aeaac` (PR2972); vor den Produktwrites frisch mit `f6289be` (PR2973, proportionale mobile POD-Druckvorschau) abgeglichen. POD-Produkte nicht gleichzeitig angefasst. Vor neuer Arbeit remote erneut abgleichen.

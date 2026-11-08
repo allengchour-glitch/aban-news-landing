@@ -6,12 +6,17 @@ REGELN = ('Führe diesen Auftrag jetzt mit den verfügbaren Werkzeugen aus. '
           'Ein vorbereiteter oder gespeicherter Auftrag gilt nicht als erledigt. '
           'Prüfe zuerst den aktuellen Stand und offene Arbeiten, damit nichts doppelt erledigt wird. '
           'Arbeite mit vorhandenen Verbindungen und im Repository allengchour-glitch/aban-news-landing. '
-          'Beachte AGENTS.md, CLAUDE.md und die aktuelle Übergabe. '
+          'Lies AGENTS.md, CLAUDE.md, SHARED-MEMORY.md und docs/CODEX-CLAUDE-UEBERGABE.md. '
+          'Prüfe bestehende laufende Aufträge vor einem Start; keine Doppelarbeit. '
+          'Reproduziere Fehler mit einer konkreten Eingabe und prüfe die Korrektur frisch. '
+          'Bei Drosselung oder unklarem schreibendem Ergebnis stoppen, nicht blind wiederholen. '
+          'Keine neuen Automationen, Frequenz-, Konto-, DNS- oder Secretänderungen. '
           'Nenne fehlenden Zugriff konkret und erledige den unabhängig möglichen Rest. '
           'Keine Nachrichten versenden, nichts auf Social Media veröffentlichen, keine Zahlungen, '
           'Preis- oder Budgetänderungen und keine neuen kostenpflichtigen Dienste auslösen. '
           'Private Konto- und Kundendaten bleiben privat. '
           'Berichte knapp: tatsächlich erledigt, geprüftes Ergebnis, verbleibender Blocker und nächster Schritt. '
+          'Speichere abgeschlossene Arbeit und offene Blocker ohne private Daten in der Claude-Übergabe. '
           'Erfinde keine Verkäufe, Fortschritte oder laufenden Arbeiten.')
 
 AUFTRAEGE = [

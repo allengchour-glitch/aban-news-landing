@@ -72,5 +72,22 @@ class ExpertenTest(unittest.TestCase):
         self.assertEqual(plan['auftraege'],[])
         self.assertTrue(any(r['zustand']=='Paketbau bestätigt' for r in plan['rollen']))
 
+    def test_blockierte_projektarbeit_ist_nicht_automatisch_ausfuehrbar(self):
+        for offen in (2, 3):
+            for status, stunden in [('fehlgeschlagen', 0), ('offen', 0), ('bestanden', 25), ('bestanden', -1)]:
+                with self.subTest(offen=offen, status=status, stunden=stunden):
+                    plan = experten.planen(bericht(pruefen=status, stunden=stunden, offen=offen), NOW)
+                    jobs = [j for j in plan['auftraege'] if j['id'].startswith('projekt_')]
+                    self.assertTrue(jobs)
+                    self.assertTrue(all(j['zustand'] == 'Wartet auf Prüfung' for j in jobs))
+                    self.assertFalse(any(j['automatisch'] for j in jobs))
+
+    def test_freigegebene_lokale_pruefung_und_paketarbeit_bleiben_automatisch(self):
+        for offen in (2, 3):
+            with self.subTest(offen=offen):
+                plan = experten.planen(bericht(offen=offen), NOW)
+                jobs = [j for j in plan['auftraege'] if j['id'].startswith('projekt_')]
+                self.assertTrue(all(j['zustand'] == 'Nächster Schritt' and j['automatisch'] for j in jobs))
+
 
 if __name__=='__main__': unittest.main()
