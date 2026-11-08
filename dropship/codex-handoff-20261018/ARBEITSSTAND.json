@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 145,
-  "updatedAt": "2026-11-08T17:50:45+01:00",
+  "revision": 146,
+  "updatedAt": "2026-11-08T18:55:01+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-08",
     "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
-    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung.",
+    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung. R146: Metricool-Identität und Planung08.–15.11. wurden als kleine Planungsgegenprobe gelesen; keine Kennzahlabfrage oder Mutation. Drei konkrete Produkte, ein Merchant-Sicherheitsprodukt und eine einzelne CJ-Yoga-Route wurden gezielt geprüft; keine breite Katalogpagination, Klaviyo-/Bestell-/Kauf-Watch-Wiederholung oder Verkaufsableitung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-08",
@@ -231,12 +231,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r107_pumps_and_five_toe_variant_claim_seo_alttexts_live_verified",
+      "state": "r146_three_active_product_language_seo_claim_and_alttext_fixes_live_verified",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R107_TWO_PRODUCT_CLAIM_VARIANT_SEO_AND_32_IMAGE_ALT_WRITES_WITH_ADMIN_STOREFRONT_READBACK",
-      "lastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden. R80: Katzenhängematte16610153759111 frisch mit Stoff-/Holzangaben ohne Komponentenbeleg und falscher Reisenapf-/Feedkategorie gelesen. Historischer BLOCKED_NEEDS_SOURCE bestätigt; Materialentfernung nur als enger Entwurf, keine Shopänderung. R81, 04.11.2026: Historischer ACTIVE-Export mit56’630 eindeutigen Produkten reproduzierbar ausgewertet, ohne ihn als aktuellen Livebestand auszugeben. 3’523 Produkte mit kritischem/hohem Prüfsignal, darunter2’841 Materialkandidaten,1’504 mögliche Materialkonflikte Detailzeile/Fliesstext,595 mehrere Materialzeilen,336 Titel-/Text-Materialabweichungen,15 Medizin-/Therapie- und13 Review-/Beliebtheitsclaims. Titel-/Variantenprüfung:62 hochsichere Produktkandidaten, darunter49 Einheitsgrössen-Aussagen bei mehreren Optionen und7 Titelfarben ohne passende Optionswerte; fünf Produkte mit case-insensitiv doppelten Optionswerten. Aktuelle gezielte Shopify-Probe: fünf ACTIVE-Produkte/52 Varianten. Katzenhängematte16610153759111 bestätigt Material-/Taxonomiefehler live. Hundepullover16605072458119: Titel weiss, aktuelle Varianten nur Braun/Beige; Text nurM und200g, OptionenXS–XL und Detailgewicht57–117g. 52/52 Varianten in der Stichprobe availableForSale, CONTINUE, tracked=false; keine Livekatalogquote, Lager- oder Lieferzusage. Keine Mutation. R82, 04.11.2026: Historischen ACTIVE-Export vollständig zu 56’630 eindeutigen IDs in eine deterministische Queue überführt: P0 154, P1 3’982, P2 52’494, autoFixAllowed 0. Drei aktuelle Katzenprodukte seriell live korrigiert und nativ/öffentlich zurückgelesen: 15454094426497 DRAFT blieb DRAFT; 15493884445057 und 15495226098049 blieben ACTIVE/kaufbar. Neutrale Titel/Texte, passende Produkttyp-/Leaf-Taxonomie und fachfremde Tags korrigiert. Beim L-Modell ungesicherte Tiermaterialwerte durch bildgestützte Struktur-/Glattplüsch-Bezugswerte ersetzt. Preise, Varianten-IDs, SKUs, availability, CONTINUE/tracked=false, Handles, Bilder und Sperrtags erhalten. Keine Massenmutation oder Merchant-/Theme-/Socialänderung. R83, 04.11.2026: Fünf P0-Produkte öffentlich HTTP200/available und taxonomisch geprüft; für 0/5 wurde eine unabhängige SKU-spezifische CJ-/Lieferantenquelle lokal gefunden. Seifenspender mischt zwei Geräte und Akku/4×AAA; Badeanzug hat keine versprochene Masstabelle; Alkoholmeter unlesbare Skalen/separates Thermometer; Hopfenfilter absolute ungesicherte Claims; Katzenspielzeug offene Stromversorgung/Modi und fachfremden hund-Tag. Alle fünf tragen rueckhol-0907 und bleiben für neue Socialausspielung blockiert. Zwei klare Leaf-/Tag-Diffs vorbereitet, keine Produktmutation. R84, 04.11.2026: Genau fünf Produkte seriell live korrigiert und nach jedem Write vollständig im Admin sowie öffentlich gegengelesen. Badeanzug15448534122881 erhielt neutralen Text/SEO, Leaf aa-1-20-22, Produkttyp Damen-Bademode und verlor zwei falsche Jumpsuit-Tags. Katzenspielzeug15454092558721 erhielt neutralen Text/SEO, Leaf ap-2-2-5-5 und verlor nur hund. Hopfenfilter15509968880001 verlor unbelegte Material-/Mikron-/Sicherheitsclaims. Kaffeemaschine15493277024641 und Vakuumierer15454415389057 erhielten ausschliesslich Produkttyp Küche & Bar; ihre korrekten Leafs blieben. Alle fünf Mutationen ohne userErrors, alle öffentlichen Gegenproben HTTP200. Status, Handles, Medien, Varianten-IDs, SKUs, Preise, Kaufbarkeit, Inventory-Policy, Tracking und rueckhol-0907 erhalten. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben wegen SKU-/Geräte-/Technikquellen BLOCKED_NO_WRITE. Kein Merchant-, Theme-, Social-, Flow-, DNS-, Budget-, Rabatt- oder Versandwrite; keine erneuten Tagesreports oder Kauf-Watch-Abfrage. R85, 04.11.2026: Nudelmaschine15495105184129 mit neutralem Titel/Text/SEO und Produkttyp Küche & Bar korrigiert; aufbewahrung/organizer sowie unbelegte Stahl-, Modell-, 3-mm-, Lieferumfang-, Lieferzeit- und Rabattclaims entfernt. Ein Versuch, keine userErrors/keinRetry, Admin/StorefrontHTTP200. Barcode-Vorherfeld fehlte und bleibtunknown; Guard stoppte R85 nach genau1Write. R86, 04.11.2026: Eisraspler15448963645825, rundeWandlampe15454472012161, Meerjungfrauenlampe15465835233665 und Laternenleuchte15476180451713 seriell mit vollständiger Barcode-/Varianten-/Medienbasis korrigiert. Neutrale bildgestützte Titel/Texte/SEO, falsche Tags und unbelegte Material-/Mass-/Elektro-/Sensor-/Schutzart-/Lieferzeit-/Rabattclaims entfernt. Vier Versuche, keine userErrors/Retries; Adminschutz und öffentliche HTML-/JSON-HTTP200-Gegenproben vollständig. ACTIVE, Handles, Kategorien, Publikationen, Varianten-IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, Barcodes, Optionen, Medienbindungen und rueckhol erhalten. Alte Handles/Alttexte und globale Theme-Hinweise getrennt offen; Gesamtkatalog nicht abgeschlossen. Keine Tagesreport-/Kauf-Watch-Wiederholung oder externen Writes ausser den fünf beschriebenen Produktmutationen. R87, 04.11.2026: Fünf weitere ACTIVE-Leuchtenprodukte seriell mit vollständiger Admin-Vorherbasis korrigiert und nach jedem Write vollständig im Admin sowie öffentlich über HTML und Produkt-JSON zurückgelesen. Je genau ein Mutationsversuch, keine userErrors und keine Retries. 15 fachfremde Schmuck-Tags entfernt; neutrale Titel, Beschreibungen und SEO-Texte ausschliesslich aus aktuellen Variantenwerten und sichtbaren Bildern. Drei Optionslabels Farbe zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. 26 Varianten und 38 Bilder vollständig geschützt; Status, Handles, Vendor, Kategorie, Publikationen, IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, leere Barcode-Sätze und Medienbindungen erhalten. Keine unbelegten Material-, Mass-, Elektro-, Aussenbereichs-, Lieferzeit- oder Bewertungsclaims ergänzt. Gesamtkatalog weiter offen; keine Tagesreport- oder Kauf-Watch-Wiederholung und keine externen Writes ausser den fünf Produktmutationen. R94, 05.11.2026: Genau zwei ACTIVE-Hundepullover live mit vollständiger Varianten-/Medien-/Publikationsbasis bearbeitet. Produkt16605072458119 erhielt in einem kombinierten productUpdate/fileUpdate Titel, neutralen Body, SEO und11 READY-Alttexte; Produkt16611936010631 erhielt Body/SEO und9 READY-Alttexte, danach wegen unabhängigem Rundhalsbeleg genau einen begründeten Korrektur-Write ohne V-Ausschnitt. Alle Mutationen ohne userErrors; finale Admin- und zwei öffentliche QA-Readbacks mit je10/10 Checks bestätigt. 25 Varianten, SKUs, CHF-Preise, Kaufbarkeit, ungetracktes CONTINUE, Medien-IDs/-URLs und je7 Publikationen erhalten. Handles/Tags/Kategorien unverändert; alte Handles und Tag decke getrennt offen. Kein Katalogabschluss oder Bestands-/Lieferzeitversprechen. R95, 05.11.2026: Genau zwei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-/Medien-/Metafeld-/Publikationsbasis bearbeitet. Tennisarmband16615274611079 und Gemüseschneider15450837188993 erhielten je in genau einem kombinierten productUpdate/fileUpdate neutralen Titel, belegbaren Body, SEO und sieben beziehungsweise zwölf bildbezogene READY-Alttexte. Keine userErrors oder Retries; finale vollständige Admin- und je zwei öffentliche HTML-/Produkt-JSON-Gegenproben mit 12/12 Checks pro Produkt. Nur Zieltexte, Bild-Alttexte und Shopifys erwartete SEO-Spiegel global.title_tag/global.description_tag änderten sich. Handles, Status, Vendor, Produkttyp, Kategorien, Tags, Optionen, 11 Varianten, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventory-Zähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Bindungen und Publikationen erhalten. Gemüseschneider-rueckhol-0907 erhalten; neue Social-Ausspielung blockiert. Keine Lager-/Lieferzeitzusage, kein Katalogabschluss und keine sonstigen externen Writes. R96, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Teppich16606106255751, Haustierpullover16607464391047 und Rucksack16611664888199 erhielten je einen productUpdate für neutralen Titel, belegbaren Body und SEO sowie je einen getrennten fileUpdate für13/6/5 bildbezogene Alttexte. Der erste kombinierte Teppich-Aufruf wurde vor Dispatch abgebrochen und bewirkte keinen Write. Sechs gesendete Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. 62 Varianten, 24 READY-Bilder, 21 Publikationen, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventory-Werte, Tracking, CONTINUE, Medien-URLs/-Reihenfolge/-Bindungen erhalten. Shopify-SEO-Spiegel änderten sich erwartet. Judge.me aktualisierte beim Haustierpullover nur Titelspiegel; Reviewanzahl, Bewertung, IDs und Inhalte blieben gleich. Rucksack-Reviewspiegel blieb beim Rücklesen historisch; kein Reviewwrite. Historischer 56’630-ID-Snapshot rund100% offline gescannt/priorisiert; frisch exakt56’506 ACTIVE/87’774 alle Status. Streng kontrollierte R82–R96-Livekorrekturen:24 ACTIVE=0,04247%, gerundet0,04%; rund99,96% unter diesem Massstab offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale öffentliche QA:48/48, Verdict GO. R97, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Tennistasche16606107500935, Rolltop-Rucksack16650219651463 und Strickoberteil15524856496513 erhielten je genau einen productUpdate für belegbaren Titel, Body und SEO sowie je einen fileUpdate für6/5/8 bildbezogene Alttexte. Alle sechs Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. Sieben Varianten, 19 READY-Bilder, 22 Publikationsknoten, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventarzähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Reihenfolgen und Variantenbindungen erhalten. Shopify-SEO-Spiegel änderten sich erwartet; automatische Judge.me-Spiegeländerungen betrafen keine Reviewanzahl, Bewertung oder Reviewliste. Streng kontrollierte R82–R97-Livekorrekturen:27 ACTIVE von56’506=0,04778%, gerundet0,05%;56’479 beziehungsweise rund99,95% unter diesem Massstab offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale öffentliche QA:60/60, Verdict GO, Report-SHA256 5ad89b43a4e3c613cdf8bbfeb80bd51f910d928fc93dc47d59e73172472790a9. R99, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Rucksack15448913281409, Kissenbezug15493835751809 und Segment-Armband15493851480449 erhielten je genau einen productUpdate für belegbaren Titel/Body/SEO sowie je einen fileUpdate für5/28/13 bildbezogene Alttexte. Alle sechs Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. 36 Varianten,46 READY-Bilder,19 Publikationsknoten, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodebasis, CHF-Preise, Kaufbarkeit, Inventarzähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Reihenfolgen/-Bindungen und Nicht-SEO-Metafelder erhalten. Alle drei rueckhol-0907 erhalten; Social bleibt blockiert. Streng kontrollierte R82–R99-Livekorrekturen:30 ACTIVE von56’506=0,05309%, gerundet0,05%;56’476 beziehungsweise rund99,95% offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale QA:60/60,3/3 GO,46/46 Alttexte exakt, Report-SHA256 5a1606459ec1b9324ab2ed9efde4d81bc16a668bceb33583814a92c621cf3643. R100, 05.11.2026: Den neuen 32-Zeilen-Merchant-CSV als Kandidatenliste geprüft; 29 eindeutige Shopify-Produkte plus eine nicht sicher abbildbare ID. CSV liefert keine Alterswerte. Zwei ACTIVE-BRUDER-Spielsets über offizielle Artikelnummer, GTIN und Bilder gebunden: Feuerwehrstation62702/15470017380737 und UPS-Paketshop62250/15470032945537. Beide erhielten belegte Setinhalte und Herstellerempfehlung ab4Jahren; Kleinteilehinweis ausschliesslich beim offiziell belegten UPS-Artikel. Je Produkt genau ein productUpdate und ein fileUpdate, keine userErrors/Retries; acht Alttexte. Vollständige Admin-/Storefront-Readbacks und unabhängige QA40/40,2/2GO. Zwei Varianten, acht READY-Bilder,14 Publikationsknoten, Handles, Tags, Kategorien, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventar, Tracking, DENY und Medienbindungen erhalten. Frisch exakt56’506 ACTIVE/87’774 alle Status; streng kontrolliert32 ACTIVE=0,05663%, gerundet0,06%;56’474/rund99,94% offen. 27 CSV-Produkte plus eine unbekannte ID und Google-Neuverarbeitung offen; fr/Deutsch separat. Keine weiteren externen Writes oder Tagesreport-Wiederholung. R104, 05.11.2026: Zwei weitere ACTIVE-BRUDER-Produkte anhand offizieller Artikelnummer, GTIN, Shopify-SKU und Bildidentität gebunden. Forstwirtschaftsset62650 und Polizei-Quad63010 erhielten mit genau2 productUpdate und2 fileUpdate belegte Titel, strukturierte Beschreibungen, SEO und je1Alttext; keine userErrors/Retries. Vollständige Admin- sowie öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200 und unabhängige QA2/2 GO. Status, Handles, Tags, Kategorien, Varianten-IDs, SKUs, GTINs, CHF-Preise, Kaufbarkeit, Tracking/DENY, Inventarzähler, Medien und16Publikationsknoten erhalten. Streng34/56’506=0,06017%, gerundet0,06%;56’472/rund99,94% offen. CSV-Scope4/29 bearbeitet;25 zuordenbare plus1 unbekannte Merchant-ID offen. Sieben R103-Overlay-SKUs bleiben ohne exakte CJ-Varianten-/Medienbindung blockiert; kein CJ-Workflow oder sonstiger externer Write. R105, 05.11.2026: Zwei weitere ACTIVE-Produkte vollständig live gelesen und korrigiert. Maxikleid15500282003841: falsches Beige/Midi-/Material-/Passformnarrativ auf aktuelle Farben Milchweiss, Himmelblau, Lavendel-Lila und GrössenXS–2XL begrenzt;11 Alttexte. Fitnessschuhe16638316020103: Grau sowie unbelegte Knie-, Material-, Gewichts-, Rutsch- und Höhenclaims entfernt; aktuelle Farben Weiss/Schwarz und Grössen38–45;7 Alttexte. Je genau1 productUpdate und1 fileUpdate, keine userErrors/Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200, unabhängige QA2/2GO. 34 Varianten/IDs/SKUs, CHF22.90–26.90 beziehungsweiseCHF50.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und12Publikationsknoten erhalten. Streng36/56’506=0,06371%, gerundet0,06%;56’470/rund99,94% offen. Keine genaue CJ-Lieferantenquelle, deshalb unbelegte Claims entfernt statt ersetzt; keine sonstigen externen Writes. R106, 05.11.2026: Produkt16610538324359 vollständig live gelesen; vier aktuelle Varianten S–XL und sieben Bilder zeigen ein kurzes rosafarbenes Neckholder-Kleid mit Volantstufen. Falsches Midikleid-/nur-S-Narrativ sowie widersprüchliche 100%-Polyester/Polyester-Spandex-, Gewicht-, Passform-, Anlass- und Lieferclaims entfernt; Titel, neutraler Body, SEO und7Alttexte mit genau1 productUpdate und1 fileUpdate. Keine userErrors/Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200, unabhängige QA GO. ACTIVE, Handle, Vendor, Produkttyp, Kategorie, Tags, Option,4 Varianten/IDs/SKUs, CHF16.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Medienbindungen und6Publikationen erhalten. Historischer Midi-Handle und Midi-Sortiertag bleiben getrennt offen. Streng37/56’506=0,06548%, gerundet0,07%;56’469/rund99,93% offen. Keine genaue CJ-Quelle und keine sonstigen externen Writes. R107, 05.11.2026: Produkte16656436363655 und15500453872001 vollständig live gelesen und korrigiert. Pumps: unbelegte Zehenschutz/Pigskin/TPR/Stabilitäts/Gewichts/nur34-Angaben auf sichtbare Glitzer-Slingback-Form, Schwarz/Champagner und34–39 begrenzt;9 Alttexte. Fünf-Zehen-Schuhe: falsches Beige sowie unbelegte Indoor/Rutsch/Schock/Luft/Leichtigkeitsclaims auf neun aktuelle Farben,35–45 und sichtbare Form begrenzt;23 Alttexte. Je genau1 productUpdate und1 fileUpdate, keine userErrors/Retries; vollständige Adminrücklesung über3 Variantenseiten sowie öffentliche HTML/Produkt-JSON-HTTP200, unabhängige QA2/2GO. 111 Varianten/IDs/SKUs, CHF42.90 beziehungsweiseCHF89.90–96.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und12 Publikationen erhalten. Alte Handles und such-sicherheitsschuhe getrennt offen. Streng39/56’506=0,06902%, gerundet0,07%;56’467/rund99,93% offen. Remote/Claude-Abgleich ohne konkreten Doppelwrite; Receipt/Live-Lock unbekannt. Keine sonstigen externen Writes.",
-      "nextAllowedStep": "R107 abgeschlossen und dokumentiert. R108 eng reserviert: Produkte16655747481991 und16616678195591. Unmittelbar vor jeder Änderung zuerst origin/main, offene Claude-LuxeStyle-PR-Heads und Shopify updatedAt frisch lesen; bei Änderung seit Baseline oder neuer Claude-Überschneidung stoppen und anderen Kandidaten wählen. Danach vollständiger Admin-Read mit Varianten, Bildern, Tags, Inventory, Publikationen und öffentlichem HTTP-Readback. Nur belegte Minimaldiffs; keine Material-, Pflege-, Schnellttrocknen-, Komfort-, Liefer- oder Bestandsclaims ohne Quelle. Nach jedem Einzelwrite Admin und Storefront vollständig zurücklesen; unknown bedeutet Stopp ohne Retry. R82–R107 nicht wiederholen; Gesamtkatalog, sieben CJ-Overlayfälle und Google-Neuverarbeitung offen.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R146_THREE_TARGETED_ACTIVE_PRODUCT_LANGUAGE_SEO_CLAIM_AND_ALTTEXT_WRITES_WITH_ADMIN_STOREFRONT_READBACK",
+      "lastEvidence": "Drei gezielt geprüfte ACTIVE-Produkte live deutsch bereinigt und öffentlich zurückgelesen:15504187720065 Bedrucktes Damen-Maxikleid, CHF23.90/63 Varianten/20 Alttexte;15448586125697 Elegantes Kleid mit Nackenhalter, CHF15.90/4 Varianten/6 Alttexte;15470021181825 Plüschhamster,18cm, CHF22.90/1 Alttext. Unbelegte Material-/Passform-, Rabatt-, DPD- und produktbezogene Lieferzeitclaims im jeweiligen Scope entfernt. Status, Varianten, Preise, Publikationen, Tags und Inventory-Verhalten erhalten. Nackenhalter-Kleid trägt rueckhol-0907; keine Social-Ausspielung. Keine Vollkatalogquote oder Bestands-/Lieferzusage.",
+      "nextAllowedStep": "R146-Produkte nicht erneut schreiben. Einen nächsten Produktfall nur nach frischer Admin-/Storefront-/Quellengegenprobe und mit vollständigem Varianten-, Medien-, Publikations- und Inventory-Schutz bearbeiten. Unbelegte Material-, Mass-, Passform-, Review-, Lieferzeit- und Bestandsclaims nicht ergänzen. Bei UNKNOWN stoppen, kein Retry; gemischtes /fr und MAIN separat behandeln.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -829,6 +829,16 @@
           "previousBelegArt": "R106_EIN_PRODUKT_SEO_UND_7_BILDALTTEXT_WRITES_MIT_ADMIN_STOREFRONT_READBACK",
           "previousNextAllowedStep": "R106 abgeschlossen. Als nächsten kleinen Allowlist-Stapel Produkte16656436363655 (Mary-Jane-Pumps: historische Einzelgrösse34 versus34–39; Zehenschutzclaim prüfen) und15500453872001 (Fünf-Finger-Sneaker: Beige im Titel versus aktuelle Farbauswahl) vollständig frisch lesen. Nur aktuelle Options-/Bildwerte und exakte Quellen verwenden; Material-, Schutz-, Barfuss-, Komfort- oder Lieferclaims nicht ohne Beleg. Nach jedem Einzelwrite Admin und Storefront vollständig zurücklesen; bei unknown stoppen, kein Retry. R82–R106 nicht wiederholen; Gesamtkatalog, sieben CJ-Overlayfälle und Google-Neuverarbeitung offen.",
           "previousLastEvidencePreserved": "Exact previous evidence retained as prefix; R82–R106 work not counted anew."
+        },
+        {
+          "at": "2026-11-08T18:55:01+01:00",
+          "sourceRevision": 145,
+          "previousState": "r107_pumps_and_five_toe_variant_claim_seo_alttexts_live_verified",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R107_TWO_PRODUCT_CLAIM_VARIANT_SEO_AND_32_IMAGE_ALT_WRITES_WITH_ADMIN_STOREFRONT_READBACK",
+          "previousLastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden. R80: Katzenhängematte16610153759111 frisch mit Stoff-/Holzangaben ohne Komponentenbeleg und falscher Reisenapf-/Feedkategorie gelesen. Historischer BLOCKED_NEEDS_SOURCE bestätigt; Materialentfernung nur als enger Entwurf, keine Shopänderung. R81, 04.11.2026: Historischer ACTIVE-Export mit56’630 eindeutigen Produkten reproduzierbar ausgewertet, ohne ihn als aktuellen Livebestand auszugeben. 3’523 Produkte mit kritischem/hohem Prüfsignal, darunter2’841 Materialkandidaten,1’504 mögliche Materialkonflikte Detailzeile/Fliesstext,595 mehrere Materialzeilen,336 Titel-/Text-Materialabweichungen,15 Medizin-/Therapie- und13 Review-/Beliebtheitsclaims. Titel-/Variantenprüfung:62 hochsichere Produktkandidaten, darunter49 Einheitsgrössen-Aussagen bei mehreren Optionen und7 Titelfarben ohne passende Optionswerte; fünf Produkte mit case-insensitiv doppelten Optionswerten. Aktuelle gezielte Shopify-Probe: fünf ACTIVE-Produkte/52 Varianten. Katzenhängematte16610153759111 bestätigt Material-/Taxonomiefehler live. Hundepullover16605072458119: Titel weiss, aktuelle Varianten nur Braun/Beige; Text nurM und200g, OptionenXS–XL und Detailgewicht57–117g. 52/52 Varianten in der Stichprobe availableForSale, CONTINUE, tracked=false; keine Livekatalogquote, Lager- oder Lieferzusage. Keine Mutation. R82, 04.11.2026: Historischen ACTIVE-Export vollständig zu 56’630 eindeutigen IDs in eine deterministische Queue überführt: P0 154, P1 3’982, P2 52’494, autoFixAllowed 0. Drei aktuelle Katzenprodukte seriell live korrigiert und nativ/öffentlich zurückgelesen: 15454094426497 DRAFT blieb DRAFT; 15493884445057 und 15495226098049 blieben ACTIVE/kaufbar. Neutrale Titel/Texte, passende Produkttyp-/Leaf-Taxonomie und fachfremde Tags korrigiert. Beim L-Modell ungesicherte Tiermaterialwerte durch bildgestützte Struktur-/Glattplüsch-Bezugswerte ersetzt. Preise, Varianten-IDs, SKUs, availability, CONTINUE/tracked=false, Handles, Bilder und Sperrtags erhalten. Keine Massenmutation oder Merchant-/Theme-/Socialänderung. R83, 04.11.2026: Fünf P0-Produkte öffentlich HTTP200/available und taxonomisch geprüft; für 0/5 wurde eine unabhängige SKU-spezifische CJ-/Lieferantenquelle lokal gefunden. Seifenspender mischt zwei Geräte und Akku/4×AAA; Badeanzug hat keine versprochene Masstabelle; Alkoholmeter unlesbare Skalen/separates Thermometer; Hopfenfilter absolute ungesicherte Claims; Katzenspielzeug offene Stromversorgung/Modi und fachfremden hund-Tag. Alle fünf tragen rueckhol-0907 und bleiben für neue Socialausspielung blockiert. Zwei klare Leaf-/Tag-Diffs vorbereitet, keine Produktmutation. R84, 04.11.2026: Genau fünf Produkte seriell live korrigiert und nach jedem Write vollständig im Admin sowie öffentlich gegengelesen. Badeanzug15448534122881 erhielt neutralen Text/SEO, Leaf aa-1-20-22, Produkttyp Damen-Bademode und verlor zwei falsche Jumpsuit-Tags. Katzenspielzeug15454092558721 erhielt neutralen Text/SEO, Leaf ap-2-2-5-5 und verlor nur hund. Hopfenfilter15509968880001 verlor unbelegte Material-/Mikron-/Sicherheitsclaims. Kaffeemaschine15493277024641 und Vakuumierer15454415389057 erhielten ausschliesslich Produkttyp Küche & Bar; ihre korrekten Leafs blieben. Alle fünf Mutationen ohne userErrors, alle öffentlichen Gegenproben HTTP200. Status, Handles, Medien, Varianten-IDs, SKUs, Preise, Kaufbarkeit, Inventory-Policy, Tracking und rueckhol-0907 erhalten. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben wegen SKU-/Geräte-/Technikquellen BLOCKED_NO_WRITE. Kein Merchant-, Theme-, Social-, Flow-, DNS-, Budget-, Rabatt- oder Versandwrite; keine erneuten Tagesreports oder Kauf-Watch-Abfrage. R85, 04.11.2026: Nudelmaschine15495105184129 mit neutralem Titel/Text/SEO und Produkttyp Küche & Bar korrigiert; aufbewahrung/organizer sowie unbelegte Stahl-, Modell-, 3-mm-, Lieferumfang-, Lieferzeit- und Rabattclaims entfernt. Ein Versuch, keine userErrors/keinRetry, Admin/StorefrontHTTP200. Barcode-Vorherfeld fehlte und bleibtunknown; Guard stoppte R85 nach genau1Write. R86, 04.11.2026: Eisraspler15448963645825, rundeWandlampe15454472012161, Meerjungfrauenlampe15465835233665 und Laternenleuchte15476180451713 seriell mit vollständiger Barcode-/Varianten-/Medienbasis korrigiert. Neutrale bildgestützte Titel/Texte/SEO, falsche Tags und unbelegte Material-/Mass-/Elektro-/Sensor-/Schutzart-/Lieferzeit-/Rabattclaims entfernt. Vier Versuche, keine userErrors/Retries; Adminschutz und öffentliche HTML-/JSON-HTTP200-Gegenproben vollständig. ACTIVE, Handles, Kategorien, Publikationen, Varianten-IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, Barcodes, Optionen, Medienbindungen und rueckhol erhalten. Alte Handles/Alttexte und globale Theme-Hinweise getrennt offen; Gesamtkatalog nicht abgeschlossen. Keine Tagesreport-/Kauf-Watch-Wiederholung oder externen Writes ausser den fünf beschriebenen Produktmutationen. R87, 04.11.2026: Fünf weitere ACTIVE-Leuchtenprodukte seriell mit vollständiger Admin-Vorherbasis korrigiert und nach jedem Write vollständig im Admin sowie öffentlich über HTML und Produkt-JSON zurückgelesen. Je genau ein Mutationsversuch, keine userErrors und keine Retries. 15 fachfremde Schmuck-Tags entfernt; neutrale Titel, Beschreibungen und SEO-Texte ausschliesslich aus aktuellen Variantenwerten und sichtbaren Bildern. Drei Optionslabels Farbe zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. 26 Varianten und 38 Bilder vollständig geschützt; Status, Handles, Vendor, Kategorie, Publikationen, IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, leere Barcode-Sätze und Medienbindungen erhalten. Keine unbelegten Material-, Mass-, Elektro-, Aussenbereichs-, Lieferzeit- oder Bewertungsclaims ergänzt. Gesamtkatalog weiter offen; keine Tagesreport- oder Kauf-Watch-Wiederholung und keine externen Writes ausser den fünf Produktmutationen. R94, 05.11.2026: Genau zwei ACTIVE-Hundepullover live mit vollständiger Varianten-/Medien-/Publikationsbasis bearbeitet. Produkt16605072458119 erhielt in einem kombinierten productUpdate/fileUpdate Titel, neutralen Body, SEO und11 READY-Alttexte; Produkt16611936010631 erhielt Body/SEO und9 READY-Alttexte, danach wegen unabhängigem Rundhalsbeleg genau einen begründeten Korrektur-Write ohne V-Ausschnitt. Alle Mutationen ohne userErrors; finale Admin- und zwei öffentliche QA-Readbacks mit je10/10 Checks bestätigt. 25 Varianten, SKUs, CHF-Preise, Kaufbarkeit, ungetracktes CONTINUE, Medien-IDs/-URLs und je7 Publikationen erhalten. Handles/Tags/Kategorien unverändert; alte Handles und Tag decke getrennt offen. Kein Katalogabschluss oder Bestands-/Lieferzeitversprechen. R95, 05.11.2026: Genau zwei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-/Medien-/Metafeld-/Publikationsbasis bearbeitet. Tennisarmband16615274611079 und Gemüseschneider15450837188993 erhielten je in genau einem kombinierten productUpdate/fileUpdate neutralen Titel, belegbaren Body, SEO und sieben beziehungsweise zwölf bildbezogene READY-Alttexte. Keine userErrors oder Retries; finale vollständige Admin- und je zwei öffentliche HTML-/Produkt-JSON-Gegenproben mit 12/12 Checks pro Produkt. Nur Zieltexte, Bild-Alttexte und Shopifys erwartete SEO-Spiegel global.title_tag/global.description_tag änderten sich. Handles, Status, Vendor, Produkttyp, Kategorien, Tags, Optionen, 11 Varianten, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventory-Zähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Bindungen und Publikationen erhalten. Gemüseschneider-rueckhol-0907 erhalten; neue Social-Ausspielung blockiert. Keine Lager-/Lieferzeitzusage, kein Katalogabschluss und keine sonstigen externen Writes. R96, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Teppich16606106255751, Haustierpullover16607464391047 und Rucksack16611664888199 erhielten je einen productUpdate für neutralen Titel, belegbaren Body und SEO sowie je einen getrennten fileUpdate für13/6/5 bildbezogene Alttexte. Der erste kombinierte Teppich-Aufruf wurde vor Dispatch abgebrochen und bewirkte keinen Write. Sechs gesendete Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. 62 Varianten, 24 READY-Bilder, 21 Publikationen, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventory-Werte, Tracking, CONTINUE, Medien-URLs/-Reihenfolge/-Bindungen erhalten. Shopify-SEO-Spiegel änderten sich erwartet. Judge.me aktualisierte beim Haustierpullover nur Titelspiegel; Reviewanzahl, Bewertung, IDs und Inhalte blieben gleich. Rucksack-Reviewspiegel blieb beim Rücklesen historisch; kein Reviewwrite. Historischer 56’630-ID-Snapshot rund100% offline gescannt/priorisiert; frisch exakt56’506 ACTIVE/87’774 alle Status. Streng kontrollierte R82–R96-Livekorrekturen:24 ACTIVE=0,04247%, gerundet0,04%; rund99,96% unter diesem Massstab offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale öffentliche QA:48/48, Verdict GO. R97, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Tennistasche16606107500935, Rolltop-Rucksack16650219651463 und Strickoberteil15524856496513 erhielten je genau einen productUpdate für belegbaren Titel, Body und SEO sowie je einen fileUpdate für6/5/8 bildbezogene Alttexte. Alle sechs Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. Sieben Varianten, 19 READY-Bilder, 22 Publikationsknoten, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventarzähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Reihenfolgen und Variantenbindungen erhalten. Shopify-SEO-Spiegel änderten sich erwartet; automatische Judge.me-Spiegeländerungen betrafen keine Reviewanzahl, Bewertung oder Reviewliste. Streng kontrollierte R82–R97-Livekorrekturen:27 ACTIVE von56’506=0,04778%, gerundet0,05%;56’479 beziehungsweise rund99,95% unter diesem Massstab offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale öffentliche QA:60/60, Verdict GO, Report-SHA256 5ad89b43a4e3c613cdf8bbfeb80bd51f910d928fc93dc47d59e73172472790a9. R99, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Rucksack15448913281409, Kissenbezug15493835751809 und Segment-Armband15493851480449 erhielten je genau einen productUpdate für belegbaren Titel/Body/SEO sowie je einen fileUpdate für5/28/13 bildbezogene Alttexte. Alle sechs Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. 36 Varianten,46 READY-Bilder,19 Publikationsknoten, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodebasis, CHF-Preise, Kaufbarkeit, Inventarzähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Reihenfolgen/-Bindungen und Nicht-SEO-Metafelder erhalten. Alle drei rueckhol-0907 erhalten; Social bleibt blockiert. Streng kontrollierte R82–R99-Livekorrekturen:30 ACTIVE von56’506=0,05309%, gerundet0,05%;56’476 beziehungsweise rund99,95% offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale QA:60/60,3/3 GO,46/46 Alttexte exakt, Report-SHA256 5a1606459ec1b9324ab2ed9efde4d81bc16a668bceb33583814a92c621cf3643. R100, 05.11.2026: Den neuen 32-Zeilen-Merchant-CSV als Kandidatenliste geprüft; 29 eindeutige Shopify-Produkte plus eine nicht sicher abbildbare ID. CSV liefert keine Alterswerte. Zwei ACTIVE-BRUDER-Spielsets über offizielle Artikelnummer, GTIN und Bilder gebunden: Feuerwehrstation62702/15470017380737 und UPS-Paketshop62250/15470032945537. Beide erhielten belegte Setinhalte und Herstellerempfehlung ab4Jahren; Kleinteilehinweis ausschliesslich beim offiziell belegten UPS-Artikel. Je Produkt genau ein productUpdate und ein fileUpdate, keine userErrors/Retries; acht Alttexte. Vollständige Admin-/Storefront-Readbacks und unabhängige QA40/40,2/2GO. Zwei Varianten, acht READY-Bilder,14 Publikationsknoten, Handles, Tags, Kategorien, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventar, Tracking, DENY und Medienbindungen erhalten. Frisch exakt56’506 ACTIVE/87’774 alle Status; streng kontrolliert32 ACTIVE=0,05663%, gerundet0,06%;56’474/rund99,94% offen. 27 CSV-Produkte plus eine unbekannte ID und Google-Neuverarbeitung offen; fr/Deutsch separat. Keine weiteren externen Writes oder Tagesreport-Wiederholung. R104, 05.11.2026: Zwei weitere ACTIVE-BRUDER-Produkte anhand offizieller Artikelnummer, GTIN, Shopify-SKU und Bildidentität gebunden. Forstwirtschaftsset62650 und Polizei-Quad63010 erhielten mit genau2 productUpdate und2 fileUpdate belegte Titel, strukturierte Beschreibungen, SEO und je1Alttext; keine userErrors/Retries. Vollständige Admin- sowie öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200 und unabhängige QA2/2 GO. Status, Handles, Tags, Kategorien, Varianten-IDs, SKUs, GTINs, CHF-Preise, Kaufbarkeit, Tracking/DENY, Inventarzähler, Medien und16Publikationsknoten erhalten. Streng34/56’506=0,06017%, gerundet0,06%;56’472/rund99,94% offen. CSV-Scope4/29 bearbeitet;25 zuordenbare plus1 unbekannte Merchant-ID offen. Sieben R103-Overlay-SKUs bleiben ohne exakte CJ-Varianten-/Medienbindung blockiert; kein CJ-Workflow oder sonstiger externer Write. R105, 05.11.2026: Zwei weitere ACTIVE-Produkte vollständig live gelesen und korrigiert. Maxikleid15500282003841: falsches Beige/Midi-/Material-/Passformnarrativ auf aktuelle Farben Milchweiss, Himmelblau, Lavendel-Lila und GrössenXS–2XL begrenzt;11 Alttexte. Fitnessschuhe16638316020103: Grau sowie unbelegte Knie-, Material-, Gewichts-, Rutsch- und Höhenclaims entfernt; aktuelle Farben Weiss/Schwarz und Grössen38–45;7 Alttexte. Je genau1 productUpdate und1 fileUpdate, keine userErrors/Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200, unabhängige QA2/2GO. 34 Varianten/IDs/SKUs, CHF22.90–26.90 beziehungsweiseCHF50.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und12Publikationsknoten erhalten. Streng36/56’506=0,06371%, gerundet0,06%;56’470/rund99,94% offen. Keine genaue CJ-Lieferantenquelle, deshalb unbelegte Claims entfernt statt ersetzt; keine sonstigen externen Writes. R106, 05.11.2026: Produkt16610538324359 vollständig live gelesen; vier aktuelle Varianten S–XL und sieben Bilder zeigen ein kurzes rosafarbenes Neckholder-Kleid mit Volantstufen. Falsches Midikleid-/nur-S-Narrativ sowie widersprüchliche 100%-Polyester/Polyester-Spandex-, Gewicht-, Passform-, Anlass- und Lieferclaims entfernt; Titel, neutraler Body, SEO und7Alttexte mit genau1 productUpdate und1 fileUpdate. Keine userErrors/Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200, unabhängige QA GO. ACTIVE, Handle, Vendor, Produkttyp, Kategorie, Tags, Option,4 Varianten/IDs/SKUs, CHF16.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Medienbindungen und6Publikationen erhalten. Historischer Midi-Handle und Midi-Sortiertag bleiben getrennt offen. Streng37/56’506=0,06548%, gerundet0,07%;56’469/rund99,93% offen. Keine genaue CJ-Quelle und keine sonstigen externen Writes. R107, 05.11.2026: Produkte16656436363655 und15500453872001 vollständig live gelesen und korrigiert. Pumps: unbelegte Zehenschutz/Pigskin/TPR/Stabilitäts/Gewichts/nur34-Angaben auf sichtbare Glitzer-Slingback-Form, Schwarz/Champagner und34–39 begrenzt;9 Alttexte. Fünf-Zehen-Schuhe: falsches Beige sowie unbelegte Indoor/Rutsch/Schock/Luft/Leichtigkeitsclaims auf neun aktuelle Farben,35–45 und sichtbare Form begrenzt;23 Alttexte. Je genau1 productUpdate und1 fileUpdate, keine userErrors/Retries; vollständige Adminrücklesung über3 Variantenseiten sowie öffentliche HTML/Produkt-JSON-HTTP200, unabhängige QA2/2GO. 111 Varianten/IDs/SKUs, CHF42.90 beziehungsweiseCHF89.90–96.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und12 Publikationen erhalten. Alte Handles und such-sicherheitsschuhe getrennt offen. Streng39/56’506=0,06902%, gerundet0,07%;56’467/rund99,93% offen. Remote/Claude-Abgleich ohne konkreten Doppelwrite; Receipt/Live-Lock unbekannt. Keine sonstigen externen Writes.",
+          "previousNextAllowedStep": "R107 abgeschlossen und dokumentiert. R108 eng reserviert: Produkte16655747481991 und16616678195591. Unmittelbar vor jeder Änderung zuerst origin/main, offene Claude-LuxeStyle-PR-Heads und Shopify updatedAt frisch lesen; bei Änderung seit Baseline oder neuer Claude-Überschneidung stoppen und anderen Kandidaten wählen. Danach vollständiger Admin-Read mit Varianten, Bildern, Tags, Inventory, Publikationen und öffentlichem HTTP-Readback. Nur belegte Minimaldiffs; keine Material-, Pflege-, Schnellttrocknen-, Komfort-, Liefer- oder Bestandsclaims ohne Quelle. Nach jedem Einzelwrite Admin und Storefront vollständig zurücklesen; unknown bedeutet Stopp ohne Retry. R82–R107 nicht wiederholen; Gesamtkatalog, sieben CJ-Overlayfälle und Google-Neuverarbeitung offen.",
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "additionalProductCleanups": [
@@ -863,7 +873,7 @@
         "historicalScanAndPriorityCoverage": {
           "snapshotUniqueActiveIds": 56630,
           "queuedUniqueIds": 56630,
-          "offlineCoveragePercent": 100.0,
+          "offlineCoveragePercent": 100,
           "notCurrentLiveQualityOrFixPercent": true
         },
         "strictLiveRemediationProgress": {
@@ -1379,6 +1389,18 @@
           "gid://shopify/Product/16655747481991",
           "gid://shopify/Product/16616678195591"
         ]
+      },
+      "run146": {
+        "productIds": [
+          "15504187720065",
+          "15448586125697",
+          "15470021181825"
+        ],
+        "writes": "targeted_product_and_media_text_only",
+        "adminReadback": true,
+        "storefrontReadback": true,
+        "catalogComplete": false,
+        "socialWrites": 0
       }
     },
     {
@@ -3314,12 +3336,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r145_yoga_live_language_seo_fixed_cj_identity_inventory_bound_exact_image_blocker_open",
+      "state": "r146_safety_offer_social_merchant_block_tags_live_yoga_exact_image_and_draft_source_cases_open",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R145_ACTIVE_YOGA_LANGUAGE_SEO_LIVE_FIX_AND_EXACT_CJ_VARIANT_INVENTORY_READ",
-      "lastEvidence": "Offer15448641012097_cj-cjdk296677412lo ist jetzt live als Capri-Yogahose mit hohem Bund und Bauchkontrolle mit deutschem Handle/Redirect, Beschreibung, SEO und6 Alttexten; der produktbezogene10–20-Tage- und Rabattclaim ist entfernt. ACTIVE,12 Varianten zu CHF15.90, untracked/CONTINUE und rueckhol-0907 erhalten. PR2971 Merge47f1e77f erweitert den fail-closed Reader um variantSku. Run42501861632 bindet CJDK296677412LO exakt an PID2607031647441600100/productSkuCJDK2966774; Run42501905917 bindet alle12 Varianten vollständig. Alle Mengen sind CN factoryInventory, cjInventory0; CH-Lieferung unbekannt. Exaktes rechtegeprüftes blaues >=500x500 Bild bleibt offen; kein Merchant-/Feed-/Bildwrite. Preisloses Offer15453942776193_cj-cjly298079706fu bleibt DRAFT-Quellausschlussfall.",
-      "nextAllowedStep": "Für das aktive blaue XL-Offer ein echtes, exakt passendes, kommerziell rechtegeprüftes Quellbild ab500x500 beschaffen; CJ-Identität und Variantenset sind jetzt exakt belegt, Bildrechte/CH-Lieferbarkeit aber nicht. Erst danach genau die Variantenbindung ändern und zurücklesen. Das preislose DRAFT-Offer nur an der aktiven Merchant-Quelle ausschliessen; weder Preis erfinden noch Produkt aktivieren. FactoryInventory nie als physischer CJ-/CH-Bestand ausgeben.",
+      "belegArt": "R146_EXACT_CJ_SAFETY_OFFER_BINDING_TAG_ONLY_BLOCK_WRITE_NO_FEED_CHANGE",
+      "lastEvidence": "Merchant-Kandidat shopify_ZZ_16612741841287_67671330226567/Product16612741841287/Variant67671330226567/SKUCJJM106168704DW wurde exakt an CJ PID1377445613813239808/productSkuCJJM1061687 und vollständiges Variantenset gebunden. VID, Material, Masse, Last-/Zertifizierungsangaben, PPE-Eignung und Medienrechte bleiben unbekannt. Live wurden ausschliesslich compliance-pruefen und nicht-bewerben ergänzt; ACTIVE, CHF16.90, fünf Varianten, Kaufbarkeit, untracked/CONTINUE und Inhalt blieben erhalten. kanal_sperren blockiert neue Instagram-/Google-Ausspielung; kein Merchant-/Feedwrite. Yoga-Bildfall und preisloser DRAFT-Quellausschluss bleiben offen.",
+      "nextAllowedStep": "Sicherheitsprodukt nicht bewerben oder im Feed freigeben, bis exakte VID, Produktfunktion, Last-/Zertifizierungsdaten, PPE-/Waffen-Policy, Medienrechte und Variantenbild belegt sind. Sperrtags erhalten. Yoga-Offer nur mit exakt blauem rechtegeprüftem Bild ab500x500 ändern; preisloses DRAFT-Offer nur an verantwortlicher Quelle ausschliessen. Keine erfundenen Preise, GTIN-/identifier_exists-Werte oder pauschalen Feedänderungen.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -3819,6 +3841,16 @@
           "previousBelegArt": "R140_HYPD_MERCHANT_TRUNCATED_5000_SUMMARY_DISAPPROVAL_SAMPLE_AND_PERFORMANCE_READ_ONLY",
           "previousLastEvidence": "Merchant5797470070/LuxeStyle CH wurde bestätigt. Exakt erste5’000 Produkte mit truncated=true:4’768 eligible,223 limited,9 not eligible/disapproved; keine Katalogquote. Issues: item_limit_reached_ads_css218,image_unwanted_overlays9,personal_hardships3,identity/belief2; account issues leer. Separate12er-Disapproved-Stichprobe zeigt ausschliesslich Overlay-Sperren für Free Listings/Shopping/Display in CH/LI, widerspricht Summary9 und wird nicht addiert; next page vorhanden. Performance11.10.–07.11. nur zwei konsistente Zeilen (Eidgenoss-T-Shirt24 Impressionen/0 Klicks; Kinder-Smartwatch23/0); vier Klickzeilen mit0 Impressionen als NaN verworfen. Preisprobe20, keine Preisänderung; keine Sichtbarkeitsabfrage ohne Kategoriecode. Kein Merchant-/Feed-/Preiswrite.",
           "previousNextAllowedStep": "P1: Overlay-Angebote einzeln an exakte aktive Source, eingereichten image_link, Shopify-Variante, aktuelle Policy und rechtegeprüftes sauberes Ersatzbild binden. Erst je Offer einen Diff prüfen; Summary9 und12er-Stichprobe getrennt halten. CSS-Limit als Konto-/Programmthema behandeln. Keine Massenpagination, Feed-/Preisänderung oder Hochrechnung aus dem truncated5000-Scope.",
+          "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-08T18:55:01+01:00",
+          "sourceRevision": 145,
+          "previousState": "r145_yoga_live_language_seo_fixed_cj_identity_inventory_bound_exact_image_blocker_open",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R145_ACTIVE_YOGA_LANGUAGE_SEO_LIVE_FIX_AND_EXACT_CJ_VARIANT_INVENTORY_READ",
+          "previousLastEvidence": "Offer15448641012097_cj-cjdk296677412lo ist jetzt live als Capri-Yogahose mit hohem Bund und Bauchkontrolle mit deutschem Handle/Redirect, Beschreibung, SEO und6 Alttexten; der produktbezogene10–20-Tage- und Rabattclaim ist entfernt. ACTIVE,12 Varianten zu CHF15.90, untracked/CONTINUE und rueckhol-0907 erhalten. PR2971 Merge47f1e77f erweitert den fail-closed Reader um variantSku. Run42501861632 bindet CJDK296677412LO exakt an PID2607031647441600100/productSkuCJDK2966774; Run42501905917 bindet alle12 Varianten vollständig. Alle Mengen sind CN factoryInventory, cjInventory0; CH-Lieferung unbekannt. Exaktes rechtegeprüftes blaues >=500x500 Bild bleibt offen; kein Merchant-/Feed-/Bildwrite. Preisloses Offer15453942776193_cj-cjly298079706fu bleibt DRAFT-Quellausschlussfall.",
+          "previousNextAllowedStep": "Für das aktive blaue XL-Offer ein echtes, exakt passendes, kommerziell rechtegeprüftes Quellbild ab500x500 beschaffen; CJ-Identität und Variantenset sind jetzt exakt belegt, Bildrechte/CH-Lieferbarkeit aber nicht. Erst danach genau die Variantenbindung ändern und zurücklesen. Das preislose DRAFT-Offer nur an der aktiven Merchant-Quelle ausschliessen; weder Preis erfinden noch Produkt aktivieren. FactoryInventory nie als physischer CJ-/CH-Bestand ausgeben.",
           "previousBlockersRetainedInCurrentTask": true
         }
       ],
@@ -4476,6 +4508,21 @@
           "path": "/workspace/luxestyle-review/merchant-overlay-followup-20261108/RESULTAT.md",
           "sha256": "2e3f79b8aa6b7aa90022b84d553490859b347c10efeb7c64349e4f9331037a0e"
         }
+      },
+      "run146": {
+        "offerId": "shopify_ZZ_16612741841287_67671330226567",
+        "productId": "16612741841287",
+        "variantId": "67671330226567",
+        "sku": "CJJM106168704DW",
+        "cjPid": "1377445613813239808",
+        "cjProductSku": "CJJM1061687",
+        "tagsAdded": [
+          "compliance-pruefen",
+          "nicht-bewerben"
+        ],
+        "merchantWrites": 0,
+        "feedWrites": 0,
+        "technicalClaimsVerified": false
       }
     },
     {
@@ -6071,12 +6118,12 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r145_variant_sku_reader_merged_exact_product_inventory_reads_prime_and_delivery_unknown_order_unchanged",
+      "state": "r146_exact_yoga_variant_cn_ch_route_methods_read_price_time_prime_unknown_no_write",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R145_PR2971_MERGED_EXACT_VARIANTSKU_PRODUCT_AND_INVENTORY_READS_NO_IMPORT",
-      "lastEvidence": "PR2971 wurde als47f1e77f89cb5c71494f2df017cba0c39b71ecc1 gemergt: product akzeptiert exakt einen Schlüssel PID/productSku/variantSku, inventory weiterhin nur PID; unvollständige/mehrdeutige Variantensets bleiben UNKNOWN. Tests106/106 fokussiert,280/280 Assist und volle LuxeStyle-Matrix grün, unabhängiger Review GO. Run42501861632: genau1 Auth+1 Produkt, CJDK296677412LO→PID2607031647441600100/productSkuCJDK2966774, variants complete, verified. Run42501905917: genau1 Auth+1 Produkt+1 Inventory,12 Varianten vollständig; ausschliesslich CN factoryInventory, überall cjInventory0/verifiedWarehouse2, deliveryToSwitzerland unknown. Kein Search/Pagination/Import/Shopwrite. Prime-Entitlement unbekannt. LX1038/SD2611081059350666900 bleibt UNSHIPPED und unverändert.",
-      "nextAllowedStep": "Die bestätigte PID/Variantenbindung nur für gezielte Rechte-, Bild-, Fracht- und Schweiz-Liefergegenproben verwenden; factoryInventory nicht als physischer CJ- oder Schweiz-Bestand ausgeben. Kein weiterer Inventoryread ohne neuen konkreten Grund. Ein Import bleibt trotz PR2966 nur nach vollständiger Quellen-/Rechte-/Liefer-/Preisprüfung und explizitem Gate als DRAFT plus compliance-pruefen zulässig. Prime-Status nur authentifiziert lesen, keinen Tarif kaufen. LX1038 nicht erneut anlegen; UNSHIPPED bleibt kein Lieferzeitbeleg.",
+      "belegArt": "R146_PR2974_MERGED_EXACT_VARIANT_CN_CH_ROUTE_READ_17_METHOD_NAMES_NO_SHIPPING_PROMISE",
+      "lastEvidence": "PR2974 wurde als410578df18cfc877f3f49984465ced4c59b5f0f7 gemergt. Run42505179520 success band Shopify/CJ variantSkuCJDK296677412LO exakt an PID2607031647441600100, productSkuCJDK2966774 und VID2607031647441605900 und las mit genau1 Auth+1 Produkt+1 Route-Request die Route CN→CH.17 Liefermethodennamen wurden geliefert. Frachtpreis, Laufzeit, Lieferzusage und Prime-Entitlement bleiben UNKNOWN. Keine Suche, Pagination, Inventorywiederholung, Bestellung, Import oder Mutation.",
+      "nextAllowedStep": "Die17 Methodennamen nur als Verfügbarkeitskandidaten behandeln. Vor jeder Liefer- oder Preisangabe dieselbe PID/VID/variantSku frisch binden und authentifiziert Frachtpreis, Währung, Laufzeit, Zielland, Ausführung und Providerstatus lesen. Prime separat lesen, keinen Tarif kaufen. Ohne vollständige Werte keine CH-Lieferzusage, Margenrechnung oder Produkt-/Feedänderung.",
       "blockers": [
         "CJ-Status ist UNSHIPPED; daraus folgen weder Versandbeginn noch Lieferzeit oder Zustellung.",
         "Shopify-Fulfilment und Tracking/Tracking-Write sind nicht erfolgt.",
@@ -6324,20 +6371,45 @@
             "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
             "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preis-/Bestandswrites, Käufe, Render oder Merchant-Änderungen"
           ]
+        },
+        {
+          "at": "2026-11-08T18:55:01+01:00",
+          "sourceRevision": 145,
+          "previousState": "r145_variant_sku_reader_merged_exact_product_inventory_reads_prime_and_delivery_unknown_order_unchanged",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R145_PR2971_MERGED_EXACT_VARIANTSKU_PRODUCT_AND_INVENTORY_READS_NO_IMPORT",
+          "previousLastEvidence": "PR2971 wurde als47f1e77f89cb5c71494f2df017cba0c39b71ecc1 gemergt: product akzeptiert exakt einen Schlüssel PID/productSku/variantSku, inventory weiterhin nur PID; unvollständige/mehrdeutige Variantensets bleiben UNKNOWN. Tests106/106 fokussiert,280/280 Assist und volle LuxeStyle-Matrix grün, unabhängiger Review GO. Run42501861632: genau1 Auth+1 Produkt, CJDK296677412LO→PID2607031647441600100/productSkuCJDK2966774, variants complete, verified. Run42501905917: genau1 Auth+1 Produkt+1 Inventory,12 Varianten vollständig; ausschliesslich CN factoryInventory, überall cjInventory0/verifiedWarehouse2, deliveryToSwitzerland unknown. Kein Search/Pagination/Import/Shopwrite. Prime-Entitlement unbekannt. LX1038/SD2611081059350666900 bleibt UNSHIPPED und unverändert.",
+          "previousNextAllowedStep": "Die bestätigte PID/Variantenbindung nur für gezielte Rechte-, Bild-, Fracht- und Schweiz-Liefergegenproben verwenden; factoryInventory nicht als physischer CJ- oder Schweiz-Bestand ausgeben. Kein weiterer Inventoryread ohne neuen konkreten Grund. Ein Import bleibt trotz PR2966 nur nach vollständiger Quellen-/Rechte-/Liefer-/Preisprüfung und explizitem Gate als DRAFT plus compliance-pruefen zulässig. Prime-Status nur authentifiziert lesen, keinen Tarif kaufen. LX1038 nicht erneut anlegen; UNSHIPPED bleibt kein Lieferzeitbeleg.",
+          "previousBlockersRetainedInCurrentTask": true
         }
-      ]
+      ],
+      "run146": {
+        "pullRequest": 2974,
+        "mergeCommit": "410578df18cfc877f3f49984465ced4c59b5f0f7",
+        "workflowRun": 42505179520,
+        "pid": "2607031647441600100",
+        "productSku": "CJDK2966774",
+        "variantSku": "CJDK296677412LO",
+        "vid": "2607031647441605900",
+        "route": "CN-CH",
+        "methodNameCount": 17,
+        "freightPrice": "UNKNOWN",
+        "deliveryTime": "UNKNOWN",
+        "prime": "UNKNOWN",
+        "writes": 0
+      }
     },
     {
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r144_product_mockup_alt_live_german_v5_font_labels_and_main_theme_open",
+      "state": "r146_v630_sri_restored_v631_public_verified_shopify_rollout_not_dispatched",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R144_PRODUCT_MOCKUP_MEDIA_ALT_LIVE_GERMAN_V5_LABELS_AND_MAIN_THEME_OPEN",
-      "lastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion. R143: PR2965 als ec00032c gemergt. Neue Generatorausgaben verwenden 325/444 ml, Rundumdruck, Auf Bestellung, Gestaltungswerkzeug und CHF50; sichtbare deutsche v6-Schriftlabels wurden übersetzt, technische Fontfamilien und EN-Locale blieben gleich. Das änderte den live wirksamen v5-Editor nicht; dessen englische Schriftlabels bleiben offen. R144: Media69634683011457 wurde separat live von Product mockup auf Produktvorschau korrigiert und öffentlich zurückgelesen; MAIN-/v5-Code blieb unverändert.",
+      "belegArt": "R146_SRI_RECOVERY_IMMUTABLE_V631_PUBLIC_HASH_HEADER_READBACK_ROLLOUT_BLOCKED_BEFORE_SHOPIFY_WRITE",
+      "lastEvidence": "PR2973 verursachte nach Merge kurzzeitig einen SRI-Konflikt, weil bestehende Produktseiten v6.3.0/e58 pinnten. PR2977 Merge5a9684b794542ee28bc2cf8db314757b351874b6 stellte v6.3.0 bytegleich wieder her. PR2976 Merge322d951f8492ac298c783795faa121be8148fe4b führt den proportionalen mobilen Fix als neues unveränderliches v6.3.1-Asset ein; Produktions-Upload42506732658 success. Öffentlicher Live-Readback: v6.3.0 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b/228533B und v6.3.1 1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0/228826B, beide HTTP200 application/javascript, ACAO*, CORP cross-origin und public max-age31536000 immutable. Shopify-Produkte verweisen weiter auf v6.3.0; Plan/Canary/Full nicht dispatcht. main lief danach mit unabhängigem Commit924c022b weiter; Compare änderte keine POD-/Rollout-Datei, aktueller Head ist vor Fortsetzung dennoch frisch zu binden.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Live-v5-Schriftlabels als engen Theme-Diff gegen den aktuellen MAIN-/Asset-Hash vorbereiten; der konkrete Media-Alttext ist bereits live deutsch und darf nicht nochmals blind geschrieben werden. v5-Funktion, Proportion und Druckvorschau byte- bzw. browsergenau prüfen und nur mit zulässigem Theme-Write anwenden/rücklesen. Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF/EDM und neue Produkte erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe; keine DRAFT-Aktivierung oder erfundene Projektion.",
+      "nextAllowedStep": "Aktuellen main-Head frisch lesen und sicherstellen, dass seit PR2976 keine POD-/Rollout-Datei abweicht. Danach ausschliesslich pod-v63-description-rollout.yml: plan/full dispatchen, Run-Head und Artefakt auf genau19 Produkte/16 editor changed/3 blocked unchanged prüfen. Dann apply/canary mit V63_CANARY_TASSE, Tasse15422823465345 admin/öffentlich sowie mobil+desktop ohne Cart/Checkout abnehmen. Erneut plan/full; nur bei15 editor changed und4 unchanged apply/full mit V63_FULL_19_SAFE. Jeder unknown/rejected Zustand stoppt ohne Retry. PR2975 bleibt Draft; MAIN und /fr nicht als live behoben ausgeben.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6600,7 +6672,8 @@
         "Offizieller Printful-EDM weiter ohne bestätigte product_templates/read+write/embedded_designer-Scopes und Domainbindung.",
         "Dynamische Overlay-/Mockup-Rechte und physische Produktionsabnahme sind nicht katalogweit belegt.",
         "22 DRAFT-Produkte/153 Varianten bleiben gesperrt; der lokale Liverollout erweitert deren Status nicht.",
-        "R143: PR2965 ändert nur Repo-Generator/v6-Entwürfe; live v5 sichtbare englische Schriftlabels bleiben unverändert."
+        "R146: Die19 Shopify-Beschreibungen verweisen weiter auf v6.3.0. Plan, Tassen-Canary, mobile/desktop E2E und Full-Apply fehlen; v6.3.1 ist öffentlich bereitgestellt, aber noch nicht im Produkteditor aktiviert.",
+        "R146: Ausführungsumgebung war nach Asset-Readback unavailable. Kein Workflow-Dispatch oder Shopify-Write; aktuellen main-Head vor Fortsetzung neu binden."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -7154,6 +7227,16 @@
             "R136: MAIN zeigt weiter11.5oz; FR-Seite/Produkt liefern deutsche Fallbacks. Header-Draft-Baseline wich von MAIN ab, daher wurde vor dem Upsert abgebrochen. Gewicht, FR, Header, Claims und Legacy-CDN sind separate Scopes und nicht OptionB.",
             "R136: PR2944 bleibt Draft/ungemergt; repo-weite Deploy-Checks timeouten systemisch, externe Workers/Pages sind nicht PR-spezifisch. Kein Retry/Dispatch/Merge/Deploy."
           ]
+        },
+        {
+          "at": "2026-11-08T18:55:01+01:00",
+          "sourceRevision": 145,
+          "previousState": "r144_product_mockup_alt_live_german_v5_font_labels_and_main_theme_open",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R144_PRODUCT_MOCKUP_MEDIA_ALT_LIVE_GERMAN_V5_LABELS_AND_MAIN_THEME_OPEN",
+          "previousLastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion. R143: PR2965 als ec00032c gemergt. Neue Generatorausgaben verwenden 325/444 ml, Rundumdruck, Auf Bestellung, Gestaltungswerkzeug und CHF50; sichtbare deutsche v6-Schriftlabels wurden übersetzt, technische Fontfamilien und EN-Locale blieben gleich. Das änderte den live wirksamen v5-Editor nicht; dessen englische Schriftlabels bleiben offen. R144: Media69634683011457 wurde separat live von Product mockup auf Produktvorschau korrigiert und öffentlich zurückgelesen; MAIN-/v5-Code blieb unverändert.",
+          "previousNextAllowedStep": "Live-v5-Schriftlabels als engen Theme-Diff gegen den aktuellen MAIN-/Asset-Hash vorbereiten; der konkrete Media-Alttext ist bereits live deutsch und darf nicht nochmals blind geschrieben werden. v5-Funktion, Proportion und Druckvorschau byte- bzw. browsergenau prüfen und nur mit zulässigem Theme-Write anwenden/rücklesen. Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF/EDM und neue Produkte erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe; keine DRAFT-Aktivierung oder erfundene Projektion.",
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "liveThemeId": "212971061639",
@@ -7414,7 +7497,25 @@
           "sameRunFourContextCapIsOwnerPermissionGate": false,
           "boundedReadOnlyDiagnosisNextExistingRunAlreadyAuthorised": true
         }
-      }
+      },
+      "run146": {
+        "recoveryPullRequest": 2977,
+        "recoveryMerge": "5a9684b794542ee28bc2cf8db314757b351874b6",
+        "releasePullRequest": 2976,
+        "releaseMerge": "322d951f8492ac298c783795faa121be8148fe4b",
+        "productionUploadRun": 42506732658,
+        "oldAssetSha256": "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+        "newAssetSha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
+        "publicHeadersVerified": true,
+        "shopifyDescriptionsUpdated": 0,
+        "rolloutDispatched": false,
+        "mainAdvancedTo": "924c022b50c22ebf9238f1ffe81742077b6c034e"
+      },
+      "resolvedBlockersR146": [
+        "v6.3.0-SRI-Konflikt durch PR2977 bytegleich behoben",
+        "v6.3.1 unter eigenem unveränderlichem Pfad öffentlich mit passendem Hash/CORS/CORP/immutable bereitgestellt",
+        "sichtbare Schriftlabels in v6.3.1 deutsch"
+      ]
     },
     {
       "id": "seo-landing-visibility-20261101",
@@ -11077,6 +11178,35 @@
         "readAt": "2026-11-08T17:50:45+01:00"
       },
       "action": "R145: The ACTIVE Yoga product was corrected live to German title, handle/redirect, description, SEO and six alt texts; the product-specific unverified 10–20-day and invalid discount claims were removed while status, twelve CHF15.90 variants, inventory behaviour and rueckhol tag were preserved. PR2971 merged exact fail-closed variantSku support. One fixed product read and one subsequent PID inventory read bound all twelve variants; every reported quantity is CN factoryInventory with cjInventory zero, and Switzerland delivery/Prime remain unknown. No search, pagination, import, product creation, inventory write, customer contact or order change. Tasks remain24."
+    },
+    {
+      "revision": 146,
+      "at": "2026-11-08T18:55:01+01:00",
+      "actor": "codex",
+      "source": {
+        "projectMemoryBlob": "140ca515a1264c29ac8a2a438ae4a11e90449ca5",
+        "pullRequests": [
+          2974,
+          2975,
+          2976,
+          2977
+        ],
+        "mergeCommits": [
+          "410578df18cfc877f3f49984465ced4c59b5f0f7",
+          "322d951f8492ac298c783795faa121be8148fe4b",
+          "5a9684b794542ee28bc2cf8db314757b351874b6"
+        ],
+        "workflowRuns": [
+          42505179520,
+          42506732658
+        ],
+        "publicAssetSha256": [
+          "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+          "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0"
+        ],
+        "readAt": "2026-11-08T18:55:01+01:00"
+      },
+      "action": "R146: Three targeted ACTIVE products were corrected live in German with claim and alt-text readback; one exact CJ-bound Merchant safety product received only compliance-pruefen/nicht-bewerben. A single exact Yoga CN-CH route read returned17 method names with price/time/Prime unknown. Metricool identity and schedule were read without writes; IG/FB are active08-15 while TikTok/Pinterest/YouTube retain gaps. The v6.3.0 SRI incident was restored byte-identically by PR2977; PR2976 published immutable v6.3.1 and both assets passed public hash/header readback. Shopify rollout plan/canary/full was not dispatched because runtime became unavailable; products remain on v6.3.0. PR2975 remains Draft and MAIN//fr remain open. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -11286,18 +11416,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 129,
-    "path": "dropship/codex-handoff-20261018/GEMINI-FREE-TIER-ZUGANG-20261108-R129.md",
-    "gitBlobSha": "6c12757c18f2b7e00c957336394d600c710ce91c",
+    "documentationRevision": 146,
+    "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+    "gitBlobSha": "140ca515a1264c29ac8a2a438ae4a11e90449ca5",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "164c0b523de41d6dec21c9fc5fa8219eff891b17",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
-    "receiptState": "unknown_missing_receipt",
-    "scope": "gemini_free_tier_access_fail_closed_secret_binding",
-    "latestCanonicalRevision": 129,
-    "snapshotNote": "R129: PR2915 auf aktuelles Main; Lauf42430952176 brach vor API ab, weil GEMINI_API_KEY2 im Job leer war.0 Requests/Antworten/Retries/Fallbacks; keine Kosten oder Gemini-Ergebnisse behauptet. Sichere Repo-/Org-Secretfreigabe und Free-Tier-ohne-Billing-Gegenprobe offen.",
+    "receiptState": "unknown_runtime_unavailable_no_claude_receipt",
+    "scope": "r146_live_product_cj_metricool_and_safe_pod_release_handoff",
+    "latestCanonicalRevision": 146,
+    "snapshotNote": "R146: Drei Live-Produktsprachfixes und Merchant-Sperrtags bestätigt; CJ-Yoga-Route nur als17 Methodennamen ohne Preis/Laufzeit/Prime; Metricool-Lücken ohne Write dokumentiert. v6.3.0-SRI bytegleich wiederhergestellt und v6.3.1 öffentlich hash-/headergleich bereitgestellt. Shopify-Produkte bleiben auf v6.3.0, da Plan/Canary/Full wegen unavailable Runtime nicht dispatcht wurden. Aktuellen main-Head frisch binden, dann geschützter Plan→Tassen-Canary/E2E→Full; UNKNOWN stoppt. PR2975 bleibt Draft, MAIN//fr offen.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -11472,6 +11602,122 @@
       "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R82.json",
       "gitBlobSha": "748b83995f3024ff34665504dcf91f10d170a7d2",
       "readAt": "2026-11-04T17:48:46.518Z"
+    },
+    "run146": {
+      "at": "2026-11-08T18:55:01+01:00",
+      "scope": "targeted_live_german_product_fixes_merchant_safety_tags_metricool_schedule_read_cj_route_read_pod_sri_recovery_and_immutable_v631_deploy",
+      "shopifyProducts": [
+        {
+          "id": "15504187720065",
+          "title": "Bedrucktes Damen-Maxikleid",
+          "priceCHF": "23.90",
+          "variants": 63,
+          "altTexts": 20,
+          "status": "ACTIVE"
+        },
+        {
+          "id": "15448586125697",
+          "title": "Elegantes Kleid mit Nackenhalter",
+          "priceCHF": "15.90",
+          "variants": 4,
+          "altTexts": 6,
+          "status": "ACTIVE",
+          "socialBlocker": "rueckhol-0907"
+        },
+        {
+          "id": "15470021181825",
+          "title": "Plüschhamster, 18 cm",
+          "priceCHF": "22.90",
+          "altTexts": 1,
+          "status": "ACTIVE"
+        }
+      ],
+      "merchantSafety": {
+        "productId": "16612741841287",
+        "variantId": "67671330226567",
+        "sku": "CJJM106168704DW",
+        "cjPid": "1377445613813239808",
+        "tagsAdded": [
+          "compliance-pruefen",
+          "nicht-bewerben"
+        ],
+        "feedWrites": 0
+      },
+      "cjRoute": {
+        "pullRequest": 2974,
+        "mergeCommit": "410578df18cfc877f3f49984465ced4c59b5f0f7",
+        "run": 42505179520,
+        "variantSku": "CJDK296677412LO",
+        "pid": "2607031647441600100",
+        "vid": "2607031647441605900",
+        "methodNameCount": 17,
+        "freightPrice": "UNKNOWN",
+        "deliveryTime": "UNKNOWN",
+        "prime": "UNKNOWN"
+      },
+      "metricool": {
+        "brandId": 6227837,
+        "timezone": "Europe/Zurich",
+        "objects": 31,
+        "channelStates": 49,
+        "active": 19,
+        "blockedDrafts": 12,
+        "published": 3,
+        "pending": 46,
+        "instagramFacebookDates": "2026-11-08/2026-11-15",
+        "tiktokGaps": "2026-11-10/2026-11-15",
+        "pinterestGaps": "2026-11-09/2026-11-15",
+        "youtubeActive": 0,
+        "writes": 0
+      },
+      "mainTheme": {
+        "pullRequest": 2975,
+        "state": "DRAFT",
+        "liveChanged": false,
+        "frMixed": true
+      },
+      "pod": {
+        "recoveryPullRequest": 2977,
+        "recoveryMerge": "5a9684b794542ee28bc2cf8db314757b351874b6",
+        "releasePullRequest": 2976,
+        "releaseMerge": "322d951f8492ac298c783795faa121be8148fe4b",
+        "productionUploadRun": 42506732658,
+        "productionUploadConclusion": "success",
+        "v630": {
+          "sha256": "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+          "bytes": 228533,
+          "httpStatus": 200
+        },
+        "v631": {
+          "sha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
+          "bytes": 228826,
+          "httpStatus": 200,
+          "sri": "sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA="
+        },
+        "publicHeaders": {
+          "accessControlAllowOrigin": "*",
+          "crossOriginResourcePolicy": "cross-origin",
+          "cacheControl": "public, max-age=31536000, immutable"
+        },
+        "shopifyProductScriptVersion": "6.3.0",
+        "planDispatched": false,
+        "canaryDispatched": false,
+        "fullDispatched": false,
+        "runtimeState": "UNAVAILABLE_AFTER_PUBLIC_READBACK",
+        "mainAdvancedTo": "924c022b50c22ebf9238f1ffe81742077b6c034e",
+        "mainAdvanceTouchesPodRolloutFiles": false
+      },
+      "existingOrder1038": "UNTOUCHED_THIS_RUN",
+      "prohibitedWrites": {
+        "customers": 0,
+        "discounts": 0,
+        "budgets": 0,
+        "flows": 0,
+        "dns": 0,
+        "paidRenders": 0,
+        "orders": 0
+      },
+      "taskCount": 24
     }
   },
   "claudeCodeHandoffHistory": [
@@ -15785,17 +16031,6 @@
         "tests": "policy4/4 archivedCI9/9",
         "deployed": false
       },
-      "2932": {
-        "state": "OPEN",
-        "mergeable": "MERGEABLE",
-        "base": "codex/luxestyle-automation-guard-r130",
-        "head": "8c765b9b3",
-        "scope": "12 LuxeStyle-only external action paths fail closed",
-        "tests": "masterpiece4/4 legacy60/60 14 YAML",
-        "independentReview": "GO",
-        "deployed": false,
-        "dispatches": 0
-      },
       "2931": {
         "state": "OPEN",
         "mergeable": "MERGEABLE",
@@ -15809,6 +16044,17 @@
         "imports": 0,
         "apiCalls": 0,
         "shopifyWrites": 0
+      },
+      "2932": {
+        "state": "OPEN",
+        "mergeable": "MERGEABLE",
+        "base": "codex/luxestyle-automation-guard-r130",
+        "head": "8c765b9b3",
+        "scope": "12 LuxeStyle-only external action paths fail closed",
+        "tests": "masterpiece4/4 legacy60/60 14 YAML",
+        "independentReview": "GO",
+        "deployed": false,
+        "dispatches": 0
       }
     },
     "dailyReads": "GSC/Merchant, Metricool metrics, Klaviyo flows, orders and purchase watch not repeated.",
@@ -17847,6 +18093,122 @@
     "evidence": {
       "path": "/workspace/luxestyle-review/r145-yoga-cj-variantsku-20261108.json",
       "sha256": "f66e7d0ad35474ee392b7d4c801c427518ff2d490597df0b6650e184466076a5"
+    },
+    "taskCount": 24
+  },
+  "run146": {
+    "at": "2026-11-08T18:55:01+01:00",
+    "scope": "targeted_live_german_product_fixes_merchant_safety_tags_metricool_schedule_read_cj_route_read_pod_sri_recovery_and_immutable_v631_deploy",
+    "shopifyProducts": [
+      {
+        "id": "15504187720065",
+        "title": "Bedrucktes Damen-Maxikleid",
+        "priceCHF": "23.90",
+        "variants": 63,
+        "altTexts": 20,
+        "status": "ACTIVE"
+      },
+      {
+        "id": "15448586125697",
+        "title": "Elegantes Kleid mit Nackenhalter",
+        "priceCHF": "15.90",
+        "variants": 4,
+        "altTexts": 6,
+        "status": "ACTIVE",
+        "socialBlocker": "rueckhol-0907"
+      },
+      {
+        "id": "15470021181825",
+        "title": "Plüschhamster, 18 cm",
+        "priceCHF": "22.90",
+        "altTexts": 1,
+        "status": "ACTIVE"
+      }
+    ],
+    "merchantSafety": {
+      "productId": "16612741841287",
+      "variantId": "67671330226567",
+      "sku": "CJJM106168704DW",
+      "cjPid": "1377445613813239808",
+      "tagsAdded": [
+        "compliance-pruefen",
+        "nicht-bewerben"
+      ],
+      "feedWrites": 0
+    },
+    "cjRoute": {
+      "pullRequest": 2974,
+      "mergeCommit": "410578df18cfc877f3f49984465ced4c59b5f0f7",
+      "run": 42505179520,
+      "variantSku": "CJDK296677412LO",
+      "pid": "2607031647441600100",
+      "vid": "2607031647441605900",
+      "methodNameCount": 17,
+      "freightPrice": "UNKNOWN",
+      "deliveryTime": "UNKNOWN",
+      "prime": "UNKNOWN"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "objects": 31,
+      "channelStates": 49,
+      "active": 19,
+      "blockedDrafts": 12,
+      "published": 3,
+      "pending": 46,
+      "instagramFacebookDates": "2026-11-08/2026-11-15",
+      "tiktokGaps": "2026-11-10/2026-11-15",
+      "pinterestGaps": "2026-11-09/2026-11-15",
+      "youtubeActive": 0,
+      "writes": 0
+    },
+    "mainTheme": {
+      "pullRequest": 2975,
+      "state": "DRAFT",
+      "liveChanged": false,
+      "frMixed": true
+    },
+    "pod": {
+      "recoveryPullRequest": 2977,
+      "recoveryMerge": "5a9684b794542ee28bc2cf8db314757b351874b6",
+      "releasePullRequest": 2976,
+      "releaseMerge": "322d951f8492ac298c783795faa121be8148fe4b",
+      "productionUploadRun": 42506732658,
+      "productionUploadConclusion": "success",
+      "v630": {
+        "sha256": "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+        "bytes": 228533,
+        "httpStatus": 200
+      },
+      "v631": {
+        "sha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
+        "bytes": 228826,
+        "httpStatus": 200,
+        "sri": "sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA="
+      },
+      "publicHeaders": {
+        "accessControlAllowOrigin": "*",
+        "crossOriginResourcePolicy": "cross-origin",
+        "cacheControl": "public, max-age=31536000, immutable"
+      },
+      "shopifyProductScriptVersion": "6.3.0",
+      "planDispatched": false,
+      "canaryDispatched": false,
+      "fullDispatched": false,
+      "runtimeState": "UNAVAILABLE_AFTER_PUBLIC_READBACK",
+      "mainAdvancedTo": "924c022b50c22ebf9238f1ffe81742077b6c034e",
+      "mainAdvanceTouchesPodRolloutFiles": false
+    },
+    "existingOrder1038": "UNTOUCHED_THIS_RUN",
+    "prohibitedWrites": {
+      "customers": 0,
+      "discounts": 0,
+      "budgets": 0,
+      "flows": 0,
+      "dns": 0,
+      "paidRenders": 0,
+      "orders": 0
     },
     "taskCount": 24
   }

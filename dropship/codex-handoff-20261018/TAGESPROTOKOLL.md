@@ -1563,3 +1563,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Produkt- und CJ-Befunde getrennt interpretiert | Keine Suche/Pagination, kein CJ-Import, Produkt-/Preis-/Bestandswrite, keine Lieferzeit-/Bestandszusage, kein Prime-Kauf, Kundenkontakt, Fulfilment oder Tracking. #1038 unverändert UNSHIPPED |
 
 [LUXESTYLE_R145_20261108] [Beleg](/workspace/luxestyle-review/r145-yoga-cj-variantsku-20261108.json), SHA-256 `f66e7d0ad35474ee392b7d4c801c427518ff2d490597df0b6650e184466076a5` · [PR2971](https://github.com/allengchour-glitch/aban-news-landing/pull/2971), Merge `47f1e77f89cb5c71494f2df017cba0c39b71ecc1` · [Produktread42501861632](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42501861632) · [Inventarread42501905917](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42501905917).
+
+### R146
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Produkte / Sprache / SEO | Drei ACTIVE-Produkte gezielt gelesen, deutsche Titel/Bodies/SEO und Alttexte geschrieben und Admin/Storefront zurückgelesen | Maxikleid15504187720065, Nackenhalter-Kleid15448586125697 und Plüschhamster15470021181825 live deutsch; unbelegte Claims entfernt, Kernfelder erhalten; keine Katalogvollständigkeit behauptet |
+| Merchant-Sicherheit | Offer/Variante/SKU exakt an CJ-Produkt gebunden und nur Sperrtags ergänzt | Produkt16612741841287 trägt live `compliance-pruefen` und `nicht-bewerben`; kein Feed-, Preis-, Inhalts- oder Bestandswrite; technische Eignung/Rechte unbekannt |
+| CJ Route | PR2974 geprüft/gemergt und genau einen fixierten CN→CH-Nur-Lese-Lauf zurückgelesen | Merge `410578df…`, Run42505179520 success, 17 Methodennamen; Preis/Laufzeit/Lieferzusage/Prime unbekannt, keine Mutation |
+| Metricool | Marke, Zeitzone, sechs Kanalidentitäten und Planung08.–15.11. frisch gelesen | IG/FB täglich aktiv; TikTok10.–15., Pinterest09.–15. und YouTube ohne aktive Abdeckung. 31 Objekte/49 Kanalzustände; kein Write und keine Kennzahlwiederholung |
+| POD / SRI-Wiederherstellung | SRI-Konflikt erkannt, PR2977 zur bytegleichen v6.3.0-Wiederherstellung gemergt und öffentlich geprüft | Merge `5a9684b7…`; v6.3.0 wieder SHA `e58e5c27…`, Live-Editor funktionsfähig |
+| POD / v6.3.1 | PR2976 nach unabhängiger Abnahme gemergt, Produktions-Upload und beide öffentlichen Assets hash-/headergenau geprüft | Merge `322d951f…`, Run42506732658 success; v6.3.1 SHA `1e15aab9…`, HTTP200, ACAO*, CORP cross-origin, immutable |
+| POD / Live-Rollout | Vor dem ersten Shopify-Write auf geschützten Plan/Canary bestanden und späteren `main`-Commit #2980 gegen PR2976 verglichen | #2980 änderte keine POD-/Rollout-Datei; Plan/Canary/Full wegen unavailable Runtime nicht dispatcht. Produkte bleiben auf v6.3.0; aktuellen `main`-Head vor Fortsetzung frisch binden |
+| MAIN / FR | Offline-Paket und PR2975-Status erhalten | PR2975 bleibt Draft; MAIN unverändert, gemischtes `/fr` weiterhin offen |
+| Grenzen / Übergabe | Tatsächliche Live-, Repo-, Draft- und Blockerzustände getrennt dokumentiert | Keine Kundenansprache, Bestellung/Fulfilment, Budget-, Flow-, DNS-, Rabatt- oder kostenpflichtige Renderänderung; Claude-Fortsetzung: Plan → Tassen-Canary/E2E → Full, UNKNOWN stoppt |
+
+[LUXESTYLE_R146_20261108] [PR2974](https://github.com/allengchour-glitch/aban-news-landing/pull/2974) · [CJ-Route42505179520](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42505179520) · [PR2977](https://github.com/allengchour-glitch/aban-news-landing/pull/2977) · [PR2976](https://github.com/allengchour-glitch/aban-news-landing/pull/2976) · [Produktions-Upload42506732658](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42506732658) · PR2975 bleibt Draft.
