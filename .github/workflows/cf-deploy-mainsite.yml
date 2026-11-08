@@ -28,6 +28,10 @@ on:
       - 'ki-schriftsteller/**'
       - '**/*.md'
       - '.github/**'
+  workflow_run:
+    workflows: ['Büro-Zentrale (Planung, Prüfung, Obsidian)']
+    types: [completed]
+    branches: [main]
   # Ein täglicher Reparatur- und Veröffentlichungsdurchlauf, keine Dauerschleife.
   schedule:
     - cron: '45 6 * * *'
@@ -47,6 +51,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.head_repository.full_name == github.repository
     name: Build (clean) + Direct Upload
     runs-on: ubuntu-latest
     timeout-minutes: 15
