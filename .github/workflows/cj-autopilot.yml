@@ -1,62 +1,48 @@
-name: CJ Autopilot (VOLL-AUTO Produkt-Sourcing)
-
-# Füllt den Shop autonom auf: sourct CJ-Produkte, filtert (§5), verifiziert Bilder, baut
-# Varianten (Farbe×Grösse + Farbbilder) via productSet. Mit GEMINI_API_KEY schreibt es
-# deutsche Copy + QA-Gate und schaltet bestandene Produkte ACTIVE + publiziert in alle 6
-# Kanäle. Ohne Gemini → DRAFT (Tag 'autopilot-needs-copy'). Nichts geht ungeprüft live.
-#
-# Repository-Secrets (Settings → Secrets and variables → Actions):
-#   PFLICHT: CJ_EMAIL, CJ_API_KEY, SHOPIFY_SHOP (z.B. au3j0y-hq.myshopify.com), SHOPIFY_ADMIN_TOKEN
-#            (Custom-App-Token, Scopes: write_products, write_publications)
-#   OPTIONAL: GEMINI_API_KEY (→ DE-Copy + ACTIVE-Schaltung)
-#   Repo-Variable optional: AUTOPILOT_STATUS = ACTIVE | DRAFT (Default ACTIVE)
-# Ohne Pflicht-Secrets ist der Lauf ein sauberer No-Op.
+name: CJ Bestellung 1038 kontrolliert pushen
 
 on:
-  # schedule:  # PAUSIERT 2026-06-13 (Cron-Nulldiaet — GitHub Fair-Use)
-    # - cron: '0 6 * * *'    # täglich 06:00 UTC
-    # - cron: '0 16 * * *'   # PAUSIERT 2026-06-13 (GitHub-Last + 0 Verkaeufe → kein 2. Import/Tag)
   workflow_dispatch:
     inputs:
-      max:
-        description: 'Wie viele Produkte pro Lauf'
-        required: false
-        default: '6'
-      status:
-        description: 'Ziel-Status bei QA-PASS (ACTIVE oder DRAFT)'
-        required: false
-        default: 'ACTIVE'
-      pool:
-        description: 'Themen-Pool: men-tech | gadgets | (leer = Damen-Mode-Rotation)'
-        required: false
-        default: ''
-      keywords:
-        description: 'Eigene Suchbegriffe, komma-getrennt (überschreibt pool). Format kw|mustword'
-        required: false
-        default: ''
-      extra_tags:
-        description: 'Zusätzliche Tags, komma-getrennt (z.B. gadgets,tech oder herren,herren-mode)'
-        required: false
-        default: ''
+      live:
+        description: 'Unbezahlten CJ-Auftrag LX1038 nach allen Gegenprüfungen anlegen'
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
+concurrency:
+  group: cj-order-1038-push
+  cancel-in-progress: false
+
 jobs:
-  autopilot:
-    name: CJ → Shopify (Voll-Auto)
+  order-1038:
+    if: github.ref_name == 'codex/luxestyle-order-1038-push-20261108'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
-      - name: Checkout
+      - name: Zielbranch auschecken
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
+      - name: Geprüfte Bestell-Engine isoliert bereitstellen
+        env:
+          ENGINE_BRANCH: claude/luxestyle-status-tztnn1
+        run: |
+          set -euo pipefail
+          runtime="$RUNNER_TEMP/order1038"
+          mkdir -p "$runtime/repo/dropship"
+          git fetch --no-tags --depth=1 origin "$ENGINE_BRANCH"
+          git archive FETCH_HEAD \
+            automation/cj_order_engine.py \
+            automation/cj_takt.py \
+            automation/cj_sku.py \
+            automation/betreiber_push.py \
+            | tar -x -C "$runtime/repo"
+          git show FETCH_HEAD:dropship/_cj_orders_done.txt > "$runtime/repo/dropship/_cj_orders_done.txt"
+          printf 'CJ_ENGINE_ROOT=%s\n' "$runtime/repo" >> "$GITHUB_ENV"
 
-      - name: Run autopilot
+      - name: Zugangsdaten nur im Runner materialisieren
         env:
           CJ_EMAIL: ${{ secrets.CJ_EMAIL }}
           CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
@@ -64,10 +50,136 @@ jobs:
           SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          AUTOPILOT_MAX: ${{ github.event.inputs.max || '6' }}
-          AUTOPILOT_STATUS: ${{ github.event.inputs.status || vars.AUTOPILOT_STATUS || 'ACTIVE' }}
-          AUTOPILOT_POOL: ${{ github.event.inputs.pool }}
-          AUTOPILOT_KEYWORDS: ${{ github.event.inputs.keywords }}
-          AUTOPILOT_TAGS: ${{ github.event.inputs.extra_tags }}
-        run: node dropship/cj_autopilot.mjs
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          def post(url, body):
+              request = urllib.request.Request(
+                  url,
+                  data=json.dumps(body).encode(),
+                  headers={"Content-Type": "application/json"},
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=45) as response:
+                  return json.loads(response.read())
+
+          cj_email = os.environ.get("CJ_EMAIL", "").strip()
+          cj_key = os.environ.get("CJ_API_KEY", "").strip()
+          shop = os.environ.get("SHOPIFY_SHOP", "").strip()
+          if not cj_email or not cj_key or not shop:
+              raise SystemExit("Pflicht-Secrets fehlen; kein CJ-Lauf")
+
+          cj = post(
+              "https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken",
+              {"email": cj_email, "apiKey": cj_key},
+          )
+          token = str((cj.get("data") or {}).get("accessToken") or "").strip()
+          if str(cj.get("code")) != "200" or not token:
+              raise SystemExit("CJ-Authentifizierung fehlgeschlagen; kein CJ-Lauf")
+          with open("/tmp/_cjtok", "w", encoding="utf-8") as handle:
+              handle.write(token)
+          with open("/tmp/cj_token.json", "w", encoding="utf-8") as handle:
+              json.dump({"accessToken": token}, handle)
+
+          shop_token = os.environ.get("SHOPIFY_ADMIN_TOKEN", "").strip()
+          client_id = os.environ.get("SHOPIFY_CLIENT_ID", "").strip()
+          client_secret = os.environ.get("SHOPIFY_CLIENT_SECRET", "").strip()
+          if client_id and client_secret:
+              auth = post(
+                  f"https://{shop}/admin/oauth/access_token",
+                  {
+                      "client_id": client_id,
+                      "client_secret": client_secret,
+                      "grant_type": "client_credentials",
+                  },
+              )
+              shop_token = str(auth.get("access_token") or "").strip()
+          if not shop_token:
+              raise SystemExit("Shopify-Authentifizierung fehlgeschlagen; kein CJ-Lauf")
+          with open("/tmp/cj_shop_token.txt", "w", encoding="utf-8") as handle:
+              handle.write(shop_token)
+          print("CJ- und Shopify-Zugriff bereit; Geheimnisse nicht ausgegeben")
+          PY
+
+      - name: Offline-Selbsttest der Engine
+        run: |
+          set -euo pipefail
+          cd "$CJ_ENGINE_ROOT"
+          REPO="$CJ_ENGINE_ROOT" python3 automation/cj_order_engine.py --selbsttest
+
+      - name: Bestellung 1038 prüfen oder einmalig anlegen
+        env:
+          LIVE_INPUT: ${{ inputs.live }}
+        run: |
+          set -euo pipefail
+          if [ "$LIVE_INPUT" = "true" ]; then
+            unset DRY
+            echo 'Modus: einmaliges createOrderV2 nach frischer CJ-Doppelprüfung'
+          else
+            export DRY=1
+            echo 'Modus: Trockenlauf ohne createOrderV2'
+          fi
+          CLOUD_WARTE_MIN=0 \
+          CJ_ENGINE_ROOT="$CJ_ENGINE_ROOT" \
+          python3 dropship/cj-zahlungswache-0411/lauf_einzeln_1038.py
+
+      - name: LX1038 bei CJ gezielt zurücklesen
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import time
+          import urllib.parse
+          import urllib.request
+
+          token = open("/tmp/_cjtok", encoding="utf-8").read().strip()
+
+          def get(path):
+              request = urllib.request.Request(
+                  "https://developers.cjdropshipping.com/api2.0/v1/" + path,
+                  headers={"CJ-Access-Token": token},
+              )
+              with urllib.request.urlopen(request, timeout=45) as response:
+                  return json.loads(response.read())
+
+          matches = []
+          for page in range(1, 11):
+              result = get(f"shopping/order/list?pageNum={page}&pageSize=100")
+              if str(result.get("code")) != "200":
+                  raise SystemExit("CJ-Rücklesung fehlgeschlagen; Zustand unbekannt")
+              rows = (result.get("data") or {}).get("list") or []
+              matches.extend(row for row in rows if str(row.get("orderNum") or "").upper() == "LX1038")
+              if len(rows) < 100:
+                  break
+              time.sleep(1.2)
+
+          print(f"CJ_READBACK LX1038 count={len(matches)}")
+          for row in matches:
+              order_id = str(row.get("orderId") or "")
+              detail = {}
+              if order_id:
+                  time.sleep(1.2)
+                  response = get("shopping/order/getOrderDetail?orderId=" + urllib.parse.quote(order_id))
+                  if str(response.get("code")) == "200":
+                      detail = response.get("data") or {}
+              print(
+                  "CJ_ORDER "
+                  + json.dumps(
+                      {
+                          "orderNum": row.get("orderNum"),
+                          "cjOrderId": row.get("cjOrderId"),
+                          "orderStatus": row.get("orderStatus"),
+                          "orderAmountUSD": detail.get("orderAmount"),
+                          "productAmountUSD": detail.get("productAmount"),
+                          "postageAmountUSD": detail.get("postageAmount"),
+                      },
+                      ensure_ascii=False,
+                      sort_keys=True,
+                  )
+              )
+          PY
