@@ -1,0 +1,83 @@
+name: Gemini-Schlüssel prüfen (nur Statuscodes, nie der Schlüssel)
+
+# Prüft, welche Gemini-Schlüssel als Repository-Secret ankommen und was sie dürfen.
+# Gibt NIE einen Schlüssel oder eine Antwort aus, nur: gesetzt ja/nein, HTTP-Status, Zahl der Modelle, Modellnamen mit Fähigkeit.
+# Läuft von Hand und bei Änderungen an dieser Datei; ändert nichts, schreibt nichts, kostet auf dem Gratis-Tarif nichts.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/gemini-schluessel-pruefen.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gemini-schluessel-pruefen
+  cancel-in-progress: false
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Schlüssel prüfen
+        env:
+          SCHLUESSEL_1: ${{ secrets.GEMINI_API_KEY }}
+          SCHLUESSEL_2: ${{ secrets.GEMINI_API_KEY2 }}
+          SCHLUESSEL_2B: ${{ secrets.GEMINI_API_KEY_2 }}
+          SCHLUESSEL_G: ${{ secrets.GOOGLE_API_KEY }}
+        shell: bash
+        run: |
+          cat > pruefen.mjs <<'EOF'
+          const BASIS = 'https://generativelanguage.googleapis.com/v1beta';
+          const quellen = [
+            ['GEMINI_API_KEY', process.env.SCHLUESSEL_1],
+            ['GEMINI_API_KEY2', process.env.SCHLUESSEL_2],
+            ['GEMINI_API_KEY_2', process.env.SCHLUESSEL_2B],
+            ['GOOGLE_API_KEY', process.env.SCHLUESSEL_G],
+          ];
+          const kurz = (t) => String(t || '').replace(/AIza[0-9A-Za-z_\-]{20,}/g, '[Schlüssel]').replace(/\s+/g, ' ').slice(0, 160);
+          async function anfrage(url, schluessel, koerper) {
+            try {
+              const r = await fetch(url, {
+                method: koerper ? 'POST' : 'GET',
+                headers: { 'x-goog-api-key': schluessel, 'content-type': 'application/json' },
+                body: koerper ? JSON.stringify(koerper) : undefined,
+                signal: AbortSignal.timeout(45000),
+              });
+              const t = await r.text();
+              let j = null; try { j = JSON.parse(t); } catch { /* keine JSON-Antwort */ }
+              return { status: r.status, j, fehler: j && j.error ? kurz(j.error.status + ': ' + j.error.message) : '' };
+            } catch (e) { return { status: 0, j: null, fehler: kurz(e.message) }; }
+          }
+          let gesetzt = 0;
+          for (const [name, wert] of quellen) {
+            if (!wert) { console.log(`${name}: NICHT gesetzt (leer)`); continue; }
+            gesetzt += 1;
+            console.log(`${name}: gesetzt, ${wert.length} Zeichen`);
+            const liste = await anfrage(`${BASIS}/models?pageSize=200`, wert);
+            console.log(`  Modellliste: HTTP ${liste.status} ${liste.fehler}`);
+            const modelle = (liste.j && liste.j.models) || [];
+            const text = modelle.filter((m) => (m.supportedGenerationMethods || []).includes('generateContent')).map((m) => m.name.replace('models/', ''));
+            console.log(`  Modelle mit generateContent: ${text.length}`);
+            const waehlen = (re, aus) => text.find((n) => re.test(n) && !/image|tts|live|embed|omni|veo|lyria|audio|robot|computer/.test(n) && !aus.test(n));
+            const flash = waehlen(/flash(?!-lite)/, /^$/), lite = waehlen(/flash-lite/, /^$/), gross = waehlen(/argon|pro/, /^$/);
+            for (const [rolle, modell] of [['flash', flash], ['flash-lite', lite], ['gross', gross]]) {
+              if (!modell) { console.log(`  ${rolle}: kein passendes Modell gelistet`); continue; }
+              const a = await anfrage(`${BASIS}/models/${modell}:generateContent`, wert, { contents: [{ parts: [{ text: 'Antworte nur mit dem Wort OK.' }] }], generationConfig: { maxOutputTokens: 16 } });
+              const ok = a.j && a.j.candidates && a.j.candidates[0] && a.j.candidates[0].content;
+              console.log(`  ${rolle} (${modell}): HTTP ${a.status} ${ok ? 'Antwort erhalten' : a.fehler}`);
+            }
+            if (flash) {
+              const g = await anfrage(`${BASIS}/models/${flash}:generateContent`, wert, { contents: [{ parts: [{ text: 'Nenne die Hauptstadt der Schweiz in einem Wort.' }] }], tools: [{ google_search: {} }], generationConfig: { maxOutputTokens: 32 } });
+              const ok = g.j && g.j.candidates && g.j.candidates[0] && g.j.candidates[0].content;
+              console.log(`  Websuche (google_search) mit ${flash}: HTTP ${g.status} ${ok ? 'Antwort erhalten' : g.fehler}`);
+            }
+          }
+          console.log(`\nZusammenfassung: ${gesetzt} von ${quellen.length} Namen sind als Secret gesetzt.`);
+          EOF
+          node pruefen.mjs
