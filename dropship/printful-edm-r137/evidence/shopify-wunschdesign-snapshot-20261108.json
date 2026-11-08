@@ -1,0 +1,1877 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-08T10:22:51.274Z",
+  "source": "Shopify Admin search_products: tag:wunschdesign, first=50, sort=TITLE",
+  "scope": {
+    "store": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "query": "tag:wunschdesign",
+    "complete": true,
+    "returnedProducts": 39,
+    "exactProductsCount": 39,
+    "variantData": "sample returned by search tool; not a complete per-product variant export",
+    "imageData": "current featured image URL only"
+  },
+  "policy": {
+    "draftRemainsDraft": true,
+    "missingPrintfulMappingBlocksEditor": true,
+    "noShopWritePerformed": true
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15422946083201",
+      "numericId": "15422946083201",
+      "handle": "allover-rucksack-selbst-gestalten",
+      "title": "Allover-Rucksack – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:24Z",
+      "productType": "Taschen",
+      "tags": [
+        "bild-ok",
+        "kat-taschen",
+        "kategorie-tasche",
+        "printful_personalized_product",
+        "sg-taschen",
+        "sort-damen-weitere-taschen",
+        "sort-herren-weitere-taschen",
+        "sort-rucksaecke",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/allover-rucksack-selbst-gestalten_f079fcc4-3929-468c-90b1-89351d0b5a37.jpg?v=1781356270",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778413969793",
+          "title": "Default Title",
+          "sku": "5070666_9063",
+          "priceCHF": "77.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422960501121",
+      "numericId": "15422960501121",
+      "handle": "allover-sport-bh-selbst-gestalten",
+      "title": "Allover-Sport-BH – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:37Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-dessous",
+        "sort-damen-dessous-bh",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-sport-bh.png?v=1781358258",
+      "variantsCount": 6,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778512929153",
+          "title": "XS",
+          "sku": "2360450_9098",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778512961921",
+          "title": "S",
+          "sku": "2360450_9099",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778512994689",
+          "title": "M",
+          "sku": "2360450_9100",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778513027457",
+          "title": "L",
+          "sku": "2360450_9101",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778513060225",
+          "title": "XL",
+          "sku": "2360450_9102",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422950474113",
+      "numericId": "15422950474113",
+      "handle": "allover-stoffbeutel-selbst-gestalten",
+      "title": "Allover-Stoffbeutel – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:21Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-taschen",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8905_1530790527.jpg?v=1781046463",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778472591745",
+          "title": "Default Title",
+          "sku": "6706312_8905",
+          "priceCHF": "36.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422945034625",
+      "numericId": "15422945034625",
+      "handle": "allover-yoga-leggings-selbst-gestalten",
+      "title": "Allover-Yoga-Leggings – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:22Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-sport-leggings",
+        "sort-damen-sportbekleidung",
+        "sort-sub-yoga-fitness",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-yoga-leggings.png?v=1781358258",
+      "variantsCount": 5,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778389721473",
+          "title": "XS",
+          "sku": "6933254_8353",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389754241",
+          "title": "S",
+          "sku": "6933254_8354",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389787009",
+          "title": "M",
+          "sku": "6933254_8355",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389819777",
+          "title": "L",
+          "sku": "6933254_8356",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389852545",
+          "title": "XL",
+          "sku": "6933254_8357",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422854463873",
+      "numericId": "15422854463873",
+      "handle": "alltags-umhangetasche-selbst-gestalten",
+      "title": "Alltags-Umhängetasche – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:24Z",
+      "productType": "Taschen",
+      "tags": [
+        "bild-ok",
+        "kat-taschen",
+        "printful_personalized_product",
+        "sg-taschen",
+        "sort-damen-umhaengetaschen",
+        "sort-handtaschen-umhaengetaschen",
+        "sort-herren-umhaengetaschen",
+        "tasche",
+        "taschen",
+        "umhaengetasche",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/alltags-umhangetasche-selbst-gestalten_b72846c7-0f81-487c-81a6-78e10ef0b325.jpg?v=1781356269",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778075017601",
+          "title": "Default Title",
+          "sku": "8524891_49310",
+          "priceCHF": "52.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422942609793",
+      "numericId": "15422942609793",
+      "handle": "kiss-cut-aufkleber-selbst-gestalten",
+      "title": "Aufkleber mit Konturschnitt – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T05:08:25Z",
+      "productType": "Aufkleber",
+      "tags": [
+        "bild-ok",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-accessoires",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b1742-88be-4c21-9947-0299de1deea4_result23ca451f10fc6892.jpg?v=1781361016",
+      "variantsCount": 4,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778363376001",
+          "title": "7,6 × 7,6 cm",
+          "sku": "3424232_10163",
+          "priceCHF": "17.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778363408769",
+          "title": "10,2 × 10,2 cm",
+          "sku": "3424232_10164",
+          "priceCHF": "17.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778363441537",
+          "title": "14 × 14 cm",
+          "sku": "3424232_10165",
+          "priceCHF": "18.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778363474305",
+          "title": "38 × 9,5 cm",
+          "sku": "3424232_16362",
+          "priceCHF": "21.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422941299073",
+      "numericId": "15422941299073",
+      "handle": "baby-jersey-body-selbst-gestalten",
+      "title": "Baby-Jersey-Body – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:11Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/baby-jersey-body-selbst-gestalten_f441e5e3-c5d1-41bf-8559-5c75fe3e828d.jpg?v=1781356270",
+      "variantsCount": 4,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778350793089",
+          "title": "6M",
+          "sku": "7558517_22151",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778350825857",
+          "title": "12M",
+          "sku": "7558517_22158",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778350858625",
+          "title": "18M",
+          "sku": "7558517_22165",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778350891393",
+          "title": "24M",
+          "sku": "7558517_22172",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422938382721",
+      "numericId": "15422938382721",
+      "handle": "baumwolltasche-mit-langen-henkeln-selbst-gestalten",
+      "title": "Baumwolltasche mit langen Henkeln – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:42Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-taschen",
+        "vegan",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/baumwolltasche-mit-langen-henkeln-selbst-gestalten_fcf67bd4-88ed-4f95-9346-eb0d519c2264.jpg?v=1781356270",
+      "variantsCount": 12,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778317402497",
+          "title": "Natur",
+          "sku": "3033370_49323",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293484935",
+          "title": "Schwarz",
+          "sku": "3033370_49313",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293517703",
+          "title": "Flaschengrün",
+          "sku": "3033370_49314",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293550471",
+          "title": "Burgunderrot",
+          "sku": "3033370_49315",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293583239",
+          "title": "Rosa",
+          "sku": "3033370_49316",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422939267457",
+      "numericId": "15422939267457",
+      "handle": "boardshorts-mit-allover-druck-selbst-gestalten",
+      "title": "Boardshorts mit Allover-Druck – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:43Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "pod-uebersee",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-shorts",
+        "sort-herren-shorts",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-boardshorts.png?v=1781358259",
+      "variantsCount": 11,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778328838529",
+          "title": "2XS",
+          "sku": "8755604_46353",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328871297",
+          "title": "XS",
+          "sku": "8755604_46355",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328904065",
+          "title": "S",
+          "sku": "8755604_46357",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328936833",
+          "title": "M",
+          "sku": "8755604_46359",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328969601",
+          "title": "L",
+          "sku": "8755604_46361",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422849188225",
+      "numericId": "15422849188225",
+      "handle": "dad-cap-selbst-gestalten",
+      "title": "Dad-Cap – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:58:26Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-kopfbedeckung",
+        "sort-damen-kopfbedeckung-caps",
+        "sort-herren-kopfbedeckung",
+        "sort-herren-kopfbedeckung-caps",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dad-cap-selbst-gestalten.jpg?v=1781356270",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778063843713",
+          "title": "Default Title",
+          "sku": "8279135_7853",
+          "priceCHF": "31.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422940447105",
+      "numericId": "15422940447105",
+      "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+      "title": "Edelstahl Trinkflasche mit Strohhalm – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:22Z",
+      "productType": "Tassen & Becher",
+      "tags": [
+        "bild-ok",
+        "flasche",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-trinken",
+        "sort-trinkflaschen-strohhalm-tee",
+        "sort-trinkflaschen-thermosflaschen",
+        "vegan",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten_bd3c5777-f7e0-4094-8456-204fcc1b0e2c.jpg?v=1781356271",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778346172801",
+          "title": "Default Title",
+          "sku": "4950408_20175",
+          "priceCHF": "45.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422943822209",
+      "numericId": "15422943822209",
+      "handle": "einteiliger-allover-badeanzug-selbst-gestalten",
+      "title": "Einteiliger Allover-Badeanzug – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:17Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-bademode",
+        "sort-damen-bademode-badeanzug",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-swimsuit.png?v=1781358259",
+      "variantsCount": 7,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778372845953",
+          "title": "XS",
+          "sku": "2298810_9014",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372878721",
+          "title": "S",
+          "sku": "2298810_9015",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372911489",
+          "title": "M",
+          "sku": "2298810_9016",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372944257",
+          "title": "L",
+          "sku": "2298810_9017",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372977025",
+          "title": "XL",
+          "sku": "2298810_9018",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15427285123457",
+      "numericId": "15427285123457",
+      "handle": "kissen-zum-selbstgestalten",
+      "title": "Fotokissen bedrucken · Kissen selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:16:07Z",
+      "productType": "Kissen",
+      "tags": [
+        "bild-ok",
+        "dekoration",
+        "kat-kissen",
+        "kissen",
+        "pod-cushion",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-wohnen",
+        "sort-kissen",
+        "wohnen",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kissen.jpg?v=1781356273",
+      "variantsCount": 2,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55792266641793",
+          "title": "45 × 45 cm",
+          "sku": "9000001_4532",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792266674561",
+          "title": "56 × 30 cm",
+          "sku": "9000001_9513",
+          "priceCHF": "38.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422953062785",
+      "numericId": "15422953062785",
+      "handle": "recycelter-unisex-allover-hoodie-selbst-gestalten",
+      "title": "Hoodie bedrucken · recycelter Unisex Allover-Hoodie selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:54Z",
+      "productType": "Hoodies & Pullover",
+      "tags": [
+        "bild-ok",
+        "kat-damen-pullover",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-hoodies-hoodie",
+        "sort-damen-hoodies-sweatshirts",
+        "sort-herren-hoodies",
+        "sort-herren-hoodies-sweatshirts",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-hoodie.png?v=1781358260",
+      "variantsCount": 11,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778482684289",
+          "title": "2XS",
+          "sku": "7500684_18730",
+          "priceCHF": "84.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482717057",
+          "title": "XS",
+          "sku": "7500684_10869",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482749825",
+          "title": "S",
+          "sku": "7500684_10870",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482782593",
+          "title": "M",
+          "sku": "7500684_10871",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482815361",
+          "title": "L",
+          "sku": "7500684_10872",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422939988353",
+      "numericId": "15422939988353",
+      "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "title": "iPhone-Hülle – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:56:55Z",
+      "productType": "Handy-Zubehör",
+      "tags": [
+        "bild-ok",
+        "huelle",
+        "natel",
+        "printful_personalized_product",
+        "sg-accessoires",
+        "sort-handy-halterungen",
+        "sort-handy-huellen",
+        "sort-handyhuellen-displayschutz",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20688_1728028145.jpg?v=1781046473",
+      "variantsCount": 48,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778337358209",
+          "title": "Hartschale MagSafe / iPhone 14",
+          "sku": "3615382_20688",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337390977",
+          "title": "Hartschale MagSafe / iPhone 14 Plus",
+          "sku": "3615382_20692",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337423745",
+          "title": "Hartschale MagSafe / iPhone 14 Pro",
+          "sku": "3615382_20690",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337456513",
+          "title": "Hartschale MagSafe / iPhone 14 Pro Max",
+          "sku": "3615382_20694",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337489281",
+          "title": "Hartschale MagSafe / iPhone 15",
+          "sku": "3615382_20318",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422819991937",
+      "numericId": "15422819991937",
+      "handle": "bio-jutebeutel-selbst-gestalten",
+      "title": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:26Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-taschen",
+        "vegan",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bio-jutebeutel-selbst-gestalten_9064663a-39f9-4a39-b81b-8ac733b49c18.jpg?v=1781356270",
+      "variantsCount": 2,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55777965539713",
+          "title": "Oyster",
+          "sku": "2069171_10458",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293124487",
+          "title": "Schwarz",
+          "sku": "2069171_10457",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/16697144705415",
+      "numericId": "16697144705415",
+      "handle": "keramik-tasse-farbige-innenseite-selbst-gestalten",
+      "title": "Keramik-Tasse mit farbiger Innenseite selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-07T02:39:45Z",
+      "productType": "Tassen & Becher",
+      "tags": [
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-fabrik",
+        "sg-klasse-flach",
+        "sg-modell-403",
+        "sg-trinken",
+        "sg-typ-mug",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11051_1596788464.jpg?v=1793975980",
+      "variantsCount": 11,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/68134397575559",
+          "title": "Schwarz / 325 ml",
+          "sku": "9100403_11051",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397608327",
+          "title": "Schwarz / 444 ml",
+          "sku": "9100403_17196",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397641095",
+          "title": "Rot / 325 ml",
+          "sku": "9100403_11049",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397673863",
+          "title": "Rot / 444 ml",
+          "sku": "9100403_17200",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397706631",
+          "title": "Blau / 325 ml",
+          "sku": "9100403_11050",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422823465345",
+      "numericId": "15422823465345",
+      "handle": "keramik-tasse-selbst-gestalten",
+      "title": "Keramik-Tasse – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:58:27Z",
+      "productType": "Tassen & Becher",
+      "tags": [
+        "bild-ok",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-trinken",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-keramik",
+        "tassen-becher",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1320_1663762583.jpg?v=1781046472",
+      "variantsCount": 3,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55777979629953",
+          "title": "325 ml",
+          "sku": "9365183_1320",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777979662721",
+          "title": "444 ml",
+          "sku": "9365183_4830",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777979695489",
+          "title": "591 ml",
+          "sku": "9365183_16586",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422857642369",
+      "numericId": "15422857642369",
+      "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "title": "Klassisches Unisex T-Shirt – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:24Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "koll-shirts",
+        "sg-bekleidung",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-tshirt",
+        "sort-herren-t-shirts",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white_3a017319-f17d-42bc-b7a9-078d106b5839.png?v=1793172254",
+      "variantsCount": 8,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778083996033",
+          "title": "S",
+          "sku": "8481330_11576",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084028801",
+          "title": "M",
+          "sku": "8481330_11577",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084061569",
+          "title": "L",
+          "sku": "8481330_11578",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084094337",
+          "title": "XL",
+          "sku": "8481330_11579",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084127105",
+          "title": "2XL",
+          "sku": "8481330_11580",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422958338433",
+      "numericId": "15422958338433",
+      "handle": "kleid-mit-schlitz-und-allover-druck-selbst-gestalten",
+      "title": "Kleid mit Schlitz und Allover-Druck – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:32Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "kategorie-kleid",
+        "pod-uebersee",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-kleider",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-slip-dress.png?v=1781358259",
+      "variantsCount": 6,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778502377857",
+          "title": "XS",
+          "sku": "1886540_22905",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502410625",
+          "title": "S",
+          "sku": "1886540_22907",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502443393",
+          "title": "M",
+          "sku": "1886540_22909",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502476161",
+          "title": "L",
+          "sku": "1886540_22911",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502508929",
+          "title": "XL",
+          "sku": "1886540_22913",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15451569389953",
+      "numericId": "15451569389953",
+      "handle": "kuscheldecke-selbst-gestalten",
+      "title": "Kuscheldecke – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:16:04Z",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "decke",
+        "geschenk",
+        "printful_personalized_product",
+        "sg-wohnen",
+        "sort-decken-kuscheldecken",
+        "sort-decken-plaids",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10986_e3936f06-2d7d-4ad0-84f0-da456c7238be.jpg?v=1783540651",
+      "variantsCount": 2,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188510081",
+          "title": "76×102 cm",
+          "sku": "LS395_22609",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55893188542849",
+          "title": "127×152 cm",
+          "sku": "LS395_10986",
+          "priceCHF": "60.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15451569357185",
+      "numericId": "15451569357185",
+      "handle": "laptop-sleeve-selbst-gestalten",
+      "title": "Laptop-Sleeve – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:16:10Z",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "handy-technik",
+        "nicht-fit-elektronik-draft",
+        "printful_personalized_product",
+        "sg-technik",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10984_be23ebe6-8b72-4e59-b23d-eca5435a175d.jpg?v=1783540648",
+      "variantsCount": 2,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188444545",
+          "title": "13 Zoll",
+          "sku": "LS394_10984",
+          "priceCHF": "44.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55893188477313",
+          "title": "15 Zoll",
+          "sku": "LS394_10985",
+          "priceCHF": "49.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15427217195393",
+      "numericId": "15427217195393",
+      "handle": "magnet-zum-selbstgestalten",
+      "title": "Magnet zum Selbstgestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:58:26Z",
+      "productType": "Magnet",
+      "tags": [
+        "bild-ok",
+        "magnet",
+        "pod-magnet",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-wohnen",
+        "sort-deko-objekte-accessoires",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/magnet.jpg?v=1781356272",
+      "variantsCount": 3,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55791941812609",
+          "title": "7,6 × 7,6 cm",
+          "sku": "9000001_16366",
+          "priceCHF": "16.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791941845377",
+          "title": "10 × 10 cm",
+          "sku": "9000001_16367",
+          "priceCHF": "17.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791941878145",
+          "title": "15 × 15 cm",
+          "sku": "9000001_16465",
+          "priceCHF": "19.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15451569160577",
+      "numericId": "15451569160577",
+      "handle": "mauspad-selbst-gestalten",
+      "title": "Mauspad – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:56:49Z",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "handy-technik",
+        "printful_personalized_product",
+        "sg-technik",
+        "sort-laptopzubehoer",
+        "sort-mauspads",
+        "sort-pc-homeoffice",
+        "sort-tastatur-maus",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/mauspad_f4cd4b1a-0c7e-4870-926f-a7b5169a0edc.jpg?v=1783540637",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188149633",
+          "title": "Default Title",
+          "sku": "LS518_13097",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15427182330241",
+      "numericId": "15427182330241",
+      "handle": "poster-zum-selbstgestalten",
+      "title": "Poster zum Selbstgestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T04:33:40Z",
+      "productType": "Poster",
+      "tags": [
+        "bild-ok",
+        "pod-poster",
+        "poster",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-wohnen",
+        "sort-wandbilder",
+        "sort-wandbilder-uf-poster",
+        "sort-wandbilder-wanddeko",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/poster.jpg?v=1781356275",
+      "variantsCount": 18,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55791753298305",
+          "title": "Poster matt / 30×40 cm",
+          "sku": "9000001_8948",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791753331073",
+          "title": "Poster matt / 50×70 cm",
+          "sku": "9000001_8952",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791753363841",
+          "title": "Poster matt / 70×100 cm",
+          "sku": "9000001_8954",
+          "priceCHF": "46.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791753396609",
+          "title": "Poster matt / A2 (42×59,4 cm)",
+          "sku": "9000001_19516",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154043783",
+          "title": "Foto-Glanzpapier / 30×40 cm",
+          "sku": "9000001_6875",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422860984705",
+      "numericId": "15422860984705",
+      "handle": "premium-hoodie-selbst-gestalten",
+      "title": "Premium-Hoodie – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:42Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "kat-damen-pullover",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-hoodie-selbst-gestalten.jpg?v=1781356277",
+      "variantsCount": 6,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778090254721",
+          "title": "S",
+          "sku": "9448929_10774",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090287489",
+          "title": "M",
+          "sku": "9448929_10775",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090320257",
+          "title": "L",
+          "sku": "9448929_10776",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090353025",
+          "title": "XL",
+          "sku": "9448929_10777",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090385793",
+          "title": "2XL",
+          "sku": "9448929_10778",
+          "priceCHF": "61.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422959518081",
+      "numericId": "15422959518081",
+      "handle": "recycelte-allover-jogginghosen-selbst-gestalten",
+      "title": "Recycelte Allover-Jogginghosen – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:58Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "hose",
+        "hosen",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-hosen",
+        "sort-damen-hosen-jogging",
+        "sort-herren-hosen",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-joggers.png?v=1781358259",
+      "variantsCount": 7,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778508439937",
+          "title": "XS",
+          "sku": "4944509_11033",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508472705",
+          "title": "S",
+          "sku": "4944509_11034",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508505473",
+          "title": "M",
+          "sku": "4944509_11035",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508538241",
+          "title": "L",
+          "sku": "4944509_11036",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508571009",
+          "title": "XL",
+          "sku": "4944509_11037",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422949130625",
+      "numericId": "15422949130625",
+      "handle": "recycelter-unisex-allover-pullover-selbst-gestalten",
+      "title": "Recycelter Unisex Allover-Pullover – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:51Z",
+      "productType": "Hoodies & Pullover",
+      "tags": [
+        "bild-ok",
+        "kat-damen-pullover",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-pullover",
+        "sort-herren-pullover-strick",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-pullover.png?v=1781358260",
+      "variantsCount": 11,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778459550081",
+          "title": "2XS",
+          "sku": "1989990_19769",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459582849",
+          "title": "XS",
+          "sku": "1989990_9730",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459615617",
+          "title": "S",
+          "sku": "1989990_9731",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459648385",
+          "title": "M",
+          "sku": "1989990_9732",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459681153",
+          "title": "L",
+          "sku": "1989990_9733",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/16672778289543",
+      "numericId": "16672778289543",
+      "handle": "samsung-huelle-selbst-gestalten",
+      "title": "Samsung-Hülle selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:17Z",
+      "productType": "Handy-Zubehör",
+      "tags": [
+        "huelle",
+        "natel",
+        "printful_personalized_product",
+        "samsung",
+        "sg-accessoires",
+        "sort-handy-huellen",
+        "sort-handyhuellen-displayschutz",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/21474_1737960312.jpg?v=1793217974",
+      "variantsCount": 84,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/67813421941127",
+          "title": "Hartschale matt / Samsung Galaxy S20",
+          "sku": "9000001_16982",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813421973895",
+          "title": "Hartschale matt / Samsung Galaxy S20 Plus",
+          "sku": "9000001_16978",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422006663",
+          "title": "Hartschale matt / Samsung Galaxy S20 Ultra",
+          "sku": "9000001_16980",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422039431",
+          "title": "Hartschale matt / Samsung Galaxy S20 FE",
+          "sku": "9000001_16976",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422072199",
+          "title": "Hartschale matt / Samsung Galaxy S21",
+          "sku": "9000001_16990",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15451569324417",
+      "numericId": "15451569324417",
+      "handle": "spiral-notizbuch-selbst-gestalten",
+      "title": "Spiral-Notizbuch – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:58:54Z",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "schule-buero",
+        "sg-buero",
+        "sort-buero",
+        "sort-kalender",
+        "sort-notizbuecher",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/12141_bb65cca5-3d84-476d-bccb-2e55e2a202cb.jpg?v=1783540644",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188411777",
+          "title": "Default Title",
+          "sku": "LS474_12141",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15427285156225",
+      "numericId": "15427285156225",
+      "handle": "tote-zum-selbstgestalten",
+      "title": "Stofftasche zum Selbstgestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:16:10Z",
+      "productType": "Tasche",
+      "tags": [
+        "accessoire",
+        "bild-ok",
+        "kat-taschen",
+        "nachhaltig",
+        "pod-tote",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-taschen",
+        "tasche",
+        "taschen",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tote.jpg?v=1781356273",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55794931532161",
+          "title": "Schwarz",
+          "sku": "9000001_4533",
+          "priceCHF": "37.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15451569226113",
+      "numericId": "15451569226113",
+      "handle": "strandtuch-selbst-gestalten",
+      "title": "Strandtuch & Badetuch bedrucken · selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:16:03Z",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-wohnen",
+        "sommer-2026",
+        "sort-handtuecher-bade-strand",
+        "sort-handtuecher-badetuecher",
+        "strand",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8874_b327540f-16b6-4c80-8e57-c135253f9d24.jpg?v=1783540641",
+      "variantsCount": 2,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188215169",
+          "title": "76×152 cm",
+          "sku": "LS259_8874",
+          "priceCHF": "60.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55893188247937",
+          "title": "91×183 cm",
+          "sku": "LS259_22610",
+          "priceCHF": "67.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15427283157377",
+      "numericId": "15427283157377",
+      "handle": "shirt-zum-selbstgestalten",
+      "title": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:54:19Z",
+      "productType": "T-Shirt",
+      "tags": [
+        "bild-ok",
+        "kleidung",
+        "pod-shirt",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-bekleidung",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-tshirt",
+        "sort-herren-t-shirts",
+        "sort-herren-t-shirts-print",
+        "t-shirt",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4011_1752236284.jpg?v=1781197671",
+      "variantsCount": 15,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55792263954817",
+          "title": "Weiss / S",
+          "sku": "9000001_4011",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792263987585",
+          "title": "Weiss / M",
+          "sku": "9000001_4012",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792264020353",
+          "title": "Weiss / L",
+          "sku": "9000001_4013",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792264053121",
+          "title": "Weiss / XL",
+          "sku": "9000001_4014",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792264085889",
+          "title": "Weiss / 2XL",
+          "sku": "9000001_4015",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15427282633089",
+      "numericId": "15427282633089",
+      "handle": "tasse-zum-selbstgestalten",
+      "title": "Tasse bedrucken & selbst gestalten · dein Foto",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:56:50Z",
+      "productType": "Tasse",
+      "tags": [
+        "bild-ok",
+        "geschenk",
+        "kueche",
+        "pod-mug",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-trinken",
+        "sort-tassen-kaffeebecher",
+        "tasse",
+        "tassen-becher",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1320_1663762583_6854cbf8-0ca1-4f08-9e2c-3d3673d1f211.jpg?v=1781197669",
+      "variantsCount": 2,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55792263233921",
+          "title": "325 ml (Standard)",
+          "sku": "9000001_1320",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792263266689",
+          "title": "444 ml (Gross)",
+          "sku": "9000001_4830",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422956798337",
+      "numericId": "15422956798337",
+      "handle": "unisex-allover-bomberjacke-selbst-gestalten",
+      "title": "Unisex Allover-Bomberjacke – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:55Z",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "jacke",
+        "kat-damen-jacke",
+        "kat-jacke-outdoor",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-jacken-maentel",
+        "sort-damen-jacken-uebergang",
+        "sort-herren-jacken-baseball-bomber",
+        "sort-herren-jacken-maentel",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-bomber.png?v=1781358259",
+      "variantsCount": 7,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778488418689",
+          "title": "XS",
+          "sku": "9844202_10877",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488451457",
+          "title": "S",
+          "sku": "9844202_10878",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488484225",
+          "title": "M",
+          "sku": "9844202_10879",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488516993",
+          "title": "L",
+          "sku": "9844202_10880",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488549761",
+          "title": "XL",
+          "sku": "9844202_10881",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422815699329",
+      "numericId": "15422815699329",
+      "handle": "unisex-hoodie-selbst-gestalten",
+      "title": "Unisex Sweatshirt & Bio-Hoodie – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T05:02:04Z",
+      "productType": "Hoodies & Sweatshirts",
+      "tags": [
+        "bild-ok",
+        "kat-damen-pullover",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-hoodies-hoodie",
+        "sort-damen-hoodies-sweatshirts",
+        "sort-herren-hoodies",
+        "sort-herren-hoodies-sweatshirts",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-hoodie-selbst-gestalten.jpg?v=1781356271",
+      "variantsCount": 13,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55777955643777",
+          "title": "Sweatshirt (Rundhals) / S",
+          "sku": "1726823_5426",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955676545",
+          "title": "Sweatshirt (Rundhals) / M",
+          "sku": "1726823_5427",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955709313",
+          "title": "Sweatshirt (Rundhals) / L",
+          "sku": "1726823_5428",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955742081",
+          "title": "Sweatshirt (Rundhals) / XL",
+          "sku": "1726823_5429",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955774849",
+          "title": "Sweatshirt (Rundhals) / 2XL",
+          "sku": "1726823_5430",
+          "priceCHF": "43.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422811439489",
+      "numericId": "15422811439489",
+      "handle": "unisex-t-shirt-selbst-gestalten",
+      "title": "Unisex T-Shirt – Selbst gestalten",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-08T04:58:27Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-tshirt",
+        "sort-herren-t-shirts",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white.png?v=1781027029",
+      "variantsCount": 25,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55777948008833",
+          "title": "Ringgarn-Baumwolle / XS",
+          "sku": "5599797_9526",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948041601",
+          "title": "Ringgarn-Baumwolle / S",
+          "sku": "5599797_4011",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948074369",
+          "title": "Ringgarn-Baumwolle / M",
+          "sku": "5599797_4012",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948107137",
+          "title": "Ringgarn-Baumwolle / L",
+          "sku": "5599797_4013",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948139905",
+          "title": "Ringgarn-Baumwolle / XL",
+          "sku": "5599797_4014",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15422851744129",
+      "numericId": "15422851744129",
+      "handle": "urban-umhangetasche-selbst-gestalten",
+      "title": "Urban-Umhängetasche – Selbst gestalten",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:15:38Z",
+      "productType": "Taschen",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-taschen",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/urban-umhangetasche-selbst-gestalten_ebb2771f-7c5b-4343-887e-97f85ac4cf8f.jpg?v=1781356271",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778068726145",
+          "title": "Default Title",
+          "sku": "5485122_49345",
+          "priceCHF": "58.90",
+          "inventoryQuantity": 9999
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/15433948070273",
+      "numericId": "15433948070273",
+      "handle": "wm-trikot-selbst-gestalten",
+      "title": "⚽ Schweiz Fan-Trikot 2026 – selbst gestalten (Name & Nummer)",
+      "status": "DRAFT",
+      "updatedAt": "2026-11-06T12:16:09Z",
+      "productType": "T-SHIRT",
+      "tags": [
+        "blanko",
+        "fan",
+        "fan-zone",
+        "fussball",
+        "nati",
+        "premium",
+        "printful_personalized_product",
+        "rot",
+        "schweiz-fan",
+        "sg-alle",
+        "sg-bekleidung",
+        "sport",
+        "trend",
+        "trikot",
+        "video-hit",
+        "viral",
+        "wm-2026",
+        "wm-langsam-pausiert",
+        "wunschdesign"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-recycled-unisex-sports-jersey-white-front-6a489d0533441_800x800_83037a46-e086-4101-9108-5819f4c5296e.jpg?v=1783157790",
+      "variantsCount": 20,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55815201227137",
+          "title": "S / Rot",
+          "sku": "WM-TRIKOT-RO-S",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201259905",
+          "title": "M / Rot",
+          "sku": "WM-TRIKOT-RO-M",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201292673",
+          "title": "L / Rot",
+          "sku": "WM-TRIKOT-RO-L",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201325441",
+          "title": "XL / Rot",
+          "sku": "WM-TRIKOT-RO-XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": -1
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201358209",
+          "title": "2XL / Rot",
+          "sku": "WM-TRIKOT-RO-2XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        }
+      ]
+    }
+  ]
+}

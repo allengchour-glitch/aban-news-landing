@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-08T10:22:51.274Z",
+  "mappings": [
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "shopifyHandle": "keramik-tasse-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777979629953",
+      "printfulProductId": 19,
+      "printfulVariantId": 1320,
+      "technique": "SUBLIMATION",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:22:51.274Z",
+        "sources": [
+          "evidence/shopify-wunschdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "../../../../printful-image-mapping-r137/mapping.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "shopifyHandle": "keramik-tasse-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777979662721",
+      "printfulProductId": 19,
+      "printfulVariantId": 4830,
+      "technique": "SUBLIMATION",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:22:51.274Z",
+        "sources": [
+          "evidence/shopify-wunschdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "../../../../printful-image-mapping-r137/mapping.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "shopifyHandle": "keramik-tasse-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777979695489",
+      "printfulProductId": 19,
+      "printfulVariantId": 16586,
+      "technique": "SUBLIMATION",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:22:51.274Z",
+        "sources": [
+          "evidence/shopify-wunschdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "../../../../printful-image-mapping-r137/mapping.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422849921",
+      "printfulProductId": 181,
+      "printfulVariantId": 10996,
+      "technique": "UV",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:34:28Z",
+        "sources": [
+          "evidence/shopify-additional-selfdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "evidence/printful-variant-ownership-20261108.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422882689",
+      "printfulProductId": 181,
+      "printfulVariantId": 10995,
+      "technique": "UV",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:34:28Z",
+        "sources": [
+          "evidence/shopify-additional-selfdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "evidence/printful-variant-ownership-20261108.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422915457",
+      "printfulProductId": 181,
+      "printfulVariantId": 10994,
+      "technique": "UV",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:34:28Z",
+        "sources": [
+          "evidence/shopify-additional-selfdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "evidence/printful-variant-ownership-20261108.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422948225",
+      "printfulProductId": 181,
+      "printfulVariantId": 11703,
+      "technique": "UV",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:34:28Z",
+        "sources": [
+          "evidence/shopify-additional-selfdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "evidence/printful-variant-ownership-20261108.json"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422980993",
+      "printfulProductId": 181,
+      "printfulVariantId": 11705,
+      "technique": "UV",
+      "knownPlacements": ["default"],
+      "eligiblePlacements": ["default"],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:34:28Z",
+        "sources": [
+          "evidence/shopify-additional-selfdesign-snapshot-20261108.json",
+          "evidence/printful-relevant-products-20261108.json",
+          "evidence/printful-variant-ownership-20261108.json"
+        ]
+      }
+    }
+  ]
+}

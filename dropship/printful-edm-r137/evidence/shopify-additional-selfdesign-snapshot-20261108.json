@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-08T10:27:03Z",
+  "source": "Shopify Admin search_products targeted exact handles",
+  "query": "handle:transparente-iphone®-hulle-selbst-gestalten OR handle:buegeltransfer-selbst-gestalten",
+  "complete": true,
+  "products": [
+    {
+      "id": "gid://shopify/Product/15423895830913",
+      "handle": "buegeltransfer-selbst-gestalten",
+      "title": "Bügeltransfer – selbst gestalten",
+      "status": "ACTIVE",
+      "productType": "Bügeltransfer",
+      "tags": [
+        "basteln",
+        "bild-ok",
+        "buegeltransfer",
+        "bügelbild",
+        "custom",
+        "diy",
+        "hype-jetzt",
+        "selbst-gestalten",
+        "sg-accessoires"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/buegeltransfer.jpg?v=1781356273",
+      "variantsCount": 1,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55784678654337",
+          "title": "Gross (A3, ~30×21 cm)",
+          "sku": "TRANSFER-A3",
+          "priceCHF": "35.90",
+          "inventoryQuantity": -1
+        }
+      ],
+      "printfulEligibility": "BLOCKED_NON_PRINTFUL_FULFILLMENT",
+      "evidence": "dropship/pod/MISTER-DTF-FULFILLMENT.md"
+    },
+    {
+      "id": "gid://shopify/Product/15422946804097",
+      "handle": "transparente-iphone®-hulle-selbst-gestalten",
+      "title": "Transparente iPhone®-Hülle – Selbst gestalten",
+      "status": "ACTIVE",
+      "productType": "Handy-Zubehör",
+      "tags": [
+        "bild-ok",
+        "huelle",
+        "natel",
+        "sort-handy-huellen",
+        "sort-handyhuellen-displayschutz",
+        "tech"
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10996_1582202496.jpg?v=1781046473",
+      "variantsCount": 31,
+      "variantSample": [
+        {
+          "id": "gid://shopify/ProductVariant/55778422849921",
+          "title": "iPhone 11 Pro Max",
+          "sku": "6267182_10996",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422882689",
+          "title": "iPhone 11 Pro",
+          "sku": "6267182_10995",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422915457",
+          "title": "iPhone 11",
+          "sku": "6267182_10994",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422948225",
+          "title": "iPhone 12 mini",
+          "sku": "6267182_11703",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422980993",
+          "title": "iPhone 12 Pro Max",
+          "sku": "6267182_11705",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "printfulEligibility": "MAPPING_REQUIRED",
+      "evidence": "dropship/selbst-gestalten-fertig-0511/bestellweg/README.md"
+    }
+  ],
+  "policy": {
+    "variantData": "sample only; not a complete variant export",
+    "missingPrintfulMappingBlocksEditor": true,
+    "noShopWritePerformed": true
+  }
+}

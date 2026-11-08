@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-08T00:00:00Z",
+  "scope": {
+    "brand": "LuxeStyle",
+    "shop": "luxestyle.ch",
+    "shopifyProductId": "15422823465345",
+    "handle": "keramik-tasse-selbst-gestalten",
+    "printfulProductId": 19
+  },
+  "sourceEvidence": {
+    "catalogSnapshot": {
+      "path": "/workspace/luxestyle-review/pod-page-guard-20261108/dropship/selbst-gestalten-fertig-0511/werkzeuge/testdaten/katalog/19.json",
+      "retrievedAt": "2026-11-05T16:33:37.309Z",
+      "httpStatuses": {
+        "product": 200,
+        "printfiles": 200,
+        "templates": 200,
+        "sizes": 200
+      }
+    },
+    "previewMapping": {
+      "path": "/workspace/luxestyle-review/v63-mug-pilot-theme-20261108/after/assets/lspod-vorschau-19.json"
+    },
+    "rightsManifest": "/workspace/luxestyle-review/pod-page-guard-20261108/dropship/katalog-einheiten-0411/sicherung/assets__luxe-clothing-reference-gallery.json.vor"
+  },
+  "catalogMain": {
+    "variantId": null,
+    "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/product19-catalog-main.jpg",
+    "sha256": "cd7a7d3fea02b729c7607a1425c40b0833dbc0746a725f280a732e71198e71f3",
+    "bytes": 9469,
+    "width": 600,
+    "height": 600,
+    "format": "JPEG",
+    "sourceUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/8c/8c4ac4a450b8485bc8a6e041a5a23666_l",
+    "role": "printful_catalog_product_main",
+    "view": "blank_front_oblique_handle_left",
+    "suitability": {
+      "blankCatalogueDisplay": true,
+      "staticEditorBase": "reference_only",
+      "variantSpecific": false,
+      "customerDesignProjection": false,
+      "officialGeneratedMockup": false
+    },
+    "notes": [
+      "Applies to Printful product 19 generally, not a proven exact size/variant view.",
+      "Exact hash is bound to an existing approval, but that approval explicitly excludes selected customer-design preview."
+    ],
+    "rights": {
+      "status": "approved_for_exact_catalogue_blank_only",
+      "evidencePath": "/workspace/luxestyle-review/pod-page-guard-20261108/dropship/katalog-einheiten-0411/sicherung/assets__luxe-clothing-reference-gallery.json.vor",
+      "evidenceProductId": "19",
+      "scope": "Exact blank manufacturer product image for LuxeStyle catalogue display; explicitly not the selected customer-design preview or arbitrary printed artwork."
+    }
+  },
+  "variants": [
+    {
+      "printfulVariantId": 1320,
+      "size": "325 ml / 11 oz",
+      "shopifyVariantId": "55777979629953",
+      "sku": "9365183_1320",
+      "printfile": {
+        "id": 43,
+        "width": 2700,
+        "height": 1050,
+        "dpi": 300
+      },
+      "templateId": 919,
+      "templateAreaOn728": {
+        "left": 29,
+        "top": 163,
+        "width": 671,
+        "height": 261
+      },
+      "assets": [
+        {
+          "variantId": 1320,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/1320-product.jpg",
+          "sha256": "58f409c6763e16f48a504c3d2d1704c18b291c882f5749c18fad184d50fdbbb4",
+          "bytes": 17203,
+          "width": 700,
+          "height": 1000,
+          "format": "JPEG",
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-vorschau-a8506a7e60.jpg?v=1793978450",
+          "role": "shopify_mirror_blank_variant_photo",
+          "view": "front_oblique_handle_left",
+          "suitability": {
+            "blankCatalogueDisplay": true,
+            "staticEditorBase": true,
+            "customerDesignProjection": "blocked_pending_exact_rights_and_geometry",
+            "officialGeneratedMockup": false
+          },
+          "notes": [
+            "Shopify mirror used by lspod-vorschau-19.json.",
+            "Blank product only; no wrap, right-handle or side view."
+          ],
+          "rights": {
+            "status": "not_exactly_bound_in_rights_manifest",
+            "evidence": "The URLs are authenticated Printful catalogue API variant images and already mirrored in Shopify Files, but the exact three variant URLs/hashes are absent from the approved reference-gallery rights entries.",
+            "requiredBeforeLiveOverlay": "Confirm commercial modification/mockup use for these exact variant photos, or use official Printful-generated mockups."
+          }
+        },
+        {
+          "variantId": 1320,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/1320-product-printful.jpg",
+          "sha256": "a4e62720094d85c80e19441a89115d5b2f85620fef77508c47012f6bdbb08bd3",
+          "bytes": 23854,
+          "width": 700,
+          "height": 1000,
+          "format": "JPEG",
+          "sourceUrl": "https://files.cdn.printful.com/products/19/1320_1663762583.jpg",
+          "role": "printful_catalog_blank_variant_photo",
+          "view": "front_oblique_handle_left",
+          "suitability": {
+            "blankCatalogueDisplay": "source_only",
+            "staticEditorBase": "reference",
+            "customerDesignProjection": "blocked_pending_exact_rights_and_geometry",
+            "officialGeneratedMockup": false
+          },
+          "notes": [
+            "Original Printful catalogue source of the Shopify mirror."
+          ],
+          "rights": {
+            "status": "not_exactly_bound_in_rights_manifest",
+            "evidence": "The URLs are authenticated Printful catalogue API variant images and already mirrored in Shopify Files, but the exact three variant URLs/hashes are absent from the approved reference-gallery rights entries.",
+            "requiredBeforeLiveOverlay": "Confirm commercial modification/mockup use for these exact variant photos, or use official Printful-generated mockups."
+          }
+        },
+        {
+          "variantId": 1320,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/1320-template.png",
+          "sha256": "df79e9f13eed1c1e7dc861a424479bd7f027cff55d7628265c88b6a163dbe6d0",
+          "bytes": 7445,
+          "width": 728,
+          "height": 728,
+          "format": "PNG",
+          "sourceUrl": "https://files.cdn.printful.com/o/upload/api-template/3f/3f769a18d1341f45633c4c7be714adc4?v=1643280024",
+          "role": "printful_print_area_template",
+          "view": "wrap_flat_with_center_and_handle_guides",
+          "suitability": {
+            "editorGeometryGuide": true,
+            "printBoundaryGuide": true,
+            "productPhoto": false,
+            "customerPreviewByItself": false
+          },
+          "notes": [
+            "Official API template snapshot; the dashed/solid guide and cup/handle symbols are layout guidance, not a rendered mug."
+          ],
+          "rights": {
+            "status": "api_geometry_asset_operational_use_only",
+            "evidence": "Exact URLs came from authenticated Printful templates endpoint snapshot dated 2026-11-05. No separate commercial-image rights record was found.",
+            "scope": "Use as print-area geometry/editor guide; do not market it as a product photo."
+          }
+        }
+      ]
+    },
+    {
+      "printfulVariantId": 4830,
+      "size": "444 ml / 15 oz",
+      "shopifyVariantId": "55777979662721",
+      "sku": "9365183_4830",
+      "printfile": {
+        "id": 44,
+        "width": 2700,
+        "height": 1140,
+        "dpi": 300
+      },
+      "templateId": 920,
+      "templateAreaOn728": {
+        "left": 40,
+        "top": 117,
+        "width": 649,
+        "height": 274
+      },
+      "assets": [
+        {
+          "variantId": 4830,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/4830-product.jpg",
+          "sha256": "8f73d3022fcea75f4297876539ea091fa8351a7574b0fa1491c7de59d207ccbf",
+          "bytes": 4724,
+          "width": 275,
+          "height": 500,
+          "format": "JPEG",
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-vorschau-9a682b65e7.jpg?v=1793978450",
+          "role": "shopify_mirror_blank_variant_photo",
+          "view": "front_oblique_handle_left",
+          "suitability": {
+            "blankCatalogueDisplay": true,
+            "staticEditorBase": true,
+            "customerDesignProjection": "blocked_pending_exact_rights_and_geometry",
+            "officialGeneratedMockup": false
+          },
+          "notes": [
+            "Shopify mirror used by lspod-vorschau-19.json.",
+            "Blank product only; no wrap, right-handle or side view."
+          ],
+          "rights": {
+            "status": "not_exactly_bound_in_rights_manifest",
+            "evidence": "The URLs are authenticated Printful catalogue API variant images and already mirrored in Shopify Files, but the exact three variant URLs/hashes are absent from the approved reference-gallery rights entries.",
+            "requiredBeforeLiveOverlay": "Confirm commercial modification/mockup use for these exact variant photos, or use official Printful-generated mockups."
+          }
+        },
+        {
+          "variantId": 4830,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/4830-product-printful.jpg",
+          "sha256": "4df3b811d9d23e2b5146a1cce2489571e8c051c0a5dcc7492eb46cd7d0c13d87",
+          "bytes": 4678,
+          "width": 275,
+          "height": 500,
+          "format": "JPEG",
+          "sourceUrl": "https://files.cdn.printful.com/products/19/4830_1519394046.jpg",
+          "role": "printful_catalog_blank_variant_photo",
+          "view": "front_oblique_handle_left",
+          "suitability": {
+            "blankCatalogueDisplay": "source_only",
+            "staticEditorBase": "reference",
+            "customerDesignProjection": "blocked_pending_exact_rights_and_geometry",
+            "officialGeneratedMockup": false
+          },
+          "notes": [
+            "Original Printful catalogue source of the Shopify mirror."
+          ],
+          "rights": {
+            "status": "not_exactly_bound_in_rights_manifest",
+            "evidence": "The URLs are authenticated Printful catalogue API variant images and already mirrored in Shopify Files, but the exact three variant URLs/hashes are absent from the approved reference-gallery rights entries.",
+            "requiredBeforeLiveOverlay": "Confirm commercial modification/mockup use for these exact variant photos, or use official Printful-generated mockups."
+          }
+        },
+        {
+          "variantId": 4830,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/4830-template.png",
+          "sha256": "1b318c427391be55782b2a9d8e45c131a96fb9aa999087488d26624f70b36fe6",
+          "bytes": 7639,
+          "width": 728,
+          "height": 728,
+          "format": "PNG",
+          "sourceUrl": "https://files.cdn.printful.com/o/upload/api-template/d3/d33a21bee19498f1cc7ed51531cc1b8a?v=1643279809",
+          "role": "printful_print_area_template",
+          "view": "wrap_flat_with_center_and_handle_guides",
+          "suitability": {
+            "editorGeometryGuide": true,
+            "printBoundaryGuide": true,
+            "productPhoto": false,
+            "customerPreviewByItself": false
+          },
+          "notes": [
+            "Official API template snapshot; the dashed/solid guide and cup/handle symbols are layout guidance, not a rendered mug."
+          ],
+          "rights": {
+            "status": "api_geometry_asset_operational_use_only",
+            "evidence": "Exact URLs came from authenticated Printful templates endpoint snapshot dated 2026-11-05. No separate commercial-image rights record was found.",
+            "scope": "Use as print-area geometry/editor guide; do not market it as a product photo."
+          }
+        }
+      ]
+    },
+    {
+      "printfulVariantId": 16586,
+      "size": "591 ml / 20 oz",
+      "shopifyVariantId": "55777979695489",
+      "sku": "9365183_16586",
+      "printfile": {
+        "id": 426,
+        "width": 3071,
+        "height": 1205,
+        "dpi": 300
+      },
+      "templateId": 181779,
+      "templateAreaOn728": {
+        "left": 14,
+        "top": 166,
+        "width": 700,
+        "height": 275
+      },
+      "assets": [
+        {
+          "variantId": 16586,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/16586-product.jpg",
+          "sha256": "9bfd9142a67bbc5a9da95b4365e5b082c0d17c86ea1547f06bd352eb4aec0195",
+          "bytes": 18375,
+          "width": 700,
+          "height": 1000,
+          "format": "JPEG",
+          "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-vorschau-b464bc7d14.jpg?v=1793978450",
+          "role": "shopify_mirror_blank_variant_photo",
+          "view": "front_oblique_handle_left",
+          "suitability": {
+            "blankCatalogueDisplay": true,
+            "staticEditorBase": true,
+            "customerDesignProjection": "blocked_pending_exact_rights_and_geometry",
+            "officialGeneratedMockup": false
+          },
+          "notes": [
+            "Shopify mirror used by lspod-vorschau-19.json.",
+            "Blank product only; no wrap, right-handle or side view."
+          ],
+          "rights": {
+            "status": "not_exactly_bound_in_rights_manifest",
+            "evidence": "The URLs are authenticated Printful catalogue API variant images and already mirrored in Shopify Files, but the exact three variant URLs/hashes are absent from the approved reference-gallery rights entries.",
+            "requiredBeforeLiveOverlay": "Confirm commercial modification/mockup use for these exact variant photos, or use official Printful-generated mockups."
+          }
+        },
+        {
+          "variantId": 16586,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/16586-product-printful.jpg",
+          "sha256": "9eb4d114413c691e63b82b5791f8112c9db13c7af2336d4d43b59412f5463c03",
+          "bytes": 28237,
+          "width": 700,
+          "height": 1000,
+          "format": "JPEG",
+          "sourceUrl": "https://files.cdn.printful.com/products/19/16586_1680616351.jpg",
+          "role": "printful_catalog_blank_variant_photo",
+          "view": "front_oblique_handle_left",
+          "suitability": {
+            "blankCatalogueDisplay": "source_only",
+            "staticEditorBase": "reference",
+            "customerDesignProjection": "blocked_pending_exact_rights_and_geometry",
+            "officialGeneratedMockup": false
+          },
+          "notes": [
+            "Original Printful catalogue source of the Shopify mirror."
+          ],
+          "rights": {
+            "status": "not_exactly_bound_in_rights_manifest",
+            "evidence": "The URLs are authenticated Printful catalogue API variant images and already mirrored in Shopify Files, but the exact three variant URLs/hashes are absent from the approved reference-gallery rights entries.",
+            "requiredBeforeLiveOverlay": "Confirm commercial modification/mockup use for these exact variant photos, or use official Printful-generated mockups."
+          }
+        },
+        {
+          "variantId": 16586,
+          "path": "/workspace/luxestyle-review/printful-image-mapping-r137/images/16586-template.png",
+          "sha256": "e3a6fb8527df99ec6da80a02a464971714d6e3eca28a5183c71ab068177f7cc9",
+          "bytes": 5617,
+          "width": 728,
+          "height": 728,
+          "format": "PNG",
+          "sourceUrl": "https://files.cdn.printful.com/o/upload/api-template/9f/9f9cca36af43f2b7f94854041ab87463?v=1681222300",
+          "role": "printful_print_area_template",
+          "view": "wrap_flat_with_center_and_handle_guides",
+          "suitability": {
+            "editorGeometryGuide": true,
+            "printBoundaryGuide": true,
+            "productPhoto": false,
+            "customerPreviewByItself": false
+          },
+          "notes": [
+            "Official API template snapshot; the dashed/solid guide and cup/handle symbols are layout guidance, not a rendered mug."
+          ],
+          "rights": {
+            "status": "api_geometry_asset_operational_use_only",
+            "evidence": "Exact URLs came from authenticated Printful templates endpoint snapshot dated 2026-11-05. No separate commercial-image rights record was found.",
+            "scope": "Use as print-area geometry/editor guide; do not market it as a product photo."
+          }
+        }
+      ]
+    }
+  ],
+  "otherExistingImages": [
+    {
+      "path": "/workspace/luxestyle-review/pod-page-guard-20261108/pod/templates/tasse.png",
+      "sha256": "256db7be93af3fa838d7409c89c24827b769cd3f56962913e0a012022f8de2f2",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "classification": "generic_drawn_placeholder",
+      "suitability": "Not a real product photo and not variant-specific; unsuitable as an original-like Printful mockup."
+    },
+    {
+      "path": "/workspace/luxestyle-review/pod-page-guard-20261108/pod/personalized/tasse.png",
+      "sha256": "60320cfcbefcf0ce902f5858904407c87c77083b7c7332d976bf66557db7e463",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "classification": "marketing_tile",
+      "suitability": "Not a product view; unsuitable for print preview."
+    },
+    {
+      "path": "/workspace/luxestyle-review/pod-page-guard-20261108/pod/mockups/mug/",
+      "classification": "baked_design_mockup_set",
+      "suitability": "Contains existing fixed designs; must not be reused as a customer-specific preview."
+    },
+    {
+      "path": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/r136-assets/",
+      "classification": "qa_screenshots",
+      "suitability": "Derived UI evidence, not raw product assets."
+    },
+    {
+      "variantId": null,
+      "path": "/workspace/luxestyle-review/printful-image-mapping-r137/contact-sheet.jpg",
+      "sha256": "a2a3177d834889f28c6b5592df333d9613ffa7f0efcbd4cae2cb87031cc1818b",
+      "bytes": 59480,
+      "width": 1200,
+      "height": 860,
+      "format": "JPEG",
+      "sourceUrl": "local-composite-of-mapped-assets",
+      "role": "qa_contact_sheet",
+      "view": "six_asset_overview",
+      "suitability": {
+        "qaOnly": true,
+        "storeUse": false
+      },
+      "notes": [
+        "Locally generated solely for visual QA; not a product asset."
+      ],
+      "rights": {
+        "status": "derived_qa_only"
+      }
+    }
+  ],
+  "verifiedGaps": [
+    "No raw Handle on Right image is present for variants 1320, 4830 or 16586.",
+    "No raw side/back/360 view, 3D model, depth map or official interactive renderer is present.",
+    "The authenticated Printful printfile data advertises mockup options Front, Front view, Handle on Left and Handle on Right, but current stored evidence contains no generated files for those options.",
+    "Variant photos are blank front-oblique images only. A cylindrical warp derived from them remains an approximation and cannot reproduce Printful Design Maker exactly.",
+    "Exact commercial overlay/modification rights are not bound for the three variant photos; only the product-19 catalogue main image has an exact rights approval, whose scope excludes customer-design preview."
+  ],
+  "decision": {
+    "safeNow": "Use the three official 728x728 templates as print-area guides and the mapped photos only as blank/static references within the current documented scope.",
+    "blocked": "Do not present a locally warped image as an official Printful mockup or exact production result.",
+    "neededForOriginalLikeResult": "Use official Printful Design Maker/Personalization integration if available, or generate official mockups for each selected design and requested view after endpoint/cost/rights confirmation. A right-handle view and exact generated result are missing locally."
+  }
+}

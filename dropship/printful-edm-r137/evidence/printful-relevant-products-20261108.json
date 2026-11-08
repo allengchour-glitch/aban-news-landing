@@ -1,0 +1,2081 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-08T10:26:00.656268+00:00",
+  "source": "GET https://api.printful.com/products (one bounded public catalog request; stored subset only)",
+  "catalogResponseCount": 580,
+  "selection": "Printful model IDs referenced by current repo shopHandles plus model 403",
+  "selectedCount": 45,
+  "missingIds": [],
+  "products": [
+    {
+      "printfulProductId": 3,
+      "found": true,
+      "title": "Canvas (in)",
+      "type": "CANVAS",
+      "isDiscontinued": false,
+      "variantCount": 46,
+      "imageUrl": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 19,
+      "found": true,
+      "title": "White Glossy Mug",
+      "type": "MUG",
+      "isDiscontinued": false,
+      "variantCount": 3,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/8c/8c4ac4a450b8485bc8a6e041a5a23666_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 71,
+      "found": true,
+      "title": "Unisex Staple T-Shirt | Bella + Canvas 3001",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 628,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/20/2079a3ee4cc472ad952fe16654f274cd_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_left",
+          "type": "embroidery_chest_left",
+          "title": "Left chest"
+        },
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "embroidery_sleeve_left_top",
+          "type": "embroidery_sleeve_left_top",
+          "title": "Left sleeve top"
+        },
+        {
+          "id": "embroidery_sleeve_right_top",
+          "type": "embroidery_sleeve_right_top",
+          "title": "Right sleeve top"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "front_large",
+          "type": "front_large",
+          "title": "Large front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "short_sleeve_left_dtf",
+          "type": "short_sleeve_left_dtf",
+          "title": "Short left sleeve"
+        },
+        {
+          "id": "short_sleeve_right_dtf",
+          "type": "short_sleeve_right_dtf",
+          "title": "Short right sleeve"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "label_inside_dtf",
+          "type": "label_inside_dtf",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 83,
+      "found": true,
+      "title": "All-Over Print Basic Pillow",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 5,
+      "imageUrl": "https://files.cdn.printful.com/o/products/83/product_1573737219.jpg",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 84,
+      "found": true,
+      "title": "All-Over Print Tote Bag",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 3,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/18/188a606268f59e0c026a2ed0e41b20a3_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 145,
+      "found": true,
+      "title": "Unisex Crew Neck Sweatshirt | Gildan 18000",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 177,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c45dccb582df772f84fcafde9b726096_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_left",
+          "type": "embroidery_chest_left",
+          "title": "Left chest"
+        },
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "embroidery_wrist_left",
+          "type": "embroidery_wrist_left",
+          "title": "Left wrist"
+        },
+        {
+          "id": "embroidery_wrist_right",
+          "type": "embroidery_wrist_right",
+          "title": "Right wrist"
+        },
+        {
+          "id": "embroidery_neckline",
+          "type": "embroidery_neckline",
+          "title": "Neckline"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "label_inside_dtf",
+          "type": "label_inside_dtf",
+          "title": "Inside label"
+        },
+        {
+          "id": "long_sleeve_right_dtf",
+          "type": "long_sleeve_right_dtf",
+          "title": "Long right sleeve"
+        },
+        {
+          "id": "long_sleeve_left_dtf",
+          "type": "long_sleeve_left_dtf",
+          "title": "Long left sleeve"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 171,
+      "found": true,
+      "title": "Premium Luster Photo Paper Poster (in)",
+      "type": "POSTER",
+      "isDiscontinued": false,
+      "variantCount": 30,
+      "imageUrl": "https://files.cdn.printful.com/o/products/171/product_1613463439.jpg",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 181,
+      "found": true,
+      "title": "Clear Case for iPhone®",
+      "type": "PHONE-CASE",
+      "isDiscontinued": false,
+      "variantCount": 31,
+      "imageUrl": "https://files.cdn.printful.com/o/products/181/product_1570615955.jpg",
+      "techniques": [
+        {
+          "key": "UV",
+          "display_name": "UV printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 206,
+      "found": true,
+      "title": "Classic Dad Hat | Yupoong 6245CM",
+      "type": "EMBROIDERY",
+      "isDiscontinued": false,
+      "variantCount": 11,
+      "imageUrl": "https://files.cdn.printful.com/o/products/206/product_1584101692.jpg",
+      "techniques": [
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": true
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "embroidery_front",
+          "title": "Front"
+        },
+        {
+          "id": "embroidery_front_large",
+          "type": "embroidery_front_large",
+          "title": "Front"
+        },
+        {
+          "id": "back",
+          "type": "embroidery_back",
+          "title": "Back"
+        },
+        {
+          "id": "right",
+          "type": "embroidery_right",
+          "title": "Right side"
+        },
+        {
+          "id": "left",
+          "type": "embroidery_left",
+          "title": "Left side"
+        },
+        {
+          "id": "front_dtf_hat",
+          "type": "front_dtf_hat",
+          "title": "Front print"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 242,
+      "found": true,
+      "title": "All-Over Print Yoga Leggings",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 5,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/91/91b419531e25bc57d596b902301a9282_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "belt_front",
+          "type": "belt_front",
+          "title": "Front waist"
+        },
+        {
+          "id": "belt_back",
+          "type": "belt_back",
+          "title": "Back waist"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 259,
+      "found": true,
+      "title": "Beach Towel",
+      "type": "SUBLIMATION",
+      "isDiscontinued": false,
+      "variantCount": 2,
+      "imageUrl": "https://files.cdn.printful.com/o/products/259/product_1606198364.jpg",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 267,
+      "found": true,
+      "title": "Clear Case for Samsung®",
+      "type": "PHONE-CASE",
+      "isDiscontinued": false,
+      "variantCount": 18,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/7c/7c7a0c9bba1ab7ead3c03753adc262b6_l",
+      "techniques": [
+        {
+          "key": "UV",
+          "display_name": "UV printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 268,
+      "found": true,
+      "title": "Enhanced Matte Paper Poster (cm)",
+      "type": "POSTER",
+      "isDiscontinued": false,
+      "variantCount": 7,
+      "imageUrl": "https://files.cdn.printful.com/o/products/268/product_1613463288.jpg",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 272,
+      "found": true,
+      "title": "All-Over Print One-Piece Swimsuit",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 7,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/37/37b621c104379d9c1b5312781a61f14c_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 279,
+      "found": true,
+      "title": "All-Over Print Backpack",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 1,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/1c/1cb4394b298d1d9e5d622976d8b89213_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front & Pocket"
+        },
+        {
+          "id": "top",
+          "type": "top",
+          "title": "Top panel"
+        },
+        {
+          "id": "bottom",
+          "type": "bottom",
+          "title": "Bottom panel"
+        },
+        {
+          "id": "pocket",
+          "type": "pocket",
+          "title": "Inside Pocket"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 282,
+      "found": true,
+      "title": "All-Over Print Sports Bra",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 12,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/55/5535a484351bcb70a93142595b4b0f30_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 304,
+      "found": true,
+      "title": "Enhanced Matte Paper Framed Poster (cm)",
+      "type": "FRAMED-POSTER",
+      "isDiscontinued": false,
+      "variantCount": 24,
+      "imageUrl": "https://files.cdn.printful.com/o/products/304/product_1613463672.jpg",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 320,
+      "found": true,
+      "title": "All-Over Print Recycled Unisex Sweatshirt",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 11,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/01/01a34ccbb207be8a07d9ee828cdc1216_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "label_panel",
+          "type": "label_panel",
+          "title": "Label panel"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 358,
+      "found": true,
+      "title": "Kiss-Cut Stickers",
+      "type": "STICKER",
+      "isDiscontinued": false,
+      "variantCount": 4,
+      "imageUrl": "https://files.cdn.printful.com/o/products/358/product_1553084472.jpg",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 367,
+      "found": true,
+      "title": "Eco Tote Bag | Econscious EC8000",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 2,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/96/965d2ac3d059e6ec8e9a040ba30e97e4_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "embroidery_apparel_front",
+          "type": "embroidery_apparel_front",
+          "title": "Front"
+        },
+        {
+          "id": "front_dtf_tote",
+          "type": "front_dtf_tote",
+          "title": "Front"
+        },
+        {
+          "id": "back_dtf_tote",
+          "type": "back_dtf_tote",
+          "title": "Back"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 380,
+      "found": true,
+      "title": "Unisex Premium Pullover Hoodie | Cotton Heritage M2580",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 148,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/0e/0e62ae87da7d32dfb60d6dadc3744346_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_left",
+          "type": "embroidery_chest_left",
+          "title": "Left chest"
+        },
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "embroidery_wrist_left",
+          "type": "embroidery_wrist_left",
+          "title": "Left wrist"
+        },
+        {
+          "id": "embroidery_wrist_right",
+          "type": "embroidery_wrist_right",
+          "title": "Right wrist"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "label_inside_dtf",
+          "type": "label_inside_dtf",
+          "title": "Inside label"
+        },
+        {
+          "id": "long_sleeve_left_dtf",
+          "type": "long_sleeve_left_dtf",
+          "title": "Long left sleeve"
+        },
+        {
+          "id": "long_sleeve_right_dtf",
+          "type": "long_sleeve_right_dtf",
+          "title": "Long right sleeve"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 388,
+      "found": true,
+      "title": "All-Over Print Recycled Unisex Hoodie",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 11,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/7c/7c6f71d3de5db0ef1f05f397fc497f0b_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "pocket",
+          "type": "pocket",
+          "title": "Pocket"
+        },
+        {
+          "id": "hood",
+          "type": "hood",
+          "title": "Hood"
+        },
+        {
+          "id": "label_panel",
+          "type": "label_panel",
+          "title": "Label panel"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 390,
+      "found": true,
+      "title": "All-Over Print Unisex Bomber Jacket",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 7,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/20/20ef69e11668465add550aee1997bcf8_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "details",
+          "type": "details",
+          "title": "Details"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 394,
+      "found": true,
+      "title": "Laptop Sleeve",
+      "type": "SUBLIMATION",
+      "isDiscontinued": false,
+      "variantCount": 2,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/02/022e7ef918b642b66d60b3ce3cb5e5ee_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 395,
+      "found": true,
+      "title": "Throw Blanket",
+      "type": "SUBLIMATION",
+      "isDiscontinued": false,
+      "variantCount": 3,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/7a/7a7486c4b4144d3f02d9484a231242e1_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 400,
+      "found": true,
+      "title": "All-Over Print Recycled Men’s Joggers",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 7,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/78/78d3733ecee5366cecf127f555d446d2_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "right_leg",
+          "type": "leg_right",
+          "title": "Right leg"
+        },
+        {
+          "id": "left_leg",
+          "type": "leg_left",
+          "title": "Left leg"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 403,
+      "found": true,
+      "title": "White Ceramic Mug with Color Inside",
+      "type": "MUG",
+      "isDiscontinued": false,
+      "variantCount": 16,
+      "imageUrl": "https://files.cdn.printful.com/o/products/403/product_1595515161.jpg",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 438,
+      "found": true,
+      "title": "Unisex Classic Tee | Gildan 5000",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 276,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/51/5137d67bedbf56010d1daa04555a6d03_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_left",
+          "type": "embroidery_chest_left",
+          "title": "Left chest"
+        },
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "embroidery_sleeve_left_top",
+          "type": "embroidery_sleeve_left_top",
+          "title": "Left sleeve top"
+        },
+        {
+          "id": "embroidery_sleeve_right_top",
+          "type": "embroidery_sleeve_right_top",
+          "title": "Right sleeve top"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "label_inside_dtf",
+          "type": "label_inside_dtf",
+          "title": "Inside label"
+        },
+        {
+          "id": "short_sleeve_left_dtf",
+          "type": "short_sleeve_left_dtf",
+          "title": "Short left sleeve"
+        },
+        {
+          "id": "short_sleeve_right_dtf",
+          "type": "short_sleeve_right_dtf",
+          "title": "Short right sleeve"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 456,
+      "found": true,
+      "title": "Unisex Organic Cotton Creator 2.0 T-Shirt | Stanley/Stella STTU169",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 103,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/e0/e09771b7c272546bbf374f4d2c67c11c_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "short_sleeve_left_dtf",
+          "type": "short_sleeve_left_dtf",
+          "title": "Short left sleeve"
+        },
+        {
+          "id": "short_sleeve_right_dtf",
+          "type": "short_sleeve_right_dtf",
+          "title": "Short right sleeve"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Inside label"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "label_inside_dtf",
+          "type": "label_inside_dtf",
+          "title": "Inside label"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 474,
+      "found": true,
+      "title": "Spiral Notebook",
+      "type": "POSTCARD",
+      "isDiscontinued": false,
+      "variantCount": 1,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/959982bbc26d6ac2c831edbe3207cc6c_l",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 518,
+      "found": true,
+      "title": "Mouse Pad",
+      "type": "SUBLIMATION",
+      "isDiscontinued": false,
+      "variantCount": 1,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/83/83dfc4934273f68021ef5d0324168e39_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 586,
+      "found": true,
+      "title": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 350,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/6d/6d7501c1e4b984392a258054bf0cd145_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_left",
+          "type": "embroidery_chest_left",
+          "title": "Left chest"
+        },
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "embroidery_sleeve_left_top",
+          "type": "embroidery_sleeve_left_top",
+          "title": "Left sleeve top"
+        },
+        {
+          "id": "embroidery_sleeve_right_top",
+          "type": "embroidery_sleeve_right_top",
+          "title": "Right sleeve top"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "short_sleeve_left_dtf",
+          "type": "short_sleeve_left_dtf",
+          "title": "Short left sleeve"
+        },
+        {
+          "id": "short_sleeve_right_dtf",
+          "type": "short_sleeve_right_dtf",
+          "title": "Short right sleeve"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 601,
+      "found": true,
+      "title": "Tough Case for iPhone®",
+      "type": "PHONE-CASE",
+      "isDiscontinued": false,
+      "variantCount": 58,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/e8/e8137cb9510f23d9b446cfce126c2f58_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 656,
+      "found": true,
+      "title": "Die-Cut Magnets",
+      "type": "STICKER",
+      "isDiscontinued": false,
+      "variantCount": 3,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/24/24b767af95768718c7a62fcb817d01a4_l",
+      "techniques": [
+        {
+          "key": "DIGITAL",
+          "display_name": "Digital printing",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 684,
+      "found": true,
+      "title": "Snap Case for Samsung",
+      "type": "PHONE-CASE",
+      "isDiscontinued": false,
+      "variantCount": 46,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/f6/f6466ce0d2b7660d6dbe3b8b49b3391b_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 686,
+      "found": true,
+      "title": "Tough Case for Samsung",
+      "type": "PHONE-CASE",
+      "isDiscontinued": false,
+      "variantCount": 46,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/c6/c6d9effd965c5c7e223a01696a96e2a6_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 788,
+      "found": true,
+      "title": "Stainless Steel Water Bottle with a Straw Lid",
+      "type": "MUG",
+      "isDiscontinued": false,
+      "variantCount": 1,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/b9/b916b1b091bdd8c1fca95287a189c21c_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 798,
+      "found": true,
+      "title": "MagSafe Tough Case for iPhone®",
+      "type": "PHONE-CASE",
+      "isDiscontinued": false,
+      "variantCount": 36,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/5e/5e1ab23037c1e43edbadc93e716472d3_l",
+      "techniques": [
+        {
+          "key": "SUBLIMATION",
+          "display_name": "Sublimation",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "default",
+          "title": "Print file"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 821,
+      "found": true,
+      "title": "Unisex Organic Mid-Weight Drummer 2.0 Hoodie | Stanley/Stella SASU009",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 35,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/04/049e8b8b76e5dcd4c5eb60ecb57afe21_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_left",
+          "type": "embroidery_chest_left",
+          "title": "Left chest"
+        },
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "embroidery_wrist_left",
+          "type": "embroidery_wrist_left",
+          "title": "Left wrist"
+        },
+        {
+          "id": "embroidery_wrist_right",
+          "type": "embroidery_wrist_right",
+          "title": "Right wrist"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "sleeve_left",
+          "type": "sleeve_left",
+          "title": "Left sleeve"
+        },
+        {
+          "id": "sleeve_right",
+          "type": "sleeve_right",
+          "title": "Right sleeve"
+        },
+        {
+          "id": "label_outside",
+          "type": "label_outside",
+          "title": "Outside label"
+        },
+        {
+          "id": "front_dtf",
+          "type": "front_dtf",
+          "title": "Front print"
+        },
+        {
+          "id": "back_dtf",
+          "type": "back_dtf",
+          "title": "Back print"
+        },
+        {
+          "id": "back_large_dtf",
+          "type": "back_large_dtf",
+          "title": "Large back print"
+        },
+        {
+          "id": "label_inside_dtf",
+          "type": "label_inside_dtf",
+          "title": "Inside label"
+        },
+        {
+          "id": "long_sleeve_left_dtf",
+          "type": "long_sleeve_left_dtf",
+          "title": "Long left sleeve"
+        },
+        {
+          "id": "long_sleeve_right_dtf",
+          "type": "long_sleeve_right_dtf",
+          "title": "Long right sleeve"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 843,
+      "found": true,
+      "title": "Baby Jersey Bodysuit | Rabbit Skins 4424",
+      "type": "T-SHIRT",
+      "isDiscontinued": false,
+      "variantCount": 28,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/b3/b3845d789f7c1c7d036dc33ec1670c67_l",
+      "techniques": [
+        {
+          "key": "DTG",
+          "display_name": "DTG printing",
+          "is_default": true
+        },
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_chest_center",
+          "type": "embroidery_chest_center",
+          "title": "Center chest"
+        },
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 896,
+      "found": true,
+      "title": "All-Over Print Slip Dress",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 12,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/b7/b74d26cbe082947b74218bd71b10dae5_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Branding"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 1483,
+      "found": true,
+      "title": "All-Over Print Men's Board Shorts",
+      "type": "CUT-SEW",
+      "isDiscontinued": false,
+      "variantCount": 22,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/5e/5e66f02d29e70424f0da18dab899c1d7_l",
+      "techniques": [
+        {
+          "key": "CUT-SEW",
+          "display_name": "All-over synthetic",
+          "is_default": true
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "front",
+          "title": "Front print"
+        },
+        {
+          "id": "back",
+          "type": "back",
+          "title": "Back print"
+        },
+        {
+          "id": "pocket",
+          "type": "pocket",
+          "title": "Pocket"
+        },
+        {
+          "id": "label_inside",
+          "type": "label_inside",
+          "title": "Branding"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 1552,
+      "found": true,
+      "title": "Everyday Crossbody Bag | QS309",
+      "type": "EMBROIDERY",
+      "isDiscontinued": false,
+      "variantCount": 4,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/06/06f747ab45000b19c22ca50f6a162eeb_l",
+      "techniques": [
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": true
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "embroidery_apparel_front",
+          "title": "Front"
+        },
+        {
+          "id": "front_dtf_backpack",
+          "type": "front_dtf_backpack",
+          "title": "Front print"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 1553,
+      "found": true,
+      "title": "Cotton Color Tote Bag | Westford Mill W101",
+      "type": "DTFILM",
+      "isDiscontinued": false,
+      "variantCount": 12,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/1f/1f48ca2ef9e7088273e16de23fd15ade_l",
+      "techniques": [
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": true
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "embroidery_apparel_front",
+          "type": "embroidery_apparel_front",
+          "title": "Front"
+        },
+        {
+          "id": "embroidery_apparel_back",
+          "type": "embroidery_apparel_back",
+          "title": "Back"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 1562,
+      "found": true,
+      "title": "Urban Crossbody Bag | QD815",
+      "type": "DTFILM",
+      "isDiscontinued": false,
+      "variantCount": 2,
+      "imageUrl": "https://files.cdn.printful.com/o/upload/product-catalog-img/0a/0aa27ca88f30c042a4d6788e02bf8918_l",
+      "techniques": [
+        {
+          "key": "EMBROIDERY",
+          "display_name": "Embroidery",
+          "is_default": true
+        },
+        {
+          "key": "DTFILM",
+          "display_name": "DTF printing",
+          "is_default": false
+        }
+      ],
+      "files": [
+        {
+          "id": "default",
+          "type": "embroidery_apparel_front",
+          "title": "Front"
+        },
+        {
+          "id": "front_dtf_backpack",
+          "type": "front_dtf_backpack",
+          "title": "Front print"
+        },
+        {
+          "id": "preview",
+          "type": "mockup",
+          "title": "Mockup"
+        }
+      ]
+    }
+  ]
+}
