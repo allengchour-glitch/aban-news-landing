@@ -9,7 +9,7 @@ import verbund
 class AuftragsTest(unittest.TestCase):
     def test_jedes_projekt_hat_einen_vollstaendigen_auftrag(self):
         jobs=auftraege.katalog()
-        self.assertEqual(len(jobs),26)
+        self.assertEqual(len(jobs),27)
         self.assertEqual(len({a['id'] for a in jobs}),len(jobs))
         by={a['id']:a for a in jobs}
         for p in verbund.katalog():

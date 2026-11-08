@@ -5,7 +5,7 @@ from pathlib import Path
 import tagespflege
 
 IDS = {'auswahl','schaufenster','waechter','autopilot','fortura','printful','social_meta','social_pinterest'}
-IDS |= {'yt_skript','yt_video','yt_wachstum'}
+IDS |= {'yt_skript','yt_video','yt_wachstum','bewertungen'}
 
 
 def bereinigen(runs, jetzt=None):
@@ -32,6 +32,14 @@ def bereinigen(runs, jetzt=None):
                             'Der letzte Ablauf wartet, läuft noch oder endete ohne Erfolgsnachweis. Kein abgeschlossener Arbeitsfortschritt belegt.')
             row['naechster_schritt'] = 'Ergebnis im passenden Arbeitsbereich prüfen; fachliche Wirkung getrennt nachweisen.'
         except (ValueError,TypeError,KeyError,AttributeError): pass
+        if ident == 'bewertungen':
+            row['quelle'] = 'Laufstatus des vorhandenen CJ→Judge.me-Importers'
+            row['aktiv_h'] = 0
+            if row['status'] == 'gruen':
+                row['status'] = 'gelb'
+                row['ereignis'] = 'Lauf beendet – Import prüfen'
+                row['befund'] = 'Der Ablauf endete erfolgreich. Testlauf, übersprungene Produkte und tatsächlich veröffentlichte Bewertungen sind damit nicht unterschieden. Keine Importzahl bestätigt.'
+            row['naechster_schritt'] = 'Testlauf und Importbeleg prüfen; echte Bewertungen nur dem exakt passenden Produkt zuordnen und in Judge.me gegenlesen.'
         if ident.startswith('yt_'):
             row['quelle']='Automatischer Videoentwurfsbau'
             if row['gemessen'] and row['status']=='gruen':

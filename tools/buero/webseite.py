@@ -13,7 +13,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parent
 PUBLIC_IDS = {'auswahl','schaufenster','waechter','autopilot','fortura','printful',
               'social_meta','social_pinterest','dev_bauen','dev_pruefen','dev_angebot',
-              'yt_skript','yt_video','yt_wachstum'}
+              'yt_skript','yt_video','yt_wachstum','bewertungen'}
 
 
 def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
