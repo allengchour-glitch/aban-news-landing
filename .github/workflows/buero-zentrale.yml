@@ -1,0 +1,59 @@
+name: Büro-Zentrale (Planung, Prüfung, Obsidian)
+on:
+  schedule:
+    - cron: '20 */6 * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/entwicklerbuero/**'
+      - 'tools/buero/**'
+      - '.github/workflows/buero-zentrale.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/entwicklerbuero/**'
+      - 'tools/buero/**'
+      - '.github/workflows/buero-zentrale.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: buero-zentrale-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  zentrale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*.html
+            /**/*.html
+            /sitemap.xml
+            /robots.txt
+            /tools/buero/
+            /tools/entwicklerbuero/
+            /.github/workflows/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gehirne und Werkstatt gegenprüfen
+        run: python3 -B -m unittest discover -s tools/entwicklerbuero -p 'test_*.py'
+      - name: Werkstatt ausführen
+        run: python3 -B tools/entwicklerbuero/werkstatt.py "$RUNNER_TEMP/werkstatt"
+      - name: GitHub und Repository lesen
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 -B tools/buero/tagespflege.py --root . --ausgabe "$RUNNER_TEMP/pflege" --state "$RUNNER_TEMP/status-cache.json" --github
+      - name: Planen, gegenprüfen, Wissen verknüpfen
+        run: |
+          python3 -B tools/entwicklerbuero/zentrale.py --pflege "$RUNNER_TEMP/pflege/pflege.json" --werkstatt "$RUNNER_TEMP/werkstatt/status.json" "$RUNNER_TEMP/zentrale"
+          python3 -B tools/buero/make_buero.py "$RUNNER_TEMP/intern.json" --pflege-status "$RUNNER_TEMP/pflege/pflege.json" --werkstatt-status "$RUNNER_TEMP/werkstatt/status.json" --zentrale-status "$RUNNER_TEMP/zentrale/zentrale.json" > /dev/null
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"]); rows=json.loads((p/"intern.json").read_text()); (p/"zentrale/buero.json").write_text(json.dumps([r for r in rows if r["id"] in ("dev_bauen","dev_pruefen","dev_angebot")],ensure_ascii=False))'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: buero-zentrale-obsidian
+          path: ${{ runner.temp }}/zentrale/
+          retention-days: 14

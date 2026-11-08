@@ -1,0 +1,49 @@
+name: Entwicklerbüro prüfen
+on:
+  pull_request:
+    paths:
+      - 'tools/entwicklerbuero/**'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/entwicklerbuero-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/entwicklerbuero/**'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/entwicklerbuero-tests.yml'
+  schedule:
+    - cron: '45 5 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/entwicklerbuero
+            tools/buero
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gegenproben der Werkstatt
+        run: python3 -B -m unittest discover -s tools/entwicklerbuero -p 'test_werkstatt.py'
+      - name: Selbsttests und Demopaket
+        run: python3 -B tools/entwicklerbuero/werkstatt.py "$RUNNER_TEMP/werkstatt-pruefung"
+      - name: Projektfortschritt ins Büro übernehmen
+        run: |
+          python3 -B tools/buero/make_buero.py "$RUNNER_TEMP/buero-intern.json" --werkstatt-status "$RUNNER_TEMP/werkstatt-pruefung/status.json" > /dev/null
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"]); rows=json.loads((p/"buero-intern.json").read_text()); (p/"werkstatt-pruefung/buero.json").write_text(json.dumps([r for r in rows if r["id"] in ("dev_bauen","dev_pruefen","dev_angebot")],ensure_ascii=False))'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: entwicklerbuero-projekte
+          path: |
+            ${{ runner.temp }}/werkstatt-pruefung/status.json
+            ${{ runner.temp }}/werkstatt-pruefung/buero.json
+            ${{ runner.temp }}/werkstatt-pruefung/anfragen-assistent.zip
+            ${{ runner.temp }}/werkstatt-pruefung/automationen.zip
+            ${{ runner.temp }}/werkstatt-pruefung/*demo.json
+            ${{ runner.temp }}/werkstatt-pruefung/*pruefung.txt
+          retention-days: 14

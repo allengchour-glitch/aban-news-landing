@@ -1,0 +1,55 @@
+name: YouTube-Studio (Entwürfe, kein Upload)
+on:
+  schedule:
+    - cron: '10 7 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/youtube_studio/**'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/youtube-studio.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/youtube_studio/**'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/youtube-studio.yml'
+permissions:
+  contents: read
+concurrency:
+  group: youtube-studio-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  studio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools/youtube_studio
+            tools/buero
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Studiologik prüfen
+        run: python3 -B -m unittest discover -s tools/youtube_studio -p 'test_*.py'
+      - name: Video-Werkzeuge installieren
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - name: Drei vorhandene Folgen als Entwurf bauen
+        run: |
+          command -v ffmpeg
+          for folge in 0 1 2; do
+            python3 -B tools/youtube_studio/studio.py "$RUNNER_TEMP/youtube/folge-$folge" --render --folge "$folge"
+          done
+      - name: Bürobericht nur für das Studio exportieren
+        run: |
+          python3 -B tools/buero/make_buero.py "$RUNNER_TEMP/buero-intern.json" --youtube-status "$RUNNER_TEMP/youtube/folge-0/status.json" > /dev/null
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"]); rows=json.loads((p/"buero-intern.json").read_text()); (p/"youtube/buero.json").write_text(json.dumps([r for r in rows if r["id"] in ("yt_skript","yt_video","yt_wachstum")],ensure_ascii=False))'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: youtube-studio-entwuerfe
+          path: ${{ runner.temp }}/youtube/
+          retention-days: 14

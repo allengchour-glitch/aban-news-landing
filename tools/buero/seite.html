@@ -4,6 +4,7 @@
    «Büro» (gezeichnete Szene mit Figuren, die den echten Stand spielen) und «Liste» (alle Zeilen mit Text). */
 .kb { max-width: 46rem; margin-inline: auto; display: flex; flex-direction: column; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
 .kb *, .kb *::before, .kb *::after { box-sizing: border-box; }
+.kb [hidden] { display: none !important; }
 
 .kb-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
 .kb-title { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15; text-wrap: balance; }
@@ -183,9 +184,10 @@
 .kb3-chip, .kb3-tool { appearance: none; min-height: 2.25rem; padding: var(--cds-pad-xs) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); color: var(--color-fg); font: inherit; font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); cursor: pointer; }
 .kb3-chip[aria-pressed="true"], .kb3-tool[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
 .kb3-chip:focus-visible, .kb3-tool:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
-.kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: var(--color-panel); user-select: none; -webkit-user-select: none; }
+.kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: radial-gradient(ellipse at 50% 38%, #e8ede4 0%, #d9e2d9 58%, #c5d1c9 100%); user-select: none; -webkit-user-select: none; }
 .kb3-stage.is-gross { aspect-ratio: 3 / 4; }
-.kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+.kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.kb3-tool[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
 .kb3-canvas:active { cursor: grabbing; }
 .kb3-canvas:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
 .kb3-over { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -253,9 +255,28 @@
 .kb .kb-help li b { font-weight: var(--cds-font-weight-medium); }
 .kb-help h3 { margin: var(--cds-gap-md) 0 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
 .kb-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; max-width: 65ch; }
+@media (prefers-color-scheme: dark) { .kb3-stage { background: radial-gradient(ellipse at 50% 38%, #34464a 0%, #25363b 58%, #19292e 100%); } }
+.kb-arbeiten { margin: 1rem 0; }
+.kb-arbeiten h2 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+.kb-aufgaben { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 0.75rem; }
+.kb-aufgabe, .r-aufgabe { padding: 0.9rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-panel); }
+.kb-aufgabe h3 { margin: 0; font-size: 1rem; }
+.kb-aufgabe p, .r-aufgabe p { margin: 0.5rem 0 0.75rem; }
+.kb-aufgabe small, .r-aufgabe small { display: block; margin-top: 0.6rem; color: var(--color-fg-muted); line-height: 1.45; }
+.kb-aktion { display: inline-flex; align-items: center; min-height: 2.5rem; box-sizing: border-box; padding: 0.45rem 0.75rem; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); font: inherit; font-weight: 600; text-decoration: none; }
+.kb-aktion:hover { text-decoration: underline; }
+.kb-aktion:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 3px; }
+.kb-aktionslinks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.kb-infowand { background:linear-gradient(135deg,#102337,#183f49);color:#e8f6fa;border:1px solid #58878b;border-radius:18px;padding:22px;margin-bottom:22px;box-shadow:0 12px 40px #07162222; }
+.kb-infowand h2 {font-size:clamp(24px,5vw,38px);margin:0 0 12px;letter-spacing:-1px;}
+.kb-infowand p {line-height:1.5;}
+.kb-infowand-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;}
+.kb-infowand article {background:#ffffff0c;border:1px solid #ffffff25;border-radius:12px;padding:16px;}
+.kb-infowand a {color:#92e2ed;}
 </style>
 
 <div class="kb">
+  <section class="kb-infowand" data-draw="infowand" data-source="buero" aria-label="Große Infowand"></section>
   <header class="kb-head">
     <h1 class="kb-title">KI-Büro</h1>
     <p class="kb-take" data-t="rot" hidden>Etwas steht still. Die rote Zeile unten sagt, was.</p>
@@ -273,6 +294,16 @@
     <li class="kb-chip st-alt" data-alt-line hidden><svg class="shape" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle class="ring" cx="8" cy="8" r="5.5"/></svg><b data-draw="n" data-st="alt" data-source="buero">—</b><span>Alt</span></li>
   </ul>
 
+  <section class="kb-arbeiten" aria-labelledby="kb-arbeiten-titel">
+    <h2 id="kb-arbeiten-titel">Was du jetzt tun kannst</h2>
+    <p class="kb-hint">Aufgabe öffnen → Stand prüfen → nächsten Schritt erledigen. Die Links öffnen die passenden Werkzeuge.</p>
+    <div class="kb-aufgaben">
+      <article class="kb-aufgabe"><h3>Täglich prüfen und auffrischen</h3><p>Seitenbefunde, GitHub-Laufstände und eine neue Bürodatei in einem Ablauf.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/buero-tagespflege.yml" target="_blank" rel="noopener noreferrer">Tagespflege öffnen</a><small>Einmalig einrichten; danach täglich über den Tageslauf. In GitHub ist zum Handstart ein weiterer Klick nötig.</small></article>
+      <article class="kb-aufgabe"><h3>Google und Bing</h3><p>Sitemap und Indexierung prüfen. Die Suchmaschinen entscheiden, welche Seiten aufgenommen werden.</p><div class="kb-aktionslinks"><a class="kb-aktion" href="https://search.google.com/search-console?resource_id=sc-domain%3Aabannews.com" target="_blank" rel="noopener noreferrer">Google öffnen</a><a class="kb-aktion" href="https://www.bing.com/webmasters/" target="_blank" rel="noopener noreferrer">Bing öffnen</a></div><small>Einmalig einrichten: Google-Dienstkonto für die Sitemap und IndexNow-Schlüssel samt Schlüsseldatei.</small></article>
+      <article class="kb-aufgabe"><h3>Verbesserungen bearbeiten</h3><p>Konkrete Seitenbefunde ansehen. Der bestehende Handstart kann einfache HTML-Korrekturen anwenden.</p><a class="kb-aktion" href="https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/daily-improvement.yml" target="_blank" rel="noopener noreferrer">Verbesserungsablauf öffnen</a><small>Der bestehende Ablauf schreibt bei Handstart HTML und kann einen Telegram-Bericht senden. Sein Zeitplan ist pausiert.</small></article>
+    </div>
+  </section>
+
   <div class="kb-tabs" role="tablist" aria-label="Ansicht">
     <button type="button" class="kb-tab" role="tab" id="kb-tab-3d" data-tab="3d" aria-selected="true" aria-controls="kb-pane-3d">Büro 3D</button>
     <button type="button" class="kb-tab" role="tab" id="kb-tab-buero" data-tab="buero" aria-selected="false" aria-controls="kb-pane-buero" tabindex="-1">Büro 2D</button>
@@ -280,22 +311,31 @@
   </div>
 
   <div class="kb-pane" id="kb-pane-3d" data-pane="3d" role="tabpanel" aria-labelledby="kb-tab-3d">
-    <p class="kb-hint">Das Büro als 3D-Modell. Ziehen dreht es, zwei Finger oder die Knöpfe zoomen. Tippe auf eine Figur, das Förderband, die Tafel oder ein Kärtchen, dann siehst du die Einzelheiten. Die Haltung jeder Figur ist gemessen, die Figuren selbst sind Modelle.</p>
+    <p class="kb-hint">Das Büro als 3D-Modell. Wähle Drehen oder Verschieben und ziehe das Bild. Zwei Finger verschieben und zoomen. Mit der Maus geht Verschieben auch mit Umschalt + Ziehen; Umschalt + Pfeiltasten verschiebt ebenfalls. Tippe auf eine Figur, das Förderband, die Tafel oder ein Kärtchen, dann siehst du die Einzelheiten. Die Figuren sind Modelle. Ihre Haltung folgt dem angegebenen Stand; ungeprüfte Abläufe stehen auf Prüfen.</p>
     <div class="kb3-bar" role="group" aria-label="Raum wählen">
       <button type="button" class="kb3-chip" data-cmd="view:alle" aria-pressed="true">Alles</button>
       <button type="button" class="kb3-chip" data-cmd="view:Shop" aria-pressed="false">Shop</button>
       <button type="button" class="kb3-chip" data-cmd="view:Versand" aria-pressed="false">Versand</button>
       <button type="button" class="kb3-chip" data-cmd="view:Krypto" aria-pressed="false">Krypto</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Social Media" aria-pressed="false">Social Media</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Entwicklerbüro" aria-pressed="false">Entwicklerbüro</button>
+      <button type="button" class="kb3-chip" data-cmd="view:YouTube-Studio" aria-pressed="false">YouTube</button>
       <button type="button" class="kb3-chip" data-cmd="view:Chefbüro" aria-pressed="false">Chefbüro</button>
     </div>
     <div class="kb3-stage" data-draw="szene3d" data-source="buero">—</div>
     <div class="kb3-tools" role="group" aria-label="Kamera">
+      <button type="button" class="kb3-tool" data-cmd="rotate" aria-pressed="true">Drehen</button>
+      <button type="button" class="kb3-tool" data-cmd="move" aria-pressed="false">Verschieben</button>
+      <button type="button" class="kb3-tool" data-cmd="panLeft" aria-label="Bild nach links verschieben">←</button>
+      <button type="button" class="kb3-tool" data-cmd="panRight" aria-label="Bild nach rechts verschieben">→</button>
+      <button type="button" class="kb3-tool" data-cmd="panUp" aria-label="Bild nach oben verschieben">↑</button>
+      <button type="button" class="kb3-tool" data-cmd="panDown" aria-label="Bild nach unten verschieben">↓</button>
       <button type="button" class="kb3-tool" data-cmd="zoomOut" aria-label="Herauszoomen">−</button>
       <button type="button" class="kb3-tool" data-cmd="zoomIn" aria-label="Hineinzoomen">+</button>
       <button type="button" class="kb3-tool" data-cmd="turnLeft" aria-label="Nach links drehen">⟲</button>
       <button type="button" class="kb3-tool" data-cmd="turnRight" aria-label="Nach rechts drehen">⟳</button>
-      <button type="button" class="kb3-tool" data-cmd="tiltUp" aria-label="Steiler von oben">↑</button>
-      <button type="button" class="kb3-tool" data-cmd="tiltDown" aria-label="Flacher von der Seite">↓</button>
+      <button type="button" class="kb3-tool" data-cmd="tiltUp" aria-label="Steiler von oben">Steiler</button>
+      <button type="button" class="kb3-tool" data-cmd="tiltDown" aria-label="Flacher von der Seite">Flacher</button>
       <button type="button" class="kb3-tool" data-cmd="reset">Zurück</button>
       <button type="button" class="kb3-tool" data-cmd="gross" aria-pressed="false">Grösser</button>
     </div>
@@ -327,6 +367,26 @@
       <div class="kb-detail" data-draw="detail" data-bereich="Krypto" data-source="buero"></div>
     </section>
 
+    <section class="kb-card kb-raum" aria-labelledby="r-social">
+      <h2 id="r-social">Social Media</h2>
+      <p class="kb-sub">Instagram und Facebook, Pinterest und LinkedIn. Der Stand steht bei jeder Figur.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Social Media" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Social Media" data-source="buero"></div>
+    </section>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-dev">
+      <h2 id="r-dev">Entwicklerbüro</h2>
+      <p class="kb-sub">Automationen für Unternehmen: Produktbau, Prüfung und Angebot. Die Stationen zeigen den letzten Werkstatt-Bericht, keinen Dauerlauf.</p>
+      <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Entwicklerbüro" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="Entwicklerbüro" data-source="buero"></div>
+    </section>
+
+    <section class="kb-card kb-raum" aria-labelledby="r-youtube">
+      <h2 id="r-youtube">YouTube-Studio</h2>
+      <p class="kb-sub">Themen, Skripte und Videoentwürfe für @oio-o7s. Kanal und Reichweite sind noch nicht bestätigt.</p>
+      <div class="kb-floor" data-draw="raum" data-bereich="YouTube-Studio" data-source="buero"></div>
+      <div class="kb-detail" data-draw="detail" data-bereich="YouTube-Studio" data-source="buero"></div>
+    </section>
     <section class="kb-card kb-raum" aria-labelledby="r-chef">
       <h2 id="r-chef">Chefbüro</h2>
       <p class="kb-sub">Was nur du entscheiden oder anklicken kannst. Jedes Blatt ist ein offener Punkt, die Tafel zählt die Bestellungen.</p>
@@ -368,6 +428,22 @@
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Krypto" data-source="buero"></ul>
     </section>
 
+    <section class="kb-card" aria-labelledby="h-social">
+      <h2 id="h-social">Social Media</h2>
+      <p class="kb-sub">Veröffentlichungsabläufe und ihre belegten Einstellungen.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Social Media" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-dev">
+      <h2 id="h-dev">Entwicklerbüro</h2>
+      <p class="kb-sub">Erstes Produkt: Anfragen-Assistent für kleine Betriebe. Ein gebautes Paket ist noch kein Verkauf.</p>
+      <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Entwicklerbüro" data-source="buero"></ul>
+    </section>
+
+    <section class="kb-card" aria-labelledby="h-youtube">
+      <h2 id="h-youtube">YouTube-Studio</h2>
+      <ul class="kb-list" data-draw="rows" data-bereich="YouTube-Studio" data-source="buero"></ul>
+    </section>
     <section class="kb-card" aria-labelledby="h-chef">
       <h2 id="h-chef">Chefbüro</h2>
       <p class="kb-sub">Was nur du entscheiden oder anklicken kannst.</p>
@@ -404,7 +480,7 @@
     </details>
   </section>
 
-  <p class="kb-note">Alle Zeiten sind Schweizer Zeit. GitHub startet geplante Läufe oft Stunden zu spät. Das zeigt sich hier als späte Uhrzeit und ist kein Fehler. Diese Seite aktualisiert sich nicht von selbst: Sag Claude «Büro neu messen», dann gibt es frische Zeiten.</p>
+  <p class="kb-note">Alle Zeiten sind Schweizer Zeit. GitHub startet geplante Läufe oft Stunden zu spät. Das zeigt sich hier als späte Uhrzeit und ist kein Fehler. Die vorbereitete Tagespflege erstellt täglich neue GitHub-Laufstände und eine Bürodatei als Download. Diese Ansicht wird erst frisch, wenn ihre Datenquelle aktualisiert wird. Bestellungen, lokale Bots und Claude-Sitzungen brauchen weiterhin eine eigene Messung.</p>
 </div>
 
 <template id="kb-row">
@@ -424,6 +500,7 @@
       </summary>
       <div class="r-body">
         <p class="r-befund" data-source="buero" data-field="befund">—</p>
+        <div class="r-aufgabe"><b>Nächster Schritt</b><p data-source="buero" data-field="naechster_schritt">Stand am Arbeitsort prüfen.</p><a class="kb-aktion r-aktion" target="_blank" rel="noopener noreferrer" hidden>Aufgabe öffnen</a><small data-source="buero" data-field="aktion_hinweis"></small></div>
         <p class="r-old">Diese Messung ist älter als erlaubt. Bitte neu messen lassen.</p>
         <dl class="r-meta">
           <div><dt>Arbeitsort</dt><dd><b class="r-ort" data-source="buero" data-field="ort">—</b>. <span data-source="buero" data-field="ort_text">—</span></dd></div>
@@ -677,6 +754,54 @@
     det.open = Object.prototype.hasOwnProperty.call(was, r.id) ? was[r.id] : e !== 'gruen';
     fuellen(li, r);
     ortLink(li, r);
+    var aktion = li.querySelector('.r-aktion');
+    if (aktion) {
+      try {
+        var u = new URL(String(r.aktion_url));
+        var erlaubt = { 'github.com': true, 'claude.ai': true, 'admin.shopify.com': true, 'search.google.com': true, 'www.bing.com': true };
+        if (u.protocol === 'https:' && !u.username && !u.password && !u.port && erlaubt[u.hostname]) {
+          aktion.href = u.href; aktion.textContent = (r.aktion_text || 'Aufgabe öffnen'); aktion.hidden = false;
+        }
+      } catch (e) { /* Ohne gültigen Arbeitslink kein Aktionsknopf. */ }
+    }
+    if (r.id === 'dev_bauen' && Array.isArray(r.projekte)) {
+      var portfolio = document.createElement('section');
+      portfolio.setAttribute('aria-label', 'Automationsprojekte');
+      r.projekte.forEach(function (p) {
+        if (!Array.isArray(p.schritte) || !p.schritte.length) return;
+        var card = document.createElement('article');
+        card.style.cssText = 'padding:14px;margin-top:12px;border:1px solid var(--color-border-line);border-radius:10px';
+        var title = document.createElement('strong');
+        title.textContent = p.buero + ' · ' + p.name;
+        card.appendChild(title);
+        var done = p.schritte.filter(function (s) { return s.fertig === true; }).length;
+        var percent = Math.round(100 * done / p.schritte.length);
+        var caption = document.createElement('p');
+        caption.textContent = percent + ' % · ' + done + '/' + p.schritte.length + ' Meilensteine belegt';
+        card.appendChild(caption);
+        var bar = document.createElement('progress');
+        bar.max = p.schritte.length; bar.value = done;
+        bar.setAttribute('aria-label', p.name + ': ' + percent + ' Prozent');
+        bar.style.width = '100%'; card.appendChild(bar);
+        var list = document.createElement('ul');
+        p.schritte.forEach(function (step) {
+          var item = document.createElement('li');
+          item.textContent = (step.fertig === true ? 'Erledigt: ' : 'Offen: ') + step.name;
+          list.appendChild(item);
+        }); card.appendChild(list);
+        var next = document.createElement('p'); next.textContent = 'Nächster Schritt: ' + p.naechstes; card.appendChild(next);
+        var pay = document.createElement('p'); pay.textContent = p.zahlung; card.appendChild(pay);
+        [['Projekt öffnen', p.link], ['Zahlungsanbindung öffnen', p.zahlung_link]].forEach(function (entry) {
+          try {
+            var url = new URL(entry[1]);
+            if (url.origin !== 'https://github.com' || url.username || url.password || !url.pathname.startsWith('/allengchour-glitch/aban-news-landing/')) return;
+            var link = document.createElement('a'); link.href = url.href; link.textContent = entry[0];
+            link.target = '_blank'; link.rel = 'noopener noreferrer'; link.style.marginRight = '16px'; card.appendChild(link);
+          } catch (e) {}
+        }); portfolio.appendChild(card);
+      });
+      li.appendChild(portfolio);
+    }
     return li;
   }
 
@@ -739,6 +864,35 @@
     var key = es.indexOf('rot') >= 0 ? 'rot' : es.indexOf('alt') >= 0 ? 'alt' : es.indexOf('gelb') >= 0 ? 'gelb' : 'gruen';
     sentences.forEach(function (s) { s.hidden = s.dataset.t !== key; });
     if (altChip) altChip.hidden = es.indexOf('alt') < 0;
+  });
+
+  dash.draw('infowand', function (el) {
+    el.replaceChildren();
+    var data = rows() || [];
+    var dev = data.filter(function (r) { return r.id === 'dev_bauen'; })[0];
+    var central = dev && dev.zentrale;
+    var h = document.createElement('h2'); h.textContent = 'Büro-Zentrale'; el.appendChild(h);
+    var sub = document.createElement('p');
+    sub.textContent = central ? central.takt + ' Messstand: ' + central.gemessen : 'Zwei Gehirne · Planung, Wissen und Gegenprüfung. Noch kein Zentralenbericht geladen.';
+    el.appendChild(sub);
+    var grid = document.createElement('div'); grid.className = 'kb-infowand-grid';
+    var check = central && central.hirn_pruefung;
+    var age = central ? (Date.now() - Date.parse(central.gemessen)) / 3600000 : NaN;
+    var fresh = age >= 0 && age <= 24;
+    if (central && !fresh) sub.textContent += ' Bericht nicht frisch bestätigt.';
+    var info = [
+      ['01 · Planung & Wissen', central ? central.hirn_planung.aufgaben.length + ' priorisierte Aufgaben. Obsidian-Vault im letzten Lauf verfügbar.' : 'Wissen verknüpfen und nächste Aufgaben planen.'],
+      ['02 · Prüfung & Ausführung', check ? (check.tests_frisch_bestanden && fresh ? 'Frische Selbsttests bestanden.' : 'Frische Selbsttests nicht bestätigt.') : 'Prüfergebnisse und Lieferpakete verbinden.'],
+      ['Shop-Kontrolle', check ? check.shoplaeufe_gelesen + ' Läufe gelesen · ' + check.shoplaeufe_fehlgeschlagen + ' ohne Erfolg · ' + check.shoplaeufe_unbekannt + ' unbekannt.' : 'Noch keine aktuelle Messung.'],
+      ['Ziel: Fehler abbauen', 'Gesamtzahl der Shopfehler: nicht gemessen. Ein grüner Lauf bestätigt nur seinen Prüfumfang.']
+    ];
+    info.forEach(function (pair) { var card=document.createElement('article'); var title=document.createElement('strong');title.textContent=pair[0];var text=document.createElement('p');text.textContent=pair[1];card.append(title,text);grid.appendChild(card); });
+    el.appendChild(grid);
+    if (central) {
+      var list=document.createElement('ol');central.hirn_planung.aufgaben.slice(0,3).forEach(function(a){var item=document.createElement('li');item.textContent=a.titel + ': ' + a.grund;list.appendChild(item);});el.appendChild(list);
+    }
+    var link=document.createElement('a'); link.href='https://github.com/allengchour-glitch/aban-news-landing/actions/workflows/buero-zentrale.yml';link.textContent='Zentralenbericht und Obsidian-Vault öffnen';link.target='_blank';link.rel='noopener noreferrer';el.appendChild(link);
+    var note=document.createElement('p');note.textContent='Geplanter Takt ist kein unterbrechungsfreier Betrieb. Planung und Prüfung sind regelbasiert; bestehende Shop-Abläufe führen ihre eigenen Aufgaben aus.';el.appendChild(note);
   });
 
   dash.draw('n', function (el) {
@@ -967,7 +1121,10 @@
       var an = knopf.getAttribute('aria-pressed') !== 'true';
       knopf.setAttribute('aria-pressed', an ? 'true' : 'false');
       root.querySelectorAll('.kb3-stage').forEach(function (st) { st.classList.toggle('is-gross', an); });
-    } else if (made3d && made3d.cmd) made3d.cmd(cmd);
+    } else if (made3d && made3d.cmd) {
+      made3d.cmd(cmd);
+      if (cmd === 'move' || cmd === 'rotate') root.querySelectorAll('[data-cmd="move"], [data-cmd="rotate"]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cmd') === cmd ? 'true' : 'false'); });
+    }
   }
 
   dash.draw('szene3d', {
