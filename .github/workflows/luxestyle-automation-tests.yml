@@ -204,6 +204,8 @@ jobs:
           node --check automation/lib/collection_web.mjs
           node --check automation/lib/beleg_woerter.mjs
           node --check automation/lib/sperr_tags.mjs
+          node --check automation/lib/tracking_contract.mjs
+          node --check automation/tracking_contract_probe.mjs
           node --check automation/kundenstimmen_bauen.mjs
           node --check automation/unterteilung_audit.mjs
           node --check automation/gmc_schaufenster.mjs
@@ -230,6 +232,8 @@ jobs:
           node automation/lib/chf_preis_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
+          # Read-only Vertrag fuer page_view/view_item: GA4, Ads und Merchant getrennt; ohne Netz.
+          node automation/lib/tracking_contract_test.mjs
       - name: Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)
         # 28.10.2026: luxe-codex (codex-mods/) und der Läufer automation/codex_zweitmeinung.mjs; die Tests prüfen die Hook-Ausgabe gegen die Schemas aus der Codex-Binärdatei
         # (codex-mods/luxe-codex/test/schemas) und nutzen einen falschen codex. Fake-Zugangsdaten entstehen darin erst zur Laufzeit (GitHub-Push-Protection).
