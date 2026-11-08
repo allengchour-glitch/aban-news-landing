@@ -20,3 +20,7 @@ Dieses Repo enthält mehrere Projekte. Das aktive Arbeitsgebiet ist der Shopify-
 - Neue Branches von `origin/main`, nie direkt nach `main`. Pull-Requests als Entwurf; gemergt wird, wenn die echten Prüfungen grün sind (`tests`, `check`, `Brand-Voice check on changed .md files`, `Deploy to Cloudflare Pages`). Die drei «Workers Builds»-Prüfungen sind immer rot und kein Fehler.
 - Texte, Kommentare und Meldungen deutsch und kurz.
 - Messen statt raten: Messgerät in beide Richtungen prüfen, nach dem Schreiben frisch lesen, den Grund eines Laufendes nennen. Details: `.claude/skills/shop-messen-nicht-raten/SKILL.md`.
+
+## Übergabe an Claude dauerhaft halten
+- Auf ausdrücklichen Inhaberauftrag nach jeder abgeschlossenen Arbeit `docs/CODEX-CLAUDE-UEBERGABE.md` aktualisieren und den Verweis in `SHARED-MEMORY.md` erhalten. Tatsächliche Änderungen, Gegenproben, Merge-/Deploystand und nächste konkrete Arbeit mit Quelle/Datum festhalten.
+- Messung, Korrektur und unbekannte Qualität trennen. Keine privaten Finanz-/Kundendaten, Secrets oder signierten URLs speichern. Lokale Dateien sind in einer anderen Umgebung nicht garantiert verfügbar; notwendige nichtprivate Zusammenfassungen und reproduzierbare Prüfschritte gehören ins Repository.
