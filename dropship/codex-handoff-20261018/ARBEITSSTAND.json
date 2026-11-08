@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 150,
-  "updatedAt": "2026-11-08T20:02:41+01:00",
+  "revision": 152,
+  "updatedAt": "2026-11-08T21:01:03+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2133,20 +2133,19 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r150_shopify_media_product_association_and_current_sku_pid_vid_bound_variant_motif_rights_native_takes_blocked_no_render",
+      "state": "r151_executable_intake_rights_release_contract_saved_all_gates_blocked_no_master_mp4",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R150_CURRENT_PRODUCT_MEDIA_AND_CJ_SKU_PID_VID_BINDING_OFFICIAL_RIGHTS_AND_NATIVE_PREMIUM_GATE_NO_RENDER",
-      "lastEvidence": "Projektorvideo als Shopify-Medium am Produkt15521256604033 belegt: Media77496185356679/UUID6490c6357dae4df69bb910178acb2912/Quell-SHA256 2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57. Visuelle Formmerkmale passen zum Produkttyp; Shopify liefert keine variant_ids. Aktuelle Shopify-SKUs A–G wurden anhand des erfolgreichen CJ-Nur-Lese-Laufs42026512823/Job127241964880 vollständig PID1477820492730732544 und sieben VID-Werten zugeordnet. C/E und D/F teilen Bilder; gefilmte Ausführung, Motiv und dieselbe physische Produkteinheit bleiben UNKNOWN. CJ User Agreement liefert keinen allgemeinen Bearbeitungs-/Social-/Ads-Grant. Offizielle CJ-Fotografiehilfe erlaubt Nutzung nur im Kontext bestimmter Aufträge; für den konkreten Hash fehlen Auftrag/Copyright-Kauf und explizite Bearbeitungs-/Werberechte. Quelle960×540/25fps würde für9:16 ungefähr304×540 wirksam,3.55× skaliert und bei30fps90 Wiederholungsplätze; erfüllt Premiumvorgabe nicht. Pflicht-WAV technisch GO, exaktes Buildmanifest/Lizenzhinweis/finale Hör-/Mixabnahme offen. Keine MP4, kein Render, Upload oder Socialwrite.",
-      "nextAllowedStep": "Vier native vertikale Originaltakes mindestens1080×1920 bei echten30fps derselben aktuellen, SKU-/VID-belegten physischen Einheit beschaffen: Bedienung7.6s, Projektion8.8s, Detail5.6s, Hero6s. Für jede Datei vollständigen SHA256 sowie Rechteinhaber, Rechtekette, Varianten-/Motivbindung und explizite kommerzielle Shop-/Social-/Ads-/Metricool- und Bearbeitungsrechte belegen. Kanonische WAV mit historischem Buildmanifest, tatsächlichem Soundfont-Hash/-Version, Lizenzhinweis und finaler Hör-/Mixabnahme schliessen. Erst dann denselben18s-/540-Frame-Master rendern und Identität, Handlung, Bild, Ton, Text und Plattformausschnitte prüfen; danach Produkt-/Kanal-/Historien-/Kollisionsgates frisch lesen.",
+      "belegArt": "R151_EXECUTABLE_MASTER_INTAKE_RIGHTS_RENDER_RELEASE_PUBLICATION_CONTRACT_NO_RENDER",
+      "lastEvidence": "R151 schliesst die zugängliche Quellensuche ab: Shopify enthält für Produkt15521256604033 genau das bekannte Video77496185356679 mit Original960×540/25fps sowie nur852×480-Ableitungen; keine native HD-/Hochkantquelle und keine Varianten-Videozuordnung. Drive, Gmail, Repo, öffentliche CJ-Seite und alte Metricool-/Instagram-Artefakte liefern weder eine bessere native Quelle noch einen hashgebundenen Rechtebeleg. Das alte Reel ist kein neuer Master und seine Tonspur ist nicht die kanonische Pflichtmusik. Ein maschinenlesbarer Aufnahme-, Einheiten-, Rechte-, Musik-, Render-, QA- und Publikationsvertrag mit der vollständigen aktuellen A–G-/SKU-/CJ-VID-Auswahl wurde gespeichert. Alle fehlenden Felder sperren automatisch. Keine MP4, kein Render, Upload oder Socialwrite.",
+      "nextAllowedStep": "Genau eine aktuelle A–G-Ausführung wählen und mit Shopify-ID, SKU und CJ-VID frisch gegenprüfen. Von derselben bezeichneten physischen Einheit einen ungeschnittenen Identitätsclip sowie vier native Hochkanttakes liefern: Bedienung mindestens7.6s, Projektion8.8s, Detail5.6s und Hero6.0s, jeweils mindestens1080×1920 bei echten30fps und vollständigem SHA-256. Einen unterschriebenen, hashgebundenen Rechtegrant für Bearbeitung, Shop, organische Social-Nutzung, Paid Ads, Metricool und alle sechs Kanäle sowie die Musikprovenienz schliessen. Erst dann lokal kostenlos rendern, fertige18s-MP4 vollständig prüfen und nach dokumentierter Inhaberabnahme den frischen Produkt-/Kanal-/Historien-/Kollisionspreflight ausführen.",
       "blockers": [
-        "Shopify-Medienzuordnung zum Produkt ist verifiziert; aktuelle Variante A–G, Motivset und dieselbe gefilmte physische Einheit bleiben ungebunden.",
-        "Historische Variante56197916361089/SKU CJ-1477820492730732544 ist stale und für Bindung/Publikation gesperrt.",
-        "Rohquelle960×540/25fps und Shopify-Ableitung852×480/25fps sind keine native Premium-Hochkantquelle.",
-        "Für den konkreten Filmhash fehlen CJ-Fotografieauftrag/Copyright-Kauf und ausdrückliche kommerzielle Film-/Bearbeitungs-/Werberechte.",
-        "Kanonische WAV ist technisch geeignet; exaktes Buildmanifest, Soundfont-Hash/-Version, Lizenzhinweisbindung sowie finale Hör-/Mixabnahme fehlen.",
-        "Keine gerenderte/abgenommene18s-MP4; Projektor-Publikationshistorie unknown, operatives Ledger fehlt.",
-        "Pinterest-Board und aktuelles IG-/TikTok-Bioziel vor konkreter Publikation frisch prüfen; YouTube-Zielgruppe ist masterbezogen gegenzulesen."
+        "Keine aktuelle A–G-Ausführung und keine konkrete physische Einheit für den Film ausgewählt.",
+        "Kein ungeschnittener Identitätsclip und keine vier nativen 1080×1920/30-fps-Pflichtaufnahmen derselben Einheit.",
+        "Vorhandene960×540/25-fps-Quelle,852×480-Shopify-Ableitung und altes Reel erfüllen die Premiumquelle nicht.",
+        "Kein unterschriebener hashgebundener Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanal-Rechtegrant.",
+        "Kanonische WAV vorhanden; Buildmanifest, Soundfont-/Lizenzbindung sowie finale Hör- und Mixabnahme offen.",
+        "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Inhaberfreigabe und kein Publikationspreflight."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -2382,6 +2381,16 @@
           "gitBlobSha": "e3a613741a459f9d3b382a6e3e36cc804b71b1ab",
           "sha256": "567b86c84f8638a78c9f76a0bb743ce1792bfe11be973c6b00b9b56e539599b1",
           "readAt": "2026-11-08T20:02:41+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.md",
+          "gitBlobSha": "0609e0c731f6b14199a019c1b7325ff30d0498aa",
+          "readAt": "2026-11-08T20:45:00+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+          "gitBlobSha": "c5edcb2258cb6260d0ddd9a7d9f2f41b76af9ad5",
+          "readAt": "2026-11-08T20:45:00+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3184,6 +3193,29 @@
           "evidencePath": "dropship/codex-handoff-20261018/MASTER-GATE-20261108-R150.json",
           "evidenceGitBlobSha": "e3a613741a459f9d3b382a6e3e36cc804b71b1ab",
           "evidenceSha256": "567b86c84f8638a78c9f76a0bb743ce1792bfe11be973c6b00b9b56e539599b1"
+        }
+      },
+      "run151": {
+        "at": "2026-11-08T20:45:00+01:00",
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "shopifyIdentityVerified": true,
+        "metricoolIdentityVerified": true,
+        "shopifyNativePremiumSourceFound": false,
+        "connectedRightsEvidenceFound": false,
+        "oldReelReusableAsNewMaster": false,
+        "intakeContractCreated": true,
+        "intakeGo": false,
+        "renderGo": false,
+        "releaseGo": false,
+        "publishGo": false,
+        "professionalMasterMp4": false,
+        "renderTriggered": false,
+        "socialWrites": 0,
+        "source": {
+          "reportPath": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.md",
+          "reportGitBlobSha": "0609e0c731f6b14199a019c1b7325ff30d0498aa",
+          "contractPath": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+          "contractGitBlobSha": "c5edcb2258cb6260d0ddd9a7d9f2f41b76af9ad5"
         }
       }
     },
@@ -11457,6 +11489,40 @@
         "readAt": "2026-11-08T20:02:41+01:00"
       },
       "action": "R150: The current video was verified as Shopify media associated with product15521256604033, and all seven current Shopify SKUs A-G were exactly mapped to CJ PID1477820492730732544 and seven VIDs using the existing successful read-only CJ run. This does not bind the film to a current variant, motif or the same physical unit: Shopify carries no video variant_ids and shared variant images prevent a non-speculative binding. Official CJ terms and help pages were read: some photography orders allow download/use and product videos may be listed through a narrow connected-store flow, but the exact hash lacks an order/copyright-purchase record and explicit editing/social/ads/Metricool grant. The960x540/25fps source fails native1080x1920/30fps premium quality; canonical music is technically suitable but exact build/license-notice and final listening approval remain open. No render, MP4, upload, publication or paid action. Tasks remain24."
+    },
+    {
+      "revision": 151,
+      "at": "2026-11-08T20:45:00+01:00",
+      "actor": "codex",
+      "source": {
+        "shopifyProductId": "15521256604033",
+        "shopifyVideoMediaId": "77496185356679",
+        "reportPath": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.md",
+        "reportGitBlobSha": "0609e0c731f6b14199a019c1b7325ff30d0498aa",
+        "contractPath": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+        "contractGitBlobSha": "c5edcb2258cb6260d0ddd9a7d9f2f41b76af9ad5",
+        "readAt": "2026-11-08T20:45:00+01:00"
+      },
+      "action": "R151: Shopify, Repo, Drive/Gmail, öffentliche CJ-Seite sowie alte Metricool-/Instagram-Artefakte wurden eng auf eine native Premiumquelle und konkrete Medienrechte geprüft. Gefunden wurde nur die bekannte960×540/25fps-Quelle mit852×480-Ableitungen und ein altes gerahmtes Reel mit anderer Tonspur; weder aktuelle Varianten-/Einheitenbindung noch hashgebundener Bearbeitungs-/Social-/Ads-/Metricool-Rechtegrant. Ein ausführbarer Aufnahme-, Einheiten-, Rechte-, Musik-, Render-, QA- und Publikationsvertrag für denselben Master wurde gespeichert. Alle Gates bleiben bis zu vier nativen Takes derselben belegten Einheit und vollständigem Rechtegrant BLOCKED. Kein Render, keine MP4, kein Upload oder Socialwrite. Tasks bleiben24."
+    },
+    {
+      "revision": 152,
+      "at": "2026-11-08T21:01:03+01:00",
+      "actor": "codex",
+      "source": {
+        "shopifyOrderId": "gid://shopify/Order/19135797232007",
+        "shopifyOrderName": "#1039",
+        "cjOrderNum": "LX1039",
+        "cjOrderId": "SD2611081956340669600",
+        "createRun": 42517332990,
+        "paymentReadbackRun": 42517703485,
+        "reportPath": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1039-20261108-R152.md",
+        "reportGitBlobSha": "cefa0d2cb635ab8fcdb9a4ae862c24a7352c0854",
+        "evidencePath": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1039-20261108-R152.json",
+        "evidenceGitBlobSha": "d8bf58b75310e914be8f8b0c5a499ff2b3268f4c",
+        "readAt": "2026-11-08T21:01:03+01:00"
+      },
+      "action": "R152: Bestellung#1039 wurde als echte bezahlte Shopify-Bestellung ohne Kundendaten geprüft und über den isolierten, doppelt geschützten CJ-Pfad exakt einmal als LX1039/CJ-ID SD2611081956340669600 angelegt. Der Live-Lauf42517332990 war erfolgreich; die anschliessende Nur-Lese-Gegenprobe42517703485 fand genau einen Datensatz und führte keinen Create-Aufruf aus. CJ meldet nun UNSHIPPED. Shopify bleibt korrekt PAID/UNFULFILLED mit offenem, nicht eingereichtem Fulfillmentauftrag; kein Tracking, kein Fulfillment und keine Kundenansprache. Shopbetrag CHF34.90 und CJ-Betrag USD13.60 bleiben getrennt. Tasks bleiben24."
     }
   ],
   "salesGoal": {
@@ -11666,18 +11732,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 150,
+    "documentationRevision": 152,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "1669bb66abfeca45639225b4613edefd308d5831",
+    "gitBlobSha": "d92a899df2a1a93ba2ed7d4f2fa670993b806ab7",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "164c0b523de41d6dec21c9fc5fa8219eff891b17",
+    "entryGitBlobSha": "dac6db2c965e5f5fdea569b3b9b11b302816772e",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "r150_projector_shopify_media_association_rights_and_native_premium_gate",
-    "latestCanonicalRevision": 150,
-    "snapshotNote": "R150: Projektorvideo als Shopify-Medium am Produkt15521256604033/Media77496185356679/Quell-SHA2bb28156… belegt; alle aktuellen Shopify-SKUs A–G anhand des bestehenden erfolgreichen CJ-Nur-Lese-Laufs vollständig an PID1477820492730732544 und sieben VIDs gebunden. Keine variant_ids und geteilte Variantenbilder, daher Film-/Motivbindung und dieselbe physische Einheit UNKNOWN. Offizielle CJ-Hilfe belegt Download/Nutzung nur für bestimmte Fotografieaufträge und einen engen verbundenen Store-Listing-Flow; für den konkreten Hash fehlen Auftrag/Copyright-Kauf und ausdrückliche Bearbeitungs-/Social-/Ads-/Metricool-Rechte.960×540/25fps erfüllt Premium-Hochkantquelle nicht; Pflichtmusik technisch GO, Build-/Lizenzhinweis-/Hör-/Mixabnahme offen. Keine MP4, kein Render, Upload oder Socialwrite. Nächster Schritt: native Hochkanttakes derselben SKU-/VID-Einheit plus hashgebundener Rechtegrant.",
+    "scope": "r152_order_1039_cj_unshipped_after_payment_and_r151_master_contract",
+    "latestCanonicalRevision": 152,
+    "snapshotNote": "R151: verbindlicher Aufnahme-/Rechte-/Render-/Freigabevertrag für denselben Projektor-Master gespeichert; keine native Premiumquelle, konkrete Einheitenbindung oder hashgebundenen Rechte gefunden, alle Gates BLOCKED, keine MP4/Publikation. R152: echte bezahlte Shopify-Bestellung#1039 als LX1039/CJ-ID SD2611081956340669600 exakt einmal angelegt; Nur-Lese-Gegenprobe findet genau einen CJ-Datensatz im Status UNSHIPPED. Shopify bleibt PAID/UNFULFILLED, kein Tracking/Fulfillment/Kundenkontakt. CHF34.90 und USD13.60 getrennt.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -18670,7 +18736,10 @@
         "id": "gid://shopify/Product/15521256604033",
         "status": "ACTIVE",
         "variantCount": 7,
-        "priceRangeCHF": ["34.90", "51.90"],
+        "priceRangeCHF": [
+          "34.90",
+          "51.90"
+        ],
         "allAvailableForSale": true,
         "tracksInventory": false,
         "inventoryPolicy": "CONTINUE",
@@ -18705,7 +18774,11 @@
       "activeChannelStates": 28,
       "draftObjects": 10,
       "draftChannelStates": 14,
-      "publishedToday": ["instagram", "facebook", "tiktok"],
+      "publishedToday": [
+        "instagram",
+        "facebook",
+        "tiktok"
+      ],
       "futureState": "PENDING",
       "exactDuplicates": 0,
       "timeCollisions": 0,
@@ -18720,12 +18793,34 @@
       "metricsRequeried": false,
       "metricsSourceRevision": 135,
       "validMetricIds": {
-        "instagram": ["IGEV05", "IGEV38"],
-        "facebook": ["FBEV49", "FBEV34"],
-        "tiktok": ["TKEV12", "TKEV13", "TKEV14", "TKEV15"],
-        "pinterest": ["PIEV01", "PIEV04"],
-        "youtube": ["YTEV02", "YTEV10", "YTEV12", "YTEV19"],
-        "threads": ["THEV06", "THEV05"]
+        "instagram": [
+          "IGEV05",
+          "IGEV38"
+        ],
+        "facebook": [
+          "FBEV49",
+          "FBEV34"
+        ],
+        "tiktok": [
+          "TKEV12",
+          "TKEV13",
+          "TKEV14",
+          "TKEV15"
+        ],
+        "pinterest": [
+          "PIEV01",
+          "PIEV04"
+        ],
+        "youtube": [
+          "YTEV02",
+          "YTEV10",
+          "YTEV12",
+          "YTEV19"
+        ],
+        "threads": [
+          "THEV06",
+          "THEV05"
+        ]
       },
       "missingDays": "UNKNOWN",
       "writes": 0
@@ -18737,7 +18832,10 @@
       "frames": 540,
       "format": "1080x1920",
       "fps": 30,
-      "hooks": ["Dein Raum. Neues Licht.", "Licht im Detail."],
+      "hooks": [
+        "Dein Raum. Neues Licht.",
+        "Licht im Detail."
+      ],
       "preferredHook": "Licht im Detail.",
       "channelDrafts": 6,
       "renderedMp4": false,
@@ -18761,7 +18859,11 @@
     },
     "seo": {
       "targetedLiveRead": true,
-      "fixedSamplesConfirmed": ["collection_double_phrase", "old_ch_only_shipping", "two_tiktok_placeholders"],
+      "fixedSamplesConfirmed": [
+        "collection_double_phrase",
+        "old_ch_only_shipping",
+        "two_tiktok_placeholders"
+      ],
       "mixedFrenchPagesConfirmed": 2,
       "mainPullRequest": 2975,
       "mainPullRequestState": "DRAFT_NOT_LIVE",
@@ -18810,7 +18912,11 @@
       "rows": 367594,
       "uniqueItemIds": 275537,
       "issueTypes": 17,
-      "feedLabels": ["CH", "DE", "CHF_99383214465"]
+      "feedLabels": [
+        "CH",
+        "DE",
+        "CHF_99383214465"
+      ]
     },
     "filteredAttachments": {
       "copies": 2,
@@ -18819,7 +18925,9 @@
       "sha256": "e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4",
       "rows": 14245,
       "uniqueItemIds": 3826,
-      "feedLabels": ["CHF_99383214465"]
+      "feedLabels": [
+        "CHF_99383214465"
+      ]
     },
     "comparison": {
       "smallRowsFoundExactlyInLarge": 12950,
@@ -18912,5 +19020,63 @@
       "publishingWritesThisMasterThisRun": 0
     },
     "taskCount": 24
+  },
+  "masterProductionContractR151": {
+    "at": "2026-11-08T20:45:00+01:00",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "status": "BLOCKED_UNTIL_ALL_GATES_TRUE",
+    "report": {
+      "path": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.md",
+      "gitBlobSha": "0609e0c731f6b14199a019c1b7325ff30d0498aa"
+    },
+    "contract": {
+      "path": "dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+      "gitBlobSha": "c5edcb2258cb6260d0ddd9a7d9f2f41b76af9ad5"
+    },
+    "intakeGo": false,
+    "renderGo": false,
+    "releaseGo": false,
+    "publishGo": false,
+    "professionalMasterMp4": false,
+    "renderTriggered": false,
+    "socialWrites": 0
+  },
+  "cjOrder1039R152": {
+    "at": "2026-11-08T21:01:03+01:00",
+    "shopify": {
+      "orderId": "gid://shopify/Order/19135797232007",
+      "name": "#1039",
+      "financialStatus": "PAID",
+      "fulfillmentStatus": "UNFULFILLED",
+      "amount": "34.90",
+      "currency": "CHF",
+      "customerPiiStored": false
+    },
+    "cj": {
+      "orderNum": "LX1039",
+      "orderId": "SD2611081956340669600",
+      "count": 1,
+      "status": "UNSHIPPED",
+      "goods": "6.90",
+      "shipping": "6.70",
+      "total": "13.60",
+      "currency": "USD"
+    },
+    "createRun": 42517332990,
+    "paymentReadbackRun": 42517703485,
+    "createCalls": 1,
+    "readbackCreateCalls": 0,
+    "duplicateCreate": false,
+    "shopifyFulfillmentPerformed": false,
+    "trackingWritePerformed": false,
+    "customerContacted": false,
+    "report": {
+      "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1039-20261108-R152.md",
+      "gitBlobSha": "cefa0d2cb635ab8fcdb9a4ae862c24a7352c0854"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1039-20261108-R152.json",
+      "gitBlobSha": "d8bf58b75310e914be8f8b0c5a499ff2b3268f4c"
+    }
   }
 }
