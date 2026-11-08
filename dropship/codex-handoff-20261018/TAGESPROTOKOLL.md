@@ -1607,3 +1607,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Übergabe | Projektgedächtnis mit aktuellem Beleg, Blockern und nächstem Schritt fortgeschrieben | Keine Kundenansprache, Rabatte, Budgets, Flows, DNS, kostenpflichtigen Renders, Bestellungen oder ABAN-Arbeit; PR2975 bleibt Draft |
 
 [LUXESTYLE_R148_20261108] [Plan42508494486](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42508494486) · [Canary42508762409](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42508762409) · Shopify-Produktreads15521256604033/15470028915073 · Metricool19:06 Europe/Zurich · Full-Rollout gesperrt.
+
+### R149
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant / Drive-Datei | 110-MB-Drive-CSV vollständig heruntergeladen, gehasht und streamingbasiert geparst | 367'594 Problemzeilen, 275'537 Item-IDs, 17 Problemtypen; SHA-256 `c5ea57cb…`; vollständig lesbar |
+| Merchant / Anhänge | Beide 07:47-CSVs bytegenau verglichen und gegen den Drive-Export abgeglichen | Anhänge bytegleich, 14'245 Zeilen/3'826 IDs. 12'950 Zeilen im Drive-Export; 1'295 `fr`-Zeilen dort nicht vorhanden. Scopes nicht additiv |
+| Merchant / Live-Gegenprobe | HYPD-Shopidentität, begrenzte 5'000er-Summary, Konto-Issues und erste 10 Disapprovals rein lesend geprüft | Shop5797470070 passend; `truncated=true`;4'991 limited/9 disapproved,5'000 LI-Versandfälle; Konto-Issues leer. Keine Katalogquote |
+| Merchant / Sprache | CSV-Sprachmarkierung und aktuelle Disapproval-Titel geprüft | 1'295 neuere `fr`-Zeilen mit überwiegend deutschen Titeln; mindestens ein englischer Titel im aktuellen `de`-Feed. Keine Aussage «alles deutsch» |
+| Merchant / Grenzen | Feedlabels, Länder, Ausspielungen und Problemgruppen getrennt ausgewertet | Keine Merchant-, Feed-, Versand-, Länder-, Bild- oder Produktänderung; aktive Source/Rohfelder bleiben offen |
+
+[LUXESTYLE_R149_20261108] Drive-Datei-ID `110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-` · SHA-256 `c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1` · Anhänge SHA-256 `e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4` · HYPD read-only · keine operativen Writes.

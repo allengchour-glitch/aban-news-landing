@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 148,
-  "updatedAt": "2026-11-08T19:22:32+01:00",
+  "revision": 149,
+  "updatedAt": "2026-11-08T19:35:58+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -33,7 +33,19 @@
         "summaryScannedProducts": 5000,
         "summaryTruncated": true,
         "disapprovalRowsRead": 25,
-        "nextPageTokenPresent": true
+        "nextPageTokenPresent": true,
+        "r149Countercheck": {
+          "reason": "owner_supplied_110mb_merchant_export_with_new_shipping_scope",
+          "scannedProducts": 5000,
+          "truncated": true,
+          "eligibleLimited": 4991,
+          "notEligibleOrDisapproved": 9,
+          "missingShippingProductsInPartialScan": 5000,
+          "disapprovalRowsRead": 10,
+          "accountIssuesReturned": 0,
+          "catalogQuoteAllowed": false,
+          "writes": 0
+        }
       },
       "proof": "dropship/codex-handoff-20261018/HYPD-LIVE-AUDIT-20261108-R130.json",
       "publicTrackingRouteR141": {
@@ -3434,12 +3446,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r146_safety_offer_social_merchant_block_tags_live_yoga_exact_image_and_draft_source_cases_open",
+      "state": "r149_owner_drive_and_filtered_exports_scopes_separated_hypd_shipping_countercheck_no_write",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R146_EXACT_CJ_SAFETY_OFFER_BINDING_TAG_ONLY_BLOCK_WRITE_NO_FEED_CHANGE",
-      "lastEvidence": "Merchant-Kandidat shopify_ZZ_16612741841287_67671330226567/Product16612741841287/Variant67671330226567/SKUCJJM106168704DW wurde exakt an CJ PID1377445613813239808/productSkuCJJM1061687 und vollständiges Variantenset gebunden. VID, Material, Masse, Last-/Zertifizierungsangaben, PPE-Eignung und Medienrechte bleiben unbekannt. Live wurden ausschliesslich compliance-pruefen und nicht-bewerben ergänzt; ACTIVE, CHF16.90, fünf Varianten, Kaufbarkeit, untracked/CONTINUE und Inhalt blieben erhalten. kanal_sperren blockiert neue Instagram-/Google-Ausspielung; kein Merchant-/Feedwrite. Yoga-Bildfall und preisloser DRAFT-Quellausschluss bleiben offen.",
-      "nextAllowedStep": "Sicherheitsprodukt nicht bewerben oder im Feed freigeben, bis exakte VID, Produktfunktion, Last-/Zertifizierungsdaten, PPE-/Waffen-Policy, Medienrechte und Variantenbild belegt sind. Sperrtags erhalten. Yoga-Offer nur mit exakt blauem rechtegeprüftem Bild ab500x500 ändern; preisloses DRAFT-Offer nur an verantwortlicher Quelle ausschliessen. Keine erfundenen Preise, GTIN-/identifier_exists-Werte oder pauschalen Feedänderungen.",
+      "belegArt": "R149_DRIVE_MERCHANT_110MB_FULL_PARSE_FILTER_EXPORT_BYTE_DEDUP_HYPD_TRUNCATED_COUNTERCHECK_NO_WRITE",
+      "lastEvidence": "Drive-Export07:46 vollständig geprüft:110213899Bytes/SHA256 c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1/367594Zeilen/275537ItemIDs/17Issues. Zwei 07:47-Anhänge bytegleich:4951868Bytes/SHA256 e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4/14245Zeilen/3826IDs. 12950 kleine Zeilen exakt im Drive-Export;1295 fr-Zeilen fehlen dort und tragen überwiegend deutsche Titel. Feedlabels CH/DE/CHF_99383214465 und Filterkontexte getrennt; keine Addition, Katalogquote oder Live-Bestandsaussage. HYPD-Shop5797470070 passend; neue begründete Teilgegenprobe erste5000 truncated=true:4991 limited/9 disapproved, missingShipping5000, CSS218, Overlay9, Konto-Issues leer; erste10 Disapprovals gelesen. Keine Merchant-/Feed-/Versand-/Länder-/Bild-/Produktänderung.",
+      "nextAllowedStep": "Genau ein betroffenes Angebot authentifiziert mit aktiver Source-ID, eingereichter URL und Rohfeldern lesen. Liechtenstein-Versand erst nach belegter Lieferfähigkeit und Kosten sowie nur an der verantwortlichen Quelle ändern. CSS-Kapazität separat als Konto-/Programmthema behandeln. Bildfälle nur einzeln gegen aktuelles Hauptbild, Variante und Rechte prüfen. Exporte nicht addieren und275537 Item-IDs nicht als aktuellen Shopify-Katalog ausgeben.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -3467,7 +3479,11 @@
         "R140: Vier Performancezeilen mit Klicks bei0 Impressionen sind inkonsistent/NaN und wurden verworfen.",
         "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
         "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
-        "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden."
+        "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden.",
+        "R149: Drive- und Filterexport haben verschiedene Feed-/Sprach-/Filterkontexte;1295 fr-Zeilen des kleinen Exports fehlen im breiten Export. Keine direkte Vorher-/Nachher-Differenz.",
+        "R149: CSVs enthalten keine verifizierte aktive Source-ID, eingereichte URL oder verantwortliche Rohfeldquelle.",
+        "R149: Lieferfähigkeit und reale Kosten für Liechtenstein und Deutschland sind nicht belegt; kein Versand-/Länderwrite.",
+        "R149: Grosse CH-/DE-/CHF-Itemmenge beweist weder aktuelle ACTIVE-Shopify-Produkte noch einen Katalognenner; HYPD-Gegenprobe ist bei5000 truncated."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -3949,6 +3965,16 @@
           "previousBelegArt": "R145_ACTIVE_YOGA_LANGUAGE_SEO_LIVE_FIX_AND_EXACT_CJ_VARIANT_INVENTORY_READ",
           "previousLastEvidence": "Offer15448641012097_cj-cjdk296677412lo ist jetzt live als Capri-Yogahose mit hohem Bund und Bauchkontrolle mit deutschem Handle/Redirect, Beschreibung, SEO und6 Alttexten; der produktbezogene10–20-Tage- und Rabattclaim ist entfernt. ACTIVE,12 Varianten zu CHF15.90, untracked/CONTINUE und rueckhol-0907 erhalten. PR2971 Merge47f1e77f erweitert den fail-closed Reader um variantSku. Run42501861632 bindet CJDK296677412LO exakt an PID2607031647441600100/productSkuCJDK2966774; Run42501905917 bindet alle12 Varianten vollständig. Alle Mengen sind CN factoryInventory, cjInventory0; CH-Lieferung unbekannt. Exaktes rechtegeprüftes blaues >=500x500 Bild bleibt offen; kein Merchant-/Feed-/Bildwrite. Preisloses Offer15453942776193_cj-cjly298079706fu bleibt DRAFT-Quellausschlussfall.",
           "previousNextAllowedStep": "Für das aktive blaue XL-Offer ein echtes, exakt passendes, kommerziell rechtegeprüftes Quellbild ab500x500 beschaffen; CJ-Identität und Variantenset sind jetzt exakt belegt, Bildrechte/CH-Lieferbarkeit aber nicht. Erst danach genau die Variantenbindung ändern und zurücklesen. Das preislose DRAFT-Offer nur an der aktiven Merchant-Quelle ausschliessen; weder Preis erfinden noch Produkt aktivieren. FactoryInventory nie als physischer CJ-/CH-Bestand ausgeben.",
+          "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-08T19:35:58+01:00",
+          "sourceRevision": 148,
+          "previousState": "r146_safety_offer_social_merchant_block_tags_live_yoga_exact_image_and_draft_source_cases_open",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R146_EXACT_CJ_SAFETY_OFFER_BINDING_TAG_ONLY_BLOCK_WRITE_NO_FEED_CHANGE",
+          "previousLastEvidence": "Merchant-Kandidat shopify_ZZ_16612741841287_67671330226567/Product16612741841287/Variant67671330226567/SKUCJJM106168704DW wurde exakt an CJ PID1377445613813239808/productSkuCJJM1061687 und vollständiges Variantenset gebunden. VID, Material, Masse, Last-/Zertifizierungsangaben, PPE-Eignung und Medienrechte bleiben unbekannt. Live wurden ausschliesslich compliance-pruefen und nicht-bewerben ergänzt; ACTIVE, CHF16.90, fünf Varianten, Kaufbarkeit, untracked/CONTINUE und Inhalt blieben erhalten. kanal_sperren blockiert neue Instagram-/Google-Ausspielung; kein Merchant-/Feedwrite. Yoga-Bildfall und preisloser DRAFT-Quellausschluss bleiben offen.",
+          "previousNextAllowedStep": "Sicherheitsprodukt nicht bewerben oder im Feed freigeben, bis exakte VID, Produktfunktion, Last-/Zertifizierungsdaten, PPE-/Waffen-Policy, Medienrechte und Variantenbild belegt sind. Sperrtags erhalten. Yoga-Offer nur mit exakt blauem rechtegeprüftem Bild ab500x500 ändern; preisloses DRAFT-Offer nur an verantwortlicher Quelle ausschliessen. Keine erfundenen Preise, GTIN-/identifier_exists-Werte oder pauschalen Feedänderungen.",
           "previousBlockersRetainedInCurrentTask": true
         }
       ],
@@ -11335,6 +11361,19 @@
         "readAt": "2026-11-08T19:22:32+01:00"
       },
       "action": "R148: Shopify and Metricool identities matched. Two exact ACTIVE products were read with price/image/variant/purchasability/inventory fields and channel guards. Metricool returned27 objects/42 channel states with IG/FB daily active09-15, TikTok only09, Pinterest only08, no active YouTube/Threads, no exact duplicates/collisions and no write; R135 partial metrics and Klaviyo were reused without another daily report. The single projector master was refined only as an18s/540-frame storyboard with six UTMs, no MP4 or rights binding. Targeted live SEO confirmed several prior fixes but two FR self-canonical pages still serve German content; Merchant CSV indicates3227 unique LI shipping-info cases, no setting change. Guarded plan42508494486 and one-product Canary42508762409 succeeded; only Tasse15422823465345 is live on v6.3.1. Responsive E2E remains UNKNOWN after resource/browser failures, so no post-canary full plan/apply. Tasks remain24."
+    },
+    {
+      "revision": 149,
+      "at": "2026-11-08T19:35:58+01:00",
+      "actor": "codex",
+      "source": {
+        "driveFileId": "110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-",
+        "driveSha256": "c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1",
+        "attachmentSha256": "e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4",
+        "merchantShopId": "5797470070",
+        "readAt": "2026-11-08T19:35:58+01:00"
+      },
+      "action": "R149: The owner-supplied110MB Merchant CSV was fully streamed and separated from two byte-identical filtered attachments. The broad export has367594 issue rows/275537 item ids/17 issue types; the attachments have14245 rows/3826 ids. Exactly12950 small rows occur in the broad export, while1295 fr-labelled rows with mostly German titles do not. CH/DE/CHF feed contexts are not additive and item ids are not a Shopify catalog count. A new CSV-grounded HYPD countercheck confirmed shop5797470070 and returned a truncated first5000 with4991 limited/9 disapproved, missing LI shipping on all5000 and no account issues. No Merchant/feed/shipping/country/image/product write. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -11544,18 +11583,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 147,
+    "documentationRevision": 149,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "85ac6d503a30f70f61f43d3ea497fa0eacf7098a",
+    "gitBlobSha": "ae9c5bd80765619ac4a3a92b27a4d77c95b8874e",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "164c0b523de41d6dec21c9fc5fa8219eff891b17",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "r147_projector_current_variant_binding_refresh",
-    "latestCanonicalRevision": 147,
-    "snapshotNote": "R147: Projektor15521256604033 ACTIVE mit sieben aktuellen Varianten A–G/aktuellen IDs und SKUs,12 Tags,12 Bildern und CHF34.90–51.90 bestätigt. Beschreibung live ohne unbelegten10–20-Werktage-Claim, sichtbare Schild-/Einkauf-Emojis und Situation-drehen-Tippfehler; Admin/öffentliche QA grün. Alte Variante56197916361089/SKU CJ-1477820492730732544 ist stale und gesperrt. Menge0 bei untracked/CONTINUE ist kein Bestandsbeleg. Motiv-/Medien-/Bearbeitungs-/Werberechte bleiben unbekannt; kein Socialwrite. Vor Masterfortsetzung eine aktuelle Variante und die gefilmte Einheit exakt binden und Rechte belegen.",
+    "scope": "r149_owner_merchant_drive_export_scope_separation_and_hypd_countercheck",
+    "latestCanonicalRevision": 149,
+    "snapshotNote": "R149: Drive-CSV110213899Bytes/SHA c5ea57cb… vollständig mit367594 Zeilen/275537 Item-IDs/17 Issues gelesen; zwei Filteranhänge bytegleich/SHA e0b47ecf… mit14245 Zeilen/3826 IDs.12950 Zeilen überlappen exakt,1295 fr-Zeilen fehlen im breiten Export; Feedlabels/Scopes nicht addieren und keine Katalogquote. HYPD-Shop5797470070 passend; begründete5000er-Gegenprobe truncated:4991 limited/9 disapproved, missing LI shipping5000, Konto-Issues leer. Keine Merchant-/Feed-/Versand-/Länder-/Bild-/Produktänderung. Nächster Schritt ist genau ein Source-Level-Read mit aktiver Source-ID, eingereichter URL und Rohfeldern.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -18674,6 +18713,61 @@
       "paidRenders": 0,
       "orders": 0,
       "aban": 0
+    },
+    "taskCount": 24
+  },
+  "run149": {
+    "at": "2026-11-08T19:35:58+01:00",
+    "scope": "owner_supplied_merchant_drive_broad_export_and_two_filtered_attachments_plus_hypd_read_only_countercheck",
+    "driveExport": {
+      "fileId": "110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-",
+      "name": "product_issues_2026-11-08_07-46-23.csv",
+      "bytes": 110213899,
+      "sha256": "c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1",
+      "rows": 367594,
+      "uniqueItemIds": 275537,
+      "issueTypes": 17,
+      "feedLabels": ["CH", "DE", "CHF_99383214465"]
+    },
+    "filteredAttachments": {
+      "copies": 2,
+      "byteIdentical": true,
+      "bytesEach": 4951868,
+      "sha256": "e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4",
+      "rows": 14245,
+      "uniqueItemIds": 3826,
+      "feedLabels": ["CHF_99383214465"]
+    },
+    "comparison": {
+      "smallRowsFoundExactlyInLarge": 12950,
+      "smallRowsAbsentFromLarge": 1295,
+      "absentRowsLanguage": "fr",
+      "directBeforeAfterComparisonAllowed": false,
+      "catalogCountClaimAllowed": false
+    },
+    "hypd": {
+      "shopId": "5797470070",
+      "shopName": "LuxeStyle CH",
+      "scannedProducts": 5000,
+      "truncated": true,
+      "eligibleLimited": 4991,
+      "notEligibleOrDisapproved": 9,
+      "missingShipping": 5000,
+      "cssLimit": 218,
+      "imageOverlay": 9,
+      "personalHardships": 3,
+      "identityBelief": 2,
+      "accountIssuesReturned": 0,
+      "disapprovalRowsRead": 10,
+      "catalogQuoteAllowed": false
+    },
+    "writes": {
+      "merchant": 0,
+      "feed": 0,
+      "shipping": 0,
+      "country": 0,
+      "product": 0,
+      "image": 0
     },
     "taskCount": 24
   }
