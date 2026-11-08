@@ -1,0 +1,433 @@
+{
+  "revision": 135,
+  "date": "2026-11-08",
+  "timezone": "Europe/Zurich",
+  "atZurich": "2026-11-08T08:08:38+01:00",
+  "status": "final_unpublished_v5_preview_and_v63_mug_pilot_go_main_unchanged",
+  "scope": "One v5 preview asset write, a four-file v6.3 mug pilot in UNPUBLISHED theme, bounded separated browser evidence, and the once-daily shop/Metricool/Klaviyo package.",
+  "sourceEvidence": [
+    {
+      "path": "/workspace/luxestyle-review/printful-preview-ux-candidate-20261108/BERICHT.md",
+      "sha256": "052800a721447d6c9ea98e1e7d714278446a6a745612acba76d927377d08b9f6"
+    },
+    {
+      "path": "/workspace/luxestyle-review/printful-preview-ux-candidate-20261108/draft-write-result.json",
+      "sha256": "49bf6e4ad12c93844339cc808fd5f050c737577675e05573a2cfad9d8f2f0871"
+    },
+    {
+      "path": "/workspace/luxestyle-review/printful-preview-ux-candidate-20261108/draft-cart-e2e-result.json",
+      "sha256": "219783294a6252ea9b1e58e6cf621e0e47240c1aaac21b42dd0b6faeb731beeb"
+    },
+    {
+      "path": "/workspace/luxestyle-review/v63-mug-pilot-theme-20261108/theme.patch",
+      "sha256": "8b04236bfad6dc122ba3631c4afb29e23dd805c0fb77fe5c4306e77d0bd73441"
+    },
+    {
+      "path": "/workspace/luxestyle-review/v63-mug-pilot-theme-20261108/draft-matrix-result.json",
+      "sha256": "9a1fc8e84aa9c739c8a41fb7d0625e0662d1a14f1f4db3210a16f1fa3596f5a0"
+    },
+    {
+      "path": "/workspace/luxestyle-review/v63-mug-pilot-theme-20261108/draft-confirm-e2e-result.json",
+      "sha256": "c82b2774818df1a10b5a53333081fb11c8e7f810b169f351e0434eb43d152110"
+    }
+  ],
+  "themeWrite": {
+    "draftThemeId": "213482963335",
+    "draftThemeName": "LuxeStyle – Printful Fix 08.11.2026",
+    "role": "UNPUBLISHED",
+    "file": "assets/lspod-designer-v5-safe.js",
+    "writeOperationsThisRevision": 1,
+    "beforeBytes": 51378,
+    "afterBytes": 63950,
+    "diff": "+43/-4",
+    "beforeMd5": "be85494be069a484807b65ee32261a8a",
+    "afterMd5": "abc4e9d6dee7716e1bd3439d8280ebfb",
+    "beforeSha256": "70140421381326aff999bd84094b9997eda3e9432037def69185d65ff003e808",
+    "afterSha256": "0cc241059ef8dc9cfca6f2a162db8c32f99dc85c131e75aa7e4dbebeb8b28a47",
+    "userErrors": [],
+    "readbackConfirmed": true,
+    "processing": false,
+    "processingFailed": false,
+    "writtenAtUtc": "2026-11-08T06:08:16Z",
+    "published": false
+  },
+  "mainReadback": {
+    "themeId": "213013037447",
+    "role": "MAIN",
+    "assetMd5": "be85494be069a484807b65ee32261a8a",
+    "unchanged": true,
+    "liveV5FixedByThisRevision": false
+  },
+  "previewUx": {
+    "validatedTemplateMode": "Dated printful_catalog_api mapping only; exact variant, placement, template, printfile, coordinates, aspect ratio and allowed Printful CDN host required.",
+    "noMapMode": "Exact generated PNG on grid with explicit non-scale warning; no product, print area or scale invented.",
+    "invalidMap": "Blocks cart and reports invalid print-area data; no silent fallback.",
+    "perPageConfirmation": true,
+    "designChangeInvalidates": true,
+    "variantChangeInvalidates": true,
+    "accessibility": [
+      "role=dialog",
+      "aria-modal=true",
+      "labelled heading and description",
+      "live status",
+      "labelled native checkbox",
+      "focus trap",
+      "Escape close",
+      "focus return",
+      "minimum 44px controls"
+    ],
+    "mobile375NoOverflow": true
+  },
+  "validation": {
+    "nodeCheck": "PASS",
+    "playwrightFixture": "PASS",
+    "validatedMap": "PASS",
+    "exactPngFallback": "PASS",
+    "frontBackPerPageConfirmation": "PASS",
+    "designInvalidation": "PASS",
+    "variantInvalidation": "PASS",
+    "invalidMapLock": "PASS",
+    "dialogA11yAnd375": "PASS",
+    "draftHoodieSmoke": {
+      "status": "PASS",
+      "asset": "/cdn/shop/t/27/assets/lspod-designer-v5-safe.js?v=2064868001234033451794118096",
+      "cartItemCountAfter": 0
+    }
+  },
+  "boundedCartE2E": {
+    "productHandle": "unisex-t-shirt-selbst-gestalten",
+    "variantId": "55777948008833",
+    "variant": "Ringgarn-Baumwolle / XS",
+    "viewport": "375x812",
+    "leftPx": 12,
+    "rightPx": 363,
+    "horizontalOverflow": false,
+    "cartAddRequestsBeforeConfirmation": 0,
+    "cloudinaryStatus": 200,
+    "cartAddStatus": 200,
+    "cartAddRequestCount": 1,
+    "designProperty": "Text: \"E2E TEST 08.11\"",
+    "printFileProperty": "HTTPS Cloudinary PNG confirmed",
+    "clearStatus": 200,
+    "cartCountAfterClear": 0,
+    "checkoutPerformed": false,
+    "orderCreated": false,
+    "completedAtUtc": "2026-11-08T06:12:56.468Z",
+    "scopeLimit": "One T-shirt variant and one text-media flow; not catalog-wide or Printful production acceptance."
+  },
+  "v63Pilot": {
+    "status": "GO for bounded UNPUBLISHED mug pilot; not approved for MAIN publish",
+    "repositoryGuard": {
+      "pullRequest": 2944,
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2944",
+      "base": "main",
+      "headAndRemote": "ea877d4487c52eaf2290cd92dd988f61f14d1aa1",
+      "draft": true,
+      "merged": false,
+      "deployed": false,
+      "sourceSha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+      "testFileSha256": {
+        "unit": "9a6c56632078b5207ca4a97d10fb173ff84fb1802bdcb318015831850e58b965",
+        "editor": "d11bd05e007fe4c8a33f768632d992cc1e5757daf7ed2bf7f453cf760ed4ee9d",
+        "preview": "f9e255a6d4d35265f4cb10c5f87b4db27f7c7d1e75468efb7e7f35c6fec4c012"
+      },
+      "localTests": {
+        "v63": 1057,
+        "v62Editor": 393,
+        "v62Preview": 196,
+        "finalReview": "no blockers"
+      },
+      "remoteCi": {
+        "passed": [
+          "Voice (2)",
+          "tests",
+          "selbst-gestalten",
+          "lagerbestand",
+          "Cloudflare Pages workflow"
+        ],
+        "deployCheck": "cancelled at 8-minute limit during repository-wide HTML validation; no HTML file changed",
+        "externalWorkers": "three FAILURE without annotation",
+        "foerderRadar": "pending at final readback"
+      }
+    },
+    "theme": {
+      "id": "213482963335",
+      "role": "UNPUBLISHED",
+      "processing": false,
+      "updatedAtUtc": "2026-11-08T06:41:45Z",
+      "writes": 4,
+      "files": {
+        "layout/theme.liquid": {
+          "beforeMd5": "4447d5a9a0410ec9190cd57819f4bc2f",
+          "afterMd5": "fe3e85d7da50eb8f0b8152350d1a79f1",
+          "bytes": 62235
+        },
+        "assets/lspod-designer-v6-6.3.0.js": {
+          "new": true,
+          "md5": "403cbd9ff0883b0676daf209b33765e6",
+          "sha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+          "bytes": 224552
+        },
+        "assets/lspod-karte-19.json": {
+          "new": true,
+          "md5": "f6aafc1cf13e9456cd78602ad02399b4",
+          "bytes": 2690
+        },
+        "assets/lspod-vorschau-19.json": {
+          "new": true,
+          "md5": "45f219ece6df8d8e93733d6adf191c05",
+          "bytes": 1410
+        }
+      },
+      "draftV5Md5Preserved": "abc4e9d6dee7716e1bd3439d8280ebfb",
+      "published": false
+    },
+    "pilotProduct": {
+      "id": "gid://shopify/Product/15422823465345",
+      "handle": "keramik-tasse-selbst-gestalten",
+      "status": "ACTIVE",
+      "updatedAtUtcUnchanged": "2026-11-08T04:58:27Z",
+      "productWrites": 0,
+      "mode": "karte",
+      "model": 19,
+      "variants": [
+        {
+          "size": "325 ml",
+          "shopifyVariantId": "55777979629953",
+          "printfulVariantId": 1320
+        },
+        {
+          "size": "444 ml",
+          "shopifyVariantId": "55777979662721",
+          "printfulVariantId": 4830
+        },
+        {
+          "size": "591 ml",
+          "shopifyVariantId": "55777979695489",
+          "printfulVariantId": 16586
+        }
+      ],
+      "otherProductsRemainV5": true
+    },
+    "browserEvidenceSeparated": {
+      "matrix": {
+        "status": "PASS",
+        "allThreeVariantsAndProductViews": true,
+        "dpiLock": true,
+        "designInvalidation": true,
+        "variantInvalidation": true,
+        "mobile375": true,
+        "uploadsBeforeApproval": 0,
+        "cartAddsBeforeApproval": 0,
+        "cartClear": "HTTP200/count0"
+      },
+      "formDataWrapper": {
+        "reviewPngEqualsOutgoingBlob": true,
+        "bytes": 88716,
+        "sha256": "384401a5df9472e28d8014eb3f33a153d6c34f8529075be28c5ef062dc94fbc6",
+        "networkDuringInstrumentation": "no network request occurred in this instrumented run; network status unknown"
+      },
+      "isolatedNetworkRuns": {
+        "325ml": {
+          "cloudinary200": 2,
+          "cartAdd200": true,
+          "clear200Count0": true
+        },
+        "591ml": {
+          "cloudinary200": 2,
+          "cartAdd200": true,
+          "clear200Count0": true
+        }
+      },
+      "singleCombinedHarnessFullyGreen": false,
+      "note": "Combined harness attempts hit instrumentation/variant-state issues; no fully green combined-harness claim."
+    },
+    "mainReadback": {
+      "themeId": "213013037447",
+      "role": "MAIN",
+      "unchanged": true,
+      "layoutMd5": "cf5ee5a64ca940edf4120b09c073e58f",
+      "v5Md5": "be85494be069a484807b65ee32261a8a",
+      "v63Assets": "NOT_FOUND"
+    }
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "735184858587083ef8a36cddf25ce550ac3f857e83d2522f9f5f9ef0642cedde",
+    "PROJEKTGEDAECHTNIS.md": "ca4907ad2070aa4e64ab3be44900f8e78385c62ca47c1a24cb526678a2339309",
+    "ARBEITSSTAND.json": "90e000e5a74e79b5c956858454f8e70a8e8fbe02b0a325cb0b4f36a5fa24f9f1",
+    "TAGESPROTOKOLL.md": "fec33c7b12ed19321e3ef125aec3ebe90e304fd8d4936d5472465981ee9753c6"
+  },
+  "writesNotPerformed": {
+    "mainThemeFileWrites": 0,
+    "themePublishes": 0,
+    "checkouts": 0,
+    "orders": 0,
+    "printfulOrders": 0,
+    "deployments": 0,
+    "customerContacts": 0,
+    "draftThemeFileWritesR135": 5
+  },
+  "openBlockers": [
+    "v5 preview and v6.3 mug pilot remain only in UNPUBLISHED theme 213482963335; MAIN is unchanged.",
+    "v5 E2E covers one T-shirt variant; v6.3 covers three mug variants. Other products and media types remain unproven.",
+    "No single combined v6.3 harness completed fully green; evidence is separated into matrix, exact-byte wrapper and isolated network runs.",
+    "Physical Printful DPI/print quality, production, checkout and order acceptance remain unproven.",
+    "PR2944 remains Draft/unmerged with cancelled repository-wide deploy check, three external Worker failures and one pending external check."
+  ],
+  "nextStep": "Keep theme213482963335 unpublished. After remaining external PR checks, fresh-countercheck Draft vs MAIN and prepare a bounded publish diff for separate owner approval; do not infer production or order readiness.",
+  "dailyReview": {
+    "identity": {
+      "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland matched",
+      "metricool": "brandId 6227837/Europe/Zurich/six expected channel identities matched"
+    },
+    "products": {
+      "projector": {
+        "productId": "gid://shopify/Product/15521256604033",
+        "status": "ACTIVE",
+        "currentVariants": "A-G; 7 variants",
+        "priceChfRange": "34.90-51.90",
+        "historicalVariant56197916361089": "stale",
+        "inventory": "untracked/CONTINUE/quantity0",
+        "availableForSale": true,
+        "tagsNonEmpty": true,
+        "blockingTags": [],
+        "socialBlockers": [
+          "A-G selection binding open",
+          "commercial rights binding open"
+        ]
+      },
+      "mug": {
+        "productId": "gid://shopify/Product/15422823465345",
+        "status": "ACTIVE",
+        "variantPricesChf": [
+          "22.90",
+          "25.90",
+          "23.90"
+        ],
+        "inventory": "tracked/CONTINUE/quantity9999",
+        "availableForSale": true,
+        "blockingTags": [],
+        "deliveryPromiseDerived": false
+      }
+    },
+    "metricoolPlan": {
+      "window": "2026-11-08..2026-11-14",
+      "objects": 30,
+      "uniqueUuids": 30,
+      "pendingChannelStates": 47,
+      "sameChannelNonEmptyDuplicates": 0,
+      "videoDraftsAutoPublishOff": 11,
+      "unchangedPhotoObjects": 19,
+      "missingFacebookInstagramCaption": 5,
+      "shippingClaimsChecked": false,
+      "writes": 0
+    },
+    "metricoolMetrics": {
+      "window": "2026-11-01..2026-11-07",
+      "coverage": "partial; missing days unknown, not zero",
+      "instagram": {
+        "views": 642,
+        "knownInteractions": 5,
+        "coveredDays": 3
+      },
+      "facebook": {
+        "views": 400,
+        "knownInteractions": 1,
+        "coveredDays": 1
+      },
+      "tiktok": {
+        "views": 1720,
+        "likes": 4,
+        "comments": 0,
+        "shares": 1,
+        "coveredDays": 6
+      },
+      "pinterest": {
+        "impressions": 4440,
+        "interactions": 57,
+        "coveredDays": 5
+      },
+      "youtube": {
+        "views": 165,
+        "interactions": null,
+        "coveredDays": 5
+      },
+      "threads": {
+        "date": "2026-11-07",
+        "views": 0,
+        "interactions": 0,
+        "otherDays": "unknown"
+      },
+      "salesAttribution": "none inferred"
+    },
+    "klaviyo": {
+      "account": "XWqMAD",
+      "accountCurrency": "USD",
+      "shopCurrency": "CHF",
+      "placedOrderMetric": "W7XTVD",
+      "flows": {
+        "Vse76a": {
+          "name": "Abandoned Checkout",
+          "status": "draft",
+          "report20261101to07": "unknown/not present"
+        },
+        "VbLQj6": {
+          "name": "Welcome Series",
+          "status": "draft",
+          "delivered": 1,
+          "opened": 1
+        },
+        "RnTvsY": {
+          "name": "Post-Purchase",
+          "status": "draft",
+          "delivered": 4,
+          "opened": 1
+        }
+      },
+      "captureHtml": "live",
+      "formsApi": "empty",
+      "XEGbTB": {
+        "status": "draft",
+        "tenPercentClaim": "unconfirmed",
+        "name": "Checkout Recovery / Warenkorbrückgewinnung"
+      },
+      "singleProposal": "Neutral Email 2 text diff for Checkout Recovery flow XEGbTB; approval only",
+      "flowWrites": 0,
+      "currenciesOrRevenueMixed": false
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "status": "18-second storyboard; no new MP4",
+      "hookA": "Dein Raum. Neues Licht.",
+      "hookB": "Licht im Detail.",
+      "detailSegment": "17.20-18.80 seconds; crop x210",
+      "operationSegment": "3.00-8.60 seconds; crop x300",
+      "music": {
+        "path": "automation/music/luxe-premium.wav",
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+        "rightsHearingMixApproval": "open"
+      },
+      "channelDrafts": 6,
+      "channelUtmDrafts": 6,
+      "allChannelsBlocked": true,
+      "blockers": [
+        "A-G variant binding",
+        "commercial rights",
+        "rendered approved MP4"
+      ],
+      "metricoolWrites": 0
+    },
+    "salesProposal": {
+      "product": "Sternenlicht-Projektor",
+      "text": "Preis pro Auswahl: Der angezeigte Preis gilt für die aktuell gewählte Ausführung.",
+      "shopWrite": false,
+      "approvalRequired": true
+    }
+  },
+  "knownDraftThemeTotalsAfterR135": {
+    "fileWriteOperations": 12,
+    "uniqueFiles": 9,
+    "r135WriteOperations": 5,
+    "r135UniqueFiles": 5
+  }
+}

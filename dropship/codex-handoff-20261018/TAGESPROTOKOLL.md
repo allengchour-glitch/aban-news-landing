@@ -1405,3 +1405,24 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R134-Bericht, JSON und Projektgedächtnis fortgeschrieben | Kein Printful-Auftrag, Theme-Publish, Deploy oder Bestellung. Live-v5/Mobile-Neuupload, DPI/Produktion, FR, globale Lieferclaims und 4XL/5XL-Masse offen |
 
 [LUXESTYLE_R134_20261108] [Selbstgestalten-Livebericht](SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.md) · [Maschinenbeleg](SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.json).
+
+### R135
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Theme-Asset | Im UNPUBLISHED Theme213482963335 genau `assets/lspod-designer-v5-safe.js` nach frischer MD5-Gegenprobe geschrieben und zurückgelesen | MD5 `be85494…`→`abc4e9d6…`, SHA-256 `0cc241…`, keine User Errors, processing false/failed false. MAIN213013037447 blieb auf `be85494…`; kein Publish |
+| Druckvorschau | Pflichtbestätigung je gestalteter Seite, Invalidierung bei Design-/Variantenwechsel und zwei sichere Darstellungsmodi umgesetzt | Nur streng validierte datierte Printful-Map zeigt Geometrie; sonst exakte PNG mit Nicht-Massstabswarnung. Ungültige Map sperrt statt zu erfinden |
+| Mobil / Barrierefreiheit | Dialogsemantik, Fokusführung, native Checkbox, Escape/Fokusrückgabe, 44px-Bedienung und 375px geprüft | Node-/Playwright-/Map-/Fallback-/Vorder-Rückseiten-/Invalidierungs-/A11y-Matrix grün; Hoodie-Draft-Smoke PASS, Cart0 |
+| Begrenzter Draft-E2E | T-Shirt-Variante55777948008833 mit Textmotiv bis Warenkorb und anschliessendem Clear geprüft | Vor Bestätigung0 Cart-Adds; Cloudinary200; genau1 Cart-Add200 mit richtigen Properties; Clear200/Count0; kein Checkout/Order |
+| v6.3 Repo-Guard | Draft-PR2944/Head`ea877d4487…`, Source-/Testhashes, lokale Tests und CI zurückgelesen |1'057 v6.3+589 v6.2-Rückwärtsprüfungen grün; Review ohne Blocker. Relevante CI grün, Deploy-Check Timeout, drei externe Workers rot/ein Check pending. Draft/ungemergt, kein Deploy |
+| v6.3 Theme-Pilot | Im UNPUBLISHED Theme213482963335 vier Dateien geschrieben und exakt zurückgelesen; nur Tasse15422823465345 auf v6.3/karte gebunden | Layout`fe3e85d7…`, v6.3`403cbd9f…`, Karte`f6aafc1c…`, Vorschau`45f219ec…`; drei Varianten→PF1320/4830/16586. MAIN unverändert, kein Publish/Produktwrite |
+| v6.3 Browserbelege | Matrix/DPI/Invalidierung/375px, Bytegleichheit und isolierte Netzwege getrennt geprüft | Matrix PASS; Review-PNG=FormData88'716B/`384401a5…`; im instrumentierten Lauf kam kein Netzrequest zustande, Netzstatus unbekannt. Isolierte325/591 je Cloudinary200/Cart200/Clear0. Kein einzelner Kombiharness vollständig grün behauptet; kein Checkout/Order |
+| Dokumentation | R135-Bericht/JSON, Projektgedächtnis und Arbeitsstand final fortgeschrieben | Revision135/24 stabile Aufgaben-IDs; kein Merge, Deploy, Theme-Publish, Printful-Auftrag, Checkout oder Bestellung |
+| Identität / Produkte | Shopify und Metricool frisch passend gelesen; Projektor und Tasse begrenzt geprüft | Projektor ACTIVE/7 A–G/CHF34.90–51.90/untracked-CONTINUE-0/kaufbar; alte Variante56197916361089 veraltet, Auswahl/Rechte blockieren Social. Tasse ACTIVE/3 Preise/tracked-CONTINUE-9999/kaufbar; keine Lieferzusage |
+| Metricool-Plan | 08.–14.11 per Objekt/UUID/Kanalzustand geprüft |30 Objekte/30 UUIDs/47 PENDING; keine kanalgleiche nichtleere Kopie.11 Videos Draft+Auto-Publish aus,19 Fotos unverändert,5 ohne FB-/IG-Caption; Versandclaims ungeprüft, kein Write |
+| Kanal-Kennzahlen | 01.–07.11 einmalig in den gelieferten Teilreihen gelesen | IG642/5(3T), FB400/1(1T), TT1720/4 Likes/0K/1Share(6T), Pin4440/57(5T), YT165 Views(5T, Interaktionen unbekannt), Threads nur07.11 0/0. Fehlende Tage unbekannt, keine Verkaufsableitung |
+| Klaviyo | Konto/Metrik/Flows/Capture/Form geprüft | XWqMAD USD, W7XTVD; Vse76a/VbLQj6/RnTvsY draft. Vse im Report unbekannt, Vb1/1, Rn4/1; Capture-HTML live, Forms-API leer, Checkout-Recovery XEGbTB draft/10%-Claim unbestätigt. Ein neutraler Email-2-Diff für XEGbTB zur Freigabe, kein Flowwrite |
+| Content-Master | Projektor-Master als18s-Storyboard mit zwei Hooks, Detail17.20–18.80/Cropx210, Bedienungssegment3.00–8.60/Cropx300 und sechs Text-/UTM-Drafts fortgeführt | Keine MP4. Pflichtmusik SHA256 `a7674…` vorhanden, Rechte-/Hör-/Mixabnahme offen; A–G-Bindung/Rechte/MP4 blockieren alle Kanäle, kein Metricool-Write |
+| Verkaufsentwurf | Projektor-Klarstellung «Preis pro Auswahl: Der angezeigte Preis gilt für die aktuell gewählte Ausführung.» vorbereitet | Nur zur Freigabe; kein Shopify-Write |
+
+[LUXESTYLE_R135_20261108] [Druckvorschau-/Pilotbericht](DRUCKVORSCHAU-UX-20261108-R135.md) · [Maschinenbeleg](DRUCKVORSCHAU-UX-20261108-R135.json).

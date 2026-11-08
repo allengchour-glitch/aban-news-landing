@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 134,
-  "updatedAt": "2026-11-08T06:36:19+01:00",
+  "revision": 135,
+  "updatedAt": "2026-11-08T08:08:38+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -6038,13 +6038,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r134_live_content_and_unpublished_theme_preview_fixed_full_personalizer_acceptance_open",
+      "state": "r135_unpublished_v5_preview_and_v63_mug_pilot_go_main_unchanged",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R134_17_ACTIVE_CONTENT_13_IMAGE_BINDINGS_DRAFT_THEME_7_WRITES_PREVIEW_QA",
-      "lastEvidence": "Shopify LuxeStyle/luxestyle.ch/CHF/CH bestätigt. Page698444710273 publiziert, Collection689870963073 live;17/17 ACTIVE-Selbstgestalten-Produkte mit neutralem Lieferbanner und je einmal v5. Produkt15422815699329 als Sweatshirt & Bio-Hoodie getrennt,17 Alts,13 data-img-map-Bindungen; Varianten/SKUs/Preise/Inventory/Tags erhalten. Echter v5-Neuupload durch Cloudinary POST ERR_FAILED/OPTIONS503 blockiert; vorhandener Druckfile bestätigte cart/add200, de-CH/CHF/CH+LI, keine Bestellung. Draft-PR2940/Head3a0e9261 fail-closed; lokal70/70+75/75+4/4,3/3 Mutanten,Sparse-CI,zwei Reviews grün; Remote Kernprüfungen grün, Pre-deploy/externe Pages laufend,drei bekannte Workers rot; Draft/ungemergt. MAIN213013037447 unverändert. UNPUBLISHED Theme213482963335 daraus dupliziert;7 bestätigte Datei-Writes/5 Dateien. Finale MD5 Layout4447,Collection4592,Headerd6dc,Footerc2e6,Cart5047. Preview1440/375 ohne Overflow; CHF39.90→CHF10.10 oben/rechts, Header und normale FAQ ohne nach Rabatt/Fixzeit/immer Tracking, POD-FAQ getrennt,sg-alle korrekt. MAIN fünf MD5/updatedAt unverändert; Cart geleert, keine Bestellung/Publikation.",
+      "belegArt": "R135_V5_PREVIEW_V63_MUG_PILOT_SEPARATED_EVIDENCE_DAILY_PACKAGE",
+      "lastEvidence": "UNPUBLISHED Theme213482963335: v5-Pflichtvorschau plus begrenzter v6.3-Tassen-Pilot. R135 insgesamt5 Draft-Dateiwrites; v6.3-Pilot Layout fe3e85d7, v6 403cbd9f, Karte f6aafc1c, Vorschau45f219ec; MAIN213013037447 unverändert. Tasse15422823465345 ACTIVE/unverändert, 325/444/591ml→PF1320/4830/16586. Matrix/DPI/Invalidierung/375px PASS; Review-PNG=FormData 88'716B SHA384401a5, im instrumentierten Lauf kein Netzrequest und Netzstatus unbekannt; isolierte325/591 Wege Cloudinary200/cart200/clear0. Kein vollständig grüner Kombiharness behauptet. PR2944 ea877d4487 Draft:1'057 v6.3+589 v6.2 Tests, relevante CI grün, Deploy-Timeout/externe Checks offen. Kein Publish/Checkout/Order. Tagespaket Shopify/Metricool/Klaviyo einmalig geprüft; Master bleibt Storyboard ohne MP4 und alle Kanäle blockiert.",
       "previewUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/212978598279/editor?previewPath=%2Fcollections%2Fselbst-gestalten-1%3Fview%3Dluxe-gestalten%26catalog_product%3D259",
-      "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen und vor jeder weiteren Aktion frisch gegen MAIN213013037447 lesen; Preview-QA ist keine Live-Publikationsabnahme. Draft-PR2940 erst nach restlichen Checks prüfen; kein Merge/Dispatch/Deploy aus Teilbelegen ableiten. Upload-/Upstream-Blocker getrennt diagnostizieren und danach mit neu erzeugter Druckdatei Mobil/Desktop bis vor die zahlungspflichtige Bestellung wiederholen. FR-Inhalte, verifizierte4XL/5XL-Masse, Material→Modell und Printful-DPI/Produktionsmapping getrennt prüfen.",
+      "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen. Nach restlichen externen PR-Checks Draft/Main frisch vergleichen und nur einen begrenzten Publish-Diff zur separaten Inhaberfreigabe vorlegen. Keine physische Produktion, Checkout-/Order-Reife oder Katalogabdeckung aus den getrennten Pilotbelegen ableiten.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -6307,14 +6307,14 @@
         "EDM-Token- und Serverbindung, variantengenaue Druckgeometrie und vollständige Fulfilmentübergabe unbekannt",
         "Aktuelle CH-Versand- und Technikkosten fehlen; 57 Varianten über dem bisherigen Preisdeckel bleiben erhalten",
         "Fünf Kategorieprodukte ohne dynamisch belegte Shopangebote; Herstellerreferenz ist kein kaufbarer Gesamtkatalog. Keine vollständige aktuelle Printful-API-/CH-Verfügbarkeitsprüfung.",
-        "R134: Live-Editor bleibt v5; v6.2 ist nicht breit live und der Canary ist DRAFT.",
-        "R134: Neuer Cloudinary-v5-Upload im Browserlauf durch POST ERR_FAILED und OPTIONS HTTP503/Upstream-Reset blockiert; kein neuer Druckfile, Ursache unbekannt.",
-        "R134: Vollständige Mobil/Desktop-Abnahme mit neuem Upload, Vorschau und Printful-DPI/Produktion fehlt; vorhandener Druckfile belegt nur den nachgelagerten Cart-/Checkoutpfad.",
         "R134: /fr/pages/selbst-gestalten und verlinkte FR-Produkte enthalten deutsche Inhalte; v5 hat nur EN oder DE-Fallback.",
         "R134: Globale Theme-FAQ/Chatbot enthält weiter7–14/10–20-Tage-Claims; 4XL/5XL-Masse fehlen; Material→Modell braucht Checkout-/Sync-Test.",
         "R134: Warenkorb-Fortschritt zeigt bei CHF27.90 fälschlich CHF27.66 statt CHF22.10 bis zur öffentlichen CHF-50-Schwelle.",
         "R134: Draft-PR2940 ist Draft/ungemergt; Pre-deploy und externe Pages liefen bei Schlusslesung, drei bekannte Workers waren rot.",
-        "R134: Theme213482963335 ist UNPUBLISHED; MAIN213013037447 unverändert. Preview-QA ersetzt keine Live-Publikationsabnahme."
+        "R135: v5-Pflichtvorschau und v6.3-Tassen-Pilot liegen nur im UNPUBLISHED Theme213482963335; MAIN bleibt unverändert.",
+        "R135: Kein einzelner v6.3-Kombiharness lief vollständig grün; Matrix, Bytegleichheit und isolierte Netzwege sind getrennte Belege.",
+        "R135: Andere Produkte/Medienarten sowie physische Printful-DPI-/Druckqualität, Produktion, Checkout und Bestellung bleiben offen.",
+        "R135: PR2944 ist Draft/ungemergt; Deploy-Check cancelled, drei externe Workers rot und ein externer Check zuletzt pending."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -6468,6 +6468,16 @@
           "path": "dropship/codex-handoff-20261018/SELBSTGESTALTEN-LIVE-KORREKTUREN-20261108-R134.json",
           "gitBlobSha": "0247203d7069993c7eefe362a372353fe7b7aa6f",
           "readAt": "2026-11-08T06:36:19+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-UX-20261108-R135.md",
+          "gitBlobSha": "420a59c507bfbe17f9cec9836b15ca3bf828daee",
+          "readAt": "2026-11-08T08:08:38+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-UX-20261108-R135.json",
+          "gitBlobSha": "e620c8707a7ac005a6a39e3a2ffeee78f0045a71",
+          "readAt": "2026-11-08T08:08:38+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6726,6 +6736,19 @@
             "nextAllowedStep": "Zusätzliche R73-Touch-CSS nur zusammen mit dem endgültigen Kategorie-Ergänzungspaket auf frischer MAIN-Basis übernehmen. Alle früheren offenen FR-/Desktop-/SKU-/Bildrechte-/Kaufbarkeits-/Fulfilmentschritte bleiben separat bestehen;44px-Probe ist keine vollständige Personalizerabnahme. Keine spekulative Fehlerkorrektur oder ganze alte Kopie; vorhandene Websitefreigabe und MAIN-Grenzen erhalten.",
             "previousLastEvidenceSha256": "6017fd7ba3757108c571c6d660cb599acc300b35e36ea6a94f89294f1e7456fb",
             "previousLastEvidenceLength": 7256
+          },
+          "previousLastEvidencePreserved": true
+        },
+        {
+          "at": "2026-11-08T07:17:05+01:00",
+          "sourceRevision": 134,
+          "previous": {
+            "state": "r134_live_content_and_unpublished_theme_preview_fixed_full_personalizer_acceptance_open",
+            "lastEvidenceDate": "2026-11-08",
+            "belegArt": "R134_17_ACTIVE_CONTENT_13_IMAGE_BINDINGS_DRAFT_THEME_7_WRITES_PREVIEW_QA",
+            "nextAllowedStep": "Theme213482963335 UNPUBLISHED lassen und vor jeder weiteren Aktion frisch gegen MAIN213013037447 lesen; Preview-QA ist keine Live-Publikationsabnahme. Draft-PR2940 erst nach restlichen Checks prüfen; kein Merge/Dispatch/Deploy aus Teilbelegen ableiten. Upload-/Upstream-Blocker getrennt diagnostizieren und danach mit neu erzeugter Druckdatei Mobil/Desktop bis vor die zahlungspflichtige Bestellung wiederholen. FR-Inhalte, verifizierte4XL/5XL-Masse, Material→Modell und Printful-DPI/Produktionsmapping getrennt prüfen.",
+            "previousLastEvidenceSha256": "d87c0cbee3791975113630c8e7e67f3c8b2dee0d50604c96eb9d10565999037e",
+            "previousLastEvidenceLength": 1116
           },
           "previousLastEvidencePreserved": true
         }
@@ -10389,6 +10412,17 @@
         "readAt": "2026-11-08T06:36:19+01:00"
       },
       "action": "R134: Self-design page/collection and17 ACTIVE products corrected/read back; mixed sweatshirt/hoodie separated and13 image bindings set. New upload blocked upstream; existing print-file cart/checkout confirmed without order. Draft PR2940 adds unmerged fail-closed guards. MAIN unchanged; UNPUBLISHED theme213482963335 created with7 file writes/5 files and passed desktop/mobile preview QA including correct CHF50 calculations and separated FAQs. No theme publish, Printful order or customer order."
+    },
+    {
+      "revision": 135,
+      "at": "2026-11-08T08:08:38+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-UX-20261108-R135.json",
+        "gitBlobSha": "e620c8707a7ac005a6a39e3a2ffeee78f0045a71",
+        "readAt": "2026-11-08T08:08:38+01:00"
+      },
+      "action": "R135: v5 per-page print preview and a four-file v6.3 mug pilot were validated in UNPUBLISHED theme213482963335; MAIN unchanged. Evidence deliberately separates matrix/DPI/invalidation, exact-byte wrapper with unknown network status, and isolated Cloudinary/cart/clear paths; no fully green combined-harness claim. PR2944 remains Draft. Daily Shopify/Metricool/Klaviyo package read once; no publish, checkout or order."
     }
   ],
   "salesGoal": {
@@ -15397,5 +15431,330 @@
         "cartSummary": "88e224946155647e7ec46498b5aac870"
       }
     }
+  },
+  "selfDesignPreviewR135": {
+    "at": "2026-11-08T08:08:38+01:00",
+    "status": "final_unpublished_v5_preview_and_v63_mug_pilot_go_main_unchanged",
+    "report": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-UX-20261108-R135.md",
+    "evidence": "dropship/codex-handoff-20261018/DRUCKVORSCHAU-UX-20261108-R135.json",
+    "v5Preview": {
+      "draftThemeId": "213482963335",
+      "draftThemeName": "LuxeStyle – Printful Fix 08.11.2026",
+      "role": "UNPUBLISHED",
+      "file": "assets/lspod-designer-v5-safe.js",
+      "writeOperationsThisRevision": 1,
+      "beforeBytes": 51378,
+      "afterBytes": 63950,
+      "diff": "+43/-4",
+      "beforeMd5": "be85494be069a484807b65ee32261a8a",
+      "afterMd5": "abc4e9d6dee7716e1bd3439d8280ebfb",
+      "beforeSha256": "70140421381326aff999bd84094b9997eda3e9432037def69185d65ff003e808",
+      "afterSha256": "0cc241059ef8dc9cfca6f2a162db8c32f99dc85c131e75aa7e4dbebeb8b28a47",
+      "userErrors": [],
+      "readbackConfirmed": true,
+      "processing": false,
+      "processingFailed": false,
+      "writtenAtUtc": "2026-11-08T06:08:16Z",
+      "published": false
+    },
+    "v63Pilot": {
+      "status": "GO for bounded UNPUBLISHED mug pilot; not approved for MAIN publish",
+      "repositoryGuard": {
+        "pullRequest": 2944,
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2944",
+        "base": "main",
+        "headAndRemote": "ea877d4487c52eaf2290cd92dd988f61f14d1aa1",
+        "draft": true,
+        "merged": false,
+        "deployed": false,
+        "sourceSha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+        "testFileSha256": {
+          "unit": "9a6c56632078b5207ca4a97d10fb173ff84fb1802bdcb318015831850e58b965",
+          "editor": "d11bd05e007fe4c8a33f768632d992cc1e5757daf7ed2bf7f453cf760ed4ee9d",
+          "preview": "f9e255a6d4d35265f4cb10c5f87b4db27f7c7d1e75468efb7e7f35c6fec4c012"
+        },
+        "localTests": {
+          "v63": 1057,
+          "v62Editor": 393,
+          "v62Preview": 196,
+          "finalReview": "no blockers"
+        },
+        "remoteCi": {
+          "passed": [
+            "Voice (2)",
+            "tests",
+            "selbst-gestalten",
+            "lagerbestand",
+            "Cloudflare Pages workflow"
+          ],
+          "deployCheck": "cancelled at 8-minute limit during repository-wide HTML validation; no HTML file changed",
+          "externalWorkers": "three FAILURE without annotation",
+          "foerderRadar": "pending at final readback"
+        }
+      },
+      "theme": {
+        "id": "213482963335",
+        "role": "UNPUBLISHED",
+        "processing": false,
+        "updatedAtUtc": "2026-11-08T06:41:45Z",
+        "writes": 4,
+        "files": {
+          "layout/theme.liquid": {
+            "beforeMd5": "4447d5a9a0410ec9190cd57819f4bc2f",
+            "afterMd5": "fe3e85d7da50eb8f0b8152350d1a79f1",
+            "bytes": 62235
+          },
+          "assets/lspod-designer-v6-6.3.0.js": {
+            "new": true,
+            "md5": "403cbd9ff0883b0676daf209b33765e6",
+            "sha256": "38e4b18ea6411a7669283a0893daae4c808dae0a939a341da15ae877e5a21c4a",
+            "bytes": 224552
+          },
+          "assets/lspod-karte-19.json": {
+            "new": true,
+            "md5": "f6aafc1cf13e9456cd78602ad02399b4",
+            "bytes": 2690
+          },
+          "assets/lspod-vorschau-19.json": {
+            "new": true,
+            "md5": "45f219ece6df8d8e93733d6adf191c05",
+            "bytes": 1410
+          }
+        },
+        "draftV5Md5Preserved": "abc4e9d6dee7716e1bd3439d8280ebfb",
+        "published": false
+      },
+      "pilotProduct": {
+        "id": "gid://shopify/Product/15422823465345",
+        "handle": "keramik-tasse-selbst-gestalten",
+        "status": "ACTIVE",
+        "updatedAtUtcUnchanged": "2026-11-08T04:58:27Z",
+        "productWrites": 0,
+        "mode": "karte",
+        "model": 19,
+        "variants": [
+          {
+            "size": "325 ml",
+            "shopifyVariantId": "55777979629953",
+            "printfulVariantId": 1320
+          },
+          {
+            "size": "444 ml",
+            "shopifyVariantId": "55777979662721",
+            "printfulVariantId": 4830
+          },
+          {
+            "size": "591 ml",
+            "shopifyVariantId": "55777979695489",
+            "printfulVariantId": 16586
+          }
+        ],
+        "otherProductsRemainV5": true
+      },
+      "browserEvidenceSeparated": {
+        "matrix": {
+          "status": "PASS",
+          "allThreeVariantsAndProductViews": true,
+          "dpiLock": true,
+          "designInvalidation": true,
+          "variantInvalidation": true,
+          "mobile375": true,
+          "uploadsBeforeApproval": 0,
+          "cartAddsBeforeApproval": 0,
+          "cartClear": "HTTP200/count0"
+        },
+        "formDataWrapper": {
+          "reviewPngEqualsOutgoingBlob": true,
+          "bytes": 88716,
+          "sha256": "384401a5df9472e28d8014eb3f33a153d6c34f8529075be28c5ef062dc94fbc6",
+          "networkDuringInstrumentation": "no network request occurred in this instrumented run; network status unknown"
+        },
+        "isolatedNetworkRuns": {
+          "325ml": {
+            "cloudinary200": 2,
+            "cartAdd200": true,
+            "clear200Count0": true
+          },
+          "591ml": {
+            "cloudinary200": 2,
+            "cartAdd200": true,
+            "clear200Count0": true
+          }
+        },
+        "singleCombinedHarnessFullyGreen": false,
+        "note": "Combined harness attempts hit instrumentation/variant-state issues; no fully green combined-harness claim."
+      },
+      "mainReadback": {
+        "themeId": "213013037447",
+        "role": "MAIN",
+        "unchanged": true,
+        "layoutMd5": "cf5ee5a64ca940edf4120b09c073e58f",
+        "v5Md5": "be85494be069a484807b65ee32261a8a",
+        "v63Assets": "NOT_FOUND"
+      }
+    },
+    "knownDraftThemeTotalsAfterR135": {
+      "fileWriteOperations": 12,
+      "uniqueFiles": 9,
+      "r135WriteOperations": 5,
+      "r135UniqueFiles": 5
+    },
+    "dailyReview": {
+      "identity": {
+        "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland matched",
+        "metricool": "brandId 6227837/Europe/Zurich/six expected channel identities matched"
+      },
+      "products": {
+        "projector": {
+          "productId": "gid://shopify/Product/15521256604033",
+          "status": "ACTIVE",
+          "currentVariants": "A-G; 7 variants",
+          "priceChfRange": "34.90-51.90",
+          "historicalVariant56197916361089": "stale",
+          "inventory": "untracked/CONTINUE/quantity0",
+          "availableForSale": true,
+          "tagsNonEmpty": true,
+          "blockingTags": [],
+          "socialBlockers": [
+            "A-G selection binding open",
+            "commercial rights binding open"
+          ]
+        },
+        "mug": {
+          "productId": "gid://shopify/Product/15422823465345",
+          "status": "ACTIVE",
+          "variantPricesChf": [
+            "22.90",
+            "25.90",
+            "23.90"
+          ],
+          "inventory": "tracked/CONTINUE/quantity9999",
+          "availableForSale": true,
+          "blockingTags": [],
+          "deliveryPromiseDerived": false
+        }
+      },
+      "metricoolPlan": {
+        "window": "2026-11-08..2026-11-14",
+        "objects": 30,
+        "uniqueUuids": 30,
+        "pendingChannelStates": 47,
+        "sameChannelNonEmptyDuplicates": 0,
+        "videoDraftsAutoPublishOff": 11,
+        "unchangedPhotoObjects": 19,
+        "missingFacebookInstagramCaption": 5,
+        "shippingClaimsChecked": false,
+        "writes": 0
+      },
+      "metricoolMetrics": {
+        "window": "2026-11-01..2026-11-07",
+        "coverage": "partial; missing days unknown, not zero",
+        "instagram": {
+          "views": 642,
+          "knownInteractions": 5,
+          "coveredDays": 3
+        },
+        "facebook": {
+          "views": 400,
+          "knownInteractions": 1,
+          "coveredDays": 1
+        },
+        "tiktok": {
+          "views": 1720,
+          "likes": 4,
+          "comments": 0,
+          "shares": 1,
+          "coveredDays": 6
+        },
+        "pinterest": {
+          "impressions": 4440,
+          "interactions": 57,
+          "coveredDays": 5
+        },
+        "youtube": {
+          "views": 165,
+          "interactions": null,
+          "coveredDays": 5
+        },
+        "threads": {
+          "date": "2026-11-07",
+          "views": 0,
+          "interactions": 0,
+          "otherDays": "unknown"
+        },
+        "salesAttribution": "none inferred"
+      },
+      "klaviyo": {
+        "account": "XWqMAD",
+        "accountCurrency": "USD",
+        "shopCurrency": "CHF",
+        "placedOrderMetric": "W7XTVD",
+        "flows": {
+          "Vse76a": {
+            "name": "Abandoned Checkout",
+            "status": "draft",
+            "report20261101to07": "unknown/not present"
+          },
+          "VbLQj6": {
+            "name": "Welcome Series",
+            "status": "draft",
+            "delivered": 1,
+            "opened": 1
+          },
+          "RnTvsY": {
+            "name": "Post-Purchase",
+            "status": "draft",
+            "delivered": 4,
+            "opened": 1
+          }
+        },
+        "captureHtml": "live",
+        "formsApi": "empty",
+        "XEGbTB": {
+          "status": "draft",
+          "tenPercentClaim": "unconfirmed",
+          "name": "Checkout Recovery / Warenkorbrückgewinnung"
+        },
+        "singleProposal": "Neutral Email 2 text diff for Checkout Recovery flow XEGbTB; approval only",
+        "flowWrites": 0,
+        "currenciesOrRevenueMixed": false
+      },
+      "master": {
+        "masterId": "luxe_sternenprojektor_master_20261018",
+        "status": "18-second storyboard; no new MP4",
+        "hookA": "Dein Raum. Neues Licht.",
+        "hookB": "Licht im Detail.",
+        "detailSegment": "17.20-18.80 seconds; crop x210",
+        "operationSegment": "3.00-8.60 seconds; crop x300",
+        "music": {
+          "path": "automation/music/luxe-premium.wav",
+          "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+          "rightsHearingMixApproval": "open"
+        },
+        "channelDrafts": 6,
+        "channelUtmDrafts": 6,
+        "allChannelsBlocked": true,
+        "blockers": [
+          "A-G variant binding",
+          "commercial rights",
+          "rendered approved MP4"
+        ],
+        "metricoolWrites": 0
+      },
+      "salesProposal": {
+        "product": "Sternenlicht-Projektor",
+        "text": "Preis pro Auswahl: Der angezeigte Preis gilt für die aktuell gewählte Ausführung.",
+        "shopWrite": false,
+        "approvalRequired": true
+      }
+    },
+    "openBlockers": [
+      "v5 preview and v6.3 mug pilot remain only in UNPUBLISHED theme 213482963335; MAIN is unchanged.",
+      "v5 E2E covers one T-shirt variant; v6.3 covers three mug variants. Other products and media types remain unproven.",
+      "No single combined v6.3 harness completed fully green; evidence is separated into matrix, exact-byte wrapper and isolated network runs.",
+      "Physical Printful DPI/print quality, production, checkout and order acceptance remain unproven.",
+      "PR2944 remains Draft/unmerged with cancelled repository-wide deploy check, three external Worker failures and one pending external check."
+    ],
+    "nextStep": "Keep theme213482963335 unpublished. After remaining external PR checks, fresh-countercheck Draft vs MAIN and prepare a bounded publish diff for separate owner approval; do not infer production or order readiness."
   }
 }
