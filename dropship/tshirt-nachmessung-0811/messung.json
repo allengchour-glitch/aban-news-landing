@@ -1,0 +1,354 @@
+{
+ "stand": "2026-11-08 ca. 20:10 bis 20:30 UTC",
+ "editor_gemessen": [
+  "lspod-designer-v6-6.2.0.js (alle sechs Fälle)",
+  "lspod-designer-v6-6.3.1.js (71 oben, 586 oben, 456 oben: Zahlen gleich)"
+ ],
+ "design": "Foto 910x903 (Plüschtier), Druckdatei 1800x2400, Breite 1000, Höhe 992, links 400, oben 300 («oben») bzw. 1200 («unten»)",
+ "aufgaben": {
+  "s71t": {
+   "modell": 71,
+   "variante": 4012,
+   "lage_top": 300,
+   "task_key": "gt-1000605917",
+   "ratelimit_nach_post": {
+    "limit": "10",
+    "remaining": "9",
+    "reset": "60"
+   },
+   "dauer_ms": 8271,
+   "status": "completed",
+   "bytes": 40337,
+   "md5": "9415433c241b3bdc1ac6eeece99b2a7f",
+   "gestartet": "2026-11-08T20:04:53.645Z"
+  },
+  "s71l": {
+   "modell": 71,
+   "variante": 4012,
+   "lage_top": 1200,
+   "task_key": "gt-1000610442",
+   "ratelimit_nach_post": {
+    "limit": "10",
+    "remaining": "9",
+    "reset": "60"
+   },
+   "dauer_ms": 8233,
+   "status": "completed",
+   "bytes": 40335,
+   "md5": "fb8b378da8c1c31a09ef33430a8eb9f0",
+   "gestartet": "2026-11-08T20:11:28.166Z"
+  },
+  "s586t": {
+   "modell": 586,
+   "variante": 15125,
+   "lage_top": 300,
+   "task_key": "gt-1000606209",
+   "ratelimit_nach_post": {
+    "limit": "10",
+    "remaining": "8",
+    "reset": "31"
+   },
+   "dauer_ms": 8278,
+   "status": "completed",
+   "bytes": 44023,
+   "md5": "e82167477bc110a1d6e345e9923d64e2",
+   "gestartet": "2026-11-08T20:05:22.947Z"
+  },
+  "s586l": {
+   "modell": 586,
+   "variante": 15125,
+   "lage_top": 1200,
+   "task_key": "gt-1000606610",
+   "ratelimit_nach_post": {
+    "limit": "10",
+    "remaining": "7",
+    "reset": "2"
+   },
+   "dauer_ms": 8238,
+   "status": "completed",
+   "bytes": 43932,
+   "md5": "8da3e68b03bf406deddd3c43168505fd",
+   "gestartet": "2026-11-08T20:05:51.769Z"
+  },
+  "s456t": {
+   "modell": 456,
+   "variante": 11865,
+   "lage_top": 300,
+   "task_key": "gt-1000606941",
+   "ratelimit_nach_post": {
+    "limit": "10",
+    "remaining": "9",
+    "reset": "60"
+   },
+   "dauer_ms": 8224,
+   "status": "completed",
+   "bytes": 45306,
+   "md5": "350ca5800b9525d08cec297484b882df",
+   "gestartet": "2026-11-08T20:06:20.746Z"
+  },
+  "s456l": {
+   "modell": 456,
+   "variante": 11865,
+   "lage_top": 1200,
+   "task_key": "gt-1000607261",
+   "ratelimit_nach_post": {
+    "limit": "10",
+    "remaining": "8",
+    "reset": "31"
+   },
+   "dauer_ms": 8331,
+   "status": "completed",
+   "bytes": 44965,
+   "md5": "8c30aa64cb41db87ae0a63d1c3cabb9c",
+   "gestartet": "2026-11-08T20:06:49.713Z"
+  }
+ },
+ "mass_editor_gegen_printful": {
+  "s71l": {
+   "ganzes_bild": 1.27,
+   "im_produkt": 2.61,
+   "motivfenster": 23.77,
+   "motiv_diff": {
+    "links": -1,
+    "oben": 7,
+    "rechts": -6,
+    "unten": 5
+   },
+   "umriss_diff": {
+    "links": -1,
+    "oben": -1,
+    "rechts": 0,
+    "unten": -1
+   }
+  }
+ },
+ "feinmessung": {
+  "s71t": {
+   "fenstermitte": [
+    405,
+    260
+   ],
+   "nur_verschiebung": {
+    "dx": 1.75,
+    "dy": -7,
+    "abw": 5.91
+   },
+   "mit_massstab": {
+    "dx": 1.5,
+    "dy": -6.875,
+    "s": 1.0075,
+    "abw": 5.24
+   },
+   "abw_ohne": 26.37
+  },
+  "s71l": {
+   "fenstermitte": [
+    404.5,
+    395
+   ],
+   "nur_verschiebung": {
+    "dx": 1.75,
+    "dy": -5.5,
+    "abw": 5.79
+   },
+   "mit_massstab": {
+    "dx": 1.5,
+    "dy": -5.625,
+    "s": 1.0075,
+    "abw": 4.94
+   },
+   "abw_ohne": 23.77
+  },
+  "s586t": {
+   "fenstermitte": [
+    400.5,
+    258
+   ],
+   "nur_verschiebung": {
+    "dx": 0.875,
+    "dy": 2.125,
+    "abw": 6.75
+   },
+   "mit_massstab": {
+    "dx": 0.75,
+    "dy": 2,
+    "s": 1.0125,
+    "abw": 4.58
+   },
+   "abw_ohne": 14.27
+  },
+  "s586l": {
+   "fenstermitte": [
+    400,
+    402.5
+   ],
+   "nur_verschiebung": {
+    "dx": 0.875,
+    "dy": 4.25,
+    "abw": 7.38
+   },
+   "mit_massstab": {
+    "dx": 0.75,
+    "dy": 4.125,
+    "s": 1.015,
+    "abw": 4.86
+   },
+   "abw_ohne": 20.32
+  },
+  "s456t": {
+   "fenstermitte": [
+    400.5,
+    247.5
+   ],
+   "nur_verschiebung": {
+    "dx": -0.125,
+    "dy": 0,
+    "abw": 3.3
+   },
+   "mit_massstab": {
+    "dx": -0.125,
+    "dy": 0,
+    "s": 1,
+    "abw": 3.3
+   },
+   "abw_ohne": 3.38
+  },
+  "s456l": {
+   "fenstermitte": [
+    400.5,
+    400
+   ],
+   "nur_verschiebung": {
+    "dx": -0.125,
+    "dy": 0.25,
+    "abw": 3.77
+   },
+   "mit_massstab": {
+    "dx": 0,
+    "dy": 0.25,
+    "s": 0.9975,
+    "abw": 3.72
+   },
+   "abw_ohne": 4.28
+  }
+ },
+ "wirksame_druckflaeche": {
+  "71": {
+   "vorlage": [
+    1006,
+    530,
+    1010,
+    1346
+   ],
+   "wirksam": [
+    1007.8,
+    498.8,
+    1017.6,
+    1361
+   ],
+   "dT": -31.1944444444444,
+   "dH": 14.95555555555552,
+   "dW": 7.5750000000000455,
+   "dL": 1.7864062500000273,
+   "verschiebung_mockup_px": {
+    "oben": -7,
+    "unten": -5.5,
+    "dx": 1.5
+   },
+   "steigung_senkrecht": 0.011111111111111112,
+   "s_waagrecht": 1.0075,
+   "mm_oben": -9.4,
+   "mm_hoehe_gesamt": 4.5,
+   "mm_breite_gesamt": 2.3
+  },
+  "456": {
+   "vorlage": [
+    930,
+    409,
+    1140,
+    1520
+   ],
+   "wirksam": [
+    930.5,
+    408.1,
+    1138.6,
+    1522.5
+   ],
+   "dT": -0.8510245901638882,
+   "dH": 2.491803278688394,
+   "dW": -1.4249999999999545,
+   "dL": 0.4804687499998863,
+   "verschiebung_mockup_px": {
+    "oben": 0,
+    "unten": 0.25,
+    "dx": -0.0625
+   },
+   "steigung_senkrecht": 0.001639344262295082,
+   "s_waagrecht": 0.99875,
+   "mm_oben": -0.2,
+   "mm_hoehe_gesamt": 0.7,
+   "mm_breite_gesamt": -0.4
+  },
+  "586": {
+   "vorlage": [
+    958,
+    473,
+    1074,
+    1432
+   ],
+   "wirksam": [
+    953.3,
+    473.7,
+    1088.8,
+    1453.1
+   ],
+   "dT": 0.6966911764705515,
+   "dH": 21.05882352941171,
+   "dW": 14.767499999999927,
+   "dL": -4.652890624999941,
+   "verschiebung_mockup_px": {
+    "oben": 2.125,
+    "unten": 4.25,
+    "dx": 0.75
+   },
+   "steigung_senkrecht": 0.014705882352941176,
+   "s_waagrecht": 1.01375,
+   "mm_oben": 0.2,
+   "mm_hoehe_gesamt": 6,
+   "mm_breite_gesamt": 4.2
+  }
+ },
+ "nach_korrektur_restverschiebung": {
+  "s71t": {
+   "dx": 0,
+   "dy": 0,
+   "s": 1
+  },
+  "s71l": {
+   "dx": 0,
+   "dy": 0,
+   "s": 1
+  },
+  "s586t": {
+   "dx": 0,
+   "dy": 0,
+   "s": 1
+  },
+  "s586l": {
+   "dx": 0,
+   "dy": 0,
+   "s": 1
+  },
+  "s456t": {
+   "dx": 0,
+   "dy": -0.125,
+   "s": 1
+  },
+  "s456l": {
+   "dx": 0,
+   "dy": 0.25,
+   "s": 1
+  }
+ },
+ "hinweis": "Korrektur-Probe (fein_ergebnis3) ist eine Anpassung an dieselben sechs Bilder, KEINE unabhängige Bestätigung."
+}
