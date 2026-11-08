@@ -1,46 +1,64 @@
-name: Printful-Reprice (gesunde POD-Preise)
+name: Printful-Katalog gezielt lesen
 
 on:
   workflow_dispatch:
     inputs:
-      apply:
-        description: 'Preise wirklich setzen? (sonst nur Vorschau)'
-        type: boolean
-        default: false
-      markup:
-        description: 'Aufschlag-Faktor auf Kosten'
-        type: string
-        default: '2.3'
-      tag:
-        description: 'Welche Produkte (Tag)'
-        type: string
-        default: 'wunschdesign'
+      ids:
+        description: Kommagetrennte Printful-Modell-IDs
+        required: true
+        default: '19,71'
 
 permissions:
   contents: read
 
 concurrency:
-  group: printful-reprice
+  group: printful-catalog-read-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  reprice:
+  read:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Zielbranch auschecken
+        uses: actions/checkout@v4
+
+      - name: Node 22 bereitstellen
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - name: Reprice
+          node-version: '22'
+
+      - name: Offline-Selbsttest
+        run: node dropship/selbst-gestalten-fertig-0511/werkzeuge/katalog_holen.mjs --selbsttest
+
+      - name: Zielmodelle nur lesend abrufen
         env:
           PRINTFUL_API_KEY: ${{ secrets.PRINTFUL_API_KEY }}
           PRINTFUL_STORE_ID: ${{ secrets.PRINTFUL_STORE_ID }}
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
-          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-          MARKUP: ${{ github.event.inputs.markup || '2.3' }}
-          DRY_RUN: ${{ github.event.inputs.apply == 'true' && '0' || '1' }}
-          TAG: ${{ github.event.inputs.tag || 'printful_personalized_product' }}
-        run: node automation/printful_reprice.mjs
+          ONLY: ${{ inputs.ids }}
+          SG_DIR: ${{ runner.temp }}/printful-katalog
+          PAUSE_MS: '700'
+        run: |
+          set -euo pipefail
+          node dropship/selbst-gestalten-fertig-0511/werkzeuge/katalog_holen.mjs
+          test -s "$SG_DIR/katalog_fehler.json"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const root = process.env.SG_DIR;
+          const errors = JSON.parse(fs.readFileSync(path.join(root, 'katalog_fehler.json'), 'utf8'));
+          const files = fs.readdirSync(path.join(root, 'katalog')).filter((name) => /^\d+\.json$/.test(name)).sort();
+          console.log(`CATALOG_READ files=${files.length} errors=${errors.length}`);
+          if (errors.length) process.exit(2);
+          NODE
+
+      - name: Katalogbeleg hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: printful-catalog-target-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/printful-katalog/katalog/*.json
+            ${{ runner.temp }}/printful-katalog/katalog_fehler.json
+            ${{ runner.temp }}/printful-katalog/katalog_index.json
+          if-no-files-found: error
+          retention-days: 1
