@@ -1,0 +1,16 @@
+[
+ {
+  "id": "gid://shopify/UrlRedirect/2102048358791",
+  "path": "/blogs/news",
+  "target": "/blogs/ratgeber",
+  "grund": "leerer Blog «News» (0 Artikel, in der Sitemap, keine Meta-Beschreibung)",
+  "angelegt": "2026-11-08T22:49:03.859Z"
+ },
+ {
+  "id": "gid://shopify/UrlRedirect/2102048424327",
+  "path": "/fr/blogs/news",
+  "target": "/fr/blogs/ratgeber",
+  "grund": "leerer Blog «News» (0 Artikel, in der Sitemap, keine Meta-Beschreibung)",
+  "angelegt": "2026-11-08T22:49:04.140Z"
+ }
+]
