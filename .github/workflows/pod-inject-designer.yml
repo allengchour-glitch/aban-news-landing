@@ -9,7 +9,7 @@ on:
       dry_run:
         description: 'Nur anzeigen (nichts ändern)'
         type: boolean
-        default: false
+        default: true
 
 permissions:
   contents: read
@@ -23,6 +23,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Schreibmodus auf main begrenzen
+        env:
+          AKTUELLER_REF: ${{ github.ref }}
+          DRY_RUN_EINGABE: ${{ github.event.inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN_EINGABE" = "false" ] && [ "$AKTUELLER_REF" != "refs/heads/main" ]; then
+            echo "Scharfer Lauf abgebrochen: nur refs/heads/main ist erlaubt."
+            exit 1
+          fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -32,5 +41,5 @@ jobs:
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
         run: node automation/pod_inject_designer.mjs
