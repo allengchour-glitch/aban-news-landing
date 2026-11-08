@@ -116,8 +116,8 @@ footer a{color:var(--muted)}
   <section>
     <h2>So läuft's</h2>
     <ol class="steps">
-      <li>Paket holen — du bekommst eBook + Vorlage sofort als Download.</li>
-      <li>Monitor wird mit deiner Firma/Branche/Ort eingerichtet; der erste Report kommt im selben Monat.</li>
+      <li>Paket anfragen — Verfügbarkeit, Zahlungsweg und Lieferung von eBook und Vorlage klären.</li>
+      <li>Einrichtung und Starttermin des Monitors werden mit deiner Firma/Branche/Ort vor der Zahlung bestätigt.</li>
       <li>Maßnahmen abarbeiten, nächsten Monat die Veränderung sehen. Nach 3 Monaten optional als Abo weiterführen.</li>
     </ol>
   </section>
@@ -125,9 +125,9 @@ footer a{color:var(--muted)}
   <section id="kaufen">
     <div class="buybox">
       <div class="price">29 €<small> einmalig · <span class="strike">~37 €</span> einzeln</small></div>
-      <p>eBook + Maßnahmen-Vorlage (sofort) + 3 Monate Monitor. Kein Abo-Zwang.</p>
-      <p id="buywrap"><a class="btn" id="buybtn" href="#">Paket holen</a></p>
-      <p class="note">Abwicklung über Stripe/Lemon Squeezy (Karte/PayPal, Rechnung inklusive).</p>
+      <p>eBook + Maßnahmen-Vorlage + 3 Monate Monitor. Lieferweg und Monitor-Start vor der Zahlung klären. Kein Abo-Zwang.</p>
+      <p id="buywrap"><a class="btn" id="buybtn" href="mailto:hallo@abannews.com?subject=KI-Sichtbarkeit%20Komplett-Paket&amp;body=Hallo%20Aban%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20KI-Sichtbarkeit-Komplett-Paket.%20Bitte%20best%C3%A4tige%20Verf%C3%BCgbarkeit%2C%20Zahlungsweg%2C%20Lieferung%20und%20Monitor-Start.%20Firma%2FBranche%2FOrt%3A%20">Per E-Mail anfragen</a></p>
+      <p class="note" id="bestellhinweis">Der Knopf öffnet eine vorbereitete E-Mail. Damit wird noch nichts bezahlt, bestellt oder abonniert.</p>
     </div>
     <p class="note">Daten „ohne Gewähr". Die Checks und der Monitor stützen sich auf das Wissen von Sprachmodellen, nicht auf einen Live-Abgriff der jeweiligen Plattform — die genannten Prompts kannst du jederzeit selbst gegentesten.</p>
   </section>
@@ -149,10 +149,10 @@ footer a{color:var(--muted)}
 var PAKET_BUY_URL = (window.ABAN_CHECKOUT && window.ABAN_CHECKOUT.PAKET_BUY_URL) || "";
 (function(){
   var b=document.getElementById("buybtn");
-  if(PAKET_BUY_URL){ b.href=PAKET_BUY_URL; b.target="_blank"; b.rel="noopener"; }
-  else{
-    b.href="mailto:hallo@abannews.com?subject=KI-Sichtbarkeit%20Komplett-Paket&body=Hallo%20Aban%2C%20ich%20m%C3%B6chte%20das%20KI-Sichtbarkeit-Komplett-Paket%20(Buch%20%2B%203%20Monate%20Monitor%20%2B%20Vorlage).%20Firma%2FBranche%2FOrt%3A%20";
-    b.textContent="Per Mail bestellen";
+  if(PAKET_BUY_URL){
+    b.href=PAKET_BUY_URL; b.target="_blank"; b.rel="noopener";
+    b.textContent="Zum Paket-Checkout";
+    document.getElementById("bestellhinweis").textContent="Der Knopf öffnet den Checkout für dieses Paket. Bitte prüfe Lieferweg und Monitor-Start vor der Zahlung.";
   }
 })();
 </script>
