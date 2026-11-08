@@ -31,7 +31,9 @@ Als Eingabe geht auch ein Ordner mit EML-Dateien. Der neue Ausgabeordner enthäl
 
 Text-Mails und einfache HTML-Mails werden unterstützt; Anhänge werden nicht gelesen oder kopiert. Newsletter, Zustellberichte, automatische Antworten, eigene Absender und No-Reply-Adressen werden ausgesondert. Mehrere oder unklare Antwortadressen gehen in die manuelle Prüfung. Die Erkennung ist heuristisch und ersetzt keine Prüfung der Empfänger oder des Inhalts. Doppelte Message-IDs werden innerhalb eines Stapels ausgesondert; es gibt noch keine dauerhafte Postfach-Synchronisierung.
 
-Die Entwürfe nutzen weiterhin feste Vorlagen. Eine kontextbezogene KI-Antwort, die verbindliche Firmendaten, vollständige Mailverläufe oder Anhänge versteht, ist noch nicht angebunden. Die Gmail-/Outlook-Anbindung ist offen; Zugangsdaten gehören nicht in das Repository oder in den Chat.
+Ohne Firmenwissen nutzen die Entwürfe feste Vorlagen. Mit `--wissen /pfad/firmen-faq.json` übernimmt der Beantworter bei genau einem Stichworttreffer die dort freigegebene Antwort. Die Datei hat dasselbe Format wie die Kommentar-FAQ unten. Unbekannte und mehrdeutige Anliegen, erkannte Beschwerden, Rechnungsfragen und Dringlichkeitswörter bleiben ohne Antwortentwurf in der manuellen Prüfung; Originaltext und Grund stehen in der lokalen Prüfseite. Ungültige FAQ stoppen den Lauf vor der Ausgabe. Die Demo-FAQ enthält Social-Antworten und muss für E-Mails durch passende Firmenangaben ersetzt werden.
+
+Stichworttreffer verstehen weder Verneinungen noch vollständige Mailverläufe. Auch ein eindeutiger Treffer kann unpassend sein und muss vor Verwendung geprüft werden. Eine kontextbezogene KI-Antwort oder Verarbeitung von Anhängen ist nicht angebunden. Die Gmail-/Outlook-Anbindung ist offen; Zugangsdaten gehören nicht in das Repository oder in den Chat.
 
 ## Kommentar-Beantworter im Entwurfsmodus
 
