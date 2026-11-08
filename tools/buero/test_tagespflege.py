@@ -128,7 +128,7 @@ class PflegeTest(unittest.TestCase):
         rows = deepcopy(mod.ROWS)
         privat = deepcopy(next(r for r in rows if r["id"] == "offene"))
         report = {"version": 1, "seite": HOST, "gemessen": "2026-11-07T23:00:00Z", "indexnow": {"status": "Trockenlauf"},
-                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "HTTP 403"}}}
+                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "HTTP 403"}, "offene": {"fehler": "Falsche Quellenzuordnung"}}}
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "report.json"
             p.write_text(json.dumps(report))
@@ -139,7 +139,7 @@ class PflegeTest(unittest.TestCase):
 
     def test_export_enthaelt_nur_github_und_keine_bestelldaten(self):
         report = {"version": 1, "seite": HOST, "gemessen": "2026-11-07T23:00:00Z", "indexnow": {"status": "Trockenlauf"},
-                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "Nicht messbar"}}}
+                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": {"fehler": "Nicht messbar"}, "offene": {"fehler": "Nicht öffentlich exportieren"}}}
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / "pflege.json").write_text(json.dumps(report))
@@ -222,6 +222,28 @@ class PflegeTest(unittest.TestCase):
             return (200, KEY.encode()) if method == "GET" else (200, b"")
         _, state = indexnow({URL: "h"}, {"host": HOST, "google_sitemap": "hash"}, KEY, True, call=fake)
         self.assertEqual(state["google_sitemap"], "hash")
+
+
+    def test_arbeitslink_geht_direkt_zum_gemessenen_lauf(self):
+        spec = importlib.util.spec_from_file_location("buero_direktlink", Path(__file__).with_name("make_buero.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        run = {"status": "completed", "conclusion": "success", "zeit": "2026-11-07T20:00:00Z", "geplant": True,
+               "html_url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/123"}
+        report = {"version": 1, "seite": HOST, "gemessen": "2026-11-07T23:00:00Z", "indexnow": {"status": "Trockenlauf"},
+                  "seiten": {"html_geprueft": 1, "befunde": []}, "github": {"auswahl": run}}
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "report.json"
+            p.write_text(json.dumps(report))
+            mod.pflege_einlesen(p, mod.ROWS)
+            mod.aktionen(mod.ROWS)
+            row = next(r for r in mod.ROWS if r["id"] == "auswahl")
+            self.assertEqual(row["aktion_url"], run["html_url"])
+            run["html_url"] = "https://github.com/anderes/repo/actions/runs/123"
+            p.write_text(json.dumps(report))
+            mod.pflege_einlesen(p, mod.ROWS)
+            mod.aktionen(mod.ROWS)
+            self.assertEqual(row["aktion_url"], row["link"])
 
 
 if __name__ == "__main__":

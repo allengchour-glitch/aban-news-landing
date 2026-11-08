@@ -1,5 +1,11 @@
 name: Büro-Tagespflege (Seiten und Suchmaschinen)
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/buero/tagespflege.py'
+      - 'tools/buero/make_buero.py'
+      - '.github/workflows/buero-tagespflege.yml'
   workflow_dispatch:
     inputs:
       melden:

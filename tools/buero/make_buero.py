@@ -15,9 +15,13 @@ Spalten (alle Zeilen haben alle Spalten):
 """
 import argparse
 import json
+import re
 import sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
+
+GITHUB_IDS = {"auswahl", "schaufenster", "waechter", "autopilot", "fortura", "printful",
+              "tagesupdate", "paket", "social_meta", "social_pinterest", "social_linkedin"}
 
 CH = ZoneInfo("Europe/Zurich")
 GEM = "2026-11-05T20:27:00Z"  # Messung dieses Durchgangs (GitHub, Shopify, geplante Aufgaben, Sitzungen)
@@ -219,10 +223,10 @@ for _id, _name in [("dev_bauen", "Produktbau"), ("dev_pruefen", "Prüfstand"), (
                  "https://github.com/allengchour-glitch/aban-news-landing/tree/main/tools/entwicklerbuero")
 
 ROWS.append(frage("seitenpflege", "Tägliche Seitenpflege", "Seiten & Suchmaschinen",
-                  "Die tägliche Prüfung und GitHub-Aktualisierung sind vorbereitet, aber noch nicht auf main übernommen. IndexNow braucht einen eingerichteten Schlüssel; die Indexaufnahme ist nicht gemessen.",
-                  "Noch nicht eingeschaltet", "Nicht gemessen", "tools/buero/tagespflege.py; buero-tagespflege.yml"))
-ORTE["seitenpflege"] = ("cloud", "GitHub-Cloud nach Übernahme", "GitHub",
-                         "Vorbereitet als Teil von tages-update.yml (04:15 UTC). Kein zusätzlicher Zeitplan. Das Büro braucht die neue buero.json als Datenquelle.",
+                  "Kein Tagespflege-Bericht geladen. Den letzten Lauf und seine Berichte öffnen. Suchmaschinen-Meldungen brauchen eingerichtete Zugänge; eine Indexaufnahme ist nicht gemessen.",
+                  "Kein Durchlauf geladen", "Nicht gemessen", "tools/buero/tagespflege.py; buero-tagespflege.yml"))
+ORTE["seitenpflege"] = ("cloud", "GitHub-Cloud", "GitHub",
+                         "Teil von tages-update.yml (04:15 UTC). Kein zusätzlicher Zeitplan. Das Büro braucht die neue buero.json als Datenquelle.",
                          WF + "buero-tagespflege.yml")
 
 for _r in ROWS:
@@ -266,7 +270,7 @@ def aktionen(rows):
         "cockpitstart": "Cockpit-Anleitung öffnen und den Start auf deinem PC prüfen.",
     }
     for r in rows:
-        link = r["link"] or GH + "/blob/main/docs/KI-BUERO-SEITE.md"
+        link = r.get("letzter_lauf_url") or r["link"] or GH + "/blob/main/docs/KI-BUERO-SEITE.md"
         if r["id"] in ("dev_bauen", "dev_pruefen"):
             link = WF + "entwicklerbuero-tests.yml"
         if r["id"] == "dev_angebot":
@@ -279,7 +283,10 @@ def aktionen(rows):
         r["aktion_hinweis"] = "Der Link öffnet den Arbeitsort. Er startet oder ändert noch nichts."
         if "/actions/workflows/" in link:
             r["aktion_text"] = "Ablauf öffnen"
-            r["aktion_hinweis"] = "Zum Handstart in GitHub zusätzlich auf Run workflow klicken."
+            r["aktion_hinweis"] = "Falls GitHub einen Handstart anbietet, zusätzlich auf Run workflow klicken."
+        if r.get("letzter_lauf_url"):
+            r["aktion_text"] = "Letzten Lauf öffnen"
+            r["aktion_hinweis"] = "Öffnet direkt den gemessenen Lauf und sein Ergebnis. Startet nichts."
         if r["id"].startswith("social_"):
             r["naechster_schritt"] = "Letzten Lauf und vorbereitete Beiträge prüfen. Ein Handstart dieses Ablaufs kann Beiträge veröffentlichen."
 
@@ -306,9 +313,15 @@ def pflege_einlesen(pfad, rows):
                       "ereignis": "Prüfung " + zeit(gem), "ereignis_iso": gem,
                       "befund": f"{report['seiten']['html_geprueft']} HTML-Seiten geprüft, {findings} Inhaltshinweise, {unklar} Sitemap-URLs lokal nicht prüfbar. Google: {google_status}. IndexNow: {index['status']}. Google-Indexierung und Live-HTTP nicht gemessen. Neue Bürodatei liegt im Lauf als Download bereit."})
             continue
+        if r["id"] not in GITHUB_IDS:
+            continue
         run = report["github"].get(r["id"])
         if not isinstance(run, dict):
             continue  # Andere Quellen werden nicht künstlich frisch gemacht.
+        r.pop("letzter_lauf_url", None)
+        run_url = run.get("html_url", "")
+        if isinstance(run_url, str) and re.fullmatch(re.escape(GH) + r"/actions/runs/[0-9]+", run_url):
+            r["letzter_lauf_url"] = run_url
         r.update({"gemessen": gem, "gemessen_text": zeit(gem), "frisch_h": 30, "aktiv_h": 0,
                   "quelle": "GitHub Actions API, letzter Workflow-Lauf; tagespflege.py"})
         if run.get("fehler"):
@@ -323,7 +336,7 @@ def pflege_einlesen(pfad, rows):
         frisch = 0 <= (now - event).total_seconds() <= 48 * 3600
         r["status"] = "rot" if status == "completed" and conclusion in ("failure", "timed_out", "action_required") else "gruen" if status == "completed" and conclusion == "success" and frisch and run["geplant"] else "gelb"
         r["ereignis"], r["ereignis_iso"] = "Lauf " + zeit(ev), ev
-        plan = "Zeitplan in der Datei vorhanden" if run["geplant"] else "kein aktiver Cron in der Datei; Handstart vorgesehen"
+        plan = "Zeitplan in der Datei vorhanden" if run["geplant"] else "kein Tages-Cron in der Datei; andere Auslöser im Ablauf prüfen"
         r["befund"] = f"Letzter Workflow-Lauf: {status}, Ergebnis {conclusion or 'noch offen'}. {plan}. Das ist ein Workflow-Ergebnis, keine neue Messung von Bestellungen, Lagerbestand oder Krypto-Büchern."
 
 
@@ -385,7 +398,7 @@ if __name__ == "__main__":
         if not args.pflege_status:
             parser.exit(2, "--nur-github braucht --pflege-status.\n")
         report = json.loads(open(args.pflege_status, encoding="utf-8").read())
-        ROWS = [r for r in ROWS if r["id"] in report["github"] or r["id"] == "seitenpflege"]
+        ROWS = [r for r in ROWS if (r["id"] in GITHUB_IDS and r["id"] in report["github"]) or r["id"] == "seitenpflege"]
     aktionen(ROWS)
     pruefen(ROWS)
     out = args.ausgabe
