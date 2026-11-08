@@ -42,6 +42,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: luxestyle-cj-import-writes
+  cancel-in-progress: false
+
 jobs:
   autopilot:
     name: CJ → Shopify (DRAFT)

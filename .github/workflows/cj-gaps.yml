@@ -27,7 +27,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pod-cj-gaps
+  group: luxestyle-cj-import-writes
   cancel-in-progress: false
 
 jobs:
