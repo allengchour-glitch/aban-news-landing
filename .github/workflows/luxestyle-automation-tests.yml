@@ -162,6 +162,7 @@ jobs:
             dropship/tiktok-cj-videos-0311
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
+            .github/workflows/cj-gaps.yml
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
             .github/workflows/printful-sync.yml
