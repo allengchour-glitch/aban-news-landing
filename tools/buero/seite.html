@@ -331,9 +331,13 @@
 .kb-chef-auto {font-size:12px;line-height:1.4;color:var(--color-fg-muted);margin:12px 0 0;}
 .kb3-viewer.is-fullscreen .kb-chef-kontrolle {flex-shrink:0;max-height:32dvh;overflow:auto;}
 @media(max-width:640px){.kb3-viewer-head{gap:6px;}.kb3-boss,.kb3-full{font-size:12px;padding:8px;}.kb-chef-kontrolle{padding:10px;}.kb-chef-links{gap:6px;}.kb-chef-links article{padding:8px;}.kb-chef-auto{font-size:11px;}}
+/* Ein gemeinsames, vom jeweiligen Gastgeber unabhängiges Bürodesign. */
+.kb {--color-fg:#24383b;--color-fg-muted:#596e70;--color-bg:#f6f8f4;--color-panel:#eaf0e8;--color-border-line:#becdc2;--color-ok:#28785d;--color-warn:#9b7023;--color-bad:#b34242;--font-anthropic-sans:system-ui,-apple-system,"Segoe UI",sans-serif;--font-anthropic-serif:system-ui,-apple-system,"Segoe UI",sans-serif;font-family:var(--font-anthropic-sans);font-size:14px;background:var(--color-bg);border-radius:20px;padding:16px;}
+@media(prefers-color-scheme:dark){.kb{--color-fg:#e2ede6;--color-fg-muted:#a4b8ad;--color-bg:#172522;--color-panel:#223630;--color-border-line:#425c50;--color-ok:#75c69b;--color-warn:#e0b86a;--color-bad:#f18484;}}
+@media(max-width:640px){.kb{padding:10px;border-radius:14px;}}
 </style>
 
-<div class="kb">
+<div class="kb" data-design="campus-einheitlich-1">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -703,7 +707,7 @@
 (function () {
   var root = document.querySelector('.kb');
   var c0 = dash.colors && dash.colors[0];
-  if (root && typeof c0 === 'string') root.style.setProperty('--kb-du', c0);
+  if (root && typeof c0 === 'string') root.style.setProperty('--kb-du', '#3e7a85');
 
   var ORDER = ['rot', 'gelb', 'alt', 'du', 'gruen'];
   var HAUT = ['#f3d3b6', '#e2b48c', '#c68a5f', '#8d5b3e'];
@@ -1225,6 +1229,11 @@
     mount: function (el) {
       var K3 = window.KB3D;
       if (!K3 || !K3.Buero || !K3.Buero.supported()) { ohne3d(); return { ok: false }; }
+      if (K3.DESIGN_VERSION !== root.getAttribute('data-design')) {
+        ohne3d();
+        root.querySelectorAll('.kb3-aus').forEach(function(n){n.textContent='Die Darstellungsdateien passen nicht zusammen. Bitte HTML und 3D-Code gemeinsam aus dem Designpaket aktualisieren.';});
+        return {ok:false};
+      }
       var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
       var m = K3.Buero.mount(el, { colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
       made3d = m && m.ok ? m : null;

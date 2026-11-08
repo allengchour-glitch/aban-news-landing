@@ -1,5 +1,7 @@
 """Öffentliche Handyansicht ohne private Daten oder vorgetäuschte Live-Verbindung."""
 import ast
+import hashlib
+import zipfile
 import importlib.util
 import json
 from pathlib import Path
@@ -14,7 +16,7 @@ PUBLIC_IDS = {'auswahl','schaufenster','waechter','autopilot','fortura','printfu
               'yt_skript','yt_video','yt_wachstum'}
 
 
-def bauen(ziel):
+def bauen(ziel, design_paket=None):
     spec=importlib.util.spec_from_file_location('buero',ROOT/'make_buero.py')
     module=importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -44,6 +46,21 @@ def bauen(ziel):
             content=(Path(tmp)/match.group(1)).read_text().replace('</script','<\\/script')
             return '<script>'+content+'</script>'
         body=re.sub(r'<script src="(kb3d-[^"]+\.js)"></script>',inline,body)
+        if design_paket:
+            version=re.search(r'data-design="([^"]+)"',body).group(1)
+            code=(Path(tmp)/'kb3d-code.js').read_text()
+            if "K.DESIGN_VERSION = '"+version+"'" not in code:
+                raise ValueError("Darstellungsdateien haben unterschiedliche Versionen.")
+            dateien={'seite.html':(ROOT/'seite.html').read_bytes()}
+            for name in ('kb3d-code.js','kb3d-pack-1.js','kb3d-pack-2.js','kb3d-pack-3.js'):
+                dateien[name]=(Path(tmp)/name).read_bytes()
+            if any(len(value)>256*1024 for value in dateien.values()):
+                raise ValueError("Eine Darstellungsdatei überschreitet das Claude-Dokumentlimit.")
+            manifest={'design':version,'buero_daten_enthalten':False,'dateien':{name:{'sha256':hashlib.sha256(value).hexdigest(),'bytes':len(value)} for name,value in dateien.items()}}
+            dateien['design-manifest.json']=(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n').encode()
+            dateien['IN-CLAUDE-AKTUALISIEREN.txt']=('Bitte im vorhandenen KI-Büro nur die Darstellung aktualisieren. Zuerst kb3d-code.js und die Modellpakete, danach seite.html aus diesem Paket übernehmen. Bestehende private Büro-Daten, Metricool-Zahlen und neuere Messstände erhalten. Dieses Paket enthält keine buero.json und keine privaten Daten. Alle Darstellungsdateien müssen gemeinsam zur Designversion '+version+' gehören. Die äußere Claude-Oberfläche wird dadurch nicht verändert.').encode()
+            with zipfile.ZipFile(design_paket,'w',zipfile.ZIP_DEFLATED) as z:
+                for name,value in dateien.items():z.writestr(name,value)
     notice='<p style="padding:14px;background:#fff2ce;color:#352900;border-radius:12px">Dein Büro für Shop, Projekte und Social Media. Private Kanalzahlen und geplante Beiträge bleiben in Metricool.</p>'
     body=notice+body
     result=template.replace('%%ROWS%%',json.dumps(rows,ensure_ascii=False)).replace('%%BODY%%',body)
@@ -53,4 +70,4 @@ def bauen(ziel):
 
 
 if __name__=='__main__':
-    bauen(sys.argv[1])
+    bauen(sys.argv[1], sys.argv[2] if len(sys.argv)>2 else None)
