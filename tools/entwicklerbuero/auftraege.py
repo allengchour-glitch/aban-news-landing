@@ -1,7 +1,10 @@
 """Fertige, begrenzte Chat-Aufträge ohne private Konto- oder Kundendaten."""
 import verbund
 
-REGELN = ('Prüfe zuerst den aktuellen Stand und offene Arbeiten, damit nichts doppelt erledigt wird. '
+REGELN = ('Führe diesen Auftrag jetzt mit den verfügbaren Werkzeugen aus. '
+          'Setze die unabhängig mögliche Arbeit um und prüfe das Ergebnis. '
+          'Ein vorbereiteter oder gespeicherter Auftrag gilt nicht als erledigt. '
+          'Prüfe zuerst den aktuellen Stand und offene Arbeiten, damit nichts doppelt erledigt wird. '
           'Arbeite mit vorhandenen Verbindungen und im Repository allengchour-glitch/aban-news-landing. '
           'Beachte AGENTS.md, CLAUDE.md und die aktuelle Übergabe. '
           'Nenne fehlenden Zugriff konkret und erledige den unabhängig möglichen Rest. '
@@ -13,7 +16,7 @@ REGELN = ('Prüfe zuerst den aktuellen Stand und offene Arbeiten, damit nichts d
 
 AUFTRAEGE = [
     ('tagesrunde','Tagesrunde erledigen','Chefbüro','Die wichtigste offene Arbeit auswählen und erledigen.',
-     'Prüfe Shop, vorhandene Verkaufswege und Entwicklerprojekte. Wähle einen aktuell belegten, unabhängig behebbaren Verkaufsblocker. Behebe ihn im erlaubten Codeumfang, teste die Änderung und folge den Repositoryregeln für Merge und Veröffentlichung. Keine weitere reine Linkliste oder Wiederholung erledigter Arbeit.'),
+     'Erledige jetzt die wichtigste offene Aufgabe aus meinem KI-Büro auf https://abannews.com/ki-buero. Lies den aktuellen Repositorystand und die Übergabe. Priorisiere einen belegten Fehler bei bestehenden Produkten, Kaufwegen, geschützter Lieferung oder verbundenen Automationen. Wähle genau eine unabhängig umsetzbare Verbesserung mit Bezug zum Verkaufen oder zur Kostensenkung. Setze sie im erlaubten Umfang um, teste das Ergebnis und folge den Repositoryregeln für Merge und bestätigte Bereitstellung. Verwende vorhandene Produkte und Abläufe. Unbekannte Kosten und Einnahmen bleiben unbekannt; finanzielle Wirkung nur mit Beleg als gemessen bezeichnen. Keine Wiederholung bereits erledigter Arbeit.'),
     ('kaufweg','Kaufweg prüfen','Shop','Verkaufsseite, Kaufbutton und geschützte Lieferung prüfen.',
      'Prüfe https://abannews.com/shop und einen vorhandenen Produktweg bis zum Checkout sowie die geschützte Download-Anbindung. Löse keinen echten Kauf aus und umgehe keine Bezahlschranke. Reproduziere konkrete Codefehler, behebe sie mit Gegenprobe und prüfe nach erlaubter Veröffentlichung frisch.'),
     ('shop','Shop verbessern','Shop','Einen belegten Kauf- oder Produktfehler bearbeiten.',
