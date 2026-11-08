@@ -77,6 +77,7 @@ on:
       - 'dropship/tiktok-cj-videos-0311/**'
       - '.github/workflows/luxestyle-automation-tests.yml'
       - '.github/workflows/video-meta-autopost.yml'
+      - '.github/workflows/masterpiece-ad.yml'
       - '.github/workflows/cj-reviews.yml'
       - '.github/workflows/metricool-schedule.yml'
       - '.github/workflows/auswahl-lauf.yml'
@@ -152,6 +153,7 @@ jobs:
             dropship/tiktok-cj-videos-0311
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
+            .github/workflows/masterpiece-ad.yml
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
             .github/workflows/printful-sync.yml
@@ -226,6 +228,7 @@ jobs:
           node automation/lib/galaxus_treffer_test.mjs
           node automation/lib/trend_auswahl_test.mjs
           node automation/lib/chf_preis_test.mjs
+          node automation/lib/masterpiece_workflow_policy_test.mjs
           node automation/fortura_preisvergleich_test.mjs
           node automation/lib/cj_video_test.mjs
       - name: Codex-Mods (Hooks, Befehle, Zweitmeinung-Läufer; kein Netz, kein Modell)
