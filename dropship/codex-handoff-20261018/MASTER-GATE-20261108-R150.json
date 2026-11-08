@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "revision": 150,
+  "checkedAt": "2026-11-08T20:02:41+01:00",
+  "timezone": "Europe/Zurich",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "decision": "BLOCKED_NO_RENDER_NO_UPLOAD_NO_PUBLICATION",
+  "productBinding": {
+    "status": "VERIFIED_SHOPIFY_PRODUCT_MEDIA_ASSOCIATION_ONLY",
+    "shopifyProductGid": "gid://shopify/Product/15521256604033",
+    "shopifyProductId": "15521256604033",
+    "statusLive": "ACTIVE",
+    "storefrontUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+    "storefrontHttp": 200,
+    "shopifyVideoMediaId": "77496185356679",
+    "shopifyVideoUuid": "6490c6357dae4df69bb910178acb2912",
+    "shopifyVideoFilename": "cj-1477820492730732544.mp4",
+    "shopifyVideoVariantIds": [],
+    "sourceUrl": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+    "sourceSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "referenceImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+    "referenceImageSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+    "visualIdentity": "MATCHES_PRODUCT_TYPE_NOT_CURRENT_VARIANT",
+    "physicalProductFilmBinding": "UNKNOWN_BLOCKED",
+    "variantBinding": "UNKNOWN_BLOCKED",
+    "motifBinding": "UNKNOWN_BLOCKED",
+    "physicalUnitBinding": "UNKNOWN_BLOCKED",
+    "historicalBinding": {
+      "variantId": "56197916361089",
+      "sku": "CJ-1477820492730732544",
+      "status": "STALE_BLOCKED_DO_NOT_USE"
+    }
+  },
+  "currentVariants": [
+    {"label":"A","shopifyVariantId":"68122445283719","sku":"CJSN139239101AZ","cjPid":"1477820492730732544","cjVid":"1477826312449167360","priceChf":"34.90","availableForSale":true},
+    {"label":"B","shopifyVariantId":"68122445316487","sku":"CJSN139239102BY","cjPid":"1477820492730732544","cjVid":"1477826312453361664","priceChf":"37.90","availableForSale":true},
+    {"label":"C","shopifyVariantId":"68122445349255","sku":"CJSN139239103CX","cjPid":"1477820492730732544","cjVid":"1477826312453361665","priceChf":"40.90","availableForSale":true},
+    {"label":"D","shopifyVariantId":"68122445382023","sku":"CJSN139239104DW","cjPid":"1477820492730732544","cjVid":"1477826312453361666","priceChf":"49.90","availableForSale":true},
+    {"label":"E","shopifyVariantId":"68122445414791","sku":"CJSN139239105EV","cjPid":"1477820492730732544","cjVid":"1555856292877709312","priceChf":"51.90","availableForSale":true},
+    {"label":"F","shopifyVariantId":"68122445447559","sku":"CJSN139239106FU","cjPid":"1477820492730732544","cjVid":"1555856292877709313","priceChf":"44.90","availableForSale":true},
+    {"label":"G","shopifyVariantId":"68122445480327","sku":"CJSN139239107GT","cjPid":"1477820492730732544","cjVid":"1589496316504322048","priceChf":"35.90","availableForSale":true}
+  ],
+  "inventory": {
+    "allAvailableForSale": true,
+    "inventoryQuantityAllZero": true,
+    "tracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "stockOrDeliveryPromiseAllowed": false
+  },
+  "rightsGate": {
+    "status": "NO_GO_MISSING_HASH_BOUND_GRANT",
+    "cjAgreementUrl": "https://cjdropshipping.com/user-agreement",
+    "cjAgreementUpdated": "2025-09-26",
+    "cjAgreementEffective": "2025-10-04",
+    "cjPhotographyServiceUrl": "https://blog.cjdropshipping.com/detail/how-to-use-video-shooting-service-from-cj-dropshipping",
+    "cjProductVideoListingUrl": "https://cjdropshipping.com/article-details/How-to-List-CJ-s-Product-Video-to-Your-Store",
+    "partialOfficialEvidence": "CJ documents download/use options for its paid photography service and a narrow listing flow for selectable or purchased product videos to connected Shopify or TikTok store products.",
+    "unchangedShopifyUseOfExactHash": "UNKNOWN_MISSING_LISTING_ENTITLEMENT_OR_ORDER_BINDING",
+    "uploadsOutsideProvenCjStoreListingFlow": "NO_GO_FOR_EXACT_HASH",
+    "accessibleEvidenceSearch": {
+      "ownerDriveLinkContent": "MERCHANT_CSV_NOT_MEDIA_OR_LICENSE",
+      "driveProjectorLicenseOrVideoSearch": "NO_USABLE_MATCH_IN_ACCESSIBLE_SCOPE",
+      "gmailExactPidSearchMessages": 0,
+      "gmailExactVideoFilenameSearchMessages": 0,
+      "gmailCjPhotographyCopyrightSearchMessages": 0,
+      "interpretation": "LIMITED_CONNECTED_SCOPE_NOT_PROOF_OF_GLOBAL_ABSENCE"
+    },
+    "missingExactEvidence": [
+      "photography order or copyright purchase tied to the exact video hash",
+      "rights-holder identity and chain of title",
+      "current variant, motif and filmed-unit binding",
+      "commercial organic social and paid-ad grant",
+      "edit, crop, re-encode, color correction, audio replacement and overlay grant",
+      "Metricool and named-platform upload grant",
+      "territory, term, attribution, sublicensing, revocation and third-party releases"
+    ],
+    "existingRightsForm": {
+      "path": "dropship/codex-handoff-20261018/MASTER-RECHTEBELEG-R26-20261101.json",
+      "status": "UNFILLED_DRAFT_NOT_A_LICENSE_OR_APPROVAL"
+    }
+  },
+  "sourceQuality": {
+    "width": 960,
+    "height": 540,
+    "fps": 25,
+    "durationSeconds": 27.96,
+    "targetWidth": 1080,
+    "targetHeight": 1920,
+    "targetFps": 30,
+    "targetDurationSeconds": 18,
+    "targetFrames": 540,
+    "approximatePortraitSourceCrop": "304x540",
+    "approximateHorizontalDiscardPercent": 68.3,
+    "approximateUpscaleFactor": 3.55,
+    "repeatedFrameSlotsWithoutInterpolation": 90,
+    "existingCutPlanCrop": "540x540",
+    "aspectTransform": "UNDEFINED",
+    "aspectTransformFailureModes": [
+      "420px top and bottom padding",
+      "artificial background",
+      "approximately 1.78x vertical distortion"
+    ],
+    "status": "NO_GO_NOT_NATIVE_PREMIUM_VERTICAL"
+  },
+  "music": {
+    "path": "automation/music/luxe-premium.wav",
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "format": "PCM_S16LE_44100_STEREO",
+    "durationSeconds": 64.31,
+    "segment0To18Lufs": -13.2,
+    "segment0To18TruePeakDbtp": -1.6,
+    "segmentMeasurementScope": "RAW_WAV_CUT_NOT_FINAL_MIX_AFTER_FADE_OR_NORMALIZATION",
+    "clipping": false,
+    "technicalStatus": "GO",
+    "legalAndFinalStatus": "BLOCKED_MISSING_EXACT_BUILD_MANIFEST_LICENSE_NOTICE_BINDING_AND_FINAL_LISTENING"
+  },
+  "professionalMaster": {
+    "status": "NOT_RENDERED_BY_QUALITY_AND_RIGHTS_GATE",
+    "mp4Path": null,
+    "mp4Sha256": null,
+    "renderTriggered": false,
+    "paidRenderTriggered": false,
+    "metricoolUploadsThisMasterThisRun": 0,
+    "publishingWritesThisMasterThisRun": 0,
+    "audioPolicy": {
+      "discardSourceAudio": true,
+      "audioStreamsRequired": 1,
+      "onlyCanonicalWavAllowed": true,
+      "voiceoverAllowed": false,
+      "foreignSoundEffectsAllowed": false
+    },
+    "finalExportQa": [
+      "decoded_nb_read_frames_540",
+      "cfr_30_1",
+      "duration_18_000_seconds",
+      "resolution_1080x1920",
+      "h264_high_yuv420p",
+      "exactly_one_aac_stereo_stream",
+      "black_freeze_signalstats",
+      "final_ebu_r128_true_peak",
+      "cut_boundary_frames",
+      "ui_safe_zones_min_48px_max_two_lines",
+      "full_hand_contact_point_and_crop_review",
+      "sha256"
+    ],
+    "requiredNativeTakes": [
+      {"id":"P_OPERATION","minimumSeconds":7.6,"minimum":"1080x1920@30fps","accepted":false},
+      {"id":"P_PROJECTION","minimumSeconds":8.8,"minimum":"1080x1920@30fps","accepted":false},
+      {"id":"P_DETAIL","minimumSeconds":5.6,"minimum":"1080x1920@30fps","accepted":false},
+      {"id":"P_HERO","minimumSeconds":6.0,"minimum":"1080x1920@30fps","accepted":false}
+    ],
+    "nextAllowedStep": "Obtain native vertical takes of one current, SKU-identified unit plus hash-bound commercial editing and advertising rights; then render and perform full image, identity, audio, text and platform-crop QA."
+  }
+}

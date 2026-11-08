@@ -1619,3 +1619,16 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Merchant / Grenzen | Feedlabels, Länder, Ausspielungen und Problemgruppen getrennt ausgewertet | Keine Merchant-, Feed-, Versand-, Länder-, Bild- oder Produktänderung; aktive Source/Rohfelder bleiben offen |
 
 [LUXESTYLE_R149_20261108] Drive-Datei-ID `110dmSoPSkzEbEPlpsDgUzTUBf-OKU1B-` · SHA-256 `c5ea57cb3f3ddae717285d86e63c9d0f6c0c83c5e493a4830c85071ceb24e7b1` · Anhänge SHA-256 `e0b47ecf0a21cd7751866678e1614ce9278be68c6863576a9cdee054dc800bf4` · HYPD read-only · keine operativen Writes.
+
+### R150
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Master / Medienzuordnung | Projektorvideo, aktuelle Shopify-Medienzuordnung, Referenzbild und alle A–G-Varianten gegen die vorhandene Quelle geprüft | Shopify-Medium am Produkt15521256604033 verifiziert: Media77496185356679/UUID6490c6357dae4df69bb910178acb2912/Quell-SHA `2bb28156…`. Keine `variant_ids`; konkrete Ausführung, Motiv und dieselbe physische Produkteinheit unbekannt |
+| Master / CJ-Metadaten | Bestehenden erfolgreichen Nur-Lese-Lauf42026512823/Job127241964880 gegen aktuelle Shopify-SKUs ausgewertet | A–G vollständig an CJ PID1477820492730732544 und sieben VID-Werte gebunden. Filmvariantenbindung daraus nicht abgeleitet; alter Variantenbezug weiter gesperrt |
+| Master / Rechte | CJ User Agreement sowie offizielle Fotografie- und Produktvideo-Hilfeseiten gezielt gelesen; vorhandenen Rechtebogen geprüft | Bestimmte Fotografieaufträge erlauben Download/Nutzung und CJ beschreibt Shop-Listing. Für genau den Filmhash fehlen Auftrag/Copyright-Kauf und ausdrückliche Bearbeitungs-/Social-/Ads-/Metricool-Rechte. NO-GO |
+| Master / Musik | Kanonische WAV gehasht und Technik-/Provenienzbelege getrennt bewertet | SHA `a7674eca…`, technisch GO; exaktes Buildmanifest, Soundfont-Hash/-Version, Lizenzhinweisbindung und finale Hör-/Mixabnahme fehlen |
+| Master / Render | 960×540/25fps gegen1080×1920/30fps/18s geprüft und Crop-/Skalierungs-/Frameratefolgen quantifiziert | Quelle erfüllt Premiumvorgabe nicht: etwa304×540 wirksame Hochkantquelle,3,55× Skalierung,90 Wiederholungsplätze. Keine MP4 gerendert, kein Upload oder Socialwrite |
+| Dokumentation | R150-Gatebericht und maschinenlesbaren Gatebeleg erstellt; Übergabe und Arbeitsstand fortgeführt | Shopify-Medienzuordnung zum Produkt geschlossen; Filmvarianten-/Einheitenbindung, Rechte und native Takes als konkrete Blocker erhalten. Keine Kunden-, Shop-, Flow-, DNS-, Budget-, Rabatt-, Bestell- oder kostenpflichtige Renderaktion |
+
+[LUXESTYLE_R150_20261108] [Gatebericht](MASTER-GATE-20261108-R150.md) SHA-256 `94f78eedd52acb40e6aa6bc0cd9e37086d4eac3d8eb772446044eafb15674a37` · [Gatebeleg](MASTER-GATE-20261108-R150.json) SHA-256 `567b86c84f8638a78c9f76a0bb743ce1792bfe11be973c6b00b9b56e539599b1` · Shopify-Medienzuordnung zum Produkt verifiziert · keine MP4/Publikation.
