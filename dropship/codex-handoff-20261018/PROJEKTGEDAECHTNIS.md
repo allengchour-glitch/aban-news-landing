@@ -1244,3 +1244,21 @@ PR2916 erweitert gestapelt auf PR2912 die temporäre FR-Noindex-Eindämmung;44/4
 - Die vorhandene960×540-/25-fps-Landschaftsquelle erfüllt native1080×1920/30fps nicht. Hochkantcrop, rund3,55-fache Vergrösserung und90 wiederholte Bildplätze würden die verbindliche Premiumvorgabe verfehlen. Kein Render, keine MP4, kein Upload oder Socialwrite.
 - Dauerhafte Belege: [MASTER-GATE-20261108-R150.md](MASTER-GATE-20261108-R150.md), SHA-256 `94f78eedd52acb40e6aa6bc0cd9e37086d4eac3d8eb772446044eafb15674a37`; [MASTER-GATE-20261108-R150.json](MASTER-GATE-20261108-R150.json), SHA-256 `567b86c84f8638a78c9f76a0bb743ce1792bfe11be973c6b00b9b56e539599b1`.
 - Nächster Schritt: vier native vertikale Originaltakes derselben aktuellen, SKU-/VID-belegten Einheit und einen hashgebundenen kommerziellen Bearbeitungs-/Werberechtebeleg beschaffen. Erst danach denselben18-Sekunden-Master rendern und Bild, Identität, Handlung, Ton, Text und Plattformausschnitte abnehmen.
+
+## Aktueller Stand – 08.11.2026, Revision 151: ausführbarer Master-Aufnahme- und Rechtevertrag
+
+[Produktionsvertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.md) · [maschinenlesbarer Gatevertrag](MASTER-PRODUCTION-INTAKE-20261108-R151.json). Shopify und Metricool wurden passend verifiziert. Die gezielte Shopify-Medienabfrage schliesst eine versteckte Premiumquelle aus: genau ein Video, Original 960×540/25 fps/3'679'836 Bytes; die einzige Ableitung ist 852×480. Varianten A–G besitzen nur Bilder und keine Filmzuordnung. Drive/Gmail und die Repo-/Web-Forensik lieferten keinen exakten Rechtebeleg oder bessere native Quelle.
+
+Das alte öffentliche Projektor-Reel ist als False Lead geschlossen: historischer Metricool-Export 1080×1920/30 fps/15 s, aber nur eingerahmte weiche Landschaftsquelle, falscher Ton und weiterhin ohne Motiv-/Varianten-/Rechtebindung. Es darf nicht als neuer Master wiederverwendet werden.
+
+Der neue fail-closed Vertrag verlangt genau eine aktuelle A–G-Ausführung, einen ungeschnittenen Einheitenbeleg, vier native Hochkanttakes derselben physischen Einheit (`P_OPERATION`, `P_PROJECTION`, `P_DETAIL`, `P_HERO`) und einen unterschriebenen, auf alle Take-Hashes bezogenen Rechtegrant für Bearbeitung, Tonersatz, Overlays, Shop, alle sechs Socialkanäle, Metricool und Ads. Fehlende Felder blockieren. Kein Render, keine Master-MP4, kein Upload oder Socialwrite.
+
+
+## Aktueller Stand – 08.11.2026, Revision 152: Shopify #1039 genau einmal an CJ übergeben und Zahlung zurückgelesen
+
+[CJ-Bericht](CJ-BESTELLUNG-1039-20261108-R152.md) · [Maschinenbeleg](CJ-BESTELLUNG-1039-20261108-R152.json). Shopify #1039 wurde vor dem Write ohne Kundendaten als echt, `PAID`, nicht storniert, CHF34.90, erfolgreiche Nicht-Test-SALE über `shopify_payments`, Risiko `ACCEPT` und offen/unfulfilled verifiziert. Die einzige Position SKU `CJSL269105308HS` wurde über CJs exakte `variantSku`-Route gebunden.
+
+Der isolierte Live-Run [42517332990](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42517332990) erstellte nach vollständiger und unmittelbar wiederholter CJ-Doppelprüfung genau `LX1039` / `SD2611081956340669600`. Die erste Rücklesung ergab `count=1`, `CREATED`, USD6.90 Ware plus USD6.70 Versand gleich USD13.60. Kein Retry.
+
+Nach Inhabermeldung «bezahlt» bestätigte der reine Trocken-/Leselauf [42517703485](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42517703485) weiterhin genau einen identischen Auftrag und Status `UNSHIPPED`; es wurde nichts neu angelegt. Shopify blieb `PAID`/`UNFULFILLED`, Fulfillment-Request `UNSUBMITTED`, ohne Fulfillment. Keine CJ-Zahlung durch Codex, kein Shopify-Fulfillment, Tracking-Write oder Kundenkontakt. `UNSHIPPED` belegt keinen Versandbeginn oder Liefertermin. CHF und USD bleiben getrennt.
+
