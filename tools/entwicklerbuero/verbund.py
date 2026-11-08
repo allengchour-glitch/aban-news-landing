@@ -5,7 +5,7 @@ PROJEKTE = [
     ('cockpit', 'Business-Cockpit', 'Entwicklerbüro', 'entwicklung', '/business-cockpit', 'Gratis-App und Pro-Kaufweg vorhanden', 'Pro-Lizenz und Extras gegen die Kaufbeschreibung prüfen; vom KI-Studio unterscheiden.'),
     ('studio', 'KI-Studio', 'Entwicklerbüro', 'entwicklung', '/ki-studio', 'Abo-Kaufweg vorhanden', 'Demo, Lizenzfreischaltung und Modellbetrieb getrennt prüfen.'),
     ('monitor', 'Sichtbarkeits-Monitor', 'Entwicklerbüro', 'integration', '/ki-sichtbarkeit-monitor', 'Abo-Kaufbutton vorhanden', 'Einrichtung, geplanten Reportlauf und tatsächliche Lieferung nachweisen.'),
-    ('audit', 'Sichtbarkeits-Workbook', 'Entwicklerbüro', 'zahlung', '/ki-sichtbarkeit-audit', 'Bestellung per E-Mail', 'Falschen Produktweg vom Pro-Audit zum Workbook prüfen und korrigieren.'),
+    ('audit', 'Sichtbarkeits-Workbook', 'Entwicklerbüro', 'zahlung', '/ki-sichtbarkeit-audit', 'Bestellung per E-Mail', 'Pro-Report und Workbook getrennt prüfen; eigenen Workbook-Kaufweg vorbereiten.'),
     ('sichtbarkeit', 'Sichtbarkeits-Komplettpaket', 'Shop', 'zahlung', '/ki-sichtbarkeit-paket', 'Bestellung per E-Mail', 'Eigenen Checkout, Download und Monitor-Einrichtung zuordnen und prüfen.'),
     ('notfall', 'Notfall-Ordner', 'Shop', 'zahlung', '/notfall-ordner', 'Bestellung per E-Mail', 'Eigenen Kaufweg und geschützte PDF-Lieferung vor Automatisierung prüfen.'),
     ('automation', 'Automationen für Unternehmen', 'Entwicklerbüro', 'automation', '/ki-automation', 'Anfrageweg vorhanden', 'E-Mail-, Kommentar- und Angebots-Assistenten zu einem begrenzten Kundenpilot verbinden; Zugänge und Abnahme fehlen.'),
