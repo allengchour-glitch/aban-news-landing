@@ -1,0 +1,3 @@
+S1	Dein Teller ist eine Stimme. Jede Mahlzeit stimmt für etwas ab.	Dein Teller ist eine Stimme
+S2	Drei Viertel der Agrarfläche gehören Tieren, und sie liefern nur etwa achtzehn Prozent der Kalorien.	Rund ¾ der Fläche, etwa 18  0er Kalorien
+S3	Siebenundsiebzig Prozent aller Sojabohnen landen im Futtertrog. Nur sieben Prozent werden zu Tofu und Sojamilch.	77 
