@@ -150,7 +150,7 @@
         if (W.updateInfo) {
           var stopped = ents.filter(function(e){return e.state === 'rot';}).length;
           var stale = ents.filter(function(e){return e.state === 'alt';}).length;
-          W.updateInfo(ents.length + ' Stationen  /  ' + stopped + ' rote Signale  /  ' + stale + ' alte Messungen');
+          W.updateInfo('Shop, Projekte und Social Media');
         }
         if (state.colors) Object.keys(DEF).forEach(function (k) { if (state.colors[k]) col[k] = K.col(state.colors[k]); });
         sel = state.sel || null;

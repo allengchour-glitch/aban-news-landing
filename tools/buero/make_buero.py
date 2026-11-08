@@ -389,6 +389,22 @@ def werkstatt_einlesen(pfad, rows):
                          "Station noch offen. Dieser Bericht bestätigt keinen abgeschlossenen Schritt.") + " Kein Dauerlauf."
 
 
+def metricool_einlesen(pfad, rows):
+    from pathlib import Path
+    report = json.loads(Path(pfad).read_text(encoding="utf-8"))
+    keys = {"version","gemessen","zeitraum","geplante_eintraege","instagram_follower","instagram_stand","kanaele"}
+    if not isinstance(report,dict) or set(report)!=keys or report["version"]!=1:
+        raise ValueError("Unbekannter Metricool-Kurzbericht; keine Rohdaten importieren.")
+    if any(type(report[k]) is not int or report[k]<0 for k in ("geplante_eintraege","instagram_follower","kanaele")):
+        raise ValueError("Metricool-Zähler müssen gemessen und nicht negativ sein.")
+    if datetime.fromisoformat(report["gemessen"].replace("Z","+00:00")).tzinfo is None:
+        raise ValueError("Metricool-Bericht braucht eine Zeitzone.")
+    if any(not isinstance(report[k],str) or len(report[k])>80 for k in ("zeitraum","instagram_stand")):
+        raise ValueError("Unbekannte Zeitraumangabe.")
+    for row in rows:
+        if row["id"] in ("social_meta","social_pinterest"): row["metricool"] = dict(report)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("ausgabe")
@@ -396,6 +412,7 @@ if __name__ == "__main__":
     parser.add_argument("--pflege-status")
     parser.add_argument("--zentrale-status")
     parser.add_argument("--youtube-status")
+    parser.add_argument("--metricool-status")
     parser.add_argument("--nur-github", action="store_true")
     args = parser.parse_args()
     if args.werkstatt_status:
@@ -408,6 +425,8 @@ if __name__ == "__main__":
             pflege_einlesen(args.pflege_status, ROWS)
         except (OSError, ValueError, KeyError, TypeError) as e:
             parser.exit(2, "Tagespflege-Bericht abgelehnt: " + type(e).__name__ + "\n")
+    if args.metricool_status:
+        metricool_einlesen(args.metricool_status, ROWS)
     if args.youtube_status:
         report = json.loads(open(args.youtube_status, encoding="utf-8").read())
         if report.get("version") != 1 or report.get("skript_gebaut") is not True or report.get("veroeffentlicht") is not False or report.get("kanal_bestaetigt") is not False:
