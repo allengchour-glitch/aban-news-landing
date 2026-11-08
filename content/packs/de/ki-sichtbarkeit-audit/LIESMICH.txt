@@ -1,11 +1,13 @@
-KI-Sichtbarkeits-Audit 1.0 — aban news
+KI-Sichtbarkeits-Audit 1.1 — aban news
 
 Inhalt
   ki-sichtbarkeit-audit.html  das Workbook: im Browser öffnen (Doppelklick), läuft offline
-  ANLEITUNG.md                Start in 5 Minuten, die sechs Schritte, häufige Fehler
+  ANLEITUNG.md                Einstieg mit Beispiel, Begriffe, sechs Schritte, Speichern
 
-Deine Eingaben bleiben in deinem Browser auf diesem Gerät. Es gibt kein Konto,
-keine Übertragung und keinen Server.
+Das Workbook selbst läuft offline und versucht, Eingaben lokal im Browser zu
+speichern. Sichere wichtige Ergebnisse zusätzlich als Druck-/PDF-Kopie.
+Für die manuell gestellten KI-Fragen brauchst du separat Internetzugang und
+je nach Dienst ein eigenes Konto. Das Workbook fragt keine KI-Dienste ab.
 
 Nutzung privat und geschäftlich erlaubt. Weitergabe und Weiterverkauf nicht gestattet.
 KI-Antworten schwanken — das Audit zeigt deinen Ist-Stand, keine Garantie auf Nennung.
