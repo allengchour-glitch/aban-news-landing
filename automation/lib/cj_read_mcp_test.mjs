@@ -26,7 +26,7 @@ async function exchange(frames, handlers) {
   return text.trim().split('\n').filter(Boolean).map(JSON.parse);
 }
 
-test('CJ server advertises exactly three bounded read-only tools', async () => {
+test('CJ server advertises exactly four bounded read-only tools', async () => {
   const responses = await exchange([
     request(1, 'initialize', { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'test', version: '1' } }) + '\n',
     request(2, 'tools/list') + '\n'
@@ -35,7 +35,7 @@ test('CJ server advertises exactly three bounded read-only tools', async () => {
   assert.equal(responses[0].result.instructions, CJ_MCP_INSTRUCTIONS);
   const tools = responses[1].result.tools;
   assert.deepEqual(tools.map(tool => tool.name),
-    ['luxe_cj_status', 'luxe_cj_product_read', 'luxe_cj_inventory_read']);
+    ['luxe_cj_status', 'luxe_cj_product_read', 'luxe_cj_inventory_read', 'luxe_cj_ch_route_read']);
   assert.ok(tools.every(tool => tool.annotations.readOnlyHint === true && tool.annotations.destructiveHint === false));
   assert.equal(tools[0].annotations.openWorldHint, false);
   assert.equal(tools[1].annotations.openWorldHint, true);
@@ -46,6 +46,10 @@ test('CJ server advertises exactly three bounded read-only tools', async () => {
   assert.deepEqual(Object.keys(tools[2].inputSchema.properties), ['pid']);
   assert.equal(tools[2].inputSchema.additionalProperties, false);
   assert.equal(tools[2].inputSchema.properties.pid.pattern, CJ_PID_JSON_PATTERN);
+  assert.deepEqual(tools[3].inputSchema.required, ['pid', 'variantSku']);
+  assert.deepEqual(Object.keys(tools[3].inputSchema.properties), ['pid', 'variantSku']);
+  assert.equal(tools[3].inputSchema.additionalProperties, false);
+  assert.equal(tools[3].inputSchema.properties.variantSku.maxLength, 100);
   const pidPattern = new RegExp(CJ_PID_JSON_PATTERN);
   assert.ok(pidPattern.test('1477820492730732544'));
   assert.ok(pidPattern.test('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7'));
@@ -57,7 +61,8 @@ test('valid status and product lookups reach only their selected handlers', asyn
   const handlers = {
     luxe_cj_status: args => { seen.push(['status', args]); return { local: true }; },
     luxe_cj_product_read: args => { seen.push(['product', args]); return { state: 'unknown' }; },
-    luxe_cj_inventory_read: args => { seen.push(['inventory', args]); return { state: 'unknown' }; }
+    luxe_cj_inventory_read: args => { seen.push(['inventory', args]); return { state: 'unknown' }; },
+    luxe_cj_ch_route_read: args => { seen.push(['route', args]); return { state: 'unknown' }; }
   };
   const responses = await exchange([
     request(1, 'tools/call', { name: 'luxe_cj_status', arguments: {} }) + '\n',
@@ -66,12 +71,15 @@ test('valid status and product lookups reach only their selected handlers', asyn
     request(4, 'tools/call', { name: 'luxe_cj_product_read', arguments: { variantSku: 'CJJJJTJT2292501AZ' } }) + '\n',
     request(5, 'tools/call', { name: 'luxe_cj_inventory_read', arguments: { pid: '1477820492730732544' } }) + '\n',
     request(6, 'tools/call', { name: 'luxe_cj_product_read',
-      arguments: { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' } }) + '\n'
+      arguments: { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' } }) + '\n',
+    request(7, 'tools/call', { name: 'luxe_cj_ch_route_read',
+      arguments: { pid: '1477820492730732544', variantSku: 'CJJJJTJT2292501AZ' } }) + '\n'
   ], handlers);
   assert.deepEqual(seen, [['status', {}], ['product', { pid: '1477820492730732544' }],
     ['product', { productSku: 'CJJJJTJT22925' }], ['product', { variantSku: 'CJJJJTJT2292501AZ' }],
     ['inventory', { pid: '1477820492730732544' }],
-    ['product', { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' }]]);
+    ['product', { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' }],
+    ['route', { pid: '1477820492730732544', variantSku: 'CJJJJTJT2292501AZ' }]]);
   assert.ok(responses.every(response => response.result.isError === false));
 });
 
@@ -90,8 +98,17 @@ test('missing, duplicate, malformed and additional lookup arguments never reach 
     ...[{}, { productSku: 'CJJJJTJT22925' }, { pid: '123' },
       { pid: '1477820492730732544', page: 2 }].map((arguments_, id) =>
       request(`inventory-${id}`, 'tools/call', { name: 'luxe_cj_inventory_read', arguments: arguments_ }) + '\n'),
+    ...[{}, { pid: '1477820492730732544' }, { variantSku: 'CJJJJTJT2292501AZ' },
+      { pid: '123', variantSku: 'CJJJJTJT2292501AZ' },
+      { pid: '1477820492730732544', variantSku: '../bad' },
+      { pid: '1477820492730732544', variantSku: 'x'.repeat(101) },
+      { pid: '1477820492730732544', variantSku: 'CJJJJTJT2292501AZ', destination: 'DE' }]
+      .map((arguments_, id) => request(`route-${id}`, 'tools/call', {
+        name: 'luxe_cj_ch_route_read', arguments: arguments_
+      }) + '\n'),
     request('after', 'ping') + '\n'
   ], { luxe_cj_product_read: () => { calls++; }, luxe_cj_inventory_read: () => { calls++; },
+    luxe_cj_ch_route_read: () => { calls++; },
     luxe_cj_status: () => { calls++; } });
   assert.equal(calls, 0);
   assert.ok(responses.slice(0, -1).every(response => response.error?.code === -32602));
@@ -102,15 +119,21 @@ test('handler factory preserves the client boundary', async () => {
   const seen = [];
   const handlers = createCjMcpHandlers({ status: () => ({ status: 'local' }),
     readProduct: args => { seen.push(['product', args]); return { state: 'unknown', reason: 'fixture' }; },
-    readInventory: args => { seen.push(['inventory', args]); return { state: 'unknown', reason: 'fixture' }; } });
+    readInventory: args => { seen.push(['inventory', args]); return { state: 'unknown', reason: 'fixture' }; },
+    readRoute: args => { seen.push(['route', args]); return { state: 'unknown', reason: 'fixture' }; } });
   const status = await handlers.luxe_cj_status({});
   const product = await handlers.luxe_cj_product_read({ pid: '1477820492730732544' });
   const inventory = await handlers.luxe_cj_inventory_read({ pid: '1477820492730732544' });
+  const route = await handlers.luxe_cj_ch_route_read({
+    pid: '1477820492730732544', variantSku: 'CJJJJTJT2292501AZ'
+  });
   assert.deepEqual(status, { status: 'local' });
   assert.deepEqual(product, { state: 'unknown', reason: 'fixture' });
   assert.deepEqual(inventory, { state: 'unknown', reason: 'fixture' });
+  assert.deepEqual(route, { state: 'unknown', reason: 'fixture' });
   assert.deepEqual(seen, [['product', { pid: '1477820492730732544' }],
-    ['inventory', { pid: '1477820492730732544' }]]);
+    ['inventory', { pid: '1477820492730732544' }],
+    ['route', { pid: '1477820492730732544', variantSku: 'CJJJJTJT2292501AZ' }]]);
   assert.throws(() => createCjMcpHandlers({}), /gültiger CJ-Leseclient/);
 });
 
@@ -131,7 +154,7 @@ test('real stdio process handshakes and reports an absent binding without networ
   const responses = child.stdout.trim().split('\n').map(JSON.parse);
   assert.equal(responses.length, 5);
   assert.deepEqual(responses[0].result.serverInfo, CJ_MCP_SERVER);
-  assert.equal(responses[1].result.tools.length, 3);
+  assert.equal(responses[1].result.tools.length, 4);
   const status = JSON.parse(responses[2].result.content[0].text);
   const product = JSON.parse(responses[3].result.content[0].text);
   const inventory = JSON.parse(responses[4].result.content[0].text);
@@ -200,7 +223,7 @@ test('the exact configured command performs initialize, list and local status', 
   assert.equal(responses.length, 3);
   assert.deepEqual(responses[0].result.serverInfo, CJ_MCP_SERVER);
   assert.deepEqual(responses[1].result.tools.map(tool => tool.name),
-    ['luxe_cj_status', 'luxe_cj_product_read', 'luxe_cj_inventory_read']);
+    ['luxe_cj_status', 'luxe_cj_product_read', 'luxe_cj_inventory_read', 'luxe_cj_ch_route_read']);
   const status = JSON.parse(responses[2].result.content[0].text);
   assert.equal(status.credentialBinding, 'missing');
   assert.equal(status.connection, 'unknown_until_product_read');

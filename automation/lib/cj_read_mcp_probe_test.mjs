@@ -13,9 +13,10 @@ const sha256 = file => createHash('sha256').update(readFileSync(new URL(`../../$
 const response = (id, value) => ({ jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: JSON.stringify(value) }], isError: false } });
 const successOutput = ({ secretText = 'MUST_NOT_LEAK' } = {}) => [
   { jsonrpc: '2.0', id: 1, result: { protocolVersion: '2025-06-18', capabilities: { tools: {} },
-    serverInfo: { name: 'luxestyle-cj-read', version: '1.2.0' } } },
+    serverInfo: { name: 'luxestyle-cj-read', version: '1.3.0' } } },
   { jsonrpc: '2.0', id: 2, result: { tools: [{ name: 'luxe_cj_status' },
-    { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' }] } },
+    { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' },
+    { name: 'luxe_cj_ch_route_read' }] } },
   response(3, { credentialBinding: 'bound_unverified', connection: 'unknown_until_product_read' }),
   response(4, { state: 'product_identity_verified', reason: null, requests: { authentication: 1, product: 1 },
     product: { product: { pid: '2601010101010101001', productSku: 'CJSN1392391',
@@ -29,9 +30,10 @@ const successOutput = ({ secretText = 'MUST_NOT_LEAK' } = {}) => [
 
 const inventoryOutput = ({ marker = 'MUST_NOT_LEAK' } = {}) => [
   { jsonrpc: '2.0', id: 1, result: { protocolVersion: '2025-06-18', capabilities: { tools: {} },
-    serverInfo: { name: 'luxestyle-cj-read', version: '1.2.0' } } },
+    serverInfo: { name: 'luxestyle-cj-read', version: '1.3.0' } } },
   { jsonrpc: '2.0', id: 2, result: { tools: [{ name: 'luxe_cj_status' },
-    { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' }] } },
+    { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' },
+    { name: 'luxe_cj_ch_route_read' }] } },
   response(3, { credentialBinding: 'bound_unverified', connection: 'unknown_until_product_read' }),
   response(4, { state: 'product_identity_verified', reason: null,
     requests: { authentication: 1, product: 1 }, product: { product: {
@@ -59,8 +61,40 @@ const inventoryOutput = ({ marker = 'MUST_NOT_LEAK' } = {}) => [
     lastInventoryReadState: 'returned' })
 ].map(JSON.stringify).join('\n') + '\n';
 
+const routeOutput = ({ marker = 'MUST_NOT_LEAK', options = [
+  { logisticsName: 'CJPacket Ordinary' }, { logisticsName: 'PostNL' }
+] } = {}) => [
+  { jsonrpc: '2.0', id: 1, result: { protocolVersion: '2025-06-18', capabilities: { tools: {} },
+    serverInfo: { name: 'luxestyle-cj-read', version: '1.3.0' } } },
+  { jsonrpc: '2.0', id: 2, result: { tools: [{ name: 'luxe_cj_status' },
+    { name: 'luxe_cj_product_read' }, { name: 'luxe_cj_inventory_read' },
+    { name: 'luxe_cj_ch_route_read' }] } },
+  response(3, { credentialBinding: 'bound_unverified', connection: 'unknown_until_product_read' }),
+  response(4, { state: 'product_identity_verified', reason: null,
+    requests: { authentication: 1, product: 1 }, product: { product: {
+      pid: '2601010101010101001', productSku: 'CJSN1392391', productNameEn: marker,
+      mainImage: { url: `https://example.invalid/${marker}` }, variants: {
+        state: 'supplier_metadata_returned', reported: 2, returned: 2, partial: false, records: [
+          { vid: '2601010101010101002', variantSku: 'CJSN1392391-A' },
+          { vid: '2601010101010101003', variantSku: 'CJSN1392391-B' }
+        ] } } } }),
+  response(5, { state: 'route_returned', reason: null,
+    requests: { authentication: 0, route: 1 }, raw: marker, route: {
+      pid: '2601010101010101001', variantSku: 'CJSN1392391-A', vid: '2601010101010101002',
+      startCountryCode: 'CN', destinationCountryCode: 'CH',
+      options: { state: options.length ? 'supplier_shipping_methods_returned'
+        : 'no_supplier_shipping_method_returned', reported: options.length,
+      returned: options.length, partial: false, records: options },
+      freightPrice: 'unknown', deliveryTime: 'unknown', deliveryPromise: false,
+      commercialTerms: 'unknown', primeEntitlement: 'unknown'
+    } }),
+  response(6, { connection: 'verified_by_product_read', lastProductReadState: 'verified',
+    lastRouteReadState: 'returned' })
+].map(JSON.stringify).join('\n') + '\n';
+
 test('probe lookup requires exactly one bounded pid, productSku or variantSku', () => {
   assert.equal(operationFromValue('inventory'), 'inventory');
+  assert.equal(operationFromValue('route'), 'route');
   assert.throws(() => operationFromValue('stock'));
   assert.deepEqual(lookupFromValues('2601010101010101001', ''), { pid: '2601010101010101001' });
   assert.deepEqual(lookupFromValues('', 'CJSN1392391'), { productSku: 'CJSN1392391' });
@@ -71,9 +105,14 @@ test('probe lookup requires exactly one bounded pid, productSku or variantSku', 
     { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' });
   assert.deepEqual(lookupFromValues('0fcca35a-2f9e-4cb3-90ad-8ad9158884e7', '', 'inventory'),
     { pid: '0fcca35a-2f9e-4cb3-90ad-8ad9158884e7' });
+  assert.deepEqual(lookupFromValues('2601010101010101001', '', 'route', 'CJSN1392391-A'),
+    { pid: '2601010101010101001', variantSku: 'CJSN1392391-A' });
   assert.throws(() => lookupFromValues('', 'CJSN1392391', 'inventory'));
   assert.throws(() => lookupFromValues('2601010101010101001', '', 'inventory', 'CJSN139239101AZ'));
   assert.throws(() => lookupFromValues('2601010101010101001', 'CJSN1392391', 'inventory'));
+  assert.throws(() => lookupFromValues('', '', 'route', 'CJSN1392391-A'));
+  assert.throws(() => lookupFromValues('2601010101010101001', 'CJSN1392391', 'route', 'CJSN1392391-A'));
+  assert.throws(() => lookupFromValues('2601010101010101001', '', 'route', '../bad'));
   for (const values of [['', ''], ['123', ''], ['', '../bad'], ['2601010101010101001', 'CJSN1392391']]) {
     assert.throws(() => lookupFromValues(...values));
   }
@@ -88,6 +127,17 @@ test('inventory probe sends status, one product read, one inventory read and sta
   assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_product_read')
     .map(frame => frame.params.arguments), [lookup]);
   assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_inventory_read')
+    .map(frame => frame.params.arguments), [lookup]);
+  assert.equal(frames.filter(frame => frame.params?.name === 'luxe_cj_status').length, 2);
+});
+
+test('route probe binds one variant product read before one fixed CN to CH route read', () => {
+  const lookup = { pid: '2601010101010101001', variantSku: 'CJSN1392391-A' };
+  const frames = probeInput(lookup, 'route').trim().split('\n').map(JSON.parse);
+  assert.deepEqual(frames.map(frame => frame.id), [1, 2, 3, 4, 5, 6]);
+  assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_product_read')
+    .map(frame => frame.params.arguments), [{ variantSku: 'CJSN1392391-A' }]);
+  assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_ch_route_read')
     .map(frame => frame.params.arguments), [lookup]);
   assert.equal(frames.filter(frame => frame.params?.name === 'luxe_cj_status').length, 2);
 });
@@ -176,6 +226,68 @@ test('inventory summary maps SKU to VID, keeps zero and redacts names, URLs and 
   assert.ok(!serialized.includes('pointsInfo'));
   assert.equal(result.countryAggregation, false);
   assert.equal(result.deliveryToSwitzerland, 'unknown');
+});
+
+test('route summary preserves only exact CN to CH evidence and explicit unknown limits', () => {
+  const marker = 'SECRET_OR_SUPPLIER_TEXT_MUST_NOT_LEAK';
+  const lookup = { pid: '2601010101010101001', variantSku: 'CJSN1392391-A' };
+  const result = summariseProbe(routeOutput({ marker }), lookup, 'route');
+  assert.equal(result.verified, true);
+  assert.equal(result.authenticationRequests, 1);
+  assert.equal(result.productRequests, 1);
+  assert.equal(result.routeRequests, 1);
+  assert.equal(result.matchedVariantSku, 'CJSN1392391-A');
+  assert.deepEqual(result.route, {
+    vid: '2601010101010101002', startCountryCode: 'CN', destinationCountryCode: 'CH',
+    optionState: 'supplier_shipping_methods_returned',
+    logisticsNames: ['CJPacket Ordinary', 'PostNL'],
+    freightPrice: 'unknown', deliveryTime: 'unknown', deliveryPromise: false,
+    primeEntitlement: 'unknown'
+  });
+  const serialized = JSON.stringify(result);
+  assert.ok(!serialized.includes(marker));
+  assert.ok(!serialized.includes('example.invalid'));
+
+  const empty = summariseProbe(routeOutput({ options: [] }), lookup, 'route');
+  assert.equal(empty.verified, true);
+  assert.equal(empty.route.optionState, 'no_supplier_shipping_method_returned');
+  assert.deepEqual(empty.route.logisticsNames, []);
+});
+
+test('route verification fails closed on mismatched identity or malformed method records', () => {
+  const lookup = { pid: '2601010101010101001', variantSku: 'CJSN1392391-A' };
+  const mutate = change => {
+    const lines = routeOutput().trim().split('\n').map(JSON.parse);
+    const product = JSON.parse(lines[3].result.content[0].text);
+    const route = JSON.parse(lines[4].result.content[0].text);
+    change(product, route);
+    lines[3] = response(4, product);
+    lines[4] = response(5, route);
+    return summariseProbe(lines.map(JSON.stringify).join('\n') + '\n', lookup, 'route');
+  };
+  const cases = {
+    pid: (_product, route) => { route.route.pid = '2601010101010101999'; },
+    sku: (_product, route) => { route.route.variantSku = 'CJSN1392391-B'; },
+    vid: (_product, route) => { route.route.vid = 'bad'; },
+    foreignVid: (_product, route) => { route.route.vid = '2601010101010101999'; },
+    destination: (_product, route) => { route.route.destinationCountryCode = 'DE'; },
+    promise: (_product, route) => { route.route.deliveryPromise = true; },
+    partial: (_product, route) => { route.route.options.partial = true; },
+    contradictoryEmpty: (_product, route) => {
+      route.route.options.state = 'no_supplier_shipping_method_returned';
+    },
+    blankName: (_product, route) => { route.route.options.records[0].logisticsName = ' '; },
+    duplicate: (_product, route) => {
+      route.route.options.records[1].logisticsName = route.route.options.records[0].logisticsName;
+    },
+    productPartial: product => {
+      product.product.product.variants.partial = true;
+      product.product.product.variants.state = 'partial_supplier_metadata_returned';
+    }
+  };
+  for (const [name, change] of Object.entries(cases)) {
+    assert.equal(mutate(change).verified, false, name);
+  }
 });
 
 test('inventory verification requires a complete nonempty exact VID set with a mapped record', () => {
@@ -276,6 +388,26 @@ test('configured inventory probe passes only PID to one product and one inventor
     .map(frame => frame.params.arguments), [{ pid: '2601010101010101001' }]);
 });
 
+test('configured route probe passes variantSku to product and the exact PID plus variantSku to route', () => {
+  const config = { mcpServers: { 'luxestyle-cj-read': { type: 'stdio', command: 'node',
+    args: ['-e', 'safe launcher'], env: { NODE_OPTIONS: '', NODE_PATH: '', NODE_USE_ENV_PROXY: '1' } } } };
+  let frames;
+  const result = runConfiguredProbe({ root: '/repo', env: {
+    CJ_API_KEY: 'synthetic-key-that-must-never-appear', CJ_MCP_OPERATION: 'route',
+    CJ_MCP_PID: '2601010101010101001', CJ_MCP_VARIANT_SKU: 'CJSN1392391-A'
+  }, read: () => JSON.stringify(config), spawn: (_command, _args, options) => {
+    frames = options.input.trim().split('\n').map(JSON.parse);
+    return { status: 0, signal: null, stdout: routeOutput(), stderr: '' };
+  } });
+  assert.equal(result.verified, true);
+  assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_product_read')
+    .map(frame => frame.params.arguments), [{ variantSku: 'CJSN1392391-A' }]);
+  assert.deepEqual(frames.filter(frame => frame.params?.name === 'luxe_cj_ch_route_read')
+    .map(frame => frame.params.arguments), [
+      { pid: '2601010101010101001', variantSku: 'CJSN1392391-A' }
+    ]);
+});
+
 test('configured product probe forwards only the selected variantSku', () => {
   const config = { mcpServers: { 'luxestyle-cj-read': { type: 'stdio', command: 'node',
     args: ['-e', 'safe launcher'], env: { NODE_OPTIONS: '', NODE_PATH: '', NODE_USE_ENV_PROXY: '1' } } } };
@@ -347,10 +479,11 @@ test('manual workflow isolates the secret-bound MCP job and pins all executable 
   assert.ok(job.indexOf('Commit und geprüfte Dateien gegenlesen') < job.indexOf('secrets.CJ_API_KEY'));
   assert.ok(!/SHOPIFY_|CJ_EMAIL|upload-artifact|retry/i.test(job));
   assert.match(job, /sha256sum -c -/);
-  assert.match(workflow, /operation:[\s\S]*- product[\s\S]*- inventory/);
+  assert.match(workflow, /operation:[\s\S]*- product[\s\S]*- inventory[\s\S]*- route/);
   assert.match(workflow, /approved_commit:[\s\S]*required: true/);
   assert.match(job, /CJ_MCP_OPERATION: \$\{\{ inputs\.operation \}\}/);
   assert.match(job, /inventory verlangt genau eine PID und keine SKU/);
+  assert.match(job, /route verlangt genau PID plus variantSku und keine productSku/);
   assert.match(job, /product verlangt genau PID, productSku oder variantSku/);
   assert.match(job, /CJ_MCP_VARIANT_SKU: \$\{\{ inputs\.variantSku \}\}/);
   assert.match(job, /import \{ isValidCjPid \} from '\.\/automation\/lib\/cj_identity\.mjs'/);

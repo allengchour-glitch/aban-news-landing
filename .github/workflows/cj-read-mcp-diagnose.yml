@@ -17,15 +17,16 @@ on:
         required: true
         default: ''
       operation:
-        description: 'Nur cj_mcp: product oder inventory'
+        description: 'Nur cj_mcp: product, inventory oder route (fest CN→CH)'
         type: choice
         options:
           - product
           - inventory
+          - route
         default: product
         required: true
       pid:
-        description: 'CJ-PID; inventory verlangt ausschliesslich PID'
+        description: 'CJ-PID; inventory verlangt nur PID, route PID plus variantSku'
         type: string
         required: false
       productSku:
@@ -33,7 +34,7 @@ on:
         type: string
         required: false
       variantSku:
-        description: 'CJ-variantSku; product verlangt genau einen Schlüssel'
+        description: 'CJ-variantSku; product verlangt genau einen Schlüssel, route zusätzlich PID'
         type: string
         required: false
 
@@ -64,10 +65,15 @@ jobs:
           test "$GITHUB_REPOSITORY" = allengchour-glitch/aban-news-landing
           [[ "$APPROVED_COMMIT" =~ ^[0-9a-f]{40}$ ]]
           test "$APPROVED_COMMIT" = "$GITHUB_SHA"
-          [[ "$CJ_MCP_OPERATION" == product || "$CJ_MCP_OPERATION" == inventory ]]
+          [[ "$CJ_MCP_OPERATION" == product || "$CJ_MCP_OPERATION" == inventory || "$CJ_MCP_OPERATION" == route ]]
           if [[ "$CJ_MCP_OPERATION" == inventory ]]; then
             if [[ -z "$CJ_MCP_PID" || -n "$CJ_MCP_PRODUCT_SKU" || -n "$CJ_MCP_VARIANT_SKU" ]]; then
               echo 'inventory verlangt genau eine PID und keine SKU.' >&2
+              exit 1
+            fi
+          elif [[ "$CJ_MCP_OPERATION" == route ]]; then
+            if [[ -z "$CJ_MCP_PID" || -n "$CJ_MCP_PRODUCT_SKU" || -z "$CJ_MCP_VARIANT_SKU" ]]; then
+              echo 'route verlangt genau PID plus variantSku und keine productSku; Start CN und Ziel CH sind fest.' >&2
               exit 1
             fi
           else
@@ -111,13 +117,13 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$APPROVED_COMMIT"
           cat <<'HASHES' | sha256sum -c -
-          3cfe5087feca5ce82d3d467f457c1ebdf97be9358dbe95a8ae5c6fe3a1161bff  .mcp.json
+          c3a9261eacab5cfbee7a3a613347cf2d0255e3a3d0e93b44b6febb0d18a23e9d  .mcp.json
           ef986b11c17d707aa78208c2fd51d4b35486a86e85c2883618daa2e8f8c80ffc  automation/cj-read-mcp.mjs
-          f0e3eca58da71577d7842ba28fc1d6c1e63545cb4359d62430b51a8b256d0ab4  automation/cj-read-mcp-probe.mjs
+          43d89ba572b4b80d56d8d2e9a6a04bbec8f52f35a509e4547c0727b52329d19f  automation/cj-read-mcp-probe.mjs
           228be1d0783fb688e2f6971f39fd6a29457a24138bc5242de2f648345793a671  automation/lib/claude_assist_mcp.mjs
           1fef93809ba5e8cf2204203abdf3d38ee1ebedbb833167f50a78b8ad1fce024b  automation/lib/cj_identity.mjs
-          1b800495d06f2ed5c1046e8549dd3f2703278fcb6957acf6bf44fc1ff48ca8a3  automation/lib/cj_read_mcp.mjs
-          29710b1a68d17506424dbbf1554f1a92b46e87ce81f2b87ec3ad46d8fcb9c6de  automation/lib/cj_readonly.mjs
+          592c7e22a2159552adb79eb5ac36cbf14665fc1b989d829a485a00c4ac0da467  automation/lib/cj_read_mcp.mjs
+          36b61e9afd547ffd929c7d9b7d47f32df7faee1dd9401b365d8bd3212526bbed  automation/lib/cj_readonly.mjs
           HASHES
 
       - name: PID mit zentralem Validator prüfen
