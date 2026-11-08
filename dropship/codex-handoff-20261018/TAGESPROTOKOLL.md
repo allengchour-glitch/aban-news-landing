@@ -1579,3 +1579,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Übergabe | Tatsächliche Live-, Repo-, Draft- und Blockerzustände getrennt dokumentiert | Keine Kundenansprache, Bestellung/Fulfilment, Budget-, Flow-, DNS-, Rabatt- oder kostenpflichtige Renderänderung; Claude-Fortsetzung: Plan → Tassen-Canary/E2E → Full, UNKNOWN stoppt |
 
 [LUXESTYLE_R146_20261108] [PR2974](https://github.com/allengchour-glitch/aban-news-landing/pull/2974) · [CJ-Route42505179520](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42505179520) · [PR2977](https://github.com/allengchour-glitch/aban-news-landing/pull/2977) · [PR2976](https://github.com/allengchour-glitch/aban-news-landing/pull/2976) · [Produktions-Upload42506732658](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42506732658) · PR2975 bleibt Draft.
+
+### R147
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Masterprodukt / Identität | Sternenlicht-Projektor15521256604033 gezielt mit Produkt, Bildern, Tags und allen sieben aktuellen Varianten gelesen | ACTIVE und öffentlich erreichbar; Varianten A–G/IDs68122445283719–68122445480327/SKUs CJSN139239101AZ–107GT, CHF34.90–51.90, zwölf Tags und zwölf Bilder |
+| Produkttext / Live-QA | Unbelegten 10–20-Werktage-Claim, sichtbare Schild-/Einkauf-Emojis sowie «Situation drehen» entfernt; Fokusformulierung und Galaxie korrigiert | Admin-Readback und öffentliche HTTP200-/Canonical-Gegenprobe grün; Status, Varianten, Tags, Bilder, Preise, IDs und Inventory-Felder unverändert |
+| Bestand / Kaufbarkeit | availableForSale, Menge, Tracking und Policy getrennt bewertet | Alle sieben kaufbar; Menge0 bei tracksInventory=false/CONTINUE ist kein Ausverkaufs- oder Bestandsbeleg, keine Zusage |
+| Masterkontinuität | Historische Variante56197916361089/SKU CJ-1477820492730732544 gegen aktuellen Produktstand geprüft | Veraltet; darf weder gebunden noch publiziert werden |
+| Rechte / Social | Motiv- und Medienrechte als eigene Voraussetzungen geprüft | Bearbeitungs-/Werberechte und Motivzuordnung unbekannt; kein Metricool-/Social-Write, kein fertiger Film behauptet |
+
+[LUXESTYLE_R147_20261108] Produkt `gid://shopify/Product/15521256604033` · Live-Handle `sternenlicht-projektor-fur-schlafzimmer-732544` · aktueller Variantenscope A–G · historische Variante/SKU gesperrt.

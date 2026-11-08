@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 146,
-  "updatedAt": "2026-11-08T18:55:01+01:00",
+  "revision": 147,
+  "updatedAt": "2026-11-08T19:00:16+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-08",
     "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
-    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung. R146: Metricool-Identität und Planung08.–15.11. wurden als kleine Planungsgegenprobe gelesen; keine Kennzahlabfrage oder Mutation. Drei konkrete Produkte, ein Merchant-Sicherheitsprodukt und eine einzelne CJ-Yoga-Route wurden gezielt geprüft; keine breite Katalogpagination, Klaviyo-/Bestell-/Kauf-Watch-Wiederholung oder Verkaufsableitung.",
+    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung. R146: Metricool-Identität und Planung08.–15.11. wurden als kleine Planungsgegenprobe gelesen; keine Kennzahlabfrage oder Mutation. Drei konkrete Produkte, ein Merchant-Sicherheitsprodukt und eine einzelne CJ-Yoga-Route wurden gezielt geprüft; keine breite Katalogpagination, Klaviyo-/Bestell-/Kauf-Watch-Wiederholung oder Verkaufsableitung. R147: Genau das bestehende Masterprodukt15521256604033 wurde eng mit sieben Varianten,12 Bildern, Tags und Inventory-Verhalten gelesen; keine breite Katalog-, Kennzahl-, Flow-, Bestell- oder Kauf-Watch-Abfrage und keine Mutation.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-08",
@@ -231,12 +231,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r146_three_active_product_language_seo_claim_and_alttext_fixes_live_verified",
+      "state": "r147_projector_description_claim_typo_emoji_live_verified_master_binding_stale",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R146_THREE_TARGETED_ACTIVE_PRODUCT_LANGUAGE_SEO_CLAIM_AND_ALTTEXT_WRITES_WITH_ADMIN_STOREFRONT_READBACK",
-      "lastEvidence": "Drei gezielt geprüfte ACTIVE-Produkte live deutsch bereinigt und öffentlich zurückgelesen:15504187720065 Bedrucktes Damen-Maxikleid, CHF23.90/63 Varianten/20 Alttexte;15448586125697 Elegantes Kleid mit Nackenhalter, CHF15.90/4 Varianten/6 Alttexte;15470021181825 Plüschhamster,18cm, CHF22.90/1 Alttext. Unbelegte Material-/Passform-, Rabatt-, DPD- und produktbezogene Lieferzeitclaims im jeweiligen Scope entfernt. Status, Varianten, Preise, Publikationen, Tags und Inventory-Verhalten erhalten. Nackenhalter-Kleid trägt rueckhol-0907; keine Social-Ausspielung. Keine Vollkatalogquote oder Bestands-/Lieferzusage.",
-      "nextAllowedStep": "R146-Produkte nicht erneut schreiben. Einen nächsten Produktfall nur nach frischer Admin-/Storefront-/Quellengegenprobe und mit vollständigem Varianten-, Medien-, Publikations- und Inventory-Schutz bearbeiten. Unbelegte Material-, Mass-, Passform-, Review-, Lieferzeit- und Bestandsclaims nicht ergänzen. Bei UNKNOWN stoppen, kein Retry; gemischtes /fr und MAIN separat behandeln.",
+      "belegArt": "R147_TARGETED_PROJECTOR_DESCRIPTION_LIVE_FIX_WITH_ADMIN_AND_PUBLIC_READBACK",
+      "lastEvidence": "Projektor15521256604033 gezielt gelesen und Live-Beschreibung bereinigt: unbelegter produktbezogener 10–20-Werktage-Claim, sichtbare Schild-/Einkauf-Emojis und Tippfehler Situation drehen entfernt; Projektor drehen, um den Fokus einzustellen und Galaxie bestätigt. Admin-Readback sowie öffentliche HTTP200-/Canonical-Gegenprobe grün. ACTIVE,7 Varianten A–G, aktuelle IDs/SKUs,12 Tags,12 Bilder, CHF34.90–51.90, Kaufbarkeit, Menge0, tracksInventory=false und CONTINUE unverändert. Historische Variante/SKU ist stale. Keine Bestands-/Lieferzusage, Socialmutation oder Katalogvollständigkeit behauptet.",
+      "nextAllowedStep": "R147-Projektorbeschreibung nicht erneut schreiben. Vor Master-/Socialnutzung eine aktuelle Variante A–G an Bildmotiv und gefilmte Einheit exakt binden und kommerzielle Rechte belegen. Menge0 bei untracked/CONTINUE nie als Ausverkauf oder Bestand verwenden. Weitere Produktkorrekturen nur in kleinem belegtem Scope mit vollständigem Admin-/Storefront-Readback; bei UNKNOWN stoppen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -839,6 +839,16 @@
           "previousLastEvidence": "GEMESSEN/UMGESETZT: Zwei weitere Produktkorrekturen am 29.10., 09:45:23Z/09:45:40Z: Controller-Auswahl Farbe→Ausführung und zwei Hüllenfarben Black/White→Schwarz/Weiss. Native und öffentliche Rücklesung bestätigt; alle vier Varianten-/SKU-/Inventorybindungen und Preise erhalten. 32 unabhängige Prüfbedingungen bestanden. Keine Wiederholung am Abend. Kleine native Vormittagszählung: 87’766 Produkte aller Status / 56’620 ACTIVE, EXACT; aktuelle Fehler-/Nachpflegequote unbekannt. Der unterbrochene Materialquellenschutz wurde abends abgeschlossen: Widersprüche, Teilprozente, Alternativen und ungeklärte Tabellenquellen blockieren Nachträge. 269 Bibliotheks- und 159 r4-Integrationsprüfungen auf endgültigem Modul 2dcb5f59 grün; zehn unabhängige Gegenproben. Kein Materiallauf, Merge oder Deployment. Frischer main a74459a enthält die bestehende r4-Kette weiterhin nicht. Fortsetzung nach «weiter»: fünf vorhandene Stufen auf frisch gelesenem main a74459a9 zu einem vollständigen 14-Pfade-Kandidaten zusammengebaut. Vorwärts-/Rückwärtsprüfung bytegenau, 440 vorhandene Prüfbedingungen und 13 Syntaxprüfungen grün; keine 440 neuen Tests und kein Deployment. Schneestiefelindex ordnet vorhandene 27 Varianten; keine neue Lieferantenquelle. Ergänzung 01.11., R42: neuer Beschreibungs-CSV enthält29 Angebote/13 Produkte, nur Motiv-Empfehlung ohne Ablehnungsstatus. Alle29 Varianten exakt gebunden, aktuelle13SEO-Beschreibungen bereits mit Motiv; kein eigener SEO-Write oder Urhebernachweis dieser vorhandenen Werte. Zwei echte Shopbilder geöffnet und ausschliesslich je einen sichtbaren Motivabsatz vorangestellt: Blumen-Set15525460672897 und Baum-Bild16615662354823. Vorher-/Diff-/Shopidentität und danach exakter nativer/öffentlicher HTTP200-Body bestätigt. Alle übrigen gelesenen Felder unverändert; Inventar in diesem engen Scope nicht gelesen oder geschrieben. Widersprüche PS/Holz,30×40/40×60 sowie Einzelbild-Masse/Druckverfahren/Rahmenumfang weiter quellenbedürftig. Kein gesamter Qualitätsabschluss, Google-Neubewertung unbekannt. R65, 03.11.2026: Neue Beschreibungsdatei mit 31 Angebote:29 bekannte R42-Kennungen aus 13 Produkten, alle 29 mit Motivpräfix; keine erneute eigene Umsetzung und keine Vollabnahme. Genau 2 bekannte Produkte nativ/öffentlich HTTP200 gegengeprüft; frühere Body-/SEO-Motive erhalten. Neuer konkreter Gegenbefund nach6 aktuellen Blumen-Variantenbindungen/3 tatsächlich angesehenen Typbildern: A rosa/gelbe Blumen/grüne Blätter, B blaue Blumen-/Blattzeichnungen, C schwarze florale Silhouetten. Alter produkweiter Farbtext und erster SEO-Motivsatz passen nur zu A. Genau 2 Textfelder als enger neutraler Entwurf mit Hashes vorbereitet, nicht angewendet oder als genehmigt behandelt. auswahl-offen/alle 6 Varianten und sonstige Claims erhalten; Material/Masse/Rahmen/Lieferumfang/Rechte nicht durch Fotos belegt. Alte Exportvariante 56225328824705 in vollständiger heutiger Liste nicht vorhanden; erfolgreiche native Gegenprobe old=null plus aktuelle Kontrolle 67874513322375. Keine Ursache/Änderungszeit oder Google-Bereinigung daraus abgeleitet. Heutige 6 CJJT-SKUs statt alter CJ-2511-Bindung für Lieferantenfortsetzung verwenden. R80: Katzenhängematte16610153759111 frisch mit Stoff-/Holzangaben ohne Komponentenbeleg und falscher Reisenapf-/Feedkategorie gelesen. Historischer BLOCKED_NEEDS_SOURCE bestätigt; Materialentfernung nur als enger Entwurf, keine Shopänderung. R81, 04.11.2026: Historischer ACTIVE-Export mit56’630 eindeutigen Produkten reproduzierbar ausgewertet, ohne ihn als aktuellen Livebestand auszugeben. 3’523 Produkte mit kritischem/hohem Prüfsignal, darunter2’841 Materialkandidaten,1’504 mögliche Materialkonflikte Detailzeile/Fliesstext,595 mehrere Materialzeilen,336 Titel-/Text-Materialabweichungen,15 Medizin-/Therapie- und13 Review-/Beliebtheitsclaims. Titel-/Variantenprüfung:62 hochsichere Produktkandidaten, darunter49 Einheitsgrössen-Aussagen bei mehreren Optionen und7 Titelfarben ohne passende Optionswerte; fünf Produkte mit case-insensitiv doppelten Optionswerten. Aktuelle gezielte Shopify-Probe: fünf ACTIVE-Produkte/52 Varianten. Katzenhängematte16610153759111 bestätigt Material-/Taxonomiefehler live. Hundepullover16605072458119: Titel weiss, aktuelle Varianten nur Braun/Beige; Text nurM und200g, OptionenXS–XL und Detailgewicht57–117g. 52/52 Varianten in der Stichprobe availableForSale, CONTINUE, tracked=false; keine Livekatalogquote, Lager- oder Lieferzusage. Keine Mutation. R82, 04.11.2026: Historischen ACTIVE-Export vollständig zu 56’630 eindeutigen IDs in eine deterministische Queue überführt: P0 154, P1 3’982, P2 52’494, autoFixAllowed 0. Drei aktuelle Katzenprodukte seriell live korrigiert und nativ/öffentlich zurückgelesen: 15454094426497 DRAFT blieb DRAFT; 15493884445057 und 15495226098049 blieben ACTIVE/kaufbar. Neutrale Titel/Texte, passende Produkttyp-/Leaf-Taxonomie und fachfremde Tags korrigiert. Beim L-Modell ungesicherte Tiermaterialwerte durch bildgestützte Struktur-/Glattplüsch-Bezugswerte ersetzt. Preise, Varianten-IDs, SKUs, availability, CONTINUE/tracked=false, Handles, Bilder und Sperrtags erhalten. Keine Massenmutation oder Merchant-/Theme-/Socialänderung. R83, 04.11.2026: Fünf P0-Produkte öffentlich HTTP200/available und taxonomisch geprüft; für 0/5 wurde eine unabhängige SKU-spezifische CJ-/Lieferantenquelle lokal gefunden. Seifenspender mischt zwei Geräte und Akku/4×AAA; Badeanzug hat keine versprochene Masstabelle; Alkoholmeter unlesbare Skalen/separates Thermometer; Hopfenfilter absolute ungesicherte Claims; Katzenspielzeug offene Stromversorgung/Modi und fachfremden hund-Tag. Alle fünf tragen rueckhol-0907 und bleiben für neue Socialausspielung blockiert. Zwei klare Leaf-/Tag-Diffs vorbereitet, keine Produktmutation. R84, 04.11.2026: Genau fünf Produkte seriell live korrigiert und nach jedem Write vollständig im Admin sowie öffentlich gegengelesen. Badeanzug15448534122881 erhielt neutralen Text/SEO, Leaf aa-1-20-22, Produkttyp Damen-Bademode und verlor zwei falsche Jumpsuit-Tags. Katzenspielzeug15454092558721 erhielt neutralen Text/SEO, Leaf ap-2-2-5-5 und verlor nur hund. Hopfenfilter15509968880001 verlor unbelegte Material-/Mikron-/Sicherheitsclaims. Kaffeemaschine15493277024641 und Vakuumierer15454415389057 erhielten ausschliesslich Produkttyp Küche & Bar; ihre korrekten Leafs blieben. Alle fünf Mutationen ohne userErrors, alle öffentlichen Gegenproben HTTP200. Status, Handles, Medien, Varianten-IDs, SKUs, Preise, Kaufbarkeit, Inventory-Policy, Tracking und rueckhol-0907 erhalten. Seifenspender15483793244545 und Alkoholmeter15512184586625 bleiben wegen SKU-/Geräte-/Technikquellen BLOCKED_NO_WRITE. Kein Merchant-, Theme-, Social-, Flow-, DNS-, Budget-, Rabatt- oder Versandwrite; keine erneuten Tagesreports oder Kauf-Watch-Abfrage. R85, 04.11.2026: Nudelmaschine15495105184129 mit neutralem Titel/Text/SEO und Produkttyp Küche & Bar korrigiert; aufbewahrung/organizer sowie unbelegte Stahl-, Modell-, 3-mm-, Lieferumfang-, Lieferzeit- und Rabattclaims entfernt. Ein Versuch, keine userErrors/keinRetry, Admin/StorefrontHTTP200. Barcode-Vorherfeld fehlte und bleibtunknown; Guard stoppte R85 nach genau1Write. R86, 04.11.2026: Eisraspler15448963645825, rundeWandlampe15454472012161, Meerjungfrauenlampe15465835233665 und Laternenleuchte15476180451713 seriell mit vollständiger Barcode-/Varianten-/Medienbasis korrigiert. Neutrale bildgestützte Titel/Texte/SEO, falsche Tags und unbelegte Material-/Mass-/Elektro-/Sensor-/Schutzart-/Lieferzeit-/Rabattclaims entfernt. Vier Versuche, keine userErrors/Retries; Adminschutz und öffentliche HTML-/JSON-HTTP200-Gegenproben vollständig. ACTIVE, Handles, Kategorien, Publikationen, Varianten-IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, Barcodes, Optionen, Medienbindungen und rueckhol erhalten. Alte Handles/Alttexte und globale Theme-Hinweise getrennt offen; Gesamtkatalog nicht abgeschlossen. Keine Tagesreport-/Kauf-Watch-Wiederholung oder externen Writes ausser den fünf beschriebenen Produktmutationen. R87, 04.11.2026: Fünf weitere ACTIVE-Leuchtenprodukte seriell mit vollständiger Admin-Vorherbasis korrigiert und nach jedem Write vollständig im Admin sowie öffentlich über HTML und Produkt-JSON zurückgelesen. Je genau ein Mutationsversuch, keine userErrors und keine Retries. 15 fachfremde Schmuck-Tags entfernt; neutrale Titel, Beschreibungen und SEO-Texte ausschliesslich aus aktuellen Variantenwerten und sichtbaren Bildern. Drei Optionslabels Farbe zu Anzahl Leuchten, Modell beziehungsweise Ausführung präzisiert. 26 Varianten und 38 Bilder vollständig geschützt; Status, Handles, Vendor, Kategorie, Publikationen, IDs, SKUs, CHF-Preise, Kaufbarkeit, CONTINUE, Tracking, leere Barcode-Sätze und Medienbindungen erhalten. Keine unbelegten Material-, Mass-, Elektro-, Aussenbereichs-, Lieferzeit- oder Bewertungsclaims ergänzt. Gesamtkatalog weiter offen; keine Tagesreport- oder Kauf-Watch-Wiederholung und keine externen Writes ausser den fünf Produktmutationen. R94, 05.11.2026: Genau zwei ACTIVE-Hundepullover live mit vollständiger Varianten-/Medien-/Publikationsbasis bearbeitet. Produkt16605072458119 erhielt in einem kombinierten productUpdate/fileUpdate Titel, neutralen Body, SEO und11 READY-Alttexte; Produkt16611936010631 erhielt Body/SEO und9 READY-Alttexte, danach wegen unabhängigem Rundhalsbeleg genau einen begründeten Korrektur-Write ohne V-Ausschnitt. Alle Mutationen ohne userErrors; finale Admin- und zwei öffentliche QA-Readbacks mit je10/10 Checks bestätigt. 25 Varianten, SKUs, CHF-Preise, Kaufbarkeit, ungetracktes CONTINUE, Medien-IDs/-URLs und je7 Publikationen erhalten. Handles/Tags/Kategorien unverändert; alte Handles und Tag decke getrennt offen. Kein Katalogabschluss oder Bestands-/Lieferzeitversprechen. R95, 05.11.2026: Genau zwei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-/Medien-/Metafeld-/Publikationsbasis bearbeitet. Tennisarmband16615274611079 und Gemüseschneider15450837188993 erhielten je in genau einem kombinierten productUpdate/fileUpdate neutralen Titel, belegbaren Body, SEO und sieben beziehungsweise zwölf bildbezogene READY-Alttexte. Keine userErrors oder Retries; finale vollständige Admin- und je zwei öffentliche HTML-/Produkt-JSON-Gegenproben mit 12/12 Checks pro Produkt. Nur Zieltexte, Bild-Alttexte und Shopifys erwartete SEO-Spiegel global.title_tag/global.description_tag änderten sich. Handles, Status, Vendor, Produkttyp, Kategorien, Tags, Optionen, 11 Varianten, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventory-Zähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Bindungen und Publikationen erhalten. Gemüseschneider-rueckhol-0907 erhalten; neue Social-Ausspielung blockiert. Keine Lager-/Lieferzeitzusage, kein Katalogabschluss und keine sonstigen externen Writes. R96, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Teppich16606106255751, Haustierpullover16607464391047 und Rucksack16611664888199 erhielten je einen productUpdate für neutralen Titel, belegbaren Body und SEO sowie je einen getrennten fileUpdate für13/6/5 bildbezogene Alttexte. Der erste kombinierte Teppich-Aufruf wurde vor Dispatch abgebrochen und bewirkte keinen Write. Sechs gesendete Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. 62 Varianten, 24 READY-Bilder, 21 Publikationen, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventory-Werte, Tracking, CONTINUE, Medien-URLs/-Reihenfolge/-Bindungen erhalten. Shopify-SEO-Spiegel änderten sich erwartet. Judge.me aktualisierte beim Haustierpullover nur Titelspiegel; Reviewanzahl, Bewertung, IDs und Inhalte blieben gleich. Rucksack-Reviewspiegel blieb beim Rücklesen historisch; kein Reviewwrite. Historischer 56’630-ID-Snapshot rund100% offline gescannt/priorisiert; frisch exakt56’506 ACTIVE/87’774 alle Status. Streng kontrollierte R82–R96-Livekorrekturen:24 ACTIVE=0,04247%, gerundet0,04%; rund99,96% unter diesem Massstab offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale öffentliche QA:48/48, Verdict GO. R97, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Tennistasche16606107500935, Rolltop-Rucksack16650219651463 und Strickoberteil15524856496513 erhielten je genau einen productUpdate für belegbaren Titel, Body und SEO sowie je einen fileUpdate für6/5/8 bildbezogene Alttexte. Alle sechs Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. Sieben Varianten, 19 READY-Bilder, 22 Publikationsknoten, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventarzähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Reihenfolgen und Variantenbindungen erhalten. Shopify-SEO-Spiegel änderten sich erwartet; automatische Judge.me-Spiegeländerungen betrafen keine Reviewanzahl, Bewertung oder Reviewliste. Streng kontrollierte R82–R97-Livekorrekturen:27 ACTIVE von56’506=0,04778%, gerundet0,05%;56’479 beziehungsweise rund99,95% unter diesem Massstab offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale öffentliche QA:60/60, Verdict GO, Report-SHA256 5ad89b43a4e3c613cdf8bbfeb80bd51f910d928fc93dc47d59e73172472790a9. R99, 05.11.2026: Genau drei weitere ACTIVE-Produkte mit vollständiger aktueller Varianten-, Medien-, Metafeld- und Publikationsbasis bearbeitet. Rucksack15448913281409, Kissenbezug15493835751809 und Segment-Armband15493851480449 erhielten je genau einen productUpdate für belegbaren Titel/Body/SEO sowie je einen fileUpdate für5/28/13 bildbezogene Alttexte. Alle sechs Mutationen ohne userErrors oder Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Gegenproben HTTP200. 36 Varianten,46 READY-Bilder,19 Publikationsknoten, Handles, Status, Vendor, Produkttypen, Kategorien, Tags, Optionen, IDs, SKUs, Barcodebasis, CHF-Preise, Kaufbarkeit, Inventarzähler, Tracking, CONTINUE, Medien-IDs/-URLs/-Reihenfolgen/-Bindungen und Nicht-SEO-Metafelder erhalten. Alle drei rueckhol-0907 erhalten; Social bleibt blockiert. Streng kontrollierte R82–R99-Livekorrekturen:30 ACTIVE von56’506=0,05309%, gerundet0,05%;56’476 beziehungsweise rund99,95% offen. Keine Qualitätsquote, Lager-/Lieferzusage oder sonstigen externen Writes. Unabhängige finale QA:60/60,3/3 GO,46/46 Alttexte exakt, Report-SHA256 5a1606459ec1b9324ab2ed9efde4d81bc16a668bceb33583814a92c621cf3643. R100, 05.11.2026: Den neuen 32-Zeilen-Merchant-CSV als Kandidatenliste geprüft; 29 eindeutige Shopify-Produkte plus eine nicht sicher abbildbare ID. CSV liefert keine Alterswerte. Zwei ACTIVE-BRUDER-Spielsets über offizielle Artikelnummer, GTIN und Bilder gebunden: Feuerwehrstation62702/15470017380737 und UPS-Paketshop62250/15470032945537. Beide erhielten belegte Setinhalte und Herstellerempfehlung ab4Jahren; Kleinteilehinweis ausschliesslich beim offiziell belegten UPS-Artikel. Je Produkt genau ein productUpdate und ein fileUpdate, keine userErrors/Retries; acht Alttexte. Vollständige Admin-/Storefront-Readbacks und unabhängige QA40/40,2/2GO. Zwei Varianten, acht READY-Bilder,14 Publikationsknoten, Handles, Tags, Kategorien, SKUs, Barcodes, CHF-Preise, Kaufbarkeit, Inventar, Tracking, DENY und Medienbindungen erhalten. Frisch exakt56’506 ACTIVE/87’774 alle Status; streng kontrolliert32 ACTIVE=0,05663%, gerundet0,06%;56’474/rund99,94% offen. 27 CSV-Produkte plus eine unbekannte ID und Google-Neuverarbeitung offen; fr/Deutsch separat. Keine weiteren externen Writes oder Tagesreport-Wiederholung. R104, 05.11.2026: Zwei weitere ACTIVE-BRUDER-Produkte anhand offizieller Artikelnummer, GTIN, Shopify-SKU und Bildidentität gebunden. Forstwirtschaftsset62650 und Polizei-Quad63010 erhielten mit genau2 productUpdate und2 fileUpdate belegte Titel, strukturierte Beschreibungen, SEO und je1Alttext; keine userErrors/Retries. Vollständige Admin- sowie öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200 und unabhängige QA2/2 GO. Status, Handles, Tags, Kategorien, Varianten-IDs, SKUs, GTINs, CHF-Preise, Kaufbarkeit, Tracking/DENY, Inventarzähler, Medien und16Publikationsknoten erhalten. Streng34/56’506=0,06017%, gerundet0,06%;56’472/rund99,94% offen. CSV-Scope4/29 bearbeitet;25 zuordenbare plus1 unbekannte Merchant-ID offen. Sieben R103-Overlay-SKUs bleiben ohne exakte CJ-Varianten-/Medienbindung blockiert; kein CJ-Workflow oder sonstiger externer Write. R105, 05.11.2026: Zwei weitere ACTIVE-Produkte vollständig live gelesen und korrigiert. Maxikleid15500282003841: falsches Beige/Midi-/Material-/Passformnarrativ auf aktuelle Farben Milchweiss, Himmelblau, Lavendel-Lila und GrössenXS–2XL begrenzt;11 Alttexte. Fitnessschuhe16638316020103: Grau sowie unbelegte Knie-, Material-, Gewichts-, Rutsch- und Höhenclaims entfernt; aktuelle Farben Weiss/Schwarz und Grössen38–45;7 Alttexte. Je genau1 productUpdate und1 fileUpdate, keine userErrors/Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200, unabhängige QA2/2GO. 34 Varianten/IDs/SKUs, CHF22.90–26.90 beziehungsweiseCHF50.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und12Publikationsknoten erhalten. Streng36/56’506=0,06371%, gerundet0,06%;56’470/rund99,94% offen. Keine genaue CJ-Lieferantenquelle, deshalb unbelegte Claims entfernt statt ersetzt; keine sonstigen externen Writes. R106, 05.11.2026: Produkt16610538324359 vollständig live gelesen; vier aktuelle Varianten S–XL und sieben Bilder zeigen ein kurzes rosafarbenes Neckholder-Kleid mit Volantstufen. Falsches Midikleid-/nur-S-Narrativ sowie widersprüchliche 100%-Polyester/Polyester-Spandex-, Gewicht-, Passform-, Anlass- und Lieferclaims entfernt; Titel, neutraler Body, SEO und7Alttexte mit genau1 productUpdate und1 fileUpdate. Keine userErrors/Retries; vollständige Admin- und öffentliche HTML-/Produkt-JSON-Rücklesung HTTP200, unabhängige QA GO. ACTIVE, Handle, Vendor, Produkttyp, Kategorie, Tags, Option,4 Varianten/IDs/SKUs, CHF16.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Medienbindungen und6Publikationen erhalten. Historischer Midi-Handle und Midi-Sortiertag bleiben getrennt offen. Streng37/56’506=0,06548%, gerundet0,07%;56’469/rund99,93% offen. Keine genaue CJ-Quelle und keine sonstigen externen Writes. R107, 05.11.2026: Produkte16656436363655 und15500453872001 vollständig live gelesen und korrigiert. Pumps: unbelegte Zehenschutz/Pigskin/TPR/Stabilitäts/Gewichts/nur34-Angaben auf sichtbare Glitzer-Slingback-Form, Schwarz/Champagner und34–39 begrenzt;9 Alttexte. Fünf-Zehen-Schuhe: falsches Beige sowie unbelegte Indoor/Rutsch/Schock/Luft/Leichtigkeitsclaims auf neun aktuelle Farben,35–45 und sichtbare Form begrenzt;23 Alttexte. Je genau1 productUpdate und1 fileUpdate, keine userErrors/Retries; vollständige Adminrücklesung über3 Variantenseiten sowie öffentliche HTML/Produkt-JSON-HTTP200, unabhängige QA2/2GO. 111 Varianten/IDs/SKUs, CHF42.90 beziehungsweiseCHF89.90–96.90, Kaufbarkeit, untracked/CONTINUE, Mengen0, Handles, Tags, Kategorien, Medienbindungen und12 Publikationen erhalten. Alte Handles und such-sicherheitsschuhe getrennt offen. Streng39/56’506=0,06902%, gerundet0,07%;56’467/rund99,93% offen. Remote/Claude-Abgleich ohne konkreten Doppelwrite; Receipt/Live-Lock unbekannt. Keine sonstigen externen Writes.",
           "previousNextAllowedStep": "R107 abgeschlossen und dokumentiert. R108 eng reserviert: Produkte16655747481991 und16616678195591. Unmittelbar vor jeder Änderung zuerst origin/main, offene Claude-LuxeStyle-PR-Heads und Shopify updatedAt frisch lesen; bei Änderung seit Baseline oder neuer Claude-Überschneidung stoppen und anderen Kandidaten wählen. Danach vollständiger Admin-Read mit Varianten, Bildern, Tags, Inventory, Publikationen und öffentlichem HTTP-Readback. Nur belegte Minimaldiffs; keine Material-, Pflege-, Schnellttrocknen-, Komfort-, Liefer- oder Bestandsclaims ohne Quelle. Nach jedem Einzelwrite Admin und Storefront vollständig zurücklesen; unknown bedeutet Stopp ohne Retry. R82–R107 nicht wiederholen; Gesamtkatalog, sieben CJ-Overlayfälle und Google-Neuverarbeitung offen.",
           "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-08T19:00:16+01:00",
+          "sourceRevision": 146,
+          "previousState": "r146_three_active_product_language_seo_claim_and_alttext_fixes_live_verified",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R146_THREE_TARGETED_ACTIVE_PRODUCT_LANGUAGE_SEO_CLAIM_AND_ALTTEXT_WRITES_WITH_ADMIN_STOREFRONT_READBACK",
+          "previousLastEvidence": "Drei gezielt geprüfte ACTIVE-Produkte live deutsch bereinigt und öffentlich zurückgelesen:15504187720065 Bedrucktes Damen-Maxikleid, CHF23.90/63 Varianten/20 Alttexte;15448586125697 Elegantes Kleid mit Nackenhalter, CHF15.90/4 Varianten/6 Alttexte;15470021181825 Plüschhamster,18cm, CHF22.90/1 Alttext. Unbelegte Material-/Passform-, Rabatt-, DPD- und produktbezogene Lieferzeitclaims im jeweiligen Scope entfernt. Status, Varianten, Preise, Publikationen, Tags und Inventory-Verhalten erhalten. Nackenhalter-Kleid trägt rueckhol-0907; keine Social-Ausspielung. Keine Vollkatalogquote oder Bestands-/Lieferzusage.",
+          "previousNextAllowedStep": "R146-Produkte nicht erneut schreiben. Einen nächsten Produktfall nur nach frischer Admin-/Storefront-/Quellengegenprobe und mit vollständigem Varianten-, Medien-, Publikations- und Inventory-Schutz bearbeiten. Unbelegte Material-, Mass-, Passform-, Review-, Lieferzeit- und Bestandsclaims nicht ergänzen. Bei UNKNOWN stoppen, kein Retry; gemischtes /fr und MAIN separat behandeln.",
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "additionalProductCleanups": [
@@ -1400,6 +1410,17 @@
         "adminReadback": true,
         "storefrontReadback": true,
         "catalogComplete": false,
+        "socialWrites": 0
+      },
+      "run147": {
+        "at": "2026-11-08T19:00:16+01:00",
+        "productId": "15521256604033",
+        "descriptionWrite": true,
+        "adminReadback": true,
+        "publicHttpStatus": 200,
+        "canonicalConfirmed": true,
+        "coreFieldsPreserved": true,
+        "historicalMasterBindingStale": true,
         "socialWrites": 0
       }
     },
@@ -2100,18 +2121,19 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r139_active_7_variants_18s_storyboard_6_channel_drafts_no_mp4_rights_open",
+      "state": "r147_active_projector_description_live_fixed_seven_current_variants_historical_binding_stale_rights_open",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R139_FRESH_PRODUCT_IMAGE_VARIANTS_AND_18S_MASTER_SCRIPT_NO_RENDER",
-      "lastEvidence": "Projektor ACTIVE und öffentlich kaufbar; sieben aktuelle Varianten A-G CHF34.90-51.90, historische Variante56197916361089 nicht mehr vorhanden. Produktweites echtes Bild1920x1919 SHA256 bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d; exakte A-G-/Motivbindung und kommerzielle Bearbeitungs-/Werberechte unbekannt. Derselbe18s-Master als1080x1920/30fps-Skript mit zwei Hooks, Schnittplan, sechs Kanaltexten und eindeutigen UTMs fortgeschrieben. Pflichtmusik SHA256 a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688 hashgleich; finale Rechte-/Hör-/Mixabnahme offen. Keine MP4, kein Render oder Social-Write.",
-      "nextAllowedStep": "Eine aktuelle Variante A-G samt Motivset, Bild und gefilmter Einheit binden; kommerzielle Film-/Bearbeitungs-/Werberechte belegen und native 1080x1920-/30-fps-Takes derselben Einheit beschaffen. Pflichtmusik final rechtlich und hörtechnisch abnehmen, dann denselben18s-Master rendern und Bild/Ton/Text/Produktidentität/Ausschnitte prüfen. Erst danach kanalweise Metricool-/Ledgergates frisch prüfen.",
+      "belegArt": "R147_EXACT_PROJECTOR_PRODUCT_VARIANT_IMAGE_INVENTORY_READ_AND_TARGETED_DESCRIPTION_CLAIM_TYPO_EMOJI_LIVE_FIX",
+      "lastEvidence": "Produkt gid://shopify/Product/15521256604033 exakt neu gelesen: ACTIVE, Handle sternenlicht-projektor-fur-schlafzimmer-732544, OnlineStoreURL https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544,12 echte Bilder und nicht leere Tags. Sieben aktuelle Varianten A–G: IDs68122445283719 bis68122445480327, SKUs CJSN139239101AZ bis CJSN139239107GT, CHF34.90–51.90, alle availableForSale=true, inventoryQuantity0, tracksInventory=false, inventoryPolicy=CONTINUE. Menge0 ist kein Ausverkaufs-/Bestandsbeleg. Historische Referenz Variante56197916361089/SKU CJ-1477820492730732544 ist stale und darf weder gebunden noch publiziert werden. Motivzuordnung und kommerzielle Film-/Bearbeitungs-/Werberechte bleiben UNKNOWN; keine Socialmutation und keine fertige MP4. Live-Beschreibung gezielt bereinigt: unbelegter Claim Lieferung10–20Werktage, sichtbare Schild-/Einkauf-Emojis und Tippfehler Situation drehen entfernt; Projektor drehen, um den Fokus einzustellen sowie Galaxie live sichtbar. Admin und öffentliche HTTP200-/Canonical-Gegenprobe bestätigt. Status,7 Varianten,12 Tags,12 Bilder, Preise, IDs und Inventory-Felder unverändert.",
+      "nextAllowedStep": "Eine aktuelle Variante A–G mit exakter ID, SKU, Bildmotiv und tatsächlich gefilmter physischer Einheit auswählen. Film-/Bearbeitungs-/Werberechte schriftlich belegen und die vorhandene Quelle gegen Produktform, Farbe, Funktion und Motivzuordnung prüfen. Erst mit geeigneter Premiumquelle denselben18s-Master schneiden, Pflichtmusik rechtlich/hörtechnisch abnehmen und fertige MP4 in den Plattform-Ausschnitten prüfen. Danach Produkt-, Tag-, Bio-, Board-, YouTube-, Historien- und Kollisionsgates frisch lesen. Historische Variante56197916361089 niemals wiederverwenden; Menge0 bei untracked/CONTINUE nicht als Bestand oder Lieferzeit ausgeben.",
       "blockers": [
-        "Historische Mastervariante ist nicht mehr aktuell; heutige Zielvariante A–G, Motivset und gefilmte Einheit sind ungebunden.",
+        "Aktuelle Zielvariante A–G, Motivset und gefilmte physische Einheit sind noch nicht eindeutig gebunden.",
+        "Historische Variante56197916361089/SKU CJ-1477820492730732544 ist stale und für Bindung/Publikation gesperrt.",
         "Shopvideo852×480/25fps und ältere Quelle sind keine native Premium-Hochkantquelle.",
         "Kommerzielle Film-/Bearbeitungs-/Werberechte sowie finale Musikrechte-/Hörabnahme unbekannt.",
         "Keine gerenderte/abgenommene18s-MP4; Projektor-Publikationshistorie unknown, operatives Ledger fehlt.",
-        "Pinterest-Board und aktuelles IG-/TikTok-Bioziel nicht passend bestätigt; konkretes YouTube-Made-for-kids-Flag offen."
+        "Pinterest-Board und aktuelles IG-/TikTok-Bioziel vor konkreter Publikation frisch prüfen; YouTube-Zielgruppe ist masterbezogen gegenzulesen."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -2341,13 +2363,19 @@
       "assignedRole": "codex_preparation_claude_coordination",
       "product": {
         "productId": "15521256604033",
+        "gid": "gid://shopify/Product/15521256604033",
+        "status": "ACTIVE",
+        "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+        "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "imageCount": 12,
+        "tagsNonEmpty": true,
         "variantId": null,
         "sku": null,
         "selectionState": "UNKNOWN_NOT_SELECTED",
         "previousBinding": {
           "variantId": "56197916361089",
           "sku": "CJ-1477820492730732544",
-          "status": "HISTORICAL_NOT_CURRENT_MISSING"
+          "status": "STALE_BLOCKED_DO_NOT_USE"
         },
         "currentVariantIds": [
           "68122445283719",
@@ -2357,7 +2385,48 @@
           "68122445414791",
           "68122445447559",
           "68122445480327"
-        ]
+        ],
+        "currentVariantSkus": [
+          "CJSN139239101AZ",
+          "CJSN139239102BY",
+          "CJSN139239103CX",
+          "CJSN139239104DW",
+          "CJSN139239105EV",
+          "CJSN139239106FU",
+          "CJSN139239107GT"
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "priceRangeCHF": [
+          "34.90",
+          "51.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryQuantityAllZero": true,
+        "tracksInventory": false,
+        "inventoryPolicy": "CONTINUE",
+        "stockPromiseAllowed": false,
+        "tagsCount": 12,
+        "descriptionLiveCorrected": true,
+        "descriptionRemoved": [
+          "Lieferung 10–20 Werktage",
+          "sichtbare Schild-/Einkauf-Emojis",
+          "Situation drehen"
+        ],
+        "descriptionConfirmed": [
+          "Projektor drehen, um den Fokus einzustellen",
+          "Galaxie"
+        ],
+        "adminReadback": true,
+        "publicHttpStatus": 200,
+        "canonicalConfirmed": true
       },
       "evidenceHistory": [
         {
@@ -2608,6 +2677,22 @@
             "Kommerzielle Film-/Bearbeitungs-/Werberechte sind unbekannt.",
             "Kanonische WAV ist hashgleich, aber historischer Buildbezug sowie finale Rechte-, Hör- und Mixfreigabe fehlen.",
             "Keine gerenderte/abgenommene18s-Master-MP4; Ledgerentwurf nicht deployt, Projektor-/Kanalhistorie unknown_not_initialised; Bioziele, Pinterest-Boardname und Master-spezifische YouTube-Zielgruppe offen."
+          ]
+        },
+        {
+          "at": "2026-11-08T19:00:16+01:00",
+          "sourceRevision": 146,
+          "previousState": "r139_active_7_variants_18s_storyboard_6_channel_drafts_no_mp4_rights_open",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R139_FRESH_PRODUCT_IMAGE_VARIANTS_AND_18S_MASTER_SCRIPT_NO_RENDER",
+          "previousLastEvidence": "Projektor ACTIVE und öffentlich kaufbar; sieben aktuelle Varianten A-G CHF34.90-51.90, historische Variante56197916361089 nicht mehr vorhanden. Produktweites echtes Bild1920x1919 SHA256 bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d; exakte A-G-/Motivbindung und kommerzielle Bearbeitungs-/Werberechte unbekannt. Derselbe18s-Master als1080x1920/30fps-Skript mit zwei Hooks, Schnittplan, sechs Kanaltexten und eindeutigen UTMs fortgeschrieben. Pflichtmusik SHA256 a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688 hashgleich; finale Rechte-/Hör-/Mixabnahme offen. Keine MP4, kein Render oder Social-Write.",
+          "previousNextAllowedStep": "Eine aktuelle Variante A-G samt Motivset, Bild und gefilmter Einheit binden; kommerzielle Film-/Bearbeitungs-/Werberechte belegen und native 1080x1920-/30-fps-Takes derselben Einheit beschaffen. Pflichtmusik final rechtlich und hörtechnisch abnehmen, dann denselben18s-Master rendern und Bild/Ton/Text/Produktidentität/Ausschnitte prüfen. Erst danach kanalweise Metricool-/Ledgergates frisch prüfen.",
+          "previousBlockers": [
+            "Historische Mastervariante ist nicht mehr aktuell; heutige Zielvariante A–G, Motivset und gefilmte Einheit sind ungebunden.",
+            "Shopvideo852×480/25fps und ältere Quelle sind keine native Premium-Hochkantquelle.",
+            "Kommerzielle Film-/Bearbeitungs-/Werberechte sowie finale Musikrechte-/Hörabnahme unbekannt.",
+            "Keine gerenderte/abgenommene18s-MP4; Projektor-Publikationshistorie unknown, operatives Ledger fehlt.",
+            "Pinterest-Board und aktuelles IG-/TikTok-Bioziel nicht passend bestätigt; konkretes YouTube-Made-for-kids-Flag offen."
           ]
         }
       ],
@@ -3028,6 +3113,19 @@
           "renderTriggered": false,
           "publishingWrites": 0
         }
+      },
+      "run147": {
+        "at": "2026-11-08T19:00:16+01:00",
+        "productRead": "exact_targeted",
+        "variantCount": 7,
+        "imageCount": 12,
+        "historicalBindingStale": true,
+        "mediaRights": "UNKNOWN",
+        "motifBinding": "UNKNOWN",
+        "socialWrites": 0,
+        "descriptionWrite": true,
+        "adminReadback": true,
+        "publicReadback": true
       }
     },
     {
@@ -11207,6 +11305,18 @@
         "readAt": "2026-11-08T18:55:01+01:00"
       },
       "action": "R146: Three targeted ACTIVE products were corrected live in German with claim and alt-text readback; one exact CJ-bound Merchant safety product received only compliance-pruefen/nicht-bewerben. A single exact Yoga CN-CH route read returned17 method names with price/time/Prime unknown. Metricool identity and schedule were read without writes; IG/FB are active08-15 while TikTok/Pinterest/YouTube retain gaps. The v6.3.0 SRI incident was restored byte-identically by PR2977; PR2976 published immutable v6.3.1 and both assets passed public hash/header readback. Shopify rollout plan/canary/full was not dispatched because runtime became unavailable; products remain on v6.3.0. PR2975 remains Draft and MAIN//fr remain open. Tasks remain24."
+    },
+    {
+      "revision": 147,
+      "at": "2026-11-08T19:00:16+01:00",
+      "actor": "codex",
+      "source": {
+        "productId": "gid://shopify/Product/15521256604033",
+        "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "readAt": "2026-11-08T19:00:16+01:00",
+        "projectMemoryBlob": "85ac6d503a30f70f61f43d3ea497fa0eacf7098a"
+      },
+      "action": "R147: An exact targeted Shopify read confirmed the ACTIVE projector with12 images,12 tags and seven current A-G variants/SKUs at CHF34.90-51.90, all availableForSale with quantity0 but untracked CONTINUE. The live description was corrected by removing the unverified10-20-day claim, visible shield/shopping emojis and the Situation drehen typo; admin and public HTTP200/canonical readback confirmed the new focus/Galaxie wording with core fields unchanged. The historical master variant/SKU is stale and blocked from binding/publication. Motif and commercial media/edit/advertising rights remain unknown, so no social write or finished film claim. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -11416,18 +11526,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 146,
+    "documentationRevision": 147,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "140ca515a1264c29ac8a2a438ae4a11e90449ca5",
+    "gitBlobSha": "85ac6d503a30f70f61f43d3ea497fa0eacf7098a",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
     "entryGitBlobSha": "164c0b523de41d6dec21c9fc5fa8219eff891b17",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
-    "receiptState": "unknown_runtime_unavailable_no_claude_receipt",
-    "scope": "r146_live_product_cj_metricool_and_safe_pod_release_handoff",
-    "latestCanonicalRevision": 146,
-    "snapshotNote": "R146: Drei Live-Produktsprachfixes und Merchant-Sperrtags bestätigt; CJ-Yoga-Route nur als17 Methodennamen ohne Preis/Laufzeit/Prime; Metricool-Lücken ohne Write dokumentiert. v6.3.0-SRI bytegleich wiederhergestellt und v6.3.1 öffentlich hash-/headergleich bereitgestellt. Shopify-Produkte bleiben auf v6.3.0, da Plan/Canary/Full wegen unavailable Runtime nicht dispatcht wurden. Aktuellen main-Head frisch binden, dann geschützter Plan→Tassen-Canary/E2E→Full; UNKNOWN stoppt. PR2975 bleibt Draft, MAIN//fr offen.",
+    "receiptState": "unknown_no_claude_receipt",
+    "scope": "r147_projector_current_variant_binding_refresh",
+    "latestCanonicalRevision": 147,
+    "snapshotNote": "R147: Projektor15521256604033 ACTIVE mit sieben aktuellen Varianten A–G/aktuellen IDs und SKUs,12 Tags,12 Bildern und CHF34.90–51.90 bestätigt. Beschreibung live ohne unbelegten10–20-Werktage-Claim, sichtbare Schild-/Einkauf-Emojis und Situation-drehen-Tippfehler; Admin/öffentliche QA grün. Alte Variante56197916361089/SKU CJ-1477820492730732544 ist stale und gesperrt. Menge0 bei untracked/CONTINUE ist kein Bestandsbeleg. Motiv-/Medien-/Bearbeitungs-/Werberechte bleiben unbekannt; kein Socialwrite. Vor Masterfortsetzung eine aktuelle Variante und die gefilmte Einheit exakt binden und Rechte belegen.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -11718,6 +11828,103 @@
         "orders": 0
       },
       "taskCount": 24
+    },
+    "run147": {
+      "at": "2026-11-08T19:00:16+01:00",
+      "scope": "exact_projector_product_variant_image_inventory_binding_refresh_no_social_write",
+      "product": {
+        "productId": "15521256604033",
+        "gid": "gid://shopify/Product/15521256604033",
+        "status": "ACTIVE",
+        "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+        "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "imageCount": 12,
+        "tagsNonEmpty": true,
+        "variantId": null,
+        "sku": null,
+        "selectionState": "UNKNOWN_NOT_SELECTED",
+        "previousBinding": {
+          "variantId": "56197916361089",
+          "sku": "CJ-1477820492730732544",
+          "status": "STALE_BLOCKED_DO_NOT_USE"
+        },
+        "currentVariantIds": [
+          "68122445283719",
+          "68122445316487",
+          "68122445349255",
+          "68122445382023",
+          "68122445414791",
+          "68122445447559",
+          "68122445480327"
+        ],
+        "currentVariantSkus": [
+          "CJSN139239101AZ",
+          "CJSN139239102BY",
+          "CJSN139239103CX",
+          "CJSN139239104DW",
+          "CJSN139239105EV",
+          "CJSN139239106FU",
+          "CJSN139239107GT"
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "priceRangeCHF": [
+          "34.90",
+          "51.90"
+        ],
+        "allAvailableForSale": true,
+        "inventoryQuantityAllZero": true,
+        "tracksInventory": false,
+        "inventoryPolicy": "CONTINUE",
+        "stockPromiseAllowed": false,
+        "tagsCount": 12,
+        "descriptionLiveCorrected": true,
+        "descriptionRemoved": [
+          "Lieferung 10–20 Werktage",
+          "sichtbare Schild-/Einkauf-Emojis",
+          "Situation drehen"
+        ],
+        "descriptionConfirmed": [
+          "Projektor drehen, um den Fokus einzustellen",
+          "Galaxie"
+        ],
+        "adminReadback": true,
+        "publicHttpStatus": 200,
+        "canonicalConfirmed": true
+      },
+      "historicalReference": {
+        "variantId": "56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "state": "STALE_BLOCKED_DO_NOT_USE"
+      },
+      "mediaRights": "UNKNOWN",
+      "motifBinding": "UNKNOWN",
+      "renderedMasterMp4": false,
+      "metricoolWrites": 0,
+      "socialWrites": 0,
+      "taskCount": 24,
+      "productDescriptionWrite": {
+        "removed": [
+          "Lieferung 10–20 Werktage",
+          "sichtbare Schild-/Einkauf-Emojis",
+          "Situation drehen"
+        ],
+        "confirmed": [
+          "Projektor drehen, um den Fokus einzustellen",
+          "Galaxie"
+        ],
+        "adminReadback": true,
+        "publicHttpStatus": 200,
+        "canonicalConfirmed": true,
+        "coreFieldsPreserved": true
+      }
     }
   },
   "claudeCodeHandoffHistory": [
@@ -18211,5 +18418,102 @@
       "orders": 0
     },
     "taskCount": 24
+  },
+  "run147": {
+    "at": "2026-11-08T19:00:16+01:00",
+    "scope": "exact_projector_product_variant_image_inventory_binding_refresh_no_social_write",
+    "product": {
+      "productId": "15521256604033",
+      "gid": "gid://shopify/Product/15521256604033",
+      "status": "ACTIVE",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "imageCount": 12,
+      "tagsNonEmpty": true,
+      "variantId": null,
+      "sku": null,
+      "selectionState": "UNKNOWN_NOT_SELECTED",
+      "previousBinding": {
+        "variantId": "56197916361089",
+        "sku": "CJ-1477820492730732544",
+        "status": "STALE_BLOCKED_DO_NOT_USE"
+      },
+      "currentVariantIds": [
+        "68122445283719",
+        "68122445316487",
+        "68122445349255",
+        "68122445382023",
+        "68122445414791",
+        "68122445447559",
+        "68122445480327"
+      ],
+      "currentVariantSkus": [
+        "CJSN139239101AZ",
+        "CJSN139239102BY",
+        "CJSN139239103CX",
+        "CJSN139239104DW",
+        "CJSN139239105EV",
+        "CJSN139239106FU",
+        "CJSN139239107GT"
+      ],
+      "labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "priceRangeCHF": [
+        "34.90",
+        "51.90"
+      ],
+      "allAvailableForSale": true,
+      "inventoryQuantityAllZero": true,
+      "tracksInventory": false,
+      "inventoryPolicy": "CONTINUE",
+      "stockPromiseAllowed": false,
+      "tagsCount": 12,
+      "descriptionLiveCorrected": true,
+      "descriptionRemoved": [
+        "Lieferung 10–20 Werktage",
+        "sichtbare Schild-/Einkauf-Emojis",
+        "Situation drehen"
+      ],
+      "descriptionConfirmed": [
+        "Projektor drehen, um den Fokus einzustellen",
+        "Galaxie"
+      ],
+      "adminReadback": true,
+      "publicHttpStatus": 200,
+      "canonicalConfirmed": true
+    },
+    "historicalReference": {
+      "variantId": "56197916361089",
+      "sku": "CJ-1477820492730732544",
+      "state": "STALE_BLOCKED_DO_NOT_USE"
+    },
+    "mediaRights": "UNKNOWN",
+    "motifBinding": "UNKNOWN",
+    "renderedMasterMp4": false,
+    "metricoolWrites": 0,
+    "socialWrites": 0,
+    "taskCount": 24,
+    "productDescriptionWrite": {
+      "removed": [
+        "Lieferung 10–20 Werktage",
+        "sichtbare Schild-/Einkauf-Emojis",
+        "Situation drehen"
+      ],
+      "confirmed": [
+        "Projektor drehen, um den Fokus einzustellen",
+        "Galaxie"
+      ],
+      "adminReadback": true,
+      "publicHttpStatus": 200,
+      "canonicalConfirmed": true,
+      "coreFieldsPreserved": true
+    }
   }
 }
