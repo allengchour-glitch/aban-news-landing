@@ -1591,3 +1591,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Rechte / Social | Motiv- und Medienrechte als eigene Voraussetzungen geprüft | Bearbeitungs-/Werberechte und Motivzuordnung unbekannt; kein Metricool-/Social-Write, kein fertiger Film behauptet |
 
 [LUXESTYLE_R147_20261108] Produkt `gid://shopify/Product/15521256604033` · Live-Handle `sternenlicht-projektor-fur-schlafzimmer-732544` · aktueller Variantenscope A–G · historische Variante/SKU gesperrt.
+
+### R148
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identitäten / Produkte | Shopify und Metricool samt sechs Kanälen frisch verifiziert; Projektor und BRUDER-Forstwirtschaftsset gezielt mit Varianten, Bildern, Preisen, Kaufbarkeit, Tracking, Policy und Tags gelesen | Identitäten passend. Projektor ACTIVE/7 Varianten/CHF34.90–51.90/untracked-CONTINUE-Menge0; BRUDER ACTIVE/1 Variante/CHF36.90/tracked-DENY-Menge45. Keine Lieferzusage, keine Produktmutation |
+| Metricool / Planung | 08.–15.11. mit IDs, UUIDs, Kanalzuständen, Texten, Medien und Slots geprüft; fällige Zustände kontrolliert |27 Objekte/42 Zustände;17 aktiv/28,10 Draft/14. IG/FB/TikTok heute PUBLISHED; IG/FB09.–15. aktiv. TikTok10.–15., Pinterest09.–15., YouTube/Threads ohne aktive Abdeckung; keine exakten Doppel/Kollisionen und kein Write |
+| Kennzahlen | Heute bereits entdeckte R135-Felddefinitionen und kleine Teilreihen01.–07.11 datiert wiederverwendet | IG642/5 an3T, FB400/1 an1T, TT1720/4Likes/0Kommentare/1Share an6T, Pinterest4440/57 an5T, YouTube165 Views an5T/Interaktionen unbekannt, Threads nur07.11.0/0. Fehlende Tage unbekannt; keine Verkaufsableitung |
+| Content-Master | Einen einzigen18s-/540-Frame-Schnittplan mit zwei Hooks, realer Bedienhandlung, Referenzbild, CTA und sechs kanalgetrennten UTM-Texten fortgeführt | Storyboard, keine MP4. A–G-/Film-/Rechtebindung, native9:16-Takes sowie Musikrechte-/Hör-/Mixabnahme fehlen; kein Render, Upload oder Socialwrite |
+| Klaviyo | Heutigen R135-Flowreport und Placed-Order-Metrik ohne zweite API-Abfrage verwendet; genau einen neutralen Email2-Entwurf formuliert | XWqMAD/USD und Shopify/CHF getrennt; W7XTVD; Vse76a/VbLQj6/RnTvsY/XEGbTB Draft. Kein Flow-/Versandwrite |
+| SEO / Merchant | Acht gezielte Live-URLs und lokale Merchant-CSV dedupliziert geprüft | Collection-/Versand-/TikTok-Stichproben behoben; zwei indexierbare `/fr`-Seiten bleiben deutsch. LI-Versanddaten fehlen laut Export bei3'227 eindeutigen Artikeln; keine Theme-/Locale-/Merchant-Einstellung geändert |
+| Selbst gestalten / Canary | Geschützten Plan/full und genau einen Tassen-Canary ausgeführt; Artefakt, Ledger, Admin und öffentlichen HTML-Readback geprüft | Run42508494486 und42508762409 SUCCESS. Tasse15422823465345 live v6.3.1/SRI korrekt;15 weitere Editorprodukte v6.3.0,3 Sperrprodukte unverändert |
+| Selbst gestalten / STOP | Lokalen und isolierten Browser-E2E ohne Cart/Upload/Checkout versucht und den fehlenden Mobile-Beleg ausgewertet | Lokale Browser Exit137/Page-Crash; Remote-Viewport1920×993 statt375/390; letzter exakter Harness `Invalid InterceptionId`. Kein Blind-Retry. Responsive E2E UNKNOWN, daher kein Full-Plan/Full-Apply |
+| Grenzen / Übergabe | Projektgedächtnis mit aktuellem Beleg, Blockern und nächstem Schritt fortgeschrieben | Keine Kundenansprache, Rabatte, Budgets, Flows, DNS, kostenpflichtigen Renders, Bestellungen oder ABAN-Arbeit; PR2975 bleibt Draft |
+
+[LUXESTYLE_R148_20261108] [Plan42508494486](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42508494486) · [Canary42508762409](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42508762409) · Shopify-Produktreads15521256604033/15470028915073 · Metricool19:06 Europe/Zurich · Full-Rollout gesperrt.

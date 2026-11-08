@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 147,
-  "updatedAt": "2026-11-08T19:00:16+01:00",
+  "revision": 148,
+  "updatedAt": "2026-11-08T19:22:32+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -2121,11 +2121,11 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r147_active_projector_description_live_fixed_seven_current_variants_historical_binding_stale_rights_open",
+      "state": "r148_projector_storyboard_540_frames_two_hooks_six_utms_current_variants_and_rights_unbound",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R147_EXACT_PROJECTOR_PRODUCT_VARIANT_IMAGE_INVENTORY_READ_AND_TARGETED_DESCRIPTION_CLAIM_TYPO_EMOJI_LIVE_FIX",
-      "lastEvidence": "Produkt gid://shopify/Product/15521256604033 exakt neu gelesen: ACTIVE, Handle sternenlicht-projektor-fur-schlafzimmer-732544, OnlineStoreURL https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544,12 echte Bilder und nicht leere Tags. Sieben aktuelle Varianten A–G: IDs68122445283719 bis68122445480327, SKUs CJSN139239101AZ bis CJSN139239107GT, CHF34.90–51.90, alle availableForSale=true, inventoryQuantity0, tracksInventory=false, inventoryPolicy=CONTINUE. Menge0 ist kein Ausverkaufs-/Bestandsbeleg. Historische Referenz Variante56197916361089/SKU CJ-1477820492730732544 ist stale und darf weder gebunden noch publiziert werden. Motivzuordnung und kommerzielle Film-/Bearbeitungs-/Werberechte bleiben UNKNOWN; keine Socialmutation und keine fertige MP4. Live-Beschreibung gezielt bereinigt: unbelegter Claim Lieferung10–20Werktage, sichtbare Schild-/Einkauf-Emojis und Tippfehler Situation drehen entfernt; Projektor drehen, um den Fokus einzustellen sowie Galaxie live sichtbar. Admin und öffentliche HTTP200-/Canonical-Gegenprobe bestätigt. Status,7 Varianten,12 Tags,12 Bilder, Preise, IDs und Inventory-Felder unverändert.",
+      "belegArt": "R148_EXACT_PROJECTOR_AND_BRUDER_PRODUCT_READ_CHANNEL_GUARD_AND_SINGLE_MASTER_STORYBOARD_NO_RENDER",
+      "lastEvidence": "Projektor15521256604033 und BRUDER15470028915073 gezielt frisch gelesen. Projektor ACTIVE/12 Bilder/Tags/7 aktuelle A–G-Varianten CHF34.90–51.90/availableForSale/untracked CONTINUE Menge0; BRUDER ACTIVE/ein echtes2324x1704-Bild/Variante55970901557633/SKU fortura-062650/CHF36.90/availableForSale/tracked DENY Menge45. Kanalwächter und zusätzliche rueckhol-Regel treffen beide aktuellen Tagsets nicht. Projektor bleibt durch auswahl-offen, fehlende exakte A–G-/Film-/Motivbindung und unbekannte kommerzielle Rechte blockiert. Derselbe Master ist als18s/540Frames/1080x1920/30fps-Storyboard mit Hooks Dein Raum. Neues Licht. und bevorzugt Licht im Detail., realer Bedienhandlung, CTA und sechs UTMs fortgeführt. Keine native9:16-Premiumquelle, Rechte-/Hör-/Mixabnahme, MP4, Upload oder Socialmutation. Historische Variante56197916361089 bleibt gesperrt; keine Bestands-/Lieferzusage.",
       "nextAllowedStep": "Eine aktuelle Variante A–G mit exakter ID, SKU, Bildmotiv und tatsächlich gefilmter physischer Einheit auswählen. Film-/Bearbeitungs-/Werberechte schriftlich belegen und die vorhandene Quelle gegen Produktform, Farbe, Funktion und Motivzuordnung prüfen. Erst mit geeigneter Premiumquelle denselben18s-Master schneiden, Pflichtmusik rechtlich/hörtechnisch abnehmen und fertige MP4 in den Plattform-Ausschnitten prüfen. Danach Produkt-, Tag-, Bio-, Board-, YouTube-, Historien- und Kollisionsgates frisch lesen. Historische Variante56197916361089 niemals wiederverwenden; Menge0 bei untracked/CONTINUE nicht als Bestand oder Lieferzeit ausgeben.",
       "blockers": [
         "Aktuelle Zielvariante A–G, Motivset und gefilmte physische Einheit sind noch nicht eindeutig gebunden.",
@@ -6501,13 +6501,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r146_v630_sri_restored_v631_public_verified_shopify_rollout_not_dispatched",
+      "state": "r148_v631_canary_live_full_blocked_responsive_e2e_unknown",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R146_SRI_RECOVERY_IMMUTABLE_V631_PUBLIC_HASH_HEADER_READBACK_ROLLOUT_BLOCKED_BEFORE_SHOPIFY_WRITE",
-      "lastEvidence": "PR2973 verursachte nach Merge kurzzeitig einen SRI-Konflikt, weil bestehende Produktseiten v6.3.0/e58 pinnten. PR2977 Merge5a9684b794542ee28bc2cf8db314757b351874b6 stellte v6.3.0 bytegleich wieder her. PR2976 Merge322d951f8492ac298c783795faa121be8148fe4b führt den proportionalen mobilen Fix als neues unveränderliches v6.3.1-Asset ein; Produktions-Upload42506732658 success. Öffentlicher Live-Readback: v6.3.0 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b/228533B und v6.3.1 1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0/228826B, beide HTTP200 application/javascript, ACAO*, CORP cross-origin und public max-age31536000 immutable. Shopify-Produkte verweisen weiter auf v6.3.0; Plan/Canary/Full nicht dispatcht. main lief danach mit unabhängigem Commit924c022b weiter; Compare änderte keine POD-/Rollout-Datei, aktueller Head ist vor Fortsetzung dennoch frisch zu binden.",
+      "belegArt": "R148_GUARDED_FULL_PLAN_AND_EXACT_ONE_PRODUCT_V631_CANARY_WITH_ADMIN_PUBLIC_READBACK_FULL_STOPPED_ON_RESPONSIVE_E2E_UNKNOWN",
+      "lastEvidence": "Preflight band main924c022b und bestätigte v6.3.0/v6.3.1 hash-/headergleich. Plan/full Run42508494486 SUCCESS ergab exakt19 Produkte:16 Editor-URLs/Query/SRI changed und3 Sperrprodukte bytegleich unchanged. Canary-Apply Run42508762409 SUCCESS änderte ausschliesslich Tasse15422823465345; Ledger applied, Readback-SHA7f6561665dc660fbadc248d6da5af5e2effdb359aa1dda337a2e615d076bc85c. Admin/Public bestätigen LuxeStyle/luxestyle.ch/CHF, ACTIVE/kaufbar,3 tracked CONTINUE Varianten, genau einen v6.3.1-Tag mit Asset-SHA1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0 und korrekter SRI; v6.3.0 auf Canary entfernt. Lokale Chromium-E2E endeten vor QA mit Exit137/Page-Crash. Isolierter Firecrawl-Read öffnete Editor, erstellte Text/Druckvorschau und lud2 Blob-Bilder ohne Cart/Checkout/Upload, ignorierte aber den Mobile-Viewport und lief1920x993. Abschliessender exakter390px-Harness brach im Browser-Interception-Layer mit Invalid InterceptionId ab; kein Blind-Retry. Responsive Mobile-E2E bleibt UNKNOWN. Kein Full-Plan nach Canary und kein Full-Apply. Mix:1 Canary v6.3.1,15 Editorprodukte v6.3.0,3 Sperrprodukte unverändert.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Aktuellen main-Head frisch lesen und sicherstellen, dass seit PR2976 keine POD-/Rollout-Datei abweicht. Danach ausschliesslich pod-v63-description-rollout.yml: plan/full dispatchen, Run-Head und Artefakt auf genau19 Produkte/16 editor changed/3 blocked unchanged prüfen. Dann apply/canary mit V63_CANARY_TASSE, Tasse15422823465345 admin/öffentlich sowie mobil+desktop ohne Cart/Checkout abnehmen. Erneut plan/full; nur bei15 editor changed und4 unchanged apply/full mit V63_FULL_19_SAFE. Jeder unknown/rejected Zustand stoppt ohne Retry. PR2975 bleibt Draft; MAIN und /fr nicht als live behoben ausgeben.",
+      "nextAllowedStep": "Canary nicht erneut schreiben. In einer ressourcenfähigen Browserumgebung exakt die live Tasse15422823465345 bei375/390px und Desktop öffnen, Editor/Proportion/Druckvorschau/Lesbarkeit ohne Cart/Checkout/Upload prüfen und Screenshots/DOM belegen. Erst bei vollständigem GO aktuellen main-Head erneut binden und plan/full dispatchen; erwartet exakt15 changed und4 unchanged. Nur danach apply/full mit V63_FULL_19_SAFE und vollständigem19-Produkte-Readback. Jeder UNKNOWN/rejected Zustand stoppt ohne Retry. PR2975 bleibt Draft; MAIN und /fr nicht als live behoben ausgeben.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -7619,12 +7619,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r145_three_target_products_live_german_fr_mixed_main_meta_blocked",
+      "state": "r148_targeted_seo_fixes_confirmed_two_fr_selfcanonical_pages_still_german_main_draft",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R145_THREE_TARGET_PRODUCTS_LIVE_GERMAN_FR_MAIN_META_AND_TRANSLATIONS_OPEN",
-      "lastEvidence": "R144-Kuscheldecke, Baby-Strampler und Media-Alttext bleiben live korrigiert. R145 ergänzt ACTIVE Produkt15448641012097: Capri-Yogahose mit hohem Bund und Bauchkontrolle, deutscher Handle mit Redirect, deutsche Beschreibung/SEO ohne produktbezogenen10–20-Tage-/Rabattclaim und sechs deutsche Alttexte;12 Varianten CHF15.90 und rueckhol-Sperre erhalten. Öffentlicher Readback enthält alten High-Waist-/Rabatttext nicht. /fr bleibt gemischt: registrierte FR-Beschreibung wird durch hart codiertes Deutsch in MAIN snippets/meta-tags.liquid übersteuert, geprüfte FR-Produkte nutzen deutsche Fallbacks. MAIN unverändert/connector-blockiert; Teilmessung, keine Vollkatalog- oder alles-deutsch-Aussage.",
-      "nextAllowedStep": "Den locale-aware Meta-Diff für MAIN snippets/meta-tags.liquid über einen zulässigen Theme-Workflow gegen MD5 de2a6f9cf9200f49fe65ad6ca42f1643 einspielen und öffentlich DE/FR zurücklesen. Danach fachliche FR-Produkt-/Collectionübersetzungen nur quellengebunden und begrenzt ergänzen oder eine ausdrücklich freigegebene Locale-Strategie anwenden. Bereits in R144/R145 korrigierte Produkte und Medien nicht blind erneut schreiben; rueckhol-Sperren erhalten. FR-Blitz-1–2-Tage-Claim nur mit aktuellem Nachweis behalten.",
+      "belegArt": "R148_EIGHT_URL_TARGETED_LIVE_SEO_LANGUAGE_SHIPPING_PLACEHOLDER_CHECK_AND_MERCHANT_CSV_DEDUP",
+      "lastEvidence": "Gezielte Live-Stichprobe19:12: Blitzversand-Collection ohne Doppelsatz; Plüschhamster mit Schweiz-und-Liechtenstein statt CH-only; Maxikleid und Sandalen ohne beanstandete TikTok-Platzhalter; DE-Selbstgestalten HTTP200/langde/selfcanonical mit deutschem Titel/Meta/H1. Alte konkrete Emoji-URL404, Redirect unbekannt. FR-Produkt /fr/products/elegantes-halterneck-kleid-639800 und /fr/pages/selbst-gestalten liefern HTTP200/content-language fr-CH/fr-Selfcanonical, aber deutsche Titel/Meta/H1/Inhalte; Duplicate-/Mischsprachrisiko offen. PR2975 weiter Draft/ungemergt. Zehn deduplizierte lokale Merchant-Exporte: wichtigster aktueller abgegrenzter Hebel fehlende Liechtenstein-Versandinformationen für3227 eindeutige Artikel; Zeilen/Kanäle nicht addiert, ältere gefilterte Exporte kein Live-Statusbeleg. Keine Theme-/Locale-/Merchant-/Versandeinstellung geändert.",
+      "nextAllowedStep": "PR2975 bleibt Draft. Den aktuellen Head und Preview gegen den heutigen MAIN-Stand prüfen, die zwei konkret belegten FR-Mischseiten abdecken und eine klare Locale-Entscheidung treffen: vollständige fachlich geprüfte FR-Übersetzung oder ausdrücklich freigegebene temporäre Deindexierung/Depublish-Strategie. Erst nach grüner Preview und Diff einen zulässigen Theme-Workflow erwägen und öffentlich DE/FR zurücklesen. Liechtenstein-Merchant-Versanddaten nur nach belegter realer Versandfähigkeit/Kosten und separater Freigabe ändern. Bereits korrigierte Produkte nicht blind erneut schreiben.",
       "blockers": [
         "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
         "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
@@ -8833,14 +8833,14 @@
       "id": "checkout-email3-quality-20261103",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r115_all_three_flows_draft_email3_placeholder_confirmed_neutral_copy_proposed_not_applied",
-      "title": "Dritte Checkout-Mail ohne Platzhalterbetreff oder unbelegte Knappheit/Frist",
-      "lastEvidenceDate": "2026-11-06",
-      "belegArt": "R115_CURRENT_FLOW_DEFINITIONS_AND_ONE_7_DAY_REPORT_PROPOSAL_ONLY",
-      "lastEvidence": "Klaviyo XWqMAD/LuxeStyle CH/EuropeZurich/USD und Placed Order W7XTVD frisch bestätigt. Vse76a, VbLQj6 und RnTvsY aktuell draft. Welcome2Empfänger/2Zustellungen/1Öffnung/0Klicks/0zugerechnetePlacedOrders; PostPurchase4/4/1/0/0; Vse76a fehlt im Report und bleibt unbekannt. E-Mail3 in Vse76a weiterhin mit Email #3 Subject und leerer Vorschau. Neutraler Betreff/Vorschau als Freigabeentwurf formuliert; kein Flow-/E-Mail-/Versandwrite.",
-      "nextAllowedStep": "Nach Inhaberfreigabe ausschliesslich Betreff und Vorschau von E-Mail3 in Vse76a finalisieren und Flow sowie alle Nachrichten draft lassen; danach Diff und Rücklesung. Aktivierung separat und nur nach erneuter Flow-/Trigger-/Capture-Prüfung.",
+      "state": "r148_r135_flow_report_reused_xegbtb_email2_discount_claim_neutralisation_proposed_not_applied",
+      "title": "Checkout-Recovery-Mail ohne Platzhalter oder unbelegten Rabattclaim",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R148_REUSE_OF_R135_DAILY_FLOW_REPORT_AND_SINGLE_XEGBTB_EMAIL2_NEUTRAL_COPY_PROPOSAL_NO_WRITE",
+      "lastEvidence": "Heute bereits einmal belegter R135-Stand ohne zweite API-Abfrage wiederverwendet: Klaviyo XWqMAD/USD und Shopify CHF getrennt; Placed Order W7XTVD; Vse76a, VbLQj6, RnTvsY und XEGbTB Draft. Vse76a fehlt im Report01.–07.11. und bleibt leistungsmässig unbekannt; Welcome1 Zustellung/1 Öffnung, PostPurchase4/1; fehlende Klick-/Conversion-/Revenuefelder unbekannt. Capture-HTML öffentlich, Forms-API ohne sichtbare Zeilen, E2E-Capture unbekannt. XEGbTB Email2 enthält einen unbelegten10%-Claim. Einziger Freigabeentwurf: Betreff Dein Warenkorb wartet, Vorschau Prüfe deine Auswahl und setze die Bestellung fort, CTA Warenkorb ansehen. Kein Flow-/Template-/Status-/Versandwrite.",
+      "nextAllowedStep": "Nach konkreter Inhaberfreigabe ausschliesslich Email2 von XEGbTB frisch an aktuelle ID/Originalbytes binden und den unbelegten Rabattclaim durch den neutralen Betreff/Vorschau/CTA ersetzen; Flow und alle Nachrichten Draft lassen, danach exakten Diff und Readback dokumentieren. Keine Aktivierung, Rabattkonfiguration, Nachricht oder Lieferzusage ableiten.",
       "blockers": [
-        "Inhaberfreigabe für konkreten Betreff/Vorschautext fehlt.",
+        "Inhaberfreigabe für den neutralen XEGbTB-Email2-Betreff, die Vorschau und den CTA fehlt.",
         "Vse76a-Leistung im aktuellen Report unbekannt.",
         "Tatsächlicher Capture-Weg bleibt unbekannt; Formular-API lieferte keine Datensätze."
       ],
@@ -9136,11 +9136,11 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r139_31_objects_49_channel_states_four_guarded_updates_gaps_preserved",
+      "state": "r148_27_objects_42_states_no_duplicates_ig_fb_covered_other_channel_gaps_no_write",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R139_FRESH_METRICOOL_IDENTITY_PLAN_COLLISION_AND_GUARDED_EXISTING_POST_UPDATES",
-      "lastEvidence": "Shopify und alle sechs Metricool-Identitäten frisch passend.31 Planobjekte/49 Kanalzustände:19 aktiv/12 Draft,3 PUBLISHED/46 PENDING. IG/FB08.-15.11. aktiv abgedeckt; keine aktuelle Slotkollision oder exakte Text-/Medienkopie. JCB-TikTok09.11.18:00 autoAddMusic entfernt, ID420725256/UUID-7893674518673470896 aktiv/PENDING. USB-Flaschenöffner15.11. wegen rueckhol-0907 ID420724799/UUID-3833193365444016309 Draft/Auto aus. Versandkarussells15.11.16:00 IG420726136/UUID6199136659928140012 und FB420728374/UUID7768651932591999367 aktiv/PENDING; FB-UTM20261115. TikTok10.-15.11., Pinterest09.-15.11., YouTube/Threads aktive Lücken. Pinterest08.11.20:00 ID413266978/UUID5938318811609320266/Board1111333714239531706. Vier YT-Drafts madeForKids=false;11 Videoobjekte Draft/Auto aus. Kristallkorrekturdatei fehlt; kein Upload. Keine Kennzahlwiederholung.",
+      "belegArt": "R148_FRESH_METRICOOL_IDENTITY_PLAN_PUBLISHED_STATE_COLLISION_AND_GAP_READ_NO_WRITE",
+      "lastEvidence": "Metricool19:06 EuropeZurich frisch passend: Brand6227837, Zone und alle sechs Konten exakt. Fenster bis16.11.00:00:27 Objekte/42 Kanalzustände;17 aktive Objekte/28 Zustände draftfalse/autopublishtrue und10 Drafts/14 Zustände drafttrue/autopublishfalse. IG/FB ID407889412/UUID-6564064169639197228 11:00 sowie TikTok ID415554461/UUID-9010345156192940856 12:00 PUBLISHED. Alle zukünftigen Zustände PENDING; keine doppelte UUID, exakte kanalgleiche Text-/Mediendublette oder Zeitkollision. IG/FB09.–15. täglich aktiv. TikTok nur09.11.18:00 ID420725256/UUID-7893674518673470896, Lücken10.–15. Pinterest08.11.20:00 ID413266978/UUID5938318811609320266/Board1111333714239531706, Lücken09.–15. YouTube keine aktive Veröffentlichung, vorhandene Drafts madeForKids=false; Threads keine Objekte. Neun zukünftige Videoobjekte bleiben Draft wegen fehlender Master-/Rechte-/Produktbindung. R135-Teilmetriken nicht wiederholt; fehlende Tage unbekannt. Null Writes.",
       "nextAllowedStep": "Keine Lücke automatisch füllen. Kristallkorrekturdatei erst nach tatsächlichem Auffinden, Hash-/Bild-/Ton-/Rechteprüfung und Masterledger verwenden. Vor Pinterest/YouTube/Threads weiterhin aktuelle Produkt-, Medien-, Board-/Zielgruppen-, Rechte-, Historien- und Kollisionsgates prüfen. Bestehende IDs/UUIDs erhalten; unknown nicht duplizieren.",
       "blockers": [
         "Kein aktuell varianten- und rechtegebundener professioneller Master; daher keine Lückenfüllung.",
@@ -11317,6 +11317,24 @@
         "projectMemoryBlob": "85ac6d503a30f70f61f43d3ea497fa0eacf7098a"
       },
       "action": "R147: An exact targeted Shopify read confirmed the ACTIVE projector with12 images,12 tags and seven current A-G variants/SKUs at CHF34.90-51.90, all availableForSale with quantity0 but untracked CONTINUE. The live description was corrected by removing the unverified10-20-day claim, visible shield/shopping emojis and the Situation drehen typo; admin and public HTTP200/canonical readback confirmed the new focus/Galaxie wording with core fields unchanged. The historical master variant/SKU is stale and blocked from binding/publication. Motif and commercial media/edit/advertising rights remain unknown, so no social write or finished film claim. Tasks remain24."
+    },
+    {
+      "revision": 148,
+      "at": "2026-11-08T19:22:32+01:00",
+      "actor": "codex",
+      "source": {
+        "shopifyProductIds": [
+          "gid://shopify/Product/15521256604033",
+          "gid://shopify/Product/15470028915073"
+        ],
+        "metricoolReadAt": "2026-11-08T19:06:00+01:00",
+        "workflowRuns": [
+          42508494486,
+          42508762409
+        ],
+        "readAt": "2026-11-08T19:22:32+01:00"
+      },
+      "action": "R148: Shopify and Metricool identities matched. Two exact ACTIVE products were read with price/image/variant/purchasability/inventory fields and channel guards. Metricool returned27 objects/42 channel states with IG/FB daily active09-15, TikTok only09, Pinterest only08, no active YouTube/Threads, no exact duplicates/collisions and no write; R135 partial metrics and Klaviyo were reused without another daily report. The single projector master was refined only as an18s/540-frame storyboard with six UTMs, no MP4 or rights binding. Targeted live SEO confirmed several prior fixes but two FR self-canonical pages still serve German content; Merchant CSV indicates3227 unique LI shipping-info cases, no setting change. Guarded plan42508494486 and one-product Canary42508762409 succeeded; only Tasse15422823465345 is live on v6.3.1. Responsive E2E remains UNKNOWN after resource/browser failures, so no post-canary full plan/apply. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -18515,5 +18533,148 @@
       "canonicalConfirmed": true,
       "coreFieldsPreserved": true
     }
+  },
+  "run148": {
+    "at": "2026-11-08T19:22:32+01:00",
+    "scope": "compact_content_sales_package_exact_product_reads_metricool_plan_targeted_seo_and_guarded_v631_canary",
+    "identities": {
+      "shopify": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+      "metricoolBrandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "allExpectedChannelsMatched": true
+    },
+    "products": {
+      "projector": {
+        "id": "gid://shopify/Product/15521256604033",
+        "status": "ACTIVE",
+        "variantCount": 7,
+        "priceRangeCHF": ["34.90", "51.90"],
+        "allAvailableForSale": true,
+        "tracksInventory": false,
+        "inventoryPolicy": "CONTINUE",
+        "quantityAllZero": true,
+        "stockPromiseAllowed": false,
+        "imageCount": 12,
+        "channelGuardTags": [],
+        "ownerRueckholTags": [],
+        "contentEligibility": "BLOCKED_AUSWAHL_OFFEN_VARIANT_FILM_RIGHTS_UNBOUND"
+      },
+      "bruder": {
+        "id": "gid://shopify/Product/15470028915073",
+        "status": "ACTIVE",
+        "variantId": "gid://shopify/ProductVariant/55970901557633",
+        "sku": "fortura-062650",
+        "priceCHF": "36.90",
+        "availableForSale": true,
+        "tracksInventory": true,
+        "inventoryPolicy": "DENY",
+        "inventoryQuantity": 45,
+        "imageWidth": 2324,
+        "imageHeight": 1704,
+        "channelGuardTags": [],
+        "ownerRueckholTags": [],
+        "contentPush": false
+      }
+    },
+    "metricool": {
+      "objects": 27,
+      "channelStates": 42,
+      "activeObjects": 17,
+      "activeChannelStates": 28,
+      "draftObjects": 10,
+      "draftChannelStates": 14,
+      "publishedToday": ["instagram", "facebook", "tiktok"],
+      "futureState": "PENDING",
+      "exactDuplicates": 0,
+      "timeCollisions": 0,
+      "activeCoverage": {
+        "instagram": "2026-11-09..2026-11-15",
+        "facebook": "2026-11-09..2026-11-15",
+        "tiktok": "2026-11-09 only",
+        "pinterest": "2026-11-08 only",
+        "youtube": "none",
+        "threads": "none"
+      },
+      "metricsRequeried": false,
+      "metricsSourceRevision": 135,
+      "validMetricIds": {
+        "instagram": ["IGEV05", "IGEV38"],
+        "facebook": ["FBEV49", "FBEV34"],
+        "tiktok": ["TKEV12", "TKEV13", "TKEV14", "TKEV15"],
+        "pinterest": ["PIEV01", "PIEV04"],
+        "youtube": ["YTEV02", "YTEV10", "YTEV12", "YTEV19"],
+        "threads": ["THEV06", "THEV05"]
+      },
+      "missingDays": "UNKNOWN",
+      "writes": 0
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "status": "STORYBOARD_NO_MP4",
+      "durationSeconds": 18,
+      "frames": 540,
+      "format": "1080x1920",
+      "fps": 30,
+      "hooks": ["Dein Raum. Neues Licht.", "Licht im Detail."],
+      "preferredHook": "Licht im Detail.",
+      "channelDrafts": 6,
+      "renderedMp4": false,
+      "rightsBound": false,
+      "socialWrites": 0
+    },
+    "klaviyo": {
+      "requeried": false,
+      "sourceRevision": 135,
+      "accountCurrency": "USD",
+      "shopCurrency": "CHF",
+      "placedOrderMetricId": "W7XTVD",
+      "flows": {
+        "Vse76a": "draft",
+        "VbLQj6": "draft",
+        "RnTvsY": "draft",
+        "XEGbTB": "draft"
+      },
+      "singleProposal": "Neutralise unsupported 10-percent claim in XEGbTB email2",
+      "writes": 0
+    },
+    "seo": {
+      "targetedLiveRead": true,
+      "fixedSamplesConfirmed": ["collection_double_phrase", "old_ch_only_shipping", "two_tiktok_placeholders"],
+      "mixedFrenchPagesConfirmed": 2,
+      "mainPullRequest": 2975,
+      "mainPullRequestState": "DRAFT_NOT_LIVE",
+      "merchantUniqueLiechtensteinShippingInfoCases": 3227,
+      "settingsWrites": 0
+    },
+    "selfDesign": {
+      "planRun": 42508494486,
+      "planResult": "SUCCESS_19_TOTAL_16_CHANGED_3_BLOCKED_UNCHANGED",
+      "canaryRun": 42508762409,
+      "canaryProductId": "gid://shopify/Product/15422823465345",
+      "canaryResult": "SUCCESS_ADMIN_PUBLIC_READBACK",
+      "canaryVersion": "6.3.1",
+      "assetSha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
+      "sri": "sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA=",
+      "responsiveE2E": "UNKNOWN_EXIT137_PAGE_CRASH_WRONG_VIEWPORT_AND_INVALID_INTERCEPTION_ID",
+      "fullPlanAfterCanaryDispatched": false,
+      "fullApplyDispatched": false,
+      "currentMix": {
+        "v631CanaryProducts": 1,
+        "v630EditorProducts": 15,
+        "blockedProducts": 3
+      },
+      "nextAllowedStep": "375/390px and desktop E2E in capable browser; then exact 15 changed/4 unchanged plan before any full apply"
+    },
+    "prohibitedWrites": {
+      "customers": 0,
+      "discounts": 0,
+      "budgets": 0,
+      "flows": 0,
+      "dns": 0,
+      "paidRenders": 0,
+      "orders": 0,
+      "aban": 0
+    },
+    "taskCount": 24
   }
 }
