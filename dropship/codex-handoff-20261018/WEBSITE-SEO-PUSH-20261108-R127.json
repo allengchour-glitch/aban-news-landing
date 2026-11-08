@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_WEBSITE_SEO_PUSH_R127_20261108",
+  "checkedAt": "2026-11-08T00:55:03+01:00",
+  "timezone": "Europe/Zurich",
+  "identity": {
+    "shop": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "shopDomain": "luxestyle.ch",
+    "shopUrl": "https://luxestyle.ch",
+    "currency": "CHF",
+    "metricoolBrandId": 6227837,
+    "metricoolTimezone": "Europe/Zurich",
+    "channels": {
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "result": "matched_no_external_write"
+  },
+  "semrush": {
+    "connected": true,
+    "currentData": "unknown_no_api_units",
+    "error": "no_api_units",
+    "retryable": false,
+    "newReports": 0
+  },
+  "firecrawl": {
+    "mapId": "01a1b863-52a9-705d-9e71-f5932608aa60",
+    "mapLimit": 200,
+    "queryParametersIncluded": false,
+    "structuredPageSample": 12,
+    "creditsBefore": 1615,
+    "creditsAfter": 1485,
+    "observedBalanceDifference": 130,
+    "creditAttribution": "balance_cannot_attribute_to_individual_urls_or_clients",
+    "localeLimitation": "fr_product_request_partly_normalized_to_de; raw_http_is_authoritative"
+  },
+  "liveAudit": {
+    "rawPages": 12,
+    "htmlBytesRangeApprox": [869000, 1720000],
+    "uniqueInternalUrlsRange": [779, 818],
+    "productPageUniqueInternalUrlsApprox": 781,
+    "megaMenu": {
+      "mainThemeId": "gid://shopify/OnlineStoreTheme/213013037447",
+      "mainThemeUpdatedAt": "2026-11-07T19:56:00Z",
+      "headerGroup": "main-menu",
+      "livePages": {
+        "home": {"bytes": 1043816, "uniqueRawLinks": 813},
+        "product": {"bytes": 1217887, "uniqueRawLinks": 778},
+        "collection": {"bytes": 1649323, "uniqueRawLinks": 799},
+        "selfDesign": {"bytes": 1348375, "uniqueRawLinks": 794}
+      },
+      "headerAnchors": 1487,
+      "headerUniqueTargets": 751,
+      "productMainAnchors": 10,
+      "productMainUniqueTargets": 8,
+      "cause": "complete mobile and desktop navigation rendered together",
+      "cap6": {"urlsHidden": 83, "approxRemainingUniqueUrls": 698},
+      "cap4": {"urlsHidden": 192},
+      "patch": "blocked; mobile group summaries have no href and repo warns against link removal",
+      "nextStep": "audit 84 group landing pages and child coverage; preserve mobile all-in links and active/current; test unpublished theme with keyboard, mobile, desktop and no-JS QA"
+    },
+    "sitemapUrlsChecked": 45,
+    "sitemapUrlsHttp200NoRedirect": 45,
+    "internalTargetsChecked": 12,
+    "internalTargetsHttp200NoRedirect": 12,
+    "jsonLdSyntaxValid": "12/12",
+    "french": {
+      "indexAndPagesWithoutNoindex": [
+        "/fr",
+        "/fr/pages/versand-lieferung",
+        "/fr/pages/rueckgabe",
+        "/fr/pages/impressum",
+        "/fr/pages/alle-kategorien"
+      ],
+      "content": "german_or_mixed_under_fr_declaration",
+      "checkedProductsAndCollections": "noindex, follow",
+      "selfCanonicalAndHreflangFr": "present_in_sample",
+      "childSitemaps": 62,
+      "pageSitemapUrls": 105,
+      "themeHreflangSource": {
+        "themeLiquidChecksum": "cf5ee5a64ca940edf4120b09c073e58f",
+        "metaTagsLiquidChecksum": "de2a6f9cf9200f49fe65ad6ca42f1643",
+        "explicitHreflangOrAlternateOccurrences": 0,
+        "source": "server_side_content_for_header",
+        "safeThemePatch": false,
+        "nativeLocaleOrMarketChange": "out_of_scope"
+      }
+    },
+    "shipping": "conflicting_1_2_vs_2_3_and_other_windows; no_write_without_fulfillment_proof"
+  },
+  "alreadyFixedNotDuplicated": {
+    "collectionDuplicatePhrase": "absent_live_and_already_in_pr2912",
+    "tiktokPlaceholderLinks": "absent_on_three_checked_products",
+    "switzerlandOnlyShippingPhrase": "absent_on_checked_products",
+    "writes": 0
+  },
+  "pullRequests": {
+    "frNoindex": {
+      "number": 2916,
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2916",
+      "draft": true,
+      "base": "claude/luxestyle-audit-0711",
+      "head": "b2bd3edb9b53fd268797937982947200bc3d7313",
+      "tests": "44/44 static and LiquidJS render checks passed",
+      "merged": false,
+      "themeWrite": false,
+      "deployed": false
+    },
+    "safeSeoWebsite": {
+      "number": 2918,
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2918",
+      "draft": true,
+      "base": "main",
+      "head": "22d109fff1a6119112a1423fd2da6ed77d37e32a",
+      "scope": [
+        "SEO review restricted to 1-6 explicit product IDs and DRY_RUN default",
+        "collision-safe ASCII handles in three CJ writers",
+        "global videos restricted to homepage; product pages require product metafield"
+      ],
+      "tests": "37/37 combined tests plus existing video-source regressions passed",
+      "independentReview": "two blockers found, fixed and rechecked",
+      "ciSimulation": "local unshare denied",
+      "githubCoreChecks": "LuxeStyle tests, both check jobs, lagerbestand, selbst-gestalten and Cloudflare Pages succeeded",
+      "preDeployValidation": "cancelled after 8m11s during repository-wide Validate HTML files; no concrete assertion or log failure; later steps skipped",
+      "knownWorkers": "three known Workers builds failed",
+      "cloudflarePages": "automatic job success with checkout and wrangler deploy skipped; no deployment evidence",
+      "merged": false,
+      "shopifyWrite": false,
+      "themeWrite": false,
+      "deployed": false
+    },
+    "textOnlySocial": {
+      "number": 2919,
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2919",
+      "draft": true,
+      "base": "codex/luxestyle-pipeline-guards-20261108",
+      "head": "732c251fb8aa38de5ffac888087387c5c1d8fe92",
+      "scope": "remove voiceover/Piper from active LuxeStyle reel config; require luxe-premium.wav and rights flag; legacy paid or voiceover workflows fail closed",
+      "localValidation": "28/28 policy, reel, Metricool, video, renderer, YAML and diff checks passed",
+      "githubInitialFailure": "dry-run required ffmpeg on Ubuntu 26 although no render was requested",
+      "githubFix": "tool and font checks now run only for a real render, after voice and rights gates and before fetch",
+      "githubFollowUpRun": 42427691007,
+      "githubFollowUpState": "SUCCESS: tests, lagerbestand and selbst-gestalten all succeeded, including Renderer stays text-only",
+      "merged": false,
+      "dispatched": false,
+      "rendered": false,
+      "posted": false,
+      "deployed": false
+    }
+  },
+  "dailyData": "No Metricool analytics, Klaviyo flow report, Shopify order report or purchase-watch read in R127.",
+  "writes": {
+    "githubBranchPushes": 3,
+    "draftPullRequests": 3,
+    "shopifyProducts": 0,
+    "shopifyTheme": 0,
+    "shopifySettings": 0,
+    "metricool": 0,
+    "socialPublications": 0,
+    "manualWorkflowDispatches": 0,
+    "merges": 0,
+    "deployments": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "budget": 0,
+    "discount": 0,
+    "shipping": 0,
+    "customerMessages": 0,
+    "orders": 0,
+    "renders": 0
+  },
+  "documentationPreWriteSha256": {
+    "README.md": "2bdbea7d30c3583955df75a25d77331676b61914d0556fad4f4b8bc72bae9950",
+    "PROJEKTGEDAECHTNIS.md": "3c8c1c96ff2fc24800776eb2fa65394bffbdc27f8807ae69b1d176d7d2b68180",
+    "ARBEITSSTAND.json": "1caee0985ba7dea1f275cdf3a6cb1b32b262dbbc4bcdf61534baa9f82441dc65",
+    "TAGESPROTOKOLL.md": "0829901597983348af4f2dd32d7dcccd97aa749ddf7e8cc0391b4211c2c36a64"
+  },
+  "sourceCommitBeforeDocumentation": "aa0c7adb7afaafef02d00cc6d366ef3dcd2f985c"
+}

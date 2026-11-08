@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 126,
-  "updatedAt": "2026-11-08T00:36:53+01:00",
+  "revision": 127,
+  "updatedAt": "2026-11-08T00:55:03+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -14684,5 +14684,52 @@
       "ARBEITSSTAND.json": "792a4709bf68d437b9b507c1648b06a695dbc793011343107922936af54351fd",
       "TAGESPROTOKOLL.md": "338019844fd4fcf94edc038822a2ed12137d54638e3270c2189b344076cc54d9"
     }
+  },
+  "followUpRunR127": {
+    "at": "2026-11-08T00:55:03+01:00",
+    "evidence": "dropship/codex-handoff-20261018/WEBSITE-SEO-PUSH-20261108-R127.json",
+    "report": "dropship/codex-handoff-20261018/WEBSITE-SEO-PUSH-20261108-R127.md",
+    "identity": "Shopify LuxeStyle/au3j0y-hq.myshopify.com/CHF/primary luxestyle.ch and Metricool brandId6227837/Europe-Zurich with six expected channels matched.",
+    "semrush": "Connected but current reads returned no_api_units, retryable=false; no current Semrush report.",
+    "firecrawl": {
+      "mapId": "01a1b863-52a9-705d-9e71-f5932608aa60",
+      "urlLimit": 200,
+      "pageSample": 12,
+      "creditsBefore": 1615,
+      "creditsAfter": 1485,
+      "limitation": "One /fr/ product request was normalized to DE; raw HTTP is authoritative for locale."
+    },
+    "liveAudit": "Five checked FR index/page paths are German or mixed without noindex; checked FR products/collections are noindex, follow. 62 FR child sitemaps and 105 FR page sitemap URLs remain. 45 sitemap URLs and 12 internal targets returned HTTP200 without redirect; JSON-LD 12/12 valid. Twelve raw pages measured about 869KB-1.72MB and 779-818 unique internal URLs. Shipping conflicts remain unmodified without fulfillment proof.",
+    "megaMenu": "MAIN theme gid213013037447 (updated 2026-11-07T19:56Z) renders complete mobile and desktop navigation together. Header has 1487 anchors/751 unique targets while product main has 10/8. Live home/product/collection/self-design measured 1043816/1217887/1649323/1348375 bytes and 813/778/799/794 unique raw links. Blind caps 6/4 hide 83/192 URLs; mobile summaries lack href and repo requires link preservation, so no safe patch. Next: audit 84 group landings and child coverage, preserve mobile all-in and active/current, then unpublished-theme keyboard/mobile/desktop/no-JS QA.",
+    "hreflangBlocker": "Current MAIN theme.liquid cf5ee5a64ca940edf4120b09c073e58f and meta-tags.liquid de2a6f9cf9200f49fe65ad6ca42f1643 contain zero explicit hreflang/alternate sources; alternates come server-side from content_for_header, so no safe theme patch. Locale/market settings are out of scope.",
+    "pullRequests": {
+      "2916": {
+        "head": "b2bd3edb9b53fd268797937982947200bc3d7313",
+        "base": "claude/luxestyle-audit-0711",
+        "state": "draft_unmerged",
+        "tests": "44/44 local static and LiquidJS render checks passed",
+        "effect": "no theme write or deploy"
+      },
+      "2918": {
+        "head": "22d109fff1a6119112a1423fd2da6ed77d37e32a",
+        "base": "main",
+        "state": "draft_unmerged",
+        "tests": "37/37 combined plus existing video-source regressions passed",
+        "scope": "1-6 ID SEO review, ASCII handles, homepage-only global videos; two independent review blockers fixed",
+        "ci": "local ci_simulation blocked by unshare. GitHub LuxeStyle tests, both check jobs, lagerbestand, selbst-gestalten and Cloudflare Pages passed. Pre-deploy validation was cancelled after 8m11s during repository-wide Validate HTML files without a concrete assertion/log failure; later steps skipped. Three known Workers builds failed. Pages checkout and wrangler deploy steps were skipped, so no deploy evidence."
+      },
+      "2919": {
+        "head": "732c251fb8aa38de5ffac888087387c5c1d8fe92",
+        "base": "codex/luxestyle-pipeline-guards-20261108",
+        "state": "draft_unmerged_followup_ci_success",
+        "tests": "28/28 local; follow-up run 42427691007 fully SUCCESS for tests, lagerbestand and selbst-gestalten, including Renderer stays text-only",
+        "scope": "no voiceover/Piper; only rights-gated luxe-premium.wav; legacy paid/voice workflows fail closed",
+        "initialCiFix": "Dry-run no longer requires ffmpeg/font tools; those checks run only for a real render after voice/rights gates and before fetch"
+      }
+    },
+    "alreadyFixedNotDuplicated": "Collection duplicate sentence, product TikTok placeholders and old Switzerland-only shipping phrase were absent in current live counterchecks and were not rewritten.",
+    "dailyData": "No Metricool analytics, Klaviyo report, Shopify order report or purchase-watch read in R127.",
+    "actualChanges": "Three GitHub draft PR branch pushes and R127 documentation only. No merge, manual workflow dispatch, Shopify/product/theme/settings write, Metricool/social write, flow, DNS, budget, discount, customer, order, render or deployment.",
+    "nextStep": "Review PR2916 with PR2912, review PR2918 against successful core checks plus cancelled pre-deploy evidence, and review PR2919 after its successful aggregate CI. Keep FR native locale/market changes, menu reduction and shipping normalization separate and evidence-bound."
   }
 }
