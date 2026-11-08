@@ -1,6 +1,6 @@
 # LuxeStyle Assist 2.4 für Claude Code und Codex
 
-Der Helfer bündelt lokale Projektprüfung, feste Regressionstests und eine beständige Aufgabenübergabe. Keine Zusatzpakete, keine neue API-Verbindung und kein laufender Serverdienst nötig. Er ruft kein KI-Modell auf, veröffentlicht nichts und importiert keine operativen Publisher. Er kann nicht garantieren, dass alle Automationen funktionieren oder jemand kauft.
+Der Helfer bündelt lokale Projektprüfung, feste Regressionstests und eine beständige Aufgabenübergabe. Für `luxestyle-assist` sind keine Zusatzpakete, keine API-Verbindung und kein laufender Serverdienst nötig. Er ruft kein KI-Modell auf, veröffentlicht nichts und importiert keine operativen Publisher. Er kann nicht garantieren, dass alle Automationen funktionieren oder jemand kauft. Der getrennte, rein lesende Projektserver `luxestyle-cj-read` ist in [CJ-READ-MCP.md](CJ-READ-MCP.md) beschrieben.
 
 ## Benutzung in Claude Code
 
@@ -64,7 +64,7 @@ JSON
 
 ## Tests und Fehlermeldungen
 
-`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen acht Regressionstest-Dateien. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
+`core` startet ausschliesslich die bestehenden Tests für Shopify-GraphQL-, Secret- und Kanalhelfer. `seo` startet ausschliesslich `seo-optimizer_test.mjs` und `seo_titel_test.mjs`; fehlen diese auf dem gewählten Branch, ist das Ergebnis unbekannt. `assist` prüft die eigenen zehn Regressionstest-Dateien, einschliesslich der vollständig gemockten CJ-Lese-MCP-Tests. Diese Integrationstests benötigen Kindprozesse und laufen ohne Netzwerk-Preload, aber mit bereinigter Umgebung. Die SEO-Überarbeitung aus PR [2694](https://github.com/allengchour-glitch/aban-news-landing/pull/2694) war beim Aufbau noch ein Entwurf und wird nicht stillschweigend integriert.
 
 Jedes feste Profil liest die Originalbytes seiner bekannten Tests, direkten Helfer und gegebenenfalls vorhandenen Root-`package.json` vor und nach dem Lauf. Der Beleg enthält Laufzeit, Zeitpunkte, Dateihashes und beide Fingerprints. Fehlende, unlesbare, verlinkte oder zu grosse Pflichtdateien verhindern den Lauf mit `unknown`. Geänderte/verschwundene Inputs machen ein sonst bestandenes Ergebnis unbekannt; ein tatsächlich fehlgeschlagener Test bleibt fehlgeschlagen. `check changed` liest nach den Profilen zusätzlich die Pfadabdeckung erneut. Neue unbekannte Pfade oder unlesbare Git-Daten bleiben sichtbar. Das ist kein unveränderlicher Snapshot: nur feste bekannte Inputs und zwei Beobachtungen, keine vollständige transitive Abhängigkeitserfassung. Zwischenzeitlich geänderte und rechtzeitig zurückgesetzte Bytes können unerkannt bleiben.
 
@@ -84,7 +84,7 @@ Pro Test höchstens 15 Sekunden und 16 KiB Ausgabe, für das eigene Assist-Profi
 
 Bei Timeout oder Ausgabelimit wird auf POSIX nur die eigene neu gestartete Prozessgruppe beendet. Offene Ausgabekanäle von Unterprozessen dürfen die Rückgabe nicht unbegrenzt verzögern; ein begrenzter Abbruchpfad schliesst die lokalen Streams. Diese Prozessverwaltung ersetzt keine Betriebssystem-Sandbox und garantiert keine Kontrolle über absichtlich abgekoppelte Prozesse.
 
-Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs automation/lib/claude_assist_evidence_test.mjs`.
+Fehler, Timeout, Ausgabelimit und fehlende Dateien bleiben unterscheidbar. Keine automatische Reparatur, Wiederholung von Writes oder Umdeutung von unbekannt zu Null. Eigene Regressionen: `node --test automation/lib/claude_assist_test.mjs automation/lib/claude_assist_mcp_test.mjs automation/lib/claude_assist_changes_test.mjs automation/lib/claude_assist_readiness_test.mjs automation/lib/claude_assist_launch_test.mjs automation/lib/claude_assist_runner_test.mjs automation/lib/claude_assist_commits_test.mjs automation/lib/claude_assist_evidence_test.mjs automation/lib/cj_readonly_test.mjs automation/lib/cj_read_mcp_test.mjs`.
 
 MCP wartet auf abgeschlossene Ausgabeschreibvorgänge und nötige Backpressure; geschlossene/fehlgeschlagene Ausgaben brechen mit statischer Meldung ab, statt unbegrenzt auf `drain` zu warten oder Diagnosetext weiterzugeben. JSON auf CLI-stdin wird wie MCP streng als UTF-8 gelesen; ungültige Bytes erzeugen keine ersetzten Zeichen in einer gespeicherten Übergabe.
 

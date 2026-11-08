@@ -251,3 +251,15 @@ Recherche, noch keine eingerichtete Generator-Verbindung:
 - Für Videoübergaben MP4 bevorzugen und die aktuellen Vorgaben des jeweiligen Kanals prüfen: https://help.metricool.com/publishing-requirements-for-images-and-videos-from-metricool-vfc8n
 
 Zielablauf mit den vorhandenen Mitteln: Generator oder Renderer → Marken-, Produkt-, Rechte-, Bild- und Tonprüfung → freigegebene Online-MP4 → bestehende Metricool-Planung ohne Duplikate ergänzen → Zustand je Zielkanal frisch kontrollieren → gemessene Ergebnisse auswerten. LuxeStyle und oio getrennt halten. Die aktuelle ChatGPT-Verbindung bietet Termin- und Beitragsfunktionen, aber keinen Aufruf zum Hochladen einer lokalen Videodatei. Das ist eine Grenze des vorhandenen Connectors; Metricool selbst unterstützt den Dateiupload. Die Medienübergabe ist vor einer behaupteten Vollautomation nachzuweisen.
+
+## Bewertungsimporter im Shop-Büro · 08.11.2026
+
+Der sechste Shop-Arbeitsplatz zeigt den vorhandenen CJ→Judge.me-Importer. Die Laufquelle liest `cj-reviews.yml` über den bestehenden Büroabruf; kein zusätzlicher Importzeitplan und kein neuer Importdienst. Ein erfolgreicher Lauf bleibt gelb: Er unterscheidet weder Testlauf noch No-op oder bestätigte Veröffentlichung. Fehler bleiben rot, fehlende Messungen unbekannt; alte Laufzeiten werden nicht aufgefrischt.
+
+Die Figur öffnet Judge.me und einen vorbereiteten Prüfauftrag mit Produktzuordnung, Quellenherkunft, Dublettenschutz und Gegenprüfung. Der Auftrag veröffentlicht keine Bewertungen, kontaktiert keine Kunden und startet keinen Import. Importierte Quellbewertungen dürfen nicht als verifizierte Käufe im eigenen Shop ausgegeben werden. Keine Kunden- oder Bewertungstexte werden im öffentlichen Büro angezeigt.
+
+## Regelbetrieb des Bewertungsimporters · 08.11.2026
+
+Auf ausdrücklichen Folgeauftrag arbeitet der vorhandene `cj-reviews.yml` alle sechs Stunden (Minute 47 UTC). Es bleibt ein einziger Importdienst mit gemeinsamer Laufsperre, 30-Minuten-Grenze und bisherigen Fehler-/Drosselungsregeln. Pro Lauf höchstens fünf aktive CJ-Produkte, 50 durchsuchte Produkte und zwei Quellbewertungen je Produkt. Alle gültigen Sterne 1–5 sind zugelassen; keine Beschränkung auf positive Bewertungen. Neue Importe enthalten einen sichtbaren CJ-Quellenhinweis und behaupten keinen verifizierten Kauf im eigenen Shop.
+
+`dropship/cj_review_scan.json` speichert nur Abfragekontext und Shopify-Fortsetzungscursor. Nach begrenztem Leerlauf wird auf der nächsten Seite fortgesetzt; am Katalogende beginnt die Suche neu. Bei Importfehlern bleibt der Cursor unverändert, damit keine ungeprüfte Seite übersprungen wird. Trockenläufe verändern weder Suchfortschritt noch Import-Ledger. Checkpoint und Wiederherstellungsartefakt enthalten auch den Suchstand. Der Handstart bleibt standardmäßig ein Trockenlauf; `regular_run` nutzt dieselben festen Grenzen. Ein erfolgreicher Lauf ist weiterhin kein Beleg für eine bestimmte Importmenge oder mehr Verkäufe.

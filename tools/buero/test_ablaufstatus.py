@@ -38,7 +38,7 @@ class AblaufTest(unittest.TestCase):
 
     def test_leser_fragt_nur_bekannte_arbeitsplaetze_ab(self):
         with patch.object(tagespflege,'github_lesen',return_value={}) as read:
-            self.assertEqual(len(ablaufstatus.lesen()),11)
+            self.assertEqual(len(ablaufstatus.lesen()),12)
             self.assertEqual(read.call_args.kwargs['ids'],ablaufstatus.IDS-{'yt_skript','yt_wachstum'})
 
     def test_videoentwurf_ist_keine_veroeffentlichung_oder_wachstum(self):
@@ -51,3 +51,20 @@ class AblaufTest(unittest.TestCase):
         self.assertEqual(rows['yt_wachstum']['status'],'gelb')
         self.assertIn('Kein Upload',rows['yt_video']['befund'])
         self.assertNotIn('Follower',rows['yt_video']['ereignis'])
+
+    def test_bewertungen_erfolg_beweist_keine_veroeffentlichung(self):
+        now=datetime.now(timezone.utc)
+        run={'zeit':now.isoformat(),'status':'completed','conclusion':'success'}
+        row=next(r for r in ablaufstatus.bereinigen({'bewertungen':run},now) if r['id']=='bewertungen')
+        self.assertEqual(tagespflege.WORKFLOWS['bewertungen'],'cj-reviews.yml')
+        self.assertEqual(row['status'],'gelb')
+        self.assertEqual(row['aktiv_h'],0)
+        self.assertIn('Keine Importzahl bestätigt',row['befund'])
+        self.assertIn('Testlauf',row['naechster_schritt'])
+
+    def test_bewertungen_fehler_und_fehlende_messung_bleiben_sichtbar(self):
+        now=datetime.now(timezone.utc)
+        for run,status in [({},'gelb'),({'zeit':now.isoformat(),'status':'completed','conclusion':'failure'},'rot')]:
+            row=next(r for r in ablaufstatus.bereinigen({'bewertungen':run},now) if r['id']=='bewertungen')
+            self.assertEqual(row['status'],status)
+            self.assertEqual(row['aktiv_h'],0)

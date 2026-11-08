@@ -16,6 +16,7 @@ ROLLEN = [
     ('sortiment', 'Sortiments-Experte', 'Shop', 'auswahl', 'analyse', 'Produktdaten und belegte Verbesserungsmöglichkeiten prüfen.'),
     ('seo', 'SEO- und Feed-Experte', 'Shop', 'schaufenster', 'analyse', 'Webseiten-Prototyp, Suchsichtbarkeit und Produktfeed betreuen.'),
     ('lieferbarkeit', 'Lieferbarkeits-Prüfer', 'Shop', 'waechter', 'logistik', 'Bestätigte Lieferprobleme von unbekannten Messungen trennen.'),
+    ('bewertungen', 'Bewertungsimporter', 'Shop', 'bewertungen', 'analyse', 'Echte CJ-Quellbewertungen passend zuordnen, Dubletten prüfen und den Importbeleg in Judge.me gegenlesen.'),
     ('bestand', 'Bestands-Experte', 'Shop', 'fortura', 'logistik', 'Bestandsabgleich und Aktualität der Daten überwachen.'),
     ('versand', 'Versand-Spezialist', 'Versand', 'printful', 'logistik', 'Tracking und offene Übergaben prüfen.'),
     ('community', 'Community- und FAQ-Experte', 'Social Media', 'social_meta', 'kommunikation', 'Kommentarentwürfe und wiederkehrende offene Fragen aufbereiten.'),
@@ -100,5 +101,5 @@ def planen(werkstatt, jetzt=None):
 
 def zustaendig(ident):
     rolle = {'auswahl':'sortiment','schaufenster':'seo','waechter':'lieferbarkeit',
-             'autopilot':'support','fortura':'bestand','printful':'versand', **PROJEKT_ROLLE}.get(ident,'automation')
+             'autopilot':'support','bewertungen':'bewertungen','fortura':'bestand','printful':'versand', **PROJEKT_ROLLE}.get(ident,'automation')
     return next(r for r in katalog() if r['id']==rolle)

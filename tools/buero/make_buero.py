@@ -236,6 +236,12 @@ for _id, _name in [("yt_skript", "Themen & Skripte"), ("yt_video", "Videoprodukt
                  "frisch_h": 0, "quelle": "tools/youtube_studio/studio.py", "figur": "arbeiter", "menge": 0, "aktiv_h": 0})
     ORTE[_id] = ("cloud", "YouTube-Entwurfswerkstatt", "Studio", "Originale Skripte und Textvideo-Entwürfe. Kein bestätigter Upload und keine gemessenen Follower.", WF + "youtube-studio.yml")
 
+ROWS.append({"id": "bewertungen", "bereich": "Shop", "name": "Bewertungsimporter", "kurz": "Bewertungsimporter",
+             "status": "gelb", "befund": "Vorhandener CJ→Judge.me-Importer. Echte Quellbewertungen müssen zum exakt selben Produkt gehören. Noch kein Importbeleg geladen; Anzahl und Veröffentlichung unbekannt.",
+             "ereignis": "Importbeleg prüfen", "ereignis_iso": "", "gemessen": "", "gemessen_text": "Nicht gemessen",
+             "frisch_h": 0, "quelle": "Vorhandener CJ→Judge.me-Importer", "figur": "arbeiter", "menge": 0, "aktiv_h": 0})
+ORTE['bewertungen'] = ('cloud', 'CJ→Judge.me-Importer', 'Judge.me', 'Alle sechs Stunden geplant: höchstens fünf aktive Produkte und zwei echte CJ-Quellbewertungen je Produkt. Dublettenschutz und gespeicherter Suchfortschritt; kein Dauerlauf.', WF + 'cj-reviews.yml')
+
 for _r in ROWS:
     _art, _ort, _kurz, _text, _link = ORTE[_r["id"]]
     _r.update({"ort_art": _art, "ort": _ort, "ort_kurz": _kurz, "ort_text": _text, "link": _link})
@@ -267,6 +273,7 @@ def aktionen(rows):
         "waechter": "Lager- und Lieferbarkeitsbefunde im letzten Lauf ansehen.",
         "autopilot": "Letzten Lauf und dessen konkrete Änderungen prüfen.",
         "fortura": "Bestandsabgleich ansehen; Freigaben bleiben beim Besitzer.",
+        "bewertungen": "Zuerst Testlauf und Produktzuordnung prüfen; veröffentlichte Bewertungen in Judge.me gegenlesen. Keine erfundenen Bewertungen und keine blinde Wiederholung unklarer Importe.",
         "offene": "Offene Bestellungen im Shopify-Admin prüfen und den Versandstatus abgleichen.",
         "bestellungen7": "Die aktuellen Bestellungen im Shopify-Admin ansehen.",
         "dev_bauen": "Werkstatt in GitHub öffnen, bei Bedarf starten und das ZIP im Lauf herunterladen.",
