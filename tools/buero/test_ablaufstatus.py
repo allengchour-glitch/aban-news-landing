@@ -38,5 +38,16 @@ class AblaufTest(unittest.TestCase):
 
     def test_leser_fragt_nur_bekannte_arbeitsplaetze_ab(self):
         with patch.object(tagespflege,'github_lesen',return_value={}) as read:
-            self.assertEqual(len(ablaufstatus.lesen()),8)
-            self.assertEqual(read.call_args.kwargs['ids'],ablaufstatus.IDS)
+            self.assertEqual(len(ablaufstatus.lesen()),11)
+            self.assertEqual(read.call_args.kwargs['ids'],ablaufstatus.IDS-{'yt_skript','yt_wachstum'})
+
+    def test_videoentwurf_ist_keine_veroeffentlichung_oder_wachstum(self):
+        now=datetime.now(timezone.utc)
+        run={'zeit':now.isoformat(),'status':'completed','conclusion':'success'}
+        with patch.object(tagespflege,'github_lesen',return_value={'yt_video':run}):
+            rows={r['id']:r for r in ablaufstatus.lesen()}
+        self.assertEqual(rows['yt_video']['status'],'gruen')
+        self.assertEqual(rows['yt_skript']['status'],'gruen')
+        self.assertEqual(rows['yt_wachstum']['status'],'gelb')
+        self.assertIn('Kein Upload',rows['yt_video']['befund'])
+        self.assertNotIn('Follower',rows['yt_video']['ereignis'])

@@ -5,6 +5,7 @@ from pathlib import Path
 import tagespflege
 
 IDS = {'auswahl','schaufenster','waechter','autopilot','fortura','printful','social_meta','social_pinterest'}
+IDS |= {'yt_skript','yt_video','yt_wachstum'}
 
 
 def bereinigen(runs, jetzt=None):
@@ -31,10 +32,22 @@ def bereinigen(runs, jetzt=None):
                             'Der letzte Ablauf wartet, läuft noch oder endete ohne Erfolgsnachweis. Kein abgeschlossener Arbeitsfortschritt belegt.')
             row['naechster_schritt'] = 'Ergebnis im passenden Arbeitsbereich prüfen; fachliche Wirkung getrennt nachweisen.'
         except (ValueError,TypeError,KeyError,AttributeError): pass
+        if ident.startswith('yt_'):
+            row['quelle']='Automatischer Videoentwurfsbau'
+            if row['gemessen'] and row['status']=='gruen':
+                row['ereignis']='Studio-Lauf erfolgreich'
+                row['befund']='Der Studio-Ablauf mit Skript- und Videoentwurfsbau endete erfolgreich. Kein Upload und kein bestätigter Kanalbetrieb.'
+                row['naechster_schritt']='Entwürfe prüfen; Zielkanal und Veröffentlichungsweg getrennt bestätigen.'
+            if ident=='yt_wachstum':
+                row['status']='gelb'
+                row['ereignis']='Kanalzuordnung offen'
+                row['befund']='Entwurfsbau ist vom Kanalbetrieb getrennt. Follower, Veröffentlichung und Wachstum sind nicht gemessen.'
+                row['naechster_schritt']='Den vorgesehenen YouTube-Kanal legitim verbinden und seine Zuordnung bestätigen.'
         rows.append(row)
     return rows
 
 
 def lesen():
-    runs = tagespflege.github_lesen(Path(__file__).resolve().parents[2], os.environ.get('GITHUB_TOKEN',''), ids=IDS)
+    runs = tagespflege.github_lesen(Path(__file__).resolve().parents[2], os.environ.get('GITHUB_TOKEN',''), ids=IDS-{'yt_skript','yt_wachstum'})
+    for ident in ('yt_skript','yt_wachstum'): runs[ident]=runs.get('yt_video',{})
     return bereinigen(runs)

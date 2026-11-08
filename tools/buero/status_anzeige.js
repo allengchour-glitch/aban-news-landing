@@ -53,7 +53,7 @@
 /* Getrennter, begrenzter Abruf für Shop und Social Media. */
 (function () {
   'use strict';
-  var ids=['auswahl','schaufenster','waechter','autopilot','fortura','printful','social_meta','social_pinterest'];
+  var ids=['auswahl','schaufenster','waechter','autopilot','fortura','printful','social_meta','social_pinterest','yt_skript','yt_video','yt_wachstum'];
   var felder=['status','gemessen','gemessen_text','frisch_h','ereignis','ereignis_iso','befund','quelle','naechster_schritt'];
   var gelesen=0, aktiv=false, signatur='';
   window.__aktualisiereAblaufstatus=async function(){
