@@ -9,7 +9,7 @@ on:
         default: '19,71'
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: printful-catalog-read-${{ github.ref }}
@@ -51,6 +51,23 @@ jobs:
           console.log(`CATALOG_READ files=${files.length} errors=${errors.length}`);
           if (errors.length) process.exit(2);
           NODE
+
+      - name: Katalogbeleg auf isoliertem Branch sichern
+        env:
+          SG_DIR: ${{ runner.temp }}/printful-katalog
+        run: |
+          set -euo pipefail
+          ziel=dropship/selbst-gestalten-fertig-0511/target-katalog-20261108
+          rm -rf "$ziel"
+          mkdir -p "$ziel/katalog"
+          cp "$SG_DIR"/katalog/*.json "$ziel/katalog/"
+          cp "$SG_DIR"/katalog_fehler.json "$SG_DIR"/katalog_index.json "$ziel/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$ziel"
+          git diff --cached --quiet && exit 0
+          git commit -m 'chore: capture targeted Printful catalog evidence'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Katalogbeleg hochladen
         uses: actions/upload-artifact@v4
