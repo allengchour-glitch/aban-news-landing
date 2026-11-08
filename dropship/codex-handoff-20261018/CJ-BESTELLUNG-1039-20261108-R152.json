@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "revision": 152,
+  "observedAt": "2026-11-08T21:01:03+01:00",
+  "timezone": "Europe/Zurich",
+  "shopify": {
+    "shopName": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "order": {
+      "id": "gid://shopify/Order/19135797232007",
+      "name": "#1039",
+      "createdAt": "2026-11-08T20:48:12+01:00",
+      "test": false,
+      "cancelled": false,
+      "financialStatus": "PAID",
+      "fulfillmentStatusAfterCjReadback": "UNFULFILLED",
+      "currentTotal": "34.90",
+      "refunded": "0.00",
+      "gateway": "shopify_payments",
+      "successfulNonTestSale": true,
+      "riskRecommendation": "ACCEPT",
+      "customerPiiStored": false,
+      "line": {
+        "quantity": 1,
+        "title": "Kubanische Gliederkette mit Strass, 45 cm",
+        "variantTitle": "Silber / 24inch",
+        "sku": "CJSL269105308HS",
+        "variantId": "gid://shopify/ProductVariant/67801649709447",
+        "productId": "gid://shopify/Product/15524699767169"
+      },
+      "fulfillmentOrder": {
+        "id": "gid://shopify/FulfillmentOrder/22392203510151",
+        "status": "OPEN",
+        "requestStatus": "UNSUBMITTED"
+      }
+    }
+  },
+  "cj": {
+    "orderNum": "LX1039",
+    "orderId": "SD2611081956340669600",
+    "readbackCount": 1,
+    "initialStatus": "CREATED",
+    "latestStatus": "UNSHIPPED",
+    "productAmount": "6.90",
+    "postageAmount": "6.70",
+    "orderAmount": "13.60",
+    "currency": "USD",
+    "shippingMethod": "CJPacket Ordinary VIP",
+    "amountCheck": "6.90 + 6.70 = 13.60"
+  },
+  "createRun": {
+    "id": 42517332990,
+    "jobId": 128843120733,
+    "status": "completed",
+    "conclusion": "success",
+    "headBranch": "codex/luxestyle-order-1039-push-20261108",
+    "headSha": "1c84dc6540870d29ac0f57c6585c9e0e8f11e8d9",
+    "startedAt": "2026-11-08T19:54:04Z",
+    "completedAt": "2026-11-08T19:56:42Z",
+    "live": true,
+    "createCallsMaximum": 1
+  },
+  "paymentReadbackRun": {
+    "id": 42517703485,
+    "jobId": 128844251745,
+    "status": "completed",
+    "conclusion": "success",
+    "headBranch": "codex/luxestyle-order-1039-push-20261108",
+    "headSha": "1c84dc6540870d29ac0f57c6585c9e0e8f11e8d9",
+    "startedAt": "2026-11-08T19:58:37Z",
+    "completedAt": "2026-11-08T20:01:03Z",
+    "live": false,
+    "createCalls": 0
+  },
+  "actions": {
+    "duplicateCreatePerformed": false,
+    "cjPaymentPerformedByCodex": false,
+    "shopifyFulfillmentPerformed": false,
+    "trackingWritePerformed": false,
+    "customerContacted": false
+  },
+  "claimsNotEstablished": [
+    "Versandbeginn",
+    "Trackingnummer",
+    "Lieferzeit",
+    "Zustellung",
+    "Marge"
+  ],
+  "currencySeparation": {
+    "shopify": "CHF",
+    "cj": "USD",
+    "mixed": false
+  }
+}
