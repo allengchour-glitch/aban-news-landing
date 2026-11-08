@@ -68,7 +68,7 @@ def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
     with tempfile.TemporaryDirectory() as tmp:
         subprocess.run(['node',str(ROOT/'3d/bauen.mjs'),tmp],check=True,capture_output=True)
         def inline(match):
-            content=((ROOT/'finanzmonitor.js').read_text()+'\n'+(ROOT/'geldmanager.js').read_text() if match.group(1)=='kb-geldmanager.js' else (Path(tmp)/match.group(1)).read_text()).replace('</script','<\\/script')
+            content=((ROOT/'finanzmonitor.js').read_text()+'\n'+(ROOT/'geldmanager.js').read_text()+'\n'+(ROOT/'quellenmonitor.js').read_text() if match.group(1)=='kb-geldmanager.js' else (Path(tmp)/match.group(1)).read_text()).replace('</script','<\\/script')
             return '<script>'+content+'</script>'
         body=re.sub(r'<script src="(kb3d-[^"]+\.js|kb-geldmanager\.js)"></script>',inline,body)
         if design_paket:
