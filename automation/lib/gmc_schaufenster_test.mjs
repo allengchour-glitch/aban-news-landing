@@ -35,6 +35,8 @@ pruef('Sperrtag adult = draussen', stufe(P({ tags: ['adult-nicht-bewerben'] })).
 pruef('nicht versendbar (CH) = draussen (schon als Sperrtag erkannt)', stufe(P({ tags: ['cj-nicht-versendbar-ch'] })).grund, 'sperrtag');
 pruef('ausgelistet = draussen', stufe(P({ tags: ['cj-ausgelistet'] })).grund, 'nicht-lieferbar-oder-bild');
 pruef('Bild zu klein = draussen', stufe(P({ tags: ['bild-zu-klein'] })).grund, 'nicht-lieferbar-oder-bild');
+pruef('Bild von Google abgelehnt = draussen', stufe(P({ tags: ['google-bild-abgelehnt'] })).grund, 'nicht-lieferbar-oder-bild');
+pruef('Bild von Google abgelehnt schlägt Fortura', stufe(P({ tags: ['fortura', 'google-bild-abgelehnt'] })).grund, 'nicht-lieferbar-oder-bild');
 // Gegenproben: harmlose Chargen-Tags dürfen NICHT sperren (Lehre rueckhol-0907: 78 % des Katalogs)
 pruef('Gegenprobe: rueckhol-0907 sperrt nicht', stufe(P({ tags: ['rueckhol-0907'] })).stufe, 3);
 pruef('Gegenprobe: bildmass-ok-0907 sperrt nicht', stufe(P({ tags: ['bildmass-ok-0907', 'bild-ok'] })).stufe, 3);

@@ -108,6 +108,9 @@ jobs:
           PHASE: ${{ steps.modus.outputs.modus }}
           MAX: ${{ steps.modus.outputs.max }}
           LIVE: ${{ steps.modus.outputs.live }}
+          # 08.11.2026: 3 838 Varianten «Over capacity for Shopping ads (CSS)» im Merchant Center bei 89 575 Varianten auf Google (Vorgabe 90 000).
+          # 78 000 lässt gut 11 000 Varianten der niedrigsten Stufen vom Kanal gehen. Zurück auf 90000 = Zeile löschen; Rücknahme der Abwahl: PHASE=zuruecksetzen.
+          BUDGET: '78000'
           PLAN_AUS: /tmp/gmc_schaufenster_plan.json
         run: |
           set +e
