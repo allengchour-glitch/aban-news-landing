@@ -77,7 +77,7 @@ def planen(werkstatt, jetzt=None):
         elif index>=4 and sta.get('bauen')!='bestanden':
             status='Wartet auf Paketbau'
         job('projekt_'+ident, rolle, PROJEKT_NAMEN[ident], AKTIONEN[index], prio, status,
-            index in (2,3), ['integration'] if index == 4 else [])
+            index in (2,3) and status == 'Nächster Schritt', ['integration'] if index == 4 else [])
     jobs.sort(key=lambda j:(j['prioritaet'],j['id']))
     rollen = katalog()
     for rolle in rollen:
