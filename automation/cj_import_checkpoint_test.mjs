@@ -1052,6 +1052,27 @@ test('Workflow: feste Grenzen im Regelbetrieb, Testschalter und fehlende Zugäng
 });
 
 
+test('Workflow: breiter Handlauf behält alle Sterne und den Quellenhinweis, Regelbetrieb und Standard bleiben', t => {
+  const file=new URL('../.github/workflows/cj-reviews.yml',import.meta.url);
+  if (!fs.existsSync(file)) return t.skip('Workflow nicht im Sparse-Checkout');
+  const text=fs.readFileSync(file,'utf8');
+  assert.match(text,/breit:\n\s+description:[^\n]*\n\s+type: boolean\n\s+default: false/);
+  const script=text.split('name: CJ-Reviews importieren')[1].split('        run: |\n')[1].split('\n      - name:')[0].replace(/^          /gm,'');
+  const faelle=[
+    ['workflow_dispatch','false','1','1,7,9,3,1,1,CREATED_AT,eigener-handle,eigene-abfrage'],   // breit: eigene Grenzen, Schutzregeln an
+    ['workflow_dispatch','false','0','1,7,9,3,,,,eigener-handle,eigene-abfrage'],               // Standard: unverändert
+    ['workflow_dispatch','true','1','1,5,50,2,1,1,CREATED_AT,,tag:cj-real status:active'],      // Regelbetrieb gewinnt immer
+    ['schedule','true','0','0,5,50,2,1,1,CREATED_AT,,tag:cj-real status:active'],
+  ];
+  for (const [event,regular,breit,erwartet] of faelle) {
+    const f=fixture(t),bin=path.join(f.root,'bin');fs.mkdirSync(bin);
+    fs.writeFileSync(path.join(bin,'node'),'#!/bin/sh\nprintf "%s" "$DRY_RUN,$LIMIT,$SCAN,$PER,$MIN_SCORE,$CJ_REVIEW_SOURCE_NOTE,$SORT,$ONLY,$QUERY" > aufgerufen.txt\n',{mode:0o755});
+    const r=spawnSync('bash',['-e','-c',script],{cwd:f.root,encoding:'utf8',env:{PATH:bin+':'+process.env.PATH,REGELBETRIEB:regular,STARTEREIGNIS:event,BREIT:breit,DRY_RUN:'1',LIMIT:'7',SCAN:'9',PER:'3',ONLY:'eigener-handle',QUERY:'eigene-abfrage',CJ_EMAIL:'demo',CJ_API_KEY:'demo',JUDGEME_PRIVATE_TOKEN:'demo',SHOPIFY_ADMIN_TOKEN:'demo'}});
+    assert.equal(r.error,undefined);assert.equal(r.status,0,r.stderr);
+    assert.equal(fs.readFileSync(path.join(f.root,'aufgerufen.txt'),'utf8'),erwartet,`${event}/${regular}/${breit}`);
+  }
+});
+
 test('Regelbetrieb verschweigt fehlende Zugänge nicht als grünen No-op', t => {
   for(const key of ['CJ_EMAIL','CJ_API_KEY','JUDGEME_PRIVATE_TOKEN','SHOPIFY_ADMIN_TOKEN']) {
     const f=fixture(t),r=run(f,{env:{CJ_REVIEW_SCAN_STATE:'dropship/scan.json',[key]:''}});
