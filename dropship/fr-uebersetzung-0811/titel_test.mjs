@@ -20,7 +20,8 @@ t('leere französische Übersetzung zählt als fehlend', planTitel([{ resourceId
 const WB = await woerterbuchLaden();
 const eintraege = Object.entries(WB);
 t('Wörterbuch hat mindestens 670 Einträge', eintraege.length >= 670);
-const gleichErlaubt = new Set(['Jeans', 'Shorts', 'Gaming & VR', 'Diamond Painting', 'Camping', 'Waagen', 'Capes & Ponchos', 'Skateschuhe', 'Blazer']);
+// Titel, die im Französischen genauso heissen (Fremdwörter, Eigennamen, Jahreszahlen)
+const gleichErlaubt = new Set(['Jeans', 'Shorts', 'Gaming & VR', 'Diamond Painting', 'Camping', 'Waagen', 'Capes & Ponchos', 'Skateschuhe', 'Blazer', 'Halloween 2026', 'Black Friday & Cyber Week', 'Audio', 'Yoga', 'Fitness', 'Loungewear', 'Puzzles', 'PlayStation (PS4/PS5)', 'Nintendo & Switch', 'Halloween', 'Black Friday', 'Cardigans', 'Headsets', 'Mascara', 'Woks']);
 const DEUTSCH = /\b(und|der|die|das|für|mit|bei|nicht|auch|oder|ein|eine)\b/i;
 for (const [de, fr] of eintraege) {
   if (!fr || !fr.trim()) { t(`leer: ${de}`, false); continue; }

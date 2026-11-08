@@ -46,3 +46,9 @@ Acht Servicepages, je vier Felder (`title`, `body_html`, `meta_title`, `meta_des
 * Test `titel_test.mjs` (im Job `selbst-gestalten`). Rücknahme: `ZURUECK=1 LIVE=1 TYP=LINK,MENU node dropship/fr-uebersetzung-0811/apply_titel.mjs` (Ledger `lauf/titel_ledger.json`).
 * **Offen:** Sammlungstitel (1 554 ohne französischen Titel, 1 462 verschiedene; 463 davon stehen schon im Wörterbuch), Sammlungsbeschreibungen und Meta-Texte (rund 760 000 Zeichen insgesamt, nur nach Nutzen), Produkte.
 * Die Menüs «Main menu», «Footer», «Customer account main menu» tragen englische Namen und sind nicht Teil der Übersetzung (interne Namen).
+
+## Stufe 3: Sammlungstitel (LIVE 08.11.2026 ca. 21:00 UTC)
+* **1 498 Sammlungstitel** auf Französisch (Wörterbuch `sammlungen_fr_1/2/3.mjs`, 994 verschiedene Titel; `apply_titel.mjs` mit `TYP=COLLECTION`); nur wo noch keine französische Übersetzung stand. Stichprobe mit 20, dann 1 478; Rücklesen 1 498 von 1 498 gleich, 0 Fehler. Vorher 170 von 1 724 (10 %), jetzt 1 688 von 1 724 (98 %).
+* **Nicht übersetzt (56 Sammlungen):** reine Markennamen (Adidas, Puma, Nike, Casio …, bleiben wie sie sind) und die vier versteckten Pool-Sammlungen «Startseite Pool …» (interne Namen).
+* **Noch nicht:** Sammlungsbeschreibungen und Meta-Texte (die Seiten zeigen unter dem französischen Titel weiter deutschen Text), Artikel, Blogs, Produkte. `/fr/`-Sammlungsseiten bleiben deshalb `noindex`.
+* Rücknahme: `ZURUECK=1 LIVE=1 TYP=COLLECTION node dropship/fr-uebersetzung-0811/apply_titel.mjs`.
