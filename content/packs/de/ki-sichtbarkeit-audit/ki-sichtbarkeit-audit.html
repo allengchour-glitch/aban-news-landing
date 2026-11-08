@@ -40,6 +40,8 @@ ol,ul{margin:8px 0 0 20px}li{margin:4px 0}
 .monat{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--field);margin:10px 0}
 .monat b{color:var(--akz)}
 .leer{color:var(--muted);font-style:italic}
+summary{cursor:pointer;min-height:44px;padding:8px 0}
+a{color:var(--akz)}
 footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:var(--muted);font-size:.85rem}
 @media print{button,.hint,.nodruck{display:none}body{background:#fff}.box{break-inside:avoid}}
 </style>
@@ -48,12 +50,32 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
 <div class="wrap">
 
 <h1>KI-Sichtbarkeits-Audit</h1>
-<p class="sub">Prüf in rund zwei Stunden selbst, ob ChatGPT, Perplexity und Google AI dich nennen — und bekomm daraus einen 90-Tage-Plan. Läuft offline im Browser, ohne Login. Deine Eingaben bleiben auf diesem Gerät.</p>
+<p class="sub">Eine ausfüllbare Arbeitshilfe: Du prüfst selbst, ob deine Firma in KI-Antworten genannt wird, und hältst die Ergebnisse fest. Daraus entstehen ein Überblick und ein Plan für offene Prüfpunkte.</p>
+<section class="box nodruck" aria-labelledby="einstieg">
+  <h2 id="einstieg">Neu dabei? Hier beginnt dein erster Test</h2>
+  <p><strong>Audit bedeutet Bestandsaufnahme.</strong> Dieses Workbook ist dein Arbeitsblatt im Browser. Es stellt keine Fragen an externe KI-Dienste und ändert keine Website-Einstellungen.</p>
+  <ol>
+    <li>Trag unten deine Leistung, den Ort und deinen Betriebsnamen ein. Wähle <strong>Fragen erzeugen</strong>.</li>
+    <li>Kopiere zunächst nur die erste Frage in einen KI-Dienst. Lass deinen Firmennamen aus der Frage weg, damit du die Antwort nicht schon auf dich lenkst.</li>
+    <li>Lies die Antwort und wähle das passende Ergebnis im Protokoll. Noch nicht geprüfte Felder bleiben auf <strong>—</strong>.</li>
+  </ol>
+  <p style="margin-top:10px"><strong>Fiktives Beispiel:</strong> „Maler Muster“ bietet Malerarbeiten in Bern an. Die Testfrage lautet: „Wer bietet Malerarbeiten in Bern an?“ Kommt „Maler Muster“ vor, wählst du <strong>genannt</strong>. Kommen nur andere Firmen vor, wählst du <strong>Mitbewerber</strong>. Ohne konkrete Anbieter wählst du <strong>niemand</strong>. Eine Nennung ist noch keine Empfehlung oder Bestellung.</p>
+  <p class="hint">Für diese Datei brauchst du kein Workbook-Konto. Die eigentlichen KI-Fragen erfordern Internetzugang und je nach Dienst ein eigenes Konto. Das Ausfüllen und Auswerten dieser Datei funktioniert offline.</p>
+  <details style="margin-top:10px"><summary><strong>Begriffe einfach erklärt</strong></summary>
+    <ul>
+      <li><strong>Protokoll:</strong> die Tabelle mit deinen Fragen, Ergebnissen und Notizen.</li>
+      <li><strong>Stichprobe:</strong> die von dir ausgewählten Fragen und Antworten; sie bildet nicht alle möglichen Antworten ab.</li>
+      <li><strong>Firmendaten / NAP:</strong> Name, Adresse und Telefonnummer deines Betriebs.</li>
+      <li><strong>Branchenverzeichnis:</strong> eine Liste von Betrieben, etwa nach Beruf oder Ort sortiert.</li>
+      <li><strong>Schema-Markup:</strong> zusätzliche maschinenlesbare Firmenangaben auf einer Website. Bei der technischen Umsetzung kann dein Website-Betreuer helfen.</li>
+    </ul>
+  </details>
+</section>
 
 <div class="box">
   <span class="schritt">Schritt 1</span>
-  <h2>Fragen sammeln</h2>
-  <p class="hint">Trag ein, was du anbietest und wo. Daraus entstehen zwölf Fragen in der Form, in der Kund:innen tatsächlich fragen. Du kannst jede Frage überschreiben.</p>
+  <h2 id="fragen-start">Fragen sammeln</h2>
+  <p class="hint">Trag ein, was du anbietest und wo. Daraus entstehen zwölf Fragevorlagen. Passe sie an die Worte deiner Kundschaft an; den Betriebsnamen ergänzt du nicht in der Testfrage.</p>
   <div class="grid" style="margin-top:12px">
     <div><label for="leistung">Deine Leistung</label><input id="leistung" placeholder="z. B. Malerarbeiten"><div class="hint">So, wie Kund:innen es sagen würden.</div></div>
     <div><label for="ort">Ort oder Region</label><input id="ort" placeholder="z. B. Bern"></div>
@@ -65,7 +87,8 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
 <div class="box">
   <span class="schritt">Schritt 2 + 3</span>
   <h2>KI befragen und auswerten</h2>
-  <p class="hint">Stell jede Frage in jedem der drei Dienste und trag ein, was passiert ist. <b>Genannt</b> = dein Betriebsname kommt vor. <b>Mitbewerber</b> = die KI nennt andere, dich nicht. <b>Niemand</b> = die KI nennt gar keinen Anbieter.</p>
+  <p class="hint">Stell die Fragen selbst in den verfügbaren Diensten. Ein einzelnes getestetes Feld reicht für den Anfang. <b>Genannt</b> = dein Betriebsname kommt vor. <b>Mitbewerber</b> = die KI nennt andere, dich nicht. <b>Niemand</b> = die KI nennt gar keinen Anbieter.</p>
+  <p class="hint">Zum manuellen Fragen: <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT</a> · <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Perplexity</a> · <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Google</a>. Wenn dir ein Dienst oder eine KI-Antwort nicht zur Verfügung steht, lass das Feld offen und notiere es. Die Links übertragen keine Formulareingaben.</p>
   <div class="scroll"><table id="protokoll">
     <thead><tr><th style="min-width:220px">Frage</th><th>ChatGPT</th><th>Perplexity</th><th>Google AI</th><th style="min-width:150px">Notiz</th></tr></thead>
     <tbody></tbody>
@@ -74,6 +97,7 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
 
 <div class="box">
   <h2>Dein Sichtbarkeits-Stand</h2>
+  <p class="hint">Diese gewichtete Punktzahl zählt nur deine getesteten Felder aus. Sie ist keine Nennungsquote aller KI-Antworten, keine Marktanalyse und keine Umsatzprognose.</p>
   <div class="kacheln" style="margin-top:10px">
     <div class="kachel"><b>Punkte</b><span class="zahl" id="kPunkte">—</span><div class="hint" id="kBasis">noch nichts eingetragen</div></div>
     <div class="kachel"><b>Genannt</b><span class="zahl gut" id="kGenannt">0</span></div>
@@ -87,20 +111,21 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
 <div class="box">
   <span class="schritt">Schritt 4</span>
   <h2>Ursachen finden</h2>
-  <p class="hint">Fünf Felder entscheiden, ob eine KI dich überhaupt kennt. Antworte ehrlich mit nein, wenn du es nicht sicher weisst — genau dort liegt der Hebel.</p>
+  <p class="hint">Prüfe mögliche Lücken in deinen öffentlichen Firmeninformationen. Wähle „nein / unklar“, wenn du etwas nicht bestätigen kannst. Das Workbook prüft deine Website nicht automatisch und kann die Ursache einer einzelnen KI-Antwort nicht beweisen.</p>
   <div id="ursachen"></div>
 </div>
 
 <div class="box">
   <span class="schritt">Schritt 5</span>
   <h2>Dein 90-Tage-Plan</h2>
-  <p class="hint">Entsteht aus deinen Antworten oben: das Wirksamste zuerst.</p>
+  <p class="hint">Entsteht aus deinen offenen Prüfpunkten oben. Das Workbook ordnet sie nach einer vorgegebenen Reihenfolge in drei Monate ein. Du entscheidest, welche Schritte für deinen Betrieb passen.</p>
   <div id="plan"></div>
 </div>
 
 <div class="box">
   <span class="schritt">Schritt 6</span>
   <h2>Nachmessen</h2>
+  <p class="hint">Lass die erste Runde hier stehen und trage die Punktzahl aus einer separat protokollierten Wiederholung ein. Das Vergleichsfeld speichert nur eine Zahl, kein zweites Protokoll. Die Anleitung erklärt den Ablauf.</p>
   <p>Stell nach 90 Tagen <b>dieselben</b> Fragen noch einmal und trag die Punktzahl ein. Nur der Vergleich zeigt, ob sich etwas bewegt hat.</p>
   <div class="grid" style="margin-top:12px">
     <div><label for="mess1">Punkte heute</label><input id="mess1" readonly></div>
@@ -114,12 +139,12 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
 <p class="nodruck" style="margin-top:18px">
   <button class="haupt" onclick="window.print()">Als PDF drucken</button>
   <button id="alleLeeren">Alles löschen</button>
-  <span class="hint" style="display:inline-block;margin-left:8px">Gespeichert wird automatisch, nur in diesem Browser.</span>
+  <span class="hint" style="display:inline-block;margin-left:8px">Dein Browser kann Eingaben lokal speichern. Sichere wichtige Ergebnisse zusätzlich als Druck- oder PDF-Kopie.</span>
 </p>
 
 <div class="box">
   <h3>Ehrlich dazu</h3>
-  <p class="hint">KI-Antworten schwanken von Tag zu Tag und von Nutzerkonto zu Nutzerkonto. Niemand kann garantieren, dass du genannt wirst. Dieses Audit zeigt deinen Ist-Stand und die wirksamsten Hebel — gehen musst du sie selbst. Frag ohne eingeloggtes Konto oder in einem privaten Fenster, sonst antwortet die KI auf deine eigene Vorgeschichte.</p>
+  <p class="hint">KI-Antworten können je nach Zeitpunkt, Konto, Modell und Personalisierung unterschiedlich sein. Niemand kann garantieren, dass du genannt wirst. Notiere möglichst die Prüfbedingungen und nutze später dieselben Fragen. Ein privates Fenster für die KI-Abfrage kann helfen, garantiert aber keine neutrale Antwort. Öffne das Workbook selbst möglichst im normalen Browser: In privaten Fenstern können gespeicherte Einträge beim Schliessen verloren gehen.</p>
 </div>
 
 <footer>KI-Sichtbarkeits-Audit — aban news · abannews.com · hallo@abannews.com<br>Nutzung privat und geschäftlich erlaubt. Weitergabe und Weiterverkauf nicht gestattet.</footer>
@@ -207,9 +232,9 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
   /** Einordnung in Worten. Null, solange nichts gezählt wurde. */
   function urteil(z) {
     if (!z || z.gezaehlt === 0) return null;
-    if (z.punkte >= 70) return { stufe: "gut", text: "Die KI nennt dich in den meisten Fällen. Halte den Stand und miss in 90 Tagen nach." };
-    if (z.punkte >= 35) return { stufe: "mittel", text: "Du kommst vor, aber unzuverlässig. Die Ursachen unten sind der Hebel." };
-    return { stufe: "schwach", text: "Die KI nennt dich fast nie. Fang oben im Plan an — Daten und Verzeichnisse zuerst." };
+    if (z.punkte >= 70) return { stufe: "gut", text: "Deine Firma kommt in vielen deiner ausgefüllten Testfelder vor. Prüfe den Umfang der Stichprobe und vergleiche später dieselben Fragen." };
+    if (z.punkte >= 35) return { stufe: "mittel", text: "Deine bisherigen Einträge zeigen ein gemischtes Bild. Prüfe die Antworten und mögliche Lücken in deinen Firmeninformationen." };
+    return { stufe: "schwach", text: "In deinen bisherigen Testfeldern wird deine Firma selten genannt. Prüfe zunächst Firmendaten und Verzeichnisse." };
   }
 
   /* --------------------------------------------------------------- Ursachen */
@@ -217,13 +242,13 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;color:v
   /* Die fünf Ursachenfelder der Verkaufsseite, mit Gewicht für die Reihenfolge
      im Plan. Höheres Gewicht = wirkt früher und breiter. */
   var URSACHEN = [
-    { id: "daten", titel: "Konsistente Firmendaten (NAP)", gewicht: 5,
+    { id: "daten", titel: "Einheitliche Firmendaten (Name, Adresse, Telefon)", gewicht: 5,
       frage: "Stehen Name, Adresse und Telefon überall identisch — Website, Google, Verzeichnisse?",
-      massnahme: "Schreibweise festlegen und überall angleichen. Eine Abweichung reicht, damit die KI zwei Betriebe sieht." },
+      massnahme: "Schreibweise von Name, Adresse und Telefon festlegen und abgleichen. Einheitliche Angaben erleichtern die Zuordnung." },
     { id: "verzeichnisse", titel: "Einträge in Verzeichnissen", gewicht: 4,
       frage: "Bist du in den Verzeichnissen deiner Branche und deiner Region eingetragen?",
       massnahme: "Die wichtigsten Verzeichnisse deiner Branche eintragen oder beanspruchen." },
-    { id: "schema", titel: "Schema-Markup auf der Website", gewicht: 3,
+    { id: "schema", titel: "Maschinenlesbare Firmendaten (Schema-Markup)", gewicht: 3,
       frage: "Hat deine Website maschinenlesbare Angaben zu Firma, Leistung, Ort und Öffnungszeiten?",
       massnahme: "LocalBusiness-Markup ergänzen, damit die Angaben nicht nur im Fliesstext stehen." },
     { id: "bewertungen", titel: "Bewertungen", gewicht: 3,

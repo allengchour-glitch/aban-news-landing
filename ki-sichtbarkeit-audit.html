@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KI-Sichtbarkeits-Audit — nennen ChatGPT &amp; Co. dich? · aban news</title>
-<meta name="description" content="Das KI-Sichtbarkeits-Audit: ein anpassbares Workbook, mit dem du in ~2 Stunden selbst prüfst, ob ChatGPT, Perplexity &amp; Google AI deine Firma nennen — plus 90-Tage-Maßnahmenplan. Einmalig, kein Abo.">
+<meta name="description" content="Schritt für Schritt prüfen, ob KI-Antworten deine Firma nennen: ausfüllbares Workbook mit Fragevorlagen, eigenem Protokoll und 90-Tage-Plan. Mit Erklärungen für Einsteiger.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abannews.com/ki-sichtbarkeit-audit.html">
 <meta property="og:title" content="KI-Sichtbarkeits-Audit — selbst prüfen, ob KI dich nennt">
-<meta property="og:description" content="Workbook + 90-Tage-Plan: prüf in ~2 Stunden selbst, ob ChatGPT, Perplexity &amp; Google AI deine Firma nennen. Einmalig, kein Abo.">
+<meta property="og:description" content="Verstehe, ob deine Firma in deinen KI-Testantworten vorkommt. Workbook mit verständlichem Einstieg, Fragevorlagen, Protokoll und 90-Tage-Plan.">
 <meta property="og:type" content="product">
 <meta property="og:url" content="https://abannews.com/ki-sichtbarkeit-audit.html">
 <meta property="og:image" content="https://abannews.com/og-audit.png">
@@ -18,7 +18,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Product","name":"KI-Sichtbarkeits-Audit — selbst prüfen, ob KI dich nennt",
-"description":"Anpassbares Workbook + 90-Tage-Maßnahmenplan, um selbst zu prüfen, ob ChatGPT, Perplexity und Google AI die eigene Firma nennen. Einmaliger Kauf, kein Abo.",
+"description":"Ausfüllbares Workbook mit Anleitung, Fragevorlagen, eigenem Prüfprotokoll und 90-Tage-Plan. KI-Antworten werden von dir selbst geprüft und eingetragen.",
 "brand":{"@type":"Organization","name":"aban news"},
 "offers":{"@type":"Offer","price":"29","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://abannews.com/ki-sichtbarkeit-audit.html"}}
 </script>
@@ -55,6 +55,8 @@ ul{margin:8px 0 8px 20px}li{margin:5px 0}
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
 @media(max-width:560px){.cmp{grid-template-columns:1fr}}
 .cmp .card{margin:0}
+summary{cursor:pointer;min-height:44px;padding:8px 0}
+code{overflow-wrap:anywhere}
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}</style>
 </head>
@@ -66,39 +68,82 @@ footer a{color:var(--muted)}</style>
 </div></header>
 <main id="main"><div class="wrap">
   <section class="hero">
-    <h1>Prüf <span class="a">selbst</span>, ob ChatGPT &amp; Co. dich nennen.</h1>
-    <p class="lead">Immer mehr Kund:innen fragen KI nach Anbietern statt zu googeln. Das <strong>KI-Sichtbarkeits-Audit</strong> ist ein anpassbares Workbook: In rund zwei Stunden prüfst du selbst, ob ChatGPT, Perplexity &amp; Google AI dich nennen — und bekommst einen <strong>90-Tage-Maßnahmenplan</strong>. Einmal kaufen, kein Abo.</p>
-    <p><a class="btn" href="#kaufen">Workbook holen (29 €)</a>
-       <a class="btn ghost" href="/ki-erwaehnungs-check.html">Erst gratis antesten →</a></p>
-    <p class="note" style="margin-top:.6rem">Keine Lust, es selbst durchzuarbeiten? Den Report kann dir die KI auch <strong>in Sekunden automatisch erstellen</strong> &mdash; <a href="/ki-audit.html">KI-Sichtbarkeits-Audit (aban Pro)</a>.</p>
+    <h1>Wird deine Firma in <span class="a">KI-Antworten</span> genannt?</h1>
+    <p class="lead">Mit diesem <strong>Workbook zum Ausfüllen</strong> prüfst du Schritt für Schritt, ob ChatGPT, Perplexity und KI-Antworten von Google deine Firma erwähnen. Du stellst selbst Fragen, trägst die Ergebnisse ein und erhältst daraus einen Überblick sowie einen <strong>90-Tage-Plan für offene Prüfpunkte</strong>.</p>
+    <p><strong>„Audit“ bedeutet hier einfach Bestandsaufnahme.</strong> Das Workbook ist eine Datei für deinen Browser. Fachbegriffe werden erklärt; du kannst mit einer einzigen Frage beginnen.</p>
+    <p><a class="btn" href="#kaufen">Inhalt und Anfrage ansehen (29 €)</a>
+       <a class="btn ghost" href="/ki-erwaehnungs-check.html">Kostenlosen Check ansehen →</a></p>
+    <p class="note">Du prüfst die Antworten selbst. Das Workbook ruft keine KI-Dienste ab und verändert weder deine Website noch deine Konten.</p>
+  </section>
+  <section aria-labelledby="wofuer">
+    <h2 id="wofuer">Wofür ist das gut?</h2>
+    <p>Du möchtest wissen: <strong>Wenn jemand nach meinem Angebot fragt, kommt meine Firma in der Antwort vor?</strong> Statt dich auf eine einzelne Antwort zu verlassen, hältst du mehrere Tests geordnet fest. Danach kannst du mögliche Lücken in deinen öffentlichen Firmenangaben prüfen.</p>
+    <div class="card">
+      <h3>Ein fiktives Beispiel</h3>
+      <p>Die erfundene Firma „Maler Muster“ arbeitet in Bern. Du fragst: „Wer bietet Malerarbeiten in Bern an?“ Du liest die Antwort und wählst im Workbook <strong>genannt</strong>, wenn „Maler Muster“ vorkommt. Werden nur andere Betriebe genannt, wählst du <strong>Mitbewerber</strong>. Ohne konkrete Firma wählst du <strong>niemand</strong>.</p>
+      <p>Eine noch nicht gestellte Frage bleibt offen. Der Firmenname gehört nicht in die Testfrage, sonst lenkst du die Antwort bereits auf deinen Betrieb.</p>
+    </div>
+    <h3>Für wen passt es?</h3>
+    <p>Vor allem für Selbstständige und kleine lokale Betriebe mit einer konkreten Leistung und einem Ort oder Einzugsgebiet. Bei einem überregionalen Onlineshop solltest du die Fragevorlagen an Sortiment und Zielgruppe anpassen.</p>
+  </section>
+  <section aria-labelledby="ergebnis">
+    <h2 id="ergebnis">Was hast du am Ende?</h2>
+    <ul>
+      <li>Ein eigenes Protokoll: Bei welchen Fragen und Diensten wurde deine Firma genannt?</li>
+      <li>Eine Punktzahl aus deinen Einträgen – als Orientierung für deine Stichprobe.</li>
+      <li>Eine Liste offener Prüfpunkte und Vorschläge für die nächsten drei Monate.</li>
+      <li>Einen Ausgangsstand, mit dem du später dieselben Fragen vergleichen kannst.</li>
+    </ul>
+    <p>Die Punktzahl misst weder deinen Marktanteil noch die Wahrscheinlichkeit neuer Kunden. Eine Nennung ist auch noch keine Empfehlung oder Bestellung.</p>
   </section>
   <section>
     <h2>So läuft das Audit</h2>
     <ol class="steps">
-      <li><strong>Fragen sammeln.</strong> 10–15 echte Fragen, mit denen Kund:innen nach deinem Angebot suchen — Vorlagen je Branche dabei.</li>
-      <li><strong>KI befragen.</strong> Dieselben Fragen in ChatGPT, Perplexity &amp; Google AI stellen, Antworten ins Protokoll eintragen.</li>
-      <li><strong>Auswerten.</strong> Pro Frage festhalten: genannt / nicht genannt / Mitbewerber genannt — ergibt deinen Sichtbarkeits-Stand.</li>
-      <li><strong>Ursachen finden.</strong> Checkliste: konsistente Daten, Schema-Markup, Verzeichnisse, Bewertungen, Inhalte.</li>
-      <li><strong>90-Tage-Plan.</strong> Priorisierte Maßnahmen für Monat 1–3, mit dem Wichtigsten zuerst.</li>
-      <li><strong>Nachmessen.</strong> Gleiches Protokoll nach 90 Tagen — siehst du schwarz auf weiß, was sich bewegt hat.</li>
+      <li><strong>Fragen sammeln.</strong> Leistung und Ort eintragen. Das Workbook bildet daraus zwölf Fragevorlagen, die du anpassen kannst.</li>
+      <li><strong>KI befragen.</strong> Die Fragen selbst in den verfügbaren KI-Diensten stellen und die Ergebnisse eintragen. Du kannst mit einer Frage und einem Dienst starten.</li>
+      <li><strong>Auswerten.</strong> Pro Frage festhalten: genannt / nicht genannt / Mitbewerber genannt — ergibt einen Überblick über deine eigene Stichprobe.</li>
+      <li><strong>Ursachen finden.</strong> Checkliste für mögliche Lücken: einheitliche Firmendaten, Branchenverzeichnisse, maschinenlesbare Website-Angaben, echte Bewertungen und verständliche Leistungsseiten.</li>
+      <li><strong>90-Tage-Plan.</strong> Das Workbook ordnet offene Prüfpunkte nach einer vorgegebenen Reihenfolge in einen Plan für Monat 1–3 ein.</li>
+      <li><strong>Nachmessen.</strong> Nach 90 Tagen dieselben Fragen unter möglichst vergleichbaren Bedingungen wiederholen. Abweichungen können auch durch veränderte KI-Antworten entstehen.</li>
     </ol>
   </section>
   <section>
     <h2>Audit oder Monitor — was passt?</h2>
     <div class="cmp">
-      <div class="card"><h3>🔍 Audit (dieses Produkt)</h3><p><strong>29 € einmalig.</strong> Du machst es selbst, wann du willst. Volle Kontrolle, kein Abo. Ideal, wenn du es einmal gründlich wissen und selbst umsetzen willst.</p></div>
-      <div class="card"><h3>📈 <a href="/ki-sichtbarkeit-monitor.html">Monitor</a></h3><p><strong>9 €/Monat.</strong> Wir prüfen monatlich für dich und schicken den Report. Ideal, wenn du dranbleiben willst, ohne selbst nachzumessen.</p></div>
+      <div class="card"><h3>🔍 Audit (dieses Produkt)</h3><p><strong>29 € einmalig.</strong> Du machst es selbst, wann du willst. Du füllst das Workbook selbst aus und bearbeitest die offenen Prüfpunkte. Die Datei läuft ohne eigenes Workbook-Konto.</p></div>
+      <div class="card"><h3>📈 <a href="/ki-sichtbarkeit-monitor.html">Monitor</a></h3><p><strong>9 €/Monat.</strong> Ein separates Angebot für wiederkehrende Berichte. Einrichtung, Reportstart und konkreten Lieferumfang vor der Buchung klären; nicht im Workbook enthalten.</p></div>
     </div>
-    <p class="note">Tipp: Mit dem Audit starten, danach optional auf den Monitor wechseln, um die Veränderung zu verfolgen.</p>
+    <p class="note">Für dieses Workbook ist kein Monitor-Abo erforderlich. Der separate Pro-Bericht ist ebenfalls ein anderes Angebot; das Workbook erstellt keinen automatischen Live-Report.</p>
+  </section>
+  <section aria-labelledby="anfang">
+    <h2 id="anfang">So fängst du an – ohne alles auf einmal</h2>
+    <ol class="steps">
+      <li>Nach Erhalt die ZIP-Datei entpacken. Die darin enthaltene HTML-Datei in einem Browser öffnen.</li>
+      <li>Leistung, Ort und Betriebsnamen eintragen und „Fragen erzeugen“ wählen.</li>
+      <li>Die erste Frage in einem KI-Dienst stellen. Nur das tatsächliche Ergebnis eintragen; die übrigen Felder bleiben offen.</li>
+    </ol>
+    <h3>Das ist enthalten</h3>
+    <p>Eine ausfüllbare HTML-Datei mit zwölf Fragevorlagen, Protokoll, Auswertung, Ursachen-Checkliste und 90-Tage-Plan. Dazu eine Schritt-für-Schritt-Anleitung und Hinweise zur Nutzung. Du kannst deine ausgefüllten Ergebnisse über „Als PDF drucken“ sichern, wenn dein Browser eine PDF-Ausgabe anbietet.</p>
+    <h3>Das brauchst du dazu</h3>
+    <p>Deine Firmenangaben und einen Browser. Für die eigentlichen KI-Fragen brauchst du Internetzugang und je nach Dienst ein eigenes Konto. Externe Konten, Abos oder Nutzungsgebühren sind nicht enthalten. Das Workbook selbst lässt sich offline ausfüllen.</p>
+    <details class="card"><summary><strong>Ich kenne mich mit SEO nicht aus. Was bedeuten die Begriffe?</strong></summary>
+      <p><strong>SEO</strong> heißt: Informationen so aufbereiten, dass Suchmaschinen sie leichter finden und verstehen. <strong>Schema-Markup</strong> sind zusätzliche maschinenlesbare Angaben auf deiner Website, etwa Firmenname und Öffnungszeiten. Ein <strong>Branchenverzeichnis</strong> ist eine Liste von Betrieben, oft nach Beruf oder Ort sortiert. Im Workbook geht es zunächst darum, solche Angaben zu prüfen.</p>
+    </details>
+    <details class="card"><summary><strong>Wie viel muss ich ausfüllen?</strong></summary>
+      <p>Du kannst mit einem einzigen Ergebnis beginnen. Eine vollständige Runde umfasst zwölf Fragen in bis zu drei Diensten, also bis zu 36 Einträge. Nicht getestete Felder bleiben offen und werden nicht als „nicht genannt“ gezählt. Die benötigte Zeit hängt davon ab, wie gründlich du die Antworten und Quellen prüfst.</p>
+    </details>
+    <details class="card"><summary><strong>Werden meine Ergebnisse automatisch gespeichert?</strong></summary>
+      <p>Das Workbook versucht, Eingaben lokal in deinem Browser zu speichern. Es gibt kein Cloud-Konto und keine Synchronisation. Private Fenster, gelöschte Browserdaten oder ein Gerätewechsel können Einträge verlieren lassen. Sichere wichtige Ergebnisse zusätzlich als Druck- oder PDF-Kopie.</p>
+    </details>
   </section>
   <section id="kaufen">
     <div class="buybox">
       <div class="price">29 €<small> · einmalig · digitale Ausgabe</small></div>
-      <p>Workbook + Protokoll-Vorlage + 90-Tage-Plan als bearbeitbare Dateien. Für Selbstständige &amp; kleine Betriebe.</p>
+      <p>Ausfüllbares Browser-Workbook, Schritt-für-Schritt-Anleitung und Nutzungshinweise. Für deine eigenen Tests und deinen daraus abgeleiteten Plan.</p>
       <p id="buywrap"><!--email_off--><a class="btn" id="buybtn" href="mailto:hallo@abannews.com?subject=KI-Sichtbarkeits-Audit&amp;body=Hallo%20Aban%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20KI-Sichtbarkeits-Audit-Workbook.%20Bitte%20best%C3%A4tige%20Verf%C3%BCgbarkeit%2C%20Zahlungsweg%20und%20Lieferung.">Per E-Mail anfragen</a><!--/email_off--></p>
-      <p class="note" id="bestellhinweis">Der Knopf öffnet eine vorbereitete E-Mail. Verfügbarkeit, Zahlungsweg und Lieferung werden vor der Zahlung bestätigt.</p>
+      <p class="note" id="bestellhinweis">Der Knopf öffnet eine vorbereitete E-Mail. Verfügbarkeit, Abrechnungswährung, Zahlungsweg und Lieferung werden vor der Zahlung bestätigt.</p>
     </div>
-    <div class="warn">⚠️ <strong>Ehrlich:</strong> KI-Antworten schwanken — niemand kann garantieren, dass du genannt wirst. Das Audit zeigt dir den Ist-Stand und die wirksamsten Hebel; gehen musst du sie selbst. Keine SEO-Wunder, keine erfundenen Zahlen.</div>
+    <div class="warn">⚠️ <strong>Ehrlich:</strong> KI-Antworten schwanken — niemand kann garantieren, dass du genannt wirst. Das Workbook fasst deine eingetragenen Tests zusammen und schlägt Prüfpunkte vor. Es verspricht weder eine Platzierung noch zusätzliche Kunden oder Umsatz.</div>
   </section>
   <section>
     <p>Schon weiter? <a href="/ki-sichtbarkeit.html">KI-Sichtbarkeit für deine Branche</a> · <a href="/ki-sichtbarkeit-buch.html">Das Buch dazu</a> · <a href="/start">Alles auf einen Blick</a></p>
