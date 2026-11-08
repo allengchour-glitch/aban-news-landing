@@ -665,6 +665,10 @@ with tempfile.TemporaryDirectory() as td:
     AU.status_schreiben(td, st)
     ok, text, warn = AU.ampel({"BINANCE_FUTURES_TESTNET": "false"}, td, J0)
     pruefe("Ampel: Echtgeld → grau, sagt «von Hand»", ok is None and "von Hand" in text, text)
+    # status_text() kennt keine Zeitvorgabe und nimmt die ECHTE Uhr: ein fester Stand vom 03.11. wäre nach 3 Tagen «nicht geprüft» (grau, «○») und der Test
+    # fiele still um, sobald J0 mehr als 3 Tage zurückliegt (GEMESSEN 08.11.2026: ab 07.11. 12:00 UTC rot, der nächste Paketbau wäre daran gescheitert).
+    # Darum hier ein Stand von «jetzt».
+    AU.status_schreiben(td, {**st, "geprueft": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")})
     pruefe("status_text: Kopfzeichen und Name", AU.status_text(td, {}).startswith("✓ Auto-Update: "))
 
 _vor = AU.einspielen

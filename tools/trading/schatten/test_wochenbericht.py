@@ -117,4 +117,91 @@ with tempfile.TemporaryDirectory() as d:
     W.schreiben(lb, f, sb=sb, lab=lab0)
     ok("Scalping-Labor (Papier" in f.read_text(encoding="utf-8"), "schreiben: das Labor landet in der Berichtsdatei")
 ok(W.LABOR.name == "krypto-scalping-labor.json" and W.LABOR.parent.name == "data", "Pfad: das Buch, das der Cloud-Job und der PC schreiben")
+# 9. Gesundheit der Messreihen (Backlog 6): fehlende, doppelte, veraltete Tage, ausgefallenes Labor, fehlende Satelliten-Kurse.
+#    Alles mit FESTEM «Jetzt» (JETZT): nichts hängt von der echten Uhr ab (ein Test, der es tut, fällt irgendwann still um).
+from datetime import datetime, timedelta, timezone
+JETZT = datetime(2026, 11, 8, 12, 0, tzinfo=timezone.utc)
+def tg(*zahlen): return [f"2026-11-{z:02d}" for z in zahlen]
+ok(W.reihe_pruefen("Pilot", tg(1, 2, 3, 4)) == [], "Reihe: lückenlos = keine Befunde")
+ok(W.reihe_pruefen("Pilot", []) == [] and W.reihe_pruefen("Pilot", tg(5)) == [], "Reihe: leer oder ein einziger Tag = keine Befunde")
+ok(W.reihe_pruefen("Pilot", tg(1, 2, 4)) == ["Pilot: 1 Tag fehlt (2026-11-03)"], "Reihe: ein fehlender Tag, genau benannt (Einzahl)")
+ok(W.reihe_pruefen("Pilot", tg(1, 5)) == ["Pilot: 3 Tage fehlen (2026-11-02, 2026-11-03, 2026-11-04)"], "Reihe: drei fehlende Tage, alle benannt (Mehrzahl)")
+ok(W.reihe_pruefen("Pilot", tg(1, 7)) == ["Pilot: 5 Tage fehlen (2026-11-02, 2026-11-03, 2026-11-04, 2026-11-05, 2026-11-06)"], "Reihe: genau fünf fehlende Tage stehen ohne «…»")
+ok(W.reihe_pruefen("Pilot", tg(1, 8)) == ["Pilot: 6 Tage fehlen (2026-11-02, 2026-11-03, 2026-11-04, 2026-11-05, 2026-11-06, …)"], "Reihe: ab sechs fehlenden Tagen nur fünf benannt, dann «…»")
+ok(W.reihe_pruefen("Pilot", ["2026-10-31", "2026-11-02"]) == ["Pilot: 1 Tag fehlt (2026-11-01)"], "Reihe: Lücke über den Monatswechsel")
+ok(W.reihe_pruefen("Pilot", tg(1, 2, 2, 3)) == ["Pilot: Tag doppelt eingetragen (2026-11-02)"], "Reihe: doppelter Tag, sonst nichts")
+ok(W.reihe_pruefen("Pilot", tg(1, 3, 2, 4)) == ["Pilot: Einträge nicht nach Datum geordnet"], "Reihe: durcheinander, aber vollständig = nur die Reihenfolge, KEINE erfundene Lücke")
+ok(W.reihe_pruefen("Pilot", ["2026-11-01", None, "kaputt", 12345, "2026-11-02"]) == ["Pilot: 3 Einträge ohne lesbares Datum"], "Reihe: unlesbare Einträge werden gezählt (Mehrzahl)")
+ok(W.reihe_pruefen("Pilot", ["2026-11-01", None, "2026-11-02"]) == ["Pilot: 1 Eintrag ohne lesbares Datum"], "Reihe: ein unlesbarer Eintrag (Einzahl)")
+ok(W.reihe_pruefen("Pilot", tg(3, 1, 1, 5)) == ["Pilot: 2 Tage fehlen (2026-11-02, 2026-11-04)", "Pilot: Tag doppelt eingetragen (2026-11-01)", "Pilot: Einträge nicht nach Datum geordnet"], "Reihe: alle drei Befunde zugleich, in fester Reihenfolge")
+ok(W.reihe_pruefen("Satellit", ["2026-11-03T04:00:00Z", "2026-11-04T04:00:00Z"]) == [], "Reihe: auch Zeitstempel mit Uhrzeit zählen als Tag")
+H = JETZT.date()
+ok(W.alter_pruefen("Pilot", tg(7), H) == [], "Alter: gestern = in Ordnung")
+ok(W.alter_pruefen("Pilot", tg(6), H) == [], "Alter: genau zwei Tage (MAX_ALTER_TAGE) = noch in Ordnung")
+a3 = W.alter_pruefen("Pilot", tg(5), H)
+ok(len(a3) == 1 and "letzter Eintrag vom 2026-11-05, 3 Tage her" in a3[0], "Alter: drei Tage = Befund mit Tag und Alter")
+ok(W.alter_pruefen("Pilot", tg(7, 1), H) == [], "Alter: massgebend ist der jüngste Tag, nicht der letzte Eintrag in der Liste")
+ok(W.alter_pruefen("Pilot", [], H) == [] and W.alter_pruefen("Pilot", [None, "x"], H) == [], "Alter: ohne lesbaren Tag keine Aussage (das meldet die Reihenprüfung)")
+def lauf(stunden, **kw): return {"letzter_lauf": {"zeit": (JETZT - timedelta(hours=stunden)).isoformat(), "hinweise": [], **kw}}
+ok(W.labor_pruefen(lauf(47), JETZT) == [] and W.labor_pruefen(lauf(48), JETZT) == [], "Labor: bis genau 48 Stunden = in Ordnung")
+l49 = W.labor_pruefen(lauf(49), JETZT)
+ok(len(l49) == 1 and "letzter Lauf vor 49 Stunden (2026-11-06 11:00 UTC)" in l49[0], "Labor: 49 Stunden = Befund mit Alter und Zeitpunkt")
+ok(W.labor_pruefen({"letzter_lauf": {"zeit": "2026-11-08T11:22:57Z", "hinweise": []}}, JETZT) == [], "Labor: Zeitstempel mit «Z» wird gelesen")
+ok(W.labor_pruefen({"letzter_lauf": {"zeit": "2026-11-08T11:22:57", "hinweise": []}}, JETZT) == [], "Labor: Zeitstempel ohne Zeitzone gilt als UTC")
+ok(len(W.labor_pruefen({"letzter_lauf": {"zeit": "2026-11-06T12:00:00+02:00"}}, JETZT)) == 1 and W.labor_pruefen({"letzter_lauf": {"zeit": "2026-11-06T09:00:00-05:00"}}, JETZT) == [],
+   "Labor: Zeitzone wird nach UTC umgerechnet (12:00+02:00 = 10:00 UTC = 50 Stunden her; 09:00-05:00 = 14:00 UTC = 46 Stunden her)")
+lz = W.labor_pruefen({"letzter_lauf": {"zeit": "2026-11-06T04:00:00-05:00"}}, JETZT)
+ok(len(lz) == 1 and "vor 51 Stunden (2026-11-06 09:00 UTC)" in lz[0], "Labor: die Ausgabe nennt die Zeit in UTC, nicht in der Ortszeit des Eintrags (04:00-05:00 = 09:00 UTC)")
+ok(W.labor_pruefen({"letzter_lauf": {"zeit": "gestern"}}, JETZT) == ["Labor: Zeitstempel des letzten Laufs fehlt oder ist unlesbar"]
+   and W.labor_pruefen({"letzter_lauf": {}}, JETZT) == ["Labor: Zeitstempel des letzten Laufs fehlt oder ist unlesbar"], "Labor: fehlender oder unlesbarer Zeitstempel wird gemeldet")
+ok(W.labor_pruefen({}, JETZT) == [] and W.labor_pruefen(None, JETZT) == [] and W.labor_pruefen({"letzter_lauf": None}, JETZT) == [], "Labor: noch nie gelaufen = keine Aussage")
+ok(W.labor_pruefen(lauf(1, hinweise=["a", "b", "c", "d"]), JETZT) == ["Labor-Hinweis: a", "Labor-Hinweis: b", "Labor-Hinweis: c"], "Labor: höchstens drei eigene Hinweise")
+ok(W.labor_pruefen(lauf(1, hinweise="kaputt"), JETZT) == [] and W.labor_pruefen(lauf(1, hinweise=None), JETZT) == [], "Labor: Hinweise, die keine Liste sind, werden ignoriert")
+ok(W.labor_pruefen(lauf(-5), JETZT) == [], "Labor: ein Lauf «in der Zukunft» (falsche Uhr) ist kein Ausfall")
+ok(W.satellit_pruefen({"fehlende_coins": []}) == [] and W.satellit_pruefen(None) == [] and W.satellit_pruefen({}) == [] and W.satellit_pruefen({"fehlende_coins": "x"}) == [], "Satellit: nichts fehlt (oder kein Buch) = keine Befunde")
+ok(W.satellit_pruefen({"fehlende_coins": ["PEPEUSDT"]}) == ["Satellit: für 1 Coin fehlten die Kurse (PEPEUSDT)"], "Satellit: ein Coin ohne Kurs (Einzahl)")
+ok(W.satellit_pruefen({"fehlende_coins": [f"C{i}USDT" for i in range(7)]}) == ["Satellit: für 7 Coins fehlten die Kurse (C0USDT, C1USDT, C2USDT, C3USDT, C4USDT, …)"], "Satellit: sieben Coins, fünf benannt, dann «…»")
+lbg = {"tage": [tag(s, 10000, 100, 10) for s in tg(4, 5, 6, 7)], "tage_p2": [tag(s, 10000, 100, 10) for s in tg(4, 5, 6, 7)]}
+sbg = {"tage": [{"tag": s} for s in tg(5, 6, 7)], "fehlende_coins": []}
+g1 = "\n".join(W.gesundheit_abschnitt(lbg, sbg, lauf(20), JETZT))
+ok("### Gesundheit der Messreihen" in g1 and "Alle Messreihen lückenlos und aktuell: Pilot 4 Tage bis 2026-11-07; Pilot 2.0 4 Tage bis 2026-11-07; Satellit 3 Tage bis 2026-11-07; Labor zuletzt 2026-11-07 16:00 UTC." in g1,
+   "Abschnitt: alles in Ordnung = ein Satz mit Tagen, Stand und Laborzeit")
+ok("Auffälligkeiten" not in g1, "Abschnitt: in Ordnung heisst keine «Auffälligkeiten»")
+lbk = {"tage": [tag(s, 1, 1, 1) for s in tg(1, 2, 4)], "tage_p2": lbg["tage_p2"]}
+g2 = "\n".join(W.gesundheit_abschnitt(lbk, sbg, lauf(60), JETZT))
+ok("Auffälligkeiten" in g2 and "- Pilot: 1 Tag fehlt (2026-11-03)" in g2 and "- Pilot: letzter Eintrag vom 2026-11-04, 4 Tage her" in g2 and "- Labor: letzter Lauf vor 60 Stunden" in g2 and "lückenlos und aktuell" not in g2,
+   "Abschnitt: Lücke, veralteter Pilot und ausgefallenes Labor stehen als Liste da")
+ok("- Pilot 2.0" not in g2 and "- Satellit" not in g2, "Abschnitt: nur die auffälligen Reihen werden genannt")
+ok("verzerren Rendite und Einbruch" in g2, "Abschnitt: sagt, dass fehlende Tage die Kennzahlen verzerren")
+g3 = "\n".join(W.gesundheit_abschnitt(lbg, {"tage": [{"tag": s} for s in tg(5, 7)], "fehlende_coins": ["XUSDT"]}, None, JETZT))
+ok("- Satellit: 1 Tag fehlt (2026-11-06)" in g3 and "- Satellit: für 1 Coin fehlten die Kurse (XUSDT)" in g3, "Abschnitt: Satellit-Lücke und fehlende Kurse")
+ok(W.gesundheit_abschnitt(lbg, sbg, lauf(20), datetime(2026, 11, 8, 12, 0)) == W.gesundheit_abschnitt(lbg, sbg, lauf(20), JETZT), "Abschnitt: ein «Jetzt» ohne Zeitzone gilt als UTC")
+ok(W.gesundheit_abschnitt({}, None, None, JETZT)[-1] == "Keine Messreihe zum Prüfen.", "Abschnitt: ohne jede Reihe ein ehrlicher Satz statt eines leeren «Alles in Ordnung»")
+ok("ß" not in g1 + g2 + g3, "Abschnitt: Schweizer Schreibweise (kein ß)")
+for kaputt in (None, {}, {"tage": "kein"}, {"tage": [1, 2, None]}, {"tage": [{"stand": "x"}]}, {"tage": 5, "tage_p2": {"a": 1}}, {"tage": [[], {}]}):
+    gk = W.gesundheit_abschnitt(kaputt, kaputt, kaputt, JETZT)
+    ok(isinstance(gk, list) and "### Gesundheit der Messreihen" in gk, f"Abschnitt: kaputtes Buch {kaputt!r} = kein Absturz")
+# ... und sie sagen dabei das Richtige (nicht einfach «Prüfung nicht möglich»)
+ok("\n".join(W.gesundheit_abschnitt({"tage": "kein"}, None, None, JETZT)).endswith("Keine Messreihe zum Prüfen."), "kaputt: «tage» ist keine Liste = keine Reihe zum Prüfen")
+ok("- Pilot: 3 Einträge ohne lesbares Datum" in W.gesundheit_abschnitt({"tage": [1, 2, None]}, None, None, JETZT), "kaputt: Einträge, die keine Objekte sind, werden als «ohne lesbares Datum» gezählt")
+ok("- Pilot: 1 Eintrag ohne lesbares Datum" in W.gesundheit_abschnitt({"tage": [{"stand": "x"}]}, None, None, JETZT), "kaputt: ein Eintrag mit unlesbarem Datum")
+class Boese(dict):
+    def get(self, *a, **k): raise RuntimeError("Buch zerbrochen")
+ok(W.gesundheit_abschnitt(Boese(), None, None, JETZT)[-1] == "Prüfung nicht möglich: die Daten sind unlesbar.", "kaputt: wirft das Buch selbst einen Fehler, sagt der Abschnitt es ehrlich statt abzustürzen")
+stand_g, md_g = W.abschnitt(lbg, sbg, None, JETZT)
+ok(stand_g == "2026-11-07" and "### Gesundheit der Messreihen" in md_g, "abschnitt: der Gesundheits-Abschnitt hängt am Bericht")
+ok("Satelliten-Experiment" in md_g and md_g.index("Satelliten-Experiment") < md_g.index("Gesundheit der Messreihen"), "abschnitt: Gesundheit steht nach dem Satelliten")
+md_l = W.abschnitt(lb, sb, lab0, JETZT)[1]
+ok(md_l.index("Scalping-Labor") < md_l.index("Gesundheit der Messreihen"), "abschnitt: Gesundheit steht nach dem Labor, ganz am Schluss")
+ok(W.abschnitt({"tage": [tag("2026-10-11", 10000, 100, 10)]}, jetzt=JETZT) == ("", "Noch zu wenig Tage im Schattenkonto für einen Bericht."), "abschnitt: zu wenig Tage bleibt unverändert, auch mit «Jetzt»")
+with tempfile.TemporaryDirectory() as d:
+    f = Path(d) / "b.md"
+    ok(W.schreiben(lbg, f, sb=sbg, jetzt=JETZT) == "geschrieben" and "Alle Messreihen lückenlos und aktuell" in f.read_text(encoding="utf-8"), "schreiben: reicht «Jetzt» durch, der Abschnitt landet in der Datei")
+# «Jetzt» wirkt wirklich (ein Jahr später: dieselben Daten sind veraltet). Ohne diese Probe würde ein vergessenes Durchreichen erst auffallen, wenn die echte Uhr genug weiterläuft.
+SPAET = datetime(2027, 6, 1, 12, 0, tzinfo=timezone.utc)
+ok("Pilot: letzter Eintrag vom 2026-11-07" in W.abschnitt(lbg, sbg, None, SPAET)[1] and "lückenlos und aktuell" not in W.abschnitt(lbg, sbg, None, SPAET)[1], "abschnitt: das übergebene «Jetzt» entscheidet über die Frische (nicht die echte Uhr)")
+with tempfile.TemporaryDirectory() as d:
+    f = Path(d) / "b.md"
+    W.schreiben(lbg, f, sb=sbg, jetzt=SPAET)
+    ok("Tage her" in f.read_text(encoding="utf-8") and "lückenlos und aktuell" not in f.read_text(encoding="utf-8"), "schreiben: das übergebene «Jetzt» kommt bis in die Datei")
 print(f"\n{ok_n} bestanden, {fail} fehlgeschlagen"); sys.exit(1 if fail else 0)
