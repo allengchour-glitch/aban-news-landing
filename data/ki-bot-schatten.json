@@ -18,7 +18,7 @@
   "aufwaermen": 260
  },
  "signale": {
-  "stand": "2026-11-07",
+  "stand": "2026-11-08",
   "maerkte": {
    "S&P 500": {
     "datum": "2026-11-06",
@@ -99,28 +99,28 @@
     }
    },
    "Bitcoin": {
-    "datum": "2026-11-07",
-    "kurs": 75908.171875,
+    "datum": "2026-11-08",
+    "kurs": 75911.140625,
     "ki": 0.1292,
     "trend200": 1.0,
     "halten": 1.0,
-    "vol_jahr": 0.3362,
+    "vol_jahr": 0.326,
     "warum": {
      "top_experten": [
       [
        "Mean Reversion",
-       0.1
+       0.099
       ],
       [
        "Swing",
-       0.095
+       0.094
       ],
       [
        "Ruhige Phasen",
        0.093
       ]
      ],
-     "p_steigt": 0.519,
+     "p_steigt": 0.532,
      "bremse": false
     }
    },
@@ -178,27 +178,27 @@
    },
    "Silber": {
     "datum": "2026-11-06",
-    "kurs": 51.803001403808594,
+    "kurs": 51.94200134277344,
     "ki": 0.086,
     "trend200": 0.0,
     "halten": 1.0,
-    "vol_jahr": 0.4225,
+    "vol_jahr": 0.4218,
     "warum": {
      "top_experten": [
       [
        "Ausbruch (Turtle)",
-       0.278
+       0.275
       ],
       [
        "Saison: Sell in May",
-       0.247
+       0.252
       ],
       [
        "Trendfolge",
-       0.09
+       0.089
       ]
      ],
-     "p_steigt": 0.534,
+     "p_steigt": 0.531,
      "bremse": false
     }
    },
@@ -253,9 +253,9 @@
      "quote": 0.1843
     },
     "Bitcoin": {
-     "wert": 88.68485862989962,
-     "kurs": 75908.171875,
-     "datum": "2026-11-07",
+     "wert": 88.68832707298756,
+     "kurs": 75911.140625,
+     "datum": "2026-11-08",
      "quote": 0.1292
     },
     "EUR/CHF": {
@@ -272,7 +272,7 @@
     },
     "Silber": {
      "wert": 40.18324681035128,
-     "kurs": 51.803001403808594,
+     "kurs": 51.94200134277344,
      "datum": "2026-11-06",
      "quote": 0.086
     },
@@ -1590,6 +1590,54 @@
        "wert": 57.3
       }
      }
+    },
+    {
+     "lauf": "2026-11-08",
+     "stand": "2026-11-08",
+     "depot": 9947.36,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1492,
+       "quote": 0.3414,
+       "wert": 508.22
+      },
+      "SMI": {
+       "gewicht": 0.1545,
+       "quote": 0.6273,
+       "wert": 959.67
+      },
+      "Nestlé": {
+       "gewicht": 0.0939,
+       "quote": 0.1843,
+       "wert": 172.11
+      },
+      "Bitcoin": {
+       "gewicht": 0.0692,
+       "quote": 0.1292,
+       "wert": 88.69
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3602,
+       "quote": 0.2307,
+       "wert": 824.72
+      },
+      "Gold": {
+       "gewicht": 0.0843,
+       "quote": 0.278,
+       "wert": 243.33
+      },
+      "Silber": {
+       "gewicht": 0.0443,
+       "quote": 0.086,
+       "wert": 40.18
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0445,
+       "quote": 0.1477,
+       "wert": 57.3
+      }
+     }
     }
    ]
   },
@@ -1615,9 +1663,9 @@
      "quote": 1.0
     },
     "Bitcoin": {
-     "wert": 1205.7223968770302,
-     "kurs": 75908.171875,
-     "datum": "2026-11-07",
+     "wert": 1205.7695523844982,
+     "kurs": 75911.140625,
+     "datum": "2026-11-08",
      "quote": 1.0
     },
     "EUR/CHF": {
@@ -1634,7 +1682,7 @@
     },
     "Silber": {
      "wert": 1306.2890706005342,
-     "kurs": 51.803001403808594,
+     "kurs": 51.94200134277344,
      "datum": "2026-11-06",
      "quote": 1.0
     },
@@ -2952,11 +3000,59 @@
        "wert": 1080.36
       }
      }
+    },
+    {
+     "lauf": "2026-11-08",
+     "stand": "2026-11-08",
+     "depot": 9772.17,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1203.52
+      },
+      "SMI": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1220.42
+      },
+      "Nestlé": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1235.94
+      },
+      "Bitcoin": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1205.77
+      },
+      "EUR/CHF": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1228.81
+      },
+      "Gold": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1291.64
+      },
+      "Silber": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1306.29
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.125,
+       "quote": 1.0,
+       "wert": 1080.36
+      }
+     }
     }
    ]
   },
   "Trendfilter 200": {
-   "bargeld": 4894.900564028879,
+   "bargeld": 4894.900564028878,
    "positionen": {
     "S&P 500": {
      "wert": 1454.1699160685098,
@@ -2977,9 +3073,9 @@
      "quote": 1.0
     },
     "Bitcoin": {
-     "wert": 675.2974785215426,
-     "kurs": 75908.171875,
-     "datum": "2026-11-07",
+     "wert": 675.3238892404395,
+     "kurs": 75911.140625,
+     "datum": "2026-11-08",
      "quote": 1.0
     },
     "Öl (WTI)": {
@@ -4274,6 +4370,54 @@
        "gewicht": 0.0692,
        "quote": 1.0,
        "wert": 675.3
+      },
+      "EUR/CHF": {
+       "gewicht": 0.3602,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Gold": {
+       "gewicht": 0.0843,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Silber": {
+       "gewicht": 0.0443,
+       "quote": 0.0,
+       "wert": 0.0
+      },
+      "Öl (WTI)": {
+       "gewicht": 0.0445,
+       "quote": 1.0,
+       "wert": 389.01
+      }
+     }
+    },
+    {
+     "lauf": "2026-11-08",
+     "stand": "2026-11-08",
+     "depot": 9880.12,
+     "kosten": 0.0,
+     "positionen": {
+      "S&P 500": {
+       "gewicht": 0.1492,
+       "quote": 1.0,
+       "wert": 1454.17
+      },
+      "SMI": {
+       "gewicht": 0.1545,
+       "quote": 1.0,
+       "wert": 1526.99
+      },
+      "Nestlé": {
+       "gewicht": 0.0939,
+       "quote": 1.0,
+       "wert": 939.73
+      },
+      "Bitcoin": {
+       "gewicht": 0.0692,
+       "quote": 1.0,
+       "wert": 675.32
       },
       "EUR/CHF": {
        "gewicht": 0.3602,
