@@ -54,7 +54,7 @@ jobs:
           CJ_IMPORT_WRITE_APPROVED: ${{ github.event.inputs.dry_run == 'false' && github.event.inputs.write_approved == 'true' && '1' || '0' }}
         run: node automation/cj_gaps_import.mjs
       - name: Ledger committen
-        if: ${{ github.event.inputs.dry_run == 'false' && github.event.inputs.write_approved == 'true' }}
+        if: ${{ always() && github.event.inputs.dry_run == 'false' && github.event.inputs.write_approved == 'true' }}
         run: |
           set -euo pipefail
           if [ -n "$(git status --porcelain dropship/cj_gaps_done.txt)" ]; then

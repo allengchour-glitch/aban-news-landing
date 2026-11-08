@@ -17,6 +17,8 @@ import {
   pruefeCjShopIdentitaet,
 } from './lib/cj_import_guard.mjs';
 import { cjFetch } from './lib/cj_fetch.mjs';
+import { uebersetzeCjFarbe } from './lib/cj_optionen_de.mjs';
+import { pruefeCjProduktNachWrite } from './lib/cj_write_guard.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 
@@ -131,11 +133,11 @@ const MAX_COST = 9;   // USD-Deckel → CHF ~26 (Impulskauf), filtert teure Fehl
 const MIN_LISTED = parseInt(process.env.MIN_LISTED || '0', 10) || 0; // Popularität (CJ liefert Feld oft nicht → Default 0)
 
 // ── Shopify ──
-async function sgql(tok, q, v) {
-  return { data: await shopifyGql(SHOP, API, tok, q, v, { context: 'CJ-Lueckenimport' }) };
+async function sgql(tok, q, v, opt = {}) {
+  return { data: await shopifyGql(SHOP, API, tok, q, v, { context: 'CJ-Lueckenimport', ...opt }) };
 }
 async function sWorks(t) { const r = await sgql(t, '{shop{name myshopifyDomain currencyCode primaryDomain{host}}}', {}); return r?.data?.shop || null; }
-async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); if (!r.ok) throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`); const j = await r.json(); if (!j.access_token) throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt'); return j.access_token; }
+async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', signal: AbortSignal.timeout(30000), headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); if (!r.ok) throw new Error(`SHOPIFY_AUTH_UNKNOWN: HTTP ${r.status}`); const j = await r.json(); if (!j.access_token) throw new Error('SHOPIFY_AUTH_UNKNOWN: access_token fehlt'); return j.access_token; }
 async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return ADMIN_TOKEN; if (CID && CSEC) { const t = await sCC(); if (t && await sWorks(t)) return t; } return null; }
 
 // ── CJ ──
@@ -153,23 +155,30 @@ async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
   return cjFetch(`${CJ_BASE}${path}?${qs}`, { context: `CJ ${path}`, headers: { 'CJ-Access-Token': tok } });
 }
-async function img200(u) { const r = await fetch(u, { method: 'HEAD' }); if (r.status === 429 || r.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${r.status}`); if (r.ok) return true; const g = await fetch(u); if (g.status === 429 || g.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${g.status}`); return g.ok; }
+async function img200(u) { const r = await fetch(u, { method: 'HEAD', signal: AbortSignal.timeout(30000) }); if (r.status === 429 || r.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${r.status}`); if (r.ok) return true; const g = await fetch(u, { signal: AbortSignal.timeout(30000) }); if (g.status === 429 || g.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${g.status}`); return g.ok; }
 
 // ── Gemini Batch-Übersetzung EN-Produktname → knackiger DE-Titel ──
 async function titlesDE(names) {
   if (!names.length) return [];
-  if (!GKEY) return names.map(() => null);
+  if (!GKEY) throw new Error('COPY_STATUS_UNKNOWN: GEMINI_API_KEY fehlt');
   const prompt = `Mach aus diesen englischen Produktnamen je einen knackigen, verkaufsstarken DEUTSCHEN Shop-Titel `
     + `(max 60 Zeichen, kein Marken-/Wholesale-Wort, mit kurzem Nutzen). Gib NUR ein JSON-Array gleicher Reihenfolge zurück.\n` + JSON.stringify(names);
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GKEY)}`;
+  let r;
   try {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(GKEY)}`;
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.4 } }) });
-    const j = await r.json().catch(() => ({}));
-    let t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').replace(/^```(json)?/i, '').replace(/```$/, '').trim();
-    const arr = JSON.parse(t);
-    if (Array.isArray(arr) && arr.length === names.length) return arr.map(s => (s && String(s).trim().slice(0, 70)) || null);
-  } catch (e) { console.error('  Titel-Übersetzung fehlgeschlagen:', e.message); }
-  return names.map(() => null);
+    r = await fetch(url, { method: 'POST', signal: AbortSignal.timeout(30000), headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.4 } }) });
+  } catch (e) { throw new Error(`COPY_STATUS_UNKNOWN: Gemini-Netzfehler (${e.message})`); }
+  if (r.status === 401 || r.status === 403) throw new Error(`COPY_AUTH_UNKNOWN: Gemini HTTP ${r.status}`);
+  if (r.status === 429) throw new Error('COPY_QUOTA_UNKNOWN: Gemini HTTP 429');
+  if (!r.ok) throw new Error(`COPY_STATUS_UNKNOWN: Gemini HTTP ${r.status}`);
+  let j; try { j = await r.json(); } catch { throw new Error('COPY_STATUS_UNKNOWN: Gemini-JSON unlesbar'); }
+  if (j?.error) throw new Error(`COPY_STATUS_UNKNOWN: Gemini ${j.error.code || 'Fehler'}`);
+  const t = (j?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').replace(/^```(json)?/i, '').replace(/```$/, '').trim();
+  let arr; try { arr = JSON.parse(t); } catch { throw new Error('COPY_STATUS_UNKNOWN: Gemini-Copy unlesbar'); }
+  if (!Array.isArray(arr) || arr.length !== names.length || arr.some(s => !String(s ?? '').trim())) {
+    throw new Error('COPY_STATUS_UNKNOWN: Gemini-Copy unvollstaendig');
+  }
+  return arr.map(s => String(s).trim().slice(0, 70));
 }
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL'];
@@ -180,6 +189,50 @@ if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds → No-op.'); proces
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 const SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,input:$input){ product{ id handle } userErrors{ field message } } }`;
+
+function quellTag(pid) {
+  const wert = String(pid ?? '').trim().replace(/[^a-zA-Z0-9-]/g, '');
+  if (!wert) throw new Error('DUPLIKAT_STATUS_UNKNOWN: CJ-pid fehlt');
+  return `cj-pid-${wert}`;
+}
+
+async function shopifyProduktVorhanden(tok, pid, skus) {
+  const schluessel = [
+    `tag:${JSON.stringify(quellTag(pid))}`,
+    ...[...new Set((skus || []).map(s => String(s ?? '').trim()).filter(Boolean))]
+      .map(sku => `sku:${JSON.stringify(sku)}`),
+  ];
+  if (schluessel.length < 2) {
+    throw new Error('DUPLIKAT_STATUS_UNKNOWN: keine erzeugte Varianten-SKU');
+  }
+  for (let i = 0; i < schluessel.length; i += 20) {
+    const r = await sgql(tok,
+      'query($q:String!){products(first:1,query:$q){pageInfo{hasNextPage}nodes{id handle}}}',
+      { q: schluessel.slice(i, i + 20).join(' OR ') });
+    const verbindung = r?.data?.products;
+    if (!Array.isArray(verbindung?.nodes)) {
+      throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Antwort unvollstaendig');
+    }
+    if (verbindung.nodes.length) return verbindung.nodes[0];
+    if (verbindung.pageInfo?.hasNextPage) {
+      throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Gegenprobe unvollstaendig');
+    }
+  }
+  return null;
+}
+
+function ledgerMerken(done, pid) {
+  const zeile = `pid:${String(pid).trim()}`;
+  if (done.has(zeile)) return;
+  const fd = fs.openSync(LEDGER, 'a');
+  try {
+    fs.writeSync(fd, `${zeile}\n`);
+    fs.fsyncSync(fd);
+  } finally {
+    fs.closeSync(fd);
+  }
+  done.add(zeile);
+}
 
 (async () => {
   const stok = await sToken(); if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op.'); process.exit(0); }
@@ -245,19 +298,47 @@ const SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,inpu
       const price = chf(p.cost);
       const handle = (title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 60) || ('cj-' + p.pid);
       // Varianten: Farbe/Grösse aus CJ ableiten (sonst Einheit)
-      const rows = p.vs.map(v => { const key = (v.variantKey || v.variantNameEn || '').trim(); const parts = key.split('-').map(s => s.trim()); let size = '', color = key; const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, ''); if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); } return { color: color || 'Standard', size: size || 'Einheit', sku: v.variantSku }; });
+      const rows = p.vs.map(v => {
+        const key = (v.variantKey || v.variantNameEn || '').trim();
+        const parts = key.split('-').map(s => s.trim());
+        let size = '', color = key;
+        const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, '');
+        if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); }
+        const farbe = uebersetzeCjFarbe(color || 'Standard');
+        return { color: farbe.status === 'OK' ? farbe.wert : null, farbBlocker: farbe.status === 'OK' ? '' : farbe.grund,
+          size: size || 'Einheit', sku: v.variantSku };
+      });
+      const farbBlocker = rows.find(row => row.farbBlocker)?.farbBlocker;
+      if (farbBlocker) { console.log(`  skip(Optionssprache) ${p.nameEn.slice(0, 40)}: ${farbBlocker}`); continue; }
       let colors = [...new Set(rows.map(r => r.color))].slice(0, 12);
       if (!colors.length) colors = ['Standard'];
-      const sicherheit = cjImportSicherheitsdaten([cfg.coll.tag, ...cfg.extraTags, 'cj-real']);
+      const sicherheit = cjImportSicherheitsdaten([cfg.coll.tag, ...cfg.extraTags, 'cj-real', quellTag(p.pid)]);
       const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: sicherheit.status, tags: sicherheit.tags,
         descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} bei LuxeStyle Schweiz.` },
         productOptions: [{ name: 'Farbe', values: colors.map(c => ({ name: c })) }],
         variants: colors.map(c => ({ optionValues: [{ optionName: 'Farbe', name: c }], price, inventoryItem: { sku: `CJ-${p.sku}-${c}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' })),
         files: p.imgs.map(u => ({ originalSource: u, contentType: 'IMAGE' })) };
-      const r = await sgql(stok, SET, { input }); const e = r?.data?.productSet?.userErrors || [];
-      const pid = r?.data?.productSet?.product?.id;
-      if (e.length || !pid) { fails.push(`${title.slice(0,40)}: ${JSON.stringify(e.length ? e : r).slice(0, 160)}`); continue; }
-      fs.appendFileSync(LEDGER, 'pid:' + p.pid + '\n');
+      const vorhanden = await shopifyProduktVorhanden(stok, p.pid, input.variants.map(v => v.inventoryItem.sku));
+      if (vorhanden) {
+        ledgerMerken(done, p.pid);
+        console.log(`  skip(Dublette) ${title.slice(0, 45)}: ${vorhanden.handle || vorhanden.id}`);
+        continue;
+      }
+      const r = await sgql(stok, SET, { input }, { versuche: 1 });
+      const mutation = r?.data?.productSet;
+      if (!mutation || !Array.isArray(mutation.userErrors)) {
+        throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet-Antwort unvollstaendig');
+      }
+      if (mutation.userErrors.length) { fails.push(`${title.slice(0,40)}: ${JSON.stringify(mutation.userErrors).slice(0, 160)}`); continue; }
+      const pid = mutation.product?.id;
+      if (!pid) throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet ohne Produkt und ohne userErrors');
+      await pruefeCjProduktNachWrite({
+        gql: async (query, variables) => (await sgql(stok, query, variables)).data,
+        id: pid,
+        sourceTag: quellTag(p.pid),
+        erwarteteSkus: input.variants.map(v => v.inventoryItem.sku),
+      });
+      ledgerMerken(done, p.pid);
       created++; console.log(`  DRAFT ${title.slice(0, 50)} → CHF ${price} (${handle}; ${sicherheit.sperrTags.join(', ')})`);
       await sleep(400);
     }

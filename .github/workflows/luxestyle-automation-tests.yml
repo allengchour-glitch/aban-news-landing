@@ -184,6 +184,8 @@ jobs:
           node --check automation/cj_trending_import.mjs
           node --check automation/cj_perpetual.mjs
           node --check automation/lib/cj_import_guard.mjs
+          node --check automation/lib/cj_optionen_de.mjs
+          node --check automation/lib/cj_write_guard.mjs
           node --check automation/autopilot/merchant_feed.mjs
           node --check automation/autopilot/merchant_feed_auth_test.mjs
           node --check dropship/cj_enrich.mjs
@@ -246,6 +248,8 @@ jobs:
           node automation/lib/seo_titel_test.mjs
           node automation/lib/storefront_sprache_test.mjs
           node automation/lib/cj_import_guard_test.mjs
+          node automation/lib/cj_optionen_de_test.mjs
+          node automation/lib/cj_write_guard_test.mjs
           node automation/create_pod_line_text_test.mjs
           node automation/lib/fortura_marke_test.mjs
           node automation/lib/galaxus_treffer_test.mjs

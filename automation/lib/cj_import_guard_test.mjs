@@ -22,6 +22,16 @@ for (const [title, html] of [
   ['Magnetische Handyhalterung fürs Auto', '<p>Elegant silhouette. Breathable linen fabric. Summer comfort. Versatile styling.</p>'],
   ['Elegant Summer Linen Blouse', deutsch.html],
   ['Sommerbluse', '<p>Soft breathable linen fabric for summer comfort.</p>'],
+  ['Leichte Strickjacke', '<p>Luxury lightweight cardigan mit wrinkle resistant finish and everyday wear.</p>'],
+  ['Alltagstasche', '<p>Modern design mit durable material and easy care.</p>'],
+  ['Sommerkleid', '<p>Beautiful fit mit soft fabric for daily comfort.</p>'],
+  ['Handyhalterung', '<p>Designed for your car mit easy use and durable finish.</p>'],
+  ['Kissenbezug', '<p>Premium material mit elegant style for your home.</p>'],
+  ['Jacke', '<p>Exclusive jacket mit ultraflex texture und sophisticated appeal.</p>'],
+  ['Tasche', '<p>Fashionable pouch mit ergonomic silhouette und exceptional craftsmanship.</p>'],
+  ['Kleidungsstück', '<p>Chic garment mit flattering drape und timeless aesthetic.</p>'],
+  ['Dekoration', '<p>Artisan decor mit sculptural texture und refined ambience.</p>'],
+  ['Schuhe', '<p>Contemporary footwear mit cushioned footbed und elevated aesthetic.</p>'],
 ]) {
   assert.equal(pruefeCjImportText({ ...deutsch, title, html }).status, 'BLOCKED',
     `fluessige englische Ausgabe muss blockieren: ${title} / ${html}`);
@@ -94,28 +104,56 @@ for (const rel of [
   assert.doesNotMatch(quelle, /status\s*:\s*['"]ACTIVE['"]/, `${rel}: Importer darf nicht ACTIVE anlegen`);
   assert.match(quelle, /CJ_IMPORT_WRITE_APPROVED|cjImportWriteFreigegeben/, `${rel}: doppeltes Write-Gate fehlt`);
   assert.match(quelle, /pruefeCjShopIdentitaet/, `${rel}: Live-Shop-Identitaetsgate fehlt`);
+  assert.match(quelle, /uebersetzeCjFarbe/, `${rel}: sichtbare CJ-Farbwerte brauchen ein Deutsch-Gate`);
+  assert.match(quelle, /COPY_(?:STATUS|AUTH|QUOTA)_UNKNOWN/, `${rel}: Copy-Providerfehler muessen UNKNOWN bleiben`);
+  assert.match(quelle, /productSet[\s\S]*?versuche\s*:\s*1/, `${rel}: nicht idempotentes productSet darf nicht automatisch wiederholt werden`);
+  assert.match(quelle, /pruefeCjProduktNachWrite/, `${rel}: Produktwrite braucht einen frischen Sicherheits-Readback`);
 }
 
 const lueckenQuelle = readFileSync(new URL('../cj_gaps_import.mjs', import.meta.url), 'utf8');
 assert.doesNotMatch(lueckenQuelle, /titles\[i\]\s*\|\|\s*p\.nameEn/, 'kein Rueckfall auf englischen Originaltitel');
 assert.doesNotMatch(lueckenQuelle, /return\s+names\s*;/, 'Uebersetzungsfehler darf Originaltitel nicht zurueckgeben');
 assert.doesNotMatch(lueckenQuelle, /collectionCreate/, 'Lueckenimport darf vor Produktfreigabe keine Collection schreiben');
+assert.match(lueckenQuelle, /shopifyProduktVorhanden\s*\(/,
+  'Lueckenimport braucht vor jedem Write eine Shopify-Dubletten-Gegenprobe');
+assert.match(lueckenQuelle, /cj-pid-/,
+  'Lueckenimport braucht einen stabilen CJ-Quellschluessel fuer Retry-Dedupe');
+assert.match(lueckenQuelle, /fs\.fsyncSync\s*\(/,
+  'lokale Ledger-Checkpoints muessen vor dem naechsten Produkt dauerhaft geschrieben werden');
 
 for (const rel of ['../../dropship/cj_full_create.mjs', '../../dropship/cj_variants_new.mjs']) {
   const quelle = readFileSync(new URL(rel, import.meta.url), 'utf8');
   assert.match(quelle, /pruefeCjImportText\s*\(/, `${rel}: Altwerkzeug braucht Sprachwaechter`);
   assert.match(quelle, /cjImportSicherheitsdaten\s*\(/, `${rel}: Altwerkzeug braucht DRAFT-/Sperrtag-Waechter`);
+  assert.match(quelle, /uebersetzeCjFarbe/, `${rel}: Altwerkzeug darf englische Farbwerte nicht durchreichen`);
   assert.doesNotMatch(quelle, /status\s*:\s*['"]ACTIVE['"]/, `${rel}: Altwerkzeug darf kein ACTIVE-Payload bauen`);
 }
 
 const dauerQuelle = readFileSync(new URL('../cj_perpetual.mjs', import.meta.url), 'utf8');
 assert.match(dauerQuelle, /CJ_IMPORT_PERPETUAL_APPROVED/, 'Dauerlauf braucht eigenen Endlosschalter');
 assert.match(dauerQuelle, /cjImportWriteFreigegeben/, 'Dauerlauf braucht doppeltes Write-Gate');
+assert.doesNotMatch(dauerQuelle, /async function waitForPoints\(\)\s*\{\s*while\s*\(true\)/,
+  'Punkteprobe darf nicht unbegrenzt auf einen Reset warten');
+assert.match(dauerQuelle, /CJ_CHILD_FAILED/, 'fehlgeschlagene Kindprozesse muessen den Dauerlauf abbrechen');
+assert.match(dauerQuelle, /Punkteprobe ohne vollstaendige pointsInfo/,
+  'fehlende CJ-Punktefelder muessen UNKNOWN bleiben');
 
 const autopilotQuelle = readFileSync(new URL('../../dropship/cj_autopilot.mjs', import.meta.url), 'utf8');
 assert.match(autopilotQuelle, /grind_dubletten\.mjs/, 'Autopilot muss den kanonischen Dublettenhelfer nutzen');
+assert.match(autopilotQuelle, /sku:\$\{JSON\.stringify\(k\.pid\)\}/,
+  'Dublettenabfrage muss auch die blanke PID-SKU pruefen');
+assert.match(autopilotQuelle, /CJ-\$\{k\.pid\}/,
+  'Dublettenabfrage muss auch die CJ-PID-SKU pruefen');
 assert.match(autopilotQuelle, /sku:\$\{k\.productSku\}\*/, 'productSku braucht die belegte Praefixsuche');
 assert.match(autopilotQuelle, /pageInfo\{hasNextPage\}/, 'begrenzte Dublettenabfrage muss Unvollstaendigkeit erkennen');
+assert.doesNotMatch(autopilotQuelle, /variantSkus\.slice\(0,\s*4\)/,
+  'Dublettenabfrage darf nicht nur die ersten vier Varianten pruefen');
+assert.doesNotMatch(autopilotQuelle, /productSet[\s\S]{0,300}\.catch\s*\(/,
+  'Shopify-Transportfehler beim Produktwrite duerfen nicht geschluckt werden');
 assert.doesNotMatch(autopilotQuelle, /catch\s*\{\s*continue;\s*\}/, 'CJ-Fehler duerfen nicht als leere Kandidaten weiterlaufen');
+
+const gapsWorkflow = readFileSync(new URL('../../.github/workflows/cj-gaps.yml', import.meta.url), 'utf8');
+assert.match(gapsWorkflow, /if:\s*\$\{\{\s*always\(\)/,
+  'Ledger-Checkpoint muss auch nach einem spaeteren Importfehler versucht werden');
 
 console.log('cj_import_guard_test: OK');

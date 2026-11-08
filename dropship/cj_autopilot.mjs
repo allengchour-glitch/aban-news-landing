@@ -26,6 +26,8 @@
 import https from 'node:https';
 import { cjImportSicherheitsdaten, cjImportWriteFreigegeben, pruefeCjImportText, pruefeCjShopIdentitaet } from '../automation/lib/cj_import_guard.mjs';
 import { cjFetch } from '../automation/lib/cj_fetch.mjs';
+import { uebersetzeCjFarbe } from '../automation/lib/cj_optionen_de.mjs';
+import { pruefeCjProduktNachWrite } from '../automation/lib/cj_write_guard.mjs';
 import { shopifyGql } from '../automation/lib/shopify_gql.mjs';
 import { baueIndex, istDublette, kandidatAus, pidNorm, produktSkuOk, skuNorm } from '../automation/lib/grind_dubletten.mjs';
 import { shopifyClientSecret } from '../automation/lib/shopify_secret.mjs';
@@ -80,6 +82,7 @@ function req(method, url, headers = {}, body) {
       let buf = ''; res.on('data', c => buf += c);
       res.on('end', () => resolve({ status: res.statusCode, body: buf }));
     });
+    r.setTimeout(30000, () => r.destroy(new Error('REQUEST_TIMEOUT')));
     r.on('error', reject); if (data) r.write(data); r.end();
   });
 }
@@ -88,9 +91,14 @@ async function cjGet(path, params = {}, tok) {
   return cjFetch(`${CJ_BASE}${path}?${qs}`, { context: `CJ ${path}`, headers: tok ? { 'CJ-Access-Token': tok } : {} });
 }
 async function imgOk(url) {
-  try { let r = await req('HEAD', url); if (r.status >= 200 && r.status < 300) return true;
-        r = await req('GET', url); return r.status >= 200 && r.status < 300; }
-  catch { return false; }
+  try {
+    let r = await req('HEAD', url);
+    if (r.status === 429 || r.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${r.status}`);
+    if (r.status >= 200 && r.status < 300) return true;
+    r = await req('GET', url);
+    if (r.status === 429 || r.status >= 500) throw new Error(`BILD_STATUS_UNKNOWN: HTTP ${r.status}`);
+    return r.status >= 200 && r.status < 300;
+  } catch (e) { throw new Error(`BILD_STATUS_UNKNOWN: ${e?.message || e}`); }
 }
 async function ensureShopToken() {
   // Client-Credentials-Grant BEVORZUGT (2026): frischer Token pro Lauf, läuft nie ab.
@@ -106,24 +114,32 @@ async function ensureShopToken() {
   }
   return SHOP_TOKEN; // statischer Token als Fallback
 }
-async function shopify(query, variables) {
-  return shopifyGql(SHOPIFY_SHOP, API_VER, SHOP_TOKEN, query, variables);
+async function shopify(query, variables, opt = {}) {
+  return shopifyGql(SHOPIFY_SHOP, API_VER, SHOP_TOKEN, query, variables, opt);
 }
 
 async function pruefeDublette(d) {
   const k = kandidatAus(d);
-  const teile = [];
-  if (k.pid) teile.push(`sku:CJ-${k.pid}`);
-  if (k.productSku && produktSkuOk(k.productSku)) teile.push(`sku:${k.productSku}*`);
-  for (const sku of k.variantSkus.slice(0, 4)) teile.push(`sku:${JSON.stringify(sku)}`);
-  if (!teile.length) throw new Error('DUPLIKAT_STATUS_UNKNOWN: keine pruefbare pid/productSku/variantSku');
-  const data = await shopify(`query($q:String!){products(first:25,query:$q){pageInfo{hasNextPage} nodes{id handle title status variants(first:100){pageInfo{hasNextPage} nodes{sku}}}}}`, { q: teile.join(' OR ') });
-  const nodes = data?.products?.nodes;
-  if (!Array.isArray(nodes)) throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Antwort unvollstaendig');
-  if (data.products.pageInfo?.hasNextPage || nodes.some(p => p.variants?.pageInfo?.hasNextPage)) {
-    throw new Error('DUPLIKAT_STATUS_UNKNOWN: begrenzte Shopify-Gegenprobe unvollstaendig');
+  const schluessel = [];
+  const sourceTag = k.pid ? `cj-pid-${k.pid}` : '';
+  if (k.pid) schluessel.push(`tag:${JSON.stringify(sourceTag)}`, `sku:${JSON.stringify(k.pid)}`, `sku:${JSON.stringify(`CJ-${k.pid}`)}`);
+  if (k.productSku && produktSkuOk(k.productSku)) schluessel.push(`sku:${k.productSku}*`);
+  for (const sku of k.variantSkus) schluessel.push(`sku:${JSON.stringify(sku)}`);
+  if (!schluessel.length) throw new Error('DUPLIKAT_STATUS_UNKNOWN: keine pruefbare pid/productSku/variantSku');
+  const nodeMap = new Map();
+  for (let i = 0; i < schluessel.length; i += 20) {
+    const data = await shopify(`query($q:String!){products(first:25,query:$q){pageInfo{hasNextPage} nodes{id handle title status tags variants(first:100){pageInfo{hasNextPage} nodes{sku}}}}}`, { q: schluessel.slice(i, i + 20).join(' OR ') });
+    const nodes = data?.products?.nodes;
+    if (!Array.isArray(nodes)) throw new Error('DUPLIKAT_STATUS_UNKNOWN: Shopify-Antwort unvollstaendig');
+    if (data.products.pageInfo?.hasNextPage || nodes.some(p => p.variants?.pageInfo?.hasNextPage)) {
+      throw new Error('DUPLIKAT_STATUS_UNKNOWN: begrenzte Shopify-Gegenprobe unvollstaendig');
+    }
+    for (const node of nodes) nodeMap.set(node.id, node);
   }
-  const ix = baueIndex({ produkte: nodes.map(p => ({ id:p.id, handle:p.handle, title:p.title, status:p.status, skus:(p.variants?.nodes||[]).map(v=>v.sku) })) });
+  const nodes = [...nodeMap.values()];
+  const ix = baueIndex({ produkte: nodes.map(p => ({ id:p.id, handle:p.handle, title:p.title, status:p.status,
+    pid: sourceTag && (p.tags || []).some(t => String(t).toLowerCase() === sourceTag.toLowerCase()) ? k.pid : null,
+    skus:(p.variants?.nodes||[]).map(v=>v.sku) })) });
   return istDublette({ ...d, pid: pidNorm(d.pid), productSku: skuNorm(d.productSku) }, ix);
 }
 
@@ -145,8 +161,10 @@ function parseVariants(detail) {
     let size = '', color = key;
     const last = (parts[parts.length - 1] || '').toUpperCase().replace(/\s/g, '');
     if (SIZES.includes(last)) { size = last; color = parts.slice(0, -1).join('-').trim(); }
-    out.push({ color: color || 'Standard', size: size || 'Einheitsgrösse',
-               sku: v.variantSku, cost: Number(v.variantSellPrice) || 0, img: (v.variantImage || '').trim() });
+    const farbe = uebersetzeCjFarbe(color || 'Standard');
+    out.push({ color: farbe.status === 'OK' ? farbe.wert : null, farbBlocker: farbe.status === 'OK' ? '' : farbe.grund,
+               size: size || 'Einheitsgrösse', sku: v.variantSku,
+               cost: Number(v.variantSellPrice) || 0, img: (v.variantImage || '').trim() });
   }
   return out;
 }
@@ -160,18 +178,22 @@ async function geminiEnrich(name, rawDesc) {
     + ` "html_de": "<descriptionHtml auf Deutsch: 1 fetter Einleitungssatz + <ul> mit 4-5 Nutzen-Bullets>",`
     + ` "verdict": "pass" oder "fail", "reason": "<kurz>"}.`
     + ` verdict=fail wenn: Markenfälschung, anstössig, Kinder-/Tier-Kleidung, Medizin-/Heilversprechen, oder unklar/Müll.`;
+  let r;
   try {
-    const r = await req('POST',
+    r = await req('POST',
       `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
       { 'Content-Type': 'application/json' },
       { contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: 'application/json', temperature: 0.6 } });
-    const j = JSON.parse(r.body);
-    const txt = j?.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!txt) return null;
-    const o = JSON.parse(txt);
-    if (!o.title_de || !o.html_de) return null;
-    return o;
-  } catch { return null; }
+  } catch (e) { throw new Error(`COPY_STATUS_UNKNOWN: Gemini-Netzfehler (${e.message})`); }
+  if (r.status === 401 || r.status === 403) throw new Error(`COPY_AUTH_UNKNOWN: Gemini HTTP ${r.status}`);
+  if (r.status === 429) throw new Error('COPY_QUOTA_UNKNOWN: Gemini HTTP 429');
+  if (r.status < 200 || r.status >= 300) throw new Error(`COPY_STATUS_UNKNOWN: Gemini HTTP ${r.status}`);
+  let j; try { j = JSON.parse(r.body); } catch { throw new Error('COPY_STATUS_UNKNOWN: Gemini-JSON unlesbar'); }
+  const txt = j?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!txt) throw new Error('COPY_STATUS_UNKNOWN: Gemini-Antwort ohne Text');
+  let o; try { o = JSON.parse(txt); } catch { throw new Error('COPY_STATUS_UNKNOWN: Gemini-Copy-JSON unlesbar'); }
+  if (!o.title_de || !o.html_de) throw new Error('COPY_STATUS_UNKNOWN: Gemini-Pflichtfelder fehlen');
+  return o;
 }
 
 (async () => {
@@ -245,6 +267,8 @@ async function geminiEnrich(name, rawDesc) {
 
       // Varianten + Bilder
       let vars = parseVariants(d);
+      const farbBlocker = vars.find(v => v.farbBlocker)?.farbBlocker;
+      if (farbBlocker) { console.log(`  skip(Optionssprache): ${farbBlocker}`); continue; }
       // Dedupe Option-Kombis
       const seen = new Set(); vars = vars.filter(v => { const k = v.color + '|' + v.size; if (seen.has(k)) return false; seen.add(k); return true; });
       if (vars.length === 0 || vars.length > 100) continue; // 100-Varianten-Limit
@@ -290,7 +314,10 @@ async function geminiEnrich(name, rawDesc) {
       }
       const title = g.title_de.slice(0, 120);
       const html = `${g.html_de}<p>Gratis-Versand ab CHF 50 · 30 Tage Rückgabe.</p>`;
-      const sicherheit = cjImportSicherheitsdaten(['cj-real', 'neu', 'dropship', 'autopilot', ...EXTRA_TAGS]);
+      const kandidat = kandidatAus(d);
+      const sourceTag = kandidat.pid ? `cj-pid-${kandidat.pid}` : '';
+      if (!sourceTag) throw new Error('DUPLIKAT_STATUS_UNKNOWN: CJ-pid fehlt vor Produktwrite');
+      const sicherheit = cjImportSicherheitsdaten(['cj-real', 'neu', 'dropship', 'autopilot', sourceTag, ...EXTRA_TAGS]);
 
       const variants = vars.map(v => {
         const o = { optionValues: mkOV(v), price: priceCHF(v.cost || d.sellPrice), inventoryItem: { sku: v.sku, tracked: false } };
@@ -302,9 +329,18 @@ async function geminiEnrich(name, rawDesc) {
         status: sicherheit.status, tags: sicherheit.tags, productOptions, files, variants };
       const cm = await shopify(
         `mutation($in:ProductSetInput!){productSet(synchronous:true,input:$in){product{id media(first:30){nodes{status}}}userErrors{message}}}`,
-        { in: input }).catch(e => ({ error: e.message }));
-      const prod = cm?.productSet?.product;
-      if (!prod?.id) { console.log(`  skip ${baseSku}: ${cm?.error || JSON.stringify(cm?.productSet?.userErrors)}`); continue; }
+        { in: input }, { versuche: 1 });
+      const mutation = cm?.productSet;
+      if (!mutation || !Array.isArray(mutation.userErrors)) throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet-Antwort unvollstaendig');
+      const prod = mutation.product;
+      if (mutation.userErrors.length) { console.log(`  skip ${baseSku}: ${JSON.stringify(mutation.userErrors)}`); continue; }
+      if (!prod?.id) throw new Error('SHOPIFY_STATUS_UNKNOWN: productSet ohne Produkt und ohne userErrors');
+      await pruefeCjProduktNachWrite({
+        gql: (query, variables) => shopify(query, variables),
+        id: prod.id,
+        sourceTag,
+        erwarteteSkus: variants.map(v => v.inventoryItem.sku),
+      });
 
       // Media-Falle bleibt sichtbar; der Import bleibt unabhaengig davon DRAFT.
       const finalStatus = sicherheit.status;

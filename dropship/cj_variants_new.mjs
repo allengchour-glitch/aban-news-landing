@@ -9,26 +9,29 @@
  *   TITLE     = Shopify-Titel (in Anführungszeichen)
  *   DESCFILE  = Datei mit descriptionHtml
  *   OUT       = Ziel-JSON für productSet-input
- * Farbnamen bleiben (wie bei den Bestandsartikeln) englisch; jede Farbe → erstes Variantenbild.
+ * Sichtbare Farb-/Groessenwerte werden konservativ uebersetzt; unbekannte Werte blockieren die Ausgabe.
  */
 import fs from 'fs';
 import { cjImportSicherheitsdaten, pruefeCjImportText } from '../automation/lib/cj_import_guard.mjs';
+import { uebersetzeCjFarbe, uebersetzeCjGroesse } from '../automation/lib/cj_optionen_de.mjs';
 const [VFILE, PRICE, PRODUCTTYPE, TAGS, TITLE, DESCFILE, OUT] = process.argv.slice(2);
 const j = JSON.parse(fs.readFileSync(VFILE));
 // Produktwörter aus Farbnamen entfernen (CJ packt manchmal Produkttext rein)
 const PW=/sexy|bikini|set|one[- ]?piece|solid[- ]?color|dress|shirt|polo|skirt|trousers|pants|swimsuit|cardigan|hoodie|vest|cover[- ]?up|three[- ]?piece|halter[- ]?neck|lace trim|knitted|business|elegant|womens|women|men|cotton linen|ramie|casual|short[- ]?sleeved|a[- ]?line|printed|fashionable|ruffled|long|beach|spring|autumn|for/ig;
 const clean=s=>{let c=s.replace(PW,'').replace(/\s+/g,' ').trim();return c||s.trim();};
-const cmap={}; j.variants.forEach(v=>{ if(!(v.color in cmap)) cmap[v.color]=clean(v.color); });
+const cmap={}; for(const v of j.variants){if(v.color in cmap)continue;const farbe=uebersetzeCjFarbe(clean(v.color)||'Standard');
+  if(farbe.status!=='OK')throw new Error(`OPTION_LANGUAGE_BLOCKED: ${farbe.grund}`);cmap[v.color]=farbe.wert;}
 const seen={}; for(const k in cmap){ let c=cmap[k]; if(!c||seen[c]) c=k; seen[c]=1; cmap[k]=c; }
 const cimg={}; j.variants.forEach(v=>{ if(v.img && !cimg[cmap[v.color]]) cimg[cmap[v.color]]=v.img; });
-const colors=[...new Set(Object.values(cmap))], sizes=[...new Set(j.variants.map(v=>v.size))];
+const colors=[...new Set(Object.values(cmap))], sizes=[];for(const raw of new Set(j.variants.map(v=>v.size))){const groesse=uebersetzeCjGroesse(raw);
+  if(groesse.status!=='OK')throw new Error(`OPTION_LANGUAGE_BLOCKED: ${groesse.grund}`);sizes.push(groesse.wert);}
 const hasSize=sizes.some(s=>s&&s!=='Einheitsgrösse');
 const files=[...new Set(Object.values(cimg))].map(u=>({originalSource:u,contentType:'IMAGE'}));
 const opts=[{name:'Farbe',values:colors.map(n=>({name:n}))}];
 if(hasSize) opts.push({name:'Grösse',values:sizes.map(n=>({name:n}))});
 let variants=j.variants.map(v=>{
   const ov=[{optionName:'Farbe',name:cmap[v.color]}];
-  if(hasSize) ov.push({optionName:'Grösse',name:v.size});
+  if(hasSize){const groesse=uebersetzeCjGroesse(v.size);if(groesse.status!=='OK')throw new Error(`OPTION_LANGUAGE_BLOCKED: ${groesse.grund}`);ov.push({optionName:'Grösse',name:groesse.wert});}
   return {optionValues:ov, price:PRICE, inventoryItem:{sku:v.sku,tracked:false}, file:{originalSource:cimg[cmap[v.color]],contentType:'IMAGE'}};
 });
 // dedupe gleiche Optionskombis

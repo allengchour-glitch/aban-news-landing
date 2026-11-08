@@ -12,9 +12,13 @@ export const CJ_IMPORT_WAEHRUNG = 'CHF';
 // Kleine, absichtlich konservative Wortlisten. Die allgemeine Storefront-Pruefung faengt
 // bekannte UI-/Meta-Faelle ab; diese zweite Schranke verhindert, dass fluessige englische
 // KI-Ausgaben ohne eines der bekannten Einzelwoerter als angeblich deutsch durchlaufen.
-const EN = new Set(('a an and are as at breathable comfort comfortable dashboard dress elegant fabric for from '
-  + 'holder home in is linen magnetic mount of on phone product silhouette soft styling summer the this to '
-  + 'versatile with women your').split(/\s+/));
+const EN = new Set(('a about all also an and any are as at be beautiful breathable by can cardigan care comfort '
+  + 'comfortable contemporary cushioned daily dashboard decor design designed drape dress durable easy elevated '
+  + 'elegant ergonomic everyday exceptional exclusive fabric fashionable features finish fit flattering footbed '
+  + 'footwear for from garment gift great has have holder home ideal in is it jacket lightweight linen long luxury '
+  + 'magnetic makes material modern mount of on perfect phone pouch product provides refined resistant sculptural '
+  + 'silhouette size soft sophisticated style styling summer texture the this timeless to ultraflex use versatile '
+  + 'wear which with women wrinkle you your aesthetic ambience appeal artisan craftsmanship').split(/\s+/));
 const DE = new Set(('am an auf aus bei das dem den der des die ein eine einem einen einer eines fuer für '
   + 'fuers fürs im in ist mit ohne oder sowie und vom von zum zur').split(/\s+/));
 
@@ -35,11 +39,15 @@ function woerter(value) {
 function sprachSignal(value) {
   const tokens = woerter(value);
   let en = 0, de = 0;
+  const enWoerter = new Set(), deWoerter = new Set();
   for (const token of tokens) {
-    if (EN.has(token)) en++;
-    if (DE.has(token)) de++;
+    // Starke englische Endungen helfen gegen frei formulierte Mischtexte, deren Inhaltswoerter
+    // nicht in einer endlichen Wortliste stehen. Im Zweifel bleibt der autonome Import gesperrt.
+    const englischeForm = /(?:ing|ed|able|ible|ous|less|ship)$/.test(token);
+    if (EN.has(token) || englischeForm) { en++; enWoerter.add(token); }
+    if (DE.has(token)) { de++; deWoerter.add(token); }
   }
-  return { tokens: tokens.length, en, de };
+  return { tokens: tokens.length, en, de, enVerschieden: enWoerter.size, deVerschieden: deWoerter.size };
 }
 
 /**
@@ -108,13 +116,16 @@ export function pruefeCjImportText({ sourceTitle, title, html } = {}) {
   if (titelSignal.en >= 2 && titelSignal.en > titelSignal.de) {
     gruende.push(`Titel hat ueberwiegend englische Sprachsignale (${titelSignal.en}:${titelSignal.de})`);
   }
-  if (beschreibungSignal.en >= 2 && beschreibungSignal.en > beschreibungSignal.de) {
+  if (beschreibungSignal.en >= 1 && beschreibungSignal.en >= beschreibungSignal.de) {
     gruende.push(`Beschreibung hat ueberwiegend englische Sprachsignale (${beschreibungSignal.en}:${beschreibungSignal.de})`);
   }
   // Ein laengerer Satz ohne irgendein deutsches Funktionswort ist fuer einen autonomen Import
   // nicht hinreichend als Deutsch belegt. Kurze Nomen-Titel bleiben zulaessig.
-  if (beschreibungSignal.tokens >= 5 && beschreibungSignal.de === 0) {
-    gruende.push('Beschreibung enthaelt kein belastbares deutsches Sprachsignal');
+  if (beschreibungSignal.tokens >= 5
+      && (beschreibungSignal.de < 3
+        || beschreibungSignal.deVerschieden < 2
+        || beschreibungSignal.de / beschreibungSignal.tokens < 0.12)) {
+    gruende.push('Beschreibung enthaelt zu wenige belastbare deutsche Sprachsignale');
   }
 
   return gruende.length ? { status: 'BLOCKED', gruende } : { status: 'OK', gruende: [] };
