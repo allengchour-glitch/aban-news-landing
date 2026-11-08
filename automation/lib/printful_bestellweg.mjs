@@ -527,6 +527,8 @@ export async function planeBestellung(o, io, cfg = {}) {
     const op = optionenPruefen({ produkt: roh, typen: arten, angegeben: eig.optionen, vorgaben: cfg.optionVorgaben });
     for (const b of op.befunde) befunde.push({ ...b, text: vor(b.text) });
     const minDpi = dd && dd.art === 'ok' && dd.templates ? dd.templates.min_dpi : null;
+    const qd = eig.karte && Number.isInteger(eig.karte.qd) && eig.karte.qd >= 1 && eig.karte.qd <= 1000 ? eig.karte.qd : null;
+    const gemesseneDpi = [];
     for (let i = 0; i < plz.files.length; i++) {
       const f = plz.files[i];
       const kopf = await io.kopf(f.url);
@@ -541,10 +543,26 @@ export async function planeBestellung(o, io, cfg = {}) {
           // das Motiv, eine Pixelgrösse gibt es dort nicht: die Auflösung entfällt; geprüft werden Garnfarben (Optionen) und der Dateistatus nach dem Anlegen.
           if (technikFamilie(arten[i]) !== 'EMBROIDERY') weich('aufloesung', vor(`keine Druckdatei-Grösse des Katalogs für «${f.type}»: Auflösung nicht prüfbar`));
         }
-        else { const r = aufloesungPruefen({ masse, druckdatei: df, minDpi }); if (!r.ok) weich('aufloesung', vor(`Druckdatei «${f.type}» zu klein: ${r.text}`)); }
+        else {
+          const r = aufloesungPruefen({ masse, druckdatei: df, minDpi });
+          gemesseneDpi.push(r.dpi);
+          if (!r.ok) weich('aufloesung', vor(`Druckdatei «${f.type}» zu klein: ${r.text}`));
+        }
       }
       const k = await io.kontrolle(f.url);
       if (k && k.art !== 'ok') weich(k.art === 'fail' ? 'kontrolle-fail' : k.art === 'fehlt' ? 'kontrolle-fehlt' : 'kontrolle-technisch', vor(`Kontrolle der Druckdatei «${f.type}»: ${k.text || k.art}`));
+    }
+    if (qd !== null) {
+      // qd ist das Minimum über alle Fotos/Platzierungen. Ein Teilvergleich wäre ein Fehlalarm: der kleinere Wert kann aus einer gerade nicht messbaren Datei stammen.
+      const gemessen = gemesseneDpi.length > 0 && gemesseneDpi.length === plz.files.length ? Math.min(...gemesseneDpi) : null;
+      const gemessenGanz = gemessen === null ? null : Math.floor(gemessen + 1e-9);   // qd wird vom Editor ebenfalls abgerundet
+      const min = Number.isFinite(Number(minDpi)) && Number(minDpi) > 0 ? Number(minDpi) : null;
+      if ((min !== null && qd < min) || (gemessenGanz !== null && qd !== gemessenGanz)) {
+        const teile = [`_pod_karte.qd nennt ${qd} dpi`];
+        if (min !== null && qd < min) teile.push(`unter dem Mindestwert ${min} dpi`);
+        if (gemessenGanz !== null && qd !== gemessenGanz) teile.push(`an der echten Druckdatei gemessen sind mindestens ${gemessenGanz} dpi`);
+        weich('qd-weicht-ab', vor(`${teile.join('; ')}. Die Warenkorb-Angabe ist kundenseitig änderbar; massgebend bleibt die Messung der Druckdatei`));
+      }
     }
     const quantity = menge > 0 ? menge : 1;
     const item = { variant_id: sku.vid, quantity, files: plz.files };
