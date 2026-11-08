@@ -99,7 +99,7 @@
 
   // ── Schriften und Farben (wie v5) ───────────────────────────────────────────────────────────────
   var SCHRIFT_NAMEN = EN ? ['Modern Sans', 'Elegant Serif', 'Handwriting', 'Bold Display', 'Mono']
-    : ['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine'];
+    : ['Modern Sans', 'Elegant Serif', 'Handschrift', 'Bold Display', 'Mono'];
   var SCHRIFT_CSS = ["'Helvetica Neue',Arial,sans-serif", "Georgia,'Times New Roman',serif", "'Brush Script MT','Segoe Script',cursive",
     "'Arial Black','Helvetica Neue',sans-serif", "'Courier New',monospace"];
   var SCHRIFT_CANVAS = ['bold {S}px Arial,Helvetica,sans-serif', "bold {S}px Georgia,'Times New Roman',serif", "{S}px 'Brush Script MT','Segoe Script',cursive",
@@ -931,10 +931,7 @@
     '.lsp6-review-pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}',
     '.lsp6-review-figure{margin:0;min-width:0}',
     '.lsp6-review-figure figcaption{font-size:12px;font-weight:800;margin-bottom:5px}',
-    // Die Medien behalten ihr eigenes Seitenverhältnis. Eine feste Höhe liess vor allem
-    // hochformatige Druckdateien auf dem Handy wie schmale Miniaturen wirken und machte
-    // den Vergleich mit der quadratischen Produktansicht unnötig schwer.
-    '.lsp6-review-img{display:block;width:100%;height:auto;object-fit:contain;border-radius:9px;background:#f2f0ec}',
+    '.lsp6-review-img{display:block;width:100%;height:clamp(140px,28vw,280px);object-fit:contain;border-radius:9px;background:#f2f0ec}',
     '.lsp6-review-pvnote{margin:6px 0 0;color:#5b5a62;font-size:11.5px;line-height:1.35}',
     '.lsp6-review-print{background-color:#fff;background-image:linear-gradient(45deg,#e6e6e6 25%,transparent 25%),linear-gradient(-45deg,#e6e6e6 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e6e6 75%),linear-gradient(-45deg,transparent 75%,#e6e6e6 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}',
     '.lsp6-review-fallback{display:flex;align-items:center;min-height:120px;border-radius:9px;padding:12px;background:#fff8e6;color:#4d3a07;font-size:12.5px;font-weight:650}',
@@ -954,7 +951,7 @@
     '.lsp6-pvnote,.lsp6-pvlaed{margin:0;padding:6px 14px 8px;font-size:12px;color:var(--mute);text-align:center}',
     '.lsp6-pvinfo{margin:0;padding:18px 16px;font-size:13.5px;font-weight:600;color:#4d3a07;background:#fff8e6;border-top:1px solid #e7d9b4;border-bottom:1px solid #e7d9b4}',
     '.lsp6-ok.lsp6-mid{background:#fff8e6;border-color:#e7d9b4;color:#4d3a07}',
-    '@media (max-width:600px){.lsp6-btn,.lsp6-tab{min-height:44px}.lsp6-grid{grid-template-columns:repeat(2,1fr)}.lsp6-review{padding:8px;justify-content:flex-start}.lsp6-review-panel{max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);padding:14px}.lsp6-review-summary,.lsp6-review-grid,.lsp6-review-pics{grid-template-columns:1fr}.lsp6-review-pics{gap:14px}.lsp6-review-card{padding:10px}.lsp6-review-actions{flex-direction:column-reverse}.lsp6-review-actions button{width:100%}}',
+    '@media (max-width:600px){.lsp6-btn,.lsp6-tab{min-height:44px}.lsp6-grid{grid-template-columns:repeat(2,1fr)}.lsp6-review{padding:8px;justify-content:flex-start}.lsp6-review-panel{max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);padding:14px}.lsp6-review-summary,.lsp6-review-grid{grid-template-columns:1fr}.lsp6-review-pics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.lsp6-review-img{height:clamp(128px,39vw,150px)}.lsp6-review-card{padding:10px}.lsp6-review-actions{flex-direction:column-reverse}.lsp6-review-actions button{width:100%}}',
   ].join('\n');
 
   function stilEinfuegen() {
