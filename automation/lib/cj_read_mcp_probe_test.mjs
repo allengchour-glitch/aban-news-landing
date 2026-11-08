@@ -271,9 +271,6 @@ test('real probe process fails closed for a missing or malformed binding without
 test('manual workflow isolates the secret-bound MCP job and pins all executable inputs by hash', () => {
   const workflow = readFileSync(new URL('../../.github/workflows/cj-read-mcp-diagnose.yml', import.meta.url), 'utf8');
   const ci = readFileSync(new URL('../../.github/workflows/luxestyle-assist-tests.yml', import.meta.url), 'utf8');
-  const legacy = readFileSync(new URL('../../.github/workflows/diagnose-actions-zugang.yml', import.meta.url), 'utf8');
-  assert.match(legacy, /SHOPIFY_SHOP/);
-  assert.match(legacy, /automation\/diagnose_actions_zugang\.mjs/);
   assert.match(ci, /sparse-checkout:[\s\S]*\.github\/workflows\/cj-read-mcp-diagnose\.yml/);
   const checkoutPin = 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262';
   const nodePin = 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020';
@@ -312,4 +309,13 @@ test('manual workflow isolates the secret-bound MCP job and pins all executable 
     'automation/lib/cj_read_mcp.mjs', 'automation/lib/cj_readonly.mjs']) {
     assert.ok(job.includes(`${sha256(file)}  ${file}`), file);
   }
+});
+
+test('the existing Shopify access diagnostic remains a separate workflow', () => {
+  const legacy = readFileSync(new URL('../../.github/workflows/diagnose-actions-zugang.yml', import.meta.url), 'utf8');
+  const ci = readFileSync(new URL('../../.github/workflows/luxestyle-assist-tests.yml', import.meta.url), 'utf8');
+  assert.match(legacy, /name: "Diagnose Actions-Zugang \(Shopify \+ CJ, nur lesen\)"/);
+  assert.match(legacy, /SHOPIFY_SHOP/);
+  assert.match(legacy, /automation\/diagnose_actions_zugang\.mjs/);
+  assert.match(ci, /sparse-checkout:[\s\S]*\.github\/workflows\/diagnose-actions-zugang\.yml/);
 });
