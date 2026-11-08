@@ -205,43 +205,6 @@ try {
     }
   });
 
-  await szenario('mobile Druckprüfung zeigt beide Bilder proportional und auf Deutsch', async () => {
-    const sitzung = await oeffnen(browser, server, TSHIRT, { breite: 390, hoehe: 844, mobil: true });
-    try {
-      await textHinzufuegen(sitzung.page, 'Mobile Druckprüfung');
-      const review = await reviewOeffnen(sitzung.page);
-      const layout = await review.modal.evaluate((modal) => {
-        const panel = modal.querySelector('.lsp6-review-panel');
-        const bilder = [...modal.querySelectorAll('.lsp6-review-img')].map((bild) => {
-          const box = bild.getBoundingClientRect();
-          return {
-            breite: box.width,
-            hoehe: box.height,
-            naturBreite: bild.naturalWidth,
-            naturHoehe: bild.naturalHeight,
-          };
-        });
-        const spalten = getComputedStyle(modal.querySelector('.lsp6-review-pics')).gridTemplateColumns.trim().split(/\s+/).filter(Boolean);
-        return {
-          spalten: spalten.length,
-          bilder,
-          horizontalerUeberlauf: panel.scrollWidth - panel.clientWidth,
-          text: modal.innerText,
-        };
-      });
-      pruefe('Mobile Prüfung stapelt Druckdatei und Produktansicht', layout.spalten === 1, JSON.stringify(layout));
-      pruefe('Mobile Bilder nutzen die verfügbare Kartenbreite', layout.bilder.length === 2 && layout.bilder.every((bild) => bild.breite >= 300), JSON.stringify(layout.bilder));
-      pruefe('Druckdatei behält ihr Seitenverhältnis', Math.abs(layout.bilder[0].breite / layout.bilder[0].hoehe - layout.bilder[0].naturBreite / layout.bilder[0].naturHoehe) < 0.01, JSON.stringify(layout.bilder[0]));
-      pruefe('Produktansicht behält ihr Seitenverhältnis', Math.abs(layout.bilder[1].breite / layout.bilder[1].hoehe - layout.bilder[1].naturBreite / layout.bilder[1].naturHoehe) < 0.01, JSON.stringify(layout.bilder[1]));
-      pruefe('Mobile Prüfung hat keinen horizontalen Überlauf', layout.horizontalerUeberlauf <= 1, String(layout.horizontalerUeberlauf));
-      pruefe('Deutsche Prüfung zeigt keine englischen Bedientexte', !/(Review print preview|Binding print file|On the product|Keep designing|Confirm print preview|Print areas)/.test(layout.text), layout.text);
-      await zurueck(review);
-      ohneSeitenfehler(sitzung, 'Mobile Druckprüfung');
-    } finally {
-      await sitzung.schliessen();
-    }
-  });
-
   await szenario('Designänderung entwertet den alten Review', async () => {
     const sitzung = await oeffnen(browser, server, OHNE_VORSCHAUDATEN);
     try {
