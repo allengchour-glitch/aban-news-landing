@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 143,
-  "updatedAt": "2026-11-08T16:03:28+01:00",
+  "revision": 144,
+  "updatedAt": "2026-11-08T17:19:09+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17,8 +17,8 @@
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-08",
-    "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG",
-    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung.",
+    "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
+    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-08",
@@ -3314,12 +3314,12 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r141_three_active_overlay_offers_exactly_bound_no_rights_proven_replacement_no_write",
+      "state": "r144_two_target_offers_source_fix_and_exact_image_blocker_bound_no_write",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R141_THREE_ACTIVE_OVERLAY_OFFERS_PRODUCT_VARIANT_MEDIA_AND_RIGHTS_READ_ONLY_COUNTERCHECK",
-      "lastEvidence": "Drei aktuelle ACTIVE/kaufbare Angebote exakt gebunden: Hall-PS5 shopify_ZZ_15433464381825_67788517867911 mit MATERIAL/ABS/Metal, Nail-Set Butterfly304 shopify_ZZ_15445274919297_56061669147009 mit POLY GEL SET/30ML/304# und Ladestation Gray single shopify_ZZ_15447560978817_56063588598145 mit 13:17/Deep Space Gray. Alle tragen rueckhol-0907. Keine exakte overlayfreie, variantenrichtige Quelle mit kommerziellem Rechtebeleg; R131 safeFixes0/blocked9 bleibt. Aktuelle12er-Teilreihe und historischer9er-Scope nicht addiert; eingereichte image_link-URLs unbekannt. Keine Bild-/Feed-/Merchantänderung.",
-      "nextAllowedStep": "Je Offer die aktive Source und tatsächlich eingereichte image_link belegen. Dann nur mit exakt gleicher Ausführung/Farbe/Menge und kommerziellem Rechtebeleg ein overlayfreies Originalbild verwenden; genau betroffene Variantenbindung ändern, Shopify Admin/Storefront zurücklesen und Google dieselbe Offer-ID neu verarbeiten lassen. Keine KI-Bilder, Retusche ohne Rechte, andere Konsolen-/Set-/Farbvarianten oder Massenpagination.",
+      "belegArt": "R144_TWO_TARGET_MERCHANT_OFFERS_BOUND_TO_DRAFT_EXCLUSION_AND_EXACT_IMAGE_BLOCKER",
+      "lastEvidence": "Genau zwei Angebote gezielt an aktuelle Shopify-Quellen gebunden. Offer15453942776193_cj-cjly298079706fu hat im Merchant-Center keinen Preis und ist in CH/LI abgelehnt; Shopify-Produkt15453942776193 ist DRAFT, die exakte Variante ist CHF15.90, kaufbar und untracked/CONTINUE. Sichere Behebung ist Quellausschluss des DRAFT-Produkts, nicht Preis erfinden oder DRAFT aktivieren. Offer15448641012097_cj-cjdk296677412lo ist CHF15.90/IN_STOCK; das exakt blaue XL-Variantenbild ist nur240x320, grössere Bilder zeigen andere Farben. Ein echtes, kommerziell nutzbares exaktes Bild ab500x500 fehlt. Keine Feed-, Bild-, Preis- oder Produktmutation; alte10–20-Tage-Claims bleiben ungeprüft.",
+      "nextAllowedStep": "Für das preislose Offer die aktive Merchant-Datenquelle exakt zurücklesen und das DRAFT-Produkt nur dort ausschliessen; weder Preis erfinden noch Produkt aktivieren. Für das blaue XL-Offer ein echtes, exakt passendes, rechtegeprüftes Quellbild ab500x500 beschaffen und erst danach genau diese Variantenbindung ändern und zurücklesen. Bestehende Overlayfälle getrennt halten, keine Hochrechnung oder Fremdfarbe.",
       "blockers": [
         "Artikelkennungen sind jetzt bekannt; aktive primäre Datenquelle/FetchURL/Originalfelder und eingereichte Google-Links stehen in keinem der vier Exporte. Quellenname/ID und legitimer Editor weiterhin offen, R58Timeout nicht erneut angefragt.",
         "Google-Neubewertung/Übernahme der beiden nativ und öffentlich bestätigten Bildänderungen ist unbekannt; keine Merchant-Einträge entfernt oder hochgeladen.",
@@ -4482,13 +4482,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r141_home_product_alttext_code_merged_live_main_write_blocked_unchanged",
+      "state": "r144_market_footer_texts_live_main_meta_file_write_blocked",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R141_PR2959_MERGED_TESTS_GREEN_MAIN_THEME_UPSERT_POLICY_BLOCKED_AND_READBACK_UNCHANGED",
-      "lastEvidence": "PR2959 mit genau drei Liquid-Alttext-Zuweisungen und drei Vertragsprüfungen gemergt: Commit3d3b6fd827cb86a660fca8209e75934b22dd4253, Merge5120854ba0c9dfa481048b18bab05241a57016cf. 25 dynamische Produktbilder verwenden im gemergten Code den Produkttitel; dekorative Bilder bleiben leer. Lokaler Pooltest und vollständige LuxeStyle-Automation-Tests grün. MAIN213013037447/sections/luxe-edit-home.liquid vor und nach dem einmaligen abgelehnten Write exakt MD5 ed6943c40b94dcf5c7e532685b17c9bc; Kandidat1ec32ba5c57c0db75165e49faedf180d. Connector-Safety blockierte themeFilesUpsert aufs veröffentlichte Theme; kein Write/Retry/Bypass. Live bleiben25 leere Alttexte.",
+      "belegArt": "R144_SWISS_MARKET_AND_FR_FOOTER_TEXTS_LIVE_MAIN_META_FILE_READ_ONLY_BLOCKED",
+      "lastEvidence": "Schweizer Markttexte wurden live zurückgelesen: Logo-Alttext {{ store_name }} – Startseite und Online-Shop mit Shopify; Powered by Shopify fehlt. FR-Footer nennt Schweiz und Liechtenstein. MAIN213013037447 blieb unverändert. Aktuelle MD5: snippets/meta-tags.liquid de2a6f9cf9200f49fe65ad6ca42f1643 mit hart codierter deutscher Startseitenbeschreibung, locales/de.json 1dea0b19fa05c68fa82304b826b7edff, sections/footer-group.json 9ff28afd87a683c7ce0d66e0d2facfdc. Direkter MAIN-Dateiwritedurch Connector-Safety blockiert; kein Bypass/Retry. Frühere25 Alttexte sind damit nicht pauschal als live behoben belegt.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=212978598279#lx-more-products",
-      "nextAllowedStep": "Den gemergten Einzeldatei-Diff über einen zulässigen Theme-Workflow einspielen, ohne andere Theme-Dateien oder Einstellungen zu ändern. Unmittelbar vorher MAIN-ID und MD5 ed6943c40b94dcf5c7e532685b17c9bc erneut prüfen; bei Drift stoppen. Danach Dateihash und öffentlich exakt25 nichtleere, produktbezogene Alttexte zurücklesen. Connector-Sperre nicht umgehen und kein gesamtes Theme blind publizieren.",
+      "nextAllowedStep": "Über einen zulässigen Theme-Workflow nur den locale-aware Meta-Diff und den bereits gemergten Alttext-Einzeldateidiff gegen frisch gelesene MAIN-ID/MD5 anwenden. Bei Drift stoppen. Danach alle betroffenen Dateihashes, FR-/DE-Meta und exakt25 öffentliche Produktbild-Alttexte zurücklesen. Connector-Sperre nicht umgehen und kein gesamtes Theme blind publizieren.",
       "blockers": [
         "397 von520 Kind-Kanten fehlen im Hauptinhalt der Gruppen-Landingpages.",
         "Cap6 würde44 eindeutige Ziele ohne belegten Fallback verstecken.",
@@ -6071,12 +6071,12 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r139_shopify_paid_cj_unshipped_no_fulfillment_tracking_contact",
+      "state": "r144_cj_readonly_and_writer_guards_merged_no_dispatch_prime_unknown_existing_order_unchanged",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R139_TARGETED_SHOPIFY_PAYMENT_AND_EXISTING_CJ_UNSHIPPED_READBACK",
-      "lastEvidence": "Shopify #1038 aktuell bezahlt. Derselbe einmalige CJ-Auftrag LX1038/SD2611081059350666900 aktuell UNSHIPPED. CJ-Ware USD7.44 plus Versand USD37.19 = USD44.63, getrennt von Shopify-CHF. R138s CREATED-Zustand bleibt historisch. Kein erneutes Anlegen, CJ-Payment, Shopify-Fulfilment, Tracking-Write, Kundenkontakt oder Retry.",
-      "nextAllowedStep": "LX1038 nicht erneut anlegen. Status nur bei einem konkreten operativen Folgeentscheid gezielt über LX1038/SD2611081059350666900 lesen. UNSHIPPED ist kein Lieferzeit- oder Versandbeginnbeleg. Fulfilment, Tracking und Kundenkommunikation bleiben ohne neue ausdrückliche Freigabe unverändert; USD nie mit Shopify-CHF summieren.",
+      "belegArt": "R144_PR2967_AND_PR2966_MERGED_CJ_READ_ONLY_AND_FAIL_CLOSED_WRITER_GUARDS_NO_DISPATCH",
+      "lastEvidence": "PR2967 wurde als9265caa696cdb4e7077d5fa2e8a4931eea02b4c1 gemergt: bounded read-only CJ-Job mit numerischer/UUID-PID, exakter nichtleerer VID-Bindung, komplettem Importgraph-Hash und UNKNOWN bei unvollständigem Beleg. PR2966 wurde als352c9010ca3e70fd7132faedadf46746cbe71e79 gemergt: default DRY/no-op, explizites Write-Gate, frische LuxeStyle/Domain/CHF-Identität, nur DRAFT plus compliance-pruefen, stabile Dedupe/Checkpoint-/Readback-Sperren. Kein Workflow-Dispatch, CJ-Livecall oder Shopify-Import. Offizielle CJ-Dokumentation beschreibt Prime als kostenpflichtige Mitgliedschaft, aber keinen Read-only-Statusendpunkt; LuxeStyle-Entitlement unbekannt. Bestehender Auftrag LX1038/SD2611081059350666900 bleibt UNSHIPPED; kein erneutes Anlegen, Payment, Fulfilment, Tracking oder Kundenkontakt.",
+      "nextAllowedStep": "Für CJ-Produktarbeit zuerst den gemergten PR2967-Reader nur über den bereits vorgesehenen manuellen, begrenzten Workflow mit legitimen Runtime-Credentials und genau einer PID plus optional einer VID ausführen; UNKNOWN nicht wiederholen oder in Freigabe umdeuten. Erst nach vollständiger Produkt-/Varianten-/Rechte-/Schweiz-Liefergegenprobe darf PR2966 mit explizitem Gate höchstens DRAFT plus compliance-pruefen erzeugen. Prime-Status nur im authentifizierten CJ-Konto prüfen, keinen Tarif kaufen. LX1038 nicht erneut anlegen; UNSHIPPED bleibt kein Lieferzeitbeleg.",
       "blockers": [
         "CJ-Status ist UNSHIPPED; daraus folgen weder Versandbeginn noch Lieferzeit oder Zustellung.",
         "Shopify-Fulfilment und Tracking/Tracking-Write sind nicht erfolgt.",
@@ -6331,13 +6331,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r143_v63_live_generator_language_fixed_in_main_live_v5_labels_open",
+      "state": "r144_product_mockup_alt_live_german_v5_font_labels_and_main_theme_open",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R143_PR2965_MERGED_POD_GENERATOR_AND_V6_LABELS_NO_LIVE_V5_WRITE",
-      "lastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion. R143: PR2965 als ec00032c gemergt. Neue Generatorausgaben verwenden 325/444 ml, Rundumdruck, Auf Bestellung, Gestaltungswerkzeug und CHF50; sichtbare deutsche v6-Schriftlabels wurden übersetzt, technische Fontfamilien und EN-Locale blieben gleich. Das änderte weder den live wirksamen v5-Editor noch Shopify-Inhalte; dessen englische Schriftlabels bleiben offen.",
+      "belegArt": "R144_PRODUCT_MOCKUP_MEDIA_ALT_LIVE_GERMAN_V5_LABELS_AND_MAIN_THEME_OPEN",
+      "lastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion. R143: PR2965 als ec00032c gemergt. Neue Generatorausgaben verwenden 325/444 ml, Rundumdruck, Auf Bestellung, Gestaltungswerkzeug und CHF50; sichtbare deutsche v6-Schriftlabels wurden übersetzt, technische Fontfamilien und EN-Locale blieben gleich. Das änderte den live wirksamen v5-Editor nicht; dessen englische Schriftlabels bleiben offen. R144: Media69634683011457 wurde separat live von Product mockup auf Produktvorschau korrigiert und öffentlich zurückgelesen; MAIN-/v5-Code blieb unverändert.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Live-v5-Schriftlabels und Product-mockup-Alttext nur als engen Theme-Diff gegen den aktuellen MAIN-/Asset-Hash vorbereiten, v5-Funktion/Proportion/Druckvorschau byte- bzw. browsergenau gegenprüfen und erst mit zulässigem Theme-Write anwenden/rücklesen. Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF-Runtime erst bei gesundem Browserzugang gezielt erneut prüfen; unknown nicht als PASS ausgeben. Dad Cap, Magnet oder DTF erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe freigeben. Offiziellen EDM separat erst mit legitimen product_templates/read+write/embedded_designer-Scopes und Domainbindung prüfen. Keine DRAFT-Aktivierung oder erfundene Projektion. Neue Generatorprodukte erst nach Produkt-/Rechte-/Preis-/Variantenprüfung erzeugen.",
+      "nextAllowedStep": "Live-v5-Schriftlabels als engen Theme-Diff gegen den aktuellen MAIN-/Asset-Hash vorbereiten; der konkrete Media-Alttext ist bereits live deutsch und darf nicht nochmals blind geschrieben werden. v5-Funktion, Proportion und Druckvorschau byte- bzw. browsergenau prüfen und nur mit zulässigem Theme-Write anwenden/rücklesen. Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF/EDM und neue Produkte erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe; keine DRAFT-Aktivierung oder erfundene Projektion.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -7420,12 +7420,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r143_read_only_language_guard_merged_live_english_and_mixed_fr_texts_open",
+      "state": "r144_two_products_and_market_texts_live_fixed_fr_mixed_main_meta_blocked",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R143_LIMITED_LIVE_LANGUAGE_SAMPLE_AND_MERGED_PR2963_PR2964_NO_SHOPWRITE",
-      "lastEvidence": "Draft-PR2962 bleibt offen. Commit ff50da64d560736a16bf1ad1efb2c77597c06125 schliesst die HIGH-Umgehung LOCALES=it: Der Guard prüft die Vereinigung aus WANT und allen publizierten nichtprimären Locales, sodass publiziertes unbelegtes FR nicht übersprungen werden kann. 20/20 lokale Tests sind grün und der HIGH-Fix ist im Review ohne neuen Blocker. MEDIUM bleibt expliziter Merge-/Write-Blocker: Es fehlt ein unabhängiger Produzent eines aktuellen Live-Katalog-Snapshots; der Source-SHA vergleicht nur extern gelieferte Werte. Kein Merge, keine Mutation und kein Locale-/Shopwrite. R143: Begrenzte aktuelle Live-Stichprobe bestätigt weiterhin Home, Powered by Shopify, Small blanket nap blanket, Baby Gentleman Jumpsuit sowie gemischte indexierbare /fr-Inhalte. PR2963 (fd46447f) stoppt neue klar englische/mischtsprachige automatische SEO-Writes; PR2964 (a017420e) ergänzt einen schreibfreien Sprach-/DE-FR-Duplikatwächter. Beide sind in main, haben aber keine bestehenden Live-Texte, Locales oder Märkte geändert. Die FR-Blitzcollection ist noindex und nennt weiterhin unbelegte 1–2 Tage; keine Versandzusage wurde freigegeben.",
-      "nextAllowedStep": "Die konkret belegten bestehenden Texte als getrennten Shopify-Inhalts-/Theme-/Locale-Diff vorbereiten: Home→Startseite, Powered-by-Text entfernen/übersetzen, zwei Produkttexte vollständig deutsch, Product-mockup-Alttext deutsch und /fr entweder vollständig fachlich übersetzen oder bewusst depublizieren. Den 1–2-Tage-Claim nur mit aktuellem Nachweis behalten. Vor jedem Write frische Identität, Originalwerte, Diff und Rücklesung; PR2964 als read-only Gegenprobe verwenden. Für PR2962 bleibt ein unabhängiger aktueller Live-Katalog-Snapshot-Produzent mit belegter Herkunft, Erfassungszeit und SHA-Vertrauenskette erforderlich; erst danach erneut prüfen und mergen.",
+      "belegArt": "R144_TWO_PRODUCTS_MEDIA_ALT_MARKET_TEXTS_LIVE_FIXED_FR_MAIN_META_AND_TRANSLATIONS_OPEN",
+      "lastEvidence": "Shopify-Identität LuxeStyle/luxestyle.ch/CHF frisch bestätigt. Produkt15450854752641 ist live deutsch mit Handle kuscheldecke-klein-fuers-nickerchen-61368a und Redirect; Produkt15450854785409 ist live als Festlicher Baby-Strampler aus Baumwolle mit deutscher Beschreibung/SEO, Wie abgebildet, Handle und17 deutschen Alttexten. Media69634683011457 lautet Produktvorschau. Beide ACTIVE/kaufbar und wegen rueckhol-0907 socialgesperrt. Schweizer Logo-/Shopify-Texte und FR-Footer sind korrigiert; französischer Shop-Titel live. /fr bleibt gemischt: registrierte FR-Beschreibung wird durch hart codiertes Deutsch in MAIN snippets/meta-tags.liquid übersteuert, geprüfte FR-Produkte nutzen deutsche Fallbacks. MAIN unverändert/connector-blockiert; keine Vollkatalog- oder alles-deutsch-Aussage.",
+      "nextAllowedStep": "Den locale-aware Meta-Diff für MAIN snippets/meta-tags.liquid über einen zulässigen Theme-Workflow gegen MD5 de2a6f9cf9200f49fe65ad6ca42f1643 einspielen und öffentlich DE/FR zurücklesen. Danach fachliche FR-Produkt-/Collectionübersetzungen nur quellengebunden und begrenzt ergänzen oder eine ausdrücklich freigegebene Locale-Strategie anwenden. R144-Produkte und Media nicht blind erneut schreiben; rueckhol-Sperren erhalten. FR-Blitz-1–2-Tage-Claim nur mit aktuellem Nachweis behalten.",
       "blockers": [
         "Inhaberfreigabe für den konkreten Collection-Textdiff fehlt.",
         "CH-Lagerstatus ist nicht für alle297 Produkte belegt und darf nicht übernommen werden.",
@@ -11038,6 +11038,29 @@
         "readAt": "2026-11-08T16:03:28+01:00"
       },
       "action": "R143: A limited current live sample confirms remaining English/mixed storefront text and an indexable mixed /fr homepage; the FR Blitz collection is noindex but retains an unverified 1–2-day claim. PR2963 merged a fail-closed guard before automatic SEO writes; PR2964 merged a bounded read-only storefront/DE-FR language guard; PR2965 merged German POD-generator/v6 labels and the CHF50 threshold. These repository merges did not change existing Shopify texts, locales, MAIN theme, or the live v5 labels. Tasks remain24; no full-catalog claim."
+    },
+    {
+      "revision": 144,
+      "at": "2026-11-08T17:19:09+01:00",
+      "actor": "codex",
+      "source": {
+        "paths": [
+          "/workspace/luxestyle-review/r144-live-cj-20261108.json",
+          "/workspace/luxestyle-review/r144-main-theme-fix-plan-20261108.md",
+          "/workspace/luxestyle-review/r144-cj-prime-public-docs-20261108.json"
+        ],
+        "sha256": [
+          "cb72d6e4a7a1ab3e3386ba214a4586921f0c838dbbdae9896246ec178ff986d4",
+          "ad3d33140de23cb66684c590f4013c4faa9d19a048ac7dd04e94f15de82e4635",
+          "def38e62c2ce31fc82bcce66509b24d03521db46972899eaf43ac2bc114d678c"
+        ],
+        "mergeCommits": [
+          "9265caa696cdb4e7077d5fa2e8a4931eea02b4c1",
+          "352c9010ca3e70fd7132faedadf46746cbe71e79"
+        ],
+        "readAt": "2026-11-08T17:19:09+01:00"
+      },
+      "action": "R144: Two verified products and one media alt text were corrected live in German with safe redirects; Swiss market/footer translations were read back. FR remains mixed because MAIN meta-tags.liquid hardcodes German and direct MAIN writes are connector-blocked. Two targeted Merchant offers were bound to a DRAFT-source exclusion and an exact-image blocker; no feed/image/price write. PR2967 and PR2966 merged reviewed CJ read-only and fail-closed writer safeguards; no CJ call or dispatch. Official docs expose no Prime-status endpoint, so entitlement remains unknown. Existing #1038 remains UNSHIPPED and unchanged. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -17720,5 +17743,50 @@
     ],
     "taskCount": 24,
     "fullCatalogClaim": false
+  },
+  "run144": {
+    "at": "2026-11-08T17:19:09+01:00",
+    "scope": "two_live_language_product_fixes_targeted_merchant_countercheck_cj_read_and_import_guard_merges_prime_public_docs",
+    "liveShopify": {
+      "identity": "LuxeStyle/luxestyle.ch/CHF/Switzerland",
+      "productsCorrected": [
+        "15450854752641",
+        "15450854785409"
+      ],
+      "mediaAltCorrected": "69634683011457",
+      "socialBlockedByRueckhol": true,
+      "frMixedStillOpen": true,
+      "mainThemeId": "213013037447",
+      "mainThemeWritePerformed": false,
+      "connectorSafetyBlocked": true
+    },
+    "merchantTargetedOffers": {
+      "count": 2,
+      "offerIds": [
+        "15453942776193_cj-cjly298079706fu",
+        "15448641012097_cj-cjdk296677412lo"
+      ],
+      "writes": 0,
+      "catalogClaim": false
+    },
+    "cjRepository": {
+      "readOnlyPr": 2967,
+      "readOnlyMerge": "9265caa696cdb4e7077d5fa2e8a4931eea02b4c1",
+      "writerGuardPr": 2966,
+      "writerGuardMerge": "352c9010ca3e70fd7132faedadf46746cbe71e79",
+      "workflowDispatches": 0,
+      "liveCjCalls": 0,
+      "imports": 0,
+      "defaultWriterMode": "DRY_NO_OP_DRAFT_ONLY_WITH_EXPLICIT_GATE"
+    },
+    "cjPrime": {
+      "officialPublicDocsRead": true,
+      "primeIsPaidMembership": true,
+      "readOnlyStatusEndpointFound": false,
+      "luxeStyleEntitlement": "UNKNOWN",
+      "purchaseOrAccountWrite": false
+    },
+    "existingOrder1038": "UNSHIPPED_UNCHANGED",
+    "taskCount": 24
   }
 }
