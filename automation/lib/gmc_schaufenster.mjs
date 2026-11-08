@@ -53,7 +53,8 @@ export const MAX_OHNE_KATEGORIE = 0.05;
 /** Mehr als dieser Anteil unlesbarer Zeilen: der Lesevorgang war unvollständig, nichts schreiben. */
 export const MAX_UNKLAR = 0.02;
 /** Zusätzlich zu den Sperrtags (`cj-nicht-versendbar-ch` trifft schon das Muster `nicht-versendbar` in kanal_sperren.mjs). */
-export const NEGATIV_TAGS = /^(cj-ausgelistet|bild-zu-klein)$/;
+/** `google-bild-abgelehnt`: Merchant Center lehnt ein Bild des Produkts ab («Promotional overlay on image», Export 08.11.2026); bleibt draussen, bis das Tag entfernt ist. */
+export const NEGATIV_TAGS = /^(cj-ausgelistet|bild-zu-klein|google-bild-abgelehnt)$/;
 export const PRODUKT_GID = /^gid:\/\/shopify\/Product\/\d+$/;
 /**
  * Offene Prüf- und Policy-Tags des Katalogs, die NICHT schon unter die Sperrtags von kanal_sperren.mjs fallen (Prüfer 28.10.: 59 Produkte mit
