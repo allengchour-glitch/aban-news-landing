@@ -1858,3 +1858,14 @@ Der isolierte Live-Run [42517332990](https://github.com/allengchour-glitch/aban-
 
 Nach Inhabermeldung «bezahlt» bestätigte der reine Trocken-/Leselauf [42517703485](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42517703485) weiterhin genau einen identischen Auftrag und Status `UNSHIPPED`; es wurde nichts neu angelegt. Shopify blieb `PAID`/`UNFULFILLED`, Fulfillment-Request `UNSUBMITTED`, ohne Fulfillment. Keine CJ-Zahlung durch Codex, kein Shopify-Fulfillment, Tracking-Write oder Kundenkontakt. `UNSHIPPED` belegt keinen Versandbeginn oder Liefertermin. CHF und USD bleiben getrennt.
 
+## Aktueller Stand – 08.11.2026, Revision 153: Plugin-Ranking-Push live und zurückgelesen
+
+Firecrawl, HYPD Search Console, HYPD Merchant Center, vidIQ und Shopify wurden im engen LuxeStyle-Scope eingesetzt. Search Console bestätigte für 09.10.–05.11.2026 die indexierte Produktseite `futterautomat-fur-katze-527488` als konkrete Chance: Anfrage «elektrischer futterspender für katzen», 45 Impressionen, 0 Klicks und Position 18,0222. «Elektrisch» ist am Produkt nicht belegt und wurde nicht übernommen.
+
+Produkt `15523986473345` wurde live auf «Automatischer Futterspender für Katzen» ausgerichtet. H1, SEO-Titel und 140-Zeichen-Meta-Beschreibung enthalten jetzt den belegten deutschen Begriff; der produktspezifische Block «Lieferung 10–20 Werktage» mit Symbolen wurde entfernt. Handle/Canonical, IDs, SKU, ACTIVE-Status, CHF96.90, Bilder, Tags und Inventory blieben unverändert. Shopify-Readback war fehlerfrei; Firecrawl bestätigte danach öffentlich HTTP200, `lang=de`, neuen Titel, H1, Meta und saubere `og:url`. Keine Ranking- oder Verkaufswirkung behauptet.
+
+Firecrawl bestätigte als grösseren strukturellen Blocker rund746 serverseitig eingebettete Collection-Links pro geprüfter Seite und 1,04–1,72MB HTML in drei Beispielen. FR-Mischtexte, zwei deutsche Merchant-Inhalte in `fr`-Angeboten, drei eng geprüfte LI-Versandlücken, eine möglicherweise veraltete Emoji-404-URL und englische Judge.me-Clienttexte bleiben offen. Diese Themen benötigen Theme-Preview, echte Übersetzung, Source-/Versandbeleg oder App-Locale-Prüfung; kein blindes Write. vidIQ lieferte keinen autorisierten LuxeStyle-Kanal, daher keine privaten YouTube-Reads oder Metadatenänderung.
+
+[R153-Bericht](PLUGIN-RANKING-PUSH-20261108-R153.md) · [R153-Beleg](PLUGIN-RANKING-PUSH-20261108-R153.json). Keine Budgets, Preise, Rabatte, Versand-, Merchant-, Locale-, Shop-, Flow-, DNS- oder Social-Einstellungen verändert.
+
+[LUXESTYLE_R153_20261108]
