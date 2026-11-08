@@ -133,11 +133,12 @@ def seiten_pruefen(root):
             "befunde": findings, "inventar": inventar}
 
 
-def github_lesen(root, token, call=http):
+def github_lesen(root, token, call=http, ids=None):
+    workflows = {k:v for k,v in WORKFLOWS.items() if ids is None or k in ids}
     if not token:
-        return {ident: {"fehler": "GitHub-Zugang fehlt"} for ident in WORKFLOWS}
+        return {ident: {"fehler": "GitHub-Zugang fehlt"} for ident in workflows}
     result, gebremst = {}, False
-    for ident, filename in WORKFLOWS.items():
+    for ident, filename in workflows.items():
         if gebremst:
             result[ident] = {"fehler": "Nach gesperrtem oder gedrosseltem Abruf nicht mehr abgefragt"}
             continue

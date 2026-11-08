@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import zipfile
 import experten
+import verbund
 
 WORKFLOWS = {'auswahl': 'Produktauswahl', 'schaufenster': 'Merchant-Schaufenster',
              'waechter': 'Lagerwächter', 'autopilot': 'Shop-Autopilot',
@@ -42,6 +43,7 @@ def planen(pflege, werkstatt, jetzt):
         elif run.get('status') != 'completed':
             aufgaben.append({'prioritaet': 2, 'id': ident, 'titel': name + ': Ergebnis abwarten', 'grund': 'Lauf ist noch nicht abgeschlossen.'})
     expert_plan = experten.planen(werkstatt, jetzt)
+    aufgaben.extend(verbund.aufgaben())
     for job in expert_plan['auftraege']:
         aufgaben.append({'prioritaet':job['prioritaet'], 'id':job['id'][8:] if job['id'].startswith('projekt_') else 'intern_'+job['id'],
                          'titel':job['titel'], 'grund':job['naechster'], 'rolle':job['rolle']})
@@ -55,6 +57,7 @@ def planen(pflege, werkstatt, jetzt):
             'takt': 'Alle 6 Stunden geplant; GitHub kann Läufe verzögern oder auslassen.',
             'hirn_planung': {'name': 'Planung & Wissen', 'aufgaben': aufgaben},
             'expertenplan': expert_plan,
+            'projektverbund': verbund.katalog(),
             'hirn_pruefung': {'name': 'Prüfung & Ausführung', 'tests_frisch_bestanden': tests,
                              'shoplaeufe_gelesen': geprueft, 'shoplaeufe_fehlgeschlagen': fehlgeschlagen,
                              'shoplaeufe_unbekannt': unbekannt, 'shopfehler_gesamt': None,
@@ -69,7 +72,8 @@ def exportieren(report, out):
     vault = out / 'Obsidian-Buero'
     vault.mkdir()
     pruefung = report['hirn_pruefung']
-    (vault / 'Start.md').write_text('# KI-Büro\n\n[[Planung]] · [[Prüfung]] · [[Shop]] · [[Team]]\n\nGemessen: ' + report['gemessen'] + '\n\n' + report['takt'] + '\n\nDieser Vault ist ein Export. Keine laufende Verbindung zur Obsidian-App.\n', encoding='utf-8')
+    (vault / 'Start.md').write_text('# KI-Büro\n\n[[Planung]] · [[Prüfung]] · [[Shop]] · [[Team]] · [[Projekte]]\n\nGemessen: ' + report['gemessen'] + '\n\n' + report['takt'] + '\n\nDieser Vault ist ein Export. Keine laufende Verbindung zur Obsidian-App.\n', encoding='utf-8')
+    (vault / 'Projekte.md').write_text('# Verbundene Angebote\n\nZiel: belegbaren Ertrag nach Kosten verbessern. Die Verknüpfung ist keine bestätigte Konto- oder Lieferanbindung.\n\n' + '\n\n'.join('## '+p['name']+'\n\nhttps://abannews.com'+p['pfad']+'\n\n'+p['buero']+' · '+p['verkaufsweg']+'\n\n'+p['naechster']+'\n\n'+p['messung'] for p in report.get('projektverbund',[]))+'\n',encoding='utf-8')
     (vault / 'Planung.md').write_text('# Planung & Wissen\n\n' + '\n'.join('- [ ] ' + a['titel'] + ' — ' + a['experte'] + ': ' + a['grund'] for a in report['hirn_planung']['aufgaben']) + '\n', encoding='utf-8')
     (vault / 'Prüfung.md').write_text('# Prüfung & Ausführung\n\nFrische Selbsttests bestanden: ' + ('ja' if pruefung['tests_frisch_bestanden'] else 'nicht bestätigt') + '\n\nShop-Läufe gelesen: ' + str(pruefung['shoplaeufe_gelesen']) + '\n\nFehlgeschlagene Läufe: ' + str(pruefung['shoplaeufe_fehlgeschlagen']) + '\n\nUnbekannte Läufe: ' + str(pruefung['shoplaeufe_unbekannt']) + '\n\nGesamtzahl der Shopfehler: nicht gemessen. Ziel: bestätigte Fehler beheben und erneut prüfen.\n', encoding='utf-8')
     (vault / 'Shop.md').write_text('# Shop verbessern\n\n[[Planung]] → [[Prüfung]] → bestehender Fachablauf → frisch prüfen.\n\n' + report['grenze'] + '\n\nEin erfolgreicher Lauf bestätigt nur seinen begrenzten Prüfumfang. Neue Produkte und Änderungen können neue Fehler bringen. Null bekannte Fehler sind kein Nachweis für einen fehlerfreien Shop.\n', encoding='utf-8')

@@ -16,7 +16,7 @@ PUBLIC_IDS = {'auswahl','schaufenster','waechter','autopilot','fortura','printfu
               'yt_skript','yt_video','yt_wachstum'}
 
 
-def bauen(ziel, design_paket=None, werkstatt_status=None):
+def bauen(ziel, design_paket=None, werkstatt_status=None, ablauf_status=None):
     spec=importlib.util.spec_from_file_location('buero',ROOT/'make_buero.py')
     module=importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -35,6 +35,10 @@ def bauen(ziel, design_paket=None, werkstatt_status=None):
         row["link"] = row["aktion_url"] = ""
         row["aktion_hinweis"] = ""
         row["naechster_schritt"] = "Den nächsten Schritt im passenden Arbeitsbereich ansehen."
+    if ablauf_status:
+        updates = {r['id']:r for r in ablauf_status}
+        for row in rows:
+            if row['id'] in updates: row.update(updates[row['id']])
     if werkstatt_status:
         from projektstatus import bericht_lesen, IDS
         report = bericht_lesen(werkstatt_status)

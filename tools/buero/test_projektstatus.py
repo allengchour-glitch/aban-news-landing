@@ -89,7 +89,7 @@ class ProjektstatusTest(unittest.TestCase):
 
     def test_fachteam_tests_mit_fehler_verhindern_erfolgreichen_bau(self):
         with tempfile.TemporaryDirectory() as tmp:
-            def seite(ziel, werkstatt_status):
+            def seite(ziel, werkstatt_status, **kwargs):
                 report=json.loads(Path(werkstatt_status).read_text())
                 self.assertEqual(report['stationen']['pruefen'],'fehlgeschlagen')
                 self.assertEqual(report['stationen']['bauen'],'offen')
@@ -100,7 +100,7 @@ class ProjektstatusTest(unittest.TestCase):
 
     def test_abgebrochener_lauf_publiziert_keinen_erfolg(self):
         with tempfile.TemporaryDirectory() as tmp:
-            def seite(ziel, werkstatt_status):
+            def seite(ziel, werkstatt_status, **kwargs):
                 report = json.loads(Path(werkstatt_status).read_text())
                 self.assertEqual(set(report['stationen'].values()), {'offen'})
                 self.assertEqual(report['projekte'], [])

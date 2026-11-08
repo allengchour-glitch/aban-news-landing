@@ -44,6 +44,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: cf-mainsite-deploy
@@ -79,6 +80,7 @@ jobs:
       - name: Seite bauen wie der Server (build-pages.sh -> _site)
         env:
           DOWNLOAD_SALT: ${{ secrets.DOWNLOAD_SALT }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: bash build-pages.sh
       - name: Reparaturbericht bereitstellen
         uses: actions/upload-artifact@v4

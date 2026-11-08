@@ -38,3 +38,6 @@
 # Gemessener Büro-Projektstatus: kurz cachen, keine Konto- oder Kundendaten.
 /buero-projektstatus.json
   Cache-Control: public, max-age=60, must-revalidate
+
+/buero-ablaufstatus.json
+  Cache-Control: public, max-age=60, must-revalidate
