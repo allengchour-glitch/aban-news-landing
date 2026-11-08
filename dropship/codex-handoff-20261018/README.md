@@ -1716,3 +1716,9 @@ Produkt-, Varianten- und Bildidentität sind getrennt: Shopify-Bilder sind refer
 Der vorhandene Store-Token ist ungeeignet: Nonce-POST und Product-Templates-GET antworteten HTTP 403 wegen fehlendem `product_templates/write` beziehungsweise `product_templates/read`. Account-Token mit `embedded_designer`, erlaubte Domain `luxestyle.ch`, frischer Nonce-Test und begrenzter Save-/Bestellpfad fehlen. Token ausschliesslich im bestehenden Secret-Store, nie in Chat/Repo/Browser/URL.
 
 EDM-Host, Nonce-Service, Produktmanifest und Mockup-Relay sind lokale Review-Entwürfe. EDM-Freigaben bleiben 0. Kein Deploy, MAIN-/Theme-/Produkt-/Printful-/Cart-/Checkout-/Order-/Renderwrite. Der nächste zulässige Schritt ist genau eine serverseitige redigierte Nonce-Gegenprobe nach sicherer Token-/Domainbereitstellung; danach höchstens ein einzelner ACTIVE-Produktpilot im unveröffentlichten Theme.
+
+## Aktueller Stand – 08.11.2026, Revision 138: Shopify #1038 kontrolliert an CJ übergeben
+
+[CJ-Push-Bericht](CJ-BESTELLUNG-1038-20261108-R138.md) · [Maschinenbeleg](CJ-BESTELLUNG-1038-20261108-R138.json). GitHub-Actions-Run [42473578050](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42473578050) wurde frisch als `completed/success` zurückgelesen. Der Job `order-1038` bestätigte für Shopify #1038 genau den CJ-Auftrag `LX1038`/`SD2611081059350666900`, Status `CREATED`; die gezielte Rücklesung lieferte `count=1`.
+
+Warenwert USD 7.44 plus DHL-Official-Versand USD 37.19 ergibt USD 44.63. CJ-USD und Shopify-CHF bleiben getrennt. `CREATED` belegt weder Zahlung noch Versandbeginn: keine CJ-Zahlung, kein Shopify-Fulfilment, kein Tracking-Write und keine Kundenmail. Keine PII wurde in die Dokumentation übernommen. Kein erneutes Anlegen oder blinder Retry; spätere Statusprüfung nur gezielt über dieselbe CJ-Auftragsnummer/-ID. Die Printful-R137-Inhalte bleiben unverändert gültig.

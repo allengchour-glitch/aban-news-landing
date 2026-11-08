@@ -1127,3 +1127,11 @@ PR2916 erweitert gestapelt auf PR2912 die temporäre FR-Noindex-Eindämmung;44/4
 - Bilder/Rechte: vorhandene Shopify-Bilder sind referenziert, aber dynamische Overlay-/Mockup-Rechte für 0/41 Produkte bestätigt. Nur Keramiktasse Modell 19/3 Varianten besitzt exakte lokale Bild- und Druckgeometrie; ein lokaler Mockup-Relay bleibt darauf begrenzt. Kein generischer Produktkörper oder erfundene Projektion für andere Produkte.
 - Blocker: `POST /embedded-designer/nonces` HTTP 403 ohne `product_templates/write`, `GET /product-templates` HTTP 403 ohne `product_templates/read`. Legitimer Account-Token mit `embedded_designer`, Domainfreigabe `luxestyle.ch`, erfolgreicher Nonce-Test sowie begrenzter Save-/Bestellpfad fehlen. `edmAccessConfirmed=false`, EDM-Freigaben 0.
 - R137 enthält nur lokale Review-Entwürfe für Host, Nonce-Service, Manifest und Mockup-Relay. Kein Shop-/Theme-/MAIN-/Produkt-/Printful-/Cart-/Checkout-/Order-/Deploy-/Renderwrite. Nächster enger Schritt: Token über bestehenden Secret-Store und Domainbindung bereitstellen, genau eine redigierte Nonce-Gegenprobe; danach höchstens ein exakt zugeordnetes ACTIVE-Produkt im UNPUBLISHED-Theme testen und vollständig zurücklesen.
+
+# R138 – CJ-Auftrag für Shopify #1038 eindeutig erstellt und zurückgelesen, 08.11.2026
+
+- [Bericht](CJ-BESTELLUNG-1038-20261108-R138.md) · [Beleg](CJ-BESTELLUNG-1038-20261108-R138.json) · [GitHub-Actions-Run 42473578050](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42473578050). Run und Job `order-1038` sind `completed/success`; Branch `codex/luxestyle-order-1038-push-20261108`, Head `5fbd7fa6eacf5f1c1c312652077442f8d688e9a8`.
+- Shopify #1038 wurde genau einmal als CJ-Auftrag `LX1038`, CJ-ID `SD2611081059350666900`, Status `CREATED` belegt. Die gezielte Gegenprobe lieferte `count=1`; deshalb kein erneutes Anlegen und kein blinder Retry.
+- CJ-Kosten bleiben separat in USD: Ware7.44 + DHL Official37.19 = Total44.63. Keine Mischung mit Shopify-CHF, keine Umsatz-, Margen- oder Erfolgsaussage.
+- Noch nicht erfolgt: CJ-Payment, Shopify-Fulfilment, Tracking/Tracking-Write, Kundenmail oder sonstige Kundenansprache. `CREATED` ist kein Beleg für Versandbeginn, Lieferzeit oder Zustellung. Keine PII im Gedächtnis.
+- Die Printful-R137-Matrix und deren HTTP403-/Rechte-/Deployblocker bleiben vollständig erhalten; R138 ändert daran nichts.

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "revision": 138,
+  "observedAt": "2026-11-08T12:01:35+01:00",
+  "timezone": "Europe/Zurich",
+  "shopifyOrder": {
+    "name": "#1038",
+    "customerPiiStored": false
+  },
+  "githubActions": {
+    "runId": 42473578050,
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42473578050",
+    "workflow": "CJ Bestellung 1038 kontrolliert pushen",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "headBranch": "codex/luxestyle-order-1038-push-20261108",
+    "headSha": "5fbd7fa6eacf5f1c1c312652077442f8d688e9a8",
+    "job": {
+      "id": 128709810825,
+      "name": "order-1038",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-08T10:57:12Z",
+      "completedAt": "2026-11-08T10:59:43Z"
+    },
+    "artifacts": 0
+  },
+  "cjOrder": {
+    "orderNum": "LX1038",
+    "cjOrderId": "SD2611081059350666900",
+    "status": "CREATED",
+    "currency": "USD",
+    "goodsAmount": "7.44",
+    "shippingMethod": "DHL Official",
+    "shippingAmount": "37.19",
+    "totalAmount": "44.63",
+    "amountCheck": "7.44 + 37.19 = 44.63",
+    "targetedReadbackCount": 1
+  },
+  "actions": {
+    "cjPaymentPerformed": false,
+    "shopifyFulfillmentPerformed": false,
+    "trackingWritePerformed": false,
+    "customerEmailSent": false,
+    "customerContacted": false,
+    "blindRetryPerformed": false
+  },
+  "claimsNotEstablished": [
+    "Versandbeginn",
+    "Lieferzeit",
+    "Zustellung",
+    "Marge",
+    "Kundenbenachrichtigung"
+  ],
+  "currencySeparation": {
+    "cj": "USD",
+    "shopify": "CHF",
+    "mixed": false
+  }
+}

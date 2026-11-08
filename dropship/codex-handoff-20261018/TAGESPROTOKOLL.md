@@ -1456,3 +1456,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen / Dokumentation | R137-Bericht, Maschinenbeleg und Projektgedächtnis fortgeschrieben | Kein Shopify-/Theme-/MAIN-/Produkt-/Printful-/Cart-/Checkout-/Order-/Social-/Flow-/DNS-/Budget-/Rabatt-/Deploy-/Renderwrite |
 
 [LUXESTYLE_R137_20261108] [Printful-EDM-Bericht](PRINTFUL-ORIGINAL-EDITOR-20261108-R137.md) · [Maschinenbeleg](PRINTFUL-ORIGINAL-EDITOR-20261108-R137.json). Vollständige begrenzte Produkt-/Variantenmatrix und offizieller EDM-Kandidat; produktive Aktivierung durch fehlende Account-Scopes/Domainbindung und Rechte-/E2E-Nachweise gesperrt.
+
+### R138
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| GitHub Actions | Run42473578050 und Job `order-1038` gezielt ohne Log-/PII-Übernahme zurückgelesen | `completed/success`; Branch `codex/luxestyle-order-1038-push-20261108`, Head`5fbd7fa6…`; alle sieben Jobschritte erfolgreich |
+| CJ-Auftrag | Den belegten Push für Shopify #1038 mit Auftragsidentität und gezielter Gegenprobe dokumentiert | `LX1038`/`SD2611081059350666900`, Status`CREATED`, Rücklesung `count=1`; kein erneutes Anlegen oder blinder Retry |
+| Kosten / Währung | CJ-Ware und Versand rechnerisch gegengeprüft und getrennt erfasst | USD7.44 + DHL Official USD37.19 = USD44.63; nicht mit Shopify-CHF vermischt, keine Margenaussage |
+| Folgeaktionen | Zahlungs-, Fulfilment-, Tracking- und Kontaktstatus klar abgegrenzt | Keine CJ-Zahlung, kein Shopify-Fulfilment, kein Tracking-Write, keine Kundenmail/-ansprache; Versandbeginn/Lieferzeit/Zustellung unbekannt |
+| Datenschutz / Kontinuität | Nur nicht personenbezogene Auftrags- und Run-Belege gespeichert; R137 erhalten | Keine Namen, E-Mails, Adressen, Telefone oder Zahlungsdaten. Printful-R137 unverändert |
+
+[LUXESTYLE_R138_20261108] [CJ-Push-Bericht](CJ-BESTELLUNG-1038-20261108-R138.md) · [Maschinenbeleg](CJ-BESTELLUNG-1038-20261108-R138.json) · [Run 42473578050](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42473578050). Einmalige CJ-Erstellung für #1038 und eindeutige Rücklesung belegt; Zahlung, Fulfilment, Tracking und Kundenmail nicht erfolgt.

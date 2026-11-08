@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 137,
-  "updatedAt": "2026-11-08T11:45:25+01:00",
+  "revision": 138,
+  "updatedAt": "2026-11-08T12:01:35+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -5814,20 +5814,18 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r91_remote_inventory_read_verified_factory_only_shopify_variant_mapping_open",
+      "state": "r138_shopify_1038_cj_created_readback_one_payment_fulfillment_tracking_open",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R91_GITHUB_ACTIONS_REMOTE_CJ_INVENTORY_FACTORY_ONLY_SHOPIFY_VARIANT_MAPPING_OPEN",
-      "lastEvidence": "Am 05.11. bestätigte der erfolgreiche einmalige GitHub-Actions-Lauf 42026512823, Job 127241964880, den fixierten Draft-PR-Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 mit genau einem Authentifizierungs-, einem Produkt- und einem Inventory-Aufruf für PID 1477820492730732544 / productSku CJSN1392391. Sieben CJ-Varianten wurden zurückgegeben: CJSN139239101AZ/VID1477826312449167360 CN33714/0/33714/2, CJSN139239102BY/VID1477826312453361664 CN37567/0/37567/2, CJSN139239103CX/VID1477826312453361665 CN43253/0/43253/2, CJSN139239104DW/VID1477826312453361666 CN33773/0/33773/2, CJSN139239105EV/VID1555856292877709312 CN36227/0/36227/2, CJSN139239106FU/VID1555856292877709313 CN40142/0/40142/2 und CJSN139239107GT/VID1589496316504322048 CN13059/0/13059/2; Zahlenfolge jeweils totalInventory/cjInventory/factoryInventory/verifiedWarehouse. Damit liegt ausschliesslich chinesisches factoryInventory vor; cjInventory ist 0 und verifiedWarehouse 2. Das belegt keinen physischen CJ-Bestand, keine Lieferbarkeit in die Schweiz und keine Lieferzeit. Die öffentliche Storefront-Gegenprobe 2026-11-05T12:23:08.908Z zeigte Produkt und sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90 sowie inventory_management=null und inventory_policy=null. Der gleichentägige native Altbeleg tracked=false/CONTINUE/Menge0 wurde nicht neu gemessen und bleibt ebenfalls ohne Bestandszusage. Der neue read-only Inventory-Pfad, fixierte Action-SHAs und die Entfernung des Legacy-Secretjobs sind am Head belegt; 261/261 Tests insgesamt und 87/87 fokussiert bestanden, die CI-Simulation blieb an blockiertem unshare stehen. Keine CJ-/Shop-/Produkt-/Preis-/Bestandswrites.",
-      "nextAllowedStep": "Run 42026512823 ohne neuen konkreten Gegenprüfgrund nicht wiederholen. Die sieben CJ-variantSku/VID-Paare einzeln an frisch gelesene aktuelle Shopify-Varianten-IDs, Ausführungen, SKUs und Preise binden; öffentliche available-Felder und den alten nativen tracked=false/CONTINUE/Menge0-Beleg nicht als Bestand verwenden. Physischen Lieferantenbestand, Lieferbarkeit in die Schweiz, Lieferzeit, Prime-Status und Medien-/Bearbeitungs-/Werberechte separat belegen. Vor jedem möglichen Produkt-, Preis- oder Bestandswrite frische native Shopdaten und eine ausdrückliche enge Freigabe verlangen.",
+      "lastEvidenceDate": "2026-11-08",
+      "belegArt": "R138_GITHUB_ACTIONS_CJ_ORDER_CREATED_TARGETED_READBACK_ONE_NO_PAYMENT_OR_FULFILLMENT",
+      "lastEvidence": "GitHub-Actions-Run42473578050/Job128709810825 wurde frisch completed/success zurückgelesen. Der kontrollierte Push für Shopify #1038 führte zu CJ orderNum LX1038, cjOrderId SD2611081059350666900, Status CREATED; die gezielte Rücklesung lieferte count=1. CJ-Kosten: Ware USD7.44 plus DHL Official USD37.19 = Total USD44.63; Shopify-CHF bleibt getrennt. CREATED belegt nur Auftragserstellung, nicht Zahlung, Versandbeginn oder Zustellung. Keine CJ-Zahlung, kein Shopify-Fulfilment, kein Tracking-Write, keine Kundenmail/-ansprache und keine PII-Dokumentation. Kein erneutes Anlegen oder blinder Retry.",
+      "nextAllowedStep": "LX1038 nicht erneut anlegen und Run42473578050 nicht ohne neuen konkreten Grund wiederholen. Falls ein operativer Folgeentscheid in einem bestehenden Lauf eine Statusprüfung benötigt, ausschliesslich LX1038 beziehungsweise SD2611081059350666900 gezielt zurücklesen und unbekannte Antworten nicht wiederholen. CJ-Payment, Shopify-Fulfilment, Tracking und Kundenkommunikation bleiben getrennte Schritte ausserhalb dieses Belegs; vor jedem davon aktuelle Zustände, bestehenden Auftrag, Kosten/Währung, Freigabe und Rücklesung prüfen. USD-Kosten nie mit Shopify-CHF-Umsatz summieren.",
       "blockers": [
-        "GitHub-Actions-Secret ist nur im kurzlebigen Remote-Job gebunden; keine dauerhafte lokale MCP-Host-Bindung belegt",
-        "PR 2896 ist offen, Draft und ungemergt; eine vollständig grüne Merge-Abnahme ist nicht belegt",
-        "Die CJ-Antwort enthält für CN ausschliesslich factoryInventory; cjInventory ist 0 und verifiedWarehouse 2, ohne Nachweis physischen CJ-Bestands, Schweizer Lieferbarkeit oder Lieferzeit",
-        "Die sieben CJ-variantSku/VID-Paare sind noch nicht vollständig an die aktuellen Shopify-Varianten-IDs, Ausführungen und SKUs gebunden",
-        "Öffentliches available=true mit inventory_management=null/inventory_policy=null und der nicht neu gemessene native Altbeleg tracked=false/CONTINUE/Menge0 erlauben keine Bestandszusage",
-        "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
-        "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preis-/Bestandswrites, Käufe, Render oder Merchant-Änderungen"
+        "CJ-Status ist nur CREATED; CJ-Payment ist nicht erfolgt.",
+        "Shopify-Fulfilment und Tracking/Tracking-Write sind nicht erfolgt.",
+        "Keine Kundenmail oder sonstige Kundenansprache; Versandbeginn, Lieferzeit und Zustellung sind unbekannt.",
+        "CJ-Kosten liegen in USD, Shopify-Shop führt CHF; keine gemischte Revenue-/Margenrechnung.",
+        "Jeder unklare Folgewrite bleibt unknown und darf nicht blind wiederholt werden."
       ],
       "acceptance": [
         "Frischen main-Diff und Quellenbindung prüfen; kein ungeprüfter Sync/Workflowstart",
@@ -5839,7 +5837,10 @@
         "Status bound_unverified nur als vorhandene Bindung behandeln, nicht als bestätigte CJ-Verbindung",
         "Aus Produkt- oder Inventory-Read weder Prime-Status oder Medienrechte noch eine Schreib- oder Importfreigabe ableiten",
         "Remote-Lauf 42026512823 nicht als dauerhafte lokale Host-Bindung, produktive Aktivierung oder Bestandsfreigabe ausgeben",
-        "Enger zulässiger Write erst mit aktuellen Identitäten, Quellen, ausdrücklicher Freigabe und Rücklesung"
+        "Enger zulässiger Write erst mit aktuellen Identitäten, Quellen, ausdrücklicher Freigabe und Rücklesung",
+        "LX1038/CJ-ID vor jedem Folgeentscheid gezielt zurücklesen; niemals erneut anlegen oder blind retrien.",
+        "CREATED nicht als bezahlt, versendet, erfüllt, getrackt oder zugestellt ausgeben.",
+        "Keine PII in Projektgedächtnis oder Belege übernehmen; USD und CHF getrennt halten."
       ],
       "sources": [
         {
@@ -5982,6 +5983,24 @@
           "readAt": "2026-11-05T13:28:30+01:00",
           "ref": "e0173681ef2e8a2b78f5db93d0bf877c05a2b172",
           "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42026512823"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1038-20261108-R138.md",
+          "gitBlobSha": "f49436b6083a2b25925b6b8bc324b705ebaaeb1b",
+          "readAt": "2026-11-08T12:01:35+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1038-20261108-R138.json",
+          "gitBlobSha": "e3db881c4a386e3480b6c7e495321d5947bc5686",
+          "readAt": "2026-11-08T12:01:35+01:00"
+        },
+        {
+          "path": "github-actions-run:42473578050",
+          "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42473578050",
+          "runId": 42473578050,
+          "jobId": 128709810825,
+          "headSha": "5fbd7fa6eacf5f1c1c312652077442f8d688e9a8",
+          "readAt": "2026-11-08T12:01:35+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6030,6 +6049,23 @@
             "Der erfolgreiche productSku-Read belegt CJ-PID 1477820492730732544, aber nicht die vollständige aktuelle Shopify-Varianten- und Medienzuordnung",
             "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
             "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preiswrites, Käufe, Render oder Merchant-Änderungen"
+          ]
+        },
+        {
+          "revision": 91,
+          "date": "2026-11-05",
+          "state": "r91_remote_inventory_read_verified_factory_only_shopify_variant_mapping_open",
+          "belegArt": "R91_GITHUB_ACTIONS_REMOTE_CJ_INVENTORY_FACTORY_ONLY_SHOPIFY_VARIANT_MAPPING_OPEN",
+          "lastEvidence": "Am 05.11. bestätigte der erfolgreiche einmalige GitHub-Actions-Lauf 42026512823, Job 127241964880, den fixierten Draft-PR-Head e0173681ef2e8a2b78f5db93d0bf877c05a2b172 mit genau einem Authentifizierungs-, einem Produkt- und einem Inventory-Aufruf für PID 1477820492730732544 / productSku CJSN1392391. Sieben CJ-Varianten wurden zurückgegeben: CJSN139239101AZ/VID1477826312449167360 CN33714/0/33714/2, CJSN139239102BY/VID1477826312453361664 CN37567/0/37567/2, CJSN139239103CX/VID1477826312453361665 CN43253/0/43253/2, CJSN139239104DW/VID1477826312453361666 CN33773/0/33773/2, CJSN139239105EV/VID1555856292877709312 CN36227/0/36227/2, CJSN139239106FU/VID1555856292877709313 CN40142/0/40142/2 und CJSN139239107GT/VID1589496316504322048 CN13059/0/13059/2; Zahlenfolge jeweils totalInventory/cjInventory/factoryInventory/verifiedWarehouse. Damit liegt ausschliesslich chinesisches factoryInventory vor; cjInventory ist 0 und verifiedWarehouse 2. Das belegt keinen physischen CJ-Bestand, keine Lieferbarkeit in die Schweiz und keine Lieferzeit. Die öffentliche Storefront-Gegenprobe 2026-11-05T12:23:08.908Z zeigte Produkt und sieben Varianten available=true zu CHF34.90/37.90/40.90/49.90/51.90/44.90/35.90 sowie inventory_management=null und inventory_policy=null. Der gleichentägige native Altbeleg tracked=false/CONTINUE/Menge0 wurde nicht neu gemessen und bleibt ebenfalls ohne Bestandszusage. Der neue read-only Inventory-Pfad, fixierte Action-SHAs und die Entfernung des Legacy-Secretjobs sind am Head belegt; 261/261 Tests insgesamt und 87/87 fokussiert bestanden, die CI-Simulation blieb an blockiertem unshare stehen. Keine CJ-/Shop-/Produkt-/Preis-/Bestandswrites.",
+          "nextAllowedStep": "Run 42026512823 ohne neuen konkreten Gegenprüfgrund nicht wiederholen. Die sieben CJ-variantSku/VID-Paare einzeln an frisch gelesene aktuelle Shopify-Varianten-IDs, Ausführungen, SKUs und Preise binden; öffentliche available-Felder und den alten nativen tracked=false/CONTINUE/Menge0-Beleg nicht als Bestand verwenden. Physischen Lieferantenbestand, Lieferbarkeit in die Schweiz, Lieferzeit, Prime-Status und Medien-/Bearbeitungs-/Werberechte separat belegen. Vor jedem möglichen Produkt-, Preis- oder Bestandswrite frische native Shopdaten und eine ausdrückliche enge Freigabe verlangen.",
+          "blockers": [
+            "GitHub-Actions-Secret ist nur im kurzlebigen Remote-Job gebunden; keine dauerhafte lokale MCP-Host-Bindung belegt",
+            "PR 2896 ist offen, Draft und ungemergt; eine vollständig grüne Merge-Abnahme ist nicht belegt",
+            "Die CJ-Antwort enthält für CN ausschliesslich factoryInventory; cjInventory ist 0 und verifiedWarehouse 2, ohne Nachweis physischen CJ-Bestands, Schweizer Lieferbarkeit oder Lieferzeit",
+            "Die sieben CJ-variantSku/VID-Paare sind noch nicht vollständig an die aktuellen Shopify-Varianten-IDs, Ausführungen und SKUs gebunden",
+            "Öffentliches available=true mit inventory_management=null/inventory_policy=null und der nicht neu gemessene native Altbeleg tracked=false/CONTINUE/Menge0 erlauben keine Bestandszusage",
+            "Prime-Status sowie Medien-, Bearbeitungs- und Werberechte bleiben unbekannt",
+            "Der Nur-Lese-Connector autorisiert keine Imports, Produkt-/Preis-/Bestandswrites, Käufe, Render oder Merchant-Änderungen"
           ]
         }
       ]
@@ -10533,6 +10569,17 @@
         "readAt": "2026-11-08T11:45:25+01:00"
       },
       "action": "R137:41 self-design products/398 Shopify variants and45 relevant Printful models/2,257 variants were reconciled. 18 ACTIVE Printful products/244 variants are exact; ACTIVE Mister-DTF transfer,22 DRAFT products and unresolved20-variant World-Cup jersey remain blocked. A local fail-closed official Printful EDM candidate plus mug-only exact mockup relay was prepared. Dynamic overlay rights remain0/41; only mug model19/3 variants has exact local geometry. Current token endpoints remain HTTP403 for missing product_templates scopes/domain-access proof. No deploy, MAIN/theme/product/Printful/cart/checkout/order/render write."
+    },
+    {
+      "revision": 138,
+      "at": "2026-11-08T12:01:35+01:00",
+      "actor": "codex",
+      "source": {
+        "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1038-20261108-R138.json",
+        "gitBlobSha": "e3db881c4a386e3480b6c7e495321d5947bc5686",
+        "readAt": "2026-11-08T12:01:35+01:00"
+      },
+      "action": "R138: GitHub Actions run42473578050/job128709810825 was read back completed/success. Shopify #1038 has exactly one confirmed CJ order LX1038/SD2611081059350666900 in CREATED state; targeted readback count=1. Goods USD7.44 plus DHL Official USD37.19 equals USD44.63, kept separate from Shopify CHF. No CJ payment, Shopify fulfillment, tracking write, customer email/contact or PII documentation. No retry."
     }
   ],
   "salesGoal": {
@@ -16191,5 +16238,58 @@
       "deploy",
       "paid render"
     ]
+  },
+  "cjOrderPushR138": {
+    "at": "2026-11-08T12:01:35+01:00",
+    "status": "cj_order_created_targeted_readback_one_payment_fulfillment_tracking_not_performed",
+    "report": {
+      "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1038-20261108-R138.md",
+      "gitBlobSha": "f49436b6083a2b25925b6b8bc324b705ebaaeb1b",
+      "sha256": "b886d8ae0af20a6520142680dd9faef7e6d069956c8d74a2375d67c9dadea3a7"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/CJ-BESTELLUNG-1038-20261108-R138.json",
+      "gitBlobSha": "e3db881c4a386e3480b6c7e495321d5947bc5686",
+      "sha256": "30d7b20a44d57381c04848478c7a6501814c29504e9ab1719aa9f6ae55fa178c"
+    },
+    "githubActions": {
+      "runId": 42473578050,
+      "jobId": 128709810825,
+      "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/42473578050",
+      "status": "completed",
+      "conclusion": "success",
+      "headBranch": "codex/luxestyle-order-1038-push-20261108",
+      "headSha": "5fbd7fa6eacf5f1c1c312652077442f8d688e9a8"
+    },
+    "shopifyOrder": "#1038",
+    "cjOrder": {
+      "orderNum": "LX1038",
+      "cjOrderId": "SD2611081059350666900",
+      "status": "CREATED",
+      "currency": "USD",
+      "goodsAmount": "7.44",
+      "shippingMethod": "DHL Official",
+      "shippingAmount": "37.19",
+      "totalAmount": "44.63",
+      "targetedReadbackCount": 1
+    },
+    "actionsPerformed": [
+      "CJ order creation",
+      "targeted CJ order readback"
+    ],
+    "actionsNotPerformed": [
+      "CJ payment",
+      "Shopify fulfillment",
+      "tracking write",
+      "customer email",
+      "customer contact",
+      "blind retry"
+    ],
+    "customerPiiStored": false,
+    "currencySeparation": {
+      "cj": "USD",
+      "shopify": "CHF",
+      "mixed": false
+    }
   }
 }
