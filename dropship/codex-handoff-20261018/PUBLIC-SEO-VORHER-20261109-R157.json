@@ -1,0 +1,393 @@
+{
+  "reportId": "R157-PUBLIC-BEFORE",
+  "generatedAtUtc": "2026-11-09T20:19:47.532Z",
+  "generatedAtEuropeZurich": "09.11.26, 21:19:47",
+  "scope": {
+    "exactUrls": [
+      "https://luxestyle.ch/pages/selbst-gestalten",
+      "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "https://luxestyle.ch/fr/"
+    ],
+    "firecrawl": {
+      "maxAge": 0,
+      "storeInCache": false,
+      "formats": [
+        "markdown",
+        "rawHtml",
+        "links"
+      ],
+      "onlyMainContent": false
+    },
+    "exclusions": [
+      "keine Sitemap",
+      "kein Map/Crawl",
+      "keine Schreibaktion"
+    ],
+    "secondaryValidation": "Exakter Direktabruf derselben drei URLs zur Trennung von Top-Level-Tags und eingebettetem Blockierungs-HTML; keine zusätzlichen URLs."
+  },
+  "pages": [
+    {
+      "key": "de_self",
+      "label": "DE Selbstgestalten",
+      "expectedLanguage": "de",
+      "url": "https://luxestyle.ch/pages/selbst-gestalten",
+      "success": true,
+      "scrapeId": null,
+      "retrievedAt": "2026-11-09T20:19:47.493Z",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/pages/selbst-gestalten",
+      "rawHtmlChars": 1692294,
+      "markdownChars": 156033,
+      "htmlLang": "de",
+      "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "metaDescription": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "openGraph": {
+        "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+        "description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+        "url": "https://luxestyle.ch/pages/selbst-gestalten",
+        "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "locale": null
+      },
+      "h1": [
+        "T-Shirt, Tasse & mehr selbst gestalten"
+      ],
+      "canonical": "https://luxestyle.ch/pages/selbst-gestalten",
+      "hreflang": [
+        {
+          "href": "https://luxestyle.ch/pages/selbst-gestalten",
+          "hreflang": "x-default",
+          "type": null
+        },
+        {
+          "href": "https://luxestyle.ch/pages/selbst-gestalten",
+          "hreflang": "de",
+          "type": null
+        },
+        {
+          "href": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+          "hreflang": "fr",
+          "type": null
+        }
+      ],
+      "robots": null,
+      "linkEvidence": {
+        "totalReturned": 795,
+        "collectionInstances": 745,
+        "uniqueCollections": 745
+      },
+      "languageSignals": {
+        "german": {
+          "count": 135,
+          "found": [
+            {
+              "term": "selbst gestalten",
+              "count": 101
+            },
+            {
+              "term": "warenkorb",
+              "count": 5
+            },
+            {
+              "term": "so funktioniert",
+              "count": 1
+            },
+            {
+              "term": "produktion und lieferung",
+              "count": 1
+            },
+            {
+              "term": "versand",
+              "count": 10
+            },
+            {
+              "term": "motiv",
+              "count": 17
+            }
+          ]
+        },
+        "french": {
+          "count": 0,
+          "found": []
+        },
+        "english": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "languageAssessment": "Deutsch konsistent in den geprüften Hauptsignalen",
+      "bodyEvidence": [
+        "ausgewählten Artikeln: ab 2 Stück –5%, ab 3 Stück bis –10% — automatisch im Warenkorb - [Selbst gestalten](https://luxestyle.ch/collections/selbst-gestalten-1?view=luxe-gestalten) - 🎁 Geschenke & Weihnachten 🎁 Geschenke & Weihnachten - [Weihnachten 🎄](https://luxestyle.ch/collections/weihnachten-2026) - [Adventskalender 🎄](https://luxestyle.ch",
+        "nsanlass oder ein Unikat für dich – dein Artikel wird nach deiner Gestaltung bedruckt. ## So funktioniert es 1. **Produkt wählen** – Artikel und verfügbare Ausführung bestimmen. 2. **Design erstellen** – Text, Name oder eigenes Bild im Editor platzieren. 3. **Vorschau prüfen** – Motiv, Position, Farbe, Grösse und Produktvariante kontrollieren. 4. *",
+        "er [Kollektion «Selbst gestalten»](https://luxestyle.ch/collections/selbst-gestalten). ## Produktion und Lieferung Jedes personalisierte Stück wird nach deiner Bestellung bedruckt. Die voraussichtliche Lieferzeit hängt von Produkt, Variante, Druckstandort und Lieferadresse ab. Eine konkrete Prognose wird im Bestellablauf angezeigt, soweit sie für d"
+      ],
+      "h1Primary": "T-Shirt, Tasse & mehr selbst gestalten",
+      "h1AuxiliaryEmbedNoise": [
+        "luxestyle.ch is blocked",
+        "shop.app is blocked"
+      ],
+      "robotsEvidence": {
+        "topLevelMetaRobots": null,
+        "topLevelMetaGooglebot": null,
+        "firecrawlRawFirstUnscopedMatch": "none",
+        "interpretation": "Der Firecrawl-Rohtext enthält HTML blockierter Einbettungen. Deren robots=none ist kein Top-Level-Robots-Tag der geprüften LuxeStyle-Seite."
+      },
+      "directTopLevelValidation": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/pages/selbst-gestalten",
+        "bytes": 1244426,
+        "sha256": "079646c18dc1a893a22c28ad9352108a0eb2f2a33b0f3972a7708f8df259816c",
+        "retrievedAtUtc": "2026-11-09T20:21:39.560999Z"
+      }
+    },
+    {
+      "key": "fr_self",
+      "label": "FR Selbstgestalten",
+      "expectedLanguage": "fr",
+      "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "success": true,
+      "scrapeId": null,
+      "retrievedAt": "2026-11-09T20:19:47.511Z",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "rawHtmlChars": 1647869,
+      "markdownChars": 167932,
+      "htmlLang": "fr",
+      "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "metaDescription": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "openGraph": {
+        "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+        "description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+        "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+        "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "locale": null
+      },
+      "h1": [
+        "T-Shirt, Tasse & mehr selbst gestalten"
+      ],
+      "canonical": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "hreflang": [
+        {
+          "href": "https://luxestyle.ch/pages/selbst-gestalten",
+          "hreflang": "x-default",
+          "type": null
+        },
+        {
+          "href": "https://luxestyle.ch/pages/selbst-gestalten",
+          "hreflang": "de",
+          "type": null
+        },
+        {
+          "href": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+          "hreflang": "fr",
+          "type": null
+        }
+      ],
+      "robots": null,
+      "linkEvidence": {
+        "totalReturned": 798,
+        "collectionInstances": 745,
+        "uniqueCollections": 745
+      },
+      "languageSignals": {
+        "german": {
+          "count": 120,
+          "found": [
+            {
+              "term": "selbst gestalten",
+              "count": 98
+            },
+            {
+              "term": "warenkorb",
+              "count": 1
+            },
+            {
+              "term": "so funktioniert",
+              "count": 1
+            },
+            {
+              "term": "produktion und lieferung",
+              "count": 1
+            },
+            {
+              "term": "versand",
+              "count": 4
+            },
+            {
+              "term": "motiv",
+              "count": 15
+            }
+          ]
+        },
+        "french": {
+          "count": 18,
+          "found": [
+            {
+              "term": "panier",
+              "count": 6
+            },
+            {
+              "term": "livraison",
+              "count": 6
+            },
+            {
+              "term": "produit",
+              "count": 6
+            }
+          ]
+        },
+        "english": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "languageAssessment": "Französische URL mit überwiegend deutschem SEO-/Seiteninhalt",
+      "bodyEvidence": [
+        "s : dès 2 pièces –5 %, dès 3 pièces jusqu’à –10 % — appliqué automatiquement au panier - [Selbst gestalten](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten) - 🎁 Cadeaux & Noël 🎁 Cadeaux & Noël - [Noël 🎄](https://luxestyle.ch/fr/collections/weihnachten-2026) - [Calendrier de l'Avent 🎄](https://luxestyle.ch/fr/collectio",
+        "nsanlass oder ein Unikat für dich – dein Artikel wird nach deiner Gestaltung bedruckt. ## So funktioniert es 1. **Produkt wählen** – Artikel und verfügbare Ausführung bestimmen. 2. **Design erstellen** – Text, Name oder eigenes Bild im Editor platzieren. 3. **Vorschau prüfen** – Motiv, Position, Farbe, Grösse und Produktvariante kontrollieren. 4. *",
+        "[Kollektion «Selbst gestalten»](https://luxestyle.ch/fr/collections/selbst-gestalten). ## Produktion und Lieferung Jedes personalisierte Stück wird nach deiner Bestellung bedruckt. Die voraussichtliche Lieferzeit hängt von Produkt, Variante, Druckstandort und Lieferadresse ab. Eine konkrete Prognose wird im Bestellablauf angezeigt, soweit sie für d"
+      ],
+      "h1Primary": "T-Shirt, Tasse & mehr selbst gestalten",
+      "h1AuxiliaryEmbedNoise": [
+        "shop.app is blocked",
+        "luxestyle.ch is blocked"
+      ],
+      "robotsEvidence": {
+        "topLevelMetaRobots": null,
+        "topLevelMetaGooglebot": null,
+        "firecrawlRawFirstUnscopedMatch": "none",
+        "interpretation": "Der Firecrawl-Rohtext enthält HTML blockierter Einbettungen. Deren robots=none ist kein Top-Level-Robots-Tag der geprüften LuxeStyle-Seite."
+      },
+      "directTopLevelValidation": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+        "bytes": 1206784,
+        "sha256": "920fef32028569d2806393afc33b758f99a71caae49767163069b6afd941200c",
+        "retrievedAtUtc": "2026-11-09T20:21:39.560999Z"
+      }
+    },
+    {
+      "key": "fr_home",
+      "label": "FR Homepage",
+      "expectedLanguage": "fr",
+      "url": "https://luxestyle.ch/fr/",
+      "success": true,
+      "scrapeId": null,
+      "retrievedAt": "2026-11-09T20:19:47.527Z",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/fr/",
+      "rawHtmlChars": 1554211,
+      "markdownChars": 164108,
+      "htmlLang": "fr",
+      "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+      "metaDescription": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "openGraph": {
+        "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+        "description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+        "url": "https://luxestyle.ch/fr",
+        "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "locale": null
+      },
+      "h1": [
+        "Bien vivre. Acheter malin."
+      ],
+      "canonical": "https://luxestyle.ch/fr",
+      "hreflang": [
+        {
+          "href": "https://luxestyle.ch/",
+          "hreflang": "x-default",
+          "type": null
+        },
+        {
+          "href": "https://luxestyle.ch/",
+          "hreflang": "de",
+          "type": null
+        },
+        {
+          "href": "https://luxestyle.ch/fr",
+          "hreflang": "fr",
+          "type": null
+        }
+      ],
+      "robots": null,
+      "linkEvidence": {
+        "totalReturned": 821,
+        "collectionInstances": 750,
+        "uniqueCollections": 750
+      },
+      "languageSignals": {
+        "german": {
+          "count": 7,
+          "found": [
+            {
+              "term": "selbst gestalten",
+              "count": 2
+            },
+            {
+              "term": "versand",
+              "count": 4
+            },
+            {
+              "term": "motiv",
+              "count": 1
+            }
+          ]
+        },
+        "french": {
+          "count": 65,
+          "found": [
+            {
+              "term": "panier",
+              "count": 7
+            },
+            {
+              "term": "livraison",
+              "count": 8
+            },
+            {
+              "term": "choisir",
+              "count": 2
+            },
+            {
+              "term": "produit",
+              "count": 48
+            }
+          ]
+        },
+        "english": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "languageAssessment": "Französische Seite mit gemischten deutsch/französischen Signalen",
+      "bodyEvidence": [
+        "s : dès 2 pièces –5 %, dès 3 pièces jusqu’à –10 % — appliqué automatiquement au panier - [Selbst gestalten](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten) - 🎁 Cadeaux & Noël 🎁 Cadeaux & Noël - [Noël 🎄](https://luxestyle.ch/fr/collections/weihnachten-2026) - [Calendrier de l'Avent 🎄](https://luxestyle.ch/fr/collectio",
+        "[Ignorer et passer au contenu](https://luxestyle.ch/fr/#MainContent) 🇨🇭 Livraison uniquement en Suisse et au Liechtenstein · 🚚 en Suisse, gratuite dès CHF 50 (après rabais) –10% sur votre première commande avec le code WELCOME10 ↩️ 30 jours de retour (sauf articles personnalisés) · 🔒 Paiement sécurisé et chiffré 🎭 Costumes en s",
+        "ns articles : dès 2 pièces –5 %, dès 3 pièces jusqu’à –10 % — appliqué automatiquement au panier - [Selbst gestalten](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten) - 🎁 Cadeaux & Noël 🎁 Cadeaux & Noël - [Noël 🎄](https://luxestyle.ch/fr/collections/weihnachten-2026) - [Calendrier de l'Avent 🎄](https://luxestyle.ch/fr"
+      ],
+      "h1Primary": "Bien vivre. Acheter malin.",
+      "h1AuxiliaryEmbedNoise": [
+        "shop.app is blocked",
+        "luxestyle.ch is blocked"
+      ],
+      "robotsEvidence": {
+        "topLevelMetaRobots": null,
+        "topLevelMetaGooglebot": null,
+        "firecrawlRawFirstUnscopedMatch": "none",
+        "interpretation": "Der Firecrawl-Rohtext enthält HTML blockierter Einbettungen. Deren robots=none ist kein Top-Level-Robots-Tag der geprüften LuxeStyle-Seite."
+      },
+      "directTopLevelValidation": {
+        "status": 200,
+        "finalUrl": "https://luxestyle.ch/fr/",
+        "bytes": 1017058,
+        "sha256": "4f486f05fda20f2e7218df99fe8af35163082a338125dd9f8d413995c3f2d8e5",
+        "retrievedAtUtc": "2026-11-09T20:21:39.560999Z"
+      }
+    }
+  ],
+  "conclusions": {
+    "frSelfGermanFallback": "Französische URL mit überwiegend deutschem SEO-/Seiteninhalt",
+    "frHomeLanguageMix": "Französische Seite mit gemischten deutsch/französischen Signalen",
+    "httpStatusHandling": "Fehlende Statuswerte werden als unbekannt belassen; success wird nicht zu HTTP 200 umgedeutet.",
+    "robotsHandling": "Auf allen drei Top-Level-Seiten wurde weder meta robots noch meta googlebot gefunden. Firecrawl-Roh-HTML enthielt robots=none nur innerhalb blockierter Einbettungen; dieser Wert gilt nicht für die Top-Level-Seiten."
+  }
+}
