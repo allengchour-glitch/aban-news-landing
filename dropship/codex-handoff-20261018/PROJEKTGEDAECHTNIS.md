@@ -1311,3 +1311,20 @@ Die einzige Verkaufsaktion ist jetzt feldgenau gebunden: Shopify Page `gid://sho
 [R155 Content- und Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R155.md) · [R155 Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R155.json) · [Metricool-Planbeleg](METRICOOL-PLAN-20261109-R155.json) · [Produktbeleg](PRODUKTPRUEFUNG-20261109-R155.json) · [DNS-Beleg](DNS-STATUS-20261109-R155.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, Merchant-, DNS- oder kostenpflichtige Renderänderung.
 
 [LUXESTYLE_R155_20261109]
+
+## R156 – 09.11.2026, Abendlauf
+
+[LUXESTYLE_R156_20261109]
+
+**Belegter neuer Stand:**
+
+- Exakte Shopify-/Metricool-Identitäten erneut bestätigt. Plan09.–17.11.:65 Objekte,21 aktiv/44 Entwürfe/0 aktive Videos; zwei vorhandene Fotoobjekte heute kanalweise PUBLISHED. 19 zukünftige aktive Bilder; FB/IG bis15.11., Pinterest bis14.11.; TikTok/YouTube/Threads offen, ab16.11. alle Kanäle offen. Keine aktiven Duplikate/Kollisionen und kein Write.
+- Tagesgrenze eingehalten: R154-Metricool-Kennzahlen und Klaviyo sowie R155-DNS nicht wiederholt; fehlende Daten bleiben unbekannt.
+- Projektor15521256604033 und Futterspender15523986473345 bleiben ACTIVE/kaufbar. Projektor: sieben aktuelle A–G-Varianten, historische Variante56197916361089 gesperrt. Beide Social-Filmgates bleiben blockiert.
+- Aufgabe `master-projector-15521256604033`: neuer ausführbarer SHA-/ffprobe-/Rechte-/Musik-/540-Frame-Preflight;6/6 Tests grün. Metadaten-PASS ist ausdrücklich nicht freigabefähig; realer Lauf `FAIL_BLOCKED`; keine Master-MP4.
+- Aufgabe `seo-landing-visibility-20261101`: Page698444710273 und vier unveränderte Quelldigests frisch gebunden; FR-Übersetzungen leer. Mutation/Variablen/Readback/Preflight erstellt; PASS, Stale-Digest erwartungsgemäss FAIL; nur Freigabeentwurf.
+- Öffentliche Stichprobe bestätigt FR-Sprachmix,744–751 eindeutige Collection-Ziele je Seite und HTTP-OG-Bilder. Befunde bleiben ausserhalb des einen Freigabediffs.
+
+**Nächster zulässiger Schritt:** eine aktuelle A–G-Einheit samt CJ-VID und fünf reale Hochkantclips derselben Einheit hashbinden, Rechte/Musikfreigabe schliessen, dann denselben 18-Sekunden-Master rendern und abnehmen. Separat kann der Inhaber den exakt gebundenen FR-Vier-Felder-Diff freigeben; unmittelbar vor einem späteren Write Digests erneut prüfen.
+
+**Belege:** [Paket](CONTENT-VERKAUFSPAKET-20261109-R156.md), [Plan](METRICOOL-PLAN-20261109-R156.json), [Produkte](PRODUKTPRUEFUNG-20261109-R156.json), [Master](MASTER-INGEST-PREFLIGHT-20261109-R156.json), [FR](FR-VERKAUFSDIFF-20261109-R156.json), [SEO-Stichprobe](SEO-STICHPROBE-20261109-R156.json). Claude-Empfang `unknown_no_claude_receipt`.
