@@ -112,8 +112,107 @@ Die Tabelle in `dropship/selbst-gestalten-fertig-0511/bestellweg/README.md` ist 
 /opt/node22/bin/node automation/lib/printful_bestellweg_test.mjs
 /opt/node22/bin/node automation/printful_sync_test.mjs
 /opt/node22/bin/node automation/lib/printful_platzierung_test.mjs
-/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs           # alle Mutanten (rund 13 Minuten), --pruefen: nur Anwendbarkeit, NUR=<Teil des Namens>
+/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs           # alle Mutanten (rund 21 Minuten, gemessen 09.11.2026), --pruefen: nur Anwendbarkeit, NUR=<Teil des Namens>
 NUR="WP6" /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs # nur die Mutanten dieses Pakets
 NUR="P1 " /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs # nur die Mutanten der Phase 1
 /opt/node22/bin/node automation/printful_reprice_test.mjs                                      # Preisanpassung (Phase 1)
 ```
+
+## 7. Phase 1 «Editor-Parität» (09.11.2026): Bestellweg härten, Sperre «kein Druck ohne Zahlung»
+
+**Nichts live.** Geändert wurden nur Dateien im Repo. Der Zeitplan liest weiter nur: die Freigabedatei `dropship/PRINTFUL-SYNC-FREI.txt` fehlt und wurde nicht gelegt. Auftrag: Plan `PLAN-PRINTFUL-PARITAET-0911.md`, Phase 1.
+
+### 7.1 Herkunft: Paket A als Dreiwege-Zusammenführung
+
+Paket A (Parser und Sync-Härtung) kam vom Zweig `claude/luxestyle-wp6-bestellweg-0611` (Spitze `1976706c1f`, Basis mit `main` `e6fc42e409`). Die Dateien wurden mit `git merge-file` gegen `main` zusammengeführt (Basis, `main`, Zweig je als Kopie im Scratch; am Arbeitsbaum wurde nichts mit git geändert). Fünf Dateien: Parser, Parser-Test, Sync, Sync-Test, Mutationsskript. **Konflikte: nur im Parser (`printful_bestellweg.mjs`), 3 Stellen**, die übrigen vier Dateien liessen sich ohne Konflikt verbinden. Die erste Konfliktstelle ist die Prüfung von `_pod_karte.qd`: `main` führt seit PR #3031 (Codex, 09.11.) die Regel `qd-weicht-ab`, der Zweig hatte eine eigene, ältere Fassung (`qdPruefen` mit Toleranz 2 % + 1 dpi). **Die Regel von `main` blieb, die doppelte Fassung des Zweigs entfiel** (Tests und Mutanten dazu wurden entfernt oder auf `qd-weicht-ab` umgestellt, `OHNE-DESIGN.md` verweist jetzt auf `qd-weicht-ab`).
+
+**Vorher gemessen (diese Sitzung, am Zweig-Stand, 3 Testdateien):** Parser-Test 492 ok, Platzierungs-Test 212 ok, Sync-Test 206 ok (so wie das Blatt des Zweigs sie nannte). `main` vor Phase 1: 393 / 212 / 181.
+
+### 7.2 (a) Hart: `dienst-standort`
+
+Eine Position, die in einer offenen Fulfillment-Order an einem **Fulfillment-Service-Standort** liegt (`Location.isFulfillmentService === true`, z. B. die Printful-App), bekommt **keinen** Printful-Auftrag: die App des Dienstes legt ihn selbst an, ein zweiter Auftrag wäre ein Doppeldruck (und die App druckt eventuell mit dem Muster-Design, ungemessen). Funktion `standortVon(o, positionId)` → `dienst` / `frei` / `unklar`:
+
+* geschlossene und stornierte Fulfillment-Orders zählen nicht (veraltete Angaben);
+* `frei` nur, wenn die Position in mindestens einer offenen Fulfillment-Order steht und **alle** ihre Standorte ausdrücklich `isFulfillmentService === false` melden; fehlt ein Wert, fehlt die Fulfillment-Order oder steht die Position in keiner, ist es `unklar`, nie `frei`;
+* `dienst` → harter Befund, `continue` (weder Datei- noch KI-Abfrage); `unklar` → weicher Befund `dienst-standort-unklar` (Entwurf, nicht bestätigen).
+
+Der Kleber (`printful_sync.mjs`) liest dafür neu `variant{ sku title selectedOptions }` und `fulfillmentOrders(first:20){ id status assignedLocation{ location{ id name isFulfillmentService } } lineItems(first:50){ lineItem{ id } } }` (Vorbild `cj_tracking.mjs`, `printful_tracking.mjs`).
+
+**GEMESSEN 09.11.2026 (Admin-Abfrage über den Connector, nur lesend):** 7 Standorte, davon 6 Dienst-Standorte (`cjdropshipping`, `DropCommerceV2`, `gelato`, `Printful`, `Spocket`, `Zendrop`) und ein Händler-Standort («Shop location»). Die Fulfillment-Orders der letzten drei Bestellungen (#1037 bis #1039, CJ-Ware) liegen am Händler-Standort «Shop location». Wie viele Produkte am Standort «Printful» liegen, habe ich in dieser Sitzung **nicht** gezählt (das Gedächtnis nennt 25). Die Fabrik-Produkte (Canary-Tasse, Entwurf) liegen laut Gedächtnis am Händler-Standort und wären damit nicht gesperrt: **ungemessen für ein veröffentlichtes Fabrik-Produkt**.
+
+### 7.3 (b) Hart: `aufpreis-unbezahlt`, austauschbares Paket
+
+Printful berechnet für manche Platzierungen einen Aufpreis (T-Shirt 71: Rückseite, Ärmel). Der Shop-Preis deckt heute keinen (Phase 1 ohne Aufpreis-Platzierungen, Karten mit `--ohne-aufpreis`). Der Sync prüft darum jede gedruckte Platzierung gegen das **bezahlte Paket**:
+
+* **Aufpreis nur aus dem Printful-Katalog** (`product.files[].additional_price`, USD; `id` und `type` als Aliase, z. B. `default` = `front`; die Mockup-Dateien zählen nicht; bei mehreren Treffern gilt der höchste), **nie aus `costs`** (die gibt es erst nach dem Entwurf) und **nie aus `_pod_karte.ap`** (reiner Browserwert, kundenseitig änderbar; ein Test setzt `ap` auf 0, die Sperre bleibt).
+* Aufpreis grösser 0 und Platzierung nicht im bezahlten Paket (oder das Paket ist nicht bestimmbar) → hart `aufpreis-unbezahlt`, kein Auftrag, Tags `printful-review` und `printful-review-aufpreis-unbezahlt`, Telegram mit Platzierung, Aufpreis und Paket-Quelle. Der Befund kommt **vor** der Datei- und KI-Abfrage.
+* Aufpreis nicht lesbar (Katalogeintrag fehlt oder Preis unlesbar) und die Platzierung ist nicht die Vorderseite → weich `aufpreis-unbekannt`.
+* **Austauschbar:** `planeBestellung(o, io, { paket })` nimmt eine Funktion `(position, { vid, produktId }) → { bezahlt: string[] | null, quelle }`. Standard `paketStandard()`: **nur die Vorderseite ist bezahlt**. Baustein `paketAusOption({ option: 'Druck', pakete: { 'Nur Vorderseite': [], 'Vorder- und Rückseite': ['back'] }, vorgabe: [] })` liest eine Option der Shopify-Variante; ein unbekannter Wert ergibt `bezahlt: null` (kein Aufpreis gedeckt). Welches Modell (Option, SKU-Präfix, Metafeld) gilt, entscheidet Phase 5.
+* **Übergang:** `PRINTFUL_PAKET_BEZAHLT=back,sleeve_left` (kommagetrennte Platzierungs-IDs, nur `a-z 0-9 _`, sonst Exit 1) gilt für **alle** Positionen. **Der Workflow reicht die Variable bewusst nicht durch** (ein Test hält das fest): für einen Handstart mit bezahlter Rückseite wäre eine Änderung am Workflow nötig, damit sie nicht versehentlich dauerhaft gilt.
+
+### 7.4 (c) Standardwerte und (d) Kosten-Obergrenze
+
+| Schalter | Skript vorher | Skript jetzt | Workflow |
+|---|---|---|---|
+| `PRINTFUL_AUTO_CONFIRM` | ohne Angabe: bestätigt | ohne Angabe: **aus**; bestätigt nur bei `1`, `true`, `ja`, `yes`, `on`, `an` | Standard `'0'` (unverändert) |
+| `PRINTFUL_KI_KONTROLLE` | ohne Angabe: verlangt die KI | ohne Angabe oder `aus`: **aus**; jede andere Angabe: Pflicht | Standard `'aus'` (unverändert) |
+| `PRINTFUL_MAX_KOSTEN_USD` | gab es nicht | leer, `0`, `aus`: aus; Zahl über 0: Obergrenze; alles andere: **Exit 1** | wird durchgereicht, **kein Standard** |
+| `PRINTFUL_PAKET_BEZAHLT` | gab es nicht | leer: nur Vorderseite bezahlt | **nicht** durchgereicht |
+
+Das Skript hat damit dieselben Standardwerte wie der Workflow (sichere Seite). Ein Test vergleicht beide (nur wenn die Workflow-Datei ausgecheckt ist). **Kosten-Obergrenze:** `kostenPruefen(… maxUsd)` meldet weich `kosten-obergrenze`, wenn die Printful-Summe über `maxUsd` liegt (genau gleich ist erlaubt); sie steht nach der Prüfung «Kosten ≤ 0» und vor der Erlös-Prüfung. Der Auftrag bleibt Entwurf, der Text nennt beide Zahlen. Der Test hat dafür 12.69 gegen 12.70 USD (Entwurf, eine Befundmeldung) und 12.70 (bestätigt).
+
+### 7.5 Bekannter Fehlalarm: `qd-weicht-ab` (nicht geändert, Entscheid beim Besitzer)
+
+`_pod_karte.qd` ist die dpi des **Fotos** (kleinste Auflösung aller Fotos, höchstens die Dichte der Druckdatei); die Druckdatei misst immer ihre eigene Dichte. **GEMESSEN mit dem echten Editor 6.4.0 (Mitschnitt, T-Shirt 71, Druckdatei 1800 × 2400 px bei 150 dpi):**
+
+* Foto 1200 × 1200 px: `qd` 150 = Messung der Datei → kein Befund.
+* **Foto 500 × 500 px: `qd` 83** (der Editor erlaubt den Kauf, Sperre bei 75), die Datei misst 150 dpi → `qd-weicht-ab` (weich: Entwurf, Telegram-Meldung, kein Bestätigen).
+
+Ein erlaubter Kauf mit einem kleinen Foto landet damit immer im Handgriff. Das ist die sichere Richtung, aber ein Fehlalarm. Die Prüfung von PR #3031 ist **nicht angefasst**; der Test hält den Fall fest (Kommentar im Test sagt: ändert jemand die Regel, den Test bewusst mit anpassen). **Vorschlag zur Entscheidung:** nur melden, wenn `qd` unter dem Katalog-Minimum liegt oder über der Messung (so verhielt sich die Fassung des Zweigs). Ob eine Karte mit `qd` über der Messung je vorkommt, ist ungemessen.
+
+### 7.6 (e) Ende zu Ende mit dem echten Editor, (f) `printful_reprice.mjs`
+
+**Mitschnitt:** `editor_640_mitschnitt.json` enthält die Kaufanfragen (`POST /cart/add.js`) des Editors 6.4.0 (sha256 `e7e30bc2…`, Abgleich mit der Datei im Repo im Test) in Chromium für sechs Fälle: T-Shirt 71 nur Text, mit Foto 1200 px, mit Foto 500 px, Foto vorne plus Text hinten, Text vorne plus linker Ärmel; Keramik-Tasse 19. Erzeugt mit `mitschnitt_erzeugen.mjs` (setzt `V6_DATEI` auf die 6.4.0-Datei, weil die gemeinsame Bibliothek inzwischen auf 6.4.1 steht); zweiter Lauf byte-gleich. Daraus folgt (alles mit Attrappen für Printful und Shopify, nichts echt):
+
+* Schlüssel wie 6.3.x: `🎨 Design (<ID>)`, `🖼️ Druckdatei (<ID>)` (alte Schreibweise), `_pod_karte` (`v, m, pv, sv, pl, dt, px, ap, qd`), `_vorschau`; Rückseite und Ärmel als `back` und `sleeve_left`. `_vorschau` wird nie als Druckdatei gelesen, nie abgerufen und nie an Printful gesendet.
+* T-Shirt vorne (Text oder Foto 1200 px): kein Befund, Typ `default`, Variante 4025. Tasse (SKU `9100019_1320`): kein Befund.
+* Mit Rückseite oder Ärmel und Standard-Paket: hart `aufpreis-unbezahlt` (Ärmel 2.49 USD), kein Artikel, keine Datei- und KI-Abfrage; mit bezahltem Paket kein Befund und beide Dateien. `ap` im Browser auf 0 gesetzt ändert nichts.
+* Falsche SKU gegen `pv` oder `m` der Karte: hart `karte-widerspruch`. Dasselbe T-Shirt am Dienst-Standort: hart `dienst-standort`, keine Netzabfrage.
+* Im Sync-Test (Kindprozess mit gefälschtem Netz) zusätzlich: Anfrage-Inhalt, Standardwerte, `MAX_KOSTEN`-Varianten, Fehler bei unbrauchbarem `PRINTFUL_PAKET_BEZAHLT`.
+
+**`automation/printful_reprice.mjs`** (Preise der Editor-Produkte): Varianten über 100 je Produkt wurden **still nicht angepasst** (die Abfrage las nur `variants(first:100)`); jetzt blättert eine eigene Knoten-Abfrage weiter. Fehler blieben folgenlos: `userErrors` wurden nur ausgegeben, eine fehlgeschlagene Anmeldung und jede Ausnahme endeten mit Exit 0 (Fassung auf `main`, Zeilen 41, 81, 86). Jetzt: Wiederholen bei 429, 5xx und `Throttled`; Schreiben in Stücken zu höchstens 100; `userErrors`, fehlende Antwort und Ausnahmen zählen als Fehler und das Produkt nicht als angepasst; Exit 1 bei Fehlern, bei fehlgeschlagener Anmeldung und bei einer unerwarteten Ausnahme; «kein Schlüssel» bleibt ein Nichtstun mit Exit 0. Die Preisformel, der Standard (`DRY_RUN=1` im Workflow, `apply` schreibt) und die API-Version 2025-01 sind unverändert. Eigener Test `automation/printful_reprice_test.mjs` (Kindprozess mit gefälschtem Netz): gegen die Fassung von `main` 7 ok / 19 Fehler, gegen die neue 27 ok.
+
+### 7.7 Zahlen (diese Sitzung selbst gemessen)
+
+**Tests (Node 22, Endstand, alle selbst gefahren am 09.11.2026 gegen den Arbeitsbaum):**
+
+| Testdatei | Endstand | `main` vor Phase 1 | Zweig vor der Zusammenführung |
+|---|---|---|---|
+| `automation/lib/printful_bestellweg_test.mjs` | **618 ok, 0 Fehler** | 393 | 492 |
+| `automation/lib/printful_platzierung_test.mjs` | **212 ok, 0 Fehler** | 212 | 212 |
+| `automation/printful_sync_test.mjs` | **258 ok, 0 Fehler** | 181 | 206 |
+| `automation/printful_reprice_test.mjs` (neu) | **27 ok, 0 Fehler** | (Test fehlte) | (Test fehlte) |
+| `automation/pod_auswahl_test.mjs` | 112 ok, 0 Fehler | | |
+
+Dazu `node --check` auf alle geänderten Skripte und `yaml.safe_load` auf `printful-sync.yml`: ohne Fehler.
+
+**Mutationsprobe** (`dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs`, voller Lauf mit dem Endstand der Tests, 22:38 bis 22:59 UTC, rund 21 Minuten): **288 von 288 Mutanten erkannt, 0 überlebt**, jeder an genau einer Stelle anwendbar (`--pruefen`), Kontrolllauf ohne Mutation grün. Davon neu in Phase 1: 83 Mutanten mit der Vorsilbe `P1 ` (Dienst-Standort 13, Aufpreis 18, Paket 6, Rückseite und Ärmel 7, Kosten-Obergrenze 13, Standardwerte 6, Kleber 3, Workflow 1, Reprice 16) und 10 Mutanten zu `qd-weicht-ab`. Die Mutanten der entfallenen Fassung `qdPruefen` wurden entfernt. **Ein erster voller Lauf (283 von 288) liess fünf Mutanten überleben** (u. a. «verglichen wird mit dem Maximum statt dem Minimum der Messungen»); die Tests wurden verschärft und alle fünf einzeln wieder als erkannt bestätigt, danach lief die ganze Probe von vorn. Eine Lehre daraus: ein «gleichwertiger» Mutant entsteht, wenn eine neue Sperre ein älteres `continue` überflüssig macht; dann braucht es einen Test, der den Unterschied sichtbar macht, nicht die Streichung des Mutanten. Zweite, kleinere Probe: `NUR="Bestellweg" node automation/pod_auswahl_mutation.mjs` (Kontrolllauf mit allen 9 Testdateien grün) 10 von 10 erkannt; die Dateiliste dieser Probe enthält jetzt auch den Mitschnitt und `printful-sync.yml`.
+
+**Reproduzierbarkeit des Mitschnitts:** `mitschnitt_erzeugen.mjs` ein weiteres Mal ausgeführt (Chromium): die Datei ist byte-gleich zum eingecheckten Stand.
+
+**Abfragekosten (Shopify, Connector API 2026-10, nur Kosten gemessen mit einer Suche ohne Treffer, `tag:zz-kein-treffer-messung`):** die Bestellabfrage mit `fulfillmentOrders` kostet statisch bei 20 Bestellungen je Seite weniger als 1000 (Abfrage lief durch), bei 50 je Seite 1003 (abgelehnt, Grenze 1000), bei einer schlanken Probe-Abfrage mit je 100 Bestellungen, Positionen, Fulfillment-Orders und deren Positionen 2072. `SEITE` im Sync bleibt 20 (Kommentar «nicht über 49»). Gemessen ist die **angeforderte** Kostenzahl der Abfrage, nicht `extensions.cost` eines echten Laufs mit der API-Version des Skripts (2026-01): dazu ein Handstart in Actions.
+
+### 7.8 Offen und Entscheide des Besitzers
+
+1. **Unbezahlte Platzierung:** Nachzahlung verlangen oder nur die bezahlte Fläche drucken? Heute gilt: kein Auftrag, Handgriff des Besitzers.
+2. **Fulfillment-Service-Produkte (Standort «Printful»):** bleiben gesperrt (Sync druckt nie doppelt). Ob die Printful-App mit dem Muster-Design druckt, ist ungemessen; Entscheid, ob diese Produkte weiter verkauft werden.
+3. **`qd-weicht-ab`:** Regel lassen (Fehlalarm bei kleinen Fotos) oder nur unter dem Minimum und über der Messung melden (7.5).
+4. **`PRINTFUL_MAX_KOSTEN_USD`:** setzen, und auf welchen Betrag? Heute aus (kein Standard im Workflow).
+5. **Preis der Rückseite und des Ärmels, Paketmodell:** Phase 5.
+6. **`PRINTFUL_AUTO_CONFIRM` und KI-Kontrolle nach den ersten drei Aufträgen:** weiter Besitzer-Entscheid vom 05.11.
+7. **Nicht von mir verdrahtet:** `printful_reprice_test.mjs` steht noch in keinem Workflow (`luxestyle-automation-tests.yml` liegt ausserhalb dieses Auftrags); der dortige Kommentar «162 Mutanten» ist veraltet.
+8. **Ungemessen:** Antwort der echten Admin-Schnittstelle mit der neuen Abfrage in Actions; ob `isFulfillmentService` an echten Bestellungen mit POD-Produkten am Standort «Printful» die Fulfillment-Orders erreicht; Verhalten von `karte-widerspruch` im Browser bei Zwischenständen (Abschnitt 5.2, Phase 6 misst).
+
+### 7.9 Befehle (Phase 1)
+
+Siehe Abschnitt 6 (alle fünf Tests, `mutation.mjs` mit `NUR="P1 "`) und `mitschnitt_erzeugen.mjs` (`NODE_PATH=/opt/node22/lib/node_modules /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mitschnitt_erzeugen.mjs`, braucht Chromium).

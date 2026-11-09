@@ -254,7 +254,7 @@ Nicht abgedeckt (ehrlich): echter Lauf gegen Printful/Shopify mit Schreiben (nie
 /opt/node22/bin/node automation/lib/printful_platzierung_test.mjs
 /opt/node22/bin/node automation/printful_sync_test.mjs
 /opt/node22/bin/node automation/printful_reprice_test.mjs
-/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs            # alle Mutanten (rund 15 Minuten); --pruefen: nur Anwendbarkeit; NUR="P1 " nur Phase 1
+/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs            # alle Mutanten (rund 21 Minuten, 288 von 288 erkannt am 09.11.2026); --pruefen: nur Anwendbarkeit; NUR="P1 " nur Phase 1
 NODE_PATH=/opt/node22/lib/node_modules /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mitschnitt_erzeugen.mjs   # Mitschnitt des Editors neu erzeugen (Chromium)
 ```
 
