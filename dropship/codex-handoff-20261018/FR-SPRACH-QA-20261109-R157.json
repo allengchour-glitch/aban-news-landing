@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "luxestyle-fr-editorial-qa-r157-v2",
+  "reviewedInput": "/dev/shm/r156-fr/variables.json",
+  "reviewedInputSha256": "48a666b72e89dd2dcc4ca2bd5eb9b192d939b7bf89d1b0a9422bb7341fe41e89",
+  "evidence": {
+    "translationEvidence": "/dev/shm/r156-fr/evidence.json",
+    "translationEvidenceSha256": "0eb9fac7710d130b96454342f6c2e4e9e1b22d18a6a4d11e8fcbfef43f517c1a",
+    "liveGermanSource": "/dev/shm/r156-fr/shopify-page-live.json",
+    "liveGermanSourceSha256": "7e2f7262a7406621a48b293f9e19f4543e701512f0db1144c1dbcb6cb031018b"
+  },
+  "status": "FAIL",
+  "blockingBeforeWrite": true,
+  "reason": "Die vorbereiteten Werte sind sachlich quellengebunden, bestehen die strenge redaktionelle Abnahme aber erst nach den aufgeführten Terminologie-, Präzisions- und Registerkorrekturen.",
+  "sourceAndSafetyChecks": {
+    "four_keys_exact": true,
+    "all_locale_fr": true,
+    "all_internal_links_fr": true,
+    "free_shipping_threshold_chf50_exact": true,
+    "no_fixed_delivery_days": true,
+    "conditional_delivery_copy_preserved": true,
+    "no_discount_or_review_claim": true,
+    "no_swiss_made_claim": true,
+    "product_and_material_scope_matches_source": true
+  },
+  "originalEditorialChecks": {
+    "swiss_french_terminology": false,
+    "enumeration_is_unambiguous": false,
+    "checkout_wording_is_professional": false,
+    "returns_copy_matches_information_scope": false,
+    "cta_register_matches_vous_copy": false
+  },
+  "corrections": [
+    {
+      "field": "body_html",
+      "before": "des hoodies bio",
+      "after": "des sweats à capuche bio",
+      "count": 1
+    },
+    {
+      "field": "body_html",
+      "before": "un hoodie bio",
+      "after": "un sweat à capuche bio",
+      "count": 1
+    },
+    {
+      "field": "body_html",
+      "before": "sa couleur, sa taille et la variante du produit",
+      "after": "sa couleur et sa taille, ainsi que la variante du produit",
+      "count": 1
+    },
+    {
+      "field": "body_html",
+      "before": "passez à la caisse en toute sécurité",
+      "after": "finalisez votre commande en toute sécurité",
+      "count": 1
+    },
+    {
+      "field": "body_html",
+      "before": "conditions de retour des produits personnalisés",
+      "after": "informations sur les retours concernant les articles personnalisés",
+      "count": 1
+    },
+    {
+      "field": "body_html",
+      "before": ">Créer votre pièce unique<",
+      "after": ">Créez votre pièce unique<",
+      "count": 1
+    },
+    {
+      "field": "meta_description",
+      "before": "Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+      "after": "Personnalisez T-shirts, sweat-shirts, sweats à capuche bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+      "count": 1
+    }
+  ],
+  "unchanged": {
+    "title": "Personnalisez des T-shirts, des tasses et bien plus encore",
+    "meta_title": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+    "translatableContentDigests": {
+      "title": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "body_html": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "meta_title": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "meta_description": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292"
+    },
+    "productClasses": [
+      "T-shirts",
+      "sweat-shirts",
+      "sweats à capuche bio",
+      "tasses",
+      "sacs",
+      "casquettes"
+    ],
+    "freeShippingThreshold": "CHF 50",
+    "internalLinks": [
+      "/fr/products/klassisches-unisex-t-shirt-selbst-gestalten",
+      "/fr/products/keramik-tasse-selbst-gestalten",
+      "/fr/products/unisex-hoodie-selbst-gestalten",
+      "/fr/collections/selbst-gestalten",
+      "/fr/policies/refund-policy",
+      "/fr/collections/selbst-gestalten"
+    ]
+  },
+  "claims": {
+    "delivery": "Konditional; keine feste Lieferzeit.",
+    "materials": "Keine neue Materialangabe über die aktuelle deutsche Quelle hinaus.",
+    "discounts": "Keine.",
+    "reviews": "Keine.",
+    "swissMade": "Keine."
+  },
+  "correctedCandidate": {
+    "path": "/dev/shm/r157-fr-qa-corrected-variables.json",
+    "sha256": "c5b43f166e93604e82345db66ab9420f00be59264b190b2c787ad22b29492d81",
+    "status": "PASS",
+    "checks": {
+      "four_keys_exact": true,
+      "all_locale_fr": true,
+      "all_internal_links_fr": true,
+      "free_shipping_threshold_chf50_exact": true,
+      "no_fixed_delivery_days": true,
+      "conditional_delivery_copy_preserved": true,
+      "no_discount_or_review_claim": true,
+      "no_swiss_made_claim": true,
+      "product_and_material_scope_matches_source": true,
+      "swiss_french_terminology": true,
+      "enumeration_is_unambiguous": true,
+      "checkout_wording_is_professional": true,
+      "returns_copy_matches_information_scope": true,
+      "cta_register_matches_vous_copy": true
+    },
+    "editorialBlockersRemaining": false
+  },
+  "writesPerformed": false
+}
