@@ -20,6 +20,8 @@ Auslöser: «weiter» (Besitzer 09.11.), meine Auslegung: eine Lücke im Betrieb
 ## Gemessen (09.11.2026 ca. 13:10 UTC, echter Shop, Trockenlauf aus dieser Sitzung)
 Alle sieben Schritte in Ordnung: Zahlungssymbole twint, visa, master, american_express, paypal, klarna, apple_pay, google_pay; Versand nach Zürich günstigste Art **CHF 7.00** (eine Versandart); Weiterleitung in die Kasse, Kassenseite lädt. Die Annahmen zur Versand-Schnittstelle und zum Symbol-Markup (Präfix `fuss-`) wurden erst durch diesen Lauf belegt: der erste Entwurf des Musters (`pi-twint`) fand im echten Seitentext nichts.
 
+**Erster Lauf in GitHub Actions** (Handstart mit `trockenlauf`, 09.11.2026 13:30 UTC, Lauf 1 am Merge-Commit `ebbdaf268f`, 15 s, grün): dieselben sieben Schritte in Ordnung, Versand nach Zürich CHF 7.00, dieselben acht Zahlungsarten. Die GitHub-Adressen wurden dabei **nicht** von der Sperrseite getroffen (ein Lauf, noch keine Reihe). Die Telegram-Zustellung bleibt ungemessen: der Trockenlauf sendet nichts (die Secrets sind in Actions gesetzt, das Log zeigt `***`). Meldeweg testen: Handstart mit `immer_melden` an und `trockenlauf` aus, das schickt eine «in Ordnung»-Nachricht an den Besitzer.
+
 ## Lauf und Abschalten
 - Workflow `.github/workflows/kaufweg-waechter.yml`: **täglich 08:53 UTC** (Regel «Cron-Nulldiät»: ein Zeitplan, einmal am Tag; GitHub startet hier oft Stunden später), Handstart mit `trockenlauf` (keine Meldung) und `immer_melden` (Meldeweg testen).
 - Telegram mit den Secrets `TELEGRAM_BOT_TOKEN` und `TELEGRAM_CHAT_ID` (wie `site-health.mjs`); ohne sie nur Protokoll und roter Lauf.
