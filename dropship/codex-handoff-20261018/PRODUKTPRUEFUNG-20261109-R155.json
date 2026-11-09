@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-09T14:09:00+01:00",
+  "scope": "read-only targeted two-product audit",
+  "shop": {
+    "name": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "timezoneAlias": "CET",
+    "identityMatched": true
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "pageHttp": 200,
+      "storefrontAvailable": true,
+      "mediaImages": 12,
+      "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "featuredImageHttp": 200,
+      "featuredImageContentType": "image/jpeg",
+      "tagsNonEmpty": true,
+      "channelBlockTags": [],
+      "ownerRueckholBlock": false,
+      "selectionTag": "auswahl-offen",
+      "variants": [
+        ["68122445283719", "A", "CJSN139239101AZ", "34.90"],
+        ["68122445316487", "B", "CJSN139239102BY", "37.90"],
+        ["68122445349255", "C", "CJSN139239103CX", "40.90"],
+        ["68122445382023", "D", "CJSN139239104DW", "49.90"],
+        ["68122445414791", "E", "CJSN139239105EV", "51.90"],
+        ["68122445447559", "F", "CJSN139239106FU", "44.90"],
+        ["68122445480327", "G", "CJSN139239107GT", "35.90"]
+      ],
+      "allVariantsAvailableForSale": true,
+      "inventoryQuantityAll": 0,
+      "inventoryTrackedAll": false,
+      "inventoryPolicyAll": "CONTINUE",
+      "requiresShippingAll": true,
+      "socialMasterGate": "blocked: exact A-G variant, motif set and physical filmed unit remain unbound",
+      "stockOrDeliveryPromiseAllowed": false
+    },
+    {
+      "id": "gid://shopify/Product/15523986473345",
+      "title": "Automatischer Futterspender für Katzen",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "pageHttp": 200,
+      "storefrontAvailable": true,
+      "mediaImages": 5,
+      "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+      "featuredImageHttp": 200,
+      "featuredImageContentType": "image/jpeg",
+      "tagsNonEmpty": true,
+      "channelBlockTags": [],
+      "ownerRueckholBlock": false,
+      "variants": [["56217490391425", "Default Title", "CJ-1418384701726527488", "96.90"]],
+      "allVariantsAvailableForSale": true,
+      "inventoryQuantityAll": 0,
+      "inventoryTrackedAll": false,
+      "inventoryPolicyAll": "CONTINUE",
+      "requiresShippingAll": true,
+      "socialMasterGate": "blocked: no verified matching professional film or rights evidence in this run",
+      "stockOrDeliveryPromiseAllowed": false
+    }
+  ],
+  "changeSinceR154": "none in audited identity, status, prices, variants, tags, images, availability or inventory behavior",
+  "contentCaveat": "Current descriptions contain detailed material, dimension, performance and scope-of-delivery claims. This audit did not bind those claims to a current supplier document; do not reuse them in social content until separately verified.",
+  "writes": 0
+}
