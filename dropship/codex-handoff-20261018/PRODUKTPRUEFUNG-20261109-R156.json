@@ -1,0 +1,377 @@
+{
+  "run": "R156",
+  "checkedAtEuropeZurich": "2026-11-09T18:59:53+01:00",
+  "scope": "bounded_two_products_read_only",
+  "writes": [],
+  "shop": {
+    "name": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "primaryUrl": "https://luxestyle.ch",
+    "currency": "CHF",
+    "countryCode": "CH",
+    "country": "Switzerland",
+    "identityMatchesExpected": true
+  },
+  "guard": {
+    "implementation": "automation/lib/kanal_sperren.mjs",
+    "ownerOverride": "any rueckhol tag also blocks social",
+    "missingOrEmptyTagsBlockSocial": true
+  },
+  "products": [
+    {
+      "label": "projector",
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "currency": "CHF",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "sperrTags": [],
+      "anyRueckhol": false,
+      "tagsEmpty": false,
+      "selectionOpen": true,
+      "imageCount": 12,
+      "featuredImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle"
+      },
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/af28b028-ba6d-4794-af09-559176db14f2.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 3 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 4 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96a6864a-cd91-47fa-9853-58e983400a33.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 5 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4cee52f6-4186-4cb7-9f3e-06d6ced3c89c.jpg?v=1788153089",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 6 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 7 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e43b0d2a-73e5-4222-9ed2-aad7c6a77cd1.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 8 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/287122e4-e288-4180-bf0f-ca956de70b7e.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 9 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 10 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34627928-78fd-4028-a0fd-50a5fd175fa9.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 12 | LuxeStyle"
+        }
+      ],
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "title": "A",
+          "sku": "CJSN139239101AZ",
+          "price": "34.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445316487",
+          "title": "B",
+          "sku": "CJSN139239102BY",
+          "price": "37.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445349255",
+          "title": "C",
+          "sku": "CJSN139239103CX",
+          "price": "40.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445382023",
+          "title": "D",
+          "sku": "CJSN139239104DW",
+          "price": "49.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445414791",
+          "title": "E",
+          "sku": "CJSN139239105EV",
+          "price": "51.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445447559",
+          "title": "F",
+          "sku": "CJSN139239106FU",
+          "price": "44.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445480327",
+          "title": "G",
+          "sku": "CJSN139239107GT",
+          "price": "35.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        }
+      ],
+      "storefront": {
+        "html": {
+          "status": 200,
+          "final_url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "content_type": "text/html; charset=utf-8",
+          "bytes_read": 1109533
+        },
+        "product_json": {
+          "status": 200,
+          "final_url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+          "content_type": "text/javascript; charset=utf-8",
+          "bytes_read": 23154,
+          "id": 15521256604033,
+          "title": "Sternenlicht-Projektor für Schlafzimmer",
+          "available": true,
+          "price": 3490,
+          "price_min": 3490,
+          "price_max": 5190,
+          "variant_count": 7,
+          "variants": [
+            {
+              "id": 68122445283719,
+              "title": "A",
+              "sku": "CJSN139239101AZ",
+              "available": true,
+              "price": 3490
+            },
+            {
+              "id": 68122445316487,
+              "title": "B",
+              "sku": "CJSN139239102BY",
+              "available": true,
+              "price": 3790
+            },
+            {
+              "id": 68122445349255,
+              "title": "C",
+              "sku": "CJSN139239103CX",
+              "available": true,
+              "price": 4090
+            },
+            {
+              "id": 68122445382023,
+              "title": "D",
+              "sku": "CJSN139239104DW",
+              "available": true,
+              "price": 4990
+            },
+            {
+              "id": 68122445414791,
+              "title": "E",
+              "sku": "CJSN139239105EV",
+              "available": true,
+              "price": 5190
+            },
+            {
+              "id": 68122445447559,
+              "title": "F",
+              "sku": "CJSN139239106FU",
+              "available": true,
+              "price": 4490
+            },
+            {
+              "id": 68122445480327,
+              "title": "G",
+              "sku": "CJSN139239107GT",
+              "available": true,
+              "price": 3590
+            }
+          ]
+        }
+      },
+      "historicVariantReference": {
+        "id": "gid://shopify/ProductVariant/56197916361089",
+        "isCurrent": false
+      },
+      "publicationGate": "BLOCKED_EXACT_VARIANT_UNIT_BINDING_OPEN"
+    },
+    {
+      "label": "feeder",
+      "id": "gid://shopify/Product/15523986473345",
+      "title": "Automatischer Futterspender für Katzen",
+      "status": "ACTIVE",
+      "handle": "futterautomat-fur-katze-527488",
+      "onlineStoreUrl": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "currency": "CHF",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haustier",
+        "hund",
+        "kat-haustier",
+        "kat-katzen",
+        "katze",
+        "pet",
+        "sort-haustier",
+        "sort-katzen",
+        "sort-tier-futterautomaten",
+        "sort-tier-technik",
+        "such-futterautomat"
+      ],
+      "sperrTags": [],
+      "anyRueckhol": false,
+      "tagsEmpty": false,
+      "selectionOpen": false,
+      "imageCount": 5,
+      "featuredImage": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+        "altText": "Futterautomat für Katze – Bild 5 | LuxeStyle"
+      },
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+          "altText": "Futterautomat für Katze – Bild 5 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a463213d-2cfd-4561-b0f4-1aff53dbc828.jpg?v=1788416889",
+          "altText": "Futterautomat für Katze | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5d06e60-ae6c-4b73-8683-077691bbf5ea.jpg?v=1788416890",
+          "altText": "Futterautomat für Katze – Bild 2 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/15c1017d-5d42-4b53-a694-6c0f3f0d3d08.jpg?v=1788416889",
+          "altText": "Futterautomat für Katze – Bild 3 | LuxeStyle"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/039e9a93-07ef-4038-81d3-6a4e300ac293.jpg?v=1788416890",
+          "altText": "Futterautomat für Katze – Bild 4 | LuxeStyle"
+        }
+      ],
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/56217490391425",
+          "title": "Default Title",
+          "sku": "CJ-1418384701726527488",
+          "price": "96.90",
+          "currency": "CHF",
+          "availableForSale": true,
+          "inventoryQuantity": 0,
+          "inventoryTracked": false,
+          "inventoryPolicy": "CONTINUE",
+          "requiresShipping": true
+        }
+      ],
+      "storefront": {
+        "html": {
+          "status": 200,
+          "final_url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+          "content_type": "text/html; charset=utf-8",
+          "bytes_read": 1028615
+        },
+        "product_json": {
+          "status": 200,
+          "final_url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488.js",
+          "content_type": "text/javascript; charset=utf-8",
+          "bytes_read": 5271,
+          "id": 15523986473345,
+          "title": "Automatischer Futterspender für Katzen",
+          "available": true,
+          "price": 9690,
+          "price_min": 9690,
+          "price_max": 9690,
+          "variant_count": 1,
+          "variants": [
+            {
+              "id": 56217490391425,
+              "title": "Default Title",
+              "sku": "CJ-1418384701726527488",
+              "available": true,
+              "price": 9690
+            }
+          ]
+        }
+      },
+      "publicationGate": "BLOCKED_NO_VERIFIED_FILM_RIGHTS_BINDING"
+    }
+  ],
+  "conclusions": [
+    "Both products are ACTIVE, public HTTP 200, and all current variants are availableForSale with CHF prices.",
+    "Inventory quantity 0 is not an out-of-stock signal here because tracking is off and inventoryPolicy is CONTINUE.",
+    "Neither product has empty tags, a kanal_sperren.mjs match, or any rueckhol tag.",
+    "No inventory or delivery-time promise is supported by this check.",
+    "The projector cannot be promoted from the historical variant reference; an exact current A–G variant and physical unit must be bound to the master.",
+    "The feeder has no verified professional film and commercial-editing/advertising-rights binding in this scope."
+  ]
+}
