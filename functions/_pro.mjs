@@ -32,6 +32,9 @@ export async function validateLicense(key, env) {
       headers: { "Accept": "application/json", "Content-Type": "application/x-www-form-urlencoded" },
       body: "license_key=" + encodeURIComponent(key),
     });
+    // Anbieterfehler sind kein Nachweis einer ungültigen Lizenz. Nicht cachen,
+    // damit eine spätere manuelle Prüfung nach der Störung wieder möglich ist.
+    if (!r.ok) return { ok: false, reason: "error", tier: null };
     const d = await r.json().catch(() => ({}));
     const status = (d && d.license_key && d.license_key.status) || "";
     const ok = !!(d && d.valid) && (status === "active" || status === "inactive");

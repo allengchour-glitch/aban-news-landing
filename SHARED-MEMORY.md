@@ -1,6 +1,6 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
-## Codex-Übergabe für Claude – 08.11.2026
+## Codex-Übergabe für Claude – 09.11.2026
 
 Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. Dort stehen die neuen Büro-/Judge.me-/Monitorarbeiten, echte Ausführungsbelege und die Produktqualitätsmessung für die Fortsetzung um 21:00 Europe/Zurich. Die Datei ist auch nach späteren Codex-Arbeiten zu aktualisieren. Ein gespeicherter Auftrag, Scan oder grüner Workflow ist keine bestätigte Produktkorrektur. Keine privaten Finanz- oder Kundendaten in diese Dateien schreiben.
 
