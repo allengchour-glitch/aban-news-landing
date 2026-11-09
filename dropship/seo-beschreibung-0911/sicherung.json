@@ -1,0 +1,299 @@
+{
+ "gesichertAm": "2026-11-09T10:29:27.263Z",
+ "aenderungen": [
+  {
+   "handle": "herren-hosen",
+   "id": "gid://shopify/Collection/688585998721",
+   "alt": "Hosen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hosen für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-hosen",
+   "id": "gid://shopify/Collection/688586654081",
+   "alt": "Hosen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hosen für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-jacken-maentel",
+   "id": "gid://shopify/Collection/689718559105",
+   "alt": "Jacken & Mäntel online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Jacken & Mäntel für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-jacken-maentel",
+   "id": "gid://shopify/Collection/755406668167",
+   "alt": "Jacken & Mäntel online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Jacken & Mäntel für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-sportbekleidung",
+   "id": "gid://shopify/Collection/755402408327",
+   "alt": "Sportbekleidung online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sportbekleidung für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-sportbekleidung",
+   "id": "gid://shopify/Collection/755407520135",
+   "alt": "Sportbekleidung online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sportbekleidung für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-hoodies-sweatshirts",
+   "id": "gid://shopify/Collection/755404243335",
+   "alt": "Hoodies & Sweatshirts online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hoodies & Sweatshirts für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-hoodies-sweatshirts",
+   "id": "gid://shopify/Collection/755405685127",
+   "alt": "Hoodies & Sweatshirts online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hoodies & Sweatshirts für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-pullover",
+   "id": "gid://shopify/Collection/755404603783",
+   "alt": "Pullover & Strick online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Pullover & Strick für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-pullover-strick",
+   "id": "gid://shopify/Collection/755405980039",
+   "alt": "Pullover & Strick online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Pullover & Strick für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-wanderschuhe",
+   "id": "gid://shopify/Collection/755410141575",
+   "alt": "Wanderschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Wanderschuhe für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-wanderschuhe",
+   "id": "gid://shopify/Collection/755412369799",
+   "alt": "Wanderschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Wanderschuhe für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-winterschuhe",
+   "id": "gid://shopify/Collection/755410174343",
+   "alt": "Winterschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Winterschuhe für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-winterschuhe",
+   "id": "gid://shopify/Collection/755412402567",
+   "alt": "Winterschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Winterschuhe für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-stiefel",
+   "id": "gid://shopify/Collection/755410207111",
+   "alt": "Stiefel & Stiefeletten online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Stiefel & Stiefeletten für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-stiefel",
+   "id": "gid://shopify/Collection/755412435335",
+   "alt": "Stiefel & Stiefeletten online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Stiefel & Stiefeletten für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-hausschuhe",
+   "id": "gid://shopify/Collection/755410698631",
+   "alt": "Hausschuhe & Pantoffeln online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hausschuhe & Pantoffeln für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-hausschuhe",
+   "id": "gid://shopify/Collection/755412664711",
+   "alt": "Hausschuhe & Pantoffeln online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hausschuhe & Pantoffeln für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "kinder-hausschuhe",
+   "id": "gid://shopify/Collection/755414237575",
+   "alt": "Hausschuhe & Pantoffeln online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Hausschuhe & Pantoffeln für Kinder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-sportschuhe",
+   "id": "gid://shopify/Collection/755410731399",
+   "alt": "Sport-, Lauf- & Tanzschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sport-, Lauf- & Tanzschuhe für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-sportschuhe",
+   "id": "gid://shopify/Collection/755412697479",
+   "alt": "Sport-, Lauf- & Tanzschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sport-, Lauf- & Tanzschuhe für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-sneaker",
+   "id": "gid://shopify/Collection/755410829703",
+   "alt": "Sneaker online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sneaker für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-sneaker",
+   "id": "gid://shopify/Collection/755412861319",
+   "alt": "Sneaker online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sneaker für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-reisetaschen",
+   "id": "gid://shopify/Collection/755411321223",
+   "alt": "Reise- & Sporttaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Reise- & Sporttaschen für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-reisetaschen",
+   "id": "gid://shopify/Collection/755413320071",
+   "alt": "Reise- & Sporttaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Reise- & Sporttaschen für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-shopper",
+   "id": "gid://shopify/Collection/755411353991",
+   "alt": "Shopper & Tragetaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Shopper & Tragetaschen für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-shopper",
+   "id": "gid://shopify/Collection/755413451143",
+   "alt": "Shopper & Tragetaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Shopper & Tragetaschen für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-handtaschen",
+   "id": "gid://shopify/Collection/755411386759",
+   "alt": "Handtaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Handtaschen für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-handtaschen",
+   "id": "gid://shopify/Collection/755413483911",
+   "alt": "Handtaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Handtaschen für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-umhaengetaschen",
+   "id": "gid://shopify/Collection/755411419527",
+   "alt": "Umhänge- & Schultertaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Umhänge- & Schultertaschen für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-umhaengetaschen",
+   "id": "gid://shopify/Collection/755413516679",
+   "alt": "Umhänge- & Schultertaschen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Umhänge- & Schultertaschen für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-weitere-taschen",
+   "id": "gid://shopify/Collection/755411583367",
+   "alt": "Weitere Taschen & Rucksäcke online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Weitere Taschen & Rucksäcke für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-weitere-taschen",
+   "id": "gid://shopify/Collection/755413680519",
+   "alt": "Weitere Taschen & Rucksäcke online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Weitere Taschen & Rucksäcke für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-kartenetuis",
+   "id": "gid://shopify/Collection/755411616135",
+   "alt": "Kartenetuis & Kartenhalter online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Kartenetuis & Kartenhalter für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-kartenetuis",
+   "id": "gid://shopify/Collection/755413713287",
+   "alt": "Kartenetuis & Kartenhalter online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Kartenetuis & Kartenhalter für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-geldboersen",
+   "id": "gid://shopify/Collection/755411648903",
+   "alt": "Geldbörsen & Portemonnaies online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Geldbörsen & Portemonnaies für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-geldboersen",
+   "id": "gid://shopify/Collection/755413746055",
+   "alt": "Geldbörsen & Portemonnaies online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Geldbörsen & Portemonnaies für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-guertel",
+   "id": "gid://shopify/Collection/755411779975",
+   "alt": "Gürtel online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Gürtel für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-guertel",
+   "id": "gid://shopify/Collection/755413844359",
+   "alt": "Gürtel online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Gürtel für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-sturmhauben-gesichtsmasken",
+   "id": "gid://shopify/Collection/755411878279",
+   "alt": "Sturmhauben & Gesichtsmasken online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sturmhauben & Gesichtsmasken für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-sturmhauben-gesichtsmasken",
+   "id": "gid://shopify/Collection/755413877127",
+   "alt": "Sturmhauben & Gesichtsmasken online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sturmhauben & Gesichtsmasken für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-kopfbedeckung",
+   "id": "gid://shopify/Collection/755411911047",
+   "alt": "Mützen, Hüte & Caps online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Mützen, Hüte & Caps für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-kopfbedeckung",
+   "id": "gid://shopify/Collection/755413909895",
+   "alt": "Mützen, Hüte & Caps online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Mützen, Hüte & Caps für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-handschuhe",
+   "id": "gid://shopify/Collection/755412205959",
+   "alt": "Handschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Handschuhe für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-handschuhe",
+   "id": "gid://shopify/Collection/755414040967",
+   "alt": "Handschuhe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Handschuhe für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "damen-sonnenbrillen",
+   "id": "gid://shopify/Collection/755412304263",
+   "alt": "Sonnenbrillen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sonnenbrillen für Damen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-sonnenbrillen",
+   "id": "gid://shopify/Collection/755414106503",
+   "alt": "Sonnenbrillen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sonnenbrillen für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "herren-sandalen",
+   "id": "gid://shopify/Collection/755412533639",
+   "alt": "Sandalen & Pantoletten online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sandalen & Pantoletten für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  },
+  {
+   "handle": "kinder-sandalen",
+   "id": "gid://shopify/Collection/755414204807",
+   "alt": "Sandalen & Pantoletten online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+   "neu": "Sandalen & Pantoletten für Kinder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+  }
+ ]
+}
