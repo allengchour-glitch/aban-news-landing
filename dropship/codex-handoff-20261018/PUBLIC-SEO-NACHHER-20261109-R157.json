@@ -1,0 +1,248 @@
+{
+  "reportId": "R157-PUBLIC-AFTER",
+  "retrievedAtUtc": "2026-11-09T20:25:30.555Z",
+  "retrievedAtEuropeZurich": "09.11.26, 21:25:30",
+  "sourceComparison": {
+    "path": "/dev/shm/r157-fr-qa-corrected-variables.json",
+    "sha256": "c5b43f166e93604e82345db66ab9420f00be59264b190b2c787ad22b29492d81",
+    "resourceId": "gid://shopify/Page/698444710273"
+  },
+  "request": {
+    "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "firecrawl": {
+      "maxAge": 0,
+      "storeInCache": false,
+      "formats": [
+        "markdown",
+        "rawHtml",
+        "links"
+      ],
+      "onlyMainContent": false
+    },
+    "externalWrites": false
+  },
+  "publicResult": {
+    "success": true,
+    "httpStatus": 200,
+    "finalUrl": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "scrapeId": null,
+    "rawHtmlChars": 1652277,
+    "markdownChars": 168139,
+    "returnedLinks": 798,
+    "htmlLang": "fr",
+    "title": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+    "metaDescription": "Personnalisez T-shirts, sweat-shirts, sweats à capuche bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+    "openGraph": {
+      "title": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+      "description": "Personnalisez T-shirts, sweat-shirts, sweats à capuche bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+      "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200"
+    },
+    "h1": "Personnalisez des T-shirts, des tasses et bien plus encore",
+    "h1AuxiliaryEmbedNoise": [
+      "luxestyle.ch is blocked",
+      "shop.app is blocked"
+    ],
+    "canonical": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "hreflang": [
+      {
+        "hreflang": "x-default",
+        "href": "https://luxestyle.ch/pages/selbst-gestalten"
+      },
+      {
+        "hreflang": "de",
+        "href": "https://luxestyle.ch/pages/selbst-gestalten"
+      },
+      {
+        "hreflang": "fr",
+        "href": "https://luxestyle.ch/fr/pages/selbst-gestalten"
+      }
+    ]
+  },
+  "expected": {
+    "pageTitle": "Personnalisez des T-shirts, des tasses et bien plus encore",
+    "metaTitle": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+    "metaDescription": "Personnalisez T-shirts, sweat-shirts, sweats à capuche bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+    "anchorOccurrences": [
+      {
+        "href": "/fr/products/klassisches-unisex-t-shirt-selbst-gestalten",
+        "text": "Personnaliser un T-shirt"
+      },
+      {
+        "href": "/fr/products/keramik-tasse-selbst-gestalten",
+        "text": "Faire imprimer une tasse en céramique"
+      },
+      {
+        "href": "/fr/products/unisex-hoodie-selbst-gestalten",
+        "text": "Personnaliser un sweat-shirt ou un sweat à capuche bio"
+      },
+      {
+        "href": "/fr/collections/selbst-gestalten",
+        "text": "collection « Personnaliser »"
+      },
+      {
+        "href": "/fr/policies/refund-policy",
+        "text": "informations sur les retours concernant les articles personnalisés"
+      },
+      {
+        "href": "/fr/collections/selbst-gestalten",
+        "text": "Créez votre pièce unique"
+      }
+    ],
+    "chf50": "La livraison est gratuite dès CHF 50."
+  },
+  "evidence": {
+    "bodyChecks": [
+      {
+        "text": "Créez votre pièce préférée",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      },
+      {
+        "text": "Comment ça marche",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      },
+      {
+        "text": "Produits à personnaliser",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      },
+      {
+        "text": "Production et livraison",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      },
+      {
+        "text": "À vérifier avant de commander",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      },
+      {
+        "text": "Pour la Suisse et le Liechtenstein",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      },
+      {
+        "text": "La livraison est gratuite dès CHF 50.",
+        "inMarkdown": true,
+        "inRawHtml": true,
+        "pass": true
+      }
+    ],
+    "oldGermanChecks": [
+      {
+        "text": "T-Shirt, Tasse & mehr selbst gestalten",
+        "inMarkdown": false,
+        "inRawHtml": false
+      },
+      {
+        "text": "So funktioniert es",
+        "inMarkdown": false,
+        "inRawHtml": false
+      },
+      {
+        "text": "Produkte zum Selbstgestalten",
+        "inMarkdown": false,
+        "inRawHtml": false
+      },
+      {
+        "text": "Produktion und Lieferung",
+        "inMarkdown": false,
+        "inRawHtml": false
+      }
+    ],
+    "anchorChecks": [
+      {
+        "position": 1,
+        "expectedText": "Personnaliser un T-shirt",
+        "expectedHref": "/fr/products/klassisches-unisex-t-shirt-selbst-gestalten",
+        "matchingTextHrefs": [
+          "https://luxestyle.ch/fr/products/klassisches-unisex-t-shirt-selbst-gestalten"
+        ],
+        "exactInRawHtml": true,
+        "presentInReturnedLinks": true,
+        "pass": true
+      },
+      {
+        "position": 2,
+        "expectedText": "Faire imprimer une tasse en céramique",
+        "expectedHref": "/fr/products/keramik-tasse-selbst-gestalten",
+        "matchingTextHrefs": [
+          "https://luxestyle.ch/fr/products/keramik-tasse-selbst-gestalten"
+        ],
+        "exactInRawHtml": true,
+        "presentInReturnedLinks": true,
+        "pass": true
+      },
+      {
+        "position": 3,
+        "expectedText": "Personnaliser un sweat-shirt ou un sweat à capuche bio",
+        "expectedHref": "/fr/products/unisex-hoodie-selbst-gestalten",
+        "matchingTextHrefs": [
+          "https://luxestyle.ch/fr/products/unisex-hoodie-selbst-gestalten"
+        ],
+        "exactInRawHtml": true,
+        "presentInReturnedLinks": true,
+        "pass": true
+      },
+      {
+        "position": 4,
+        "expectedText": "collection « Personnaliser »",
+        "expectedHref": "/fr/collections/selbst-gestalten",
+        "matchingTextHrefs": [
+          "https://luxestyle.ch/fr/collections/selbst-gestalten"
+        ],
+        "exactInRawHtml": true,
+        "presentInReturnedLinks": true,
+        "pass": true
+      },
+      {
+        "position": 5,
+        "expectedText": "informations sur les retours concernant les articles personnalisés",
+        "expectedHref": "/fr/policies/refund-policy",
+        "matchingTextHrefs": [
+          "https://luxestyle.ch/fr/policies/refund-policy"
+        ],
+        "exactInRawHtml": true,
+        "presentInReturnedLinks": true,
+        "pass": true
+      },
+      {
+        "position": 6,
+        "expectedText": "Créez votre pièce unique",
+        "expectedHref": "/fr/collections/selbst-gestalten",
+        "matchingTextHrefs": [
+          "https://luxestyle.ch/fr/collections/selbst-gestalten"
+        ],
+        "exactInRawHtml": true,
+        "presentInReturnedLinks": true,
+        "pass": true
+      }
+    ],
+    "sixFrenchAnchorCount": 6,
+    "exactAnchorPassCount": 6
+  },
+  "checks": {
+    "http200": true,
+    "htmlLangFr": true,
+    "documentTitle": true,
+    "metaDescription": true,
+    "ogTitle": true,
+    "ogDescription": true,
+    "h1": true,
+    "canonical": true,
+    "hreflang": true,
+    "sixFrenchAnchors": true,
+    "chf50": true,
+    "frenchBody": true
+  },
+  "allPass": true,
+  "interpretation": "Der bestätigte Shopify-Write ist öffentlich vollständig sichtbar und stimmt in allen verlangten Feldern mit dem Sollbeleg überein."
+}
