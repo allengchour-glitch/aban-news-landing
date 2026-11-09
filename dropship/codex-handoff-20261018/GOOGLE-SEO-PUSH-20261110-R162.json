@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "revision": 162,
+  "marker": "[LUXESTYLE_R162_20261110]",
+  "recordedAt": "2026-11-10T00:45:35+01:00",
+  "timezone": "Europe/Zurich",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "gscProperty": "sc-domain:luxestyle.ch",
+    "merchant": {
+      "name": "LuxeStyle CH",
+      "shopId": "5797470070"
+    }
+  },
+  "documentationPreWrite": {
+    "README.md": {
+      "sha256": "0c2c298c0f3998277b78bd395c6c1a7fbf565ef02895b2e445657e00f6caca90",
+      "gitBlobSha": "775383a030850bc80b33f9f9a4ec40b9966ee809"
+    },
+    "PROJEKTGEDAECHTNIS.md": {
+      "sha256": "c9a84b0e380c135ea8b24f6304b684d81d21c1679a9e5a1cd057b1933b3f9ced",
+      "gitBlobSha": "3c252088c531e8ff670815f13c57e67f758c9b75"
+    },
+    "CLAUDE.md": {
+      "sha256": "4c970781a83384ddbe0214cc72c36b210b2fe3173fd6608e12882c06b9073bbb",
+      "gitBlobSha": "9aabe975631a15ffe93d4f97460cfd8a3b51691b"
+    },
+    "TAGESPROTOKOLL.md": {
+      "sha256": "423adb31ffca8f250a7f57b273ed0e4ee30d5a5031a18a32dac00e9c526a6b47",
+      "gitBlobSha": "a6dcc23ba502cd4953476b36db7e6cd10eeb1e0a"
+    },
+    "ARBEITSSTAND.json": {
+      "sha256": "5a48b2da4fcef81e37f45531b5ae4f0e9dfea00a8533d6246311731c8d92367d",
+      "gitBlobSha": "b940521ba95304bfc4466a20c3f7b64bf584eab5"
+    }
+  },
+  "shopifyWrites": {
+    "products": [
+      {
+        "productId": "16604558786951",
+        "status": "ACTIVE",
+        "beforeTitle": "Oversize-Kleid, Olivgrün",
+        "afterTitle": "Weit geschnittenes Kleid mit Seitentaschen",
+        "priceCHF": "22.90",
+        "variants": 38,
+        "availableVariants": 38,
+        "imagesReady": 39,
+        "activePublications": 6,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "handleChanged": false,
+        "altTextWrites": 0
+      },
+      {
+        "productId": "16605820879239",
+        "status": "ACTIVE",
+        "beforeTitle": "Rundes Sitzkissen, orange",
+        "afterTitle": "Rundes Sitzkissen in sechs Farben",
+        "priceCHF": "34.90",
+        "variants": 6,
+        "availableVariants": 6,
+        "imagesReady": 11,
+        "activePublications": 7,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "handleChanged": false,
+        "altTextWrites": 11
+      }
+    ],
+    "article": {
+      "id": "gid://shopify/Article/1001547137409",
+      "handle": "weihnachtsgeschenke-2026-schweiz-ideen",
+      "published": true,
+      "beforeTitle": "Weihnachtsgeschenke 2026 Schweiz: Ideen nach Empfänger & Budget",
+      "afterTitle": "Weihnachtsgeschenke 2026 Schweiz: Ideen und Elektronik",
+      "seoTitle": "Weihnachtsgeschenke 2026 Schweiz: Elektronik-Ideen",
+      "seoTitleLength": 50,
+      "seoDescription": "Weihnachtsgeschenke 2026 in der Schweiz: Elektronik-Ideen nach Empfänger und Budget sowie Hinweise zu Kompatibilität, Auswahl und Bestellung.",
+      "seoDescriptionLength": 141,
+      "verifiedCategoryLinks": 7,
+      "faqBlocks": 1,
+      "faqQuestions": 4,
+      "removedFromArticle": [
+        "WELCOME10",
+        "Gift Box",
+        "fixed delivery-time claims",
+        "unverified popularity ranking",
+        "unverified single-product and price claims"
+      ],
+      "publicReadback": {
+        "httpStatus": 200,
+        "selfCanonical": true,
+        "noindex": false,
+        "titleExact": true,
+        "metaExact": true,
+        "h1Exact": true,
+        "faqJsonLdParsed": true
+      }
+    }
+  },
+  "gsc": {
+    "dateRange": {
+      "start": "2026-10-11",
+      "end": "2026-11-07",
+      "estimatedFinalizedThrough": "2026-11-06",
+      "dataState": "final",
+      "searchType": "web"
+    },
+    "pageQuery": {
+      "rowLimit": 100,
+      "rowCount": 100,
+      "truncated": true
+    },
+    "articleBaseline": {
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0.0,
+      "position": 6.17
+    },
+    "queryBreakdown": {
+      "query": "welche elektronik-geschenke sind zu weihnachten 2026 in der schweiz am beliebtesten?",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0.0,
+      "position": 5.2,
+      "truncated": false,
+      "anonymizedQueriesMayExist": true
+    },
+    "urlInspection": {
+      "verdict": "PASS",
+      "coverageState": "Gesendet und indexiert",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "lastCrawlTime": "2026-11-06T10:43:27Z",
+      "googleCanonical": "https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+      "userCanonical": "https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+      "sitemap": [
+        "https://luxestyle.ch/sitemap.xml"
+      ],
+      "crawledAs": "MOBILE"
+    },
+    "newContentProcessedByGoogle": "unknown",
+    "rankingImpact": "unknown",
+    "salesImpact": "unknown"
+  },
+  "seoAudit": {
+    "samplePages": 5,
+    "http200": 5,
+    "selfCanonical": 5,
+    "oneH1": 5,
+    "indexable": 5,
+    "uniqueInternalLinksRange": [
+      778,
+      835
+    ],
+    "htmlBytesRangeApprox": [
+      1230000,
+      1990000
+    ],
+    "openIssues": [
+      "global menu too large",
+      "German breadcrumb uses Home",
+      "duplicate Beauty breadcrumb",
+      "missing breadcrumb/WebPage schema on Selbst gestalten",
+      "projector VideoObject lacks product/right proof"
+    ],
+    "menuWriteBlockedByGates": {
+      "childEdges": "520/520 required",
+      "mobileAllInPaths": "86/86 required"
+    }
+  },
+  "merchantCsv": {
+    "filesCompared": 2,
+    "byteIdentical": true,
+    "sha256": "e0b47ecf",
+    "rows": 14245,
+    "offerIds": 3826,
+    "currentCatalogCoverage": "unknown"
+  },
+  "writesNotPerformed": [
+    "theme",
+    "menu",
+    "merchant",
+    "feed",
+    "gtm",
+    "google_ads",
+    "budget",
+    "campaign",
+    "discount",
+    "flow",
+    "dns",
+    "social"
+  ],
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

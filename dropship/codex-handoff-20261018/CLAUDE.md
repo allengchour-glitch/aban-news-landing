@@ -307,3 +307,17 @@ Belege: `SEO-CJ-GRIND-20261109-R160.md/.json`.
 7. Tagesabfragen nicht wiederholen; 08/14/19 unverändert. Claude-Kenntnisnahme unbekannt.
 
 Belege: `CJ-WEBCAM-PRUEFUNG-20261109-R161.md/.json`.
+
+## R162 – Weiterarbeit nach live umgesetztem Google-SEO-Push
+
+[LUXESTYLE_R162_20261110]
+
+1. Nicht erneut schreiben: Produkte `16604558786951` und `16605820879239` sowie Artikel `1001547137409` sind öffentlich geprüft. Der Artikel hat neuen H1, SEO-Titel/Meta, sieben Elektronik-Kategorielinks und genau ein FAQPage-Objekt mit vier Fragen.
+2. GSC-Baseline11.10.–07.11.: Artikel12 Impressionen/0 Klicks/Position6,17; offengelegte Elektronik-Suchanfrage10/0/Position5,2. 100-Zeilen-Seitenabfrage war `truncated=true`; keine Vollquote. Seltene Queries können anonymisiert sein.
+3. URL-Inspection PASS, gesendet/indexiert, Fetch erfolgreich, Canonicals identisch, letzter Crawl06.11. Neue Fassung ist damit nicht als von Google verarbeitet belegt. Erst nach angemessenem Zeitraum dieselbe URL eng nachmessen; keine Ranking-/Verkaufswirkung behaupten.
+4. Technischer Haupthebel bleibt das globale Menü:778–835 eindeutige interne Links pro Stichprobenseite. Kein Menüwrite, bis520/520 Kindkanten und86/86 mobile `Alle in …`-Wege im unveröffentlichten Theme bestehen.
+5. Theme-Fixes separat: Breadcrumb `Home`→`Startseite`, doppelten Beauty-Knoten entfernen, Selbstgestalten-Breadcrumb/WebPage ergänzen, Projektor-VideoObject nur mit Produkt-/Rechtebeleg. Preview/MAIN-Zustand frisch lesen; legitimer Publish-Pfad erforderlich.
+6. Merchant nur als `LuxeStyle CH`/5797470070 identifiziert; CSV-Export ist keine aktuelle Katalogquote. Keine Feed-/Kontoänderung.
+7. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Feed-, GTM-, Ads-, Social- oder kostenpflichtige Renderaktion. 08/14/19 unverändert.
+
+Belege: `GOOGLE-SEO-PUSH-20261110-R162.md/.json`. Kenntnisnahme durch Claude bleibt unbekannt, bis ein echter Empfangsbeleg vorliegt.

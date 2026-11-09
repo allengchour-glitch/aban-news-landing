@@ -1982,3 +1982,18 @@ Die fünf Bilder stützen Kamera, Halterung, Anschlusskabel und die Befestigung 
 [R161 Bericht](CJ-WEBCAM-PRUEFUNG-20261109-R161.md) · [Maschinenbeleg](CJ-WEBCAM-PRUEFUNG-20261109-R161.json). Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit und kommerzielle Bildrechte bleiben Blocker. Bestehende 08:00/14:00/19:00-Frequenz unverändert; Claude-Empfang unbekannt.
 
 [LUXESTYLE_R161_20261109]
+
+### R162
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | R161-Handoff und 10.11.-Tagesgrenze gelesen; Shopify, GSC und Merchant gezielt verifiziert | LuxeStyle/luxestyle.ch/CHF, GSC `sc-domain:luxestyle.ch`, Merchant `LuxeStyle CH`/5797470070 passend; Claude-Empfang unbekannt |
+| Produkt-SEO | Zwei ACTIVE-Produkte mit falschen deutschen Titeln/Beschreibungen eng korrigiert; beim Sitzkissen elf Bilder visuell geprüft und elf Alttexte aktualisiert | Beide Produkte öffentlich HTTP200 mit exaktem H1/Title/Meta/Canonical; Handles, Preise, Varianten, Inventory und Publikationen erhalten |
+| GSC | 11.10.–07.11. als begrenzte 100-Zeilen-Seitenabfrage und einen Artikel-Query-Breakdown gelesen | Ratgeber 12 Impressionen/0 Klicks/Position6,17; Elektronik-Suchanfrage 10/0/Position5,2; Seitenabfrage abgeschnitten, seltene Queries teils anonymisiert |
+| Ratgeber | Weihnachtsgeschenke-Artikel claim-sicher neu strukturiert, sieben geprüfte Elektronik-Kategorien, ein Vier-Fragen-FAQ und separate SEO-Metafelder live gesetzt | HTTP200, deutscher Title/Meta/H1, Self-Canonical, kein Noindex, FAQPage parsebar; alter Rabatt-/Liefer-/Produktclaim aus Artikel entfernt |
+| URL-Indexprüfung | Exakte Ratgeber-URL über GSC geprüft | PASS, gesendet und indexiert, robots/indexing erlaubt, Fetch erfolgreich, Google-/Nutzer-Canonical identisch; letzter Crawl06.11., neue Verarbeitung unbekannt |
+| Technisches SEO | Fünf Seiten plus robots/Sitemap begrenzt geprüft | 778–835 eindeutige interne Links und1,23–1,99MB HTML; Menü bleibt grösster Hebel, Write wegen520/520- und86/86-Gates gesperrt; Breadcrumb-/VideoObject-Themen dokumentiert |
+| Grenzen | Keine breite Merchant-/Katalogmessung und keine Theme-/Menü-/Feed-/GTM-/Ads-/Budgetänderung | Keine Ranking-, Verkaufs- oder Google-Neuverarbeitungswirkung behauptet |
+| Dokumentation | R162-Bericht, Maschinenbeleg, Tagesprotokoll, Projektgedächtnis und Claude-Handoff additiv fortgeführt | 24 Aufgaben bleiben erhalten; Claude-Receipt `unknown_no_claude_receipt` |
+
+[LUXESTYLE_R162_20261110] [Bericht](GOOGLE-SEO-PUSH-20261110-R162.md) · [Beleg](GOOGLE-SEO-PUSH-20261110-R162.json). Drei SEO-Bereiche live verbessert; technische Theme-/Menühebel weiterhin kontrolliert blockiert.

@@ -1787,3 +1787,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Claude Code | R161 additiv in kanonische Übergabe aufgenommen | Claude-Empfang unbekannt |
 
 [LUXESTYLE_R161_20261109] [Bericht](CJ-WEBCAM-PRUEFUNG-20261109-R161.md) · [Beleg](CJ-WEBCAM-PRUEFUNG-20261109-R161.json). Kandidat2 exakt gebunden und als DRAFT bereinigt, nicht aktiviert.
+
+## 10.11.2026
+
+### R162
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | R161-Handoff, Projektgedächtnis und neuen Europe/Zurich-Tagesblock gelesen; Shopify/GSC/Merchant gezielt verifiziert | LuxeStyle/luxestyle.ch/CHF, `sc-domain:luxestyle.ch` und Merchant `LuxeStyle CH`/5797470070 passend |
+| Produkte | Zwei ACTIVE-Produkte mit falscher deutscher Produktbindung claim-sicher korrigiert; elf Sitzkissenbilder visuell geprüft und elf Alttexte aktualisiert | Öffentliche HTTP200-Gegenprobe grün; Handles, Preise, Varianten, Inventory und Publikationen erhalten |
+| GSC | Begrenzte Seitenabfrage und einen konkreten Artikel-Query-Breakdown im finalen Zeitraum11.10.–07.11. gelesen | Ratgeber12 Impressionen/0 Klicks/Position6,17; Elektronik-Suchanfrage10/0/Position5,2; 100 Seitenzeilen abgeschnitten, keine Vollquote |
+| Ratgeber | Inhalt, H1, SEO-Titel/-Meta und FAQ auf die belegte Elektronik-Suchchance ausgerichtet; unbelegte Claims entfernt | Live HTTP200, deutsch, Self-Canonical, indexierbar, sieben geprüfte Kategorielinks, genau ein FAQPage-Objekt mit vier Fragen |
+| Google-Index | Ratgeber-URL gezielt geprüft | PASS, gesendet und indexiert, Crawling/Indexierung erlaubt, Fetch erfolgreich, Canonicals identisch; letzter Crawl06.11., neue Verarbeitung unbekannt |
+| Technisches SEO | Fünf Seiten plus robots/Sitemap begrenzt geprüft | Hauptseiten200/selbstkanonisch/indexierbar;778–835 interne Links und1,23–1,99MB HTML. Menü-/Breadcrumb-/VideoObject-Arbeit dokumentiert, nicht live geändert |
+| Merchant / Grenzen | Merchant-Identität und zwei bytegleiche CSV-Dateien eingeordnet | Kein breiter Live-Scan, kein Feed-/Konto-/Theme-/Menü-/GTM-/Ads-/Budgetwrite; keine Ranking- oder Verkaufswirkung behauptet |
+| Dokumentation | R162-Bericht, Beleg und Claude-Handoff additiv vorbereitet | Revision162,24 Aufgaben/125 Historieneinträge vorgesehen; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R162_20261110]

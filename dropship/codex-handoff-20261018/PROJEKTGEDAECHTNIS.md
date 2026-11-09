@@ -1394,3 +1394,15 @@ Alle fünf Bilder wurden visuell geprüft. HD und «Smart» sind nicht belegt. A
 Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit und produktspezifische kommerzielle Bildrechte bleiben Blocker. Vor Aktivierung Preis/Marge, Rechte, Tags und Kaufbarkeit erneut produktgenau prüfen. Belege: `CJ-WEBCAM-PRUEFUNG-20261109-R161.md/.json`. Claude-Receipt bleibt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R161_20261109]
+
+## Aktueller Stand – 10.11.2026, Revision 162: Google-SEO-Chance live bearbeitet
+
+Shopify bestätigte frisch LuxeStyle/luxestyle.ch/CHF. Zwei ACTIVE-Produkte mit falscher deutscher Produktbindung wurden claim-sicher korrigiert und öffentlich zurückgelesen: Kleid `16604558786951` sowie Sitzkissen `16605820879239`; beim Sitzkissen sind elf bildgenaue Alttexte live. Handles, Preise, Varianten, Inventory und Publikationen blieben erhalten.
+
+GSC `sc-domain:luxestyle.ch` zeigte im finalen Zeitraum11.10.–07.11. beim Weihnachtsgeschenke-Ratgeber12 Impressionen/0 Klicks/Position6,17 und für die offengelegte Elektronik-Geschenk-Suchanfrage10 Impressionen/0 Klicks/Position5,2. Der Ratgeber wurde mit deutschem H1, separatem SEO-Titel/Meta, sieben geprüften Elektronik-Kategorien, genau einem Vier-Fragen-FAQ und claim-sicherem Text live aktualisiert. Öffentliche Gegenprobe: HTTP200, Self-Canonical, indexierbar, Title/Meta/H1 exakt, FAQPage parsebar. GSC-URL-Prüfung PASS/gesendet und indexiert; letzter Crawl06.11., Verarbeitung der neuen Fassung unbekannt.
+
+Technischer Audit: fünf Seiten HTTP200/selbstkanonisch/indexierbar, aber778–835 eindeutige interne Links und etwa1,23–1,99MB HTML. Menüwrite bleibt bis520/520 Kindkanten und86/86 mobilen Wegen gesperrt. Englisches Breadcrumb-`Home`, doppelter Beauty-Knoten, fehlendes Selbstgestalten-Breadcrumb und ungeklärtes Projektor-VideoObject bleiben Theme-Aufgaben. Keine Merchant-, Feed-, GTM-, Ads-, Budget-, Menü- oder Themeänderung.
+
+Belege: `GOOGLE-SEO-PUSH-20261110-R162.md/.json`. Keine Ranking- oder Verkaufswirkung behaupten. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R162_20261110]
