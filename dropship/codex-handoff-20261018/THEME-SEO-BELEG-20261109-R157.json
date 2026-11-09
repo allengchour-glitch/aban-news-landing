@@ -1,0 +1,380 @@
+{
+  "schemaVersion": "luxestyle-theme-seo-r157-v1",
+  "scope": "Read-only source analysis and local patch draft; no Shopify/theme/menu/workflow write.",
+  "liveTheme": {
+    "id": "gid://shopify/OnlineStoreTheme/213013037447",
+    "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+    "role": "MAIN",
+    "updatedAt": "2026-11-09T17:50:35Z",
+    "files": [
+      {
+        "filename": "blocks/_header-menu.liquid",
+        "checksumMd5": "bb6ca9439c2a18c9299c4d2dd17ce002",
+        "size": "25723",
+        "updatedAt": "2026-11-02T06:13:45Z"
+      },
+      {
+        "filename": "snippets/header-drawer.liquid",
+        "checksumMd5": "ef63eeba09747b29ae4bf05f0fd2fa68",
+        "size": "58350",
+        "updatedAt": "2026-11-04T18:38:42Z"
+      },
+      {
+        "filename": "snippets/mega-menu-list.liquid",
+        "checksumMd5": "7885baf267ae40a9884ef7bafe67323c",
+        "size": "3968",
+        "updatedAt": "2026-11-02T06:13:45Z"
+      },
+      {
+        "filename": "snippets/meta-tags.liquid",
+        "checksumMd5": "c7e3f66093cbdb59f29210b62ebd1447",
+        "size": "17026",
+        "updatedAt": "2026-11-08T23:01:50Z"
+      }
+    ]
+  },
+  "liveMainMenuReadback": {
+    "readAtUtc": "2026-11-09T20:21:00Z",
+    "source": "Shopify Admin GraphQL read-only",
+    "id": "gid://shopify/Menu/310224093569",
+    "title": "Main menu",
+    "handle": "main-menu",
+    "nodes": 784,
+    "depthCounts": {
+      "0": 21,
+      "1": 243,
+      "2": 520
+    },
+    "collectionNodes": 779,
+    "uniqueRawCollectionUrls": 742,
+    "uniqueNormalizedCollectionUrls": 742,
+    "topLevelTitles": [
+      "Geschenke & Weihnachten",
+      "Damen",
+      "Herren",
+      "Schuhe",
+      "Taschen & Rucksäcke",
+      "Schmuck",
+      "Uhren",
+      "Beauty & Pflege",
+      "Küche",
+      "Geschirr",
+      "Wohnen & Garten",
+      "Elektronik",
+      "Auto & Motorrad",
+      "Gaming & Gadgets",
+      "Kinder & Baby",
+      "Haustiere",
+      "Highlights",
+      "Herbst & Übergang",
+      "Sport & Party",
+      "Merkliste",
+      "Retro & Vintage"
+    ],
+    "uniqueCollectionUrls": 742,
+    "urlListFile": "/dev/shm/r157-theme-seo/live-main-menu-collection-urls.txt"
+  },
+  "publicPages": [
+    {
+      "file": "/tmp/r156-page-0.html",
+      "sha256": "920af53ae0e3565aea821b239d4c98cd5141ae643848dcc444419fa102c0eb40",
+      "bytes": 1055028,
+      "allCollectionInstances": 1513,
+      "allCollectionUnique": 750,
+      "headerCollectionInstances": 1473,
+      "headerCollectionUnique": 744,
+      "mainCollectionInstances": 39,
+      "mainCollectionUnique": 22,
+      "ogImage": [
+        "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-ch-logo_58da73c7-a62c-4790-b820-b5d38b61fa19.png?v=1783620379"
+      ],
+      "ogImageSecureUrl": [
+        "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200"
+      ]
+    },
+    {
+      "file": "/tmp/r156-page-1.html",
+      "sha256": "5393aa575cfb322dc740f0c53f428c0fe1d67660e4b529d9877390c942dab256",
+      "bytes": 1016823,
+      "allCollectionInstances": 1513,
+      "allCollectionUnique": 751,
+      "headerCollectionInstances": 1473,
+      "headerCollectionUnique": 744,
+      "mainCollectionInstances": 39,
+      "mainCollectionUnique": 22,
+      "ogImage": [
+        "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxestyle-ch-logo_58da73c7-a62c-4790-b820-b5d38b61fa19.png?v=1783620379"
+      ],
+      "ogImageSecureUrl": [
+        "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200"
+      ]
+    },
+    {
+      "file": "/tmp/r156-page-2.html",
+      "sha256": "c888b52ad41671c0c55d67aeca1f73438d75be6496eb8742fb961f680292832d",
+      "bytes": 1206513,
+      "allCollectionInstances": 1477,
+      "allCollectionUnique": 746,
+      "headerCollectionInstances": 1473,
+      "headerCollectionUnique": 744,
+      "mainCollectionInstances": 3,
+      "mainCollectionUnique": 1,
+      "ogImage": [
+        "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200"
+      ],
+      "ogImageSecureUrl": [
+        "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200"
+      ]
+    },
+    {
+      "file": "/tmp/r156-page-3.html",
+      "sha256": "8de25d02eaf5545665171f6d69d74a53a6f728c01ad53d3d71aff426c66b0f12",
+      "bytes": 1109533,
+      "allCollectionInstances": 1478,
+      "allCollectionUnique": 745,
+      "headerCollectionInstances": 1473,
+      "headerCollectionUnique": 744,
+      "mainCollectionInstances": 4,
+      "mainCollectionUnique": 3,
+      "ogImage": [
+        "http://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090"
+      ],
+      "ogImageSecureUrl": [
+        "https://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090"
+      ]
+    },
+    {
+      "file": "/tmp/r156-page-4.html",
+      "sha256": "096e544cb69c9138b28cbde1b4df3c0f8ce059628b1cea424b5685187d7a80ae",
+      "bytes": 1028615,
+      "allCollectionInstances": 1476,
+      "allCollectionUnique": 744,
+      "headerCollectionInstances": 1473,
+      "headerCollectionUnique": 744,
+      "mainCollectionInstances": 2,
+      "mainCollectionUnique": 2,
+      "ogImage": [
+        "http://luxestyle.ch/cdn/shop/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889"
+      ],
+      "ogImageSecureUrl": [
+        "https://luxestyle.ch/cdn/shop/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889"
+      ]
+    }
+  ],
+  "menuHistory": [
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-accessoires-2610.json",
+      "sha256": "145421ad56f20d357f6922b2882136ce7ed7e8337f9a33eeff52fa35366cd301",
+      "nodes": 347,
+      "depthCounts": {
+        "0": 18,
+        "1": 214,
+        "2": 115
+      },
+      "collectionNodes": 342,
+      "uniqueCollectionUrlsRaw": 321
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-bereiche-0111.json",
+      "sha256": "f7d6d474b42c1ba72754614548e017120f9b8ce8e90724579dab3a11e0d79cd2",
+      "nodes": 478,
+      "depthCounts": {
+        "0": 18,
+        "1": 234,
+        "2": 226
+      },
+      "collectionNodes": 473,
+      "uniqueCollectionUrlsRaw": 453
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-bereiche2-0211.json",
+      "sha256": "54548907430c009c665dde5240e51cec0665b288c8987ba129c07bbdc752a8df",
+      "nodes": 553,
+      "depthCounts": {
+        "0": 19,
+        "1": 239,
+        "2": 295
+      },
+      "collectionNodes": 548,
+      "uniqueCollectionUrlsRaw": 527
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-elektronik-0111.json",
+      "sha256": "42dba92cebb0855eaccfaa9f2b04c7b27bf5663b99aa809af4d795ee6cdf5d40",
+      "nodes": 439,
+      "depthCounts": {
+        "0": 18,
+        "1": 236,
+        "2": 185
+      },
+      "collectionNodes": 434,
+      "uniqueCollectionUrlsRaw": 413
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-fasnacht-0111.json",
+      "sha256": "7445e68d6ac5db1bb8e2d5cab3f0e524613206680f471d2835050a831a284880",
+      "nodes": 440,
+      "depthCounts": {
+        "0": 18,
+        "1": 237,
+        "2": 185
+      },
+      "collectionNodes": 435,
+      "uniqueCollectionUrlsRaw": 414
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-jacken-kleider-0211.json",
+      "sha256": "e0b0234145a9206ec1a585d0fdf604a0781709aacde2a23c7285e76ac64418b3",
+      "nodes": 742,
+      "depthCounts": {
+        "0": 19,
+        "1": 238,
+        "2": 485
+      },
+      "collectionNodes": 737,
+      "uniqueCollectionUrlsRaw": 715
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-kleider-gruppen-0211.json",
+      "sha256": "b3fcec64f8a363f88e749876a85a8ba22024ee9e5f238eb63e871bd8379867ab",
+      "nodes": 774,
+      "depthCounts": {
+        "0": 19,
+        "1": 240,
+        "2": 515
+      },
+      "collectionNodes": 769,
+      "uniqueCollectionUrlsRaw": 744
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-kueche-geschirr-0311-2026-11-03T22-19-13-956Z.json",
+      "sha256": "c730ae8dc1a739714d3b96f2dc0cd2d0dddf91dbd1cb2ced0c9fcedb0b70876b",
+      "nodes": 784,
+      "depthCounts": {
+        "0": 21,
+        "1": 243,
+        "2": 520
+      },
+      "collectionNodes": 779,
+      "uniqueCollectionUrlsRaw": 751
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-kueche-geschirr-0311.json",
+      "sha256": "db79091801c8f6a13ac5e09ddfebd2d769483c48d7252f5da1fe1d60b301cf0a",
+      "nodes": 777,
+      "depthCounts": {
+        "0": 19,
+        "1": 243,
+        "2": 515
+      },
+      "collectionNodes": 772,
+      "uniqueCollectionUrlsRaw": 744
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-mode-2610.json",
+      "sha256": "bdebe0d5c70ef3514cad36f8d73a6f8a92227c7ef711c25883eec6b373875d7c",
+      "nodes": 292,
+      "depthCounts": {
+        "0": 18,
+        "1": 208,
+        "2": 66
+      },
+      "collectionNodes": 287,
+      "uniqueCollectionUrlsRaw": 263
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-rucksaecke-2810.json",
+      "sha256": "fede019eeccfb382ed24116bdbcf7c2aff8ab98ef487e510e9e8481ed87a68d9",
+      "nodes": 426,
+      "depthCounts": {
+        "0": 18,
+        "1": 237,
+        "2": 171
+      },
+      "collectionNodes": 421,
+      "uniqueCollectionUrlsRaw": 401
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-schmuck-2710.json",
+      "sha256": "2b4f0ba4b49ced992483355af09da961fc696f434f03146787ab9be7d6aadbe6",
+      "nodes": 370,
+      "depthCounts": {
+        "0": 18,
+        "1": 237,
+        "2": 115
+      },
+      "collectionNodes": 365,
+      "uniqueCollectionUrlsRaw": 345
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-schuhe-2610.json",
+      "sha256": "64c868c480dfc661384eed34d79d00f11a5939d27240f61b5a53fd5034a53d3c",
+      "nodes": 327,
+      "depthCounts": {
+        "0": 18,
+        "1": 223,
+        "2": 86
+      },
+      "collectionNodes": 322,
+      "uniqueCollectionUrlsRaw": 300
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-tassen-becher.json",
+      "sha256": "219be8a996815355bb25e119523d6dbac770fc56e1297a377e0d709664542d7a",
+      "nodes": 218,
+      "depthCounts": {
+        "0": 13,
+        "1": 174,
+        "2": 31
+      },
+      "collectionNodes": 213,
+      "uniqueCollectionUrlsRaw": 190
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-umbau-2510.json",
+      "sha256": "595a0b54b79da4ea511ca2e647cfdcc14663f953c23598ab544365fd6978f85b",
+      "nodes": 219,
+      "depthCounts": {
+        "0": 13,
+        "1": 175,
+        "2": 31
+      },
+      "collectionNodes": 214,
+      "uniqueCollectionUrlsRaw": 191
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-wohnen-0211.json",
+      "sha256": "f2a02ca98225fa01f060d113b18673fe1a1e46af71fb1cdb7513df88a4a9e44c",
+      "nodes": 694,
+      "depthCounts": {
+        "0": 19,
+        "1": 246,
+        "2": 429
+      },
+      "collectionNodes": 689,
+      "uniqueCollectionUrlsRaw": 665
+    },
+    {
+      "file": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/taxonomie-2610-b/orakel/menue-main-0311.json",
+      "sha256": "db79091801c8f6a13ac5e09ddfebd2d769483c48d7252f5da1fe1d60b301cf0a",
+      "nodes": 777,
+      "depthCounts": {
+        "0": 19,
+        "1": 243,
+        "2": 515
+      },
+      "collectionNodes": 772,
+      "uniqueCollectionUrlsRaw": 744
+    }
+  ],
+  "ogPatch": {
+    "sourceMd5": "c7e3f66093cbdb59f29210b62ebd1447",
+    "sourceSha256": "5fbbe90759290fc85c5e70dc8fef04bb6bfde55038ceba2dd608f0a8b9c48b19",
+    "targetSha256": "3697eb9d7e5c6d991b3c295588af4246bb46924361b571f46dab25381f1d3a19",
+    "patchSha256": "d06ffd51636c3438948f7ef2fcc8acc07ea329ef69a28854d7fd4c1bacd0abdb",
+    "replacements": 2,
+    "writePerformed": false
+  }
+}
