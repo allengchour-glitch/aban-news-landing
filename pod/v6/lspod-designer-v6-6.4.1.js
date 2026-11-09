@@ -976,6 +976,7 @@
     '.lsp6-sh{margin:6px 0 0;padding:8px 10px;border-radius:10px;border:1px solid #e7d9b4;background:#fff8e6;color:#4d3a07;font-size:12.5px;font-weight:600}',
     '.lsp6-tip{font-size:12px;color:var(--mute);padding:6px 16px 0;text-align:center}',
     '.lsp6-body{padding:12px 16px 16px}',
+    '.lsp6-tools{padding:10px 16px 0}.lsp6-tools .lsp6-row{margin-bottom:0}.lsp6-tools .lsp6-picker{margin:10px 0 0}',   // 6.4.1: Werkzeugzeile unter der Bühne
     '.lsp6-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center}',
     '.lsp6-btn{flex:1;min-width:84px;min-height:42px;padding:9px 8px;border-radius:10px;border:1px solid #cfc8bb;background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:13px;line-height:1.2;cursor:pointer}',
     '.lsp6-btn[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}',
@@ -2921,6 +2922,10 @@
     ui.zoomBox = el('div', { class: 'lsp6-zoom', role: 'group', 'aria-label': T.zoomLabel, 'data-feld': 'zoom' }, [ui.zoomMinus, ui.zoomStufe, ui.zoomPlus, ui.zoomLive]);
     ui.zoomBox.hidden = true;
     ui.karte.appendChild(ui.zoomBox);
+    // 6.4.1: «Text | Sticker | Bild» (und die Stickerauswahl, die sie öffnen) stehen direkt unter der Bühne und ihrer Zoomleiste statt am Ende der Karte: auf dem Handy (390 × 844) lagen die Knöpfe bis 6.4.0
+    // 777 bis 838 px unter dem Anfang des Editors, jetzt im ersten Bildschirm (README «Version 6.4.1»)
+    ui.werkzeuge = el('div', { class: 'lsp6-tools', 'data-feld': 'werkzeuge' });
+    ui.karte.appendChild(ui.werkzeuge);
     // 6.4.1: Kontrast-Hinweis für «Bearbeiten» und «Druckversion» (die Vorschau hat ihren eigenen, ui.pvKontrast)
     ui.stKontrast = el('p', { class: 'lsp6-sh', role: 'status', 'aria-live': 'polite', 'data-feld': 'kontrast-bearbeiten', style: 'margin:6px 16px 0' });
     ui.stKontrast.hidden = true;
@@ -2945,7 +2950,7 @@
     ui.addSticker = knopf(T.addSticker, 'lsp6-btn dark');
     zeileWerkzeuge.appendChild(ui.addText); zeileWerkzeuge.appendChild(ui.addSticker);
     if (CLOUDINARY_AKTIV) { ui.addImg = knopf(T.addImg, 'lsp6-btn dark'); zeileWerkzeuge.appendChild(ui.addImg); }
-    body.appendChild(zeileWerkzeuge);
+    ui.werkzeuge.appendChild(zeileWerkzeuge);
 
     var zeileVerlauf = el('div', { class: 'lsp6-row' });
     ui.undo = knopf(T.undo, 'lsp6-btn', { title: T.undoT });
@@ -3073,7 +3078,7 @@
     });
     ui.stickerRaster = el('div', { class: 'lsp6-picker-grid' });
     ui.picker.appendChild(pickerKopf); ui.picker.appendChild(ui.emojiZeile); ui.picker.appendChild(ui.stickerRaster);
-    body.appendChild(ui.picker);
+    ui.werkzeuge.appendChild(ui.picker);   // 6.4.1: direkt unter den Knöpfen, die ihn öffnen
 
     ui.datei = el('input', { type: 'file', accept: 'image/png,image/jpeg,image/webp', style: 'display:none', 'aria-label': T.addImg });
     body.appendChild(ui.datei);

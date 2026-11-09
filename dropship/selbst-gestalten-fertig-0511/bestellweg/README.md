@@ -61,13 +61,18 @@ Vorübergehende Fehler (Netz, 429, 5xx) setzen nur `printful-versuch-<n>`; nach 
 | `adresse` | hart | Lieferadresse unvollständig (früher wurde das Land still auf CH gesetzt). |
 | `printful-abgelehnt` | hart | `POST /orders` mit 4xx (ausser 401/403), und die Nachfrage über `external_id` findet keinen Auftrag: Text von Printful steht in der Telegram-Meldung. |
 | `wiederholt-gescheitert` | hart | dreimal vorübergehender Fehler in Folge. |
+| `dienst-standort` | hart | **NEU 09.11.2026:** die Position liegt an einem Fulfillment-Service-Standort (Printful-App, z. B. «Printful»): die App druckt selbst, ein zweiter Auftrag wäre ein Doppeldruck. Im Printful-Dashboard prüfen. |
+| `aufpreis-unbezahlt` | hart | **NEU 09.11.2026:** gedruckt würde eine Platzierung mit Aufpreis bei Printful (Rückseite, Ärmel, Etiketten …), die nicht im bezahlten Paket steht. Standard-Paket = nur Vorderseite. Nachzahlung oder nur die bezahlte Fläche drucken entscheidet der Besitzer. |
+| `dienst-standort-unklar`, `aufpreis-unbekannt` | weich | **NEU 09.11.2026:** Standort der Position nicht prüfbar (keine Fulfillment-Orders in den Bestelldaten) / Aufpreis einer gedruckten Platzierung nicht lesbar. |
+| `kosten-obergrenze` | weich | **NEU 09.11.2026:** die Printful-Summe liegt über `PRINTFUL_MAX_KOSTEN_USD` (Vorgabe: aus). |
+| `qd-weicht-ab`, `aufloesung-angabe` | weich | **seit 09.11.2026:** `_pod_karte.qd` liegt unter dem Mindestwert des Katalogs oder weicht von der Messung ab (siehe unten, bekannter Fehlalarm) / `qd` ist keine ganze Zahl von 1 bis 1000. |
 | `platzierung` | weich | Platzierung nicht gesichert (Variante nicht lesbar, Seite nicht in der Dateiliste, unbekannte ID, Rückseite auf Ein-Platzierungs-Produkt, zwei Dateien auf derselben Platzierung). |
 | `konflikt` | weich | Platzierungen schliessen sich laut Katalog aus (`conflicting_placements`), oder die Konfliktliste ist nicht lesbar. |
 | `technik-gemischt` | weich | Stickerei/DTF/Direktdruck in einem Artikel, nach dem TYP der Platzierung beurteilt (ob Printful das zulässt, ist nicht belegt). |
 | `optionen` | weich | Pflichtoption fehlt (Garnfarben je Stickerei-Platzierung, `stitch_color`, bei Strick `yarn_colors`), unbekannte Option, ungültiger Wert, oder der Katalog führt für die Stickerei **keine** Garnfarben-Option (Kappen 99, 206, 252: nicht prüfbar, bleibt Entwurf). |
 | `aufloesung` | weich | Datei unter Mindest-dpi des Katalogs, Pixelgrösse nicht lesbar, keine Druckdatei-Grösse im Katalog (Stickerei ausgenommen). |
 | `druckdaten` | weich | `mockup-generator/printfiles|templates` nicht lesbar oder Produkt-Nummer fehlt. |
-| `karte-widerspruch` | weich | NEU: `_pod_karte.pv` (Printful-Variante) weicht von der gekauften SKU ab, oder `_pod_karte.m` (Printful-Produkt) gehört nicht zur Variante: Farbe/Grösse nach dem Gestalten gewechselt oder manipuliert. |
+| `karte-widerspruch` | **hart** (seit WP6 Paket A, 09.11.2026; vorher weich) | NEU: `_pod_karte.pv` (Printful-Variante) weicht von der gekauften SKU ab, oder `_pod_karte.m` (Printful-Produkt) gehört nicht zur Variante: Farbe/Grösse nach dem Gestalten gewechselt oder manipuliert. |
 | `sku-widerspruch`, `karte-unlesbar`, `datei-ohne-karte`, `karte-ohne-datei` | weich | Eigenschaften widersprechen sich. |
 | `kontrolle-fail`, `kontrolle-technisch`, `kontrolle-fehlt` | weich | KI sagt FAIL / KI nicht erreichbar oder Antwort ohne PASS/FAIL / kein Schlüssel eingerichtet. |
 | `kosten`, `kosten-unbekannt` | weich | `kosten`: Verlust oder Gewinn unter `PRINTFUL_MIN_NETTO_CHF` (Vorgabe 4). `kosten-unbekannt`: Kosten noch in Berechnung, null oder negativ, nicht plausibel (Steuer über Summe), andere Währung, Erlös unbekannt. |
@@ -162,7 +167,7 @@ Zwei unabhängige Gegenleser, jeder Fund einzeln nachgestellt. «GL1» und «GL2
 
 1. Ohne `PRINTFUL_API_KEY` oder Shopify-Zugang: **Exit 1** (früher stiller No-op mit Exit 0). Technische Fehler enden mit Exit 1, Befunde nicht.
 2. **Bestätigen in zwei Schritten** (`POST /orders` ohne `confirm`, dann `/orders/<id>/confirm`) statt `?confirm=1`; bestätigt wird nur ohne jeden Befund.
-3. **KI-Kontrolle ist Pflicht** (`PRINTFUL_KI_KONTROLLE`, Vorgabe `pflicht`). Das Memory nennt `GEMINI_API_KEY` in Actions mit **leerem Guthaben (HTTP 402)**; das Modell `gemini-2.5-flash` steht in der Modellliste des Sitzungsschlüssels (Gegenleser, nur die Liste gelesen, kein `generateContent`). Ob der Actions-Schlüssel dasselbe darf und Guthaben hat, ist ungeprüft: **dann wird JEDE Bestellung ein Entwurf** (Meldung `kontrolle-technisch`). Entscheid des Besitzers: Guthaben aufladen oder das Secret/die Variable `PRINTFUL_KI_KONTROLLE` auf `aus` setzen (die mechanischen Prüfungen bleiben).
+3. **KI-Kontrolle** (`PRINTFUL_KI_KONTROLLE`; Vorgabe bis 08.11.2026 `pflicht`, **seit 09.11.2026 `aus`** wie im Workflow und im Besitzer-Entscheid vom 05.11.). Das Memory nennt `GEMINI_API_KEY` in Actions mit **leerem Guthaben (HTTP 402)**; das Modell `gemini-2.5-flash` steht in der Modellliste des Sitzungsschlüssels (Gegenleser, nur die Liste gelesen, kein `generateContent`). Ob der Actions-Schlüssel dasselbe darf und Guthaben hat, ist ungeprüft: **dann wird JEDE Bestellung ein Entwurf** (Meldung `kontrolle-technisch`). Entscheid des Besitzers: Guthaben aufladen oder das Secret/die Variable `PRINTFUL_KI_KONTROLLE` auf `aus` setzen (die mechanischen Prüfungen bleiben).
 4. Bei nicht lesbarer Printful-Variante bestätigt der Lauf nie mehr (früher Rückfall «Poster/Magnet → default → bestätigt»); es fehlen dann Produkt-Nummer, Mindest-dpi, Konflikte und Optionen.
 5. Rückseiten-Datei auf Produkt mit nur `default` (Tasse, Hülle): Entwurf (früher still `default`, bestätigt).
 6. Fehlendes Lieferland: harter Befund (früher stilles `CH`).
@@ -229,3 +234,27 @@ Nicht abgedeckt (ehrlich): echter Lauf gegen Printful/Shopify mit Schreiben (nie
 5. **Automatisch bestätigen:** `PRINTFUL_AUTO_CONFIRM` leeren/`1`. Zweite Bestellung von Hand scharf starten: der Lauf bestätigt, liest den Status nach und schreibt «BESTÄTIGT (Status pending)». *Rücknahme:* `PRINTFUL_AUTO_CONFIRM=0` (nur Entwürfe). Ein bereits bestätigter Auftrag lässt sich im Printful-Dashboard stornieren, solange er nicht in Produktion ist (QUELLE Printful-Hilfe, nicht geprüft).
 6. **Zeitplan scharf:** Datei `dropship/PRINTFUL-SYNC-FREI.txt` mit einem Satz (Grundlage, Datum) ins Repo legen. Ab dem nächsten Lauf (13:37 UTC) schreibt der Zeitplan. Kontrolle des ersten Laufs: Zusammenfassung («Modus: scharf»), Exit, Telegram, Tags an den Bestellungen, `printful_tracking` (15:23 UTC) liest die neuen Aufträge. *Rücknahme:* Freigabedatei löschen = der Zeitplan liest nur noch; die `cron`-Zeile auskommentieren = nur Handstart.
 7. **Aufräumen:** Bestellungen mit `printful-review` wöchentlich ansehen (Telegram nennt die Art). **Harter Befund:** Ursache beheben, Tag `printful-review` entfernen. **Weicher Befund:** Entwurf im Printful-Dashboard prüfen und von Hand bestätigen (das Entfernen des Tags bewirkt dort nichts).
+
+## Stand 09.11.2026 (Phase 1 «Editor-Parität»: Bestellweg härten, Sperre «kein Druck ohne Zahlung»)
+
+**Nichts live.** Geändert wurden nur Dateien im Repo (`automation/`, dieser Ordner, `dropship/wp6-0611/`, `.github/workflows/printful-sync.yml`). Der Zeitplan (13:37 UTC) liest weiter nur: die Freigabedatei `dropship/PRINTFUL-SYNC-FREI.txt` fehlt und wurde nicht gelegt. Ausführlich mit Messung, Zahlen und Rotprobe: `dropship/wp6-0611/SYNC.md` Abschnitt 7.
+
+* **Paket A vom Zweig `claude/luxestyle-wp6-bestellweg-0611`** (neue Schreibweise `_Druckdatei`, `_vorschau`, `karte-widerspruch` hart, Bestellung ohne Design, Standardwerte-Tests) wurde als Dreiwege-Zusammenführung gegen `main` geholt; die Prüfung `_pod_karte.qd` aus PR #3031 (`qd-weicht-ab`, Codex, 09.11.) blieb erhalten, die doppelte Variante des Zweigs (`qdPruefen`) entfiel.
+* **Neu, hart (kein Auftrag):** `dienst-standort` (Fulfillment-Service-Standort), `aufpreis-unbezahlt` (Aufpreis-Platzierung ohne bezahltes Paket). Das bezahlte Paket kommt aus einer austauschbaren Funktion (`cfg.paket`, Standard `paketStandard` = nur Vorderseite; Baustein `paketAusOption` für eine Variantenoption wie «Druck»). **Übergang:** `PRINTFUL_PAKET_BEZAHLT=back,sleeve_left` (kommagetrennte Platzierungs-IDs) gilt für alle Positionen; der Workflow reicht sie bewusst nicht durch.
+* **Neu, weich:** `kosten-obergrenze` (`PRINTFUL_MAX_KOSTEN_USD`, Vorgabe aus, unbrauchbarer Wert = Exit 1), `dienst-standort-unklar`, `aufpreis-unbekannt`.
+* **Standardwerte des Skripts = die des Workflows:** `PRINTFUL_AUTO_CONFIRM` ohne Angabe = aus (bestätigt wird nur bei 1, true, ja, yes, on, an), `PRINTFUL_KI_KONTROLLE` ohne Angabe = aus (jede andere Angabe als leer oder «aus» schaltet sie ein). Vorher bestätigte das Skript ohne Angabe und verlangte die KI.
+* **Ende zu Ende mit dem echten Editor 6.4.0:** `editor_640_mitschnitt.json` enthält die Kaufanfragen (`POST /cart/add.js`) des Editors in Chromium (Design, `🖼️ Druckdatei (<ID>)`, `_pod_karte` mit `v, m, pv, sv, pl, dt, ap, qd`, `_vorschau`) für sechs Fälle (T-Shirt 71 nur Text, Foto 1200 px, Foto 500 px, mit Rückseite, mit linkem Ärmel; Tasse 19). Erzeugen: `NODE_PATH=/opt/node22/lib/node_modules /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mitschnitt_erzeugen.mjs` (reproduzierbar: zweiter Lauf byte-gleich). Die Prüfungen stehen in `printful_bestellweg_test.mjs` (Block «Editor 6.4.0 Ende zu Ende») und `printful_sync_test.mjs` (Block «Phase 1»).
+* **Bekannter Fehlalarm `qd-weicht-ab` (nicht geändert, Entscheid offen):** `qd` ist die dpi des FOTOS (höchstens die Dichte der Druckdatei), die Druckdatei misst immer ihre eigene Dichte. Ein Foto von 500 × 500 px auf dem T-Shirt ergibt `qd` 83 (der Editor erlaubt den Kauf, Mindestwert 75), die Datei misst 150 dpi: `qd-weicht-ab`. Folge: Entwurf, Telegram-Meldung, kein Bestätigen. Vorschlag: nur `qd` unter dem Mindestwert oder `qd` über der Messung melden (so war es in `qdPruefen`).
+* **`printful_reprice.mjs` repariert:** Varianten über 100 werden weitergeblättert (vorher fehlten sie still), `userErrors`, GraphQL-Fehler und HTTP-Fehler zählen als Fehler (Exit 1, Produkt nicht als angepasst gezählt), 429/5xx/Throttled werden wiederholt, Schreiben in Stücken zu höchstens 100. Test: `automation/printful_reprice_test.mjs`.
+
+### Befehle (Phase 1)
+
+```
+/opt/node22/bin/node automation/lib/printful_bestellweg_test.mjs
+/opt/node22/bin/node automation/lib/printful_platzierung_test.mjs
+/opt/node22/bin/node automation/printful_sync_test.mjs
+/opt/node22/bin/node automation/printful_reprice_test.mjs
+/opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mutation.mjs            # alle Mutanten (rund 15 Minuten); --pruefen: nur Anwendbarkeit; NUR="P1 " nur Phase 1
+NODE_PATH=/opt/node22/lib/node_modules /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mitschnitt_erzeugen.mjs   # Mitschnitt des Editors neu erzeugen (Chromium)
+```
+

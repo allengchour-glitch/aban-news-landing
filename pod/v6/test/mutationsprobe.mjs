@@ -1,7 +1,7 @@
 /**
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
  * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
- * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), C (Editor 6.4.1: Delta zu 6.4.0, Szenarien in v641_test.mjs), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
  * Gleichwertige Mutanten (kein sichtbarer Unterschied in Chromium) stehen mit Begründung unten bei ihrem Muster; B63 und B64 sind nur in einer Umgebung ohne ResizeObserver sichtbar (Szenario ohne-resizeobserver).
  * Stand 6.4.0: die Muster N05 und N12 sind entfernt (der Code, den sie trafen, gibt es seit 6.3.0 nicht mehr: Prüfung des Standes statt Variantenvergleich, kein Verkleinern nach der Freigabe); M32, N18 und W27 sind an den Code von 6.3.0/6.4.0 angepasst.
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
@@ -10,7 +10,7 @@
  * (4) ein Lauf, der an der Umgebung scheitert (Chromium weg, Platte voll, Port belegt: lib.mjs: istUmgebungsfehler), zählt ebenfalls als «ungeklärt»; (5) die Ausgabe der Läufe wird gelesen: neben «erkannt durch …» steht die erste fehlgeschlagene Prüfung. Die Läufe der Mutanten brechen beim ersten Fehler ab (V6_ABBRUCH=1 in den Tests), nur die Ausgangslage läuft vollständig.
  * Aufruf: node mutationsprobe.mjs [Teil]         (Teil: Anfang des Mutantennamens, z. B. M18 oder N0 oder W oder B oder K oder V; mehrere mit Komma: B09,B10)
  *         node mutationsprobe.mjs --muster      (nur prüfen, ob jedes Suchmuster genau einmal vorkommt, keine Tests)
- * Umgebung: V6_DATEI (Vorgabe: der Editor, den lib.mjs wählt, jetzt 6.4.0), V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3; die Browsertests brauchen je ein Chromium: bei knappem Speicher PARALLEL=1).
+ * Umgebung: V6_DATEI (Vorgabe: der Editor, den lib.mjs wählt, jetzt 6.4.1), V6_BILDCACHE (optional), PARALLEL (gleichzeitige Läufe, Vorgabe 3; die Browsertests brauchen je ein Chromium: bei knappem Speicher PARALLEL=1).
  * Die Kopien liegen in einem eigenen, neu angelegten Temp-Ordner (mkdtemp): parallele Läufe stören sich nicht.
  */
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
@@ -115,7 +115,7 @@ const MUTANTEN = [
   // beide Rücksetzungen zugleich entfernt (jede für sich wird von der anderen gedeckt, wie bei N18); sichtbar im Formular der Seite nach einem abgelehnten Warenkorb
   ['W27 Alte _vorschau-Adresse bleibt nach Fehler und Änderung', ["eingefroren = null;\n      vorschauSendeNr++;\n      druckUrls = {};\n      vorschauUrl = '';\n      formularSynchronisieren();", "if (!eingefroren) { druckUrls = {}; vorschauUrl = ''; }   // Adressen von früheren Druckdateien"], ["eingefroren = null;\n      vorschauSendeNr++;\n      druckUrls = {};\n      formularSynchronisieren();", "if (!eingefroren) { druckUrls = {}; }   // Adressen von früheren Druckdateien"]],
   ['W28 Kontrast-Hinweis kommt nie', "var KONTRAST_SCHWELLE = 1.8;", "var KONTRAST_SCHWELLE = 1.0;"],
-  ['W29 Kontrast-Hinweis nennt immer «dunkel»', "ui.pvKontrast.textContent = a.art === 'dunkel' ? T.kontrastDunkel : T.kontrastHell;", "ui.pvKontrast.textContent = T.kontrastDunkel;"],
+  ['W29 Kontrast-Hinweis nennt immer «dunkel»', "text = a.art === 'dunkel' ? T.kontrastDunkel : T.kontrastHell;", "text = T.kontrastDunkel;"],
   ['W30 Stickerei bekommt eine Vorschau statt des Hinweises', "if (p.technik === 'EMBROIDERY' || /^embroidery/.test(p.id)) return { art: 'hinweis', code: 'stickerei' };", ""],
   ['W31 Rundum-Druck bekommt eine Vorschau statt des Hinweises', "if (karte.klasse === 'PANEL') return { art: 'hinweis', code: 'rundum' };", ""],
   ['W32 Tasse: Zylinder gerade statt gewölbt', "var X1 = mx + R * Math.sin(t1), X2 = mx + R * Math.sin(t2);", "var X1 = mx + R * t1 / 1.5707963, X2 = mx + R * t2 / 1.5707963;"],
@@ -232,7 +232,7 @@ const MUTANTEN = [
   ['B75 Text der Bühne: Gewicht nicht an die Leinwand angeglichen (800 statt bold)', "s.fontFamily = f.familie; s.fontWeight = f.gewicht;", "s.fontFamily = f.familie;"],
   ['B76 Text der Bühne: Schriftfamilie nicht an die Leinwand angeglichen', "s.fontFamily = f.familie; s.fontWeight = f.gewicht;", "s.fontWeight = f.gewicht;"],
   ['B77 Text der Bühne: Schrägstellung der Ebene wird ignoriert (immer aufrecht)', "s.fontStyle = e.italic ? 'italic' : 'normal';", "s.fontStyle = 'normal';"],
-  ['B78 Text der Bühne: Schatten der weissen Schrift wie in 6.3.1', "'0 0 ' + px * 0.12 + 'px rgba(0,0,0,.4)'", "'0 1px 3px rgba(0,0,0,.45)'"],
+  ['B78 Text der Bühne: Schatten der weissen Schrift wie in 6.3.1 (seit 6.4.1 samt Konstante: die Bühne ignoriert WEISS_SCHATTEN und zeichnet den Schatten von 6.3.1)', "s.textShadow = WEISS_SCHATTEN && e.color.toLowerCase() === '#ffffff' ? '0 0 ' + px * 0.12 + 'px rgba(0,0,0,.4)' : 'none';", "s.textShadow = e.color.toLowerCase() === '#ffffff' ? '0 1px 3px rgba(0,0,0,.45)' : 'none';"],
   ['B79 Text der Bühne: senkrechte Lage nicht an die Leinwand angeglichen', "s.position = 'relative'; s.top = grundlinienVersatz(f) * px + 'px';", ""],
   ['B80 Text der Bühne: Versatz mit falschem Vorzeichen', "v = (-mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;", "v = (mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;"],
   ['B81 Text der Bühne: Versatz ohne Schriftgrösse (feste Pixel)', "s.top = grundlinienVersatz(f) * px + 'px';", "s.top = grundlinienVersatz(f) * 40 + 'px';"],
@@ -244,9 +244,47 @@ const MUTANTEN = [
   ['B87 Genauigkeit: Produktfoto der Bühne um 0,3 % der Bühnenbreite verschoben', "var lage = 'left:' + PCT((0 - w.x) / w.w) + ';top:'", "var lage = 'left:' + PCT((0 - w.x) / w.w + 0.003) + ';top:'"],
   // ── Schlussprüfung vom 09.11.2026: Tastatur auf den neuen Knöpfen, Tab-Stopp der Reiter, CSS-Härtung (Szenarien tastatur-ansicht und karten-css-haertung) ──
   ['B88 Reiter: Pfeiltasten, Pos1, Ende ohne preventDefault (die Seite scrollt bei «Ende» um rund 745 px)', "ev.preventDefault(); ev.stopPropagation();\n      knoepfe.forEach(function (b)", "ev.stopPropagation();\n      knoepfe.forEach(function (b)"],
-  ['B89 Tastatur der Karte: Pfeile, Entf und Rück auf Reiter und Zoom-Knöpfen wirken wieder auf die gewählte Ebene', "if (tag === 'BUTTON' && ev.target.closest && ev.target.closest('.lsp6-sicht, .lsp6-zoom')) return;", ""],
+  ['B89 Tastatur der Karte: Pfeile, Entf und Rück auf Reiter und Zoom-Knöpfen wirken wieder auf die gewählte Ebene', "if (tag === 'BUTTON' && ev.target.closest && ev.target.closest('.lsp6-sicht, .lsp6-zoom, .lsp6-tabs, [role=\"tab\"]')) return;", ""],
   ['B90 Reiter: nach Pfeiltasten bleiben mehrere Reiter Tab-Stopp (Roving-Tabindex verletzt)', "b.setAttribute('tabindex', b === ziel ? '0' : '-1')", "b.setAttribute('tabindex', b === ziel ? '0' : b.getAttribute('tabindex'))"],
   ['B91 Grundfläche: Farbwert aus den Kartendaten als cssText (fremdes CSS wirkt, z. B. position:fixed)', "ui.grund.style.cssText = lage;\n        ui.grund.style.background = textur ? '#ffffff' : ersatz;", "ui.grund.style.cssText = lage + ';background:' + (textur ? '#ffffff' : ersatz);"],
+  // ── Editor 6.4.1 (Delta zu 6.4.0): Standard-Textfarbe, Kontrast-Hinweis der Bühne, Werkzeugzeile unter der Bühne, WEISS_SCHATTEN, Kleinigkeiten (Szenarien in v641_test.mjs, Zahlen in unit_test.mjs) ──
+  ["C01 Standardfarbe: neuer Text startet immer #111111 (Stoff wird ignoriert)", "color: standardTextFarbe(stoffHexFuer(pAktiv())), farbeAuto: true,", "color: '#111111', farbeAuto: true,"],
+  ["C02 Standardfarbe: Wahl vertauscht (hell auf hellem Stoff)", "? TEXT_HELL : TEXT_DUNKEL;", "? TEXT_DUNKEL : TEXT_HELL;"],
+  ["C03 Standardfarbe: Weiss um 2 Kontrastpunkte bevorzugt", "return kontrastVerhaeltnis(leuchtdichte(h[0], h[1], h[2]), lf) >", "return kontrastVerhaeltnis(leuchtdichte(h[0], h[1], h[2]), lf) + 2 >"],
+  ["C04 Standardfarbe: unbekannter Stoff gibt weisse Schrift", "if (!rgb) return TEXT_DUNKEL;", "if (!rgb) return TEXT_HELL;"],
+  ["C05 neuer Text trägt kein farbeAuto (folgt der Ausführung nie)", "farbeAuto: true, cx: 0.5, cy: 0.42,", "cx: 0.5, cy: 0.42,"],
+  ["C06 Farbfeld: gewählte Farbe bleibt als Standard markiert (wird überschrieben)", "e.color = ui.farbwahl.value; delete e.farbeAuto;", "e.color = ui.farbwahl.value;"],
+  ["C07 Farbfelder (Farbpunkte): gewählte Farbe bleibt als Standard markiert (wird überschrieben)", "e.color = b.getAttribute('data-c'); delete e.farbeAuto;", "e.color = b.getAttribute('data-c');"],
+  ["C08 Wechsel der Ausführung färbt den Standardtext nicht um", "var farbenNeu = autoFarbenAnwenden();", "var farbenNeu = false;"],
+  ["C09 Umfärben überschreibt auch gewählte Farben", "if (e.type !== 'text' || !e.farbeAuto) return;", "if (e.type !== 'text') return;"],
+  ["C10 Rückgängig und Wiederholen färben den Standardtext nicht an die Ausführung an", "      autoFarbenAnwenden();   // 6.4.1: ein älterer Stand kann aus einer anderen Ausführung stammen\n", ""],
+  ["C11 Entwurf speichert farbeAuto nicht", "if (e.farbeAuto === true) n.farbeAuto = true;", ""],
+  ["C12 Entwurf liest farbeAuto nicht", "if (n.farbeAuto === true) e.farbeAuto = true;", ""],
+  ["C13 Entwurf wird beim Laden nicht an die Ausführung angepasst", "if (wiederhergestellt) autoFarbenAnwenden();", ""],
+  ["C14 Tasse und Poster gelten nicht als weisser Stoff", "if (m && (m.adapter === 'tasse' || m.adapter === 'papier')) return '#ffffff';", ""],
+  ["C16 Stoff ohne Farbe der gewählten Ausführung (nur die Beispielfarbe der Vorlage)", "return vl ? stoffFarbe(vl).hex : null;", "return vl ? (vl.hintergrundFarbe || null) : null;"],
+  ["C17 TEXT_HELL nicht rein weiss", "var TEXT_HELL = '#ffffff';", "var TEXT_HELL = '#fefefe';"],
+  ["C18 TEXT_DUNKEL nicht #111111", "var TEXT_DUNKEL = '#111111';", "var TEXT_DUNKEL = '#000000';"],
+  ["C20 Hinweis der Bühne bleibt immer verborgen", "ui.stKontrast.textContent = t; ui.stKontrast.hidden = !t;", "ui.stKontrast.textContent = t; ui.stKontrast.hidden = true;"],
+  ["C21 Hinweis der Bühne erscheint auch in der Vorschau (doppelter Hinweis)", "var hex = !legacy && st.sicht !== 'produkt' && (art", "var hex = !legacy && (art"],
+  ["C22 Hinweis der Bühne rechnet immer gegen weissen Stoff", "&& ebenenAktiv().length ? stoffHexFuer(p) : null;", "&& ebenenAktiv().length ? '#ffffff' : null;"],
+  ["C23 Hinweis der Bühne nur für flache Vorlagen (Tasse und Poster fehlen)", "(art === 'flach' || art === 'tasse' || art === 'papier') && ebenenAktiv().length", "(art === 'flach') && ebenenAktiv().length"],
+  ["C25 Hinweis der Bühne wird beim Aufbau der Bühne (Ausführung, Platzierung, Ansicht) nicht aufgefrischt", "      vorschauPlanen();\n      kontrastBuehnePlanen();\n      if (pb) tplFehlerPruefen();", "      vorschauPlanen();\n      if (pb) tplFehlerPruefen();"],
+  ["C28 Hinweis der Bühne auch mit data-bearbeiten=0 (Verhalten von 6.3.1 verlassen)", "if (!tabArt || legacy) return;\n      clearTimeout(kbTimer);", "if (legacy) return;\n      clearTimeout(kbTimer);"],
+  ["C30 Werkzeugzeile «Text | Sticker | Bild» bleibt am Ende der Karte", "ui.werkzeuge.appendChild(zeileWerkzeuge);", "body.appendChild(zeileWerkzeuge);"],
+  ["C31 Stickerauswahl öffnet sich am Ende der Karte statt unter den Knöpfen", "ui.werkzeuge.appendChild(ui.picker);", "body.appendChild(ui.picker);"],
+  ["C32 Werkzeugzeile steht über der Bühne", "ui.karte.appendChild(ui.werkzeuge);", "ui.karte.insertBefore(ui.werkzeuge, ui.karte.firstChild);"],
+  ["C40 WEISS_SCHATTEN steht auf true (Schatten wie in 6.4.0)", "var WEISS_SCHATTEN = false;", "var WEISS_SCHATTEN = true;"],
+  ["C41 Druckdatei und Vorschau ignorieren WEISS_SCHATTEN (Schatten bei weisser Schrift)", "if (WEISS_SCHATTEN && e.color.toLowerCase() === '#ffffff') { ctx.shadowColor", "if (e.color.toLowerCase() === '#ffffff') { ctx.shadowColor"],
+  ["C42 Bühne ignoriert WEISS_SCHATTEN (Schatten bei weisser Schrift)", "s.textShadow = WEISS_SCHATTEN && e.color.toLowerCase() === '#ffffff' ? '0 0 '", "s.textShadow = e.color.toLowerCase() === '#ffffff' ? '0 0 '"],
+  ["C50 Beschriftung der Druckfläche ohne Höchstbreite (ragt über den Rahmen)", "        ui.tag.style.maxWidth = 'calc(' + PCT(Math.max(0, Math.min(1, fl + fb) - Math.max(0, fl))) + ' - 8px)';", ""],
+  ["C51 Beschriftung der Druckfläche: erst kürzen sich die Zahlen statt des Wortes", ".lsp6-tag-l{flex:0 100 auto;", ".lsp6-tag-l{flex:0 0 auto;"],
+  ["C52 Vorschau ist kein tabpanel", "role: tabArt ? 'tabpanel' : null, 'aria-label': tabArt ? T.sichtVorschau : null", "role: null, 'aria-label': tabArt ? T.sichtVorschau : null"],
+  ["C53 Vorschau-tabpanel ohne Namen", "role: tabArt ? 'tabpanel' : null, 'aria-label': tabArt ? T.sichtVorschau : null", "role: tabArt ? 'tabpanel' : null, 'aria-label': null"],
+  ["C54 Pfeile und Entf auf den Reitern der Platzierungen wirken auf die Ebene", ".lsp6-sicht, .lsp6-zoom, .lsp6-tabs, [role=\"tab\"]')) return;", ".lsp6-sicht, .lsp6-zoom')) return;"],
+  ["C55 Grössenschieber folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);"],
+  ["C56 Drehschieber folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeGroesse.value = e.scale;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);"],
+  ["C57 Gradanzeige des Drehschiebers folgt dem Zahlenfeld nicht", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      ui.drehenWert.textContent = (Math.round(e.rot) || 0) + '\\xB0';\n      aufloesungPruefen(e);", "      ui.rangeGroesse.value = e.scale;\n      ui.rangeDrehen.value = Math.round(e.rot) || 0;\n      aufloesungPruefen(e);"],
   // B88b wäre «ohne stopPropagation»: GLEICHWERTIG, seit die Karte Knöpfe der Leiste und des Zooms selbst ausnimmt (zwei unabhängige Sicherungen); steht darum nicht in der Liste.
 ];
 
@@ -339,7 +377,7 @@ let naechster = 0;
 // V6_OHNE_AUSGANGSLAGE=1 (nur zum schnellen Wiederholen einzelner Mutanten nach einer Testergänzung; der massgebende Lauf geht immer mit Ausgangslage)
 if (!process.env.V6_OHNE_AUSGANGSLAGE) {
   const stufen = [['unit_test.mjs', []]];
-  if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']], ['bearbeiten_test.mjs', ['kern']]);
+  if (gewaehlt.some((a) => a.art === 'editor')) stufen.push(['vorschau_test.mjs', ['kern']], ['editor_test.mjs', ['kern']], ['bearbeiten_test.mjs', ['kern']], ['v641_test.mjs', ['kern']]);
   for (const [datei, args] of stufen) {
     const r = await lauf(datei, args, {});
     if (r.code !== 0) { console.log(`ABBRUCH: Ausgangslage ist rot: ${datei} ${args.join(' ')} endet mit ${r.zeit ? 'Zeitüberschreitung' : 'Exit ' + r.code}. Erste Meldung: ${ersterFehler(r.aus)}`); rmSync(ordner, { recursive: true, force: true }); process.exit(3); }
@@ -376,8 +414,9 @@ async function arbeiter() {
       const umg = { V6_DATEI: datei };
       // Reihenfolge nach Herkunft des Mutanten: B (6.4.0) betrifft «Bearbeiten» (bearbeiten_test zuerst), W meist die Vorschau (vorschau_test zuerst), M und N den Editor von 6.1.0 (editor_test zuerst);
       // bearbeiten_test steht bei M, N und W zuletzt: er läuft nur, wenn die drei alten Stufen den Mutanten übersehen haben (zusätzliche Deckung, weil 6.4.0 die Bühne anders aufbaut)
-      const U = ['unit_test', 'unit_test.mjs', []], V = ['vorschau_test', 'vorschau_test.mjs', ['kern']], E = ['editor_test', 'editor_test.mjs', ['kern']], BT = ['bearbeiten_test', 'bearbeiten_test.mjs', ['kern']];
-      const folge = /^B/.test(a.name) ? [U, BT, E, V] : /^W/.test(a.name) ? [U, V, E, BT] : [U, E, V, BT];
+      const U = ['unit_test', 'unit_test.mjs', []], V = ['vorschau_test', 'vorschau_test.mjs', ['kern']], E = ['editor_test', 'editor_test.mjs', ['kern']], BT = ['bearbeiten_test', 'bearbeiten_test.mjs', ['kern']], C = ['v641_test', 'v641_test.mjs', ['kern']];
+      // C (6.4.1) zuerst bei den Mutanten des Deltas; bei allen anderen als letzte Stufe (zusätzliche Deckung)
+      const folge = /^C/.test(a.name) ? [U, C, BT, E, V] : /^B/.test(a.name) ? [U, BT, E, V, C] : /^W/.test(a.name) ? [U, V, E, BT, C] : [U, E, V, BT, C];
       for (const [name, f, args] of folge) {
         ergebnisStufe = await stufe(name, f, args, umg);
         if (ergebnisStufe) break;

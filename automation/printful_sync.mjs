@@ -26,6 +26,7 @@
  * Exit 1 bei technischem Fehler (Zugangsdaten fehlen, Shopify/Printful nicht erreichbar, Markieren gescheitert, Telegram-Meldung nicht zugestellt, Zeitlimit). Befunde sind KEIN Exit 1.
  * ENV: PRINTFUL_API_KEY (zwingend), [PRINTFUL_STORE_ID], [PRINTFUL_AUTO_CONFIRM=1 schaltet das Bestätigen EIN (Vorgabe 0 = Aufträge bleiben Entwürfe, Besitzer-Entscheid 05.11.)], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID/SECRET (oder SHOPIFY_ADMIN_TOKEN),
  *      [PRINTFUL_KI_KONTROLLE=aus|pflicht (Vorgabe aus, Besitzer-Entscheid 05.11.; pflicht: ohne GEMINI_API_KEY oder bei Fehler der KI bleibt der Auftrag Entwurf)], [GEMINI_API_KEY], [PRINTFUL_KI_MODELL],
+ *      [PRINTFUL_PAKET_BEZAHLT=kommagetrennte Platzierungs-IDs, die für alle Positionen als bezahlt gelten (Übergang; Standard leer = nur Vorderseite bezahlt; der Workflow reicht sie nicht durch)],
  *      [PRINTFUL_MAX_KOSTEN_USD=absolute Obergrenze der Printful-Summe je Auftrag in USD; Vorgabe aus (leer/0/aus); ein Auftrag darüber bleibt Entwurf mit Befund «kosten-obergrenze»; ein unbrauchbarer Wert beendet den Lauf mit Exit 1],
  *      [TELEGRAM_BOT_TOKEN/CHAT_ID], [MAX=20 POD-Bestellungen je Lauf], [PRINTFUL_MIN_NETTO_CHF=4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten], [PRINTFUL_STITCH_COLOR=white|black: Nahtfarbe-Vorgabe
  *      für Produkte mit Option stitch_color (Entscheid des Besitzers; ohne sie bleiben diese Aufträge Entwurf)], [PRINTFUL_DATEI_HOSTS=weitere erlaubte Hosts], [RUN_LIMIT_MS=600000],
@@ -38,7 +39,7 @@ import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { neuerPlatzierungsCache } from './lib/printful_platzierung.mjs';
 import {
   planeBestellung, istPod, externalId, empfaengerAus, kostenPruefen, statusBewerten, dateienStatus, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc,
-  kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS,
+  kontrolleLesen, kleineKopieUrl, REVIEW_TAG, ERLAUBTE_HOSTS, paketStandard,
 } from './lib/printful_bestellweg.mjs';
 
 const SHOPraw = process.env.SHOPIFY_SHOP || '';
@@ -67,6 +68,11 @@ const MAX_KOSTEN_ROH = String(process.env.PRINTFUL_MAX_KOSTEN_USD == null ? '' :
 const MAX_KOSTEN_AUS = MAX_KOSTEN_ROH === '' || MAX_KOSTEN_ROH === '0' || MAX_KOSTEN_ROH === 'aus';
 const MAX_KOSTEN_USD = MAX_KOSTEN_AUS ? null : Number(MAX_KOSTEN_ROH);
 const MAX_KOSTEN_FEHLER = !MAX_KOSTEN_AUS && !(Number.isFinite(MAX_KOSTEN_USD) && MAX_KOSTEN_USD > 0);
+// Bezahltes Paket der Positionen (ÜBERGANG bis Phase 5 das Modell festlegt, siehe lib/printful_bestellweg.mjs `paketStandard`): Standard «nur Vorderseite bezahlt». PRINTFUL_PAKET_BEZAHLT = kommagetrennte Platzierungs-IDs
+// (z. B. «back,sleeve_left»), die für ALLE Positionen als bezahlt gelten; der Workflow reicht die Variable bewusst NICHT durch (nur für Läufe auf dem eigenen Rechner). Eine ungültige ID beendet den Lauf mit Exit 1.
+const PAKET_BEZAHLT = String(process.env.PRINTFUL_PAKET_BEZAHLT || '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
+const PAKET_FEHLER = PAKET_BEZAHLT.filter((s) => !/^[a-z0-9_]+$/.test(s));
+const paketVon = () => (PAKET_BEZAHLT.length ? { bezahlt: PAKET_BEZAHLT, quelle: 'PRINTFUL_PAKET_BEZAHLT' } : paketStandard());
 const STITCH = String(process.env.PRINTFUL_STITCH_COLOR || '').trim().toLowerCase();
 const OPTION_VORGABEN = STITCH ? { stitch_color: STITCH } : {};
 const DETAIL = ['1', 'true', 'ja', 'yes', 'on'].includes(String(process.env.PRINTFUL_LOG_DETAIL || '').trim().toLowerCase());
@@ -77,7 +83,7 @@ const DRY = !['', '0', 'false', 'no', 'nein', 'off'].includes(String(process.env
 const API = '2026-01';
 // Bestellungen je Seite. GEMESSEN 05.11.2026 (extensions.cost): 10 Bestellungen × lineItems(first:50) = 158 angefragte Punkte, 25 × 25 = 206; verfügbar 2000. 20 × 50 bleibt weit darunter.
 // Mit den Fulfillment-Orders (Dienst-Standort, 09.11.2026) GEMESSEN über die Admin-Abfrage des Connectors (API 2026-10, Treffer 0, nur die Kostenprüfung vor der Ausführung): 20 Bestellungen werden angenommen,
-// 50 scheitern mit «Query cost is 1003» gegen die Grenze 1000 (also rund 20 Punkte je Bestellung). SEITE nicht über 40 anheben, sonst lehnt Shopify die Abfrage ab.
+// 50 scheitern mit «Query cost is 1003» gegen die Grenze 1000 (also rund 20 Punkte je Bestellung). SEITE nicht über 49 anheben, sonst lehnt Shopify die Abfrage ab (dann bricht jeder Lauf mit einem Fehler ab).
 const SEITE = 20, MAX_SEITEN = 30;
 const PLATZ_PAUSE_MS = Math.max(0, parseInt(process.env.PF_PLATZIERUNG_PAUSE_MS || '2000', 10) || 0);
 const PAUSE_MS = Math.max(0, parseInt(process.env.PF_PAUSE_MS || '2500', 10) || 0);
@@ -97,6 +103,7 @@ const fehlerTg = (f) => f.kurz + (f.detail ? ' | ' + f.detail : '');
 const zaehler = { gelesen: 0, bestaetigt: 0, entwuerfe: 0, ohneAuftrag: 0, vorhanden: 0, spaeter: 0, anstehend: 0 };
 
 if (MAX_KOSTEN_FEHLER) { console.error(`❌ PRINTFUL_MAX_KOSTEN_USD ist keine Zahl über 0 (steht: «${MAX_KOSTEN_ROH.slice(0, 30)}»; leer, 0 oder «aus» schaltet die Obergrenze ab): es wird nichts angelegt.`); process.exit(1); }
+if (PAKET_FEHLER.length) { console.error(`❌ PRINTFUL_PAKET_BEZAHLT enthält ungültige Platzierungs-IDs (${PAKET_FEHLER.map((s) => s.slice(0, 20)).join(', ')}; erlaubt: a-z, 0-9, Unterstrich): es wird nichts angelegt.`); process.exit(1); }
 if (!PF_KEY) { console.error('❌ Kein PRINTFUL_API_KEY: der Bestellweg kann nichts tun (früher stiller No-op mit Exit 0, jetzt sichtbar).'); process.exit(1); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.error('❌ Keine Shopify-Zugangsdaten (SHOPIFY_CLIENT_ID/SECRET oder SHOPIFY_ADMIN_TOKEN): der Bestellweg kann nichts tun.'); process.exit(1); }
 
@@ -300,7 +307,7 @@ async function bearbeite(tok, o) {
   if (vorh.status === 200 && vorh.j && vorh.j.result) { await vorhandenBehandeln(tok, o, ext, vorh.j.result); return; }
   if (vorh.status !== 404) { await vorlaeufigerFehler(tok, o, `Printful lässt sich nach einem bestehenden Auftrag nicht fragen (HTTP ${vorh.status}): es wird nichts angelegt`, pfText(vorh)); return; }
   // 1. Planen
-  const plan = await planeBestellung(o, io, { hosts: HOSTS, optionVorgaben: OPTION_VORGABEN });
+  const plan = await planeBestellung(o, io, { hosts: HOSTS, optionVorgaben: OPTION_VORGABEN, paket: paketVon });
   const emp = empfaengerAus(o);
   const befunde = [...plan.befunde, ...emp.befunde];
   if (!plan.items.length && !befunde.length) befunde.push({ art: 'ohne-artikel', text: 'aus der Bestellung ist kein Printful-Artikel entstanden', hart: true });

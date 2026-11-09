@@ -42,7 +42,7 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-const SOLL_VERSION = process.env.V6_VERSION || '6.4.0';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
+const SOLL_VERSION = process.env.V6_VERSION || '6.4.1';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
 const NEU = SOLL_VERSION !== '6.1.0';   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
 pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === SOLL_VERSION, win.LSPOD6.version);
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
@@ -408,6 +408,15 @@ if (NEU) {
     const zurueck = ebeneAusEntwurf(JSON.parse(JSON.stringify(n)));
     pruefe('Entwurf: Textebene kommt gleich zurück', zurueck && zurueck.text === 'Hallo' && zurueck.font === 'Pacifico' && zurueck.color === '#112233' && zurueck.bold === true && zurueck.italic === false && zurueck.align === 'center' && zurueck.ls === 2 && zurueck.outl === 3 && zurueck.outc === '#fff' && zurueck.lh === 1.1 && zurueck.cx === 0.4 && zurueck.rot === 15 && zurueck.op === 0.8);
   }
+  if (SOLL_VERSION >= '6.4.1') {
+    // 6.4.1: farbeAuto (die Farbe ist der Standard und folgt der Ausführung) wird mit dem Entwurf gespeichert; Entwürfe von 6.4.0 und früher kennen das Feld nicht, dann gilt die Farbe als gewählt
+    const auto = ebeneFuerEntwurf({ ...text, color: '#ffffff', farbeAuto: true });
+    pruefe('Entwurf 6.4.1: farbeAuto wird gespeichert', auto.farbeAuto === true && auto.color === '#ffffff', JSON.stringify(auto));
+    const z = ebeneAusEntwurf(JSON.parse(JSON.stringify(auto)));
+    pruefe('Entwurf 6.4.1: farbeAuto kommt zurück', z && z.farbeAuto === true && z.color === '#ffffff', JSON.stringify(z));
+    pruefe('Entwurf 6.4.1: ohne farbeAuto (gewählte Farbe, Entwurf von 6.4.0) bleibt die Ebene ohne das Feld', !('farbeAuto' in ebeneFuerEntwurf(text)) && !('farbeAuto' in ebeneAusEntwurf(JSON.parse(JSON.stringify(ebeneFuerEntwurf(text))))));
+    pruefe('Entwurf 6.4.1: nur true zählt (ein Fremdwert wie "ja", 1 oder false setzt kein farbeAuto)', ['ja', 1, false, null].every((v) => !('farbeAuto' in ebeneAusEntwurf({ ...JSON.parse(JSON.stringify(ebeneFuerEntwurf(text))), farbeAuto: v }))));
+  }
   {
     const s = ebeneFuerEntwurf({ id: 'L4', type: 'sticker', cx: 0.5, cy: 0.5, scale: 1, rot: 0, name: 'herz-rot', src: 'x' });
     const z = ebeneAusEntwurf(JSON.parse(JSON.stringify(s)));
@@ -601,6 +610,37 @@ pruefe('v5 (pod/live) ist unverändert: 51 378 Byte', v5.length === 51378, Strin
 pruefe('v5 (pod/live) ist unverändert: SHA-256 beginnt mit 70140421381326aff999', createHash('sha256').update(v5).digest('hex').startsWith('70140421381326aff999'));
 pruefe('v6 greift nicht auf die v5-Kennungen zu (Klasse, Guard, Eingabefeld)', (() => { const s = readFileSync(V6_DATEI, 'utf8'); return !/['"]\.lspod-designer['"]/.test(s) && !/__lspodDesignerLoaded\s*=/.test(s) && !/data-lspod="1"/.test(s); })());
 
+// ── 6.4.1: Standard-Textfarbe nach dem Stoff, Schatten bei weisser Schrift ──────────────────────────
+if (SOLL_VERSION >= '6.4.1') {
+  // Eigene Rechnung nach WCAG (nicht die Funktion des Editors): Kontrastverhältnis (L1 + 0,05) / (L2 + 0,05) mit der Leuchtdichte nach sRGB
+  const lum = (r, g, b) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+  const kon = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+  const erwarte = (r, g, b) => (kon(1, lum(r, g, b)) > kon(lum(17, 17, 17), lum(r, g, b)) ? '#ffffff' : '#111111');
+  const hex = (r, g, b) => '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
+  let abwS = 0;
+  for (let v = 0; v <= 255; v++) if (H.standardTextFarbe(hex(v, v, v)) !== erwarte(v, v, v)) abwS++;
+  pruefe('Standard-Textfarbe: alle 256 Graustufen wie die eigene WCAG-Rechnung (Weiss oder #111111 nach dem besseren Kontrast)', abwS === 0, `${abwS} Abweichungen`);
+  let abwF = 0, nF = 0;
+  for (let r = 0; r <= 255; r += 51) for (let g = 0; g <= 255; g += 51) for (let b = 0; b <= 255; b += 51) { nF++; if (H.standardTextFarbe(hex(r, g, b)) !== erwarte(r, g, b)) abwF++; }
+  pruefe(`Standard-Textfarbe: ${nF} Farben im Würfel wie die eigene Rechnung`, abwF === 0, `${abwF} Abweichungen`);
+  // die Fälle aus der Messung vom 09.11. (Stoff der Live-Karten): Kontrast der alten Standardfarbe #111111 gegen den Stoff 1,01 / 1,04 / 1,28
+  for (const [name, stoff, soll, kDunkel] of [['Jutebeutel schwarz', '#101010', '#ffffff', 1.01], ['Shirt schwarz', '#0c0c0c', '#ffffff', 1.04], ['Shirt navy', '#212642', '#ffffff', 1.28], ['Shirt weiss', '#ffffff', '#111111', null], ['Heather-Grau', '#b0b0b0', '#111111', null], ['mittleres Grau 128', '#808080', '#111111', null]]) {
+    gleich(`Standard-Textfarbe: ${name} (${stoff})`, H.standardTextFarbe(stoff), soll);
+    if (kDunkel) { const rgb = [1, 3, 5].map((i) => parseInt(stoff.slice(i, i + 2), 16)); nahe(`Kontrast der alten Standardfarbe #111111 gegen ${name} (${stoff}) ist ${kDunkel}`, Math.round(kon(lum(17, 17, 17), lum(...rgb)) * 100) / 100, kDunkel, 0.0051); }
+  }
+  gleich('Standard-Textfarbe: Stoff unbekannt (null, leer, kein Hex) bleibt #111111 wie bis 6.4.0', [H.standardTextFarbe(null), H.standardTextFarbe(undefined), H.standardTextFarbe(''), H.standardTextFarbe('schwarz'), H.standardTextFarbe('#12')], ['#111111', '#111111', '#111111', '#111111', '#111111']);
+  gleich('Standard-Textfarbe: Hex mit und ohne Raute, gross und klein', [H.standardTextFarbe('000000'), H.standardTextFarbe('#0A0A0A'), H.standardTextFarbe('FFFFFF')], ['#ffffff', '#ffffff', '#111111']);
+  gleich('Konstanten: TEXT_DUNKEL und TEXT_HELL', [H.TEXT_DUNKEL, H.TEXT_HELL], ['#111111', '#ffffff']);
+  pruefe('WEISS_SCHATTEN steht auf false (Entscheid des Besitzers offen; die Rückkehr zu 6.4.0 ist diese eine Zeile)', H.WEISS_SCHATTEN === false);
+  pruefe('WEISS_SCHATTEN ist im Quelltext genau eine Zeile «var WEISS_SCHATTEN = false;» und gilt an genau zwei Stellen (Leinwand, Bühne)', (() => { const q = readFileSync(V6_DATEI, 'utf8'); return (q.match(/var WEISS_SCHATTEN = (false|true);/g) || []).length === 1 && (q.match(/WEISS_SCHATTEN && e\.color/g) || []).length === 2; })());
+}
+
+// 6.4.0 bleibt für den Rollout (SRI-Pfad) und als Rücknahme von 6.4.1 bytegleich (Stand 09.11.2026)
+{
+  const v640 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.0.js'));
+  pruefe('v6.4.0 bleibt bytegleich (Rücknahme von 6.4.1)', createHash('sha256').update(v640).digest('hex') === 'e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930' && v640.length === 260794, `${createHash('sha256').update(v640).digest('hex').slice(0, 12)} ${v640.length}`);
+}
+
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
 // liegt deshalb ausschliesslich auf dem neuen unveränderlichen 6.3.1-Pfad.
 const v630 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.3.0.js'));
@@ -618,7 +658,7 @@ pruefe('v6.3.1 bleibt bytegleich (Rücknahme)', createHash('sha256').update(v631
 const v610 = readFileSync(join(hier, '..', 'lspod-designer-v6.js'));
 pruefe('lspod-designer-v6.js (6.1.0) bleibt bytegleich (Rücknahme)', createHash('sha256').update(v610).digest('hex') === '0e85515252dcbbf7a3afc6808664c7c3df8601171ca11ecbd19dbb38cb302566' && v610.length === 150289);
 
-for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js']) {
+for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js', 'lspod-designer-v6-6.4.1.js']) {
   const s = readFileSync(join(hier, '..', name), 'utf8');
   pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,
     s.includes("['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine']")

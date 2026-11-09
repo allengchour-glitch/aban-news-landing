@@ -936,6 +936,35 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     ist('Obergrenze ist kein Freispruch: darunter gilt der Mindestgewinn weiter (Verlust bleibt «kosten»)', [kostenPruefen({ costs: c(20), erloesChf: 17.9, maxUsd: 500 }).art, kostenPruefen({ costs: c(20), erloesChf: 90, maxUsd: 500 }).ok], ['kosten', true]);
     ist('Obergrenze rechnet die Summe der Karte (inklusive Versand und Steuer), nicht die Ware ohne Steuer', kostenPruefen({ costs: c(20, { tax: '5.00' }), erloesChf: 200, maxUsd: 19 }).art, 'kosten-obergrenze');
   }
+
+  // ── weitere Randfälle der Aufpreis- und qd-Prüfung (Mutationsprobe: jede Zeile schliesst eine Lücke)
+  {
+    const ap = (typen, bezahlt, roh) => aufpreisPruefen({ roh, typen, bezahlt }).map((b) => `${b.hart ? 'H' : 'w'}:${b.art}`);
+    ist('aufpreisPruefen: auch ein kleiner Aufpreis (Etikett innen 0.99 USD) braucht ein bezahltes Paket', [ap(['label_inside'], [], KAT[71].produkt), ap(['label_inside'], ['label_inside'], KAT[71].produkt)], [['H:aufpreis-unbezahlt'], []]);
+    ist('aufpreisPruefen: die Platzierung wird auch über ihren Typnamen gedeckt (Kappe 206: Datei-ID «back» hat den Typ «embroidery_back», Aufpreis 2.95)', [ap(['back'], ['embroidery_back'], KAT[206].produkt), ap(['back'], ['back'], KAT[206].produkt), ap(['back'], ['embroidery_front'], KAT[206].produkt)], [[], [], ['H:aufpreis-unbezahlt']]);
+    ist('aufpreisUsd: bei mehreren Einträgen für dieselbe Platzierung zählt der höchste Preis, in jeder Reihenfolge', [aufpreisUsd({ files: [{ id: 'a', type: 'back', additional_price: '4' }, { id: 'back', type: 'back', additional_price: '1.5' }] }, 'back'), aufpreisUsd({ files: [{ id: 'a', type: 'back', additional_price: '1.5' }, { id: 'back', type: 'back', additional_price: '4' }] }, 'back')], [4, 4]);
+    ist('aufpreisUsd: ein Katalog mit leerer Dateiliste ist «unbekannt», nicht 0', [aufpreisUsd({ files: [] }, 'back'), aufpreisUsd({ files: [{ id: 'preview', type: 'mockup', additional_price: null }] }, 'preview')], [null, null]);
+    ist('aufpreisPruefen: eine Platzierung, die der Katalog nicht kennt, ist kein Aufpreis, aber der Preis ist unbekannt (weich, ausser Vorderseite)', [ap(['gibt_es_nicht'], [], KAT[71].produkt), ap(['front'], [], { files: [] })], [['w:aufpreis-unbekannt'], []]);
+  }
+  {
+    // qd gegen die abgerundete Messung: eine Datei von 1795×2395 px misst 149,58 dpi; der Editor schreibt qd abgerundet (149), nicht gerundet (150)
+    const messung = aufloesungPruefen({ masse: { breite: 1795, hoehe: 2395 }, druckdatei: { breite: 1800, hoehe: 2400, dpi: 150, fillMode: 'fit' }, minDpi: 75 }).dpi;
+    ist('Voraussetzung des Abrundungs-Tests: die Messung liegt bei x,5 oder höher (Abrunden und Runden unterscheiden sich)', [Math.floor(messung), Math.round(messung)], [149, 150]);
+    const mk = (qd, px) => plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, qd })] })], mkIo({ kopf: () => ({ status: 200, bytes: png(...px) }) }));
+    ist('qd = abgerundete Messung (149 bei 149,58 dpi) → kein qd-Befund', arten((await mk(149, [1795, 2395])).befunde), []);
+    ist('qd = gerundete Messung (150 bei 149,58 dpi) → «qd-weicht-ab» (der Editor rundet nie auf)', arten((await mk(150, [1795, 2395])).befunde), ['qd-weicht-ab']);
+    // Mindestwert allein (ohne vollständige Messung): zwei Platzierungen, eine Datei nicht lesbar → kein Vergleich mit der Messung, aber qd 50 < 75 bleibt ein Befund
+    const teil = (qd) => plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, qd })] })], mkIo({ kopf: (url) => ({ status: 200, bytes: url === U('v') ? png(1800, 2400) : Buffer.from('<html>') }) }));
+    ist('qd 50 unter dem Mindestwert 75, eine der zwei Dateien nicht messbar → «qd-weicht-ab» (nur wegen des Mindestwerts) neben «aufloesung»', [arten((await teil(50)).befunde), /unter dem Mindestwert 75/.test((await teil(50)).befunde.find((b) => b.art === 'qd-weicht-ab')?.text || ''), /gemessen/.test((await teil(50)).befunde.find((b) => b.art === 'qd-weicht-ab')?.text || '')], [['aufloesung', 'qd-weicht-ab'], true, false]);
+    ist('qd genau auf dem Mindestwert (75) und eine Datei nicht messbar → kein qd-Befund', arten((await teil(75)).befunde), ['aufloesung']);
+    ist('qd weicht ab: der Befund ist weich und die Meldung bleibt unter 400 Zeichen', (await mk(150, [1795, 2395])).befunde.every((b) => !b.hart && b.text.length < 400), true);
+    // zwei Platzierungen mit verschiedener Dichte: qd ist das MINIMUM über alle Fotos, verglichen wird mit dem Minimum der Messungen (nicht mit dem Maximum)
+    const zwei = (qd) => plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, qd })] })], mkIo({ kopf: (url) => ({ status: 200, bytes: url === U('v') ? png(1800, 2400) : png(900, 1200) }) }));
+    ist('Dateien mit 150 und 75 dpi, qd 75 (= Minimum der Messungen) → kein qd-Befund; qd 150 (= Maximum) → «qd-weicht-ab»', [arten((await zwei(75)).befunde), arten((await zwei(150)).befunde)], [[], ['qd-weicht-ab']]);
+    // ein Widerspruch der Karte (m) hält die Position an, ohne dass der Aufpreis noch einen zweiten Befund meldet (der Widerspruch steht allein)
+    const wid = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, m: 19, pv: 4025 })] })], mkIo(), {});
+    ist('Karte nennt Produkt 19, die Variante gehört zu 71, dazu eine unbezahlte Rückseite → NUR «karte-widerspruch» (die Position wird nach dem Widerspruch nicht weiter geprüft)', [arten(wid.befunde), wid.items.length], [['karte-widerspruch'], 0]);
+  }
 }
 
 // ═══════════════════════════════════════ Editor 6.4.0 Ende zu Ende: die ECHTEN Warenkorb-Eigenschaften (Mitschnitt des Editors in Chromium, mitschnitt_erzeugen.mjs)
@@ -1045,6 +1074,8 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     ist('Workflow WP6: PRINTFUL_AUTO_CONFIRM hat den Standard «0» (Besitzer-Entscheid 05.11.: Printful-Aufträge bleiben Entwürfe, bis er es ändert)', /PRINTFUL_AUTO_CONFIRM: \$\{\{ secrets\.PRINTFUL_AUTO_CONFIRM \|\| vars\.PRINTFUL_AUTO_CONFIRM \|\| '0' \}\}/.test(t), true);
     ist('Workflow WP6: PRINTFUL_KI_KONTROLLE hat den Standard «aus» (Besitzer-Entscheid 05.11.: erste Aufträge von Hand sichten)', /PRINTFUL_KI_KONTROLLE: \$\{\{ secrets\.PRINTFUL_KI_KONTROLLE \|\| vars\.PRINTFUL_KI_KONTROLLE \|\| 'aus' \}\}/.test(t), true);
     ist('Workflow WP6: PRINTFUL_MIN_NETTO_CHF kommt aus Secret oder Variable und hat KEINEN eigenen Standardwert (leer = der Standard des Skripts, 4 CHF)', /PRINTFUL_MIN_NETTO_CHF: \$\{\{ secrets\.PRINTFUL_MIN_NETTO_CHF \|\| vars\.PRINTFUL_MIN_NETTO_CHF \}\}/.test(t), true);
+    ist('Workflow Phase 1: PRINTFUL_MAX_KOSTEN_USD kommt aus Secret oder Variable und hat KEINEN Standardwert (leer = Obergrenze aus)', /PRINTFUL_MAX_KOSTEN_USD: \$\{\{ secrets\.PRINTFUL_MAX_KOSTEN_USD \|\| vars\.PRINTFUL_MAX_KOSTEN_USD \}\}/.test(t), true);
+    ist('Workflow Phase 1: PRINTFUL_PAKET_BEZAHLT wird bewusst NICHT durchgereicht (das bezahlte Paket ist keine Einstellung des Workflows)', /PRINTFUL_PAKET_BEZAHLT/.test(t.replace(/#[^\n]*/g, '')), false);
     ist('Workflow WP6: der Handstart ist der einzige scharfe Weg ohne Freigabedatei (Eingabe «dry_run», Standard true), die Datei bleibt Bedingung des Zeitplans', [/workflow_dispatch:/.test(t), /type: boolean\s+default: true/.test(t)], [true, true]);
     // jede Datei, die Sync und Bibliothek einlesen, muss im sparse-checkout stehen (sonst «Cannot find module» im Lauf)
     {

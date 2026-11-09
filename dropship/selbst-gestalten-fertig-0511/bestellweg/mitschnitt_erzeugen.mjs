@@ -3,10 +3,12 @@
 // Lauf:  NODE_PATH=/opt/node22/lib/node_modules /opt/node22/bin/node dropship/selbst-gestalten-fertig-0511/bestellweg/mitschnitt_erzeugen.mjs [Ausgabedatei]
 // Der Mitschnitt gehört zu EINER Editor-Datei (Feld editorSha256, die Datei ist unveränderlich). Kommt eine neue Editor-Fassung, den Mitschnitt neu erzeugen und die Prüfungen in
 // automation/lib/printful_bestellweg_test.mjs («Editor 6.4.0») gegen die neuen Werte laufen lassen.
-import { playwright, starteServer, seiteOeffnen, editorBereit, pngErzeugen, V6_DATEI } from '../../../pod/v6/test/lib.mjs';
 import { writeFileSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+// Der Mitschnitt gehört zu Editor 6.4.0: die Datei wird ausdrücklich gesetzt (die Vorgabe der Testhilfen wandert mit jeder neuen Editor-Fassung weiter); V6_DATEI übersteuert.
+process.env.V6_DATEI = process.env.V6_DATEI || fileURLToPath(new URL('../../../pod/v6/lspod-designer-v6-6.4.0.js', import.meta.url));
+const { playwright, starteServer, seiteOeffnen, editorBereit, pngErzeugen, V6_DATEI } = await import('../../../pod/v6/test/lib.mjs');
 const { chromium } = playwright();
 const AUS = process.argv[2] || fileURLToPath(new URL('./editor_640_mitschnitt.json', import.meta.url));
 const PC = { breite: 1440, hoehe: 900 };

@@ -22,9 +22,9 @@ export function playwright() {
   throw new Error('Playwright nicht gefunden');
 }
 
-/** Die geprüfte Fassung des Editors: 6.4.0. Die Vorgänger (6.3.1, 6.2.0 und die Rücknahme 6.1.0 = lspod-designer-v6.js) laufen mit V6_DATEI=… und V6_VERSION=… durch dieselben Prüfungen
+/** Die geprüfte Fassung des Editors: 6.4.1 (6.4.0 ist die eingefrorene Referenz der Kaufvergleiche in v641_test.mjs). Die Vorgänger (6.3.1, 6.2.0 und die Rücknahme 6.1.0 = lspod-designer-v6.js) laufen mit V6_DATEI=… und V6_VERSION=… durch dieselben Prüfungen
  *  (Prüfungen der neuen Ansichten gibt es dort nicht: bearbeiten_test.mjs prüft die Version und beendet sich sonst). */
-export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.4.0.js');
+export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.4.1.js');
 /** Referenzfassung für Vergleiche (gleiche Eingaben, andere Datei): Standard 6.3.1. Die Mock-Seite lädt sie mit dem Parameter editor=ref. */
 export const V6_REF_DATEI = process.env.V6_REF_DATEI || join(v6Ordner, 'lspod-designer-v6-6.3.1.js');
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');

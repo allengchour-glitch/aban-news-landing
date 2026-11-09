@@ -1,6 +1,7 @@
 name: Printful-Sync (POD-Bestellungen → Druckauftrag)
 
-# Legt für bezahlte Shopify-Bestellungen mit Editor-Design («Selbst gestalten») einen Printful-Auftrag an und bestätigt ihn, wenn alle Prüfungen bestehen.
+# Legt für bezahlte Shopify-Bestellungen mit Editor-Design («Selbst gestalten») einen Printful-Auftrag als ENTWURF an. Bestätigt wird nur, wenn PRINTFUL_AUTO_CONFIRM ausdrücklich auf 1 steht (Vorgabe 0, Besitzer-Entscheid 05.11.)
+# UND alle Prüfungen bestehen. Positionen am Fulfillment-Service-Standort «Printful» und gedruckte Aufpreis-Platzierungen ohne bezahltes Paket legen KEINEN Auftrag an (harte Befunde).
 # Skript und Regeln: automation/printful_sync.mjs, automation/lib/printful_bestellweg.mjs, automation/lib/printful_platzierung.mjs. Doku: dropship/selbst-gestalten-fertig-0511/bestellweg/README.md
 #
 # Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
@@ -13,7 +14,8 @@ name: Printful-Sync (POD-Bestellungen → Druckauftrag)
 #
 # Zugang: Repo-Secrets PRINTFUL_API_KEY, [PRINTFUL_STORE_ID], SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (oder SHOPIFY_ADMIN_TOKEN), [TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID].
 # KI-Kontrolle der Druckdatei: GEMINI_API_KEY. OHNE funktionierenden Schlüssel (oder bei Guthaben leer, HTTP 402) bleibt jeder Auftrag ein ENTWURF mit Meldung; wer die KI bewusst nicht will,
-# setzt das Secret PRINTFUL_KI_KONTROLLE auf «aus» (die mechanischen Prüfungen bleiben). PRINTFUL_AUTO_CONFIRM=0 schaltet das automatische Bestätigen ganz ab.
+# setzt das Secret PRINTFUL_KI_KONTROLLE auf «aus» (die mechanischen Prüfungen bleiben; Vorgabe seit dem Besitzer-Entscheid 05.11.). PRINTFUL_AUTO_CONFIRM=0 (Vorgabe) lässt jeden Auftrag Entwurf; 1 schaltet das automatische Bestätigen ein.
+# PRINTFUL_MAX_KOSTEN_USD (Vorgabe aus): absolute Obergrenze der Printful-Summe je Auftrag in USD; ein teurerer Auftrag bleibt Entwurf mit Befund «kosten-obergrenze».
 # Einstellungen (Secrets ODER Variablen unter Settings → Secrets and variables → Actions → Variables; leer = Vorgabe): PRINTFUL_MIN_NETTO_CHF (Vorgabe 4: Mindestgewinn je Auftrag in CHF, 0 = nur Verluste halten),
 # PRINTFUL_STITCH_COLOR (white oder black: Nahtfarbe für Produkte mit Option stitch_color, Entscheid des Besitzers), PRINTFUL_DATEI_HOSTS, PRINTFUL_KI_MODELL, PRINTFUL_MAX (Bestellungen je Lauf, Vorgabe 20).
 # Wenn der Sync eine neue Bibliotheksdatei importiert, gehört sie in die Liste «sparse-checkout» unten.
@@ -83,6 +85,7 @@ jobs:
           PRINTFUL_KI_KONTROLLE: ${{ secrets.PRINTFUL_KI_KONTROLLE || vars.PRINTFUL_KI_KONTROLLE || 'aus' }}
           PRINTFUL_KI_MODELL: ${{ secrets.PRINTFUL_KI_MODELL || vars.PRINTFUL_KI_MODELL }}
           PRINTFUL_MIN_NETTO_CHF: ${{ secrets.PRINTFUL_MIN_NETTO_CHF || vars.PRINTFUL_MIN_NETTO_CHF }}
+          PRINTFUL_MAX_KOSTEN_USD: ${{ secrets.PRINTFUL_MAX_KOSTEN_USD || vars.PRINTFUL_MAX_KOSTEN_USD }}
           PRINTFUL_STITCH_COLOR: ${{ secrets.PRINTFUL_STITCH_COLOR || vars.PRINTFUL_STITCH_COLOR }}
           PRINTFUL_DATEI_HOSTS: ${{ secrets.PRINTFUL_DATEI_HOSTS || vars.PRINTFUL_DATEI_HOSTS }}
           MAX: ${{ secrets.PRINTFUL_MAX || vars.PRINTFUL_MAX }}

@@ -10,7 +10,7 @@ Eine Kundin bezahlt ein «Selbst gestalten»-Produkt, die Position trägt aber k
 - Der Editor war offen, aber der Upload zu Cloudinary kam nie an und die Zeile ging trotzdem in den Warenkorb (ob der Editor den Kauf dann sperrt, ist hier nicht geprüft; ein Fehler dort wäre ein Fund für den Editor).
 - Eine Eigenschaft ging beim Zusammenführen von Warenkörben verloren.
 
-Eine Position MIT Design in schlechter Auflösung ist **ein anderer Fall** (weicher Befund `aufloesung`, `aufloesung-foto`: Auftrag wird als Entwurf angelegt und von Hand geprüft).
+Eine Position MIT Design in schlechter Auflösung ist **ein anderer Fall** (weicher Befund `aufloesung` oder `qd-weicht-ab`: Auftrag wird als Entwurf angelegt und von Hand geprüft).
 
 ## Was der Sync tut (getestet in `automation/printful_sync_test.mjs`, Abschnitt WP6)
 
