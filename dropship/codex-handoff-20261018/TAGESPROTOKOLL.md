@@ -1744,3 +1744,15 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Scope und Tagesgrenzen erhalten | Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, MAIN-Theme-, Bestell- oder kostenpflichtige Renderänderung |
 
 [LUXESTYLE_R158_20261109] [Bericht](RANKING-FIXES-20261109-R158.md) · [Beleg](RANKING-FIXES-20261109-R158.json) · [Menü-IA](MENU-IA-20261109-R158.json) · [Claude-Sync](CLAUDE-SYNC-20261109-R158.md). Preview geprüft, nicht veröffentlicht.
+
+### R159
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Freigabe | Erneutes direktes Inhaber-«ja» für exakt Theme213619179911 dokumentiert | Veröffentlichung inhaltlich freigegeben; keine erneute Freigabe nötig |
+| Pre-Publish | Shop, Rollen, Verarbeitung und Datei-MD5 unmittelbar frisch gelesen | LuxeStyle/luxestyle.ch/CHF passend; MAIN c7e3f660…, Ziel UNPUBLISHED5272479d…; fehlerfrei |
+| Veröffentlichung | Genau einen neuen allgemeinen `themePublish` nach der neuen Freigabe angefordert | Automatische Prüfung blockierte vor Ausführung; Spezialwerkzeug fehlt;0 ausgeführte Publishes |
+| Schutz | Werkzeugliste nach letztem direkten «ja» erneut geprüft | `theme_publish` weiterhin nicht verfügbar; kein weiterer Retry oder REST/CLI/Browser-Bypass; MAIN unverändert |
+| Claude Code | R159-Blocker und nächsten exakten Admin-/Spezialpfad additiv dokumentiert | Revision159,24 Aufgaben, Historie erhalten;08/14/19 unverändert; Receipt unbekannt |
+
+[LUXESTYLE_R159_20261109] [Bericht](THEME-PUBLISH-BLOCKER-20261109-R159.md) · [Beleg](THEME-PUBLISH-BLOCKER-20261109-R159.json). Theme weiterhin Vorschau, nicht live.

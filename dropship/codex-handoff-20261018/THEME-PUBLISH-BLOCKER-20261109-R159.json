@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "luxestyle-theme-publish-r159-v1",
+  "recordedAt": "2026-11-09T22:39:00+01:00",
+  "ownerApproval": {
+    "state": "explicit_confirmed_twice_after_r158_report",
+    "targetThemeId": "gid://shopify/OnlineStoreTheme/213619179911"
+  },
+  "identity": {
+    "shop": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "matched": true
+  },
+  "prePublish": {
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/213013037447",
+      "role": "MAIN",
+      "processing": false,
+      "processingFailed": false,
+      "fileMd5": "c7e3f66093cbdb59f29210b62ebd1447",
+      "fileBytes": 17026
+    },
+    "target": {
+      "id": "gid://shopify/OnlineStoreTheme/213619179911",
+      "role": "UNPUBLISHED",
+      "processing": false,
+      "processingFailed": false,
+      "fileMd5": "5272479d3e09c18aa461e78f465c7c0b",
+      "fileBytes": 17254
+    },
+    "r158Inventory": {
+      "mainFiles": 537,
+      "targetFiles": 537,
+      "differenceCount": 1,
+      "onlyChangedFile": "snippets/meta-tags.liquid"
+    }
+  },
+  "publish": {
+    "generalGraphqlAttemptsThisRun": 1,
+    "result": "blocked_by_automatic_approval_review_before_execution",
+    "requiredTool": "theme_publish",
+    "requiredToolAvailableAfterFinalYes": false,
+    "retryAfterFinalToolCheck": 0,
+    "published": false,
+    "mainChanged": false
+  },
+  "bypasses": {
+    "rest": 0,
+    "cli": 0,
+    "browser": 0,
+    "directCredential": 0
+  },
+  "nextStep": "Publish exact target theme in Shopify Admin or use specialized theme_publish when available, then targeted role/MD5/DE/FR live readback; no blind retry.",
+  "claudeHandoff": {
+    "updateRequired": true,
+    "receiptState": "unknown_no_claude_receipt",
+    "newAutomation": false,
+    "frequencyChanged": false
+  }
+}

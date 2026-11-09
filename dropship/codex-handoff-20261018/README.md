@@ -1950,3 +1950,13 @@ Für das Hauptmenü liegt ein fail-closed Phase-A-Entwurf vor:784 auf264 Knoten 
 [R158 Ranking-Bericht](RANKING-FIXES-20261109-R158.md) · [Maschinenbeleg](RANKING-FIXES-20261109-R158.json) · [Menü-IA](MENU-IA-20261109-R158.json) · [Claude-Sync](CLAUDE-SYNC-20261109-R158.md). Keine erneute Tageskennzahl-, Metricool-, Klaviyo-, DNS-, Bestell- oder Kauf-Watch-Abfrage. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Menü-, MAIN-Theme- oder kostenpflichtige Renderänderung. Claude-Empfang bleibt unbekannt.
 
 [LUXESTYLE_R158_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 159: Theme-Publish trotz direkter Freigabe technisch blockiert
+
+Der Inhaber bestätigte nach R158 erneut ausdrücklich, dass genau Theme `213619179911` veröffentlicht werden soll. Unmittelbar vor dem Aufruf passten LuxeStyle, `luxestyle.ch`, CHF, beide Rollen und beide Datei-MD5 weiterhin: MAIN `213013037447` / `c7e3f66093cbdb59f29210b62ebd1447`; Ziel `213619179911` / `UNPUBLISHED` / `5272479d3e09c18aa461e78f465c7c0b`. Beide Themes waren vollständig verarbeitet und fehlerfrei; die R158-Vollinventur537/537 mit nur einer abweichenden Datei blieb gültig.
+
+Genau ein neuer allgemeiner `themePublish`-Aufruf nach der neuen Freigabe wurde von der automatischen Prüfung vor Ausführung blockiert. Sie verlangt das spezialisierte Werkzeug `theme_publish`; dieses blieb auch nach dem anschliessenden direkten «ja» nicht verfügbar. Kein weiterer Versuch und kein REST-, CLI-, Browser- oder Credential-Bypass. MAIN und Zielrollen blieben unverändert; die geprüften FR-Homepage- und HTTPS-OG-Korrekturen sind weiter nur Vorschau.
+
+[R159 Bericht](THEME-PUBLISH-BLOCKER-20261109-R159.md) · [Maschinenbeleg](THEME-PUBLISH-BLOCKER-20261109-R159.json). Nächster exakter Schritt: im Shopify-Admin das Theme `LuxeStyle – R158 SEO Preview 09.11.2026` veröffentlichen oder später das spezialisierte Werkzeug verwenden; danach Rollen, MD5 und DE/FR live gezielt zurücklesen. Keine neue Automation/Frequenz; Claude-Empfang unbekannt.
+
+[LUXESTYLE_R159_20261109]

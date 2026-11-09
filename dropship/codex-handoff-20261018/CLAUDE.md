@@ -267,3 +267,15 @@ Belege: `RANKING-UMSETZUNG-20261109-R157.md/.json`, `GSC-RANKING-20261109-R157.j
 7. Bestehende 08:00/14:00/19:00 Europe/Zurich beibehalten; keine neue Automation/Frequenz. Claude-Kenntnisnahme bleibt bis echtem Beleg unbekannt.
 
 Belege: `RANKING-FIXES-20261109-R158.md/.json`, `MENU-IA-20261109-R158.json`, `CLAUDE-SYNC-20261109-R158.md`.
+
+## R159 – Direkte Publish-Freigabe, spezialisiertes Werkzeug weiterhin nicht verfügbar
+
+[LUXESTYLE_R159_20261109]
+
+1. Inhaber hat die Veröffentlichung von Theme `213619179911` nach R158 erneut ausdrücklich bestätigt.
+2. Frisch: LuxeStyle/luxestyle.ch/CHF; MAIN213013037447/c7e3f660…; Ziel213619179911/UNPUBLISHED/5272479d…; beide verarbeitet/fehlerfrei. R158-Vollinventur537/537, einzig `snippets/meta-tags.liquid` abweichend.
+3. Ein allgemeiner `themePublish`-Aufruf wurde vor Ausführung automatisch blockiert. Erforderliches `theme_publish` blieb auch nach letztem direktem «ja» nicht verfügbar. Kein weiterer Versuch, kein REST/CLI/Browser/Credential-Bypass. MAIN unverändert, Ziel weiter UNPUBLISHED.
+4. Nächster legitimer Schritt: Zieltheme im Shopify-Admin veröffentlichen oder spezialisierten Publish-Befehl verwenden. Danach Rollen, MAIN-MD5 und `/` plus `/fr/` cachefrisch zurücklesen. Unklarer Zustand: unknown, kein Retry.
+5. 08:00/14:00/19:00 Europe/Zurich unverändert; keine neue Automation. Claude-Kenntnisnahme weiter unbekannt.
+
+Belege: `THEME-PUBLISH-BLOCKER-20261109-R159.md/.json`.

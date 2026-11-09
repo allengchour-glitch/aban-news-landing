@@ -1356,3 +1356,15 @@ Der Claude-Handoff wurde auf Revision158 fortgeführt. Die bestehende 08:00/14:0
 Belege: `RANKING-FIXES-20261109-R158.md/.json`, `MENU-IA-20261109-R158.json`, `CLAUDE-SYNC-20261109-R158.md`.
 
 [LUXESTYLE_R158_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 159: ausdrückliche Publish-Freigabe dokumentiert, Werkzeug fehlt
+
+Die Inhaberfreigabe für exakt Theme `213619179911` ist nun direkt und wiederholt dokumentiert. Der frische Pre-Publish-Read bestätigte LuxeStyle/luxestyle.ch/CHF, MAIN `213013037447` mit MD5 `c7e3f66093cbdb59f29210b62ebd1447` und Ziel `213619179911` UNPUBLISHED mit MD5 `5272479d3e09c18aa461e78f465c7c0b`; Verarbeitung fehlerfrei.
+
+Ein einziger neuer allgemeiner `themePublish`-Aufruf wurde vor Ausführung automatisch blockiert. Der verlangte spezialisierte `theme_publish`-Pfad blieb nach dem letzten direkten «ja» nicht verfügbar. Kein Bypass, kein weiterer Retry, kein MAIN-/Menü-/Dateiwrite. Ziel bleibt UNPUBLISHED und die R158-Fixes sind nicht live.
+
+Nächster Schritt: exakt dieses Theme im Shopify-Admin veröffentlichen oder den spezialisierten Publish-Pfad verwenden. Danach nur Rollen, Ziel-MD5 und öffentliche DE/FR-Metadaten zurücklesen; unklarer Zustand bedeutet unknown und keinen zweiten Publish. Bestehende08/14/19-Frequenz erhalten; Claude-Receipt bleibt unbekannt.
+
+Belege: `THEME-PUBLISH-BLOCKER-20261109-R159.md/.json`.
+
+[LUXESTYLE_R159_20261109]
