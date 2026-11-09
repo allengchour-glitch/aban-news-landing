@@ -75,7 +75,7 @@ def simulieren(p, ziel, kosten, start=201, band=0.0):
         bestand *= p[i] / p[i - 1]
         kapital = cash + bestand
         quote = ziel[i - 1]
-        if abs(quote - bestand / kapital) >= band:
+        if quote == 0 or abs(quote - bestand / kapital) >= band:
             # Kosten für den Handel sind Teil der Zielgewichts-Gleichung.
             neu = quote * (kapital + kosten * bestand) / (1 + quote * kosten)
             if neu < bestand:

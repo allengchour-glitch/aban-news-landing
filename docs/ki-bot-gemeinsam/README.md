@@ -17,7 +17,7 @@ Ein nachvollziehbarer Trading-Bot, dessen Nutzen nach Gebühren und Verlusten ü
 
 `labor.py` ist ein ausführbarer Offline-Prototyp mit drei Reihen: Halten, Trend200 und Trend-Konsens150/200. Er liest ausschliesslich vorhandene Bitcoin-Tageskurse, schreibt nur eine ausdrücklich benannte neue Ergebnisdatei und hat keine Broker-/Netzwerk-Anbindung. Keine zusätzlichen Pakete.
 
-SETZUNG vor dem ersten Lauf: Long/Cash, höchstens100% Quote; Konsens mit25% jährlichem Schwankungsziel über30 Tagesrenditen, 10 Prozentpunkten Handelsband;365 Kalendertage. Kosten je Handelsrichtung10/25/50 Basispunkte, Eintritt und abschliessender Verkauf eingerechnet. Positionen driften mit dem Kurs. Bei unbekannter/Null-Schwankung bleibt der Kandidat in Cash. Keine Parametersuche.
+SETZUNG vor dem ersten Lauf: Long/Cash, höchstens100% Quote; Konsens mit25% jährlichem Schwankungsziel über30 Tagesrenditen, 10 Prozentpunkten Handelsband;365 Kalendertage. Kosten je Handelsrichtung10/25/50 Basispunkte, Eintritt und abschliessender Verkauf eingerechnet. Positionen driften mit dem Kurs. Bei unbekannter/Null-Schwankung bleibt der Kandidat in Cash. Keine Parametersuche. Ein vollständiges Cash-Signal wird auch unterhalb des Handelsbands ausgeführt; das Band darf den Ausstieg nicht verhindern.
 
 Signal vom Schlusskurs t wird erst am Schlusskurs t+1 umgesetzt und verdient erstmals t+1→t+2. Das konservative Tagesmodell bildet weder Intraday-Fills noch Funding, Futures-Basis oder Börsenausfälle ab. Es ist ein Spot-Experiment und kein vollständiger Vergleich mit dem Futures-Piloten. Beide Vergleiche erhalten dieselbe Verzögerung und dasselbe Kostenmodell. Teilperioden ab2022 und2024 sind überlappend und keine unabhängigen Bestätigungen.
 
@@ -61,3 +61,5 @@ Kumulierte Rendite und schlimmster Einbruch, bei10 Basispunkten Kosten je Handel
 Bei50 Basispunkten sinkt die Konsens-Rendite auf +67,8% beziehungsweise +25,0%; der Einbruch steigt auf −19,3%. Das ist ein beobachteter Tausch zwischen Rendite und Risiko im beschriebenen Modell, kein Nachweis von Überlegenheit, KI-Nutzen oder zukünftiger Rendite. Beide Teilperioden überlappen. Bisher wurde nur Bitcoin untersucht.
 
 GEMESSEN: neun lokale Gegenproben bestanden (Ein-/Ausstiegskosten gegen geschlossene Formel, Cash, keine Rendite vor Ausführung, Gewinn nach Ausführung, Absturz/Einbruch, Positionsdrift, unveränderte Vergangenheit bei geänderter Zukunft, Datenfehler, Kostenstress). Bestehende Ausgabedatei wurde bei erneutem CLI-Aufruf abgewiesen und ihr Hash blieb unverändert. Gegenproben lagen in `/tmp/ki-bot-labor-pruefung.py`, wurden nicht als dauerhafte CI-Prüfung registriert und ersetzen keine unabhängige Gegenprüfung durch Claude. Kein vollständiger CI-Lauf oder Live-Test.
+
+Vor Übergabe präzisiert: Ein Ziel von0% schliesst einen Restbestand auch unterhalb des Handelsbands. Die historischen Ergebniswerte blieben dadurch unverändert; Bericht mit aktuellem Codehash erneut erzeugt.

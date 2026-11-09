@@ -24,7 +24,7 @@
   },
   "protokoll_sha256": "549773b53865fc80392ad51126c5a8e2aed2c078c23382c6c969dc5b00bcb2a3",
   "daten_sha256": "d17fbfe2b735dac5d8da5d28c582c3016691d3d2254c755814fc98f8b421d6df",
-  "code_sha256": "f66a5ddaf122f4235a689625a15cb33cf36027a9924fe8fd7d61dcfcd85dff6a",
+  "code_sha256": "5041ca19ec3bf1d1feee5132d999fbf41f5bef7c8d14114341f88432f0764a31",
   "daten_von": "2014-09-17",
   "daten_bis": "2026-09-23",
   "hinweis": "Bekannte historische Daten, kein unabhängiger Holdout. Schlusskurs-Modell ohne Intraday-Ausführung; kein Funding, Spread in pauschalen Kosten, kein Börsenausfall. Kein KI-Nachweis.",
