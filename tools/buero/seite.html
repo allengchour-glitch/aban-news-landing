@@ -479,6 +479,7 @@
       <details data-auftrag-text><summary>Fertigen Auftrag ansehen</summary><textarea rows="9" readonly aria-label="Fertiger Auftrag"></textarea></details>
     </section>
   </section>
+  <p><button type="button" data-alles-anzeigen>Alle Bereiche und Details anzeigen</button></p>
   <div class="kb-tabs" role="tablist" aria-label="Ansicht">
     <button type="button" class="kb-tab" role="tab" id="kb-tab-3d" data-tab="3d" aria-selected="true" aria-controls="kb-pane-3d">Büro 3D</button>
     <button type="button" class="kb-tab" role="tab" id="kb-tab-buero" data-tab="buero" aria-selected="false" aria-controls="kb-pane-buero" tabindex="-1">Büro 2D</button>
@@ -1231,7 +1232,7 @@
     ps.addEventListener('input',function(){var q=ps.value.trim().toLocaleLowerCase('de');pg.querySelectorAll('[data-projekt]').forEach(function(c){c.hidden=!!q&&c.dataset.suche.indexOf(q)<0;});});
     el.appendChild(projekte);
     el.appendChild(teamKarten(fachTeam(),'Fachteams und nächste Aufträge'));
-    var hint=document.createElement('p');hint.className='kb-chef-auto';hint.textContent='Prüfungen, sichere Webseitenkorrekturen und Projektpakete laufen automatisch weiter. Die Links öffnen deinen persönlichen Bereich; Anmeldung bei Bedarf.';el.appendChild(hint);
+    var hint=document.createElement('p');hint.className='kb-chef-auto';hint.textContent='Die Anzeige zeigt gemessene Ablaufstände. Ein beendeter Prüflauf bestätigt keine Verkäufe und keinen ständig arbeitenden Agenten. Kontolinks benötigen gegebenenfalls eine Anmeldung.';el.appendChild(hint);
   });
 
   dash.draw('n', function (el) {
@@ -1381,6 +1382,17 @@
 
   if (root) {
     root.addEventListener('click', function (ev) {
+      var alles=ev.target.closest&&ev.target.closest('[data-alles-anzeigen]');
+      if(alles&&root.contains(alles)){
+        suchtext='';nurOffen=false;
+        var suche=root.querySelector('#kb-suche');if(suche)suche.value='';
+        root.querySelectorAll('[data-filter]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.filter==='alle'));});
+        zeige('liste');dash.draw('rows');dash.draw('chef-kontrolle');
+        var pane=root.querySelector('#kb-pane-liste');
+        pane.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',function(){if(d.open)pane.querySelectorAll('details').forEach(function(child){child.open=true;});},{once:true});d.open=true;});
+        pane.scrollIntoView({block:'start',behavior:'auto'});return;
+      }
+
       var mobil=ev.target.closest&&ev.target.closest('[data-mobile-nav]');
       if(mobil&&root.contains(mobil)){
         var ziel=mobil.dataset.mobileNav;

@@ -2,6 +2,14 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Büro vollständig anzeigen und Claudes Metricool-Ablauf sichtbar anbinden
+
+- Inhaberauftrag: «alles live machen und alles anzeigen». Frischer main989827a enthält Claudes Metricool-Freigabe PR3025/3026. Offene ältere Entwurfs-PRs nicht pauschal übernehmen, keine neuen Publisher/Kontoaktionen starten. Eigener Branch `codex/buero-live-stand`.
+- **GEMESSEN:** vorhandener Metricool-Lauf42685024209 auf main per workflow_dispatch erfolgreich. Büro las für die beiden Social-Stationen weiterhin `social-meta-autopost.yml`/`pinterest-publish.yml`. Diese Statuszuordnung auf vorhandene `metricool-freigabe.yml` korrigiert. Quelle nennt Metricool; erfolgreicher Lauf bleibt gelb mit Hinweis, dass Veröffentlichung, Reichweite und Verkäufe nicht bestätigt sind. Keine Inhalts-/Konto-/Kundendaten oder Logtexte übernommen.
+- Neuer Knopf «Alle Bereiche und Details anzeigen» öffnet die vollständige Listenübersicht samt verschachtelten Details, Projekten und Fachteams und setzt Such-/Aufmerksamkeitsfilter zurück. Quelle und öffentliche HTML gleich geändert; keine Statusdaten überschrieben. Unbelegtes Versprechen automatisch weiterarbeitender Agenten durch tatsächliche Aussage über gemessene Ablaufstände ersetzt.
+- **GEMESSEN:**67 Büro- und25 Entwicklerprüfungen lokal grün (92); neue Regression bindet Social-Anzeige an vorhandenen Metricool-Ablauf ohne Veröffentlichung zu behaupten. Bestehende Tagespflege führt die Bürotests aus. Vollständige lokale CI-Simulation erneut am schreibgeschützten HOME blockiert; kein CI-Erfolg daraus ableiten. Desktop1440px/Handy390px: alle15 öffentlichen Arbeitsplätze, Suche zurückgesetzt, alle Details offen. Zunächst übersehene verzögert aufgebaute Unterdetails gefunden und gegengeprüft korrigiert.
+- Öffentliche Anzeige bleibt ohne private Finanz-/Kundendaten. Private Finanzseite wird nicht ins Repository kopiert. Fehlende Shop-/Zahlungs-/Monitoranbindungen werden nicht als live ausgegeben. Keine neue Automation/Frequenz, keine Veröffentlichung oder Freigabe von Social-Inhalten, keine Zahlungen/Preis-/Kontoänderungen. Merge-/Bereitstellungsstand im zugehörigen PR frisch lesen. Finanzielle Wirkung nicht gemessen.
+
 ## Lizenzoberfläche: Störung von Ablehnung unterscheiden · 09.11.2026
 
 - Frischer main68db372, AGENTS/CLAUDE/Shared Memory und Übergabe gelesen; offene PRs geprüft. Eigener Branch `codex/lizenz-antwort`. Vorige Backendkorrektur PR3015 abgeschlossen: Merge7df5c1c8a7a000f0593352f532f90e5a09625c50, Produktionslauf42614878270 erfolgreich. Nicht erneut implementieren.

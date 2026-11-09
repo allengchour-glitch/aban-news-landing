@@ -68,3 +68,15 @@ class AblaufTest(unittest.TestCase):
             row=next(r for r in ablaufstatus.bereinigen({'bewertungen':run},now) if r['id']=='bewertungen')
             self.assertEqual(row['status'],status)
             self.assertEqual(row['aktiv_h'],0)
+
+    def test_metricool_liest_vorhandene_freigabe_ohne_veroeffentlichung_zu_behaupten(self):
+        now=datetime.now(timezone.utc)
+        for ident in ('social_meta','social_pinterest'):
+            self.assertEqual(tagespflege.WORKFLOWS[ident],'metricool-freigabe.yml')
+            run={'zeit':now.isoformat(),'status':'completed','conclusion':'success'}
+            row=next(r for r in ablaufstatus.bereinigen({ident:run},now) if r['id']==ident)
+            self.assertEqual(row['status'],'gelb')
+            self.assertEqual(row['aktiv_h'],0)
+            self.assertIn('Metricool',row['quelle'])
+            self.assertIn('nicht bestätigt',row['befund'])
+            self.assertNotIn('veröffentlicht!',row['ereignis'])
