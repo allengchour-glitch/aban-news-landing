@@ -1,0 +1,29 @@
+{
+  "resourceId": "gid://shopify/Page/698444710273",
+  "translations": [
+    {
+      "locale": "fr",
+      "key": "title",
+      "translatableContentDigest": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "value": "Personnalisez des T-shirts, des tasses et bien plus encore"
+    },
+    {
+      "locale": "fr",
+      "key": "body_html",
+      "translatableContentDigest": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "value": "<p>Créez votre pièce préférée : chez <strong>LuxeStyle</strong>, personnalisez des T-shirts, des sweat-shirts, des sweats à capuche bio, des tasses, des sacs et des casquettes avec votre texte, votre nom ou votre image. Pour un cadeau, un événement d’équipe, une association ou une pièce unique pour vous, votre article est imprimé selon votre création.</p>\n<h2>Comment ça marche</h2>\n<ol>\n<li><strong>Choisir le produit</strong> – Sélectionnez l’article et la variante disponible.</li>\n<li><strong>Créer le motif</strong> – Placez votre texte, votre nom ou votre image dans l’éditeur.</li>\n<li><strong>Vérifier l’aperçu</strong> – Contrôlez le motif, sa position, sa couleur et sa taille, ainsi que la variante du produit.</li>\n<li><strong>Commander</strong> – Ajoutez votre création au panier et finalisez votre commande en toute sécurité.</li>\n</ol>\n<h2>Produits à personnaliser</h2>\n<ul>\n<li><a href=\"/fr/products/klassisches-unisex-t-shirt-selbst-gestalten\">Personnaliser un T-shirt</a> – avec votre texte ou votre image.</li>\n<li><a href=\"/fr/products/keramik-tasse-selbst-gestalten\">Faire imprimer une tasse en céramique</a> – pour le bureau, la cuisine ou comme cadeau.</li>\n<li><a href=\"/fr/products/unisex-hoodie-selbst-gestalten\">Personnaliser un sweat-shirt ou un sweat à capuche bio</a> – choisissez le modèle et placez votre motif.</li>\n</ul>\n<p>Retrouvez tous les articles personnalisables dans la <a href=\"/fr/collections/selbst-gestalten\">collection « Personnaliser »</a>.</p>\n<h2>Production et livraison</h2>\n<p>Chaque pièce personnalisée est imprimée après votre commande. Le délai de livraison prévu dépend du produit, de la variante, du site d’impression et de l’adresse de livraison. Une estimation précise s’affiche pendant la commande lorsqu’elle est disponible pour l’article choisi.</p>\n<h2>À vérifier avant de commander</h2>\n<p>Vérifiez soigneusement l’aperçu, l’orthographe, la position, la couleur du produit, la variante et la taille. Les articles personnalisés sont fabriqués selon votre création. Consultez les <a href=\"/fr/policies/refund-policy\">informations sur les retours concernant les articles personnalisés</a>.</p>\n<h2>Pour la Suisse et le Liechtenstein</h2>\n<p>Tous les prix sont indiqués en CHF. La livraison est gratuite dès CHF 50.</p>\n<p style=\"margin:24px 0 10px;\"><a href=\"/fr/collections/selbst-gestalten\" style=\"display:inline-block;background:#c9a35f;color:#151515;font-weight:700;font-size:1.2rem;padding:16px 34px;border-radius:8px;text-decoration:none;\">Créez votre pièce unique</a></p>"
+    },
+    {
+      "locale": "fr",
+      "key": "meta_title",
+      "translatableContentDigest": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "value": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle"
+    },
+    {
+      "locale": "fr",
+      "key": "meta_description",
+      "translatableContentDigest": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "value": "Personnalisez T-shirts, sweat-shirts, sweats à capuche bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein."
+    }
+  ]
+}
