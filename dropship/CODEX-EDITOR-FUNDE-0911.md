@@ -1,0 +1,30 @@
+# Editor «Selbst gestalten»: Funde der Mobilmessung vom 09.11.2026 (für die nächste Editor-Version)
+
+Stand: GEMESSEN 09.11.2026 06:1x UTC, Chromium, Handy 390 px, alle 15 aktiven Selbst-gestalten-Seiten mit Editor (Live-Shop `luxestyle.ch`). Gemessen wurde nur lesend; im Editor-Quelltext (`pod/v6/`) ist nichts geändert, weil eine neue Editor-Version den Rollout aus `dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/` braucht (neuer unveränderlicher Pfad, SRI, 16 Beschreibungen). Dieser Weg gehört Codex; hier stehen die Funde mit fertigen Änderungen.
+
+**Live-Stand der Editor-Version (GEMESSEN, `data-lspod6-version`):** 14 Seiten laden `6.3.0`, nur die Keramik-Tasse (Canary) lädt `6.3.1`. Der Voll-Lauf von 6.3.1 (`V63_FULL_19_SAFE`) ist damit nicht eingespielt. Beide Versionen tragen dieselben Fehler unten (die Zeilen sind in 6.3.0 und 6.3.1 gleich).
+
+## Fund A: Vorlagenbild verzerrt und verschoben (10 von 15 Seiten) — vorläufig per Theme-Regel behoben
+
+- **Ursache:** `pod/v6/lspod-designer-v6-6.3.1.js` Zeile 862: `.lsp6-bg,.lsp6-tpl{position:absolute;display:block;pointer-events:none;…}` ohne `max-width:none`. Der Editor setzt für beide Bilder eine Inline-Breite in Prozent der Bühne (Zeile 1174 ff., `width:PCT(vorlageBreite / w.w)`), die über 100 % liegen kann, sobald nur der Druckflächen-Ausschnitt gezeigt wird (Samsung 162,9 %). Die allgemeine Theme-Regel `img{max-width:100%}` klemmt die Breite, die Höhe bleibt.
+- **Messung (vor der Korrektur):** Samsung-Hülle 356 × 580 px statt 580 × 580; klassisches T-Shirt 356 × 762 statt 762 × 762; Jutebeutel 356 × 802 statt 802 × 802; Umhängetasche 356 × 2124. Im Bild: Beim T-Shirt zeigt die Bühne nur den linken Ärmel, der Druckrahmen liegt auf leerem Weiss. Betroffen: Shirt, Samsung, Spiral-Notizbuch, Kiss-Cut, Hardcase-iPhone, klassisches Unisex-T-Shirt, Alltags-Umhängetasche, Bio-Jutebeutel, Unisex-Hoodie, Unisex-T-Shirt. Unbetroffen: Tassen (Ausschnitt = 100 %), Mauspad, Stoffbeutel, Edelstahlflasche.
+- **Vorläufige Korrektur (Claude, MAIN-Theme):** `dropship/editor-vorlage-0911/` (CSS-Block `lx-editor-vorlage-0911` nur auf Produktseiten: `.lsp6-stage img.lsp6-bg,.lsp6-stage img.lsp6-tpl{max-width:none!important;max-height:none!important}`). Rücknahme dort im README. Die Regel bleibt nach einer Editor-Korrektur harmlos.
+- **Änderung für die nächste Editor-Version:** in Zeile 862 `max-width:none;max-height:none` ergänzen (`.lsp6-bg,.lsp6-tpl{position:absolute;display:block;max-width:none;max-height:none;pointer-events:none;…}`). **Regressionstest:** die Browsertests in `pod/v6/test/` laufen auf `mock.html` ohne Theme-Regel, darum blieb der Fehler unsichtbar. Dort `img{max-width:100%;height:auto}` einfügen und prüfen, dass `img.lsp6-tpl` genau Bühnenbreite × Inline-Prozent misst (Mutationsprobe: ohne `max-width:none` muss der Test rot werden).
+
+## Fund B: roter Hinweis «noch nicht eingerichtet» bleibt nach gültiger Wahl stehen (Bündelprodukte)
+
+- **Messung:** Unisex-T-Shirt, Material «Heavyweight-Baumwolle»: Startgrösse XS gibt es nicht (Hinweis «Diese Ausführung ist im Editor noch nicht eingerichtet. Bitte wähle oben eine andere Grösse oder Farbe.» zu Recht). Danach Grösse S (gültige Variante, Modell 586): Hinweis bleibt über 4,5 s stehen und verschwindet erst bei M. Der Kaufknopf bleibt aktiv, der Hinweis ist nur veraltet und irreführend.
+- **Ursache (aus dem Quelltext, 6.3.1):** `varianteGeprueft()` (Zeile 3238 ff.): der Zweig `modellGewechselt` beendet die Funktion mit `return`, ohne `modellHinweisAktualisieren()` aufzurufen. `tabsAufbauen()` (Zeile 1514) kehrt bei weniger als zwei Reitern mit `return` zurück, bevor es `tabsAktualisieren()` und damit den Hinweis erreicht.
+- **Änderung:** in `tabsAufbauen()` `if (ids.length < 2) { ui.tabs.hidden = true; modellHinweisAktualisieren(); return; }`. **Regressionstest:** erst eine nicht angebotene Kombination wählen (Hinweis sichtbar), dann die gültige Variante eines anderen Modells: der Hinweis muss wegfallen.
+
+## Kleinere Funde (alle ohne Kaufsperre)
+
+- **Hinweistext schief:** Bei einer Kombination, die es im Angebot gar nicht gibt (Samsung Slim plus Galaxy S26, Hoodie Bio-Baumwolle 3XL bis 5XL, Unisex-T-Shirt Heavyweight XS und 5XL), sagt der Editor «noch nicht eingerichtet». Vorschlag: «Diese Kombination gibt es nicht. Bitte wähle eine andere Auswahl.» und die Druckflächen-Zeile ausblenden.
+- **Knopf «Auf dem Produkt» ohne Vorschau:** Kiss-Cut-Aufkleber in der Grösse 38 × 9,5 cm zeigt nur den Rückfall «Die Produktvorschau ist für diese Ausführung gerade nicht verfügbar. Du kannst trotzdem gestalten …». Das ist gewollt, der Umschalter könnte bei Varianten ohne Vorschau-Eichung aber ausgeblendet werden (Hypothese: hängt an der Variante, nicht für alle drei Grössen einzeln belegt).
+- **Neue Textebene ist leer und unsichtbar:** erst nach dem Tippen sichtbar (Platzhalter nur im Feld). Vermutlich gewollt; ein Beispieltext könnte neue Kundschaft weniger verwirren.
+- **Englische Schrift in den Printful-Vorlagenbildern:** «Safe Print Area», «Edges of the case», «Right side / Center / Left side» (Samsung, Mauspad, Stoffbeutel, Trinkflasche). Die Bilder liegen bei Printful; Ersatz nur mit eigenen Führungsgrafiken.
+- **Nicht der Editor:** Der Schwebeknopf «Hilfe» überdeckt auf der Tassen-Seite den rechten Teil des Titels; die Cookie-Leiste verdeckt beim Erstbesuch den Knopf «Druckvorschau prüfen» (Kiss-Cut, Trinkflasche).
+
+## Was in Ordnung war (GEMESSEN, Handy 390 px)
+
+Alle 15 Seiten laden (DOMContentLoaded 2,4 bis 3,9 s, Load 4,1 bis 5,4 s), `data-init-v6=1`, 0 Seitenfehler, kein seitliches Scrollen; Variantenwechsel an 8 Seiten (91 Klicks) ohne Fehler; der Sprungknopf «Zuerst dein Design gestalten» landet auf allen 15 Seiten bei `#lspod-start` (Editor bei y = 100 px unter der 59 px hohen Kopfzeile); Text tippen, Testbild hochladen, DPI-Hinweis und Rückgängig laufen; die Produktvorschau (canvas) zeichnet auf 7 Seiten. Die Konsole zeigt nur Shop-Pay-Rauschen (`shop.app/pay/hop` 403 wegen `frame-ancestors`) und abgebrochene Analytik-Anfragen. **Ungemessen:** Safari, echtes Handy, Kaufen mit Warenkorb (nur Anfrage abgefangen), Wirkung auf Käufe.
