@@ -484,9 +484,17 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
 .kb3-viewer.is-fullscreen .kb3-lage,.kb3-viewer.is-fullscreen .kb3-erklärung,.kb3-viewer.is-monitor .kb3-lage,.kb3-viewer.is-monitor .kb3-erklärung{display:none}
 @media(min-width:900px){.kb.kb-view-3d{max-width:112rem}.kb3-stage{height:clamp(540px,80dvh,1100px)}.kb.kb-view-3d > #kb-pane-3d{order:2}.kb.kb-view-3d > #kb-auftraege{order:3}}
 @media(max-width:640px){.kb3-viewer{padding:8px;border-radius:18px}.kb3-stage{height:72dvh;max-height:780px;min-height:340px}.kb3-lage{grid-template-columns:1fr 1fr;gap:8px}.kb3-lage article{padding:12px}.kb3-lage strong{font-size:28px}.kb3-tool,.kb3-chip{font-size:14px;padding:10px 12px}.kb3-erklärung{font-size:14px;padding:12px}}
+
+/* Nach Sichtprüfung: Büro zuerst, Erläuterungen hinter die Arbeitsfläche. */
+.kb > *{order:4}.kb > .kb-head{order:0}.kb > .kb-tabs{order:1}.kb > .kb-pane{order:2}.kb > #kb-auftraege{order:3}
+.kb .kb-head{padding:20px 26px}.kb .kb-head .kb-eyebrow{color:#bdd7d8}.kb .kb-head .kb-stand b{color:#eef9f5}.kb .kb-head .kb-title{margin:4px 0;font-size:clamp(30px,3vw,44px)}
+.kb .kb-head .kb-take{font-size:17px;margin:8px 0}.kb .kb-head .kb-stand{margin:8px 0 0}
+.kb > #kb-pane-3d > .kb-hint{display:none}
+.kb3-lage{margin:18px 0 8px}
+@media(max-width:640px){.kb{gap:12px}.kb .kb-head{padding:16px 18px}.kb .kb-head .kb-take{font-size:15px}.kb .kb-head .kb-stand{font-size:13px}.kb3-stage{height:64dvh;min-height:360px}.kb3-desktop-hint{display:none}.kb-mobile-nav button{font-size:13px}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-11">
+<div class="kb" data-design="campus-einheitlich-12">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -561,13 +569,6 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       <button type="button" class="kb3-tool kb3-boss" data-cmd="view:Chefbüro" aria-label="Chefbüro-Kontrolle öffnen">Kontrolle</button>
       <button type="button" class="kb3-tool kb3-full" data-cmd="fullscreen" aria-pressed="false">Vollbild</button>
     </div>
-    <section class="kb3-lage" aria-label="Gemessene Arbeitsstände">
-      <article>Ohne Warnsignal<strong data-draw="n" data-source="buero" data-st="gruen">—</strong><small>Aktueller Ablaufstand, kein Nachweis für Verkäufe.</small></article>
-      <article>Prüfen<strong data-draw="n" data-source="buero" data-st="gelb">—</strong><small>Offene Prüfung oder noch fehlender Verbindungsnachweis.</small></article>
-      <article>Gestoppt<strong data-draw="n" data-source="buero" data-st="rot">—</strong><small>Figur anklicken, um Ursache und nächsten Schritt zu lesen.</small></article>
-      <article>Veralteter Stand<strong data-draw="n" data-source="buero" data-st="alt">—</strong><small>Neue Messung erforderlich; nicht als aktuellen Betrieb verstehen.</small></article>
-    </section>
-    <p class="kb3-erklärung"><b>So nutzt du dein Büro:</b> Raum auswählen und eine Figur für ihren Arbeitsstand anklicken. Der große Monitor auf dem Campusplatz öffnet sich per Klick aus der Nähe. <b>Ranking &amp; SEO</b> führt zu deinen geschützten Google-Zahlen. Ziehen verschiebt oder dreht die Ansicht; das Mausrad zoomt. <b>Vollbild</b> nutzt den ganzen Bildschirm.</p>
     <section class="kb-chef-kontrolle" data-chef-panel data-draw="chef-kontrolle" data-source="buero" aria-label="Chefbüro-Kontrolle" hidden></section>
     <div class="kb3-bar" role="group" aria-label="Raum wählen">
       <button type="button" class="kb3-chip" data-cmd="view:alle" aria-pressed="true">Alles</button>
@@ -598,6 +599,13 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       <button type="button" class="kb3-tool" data-cmd="reset">Zurück</button>
       <button type="button" class="kb3-tool" data-cmd="gross" aria-pressed="false">Mehr Höhe</button>
     </div>
+    <section class="kb3-lage" aria-label="Gemessene Arbeitsstände">
+      <article>Ohne Warnsignal<strong data-draw="n" data-source="buero" data-st="gruen">—</strong><small>Aktueller Ablaufstand, kein Nachweis für Verkäufe.</small></article>
+      <article>Prüfen<strong data-draw="n" data-source="buero" data-st="gelb">—</strong><small>Offene Prüfung oder noch fehlender Verbindungsnachweis.</small></article>
+      <article>Gestoppt<strong data-draw="n" data-source="buero" data-st="rot">—</strong><small>Figur anklicken, um Ursache und nächsten Schritt zu lesen.</small></article>
+      <article>Veralteter Stand<strong data-draw="n" data-source="buero" data-st="alt">—</strong><small>Neue Messung erforderlich; nicht als aktuellen Betrieb verstehen.</small></article>
+    </section>
+    <p class="kb3-erklärung"><b>So nutzt du dein Büro:</b> Raum auswählen und eine Figur für ihren Arbeitsstand anklicken. Der große Monitor auf dem Campusplatz öffnet sich per Klick aus der Nähe. <b>Ranking &amp; SEO</b> führt zu deinen geschützten Google-Zahlen. Ziehen verschiebt oder dreht die Ansicht; das Mausrad zoomt. <b>Vollbild</b> nutzt den ganzen Bildschirm.</p>
     <p class="kb3-touch-hint" id="kb3-touch-hilfe">Ein Finger bewegt die gewählte Ansicht. Zwei Finger zoomen und verschieben.</p>
     <div class="kb-detail" data-draw="detail" data-bereich="*" data-source="buero"></div>
     </div>
@@ -3455,7 +3463,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
   var WINGS = { 'Social Media': [-3, 7], 'Entwicklerbüro': [3, 7], 'YouTube-Studio': [-3, 10] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-11';
+  K.DESIGN_VERSION = 'campus-einheitlich-12';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {
@@ -4090,7 +4098,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
       function monitorDistance(aspect){return Math.max(7.7,15.2/Math.max(0.3,aspect));}
       function leaveMonitor(){if(!monitorMode)return;monitorMode=false;var previous=savedCamera;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);if(previous){userDist=previous.dist;cam.go(previous,!!cfg.reduced);}made.dirty=true;}
       function focusMonitor(){if(monitorMode)return;savedCamera=Object.assign({},cam.g);monitorMode=true;if(cfg.onMonitorMode)cfg.onMonitorMode(true);cam.go({tx:0,ty:3.1,tz:9.18,dist:monitorDistance(made.aspect||1.33),az:0,el:0},!!cfg.reduced);made.dirty=true;}
-      function fitDist(base, aspect) { if(viewName==='Campusplatz')return base; return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
+      function fitDist(base, aspect) { if(viewName==='Campusplatz')return base*Math.pow(Math.max(1,1.33/Math.max(0.3,aspect)),0.45); return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
       function goView(name, now) {
         if(monitorMode){monitorMode=false;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);}userDist=null;
         var v = W.views[name] || W.views.alle;
@@ -4493,7 +4501,7 @@ window.__ROWS = [{"id": "auswahl", "bereich": "Shop", "name": "Auswahl-Lauf", "k
 
       skyHour = hour; R.retex(W.sky.tex, T.skyline(hour)); lastSky = performance.now();
       resize();
-      goView('alle', true);
+      goView(cfg.initialView || 'alle', true);
       made.started = true;
       made.ok = true;
       made.buildMs = Math.round(performance.now() - tBuild);
@@ -5281,7 +5289,7 @@ window.KB3D_PACK["coatrack"]={"b":[-0.1364,0,-0.1364,0.1364,0.77,0.1364],"pal":[
       }
       var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
       var desktopControls=window.matchMedia('(min-width:641px) and (pointer:fine)').matches;
-      var m = K3.Buero.mount(el, { desktopControls:desktopControls, instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){if(made3d)made3d.cmd('monitor');return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onMonitorMode:function(an){viewer.classList.toggle('is-monitor',an);var tools=viewer.querySelector('.kb3-monitor-tools');tools.hidden=!an;if(an)tools.querySelector('[data-cmd=monitorBack]').focus({preventScroll:true});else viewer.querySelector('.kb3-canvas').focus({preventScroll:true});}, onFail: ohne3d, onView: raumKnopf });
+      var m = K3.Buero.mount(el, { desktopControls:desktopControls, initialView:window.matchMedia('(max-width:640px)').matches?'Campusplatz':'alle', instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){if(made3d)made3d.cmd('monitor');return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onMonitorMode:function(an){viewer.classList.toggle('is-monitor',an);var tools=viewer.querySelector('.kb3-monitor-tools');tools.hidden=!an;if(an)tools.querySelector('[data-cmd=monitorBack]').focus({preventScroll:true});else viewer.querySelector('.kb3-canvas').focus({preventScroll:true});}, onFail: ohne3d, onView: raumKnopf });
       made3d = m && m.ok ? m : null;
       if(made3d)root.querySelectorAll('[data-cmd=move],[data-cmd=rotate]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cmd===(desktopControls?'move':'rotate')));});
       return m;

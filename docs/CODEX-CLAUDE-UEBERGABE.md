@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Sichtprüfung und selbst entschiedene Bürogestaltung
+
+Nutzer: «screenshote selber und entscheide selber für mich». Produktive Version11 bei1440/390px fotografiert und angesehen: Auftragsknöpfe verdrängen mobil das Büro, Monitor zu klein in der Gesamtansicht, Messzeit auf dunkler Karte schlecht lesbar; Statuskarten/Erklärung schieben Bühne auch auf Desktop nach unten. Auf eigenem Branch von main17808b8 korrigiert: Version12, Büro vor übrigen Knöpfen auf allen Breiten, kompakter Kopf mit lesbarer Messzeit, Status/Erklärung unter Bühne. Mobile3D beginnt am Campusplatz; Hochformatabstand berücksichtigt Bildbreite und vermeidet abgeschnittenen Monitor. Mobile2D als leichter Erstaufruf erhalten. Vollständige Übersicht bleibt über «Alle Büros» erreichbar, Monitor-Zoom/Zurück/Escape erhalten.
+
+GEMESSEN:67 Büro- und25 Entwicklerprüfungen lokal grün (92). Vorher-/Nachher-Screenshots außerhalb Git unter `/workspace/buero-sichtpruefung`; private Kontowerte nicht übernommen. Frische produktive Gegenprüfung nach Bereitstellung und endgültige3D-Prüfung im zugehörigen PR nachsehen. Keine Finanz-/Kunden-/Kontoaktion, keine zusätzliche Automation oder Frequenzänderung. Finanzielle Wirkung nicht gemessen.
+
 ## Größere Büroansicht und verständlicheres Ranking
 
 Inhaberauftrag: Darstellung viel größer, informativer und schöner. Isoliert von main0a7a41c auf `codex/buero-gross`, aktuelle Französisch-/Merchant-Arbeiten erhalten. Gemeinsame Designversion11: bis112rem breite Bürofläche, höhere Desktop-/Handybühne, Büro vor Auftragslisten, größere Schrift und Bedienelemente, modernisierte Kopfkarte. Vier Lagekarten verwenden vorhandene Statusberechnung und erklären Warnsignal/Prüfung/Stopp/veraltete Messung; keine erfundenen Arbeitsleistungen. Vollbild/Monitor blenden Zusatzkarten aus. Rankingvorlage bis1600px, größere Kennzahlen,320px Verlauf, Anfänger-Erklärungen zu Impressionen/Klicks/CTR/Position und Abgrenzung zu Shopbesuchern/Umsatz. Bestehende private Rankingvisualisierung ersetzt; Messwerte, Messzeit und übrige private Inhalte bleiben erhalten, kein neuer Datenabruf oder Dauersync. Privates Claude-Designpaket neu gebaut; andere Claude-Session nicht automatisch verändert.
