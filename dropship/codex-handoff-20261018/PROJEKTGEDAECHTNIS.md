@@ -1328,3 +1328,17 @@ Die einzige Verkaufsaktion ist jetzt feldgenau gebunden: Shopify Page `gid://sho
 **Nächster zulässiger Schritt:** eine aktuelle A–G-Einheit samt CJ-VID und fünf reale Hochkantclips derselben Einheit hashbinden, Rechte/Musikfreigabe schliessen, dann denselben 18-Sekunden-Master rendern und abnehmen. Separat kann der Inhaber den exakt gebundenen FR-Vier-Felder-Diff freigeben; unmittelbar vor einem späteren Write Digests erneut prüfen.
 
 **Belege:** [Paket](CONTENT-VERKAUFSPAKET-20261109-R156.md), [Plan](METRICOOL-PLAN-20261109-R156.json), [Produkte](PRODUKTPRUEFUNG-20261109-R156.json), [Master](MASTER-INGEST-PREFLIGHT-20261109-R156.json), [FR](FR-VERKAUFSDIFF-20261109-R156.json), [SEO-Stichprobe](SEO-STICHPROBE-20261109-R156.json). Claude-Empfang `unknown_no_claude_receipt`.
+
+## Aktueller Befund 09.11.2026, R157
+
+[R157-Bericht](RANKING-UMSETZUNG-20261109-R157.md) und [Maschinenbeleg](RANKING-UMSETZUNG-20261109-R157.json) zuerst lesen. Der Inhaberauftrag «ranking sachen machen» schloss den feldgenauen R156-FR-Diff. Shopify-Identität, Page, vier Quelldigests, leere FR-Liste, Schema und öffentliche Vorher-Ausgabe wurden unmittelbar frisch geprüft. Der ursprüngliche Textkandidat wurde redaktionell verworfen; nur der korrigierte französische Kandidat wurde geschrieben.
+
+Page698444710273 besitzt jetzt genau vier bestätigte FR-Übersetzungen: `title`, `body_html`, `meta_title`, `meta_description`. Ein Write, keine UserErrors, vier exakte native Werte, alle `outdated=false`. Öffentlich besteht die Seite 12/12 Prüfungen mit HTTP200, `lang=fr`, französischem Title/Meta/OG/H1/Body, korrektem Canonical/Hreflang,6/6 FR-Links und CHF50. Nicht erneut schreiben, solange kein frischer konkreter Fehler vorliegt.
+
+GSC10.10.–06.11.: DE-Selbstgestalten33 Impressionen,0 Klicks,Position65,21. FR-Zeilen nicht offengelegt; tatsächliche FR-Leistung unbekannt. Spätere Wirkung erst nach angemessenem Zeitraum und mit finalisierten GSC-Daten beurteilen, keine Verkäufe ableiten.
+
+Offen und getrennt: FR-Homepage-Meta/OG bleibt deutsch. Primäres `og:image` ist HTTP, aber `og:image:secure_url` bereits HTTPS; lokaler Minimalpatch21/21 Tests, nicht live. Das Hauptmenü verursacht mit784 Knoten/742 eindeutigen Collection-URLs die Linkmenge; sichere Reduktion erfordert IA-Kuration plus unveröffentlichte Desktop-/Mobile-/Tastatur-/No-JS-Vorschau. Keine Theme- oder Menüfreigabe aus R157 ableiten.
+
+Metricool-Kennzahlen/Klaviyo aus R154 und DNS aus R155 wurden nicht erneut gelesen. Keine breite Merchant-, Verkaufs- oder Bestellabfrage. Claude-Empfang bleibt unbekannt.
+
+[LUXESTYLE_R157_20261109]
