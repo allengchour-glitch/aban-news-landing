@@ -2,7 +2,7 @@
 
 ## Neuer gemeinsamer Forschungsauftrag: KI-Bot mit Claude Code
 
-Nutzer: «das beste ki bot erfinden du und claude zusammen». Branch `codex/ki-bot-gemeinsam`: erklärbaren Offline-Konsens-Prototyp gebaut, feste Vergleiche und Kostenstress ausgeführt, neun lokale Gegenproben bestanden. Kleinere historische Einbrüche, aber weniger Rendite als einfacher Trend200; keine Überlegenheit behaupten. Claude hat noch nicht geprüft. Entwurf, vollständige Messung und unabhängiger Claude-Prüfauftrag: [Gemeinsamer KI-Bot](docs/ki-bot-gemeinsam/README.md). Kein Broker, keine echte Anmeldung/Nachricht, keine Strategie-/Schutzänderung am bestehenden Bot. Website-/Berichts-Veröffentlichung bleibt separat auf den bereits gepushten Branches; Details dort in `docs/CLAUDE-CODE-WEBSITE-BOT-LIVE.md`.
+Nutzer: «das beste ki bot erfinden du und claude zusammen». Branch `codex/ki-bot-gemeinsam`: erklärbaren Offline-Konsens-Prototyp gebaut, feste Vergleiche und Kostenstress ausgeführt, zehn lokale Gegenproben bestanden. Kleinere historische Einbrüche, aber weniger Rendite als einfacher Trend200; keine Überlegenheit behaupten. Claude hat noch nicht geprüft. Entwurf, vollständige Messung und unabhängiger Claude-Prüfauftrag: [Gemeinsamer KI-Bot](docs/ki-bot-gemeinsam/README.md). Kein Broker, keine echte Anmeldung/Nachricht, keine Strategie-/Schutzänderung am bestehenden Bot. Website-/Berichts-Veröffentlichung bleibt separat auf den bereits gepushten Branches; Details dort in `docs/CLAUDE-CODE-WEBSITE-BOT-LIVE.md`.
 
 
 ## Codex-Übergabe für Claude – 09.11.2026
