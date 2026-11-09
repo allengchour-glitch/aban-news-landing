@@ -1,0 +1,157 @@
+{
+  "status": "FORSCHUNG, KEINE HANDELSFREIGABE",
+  "protokoll": {
+    "version": 1,
+    "markt": "BTC-USD, Spot, Long/Cash, kein Hebel",
+    "trend_tage": [
+      150,
+      200
+    ],
+    "vol_tage": 30,
+    "vol_ziel": 0.25,
+    "handelsband": 0.1,
+    "kosten_einfach_bp": [
+      10,
+      25,
+      50
+    ],
+    "signal_verzoegerung_tage": 2,
+    "historische_teilperioden": [
+      "2022-01-01",
+      "2024-01-01"
+    ],
+    "vorwaertstest_mindesttage": 180
+  },
+  "protokoll_sha256": "549773b53865fc80392ad51126c5a8e2aed2c078c23382c6c969dc5b00bcb2a3",
+  "daten_sha256": "d17fbfe2b735dac5d8da5d28c582c3016691d3d2254c755814fc98f8b421d6df",
+  "code_sha256": "5041ca19ec3bf1d1feee5132d999fbf41f5bef7c8d14114341f88432f0764a31",
+  "daten_von": "2014-09-17",
+  "daten_bis": "2026-09-23",
+  "hinweis": "Bekannte historische Daten, kein unabhängiger Holdout. Schlusskurs-Modell ohne Intraday-Ausführung; kein Funding, Spread in pauschalen Kosten, kein Börsenausfall. Kein KI-Nachweis.",
+  "ergebnisse": {
+    "2022-01-01": {
+      "10": {
+        "Halten": {
+          "rendite": 0.7628432352927041,
+          "max_einbruch": -0.6692688850398529,
+          "umsatz_pro_startkapital": 2.763608842136967,
+          "mess_tage": 1727
+        },
+        "Trend 200": {
+          "rendite": 1.6234746281717904,
+          "max_einbruch": -0.35640998816473224,
+          "umsatz_pro_startkapital": 72.67944784549181,
+          "mess_tage": 1727
+        },
+        "Konsens 150/200": {
+          "rendite": 0.8600689855921269,
+          "max_einbruch": -0.1712090985818926,
+          "umsatz_pro_startkapital": 40.56561054365923,
+          "mess_tage": 1727
+        }
+      },
+      "25": {
+        "Halten": {
+          "rendite": 0.7575626133182343,
+          "max_einbruch": -0.6697637445634841,
+          "umsatz_pro_startkapital": 2.7594737665627136,
+          "mess_tage": 1727
+        },
+        "Trend 200": {
+          "rendite": 1.4930315686129827,
+          "max_einbruch": -0.36599182603982316,
+          "umsatz_pro_startkapital": 70.70031580684322,
+          "mess_tage": 1727
+        },
+        "Konsens 150/200": {
+          "rendite": 0.7897124035851475,
+          "max_einbruch": -0.17934373255127112,
+          "umsatz_pro_startkapital": 39.729260680875235,
+          "mess_tage": 1727
+        }
+      },
+      "50": {
+        "Halten": {
+          "rendite": 0.7487966056956046,
+          "max_einbruch": -0.6705852277859627,
+          "umsatz_pro_startkapital": 2.7526094039593154,
+          "mess_tage": 1727
+        },
+        "Trend 200": {
+          "rendite": 1.28987728262905,
+          "max_einbruch": -0.3816457690750872,
+          "umsatz_pro_startkapital": 67.55057917984497,
+          "mess_tage": 1727
+        },
+        "Konsens 150/200": {
+          "rendite": 0.6783116942220326,
+          "max_einbruch": -0.19326402394443398,
+          "umsatz_pro_startkapital": 38.383194187013544,
+          "mess_tage": 1727
+        }
+      }
+    },
+    "2024-01-01": {
+      "10": {
+        "Halten": {
+          "rendite": 0.9033156625539009,
+          "max_einbruch": -0.5305998300134688,
+          "umsatz_pro_startkapital": 2.9042218824384562,
+          "mess_tage": 997
+        },
+        "Trend 200": {
+          "rendite": 0.43645645135795363,
+          "max_einbruch": -0.35640998816473224,
+          "umsatz_pro_startkapital": 37.602941164590845,
+          "mess_tage": 997
+        },
+        "Konsens 150/200": {
+          "rendite": 0.3565153977222457,
+          "max_einbruch": -0.17120909858189193,
+          "umsatz_pro_startkapital": 25.661084594667468,
+          "mess_tage": 997
+        }
+      },
+      "25": {
+        "Halten": {
+          "rendite": 0.8976142534264011,
+          "max_einbruch": -0.5305998300134691,
+          "umsatz_pro_startkapital": 2.8998764132876858,
+          "mess_tage": 997
+        },
+        "Trend 200": {
+          "rendite": 0.3732485494226996,
+          "max_einbruch": -0.3659918260398236,
+          "umsatz_pro_startkapital": 36.744199267436485,
+          "mess_tage": 997
+        },
+        "Konsens 150/200": {
+          "rendite": 0.3154304731890809,
+          "max_einbruch": -0.17934373255127167,
+          "umsatz_pro_startkapital": 25.262158781767283,
+          "mess_tage": 997
+        }
+      },
+      "50": {
+        "Halten": {
+          "rendite": 0.8881497251733039,
+          "max_einbruch": -0.5305998300134689,
+          "umsatz_pro_startkapital": 2.8926627903690543,
+          "mess_tage": 997
+        },
+        "Trend 200": {
+          "rendite": 0.2740210033526682,
+          "max_einbruch": -0.38164576907508774,
+          "umsatz_pro_startkapital": 35.36968248643298,
+          "mess_tage": 997
+        },
+        "Konsens 150/200": {
+          "rendite": 0.2497006215620201,
+          "max_einbruch": -0.19326402394443365,
+          "umsatz_pro_startkapital": 24.615325888484477,
+          "mess_tage": 997
+        }
+      }
+    }
+  }
+}

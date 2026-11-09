@@ -27,6 +27,10 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: KI-Bot-Forschung offline prüfen
+        if: ${{ hashFiles('docs/ki-bot-gemeinsam/test_labor.py') != '' }}
+        run: python3 -B -m unittest discover -s docs/ki-bot-gemeinsam -p 'test_labor.py' -v
+
       # Vorher: jede der 2 726 HTML-Dateien einzeln mit npx (gemessen mindestens 0,4 s je Aufruf, also über 18 Minuten bei 8 Minuten Zeitlimit). Es griff
       # darum bei JEDEM Lauf, der Job endete als «cancelled», und die danach liegenden, blockierenden Schritte (JSON-LD, launch.html) liefen nie.
       # Jetzt: nur die geänderten HTML-Dateien, in einem einzigen Aufruf.
