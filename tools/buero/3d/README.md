@@ -82,3 +82,6 @@ HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine private
 ### Geschützte Rankinganzeige
 
 `campus-einheitlich-10` ergänzt im Büro und der Monitorleiste den Link zur privaten Ranking-/SEO-Ansicht und einen direkten Chat-Auftrag. Der Link überträgt weder Zugangsdaten noch Suchmesswerte an die öffentliche Website. Google-Daten bleiben ein datierter, verzögerter Messstand. Der Knopf öffnet einen Auftrag und bestätigt keine Ausführung. Das gemeinsame Claude-Paket enthält dieselben Bedienelemente.
+
+
+`campus-einheitlich-11` vergrößert die Arbeitsfläche auf bis zu112rem, die Desktopbühne auf80 Prozent der Fensterhöhe und die Handyansicht auf72 Prozent. Vier Statuskarten erklären die vorhandenen Messstände; Vollbild und Monitormodus blenden sie aus. Die private Rankingvorlage hat größere Zahlen, einen höheren Verlauf und Begriffserklärungen. Keine neuen Datenquellen oder automatischen Kontoaktionen.
