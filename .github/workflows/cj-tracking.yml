@@ -1,0 +1,122 @@
+name: CJ-Rückmeldung (Sendungen → Shopify)
+
+# Meldet bei CJ versendete Bestellungen (CJ-Auftrag LX<Nr> auf SHIPPED/DELIVERED, Sendungsnummer da, Stückzahl passt) mit Nummer und 17track-Link in
+# Shopify und trägt fehlende Sendungsnummern bei von Hand als «versendet» markierten Bestellungen nach (Fall #1029). Liest CJ, schreibt nur
+# fulfillmentCreate / fulfillmentTrackingInfoUpdate + Tags (cj-shipped, cj-problem-<art>). Legt KEINE CJ-Aufträge an und bezahlt nichts.
+# Doku: dropship/CJ-RUECKMELDUNG-0911.md · Skript: automation/cj_tracking.mjs · Logik: automation/lib/cj_tracking.mjs
+#
+# TROCKENLAUF IST DIE VORGABE: ohne die Datei dropship/CJ-TRACKING-FREI.txt (= das Ja des Besitzers) wird nichts geschrieben und nichts gesendet,
+# der Lauf zeigt nur den Plan in der Zusammenfassung. Mit der Datei läuft er scharf und löst die normale Shopify-Versandmail an die Kundschaft aus;
+# steht das Wort «stumm» in der Datei, werden die Bestellungen ohne Kundenmail gemeldet. Datei löschen = zurück im Trockenlauf.
+# Ein roter Lauf heisst: ein technischer Fehler (Lesen/Schreiben/Zugangsdaten/Alarm nicht zugestellt). Befunde (kein CJ-Auftrag, unbezahlt, hängt im
+# CJ-Lager, Stückzahl weicht ab …) gehen einmal per Telegram raus und sind nicht rot.
+# Zeitplan: 1x täglich (SHARED-MEMORY: «Crons nur einzeln, sparsam, max. 1x/Tag»), 16:11 UTC = 17:11 Schweizer Winterzeit. Dazwischen von Hand startbar.
+# Bei Änderungen an den Dateien läuft nur der Testjob (kein Netz, keine Zugangsdaten).
+
+on:
+  schedule:
+    - cron: '11 16 * * *'
+  workflow_dispatch:
+    inputs:
+      trockenlauf:
+        description: 'Trockenlauf erzwingen (auch wenn die Freigabedatei liegt)'
+        type: boolean
+        default: false
+      nur:
+        description: 'Nur diese Bestellungen, z. B. #1029,#1034 (leer = alle)'
+        type: string
+        default: ''
+  pull_request:
+    paths:
+      - 'automation/cj_tracking*'
+      - 'automation/lib/cj_tracking*'
+      - '.github/workflows/cj-tracking.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shop-cj-tracking-${{ github.event_name == 'pull_request' && github.ref || 'lauf' }}
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/cj_tracking.mjs
+            automation/cj_tracking_test.mjs
+            automation/cj_tracking_mutationsprobe.py
+            automation/lib/cj_tracking.mjs
+            automation/lib/cj_token.mjs
+            automation/lib/cj_fetch.mjs
+            automation/lib/cj_response.mjs
+            automation/lib/printful_tracking.mjs
+            automation/lib/shopify_secret.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Tests (kein Netz, gefälschtes Shopify, CJ und Telegram)
+        run: node automation/cj_tracking_test.mjs
+      - name: Mutationsprobe (nur bei Änderungen)
+        if: github.event_name == 'pull_request'
+        run: python3 -I automation/cj_tracking_mutationsprobe.py .
+
+  rueckmeldung:
+    needs: tests
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      # Nur die Laufzeitdateien und die Freigabedatei holen (liegt sie nicht, ist das in Ordnung: dann Trockenlauf)
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/cj_tracking.mjs
+            automation/lib/cj_tracking.mjs
+            automation/lib/cj_token.mjs
+            automation/lib/cj_fetch.mjs
+            automation/lib/cj_response.mjs
+            automation/lib/printful_tracking.mjs
+            automation/lib/shopify_secret.mjs
+            dropship/CJ-TRACKING-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Freigabe prüfen (ohne Datei Trockenlauf)
+        id: frei
+        env:
+          TROCKEN: ${{ github.event.inputs.trockenlauf }}
+        run: |
+          set -eu
+          dry=1; mailen=0
+          if [ -f dropship/CJ-TRACKING-FREI.txt ] && [ "${TROCKEN:-false}" != "true" ]; then
+            dry=0; mailen=1
+            if grep -qi 'stumm' dropship/CJ-TRACKING-FREI.txt; then mailen=0; fi
+          fi
+          echo "dry=$dry" >> "$GITHUB_OUTPUT"
+          echo "mailen=$mailen" >> "$GITHUB_OUTPUT"
+          echo "Freigabe: Trockenlauf=$dry, Kundenmail=$mailen"
+      - name: Sendungen zurückmelden
+        env:
+          CJ_EMAIL: ${{ secrets.CJ_EMAIL }}
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ steps.frei.outputs.dry == '0' && '0' || '1' }}
+          KUNDIN_MAILEN: ${{ steps.frei.outputs.mailen == '1' && '1' || '0' }}
+          NUR: ${{ github.event.inputs.nur }}
+        run: node automation/cj_tracking.mjs
