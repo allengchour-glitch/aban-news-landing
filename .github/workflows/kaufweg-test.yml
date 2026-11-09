@@ -1,0 +1,42 @@
+name: Kaufweg-Wächter Selbsttest
+
+# Offline-Test (kein Shop, keine Zugangsdaten): ein nachgebauter Shop als fetch-Attrappe und als lokaler HTTP-Server.
+# Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe.
+on:
+  pull_request:
+    paths:
+      - 'automation/lib/kaufweg.mjs'
+      - 'automation/lib/kaufweg_test.mjs'
+      - 'automation/kaufweg_waechter.mjs'
+      - '.github/workflows/kaufweg-test.yml'
+      - '.github/workflows/kaufweg-waechter.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaufweg-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/kaufweg_waechter.mjs
+            automation/lib/kaufweg.mjs
+            automation/lib/kaufweg_test.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Selbsttest des Kaufweg-Wächters
+        run: node automation/lib/kaufweg_test.mjs

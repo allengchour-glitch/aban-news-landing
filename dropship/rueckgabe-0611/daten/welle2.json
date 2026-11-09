@@ -313,18 +313,6 @@
  },
  {
   "art": "seite_veroeffentlicht",
-  "id": "gid://shopify/Page/698444710273",
-  "handle": "selbst-gestalten",
-  "feld": "body",
-  "vorher": "Gratis Versand ab CHF 50 · 30 Tage Rückgaberecht. Mit dem Code",
-  "nachher": "Gratis Versand ab CHF 50 · Ersatz bei Druckfehlern. Mit dem Code",
-  "nr": "G18",
-  "gruppe": "Seite Selbst gestalten",
-  "status": "bereit",
-  "hinweis": null
- },
- {
-  "art": "seite_veroeffentlicht",
   "id": "gid://shopify/Page/699126120833",
   "handle": "fan-trikot-selbst-gestalten",
   "feld": "body",

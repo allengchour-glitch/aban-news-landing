@@ -2,6 +2,14 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Lizenzprüfung: Anbieterfehler nicht als ungültigen Kauf speichern · 09.11.2026
+
+- Aktueller main2264770 und offene Arbeiten gelesen; isolierter Branch `codex/checkout-status`. Keine privaten Finanzdaten übernommen. Vorige Downloadkorrektur PR3002 abgeschlossen: Merge60cfafb4df5bd9961ca9ba2c9ab6f2cc9f1b68a5, Produktionslauf42571121464 erfolgreich; Desktop/Handy mit abgefangener API geprüft, kein Kauf/Download.
+- **GEMESSEN:** Geteilte Lizenzprüfung speichert simulierte HTTP401/403/429/500/503 zehn Minuten als ungültiges Ergebnis. Ein zweiter expliziter Aufruf nach simulierter Erholung fragt den Anbieter nicht erneut. Fünf Regressionen vor Korrektur rot.
+- Korrektur in `functions/_pro.mjs`: nicht erfolgreiche HTTP-Antworten bleiben gesperrt, werden aber als Anbieterfehler ohne negativen Cache zurückgegeben. Kein automatischer Wiederholungsaufruf, keine Drosselungsumgehung. Nach einer Störung ist eine spätere manuelle Prüfung wieder möglich. Bestätigt ungültige Schlüssel bleiben gesperrt und zwischengespeichert; widersprüchliche Erfolgsmeldung in HTTP503 gibt nicht frei.
+- **GEMESSEN:**54 API-,84 Engine- und48 Downloadprüfungen lokal grün (186). Bestehender Hype-Filter-Workflow führt die Testdatei bereits aus. Vollständige lokale CI-Simulation am schreibgeschützten HOME blockiert; kein CI-Erfolg daraus ableiten. Alle Antworten/Schlüssel erfunden, kein Lizenzanbieter-, Modell-, Zahlungs- oder Kundenaufruf.
+- Preise, Varianten, Produktzuordnung und Freigabekriterien erfolgreicher Antworten unverändert. Die gemeinsame Pro-Bezeichnung und die getrennte Cockpit-/Studio-Lizenzzuordnung bleiben separat zu verifizieren; diese Fehlerkorrektur bestätigt keinen tatsächlichen Live-Kauf oder eine korrekte Lizenzzuordnung. Aktuellen Merge-/Deploystand im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen.
+
 ## Download-Dankeseite: begrenzter Wiederanlauf · 09.11.2026
 
 - Von aktuellem main b806a81 auf eigenem Branch `codex/download-wiederanlauf` begonnen. Offene Arbeiten gelesen; Buchbutton PR2999, Audit-Produkttexte und Paketbau nicht erneut implementiert. Eigene Audit-Checkout-/Währungszuordnung bleibt offen; keine Preis-/Kontoänderung.
