@@ -217,4 +217,12 @@ e6 = {x['id']: x for x in m.plane_lauf(fest + [post(1, '2026-11-11T10:00', ['tik
 gl(e6[1]['neu'], D('2026-11-11T10:00'), 'ohne Platz mit vorläufigen Nachbarn bleibt die eigene Zeit, wenn sie frei ist')
 gl(e6[2]['neu'], D('2026-11-11T13:00'), 'der Nachbar weicht danach aus')
 
+# ---- Medientyp und Pinterest
+ok(m.ist_video('https://x.test/a.mp4?v=1') and not m.ist_video('https://x.test/a.jpeg'), 'Videoadresse erkannt')
+ok(any('Video' in q for q in m.pflichtfelder(post(1, '2026-11-11T10:00', ['youtube'], 'x', media=('https://x.test/a.jpeg',)))), 'YouTube mit Bild: Entwurf bleibt')
+ok(any('Video' in q for q in m.pflichtfelder(post(1, '2026-11-11T10:00', ['instagram'], 'x', media=('https://x.test/a.jpeg',)))), 'Instagram-Reel mit Bild: Entwurf bleibt')
+gl(m.pflichtfelder(post(1, '2026-11-11T10:00', ['instagram'], 'x', media=('https://x.test/a.jpeg',), instagramData={'type': 'POST'})), [], 'Instagram-Beitrag mit Bild ist in Ordnung')
+ok(any('Pinterest' in q for q in m.pflichtfelder(post(1, '2026-11-11T10:00', ['pinterest'], 'x', media=('https://x.test/a.jpeg',)))), 'Pinterest ohne Board')
+gl(m.pflichtfelder(post(1, '2026-11-11T10:00', ['pinterest'], 'x', media=('https://x.test/a.jpeg',), pinterestData={'boardId': '1', 'pinTitle': 'T'})), [], 'Pinterest vollständig')
+
 print(f'metricool_freigabe_test.py: {n} Prüfungen bestanden')

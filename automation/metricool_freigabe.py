@@ -233,6 +233,10 @@ def finde_zeit(netze, zeit, andere):
     return None
 
 
+def ist_video(url):
+    return bool(re.search(r'\.(mp4|mov|m4v|webm)$', str(url).split('?')[0].lower()))
+
+
 def pflichtfelder(post):
     probleme = []
     netze = [p['network'] for p in post['providers']]
@@ -246,6 +250,14 @@ def pflichtfelder(post):
             probleme.append('YouTube-Titel fehlt oder über 100 Zeichen')
         if yd.get('madeForKids') is None:
             probleme.append('YouTube madeForKids nicht gesetzt')
+    medien = post.get('media') or []
+    braucht_video = 'youtube' in netze or (post.get('instagramData') or {}).get('type') == 'REEL' or (post.get('facebookData') or {}).get('type') == 'REEL'
+    if braucht_video and medien and not all(ist_video(u) for u in medien):
+        probleme.append('YouTube/Reel braucht ein Video, das Medium sieht nicht danach aus')
+    if 'pinterest' in netze:
+        pd = post.get('pinterestData') or {}
+        if not pd.get('boardId') or not pd.get('pinTitle'):
+            probleme.append('Pinterest: Board oder Pin-Titel fehlt')
     if 'threads' in netze and not post.get('threadsData'):
         probleme.append('threadsData fehlt')
     if 'facebook' in netze and (post.get('facebookData') or {}).get('type') == 'REEL' and not post['facebookData'].get('title'):
