@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "luxestyle-ranking-umsetzung-r157-v1",
+  "createdAtUtc": "2026-11-09T20:27:08+00:00",
+  "localTimezone": "Europe/Zurich",
+  "scope": "exact French self-design Page translation plus bounded GSC/public countercheck; no broader shop/theme/Merchant/social write",
+  "authorization": {
+    "ownerInstruction": "ranking sachen machen",
+    "boundedAction": "Shopify Page gid://shopify/Page/698444710273, locale fr, keys title/body_html/meta_title/meta_description"
+  },
+  "identity": {
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "country": "Switzerland",
+    "matched": true
+  },
+  "searchConsole": {
+    "property": "sc-domain:luxestyle.ch",
+    "permission": "siteOwner",
+    "period": "2026-10-10/2026-11-06",
+    "searchType": "web",
+    "dataState": "final",
+    "frExactPageExposedQueryRows": 0,
+    "frExactPageTruePerformance": "unknown_due_to_anonymised_low_frequency_queries",
+    "boundedRegexRows": 13,
+    "truncated": false,
+    "deSelfDesign": {
+      "impressions": 33,
+      "clicks": 0,
+      "averagePosition": 65.21
+    },
+    "frSelfDesign": "not_exposed_in_bounded_rows_unknown",
+    "salesInference": false,
+    "rankingEffectAfterWrite": "unknown_too_early"
+  },
+  "before": {
+    "page": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "httpStatus": 200,
+    "lang": "fr",
+    "problem": "Title, meta/OG description, H1 and most body content were German fallbacks",
+    "canonicalAndHreflang": "correct"
+  },
+  "shopifyWrite": {
+    "resourceId": "gid://shopify/Page/698444710273",
+    "locale": "fr",
+    "operation": "translationsRegister",
+    "attempts": 1,
+    "userErrors": [],
+    "updatedAt": "2026-11-09T20:23:03Z",
+    "keys": [
+      "title",
+      "body_html",
+      "meta_title",
+      "meta_description"
+    ],
+    "valuesSha256": "c5b43f166e93604e82345db66ab9420f00be59264b190b2c787ad22b29492d81",
+    "nativeReadback": {
+      "count": 4,
+      "allValuesExact": true,
+      "allOutdatedFalse": true,
+      "sourceDigestsStillMatched": true
+    },
+    "preserved": {
+      "handle": true,
+      "deValues": true,
+      "theme": true,
+      "canonical": true,
+      "hreflang": true,
+      "publicShippingThresholdCHF": 50,
+      "internalDiscountThresholdCHF": 45,
+      "customerAccountDomain": "account.luxestyle.com.co"
+    }
+  },
+  "publicAfter": {
+    "checkedAtUtc": "2026-11-09T20:25:30.555Z",
+    "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "httpStatus": 200,
+    "lang": "fr",
+    "title": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+    "h1": "Personnalisez des T-shirts, des tasses et bien plus encore",
+    "metaAndOgDescriptionExact": true,
+    "ogTitleExact": true,
+    "bodyFrenchChecksPassed": true,
+    "oldGermanChecksAbsent": true,
+    "canonical": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "hreflang": "x-default/de to DE; fr to FR",
+    "frContentLinks": "6/6",
+    "shippingThresholdText": "La livraison est gratuite dès CHF 50.",
+    "checks": "12/12 PASS"
+  },
+  "editorialQa": {
+    "originalCandidate": "NO_GO",
+    "reason": "two anglicisms and five weaker French formulations",
+    "correctedCandidate": "GO_PASS",
+    "claims": "PASS",
+    "fixedDeliveryPromise": false,
+    "inventedClaims": false
+  },
+  "technicalOpenFindings": {
+    "ogImage": {
+      "primaryProperty": "still http://",
+      "secureUrlProperty": "valid https:// is also present",
+      "cause": "MAIN snippets/meta-tags.liquid lines 122/141",
+      "localPatch": "two exact http-to-https prefix replacements",
+      "tests": "21 PASS",
+      "applied": false
+    },
+    "navigation": {
+      "mainMenuNodes": 784,
+      "collectionNodes": 779,
+      "uniqueCollectionUrlsInMenu": 742,
+      "uniqueHeaderCollectionTargets": 744,
+      "instances": 1473,
+      "safeSmallPatch": false,
+      "next": "separate information-architecture/menu curation and unpublished theme preview"
+    }
+  },
+  "writes": {
+    "shopifyTranslationFields": 4,
+    "theme": 0,
+    "menu": 0,
+    "merchant": 0,
+    "social": 0,
+    "customers": 0,
+    "discounts": 0,
+    "budgets": 0,
+    "flows": 0,
+    "dns": 0,
+    "paidRenders": 0
+  },
+  "evidence": {
+    "gsc": {
+      "jsonSha256": "b51e86ab66941f01b062f85cab27e768f7de0658755be203d83a6d611eda5890",
+      "mdSha256": "14ad17b5bfd6f8a0f7a29daf18a6ed735b7f8d36845949968116c576a6e9a414"
+    },
+    "shopifyPreflight": {
+      "jsonSha256": "26a18243ee3b78e389af1c0421dacab187c8cfe1055baad829681df79620e4d4",
+      "mdSha256": "43888d1778120b319098b507805b693a684a754ea3f01dbcda360e23c8fdcab5"
+    },
+    "frQa": {
+      "jsonSha256": "e69e9c0446a5876090dc54c041fca0cd3d656e027c555db2366e9c1c39a12e58",
+      "mdSha256": "7f88147c1f883f288a5e963cb609b6e77df6b22934141e4e48b87a4c9e0a22d5",
+      "variablesSha256": "c5b43f166e93604e82345db66ab9420f00be59264b190b2c787ad22b29492d81"
+    },
+    "publicBefore": {
+      "jsonSha256": "b5e00e152661d6f3d9e41df106282f47770ab2c16aad78224206eb2a632587cf",
+      "mdSha256": "4a8ec20ab579fbbad8f665aa584a11bc7376cf6e5880251a71c0679a7c079852"
+    },
+    "publicAfter": {
+      "jsonSha256": "1cb3574a785a1974b8d3538385cf06defb23c8472b24c0a28a1c7df08d6084be",
+      "mdSha256": "41f94d0d8a50edc194f674ab8dae0638282d4b4b5644676be3855589ae27a98b"
+    },
+    "themeSeo": {
+      "evidenceSha256": "7f7b12dd2981524496aa92efef2f57d27709156f936f2aeb0ecb77ff635e74ac",
+      "reportSha256": "14e73855f9683478707bf6fffe445dad4c146cc0dd1dd37bca6ab9f979355d43",
+      "patchSha256": "d06ffd51636c3438948f7ef2fcc8acc07ea329ef69a28854d7fd4c1bacd0abdb"
+    }
+  },
+  "limits": {
+    "noImmediateRankingClaim": true,
+    "noSalesInference": true,
+    "unknownNeverZero": true,
+    "metricsKlaviyoDnsMerchantBroadReadsRepeated": false,
+    "claudeReceipt": "unknown_no_claude_receipt"
+  }
+}
