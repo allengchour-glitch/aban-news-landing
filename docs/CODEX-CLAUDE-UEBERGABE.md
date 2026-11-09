@@ -1,5 +1,16 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Abannews: freigegebene Website-Optimierung
+
+- Auftrag nach Cloud-Einrichtung: Startseite/Bilder, Artikel/Texte und Browserdarstellung optimieren; Nutzer hat Änderungen ausdrücklich freigegeben. Eigenständiger Branch `codex/abannews-website-optimierung`, Ausgangspunkt frisch gelesenes `origin/main` `989827a7d`. Keine Veröffentlichung aus dieser Arbeit.
+- **GEMESSEN:** Das Newsletter-Pflichtkästchen gehörte nicht zu `#signup`; bei gültiger Testadresse und ungeprüfter Einwilligung meldete das Formular gültig. Zusätzlich war native Validierung deaktiviert. Formularzuordnung und native Prüfung korrigiert; Rückkehr zur Seite stellt den bedienbaren Abonnierknopf wieder her. Ohne JavaScript ebenfalls geprüft. Keine echte Anmeldung; sämtliche externen Browseranfragen abgefangen.
+- Startseite: vorhandenes 1200×630-PNG vollständig als Social-Vorschaubild beschrieben, vorhandene Favicons eingebunden. Archivgenerator verweist für Artikel und Übersicht dauerhaft auf das bereits ausgelieferte PNG statt SVG. Keine Bildinhalte oder historischen Artikelfakten erfunden.
+- Archivtexte: Lesezeilen höchstens70ch, lange Links umbrechen, Bilder proportional auf Textbreite begrenzen; Quellgenerator und ausgeliefertes CSS synchron. Desktop-Lesebreite vorher728px, nachher rund653px. Über-uns-Seite: sichtbarer mobiler Abonnierlink nicht mehr vor Screenreadern verborgen. Bei320px reproduzierten Footer-Überlauf der Startseite mit umbrechenden Grid-Inhalten behoben.
+- **GEMESSEN:** HTML-Prüfung ohne Fehler/Warnungen; interne Links ohne defekte Ziele. Browserprüfungen bei320/390/1280px für Startseite, Über-uns und Archiv-Ausgabe025 bestanden. Ungültige E-Mail oder fehlende Einwilligung verhindern Weiterleitung; gültige Testdaten ergeben genau eine abgefangene Weiterleitung, mit und ohne JavaScript. Rückkehr lässt erneute Bedienung zu. Lange Testlinks und grosses Testbild erzeugen im Artikel keinen Seitenüberlauf. Browserbeleg `/tmp/abannews-check.mjs`, Screenshots `/tmp/abannews-optimiert-*.png` (flüchtig, nicht eingecheckt). Keine neuen Tests/Workflows ins Repository geschrieben.
+- Archivgenerator mit erfundener Ausgabe im Speicher geprüft, ohne Archiv/Sitemap neu zu generieren; benötigtes Markdown3.11.3 nur in isolierter `/tmp/abannews-qa-venv` installiert. Der Generator besitzt weiterhin private lokale Quellpfade; vollständiger Neubau mit echten Newsletterquellen war nicht Teil dieser Prüfung.
+- Live-Abruf weiterhin Cloud-Proxy403; `abannews.com` und `www.abannews.com` stehen im gespeicherten Netzwerkentwurf, sind laut Laufzeitstatus noch nicht übernommen. Lokale Korrekturen bestätigen keinen Live-Stand. Keine Anmeldung, Kundenaktion, Konto-/Preisänderung, kein Deployment und keine Conversion-Wirkung gemessen.
+
+
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
 ## Lizenzoberfläche: Störung von Ablehnung unterscheiden · 09.11.2026

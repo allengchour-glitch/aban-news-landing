@@ -382,7 +382,7 @@ def render_issue_page(issue: Issue, prev: Optional[Issue], nxt: Optional[Issue],
 
   <meta property="og:title" content="{xml_escape(issue.title)}">
   <meta property="og:description" content="{xml_escape(og_desc)}">
-  <meta property="og:image" content="{SITE_URL}/og-image.svg">
+  <meta property="og:image" content="{SITE_URL}/og-image.png">
   <meta property="og:url" content="{issue.url}">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="de_DE">
@@ -393,7 +393,7 @@ def render_issue_page(issue: Issue, prev: Optional[Issue], nxt: Optional[Issue],
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{xml_escape(issue.title)}">
   <meta name="twitter:description" content="{xml_escape(og_desc)}">
-  <meta name="twitter:image" content="{SITE_URL}/og-image.svg">
+  <meta name="twitter:image" content="{SITE_URL}/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="aban news Archive RSS" href="/archive.rss">
@@ -501,7 +501,7 @@ def render_index(issues: list[Issue]) -> str:
 
   <meta property="og:title" content="aban news Archive — {count} Ausgaben">
   <meta property="og:description" content="Alle Ausgaben filterbar nach Datum und Thema.">
-  <meta property="og:image" content="{SITE_URL}/og-image.svg">
+  <meta property="og:image" content="{SITE_URL}/og-image.png">
   <meta property="og:url" content="{SITE_URL}/archive/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
@@ -510,7 +510,7 @@ def render_index(issues: list[Issue]) -> str:
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="aban news Archive">
   <meta name="twitter:description" content="{count} Ausgaben filterbar.">
-  <meta name="twitter:image" content="{SITE_URL}/og-image.svg">
+  <meta name="twitter:image" content="{SITE_URL}/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="aban news Archive RSS" href="/archive.rss">
@@ -769,8 +769,14 @@ ARCHIVE_CSS = """/* archive-specific overrides — extends /css/styles.css */
   margin: 0.25rem 0 0.5rem;
 }
 .issue-body {
+  max-width: 70ch;
+  overflow-wrap: anywhere;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+.issue-body img {
+  max-width: 100%;
+  height: auto;
 }
 .issue-body h2 {
   margin-top: 2.5rem;

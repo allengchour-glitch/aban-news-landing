@@ -26,7 +26,17 @@
   <meta property="og:title" content="aban news — täglicher KI-Newsletter für DACH">
   <meta property="og:description" content="Mo–Fr 7:30 Uhr: 3 Updates, 1 Tool, 1 Prompt — in 5 Minuten.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="aban news — KI-Newsletter für DACH">
+  <meta property="og:url" content="https://abannews.com/">
+  <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/og-image.png">
+  <meta name="twitter:image:alt" content="aban news — KI-Newsletter für DACH">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <style>
     *,*::before,*::after{box-sizing:border-box}
     :root{
@@ -214,6 +224,7 @@
     footer{margin-top:1rem;border-top:1px solid var(--line);background:#fff}
     footer .wrap{padding:2.4rem 1.25rem 1.6rem}
     .footcols{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr;gap:1.6rem}
+    .footcols>div{min-width:0;overflow-wrap:anywhere}
     .footcols h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin:0 0 .8rem;font-weight:900}
     .footcols .sub{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:1rem 0 .2rem;opacity:.75}
     .footcols div>.sub:first-of-type{margin-top:0}
@@ -330,11 +341,11 @@
         <span class="pill"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
         <h1>Die wichtigsten <span class="hl">KI-Updates</span> für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
         <p class="lead">Jeden Werktag 7:30 Uhr die 3 KI-Entwicklungen, die dein Business heute betreffen — jede mit klarem Urteil: <b>lohnt sich, abwarten oder ignorieren</b>. Plus 1 getestetes Tool und 1 Prompt.</p>
-        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get">
           <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
           <button type="submit" class="btn btn--amber">5-Min-Briefing gratis →</button>
         </form>
-        <label class="consent"><input type="checkbox" name="consent" value="1" required>
+        <label class="consent"><input type="checkbox" name="consent" value="1" form="signup" required>
           <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Bestätigung per Double-Opt-in, Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
         <div class="subcta"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span><span>kein Affiliate-Müll</span></div>
         <p class="leadmag">Gratis-Geschenk zum Reinkommen: <a href="/downloads/10-ki-prompts.pdf">10 erprobte KI-Prompts (PDF) →</a></p>
@@ -922,7 +933,9 @@
 <script>
   (function(){
     document.querySelectorAll('form.cta').forEach(function(f){
+      var button=f.querySelector('button'),label=button&&button.textContent;
       f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';b.disabled=true;}});
+      window.addEventListener('pageshow',function(){if(button){button.textContent=label;button.disabled=false;}});
     });
     // Premium Monats-/Jahres-Umschalter + EUR/CHF-Währungsschalter (Parität 1:1)
     var mo=document.getElementById('t-mo'),yr=document.getElementById('t-yr'),

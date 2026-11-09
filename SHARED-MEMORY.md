@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Abannews-Website: freigegebene lokale Optimierungen
+
+Branch `codex/abannews-website-optimierung`: Newsletter-Formularvalidierung und Einwilligungszuordnung korrigiert, Social-PNG/Favicons ergänzt, Archiv-Lesedarstellung samt Generator verbessert, mobile Screenreader-Warnung und320px-Footerüberlauf behoben. Lokale HTML-, Link-, Generator- und Browserprüfungen bestanden; keine echte Anmeldung oder Veröffentlichung. Belege und Grenzen unter «Abannews: freigegebene Website-Optimierung» in [der Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md). Live-Zugriff bleibt am Cloud-Proxy403 blockiert; Netzwerkentwurf noch zu übernehmen.
+
+
 ## Codex-Übergabe für Claude – 09.11.2026
 
 Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. Dort stehen die neuen Büro-/Judge.me-/Monitorarbeiten, echte Ausführungsbelege und die Produktqualitätsmessung für die Fortsetzung um 21:00 Europe/Zurich. Die Datei ist auch nach späteren Codex-Arbeiten zu aktualisieren. Ein gespeicherter Auftrag, Scan oder grüner Workflow ist keine bestätigte Produktkorrektur. Keine privaten Finanz- oder Kundendaten in diese Dateien schreiben.
