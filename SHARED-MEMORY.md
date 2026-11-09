@@ -1,5 +1,20 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: belegte KI-Bot-Prüfungen integriert
+
+Der spätere Nutzerauftrag «baue alles rein» erlaubt die Umsetzung der belegten technischen Rechercheergebnisse. Branch `codex/ki-bot-gemeinsam`: Datenalter/abgeschlossene Kerzen, Signal-/Historienprüfungen, Vergleiche mit gleichem Risikobudget, getrennte Zeiträume, aufgeschlüsselte Kosten und erweiterte Risikokennzahlen im Offline-Labor integriert.20 dauerhafte Tests und isolierter Testbaum bestanden; vier absichtliche Fehler erkannt,21 bestehende Binance-Spot-Tests mit Börsennachbau grün. Testaufruf im vorhandenen Deploy-Check ergänzt. [Integrationsmatrix und Grenzen](docs/ki-bot-gemeinsam/INTEGRATION.md). Keine Änderung am bestehenden Handelsbot, Echtgeld, Brokeraufträgen oder Not-Aus. Claude-Review liegt vor (09.11. abends, [CLAUDE-REVIEW.md](docs/ki-bot-gemeinsam/CLAUDE-REVIEW.md): kein Blocker, 14 Regressionstests neu, Mutationsprobe 11 → 29 von 32); ungelesene Paper (teils gelesen), vollständiger Modellnachweis und Live-Stand weiterhin offen. Ältere Pausenvermerke weiter unten sind durch den neueren Integrationsauftrag für diesen Umfang überholt.
+
+
+## Vorrang: Recherche vor KI-Bot-Entwicklung
+
+Neuster Nutzerauftrag: «informiere dich überall zuerst bevor du baust». Keine weitere Implementierung/Parameterauswahl am Forschungsbot; vorhandener Entwurf bleibt unbestätigt. Zehn externe offizielle Dokumentations-/Projektquellen direkt gelesen, Umfang und Hashes erfasst. Wissenschaftliche Originaltexte teils durch Cloud-Proxy403 blockiert, Recherche nicht abgeschlossen. [Recherche und konkreter Claude-Leseauftrag](docs/ki-bot-gemeinsam/RECHERCHE.md). Neue Domains im bestehenden Netzwerkentwurf ergänzt; noch keine Anwendung oder neue Erreichbarkeit bestätigt. Keine neuen Handelsfunktionen gebaut.
+
+
+## Neuer gemeinsamer Forschungsauftrag: KI-Bot mit Claude Code
+
+Nutzer: «das beste ki bot erfinden du und claude zusammen». Branch `codex/ki-bot-gemeinsam`: erklärbaren Offline-Konsens-Prototyp gebaut, feste Vergleiche und Kostenstress ausgeführt, zehn lokale Gegenproben bestanden. Kleinere historische Einbrüche, aber weniger Rendite als einfacher Trend200; keine Überlegenheit behaupten. Claude-Review vom 09.11. abends: [CLAUDE-REVIEW.md](docs/ki-bot-gemeinsam/CLAUDE-REVIEW.md). Entwurf, vollständige Messung und unabhängiger Claude-Prüfauftrag: [Gemeinsamer KI-Bot](docs/ki-bot-gemeinsam/README.md). Kein Broker, keine echte Anmeldung/Nachricht, keine Strategie-/Schutzänderung am bestehenden Bot. Website-/Berichts-Veröffentlichung bleibt separat auf den bereits gepushten Branches; Details dort in `docs/CLAUDE-CODE-WEBSITE-BOT-LIVE.md`.
+
+
 ## Codex-Übergabe für Claude – 09.11.2026
 
 Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. Dort stehen die neuen Büro-/Judge.me-/Monitorarbeiten, echte Ausführungsbelege und die Produktqualitätsmessung für die Fortsetzung um 21:00 Europe/Zurich. Die Datei ist auch nach späteren Codex-Arbeiten zu aktualisieren. Ein gespeicherter Auftrag, Scan oder grüner Workflow ist keine bestätigte Produktkorrektur. Keine privaten Finanz- oder Kundendaten in diese Dateien schreiben.
