@@ -2,6 +2,13 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Buchseite: leeren Amazon-Kaufweg ausblenden · 09.11.2026
+
+- Aktueller main769be79 und offene PRs gelesen; Audit-Erklärungen PR2985 und Paketbau PR2983 nicht erneut implementiert. Eigene Audit-Checkout-Zuordnung und EUR/CHF-Entscheidung bleiben offen; keine Preis-/Kontoänderung aus diesem Auftrag.
+- **GEMESSEN:** Buchseite zeigt auf Desktop1440px und Handy390px den mit `hidden` markierten Amazon-Button trotz leerer `KDP_URL`. Sein Ziel ist nur `#`. Ursache: eigenes Button-CSS überschreibt die HTML-Ausblendung. Mit isoliertem Browser und abgefangenen externen Anfragen reproduziert.
+- Korrektur nur in `buch.html`: versteckte Buttons im Zahlungsbereich bleiben per gezielter CSS-Regel unsichtbar. Die bestehende Freischaltung über eine konfigurierte KDP-Adresse bleibt möglich. Gratis-PDF/ePub, Onlinebuch, Unterstützungslink und Konfiguration unverändert. Keine Amazon-Adresse erfunden, keine Zahlungs-/Download-/Kundenaktion ausgelöst.
+- **GEMESSEN:** Desktop-/Handy-Gegenprobe prüft Ausblendung ohne URL und sichtbaren Zustand nach expliziter Freischaltung; vor Korrektur rot, danach grün. Keine neue Testdatei/Automation/Frequenzänderung. Aktuellen Merge-/Produktionsstand über Branch `codex/buch-verfuegbarkeit` und zugehörigen PR frisch prüfen. Finanzielle Wirkung nicht gemessen; die Korrektur entfernt einen irreführenden leeren Kaufbutton.
+
 ## Inhabervorgabe: Routinearbeit gehört zum Assistenten
 
 Der Inhaber hat am08.11.2026 ausdrücklich klargestellt: «ich erledige nichts, das solltest du machen nachher». Die acht Konto-Verknüpfungen im bisherigen Bereich «Kurz erledigen» sind keine manuellen Inhaberaufträge. Routineprüfungen mit vorhandenen Zugängen/Freigaben übernimmt der Assistent im beauftragten Arbeitslauf. Bei echten Zugriffshürden unabhängig mögliche Arbeit fortsetzen; nur notwendige Entscheidungen konkret benennen. Keine zusätzliche Freigabe für Kundennachrichten, Veröffentlichung, Zahlungen, Preis/Budget, Konten, DNS oder Secrets daraus ableiten.
