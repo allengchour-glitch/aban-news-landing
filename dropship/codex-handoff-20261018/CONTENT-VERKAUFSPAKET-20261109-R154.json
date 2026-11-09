@@ -1,0 +1,832 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R154_20261109",
+  "checkedAt": "2026-11-09T08:31:11+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "LuxeStyle only; compact content, sales and quality-control run",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "primaryDomain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matchedExpected": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "matchedExpected": true
+    }
+  },
+  "metricoolPlanning": {
+    "window": {
+      "from": "2026-11-09",
+      "through": "2026-11-17",
+      "timezone": "Europe/Zurich"
+    },
+    "writes": {
+      "existingVideoObjectsSetToDraft": 43,
+      "r125BlockedObjects": 15,
+      "additionalShortSilentSlideshowObjectsBlocked": 28,
+      "newPostsCreated": 0,
+      "postsPublishedByThisRun": 0,
+      "reason": "Missing required music and/or speech violation, professional-master quality failure, and missing product/rights evidence"
+    },
+    "finalSummary": {
+      "objects": 65,
+      "activeObjects": 21,
+      "draftObjects": 44,
+      "activeVideoObjects": 0,
+      "draftVideoObjects": 43,
+      "draftVideoChannelStates": 50,
+      "allDraftVideosBlocked": true
+    },
+    "perDate": [
+      {
+        "date": "2026-11-09",
+        "objects": 10,
+        "activeObjects": 3,
+        "draftObjects": 7,
+        "activeVideos": 0,
+        "draftVideos": 7,
+        "activeByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 0,
+          "pinterest": 1,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 3,
+          "pinterest": 0,
+          "threads": 1,
+          "youtube": 2
+        }
+      },
+      {
+        "date": "2026-11-10",
+        "objects": 11,
+        "activeObjects": 3,
+        "draftObjects": 8,
+        "activeVideos": 0,
+        "draftVideos": 8,
+        "activeByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 0,
+          "pinterest": 1,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 3,
+          "pinterest": 0,
+          "threads": 1,
+          "youtube": 2
+        }
+      },
+      {
+        "date": "2026-11-11",
+        "objects": 11,
+        "activeObjects": 4,
+        "draftObjects": 7,
+        "activeVideos": 0,
+        "draftVideos": 7,
+        "activeByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 0,
+          "pinterest": 1,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 3,
+          "pinterest": 0,
+          "threads": 1,
+          "youtube": 2
+        }
+      },
+      {
+        "date": "2026-11-12",
+        "objects": 10,
+        "activeObjects": 3,
+        "draftObjects": 7,
+        "activeVideos": 0,
+        "draftVideos": 7,
+        "activeByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 0,
+          "pinterest": 1,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 3,
+          "pinterest": 0,
+          "threads": 1,
+          "youtube": 2
+        }
+      },
+      {
+        "date": "2026-11-13",
+        "objects": 10,
+        "activeObjects": 3,
+        "draftObjects": 7,
+        "activeVideos": 0,
+        "draftVideos": 7,
+        "activeByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 0,
+          "pinterest": 1,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 3,
+          "pinterest": 0,
+          "threads": 1,
+          "youtube": 2
+        }
+      },
+      {
+        "date": "2026-11-14",
+        "objects": 10,
+        "activeObjects": 3,
+        "draftObjects": 7,
+        "activeVideos": 0,
+        "draftVideos": 7,
+        "activeByNetwork": {
+          "facebook": 2,
+          "instagram": 2,
+          "tiktok": 0,
+          "pinterest": 1,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 3,
+          "pinterest": 0,
+          "threads": 1,
+          "youtube": 2
+        }
+      },
+      {
+        "date": "2026-11-15",
+        "objects": 3,
+        "activeObjects": 2,
+        "draftObjects": 1,
+        "activeVideos": 0,
+        "draftVideos": 0,
+        "activeByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 0,
+          "pinterest": 0,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 0,
+          "pinterest": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-11-16",
+        "objects": 0,
+        "activeObjects": 0,
+        "draftObjects": 0,
+        "activeVideos": 0,
+        "draftVideos": 0,
+        "activeByNetwork": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "pinterest": 0,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "pinterest": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      },
+      {
+        "date": "2026-11-17",
+        "objects": 0,
+        "activeObjects": 0,
+        "draftObjects": 0,
+        "activeVideos": 0,
+        "draftVideos": 0,
+        "activeByNetwork": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "pinterest": 0,
+          "threads": 0,
+          "youtube": 0
+        },
+        "draftByNetwork": {
+          "facebook": 0,
+          "instagram": 0,
+          "tiktok": 0,
+          "pinterest": 0,
+          "threads": 0,
+          "youtube": 0
+        }
+      }
+    ],
+    "collisionCheck": {
+      "activeSameChannelMediaDuplicates": 0,
+      "activeSameChannelSlotCollisions": 0,
+      "state": "confirmed_for_final_window"
+    },
+    "interpretation": {
+      "activeObjectsArePhotoOnly": true,
+      "instagramFacebookDailyCoverage": "2026-11-09 through 2026-11-15; no active object on 2026-11-16 or 2026-11-17",
+      "pinterestDailyCoverage": "2026-11-09 through 2026-11-14; gaps 2026-11-15 through 2026-11-17",
+      "tiktokThreadsYoutube": "no active posts in final window; blocked pending qualified master/video",
+      "scheduledDoesNotProvePublished": true
+    }
+  },
+  "metricoolAnalytics": {
+    "period": {
+      "from": "2026-11-02T00:00:00+01:00",
+      "to": "2026-11-08T23:59:59+01:00",
+      "completedLocalDays": 7
+    },
+    "metricIds": {
+      "instagram": [
+        "IGEV05",
+        "IGEV38"
+      ],
+      "facebook": [
+        "FBEV49",
+        "FBEV34"
+      ],
+      "tiktok": [
+        "TKEV12",
+        "TKEV13",
+        "TKEV14",
+        "TKEV15"
+      ],
+      "pinterest": [
+        "PIEV01",
+        "PIEV04"
+      ],
+      "youtube": [
+        "YTEV02",
+        "YTEV10",
+        "YTEV12",
+        "YTEV19"
+      ],
+      "threads": [
+        "THEV06",
+        "THEV05"
+      ]
+    },
+    "channelInterpretation": {
+      "instagram": {
+        "rowsDays": 7,
+        "viewsPartialOrComplete": 647,
+        "viewsCompleteness": "7/7 rows",
+        "interactionsKnownMinimum": 6,
+        "interactionsCompleteness": "null on 3 days; full total unknown"
+      },
+      "facebook": {
+        "rowsDays": 7,
+        "pageMediaViewsPartialOrComplete": 406,
+        "viewsCompleteness": "7/7 rows",
+        "interactionsKnownMinimum": 1,
+        "interactionsCompleteness": "null on 6 days; full total unknown"
+      },
+      "tiktok": {
+        "rowsDays": 6,
+        "viewsKnown": 2095,
+        "likesKnown": 3,
+        "commentsKnown": 0,
+        "sharesKnown": 1,
+        "completeness": "6/7 days; 2026-11-08 unknown"
+      },
+      "pinterest": {
+        "rowsDays": 5,
+        "impressionsKnown": 4532,
+        "interactionsKnown": 61,
+        "completeness": "5/7 days; 2026-11-07 and 2026-11-08 unknown"
+      },
+      "youtube": {
+        "rowsDays": 6,
+        "viewsKnown": 233,
+        "interactionsKnownOnly": "2026-11-08 likes/comments/shares 0; other days null",
+        "completeness": "2026-11-07 absent; 2026-11-08 views null; full totals unknown"
+      },
+      "threads": {
+        "rowsDays": 1,
+        "viewsKnownOnly": "2026-11-08 0",
+        "interactionsKnownOnly": "2026-11-08 0",
+        "completeness": "1/7 days; other six unknown"
+      },
+      "salesInference": false
+    },
+    "missingDataRule": "Missing rows and null values are unknown, never zero. Explicit connector-returned zero is retained only where present.",
+    "crossChannelTotalCalculated": false,
+    "salesInferred": false
+  },
+  "products": [
+    {
+      "productId": "gid://shopify/Product/15521256604033",
+      "numericProductId": "15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "storefront": {
+        "httpStatus": 200,
+        "productJsonAvailable": true,
+        "available": true
+      },
+      "priceRange": {
+        "min": {
+          "amount": "34.90",
+          "currency": "CHF"
+        },
+        "max": {
+          "amount": "51.90",
+          "currency": "CHF"
+        }
+      },
+      "variants": [
+        {
+          "label": "A",
+          "variantId": "68122445283719",
+          "sku": "CJSN139239101AZ",
+          "price": {
+            "amount": "34.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        },
+        {
+          "label": "B",
+          "variantId": "68122445316487",
+          "sku": "CJSN139239102BY",
+          "price": {
+            "amount": "37.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        },
+        {
+          "label": "C",
+          "variantId": "68122445349255",
+          "sku": "CJSN139239103CX",
+          "price": {
+            "amount": "40.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        },
+        {
+          "label": "D",
+          "variantId": "68122445382023",
+          "sku": "CJSN139239104DW",
+          "price": {
+            "amount": "49.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        },
+        {
+          "label": "E",
+          "variantId": "68122445414791",
+          "sku": "CJSN139239105EV",
+          "price": {
+            "amount": "51.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        },
+        {
+          "label": "F",
+          "variantId": "68122445447559",
+          "sku": "CJSN139239106FU",
+          "price": {
+            "amount": "44.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        },
+        {
+          "label": "G",
+          "variantId": "68122445480327",
+          "sku": "CJSN139239107GT",
+          "price": {
+            "amount": "35.90",
+            "currency": "CHF"
+          },
+          "availableForSale": true
+        }
+      ],
+      "inventory": {
+        "tracked": false,
+        "quantity": 0,
+        "policy": "CONTINUE",
+        "zeroMeansOutOfStock": false,
+        "deliveryPromiseMade": false
+      },
+      "requiresShipping": true,
+      "tags": {
+        "nonEmpty": true,
+        "blockerTags": [],
+        "selectionTag": "auswahl-offen",
+        "socialGate": "passes_blocker_tag_check_but_master_binding_blocked"
+      },
+      "images": {
+        "verifiedReachableCount": 12,
+        "featuredUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "featuredSha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+        "featuredDimensions": "1920x1919"
+      },
+      "masterBinding": {
+        "currentVariantMotifPhysicalUnit": "unknown",
+        "historicalVariantId": "56197916361089",
+        "historicalVariantUsable": false,
+        "publicationGate": "blocked"
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15523986473345",
+      "numericProductId": "15523986473345",
+      "title": "Automatischer Futterspender für Katzen",
+      "status": "ACTIVE",
+      "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "storefront": {
+        "httpStatus": 200,
+        "productJsonAvailable": true,
+        "available": true
+      },
+      "price": {
+        "amount": "96.90",
+        "currency": "CHF"
+      },
+      "variant": {
+        "variantId": "56217490391425",
+        "sku": "CJ-1418384701726527488",
+        "availableForSale": true
+      },
+      "inventory": {
+        "tracked": false,
+        "quantity": 0,
+        "policy": "CONTINUE",
+        "zeroMeansOutOfStock": false,
+        "deliveryPromiseMade": false
+      },
+      "requiresShipping": true,
+      "tags": {
+        "nonEmpty": true,
+        "blockerTags": [],
+        "socialGate": "passes_blocker_tag_check"
+      },
+      "images": {
+        "verifiedReachableCount": 5,
+        "featuredUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+        "featuredSha256": "08e3a02097d9d323ff38e6f871148323ea525b6604a1fa8001e24625544840f1"
+      },
+      "seoReadback": {
+        "httpStatus": 200,
+        "titleAndH1": "Automatischer Futterspender für Katzen",
+        "canonicalSelf": true,
+        "state": "R153 fix still live"
+      }
+    }
+  ],
+  "professionalMaster": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "status": "blocked_no_master_mp4",
+    "actualRenderedMasterExists": false,
+    "outputRequirement": {
+      "durationSeconds": 18,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "frames": 540,
+      "video": "H264 High yuv420p",
+      "audio": "one AAC stereo stream",
+      "voiceover": false
+    },
+    "referenceProductImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+      "sha256": "bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d",
+      "width": 1920,
+      "height": 1919,
+      "freshDownloadMatched": true
+    },
+    "source": {
+      "path": "/workspace/luxestyle-review/r124-work/projector-source.mp4",
+      "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+      "durationSeconds": 27.96,
+      "width": 960,
+      "height": 540,
+      "fps": 25,
+      "audio": "AAC stereo 44100 Hz",
+      "use": "historical_product_level_reference_only"
+    },
+    "music": {
+      "path": "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "durationSeconds": 64.307664,
+      "codec": "pcm_s16le",
+      "sampleRate": 44100,
+      "channels": 2,
+      "technicalStatus": "present_and_hash_matched",
+      "legalListeningMixStatus": "blocked"
+    },
+    "gates": {
+      "variantMotifPhysicalUnitBinding": "unknown_blocked",
+      "hashBoundCommercialEditingAdvertisingRights": "missing_blocked",
+      "nativeVerticalTakes": "missing_blocked",
+      "musicLegalListeningMixApproval": "missing_blocked",
+      "render": "no_go",
+      "upload": "no_go",
+      "publish": "no_go"
+    },
+    "hooks": [
+      {
+        "id": "A",
+        "frames": "0-59",
+        "time": "0.00-2.00",
+        "visual": "Real projection from the currently bound physical unit",
+        "overlay": [
+          "Dein Raum.",
+          "Neues Licht."
+        ]
+      },
+      {
+        "id": "B",
+        "frames": "0-59",
+        "time": "0.00-2.00",
+        "visual": "Real housing/button detail from the same currently bound physical unit",
+        "overlay": [
+          "Licht im Detail."
+        ]
+      }
+    ],
+    "cutPlan": [
+      {
+        "frames": "0-59",
+        "time": "0.00-2.00",
+        "content": "one of the two hook alternatives"
+      },
+      {
+        "frames": "60-155",
+        "time": "2.00-5.20",
+        "content": "real continuous operation; hand, device and contact point visible",
+        "overlay": "Sternenlicht-Projektor"
+      },
+      {
+        "frames": "156-239",
+        "time": "5.20-8.00",
+        "content": "real lens/button/housing detail",
+        "overlay": "Aus der Nähe entdecken."
+      },
+      {
+        "frames": "240-389",
+        "time": "8.00-13.00",
+        "content": "real verified projection from the same unit and motif",
+        "overlay": "Lichtmomente."
+      },
+      {
+        "frames": "390-449",
+        "time": "13.00-15.00",
+        "content": "quiet real product hero",
+        "overlay": null
+      },
+      {
+        "frames": "450-539",
+        "time": "15.00-18.00",
+        "content": "same real hero",
+        "overlay": [
+          "Produkt ansehen",
+          "LuxeStyle · luxestyle.ch"
+        ]
+      }
+    ],
+    "overlayRules": {
+      "maxLines": 2,
+      "minimumFontPixels": 48,
+      "safeArea": "x96-984; y220-1450",
+      "prohibitedClaims": [
+        "price",
+        "material",
+        "delivery time",
+        "reviews",
+        "Swiss made"
+      ]
+    },
+    "nextRequiredInput": "Four native vertical takes of the same current A-G unit plus hash-bound commercial editing and advertising rights; then music rights/listening/mix approval and full final QA"
+  },
+  "klaviyo": {
+    "account": {
+      "id": "XWqMAD",
+      "name": "LuxeStyle CH",
+      "website": "https://luxestyle.ch",
+      "timezone": "Europe/Zurich",
+      "preferredCurrency": "USD",
+      "shopCurrencyKeptSeparate": "CHF"
+    },
+    "placedOrderMetric": {
+      "id": "W7XTVD",
+      "integration": "Shopify"
+    },
+    "timeframe": {
+      "start": "2026-11-02T00:00:00+01:00",
+      "end": "2026-11-09T00:00:00+01:00"
+    },
+    "flows": {
+      "Vse76a": {
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "report": "unknown_missing_row"
+      },
+      "VbLQj6": {
+        "name": "Welcome Series",
+        "status": "draft",
+        "report": "unknown_missing_row"
+      },
+      "RnTvsY": {
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft",
+        "messages": [
+          {
+            "name": "Review Request T+10d",
+            "recipients": 2,
+            "delivered": 2,
+            "opensUnique": 1,
+            "clicksUnique": 0
+          }
+        ]
+      },
+      "XEGbTB": {
+        "name": "Abandoned Checkout · 1 Std",
+        "status": "draft",
+        "messages": [
+          {
+            "name": "Abandoned Checkout - Email 1 (nach 1 Std)",
+            "recipients": 2,
+            "delivered": 0,
+            "bounced": 2,
+            "opensUnique": 0,
+            "clicksUnique": 0
+          },
+          {
+            "name": "Abandoned Checkout - Email 2 (nach 24 Std, -10%)",
+            "recipients": 2,
+            "delivered": 2,
+            "bounced": 0,
+            "opensUnique": 1,
+            "clicksUnique": 0
+          }
+        ]
+      },
+      "UXEjv2": {
+        "name": "Abandoned Cart · EN/US",
+        "status": "draft",
+        "report": "not_queried"
+      }
+    },
+    "triggerBinding": {
+      "Checkout Started/XhnJPv": [
+        "UXEjv2",
+        "Vse76a",
+        "XEGbTB"
+      ],
+      "Added to Cart/TFy7Yn": []
+    },
+    "capture": {
+      "nativeFormsVisible": false,
+      "absenceMeans": "unknown",
+      "homeHttp": 200,
+      "homeMarkers": {
+        "XWqMAD": true,
+        "klaviyo": true,
+        "T2VHfu": true,
+        "newsletter": true
+      },
+      "endToEndSignupTested": false
+    },
+    "singleProposal": "XEGbTB als einzigen deutschen Checkout-Recovery-Pfad konsolidieren; den unbelegten -10%-Inhalt neutralisieren und Trigger/Checkout-Link end-to-end prüfen; erst danach separat aktivieren.",
+    "writes": 0,
+    "revenueValuesCombined": false
+  },
+  "singleSalesActionForApproval": {
+    "id": "fr-metadata-two-entry-pages-20261109",
+    "type": "Shopify translation metadata repair",
+    "status": "approval_draft_only",
+    "scope": [
+      {
+        "url": "https://luxestyle.ch/fr/",
+        "currentProblem": "French page and canonical but German meta and Open Graph description",
+        "proposedMetaAndOgDescription": "Mode, beauté, maison et technologie chez LuxeStyle à Belp. Livraison en Suisse et au Liechtenstein. Livraison gratuite en Suisse dès CHF 50."
+      },
+      {
+        "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+        "currentProblem": "French visible main text but German title, meta, Open Graph and H1",
+        "proposedTitle": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+        "proposedMetaAndOgDescription": "Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+        "proposedH1": "Personnalisez T-shirts, tasses et plus encore"
+      }
+    ],
+    "guard": "Change only the matching translation objects after a before-diff; reread both pages, canonicals and German originals. No theme, locale, shipping or Merchant setting change.",
+    "writePerformed": false
+  },
+  "evidence": [
+    {
+      "path": "/dev/shm/metricool-postwrite-20261109.json",
+      "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
+      "role": "final Metricool readback after quality blocks"
+    },
+    {
+      "path": "/dev/shm/metricool-analytics-20261109.json",
+      "sha256": "d802bfda5807436e2f91736a875d9edfde94186913aa7fc9354c864b68cc5000",
+      "role": "seven completed local days analytics"
+    },
+    {
+      "path": "/dev/shm/klaviyo-review-20261109.json",
+      "sha256": "b4ed505c61b3d00720fb555e16b0872f0a40eb71fca63486a7d0f2fda23ca81f",
+      "role": "Klaviyo read-only flow report"
+    },
+    {
+      "path": "/dev/shm/master-audit-20261109.json",
+      "sha256": "a6a026fb694de7a8a207278be9913abe7a5c721b23d1adfaa31af81006b5a7e4",
+      "role": "master/source/music gate audit"
+    },
+    {
+      "path": "/dev/shm/metricool-r125-active-20261109.json",
+      "sha256": "1c7b85d27ab893b026f438ce9121f3c2f9911f63860260a15056a02e4757a0e3",
+      "role": "R125 affected-post detection and update evidence"
+    },
+    {
+      "path": "/dev/shm/metricool-update-schema-evidence-20261109-v2.json",
+      "sha256": "2aea201f9bb0c86c89e41b3a88fc83bdef41cdec74aea431d570ccd2c576a542",
+      "role": "Metricool update-schema evidence"
+    },
+    {
+      "path": "/dev/shm/metricool-new-video-audit-20261109.json",
+      "sha256": "4e3d2a69a8f18c9ce69e97a59c85fde2e69ca933074e08d1e0479ca7834aabf7",
+      "role": "14 additional video technical and creative audit"
+    },
+    {
+      "path": "/dev/shm/metricool-new-video-audit-20261109-v2/all-sheets.jpg",
+      "sha256": "b2e384057704448f86aa50e9c91be4ed5d36b3c7ab33cd25ab292fd773c7b2ff",
+      "role": "contact sheet for additional video audit"
+    }
+  ],
+  "operationalBoundaries": {
+    "customerContact": false,
+    "discountChanged": false,
+    "budgetChanged": false,
+    "shopSettingsChanged": false,
+    "klaviyoFlowChanged": false,
+    "dnsChanged": false,
+    "paidRenderTriggered": false,
+    "merchantOrShippingSettingsChanged": false,
+    "orderWatchRun": false,
+    "reason": "purchase watch already ended; no new order query"
+  },
+  "unknowns": [
+    "Projector variant, motif and same-physical-unit binding for the proposed master",
+    "Hash-bound commercial editing, advertising and six-channel publication rights for the film",
+    "Required music rights provenance and final listening/mix approval",
+    "Published delivery state of scheduled photo posts; schedule readback alone is not proof",
+    "Full metrics totals where rows or values were missing",
+    "End-to-end Klaviyo signup behaviour and missing flow-report rows"
+  ]
+}
