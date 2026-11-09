@@ -1,0 +1,390 @@
+{
+  "schemaVersion": "luxestyle-public-audit-r156-v1",
+  "scope": "Fünf exakt benannte öffentliche LuxeStyle-Seiten; keine Crawl-Pagination und keine Schreibaktion.",
+  "fetchedAtUtc": "2026-11-09T18:01:16.882976+00:00",
+  "fetchedAtEuropeZurich": "2026-11-09T19:01:16.883200+01:00",
+  "pages": [
+    {
+      "key": "de_home",
+      "requestedUrl": "https://luxestyle.ch/",
+      "effectiveUrl": "https://luxestyle.ch/",
+      "httpStatus": 200,
+      "bytes": 1055028,
+      "sha256": "920af53ae0e3565aea821b239d4c98cd5141ae643848dcc444419fa102c0eb40",
+      "htmlLang": "de",
+      "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+      "titleChars": 60,
+      "metaDescription": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "metaDescriptionChars": 151,
+      "canonical": "https://luxestyle.ch/",
+      "hreflang": [
+        {
+          "hreflang": "x-default",
+          "href": "https://luxestyle.ch/"
+        },
+        {
+          "hreflang": "de",
+          "href": "https://luxestyle.ch/"
+        },
+        {
+          "hreflang": "fr",
+          "href": "https://luxestyle.ch/fr"
+        }
+      ],
+      "h1": [
+        "Schön leben.",
+        "Schlau shoppen."
+      ],
+      "openGraph": {
+        "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+        "description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+        "url": "https://luxestyle.ch/",
+        "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "type": "website"
+      },
+      "linkCounts": {
+        "allInstances": 1612,
+        "allUnique": 816,
+        "collectionInstances": 1513,
+        "collectionUnique": 750
+      },
+      "structuredProductData": [],
+      "languageFinding": "Deutsch konsistent im Hauptinhalt.",
+      "issues": [
+        "Mega-Navigation erzeugt 1513 Collection-Link-Instanzen und 750 eindeutige Collection-Ziele im serverseitigen HTML; interne Linkgewichtung und Crawl-Fokus sind dadurch stark verteilt."
+      ]
+    },
+    {
+      "key": "fr_home",
+      "requestedUrl": "https://luxestyle.ch/fr/",
+      "effectiveUrl": "https://luxestyle.ch/fr/",
+      "httpStatus": 200,
+      "bytes": 1016823,
+      "sha256": "5393aa575cfb322dc740f0c53f428c0fe1d67660e4b529d9877390c942dab256",
+      "htmlLang": "fr",
+      "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+      "titleChars": 54,
+      "metaDescription": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "metaDescriptionChars": 151,
+      "canonical": "https://luxestyle.ch/fr",
+      "hreflang": [
+        {
+          "hreflang": "x-default",
+          "href": "https://luxestyle.ch/"
+        },
+        {
+          "hreflang": "de",
+          "href": "https://luxestyle.ch/"
+        },
+        {
+          "hreflang": "fr",
+          "href": "https://luxestyle.ch/fr"
+        }
+      ],
+      "h1": [
+        "Bien vivre.",
+        "Acheter malin."
+      ],
+      "openGraph": {
+        "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+        "description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+        "url": "https://luxestyle.ch/fr",
+        "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "type": "website"
+      },
+      "linkCounts": {
+        "allInstances": 1609,
+        "allUnique": 819,
+        "collectionInstances": 1513,
+        "collectionUnique": 751
+      },
+      "structuredProductData": [],
+      "languageFinding": "H1 und redaktioneller Haupttext überwiegend Französisch, aber viele ausgespielte Produktnamen sowie der Navigationslink «Selbst gestalten» bleiben Deutsch.",
+      "issues": [
+        "Meta-Description und og:description sind vollständig Deutsch, obwohl html[lang]=fr und Titel/H1 Französisch sind.",
+        "Viele Produktkarten tragen deutsche Titel; das ist sichtbarer Sprachmix.",
+        "Mega-Navigation erzeugt 1513 Collection-Link-Instanzen und 751 eindeutige Collection-Ziele."
+      ]
+    },
+    {
+      "key": "fr_self_design",
+      "requestedUrl": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "effectiveUrl": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "httpStatus": 200,
+      "bytes": 1206513,
+      "sha256": "c888b52ad41671c0c55d67aeca1f73438d75be6496eb8742fb961f680292832d",
+      "htmlLang": "fr",
+      "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "titleChars": 52,
+      "metaDescription": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "metaDescriptionChars": 156,
+      "canonical": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "hreflang": [
+        {
+          "hreflang": "x-default",
+          "href": "https://luxestyle.ch/pages/selbst-gestalten"
+        },
+        {
+          "hreflang": "de",
+          "href": "https://luxestyle.ch/pages/selbst-gestalten"
+        },
+        {
+          "hreflang": "fr",
+          "href": "https://luxestyle.ch/fr/pages/selbst-gestalten"
+        }
+      ],
+      "h1": [
+        "T-Shirt, Tasse & mehr selbst gestalten"
+      ],
+      "openGraph": {
+        "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+        "description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+        "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+        "image": "http://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+        "type": "website"
+      },
+      "linkCounts": {
+        "allInstances": 1604,
+        "allUnique": 796,
+        "collectionInstances": 1477,
+        "collectionUnique": 746
+      },
+      "structuredProductData": [],
+      "languageFinding": "html[lang]=fr und Preislabels sind Französisch; Titel, Meta, og:title/description, H1, vollständiger Seitentext und Produktnamen sind Deutsch.",
+      "issues": [
+        "Die zentrale französische Ranking-/Verkaufsseite ist inhaltlich eine deutsche Fallback-Seite.",
+        "Lokalisierter Canonical und de/fr/x-default-Hreflang sind vorhanden, reichen ohne französischen Inhalt nicht aus.",
+        "1477 Collection-Link-Instanzen mit 746 eindeutigen Collection-Zielen verteilen Crawl- und interne Linksignale."
+      ]
+    },
+    {
+      "key": "projector",
+      "requestedUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "effectiveUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "httpStatus": 200,
+      "bytes": 1109533,
+      "sha256": "8de25d02eaf5545665171f6d69d74a53a6f728c01ad53d3d71aff426c66b0f12",
+      "htmlLang": "de",
+      "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+      "titleChars": 52,
+      "metaDescription": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen.",
+      "metaDescriptionChars": 140,
+      "canonical": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "hreflang": [
+        {
+          "hreflang": "x-default",
+          "href": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        },
+        {
+          "hreflang": "de",
+          "href": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        },
+        {
+          "hreflang": "fr",
+          "href": "https://luxestyle.ch/fr/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        }
+      ],
+      "h1": [
+        "Sternenlicht-Projektor für Schlafzimmer"
+      ],
+      "openGraph": {
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "description": "Sternenlicht-Projektor für stimmungsvolle Beleuchtung im Schlafzimmer. Produktdetails, Preis und Verfügbarkeit bei LuxeStyle online ansehen.",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "image": "http://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "type": "product"
+      },
+      "linkCounts": {
+        "allInstances": 1537,
+        "allUnique": 781,
+        "collectionInstances": 1478,
+        "collectionUnique": 745
+      },
+      "structuredProductData": [
+        {
+          "type": "ProductGroup",
+          "name": "Sternenlicht-Projektor für Schlafzimmer",
+          "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544#product",
+          "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "productGroupID": "15521256604033",
+          "variantCount": 7,
+          "variants": [
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - A",
+              "sku": "CJSN139239101AZ",
+              "image": "https://luxestyle.ch/cdn/shop/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090&width=1920",
+              "price": "34.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            },
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - B",
+              "sku": "CJSN139239102BY",
+              "image": "https://luxestyle.ch/cdn/shop/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090&width=1920",
+              "price": "37.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            },
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445349255#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - C",
+              "sku": "CJSN139239103CX",
+              "image": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=1920",
+              "price": "40.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            },
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445382023#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - D",
+              "sku": "CJSN139239104DW",
+              "image": "https://luxestyle.ch/cdn/shop/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090&width=1920",
+              "price": "49.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            },
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445414791#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - E",
+              "sku": "CJSN139239105EV",
+              "image": "https://luxestyle.ch/cdn/shop/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090&width=1920",
+              "price": "51.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            },
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445447559#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - F",
+              "sku": "CJSN139239106FU",
+              "image": "https://luxestyle.ch/cdn/shop/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090&width=1920",
+              "price": "44.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            },
+            {
+              "id": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445480327#variant",
+              "name": "Sternenlicht-Projektor für Schlafzimmer - G",
+              "sku": "CJSN139239107GT",
+              "image": "https://luxestyle.ch/cdn/shop/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090&width=1920",
+              "price": "35.90",
+              "currency": "CHF",
+              "availability": "http://schema.org/InStock"
+            }
+          ]
+        },
+        {
+          "type": "VideoObject",
+          "name": "Produktvideo: Sternenlicht-Projektor für Schlafzimmer",
+          "id": null,
+          "url": null,
+          "contentUrl": "https://luxestyle.ch/cdn/shop/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4?v=0",
+          "thumbnailUrl": [
+            "https://luxestyle.ch/cdn/shop/files/preview_images/6490c6357dae4df69bb910178acb2912.thumbnail.0000000000.jpg?v=1791765564&width=1200"
+          ],
+          "uploadDate": "2026-08-31"
+        }
+      ],
+      "languageFinding": "Deutsch konsistent in Titel, Meta, H1 und Hauptinhalt.",
+      "issues": [
+        "Die Seite publiziert konkrete Masse, Gewicht, Leistung, Lieferumfang, Varianteneigenschaften und ein datiertes Lieferfenster; diese Aussagen dürfen für Social/Video ohne aktuelle Lieferanten- und Variantenbindung nicht übernommen werden.",
+        "JSON-LD bindet ein öffentliches ProductGroup mit sieben A–G-Varianten und ein VideoObject, belegt aber weder konkrete Variante/Motiv/physische Einheit noch kommerzielle Bearbeitungs- oder Werberechte."
+      ]
+    },
+    {
+      "key": "feeder",
+      "requestedUrl": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "effectiveUrl": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "httpStatus": 200,
+      "bytes": 1028615,
+      "sha256": "096e544cb69c9138b28cbde1b4df3c0f8ce059628b1cea424b5685187d7a80ae",
+      "htmlLang": "de",
+      "title": "Automatischer Futterspender für Katzen | LuxeStyle CH",
+      "titleChars": 53,
+      "metaDescription": "Automatischer Futterspender für Katzen mit Fütterungsfunktion. Aus Edelstahl gefertigt und für die Futterausgabe während deiner Abwesenheit.",
+      "metaDescriptionChars": 140,
+      "canonical": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "hreflang": [
+        {
+          "hreflang": "x-default",
+          "href": "https://luxestyle.ch/products/futterautomat-fur-katze-527488"
+        },
+        {
+          "hreflang": "de",
+          "href": "https://luxestyle.ch/products/futterautomat-fur-katze-527488"
+        },
+        {
+          "hreflang": "fr",
+          "href": "https://luxestyle.ch/fr/products/futterautomat-fur-katze-527488"
+        }
+      ],
+      "h1": [
+        "Automatischer Futterspender für Katzen"
+      ],
+      "openGraph": {
+        "title": "Automatischer Futterspender für Katzen | LuxeStyle CH",
+        "description": "Automatischer Futterspender für Katzen mit Fütterungsfunktion. Aus Edelstahl gefertigt und für die Futterausgabe während deiner Abwesenheit.",
+        "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+        "image": "http://luxestyle.ch/cdn/shop/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+        "type": "product"
+      },
+      "linkCounts": {
+        "allInstances": 1535,
+        "allUnique": 780,
+        "collectionInstances": 1476,
+        "collectionUnique": 744
+      },
+      "structuredProductData": [
+        {
+          "type": "Product",
+          "name": "Automatischer Futterspender für Katzen",
+          "id": "/products/futterautomat-fur-katze-527488#product",
+          "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+          "sku": "CJ-1418384701726527488",
+          "image": "https://luxestyle.ch/cdn/shop/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889&width=1920",
+          "price": "96.90",
+          "currency": "CHF",
+          "availability": "http://schema.org/InStock"
+        }
+      ],
+      "languageFinding": "Deutsch konsistent in Titel, Meta, H1 und Hauptinhalt.",
+      "issues": [
+        "Die Seite publiziert Material Edelstahl, Gewicht ca. 2,2 kg, Funktions- und Lieferzeitaussagen; sie sind im öffentlichen HTML sichtbar, wurden in dieser Prüfung aber nicht an ein aktuelles Lieferantendokument gebunden.",
+        "Kein Product-VideoObject im geprüften HTML; damit liegt weiterhin kein öffentlich gebundenes Filmmaterial für einen Master vor."
+      ]
+    }
+  ],
+  "assetChecks": [
+    {
+      "url": "https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=1200",
+      "status": 200,
+      "contentType": "image/png",
+      "role": "Logo/OG-Referenz"
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090&width=1200",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "role": "Projektor-Referenzbild"
+    },
+    {
+      "url": "https://luxestyle.ch/cdn/shop/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889&width=1200",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "role": "Futterspender-Referenzbild"
+    }
+  ],
+  "crossPageFindings": [
+    "Alle fünf URLs antworten HTTP 200; Canonicals zeigen auf die jeweils erwartete lokalisierte oder deutsche Ziel-URL und de/fr/x-default-Hreflang ist vorhanden.",
+    "Die drei gezielt geprüften echten Bilddateien antworten HTTP 200. Die og:image-Tags verwenden jedoch http:// statt https://, obwohl dieselben Assets über HTTPS erreichbar sind; für robuste Social-Previews sollte die Theme-Ausgabe HTTPS liefern.",
+    "Die französische Homepage und besonders /fr/pages/selbst-gestalten bleiben sprachlich gemischt. Das ist der klarste unmittelbar vorbereitete organische Verkaufshebel.",
+    "Die Navigation liefert je Stichprobenseite rund 744–751 eindeutige Collection-Ziele und etwa 1476–1513 Collection-Link-Instanzen; ein begrenzter Theme-Preview-Diff ist sinnvoll, aber in diesem Read-only-Lauf nicht ausgeführt.",
+    "Öffentliche Liefer-, Material-, Mass-, Funktions- oder Verfügbarkeitsaussagen wurden beobachtet, nicht als Lieferantenbeleg validiert und dürfen deshalb nicht automatisch in Social-Content übernommen werden."
+  ],
+  "safeNextAction": {
+    "action": "Die bereits feld- und digestgebundene französische Übersetzung für Shopify Page gid://shopify/Page/698444710273 nach Inhaberfreigabe anwenden und danach DE/FR title, meta, og, H1, body, canonical und hreflang gezielt zurücklesen.",
+    "writesPerformed": false,
+    "reason": "Die lokalisierte URL ist erreichbar und technisch korrekt verlinkt, liefert aber deutschen Hauptinhalt."
+  }
+}
