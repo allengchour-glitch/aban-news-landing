@@ -982,7 +982,7 @@
     '.lsp6 :focus-visible,.lsp6-modal :focus-visible{outline:3px solid #1e4fd6;outline-offset:2px}',
     '.lsp6-sicht{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:var(--paper);border-bottom:1px solid #ece7df}',
     '.lsp6-sbtn{flex:1 1 92px;min-width:0;min-height:44px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-weight:700;font-size:13px;line-height:1.2;cursor:pointer}',
-    '.lsp6-sbtn[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}',
+    '.lsp6-sbtn[aria-pressed=true],.lsp6-sbtn[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}',
     '.lsp6-sicht[data-anzahl="3"] .lsp6-sbtn{padding:8px 6px;font-size:12.5px}',
     '.lsp6-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}',
     // «Bearbeiten» auf dem Produkt: Reihenfolge der Schichten (Grund, Ebenen, Vorlagenbild, Rahmen, Griffe). Der Host ist ein eigener Stapelkontext und beschneidet die Ebenen auf die Druckfläche;
@@ -1273,6 +1273,13 @@
       chromeAbgleichen();
       zoomAktualisieren();
       vorschauPlanen();
+      if (pb) tplFehlerPruefen();
+    }
+    /** Hat das Produktfoto der Bühne nicht geladen, während «Bearbeiten» es zeigen soll? Dann zurück auf «Druckversion» (ohne Rekursion: dort ist produktBuehne() falsch). */
+    function tplFehlerPruefen() {
+      if (!ui.tplFehlerUrl || ui.tplFehlerUrl !== ui.tpl.getAttribute('src') || !produktBuehne()) return;
+      sichtSetzen('druck');
+      ui.sichtHinweis.textContent = T.bearbeitenFoto; ui.sichtBox.hidden = false;
     }
     function metaAktualisieren() {
       var teile = [];
@@ -1302,8 +1309,9 @@
     }
     function zoomSetzen(stufe) {
       var i = typeof stufe === 'number' ? stufe : ZOOM_STUFEN.indexOf(stufe);
+      if (typeof stufe !== 'number' && i < 0) return;   // unbekannter Name
       i = Math.max(0, Math.min(ZOOM_STUFEN.length - 1, i));
-      if (!(i >= 0) || ZOOM_STUFEN[i] === st.zoom || !produktBuehne()) return;
+      if (ZOOM_STUFEN[i] === st.zoom || !produktBuehne()) return;
       st.zoom = ZOOM_STUFEN[i];
       buehneAufbauen(); metaAktualisieren(); alleZeichnen();
       ui.zoomLive.textContent = T.zoomLabel + ': ' + T.zoomStufen[i];
@@ -1367,14 +1375,20 @@
     // Das Motiv liegt im Host (beschnitten auf die Druckfläche, UNTER dem Vorlagenbild). Rahmen, Skalieren-Griff und Löschknopf der gewählten Ebene ziehen dafür in die Schicht
     // ui.chromeRoot, die über dem Vorlagenbild liegt, dieselbe Grösse und dieselbe Transformation hat und nie beschnitten wird. In der Bühne von 6.3.1 bleiben sie in der Ebene.
     var chromeBeob = null;
+    var CHROME_MIN = 64;   // kleinste Seite der Schicht für Griffe in Pixeln (siehe chromeNachziehen)
     function chromeNachziehen() {
       if (ui.chromeRoot.hidden) return;
       var k = st.sel && knoten[st.sel];
       if (!k) return;
-      var c = ui.chromeRoot.style, b = k.root.offsetWidth + 'px', h = k.root.offsetHeight + 'px', t = k.root.style.transform;
-      if (c.width !== b) c.width = b;
-      if (c.height !== h) c.height = h;
+      // Die Schicht ist mindestens CHROME_MIN × CHROME_MIN gross, damit Griff und Löschknopf bei kleinen Motiven nicht auf dem Motiv liegen: ihre Trefferflächen (44 px) und das Hinweisen eines Fingers
+      // (Chromium findet bei Berührung auch Ziele im Umkreis, GEMESSEN an einem 31 × 13 px grossen Text: der Löschknopf gewann) lassen sonst keinen Platz, das Motiv selbst zu greifen.
+      // Der gestrichelte Rahmen bleibt eng um das Motiv.
+      var c = ui.chromeRoot.style, lw = k.root.offsetWidth, lh = k.root.offsetHeight;
+      var bw = Math.max(CHROME_MIN, lw), bh = Math.max(CHROME_MIN, lh), t = k.root.style.transform;
+      if (c.width !== bw + 'px') c.width = bw + 'px';
+      if (c.height !== bh + 'px') c.height = bh + 'px';
       if (c.transform !== t) c.transform = t;
+      k.frame.style.cssText = 'inset:auto;left:' + ((bw - lw) / 2 - 8) + 'px;top:' + ((bh - lh) / 2 - 8) + 'px;width:' + (lw + 16) + 'px;height:' + (lh + 16) + 'px';
     }
     function chromeAbgleichen() {
       var ueber = !legacy && ui.stage.getAttribute('data-ansicht') === 'bearbeiten';
@@ -1384,6 +1398,7 @@
       Object.keys(knoten).forEach(function (lid) {
         var k = knoten[lid], ref = k === gewaehlt ? ui.chromeRoot : k.root;
         [k.frame, k.handle, k.del].forEach(function (n) { if (n.parentNode !== ref) ref.appendChild(n); });
+        if (k !== gewaehlt && k.frame.getAttribute('style')) k.frame.removeAttribute('style');   // zurück in der Ebene gilt der Rahmen von 6.3.1 (inset:-8px)
       });
       Array.prototype.slice.call(ui.chromeRoot.children).forEach(function (n) {   // Reste einer entfernten Ebene
         if (!gewaehlt || (n !== gewaehlt.frame && n !== gewaehlt.handle && n !== gewaehlt.del)) ui.chromeRoot.removeChild(n);
@@ -2708,12 +2723,9 @@
     [ui.grund, ui.bg, ui.tpl, ui.host].concat(ui.veil, [ui.frame, ui.tag, ui.chromeHost, ui.readout]).forEach(function (n) { ui.stage.appendChild(n); });
     [ui.bg, ui.tpl].forEach(function (img) { img.addEventListener('error', function () { img.hidden = true; }); });
     ui.bg.addEventListener('error', function () { if (ui.grund.getAttribute('data-ersatz')) ui.grund.style.background = ui.grund.getAttribute('data-ersatz'); });   // Textur lädt nicht: Stofffarbe
-    // Lädt das Produktfoto nicht, hilft «Bearbeiten» nicht weiter: zurück in die Druckversion mit einem ruhigen Hinweis (gedruckt wird die Druckdatei, nicht das Foto)
-    ui.tpl.addEventListener('error', function () {
-      if (!produktBuehne()) return;
-      sichtSetzen('druck');
-      ui.sichtHinweis.textContent = T.bearbeitenFoto; ui.sichtBox.hidden = false;
-    });
+    // Lädt das Produktfoto nicht, hilft «Bearbeiten» nicht weiter: zurück in die Druckversion mit einem ruhigen Hinweis (gedruckt wird die Druckdatei, nicht das Foto).
+    // Der Fehler kann vor den Vorschaudaten eintreffen: die Adresse wird gemerkt und beim Aufbau der Produktbühne geprüft.
+    ui.tpl.addEventListener('error', function () { ui.tplFehlerUrl = ui.tpl.getAttribute('src'); tplFehlerPruefen(); });
     if (window.ResizeObserver) chromeBeob = new ResizeObserver(function () { chromeNachziehen(); });
     var buehne = el('div', { class: 'lsp6-stagewrap' }, [ui.stage]);
     ui.karte.appendChild(buehne);

@@ -5,7 +5,7 @@
  * Karten und Vorschaudaten: die LIVE-Dateien aus pod/v6/maps (T-Shirt 71/456/586, Hoodie 145/821, Classic-Tee 438, Kiss-Cut 358, Stickerei 1552) und die Test-Karten aus testdaten/ (Tasse 19, Poster 268,
  * Kappe 206, Allover-Hoodie 388, Modell 1592, T-Shirt 71 mit Farbtabelle). Vorlagenbilder: Nachbauten (lib.mjs: geisterPng) oder, mit V6_BILDCACHE, die echten Printful-Bilder.
  * Aufruf: node bearbeiten_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = die schnellen für die Mutationsprobe)
- * Umgebung: V6_DATEI (andere Fassung des Editors, für die Mutationsprobe), V6_REF_DATEI (Referenz für den Byte-Vergleich, Standard 6.3.1), V6_BILDCACHE.
+ * Umgebung: V6_DATEI (andere Fassung des Editors, für die Mutationsprobe), V6_REF_DATEI (Referenz für den Byte-Vergleich, Standard 6.3.1), V6_BILDCACHE, V6_MESSWERTE=1 (druckt die Zahlen von «Gleiche Vorschau»).
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -169,6 +169,8 @@ szenario('reiter-a11y', false, async (b, srv) => {
   const attr = await p.evaluate(() => [...document.querySelectorAll('.lsp6-sbtn')].map((x) => ({ t: x.getAttribute('tabindex'), sel: x.getAttribute('aria-selected'), c: x.getAttribute('aria-controls'), vorhanden: !!document.getElementById(x.getAttribute('aria-controls')) })));
   pruefe('roving tabindex: nur der gewählte Reiter ist per Tab erreichbar', attr.map((x) => x.t).join(',') === '0,-1,-1' && attr.filter((x) => x.sel === 'true').length === 1);
   pruefe('aria-controls zeigt auf ein vorhandenes Feld (Bühne oder Produktansicht)', attr.every((x) => x.vorhanden), JSON.stringify(attr));
+  const farben = await p.evaluate(() => [...document.querySelectorAll('.lsp6-sbtn')].map((x) => getComputedStyle(x).backgroundColor));
+  pruefe('der gewählte Reiter sieht anders aus als die übrigen (Hintergrund)', farben[0] !== farben[1] && farben[1] === farben[2], JSON.stringify(farben));
   await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').focus();
   await p.keyboard.press('ArrowRight');
   pruefe('Pfeil rechts: Fokus auf «Druckversion», noch nicht gewählt', await p.evaluate(() => document.activeElement.getAttribute('data-sicht')) === 'druck' && (await sicht(p)) === 'bearbeiten');
@@ -222,18 +224,18 @@ szenario('fenster-zoom', true, async (b, srv) => {
     await p.getByRole('button', { name: 'Zoom −' }).click();
     pruefe(`${bez}: Zoom − → «Ganzes Produkt», Knopf Zoom − gesperrt (aria-disabled)`, await p.locator('[data-feld="zoomstufe"]').innerText() === 'Ganzes Produkt' && (await p.getByRole('button', { name: 'Zoom −' }).getAttribute('aria-disabled')) === 'true');
     lagePruefen(`${bez} Stufe Ganzes Produkt`, await lage(p), sollLage(g.vl, 'vorlage'));
-    await p.getByRole('button', { name: 'Zoom −' }).click();
+    await p.getByRole('button', { name: 'Zoom −' }).click({ force: true });
     pruefe(`${bez}: am Ende bleibt es bei «Ganzes Produkt»`, await p.evaluate(() => window.LSPOD6.editors[0].st.zoom) === 'vorlage');
     await p.getByRole('button', { name: 'Zoom +' }).click();
     await p.getByRole('button', { name: 'Zoom +' }).click();
     pruefe(`${bez}: zweimal Zoom + → «Druckfläche», Knopf Zoom + gesperrt`, await p.locator('[data-feld="zoomstufe"]').innerText() === 'Druckfläche' && (await p.getByRole('button', { name: 'Zoom +' }).getAttribute('aria-disabled')) === 'true');
     lagePruefen(`${bez} Stufe Druckfläche`, await lage(p), sollLage(g.vl, 'flaeche'));
-    await p.getByRole('button', { name: 'Zoom +' }).click();
+    await p.getByRole('button', { name: 'Zoom +' }).click({ force: true });
     pruefe(`${bez}: am Ende bleibt es bei «Druckfläche»`, await p.evaluate(() => window.LSPOD6.editors[0].st.zoom) === 'flaeche');
     const nachher = await ebenen(p);
     pruefe(`${bez}: die Ebenen sind nach allen Zoomstufen unverändert`, JSON.stringify(vorher) === JSON.stringify(nachher), JSON.stringify([vorher, nachher]));
     pruefe(`${bez}: die Ebene liegt in jeder Stufe an derselben Stelle der Druckfläche (Mitte der Fläche)`, await p.evaluate(() => { const h = document.querySelector('.lsp6-host').getBoundingClientRect(), l2 = document.querySelector('.lsp6-layer').getBoundingClientRect(); const e = window.LSPOD6.editors[0].st.ebenen.front[0]; return Math.abs((l2.left + l2.width / 2 - h.left) / h.width - e.cx) < 0.01; }));
-    await p.getByRole('button', { name: 'Zoom −' }).click(); await p.getByRole('button', { name: 'Zoom −' }).click();
+    await p.getByRole('button', { name: 'Zoom −' }).click(); await p.getByRole('button', { name: 'Zoom −' }).click({ force: true });
     pruefe(`${bez}: Tastatur: Zoom + per Enter`, await (async () => { await p.getByRole('button', { name: 'Zoom +' }).focus(); await p.keyboard.press('Enter'); return (await p.evaluate(() => window.LSPOD6.editors[0].st.zoom)) === 'produkt'; })());
     pruefe(`${bez}: Zoom-Knöpfe mindestens 44 px, Zustand als Live-Meldung`, (await p.locator('.lsp6-zoom button').evaluateAll((e) => e.every((x) => x.getBoundingClientRect().height >= 44 && x.getBoundingClientRect().width >= 44))) && /Produkt/.test(await p.locator('[data-feld="zoomlive"]').textContent()));
     // Druckversion: der Link von 6.3.1, kein Zoomknopf; Zoom zurück in Bearbeiten hält die Stufe
@@ -278,7 +280,7 @@ szenario('theme-regel', true, async (b, srv) => {
     await s.schliessen();
   }
   // ein Modell mit Textur (Variante ohne Farbtabelle): auch das Hintergrundbild bleibt ungequetscht
-  const t = await oeffnen(b, srv, SHIRT_Q([V71_FARBIG, V456, V586]));
+  const t = await oeffnen(b, srv, T71.replace('1001:4012', '1001:4020'));   // Test-Karte 71 mit Farbtabelle: schwarze Variante
   await sichtWarten(t.page);
   const bg = await t.page.evaluate(() => { const i = document.querySelector('.lsp6-bg'); const st = document.querySelector('.lsp6-stage').getBoundingClientRect(); const r = i.getBoundingClientRect(); return { sichtbar: !i.hidden, w: r.width, h: r.height, bw: st.width }; });
   pruefe('Modell mit Textur: das Hintergrundbild ist so breit wie das Vorlagenbild und quadratisch', !bg.sichtbar || Math.abs(bg.w - bg.h) < 1.5, JSON.stringify(bg));
@@ -294,24 +296,26 @@ szenario('schichten', true, async (b, srv) => {
   await p.evaluate(() => { const st = document.createElement('style'); st.textContent = '.lsp6-frame,.lsp6-tag,.lsp6-readout,.lsp6-chrome-host,.lsp6-guide{visibility:hidden!important}'; document.head.appendChild(st); });
   await motivHinzu(p, '#ffffff');
   await bilderGeladen(p);
+  const motivId = await p.evaluate(() => window.LSPOD6.editors[0].st.sel);
   await p.evaluate(() => window.LSPOD6.editors[0].waehlen(null));
-  const rg = await p.evaluate(() => { const st = document.querySelector('.lsp6-stage').getBoundingClientRect(), t = document.querySelector('.lsp6-tpl').getBoundingClientRect(); return { x: st.left, y: st.top, tl: t.left - st.left, tt: t.top - st.top, tw: t.width, th: t.height }; });
-  const bildStueck = async (fx, fy) => {   // Farbe eines Pixels (Bruchteile des Vorlagenbilds)
+  const rg = await p.evaluate(() => { const st = document.querySelector('.lsp6-stage').getBoundingClientRect(), t = document.querySelector('.lsp6-tpl').getBoundingClientRect(), h = document.querySelector('.lsp6-host').getBoundingClientRect(); return { tl: t.left - st.left, tw: t.width, hy: h.top - st.top + h.height / 2 }; });
+  const bildStueck = async (fx) => {   // Farbe eines Pixels: x = Bruchteil der Breite des Vorlagenbildes, y = Mitte der Druckfläche (dort liegt das Motiv)
     const png = await p.locator('.lsp6-stage').screenshot();
-    return p.evaluate(async ([b64, px, py]) => { const i = new Image(); i.src = 'data:image/png;base64,' + b64; await i.decode(); const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; const x = c.getContext('2d'); x.drawImage(i, 0, 0); return Array.from(x.getImageData(Math.round(px), Math.round(py), 1, 1).data); }, [png.toString('base64'), rg.tl + fx * rg.tw, rg.tt + fy * rg.th]);
+    return p.evaluate(async ([b64, px, py]) => { const i = new Image(); i.src = 'data:image/png;base64,' + b64; await i.decode(); const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; const x = c.getContext('2d'); x.drawImage(i, 0, 0); return Array.from(x.getImageData(Math.round(px), Math.round(py), 1, 1).data); }, [png.toString('base64'), rg.tl + fx * rg.tw, rg.hy]);
   };
-  const falte = await bildStueck(0.5, 0.5), glatt = await bildStueck(0.44, 0.5);
+  const falte = await bildStueck(0.5), glatt = await bildStueck(0.44);
   pruefe('Schichtfolge: das Vorlagenbild liegt über dem Motiv (die Falte scheint durch das weisse Motiv: ≤ 215)', falte[0] <= 215 && falte[0] >= 150, JSON.stringify(falte));
   pruefe('Schichtfolge: neben der Falte ist das Motiv nur leicht abgedunkelt (Schatten Alpha 22), nicht deckend weiss', glatt[0] >= 215 && glatt[0] <= 250, JSON.stringify(glatt));
   const z = await p.evaluate(() => { const g = (s) => getComputedStyle(document.querySelector(s)).zIndex; return { host: g('.lsp6-host'), tpl: g('.lsp6-tpl'), chrome: g('.lsp6-chrome-host'), frame: g('.lsp6-frame'), tag: g('.lsp6-tag') }; });
   pruefe('Stapelfolge: Host (Motiv) < Vorlagenbild < Rahmen und Etikett < Griffe', Number(z.host) < Number(z.tpl) && Number(z.tpl) < Number(z.frame) && Number(z.frame) < Number(z.chrome) && Number(z.tag) < Number(z.chrome), JSON.stringify(z));
   // (b) Motiv beschnitten: Mitte der Ebene auf den linken Rand der Druckfläche, die linke Hälfte liegt ausserhalb und darf nicht sichtbar sein
+  await p.evaluate((i) => window.LSPOD6.editors[0].waehlen(i), motivId);
   await feldSetzen(p, 'X (cm)', 0);
+  await p.evaluate(() => window.LSPOD6.editors[0].waehlen(null));
   await bilderGeladen(p);
-  const h = await rect(p, '.lsp6-host');
-  const aussen = await p.evaluate(async ([x, y]) => { const el = document.elementFromPoint(x, y); return el ? el.className : null; }, [h.x - 10, h.y + h.h / 2]);
   const png = await p.locator('.lsp6-stage').screenshot();
-  const sr = await rect(p, '.lsp6-stage');
+  const h = await rect(p, '.lsp6-host'), sr = await rect(p, '.lsp6-stage');
+  const aussen = await p.evaluate(async ([x, y]) => { const el = document.elementFromPoint(x, y); return el ? el.className : null; }, [h.x - 10, h.y + h.h / 2]);
   const pix = (px, py) => p.evaluate(async ([b64, x, y]) => { const i = new Image(); i.src = 'data:image/png;base64,' + b64; await i.decode(); const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; const cx = c.getContext('2d'); cx.drawImage(i, 0, 0); return Array.from(cx.getImageData(Math.round(x), Math.round(y), 1, 1).data); }, [png.toString('base64'), px, py]);
   const innen = await pix(h.x + 12 - sr.x, h.y + h.h * 0.42 - sr.y), draussen = await pix(h.x - 12 - sr.x, h.y + h.h * 0.42 - sr.y);
   pruefe('Beschnitt: innerhalb der Druckfläche ist das weisse Motiv zu sehen (heller als der schwarze Stoff)', innen[0] >= 180, JSON.stringify(innen));
@@ -328,11 +332,12 @@ szenario('schichten', true, async (b, srv) => {
   await bilderGeladen(q);
   await feldSetzen(q, 'X (cm)', 0); await feldSetzen(q, 'Y (cm)', 0);
   await q.evaluate((i) => window.LSPOD6.editors[0].waehlen(i), id);
+  await q.locator('.lsp6-stage').scrollIntoViewIfNeeded();
   const sr2 = await rect(q, '.lsp6-stage'), del = await rect(q, '.lsp6-del'), gr = await rect(q, '.lsp6-handle'), host = await rect(q, '.lsp6-host');
   const png2 = await q.locator('.lsp6-stage').screenshot();
   const pix2 = (px, py) => q.evaluate(async ([b64, x, y]) => { const i = new Image(); i.src = 'data:image/png;base64,' + b64; await i.decode(); const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; const cx = c.getContext('2d'); cx.drawImage(i, 0, 0); return Array.from(cx.getImageData(Math.round(x), Math.round(y), 1, 1).data); }, [png2.toString('base64'), px, py]);
-  const cDel = await pix2(del.x + del.w / 2 - sr2.x, del.y + del.h / 2 - sr2.y), cGriff = await pix2(gr.x + gr.w / 2 - sr2.x, gr.y + gr.h / 2 - sr2.y), cMotiv = await pix2(host.x + 8 - sr2.x, host.y + 8 - sr2.y);
-  pruefe('Griffe: der Löschknopf (rot) liegt über dem deckend weissen Vorlagenbild', cDel[0] >= 150 && cDel[1] <= 80 && cDel[2] <= 100, JSON.stringify(cDel));
+  const cDel = await pix2(del.x + del.w / 2 - 9 - sr2.x, del.y + del.h / 2 - sr2.y), cGriff = await pix2(gr.x + gr.w / 2 - 9 - sr2.x, gr.y + gr.h / 2 - sr2.y), cMotiv = await pix2(host.x + 8 - sr2.x, host.y + 8 - sr2.y);
+  pruefe('Griffe: der Löschknopf (rot) liegt über dem deckend weissen Vorlagenbild', cDel[0] >= 150 && cDel[1] <= 80 && cDel[2] <= 100, JSON.stringify({ cDel, del, sr2, host }));
   pruefe('Griffe: der Skalieren-Griff (dunkel) liegt über dem Vorlagenbild', cGriff[0] <= 90 && cGriff[1] <= 90, JSON.stringify(cGriff));
   pruefe('das Motiv selbst liegt UNTER dem deckenden Vorlagenbild (Ecke der Fläche ist weiss)', cMotiv[0] >= 240 && cMotiv[1] >= 240 && cMotiv[2] >= 240, JSON.stringify(cMotiv));
   pruefe('Griffe nie beschnitten: Löschknopf liegt links oben ausserhalb der Druckfläche und ist vollständig in der Bühne', del.x < host.x && del.y < host.y && del.x >= sr2.x - 0.5 && del.y >= sr2.y - 0.5, JSON.stringify({ del, host, sr2 }));
@@ -366,6 +371,7 @@ szenario('ebenen-bedienung', false, async (b, srv) => {
   const cx0 = l.x + l.w / 2, cy0 = l.y + l.h / 2;
   await p.mouse.move(cx0, cy0); await p.mouse.down(); await p.mouse.move(cx0 + 30, cy0 + 20, { steps: 4 }); await p.mouse.move(cx0 + 60, cy0 + 40, { steps: 4 }); await p.mouse.up();
   const e1 = (await ebenen(p))[0];
+  pruefe('Ziehen in Bearbeiten zeichnet die Vorschau-Canvas nicht (CSS-Komposition, kein Canvas bei jedem Schritt)', await p.locator('.lsp6-pv').evaluate((c) => !c.getAttribute('data-gezeichnet')));
   nahe('Maus ziehen: cx ändert sich um 60 px / Breite der Druckfläche', e1.cx - e0.cx, 60 / h.w, 0.012);
   nahe('Maus ziehen: cy ändert sich um 40 px / Höhe der Druckfläche', e1.cy - e0.cy, 40 / h.h, 0.012);
   // Skalieren und Drehen am Griff (liegt in der Schicht über dem Foto)
@@ -401,7 +407,8 @@ szenario('ebenen-bedienung', false, async (b, srv) => {
   const e6 = (await ebenen(p))[0];
   pruefe('das Motiv bleibt auf der Druckfläche (cx und cy in [0, 1])', e6.cx >= 0 && e6.cx <= 1 && e6.cy >= 0 && e6.cy <= 1 && e6.cx < 0.05, JSON.stringify(e6));
   // Leere Fläche wählt ab
-  await p.mouse.click(h.x + h.w * 0.9, h.y + h.h * 0.9);
+  const hLeer = await rect(p, '.lsp6-host');
+  await p.mouse.click(hLeer.x + hLeer.w * 0.9, hLeer.y + hLeer.h * 0.9);
   pruefe('Klick auf die leere Fläche wählt ab, die Griffe verschwinden', (await p.evaluate(() => window.LSPOD6.editors[0].st.sel)) === null && await p.locator('.lsp6-chrome').isHidden());
   // Löschen über den Knopf in der Schicht
   const l7 = await rect(p, '.lsp6-layer');
@@ -468,6 +475,7 @@ szenario('handy-bedienung', false, async (b, srv) => {
     for (const [x, y, name] of [[0, 0, 'links oben'], [100, 100, 'rechts unten']]) {
       const cm = await p.evaluate(() => window.LSPOD6.editors[0].geo().masse);
       await feldSetzen(p, 'X (cm)', x === 0 ? 0 : cm.breite); await feldSetzen(p, 'Y (cm)', y === 0 ? 0 : cm.hoehe);
+      await p.locator('.lsp6-stage').scrollIntoViewIfNeeded();
       const st = await rect(p, '.lsp6-stage'), gr = await rect(p, '.lsp6-handle'), dl = await rect(p, '.lsp6-del');
       const innen = (r) => r.x >= st.x - 0.5 && r.y >= st.y - 0.5 && r.x + r.w <= st.x + st.w + 0.5 && r.y + r.h <= st.y + st.h + 0.5;
       pruefe(`${breite} px, Motiv ${name}: Griff und Löschknopf liegen vollständig in der Bühne (nichts abgeschnitten)`, innen(gr) && innen(dl), JSON.stringify({ gr, dl, st }));
@@ -531,6 +539,7 @@ async function gleicheVorschau(p, opt = {}) {
   return erg;
 }
 function s5Pruefen(name, e, strenge = {}) {
+  if (process.env.V6_MESSWERTE) console.log(`  Messwert «Gleiche Vorschau» ${name}: mittlerer Abstand R/G/B ${e.mittel.map((x) => x.toFixed(2)).join('/')} (von 255), Pixel mit Abstand > 12: ${(e.anteilGross * 100).toFixed(2)} %, Schwerpunkt Bearbeiten ${e.sb.x.toFixed(4)}/${e.sb.y.toFixed(4)}, Vorschau ${e.sv.x.toFixed(4)}/${e.sv.y.toFixed(4)} (Bildbreite 1), Motivpixel ${e.sb.n}/${e.sv.n}`);   // nur zum Ablesen der Zahlen fürs README
   for (let k = 0; k < 3; k++) pruefe(`${name}: mittlerer Abstand Kanal ${'RGB'[k]} im Druckbereich ≤ 4/255`, e.mittel[k] <= (strenge.mittel ?? 4), e.mittel.map((x) => x.toFixed(2)).join('/'));
   pruefe(`${name}: höchstens ${(strenge.gross ?? 0.03) * 100} % der Pixel im Druckbereich weichen um mehr als 12/255 ab`, e.anteilGross <= (strenge.gross ?? 0.03), (e.anteilGross * 100).toFixed(2) + ' %');
   pruefe(`${name}: das Motiv ist in beiden Bildern zu sehen`, e.sb.n > 200 && e.sv.n > 200, JSON.stringify([e.sb.n, e.sv.n]));
@@ -642,6 +651,91 @@ szenario('review-kaufweg', false, async (b, srv) => {
   pruefe('Kauf aus «Bearbeiten»: Uploads (Typ, Pixelgrösse) wie 6.3.1', JSON.stringify(neu.uploads.filter((u) => u.b)) === JSON.stringify(alt.uploads.filter((u) => u.b)), JSON.stringify([neu.uploads, alt.uploads]));
   pruefe('Kauf aus «Bearbeiten»: Eigenschaften und _pod_karte wie 6.3.1', neu.wk[0] === alt.wk[0] && neu.karte === alt.karte, JSON.stringify([neu.wk[0], alt.wk[0], neu.karte, alt.karte]));
   pruefe('keine Seitenfehler beim Kauf', neu.fehler.length === 0 && alt.fehler.length === 0, JSON.stringify([neu.fehler, alt.fehler]));
+});
+
+// ── 8b. Gate: wann zeigt «Bearbeiten» das Produkt? Platzierungen, Bündel, veränderte Vorschaudaten ─────
+/** Vorschaudaten eines Modells vom Test-Server holen, in der Seite verändern und dem Editor geben (fremde oder ältere Daten). */
+async function datenSetzen(p, modell, aendern) {
+  return p.evaluate(async ([m, fn]) => {
+    const roh = await (await fetch('/vorschau/' + m + '.json?spiegel=1')).json();
+    // eslint-disable-next-line no-new-func
+    new Function('d', fn)(roh);
+    return window.LSPOD6.editors[0].vorschauDatenSetzen(roh);
+  }, [modell, aendern]);
+}
+const stand = (p) => p.evaluate(() => { const ed = window.LSPOD6.editors[0]; return { sicht: ed.st.sicht, wunsch: ed.st.sichtWunsch, pb: ed.produktBuehne(), aktiv: ed.st.aktiv, tabs: [...document.querySelectorAll('.lsp6-sbtn')].filter((x) => !x.hidden).map((x) => x.textContent).join('|') }; });
+szenario('gate', true, async (b, srv) => {
+  // (e) volles Modell 71: acht Platzierungen; die mit Raster-Vorlage (Etikett, Ärmel …) haben kein Produktfoto
+  const s = await oeffnen(b, srv, T71);
+  const p = s.page;
+  await sichtWarten(p);
+  // Test-Katalog 71: alle acht Vorlagen sind Fotos; für «Etikett innen» das Foto aus den Vorschaudaten nehmen (= dort ein Raster, kein Produktfoto)
+  const etikettUrl = await p.evaluate(() => window.LSPOD6.editors[0].karte.platzierungen.find((q) => q.id === 'label_inside').vorlage.bildUrl);
+  const frontUrl = await p.evaluate(() => window.LSPOD6.editors[0].karte.platzierungen.find((q) => q.id === 'front').vorlage.bildUrl);
+  pruefe('Vorbereitung: «Etikett innen» hat eine andere Vorlagenadresse als «Vorne»', etikettUrl && etikettUrl !== frontUrl);
+  await datenSetzen(p, '71', `delete d.modelle['71'].bilder[${JSON.stringify(etikettUrl)}];`);
+  const ids = await p.evaluate(() => window.LSPOD6.editors[0].platzierungIds());
+  const moeglich = await p.evaluate(() => { const ed = window.LSPOD6.editors[0]; const r = {}; ed.platzierungIds().forEach((i) => { r[i] = ed.produktfotoMoeglich(i); }); return r; });
+  const mit = ids.filter((i) => moeglich[i]), ohne = ids.filter((i) => !moeglich[i]);
+  pruefe('Modell 71: es gibt Platzierungen mit und ohne Produktfoto (Gate rechnet je Platzierung)', mit.length >= 1 && ohne.length >= 1, JSON.stringify(moeglich));
+  pruefe('Modell 71, Vorne: Produktbühne, drei Reiter', mit.includes('front') && (await stand(p)).pb && (await stand(p)).tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(await stand(p)));
+  await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();   // Wunsch «Druckversion»
+  await p.evaluate((i) => window.LSPOD6.editors[0].wechseln(i), ohne[0]);
+  let x = await stand(p);
+  pruefe(`Platzierung ohne Foto (${ohne[0]}): Bühne von 6.3.1 in «Bearbeiten», kein Reiter «Druckversion», keine Produktbühne`, x.sicht === 'bearbeiten' && !x.pb && !/Druckversion/.test(x.tabs), JSON.stringify(x));
+  pruefe(`Platzierung ohne Foto: der Wunsch «Druckversion» bleibt erhalten`, x.wunsch === 'druck');
+  await p.evaluate(() => window.LSPOD6.editors[0].wechseln('front'));
+  x = await stand(p);
+  pruefe('zurück auf «Vorne»: der Wunsch kommt zurück (Druckversion), die Reiter auch', x.sicht === 'druck' && /Druckversion/.test(x.tabs), JSON.stringify(x));
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
+  await p.evaluate((i) => window.LSPOD6.editors[0].wechseln(i), ohne[0]);
+  await p.evaluate(() => window.LSPOD6.editors[0].wechseln('front'));
+  x = await stand(p);
+  pruefe('Wunsch «Bearbeiten»: nach dem Hin und Her über eine Platzierung ohne Foto zeigt «Vorne» wieder das Produkt', x.sicht === 'bearbeiten' && x.pb, JSON.stringify(x));
+  await s.schliessen();
+  // (a) Vorlagenadresse aus «bilder» entfernen: das Foto ist nicht als Produktfoto bekannt (Raster)
+  const a = await oeffnen(b, srv, T71);
+  await sichtWarten(a.page);
+  await datenSetzen(a.page, '71', "Object.values(d.modelle['71'].bilder = d.modelle['71'].bilder).length; d.modelle['71'].bilder = {};");
+  let y = await stand(a.page);
+  pruefe('(a) Vorlagenadresse nicht in den Vorschaudaten: keine Produktbühne, kein Reiter «Druckversion»', !y.pb && !/Druckversion/.test(y.tabs), JSON.stringify(y));
+  await datenSetzen(a.page, '71', "d.modelle['71'].farbfest = ['front'];");
+  y = await stand(a.page);
+  pruefe('(b) farbfeste Vorlage (feste Stofffarbe): keine Produktbühne', !y.pb && !/Druckversion/.test(y.tabs), JSON.stringify(y));
+  await datenSetzen(a.page, '71', "d.modelle['71'].adapter = 'keine'; d.modelle['71'].bilder = {};");
+  y = await stand(a.page);
+  pruefe('(c) Adapter «keine»: keine Produktbühne', !y.pb && !/Druckversion/.test(y.tabs), JSON.stringify(y));
+  await datenSetzen(a.page, '71', "");
+  y = await stand(a.page);
+  pruefe('wieder gültige Daten: die Produktbühne ist zurück (der Wunsch «Bearbeiten» blieb)', y.pb && y.tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(y));
+  pruefe('keine Seitenfehler', a.fehler.length === 0, a.fehler.join(' | '));
+  await a.schliessen();
+  // Bündel (T-Shirt 71 + 586): Vorschaudaten nur für 71: Modell 586 hat keine Vorschau, die Reiter verschwinden und kommen mit 71 zurück
+  const k = await oeffnen(b, srv, 'karte=buendel&m=71,586&shop=1001:4012:71,1002:15124:586&vorschau=71&bearbeiten=1&themeregel=1&varianten=1001:A,1002:B');
+  await sichtWarten(k.page);
+  let z = await stand(k.page);
+  pruefe('Bündel: Modell 71 hat Vorschaudaten: Produktbühne und drei Reiter', z.pb && z.tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(z));
+  await k.page.locator('input[name="id"][value="1002"]').check();
+  await k.page.waitForFunction(() => window.LSPOD6.editors[0].karte.printfulProductId === 586, null, { timeout: 5000 });
+  await k.page.waitForTimeout(150);
+  z = await stand(k.page);
+  pruefe('Bündel: Modell 586 ohne Vorschaudaten: Bühne von 6.3.1, die Reiterleiste verschwindet', !z.pb && z.sicht === 'bearbeiten' && !(await gruppeSichtbar(k.page)), JSON.stringify(z));
+  await k.page.locator('input[name="id"][value="1001"]').check();
+  await k.page.waitForFunction(() => window.LSPOD6.editors[0].karte.printfulProductId === 71, null, { timeout: 5000 });
+  await k.page.waitForTimeout(150);
+  z = await stand(k.page);
+  pruefe('Bündel: zurück auf Modell 71: Produktbühne und Reiter sind wieder da', z.pb && z.tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(z));
+  await k.schliessen();
+  // Das Tor verlangt den Adapter «flach» UND ein bekanntes Produktfoto: ein Tassen- oder Poster-Modell, dessen Vorlagenadresse (zufällig) in «bilder» steht, bekommt trotzdem keine Produktbühne
+  for (const [name, q, id] of [['Tasse 19 (Adapter «tasse»)', T19, '19'], ['Poster 268 (Adapter «papier»)', 'karte=268&vorschau=268&bearbeiten=1', '268']]) {
+    const t = await oeffnen(b, srv, q);
+    await sichtWarten(t.page);
+    const url = await t.page.evaluate(() => window.LSPOD6.editors[0].karte.platzierungen[0].vorlage.bildUrl);
+    const angenommen = await datenSetzen(t.page, id, `d.modelle[${JSON.stringify(id)}].bilder[${JSON.stringify(url)}] = null;`);
+    const w = await stand(t.page);
+    pruefe(`${name}: Vorlagenadresse steht in «bilder» (Daten angenommen), trotzdem keine Produktbühne und kein Reiter «Druckversion» (anderer Adapter)`, angenommen === true && /^https:/.test(url) && !w.pb && !/Druckversion/.test(w.tabs), JSON.stringify([angenommen, url, w]));
+    await t.schliessen();
+  }
 });
 
 // ── 9. Fehler B, C, D ───────────────────────────────────────────────────────────────────────────
@@ -759,6 +853,7 @@ szenario('statische-pruefung', true, async () => {
     pruefe(`Quelltext: ${f} liest keine Ansicht, keine Bühne und keine Bildschirmmasse`, !!r && verboten.every((v) => !r.includes(v)), r ? verboten.filter((v) => r.includes(v)).join(',') : '');
   }
   pruefe('Quelltext: die neue CSS-Regel max-width:none!important steht bei .lsp6-bg,.lsp6-tpl (genau einmal)', (q.match(/'\.lsp6-bg,\.lsp6-tpl\{position:absolute;display:block;max-width:none!important;max-height:none!important/g) || []).length === 1);
+  pruefe('Quelltext: prefers-reduced-motion wird respektiert (keine Übergänge, keine Animation)', /prefers-reduced-motion:reduce\)\{\.lsp6 \*[^}]*transition:none!important;animation:none!important/.test(q));
   pruefe('Quelltext: tabsAufbauen ruft modellHinweisAktualisieren() vor dem Rücksprung', /if \(ids\.length < 2\) \{ ui\.tabs\.hidden = true; modellHinweisAktualisieren\(\); return; \}/.test(q));
   pruefe('Quelltext: der Entwurf kennt keine Ansicht (ebeneFuerEntwurf/entwurfSpeichern lesen st.sicht nicht)', !/function (entwurfSpeichern|speichern|entwurfSofort)\([^)]*\) \{[^}]*st\.sicht/.test(q));
   pruefe('Quelltext: keine Berechnung der Vorschau-Canvas in knotenZeichnen (nur vorschauPlanen, die nur in «Vorschau» arbeitet)', /function vorschauPlanen\(\) \{\n *if \(st\.sicht !== 'produkt'/.test(q));

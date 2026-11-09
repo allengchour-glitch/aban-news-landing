@@ -95,6 +95,26 @@ pruefe('Sichtfenster: Fläche ragt über den Rand (Hoodie, oben −14): Fenster 
 const wm = H.sichtfenster({ vorlageBreite: 728, vorlageHoehe: 728, flaecheLinks: 29, flaecheOben: 163, flaecheBreite: 671, flaecheHoehe: 261 }, 'flaeche');
 pruefe('Sichtfenster Tasse: nie breiter als die Vorlage', wm.x >= 0 && wm.x + wm.w <= 728, JSON.stringify(wm));
 
+// «Bearbeiten» auf dem Produkt (6.4.0): Rand 35 % der längeren Seite, höchstens so viel, dass die Fläche in jeder Achse mindestens 45 % des Fensters füllt, nie unter dem 10-%-Rand, nie ausserhalb von Vorlage und Fläche.
+// Die Sollwerte sind von Hand gerechnet (nicht aus dem Code übernommen): T-Shirt 1010 × 1346: Rand 0,35 · 1346 = 471,1 (Kappe 617,2 greift nicht); Kappe 1804 × 656: Rand = Kappe 0,6111 · 656 = 400,9 (statt 631,4);
+// Hoodie: Rand 922,6, links und unten an der Vorlage gekappt, oben darf das Fenster bis −14 (die Fläche ragt hinaus); Tasse 671 × 261: Kappe 159,5; Streifen 800 × 100: Kappe 61,1 läge unter dem 10-%-Rand 80 (Untergrenze greift).
+if (H.BEARBEITEN_RAND !== undefined) {
+  gleich('Konstanten: Rand 0,35 und Mindestanteil 0,45', [H.BEARBEITEN_RAND, H.BEARBEITEN_MIN_ANTEIL], [0.35, 0.45]);
+  const rund = (w) => ({ x: Math.round(w.x * 10) / 10, y: Math.round(w.y * 10) / 10, w: Math.round(w.w * 10) / 10, h: Math.round(w.h * 10) / 10 });
+  gleich('Sichtfenster «produkt»: T-Shirt 71 (Rand 35 %)', rund(H.sichtfenster(vlTee, 'produkt')), { x: 534.9, y: 58.9, w: 1952.2, h: 2288.2 });
+  gleich('Sichtfenster «produkt»: Kappe (Kappe greift)', rund(H.sichtfenster({ vorlageBreite: 3000, vorlageHoehe: 3000, flaecheLinks: 598, flaecheOben: 850, flaecheBreite: 1804, flaecheHoehe: 656 }, 'produkt')), { x: 197.1, y: 449.1, w: 2605.8, h: 1457.8 });
+  gleich('Sichtfenster «produkt»: Hoodie (an der Vorlage gekappt, Fläche ragt oben hinaus)', rund(H.sichtfenster({ vorlageBreite: 3000, vorlageHoehe: 3000, flaecheLinks: 182, flaecheOben: -14, flaecheBreite: 2636, flaecheHoehe: 2636 }, 'produkt')), { x: 0, y: -14, w: 3000, h: 3014 });
+  gleich('Sichtfenster «produkt»: Tasse (Kappe, links und rechts an der Vorlage gekappt)', rund(H.sichtfenster({ vorlageBreite: 728, vorlageHoehe: 728, flaecheLinks: 29, flaecheOben: 163, flaecheBreite: 671, flaecheHoehe: 261 }, 'produkt')), { x: 0, y: 3.5, w: 728, h: 580 });
+  gleich('Sichtfenster «produkt»: langer Streifen 8:1 (Untergrenze 10 % greift, nicht die Kappe)', rund(H.sichtfenster({ vorlageBreite: 1000, vorlageHoehe: 1000, flaecheLinks: 100, flaecheOben: 450, flaecheBreite: 800, flaecheHoehe: 100 }, 'produkt')), { x: 20, y: 370, w: 960, h: 260 });
+  for (const [name, vl] of [['T-Shirt', vlTee], ['Hoodie', { vorlageBreite: 3000, vorlageHoehe: 3000, flaecheLinks: 182, flaecheOben: -14, flaecheBreite: 2636, flaecheHoehe: 2636 }], ['Tasse', { vorlageBreite: 728, vorlageHoehe: 728, flaecheLinks: 29, flaecheOben: 163, flaecheBreite: 671, flaecheHoehe: 261 }], ['Streifen', { vorlageBreite: 1000, vorlageHoehe: 1000, flaecheLinks: 100, flaecheOben: 450, flaecheBreite: 800, flaecheHoehe: 100 }]]) {
+    const a = H.sichtfenster(vl, 'vorlage'), b = H.sichtfenster(vl, 'produkt'), c = H.sichtfenster(vl, 'flaeche');
+    const innen = (g, f) => g.x >= f.x - 1e-9 && g.y >= f.y - 1e-9 && g.x + g.w <= f.x + f.w + 1e-9 && g.y + g.h <= f.y + f.h + 1e-9;
+    pruefe(`Sichtfenster ${name}: Druckfläche ⊆ «flaeche» ⊆ «produkt» ⊆ «vorlage» (drei Zoomstufen sind ineinander geschachtelt)`, innen({ x: vl.flaecheLinks, y: vl.flaecheOben, w: vl.flaecheBreite, h: vl.flaecheHoehe }, c) && innen(c, b) && innen(b, a), JSON.stringify([a, b, c]));
+  }
+  const wp = H.sichtfenster(vlTee, 'produkt');
+  pruefe('Sichtfenster «produkt»: die Druckfläche füllt in jeder Achse mindestens 45 % (T-Shirt, Kappe)', 1010 / wp.w >= 0.45 - 1e-9 && 1346 / wp.h >= 0.45 - 1e-9 && 1804 / H.sichtfenster({ vorlageBreite: 3000, vorlageHoehe: 3000, flaecheLinks: 598, flaecheOben: 850, flaecheBreite: 1804, flaecheHoehe: 656 }, 'produkt').w >= 0.45 - 1e-9);
+}
+
 // ── Karten laden und prüfen ────────────────────────────────────────────────────────────────────────
 const lies = (id) => JSON.parse(readFileSync(join(hier, 'testdaten', `${id}.karte.json`), 'utf8'));
 const K = {};
