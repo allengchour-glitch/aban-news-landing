@@ -1,0 +1,338 @@
+[
+ {
+  "gruppe": "Herren Kurzarm/Langarm",
+  "art": "collection",
+  "handle": "herren-poloshirts-kurzarm",
+  "feld": "description",
+  "alt": "Kurzarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Poloshirts kurzarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Herren Kurzarm/Langarm",
+  "art": "collection",
+  "handle": "herren-poloshirts-langarm",
+  "feld": "description",
+  "alt": "Langarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Poloshirts langarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Herren Kurzarm/Langarm",
+  "art": "collection",
+  "handle": "herren-t-shirts-kurzarm",
+  "feld": "description",
+  "alt": "Kurzarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "T-Shirts kurzarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Herren Kurzarm/Langarm",
+  "art": "collection",
+  "handle": "herren-t-shirts-langarm",
+  "feld": "description",
+  "alt": "Langarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "T-Shirts langarm für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Standardtext",
+  "art": "collection",
+  "handle": "bestseller-shop",
+  "feld": "description",
+  "alt": "Ausgewählte Produkte aus dem LuxeStyle Sortiment. Produktdetails, Preise und Verfügbarkeit online ansehen.",
+  "neu": "Bestseller bei LuxeStyle: die beliebtesten Produkte unserer Kundschaft. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Standardtext",
+  "art": "collection",
+  "handle": "eu-lager-schnell",
+  "feld": "description",
+  "alt": "Ausgewählte Produkte aus dem LuxeStyle Sortiment. Produktdetails, Preise und Verfügbarkeit online ansehen.",
+  "neu": "EU-Lager bei LuxeStyle: Produkte, die aus einem europäischen Lager verschickt werden. Lieferzeit auf jeder Produktseite, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Magnetisch",
+  "art": "collection",
+  "handle": "kabellos-laden-magnetisch",
+  "feld": "title",
+  "alt": "Magnetisch & MagSafe online kaufen | LuxeStyle CH",
+  "neu": "Magnetische kabellose Ladegeräte | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Magnetisch",
+  "art": "collection",
+  "handle": "kabellos-laden-magnetisch",
+  "feld": "description",
+  "alt": "Magnetisch & MagSafe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Magnetische kabellose Ladegeräte online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Magnetisch",
+  "art": "collection",
+  "handle": "handyhalter-magnet",
+  "feld": "title",
+  "alt": "Magnetisch & MagSafe online kaufen | LuxeStyle CH",
+  "neu": "Magnetische Handyhalter online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Magnetisch",
+  "art": "collection",
+  "handle": "handyhalter-magnet",
+  "feld": "description",
+  "alt": "Magnetisch & MagSafe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Magnetische Handyhalter online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Kabellos",
+  "art": "collection",
+  "handle": "kopfhoerer-kabellos-bluetooth",
+  "feld": "title",
+  "alt": "Kabellos & Bluetooth online kaufen | LuxeStyle CH",
+  "neu": "Kabellose Bluetooth-Kopfhörer online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Kabellos",
+  "art": "collection",
+  "handle": "kopfhoerer-kabellos-bluetooth",
+  "feld": "description",
+  "alt": "Kabellos & Bluetooth online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Kabellose Bluetooth-Kopfhörer online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Kabellos",
+  "art": "collection",
+  "handle": "controller-bluetooth-kabellos",
+  "feld": "title",
+  "alt": "Kabellos & Bluetooth online kaufen | LuxeStyle CH",
+  "neu": "Bluetooth-Controller & Gamepads online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Kabellos",
+  "art": "collection",
+  "handle": "controller-bluetooth-kabellos",
+  "feld": "description",
+  "alt": "Kabellos & Bluetooth online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Bluetooth-Controller und Gamepads online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Mesh",
+  "art": "collection",
+  "handle": "laufschuhe-mesh",
+  "feld": "title",
+  "alt": "Mesh & atmungsaktiv online kaufen | LuxeStyle CH",
+  "neu": "Laufschuhe aus Mesh online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Mesh",
+  "art": "collection",
+  "handle": "laufschuhe-mesh",
+  "feld": "description",
+  "alt": "Mesh & atmungsaktiv online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Laufschuhe aus Mesh online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Mesh",
+  "art": "collection",
+  "handle": "sportschuhe-mesh",
+  "feld": "title",
+  "alt": "Mesh & atmungsaktiv online kaufen | LuxeStyle CH",
+  "neu": "Sportschuhe aus Mesh online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Mesh",
+  "art": "collection",
+  "handle": "sportschuhe-mesh",
+  "feld": "description",
+  "alt": "Mesh & atmungsaktiv online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Sportschuhe aus Mesh online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "schneidebretter-holz-bambus",
+  "feld": "title",
+  "alt": "Holz & Bambus online kaufen | LuxeStyle CH",
+  "neu": "Schneidebretter aus Holz & Bambus | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "schneidebretter-holz-bambus",
+  "feld": "description",
+  "alt": "Holz & Bambus online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Schneidebretter aus Holz und Bambus online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "kochutensilien-holz",
+  "feld": "title",
+  "alt": "Holz & Bambus online kaufen | LuxeStyle CH",
+  "neu": "Kochutensilien mit Holz online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "kochutensilien-holz",
+  "feld": "description",
+  "alt": "Holz & Bambus online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Kochutensilien mit Holz online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "servierplatten-holz",
+  "feld": "title",
+  "alt": "Holz & Bambus online kaufen | LuxeStyle CH",
+  "neu": "Servierplatten & Tabletts aus Holz | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "servierplatten-holz",
+  "feld": "description",
+  "alt": "Holz & Bambus online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Servierplatten und Tabletts aus Holz online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "regale-holz-bambus",
+  "feld": "title",
+  "alt": "Holz & Bambus online kaufen | LuxeStyle CH",
+  "neu": "Regale aus Holz & Bambus online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Chips Holz",
+  "art": "collection",
+  "handle": "regale-holz-bambus",
+  "feld": "description",
+  "alt": "Holz & Bambus online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Regale aus Holz und Bambus online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Leder-Uhrenarmbänder",
+  "art": "collection",
+  "handle": "armbaender-leder",
+  "feld": "h1",
+  "alt": "Lederarmbänder",
+  "neu": "Uhrenarmbänder aus Leder"
+ },
+ {
+  "gruppe": "Leder-Uhrenarmbänder",
+  "art": "collection",
+  "handle": "armbaender-leder",
+  "feld": "html",
+  "alt": "<p>Lederarmbänder aus unserer Auswahl «Uhren- &amp; Smartwatch-Armbänder».</p>",
+  "neu": "<p>Uhrenarmbänder aus Leder für Uhren und Smartwatches, auch für die Apple Watch.</p>"
+ },
+ {
+  "gruppe": "Leder-Uhrenarmbänder",
+  "art": "collection",
+  "handle": "armbaender-leder",
+  "feld": "title",
+  "alt": "Lederarmbänder online kaufen | LuxeStyle CH",
+  "neu": "Uhrenarmbänder aus Leder online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Leder-Uhrenarmbänder",
+  "art": "collection",
+  "handle": "armbaender-leder",
+  "feld": "description",
+  "alt": "Lederarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Uhrenarmbänder aus Leder online kaufen, auch für die Apple Watch. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Haustier-Pullover",
+  "art": "collection",
+  "handle": "tier-pullover-hoodies",
+  "feld": "h1",
+  "alt": "Hoodies & Sweatshirts",
+  "neu": "Pullover & Hoodies für Haustiere"
+ },
+ {
+  "gruppe": "Haustier-Pullover",
+  "art": "collection",
+  "handle": "tier-pullover-hoodies",
+  "feld": "html",
+  "alt": "<p>Hoodies &amp; Sweatshirts aus unserer Auswahl «Pullover, Strick &amp; Hoodies».</p>",
+  "neu": "<p>Pullover und Hoodies für Hunde und Katzen.</p>"
+ },
+ {
+  "gruppe": "Haustier-Pullover",
+  "art": "collection",
+  "handle": "tier-pullover-hoodies",
+  "feld": "title",
+  "alt": "Hoodies & Sweatshirts online kaufen | LuxeStyle CH",
+  "neu": "Pullover & Hoodies für Hunde und Katzen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Haustier-Pullover",
+  "art": "collection",
+  "handle": "tier-pullover-hoodies",
+  "feld": "description",
+  "alt": "Hoodies & Sweatshirts online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Pullover und Hoodies für Hunde und Katzen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Motorrad-Rucksäcke",
+  "art": "collection",
+  "handle": "motorrad-rucksaecke",
+  "feld": "title",
+  "alt": "Motorrad-Rucksäcke online kaufen | LuxeStyle CH",
+  "neu": "Rucksäcke für Motorradfahrer online kaufen | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Motorrad-Rucksäcke",
+  "art": "collection",
+  "handle": "motorrad-rucksaecke",
+  "feld": "description",
+  "alt": "Motorrad-Rucksäcke online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Rucksäcke für Motorradfahrer online kaufen, etwa mit Helmfach oder als Tankrucksack. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Moissanit",
+  "art": "collection",
+  "handle": "moissanit-schmuck",
+  "feld": "title",
+  "alt": "Moissanit-Schmuck Schweiz – Diamant-Alternative in 925 Silber",
+  "neu": "Moissanit-Ohrstecker, Ringe & Halsketten | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Moissanit",
+  "art": "collection",
+  "handle": "moissanit-schmuck",
+  "feld": "description",
+  "alt": "Moissanit-Schmuck als Diamant-Alternative: Ringe, Halsketten & Ohrstecker aus 925 Sterling-Silber, teils mit D-VVS1-Moissanit. Gratis-Versand CH ab CHF 50.",
+  "neu": "Moissanit-Ohrstecker, Verlobungsringe und Halsketten aus 925 Silber. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Besteck",
+  "art": "collection",
+  "handle": "besteck-essstaebchen",
+  "feld": "title",
+  "alt": "Besteck & Essstäbchen online kaufen | LuxeStyle CH",
+  "neu": "Essstäbchen & Besteck-Sets aus Edelstahl | LuxeStyle CH"
+ },
+ {
+  "gruppe": "Besteck",
+  "art": "collection",
+  "handle": "besteck-essstaebchen",
+  "feld": "description",
+  "alt": "Besteck & Essstäbchen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.",
+  "neu": "Essstäbchen, Besteck-Sets, Gabeln und Löffel aus Edelstahl, Titan, Holz und Keramik. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+ },
+ {
+  "gruppe": "Mengenrabatt ohne Meta-Beschreibung",
+  "art": "collection",
+  "handle": "mengenrabatt-ab-2-stueck",
+  "feld": "description",
+  "alt": "",
+  "neu": "Mengenrabatt bei LuxeStyle: ab 2 Stück 5 %, ab 3 Stück 10 % Rabatt auf beliebige Artikel dieser Auswahl, automatisch im Warenkorb."
+ },
+ {
+  "gruppe": "Mengenrabatt ohne Meta-Beschreibung",
+  "art": "collection",
+  "handle": "mengenrabatt-ab-3-stueck",
+  "feld": "description",
+  "alt": "",
+  "neu": "Mengenrabatt bei LuxeStyle: ab 3 Stück 5 % Rabatt auf beliebige Artikel dieser Auswahl, automatisch im Warenkorb."
+ }
+]
