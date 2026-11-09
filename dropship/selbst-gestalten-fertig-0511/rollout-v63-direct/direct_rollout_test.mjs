@@ -177,6 +177,48 @@ test('Alle Blocker ersetzen nur die echte Theme-CTA durch den Grundlink und sper
     assert.equal(zahlung.hidden, true, `${blocker.handle}: eigener Dynamic-Checkout nicht gesperrt`);
   }
 });
+test('Sperrskript löst seinen eigenen MutationObserver nicht endlos aus (Seite darf nicht einfrieren)', () => {
+  // Wirklichkeitsnahe Attrappe: Jede Zuweisung an textContent ist im Browser eine childList-Mutation, auch bei gleichem Text.
+  // Der Beobachter bekommt sie als Mikrotask nachgeliefert; läuft das unbegrenzt, friert die Seite ein (GEMESSEN 09.11.2026 an Magnet und Dad-Cap).
+  for (const blocker of BLOCKLIST) {
+    const p = blockedLive(blocker);
+    const skript = blockerBaustein({ product: p, blocker }).match(/<script>([\s\S]+)<\/script>/)?.[1];
+    assert.ok(skript, `${blocker.handle}: Sperrskript fehlt`);
+    const warteschlange = []; let zuweisungen = 0; let beobachter = null;
+    const attribute = new Map([['href', '#lspod-start']]);
+    let text = 'Zuerst dein Design gestalten';
+    const cta = {
+      get textContent() { return text; },
+      set textContent(v) { text = v; zuweisungen++; if (beobachter) warteschlange.push(beobachter); },
+      setAttribute(name, value) { attribute.set(name, value); },
+      getAttribute(name) { return attribute.get(name); },
+    };
+    const submitButton = { disabled: false, setAttribute(name, value) { this[name] = value; } };
+    const zahlung = { hidden: false, setAttribute(name, value) { this[name] = value; } };
+    const eigenesFormular = {
+      querySelector(sel) { return sel === '[name="id"]' ? { value: '9' } : null; },
+      querySelectorAll(sel) { return sel === '.shopify-payment-button' ? [zahlung] : [submitButton]; },
+    };
+    const document = {
+      currentScript: { previousElementSibling: { scrollIntoView() {} } },
+      readyState: 'complete', documentElement: {}, addEventListener() {},
+      querySelectorAll(sel) {
+        if (sel === 'div.lspod-designzwang > a.button.lspod-designzwang__button[href="#lspod-start"]') return [cta];
+        if (sel === 'form[action*="/cart/add"]') return [eigenesFormular];
+        return [];
+      },
+    };
+    class MutationObserver { constructor(fn) { this.fn = fn; } observe() { beobachter = this.fn; } }
+    vm.runInNewContext(skript, { document, MutationObserver });
+    let runden = 0;
+    while (warteschlange.length && runden < 200) { warteschlange.shift()(); runden++; }
+    assert.ok(runden < 200, `${blocker.handle}: Beobachter lief 200 Runden ohne Ende (Endlosschleife, Seite friert ein)`);
+    assert.ok(zuweisungen <= 2, `${blocker.handle}: textContent wurde ${zuweisungen}-mal gesetzt, erwartet höchstens 2`);
+    assert.equal(cta.textContent, 'Personalisierung derzeit nicht bestellbar', `${blocker.handle}: CTA-Text`);
+    assert.equal(submitButton.disabled, true, `${blocker.handle}: eigener Kaufknopf nicht gesperrt`);
+    assert.equal(zahlung.hidden, true, `${blocker.handle}: eigener Dynamic-Checkout nicht gesperrt`);
+  }
+});
 test('Kein oder doppelter Block wird abgelehnt', () => {
   const b = baustein({ product: live(), releaseProduct: products[0], editor }); wirft(() => beschreibungPlanen('<p>x</p>', b), /Kein bestehender/);
   const old = '<div class="lspod-designer"></div><script src="https://x/lspod-designer-v5.js"></script>'; wirft(() => beschreibungPlanen(old + old, b), /nicht eindeutig/);
