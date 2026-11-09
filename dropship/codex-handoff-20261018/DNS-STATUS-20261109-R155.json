@@ -1,0 +1,107 @@
+{
+  "checkedAtUtc": "2026-11-09T13:09:39.831934+00:00",
+  "checkedAtEuropeZurich": "2026-11-09T14:09:39+01:00",
+  "scope": "public_read_only_dns; no authenticated DNS account access",
+  "resolvers": [
+    "Google Public DNS over HTTPS",
+    "Cloudflare DNS over HTTPS"
+  ],
+  "approvedRecords": [
+    {
+      "owner": "send.luxestyle.ch",
+      "type": "CNAME",
+      "expected": "3848818023763335087.klaviyodns.com.",
+      "result": "NXDOMAIN_consensus_not_publicly_implemented",
+      "queries": [
+        {
+          "provider": "google",
+          "dnsStatus": 3,
+          "answers": []
+        },
+        {
+          "provider": "cloudflare",
+          "dnsStatus": 3,
+          "answers": []
+        }
+      ]
+    },
+    {
+      "owner": "mtd1._domainkey.luxestyle.ch",
+      "type": "CNAME",
+      "expected": "mtd1._domainkey.3848818023763335087.klaviyodns.com.",
+      "result": "NXDOMAIN_consensus_not_publicly_implemented",
+      "queries": [
+        {
+          "provider": "google",
+          "dnsStatus": 3,
+          "answers": []
+        },
+        {
+          "provider": "cloudflare",
+          "dnsStatus": 3,
+          "answers": []
+        }
+      ]
+    },
+    {
+      "owner": "mtd2._domainkey.luxestyle.ch",
+      "type": "CNAME",
+      "expected": "mtd2._domainkey.3848818023763335087.klaviyodns.com.",
+      "result": "NXDOMAIN_consensus_not_publicly_implemented",
+      "queries": [
+        {
+          "provider": "google",
+          "dnsStatus": 3,
+          "answers": []
+        },
+        {
+          "provider": "cloudflare",
+          "dnsStatus": 3,
+          "answers": []
+        }
+      ]
+    },
+    {
+      "owner": "luxestyle.ch",
+      "type": "TXT",
+      "expected": "klaviyo-site-verification=XWqMAD",
+      "result": "NOERROR_root_TXT_returned_but_expected_value_absent_consensus",
+      "queries": [
+        {
+          "provider": "google",
+          "dnsStatus": 0,
+          "answers": [
+            "v=spf1 include:zohomail.eu ~all",
+            "google-site-verification=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw",
+            "tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah",
+            "zoho-verification=zb02252844.zmverify.zoho.eu"
+          ]
+        },
+        {
+          "provider": "cloudflare",
+          "dnsStatus": 0,
+          "answers": [
+            "\"v=spf1 include:zohomail.eu ~all\"",
+            "\"zoho-verification=zb02252844.zmverify.zoho.eu\"",
+            "\"google-site-verification=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw\"",
+            "\"tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah\""
+          ]
+        }
+      ]
+    }
+  ],
+  "nameservers": [
+    "dns1.registrar-servers.com.",
+    "dns2.registrar-servers.com."
+  ],
+  "existingRecordsPreservedPubliclyVisible": {
+    "spf": "v=spf1 include:zohomail.eu ~all",
+    "dmarc": "v=DMARC1; p=none",
+    "zohoVerificationPresent": true,
+    "googleSiteVerificationPresent": true,
+    "tiktokDeveloperVerificationPresent": true,
+    "zmailDkimTxtPresent": true
+  },
+  "interpretation": "All four approved Klaviyo additions are not publicly present at check time. This does not prove authenticated Namecheap account access; no write was attempted.",
+  "writes": 0
+}
