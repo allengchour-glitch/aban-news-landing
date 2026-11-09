@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import {
@@ -7,7 +11,10 @@ import {
   blockerBaustein, blockerProduktPruefen, editorReleasePlanen, integritySha256, produktPruefen,
   releaseAusAllowlist, releasePruefen, sha256,
   VORHER_EDITOR,
+  CANARY_V64, ROLLOUT_V63, ROLLOUT_V64, auswahlPlanen, canaryLedgerPruefen, editorAusRelease, editorBlockNormalisieren,
+  editorReleaseFormPruefen, editorUrl, rolloutKonfig, vorgaengerAusRelease,
 } from './direct_rollout_lib.mjs';
+import { editorReleaseAbgleichen, editorReleaseErzeugen, editorReleaseText } from './editor_release_bauen.mjs';
 
 let ok = 0;
 const test = (name, fn) => { try { fn(); ok++; } catch (e) { console.error(`FEHLER ${name}: ${e.message}`); process.exitCode = 1; } };
@@ -262,6 +269,605 @@ test('Workflow ist manuell, Default-Branch-gebunden, bestätigt Writes exakt und
   assert.match(w, /SHOPIFY_CLIENT_ID: \$\{\{ secrets\.SHOPIFY_CLIENT_ID \}\}/); assert.match(w, /SHOPIFY_CLIENT_SECRET: \$\{\{ secrets\.SHOPIFY_CLIENT_SECRET \}\}/);
   assert.match(w, /actions\/upload-artifact@v4/); assert.match(w, /actions\/download-artifact@v4/);
   assert.doesNotMatch(w, /run:\s*[^\n]*\$\{\{\s*inputs\./);
+});
+
+// ============================================================================================================
+// Editor 6.4.0: editor-release.json, Eingaben/Bestätigungen, Canary-Tabelle, gelockerter Planer, Workflow
+// ============================================================================================================
+const WURZEL = fileURLToPath(new URL('../../../', import.meta.url));
+const HIER = fileURLToPath(new URL('./', import.meta.url));
+const ER = JSON.parse(readFileSync(HIER + 'editor-release.json', 'utf8'));
+const V64 = editorAusRelease(ER);
+const VG = vorgaengerAusRelease(ER);
+const FX = JSON.parse(readFileSync(HIER + 'fixtures/live-editor-bloecke-0811.json', 'utf8'));
+const SRI = (hex) => `sha256-${Buffer.from(hex, 'hex').toString('base64')}`;
+const SKRIPT640 = `<script src="${V64.url}?v=${V64.sha256.slice(0, 16)}" integrity="${SRI(V64.sha256)}" crossorigin="anonymous" defer></script>`;
+const entescape = (t) => t.replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&amp;', '&');
+const zaehle = (text, teil) => text.split(teil).length - 1;
+
+const allowlistReal = JSON.parse(readFileSync(WURZEL + 'dropship/selbst-gestalten-fertig-0511/rollout-v63/allowlist.json', 'utf8'));
+const assetShaReal = new Map(ALLOWLIST.flatMap((a) => [
+  [`lspod-${a.numericId}.karte.json`, sha256(readFileSync(WURZEL + `pod/v6/maps/lspod-${a.numericId}.karte.json`))],
+  ...(PREVIEW_IDS.includes(a.numericId) ? [[`lspod-${a.numericId}.vorschau.json`, sha256(readFileSync(WURZEL + `pod/v6/maps/lspod-${a.numericId}.vorschau.json`))]] : []),
+]));
+const releaseReal = releaseAusAllowlist(allowlistReal, { editor: V64, vorgaengerSha256: VG.map((v) => v.sha256), assetSha256: assetShaReal });
+
+// ---- editor-release.json -------------------------------------------------------------------------------
+test('editor-release.json: Form, Ziel 6.4.0, Vorgänger 6.3.0 und 6.3.1, alle Adressen unter abannews.com/pod/v6', () => {
+  assert.equal(editorReleaseFormPruefen(ER), ER);
+  assert.equal(ER.version, ROLLOUT_V64);
+  assert.equal(ER.file, 'pod/v6/lspod-designer-v6-6.4.0.js');
+  assert.equal(ER.url, 'https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js');
+  assert.equal(ER.url, editorUrl('6.4.0'));
+  assert.deepEqual(ER.vorgaenger.map((v) => v.version), ['6.3.0', '6.3.1']);
+});
+test('editor-release.json: die Vorgänger sind die eingefrorenen Dateien 6.3.0 und 6.3.1 (feste Prüfsummen, sie dürfen sich nie ändern)', () => {
+  assert.equal(ER.vorgaenger[0].sha256, 'e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b');
+  assert.equal(ER.vorgaenger[0].sha256, VORHER_EDITOR.sha256);
+  assert.equal(ER.vorgaenger[1].sha256, '1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0');
+  assert.equal(ER.vorgaenger[1].sha256, allowlistReal.editorSha256);
+  assert.notEqual(ER.sha256, ER.vorgaenger[0].sha256); assert.notEqual(ER.sha256, ER.vorgaenger[1].sha256);
+});
+test('editor-release.json stimmt mit den echten Dateien überein (SHA-256 und Byteanzahl von Ziel und Vorgängern)', () => {
+  const abw = editorReleaseAbgleichen(ER, { root: WURZEL });
+  assert.deepEqual(abw, [], `editor-release.json weicht von den Dateien ab: ${abw.join(' | ')}. Neu erzeugen: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor_release_bauen.mjs`);
+  // unabhängig vom Bauskript nachgerechnet: SRI des Ziels aus den Dateibytes
+  const bytes = readFileSync(WURZEL + ER.file);
+  assert.equal(`sha256-${createHash('sha256').update(bytes).digest('base64')}`, integritySha256(ER.sha256));
+});
+test('editor-release.json: unbrauchbare Fassungen werden abgelehnt (Schema, Dateiname, Adresse, Hash, Vorgänger)', () => {
+  const kopie = () => JSON.parse(JSON.stringify(ER));
+  const faelle = [
+    ['Schema 2', (e) => { e.schema = 2; }, /Schema 1/],
+    ['Version kein semver', (e) => { e.version = '6.4'; }, /Version unbrauchbar/],
+    ['file passt nicht zur Version', (e) => { e.file = 'pod/v6/lspod-designer-v6-6.3.1.js'; }, /file passt nicht/],
+    ['fremder Host', (e) => { e.url = 'https://example.org/pod/v6/lspod-designer-v6-6.4.0.js'; }, /url passt nicht/],
+    ['url mit Query', (e) => { e.url += '?v=1'; }, /url passt nicht/],
+    ['sha256 zu kurz', (e) => { e.sha256 = e.sha256.slice(1); }, /sha256 unbrauchbar/],
+    ['sha256 Grossbuchstaben', (e) => { e.sha256 = e.sha256.toUpperCase(); }, /sha256 unbrauchbar/],
+    ['bytes 0', (e) => { e.bytes = 0; }, /bytes unbrauchbar/],
+    ['bytes als Text', (e) => { e.bytes = String(e.bytes); }, /bytes unbrauchbar/],
+    ['keine Vorgänger', (e) => { e.vorgaenger = []; }, /vorgaenger fehlt/],
+    ['Vorgänger = Ziel-Version', (e) => { e.vorgaenger[0] = { ...e.vorgaenger[0], version: '6.4.0', file: 'pod/v6/lspod-designer-v6-6.4.0.js', url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js' }; }, /nicht älter/],
+    ['Vorgänger neuer als Ziel', (e) => { e.vorgaenger[0] = { ...e.vorgaenger[0], version: '6.5.0', file: 'pod/v6/lspod-designer-v6-6.5.0.js', url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.5.0.js' }; }, /nicht älter/],
+    ['Vorgänger doppelt', (e) => { e.vorgaenger[1] = { ...e.vorgaenger[0] }; }, /doppelt/],
+    ['Vorgänger mit SHA des Ziels', (e) => { e.vorgaenger[0].sha256 = e.sha256; }, /doppelt oder gleich dem Ziel/],
+  ];
+  for (const [, f, rx] of faelle) { const e = kopie(); f(e); wirft(() => editorReleaseFormPruefen(e), rx); }
+  wirft(() => editorReleaseFormPruefen(null), /Schema 1/);
+});
+
+// ---- Bauskript editor_release_bauen.mjs ----------------------------------------------------------------
+test('editor_release_bauen: erzeugt die JSON aus den Dateibytes (deterministisch, ohne Vorlage), erkennt jede Abweichung', () => {
+  const t = mkdtempSync(join(tmpdir(), 'v64-bauen-'));
+  try {
+    mkdirSync(join(t, 'pod/v6'), { recursive: true });
+    const inhalt = { '6.3.0': 'alt-eins', '6.3.1': 'alt-zwei', '6.4.0': 'neu-ziel' };
+    for (const [v, text] of Object.entries(inhalt)) writeFileSync(join(t, `pod/v6/lspod-designer-v6-${v}.js`), text);
+    const er = editorReleaseErzeugen({ root: t });
+    const h = (x) => createHash('sha256').update(x).digest('hex');
+    assert.equal(er.version, '6.4.0'); assert.equal(er.sha256, h('neu-ziel')); assert.equal(er.bytes, 8);
+    assert.deepEqual(er.vorgaenger.map((v) => [v.version, v.sha256, v.bytes]), [['6.3.0', h('alt-eins'), 8], ['6.3.1', h('alt-zwei'), 8]]);
+    assert.equal(er.url, 'https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js');
+    assert.equal(editorReleaseText(er), editorReleaseText(editorReleaseErzeugen({ root: t })), 'nicht deterministisch');
+    assert.ok(editorReleaseText(er).endsWith('}\n'));
+    assert.deepEqual(editorReleaseAbgleichen(er, { root: t }), []);
+    assert.match(editorReleaseAbgleichen({ ...er, bytes: er.bytes + 1 }, { root: t }).join('|'), /9 Byte statt|8 Byte statt|Byte statt/, 'nur die Byteanzahl weicht ab, wurde nicht erkannt');
+    writeFileSync(join(t, 'pod/v6/lspod-designer-v6-6.4.0.js'), 'neu-ziel!');
+    assert.match(editorReleaseAbgleichen(er, { root: t }).join('|'), /6\.4\.0\.js: sha256/);
+    writeFileSync(join(t, 'pod/v6/lspod-designer-v6-6.4.0.js'), 'neu-ziel'); writeFileSync(join(t, 'pod/v6/lspod-designer-v6-6.3.1.js'), 'ALT-ZWEI');
+    assert.match(editorReleaseAbgleichen(er, { root: t }).join('|'), /6\.3\.1\.js: sha256/);
+    rmSync(join(t, 'pod/v6/lspod-designer-v6-6.3.0.js'));
+    assert.match(editorReleaseAbgleichen(er, { root: t }).join('|'), /6\.3\.0\.js: Datei fehlt/);
+    wirft(() => editorReleaseErzeugen({ root: t }), /Editor-Datei fehlt: pod\/v6\/lspod-designer-v6-6\.3\.0\.js/);
+    wirft(() => editorReleaseErzeugen({ root: t, vorgaenger: ['6.3.1', '6.4.0'] }), /nicht älter|doppelt/);
+    assert.match(editorReleaseAbgleichen({ ...er, sha256: 'zz' }, { root: t })[0], /sha256 unbrauchbar/);
+  } finally { rmSync(t, { recursive: true, force: true }); }
+});
+test('editor_release_bauen (Kommandozeile): schreibt, --pruefen schlägt bei geänderter Datei fehl (Exit 1) und schreibt nichts', () => {
+  const t = mkdtempSync(join(tmpdir(), 'v64-cli-'));
+  try {
+    mkdirSync(join(t, 'pod/v6'), { recursive: true });
+    for (const [v, text] of Object.entries({ '6.3.0': 'a', '6.3.1': 'b', '6.4.0': 'c' })) writeFileSync(join(t, `pod/v6/lspod-designer-v6-${v}.js`), text);
+    const out = join(t, 'er.json');
+    const cli = (...a) => spawnSync(process.execPath, [HIER + 'editor_release_bauen.mjs', '--root', t, '--out', out, ...a], { encoding: 'utf8', timeout: 20000 });
+    assert.equal(cli('--pruefen').status, 1, '--pruefen ohne Datei muss scheitern');
+    const w = cli(); assert.equal(w.status, 0, w.stderr);
+    assert.equal(readFileSync(out, 'utf8'), editorReleaseText(editorReleaseErzeugen({ root: t })));
+    assert.equal(cli('--pruefen').status, 0);
+    writeFileSync(join(t, 'pod/v6/lspod-designer-v6-6.4.0.js'), 'c2');
+    const vorher = readFileSync(out, 'utf8');
+    const p = cli('--pruefen'); assert.equal(p.status, 1); assert.match(p.stderr, /weicht von den Dateien ab/);
+    assert.equal(readFileSync(out, 'utf8'), vorher, '--pruefen darf nichts schreiben');
+    assert.equal(cli('--unbekannt').status, 1);
+    assert.equal(cli('--pruefen', '--version', '6.4.1').status, 1);
+  } finally { rmSync(t, { recursive: true, force: true }); }
+});
+
+// ---- Eingaben, Bestätigungen, Canary-Tabelle ------------------------------------------------------------
+const ALLE_ACKS = ['V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE',
+  'V64_CANARY_TASSE', 'V64_CANARY_JUTEBEUTEL', 'V64_FULL_16_EDITOR', 'V64_ROLLBACK_TASSE', 'V64_ROLLBACK_JUTEBEUTEL', 'V64_ROLLBACK_16_EDITOR',
+  '', 'v64_canary_tasse', 'V64_CANARY_TASSE ', ' V64_CANARY_TASSE', 'V64_FULL_16_EDITOR\n', 'V64_CANARY', 'V64_FULL_19_SAFE', 'V63_FULL_16_EDITOR'];
+const SOLL64 = { apply: { 'canary-tasse': 'V64_CANARY_TASSE', 'canary-jutebeutel': 'V64_CANARY_JUTEBEUTEL', full: 'V64_FULL_16_EDITOR' }, rollback: { 'canary-tasse': 'V64_ROLLBACK_TASSE', 'canary-jutebeutel': 'V64_ROLLBACK_JUTEBEUTEL', full: 'V64_ROLLBACK_16_EDITOR' } };
+const SOLL63 = { apply: { canary: 'V63_CANARY_TASSE', full: 'V63_FULL_19_SAFE' }, rollback: { canary: 'V63_ROLLBACK_TASSE', full: 'V63_ROLLBACK_19_SAFE' } };
+test('6.4.0: jeder Schreiblauf nimmt genau die eine zugehörige V64-Bestätigung, keine V63-, keine fremde, keine fast richtige', () => {
+  let geprueft = 0;
+  for (const mode of ['apply', 'rollback']) for (const [scope, soll] of Object.entries(SOLL64[mode])) for (const ack of ALLE_ACKS) {
+    const eingabe = { mode, scope, ack, live: true, editorVersion: '6.4.0' };
+    if (ack === soll) assert.equal(rolloutKonfig(eingabe).ack, soll, `${mode}/${scope}: richtige Bestätigung abgelehnt`);
+    else wirft(() => rolloutKonfig(eingabe), /braucht ACK=/);
+    geprueft++;
+  }
+  assert.equal(geprueft, 2 * 3 * ALLE_ACKS.length);
+});
+test('6.4.0: die vier alten V63-Zeichenketten bestätigen nie einen 6.4.0-Schreiblauf; V64-Zeichenketten nie einen 6.3.1-Lauf', () => {
+  for (const [mode, scope] of [['apply', 'canary-tasse'], ['apply', 'canary-jutebeutel'], ['apply', 'full'], ['rollback', 'canary-tasse'], ['rollback', 'canary-jutebeutel'], ['rollback', 'full']]) {
+    for (const ack of ['V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE']) wirft(() => rolloutKonfig({ mode, scope, ack, live: true, editorVersion: '6.4.0' }), /braucht ACK=V64_/);
+  }
+  for (const mode of ['apply', 'rollback']) for (const scope of ['canary', 'full']) {
+    for (const ack of ALLE_ACKS.filter((a) => a.startsWith('V64'))) wirft(() => rolloutKonfig({ mode, scope, ack, live: true }), /braucht ACK=/);
+    assert.equal(rolloutKonfig({ mode, scope, ack: SOLL63[mode][scope], live: true }).ack, SOLL63[mode][scope], 'alter Pfad: richtige V63-Bestätigung abgelehnt');
+  }
+});
+test('Eingaben: Plan braucht weder LIVE noch Bestätigung, Schreiben braucht LIVE=1; 6.4.0 kennt nur die drei festen Scopes', () => {
+  for (const scope of ['canary-tasse', 'canary-jutebeutel', 'full']) {
+    const k = rolloutKonfig({ mode: 'plan', scope, ack: '', live: false, editorVersion: '6.4.0' });
+    assert.equal(k.mode, 'plan'); assert.equal(k.ack, ''); assert.equal(k.editorUrlPfad, '/pod/v6/lspod-designer-v6-6.4.0.js');
+    wirft(() => rolloutKonfig({ mode: 'apply', scope, ack: SOLL64.apply[scope], live: false, editorVersion: '6.4.0' }), /LIVE=1 fehlt/);
+    wirft(() => rolloutKonfig({ mode: 'rollback', scope, ack: SOLL64.rollback[scope], live: false, editorVersion: '6.4.0' }), /LIVE=1 fehlt/);
+  }
+  for (const scope of ['canary', 'CANARY-HOODIE', 'canary-tasse;x', 'alle', '', undefined, 'canary-tasse ', 'full,canary-tasse']) wirft(() => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' }), /SCOPE muss canary-tasse, canary-jutebeutel oder full sein/);
+  wirft(() => rolloutKonfig({ mode: 'plan', scope: 'canary-tasse', editorVersion: '6.4.1' }), /EDITOR_VERSION muss/);
+  wirft(() => rolloutKonfig({ mode: 'plan', scope: 'canary-tasse', editorVersion: '6.3.0' }), /EDITOR_VERSION muss/);
+  wirft(() => rolloutKonfig({ mode: 'loeschen', scope: 'full', editorVersion: '6.4.0' }), /MODE muss/);
+  wirft(() => rolloutKonfig({ mode: 'plan', scope: 'canary-tasse' }), /SCOPE muss canary oder full sein/);   // alter Pfad kennt die 6.4.0-Scopes nicht
+  assert.equal(rolloutKonfig({ mode: 'PLAN', scope: 'FULL', editorVersion: '6.4.0' }).scope, 'full');
+  const alt = rolloutKonfig({});
+  assert.equal(alt.editorVersion, ROLLOUT_V63); assert.equal(alt.scope, 'canary'); assert.equal(alt.mode, 'plan'); assert.equal(alt.editorUrlPfad, '/pod/v6/lspod-designer-v6-6.3.1.js');
+});
+test('Canary-Tabelle ist fest einprogrammiert: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel, full hat keinen Canary; beide stehen in der Allowlist', () => {
+  assert.deepEqual(Object.keys(CANARY_V64), ['canary-tasse', 'canary-jutebeutel']);
+  assert.equal(CANARY_V64['canary-tasse'].id, 'gid://shopify/Product/15422823465345');
+  assert.equal(CANARY_V64['canary-tasse'].handle, 'keramik-tasse-selbst-gestalten');
+  assert.equal(CANARY_V64['canary-jutebeutel'].id, 'gid://shopify/Product/15422819991937');
+  assert.equal(CANARY_V64['canary-jutebeutel'].handle, 'bio-jutebeutel-selbst-gestalten');
+  assert.ok(Object.isFrozen(CANARY_V64) && Object.isFrozen(CANARY_V64['canary-tasse']));
+  for (const c of Object.values(CANARY_V64)) assert.ok(ALLOWLIST.some((a) => a.id === c.id && a.handle === c.handle), `${c.handle} nicht in der Allowlist`);
+  const k = (scope) => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' });
+  assert.equal(k('canary-tasse').canary.handle, 'keramik-tasse-selbst-gestalten');
+  assert.equal(k('canary-jutebeutel').canary.handle, 'bio-jutebeutel-selbst-gestalten');
+  assert.equal(k('full').canary, null);
+  assert.equal(rolloutKonfig({ mode: 'plan', scope: 'canary' }).canary.handle, 'keramik-tasse-selbst-gestalten');   // alter Pfad: wie bisher die Tasse
+  // keine Umgebungsvariable und kein Eingabefeld wählt das Canary-Produkt
+  const vorher = process.env.CANARY;
+  process.env.CANARY = 'unisex-hoodie-selbst-gestalten';
+  try { assert.equal(k('canary-tasse').canary.handle, 'keramik-tasse-selbst-gestalten'); } finally { if (vorher === undefined) delete process.env.CANARY; else process.env.CANARY = vorher; }
+});
+test('Auswahl: Canary genau ein festes Produkt; Full (6.4.0) prüft die Sperrprodukte zuerst; alter Pfad unverändert', () => {
+  const plan = [...ALLOWLIST.map((a) => ({ kind: 'editor', id: a.id, handle: a.handle })), ...BLOCKLIST.map((b) => ({ kind: 'blocked', id: b.id, handle: b.handle }))];
+  const k = (scope, editorVersion = '6.4.0') => rolloutKonfig({ mode: 'plan', scope, editorVersion });
+  assert.deepEqual(auswahlPlanen(plan, k('canary-tasse')).map((x) => x.handle), ['keramik-tasse-selbst-gestalten']);
+  assert.deepEqual(auswahlPlanen(plan, k('canary-jutebeutel')).map((x) => x.handle), ['bio-jutebeutel-selbst-gestalten']);
+  const voll = auswahlPlanen(plan, k('full'));
+  assert.equal(voll.length, 19);
+  assert.deepEqual(voll.slice(0, 3).map((x) => x.kind), ['blocked', 'blocked', 'blocked']);
+  assert.deepEqual(voll.slice(3).map((x) => x.handle), ALLOWLIST.map((a) => a.handle), 'Reihenfolge der Editorprodukte geändert');
+  assert.deepEqual(auswahlPlanen(plan, k('full', '6.3.1')), plan, 'alter Pfad: Full unverändert in Planreihenfolge');
+  assert.deepEqual(auswahlPlanen(plan, k('canary', '6.3.1')).map((x) => x.handle), ['keramik-tasse-selbst-gestalten']);
+  wirft(() => auswahlPlanen(plan.filter((x) => x.handle !== 'bio-jutebeutel-selbst-gestalten'), k('canary-jutebeutel')), /Canary nicht genau einmal/);
+  wirft(() => auswahlPlanen([...plan, plan[2]], k('canary-jutebeutel')), /Canary nicht genau einmal/);
+  wirft(() => auswahlPlanen(null, k('full')), /Plan ohne Produktliste/);
+});
+test('Canary-Ledger: nur exakt das Canary-Produkt (Rollback-Schutz), bei Full keine Einschränkung', () => {
+  const k = (scope) => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' });
+  const tasse = CANARY_V64['canary-tasse'].id; const beutel = CANARY_V64['canary-jutebeutel'].id;
+  assert.equal(canaryLedgerPruefen(k('canary-tasse'), [tasse]), true);
+  assert.equal(canaryLedgerPruefen(k('canary-jutebeutel'), [beutel]), true);
+  wirft(() => canaryLedgerPruefen(k('canary-tasse'), [beutel]), /Canary-Ledger/);
+  wirft(() => canaryLedgerPruefen(k('canary-jutebeutel'), [tasse]), /Canary-Ledger/);
+  wirft(() => canaryLedgerPruefen(k('canary-tasse'), [tasse, beutel]), /Canary-Ledger/);
+  wirft(() => canaryLedgerPruefen(k('canary-tasse'), []), /Canary-Ledger/);
+  assert.equal(canaryLedgerPruefen(k('full'), [tasse, beutel]), true);
+});
+
+// ---- Skript im Kindprozess: Verdrahtung der Eingaben, rein lokal, ohne Netz und ohne Zugangsdaten ------------
+const SKRIPT = HIER + 'direct_rollout.mjs';
+const lauf = (env) => spawnSync(process.execPath, [SKRIPT], { env: { PATH: process.env.PATH || '', HOME: tmpdir(), ...env }, encoding: 'utf8', timeout: 60000 });
+test('direct_rollout.mjs (Kindprozess): falsche Bestätigungen, Scopes und fehlendes LIVE stoppen vor jedem Zugriff', () => {
+  const faelle = [
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'canary-tasse', ACK: 'V63_CANARY_TASSE' }, /Apply \(canary-tasse\) braucht ACK=V64_CANARY_TASSE/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'canary-jutebeutel', ACK: 'V64_CANARY_TASSE' }, /braucht ACK=V64_CANARY_JUTEBEUTEL/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: 'full', ACK: 'V63_FULL_19_SAFE' }, /braucht ACK=V64_FULL_16_EDITOR/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: 'canary-tasse', ACK: 'V63_ROLLBACK_TASSE' }, /braucht ACK=V64_ROLLBACK_TASSE/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: 'full', ACK: 'V64_FULL_16_EDITOR' }, /braucht ACK=V64_ROLLBACK_16_EDITOR/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'apply', SCOPE: 'canary-tasse', ACK: 'V64_CANARY_TASSE' }, /LIVE=1 fehlt/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'plan', SCOPE: 'canary' }, /SCOPE muss canary-tasse, canary-jutebeutel oder full sein/],
+    [{ EDITOR_VERSION: '6.4.0', MODE: 'plan' }, /SCOPE muss canary-tasse/],
+    [{ EDITOR_VERSION: '6.4.1', MODE: 'plan', SCOPE: 'full' }, /EDITOR_VERSION muss/],
+    [{ MODE: 'apply', LIVE: '1', SCOPE: 'canary', ACK: 'V64_CANARY_TASSE' }, /Canary braucht ACK=V63_CANARY_TASSE/],
+    [{ MODE: 'apply', LIVE: '1', SCOPE: 'canary-tasse', ACK: 'V63_CANARY_TASSE' }, /SCOPE muss canary oder full sein/],
+  ];
+  for (const [env, rx] of faelle) {
+    const r = lauf(env);
+    assert.notEqual(r.status, 0, `lief durch: ${JSON.stringify(env)}`);
+    assert.match(r.stderr, rx, JSON.stringify(env));
+    assert.doesNotMatch(r.stderr, /Shopify-Zugangsdaten|Shop-Identität|fetch failed/, `kam über die Eingabeprüfung hinaus: ${JSON.stringify(env)}`);
+  }
+});
+test('direct_rollout.mjs (Kindprozess): die richtigen V64-Eingaben passieren die Prüfung und enden erst am fehlenden Zugang (kein Netz, kein Schreiben)', () => {
+  const ohneZugang = { SHOPIFY_ADMIN_TOKEN: '', SHOPIFY_CLIENT_ID: '', SHOPIFY_CLIENT_SECRET: '' };
+  for (const [scope, ack] of Object.entries(SOLL64.apply)) {
+    const r = lauf({ ...ohneZugang, EDITOR_VERSION: '6.4.0', MODE: 'apply', LIVE: '1', SCOPE: scope, ACK: ack });
+    assert.notEqual(r.status, 0); assert.match(r.stderr, /Shopify-Zugangsdaten fehlen/, `${scope}: ${r.stderr.slice(0, 300)}`);
+  }
+  const plan = lauf({ ...ohneZugang, EDITOR_VERSION: '6.4.0', MODE: 'plan', SCOPE: 'canary-jutebeutel' });
+  assert.match(plan.stderr, /Shopify-Zugangsdaten fehlen/, plan.stderr.slice(0, 300));
+  const alt = lauf({ ...ohneZugang, MODE: 'plan', SCOPE: 'canary' });     // alter Pfad bleibt lauffähig
+  assert.match(alt.stderr, /Shopify-Zugangsdaten fehlen/, alt.stderr.slice(0, 300));
+});
+test('direct_rollout.mjs (Kindprozess): weicht eine Editor-Datei von editor-release.json ab, stoppt der 6.4.0-Lauf rein lokal VOR dem Zugang', () => {
+  const t = mkdtempSync(join(tmpdir(), 'v64-assets-'));
+  try {
+    mkdirSync(join(t, 'maps'));
+    cpSync(WURZEL + 'pod/v6/maps', join(t, 'maps'), { recursive: true });
+    for (const e of [ER, ...ER.vorgaenger]) cpSync(WURZEL + e.file, join(t, e.file.split('/').pop()));
+    const basis = { SHOPIFY_ADMIN_TOKEN: '', SHOPIFY_CLIENT_ID: '', SHOPIFY_CLIENT_SECRET: '', EDITOR_VERSION: '6.4.0', MODE: 'plan', SCOPE: 'full', ASSET_ROOT: t };
+    assert.match(lauf(basis).stderr, /Shopify-Zugangsdaten fehlen/, 'unveränderte Kopie muss bis zum Zugang kommen');
+    const ziel = join(t, ER.file.split('/').pop());
+    writeFileSync(ziel, Buffer.concat([readFileSync(ziel), Buffer.from('\n')]));
+    const r1 = lauf(basis);
+    assert.notEqual(r1.status, 0); assert.match(r1.stderr, /editor-release\.json weicht von pod\/v6\/lspod-designer-v6-6\.4\.0\.js ab/); assert.doesNotMatch(r1.stderr, /Zugangsdaten/);
+    cpSync(WURZEL + ER.file, ziel);
+    const vor = join(t, ER.vorgaenger[1].file.split('/').pop());
+    writeFileSync(vor, 'verändert');
+    assert.match(lauf(basis).stderr, /weicht von pod\/v6\/lspod-designer-v6-6\.3\.1\.js ab/);
+    rmSync(vor);
+    assert.match(lauf(basis).stderr, /Lokale Editor-Datei fehlt/);
+    // alter Pfad (6.3.1) hängt nicht an 6.4.0
+    rmSync(ziel);
+    cpSync(WURZEL + ER.vorgaenger[1].file, join(t, 'lspod-designer-v6-6.3.1.js'));
+    assert.match(lauf({ ...basis, EDITOR_VERSION: '' }).stderr, /Zugangsdaten fehlen|SCOPE muss/, 'alter Pfad braucht die 6.4.0-Datei nicht');
+    assert.match(lauf({ ...basis, EDITOR_VERSION: '', SCOPE: 'canary' }).stderr, /Shopify-Zugangsdaten fehlen/);
+  } finally { rmSync(t, { recursive: true, force: true }); }
+});
+
+// ---- Rollback-Artefakt im Kindprozess: Plan, Release, Sicherungen und Ledger werden VOR dem Zugang geprüft ------
+const relAlt = releaseAusAllowlist(allowlistReal, { editorSha256: allowlistReal.editorSha256, assetSha256: assetShaReal });
+function artefaktBauen(dir, { scope = 'canary-tasse', editorVersion = '6.4.0', release = releaseReal, ledgerProdukte = null, metaMut = (m) => m, ledgerMut = (l) => l } = {}) {
+  mkdirSync(dir, { recursive: true });
+  const konf = rolloutKonfig({ mode: 'plan', scope, editorVersion });
+  const produkte = [...ALLOWLIST.map((a) => ({ kind: 'editor', ...a })), ...BLOCKLIST.map((b) => ({ kind: 'blocked', ...b }))].map((x) => {
+    const vorher = `<p>vorher ${x.handle}</p>`; const nachher = `<p>nachher ${x.handle}</p>`;
+    writeFileSync(join(dir, `${x.numericId}.before.html`), vorher); writeFileSync(join(dir, `${x.numericId}.after.html`), nachher);
+    return { kind: x.kind, id: x.id, numericId: x.numericId, handle: x.handle, title: x.handle, updatedAt: '2026-11-09T00:00:00Z', onlineStoreUrl: `https://luxestyle.ch/products/${x.handle}`, expectedVariantIds: ['1'], vorherSha256: sha256(vorher), nachherSha256: sha256(nachher), geaendert: true };
+  });
+  const releaseText = `${JSON.stringify(release, null, 2)}\n`;
+  writeFileSync(join(dir, 'release.json'), releaseText);
+  const meta = metaMut({ schema: 2, createdAt: '2026-11-09T00:00:00Z', shop: 'au3j0y-hq.myshopify.com', primaryDomain: 'luxestyle.ch', currency: 'CHF', releaseSha256: sha256(releaseText), scope: konf.scope, canary: konf.canary ? konf.canary.handle : null, ...(editorVersion === '6.4.0' ? { editorVersion } : {}), products: produkte });
+  const planText = `${JSON.stringify(meta, null, 2)}\n`;
+  writeFileSync(join(dir, 'plan.json'), planText);
+  const ids = ledgerProdukte || (konf.canary ? [konf.canary.id] : ALLOWLIST.map((a) => a.id));
+  const ledger = ledgerMut({ schema: 1, startedAt: '2026-11-09T00:00:00Z', mode: 'apply', scope: konf.scope, sourcePlanSha256: sha256(planText), products: ids.map((id) => ({ id, handle: 'x', state: 'applied', sha256: 'x' })) });
+  writeFileSync(join(dir, 'ledger.json'), `${JSON.stringify(ledger, null, 2)}\n`);
+}
+test('Rollback (Kindprozess): das Artefakt wird vor dem Zugang gegen Editor-Release, Scope, Canary-Produkt und Ledger geprüft', () => {
+  const t = mkdtempSync(join(tmpdir(), 'v64-rollback-'));
+  try {
+    const ohneZugang = { SHOPIFY_ADMIN_TOKEN: '', SHOPIFY_CLIENT_ID: '', SHOPIFY_CLIENT_SECRET: '' };
+    const rb = (dir, scope, ack, extra = {}) => lauf({ ...ohneZugang, EDITOR_VERSION: '6.4.0', MODE: 'rollback', LIVE: '1', SCOPE: scope, ACK: ack, ROLLBACK_PLAN: dir, ...extra });
+    const gut = (name, dir, scope, ack, extra) => { const r = rb(dir, scope, ack, extra); assert.match(r.stderr, /Shopify-Zugangsdaten fehlen/, `${name}: ${r.stderr.slice(0, 400)}`); };
+    const schlecht = (name, dir, scope, ack, rxFehler, extra) => { const r = rb(dir, scope, ack, extra); assert.notEqual(r.status, 0, name); assert.match(r.stderr, rxFehler, `${name}: ${r.stderr.slice(0, 400)}`); assert.doesNotMatch(r.stderr, /Zugangsdaten/, `${name}: kam bis zum Zugang`); };
+    const d = (n) => join(t, n);
+    artefaktBauen(d('tasse')); gut('gültiges Tassen-Artefakt', d('tasse'), 'canary-tasse', 'V64_ROLLBACK_TASSE');
+    artefaktBauen(d('beutel'), { scope: 'canary-jutebeutel' }); gut('gültiges Jutebeutel-Artefakt', d('beutel'), 'canary-jutebeutel', 'V64_ROLLBACK_JUTEBEUTEL');
+    artefaktBauen(d('full'), { scope: 'full' }); gut('gültiges Full-Artefakt', d('full'), 'full', 'V64_ROLLBACK_16_EDITOR');
+    schlecht('Artefakt der anderen Stufe', d('beutel'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    schlecht('Full-Artefakt als Canary', d('full'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    artefaktBauen(d('ohneversion'), { metaMut: (m) => { delete m.editorVersion; return m; } });
+    schlecht('Plan ohne editorVersion unter 6.4.0', d('ohneversion'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    artefaktBauen(d('falschversion'), { metaMut: (m) => { m.editorVersion = '6.3.1'; return m; } });
+    schlecht('Plan mit editorVersion 6.3.1 unter 6.4.0', d('falschversion'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    artefaktBauen(d('canaryfremd'), { metaMut: (m) => { m.canary = 'bio-jutebeutel-selbst-gestalten'; return m; } });
+    schlecht('Plan nennt ein anderes Canary-Produkt', d('canaryfremd'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    artefaktBauen(d('scopefremd'), { metaMut: (m) => { m.scope = 'full'; return m; } });
+    schlecht('Plan nennt einen anderen Scope', d('scopefremd'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/);
+    artefaktBauen(d('relalt'), { release: relAlt });
+    schlecht('Release mit 6.3.1-Editor in einem 6.4.0-Artefakt', d('relalt'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Editor-URL oder SHA-256 unbrauchbar/);
+    artefaktBauen(d('ledgerfremd'), { ledgerProdukte: [CANARY_V64['canary-jutebeutel'].id] });
+    schlecht('Ledger mit fremdem Produkt', d('ledgerfremd'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Canary-Ledger enthält nicht exakt das Canary-Produkt keramik-tasse/);
+    artefaktBauen(d('ledgerzwei'), { ledgerProdukte: [CANARY_V64['canary-tasse'].id, CANARY_V64['canary-jutebeutel'].id] });
+    schlecht('Ledger mit zwei Produkten', d('ledgerzwei'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Canary-Ledger enthält nicht exakt/);
+    artefaktBauen(d('ledgerscope'), { ledgerMut: (l) => { l.scope = 'full'; return l; } });
+    schlecht('Ledger mit anderem Scope', d('ledgerscope'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Apply-Ledger passt nicht zum Rollback-Scope\/Plan/);
+    artefaktBauen(d('ledgerplan'), { ledgerMut: (l) => { l.sourcePlanSha256 = 'f'.repeat(64); return l; } });
+    schlecht('Ledger gehört zu einem anderen Plan', d('ledgerplan'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Apply-Ledger passt nicht/);
+    artefaktBauen(d('sicherung'));
+    writeFileSync(join(d('sicherung'), `${CANARY_V64['canary-tasse'].numericId}.before.html`), '<p>verfälscht</p>');
+    schlecht('verfälschte Sicherung', d('sicherung'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Sicherungsdatei fehlt oder Hash weicht ab/);
+    schlecht('Artefakt fehlt', d('gibtsnicht'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /ROLLBACK_PLAN mit plan\.json fehlt/);
+    // alter Pfad (6.3.1): sein Artefakt (ohne editorVersion, Scope canary, 6.3.1-Release) bleibt rücknehmbar; ein 6.4.0-Artefakt nicht
+    artefaktBauen(d('alt'), { scope: 'canary', editorVersion: '6.3.1', release: relAlt });
+    gut('altes 6.3.1-Canary-Artefakt', d('alt'), 'canary', 'V63_ROLLBACK_TASSE', { EDITOR_VERSION: '' });
+    schlecht('6.4.0-Artefakt im alten Pfad', d('tasse'), 'canary', 'V63_ROLLBACK_TASSE', /Plan gehört zu einem anderen Editor-Release oder Scope/, { EDITOR_VERSION: '' });
+    artefaktBauen(d('altvoll'), { scope: 'full', editorVersion: '6.3.1', release: relAlt });
+    gut('altes 6.3.1-Full-Artefakt', d('altvoll'), 'full', 'V63_ROLLBACK_19_SAFE', { EDITOR_VERSION: '' });
+  } finally { rmSync(t, { recursive: true, force: true }); }
+});
+
+// ---- Release und Baustein für 6.4.0 -------------------------------------------------------------------
+test('Release 6.4.0: Ziel aus editor-release.json, Karten/Vorschauen unverändert zum alten Weg, Allowlist darf den Hash eines Vorgängers tragen', () => {
+  const alt = releaseAusAllowlist(allowlistReal, { editorSha256: allowlistReal.editorSha256, assetSha256: assetShaReal });
+  assert.deepEqual(releaseReal.products, alt.products, 'Karten/Vorschauen/Varianten-Zuordnung weicht vom 6.3.1-Weg ab');
+  assert.deepEqual(releaseReal.editor, { url: ER.url, sha256: ER.sha256 });
+  assert.equal(releasePruefen(releaseReal, { editorPfad: '/pod/v6/lspod-designer-v6-6.4.0.js' }), true);
+  wirft(() => releasePruefen(releaseReal), /Editor-URL/);                                              // alter Pfad akzeptiert 6.4.0 nicht
+  wirft(() => releasePruefen(alt, { editorPfad: '/pod/v6/lspod-designer-v6-6.4.0.js' }), /Editor-URL/); // 6.4.0-Pfad akzeptiert 6.3.1 nicht
+  const zielHash = releaseAusAllowlist({ ...sourceAllowlist, editorSha256: 'b'.repeat(64) }, { editor: { url: editorUrl('6.4.0'), sha256: 'b'.repeat(64) }, vorgaengerSha256: [H], assetSha256: sourceAssets });
+  assert.equal(zielHash.editor.sha256, 'b'.repeat(64));                                                // neu gebaute Allowlist mit Ziel-Hash
+  wirft(() => releaseAusAllowlist({ ...sourceAllowlist, editorSha256: 'c'.repeat(64) }, { editor: { url: editorUrl('6.4.0'), sha256: 'b'.repeat(64) }, vorgaengerSha256: [H], assetSha256: sourceAssets }), /weder zum Ziel-Release noch zu einem Vorgänger/);
+  wirft(() => releaseAusAllowlist(sourceAllowlist, { editor: { url: 'https://example.org/pod/v6/lspod-designer-v6-6.4.0.js', sha256: 'b'.repeat(64) }, vorgaengerSha256: [H], assetSha256: sourceAssets }), /Ziel-Editor aus editor-release\.json unbrauchbar/);
+  wirft(() => releaseAusAllowlist(sourceAllowlist, { editor: { url: editorUrl('6.4.0'), sha256: 'b'.repeat(63) }, vorgaengerSha256: [H], assetSha256: sourceAssets }), /unbrauchbar/);
+  wirft(() => releaseAusAllowlist(sourceAllowlist, { editor: { url: `${editorUrl('6.4.0')}?v=1`, sha256: 'b'.repeat(64) }, vorgaengerSha256: [H], assetSha256: sourceAssets }), /unbrauchbar/);
+});
+test('Baustein 6.4.0: Script-Tag mit Dateiname 6.4.0, ?v= und SRI aus dem Hash der Datei (SRI unabhängig aus den Bytes nachgerechnet)', () => {
+  const f = FX.produkte.find((p) => p.handle === 'bio-jutebeutel-selbst-gestalten');
+  const rp = releaseReal.products.find((p) => p.id === f.id);
+  const b = baustein({ product: { handle: f.handle, title: 'T', variants: { nodes: [{ id: 'gid://shopify/ProductVariant/1', availableForSale: true }] } }, releaseProduct: rp, editor: releaseReal.editor });
+  assert.equal(zaehle(b, SKRIPT640), 1, 'Script-Tag weicht ab');
+  const bytes = readFileSync(WURZEL + ER.file);
+  assert.ok(b.includes(`integrity="sha256-${createHash('sha256').update(bytes).digest('base64')}"`), 'SRI passt nicht zu den Dateibytes (editor-release.json veraltet?)');
+  assert.ok(b.includes(`lspod-designer-v6-6.4.0.js?v=${createHash('sha256').update(bytes).digest('hex').slice(0, 16)}"`));
+  assert.doesNotMatch(b, /6\.3\.[01]/);
+});
+
+// ---- gelockerter Planer ------------------------------------------------------------------------------
+const fixtureProdukt = (f) => ({
+  handle: f.handle,
+  title: entescape(f.block.match(/data-produkttitel="([^"]*)"/)[1]),
+  variants: { nodes: [{ id: `gid://shopify/ProductVariant/${f.block.match(/data-variant="(\d+)"/)[1]}`, availableForSale: true }] },
+});
+const neuerBlock = (f, release = releaseReal) => baustein({ product: fixtureProdukt(f), releaseProduct: release.products.find((p) => p.id === f.id), editor: release.editor });
+const beschr = (block) => `<p>Vorspann &amp; Umlaute äöü</p>\n${block}<p>Rest</p>`;
+const plane = (f, block = f.block, release = releaseReal) => editorReleasePlanen(beschr(block), neuerBlock(f, release), release.editor, { vorgaenger: VG });
+const BASIS = FX.produkte.find((p) => p.handle === 'bio-jutebeutel-selbst-gestalten');
+const OHNE_VORSCHAU = FX.produkte.find((p) => p.handle === 'allover-stoffbeutel-selbst-gestalten');
+const SKRIPT630 = BASIS.block.match(/<script [^>]*><\/script>/)[0];
+const SKRIPT631 = FX.tasse631.block.match(/<script [^>]*><\/script>/)[0];
+
+test('Fixtures: 16 Editor-Blöcke in Allowlist-Reihenfolge plus der 6.3.1-Block der Tasse, nur Editor-Blöcke (keine Kundentexte)', () => {
+  assert.deepEqual(FX.produkte.map((p) => [p.id, p.handle]), ALLOWLIST.map((a) => [a.id, a.handle]));
+  for (const f of [...FX.produkte, FX.tasse631]) {
+    assert.ok(f.block.startsWith(`<!-- lx-v63-editor:start product=${f.id} card=`), f.handle);
+    assert.match(f.block, /<!-- lx-v63-editor:end -->\s*$/);
+    assert.equal(zaehle(f.block, '<div class="lspod-designer-v6"'), 1, f.handle);
+    assert.doesNotMatch(f.block, /<p\b|<h\d\b|<br|ls-liefer|ls-pod-retoure|Rückgabe|info@/i, `${f.handle}: Block enthält Fliesstext`);
+    assert.ok(f.block.length < 1500, `${f.handle}: Block ungewöhnlich gross`);
+  }
+  assert.equal(zaehle(JSON.stringify(FX.produkte.map((p) => p.block)), '6.3.0.js?v=e58e5c277e9ff45e'), 16);
+  assert.equal(zaehle(FX.tasse631.block, '6.3.1.js?v=1e15aab9486f0b60'), 1);
+  assert.equal(FX.tasse631.handle, 'keramik-tasse-selbst-gestalten');
+});
+test('Planer (a): jeder Live-Block der 16 Editorprodukte geht gegen 6.4.0 durch; geändert sind nur Script-Tag, Karten-/Vorschau-Version und card=', () => {
+  for (const f of FX.produkte) {
+    const g = plane(f);
+    assert.equal(g.geaendert, true, f.handle);
+    assert.equal(g.nachher, beschr(neuerBlock(f)), `${f.handle}: Ergebnis ist nicht der neue Baustein in der alten Umgebung`);
+    assert.ok(g.nachher.startsWith('<p>Vorspann &amp; Umlaute äöü</p>\n<!-- lx-v63-editor:start') && g.nachher.endsWith('<p>Rest</p>'), `${f.handle}: Text ausserhalb des Blocks verändert`);
+    assert.equal(zaehle(g.nachher, SKRIPT640), 1, `${f.handle}: 6.4.0-Script nicht genau einmal`);
+    assert.equal(zaehle(g.nachher, 'lspod-designer-v6-6.3.0.js'), 0, `${f.handle}: altes Script blieb`);
+    assert.equal(zaehle(g.nachher, 'lx-v63-editor:start'), 1);
+    // unabhängige Zeilenprüfung: Zeile 0 (Marker) bis auf card=, Zeile 1 (Container) bis auf ?v=, Zeile 2 (Script) neu, Rest gleich
+    const alt = f.block.split('\n'); const neu = neuerBlock(f).split('\n');
+    assert.equal(alt.length, neu.length, f.handle);
+    assert.equal(alt[0].replace(/card=[0-9a-f]{64}/, 'card=X'), neu[0].replace(/card=[0-9a-f]{64}/, 'card=X'), `${f.handle}: Marker`);
+    assert.equal(alt[1].replace(/\?v=[0-9a-f]{16}/g, '?v=X'), neu[1].replace(/\?v=[0-9a-f]{16}/g, '?v=X'), `${f.handle}: Container`);
+    assert.equal(alt.slice(3).join('\n'), neu.slice(3).join('\n'), `${f.handle}: Rest`);
+  }
+});
+test('Planer (b): die Tasse (Block auf 6.3.1 nach dem Canary) geht ebenfalls gegen 6.4.0 durch', () => {
+  const g = plane(FX.tasse631, FX.tasse631.block);
+  assert.equal(g.geaendert, true);
+  assert.equal(zaehle(FX.tasse631.block, SKRIPT631), 1);
+  assert.equal(zaehle(g.nachher, SKRIPT631), 0, '6.3.1-Script blieb');
+  assert.equal(zaehle(g.nachher, SKRIPT640), 1);
+});
+test('Planer (d): ein zweiter Plan auf dem Ergebnis ergibt geaendert=false und lässt die Beschreibung bytegleich (alle 16, Tasse inklusive)', () => {
+  for (const f of [...FX.produkte, FX.tasse631]) {
+    const g = plane(f, f.block);
+    const g2 = editorReleasePlanen(g.nachher, neuerBlock(f), releaseReal.editor, { vorgaenger: VG });
+    assert.equal(g2.geaendert, false, f.handle); assert.equal(g2.nachher, g.nachher, f.handle);
+    assert.equal(g2.vorherSha256, g2.nachherSha256);
+  }
+});
+test('Planer: Karten- und Vorschau-Hash dürfen wechseln (T-Shirt-Fall, Commit 1835d4361d), der Pfad der Datei nicht', () => {
+  const H1 = 'b'.repeat(64); const H2 = 'c'.repeat(64);
+  const release2 = { ...releaseReal, products: releaseReal.products.map((p) => ({ ...p, cardSha256: H1, previewSha256: p.previewUrl ? H2 : null })) };
+  let mitVorschau = 0;
+  for (const f of FX.produkte) {
+    const g = plane(f, f.block, release2);
+    assert.equal(g.geaendert, true);
+    assert.ok(g.nachher.includes(`card=${H1} -->`), `${f.handle}: card= nicht erneuert`);
+    assert.ok(g.nachher.includes(`.karte.json?v=${H1.slice(0, 16)}"`), `${f.handle}: Karten-?v= nicht erneuert`);
+    if (f.block.includes('data-vorschau-url')) { mitVorschau++; assert.ok(g.nachher.includes(`.vorschau.json?v=${H2.slice(0, 16)}"`), `${f.handle}: Vorschau-?v= nicht erneuert`); }
+    const g2 = editorReleasePlanen(g.nachher, neuerBlock(f, release2), release2.editor, { vorgaenger: VG });
+    assert.equal(g2.geaendert, false);
+  }
+  assert.equal(mitVorschau, 9);
+  // heutige lokale Karten: die zwei T-Shirt-Produkte tragen nach dem Plan die ?v= der lokalen Dateien
+  for (const handle of ['shirt-zum-selbstgestalten', 'unisex-t-shirt-selbst-gestalten']) {
+    const f = FX.produkte.find((p) => p.handle === handle); const a = ALLOWLIST.find((x) => x.handle === handle);
+    const g = plane(f);
+    assert.ok(g.nachher.includes(`lspod-${a.numericId}.karte.json?v=${assetShaReal.get(`lspod-${a.numericId}.karte.json`).slice(0, 16)}"`), `${handle}: lokale Karte nicht übernommen`);
+    assert.ok(g.nachher.includes(`lspod-${a.numericId}.vorschau.json?v=${assetShaReal.get(`lspod-${a.numericId}.vorschau.json`).slice(0, 16)}"`), `${handle}: lokale Vorschau nicht übernommen`);
+  }
+});
+test('Planer: der alte 6.3.1-Pfad (Vorgänger nur 6.3.0, Ziel 6.3.1) bleibt unverändert nutzbar und kennt die gleiche Lockerung', () => {
+  const rel631 = releaseAusAllowlist(allowlistReal, { editorSha256: allowlistReal.editorSha256, assetSha256: assetShaReal });
+  for (const f of FX.produkte) {
+    const g = editorReleasePlanen(beschr(f.block), neuerBlock(f, rel631), rel631.editor);   // ohne vorgaenger: Vorgabe [6.3.0]
+    assert.equal(g.geaendert, true);
+    assert.equal(zaehle(g.nachher, 'lspod-designer-v6-6.3.1.js?v=1e15aab9486f0b60'), 1);
+  }
+  // Block schon auf dem Ziel 6.3.1 = «Ziel schon da», unverändert (Block aus dem heutigen Release gebaut, unabhängig vom Kartenstand der Fixture)
+  const t = editorReleasePlanen(beschr(neuerBlock(FX.tasse631, rel631)), neuerBlock(FX.tasse631, rel631), rel631.editor);
+  assert.equal(t.geaendert, false);
+});
+test('Planer (c): manipulierte Beschreibungen werfen weiter (Titel, Karten-/Vorschau-Pfad, Host, zweiter Marker, fremdes Skript, geänderte data-*)', () => {
+  const B = BASIS.block;
+  const mut = (von, nach, block = B) => { assert.ok(block.includes(von), `Fixture enthält nicht: ${von}`); return block.replace(von, nach); };
+  const rx = (re, nach, block = B) => { assert.ok(re.test(block), `Fixture passt nicht auf ${re}`); return block.replace(re, nach); };
+  const WEITERE = /weitere Beschreibungsbytes/;
+  const AUSGANG = /Ausgangslage unzulässig/;
+  const faelle = [
+    ['fremder Titel', BASIS, mut('data-produkttitel="Jutebeutel', 'data-produkttitel="Fremder Jutebeutel'), WEITERE],
+    ['Titel mit eingeschmuggeltem Attribut', BASIS, mut('data-produkttitel="Jutebeutel', 'data-produkttitel="x" onclick="evil()" data-y="Jutebeutel'), WEITERE],
+    ['Karte: Pfad eines anderen Produkts', BASIS, mut('lspod-15422819991937.karte.json?v=', 'lspod-15422950474113.karte.json?v='), WEITERE],
+    ['Karte: Pfad ausserhalb von maps/', BASIS, mut('/pod/v6/maps/lspod-15422819991937.karte.json', '/pod/v6/lspod-15422819991937.karte.json'), WEITERE],
+    ['Karte: fremder Host', BASIS, mut('data-karte-url="https://abannews.com/', 'data-karte-url="https://evil.example/'), WEITERE],
+    ['Karte: ohne ?v=', BASIS, rx(/(data-karte-url="[^"?]*)\?v=[0-9a-f]{16}"/, '$1"'), WEITERE],
+    ['Karte: ?v= mit 15 statt 16 Zeichen', BASIS, rx(/(data-karte-url="[^"?]*\?v=)[0-9a-f]{16}"/, '$1aaaaaaaaaaaaaaa"'), WEITERE],
+    ['Karte: zusätzlicher Query-Parameter', BASIS, rx(/(data-karte-url="[^"]*\?v=[0-9a-f]{16})"/, '$1&x=1"'), WEITERE],
+    ['Vorschau: Pfad eines anderen Produkts', BASIS, mut('lspod-15422819991937.vorschau.json?v=', 'lspod-15422854463873.vorschau.json?v='), WEITERE],
+    ['Vorschau: Attribut entfernt', BASIS, rx(/ data-vorschau-url="[^"]*"/, ''), WEITERE],
+    ['Vorschau: bei einem Produkt ohne Vorschau hinzugefügt', OHNE_VORSCHAU, mut('></div>', ` data-vorschau-url="https://abannews.com/pod/v6/maps/lspod-15422950474113.vorschau.json?v=${'a'.repeat(16)}"></div>`, OHNE_VORSCHAU.block), WEITERE],
+    ['zweiter Marker', BASIS, B + B, /genau einen bestehenden v6-Marker/],
+    ['fremdes Skript im Block', BASIS, mut('<hr>', '<script src="https://evil.example/x.js"></script>\n<hr>'), WEITERE],
+    ['fremdes Inline-Skript im Block', BASIS, mut('<hr>', '<script>alert(1)</script>\n<hr>'), WEITERE],
+    ['data-variant geändert', BASIS, rx(/data-variant="\d+"/, 'data-variant="1"'), WEITERE],
+    ['data-karte-pflicht entfernt', BASIS, mut(' data-karte-pflicht="1"', ''), WEITERE],
+    ['data-karte-pflicht = 0', BASIS, mut('data-karte-pflicht="1"', 'data-karte-pflicht="0"'), WEITERE],
+    ['zusätzliches data-Attribut', BASIS, mut('data-karte-pflicht="1"', 'data-karte-pflicht="1" data-x="1"'), WEITERE],
+    ['Container-Klasse geändert', BASIS, mut('class="lspod-designer-v6"', 'class="lspod-designer-v6 evil"'), WEITERE],
+    ['Marker: fremde Produkt-ID', BASIS, mut(`product=${BASIS.id} card=`, 'product=gid://shopify/Product/15422950474113 card='), WEITERE],
+    ['Marker: card= kein SHA-256', BASIS, rx(/card=[0-9a-f]{64}/, `card=${'a'.repeat(63)}`), WEITERE],
+    ['Marker: Zusatz hinter card=', BASIS, rx(/(card=[0-9a-f]{64}) -->/, '$1 mode=blocked -->'), WEITERE],
+    ['Script: falsche SRI', BASIS, rx(/integrity="sha256-[^"]*"/, `integrity="${SRI('d'.repeat(64))}"`), AUSGANG],
+    ['Script: ohne defer', BASIS, mut(' defer></script>', '></script>'), AUSGANG],
+    ['Script: ohne crossorigin', BASIS, mut(' crossorigin="anonymous"', ''), AUSGANG],
+    ['Script: falsches ?v=', BASIS, mut('6.3.0.js?v=e58e5c277e9ff45e', '6.3.0.js?v=0000000000000000'), AUSGANG],
+    ['Script: unbekannte Version 6.2.0', BASIS, mut('6.3.0.js?v=e58e5c277e9ff45e', '6.2.0.js?v=3333333333333333'), AUSGANG],
+    ['zwei Vorgänger-Scripts (6.3.0 und 6.3.1)', BASIS, mut('<hr>', `${SKRIPT631}\n<hr>`), AUSGANG],
+    ['Vorgänger-Script doppelt', BASIS, mut('<hr>', `${SKRIPT630}\n<hr>`), AUSGANG],
+    ['Ziel-Script UND Vorgänger-Script', BASIS, mut('<hr>', `${SKRIPT640}\n<hr>`), AUSGANG],
+    ['v5-Baustein statt v6-Marker', BASIS, '<div class="lspod-designer" data-variant="1"></div>\n<script src="https://cdn/x/lspod-designer-v5.js?v=1" defer></script><hr>\n', /genau einen bestehenden v6-Marker/],
+    ['Steuerzeichen als Platzhalter-Falle', BASIS, B + '\u0001', /Steuerzeichen/],
+  ];
+  for (const [name, f, block, regex] of faelle) {
+    let fehler = null;
+    try { plane(f, block); } catch (e) { fehler = e; }
+    assert.ok(fehler, `${name}: wurde NICHT abgelehnt`);
+    assert.match(fehler.message, regex, `${name}: falsche Ablehnung: ${fehler.message}`);
+  }
+  assert.equal(faelle.length, 32);
+  // zusätzliches Vorgänger-Script AUSSERHALB des Blocks
+  wirft(() => editorReleasePlanen(`${beschr(B)}${SKRIPT630}`, neuerBlock(BASIS), releaseReal.editor, { vorgaenger: VG }), AUSGANG);
+  // Ziel schon da, aber Karten-?v= weicht ab: kein stilles Nachziehen (jede andere Lage wirft)
+  const zielBlock = neuerBlock(BASIS);
+  assert.equal(plane(BASIS, zielBlock).geaendert, false);
+  wirft(() => plane(BASIS, rx(/(data-karte-url="[^"]*\?v=)[0-9a-f]{16}"/, '$1aaaaaaaaaaaaaaaa"', zielBlock)), AUSGANG);
+  wirft(() => plane(BASIS, mut('data-produkttitel="Jutebeutel', 'data-produkttitel="Anderer Jutebeutel', zielBlock)), AUSGANG);
+  // der neue Baustein trägt das falsche Release
+  const rel631 = releaseAusAllowlist(allowlistReal, { editorSha256: allowlistReal.editorSha256, assetSha256: assetShaReal });
+  wirft(() => editorReleasePlanen(beschr(B), neuerBlock(BASIS, rel631), releaseReal.editor, { vorgaenger: VG }), /nicht genau einmal das Ziel-Release/);
+});
+test('Planer: nur eine Teilmenge der Vorgänger ist zulässig (6.3.0 allein lässt einen 6.3.1-Block nicht durch)', () => {
+  wirft(() => editorReleasePlanen(beschr(FX.tasse631.block), neuerBlock(FX.tasse631), releaseReal.editor, { vorgaenger: [VG[0]] }), /Ausgangslage unzulässig/);
+  assert.equal(editorReleasePlanen(beschr(FX.tasse631.block), neuerBlock(FX.tasse631), releaseReal.editor, { vorgaenger: VG }).geaendert, true);
+});
+test('Normalisierung ersetzt genau Script, card=, Karten-?v= und Vorschau-?v. Pfade und alles andere bleiben stehen', () => {
+  const n = editorBlockNormalisieren(BASIS.block, [SKRIPT630]);
+  assert.doesNotMatch(n, /card=[0-9a-f]{64}/); assert.doesNotMatch(n, /\?v=[0-9a-f]{16}/); assert.doesNotMatch(n, /<script/);
+  for (const bleibt of ['lspod-15422819991937.karte.json', 'lspod-15422819991937.vorschau.json', 'data-produkttitel="Jutebeutel', 'data-karte-pflicht="1"', `product=${BASIS.id}`, '<hr>', '<!-- lx-v63-editor:end -->']) assert.ok(n.includes(bleibt), `fehlt nach Normalisierung: ${bleibt}`);
+  assert.equal(editorBlockNormalisieren(BASIS.block, [SKRIPT630]), editorBlockNormalisieren(BASIS.block.replace(/\?v=3c943b34ab49fb91/, '?v=ffffffffffffffff'), [SKRIPT630]));
+  assert.notEqual(editorBlockNormalisieren(BASIS.block, [SKRIPT630]), editorBlockNormalisieren(BASIS.block.replace('Jutebeutel bedrucken', 'Anderes'), [SKRIPT630]));
+});
+
+// ---- Header, Workflow, Dokumentation -----------------------------------------------------------------
+test('Cloudflare-Header: der 6.4.0-Dateiname fällt unter die unveränderliche Editor-Regel (CORS/CORP offen, ein Jahr immutable); Karten bleiben kurz gecacht', () => {
+  const h = readFileSync(WURZEL + '_headers', 'utf8');
+  const e = effektiveHeaders(h, `/${ER.file}`);
+  assert.deepEqual(e.get('access-control-allow-origin'), ['*']);
+  assert.deepEqual(e.get('cross-origin-resource-policy'), ['cross-origin']);
+  assert.deepEqual(e.get('cache-control'), ['public, max-age=31536000, immutable']);
+  for (const v of ER.vorgaenger) assert.deepEqual(effektiveHeaders(h, `/${v.file}`).get('cache-control'), ['public, max-age=31536000, immutable'], `${v.version}: Rückweg-Datei nicht unveränderlich ausgeliefert`);
+  assert.deepEqual(effektiveHeaders(h, '/pod/v6/maps/lspod-15422819991937.karte.json').get('cache-control'), ['public, max-age=86400, must-revalidate']);
+  assert.deepEqual(effektiveHeaders(h, '/pod/v6/maps/lspod-15422819991937.vorschau.json').get('cache-control'), ['public, max-age=86400, must-revalidate']);
+});
+const W64 = WURZEL + '.github/workflows/pod-v64-description-rollout.yml';
+const W63 = WURZEL + '.github/workflows/pod-v63-description-rollout.yml';
+if (!existsSync(W64)) console.log('ÜBERSPRUNGEN: Workflow-Test 6.4.0 (pod-v64-description-rollout.yml fehlt im Checkout; der CI-Job «selbst-gestalten» holt nur ausgewählte Pfade)');
+else {
+  test('Workflow 6.4.0: nur manuell, Default-Branch, exakter Commit, feste EDITOR_VERSION, sechs V64-Bestätigungen, drei feste Scopes, eigene Artefakte', () => {
+    const w = readFileSync(W64, 'utf8');
+    assert.match(w, /^on:\n  workflow_dispatch:/m);
+    assert.doesNotMatch(w, /^\s*(schedule|push|pull_request|pull_request_target|workflow_run|workflow_call):/m);
+    assert.match(w, /test "\$REF_NAME" = "\$DEFAULT_BRANCH"/);
+    assert.match(w, /ref: \$\{\{ github\.sha \}\}/); assert.doesNotMatch(w, /ref: \$\{\{ github\.event\.repository\.default_branch \}\}/);
+    assert.match(w, /options: \[plan, apply, rollback\]/); assert.match(w, /options: \[canary-tasse, canary-jutebeutel, full\]/);
+    assert.match(w, /EDITOR_VERSION: '6\.4\.0'/); assert.doesNotMatch(w, /EDITOR_VERSION: \$\{\{/);
+    assert.doesNotMatch(w, /V63_/, 'V63-Bestätigung im 6.4.0-Workflow');
+    const faelle = [
+      ['apply:canary-tasse', 'V64_CANARY_TASSE', false], ['apply:canary-jutebeutel', 'V64_CANARY_JUTEBEUTEL', false], ['apply:full', 'V64_FULL_16_EDITOR', false],
+      ['rollback:canary-tasse', 'V64_ROLLBACK_TASSE', true], ['rollback:canary-jutebeutel', 'V64_ROLLBACK_JUTEBEUTEL', true], ['rollback:full', 'V64_ROLLBACK_16_EDITOR', true],
+    ];
+    for (const [kombi, ack, mitRun] of faelle) {
+      const zeile = w.split('\n').find((l) => l.trim().startsWith(`${kombi})`));
+      assert.ok(zeile, `${kombi}: case-Zeile fehlt`);
+      assert.ok(zeile.includes(`test "$CONFIRMATION" = ${ack};`), `${kombi}: falsche Bestätigung: ${zeile}`);
+      assert.equal(zeile.includes('SOURCE_RUN_ID" =~'), mitRun, `${kombi}: Run-ID-Regel`);
+    }
+    assert.match(w, /plan:canary-tasse\|plan:canary-jutebeutel\|plan:full\) test -z "\$CONFIRMATION"; test -z "\$SOURCE_RUN_ID"/);
+    assert.match(w, /\*\) echo "Unzulässige Eingabekombination" >&2; exit 2 ;;/);
+    assert.match(w, /SHOPIFY_CLIENT_ID: \$\{\{ secrets\.SHOPIFY_CLIENT_ID \}\}/); assert.match(w, /SHOPIFY_CLIENT_SECRET: \$\{\{ secrets\.SHOPIFY_CLIENT_SECRET \}\}/);
+    assert.match(w, /actions\/upload-artifact@v4/); assert.match(w, /actions\/download-artifact@v4/);
+    assert.match(w, /name: pod-v64-rollout-\$\{\{ github\.run_id \}\}/); assert.match(w, /name: pod-v64-rollout-\$\{\{ inputs\.source_run_id \}\}/);
+    assert.doesNotMatch(w, /pod-v63-rollout/); assert.match(w, /retention-days: 30/);
+    assert.doesNotMatch(w, /run:\s*[^\n]*\$\{\{\s*inputs\./);
+    // auch in mehrzeiligen run-Blöcken (run: |) darf keine Eingabe direkt eingesetzt werden: Eingaben nur als env-Wert, in if:, name: und with:-run-id
+    const erlaubt = [/^\s+[A-Z_]+: \$\{\{ inputs\.\w+ \}\}$/, /^\s+if: \$\{\{ inputs\.operation == 'rollback' \}\}$/, /^\s+name: pod-v64-rollout-\$\{\{ inputs\.source_run_id \}\}$/, /^\s+run-id: \$\{\{ inputs\.source_run_id \}\}$/];
+    const eingabezeilen = w.split('\n').filter((l) => /\$\{\{\s*inputs\./.test(l));
+    assert.ok(eingabezeilen.length >= 8, 'zu wenige Eingabestellen gefunden');
+    for (const l of eingabezeilen) assert.ok(erlaubt.some((re) => re.test(l)), `Eingabe an unzulässiger Stelle eingesetzt: ${l.trim()}`);
+    assert.match(w, /OUT_DIR: \$\{\{ runner\.temp \}\}\/pod-v64-run/);
+    assert.match(w, /direct_rollout_test\.mjs/); assert.match(w, /editor_release_bauen\.mjs --pruefen/);
+    assert.match(w, /timeout-minutes: 30/); assert.match(w, /permissions:\n  contents: read\n  actions: read/);
+  });
+  test('Workflow 6.4.0: die Eingabeprüfung läuft in bash und lässt genau die neun gültigen Kombinationen durch (Plan leer, Apply/Rollback nur mit der eigenen Bestätigung, Rollback mit Run-ID)', () => {
+    if (spawnSync('bash', ['-c', 'true']).status !== 0) { console.log('ÜBERSPRUNGEN: bash fehlt, Eingabeprüfung des Workflows nicht ausgeführt'); return; }
+    const zeilen = readFileSync(W64, 'utf8').split('\n');
+    const stepIdx = zeilen.findIndex((l) => l.includes('name: Eingaben und Default-Branch prüfen'));
+    const runIdx = zeilen.findIndex((l, i) => i > stepIdx && l.trim() === 'run: |');
+    assert.ok(stepIdx >= 0 && runIdx > stepIdx, 'Schritt «Eingaben und Default-Branch prüfen» nicht gefunden');
+    const block = [];
+    for (let i = runIdx + 1; i < zeilen.length && (zeilen[i].startsWith('          ') || zeilen[i].trim() === ''); i++) block.push(zeilen[i].slice(10));
+    const skript = block.join('\n');
+    assert.match(skript, /case "\$OPERATION:\$SCOPE" in/);
+    const lauf1 = (env) => spawnSync('bash', ['-c', skript], { env: { PATH: process.env.PATH || '/usr/bin:/bin', REF_NAME: 'main', DEFAULT_BRANCH: 'main', ...env }, encoding: 'utf8' });
+    const acks = [...Object.values(SOLL64.apply), ...Object.values(SOLL64.rollback), 'V63_CANARY_TASSE', 'V63_FULL_19_SAFE', 'V63_ROLLBACK_TASSE', 'V63_ROLLBACK_19_SAFE', ''];
+    let gueltig = 0; let geprueft = 0;
+    for (const op of ['plan', 'apply', 'rollback']) for (const scope of ['canary-tasse', 'canary-jutebeutel', 'full', 'canary']) for (const ack of acks) for (const run of ['', '123']) {
+      const r = lauf1({ OPERATION: op, SCOPE: scope, CONFIRMATION: ack, SOURCE_RUN_ID: run });
+      const soll = op === 'plan' ? scope !== 'canary' && ack === '' && run === ''
+        : (scope !== 'canary' && ack === SOLL64[op][scope] && (op === 'apply' ? run === '' : run === '123'));
+      assert.equal(r.status === 0, soll, `${op}/${scope}/${JSON.stringify(ack)}/${JSON.stringify(run)}: Exit ${r.status}, erwartet ${soll ? 0 : 'ungleich 0'}`);
+      geprueft++; if (soll) gueltig++;
+    }
+    assert.equal(gueltig, 9); assert.equal(geprueft, 3 * 4 * acks.length * 2);
+    assert.equal(lauf1({ OPERATION: 'rollback', SCOPE: 'full', CONFIRMATION: 'V64_ROLLBACK_16_EDITOR', SOURCE_RUN_ID: '12a' }).status === 0, false, 'nicht numerische Run-ID wurde akzeptiert');
+    assert.equal(lauf1({ OPERATION: 'plan', SCOPE: 'full', CONFIRMATION: '', SOURCE_RUN_ID: '', REF_NAME: 'feature' }).status, 2, 'Nicht-Default-Branch wurde nicht abgewiesen');
+    assert.equal(lauf1({ OPERATION: 'loeschen', SCOPE: 'full', CONFIRMATION: '', SOURCE_RUN_ID: '' }).status, 2);
+  });
+  test('Workflow 6.4.0 und 6.3.1 teilen sich eine Concurrency-Gruppe (nie gleichzeitig auf denselben Beschreibungen); der v63-Workflow trägt nichts von 6.4.0', () => {
+    const w64 = readFileSync(W64, 'utf8'); const w63 = readFileSync(W63, 'utf8');
+    const gruppe = (w) => w.match(/concurrency:\n  group: (\S+)\n  cancel-in-progress: false/)?.[1];
+    assert.ok(gruppe(w63)); assert.equal(gruppe(w64), gruppe(w63));
+    assert.doesNotMatch(w63, /V64_|EDITOR_VERSION|canary-jutebeutel/, 'der alte Workflow wurde angefasst');
+  });
+}
+test('README dokumentiert den 6.4.0-Ablauf, alle sechs Bestätigungen, die Gates und den Rückweg', () => {
+  const r = readFileSync(HIER + 'README.md', 'utf8');
+  for (const ack of Object.values(SOLL64.apply).concat(Object.values(SOLL64.rollback))) assert.ok(r.includes(ack), `README nennt ${ack} nicht`);
+  for (const wort of ['editor-release.json', 'editor_release_bauen.mjs', 'canary-tasse', 'canary-jutebeutel', 'Rollback', 'pod-v64-description-rollout.yml']) assert.ok(r.includes(wort), `README nennt ${wort} nicht`);
 });
 
 if (!process.exitCode) console.log(`${ok} Tests bestanden`);

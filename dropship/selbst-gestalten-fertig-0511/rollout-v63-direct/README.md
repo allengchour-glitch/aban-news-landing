@@ -52,3 +52,85 @@ MODE=rollback LIVE=1 SCOPE=canary ACK=V63_ROLLBACK_TASSE ROLLBACK_PLAN=/tmp/lspo
 ```
 
 Jeder `OUT_DIR` muss neu sein. Ein vorhandener Plan oder ein vorhandenes Ledger stoppt den Lauf, damit kein unklarer Write blind wiederholt und keine Sicherung überschrieben wird.
+
+## Editor 6.4.0 («Auf dem Produkt bearbeiten»: Bearbeiten | Druckversion | Vorschau)
+
+Stand 09.11.2026. Werkzeug gebaut und getestet, **nichts ausgeführt** (weder Plan noch Apply). Der Besitzer will den Editor «nach Prüfung auf die Produktseiten»; dieser Abschnitt ist der Weg dorthin (Befund und Messungen: `dropship/CODEX-ROLLOUT-V64-0911.md`). Der 6.3.1-Pfad oben bleibt nutzbar (Workflow `pod-v63-description-rollout.yml`, ohne `EDITOR_VERSION`). **6.3.1-Vollausrollung und 6.4.0 schliessen sich nach dem ersten 6.4.0-Canary aus**: der 6.3.1-Pfad kennt als Vorgänger nur 6.3.0 und würde einen 6.4.0-Block als «Ausgangslage unzulässig» abweisen. Empfehlung: 6.4.0 direkt von 6.3.0 aus, 6.3.1 nicht mehr voll ausrollen.
+
+### Neue Teile
+
+| Datei | Zweck |
+|---|---|
+| `editor-release.json` | `{schema, version, file, url, sha256, bytes, vorgaenger:[6.3.0, 6.3.1]}`. **Wird mit `editor_release_bauen.mjs` aus den echten Dateien erzeugt, nie von Hand.** |
+| `editor_release_bauen.mjs` | erzeugt die JSON (`node editor_release_bauen.mjs`) oder prüft sie (`--pruefen`, Exit 1 bei Abweichung). |
+| `direct_rollout.mjs` | `EDITOR_VERSION=6.4.0` schaltet den neuen Pfad (Ziel aus `editor-release.json`, drei feste Scopes, V64-Bestätigungen). Ohne die Variable läuft alles wie bisher (6.3.1). |
+| `direct_rollout_lib.mjs` | `rolloutKonfig` (Eingaben, Bestätigungen, Canary-Tabelle), `auswahlPlanen`, `canaryLedgerPruefen`, gelockerter `editorReleasePlanen`, `editorReleaseFormPruefen`. |
+| `fixtures/live-editor-bloecke-0811.json` | die Editor-Blöcke der 16 Live-Beschreibungen (Stand 08.11., 6.3.0) plus der 6.3.1-Block der Tasse; nur Blöcke, keine Kundentexte. |
+| `../../../.github/workflows/pod-v64-description-rollout.yml` | manueller Workflow, fest `EDITOR_VERSION=6.4.0`. |
+| `direct_rollout_mutationsprobe.mjs` | Mutationsprobe für Planer, Eingaben, Bauskript, Workflow, `_headers` und `editor-release.json`. |
+
+`editor-release.json` ist **vorläufig** mit dem Dateistand von `lspod-designer-v6-6.4.0.js` vom 09.11. erzeugt. Erst nach dem Einfrieren der Datei neu erzeugen (`node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor_release_bauen.mjs`) und mit der Datei committen. Wird die Editor-Datei danach noch geändert, schlägt der Test «editor-release.json stimmt mit den echten Dateien überein» fehl, und `direct_rollout.mjs` bricht **vor jedem Netzzugriff** ab (Token, Shop und Assets werden nicht berührt).
+
+### Bestätigungen und Scopes (fest einprogrammiert, keine freie Eingabe)
+
+| Operation | Scope | Produkt | Bestätigung |
+|---|---|---|---|
+| plan | `canary-tasse`, `canary-jutebeutel`, `full` | alle 19 werden immer geprüft | leer |
+| apply | `canary-tasse` | Keramik-Tasse `gid://shopify/Product/15422823465345` | `V64_CANARY_TASSE` |
+| apply | `canary-jutebeutel` | Bio-Jutebeutel `gid://shopify/Product/15422819991937` | `V64_CANARY_JUTEBEUTEL` |
+| apply | `full` | die 16 Editorprodukte (die 3 Sperren nur prüfen) | `V64_FULL_16_EDITOR` |
+| rollback | `canary-tasse` | wie Apply | `V64_ROLLBACK_TASSE` |
+| rollback | `canary-jutebeutel` | wie Apply | `V64_ROLLBACK_JUTEBEUTEL` |
+| rollback | `full` | die im Full-Lauf berührten Produkte | `V64_ROLLBACK_16_EDITOR` |
+
+Die vier `V63_…`-Zeichenketten bestätigen **keinen** 6.4.0-Schreiblauf, und `V64_…` bestätigt keinen 6.3.1-Lauf (getestet als Kreuzprodukt). Bei `full` prüft der Lauf die drei Sperrprodukte **vor** dem ersten Schreiben (sie werden nie geschrieben, nur gegen den Plan geprüft): eine zwischenzeitlich veränderte Sperre stoppt, bevor ein Editorprodukt geändert wurde.
+
+### Ablauf (Reihenfolge nicht verhandelbar)
+
+**Vorbedingungen**
+1. 6.4.0 eingefroren (Editor-, Vorschau-, Review-Gate-Tests und Mutationsprobe grün), danach `editor-release.json` neu erzeugen. Ab dem ersten Verweis einer Beschreibung darf die Datei **nie mehr geändert werden** (SRI blockiert den Editor bei jedem anderen Hash, `data-karte-pflicht=1` hat keinen v5-Rückfall). Ein Fehler heisst 6.4.1 mit eigenem Pfad.
+2. Datei und `editor-release.json` auf `main`, Cloudflare-Pages-Deploy (`cf-deploy-mainsite.yml`) abgewartet. `_headers` braucht keine Änderung: `/pod/v6/lspod-designer-v6-*.js` trifft den Namen 6.4.0.
+3. Dieses Werkzeug (Workflow, Test) auf `main`. Der Workflow läuft nur auf dem Default-Branch und checkt `github.sha` aus.
+
+**Schritte**
+1. **Plan** (`operation=plan`, `scope=canary-tasse`, Bestätigung leer). Der Plan prüft alle 19 Produkte, die Live-Bytes von 6.4.0 **und der Rückweg-Dateien 6.3.0/6.3.1** (SHA, Content-Type, CORS/CORP, Cache-Regel).
+2. **Artefakt `pod-v64-rollout-<Run-ID>` lesen.** Soll: alle 16 Editorprodukte `geaendert=true` (15 × 6.3.0 → 6.4.0, Tasse 6.3.1 → 6.4.0; bei den zwei T-Shirts ändern sich zusätzlich Karten-/Vorschau-`?v=` und `card=`), die drei Sperren `geaendert=false`, 0 Fehler. Weicht die Zahl ab, ist der Zustand im Shop anders als erwartet: nicht anwenden.
+3. **Stufe A: Apply `canary-tasse`** (`V64_CANARY_TASSE`). Run-ID und Artefakt dieses Laufs notieren (Rollback-Quelle). Danach **Browser-Gates** (unten) auf der Tasse. Sie prüft die gemeinsamen Teile (Tabs, Fehlerkorrekturen, Kaufweg, Review-Tor, Mobil), **nicht** die neue Foto-Ansicht (die Tasse hat keine; sie bleibt auf der Druckflächen-Bühne).
+4. Fällt ein Gate: sofort **Rollback** `canary-tasse` mit der Run-ID aus Schritt 3 (Tasse zurück auf 6.3.1).
+5. **Stufe B: neuer Plan** (neuer Lauf, neues Artefakt), dann **Apply `canary-jutebeutel`** (`V64_CANARY_JUTEBEUTEL`): Modell 367, Foto-Vorlage, Vorschau vorhanden, nur zwei Varianten. Gates inklusive Foto-Ansicht und Bedienung auf dem Handy. Eine Handyprobe des Besitzers ist der einzige echte Beleg für Touch-Ziehen.
+6. **Beobachtung** (Vorschlag 24 Stunden, Annahme): keine Meldung der Kundschaft, Gates wiederholt grün.
+7. **Full: neuer Plan, dann Apply `full`** (`V64_FULL_16_EDITOR`). Tasse und Jutebeutel stehen schon auf 6.4.0 und erscheinen als «unverändert». Kurzfassung der Gates (1, 2, 3, 5) für alle 16 plus die drei Sperrseiten.
+
+**Rollback in umgekehrter Reihenfolge der Anwendung**: zuerst `full` (`V64_ROLLBACK_16_EDITOR`, Artefakt des Full-Laufs), dann `canary-jutebeutel`, dann `canary-tasse`, je mit dem Artefakt **des zugehörigen Apply-Laufs** (Run-ID, 30 Tage Aufbewahrung). Der Rollback schreibt nur, wenn der Live-Hash exakt dem Nachher-Hash des Plans entspricht; sonst bricht er ab («Beschreibung seit dem Plan verändert»). Das Full-Artefakt kann Tasse und Jutebeutel nicht zurückstellen (sie standen im Full-Plan schon auf Ziel); ihr Rückweg ist das Artefakt ihrer Stufe. Die Tasse trägt eine Änderung nach dem 6.3.1-Canary (`updatedAt` 09.11. 06:13 UTC, Ursprung ungeklärt): ein Rollback mit dem Artefakt von Lauf 42508762409 kann deshalb mit «fremder Hash» stoppen. Für Stufe A immer das frische Plan-/Apply-Artefakt benutzen.
+
+### Gelockerter Planer (`editorReleasePlanen`)
+
+Eine bestehende Beschreibung darf sich **nur** in diesen Feldern ändern; der Vergleich läuft auf normalisierten Texten, in denen genau diese Felder durch Platzhalter ersetzt sind:
+- das Editor-Script-Tag (Dateiname, `?v=`, SRI),
+- das `?v=` von `data-karte-url` und `data-vorschau-url` (16 Hex-Zeichen),
+- das `card=` (64 Hex-Zeichen) im Marker `lx-v63-editor:start`.
+
+Alles andere bleibt bytegleich, insbesondere der **Pfad** von Karte und Vorschau, `data-produkttitel`, `data-variant`, `data-karte-pflicht`, die Klasse und die Marker-Produkt-ID. Zulässige Ausgangslagen: genau **ein** Vorgänger-Script (6.3.0 oder 6.3.1, mit exakter URL, `?v=`, SRI, `crossorigin`, `defer`) und kein Ziel-Script; oder das Ziel-Script steht schon da und die Beschreibung bleibt bytegleich (`geaendert=false`). Jede andere Lage wirft (zwei Vorgänger, Vorgänger und Ziel zugleich, unbekannte Version, falsche SRI, zweiter Marker, fremdes Skript, geänderter Titel, fremde Karten-URL, Ziel da, aber Karte neu). Anlass: Commit `1835d4361d` hat Karte und Vorschau der zwei T-Shirt-Produkte neu gebaut; der strenge 6.3.1-Planer wirft dort schon heute («Editor-Release würde … weitere Beschreibungsbytes ändern»). Die Lockerung gilt auch für den alten 6.3.1-Pfad (er akzeptiert nur mehr Eingaben, nie ein anderes Ergebnis für bisher akzeptierte). Die drei Sperrprodukte müssen weiter bytegleich bleiben.
+
+### Browser-Gates je Canary
+
+Ein Browser, Pausen 3 bis 5 s, normale Chrome-Kennung, Adresse ohne Query, `domcontentloaded` plus 7 s, `Promise.race`-Zeitlimit je `evaluate`; Desktop 1440 und Handy 390.
+1. **Bytes und Start:** Live-Datei sha256 gleich Plan; `data-lspod6-version="6.4.0"`, `data-init-v6="1"`, `data-lspod6-modus="karte"`; 0 `pageerror`; Konsole nur der bekannte Shop-Pay-403 und abgebrochene `/api/event/collect`.
+2. **Hauptthread frei** (Lehre vom 09.11., Sperrskript): `evaluate`-Ping unter 100 ms; Ladezeit höchstens +1 s gegenüber 6.3.x.
+3. **Ansichten im echten Theme, nicht in `mock.html`:** Tasse «Bearbeiten | Vorschau», Jutebeutel «Bearbeiten | Druckversion | Vorschau»; Vorgabe «Bearbeiten»; **Seitenverhältnis jedes Vorlagenbilds im Theme** gerendert gleich natürlich (±1 %), denn `img{max-width:100%}` des Themes hat 6.3.x auf 10 von 15 Seiten gequetscht und die Browsertests unter `pod/v6/test/` laufen ohne diese Regel. Jede neue Bildschicht (Stoff, Motiv, Vorlage) mitmessen.
+4. **Bedienung:** Text-Ebene setzen, in «Bearbeiten» ziehen, skalieren, drehen (Maus und Touch-Emulation); Position in «Druckversion» und «Vorschau» gleich (±1 px); Zoom-Stufen; die Seite lässt sich mobil ausserhalb der Bühne scrollen.
+5. **Kaufweg unverändert:** `/cart/add` per `page.route` abfangen (nichts im Warenkorb): Eigenschaften-Schlüssel gleich der 6.3.1-Referenz mit demselben Motiv (`_pod_karte`, `_vorschau`, `Druckdatei (…)`); Review-Tor-Dialog erscheint; Variantenwechsel ändert `sv/pv/m` passend; das Qualitätstor sperrt ein 300-px-Foto weiter.
+6. **Variantenwechsel durch alle Radios:** kein Fehler; der rote Hinweis bleibt nicht stehen.
+7. **Ausfallverhalten:** Skript-URL per `page.route` sperren: was sieht die Kundin? (Mit `data-karte-pflicht=1` gibt es keinen v5-Rückfall; vor dem Full-Lauf wissen.)
+8. **Sperrprodukte (Magnet, Dad-Cap, Bügeltransfer):** Beschreibung bytegleich zum Plan-Vorher, Seiten laden (Hauptthread frei).
+
+### Grenzen
+
+- Nicht gemessen: Safari/iOS und echtes Handy, Kaufen mit echtem Warenkorb (nur abgefangen), Wirkung auf Käufe (0 von 34 Bestellungen kamen je über den Editor, QUELLE Bauplan 05.11.).
+- Die neue Foto-Ansicht greift nur bei Platzierungen mit Produktfoto als Vorlage (Jutebeutel, T-Shirts, Hoodie, Kiss-Cut u. a.); Samsung, iPhone-Hüllen, Mauspad, Notizbuch, Stoffbeutel und Trinkflasche bleiben auf der Druckflächen-Bühne (Hypothese aus dem Entwurfs-Kopf).
+- Die drei Sperren sind weiter nur eine Produktseiten-Sperre (siehe oben).
+- Scope-Erweiterung (weitere Produkte, andere `PREVIEW_IDS`) ist nicht Teil dieses Weges.
+- Wer Beschreibungen später im Rich-Text-Editor des Admins speichert, zerstört den Skript-Block.
+- Aus der Sitzung kann `actions_run_trigger` mit HTTP 500 scheitern: nicht wiederholen, dem Besitzer «Run workflow» nennen.
+- Der CI-Job `selbst-gestalten` holt nur ausgewählte Pfade und enthält den Workflow `pod-v64-description-rollout.yml` heute nicht; der Workflow-Test überspringt sich dann sauber. Wer ihn dort mitlaufen lassen will, trägt die Datei in `luxestyle-automation-tests.yml` an zwei Stellen ein (`paths:` und `sparse-checkout`).
+- Beide Rollout-Workflows teilen sich die Concurrency-Gruppe `pod-v63-description-rollout` (nie gleichzeitig auf denselben Beschreibungen); ein zweiter wartender Lauf ersetzt einen früheren wartenden.

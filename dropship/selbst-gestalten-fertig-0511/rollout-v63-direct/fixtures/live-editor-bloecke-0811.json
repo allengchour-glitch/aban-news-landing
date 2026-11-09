@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "quelle": "Plan-Artefakt pod-v63-rollout-42508762409 (Actions-Lauf vom 08.11.2026 18:13 UTC, Stand der Live-Beschreibungen VOR dem Canary): nur die Editor-Blöcke (Marker bis Marker-Ende), keine Kundentexte; produkte[].block = 6.3.0-Stand von 16 Produkten, tasse631 = Block der Tasse nach dem Canary (6.3.1, after.html desselben Artefakts)",
+  "produkte": [
+    {
+      "id": "gid://shopify/Product/15422950474113",
+      "handle": "allover-stoffbeutel-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422950474113 card=feb1febee01a3779560d20bac278cd798b9d18e7258161b6a23b7582410bdfb7 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778472591745\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422950474113.karte.json?v=feb1febee01a3779\" data-karte-pflicht=\"1\" data-produkttitel=\"Allover-Stoffbeutel – Selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422854463873",
+      "handle": "alltags-umhangetasche-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422854463873 card=80f33e01763340e1c43959d58f509f238ce7f6238d9448369d295c3637090fcd -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778075017601\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422854463873.karte.json?v=80f33e01763340e1\" data-karte-pflicht=\"1\" data-produkttitel=\"Alltags-Umhängetasche – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422854463873.vorschau.json?v=dfa00bd1cb4f2cc9\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422819991937",
+      "handle": "bio-jutebeutel-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422819991937 card=3c943b34ab49fb9163cb589807afc1f24e4528d9c49f173e26a6a82d7797b83e -->\n<div class=\"lspod-designer-v6\" data-variant=\"55777965539713\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422819991937.karte.json?v=3c943b34ab49fb91\" data-karte-pflicht=\"1\" data-produkttitel=\"Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422819991937.vorschau.json?v=96a464385a626ffd\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422940447105",
+      "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422940447105 card=744c4bdcdbee460c5dce9dea855adf7a162aff601ef4f469e2530b100969c8f8 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778346172801\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422940447105.karte.json?v=744c4bdcdbee460c\" data-karte-pflicht=\"1\" data-produkttitel=\"Edelstahl Trinkflasche mit Strohhalm – Selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422939988353",
+      "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422939988353 card=d21f9bea20a079697912c29380bce5ebc8efe20807a014d1b60d2b911516b0b1 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778337358209\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422939988353.karte.json?v=d21f9bea20a07969\" data-karte-pflicht=\"1\" data-produkttitel=\"iPhone-Hülle – Selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422823465345",
+      "handle": "keramik-tasse-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422823465345 card=b89831069f4efb9b5d043567924afb70b24e897edff3a9a9634a5fc4087bf3b5 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55777979629953\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422823465345.karte.json?v=b89831069f4efb9b\" data-karte-pflicht=\"1\" data-produkttitel=\"Keramik-Tasse – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422823465345.vorschau.json?v=8fbdaa5857b81fd9\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422942609793",
+      "handle": "kiss-cut-aufkleber-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422942609793 card=f726c68464808b248aedb75297a10055fc1d0538e5b2c22304aae2b8adb76ad6 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778363376001\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422942609793.karte.json?v=f726c68464808b24\" data-karte-pflicht=\"1\" data-produkttitel=\"Aufkleber mit Konturschnitt – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422942609793.vorschau.json?v=6ddbba9888e64a52\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422857642369",
+      "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422857642369 card=b1ef960c5833e3538f45dc25edaac2365bcb99450c860f3929923ce545c04d59 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778083996033\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422857642369.karte.json?v=b1ef960c5833e353\" data-karte-pflicht=\"1\" data-produkttitel=\"Klassisches Unisex T-Shirt – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422857642369.vorschau.json?v=3541fad5d8922f1d\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15451569160577",
+      "handle": "mauspad-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15451569160577 card=4e69454ff652d78c055ce854c51514a720c7d9582273dfa0214cc0d52edcad79 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55893188149633\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15451569160577.karte.json?v=4e69454ff652d78c\" data-karte-pflicht=\"1\" data-produkttitel=\"Mauspad – Selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/16672778289543",
+      "handle": "samsung-huelle-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/16672778289543 card=45d26cdef940f5fb16362dddff198575b2b9e57a9d37a0ae7712bae73c600deb -->\n<div class=\"lspod-designer-v6\" data-variant=\"67813421941127\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-16672778289543.karte.json?v=45d26cdef940f5fb\" data-karte-pflicht=\"1\" data-produkttitel=\"Samsung-Hülle selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15427283157377",
+      "handle": "shirt-zum-selbstgestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15427283157377 card=24a4f0b3ce08a73ef368cb724e5bfab802cf3b300dfb1135d080638274ade437 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55792263954817\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15427283157377.karte.json?v=24a4f0b3ce08a73e\" data-karte-pflicht=\"1\" data-produkttitel=\"T-Shirt bedrucken &amp; selbst gestalten · dein Foto oder Motiv\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15427283157377.vorschau.json?v=80203c20a6c4ed32\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15451569324417",
+      "handle": "spiral-notizbuch-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15451569324417 card=0395c36a3c03d604876f21cbbcc5a8e8ab34a6ddbf31632d015dd79b4e5e2ae8 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55893188411777\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15451569324417.karte.json?v=0395c36a3c03d604\" data-karte-pflicht=\"1\" data-produkttitel=\"Spiral-Notizbuch – Selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15427282633089",
+      "handle": "tasse-zum-selbstgestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15427282633089 card=a6013ced2565bffb3b1a8132ccc96e4aa0020544d8749d85688730fcaccc8026 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55792263233921\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15427282633089.karte.json?v=a6013ced2565bffb\" data-karte-pflicht=\"1\" data-produkttitel=\"Tasse bedrucken &amp; selbst gestalten · dein Foto\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15427282633089.vorschau.json?v=5603c3ee74c4d8a9\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422946804097",
+      "handle": "transparente-iphone®-hulle-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422946804097 card=705c37423b6d4c6f61f48e43d2cb13a97bd73e739afb5f54ce15a317071a36ae -->\n<div class=\"lspod-designer-v6\" data-variant=\"55778422849921\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422946804097.karte.json?v=705c37423b6d4c6f\" data-karte-pflicht=\"1\" data-produkttitel=\"Transparente iPhone®-Hülle – Selbst gestalten\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422815699329",
+      "handle": "unisex-hoodie-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422815699329 card=175f3bdea6770655b8ba8cce97b2b760278ada8851d6bacabc99576a2c545805 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55777955643777\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422815699329.karte.json?v=175f3bdea6770655\" data-karte-pflicht=\"1\" data-produkttitel=\"Unisex Sweatshirt &amp; Bio-Hoodie – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422815699329.vorschau.json?v=b8514ad080a014f3\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    },
+    {
+      "id": "gid://shopify/Product/15422811439489",
+      "handle": "unisex-t-shirt-selbst-gestalten",
+      "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422811439489 card=294f3dc7a9c8aad7e616ddf0519ca9b3d53f4e889e325eb2eb2be7bb4064a5f9 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55777948008833\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422811439489.karte.json?v=294f3dc7a9c8aad7\" data-karte-pflicht=\"1\" data-produkttitel=\"Unisex T-Shirt – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422811439489.vorschau.json?v=30b058b0b71d0a82\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.0.js?v=e58e5c277e9ff45e\" integrity=\"sha256-5Y5cJ36f9F7FaAFQ2WZXt/HKwMZqd39Gzh/WXSFmx2s=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+    }
+  ],
+  "tasse631": {
+    "id": "gid://shopify/Product/15422823465345",
+    "handle": "keramik-tasse-selbst-gestalten",
+    "block": "<!-- lx-v63-editor:start product=gid://shopify/Product/15422823465345 card=b89831069f4efb9b5d043567924afb70b24e897edff3a9a9634a5fc4087bf3b5 -->\n<div class=\"lspod-designer-v6\" data-variant=\"55777979629953\" data-karte-url=\"https://abannews.com/pod/v6/maps/lspod-15422823465345.karte.json?v=b89831069f4efb9b\" data-karte-pflicht=\"1\" data-produkttitel=\"Keramik-Tasse – Selbst gestalten\" data-vorschau-url=\"https://abannews.com/pod/v6/maps/lspod-15422823465345.vorschau.json?v=8fbdaa5857b81fd9\"></div>\n<script src=\"https://abannews.com/pod/v6/lspod-designer-v6-6.3.1.js?v=1e15aab9486f0b60\" integrity=\"sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA=\" crossorigin=\"anonymous\" defer></script>\n<hr>\n<!-- lx-v63-editor:end -->\n"
+  }
+}
