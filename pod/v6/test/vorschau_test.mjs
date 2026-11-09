@@ -715,6 +715,7 @@ szenario('kontrast', true, async (b, srv) => {
   const warteGezeichnet = async (vorher) => p.waitForFunction((v) => (Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet')) || 0) > v, vorher, { timeout: 10000 });
   const zaehler = async () => Number(await p.locator('.lsp6-pv').getAttribute('data-gezeichnet')) || 0;
   await textHinzufuegen(p, 'Hallo');
+  await p.locator('.lsp6-sw[data-c="#111111"]').click();   // ab 6.4.1 startet ein Text auf schwarzem Stoff weiss (Standardfarbe nach dem Stoff); hier soll er dunkel BLEIBEN: eine gewählte Farbe folgt dem Stoff nie
   await produktAnsicht(p);
   pruefe('dunkles Motiv (#111111) auf weissem Stoff: kein Hinweis', await hinweis().isHidden());
   let v = await zaehler();

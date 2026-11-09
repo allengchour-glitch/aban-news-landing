@@ -3,13 +3,14 @@
 // Poster 268, Kapuzenjacke 388, Strick 769, Hülle 798; gelesen 05.11.2026) und die echten Mitschnitte der Platzierung. Das Verhalten des ganzen Skripts (gefälschtes fetch)
 // prüft automation/printful_sync_test.mjs.
 import { readFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { produktInfoAusAntwort } from './printful_platzierung.mjs';
 import {
   adresseProblem, dateienAusEigenschaften, variantAusSku, skuWaehlen, istPod, technikFamilie, garnOption, optionenPruefen, technikPruefen, konfliktePruefen,
   dateiMasse, druckdateiFuer, wirklicheDpi, aufloesungPruefen, MIN_DPI_VORGABE, KOSTEN_REGEL, kostenPruefen, statusBewerten, dateienStatus, externalId, empfaengerAus,
   befundTag, befundPlan, versuche, versuchTag, MAX_VERSUCHE, esc, kontrolleLesen, kleineKopieUrl, planeBestellung, ERLAUBTE_HOSTS, BESTAETIGT, REVIEW_TAG,
-  modellAusSku, SKU_BASIS, QD_MIN, QD_MAX,
+  modellAusSku, SKU_BASIS, QD_MIN, QD_MAX, standortVon, aufpreisUsd, aufpreisPruefen, paketStandard, paketAusOption,
 } from './printful_bestellweg.mjs';
 
 let ok = 0, fehl = 0;
@@ -340,8 +341,14 @@ const mkIo = (o = {}) => {
 const karte6 = (pl, extra = {}) => A('_pod_karte', JSON.stringify({ v: 6, s: 1, pl, ...extra }));
 const zeile = (o = {}) => ({ id: 'gid://shopify/LineItem/9001', quantity: 1, sku: '5599797_4025', title: 'T-Shirt selbst gestalten', discountedTotalSet: { shopMoney: { amount: '29.90', currencyCode: 'CHF' } },
   product: { productType: 'T-Shirts', tags: ['wunschdesign'], metafield: null }, variant: { sku: '5599797_4025' }, customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' } })], ...o });
-const bestellung = (zeilen, extra = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, ...extra });
-const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), io, cfg);
+/** Fulfillment-Orders der Bestellung (Form der Admin-Abfrage): ein Händler-Standort («Shop location»), alle Positionen darin; `ort` und `status` änderbar. */
+const FO_HAENDLER = { id: 'gid://shopify/Location/1', name: 'Shop location', isFulfillmentService: false };
+const FO_DIENST = { id: 'gid://shopify/Location/2', name: 'Printful', isFulfillmentService: true };
+const fulfillmentOrders = (ids, ort = FO_HAENDLER, status = 'OPEN') => ({ edges: [{ node: { id: 'gid://shopify/FulfillmentOrder/1', status, assignedLocation: { location: ort }, lineItems: { edges: ids.map((id) => ({ node: { lineItem: { id } } })) } } }] });
+const bestellung = (zeilen, extra = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, fulfillmentOrders: fulfillmentOrders(zeilen.map((z) => z.id)), ...extra });
+/** Paket «alles bezahlt»: alle Platzierungen des Printful-Produkts sind im Shop-Preis gedeckt. Die älteren Prüfungen betreffen nicht den Preis; `plane` nimmt es, wenn kein cfg übergeben wird. Die Prüfungen zum Aufpreis übergeben ihr cfg ausdrücklich (`{}` = Standard «nur Vorderseite bezahlt»). */
+const paketAlles = (z, k) => ({ bezahlt: ((k && KAT[k.produktId] && KAT[k.produktId].produkt.files) || []).flatMap((f) => [f.id, f.type]), quelle: 'Test: alles bezahlt' });
+const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), io, cfg === undefined ? { paket: paketAlles } : cfg);
 {
   const io = mkIo();
   const p = await plane([zeile()], io);
@@ -387,7 +394,7 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('…auch eine bloße _pod_karte ohne Tag', arten(nk.befunde), ['druckdatei-ohne-pod']);
   const g = await plane([zeile({ product: { tags: ['sale'] }, customAttributes: [] })], mkIo());
   ist('Position ohne POD-Tag und ohne Eigenschaften (Fortura, CJ): still übergangen, kein Befund', [g.befunde, g.items, g.pod], [[], [], 0]);
-  const m = await planeBestellung({ id: 'x', name: '#1', lineItems: { pageInfo: { hasNextPage: true }, edges: [{ node: zeile() }] } }, mkIo());
+  const m = await planeBestellung({ id: 'x', name: '#1', lineItems: { pageInfo: { hasNextPage: true }, edges: [{ node: zeile() }] }, fulfillmentOrders: fulfillmentOrders(['gid://shopify/LineItem/9001']) }, mkIo());
   ist('mehr als 50 Positionen (hasNextPage) → hart «positionen-viele» (weitere Editor-Positionen könnten fehlen)', [arten(m.befunde), m.befunde[0].hart, m.items.length], [['positionen-viele'], true, 1]);
   const d = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (front)', U('w'))] })], mkIo());
   ist('doppelte Platzierung in den Eigenschaften → hart «datei-doppelt»', [arten(d.befunde).includes('datei-doppelt'), d.befunde.find((b) => b.art === 'datei-doppelt').hart], [true, true]);
@@ -801,6 +808,229 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
     ist('WP6 «karte-ohne-datei» der ersten Position wird entfernt, sonst nichts: die zweite Position ist gut', [arten(ohneNurKarte.befunde), ohneNurKarte.items.length], [['keine-druckdatei'], 1]);
   }
 }
+// ═══════════════════════════════════════ Phase 1 (09.11.2026): Dienst-Standort, Aufpreis-Platzierungen gegen das bezahlte Paket, Kosten-Obergrenze, Editor 6.4.0 Ende zu Ende
+{
+  // ── (a) Standort der Position
+  const ID1 = 'gid://shopify/LineItem/9001', ID2 = 'gid://shopify/LineItem/9002';
+  const art = (o, id) => standortVon(o, id).art;
+  ist('Standort: Position in offener Fulfillment-Order eines Händler-Standorts → frei', art({ fulfillmentOrders: fulfillmentOrders([ID1]) }, ID1), 'frei');
+  ist('Standort: Dienst-Standort («Printful», isFulfillmentService true) → dienst, mit dem Namen', standortVon({ fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST) }, ID1), { art: 'dienst', name: 'Printful' });
+  ist('Standort: Dienst-Standort ohne Namen → die Standort-ID statt eines leeren Namens', standortVon({ fulfillmentOrders: fulfillmentOrders([ID1], { id: 'gid://shopify/Location/9', isFulfillmentService: true }) }, ID1).name, 'gid://shopify/Location/9');
+  ist('Standort: zwei Positionen, die erste am Dienst, die zweite am Händler: jede für sich', [art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST).edges[0], fulfillmentOrders([ID2]).edges[0]] } }, ID1), art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST).edges[0], fulfillmentOrders([ID2]).edges[0]] } }, ID2)], ['dienst', 'frei']);
+  ist('Standort: dieselbe Position in zwei Fulfillment-Orders (geteilt), eine am Dienst → dienst', art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1]).edges[0], fulfillmentOrders([ID1], FO_DIENST).edges[0]] } }, ID1), 'dienst');
+  for (const st of ['CLOSED', 'CANCELLED', 'closed']) ist(`Standort: Fulfillment-Order ${st} zählt nicht (veraltet): nur sie vorhanden → unklar`, art({ fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST, st) }, ID1), 'unklar');
+  ist('Standort: geschlossene Dienst-Order UND offene Händler-Order → frei (die geschlossene zählt nicht)', art({ fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST, 'CLOSED').edges[0], fulfillmentOrders([ID1]).edges[0]] } }, ID1), 'frei');
+  for (const st of ['OPEN', 'IN_PROGRESS', 'ON_HOLD', 'SCHEDULED', 'INCOMPLETE']) ist(`Standort: Fulfillment-Order ${st} am Dienst zählt`, art({ fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST, st) }, ID1), 'dienst');
+  ist('Standort: Position steht in keiner Fulfillment-Order → unklar', art({ fulfillmentOrders: fulfillmentOrders([ID2]) }, ID1), 'unklar');
+  ist('Standort: keine Positions-ID → unklar (nie «frei» geraten)', [art({ fulfillmentOrders: fulfillmentOrders([ID1]) }, undefined), art({ fulfillmentOrders: fulfillmentOrders([ID1]) }, '')], ['unklar', 'unklar']);
+  for (const [n, o] of [['fehlt', {}], ['null', { fulfillmentOrders: null }], ['edges keine Liste', { fulfillmentOrders: { edges: null } }], ['keine Bestellung', null], ['leere Liste', { fulfillmentOrders: { edges: [] } }]]) ist(`Standort: fulfillmentOrders ${n} → unklar`, art(o, ID1), 'unklar');
+  for (const [n, ort] of [['Standort null', null], ['Flag fehlt', { id: 'l' }], ['Flag null', { id: 'l', isFulfillmentService: null }], ['Flag als Text «false»', { id: 'l', isFulfillmentService: 'false' }]]) {
+    const fo = { edges: [{ node: { status: 'OPEN', assignedLocation: ort === null ? null : { location: ort }, lineItems: { edges: [{ node: { lineItem: { id: ID1 } } }] } } }] };
+    ist(`Standort: ${n} → unklar (nur ein ausdrückliches false gilt als Händler-Standort)`, art({ fulfillmentOrders: fo }, ID1), 'unklar');
+  }
+  ist('Standort: Flag als Text «true» ist KEIN Dienst und KEIN Händler → unklar', art({ fulfillmentOrders: fulfillmentOrders([ID1], { id: 'l', isFulfillmentService: 'true' }) }, ID1), 'unklar');
+
+  // ── (a) im Plan
+  {
+    const io = mkIo();
+    const p = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST) }), io, { paket: paketAlles });
+    ist('Plan: Position am Dienst-Standort «Printful» → HARTER Befund «dienst-standort», KEIN Artikel, keine einzige Netzabfrage (Variante, Katalog, Datei, KI)', [arten(p.befunde), p.befunde[0]?.hart, p.items.length, io.log.produkt, io.log.druck, io.log.kopf, io.log.kontrolle], [['dienst-standort'], true, 0, [], [], [], []]);
+    ist('Plan Dienst-Standort: der Text nennt den Standort, den Doppeldruck und bleibt unter 300 Zeichen (Telegram-Zeile)', [/Printful/.test(p.befunde[0]?.text), /Doppeldruck/.test(p.befunde[0]?.text), p.befunde[0]?.text.length < 300], [true, true, true]);
+    ist('Plan Dienst-Standort: der Erlös der Position zählt weiter mit (die Bestellung bleibt vollständig gerechnet)', [p.pod, p.erloesChf], [1, 29.9]);
+  }
+  {
+    const z2 = zeile({ id: ID2 });
+    const p = await planeBestellung(bestellung([zeile(), z2], { fulfillmentOrders: { edges: [fulfillmentOrders([ID1], FO_DIENST).edges[0], fulfillmentOrders([ID2]).edges[0]] } }), mkIo(), { paket: paketAlles });
+    ist('Plan: zwei Editor-Positionen, die erste am Dienst-Standort: ein harter Befund, die zweite wird geplant (der Kleber legt wegen des harten Befunds trotzdem KEINEN Auftrag an)', [arten(p.befunde), p.befunde[0]?.hart, p.items.map((i) => i.external_id)], [['dienst-standort'], true, ['9002']]);
+  }
+  {
+    const nd = await plane([zeile()], mkIo(), undefined);
+    ist('Plan: Händler-Standort («Shop location») → kein Befund (Normalfall)', nd.befunde, []);
+    const ohne = await planeBestellung({ id: 'o', name: '#T1', lineItems: { pageInfo: { hasNextPage: false }, edges: [{ node: zeile() }] } }, mkIo(), { paket: paketAlles });
+    ist('Plan: Bestelldaten OHNE Fulfillment-Orders → WEICHER Befund «dienst-standort-unklar» (nie als frei gelesen), der Artikel bleibt', [arten(ohne.befunde), ohne.befunde[0]?.hart, ohne.items.length], [['dienst-standort-unklar'], false, 1]);
+    const leer = await planeBestellung(bestellung([zeile()], { fulfillmentOrders: { edges: [] } }), mkIo(), { paket: paketAlles });
+    ist('Plan: leere Liste der Fulfillment-Orders → weich «dienst-standort-unklar»', arten(leer.befunde), ['dienst-standort-unklar']);
+    const cj = await planeBestellung(bestellung([zeile({ product: { productType: 'x', tags: ['cj'] }, customAttributes: [] })], { fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST) }), mkIo(), { paket: paketAlles });
+    ist('Plan: eine Nicht-Editor-Position am Dienst-Standort wird nicht angefasst (kein Befund, kein Artikel)', [cj.befunde, cj.items.length], [[], 0]);
+    const ohneDesign = await planeBestellung(bestellung([zeile({ customAttributes: [] })], { fulfillmentOrders: fulfillmentOrders([ID1], FO_DIENST) }), mkIo(), { paket: paketAlles });
+    ist('Plan: am Dienst-Standort UND ohne Design → nur «dienst-standort» (der Dienst druckt selbst; die Design-Frage stellt sich dem Sync nicht)', arten(ohneDesign.befunde), ['dienst-standort']);
+  }
+
+  // ── (b) Aufpreis-Platzierungen
+  const R71 = KAT[71].produkt, R19 = KAT[19].produkt;
+  ist('Aufpreis (Katalog 71): Vorderseite «default» und «front» sind im Grundpreis (additional_price null)', [aufpreisUsd(R71, 'default'), aufpreisUsd(R71, 'front')], [0, 0]);
+  ist('Aufpreis (Katalog 71): Rückseite 5.95, Ärmel 2.49, Etikett innen 0.99, Stickerei Brust 2.95 USD', ['back', 'sleeve_left', 'label_inside', 'embroidery_chest_left'].map((t) => aufpreisUsd(R71, t)), [5.95, 2.49, 0.99, 2.95]);
+  ist('Aufpreis: Tasse «default» → 0; unbekannte Platzierung, kein Katalog, Katalog ohne Dateiliste → null (unbekannt)', [aufpreisUsd(R19, 'default'), aufpreisUsd(R71, 'gibt_es_nicht'), aufpreisUsd(null, 'back'), aufpreisUsd({}, 'back'), aufpreisUsd({ files: 'x' }, 'back')], [0, null, null, null, null]);
+  ist('Aufpreis: das Mockup («preview») ist keine Platzierung', aufpreisUsd(R71, 'preview'), null);
+  ist('Aufpreis: nicht lesbarer Preis («abc», negativ) → unbekannt, nie 0', [aufpreisUsd({ files: [{ id: 'back', type: 'back', additional_price: 'abc' }] }, 'back'), aufpreisUsd({ files: [{ id: 'back', type: 'back', additional_price: '-1' }] }, 'back')], [null, null]);
+  ist('Aufpreis: Zahl statt Text und 0 → 0 bzw. Zahl; mehrere Einträge für dieselbe Platzierung → der höchste Preis', [aufpreisUsd({ files: [{ id: 'back', type: 'back', additional_price: 0 }] }, 'back'), aufpreisUsd({ files: [{ id: 'back', type: 'back', additional_price: 3 }] }, 'back'), aufpreisUsd({ files: [{ id: 'a', type: 'back', additional_price: '1.5' }, { id: 'back', type: 'back', additional_price: '4' }] }, 'back')], [0, 3, 4]);
+  ist('Paket Standard: nur Vorderseite bezahlt (keine Aufpreis-Platzierung gedeckt), mit Quelle', [paketStandard().bezahlt, typeof paketStandard().quelle], [[], 'string']);
+  {
+    const ap = (typen, bezahlt, roh = R71) => aufpreisPruefen({ roh, typen, bezahlt }).map((b) => `${b.hart ? 'H' : 'w'}:${b.art}`);
+    ist('aufpreisPruefen: nur Vorderseite → kein Befund', ap(['default'], []), []);
+    ist('aufpreisPruefen: Rückseite, bezahlt ist nur die Vorderseite → hart «aufpreis-unbezahlt»', ap(['default', 'back'], []), ['H:aufpreis-unbezahlt']);
+    ist('aufpreisPruefen: Rückseite und Ärmel, nur die Rückseite bezahlt → hart, genau für den Ärmel', [ap(['back', 'sleeve_left'], ['back']), aufpreisPruefen({ roh: R71, typen: ['back', 'sleeve_left'], bezahlt: ['back'] })[0]?.text.includes('sleeve_left')], [['H:aufpreis-unbezahlt'], true]);
+    ist('aufpreisPruefen: Rückseite und Ärmel beide bezahlt → kein Befund', ap(['default', 'back', 'sleeve_left'], ['back', 'sleeve_left']), []);
+    ist('aufpreisPruefen: zwei unbezahlte Platzierungen → je ein Befund', ap(['back', 'sleeve_left', 'sleeve_right'], []), ['H:aufpreis-unbezahlt', 'H:aufpreis-unbezahlt', 'H:aufpreis-unbezahlt']);
+    ist('aufpreisPruefen: bezahlt als Katalog-Datei-ID oder als Typname gilt (front_large hat id und type)', [ap(['front_large'], ['front_large']), ap(['front_dtf'], ['front_dtf'])], [[], []]);
+    ist('aufpreisPruefen: bezahltes Paket nicht bestimmbar (null) deckt keinen Aufpreis', [ap(['default', 'back'], null), aufpreisPruefen({ roh: R71, typen: ['back'], bezahlt: null })[0]?.text.includes('nicht bestimmbar')], [['H:aufpreis-unbezahlt'], true]);
+    ist('aufpreisPruefen: Tasse und Poster (ohne Aufpreis) sind mit jedem Paket frei', [ap(['default'], null, R19), ap(['default'], [], KAT[268].produkt)], [[], []]);
+    ist('aufpreisPruefen: Preis der Platzierung unlesbar (ohne Katalog) → WEICH «aufpreis-unbekannt», nie hart; die Vorderseite braucht keinen Katalog', [ap(['default', 'back'], [], null), ap(['front'], [], null), ap(['default'], [], null)], [['w:aufpreis-unbekannt'], [], []]);
+    ist('aufpreisPruefen: unbekannter Preis, aber die Platzierung ist bezahlt → trotzdem «aufpreis-unbekannt» (die Höhe ist nicht prüfbar)', ap(['back'], ['back'], null), ['w:aufpreis-unbekannt']);
+    ist('aufpreisPruefen: die Meldung nennt Platzierung, Preis in USD und bleibt unter 300 Zeichen', (() => { const t = aufpreisPruefen({ roh: R71, typen: ['back'], bezahlt: [], quelle: 'Standard: nur Vorderseite bezahlt' })[0].text; return [/«back»/.test(t), /5\.95 USD/.test(t), t.length < 300]; })(), [true, true, true]);
+    ist('aufpreisPruefen: nichts übergeben', aufpreisPruefen(), []);
+  }
+  {
+    const pos = (opts) => ({ variant: { sku: 'x', selectedOptions: opts } });
+    const paket = paketAusOption({ option: 'Druck', pakete: { 'Nur Vorderseite': [], 'Vorder- und Rückseite': ['back'] } });
+    ist('paketAusOption: Wert «Vorder- und Rückseite» → back bezahlt', paket(pos([{ name: 'Farbe', value: 'Weiss' }, { name: 'Druck', value: 'Vorder- und Rückseite' }])).bezahlt, ['back']);
+    ist('paketAusOption: «Nur Vorderseite» → nichts bezahlt', paket(pos([{ name: 'Druck', value: 'Nur Vorderseite' }])).bezahlt, []);
+    ist('paketAusOption: Name der Option ohne Rücksicht auf Gross-/Kleinschreibung, Wert ohne Leerraum am Rand', paket(pos([{ name: 'druck', value: ' Vorder- und Rückseite ' }])).bezahlt, ['back']);
+    ist('paketAusOption: unbekannter Wert → bezahlt null (nicht bestimmbar), nie «alles»', paket(pos([{ name: 'Druck', value: 'Mit Ärmeln' }])).bezahlt, null);
+    ist('paketAusOption: Wert wie ein Eigenschaftsname der Objekt-Prototypen («constructor») ist unbekannt', paket(pos([{ name: 'Druck', value: 'constructor' }])).bezahlt, null);
+    ist('paketAusOption: Option fehlt an der Variante / keine selectedOptions / keine Position → Vorgabe (nur Vorderseite)', [paket(pos([{ name: 'Farbe', value: 'Weiss' }])).bezahlt, paket({ variant: { sku: 'x' } }).bezahlt, paket(null).bezahlt, paket(undefined).bezahlt], [[], [], [], []]);
+    ist('paketAusOption: eigene Vorgabe, wenn die Option fehlt', paketAusOption({ pakete: {}, vorgabe: ['back'] })(pos([])).bezahlt, ['back']);
+    ist('paketAusOption: die Rückgabe ist eine Kopie (das Paket der Fabrik wird nicht verändert)', (() => { const l = ['back']; const f = paketAusOption({ pakete: { A: l } }); const r = f(pos([{ name: 'Druck', value: 'A' }])).bezahlt; r.push('x'); return l; })(), ['back']);
+  }
+  {
+    // Plan mit dem Standard-Paket (cfg {}): T-Shirt 71 mit Rückseite
+    const zr = (extra = {}) => zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, ap: 6.1 })], ...extra });
+    const io = mkIo();
+    const p = await planeBestellung(bestellung([zr()]), io, {});
+    ist('Plan Standard-Paket: Vorder- UND Rückseite gedruckt, nur die Vorderseite bezahlt → HARTER Befund «aufpreis-unbezahlt», KEIN Artikel, keine Katalog-, Datei- oder KI-Abfrage nach dem Befund', [arten(p.befunde), p.befunde[0]?.hart, p.items.length, io.log.produkt, io.log.druck, io.log.kopf, io.log.kontrolle], [['aufpreis-unbezahlt'], true, 0, [4025], [], [], []]);
+    const ohneAp = await planeBestellung(bestellung([zr({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, ap: 0 })] })]), mkIo(), {});
+    ist('Plan: die Angabe _pod_karte.ap (Browserwert) deckt nichts, auch nicht mit ap 0 oder ap 6.1: weiter hart', [arten(ohneAp.befunde), ohneAp.items.length], [['aufpreis-unbezahlt'], 0]);
+    const nurVorn = await planeBestellung(bestellung([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, ap: 99 })] })]), mkIo(), {});
+    ist('Plan: nur die Vorderseite mit erfundenem ap 99 → kein Befund (ap erzeugt nie einen Befund)', [nurVorn.befunde, nurVorn.items.length], [[], 1]);
+    const bez = await planeBestellung(bestellung([zr()]), mkIo(), { paket: () => ({ bezahlt: ['back'], quelle: 'Test' }) });
+    ist('Plan mit bezahlter Rückseite: kein Befund, Artikel mit den Dateien «default» und «back»', [bez.befunde, bez.items[0].files.map((f) => f.type)], [[], ['default', 'back']]);
+    const aermel = await planeBestellung(bestellung([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (sleeve_left)', U('a')), A('🖼️ Druckdatei (sleeve_right)', U('b')), karte6(['front', 'sleeve_left', 'sleeve_right'], { dt: { front: 'default' } })] })]), mkIo(), { paket: () => ({ bezahlt: ['sleeve_left'], quelle: 'Test' }) });
+    ist('Plan: linker Ärmel bezahlt, rechter Ärmel nicht → hart, genau «sleeve_right»', [arten(aermel.befunde), aermel.befunde.length, /Gedruckt würde «sleeve_right»/.test(aermel.befunde[0]?.text), /bezahlt: sleeve_left/.test(aermel.befunde[0]?.text)], [['aufpreis-unbezahlt'], 1, true, true]);
+    const unb = await planeBestellung(bestellung([zr()]), mkIo(), { paket: () => ({ bezahlt: null, quelle: 'Test' }) });
+    ist('Plan: eine Paket-Funktion, die null liefert → hart (Paket nicht bestimmbar)', [arten(unb.befunde), unb.items.length], [['aufpreis-unbezahlt'], 0]);
+    const kaputt = await planeBestellung(bestellung([zr()]), mkIo(), { paket: () => null });
+    ist('Plan: eine Paket-Funktion, die nichts Brauchbares liefert (null) → wie «nicht bestimmbar», nie «alles bezahlt»', arten(kaputt.befunde), ['aufpreis-unbezahlt']);
+    const opt = await planeBestellung(bestellung([zr({ variant: { sku: '5599797_4025', selectedOptions: [{ name: 'Druck', value: 'Vorder- und Rückseite' }] } })]), mkIo(), { paket: paketAusOption({ pakete: { 'Vorder- und Rückseite': ['back'] } }) });
+    ist('Plan mit Paket aus der Option «Druck» (Variante trägt «Vorder- und Rückseite»): kein Befund', opt.befunde, []);
+    const opt2 = await planeBestellung(bestellung([zr({ variant: { sku: '5599797_4025', selectedOptions: [{ name: 'Druck', value: 'Nur Vorderseite' }] } })]), mkIo(), { paket: paketAusOption({ pakete: { 'Nur Vorderseite': [], 'Vorder- und Rückseite': ['back'] } }) });
+    ist('Plan mit Paket aus der Option «Druck» (Variante trägt «Nur Vorderseite», gedruckt wird die Rückseite) → hart', arten(opt2.befunde), ['aufpreis-unbezahlt']);
+    // Katalog nicht lesbar: der Preis der Rückseite ist unbekannt
+    const nl = await planeBestellung(bestellung([zr()]), mkIo({ produkt: () => NICHT_LESBAR }), {});
+    ist('Plan: Printful-Variante nicht lesbar (Rückfall): Rückseite mit unbekanntem Preis → weich «aufpreis-unbekannt» (die Platzierung ist ohnehin nicht gesichert)', [arten(nl.befunde).includes('aufpreis-unbekannt'), nl.befunde.filter((b) => b.art === 'aufpreis-unbekannt').every((b) => !b.hart)], [true, true]);
+    // die Paket-Funktion bekommt die Position und Kontext
+    let gesehen = null;
+    await planeBestellung(bestellung([zr()]), mkIo(), { paket: (position, k) => { gesehen = [position.id, k.vid, k.produktId]; return { bezahlt: ['back'], quelle: 't' }; } });
+    ist('Paket-Funktion bekommt die Position und den Kontext (Printful-Variante, Printful-Produkt)', gesehen, [ID1, 4025, 71]);
+  }
+
+  // ── (d) Kosten-Obergrenze
+  {
+    const c = (total, extra = {}) => ({ currency: 'USD', subtotal: '7.75', discount: '0.00', shipping: '10.49', tax: '1.47', vat: '0.00', total: String(total), ...extra });
+    const k = (o) => kostenPruefen({ costs: c(20), erloesChf: 90, ...o });
+    ist('Obergrenze: Summe 20 USD über der Grenze 19.99 → weich «kosten-obergrenze» mit beiden Zahlen', [k({ maxUsd: 19.99 }).ok, k({ maxUsd: 19.99 }).art, /20\.00/.test(k({ maxUsd: 19.99 }).text), /19\.99/.test(k({ maxUsd: 19.99 }).text), /PRINTFUL_MAX_KOSTEN_USD/.test(k({ maxUsd: 19.99 }).text)], [false, 'kosten-obergrenze', true, true, true]);
+    ist('Obergrenze: Summe genau gleich der Grenze ist erlaubt (Grenze ist «über»)', k({ maxUsd: 20 }).ok, true);
+    ist('Obergrenze: aus bei null, 0, undefined, Text, negativ, NaN (Vorgabe aus)', [null, 0, undefined, 'abc', -5, NaN, '', false].map((m) => k({ maxUsd: m }).ok), Array(8).fill(true));
+    ist('Obergrenze als Text («19.99») gilt', k({ maxUsd: '19.99' }).art, 'kosten-obergrenze');
+    ist('Obergrenze gilt auch ohne bekannten Erlös (Erlös null → sonst «kosten-unbekannt»)', [kostenPruefen({ costs: c(20), erloesChf: null, maxUsd: 10 }).art, kostenPruefen({ costs: c(20), erloesChf: null }).art], ['kosten-obergrenze', 'kosten-unbekannt']);
+    ist('Obergrenze: noch nicht gerechnete Kosten bleiben «kosten-unbekannt» (kein Freispruch, keine Obergrenze ohne Summe)', [kostenPruefen({ costs: c(20, { calculation_status: 'calculating' }), erloesChf: 90, maxUsd: 10 }).art, kostenPruefen({ costs: c(''), erloesChf: 90, maxUsd: 10 }).art], ['kosten-unbekannt', 'kosten-unbekannt']);
+    ist('Obergrenze ist kein Freispruch: darunter gilt der Mindestgewinn weiter (Verlust bleibt «kosten»)', [kostenPruefen({ costs: c(20), erloesChf: 17.9, maxUsd: 500 }).art, kostenPruefen({ costs: c(20), erloesChf: 90, maxUsd: 500 }).ok], ['kosten', true]);
+    ist('Obergrenze rechnet die Summe der Karte (inklusive Versand und Steuer), nicht die Ware ohne Steuer', kostenPruefen({ costs: c(20, { tax: '5.00' }), erloesChf: 200, maxUsd: 19 }).art, 'kosten-obergrenze');
+  }
+}
+
+// ═══════════════════════════════════════ Editor 6.4.0 Ende zu Ende: die ECHTEN Warenkorb-Eigenschaften (Mitschnitt des Editors in Chromium, mitschnitt_erzeugen.mjs)
+{
+  const M = lade('../../dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json');
+  const fall = (n) => M.faelle.find((f) => f.name === n);
+  const editorDatei = fileURLToPath(new URL('../../pod/v6/lspod-designer-v6-6.4.0.js', import.meta.url));
+  ist('E2E: der Mitschnitt stammt von Editor 6.4.0, ohne Seitenfehler im Browser', [M.editorVersion, M.faelle.length, M.faelle.every((f) => f.seitenfehler.length === 0)], ['6.4.0', 6, true]);
+  if (existsSync(editorDatei)) ist('E2E: der Mitschnitt gehört zur Editor-Datei im Repo (sha256; die Datei ist unveränderlich, bei einer neuen Fassung den Mitschnitt neu erzeugen)', M.editorSha256, createHash('sha256').update(readFileSync(editorDatei)).digest('hex'));
+  else console.log('(pod/v6/lspod-designer-v6-6.4.0.js nicht ausgecheckt → Abgleich der Editor-Datei übersprungen)');
+  const attr = (f) => Object.entries(f.anfrage.properties).map(([key, value]) => A(key, value));
+  const png = (b, h) => { const x = Buffer.alloc(64); Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]).copy(x); x.writeUInt32BE(13, 8); x.write('IHDR', 12, 'latin1'); x.writeUInt32BE(b, 16); x.writeUInt32BE(h, 20); return x; };
+  const aufbau = (f, o = {}) => {
+    const modell = f.name.startsWith('tasse') ? 19 : 71, vid = f.anfrage.properties._pod_karte ? JSON.parse(f.anfrage.properties._pod_karte).pv : null;
+    const sku = o.sku || `${SKU_BASIS + modell}_${vid}`;
+    const z = zeile({ sku, variant: { sku }, title: modell === 19 ? 'Keramik-Tasse selbst gestalten' : 'T-Shirt selbst gestalten', customAttributes: o.attrs || attr(f) });
+    const io = mkIo({ produkt: () => prodVon(modell), kopf: (url) => { const u = f.uploads.find((x) => x.url === url); return u && u.breite ? { status: 200, bytes: png(u.breite, u.hoehe) } : { status: 404, bytes: null }; } });
+    return { z, io, modell };
+  };
+  const plan = async (f, cfg, o) => { const { z, io } = aufbau(f, o); const p = await planeBestellung(bestellung([z]), io, cfg); return { p, io }; };
+  const kurz = (b) => b.map((x) => `${x.hart ? 'H' : 'w'}:${x.art}`);
+  const typen = (p) => (p.items[0] ? p.items[0].files.map((x) => x.type) : []);
+
+  // Eigenschaften lesen: Schlüssel und Werte so, wie der Editor sie schreibt
+  for (const f of M.faelle) {
+    const r = dateienAusEigenschaften(attr(f));
+    const k = r.karte;
+    ist(`E2E ${f.name}: der Parser liest die echten Eigenschaften ohne Problem (Schlüssel «🖼️ Druckdatei (<ID>)», Karte v6)`, [r.probleme, k && k.v, r.dateien.every((d) => d.quelle === 'v6' && d.schluessel === 'alt')], [[], 6, true]);
+    ist(`E2E ${f.name}: «_vorschau» ist vorhanden und wird nie als Druckdatei gelesen (Dateien = Platzierungen der Karte)`, [Object.keys(f.anfrage.properties).includes('_vorschau'), r.dateien.length, r.dateien.map((d) => d.platzierung)], [true, k.pl.length, k.pl]);
+    ist(`E2E ${f.name}: «🎨 Design (<ID>)» steht für jede Platzierung (Text für Menschen), der Parser ignoriert ihn`, [k.pl.every((id) => Object.keys(f.anfrage.properties).includes(`🎨 Design (${id})`)), Object.keys(f.anfrage.properties).filter((x) => /^🎨 Design/.test(x)).length], [true, k.pl.length]);
+  }
+  ist('E2E: Rückseite und Ärmel stehen unter den ID-Schlüsseln «back» und «sleeve_left» (mit Unterstrich) und werden als solche gelesen', [dateienAusEigenschaften(attr(fall('t-shirt-71-vorne-foto-und-ruecken-text'))).dateien.map((d) => [d.platzierung, d.dateiTyp, d.seite]), dateienAusEigenschaften(attr(fall('t-shirt-71-vorne-text-und-aermel'))).dateien.map((d) => [d.platzierung, d.dateiTyp, d.seite])],
+    [[['front', 'default', 'front'], ['back', 'back', 'back']], [['front', 'default', 'front'], ['sleeve_left', 'sleeve_left', null]]]);
+
+  // Pläne
+  {
+    const { p, io } = await plan(fall('t-shirt-71-vorne-text'), {});
+    ist('E2E T-Shirt vorne, nur Text: kein Befund, ein Artikel mit Typ «default», Variante 4025, nur die Druckdatei abgerufen (nicht die Vorschau)', [p.befunde, typen(p), p.items[0]?.variant_id, io.log.kopf.length, io.log.kopf.every((u) => u === fall('t-shirt-71-vorne-text').anfrage.properties['🖼️ Druckdatei (front)']), io.log.kontrolle.length], [[], ['default'], 4025, 1, true, 1]);
+    ist('E2E T-Shirt vorne, nur Text: _pod_karte trägt kein qd (kein Foto), das fehlende qd ist kein Befund', [JSON.parse(fall('t-shirt-71-vorne-text').anfrage.properties._pod_karte).qd, p.befunde.length], [undefined, 0]);
+  }
+  {
+    const f = fall('t-shirt-71-vorne-foto-1200');
+    const { p } = await plan(f, {});
+    ist('E2E T-Shirt vorne, Foto 1200×1200: qd 150 = die Dichte der Druckdatei (1800×2400 bei 150 dpi) → kein Befund', [JSON.parse(f.anfrage.properties._pod_karte).qd, p.befunde, typen(p)], [150, [], ['default']]);
+  }
+  {
+    // BEKANNTER FEHLALARM, hier festgehalten (Fund Phase 1, 09.11.2026): qd ist die dpi des FOTOS (kleinste Auflösung aller Fotos, höchstens die Dichte der Druckdatei), die Druckdatei selbst hat immer ihre eigene Dichte (150).
+    // Ein Foto von 500×500 px (qd 83, über der Sperre 75 des Editors) ist ein erlaubter Kauf, löst aber «qd-weicht-ab» aus, weil `qd !== abgerundete Messung der Datei` gilt (PR #3031). Folge: weich, Entwurf, Telegram-Meldung, kein Bestätigen.
+    // Ändert jemand die Regel (Vorschlag: nur qd UNTER dem Katalog-Minimum oder ÜBER der Messung melden), muss dieser Test bewusst mit angepasst werden.
+    const f = fall('t-shirt-71-vorne-foto-500');
+    const { p } = await plan(f, {});
+    ist('E2E T-Shirt vorne, Foto 500×500: qd 83 (Editor erlaubt den Kauf, Minimum 75) → heute weicher Befund «qd-weicht-ab» (BEKANNTER FEHLALARM, siehe Kommentar), der Artikel bleibt', [JSON.parse(f.anfrage.properties._pod_karte).qd, kurz(p.befunde), /83/.test(p.befunde[0]?.text || '') && /150/.test(p.befunde[0]?.text || ''), p.items.length], [83, ['w:qd-weicht-ab'], true, 1]);
+  }
+  {
+    const f = fall('t-shirt-71-vorne-foto-und-ruecken-text');
+    const { p, io } = await plan(f, {});
+    ist('E2E T-Shirt mit Rückseite, Standard-Paket (nur Vorderseite bezahlt): HARTER Befund «aufpreis-unbezahlt», kein Artikel, nach dem Befund keine Datei-/KI-Abfrage', [kurz(p.befunde), p.items.length, io.log.kopf, io.log.kontrolle], [['H:aufpreis-unbezahlt'], 0, [], []]);
+    ist('E2E: der angezeigte Aufpreis ap (6.1) steht in der Karte und deckt trotzdem nichts', JSON.parse(f.anfrage.properties._pod_karte).ap, 6.1);
+    const bez = await plan(f, { paket: () => ({ bezahlt: ['back'], quelle: 'Test' }) });
+    ist('E2E T-Shirt mit Rückseite, Rückseite bezahlt: kein Befund, Dateien «default» und «back», beide abgerufen und kontrolliert, qd 150 passt zur Messung', [bez.p.befunde, typen(bez.p), bez.io.log.kopf.length, bez.io.log.kontrolle.length], [[], ['default', 'back'], 2, 2]);
+    const falsch = JSON.parse(JSON.stringify(f.anfrage.properties)); falsch._pod_karte = JSON.stringify({ ...JSON.parse(falsch._pod_karte), ap: 0 });
+    const lüge = await plan(f, {}, { attrs: Object.entries(falsch).map(([key, value]) => A(key, value)) });
+    ist('E2E: ein im Browser auf ap 0 gesetzter Aufpreis ändert nichts (weiter hart)', kurz(lüge.p.befunde), ['H:aufpreis-unbezahlt']);
+  }
+  {
+    const f = fall('t-shirt-71-vorne-text-und-aermel');
+    const { p } = await plan(f, {});
+    ist('E2E T-Shirt mit linkem Ärmel, Standard-Paket → hart, der Text nennt «sleeve_left» (2.49 USD)', [kurz(p.befunde), /sleeve_left/.test(p.befunde[0]?.text), /2\.49 USD/.test(p.befunde[0]?.text)], [['H:aufpreis-unbezahlt'], true, true]);
+    const bez = await plan(f, { paket: () => ({ bezahlt: ['sleeve_left'], quelle: 'Test' }) });
+    ist('E2E T-Shirt mit linkem Ärmel, Ärmel bezahlt: kein Befund, Dateien «default» und «sleeve_left» (600×525 px = die Ärmel-Druckdatei bei 150 dpi)', [bez.p.befunde, typen(bez.p)], [[], ['default', 'sleeve_left']]);
+  }
+  {
+    const f = fall('tasse-19-text');
+    const { p } = await plan(f, {});
+    ist('E2E Tasse (Printful 19, SKU 9100019_1320): kein Befund, Typ «default», Variante 1320; die Tasse hat keinen Aufpreis, das Standard-Paket genügt', [p.befunde, typen(p), p.items[0]?.variant_id], [[], ['default'], 1320]);
+  }
+  {
+    // die Karte nennt Produkt und Variante des Kaufs: gleicht sie die SKU an, passt alles; ein anderer SKU-Wert ist hart
+    const f = fall('t-shirt-71-vorne-text');
+    const k = JSON.parse(f.anfrage.properties._pod_karte);
+    ist('E2E: pv und m der Karte (Editor 6.4.0) gleichen der SKU des gekauften Produkts', [k.m, k.pv], [71, 4025]);
+    const andere = await plan(f, {}, { sku: '9100071_8923' });
+    ist('E2E: ist die gekaufte SKU eine andere Variante (8923) als die Karte (4025) → hart «karte-widerspruch», kein Artikel', [kurz(andere.p.befunde), andere.p.items.length], [['H:karte-widerspruch'], 0]);
+    const anderes = await plan(f, {}, { sku: '9100019_4025' });
+    ist('E2E: ist die SKU ein anderes Modell (19) als m der Karte (71) → hart «karte-widerspruch»', [kurz(anderes.p.befunde).includes('H:karte-widerspruch'), anderes.p.items.length], [true, 0]);
+  }
+  {
+    // die ganze Bestellung am Dienst-Standort: der Sync legt nichts an, auch wenn Design und Karte stimmen
+    const f = fall('t-shirt-71-vorne-text');
+    const { z, io } = aufbau(f);
+    const p = await planeBestellung(bestellung([z], { fulfillmentOrders: fulfillmentOrders([z.id], FO_DIENST) }), io, {});
+    ist('E2E: dasselbe T-Shirt am Dienst-Standort «Printful» → hart «dienst-standort», kein Artikel, keine Netzabfrage', [kurz(p.befunde), p.items.length, io.log.produkt, io.log.kopf], [['H:dienst-standort'], 0, [], []]);
+  }
+}
+
 // Workflow: ein Zeitplan, Handstart standardmässig nur lesen, Einstellungen durchgereicht (GL1/GL2 Funde 2, 3, 9)
 {
   const wf = fileURLToPath(new URL('../../.github/workflows/printful-sync.yml', import.meta.url));

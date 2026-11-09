@@ -21,6 +21,7 @@ if (process.argv[2] === '--szenario') {
   if (sz.telegram) Object.assign(process.env, { TELEGRAM_BOT_TOKEN: 't', TELEGRAM_CHAT_ID: 'c' });
   if (sz.ki && sz.ki !== 'aus') { process.env.PRINTFUL_KI_KONTROLLE = 'pflicht'; if (sz.ki !== 'ohne-schluessel') process.env.GEMINI_API_KEY = 'g'; }
   Object.assign(process.env, sz.env || {});
+  for (const k of sz.envLoeschen || []) delete process.env[k];       // Standardwerte prüfen: die Variable gar nicht setzen (nicht leer)
   const prot = { api: [], pf: [], posts: [], confirms: [], tags: [], mf: [], tg: [], log: [], warn: [], err: [], shop: [], dateien: [], gemini: [], variantGets: [], variantSignale: [], postSignale: [], exitCode: null, lookups: 0, leseVor: 0, leseNach: 0, dateiGezogen: 0, dateiAbgebrochen: false, shopOps: [], shopQuery: '' };
   let fertig; const ende = new Promise((r) => { fertig = r; });
   const st = { bestaetigt: false, ext: null, nr: 0 };
@@ -162,7 +163,10 @@ const A = (key, value) => ({ key, value });
 const karte6 = (pl, extra = {}) => A('_pod_karte', JSON.stringify({ v: 6, s: 1, pl, ...extra }));
 /** Bestellung (Shopify-Knoten) mit EINER Editor-Position; v5-Schlüssel «🖼️ Druckdatei (Vorne)» wie im alten Test. */
 const zeile = (o = {}) => ({ id: 'gid://shopify/LineItem/9001', quantity: 1, sku: '5599797_4025', title: 'T', discountedTotalSet: { shopMoney: { amount: '49.90', currencyCode: 'CHF' } }, product: { productType: 'T-Shirts', tags: ['wunschdesign'], metafield: null }, variant: { sku: '5599797_4025' }, customAttributes: [A('🖼️ Druckdatei (Vorne)', V('Vorne'))], ...o });
-const knoten = (zeilen, o = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', tags: [], shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, ...o });
+/** Fulfillment-Orders wie die Admin-Abfrage sie liefert: ein Händler-Standort mit allen Positionen (`ort` ändert den Standort, z. B. FO_DIENST = der Dienst-Standort «Printful»). */
+const FO_DIENST = { id: 'gid://shopify/Location/2', name: 'Printful', isFulfillmentService: true };
+const fos = (zeilen, ort = { id: 'gid://shopify/Location/1', name: 'Shop location', isFulfillmentService: false }) => ({ edges: [{ node: { id: 'gid://shopify/FulfillmentOrder/1', status: 'OPEN', assignedLocation: { location: ort }, lineItems: { edges: zeilen.map((z) => ({ node: { lineItem: { id: z.id } } })) } } }] });
+const knoten = (zeilen, o = {}) => ({ id: 'gid://shopify/Order/1', name: '#T1', email: 'a@b.ch', tags: [], shippingAddress: { name: 'T', address1: 'x', city: 'Basel', countryCodeV2: 'CH', zip: '4000' }, lineItems: { pageInfo: { hasNextPage: false }, edges: zeilen.map((node) => ({ node })) }, fulfillmentOrders: fos(zeilen), ...o });
 const einfach = (pt, sku, seiten, extra = {}) => ({ pt, sku, seiten, ...extra });
 /** Szenario aus dem alten Muster {pt, sku, seiten, variant}: eine Bestellung, v5-Eigenschaften «Druckdatei (<Seite>)» */
 const alt = (s) => ({ vid: Number(s.sku.split('_').pop()), orders: [knoten([zeile({ sku: s.sku, variant: { sku: s.sku }, product: { productType: s.pt, tags: ['wunschdesign'], metafield: null }, customAttributes: s.seiten.map((x) => A('🖼️ Druckdatei (' + x + ')', V(x))) })])], ...s });
