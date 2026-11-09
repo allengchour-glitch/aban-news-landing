@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R155_MASTER_20261109_1400",
+  "checkedAt": "2026-11-09T14:16:00+01:00",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "baseline": {
+    "r151Contract": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+    "r154Audit": "/dev/shm/master-audit-20261109.json",
+    "r154AuditSha256": "a6a026fb694de7a8a207278be9913abe7a5c721b23d1adfaa31af81006b5a7e4"
+  },
+  "workspaceScan": {
+    "mp4Files": 11,
+    "professional15To20s1080x1920Cfr30Candidates": 0,
+    "newNonGitMediaOrRightsFilesSinceR154": 0,
+    "probePath": "/dev/shm/r155-mp4-probe.json",
+    "probeSha256": "f6890a5583b323909811f81dfe30cd891196b5f84ea853946b77822d63d165fd",
+    "expectedCorrectedCrystalPath": "/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4",
+    "expectedCorrectedCrystalState": "missing"
+  },
+  "source": {
+    "path": "/workspace/luxestyle-review/r124-work/projector-source.mp4",
+    "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "durationSeconds": 27.96,
+    "width": 960,
+    "height": 540,
+    "fps": 25,
+    "use": "historical comparison only"
+  },
+  "music": {
+    "path": "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav",
+    "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "technicalPresence": true,
+    "rightsListeningMixApproval": false
+  },
+  "rights": {
+    "oldDraftPath": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-RECHTEBELEG-R26-20261101.json",
+    "oldDraftStatus": "UNFILLED_DRAFT_NOT_A_LICENSE_OR_APPROVAL",
+    "hashBoundGrantFound": false
+  },
+  "professionalMaster": {
+    "exists": false,
+    "renderedThisRun": false,
+    "uploadedThisRun": false,
+    "publishedThisRun": false
+  },
+  "gates": {
+    "intakeGo": false,
+    "renderGo": false,
+    "releaseGo": false,
+    "publishGo": false
+  },
+  "improvement": {
+    "path": "/dev/shm/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+    "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4",
+    "kind": "same-master native capture and acceptance block; no replacement clip"
+  }
+}
