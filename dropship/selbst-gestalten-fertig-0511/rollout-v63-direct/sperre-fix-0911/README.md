@@ -19,6 +19,20 @@ Auftrag des Besitzers 09.11.2026: «printeredt fehler beheben» (meine Auslegung
 - Live: `LIVE=1 …` (zuerst den Trockenlauf als eigenen Aufruf, Leitplanke).
 - Rücknahme: `ZURUECK=1 LIVE=1 …` (nur wenn die Live-Beschreibung den neuen Block trägt). Die Rücknahme stellt den **fehlerhaften** Stand wieder her (die Seiten frieren dann wieder ein); sie ist nur für den Notfall gedacht.
 
+
+## Live eingespielt und nachgemessen (09.11.2026 ca. 06:20 UTC)
+- `apply.mjs` mit `LIVE=1`: alle drei Beschreibungen geschrieben (je +23 Zeichen), frisch zurückgelesen **byte-gleich** dem Plan (SHA-256 alt → neu: Magnet `df9b5459…` → `5ae4c910…`, Dad-Cap `7aecf4af…` → `c970e2d8…`, Bügeltransfer `8a454e9d…` → `e8cd13e7…`), idempotent gegen den Generator, Sicherungen in `sicherung/`.
+- **Browser (Playwright, Live-Seiten, Desktop 1440 und Handy 390):** alle drei laden vollständig (`readyState complete`, 4,0 bis 5,8 s), Hauptthread antwortet nach 40 bis 89 ms, Sperrtext gesetzt, Sperrblock vorhanden, neues Skript 3 von 3, altes Skript 0 von 3, kein Seitenüberlauf, 0 Seitenfehler. Vorher: Zeitlimit nach 25 bis 60 s, Hauptthread blockiert.
+- Die einzige Konsolenmeldung (HTTP 403) kommt von `shop.app/pay/hop` (Shop-Pay-Rahmen der Plattform), nicht von unserem Code.
+- Die Admin-Suche nach «MutationObserver» findet weiter genau diese drei Produkte: richtig, der Beobachter bleibt im Block, jetzt mit Schutzabfrage. Unterscheidendes Merkmal ist die Schutzabfrage `if(a.textContent!==msg)`.
+
+## Unabhängige Prüfung (drei Prüfer vor dem Einspielen, nur lesend)
+- **Skript im echten Chromium:** Originalskript friert in 6 von 6 Nachbauten ein (Setter 20 002-mal bis zur Kappe), die Korrektur setzt `textContent` 1-mal, lädt in 14 bis 25 ms; spätere CTA/Formulare werden gesperrt, Fremdformular unberührt, Klick und Submit auf eigene Elemente verhindert (0 Requests an `/cart/add`), 0 Konsolen- und Seitenfehler. **Die Beobachter-Optionen `{childList:true,subtree:true}` sind Teil der Sicherheit: mit `attributes:true` friert die Seite trotz Schutzabfrage wieder ein. Nie erweitern.**
+- **Patchplan:** Live-Block gleich Generator in 3 von 3, genau eine Einfügung, `beschreibungPlanen` idempotent, Shopify normalisiert nichts.
+- **Dieselbe Fehlerart sonst im Shop:** nein. Repo, MAIN-Theme (524 Textdateien), Seiten (223), Artikel (351), Sammlungen (1 723) und 494 «Selbst gestalten»-Produkte geprüft, sechs Live-Seiten im Browser: Hauptthread überall frei (Latenz 0 bis 28 ms). Einzige Instanz waren diese drei.
+- **Bekannte kleine Härtungen, nicht umgesetzt** (würden Generator und Live-Block gemeinsam ändern): Beobachter entprellen (schützt nur gegen ein fremdes Skript, das den CTA-Text aktiv zurücksetzt, nicht vorhanden); CSS-Regel im Block trifft auch Fremdformulare auf der Seite (auf diesen drei Seiten gibt es keins); `layout/theme.liquid` Zeile 571 `fix()` ist ein ungedrosselter Dokumentbeobachter, der nur durch seine Datenlage gegen Ping-Pong geschützt ist (kein Fehler heute).
+- **Hinweis:** Die Live-Seiten enthalten im Formular keinen Kaufknopf (0 Buttons, 0 Dynamic-Checkout): live sperrt das Skript nur den CTA-Text, Kaufknopf und Checkout-Sperre sind nur mit Attrappe bewiesen.
+
 ## Nicht gemessen / Grenzen
 - Die Wirkung auf echten Geräten (Safari, Handy) ist nicht gemessen; gemessen wurde in Chromium (Desktop).
 - Die Sperre selbst (Review-Gate, Freigabe der drei Produkte) ist Sache der Codex-Rolloutkette und unverändert.
