@@ -83,13 +83,13 @@ const script=html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
 function page(replies,search='?session_id=cs_test_demo'){
  const box={textContent:'',innerHTML:''},button={hidden:true,disabled:false,addEventListener(type,fn){this.click=fn;}};
- let calls=0;
- vm.runInNewContext(script,{document:{getElementById:id=>id==='box'?box:button},location:{search},URLSearchParams,fetch:async(url,opts)=>{
+ let calls=0;const timers=new Map();let timerId=0;
+ vm.runInNewContext(script,{document:{getElementById:id=>id==='box'?box:button},location:{search},URLSearchParams,AbortController,setTimeout:(fn,ms)=>{assert.equal(ms,15000);timers.set(++timerId,fn);return timerId;},clearTimeout:id=>timers.delete(id),fetch:async(url,opts)=>{
   assert.equal(opts.cache,'no-store');assert.equal(opts.referrerPolicy,'no-referrer');
   const data=replies[calls++];if(data instanceof Error)throw data;
   return {json:async()=>data};
  }});
- return {box,button,calls:()=>calls};
+ return {box,button,calls:()=>calls,expire:()=>{for(const fn of [...timers.values()])fn();},timers};
 }
 {
  const p=page([{error:'Zahlung noch nicht bestätigt.'},{ok:true,url:'/downloads/kits/'+ 'a'.repeat(24)+'.zip'}]);
@@ -107,5 +107,13 @@ function page(replies,search='?session_id=cs_test_demo'){
 }
 {
  const p=page([], '');await settle();assert.equal(p.calls(),0);assert.equal(p.button.hidden,true);checks++;
+}
+{
+ let finish;const hanging=new Promise(resolve=>{finish=resolve;});
+ const p=page([hanging,{ok:true,url:'/downloads/kits/'+'b'.repeat(24)+'.zip'}]);
+ await settle();assert.equal(p.button.hidden,true);assert.equal(p.calls(),1);
+ p.expire();await settle();assert.equal(p.button.hidden,false);assert.equal(p.button.disabled,false);assert.match(p.box.textContent,/nicht nochmals kaufen/);assert.equal(p.calls(),1);checks++;
+ p.button.click();await settle();assert.equal(p.calls(),2);assert.match(p.box.innerHTML,/Kit herunterladen/);assert.equal(p.timers.size,0);checks++;
+ finish({ok:true,url:'/downloads/kits/'+'c'.repeat(24)+'.zip'});await settle();assert.ok(!p.box.innerHTML.includes('c'.repeat(24)));assert.equal(p.calls(),2);checks++;
 }
 console.log(`${checks} ok, 0 Fehler`);
