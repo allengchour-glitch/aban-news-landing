@@ -406,6 +406,16 @@ const plane = (zeilen, io = mkIo(), cfg) => planeBestellung(bestellung(zeilen), 
   ist('Datei 600×800 auf dem T-Shirt (50 dpi < 75) → weich «aufloesung», Artikel bleibt im Plan', [arten(w.befunde), w.befunde[0].hart, w.items.length, /zu klein/.test(w.befunde[0].text), /50 dpi/.test(w.befunde[0].text)], [['aufloesung'], false, 1, true, true]);
   const g = await plane([zeile()], mkIo({ kopf: () => ({ status: 200, bytes: png(900, 1200) }) }));
   ist('Datei 900×1200 = genau 75 dpi → ok', g.befunde, []);
+  const qdOk = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, qd: 150 })] })]);
+  ist('_pod_karte.qd stimmt mit der echten Druckdatei überein und liegt über dem Mindestwert → kein Befund', qdOk.befunde, []);
+  const qdKlein = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, qd: 50 })] })], mkIo({ kopf: () => ({ status: 200, bytes: png(600, 800) }) }));
+  ist('_pod_karte.qd unter templates.min_dpi → zusätzlich zur echten Auflösungsprüfung ein weicher Befund qd-weicht-ab', [arten(qdKlein.befunde), qdKlein.befunde.every((b) => !b.hart), qdKlein.items.length], [['aufloesung', 'qd-weicht-ab'], true, 1]);
+  const qdAnders = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, qd: 116 })] })]);
+  ist('_pod_karte.qd weicht von der an der echten Datei gemessenen DPI ab → weicher Befund qd-weicht-ab', [arten(qdAnders.befunde), /116/.test(qdAnders.befunde[0]?.text || '') && /150/.test(qdAnders.befunde[0]?.text || '')], [['qd-weicht-ab'], true]);
+  const qdBeschoenigt = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), karte6(['front'], { dt: { front: 'default' }, qd: 150 })] })], mkIo({ kopf: () => ({ status: 200, bytes: png(600, 800) }) }));
+  ist('kundenseitig beschönigtes qd gibt eine zu kleine echte Datei nie frei', [arten(qdBeschoenigt.befunde), qdBeschoenigt.befunde.every((b) => !b.hart), qdBeschoenigt.items.length], [['aufloesung', 'qd-weicht-ab'], true, 1]);
+  const qdTeilmessung = await plane([zeile({ customAttributes: [A('🖼️ Druckdatei (front)', U('v')), A('🖼️ Druckdatei (back)', U('h')), karte6(['front', 'back'], { dt: { front: 'default' }, qd: 100 })] })], mkIo({ kopf: (url) => ({ status: 200, bytes: url === U('v') ? png(1800, 2400) : Buffer.from('<html>') }) }));
+  ist('qd wird bei nur teilweise messbaren Platzierungen nicht fälschlich mit dem Teilminimum verglichen', arten(qdTeilmessung.befunde), ['aufloesung']);
   const x = await plane([zeile()], mkIo({ kopf: () => ({ status: 200, bytes: Buffer.from('<html>') }) }));
   ist('Datei ohne lesbare Kopfzeile → weich «aufloesung» (nicht prüfbar, kein Freispruch)', [arten(x.befunde), /nicht lesbar/.test(x.befunde[0].text)], [['aufloesung'], true]);
   const x2 = await plane([zeile()], mkIo({ kopf: () => ({ status: 503, bytes: null }) }));
