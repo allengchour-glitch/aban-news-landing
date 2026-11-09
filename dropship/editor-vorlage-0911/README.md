@@ -18,7 +18,7 @@ Der Editor legt unter die Gestaltungsfläche ein Vorlagenbild (`img.lsp6-tpl`, b
 
 ## Messung vor und nach (GEMESSEN)
 - **Vor dem Einspielen, Desktop, alle 15 Seiten, je ein Aufruf mit und ohne eingefügte Regel:** 10 verzerrt ohne Regel, 0 mit Regel; Soll gleich Ist bei allen 15. Handy (Prüfer, 390 px): dieselben 10; eigene Nachmessung an Samsung, klassischem T-Shirt und Tasse: 356 × 580 statt 580 × 580, 356 × 762 statt 762 × 762, Tasse unverändert.
-- **Live nach dem Einspielen (ohne eingefügte Regel, die echten Seiten):** Zwischenstand der laufenden Messung (Desktop): Shirt 991 × 991, Samsung 696 × 696, Tasse 427 × 427, je Soll gleich Ist. Die Messung aller 15 Seiten auf Desktop und Handy läuft; das Gesamtergebnis wird im Stand-Block von `CLAUDE.md` nachgetragen.
+- **Live nach dem Einspielen (ohne eingefügte Regel, die echten Seiten, 09.11. ca. 06:50 bis 07:10 UTC):** alle 15 Seiten auf Desktop (1440 px) und Handy (390 px): Soll gleich Ist, **0 verzerrt, 0 Messfehler** (Beispiele Desktop: T-Shirt 991 × 991, Samsung 696 × 696, Umhängetasche 2550 × 2550; Handy: T-Shirt 826 × 826, Samsung 580 × 580, Umhängetasche 2124 × 2124).
 - Sichtprüfung der Bilder vorher und nachher (T-Shirt Handy, Samsung Desktop): vorher gequetscht und verschoben, nachher füllt das Vorlagenbild den Druckrahmen.
 
 ## Einspielen und Rücknahme

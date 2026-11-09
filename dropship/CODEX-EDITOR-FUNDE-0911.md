@@ -13,7 +13,7 @@ Stand: GEMESSEN 09.11.2026 06:1x UTC, Chromium, Handy 390 px, alle 15 aktiven Se
 
 ## Fund B: roter Hinweis «noch nicht eingerichtet» bleibt nach gültiger Wahl stehen (Bündelprodukte)
 
-- **Messung:** Unisex-T-Shirt, Material «Heavyweight-Baumwolle»: Startgrösse XS gibt es nicht (Hinweis «Diese Ausführung ist im Editor noch nicht eingerichtet. Bitte wähle oben eine andere Grösse oder Farbe.» zu Recht). Danach Grösse S (gültige Variante, Modell 586): Hinweis bleibt über 4,5 s stehen und verschwindet erst bei M. Der Kaufknopf bleibt aktiv, der Hinweis ist nur veraltet und irreführend.
+- **Messung (vom Prüfer, von mir am 09.11. auf dem Desktop nachgestellt, gleiches Bild):** Unisex-T-Shirt, Material «Heavyweight-Baumwolle»: Startgrösse XS gibt es nicht (Hinweis «Diese Ausführung ist im Editor noch nicht eingerichtet. Bitte wähle oben eine andere Grösse oder Farbe.» zu Recht). Danach Grösse S (gültige Variante, Modell 586): Hinweis bleibt über 4,5 s stehen und verschwindet erst bei M. Der Kaufknopf bleibt aktiv, der Hinweis ist nur veraltet und irreführend.
 - **Ursache (aus dem Quelltext, 6.3.1):** `varianteGeprueft()` (Zeile 3238 ff.): der Zweig `modellGewechselt` beendet die Funktion mit `return`, ohne `modellHinweisAktualisieren()` aufzurufen. `tabsAufbauen()` (Zeile 1514) kehrt bei weniger als zwei Reitern mit `return` zurück, bevor es `tabsAktualisieren()` und damit den Hinweis erreicht.
 - **Änderung:** in `tabsAufbauen()` `if (ids.length < 2) { ui.tabs.hidden = true; modellHinweisAktualisieren(); return; }`. **Regressionstest:** erst eine nicht angebotene Kombination wählen (Hinweis sichtbar), dann die gültige Variante eines anderen Modells: der Hinweis muss wegfallen.
 
