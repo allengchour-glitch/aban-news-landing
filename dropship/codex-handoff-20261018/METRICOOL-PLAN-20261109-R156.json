@@ -1,0 +1,3720 @@
+{
+  "schemaVersion": 1,
+  "run": "R156",
+  "readAt": "2026-11-09T19:00:00+01:00",
+  "scope": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "from": "2026-11-09T00:00:00+01:00",
+    "to": "2026-11-17T23:59:59+01:00",
+    "analyticsRead": false,
+    "writes": false,
+    "windows": [
+      {
+        "from": "2026-11-09T00:00:00+01:00",
+        "to": "2026-11-11T23:59:59+01:00"
+      },
+      {
+        "from": "2026-11-12T00:00:00+01:00",
+        "to": "2026-11-14T23:59:59+01:00"
+      },
+      {
+        "from": "2026-11-15T00:00:00+01:00",
+        "to": "2026-11-17T23:59:59+01:00"
+      }
+    ]
+  },
+  "identity": {
+    "matched": true,
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "channels": {
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "otherBrandsIgnored": true
+  },
+  "summary": {
+    "objectCount": 65,
+    "activeObjectCount": 21,
+    "draftObjectCount": 44,
+    "activeByMediaKind": {
+      "image": 21
+    },
+    "activeVideoCount": 0,
+    "slotCollisionCount": 0,
+    "exactTextDuplicateGroupCount": 0,
+    "repeatedMediaGroupCount": 0
+  },
+  "providerStatusCounts": {
+    "facebook": {
+      "PENDING": 19,
+      "PUBLISHED": 2
+    },
+    "instagram": {
+      "PENDING": 19,
+      "PUBLISHED": 2
+    },
+    "tiktok": {
+      "PENDING": 18
+    },
+    "pinterest": {
+      "PENDING": 6
+    },
+    "youtube": {
+      "PENDING": 12
+    },
+    "threads": {
+      "PENDING": 6
+    }
+  },
+  "coverage": {
+    "2026-11-09": {
+      "facebook": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING",
+          "PUBLISHED"
+        ],
+        "activeIds": [
+          414929635,
+          415033593
+        ],
+        "draftIds": [
+          421442478
+        ]
+      },
+      "instagram": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING",
+          "PUBLISHED"
+        ],
+        "activeIds": [
+          414929635,
+          415033593
+        ],
+        "draftIds": [
+          421442478
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 3,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421444647,
+          421442496,
+          421444593
+        ]
+      },
+      "pinterest": {
+        "active": 1,
+        "draft": 0,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          421390066
+        ],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421444601,
+          421442520
+        ]
+      },
+      "threads": {
+        "active": 0,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421442507
+        ]
+      }
+    },
+    "2026-11-10": {
+      "facebook": {
+        "active": 2,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          415035691,
+          407893833
+        ],
+        "draftIds": [
+          421442230,
+          421445054
+        ]
+      },
+      "instagram": {
+        "active": 2,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          415035691,
+          407893833
+        ],
+        "draftIds": [
+          421442230,
+          421445054
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 3,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445087,
+          421442693,
+          421445064
+        ]
+      },
+      "pinterest": {
+        "active": 1,
+        "draft": 0,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          421390078
+        ],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445071,
+          421442710
+        ]
+      },
+      "threads": {
+        "active": 0,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421442700
+        ]
+      }
+    },
+    "2026-11-11": {
+      "facebook": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          417962546,
+          415000221
+        ],
+        "draftIds": [
+          421445297
+        ]
+      },
+      "instagram": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          417962546,
+          415000163
+        ],
+        "draftIds": [
+          421445297
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 3,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445356,
+          421445312,
+          421445290
+        ]
+      },
+      "pinterest": {
+        "active": 1,
+        "draft": 0,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          421390086
+        ],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445344,
+          421445332
+        ]
+      },
+      "threads": {
+        "active": 0,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445323
+        ]
+      }
+    },
+    "2026-11-12": {
+      "facebook": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          415077082,
+          417962744
+        ],
+        "draftIds": [
+          421442906
+        ]
+      },
+      "instagram": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          415077082,
+          417962744
+        ],
+        "draftIds": [
+          421442906
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 3,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445585,
+          421442921,
+          421445571
+        ]
+      },
+      "pinterest": {
+        "active": 1,
+        "draft": 0,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          421390094
+        ],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445581,
+          421442944
+        ]
+      },
+      "threads": {
+        "active": 0,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421442930
+        ]
+      }
+    },
+    "2026-11-13": {
+      "facebook": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          407894075,
+          415081189
+        ],
+        "draftIds": [
+          421443103
+        ]
+      },
+      "instagram": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          407894075,
+          415081189
+        ],
+        "draftIds": [
+          421443103
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 3,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445780,
+          421441957,
+          421445754
+        ]
+      },
+      "pinterest": {
+        "active": 1,
+        "draft": 0,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          421390106
+        ],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445771,
+          421443115
+        ]
+      },
+      "threads": {
+        "active": 0,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421445763
+        ]
+      }
+    },
+    "2026-11-14": {
+      "facebook": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          407894120,
+          415131163
+        ],
+        "draftIds": [
+          421446032
+        ]
+      },
+      "instagram": {
+        "active": 2,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          407894120,
+          415131163
+        ],
+        "draftIds": [
+          421446032
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 3,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421446104,
+          421446048,
+          421446019
+        ]
+      },
+      "pinterest": {
+        "active": 1,
+        "draft": 0,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          421390112
+        ],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 2,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421446088,
+          421446074
+        ]
+      },
+      "threads": {
+        "active": 0,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [],
+        "draftIds": [
+          421446059
+        ]
+      }
+    },
+    "2026-11-15": {
+      "facebook": {
+        "active": 1,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          420728374
+        ],
+        "draftIds": [
+          420724799
+        ]
+      },
+      "instagram": {
+        "active": 1,
+        "draft": 1,
+        "statuses": [
+          "PENDING"
+        ],
+        "activeIds": [
+          420726136
+        ],
+        "draftIds": [
+          420724799
+        ]
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "pinterest": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "threads": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      }
+    },
+    "2026-11-16": {
+      "facebook": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "instagram": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "pinterest": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "threads": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      }
+    },
+    "2026-11-17": {
+      "facebook": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "instagram": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "tiktok": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "pinterest": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "youtube": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      },
+      "threads": {
+        "active": 0,
+        "draft": 0,
+        "statuses": [],
+        "activeIds": [],
+        "draftIds": []
+      }
+    }
+  },
+  "duplicateChecks": {
+    "slotCollisions": [],
+    "exactText": [],
+    "mediaDup": []
+  },
+  "posts": [
+    {
+      "id": 421442478,
+      "uuid": "3863915044291300024",
+      "publicationDate": {
+        "dateTime": "2026-11-09T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Rose im Glascover mit warmem LED-Licht. 🌹 In sechs Farben wählbar, passend für Dekoration, Partys oder Hochzeiten. Betrieb mit AAA-Batterie (nicht enthalten). Blütenform und Glanz können vom Video abweichen.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#rosenimglas #hochzeitsdeko #deko #schweiz",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "mediaAltText": [
+        "Rose unter Glasglocke mit warmem LED-Licht auf Holzsockel, in Rot, Gold und Blau"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Ewige Rose mit LED-Licht"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421444601,
+      "uuid": "-4166141021700799850",
+      "publicationDate": {
+        "dateTime": "2026-11-09T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Bagger, dessen Aufsatz um 360° schwenkt 🏗️\n\nJCB Mikrobagger 8010 CTS, Massstab 1:16, ab 3 Jahren · CHF 26.90\nAb Schweizer Lager · Lieferdatum beim Artikel. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/jcb-mikrobagger-8010-cts-fga062003?utm_source=youtube&utm_medium=shorts&utm_campaign=mikrobagger\n\n#mikrobagger #kinderspielzeug #spielzeug #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: JCB Mikrobagger 8010 CTS, Massstab 1:16, CHF 26.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Ein Bagger, dessen Aufsatz um 360° schwenkt #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421444647,
+      "uuid": "-6967517640837021033",
+      "publicationDate": {
+        "dateTime": "2026-11-09T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk unter CHF 20? Dieser Panda wartet schon 🐼\n\nPlüsch Panda, 15 cm, empfohlen ab 3 Jahren · CHF 19.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#wichteln #pluschpanda #geschenkidee #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Panda 15 cm, CHF 19.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442507,
+      "uuid": "8935974072695279179",
+      "publicationDate": {
+        "dateTime": "2026-11-09T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Rose im Glas mit warmem LED-Licht 🌹 In sechs Farben wählbar, Betrieb mit AAA-Batterie (nicht enthalten). Lieferung 10–20 Werktage, Versand ab CHF 50 gratis nach Rabatt.\n\nluxestyle.ch",
+      "providers": [
+        {
+          "network": "threads",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "mediaAltText": [
+        "Rose unter Glasglocke mit warmem LED-Licht auf Holzsockel, in Rot, Gold und Blau"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": {
+        "type": "POST",
+        "replyControl": "EVERYONE"
+      }
+    },
+    {
+      "id": 421442496,
+      "uuid": "-7257455683644011058",
+      "publicationDate": {
+        "dateTime": "2026-11-09T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Rose im Glascover mit warmem LED-Licht. 🌹 In sechs Farben wählbar, passend für Dekoration, Partys oder Hochzeiten. Betrieb mit AAA-Batterie (nicht enthalten). Blütenform und Glanz können vom Video abweichen.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#rosenimglas #hochzeitsdeko #deko #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4"
+      ],
+      "mediaAltText": [
+        "Rose unter Glasglocke mit warmem LED-Licht auf Holzsockel, in Rot, Gold und Blau"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Ewige Rose mit LED-Licht",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 414929635,
+      "uuid": "-8720943201794045273",
+      "publicationDate": {
+        "dateTime": "2026-11-09T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichteln steht an und das Geschenk für sie fehlt noch? 🎁\nMehrlagig geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl; Beschläge in Stahlfarbe, Schwarz oder Gold, Länge 20 oder 22 cm.\n\nGeflochtenes Lederarmband mit Hufeisen-Schnalle · ab CHF 21.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#lederarmband #hufeisenarmband #schmuck #geschenkidee #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": "1049840534888592_122152122969350792",
+          "status": "PUBLISHED",
+          "detailedStatus": "Published",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/122152122969350792"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/p/DfhM84LDRo7/",
+          "status": "PUBLISHED",
+          "detailedStatus": "Published",
+          "publicUrl": "https://www.instagram.com/p/DfhM84LDRo7/"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+      ],
+      "mediaAltText": [
+        "Geflochtenes Lederarmband mit Hufeisen-Schnalle",
+        "Geflochtenes Lederarmband mit Hufeisen-Schnalle"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 415033593,
+      "uuid": "-8611238648907481079",
+      "publicationDate": {
+        "dateTime": "2026-11-09T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": "1158068536959635",
+          "status": "PUBLISHED",
+          "detailedStatus": "Published",
+          "publicUrl": "https://facebook.com/122108214291350792/posts/1158068536959635"
+        },
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/stories/luxestyle.ch/4026671048136770884",
+          "status": "PUBLISHED",
+          "detailedStatus": "Published",
+          "publicUrl": "https://www.instagram.com/stories/luxestyle.ch/4026671048136770884"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4505158859945613837.jpeg"
+      ],
+      "mediaAltText": [
+        "LED-Wasser-Speaker mit farbwechselnden Wasserfontänen auf schwarzem Grund, Text: Musik, die man sehen kann"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "STORY",
+        "title": null
+      },
+      "instagramData": {
+        "type": "STORY",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442520,
+      "uuid": "-3553911421145298799",
+      "publicationDate": {
+        "dateTime": "2026-11-09T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Rose im Glascover mit warmem LED-Licht. 🌹 In sechs Farben wählbar, passend für Dekoration, Partys oder Hochzeiten. Betrieb mit AAA-Batterie (nicht enthalten). Blütenform und Glanz können vom Video abweichen.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/ewige-rose-mit-led-licht-718080?utm_source=youtube&utm_medium=shorts&utm_campaign=rose\n\n#rosenimglas #hochzeitsdeko #deko #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "mediaAltText": [
+        "Rose unter Glasglocke mit warmem LED-Licht auf Holzsockel, in Rot, Gold und Blau"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Eine Rose, die leuchtet: LED-Deko im Glas #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421444593,
+      "uuid": "-7893674518673470896",
+      "publicationDate": {
+        "dateTime": "2026-11-09T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Bagger, dessen Aufsatz um 360° schwenkt 🏗️\n\nJCB Mikrobagger 8010 CTS, Massstab 1:16, ab 3 Jahren · CHF 26.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#mikrobagger #kinderspielzeug #spielzeug #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: JCB Mikrobagger 8010 CTS, Massstab 1:16, CHF 26.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "JCB Mikrobagger 8010 CTS · Massstab 1:16",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421390066,
+      "uuid": "6046957420136514778",
+      "publicationDate": {
+        "dateTime": "2026-11-09T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Plüsch Hochlandrind, 25 cm gross: ein Kuscheltier, das nicht jeder hat. CHF 35.90, ab Schweizer Lager. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Hochlandrind"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "Plüsch Hochlandrind 25 cm · Wichtelgeschenk",
+        "pinLink": "https://luxestyle.ch/products/plusch-hochlandrind-fga59641?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin"
+      },
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442230,
+      "uuid": "3963843144054620883",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss für mehr Stabilität und drei Edelstahlmessern. Bedient wird er von Hand mit der Kurbel.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "3-in-1 Gemüsehobel"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445071,
+      "uuid": "2505682137165939640",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichteln in der Familie und ein Kind ab 2 Jahren auf der Liste? 🚜 Der BRUDER Roadmax Traktor hat ein detailliertes Führerhaus, grosse Profilräder und einen voll funktionsfähigen Frontlader für den Sandkasten.\n\nBRUDER ROADMAX Traktor · Nr. 03451 · CHF 45.90\nAb Schweizer Lager · Lieferdatum beim Artikel. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/bruder-roadmax-traktor-fga03451?utm_source=youtube&utm_medium=shorts&utm_campaign=traktor\n\n#bruder #traktor #kinderspielzeug #weihnachtsgeschenk #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: BRUDER ROADMAX Traktor Nr. 03451, CHF 45.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Wichteln für ein Kind ab 2 Jahren: BRUDER Roadmax Traktor #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421445087,
+      "uuid": "-8877028874765120990",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein kleines Mitbringsel gesucht? Der Waschbär hilft 🧸\n\nPlüsch Waschbär, 14 cm · CHF 20.90 · empfohlen ab 3 Jahren, nicht für Kinder unter 36 Monaten geeignet\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#waschbär #kuscheltier #wichteln #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Waschbär 14 cm, CHF 20.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Plüsch Waschbär 14 cm · kleines Mitbringsel",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442700,
+      "uuid": "6352982241777305829",
+      "publicationDate": {
+        "dateTime": "2026-11-10T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Zucchini wird zu Spiralen 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss und drei Edelstahlmessern. Lieferung 10–20 Werktage.\n\nluxestyle.ch",
+      "providers": [
+        {
+          "network": "threads",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": {
+        "type": "POST",
+        "replyControl": "EVERYONE"
+      }
+    },
+    {
+      "id": 421442693,
+      "uuid": "2172266762404316928",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss für mehr Stabilität und drei Edelstahlmessern. Bedient wird er von Hand mit der Kurbel.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "3-in-1 Gemüsehobel",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445054,
+      "uuid": "2479551942795872090",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Bagger, dessen Aufsatz um 360° schwenkt 🏗️\n\nJCB Mikrobagger 8010 CTS, Massstab 1:16, ab 3 Jahren · CHF 26.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#mikrobagger #kinderspielzeug #spielzeug #schweiz",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: JCB Mikrobagger 8010 CTS, Massstab 1:16, CHF 26.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "JCB Mikrobagger 8010 CTS"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 415035691,
+      "uuid": "37985340483322184",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3482646658187184216.jpeg"
+      ],
+      "mediaAltText": [
+        "Rote Rose unter Glashaube mit warmweissem LED-Licht, Text: Romantik im Glas"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "STORY",
+        "title": null
+      },
+      "instagramData": {
+        "type": "STORY",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442710,
+      "uuid": "-7002936161864562103",
+      "publicationDate": {
+        "dateTime": "2026-11-10T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss für mehr Stabilität und drei Edelstahlmessern. Bedient wird er von Hand mit der Kurbel.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/3-in-1-gemusehobel-mit-scharfen-messern-940928?utm_source=youtube&utm_medium=shorts&utm_campaign=gemuesehobel\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ],
+      "mediaAltText": [
+        "Hand drückt eine Zucchini in einen weissen 3-in-1 Gemüsehobel, feine Zucchini-Spiralen fallen auf einen Teller"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 407893833,
+      "uuid": "-4686288400674371149",
+      "publicationDate": {
+        "dateTime": "2026-11-10T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichteln in der Familie und ein Kind ab 2 Jahren auf der Liste? 🚜\nDer BRUDER Roadmax Traktor hat ein detailliertes Führerhaus, grosse Profilräder und einen voll funktionsfähigen Frontlader für den Sandkasten.\n\nBRUDER ROADMAX Traktor · Nr. 03451 · CHF 45.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#bruder #traktor #kinderspielzeug #weihnachtsgeschenk #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-4160774621955894715.jpeg"
+      ],
+      "mediaAltText": [
+        "BRUDER ROADMAX Traktor · Nr. 03451",
+        "BRUDER ROADMAX Traktor · Nr. 03451"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445064,
+      "uuid": "7496893774506381155",
+      "publicationDate": {
+        "dateTime": "2026-11-10T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichteln in der Familie und ein Kind ab 2 Jahren auf der Liste? 🚜\nDer BRUDER Roadmax Traktor hat ein detailliertes Führerhaus, grosse Profilräder und einen voll funktionsfähigen Frontlader für den Sandkasten.\n\nBRUDER ROADMAX Traktor · Nr. 03451 · CHF 45.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#bruder #traktor #kinderspielzeug #weihnachtsgeschenk #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: BRUDER ROADMAX Traktor Nr. 03451, CHF 45.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "BRUDER ROADMAX Traktor · Nr. 03451",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421390078,
+      "uuid": "1201792213285619236",
+      "publicationDate": {
+        "dateTime": "2026-11-10T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "BRUDER Roadmax Traktor Nr. 03451 mit detailliertem Führerhaus, grossen Profilrädern und funktionsfähigem Frontlader, für Kinder ab 2 Jahren. CHF 45.90, ab Schweizer Lager. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg"
+      ],
+      "mediaAltText": [
+        "BRUDER ROADMAX Traktor Nr. 03451"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "BRUDER ROADMAX Traktor · Geschenk für Kinder ab 2",
+        "pinLink": "https://luxestyle.ch/products/bruder-roadmax-traktor-fga03451?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin"
+      },
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445297,
+      "uuid": "-6647584058486602683",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "11.11. und noch keine Geschenkidee? 🎁 Fünf Geschenke bis CHF 30, jedes mit Preis und Lieferzeit: LED Tulpen-Planet (CHF 28.90), Retro-Vogel-Keramikbecher (CHF 17.90), Tennisarmband mit Zirkon (ab CHF 16.90), Plüsch Panda 15 cm (CHF 19.90) und Kristallspitzen-Set (CHF 29.90).\n\nLieferung 10–20 Werktage, der Panda ab Schweizer Lager. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#geschenkideen #wichteln #geschenkebis30 #schweiz",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: 5 Geschenke bis CHF 30 zum 11.11."
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "5 Geschenke bis CHF 30"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445344,
+      "uuid": "-4605953212411130849",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wer hat schon ein Hochlandrind als Kuscheltier? 🐮\n\nPlüsch Hochlandrind, 25 cm · CHF 35.90\nAb Schweizer Lager · Lieferdatum beim Artikel. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/plusch-hochlandrind-fga59641?utm_source=youtube&utm_medium=shorts&utm_campaign=hochlandrind\n\n#hochlandrind #kuscheltier #geschenkidee #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Hochlandrind 25 cm, CHF 35.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Wer hat schon ein Hochlandrind als Kuscheltier? #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421445356,
+      "uuid": "6800747654958566068",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Uhr in Roségold, fertig zum Verschenken 🎁\n\nElegante Damenuhr mit Box, vier Farbkombinationen · CHF 40.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#damenuhr #rosegold #geschenkidee #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Elegante Damenuhr in Roségold mit Box, CHF 40.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Elegante Damenuhr in Roségold mit Box",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445323,
+      "uuid": "1675642812797436191",
+      "publicationDate": {
+        "dateTime": "2026-11-11T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "11.11. und noch keine Geschenkidee? 🎁 Fünf Geschenke bis CHF 30, jedes mit Preis und Lieferzeit. Welches würdest du verschenken?\n\nluxestyle.ch",
+      "providers": [
+        {
+          "network": "threads",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: 5 Geschenke bis CHF 30 zum 11.11."
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": {
+        "type": "POST",
+        "replyControl": "EVERYONE"
+      }
+    },
+    {
+      "id": 421445312,
+      "uuid": "2157228003212543673",
+      "publicationDate": {
+        "dateTime": "2026-11-11T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "11.11. und noch keine Geschenkidee? 🎁 Fünf Geschenke bis CHF 30: LED Tulpen-Planet CHF 28.90, Keramikbecher CHF 17.90, Tennisarmband ab CHF 16.90, Plüsch Panda CHF 19.90, Kristallspitzen-Set CHF 29.90.\n\nLieferung 10–20 Werktage, der Panda ab Schweizer Lager\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#geschenkideen #wichteln #geschenkebis30 #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: 5 Geschenke bis CHF 30 zum 11.11."
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "11.11.: 5 Geschenke bis CHF 30",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 417962546,
+      "uuid": "3294509733200285464",
+      "publicationDate": {
+        "dateTime": "2026-11-11T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für sie gesucht, das unter CHF 20 bleibt? 🍪\nEin nachgebildeter Keks auf brauner Spange (4 g, Kunstharz), wahlweise als Herz, Quadrat, Kreis oder Stern. Nicht für Kinder unter 3 Jahren geeignet.\n\nHaarspange Keks · CHF 15.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#haarspange #keks #wichtelgeschenk #geschenkidee #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9019448443445299966.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6700642228488989031.jpeg"
+      ],
+      "mediaAltText": [
+        "Haarspange Keks",
+        "Haarspange Keks"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445332,
+      "uuid": "-6835976662518839807",
+      "publicationDate": {
+        "dateTime": "2026-11-11T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "11.11. und noch keine Geschenkidee? 🎁 Fünf Geschenke bis CHF 30, jedes mit Preis und Lieferzeit: LED Tulpen-Planet (CHF 28.90), Retro-Vogel-Keramikbecher (CHF 17.90), Tennisarmband mit Zirkon (ab CHF 16.90), Plüsch Panda 15 cm (CHF 19.90) und Kristallspitzen-Set (CHF 29.90).\n\nLieferung 10–20 Werktage, der Panda ab Schweizer Lager. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nAlle Geschenkideen: https://luxestyle.ch/collections/aus-tiktok-und-instagram?utm_source=youtube&utm_medium=shorts&utm_campaign=geschenke30\n\n#geschenkideen #wichteln #geschenkebis30 #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: 5 Geschenke bis CHF 30 zum 11.11."
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "11.11.: 5 Geschenke bis CHF 30 #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 415000163,
+      "uuid": "-4201876028718560102",
+      "publicationDate": {
+        "dateTime": "2026-11-11T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "5 Geschenke bis CHF 30, jedes mit Preis und Lieferzeit.\n\n1 LED Tulpen-Planet Nachtlicht: CHF 28.90\n2 Retro-Vogel-Keramikbecher mit Ballgriff: CHF 17.90\n3 Dreifachklinken-Tennisarmband mit Zirkon: CHF 16.90 bis 19.90 (je nach Länge)\n4 Plüsch Panda 15 cm: CHF 19.90\n5 Kristallspitzen-Set 8-teilig in Holzbox: CHF 29.90\n\nLieferung: Nr. 1, 2, 3 und 5 im Direktversand, Lieferung 10–20 Werktage. Nr. 4 ab Schweizer Lager, das Lieferdatum steht beim Artikel.\nVersand CHF 7, ab CHF 50 gratis nach Rabatt. Bezahlen mit TWINT, Klarna, Karte oder PayPal.\n\nKombi-Idee: Tulpen-Planet, Becher und Panda zusammen CHF 66.70.\n\nLink in Bio: luxestyle.ch\n\nGeschenkideen · kleine Geschenke · Wichtelgeschenk · Geschenke bis 30 Franken\n#Geschenkideen #Wichteln #LuxeStyle",
+      "providers": [
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8583404517825039536.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12975306260184098837.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-2436596064500590019.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11102341631370552592.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-1107893845215096747.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-16562641166621667992.jpeg"
+      ],
+      "mediaAltText": [
+        "5 Geschenke zum Aussuchen, mit Foto, Preis und Lieferzeit",
+        "LED Tulpen-Planet Nachtlicht für Tisch, CHF 28.90",
+        "Retro-Vogel-Keramikbecher mit Ballgriff, CHF 17.90",
+        "Dreifachklinken-Tennisarmband mit Zirkon, CHF 16.90 bis 19.90",
+        "Plüsch Panda 15 cm, CHF 19.90",
+        "Kristallspitzen-Set 8-teilig in Holzbox, CHF 29.90",
+        "Kombi-Idee: Tulpen-Planet, Becher und Panda zusammen CHF 66.70"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 415000221,
+      "uuid": "-8822571646587483154",
+      "publicationDate": {
+        "dateTime": "2026-11-11T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "5 Geschenke bis CHF 30, jedes mit Preis und Lieferzeit.\n\n1. LED Tulpen-Planet Nachtlicht: CHF 28.90\n2. Retro-Vogel-Keramikbecher mit Ballgriff: CHF 17.90\n3. Dreifachklinken-Tennisarmband mit Zirkon: CHF 16.90 bis 19.90 (je nach Länge)\n4. Plüsch Panda 15 cm: CHF 19.90\n5. Kristallspitzen-Set 8-teilig in Holzbox: CHF 29.90\n\nLieferung: Nr. 1, 2, 3 und 5 im Direktversand, Lieferung 10–20 Werktage. Nr. 4 ab Schweizer Lager, das Lieferdatum steht beim Artikel.\nVersand CHF 7, ab CHF 50 gratis nach Rabatt. Bezahlen mit TWINT, Klarna, Karte oder PayPal.\n\nKombi-Idee: Tulpen-Planet, Becher und Panda zusammen CHF 66.70.\n\nMehr Geschenkideen aus unserer Sammlung: https://luxestyle.ch/collections/aus-tiktok-und-instagram?utm_source=facebook&utm_medium=social&utm_campaign=b1&utm_content=20261111_geschenke30_karussell\n\nGeschenkideen · kleine Geschenke · Wichtelgeschenk\n#Geschenkideen #LuxeStyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-90633665431348684.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-2165778225675445795.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8742528706314942075.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8785534367035130029.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11236030041211411187.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13386137609000236981.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11175349090546228427.jpeg"
+      ],
+      "mediaAltText": [
+        "5 Geschenke zum Aussuchen, mit Foto, Preis und Lieferzeit",
+        "LED Tulpen-Planet Nachtlicht für Tisch, CHF 28.90",
+        "Retro-Vogel-Keramikbecher mit Ballgriff, CHF 17.90",
+        "Dreifachklinken-Tennisarmband mit Zirkon, CHF 16.90 bis 19.90",
+        "Plüsch Panda 15 cm, CHF 19.90",
+        "Kristallspitzen-Set 8-teilig in Holzbox, CHF 29.90",
+        "Kombi-Idee: Tulpen-Planet, Becher und Panda zusammen CHF 66.70"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445290,
+      "uuid": "3738748663902192714",
+      "publicationDate": {
+        "dateTime": "2026-11-11T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wer hat schon ein Hochlandrind als Kuscheltier? 🐮\n\nPlüsch Hochlandrind, 25 cm · CHF 35.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#hochlandrind #kuscheltier #geschenkidee #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Hochlandrind 25 cm, CHF 35.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Plüsch Hochlandrind · 25 cm",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421390086,
+      "uuid": "-3417097081304103516",
+      "publicationDate": {
+        "dateTime": "2026-11-11T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Fünf Geschenke bis CHF 30 zum Wichteln: LED Tulpen-Planet, Retro-Vogel-Keramikbecher, Tennisarmband mit Zirkon, Plüsch Panda und Kristallspitzen-Set, jeweils mit Preis und Lieferzeit. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg"
+      ],
+      "mediaAltText": [
+        "5 Geschenke zum Aussuchen, mit Foto, Preis und Lieferzeit"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "5 Wichtelgeschenke bis CHF 30",
+        "pinLink": "https://luxestyle.ch/collections/aus-tiktok-und-instagram?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin"
+      },
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442906,
+      "uuid": "-2435184774283179178",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, die Lichtfarbe wählst du per Fernbedienung (16 Farben). Im Video: quadratische Ausführung und Kronenform. Die Lichtwirkung hängt von Raum und Abdunklung ab.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ],
+      "mediaAltText": [
+        "LED-Wasserwellen-Projektionsleuchte wirft farbiges Wellenlicht an die Wand"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Wasserwellen-Projektionsleuchte"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445581,
+      "uuid": "-1176313182659524583",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Fürs Wichteln oder den Adventstisch noch eine Idee gesucht? 🦌 Der Kerzenhalter aus Eisen ist als Hirsch beziehungsweise Elch gestaltet, mit runder Schale für ein Teelicht.\n\nWeihnachtsdeer-Kerzenhalter aus Eisen (Hirsch) · CHF 21.90\nLieferung 10–20 Werktage. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/weihnachtsdeer-kerzenhalter-aus-eisen-1b5d86?utm_source=youtube&utm_medium=shorts&utm_campaign=kerzenhalter\n\n#kerzenhalter #weihnachtsdeko #wichteln #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Kerzenhalter aus Eisen in Hirschform, CHF 21.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Adventstisch-Idee: Hirsch-Kerzenhalter aus Eisen #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421445585,
+      "uuid": "8215510415468351070",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Rucksack mit USB-Anschluss fürs Pendeln 🎒\n\nLeichter Laptop-Rucksack, 14 oder 17 Zoll, USB-Schnittstelle (ohne Kabel) · ab CHF 44.90 je nach Grösse\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#laptoprucksack #pendler #geschenkidee #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Leichter Laptop-Rucksack für Pendler, ab CHF 44.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Laptop-Rucksack mit USB-Anschluss · 14 und 17 Zoll",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442930,
+      "uuid": "5102918478982235752",
+      "publicationDate": {
+        "dateTime": "2026-11-12T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wellen aus Licht an der Wand 🌊 Die Projektionsleuchte wirft Wasserwellen an Wand und Decke, die Farbe wählst du per Fernbedienung (16 Farben). Lieferung 10–20 Werktage.\n\nluxestyle.ch",
+      "providers": [
+        {
+          "network": "threads",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ],
+      "mediaAltText": [
+        "LED-Wasserwellen-Projektionsleuchte wirft farbiges Wellenlicht an die Wand"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": {
+        "type": "POST",
+        "replyControl": "EVERYONE"
+      }
+    },
+    {
+      "id": 421442921,
+      "uuid": "-7768329881687535680",
+      "publicationDate": {
+        "dateTime": "2026-11-12T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, die Lichtfarbe wählst du per Fernbedienung (16 Farben). Im Video: quadratische Ausführung und Kronenform. Die Lichtwirkung hängt von Raum und Abdunklung ab.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+      ],
+      "mediaAltText": [
+        "LED-Wasserwellen-Projektionsleuchte wirft farbiges Wellenlicht an die Wand"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Wasserwellen-Projektionsleuchte",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 415077082,
+      "uuid": "-8331410252591837975",
+      "publicationDate": {
+        "dateTime": "2026-11-12T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-7009072093400135523.jpeg"
+      ],
+      "mediaAltText": [
+        "Weisser Anti-Gravitations-Duftbefeuchter mit Tropfen, die zu schweben scheinen, Text: Wie von Zauberhand"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "STORY",
+        "title": null
+      },
+      "instagramData": {
+        "type": "STORY",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421442944,
+      "uuid": "5681760339256165072",
+      "publicationDate": {
+        "dateTime": "2026-11-12T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wellen aus Licht an der Wand. 🌊 Die Projektionsleuchte wirft sanfte Wasserwellen an Wand und Decke, die Lichtfarbe wählst du per Fernbedienung (16 Farben). Im Video: quadratische Ausführung und Kronenform. Die Lichtwirkung hängt von Raum und Abdunklung ab.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504?utm_source=youtube&utm_medium=shorts&utm_campaign=wasserwellen\n\n#nachtlicht #stimmungslicht #wohnideen #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ],
+      "mediaAltText": [
+        "LED-Wasserwellen-Projektionsleuchte wirft farbiges Wellenlicht an die Wand"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Wasserwellen aus Licht: So wirkt die Projektionsleuchte #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 417962744,
+      "uuid": "-6029234844495164842",
+      "publicationDate": {
+        "dateTime": "2026-11-12T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Fürs Wichteln oder den Adventstisch noch eine Idee gesucht? 🦌\nDer Kerzenhalter aus Eisen ist als Hirsch beziehungsweise Elch gestaltet, mit runder Schale für ein Teelicht. Dazu gibt es eine runde Ausführung mit ausgeschnittenen Tannen und Sternen.\n\nWeihnachtsdeer-Kerzenhalter aus Eisen (Hirsch) · CHF 21.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#kerzenhalter #weihnachtsdeko #wichteln #geschenkidee #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+      ],
+      "mediaAltText": [
+        "Schwarzer Kerzenhalter aus Eisen in Hirschform mit runder Schale"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445571,
+      "uuid": "-3118555118962720263",
+      "publicationDate": {
+        "dateTime": "2026-11-12T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Fürs Wichteln oder den Adventstisch noch eine Idee gesucht? 🦌\nDer Kerzenhalter aus Eisen ist als Hirsch beziehungsweise Elch gestaltet, mit runder Schale für ein Teelicht.\n\nWeihnachtsdeer-Kerzenhalter aus Eisen (Hirsch) · CHF 21.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#kerzenhalter #weihnachtsdeko #wichteln #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Kerzenhalter aus Eisen in Hirschform, CHF 21.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Hirsch-Kerzenhalter aus Eisen",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421390094,
+      "uuid": "2095739444122305341",
+      "publicationDate": {
+        "dateTime": "2026-11-12T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Kerzenhalter aus Eisen in Hirschform, mit runder Schale für ein Teelicht. CHF 21.90, Lieferung 10–20 Werktage. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+      ],
+      "mediaAltText": [
+        "Schwarzer Kerzenhalter aus Eisen in Hirschform mit runder Schale"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "Hirsch-Kerzenhalter aus Eisen · Adventsdeko",
+        "pinLink": "https://luxestyle.ch/products/weihnachtsdeer-kerzenhalter-aus-eisen-1b5d86?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin"
+      },
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421443103,
+      "uuid": "1744402171830094170",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Acht Kristallspitzen in einer Holzbox. 💎 Natur pur, für dein Zuhause.\n\nFolge uns für neue Geschenkideen. Link in Bio: luxestyle.ch\n\n#kristalle #kristallspitzen #naturpur #geschenkidee #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Kristallspitzen-Set"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445771,
+      "uuid": "-9210583075457839526",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Plüschtier für Kinder ab 3 Jahren? 🐧 Der Plüsch Kaiserpinguin ist 26 cm gross und ab 3 Jahren empfohlen, nicht geeignet für Kinder unter 36 Monaten (verschluckbare Kleinteile).\n\nPlüsch Kaiserpinguin 26 cm · CHF 30.90\nAb Schweizer Lager · Lieferdatum beim Artikel. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/plusch-kaiserpinguin-26-cm-fga17842?utm_source=youtube&utm_medium=shorts&utm_campaign=pinguin\n\n#kaiserpinguin #plüschtier #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/8254cc9ca6cc4b0a.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Kaiserpinguin 26 cm, CHF 30.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Plüsch Kaiserpinguin 26 cm: Geschenk ab 3 Jahren #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421445780,
+      "uuid": "4651045624279025767",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Decke, die man anziehen kann 🛋️\n\nXXL Hoodie-Decke mit Taschen, für Frauen und Männer · CHF 37.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#hoodiedecke #sofaabend #geschenkidee #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: XXL Hoodie-Decke mit Taschen, CHF 37.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "XXL Hoodie-Decke mit Taschen · für Sie und Ihn",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445763,
+      "uuid": "-8797746381899281322",
+      "publicationDate": {
+        "dateTime": "2026-11-13T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wer hat schon ein Hochlandrind als Kuscheltier? 🐮 Plüsch Hochlandrind, 25 cm, CHF 35.90, ab Schweizer Lager.\n\nluxestyle.ch",
+      "providers": [
+        {
+          "network": "threads",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Hochlandrind 25 cm, CHF 35.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": {
+        "type": "POST",
+        "replyControl": "EVERYONE"
+      }
+    },
+    {
+      "id": 421441957,
+      "uuid": "5647388074617226143",
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Acht Kristallspitzen in einer Holzbox. 💎 Natur pur, für dein Zuhause.\n\nShop: luxestyle.ch/tt\n\n#kristalle #kristallspitzen #naturpur #geschenkidee #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Kristallspitzen-Set",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Plüschtier für Kinder ab 3 Jahren? 🐧\nDer Plüsch Kaiserpinguin ist 26 cm gross und ab 3 Jahren empfohlen – nicht geeignet für Kinder unter 36 Monaten (verschluckbare Kleinteile).\n\nPlüsch Kaiserpinguin 26 cm · CHF 30.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#kaiserpinguin #plüschtier #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm",
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421443115,
+      "uuid": "-4472725258033347244",
+      "publicationDate": {
+        "dateTime": "2026-11-13T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Acht Kristallspitzen in einer Holzbox. 💎 Natur pur, für dein Zuhause.\n\nFolge uns für neue Geschenkideen.\nShop: https://luxestyle.ch/products/kristallspitzen-set-8-teilig-holzbox?utm_source=youtube&utm_medium=shorts&utm_campaign=kristalle\n\n#kristalle #kristallspitzen #naturpur #geschenkidee #schweiz #luxestyle #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ],
+      "mediaAltText": [
+        "Kristallspitzen-Set: acht Steine in der Holzbox"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 415081189,
+      "uuid": "3126986420977421943",
+      "publicationDate": {
+        "dateTime": "2026-11-13T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+      ],
+      "mediaAltText": [
+        "Weisser 3-in-1-Gemüsehobel mit Zucchini-Spiralen, Text: Spiralen in Sekunden"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "STORY",
+        "title": null
+      },
+      "instagramData": {
+        "type": "STORY",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421445754,
+      "uuid": "673796377030903265",
+      "publicationDate": {
+        "dateTime": "2026-11-13T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Plüschtier für Kinder ab 3 Jahren? 🐧\nDer Plüsch Kaiserpinguin ist 26 cm gross und ab 3 Jahren empfohlen – nicht geeignet für Kinder unter 36 Monaten (verschluckbare Kleinteile).\n\nPlüsch Kaiserpinguin 26 cm · CHF 30.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#kaiserpinguin #plüschtier #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/8254cc9ca6cc4b0a.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Plüsch Kaiserpinguin 26 cm, CHF 30.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Plüsch Kaiserpinguin 26 cm",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421390106,
+      "uuid": "-2331828084021443536",
+      "publicationDate": {
+        "dateTime": "2026-11-13T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Plüsch Kaiserpinguin, 26 cm, ab 3 Jahren empfohlen und nicht für Kinder unter 36 Monaten geeignet (verschluckbare Kleinteile). CHF 30.90, ab Schweizer Lager. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg"
+      ],
+      "mediaAltText": [
+        "Plüsch Kaiserpinguin 26 cm"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "Plüsch Kaiserpinguin 26 cm · ab 3 Jahren",
+        "pinLink": "https://luxestyle.ch/products/plusch-kaiserpinguin-26-cm-fga17842?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin"
+      },
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421446032,
+      "uuid": "-2924344703561023385",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für sie gesucht? 🎁 Geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl, Länge 20 oder 22 cm. Beschläge in Stahlfarbe, Schwarz oder Gold.\n\nGeflochtenes Lederarmband mit Hufeisen-Schnalle · ab CHF 21.90\nLieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#lederarmband #hufeisenarmband #schmuck #geschenkidee #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Lederarmband mit Hufeisen-Schnalle"
+      },
+      "instagramData": {
+        "type": "REEL",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421446088,
+      "uuid": "7993315583738791837",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für ein Kind ab 4 Jahren gesucht? 🎁 Radfahrer mit Rennrad und Helm, Gliedmassen und Kopf sind beweglich, die Hände greifen Gegenstände oder halten sich an Fahrzeugen fest.\n\nbworld Rennrad mit Radfahrer · CHF 25.90\nAb Schweizer Lager · Lieferdatum beim Artikel. Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/bworld-rennrad-mit-radfahrer-fga063110?utm_source=youtube&utm_medium=shorts&utm_campaign=rennrad\n\n#rennrad #radfahrer #spielzeug #weihnachtsgeschenk #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: bworld Rennrad mit Radfahrer, CHF 25.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Wichtelgeschenk ab 4 Jahren: bworld Rennrad mit Radfahrer #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421446104,
+      "uuid": "-1754664943692791070",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für sie gesucht, das unter CHF 20 bleibt? 🍪\nEin nachgebildeter Keks auf brauner Spange (4 g, Kunstharz), wahlweise als Herz, Quadrat, Kreis oder Stern. Nicht für Kinder unter 3 Jahren geeignet.\n\nHaarspange Keks · CHF 15.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#haarspange #keks #wichtelgeschenk #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Haarspange Keks, CHF 15.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Haarspange Keks · Wichtelgeschenk",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für ein Kind ab 4 Jahren gesucht? 🎁\nRadfahrer mit Rennrad und Helm, Gliedmassen und Kopf sind beweglich, die Hände greifen Gegenstände oder halten sich an Fahrzeugen fest – zum Spielen drinnen und draussen.\n\nbworld Rennrad mit Radfahrer · CHF 25.90\nAb Schweizer Lager · Lieferdatum beim Artikel\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#rennrad #radfahrer #spielzeug #weihnachtsgeschenk #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+      ],
+      "mediaAltText": [
+        "bworld Rennrad mit Radfahrer",
+        "bworld Rennrad mit Radfahrer"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421446059,
+      "uuid": "8356246782781639563",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für sie gesucht? 🎁 Geflochtenes Lederarmband mit Hufeisen-Schnalle, in Schwarz, Blau oder Braun, ab CHF 21.90. Lieferung 10–20 Werktage.\n\nluxestyle.ch",
+      "providers": [
+        {
+          "network": "threads",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": {
+        "type": "POST",
+        "replyControl": "EVERYONE"
+      }
+    },
+    {
+      "id": 421446048,
+      "uuid": "8178449842924373712",
+      "publicationDate": {
+        "dateTime": "2026-11-14T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für sie gesucht? 🎁 Geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl, Länge 20 oder 22 cm.\n\nab CHF 21.90\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#lederarmband #hufeisenarmband #wichteln #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "Lederarmband mit Hufeisen-Schnalle",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421446074,
+      "uuid": "8229862176301272727",
+      "publicationDate": {
+        "dateTime": "2026-11-14T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für sie gesucht? 🎁 Geflochtenes Leder in Schwarz, Blau oder Braun mit Hufeisen-Schnalle aus Edelstahl, Länge 20 oder 22 cm.\n\nab CHF 21.90, Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/geflochtenes-lederarmband-mit-hufeisen-schnall-639500?utm_source=youtube&utm_medium=shorts&utm_campaign=lederarmband\n\n#lederarmband #hufeisenarmband #wichteln #schweiz #Shorts",
+      "providers": [
+        {
+          "network": "youtube",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: Geflochtenes Lederarmband mit Hufeisen-Schnalle, ab CHF 21.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": {
+        "title": "Wichtelgeschenk für sie: Lederarmband mit Hufeisen-Schnalle #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "madeForKids": false
+      },
+      "threadsData": null
+    },
+    {
+      "id": 421446019,
+      "uuid": "-6748893881700627372",
+      "publicationDate": {
+        "dateTime": "2026-11-14T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk für ein Kind ab 4 Jahren gesucht? 🎁\nRadfahrer mit Rennrad und Helm, Gliedmassen und Kopf sind beweglich, die Hände greifen Gegenstände oder halten sich an Fahrzeugen fest – zum Spielen drinnen und draussen.\n\nbworld Rennrad mit Radfahrer · CHF 25.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#rennrad #radfahrer #spielzeug #weihnachtsgeschenk #schweiz",
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ],
+      "mediaAltText": [
+        "Text-Video: bworld Rennrad mit Radfahrer, CHF 25.90"
+      ],
+      "mediaKind": "video",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": false,
+        "showReelOnFeed": null
+      },
+      "tiktokData": {
+        "title": "bworld Rennrad mit Radfahrer",
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true
+      },
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 415131163,
+      "uuid": "3200332797454403886",
+      "publicationDate": {
+        "dateTime": "2026-11-14T19:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+      ],
+      "mediaAltText": [
+        "Automatischer Kaffeebecher mit Rührfunktion in Kaffeebraun, Text: Der Löffel hat Feierabend"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "STORY",
+        "title": null
+      },
+      "instagramData": {
+        "type": "STORY",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 421390112,
+      "uuid": "-3513321668753471647",
+      "publicationDate": {
+        "dateTime": "2026-11-14T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "bworld Rennrad mit Radfahrer: Gliedmassen und Kopf sind beweglich, für Kinder ab 4 Jahren. CHF 25.90, ab Schweizer Lager. Gratis Versand ab CHF 50 nach Rabatt.",
+      "providers": [
+        {
+          "network": "pinterest",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+      ],
+      "mediaAltText": [
+        "bworld Rennrad mit Radfahrer"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": {
+        "boardId": "1111333714239531706",
+        "pinTitle": "bworld Rennrad mit Radfahrer · ab 4 Jahren",
+        "pinLink": "https://luxestyle.ch/products/bworld-rennrad-mit-radfahrer-fga063110?utm_source=pinterest&utm_medium=social&utm_campaign=metricool_pin"
+      },
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 420724799,
+      "uuid": "-3833193365444016309",
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Die Wichtelrunde steht an und dir fehlt noch eine Idee? 🎁\nDer Stick speichert Daten und öffnet Flaschen. Die Speichergrössen von 4 bis 128 GB sind Angaben des Lieferanten; vor dem Öffnen einer Flasche den Stick einfach vom Rechner abziehen.\n\nUSB-Stick Flaschenöffner aus Metall · CHF 15.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#usbstick #flaschenoeffner #wichtelgeschenk #weihnachtsgeschenk #schweiz #luxestyle",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        },
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+      ],
+      "mediaAltText": [
+        "USB-Stick Flaschenöffner aus Metall",
+        "USB-Stick Flaschenöffner aus Metall"
+      ],
+      "mediaKind": "image",
+      "autoPublish": false,
+      "draft": true,
+      "networkAutoPublish": {
+        "instagram": false
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": false,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 420726136,
+      "uuid": "6199136659928140012",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wann kommt meine Bestellung? Ehrlich erklärt: so liefern wir.\n\nDirektversand aus Asien: Lieferung 10–20 Werktage (Richtwert), das voraussichtliche Datum steht auf der Produktseite.\nArtikel ab Schweizer Lager: das Lieferdatum steht beim Artikel.\nVersand in der Schweiz: CHF 7, ab CHF 50 gratis (nach Rabatt).\nBezahlen mit TWINT, Klarna (auf Rechnung), Karte oder PayPal.\nFragen? info@luxestyle.ch\n\nLink in Bio: luxestyle.ch\n\n#luxestyle #lieferzeit #versandkosten",
+      "providers": [
+        {
+          "network": "instagram",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+      ],
+      "mediaAltText": [
+        "Ehrlich erklärt: so liefern wir",
+        "Direktversand: Lieferung 10 bis 20 Werktage",
+        "Ab Schweizer Lager: das Lieferdatum steht beim Artikel",
+        "Versand in der Schweiz CHF 7, ab CHF 50 gratis",
+        "Bezahlen mit TWINT, Klarna auf Rechnung, Karte oder PayPal",
+        "Fragen? info@luxestyle.ch"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": null,
+      "instagramData": {
+        "type": "POST",
+        "autoPublish": true,
+        "showReelOnFeed": true
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    },
+    {
+      "id": 420728374,
+      "uuid": "7768651932591999367",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wann kommt meine Bestellung? Ehrlich erklärt: so liefern wir.\n\nDirektversand aus Asien: Lieferung 10–20 Werktage (Richtwert), das voraussichtliche Datum steht auf der Produktseite.\nArtikel ab Schweizer Lager: das Lieferdatum steht beim Artikel.\nVersand in der Schweiz: CHF 7, ab CHF 50 gratis (nach Rabatt).\nBezahlen mit TWINT, Klarna (auf Rechnung), Karte oder PayPal.\n\nAlle Angaben zu Versand und Lieferung: https://luxestyle.ch/pages/versand-lieferung?utm_source=facebook&utm_medium=social&utm_campaign=b1&utm_content=20261115_lieferung_karussell\nFragen? info@luxestyle.ch",
+      "providers": [
+        {
+          "network": "facebook",
+          "id": null,
+          "status": "PENDING",
+          "detailedStatus": "Pending",
+          "publicUrl": null
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+      ],
+      "mediaAltText": [
+        "Ehrlich erklärt: so liefern wir",
+        "Direktversand: Lieferung 10 bis 20 Werktage",
+        "Ab Schweizer Lager: das Lieferdatum steht beim Artikel",
+        "Versand in der Schweiz CHF 7, ab CHF 50 gratis",
+        "Bezahlen mit TWINT, Klarna auf Rechnung, Karte oder PayPal",
+        "Fragen? info@luxestyle.ch"
+      ],
+      "mediaKind": "image",
+      "autoPublish": true,
+      "draft": false,
+      "networkAutoPublish": {
+        "instagram": true
+      },
+      "facebookData": {
+        "type": "POST",
+        "title": null
+      },
+      "instagramData": {
+        "type": null,
+        "autoPublish": true,
+        "showReelOnFeed": null
+      },
+      "tiktokData": null,
+      "pinterestData": null,
+      "youtubeData": null,
+      "threadsData": null
+    }
+  ]
+}
