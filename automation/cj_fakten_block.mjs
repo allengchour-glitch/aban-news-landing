@@ -10,6 +10,7 @@
  *          LISTE=scratch/traffic_top150.csv LIMIT=40 node automation/cj_fakten_block.mjs
  *          LIVE=1 HANDLES=… node automation/cj_fakten_block.mjs
  * Schalter: OUT=/tmp/fakten_vorschau · FORCE=1 (Produkte mit Marker nochmals) · KEIN_LLM=1 (nur Quelltext zeigen)
+ *           · STATUS_OK=DRAFT (Entwürfe mitnehmen, z. B. Grind-Entwürfe für den Datenblatt-Zwischenspeicher; Vorgabe nur ACTIVE)
  */
 import { mkdirSync, writeFileSync, readFileSync, existsSync, appendFileSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
@@ -18,9 +19,11 @@ import { cjToken } from './lib/cj_token.mjs';
 import { cjFetch, WEICHE_CODES } from './lib/cj_fetch.mjs';
 import { GROQ_MODELLE } from './lib/uebersetzen.mjs';
 import { MARKER, strategien, quelleAus, saeubern, genug, renderBlock, einsetzen, wissenFuer, auftrag, htmlZuText } from './lib/fakten_block.mjs';
+import { erlaubteStatus } from './lib/text_prosa.mjs';
 
 const LIVE = process.env.LIVE === '1', FORCE = process.env.FORCE === '1', KEIN_LLM = process.env.KEIN_LLM === '1';
 const OUT = process.env.OUT || '/tmp/fakten_vorschau', CACHE = '/tmp/cj_fakten_cache';
+const STATUS_OK = erlaubteStatus(process.env.STATUS_OK);
 const BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
 
@@ -83,7 +86,7 @@ async function main() {
     try {
       const p = (await q(`query($h:String!){productByHandle(handle:$h){id title status descriptionHtml variants(first:1){nodes{sku}}}}`, { h })).productByHandle;
       if (!p) { console.log(`${h}: nicht gefunden`); weg('nicht gefunden'); continue; }
-      if (p.status !== 'ACTIVE') { console.log(`${h}: ${p.status} — übersprungen`); weg('nicht aktiv'); continue; }
+      if (!STATUS_OK.includes(p.status)) { console.log(`${h}: ${p.status} — übersprungen`); weg('nicht aktiv'); continue; }
       if (!FORCE && p.descriptionHtml.includes(MARKER)) { console.log(`${h}: hat schon einen Fakten-Block`); weg('schon bearbeitet'); continue; }
       const c = await cjProdukt(cj, h, p.variants.nodes[0]?.sku);
       if (!c) { console.log(`${h}: keine CJ-Daten (SKU ${p.variants.nodes[0]?.sku})`); weg('keine CJ-Daten'); continue; }

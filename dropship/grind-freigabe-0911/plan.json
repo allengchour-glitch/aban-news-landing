@@ -1,0 +1,86 @@
+{
+ "stand": "2026-11-09",
+ "hinweis": "Plan für automation/grind_freigabe.mjs. Entscheidungen nach Sichtung der CJ-Datenblätter und der Produktbilder (siehe README).",
+ "freigeben": [
+  {
+   "handle": "laptop-tasche-schultertasche-50b73c",
+   "optionen": {
+    "Grösse": {
+     "15.4Inch": "15.4 Zoll",
+     "15.6Inch": "15.6 Zoll",
+     "13.3Inch": "13.3 Zoll",
+     "14.1Inch": "14.1 Zoll"
+    }
+   },
+   "html": [
+    [
+     ">zipper</td>",
+     ">Reissverschluss</td>"
+    ],
+    [
+     ">nylon</td>",
+     ">Nylon</td>"
+    ]
+   ]
+  },
+  {
+   "handle": "webcam-1080p-konferenz-video-4521a2"
+  },
+  {
+   "handle": "choker-halskette-damen-voll-kristall-strass-sc-cbbc67",
+   "optionen": {
+    "Grösse": {
+     "16MM": "16 mm",
+     "10MM": "10 mm",
+     "38MM": "38 mm",
+     "25MM": "25 mm"
+    }
+   },
+   "medienNachVorn": "17999683324960"
+  },
+  {
+   "handle": "herren-halskette-mit-eisen-nagelkreuz-anhanger-376512"
+  },
+  {
+   "handle": "laptoptasche-einfach-844636",
+   "titel": "Laptop-Hülle aus mattem PU, 12 bis 14 Zoll"
+  },
+  {
+   "handle": "damen-perucke-lockig-flauschig-pony-368960"
+  }
+ ],
+ "halten": [
+  {
+   "handle": "damen-perucken-gewellt-617792",
+   "grund": "Alle gesichteten Bilder tragen Fremdmarken-Wasserzeichen («Tinylana», «Tesco»): Google lehnt solche Hauptbilder ab"
+  },
+  {
+   "handle": "webcam-1080p2k-hd-videokonferenz-treiberlos-us-448000",
+   "grund": "Bilder mit Texteinblendungen und Fremdlogos (YouTube, Skype, Zoom, Xbox …); «2K» im Titel widerspricht den Varianten 1080p und 720p"
+  },
+  {
+   "handle": "perucke-lockig-echthaar-spitze-664896",
+   "grund": "Variantenpreise unplausibel (8 Zoll CHF 67.90, 32 Zoll CHF 18.90); Echthaar-Aussage nur Lieferantenangabe"
+  },
+  {
+   "handle": "perucken-und-haarteile-echthaar-426048",
+   "grund": "Echthaar-Aussage nur Lieferantenangabe bei Preisen von CHF 18.90 bis 63.90; ohne Muster nicht belegbar"
+  },
+  {
+   "handle": "webcam-4k-usb-hd-video-197312",
+   "grund": "«4K» im Titel widerspricht dem Datenblatt («Full HD CMOS sensor»)"
+  },
+  {
+   "handle": "webcam-usb-hd-1080p-mit-licht-netzwerk-video-k-276928",
+   "grund": "«1080P» bei einem Sensor mit 300 000 Pixeln; die 480P-Variante kostet dasselbe: Angabe irreführend"
+  },
+  {
+   "handle": "webcam-hd-fur-notebook-usb-2-0-mini-smart-562496",
+   "grund": "Datenblatt dünn und widersprüchlich (USB-Webcam oder App-Kamera, 35 g gegen 0.5 kg), keine Auflösung genannt"
+  },
+  {
+   "handle": "webcam-outdoor-wifi-931712",
+   "grund": "Überwachungskamera (12 V, Schwenkkopf), keine Webcam: falsche Produktart und Kategorie; Netzteil nicht im Lieferumfang"
+  }
+ ]
+}
