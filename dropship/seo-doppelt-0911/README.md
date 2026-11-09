@@ -6,7 +6,7 @@ Werkzeug: `apply.mjs` (Trockenlauf Vorgabe), Daten: `aenderungen.json` (42 Eintr
 ## Messung (09.11., lesend)
 
 - `automation/kategorie_seo_dubletten.mjs` normalisiert stark (Gross-/Kleinschreibung, Satzzeichen, Markenzusatz) und zeigte darum 17 Titel- und 11 Beschreibungsgruppen. **Massgebend ist die exakte Zeichenkette der Sammlungen in der Sitemap** (1 559 deutsche Sammlungen, aus den vier Teil-Sitemaps `sitemap_collections_N.xml`). Dort waren es 13 + 4 + 2 betroffene Gruppen, der Rest war harmlos (unten).
-- **Nachher gemessen (09.11. 11:56 UTC): 0 doppelte SEO-Titel, 0 doppelte SEO-Beschreibungen, 0 leere Felder** unter den 1 559 Sammlungen der Sitemap (Skript im Scratch, rechnet gegen die Admin-API und die Sitemap).
+- **Nachher gemessen (09.11. 11:56 UTC): 0 doppelte SEO-Titel, 0 doppelte SEO-Beschreibungen, 0 leere Felder** unter den 1 559 Sammlungen der Sitemap (`node automation/seo_exakt_dubletten.mjs`: holt die vier Teil-Sitemaps und die Sammlungen aus der Admin-API; Selbsttest 11 Prüfungen, Mutationsprobe 11 von 11; Exit 0 = keine Dubletten und keine leeren Felder).
 
 ## Was geändert wurde (LIVE 09.11. ca. 11:50 und 11:55 UTC, alles frisch zurückgelesen GLEICH)
 
@@ -49,6 +49,6 @@ Eine Wirkung auf Rang oder Klicks ist nicht zu erwarten (Hygiene für Audits); G
 
 ## Lehren
 
-- «0 Dubletten» an der exakten Zeichenkette der Sammlungen aus der Sitemap messen, nicht an den normalisierten Gruppen des Werkzeugs; so schrumpften 28 Gruppen auf 19 echte.
+- «0 Dubletten» an der exakten Zeichenkette der Sammlungen aus der Sitemap messen (`automation/seo_exakt_dubletten.mjs`), nicht an den normalisierten Gruppen von `kategorie_seo_dubletten.mjs`; so schrumpften 28 Gruppen auf 19 echte.
 - Vor einer Struktur-Änderung (Weiterleitung, noindex, Menü) zuerst messen, ob die Sammlung überhaupt sichtbar ist (Veröffentlichungen, Sitemap, 301): vier der sechs «leeren» Fälle waren schon erledigt.
 - Ein Skript, das live schreibt, braucht den Ablauf gegen eine Attrappe: erst damit fand die Mutationsprobe die drei Lücken im Schreibweg.
