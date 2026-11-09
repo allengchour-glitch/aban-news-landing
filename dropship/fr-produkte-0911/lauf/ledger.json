@@ -1,0 +1,2475 @@
+{
+ "gid://shopify/Product/15408458006913": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kristallspitzen-set-8-teilig-holzbox",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:10:35 UTC"
+ },
+ "gid://shopify/Product/15412902756737": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "s925-silber-halskette-eclat-1-karat-moissanite",
+  "optionen": [
+   "gid://shopify/ProductOption/17837985497473"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11803579515265"
+  ],
+  "zeit": "2026-11-09 23:02:05 UTC"
+ },
+ "gid://shopify/Product/15412902789505": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "ohrstecker-lumiere-elegante-high-end-studs",
+  "optionen": [
+   "gid://shopify/ProductOption/17837985530241"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11803579548033"
+  ],
+  "zeit": "2026-11-09 23:10:37 UTC"
+ },
+ "gid://shopify/Product/15412911964545": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+  "optionen": [
+   "gid://shopify/ProductOption/17837995458945",
+   "gid://shopify/ProductOption/17837995491713"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11803676049793",
+   "gid://shopify/ProductOptionValue/11803676082561",
+   "gid://shopify/ProductOptionValue/11803676115329",
+   "gid://shopify/ProductOptionValue/11803676180865",
+   "gid://shopify/ProductOptionValue/11803676213633"
+  ],
+  "zeit": "2026-11-09 23:10:40 UTC"
+ },
+ "gid://shopify/Product/15412915110273": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+  "optionen": [
+   "gid://shopify/ProductOption/17837999292801",
+   "gid://shopify/ProductOption/17837999325569"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11803748893057",
+   "gid://shopify/ProductOptionValue/11803748925825"
+  ],
+  "zeit": "2026-11-09 22:50:09 UTC"
+ },
+ "gid://shopify/Product/15412959871361": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "s925-silber-halskette-eternal-herz-anhanger",
+  "optionen": [
+   "gid://shopify/ProductOption/17838057456001"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11804323676545"
+  ],
+  "zeit": "2026-11-09 23:02:13 UTC"
+ },
+ "gid://shopify/Product/15412960002433": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "s925-silber-halskette-camelia-bluten-anhanger",
+  "optionen": [
+   "gid://shopify/ProductOption/17838057652609"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11804325314945"
+  ],
+  "zeit": "2026-11-09 23:01:47 UTC"
+ },
+ "gid://shopify/Product/15414270755201": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "ohrringe-duo-2-fach-tragbar-zirkonia-in-silber-optik",
+  "optionen": [
+   "gid://shopify/ProductOption/17839594078593"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11813626085761"
+  ],
+  "zeit": "2026-11-09 23:01:43 UTC"
+ },
+ "gid://shopify/Product/15421167042945": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "perlen-anhanger-coquille-muschel-form-vergoldet",
+  "optionen": [
+   "gid://shopify/ProductOption/17847696949633"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11849436430721",
+   "gid://shopify/ProductOptionValue/11849436463489"
+  ],
+  "zeit": "2026-11-09 23:01:32 UTC"
+ },
+ "gid://shopify/Product/15421167108481": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "geburtsstein-armband-pois-zarte-kette-mit-steinen",
+  "optionen": [
+   "gid://shopify/ProductOption/17847697015169"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11849436627329",
+   "gid://shopify/ProductOptionValue/11849436660097",
+   "gid://shopify/ProductOptionValue/11849436692865",
+   "gid://shopify/ProductOptionValue/11849436725633",
+   "gid://shopify/ProductOptionValue/11849436758401",
+   "gid://shopify/ProductOptionValue/11849436791169",
+   "gid://shopify/ProductOptionValue/11849436823937",
+   "gid://shopify/ProductOptionValue/11849436856705",
+   "gid://shopify/ProductOptionValue/11849436889473",
+   "gid://shopify/ProductOptionValue/11849436922241",
+   "gid://shopify/ProductOptionValue/11849436955009",
+   "gid://shopify/ProductOptionValue/11849436987777",
+   "gid://shopify/ProductOptionValue/11849437020545",
+   "gid://shopify/ProductOptionValue/11849437053313",
+   "gid://shopify/ProductOptionValue/11849437086081",
+   "gid://shopify/ProductOptionValue/11849437118849",
+   "gid://shopify/ProductOptionValue/11849437151617",
+   "gid://shopify/ProductOptionValue/11849437184385"
+  ],
+  "zeit": "2026-11-09 23:01:27 UTC"
+ },
+ "gid://shopify/Product/15421328359809": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "doppel-ring-duo-s925-silber-mit-zirkonia-topas-blau",
+  "optionen": [
+   "gid://shopify/ProductOption/17847869112705"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:10:42 UTC"
+ },
+ "gid://shopify/Product/15421414277505": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "acryl-ohrringe-ambre-karamell-ton-statement",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11851269964161"
+  ],
+  "zeit": "2026-11-09 23:01:21 UTC"
+ },
+ "gid://shopify/Product/15423895830913": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "buegeltransfer-selbst-gestalten",
+  "optionen": [
+   "gid://shopify/ProductOption/17850887635329"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11862615097729"
+  ],
+  "zeit": "2026-11-09 23:04:37 UTC"
+ },
+ "gid://shopify/Product/15427230269825": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "schweiz-sticker-steinbock",
+  "optionen": [
+   "gid://shopify/ProductOption/17854540153217"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:04:56 UTC"
+ },
+ "gid://shopify/Product/15430345556353": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "925-silber-ring-fleur-filigrane-blute",
+  "optionen": [
+   "gid://shopify/ProductOption/17858229469569"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11893339685249",
+   "gid://shopify/ProductOptionValue/11893339718017",
+   "gid://shopify/ProductOptionValue/11893339750785"
+  ],
+  "zeit": "2026-11-09 23:01:39 UTC"
+ },
+ "gid://shopify/Product/15430406832513": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "925-silber-ring-anello-mesh-verstellbar",
+  "optionen": [
+   "gid://shopify/ProductOption/17858348679553"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/11893920006529",
+   "gid://shopify/ProductOptionValue/11893920039297",
+   "gid://shopify/ProductOptionValue/11893920072065"
+  ],
+  "zeit": "2026-11-09 23:01:19 UTC"
+ },
+ "gid://shopify/Product/15430462669185": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "herren-cargo-hose-trail-multi-pocket-outdoor",
+  "optionen": [
+   "gid://shopify/ProductOption/17858439840129"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:06:22 UTC"
+ },
+ "gid://shopify/Product/15448104698241": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "britischer-oversize-hoodie-mit-polo-kragen-602300",
+  "optionen": [
+   "gid://shopify/ProductOption/17879530209665"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:03:33 UTC"
+ },
+ "gid://shopify/Product/15448587075969": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+  "optionen": [
+   "gid://shopify/ProductOption/17880056922497",
+   "gid://shopify/ProductOption/17880056955265"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12022791831937",
+   "gid://shopify/ProductOptionValue/12022791864705",
+   "gid://shopify/ProductOptionValue/12022791897473",
+   "gid://shopify/ProductOptionValue/12022791930241",
+   "gid://shopify/ProductOptionValue/12022791963009",
+   "gid://shopify/ProductOptionValue/12022791995777",
+   "gid://shopify/ProductOptionValue/12022792028545",
+   "gid://shopify/ProductOptionValue/12022792061313"
+  ],
+  "zeit": "2026-11-09 23:10:44 UTC"
+ },
+ "gid://shopify/Product/15448800592257": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "rizinusol-wimpernserum-313025",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:05:43 UTC"
+ },
+ "gid://shopify/Product/15448827888001": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "tunmate-rizinusol-382081",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:05:47 UTC"
+ },
+ "gid://shopify/Product/15448828903809": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "rizinusol-roll-on-fur-haar-kopfhaut-10-ml-737089",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:10:46 UTC"
+ },
+ "gid://shopify/Product/15449425052033": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_description"
+  ],
+  "handle": "anti-gravitations-duftbefeuchter-mit-schwebend-903040",
+  "optionen": [
+   "gid://shopify/ProductOption/17881087017345"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12034357690753",
+   "gid://shopify/ProductOptionValue/12034357723521",
+   "gid://shopify/ProductOptionValue/12034357756289",
+   "gid://shopify/ProductOptionValue/12034357789057"
+  ],
+  "zeit": "2026-11-09 23:10:48 UTC"
+ },
+ "gid://shopify/Product/15449425478017": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "automatischer-kaffeebecher-72c4e0",
+  "optionen": [
+   "gid://shopify/ProductOption/17881087476097"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12034362737025",
+   "gid://shopify/ProductOptionValue/12034362769793",
+   "gid://shopify/ProductOptionValue/12034362802561",
+   "gid://shopify/ProductOptionValue/12034362868097",
+   "gid://shopify/ProductOptionValue/12034362900865"
+  ],
+  "zeit": "2026-11-09 23:10:50 UTC"
+ },
+ "gid://shopify/Product/15449426919809": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "led-wasser-speaker-mit-3d-ton-e17c58",
+  "optionen": [
+   "gid://shopify/ProductOption/17881089048961"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12034381906305",
+   "gid://shopify/ProductOptionValue/12034381939073"
+  ],
+  "zeit": "2026-11-09 22:45:12 UTC"
+ },
+ "gid://shopify/Product/15449427116417": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "ewige-rose-mit-led-licht-718080",
+  "optionen": [
+   "gid://shopify/ProductOption/17881089278337"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12034383151489",
+   "gid://shopify/ProductOptionValue/12034383184257",
+   "gid://shopify/ProductOptionValue/12034383217025",
+   "gid://shopify/ProductOptionValue/12034383249793",
+   "gid://shopify/ProductOptionValue/12034383282561",
+   "gid://shopify/ProductOptionValue/12034383315329"
+  ],
+  "zeit": "2026-11-09 22:45:18 UTC"
+ },
+ "gid://shopify/Product/15449427968385": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "3-in-1-gemusehobel-mit-scharfen-messern-940928",
+  "optionen": [
+   "gid://shopify/ProductOption/17881090130305"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12034394390913"
+  ],
+  "zeit": "2026-11-09 23:10:52 UTC"
+ },
+ "gid://shopify/Product/15450834665857": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "waben-katzenstreu-matte-ea1e49",
+  "optionen": [
+   "gid://shopify/ProductOption/17882835747201",
+   "gid://shopify/ProductOption/17882835779969"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046561673601",
+   "gid://shopify/ProductOptionValue/12046561706369",
+   "gid://shopify/ProductOptionValue/12046561739137",
+   "gid://shopify/ProductOptionValue/12046561771905",
+   "gid://shopify/ProductOptionValue/12046561804673"
+  ],
+  "zeit": "2026-11-09 23:05:05 UTC"
+ },
+ "gid://shopify/Product/15450836566401": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "led-wasserwellen-projektionsleuchte-677504",
+  "optionen": [
+   "gid://shopify/ProductOption/17882838237569"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046588051841",
+   "gid://shopify/ProductOptionValue/12046588084609",
+   "gid://shopify/ProductOptionValue/12046588117377",
+   "gid://shopify/ProductOptionValue/12046588150145",
+   "gid://shopify/ProductOptionValue/12046588182913",
+   "gid://shopify/ProductOptionValue/12046588215681",
+   "gid://shopify/ProductOptionValue/12046588248449",
+   "gid://shopify/ProductOptionValue/12046588281217",
+   "gid://shopify/ProductOptionValue/12046588313985",
+   "gid://shopify/ProductOptionValue/12046588346753",
+   "gid://shopify/ProductOptionValue/12046588379521",
+   "gid://shopify/ProductOptionValue/12046588412289",
+   "gid://shopify/ProductOptionValue/12046588445057",
+   "gid://shopify/ProductOptionValue/12046588477825",
+   "gid://shopify/ProductOptionValue/12046588510593",
+   "gid://shopify/ProductOptionValue/12046588543361",
+   "gid://shopify/ProductOptionValue/12046588576129",
+   "gid://shopify/ProductOptionValue/12046588608897"
+  ],
+  "zeit": "2026-11-09 22:42:17 UTC"
+ },
+ "gid://shopify/Product/15450837188993": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "multifunktionaler-runder-gemuseschneider-be2e21",
+  "optionen": [
+   "gid://shopify/ProductOption/17882838991233"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046601027969",
+   "gid://shopify/ProductOptionValue/12046601060737",
+   "gid://shopify/ProductOptionValue/12046601093505"
+  ],
+  "zeit": "2026-11-09 23:10:54 UTC"
+ },
+ "gid://shopify/Product/15450839777665": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264",
+  "optionen": [
+   "gid://shopify/ProductOption/17882843218305",
+   "gid://shopify/ProductOption/17882843251073"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046632550785",
+   "gid://shopify/ProductOptionValue/12046632583553",
+   "gid://shopify/ProductOptionValue/12046632616321",
+   "gid://shopify/ProductOptionValue/12046632649089",
+   "gid://shopify/ProductOptionValue/12046632681857",
+   "gid://shopify/ProductOptionValue/12046632714625",
+   "gid://shopify/ProductOptionValue/12046632747393",
+   "gid://shopify/ProductOptionValue/12046632780161",
+   "gid://shopify/ProductOptionValue/12046632812929",
+   "gid://shopify/ProductOptionValue/12046632845697",
+   "gid://shopify/ProductOptionValue/12046632878465",
+   "gid://shopify/ProductOptionValue/12046632911233",
+   "gid://shopify/ProductOptionValue/12046632944001",
+   "gid://shopify/ProductOptionValue/12046632976769",
+   "gid://shopify/ProductOptionValue/12046633009537",
+   "gid://shopify/ProductOptionValue/12046633042305",
+   "gid://shopify/ProductOptionValue/12046633075073",
+   "gid://shopify/ProductOptionValue/12046633107841",
+   "gid://shopify/ProductOptionValue/12046633140609"
+  ],
+  "zeit": "2026-11-09 22:43:32 UTC"
+ },
+ "gid://shopify/Product/15450848657793": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "2-in-1-damenrasierer-fur-korper-bikinizone-623600",
+  "optionen": [
+   "gid://shopify/ProductOption/17882855801217"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046691172737",
+   "gid://shopify/ProductOptionValue/12046691205505",
+   "gid://shopify/ProductOptionValue/12046691238273",
+   "gid://shopify/ProductOptionValue/12046691271041",
+   "gid://shopify/ProductOptionValue/12046691303809",
+   "gid://shopify/ProductOptionValue/12046691336577",
+   "gid://shopify/ProductOptionValue/12046691369345",
+   "gid://shopify/ProductOptionValue/12046691402113",
+   "gid://shopify/ProductOptionValue/12046691434881",
+   "gid://shopify/ProductOptionValue/12046691467649",
+   "gid://shopify/ProductOptionValue/12046691500417",
+   "gid://shopify/ProductOptionValue/12046691533185",
+   "gid://shopify/ProductOptionValue/12046691565953",
+   "gid://shopify/ProductOptionValue/12046691598721",
+   "gid://shopify/ProductOptionValue/12046691631489",
+   "gid://shopify/ProductOptionValue/12046691664257",
+   "gid://shopify/ProductOptionValue/12046691697025",
+   "gid://shopify/ProductOptionValue/12046691762561",
+   "gid://shopify/ProductOptionValue/12046691795329",
+   "gid://shopify/ProductOptionValue/12046691828097",
+   "gid://shopify/ProductOptionValue/12046691860865",
+   "gid://shopify/ProductOptionValue/12046691893633",
+   "gid://shopify/ProductOptionValue/12046691926401",
+   "gid://shopify/ProductOptionValue/12046691959169",
+   "gid://shopify/ProductOptionValue/12046691991937",
+   "gid://shopify/ProductOptionValue/12046692057473",
+   "gid://shopify/ProductOptionValue/12046692090241",
+   "gid://shopify/ProductOptionValue/12046692123009",
+   "gid://shopify/ProductOptionValue/12046692155777",
+   "gid://shopify/ProductOptionValue/12046692188545",
+   "gid://shopify/ProductOptionValue/12046692221313"
+  ],
+  "zeit": "2026-11-09 23:10:58 UTC"
+ },
+ "gid://shopify/Product/15450853245313": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "flammen-aroma-diffusor-fur-zuhause-910208",
+  "optionen": [
+   "gid://shopify/ProductOption/17882861044097"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046736261505",
+   "gid://shopify/ProductOptionValue/12046736294273",
+   "gid://shopify/ProductOptionValue/12046736327041",
+   "gid://shopify/ProductOptionValue/12046736359809"
+  ],
+  "zeit": "2026-11-09 23:11:00 UTC"
+ },
+ "gid://shopify/Product/15450856292737": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "reise-hangematte-aus-fallschirm-nylon-86eb20",
+  "optionen": [
+   "gid://shopify/ProductOption/17882864681345"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/12046767456641",
+   "gid://shopify/ProductOptionValue/12046767522177",
+   "gid://shopify/ProductOptionValue/12046767554945",
+   "gid://shopify/ProductOptionValue/12046767587713",
+   "gid://shopify/ProductOptionValue/12046767620481",
+   "gid://shopify/ProductOptionValue/12046767653249",
+   "gid://shopify/ProductOptionValue/12046767686017",
+   "gid://shopify/ProductOptionValue/12046767718785",
+   "gid://shopify/ProductOptionValue/12046767751553",
+   "gid://shopify/ProductOptionValue/12046767784321",
+   "gid://shopify/ProductOptionValue/12046767817089",
+   "gid://shopify/ProductOptionValue/12046767849857",
+   "gid://shopify/ProductOptionValue/12046767915393",
+   "gid://shopify/ProductOptionValue/12046767948161",
+   "gid://shopify/ProductOptionValue/12046767980929",
+   "gid://shopify/ProductOptionValue/12046768013697",
+   "gid://shopify/ProductOptionValue/12046768079233",
+   "gid://shopify/ProductOptionValue/12046768112001",
+   "gid://shopify/ProductOptionValue/12046768144769",
+   "gid://shopify/ProductOptionValue/12046768177537",
+   "gid://shopify/ProductOptionValue/12046768210305",
+   "gid://shopify/ProductOptionValue/12046768243073",
+   "gid://shopify/ProductOptionValue/12046768275841",
+   "gid://shopify/ProductOptionValue/12046768308609",
+   "gid://shopify/ProductOptionValue/12046768341377",
+   "gid://shopify/ProductOptionValue/12046768374145",
+   "gid://shopify/ProductOptionValue/12046768406913",
+   "gid://shopify/ProductOptionValue/12046768439681",
+   "gid://shopify/ProductOptionValue/12046768472449",
+   "gid://shopify/ProductOptionValue/12046768505217"
+  ],
+  "zeit": "2026-11-09 22:47:31 UTC"
+ },
+ "gid://shopify/Product/15458467479937": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "schokoladen-ohrring-haarstecker-609700",
+  "optionen": [
+   "gid://shopify/ProductOption/17892166566273"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597519786375",
+   "gid://shopify/ProductOptionValue/58597519688071",
+   "gid://shopify/ProductOptionValue/58597519720839",
+   "gid://shopify/ProductOptionValue/58597519753607"
+  ],
+  "zeit": "2026-11-09 22:46:56 UTC"
+ },
+ "gid://shopify/Product/15460760191361": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "blumenkleid-mit-schnurung-613000",
+  "optionen": [
+   "gid://shopify/ProductOption/17894901547393"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:11:02 UTC"
+ },
+ "gid://shopify/Product/15469957448065": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kostum-arabischer-scheich-fgss8904",
+  "optionen": [
+   "gid://shopify/ProductOption/17908196737409"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:11:04 UTC"
+ },
+ "gid://shopify/Product/15470015054209": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "bruder-roadmax-traktor-fga03451",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:46:36 UTC"
+ },
+ "gid://shopify/Product/15470016528769": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "jcb-mikrobagger-8010-cts-fga062003",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:44:58 UTC"
+ },
+ "gid://shopify/Product/15470017872257": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "bworld-rennrad-mit-radfahrer-fga063110",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:13:58 UTC"
+ },
+ "gid://shopify/Product/15470018429313": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "plusch-kaiserpinguin-26-cm-fga17842",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:46:39 UTC"
+ },
+ "gid://shopify/Product/15470021312897": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "plusch-panda-15-cm-fga25867",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:42:36 UTC"
+ },
+ "gid://shopify/Product/15470023115137": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "plusch-waschbar-fga41332",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:00:28 UTC"
+ },
+ "gid://shopify/Product/15470029537665": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "plusch-hochlandrind-fga59641",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:42:20 UTC"
+ },
+ "gid://shopify/Product/15478744580481": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "heizbare-kuscheldecke-mit-armeln-und-kapuze-606000",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:04:45 UTC"
+ },
+ "gid://shopify/Product/15480485052801": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "usb-stick-flaschenoffner-aus-metall-534784",
+  "optionen": [
+   "gid://shopify/ProductOption/17920503218561"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:47:14 UTC"
+ },
+ "gid://shopify/Product/15491411804545": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "leuchtender-halloween-schaukelgeist-627400",
+  "optionen": [
+   "gid://shopify/ProductOption/17934643429761"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58594214576519",
+   "gid://shopify/ProductOptionValue/58594214609287"
+  ],
+  "zeit": "2026-11-09 23:06:03 UTC"
+ },
+ "gid://shopify/Product/15491768058241": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_description"
+  ],
+  "handle": "interaktives-katzenspielzeug-mit-rotierender-s-627400",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:05:59 UTC"
+ },
+ "gid://shopify/Product/15493248418177": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "leichter-laptop-rucksack-fur-pendler-616000",
+  "optionen": [
+   "gid://shopify/ProductOption/17937102012801"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597662818695",
+   "gid://shopify/ProductOptionValue/58597662851463",
+   "gid://shopify/ProductOptionValue/58597662884231",
+   "gid://shopify/ProductOptionValue/58597662916999",
+   "gid://shopify/ProductOptionValue/58597662949767",
+   "gid://shopify/ProductOptionValue/58597662982535",
+   "gid://shopify/ProductOptionValue/58597663015303",
+   "gid://shopify/ProductOptionValue/58597663048071",
+   "gid://shopify/ProductOptionValue/58597663080839",
+   "gid://shopify/ProductOptionValue/58597663113607",
+   "gid://shopify/ProductOptionValue/58597663146375",
+   "gid://shopify/ProductOptionValue/58597663179143",
+   "gid://shopify/ProductOptionValue/58597663211911"
+  ],
+  "zeit": "2026-11-09 22:44:49 UTC"
+ },
+ "gid://shopify/Product/15493828968833": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "retro-ohrringe-ring-aus-edelstahl-616100",
+  "optionen": [
+   "gid://shopify/ProductOption/19564524896647"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58412092227975",
+   "gid://shopify/ProductOptionValue/58412092260743",
+   "gid://shopify/ProductOptionValue/58412092293511",
+   "gid://shopify/ProductOptionValue/58412092326279"
+  ],
+  "zeit": "2026-11-09 23:11:06 UTC"
+ },
+ "gid://shopify/Product/15495131431297": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "antihaft-silikon-kuchenhelfer-set-602100",
+  "optionen": [
+   "gid://shopify/ProductOption/17939644514689",
+   "gid://shopify/ProductOption/19649440121223"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58799995978119",
+   "gid://shopify/ProductOptionValue/58799996010887",
+   "gid://shopify/ProductOptionValue/58799996043655",
+   "gid://shopify/ProductOptionValue/58799996076423",
+   "gid://shopify/ProductOptionValue/58799996109191",
+   "gid://shopify/ProductOptionValue/58799996141959",
+   "gid://shopify/ProductOptionValue/58799996174727",
+   "gid://shopify/ProductOptionValue/58799996207495",
+   "gid://shopify/ProductOptionValue/58799996240263",
+   "gid://shopify/ProductOptionValue/58799996305799",
+   "gid://shopify/ProductOptionValue/58799996338567",
+   "gid://shopify/ProductOptionValue/58799996371335"
+  ],
+  "zeit": "2026-11-09 23:11:08 UTC"
+ },
+ "gid://shopify/Product/15496324809089": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "doppelseitiger-puder-konturpinsel-626400",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:11:10 UTC"
+ },
+ "gid://shopify/Product/15496379203969": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "schleckmatte-fur-hunde-und-katzen-619600",
+  "optionen": [
+   "gid://shopify/ProductOption/17941149843841"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58800151036295",
+   "gid://shopify/ProductOptionValue/58800151069063"
+  ],
+  "zeit": "2026-11-09 23:03:16 UTC"
+ },
+ "gid://shopify/Product/15496511553921": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "dark-goth-wind-metall-nagelsticker-938560",
+  "optionen": [
+   "gid://shopify/ProductOption/17941300478337"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 22:51:14 UTC"
+ },
+ "gid://shopify/Product/15496531149185": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kabelloser-handstaubsauger-mit-blasfunktion-626500",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:11:12 UTC"
+ },
+ "gid://shopify/Product/15496539636097": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "led-teelichter-flackernd-batteriebetrieben-594688",
+  "optionen": [
+   "gid://shopify/ProductOption/19610649723271"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58534118097287",
+   "gid://shopify/ProductOptionValue/58534118130055",
+   "gid://shopify/ProductOptionValue/58534118162823"
+  ],
+  "zeit": "2026-11-09 22:48:46 UTC"
+ },
+ "gid://shopify/Product/15498947199361": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "diamond-12-gems-make-up-pinsel-set-298688",
+  "optionen": [
+   "gid://shopify/ProductOption/17944064459137"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58848115327367",
+   "gid://shopify/ProductOptionValue/58848115360135",
+   "gid://shopify/ProductOptionValue/58848115392903",
+   "gid://shopify/ProductOptionValue/58848115425671",
+   "gid://shopify/ProductOptionValue/58848115458439",
+   "gid://shopify/ProductOptionValue/58848115491207",
+   "gid://shopify/ProductOptionValue/58848115523975",
+   "gid://shopify/ProductOptionValue/58848115556743",
+   "gid://shopify/ProductOptionValue/58848115589511"
+  ],
+  "zeit": "2026-11-09 23:03:38 UTC"
+ },
+ "gid://shopify/Product/15499446452609": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kabelloser-usb-lockenstab-mit-temperaturregelu-2225cf",
+  "optionen": [
+   "gid://shopify/ProductOption/17944595071361"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58655052202375",
+   "gid://shopify/ProductOptionValue/58655052235143",
+   "gid://shopify/ProductOptionValue/58655052267911",
+   "gid://shopify/ProductOptionValue/58655052300679",
+   "gid://shopify/ProductOptionValue/58655052333447",
+   "gid://shopify/ProductOptionValue/58655052366215",
+   "gid://shopify/ProductOptionValue/58655052398983",
+   "gid://shopify/ProductOptionValue/58655052431751"
+  ],
+  "zeit": "2026-11-09 22:50:34 UTC"
+ },
+ "gid://shopify/Product/15499700142465": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "magnetische-3-in-1-ladestation-613200",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:01:10 UTC"
+ },
+ "gid://shopify/Product/15501005226369": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "geflochtenes-lederarmband-mit-verschluss-625800",
+  "optionen": [
+   "gid://shopify/ProductOption/19560343175559"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58374945374599",
+   "gid://shopify/ProductOptionValue/58374945407367",
+   "gid://shopify/ProductOptionValue/58374945440135",
+   "gid://shopify/ProductOptionValue/58374945472903",
+   "gid://shopify/ProductOptionValue/58374945505671",
+   "gid://shopify/ProductOptionValue/58374945538439"
+  ],
+  "zeit": "2026-11-09 23:01:51 UTC"
+ },
+ "gid://shopify/Product/15501005324673": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "lederarmband-mit-verschluss-unisex-604800",
+  "optionen": [
+   "gid://shopify/ProductOption/19560343011719"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58374943474055",
+   "gid://shopify/ProductOptionValue/58374943506823",
+   "gid://shopify/ProductOptionValue/58374943539591",
+   "gid://shopify/ProductOptionValue/58374943572359",
+   "gid://shopify/ProductOptionValue/58374943605127",
+   "gid://shopify/ProductOptionValue/58374943637895",
+   "gid://shopify/ProductOptionValue/58374943670663",
+   "gid://shopify/ProductOptionValue/58374943703431",
+   "gid://shopify/ProductOptionValue/58374943736199"
+  ],
+  "zeit": "2026-11-09 23:03:12 UTC"
+ },
+ "gid://shopify/Product/15501878559105": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "goldener-rundbugel-633000",
+  "optionen": [
+   "gid://shopify/ProductOption/17947462795649"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597462147463",
+   "gid://shopify/ProductOptionValue/58597462180231"
+  ],
+  "zeit": "2026-11-09 23:02:09 UTC"
+ },
+ "gid://shopify/Product/15501883146625": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "elegante-manschettenknopfe-fur-herren-179968",
+  "optionen": [
+   "gid://shopify/ProductOption/17947468038529"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58624688947591",
+   "gid://shopify/ProductOptionValue/58624688980359",
+   "gid://shopify/ProductOptionValue/58624689013127",
+   "gid://shopify/ProductOptionValue/58624689045895",
+   "gid://shopify/ProductOptionValue/58624689078663"
+  ],
+  "zeit": "2026-11-09 23:03:46 UTC"
+ },
+ "gid://shopify/Product/15504073687425": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "elegante-damenuhr-in-rosegold-668544",
+  "optionen": [
+   "gid://shopify/ProductOption/17950458184065"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597534007687",
+   "gid://shopify/ProductOptionValue/58597534040455",
+   "gid://shopify/ProductOptionValue/58597534073223",
+   "gid://shopify/ProductOptionValue/58597534105991"
+  ],
+  "zeit": "2026-11-09 22:42:43 UTC"
+ },
+ "gid://shopify/Product/15504137650561": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "faltbarer-led-schminkspiegel-mit-2x-vergrosser-881088",
+  "optionen": [
+   "gid://shopify/ProductOption/17950572708225"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58709623505287",
+   "gid://shopify/ProductOptionValue/58709623538055",
+   "gid://shopify/ProductOptionValue/58709623570823",
+   "gid://shopify/ProductOptionValue/58709623603591"
+  ],
+  "zeit": "2026-11-09 22:50:16 UTC"
+ },
+ "gid://shopify/Product/15504152920449": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "gestrickte-sofadecke-mit-quasten-608900",
+  "optionen": [
+   "gid://shopify/ProductOption/17950594007425",
+   "gid://shopify/ProductOption/19649415315847"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58799709618567",
+   "gid://shopify/ProductOptionValue/58799709651335",
+   "gid://shopify/ProductOptionValue/58799709684103",
+   "gid://shopify/ProductOptionValue/58799709716871"
+  ],
+  "zeit": "2026-11-09 23:11:14 UTC"
+ },
+ "gid://shopify/Product/15504157540737": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "doughnut-plusch-kissen-fur-buro-und-zuhause-067968",
+  "optionen": [
+   "gid://shopify/ProductOption/17950599119233"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58709606400391",
+   "gid://shopify/ProductOptionValue/58709606433159"
+  ],
+  "zeit": "2026-11-09 23:02:41 UTC"
+ },
+ "gid://shopify/Product/15504189849985": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "offenes-perlenarmband-aus-edelstahl-638400",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:02:17 UTC"
+ },
+ "gid://shopify/Product/15506810601857": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "silberring-mit-breiter-band-und-herz-design-627700",
+  "optionen": [
+   "gid://shopify/ProductOption/17953547485569"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:01:17 UTC"
+ },
+ "gid://shopify/Product/15509362966913": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "geflochtenes-lederarmband-mit-hufeisen-schnall-639500",
+  "optionen": [
+   "gid://shopify/ProductOption/17956578689409",
+   "gid://shopify/ProductOption/19618934260103"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597656691079",
+   "gid://shopify/ProductOptionValue/58597656723847",
+   "gid://shopify/ProductOptionValue/58597656756615",
+   "gid://shopify/ProductOptionValue/58597656789383",
+   "gid://shopify/ProductOptionValue/58597656822151",
+   "gid://shopify/ProductOptionValue/58597656854919",
+   "gid://shopify/ProductOptionValue/58597656887687",
+   "gid://shopify/ProductOptionValue/58597656920455",
+   "gid://shopify/ProductOptionValue/58597656953223"
+  ],
+  "zeit": "2026-11-09 22:45:07 UTC"
+ },
+ "gid://shopify/Product/15512281612673": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "winter-handwarmer-kissen-mit-cartoon-motiv-c420ff",
+  "optionen": [
+   "gid://shopify/ProductOption/17959989117313"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58848342180231",
+   "gid://shopify/ProductOptionValue/58848342212999",
+   "gid://shopify/ProductOptionValue/58848342245767",
+   "gid://shopify/ProductOptionValue/58848342278535",
+   "gid://shopify/ProductOptionValue/58848342311303"
+  ],
+  "zeit": "2026-11-09 23:11:16 UTC"
+ },
+ "gid://shopify/Product/15516219638145": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "usb-heizkissen-mit-graphen-technologie-acad9f",
+  "optionen": [
+   "gid://shopify/ProductOption/17964226118017",
+   "gid://shopify/ProductOption/19618939339143"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597687263623",
+   "gid://shopify/ProductOptionValue/58597687296391",
+   "gid://shopify/ProductOptionValue/58597687329159",
+   "gid://shopify/ProductOptionValue/58597687361927",
+   "gid://shopify/ProductOptionValue/58597687394695",
+   "gid://shopify/ProductOptionValue/58597687427463",
+   "gid://shopify/ProductOptionValue/58597687460231"
+  ],
+  "zeit": "2026-11-09 23:11:18 UTC"
+ },
+ "gid://shopify/Product/15516233957761": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "led-leucht-brustgeschirr-reissfest-933632",
+  "optionen": [
+   "gid://shopify/ProductOption/17964240601473",
+   "gid://shopify/ProductOption/19642517389703"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58741910110599",
+   "gid://shopify/ProductOptionValue/58741910143367",
+   "gid://shopify/ProductOptionValue/58741910176135"
+  ],
+  "zeit": "2026-11-09 23:04:00 UTC"
+ },
+ "gid://shopify/Product/15518558847361": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "handgemachte-3d-liebesnagel-blue-ice-652096",
+  "optionen": [
+   "gid://shopify/ProductOption/17966886519169"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58848254460295",
+   "gid://shopify/ProductOptionValue/58848254493063",
+   "gid://shopify/ProductOptionValue/58848254525831",
+   "gid://shopify/ProductOptionValue/58848254558599"
+  ],
+  "zeit": "2026-11-09 23:03:55 UTC"
+ },
+ "gid://shopify/Product/15519837815169": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "katzengeschirr-im-westen-stil-983488",
+  "optionen": [
+   "gid://shopify/ProductOption/17968432906625",
+   "gid://shopify/ProductOption/19642240369031"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58741349024135",
+   "gid://shopify/ProductOptionValue/58741349056903",
+   "gid://shopify/ProductOptionValue/58741349089671",
+   "gid://shopify/ProductOptionValue/58741349122439",
+   "gid://shopify/ProductOptionValue/58741349155207"
+  ],
+  "zeit": "2026-11-09 23:05:09 UTC"
+ },
+ "gid://shopify/Product/15519840076161": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "k68-signal-detektor-46ae1c",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:04:41 UTC"
+ },
+ "gid://shopify/Product/15520373932417": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "outdoor-schultertasche-fur-freizeit-kessel-329792",
+  "optionen": [
+   "gid://shopify/ProductOption/17969076273537"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58612073431431",
+   "gid://shopify/ProductOptionValue/58612073464199",
+   "gid://shopify/ProductOptionValue/58612073496967",
+   "gid://shopify/ProductOptionValue/58612073529735",
+   "gid://shopify/ProductOptionValue/58612073562503",
+   "gid://shopify/ProductOptionValue/58612073595271",
+   "gid://shopify/ProductOptionValue/58612073628039"
+  ],
+  "zeit": "2026-11-09 23:04:15 UTC"
+ },
+ "gid://shopify/Product/15520402014593": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "automatische-roll-leine-fur-hunde-und-katzen-597952",
+  "optionen": [
+   "gid://shopify/ProductOption/17969123000705"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597296210311",
+   "gid://shopify/ProductOptionValue/58597296243079",
+   "gid://shopify/ProductOptionValue/58597296275847",
+   "gid://shopify/ProductOptionValue/58597296308615"
+  ],
+  "zeit": "2026-11-09 22:48:40 UTC"
+ },
+ "gid://shopify/Product/15521218429313": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "super-schwieriges-katzen-alien-holzpuzzle-937408",
+  "optionen": [
+   "gid://shopify/ProductOption/17970165023105"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58709474214279",
+   "gid://shopify/ProductOptionValue/58709474247047",
+   "gid://shopify/ProductOptionValue/58709474279815",
+   "gid://shopify/ProductOptionValue/58709474312583",
+   "gid://shopify/ProductOptionValue/58709474345351",
+   "gid://shopify/ProductOptionValue/58709474378119"
+  ],
+  "zeit": "2026-11-09 23:03:51 UTC"
+ },
+ "gid://shopify/Product/15522625094017": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "e-scooter-lithium-akku-ladegerat-605700",
+  "optionen": [
+   "gid://shopify/ProductOption/17972063011201"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58596777460103"
+  ],
+  "zeit": "2026-11-09 23:05:55 UTC"
+ },
+ "gid://shopify/Product/15523137225089": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "elektrischer-nagelpolierer-mit-licht-545984",
+  "optionen": [
+   "gid://shopify/ProductOption/17972713292161"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58766467170695",
+   "gid://shopify/ProductOptionValue/58766467203463",
+   "gid://shopify/ProductOptionValue/58766467236231"
+  ],
+  "zeit": "2026-11-09 23:04:31 UTC"
+ },
+ "gid://shopify/Product/15523940696449": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "verstellbarer-futternapf-fur-katzen-65c638",
+  "optionen": [
+   "gid://shopify/ProductOption/17973845197185"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597449892231",
+   "gid://shopify/ProductOptionValue/58597449924999",
+   "gid://shopify/ProductOptionValue/58597449957767",
+   "gid://shopify/ProductOptionValue/58597449990535"
+  ],
+  "zeit": "2026-11-09 23:01:06 UTC"
+ },
+ "gid://shopify/Product/15523992174977": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "futterball-fur-haustiere-498560",
+  "optionen": [
+   "gid://shopify/ProductOption/17973903556993"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58766394130823",
+   "gid://shopify/ProductOptionValue/58766394163591",
+   "gid://shopify/ProductOptionValue/58766394196359",
+   "gid://shopify/ProductOptionValue/58766394229127",
+   "gid://shopify/ProductOptionValue/58766394261895",
+   "gid://shopify/ProductOptionValue/58766394294663",
+   "gid://shopify/ProductOptionValue/58766394327431",
+   "gid://shopify/ProductOptionValue/58766394360199",
+   "gid://shopify/ProductOptionValue/58766394392967",
+   "gid://shopify/ProductOptionValue/58766394425735",
+   "gid://shopify/ProductOptionValue/58766394458503",
+   "gid://shopify/ProductOptionValue/58766394491271",
+   "gid://shopify/ProductOptionValue/58766394524039",
+   "gid://shopify/ProductOptionValue/58766394556807"
+  ],
+  "zeit": "2026-11-09 23:01:15 UTC"
+ },
+ "gid://shopify/Product/15523992797569": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "reise-organizer-set-mit-netz-617800",
+  "optionen": [
+   "gid://shopify/ProductOption/17973904572801"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58848175915399",
+   "gid://shopify/ProductOptionValue/58848175948167",
+   "gid://shopify/ProductOptionValue/58848175980935",
+   "gid://shopify/ProductOptionValue/58848176013703",
+   "gid://shopify/ProductOptionValue/58848176046471",
+   "gid://shopify/ProductOptionValue/58848176079239",
+   "gid://shopify/ProductOptionValue/58848176112007",
+   "gid://shopify/ProductOptionValue/58848176144775",
+   "gid://shopify/ProductOptionValue/58848176177543",
+   "gid://shopify/ProductOptionValue/58848176210311",
+   "gid://shopify/ProductOptionValue/58848176243079",
+   "gid://shopify/ProductOptionValue/58848176275847",
+   "gid://shopify/ProductOptionValue/58848176308615",
+   "gid://shopify/ProductOptionValue/58848176341383",
+   "gid://shopify/ProductOptionValue/58848176374151"
+  ],
+  "zeit": "2026-11-09 23:00:57 UTC"
+ },
+ "gid://shopify/Product/15524699767169": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kubanische-gliederkette-mit-strass-45-cm-629400",
+  "optionen": [
+   "gid://shopify/ProductOption/17974928703873",
+   "gid://shopify/ProductOption/19621048320391"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58624911507847",
+   "gid://shopify/ProductOptionValue/58624911540615"
+  ],
+  "zeit": "2026-11-09 23:05:39 UTC"
+ },
+ "gid://shopify/Product/15524901028225": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kabellose-stereo-kopfhorer-mit-touch-steuerung-7176fb",
+  "optionen": [
+   "gid://shopify/ProductOption/17975173808513"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597501141383",
+   "gid://shopify/ProductOptionValue/58597501174151"
+  ],
+  "zeit": "2026-11-09 23:03:21 UTC"
+ },
+ "gid://shopify/Product/15525462901121": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "blumenstrauss-bausteine-im-blumentopf-025152",
+  "optionen": [
+   "gid://shopify/ProductOption/17975850271105"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597618385287",
+   "gid://shopify/ProductOptionValue/58597618418055",
+   "gid://shopify/ProductOptionValue/58597618450823"
+  ],
+  "zeit": "2026-11-09 22:50:03 UTC"
+ },
+ "gid://shopify/Product/15525477187969": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "brustgeschirr-mit-leine-fur-katzen-und-kleine-846976",
+  "optionen": [
+   "gid://shopify/ProductOption/17975865213313",
+   "gid://shopify/ProductOption/19642238435719"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58741342175623",
+   "gid://shopify/ProductOptionValue/58741342208391",
+   "gid://shopify/ProductOptionValue/58741342241159"
+  ],
+  "zeit": "2026-11-09 23:05:14 UTC"
+ },
+ "gid://shopify/Product/16592643817863": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "rizinusol-wickel-wiederverwendbar-bauch-nacken",
+  "optionen": [
+   "gid://shopify/ProductOption/19537192976775",
+   "gid://shopify/ProductOption/19537193009543"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58289509728647",
+   "gid://shopify/ProductOptionValue/58289509663111",
+   "gid://shopify/ProductOptionValue/58289509695879",
+   "gid://shopify/ProductOptionValue/58289509761415",
+   "gid://shopify/ProductOptionValue/58289509794183",
+   "gid://shopify/ProductOptionValue/58289509826951",
+   "gid://shopify/ProductOptionValue/58289509892487",
+   "gid://shopify/ProductOptionValue/58289509925255",
+   "gid://shopify/ProductOptionValue/58289509859719",
+   "gid://shopify/ProductOptionValue/58289509958023"
+  ],
+  "zeit": "2026-11-09 23:11:21 UTC"
+ },
+ "gid://shopify/Product/16603297481095": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "farbenfroher-kabel-organizer-in-pu-630700",
+  "optionen": [
+   "gid://shopify/ProductOption/19549035692423",
+   "gid://shopify/ProductOption/19618908176775"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597489705351",
+   "gid://shopify/ProductOptionValue/58597489738119",
+   "gid://shopify/ProductOptionValue/58597489770887",
+   "gid://shopify/ProductOptionValue/58597489803655",
+   "gid://shopify/ProductOptionValue/58597489836423",
+   "gid://shopify/ProductOptionValue/58597489869191",
+   "gid://shopify/ProductOptionValue/58597489901959",
+   "gid://shopify/ProductOptionValue/58597489934727"
+  ],
+  "zeit": "2026-11-09 23:11:23 UTC"
+ },
+ "gid://shopify/Product/16603320320391": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "dreiteiliges-winter-set-mutze-schal-handschuhe-615100",
+  "optionen": [
+   "gid://shopify/ProductOption/19549059514759"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58642348704135",
+   "gid://shopify/ProductOptionValue/58642348736903",
+   "gid://shopify/ProductOptionValue/58642348769671",
+   "gid://shopify/ProductOptionValue/58642348802439",
+   "gid://shopify/ProductOptionValue/58642348835207",
+   "gid://shopify/ProductOptionValue/58642348900743",
+   "gid://shopify/ProductOptionValue/58642348933511",
+   "gid://shopify/ProductOptionValue/58642348999047"
+  ],
+  "zeit": "2026-11-09 22:50:26 UTC"
+ },
+ "gid://shopify/Product/16603469054343": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "nachtlicht-mit-korperinduktion-runde-wandlampe-629500",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:02:45 UTC"
+ },
+ "gid://shopify/Product/16603738472839": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "umhangetasche-aus-weichem-lederimitat-909696",
+  "optionen": [
+   "gid://shopify/ProductOption/19549555130759"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597541609863",
+   "gid://shopify/ProductOptionValue/58597541642631"
+  ],
+  "zeit": "2026-11-09 23:03:29 UTC"
+ },
+ "gid://shopify/Product/16603988197767": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kugelformige-aromakerze-fur-festliche-dekorati-610300",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:02:37 UTC"
+ },
+ "gid://shopify/Product/16604877848967": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "taktische-windjacke-mit-kapuze-a0066e",
+  "optionen": [
+   "gid://shopify/ProductOption/19550836326791",
+   "gid://shopify/ProductOption/19618914271623"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597535940999",
+   "gid://shopify/ProductOptionValue/58597535973767"
+  ],
+  "zeit": "2026-11-09 23:15:21 UTC"
+ },
+ "gid://shopify/Product/16604925821319": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "nachtlicht-aus-holz-fur-warme-atmosphare-602400",
+  "optionen": [
+   "gid://shopify/ProductOption/19550893670791",
+   "gid://shopify/ProductOption/19652598366599"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58848266912135",
+   "gid://shopify/ProductOptionValue/58848266944903",
+   "gid://shopify/ProductOptionValue/58848266977671",
+   "gid://shopify/ProductOptionValue/58848267010439",
+   "gid://shopify/ProductOptionValue/58848267043207",
+   "gid://shopify/ProductOptionValue/58848267075975",
+   "gid://shopify/ProductOptionValue/58848267108743",
+   "gid://shopify/ProductOptionValue/58848267141511",
+   "gid://shopify/ProductOptionValue/58848267174279",
+   "gid://shopify/ProductOptionValue/58848267207047",
+   "gid://shopify/ProductOptionValue/58848267239815",
+   "gid://shopify/ProductOptionValue/58848267272583",
+   "gid://shopify/ProductOptionValue/58848267305351"
+  ],
+  "zeit": "2026-11-09 23:02:23 UTC"
+ },
+ "gid://shopify/Product/16604951314823": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "led-kerzen-weihnachtsdeko-618300",
+  "optionen": [
+   "gid://shopify/ProductOption/19550920278407"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58679006003591",
+   "gid://shopify/ProductOptionValue/58679006036359",
+   "gid://shopify/ProductOptionValue/58679006069127"
+  ],
+  "zeit": "2026-11-09 23:02:59 UTC"
+ },
+ "gid://shopify/Product/16605072458119": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "hundelange-aus-braunem-faux-mink-wolle-601600",
+  "optionen": [
+   "gid://shopify/ProductOption/19551043944839",
+   "gid://shopify/ProductOption/19642276118919"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58741441003911"
+  ],
+  "zeit": "2026-11-09 23:05:19 UTC"
+ },
+ "gid://shopify/Product/16606017814919": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "thin-outdoor-jacke-fur-manner-a0f9c6",
+  "optionen": [
+   "gid://shopify/ProductOption/19552126173575"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597552554375",
+   "gid://shopify/ProductOptionValue/58597552587143",
+   "gid://shopify/ProductOptionValue/58597552619911",
+   "gid://shopify/ProductOptionValue/58597552652679",
+   "gid://shopify/ProductOptionValue/58597552685447",
+   "gid://shopify/ProductOptionValue/58597552718215",
+   "gid://shopify/ProductOptionValue/58597552750983",
+   "gid://shopify/ProductOptionValue/58597552783751",
+   "gid://shopify/ProductOptionValue/58597552816519",
+   "gid://shopify/ProductOptionValue/58597552849287",
+   "gid://shopify/ProductOptionValue/58597552882055",
+   "gid://shopify/ProductOptionValue/58597552914823",
+   "gid://shopify/ProductOptionValue/58597552947591",
+   "gid://shopify/ProductOptionValue/58597552980359"
+  ],
+  "zeit": "2026-11-09 23:15:25 UTC"
+ },
+ "gid://shopify/Product/16606106157447": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "nordeuropaisches-teppichmuster-30-60-cm-150-30-618600",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:11:29 UTC"
+ },
+ "gid://shopify/Product/16606106255751": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kissenbezug-in-weiss-fur-das-schlafzimmer-609800",
+  "optionen": [
+   "gid://shopify/ProductOption/19552225657223",
+   "gid://shopify/ProductOption/19618932326791"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597645582727",
+   "gid://shopify/ProductOptionValue/58597645615495",
+   "gid://shopify/ProductOptionValue/58597645681031",
+   "gid://shopify/ProductOptionValue/58597645713799",
+   "gid://shopify/ProductOptionValue/58597645746567"
+  ],
+  "zeit": "2026-11-09 23:11:31 UTC"
+ },
+ "gid://shopify/Product/16606172643719": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "studentenrucksack-blumenmuster-617800",
+  "optionen": [
+   "gid://shopify/ProductOption/19552293192071"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58597360501127",
+   "gid://shopify/ProductOptionValue/58597360533895",
+   "gid://shopify/ProductOptionValue/58597360566663"
+  ],
+  "zeit": "2026-11-09 23:15:27 UTC"
+ },
+ "gid://shopify/Product/16607205884295": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "seven-in-one-type-c-docking-station-fur-ipad-074db9",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:04:04 UTC"
+ },
+ "gid://shopify/Product/16609707622791": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "weihnachtsdeer-kerzenhalter-aus-eisen-1b5d86",
+  "optionen": [
+   "gid://shopify/ProductOption/19607788061063"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58511931048327",
+   "gid://shopify/ProductOptionValue/58511931081095"
+  ],
+  "zeit": "2026-11-09 23:11:35 UTC"
+ },
+ "gid://shopify/Product/16610088518023": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "tragbarer-mixer-mit-usb-c-ladefunktion-794304",
+  "optionen": [
+   "gid://shopify/ProductOption/19565570163079"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58417740874119",
+   "gid://shopify/ProductOptionValue/58417740906887",
+   "gid://shopify/ProductOptionValue/58417740939655"
+  ],
+  "zeit": "2026-11-09 23:01:02 UTC"
+ },
+ "gid://shopify/Product/16610147107207": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "bein-und-huftkissen-624300",
+  "optionen": [
+   "gid://shopify/ProductOption/19564736381319"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58413383647623",
+   "gid://shopify/ProductOptionValue/58413383680391",
+   "gid://shopify/ProductOptionValue/58413383713159",
+   "gid://shopify/ProductOptionValue/58413383745927"
+  ],
+  "zeit": "2026-11-09 23:11:37 UTC"
+ },
+ "gid://shopify/Product/16610153759111": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "faltbare-katzenhangematte-mit-saugnapfen-639500",
+  "optionen": [
+   "gid://shopify/ProductOption/19561476850055",
+   "gid://shopify/ProductOption/19649446904199"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58800022946183",
+   "gid://shopify/ProductOptionValue/58800022978951",
+   "gid://shopify/ProductOptionValue/58800023011719",
+   "gid://shopify/ProductOptionValue/58800023044487",
+   "gid://shopify/ProductOptionValue/58800023077255",
+   "gid://shopify/ProductOptionValue/58800023110023"
+  ],
+  "zeit": "2026-11-09 23:05:01 UTC"
+ },
+ "gid://shopify/Product/16611936010631": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "hundekuscheldecke-mit-v-ausschnitt-streifen-751040",
+  "optionen": [
+   "gid://shopify/ProductOption/19587374285191",
+   "gid://shopify/ProductOption/19587374317959"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58426255376775",
+   "gid://shopify/ProductOptionValue/58426255442311"
+  ],
+  "zeit": "2026-11-09 23:01:12 UTC"
+ },
+ "gid://shopify/Product/16612717298055": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "grosser-canvas-kamerarucksack-mit-diebstahlsch-992576",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:00:46 UTC"
+ },
+ "gid://shopify/Product/16613782323591": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "kabelloser-mini-staubsauger-furs-auto-f2796b",
+  "optionen": [
+   "gid://shopify/ProductOption/19564598067591"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58412795888007",
+   "gid://shopify/ProductOptionValue/58412795920775"
+  ],
+  "zeit": "2026-11-09 23:00:42 UTC"
+ },
+ "gid://shopify/Product/16614566330759": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "3d-holz-puzzle-mit-musikfunktion-307712",
+  "optionen": [
+   "gid://shopify/ProductOption/19564672647559"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58413093880199",
+   "gid://shopify/ProductOptionValue/58413093912967",
+   "gid://shopify/ProductOptionValue/58413093945735",
+   "gid://shopify/ProductOptionValue/58413093978503"
+  ],
+  "zeit": "2026-11-09 23:04:27 UTC"
+ },
+ "gid://shopify/Product/16615274611079": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+  "optionen": [
+   "gid://shopify/ProductOption/19565041287559",
+   "gid://shopify/ProductOption/19565041320327"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58415424340359",
+   "gid://shopify/ProductOptionValue/58415424373127"
+  ],
+  "zeit": "2026-11-09 22:44:04 UTC"
+ },
+ "gid://shopify/Product/16615359840647": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "jeanskleid-mit-reverskragen-und-kurzen-armeln-615900",
+  "optionen": [
+   "gid://shopify/ProductOption/19563377033607",
+   "gid://shopify/ProductOption/19563377066375"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58400107168135",
+   "gid://shopify/ProductOptionValue/58400107200903"
+  ],
+  "zeit": "2026-11-09 23:04:50 UTC"
+ },
+ "gid://shopify/Product/16617685418375": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+  "optionen": [
+   "gid://shopify/ProductOption/19588313219463"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58430967316871",
+   "gid://shopify/ProductOptionValue/58430967349639"
+  ],
+  "zeit": "2026-11-09 23:11:39 UTC"
+ },
+ "gid://shopify/Product/16617685877127": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "yoga-massagerolle-390720",
+  "optionen": [
+   "gid://shopify/ProductOption/19566561755527",
+   "gid://shopify/ProductOption/19566561788295"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58424369152391",
+   "gid://shopify/ProductOptionValue/58424369185159",
+   "gid://shopify/ProductOptionValue/58424369217927"
+  ],
+  "zeit": "2026-11-09 23:01:08 UTC"
+ },
+ "gid://shopify/Product/16638319788423": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "led-tulpen-planet-nachtlicht-fur-tisch-618400",
+  "optionen": [
+   "gid://shopify/ProductOption/19587832709511"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58428954378631",
+   "gid://shopify/ProductOptionValue/58428954411399",
+   "gid://shopify/ProductOptionValue/58428954444167"
+  ],
+  "zeit": "2026-11-09 23:00:32 UTC"
+ },
+ "gid://shopify/Product/16654280753543": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "hundennasenmatte-aus-fleece-energie-intelligen-622000",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:11:41 UTC"
+ },
+ "gid://shopify/Product/16656726720903": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "wasserdichte-armbanduhr-gold-chronograph-604800",
+  "optionen": [
+   "gid://shopify/ProductOption/19611989606791"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58624995852679",
+   "gid://shopify/ProductOptionValue/58624995885447",
+   "gid://shopify/ProductOptionValue/58624995918215",
+   "gid://shopify/ProductOptionValue/58624995950983",
+   "gid://shopify/ProductOptionValue/58624995983751",
+   "gid://shopify/ProductOptionValue/58624996016519"
+  ],
+  "zeit": "2026-11-09 23:05:35 UTC"
+ },
+ "gid://shopify/Product/16700385657223": {
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "damen-perucke-lockig-flauschig-pony-368960",
+  "optionen": [],
+  "rueckgelesen_gleich": true,
+  "werte": [],
+  "zeit": "2026-11-09 23:06:44 UTC"
+ },
+ "gid://shopify/Product/16700386607495": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "laptoptasche-einfach-844636",
+  "optionen": [
+   "gid://shopify/ProductOption/19660181930375"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58903026205063",
+   "gid://shopify/ProductOptionValue/58903026237831",
+   "gid://shopify/ProductOptionValue/58903026270599"
+  ],
+  "zeit": "2026-11-09 23:06:39 UTC"
+ },
+ "gid://shopify/Product/16700386640263": {
+  "felder": [
+   "title",
+   "body_html",
+   "product_type",
+   "meta_title",
+   "meta_description"
+  ],
+  "handle": "herren-halskette-mit-eisen-nagelkreuz-anhanger-376512",
+  "optionen": [
+   "gid://shopify/ProductOption/19660181963143",
+   "gid://shopify/ProductOption/19660181995911"
+  ],
+  "rueckgelesen_gleich": true,
+  "werte": [
+   "gid://shopify/ProductOptionValue/58903026303367",
+   "gid://shopify/ProductOptionValue/58903026336135",
+   "gid://shopify/ProductOptionValue/58903026368903",
+   "gid://shopify/ProductOptionValue/58903026434439",
+   "gid://shopify/ProductOptionValue/58903026467207",
+   "gid://shopify/ProductOptionValue/58903026499975",
+   "gid://shopify/ProductOptionValue/58903026532743",
+   "gid://shopify/ProductOptionValue/58903026565511",
+   "gid://shopify/ProductOptionValue/58903026598279",
+   "gid://shopify/ProductOptionValue/58903026631047"
+  ],
+  "zeit": "2026-11-09 23:06:34 UTC"
+ }
+}
