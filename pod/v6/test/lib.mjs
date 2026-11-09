@@ -61,7 +61,10 @@ function karteMitShop(id, shopParam, ohneMinDpi, extraHinweise) {
 export function starteServer() {
   const server = createServer((req, res) => {
     const u = new URL(req.url, 'http://x');
-    const senden = (typ, inhalt, code = 200) => { res.writeHead(code, { 'content-type': typ, 'cache-control': 'no-store' }); res.end(inhalt); };
+    const senden0 = (typ, inhalt, code = 200) => { res.writeHead(code, { 'content-type': typ, 'cache-control': 'no-store' }); res.end(inhalt); };
+    // verzoegerung=ms: Vorschaudaten treffen verspätet ein (Test: Daten kommen erst NACH der ersten Änderung des Kunden)
+    const verz = /^\/vorschau\//.test(u.pathname) ? Number(u.searchParams.get('verzoegerung')) || 0 : 0;
+    const senden = verz > 0 ? (typ, inhalt, code = 200) => { setTimeout(() => senden0(typ, inhalt, code), verz); } : senden0;
     if (u.pathname === '/mock.html') return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
     if (u.pathname === '/lspod-designer-v6-ref.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_REF_DATEI));

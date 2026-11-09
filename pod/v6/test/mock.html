@@ -30,6 +30,7 @@
     bearbeiten=1|angebot|0   data-bearbeiten am Container (6.4.0): VORGABE DER MOCK-SEITE ist 0 (Verhalten wie 6.3.1), damit die älteren Suiten unverändert laufen; 1 = «Bearbeiten» ist Startansicht (so ist es live,
                         ohne das Attribut), angebot = angeboten, Start in «Druckversion»
     themeregel=1        fügt die globale Theme-Regel img{max-width:100%;height:auto} ein, die der echte Shop hat (Fund A: ohne sie blieb die Verzerrung des Vorlagenbildes in den Tests unsichtbar)
+    vverz=ms            Vorschaudaten werden um ms Millisekunden verzögert ausgeliefert (6.4.0: Daten treffen erst nach der ersten Änderung des Kunden ein)
     editor=ref          lädt statt des geprüften Editors die Referenzfassung (/lspod-designer-v6-ref.js, Standard 6.3.1) für Vergleiche
     karte=live-<id>, vorschau=live-<id>   Karte und Vorschaudaten aus pod/v6/maps/lspod-<id>.{karte,vorschau}.json (LIVE-Dateien); mit varianten=<Shopify-Id>:<Name>,… die echten Varianten wählen
 -->
@@ -117,7 +118,7 @@
     if (q.get('uptimeout') !== null) d.setAttribute('data-upload-timeout', q.get('uptimeout'));
     if (q.get('vzeit') !== null) d.setAttribute('data-vorschau-zeit', q.get('vzeit'));
     d.setAttribute('data-bearbeiten', q.get('bearbeiten') === null ? '0' : q.get('bearbeiten'));
-    if (q.get('vorschau') !== null && q.get('vorschauinline') === null) d.setAttribute('data-vorschau-url', '/vorschau/' + q.get('vorschau') + '.json?spiegel=' + (q.get('spiegel') === '0' ? '0' : '1') + (q.get('vkaputt') ? '&kaputt=' + q.get('vkaputt') : ''));
+    if (q.get('vorschau') !== null && q.get('vorschauinline') === null) d.setAttribute('data-vorschau-url', '/vorschau/' + q.get('vorschau') + '.json?spiegel=' + (q.get('spiegel') === '0' ? '0' : '1') + (q.get('vkaputt') ? '&kaputt=' + q.get('vkaputt') : '') + (q.get('vverz') ? '&verzoegerung=' + q.get('vverz') : ''));
     if (q.get('karteurl') !== null) {
       // Plan B: keine Karte in der Beschreibung, nur die Adresse einer JSON-Datei (data-karte-url)
       d.setAttribute('data-karte-url', '/karten/' + karteId + '.json' + location.search);
