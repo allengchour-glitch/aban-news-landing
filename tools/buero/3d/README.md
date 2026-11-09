@@ -85,3 +85,6 @@ HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine private
 
 
 `campus-einheitlich-11` vergrößert die Arbeitsfläche auf bis zu112rem, die Desktopbühne auf80 Prozent der Fensterhöhe und die Handyansicht auf72 Prozent. Vier Statuskarten erklären die vorhandenen Messstände; Vollbild und Monitormodus blenden sie aus. Die private Rankingvorlage hat größere Zahlen, einen höheren Verlauf und Begriffserklärungen. Keine neuen Datenquellen oder automatischen Kontoaktionen.
+
+
+`campus-einheitlich-12`: Nach echten Screenshots Büro vor Auftragsknöpfe gelegt, Statuskarten/Erklärung unter die Bühne verschoben und dunkle Kopfkarte einschließlich Messzeit lesbar gemacht. Mobile3D startet am Campusplatz mit an Hochformat angepasstem Abstand. Die leichte2D-Startansicht am Handy bleibt wählbar und unverändert als Standard; keine neue Datenquelle oder Kontoaktion.
