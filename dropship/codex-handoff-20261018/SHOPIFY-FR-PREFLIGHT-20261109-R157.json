@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "luxestyle-r157-shopify-fr-preflight-v1",
+  "status": "GO",
+  "checkedAt": "2026-11-09T20:20:27.373096Z",
+  "writesPerformed": false,
+  "scope": "Read-only preflight for exact R156 French Page translation",
+  "shop": {
+    "observed": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "email": "info@luxestyle.ch",
+      "planName": "Shopify",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "checks": {
+      "name": true,
+      "domain": true,
+      "currency": true,
+      "country": true,
+      "critical_message_empty": true
+    },
+    "countryCodeInterpretation": "Switzerland = CH"
+  },
+  "page": {
+    "observed": {
+      "id": "gid://shopify/Page/698444710273",
+      "title": "T-Shirt, Tasse & mehr selbst gestalten",
+      "handle": "selbst-gestalten",
+      "templateSuffix": "selbst-gestalten",
+      "isPublished": true,
+      "updatedAt": "2026-11-08T04:57:54Z"
+    },
+    "checks": {
+      "id": true,
+      "resource_id": true,
+      "handle": true,
+      "template": true,
+      "published": true
+    }
+  },
+  "liveFrenchTranslations": [],
+  "sourceComparisonsToR156": {
+    "title": {
+      "present": true,
+      "value_equal": true,
+      "value_utf8_bytes": 38,
+      "value_sha256": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "prepared_r156_value_sha256": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "digest_live": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "digest_r156": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "digest_equal": true,
+      "locale_live": "de",
+      "locale_equal": true
+    },
+    "body_html": {
+      "present": true,
+      "value_equal": true,
+      "value_utf8_bytes": 2404,
+      "value_sha256": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "prepared_r156_value_sha256": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "digest_live": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "digest_r156": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "digest_equal": true,
+      "locale_live": "de",
+      "locale_equal": true
+    },
+    "handle": {
+      "present": true,
+      "value_equal": true,
+      "value_utf8_bytes": 16,
+      "value_sha256": "0cf13c113689be3b807c7941f648fa1126920fc7a49551ffae117a46f485a029",
+      "prepared_r156_value_sha256": "0cf13c113689be3b807c7941f648fa1126920fc7a49551ffae117a46f485a029",
+      "digest_live": "0cf13c113689be3b807c7941f648fa1126920fc7a49551ffae117a46f485a029",
+      "digest_r156": "0cf13c113689be3b807c7941f648fa1126920fc7a49551ffae117a46f485a029",
+      "digest_equal": true,
+      "locale_live": "de",
+      "locale_equal": true
+    },
+    "meta_title": {
+      "present": true,
+      "value_equal": true,
+      "value_utf8_bytes": 52,
+      "value_sha256": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "prepared_r156_value_sha256": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "digest_live": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "digest_r156": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "digest_equal": true,
+      "locale_live": "de",
+      "locale_equal": true
+    },
+    "meta_description": {
+      "present": true,
+      "value_equal": true,
+      "value_utf8_bytes": 158,
+      "value_sha256": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "prepared_r156_value_sha256": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "digest_live": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "digest_r156": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "digest_equal": true,
+      "locale_live": "de",
+      "locale_equal": true
+    }
+  },
+  "artifactChecks": {
+    "variables_json_object_equal_to_fr_verkaufsdiff": true,
+    "variables_canonical_bytes_equal_to_fr_verkaufsdiff": true,
+    "mutation_bytes_equal_to_fr_verkaufsdiff": true,
+    "readback_bytes_equal_to_fr_verkaufsdiff": true,
+    "resource_id_exact": true,
+    "keys_exact_order": true,
+    "locales_exact_fr": true,
+    "no_market_scope": true,
+    "no_handle_translation": true,
+    "exactly_four_inputs": true
+  },
+  "artifactHashes": {
+    "/dev/shm/r156-fr/variables.json": {
+      "bytes": 3687,
+      "sha256": "48a666b72e89dd2dcc4ca2bd5eb9b192d939b7bf89d1b0a9422bb7341fe41e89"
+    },
+    "/dev/shm/r156-fr/mutation.graphql": {
+      "bytes": 320,
+      "sha256": "f10b7ba07125769a0aaa9c2833d447f2f93aca99ea46c0bc4a7cf11076c13de4"
+    },
+    "/dev/shm/r156-fr/readback.graphql": {
+      "bytes": 451,
+      "sha256": "53e339a09a998f97bd3aca4bfd931c4c2893dff0cbf7a1a902afd59448b3d4e5"
+    },
+    "/dev/shm/FR-VERKAUFSDIFF-20261109-R156.json": {
+      "bytes": 18348,
+      "sha256": "d39cfbed43d91b5cd42b6a2e2dde7fe87c06ea91b93b74ef3c284f63bac85a7e"
+    },
+    "/dev/shm/r157-shopify-raw.json": {
+      "bytes": 4855,
+      "sha256": "2497c66fe943f4df19b546d80b3675f8f0d6ce695d6d3c94291521e6f8299f8f"
+    }
+  },
+  "mutationSchema": {
+    "top_level": "translationsRegister",
+    "arguments": "resourceId: ID!, translations: [TranslationInput!]!",
+    "translation_input_fields": {
+      "key": "String!",
+      "locale": "String!",
+      "marketId": "ID",
+      "translatableContentDigest": "String!",
+      "value": "String!"
+    },
+    "payload_fields": {
+      "translations": "[Translation!]",
+      "userErrors": "[TranslationUserError!]!"
+    },
+    "selected_translation_fields_valid": [
+      "key",
+      "locale",
+      "value",
+      "outdated",
+      "updatedAt"
+    ],
+    "selected_user_error_fields": [
+      "field",
+      "message"
+    ],
+    "selected_user_error_fields_validated": true,
+    "translation_user_error_schema": {
+      "field": "[String!]",
+      "message": "String!"
+    },
+    "schema_discovered_live": true,
+    "compatibility_validator": "skipped_by_connector; graphql_query validates reads and schema discovery validates mutation contract",
+    "readback_executed_and_validated": true,
+    "mutation_executed": false
+  },
+  "exactTranslationDiff": [
+    {
+      "operation": "ADD",
+      "key": "title",
+      "locale": "fr",
+      "before": null,
+      "after": "Personnalisez des T-shirts, des tasses et bien plus encore",
+      "after_utf8_bytes": 58,
+      "after_sha256": "ebfcb8bcac4506d03ee9f15d9a31f360d7b2879e09e662786802f1b1cce9f818",
+      "live_source_digest": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "prepared_digest": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+      "digest_byte_equal": true,
+      "marketId_present": false
+    },
+    {
+      "operation": "ADD",
+      "key": "body_html",
+      "locale": "fr",
+      "before": null,
+      "after": "<p>Créez votre pièce préférée : chez <strong>LuxeStyle</strong>, personnalisez des T-shirts, des sweat-shirts, des hoodies bio, des tasses, des sacs et des casquettes avec votre texte, votre nom ou votre image. Pour un cadeau, un événement d’équipe, une association ou une pièce unique pour vous, votre article est imprimé selon votre création.</p>\n<h2>Comment ça marche</h2>\n<ol>\n<li><strong>Choisir le produit</strong> – Sélectionnez l’article et la variante disponible.</li>\n<li><strong>Créer le motif</strong> – Placez votre texte, votre nom ou votre image dans l’éditeur.</li>\n<li><strong>Vérifier l’aperçu</strong> – Contrôlez le motif, sa position, sa couleur, sa taille et la variante du produit.</li>\n<li><strong>Commander</strong> – Ajoutez votre création au panier et passez à la caisse en toute sécurité.</li>\n</ol>\n<h2>Produits à personnaliser</h2>\n<ul>\n<li><a href=\"/fr/products/klassisches-unisex-t-shirt-selbst-gestalten\">Personnaliser un T-shirt</a> – avec votre texte ou votre image.</li>\n<li><a href=\"/fr/products/keramik-tasse-selbst-gestalten\">Faire imprimer une tasse en céramique</a> – pour le bureau, la cuisine ou comme cadeau.</li>\n<li><a href=\"/fr/products/unisex-hoodie-selbst-gestalten\">Personnaliser un sweat-shirt ou un hoodie bio</a> – choisissez le modèle et placez votre motif.</li>\n</ul>\n<p>Retrouvez tous les articles personnalisables dans la <a href=\"/fr/collections/selbst-gestalten\">collection « Personnaliser »</a>.</p>\n<h2>Production et livraison</h2>\n<p>Chaque pièce personnalisée est imprimée après votre commande. Le délai de livraison prévu dépend du produit, de la variante, du site d’impression et de l’adresse de livraison. Une estimation précise s’affiche pendant la commande lorsqu’elle est disponible pour l’article choisi.</p>\n<h2>À vérifier avant de commander</h2>\n<p>Vérifiez soigneusement l’aperçu, l’orthographe, la position, la couleur du produit, la variante et la taille. Les articles personnalisés sont fabriqués selon votre création. Consultez les <a href=\"/fr/policies/refund-policy\">conditions de retour des produits personnalisés</a>.</p>\n<h2>Pour la Suisse et le Liechtenstein</h2>\n<p>Tous les prix sont indiqués en CHF. La livraison est gratuite dès CHF 50.</p>\n<p style=\"margin:24px 0 10px;\"><a href=\"/fr/collections/selbst-gestalten\" style=\"display:inline-block;background:#c9a35f;color:#151515;font-weight:700;font-size:1.2rem;padding:16px 34px;border-radius:8px;text-decoration:none;\">Créer votre pièce unique</a></p>",
+      "after_utf8_bytes": 2570,
+      "after_sha256": "2a27549d4d375a1e41c2df0a59943e403dc4ec67f6250a9d88956b63d44895ad",
+      "live_source_digest": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "prepared_digest": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "digest_byte_equal": true,
+      "marketId_present": false
+    },
+    {
+      "operation": "ADD",
+      "key": "meta_title",
+      "locale": "fr",
+      "before": null,
+      "after": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+      "after_utf8_bytes": 59,
+      "after_sha256": "1af83f79021feb04e6cb2f10fe0fabb3461f3eaaa28d40b316b328f99e8724e8",
+      "live_source_digest": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "prepared_digest": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+      "digest_byte_equal": true,
+      "marketId_present": false
+    },
+    {
+      "operation": "ADD",
+      "key": "meta_description",
+      "locale": "fr",
+      "before": null,
+      "after": "Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+      "after_utf8_bytes": 153,
+      "after_sha256": "81e71559e9b2e8828eb51d01e58a46ba99265cda573cf5d5e892de3bd2c273d9",
+      "live_source_digest": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "prepared_digest": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+      "digest_byte_equal": true,
+      "marketId_present": false
+    }
+  ],
+  "decisionReasons": [
+    "Identität, Page-Zustand, Quellwerte und Digests stimmen bytegenau; fr ist leer; Mutation ist auf vier globale Übersetzungsschlüssel begrenzt."
+  ],
+  "writeInstruction": "No write was executed. GO authorizes only the exact four translations in /dev/shm/r156-fr/variables.json after a final immediate identity/digest check."
+}
