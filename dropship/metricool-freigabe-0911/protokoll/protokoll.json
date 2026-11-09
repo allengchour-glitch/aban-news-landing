@@ -1,0 +1,582 @@
+{
+ "stand": "2026-11-09 20:27 Europe/Zurich",
+ "auftrag": "Besitzer 09.11.2026: «freigeben, einfach automation machen ohne zu fragen»",
+ "beitraege": [
+  {
+   "uuid": "-8877028874765120990",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445087,
+   "neue_id": 422276869,
+   "alt_zeit": "2026-11-10T10:00:00",
+   "neue_zeit": "2026-11-10T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "2505682137165939640",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421445071,
+   "neue_id": 422276771,
+   "alt_zeit": "2026-11-10T10:00:00",
+   "neue_zeit": "2026-11-10T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "6352982241777305829",
+   "netze": [
+    "threads"
+   ],
+   "alt_id": 421442700,
+   "neue_id": 422280612,
+   "alt_zeit": "2026-11-10T11:00:00",
+   "neue_zeit": "2026-11-10T11:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "2479551942795872090",
+   "netze": [
+    "facebook",
+    "instagram"
+   ],
+   "alt_id": 421445054,
+   "neue_id": 422276987,
+   "alt_zeit": "2026-11-10T12:00:00",
+   "neue_zeit": "2026-11-10T12:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-7893674518673470896",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421444593,
+   "neue_id": 422277108,
+   "alt_zeit": "2026-11-09T18:00:00",
+   "neue_zeit": "2026-11-10T14:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-4166141021700799850",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421444601,
+   "neue_id": 422277227,
+   "alt_zeit": "2026-11-09T10:00:00",
+   "neue_zeit": "2026-11-10T16:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "7496893774506381155",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445064,
+   "neue_id": 422277481,
+   "alt_zeit": "2026-11-10T18:00:00",
+   "neue_zeit": "2026-11-10T18:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-6647584058486602683",
+   "netze": [
+    "facebook",
+    "instagram"
+   ],
+   "alt_id": 421445297,
+   "neue_id": 422277608,
+   "alt_zeit": "2026-11-11T10:00:00",
+   "neue_zeit": "2026-11-11T09:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "6800747654958566068",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445356,
+   "neue_id": 422277722,
+   "alt_zeit": "2026-11-11T10:00:00",
+   "neue_zeit": "2026-11-11T09:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-4605953212411130849",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421445344,
+   "neue_id": 422277846,
+   "alt_zeit": "2026-11-11T10:00:00",
+   "neue_zeit": "2026-11-11T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "1675642812797436191",
+   "netze": [
+    "threads"
+   ],
+   "alt_id": 421445323,
+   "neue_id": 422277980,
+   "alt_zeit": "2026-11-11T11:00:00",
+   "neue_zeit": "2026-11-11T11:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "2157228003212543673",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445312,
+   "neue_id": 422278084,
+   "alt_zeit": "2026-11-11T12:00:00",
+   "neue_zeit": "2026-11-11T12:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-6835976662518839807",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421445332,
+   "neue_id": 422278200,
+   "alt_zeit": "2026-11-11T16:00:00",
+   "neue_zeit": "2026-11-11T16:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "3738748663902192714",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445290,
+   "neue_id": 422278316,
+   "alt_zeit": "2026-11-11T18:00:00",
+   "neue_zeit": "2026-11-11T18:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "8215510415468351070",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445585,
+   "neue_id": 422278407,
+   "alt_zeit": "2026-11-12T10:00:00",
+   "neue_zeit": "2026-11-12T09:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-2435184774283179178",
+   "netze": [
+    "facebook",
+    "instagram"
+   ],
+   "alt_id": 421442906,
+   "neue_id": 422280698,
+   "alt_zeit": "2026-11-12T10:00:00",
+   "neue_zeit": "2026-11-12T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-1176313182659524583",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421445581,
+   "neue_id": 422278514,
+   "alt_zeit": "2026-11-12T10:00:00",
+   "neue_zeit": "2026-11-12T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "5102918478982235752",
+   "netze": [
+    "threads"
+   ],
+   "alt_id": 421442930,
+   "neue_id": 422280785,
+   "alt_zeit": "2026-11-12T11:00:00",
+   "neue_zeit": "2026-11-12T11:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-7768329881687535680",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421442921,
+   "neue_id": 422280875,
+   "alt_zeit": "2026-11-12T12:00:00",
+   "neue_zeit": "2026-11-12T12:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "5681760339256165072",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421442944,
+   "neue_id": 422280988,
+   "alt_zeit": "2026-11-12T16:00:00",
+   "neue_zeit": "2026-11-12T16:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-3118555118962720263",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445571,
+   "neue_id": 422278624,
+   "alt_zeit": "2026-11-12T18:00:00",
+   "neue_zeit": "2026-11-12T18:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "1744402171830094170",
+   "netze": [
+    "facebook",
+    "instagram"
+   ],
+   "alt_id": 421443103,
+   "neue_id": 422278757,
+   "alt_zeit": "2026-11-13T10:00:00",
+   "neue_zeit": "2026-11-13T09:00:00",
+   "text_geaendert": true,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "4651045624279025767",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445780,
+   "neue_id": 422278897,
+   "alt_zeit": "2026-11-13T10:00:00",
+   "neue_zeit": "2026-11-13T09:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-9210583075457839526",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421445771,
+   "neue_id": 422285770,
+   "alt_zeit": "2026-11-13T10:00:00",
+   "neue_zeit": "2026-11-13T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": true,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-8797746381899281322",
+   "netze": [
+    "threads"
+   ],
+   "alt_id": 421445763,
+   "neue_id": 422279075,
+   "alt_zeit": "2026-11-13T11:00:00",
+   "neue_zeit": "2026-11-13T11:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "5647388074617226143",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421441957,
+   "neue_id": 422279177,
+   "alt_zeit": "2026-11-13T12:00:00",
+   "neue_zeit": "2026-11-13T12:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-4472725258033347244",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421443115,
+   "neue_id": 422279285,
+   "alt_zeit": "2026-11-13T16:00:00",
+   "neue_zeit": "2026-11-13T16:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "673796377030903265",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421445754,
+   "neue_id": 422285897,
+   "alt_zeit": "2026-11-13T18:00:00",
+   "neue_zeit": "2026-11-13T18:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": true,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-1754664943692791070",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421446104,
+   "neue_id": 422279394,
+   "alt_zeit": "2026-11-14T10:00:00",
+   "neue_zeit": "2026-11-14T09:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "7993315583738791837",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421446088,
+   "neue_id": 422279501,
+   "alt_zeit": "2026-11-14T10:00:00",
+   "neue_zeit": "2026-11-14T10:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "8356246782781639563",
+   "netze": [
+    "threads"
+   ],
+   "alt_id": 421446059,
+   "neue_id": 422279608,
+   "alt_zeit": "2026-11-14T11:00:00",
+   "neue_zeit": "2026-11-14T11:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "8178449842924373712",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421446048,
+   "neue_id": 422279700,
+   "alt_zeit": "2026-11-14T12:00:00",
+   "neue_zeit": "2026-11-14T12:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-2924344703561023385",
+   "netze": [
+    "facebook",
+    "instagram"
+   ],
+   "alt_id": 421446032,
+   "neue_id": 422279805,
+   "alt_zeit": "2026-11-14T10:00:00",
+   "neue_zeit": "2026-11-14T15:00:00",
+   "text_geaendert": true,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "8229862176301272727",
+   "netze": [
+    "youtube"
+   ],
+   "alt_id": 421446074,
+   "neue_id": 422279920,
+   "alt_zeit": "2026-11-14T16:00:00",
+   "neue_zeit": "2026-11-14T16:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-6748893881700627372",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421446019,
+   "neue_id": 422280035,
+   "alt_zeit": "2026-11-14T18:00:00",
+   "neue_zeit": "2026-11-14T18:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-3833193365444016309",
+   "netze": [
+    "facebook",
+    "instagram"
+   ],
+   "alt_id": 420724799,
+   "neue_id": 422280155,
+   "alt_zeit": "2026-11-15T11:00:00",
+   "neue_zeit": "2026-11-15T11:00:00",
+   "text_geaendert": true,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "8935974072695279179",
+   "netze": [
+    "threads"
+   ],
+   "alt_id": 421442507,
+   "neue_id": 422274702,
+   "alt_zeit": "2026-11-09T11:00:00",
+   "neue_zeit": "2026-11-15T11:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  },
+  {
+   "uuid": "-6967517640837021033",
+   "netze": [
+    "tiktok"
+   ],
+   "alt_id": 421444647,
+   "neue_id": 422295156,
+   "alt_zeit": "2026-11-09T10:00:00",
+   "neue_zeit": "2026-11-15T12:00:00",
+   "text_geaendert": false,
+   "medium_getauscht": false,
+   "status": [
+    "PENDING"
+   ]
+  }
+ ]
+}

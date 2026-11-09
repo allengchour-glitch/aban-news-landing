@@ -1,0 +1,102 @@
+name: Metricool-Freigabe (Entwürfe prüfen und einplanen)
+
+# Prüft Entwürfe im Metricool-Planer (Marke 6227837) und plant die geprüften mit autoPublish ein; alles andere bleibt Entwurf und wird gemeldet
+# (Telegram + Zusammenfassung). Löscht nie etwas, schreibt keinen Text um (ausser: Instagram höchstens 5 Hashtags, TikTok «Eigenwerbung»).
+# Tore (jedes Nein = Entwurf bleibt): Termin ≥ 2 h in der Zukunft · Pflichtfelder · keine verbotenen Textstellen · Produkt der Wegweiser-Sammlung erkannt,
+# ACTIVE, lieferbar · jeder Preis stimmt mit dem Shop · Medien erreichbar · ≥ 3 h Abstand je Netzwerk · keine Kopie (uuid mehrfach).
+# Doku: dropship/metricool-freigabe-0911/README.md · Skript: automation/metricool_freigabe.py · Test + Mutationsprobe daneben.
+#
+# TROCKENLAUF IST DIE VORGABE: ohne die Datei dropship/METRICOOL-FREIGABE-FREI.txt (= das Ja des Besitzers vom 09.11.2026) wird nichts geändert und nichts
+# gesendet; der Lauf zeigt nur den Plan in der Zusammenfassung. Datei löschen = zurück im Trockenlauf. Obergrenze: 12 Freigaben je Lauf.
+# Ein roter Lauf heisst: Update mit Abweichung (Kopie möglich) oder technischer Fehler. Gehaltene Entwürfe sind nicht rot, sie gehen per Telegram raus.
+# Zeitplan: 1x täglich (SHARED-MEMORY: «Crons nur einzeln, sparsam, max. 1x/Tag»), 05:41 UTC = 06:41 Schweizer Winterzeit. Dazwischen von Hand startbar.
+# Bei Änderungen an den Dateien läuft nur der Testjob (kein Netz, keine Zugangsdaten).
+
+on:
+  schedule:
+    - cron: '41 5 * * *'
+  workflow_dispatch:
+    inputs:
+      trockenlauf:
+        description: 'Trockenlauf erzwingen (auch wenn die Freigabedatei liegt)'
+        type: boolean
+        default: false
+      max_je_lauf:
+        description: 'Höchstens so viele Freigaben in diesem Lauf'
+        type: string
+        default: '12'
+  pull_request:
+    paths:
+      - 'automation/metricool_freigabe*'
+      - '.github/workflows/metricool-freigabe.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: metricool-freigabe-${{ github.event_name == 'pull_request' && github.ref || 'lauf' }}
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/metricool_freigabe.py
+            automation/metricool_freigabe_test.py
+            automation/metricool_freigabe_mutationsprobe.py
+          sparse-checkout-cone-mode: false
+      - name: Tests (kein Netz)
+        run: python3 automation/metricool_freigabe_test.py
+      - name: Mutationsprobe (nur bei Änderungen)
+        if: github.event_name == 'pull_request'
+        run: python3 -I automation/metricool_freigabe_mutationsprobe.py
+
+  freigabe:
+    needs: tests
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Nur das Skript und die Freigabedatei holen (liegt sie nicht, ist das in Ordnung: dann Trockenlauf)
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/metricool_freigabe.py
+            dropship/METRICOOL-FREIGABE-FREI.txt
+          sparse-checkout-cone-mode: false
+      - name: Freigabe prüfen (ohne Datei Trockenlauf)
+        id: frei
+        env:
+          TROCKEN: ${{ github.event.inputs.trockenlauf }}
+        run: |
+          set -eu
+          live=0
+          if [ -f dropship/METRICOOL-FREIGABE-FREI.txt ] && [ "${TROCKEN:-false}" != "true" ]; then live=1; fi
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          echo "Freigabe: live=$live"
+      - name: Status der letzten Tage (Fehler und Hänger melden)
+        env:
+          METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LIVE: ${{ steps.frei.outputs.live == '1' && '1' || '0' }}
+        run: python3 automation/metricool_freigabe.py --status
+      - name: Entwürfe prüfen und einplanen
+        env:
+          METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LIVE: ${{ steps.frei.outputs.live == '1' && '1' || '0' }}
+          MAX_JE_LAUF: ${{ github.event.inputs.max_je_lauf || '12' }}
+        run: python3 automation/metricool_freigabe.py

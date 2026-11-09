@@ -1,0 +1,4 @@
+Freigabe des Besitzers vom 09.11.2026 («freigeben, einfach automation machen ohne zu fragen»):
+Der tägliche Lauf von .github/workflows/metricool-freigabe.yml plant geprüfte Metricool-Entwürfe selbst ein.
+Diese Datei löschen = zurück im Trockenlauf (es wird nichts mehr geändert, nur gemeldet).
+Regeln und Tore: dropship/metricool-freigabe-0911/README.md
