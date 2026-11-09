@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "luxestyle-master-preflight-r156-v1",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "report": "# R156 Master-Ingest- und Freigabe-Preflight\n\nDer bestehende Master `luxe_sternenprojektor_master_20261018` wurde weiterentwickelt, ohne eine Ersatz-MP4 zu erzeugen.\n\nNeu ist ein ausführbarer Preflight. Er bindet genau eine aktuelle A–G-Ausführung an die passende Varianten-ID und SKU, eine CJ-VID, einen einheitlichen `unitToken`, das echte Produktbild, den ungeschnittenen Identitätsclip sowie vier native Hochkanttakes. Er prüft SHA-256, 1080×1920, echte 30 fps, Mindestdauern, hashgebundene kommerzielle Bearbeitungs-, Shop-, Social-, Werbe- und Metricool-Rechte, die kanonische Musik samt Rechte-, Hör- und Mixfreigabe sowie den finalen 18-Sekunden-/540-Frame-Export mit einer Video- und einer AAC-Stereo-Spur. Final-QA und Inhaberabnahme sind Pflicht.\n\nSechs Tests sind bestanden: gültiger Metadatenvertrag, gesperrte historische Variante, abweichender `unitToken`, fehlendes Metricool-Recht, 539 statt 540 Frames und fehlende reale Dateien. Ein strukturell vollständiges synthetisches Metadatenmanifest erhält absichtlich nur `PASS_METADATA_ONLY_NOT_RELEASEABLE`. Der echte Live-Preflight bleibt `FAIL_BLOCKED`.\n\nSeit R155 liegt in den eng bekannten Pfaden kein neuer gebundener Take und kein neuer Rechtebeleg vor. Offen bleiben: Wahl einer aktuellen A–G-Einheit mit CJ-VID, fünf reale Clips derselben Einheit, hashgebundener Rechtegrant, Musikrechte-/Hör-/Mixfreigabe, finaler Export und Inhaberabnahme. Es wurde nicht gerendert, hochgeladen, terminiert oder veröffentlicht.\n",
+  "manifest": {
+    "BERICHT.md": {
+      "bytes": 1500,
+      "sha256": "856008e5448cead2eb755723166d6f8fc4f98184c9553ef3f9e05dd79eae67a7"
+    },
+    "blocked-live-manifest.json": {
+      "bytes": 580,
+      "sha256": "567c5ab12fadfa4c2c77614c74c81fd1a84fc39ad4e42679c1bdc2907557b40a"
+    },
+    "blocked-result.json": {
+      "bytes": 1960,
+      "sha256": "53bebf4194b0481b33797bdfc022c6ac607a02a6eb4f0e0462a00a3e06a74027"
+    },
+    "master_preflight.py": {
+      "bytes": 6962,
+      "sha256": "c099983faf842488fc73f8e6bd102d9b26c485af613e9c03e26563a303dcd728"
+    },
+    "metadata-fixture.json": {
+      "bytes": 3008,
+      "sha256": "ef103b5f823394f10d3bea1daf6a8a47fdef91007c43ea790e757836886c27c7"
+    },
+    "metadata-result.json": {
+      "bytes": 140,
+      "sha256": "a3e0ddebaecc778dac58aaf55a9fcd394aecf0417aef1305f5c4262cafd32954"
+    },
+    "test-output.txt": {
+      "bytes": 666,
+      "sha256": "489be16906f12d9945a2e44e424776b3e343e85d4556ac16eab6f2fd7218c8a9"
+    },
+    "test_preflight.py": {
+      "bytes": 1310,
+      "sha256": "71d60a32b14f0a79377baa0c5e63ed22c71cf05beb890f5dc6f14531dd51be4c"
+    }
+  },
+  "metadataFixture": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "product": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "selectionLabel": "A",
+      "variantId": "gid://shopify/ProductVariant/68122445283719",
+      "sku": "CJSN139239101AZ",
+      "cjVid": "TO_BE_VERIFIED",
+      "unitToken": "UNIT-20261109-0001",
+      "referenceImage": {
+        "path": "/capture/reference.jpg",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "clips": {
+      "identity": {
+        "path": "/capture/identity.mp4",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 6,
+        "unitToken": "UNIT-20261109-0001"
+      },
+      "operation": {
+        "path": "/capture/operation.mp4",
+        "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 9,
+        "unitToken": "UNIT-20261109-0001"
+      },
+      "projection": {
+        "path": "/capture/projection.mp4",
+        "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 10,
+        "unitToken": "UNIT-20261109-0001"
+      },
+      "detail": {
+        "path": "/capture/detail.mp4",
+        "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 7,
+        "unitToken": "UNIT-20261109-0001"
+      },
+      "hero": {
+        "path": "/capture/hero.mp4",
+        "sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "durationSeconds": 8,
+        "unitToken": "UNIT-20261109-0001"
+      }
+    },
+    "rights": {
+      "path": "/rights/signed.json",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "unitToken": "UNIT-20261109-0001",
+      "signedBy": "RIGHTSHOLDER",
+      "signedAt": "2026-11-09T00:00:00Z",
+      "grants": {
+        "commercialEdit": true,
+        "shop": true,
+        "socialOrganic": true,
+        "socialPaid": true,
+        "metricoolUpload": true
+      },
+      "boundSha256": [
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "1111111111111111111111111111111111111111111111111111111111111111",
+        "2222222222222222222222222222222222222222222222222222222222222222",
+        "3333333333333333333333333333333333333333333333333333333333333333",
+        "4444444444444444444444444444444444444444444444444444444444444444",
+        "5555555555555555555555555555555555555555555555555555555555555555"
+      ]
+    },
+    "music": {
+      "path": "/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "rightsArtifact": {
+        "path": "/rights/music.json",
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "commercialUseApproved": true,
+      "listeningApproved": true,
+      "mixApproved": true
+    },
+    "voiceover": false,
+    "output": {
+      "path": "/output/master.mp4",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "frames": 540,
+      "durationSeconds": 18.0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuv420p",
+      "audioCodec": "aac",
+      "audioChannels": 2,
+      "unitToken": "UNIT-20261109-0001"
+    },
+    "finalQa": {
+      "imageQuality": true,
+      "productIdentity": true,
+      "audio": true,
+      "textReadability": true,
+      "platformCrops": true,
+      "ownerApproval": true
+    }
+  },
+  "metadataResult": {
+    "status": "PASS_METADATA_ONLY_NOT_RELEASEABLE",
+    "releaseReady": false,
+    "mode": "metadata-only",
+    "errorCount": 0,
+    "errors": []
+  },
+  "blockedLiveManifest": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "product": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "selectionLabel": null,
+      "variantId": null,
+      "sku": null,
+      "cjVid": null,
+      "unitToken": null,
+      "referenceImage": {
+        "path": "",
+        "sha256": ""
+      }
+    },
+    "clips": {},
+    "rights": {},
+    "music": {
+      "path": "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav",
+      "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+      "rightsArtifact": {},
+      "commercialUseApproved": false,
+      "listeningApproved": false,
+      "mixApproved": false
+    },
+    "voiceover": false,
+    "output": {},
+    "finalQa": {}
+  },
+  "blockedLiveResult": {
+    "status": "FAIL_BLOCKED",
+    "releaseReady": false,
+    "mode": "release",
+    "errorCount": 51,
+    "errors": [
+      "Auswahl muss aktuell A-G sein",
+      "unitToken fehlt/zu kurz",
+      "CJ-VID fehlt",
+      "product.referenceImage.path fehlt",
+      "clips.identity.path fehlt",
+      "clips.identity nicht nativ mindestens 1080x1920",
+      "clips.identity nicht echte 30fps",
+      "clips.identity kuerzer als 6.0s",
+      "clips.operation.path fehlt",
+      "clips.operation nicht nativ mindestens 1080x1920",
+      "clips.operation nicht echte 30fps",
+      "clips.operation kuerzer als 9.0s",
+      "clips.projection.path fehlt",
+      "clips.projection nicht nativ mindestens 1080x1920",
+      "clips.projection nicht echte 30fps",
+      "clips.projection kuerzer als 10.0s",
+      "clips.detail.path fehlt",
+      "clips.detail nicht nativ mindestens 1080x1920",
+      "clips.detail nicht echte 30fps",
+      "clips.detail kuerzer als 7.0s",
+      "clips.hero.path fehlt",
+      "clips.hero nicht nativ mindestens 1080x1920",
+      "clips.hero nicht echte 30fps",
+      "clips.hero kuerzer als 8.0s",
+      "rights.artifact.path fehlt",
+      "Recht commercialEdit fehlt",
+      "Recht shop fehlt",
+      "Recht socialOrganic fehlt",
+      "Recht socialPaid fehlt",
+      "Recht metricoolUpload fehlt",
+      "Rechtezeichnung fehlt",
+      "music.rightsArtifact.path fehlt",
+      "Musikgate commercialUseApproved fehlt",
+      "Musikgate listeningApproved fehlt",
+      "Musikgate mixApproved fehlt",
+      "output.path fehlt",
+      "output.width falsch",
+      "output.height falsch",
+      "output.fps falsch",
+      "output.frames falsch",
+      "output.durationSeconds falsch",
+      "output.videoCodec falsch",
+      "output.pixelFormat falsch",
+      "output.audioCodec falsch",
+      "output.audioChannels falsch",
+      "Final-QA imageQuality fehlt",
+      "Final-QA productIdentity fehlt",
+      "Final-QA audio fehlt",
+      "Final-QA textReadability fehlt",
+      "Final-QA platformCrops fehlt",
+      "Final-QA ownerApproval fehlt"
+    ]
+  },
+  "testOutput": "test_metadata_contract_passes_but_not_release (__main__.TestPreflight.test_metadata_contract_passes_but_not_release) ... ok\ntest_missing_right_fails (__main__.TestPreflight.test_missing_right_fails) ... ok\ntest_real_release_missing_files_fails (__main__.TestPreflight.test_real_release_missing_files_fails) ... ok\ntest_stale_variant_fails (__main__.TestPreflight.test_stale_variant_fails) ... ok\ntest_unit_mismatch_fails (__main__.TestPreflight.test_unit_mismatch_fails) ... ok\ntest_wrong_frame_count_fails (__main__.TestPreflight.test_wrong_frame_count_fails) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nOK\n",
+  "writes": 0,
+  "renderedMp4": false,
+  "releaseReady": false
+}
