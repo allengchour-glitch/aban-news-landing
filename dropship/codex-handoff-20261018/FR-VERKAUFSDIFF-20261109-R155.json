@@ -1,0 +1,88 @@
+{
+  "scope": "LuxeStyle FR sales action R155, read-only",
+  "checked_at": "2026-11-09T13:09:00Z",
+  "writes_performed": false,
+  "public": {
+    "https://luxestyle.ch/fr/": {
+      "http": 200,
+      "lang": "fr",
+      "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+      "meta_description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "og_title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+      "og_description": "LuxeStyle aus Belp: Mode, Beauty, Technik & Wohnen. Versand in die Schweiz (ab Schweizer Lager meist 2–3, sonst 10–20 Werktage) und nach Liechtenstein.",
+      "h1": "Bien vivre. Acheter malin.",
+      "canonical": "https://luxestyle.ch/fr",
+      "hreflang": {
+        "x-default": "https://luxestyle.ch/",
+        "de": "https://luxestyle.ch/",
+        "fr": "https://luxestyle.ch/fr"
+      }
+    },
+    "https://luxestyle.ch/fr/pages/selbst-gestalten": {
+      "http": 200,
+      "lang": "fr",
+      "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "meta_description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "og_title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "og_description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "h1": "T-Shirt, Tasse & mehr selbst gestalten",
+      "canonical": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "hreflang": {
+        "x-default": "https://luxestyle.ch/pages/selbst-gestalten",
+        "de": "https://luxestyle.ch/pages/selbst-gestalten",
+        "fr": "https://luxestyle.ch/fr/pages/selbst-gestalten"
+      }
+    }
+  },
+  "shopify": {
+    "page": {
+      "resource_id": "gid://shopify/Page/698444710273",
+      "fr_translations": [],
+      "fields": {
+        "title": {"value": "T-Shirt, Tasse & mehr selbst gestalten", "digest": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce"},
+        "body_html": {"digest": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835"},
+        "handle": {"value": "selbst-gestalten", "digest": "0cf13c113689be3b807c7941f648fa1126920fc7a49551ffae117a46f485a029"},
+        "meta_title": {"value": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle", "digest": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803"},
+        "meta_description": {"value": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.", "digest": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292"}
+      }
+    },
+    "shop": {
+      "resource_id": "gid://shopify/Shop/94368563585",
+      "source_digests": {
+        "meta_title": "f2ef37e7dd3fd183d0c8393409aea8cd05425d92ee1a72e4ea48124256fc3311",
+        "meta_description": "d78e0ac0740f928e0b4105d8c4f148d951e49f0c113b688724e06cec723e623a"
+      },
+      "current_fr": {
+        "meta_title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+        "meta_description": "Découvrez une sélection de mode, beauté, maison et technologie chez LuxeStyle. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50 et retour sous 30 jours.",
+        "outdated": false,
+        "updated_at": "2026-11-08T15:16:18Z"
+      },
+      "mapping_note": "meta_title is rendered publicly; meta_description is not. Public output remains German, so another theme/output source overrides or bypasses the Shop translation."
+    },
+    "theme": {
+      "main_theme_id": "213013037447",
+      "page_template_resource": "gid://shopify/OnlineStoreThemeJsonTemplate/page.selbst-gestalten?theme_id=213013037447",
+      "h1_source": "<h1>{{ closest.page.title }}</h1>",
+      "h1_source_digest": "b6605e63e4e5b53834ede513d16f1ecba9e2c0fa0adf9112763e1730353f701c",
+      "h1_action": "none; translating Page.title supplies the French H1"
+    }
+  },
+  "minimal_diff": {
+    "homepage": {
+      "safe_now": "No write. Keep title, H1, canonical and hreflang unchanged.",
+      "target_meta_description": "Mode, beauté, maison et technologie chez LuxeStyle à Belp. Livraison en Suisse et au Liechtenstein. Livraison gratuite en Suisse dès CHF 50.",
+      "blocker": "The exact translation resource that controls the rendered homepage meta/OG description is unknown. The existing Shop.meta_description French translation is current but not rendered."
+    },
+    "self_design_page": {
+      "resource_id": "gid://shopify/Page/698444710273",
+      "leave_unchanged": ["handle", "canonical", "hreflang", "theme H1 template"],
+      "register_fr": {
+        "title": "Personnalisez des T-shirts, des tasses et bien plus encore",
+        "meta_title": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+        "meta_description": "Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+        "body_html": "<p>Créez votre pièce préférée : chez <strong>LuxeStyle</strong>, personnalisez des T-shirts, des sweat-shirts, des hoodies bio, des tasses, des sacs et des casquettes avec votre texte, votre nom ou votre image. Pour un cadeau, un événement d’équipe, une association ou une pièce unique pour vous, votre article est imprimé selon votre création.</p>\n<h2>Comment ça marche</h2>\n<ol>\n<li><strong>Choisir le produit</strong> – Sélectionnez l’article et la variante disponible.</li>\n<li><strong>Créer le motif</strong> – Placez votre texte, votre nom ou votre image dans l’éditeur.</li>\n<li><strong>Vérifier l’aperçu</strong> – Contrôlez le motif, sa position, sa couleur, sa taille et la variante du produit.</li>\n<li><strong>Commander</strong> – Ajoutez votre création au panier et passez à la caisse en toute sécurité.</li>\n</ol>\n<h2>Produits à personnaliser</h2>\n<ul>\n<li><a href=\"/fr/products/klassisches-unisex-t-shirt-selbst-gestalten\">Personnaliser un T-shirt</a> – avec votre texte ou votre image.</li>\n<li><a href=\"/fr/products/keramik-tasse-selbst-gestalten\">Faire imprimer une tasse en céramique</a> – pour le bureau, la cuisine ou comme cadeau.</li>\n<li><a href=\"/fr/products/unisex-hoodie-selbst-gestalten\">Personnaliser un sweat-shirt ou un hoodie bio</a> – choisissez le modèle et placez votre motif.</li>\n</ul>\n<p>Retrouvez tous les articles personnalisables dans la <a href=\"/fr/collections/selbst-gestalten\">collection « Personnaliser »</a>.</p>\n<h2>Production et livraison</h2>\n<p>Chaque pièce personnalisée est imprimée après votre commande. Le délai de livraison prévu dépend du produit, de la variante, du site d’impression et de l’adresse de livraison. Une estimation précise s’affiche pendant la commande lorsqu’elle est disponible pour l’article choisi.</p>\n<h2>À vérifier avant de commander</h2>\n<p>Vérifiez soigneusement l’aperçu, l’orthographe, la position, la couleur du produit, la variante et la taille. Les articles personnalisés sont fabriqués selon votre création. Consultez les <a href=\"/fr/policies/refund-policy\">conditions de retour des produits personnalisés</a>.</p>\n<h2>Pour la Suisse et le Liechtenstein</h2>\n<p>Tous les prix sont indiqués en CHF. La livraison est gratuite dès CHF 50.</p>\n<p style=\"margin:24px 0 10px;\"><a href=\"/fr/collections/selbst-gestalten\" style=\"display:inline-block;background:#c9a35f;color:#151515;font-weight:700;font-size:1.2rem;padding:16px 34px;border-radius:8px;text-decoration:none;\">Créer votre pièce unique</a></p>"
+      }
+    }
+  }
+}
