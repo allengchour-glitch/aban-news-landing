@@ -1666,3 +1666,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 
 [LUXESTYLE_R153_20261108] [Bericht](PLUGIN-RANKING-PUSH-20261108-R153.md) · [Beleg](PLUGIN-RANKING-PUSH-20261108-R153.json). Keine Budgets, Rabatte, Preise, Kundenkontakte, Socialwrites oder kostenpflichtigen Aktionen.
 
+## 09.11.2026
+
+### R154
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität | Shopify-Shop und Metricool-Marke samt sechs Kanälen frisch gelesen | LuxeStyle/luxestyle.ch/CHF und brandId6227837/Europe-Zurich exakt passend; keine fremde Marke bearbeitet |
+| Metricool / Qualität | 15 aktive Objekte mit vier R125-Sperrhashes und 28 weitere aktive Objekte mit 14 kurzen, stummen Slideshows technisch und in Stichbildern geprüft; alle 43 vorhandenen Objekte mit erhaltenen UUIDs/Medien/Terminen auf Entwurf und Autopublish aus gesetzt | Frische Rücklesung: 0 aktive Videos, 43 Videoentwürfe/50 Kanalzustände; kein neuer Post, kein Publish; keine Blindwiederholung |
+| Metricool / 7-Tage-Plan | 65 Objekte für09.–17.11. nach Kanal, Draft, Medium und Termin ausgewertet; Duplikat-/Kollisionsprüfung ausgeführt | Aktive Fotos: FB/IG09.–15.11., Pinterest09.–14.11.; TikTok/Threads/YouTube offen, alle Kanäle16.–17.11. offen. PENDING ist kein Publikationsbeleg |
+| Kennzahlen | Gültige Kennzahl-IDs entdeckt und02.–08.11. in kleinen Kanalabfragen gelesen | Fehlende Zeilen/null als unbekannt dokumentiert; kanalbezogene Views/Impressionen und Interaktionen getrennt; keine Verkaufsableitung |
+| Shopify-Produkte | Projektor15521256604033 und Futterspender15523986473345 gezielt auf ACTIVE, Preis, Bilder, Kaufbarkeit, Varianten, Tracking, Policy, Tags und Storefront geprüft | Beide öffentlich kaufbar; untracked/CONTINUE/Menge0; keine Bestands-/Lieferzusage. Projektorfilm wegen Auswahl-/Motiv-/Einheitenbindung gesperrt |
+| Master | Quellen, Pflichtmusik, Referenzbild und vorhandene MP4s technisch gegengeprüft; denselben18-Sekunden-/540-Frame-Plan mit zwei Hooks präzisiert | Keine professionelle Master-MP4; native Takes, Produktbindung, hashgebundene Rechte und Musikabnahme fehlen. Kein Render/Upload/Push |
+| Klaviyo | Placed-Order-MetrikW7XTVD vor aktuellem Flowreport entdeckt; fünf relevante Flows, Trigger und Capturemarker read-only geprüft | Alle fünf Flows draft; fehlende Berichtszeilen unbekannt. Genau ein Konsolidierungs-/Testvorschlag, nicht umgesetzt; CHF/USD getrennt |
+| SEO / Verkaufsaktion | R153-Livefix gegenprüft und zwei französische Einstiegsseiten mit Firecrawl gelesen | R153 weiter live. Genau ein FR-Metadatenpaket zur Freigabe vorbereitet; keine Website-/Locale-/Merchantänderung |
+| Dokumentation | R154-Bericht, Maschinenbeleg und vollständige Metricool-Rücklesung gespeichert; Übergabe, Projektgedächtnis, Arbeitsstand und Tagesprotokoll fortgeführt | Belegte Tätigkeit von Entwürfen und Blockern getrennt; Claude-Empfang weiter unbekannt |
+
+[LUXESTYLE_R154_20261109] [Paket](CONTENT-VERKAUFSPAKET-20261109-R154.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261109-R154.json) · [Metricool-Rücklesung](METRICOOL-QUALITAETSSPERRE-20261109-R154.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Feed-, Flow-, DNS-, Merchant- oder kostenpflichtige Renderänderung.
