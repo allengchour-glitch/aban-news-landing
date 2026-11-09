@@ -1,0 +1,43 @@
+name: Französisch Produkte Selbsttest
+
+# Offline-Tests (kein Shop, kein Schlüssel):
+#  1. reine Logik und Ablauf der Produktübersetzung mit einer Attrappe von Gemini (Klartextfelder ohne &amp;, Gerüst-/Ziffernprüfung, Übersetzungsspeicher),
+#  2. die zweisprachigen Bausteine der Produktseite (templates/product.json) mit dem ECHTEN Ruby-Liquid: der deutsche Zweig gibt exakt dasselbe aus
+#     wie der ursprüngliche Baustein, der französische enthält kein Deutsch mehr.
+# Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe.
+on:
+  pull_request:
+    paths:
+      - 'dropship/fr-produkte-0911/**'
+      - 'dropship/fr-seiten-0911/fr_lib.py'
+      - 'dropship/lagerbestand-0511/rubyrender.rb'
+      - '.github/workflows/fr-produkte-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fr-produkte-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/fr-produkte-0911
+            dropship/fr-seiten-0911
+            dropship/lagerbestand-0511/rubyrender.rb
+          sparse-checkout-cone-mode: false
+      - name: Selbsttest der Produktübersetzung
+        run: python3 dropship/fr-produkte-0911/fr_produkte.py --selbsttest
+      - name: Ruby-Liquid 5.14.0 installieren (Referenz von Shopify)
+        run: gem install liquid --version 5.14.0 --no-document --install-dir "$RUNNER_TEMP/rlgems"
+      - name: Test der Produktseiten-Bausteine mit echtem Ruby-Liquid
+        run: python3 dropship/fr-produkte-0911/vorlage_fr/test_vorlage.py
+        env:
+          RUBY_LIQUID_GEMS: ${{ runner.temp }}/rlgems
