@@ -53,7 +53,7 @@ Vorhandene Broker-/Schutzmodule wurden nicht ersetzt. Die vorhandenen Binance-Sp
 2. Recherche samt noch ungelesenen Originaltexten vervollständigen. Aussagen aus Projekt-READMEs nicht als unabhängigen Leistungsbeleg behandeln.
 3. Tests und Formeln unabhängig prüfen: Signalverzögerung, Kosten, Drift, fairer Risikovergleich, Datenalter, Historienlänge und gemeinsame Schnittstelle. Gezielt neue Gegenbeispiele suchen.
 4. `ergebnis-v2.json` reproduzieren, Code-/Datenhash prüfen. Keinen Gewinner aus dem besten Einzelzeitraum auswählen. Unterschiede durch Exposure von möglichem Timingnutzen trennen.
-5. Befunde mit Eingabe und falschem Ergebnis in `CLAUDE-REVIEW.md` dokumentieren. Ein fehlendes Review ist keine Zustimmung. Codex kann hier weder Claude CLI noch eine laufende Claude-Sitzung aufrufen; Claude hat diese Version noch nicht geprüft.
+5. Befunde mit Eingabe und falschem Ergebnis in `CLAUDE-REVIEW.md` dokumentieren. Ein fehlendes Review ist keine Zustimmung. Codex kann hier weder Claude CLI noch eine laufende Claude-Sitzung aufrufen; Claude hat diese Version am 09.11.2026 abends geprüft: [CLAUDE-REVIEW.md](CLAUDE-REVIEW.md) (kein Blocker, Befunde F1 bis F7, 14 Regressionstests neu).
 6. Erst nach belastbarer Gegenprüfung und vorher festgelegten Kriterien den nächsten einzelnen Kandidaten wählen. Historische Daten nicht als neue Zukunftsdaten ausgeben. Kein automatisches Hochstufen in Echtgeld oder Brokerhandel.
 
 Die technischen Statusdetails und verbleibenden Grenzen stehen in [INTEGRATION.md](INTEGRATION.md).
