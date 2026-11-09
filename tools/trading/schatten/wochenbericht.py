@@ -74,6 +74,8 @@ SAT_NAMEN = {"S1": "Top-10-Regel wie getestet", "S2": "Satellit (ohne Bitcoin un
 
 def satellit_abschnitt(sb: dict | None) -> list[str]:
     """Zeilen für den Bericht aus data/krypto-satellit-schatten.json (leer, wenn es noch keinen zweiten Tag gibt)."""
+    if not isinstance(sb, dict):
+        return []  # Fehlende oder unlesbare Zusatzdaten nennt die Gesundheitsprüfung.
     t = (sb or {}).get("tage") or []
     if len(t) < 2:
         return []
@@ -93,7 +95,7 @@ def satellit_abschnitt(sb: dict | None) -> list[str]:
 def labor_abschnitt(lab: dict | None) -> list[str]:
     """Zeilen für den Bericht aus data/krypto-scalping-labor.json (Scalping-Labor, Papier): leer, solange das Labor noch keinen Handel gerechnet hat
     oder das Buch unlesbar ist (ein kaputtes Buch darf den Bericht nie verhindern)."""
-    if not lab or not lab.get("maerkte"):
+    if not isinstance(lab, dict) or not lab.get("maerkte"):
         return []
     try:
         sys.path.insert(0, str(ROOT / "tools" / "trading" / "krypto_bot"))
@@ -180,6 +182,8 @@ def _labor_zeit(lab) -> datetime | None:
 
 def labor_pruefen(lab, jetzt: datetime) -> list[str]:
     """Das Labor hat einen eigenen Takt (verpasste Minuten holt es nach): hier nur, ob der Tageslauf es in den letzten MAX_ALTER_LABOR_STUNDEN Stunden bedient hat, und seine eigenen Hinweise."""
+    if lab is not None and not isinstance(lab, dict):
+        return ["Labor: Logbuch ist unlesbar (kein JSON-Objekt)"]
     lauf = lab.get("letzter_lauf") if isinstance(lab, dict) else None
     if not isinstance(lauf, dict):
         return []
@@ -196,6 +200,8 @@ def labor_pruefen(lab, jetzt: datetime) -> list[str]:
 
 def satellit_pruefen(sb) -> list[str]:
     """Coins, für die dem Satelliten die Kurse fehlten (steht im Buch als `fehlende_coins`)."""
+    if sb is not None and not isinstance(sb, dict):
+        return ["Satellit: Logbuch ist unlesbar (kein JSON-Objekt)"]
     f = sb.get("fehlende_coins") if isinstance(sb, dict) else None
     if isinstance(f, list) and f:
         return [f"Satellit: für {len(f)} " + ("Coin" if len(f) == 1 else "Coins") + f" fehlten die Kurse ({_nennen([str(x) for x in f])})"]

@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Fortsetzung Trading-/Krypto-Bot
+
+Lokaler Branch `codex/ki-bot-wochenbericht`: Reproduzierten Wochenbericht-Absturz bei optionalen Logbüchern mit falscher JSON-Grundstruktur korrigiert und Datenlücke sichtbar gemacht.116 Berichtstests grün; Testaufruf im bestehenden Paket-Workflow ergänzt. Keine Live-Aufträge oder Veröffentlichung. Website-Arbeit liegt separat als lokaler Commit `6e6e8c9c1` auf `codex/abannews-website-optimierung`. Details und Grenzen in [der Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), Abschnitt «KI-/Krypto-Bot: optionale Logbücher im Wochenbericht».
+
+
 ## Codex-Übergabe für Claude – 09.11.2026
 
 Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. Dort stehen die neuen Büro-/Judge.me-/Monitorarbeiten, echte Ausführungsbelege und die Produktqualitätsmessung für die Fortsetzung um 21:00 Europe/Zurich. Die Datei ist auch nach späteren Codex-Arbeiten zu aktualisieren. Ein gespeicherter Auftrag, Scan oder grüner Workflow ist keine bestätigte Produktkorrektur. Keine privaten Finanz- oder Kundendaten in diese Dateien schreiben.

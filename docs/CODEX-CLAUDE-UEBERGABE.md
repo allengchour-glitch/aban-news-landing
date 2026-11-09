@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## KI-/Krypto-Bot: optionale Logbücher im Wochenbericht
+
+- Nutzer bestätigte ausdrücklich die Fortsetzung am Trading-/Krypto-Bot. Website-Arbeit separat im lokalen Commit `6e6e8c9c1` auf `codex/abannews-website-optimierung` gesichert; nicht veröffentlicht. Bot-Arbeit auf `codex/ki-bot-wochenbericht` von `origin/main` `989827a7d`.
+- **GEMESSEN:** Mit gültigem Hauptbuch und optionalem Labor-/Satellitenbuch als JSON-Liste statt Objekt brach `abschnitt()` mit `AttributeError` ab. Leere Listen wurden ohne Warnung übergangen. Acht neue Fehlerfälle vor der Korrektur rot.
+- Korrektur: Nicht-Objekte liefern keine erfundenen Zusatzkennzahlen; der Gesundheitsabschnitt nennt das betroffene unlesbare Logbuch statt «alle Messreihen lückenlos und aktuell». `None` und `{}` bleiben zulässig für noch nicht eingerichtete Zusatzbücher. Gültiger Hauptbericht bei fehlenden/leeren Zusatzbüchern vor/nach bytegleich. Nur oberste Struktur geprüft; verschachtelte beschädigte Felder sind damit nicht vollständig abgesichert.
+- **GEMESSEN:**116 Berichtstests und35 Paketbauprüfungen, zuvor zusätzlich53 KI-Bot- und501 Cockpitprüfungen bestanden; Broker-/Telegram-Antworten simuliert, keine echten Aufträge oder Nachrichten. Socket-Tests benötigen in dieser Cloud die reguläre Befehlseskalation. Die bestehende Paket-CI ruft jetzt auch `schatten/test_wochenbericht.py` auf; kein neuer Zeitplan. Vorgeschriebene vollständige lokale CI-Simulation am schreibgeschützten HOME blockiert (`mktemp` unter `/home/agent`); kein bestandener Gesamtlauf. Remote-CI/Deployment nicht geprüft oder ausgelöst. Handelsregeln, Risikolimits, Not-Aus, Schlüssel und Konten unverändert.
+
+
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
 ## Lizenzoberfläche: Störung von Ablehnung unterscheiden · 09.11.2026
