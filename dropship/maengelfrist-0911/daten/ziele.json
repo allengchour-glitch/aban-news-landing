@@ -1,0 +1,63 @@
+[
+ {
+  "nr": "M1",
+  "art": "richtlinie",
+  "handle": "refund-policy",
+  "id": "gid://shopify/ShopPolicy/50587304321",
+  "vorher": "Melde dich in diesem Fall bitte <strong>innerhalb von 7 Tagen nach Erhalt</strong>",
+  "nachher": "Melde dich in diesem Fall bitte <strong>innerhalb von 30 Tagen nach Erhalt</strong>",
+  "hinweis": "Rückgaberichtlinie, Abschnitt «Defekte, beschädigte oder falsch gelieferte Artikel»: nur die Zahl. Der Folgesatz zu selbst gestalteten Artikeln bleibt (er nennt zusätzlich die Entscheidung Ersatz oder Erstattung)."
+ },
+ {
+  "nr": "M2",
+  "art": "richtlinie",
+  "handle": "terms-of-service",
+  "id": "gid://shopify/ShopPolicy/50587271553",
+  "vorher": "Bei Mängeln informiere uns bitte innerhalb von 7 Tagen ab Erhalt der Ware unter info@luxestyle.ch.",
+  "nachher": "Bei Mängeln informiere uns bitte innerhalb von 30 Tagen ab Erhalt der Ware unter info@luxestyle.ch.",
+  "hinweis": "AGB, Abschnitt Gewährleistung: nur die Zahl. Der Folgesatz (selbst gestaltete Artikel, Paket kommt nicht an, später entdeckter Mangel) und «gesetzliche Rechte bleiben unberührt» bleiben."
+ },
+ {
+  "nr": "M3",
+  "art": "seite_veroeffentlicht",
+  "handle": "garantie",
+  "id": "gid://shopify/Page/697899942273",
+  "vorher": "Schick uns innert 7 Tagen nach Erhalt (bei selbst gestalteten Artikeln bitte innert 30 Tagen) ein Foto oder kurzes Video",
+  "nachher": "Schick uns innert 30 Tagen nach Erhalt ein Foto oder kurzes Video",
+  "hinweis": "Seite «Garantie»: die Klammer für selbst gestaltete Artikel entfällt, weil jetzt für alle Ware 30 Tage gelten."
+ },
+ {
+  "nr": "M4",
+  "art": "seite_veroeffentlicht",
+  "handle": "about-us-en",
+  "id": "gid://shopify/Page/698055164289",
+  "vorher": "Tell us within 7 days with a photo",
+  "nachher": "Tell us within 30 days with a photo",
+  "hinweis": "Englische Seite «about-us-en» (veröffentlicht): nur die Zahl."
+ },
+ {
+  "nr": "M5",
+  "art": "seite_veroeffentlicht",
+  "handle": "refund-policy-en",
+  "id": "gid://shopify/Page/698055524737",
+  "vorher": "Send a photo within 7 days to info@luxestyle.ch.",
+  "nachher": "Send a photo within 30 days to info@luxestyle.ch.",
+  "hinweis": "Englische Seite «refund-policy-en» (veröffentlicht): nur die Zahl."
+ },
+ {
+  "nr": "M6",
+  "art": "theme_liquid",
+  "feld": "sections/lux-assistent.liquid Zeile (Antwort defekt)",
+  "vorher": "melde dich bitte <b>innerhalb von 7 Tagen nach Erhalt</b> (bei selbst gestalteten Artikeln bitte <b>innerhalb von 30 Tagen</b>) unter '+MAIL+' – mit Bestellnummer",
+  "nachher": "melde dich bitte <b>innerhalb von 30 Tagen nach Erhalt</b> unter '+MAIL+' – mit Bestellnummer",
+  "hinweis": "Chat-Assistent, Antwort «defekt»: Klammer entfällt (jetzt für alle Ware 30 Tage)."
+ },
+ {
+  "nr": "M7",
+  "art": "theme_liquid",
+  "feld": "sections/lux-assistent.liquid Zeile (Antwort Gewährleistung)",
+  "vorher": "melde dich bitte innerhalb von 7 Tagen nach Erhalt (bei selbst gestalteten Artikeln bitte innerhalb von 30 Tagen) unter '+MAIL+' (Bestellnummer, Foto oder Video)",
+  "nachher": "melde dich bitte innerhalb von 30 Tagen nach Erhalt unter '+MAIL+' (Bestellnummer, Foto oder Video)",
+  "hinweis": "Chat-Assistent, Antwort «Gewährleistung»: Klammer entfällt."
+ }
+]
