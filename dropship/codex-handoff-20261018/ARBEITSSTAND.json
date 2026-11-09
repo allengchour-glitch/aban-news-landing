@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 154,
-  "updatedAt": "2026-11-09T08:37:52+01:00",
+  "revision": 155,
+  "updatedAt": "2026-11-09T14:21:45+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-09",
     "currentDayEvidenceKind": "R154_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_AND_KLAVIYO_FLOW_REPORT_PARTIALS_UNKNOWN",
-    "currentDayEvidence": "Vor Abfragen Revision153, Projektgedächtnis und vorhandenen Tagesstand geprüft; für09.11. lag noch kein Tagesreport vor. Einmalig02.–08.11.: gültige Metricool-Kennzahl-IDs entdeckt und sechs kleine kanalgetrennte Reihen gelesen; fehlende Zeilen/null bleiben unbekannt. Genau ein Klaviyo-Flowreport nach frischer Placed-Order-MetrikW7XTVD; fehlende Flowzeilen unbekannt, alle geprüften Flows draft. Zwei Shopify-Produkte und Planung09.–17.11. gezielt gelesen; 43 ungeeignete bestehende Videoobjekte als Qualitätskorrektur auf draft/autopublish aus gesetzt und zurückgelesen. Kein breiter Verkaufsreport, keine Bestellung/Kauf-Watch, keine Verkaufsableitung. Heute ohne neuen konkreten Gegenprüfgrund Kennzahlen, Klaviyo oder breite Verkaufsdaten nicht erneut lesen.",
+    "currentDayEvidence": "Vor Abfragen Revision153, Projektgedächtnis und vorhandenen Tagesstand geprüft; für09.11. lag noch kein Tagesreport vor. Einmalig02.–08.11.: gültige Metricool-Kennzahl-IDs entdeckt und sechs kleine kanalgetrennte Reihen gelesen; fehlende Zeilen/null bleiben unbekannt. Genau ein Klaviyo-Flowreport nach frischer Placed-Order-MetrikW7XTVD; fehlende Flowzeilen unbekannt, alle geprüften Flows draft. Zwei Shopify-Produkte und Planung09.–17.11. gezielt gelesen; 43 ungeeignete bestehende Videoobjekte als Qualitätskorrektur auf draft/autopublish aus gesetzt und zurückgelesen. Kein breiter Verkaufsreport, keine Bestellung/Kauf-Watch, keine Verkaufsableitung. Heute ohne neuen konkreten Gegenprüfgrund Kennzahlen, Klaviyo oder breite Verkaufsdaten nicht erneut lesen. R155-Folgelauf14:00: Kennzahlen, Klaviyo, breite Verkaufsdaten und Bestellungen nicht erneut gelesen. Nur frische Identitäten, Planung in drei kleinen Fenstern, zwei Produktreads, Medien-/Rechteprüfung, zwei gezielte FR-Seiten/Übersetzungsressourcen und öffentliche DNS-Gegenprobe; keine Verkaufsableitung.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-09",
@@ -46,7 +46,17 @@
         "objects": 65,
         "videoQualityBlocksWritten": 43
       },
-      "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json"
+      "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json",
+      "followUpR155": {
+        "localDate": "2026-11-09",
+        "timeZurich": "14:08",
+        "metricsRepeated": false,
+        "klaviyoRepeated": false,
+        "ordersQueried": false,
+        "planningObjects": 59,
+        "targetedProducts": 2,
+        "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json"
+      }
     },
     "dayHistory": [
       {
@@ -2174,19 +2184,19 @@
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r154_fresh_product_media_music_mp4_audit_540_frame_storyboard_all_gates_blocked_no_master_mp4",
+      "state": "r155_executable_unit_token_native_take_rights_and_ten_point_qa_block_no_master_mp4",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-09",
-      "belegArt": "R154_FRESH_PRODUCT_VARIANT_IMAGE_INVENTORY_MP4_MUSIC_AUDIT_18S_STORYBOARD_NO_RENDER",
-      "lastEvidence": "Shopify bestätigt Produkt15521256604033 ACTIVE und öffentlich kaufbar mit sieben aktuellen A–G-Varianten CHF34.90–51.90, echten Bildern, nicht leeren Tags ohne Sperrtag sowie untracked/CONTINUE/Menge0. Tag auswahl-offen, konkrete Variante, Motiv und physische Filmeinheit unbekannt; historische Variante56197916361089 veraltet. Elf zugängliche MP4 geprüft: keine erfüllt18s/1080×1920/30fps/540Frames. Bekannte Quelle bleibt960×540/25fps; Pflichtmusik hashgleich technisch vorhanden, aber Rechte-/Hör-/Mixabnahme offen. Derselbe Master als präziser540-Frame-Plan mit zwei alternativen Hooks fortgeführt. Kein Render, Upload oder Publish.",
-      "nextAllowedStep": "Genau eine aktuelle A–G-Ausführung wählen und mit Produkt-/Varianten-ID, SKU und echter physischer Einheit binden. Vier native Hochkanttakes derselben Einheit beschaffen: Bedienung mindestens7.6s, Projektion8.8s, Detail5.6s und Hero6.0s, mindestens1080×1920 bei echten30fps, jeweils mit SHA-256. Hashgebundenen Rechtegrant für Bearbeitung, Shop, organische Social-Nutzung, Ads, Metricool und alle sechs Kanäle sowie Musikprovenienz/Hör-/Mixabnahme schliessen. Erst danach denselben18s-/540-Frame-Master lokal rendern, vollständig prüfen und nach Inhaberfreigabe frischen Produkt-/Kanal-/Historienpreflight ausführen.",
+      "belegArt": "R155_FRESH_11_MP4_PROBE_EXECUTABLE_NATIVE_TAKE_AND_FINAL_QA_BLOCK_NO_RENDER",
+      "lastEvidence": "R155 prüfte elf lokale MP4s; keine erfüllt gemeinsam15–20s,1080×1920 und30fps. Projektquelle unverändert960×540/25fps, Pflichtmusik technisch hashgleich, aber Rechte-/Hör-/Mixabnahme offen; alter Rechtebogen unausgefüllt und an veraltete Variante gebunden. Neu gespeichert ist ein ausführbarer Aufnahme-/Abnahmeblock für denselben Master: Auswahl genau einer aktuellen A–G-Einheit, unitToken, ungeschnittener Identitätsclip, P_OPERATION/P_PROJECTION/P_DETAIL/P_HERO als native Hochkanttakes, feste Licht-/Kamera-/Kontinuitätsregeln,540-Frame-Schnitt mit zwei Hooks und Zehn-Punkte-Final-QA. Kein Render, Upload oder Publish.",
+      "nextAllowedStep": "Genau eine aktuelle A–G-Ausführung mit Varianten-ID, SKU und CJ-VID wählen. Dieselbe physische Einheit per ungeschnittenem Identitätsclip und unitToken an vier native Takes binden: Bedienung mindestens9s, Projektion10s, Detail7s, Hero8s, nativ mindestens1080×1920/echt30fps, mit SHA-256 und Kontrollframes. Einen auf alle Hashes bezogenen Rechtegrant sowie Musikrechte-/Hör-/Mixabnahme schliessen. Erst dann denselben18s-/540-Frame-Master rendern, Zehn-Punkte-QA und Inhaberabnahme durchführen und frischen Produkt-/Kanal-/Historienpreflight starten.",
       "blockers": [
-        "Keine aktuelle A–G-Ausführung, kein Motivset und keine konkrete physische Einheit für den Film gebunden.",
-        "Kein ungeschnittener Identitätsclip und keine vier nativen1080×1920/30-fps-Pflichtaufnahmen derselben Einheit.",
-        "Vorhandene960×540/25-fps-Quelle und alle geprüften kurzen Videoobjekte erfüllen die Premiumvorgabe nicht.",
-        "Kein unterschriebener hashgebundener Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanal-Rechtegrant.",
-        "Kanonische WAV technisch vorhanden; Rechteprovenienz sowie finale Hör- und Mixabnahme fehlen.",
-        "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Inhaberfreigabe oder Publikationsvorprüfung."
+        "Keine aktuelle A–G-Ausführung/Motiv/physische Einheit ausgewählt und gebunden.",
+        "Identitätsclip und vier native Hochkanttakes derselben Einheit fehlen.",
+        "Keine der elf geprüften MP4s erfüllt15–20s/1080×1920/30fps.",
+        "Hashgebundener Bearbeitungs-/Shop-/Social-/Ads-/Metricool-Rechtegrant fehlt.",
+        "Pflichtmusik technisch vorhanden; Rechteprovenienz, Hör- und Mixabnahme fehlen.",
+        "Keine gerenderte und vollständig abgenommene Master-MP4; Publikation bleibt gesperrt."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -2450,6 +2460,42 @@
           "gitBlobSha": "a9fa73c228f0e2bb04f254c8f19ad1224f9763f5",
           "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
           "readAt": "2026-11-09T08:37:52+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+          "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+          "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+          "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+          "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+          "gitBlobSha": "a53b75d6dbe29c54613ef55931924881bc656425",
+          "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.json",
+          "gitBlobSha": "d9c8535bc0a3d2963f1a9f22912017ef1dba88cb",
+          "sha256": "b89895de6cb9eac310f712be7b50a47a7b55132e78965c4c383c45d9a767df0d",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MASTER-MP4-PROBE-20261109-R155.json",
+          "gitBlobSha": "fd4e7107caf66c516c25b27e94b436d4190940ae",
+          "sha256": "f6890a5583b323909811f81dfe30cd891196b5f84ea853946b77822d63d165fd",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261109-R155.json",
+          "gitBlobSha": "ad71bce7522b525725871be9769867545282cd3d",
+          "sha256": "9a3e07753d7b7c66dcb20e7ce433e1ad805193243047023208597c31aed1924c",
+          "readAt": "2026-11-09T14:21:45+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -2806,6 +2852,23 @@
             "Kein unterschriebener hashgebundener Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanal-Rechtegrant.",
             "Kanonische WAV vorhanden; Buildmanifest, Soundfont-/Lizenzbindung sowie finale Hör- und Mixabnahme offen.",
             "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Inhaberfreigabe und kein Publikationspreflight."
+          ]
+        },
+        {
+          "at": "2026-11-09T14:21:45+01:00",
+          "sourceRevision": 154,
+          "previousState": "r154_fresh_product_media_music_mp4_audit_540_frame_storyboard_all_gates_blocked_no_master_mp4",
+          "previousLastEvidenceDate": "2026-11-09",
+          "previousBelegArt": "R154_FRESH_PRODUCT_VARIANT_IMAGE_INVENTORY_MP4_MUSIC_AUDIT_18S_STORYBOARD_NO_RENDER",
+          "previousLastEvidence": "Shopify bestätigt Produkt15521256604033 ACTIVE und öffentlich kaufbar mit sieben aktuellen A–G-Varianten CHF34.90–51.90, echten Bildern, nicht leeren Tags ohne Sperrtag sowie untracked/CONTINUE/Menge0. Tag auswahl-offen, konkrete Variante, Motiv und physische Filmeinheit unbekannt; historische Variante56197916361089 veraltet. Elf zugängliche MP4 geprüft: keine erfüllt18s/1080×1920/30fps/540Frames. Bekannte Quelle bleibt960×540/25fps; Pflichtmusik hashgleich technisch vorhanden, aber Rechte-/Hör-/Mixabnahme offen. Derselbe Master als präziser540-Frame-Plan mit zwei alternativen Hooks fortgeführt. Kein Render, Upload oder Publish.",
+          "previousNextAllowedStep": "Genau eine aktuelle A–G-Ausführung wählen und mit Produkt-/Varianten-ID, SKU und echter physischer Einheit binden. Vier native Hochkanttakes derselben Einheit beschaffen: Bedienung mindestens7.6s, Projektion8.8s, Detail5.6s und Hero6.0s, mindestens1080×1920 bei echten30fps, jeweils mit SHA-256. Hashgebundenen Rechtegrant für Bearbeitung, Shop, organische Social-Nutzung, Ads, Metricool und alle sechs Kanäle sowie Musikprovenienz/Hör-/Mixabnahme schliessen. Erst danach denselben18s-/540-Frame-Master lokal rendern, vollständig prüfen und nach Inhaberfreigabe frischen Produkt-/Kanal-/Historienpreflight ausführen.",
+          "previousBlockers": [
+            "Keine aktuelle A–G-Ausführung, kein Motivset und keine konkrete physische Einheit für den Film gebunden.",
+            "Kein ungeschnittener Identitätsclip und keine vier nativen1080×1920/30-fps-Pflichtaufnahmen derselben Einheit.",
+            "Vorhandene960×540/25-fps-Quelle und alle geprüften kurzen Videoobjekte erfüllen die Premiumvorgabe nicht.",
+            "Kein unterschriebener hashgebundener Bearbeitungs-, Shop-, Social-, Ads-, Metricool- und Kanal-Rechtegrant.",
+            "Kanonische WAV technisch vorhanden; Rechteprovenienz sowie finale Hör- und Mixabnahme fehlen.",
+            "Keine gerenderte und vollständig abgenommene18s-Master-MP4; keine Inhaberfreigabe oder Publikationsvorprüfung."
           ]
         }
       ],
@@ -3299,14 +3362,16 @@
       "id": "dns-four-approved-20261018",
       "priority": 80,
       "priorityKind": "SETZUNG",
-      "state": "blockiert",
+      "state": "r155_public_dns_still_missing_all_four_approved_records_writer_unknown",
       "title": "Vier bereits genehmigte Klaviyo-DNS-Ergänzungen",
-      "lastEvidenceDate": "2026-11-04",
-      "belegArt": "R77_OEFFENTLICHE_VIER_RECORD_GEGENPROBE_KEIN_AUTHENTIFIZIERTER_WRITER",
-      "lastEvidence": "Genau vier bereits genehmigte DNS-Ergänzungen öffentlich gegengeprüft: drei CNAME-Namen NXDOMAIN, erwarteter Klaviyo-TXT nicht in Antwort. Klaviyo sendingDomain pending. Nur öffentliche Stichprobe, kein vollständiger Zonenstand. Aktuelles Environment ohne Credentialbindungen; kein authentifizierter DNS-Writer verfügbar. Kein Write und keine erneute Genehmigungsfrage. R64, 03.11.2026: Genau vier bereits genehmigte Zielwerte öffentlich über Resolver abgefragt. Drei CNAME-Namen mit ResolverstatusNXDOMAIN, TXT@ohne erwarteten Verifizierungswert. Dies ist eine öffentliche Stichprobe, kein vollständiger Zonenstand oder authentifizierter Editor. Keine DNS-/Domainaktivierung, keine neue Freigabe nötig; Schreibzugang weiterhin nicht verifiziert. R77: Vier genaugenehmigteZielwerte am04.11. öffentlichüberGoogleDNS gegengeprüft; dreiCNAMEsNXDOMAIN,RootTXTbeantwortetaberexakterKlaviyoVerifikationswertnichtbeobachtet. Kein vollständigerZonenstand/Accountzugang. InverfügbarenToolskeinbestätigterauthentifizierterDNS-Writer;keinWriteodererneuteFreigabefrage.",
-      "nextAllowedStep": "Genehmigung der vier bestehenden Records erhalten. Sobald legitimer authentifizierter DNS-Schreibzugang verfügbar ist, vollständigen aktuellen Zonenstand lesen und nur die vier genehmigten Ergänzungen unter Erhalt aller anderen Records anwenden und einzeln zurücklesen. Öffentliche Resolverbeobachtung ersetzt keine Zone oder Kontoberechtigung; keine Schlüssel/Passwörter im Chat anfordern, keine neue Genehmigung derselben vier Records verlangen.",
+      "lastEvidenceDate": "2026-11-09",
+      "belegArt": "R155_TWO_PUBLIC_RESOLVER_READBACK_NO_WRITE",
+      "lastEvidence": "Google und Cloudflare liefern für send.luxestyle.ch, mtd1._domainkey und mtd2._domainkey jeweils NXDOMAIN; der genehmigte Root-TXT klaviyo-site-verification=XWqMAD fehlt in beiden vollständigen TXT-Antworten. Nameserver bleiben dns1.registrar-servers.com/dns2.registrar-servers.com; bestehende Zoho-SPF/DMARC/Verifikationen und zmail-DKIM öffentlich sichtbar. Die vier genehmigten Ergänzungen sind nicht umgesetzt. Authentifizierter Namecheap-Schreibzugriff bleibt unbekannt. Kein DNS-Write.",
+      "nextAllowedStep": "Sobald ein legitimer authentifizierter Namecheap-Zonenwriter verfügbar ist, exakt die vier bereits genehmigten Ergänzungen als additive Einzelrecords anlegen, bestehende Records erhalten und anschliessend autoritativ sowie über mindestens zwei öffentliche Resolver zurücklesen. Keine neue Freigabe für dieselben vier Records verlangen; keine Nameserver- oder Zonenersetzung.",
       "blockers": [
-        "Authentifizierter DNS-Schreibzugang fehlt"
+        "Kein authentifizierter DNS-Schreibzugang bestätigt.",
+        "Alle vier genehmigten Records fehlen öffentlich weiterhin.",
+        "Bestehende und ungesehene Records müssen bei einer späteren additiven Änderung erhalten bleiben."
       ],
       "acceptance": [
         "Nur exakt vier genehmigte Ergänzungen, vorhandene Records erhalten",
@@ -3332,6 +3397,24 @@
           "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json",
           "gitBlobSha": "46220aa594f1337959ba6409fdf813bc6d9ec515",
           "readAt": "2026-11-04T07:29:25.340075+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+          "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+          "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+          "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+          "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/DNS-STATUS-20261109-R155.json",
+          "gitBlobSha": "55fde76d1ae0fac6777fc76d32649591d3be4ddb",
+          "sha256": "3f10e54be62c7999488450e3db6aeeae541df96f4ff7e584b87949163de12b62",
+          "readAt": "2026-11-09T14:21:45+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3367,6 +3450,18 @@
           "previousNextAllowedStep": "Genehmigung der vier bestehenden Records erhalten. Sobald legitimer authentifizierter DNS-Schreibzugang verfügbar ist, vollständigen aktuellen Zonenstand lesen und nur die vier genehmigten Ergänzungen unter Erhalt aller anderen Records anwenden und einzeln zurücklesen. Öffentliche Resolverbeobachtung ersetzt keine Zone oder Kontoberechtigung; keine Schlüssel/Passwörter im Chat anfordern, keine neue Genehmigung derselben vier Records verlangen.",
           "previousBelegArt": "AKTUELLE_BEGRENZTE_PRUEFUNG_ENTWURF_KEINE_EIGENE_PRODUKTIVAENDERUNG",
           "previousLastEvidenceDate": "2026-11-03"
+        },
+        {
+          "at": "2026-11-09T14:21:45+01:00",
+          "sourceRevision": 154,
+          "previousState": "blockiert",
+          "previousLastEvidenceDate": "2026-11-04",
+          "previousBelegArt": "R77_OEFFENTLICHE_VIER_RECORD_GEGENPROBE_KEIN_AUTHENTIFIZIERTER_WRITER",
+          "previousLastEvidence": "Genau vier bereits genehmigte DNS-Ergänzungen öffentlich gegengeprüft: drei CNAME-Namen NXDOMAIN, erwarteter Klaviyo-TXT nicht in Antwort. Klaviyo sendingDomain pending. Nur öffentliche Stichprobe, kein vollständiger Zonenstand. Aktuelles Environment ohne Credentialbindungen; kein authentifizierter DNS-Writer verfügbar. Kein Write und keine erneute Genehmigungsfrage. R64, 03.11.2026: Genau vier bereits genehmigte Zielwerte öffentlich über Resolver abgefragt. Drei CNAME-Namen mit ResolverstatusNXDOMAIN, TXT@ohne erwarteten Verifizierungswert. Dies ist eine öffentliche Stichprobe, kein vollständiger Zonenstand oder authentifizierter Editor. Keine DNS-/Domainaktivierung, keine neue Freigabe nötig; Schreibzugang weiterhin nicht verifiziert. R77: Vier genaugenehmigteZielwerte am04.11. öffentlichüberGoogleDNS gegengeprüft; dreiCNAMEsNXDOMAIN,RootTXTbeantwortetaberexakterKlaviyoVerifikationswertnichtbeobachtet. Kein vollständigerZonenstand/Accountzugang. InverfügbarenToolskeinbestätigterauthentifizierterDNS-Writer;keinWriteodererneuteFreigabefrage.",
+          "previousNextAllowedStep": "Genehmigung der vier bestehenden Records erhalten. Sobald legitimer authentifizierter DNS-Schreibzugang verfügbar ist, vollständigen aktuellen Zonenstand lesen und nur die vier genehmigten Ergänzungen unter Erhalt aller anderen Records anwenden und einzeln zurücklesen. Öffentliche Resolverbeobachtung ersetzt keine Zone oder Kontoberechtigung; keine Schlüssel/Passwörter im Chat anfordern, keine neue Genehmigung derselben vier Records verlangen.",
+          "previousBlockers": [
+            "Authentifizierter DNS-Schreibzugang fehlt"
+          ]
         }
       ],
       "publicRecordCheckR64": {
@@ -7818,17 +7913,17 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r154_r153_product_fix_still_live_two_fr_entry_metadata_objects_approval_draft_no_write",
+      "state": "r155_self_design_fr_page_resource_and_four_translation_fields_bound_approval_draft_no_write",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-09",
-      "belegArt": "R154_FIRECRAWL_FR_HOME_SELF_DESIGN_METADATA_COUNTERCHECK_EXACT_APPROVAL_DRAFT",
-      "lastEvidence": "Der R153-Futterspender-Fix bleibt öffentlich HTTP200 mit Titel/H1 «Automatischer Futterspender für Katzen», passender Meta und Self-Canonical. Firecrawl bestätigt /fr/ mit französischem Canonical, fr-CH und französischem Titel/H1, aber deutscher Meta-/OG-Beschreibung. /fr/pages/selbst-gestalten ist HTTP200 mit französischem Canonical/Hreflang und überwiegend französischem Hauptinhalt, aber deutschem Titel, Meta, OG und H1. Genau ein eng begrenztes französisches Titel-/Meta-/OG-/H1-Paket für diese zwei Einstiegsseiten vorbereitet; kein Website-, Theme-, Locale-, Merchant- oder Versandwrite.",
-      "nextAllowedStep": "Nach Inhaberfreigabe nur die passenden Übersetzungsobjekte für /fr/ und /fr/pages/selbst-gestalten frisch lesen, exakten Vorher-Diff gegen die R154-Texte prüfen und nur diese Felder ändern. Danach beide FR-Seiten sowie deutsche Originale auf Titel, Meta, OG, H1, Canonical und Hreflang zurücklesen. Bei abweichendem Übersetzungsmapping abbrechen; keine Theme-, Locale-, Versand- oder Merchant-Einstellung bündeln.",
+      "belegArt": "R155_LIVE_FR_OUTPUT_PAGE_RESOURCE_DIGESTS_COMPLETE_TRANSLATION_DIFF_NO_WRITE",
+      "lastEvidence": "Live /fr/pages/selbst-gestalten ist HTTP200 mit korrektem FR-Canonical/Hreflang, fällt aber bei Titel, Meta, OG, H1 und Inhalt auf Deutsch zurück. Shopify Page gid://shopify/Page/698444710273 hat fr translations=[]; aktuelle Digests für title/body_html/handle/meta_title/meta_description sind gebunden. R155 enthält vollständige fachliche FR-Zielwerte für title, body_html, meta_title und meta_description; handle bleibt unverändert, H1 kommt aus closest.page.title, kein Themewrite nötig. /fr/ hat französischen Titel/H1 und aktuelle Shop-FR-Metaübersetzung, gibt öffentlich aber weiterhin deutsche Meta-/OG-Description aus; verantwortlicher Output-Override unbekannt, daher kein Homepagewrite. Keine Übersetzung oder Websiteänderung.",
+      "nextAllowedStep": "Nach ausdrücklicher Inhaberfreigabe Page698444710273 und alle vier Quelldigests unmittelbar frisch gegenprüfen. Nur FR title, body_html, meta_title und meta_description gemäss R155-Diff registrieren; handle, DE-Werte, Theme, Canonical und Hreflang erhalten. Danach DE/FR öffentlich auf Titel, Meta, OG, H1, Inhalt, Canonical und Hreflang zurücklesen. Bei Digestabweichung oder unklarem Mapping abbrechen. Homepage-Override separat lokalisieren, keinen blinden Shop-/Theme-Metawrite.",
       "blockers": [
-        "Ausdrückliche Freigabe für den genauen R154-FR-Metadatendiff steht aus.",
-        "Übersetzungsobjekt-IDs und aktueller Feldhash müssen unmittelbar vor einem Write gebunden werden.",
-        "Ein fehlerhaftes Mapping könnte deutsche Originale oder Canonicals berühren; Vorher-Diff und Live-Rücklesung sind Pflicht.",
-        "Weitere bekannte Navigations-, Merchant-, LI-Versand-, Emoji-404- und Judge.me-Themen bleiben getrennte Aufgaben."
+        "Ausdrückliche Freigabe für den feldgenauen R155-FR-Page-Diff fehlt.",
+        "Alle vier Quelldigests müssen unmittelbar vor einem Write unverändert sein.",
+        "Homepage-Description-Override ist unbekannt; vorhandene aktuelle Shop-FR-Meta wird nicht gerendert.",
+        "Weitere Navigation-/Merchant-/LI-/Judge.me-Themen bleiben getrennte Aufgaben."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -7941,6 +8036,24 @@
           "gitBlobSha": "a9fa73c228f0e2bb04f254c8f19ad1224f9763f5",
           "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
           "readAt": "2026-11-09T08:37:52+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+          "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+          "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+          "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+          "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R155.json",
+          "gitBlobSha": "b73ba66716b83267ea4e0d74268bc7d5ac540ee0",
+          "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01",
+          "readAt": "2026-11-09T14:21:45+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -8120,6 +8233,21 @@
             "Firecrawl-Map nennt eine Emoji-Produkt-URL mit live404; Aktualität der Produkt-Sitemap, Ersatzidentität und interne Links sind noch nicht gegengeprüft.",
             "Judge.me lädt clientseitig englische UI-Texte; App-Locale und sichere Änderungsoberfläche sind nicht geprüft.",
             "vidIQ lieferte keinen autorisierten LuxeStyle-Kanal; private YouTube-Analyse und Metadatenwrite bleiben blockiert."
+          ]
+        },
+        {
+          "at": "2026-11-09T14:21:45+01:00",
+          "sourceRevision": 154,
+          "previousState": "r154_r153_product_fix_still_live_two_fr_entry_metadata_objects_approval_draft_no_write",
+          "previousLastEvidenceDate": "2026-11-09",
+          "previousBelegArt": "R154_FIRECRAWL_FR_HOME_SELF_DESIGN_METADATA_COUNTERCHECK_EXACT_APPROVAL_DRAFT",
+          "previousLastEvidence": "Der R153-Futterspender-Fix bleibt öffentlich HTTP200 mit Titel/H1 «Automatischer Futterspender für Katzen», passender Meta und Self-Canonical. Firecrawl bestätigt /fr/ mit französischem Canonical, fr-CH und französischem Titel/H1, aber deutscher Meta-/OG-Beschreibung. /fr/pages/selbst-gestalten ist HTTP200 mit französischem Canonical/Hreflang und überwiegend französischem Hauptinhalt, aber deutschem Titel, Meta, OG und H1. Genau ein eng begrenztes französisches Titel-/Meta-/OG-/H1-Paket für diese zwei Einstiegsseiten vorbereitet; kein Website-, Theme-, Locale-, Merchant- oder Versandwrite.",
+          "previousNextAllowedStep": "Nach Inhaberfreigabe nur die passenden Übersetzungsobjekte für /fr/ und /fr/pages/selbst-gestalten frisch lesen, exakten Vorher-Diff gegen die R154-Texte prüfen und nur diese Felder ändern. Danach beide FR-Seiten sowie deutsche Originale auf Titel, Meta, OG, H1, Canonical und Hreflang zurücklesen. Bei abweichendem Übersetzungsmapping abbrechen; keine Theme-, Locale-, Versand- oder Merchant-Einstellung bündeln.",
+          "previousBlockers": [
+            "Ausdrückliche Freigabe für den genauen R154-FR-Metadatendiff steht aus.",
+            "Übersetzungsobjekt-IDs und aktueller Feldhash müssen unmittelbar vor einem Write gebunden werden.",
+            "Ein fehlerhaftes Mapping könnte deutsche Originale oder Canonicals berühren; Vorher-Diff und Live-Rücklesung sind Pflicht.",
+            "Weitere bekannte Navigations-, Merchant-, LI-Versand-, Emoji-404- und Judge.me-Themen bleiben getrennte Aufgaben."
           ]
         }
       ],
@@ -11730,6 +11858,21 @@
         "readAt": "2026-11-09T08:37:52+01:00"
       },
       "action": "R154: Shopify and exact Metricool identity were freshly verified. Forty-three active video objects failed existing music, speech, professional-master, product-binding or rights gates and were changed in place to draft with autopublish off while UUID, copy, media and schedule were preserved; final readback shows zero active video objects. Seven-day channel metrics, two products, the single18-second master plan, Klaviyo flows and two French entry pages were read in bounded scopes. No new post, publication, render, customer contact, discount, budget, shop, flow, DNS, Merchant or order-watch action. Tasks remain24."
+    },
+    {
+      "revision": 155,
+      "at": "2026-11-09T14:21:45+01:00",
+      "actor": "codex",
+      "source": {
+        "reportPath": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+        "reportGitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+        "evidencePath": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+        "evidenceGitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+        "masterPath": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+        "masterGitBlobSha": "a53b75d6dbe29c54613ef55931924881bc656425",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "action": "R155: 14:00 follow-up reused today’s R154 Metricool metrics and Klaviyo report without repeating them. Shopify and exact Metricool identity matched. Future schedule read in three bounded windows:59 objects,20 active photos,39 drafts,zero active videos and no active same-channel collisions or duplicates; one existing12:15 FB/IG photo post was read as PUBLISHED. Two products were unchanged. The same projector master gained an executable unit-token/native-take/rights/ten-point-QA block but remains without an MP4. French self-design Page698444710273 was bound to four exact translation fields/digests and a complete approval draft; homepage override remains unknown. Four approved DNS records remain publicly absent. No social, shop, flow, DNS, customer, budget, discount, Merchant, order or paid-render write. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -11939,18 +12082,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 154,
+    "documentationRevision": 155,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "18fe6cfdfa9e3c921faf67c66a5a1d8c6feebebb",
+    "gitBlobSha": "8dc1cd2f069ce7dce333253137f1d8941cef8d83",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "711ca04b9361d3046178fb24e1ba20b30ffc5f4f",
+    "entryGitBlobSha": "cdaa9767949ccaa11153612b96614d10c3775877",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R154 Metricool quality blocks, seven-day coverage, channel metrics, products, master gates, Klaviyo and FR sales-action handoff",
-    "latestCanonicalRevision": 154,
-    "snapshotNote": "R154 package and full Metricool readback are durable on the handoff branch. Claude receipt remains unknown until an actual receipt exists.",
+    "scope": "R155 14h planning readback, targeted products, executable master intake/QA, exact FR page diff and DNS readback",
+    "latestCanonicalRevision": 155,
+    "snapshotNote": "R155 artifacts are durable on the handoff branch; daily metrics/Klaviyo not repeated. Claude receipt remains unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -12357,6 +12500,45 @@
         "gitBlobSha": "a9fa73c228f0e2bb04f254c8f19ad1224f9763f5",
         "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
         "readAt": "2026-11-09T08:37:52+01:00"
+      },
+      "claudeReceipt": "unknown_no_receipt"
+    },
+    "run155": {
+      "report": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+        "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+        "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "evidence": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+        "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+        "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "master": {
+        "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+        "gitBlobSha": "a53b75d6dbe29c54613ef55931924881bc656425",
+        "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "metricool": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-PLAN-20261109-R155.json",
+        "gitBlobSha": "788f04c2ea6a56e1f94bda7b313ee3ac5ba5cd1c",
+        "sha256": "a4445009da3054071b08750202c4f7b615b2856ac23c9cdd4471d75ade4f1b56",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "frDiff": {
+        "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R155.json",
+        "gitBlobSha": "b73ba66716b83267ea4e0d74268bc7d5ac540ee0",
+        "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "dns": {
+        "path": "dropship/codex-handoff-20261018/DNS-STATUS-20261109-R155.json",
+        "gitBlobSha": "55fde76d1ae0fac6777fc76d32649591d3be4ddb",
+        "sha256": "3f10e54be62c7999488450e3db6aeeae541df96f4ff7e584b87949163de12b62",
+        "readAt": "2026-11-09T14:21:45+01:00"
       },
       "claudeReceipt": "unknown_no_receipt"
     }
@@ -19443,6 +19625,143 @@
       "metricoolQualityBlocks": 43,
       "newSocialPosts": 0,
       "shop": 0,
+      "klaviyo": 0,
+      "dns": 0,
+      "merchant": 0,
+      "budget": 0,
+      "discount": 0,
+      "customerMessages": 0,
+      "paidRenders": 0
+    }
+  },
+  "run155": {
+    "at": "2026-11-09T14:21:45+01:00",
+    "scope": "14h_followup_identity_plan_products_master_fr_translation_binding_dns_readback_no_daily_metrics_repeat",
+    "identity": {
+      "shop": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "allSixChannelsMatched": true
+    },
+    "dailyReadLimit": {
+      "metricoolMetricsRepeated": false,
+      "klaviyoRepeated": false,
+      "ordersQueried": false
+    },
+    "metricool": {
+      "futureObjects": 59,
+      "activeObjects": 20,
+      "draftObjects": 39,
+      "activeVideoObjects": 0,
+      "duplicatesOrCollisions": 0,
+      "publishedReadback": {
+        "id": 414929635,
+        "uuid": "-8720943201794045273",
+        "time": "2026-11-09T12:15:00+01:00",
+        "networks": [
+          "facebook",
+          "instagram"
+        ],
+        "attribution": "existing process; not this run"
+      },
+      "gaps": {
+        "tiktokThreadsYoutube": "entire window",
+        "pinterestFrom": "2026-11-15",
+        "facebookInstagramFrom": "2026-11-16"
+      },
+      "writes": 0
+    },
+    "products": {
+      "checked": 2,
+      "changesSinceR154": 0,
+      "socialFilmGates": "blocked"
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "renderedMp4": false,
+      "newArtifact": "executable intake and ten-point QA block",
+      "renderUploadPublish": "blocked"
+    },
+    "salesAction": {
+      "resourceId": "gid://shopify/Page/698444710273",
+      "frTranslationsCurrent": 0,
+      "fields": [
+        "title",
+        "body_html",
+        "meta_title",
+        "meta_description"
+      ],
+      "approvalDraftOnly": true,
+      "writes": 0
+    },
+    "dns": {
+      "approvedRecordsPubliclyPresent": 0,
+      "writes": 0,
+      "authenticatedWriter": "unknown"
+    },
+    "sources": {
+      "report": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+        "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+        "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "evidence": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+        "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+        "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "masterMd": {
+        "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+        "gitBlobSha": "a53b75d6dbe29c54613ef55931924881bc656425",
+        "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "masterJson": {
+        "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.json",
+        "gitBlobSha": "d9c8535bc0a3d2963f1a9f22912017ef1dba88cb",
+        "sha256": "b89895de6cb9eac310f712be7b50a47a7b55132e78965c4c383c45d9a767df0d",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "metricool": {
+        "path": "dropship/codex-handoff-20261018/METRICOOL-PLAN-20261109-R155.json",
+        "gitBlobSha": "788f04c2ea6a56e1f94bda7b313ee3ac5ba5cd1c",
+        "sha256": "a4445009da3054071b08750202c4f7b615b2856ac23c9cdd4471d75ade4f1b56",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "products": {
+        "path": "dropship/codex-handoff-20261018/PRODUKTPRUEFUNG-20261109-R155.json",
+        "gitBlobSha": "ad71bce7522b525725871be9769867545282cd3d",
+        "sha256": "9a3e07753d7b7c66dcb20e7ce433e1ad805193243047023208597c31aed1924c",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "frDiff": {
+        "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R155.json",
+        "gitBlobSha": "b73ba66716b83267ea4e0d74268bc7d5ac540ee0",
+        "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "dns": {
+        "path": "dropship/codex-handoff-20261018/DNS-STATUS-20261109-R155.json",
+        "gitBlobSha": "55fde76d1ae0fac6777fc76d32649591d3be4ddb",
+        "sha256": "3f10e54be62c7999488450e3db6aeeae541df96f4ff7e584b87949163de12b62",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      },
+      "mp4Probe": {
+        "path": "dropship/codex-handoff-20261018/MASTER-MP4-PROBE-20261109-R155.json",
+        "gitBlobSha": "fd4e7107caf66c516c25b27e94b436d4190940ae",
+        "sha256": "f6890a5583b323909811f81dfe30cd891196b5f84ea853946b77822d63d165fd",
+        "readAt": "2026-11-09T14:21:45+01:00"
+      }
+    },
+    "writes": {
+      "metricool": 0,
+      "newSocialPosts": 0,
+      "shop": 0,
+      "translations": 0,
       "klaviyo": 0,
       "dns": 0,
       "merchant": 0,
