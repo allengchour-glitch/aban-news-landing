@@ -647,7 +647,8 @@ szenario('kontrast-barrierefreiheit', true, async (b, srv) => {
   // Beschriftungen
   const ohneName = await p.evaluate(() => [...document.querySelectorAll('.lsp6 button, .lsp6 input:not([type=hidden]), .lsp6 select, .lsp6 textarea')].filter((e) => !e.closest('[hidden]') && !(e.getAttribute('aria-label') || e.textContent.trim() || e.title || (e.labels && e.labels.length) || e.placeholder)).map((e) => e.outerHTML.slice(0, 60)));
   pruefe('jedes Bedienelement hat einen Namen', ohneName.length === 0, ohneName.join(' | '));
-  pruefe('Reiter: Rolle tablist/tab mit aria-selected', (await p.locator('[role="tablist"] [role="tab"]').count()) === 4 && (await p.locator('[role="tab"][aria-selected="true"]').count()) === 1);
+  // Reiter der Platzierungen (.lsp6-tabs): vier. Mit V6_BEARBEITEN=fehlt/1 (Standard der echten Seite) kommt die Reiterleiste der Ansichten dazu (ebenfalls role=tablist, bei Vorschaudaten): sie hat eigene Prüfungen in bearbeiten_test.mjs und darf hier nicht mitgezählt werden
+  pruefe('Reiter: Rolle tablist/tab mit aria-selected', (await p.locator('.lsp6-tabs[role="tablist"] [role="tab"]').count()) === 4 && (await p.locator('.lsp6-tabs [role="tab"][aria-selected="true"]').count()) === 1);
   pruefe('Statusfeld ist eine Live-Region', (await status(p).getAttribute('aria-live')) === 'polite');
   pruefe('Fokusring sichtbar (outline bei :focus-visible)', await p.evaluate(() => [...document.styleSheets].some((ss) => [...ss.cssRules].some((r) => r.selectorText && /focus-visible/.test(r.selectorText) && /outline/.test(r.cssText)))));
   await s.schliessen();

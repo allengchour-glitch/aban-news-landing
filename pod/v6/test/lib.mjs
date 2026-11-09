@@ -304,7 +304,11 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     if (opt.warenkorbVerzoegerung) await new Promise((r) => setTimeout(r, opt.warenkorbVerzoegerung));
     route.fulfill({ status: opt.warenkorbFehler ? 422 : 200, contentType: 'application/json', body: JSON.stringify(opt.warenkorbFehler ? { description: 'mock-warenkorb-fehler' } : { id: 1, items: [] }) });
   });
-  await page.goto(`${basis}/mock.html?${opt.query || ''}`, { waitUntil: 'domcontentloaded' });
+  // V6_BEARBEITEN (Umgebung): Wert für data-bearbeiten, wenn die Abfrage keinen nennt. Vorgabe der Attrappe ist «0» (Verhalten von 6.3.1: die zwei alten Schalter); mit V6_BEARBEITEN=fehlt fehlt das Attribut,
+  // wie in einem Shop ohne Rollout-Eingriff (Startansicht «Bearbeiten», drei Reiter), mit 1 oder angebot gilt der jeweilige Wert. So laufen editor_test und vorschau_test auch im Standard der echten Seite.
+  let query = opt.query || '';
+  if (process.env.V6_BEARBEITEN && !/(^|&)bearbeiten=/.test(query)) query += (query ? '&' : '') + 'bearbeiten=' + process.env.V6_BEARBEITEN;
+  await page.goto(`${basis}/mock.html?${query}`, { waitUntil: 'domcontentloaded' });
   return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
 }
 

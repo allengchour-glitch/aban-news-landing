@@ -1,7 +1,8 @@
 /**
  * Mutationsprobe für den Editor v6 und den Kartenbauer: baut absichtlich Fehler in KOPIEN von lspod-designer-v6.js und werkzeug/karte_fuer_editor.mjs ein (die Dateien im Repo
  * werden nie verändert) und prüft, dass die Tests rot werden: zuerst unit_test.mjs, dann (falls grün geblieben, nur bei Mutanten des Editors) die Kern-Szenarien von vorschau_test.mjs und editor_test.mjs.
- * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Mutanten: M/N (Editor 6.1.0), W (Editor 6.2.0: Qualitätstor, Vorschau, Entwurf), B (Editor 6.4.0: «Bearbeiten | Druckversion | Vorschau», Zoomstufen, Schichten, Fehler A bis D; B55 bis B87: Korrekturrunde vom 09.11.2026 nach drei unabhängigen Prüfern, darunter die Mutanten, die der Code-Prüfer als überlebend fand, und die der Korrekturen und der Genauigkeit der «Gleichen Vorschau»), K (Kartenbauer), V (Vorschaubauer, nur unit_test).
+ * Gleichwertige Mutanten (kein sichtbarer Unterschied in Chromium) stehen mit Begründung unten bei ihrem Muster; B63 und B64 sind nur in einer Umgebung ohne ResizeObserver sichtbar (Szenario ohne-resizeobserver).
  * Stand 6.4.0: die Muster N05 und N12 sind entfernt (der Code, den sie trafen, gibt es seit 6.3.0 nicht mehr: Prüfung des Standes statt Variantenvergleich, kein Verkleinern nach der Freigabe); M32, N18 und W27 sind an den Code von 6.3.0/6.4.0 angepasst.
  * Eine Mutation gilt als erkannt, wenn einer der Läufe mit Fehler endet (Exit-Code ungleich null, vom Test selbst beendet). Überlebt eine, fehlt eine Prüfung.
  * Absicherungen (nach der Gegenlesung vom 06.11.2026): (1) VOR dem ersten Mutanten läuft jede benutzte Stufe auf dem UNVERÄNDERTEN Code; ist sie dort rot, bricht die Probe ab (sonst gälte jeder Mutant
@@ -161,8 +162,8 @@ const MUTANTEN = [
   ['B07 Tor: Platzierung ohne Produktfoto-Adapter bekommt «Bearbeiten» auf dem Produkt', "if (spec.art !== 'flach') return false;\n      var vl = geo(p).vorlage;", "var vl = geo(p).vorlage;"],
   ['B08 Tor: Vorlage ohne bekanntes Produktfoto bekommt «Bearbeiten» auf dem Produkt', "return !!bildAdresse(spec.m, vl && vl.bildUrl);", "return true;"],
   ['B09 Tor: data-bearbeiten=0 schaltet «Bearbeiten» auf dem Produkt nicht ab', "if (legacy || bearbeitenModus === 'aus' || !vorschauDaten || !p || !platzierungIn(karte, p.id)) return false;", "if (legacy || !vorschauDaten || !p || !platzierungIn(karte, p.id)) return false;"],
-  ['B10 Schalter: «aus» als Wort wird nicht erkannt', "return a === '0' || a === 'aus' ? 'aus' : a === 'angebot' ? 'angebot' : 'start';", "return a === '0' ? 'aus' : a === 'angebot' ? 'angebot' : 'start';"],
-  ['B11 Schalter: «angebot» wird nicht erkannt', "return a === '0' || a === 'aus' ? 'aus' : a === 'angebot' ? 'angebot' : 'start';", "return a === '0' || a === 'aus' ? 'aus' : 'start';"],
+  ['B10 Schalter: «aus» als Wort wird nicht erkannt', "return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus' : a === 'angebot' ? 'angebot' : 'start';", "return /^(0)$/.test(a) ? 'aus' : a === 'angebot' ? 'angebot' : 'start';"],
+  ['B11 Schalter: «angebot» wird nicht erkannt', "return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus' : a === 'angebot' ? 'angebot' : 'start';", "return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus' : 'start';"],
   ['B12 Schalter: der v5-Modus bekommt die Reiter', "if (legacy) return 'aus';\n      var a = container.getAttribute('data-bearbeiten');", "var a = container.getAttribute('data-bearbeiten');"],
   ['B13 Angebot: Start nicht in «Druckversion»', "var wunsch = st.sichtWunsch || (bearbeitenModus === 'angebot' ? 'druck' : 'bearbeiten');", "var wunsch = st.sichtWunsch || 'bearbeiten';"],
   ['B14 Wunsch des Kunden wird nicht gemerkt (Platzierungswechsel wirft ihn zurück)', "if (tabArt) st.sichtWunsch = art;\n      sichtAnwenden(art);", "sichtAnwenden(art);"],
@@ -175,7 +176,7 @@ const MUTANTEN = [
   ['B21 Zoomstufen in falscher Reihenfolge', "var ZOOM_STUFEN = ['vorlage', 'produkt', 'flaeche'];", "var ZOOM_STUFEN = ['flaeche', 'produkt', 'vorlage'];"],
   ['B22 Zoom ohne Begrenzung auf die Stufen', "i = Math.max(0, Math.min(ZOOM_STUFEN.length - 1, i));", ""],
   ['B23 Zoom wirkt auch ausserhalb von «Bearbeiten» auf dem Produkt', "if (ZOOM_STUFEN[i] === st.zoom || !produktBuehne()) return;", "if (ZOOM_STUFEN[i] === st.zoom) return;"],
-  ['B24 Ansichtswechsel baut die Bühne nicht neu', "if (ui.fensterGebaut !== fensterSchluessel()) { buehneAufbauen(); metaAktualisieren(); alleZeichnen(); }\n    }\n    /** Bietet dieses Modell", "}\n    /** Bietet dieses Modell"],
+  ['B24 Ansichtswechsel baut die Bühne nicht neu', "if (neuLaden || ui.fensterGebaut !== fensterSchluessel()) { buehneAufbauen(); metaAktualisieren(); alleZeichnen(); }\n    }\n    /** Bietet dieses Modell", "}\n    /** Bietet dieses Modell"],
   ['B25 Fehler A: Theme-Regel img{max-width:100%} quetscht das Vorlagenbild wieder', ".lsp6-bg,.lsp6-tpl{position:absolute;display:block;max-width:none!important;max-height:none!important;", ".lsp6-bg,.lsp6-tpl{position:absolute;display:block;"],
   ['B26 Vorlagenbild fängt Zeigerereignisse ab', "max-height:none!important;pointer-events:none;user-select:none;-webkit-user-drag:none}',   // Fund A", "max-height:none!important;user-select:none;-webkit-user-drag:none}',   // Fund A"],
   ['B27 Schicht: Vorlagenbild liegt unter den Ebenen', "'.lsp6-stage[data-ansicht=\"bearbeiten\"] .lsp6-tpl[data-schicht=\"oben\"]{z-index:3}',", "'.lsp6-stage[data-ansicht=\"bearbeiten\"] .lsp6-tpl[data-schicht=\"oben\"]{z-index:1}',"],
@@ -206,6 +207,41 @@ const MUTANTEN = [
   ['B52 Bewegung: reduzierte Bewegung wird nicht beachtet', "'@media (prefers-reduced-motion:reduce){.lsp6 *,.lsp6 *::before,.lsp6 *::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}',", ""],
   ['B53 Druckdatei hängt von der Ansicht ab (Bearbeiten erzeugt kleinere Datei)', "var sk = opt.skala > 0 && opt.skala < 1 ? opt.skala : 1;", "var sk = opt.skala > 0 && opt.skala < 1 ? opt.skala : (st.sicht === 'bearbeiten' ? 0.99 : 1);"],
   ['B54 Reiter «Vorschau» zeigt nicht auf ihre Fläche (aria-controls)', "ui.sichtProdukt.setAttribute('aria-controls', ui.pvWrap.id || '');", ""],
+  // ── Korrektur nach der Gegenprüfung vom 09.11.2026: die 25 eigenen Mutanten des Code-Prüfers (B55 bis B63, B65), die Mutanten der Korrekturen (B66 bis B85) und der Genauigkeit (B86 bis B90) ──
+  ['B55 Schicht der Griffe folgt beim reinen Ziehen nicht (knotenZeichnen; der ResizeObserver sieht nur Grössenänderungen)', "if (st.sel === e.id) chromeNachziehen();\n      vorschauPlanen();", "vorschauPlanen();"],
+  ['B56 Hinweiszeile unter den Reitern nie sichtbar', "ui.sichtNote.hidden = !hinweis;", "ui.sichtNote.hidden = true;"],
+  ['B57 Rahmen der Schicht 5 px zu hoch', "'px;top:' + ((bh - lh) / 2 - 8) + 'px;width:'", "'px;top:' + ((bh - lh) / 2 - 3) + 'px;width:'"],
+  ['B58 Rückfall der Vorschau ohne Reiter «Druckversion» bleibt in der Vorschau', "sichtSetzen(sichtMoeglich('druck') ? 'druck' : 'bearbeiten');", "sichtSetzen('druck');"],
+  ['B59 Hilfslinien bleiben unter dem Produktfoto', "if (ui.guideV.parentNode !== ziel) { ziel.appendChild(ui.guideV); ziel.appendChild(ui.guideH); }", ""],
+  ['B60 Zoom: die Ebene wird beim Stufenwechsel abgewählt', "st.zoom = ZOOM_STUFEN[i];\n      buehneAufbauen();", "st.zoom = ZOOM_STUFEN[i]; abwaehlen();\n      buehneAufbauen();"],
+  ['B61 Fehler einer veralteten Adresse erzwingt den Rückfall', "if (!ui.tplFehlerUrl || ui.tplFehlerUrl !== ui.tpl.getAttribute('src') || !produktBuehne()) return;", "if (!ui.tplFehlerUrl || !produktBuehne()) return;"],
+  ['B62 Schicht der Griffe ohne Mindesthöhe', "var bw = Math.max(CHROME_MIN, lw), bh = Math.max(CHROME_MIN, lh), t = k.root.style.transform;", "var bw = Math.max(CHROME_MIN, lw), bh = lh, t = k.root.style.transform;"],
+  ['B63 Zoom zeichnet die Ebenen nicht neu (nur ohne ResizeObserver sichtbar)', "st.zoom = ZOOM_STUFEN[i];\n      buehneAufbauen(); metaAktualisieren(); alleZeichnen();", "st.zoom = ZOOM_STUFEN[i];\n      buehneAufbauen(); metaAktualisieren();"],
+  ['B64 Foto-Ebene: die Schicht wird nach dem Laden nicht nachgezogen (nur ohne ResizeObserver sichtbar)', "content.addEventListener('load', function () { if (st.sel === e.id) chromeNachziehen(); });", ""],
+  // B65 (Mutant BE19 des Code-Prüfers: «Fokus bleibt auf einem verschwundenen Reiter», `if (hatFokus && …) {` → `if (false) {`) ist GLEICHWERTIG in Chromium und steht deshalb nicht in der Liste: bei flachen Platzierungen verschwinden
+  // «Druckversion» und «Vorschau» immer zusammen (beide hängen am selben Produktfoto), die Reiterleiste wird verborgen, und Chromium nimmt den Fokus von einem verborgenen Element von selbst weg. Gemessen: Mutant überlebt alle Suiten.
+  ['B66 Griffe bleiben am Bühnenrand beschnitten (keine Verschiebung nach innen)', "      griffeInnen(k, bw, bh);\n    }", "    }"],
+  ['B67 Griffe dürfen bis auf die Kante der Bühne (halb beschnitten)', "var GRIFF_RAND = 17;", "var GRIFF_RAND = 0;"],
+  ['B68 Verschiebung der Griffe in die gedrehte Schicht falsch zurückgerechnet', "'px,' + (dy * co - dx * si) + 'px)'", "'px,' + (dy * co + dx * si) + 'px)'"],
+  ['B69 Verschiebung der Griffe bleibt in der Druckversion stehen', "if (k !== gewaehlt) { k.handle.style.transform = ''; k.del.style.transform = ''; }", ""],
+  ['B70 nur der Skalieren-Griff rutscht nach innen, der Löschknopf nicht', "[[k.handle, 1], [k.del, -1]].forEach(", "[[k.handle, 1]].forEach("],
+  ['B71 Schalter: off, false, nein, no schalten die Ansicht nicht ab', "return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus'", "return /^(0|aus)$/.test(a) ? 'aus'"],
+  ['B72 Schalter: Gross- und Kleinschreibung und Leerzeichen zählen', "a = a === null ? '' : String(a).trim().toLowerCase();", "a = a === null ? '' : String(a);"],
+  ['B73 nach einem Ladefehler des Produktfotos kein neuer Versuch bei erneuter Wahl', "var neuLaden = art === 'bearbeiten' && !!ui.tplFehlerUrl;", "var neuLaden = false;"],
+  ['B74 Die Bühne lädt das Produktfoto von der Printful-Adresse statt vom Spiegel der Vorschau', "bildSetzen(ui.tpl, (tabArt && bildAdresse(vorschauModell(), vl.bildUrl)) || vl.bildUrl || null);", "bildSetzen(ui.tpl, vl.bildUrl || null);"],
+  ['B75 Text der Bühne: Gewicht nicht an die Leinwand angeglichen (800 statt bold)', "s.fontFamily = f.familie; s.fontWeight = f.gewicht;", "s.fontFamily = f.familie;"],
+  ['B76 Text der Bühne: Schriftfamilie nicht an die Leinwand angeglichen', "s.fontFamily = f.familie; s.fontWeight = f.gewicht;", "s.fontWeight = f.gewicht;"],
+  ['B77 Text der Bühne: Schrägstellung der Ebene wird ignoriert (immer aufrecht)', "s.fontStyle = e.italic ? 'italic' : 'normal';", "s.fontStyle = 'normal';"],
+  ['B78 Text der Bühne: Schatten der weissen Schrift wie in 6.3.1', "'0 0 ' + px * 0.12 + 'px rgba(0,0,0,.4)'", "'0 1px 3px rgba(0,0,0,.45)'"],
+  ['B79 Text der Bühne: senkrechte Lage nicht an die Leinwand angeglichen', "s.position = 'relative'; s.top = grundlinienVersatz(f) * px + 'px';", ""],
+  ['B80 Text der Bühne: Versatz mit falschem Vorzeichen', "v = (-mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;", "v = (mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;"],
+  ['B81 Text der Bühne: Versatz ohne Schriftgrösse (feste Pixel)', "s.top = grundlinienVersatz(f) * px + 'px';", "s.top = grundlinienVersatz(f) * 40 + 'px';"],
+  ['B82 Text: Gewicht der Handschrift immer fett', "gewicht: m[2] ? (m[2] === 'bold ' ? '700' : '900') : '400', familie: m[4] };", "gewicht: m[2] ? (m[2] === 'bold ' ? '700' : '900') : '700', familie: m[4] };"],
+  ['B83 Griffe: Mitte des Griffs 6 px falsch gerechnet (Überstand 0 statt 6)', "var GRIFF_UEBERSTAND = 6;", "var GRIFF_UEBERSTAND = -9;"],
+  ['B84 Genauigkeit: Motiv der Bühne 3 % zu gross gegenüber der Vorschau', "s.width = bildBreitePx(e, a.w) + 'px';", "s.width = bildBreitePx(e, a.w) * 1.03 + 'px';"],
+  ['B85 Genauigkeit: Motiv der Bühne 2,7 mm (0,33 % der Bildbreite) zu weit rechts', "k.root.style.transform = 'translate(' + (e.cx * a.w) + 'px,'", "k.root.style.transform = 'translate(' + (e.cx * a.w + a.w * 0.009) + 'px,'"],
+  ['B86 Genauigkeit: Druckfläche der Bühne 2 % zu breit', "var box = 'left:' + PCT(fl) + ';top:' + PCT(fo) + ';width:' + PCT(fb) + ';height:' + PCT(fh);", "var box = 'left:' + PCT(fl) + ';top:' + PCT(fo) + ';width:' + PCT(fb * 1.02) + ';height:' + PCT(fh);"],
+  ['B87 Genauigkeit: Produktfoto der Bühne um 0,3 % der Bühnenbreite verschoben', "var lage = 'left:' + PCT((0 - w.x) / w.w) + ';top:'", "var lage = 'left:' + PCT((0 - w.x) / w.w + 0.003) + ';top:'"],
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)

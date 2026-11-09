@@ -614,6 +614,10 @@ pruefe('v6.3.0 bleibt für bestehende SRI-Tags bytegleich',
 const v631 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.3.1.js'));
 pruefe('v6.3.1 bleibt bytegleich (Rücknahme)', createHash('sha256').update(v631).digest('hex') === '1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0' && v631.length === 228826);
 
+// 6.1.0 (lspod-designer-v6.js) ist die Rücknahme der ältesten Fassung: bytegleich, wie sie seit #2965 (POD-Texte auf Deutsch) in main steht. Die README nannte lange einen älteren Anfang des Hashes (ffdaa9afc48b).
+const v610 = readFileSync(join(hier, '..', 'lspod-designer-v6.js'));
+pruefe('lspod-designer-v6.js (6.1.0) bleibt bytegleich (Rücknahme)', createHash('sha256').update(v610).digest('hex') === '0e85515252dcbbf7a3afc6808664c7c3df8601171ca11ecbd19dbb38cb302566' && v610.length === 150289);
+
 for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js']) {
   const s = readFileSync(join(hier, '..', name), 'utf8');
   pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,

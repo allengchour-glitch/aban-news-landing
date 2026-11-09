@@ -54,7 +54,9 @@ const BILDER = {
   },
 };
 const GEISTER = { printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: geisterPng() } : null) };
-const WEISS_DECKEND = { printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: pngRGBA(1000, 1000, () => [255, 255, 255, 255]) } : null) };
+// Seit der Korrektur zu 6.4.0 lädt die Bühne das Produktfoto vom Spiegel (wie die Vorschau), wo die Vorschaudaten ihn kennen (spiegel=1, Vorgabe der Test-Karten): beide Adressen bekommen dasselbe Bild
+const MIRROR = /\/luxe-vorschau-[0-9a-f]+\.png/;
+const WEISS_DECKEND = { printfulBild: (u) => (/\/m\//.test(u) ? { typ: 'image/png', body: pngRGBA(1000, 1000, () => [255, 255, 255, 255]) } : null), shopifyBild: (u) => (MIRROR.test(u) ? { typ: 'image/png', body: pngRGBA(1000, 1000, () => [255, 255, 255, 255]) } : null) };
 
 async function oeffnen(b, srv, query, opt = {}) {
   const s = await seiteOeffnen(b, srv.url, { ...PC, printfulBild: BILDER.printfulBild, ...opt, query });
@@ -106,9 +108,9 @@ function sollLage(vl, art) {
   const w = erwFenster(vl, art);
   return { hl: (vl.flaecheLinks - w.x) / w.w, ho: (vl.flaecheOben - w.y) / w.h, hb: vl.flaecheBreite / w.w, hh: vl.flaecheHoehe / w.h, tl: (0 - w.x) / w.w, to: (0 - w.y) / w.h, tb: vl.vorlageBreite / w.w, th: vl.vorlageHoehe / w.h, asp: w.w / w.h };
 }
-function lagePruefen(name, ist, soll, eps = 0.004) {
+function lagePruefen(name, ist, soll, eps = 0.0012) {   // GEMESSEN weicht die Bühne höchstens 0,13 Vorlagenpixel (0,004 %) von der Rechnung ab; 0,12 % der Bühnenbreite entsprechen 0,7 Bildpunkten
   for (const k of ['hl', 'ho', 'hb', 'hh', 'tl', 'to', 'tb', 'th']) nahe(`${name}: ${k}`, ist[k], soll[k], eps);
-  nahe(`${name}: Seitenverhältnis der Bühne`, ist.bw / ist.bh, soll.asp, 0.006);
+  nahe(`${name}: Seitenverhältnis der Bühne`, ist.bw / ist.bh, soll.asp, 0.002);
 }
 
 // ── 1. Reiter je Fall ───────────────────────────────────────────────────────────────────────────
@@ -155,7 +157,8 @@ szenario('angebot', true, async (b, srv) => {
   pruefe('data-bearbeiten=0: role=group mit aria-pressed (kein tablist)', await z.page.locator('[data-feld="sicht"][role="group"]').count() === 1 && (await z.page.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-pressed')) === 'true');
   await z.schliessen();
   // Schalter in der Schnittstelle: 0 und «aus» schalten «Bearbeiten auf dem Produkt» ab, 1 und angebot lassen es zu
-  for (const [wert, soll, modus] of [['0', false, 'aus'], ['aus', false, 'aus'], ['1', true, 'start'], ['angebot', true, 'angebot']]) {
+  // (Fund: ein Rollout, der «false», «off», «nein» oder «no» schreibt, schaltete die neue Ansicht still ein; Gross- und Kleinschreibung und Leerzeichen zählen nicht)
+  for (const [wert, soll, modus] of [['0', false, 'aus'], ['aus', false, 'aus'], ['false', false, 'aus'], ['off', false, 'aus'], ['nein', false, 'aus'], ['no', false, 'aus'], ['OFF', false, 'aus'], ['%20False%20', false, 'aus'], ['1', true, 'start'], ['ja', true, 'start'], ['angebot', true, 'angebot'], ['Angebot', true, 'angebot']]) {
     const m = await oeffnen(b, srv, T71.replace('bearbeiten=1', 'bearbeiten=' + wert));
     await sichtWarten(m.page);
     const r = await m.page.evaluate(() => { const ed = window.LSPOD6.editors[0]; return { modus: ed.bearbeitenModus, moeglich: ed.produktfotoMoeglich(ed.st.aktiv), tabs: [...document.querySelectorAll('.lsp6-sbtn')].filter((x) => !x.hidden).map((x) => x.textContent.trim()).join('|') }; });
@@ -528,7 +531,7 @@ const VERGLEICH = `async (a) => {
     for (let k = 0; k < 3; k++) { const d = Math.abs(BM.data[i + k] - VM.data[i + k]); sum[k] += d; if (d > mx) mx = d; }
     if (mx > 12) gross++; cnt++;
   }
-  const schwerpunkt = (O, M) => { let sx = 0, sy = 0, c = 0; for (let y = 0; y < O.height; y++) for (let x = 0; x < N; x++) { const i = (y * N + x) * 4; const d = Math.max(Math.abs(O.data[i] - M.data[i]), Math.abs(O.data[i + 1] - M.data[i + 1]), Math.abs(O.data[i + 2] - M.data[i + 2])); if (d > 40) { sx += x; sy += y; c++; } } return c ? { x: sx / c / N, y: sy / c / N, n: c } : { x: -1, y: -1, n: 0 }; };
+  const schwerpunkt = (O, M) => { let sx = 0, sy = 0, c = 0, x0 = 1e9, x1 = -1, y0 = 1e9, y1 = -1; for (let y = 0; y < O.height; y++) for (let x = 0; x < N; x++) { const i = (y * N + x) * 4; const d = Math.max(Math.abs(O.data[i] - M.data[i]), Math.abs(O.data[i + 1] - M.data[i + 1]), Math.abs(O.data[i + 2] - M.data[i + 2])); if (d > 40) { sx += x; sy += y; c++; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } } return c ? { x: sx / c / N, y: sy / c / N, n: c, bw: x1 - x0 + 1, bh: y1 - y0 + 1 } : { x: -1, y: -1, n: 0, bw: 0, bh: 0 }; };
   const sb = schwerpunkt(BO, BM), sv = schwerpunkt(VO, VM);
   return { mittel: sum.map((s) => s / cnt), anteilGross: gross / cnt, sb, sv };
 }`;
@@ -541,10 +544,18 @@ async function gleicheVorschau(p, opt = {}) {
   const zeichneV = async (name) => p.evaluate(async ([nm, W]) => { const cv = document.createElement('canvas'); cv.width = W; cv.height = W; const r = await window.LSPOD6.editors[0].vorschauZeichnen(cv, {}); window[nm] = cv; return r.ok; }, [name, px]);
   const bOhne = (await p.locator('.lsp6-stage').screenshot()).toString('base64');
   pruefe(`${opt.name}: Vorschau ohne Motiv zeichnet`, await zeichneV('__vo'));
-  const id = await motivHinzu(p, farbe);
+  let id;
+  if (opt.text) {   // Text statt Quadrat: Schrift und Schrifthöhe nach opt, Farbe nach opt.farbe (die Schriftwahl der Ebene läuft über die Schnittstelle)
+    id = await p.evaluate(([t, f, i]) => { const ed = window.LSPOD6.editors[0], e = ed.neuerText(t); e.color = f; ed.ui.schriftwahl.selectedIndex = i; ed.ui.schriftwahl.dispatchEvent(new Event('change', { bubbles: true })); return e.id; }, [opt.text, farbe, opt.schrift || 0]);
+    await bilderGeladen(p);
+    const cm0 = await p.evaluate(() => window.LSPOD6.editors[0].geo().masse);
+    await feldSetzen(p, 'X (cm)', (opt.cx ?? 0.5) * cm0.breite); await feldSetzen(p, 'Y (cm)', (opt.cy ?? 0.4) * cm0.hoehe); await feldSetzen(p, 'Schrifthöhe (mm)', opt.mm || 40);
+  } else {
+  id = await motivHinzu(p, farbe);
   await bilderGeladen(p);
   const cm = await p.evaluate(() => window.LSPOD6.editors[0].geo().masse);
   await feldSetzen(p, 'X (cm)', (opt.cx ?? 0.5) * cm.breite); await feldSetzen(p, 'Y (cm)', (opt.cy ?? 0.4) * cm.hoehe); await feldSetzen(p, 'Breite (cm)', (opt.breite ?? 0.45) * cm.breite);
+  }
   await p.evaluate(() => { const ed = window.LSPOD6.editors[0]; ed.waehlen(null); });
   await bilderGeladen(p);
   await p.waitForTimeout(150);
@@ -553,19 +564,21 @@ async function gleicheVorschau(p, opt = {}) {
   const g = await geoAktiv(p);
   const tpl = await p.evaluate(() => { const st = document.querySelector('.lsp6-stage').getBoundingClientRect(), t = document.querySelector('.lsp6-tpl').getBoundingClientRect(); return { x: t.left - st.left, y: t.top - st.top, w: t.width, h: t.height, bw: st.width, bh: st.height }; });
   const soll = sollLage(g.vl, 'vorlage');
-  nahe(`${opt.name}: Lage des Produktfotos in der Bühne (links)`, tpl.x / tpl.bw, soll.tl, 0.004); nahe(`${opt.name}: Lage des Produktfotos (oben)`, tpl.y / tpl.bh, soll.to, 0.004);
-  nahe(`${opt.name}: Grösse des Produktfotos (Breite)`, tpl.w / tpl.bw, soll.tb, 0.004); nahe(`${opt.name}: Grösse des Produktfotos (Höhe)`, tpl.h / tpl.bh, soll.th, 0.004);
+  nahe(`${opt.name}: Lage des Produktfotos in der Bühne (links)`, tpl.x / tpl.bw, soll.tl, 0.0012); nahe(`${opt.name}: Lage des Produktfotos (oben)`, tpl.y / tpl.bh, soll.to, 0.0012);
+  nahe(`${opt.name}: Grösse des Produktfotos (Breite)`, tpl.w / tpl.bw, soll.tb, 0.0012); nahe(`${opt.name}: Grösse des Produktfotos (Höhe)`, tpl.h / tpl.bh, soll.th, 0.0012);
   const erg = await p.evaluate(new Function('a', 'return (' + VERGLEICH + ')(a)'), { bOhne, bMit, vl: g.vl, tpl });
   await p.evaluate(() => { const st = document.getElementById('lsp6-test-aus'); if (st) st.remove(); });
   await p.evaluate((i) => window.LSPOD6.editors[0].entfernen(i), id);
   return erg;
 }
 function s5Pruefen(name, e, strenge = {}) {
-  if (process.env.V6_MESSWERTE) console.log(`  Messwert «Gleiche Vorschau» ${name}: mittlerer Abstand R/G/B ${e.mittel.map((x) => x.toFixed(2)).join('/')} (von 255), Pixel mit Abstand > 12: ${(e.anteilGross * 100).toFixed(2)} %, Schwerpunkt Bearbeiten ${e.sb.x.toFixed(4)}/${e.sb.y.toFixed(4)}, Vorschau ${e.sv.x.toFixed(4)}/${e.sv.y.toFixed(4)} (Bildbreite 1), Motivpixel ${e.sb.n}/${e.sv.n}`);   // nur zum Ablesen der Zahlen fürs README
+  if (process.env.V6_MESSWERTE) console.log(`  Messwert «Gleiche Vorschau» ${name}: mittlerer Abstand R/G/B ${e.mittel.map((x) => x.toFixed(2)).join('/')} (von 255), Pixel mit Abstand > 12: ${(e.anteilGross * 100).toFixed(2)} %, Schwerpunkt Bearbeiten ${e.sb.x.toFixed(4)}/${e.sb.y.toFixed(4)}, Vorschau ${e.sv.x.toFixed(4)}/${e.sv.y.toFixed(4)} (Bildbreite 1), Motivpixel ${e.sb.n}/${e.sv.n}, Umriss ${e.sb.bw}×${e.sb.bh} / ${e.sv.bw}×${e.sv.bh} px`);   // nur zum Ablesen der Zahlen fürs README
   for (let k = 0; k < 3; k++) pruefe(`${name}: mittlerer Abstand Kanal ${'RGB'[k]} im Druckbereich ≤ 4/255`, e.mittel[k] <= (strenge.mittel ?? 4), e.mittel.map((x) => x.toFixed(2)).join('/'));
   pruefe(`${name}: höchstens ${(strenge.gross ?? 0.03) * 100} % der Pixel im Druckbereich weichen um mehr als 12/255 ab`, e.anteilGross <= (strenge.gross ?? 0.03), (e.anteilGross * 100).toFixed(2) + ' %');
   pruefe(`${name}: das Motiv ist in beiden Bildern zu sehen`, e.sb.n > 200 && e.sv.n > 200, JSON.stringify([e.sb.n, e.sv.n]));
-  nahe(`${name}: Schwerpunkt des Motivs (x) ≤ 1,5 % der Bildbreite`, e.sb.x, e.sv.x, 0.015); nahe(`${name}: Schwerpunkt des Motivs (y) ≤ 1,5 % der Bildbreite`, e.sb.y, e.sv.y, 0.015);
+  // Spezifikation S5: ≤ 1,5 %. GEMESSEN liegen alle Fälle unter 0,35 % (Rauschen der Bildschirmfotos, 1 px = 0,25 %): die Schranke steht bei 0,5 %, damit eine Verschiebung des Motivs um 2,7 mm (rund 0,33 % der Bildbreite bei einer 30-cm-Druckfläche) nicht mehr unbemerkt bleibt, der Umriss darf höchstens 1,5 Bildpunkte abweichen
+  nahe(`${name}: Schwerpunkt des Motivs (x) ≤ 0,5 % der Bildbreite`, e.sb.x, e.sv.x, 0.005); nahe(`${name}: Schwerpunkt des Motivs (y) ≤ 0,5 % der Bildbreite`, e.sb.y, e.sv.y, 0.005);
+  nahe(`${name}: Breite des Motivumrisses (Bildpunkte bei 400 px Bildbreite)`, e.sb.bw, e.sv.bw, 1.5); nahe(`${name}: Höhe des Motivumrisses (Bildpunkte bei 400 px Bildbreite)`, e.sb.bh, e.sv.bh, 1.5);
 }
 szenario('gleiche-vorschau', true, async (b, srv) => {
   // drei T-Shirt-Modelle des LIVE-Bündels (71, 456, 586), je weiss; dazu schwarz mit hellem Motiv (die Schichtfolge zeigt sich nur auf dunklem Stoff)
@@ -577,6 +590,10 @@ szenario('gleiche-vorschau', true, async (b, srv) => {
     pruefe(`${name}: Bearbeiten zeigt das Produkt`, await p.evaluate(() => window.LSPOD6.editors[0].produktBuehne()));
     const e = await gleicheVorschau(p, { name });
     s5Pruefen(name, e);
+    // ein grosses Motiv (80 % der Druckbreite): sein Umriss ist rund 85 Bildpunkte breit, eine Abweichung der Grösse von 2 % fällt damit über die Schranke von 1,5 Bildpunkten
+    s5Pruefen(`${name}, grosses Motiv`, await gleicheVorschau(p, { name: `${name}, grosses Motiv`, breite: 0.8, cy: 0.42 }), { gross: 0.05 });
+    // Text (Linse «Gleiche Vorschau»: die Bühne zeichnete ihn mit anderer Schrift, anderem Gewicht und anderer Höhenlage als die Leinwand): alle fünf Schriften, 40 mm Schrifthöhe; GEMESSEN höchstens 0,33 % Abstand der Schwerpunkte
+    for (let i = 0; i < 5; i++) s5Pruefen(`${name}, Text in Schrift ${i + 1}`, await gleicheVorschau(p, { name: `${name}, Text ${i + 1}`, text: 'HEHE 24', schrift: i, mm: 40 }), { gross: 0.04 });
     pruefe(`${name}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
     await s.schliessen();
   }
@@ -906,6 +923,275 @@ szenario('statische-pruefung', true, async () => {
   pruefe('Quelltext: der Entwurf kennt keine Ansicht (ebeneFuerEntwurf/entwurfSpeichern lesen st.sicht nicht)', !/function (entwurfSpeichern|speichern|entwurfSofort)\([^)]*\) \{[^}]*st\.sicht/.test(q));
   pruefe('Quelltext: keine Berechnung der Vorschau-Canvas in knotenZeichnen (nur vorschauPlanen, die nur in «Vorschau» arbeitet)', /function vorschauPlanen\(\) \{\n *if \(st\.sicht !== 'produkt'/.test(q));
 });
+
+// ── 11. Korrekturen nach der Gegenprüfung vom 09.11.2026 ─────────────────────────────────────────
+const JUTE_V = liveVarianten(lies(`lspod-${TASCHE_ID}.karte.json`));
+const griffLage = (p) => p.evaluate(() => {
+  const r = (sel) => { const e = document.querySelector(sel); if (!e) return null; const b = e.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width, h: b.height }; };
+  return { stage: r('.lsp6-stage'), handle: r('.lsp6-handle'), del: r('.lsp6-del'), layer: r('.lsp6-layer'), chrome: r('.lsp6-chrome'), frame: r('.lsp6-chrome .lsp6-sel-frame') };
+});
+/** Liegt der runde Knopf k von g (Durchmesser 30 px, sichtbar ist die Scheibe, nicht das umschliessende Rechteck einer gedrehten Box) ganz in der Bühne? (Spielraum eps Pixel.) */
+const imStueck = (g, k, eps = 0.6) => { const m = g[k] && { x: g[k].x + g[k].w / 2, y: g[k].y + g[k].h / 2 }; return !!m && m.x - 15 >= g.stage.x - eps && m.y - 15 >= g.stage.y - eps && m.x + 15 <= g.stage.x + g.stage.w + eps && m.y + 15 <= g.stage.y + g.stage.h + eps; };
+const buehneZeigen = (p) => p.evaluate(() => document.querySelector('.lsp6-stage').scrollIntoView({ block: 'center' }));
+const mitteVon = (r) => ({ x: r.x + r.w / 2, y: r.y + r.h / 2 });
+const abstand = (a, b2) => Math.hypot(a.x - b2.x, a.y - b2.y);
+
+szenario('griffe-rand', true, async (b, srv) => {
+  // Fund (Browser-Prüfer): am Rand der Druckfläche ragten Griff und Löschknopf aus der Bühne und wurden beschnitten (Spezifikation S2: «Griffe nie beschnitten»). Nachgestellt am Bio-Jutebeutel mit
+  // einem langen Text: ohne die Korrektur lag der Griff bei X = Rand ganz ausserhalb (sichtbarer Anteil 0).
+  for (const [name, vp] of [['Handy 390 px', MOBIL], ['PC 1440 px', PC]]) {
+    const s = await oeffnen(b, srv, liveQ(TASCHE_ID, JUTE_V), vp);
+    const p = s.page;
+    await sichtWarten(p);
+    pruefe(`${name}: der Jutebeutel zeigt «Bearbeiten» auf dem Produkt`, await p.evaluate(() => window.LSPOD6.editors[0].produktBuehne()));
+    await textHinzufuegen(p, 'AUSSERHALB DER DRUCKFLAECHE');
+    const cm = await p.evaluate(() => window.LSPOD6.editors[0].geo().masse);
+    for (const [cx, cy, rot] of [[1, 0.5, 0], [0, 0.5, 0], [0.5, 0, 0], [0.5, 1, 0], [1, 1, 0], [0, 0, 0], [1, 0.5, 35], [1, 1, 200], [0, 0, 120]]) {
+      await feldSetzen(p, 'X (cm)', (cx * cm.breite).toFixed(2)); await feldSetzen(p, 'Y (cm)', (cy * cm.hoehe).toFixed(2)); await feldSetzen(p, 'Drehung °', rot);
+      await p.waitForTimeout(60); await buehneZeigen(p);
+      const g = await griffLage(p);
+      const was = `${name} X=${cx} Y=${cy} Drehung ${rot}°`;
+      pruefe(`${was}: der Skalieren-Griff liegt vollständig in der Bühne`, imStueck(g, 'handle'), JSON.stringify({ h: g.handle, st: g.stage }));
+      pruefe(`${was}: der Löschknopf liegt vollständig in der Bühne`, imStueck(g, 'del'), JSON.stringify({ d: g.del, st: g.stage }));
+      const treffer = await p.evaluate(([x1, y1, x2, y2]) => [document.elementFromPoint(x1, y1), document.elementFromPoint(x2, y2)].map((e) => (e && e.className) || ''), [g.handle.x + g.handle.w / 2, g.handle.y + g.handle.h / 2, g.del.x + g.del.w / 2, g.del.y + g.del.h / 2]);
+      pruefe(`${was}: beide sind trefferbar`, /lsp6-handle/.test(treffer[0]) && /lsp6-del/.test(treffer[1]), JSON.stringify(treffer));
+    }
+    // Der nach innen gerutschte Griff bedient weiter: am Rand (X = Rand, Y = Mitte) anfassen und nach aussen ziehen, die Skalierung folgt dem Abstand zur Mitte der Ebene
+    await feldSetzen(p, 'X (cm)', cm.breite.toFixed(2)); await feldSetzen(p, 'Y (cm)', (0.5 * cm.hoehe).toFixed(2)); await feldSetzen(p, 'Drehung °', 0);
+    await p.waitForTimeout(60); await buehneZeigen(p);
+    const g0 = await griffLage(p), e0 = (await ebenen(p))[0], C = mitteVon(g0.layer), H = mitteVon(g0.handle);
+    const Z = { x: C.x + (H.x - C.x) * 0.8, y: C.y + (H.y - C.y) * 0.8 };   // etwas kleiner ziehen (nach innen), damit das Ziel in der Bühne bleibt
+    await p.mouse.move(H.x, H.y); await p.mouse.down(); await p.mouse.move(Z.x, Z.y, { steps: 6 }); await p.mouse.up();
+    const e1 = (await ebenen(p))[0];
+    nahe(`${name}: der Griff am Bühnenrand skaliert nach dem Abstand zur Mitte der Ebene (Faktor ${(abstand(Z, C) / abstand(H, C)).toFixed(2)})`, e1.scale / e0.scale, abstand(Z, C) / abstand(H, C), 0.12);
+    const g1 = await griffLage(p);
+    pruefe(`${name}: nach dem Skalieren liegen Griff und Löschknopf weiter in der Bühne`, imStueck(g1, 'handle') && imStueck(g1, 'del'));
+    // Druckversion: die Griffe sitzen wieder in der Ebene, ohne Verschiebung (6.3.1); zurück in «Bearbeiten» sind sie wieder innen
+    await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+    pruefe(`${name}: Druckversion: Griff und Löschknopf ohne Verschiebung (transform none)`, await p.evaluate(() => ['.lsp6-handle', '.lsp6-del'].every((q) => getComputedStyle(document.querySelector(q)).transform === 'none')));
+    await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
+    const g2 = await griffLage(p);
+    pruefe(`${name}: zurück in «Bearbeiten»: Griff und Löschknopf wieder in der Bühne`, imStueck(g2, 'handle') && imStueck(g2, 'del'));
+    pruefe(`${name}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
+    await s.schliessen();
+  }
+  // Mitte der Druckfläche (kein Randfall): keine Verschiebung, die Griffe bleiben an den Ecken der Schicht
+  const t = await oeffnen(b, srv, T71);
+  await sichtWarten(t.page);
+  await textHinzufuegen(t.page, 'Mitte');
+  const gm = await griffLage(t.page);
+  pruefe('Motiv in der Mitte: Griff und Löschknopf unverschoben (transform none)', await t.page.evaluate(() => ['.lsp6-handle', '.lsp6-del'].every((q) => getComputedStyle(document.querySelector(q)).transform === 'none')) && imStueck(gm, 'handle') && imStueck(gm, 'del'));
+  await t.schliessen();
+});
+
+szenario('chrome-folgt', true, async (b, srv) => {
+  // Fund (Code-Prüfer, Mutant BE17): Rahmen, Griff und Löschknopf liegen in der Schicht über dem Foto; sie müssen dem Motiv auch beim reinen Ziehen, bei der Pfeiltaste und im Zahlenfeld folgen (nicht nur beim Skalieren)
+  const s = await oeffnen(b, srv, T71);
+  const p = s.page;
+  await sichtWarten(p);
+  await textHinzufuegen(p, 'Hallo');
+  const folgt = async (was) => {
+    const g = await griffLage(p), ml = mitteVon(g.layer);
+    pruefe(`${was}: die Schicht der Griffe liegt auf der Mitte der Ebene`, abstand(mitteVon(g.chrome), ml) <= 1.2, JSON.stringify({ chrome: mitteVon(g.chrome), layer: ml }));
+    pruefe(`${was}: der gestrichelte Rahmen liegt auf der Mitte der Ebene (8 px Abstand rundum)`, abstand(mitteVon(g.frame), ml) <= 1.2 && Math.abs(g.frame.w - g.layer.w - 16) <= 1.5 && Math.abs(g.frame.h - g.layer.h - 16) <= 1.5, JSON.stringify({ frame: g.frame, layer: g.layer }));
+    const dc = { x: g.handle.x + g.handle.w / 2 - ml.x, y: g.handle.y + g.handle.h / 2 - ml.y }, lc = { x: g.del.x + g.del.w / 2 - ml.x, y: g.del.y + g.del.h / 2 - ml.y };
+    pruefe(`${was}: Griff und Löschknopf liegen sich gegenüber (Mitte der Ebene dazwischen)`, Math.hypot(dc.x + lc.x, dc.y + lc.y) <= 2.5, JSON.stringify({ dc, lc }));
+  };
+  await folgt('Ausgangslage');
+  // reines Ziehen mit der Maus: schon während der Bewegung, ohne dass sich die Grösse ändert
+  const l = await rect(p, '.lsp6-layer'), c0 = { x: l.x + l.w / 2, y: l.y + l.h / 2 };
+  await p.mouse.move(c0.x, c0.y); await p.mouse.down(); await p.mouse.move(c0.x + 40, c0.y + 25, { steps: 4 });
+  await folgt('mitten im Ziehen');
+  await p.mouse.move(c0.x + 70, c0.y + 45, { steps: 4 }); await p.mouse.up();
+  await folgt('nach dem Ziehen');
+  await p.locator('.lsp6').focus();
+  await p.keyboard.press('ArrowLeft'); await p.keyboard.press('ArrowLeft'); await p.keyboard.press('ArrowDown');
+  await folgt('nach Pfeiltasten');
+  await feldSetzen(p, 'X (cm)', 11); await feldSetzen(p, 'Y (cm)', 17);
+  await folgt('nach dem Zahlenfeld');
+  // Hilfslinien: in «Bearbeiten» liegen sie in der Schicht über dem Produktfoto (sonst verdeckt das Foto sie), in der Druckversion im Host
+  const guide = () => p.evaluate(() => { const g = document.querySelector('.lsp6-guide'); const t = document.querySelector('.lsp6-tpl'); const par = g.parentElement; return { eltern: par.className, z: Number(getComputedStyle(par).zIndex) || 0, tpl: Number(getComputedStyle(t).zIndex) || 0 }; });
+  const gb = await guide();
+  pruefe('Hilfslinien liegen in «Bearbeiten» in der Schicht über dem Produktfoto', /lsp6-chrome-host/.test(gb.eltern) && gb.z > gb.tpl, JSON.stringify(gb));
+  await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  pruefe('Hilfslinien liegen in der Druckversion im Host (wie 6.3.1)', /lsp6-host/.test((await guide()).eltern), JSON.stringify(await guide()));
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
+  // Kleines Motiv: die Schicht ist mindestens 64 × 64 px gross, der Rahmen bleibt eng am Motiv
+  await feldSetzen(p, 'Schrifthöhe (mm)', 3);
+  await p.locator('.lsp6-text').fill('i');
+  const gk = await griffLage(p);
+  pruefe('kleines Motiv: die Ebene ist kleiner als 64 px', gk.layer.h < 60 && gk.layer.w < 60, JSON.stringify(gk.layer));
+  pruefe('kleines Motiv: die Schicht der Griffe ist mindestens 64 × 64 px (Mindestmass, damit Griff und Löschknopf nicht auf dem Motiv liegen)', gk.chrome.w >= 63.5 && gk.chrome.h >= 63.5, JSON.stringify(gk.chrome));
+  await folgt('kleines Motiv');
+  // Zoom: die Auswahl bleibt, die Griffe auch
+  await p.locator('.lsp6-text').fill('Hallo');
+  const sel0 = await p.evaluate(() => window.LSPOD6.editors[0].st.sel);
+  for (const knopf of ['Zoom +', 'Zoom −', 'Zoom −', 'Zoom +']) {
+    await p.getByRole('button', { name: knopf }).click();
+    pruefe(`${knopf}: die Ebene bleibt gewählt, die Griffe sind sichtbar`, (await p.evaluate(() => window.LSPOD6.editors[0].st.sel)) === sel0 && await p.locator('.lsp6-handle').isVisible() && await p.locator('.lsp6-del').isVisible());
+    await folgt(`nach ${knopf}`);
+  }
+  // Hinweiszeile unter den Reitern (Fund: nur der Text wurde geprüft, nicht die Sichtbarkeit; ein verborgenes Element hat in innerText trotzdem seinen Text)
+  const note = p.locator('[data-feld="sichtnote"]');
+  pruefe('Bearbeiten: die Hinweiszeile unter den Reitern ist sichtbar', await note.isVisible() && /Produktfoto/.test(await note.innerText()));
+  await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  pruefe('Druckversion: die Hinweiszeile ist sichtbar und nennt die Druckdatei', await note.isVisible() && /So wird die Druckdatei/.test(await note.innerText()));
+  await p.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  pruefe('Vorschau: keine Hinweiszeile (nicht sichtbar)', !(await note.isVisible()));
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+szenario('ohne-resizeobserver', true, async (b, srv) => {
+  // Umgebung ohne ResizeObserver (ältere Browser): Zoom und das Nachladen eines Fotos müssen die Ebenen und Griffe trotzdem richtig setzen (Mutanten BE01 und BE18: sonst vom ResizeObserver gedeckt)
+  const s = await oeffnen(b, srv, T71, { initSkript: 'window.ResizeObserver = undefined;' });
+  const p = s.page;
+  await sichtWarten(p);
+  pruefe('ohne ResizeObserver: kein Seitenfehler beim Start', s.fehler.length === 0, s.fehler.join(' | '));
+  const id = await motivHinzu(p, '#2040c0');
+  await bilderGeladen(p);
+  await p.waitForTimeout(150);   // kein weiteres Ereignis: nur das Laden des Fotos kann Rahmen und Schicht jetzt noch nachziehen (Mutant B64)
+  const sitzt = async (was) => {
+    const g = await griffLage(p), h = await rect(p, '.lsp6-host'), e = (await ebenen(p))[0];
+    const soll = { x: h.x + e.cx * h.w, y: h.y + e.cy * h.h };
+    pruefe(`${was}: die Ebene sitzt auf der Mitte, die der Entwurf nennt (cx/cy × Druckfläche)`, abstand(mitteVon(g.layer), soll) <= 1.5, JSON.stringify({ ist: mitteVon(g.layer), soll }));
+    pruefe(`${was}: der Rahmen liegt 8 px um das Foto`, Math.abs(g.frame.w - g.layer.w - 16) <= 1.5 && Math.abs(g.frame.h - g.layer.h - 16) <= 1.5 && abstand(mitteVon(g.frame), mitteVon(g.layer)) <= 1.5, JSON.stringify({ frame: g.frame, layer: g.layer }));
+  };
+  await sitzt('gleich nach dem Laden des Fotos');
+  await feldSetzen(p, 'X (cm)', 8); await feldSetzen(p, 'Y (cm)', 12); await feldSetzen(p, 'Breite (cm)', 6);
+  await sitzt('nach den Zahlenfeldern');
+  for (const knopf of ['Zoom +', 'Zoom −', 'Zoom −']) {
+    await p.getByRole('button', { name: knopf }).click();
+    await sitzt(`nach ${knopf}`);
+  }
+  pruefe('ohne ResizeObserver: keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+szenario('rueckfall-reiter', true, async (b, srv) => {
+  // (a) Fund BE10: kann die Vorschau nicht gezeichnet werden und es gibt keinen Reiter «Druckversion» (Tasse), fällt die Ansicht auf «Bearbeiten» zurück (nicht in den unsichtbaren Reiter)
+  const t = await oeffnen(b, srv, T19, { shopifyBild: (u) => (/\.jpg/.test(u) ? { status: 404, typ: 'text/plain', body: '' } : null) });
+  await sichtWarten(t.page);
+  pruefe('Tasse: Reiter Bearbeiten und Vorschau, kein Reiter Druckversion', (await tabsText(t.page)).join('|') === 'Bearbeiten|Vorschau');
+  await t.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+  await t.page.waitForFunction(() => window.LSPOD6.editors[0].st.sicht === 'bearbeiten', null, { timeout: 8000 }).catch(() => {});
+  pruefe('Tasse ohne Katalogfoto: die Vorschau scheitert, die Ansicht fällt auf «Bearbeiten» zurück', (await sicht(t.page)) === 'bearbeiten', await sicht(t.page));
+  pruefe('Tasse ohne Katalogfoto: der Reiter «Bearbeiten» ist gewählt, die Bühne sichtbar, die Canvas verborgen', await t.page.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').getAttribute('aria-selected') === 'true' && await t.page.locator('.lsp6-stagewrap').isVisible() && await t.page.locator('.lsp6-pvwrap').isHidden());
+  const hinweis = t.page.locator('[data-feld="sichthinweis"]');
+  pruefe('Tasse ohne Katalogfoto: der Hinweis sagt ruhig, dass die Vorschau nicht verfügbar ist, und nennt «Bearbeiten»', await hinweis.isVisible() && /Produktvorschau/.test(await hinweis.innerText()) && /«Bearbeiten»/.test(await hinweis.innerText()), await hinweis.innerText());
+  pruefe('Tasse ohne Katalogfoto: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
+  await t.schliessen();
+  // (b) Fund BE24: ein veralteter Fehler (Adresse ≠ aktuelles Bild) erzwingt keinen Rückfall
+  const u = await oeffnen(b, srv, SHIRT_Q());
+  await sichtWarten(u.page);
+  await u.page.evaluate(() => { const ed = window.LSPOD6.editors[0]; ed.ui.tplFehlerUrl = 'https://files.cdn.printful.com/m/veraltet.png'; ed.zoomSetzen('flaeche'); ed.zoomSetzen('produkt'); });
+  pruefe('veralteter Fehler einer anderen Adresse: «Bearbeiten» bleibt (nur das gerade gezeigte Foto zählt)', (await sicht(u.page)) === 'bearbeiten' && await u.page.evaluate(() => window.LSPOD6.editors[0].produktBuehne()));
+  await u.schliessen();
+  // (c) Fund (Code-Prüfer): nach einem einmaligen Ladefehler des Produktfotos ist «Bearbeiten» nicht bis zum Neuladen der Seite gesperrt, jede erneute Wahl versucht es noch einmal
+  let tot = true, anfragen = 0;
+  const v = await oeffnen(b, srv, SHIRT_Q(), { printfulBild: (x) => { if (!/\/m\//.test(x)) return null; anfragen++; return tot ? { status: 404, typ: 'text/plain', body: '' } : { typ: 'image/png', body: geisterPng() }; } });
+  await v.page.waitForFunction(() => window.LSPOD6 && window.LSPOD6.editors[0] && window.LSPOD6.editors[0].st.sicht === 'druck', null, { timeout: 10000 }).catch(() => {});
+  pruefe('einmaliger Ladefehler: Rückfall auf «Druckversion»', (await sicht(v.page)) === 'druck', await sicht(v.page));
+  const vorher = anfragen;
+  tot = false;
+  await v.page.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
+  await v.page.waitForFunction(() => { const t = document.querySelector('.lsp6-tpl'); return window.LSPOD6.editors[0].st.sicht === 'bearbeiten' && t.complete && t.naturalWidth > 0; }, null, { timeout: 8000 }).catch(() => {});
+  pruefe('nach dem Ladefehler: die erneute Wahl von «Bearbeiten» lädt das Foto noch einmal und zeigt das Produkt', (await sicht(v.page)) === 'bearbeiten' && await v.page.evaluate(() => window.LSPOD6.editors[0].produktBuehne() && document.querySelector('.lsp6-tpl').naturalWidth > 0) && anfragen > vorher, `anfragen ${vorher} → ${anfragen}`);
+  pruefe('einmaliger Ladefehler: keine Seitenfehler', v.fehler.length === 0, v.fehler.join(' | '));
+  await v.schliessen();
+  // (d) Fokus: nach dem Verschwinden der Reiter bleibt der Fokus nie auf einem verborgenen Element
+  const w = await oeffnen(b, srv, T71);
+  await sichtWarten(w.page);
+  await w.page.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  const roh = await w.page.evaluate(async () => (await fetch('/vorschau/71.json?spiegel=1')).json());
+  roh.modelle['71'].bilder = {};
+  await w.page.evaluate((d) => window.LSPOD6.editors[0].vorschauDatenSetzen(d), roh);
+  pruefe('Vorschaudaten ohne Produktfoto: «Bearbeiten» zeigt die Bühne von 6.3.1, der Fokus liegt nicht auf einem verborgenen Reiter', await w.page.evaluate(() => { const a = document.activeElement; return window.LSPOD6.editors[0].st.sicht === 'bearbeiten' && !window.LSPOD6.editors[0].produktBuehne() && (!a || (!a.hidden && a.getClientRects().length > 0) || a === document.body); }));
+  await w.schliessen();
+});
+
+szenario('foto-quelle', true, async (b, srv) => {
+  // Fund: die Bühne lud das Produktfoto von der Printful-Adresse, die Vorschau vom Spiegel (zwei Downloads, zwei Ausfallrisiken). Mit den Reitern lädt die Bühne jetzt dieselbe Datei wie die Vorschau.
+  const s = await oeffnen(b, srv, T71);
+  await sichtWarten(s.page);
+  await bilderGeladen(s.page);
+  const quelle = await s.page.evaluate(() => document.querySelector('.lsp6-tpl').getAttribute('src'));
+  pruefe('Bearbeiten: das Produktfoto kommt vom Spiegel auf Shopify Files (wie die Vorschau)', /^https:\/\/cdn\.shopify\.com\/.*luxe-vorschau-[0-9a-f]+\.png/.test(quelle), quelle);
+  await s.page.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  pruefe('Druckversion: dieselbe Datei (kein zweiter Download desselben Fotos)', (await s.page.evaluate(() => document.querySelector('.lsp6-tpl').getAttribute('src'))) === quelle);
+  // Grenze (GEMESSEN): bis die Vorschaudaten da sind, kennt der Editor den Spiegel nicht, die Bühne lädt dann einmal die Printful-Adresse; danach nie wieder
+  pruefe('höchstens ein Aufruf von files.cdn.printful.com für das Produktfoto (nur der Start vor den Vorschaudaten)', s.bildAnfragen.filter((u) => /files\.cdn\.printful\.com\/m\//.test(u)).length <= 1, s.bildAnfragen.filter((u) => /printful/.test(u)).join(' '));
+  await s.schliessen();
+  // Printful nicht erreichbar (Werbeblocker, Filter), der Spiegel schon: «Bearbeiten» zeigt das Produkt weiter. Die Vorschaudaten kommen verzögert (600 ms), der Fehler der Printful-Adresse trifft also VOR ihnen ein
+  // und darf den Rückfall nicht auslösen, wenn die Bühne danach auf den Spiegel wechselt (die Adresse des Fehlers ist nicht mehr die gezeigte)
+  const t = await oeffnen(b, srv, T71 + '&vverz=600', { printfulBild: (u) => (/\/m\//.test(u) ? { status: 404, typ: 'text/plain', body: '' } : null) });
+  await sichtWarten(t.page);
+  await bilderGeladen(t.page);
+  pruefe('Printful 404 vor den Vorschaudaten, Spiegel erreichbar: «Bearbeiten» zeigt das Produkt (kein Rückfall auf «Druckversion»)', await t.page.evaluate(() => window.LSPOD6.editors[0].produktBuehne() && document.querySelector('.lsp6-tpl').naturalWidth > 0 && window.LSPOD6.editors[0].st.sicht === 'bearbeiten'), await sicht(t.page));
+  pruefe('Printful 404: der Fehler der alten Adresse wurde gemerkt (sonst prüft der Test die Regel nicht)', await t.page.evaluate(() => /printful/.test(window.LSPOD6.editors[0].ui.tplFehlerUrl || '')));
+  pruefe('Printful 404: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
+  await t.schliessen();
+  // data-bearbeiten=0 (6.3.1): die Bühne lädt die Printful-Adresse wie bisher
+  const z = await oeffnen(b, srv, T71.replace('bearbeiten=1', 'bearbeiten=0'));
+  await sichtWarten(z.page);
+  await bilderGeladen(z.page);
+  pruefe('data-bearbeiten=0: das Produktfoto der Bühne kommt von der Printful-Adresse (Verhalten wie 6.3.1)', /^https:\/\/files\.cdn\.printful\.com\/m\//.test(await z.page.evaluate(() => document.querySelector('.lsp6-tpl').getAttribute('src'))));
+  await z.schliessen();
+});
+
+szenario('text-gleich', true, async (b, srv) => {
+  // Fund (Linse «Gleiche Vorschau»): die Bühne zeichnete Text mit anderer Schrift und anderem Gewicht als die Leinwand von Vorschau und Druckdatei (bis 9 % breiter, bis 57 % mehr Tinte). Gemessen wird,
+  // womit die Leinwand wirklich zeichnet (ctx.font der Druckdatei, abgefangen), und womit die Bühne zeichnet (berechneter Stil des Textes): Familie, Gewicht, Schrägstellung und die Breite eines Textes.
+  const init = `(() => { window.__fonts = []; const d = Object.getOwnPropertyDescriptor(CanvasRenderingContext2D.prototype, 'font'); Object.defineProperty(CanvasRenderingContext2D.prototype, 'font', { get() { return d.get.call(this); }, set(v) { window.__fonts.push(String(v)); d.set.call(this, v); }, configurable: true }); })();`;
+  const norm = (f) => String(f).replace(/["']/g, '').replace(/\s*,\s*/g, ',').trim();
+  for (const [name, abfrage, aus] of [['mit Reitern', T71, false], ['data-bearbeiten=0 (6.3.1)', T71.replace('bearbeiten=1', 'bearbeiten=0'), true]]) {
+    const s = await oeffnen(b, srv, abfrage, { initSkript: init });
+    const p = s.page;
+    await sichtWarten(p);
+    const id = await p.evaluate(() => window.LSPOD6.editors[0].neuerText('Printful 24 Gewicht').id);
+    for (const schrift of [0, 1, 2, 3, 4]) for (const [fett, kursiv] of [[undefined, false], [false, false], [true, true]]) {
+      const r = await p.evaluate(async ([i, f, k, sch]) => {
+        const ed = window.LSPOD6.editors[0], e = ed.st.ebenen[ed.st.aktiv].find((q) => q.id === i);
+        e.bold = f; e.italic = k; ed.ui.schriftwahl.selectedIndex = sch; ed.ui.schriftwahl.dispatchEvent(new Event('change', { bubbles: true }));
+        window.__fonts = [];
+        await ed.druckdateiErzeugen(ed.st.aktiv, { skala: 0.3 });
+        const c = document.querySelector('.lsp6-layer > div'), cs = getComputedStyle(c);
+        const leinwand = window.__fonts.filter((x) => /\dpx /.test(x)).pop() || '';
+        const mx = document.createElement('canvas').getContext('2d');
+        mx.font = leinwand.replace(/\d+(\.\d+)?px/, cs.fontSize);
+        return { leinwand, familie: cs.fontFamily, gewicht: cs.fontWeight, stil: cs.fontStyle, breite: c.getBoundingClientRect().width, leinwandBreite: mx.measureText(c.textContent).width, schatten: cs.textShadow };
+      }, [id, fett, kursiv, schrift]);
+      const m = /^(italic )?(bold |900 )?([\d.]+)px (.*)$/.exec(r.leinwand);
+      const was = `${name}, Schrift ${schrift + 1}, fett ${fett === undefined ? 'Vorgabe' : fett}, kursiv ${kursiv}`;
+      if (!m) { pruefe(`${was}: die Leinwand hat eine Schrift gesetzt`, false, JSON.stringify(r)); continue; }
+      if (aus) {
+        pruefe(`${was}: 6.3.1 bleibt unverändert (Gewicht 800 oder 400, Familie der Bühne)`, (r.gewicht === '800' || r.gewicht === '400') && !!r.familie, JSON.stringify(r));
+        continue;
+      }
+      const gewichtLeinwand = m[2] ? (m[2] === 'bold ' ? '700' : '900') : '400';
+      pruefe(`${was}: dieselbe Schriftfamilie wie die Leinwand`, norm(r.familie) === norm(m[4]), `${r.familie} gegen ${m[4]}`);
+      pruefe(`${was}: dasselbe Gewicht wie die Leinwand (${gewichtLeinwand})`, r.gewicht === gewichtLeinwand, `${r.gewicht} gegen ${gewichtLeinwand}`);
+      pruefe(`${was}: dieselbe Schrägstellung`, (r.stil === 'italic') === !!m[1], r.stil);
+      pruefe(`${was}: die Breite des Textes stimmt mit der Leinwand überein (≤ 1 %)`, Math.abs(r.breite / r.leinwandBreite - 1) <= 0.01, `${r.breite} gegen ${r.leinwandBreite}`);
+    }
+    if (!aus) {
+      // senkrechter Versatz der Zeile: proportional zur Schrifthöhe (derselbe Bruchteil einer Schrifthöhe bei 15 mm und bei 70 mm; Mutant B81 rechnet mit einer festen Pixelzahl)
+      const anteil = async (mm) => { await feldSetzen(p, 'Schrifthöhe (mm)', mm); return p.evaluate(() => { const c = document.querySelector('.lsp6-layer > div'), cs = getComputedStyle(c); return { top: parseFloat(cs.top), px: parseFloat(cs.fontSize), pos: cs.position }; }); };
+      await p.evaluate((i) => window.LSPOD6.editors[0].waehlen(i), id);
+      const klein = await anteil(15), gross = await anteil(70);
+      pruefe(`${name}: der Versatz der Zeile ist proportional zur Schrifthöhe (15 mm gegen 70 mm)`, klein.pos === 'relative' && gross.px > 3 * klein.px && Math.abs(klein.top / klein.px - gross.top / gross.px) <= 0.004, JSON.stringify({ klein, gross }));
+      pruefe(`${name}: der Versatz ist klein (unter 0,2 em), keine ungeprüfte Verschiebung`, Math.abs(gross.top / gross.px) < 0.2, JSON.stringify(gross));
+    }
+    // weisse Schrift: derselbe Schlagschatten wie die Leinwand (ohne Versatz, Unschärfe 0,12 · Schrifthöhe)
+    const sch = await p.evaluate((i) => { const ed = window.LSPOD6.editors[0], e = ed.st.ebenen[ed.st.aktiv].find((q) => q.id === i); e.color = '#ffffff'; ed.ui.schriftwahl.dispatchEvent(new Event('change', { bubbles: true })); const c = document.querySelector('.lsp6-layer > div'), cs = getComputedStyle(c); return { schatten: cs.textShadow, px: parseFloat(cs.fontSize) }; }, id);
+    const mm = /rgba\(0, 0, 0, ([\d.]+)\) (-?[\d.]+)px (-?[\d.]+)px ([\d.]+)px/.exec(sch.schatten);
+    if (aus) pruefe(`${name}: weisse Schrift: der Schatten der Bühne bleibt wie in 6.3.1 (Versatz 1 px)`, !!mm && Number(mm[3]) === 1, sch.schatten);
+    else pruefe(`${name}: weisse Schrift: Schatten ohne Versatz, Unschärfe 0,12 · Schrifthöhe, Deckkraft 0,4 (wie ctx.shadowBlur)`, !!mm && Number(mm[2]) === 0 && Number(mm[3]) === 0 && Math.abs(Number(mm[4]) - sch.px * 0.12) <= 0.15 && Math.abs(Number(mm[1]) - 0.4) <= 0.01, `${sch.schatten} (Schrifthöhe ${sch.px})`);
+    pruefe(`${name}: keine Seitenfehler`, s.fehler.length === 0, s.fehler.join(' | '));
+    await s.schliessen();
+  }
+});
+
 
 // ── Lauf ────────────────────────────────────────────────────────────────────────────────────────
 const srv = await starteServer();

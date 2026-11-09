@@ -698,6 +698,35 @@
     var fett = ebene.bold === false ? '' : ebene.bold === true ? grundFett || 'bold ' : grundFett;
     return (ebene.italic ? 'italic ' : '') + fett + Math.round(px) + 'px ' + familie;
   }
+  /** Gewicht und Familie der Schrift der Leinwand (schriftFuerLeinwand) als CSS-Werte für die Bühne: { gewicht, familie }. Die Schrägstellung setzt knotenZeichnen schon in 6.3.1 nach derselben Regel (ebene.italic). */
+  function schriftTeile(ebene, px) {
+    var m = /^(italic )?(bold |900 )?(\d+)px (.*)$/.exec(schriftFuerLeinwand(ebene, px));
+    if (!m) return { gewicht: '700', familie: 'Arial,sans-serif' };
+    return { gewicht: m[2] ? (m[2] === 'bold ' ? '700' : '900') : '400', familie: m[4] };
+  }
+  var grundlinienCache = {};
+  /** Senkrechter Versatz in em (nach unten positiv), um den die Textzeile der Bühne verschoben wird, damit sie dort sitzt, wo die Leinwand (Vorschau, Druckdatei) sie zeichnet. Die Leinwand legt die Grundlinie
+   *  über textBaseline «middle» (ihr Abstand zur Mittellinie: -alphabeticBaseline), CSS zentriert die Schriftfläche in der Zeile (Grundlinie (Aufstieg - Abstieg) / 2 unter der Mitte). Beides hängt
+   *  von den Schriftmassen der Plattform ab, darum wird gemessen (measureText bei 100 px), nicht gerechnet; fehlen die Masse (älterer Browser) oder sind sie unplausibel, bleibt es bei 0 (Stand von 6.3.1). */
+  function grundlinienVersatz(f) {
+    var key = f.gewicht + '|' + f.familie;
+    if (grundlinienCache[key] !== undefined) return grundlinienCache[key];
+    var v = 0;
+    try {
+      var c = document.createElement('canvas').getContext('2d'), REF = 100;
+      c.font = f.gewicht + ' ' + REF + 'px ' + f.familie;
+      c.textBaseline = 'middle';
+      var mm = c.measureText('Hg');
+      c.textBaseline = 'alphabetic';
+      var ma = c.measureText('Hg');
+      if (typeof mm.alphabeticBaseline === 'number' && typeof ma.fontBoundingBoxAscent === 'number' && typeof ma.fontBoundingBoxDescent === 'number') {
+        v = (-mm.alphabeticBaseline - (ma.fontBoundingBoxAscent - ma.fontBoundingBoxDescent) / 2) / REF;
+      }
+    } catch (x) { v = 0; }
+    if (!(Math.abs(v) < 0.5)) v = 0;   // unplausible Werte nie anwenden
+    grundlinienCache[key] = v;
+    return v;
+  }
   function schriftNach(css) {
     return SCHRIFTEN.filter(function (s) { return s.css === css; })[0] || SCHRIFTEN[0];
   }
@@ -1058,7 +1087,9 @@
     var bearbeitenModus = (function () {
       if (legacy) return 'aus';
       var a = container.getAttribute('data-bearbeiten');
-      return a === '0' || a === 'aus' ? 'aus' : a === 'angebot' ? 'angebot' : 'start';
+      a = a === null ? '' : String(a).trim().toLowerCase();
+      // «aus» heisst auch off, false, nein, no (ein Rollout, der «false» oder «off» schreibt, soll die Ansicht nicht still einschalten); alles Unbekannte (und kein Attribut) ist die Startansicht
+      return /^(0|aus|off|false|nein|no)$/.test(a) ? 'aus' : a === 'angebot' ? 'angebot' : 'start';
     })();
     var tabArt = bearbeitenModus !== 'aus';   // Reiterleiste «Bearbeiten | Druckversion | Vorschau» (role=tablist) statt der zwei Schalter von 6.3.1
     var ZOOM_STUFEN = ['vorlage', 'produkt', 'flaeche'];   // «Bearbeiten» auf dem Produkt: Ganzes Produkt, Produkt (Vorgabe), Druckfläche
@@ -1250,7 +1281,9 @@
         bildSetzen(ui.bg, eigeneFarbe ? null : (vl.hintergrundUrl || null));
         ui.tpl.removeAttribute('data-schicht');
       }
-      bildSetzen(ui.tpl, vl.bildUrl || null);
+      // Mit den Reitern (data-bearbeiten ≠ 0) lädt die Bühne dasselbe Produktfoto wie die Vorschau: den Spiegel auf Shopify Files, wo die Vorschaudaten das Bild kennen, sonst die Printful-Adresse.
+      // So gibt es nur EINEN Download, und ein Ausfall von files.cdn.printful.com (Filter, Werbeblocker) nimmt der Bühne das Foto nicht, solange der Spiegel erreichbar ist.
+      bildSetzen(ui.tpl, (tabArt && bildAdresse(vorschauModell(), vl.bildUrl)) || vl.bildUrl || null);
       var fl = (vl.flaecheLinks - w.x) / w.w, fo = (vl.flaecheOben - w.y) / w.h, fb = vl.flaecheBreite / w.w, fh = vl.flaecheHoehe / w.h;
       var box = 'left:' + PCT(fl) + ';top:' + PCT(fo) + ';width:' + PCT(fb) + ';height:' + PCT(fh);
       ui.host.style.cssText = box;
@@ -1362,6 +1395,16 @@
         s.fontStyle = e.italic ? 'italic' : 'normal';
         s.lineHeight = String(zeilenhoehe(e));
         s.textAlign = ausrichtung(e);
+        if (tabArt) {
+          // Seit 6.4.0 zeichnet die Bühne den Text wie die Leinwand von Vorschau und Druckdatei: dieselbe Familie, dasselbe Gewicht (die Leinwand nimmt «bold» bzw. 900 und für die Handschrift 400, die Bühne
+          // von 6.3.1 immer 800: bis 9 % breiter und mehr Tinte, GEMESSEN; die Schrägstellung ist seit 6.3.1 dieselbe Regel) und derselbe Schlagschatten für weisse Schrift (ohne Versatz, Unschärfe 0,12 · Schrifthöhe, wie ctx.shadowBlur).
+          var f = schriftTeile(e, px);
+          s.fontFamily = f.familie; s.fontWeight = f.gewicht;
+          s.textShadow = e.color.toLowerCase() === '#ffffff' ? '0 0 ' + px * 0.12 + 'px rgba(0,0,0,.4)' : 'none';
+          // Senkrechte Lage: die Leinwand setzt die Grundlinie über textBaseline «middle», die Zeile der Bühne zentriert die Schriftfläche; beide liegen je nach Schrift verschieden (GEMESSEN bis 0,07 em).
+          // Die Bühne folgt der Leinwand der Plattform: Versatz = Abstand der Grundlinie zur «middle»-Linie der Leinwand minus ihr Abstand zur Mitte der Zeile (gemessen mit measureText, in em).
+          s.position = 'relative'; s.top = grundlinienVersatz(f) * px + 'px';
+        }
       } else {
         s.width = bildBreitePx(e, a.w) + 'px';
         s.height = 'auto';
@@ -1376,6 +1419,8 @@
     // ui.chromeRoot, die über dem Vorlagenbild liegt, dieselbe Grösse und dieselbe Transformation hat und nie beschnitten wird. In der Bühne von 6.3.1 bleiben sie in der Ebene.
     var chromeBeob = null;
     var CHROME_MIN = 64;   // kleinste Seite der Schicht für Griffe in Pixeln (siehe chromeNachziehen)
+    var GRIFF_UEBERSTAND = 6;   // Mitte des Griffs liegt so viele Pixel ausserhalb der Ecke der Schicht (CSS: right/bottom -21 px bei 30 px Durchmesser)
+    var GRIFF_RAND = 17;        // so nah (Mitte des Griffs) darf er an die Kante der Bühne: Radius 15 px plus 2 px Luft
     function chromeNachziehen() {
       if (ui.chromeRoot.hidden) return;
       var k = st.sel && knoten[st.sel];
@@ -1389,6 +1434,25 @@
       if (c.height !== bh + 'px') c.height = bh + 'px';
       if (c.transform !== t) c.transform = t;
       k.frame.style.cssText = 'inset:auto;left:' + ((bw - lw) / 2 - 8) + 'px;top:' + ((bh - lh) / 2 - 8) + 'px;width:' + (lw + 16) + 'px;height:' + (lh + 16) + 'px';
+      griffeInnen(k, bw, bh);
+    }
+    /** Skalieren-Griff (unten rechts) und Löschknopf (oben links) sitzen an den Ecken der Schicht. Liegt eine Ecke ausserhalb der Bühne (Motiv am Rand der Druckfläche, die Bühne beschneidet alles
+     *  ausserhalb), rutscht der Knopf entlang der Bühnenkante nach innen: die Griffe sind nie beschnitten und bleiben antippbar. Die Bedienung hängt nicht von der Lage des Griffs ab (er misst
+     *  Abstand und Winkel des Zeigers zur Mitte der Ebene). Gerechnet statt gemessen: Mitte der Ebene, Drehung und Ecke der Schicht ergeben die Lage auf dem Bildschirm; die Verschiebung wird
+     *  zurück ins Koordinatensystem der gedrehten Schicht gerechnet und als transform auf den Knopf gelegt. */
+    function griffeInnen(k, bw, bh) {
+      var e = gewaehlt();
+      if (!e) return;
+      var s = ui.stage.getBoundingClientRect(), r = k.root.getBoundingClientRect();
+      var w = (e.rot || 0) * Math.PI / 180, co = Math.cos(w), si = Math.sin(w);
+      var mx = r.left + r.width / 2, my = r.top + r.height / 2;
+      [[k.handle, 1], [k.del, -1]].forEach(function (g) {
+        var lx = g[1] * (bw / 2 + GRIFF_UEBERSTAND), ly = g[1] * (bh / 2 + GRIFF_UEBERSTAND);
+        var px = mx + lx * co - ly * si, py = my + lx * si + ly * co;
+        var dx = Math.min(Math.max(px, s.left + GRIFF_RAND), s.right - GRIFF_RAND) - px, dy = Math.min(Math.max(py, s.top + GRIFF_RAND), s.bottom - GRIFF_RAND) - py;
+        var t = Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5 ? '' : 'translate(' + (dx * co + dy * si) + 'px,' + (dy * co - dx * si) + 'px)';
+        if (g[0].style.transform !== t) g[0].style.transform = t;
+      });
     }
     function chromeAbgleichen() {
       var ueber = !legacy && ui.stage.getAttribute('data-ansicht') === 'bearbeiten';
@@ -1399,6 +1463,7 @@
         var k = knoten[lid], ref = k === gewaehlt ? ui.chromeRoot : k.root;
         [k.frame, k.handle, k.del].forEach(function (n) { if (n.parentNode !== ref) ref.appendChild(n); });
         if (k !== gewaehlt && k.frame.getAttribute('style')) k.frame.removeAttribute('style');   // zurück in der Ebene gilt der Rahmen von 6.3.1 (inset:-8px)
+        if (k !== gewaehlt) { k.handle.style.transform = ''; k.del.style.transform = ''; }   // und die Verschiebung nach innen (griffeInnen) gilt nur in der Schicht
       });
       Array.prototype.slice.call(ui.chromeRoot.children).forEach(function (n) {   // Reste einer entfernten Ebene
         if (!gewaehlt || (n !== gewaehlt.frame && n !== gewaehlt.handle && n !== gewaehlt.del)) ui.chromeRoot.removeChild(n);
@@ -2519,11 +2584,14 @@
     /** Ansicht wechseln (Knopf und Schnittstelle). Eine nicht mögliche Ansicht ändert nichts (wie 6.3.1 bei «produkt» ohne Vorschau). */
     function sichtSetzen(art) {
       if (!sichtMoeglich(art)) return;
+      // Hat das Produktfoto der Bühne einmal nicht geladen (kurzer Netzaussetzer), bekommt es bei jeder erneuten Wahl von «Bearbeiten» einen neuen Versuch (statt bis zum Neuladen der Seite gesperrt zu bleiben)
+      var neuLaden = art === 'bearbeiten' && !!ui.tplFehlerUrl;
+      if (neuLaden) { ui.tplFehlerUrl = ''; ui.tpl.removeAttribute('src'); }
       if (tabArt) st.sichtWunsch = art;
       sichtAnwenden(art);
       sichtBeschriften();
       if (art === 'produkt') { vorschauAnzeigen(); return; }
-      if (ui.fensterGebaut !== fensterSchluessel()) { buehneAufbauen(); metaAktualisieren(); alleZeichnen(); }
+      if (neuLaden || ui.fensterGebaut !== fensterSchluessel()) { buehneAufbauen(); metaAktualisieren(); alleZeichnen(); }
     }
     /** Bietet dieses Modell überhaupt eine Ansicht an? Eine Tasse, bei der KEINE Ausführung ein gespiegeltes Katalogfoto hat (Printfuls Tassenfotos unter products/ senden keinen CORS-Kopf, GEMESSEN),
      *  könnte nur eine Zeichnung zeigen, die sich nicht exportieren lässt: dort gibt es den Umschalter gar nicht (nichts anbieten, was nicht da ist). Fehlt das Foto nur bei einzelnen Ausführungen,
