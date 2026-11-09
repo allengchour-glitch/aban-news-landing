@@ -1,0 +1,50 @@
+{
+ "at": "2026-11-09T18:45:32.646Z",
+ "eintraege": [
+  {
+   "key": "section.sections/header-group.json.header_announcements_9jGBFp.ls_announce_1.text:1esclimo9vmos",
+   "resourceId": "gid://shopify/OnlineStoreThemeSectionGroup/header-group?theme_id=213013037447",
+   "vorher": {
+    "value": "🇨🇭 Boutique Suisse · 🚚 Livraison gratuite dès CHF 50 · ↩️ 30 jours de retour",
+    "outdated": true
+   }
+  },
+  {
+   "key": "section.sections/header-group.json.header_announcements_9jGBFp.ls_announce_3.text:1d4dlxj35mhzy",
+   "resourceId": "gid://shopify/OnlineStoreThemeSectionGroup/header-group?theme_id=213013037447",
+   "vorher": {
+    "value": "↩️ 30 jours de retour · 🔒 Paiement sécurisé & crypté",
+    "outdated": true
+   }
+  },
+  {
+   "key": "section.sections/header-group.json.header_announcements_9jGBFp.ls_announce_4.text:2zc7lmlzku3ix",
+   "resourceId": "gid://shopify/OnlineStoreThemeSectionGroup/header-group?theme_id=213013037447",
+   "vorher": {
+    "value": "🎃 Nouveau : La boutique d'Halloween est là – Découvrez costumes, masques & déco",
+    "outdated": true
+   }
+  },
+  {
+   "key": "section.sections/header-group.json.header_announcements_9jGBFp.ls_announce_4.link:2zc7lmm4z64qs",
+   "resourceId": "gid://shopify/OnlineStoreThemeSectionGroup/header-group?theme_id=213013037447",
+   "vorher": null
+  },
+  {
+   "key": "section.sections/header-group.json.header_announcements_9jGBFp.ls_announce_5.text:3a7iywrzwqe0",
+   "resourceId": "gid://shopify/OnlineStoreThemeSectionGroup/header-group?theme_id=213013037447",
+   "vorher": {
+    "value": "🛒 Remise sur quantité : –10% dès 2 articles — automatiquement dans le panier",
+    "outdated": true
+   }
+  },
+  {
+   "key": "section.sections/footer-group.json.footer_m9NzUG.text_lx_kontakt.text:2pauo78tawljr",
+   "resourceId": "gid://shopify/OnlineStoreThemeSectionGroup/footer-group?theme_id=213013037447",
+   "vorher": {
+    "value": "<p><strong>Contact</strong><br>LuxeStyle · 3123 Belp, Suisse<br><a href=\"mailto:info@luxestyle.ch\">info@luxestyle.ch</a> · <a href=\"/policies/legal-notice\">Mentions légales</a><br>Expédition en Suisse et au Liechtenstein · <a href=\"/policies/shipping-policy\">Livraison</a> · <a href=\"/policies/refund-policy\">Retour sous 30 jours</a></p>",
+    "outdated": true
+   }
+  }
+ ]
+}
