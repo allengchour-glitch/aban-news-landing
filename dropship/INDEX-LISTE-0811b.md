@@ -17,3 +17,6 @@ Neue Seiten, die in keiner früheren Liste standen und am 08.11. bei Google **ni
 
 Klickweg: Link öffnen (Anmeldung in der Search Console) → «Indexierung beantragen». Bei «Kontingent überschritten» den Rest morgen; bitte sagen, ab welcher Nummer. Die Kennung im Link ändert sich bei jeder Messung. Die Liste vom 08.11. (`INDEX-LISTE-0811a.md`) bleibt davon unberührt (Stand dort: 9 «gefunden/unbekannt», eine «gecrawlt»).
 Gegenmessung am 09.11. früh (nie am selben Tag: `inspect_urls` hinkt dem Antrag um Stunden hinterher). Wirkung auf Rang und Verkäufe: unbekannt.
+
+## Gegenmessung 09.11.2026 ca. 06:00 UTC (GEMESSEN, OpenSEO `inspect_urls`, Projekt `443c940c-…`)
+**0 von 10 indexiert.** «Gefunden – zurzeit nicht indexiert»: tassen-kaffeebecher, sets-bundles, gaming-controller, tier-pullover (4). «URL ist Google nicht bekannt»: powerbanks, kabellos-laden, luftbefeuchter-raumbefeuchter, tier-maentel-jacken, teller-schalen-geschirrsets, uhrenarmbaender-smartwatch (6). Die Besitzer-Angabe vom 08.11. ca. 21:05 UTC («10 indexiert») ist damit **nicht bestätigt**: entweder wurden die Anträge nur gestellt (Google hat noch nicht gecrawlt, die Abfrage hinkt um Stunden bis Tage) oder sie kamen nicht an. Messung am 10.11. früh wiederholen, nicht früher.
