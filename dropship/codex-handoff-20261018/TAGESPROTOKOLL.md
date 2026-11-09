@@ -1714,3 +1714,18 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation | R156-Paket und Maschinenbelege gespeichert; Übergabe, Projektgedächtnis, Arbeitsstand und Tagesprotokoll additiv fortgeführt | Revision156,24 Aufgaben, Historie erhalten; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R156_20261109] [Paket](CONTENT-VERKAUFSPAKET-20261109-R156.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261109-R156.json) · [Master](MASTER-INGEST-PREFLIGHT-20261109-R156.md) · [FR-Diff](FR-VERKAUFSDIFF-20261109-R156.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, DNS-, Merchant-, Feed- oder kostenpflichtige Renderänderung.
+
+### R157
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Tagesgrenze | Revision156, Projektgedächtnis, Übergabe und heutigen Tagesblock gelesen; neuen Rankingauftrag als begrenzten Gegenprüfgrund dokumentiert | R154-Metricool/Klaviyo, R155-DNS, breite Verkäufe, Bestellungen und Kauf-Watch nicht wiederholt |
+| Ranking / HYPD | GSC `sc-domain:luxestyle.ch` für die exakte FR-Seite und einen engen passenden Query-Regex im finalen Zeitraum10.10.–06.11. gelesen | DE-Seite33 Impressionen/0 Klicks/Position65,21; FR-Zeilen nicht offengelegt und tatsächliche Leistung unbekannt; keine Verkaufs-/Rankingwirkung behauptet |
+| Shopify-Gate | LuxeStyle/luxestyle.ch/CHF/Schweiz, Page698444710273, Publikation, Quellwerte, FR-Liste, vier Digests und Schema frisch gegen R156 geprüft | Identität passend; Digests bytegleich; FR-Liste leer; Preflight GO; kein Massenread |
+| FR-Qualität | Ursprünglichen Kandidaten sprachlich geprüft, wegen zwei englischen Begriffen und fünf schwächeren Formulierungen gestoppt; korrigierten Kandidaten erneut geprüft | Korrigierter Vier-Felder-Kandidat GO; keine erfundenen Claims, fixe Lieferzeit, Review- oder Swiss-made-Aussage |
+| Ranking-Umsetzung | Genau einen `translationsRegister`-Write für FR title/body_html/meta_title/meta_description ausgeführt und nativ zurückgelesen | Keine UserErrors;4/4 Werte exakt; alle `outdated=false`; Handle, DE, Theme, Preise, CHF50/CHF45 und Kundendomäne erhalten |
+| Öffentliche Abnahme | FR-Seite mit Firecrawl maxAge0 vor und nach dem Write auf Sprache, SEO, Links, Canonical und Hreflang geprüft | Vorher deutsche Fallbacks; nachher HTTP200/langfr, Title/Meta/OG/H1/Body französisch, Canonical/Hreflang korrekt,6/6 FR-Links, CHF50;12/12 PASS |
+| Theme / interne Links | MAIN-Meta-Snippet und Hauptmenü read-only auf HTTP-OG-Bild und hohe Linkzahl zurückverfolgt; lokalen Minimalpatch getestet | OG-Patch21 Tests, nicht angewendet. Menü784 Knoten/742 eindeutige Collection-URLs; IA-/Preview-Blocker dokumentiert;0 Theme-/Menüwrites |
+| Dokumentation | R157-Bericht, Rohbelege, Übergabe, Projektgedächtnis, Arbeitsstand und denselben Tagesblock additiv fortgeführt | Revision157,24 Aufgaben,120 Historieneinträge; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R157_20261109] [Bericht](RANKING-UMSETZUNG-20261109-R157.md) · [Beleg](RANKING-UMSETZUNG-20261109-R157.json) · [GSC](GSC-RANKING-20261109-R157.json) · [Public nachher](PUBLIC-SEO-NACHHER-20261109-R157.json) · [Theme-Analyse](THEME-SEO-ANALYSE-20261109-R157.md). Genau vier FR-Übersetzungsfelder live; keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Menü-, Theme- oder kostenpflichtige Renderänderung.
