@@ -1907,3 +1907,18 @@ Die einzige Verkaufsaktion ist jetzt feldgenau gebunden: Shopify Page `gid://sho
 [R155 Content- und Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R155.md) · [R155 Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R155.json) · [Metricool-Planbeleg](METRICOOL-PLAN-20261109-R155.json) · [Produktbeleg](PRODUKTPRUEFUNG-20261109-R155.json) · [DNS-Beleg](DNS-STATUS-20261109-R155.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, Merchant-, DNS- oder kostenpflichtige Renderänderung.
 
 [LUXESTYLE_R155_20261109]
+
+## 09.11.2026 – R156 Abendlauf: Master-Preflight und FR-Verkaufsdiff
+
+[LUXESTYLE_R156_20261109]
+
+- Revision155, Projektgedächtnis, Übergabe und der bestehende Tagesblock wurden vor dem Lauf gelesen. Die heutigen R154-Kennzahlen/Klaviyo-Daten und der R155-DNS-Befund wurden nicht wiederholt.
+- Shopify und Metricool stimmen erneut exakt mit LuxeStyle/luxestyle.ch/CHF/CH, brandId6227837, Europe/Zurich und allen sechs erwarteten Kanalidentitäten überein.
+- Planung09.–17.11.:65 Objekte,21 aktiv,44 Entwürfe,0 aktive Videos; zwei bestehende Fotoobjekte heute kanalweise auf Facebook/Instagram PUBLISHED. 19 aktive Bilder liegen ab19:00 in der Zukunft; Facebook/Instagram bis15.11., Pinterest bis14.11.; TikTok/YouTube/Threads offen, ab16.11. alle Kanäle offen. Keine aktiven Kollisionen oder Duplikate; kein Metricool-Write.
+- Projektor und Futterspender wurden gezielt frisch gelesen. Beide ACTIVE und kaufbar; Menge0 bei untracked/CONTINUE ist kein Ausverkaufsbeleg. Projektor bleibt wegen aktueller A–G-/Einheiten-/Rechtebindung gesperrt, Futterspender wegen fehlendem Film-/Rechtebeleg.
+- Derselbe Projektor-Master erhielt einen ausführbaren hashgebundenen Ingest-/Freigabe-Preflight. Sechs Tests bestehen; der reale Lauf bleibt `FAIL_BLOCKED`. Keine MP4, kein Upload, keine Terminierung oder Publikation.
+- Page698444710273: Quelldigests unverändert, FR-Übersetzungen leer. Exakter Vier-Felder-`translationsRegister`-Entwurf besteht lokal, Stale-Digest wird abgewiesen. Dies ist die einzige Verkaufsaktion zur Inhaberfreigabe; kein Shop-Write.
+- Öffentliche Stichprobe: fünf Seiten und drei Bilder HTTP200; FR-Fallback, sehr hohe Collection-Linkmenge und `http://`-OG-Bilder bestätigt. Keine Theme-/SEO-Änderung.
+- [Content-/Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R156.md), [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R156.json), [Master-Preflight](MASTER-INGEST-PREFLIGHT-20261109-R156.md), [FR-Diff](FR-VERKAUFSDIFF-20261109-R156.json).
+
+Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, DNS-, Merchant-, Feed- oder kostenpflichtige Renderänderung. Claude-Empfang bleibt unbekannt.
