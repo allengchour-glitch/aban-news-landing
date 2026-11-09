@@ -9,12 +9,14 @@
   var EN = (document.documentElement.lang || 'de').slice(0, 2) === 'en';
   var T = EN ? {
     active: 'Active', inactive: 'Locked', unlock: 'Unlock', invalid: 'Key invalid or expired.',
+    licenseUnavailable: 'License check temporarily unavailable. Keep your key and try again later. Please do not buy again.',
     saved: 'Pro unlocked — tools are live.', enterKey: 'Enter your Pro key above first.',
     working: 'Working …', off: 'Pro AI is not active yet (admin setup pending).',
     proReq: 'This needs an active aban Pro key.', rate: 'Too many requests — wait a moment.',
     err: 'Something went wrong. Try again.', empty: 'No input.', soon: 'Checkout starts soon — join the list.'
   } : {
     active: 'Aktiv', inactive: 'Gesperrt', unlock: 'Freischalten', invalid: 'Schlüssel ungültig oder abgelaufen.',
+    licenseUnavailable: 'Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.',
     saved: 'Pro freigeschaltet — die Tools laufen live.', enterKey: 'Erst oben deinen Pro-Schlüssel eingeben.',
     working: 'Arbeite …', off: 'Pro-KI ist noch nicht aktiv (Admin-Setup ausstehend).',
     proReq: 'Dafür braucht es einen aktiven aban-Pro-Schlüssel.', rate: 'Zu viele Anfragen — kurz warten.',
@@ -72,9 +74,10 @@
         applyTier(d.tier);
       } else {
         setUnlocked(false);
-        if (!quiet && subEl) subEl.textContent = T.invalid;
+        var unavailable = !d || d.status === 'error' || d.error;
+        if (subEl && (!quiet || unavailable)) subEl.textContent = unavailable ? T.licenseUnavailable : T.invalid;
       }
-    }).catch(function () { if (!quiet && subEl) subEl.textContent = T.err; })
+    }).catch(function () { if (subEl) subEl.textContent = T.licenseUnavailable; })
       .finally(function () { if (btn) { btn.disabled = false; btn.textContent = T.unlock; } });
   }
 

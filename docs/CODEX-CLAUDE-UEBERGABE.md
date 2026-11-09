@@ -2,6 +2,14 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Lizenzoberfläche: Störung von Ablehnung unterscheiden · 09.11.2026
+
+- Frischer main68db372, AGENTS/CLAUDE/Shared Memory und Übergabe gelesen; offene PRs geprüft. Eigener Branch `codex/lizenz-antwort`. Vorige Backendkorrektur PR3015 abgeschlossen: Merge7df5c1c8a7a000f0593352f532f90e5a09625c50, Produktionslauf42614878270 erfolgreich. Nicht erneut implementieren.
+- **GEMESSEN:** KI-Studio und Cockpit zeigen bei simulierter API-Antwort `valid=false,status=error` weiterhin «Schlüssel ungültig». Auf Desktop1440px und Handy390px reproduziert. Das war keine bestätigte Ablehnung einer echten Lizenz.
+- Korrektur in `js/ki-studio.js` (DE/EN) und `cockpit-app.html`: Anbieter-/Netzfehler erklären als derzeit nicht prüfbar, Eingabe behalten, später manuell prüfen, nicht nochmals kaufen. Im Cockpit bleibt der Hinweis im Statusfeld sichtbar; nächste Prüfung setzt ihn passend zurück. Echte negative Antwort bleibt als ungültig erkennbar. Studio zeigt Störung auch bei stiller Prüfung eines gespeicherten Schlüssels. Keine automatische Wiederholung und keine geänderten Freigaberegeln/Preise/Produktzuordnungen.
+- **GEMESSEN:** Browser mit abgefangenen Anfragen: Desktop/Handy, DE/EN-Studio und DE-Cockpit, Anbieterfehler, erhaltene Eingabe, wieder bedienbarer Knopf und anschliessende manuelle Ablehnung.54 API- und48 Downloadprüfungen lokal grün (102). Kein echter Anbieter-/Modellaufruf, Kauf oder Download. Keine neue Testdatei oder Automation/Frequenzänderung.
+- Merge-/Produktionsstand im zugehörigen PR frisch lesen. Ziel ist, eine vorübergehende Prüfstörung nicht als defekten Kauf auszugeben. Finanzielle Wirkung nicht gemessen. Cockpit-/Studio-Lizenzzuordnung und eigene Audit-Checkout-/Währungsfrage bleiben separat offen.
+
 ## Lizenzprüfung: Anbieterfehler nicht als ungültigen Kauf speichern · 09.11.2026
 
 - Aktueller main2264770 und offene Arbeiten gelesen; isolierter Branch `codex/checkout-status`. Keine privaten Finanzdaten übernommen. Vorige Downloadkorrektur PR3002 abgeschlossen: Merge60cfafb4df5bd9961ca9ba2c9ab6f2cc9f1b68a5, Produktionslauf42571121464 erfolgreich; Desktop/Handy mit abgefangener API geprüft, kein Kauf/Download.
