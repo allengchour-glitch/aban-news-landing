@@ -1889,3 +1889,21 @@ Eine einzige Verkaufsaktion liegt zur Freigabe vor: nur die fehlerhaften franzö
 [R154 Content- und Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R154.md) · [R154 Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R154.json) · [vollständige Metricool-Rücklesung](METRICOOL-QUALITAETSSPERRE-20261109-R154.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Feed-, Flow-, DNS-, Merchant- oder kostenpflichtige Renderänderung.
 
 [LUXESTYLE_R154_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 155: 14-Uhr-Folgelauf und ausführbarer Master-Aufnahmeblock
+
+Shopify ist erneut als LuxeStyle/`luxestyle.ch`/CHF/Schweiz bestätigt. Metricool passt erneut exakt zu brandId `6227837`, `Europe/Zurich` und allen sechs erwarteten Kanalidentitäten. Die Tagesgrenze wurde eingehalten: R154-Kennzahlen und der R154-Klaviyo-Flowreport wurden wiederverwendet, nicht nochmals abgefragt; Kauf-Watch bleibt beendet.
+
+Die Planung ab 14:08 bis17.11. enthält59 Objekte:20 aktiv,39 Entwürfe,0 aktive Videos. Es gibt keine aktiven kanalgleichen Termin-, Medien- oder exakten Textduplikate. Ein bestehender Foto-Beitrag, ID414929635/UUID-8720943201794045273, wurde um12:15 auf Facebook und Instagram kanalweise als `PUBLISHED` zurückgelesen; das ist kein eigener Publish dieses Laufs. Aktive Fotos decken Facebook/Instagram bis15.11. und Pinterest bis14.11.; TikTok, Threads und YouTube bleiben vollständig offen, alle Kanäle ab16.11. Keine Lücke wurde mit gesperrten Videos gefüllt, kein Metricool-Write.
+
+Projektor15521256604033 und Futterspender15523986473345 sind unverändert ACTIVE, HTTP200, öffentlich kaufbar, mit echten Bildern, CHF-Preisen, nicht leeren Tags ohne Sperrtag sowie untracked/`CONTINUE`/Menge0. Projektor `auswahl-offen` und ohne A–G-/Motiv-/Einheitenbindung; beim Futterspender fehlt passender Rechtefilm. Live-Material-, Mass-, Leistungs- und Lieferumfangangaben wurden in diesem Lauf nicht an ein aktuelles Lieferantendokument gebunden und bleiben aus Social ausgeschlossen.
+
+Elf lokale MP4s erfüllen weiterhin nicht gemeinsam15–20s/1080×1920/30fps. Die bekannte Quelle bleibt960×540/25fps; Pflichtmusik ist technisch hashgleich, aber Rechte-/Hör-/Mixabnahme offen. Der neue [R155-Aufnahme-/Abnahmeblock](MASTER-AUFNAHME-ABNAHME-20261109-R155.md) macht den nächsten Schritt ausführbar: eine aktuelle A–G-Einheit, `unitToken`, ungeschnittener Identitätsclip, vier native Hochkanttakes, hashgebundener Rechtegrant, präziser540-Frame-Schnitt und Zehn-Punkte-Finalabnahme. Keine Master-MP4, kein Render, Upload oder Publish.
+
+Die einzige Verkaufsaktion ist jetzt feldgenau gebunden: Shopify Page `gid://shopify/Page/698444710273` hat keine französischen Übersetzungen. [R155-FR-Diff](FR-VERKAUFSDIFF-20261109-R155.json) enthält aktuelle Quelldigests und vollständige Zielwerte für `title`, `body_html`, `meta_title` und `meta_description`; Handle, Theme, Canonical und Hreflang bleiben unverändert. Die französische Homepage bleibt separat blockiert, weil ihre vorhandene aktuelle Shop-Metaübersetzung öffentlich nicht gerendert wird und der verantwortliche Output-Override unbekannt ist. Kein Übersetzungswrite.
+
+Öffentliche DNS-Gegenprobe bei Google und Cloudflare: `send`, `mtd1._domainkey`, `mtd2._domainkey` liefern `NXDOMAIN`; der genehmigte Root-Verifikations-TXT fehlt. Die vier genehmigten Ergänzungen sind weiterhin nicht umgesetzt; authentifizierter Namecheap-Schreibzugriff bleibt unbekannt. Kein DNS-Write.
+
+[R155 Content- und Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R155.md) · [R155 Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R155.json) · [Metricool-Planbeleg](METRICOOL-PLAN-20261109-R155.json) · [Produktbeleg](PRODUKTPRUEFUNG-20261109-R155.json) · [DNS-Beleg](DNS-STATUS-20261109-R155.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, Merchant-, DNS- oder kostenpflichtige Renderänderung.
+
+[LUXESTYLE_R155_20261109]
