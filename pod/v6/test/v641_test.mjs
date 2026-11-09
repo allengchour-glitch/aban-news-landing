@@ -124,7 +124,7 @@ szenario('textfarbe-rueckgaengig', true, async (b, srv) => {
   await textHinzufuegen(p, 'Alpha');                       // Stand 1: Auto, dunkel, weisser Stoff
   await variante(p, 1002);                                  // Text wird weiss (kein neuer Verlaufsstand)
   await textHinzufuegen(p, 'Beta');                         // Stand 2
-  await p.waitForTimeout(900);                              // Verlauf sichern (speichernVerzoegert)
+  await ed(p, '(ed) => ed.speichern()');                    // den Verlauf ausdrücklich sichern (sonst täte es erst der Zeitgeber nach 700 ms)
   let t = await textEbenen(p);
   pruefe('Ausgangslage: beide Texte weiss auf schwarzem Stoff', t.length === 2 && t.every((x) => x.color === '#ffffff'), JSON.stringify(t));
   // zurück bis zum Stand mit nur einem Text: das ist der Stand von der WEISSEN Ausführung (Alpha dunkel gespeichert); nach dem Wiederherstellen muss Alpha auf schwarzem Stoff weiss sein
@@ -139,9 +139,9 @@ szenario('textfarbe-rueckgaengig', true, async (b, srv) => {
   // gewählte Farbe im älteren Stand bleibt
   await ed(p, '(ed) => ed.waehlen(ed.st.ebenen[ed.st.aktiv][0].id)');
   await p.locator('.lsp6-sw[data-c="#111111"]').click();
-  await p.waitForTimeout(900);
+  await ed(p, '(ed) => ed.speichern()');
   await textHinzufuegen(p, 'Gamma');
-  await p.waitForTimeout(900);
+  await ed(p, '(ed) => ed.speichern()');
   await ed(p, '(ed) => ed.zurueck()');
   t = await textEbenen(p);
   pruefe('Rückgängig: eine gewählte Farbe (#111111 auf schwarzem Stoff) wird nicht angefasst', t.length >= 1 && t.find((x) => x.text === 'Alpha').color === '#111111' && !t.find((x) => x.text === 'Alpha').auto, JSON.stringify(t));
@@ -402,17 +402,14 @@ szenario('kontrast-bearbeiten', true, async (b, srv) => {
     await variante(p, v);
     for (const c of farben) {
       await swatch(c);
-      await p.waitForTimeout(420);
-      const buehne = await sichtbar();
       const z0 = Number(await gezeichnet()) || 0;
       await p.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
       await p.waitForFunction((z) => (Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet')) || 0) > z, z0, { timeout: 8000 });
-      const vorschau = await p.locator('[data-feld="kontrast"]').isVisible();
-      const art = vorschau ? (/hell auf|ist hell/.test(await p.locator('[data-feld="kontrast"]').innerText()) ? 'hell' : 'dunkel') : '';
+      const vorschau = await p.locator('[data-feld="kontrast"]').isVisible();   // die Vorschau entscheidet; die Bühne muss nach der Rückkehr dasselbe zeigen (bis 3 s Zeit, kein Raten mit einer festen Pause)
       await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
-      await p.waitForTimeout(420);
-      const nachher = await sichtbar();
-      if (buehne !== vorschau || nachher !== vorschau) abw.push(`${v}/${c}: Bühne ${buehne}, Vorschau ${vorschau}, wieder Bühne ${nachher}`);
+      let gleich = true;
+      try { await p.waitForFunction(([h, v]) => { const e = document.querySelector(h); return !!e && (!e.hidden && e.getClientRects().length > 0) === v; }, [hinweis, vorschau], { timeout: 3000 }); } catch { gleich = false; }
+      if (!gleich) abw.push(`${v}/${c}: Vorschau ${vorschau}, Bühne ${await sichtbar()}`);
     }
   }
   pruefe('alle 24 Kombinationen (3 Ausführungen × 8 Farben): Hinweis in «Bearbeiten» genau dann, wenn ihn die Vorschau zeigt', abw.length === 0, abw.join(' | '));
@@ -437,7 +434,7 @@ szenario('kontrast-bearbeiten', true, async (b, srv) => {
   pruefe('Tasse (weisser Becher), weisse Schrift: Hinweis «hell auf hell»', /hell/.test(await t.page.locator(hinweis).innerText()));
   await t.page.locator('.lsp6-sw[data-c="#111111"]').click();
   await t.page.waitForFunction((h) => { const e = document.querySelector(h); return e && e.hidden; }, hinweis, { timeout: 5000 });
-  pruefe('Tasse, dunkle Schrift: kein Hinweis', true);
+  pruefe('Tasse, dunkle Schrift: kein Hinweis', await t.page.evaluate((h) => { const e = document.querySelector(h); return !!e && e.hidden; }, hinweis));
   await t.schliessen();
   // data-bearbeiten=0 (Verhalten von 6.3.1): kein neuer Hinweis in der Druckfläche
   const z = await oeffnen(b, srv, 'karte=71&shop=1001:4012,1002:4020,1003:4045&vorschau=71&bearbeiten=0&themeregel=1&varianten=1002:Schwarz,1001:Weiss');

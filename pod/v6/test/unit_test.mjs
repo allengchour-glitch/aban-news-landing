@@ -641,6 +641,12 @@ if (SOLL_VERSION >= '6.4.1') {
   pruefe('v6.4.0 bleibt bytegleich (Rücknahme von 6.4.1)', createHash('sha256').update(v640).digest('hex') === 'e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930' && v640.length === 260794, `${createHash('sha256').update(v640).digest('hex').slice(0, 12)} ${v640.length}`);
 }
 
+// 6.4.1 (eingefroren am 09.11.2026): jede Änderung braucht eine neue Datei mit neuem Pfad und neuem SRI-Hash; die Mutationsprobe arbeitet nur an Kopien
+{
+  const v641 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.4.1.js'));
+  pruefe('v6.4.1 ist eingefroren (SHA-256 und Grösse)', createHash('sha256').update(v641).digest('hex') === '7889aaaa1b4c2bdcbe453a33d3722bbf6e9e3ea0c9db34e0824859e1c0ddba5c' && v641.length === 271232, `${createHash('sha256').update(v641).digest('hex').slice(0, 12)} ${v641.length}`);
+}
+
 // 6.3.0 bleibt wegen der bereits veröffentlichten SRI-Tags bytegleich. Die sichtbare Korrektur
 // liegt deshalb ausschliesslich auf dem neuen unveränderlichen 6.3.1-Pfad.
 const v630 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.3.0.js'));
