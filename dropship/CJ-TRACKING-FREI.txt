@@ -1,0 +1,4 @@
+Freigabe der CJ-Rückmeldung (automation/cj_tracking.mjs, Workflow .github/workflows/cj-tracking.yml).
+Besitzer, 09.11.2026, Antwort «1 scharf»: Der Lauf meldet bei CJ versendete Bestellungen in Shopify und löst die normale Shopify-Versandmail an die Kundschaft aus.
+Datei löschen = zurück im Trockenlauf (es wird nichts geschrieben und nichts gesendet).
+Einzelheiten, Messungen und Rücknahme: dropship/CJ-RUECKMELDUNG-0911.md
