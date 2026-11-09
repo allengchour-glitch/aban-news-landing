@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "luxestyle-r157-gsc-targeted-v1",
+  "checkedAtEuropeZurich": "2026-11-09T19:17:00+01:00",
+  "scope": "targeted_read_only_fr_self_design_page_and_single_query_regex_fallback",
+  "connection": {
+    "property": "sc-domain:luxestyle.ch",
+    "permissionLevel": "siteOwner",
+    "discoveredThisRun": true,
+    "otherPropertiesIgnored": true
+  },
+  "pageQueryBreakdown": {
+    "page": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+    "startDate": "2026-10-10",
+    "endDate": "2026-11-06",
+    "searchType": "web",
+    "dataState": "final",
+    "estimatedDataFinalizedThrough": "2026-11-06",
+    "dimensions": ["query"],
+    "rowLimit": 50,
+    "rowCount": 0,
+    "truncated": false,
+    "rows": [],
+    "anonymizedQueriesNote": "Rare queries are anonymised and withheld by Google, so query-level rows never sum to this page's totals.",
+    "interpretation": "No exposed query rows for this exact page in this bounded call. This is unknown, not proof of zero impressions or zero ranking."
+  },
+  "singleFallback": {
+    "kind": "query_search_analytics",
+    "startDate": "2026-10-10",
+    "endDate": "2026-11-06",
+    "searchType": "web",
+    "dataState": "final",
+    "estimatedDataFinalizedThrough": "2026-11-06",
+    "dimensions": ["page"],
+    "filter": {
+      "dimension": "query",
+      "operator": "includingRegex",
+      "expression": "(?i)(personnaliser|personnalisez|selbst gestalten)"
+    },
+    "rowLimit": 50,
+    "rowCount": 13,
+    "truncated": false,
+    "rows": [
+      {"page":"https://luxestyle.ch/fr/products/allover-yoga-leggings-selbst-gestalten","clicks":0,"impressions":2,"ctr":0,"position":24},
+      {"page":"https://luxestyle.ch/pages/selbst-gestalten","clicks":0,"impressions":33,"ctr":0,"position":65.21212121212122},
+      {"page":"https://luxestyle.ch/products/allover-yoga-leggings-selbst-gestalten","clicks":0,"impressions":8,"ctr":0,"position":32.25},
+      {"page":"https://luxestyle.ch/products/keramik-tasse-selbst-gestalten","clicks":0,"impressions":10,"ctr":0,"position":87.7},
+      {"page":"https://luxestyle.ch/products/kuscheldecke-selbst-gestalten","clicks":0,"impressions":1,"ctr":0,"position":45},
+      {"page":"https://luxestyle.ch/products/mauspad-selbst-gestalten","clicks":0,"impressions":1,"ctr":0,"position":44},
+      {"page":"https://luxestyle.ch/products/poster-zum-selbstgestalten","clicks":0,"impressions":3,"ctr":0,"position":69},
+      {"page":"https://luxestyle.ch/products/recycelte-allover-jogginghosen-selbst-gestalten","clicks":0,"impressions":33,"ctr":0,"position":61.121212121212125},
+      {"page":"https://luxestyle.ch/products/recycelter-unisex-allover-hoodie-selbst-gestalten","clicks":0,"impressions":49,"ctr":0,"position":82.55102040816327},
+      {"page":"https://luxestyle.ch/products/shirt-zum-selbstgestalten","clicks":0,"impressions":29,"ctr":0,"position":74.44827586206897},
+      {"page":"https://luxestyle.ch/products/tasse-zum-selbstgestalten","clicks":0,"impressions":20,"ctr":0,"position":81.7},
+      {"page":"https://luxestyle.ch/products/tote-zum-selbstgestalten","clicks":0,"impressions":2,"ctr":0,"position":55.5},
+      {"page":"https://luxestyle.ch/products/unisex-allover-bomberjacke-selbst-gestalten","clicks":0,"impressions":10,"ctr":0,"position":30.6}
+    ],
+    "interpretation": "The filtered terms surfaced 13 landing-page rows. The central German page had 33 impressions at average position 65.21 and zero clicks; the exact French central page did not appear. These are bounded, exposed rows only and do not establish causation or a complete export."
+  },
+  "cache": {
+    "cacheStateReturned": false,
+    "cacheAge": "unknown"
+  },
+  "limitations": [
+    "truncated=false does not guarantee exhaustive query coverage.",
+    "Rare/anonymised queries may be withheld.",
+    "The first call's empty rows are not interpreted as zero traffic.",
+    "No cross-period comparison, Merchant read, broad site pagination, ranking forecast or sales inference was made."
+  ],
+  "writes": 0
+}
