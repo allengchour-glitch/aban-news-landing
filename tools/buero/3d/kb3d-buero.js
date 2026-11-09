@@ -96,9 +96,13 @@
 
       /* ---------- Kamera ---------- */
       var cam = new K.Camera();
-      var viewName = 'alle', userDist = null;
-      function fitDist(base, aspect) { return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
+      var viewName = 'alle', userDist = null, monitorMode = false, savedCamera = null;
+      function monitorDistance(aspect){return Math.max(7.7,15.2/Math.max(0.3,aspect));}
+      function leaveMonitor(){if(!monitorMode)return;monitorMode=false;var previous=savedCamera;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);if(previous){userDist=previous.dist;cam.go(previous,!!cfg.reduced);}made.dirty=true;}
+      function focusMonitor(){if(monitorMode)return;savedCamera=Object.assign({},cam.g);monitorMode=true;if(cfg.onMonitorMode)cfg.onMonitorMode(true);cam.go({tx:0,ty:3.1,tz:9.18,dist:monitorDistance(made.aspect||1.33),az:0,el:0},!!cfg.reduced);made.dirty=true;}
+      function fitDist(base, aspect) { if(viewName==='Campusplatz')return base; return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
       function goView(name, now) {
+        if(monitorMode){monitorMode=false;savedCamera=null;if(cfg.onMonitorMode)cfg.onMonitorMode(false);}userDist=null;
         var v = W.views[name] || W.views.alle;
         viewName = W.views[name] ? name : 'alle';
         var a = made.aspect || 1.33;
@@ -151,7 +155,7 @@
         if (W.updateInfo) {
           var stopped = ents.filter(function(e){return e.state === 'rot';}).length;
           var stale = ents.filter(function(e){return e.state === 'alt';}).length;
-          W.updateInfo('Shop, Projekte und Social Media');
+          W.updateInfo(ents.length+' Einträge · '+stopped+' Stopp · '+stale+' alte Messungen');
         }
         if (state.colors) Object.keys(DEF).forEach(function (k) { if (state.colors[k]) col[k] = K.col(state.colors[k]); });
         sel = state.sel || null;
@@ -200,6 +204,7 @@
           }
         });
         W.cards.forEach(function (cd, k) { cd.on = k < cardEnts.length; });
+        if(W.campusPanel)picks.push({id:'__campus',mn:W.campusPanel.mn,mx:W.campusPanel.mx});
         if(W.moneyPanel)picks.push({id:'__geldmanager',mn:W.moneyPanel.mn,mx:W.moneyPanel.mx});
         // Chef
         var boss = W.seats[W.seats.length - 1];
@@ -300,11 +305,13 @@
         else if (k === '+' || k === '=') cam.g.dist = clamp(cam.g.dist * 0.85, 5.5, 160);
         else if (k === '-') cam.g.dist = clamp(cam.g.dist / 0.85, 5.5, 160);
         else if (k === 'Home') goView('alle');
-        else if (k === 'Escape') { if (cfg.onPick) cfg.onPick(null); }
+        else if (k === 'Escape') { if(monitorMode){leaveMonitor();ev.stopPropagation();}else if (cfg.onPick) cfg.onPick(null); }
         else used2 = false;
         if (used2) { ev.preventDefault(); made.dirty = true; }
       });
       made.cmd = function (name) {
+        if(name==='monitor'){focusMonitor();return;}
+        if(name==='monitorBack'){leaveMonitor();return;}
         if (name === 'move' || name === 'rotate') {
           moveMode = name === 'move';
           cv.style.touchAction = 'none';
@@ -331,7 +338,8 @@
         if (w === made.w && h === made.h && dpr === made.dpr) return;
         made.w = w; made.h = h; made.dpr = dpr; made.aspect = w / h;
         R.resize(w, h, dpr);
-        if (userDist == null) { var v = W.views[viewName] || W.views.alle; cam.g.dist = fitDist(v.dist, made.aspect); if (!made.started) cam.dist = cam.g.dist; }
+        if(monitorMode){cam.g.dist=monitorDistance(made.aspect);if(cfg.reduced)cam.dist=cam.g.dist;}
+        else if (userDist == null) { var v = W.views[viewName] || W.views.alle; cam.g.dist = fitDist(v.dist, made.aspect); if (!made.started) cam.dist = cam.g.dist; }
         made.dirty = true;
       }
 

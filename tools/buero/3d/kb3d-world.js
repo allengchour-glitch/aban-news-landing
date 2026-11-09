@@ -37,9 +37,9 @@
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
 
   // Breite Laufwege zwischen Hauptgebäude und den drei Studios.
-  var WINGS = { 'Social Media': [-3, 3], 'Entwicklerbüro': [3, 3], 'YouTube-Studio': [-3, 6] };
+  var WINGS = { 'Social Media': [-3, 7], 'Entwicklerbüro': [3, 7], 'YouTube-Studio': [-3, 10] };
   SEATS.forEach(function(s) { var d = WINGS[s.room]; if (d) { s.x += d[0] + (s.i - 1) * 0.3; s.z += d[1] + 0.25; } });
-  K.DESIGN_VERSION = 'campus-einheitlich-7';
+  K.DESIGN_VERSION = 'campus-einheitlich-9';
   K.SEATS = SEATS;
 
   K.buildWorld = function (R) {
@@ -417,6 +417,29 @@
 
     endWing();
 
+    /* Campusplatz: breite gemeinsame Mitte, eigene Geometrie, keine neuen Assets. */
+    B.box(0,-0.36,9.7,21,0.7,6.4,'#344650');
+    B.floor(-10.5,6.5,10.5,12.9,0.009,'#d9e5de',0);
+    for(var f=-9.5;f<10.5;f+=1.0)B.floor(f,6.5,f+0.018,12.9,0.012,'#b8cbc2',0);
+    B.floor(-10.5,6.5,10.5,6.62,0.018,'#68b8ad',0.2);
+    B.floor(-10.5,12.78,10.5,12.9,0.018,'#68b8ad',0.2);
+    // Freistehende Monitorwand; rechts und links bleiben breite Laufwege.
+    B.box(0,0.10,9.0,8.4,0.2,1.3,'#263c49');
+    B.box(-3.7,1.5,9.0,0.18,3.0,0.35,'#48616c');
+    B.box(3.7,1.5,9.0,0.18,3.0,0.35,'#48616c');
+    B.box(0,3.1,9.0,8.2,4.05,0.32,'#172b38');
+    B.box(0,5.16,9.0,8.3,0.06,0.36,'#79d7c8',0.35);
+    stat(quad({x:0,y:3.1,z:9.18,w:7.8,h:3.7,emi:0.85,tex:infoTex}));
+    W.campusPanel={mn:[-4.1,1.05,8.82],mx:[4.1,5.18,9.25]};
+    [-7.2,7.2].forEach(function(x){
+      B.box(x,0.38,10.4,2.7,0.18,0.85,'#b99a73');
+      B.box(x,0.74,10.06,2.7,0.64,0.12,'#7b9c91');
+      B.box(x-1,0.15,10.4,0.14,0.35,0.6,'#405862');
+      B.box(x+1,0.15,10.4,0.14,0.35,0.6,'#405862');
+      place('planter',x,0,7.3,0,0.72);
+    });
+    stat(quad({x:0,y:0.026,z:11.9,rx:-PI/2,w:5.0,h:0.7,tex:tex('campusplatz',function(){return T.sign('CAMPUSPLATZ','#345d59','#d9e5de','#d9e5de');})}));
+
     /* Durchgehende Gänge: Hauptgebäude, beide Studios und YouTube bilden einen Campus. */
     function gang(x0,z0,x1,z1) {
       B.box((x0+x1)/2,-0.36,(z0+z1)/2,x1-x0,0.7,z1-z0,'#3a3f4b');
@@ -425,12 +448,13 @@
       for (var z=z0+0.8;z<z1;z+=0.8) B.floor(x0,z,x1,z+0.012,0.012,'#b8c5bc',0);
       B.floor(x0+0.08,z0,x0+0.13,z1,0.016,'#66a6a0',0.15);
     }
-    gang(-1.9,5.9,-0.3,22.4);
-    gang(-3.5,13.8,3.4,15.0);
-    gang(-3.5,21.0,-0.3,22.4);
-    place('planter',-2.3,0,16.0,0,0.55);
-    place('planter',0.15,0,18.5,0,0.55);
-    stat(quad({x:-1.1,y:0.025,z:16.5,rx:-PI/2,w:1.2,h:0.4,tex:tex('gang-studios',function(){return T.sign('STUDIOS','#345d59','#dce2d9','#dce2d9');})}));
+    gang(-1.9,5.9,-0.3,6.5);
+    gang(-1.9,12.9,-0.3,26.4);
+    gang(-3.5,17.8,3.4,19.0);
+    gang(-3.5,25.0,-0.3,26.4);
+    place('planter',-2.3,0,20.0,0,0.55);
+    place('planter',0.15,0,22.5,0,0.55);
+    stat(quad({x:-1.1,y:0.025,z:20.5,rx:-PI/2,w:1.2,h:0.4,tex:tex('gang-studios',function(){return T.sign('STUDIOS','#345d59','#dce2d9','#dce2d9');})}));
 
     /* ---------- feste Teile in den Speicher der Grafikkarte ---------- */
     var base = R.mesh(B);
@@ -494,13 +518,14 @@
 
     /* ---------- Kamera-Ansichten ---------- */
     W.views = {
-      alle: { tx: 0, ty: 1.0, tz: 8.0, dist: 56 },
+      alle: { tx: 0, ty: 1.0, tz: 10.0, dist: 62 },
+      'Campusplatz': { tx: 0, ty: 1.6, tz: 9.7, dist: 23 },
       Shop: { tx: -3.4, ty: 0.7, tz: 3.1, dist: 12.5 },
       Versand: { tx: 3.9, ty: 0.7, tz: 3.1, dist: 12.5 },
       Krypto: { tx: 3.5, ty: 0.7, tz: -3.0, dist: 12.5 },
-      'Entwicklerbüro': { tx: 6.5, ty: 1.4, tz: 11.8, dist: 16 },
-      'Social Media': { tx: -6.5, ty: 0.7, tz: 11.8, dist: 14 },
-      'YouTube-Studio': { tx: -6.5, ty: 1.0, tz: 20, dist: 15 },
+      'Entwicklerbüro': { tx: 6.5, ty: 1.4, tz: 15.8, dist: 16 },
+      'Social Media': { tx: -6.5, ty: 0.7, tz: 15.8, dist: 14 },
+      'YouTube-Studio': { tx: -6.5, ty: 1.0, tz: 24, dist: 15 },
       'Chefbüro': { tx: -3.5, ty: 0.7, tz: -3.0, dist: 12.5 }
     };
     return W;

@@ -1,10 +1,23 @@
 name: POD-Seite "Selbst gestalten" aktualisieren
 
-# Schreibt dropship/pod/page_body.html in die Shopify-Seite (Print-on-Demand, produkt-first).
-# Auth via Client-Credentials-Grant (Shopify-Tokens 2026). Ohne Secrets = No-Op.
+# Prüft dropship/pod/page_body.html gegen die Shopify-Seite. Vorgabe ist Trockenlauf.
+# Scharf nur mit dem SHA-256 des unmittelbar zuvor gelesenen Live-Inhalts; danach wird frisch zurückgelesen.
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Nur prüfen (nichts ändern)'
+        type: boolean
+        default: true
+      expected_before_sha256:
+        description: 'Nur bei scharf: SHA-256 «Vorher» aus dem letzten Trockenlauf'
+        type: string
+        required: false
+      expected_target_sha256:
+        description: 'Nur bei scharf: SHA-256 «Ziel» aus demselben Trockenlauf'
+        type: string
+        required: false
 
 permissions:
   contents: read
@@ -18,13 +31,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
+      - name: Schreibmodus auf main begrenzen
+        env:
+          AKTUELLER_REF: ${{ github.ref }}
+          DRY_RUN_EINGABE: ${{ github.event.inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN_EINGABE" = "false" ] && [ "$AKTUELLER_REF" != "refs/heads/main" ]; then
+            echo "Scharfer Lauf abgebrochen: nur refs/heads/main ist erlaubt."
+            exit 1
+          fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Seite aktualisieren
+      - name: Seite prüfen oder aktualisieren
         env:
           SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'false' && '0' || '1' }}
+          POD_EXPECTED_BEFORE_SHA256: ${{ github.event.inputs.expected_before_sha256 }}
+          POD_EXPECTED_TARGET_SHA256: ${{ github.event.inputs.expected_target_sha256 }}
         run: node automation/update_pod_page.mjs
