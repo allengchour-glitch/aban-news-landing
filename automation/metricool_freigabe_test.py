@@ -225,4 +225,15 @@ gl(m.pflichtfelder(post(1, '2026-11-11T10:00', ['instagram'], 'x', media=('https
 ok(any('Pinterest' in q for q in m.pflichtfelder(post(1, '2026-11-11T10:00', ['pinterest'], 'x', media=('https://x.test/a.jpeg',)))), 'Pinterest ohne Board')
 gl(m.pflichtfelder(post(1, '2026-11-11T10:00', ['pinterest'], 'x', media=('https://x.test/a.jpeg',), pinterestData={'boardId': '1', 'pinTitle': 'T'})), [], 'Pinterest vollständig')
 
+# ---- Telegram-Liste der gehaltenen Entwürfe (kein täglicher Dauerton)
+def halt(i, dt, grund):
+    return {'id': i, 'alt': D(dt), 'probleme': [grund]}
+liste = m.melde_liste([halt(1, '2026-11-09T23:30', 'uuid kommt mehrfach vor (Kopie), nicht angefasst'),
+                       halt(2, '2026-11-20T10:00', 'Produkt nicht erkannt'),
+                       halt(3, '2026-11-10T18:00', 'Produkt nicht erkannt'),
+                       halt(4, '2026-11-09T10:00', 'Termin liegt in der Vergangenheit')], JETZT)
+gl([e['id'] for e in liste], [3, 4], 'nur Termine der nächsten 48 Stunden oder gerade vorbei, nie die Kopie')
+gl(m.melde_liste([halt(5, '2026-11-11T20:01', 'x')], JETZT), [], 'mehr als 48 Stunden entfernt: noch nicht melden')
+gl([e['id'] for e in m.melde_liste([halt(6, '2026-11-11T19:59', 'x')], JETZT)], [6], 'knapp unter 48 Stunden: melden')
+
 print(f'metricool_freigabe_test.py: {n} Prüfungen bestanden')

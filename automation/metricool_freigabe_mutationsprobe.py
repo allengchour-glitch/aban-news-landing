@@ -34,6 +34,8 @@ M = [
  ("        if p.get('media') != erwartet['media']:", "        if False:"),
  ("        if not (jetzt - timedelta(hours=rueckblick_h) <= z <= jetzt - timedelta(minutes=45)):\n            continue", "        if z > jetzt:\n            continue"),
  ("            if not medien_ok(url):", "            if False:"),
+ ("            if not any('Kopie' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]", "            if e['alt'] - jetzt <= timedelta(hours=stunden)]"),
+ ("e['alt'] - jetzt <= timedelta(hours=stunden)]", "e['alt'] - jetzt <= timedelta(days=99)]"),
  ("    if braucht_video and medien and not all(ist_video(u) for u in medien):", "    if False:"),
  ("        if not pd.get('boardId') or not pd.get('pinTitle'):", "        if False:"),
  ("    if 'youtube' in netze:\n        yd = post.get('youtubeData') or {}\n        if not yd.get('title') or len(yd['title']) > 100:", "    if 'youtube' in netze:\n        yd = post.get('youtubeData') or {}\n        if not yd.get('title') or len(yd['title']) > 1000:"),

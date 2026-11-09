@@ -497,6 +497,13 @@ def telegram(text, token, chat):
         return False
 
 
+def melde_liste(gehalten, jetzt, stunden=48):
+    """Welche gehaltenen Entwürfe per Telegram genannt werden: nur Termine in den nächsten 48 Stunden (oder gerade vorbei), keine Kopien.
+    So kommt jeder Entwurf höchstens zwei- bis dreimal vor, eine bekannte Kopie nie (sie lässt sich nur von Hand im Planer löschen)."""
+    return [e for e in gehalten
+            if not any('Kopie' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]
+
+
 def zeile(e):
     return f"{e['alt']:%d.%m. %H:%M} {'+'.join(e['netze'])} (id {e['id']})"
 
@@ -578,9 +585,10 @@ def main(argv):
         if eingeplant:
             zusammen.append(f'✅ Metricool: {eingeplant} Entwurf/Entwürfe geprüft und eingeplant:\n' + '\n'.join(
                 f"• {e['neu']:%d.%m. %H:%M} {'+'.join(e['netze'])}: {e['text'][:42].replace(chr(10), ' ')}" for e in ok[:eingeplant]))
-        if gehalten:
-            zusammen.append(f'⏸️ {len(gehalten)} Entwurf/Entwürfe bleiben Entwurf:\n' + '\n'.join(
-                f"• {zeile(e)}: {e['probleme'][0]}" for e in gehalten[:6]))
+        melde = melde_liste(gehalten, jetzt)
+        if melde:
+            zusammen.append(f'⏸️ {len(melde)} Entwurf/Entwürfe bleiben Entwurf:\n' + '\n'.join(
+                f"• {zeile(e)}: {e['probleme'][0]}" for e in melde[:6]))
         if zusammen:
             telegram('\n\n'.join(zusammen), *tg)
     summary = os.environ.get('GITHUB_STEP_SUMMARY')
