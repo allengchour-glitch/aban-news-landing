@@ -2,6 +2,14 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Campusplatz und Büroartefakte · 09.11.2026
+
+- Inhaberauftrag: Büroartefakte anderer Session anzeigen, Büro aufwerten, grosser Platz in der Mitte mit Monitor. Von mainaaab8c1 auf `codex/buero-mitte` begonnen; AGENTS, CLAUDE, Shared Memory und Übergabe gelesen. Vorige Büroübersicht PR3028 abgeschlossen: Merge29533b15fb6d63f2112a25a08fa0aa343a170426, Produktionslauf42696200036 erfolgreich,15 Arbeitsplätze und Metricool-Statusquelle auf Desktop/Handy live bestätigt.
+- Gemeinsame Designversion8: grosser Campusplatz mit Bänken/Pflanzen zwischen Hauptbüro und Studios, drei Studios vier Einheiten weiter hinten, passende Gänge und Kameras. Freistehende Monitorwand zeigt aus geladenen Einträgen abgeleitete Statuszahlen; Klick öffnet Gesamtübersicht. Desktop-Knopf und mobile Raumauswahl führen zum Platz. Keine neuen externen Assets, keine erfundenen Kontowerte oder Agentenaktivität. Quelle und öffentliche HTML konsistent; gespeicherte öffentliche Zeilen erhalten.
+- **GEMESSEN:**67 Büro- und25 Entwicklerprüfungen grün (92), Desktop1440px/Handy390px mit Software-WebGL gerendert, Monitor-Klick öffnet Liste, keine JavaScript-Fehler. Mobil zuerst fehlende Auswahloption gefunden und korrigiert. Echte Handy-GPU-Leistung bleibt ungemessen. Lokale Nachweise `/workspace/buero-campus-nachweis/`.
+- Vollständiges Claude-Designpaket privat ausserhalb des Repositorys gebaut, ohne buero.json oder private Messwerte. Bestehende Claude-Artefakte sind nur über die vom Inhaber geteilten Links bekannt; deren privaten Inhalt nicht automatisch gelesen oder geändert. Keine Artefaktlinks mit möglichem privaten Zugriff ins öffentliche Repository aufnehmen. Paket und gemeinsame Stilversion ersetzen keine automatische Synchronisation der anderen Session. Private Artefaktübersicht mit den vom Inhaber geteilten Links, Vorschau und bestätigtem privaten Paketanhang im Chat erstellt; keine dieser privaten Adressen ins öffentliche Repository kopiert.
+- Aktuellen Merge-/Bereitstellungsstand im zugehörigen PR frisch prüfen. Keine Konto-/Zahlungs-/Social-Aktion oder neue Automation/Frequenzänderung. Finanzielle Wirkung nicht gemessen.
+
 ## Büro vollständig anzeigen und Claudes Metricool-Ablauf sichtbar anbinden
 
 - Inhaberauftrag: «alles live machen und alles anzeigen». Frischer main989827a enthält Claudes Metricool-Freigabe PR3025/3026. Offene ältere Entwurfs-PRs nicht pauschal übernehmen, keine neuen Publisher/Kontoaktionen starten. Eigener Branch `codex/buero-live-stand`.
