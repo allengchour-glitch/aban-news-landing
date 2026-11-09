@@ -29,8 +29,16 @@
     function pruefen(){
     erneut.hidden=true;erneut.disabled=true;
     box.textContent='Zahlung wird geprüft …';
-    fetch('/api/kit-download?session_id='+encodeURIComponent(sid),{cache:'no-store',referrerPolicy:'no-referrer'})
-      .then(function(r){return r.json();})
+    var controller=new AbortController();
+    var timer;
+    var deadline=new Promise(function(resolve,reject){
+      timer=setTimeout(function(){controller.abort();reject(new Error('Zeitgrenze'));},15000);
+    });
+    Promise.race([
+      fetch('/api/kit-download?session_id='+encodeURIComponent(sid),{cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal})
+        .then(function(r){return r.json();}),
+      deadline
+    ])
       .then(function(d){
         if(d&&d.ok&&/^\/downloads\/kits\/[a-f0-9]{24}\.zip$/.test(d.url)){
           box.innerHTML='<p>Dein Kit ist bereit:</p><a class="btn" href="'+d.url+'">📦 Kit herunterladen</a>'+
@@ -40,8 +48,8 @@
           erneut.hidden=false;
         }
       })
-      .catch(function(){box.textContent='Netzwerkfehler. Bitte erneut prüfen oder den Support kontaktieren. Bitte nicht nochmals kaufen.';erneut.hidden=false;})
-      .finally(function(){erneut.disabled=false;});
+      .catch(function(){box.textContent='Die Prüfung wurde unterbrochen oder dauert zu lange. Bitte erneut prüfen oder den Support kontaktieren. Bitte nicht nochmals kaufen.';erneut.hidden=false;})
+      .finally(function(){clearTimeout(timer);erneut.disabled=false;});
     }
     erneut.addEventListener('click',pruefen);
     pruefen();
