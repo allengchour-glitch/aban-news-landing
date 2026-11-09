@@ -27,3 +27,5 @@ Zusätzlich derselbe Testlauf in einem isolierten temporären Baum ohne Reposito
 Der Bericht `ergebnis-v2.json` wurde aus den vorhandenen Bitcoin-Daten mit ausdrücklich gewähltem Stichtag2026-10-29 erzeugt; die letzte Kerze liegt36 Tage davor. Seine gespeicherten Code-/Daten-/Protokollhashes dienen der Reproduktion, nicht dem Beweis einer Vorregistrierung oder zeitlichen Unabhängigkeit. Version1 bleibt separat erhalten.
 
 Die vollständige lokale CI-Simulation und der aktuelle Remote-CI-/Merge-/Deploymentstand sind getrennt zu prüfen. Lokale Testergebnisse und ein eingetragener CI-Schritt bedeuten nicht, dass die GitHub-Prüfung bereits gelaufen ist. Ohne bestätigten Merge/Deployment keine Live-Behauptung. Historischer Forschungsbericht ist niemals eine Echtgeldfreigabe.
+
+GEMESSEN nach dem Integrationscommit: `bash automation/ci_simulation.sh` endete mit Fehler bei `mktemp` unter `/home/agent` (schreibgeschütztes Dateisystem), bevor Tests starteten. Daher kein bestandener vollständiger CI-Simulationslauf. Die20 Labortests und der isolierte Temp-Baum wurden separat erfolgreich ausgeführt.
