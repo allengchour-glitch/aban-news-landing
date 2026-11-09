@@ -226,3 +226,16 @@ Die einzige Verkaufsaktion zur Freigabe ist Page698444710273: vier französische
 Claude-Empfang bleibt unbekannt. Keine fehlenden Daten als Null, keine Termine als Publikation und keine Views als Verkäufe ausgeben.
 
 [LUXESTYLE_R155_20261109]
+
+## R156 – Weiterarbeit ab 09.11.2026, 19:00 Europe/Zurich
+
+[LUXESTYLE_R156_20261109]
+
+1. R154-Kennzahlen/Klaviyo und R155-DNS sind die heutigen Quellen; am09.11. nicht erneut lesen, ausser ein neuer konkreter Gegenprüfgrund entsteht.
+2. Frische Identitäten stimmen. Metricool09.–17.11.:65 Objekte,21 aktiv/44 Drafts/0 aktive Videos; zwei vorhandene Fotoobjekte heute kanalweise PUBLISHED. FB/IG bis15.11., Pinterest bis14.11.; TikTok/YouTube/Threads offen, ab16.11. alle Kanäle offen. Keine Lücke mit gesperrten Videos füllen.
+3. Master-ID bleibt `luxe_sternenprojektor_master_20261018`. Nutze `MASTER-INGEST-PREFLIGHT-20261109-R156.py`: genau eine aktuelle A–G-Ausführung/SKU/CJ-VID, ein `unitToken`, Identitätsclip plus vier native1080×1920/30-fps-Takes, Hashrechte, Pflichtmusik und finaler18s-/540-Frame-Export.6/6 Tests grün; reale Freigabe noch `FAIL_BLOCKED`.
+4. Page `gid://shopify/Page/698444710273`: vier Quelldigests unverändert, FR-Übersetzungen leer. `FR-VERKAUFSDIFF-20261109-R156.json` ist der einzige Shop-Freigabeentwurf. Vor späterem Write frische Digests prüfen; danach DE/FR title/meta/OG/H1/body/canonical/hreflang zurücklesen.
+5. Projektor/Futterspender ACTIVE und kaufbar; Menge0 ist bei untracked/CONTINUE kein Ausverkaufsbeleg. Keine Bestands-/Lieferzusage. Historische Projektorvariante56197916361089 nicht verwenden.
+6. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Feed-, Bestell- oder kostenpflichtige Renderaktion. Andere Marken unangetastet.
+
+Belege: `CONTENT-VERKAUFSPAKET-20261109-R156.md/.json`, `METRICOOL-PLAN-20261109-R156.json`, `PRODUKTPRUEFUNG-20261109-R156.json`, `MASTER-INGEST-PREFLIGHT-20261109-R156.*`, `FR-VERKAUFSDIFF-20261109-R156.json`, `SEO-STICHPROBE-20261109-R156.json`. Empfang dieser Übergabe ist weiterhin unbekannt, bis ein echter Claude-Beleg vorliegt.
