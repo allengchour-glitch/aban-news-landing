@@ -22,8 +22,11 @@ export function playwright() {
   throw new Error('Playwright nicht gefunden');
 }
 
-/** Die geprüfte Fassung des Editors: 6.2.0. Die Rücknahme 6.1.0 (lspod-designer-v6.js) läuft mit V6_DATEI=… und V6_VERSION=6.1.0 durch dieselben Prüfungen. */
-export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.2.0.js');
+/** Die geprüfte Fassung des Editors: 6.4.0. Die Vorgänger (6.3.1, 6.2.0 und die Rücknahme 6.1.0 = lspod-designer-v6.js) laufen mit V6_DATEI=… und V6_VERSION=… durch dieselben Prüfungen
+ *  (Prüfungen der neuen Ansichten gibt es dort nicht: bearbeiten_test.mjs prüft die Version und beendet sich sonst). */
+export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.4.0.js');
+/** Referenzfassung für Vergleiche (gleiche Eingaben, andere Datei): Standard 6.3.1. Die Mock-Seite lädt sie mit dem Parameter editor=ref. */
+export const V6_REF_DATEI = process.env.V6_REF_DATEI || join(v6Ordner, 'lspod-designer-v6-6.3.1.js');
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');
 /** Optionaler Ordner mit heruntergeladenen Vorlagenbildern (sha1 der Adresse, 16 Zeichen); ohne ihn gibt es einfache Attrappen. */
 export const BILDCACHE = process.env.V6_BILDCACHE || '';
@@ -61,6 +64,7 @@ export function starteServer() {
     const senden = (typ, inhalt, code = 200) => { res.writeHead(code, { 'content-type': typ, 'cache-control': 'no-store' }); res.end(inhalt); };
     if (u.pathname === '/mock.html') return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
+    if (u.pathname === '/lspod-designer-v6-ref.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_REF_DATEI));
     if (u.pathname === '/v5.js') return senden('text/javascript; charset=utf-8', readFileSync(V5_DATEI));
     let m;
     if (u.pathname === '/karten/syn.json') {
@@ -83,6 +87,19 @@ export function starteServer() {
       const varianten = {};
       for (const paar of (u.searchParams.get('shop') || '').split(',').filter(Boolean)) { const [sv, pv, mo] = paar.split(':'); if (sv && pv && mo) varianten[sv] = { pv: Number(pv), m: Number(mo) }; }
       return senden('application/json', JSON.stringify({ schema: 1, modelle, shop: { varianten } }));
+    }
+    // LIVE-Karten und -Vorschaudaten aus pod/v6/maps (die Dateien, die in den Produktbeschreibungen stehen): karte=live-<Dateiname ohne «lspod-» und Endung>, vorschau=live-<…>; spiegel=0 (Vorgabe der Tests): Vorlagenbilder
+    // werden von der Printful-Adresse geladen (mit V6_BILDCACHE die echten Bilder), sonst gelten die gespiegelten Adressen der Datei.
+    if ((m = u.pathname.match(/^\/karten\/live-(\d+)\.json$/))) {
+      const f = join(v6Ordner, 'maps', `lspod-${m[1]}.karte.json`);
+      return existsSync(f) ? senden('application/json', readFileSync(f)) : senden('text/plain', 'keine Karte', 404);
+    }
+    if ((m = u.pathname.match(/^\/vorschau\/live-(\d+)\.json$/))) {
+      const f = join(v6Ordner, 'maps', `lspod-${m[1]}.vorschau.json`);
+      if (!existsSync(f)) return senden('text/plain', 'keine Vorschaudaten', 404);
+      const d = JSON.parse(readFileSync(f, 'utf8'));
+      if (u.searchParams.get('spiegel') === '0') for (const mo of Object.values(d.modelle)) for (const k of Object.keys(mo.bilder || {})) mo.bilder[k] = null;
+      return senden('application/json', JSON.stringify(d));
     }
     if ((m = u.pathname.match(/^\/vorschau\/([\d,]+)\.json$/))) {
       // Vorschaudaten (Schema 1) aus den Test-Katalogen im Repo, gebaut mit dem echten Werkzeug; spiegel=0: Bilder nicht gespiegelt (null), sonst auf «cdn.shopify.com/s/files/test/»
@@ -208,7 +225,7 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
   const ctx = await browser.newContext({
-    viewport: { width: opt.breite || 1440, height: opt.hoehe || 900 }, deviceScaleFactor: 1, userAgent: NORMALE_KENNUNG, hasTouch: !!opt.mobil, isMobile: !!opt.mobil, locale: opt.sprache || 'de-CH',
+    viewport: { width: opt.breite || 1440, height: opt.hoehe || 900 }, deviceScaleFactor: 1, userAgent: NORMALE_KENNUNG, hasTouch: !!opt.mobil, isMobile: !!opt.mobil, locale: opt.sprache || 'de-CH', reducedMotion: opt.reducedMotion || 'no-preference',
   });
   const page = await ctx.newPage();
   if (opt.initSkript) await page.addInitScript(opt.initSkript);   // läuft vor jedem Skript der Seite (z. B. gesperrter Speicher)

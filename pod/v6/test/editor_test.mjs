@@ -34,14 +34,14 @@ async function textHinzufuegen(page, text) {
   await page.locator('.lsp6-text').fill(text);
 }
 async function reviewBestaetigenWennNoetig(page) {
-  const v63 = await page.evaluate(() => window.LSPOD6 && /^6\.3\./.test(window.LSPOD6.version || ''));
+  const v63 = await page.evaluate(() => window.LSPOD6 && /^6\.[3-9]\./.test(window.LSPOD6.version || ''));
   if (!v63) return;
   const dialog = page.locator('[data-lsp6-review="1"]');
   await dialog.waitFor({ state: 'visible', timeout: 30000 });
   await dialog.locator('.lsp6-review-accept').check();
   await dialog.locator('.lsp6-review-confirm').click();
 }
-const istV63 = (page) => page.evaluate(() => window.LSPOD6 && /^6\.3\./.test(window.LSPOD6.version || ''));
+const istV63 = (page) => page.evaluate(() => window.LSPOD6 && /^6\.[3-9]\./.test(window.LSPOD6.version || ''));
 async function ctaAusloesen(page, selector = '.lsp6-cta') {
   await page.locator(selector).first().click();
   await reviewBestaetigenWennNoetig(page);

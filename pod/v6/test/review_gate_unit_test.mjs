@@ -10,8 +10,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const hier = dirname(fileURLToPath(import.meta.url));
-process.env.V6_DATEI = join(hier, '..', 'lspod-designer-v6-6.3.1.js');
-process.env.V6_VERSION = '6.3.1';
+process.env.V6_DATEI = process.env.V6_DATEI || join(hier, '..', 'lspod-designer-v6-6.3.1.js');   // fest auf 6.3.1 (Rollout-Stand); mit V6_DATEI=…6.4.0.js und V6_VERSION=6.4.0 läuft derselbe Test gegen 6.4.0
+process.env.V6_VERSION = process.env.V6_VERSION || '6.3.1';
 
 let n = 0;
 const fehler = [];

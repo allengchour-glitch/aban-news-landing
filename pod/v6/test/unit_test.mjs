@@ -42,7 +42,7 @@ function ladeV6(datei = V6_DATEI, g = neuerGlobal()) {
 }
 const win = ladeV6();
 const H = win.LSPOD6.hilfen;
-const SOLL_VERSION = process.env.V6_VERSION || '6.2.0';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
+const SOLL_VERSION = process.env.V6_VERSION || '6.4.0';   // V6_VERSION=6.1.0 mit V6_DATEI=…/lspod-designer-v6.js prüft die Rücknahme-Fassung
 const NEU = SOLL_VERSION !== '6.1.0';   // die Hilfen und der Vorschaubauer von 6.2.0 gibt es in 6.1.0 nicht
 pruefe('v6 lädt ohne Seite und meldet seine Version', win.LSPOD6.version === SOLL_VERSION, win.LSPOD6.version);
 pruefe('Guard gegen Doppelladen gesetzt', win.__lspodDesignerLoaded === undefined && win.__lspodDesignerV6Loaded === true, 'v6 darf den Guard von v5 nicht setzen');
@@ -590,7 +590,11 @@ pruefe('v6.3.0 bleibt für bestehende SRI-Tags bytegleich',
 // Die Namen sind nur sichtbare Auswahlbeschriftungen. Die technisch verwendeten CSS-Schriften
 // stehen separat in SCHRIFT_CSS und bleiben unverändert. Darum müssen die aktiv weiterentwickelten
 // v6-Fassungen vollständig deutsch sein, während die englische Locale englisch bleibt.
-for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js']) {
+// 6.3.1 und 6.4.0 liegen nebeneinander; 6.3.1 bleibt bytegleich (Rücknahme, SRI-Pfad des Rollouts)
+const v631 = readFileSync(join(hier, '..', 'lspod-designer-v6-6.3.1.js'));
+pruefe('v6.3.1 bleibt bytegleich (Rücknahme)', createHash('sha256').update(v631).digest('hex') === '1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0' && v631.length === 228826);
+
+for (const name of ['lspod-designer-v6.js', 'lspod-designer-v6-6.2.0.js', 'lspod-designer-v6-6.3.1.js', 'lspod-designer-v6-6.4.0.js']) {
   const s = readFileSync(join(hier, '..', name), 'utf8');
   pruefe(`${name}: deutsche Schriftauswahl ohne englische Stilnamen`,
     s.includes("['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine']")
