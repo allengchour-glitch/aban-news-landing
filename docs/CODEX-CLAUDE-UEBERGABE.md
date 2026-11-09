@@ -2,6 +2,14 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Download-Dankeseite: begrenzter Wiederanlauf · 09.11.2026
+
+- Von aktuellem main b806a81 auf eigenem Branch `codex/download-wiederanlauf` begonnen. Offene Arbeiten gelesen; Buchbutton PR2999, Audit-Produkttexte und Paketbau nicht erneut implementiert. Eigene Audit-Checkout-/Währungszuordnung bleibt offen; keine Preis-/Kontoänderung.
+- **GEMESSEN:** Eine hängende simulierte Prüfantwort lässt `danke-kit.html` unbegrenzt bei «Zahlung wird geprüft» stehen; manueller Wiederanlauf bleibt verborgen. Neue Regression vor Korrektur rot. Keine echte Checkout-Kennung, Zahlung oder geschützter Abruf.
+- Korrektur:15 Sekunden Zeitgrenze für Anfrage samt Antwortauswertung, Abbruchsignal und unabhängiges Promise-Rennen. Danach verständlicher Hinweis und manueller Prüfknopf; kein erneuter Kauf empfohlen. Keine automatische Wiederholung. Verspätete alte Antwort verändert den neuen Zustand nicht. Timer nach Abschluss entfernt; serverseitige Zahlungs-/Dateiprüfung unverändert.
+- **GEMESSEN:**48 Download-/API-/Oberflächenprüfungen,84 Engine- und42 API-Tests grün (174). Regression deckt Zeitgrenze trotz ignoriertem Abbruchsignal, manuellen Erfolg und verspätete Antwort ab. Bestehender Hype-Filter-Workflow führt dieselbe Testdatei bereits aus; kein neuer Workflow/Trigger. Vorgeschriebene lokale CI-Simulation scheitert am schreibgeschützten HOME (`mktemp`), ist kein bestandenes CI.
+- Merge-/Produktionsstand im zugehörigen PR frisch lesen. Finanzielle Wirkung nicht gemessen. Ziel ist, beim hängenden Prüfweg manuelle Wiederaufnahme zu ermöglichen, ohne Doppelkauf oder Support als gemessene Einsparung auszugeben.
+
 ## Buchseite: leeren Amazon-Kaufweg ausblenden · 09.11.2026
 
 - Aktueller main769be79 und offene PRs gelesen; Audit-Erklärungen PR2985 und Paketbau PR2983 nicht erneut implementiert. Eigene Audit-Checkout-Zuordnung und EUR/CHF-Entscheidung bleiben offen; keine Preis-/Kontoänderung aus diesem Auftrag.
