@@ -78,3 +78,7 @@ HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine private
 ### Spielartige Monitoransicht
 
 `campus-einheitlich-9`: Ein Klick auf die zentrale Monitorwand fährt die Kamera frontal zum Bildschirm. Die Monitoransicht hat einen eigenen Zurück-Knopf, Vollbild und einen separaten Knopf zur Gesamtliste. Zurück oder Escape stellt die vorherige Kameraposition wieder her. Normale Raumwahl beendet die Monitoransicht. Grössenwechsel passen den Abstand an; reduzierte Bewegungen überspringen die Kamerafahrt. Keine neue Datenquelle oder Kontoaktion.
+
+### Geschützte Rankinganzeige
+
+`campus-einheitlich-10` ergänzt im Büro und der Monitorleiste den Link zur privaten Ranking-/SEO-Ansicht und einen direkten Chat-Auftrag. Der Link überträgt weder Zugangsdaten noch Suchmesswerte an die öffentliche Website. Google-Daten bleiben ein datierter, verzögerter Messstand. Der Knopf öffnet einen Auftrag und bestätigt keine Ausführung. Das gemeinsame Claude-Paket enthält dieselben Bedienelemente.

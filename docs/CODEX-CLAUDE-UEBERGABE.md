@@ -2,6 +2,15 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Ranking und SEO im Büro mit Verbesserungsauftrag
+
+- Inhaber wünscht aktuelle Ranking-/SEO-Anzeige und einen Verbesserungsbutton. Von mainfb32cb5 auf `codex/buero-seo-anzeige` begonnen; AGENTS, CLAUDE, Shared Memory und Übergabe gelesen. Claudes Merchant-Befund PR3033 beachten, nicht parallel pauschal Theme-/Feedänderungen vornehmen.
+- **GEMESSEN:** Search Console per vorhandenem HYPD-Zugang für beide Domain-Properties lesbar, siteOwner bestätigt. Websuche,28-Tage-Zeitraum12.10.–08.11.2026, data_state=all; aggregierte Websitewerte getrennt von Tages- und Anfrageauszügen gelesen. Jüngste Tage vorläufig, geschätzter finalisierter Stand laut Quelle06.11. Kein Echtzeit-Ranking und keine vollständige Keywordliste. Private Rohdaten ausschliesslich ausserhalb von Git. Keine Konto-, Kunden- oder Finanzwerte in dieser Übergabe.
+- Bestehende private Büroübersicht um geschützte Rankingansicht ergänzt: Klicks, Impressionen, CTR, Durchschnittsposition, Verlauf, Websitewechsel und Suchanfragen. Fehlende Tageszeilen schraffiert; gemeldete Null bleibt Null, Position ohne Impressionen nicht messbar. Teilauszüge/anonymisierte Suchanfragen ausdrücklich erklärt. Generische Vorlage `tools/buero/seo_monitor.html` enthält keine realen Messwerte.
+- Öffentliche Büroknöpfe «Ranking & SEO · privat» und «SEO verbessern · Chat öffnen», auch im Monitor. Der Anzeigenlink führt zur authentifizierten privaten ChatGPT-Seite; im Repository steht nur der Zugangslink, kein Messwert und kein Token. Verbesserungsbutton nutzt vorhandenen Chat-Auftragsmechanismus mit neuem begrenztem SEO-Auftrag; kein automatischer Dienst und keine ausgeführte Verbesserung aus einem Klick ableiten. Gemeinsame Designversion10,28 feste Aufträge.
+- **GEMESSEN:**67 Büro- und25 Entwicklerprüfungen lokal grün (92). Desktop1440px/Handy390px: Quellenanzeige, Tageslücken, Websitewechsel, Teilauszug und beide Büroknöpfe geprüft, keine Nachricht gesendet. Vorgeschriebene lokale CI-Simulation am schreibgeschützten HOME blockiert; kein CI-Erfolg daraus ableiten.
+- Der Chat-Zugang ist kein geschützter Website-Dauersync. Neue Daten müssen tatsächlich abgerufen und der private Datenstand aktualisiert werden; Quellenfehler dürfen alte Werte/Messzeit nicht überschreiben. Keine zusätzlichen Automationen, Frequenz-, Secret-/Kontoänderungen oder Fremdveröffentlichungen. Aktuellen Merge-/Deploystand im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen.
+
 ## Monitor-Klick zoomt wie im Spiel · 09.11.2026
 
 - Inhaber wünscht beim Monitor-Klick eine nahe Bildschirmansicht statt Listenwechsel. Von main90856a7 auf `codex/monitor-fokus` begonnen; Regeln und Übergaben gelesen. Campusplatz PR3032 produktiv: Produktionslauf42704306021 erfolgreich, Version8 auf Desktop/Handy gegengeprüft.
