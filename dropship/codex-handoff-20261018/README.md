@@ -1869,3 +1869,23 @@ Firecrawl bestätigte als grösseren strukturellen Blocker rund746 serverseitig 
 [R153-Bericht](PLUGIN-RANKING-PUSH-20261108-R153.md) · [R153-Beleg](PLUGIN-RANKING-PUSH-20261108-R153.json). Keine Budgets, Preise, Rabatte, Versand-, Merchant-, Locale-, Shop-, Flow-, DNS- oder Social-Einstellungen verändert.
 
 [LUXESTYLE_R153_20261108]
+
+## Aktueller Stand – 09.11.2026, Revision 154: ungeprüfte Videos gesperrt, Freigabepaket erstellt
+
+Shopify ist frisch als LuxeStyle / `luxestyle.ch` / CHF bestätigt. Metricool stimmt exakt mit brandId `6227837`, `Europe/Zurich` und den sechs erwarteten Kanalidentitäten überein. Die Planung enthielt 43 aktive Videoobjekte ohne vollständigen Qualitäts- und Rechtebeleg: 15 verwendeten vier bereits gesperrte R125-Filmhashes; weitere 28 verwendeten 14 nur 8,0 beziehungsweise 11,4 Sekunden lange, stumme Foto-/Text-Slideshows ohne Pflichtmusik. Alle 43 bestehenden Objekte wurden unter Erhalt von UUID, Text, Medium und Termin auf `draft=true` und global `autoPublish=false` gesetzt; Instagram-Autopublish ist ebenfalls aus. Frische Rücklesung: 0 aktive Videoobjekte, 21 aktive Fotoobjekte und 44 Entwürfe. Es wurde kein Beitrag neu angelegt oder als veröffentlicht ausgegeben.
+
+Aktive Fotoabdeckung besteht für Facebook und Instagram täglich 09.–15.11. sowie Pinterest 09.–14.11. TikTok, Threads und YouTube haben im geprüften Fenster keine aktive geeignete Veröffentlichung; am 16.–17.11. gibt es auf allen Kanälen Lücken. Termine und `PENDING` sind kein Auslieferungsbeleg. Die Lücken wurden nicht mit ungeeigneten Videos aufgefüllt.
+
+Der begrenzte Kennzahllauf für die sieben abgeschlossenen Zürcher Tage 02.–08.11. ergibt: Instagram 647 Views und mindestens 6 Interaktionen; Facebook 406 Seiten-/Medien-Views und mindestens 1 Interaktion; TikTok 2'095 bekannte Views/3 Likes/0 Kommentare/1 Share bei 6/7 Tagen; Pinterest 4'532 Impressionen/61 Interaktionen bei 5/7 Tagen; YouTube 233 bekannte Views mit unvollständigen Interaktionen; Threads nur am 08.11. mit explizit 0/0, übrige sechs Tage unbekannt. Fehlende Zeilen und `null` bleiben unbekannt; keine Verkaufsableitung.
+
+Projektor Produkt `15521256604033` ist ACTIVE, öffentlich kaufbar und aktuell als sieben A–G-Varianten CHF34.90–51.90 belegt; alle sind untracked/`CONTINUE`/Menge0. Tags sind nicht leer und ohne Sperrtag, enthalten aber `auswahl-offen`. Die alte Variante `56197916361089` ist veraltet. Variante, Motiv und physische Einheit des Filmmasters bleiben unbekannt. Futterspender `15523986473345` ist ebenfalls ACTIVE, öffentlich kaufbar, CHF96.90, untracked/`CONTINUE`/Menge0 und ohne Sperrtag; passendes Filmmaterial fehlt. Keine Bestands- oder Lieferzusage.
+
+Es existiert weiterhin keine professionelle Master-MP4. Der einzige fortgeführte Master bleibt ein präziser18-Sekunden-/540-Frame-Plan mit den alternativen Hooks «Dein Raum. Neues Licht.» und «Licht im Detail.». Vier native Hochkanttakes derselben aktuellen Einheit, hashgebundene kommerzielle Bearbeitungs-/Werberechte sowie Rechte-/Hör-/Mixabnahme der Pflichtmusik fehlen. Kein Render, Upload oder Social-Push.
+
+Klaviyo-Konto `XWqMAD` / Europe/Zurich / USD wurde getrennt von Shopify CHF geprüft; Placed-Order-Metrik `W7XTVD`. `Vse76a`, `VbLQj6`, `RnTvsY`, `XEGbTB` und `UXEjv2` sind aktuell alle `draft`. Genau ein Vorschlag zur Freigabe: `XEGbTB` als einzigen deutschen Checkout-Recovery-Pfad konsolidieren, den unbelegten `-10%`-Inhalt neutralisieren und Trigger/Checkout-Link Ende-zu-Ende testen; erst danach separat aktivieren. Keine Flowänderung oder Nachricht.
+
+Eine einzige Verkaufsaktion liegt zur Freigabe vor: nur die fehlerhaften französischen Übersetzungsobjekte auf `/fr/` und `/fr/pages/selbst-gestalten` mit den im Paket festgehaltenen französischen Titel-/Meta-/OG-/H1-Texten reparieren, vorher Diff und danach DE/FR-Canonical-/Hreflang-Rücklesung. Noch nicht umgesetzt.
+
+[R154 Content- und Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R154.md) · [R154 Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R154.json) · [vollständige Metricool-Rücklesung](METRICOOL-QUALITAETSSPERRE-20261109-R154.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Feed-, Flow-, DNS-, Merchant- oder kostenpflichtige Renderänderung.
+
+[LUXESTYLE_R154_20261109]
