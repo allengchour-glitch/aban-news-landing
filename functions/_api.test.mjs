@@ -5,6 +5,8 @@
 // Key sowie ein gemocktes globalThis.fetch für den Key-Pfad.
 import { onRequest, onRequestPost, onRequestOptions } from "./api/hype-check.js";
 
+import { validateLicense } from "./_pro.mjs";
+
 let pass = 0, fail = 0;
 function check(name, cond, extra = "") {
   if (cond) { pass++; console.log("  ✓ " + name); }
@@ -220,6 +222,38 @@ async function run() {
     } finally {
       globalThis.fetch = realFetch;
     }
+  }
+
+  console.log("\nTest 12 — Lizenzanbieter nach Störung wieder erreichbar:");
+  for (const status of [401, 403, 429, 500, 503]) {
+    const realFetch = globalThis.fetch;
+    let calls = 0;
+    globalThis.fetch = async () => {
+      calls++;
+      return calls === 1 ? new Response('{}', { status }) : PRO_OK();
+    };
+    try {
+      const key = 'nur-demo-wiederanlauf-' + status;
+      const first = await validateLicense(key, {});
+      check(status + ': Störung gibt nicht frei', first.ok === false);
+      const second = await validateLicense(key, {});
+      check(status + ': erneute Prüfung nach Erholung erreicht Anbieter', calls === 2 && second.ok === true);
+    } finally { globalThis.fetch = realFetch; }
+  }
+  {
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = async () => new Response(JSON.stringify({valid:true,license_key:{status:'active'}}),{status:503});
+    try {check('Fehlerstatus gibt auch mit widersprüchlichem Antwortkörper nicht frei',!(await validateLicense('nur-demo-http-fehlerkoerper',{})).ok);}
+    finally {globalThis.fetch=realFetch;}
+  }
+  {
+    const realFetch = globalThis.fetch;let calls = 0;
+    globalThis.fetch = async () => { calls++;return new Response(JSON.stringify({valid:false,license_key:{status:'disabled'}}),{status:200}); };
+    try {
+      const a=await validateLicense('nur-demo-echt-ungueltig',{});
+      const b=await validateLicense('nur-demo-echt-ungueltig',{});
+      check('Bestätigt ungültiger Schlüssel bleibt gesperrt und zwischengespeichert',!a.ok&&!b.ok&&calls===1);
+    } finally {globalThis.fetch=realFetch;}
   }
 
   console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
