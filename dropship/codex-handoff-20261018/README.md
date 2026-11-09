@@ -1922,3 +1922,17 @@ Die einzige Verkaufsaktion ist jetzt feldgenau gebunden: Shopify Page `gid://sho
 - [Content-/Verkaufspaket](CONTENT-VERKAUFSPAKET-20261109-R156.md), [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R156.json), [Master-Preflight](MASTER-INGEST-PREFLIGHT-20261109-R156.md), [FR-Diff](FR-VERKAUFSDIFF-20261109-R156.json).
 
 Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, DNS-, Merchant-, Feed- oder kostenpflichtige Renderänderung. Claude-Empfang bleibt unbekannt.
+
+## Aktueller Stand – 09.11.2026, Revision 157: französische Selbstgestalten-Seite live korrigiert
+
+Der neue Rankingauftrag wurde auf die in R156 feldgenau vorbereitete Shopify-Page begrenzt. Shopify wurde unmittelbar vor dem Write als LuxeStyle / `luxestyle.ch` / CHF / Schweiz bestätigt. Page `gid://shopify/Page/698444710273` war veröffentlicht, alle vier Quelldigests waren unverändert und die französische Übersetzungsliste leer. Die erste Sprachprüfung stoppte den ursprünglichen Kandidaten wegen englischem «hoodies» und fünf schwächeren französischen Formulierungen; erst der korrigierte Kandidat erhielt GO.
+
+Genau ein `translationsRegister`-Write registrierte `title`, `body_html`, `meta_title` und `meta_description` für `fr`. Keine `userErrors`; native Rücklesung: vier exakte Werte, alle `outdated=false`, Zeit `2026-11-09T20:23:03Z`. Öffentliche Firecrawl-Gegenprobe: HTTP200, `lang=fr`, französischer Title, Meta-/OG-Beschreibung, OG-Title, H1 und Body, korrektes Canonical/Hreflang, sechs französische Inhaltslinks und Gratisversand ab CHF50; 12/12 Prüfungen PASS. Handle, deutsche Werte, Theme, Preise, interne Schwelle CHF45 und Kundendomäne blieben unverändert.
+
+Die begrenzte HYPD-Search-Console-Gegenprobe für10.10.–06.11. ist final: deutsche Selbstgestalten-Seite33 Impressionen/0 Klicks/Position65,21. Für die exakte FR-Seite wurden keine Queryzeilen offengelegt; wegen anonymisierter seltener Anfragen bleibt die tatsächliche Leistung unbekannt. Keine unmittelbare Ranking- oder Verkaufswirkung behauptet.
+
+Theme-Ursachen wurden nur lesend präzisiert. `og:image` nutzt im MAIN-Snippet weiterhin HTTP, direkt daneben ist aber `og:image:secure_url` per HTTPS vorhanden; ein lokaler Zwei-Präfix-Patch besteht21 Tests und wurde nicht angewendet. Das Hauptmenü enthält784 Knoten,779 Collection-Knoten und742 eindeutige Collection-URLs; Desktop und Mobile rendern denselben Baum serverseitig. Linkreduktion braucht einen getrennten IA-/Menüentwurf und eine unveröffentlichte Theme-Vorschau, keinen Blindpatch.
+
+[R157 Ranking-Bericht](RANKING-UMSETZUNG-20261109-R157.md) · [Maschinenbeleg](RANKING-UMSETZUNG-20261109-R157.json) · [GSC-Beleg](GSC-RANKING-20261109-R157.json) · [öffentliche Nachher-Gegenprobe](PUBLIC-SEO-NACHHER-20261109-R157.json) · [Theme-Ursachenanalyse](THEME-SEO-ANALYSE-20261109-R157.md). Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Menü-, Theme- oder kostenpflichtige Renderänderung. Claude-Empfang bleibt unbekannt.
+
+[LUXESTYLE_R157_20261109]
