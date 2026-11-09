@@ -1528,10 +1528,10 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function gateFinanz(){var l=$("#finanz_lock");if(!l)return;var locked=!isPro();l.style.display=locked?"":"none";var t=$("#f_tabs");if(t)t.style.display=locked?"none":"";$$("#v-finanz .lsec").forEach(function(s){s.style.display=locked?"none":""})}
   if($("#finanz_unlock"))$("#finanz_unlock").addEventListener("click",function(){proGate("Finanzen-Suite")});
   if($("#pro_activate"))$("#pro_activate").addEventListener("click",function(){var key=$("#pro_key").value.trim();if(!key){toast("Bitte Lizenzschlüssel eingeben");return}
-    var btn=this;btn.disabled=true;btn.textContent="Prüfe …";
+    var btn=this;btn.disabled=true;btn.textContent="Prüfe …";renderProStatus();$("#pro_key").value=key;
     fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:key})}).then(function(r){return r.json()}).then(function(d){
-      if(d&&d.valid){set("abanCockpit_pro",{ok:true,tier:d.tier||null,key:key});renderProStatus();toast("aban Pro aktiv ✓")}else{toast("Schlüssel ungültig oder nicht erkannt")}
-    }).catch(function(){toast("Prüfung fehlgeschlagen — bist du online?")}).then(function(){btn.disabled=false;btn.textContent="Freischalten"})});
+      if(d&&d.valid){set("abanCockpit_pro",{ok:true,tier:d.tier||null,key:key});renderProStatus();toast("aban Pro aktiv ✓")}else if(!d||d.status==="error"||d.error){var msg="Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.";$("#pro_status").textContent=msg;toast(msg)}else{toast("Schlüssel ungültig oder nicht erkannt")}
+    }).catch(function(){var msg="Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.";$("#pro_status").textContent=msg;toast(msg)}).then(function(){btn.disabled=false;btn.textContent="Freischalten"})});
   if($("#pro_remove"))$("#pro_remove").addEventListener("click",function(){set("abanCockpit_pro",null);renderProStatus();toast("Pro entfernt")});
 
   /* ===== Darstellung + Demo + Reset ===== */
