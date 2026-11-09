@@ -33,6 +33,15 @@ Auftrag des Besitzers 09.11.2026: «printeredt fehler beheben» (meine Auslegung
 - **Bekannte kleine Härtungen, nicht umgesetzt** (würden Generator und Live-Block gemeinsam ändern): Beobachter entprellen (schützt nur gegen ein fremdes Skript, das den CTA-Text aktiv zurücksetzt, nicht vorhanden); CSS-Regel im Block trifft auch Fremdformulare auf der Seite (auf diesen drei Seiten gibt es keins); `layout/theme.liquid` Zeile 571 `fix()` ist ein ungedrosselter Dokumentbeobachter, der nur durch seine Datenlage gegen Ping-Pong geschützt ist (kein Fehler heute).
 - **Hinweis:** Die Live-Seiten enthalten im Formular keinen Kaufknopf (0 Buttons, 0 Dynamic-Checkout): live sperrt das Skript nur den CTA-Text, Kaufknopf und Checkout-Sperre sind nur mit Attrappe bewiesen.
 
+
+## Mobilmessung der übrigen 15 aktiven Seiten (09.11.2026, Handy 390 px, nur lesend)
+- Alle 15 laden (DOMContentLoaded 2,4 bis 3,9 s, Load 4,2 bis 5,4 s), der Editor startet (`data-init-v6=1`; Version 6.3.0 bei 14, 6.3.1 bei der Keramik-Tasse), 0 Seitenfehler, kein seitliches Scrollen.
+- Konsole: nur der Shop-Pay-403 (`shop.app/pay/hop`, Plattform) und abgebrochene Analytik-Anfragen (`/api/event/collect`, beim Seitenwechsel), beides nicht unser Code.
+- Variantenwechsel an den 8 Seiten mit Auswahl (78 Radioklicks): keine Meldung, kein gesperrter Knopf, 0 Seitenfehler; die Druckfläche folgt dem Modell (Samsung 3, iPhone 2, Aufkleber 3, Tasse 2 verschiedene Druckflächen).
+- Einziger Hinweis: Kiss-Cut-Aufkleber zeigt «Die Produktvorschau ist für diese Ausführung gerade nicht verfügbar. Du kannst trotzdem gestalten: Die Ansicht «Druckfläche» …». Das ist der gewollte Rückfall des Editors, kein Fehler.
+- Messartefakt: das Datenattribut `data-variant` am Editor-Container ändert sich beim Variantenwechsel nicht; die Druckfläche und die Radiozustände ändern sich aber, es ist also keine Eigenschaft, die der Editor je nach Variante nachführt.
+- Ungemessen: Safari und echtes Handy, Kaufen mit Warenkorb (nur mit abgefangener Anfrage geprüft, siehe Stand vom 06.11.).
+
 ## Nicht gemessen / Grenzen
 - Die Wirkung auf echten Geräten (Safari, Handy) ist nicht gemessen; gemessen wurde in Chromium (Desktop).
 - Die Sperre selbst (Review-Gate, Freigabe der drei Produkte) ist Sache der Codex-Rolloutkette und unverändert.
