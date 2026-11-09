@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "runId": "LUXESTYLE_R155_20261109",
+  "checkedAt": "2026-11-09T14:17:19+01:00",
+  "timezone": "Europe/Zurich",
+  "scope": "14:00 follow-up; daily metrics and Klaviyo report reused from R154",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "matched": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "matchedExpected": true
+    }
+  },
+  "dailyReadLimit": {
+    "metricoolMetricsRepeated": false,
+    "klaviyoRepeated": false,
+    "purchaseWatchRun": false,
+    "r154ValuesReused": true,
+    "reason": "already completed on 2026-11-09 Europe/Zurich"
+  },
+  "metricool": {
+    "window": {
+      "futureFrom": "2026-11-09T14:08:27+01:00",
+      "futureThrough": "2026-11-17T23:59:59+01:00",
+      "pastDueCountercheck": "2026-11-09T00:00:00+01:00/2026-11-09T14:08:26+01:00"
+    },
+    "futureSummary": {
+      "objects": 59,
+      "activeObjects": 20,
+      "draftObjects": 39,
+      "manualObjects": 0,
+      "activeVideoObjects": 0,
+      "activeSameChannelSlotCollisions": 0,
+      "activeSameChannelMediaDuplicates": 0,
+      "activeSameChannelExactTextDuplicates": 0
+    },
+    "activeByDate": {
+      "2026-11-09": {
+        "facebook": 1,
+        "instagram": 1,
+        "pinterest": 1,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-10": {
+        "facebook": 2,
+        "instagram": 2,
+        "pinterest": 1,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-11": {
+        "facebook": 2,
+        "instagram": 2,
+        "pinterest": 1,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-12": {
+        "facebook": 2,
+        "instagram": 2,
+        "pinterest": 1,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-13": {
+        "facebook": 2,
+        "instagram": 2,
+        "pinterest": 1,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-14": {
+        "facebook": 2,
+        "instagram": 2,
+        "pinterest": 1,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-15": {
+        "facebook": 1,
+        "instagram": 1,
+        "pinterest": 0,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-16": {
+        "facebook": 0,
+        "instagram": 0,
+        "pinterest": 0,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "2026-11-17": {
+        "facebook": 0,
+        "instagram": 0,
+        "pinterest": 0,
+        "tiktok": 0,
+        "threads": 0,
+        "youtube": 0
+      }
+    },
+    "dueCountercheck": {
+      "published": [
+        {
+          "id": 414929635,
+          "uuid": "-8720943201794045273",
+          "time": "2026-11-09T12:15:00+01:00",
+          "networks": [
+            "facebook",
+            "instagram"
+          ],
+          "states": [
+            "PUBLISHED",
+            "PUBLISHED"
+          ]
+        }
+      ],
+      "pastDatedDrafts": 5,
+      "pastDatedDraftsState": "draft=true, autoPublish=false; PENDING labels do not make them active"
+    },
+    "interpretation": {
+      "scheduledOrPendingProvesPublished": false,
+      "futureActivePhotoOnly": true,
+      "tiktokThreadsYoutubeGap": "entire future window",
+      "pinterestGapFrom": "2026-11-15",
+      "facebookInstagramGapFrom": "2026-11-16",
+      "writes": 0,
+      "metricsRepeated": false
+    },
+    "writes": 0
+  },
+  "products": {
+    "schemaVersion": 1,
+    "checkedAt": "2026-11-09T14:09:00+01:00",
+    "scope": "read-only targeted two-product audit",
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "timezoneAlias": "CET",
+      "identityMatched": true
+    },
+    "products": [
+      {
+        "id": "gid://shopify/Product/15521256604033",
+        "title": "Sternenlicht-Projektor für Schlafzimmer",
+        "status": "ACTIVE",
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+        "pageHttp": 200,
+        "storefrontAvailable": true,
+        "mediaImages": 12,
+        "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+        "featuredImageHttp": 200,
+        "featuredImageContentType": "image/jpeg",
+        "tagsNonEmpty": true,
+        "channelBlockTags": [],
+        "ownerRueckholBlock": false,
+        "selectionTag": "auswahl-offen",
+        "variants": [
+          [
+            "68122445283719",
+            "A",
+            "CJSN139239101AZ",
+            "34.90"
+          ],
+          [
+            "68122445316487",
+            "B",
+            "CJSN139239102BY",
+            "37.90"
+          ],
+          [
+            "68122445349255",
+            "C",
+            "CJSN139239103CX",
+            "40.90"
+          ],
+          [
+            "68122445382023",
+            "D",
+            "CJSN139239104DW",
+            "49.90"
+          ],
+          [
+            "68122445414791",
+            "E",
+            "CJSN139239105EV",
+            "51.90"
+          ],
+          [
+            "68122445447559",
+            "F",
+            "CJSN139239106FU",
+            "44.90"
+          ],
+          [
+            "68122445480327",
+            "G",
+            "CJSN139239107GT",
+            "35.90"
+          ]
+        ],
+        "allVariantsAvailableForSale": true,
+        "inventoryQuantityAll": 0,
+        "inventoryTrackedAll": false,
+        "inventoryPolicyAll": "CONTINUE",
+        "requiresShippingAll": true,
+        "socialMasterGate": "blocked: exact A-G variant, motif set and physical filmed unit remain unbound",
+        "stockOrDeliveryPromiseAllowed": false
+      },
+      {
+        "id": "gid://shopify/Product/15523986473345",
+        "title": "Automatischer Futterspender für Katzen",
+        "status": "ACTIVE",
+        "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+        "pageHttp": 200,
+        "storefrontAvailable": true,
+        "mediaImages": 5,
+        "featuredImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+        "featuredImageHttp": 200,
+        "featuredImageContentType": "image/jpeg",
+        "tagsNonEmpty": true,
+        "channelBlockTags": [],
+        "ownerRueckholBlock": false,
+        "variants": [
+          [
+            "56217490391425",
+            "Default Title",
+            "CJ-1418384701726527488",
+            "96.90"
+          ]
+        ],
+        "allVariantsAvailableForSale": true,
+        "inventoryQuantityAll": 0,
+        "inventoryTrackedAll": false,
+        "inventoryPolicyAll": "CONTINUE",
+        "requiresShippingAll": true,
+        "socialMasterGate": "blocked: no verified matching professional film or rights evidence in this run",
+        "stockOrDeliveryPromiseAllowed": false
+      }
+    ],
+    "changeSinceR154": "none in audited identity, status, prices, variants, tags, images, availability or inventory behavior",
+    "contentCaveat": "Current descriptions contain detailed material, dimension, performance and scope-of-delivery claims. This audit did not bind those claims to a current supplier document; do not reuse them in social content until separately verified.",
+    "writes": 0
+  },
+  "master": {
+    "status": "blocked_no_master_mp4",
+    "audit": {
+      "schemaVersion": 1,
+      "runId": "LUXESTYLE_R155_MASTER_20261109_1400",
+      "checkedAt": "2026-11-09T14:16:00+01:00",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "baseline": {
+        "r151Contract": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-PRODUCTION-INTAKE-20261108-R151.json",
+        "r154Audit": "/dev/shm/master-audit-20261109.json",
+        "r154AuditSha256": "a6a026fb694de7a8a207278be9913abe7a5c721b23d1adfaa31af81006b5a7e4"
+      },
+      "workspaceScan": {
+        "mp4Files": 11,
+        "professional15To20s1080x1920Cfr30Candidates": 0,
+        "newNonGitMediaOrRightsFilesSinceR154": 0,
+        "probePath": "/dev/shm/r155-mp4-probe.json",
+        "probeSha256": "f6890a5583b323909811f81dfe30cd891196b5f84ea853946b77822d63d165fd",
+        "expectedCorrectedCrystalPath": "/workspace/social-audio-korrektur/kristall-ohne-sprache.mp4",
+        "expectedCorrectedCrystalState": "missing"
+      },
+      "source": {
+        "path": "/workspace/luxestyle-review/r124-work/projector-source.mp4",
+        "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+        "durationSeconds": 27.96,
+        "width": 960,
+        "height": 540,
+        "fps": 25,
+        "use": "historical comparison only"
+      },
+      "music": {
+        "path": "/workspace/luxestyle-review/r124/automation/music/luxe-premium.wav",
+        "sha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+        "technicalPresence": true,
+        "rightsListeningMixApproval": false
+      },
+      "rights": {
+        "oldDraftPath": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/MASTER-RECHTEBELEG-R26-20261101.json",
+        "oldDraftStatus": "UNFILLED_DRAFT_NOT_A_LICENSE_OR_APPROVAL",
+        "hashBoundGrantFound": false
+      },
+      "professionalMaster": {
+        "exists": false,
+        "renderedThisRun": false,
+        "uploadedThisRun": false,
+        "publishedThisRun": false
+      },
+      "gates": {
+        "intakeGo": false,
+        "renderGo": false,
+        "releaseGo": false,
+        "publishGo": false
+      },
+      "improvement": {
+        "path": "/dev/shm/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+        "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4",
+        "kind": "same-master native capture and acceptance block; no replacement clip"
+      }
+    },
+    "writes": {
+      "render": 0,
+      "upload": 0,
+      "publish": 0
+    }
+  },
+  "singleSalesAction": {
+    "status": "approval_draft_only",
+    "resourceId": "gid://shopify/Page/698444710273",
+    "currentFrenchTranslations": [],
+    "proposed": {
+      "resource_id": "gid://shopify/Page/698444710273",
+      "leave_unchanged": [
+        "handle",
+        "canonical",
+        "hreflang",
+        "theme H1 template"
+      ],
+      "register_fr": {
+        "title": "Personnalisez des T-shirts, des tasses et bien plus encore",
+        "meta_title": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle",
+        "meta_description": "Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.",
+        "body_html": "<p>Créez votre pièce préférée : chez <strong>LuxeStyle</strong>, personnalisez des T-shirts, des sweat-shirts, des hoodies bio, des tasses, des sacs et des casquettes avec votre texte, votre nom ou votre image. Pour un cadeau, un événement d’équipe, une association ou une pièce unique pour vous, votre article est imprimé selon votre création.</p>\n<h2>Comment ça marche</h2>\n<ol>\n<li><strong>Choisir le produit</strong> – Sélectionnez l’article et la variante disponible.</li>\n<li><strong>Créer le motif</strong> – Placez votre texte, votre nom ou votre image dans l’éditeur.</li>\n<li><strong>Vérifier l’aperçu</strong> – Contrôlez le motif, sa position, sa couleur, sa taille et la variante du produit.</li>\n<li><strong>Commander</strong> – Ajoutez votre création au panier et passez à la caisse en toute sécurité.</li>\n</ol>\n<h2>Produits à personnaliser</h2>\n<ul>\n<li><a href=\"/fr/products/klassisches-unisex-t-shirt-selbst-gestalten\">Personnaliser un T-shirt</a> – avec votre texte ou votre image.</li>\n<li><a href=\"/fr/products/keramik-tasse-selbst-gestalten\">Faire imprimer une tasse en céramique</a> – pour le bureau, la cuisine ou comme cadeau.</li>\n<li><a href=\"/fr/products/unisex-hoodie-selbst-gestalten\">Personnaliser un sweat-shirt ou un hoodie bio</a> – choisissez le modèle et placez votre motif.</li>\n</ul>\n<p>Retrouvez tous les articles personnalisables dans la <a href=\"/fr/collections/selbst-gestalten\">collection « Personnaliser »</a>.</p>\n<h2>Production et livraison</h2>\n<p>Chaque pièce personnalisée est imprimée après votre commande. Le délai de livraison prévu dépend du produit, de la variante, du site d’impression et de l’adresse de livraison. Une estimation précise s’affiche pendant la commande lorsqu’elle est disponible pour l’article choisi.</p>\n<h2>À vérifier avant de commander</h2>\n<p>Vérifiez soigneusement l’aperçu, l’orthographe, la position, la couleur du produit, la variante et la taille. Les articles personnalisés sont fabriqués selon votre création. Consultez les <a href=\"/fr/policies/refund-policy\">conditions de retour des produits personnalisés</a>.</p>\n<h2>Pour la Suisse et le Liechtenstein</h2>\n<p>Tous les prix sont indiqués en CHF. La livraison est gratuite dès CHF 50.</p>\n<p style=\"margin:24px 0 10px;\"><a href=\"/fr/collections/selbst-gestalten\" style=\"display:inline-block;background:#c9a35f;color:#151515;font-weight:700;font-size:1.2rem;padding:16px 34px;border-radius:8px;text-decoration:none;\">Créer votre pièce unique</a></p>"
+      }
+    },
+    "homepage": {
+      "safe_now": "No write. Keep title, H1, canonical and hreflang unchanged.",
+      "target_meta_description": "Mode, beauté, maison et technologie chez LuxeStyle à Belp. Livraison en Suisse et au Liechtenstein. Livraison gratuite en Suisse dès CHF 50.",
+      "blocker": "The exact translation resource that controls the rendered homepage meta/OG description is unknown. The existing Shop.meta_description French translation is current but not rendered."
+    },
+    "writePerformed": false
+  },
+  "klaviyo": {
+    "sourceRun": "R154",
+    "placedOrderMetricId": "W7XTVD",
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "flowsKnownDraft": [
+      "Vse76a",
+      "VbLQj6",
+      "RnTvsY",
+      "XEGbTB",
+      "UXEjv2"
+    ],
+    "singleProposal": "XEGbTB als einzigen deutschen Checkout-Recovery-Pfad konsolidieren, unbelegten -10%-Inhalt entfernen und Trigger/Checkout-Link Ende-zu-Ende prüfen; erst danach separat aktivieren.",
+    "writes": 0
+  },
+  "dns": {
+    "checkedAtUtc": "2026-11-09T13:09:39.831934+00:00",
+    "checkedAtEuropeZurich": "2026-11-09T14:09:39+01:00",
+    "scope": "public_read_only_dns; no authenticated DNS account access",
+    "resolvers": [
+      "Google Public DNS over HTTPS",
+      "Cloudflare DNS over HTTPS"
+    ],
+    "approvedRecords": [
+      {
+        "owner": "send.luxestyle.ch",
+        "type": "CNAME",
+        "expected": "3848818023763335087.klaviyodns.com.",
+        "result": "NXDOMAIN_consensus_not_publicly_implemented",
+        "queries": [
+          {
+            "provider": "google",
+            "dnsStatus": 3,
+            "answers": []
+          },
+          {
+            "provider": "cloudflare",
+            "dnsStatus": 3,
+            "answers": []
+          }
+        ]
+      },
+      {
+        "owner": "mtd1._domainkey.luxestyle.ch",
+        "type": "CNAME",
+        "expected": "mtd1._domainkey.3848818023763335087.klaviyodns.com.",
+        "result": "NXDOMAIN_consensus_not_publicly_implemented",
+        "queries": [
+          {
+            "provider": "google",
+            "dnsStatus": 3,
+            "answers": []
+          },
+          {
+            "provider": "cloudflare",
+            "dnsStatus": 3,
+            "answers": []
+          }
+        ]
+      },
+      {
+        "owner": "mtd2._domainkey.luxestyle.ch",
+        "type": "CNAME",
+        "expected": "mtd2._domainkey.3848818023763335087.klaviyodns.com.",
+        "result": "NXDOMAIN_consensus_not_publicly_implemented",
+        "queries": [
+          {
+            "provider": "google",
+            "dnsStatus": 3,
+            "answers": []
+          },
+          {
+            "provider": "cloudflare",
+            "dnsStatus": 3,
+            "answers": []
+          }
+        ]
+      },
+      {
+        "owner": "luxestyle.ch",
+        "type": "TXT",
+        "expected": "klaviyo-site-verification=XWqMAD",
+        "result": "NOERROR_root_TXT_returned_but_expected_value_absent_consensus",
+        "queries": [
+          {
+            "provider": "google",
+            "dnsStatus": 0,
+            "answers": [
+              "v=spf1 include:zohomail.eu ~all",
+              "google-site-verification=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw",
+              "tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah",
+              "zoho-verification=zb02252844.zmverify.zoho.eu"
+            ]
+          },
+          {
+            "provider": "cloudflare",
+            "dnsStatus": 0,
+            "answers": [
+              "\"v=spf1 include:zohomail.eu ~all\"",
+              "\"zoho-verification=zb02252844.zmverify.zoho.eu\"",
+              "\"google-site-verification=BUuBXKpNZg8E6Rd1lhl9ix_GZoN-XqzhvhsO9PxjFJw\"",
+              "\"tiktok-developers-site-verification=tpfDEE0emwAaM7BtXF5Qb9tzANuBCnah\""
+            ]
+          }
+        ]
+      }
+    ],
+    "nameservers": [
+      "dns1.registrar-servers.com.",
+      "dns2.registrar-servers.com."
+    ],
+    "existingRecordsPreservedPubliclyVisible": {
+      "spf": "v=spf1 include:zohomail.eu ~all",
+      "dmarc": "v=DMARC1; p=none",
+      "zohoVerificationPresent": true,
+      "googleSiteVerificationPresent": true,
+      "tiktokDeveloperVerificationPresent": true,
+      "zmailDkimTxtPresent": true
+    },
+    "interpretation": "All four approved Klaviyo additions are not publicly present at check time. This does not prove authenticated Namecheap account access; no write was attempted.",
+    "writes": 0
+  },
+  "evidence": {
+    "report": {
+      "path": "CONTENT-VERKAUFSPAKET-20261109-R155.md",
+      "localPath": "/dev/shm/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+      "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0"
+    },
+    "metricool": {
+      "localPath": "/dev/shm/R155-METRICOOL-PLAN-20261109.json",
+      "sha256": "a4445009da3054071b08750202c4f7b615b2856ac23c9cdd4471d75ade4f1b56"
+    },
+    "products": {
+      "localPath": "/dev/shm/r155-products.json",
+      "sha256": "9a3e07753d7b7c66dcb20e7ce433e1ad805193243047023208597c31aed1924c"
+    },
+    "masterBrief": {
+      "localPath": "/dev/shm/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+      "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4"
+    },
+    "masterJson": {
+      "localPath": "/dev/shm/MASTER-AUFNAHME-ABNAHME-20261109-R155.json",
+      "sha256": "b89895de6cb9eac310f712be7b50a47a7b55132e78965c4c383c45d9a767df0d"
+    },
+    "frDiff": {
+      "localPath": "/dev/shm/r155-fr-sales-diff.json",
+      "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01"
+    },
+    "dnsSummary": {
+      "localPath": "/dev/shm/luxestyle-dns-r155-summary.json",
+      "sha256": "3f10e54be62c7999488450e3db6aeeae541df96f4ff7e584b87949163de12b62"
+    }
+  },
+  "operationalBoundaries": {
+    "newSocialPosts": 0,
+    "customerContact": 0,
+    "ordersQueried": 0,
+    "discountsChanged": 0,
+    "budgetsChanged": 0,
+    "shopSettingsChanged": 0,
+    "flowsChanged": 0,
+    "dnsChanged": 0,
+    "merchantChanged": 0,
+    "paidRenders": 0,
+    "otherBrandsTouched": 0
+  },
+  "unknowns": [
+    "master variant/motif/physical-unit binding",
+    "hash-bound commercial edit/advertising rights",
+    "music legal/listening/mix approval",
+    "homepage source overriding the current French Shop meta description",
+    "authenticated DNS write access",
+    "full metrics where R154 rows/nulls were missing",
+    "Claude receipt"
+  ]
+}
