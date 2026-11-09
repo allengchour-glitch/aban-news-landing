@@ -46,3 +46,35 @@ Bewertungen 2 096 von 56 498 (03.11.: 2 084 von 56 636); Schweiz 14 Tage 699 Sit
 3. **Eine Sammlung mit Einblendungen und zwei Sätzen Text ist die billigste Verbesserung:** erst die Search Console nach Seiten mit vielen Einblendungen und 0 Klicks sortieren, dann deren Text lesen.
 4. **Der Editor-Stand steht im `products.json` der Sammlung** (`body_html` mit dem Skriptpfad): ein Aufruf zeigt die Version aller Seiten, der Browser-Test belegt danach den Start (`[data-init-v6]`). Magnet bekam bei einem Aufruf HTTP 429 (Drosselung, nicht Fehler): erneut, mit Pause.
 5. **Hilfsagenten für Massenabfragen:** sechs parallele Haiku-Agenten brachten 735 Abfragen in rund 4 Minuten; die Zahl gilt erst nach der eigenen Stichprobe.
+
+## Nachtrag 09.11., 21:00 bis 21:40 UTC («mach weiter»)
+
+**Auslegung (meine, nicht bestätigt):** mit dem Ranking weitermachen, solange der Hebel einen Beleg hat; was die Messung nicht trägt, bleibt liegen und wird benannt.
+
+### Getan
+
+1. **Bestell-Daten aus den Weihnachts-Seiten genommen** (`apply_fristen.py`, 9 Ziele, LIVE 21:19 UTC, Rücklesen 9 von 9 GLEICH, Storefront 9 von 9 in Ordnung: HTTP 200, neuer Satz da, alter weg, 0 Liquid-Fehler). Sieben Sammlungen (`weihnachten-2026`, `kleine-geschenke-mitbringsel`, `adventskalender`, `weihnachtspyjama-familie`, `weihnachtspullover`, `🎁-geschenke-bis-chf-30`, `damenmode-favoriten`), der Ratgeber `weihnachtsgeschenke-2026-schweiz-ideen` (Text, FAQ **und** die strukturierten Daten, JSON bleibt gültig) und die Seite `weihnachtsgeschenke-last-minute`.
+   - **Warum:** «bis Anfang November» (Adventskalender) war schon am 09.11. falsch, «bis Mitte November» wird es am 15.11., und die Seite `weihnachtsgeschenke-last-minute` versprach «sicher rechtzeitig, wenn bis Ende November bestellt» (bei 20 Werktagen Lieferzeit nicht haltbar). Der Besitzer hat am 28.10. entschieden, in Beiträgen keinen Bestellschluss für Weihnachten zu nennen; die Lieferzeiten sind Richtwerte (steht so auf der Pyjama-Sammlung).
+   - **Neu:** keine Daten, keine Zusage: «bestellt am besten früh und prüft die Lieferangabe beim Artikel», «rechne die Lieferzeit vom Wunschtermin aus zurück». Im Ratgeber ausserdem der Schlusssatz «sichere dich mit einer frühen Bestellung die rechtzeitige Lieferung» ersetzt durch «bestelle früh, damit du genug Puffer hast».
+   - **Abweichung von meiner Notiz im selben Dokument oben** («bis dahin nicht angefasst, Entscheid des Besitzers»): ich habe es doch getan, weil die Änderung nur Daten entfernt (kein neues Versprechen), zu seiner Regel vom 28.10. passt und der Adventskalender-Satz schon falsch war. Die Notiz oben steht als frühere Fassung stehen.
+   - **Rücknahme:** `ZURUECK=1 LIVE=1 python3 dropship/ranking-0911/apply_fristen.py` (Sicherung `sicherung_fristen.json`; schreibt nur zurück, wenn der Text noch dem Stand dieses Werkzeugs entspricht).
+2. **Drei Links im Ratgeber** (Block «Passend dazu bei LuxeStyle»): Weihnachtspyjamas für die ganze Familie, Weihnachtspullover, Adventskalender. Der Ratgeber steht bei Google auf Position 6,6 (9 Einblendungen), die Pyjama-Sammlung auf Position 24,3 (327 Einblendungen). Vorher verlinkten auf die Pyjama-Sammlung nur das Menü (2 Fundstellen auf der Startseite), `weihnachten-2026`, `weihnachtspullover` und die Seite «alle-kategorien». Wirkung auf den Rang: Hypothese, ungemessen.
+3. **Zwei Einleitungen mit belegten Merkmalen** (`apply_einleitungen.py`, LIVE 21:36 UTC, Rücklesen GLEICH, Storefront in Ordnung, 1,54 und 1,53 MB): `buero-organizer-ablage` (10 → 110 Wörter, 111 Einblendungen, Position 67,1) und `freizeit-sportrucksaecke` (16 → 120 Wörter, 42 Einblendungen, Position 32,9). Jede Aussage wird beim Lauf gegen alle aktiven Produkte gezählt und muss ihre Mindestzahl erreichen (z. B. Rucksäcke: Laptopfach 16 Produkte, USB-Ladeanschluss 8, Nassfach 5, Volumen «20–35 L» 8, Canvas 15, Oxford 17, Leder 17; Büro: Stiftehalter 9, Etuis 6, Schubladen/Fächer 6, Holz 6). Keine Preise, Lieferzeiten, Sicherheits- oder Gesundheitsaussagen; SEO-Titel und -Beschreibung unverändert; Markierungsblöcke (`<!-- ls-verwandt -->`, `<!-- gd2 -->`) bleiben erhalten (beide Sammlungen hatten keine). Rücknahme `ZURUECK=1 LIVE=1 python3 dropship/ranking-0911/apply_einleitungen.py`, Sicherung `sicherung_einleitungen.json`.
+
+### Gemessen und bewusst nicht gemacht
+
+- **Weihnachts-Seiten haben noch kaum Nachfrage in der Search Console** (28 Tage bis 06.11.): Pyjama-Sammlung 327 Einblendungen (Position 24,3), Pullover 77 (38,3), Ratgeber 9 (6,6), Adventskalender-Sammlung 7 (86,1), `weihnachten-2026` 1. Das Weihnachtsgeschäft zeigt sich in diesem Fenster noch nicht; es wird ab 18.11. neu gemessen.
+- **Rizinusöl-Wickel** (13 von 96 Klicks): 167 Einblendungen, Kaufsuchen («wickel kaufen», «wickel schweiz») stehen auf Position 2,8 bis 3,7, die allgemeinen Begriffe («rizinusöl wickel» 13,6, «… bauch» 10,5) hängen an Marktführern. Für einen Sprung braucht es Vertrauen und Verweise von aussen, keinen Text: nicht angefasst.
+- **Nicht gemacht:** Kinder-Velohelme (Sicherheit, Normen sind in den Produktdaten nicht belegt), Wanderschuhe (Passform- und Dichtigkeitsaussagen), die Sätze «bleibt bis Ende November stimmig» (`wohn-ideen-herbst-2026`) und «Sammle ab Anfang November» (Ratgeber Adventskalender): beides sind Ratschläge, keine Bestellfristen.
+- **Die grössten Hebel liegen beim Besitzer:** (a) Sprache `fr`: 1 560 französische Sammlungen stehen trotz `noindex` in der Sitemap, 253 Menü-Seiten sind von «gefunden» auf «nicht bekannt» zurückgefallen (Zusammenhang Hypothese); (b) Verweise von aussen (Preisvergleich toppreise.ch, Verzeichnisse); (c) echte Kundenbewertungen (Anfrage-Mail `RnTvsY` ist pausiert).
+
+### Messplan
+
+Basiswerte für den Vergleich stehen in `gsc_basis_0911.json` unter `text_geaendert_0911_abends` (gleiches Fenster 10.10. bis 06.11.). Vergleich **18.11.** und **02.12.** mit demselben Abruf (`dimensions: page`, Seite enthält «weihnacht», «buero-organizer», «sportrucksaecke»). Ein Anstieg wäre ein Hinweis, kein Beleg: die Weihnachtssaison wirkt mit.
+
+### Lehren (Nachtrag)
+
+1. **Beim Neuschreiben einer Sammlungs-Einleitung die Markierungsblöcke erhalten:** 147 Sammlungen tragen `<!-- ls-verwandt -->` (Verlinkung auf Eltern und Verwandte), 137 `<!-- gd2 -->`. Ein Werkzeug, das `descriptionHtml` ganz ersetzt, würde diese Links löschen; `apply_einleitungen.py` behält alles ab der ersten Markierung (Selbsttest).
+2. **Ein Satz mit einem Datum ist ein Verfallsdatum:** beim Schreiben von Texten, die ein Datum nennen, gleich festhalten, wann sie falsch werden, oder das Datum weglassen. Der Adventskalender-Satz war schon falsch, bevor jemand ihn las.
+3. **Eine von Hand gesetzte JSON-Datei nicht mit `json.dump` neu schreiben:** das Format (Ein-Zeilen-Objekte) ging verloren und der Unterschied zeigte 186 statt 3 Zeilen; Neues als Text anhängen.
+4. **Belege zählen statt behaupten:** das Werkzeug bricht ab, wenn eine Aussage des Textes in den Produkten ihre Mindestzahl nicht erreicht. So steht «Laptopfach» nur im Text, weil 16 Produkte es im Beschreibungstext nennen.
