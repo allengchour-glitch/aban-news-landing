@@ -239,3 +239,17 @@ Claude-Empfang bleibt unbekannt. Keine fehlenden Daten als Null, keine Termine a
 6. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Feed-, Bestell- oder kostenpflichtige Renderaktion. Andere Marken unangetastet.
 
 Belege: `CONTENT-VERKAUFSPAKET-20261109-R156.md/.json`, `METRICOOL-PLAN-20261109-R156.json`, `PRODUKTPRUEFUNG-20261109-R156.json`, `MASTER-INGEST-PREFLIGHT-20261109-R156.*`, `FR-VERKAUFSDIFF-20261109-R156.json`, `SEO-STICHPROBE-20261109-R156.json`. Empfang dieser Übergabe ist weiterhin unbekannt, bis ein echter Claude-Beleg vorliegt.
+
+## R157 – Weiterarbeit nach bestätigter französischer Rankingkorrektur
+
+[LUXESTYLE_R157_20261109]
+
+1. Page `gid://shopify/Page/698444710273` wurde am09.11.2026 mit genau vier FR-Feldern live korrigiert. Native und öffentliche Rücklesung vollständig PASS. Nicht erneut schreiben oder dieselbe Freigabe einholen.
+2. GSC-Baseline10.10.–06.11.: DE-Selbstgestalten33 Impressionen/0 Klicks/Position65,21; exakte FR-Seite ohne offengelegte Queryzeilen, tatsächliche Leistung unbekannt. Erst nach angemessenem Zeitraum erneut eng messen; keine unmittelbare Ranking-/Verkaufswirkung behaupten.
+3. Öffentlicher Sollstand: Title `Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle`, H1 `Personnalisez des T-shirts, des tasses et bien plus encore`, französische Meta/OG/Body, Canonical/Hreflang korrekt,6/6 FR-Links, CHF50.
+4. FR-Homepage bleibt separat gemischt: französischer Title/H1, deutsche Meta-/OG-Beschreibung. Ursache/Output-Override zuerst binden; nicht blind dieselbe Page-Mutation verwenden.
+5. MAIN `snippets/meta-tags.liquid` setzt primäres `og:image` auf HTTP und zusätzlich korrektes `og:image:secure_url` auf HTTPS. `THEME-OG-HTTPS-20261109-R157.patch` ist nur lokaler, digestgebundener Zwei-Präfix-Entwurf mit21 Tests; nicht angewendet.
+6. Menü:784 Knoten,779 Collection-Knoten,742 eindeutige Collection-URLs; Desktop/Mobile rendern denselben Baum. Kein kleiner sicherer Patch. Zuerst IA-/Menü-Kuration entwerfen und auf unveröffentlichtem Theme mit Desktop,390px,Tastatur,No-JS sowie alternativen internen Wegen prüfen.
+7. Tagesgrenzen erhalten: R154 Metricool/Klaviyo und R155 DNS nicht wiederholen; Kauf-Watch beendet. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Menü-, Theme-, Social- oder kostenpflichtige Renderaktion aus dieser Übergabe.
+
+Belege: `RANKING-UMSETZUNG-20261109-R157.md/.json`, `GSC-RANKING-20261109-R157.json`, `SHOPIFY-FR-PREFLIGHT-20261109-R157.json`, `FR-SPRACH-QA-20261109-R157.json`, `PUBLIC-SEO-VORHER-20261109-R157.json`, `PUBLIC-SEO-NACHHER-20261109-R157.json`, `THEME-SEO-ANALYSE-20261109-R157.md`, `THEME-SEO-BELEG-20261109-R157.json`. Claude-Empfang weiterhin unbekannt.
