@@ -3,7 +3,7 @@
 import { mkdtempSync, rmSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { grundTitel, geschlechtVon, wirksamerTitel, norm, dublettenGruppen, geschlechtsPlan, chipPlan, entschaerfe, MANUELL } from './seo_dubletten.mjs';
+import { grundTitel, geschlechtVon, wirksamerTitel, norm, dublettenGruppen, geschlechtsPlan, chipPlan, beschreibungsPlan, BESCHR_VORLAGE, MAX_BESCHR, entschaerfe, MANUELL } from './seo_dubletten.mjs';
 import { RUCKSAECKE } from './rucksaecke_menue.mjs';
 import { seoDublettenLauf, alleSammlungen } from '../kategorie_seo_dubletten.mjs';
 
@@ -61,6 +61,63 @@ const PAAR = [S('damen-jeans', 'Jeans online kaufen | LuxeStyle CH'), S('herren-
   ist('Sammlung ohne eigenen SEO-Titel: der Sammlungstitel zählt', geschlechtsPlan([{ id: 'x1', handle: 'damen-gurte', title: 'Gurte', seo: { title: null, description: null }, productsCount: { count: 3 } }, { id: 'x2', handle: 'herren-gurte', title: 'Gurte', seo: {}, productsCount: { count: 3 } }]).aenderungen.map(a => a.neu), ['Gurte für Damen online kaufen | LuxeStyle CH', 'Gurte für Herren online kaufen | LuxeStyle CH']);
 }
 
+// ── Gleiche SEO-Beschreibung (beschreibungsPlan) ──
+const REST = ' Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.';
+const VL = (x, rest = REST) => `${x} online kaufen.${rest}`;
+const B = (handle, beschreibung, n = 10, seoTitle = 'Titel ' + handle) => ({ id: 'gid://shopify/Collection/' + handle, handle, title: handle, seo: { title: seoTitle, description: beschreibung }, productsCount: { count: n } });
+const neuVon = p => Object.fromEntries(p.aenderungen.map(a => [a.handle, a.neu]));
+{
+  ist('Vorlage: «<Gegenstand> online kaufen. <Rest>» wird erkannt, der Gegenstand ist der Teil davor', [BESCHR_VORLAGE.exec(VL('Hosen'))?.[1], BESCHR_VORLAGE.exec(VL('Jacken & Mäntel'))?.[1]], ['Hosen', 'Jacken & Mäntel']);
+  ist('Vorlage: ohne Rest nach «online kaufen.», ohne Vorlage oder in Grossbuchstaben passt sie nicht (Gegenprobe)', [BESCHR_VORLAGE.test('Hosen online kaufen.'), BESCHR_VORLAGE.test('Hosen online kaufen. '), BESCHR_VORLAGE.test('Ausgewählte Produkte aus dem Sortiment.'), BESCHR_VORLAGE.test('HOSEN ONLINE KAUFEN. X')], [false, false, false, false]);
+  ist('Vorlage: der Rest darf Zeilenumbrüche enthalten', BESCHR_VORLAGE.test('Hosen online kaufen. Lieferung\nin die Schweiz.'), true);
+  const p = beschreibungsPlan([B('damen-hosen', VL('Hosen')), B('herren-hosen', VL('Hosen')), B('hosen-alle', VL('Alle Hosen'))]);
+  ist('Paar: beide bekommen «für Damen» / «für Herren», der Rest bleibt wörtlich; die einzelne Sammlung bleibt unberührt', neuVon(p), { 'damen-hosen': VL('Hosen für Damen'), 'herren-hosen': VL('Hosen für Herren') });
+  ist('Paar: der eigene SEO-Titel geht mit, nichts offen, die alte Beschreibung steht in «alt»', [p.aenderungen.map(a => a.titel), p.offen, p.aenderungen.map(a => a.alt)], [['Titel damen-hosen', 'Titel herren-hosen'], [], [VL('Hosen'), VL('Hosen')]]);
+  const nach = [B('damen-hosen', VL('Hosen für Damen')), B('herren-hosen', VL('Hosen für Herren')), B('hosen-alle', VL('Alle Hosen'))];
+  ist('Wiederholung auf dem Ergebnis: 0 Änderungen, keine offenen Gruppen', [beschreibungsPlan(nach).aenderungen.length, beschreibungsPlan(nach).offen.length], [0, 0]);
+}
+{
+  const hs = ['damen', 'herren', 'kinder'].map(g => B(g + '-hausschuhe', VL('Hausschuhe & Pantoffeln')));
+  const p = beschreibungsPlan(hs);
+  ist('Dreier damen/herren/kinder: drei verschiedene Beschreibungen, alle höchstens 160 Zeichen', [Object.values(neuVon(p)), p.aenderungen.every(a => a.neu.length <= MAX_BESCHR)], [['Damen', 'Herren', 'Kinder'].map(g => VL(`Hausschuhe & Pantoffeln für ${g}`)), true]);
+  const mitAllg = beschreibungsPlan([B('hoodies-allgemein', VL('Hoodies')), B('damen-hoodies', VL('Hoodies')), B('herren-hoodies', VL('Hoodies'))]);
+  ist('Dreiergruppe mit EINER allgemeinen Sammlung: nur die zwei mit Geschlecht ändern sich, die allgemeine behält die Vorlage', [mitAllg.aenderungen.map(a => a.handle), mitAllg.offen.length], [['damen-hoodies', 'herren-hoodies'], 0]);
+  const zweiAllg = beschreibungsPlan([B('a-hoodies', VL('Hoodies')), B('b-hoodies', VL('Hoodies')), B('damen-hoodies', VL('Hoodies'))]);
+  ist('Gegenprobe: zwei Sammlungen ohne Geschlecht blieben gleich → Gruppe offen, nichts geändert', [zweiAllg.aenderungen.length, zweiAllg.offen.map(o => o.grund)], [0, ['mehrere Mitglieder ohne Geschlecht blieben gleich']]);
+}
+{
+  const ohneG = beschreibungsPlan([B('lampen-a', VL('Lampen')), B('lampen-b', VL('Lampen'))]);
+  ist('Gruppe ganz ohne Geschlecht: offen, nichts geändert', [ohneG.aenderungen.length, ohneG.offen[0].handles, ohneG.offen[0].grund], [0, ['lampen-a', 'lampen-b'], 'kein Mitglied trägt ein Geschlecht im Handle']);
+  // Nach dem Zusatz darf nichts doppelt bleiben: nennt der Gegenstand BEIDE Geschlechter, bliebe alles gleich; nennt er eines, bliebe die allgemeine Sammlung gleich der unveränderten
+  const beide = beschreibungsPlan([B('damen-s', VL('Damen & Herren Schuhe')), B('herren-s', VL('Damen & Herren Schuhe'))]);
+  ist('Gegenstand nennt beide Geschlechter: es bliebe alles gleich → offen, nichts geändert', [beide.aenderungen.length, beide.offen.map(o => o.grund)], [0, ['nach dem Zusatz bliebe eine Beschreibung doppelt']]);
+  const allgGleich = beschreibungsPlan([B('damen-t', VL('Damen Schuhe')), B('herren-t', VL('Damen Schuhe')), B('schuhe-allgemein', VL('Damen Schuhe'))]);
+  ist('Gegenstand nennt «Damen», eine allgemeine Sammlung bliebe der unveränderten Damen-Sammlung gleich → offen', [allgGleich.aenderungen.length, allgGleich.offen.map(o => o.grund)], [0, ['nach dem Zusatz bliebe eine Beschreibung doppelt']]);
+  const gleichG = beschreibungsPlan([B('herren-polo-kurz', VL('Kurzarm für Herren')), B('herren-tshirt-kurz', VL('Kurzarm für Herren'))]);
+  ist('gleiches Geschlecht mehrfach: offen und unverändert (das lösen nur Menschen)', [gleichG.aenderungen.length, gleichG.offen.map(o => o.grund)], [0, ['gleiches Geschlecht mehrfach']]);
+  const fremdText = beschreibungsPlan([B('damen-x', 'Ausgewählte Produkte aus dem Sortiment. Details ansehen.'), B('herren-x', 'Ausgewählte Produkte aus dem Sortiment. Details ansehen.')]);
+  ist('Beschreibung nicht nach der Vorlage: offen, nichts geändert (nie einen fremden Text umschreiben)', [fremdText.aenderungen.length, fremdText.offen.map(o => o.grund)], [0, ['Beschreibung nicht nach der Vorlage «… online kaufen. …»']]);
+  const schon = beschreibungsPlan([B('damen-schuhe', VL('Damen Schuhe')), B('herren-schuhe', VL('Damen Schuhe'))]);
+  ist('Gegenprobe: nennt der Gegenstand «Damen» schon, bekommt nur die Herren-Sammlung den Zusatz', neuVon(schon), { 'herren-schuhe': VL('Damen Schuhe für Herren') });
+  const fremd = beschreibungsPlan([B('damen-gurte', VL('Gürtel')), B('herren-gurte', VL('Gürtel')), B('guertel-damen-alt', VL('Gürtel für Damen'))]);
+  ist('die neue Beschreibung gäbe es schon bei einer fremden Sammlung → Gruppe offen (nichts doppelt machen)', [fremd.aenderungen.length, fremd.offen.map(o => o.grund)], [0, ['die neue Beschreibung gibt es schon bei einer anderen Sammlung']]);
+  const lang = 'Sturmhauben & Gesichtsmasken & Schals & Tücher & Mützen & Stirnbänder & Ohrenwärmer & Handschuhe & Gamaschen & Kragenschals';
+  const zuLang = beschreibungsPlan([B('damen-l', VL(lang)), B('herren-l', VL(lang))]);
+  ist('über 160 Zeichen nach dem Zusatz: offen, nichts geändert', [VL(lang + ' für Damen').length > MAX_BESCHR, zuLang.aenderungen.length, zuLang.offen.map(o => o.grund)], [true, 0, [`eine neue Beschreibung hätte über ${MAX_BESCHR} Zeichen`]]);
+  // Grenze genau: die längere der beiden neuen Beschreibungen («für Herren») hat 160 Zeichen (erlaubt) bzw. 161 (offen)
+  const zusatz = ` für Herren online kaufen.${REST}`.length, auf160 = 'X'.repeat(MAX_BESCHR - zusatz), auf161 = 'X'.repeat(MAX_BESCHR - zusatz + 1);
+  const g160 = beschreibungsPlan([B('damen-g', VL(auf160)), B('herren-g', VL(auf160))]), g161 = beschreibungsPlan([B('damen-g', VL(auf161)), B('herren-g', VL(auf161))]);
+  ist('Grenze: 160 Zeichen sind erlaubt, 161 nicht (und die Grenze ist wirklich 160)', [MAX_BESCHR, g160.aenderungen.map(a => a.neu.length), g161.aenderungen.length, g161.offen.length], [160, [159, 160], 0, 1]);
+}
+{
+  ist('Sammlung ohne Produkte zählt nicht (Gegenprobe): keine Gruppe, nichts offen', [beschreibungsPlan([B('damen-x', VL('X'), 10), B('herren-x', VL('X'), 0)]).aenderungen.length, beschreibungsPlan([B('damen-x', VL('X'), 10), B('herren-x', VL('X'), 0)]).offen.length], [0, 0]);
+  ist('leere oder fehlende Beschreibung zählt nicht (kein Schlüssel «null»)', [beschreibungsPlan([B('damen-x', ''), B('herren-x', ''), { ...B('damen-y', ''), seo: null }, { ...B('herren-y', ''), seo: {} }]).offen.length, beschreibungsPlan([{ ...B('a', ''), seo: null }, { ...B('b', ''), seo: null }]).aenderungen.length], [0, 0]);
+  const ohneTitel = beschreibungsPlan([{ ...B('damen-x', VL('X')), seo: { title: null, description: VL('X') } }, B('herren-x', VL('X'))]);
+  ist('kein eigener SEO-Titel: «titel» ist null (der Lauf lässt den Schlüssel dann weg)', ohneTitel.aenderungen.map(a => a.titel), [null, 'Titel herren-x']);
+  const gemischt = beschreibungsPlan([B('damen-x', VL('X')), B('herren-x', '  ' + VL('X').toUpperCase() + ' ')]);
+  ist('Gross-/Kleinschreibung und Leerraum machen aus der gleichen Beschreibung keine verschiedene (Gruppe wird erkannt)', [gemischt.aenderungen.length + gemischt.offen.length > 0], [true]);
+}
+
 // ── Chips der Bereichsdatei ──
 const CHIPS = RUCKSAECKE.filter(k => k.filter);
 const shopChip = k => ({ id: 'gid://shopify/Collection/' + k.handle, handle: k.handle, title: k.titel, descriptionHtml: `<p>${k.beschreibung.replace(/&/g, '&amp;')}</p>`, seo: { title: k.seoTitel, description: k.seoBeschreibung } });
@@ -95,7 +152,7 @@ function attrappe(sammlungen, { userErrors = [], verfaelsche = false, seite = 2,
       if (v.i.seo) c.seo = verfaelsche ? { ...v.i.seo, title: v.i.seo.title + ' (verändert)' } : { title: v.i.seo.title ?? null, description: v.i.seo.description ?? null };
       return { collectionUpdate: { collection: { id: c.id }, userErrors: [] } };
     }
-    if (/collection\(id:\$id\)/.test(query)) { const c = z.c.find(x => x.id === v.id); return { collection: { title: c.title, descriptionHtml: c.descriptionHtml ?? '', seo: c.seo } }; }
+    if (/collection\(id:\$id\)/.test(query)) { const c = z.c.find(x => x.id === v.id); return { collection: c ? { title: c.title, descriptionHtml: c.descriptionHtml ?? '', seo: c.seo } : null }; }
     throw new Error('unerwartete Abfrage: ' + query.slice(0, 80));
   };
   return { q, z, aufrufe, schreibend: () => aufrufe.filter(a => /mutation/.test(a.query)) };
@@ -147,6 +204,81 @@ const MIX = [...PAAR, S('damen-hosen', 'Hosen online kaufen | LuxeStyle CH'), S(
 {
   const gross = attrappe(Array.from({ length: 7 }, (_, n) => S('x-' + n, 'T ' + n)), { seite: 3 });
   ist('alleSammlungen: liest alle Seiten (7 Sammlungen in 3 Abrufen)', [(await alleSammlungen(gross.q)).length, gross.aufrufe.length], [7, 3]);
+}
+
+// ── Modus «beschreibung» mit Attrappe: Trockenlauf, LIVE, Sicherung, Rücklesen, Rücknahme ──
+const BD = [B('damen-hosen', VL('Hosen')), B('herren-hosen', VL('Hosen')), B('damen-sneaker', VL('Sneaker')), B('herren-sneaker', VL('Sneaker')), B('hosen-alle', VL('Alle Hosen')), B('lampen-a', VL('Lampen')), B('lampen-b', VL('Lampen'))];
+const beschrVon = (a, h) => a.z.c.find(c => c.handle === h).seo;
+{
+  const a = attrappe(BD), s = still(), d = dateien('b1');
+  const r = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: false, ...d, out: s.out, err: s.err });
+  ist('Beschreibung Trockenlauf: Exit 0, nichts geschrieben, keine Sicherung, kein Ledger; 4 Änderungen, 1 offene Gruppe', [r.code, a.schreibend().length, existsSync(d.sicherung('beschreibung')), existsSync(d.ledger), r.beschreibung.aenderungen.length, r.beschreibung.offen.length], [0, 0, false, false, 4, 1]);
+  ist('Beschreibung Trockenlauf: die Ausgabe nennt «Trockenlauf», die neue Beschreibung und die offene Gruppe', [s.zeilen.some(z => z.includes('Trockenlauf')), s.zeilen.some(z => z.includes('Hosen für Damen online kaufen.')), s.zeilen.some(z => z.includes('OFFEN') && z.includes('lampen-a'))], [true, true, true]);
+}
+{
+  const a = attrappe(BD), s = still(), d = dateien('b2');
+  const r = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, ...d, jetzt: () => new Date('2026-11-09T12:00:00Z'), out: s.out, err: s.err });
+  ist('Beschreibung LIVE: Exit 0, 4 Sammlungen geschrieben und frisch zurückgelesen', [r.code, r.geschrieben, a.schreibend().length], [0, 4, 4]);
+  ist('LIVE: nur die Beschreibung ändert sich, SEO-Titel und Sammlungstitel bleiben; Unbeteiligte unberührt', [beschrVon(a, 'damen-hosen'), a.z.c.find(c => c.handle === 'damen-hosen').title, beschrVon(a, 'hosen-alle'), beschrVon(a, 'lampen-a').description], [{ title: 'Titel damen-hosen', description: VL('Hosen für Damen') }, 'damen-hosen', { title: 'Titel hosen-alle', description: VL('Alle Hosen') }, VL('Lampen')]);
+  ist('LIVE: jeder Aufruf sendet Titel UND Beschreibung (seo wird ersetzt)', a.schreibend().every(x => x.v.i.seo.title && x.v.i.seo.description), true);
+  const sich = JSON.parse(readFileSync(d.sicherung('beschreibung'), 'utf8'));
+  ist('Sicherung: alter und neuer Wert je Sammlung (Grundlage der Rücknahme)', [sich.aenderungen.length, sich.aenderungen[0]], [4, { handle: 'damen-hosen', id: 'gid://shopify/Collection/damen-hosen', alt: VL('Hosen'), neu: VL('Hosen für Damen') }]);
+  ist('Ledger: eine Zeile je Sammlung mit Zeitstempel und Modus', readFileSync(d.ledger, 'utf8').split('\n').filter(Boolean).map(z => z.replace(/^\S+ · /, '')).slice(0, 2), ['beschreibung damen-hosen', 'beschreibung herren-hosen']);
+  const r2 = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, ...d, out: s.out, err: s.err });
+  ist('zweiter LIVE-Lauf: nichts mehr zu tun, nichts geschrieben, Sicherung unverändert', [r2.code, r2.geschrieben, a.schreibend().length, JSON.parse(readFileSync(d.sicherung('beschreibung'), 'utf8')).aenderungen.length], [0, 0, 4, 4]);
+  // zweite Charge: neue Sammlungen mit gleicher Beschreibung kommen dazu; die erste Sicherung bleibt mit dem ERSTEN alten Wert
+  a.z.c.push(B('damen-guertel', VL('Gürtel')), B('herren-guertel', VL('Gürtel')));
+  const r3 = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, ...d, out: s.out, err: s.err });
+  const sich2 = JSON.parse(readFileSync(d.sicherung('beschreibung'), 'utf8'));
+  ist('zweite Charge: 2 neue Sammlungen geschrieben, die Sicherung wird ergänzt (6 Einträge), die ersten vier bleiben gleich', [r3.code, r3.geschrieben, sich2.aenderungen.length, JSON.stringify(sich2.aenderungen.slice(0, 4)) === JSON.stringify(sich.aenderungen), sich2.aenderungen[4].handle], [0, 2, 6, true, 'damen-guertel']);
+}
+{
+  const a = attrappe(BD), s = still(), d = dateien('b3');
+  const r = await seoDublettenLauf(a.q, { modus: 'beide', live: true, ...d, out: s.out, err: s.err });
+  ist('Modus «beide» fasst Beschreibungen NICHT an (nur ausdrücklich «beschreibung»): nichts geschrieben, keine Sicherung', [r.code, a.schreibend().length, existsSync(d.sicherung('beschreibung')), r.beschreibung === undefined], [0, 0, false, true]);
+  const f = attrappe(BD, { verfaelsche: true }), d2 = dateien('b4');
+  const rf = await seoDublettenLauf(f.q, { modus: 'beschreibung', live: true, ...d2, out: s.out, err: s.err });
+  ist('Shopify speichert etwas anderes → frisch gelesen abweichend: Exit 3, nichts als geschrieben gezählt, kein Ledger', [rf.code, rf.geschrieben, existsSync(d2.ledger)], [3, 0, false]);
+  const u = attrappe(BD, { userErrors: [{ field: ['seo'], message: 'zu lang' }] }), d3 = dateien('b5');
+  let msg = null; try { await seoDublettenLauf(u.q, { modus: 'beschreibung', live: true, ...d3, out: s.out, err: s.err }); } catch (e) { msg = e.message; }
+  ist('userError von Shopify → der Lauf wirft; die Sicherung liegt vor, kein Ledger', [typeof msg === 'string' && msg.includes('zu lang'), existsSync(d3.sicherung('beschreibung')), existsSync(d3.ledger)], [true, true, false]);
+  const ohneTitel = attrappe([{ ...B('damen-x', VL('X')), seo: { title: null, description: VL('X') } }, { ...B('herren-x', VL('X')), seo: { title: null, description: VL('X') } }]), d4 = dateien('b6');
+  const ro = await seoDublettenLauf(ohneTitel.q, { modus: 'beschreibung', live: true, ...d4, out: s.out, err: s.err });
+  ist('kein eigener SEO-Titel: der Schlüssel «title» wird nicht mitgeschickt, die Beschreibung kommt an, Exit 0', [ro.code, ohneTitel.schreibend().every(x => !('title' in x.v.i.seo)), ohneTitel.z.c[0].seo], [0, true, { title: null, description: VL('X für Damen') }]);
+}
+{
+  // Rücknahme
+  const a = attrappe(BD), s = still(), d = dateien('r1');
+  await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, ...d, out: s.out, err: s.err });
+  const vorher = a.schreibend().length;
+  const t = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: false, zurueck: true, ...d, out: s.out, err: s.err });
+  ist('Rücknahme Trockenlauf: Exit 0, nichts geschrieben, die neuen Beschreibungen stehen weiter', [t.code, a.schreibend().length - vorher, beschrVon(a, 'damen-hosen').description], [0, 0, VL('Hosen für Damen')]);
+  const z = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, zurueck: true, ...d, jetzt: () => new Date('2026-11-09T13:00:00Z'), out: s.out, err: s.err });
+  ist('Rücknahme LIVE: 4 Sammlungen zurück, Beschreibungen wie vorher, SEO-Titel unverändert', [z.code, z.geschrieben, ['damen-hosen', 'herren-hosen', 'damen-sneaker', 'herren-sneaker'].map(h => beschrVon(a, h).description), beschrVon(a, 'damen-hosen').title], [0, 4, [VL('Hosen'), VL('Hosen'), VL('Sneaker'), VL('Sneaker')], 'Titel damen-hosen']);
+  ist('Rücknahme: eine Ledger-Zeile je Sammlung', readFileSync(d.ledger, 'utf8').split('\n').filter(l => l.includes('beschreibung-zurueck')).length, 4);
+  const z2 = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, zurueck: true, ...d, out: s.out, err: s.err });
+  ist('zweite Rücknahme: nichts mehr zu tun (4 waren schon zurück), nichts geschrieben', [z2.code, z2.geschrieben, z2.schonZurueck], [0, 0, 4]);
+}
+{
+  const a = attrappe(BD), s = still(), d = dateien('r2');
+  await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, ...d, out: s.out, err: s.err });
+  a.z.c.find(c => c.handle === 'damen-sneaker').seo.description = 'Fremd geändert';
+  a.z.c.splice(a.z.c.findIndex(c => c.handle === 'herren-sneaker'), 1);
+  const z = await seoDublettenLauf(a.q, { modus: 'beschreibung', live: true, zurueck: true, ...d, out: s.out, err: s.err });
+  ist('Rücknahme: eine seither von anderer Seite geänderte Beschreibung bleibt unberührt (Exit 3), eine gelöschte Sammlung wird gemeldet, die übrigen zwei gehen zurück', [z.code, z.geschrieben, beschrVon(a, 'damen-sneaker').description, beschrVon(a, 'damen-hosen').description], [3, 2, 'Fremd geändert', VL('Hosen')]);
+  ist('Rücknahme: beide Fälle stehen in der Fehlerausgabe', [s.zeilen.some(x => x.startsWith('ERR') && x.includes('damen-sneaker') && x.includes('anders geändert')), s.zeilen.some(x => x.startsWith('ERR') && x.includes('herren-sneaker') && x.includes('nicht mehr vorhanden'))], [true, true]);
+  // Shopify speichert bei der Rücknahme etwas anderes: frisch gelesen abweichend → Exit 3, nichts als zurückgesetzt gezählt, keine Ledger-Zeile
+  const fa = attrappe(BD, { verfaelsche: true }), dfa = dateien('r6');
+  await seoDublettenLauf(fa.q, { modus: 'beschreibung', live: true, ...dfa, out: s.out, err: s.err });
+  const zf = await seoDublettenLauf(fa.q, { modus: 'beschreibung', live: true, zurueck: true, ...dfa, out: s.out, err: s.err });
+  ist('Rücknahme: speichert Shopify etwas anderes → frisch gelesen abweichend: Exit 3, nichts als zurückgesetzt gezählt, keine Ledger-Zeile', [zf.code, zf.geschrieben, existsSync(dfa.ledger) && readFileSync(dfa.ledger, 'utf8').includes('beschreibung-zurueck')], [3, 0, false]);
+  const ohne = await seoDublettenLauf(attrappe(BD).q, { modus: 'beschreibung', live: true, zurueck: true, ...dateien('r3'), out: s.out, err: s.err });
+  ist('Rücknahme ohne Sicherung → Exit 1, nichts geschrieben', ohne.code, 1);
+  const a5 = attrappe(BD), d5 = dateien('r5');
+  await seoDublettenLauf(a5.q, { modus: 'beschreibung', live: true, ...d5, out: s.out, err: s.err });
+  const vorher5 = a5.schreibend().length;
+  const andere = await seoDublettenLauf(a5.q, { modus: 'geschlecht', live: true, zurueck: true, ...d5, out: s.out, err: s.err });
+  ist('ZURUECK gibt es nur mit MODUS=beschreibung → Exit 1, auch bei vorhandener Sicherung wird nichts zurückgeschrieben', [andere.code, a5.schreibend().length - vorher5, beschrVon(a5, 'damen-hosen').description], [1, 0, VL('Hosen für Damen')]);
 }
 
 rmSync(TMP, { recursive: true, force: true });

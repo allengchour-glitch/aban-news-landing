@@ -97,3 +97,44 @@ export function chipPlan(chips, sammlungen) {
   }
   return { aenderungen, fehlt };
 }
+
+/**
+ * Gleiche SEO-BESCHREIBUNG bei Sammlungen (09.11.2026). Messung über 1 720 Sammlungen mit Produkten: 35 Gruppen mit gleicher Beschreibung, 75 Sammlungen; 23 Gruppen sind Damen-/Herren-/Kinder-Gruppen,
+ * deren SEO-TITEL sich seit dem 28.10. unterscheiden («Hosen für Herren online kaufen»), deren Beschreibung aber die Vorlage «Hosen online kaufen. Lieferung …» geblieben ist (Audit-Werkzeuge zählen das als doppelte Meta-Beschreibung).
+ * Regel: nur die Vorlage «<Gegenstand> online kaufen. <Rest>»; Mitglieder mit Geschlecht im Handle bekommen «<Gegenstand> für <Geschlecht> online kaufen. <Rest>».
+ * Eine Gruppe wird nur geändert, wenn danach KEINE Beschreibung mehr doppelt ist (je Geschlecht höchstens ein Mitglied, höchstens ein Mitglied ohne Geschlecht), keine neue Beschreibung eine schon vorhandene trifft
+ * und jede höchstens 160 Zeichen hat. Sonst steht die Gruppe unter `offen` und bleibt unberührt. Rein, getestet.
+ */
+export const BESCHR_VORLAGE = /^(.+?) online kaufen\.(\s.+)$/s;
+export const MAX_BESCHR = 160;
+const beschr = c => String(c.seo?.description ?? '');
+const normB = t => String(t ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+
+/** @returns {{aenderungen: {handle:string, id:string, alt:string, neu:string, titel:string|null}[], offen: {beschreibung:string, handles:string[], grund:string}[]}} */
+export function beschreibungsPlan(sammlungen) {
+  const gruppen = new Map(), alle = new Map();
+  for (const c of sammlungen.filter(mitProdukten)) {
+    const k = normB(beschr(c)); if (!k) continue;
+    alle.set(k, (alle.get(k) || 0) + 1);
+    (gruppen.get(k) || gruppen.set(k, []).get(k)).push(c);
+  }
+  const aenderungen = [], offen = [];
+  for (const l of gruppen.values()) {
+    if (l.length < 2) continue;
+    const handles = l.map(c => c.handle), nein = grund => offen.push({ beschreibung: beschr(l[0]), handles, grund });
+    const mitG = l.filter(c => geschlechtVon(c.handle)), ohneG = l.length - mitG.length;
+    if (!mitG.length) { nein('kein Mitglied trägt ein Geschlecht im Handle'); continue; }
+    if (new Set(mitG.map(c => geschlechtVon(c.handle))).size !== mitG.length) { nein('gleiches Geschlecht mehrfach'); continue; }
+    if (ohneG > 1) { nein('mehrere Mitglieder ohne Geschlecht blieben gleich'); continue; }
+    const neu = new Map(), passt = mitG.map(c => BESCHR_VORLAGE.exec(beschr(c)));
+    if (passt.some(m => !m)) { nein('Beschreibung nicht nach der Vorlage «… online kaufen. …»'); continue; }
+    mitG.forEach((c, i) => { const g = geschlechtVon(c.handle), m = passt[i]; neu.set(c.handle, nennt(m[1], g) ? beschr(c) : `${m[1]} für ${g} online kaufen.${m[2]}`); });
+    const endgueltig = l.map(c => normB(neu.get(c.handle) ?? beschr(c)));
+    if (new Set(endgueltig).size !== endgueltig.length) { nein('nach dem Zusatz bliebe eine Beschreibung doppelt'); continue; }
+    const geaendert = mitG.filter(c => neu.get(c.handle) !== beschr(c));
+    if (geaendert.some(c => neu.get(c.handle).length > MAX_BESCHR)) { nein(`eine neue Beschreibung hätte über ${MAX_BESCHR} Zeichen`); continue; }
+    if (geaendert.some(c => alle.has(normB(neu.get(c.handle))))) { nein('die neue Beschreibung gibt es schon bei einer anderen Sammlung'); continue; }
+    for (const c of geaendert) aenderungen.push({ handle: c.handle, id: c.id, alt: beschr(c), neu: neu.get(c.handle), titel: c.seo?.title ?? null });
+  }
+  return { aenderungen, offen };
+}
