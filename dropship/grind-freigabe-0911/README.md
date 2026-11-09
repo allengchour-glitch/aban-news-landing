@@ -9,7 +9,8 @@ Werkzeug: `automation/grind_freigabe.mjs` (Test `automation/grind_freigabe_test.
 2. **Datenblätter geholt** (CJ, 14 Abfragen) und jedes Produkt gegen sein Datenblatt, seine Variantenpreise und seine Bilder gesichtet.
 3. **Sechs Fliesstexte** geschrieben, mechanisch geprüft (`text_pruefen_cli.mjs`: 6 von 6 OK, 486 bis 808 Zeichen), gegen die Datenblätter gelesen und mit `text_anwenden.mjs` gesetzt (nur Beschreibung der Entwürfe, Datenblatt-Kasten unverändert).
 4. **Aufbereitet** (Sicherung vorher, Rücklesen nachher): Optionswerte «15.4Inch» → «15.4 Zoll» und «16MM» → «16 mm», Hauptbild der Choker-Halskette (Collage → Produkt auf Weiss), Titel der Laptop-Hülle («Laptoptasche einfach» → «Laptop-Hülle aus mattem PU, 12 bis 14 Zoll»), «zipper»/«nylon» im Datenblatt-Kasten eingedeutscht, Tag `text-offen` entfernt.
-5. **Veröffentlicht 10:14 UTC (LIVE, je 6 Kanäle, Seite HTTP 200, frisch zurückgelesen):** Laptop-Tasche Schultertasche, Webcam 1080P Konferenz, Choker-Halskette, Herren-Halskette Nagelkreuz, Laptop-Hülle. Ledger: `dropship/grind2_freigabe_ledger.txt`.
+5. **Veröffentlicht 10:14 UTC (LIVE, je 6 Kanäle, Seite HTTP 200, frisch zurückgelesen):** Laptop-Tasche Schultertasche, Webcam 1080P Konferenz, Choker-Halskette, Herren-Halskette Nagelkreuz, Laptop-Hülle. Ledger: `dropship/grind2_freigabe_ledger.txt`. **Die sechste, die Damen-Perücke (Lockig, flauschig, Pony), folgte um 11:00 UTC nach dem ausdrücklichen Ja des Besitzers** (6 Kanäle, Seite HTTP 200, JSON-LD `InStock`).
+6. **Anmerkung zum Exit-Code:** ein Lauf mit dem ganzen Plan endet nach der Veröffentlichung mit Exit 3, weil die schon veröffentlichten Produkte am Tor «Status ENTWURF» scheitern und als BLOCKIERT zählen (sie werden nicht angefasst). Für spätere Läufe einen Plan nur mit den noch offenen Einträgen verwenden.
 
 ## Entscheid je Produkt
 
@@ -20,7 +21,7 @@ Werkzeug: `automation/grind_freigabe.mjs` (Test `automation/grind_freigabe_test.
 | choker-halskette-damen-voll-kristall-strass-sc-cbbc67 | **veröffentlicht** | Hauptbild getauscht (war eine Collage) |
 | herren-halskette-mit-eisen-nagelkreuz-anhanger-376512 | **veröffentlicht** | die Mengen 1 bis 20 sind echte CJ-Mengen (Gewicht und Preis steigen), alle Preise ab CHF 14.90 |
 | laptoptasche-einfach-844636 | **veröffentlicht** | Titel verbessert |
-| damen-perucke-lockig-flauschig-pony-368960 | **bereit, aber nicht veröffentlicht** | Das Berechtigungssystem hat den zweiten Veröffentlichungslauf blockiert, nicht umgangen. Aufbereitet, alle 11 Tore bestanden: `LIVE=1 FREIGEBEN=1 node automation/grind_freigabe.mjs` veröffentlicht es (Notbremse: Freigabedatei `dropship/GRIND2-FREI.txt`). |
+| damen-perucke-lockig-flauschig-pony-368960 | **veröffentlicht (11:00 UTC)** | Aufbereitet, alle 11 Tore bestanden. Das Berechtigungssystem hat den Lauf zweimal blockiert (auch nach einem allgemeinen «weiter und fix»); erst die ausdrückliche Antwort des Besitzers «Ja, veröffentlichen» liess ihn durch. 6 Kanäle, Seite HTTP 200, Ledger-Zeile 11:00:23 UTC. Befehl mit einem Plan nur für diese Perücke: `PLAN=<plan.json mit nur diesem Eintrag> LIVE=1 FREIGEBEN=1 node automation/grind_freigabe.mjs` (Notbremse: Freigabedatei `dropship/GRIND2-FREI.txt`). |
 | damen-perucken-gewellt-617792 | bleibt Entwurf | alle gesichteten Bilder tragen Fremdmarken-Wasserzeichen («Tinylana», «Tesco») |
 | webcam-1080p2k-hd-videokonferenz-treiberlos-us-448000 | bleibt Entwurf | Bilder mit Texteinblendungen und Fremdlogos (YouTube, Skype, Zoom, Xbox …); «2K» widerspricht den Varianten 1080p/720p |
 | perucke-lockig-echthaar-spitze-664896 | bleibt Entwurf | Variantenpreise unplausibel (8 Zoll CHF 67.90, 32 Zoll CHF 18.90); Echthaar nur Lieferantenangabe |
