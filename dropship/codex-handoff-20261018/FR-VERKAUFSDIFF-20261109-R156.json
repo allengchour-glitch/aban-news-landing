@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "luxestyle-fr-page-translation-r156-v1",
+  "result": "# R156 – Französische Verkaufsseite «Selbst gestalten»\n\nPrüfzeit: 09.11.2026, Abendlauf. Umfang: ausschliesslich LuxeStyle, read-only.\n\n## Frische Gegenprüfung\n\n- Shopify-Identität stimmt: `LuxeStyle`, `luxestyle.ch`, CHF, Schweiz.\n- Seite: `gid://shopify/Page/698444710273`, veröffentlicht, Handle `selbst-gestalten`, Template `selbst-gestalten`.\n- Die fünf deutschen Quellfelder und ihre Digests sind gegenüber R155 unverändert. Für Französisch sind weiterhin keine Page-Übersetzungen registriert.\n- Öffentliche Seite `https://luxestyle.ch/fr/pages/selbst-gestalten`: HTTP 200, `lang=fr`, Canonical und Hreflang korrekt. Titel, Meta-Beschreibung, OG-Texte, H1 und redaktioneller Hauptinhalt fallen weiterhin auf Deutsch zurück.\n- Die Theme-Ausgabe lokalisiert die im deutschen Quelltext gespeicherten internen Links bereits nach `/fr/`; Canonical und Hreflang bleiben deshalb im Entwurf unberührt.\n\n## Freigabefertiger, nicht ausgeführter Diff\n\nDer Entwurf registriert nur diese vier globalen französischen Übersetzungen am vorhandenen Page-Resource:\n\n1. `title`: `Personnalisez des T-shirts, des tasses et bien plus encore`\n2. `meta_title`: `Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle`\n3. `meta_description`: `Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein.`\n4. `body_html`: vollständige französische Übertragung des aktuellen deutschen Quelltexts mit sechs `/fr/`-Links.\n\nDie Aussagen bleiben auf den vorhandenen Quelltext begrenzt: keine feste Lieferzeit, keine neue Material-, Druck- oder Rückgabezusage. Die öffentliche Gratisversand-Schwelle bleibt CHF 50. CHF 45, Kundendomäne, Handle, Template, Produkte, Preise, Theme, Canonical und Hreflang werden nicht angefasst.\n\n## Technische Prüfung\n\n- Mutation gegen das live entdeckte Admin-Schema `translationsRegister(resourceId: ID!, translations: [TranslationInput!]!)` aufgebaut.\n- Alle vier `translatableContentDigest` stimmen mit der frischen Shopify-Abfrage überein.\n- Lokaler Preflight: PASS; genau vier erlaubte Schlüssel, Locale `fr`, keine Handle- oder Market-Übersetzung, sechs französisch lokalisierte Links, keine gesperrten Liefer-/Rabattbehauptungen.\n- Negativtest mit absichtlich veraltetem Digest: erwartungsgemäss FAIL.\n- Shopify-Write: keiner. Der Entwurf ist eine klar umrissene Verkaufsaktion zur Inhaberfreigabe.\n\n## Dateien\n\n- `mutation.graphql`: enger Übersetzungs-Write\n- `variables.json`: vier hashgebundene Werte\n- `readback.graphql`: Pflicht-Gegenprobe nach einer späteren Freigabe\n- `evidence.json`: frische Shopify- und Storefront-Evidenz\n- `preflight.py`: reproduzierbarer Validator\n- `manifest.json`: Dateihashes\n\nSpeicherhinweis: `/workspace` hatte 0 Byte frei. Deshalb liegen die Artefakte vorläufig unter `/dev/shm/r156-fr/`; es wurde nichts gelöscht.\n",
+  "evidence": {
+    "scope": "LuxeStyle FR sales action R156; read-only live verification and unexecuted mutation draft",
+    "checked_at": "2026-11-09T18:01:18Z",
+    "writes_performed": false,
+    "shop": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currencyCode": "CHF",
+      "timezone": "CET",
+      "country": "Switzerland",
+      "criticalUserMessage": ""
+    },
+    "page": {
+      "id": "gid://shopify/Page/698444710273",
+      "title": "T-Shirt, Tasse & mehr selbst gestalten",
+      "handle": "selbst-gestalten",
+      "templateSuffix": "selbst-gestalten",
+      "isPublished": true,
+      "publishedAt": "2026-06-08T00:00:19Z",
+      "updatedAt": "2026-11-08T04:57:54Z",
+      "body_sha256": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+      "body_bytes": 2404,
+      "translatableContent": {
+        "title": {
+          "value": "T-Shirt, Tasse & mehr selbst gestalten",
+          "digest": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+          "locale": "de",
+          "type": "SINGLE_LINE_TEXT_FIELD"
+        },
+        "body_html": {
+          "value": "<p>Gestalte dein eigenes Lieblingsstück: Bei <strong>LuxeStyle</strong> gestaltest du T-Shirts, Sweatshirts, Bio-Hoodies, Tassen, Taschen und Caps mit eigenem Text, Namen oder Bild. Ob Geschenk, Team-Event, Vereinsanlass oder ein Unikat für dich – dein Artikel wird nach deiner Gestaltung bedruckt.</p>\n<h2>So funktioniert es</h2>\n<ol>\n  <li>\n<strong>Produkt wählen</strong> – Artikel und verfügbare Ausführung bestimmen.</li>\n  <li>\n<strong>Design erstellen</strong> – Text, Name oder eigenes Bild im Editor platzieren.</li>\n  <li>\n<strong>Vorschau prüfen</strong> – Motiv, Position, Farbe, Grösse und Produktvariante kontrollieren.</li>\n  <li>\n<strong>Bestellen</strong> – Gestaltung in den Warenkorb legen und sicher zur Kasse gehen.</li>\n</ol>\n<h2>Produkte zum Selbstgestalten</h2>\n<ul>\n  <li>\n<a href=\"/products/klassisches-unisex-t-shirt-selbst-gestalten\">T-Shirt selbst gestalten</a> – mit eigenem Text oder Bild.</li>\n  <li>\n<a href=\"/products/keramik-tasse-selbst-gestalten\">Keramik-Tasse bedrucken</a> – für Büro, Küche oder als Geschenk.</li>\n  <li>\n<a href=\"/products/unisex-hoodie-selbst-gestalten\">Sweatshirt oder Bio-Hoodie selbst gestalten</a> – Modell wählen und eigenes Motiv platzieren.</li>\n</ul>\n<p>Alle Artikel, die du selbst personalisieren kannst, findest du in der <a href=\"/collections/selbst-gestalten\">Kollektion «Selbst gestalten»</a>.</p>\n<h2>Produktion und Lieferung</h2>\n<p>Jedes personalisierte Stück wird nach deiner Bestellung bedruckt. Die voraussichtliche Lieferzeit hängt von Produkt, Variante, Druckstandort und Lieferadresse ab. Eine konkrete Prognose wird im Bestellablauf angezeigt, soweit sie für den gewählten Artikel verfügbar ist.</p>\n<h2>Vor dem Bestellen prüfen</h2>\n<p>Kontrolliere Vorschau, Schreibweise, Position, Produktfarbe, Ausführung und Grösse sorgfältig. Personalisierte Artikel werden nach deinem Entwurf hergestellt. Es gelten die <a href=\"/policies/refund-policy\">Rückgabehinweise für personalisierte Produkte</a>.</p>\n<h2>Für die Schweiz und Liechtenstein</h2>\n<p>Alle Preise werden in CHF angezeigt. Der Versand ist ab CHF 50 kostenlos.</p>\n<p style=\"margin:24px 0 10px;\"><a href=\"/collections/selbst-gestalten\" style=\"display:inline-block;background:#c9a35f;color:#151515;font-weight:700;font-size:1.2rem;padding:16px 34px;border-radius:8px;text-decoration:none;\">Jetzt dein Unikat gestalten</a></p>",
+          "digest": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+          "locale": "de",
+          "type": "HTML"
+        },
+        "handle": {
+          "value": "selbst-gestalten",
+          "digest": "0cf13c113689be3b807c7941f648fa1126920fc7a49551ffae117a46f485a029",
+          "locale": "de",
+          "type": "URI"
+        },
+        "meta_title": {
+          "value": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+          "digest": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+          "locale": "de",
+          "type": "MULTI_LINE_TEXT_FIELD"
+        },
+        "meta_description": {
+          "value": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+          "digest": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+          "locale": "de",
+          "type": "MULTI_LINE_TEXT_FIELD"
+        }
+      },
+      "current_fr_translations": []
+    },
+    "public": {
+      "url": "https://luxestyle.ch/fr/pages/selbst-gestalten",
+      "http": 200,
+      "lang": "fr",
+      "title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "meta_description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "og_title": "T-Shirt & Tasse selbst gestalten Schweiz | LuxeStyle",
+      "og_description": "T-Shirt, Sweatshirt, Bio-Hoodie und Tasse selbst gestalten: Motiv im Editor platzieren, Vorschau prüfen und in CHF bestellen. Für Schweiz und Liechtenstein.",
+      "h1": [
+        "T-Shirt, Tasse & mehr selbst gestalten"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/fr/pages/selbst-gestalten"
+      ],
+      "hreflang": {
+        "x-default": "https://luxestyle.ch/pages/selbst-gestalten",
+        "de": "https://luxestyle.ch/pages/selbst-gestalten",
+        "fr": "https://luxestyle.ch/fr/pages/selbst-gestalten"
+      },
+      "body_language_observation": "German fallback in H1, metadata and principal editorial body",
+      "principal_body_excerpt": "T-Shirt, Tasse & mehr selbst gestalten Gestalte dein eigenes Lieblingsstück: Bei LuxeStyle gestaltest du T-Shirts, Sweatshirts, Bio-Hoodies, Tassen, Taschen und Caps mit eigenem Text, Namen oder Bild. Ob Geschenk, Team-Event, Vereinsanlass oder ein Unikat für dich – dein Artikel wird nach deiner Gestaltung bedruckt. So funktioniert es Produkt wählen – Artikel und verfügbare Ausführung bestimmen. Design erstellen – Text, Name oder eigenes Bild im Editor platzieren. Vorschau prüfen – Motiv, Position, Farbe, Grösse und Produktvariante kontrollieren. Bestellen – Gestaltung in den Warenkorb legen und sicher zur Kasse gehen. Produkte zum Selbstgestalten T-Shirt selbst gestalten – mit eigenem Text oder Bild. Keramik-Tasse bedrucken – für Büro, Küche oder als Geschenk. Sweatshirt oder Bio-Hoodie selbst gestalten – Modell wählen und eigenes Motiv platzieren. Alle Artikel, die du selbst personalisieren kannst, findest du in der Kollektion «Selbst gestalten» . Produktion und Lieferung Jedes personalisierte Stück wird nach deiner Bestellung bedruckt. Die voraussichtliche Lieferzeit hängt von Produkt, Variante, Druckstandort und Lieferadresse ab. Eine konkrete Prognose wird im Bestellablauf angezeigt, soweit sie für den gewählten Artikel verfügbar ist. Vor dem Bestellen prüfen Kontrolliere Vorschau, Schreibweise, Position, Produktfarbe, Ausführung und Grösse sorgfältig. Personalisierte Artikel werden nach deinem Entwurf hergestellt. Es gelten die Rückgabehinweise für personalisierte Produkte . Für die Schweiz und Liechtenstein Alle Preise werden in CHF angezeigt. Der Versand ist ab CHF "
+    },
+    "proposed_change": {
+      "resourceId": "gid://shopify/Page/698444710273",
+      "locale": "fr",
+      "keys": [
+        "title",
+        "body_html",
+        "meta_title",
+        "meta_description"
+      ],
+      "unchanged": [
+        "handle",
+        "templateSuffix",
+        "publication state",
+        "canonical/hreflang generation",
+        "shipping thresholds outside translated body",
+        "account domain",
+        "theme code",
+        "products",
+        "prices"
+      ],
+      "claim_trace": {
+        "personalizable product classes": "Direct translation of current German source body.",
+        "print after order": "Direct translation of current German source body.",
+        "delivery timing": "No fixed promise; direct conditional translation of current German source.",
+        "currency and free shipping": "Direct translation of current source: CHF and public CHF 50 threshold.",
+        "returns": "Only links to current policy; makes no independent return promise."
+      },
+      "approval_required": true,
+      "execution_status": "draft_only_not_executed"
+    },
+    "readback_required_after_approval": [
+      "translationsRegister userErrors empty",
+      "four exact fr keys present and outdated=false",
+      "public /fr page title/meta/OG/H1/body French",
+      "canonical and all hreflang unchanged",
+      "all editorial links remain /fr localized",
+      "German page unchanged"
+    ]
+  },
+  "mutation": "mutation RegisterFrenchSelfDesignPage($resourceId: ID!, $translations: [TranslationInput!]!) {\n  translationsRegister(resourceId: $resourceId, translations: $translations) {\n    translations {\n      key\n      locale\n      value\n      outdated\n      updatedAt\n    }\n    userErrors {\n      field\n      message\n    }\n  }\n}\n",
+  "variables": {
+    "resourceId": "gid://shopify/Page/698444710273",
+    "translations": [
+      {
+        "locale": "fr",
+        "key": "title",
+        "translatableContentDigest": "c68bcdc6e6f2aa51a8ab6dfdefa79dcb95bca2ccbeea61dda2c30f97a2d713ce",
+        "value": "Personnalisez des T-shirts, des tasses et bien plus encore"
+      },
+      {
+        "locale": "fr",
+        "key": "body_html",
+        "translatableContentDigest": "2ce2de0e6d4cce4bfed2a89a63d4b79c220ae02805d2e6a1e649320dc0774835",
+        "value": "<p>Créez votre pièce préférée : chez <strong>LuxeStyle</strong>, personnalisez des T-shirts, des sweat-shirts, des hoodies bio, des tasses, des sacs et des casquettes avec votre texte, votre nom ou votre image. Pour un cadeau, un événement d’équipe, une association ou une pièce unique pour vous, votre article est imprimé selon votre création.</p>\n<h2>Comment ça marche</h2>\n<ol>\n<li><strong>Choisir le produit</strong> – Sélectionnez l’article et la variante disponible.</li>\n<li><strong>Créer le motif</strong> – Placez votre texte, votre nom ou votre image dans l’éditeur.</li>\n<li><strong>Vérifier l’aperçu</strong> – Contrôlez le motif, sa position, sa couleur, sa taille et la variante du produit.</li>\n<li><strong>Commander</strong> – Ajoutez votre création au panier et passez à la caisse en toute sécurité.</li>\n</ol>\n<h2>Produits à personnaliser</h2>\n<ul>\n<li><a href=\"/fr/products/klassisches-unisex-t-shirt-selbst-gestalten\">Personnaliser un T-shirt</a> – avec votre texte ou votre image.</li>\n<li><a href=\"/fr/products/keramik-tasse-selbst-gestalten\">Faire imprimer une tasse en céramique</a> – pour le bureau, la cuisine ou comme cadeau.</li>\n<li><a href=\"/fr/products/unisex-hoodie-selbst-gestalten\">Personnaliser un sweat-shirt ou un hoodie bio</a> – choisissez le modèle et placez votre motif.</li>\n</ul>\n<p>Retrouvez tous les articles personnalisables dans la <a href=\"/fr/collections/selbst-gestalten\">collection « Personnaliser »</a>.</p>\n<h2>Production et livraison</h2>\n<p>Chaque pièce personnalisée est imprimée après votre commande. Le délai de livraison prévu dépend du produit, de la variante, du site d’impression et de l’adresse de livraison. Une estimation précise s’affiche pendant la commande lorsqu’elle est disponible pour l’article choisi.</p>\n<h2>À vérifier avant de commander</h2>\n<p>Vérifiez soigneusement l’aperçu, l’orthographe, la position, la couleur du produit, la variante et la taille. Les articles personnalisés sont fabriqués selon votre création. Consultez les <a href=\"/fr/policies/refund-policy\">conditions de retour des produits personnalisés</a>.</p>\n<h2>Pour la Suisse et le Liechtenstein</h2>\n<p>Tous les prix sont indiqués en CHF. La livraison est gratuite dès CHF 50.</p>\n<p style=\"margin:24px 0 10px;\"><a href=\"/fr/collections/selbst-gestalten\" style=\"display:inline-block;background:#c9a35f;color:#151515;font-weight:700;font-size:1.2rem;padding:16px 34px;border-radius:8px;text-decoration:none;\">Créer votre pièce unique</a></p>"
+      },
+      {
+        "locale": "fr",
+        "key": "meta_title",
+        "translatableContentDigest": "2c4019605811dc0817f65ee81c69855e377a06ca34d1436cbd0769a8d26b7803",
+        "value": "Personnaliser un T-shirt et une tasse en Suisse | LuxeStyle"
+      },
+      {
+        "locale": "fr",
+        "key": "meta_description",
+        "translatableContentDigest": "93b0905e95e630a7729bac618a7446508a5197408454ea80b53c62796e659292",
+        "value": "Personnalisez T-shirts, sweat-shirts, hoodies bio et tasses. Placez votre motif, vérifiez l’aperçu et commandez en CHF en Suisse ou au Liechtenstein."
+      }
+    ]
+  },
+  "readbackQuery": "query ReadBackFrenchSelfDesignPage($id: ID!, $locale: String!) {\n  node(id: $id) {\n    ... on Page {\n      id\n      title\n      handle\n      templateSuffix\n      isPublished\n      updatedAt\n    }\n  }\n  translatableResource(resourceId: $id) {\n    resourceId\n    translatableContent {\n      key\n      value\n      digest\n      locale\n    }\n    translations(locale: $locale) {\n      key\n      value\n      locale\n      outdated\n      updatedAt\n    }\n  }\n}\n",
+  "preflightPass": {
+    "status": "PASS",
+    "resourceId": "gid://shopify/Page/698444710273",
+    "keys": [
+      "title",
+      "body_html",
+      "meta_title",
+      "meta_description"
+    ],
+    "linkCount": 6,
+    "digests": "match_live",
+    "writesPerformed": false
+  },
+  "negativeTest": "EXPECTED_FAIL returncode=1\n{\n  \"status\": \"FAIL\",\n  \"error\": \"Stale digest for title\"\n}\n",
+  "manifest": {
+    "mutation.graphql": {
+      "sha256": "f10b7ba07125769a0aaa9c2833d447f2f93aca99ea46c0bc4a7cf11076c13de4",
+      "bytes": 320
+    },
+    "readback.graphql": {
+      "sha256": "53e339a09a998f97bd3aca4bfd931c4c2893dff0cbf7a1a902afd59448b3d4e5",
+      "bytes": 451
+    },
+    "variables.json": {
+      "sha256": "48a666b72e89dd2dcc4ca2bd5eb9b192d939b7bf89d1b0a9422bb7341fe41e89",
+      "bytes": 3687
+    },
+    "evidence.json": {
+      "sha256": "0eb9fac7710d130b96454342f6c2e4e9e1b22d18a6a4d11e8fcbfef43f517c1a",
+      "bytes": 8638
+    },
+    "preflight.py": {
+      "sha256": "c06fb0af063015c2fd74a635d5297b7a8bede50fab144448c1fcf86a768000d4",
+      "bytes": 3575
+    },
+    "preflight-pass.json": {
+      "sha256": "631b379a8e7d58cca2c85007eb9808a534adfe85c7426d8b0d9d538298cdd565",
+      "bytes": 235
+    },
+    "preflight-negative-test.txt": {
+      "sha256": "ba5e9ab4ef413e5c6efe48ec95b5fa6e295970bf8a0987f6f3e636ee1a309701",
+      "bytes": 87
+    },
+    "RESULTAT.md": {
+      "sha256": "592837a02f0287eff8be37be8a1544ae91dd4a4d5fbcf0ddb0423a19dec1aa40",
+      "bytes": 2901
+    },
+    "shop.json": {
+      "sha256": "d43e4d89fc0273dd634d03881ccef2c57e6d0683c0aab9ab776147a278df320e",
+      "bytes": 157
+    },
+    "shopify-page-live.json": {
+      "sha256": "7e2f7262a7406621a48b293f9e19f4543e701512f0db1144c1dbcb6cb031018b",
+      "bytes": 6789
+    }
+  },
+  "writes": 0,
+  "approvalDraftOnly": true
+}
