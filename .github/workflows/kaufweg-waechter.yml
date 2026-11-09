@@ -1,0 +1,52 @@
+name: Kaufweg-Wächter (Produkt → Warenkorb → Versand → Kasse)
+
+# Prüft einmal am Tag ohne Browser, ob im Live-Shop der Weg vom Produkt bis zur Kasse funktioniert
+# (Logik: automation/lib/kaufweg.mjs, Doku: dropship/KAUFWEG-WAECHTER-0911.md).
+# Nur lesend am Shop: es entsteht höchstens ein anonymer Warenkorb, der am Ende geleert wird.
+# Telegram-Meldung nur bei einem klaren Fehler (Lauf dann rot). Drosselung, Sperrseite oder Server-5xx zählen als «nicht messbar»:
+# kein Alarm, Lauf grün (eine Drosselung ist kein kaputter Shop, Lehre vom 04.10.).
+# Zeitplan: genau einmal täglich (Regel «Cron-Nulldiät»: Zeitpläne nur einzeln und sparsam).
+# Abschalten: die zwei Zeitplan-Zeilen auskommentieren oder den Workflow in GitHub deaktivieren.
+
+on:
+  schedule:
+    - cron: '53 8 * * *'
+  workflow_dispatch:
+    inputs:
+      trockenlauf:
+        description: 'Keine Telegram-Meldung senden'
+        type: boolean
+        default: false
+      immer_melden:
+        description: 'Auch bei «in Ordnung» melden (Test des Meldewegs)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaufweg-waechter
+  cancel-in-progress: false
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/kaufweg_waechter.mjs
+            automation/lib/kaufweg.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Kaufweg prüfen
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY: ${{ inputs.trockenlauf && '1' || '' }}
+          ALWAYS_NOTIFY: ${{ inputs.immer_melden && '1' || '' }}
+        run: node automation/kaufweg_waechter.mjs
