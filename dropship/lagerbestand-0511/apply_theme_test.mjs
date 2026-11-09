@@ -144,6 +144,7 @@ const ST = process.env.SIM_STATE, F = new Set((process.env.FAKE || '').split(','
 const md5 = (s) => createHash('md5').update(s).digest('hex');
 const load = () => JSON.parse(readFileSync(ST, 'utf8')), save = (s) => writeFileSync(ST, JSON.stringify(s));
 export async function shopifyGql(shop, api, tok, query, vars) {
+  if (F.has('langsam')) await new Promise((r) => setTimeout(r, 70));   // langsamer Rechner: jede Antwort 70 ms
   const s = load();
   if (query.includes('themes(first:5')) return { themes: { nodes: F.has('keinmain') ? [] : F.has('zweimain') ? [{ id: 'gid://fake/1', name: 'fake' }, { id: 'gid://fake/2', name: 'fake2' }] : [{ id: 'gid://fake/1', name: 'fake' }] } };
   if (query.includes('products(first')) { s.produktAnfragen = (s.produktAnfragen || 0) + 1; save(s); return { f: { nodes: [{ handle: 'fortura-test' }] }, c: { nodes: [{ handle: 'cj-test' }] }, a: { nodes: [{ handle: 'fortura-test' }, { handle: 'zufall-test' }] } }; }
@@ -198,6 +199,7 @@ globalThis.fetch = async (u, opt) => {
   if (u.includes('/oauth/access_token')) return new Response(JSON.stringify({ access_token: 'fake' }), { status: 200 });
   if (u.startsWith('https://fake.invalid/')) { const s = JSON.parse(readFileSync(ST, 'utf8')); return new Response(s.files[decodeURIComponent(u.slice('https://fake.invalid/'.length))], { status: 200 }); }
   if (!u.startsWith('https://shop.test')) throw new Error('FAKE-Sperre: echter Netzzugriff ' + u);
+  if (F.has('langsam')) await new Promise((r) => setTimeout(r, 70));   // langsamer Rechner: jede Antwort 70 ms
   const s = JSON.parse(readFileSync(ST, 'utf8')), url = new URL(u), view = url.searchParams.get('view');
   s.urls = s.urls || []; s.urls.push(url.pathname + url.search);
   if (F.has('editor_waehrend') && s.urls.length === 2 && !(s.calls || []).length) s.files['templates/product.json'] += '\\n';   // der Theme-Editor speichert mitten in der Seitenmessung
@@ -404,6 +406,10 @@ try {
   // Verzug im Rücklesen (Eventual Consistency): das Skript wartet
   neuerStand(); r = lauf('verzug', { LIVE: '1' });
   gleich(r.code, 0, 'verzögertes Rücklesen: Exit 0'); ok(dateien()[D_] === soll, 'verzögertes Rücklesen: Soll-Stand'); gleich(upserts(), [[D_]], 'verzögertes Rücklesen: kein Rückweg');
+  // Regression CI 09.11.: ein langsamer Rechner (jede Antwort 70 ms) darf eine nur verzögerte Auslieferung nicht als «nie erschienen» werten. Mit der
+  // Testuhr (APPLY_ZEIT=0.001) war die Frist 150 ms und lief ab, bevor die Marke erschien; jetzt zählt die Frist dort in Versuchen.
+  neuerStand(); r = lauf('verzug,langsam', { LIVE: '1' });
+  gleich(r.code, 0, 'verzögertes Rücklesen auf langsamem Rechner: Exit 0'); ok(dateien()[D_] === soll, 'verzögertes Rücklesen auf langsamem Rechner: Soll-Stand'); gleich(upserts(), [[D_]], 'verzögertes Rücklesen auf langsamem Rechner: kein Rückweg');
   // Rückweg mit Verzug
   neuerStand({ neu: neuMit('<!--FAKE_LIQUIDFEHLER-->') }); r = lauf('verzug', { LIVE: '1' });
   gleich(r.code, 7, 'Rückweg mit verzögertem Rücklesen: Exit 7'); ok(istOrig(), 'Rückweg mit verzögertem Rücklesen: Ausgangsstand');
@@ -470,6 +476,7 @@ try {
   r = lauf('', { TESTVORLAGE: '1', LIVE: '1' }); gleich(r.code, 0, 'TESTVORLAGE erneut: Exit 0'); ok(/schon vorhanden und wird überschrieben/.test(r.aus), 'TESTVORLAGE erneut: Hinweis');
   // Auslieferung der Testvorlage verzögert: das Skript wartet auf die Marke
   neuerStand(); r = lauf('lxverzug', { TESTVORLAGE: '1', LIVE: '1' }); gleich(r.code, 0, 'TESTVORLAGE mit verzögerter Auslieferung: Exit 0'); ok(stand().lxcount > 3, 'TESTVORLAGE mit verzögerter Auslieferung: hat gewartet und erneut gemessen');
+  neuerStand(); r = lauf('lxverzug,langsam', { TESTVORLAGE: '1', LIVE: '1' }); gleich(r.code, 0, 'TESTVORLAGE, verzögert UND langsamer Rechner: Exit 0'); ok(stand().lxcount > 3, 'TESTVORLAGE, verzögert UND langsamer Rechner: hat gewartet und erneut gemessen');
   // Testvorlage mit Seitenfehler: bleibt stehen, echte Vorlage unberührt, kein Rückweg
   neuerStand({ neu: neuMit('<!--FAKE_LIQUIDFEHLER-->') }); r = lauf('', { TESTVORLAGE: '1', LIVE: '1' });
   gleich(r.code, 7, 'TESTVORLAGE mit Liquid-Fehler: Exit 7'); ok(istOrig(), 'TESTVORLAGE mit Liquid-Fehler: echte Vorlage unberührt'); gleich(upserts(), [[T_]], 'TESTVORLAGE mit Liquid-Fehler: kein Rückweg auf die echte Vorlage'); ok(/Liquid-Fehler/.test(r.aus) && /unberührt/.test(r.aus), 'TESTVORLAGE mit Liquid-Fehler: Meldung');

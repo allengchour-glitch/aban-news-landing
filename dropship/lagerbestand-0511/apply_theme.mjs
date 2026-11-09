@@ -186,6 +186,10 @@ async function haupt() {
   const ALT_QUELLE = HIER + 'lux_delivery.alt.liquid', NEU_QUELLE = HIER + 'lux_delivery.neu.liquid';
   const MERKLISTE = HIER + 'sicherung/eingespielt.json';
   const warte = (ms) => new Promise((r) => setTimeout(r, ms * ZEIT));
+  // Mit der Testuhr (APPLY_ZEIT < 1) werden nur die Wartezeiten gestaucht, nicht die echte Arbeit: aus 150 s Frist würden 150 ms, und ein Ruckeln des
+  // Rechners liesse eine nur verzögerte Auslieferung als «nie erschienen» gelten (CI 09.11.: Exit 7 bei «verzögerter Auslieferung»). Darum zählt die
+  // Frist dort zusätzlich in Versuchen (Frist durch den 10-s-Takt); mit der echten Uhr (ZEIT = 1) gilt allein die Zeit, wie bisher.
+  const fristAbgelaufen = (t0, maxMs, versuche) => Date.now() - t0 > maxMs * ZEIT && (ZEIT >= 1 || versuche >= Math.ceil(maxMs / 10000));
   const BEFEHL = 'ZURUECK=1 LIVE=1 node dropship/lagerbestand-0511/apply_theme.mjs';
 
   if ([ZURUECK, TEST, WEG].filter(Boolean).length > 1) fail(1, 'Ungültiger Aufruf: ZURUECK, TESTVORLAGE und TESTVORLAGE_WEG schliessen sich aus.');
@@ -239,12 +243,12 @@ async function haupt() {
   const loesche = async (name) => (await q(`mutation($id:ID!,$f:[String!]!){themeFilesDelete(themeId:$id,files:$f){deletedThemeFiles{filename} userErrors{filename message}}}`, { id: th.id, f: [name] })).themeFilesDelete;
   // Wartet, bis die API die erwartete Prüfsumme meldet (soll === null: bis die Datei fehlt). Rücklesen kann eine Minute alt sein.
   async function warteBis(name, soll, maxMs) {
-    const t0 = Date.now(); let letzter;
+    const t0 = Date.now(); let letzter; let versuche = 0;
     for (;;) {
-      const nach = (await lesen([name]))[name];
+      const nach = (await lesen([name]))[name]; versuche++;
       letzter = nach ? nach.md5 : null;
       if (soll === null ? !nach : letzter === soll) return { ok: true, md5: letzter };
-      if (Date.now() - t0 > maxMs * ZEIT) return { ok: false, md5: letzter };
+      if (fristAbgelaufen(t0, maxMs, versuche)) return { ok: false, md5: letzter };
       await warte(10000);
     }
   }
@@ -476,11 +480,11 @@ async function haupt() {
       if (!w.ok) fail(6, 'Die API meldet für die Testvorlage eine andere Prüfsumme (Shopify speichert die Datei anders als gesendet?). ' + DATEI + ' wurde NICHT angefasst. Testvorlage löschen: TESTVORLAGE_WEG=1 LIVE=1 node dropship/lagerbestand-0511/apply_theme.mjs');
       const produkte = pfade.filter((p) => p.startsWith('/products/'));
       // Auslieferung der neuen Vorlage kann verzögert sein: bis zu 150 s auf die Testmarke warten
-      const t0 = Date.now(); let m, ok = false;
+      const t0 = Date.now(); let m, ok = false, runden = 0;
       for (;;) {
         console.log('Produktseiten mit ?view=lxtest:');
-        m = await messen(produkte, 'lxtest'); ok = auswerten(m, vorMessung, { marke: true, vorfehlerOk: VORFEHLER_OK });
-        if (ok || !m.every((x) => x.status === 200 && !x.fehler.length) || Date.now() - t0 > 150000 * ZEIT) break;   // nur auf die Marke warten, nie über echte Fehler hinweg
+        m = await messen(produkte, 'lxtest'); runden++; ok = auswerten(m, vorMessung, { marke: true, vorfehlerOk: VORFEHLER_OK });
+        if (ok || !m.every((x) => x.status === 200 && !x.fehler.length) || fristAbgelaufen(t0, 150000, runden)) break;   // nur auf die Marke warten, nie über echte Fehler hinweg
         await warte(10000);
       }
       console.log(ok ? 'Testvorlage in Ordnung. Ansehen: ' + produkte.map((p) => BASIS + p + '?view=lxtest').join('  ') : 'Seitenprüfung der Testvorlage FEHLGESCHLAGEN (die echte Produktseite ist unberührt).');
