@@ -1,0 +1,101 @@
+{
+ "rueckgabe": {
+  "id": "gid://shopify/Page/697899483521",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:48:19 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "garantie": {
+  "id": "gid://shopify/Page/697899942273",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:48:20 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "faq": {
+  "id": "gid://shopify/Page/697899516289",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:48:22 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "groessentabelle": {
+  "id": "gid://shopify/Page/697899975041",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:48:24 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "faq-versand-lieferung": {
+  "id": "gid://shopify/Page/699136541057",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:55:22 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "faq-zahlung-sicherheit": {
+  "id": "gid://shopify/Page/699136573825",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:55:23 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "faq-rueckgabe-umtausch": {
+  "id": "gid://shopify/Page/699136606593",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:55:25 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "groessen-material-guide": {
+  "id": "gid://shopify/Page/699136672129",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:55:26 UTC",
+  "rueckgelesen_gleich": true
+ },
+ "faq-schmuck-pflege-material": {
+  "id": "gid://shopify/Page/699136639361",
+  "felder": [
+   "title",
+   "body_html",
+   "meta_title",
+   "meta_description"
+  ],
+  "geschrieben": "2026-11-09 21:55:28 UTC",
+  "rueckgelesen_gleich": true
+ }
+}
