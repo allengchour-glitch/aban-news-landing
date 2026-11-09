@@ -32,6 +32,22 @@ export function zerlege(html) {
 /** Besteht die alte Prosa nur aus schlichten Elementen? (Sonst nicht anfassen: Tabellen, Bilder, eigene Kästen.) Rein, getestet. */
 export const schlichtesProsa = prosa => !/<(table|img|div|iframe|script|style|a |video|svg)/i.test(prosa) && htmlZuText(prosa).length > 0;
 
+/**
+ * Welche Produktstatus die Text-Werkzeuge bearbeiten (09.11.2026). Vorgabe NUR ACTIVE (wie bisher); `STATUS_OK=DRAFT,ACTIVE` nimmt Entwürfe dazu —
+ * nötig für die Grind-Entwürfe, die erst nach dem Fliesstext veröffentlicht werden. Unbekannte Werte (ARCHIVED, Tippfehler) zählen nie. Rein, getestet.
+ */
+export const erlaubteStatus = wert => {
+  const liste = String(wert || 'ACTIVE').split(',').map(s => s.trim().toUpperCase()).filter(s => s === 'ACTIVE' || s === 'DRAFT');
+  return liste.length ? [...new Set(liste)] : ['ACTIVE'];
+};
+
+/**
+ * Darf die Prosa bearbeitet werden? Schlichte Prosa immer. LEERE Prosa nur mit `leerOk` (Entwurf, der nur den Datenblatt-Kasten trägt: es geht nichts verloren,
+ * der neue Text wird vor den Kasten gesetzt). «Leer» heisst kein Text UND keine Tabelle/Bild/Kasten/Link: eine Seite, deren «Prosa» nur ein Bild ist, bleibt tabu. Rein, getestet.
+ */
+export const prosaBearbeitbar = (prosa, leerOk = false) => schlichtesProsa(prosa)
+  || (leerOk === true && htmlZuText(prosa).length === 0 && !/<(table|img|div|iframe|script|style|a |video|svg)/i.test(String(prosa || '')));
+
 const ERLAUBT = new Set(['p', 'h3', 'ul', 'li', 'strong', 'em', 'br']);
 const BEHAUPTUNG = /garantiert|bestes?\b|testsieger|nummer\s*1|100\s?%|medizinisch|heil(t|ung|en)\b|therap|schmerzfrei|wissenschaftlich|klinisch|dermatologisch|zertifiziert|original(?!e? (grösse|farbe))|wasserdicht|wasserfest|spritzwassergeschützt|ip\d\d/i;
 

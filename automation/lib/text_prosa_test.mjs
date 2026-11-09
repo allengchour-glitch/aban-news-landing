@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { zerlege, schlichtesProsa, prosaPruefen, prosaEinsetzen, belegErweitert, MARKER, ENDE } from './text_prosa.mjs';
+import { zerlege, schlichtesProsa, prosaPruefen, prosaEinsetzen, belegErweitert, erlaubteStatus, prosaBearbeitbar, MARKER, ENDE } from './text_prosa.mjs';
 let n = 0; const t = (name, f) => { try { f(); n++; } catch (e) { console.error('✗', name, '\n  ', e.message); process.exitCode = 1; } };
 
 const LIEFER = '<p class="ls-liefer" data-tier="direkt" style="x">📦 Lieferzeit 10–20 Werktage</p>\n';
@@ -64,5 +64,28 @@ t('Var-Marker: Hinweis «Ausführung» bleibt im Kopf', () => { const z = zerleg
 t('Var-Marker: Einsetzen erhält Marker und Hinweis', () => { const neu = prosaEinsetzen(VAR + '<p><strong>Ausführung:</strong> Ohne Powerbank</p><p>Alte Prosa.</p>', '<p>NEU</p>'); assert.ok(neu.startsWith(VAR + '<p><strong>Ausführung:</strong> Ohne Powerbank</p>')); assert.ok(neu.includes('NEU') && !neu.includes('Alte Prosa')); });
 t('Var-Marker: Gegenprobe — ohne Prosa bleibt die Prosa leer', () => assert.equal(zerlege(VAR + '<div class="ls-produktdetails">x</div>').prosa.trim(), ''));
 t('Var-Marker: schlichtesProsa erkennt die Seite jetzt als bearbeitbar', () => assert.ok(schlichtesProsa(zerlege(MIT_VAR).prosa)));
+
+// ── 09.11.2026: Grind-Entwürfe (nur Datenblatt-Kasten, noch kein Fliesstext) ──
+const GRIND_SEITE = '<!-- ls-fakten-v1 --><div class="ls-fakten"><h4>Technische Daten</h4><p>Material: PU</p></div><!-- /ls-fakten-v1 -->';
+t('Status: Vorgabe ist nur ACTIVE', () => { assert.deepEqual(erlaubteStatus(undefined), ['ACTIVE']); assert.deepEqual(erlaubteStatus(''), ['ACTIVE']); });
+t('Status: DRAFT,ACTIVE (Gross/klein, Leerzeichen, doppelt) nimmt beide, ohne Doppelte', () => assert.deepEqual(erlaubteStatus(' draft , Active,DRAFT'), ['DRAFT', 'ACTIVE']));
+t('Status: nur DRAFT bleibt nur DRAFT', () => assert.deepEqual(erlaubteStatus('DRAFT'), ['DRAFT']));
+t('Status: unbekannte Werte zählen nie (ARCHIVED, Tippfehler) und fallen auf ACTIVE zurück', () => { assert.deepEqual(erlaubteStatus('ARCHIVED'), ['ACTIVE']); assert.deepEqual(erlaubteStatus('ARCHIVED,DRAFT'), ['DRAFT']); assert.deepEqual(erlaubteStatus('aktiv'), ['ACTIVE']); });
+t('bearbeitbar: schlichte Prosa immer, mit und ohne Schalter', () => { assert.equal(prosaBearbeitbar(PROSA), true); assert.equal(prosaBearbeitbar(PROSA, true), true); });
+t('bearbeitbar: leere Prosa ohne Schalter nein (wie bisher)', () => { assert.equal(prosaBearbeitbar(''), false); assert.equal(prosaBearbeitbar('  \n'), false); });
+t('bearbeitbar: leere Prosa mit Schalter ja, auch nur Leerraum', () => { assert.equal(prosaBearbeitbar('', true), true); assert.equal(prosaBearbeitbar(' \n ', true), true); });
+t('bearbeitbar: Schalter muss genau true sein (die Zeichenkette «1» zählt nicht)', () => assert.equal(prosaBearbeitbar('', '1'), false));
+t('bearbeitbar: ein Bild ohne Text ist NICHT leer und bleibt tabu', () => assert.equal(prosaBearbeitbar('<img src="a.jpg">', true), false));
+t('bearbeitbar: Tabelle, Kasten, Link und Video bleiben tabu, auch mit Schalter', () => { for (const x of ['<table></table>', '<div></div>', '<a href="x"></a>', '<video></video>', '<iframe></iframe>', '<svg></svg>']) assert.equal(prosaBearbeitbar(x, true), false, x); });
+t('bearbeitbar: Prosa mit Tabelle bleibt tabu, auch wenn Text dabei steht', () => assert.equal(prosaBearbeitbar('<p>x</p><table></table>', true), false));
+t('Grind-Seite: Prosa ist leer, der Kasten gehört zum Rest', () => { const z = zerlege(GRIND_SEITE); assert.equal(z.markiert, false); assert.equal(z.prosa, ''); assert.equal(z.rest, GRIND_SEITE); });
+t('Grind-Seite: Einsetzen setzt den Text VOR den Kasten, der Kasten bleibt byte-gleich', () => {
+  const neu = prosaEinsetzen(GRIND_SEITE, '<p>NEU</p>');
+  assert.ok(neu.startsWith(MARKER + '<p>NEU</p>' + ENDE)); assert.ok(neu.endsWith(GRIND_SEITE)); assert.equal(neu.split(MARKER).length, 2);
+});
+t('Grind-Seite: ein zweites Einsetzen ersetzt den Block, es entsteht kein zweiter', () => {
+  const zweimal = prosaEinsetzen(prosaEinsetzen(GRIND_SEITE, '<p>ERSTER</p>'), '<p>ZWEITER</p>');
+  assert.equal(zweimal.split(MARKER).length, 2); assert.ok(zweimal.includes('ZWEITER')); assert.ok(!zweimal.includes('ERSTER')); assert.ok(zweimal.endsWith(GRIND_SEITE));
+});
 
 console.log(`text_prosa_test: ${n} ok`);

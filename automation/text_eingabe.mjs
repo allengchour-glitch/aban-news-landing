@@ -6,14 +6,16 @@
  *
  * Aufruf: node automation/text_eingabe.mjs [LISTE=datei.csv | HANDLES=a,b] [LIMIT=120] [START=0] [OUT=/tmp/text_eingabe]
  * Nur Produkte mit CJ-Zwischenspeicher UND schlichter Prosa UND ohne Textblock (v2) kommen in Frage.
+ * Entwürfe (Grind): `STATUS_OK=DRAFT` und `LEERE_PROSA_OK=1` (Seite trägt nur den Datenblatt-Kasten); Vorgabe bleibt nur ACTIVE mit schlichter Prosa.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { quelleAus, htmlZuText } from './lib/fakten_block.mjs';
-import { zerlege, schlichtesProsa } from './lib/text_prosa.mjs';
+import { zerlege, prosaBearbeitbar, erlaubteStatus } from './lib/text_prosa.mjs';
 
 const OUT = process.env.OUT || '/tmp/text_eingabe', CACHE = '/tmp/cj_fakten_cache';
+const STATUS_OK = erlaubteStatus(process.env.STATUS_OK), LEERE_PROSA_OK = process.env.LEERE_PROSA_OK === '1';
 mkdirSync(OUT, { recursive: true });
 const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
 const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
@@ -29,10 +31,10 @@ for (const h of handles) {
   if (gut.length >= Number(process.env.LIMIT || 120)) break;
   if (!existsSync(`${CACHE}/${h}.json`)) { weg('kein CJ-Datenblatt'); continue; }
   const p = (await q(`query($h:String!){productByHandle(handle:$h){id title status descriptionHtml priceRangeV2{minVariantPrice{amount}} options{name values}}}`, { h })).productByHandle;
-  if (!p || p.status !== 'ACTIVE') { weg('nicht aktiv'); continue; }
+  if (!p || !STATUS_OK.includes(p.status)) { weg('nicht aktiv'); continue; }
   const z = zerlege(p.descriptionHtml);
   if (z.markiert) { weg('hat schon Text v2'); continue; }
-  if (!schlichtesProsa(z.prosa)) { weg('Prosa nicht schlicht/leer'); continue; }
+  if (!prosaBearbeitbar(z.prosa, LEERE_PROSA_OK)) { weg('Prosa nicht schlicht/leer'); continue; }
   const cj = JSON.parse(readFileSync(`${CACHE}/${h}.json`, 'utf8'));
   const fakt = /<!-- ls-fakten-v1 -->([\s\S]*?)<!-- \/ls-fakten-v1 -->/.exec(p.descriptionHtml);
   writeFileSync(`${OUT}/${h}.json`, JSON.stringify({

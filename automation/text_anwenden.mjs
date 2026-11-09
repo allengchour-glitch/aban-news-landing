@@ -5,14 +5,16 @@
  * Prüfung: lib/text_prosa.mjs (nur schlichtes HTML, jede Zahl muss in den Quellen stehen, keine Marken/Heilversprechen/Preise, Mindestlänge).
  * TROCKENLAUF IST VORGABE (LIVE=1 schreibt). Der Bericht nennt je abgelehntem Text den Grund; abgelehnte Texte ändern nichts.
  * Aufruf: [LIVE=1] node automation/text_anwenden.mjs [IN=/tmp/text_eingabe] [AUS=/tmp/text_ausgabe]
+ * Entwürfe (Grind): `STATUS_OK=DRAFT` und `LEERE_PROSA_OK=1`; Vorgabe bleibt nur ACTIVE mit schlichter Prosa.
  */
 import { readFileSync, readdirSync, existsSync, writeFileSync, appendFileSync, mkdirSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { zahlen } from './lib/fakten_block.mjs';
-import { zerlege, schlichtesProsa, prosaPruefen, prosaEinsetzen } from './lib/text_prosa.mjs';
+import { zerlege, prosaBearbeitbar, erlaubteStatus, prosaPruefen, prosaEinsetzen } from './lib/text_prosa.mjs';
 
 const LIVE = process.env.LIVE === '1', IN = process.env.IN || '/tmp/text_eingabe', AUS = process.env.AUS || '/tmp/text_ausgabe';
+const STATUS_OK = erlaubteStatus(process.env.STATUS_OK), LEERE_PROSA_OK = process.env.LEERE_PROSA_OK === '1';
 const dateien = existsSync(AUS) ? readdirSync(AUS).filter(f => f.endsWith('.json')) : [];
 if (!dateien.length) { console.log('Keine Ausgaben in', AUS); process.exit(0); }
 const SHOP = process.env.SHOPIFY_SHOP, CS = shopifyClientSecret(process.env.SHOPIFY_CLIENT_SECRET);
@@ -30,8 +32,8 @@ for (const f of dateien) {
   if (!LIVE) continue;
   try {
     const p = (await q(`query($h:String!){productByHandle(handle:$h){id status descriptionHtml}}`, { h: a.handle })).productByHandle;
-    if (!p || p.status !== 'ACTIVE') { stat.fehler++; abgelehnt.push(`${a.handle}: nicht aktiv/nicht gefunden`); continue; }
-    if (!zerlege(p.descriptionHtml).markiert && !schlichtesProsa(zerlege(p.descriptionHtml).prosa)) { stat.fehler++; abgelehnt.push(`${a.handle}: Prosa inzwischen nicht mehr schlicht`); continue; }
+    if (!p || !STATUS_OK.includes(p.status)) { stat.fehler++; abgelehnt.push(`${a.handle}: nicht aktiv/nicht gefunden`); continue; }
+    if (!zerlege(p.descriptionHtml).markiert && !prosaBearbeitbar(zerlege(p.descriptionHtml).prosa, LEERE_PROSA_OK)) { stat.fehler++; abgelehnt.push(`${a.handle}: Prosa inzwischen nicht mehr schlicht`); continue; }
     const neu = prosaEinsetzen(p.descriptionHtml, a.html);
     const u = (await q(`mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`, { i: { id: p.id, descriptionHtml: neu } })).productUpdate;
     if (u.userErrors.length) { stat.fehler++; abgelehnt.push(`${a.handle}: ${JSON.stringify(u.userErrors)}`); continue; }
