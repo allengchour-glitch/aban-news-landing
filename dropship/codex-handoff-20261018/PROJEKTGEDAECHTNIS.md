@@ -1368,3 +1368,17 @@ Nächster Schritt: exakt dieses Theme im Shopify-Admin veröffentlichen oder den
 Belege: `THEME-PUBLISH-BLOCKER-20261109-R159.md/.json`.
 
 [LUXESTYLE_R159_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 160: deutsche Produkt-SEO live, CJ-Grind fail-closed fortgeführt
+
+Shopify bestätigte frisch LuxeStyle/luxestyle.ch/CHF. Drei bereits aktive Produkte erhielten eng begrenzte deutsche Titel und SEO-Metadaten; ein alter unbelegter WELCOME10-Rabattclaim wurde entfernt. Öffentliche HTTP-200-Gegenproben bestätigten H1, Title, Meta, Canonical, CHF und Warenkorb. Handles, Status, Tags, Preise, Varianten, Inventory-Verhalten, Medien und Publikationen blieben unverändert. Produkte: `16700386607495`, `16700385657223`, `16690164892039`.
+
+Die zuvor nur extern sichtbare 14er-CJ-Queue ist nun live aufgelöst: sechs ACTIVE mit Storefront und je sechs Publikationen; acht DRAFT ohne Storefront/Publikation und mit `grind-gehalten-0911`. Es gibt keine pauschale Aktivierungsfreigabe.
+
+Für DRAFT `16690382766471` ist die Bindung vollständig: Shopify-Variante `67886034321799`, CJ-PID `1387285986509197312`, Produkt-SKU `CJCZ1103855`, Varianten-SKU `CJCZ110385501AZ`, VID `1387285987805237248`. Run `42706616757` stoppte wegen veraltetem Commit vor jedem CJ-Aufruf. Nach Hash-Gegenprüfung am aktuellen Head `fb32cb58009f4157997de45868c9913a200c3090` liefen `42706745235`, `42706830261`, `42706912994` und `42707005276` schreibfrei erfolgreich. Belegt sind CN-Fabrikbestand 40'000 und 17 CN–CH-Methodennamen; Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit und Prime bleiben unbekannt. Die CJ-/Shopify-Daten belegen keine kommerziellen Bildrechte.
+
+Da weder Bilder noch Produktdaten 4K/HD stützen, wurde nur der DRAFT claim-sicher umbenannt und deutsch beschrieben; vier Alttexte wurden bildgenau korrigiert. Rücklesung bestätigte DRAFT, keine Publikation/Storefront, CHF 17.90, gleiche Variante/SKU/Tags/Inventory. Keine Aktivierung. Nächster erlaubter Schritt: DRAFT `16700385853831` einmal über exakte Varianten-SKU `CJJD119966501AZ` read-only binden; danach aktuelle Fracht, Rechte, Preis, Tags und Kaufbarkeit getrennt prüfen.
+
+Belege: `SEO-CJ-GRIND-20261109-R160.md/.json`. Tagesgrenzen und bestehende 08:00/14:00/19:00-Europe/Zurich-Frequenz unverändert. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R160_20261109]

@@ -1756,3 +1756,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Claude Code | R159-Blocker und nächsten exakten Admin-/Spezialpfad additiv dokumentiert | Revision159,24 Aufgaben, Historie erhalten;08/14/19 unverändert; Receipt unbekannt |
 
 [LUXESTYLE_R159_20261109] [Bericht](THEME-PUBLISH-BLOCKER-20261109-R159.md) · [Beleg](THEME-PUBLISH-BLOCKER-20261109-R159.json). Theme weiterhin Vorschau, nicht live.
+
+### R160
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Revision159 und heutige Tagesgrenzen frisch gelesen | 24 Aufgaben/122 Historieneinträge; R154/R155/R157-Abfragen nicht wiederholt; Kauf-Watch beendet |
+| Shopify-Identität | Shop vor Produktwrites frisch geprüft | LuxeStyle/luxestyle.ch/CHF passend |
+| Produkt-SEO | Drei ACTIVE-`grind2`-Produkte eng auf deutsche Titel und SEO-Metadaten korrigiert; alten WELCOME10-Claim entfernt | Produkte `16700386607495`, `16700385657223`, `16690164892039` live; öffentliche HTTP200-/H1-/Title-/Meta-/Canonical-/CHF-/Warenkorb-Gegenprobe grün; sonstige Produktfelder erhalten |
+| CJ-Queue | Exakte 14er-Liste live gegen Shopify aufgelöst | 6 ACTIVE mit Storefront/je6 Publikationen; 8 DRAFT ohne Publikation/Storefront und mit `grind-gehalten-0911`; keine Massenaktivierung |
+| CJ Read-only | Kandidat `16690382766471` über PID und exakte Varianten-SKU geprüft; Inventory und CN–CH-Route gelesen | Stale-Head-Run stoppte vor CJ; vier erfolgreiche schreibfreie Runs; PID/SKU/VID eindeutig,17 Methodennamen; Fracht/Lieferzeit/CH-Lieferbarkeit/Prime/Rechte unbekannt |
+| CJ DRAFT | Unbelegte 4K-/HD-Claims aus Titel/SEO entfernt; neutrale deutsche Beschreibung und vier bildgenaue Alttexte geschrieben | DRAFT erhalten; keine Publikation/Storefront; CHF17.90, Variante/SKU/Tags/Inventory unverändert; Aktivierung wegen Fracht- und Rechteblocker unterlassen |
+| Nächster Schritt | Nächsten Kandidaten produktgenau festgelegt | `16700385853831` nur einmal über `CJJD119966501AZ` read-only binden; danach Fracht/Rechte/Preis/Gates getrennt prüfen |
+| Claude Code | R160 additiv in kanonische Übergabe aufgenommen | Bestehende08/14/19-Frequenz unverändert; Claude-Empfang unbekannt |
+| Grenzen | Tages- und Write-Scope erhalten | Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Theme-, Bestell-, Fulfillment- oder kostenpflichtige Renderänderung |
+
+[LUXESTYLE_R160_20261109] [Bericht](SEO-CJ-GRIND-20261109-R160.md) · [Beleg](SEO-CJ-GRIND-20261109-R160.json). Drei SEO-Korrekturen live; CJ-Kandidat bleibt gesperrter Entwurf.

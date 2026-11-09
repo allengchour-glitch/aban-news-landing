@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 159,
-  "updatedAt": "2026-11-09T22:39:00+01:00",
+  "revision": 160,
+  "updatedAt": "2026-11-09T23:03:45+01:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -324,12 +324,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r147_projector_description_claim_typo_emoji_live_verified_master_binding_stale",
+      "state": "r160_three_active_product_seo_fixes_live_verified_one_cj_draft_claim_safe_not_activated",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
-      "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R147_TARGETED_PROJECTOR_DESCRIPTION_LIVE_FIX_WITH_ADMIN_AND_PUBLIC_READBACK",
-      "lastEvidence": "Projektor15521256604033 gezielt gelesen und Live-Beschreibung bereinigt: unbelegter produktbezogener 10–20-Werktage-Claim, sichtbare Schild-/Einkauf-Emojis und Tippfehler Situation drehen entfernt; Projektor drehen, um den Fokus einzustellen und Galaxie bestätigt. Admin-Readback sowie öffentliche HTTP200-/Canonical-Gegenprobe grün. ACTIVE,7 Varianten A–G, aktuelle IDs/SKUs,12 Tags,12 Bilder, CHF34.90–51.90, Kaufbarkeit, Menge0, tracksInventory=false und CONTINUE unverändert. Historische Variante/SKU ist stale. Keine Bestands-/Lieferzusage, Socialmutation oder Katalogvollständigkeit behauptet.",
-      "nextAllowedStep": "R147-Projektorbeschreibung nicht erneut schreiben. Vor Master-/Socialnutzung eine aktuelle Variante A–G an Bildmotiv und gefilmte Einheit exakt binden und kommerzielle Rechte belegen. Menge0 bei untracked/CONTINUE nie als Ausverkauf oder Bestand verwenden. Weitere Produktkorrekturen nur in kleinem belegtem Scope mit vollständigem Admin-/Storefront-Readback; bei UNKNOWN stoppen.",
+      "lastEvidenceDate": "2026-11-09",
+      "belegArt": "R160_THREE_TARGETED_ACTIVE_PRODUCT_SEO_WRITES_PUBLIC_READBACK_AND_ONE_HELD_CJ_DRAFT_COPY_ALT_WRITE",
+      "lastEvidence": "LuxeStyle/luxestyle.ch/CHF frisch bestätigt. Drei ACTIVE-Produkte 16700386607495, 16700385657223 und 16690164892039 erhielten nur deutsche Titel/SEO-Metadaten; unbelegter WELCOME10-Claim entfernt. Öffentliche HTTP200-Gegenproben bestätigten H1/Title/Meta/Canonical/CHF/Warenkorb; Handles, Status, Tags, Preise, Varianten, Inventory, Medien und je6 Publikationen erhalten. CJ-DRAFT16690382766471 erhielt nach exakter PID/SKU/VID-Bindung nur claim-sicheren deutschen Text und vier Alttexte; DRAFT, CHF17.90, keine Publikation/Storefront und alle Kernfelder erhalten. Keine globale Katalogquote.",
+      "nextAllowedStep": "R160-Produkte nicht erneut schreiben. Nächsten SEO-Kandidaten nur nach frischer Admin-/Storefront-/Quellenprüfung bearbeiten. Für CJ-DRAFT16700385853831 genau einen read-only Lookup über Varianten-SKU CJJD119966501AZ durchführen; vor PID/VID-, Fracht-, Rechte-, Preis-, Tag- und Kaufbarkeitsbeleg keine Claims, Aktivierung oder Publikation. Menge0 bei untracked/CONTINUE nie als Bestand verwenden.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -661,6 +661,18 @@
           "path": "dropship/codex-handoff-20261018/PRODUKT-SEO-LIVE-20261105-R107.json",
           "gitBlobSha": "d7b4bf395bd863c8d89574e70039d0358923cb60",
           "readAt": "2026-11-05T22:04:20+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.md",
+          "gitBlobSha": "09e19b3417e41b3abb3fa0a66c3cedbcadbc3d3c",
+          "sha256": "b45d505f6af176d7ffa4b962a42fe0f8b55a631cbc3da0a02b300945b2b8b14b",
+          "readAt": "2026-11-09T23:03:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+          "gitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+          "sha256": "d68c7ae180f1fed52ff2785d00957e6d03a5f47ed8fbf7e905d4edbb7ecb2008",
+          "readAt": "2026-11-09T23:03:45+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -941,6 +953,16 @@
           "previousBelegArt": "R146_THREE_TARGETED_ACTIVE_PRODUCT_LANGUAGE_SEO_CLAIM_AND_ALTTEXT_WRITES_WITH_ADMIN_STOREFRONT_READBACK",
           "previousLastEvidence": "Drei gezielt geprüfte ACTIVE-Produkte live deutsch bereinigt und öffentlich zurückgelesen:15504187720065 Bedrucktes Damen-Maxikleid, CHF23.90/63 Varianten/20 Alttexte;15448586125697 Elegantes Kleid mit Nackenhalter, CHF15.90/4 Varianten/6 Alttexte;15470021181825 Plüschhamster,18cm, CHF22.90/1 Alttext. Unbelegte Material-/Passform-, Rabatt-, DPD- und produktbezogene Lieferzeitclaims im jeweiligen Scope entfernt. Status, Varianten, Preise, Publikationen, Tags und Inventory-Verhalten erhalten. Nackenhalter-Kleid trägt rueckhol-0907; keine Social-Ausspielung. Keine Vollkatalogquote oder Bestands-/Lieferzusage.",
           "previousNextAllowedStep": "R146-Produkte nicht erneut schreiben. Einen nächsten Produktfall nur nach frischer Admin-/Storefront-/Quellengegenprobe und mit vollständigem Varianten-, Medien-, Publikations- und Inventory-Schutz bearbeiten. Unbelegte Material-, Mass-, Passform-, Review-, Lieferzeit- und Bestandsclaims nicht ergänzen. Bei UNKNOWN stoppen, kein Retry; gemischtes /fr und MAIN separat behandeln.",
+          "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-09T23:03:45+01:00",
+          "sourceRevision": 159,
+          "previousState": "r147_projector_description_claim_typo_emoji_live_verified_master_binding_stale",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R147_TARGETED_PROJECTOR_DESCRIPTION_LIVE_FIX_WITH_ADMIN_AND_PUBLIC_READBACK",
+          "previousLastEvidence": "Projektor15521256604033 gezielt gelesen und Live-Beschreibung bereinigt: unbelegter produktbezogener 10–20-Werktage-Claim, sichtbare Schild-/Einkauf-Emojis und Tippfehler Situation drehen entfernt; Projektor drehen, um den Fokus einzustellen und Galaxie bestätigt. Admin-Readback sowie öffentliche HTTP200-/Canonical-Gegenprobe grün. ACTIVE,7 Varianten A–G, aktuelle IDs/SKUs,12 Tags,12 Bilder, CHF34.90–51.90, Kaufbarkeit, Menge0, tracksInventory=false und CONTINUE unverändert. Historische Variante/SKU ist stale. Keine Bestands-/Lieferzusage, Socialmutation oder Katalogvollständigkeit behauptet.",
+          "previousNextAllowedStep": "R147-Projektorbeschreibung nicht erneut schreiben. Vor Master-/Socialnutzung eine aktuelle Variante A–G an Bildmotiv und gefilmte Einheit exakt binden und kommerzielle Rechte belegen. Menge0 bei untracked/CONTINUE nie als Ausverkauf oder Bestand verwenden. Weitere Produktkorrekturen nur in kleinem belegtem Scope mit vollständigem Admin-/Storefront-Readback; bei UNKNOWN stoppen.",
           "previousBlockersRetainedInCurrentTask": true
         }
       ],
@@ -1515,6 +1537,23 @@
         "coreFieldsPreserved": true,
         "historicalMasterBindingStale": true,
         "socialWrites": 0
+      },
+      "run160": {
+        "at": "2026-11-09T23:03:45+01:00",
+        "activeProductSeoWrites": 3,
+        "publicReadbacks": 3,
+        "heldDraftProductId": "16690382766471",
+        "heldDraftCopyWrite": true,
+        "heldDraftAltTextWrites": 4,
+        "productActivations": 0,
+        "publications": 0,
+        "coreFieldsPreserved": true,
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+          "gitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+          "sha256": "d68c7ae180f1fed52ff2785d00957e6d03a5f47ed8fbf7e905d4edbb7ecb2008",
+          "readAt": "2026-11-09T23:03:45+01:00"
+        }
       }
     },
     {
@@ -6683,12 +6722,12 @@
       "id": "cj-variant-price-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r150_projector_a_to_g_shopify_sku_cj_pid_vid_mapping_verified_media_rights_unknown_no_write",
+      "state": "r160_cj_webcam_exact_pid_productsku_variantsku_vid_inventory_route_bound_freight_and_media_rights_unknown_draft_held",
       "title": "CJ-Mehrvariantenpreis und SKU-Gegenprobe an tatsächliche Basis binden",
-      "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R150_EXISTING_CJ_READ_BOUND_TO_CURRENT_PROJECTOR_SHOPIFY_VARIANTS_MEDIA_RIGHTS_AND_LOCAL_RUNTIME_UNKNOWN",
-      "lastEvidence": "Projektor15521256604033 aktuell mit sieben Shopify-Varianten A–G gelesen. Deren SKUs CJSN139239101AZ bis107GT stimmen exakt mit dem erfolgreichen CJ-Nur-Lese-Lauf42026512823/Job127241964880 überein und binden alle sieben Shopify-Varianten an PID1477820492730732544 sowie VIDs1477826312449167360,1477826312453361664,1477826312453361665,1477826312453361666,1555856292877709312,1555856292877709313 und1589496316504322048. Damit ist die Metadatenzuordnung geschlossen. Der Film bleibt nur produktweit, ohne variant_ids; CJ-Bild-/Video-Metadaten, Fotografieauftrag/Copyright-Kauf, Prime, Medienrechte und genaue Motiv-/Einheitenbindung bleiben UNKNOWN. Lokale CJ-Credentialbindung fehlt, deshalb kein neuer Remote-Read oder Blind-Retry. R146-Yoga-CN→CH-Routenbeleg bleibt historisch erhalten. Keine CJ-/Shop-/Produkt-/Preis-/Bestands-/Importmutation.",
-      "nextAllowedStep": "Die geschlossene Projektor-SKU/PID/VID-Zuordnung erhalten und Run42026512823 nicht ohne neuen konkreten Grund wiederholen. Für den Master genau eine heutige Variante samt Motiv und physischer Einheit durch Lieferanten-/Aufnahmebeleg binden und einen hashbezogenen Film-/Bearbeitungs-/Werberechtegrant nachweisen. CJ-Fotografieauftrag/Copyright-Kauf und Medienmetadaten nur über legitimen authentifizierten Nur-Lese-Zugang prüfen; fehlende lokale Credentialbindung nicht als fehlendes Konto oder fehlende Rechte ausgeben. Prime, Fracht, Lieferzeit und Bestand getrennt halten; keine Shop-/Feedänderung ableiten.",
+      "lastEvidenceDate": "2026-11-09",
+      "belegArt": "R160_HASH_BOUND_CJ_READ_ONLY_PRODUCT_VARIANT_INVENTORY_CN_CH_ROUTE_NO_IMPORT_NO_ACTIVATION",
+      "lastEvidence": "Shopify-CJ-Kandidat16690382766471/Variante67886034321799 exakt an PID1387285986509197312, Produkt-SKUCJCZ1103855, Varianten-SKUCJCZ110385501AZ und VID1387285987805237248 gebunden. Run42706616757 stoppte wegen Stale-Head vor CJ. Nach Hash-Gegenprüfung liefen42706745235/42706830261/42706912994/42707005276 schreibfrei: Variantensatz vollständig, CN-Fabrikbestand40000, CJ-Bestand0,17 CN→CH-Methodennamen. Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit, Prime und kommerzielle Medienrechte UNKNOWN. Produkt blieb DRAFT ohne Publikation/Storefront; kein Import oder Aktivierungswrite.",
+      "nextAllowedStep": "Für DRAFT16700385853831 exakt einen Produktlookup über Varianten-SKU CJJD119966501AZ durchführen und nur bei vollständiger eindeutiger Bindung PID/VID protokollieren. Danach Inventory und CN→CH-Route nur bei neuem konkretem Grund begrenzt lesen. Frachtpreis, Rechte, Preis, Tags und Kaufbarkeit getrennt belegen; Methodennamen/Fabrikbestand nicht als Lieferzusage oder CH-Bestand ausgeben. Keine pauschale Aktivierung der acht DRAFTs.",
       "blockers": [
         "CJ-Status ist UNSHIPPED; daraus folgen weder Versandbeginn noch Lieferzeit oder Zustellung.",
         "Shopify-Fulfilment und Tracking/Tracking-Write sind nicht erfolgt.",
@@ -6870,6 +6909,18 @@
           "jobId": 128709810825,
           "headSha": "5fbd7fa6eacf5f1c1c312652077442f8d688e9a8",
           "readAt": "2026-11-08T12:01:35+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.md",
+          "gitBlobSha": "09e19b3417e41b3abb3fa0a66c3cedbcadbc3d3c",
+          "sha256": "b45d505f6af176d7ffa4b962a42fe0f8b55a631cbc3da0a02b300945b2b8b14b",
+          "readAt": "2026-11-09T23:03:45+01:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+          "gitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+          "sha256": "d68c7ae180f1fed52ff2785d00957e6d03a5f47ed8fbf7e905d4edbb7ecb2008",
+          "readAt": "2026-11-09T23:03:45+01:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6946,6 +6997,16 @@
           "previousLastEvidence": "PR2971 wurde als47f1e77f89cb5c71494f2df017cba0c39b71ecc1 gemergt: product akzeptiert exakt einen Schlüssel PID/productSku/variantSku, inventory weiterhin nur PID; unvollständige/mehrdeutige Variantensets bleiben UNKNOWN. Tests106/106 fokussiert,280/280 Assist und volle LuxeStyle-Matrix grün, unabhängiger Review GO. Run42501861632: genau1 Auth+1 Produkt, CJDK296677412LO→PID2607031647441600100/productSkuCJDK2966774, variants complete, verified. Run42501905917: genau1 Auth+1 Produkt+1 Inventory,12 Varianten vollständig; ausschliesslich CN factoryInventory, überall cjInventory0/verifiedWarehouse2, deliveryToSwitzerland unknown. Kein Search/Pagination/Import/Shopwrite. Prime-Entitlement unbekannt. LX1038/SD2611081059350666900 bleibt UNSHIPPED und unverändert.",
           "previousNextAllowedStep": "Die bestätigte PID/Variantenbindung nur für gezielte Rechte-, Bild-, Fracht- und Schweiz-Liefergegenproben verwenden; factoryInventory nicht als physischer CJ- oder Schweiz-Bestand ausgeben. Kein weiterer Inventoryread ohne neuen konkreten Grund. Ein Import bleibt trotz PR2966 nur nach vollständiger Quellen-/Rechte-/Liefer-/Preisprüfung und explizitem Gate als DRAFT plus compliance-pruefen zulässig. Prime-Status nur authentifiziert lesen, keinen Tarif kaufen. LX1038 nicht erneut anlegen; UNSHIPPED bleibt kein Lieferzeitbeleg.",
           "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-09T23:03:45+01:00",
+          "sourceRevision": 159,
+          "previousState": "r150_projector_a_to_g_shopify_sku_cj_pid_vid_mapping_verified_media_rights_unknown_no_write",
+          "previousLastEvidenceDate": "2026-11-08",
+          "previousBelegArt": "R150_EXISTING_CJ_READ_BOUND_TO_CURRENT_PROJECTOR_SHOPIFY_VARIANTS_MEDIA_RIGHTS_AND_LOCAL_RUNTIME_UNKNOWN",
+          "previousLastEvidence": "Projektor15521256604033 aktuell mit sieben Shopify-Varianten A–G gelesen. Deren SKUs CJSN139239101AZ bis107GT stimmen exakt mit dem erfolgreichen CJ-Nur-Lese-Lauf42026512823/Job127241964880 überein und binden alle sieben Shopify-Varianten an PID1477820492730732544 sowie VIDs1477826312449167360,1477826312453361664,1477826312453361665,1477826312453361666,1555856292877709312,1555856292877709313 und1589496316504322048. Damit ist die Metadatenzuordnung geschlossen. Der Film bleibt nur produktweit, ohne variant_ids; CJ-Bild-/Video-Metadaten, Fotografieauftrag/Copyright-Kauf, Prime, Medienrechte und genaue Motiv-/Einheitenbindung bleiben UNKNOWN. Lokale CJ-Credentialbindung fehlt, deshalb kein neuer Remote-Read oder Blind-Retry. R146-Yoga-CN→CH-Routenbeleg bleibt historisch erhalten. Keine CJ-/Shop-/Produkt-/Preis-/Bestands-/Importmutation.",
+          "previousNextAllowedStep": "Die geschlossene Projektor-SKU/PID/VID-Zuordnung erhalten und Run42026512823 nicht ohne neuen konkreten Grund wiederholen. Für den Master genau eine heutige Variante samt Motiv und physischer Einheit durch Lieferanten-/Aufnahmebeleg binden und einen hashbezogenen Film-/Bearbeitungs-/Werberechtegrant nachweisen. CJ-Fotografieauftrag/Copyright-Kauf und Medienmetadaten nur über legitimen authentifizierten Nur-Lese-Zugang prüfen; fehlende lokale Credentialbindung nicht als fehlendes Konto oder fehlende Rechte ausgeben. Prime, Fracht, Lieferzeit und Bestand getrennt halten; keine Shop-/Feedänderung ableiten.",
+          "previousBlockersRetainedInCurrentTask": true
         }
       ],
       "run146": {
@@ -6979,6 +7040,41 @@
           "path": "dropship/codex-handoff-20261018/MASTER-GATE-20261108-R150.json",
           "gitBlobSha": "e3a613741a459f9d3b382a6e3e36cc804b71b1ab",
           "sha256": "567b86c84f8638a78c9f76a0bb743ce1792bfe11be973c6b00b9b56e539599b1"
+        }
+      },
+      "run160": {
+        "at": "2026-11-09T23:03:45+01:00",
+        "shopifyProductId": "16690382766471",
+        "shopifyVariantId": "67886034321799",
+        "cjPid": "1387285986509197312",
+        "cjProductSku": "CJCZ1103855",
+        "cjVariantSku": "CJCZ110385501AZ",
+        "cjVid": "1387285987805237248",
+        "variantSetComplete": true,
+        "guardedStaleHeadRunId": 42706616757,
+        "readOnlyRunIds": [
+          42706745235,
+          42706830261,
+          42706912994,
+          42707005276
+        ],
+        "cnFactoryInventory": 40000,
+        "cjInventory": 0,
+        "routeMethodNames": 17,
+        "freightPrice": "UNKNOWN",
+        "deliveryTime": "UNKNOWN",
+        "commercialMediaRights": "UNKNOWN",
+        "shopifyWrites": {
+          "draftCopy": 1,
+          "draftAltTexts": 4,
+          "activations": 0,
+          "publications": 0
+        },
+        "source": {
+          "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+          "gitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+          "sha256": "d68c7ae180f1fed52ff2785d00957e6d03a5f47ed8fbf7e905d4edbb7ecb2008",
+          "readAt": "2026-11-09T23:03:45+01:00"
         }
       }
     },
@@ -12318,6 +12414,19 @@
         "readAt": "2026-11-09T22:39:00+01:00"
       },
       "action": "R159: Owner explicitly reconfirmed publishing exact preview Theme213619179911. Fresh shop/theme identity and MD5s matched R158. One new general themePublish request was blocked by automatic review before execution; required specialized theme_publish remained unavailable after final direct yes. No further retry or REST/CLI/browser/credential bypass. MAIN unchanged, preview remains UNPUBLISHED. Claude handoff updated, existing08/14/19 cadence unchanged, receipt unknown. Tasks remain24."
+    },
+    {
+      "revision": 160,
+      "at": "2026-11-09T23:03:45+01:00",
+      "actor": "codex",
+      "source": {
+        "reportPath": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.md",
+        "reportGitBlobSha": "09e19b3417e41b3abb3fa0a66c3cedbcadbc3d3c",
+        "evidencePath": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+        "evidenceGitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+        "readAt": "2026-11-09T23:03:45+01:00"
+      },
+      "action": "R160: Fresh LuxeStyle/luxestyle.ch/CHF identity. Three ACTIVE grind2 products received targeted German title/SEO fixes with public HTTP200 readback; stale WELCOME10 claim removed and all non-copy product fields preserved. Live CJ queue resolved as6 ACTIVE/8 held DRAFT. Exact PID/productSKU/variantSKU/VID binding plus bounded inventory and CN→CH route reads completed; stale-head run stopped before CJ and four later runs were read-only. Held webcam DRAFT received claim-safe German copy and4 alt texts, remained unpublished/unactivated because freight, delivery and commercial media rights are unknown. Existing daily reads not repeated; 08/14/19 cadence unchanged; Claude receipt unknown. Tasks remain24."
     }
   ],
   "salesGoal": {
@@ -12527,18 +12636,18 @@
     }
   ],
   "claudeCodeHandoff": {
-    "documentationRevision": 159,
+    "documentationRevision": 160,
     "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
-    "gitBlobSha": "e8c197fff0605bd2c2f5766c9a5ed38eb8730c5b",
+    "gitBlobSha": "267f54eee5074e09897e8ec82ae934723729f9f6",
     "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
-    "entryGitBlobSha": "36e91c414f1a646021ef294d9111dfa8cca96efe",
+    "entryGitBlobSha": "0ce0f43dc79eba9bd3b271fa5d10334d02c2af8f",
     "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
     "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
-    "scope": "R159 exact theme publish explicitly approved; specialized tool unavailable and general mutation blocked before execution; MAIN unchanged",
-    "latestCanonicalRevision": 159,
-    "snapshotNote": "R159 records explicit approval for Theme213619179911, fresh matching pre-publish state, and connector block before execution. No bypass/retry; MAIN unchanged; Claude receipt unknown.",
+    "scope": "R160 three targeted German product SEO fixes live; CJ 14-item queue resolved; one exact-bound CJ candidate kept DRAFT because freight and media rights remain unknown",
+    "latestCanonicalRevision": 160,
+    "snapshotNote": "R160 records three verified live product SEO fixes and exact CJ product/variant/inventory/route reads. Candidate copy was corrected only in DRAFT; no activation or publication. Claude receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
       "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
@@ -13094,6 +13203,20 @@
       "mainChanged": false,
       "blocker": "specialized_theme_publish_unavailable_general_mutation_blocked_before_execution",
       "claudeReceipt": "unknown_no_claude_receipt"
+    },
+    "seoCjGrindR160": {
+      "report": {
+        "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.md",
+        "gitBlobSha": "09e19b3417e41b3abb3fa0a66c3cedbcadbc3d3c",
+        "sha256": "b45d505f6af176d7ffa4b962a42fe0f8b55a631cbc3da0a02b300945b2b8b14b",
+        "readAt": "2026-11-09T23:03:45+01:00"
+      },
+      "evidence": {
+        "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+        "gitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+        "sha256": "d68c7ae180f1fed52ff2785d00957e6d03a5f47ed8fbf7e905d4edbb7ecb2008",
+        "readAt": "2026-11-09T23:03:45+01:00"
+      }
     }
   },
   "claudeCodeHandoffHistory": [
@@ -16750,6 +16873,576 @@
         "mainChanged": false,
         "published": false,
         "publishState": "blocked_before_execution_no_retry",
+        "claudeReceipt": "unknown_no_claude_receipt"
+      }
+    },
+    {
+      "documentationRevision": 159,
+      "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+      "gitBlobSha": "e8c197fff0605bd2c2f5766c9a5ed38eb8730c5b",
+      "entryPath": "dropship/codex-handoff-20261018/CLAUDE.md",
+      "entryGitBlobSha": "36e91c414f1a646021ef294d9111dfa8cca96efe",
+      "localEntry": "/workspace/luxestyle-codex/CLAUDE.md",
+      "localSnapshotPath": "/workspace/luxestyle-codex/memory/snapshots/2026-11-04-r79",
+      "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
+      "receiptState": "unknown_no_claude_receipt",
+      "scope": "R159 exact theme publish explicitly approved; specialized tool unavailable and general mutation blocked before execution; MAIN unchanged",
+      "latestCanonicalRevision": 159,
+      "snapshotNote": "R159 records explicit approval for Theme213619179911, fresh matching pre-publish state, and connector block before execution. No bypass/retry; MAIN unchanged; Claude receipt unknown.",
+      "merchantCsvSupplement": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
+        "gitBlobSha": "173df198df7783212d0a10a79bcaa3507123a59e",
+        "readAt": "2026-11-01T20:21:03.842254Z"
+      },
+      "descriptionCsvSupplement": {
+        "path": "dropship/codex-handoff-20261018/BESCHREIBUNGEN-CSV-20261101-R42.json",
+        "gitBlobSha": "cd1f4ff13ecb334e60639535088dfd5a2760ed92",
+        "readAt": "2026-11-01T20:32:24.782248Z"
+      },
+      "visibilitySupplement": {
+        "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261101-R43.json",
+        "gitBlobSha": "2d8253a879f49371c172d28ebbabfd18a34a6fbd",
+        "readAt": "2026-11-01T20:50:50.314044Z"
+      },
+      "imageSupplement": {
+        "path": "dropship/codex-handoff-20261018/BILDER-UPDATE-20261101-R44.json",
+        "gitBlobSha": "9ee9636e0d28310541411dc0d6a0de7b6b260f0a",
+        "readAt": "2026-11-01T21:14:05.412770Z"
+      },
+      "budgetCarouselSupplement": {
+        "path": "dropship/codex-handoff-20261018/ENTDECKEN-KARUSSELL-20261101-R45.json",
+        "gitBlobSha": "6abdde9d352d7c2d288f8a585b57bdf3fc409d91",
+        "readAt": "2026-11-01T21:34:54.648570Z"
+      },
+      "beautySportSupplement": {
+        "path": "dropship/codex-handoff-20261018/BEAUTY-SPORT-BILDER-20261101-R46.json",
+        "gitBlobSha": "be7b4f3cb38ed196191bb29a591de7d944c9495a",
+        "readAt": "2026-11-01T21:49:46.970046Z"
+      },
+      "seasonImagesSupplement": {
+        "path": "dropship/codex-handoff-20261018/WINTER-WEIHNACHTSBILDER-20261101-R47.json",
+        "gitBlobSha": "3dcf753fa396085023323242ef7648da3689dd5d",
+        "readAt": "2026-11-01T22:03:08.787599Z"
+      },
+      "dailyPackageR48": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+        "gitBlobSha": "10dbb9e1b420c8486a23c5e2917199bfb007d0fa",
+        "readAt": "2026-11-02T07:11:58.785394Z"
+      },
+      "visibilitySupplementR49": {
+        "path": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json",
+        "gitBlobSha": "e84d0ade44da06c97fb5a2a215fe0bf8ed2efbc8",
+        "readAt": "2026-11-02T09:45:57.309290Z"
+      },
+      "categoryQualitySupplementR50": {
+        "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+        "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+        "readAt": "2026-11-02T10:12:23.372462Z"
+      },
+      "currentMainObservationR50": {
+        "id": "213013037447",
+        "source": {
+          "path": "dropship/codex-handoff-20261018/KATEGORIEN-QUALITAET-20261102-R50.json",
+          "gitBlobSha": "bfdf2e1655eb187bf861e67ac4d766821b7a57a7",
+          "readAt": "2026-11-02T10:12:23.372462Z"
+        },
+        "oldDraftNotSafeToPublishWithoutFreshFullDiff": true
+      },
+      "techCategoryStructureSupplementR51": {
+        "path": "dropship/codex-handoff-20261018/TECHNIK-UNTERKATEGORIEN-20261102-R51.json",
+        "gitBlobSha": "141087901a0a6d69f5f2f4a1d3f2845364aee996",
+        "readAt": "2026-11-02T11:11:11.833553Z"
+      },
+      "afternoonPackageR52": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R52.json",
+        "gitBlobSha": "01277347cfd36eed0e0ef35ed7b93b6673290c2e",
+        "readAt": "2026-11-02T13:22:43.077820Z"
+      },
+      "masterAcceptanceSupplementR52": {
+        "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHMEBOGEN-20261102-R52.md",
+        "gitBlobSha": "67c7d2f2dc2188cfe47081aac36b4cd521e9742d",
+        "readAt": "2026-11-02T13:22:43.077820Z"
+      },
+      "claudePublicationInstructionR53": {
+        "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+        "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+        "readAt": "2026-11-02T15:57:58.185375Z"
+      },
+      "currentMainWidthCandidateR53": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+          "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+          "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        "mainTheme": "213013037447",
+        "filename": "templates/collection.json",
+        "beforeMd5": "6c0ccc1bf403cc94bf55d1dd98b3ea84",
+        "candidateMd5": "bbacad38aabc5e292ed819b3d1b01782",
+        "singleRuleOnly": true,
+        "nativeWritten": false,
+        "published": false
+      },
+      "welcomeApplicationScopeR53": {
+        "source": {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-PUBLISH-BELEGE-20261102-R53.json",
+          "gitBlobSha": "ab4e4f7baff0fdd911c1fd65409b9a9fb5c576c7",
+          "readAt": "2026-11-02T15:57:58.185375Z"
+        },
+        "targetClarification": "resolved_website_only",
+        "ownerApprovalState": "freigabeentwurf_website_only_excluded",
+        "applicationAllowedNow": false
+      },
+      "eveningPackageR54": {
+        "path": "dropship/codex-handoff-20261018/ABENDBELEGE-20261102-R54.json",
+        "gitBlobSha": "8833412a8099c41b45761a0d40258bde3525fdcd",
+        "readAt": "2026-11-02T18:26:50.969075Z"
+      },
+      "masterContentSupplementR54": {
+        "path": "dropship/codex-handoff-20261018/MASTER-CONTENT-20261102-R54.md",
+        "gitBlobSha": "2e9de9d69c3fdedc8741434a98ab5d6af1ee0616",
+        "readAt": "2026-11-02T18:26:50.969075Z"
+      },
+      "minimaxAccessCorrectionR55": {
+        "path": "dropship/codex-handoff-20261018/MINIMAX-ZUGANG-20261102-R55.md",
+        "gitBlobSha": "5796bfea4bcc84dde7d7135dd4e2dbab19fd7367",
+        "readAt": "2026-11-02T18:41:37.650465Z"
+      },
+      "musicListeningDraftR56": {
+        "path": "dropship/codex-handoff-20261018/MUSIK-HOERENTWURF-20261102-R56.md",
+        "gitBlobSha": "ce126e84d3f8539037ec726e5dc498c6c7a9942f",
+        "readAt": "2026-11-02T19:19:14.777771+00:00"
+      },
+      "lampComparisonR57": {
+        "path": "dropship/reel-vergleich-0211/codex-lampe.md",
+        "ref": "8afbec7117460aebc6bc7917bea8b004d74ba8cf",
+        "gitBlobSha": "49e0127a4f9bc7239079fb2dc6c0a0522a2db90e",
+        "readAt": "2026-11-02T19:31:54.226882+00:00",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2829"
+      },
+      "merchantFixR58": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-FIX-20261102-R58.md",
+        "gitBlobSha": "d4a30c01cd938af9326d0f50923494768f0b00a0",
+        "readAt": "2026-11-02T20:13:28.392663+00:00"
+      },
+      "merchantExportsAndImageFixesR59": {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-EXPORT-BELEGE-20261102-R59.json",
+        "gitBlobSha": "34475f9f4be64224ad67c0da1bcc5073169511c4",
+        "readAt": "2026-11-02T21:09:36.975076+00:00"
+      },
+      "categoryImagesR74": {
+        "path": "dropship/codex-handoff-20261018/KATEGORIEBILDER-20261104-R74.json",
+        "gitBlobSha": "8366461666e170cce0cf3a43e66482a4a5b0b4e5",
+        "readAt": "2026-11-03T23:41:40.385568+00:00"
+      },
+      "productScenesR75": {
+        "path": "dropship/codex-handoff-20261018/PRODUKTBILDER-20261104-R75.json",
+        "gitBlobSha": "98fcfb2574dc03c41c5768f7bc182d19d88285d2",
+        "readAt": "2026-11-03T23:56:36.896210+00:00"
+      },
+      "imageIntegrationR76": {
+        "path": "dropship/codex-handoff-20261018/BILDINTEGRATION-20261104-R76.json",
+        "gitBlobSha": "3f902a3865e888ec59ed8da32d1b004f24363f38",
+        "readAt": "2026-11-04T06:37:37.844824+00:00"
+      },
+      "morningRunR77": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json",
+        "gitBlobSha": "46220aa594f1337959ba6409fdf813bc6d9ec515",
+        "readAt": "2026-11-04T07:29:25.340075+00:00"
+      },
+      "followUpRunR78": {
+        "path": "dropship/codex-handoff-20261018/WEITERARBEIT-BELEGE-20261104-R78.json",
+        "gitBlobSha": "fdca6087e9679a0092ad4cdd68b8187a03490e27",
+        "readAt": "2026-11-04T08:39:22.685627+00:00"
+      },
+      "followUpRunR79": {
+        "path": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R79.json",
+        "gitBlobSha": "d2494cf81df01fb36b4c0a54bffbbb880c1299d8",
+        "readAt": "2026-11-04T13:10:11.240259+00:00"
+      },
+      "followUpRunR82": {
+        "path": "dropship/codex-handoff-20261018/PRODUKTKATALOG-LIVE-20261104-R82.json",
+        "gitBlobSha": "748b83995f3024ff34665504dcf91f10d170a7d2",
+        "readAt": "2026-11-04T17:48:46.518Z"
+      },
+      "run146": {
+        "at": "2026-11-08T18:55:01+01:00",
+        "scope": "targeted_live_german_product_fixes_merchant_safety_tags_metricool_schedule_read_cj_route_read_pod_sri_recovery_and_immutable_v631_deploy",
+        "shopifyProducts": [
+          {
+            "id": "15504187720065",
+            "title": "Bedrucktes Damen-Maxikleid",
+            "priceCHF": "23.90",
+            "variants": 63,
+            "altTexts": 20,
+            "status": "ACTIVE"
+          },
+          {
+            "id": "15448586125697",
+            "title": "Elegantes Kleid mit Nackenhalter",
+            "priceCHF": "15.90",
+            "variants": 4,
+            "altTexts": 6,
+            "status": "ACTIVE",
+            "socialBlocker": "rueckhol-0907"
+          },
+          {
+            "id": "15470021181825",
+            "title": "Plüschhamster, 18 cm",
+            "priceCHF": "22.90",
+            "altTexts": 1,
+            "status": "ACTIVE"
+          }
+        ],
+        "merchantSafety": {
+          "productId": "16612741841287",
+          "variantId": "67671330226567",
+          "sku": "CJJM106168704DW",
+          "cjPid": "1377445613813239808",
+          "tagsAdded": [
+            "compliance-pruefen",
+            "nicht-bewerben"
+          ],
+          "feedWrites": 0
+        },
+        "cjRoute": {
+          "pullRequest": 2974,
+          "mergeCommit": "410578df18cfc877f3f49984465ced4c59b5f0f7",
+          "run": 42505179520,
+          "variantSku": "CJDK296677412LO",
+          "pid": "2607031647441600100",
+          "vid": "2607031647441605900",
+          "methodNameCount": 17,
+          "freightPrice": "UNKNOWN",
+          "deliveryTime": "UNKNOWN",
+          "prime": "UNKNOWN"
+        },
+        "metricool": {
+          "brandId": 6227837,
+          "timezone": "Europe/Zurich",
+          "objects": 31,
+          "channelStates": 49,
+          "active": 19,
+          "blockedDrafts": 12,
+          "published": 3,
+          "pending": 46,
+          "instagramFacebookDates": "2026-11-08/2026-11-15",
+          "tiktokGaps": "2026-11-10/2026-11-15",
+          "pinterestGaps": "2026-11-09/2026-11-15",
+          "youtubeActive": 0,
+          "writes": 0
+        },
+        "mainTheme": {
+          "pullRequest": 2975,
+          "state": "DRAFT",
+          "liveChanged": false,
+          "frMixed": true
+        },
+        "pod": {
+          "recoveryPullRequest": 2977,
+          "recoveryMerge": "5a9684b794542ee28bc2cf8db314757b351874b6",
+          "releasePullRequest": 2976,
+          "releaseMerge": "322d951f8492ac298c783795faa121be8148fe4b",
+          "productionUploadRun": 42506732658,
+          "productionUploadConclusion": "success",
+          "v630": {
+            "sha256": "e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b",
+            "bytes": 228533,
+            "httpStatus": 200
+          },
+          "v631": {
+            "sha256": "1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0",
+            "bytes": 228826,
+            "httpStatus": 200,
+            "sri": "sha256-HhWquUhvC2A4UlGImge0spOnSBlDfNNwI3fuB5dgrbA="
+          },
+          "publicHeaders": {
+            "accessControlAllowOrigin": "*",
+            "crossOriginResourcePolicy": "cross-origin",
+            "cacheControl": "public, max-age=31536000, immutable"
+          },
+          "shopifyProductScriptVersion": "6.3.0",
+          "planDispatched": false,
+          "canaryDispatched": false,
+          "fullDispatched": false,
+          "runtimeState": "UNAVAILABLE_AFTER_PUBLIC_READBACK",
+          "mainAdvancedTo": "924c022b50c22ebf9238f1ffe81742077b6c034e",
+          "mainAdvanceTouchesPodRolloutFiles": false
+        },
+        "existingOrder1038": "UNTOUCHED_THIS_RUN",
+        "prohibitedWrites": {
+          "customers": 0,
+          "discounts": 0,
+          "budgets": 0,
+          "flows": 0,
+          "dns": 0,
+          "paidRenders": 0,
+          "orders": 0
+        },
+        "taskCount": 24
+      },
+      "run147": {
+        "at": "2026-11-08T19:00:16+01:00",
+        "scope": "exact_projector_product_variant_image_inventory_binding_refresh_no_social_write",
+        "product": {
+          "productId": "15521256604033",
+          "gid": "gid://shopify/Product/15521256604033",
+          "status": "ACTIVE",
+          "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+          "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+          "imageCount": 12,
+          "tagsNonEmpty": true,
+          "variantId": null,
+          "sku": null,
+          "selectionState": "UNKNOWN_NOT_SELECTED",
+          "previousBinding": {
+            "variantId": "56197916361089",
+            "sku": "CJ-1477820492730732544",
+            "status": "STALE_BLOCKED_DO_NOT_USE"
+          },
+          "currentVariantIds": [
+            "68122445283719",
+            "68122445316487",
+            "68122445349255",
+            "68122445382023",
+            "68122445414791",
+            "68122445447559",
+            "68122445480327"
+          ],
+          "currentVariantSkus": [
+            "CJSN139239101AZ",
+            "CJSN139239102BY",
+            "CJSN139239103CX",
+            "CJSN139239104DW",
+            "CJSN139239105EV",
+            "CJSN139239106FU",
+            "CJSN139239107GT"
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+          ],
+          "priceRangeCHF": [
+            "34.90",
+            "51.90"
+          ],
+          "allAvailableForSale": true,
+          "inventoryQuantityAllZero": true,
+          "tracksInventory": false,
+          "inventoryPolicy": "CONTINUE",
+          "stockPromiseAllowed": false,
+          "tagsCount": 12,
+          "descriptionLiveCorrected": true,
+          "descriptionRemoved": [
+            "Lieferung 10–20 Werktage",
+            "sichtbare Schild-/Einkauf-Emojis",
+            "Situation drehen"
+          ],
+          "descriptionConfirmed": [
+            "Projektor drehen, um den Fokus einzustellen",
+            "Galaxie"
+          ],
+          "adminReadback": true,
+          "publicHttpStatus": 200,
+          "canonicalConfirmed": true
+        },
+        "historicalReference": {
+          "variantId": "56197916361089",
+          "sku": "CJ-1477820492730732544",
+          "state": "STALE_BLOCKED_DO_NOT_USE"
+        },
+        "mediaRights": "UNKNOWN",
+        "motifBinding": "UNKNOWN",
+        "renderedMasterMp4": false,
+        "metricoolWrites": 0,
+        "socialWrites": 0,
+        "taskCount": 24,
+        "productDescriptionWrite": {
+          "removed": [
+            "Lieferung 10–20 Werktage",
+            "sichtbare Schild-/Einkauf-Emojis",
+            "Situation drehen"
+          ],
+          "confirmed": [
+            "Projektor drehen, um den Fokus einzustellen",
+            "Galaxie"
+          ],
+          "adminReadback": true,
+          "publicHttpStatus": 200,
+          "canonicalConfirmed": true,
+          "coreFieldsPreserved": true
+        }
+      },
+      "run154": {
+        "report": {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.md",
+          "gitBlobSha": "be0f228113decef7feeddfd01d83256cd420965b",
+          "sha256": "c9847cb6b27f2739d20a8b5780b8ef0aef216e88816c3a1e99ae95d9a7b28921",
+          "readAt": "2026-11-09T08:37:52+01:00"
+        },
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json",
+          "gitBlobSha": "748a0aa34ecab7ab5d3189ca8f9586bfddc692e5",
+          "sha256": "2328ab4633d51fcb760bfba649b1c24bf7edaf46c239b95cccfcebc79ad93900",
+          "readAt": "2026-11-09T08:37:52+01:00"
+        },
+        "metricoolReadback": {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-QUALITAETSSPERRE-20261109-R154.json",
+          "gitBlobSha": "a9fa73c228f0e2bb04f254c8f19ad1224f9763f5",
+          "sha256": "16aefb8d51c335d1413af99afeece42b49862dd21dfd58d82ec07f149b0e05da",
+          "readAt": "2026-11-09T08:37:52+01:00"
+        },
+        "claudeReceipt": "unknown_no_receipt"
+      },
+      "run155": {
+        "report": {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.md",
+          "gitBlobSha": "a74aa6adb8648b09c8c306b96892fa9726ed4875",
+          "sha256": "382f5bc24ee3e702f80efa55afe2443947c0d32c5cc28d5ee499b4d727cb8bf0",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json",
+          "gitBlobSha": "c3f6d3bb461c99373671d9e6b801364b7529a1ec",
+          "sha256": "cd0b2710b316e87252d846ecb811ec2cbea6eacb490890b90d3cce3c1e70953b",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        "master": {
+          "path": "dropship/codex-handoff-20261018/MASTER-AUFNAHME-ABNAHME-20261109-R155.md",
+          "gitBlobSha": "a53b75d6dbe29c54613ef55931924881bc656425",
+          "sha256": "fbee76a822de14263c9345ea4641fb3830c9fa5741f7b94cf5b7aea28668b4b4",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        "metricool": {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLAN-20261109-R155.json",
+          "gitBlobSha": "788f04c2ea6a56e1f94bda7b313ee3ac5ba5cd1c",
+          "sha256": "a4445009da3054071b08750202c4f7b615b2856ac23c9cdd4471d75ade4f1b56",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        "frDiff": {
+          "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R155.json",
+          "gitBlobSha": "b73ba66716b83267ea4e0d74268bc7d5ac540ee0",
+          "sha256": "16978e1343738753a879b80012376073747f35dbdb1d272150488d5d6ebcea01",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        "dns": {
+          "path": "dropship/codex-handoff-20261018/DNS-STATUS-20261109-R155.json",
+          "gitBlobSha": "55fde76d1ae0fac6777fc76d32649591d3be4ddb",
+          "sha256": "3f10e54be62c7999488450e3db6aeeae541df96f4ff7e584b87949163de12b62",
+          "readAt": "2026-11-09T14:21:45+01:00"
+        },
+        "claudeReceipt": "unknown_no_receipt"
+      },
+      "eveningPackageR156": {
+        "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R156.md",
+        "gitBlobSha": "80a3dbeb669dd88a367fd13e785a174204400b59",
+        "readAt": "2026-11-09T19:12:00+01:00",
+        "masterPreflight": {
+          "path": "dropship/codex-handoff-20261018/MASTER-INGEST-PREFLIGHT-20261109-R156.json",
+          "gitBlobSha": "63d7890885dab49d8dbc10a64cd7dce90190fe6c",
+          "sha256": "851bca4d47c0909aaecd3cbc65c5e90993397e8846e2e1915ea9a3ae145541fd",
+          "readAt": "2026-11-09T19:12:00+01:00"
+        },
+        "frDiff": {
+          "path": "dropship/codex-handoff-20261018/FR-VERKAUFSDIFF-20261109-R156.json",
+          "gitBlobSha": "7c69dfa7d87eb8149a9a1669f4476e367ae6c65f",
+          "sha256": "d39cfbed43d91b5cd42b6a2e2dde7fe87c06ea91b93b74ef3c284f63bac85a7e",
+          "readAt": "2026-11-09T19:12:00+01:00"
+        }
+      },
+      "rankingR157": {
+        "report": {
+          "path": "dropship/codex-handoff-20261018/RANKING-UMSETZUNG-20261109-R157.md",
+          "gitBlobSha": "c69e51f6a98de6c03cbb4297e29c15a14b18e2a8",
+          "sha256": "61e65bf76ae868162fbf4de61f93cb12e38b1f94469e8fb9bcca98037dd979f0",
+          "readAt": "2026-11-09T21:30:30+01:00"
+        },
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/RANKING-UMSETZUNG-20261109-R157.json",
+          "gitBlobSha": "255c18be29325b956e822802e631e1b5940850b0",
+          "sha256": "45966fd0efd7f36bf51c94187af50bb40da3534a21dd266394b6ac1363ea7365",
+          "readAt": "2026-11-09T21:30:30+01:00"
+        },
+        "gsc": {
+          "path": "dropship/codex-handoff-20261018/GSC-RANKING-20261109-R157.json",
+          "gitBlobSha": "596f50aa1ed48bee30392886cdfbd01207c68471",
+          "sha256": "b51e86ab66941f01b062f85cab27e768f7de0658755be203d83a6d611eda5890",
+          "readAt": "2026-11-09T21:30:30+01:00"
+        },
+        "publicAfter": {
+          "path": "dropship/codex-handoff-20261018/PUBLIC-SEO-NACHHER-20261109-R157.json",
+          "gitBlobSha": "97cb8e24e664a0228f13e83cb0aab277a2a53cfe",
+          "sha256": "1cb3574a785a1974b8d3538385cf06defb23c8472b24c0a28a1c7df08d6084be",
+          "readAt": "2026-11-09T21:30:30+01:00"
+        },
+        "themeAnalysis": {
+          "path": "dropship/codex-handoff-20261018/THEME-SEO-ANALYSE-20261109-R157.md",
+          "gitBlobSha": "8e0a56ed3858cf862576502fca6fd524e13e26ce",
+          "sha256": "14e73855f9683478707bf6fffe445dad4c146cc0dd1dd37bca6ab9f979355d43",
+          "readAt": "2026-11-09T21:30:30+01:00"
+        },
+        "themePatch": {
+          "path": "dropship/codex-handoff-20261018/THEME-OG-HTTPS-20261109-R157.patch",
+          "gitBlobSha": "7cde4ce53ef1bb66612cd87476085fdf7e743bf7",
+          "sha256": "d06ffd51636c3438948f7ef2fcc8acc07ea329ef69a28854d7fd4c1bacd0abdb",
+          "readAt": "2026-11-09T21:30:30+01:00"
+        },
+        "claudeReceipt": "unknown_no_receipt"
+      },
+      "rankingR158": {
+        "report": {
+          "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.md",
+          "gitBlobSha": "a996130b021ce932fe6e4933f57b0c6cfa5d8a22",
+          "sha256": "e46be6edc2482e75bd57456b72bd25cee67ce5410ed4376ed0a01616d529d1b8",
+          "readAt": "2026-11-09T21:52:00+01:00"
+        },
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/RANKING-FIXES-20261109-R158.json",
+          "gitBlobSha": "4ed2d1bf37705bbc5b4411c2a7750aafa080c178",
+          "sha256": "0a0d77e6c6a2e1585b12d90cd6a61964e534826c13006922349d949ecb8f3f7b",
+          "readAt": "2026-11-09T21:52:00+01:00"
+        },
+        "menuIa": {
+          "path": "dropship/codex-handoff-20261018/MENU-IA-20261109-R158.json",
+          "gitBlobSha": "155beced0f3eaee8a150162d6cc48f44e5b8274d",
+          "sha256": "c03e33701ba4bfe37de5637e224d3182806878d22683d9e572d966878150920e",
+          "readAt": "2026-11-09T21:52:00+01:00"
+        },
+        "claudeSync": {
+          "path": "dropship/codex-handoff-20261018/CLAUDE-SYNC-20261109-R158.md",
+          "gitBlobSha": "7d896209d213047fd2f39bf83de2109961348ad9",
+          "sha256": "b09fd2cb3b98162ccdd03f3c621c97190beea019ef0e50b639fb53d9c86e2e43",
+          "readAt": "2026-11-09T21:52:00+01:00"
+        },
+        "previewThemeId": "213619179911",
+        "previewRole": "UNPUBLISHED",
+        "mainChanged": false,
+        "published": false,
+        "publishState": "blocked_before_execution_no_retry",
+        "claudeReceipt": "unknown_no_claude_receipt"
+      },
+      "themePublishR159": {
+        "report": {
+          "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.md",
+          "gitBlobSha": "ea808965003467a864c5a4943b8bb455c9c1cec4",
+          "sha256": "519aef92a455f59b52bfe2c59cafccf84b334bd1a942ef465b56f1dbdc933c9d",
+          "readAt": "2026-11-09T22:39:00+01:00"
+        },
+        "evidence": {
+          "path": "dropship/codex-handoff-20261018/THEME-PUBLISH-BLOCKER-20261109-R159.json",
+          "gitBlobSha": "153e6d4fc913a7800ad840e5d5ea28cd17ada327",
+          "sha256": "5af7ea6223532dfa7e8d715ee60739beefe86f54fbcca36a68b66f4e191ea820",
+          "readAt": "2026-11-09T22:39:00+01:00"
+        },
+        "targetThemeId": "213619179911",
+        "ownerApproval": "EXPLICIT_CONFIRMED",
+        "published": false,
+        "mainChanged": false,
+        "blocker": "specialized_theme_publish_unavailable_general_mutation_blocked_before_execution",
         "claudeReceipt": "unknown_no_claude_receipt"
       }
     }
@@ -21735,6 +22428,65 @@
     "published": false,
     "mainChanged": false,
     "blocker": "specialized_theme_publish_unavailable_general_mutation_blocked_before_execution",
+    "claudeReceipt": "unknown_no_claude_receipt"
+  },
+  "seoCjGrindR160": {
+    "report": {
+      "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.md",
+      "gitBlobSha": "09e19b3417e41b3abb3fa0a66c3cedbcadbc3d3c",
+      "sha256": "b45d505f6af176d7ffa4b962a42fe0f8b55a631cbc3da0a02b300945b2b8b14b",
+      "readAt": "2026-11-09T23:03:45+01:00"
+    },
+    "evidence": {
+      "path": "dropship/codex-handoff-20261018/SEO-CJ-GRIND-20261109-R160.json",
+      "gitBlobSha": "1bda31d5d3747fd7798f34002b32dcf8cc645af1",
+      "sha256": "d68c7ae180f1fed52ff2785d00957e6d03a5f47ed8fbf7e905d4edbb7ecb2008",
+      "readAt": "2026-11-09T23:03:45+01:00"
+    },
+    "shopIdentity": {
+      "name": "LuxeStyle",
+      "primaryDomain": "luxestyle.ch",
+      "currency": "CHF",
+      "matched": true
+    },
+    "liveSeoProductIds": [
+      "16700386607495",
+      "16700385657223",
+      "16690164892039"
+    ],
+    "cjQueue": {
+      "total": 14,
+      "active": 6,
+      "heldDraft": 8,
+      "bulkActivationAllowed": false
+    },
+    "cjCandidate": {
+      "shopifyProductId": "16690382766471",
+      "shopifyVariantId": "67886034321799",
+      "cjPid": "1387285986509197312",
+      "cjProductSku": "CJCZ1103855",
+      "cjVariantSku": "CJCZ110385501AZ",
+      "cjVid": "1387285987805237248",
+      "status": "DRAFT",
+      "published": false,
+      "readOnlyRunIds": [
+        42706745235,
+        42706830261,
+        42706912994,
+        42707005276
+      ],
+      "guardedStaleHeadRunId": 42706616757,
+      "freightPrice": "unknown",
+      "deliveryTime": "unknown",
+      "commercialMediaRights": "unknown"
+    },
+    "nextCandidate": {
+      "shopifyProductId": "16700385853831",
+      "shopifyVariantId": "68151215325575",
+      "variantSku": "CJJD119966501AZ",
+      "allowedNextStep": "single_read_only_exact_variant_sku_lookup"
+    },
+    "dailyReadsRepeated": false,
     "claudeReceipt": "unknown_no_claude_receipt"
   }
 }

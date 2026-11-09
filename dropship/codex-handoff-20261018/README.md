@@ -1960,3 +1960,15 @@ Genau ein neuer allgemeiner `themePublish`-Aufruf nach der neuen Freigabe wurde 
 [R159 Bericht](THEME-PUBLISH-BLOCKER-20261109-R159.md) · [Maschinenbeleg](THEME-PUBLISH-BLOCKER-20261109-R159.json). Nächster exakter Schritt: im Shopify-Admin das Theme `LuxeStyle – R158 SEO Preview 09.11.2026` veröffentlichen oder später das spezialisierte Werkzeug verwenden; danach Rollen, MD5 und DE/FR live gezielt zurücklesen. Keine neue Automation/Frequenz; Claude-Empfang unbekannt.
 
 [LUXESTYLE_R159_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 160: drei Produkt-SEO-Korrekturen live, CJ-Kandidat weiter gesperrt
+
+LuxeStyle/luxestyle.ch/CHF wurde frisch bestätigt. Bei drei ACTIVE-Produkten wurden ausschliesslich deutsche Titel und SEO-Metadaten korrigiert; der alte unbelegte «–10 % mit Code WELCOME10»-Claim wurde entfernt. Die öffentlichen Seiten antworten mit HTTP 200 und zeigen die neuen H1-, Title- und Meta-Werte; Canonicals, Handles, Preise, Varianten, Tags, Inventory-Verhalten, Medien und sechs Publikationen je Produkt blieben unverändert. Betroffen: `16700386607495`, `16700385657223`, `16690164892039`.
+
+Die CJ-Queue ist jetzt live zugeordnet: sechs von vierzehn Produkten sind ACTIVE und erreichbar; acht bleiben DRAFT ohne Publikation und tragen `grind-gehalten-0911`. Kandidat `16690382766471` wurde read-only exakt an PID `1387285986509197312`, Produkt-SKU `CJCZ1103855`, Varianten-SKU `CJCZ110385501AZ` und VID `1387285987805237248` gebunden. Nach einem korrekt gestoppten Stale-Head-Lauf bestätigten vier schreibfreie Läufe Produkt, Variante, Inventory und CN–CH-Route. Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit und kommerzielle Bildrechte bleiben unbekannt.
+
+Der gesperrte DRAFT erhielt deshalb nur claim-sichere deutsche Texte und vier bildgenaue Alttexte. Er bleibt DRAFT, unpubliziert, CHF 17.90, gleiche Variante/SKU/Tags/Inventory. Keine Aktivierung. Nächster enger Schritt ist ein einzelner Read-only-Lookup für DRAFT `16700385853831` über Varianten-SKU `CJJD119966501AZ`; erst danach PID/VID, Fracht, Rechte und alle übrigen Gates prüfen.
+
+[R160 Bericht](SEO-CJ-GRIND-20261109-R160.md) · [Maschinenbeleg](SEO-CJ-GRIND-20261109-R160.json). Keine Tageskennzahl-, GSC-, Klaviyo-, DNS-, Kauf-Watch- oder Merchant-Vollabfrage wiederholt. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Theme-, Bestell-, Fulfillment- oder kostenpflichtige Renderänderung. Bestehende 08:00/14:00/19:00-Frequenz unverändert; Claude-Empfang unbekannt.
+
+[LUXESTYLE_R160_20261109]

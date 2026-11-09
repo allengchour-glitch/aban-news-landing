@@ -279,3 +279,17 @@ Belege: `RANKING-FIXES-20261109-R158.md/.json`, `MENU-IA-20261109-R158.json`, `C
 5. 08:00/14:00/19:00 Europe/Zurich unverändert; keine neue Automation. Claude-Kenntnisnahme weiter unbekannt.
 
 Belege: `THEME-PUBLISH-BLOCKER-20261109-R159.md/.json`.
+
+## R160 – Deutsche Produkt-SEO und kontrollierter CJ-Grind
+
+[LUXESTYLE_R160_20261109]
+
+1. Shopify-Identität frisch passend: LuxeStyle, `luxestyle.ch`, CHF.
+2. LIVE und öffentlich zurückgelesen: `16700386607495` → «Laptop-Hülle für 12 bis 14 Zoll», `16700385657223` → «Lockige Damenperücke mit Pony», `16690164892039` → «Full-HD-Webcam für Videokonferenzen». Nur Titel/SEO-Metadaten geändert; unbelegten WELCOME10-Claim entfernt. Handles, Status, Tags, Preise, Varianten, Inventory, Medien und Publikationen erhalten.
+3. CJ-Queue live: sechs von vierzehn ACTIVE/erreichbar, acht DRAFT/unpubliziert mit `grind-gehalten-0911`. Keine Massenaktivierung.
+4. DRAFT `16690382766471` exakt gebunden: Variante `67886034321799`, PID `1387285986509197312`, Produkt-SKU `CJCZ1103855`, Varianten-SKU `CJCZ110385501AZ`, VID `1387285987805237248`. Stale-Head-Run `42706616757` stoppte vor CJ; schreibfreie Runs `42706745235`, `42706830261`, `42706912994`, `42707005276` erfolgreich.
+5. 17 CN–CH-Methodennamen und CN-Fabrikbestand belegt. Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit, Prime und kommerzielle Bildrechte unbekannt. Deshalb nur DRAFT-Titel, deutsche Beschreibung, SEO und vier Alttexte bereinigt; weiterhin DRAFT, keine Publikation/Storefront, CHF 17.90 und Variante/SKU/Tags/Inventory unverändert.
+6. Nächster Schritt: genau ein Read-only-Produktlookup für DRAFT `16700385853831` über `CJJD119966501AZ`; erst danach PID/VID, Fracht und Rechte prüfen. Keine Texte mit unbelegten HD-/Smart-Claims und keine Aktivierung.
+7. R154 Metricool/Klaviyo, R155 DNS und R157 GSC heute nicht wiederholen; Kauf-Watch beendet. Keine neue Automation/Frequenz. Claude-Kenntnisnahme bleibt unbekannt.
+
+Belege: `SEO-CJ-GRIND-20261109-R160.md/.json`.
