@@ -1772,3 +1772,18 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Tages- und Write-Scope erhalten | Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Theme-, Bestell-, Fulfillment- oder kostenpflichtige Renderänderung |
 
 [LUXESTYLE_R160_20261109] [Bericht](SEO-CJ-GRIND-20261109-R160.md) · [Beleg](SEO-CJ-GRIND-20261109-R160.json). Drei SEO-Korrekturen live; CJ-Kandidat bleibt gesperrter Entwurf.
+
+### R161
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | R160-Übergabe und nächsten erlaubten CJ-Schritt übernommen | Keine breite Tagesabfrage wiederholt; 08/14/19 unverändert |
+| Shopify | Kandidat2 frisch gelesen | LuxeStyle/luxestyle.ch/CHF; Produkt16700385853831 DRAFT, Variante68151215325575, SKUCJJD119966501AZ, CHF19.90, keine Storefront |
+| CJ Produkt | Exakten Read-only-Lookup per Varianten-SKU ausgeführt | Run42708633790: PID1411132898387562496, Produkt-SKUCJJD1199665, Variantensatz vollständig |
+| CJ Inventory | Exakten Read-only-Lookup per PID ausgeführt | Run42708855214: VID1411148110746488832; nur CN Gesamt/Fabrik30'087, CJ0; CH-Lieferbarkeit unknown; keine Suche/Route/Retry/Import |
+| Bild-/Claim-Prüfung | Fünf aktuelle Bilder visuell gegen Titel und Text geprüft | Kamera/Halterung/Kabel/Befestigung belegt; HD/Smart nicht belegt |
+| DRAFT-SEO | Titel, Beschreibung, SEO und fünf Alttexte claim-sicher auf Deutsch bereinigt | DRAFT und null Publikationen erhalten; Handle/Tags/CHF19.90/Variante/SKU/Inventory unverändert; keine Aktivierung |
+| Blocker | Fracht-, Liefer- und Rechtegates getrennt gehalten | Frachtpreis, Lieferzeit, CH-Lieferbarkeit und kommerzielle Bildrechte unknown |
+| Claude Code | R161 additiv in kanonische Übergabe aufgenommen | Claude-Empfang unbekannt |
+
+[LUXESTYLE_R161_20261109] [Bericht](CJ-WEBCAM-PRUEFUNG-20261109-R161.md) · [Beleg](CJ-WEBCAM-PRUEFUNG-20261109-R161.json). Kandidat2 exakt gebunden und als DRAFT bereinigt, nicht aktiviert.

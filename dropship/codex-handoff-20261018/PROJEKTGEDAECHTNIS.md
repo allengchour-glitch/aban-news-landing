@@ -1382,3 +1382,15 @@ Da weder Bilder noch Produktdaten 4K/HD stützen, wurde nur der DRAFT claim-sich
 Belege: `SEO-CJ-GRIND-20261109-R160.md/.json`. Tagesgrenzen und bestehende 08:00/14:00/19:00-Europe/Zurich-Frequenz unverändert. Claude-Receipt bleibt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R160_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 161: CJ-Kandidat 2 gebunden, deutscher Entwurf bereinigt
+
+Shopify bestätigte frisch LuxeStyle/luxestyle.ch/CHF und DRAFT `16700385853831`, Variante `68151215325575`, SKU `CJJD119966501AZ`, CHF19.90, ohne Storefront oder aktive Publikation. Am fixierten Head `7827e64794f6a918b0c7a828e836138146494748` band Run `42708633790` die SKU an PID `1411132898387562496` und Produkt-SKU `CJJD1199665`; Run `42708855214` band die Variante an VID `1411148110746488832`. Beide Läufe waren hashgeprüft und read-only, ohne Suche, Pagination, Route, Retry, Import oder Shopify-Write.
+
+Der Inventory-Read zeigte nur CN: Gesamt-/Fabrikbestand30'087, CJ-Bestand0, Warehouse-Code2, nicht partiell, nicht aggregiert. Schweizer Lieferbarkeit bleibt unbekannt; daraus folgt keine Bestands- oder Lieferzusage.
+
+Alle fünf Bilder wurden visuell geprüft. HD und «Smart» sind nicht belegt. Ausschliesslich der DRAFT erhielt den deutschen Titel «USB-Webcam für Notebook und Bildschirm», claim-sichere Beschreibung/SEO und fünf bildgenaue Alttexte. Frischer Readback: DRAFT, keine aktive Publikation, keine Storefront-URL, `grind-gehalten-0911`, Handle, CHF19.90, Variante/SKU und Inventory unverändert. Keine Aktivierung.
+
+Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit und produktspezifische kommerzielle Bildrechte bleiben Blocker. Vor Aktivierung Preis/Marge, Rechte, Tags und Kaufbarkeit erneut produktgenau prüfen. Belege: `CJ-WEBCAM-PRUEFUNG-20261109-R161.md/.json`. Claude-Receipt bleibt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R161_20261109]

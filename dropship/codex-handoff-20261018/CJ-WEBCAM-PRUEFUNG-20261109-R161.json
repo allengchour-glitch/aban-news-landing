@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "revision": 161,
+  "capturedAt": "2026-11-09T23:09:44+01:00",
+  "timezone": "Europe/Zurich",
+  "shop": {
+    "name": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "identityMatched": true
+  },
+  "shopifyProduct": {
+    "productId": "16700385853831",
+    "gid": "gid://shopify/Product/16700385853831",
+    "variantId": "68151215325575",
+    "variantGid": "gid://shopify/ProductVariant/68151215325575",
+    "handlePreserved": "webcam-hd-fur-notebook-usb-2-0-mini-smart-562496",
+    "beforeTitle": "Webcam HD für Notebook USB 2.0 Mini Smart",
+    "afterTitle": "USB-Webcam für Notebook und Bildschirm",
+    "seoTitle": "USB-Webcam für Notebook und Bildschirm | LuxeStyle",
+    "seoDescription": "Kompakte schwarze USB-Webcam mit Halterung und USB-2.0-Anschluss. Produktbilder und technische Angaben bei LuxeStyle ansehen.",
+    "status": "DRAFT",
+    "onlineStoreUrl": null,
+    "activePublicationCount": 0,
+    "tagsPreserved": true,
+    "draftHoldTagPreserved": "grind-gehalten-0911",
+    "priceCHF": "19.90",
+    "variantSku": "CJJD119966501AZ",
+    "availableForSale": true,
+    "tracksInventory": false,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "mediaCount": 5,
+    "mediaReady": 5,
+    "altTextsUpdated": 5,
+    "adminReadback": true
+  },
+  "cjIdentity": {
+    "workflowHead": "7827e64794f6a918b0c7a828e836138146494748",
+    "pid": "1411132898387562496",
+    "productSku": "CJJD1199665",
+    "variantSku": "CJJD119966501AZ",
+    "vid": "1411148110746488832",
+    "variantSetComplete": true,
+    "identityVerified": true,
+    "productRun": {
+      "id": 42708633790,
+      "jobId": 129472005558,
+      "conclusion": "success",
+      "authenticationRequests": 1,
+      "productRequests": 1
+    },
+    "inventoryRun": {
+      "id": 42708855214,
+      "jobId": 129472762331,
+      "conclusion": "success",
+      "authenticationRequests": 1,
+      "productRequests": 1,
+      "inventoryRequests": 1
+    },
+    "inventory": {
+      "country": "CN",
+      "totalInventory": 30087,
+      "factoryInventory": 30087,
+      "cjInventory": 0,
+      "verifiedWarehouse": 2,
+      "inventoryPartial": false,
+      "countryAggregation": false,
+      "deliveryToSwitzerland": "unknown"
+    },
+    "searches": 0,
+    "pagination": 0,
+    "routeRequests": 0,
+    "retries": 0,
+    "imports": 0,
+    "shopifyWrites": 0
+  },
+  "removedUnsupportedClaims": [
+    "HD",
+    "Smart",
+    "Jetzt –10% mit Code WELCOME10."
+  ],
+  "blockers": [
+    "current_freight_price_unknown",
+    "delivery_time_unknown",
+    "delivery_to_switzerland_unknown",
+    "commercial_media_rights_unknown",
+    "no_activation_until_all_gates_pass"
+  ],
+  "writes": {
+    "draftProductCopy": 1,
+    "draftAltTexts": 5,
+    "productActivations": 0,
+    "publications": 0,
+    "priceChanges": 0,
+    "variantChanges": 0,
+    "inventoryChanges": 0,
+    "tagChanges": 0,
+    "customers": 0,
+    "discounts": 0,
+    "budgets": 0,
+    "flows": 0,
+    "dns": 0,
+    "merchant": 0,
+    "social": 0,
+    "themes": 0,
+    "orders": 0,
+    "fulfillments": 0,
+    "paidRenders": 0
+  }
+}

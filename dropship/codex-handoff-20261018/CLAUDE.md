@@ -293,3 +293,17 @@ Belege: `THEME-PUBLISH-BLOCKER-20261109-R159.md/.json`.
 7. R154 Metricool/Klaviyo, R155 DNS und R157 GSC heute nicht wiederholen; Kauf-Watch beendet. Keine neue Automation/Frequenz. Claude-Kenntnisnahme bleibt unbekannt.
 
 Belege: `SEO-CJ-GRIND-20261109-R160.md/.json`.
+
+## R161 – Zweite CJ-Webcam exakt gebunden und als DRAFT bereinigt
+
+[LUXESTYLE_R161_20261109]
+
+1. Shopify frisch: LuxeStyle/luxestyle.ch/CHF; Produkt `16700385853831`, Variante `68151215325575`, SKU `CJJD119966501AZ`, CHF19.90, DRAFT, keine aktive Publikation/Storefront.
+2. Hashgebundener Produkt-Run `42708633790` am Head `7827e64794f6a918b0c7a828e836138146494748`: PID `1411132898387562496`, Produkt-SKU `CJJD1199665`, Variantensatz vollständig.
+3. Hashgebundener Inventory-Run `42708855214`: SKU an VID `1411148110746488832` gebunden; nur CN Gesamt/Fabrik30'087, CJ0, Warehouse-Code2; Schweizer Lieferbarkeit unknown. Keine Suche/Route/Retry/Import/Shopify-Writes durch CJ.
+4. Fünf Bilder visuell geprüft. Sie belegen Kamera/Halterung/Kabel/Notebook-/Bildschirmbefestigung, nicht HD oder Smart.
+5. Nur DRAFT-Titel, Beschreibung, SEO und fünf Alttexte deutsch/claim-sicher geändert. Readback: DRAFT, null aktive Publikationen, keine Storefront, Handle/Tags/Preis/Variante/SKU/Inventory erhalten. Keine Aktivierung.
+6. Vor Aktivierung aktuelle Fracht, Lieferzeit, CH-Lieferbarkeit, kommerzielle Bildrechte, Preis/Marge, Tags und Kaufbarkeit belegen. CN-Fabrikbestand nie als CH-Bestand ausgeben.
+7. Tagesabfragen nicht wiederholen; 08/14/19 unverändert. Claude-Kenntnisnahme unbekannt.
+
+Belege: `CJ-WEBCAM-PRUEFUNG-20261109-R161.md/.json`.

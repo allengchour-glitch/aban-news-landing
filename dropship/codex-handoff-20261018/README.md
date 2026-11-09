@@ -1972,3 +1972,13 @@ Der gesperrte DRAFT erhielt deshalb nur claim-sichere deutsche Texte und vier bi
 [R160 Bericht](SEO-CJ-GRIND-20261109-R160.md) · [Maschinenbeleg](SEO-CJ-GRIND-20261109-R160.json). Keine Tageskennzahl-, GSC-, Klaviyo-, DNS-, Kauf-Watch- oder Merchant-Vollabfrage wiederholt. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Theme-, Bestell-, Fulfillment- oder kostenpflichtige Renderänderung. Bestehende 08:00/14:00/19:00-Frequenz unverändert; Claude-Empfang unbekannt.
 
 [LUXESTYLE_R160_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 161: zweite CJ-Webcam exakt gebunden und als DRAFT bereinigt
+
+DRAFT `16700385853831` wurde über Varianten-SKU `CJJD119966501AZ` read-only an PID `1411132898387562496`, Produkt-SKU `CJJD1199665` und VID `1411148110746488832` gebunden. Die zwei hashgebundenen Läufe `42708633790` und `42708855214` waren erfolgreich und schreibfrei. Der Inventory-Read lieferte nur CN-Werte: Gesamt-/Fabrikbestand 30'087, CJ-Bestand 0; Schweizer Lieferbarkeit bleibt unbekannt.
+
+Die fünf Bilder stützen Kamera, Halterung, Anschlusskabel und die Befestigung an Notebook/Bildschirm, aber weder HD noch «Smart». Deshalb wurden ausschliesslich DRAFT-Titel, Beschreibung, SEO und fünf Alttexte claim-sicher auf Deutsch bereinigt. Rücklesung: DRAFT, null aktive Publikationen, keine Storefront-URL, Handle/Tags/CHF19.90/Variante/SKU/Inventory unverändert. Keine Aktivierung.
+
+[R161 Bericht](CJ-WEBCAM-PRUEFUNG-20261109-R161.md) · [Maschinenbeleg](CJ-WEBCAM-PRUEFUNG-20261109-R161.json). Frachtpreis, Lieferzeit, Schweizer Lieferbarkeit und kommerzielle Bildrechte bleiben Blocker. Bestehende 08:00/14:00/19:00-Frequenz unverändert; Claude-Empfang unbekannt.
+
+[LUXESTYLE_R161_20261109]
