@@ -242,6 +242,12 @@ const MUTANTEN = [
   ['B85 Genauigkeit: Motiv der Bühne 2,7 mm (0,33 % der Bildbreite) zu weit rechts', "k.root.style.transform = 'translate(' + (e.cx * a.w) + 'px,'", "k.root.style.transform = 'translate(' + (e.cx * a.w + a.w * 0.009) + 'px,'"],
   ['B86 Genauigkeit: Druckfläche der Bühne 2 % zu breit', "var box = 'left:' + PCT(fl) + ';top:' + PCT(fo) + ';width:' + PCT(fb) + ';height:' + PCT(fh);", "var box = 'left:' + PCT(fl) + ';top:' + PCT(fo) + ';width:' + PCT(fb * 1.02) + ';height:' + PCT(fh);"],
   ['B87 Genauigkeit: Produktfoto der Bühne um 0,3 % der Bühnenbreite verschoben', "var lage = 'left:' + PCT((0 - w.x) / w.w) + ';top:'", "var lage = 'left:' + PCT((0 - w.x) / w.w + 0.003) + ';top:'"],
+  // ── Schlussprüfung vom 09.11.2026: Tastatur auf den neuen Knöpfen, Tab-Stopp der Reiter, CSS-Härtung (Szenarien tastatur-ansicht und karten-css-haertung) ──
+  ['B88 Reiter: Pfeiltasten, Pos1, Ende ohne preventDefault (die Seite scrollt bei «Ende» um rund 745 px)', "ev.preventDefault(); ev.stopPropagation();\n      knoepfe.forEach(function (b)", "ev.stopPropagation();\n      knoepfe.forEach(function (b)"],
+  ['B89 Tastatur der Karte: Pfeile, Entf und Rück auf Reiter und Zoom-Knöpfen wirken wieder auf die gewählte Ebene', "if (tag === 'BUTTON' && ev.target.closest && ev.target.closest('.lsp6-sicht, .lsp6-zoom')) return;", ""],
+  ['B90 Reiter: nach Pfeiltasten bleiben mehrere Reiter Tab-Stopp (Roving-Tabindex verletzt)', "b.setAttribute('tabindex', b === ziel ? '0' : '-1')", "b.setAttribute('tabindex', b === ziel ? '0' : b.getAttribute('tabindex'))"],
+  ['B91 Grundfläche: Farbwert aus den Kartendaten als cssText (fremdes CSS wirkt, z. B. position:fixed)', "ui.grund.style.cssText = lage;\n        ui.grund.style.background = textur ? '#ffffff' : ersatz;", "ui.grund.style.cssText = lage + ';background:' + (textur ? '#ffffff' : ersatz);"],
+  // B88b wäre «ohne stopPropagation»: GLEICHWERTIG, seit die Karte Knöpfe der Leiste und des Zooms selbst ausnimmt (zwei unabhängige Sicherungen); steht darum nicht in der Liste.
 ];
 
 // Mutanten des Kartenbauers (nur unit_test.mjs, V6_KARTENBAUER zeigt auf die Kopie)

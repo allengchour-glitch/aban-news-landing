@@ -1270,7 +1270,8 @@
         var textur = !eigeneFarbe && vl.hintergrundUrl && bildAdresse(vorschauModell(), vl.hintergrundUrl) !== null ? vl.hintergrundUrl : null;
         var ersatz = eigeneFarbe || vl.hintergrundFarbe || '#ffffff';
         ui.stage.style.background = '#ffffff';
-        ui.grund.style.cssText = lage + ';background:' + (textur ? '#ffffff' : ersatz);
+        ui.grund.style.cssText = lage;
+        ui.grund.style.background = textur ? '#ffffff' : ersatz;   // als Eigenschaft: ein ungültiger Wert aus den Kartendaten wird verworfen, kein fremdes CSS
         ui.grund.setAttribute('data-ersatz', ersatz);
         ui.grund.hidden = false;
         bildSetzen(ui.bg, textur);
@@ -3022,7 +3023,9 @@
       else if (ev.key === 'Home') ziel = knoepfe[0];
       else if (ev.key === 'End') ziel = knoepfe[knoepfe.length - 1];
       if (!ziel) return;
-      ev.preventDefault(); ziel.setAttribute('tabindex', '0'); ziel.focus();
+      ev.preventDefault(); ev.stopPropagation();
+      knoepfe.forEach(function (b) { b.setAttribute('tabindex', b === ziel ? '0' : '-1'); });   // genau ein Reiter ist Tab-Station
+      ziel.focus();
     });
     ui.zoomMinus.addEventListener('click', function () { zoomSetzen(ZOOM_STUFEN.indexOf(st.zoom) - 1); });
     ui.zoomPlus.addEventListener('click', function () { zoomSetzen(ZOOM_STUFEN.indexOf(st.zoom) + 1); });
@@ -3553,6 +3556,7 @@
       var strg = ev.ctrlKey || ev.metaKey;
       if (strg && taste === 'z' && !ev.shiftKey) { ev.preventDefault(); zurueck(); return; }
       if (strg && (taste === 'y' || (taste === 'z' && ev.shiftKey))) { ev.preventDefault(); wiederholen(); return; }
+      if (tag === 'BUTTON' && ev.target.closest && ev.target.closest('.lsp6-sicht, .lsp6-zoom')) return;   // Pfeile, Entf, Rück auf den Ansicht- und Zoom-Knöpfen gehören dem Knopf, nicht der gewählten Ebene
       var e = gewaehlt();
       if (!e) return;
       if (ev.key === 'Delete' || ev.key === 'Backspace') { ev.preventDefault(); ebeneEntfernen(e.id); return; }

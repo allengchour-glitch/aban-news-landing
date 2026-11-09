@@ -219,6 +219,88 @@ szenario('reiter-a11y', true, async (b, srv) => {
   await f.schliessen();
 });
 
+szenario('tastatur-ansicht', true, async (b, srv) => {
+  // Schlussprüfung 09.11.: Pfeiltasten, Entf und Rück auf den neuen Knöpfen (Reiter, Zoom) dürfen die gewählte Ebene weder verschieben noch löschen; die Reiter-Tastenfolge lässt genau einen Tab-Stopp
+  const s = await oeffnen(b, srv, T71);
+  const p = s.page;
+  await sichtWarten(p);
+  await textHinzufuegen(p, 'Hallo');
+  const zustand = () => p.evaluate(() => { const ed = window.LSPOD6.editors[0]; const l = ed.st.ebenen[ed.st.aktiv]; return { n: l.length, cx: l[0] && l[0].cx, cy: l[0] && l[0].cy, sel: ed.st.sel }; });
+  const vor = await zustand();
+  pruefe('Ausgangslage: eine Textebene ist gewählt', vor.n === 1 && vor.sel != null, JSON.stringify(vor));
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').focus();
+  for (const taste of ['ArrowRight', 'ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp']) await p.keyboard.press(taste);
+  const nachPfeilen = await zustand();
+  pruefe('Pfeiltasten auf den Reitern bewegen den Fokus, nicht die gewählte Ebene', nachPfeilen.cx === vor.cx && nachPfeilen.cy === vor.cy && nachPfeilen.n === 1, JSON.stringify(nachPfeilen));
+  const ti = await p.evaluate(() => [...document.querySelectorAll('.lsp6-sbtn')].map((x) => x.getAttribute('tabindex')));
+  pruefe('nach Pfeiltasten ist genau ein Reiter Tab-Stopp (Roving-Tabindex)', ti.filter((x) => x === '0').length === 1 && ti.filter((x) => x === '-1').length === ti.length - 1, ti.join(','));
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').focus();
+  await p.keyboard.press('Delete'); await p.keyboard.press('Backspace');
+  pruefe('Entf und Rück auf einem Reiter löschen die gewählte Ebene nicht', (await zustand()).n === 1);
+  const zoomKnopf = p.locator('.lsp6-zoom button[data-zoom="plus"]');
+  await zoomKnopf.focus();
+  for (const taste of ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight']) await p.keyboard.press(taste);
+  const nachZoom = await zustand();
+  pruefe('Entf, Rück und Pfeile auf einem Zoom-Knopf lassen die gewählte Ebene unverändert', nachZoom.n === 1 && nachZoom.cx === vor.cx && nachZoom.cy === vor.cy, JSON.stringify(nachZoom));
+  // Strg+Z bleibt auch mit Fokus auf den neuen Knöpfen erreichbar (Rückgängig)
+  const ebenenJson = () => p.evaluate(() => { const ed = window.LSPOD6.editors[0]; return JSON.stringify(ed.st.ebenen[ed.st.aktiv].map((e) => [e.id, e.text, e.cx, e.cy])); });
+  const vorUndo = await ebenenJson();
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').focus();
+  await p.keyboard.press('Control+z');
+  const nachUndo = await ebenenJson();
+  pruefe('Strg+Z mit Fokus auf einem Reiter macht den letzten Schritt rückgängig (die Ebenen ändern sich)', nachUndo !== vorUndo);
+  await p.keyboard.press('Control+y');
+  pruefe('Strg+Y mit Fokus auf einem Reiter stellt den Schritt wieder her (gleiche Ebenen wie vorher)', (await ebenenJson()) === vorUndo);
+  // Gegenprobe: dieselben Tasten auf der Bühne wirken weiter wie in 6.3.1 (Pfeil verschiebt, Entf löscht)
+  await p.locator('.lsp6-karte, .lsp6').first().evaluate((x) => x.focus && x.focus());
+  await p.evaluate(() => { const bt = document.activeElement; if (bt && bt.blur) bt.blur(); });
+  await p.locator('.lsp6-stage').click({ position: { x: 5, y: 5 }, force: true });
+  await p.locator('[data-lid]').first().click({ force: true });
+  const vorBuehne = await zustand();
+  await p.keyboard.press('ArrowRight');
+  pruefe('Pfeil nach rechts bei Fokus auf der Bühne verschiebt die gewählte Ebene weiter (wie 6.3.1)', (await zustand()).cx > vorBuehne.cx, JSON.stringify(await zustand()));
+  await p.keyboard.press('Delete');
+  pruefe('Entf bei Fokus auf der Bühne löscht die gewählte Ebene weiter (wie 6.3.1)', (await zustand()).n === 0);
+  // Pos1/Ende auf den Reitern scrollen die Seite nicht (preventDefault)
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').focus();
+  await p.evaluate(() => window.scrollTo(0, 0));
+  const y0 = await p.evaluate(() => window.scrollY);
+  await p.keyboard.press('End');
+  await p.waitForTimeout(300);
+  // ohne preventDefault scrollte «Ende» die Seite um rund 745 px (gemessen am Mutanten); das Nachziehen des Fokus selbst verschiebt höchstens wenige Pixel
+  pruefe('Ende auf einem Reiter scrollt die Seite nicht (höchstens das Nachziehen des Fokus, unter 100 px)', Math.abs((await p.evaluate(() => window.scrollY)) - y0) < 100, String(await p.evaluate(() => window.scrollY)));
+  await p.keyboard.press('Home');
+  await p.waitForTimeout(300);
+  pruefe('Pos1 auf einem Reiter scrollt die Seite nicht (unter 100 px)', Math.abs((await p.evaluate(() => window.scrollY)) - y0) < 100);
+  pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
+  await s.schliessen();
+});
+
+szenario('karten-css-haertung', true, async (b, srv) => {
+  // Schlussprüfung 09.11.: ein Farbwert aus den Kartendaten darf kein fremdes CSS einschleusen (position:fixed über die ganze Seite)
+  const HOSTIL = 'red;position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:2147483647';
+  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+  const page = await ctx.newPage();
+  const bildRoute = (r) => r.fulfill({ status: 200, contentType: 'image/png', body: geisterPng(), headers: { 'access-control-allow-origin': '*' } });
+  await page.route('https://files.cdn.printful.com/**', bildRoute);
+  await page.route('https://cdn.shopify.com/**', bildRoute);
+  await page.route('**/karten/71.json*', async (r) => {
+    const res = await r.fetch(); const k = await res.json();
+    const tausche = (o) => { if (o && typeof o === 'object') for (const key of Object.keys(o)) { if (key === 'hintergrundFarbe') o[key] = HOSTIL; else if (key === 'hintergrundUrl') o[key] = null; else tausche(o[key]); } };
+    tausche(k); delete k.farben;
+    r.fulfill({ response: res, body: JSON.stringify(k) });
+  });
+  const fehler = []; page.on('pageerror', (e) => fehler.push(e.message));
+  await page.goto(`${srv.url}/mock.html?${T71}`, { waitUntil: 'domcontentloaded' });
+  await editorBereit(page);
+  await page.waitForTimeout(800);
+  const r = await page.evaluate(() => { const g = document.querySelector('.lsp6-grund'); return { pos: g && getComputedStyle(g).position, w: g && g.getBoundingClientRect().width, hidden: g && g.hidden, fenster: innerWidth, hoehe: g && g.getBoundingClientRect().height }; });
+  pruefe('Farbwert mit eingeschleustem CSS: die Grundfläche bleibt absolut in der Bühne (nicht fixed)', r.pos !== 'fixed', JSON.stringify(r));
+  pruefe('Farbwert mit eingeschleustem CSS: die Grundfläche ist nicht fensterbreit', r.hidden || r.w < r.fenster - 50, JSON.stringify(r));
+  pruefe('keine Seitenfehler', fehler.length === 0, fehler.join(' | '));
+  await ctx.close();
+});
+
 // ── 2. Fenster und Zoom ─────────────────────────────────────────────────────────────────────────
 szenario('fenster-zoom', true, async (b, srv) => {
   for (const [bez, opt] of [['Rechner', PC], ['Handy 390', MOBIL]]) {
