@@ -160,8 +160,10 @@ export function rolloutKonfig({ mode, scope, ack, live, editorVersion } = {}) {
 }
 
 /** Welche Plan-Produkte ein Apply/Rollback anfasst. Canary: genau das eine feste Produkt.
- * Full (6.4.0): die Sperrprodukte zuerst, damit eine zwischenzeitlich veränderte Sperre den Lauf stoppt,
- * BEVOR ein Editorprodukt geschrieben wurde (sie werden nie geschrieben, nur gegen den Plan geprüft). */
+ * Full-APPLY (6.4.0): die Sperrprodukte zuerst, damit eine zwischenzeitlich veränderte Sperre den Lauf stoppt,
+ * BEVOR ein Editorprodukt geschrieben wurde (sie werden nie geschrieben, nur gegen den Plan geprüft).
+ * Full-ROLLBACK: Planreihenfolge ohne Vorrang. Die Sperren stehen im Apply-Ledger als «unchanged» und werden im Rollback
+ * gar nicht angefasst; eine seit dem Apply veränderte Sperrseite darf den Rückweg der Editorprodukte nie aufhalten. */
 export function auswahlPlanen(alle, konf) {
   if (!Array.isArray(alle)) throw new Error('Plan ohne Produktliste');
   if (konf.canary) {
@@ -169,8 +171,40 @@ export function auswahlPlanen(alle, konf) {
     if (p.length !== 1) throw new Error(`Canary nicht genau einmal im Plan: ${konf.canary.handle}`);
     return p;
   }
-  if (konf.editorVersion === ROLLOUT_V63) return alle;
+  if (konf.editorVersion === ROLLOUT_V63 || konf.mode === 'rollback') return alle;
   return [...alle.filter((x) => x.kind === 'blocked'), ...alle.filter((x) => x.kind !== 'blocked')];
+}
+
+// ---- Apply-Ledger lesen: was ein Rollback zurückstellen darf ----------------------------------------------------
+/** Zustände, die ein Apply-Ledger tragen darf. «writing» ist die Absichtszeile VOR dem Write: bricht der Lauf danach ab
+ *  (Cancel im Actions-UI, Kill), steht sie als letzter Zustand da und der Rückweg bleibt möglich. */
+export const APPLY_LEDGER_ZUSTAENDE = Object.freeze(['applied', 'writing', 'unchanged', 'rejected', 'unknown', 'unknown-write-response', 'unknown-readback', 'unknown-readback-unavailable']);
+/** Zustände, bei denen der Apply-Lauf möglicherweise geschrieben hat: nur dort gibt es etwas zurückzustellen.
+ *  «unchanged» (Ziel war schon da, nichts geschrieben) und «rejected» (Shopify hat abgelehnt) sind Zeilen ohne Write. */
+export const ROLLBACK_SCHREIBBAR = Object.freeze(['applied', 'writing', 'unknown', 'unknown-write-response', 'unknown-readback', 'unknown-readback-unavailable']);
+
+/** Gibt die IDs zurück, die ein Rollback anfassen darf (Apply hat dort geschrieben oder die Antwort blieb unklar).
+ *  Gibt es keine einzige, hat dieser Apply-Lauf nichts verändert: der Rollback bricht mit einer klaren Meldung ab, statt
+ *  «grün» zu melden, während der Editor live bleibt (typisch: das Artefakt eines wiederholten, wirkungslosen Apply). */
+export function rollbackLedgerAuswerten(ledgerProdukte) {
+  if (!Array.isArray(ledgerProdukte)) throw new Error('Apply-Ledger ohne Produktliste');
+  const schreibbar = ledgerProdukte.filter((x) => ROLLBACK_SCHREIBBAR.includes(x?.state));
+  if (!schreibbar.length) {
+    const zaehler = {};
+    for (const x of ledgerProdukte) zaehler[x?.state || '?'] = (zaehler[x?.state || '?'] || 0) + 1;
+    throw new Error(`Rollback: Das Apply-Ledger enthält keinen Eintrag, bei dem der Lauf geschrieben hat (${Object.entries(zaehler).map(([k, v]) => `${k} ${v}`).join(', ') || 'leer'}): nichts zurückzunehmen. Den Rückweg mit dem Artefakt des Apply-Laufs fahren, dessen Ledger «applied» zeigt`);
+  }
+  return new Set(schreibbar.map((x) => x.id));
+}
+
+/** Identitätsprüfung für den Rollback: Produkt-ID und Handle gehören zur festen Allowlist/Sperrliste und zur Planzeile.
+ *  Bewusst KEIN Status-, Kaufbarkeits-, Varianten- oder Storefront-Gate: ein auf ENTWURF gestelltes oder verändertes
+ *  Produkt muss sich trotzdem auf die bekannte Vorher-Beschreibung zurückstellen lassen (der Hash-Schutz im Skript
+ *  entscheidet, ob die Live-Beschreibung exakt dem Plan-Nachher entspricht). */
+export function produktIdentitaetPruefen(product, id, handle) {
+  const bekannt = [...ALLOWLIST, ...BLOCKLIST].some((x) => x.id === id && x.handle === handle);
+  if (!bekannt || !product || product.id !== id || product.handle !== handle) throw new Error(`${product?.handle || id}: Identität weicht von Allowlist/Plan ab`);
+  return true;
 }
 
 export function canaryLedgerPruefen(konf, ids) {

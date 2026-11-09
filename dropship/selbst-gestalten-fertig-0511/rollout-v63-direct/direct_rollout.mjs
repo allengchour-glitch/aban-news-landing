@@ -5,10 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { shopifyGql } from '../../../automation/lib/shopify_gql.mjs';
 import { shopifyClientSecret } from '../../../automation/lib/shopify_secret.mjs';
 import {
-  ALLOWLIST, BLOCKLIST, PREVIEW_IDS, ROLLOUT_V63, VORHER_EDITOR, assetUrl, auswahlPlanen, baustein, beschreibungPlanen,
-  blockerBaustein, blockerProduktPruefen, canaryLedgerPruefen, editorAusRelease, editorReleaseFormPruefen,
-  editorReleasePlanen, numericId, produktPruefen, releaseAusAllowlist, releasePruefen, rolloutKonfig,
-  sha256, vorgaengerAusRelease,
+  ALLOWLIST, APPLY_LEDGER_ZUSTAENDE, BLOCKLIST, PREVIEW_IDS, ROLLBACK_SCHREIBBAR, ROLLOUT_V63, VORHER_EDITOR, assetUrl, auswahlPlanen,
+  baustein, beschreibungPlanen, blockerBaustein, blockerProduktPruefen, canaryLedgerPruefen, editorAusRelease,
+  editorReleaseFormPruefen, editorReleasePlanen, numericId, produktIdentitaetPruefen, produktPruefen, releaseAusAllowlist,
+  releasePruefen, rolloutKonfig, rollbackLedgerAuswerten, sha256, vorgaengerAusRelease,
 } from './direct_rollout_lib.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
@@ -222,12 +222,83 @@ function rollbackMeta(tokMeta, quelle) {
   if (ledger?.schema !== 1 || ledger.mode !== 'apply' || ledger.scope !== SCOPE || ledger.sourcePlanSha256 !== sha256(readFileSync(join(quelle, 'plan.json'))) || !Array.isArray(ledger.products) || !ledger.products.length) throw new Error('Apply-Ledger passt nicht zum Rollback-Scope/Plan');
   const planById = new Map(tokMeta.products.map((p) => [p.id, p]));
   const ids = new Set();
+  const zustand = new Map();
   for (const x of ledger.products) {
-    if (!planById.has(x.id) || ids.has(x.id) || !['applied', 'unchanged', 'rejected', 'unknown', 'unknown-write-response', 'unknown-readback', 'unknown-readback-unavailable'].includes(x.state)) throw new Error(`Apply-Ledger unzulässig: ${x.id || '?'} / ${x.state || '?'}`);
+    if (!planById.has(x.id) || ids.has(x.id) || !APPLY_LEDGER_ZUSTAENDE.includes(x.state)) throw new Error(`Apply-Ledger unzulässig: ${x.id || '?'} / ${x.state || '?'}`);
     ids.add(x.id);
+    zustand.set(x.id, x.state);
   }
   canaryLedgerPruefen(KONF, ids);
-  return { ...tokMeta, products: tokMeta.products.filter((p) => ids.has(p.id)) };
+  rollbackLedgerAuswerten(ledger.products);   // ohne einen einzigen geschriebenen Eintrag gibt es nichts zurückzunehmen: Abbruch
+  return { ...tokMeta, products: tokMeta.products.filter((p) => ids.has(p.id)).map((p) => ({ ...p, applyState: zustand.get(p.id) })) };
+}
+
+/** Schreibt `soll` als Beschreibung. Ein Versuch, nie wiederholt; jeder unklare Ausgang bekommt seinen Ledger-Zustand und wirft.
+ *  Vor dem Write steht die Absichtszeile «writing» im Ledger: bricht der Lauf zwischen Write und Rücklesen ab (Cancel, Kill),
+ *  bleibt der Rückweg über das Artefakt möglich. Gibt das frisch gelesene Produkt zurück. */
+async function beschreibungSchreiben(tok, x, soll, zeile, buche, okZustand) {
+  buche(zeile, { state: 'writing' });
+  let r;
+  try {
+    r = (await shopifyGql(SHOP, API, tok, UPDATE_M, { p: { id: x.id, descriptionHtml: soll } }, { versuche: 1 })).productUpdate;
+  } catch {
+    buche(zeile, { state: 'unknown-write-response' });
+    throw new Error(`${x.handle}: Write-Antwort unbekannt; keine Wiederholung`);
+  }
+  if (r?.userErrors?.length) {
+    buche(zeile, { state: 'rejected', userErrors: r.userErrors });
+    throw new Error(`${x.handle}: Shopify hat das Update abgelehnt; keine Wiederholung`);
+  }
+  if (!r || !Array.isArray(r.userErrors) || !r.product) {
+    buche(zeile, { state: 'unknown', userErrors: r?.userErrors || null });
+    throw new Error(`${x.handle}: Write unklar/fehlerhaft; keine Wiederholung`);
+  }
+  let frisch;
+  try { frisch = await produkt(tok, x.id); }
+  catch {
+    buche(zeile, { state: 'unknown-readback-unavailable' });
+    throw new Error(`${x.handle}: Rücklesung nicht verfügbar; keine Wiederholung`);
+  }
+  if (sha256(frisch.descriptionHtml || '') !== sha256(soll)) {
+    buche(zeile, { state: 'unknown-readback' });
+    throw new Error(`${x.handle}: Rücklesung weicht ab; keine Wiederholung`);
+  }
+  buche(zeile, { state: okZustand, sha256: sha256(soll), readAt: new Date().toISOString() });
+  return frisch;
+}
+
+/** Ein Produkt des Apply-Laufs: alle Gates frisch, dann nur bei exakt passender Vorher-Beschreibung schreiben. Wirft bei jedem Fehler. */
+async function produktAnwenden(tok, x, quelle, zeile, buche) {
+  const p = await produkt(tok, x.id);
+  if (x.kind === 'editor') produktPruefen(p, { id: x.id, handle: x.handle, variantIds: x.expectedVariantIds });
+  else blockerProduktPruefen(p, BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);
+  await storefrontPruefen(p);
+  const soll = readFileSync(join(quelle, `${x.numericId}.after.html`), 'utf8');
+  if (sha256(p.descriptionHtml || '') !== x.vorherSha256) throw new Error(`${x.handle}: Beschreibung seit dem Plan verändert; nichts überschrieben`);
+  if (sha256(soll) === x.vorherSha256) {
+    buche(zeile, { state: 'unchanged', sha256: x.vorherSha256, readAt: new Date().toISOString() });
+    return;
+  }
+  await beschreibungSchreiben(tok, x, soll, zeile, buche, 'applied');
+}
+
+/** Ein Produkt des Rollbacks. Nur Zeilen, bei denen der Apply geschrieben hat, werden angefasst. Die Live-Beschreibung muss exakt
+ *  dem Plan-Nachher entsprechen (oder schon dem Vorher), sonst wird NICHTS überschrieben. Kein Status-, Kaufbarkeits-,
+ *  Varianten- oder Storefront-Gate vorab (ein ENTWURF lässt sich zurückstellen); Auffälligkeiten stehen als Hinweis im Ledger. */
+async function produktZurueckstellen(tok, x, quelle, zeile, buche) {
+  const p = await produkt(tok, x.id);
+  produktIdentitaetPruefen(p, x.id, x.handle);
+  const frischSha = sha256(p.descriptionHtml || '');
+  if (frischSha === x.vorherSha256) {
+    buche(zeile, { state: 'already-rolled-back', sha256: frischSha, readAt: new Date().toISOString() });
+    return;
+  }
+  if (frischSha !== x.nachherSha256) throw Object.assign(new Error(`${x.handle}: Beschreibung seit dem Plan verändert; nichts überschrieben`), { zustand: 'failed-changed' });
+  const frisch = await beschreibungSchreiben(tok, x, readFileSync(join(quelle, `${x.numericId}.before.html`), 'utf8'), zeile, buche, 'rolled-back');
+  const hinweise = [];
+  if (frisch.status !== 'ACTIVE') hinweise.push(`Produktstatus ${frisch.status}`);
+  if (frisch.onlineStoreUrl) { try { await storefrontPruefen(frisch); } catch (e) { hinweise.push(`Storefront: ${e.message}`); } }
+  if (hinweise.length) buche(zeile, { hinweise });
 }
 
 async function anwenden(tok, meta, quelle) {
@@ -235,62 +306,24 @@ async function anwenden(tok, meta, quelle) {
   if (existsSync(join(OUT, 'ledger.json'))) throw new Error(`Ledger existiert bereits; kein blinder Wiederholungslauf: ${OUT}`);
   const ledger = { schema: 1, startedAt: new Date().toISOString(), mode: MODE, scope: SCOPE, sourcePlanSha256: sha256(readFileSync(join(quelle, 'plan.json'))), products: [] };
   mkdirSync(OUT, { recursive: true });
+  const sichern = () => writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
+  const buche = (zeile, felder) => { Object.assign(zeile, felder); if (!ledger.products.includes(zeile)) ledger.products.push(zeile); sichern(); };
+  const offen = [];
   for (const x of ziel) {
-    const p = await produkt(tok, x.id);
-    if (x.kind === 'editor') produktPruefen(p, { id: x.id, handle: x.handle, variantIds: x.expectedVariantIds });
-    else blockerProduktPruefen(p, BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);
-    await storefrontPruefen(p);
-    const erwartet = MODE === 'rollback' ? x.nachherSha256 : x.vorherSha256;
-    const sollDatei = MODE === 'rollback' ? `${x.numericId}.before.html` : `${x.numericId}.after.html`;
-    const soll = readFileSync(join(quelle, sollDatei), 'utf8');
-    const frischSha = sha256(p.descriptionHtml || '');
-    if (MODE === 'rollback' && frischSha === x.vorherSha256) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'already-rolled-back', sha256: frischSha, readAt: new Date().toISOString() });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      continue;
+    const zeile = { id: x.id, handle: x.handle };
+    if (MODE !== 'rollback') { await produktAnwenden(tok, x, quelle, zeile, buche); continue; }   // Apply: beim ersten Fehler Abbruch
+    // Rollback: jedes Produkt für sich. Ein Fehler stoppt die übrigen nicht; Exit != 0 und Ledger nennen, was offen blieb.
+    if (!ROLLBACK_SCHREIBBAR.includes(x.applyState)) { buche(zeile, { state: 'skipped-not-written', applyState: x.applyState }); continue; }
+    try { await produktZurueckstellen(tok, x, quelle, zeile, buche); }
+    catch (e) {
+      buche(zeile, { state: e.zustand || (zeile.state && zeile.state !== 'writing' ? zeile.state : 'failed'), fehler: e.message });
+      offen.push(e.message);
     }
-    if (frischSha !== erwartet) throw new Error(`${x.handle}: Beschreibung seit dem Plan verändert; nichts überschrieben`);
-    if (sha256(soll) === erwartet) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unchanged', sha256: erwartet, readAt: new Date().toISOString() });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      continue;
-    }
-    let r;
-    try {
-      r = (await shopifyGql(SHOP, API, tok, UPDATE_M, { p: { id: x.id, descriptionHtml: soll } }, { versuche: 1 })).productUpdate;
-    } catch {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown-write-response' });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Write-Antwort unbekannt; keine Wiederholung`);
-    }
-    if (r?.userErrors?.length) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'rejected', userErrors: r.userErrors });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Shopify hat das Update abgelehnt; keine Wiederholung`);
-    }
-    if (!r || !Array.isArray(r.userErrors) || !r.product) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown', userErrors: r?.userErrors || null });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Write unklar/fehlerhaft; keine Wiederholung`);
-    }
-    let frisch;
-    try { frisch = await produkt(tok, x.id); }
-    catch {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown-readback-unavailable' });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Rücklesung nicht verfügbar; keine Wiederholung`);
-    }
-    if (sha256(frisch.descriptionHtml || '') !== sha256(soll)) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown-readback' });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Rücklesung weicht ab; keine Wiederholung`);
-    }
-    ledger.products.push({ id: x.id, handle: x.handle, state: MODE === 'rollback' ? 'rolled-back' : 'applied', sha256: sha256(soll), readAt: new Date().toISOString() });
-    writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
   }
   ledger.completedAt = new Date().toISOString();
-  writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-  return ledger;
+  if (offen.length) ledger.offen = offen.length;
+  sichern();
+  return { ledger, offen };
 }
 
 // Alles Lokale zuerst, BEVOR irgendein Netzzugriff (Token, Shop, Assets) stattfindet:
@@ -302,18 +335,22 @@ function rollbackLokalLaden() {
   return rollbackMeta(JSON.parse(readFileSync(join(ROLLBACK_PLAN, 'plan.json'), 'utf8')), ROLLBACK_PLAN);
 }
 const lokal = MODE === 'rollback' ? rollbackLokalLaden() : releaseLokalBauen();
+const zaehle = (ledger, zustand) => ledger.products.filter((p) => p.state === zustand).length;
 const tok = await token();
 await identitaetPruefen(tok);
 if (MODE === 'rollback') {
-  const ledger = await anwenden(tok, lokal, ROLLBACK_PLAN);
-  console.log(JSON.stringify({ mode: MODE, scope: SCOPE, editorVersion: EDITOR_VERSION, changed: ledger.products.length }, null, 2));
+  const { ledger, offen } = await anwenden(tok, lokal, ROLLBACK_PLAN);
+  // changed = echte Writes dieses Rollbacks; notWritten = Zeilen, bei denen der Apply nichts geschrieben hatte (Sperren, schon auf Ziel); failed = nicht zurückgestellt
+  console.log(JSON.stringify({ mode: MODE, scope: SCOPE, editorVersion: EDITOR_VERSION, changed: zaehle(ledger, 'rolled-back'), alreadyRolledBack: zaehle(ledger, 'already-rolled-back'), notWritten: zaehle(ledger, 'skipped-not-written'), failed: offen.length }, null, 2));
+  if (offen.length) throw new Error(`Rollback unvollständig: ${offen.length} von ${ledger.products.length} Produkten nicht zurückgestellt, die übrigen sind erledigt (Ledger im Artefakt). ${offen.join(' | ')}`);
 } else {
   const { release, vorgaenger } = lokal;
   const alle = await planen(tok, release, vorgaenger);             // alle 19 vor jedem Write erneut prüfen
   const meta = planSchreiben(alle, release);
   if (MODE === 'plan') console.log(JSON.stringify({ mode: MODE, editorVersion: EDITOR_VERSION, scope: SCOPE, productsChecked: alle.length, selected: auswahl(meta.products).map((x) => x.handle), output: OUT }, null, 2));
   else {
-    const ledger = await anwenden(tok, meta, OUT);
-    console.log(JSON.stringify({ mode: MODE, scope: SCOPE, editorVersion: EDITOR_VERSION, changed: ledger.products.length, output: OUT }, null, 2));
+    const { ledger } = await anwenden(tok, meta, OUT);
+    // changed = echte Writes; unchanged = Zeilen ohne Write (Ziel schon da, Sperren)
+    console.log(JSON.stringify({ mode: MODE, scope: SCOPE, editorVersion: EDITOR_VERSION, changed: zaehle(ledger, 'applied'), unchanged: zaehle(ledger, 'unchanged'), output: OUT }, null, 2));
   }
 }

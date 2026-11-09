@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Mutationsprobe für den 6.4.0-Rollout (Planer, Eingaben, Bestätigungen, Canary-Tabelle, Bauskript, Skript-Verdrahtung,
-// Workflow, _headers, editor-release.json, README). Sie baut Kopien des Ordners in einem Wegwerfverzeichnis
+// Schreib- und Rollback-Pfad des Runners gegen die Offline-Attrappe, Workflow, _headers, editor-release.json, README). Sie baut Kopien des Ordners in einem Wegwerfverzeichnis
 // (pod/, automation/ und rollout-v63/ nur als Verknüpfung, nie verändert), setzt je Mutant EINE kleine Änderung ein und
 // startet direct_rollout_test.mjs. Ein Mutant gilt als erkannt, wenn der Test mit Exit != 0 endet.
 // Vorher muss die unveränderte Kopie grün sein («Ausgangslage»); nicht anwendbare Muster zählen als Fehler (nie als erkannt).
@@ -72,7 +72,7 @@ const MUTANTEN = [
   { id: 'K11', was: 'Canary-Ledger: Anzahl der Produkte nicht geprüft', edits: [z('lib', 'if (konf.canary && (s.size !== 1 ||', zeileErsetzt('s.size !== 1 || ', ''))] },
   { id: 'K12', was: 'Canary-Ledger: Produkt nicht geprüft', edits: [z('lib', 'if (konf.canary && (s.size !== 1 ||', zeileErsetzt(' || !s.has(konf.canary.id)', ''))] },
   { id: 'K13', was: 'alter Pfad: Bestätigung V63_CANARY_TASSE verändert', edits: [z('lib', "apply: Object.freeze({ canary: 'V63_CANARY_TASSE'", zeileErsetzt("'V63_CANARY_TASSE'", "'V63_CANARY_TASSE_X'"))] },
-  { id: 'K14', was: 'alter Pfad: Full prüft jetzt auch die Sperrprodukte zuerst', edits: [z('lib', 'if (konf.editorVersion === ROLLOUT_V63) return alle;', null)] },
+  { id: 'K14', was: 'alter Pfad: Full prüft jetzt auch die Sperrprodukte zuerst', edits: [z('lib', "if (konf.editorVersion === ROLLOUT_V63 || konf.mode === 'rollback') return alle;", zeileErsetzt('konf.editorVersion === ROLLOUT_V63 || ', ''))] },
   { id: 'K15', was: 'Vorgänger darf neuer sein als das Ziel (Vergleich gedreht)', edits: [z('lib', 'for (let i = 0; i < 3; i++) if (x[i] !== y[i])', zeileErsetzt('return x[i] < y[i]', 'return x[i] > y[i]'))] },
   { id: 'K16', was: 'Form: doppelter Vorgänger oder Vorgänger gleich Ziel wird nicht abgewiesen', edits: [z('lib', 'if (versionen.has(v.version) || hashes.has(v.sha256))', null)] },
   { id: 'K17', was: 'Form: Dateiname muss nicht zur Version passen', edits: [z('lib', 'if (e.file !== `pod/v6/${editorDateiname(e.version)}`)', null)] },
@@ -125,6 +125,48 @@ const MUTANTEN = [
   { id: 'J02', was: 'editor-release.json: Byteanzahl des Ziels um 1 verändert', edits: [t('json', jsonAendern((o) => { o.bytes += 1; }))] },
   { id: 'J03', was: 'editor-release.json: Vorgänger 6.3.1 fehlt', edits: [t('json', jsonAendern((o) => { o.vorgaenger = o.vorgaenger.filter((v) => v.version !== '6.3.1'); }))] },
   { id: 'J04', was: 'editor-release.json: Hash des eingefrorenen Vorgängers 6.3.0 geändert', edits: [t('json', jsonAendern((o) => { const h = o.vorgaenger[0].sha256; o.vorgaenger[0].sha256 = (h[0] === 'a' ? 'b' : 'a') + h.slice(1); }))] },
+  // ---- Planer: Vorschau-?v= (Lücke der ersten Probe: nur die Karte war abgedeckt) ----------------------------------------
+  { id: 'P22', was: 'Vorschau-?v= beliebig lang statt genau 16 Zeichen', edits: [z('lib', String.raw`\bdata-vorschau-url="[^"?]*`, zeileErsetzt('{16}"/g', '+"/g'))] },
+  { id: 'P23', was: 'Vorschau-?v= darf beliebigen Rest tragen (&x=1)', edits: [z('lib', String.raw`\bdata-vorschau-url="[^"?]*`, zeileErsetzt('[a-f0-9]{16}"/g', '[^"]*"/g'))] },
+  { id: 'P24', was: 'Karten-URL: Teil vor ?v= darf ein weiteres ? enthalten', gleichwertig: 'Der Planer vergleicht den normalisierten Text mit dem normalisierten neuen Baustein, und der trägt vor ?v= nie ein weiteres ?; jede Eingabe mit ?x=1?v=… bleibt mit der Lockerung ebenso ungleich wie ohne sie (der zusätzliche Teil steht dann nur auf einer Seite).', edits: [z('lib', String.raw`\bdata-karte-url="[^"?]*`, zeileErsetzt('[^"?]*)', '[^"]*)'))] },
+  { id: 'P25', was: 'Vorschau-URL: Teil vor ?v= darf ein weiteres ? enthalten', gleichwertig: 'Gleiche Begründung wie P24 (Vergleich gegen den normalisierten neuen Baustein, der kein zweites ? trägt).', edits: [z('lib', String.raw`\bdata-vorschau-url="[^"?]*`, zeileErsetzt('[^"?]*)', '[^"]*)'))] },
+  // ---- Rollback-Hilfsfunktionen (Lib) --------------------------------------------------------------------------------------
+  { id: 'L26', was: 'Rollback full stellt die Sperren wieder zuerst', edits: [z('lib', "if (konf.editorVersion === ROLLOUT_V63 || konf.mode === 'rollback') return alle;", zeileErsetzt(" || konf.mode === 'rollback'", ''))] },
+  { id: 'L27', was: '«unchanged» gilt als rücknehmbar', edits: [z('lib', "export const ROLLBACK_SCHREIBBAR = Object.freeze(['applied',", zeileErsetzt("['applied',", "['applied', 'unchanged',"))] },
+  { id: 'L28', was: 'Ledger ohne Write: kein Abbruch «nichts zurückzunehmen»', edits: [z('lib', 'if (!schreibbar.length) {', zeileErsetzt('!schreibbar.length', 'false'))] },
+  { id: 'L29', was: 'Rollback-Identität prüft das Handle nicht', edits: [z('lib', 'if (!bekannt || !product || product.id !== id || product.handle !== handle)', zeileErsetzt(' || product.handle !== handle', ''))] },
+  { id: 'L30', was: 'Absichtszeile «writing» ist kein zulässiger Ledger-Zustand', edits: [z('lib', "export const APPLY_LEDGER_ZUSTAENDE = Object.freeze(['applied', 'writing',", zeileErsetzt("'applied', 'writing',", "'applied',"))] },
+  // ---- Runner: Schreib- und Rollback-Pfad (Attrappen-Szenarien; die Läufe der ersten Probe überlebten alle 13 dieser Art) ----
+  { id: 'L01', was: 'keine Absichtszeile «writing» vor dem Write', edits: [z('skript', "buche(zeile, { state: 'writing' });", null)] },
+  { id: 'L02', was: 'Apply überschreibt eine seit dem Plan veränderte Beschreibung (Hash-Schutz weg)', edits: [z('skript', "if (sha256(p.descriptionHtml || '') !== x.vorherSha256) throw new Error", null)] },
+  { id: 'L03', was: 'Apply: Produkt-/Varianten-Gate unmittelbar vor dem Write weg', edits: [z('skript', "if (x.kind === 'editor') produktPruefen(p, { id: x.id, handle: x.handle, variantIds: x.expectedVariantIds });", null), z('skript', 'else blockerProduktPruefen(p, BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);', null)] },
+  { id: 'L04', was: 'Apply: Storefront-/Canonical-Gate unmittelbar vor dem Write weg', edits: [s('skript', 'BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);\n  await storefrontPruefen(p);', 'BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);')] },
+  { id: 'L05', was: 'Rollback prüft die Produkt-Identität nicht', edits: [z('skript', 'produktIdentitaetPruefen(p, x.id, x.handle);', null)] },
+  { id: 'L06', was: 'Rollback überschreibt eine fremd veränderte Beschreibung (Hash-Schutz weg)', edits: [z('skript', 'if (frischSha !== x.nachherSha256) throw Object.assign', null)] },
+  { id: 'L07', was: 'Rollback erkennt «schon zurückgestellt» nicht', edits: [s('skript', "if (frischSha === x.vorherSha256) {\n    buche(zeile, { state: 'already-rolled-back'", "if (false) {\n    buche(zeile, { state: 'already-rolled-back'")] },
+  { id: 'L08', was: 'Rollback fasst auch Zeilen an, bei denen der Apply nichts geschrieben hat (Sperren, schon auf Ziel)', edits: [z('skript', 'if (!ROLLBACK_SCHREIBBAR.includes(x.applyState)) {', zeileErsetzt('!ROLLBACK_SCHREIBBAR.includes(x.applyState)', 'false'))] },
+  { id: 'L09', was: 'Rollback bricht beim ersten fehlgeschlagenen Produkt ab', edits: [z('skript', 'offen.push(e.message);', zeileErsetzt('offen.push(e.message);', 'offen.push(e.message); throw e;'))] },
+  { id: 'L10', was: 'Rollback endet auch mit offenen Produkten grün', edits: [z('skript', 'if (offen.length) throw new Error(`Rollback unvollständig', zeileErsetzt('if (offen.length)', 'if (false)'))] },
+  { id: 'L11', was: 'Rollback eines Apply ohne Write endet «grün» (Abbruch entfernt)', edits: [z('skript', 'rollbackLedgerAuswerten(ledger.products);', null)] },
+  { id: 'L12', was: 'Ledger-Zustand wird beim Rollback nicht auf die erlaubte Liste geprüft', edits: [z('skript', 'if (!planById.has(x.id) || ids.has(x.id) || !APPLY_LEDGER_ZUSTAENDE.includes(x.state))', zeileErsetzt(' || !APPLY_LEDGER_ZUSTAENDE.includes(x.state)', ''))] },
+  { id: 'L13', was: 'Rollback-Ausgabe «changed» zählt alle Ledger-Zeilen statt der Writes', edits: [z('skript', "changed: zaehle(ledger, 'rolled-back')", zeileErsetzt("changed: zaehle(ledger, 'rolled-back')", 'changed: ledger.products.length'))] },
+  { id: 'L14', was: 'Apply-Ausgabe «changed» zählt alle Ledger-Zeilen statt der Writes', edits: [z('skript', "changed: zaehle(ledger, 'applied')", zeileErsetzt("changed: zaehle(ledger, 'applied')", 'changed: ledger.products.length'))] },
+  { id: 'L15', was: 'Ledger-Wiederholungssperre in anwenden() weg', edits: [z('skript', "if (existsSync(join(OUT, 'ledger.json'))) throw new Error(`Ledger existiert bereits", null)] },
+  { id: 'L16', was: 'OUT_DIR-Sperre in planSchreiben() weg', edits: [z('skript', "if (existsSync(join(OUT, 'plan.json')) || existsSync(join(OUT, 'ledger.json'))) throw new Error", null)] },
+  { id: 'L17', was: 'Sperrprodukte dürfen sich im Plan ändern', edits: [z('skript', 'if (diff.geaendert) throw new Error(`${p.handle}: Blockprodukt muss', null)] },
+  { id: 'L18', was: 'Rückweg-Dateien 6.3.0/6.3.1 werden live nicht geprüft', edits: [z('skript', 'if (!ALT_PFAD) for (const v of vorgaenger) await assetPruefen', null)] },
+  { id: 'L19', was: 'Ziel-Editor wird live nicht gegen SHA/CORS/Cache geprüft (SRI-Wettlauf)', edits: [z('skript', "await assetPruefen(release.editor.url, release.editor.sha256, 'editor');", null)] },
+  { id: 'L20', was: 'Write wird bei Fehlern wiederholt (versuche 6)', edits: [z('skript', '{ p: { id: x.id, descriptionHtml: soll } }, { versuche: 1 })', zeileErsetzt('{ versuche: 1 }', '{ versuche: 6 }'))] },
+  { id: 'L21', was: 'Rücklese-Vergleich nach dem Write weg', edits: [z('skript', "if (sha256(frisch.descriptionHtml || '') !== sha256(soll)) {", '  if (false) {')] },
+  { id: 'L22', was: 'Rollback verlangt wieder Status/Kaufbarkeit/Varianten (ENTWURF blockiert)', edits: [z('skript', 'produktIdentitaetPruefen(p, x.id, x.handle);', '  produktPruefen(p, { id: x.id, handle: x.handle, variantIds: x.expectedVariantIds });')] },
+  { id: 'L23', was: 'Rollback vermerkt einen ENTWURF nicht im Ledger', edits: [z('skript', "if (frisch.status !== 'ACTIVE') hinweise.push", null)] },
+  { id: 'L24', was: 'Apply trägt den Zustand «rolled-back» statt «applied» ins Ledger', edits: [z('skript', "buche(zeile, { state: okZustand, sha256: sha256(soll), readAt: new Date().toISOString() });", "  buche(zeile, { state: 'rolled-back', sha256: sha256(soll), readAt: new Date().toISOString() });")] },
+  { id: 'L32', was: 'Rollback vergleicht den Live-Hash mit dem Vorher- statt dem Nachher-Hash', edits: [z('skript', 'if (frischSha !== x.nachherSha256) throw Object.assign', zeileErsetzt('x.nachherSha256', 'x.vorherSha256'))] },
+  { id: 'L31', was: 'Rollback vermerkt einen Storefront-Befund nach dem Write nicht im Ledger', edits: [z('skript', "if (frisch.onlineStoreUrl) { try { await storefrontPruefen(frisch); }", null)] },
+  // ---- Workflow: der Rollback braucht keine Vorab-Tests ----------------------------------------------------------------------
+  { id: 'W15', was: 'Workflow: Lokaltests laufen auch im Rollback (Notweg hängt am Wortlaut-/SRI-Test)', edits: [s('w64', "- name: Lokaltests vor Plan und Apply\n        if: ${{ inputs.operation != 'rollback' }}\n", '- name: Lokaltests vor Plan und Apply\n')] },
+  { id: 'W16', was: 'Workflow: editor-release.json-Prüfung läuft auch im Rollback', edits: [s('w64', "- name: editor-release.json gegen die echten Dateien prüfen (nicht im Rollback)\n        if: ${{ inputs.operation != 'rollback' }}\n", '- name: editor-release.json gegen die echten Dateien prüfen (nicht im Rollback)\n')] },
+  { id: 'W17', was: 'Workflow: Lokaltests laufen NUR im Rollback (Bedingung gedreht)', edits: [s('w64', "- name: Lokaltests vor Plan und Apply\n        if: ${{ inputs.operation != 'rollback' }}", "- name: Lokaltests vor Plan und Apply\n        if: ${{ inputs.operation == 'rollback' }}")] },
   { id: 'R01', was: 'README nennt V64_ROLLBACK_16_EDITOR nicht mehr', edits: [s('readme', /V64_ROLLBACK_16_EDITOR/g, 'V64_ROLLBACK_ENTFERNT', { alle: true })] },
 ];
 
@@ -153,7 +195,7 @@ function kopieAnlegen() {
   const dir = mkdtempSync(join(tmpdir(), 'v64-mutation-'));
   const ordner = join(dir, REL);
   mkdirSync(ordner, { recursive: true });
-  for (const name of ['direct_rollout_lib.mjs', 'direct_rollout.mjs', 'editor_release_bauen.mjs', 'direct_rollout_test.mjs', 'editor-release.json', 'README.md']) cpSync(join(WURZEL, REL, name), join(ordner, name));
+  for (const name of ['direct_rollout_lib.mjs', 'direct_rollout.mjs', 'editor_release_bauen.mjs', 'direct_rollout_test.mjs', 'direct_rollout_attrappe.mjs', 'direct_rollout_attrappe_test.mjs', 'editor-release.json', 'README.md']) cpSync(join(WURZEL, REL, name), join(ordner, name));
   cpSync(join(WURZEL, REL, 'fixtures'), join(ordner, 'fixtures'), { recursive: true });
   mkdirSync(join(dir, '.github/workflows'), { recursive: true });
   for (const w of ['pod-v63-description-rollout.yml', 'pod-v64-description-rollout.yml']) cpSync(join(WURZEL, '.github/workflows', w), join(dir, '.github/workflows', w));
@@ -166,9 +208,12 @@ function kopieAnlegen() {
 }
 const pfad = (dir, art) => join(dir, DATEI[art]);
 
-function testLaufen(dir) {
+// Die Attrappen-Szenarien (rund 7 s) laufen immer, ausser bei Mutanten, die den Runner nachweislich nicht berühren (Workflow, _headers, README, Bauskript).
+const OHNE_RUNNER = new Set(['w64', 'headers', 'readme', 'bau']);
+function testLaufen(dir, mutant = null) {
   return new Promise((fertig) => {
-    const p = spawn(process.execPath, [join(dir, REL, 'direct_rollout_test.mjs')], { stdio: ['ignore', 'pipe', 'pipe'] });
+    const ohne = mutant && mutant.edits.every((e) => OHNE_RUNNER.has(e.datei));
+    const p = spawn(process.execPath, [join(dir, REL, 'direct_rollout_test.mjs')], { stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, ...(ohne ? { DIREKT_ROLLOUT_OHNE_ATTRAPPE: '1' } : {}) } });
     let aus = ''; let fehl = '';
     const timer = setTimeout(() => p.kill('SIGKILL'), 240000);
     p.stdout.on('data', (d) => { aus += d; }); p.stderr.on('data', (d) => { fehl += d; });
@@ -186,7 +231,7 @@ const kopien = Array.from({ length: Math.min(parallel, liste.length || 1) }, kop
 const ergebnisse = [];
 try {
   // Ausgangslage: die unveränderten Kopien müssen grün sein, sonst ist jede «Erkennung» wertlos.
-  const basis = await Promise.all(kopien.map(testLaufen));
+  const basis = await Promise.all(kopien.map((d) => testLaufen(d)));
   if (basis.some((b) => b.code !== 0)) {
     console.error(`AUSGANGSLAGE NICHT GRÜN, Probe abgebrochen:\n${basis.find((b) => b.code !== 0).fehl.slice(0, 1500)}`);
     process.exitCode = 2;
@@ -207,7 +252,7 @@ try {
         let res;
         if (fehler.length) res = { m, status: 'NICHT ANWENDBAR', detail: fehler[0] };
         else {
-          const lauf = await testLaufen(dir);
+          const lauf = await testLaufen(dir, m);
           const erster = (lauf.fehl.match(/^FEHLER ([^\n]*)/m) || [])[1];
           res = lauf.code === 0 ? { m, status: 'ÜBERLEBT', detail: lauf.aus.trim() } : { m, status: 'erkannt', detail: (erster || lauf.fehl.split('\n').find((x) => x.trim()) || `Exit ${lauf.code}${lauf.signal ? ` ${lauf.signal}` : ''}`).slice(0, 150) };
         }

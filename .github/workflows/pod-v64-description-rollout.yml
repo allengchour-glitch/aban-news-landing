@@ -91,10 +91,16 @@ jobs:
           repository: ${{ github.repository }}
           run-id: ${{ inputs.source_run_id }}
 
-      - name: Lokaltests vor jedem Lauf
+      # Plan und Apply prüfen vorher Code, Dateien und editor-release.json. Der ROLLBACK nicht: er liest nur das Artefakt
+      # des Apply-Laufs (kein Editor, keine Karten, keine editor-release.json) und muss auch dann laufen, wenn 6.4.0.js
+      # nach dem ersten Verweis geändert wurde und SRI den Editor auf allen Seiten blockiert, oder wenn ein README-Satz
+      # den Wortlauttest bricht. Sein Schutz ist der Hash-Vergleich je Produkt im Skript, nicht der Testlauf vorab.
+      - name: Lokaltests vor Plan und Apply
+        if: ${{ inputs.operation != 'rollback' }}
         run: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/direct_rollout_test.mjs
 
-      - name: editor-release.json gegen die echten Dateien prüfen
+      - name: editor-release.json gegen die echten Dateien prüfen (nicht im Rollback)
+        if: ${{ inputs.operation != 'rollback' }}
         run: node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor_release_bauen.mjs --pruefen
 
       - name: Planen oder kontrolliert schreiben

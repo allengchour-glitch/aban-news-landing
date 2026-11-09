@@ -11,8 +11,9 @@ import {
   blockerBaustein, blockerProduktPruefen, editorReleasePlanen, integritySha256, produktPruefen,
   releaseAusAllowlist, releasePruefen, sha256,
   VORHER_EDITOR,
-  CANARY_V64, ROLLOUT_V63, ROLLOUT_V64, auswahlPlanen, canaryLedgerPruefen, editorAusRelease, editorBlockNormalisieren,
-  editorReleaseFormPruefen, editorUrl, rolloutKonfig, vorgaengerAusRelease,
+  CANARY_V64, ROLLOUT_V63, ROLLOUT_V64, APPLY_LEDGER_ZUSTAENDE, ROLLBACK_SCHREIBBAR, auswahlPlanen, canaryLedgerPruefen, editorAusRelease,
+  editorBlockNormalisieren, editorReleaseFormPruefen, editorUrl, produktIdentitaetPruefen, rolloutKonfig, rollbackLedgerAuswerten,
+  vorgaengerAusRelease,
 } from './direct_rollout_lib.mjs';
 import { editorReleaseAbgleichen, editorReleaseErzeugen, editorReleaseText } from './editor_release_bauen.mjs';
 
@@ -457,6 +458,11 @@ test('Auswahl: Canary genau ein festes Produkt; Full (6.4.0) prüft die Sperrpro
   wirft(() => auswahlPlanen(plan.filter((x) => x.handle !== 'bio-jutebeutel-selbst-gestalten'), k('canary-jutebeutel')), /Canary nicht genau einmal/);
   wirft(() => auswahlPlanen([...plan, plan[2]], k('canary-jutebeutel')), /Canary nicht genau einmal/);
   wirft(() => auswahlPlanen(null, k('full')), /Plan ohne Produktliste/);
+  // ROLLBACK: keine Sperren zuerst (sie werden nie geschrieben; eine veränderte Sperrseite darf den Rückweg nicht aufhalten)
+  const kr = (scope, editorVersion = '6.4.0') => rolloutKonfig({ mode: 'rollback', scope, ack: SOLL64.rollback[scope] || SOLL63.rollback[scope], live: true, editorVersion });
+  assert.deepEqual(auswahlPlanen(plan, kr('full')), plan, 'Rollback full: Planreihenfolge ohne Vorrang für Sperren');
+  assert.deepEqual(auswahlPlanen(plan, kr('canary-tasse')).map((x) => x.handle), ['keramik-tasse-selbst-gestalten']);
+  assert.equal(auswahlPlanen(plan, k('full'))[0].kind, 'blocked', 'Plan/Apply full: Sperren weiter zuerst');
 });
 test('Canary-Ledger: nur exakt das Canary-Produkt (Rollback-Schutz), bei Full keine Einschränkung', () => {
   const k = (scope) => rolloutKonfig({ mode: 'plan', scope, editorVersion: '6.4.0' });
@@ -468,6 +474,30 @@ test('Canary-Ledger: nur exakt das Canary-Produkt (Rollback-Schutz), bei Full ke
   wirft(() => canaryLedgerPruefen(k('canary-tasse'), [tasse, beutel]), /Canary-Ledger/);
   wirft(() => canaryLedgerPruefen(k('canary-tasse'), []), /Canary-Ledger/);
   assert.equal(canaryLedgerPruefen(k('full'), [tasse, beutel]), true);
+});
+
+test('Rollback-Ledger: nur Zeilen, bei denen der Apply geschrieben hat (oder unklar blieb), lassen sich zurückstellen; sonst klarer Abbruch', () => {
+  assert.deepEqual([...APPLY_LEDGER_ZUSTAENDE].sort(), ['applied', 'rejected', 'unchanged', 'unknown', 'unknown-readback', 'unknown-readback-unavailable', 'unknown-write-response', 'writing']);
+  assert.deepEqual([...ROLLBACK_SCHREIBBAR].sort(), ['applied', 'unknown', 'unknown-readback', 'unknown-readback-unavailable', 'unknown-write-response', 'writing']);
+  const z = (id, state) => ({ id, handle: id, state });
+  assert.deepEqual([...rollbackLedgerAuswerten([z('a', 'applied'), z('b', 'unchanged'), z('c', 'rejected')])], ['a']);
+  for (const state of ROLLBACK_SCHREIBBAR) assert.deepEqual([...rollbackLedgerAuswerten([z('a', state), z('b', 'unchanged')])], ['a'], state);
+  for (const state of ['unchanged', 'rejected']) wirft(() => rollbackLedgerAuswerten([z('a', state)]), /nichts zurückzunehmen/);
+  wirft(() => rollbackLedgerAuswerten([z('a', 'unchanged'), z('b', 'unchanged'), z('c', 'rejected')]), /unchanged 2, rejected 1\): nichts zurückzunehmen/);
+  wirft(() => rollbackLedgerAuswerten([]), /leer\): nichts zurückzunehmen/);
+  wirft(() => rollbackLedgerAuswerten([z('a', 'unbekannt')]), /nichts zurückzunehmen/);
+  wirft(() => rollbackLedgerAuswerten(null), /ohne Produktliste/);
+  assert.ok(Object.isFrozen(APPLY_LEDGER_ZUSTAENDE) && Object.isFrozen(ROLLBACK_SCHREIBBAR));
+});
+test('Rollback-Identität: nur ID und Handle aus Allowlist/Sperrliste und Plan; Status, Kaufbarkeit und Varianten spielen keine Rolle', () => {
+  const a = ALLOWLIST[2]; const b = BLOCKLIST[0];
+  assert.equal(produktIdentitaetPruefen({ id: a.id, handle: a.handle, status: 'DRAFT', onlineStoreUrl: null, variants: { nodes: [] } }, a.id, a.handle), true);
+  assert.equal(produktIdentitaetPruefen({ id: b.id, handle: b.handle }, b.id, b.handle), true);
+  wirft(() => produktIdentitaetPruefen({ id: a.id, handle: 'anderes-handle' }, a.id, a.handle), /Identität/);
+  wirft(() => produktIdentitaetPruefen({ id: ALLOWLIST[3].id, handle: a.handle }, a.id, a.handle), /Identität/);
+  wirft(() => produktIdentitaetPruefen({ id: a.id, handle: a.handle }, a.id, 'anderes-handle'), /Identität/);        // Planzeile passt nicht zur Allowlist
+  wirft(() => produktIdentitaetPruefen({ id: 'gid://shopify/Product/1', handle: 'fremd' }, 'gid://shopify/Product/1', 'fremd'), /Identität/);
+  wirft(() => produktIdentitaetPruefen(null, a.id, a.handle), /Identität/);
 });
 
 // ---- Skript im Kindprozess: Verdrahtung der Eingaben, rein lokal, ohne Netz und ohne Zugangsdaten ------------
@@ -579,6 +609,14 @@ test('Rollback (Kindprozess): das Artefakt wird vor dem Zugang gegen Editor-Rele
     schlecht('Ledger mit zwei Produkten', d('ledgerzwei'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Canary-Ledger enthält nicht exakt/);
     artefaktBauen(d('ledgerscope'), { ledgerMut: (l) => { l.scope = 'full'; return l; } });
     schlecht('Ledger mit anderem Scope', d('ledgerscope'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Apply-Ledger passt nicht zum Rollback-Scope\/Plan/);
+    artefaktBauen(d('wirkungslos'), { ledgerMut: (l) => { l.products.forEach((x) => { x.state = 'unchanged'; }); return l; } });
+    schlecht('Artefakt eines wirkungslosen Apply (Ledger nur «unchanged»)', d('wirkungslos'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /nichts zurückzunehmen/);
+    artefaktBauen(d('wirkungslosfull'), { scope: 'full', ledgerMut: (l) => { l.products.forEach((x, i) => { x.state = i % 2 ? 'rejected' : 'unchanged'; }); return l; } });
+    schlecht('Full-Artefakt ohne einen einzigen Write', d('wirkungslosfull'), 'full', 'V64_ROLLBACK_16_EDITOR', /nichts zurückzunehmen/);
+    artefaktBauen(d('writing'), { ledgerMut: (l) => { l.products[0].state = 'writing'; return l; } });
+    gut('Absichtszeile «writing» (Lauf abgebrochen) bleibt rücknehmbar', d('writing'), 'canary-tasse', 'V64_ROLLBACK_TASSE');
+    artefaktBauen(d('zustandfremd'), { ledgerMut: (l) => { l.products[0].state = 'halb-fertig'; return l; } });
+    schlecht('unbekannter Ledger-Zustand', d('zustandfremd'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Apply-Ledger unzulässig/);
     artefaktBauen(d('ledgerplan'), { ledgerMut: (l) => { l.sourcePlanSha256 = 'f'.repeat(64); return l; } });
     schlecht('Ledger gehört zu einem anderen Plan', d('ledgerplan'), 'canary-tasse', 'V64_ROLLBACK_TASSE', /Apply-Ledger passt nicht/);
     artefaktBauen(d('sicherung'));
@@ -727,6 +765,11 @@ test('Planer (c): manipulierte Beschreibungen werfen weiter (Titel, Karten-/Vors
     ['Karte: ohne ?v=', BASIS, rx(/(data-karte-url="[^"?]*)\?v=[0-9a-f]{16}"/, '$1"'), WEITERE],
     ['Karte: ?v= mit 15 statt 16 Zeichen', BASIS, rx(/(data-karte-url="[^"?]*\?v=)[0-9a-f]{16}"/, '$1aaaaaaaaaaaaaaa"'), WEITERE],
     ['Karte: zusätzlicher Query-Parameter', BASIS, rx(/(data-karte-url="[^"]*\?v=[0-9a-f]{16})"/, '$1&x=1"'), WEITERE],
+    ['Vorschau: zusätzlicher Query-Parameter', BASIS, rx(/(data-vorschau-url="[^"]*\?v=[0-9a-f]{16})"/, '$1&x=1"'), WEITERE],
+    ['Vorschau: ohne ?v=', BASIS, rx(/(data-vorschau-url="[^"?]*)\?v=[0-9a-f]{16}"/, '$1"'), WEITERE],
+    ['Vorschau: ?v= mit 15 statt 16 Zeichen', BASIS, rx(/(data-vorschau-url="[^"?]*\?v=)[0-9a-f]{16}"/, '$1aaaaaaaaaaaaaaa"'), WEITERE],
+    ['Vorschau: zusätzlicher Parameter VOR ?v=', BASIS, rx(/(data-vorschau-url="[^"?]*)\?v=/, '$1?x=1?v='), WEITERE],
+    ['Karte: zusätzlicher Parameter VOR ?v=', BASIS, rx(/(data-karte-url="[^"?]*)\?v=/, '$1?x=1?v='), WEITERE],
     ['Vorschau: Pfad eines anderen Produkts', BASIS, mut('lspod-15422819991937.vorschau.json?v=', 'lspod-15422854463873.vorschau.json?v='), WEITERE],
     ['Vorschau: Attribut entfernt', BASIS, rx(/ data-vorschau-url="[^"]*"/, ''), WEITERE],
     ['Vorschau: bei einem Produkt ohne Vorschau hinzugefügt', OHNE_VORSCHAU, mut('></div>', ` data-vorschau-url="https://abannews.com/pod/v6/maps/lspod-15422950474113.vorschau.json?v=${'a'.repeat(16)}"></div>`, OHNE_VORSCHAU.block), WEITERE],
@@ -758,7 +801,7 @@ test('Planer (c): manipulierte Beschreibungen werfen weiter (Titel, Karten-/Vors
     assert.ok(fehler, `${name}: wurde NICHT abgelehnt`);
     assert.match(fehler.message, regex, `${name}: falsche Ablehnung: ${fehler.message}`);
   }
-  assert.equal(faelle.length, 32);
+  assert.equal(faelle.length, 37);
   // zusätzliches Vorgänger-Script AUSSERHALB des Blocks
   wirft(() => editorReleasePlanen(`${beschr(B)}${SKRIPT630}`, neuerBlock(BASIS), releaseReal.editor, { vorgaenger: VG }), AUSGANG);
   // Ziel schon da, aber Karten-?v= weicht ab: kein stilles Nachziehen (jede andere Lage wirft)
@@ -824,9 +867,9 @@ else {
     assert.doesNotMatch(w, /pod-v63-rollout/); assert.match(w, /retention-days: 30/);
     assert.doesNotMatch(w, /run:\s*[^\n]*\$\{\{\s*inputs\./);
     // auch in mehrzeiligen run-Blöcken (run: |) darf keine Eingabe direkt eingesetzt werden: Eingaben nur als env-Wert, in if:, name: und with:-run-id
-    const erlaubt = [/^\s+[A-Z_]+: \$\{\{ inputs\.\w+ \}\}$/, /^\s+if: \$\{\{ inputs\.operation == 'rollback' \}\}$/, /^\s+name: pod-v64-rollout-\$\{\{ inputs\.source_run_id \}\}$/, /^\s+run-id: \$\{\{ inputs\.source_run_id \}\}$/];
+    const erlaubt = [/^\s+[A-Z_]+: \$\{\{ inputs\.\w+ \}\}$/, /^\s+if: \$\{\{ inputs\.operation (==|!=) 'rollback' \}\}$/, /^\s+name: pod-v64-rollout-\$\{\{ inputs\.source_run_id \}\}$/, /^\s+run-id: \$\{\{ inputs\.source_run_id \}\}$/];
     const eingabezeilen = w.split('\n').filter((l) => /\$\{\{\s*inputs\./.test(l));
-    assert.ok(eingabezeilen.length >= 8, 'zu wenige Eingabestellen gefunden');
+    assert.ok(eingabezeilen.length >= 10, 'zu wenige Eingabestellen gefunden');
     for (const l of eingabezeilen) assert.ok(erlaubt.some((re) => re.test(l)), `Eingabe an unzulässiger Stelle eingesetzt: ${l.trim()}`);
     assert.match(w, /OUT_DIR: \$\{\{ runner\.temp \}\}\/pod-v64-run/);
     assert.match(w, /direct_rollout_test\.mjs/); assert.match(w, /editor_release_bauen\.mjs --pruefen/);
@@ -857,6 +900,22 @@ else {
     assert.equal(lauf1({ OPERATION: 'plan', SCOPE: 'full', CONFIRMATION: '', SOURCE_RUN_ID: '', REF_NAME: 'feature' }).status, 2, 'Nicht-Default-Branch wurde nicht abgewiesen');
     assert.equal(lauf1({ OPERATION: 'loeschen', SCOPE: 'full', CONFIRMATION: '', SOURCE_RUN_ID: '' }).status, 2);
   });
+  test('Workflow 6.4.0: Plan und Apply prüfen vorab Tests und editor-release.json, der ROLLBACK nicht (er braucht nur das Artefakt und muss auch bei geänderter 6.4.0.js laufen)', () => {
+    const w = readFileSync(W64, 'utf8');
+    const schritte = w.split(/\n(?=      (?:# [^\n]*\n      )*- (?:name|uses): )/).filter((s) => /^      (?:# [^\n]*\n      )*- (?:name|uses): /.test(s));
+    const finde = (rx) => { const s = schritte.filter((x) => rx.test(x)); assert.equal(s.length, 1, `Schritt ${rx} nicht genau einmal gefunden (${s.length})`); return s[0]; };
+    const bedingung = (s) => (s.match(/^        if: (.+)$/m) || [])[1];
+    const NICHT_ROLLBACK = "${{ inputs.operation != 'rollback' }}";
+    assert.equal(bedingung(finde(/- name: Lokaltests vor Plan und Apply/)), NICHT_ROLLBACK);
+    assert.ok(/direct_rollout_test\.mjs/.test(finde(/- name: Lokaltests vor Plan und Apply/)));
+    assert.equal(bedingung(finde(/- name: editor-release\.json gegen die echten Dateien prüfen/)), NICHT_ROLLBACK);
+    assert.ok(/editor_release_bauen\.mjs --pruefen/.test(finde(/- name: editor-release\.json gegen die echten Dateien prüfen/)));
+    assert.equal(bedingung(finde(/- name: Ursprüngliches Apply-Artefakt für Rollback laden/)), "${{ inputs.operation == 'rollback' }}");
+    // alles andere läuft in jedem Modus: Eingabeprüfung, Checkout, Node, der Lauf selbst; der Upload auch nach Fehlern und Abbruch
+    for (const rx of [/- name: Eingaben und Default-Branch prüfen/, /- uses: actions\/checkout@v4/, /- uses: actions\/setup-node@v4/, /- name: Planen oder kontrolliert schreiben/]) assert.equal(bedingung(finde(rx)), undefined, `${rx}: darf keine Bedingung tragen`);
+    assert.equal(bedingung(finde(/- name: Plan, Sicherungen und Ledger hochladen/)), '${{ always() }}');
+    assert.equal(schritte.filter((s) => /^        if: /m.test(s)).length, 4, 'unerwartete Bedingung an einem weiteren Schritt');
+  });
   test('Workflow 6.4.0 und 6.3.1 teilen sich eine Concurrency-Gruppe (nie gleichzeitig auf denselben Beschreibungen); der v63-Workflow trägt nichts von 6.4.0', () => {
     const w64 = readFileSync(W64, 'utf8'); const w63 = readFileSync(W63, 'utf8');
     const gruppe = (w) => w.match(/concurrency:\n  group: (\S+)\n  cancel-in-progress: false/)?.[1];
@@ -867,7 +926,22 @@ else {
 test('README dokumentiert den 6.4.0-Ablauf, alle sechs Bestätigungen, die Gates und den Rückweg', () => {
   const r = readFileSync(HIER + 'README.md', 'utf8');
   for (const ack of Object.values(SOLL64.apply).concat(Object.values(SOLL64.rollback))) assert.ok(r.includes(ack), `README nennt ${ack} nicht`);
-  for (const wort of ['editor-release.json', 'editor_release_bauen.mjs', 'canary-tasse', 'canary-jutebeutel', 'Rollback', 'pod-v64-description-rollout.yml']) assert.ok(r.includes(wort), `README nennt ${wort} nicht`);
+  for (const wort of ['editor-release.json', 'editor_release_bauen.mjs', 'canary-tasse', 'canary-jutebeutel', 'Rollback', 'pod-v64-description-rollout.yml', 'Handrückweg', 'skipped-not-written', 'nichts zurückzunehmen', 'failed-changed', 'writing', 'direct_rollout_attrappe_test.mjs']) assert.ok(r.includes(wort), `README nennt ${wort} nicht`);
 });
+
+// ---- Schreib- und Rollback-Pfad gegen die Offline-Attrappe (Shopify, Storefront, Assets; kein Netz, keine Zugangsdaten) ----------------
+// Eigene Datei, hier als Kindprozess eingehängt, damit der CI-Job «selbst-gestalten» (er startet nur diese Datei) sie mitprüft.
+// Nur die Mutationsprobe schaltet sie für Mutanten ab, die den Runner gar nicht berühren (DIREKT_ROLLOUT_OHNE_ATTRAPPE=1).
+if (process.env.DIREKT_ROLLOUT_OHNE_ATTRAPPE === '1') console.log('ÜBERSPRUNGEN: Attrappen-Szenarien (DIREKT_ROLLOUT_OHNE_ATTRAPPE=1, nur für die Mutationsprobe)');
+else {
+  test('Attrappen-Szenarien (direct_rollout_attrappe_test.mjs): Plan, Apply je Stufe, Rollback, Hash-Schutz, Ledger-/OUT_DIR-Sperre, Live-Gates, Rücklesen, kein Wiederholen; Rollback unabhängig von Sperrseiten, ENTWURF und lokalen Dateien', () => {
+    const r = spawnSync(process.execPath, [HIER + 'direct_rollout_attrappe_test.mjs'], { encoding: 'utf8', timeout: 240000, env: { PATH: process.env.PATH || '', HOME: tmpdir() } });
+    const m = (r.stdout || '').match(/^(\d+) Prüfungen, (\d+) Fehler/m);
+    assert.ok(m, `keine Auswertung: ${(r.stdout || '').slice(0, 200)} ${(r.stderr || '').slice(0, 300)}`);
+    assert.equal(r.status, 0, `${m[2]} Fehler in den Attrappen-Szenarien:\n${(r.stdout || '').slice(0, 1800)}`);
+    assert.ok(Number(m[1]) >= 100, `zu wenige Prüfungen (${m[1]}): Szenarien entfernt?`);
+    ok += Number(m[1]) - 1;   // die Einzelprüfungen zählen mit
+  });
+}
 
 if (!process.exitCode) console.log(`${ok} Tests bestanden`);
