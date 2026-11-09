@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "luxestyle-ranking-fixes-r158-v1",
+  "recordedAt": "2026-11-09T21:52:00+01:00",
+  "scope": "bounded_fr_homepage_and_og_https_unpublished_preview_plus_menu_ia_and_claude_handoff",
+  "identity": {
+    "shop": "LuxeStyle",
+    "primaryDomain": "luxestyle.ch",
+    "currency": "CHF",
+    "matched": true
+  },
+  "themes": {
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/213013037447",
+      "role": "MAIN",
+      "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+      "fileMd5": "c7e3f66093cbdb59f29210b62ebd1447",
+      "fileBytes": 17026,
+      "changed": false
+    },
+    "preview": {
+      "id": "gid://shopify/OnlineStoreTheme/213619179911",
+      "role": "UNPUBLISHED",
+      "name": "LuxeStyle – R158 SEO Preview 09.11.2026",
+      "fileMd5": "5272479d3e09c18aa461e78f465c7c0b",
+      "fileBytes": 17254,
+      "processing": false,
+      "processingFailed": false
+    },
+    "inventory": {
+      "mainFiles": 537,
+      "previewFiles": 537,
+      "onlyMain": [],
+      "onlyPreview": [],
+      "changedFiles": [
+        "snippets/meta-tags.liquid"
+      ]
+    }
+  },
+  "previewChanges": {
+    "file": "snippets/meta-tags.liquid",
+    "ogImage": {
+      "primaryHttpPrefixesBefore": 2,
+      "primaryHttpPrefixesAfter": 0,
+      "primaryHttpsPrefixesAfter": 2,
+      "secureUrlHttpsPrefixesAfter": 2
+    },
+    "frHomepage": {
+      "branchCount": 1,
+      "description": "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50.",
+      "deDescriptionPreserved": true
+    }
+  },
+  "previewReadback": {
+    "de": {
+      "url": "https://luxestyle.ch/?preview_theme_id=213619179911",
+      "httpStatus": 200,
+      "title": "LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz",
+      "h1": "Schön leben. Schlau shoppen.",
+      "canonical": "https://luxestyle.ch/",
+      "hreflang": [
+        "x-default",
+        "de",
+        "fr"
+      ],
+      "ogImageHttps": true,
+      "scrapeId": "01a1c211-9e5b-77af-841a-33e0e562e539"
+    },
+    "fr": {
+      "url": "https://luxestyle.ch/fr/?preview_theme_id=213619179911",
+      "httpStatus": 200,
+      "title": "LuxeStyle Suisse – Mode, beauté, maison et technologie",
+      "h1": "Bien vivre. Acheter malin.",
+      "canonical": "https://luxestyle.ch/fr",
+      "hreflang": [
+        "x-default",
+        "de",
+        "fr"
+      ],
+      "descriptionLanguage": "fr",
+      "ogImageHttps": true,
+      "scrapeId": "01a1c211-9f82-7359-b21c-42a8769b5957"
+    }
+  },
+  "writes": {
+    "themeDuplicate": 1,
+    "previewThemeFilesUpsert": 2,
+    "mainTheme": 0,
+    "themePublish": 0,
+    "menu": 0,
+    "social": 0,
+    "customer": 0,
+    "discount": 0,
+    "budget": 0,
+    "flow": 0,
+    "dns": 0,
+    "merchant": 0,
+    "paidRender": 0,
+    "publishAttempt": {
+      "state": "blocked_by_automatic_approval_review_before_execution",
+      "requestedMutation": "themePublish",
+      "requiredSpecializedTool": "theme_publish",
+      "specializedToolAvailable": false,
+      "retryCount": 0,
+      "published": false
+    }
+  },
+  "menuIa": {
+    "currentNodes": 784,
+    "depthCounts": {
+      "0": 21,
+      "1": 243,
+      "2": 520
+    },
+    "uniqueNormalizedCollectionUrls": 742,
+    "phaseACandidateNodes": 264,
+    "headerTargetsBefore": 744,
+    "headerTargetsAfter": 240,
+    "reductionAbsolute": 504,
+    "reductionPct": 67.7,
+    "status": "BLOCKED_UNTIL_520_OF_520_HUB_COVERAGE_AND_PREVIEW_QA",
+    "historicalMissingEdges": 397,
+    "historicalHiddenUnderCap": 44,
+    "tests": {
+      "passed": 12,
+      "total": 12
+    }
+  },
+  "claudeHandoff": {
+    "branchHeadBefore": "b417b4387ebe48cb3f4830e7d85db26c0b10ff9f",
+    "sourceRevision": 157,
+    "sourceTaskCount": 24,
+    "sourceHistoryCount": 120,
+    "guardTests": {
+      "passed": 11,
+      "total": 11
+    },
+    "receiptState": "unknown_no_claude_receipt",
+    "newAutomation": false,
+    "frequencyChanged": false
+  },
+  "dailyReads": {
+    "gsc": "not_repeated_R157_today",
+    "metricool": "not_repeated_R154_today",
+    "klaviyo": "not_repeated_R154_today",
+    "dns": "not_repeated_R155_today",
+    "purchaseWatch": "ended_not_repeated"
+  },
+  "artifactSha256": {
+    "menuIa": "c03e33701ba4bfe37de5637e224d3182806878d22683d9e572d966878150920e",
+    "claudeSync": "1481c7b3cfb88b5b9a431254bce7311c130c58641eef264f9eee97cc03d610e8",
+    "authorizationGuard": "cf1d3a010285da51d85eefa7be4a626fcb1ed6fef7b7ce77a9a6a8b8f48881b6",
+    "frPatchAfter": "1bb91c3a2136544c614bca4163943b7ef1af405044c3d2b7e7438ed8968a6ddd"
+  },
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

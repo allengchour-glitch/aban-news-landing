@@ -1729,3 +1729,18 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation | R157-Bericht, Rohbelege, Übergabe, Projektgedächtnis, Arbeitsstand und denselben Tagesblock additiv fortgeführt | Revision157,24 Aufgaben,120 Historieneinträge; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R157_20261109] [Bericht](RANKING-UMSETZUNG-20261109-R157.md) · [Beleg](RANKING-UMSETZUNG-20261109-R157.json) · [GSC](GSC-RANKING-20261109-R157.json) · [Public nachher](PUBLIC-SEO-NACHHER-20261109-R157.json) · [Theme-Analyse](THEME-SEO-ANALYSE-20261109-R157.md). Genau vier FR-Übersetzungsfelder live; keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Menü-, Theme- oder kostenpflichtige Renderänderung.
+
+### R158
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Revision157, fünf kanonische Dateien und Tagesgrenzen frisch gelesen | 24 eindeutige Aufgaben,120 Historieneinträge; R154/R155/R157-Abfragen nicht wiederholt; Kauf-Watch beendet |
+| Shopify / Vorschau | Aktuellen MAIN dupliziert und ausschliesslich `snippets/meta-tags.liquid` in Theme213619179911 zweimal eng aktualisiert | Preview UNPUBLISHED;537/537 Dateien, genau eine Abweichung; MAIN unverändert |
+| Ranking / FR | Locale-abhängige französische Homepage-Beschreibung eingefügt und DE/FR öffentlich geprüft | DE unverändert; FR Meta/OG/Twitter französisch; Titel/H1/Canonical/Hreflang korrekt; HTTP200 |
+| Ranking / OG | Zwei primäre `og:image`-Präfixe in der Vorschau von HTTP auf HTTPS gesetzt | `og:image` und `og:image:secure_url` in DE/FR HTTPS; noch nicht produktiv |
+| Veröffentlichung | Exakten Theme-Publish nach vollständiger Vorschau-/Inventur-QA einmal angefordert | Automatische Freigabeprüfung blockierte vor Ausführung; Spezialwerkzeug fehlt; kein Retry; MAIN unverändert |
+| Menü-IA | Phase-A-Zielbaum und vollständige Sicherheitsgates erstellt | Entwurf784→264 Knoten/−67,7% Header-Ziele; R128-Erreichbarkeitsgate blockiert; kein Menüwrite;12/12 Tests |
+| Claude Code | Handoff-Guard und bestehende Übergabe geprüft; kanonische Dokumentation fortgeführt | 11/11 Guardtests; keine neue Automation/Frequenz; Claude-Empfang unbekannt |
+| Grenzen | Scope und Tagesgrenzen erhalten | Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, MAIN-Theme-, Bestell- oder kostenpflichtige Renderänderung |
+
+[LUXESTYLE_R158_20261109] [Bericht](RANKING-FIXES-20261109-R158.md) · [Beleg](RANKING-FIXES-20261109-R158.json) · [Menü-IA](MENU-IA-20261109-R158.json) · [Claude-Sync](CLAUDE-SYNC-20261109-R158.md). Preview geprüft, nicht veröffentlicht.

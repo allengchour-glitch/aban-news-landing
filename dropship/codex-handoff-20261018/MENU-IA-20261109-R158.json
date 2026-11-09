@@ -1,0 +1,335 @@
+{
+  "schemaVersion": "luxestyle-r158-menu-ia-draft-v1",
+  "createdAtUtc": "2026-11-09T20:39:57+00:00",
+  "mode": "READ_ONLY_NO_SHOPIFY_MENU_THEME_OR_WORKFLOW_WRITE",
+  "sources": {
+    "liveStats": {
+      "path": "/dev/shm/r157-theme-seo/live-main-menu-stats.json",
+      "sha256": "9c92c16b6d0cd3912c739b0acf7dc9ac0575e88165b9137b6a7633920bbf8245",
+      "readAtUtc": "2026-11-09T20:21:00Z",
+      "source": "Shopify Admin GraphQL read-only"
+    },
+    "exactCurrentHierarchyProxy": {
+      "path": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/menu-sicherung/main-menu-vor-kueche-geschirr-0311-2026-11-03T22-19-13-956Z.json",
+      "sha256": "c730ae8dc1a739714d3b96f2dc0cd2d0dddf91dbd1cb2ced0c9fcedb0b70876b",
+      "whyAccepted": "Same menu id/title/handle and exact 21/243/520 depth counts,779 collection nodes and742 normalized collection URLs as fresh R157 Admin readback. 19/21 top titles match; the two known shortened live titles Küche/Geschirr are applied only to the non-mutation blueprint."
+    },
+    "r128CoverageEvidence": {
+      "summary": "84 group landing pages;520 child edges; only13 groups full;397 edges absent from main content; cap6 would hide44 unique targets without fallback; mobile Alle-in link0/86;36 tests PASS",
+      "state": "historical_dated_blocker_preserved_requires_fresh_preview_countercheck"
+    },
+    "indexMenuCsv": {
+      "path": "/workspace/luxestyle-review/r146-cj-ch-route/dropship/index-analyse-0311/index_menue_0311.csv",
+      "role": "dated 02.11 prioritisation input only; not current traffic/sales proof"
+    }
+  },
+  "currentHierarchyComparison": {
+    "matchingTopTitles": 19,
+    "knownTitleDrift": [
+      {
+        "index": 8,
+        "snapshot": "Küche & Kochen",
+        "live": "Küche"
+      },
+      {
+        "index": 9,
+        "snapshot": "Geschirr & Tisch",
+        "live": "Geschirr"
+      }
+    ],
+    "consequence": "Blueprint only; never send historical tree. Fresh full tree required."
+  },
+  "current": {
+    "menuId": "gid://shopify/Menu/310224093569",
+    "handle": "main-menu",
+    "nodes": 784,
+    "depthCounts": {
+      "0": 21,
+      "1": 243,
+      "2": 520
+    },
+    "collectionNodes": 779,
+    "uniqueNormalizedCollectionUrls": 742,
+    "headerUniqueCollectionTargets": 744,
+    "headerCollectionLinkInstances": 1473,
+    "adminLocalePrefixNodes": 642,
+    "adminLocalePrefixInterpretation": "Project skill states Admin API URLs may carry /en/ prefix; strip for storefront comparison. This is not by itself proof of an English public page."
+  },
+  "phaseA": {
+    "status": "BLOCKED_UNTIL_HUB_COVERAGE_520_OF_520_AND_PREVIEW_QA",
+    "change": "Keep all21 top-level and all243 second-level nodes; remove only520 third-level nodes from global menu after every edge is present server-side on its parent hub.",
+    "candidateNodes": 264,
+    "candidateCollectionNodes": 259,
+    "candidateUniqueMenuCollectionUrls": 238,
+    "candidateHeaderUniqueCollectionTargets": 240,
+    "absoluteTargetReduction": 504,
+    "relativeTargetReductionPct": 67.7,
+    "preservesAllTopAndSecondItems": true,
+    "deletesCollections": false,
+    "changesCanonicalOrHandle": false,
+    "removedEdgesManifest": "r158-menu-ia-removed-depth3-edges.csv",
+    "requiredHubImplementation": "In an UNPUBLISHED theme, each of the84/86 group nodes must render a main-content child navigation with every direct child; mobile also needs a persistent “Alle in …” link. No cap until520/520 edges are present."
+  },
+  "phaseB": {
+    "status": "LATER_INFORMATION_ARCHITECTURE_PROPOSAL_NOT_MUTATION_INPUT",
+    "topBlueprint": [
+      {
+        "top": "Geschenke & Weihnachten",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Weihnachten",
+          "Geschenke für Sie",
+          "Geschenke für Ihn",
+          "Geschenke für Kinder",
+          "Kleine Mitbringsel unter CHF 20",
+          "Geschenke unter CHF 50",
+          "Sets & Bundles",
+          "Selbst gestalten"
+        ]
+      },
+      {
+        "top": "Damen",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Kleider",
+          "T-Shirts & Langarmshirts",
+          "Tops & Oberteile",
+          "Blusen & Hemden",
+          "Pullover & Strick",
+          "Hoodies & Sweatshirts",
+          "Hosen",
+          "Jacken & Mäntel",
+          "Sportbekleidung",
+          "Schuhe"
+        ]
+      },
+      {
+        "top": "Herren",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Hemden",
+          "T-Shirts & Shirts",
+          "Pullover & Strick",
+          "Hoodies & Sweatshirts",
+          "Jacken & Mäntel",
+          "Hosen",
+          "Sportbekleidung",
+          "Schuhe",
+          "Uhren",
+          "Bart & Rasur"
+        ]
+      },
+      {
+        "top": "Schuhe",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Damenschuhe",
+          "Herrenschuhe",
+          "Kinderschuhe",
+          "Arbeits- & Sicherheitsschuhe",
+          "Sportschuhe"
+        ]
+      },
+      {
+        "top": "Taschen & Rucksäcke",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Damen Handtaschen",
+          "Damen Umhänge- & Schultertaschen",
+          "Damen Shopper & Tragetaschen",
+          "Herren Umhänge- & Schultertaschen",
+          "Herren Aktentaschen & Laptoptaschen",
+          "Rucksäcke",
+          "Kulturbeutel & Packorganizer",
+          "Reisegepäck"
+        ]
+      },
+      {
+        "top": "Schmuck & Uhren",
+        "action": "merge_current_schmuck_and_uhren_after_hub_exists",
+        "prioritySecond": [
+          "Ringe",
+          "Ohrringe",
+          "Halsketten & Anhänger",
+          "Armbänder & Armreifen",
+          "Für Herren",
+          "Gravur & Namen",
+          "Smartwatches & Wearables",
+          "Herrenuhren",
+          "Damenuhren"
+        ]
+      },
+      {
+        "top": "Beauty & Pflege",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Make-up & Wimpern",
+          "Gesicht & Haut",
+          "Haare Rasur & Haarentfernung",
+          "Nägel & Maniküre",
+          "Körper Mund & Düfte",
+          "Beauty-Geräte & Haarentfernung",
+          "Massage & Entspannung",
+          "Aroma & Diffuser"
+        ]
+      },
+      {
+        "top": "Küche & Wohnen",
+        "action": "merge_current_kueche_geschirr_wohnen_after_hub_exists",
+        "prioritySecond": [
+          "Kochen Grillen & Backen",
+          "Küchenhelfer & Vorrat",
+          "Küchengeräte",
+          "Geschirr Besteck & Tisch",
+          "Kaffee Tee & Trinken",
+          "Putzen & Haushalt",
+          "Aufbewahrung & Möbel",
+          "Kissen Decken & Bettwäsche",
+          "Deko & Kerzen",
+          "Beleuchtung",
+          "Garten & Outdoor"
+        ]
+      },
+      {
+        "top": "Elektronik & Gaming",
+        "action": "merge_current_elektronik_and_gaming_after_hub_exists",
+        "prioritySecond": [
+          "Handy & Laden",
+          "Kopfhörer & Audio",
+          "Smartwatches & Wearables",
+          "Kamera Foto & Drohnen",
+          "TV Beamer & Streaming",
+          "Gaming & VR",
+          "PC & Computer",
+          "Büro & Drucker",
+          "Sicherheit & Überwachung",
+          "Smart Home & smarte Gadgets"
+        ]
+      },
+      {
+        "top": "Auto & Motorrad",
+        "action": "keep_until_demand_and_hub_evidence_support_merge",
+        "prioritySecond": [
+          "Innenraum & Komfort",
+          "Aussen Schlüssel & Sicherheit",
+          "Auto-Elektronik & Laden",
+          "Pflege & Werkzeug",
+          "Motorrad E-Scooter & Velo"
+        ]
+      },
+      {
+        "top": "Kinder & Baby",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Babykleidung & Kindermode",
+          "Spielzeug & Plüsch",
+          "Bausteine & Bausätze",
+          "Fahrzeuge & Ferngesteuertes",
+          "Lernen Puzzles & Spiele",
+          "Baby & Kleinkind",
+          "Schule Kinderzimmer & Draussen",
+          "Kinderschuhe"
+        ]
+      },
+      {
+        "top": "Haustiere",
+        "action": "keep_top",
+        "prioritySecond": [
+          "Hunde",
+          "Katzen",
+          "Futter & Trinken",
+          "Spazieren & Unterwegs",
+          "Spielzeug",
+          "Smarte Geräte & Technik",
+          "Schlafen Möbel & Pflege",
+          "Aquarium & Fische"
+        ]
+      },
+      {
+        "top": "Sport & Outdoor",
+        "action": "merge_current_sport_and_herbst_after_hub_exists",
+        "prioritySecond": [
+          "Fitness & Training",
+          "Yoga Pilates & Dehnen",
+          "Reisen & Outdoor",
+          "Wandern Angeln & Wasser",
+          "Camping",
+          "Rad & Velo",
+          "Ballsport Kampfsport & Schutz",
+          "Herbst-Favoriten"
+        ]
+      },
+      {
+        "top": "Highlights",
+        "action": "keep_top_and_absorb_retro",
+        "prioritySecond": [
+          "Topseller",
+          "Ab Schweizer Lager",
+          "Viral-Hits",
+          "Premium & Marken",
+          "Weihnachten",
+          "Retro & Vintage"
+        ]
+      },
+      {
+        "top": "Selbst gestalten",
+        "action": "make_explicit_primary_link",
+        "prioritySecond": []
+      },
+      {
+        "top": "Merkliste",
+        "action": "move_to_utility_icon_only_after_accessibility_test",
+        "prioritySecond": []
+      }
+    ],
+    "rule": "Only after Phase A is live and later final GSC/internal-link evidence. Every omitted second-level destination must be present on its top hub and remain HTTP200/self-canonical/indexable where intended."
+  },
+  "gates": {
+    "identity": [
+      "LuxeStyle",
+      "luxestyle.ch",
+      "menu gid://shopify/Menu/310224093569",
+      "current MAIN id/digest"
+    ],
+    "prewrite": [
+      "fresh full menu tree",
+      "canonical tree digest equals reviewed source",
+      "full rollback tree stored",
+      "candidate diff only removes reviewed edges",
+      "no inflight/unknown prior write"
+    ],
+    "coverage": [
+      "84/86 group pages HTTP200, no redirect, expected self-canonical",
+      "520/520 direct child links in server-rendered main content",
+      "0 hidden unique targets",
+      "mobile Alle-in 86/86",
+      "all targets HTTP200 or explicitly reviewed redirect; no 404",
+      "DE/FR locale and hreflang checked; Admin /en/ prefix normalized"
+    ],
+    "preview": [
+      "UNPUBLISHED theme only",
+      "360/390/768/1024/1440/1920",
+      "desktop and mobile",
+      "Tab/Shift-Tab/Enter/Space/Escape/focus return",
+      "screen-reader labels and aria-current",
+      "No-JS exposes top+second menu and deep links on hubs",
+      "no horizontal overflow",
+      "canonical/hreflang/schema/cart/account/search preserved"
+    ],
+    "writeAndReadback": [
+      "one menuUpdate only after exact diff",
+      "no blind retry on unknown",
+      "read exact menu id/tree back and compare digest",
+      "verify public desktop/mobile/no-JS",
+      "rollback from exact stored tree on confirmed mismatch"
+    ]
+  },
+  "writes": {
+    "shopifyMenu": 0,
+    "theme": 0,
+    "workflow": 0,
+    "collection": 0,
+    "redirect": 0,
+    "locale": 0
+  }
+}

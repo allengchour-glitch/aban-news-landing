@@ -253,3 +253,17 @@ Belege: `CONTENT-VERKAUFSPAKET-20261109-R156.md/.json`, `METRICOOL-PLAN-20261109
 7. Tagesgrenzen erhalten: R154 Metricool/Klaviyo und R155 DNS nicht wiederholen; Kauf-Watch beendet. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Menü-, Theme-, Social- oder kostenpflichtige Renderaktion aus dieser Übergabe.
 
 Belege: `RANKING-UMSETZUNG-20261109-R157.md/.json`, `GSC-RANKING-20261109-R157.json`, `SHOPIFY-FR-PREFLIGHT-20261109-R157.json`, `FR-SPRACH-QA-20261109-R157.json`, `PUBLIC-SEO-VORHER-20261109-R157.json`, `PUBLIC-SEO-NACHHER-20261109-R157.json`, `THEME-SEO-ANALYSE-20261109-R157.md`, `THEME-SEO-BELEG-20261109-R157.json`. Claude-Empfang weiterhin unbekannt.
+
+## R158 – Weiterarbeit nach geprüfter Theme-Vorschau
+
+[LUXESTYLE_R158_20261109]
+
+1. Shopify-Identität passte. Preview Theme `213619179911` bleibt `UNPUBLISHED`; MAIN ist `213013037447` und unverändert.
+2. Vollinventur537/537, keine fehlenden/zusätzlichen Dateien, einzig `snippets/meta-tags.liquid` weicht ab: MAIN `c7e3f66093cbdb59f29210b62ebd1447`, Preview `5272479d3e09c18aa461e78f465c7c0b`.
+3. Preview DE/FR HTTP200. DE Titel/H1/Beschreibung unverändert. FR Titel/H1 sowie Meta-/OG-/Twitter-Beschreibung vollständig französisch. Canonical/Hreflang korrekt; primäres und sicheres OG-Bild HTTPS.
+4. Der allgemeine `themePublish` wurde vor Ausführung automatisch blockiert; `theme_publish` war nicht verfügbar. Kein Retry, MAIN unverändert. Nicht als live ausgeben. Über legitimen Spezialpfad oder Shopify-Admin exakt Theme213619179911 veröffentlichen; danach Rollen, Datei-MD5 und öffentliche DE/FR-Metadaten gezielt zurücklesen. Unklarer Publish bedeutet unknown, kein Retry.
+5. Menü-Phase-A bleibt Draft:784→264 Knoten,744→240 Header-Ziele. Keine Live-Mutation, bis520/520 Kindkanten und86/86 mobile «Alle in …»-Wege in unveröffentlichter Vorschau sowie Desktop/390px/Tastatur/Screenreader/No-JS/Canonical/404-Gates bestehen.
+6. R154 Metricool/Klaviyo, R155 DNS und R157 GSC heute nicht wiederholen. Kauf-Watch beendet. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Bestell- oder kostenpflichtige Renderaktion.
+7. Bestehende 08:00/14:00/19:00 Europe/Zurich beibehalten; keine neue Automation/Frequenz. Claude-Kenntnisnahme bleibt bis echtem Beleg unbekannt.
+
+Belege: `RANKING-FIXES-20261109-R158.md/.json`, `MENU-IA-20261109-R158.json`, `CLAUDE-SYNC-20261109-R158.md`.

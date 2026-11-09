@@ -1936,3 +1936,17 @@ Theme-Ursachen wurden nur lesend präzisiert. `og:image` nutzt im MAIN-Snippet w
 [R157 Ranking-Bericht](RANKING-UMSETZUNG-20261109-R157.md) · [Maschinenbeleg](RANKING-UMSETZUNG-20261109-R157.json) · [GSC-Beleg](GSC-RANKING-20261109-R157.json) · [öffentliche Nachher-Gegenprobe](PUBLIC-SEO-NACHHER-20261109-R157.json) · [Theme-Ursachenanalyse](THEME-SEO-ANALYSE-20261109-R157.md). Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Menü-, Theme- oder kostenpflichtige Renderänderung. Claude-Empfang bleibt unbekannt.
 
 [LUXESTYLE_R157_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 158: FR-Homepage und HTTPS-OG vollständig in unveröffentlichter Vorschau geprüft
+
+Shopify wurde frisch als LuxeStyle / `luxestyle.ch` / CHF bestätigt. Eine frische Kopie des aktuellen MAIN-Themes wurde als `gid://shopify/OnlineStoreTheme/213619179911` angelegt. Die Vollinventur umfasst auf beiden Seiten537 Dateien; es gibt keine fehlenden oder zusätzlichen Dateien und genau eine abweichende Datei: `snippets/meta-tags.liquid`, MAIN-MD5 `c7e3f66093cbdb59f29210b62ebd1447`, Vorschau-MD5 `5272479d3e09c18aa461e78f465c7c0b`.
+
+Die Vorschau korrigiert exakt zwei primäre `og:image`-Präfixe von HTTP auf HTTPS und ergänzt nur für die französische Startseite eine französische Meta-/OG-/Twitter-Beschreibung. DE und FR lieferten HTTP200. Deutscher Titel, H1 und Beschreibung blieben unverändert; FR liefert Titel `LuxeStyle Suisse – Mode, beauté, maison et technologie`, H1 `Bien vivre. Acheter malin.` und die claim-sichere französische Beschreibung. Canonical und hreflang x-default/de/fr blieben korrekt; `og:image` und `og:image:secure_url` sind in beiden Vorschauen HTTPS.
+
+Der anschliessende `themePublish`-Aufruf wurde von der automatischen Freigabeprüfung vor Ausführung blockiert. Das verlangte Spezialwerkzeug `theme_publish` ist in dieser Sitzung nicht verfügbar. Kein Retry, kein MAIN-Write; die Korrekturen sind noch nicht produktiv.
+
+Für das Hauptmenü liegt ein fail-closed Phase-A-Entwurf vor:784 auf264 Knoten und744 auf240 eindeutige Header-Ziele, ohne Top-/Second-Level-Knoten zu entfernen. Die Live-Mutation bleibt gesperrt, weil der historische R128-Gate397/520 fehlende Kindkanten und44 unter einem Cap verborgene Ziele zeigt. Erst520/520 Hub-Kanten,86/86 mobile «Alle in …»-Wege und vollständige unveröffentlichte QA erlauben den nächsten Schritt.
+
+[R158 Ranking-Bericht](RANKING-FIXES-20261109-R158.md) · [Maschinenbeleg](RANKING-FIXES-20261109-R158.json) · [Menü-IA](MENU-IA-20261109-R158.json) · [Claude-Sync](CLAUDE-SYNC-20261109-R158.md). Keine erneute Tageskennzahl-, Metricool-, Klaviyo-, DNS-, Bestell- oder Kauf-Watch-Abfrage. Keine Kunden-, Rabatt-, Budget-, Flow-, DNS-, Merchant-, Social-, Menü-, MAIN-Theme- oder kostenpflichtige Renderänderung. Claude-Empfang bleibt unbekannt.
+
+[LUXESTYLE_R158_20261109]

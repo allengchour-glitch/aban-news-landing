@@ -1342,3 +1342,17 @@ Offen und getrennt: FR-Homepage-Meta/OG bleibt deutsch. Primäres `og:image` ist
 Metricool-Kennzahlen/Klaviyo aus R154 und DNS aus R155 wurden nicht erneut gelesen. Keine breite Merchant-, Verkaufs- oder Bestellabfrage. Claude-Empfang bleibt unbekannt.
 
 [LUXESTYLE_R157_20261109]
+
+## Aktueller Stand – 09.11.2026, Revision 158: Ranking-Theme vollständig als Vorschau abgenommen
+
+Eine frische Kopie des aktuellen MAIN-Themes ist als Theme `213619179911` vorhanden und bleibt `UNPUBLISHED`. Die Vollinventur ist537/537 mit genau einer abweichenden Datei. `snippets/meta-tags.liquid` enthält den eng begrenzten HTTPS-OG-Fix und die locale-abhängige französische Startseitenbeschreibung; Vorschau-MD5 `5272479d3e09c18aa461e78f465c7c0b`. DE und FR sind HTTP200, Titel/H1/Canonical/Hreflang korrekt, die deutsche Beschreibung unverändert, die französische Meta-/OG-/Twitter-Beschreibung vollständig französisch und beide OG-Bildfelder HTTPS.
+
+Der allgemeine `themePublish`-Aufruf wurde vor Ausführung automatisch blockiert; das verlangte Spezialwerkzeug fehlt. Kein Retry und kein MAIN-Write. Produktiv sind beide Fixes daher weiterhin offen. Nächster zulässiger Schritt ist exakt dieses Theme über einen legitimen spezialisierten Publish-Pfad oder direkt im Shopify-Admin zu veröffentlichen und danach DE/FR live sowie Theme-Rollen und Datei-MD5 zurückzulesen. Bei unklarem Ergebnis nicht erneut publizieren.
+
+Die Menü-IA ist nur ein Entwurf. Phase A würde alle21 Top- und243 Second-Level-Knoten erhalten und erst nach vollständiger Hub-Abdeckung520 Third-Level-Knoten aus dem globalen Menü entfernen. Ziel:264 Knoten,67,7Prozent weniger eindeutige Header-Ziele. Der R128-Erreichbarkeitsbefund blockiert weiter; keine Menüänderung.
+
+Der Claude-Handoff wurde auf Revision158 fortgeführt. Die bestehende 08:00/14:00/19:00-Europe/Zurich-Frequenz bleibt dokumentiert, aber ohne neuen Scheduler. Ein lokaler Handoff-Guard bestand11/11 Tests und ist kein produktiver Ausführungs- oder Empfangsbeleg. Receipt bleibt `unknown_no_claude_receipt`.
+
+Belege: `RANKING-FIXES-20261109-R158.md/.json`, `MENU-IA-20261109-R158.json`, `CLAUDE-SYNC-20261109-R158.md`.
+
+[LUXESTYLE_R158_20261109]
