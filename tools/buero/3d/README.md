@@ -74,3 +74,7 @@ Für Webansicht und Claude das vollständige aktuelle Designpaket übernehmen. D
 `campus-einheitlich-8` ergänzt einen21×6,4 grossen gemeinsamen Platz zwischen Hauptgebäude und Studios. Die drei Studios rücken um vier Welteinheiten nach hinten; Gänge und Raumkameras folgen. Zwei Sitzbereiche, Pflanzgefässe und ruhige Bodenfugen rahmen die freistehende Monitorwand. Keine neuen Modelle, Texturen von Drittanbietern oder Bibliotheken. Der Monitor teilt die vorhandene Infowand-Textur und zeigt Einträge, Stopps und alte Messungen aus den geladenen Daten. Antippen öffnet die vollständige Liste. Desktop-Knopf und mobile Raumauswahl führen direkt zum Campusplatz.
 
 HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine privaten Bürodaten und darf bestehende Messstände in Claude nicht ersetzen. Lokal mit Software-WebGL bei1440px und390px geprüft; echte Handy-GPU-Leistung nicht gemessen.
+
+### Spielartige Monitoransicht
+
+`campus-einheitlich-9`: Ein Klick auf die zentrale Monitorwand fährt die Kamera frontal zum Bildschirm. Die Monitoransicht hat einen eigenen Zurück-Knopf, Vollbild und einen separaten Knopf zur Gesamtliste. Zurück oder Escape stellt die vorherige Kameraposition wieder her. Normale Raumwahl beendet die Monitoransicht. Grössenwechsel passen den Abstand an; reduzierte Bewegungen überspringen die Kamerafahrt. Keine neue Datenquelle oder Kontoaktion.
