@@ -64,9 +64,168 @@ export function integritySha256(hash) {
   return `sha256-${Buffer.from(hash, 'hex').toString('base64')}`;
 }
 
-export function releaseAusAllowlist(allowlist, { editorSha256, assetSha256 }) {
+// ---- Editor-Release (editor-release.json, Weg für 6.4.0) ------------------------------------------
+// Die Datei wird von editor_release_bauen.mjs aus den echten Dateien unter pod/v6/ erzeugt, nie von Hand
+// eingetragen. Hier steht nur die reine Formprüfung; der Abgleich mit den Dateibytes steht im Bauskript.
+const SEMVER = /^\d+\.\d+\.\d+$/;
+const HASH64 = /^[a-f0-9]{64}$/;
+export const ROLLOUT_V63 = '6.3.1';   // alter Pfad (Codex): Verhalten für die alten Tests unverändert
+export const ROLLOUT_V64 = '6.4.0';   // neuer Pfad: Ziel aus editor-release.json
+export const EDITOR_RELEASE_SCHEMA = 1;
+export const editorDateiname = (version) => `lspod-designer-v6-${version}.js`;
+export const editorUrlPfad = (version) => `/pod/v6/${editorDateiname(version)}`;
+export const editorUrl = (version) => `https://abannews.com${editorUrlPfad(version)}`;
+const semverTeile = (v) => String(v).split('.').map(Number);
+export function semverKleiner(a, b) {
+  const x = semverTeile(a); const y = semverTeile(b);
+  for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] < y[i];
+  return false;
+}
+
+export function editorReleaseFormPruefen(er) {
+  const fehler = (m) => { throw new Error(`editor-release.json: ${m}`); };
+  if (!er || typeof er !== 'object' || er.schema !== EDITOR_RELEASE_SCHEMA) fehler('Schema 1 fehlt');
+  const eintragPruefen = (e, name) => {
+    if (!e || typeof e !== 'object') fehler(`${name}: Eintrag fehlt`);
+    if (!SEMVER.test(e.version || '')) fehler(`${name}: Version unbrauchbar`);
+    if (e.file !== `pod/v6/${editorDateiname(e.version)}`) fehler(`${name}: file passt nicht zur Version`);
+    if (e.url !== editorUrl(e.version)) fehler(`${name}: url passt nicht zur Version`);
+    if (!HASH64.test(e.sha256 || '')) fehler(`${name}: sha256 unbrauchbar`);
+    if (!Number.isInteger(e.bytes) || e.bytes <= 0) fehler(`${name}: bytes unbrauchbar`);
+  };
+  eintragPruefen(er, 'Ziel');
+  if (!Array.isArray(er.vorgaenger) || !er.vorgaenger.length) fehler('vorgaenger fehlt');
+  const versionen = new Set([er.version]);
+  const hashes = new Set([er.sha256]);
+  er.vorgaenger.forEach((v, i) => {
+    eintragPruefen(v, `Vorgänger ${i}`);
+    if (!semverKleiner(v.version, er.version)) fehler(`Vorgänger ${v.version} ist nicht älter als das Ziel ${er.version}`);
+    if (versionen.has(v.version) || hashes.has(v.sha256)) fehler(`Vorgänger ${v.version}: Version oder SHA doppelt oder gleich dem Ziel`);
+    versionen.add(v.version); hashes.add(v.sha256);
+  });
+  return er;
+}
+export const editorAusRelease = (er) => ({ url: er.url, sha256: er.sha256 });
+export const vorgaengerAusRelease = (er) => er.vorgaenger.map((v) => ({ url: v.url, sha256: v.sha256 }));
+
+// ---- Eingaben, Bestätigungen, Canary-Tabelle -------------------------------------------------------
+// Ein Skript, zwei Pfade: EDITOR_VERSION=6.3.1 (Vorgabe, wie bisher) und EDITOR_VERSION=6.4.0 (neu).
+// Gewählt statt eines zweiten Skripts, weil Plan, Ledger, Rollback und Schreibschutz dann EIN Code sind
+// und der alte Pfad für die alten Tests unverändert bleibt. Die Bestätigungen sind je Pfad getrennt:
+// eine V63_-Zeile aus der alten Doku bestätigt nie einen 6.4.0-Schreiblauf (und umgekehrt).
+const ACKS_V63 = Object.freeze({
+  apply: Object.freeze({ canary: 'V63_CANARY_TASSE', full: 'V63_FULL_19_SAFE' }),
+  rollback: Object.freeze({ canary: 'V63_ROLLBACK_TASSE', full: 'V63_ROLLBACK_19_SAFE' }),
+});
+const ACKS_V64 = Object.freeze({
+  apply: Object.freeze({ 'canary-tasse': 'V64_CANARY_TASSE', 'canary-jutebeutel': 'V64_CANARY_JUTEBEUTEL', full: 'V64_FULL_16_EDITOR' }),
+  rollback: Object.freeze({ 'canary-tasse': 'V64_ROLLBACK_TASSE', 'canary-jutebeutel': 'V64_ROLLBACK_JUTEBEUTEL', full: 'V64_ROLLBACK_16_EDITOR' }),
+});
+const V63_MELDUNG = Object.freeze({
+  apply: Object.freeze({ canary: 'Canary braucht ACK=', full: 'Vollausrollung braucht ACK=' }),
+  rollback: Object.freeze({ canary: 'Canary-Rollback braucht ACK=', full: 'Voll-Rollback braucht ACK=' }),
+});
+function canaryEintrag(scope, numericId, handle) {
+  const a = ALLOWLIST.find((x) => x.numericId === numericId);
+  if (!a || a.handle !== handle) throw new Error(`Canary-Tabelle: ${scope} passt nicht zur Allowlist`);
+  return Object.freeze({ scope, id: a.id, numericId: a.numericId, handle: a.handle });
+}
+// Fest einprogrammiert, keine freie Eingabe: Stufe A Keramik-Tasse, Stufe B Bio-Jutebeutel.
+export const CANARY_V63 = canaryEintrag('canary', '15422823465345', 'keramik-tasse-selbst-gestalten');
+export const CANARY_V64 = Object.freeze({
+  'canary-tasse': canaryEintrag('canary-tasse', '15422823465345', 'keramik-tasse-selbst-gestalten'),
+  'canary-jutebeutel': canaryEintrag('canary-jutebeutel', '15422819991937', 'bio-jutebeutel-selbst-gestalten'),
+});
+
+export function rolloutKonfig({ mode, scope, ack, live, editorVersion } = {}) {
+  const ev = String(editorVersion || ROLLOUT_V63);
+  if (ev !== ROLLOUT_V63 && ev !== ROLLOUT_V64) throw new Error('EDITOR_VERSION muss 6.3.1 oder 6.4.0 sein');
+  const v64 = ev === ROLLOUT_V64;
+  const m = String(mode || 'plan').toLowerCase();
+  const s = String(scope || (v64 ? '' : 'canary')).toLowerCase();   // 6.4.0 hat keinen Vorgabe-Scope
+  if (!['plan', 'apply', 'rollback'].includes(m)) throw new Error('MODE muss plan, apply oder rollback sein');
+  const erlaubt = v64 ? ['canary-tasse', 'canary-jutebeutel', 'full'] : ['canary', 'full'];
+  if (!erlaubt.includes(s)) throw new Error(v64 ? 'SCOPE muss canary-tasse, canary-jutebeutel oder full sein' : 'SCOPE muss canary oder full sein');
+  if (m !== 'plan' && live !== true) throw new Error(`${m}: LIVE=1 fehlt`);
+  let soll = '';
+  if (m !== 'plan') {
+    soll = (v64 ? ACKS_V64 : ACKS_V63)[m][s];
+    if (String(ack || '') !== soll) {
+      const text = v64 ? `${m === 'apply' ? 'Apply' : 'Rollback'} (${s}) braucht ACK=` : V63_MELDUNG[m][s];
+      throw new Error(`${text}${soll}`);
+    }
+  }
+  const canary = s === 'full' ? null : (v64 ? CANARY_V64[s] : CANARY_V63);
+  return Object.freeze({ editorVersion: ev, mode: m, scope: s, canary, ack: soll, editorUrlPfad: editorUrlPfad(ev) });
+}
+
+/** Welche Plan-Produkte ein Apply/Rollback anfasst. Canary: genau das eine feste Produkt.
+ * Full-APPLY (6.4.0): die Sperrprodukte zuerst, damit eine zwischenzeitlich veränderte Sperre den Lauf stoppt,
+ * BEVOR ein Editorprodukt geschrieben wurde (sie werden nie geschrieben, nur gegen den Plan geprüft).
+ * Full-ROLLBACK: Planreihenfolge ohne Vorrang. Die Sperren stehen im Apply-Ledger als «unchanged» und werden im Rollback
+ * gar nicht angefasst; eine seit dem Apply veränderte Sperrseite darf den Rückweg der Editorprodukte nie aufhalten. */
+export function auswahlPlanen(alle, konf) {
+  if (!Array.isArray(alle)) throw new Error('Plan ohne Produktliste');
+  if (konf.canary) {
+    const p = alle.filter((x) => x.id === konf.canary.id && x.handle === konf.canary.handle);
+    if (p.length !== 1) throw new Error(`Canary nicht genau einmal im Plan: ${konf.canary.handle}`);
+    return p;
+  }
+  if (konf.editorVersion === ROLLOUT_V63 || konf.mode === 'rollback') return alle;
+  return [...alle.filter((x) => x.kind === 'blocked'), ...alle.filter((x) => x.kind !== 'blocked')];
+}
+
+// ---- Apply-Ledger lesen: was ein Rollback zurückstellen darf ----------------------------------------------------
+/** Zustände, die ein Apply-Ledger tragen darf. «writing» ist die Absichtszeile VOR dem Write: bricht der Lauf danach ab
+ *  (Cancel im Actions-UI, Kill), steht sie als letzter Zustand da und der Rückweg bleibt möglich. */
+export const APPLY_LEDGER_ZUSTAENDE = Object.freeze(['applied', 'writing', 'unchanged', 'rejected', 'unknown', 'unknown-write-response', 'unknown-readback', 'unknown-readback-unavailable']);
+/** Zustände, bei denen der Apply-Lauf möglicherweise geschrieben hat: nur dort gibt es etwas zurückzustellen.
+ *  «unchanged» (Ziel war schon da, nichts geschrieben) und «rejected» (Shopify hat abgelehnt) sind Zeilen ohne Write. */
+export const ROLLBACK_SCHREIBBAR = Object.freeze(['applied', 'writing', 'unknown', 'unknown-write-response', 'unknown-readback', 'unknown-readback-unavailable']);
+
+/** Gibt die IDs zurück, die ein Rollback anfassen darf (Apply hat dort geschrieben oder die Antwort blieb unklar).
+ *  Gibt es keine einzige, hat dieser Apply-Lauf nichts verändert: der Rollback bricht mit einer klaren Meldung ab, statt
+ *  «grün» zu melden, während der Editor live bleibt (typisch: das Artefakt eines wiederholten, wirkungslosen Apply). */
+export function rollbackLedgerAuswerten(ledgerProdukte) {
+  if (!Array.isArray(ledgerProdukte)) throw new Error('Apply-Ledger ohne Produktliste');
+  const schreibbar = ledgerProdukte.filter((x) => ROLLBACK_SCHREIBBAR.includes(x?.state));
+  if (!schreibbar.length) {
+    const zaehler = {};
+    for (const x of ledgerProdukte) zaehler[x?.state || '?'] = (zaehler[x?.state || '?'] || 0) + 1;
+    throw new Error(`Rollback: Das Apply-Ledger enthält keinen Eintrag, bei dem der Lauf geschrieben hat (${Object.entries(zaehler).map(([k, v]) => `${k} ${v}`).join(', ') || 'leer'}): nichts zurückzunehmen. Den Rückweg mit dem Artefakt des Apply-Laufs fahren, dessen Ledger «applied» zeigt`);
+  }
+  return new Set(schreibbar.map((x) => x.id));
+}
+
+/** Identitätsprüfung für den Rollback: Produkt-ID und Handle gehören zur festen Allowlist/Sperrliste und zur Planzeile.
+ *  Bewusst KEIN Status-, Kaufbarkeits-, Varianten- oder Storefront-Gate: ein auf ENTWURF gestelltes oder verändertes
+ *  Produkt muss sich trotzdem auf die bekannte Vorher-Beschreibung zurückstellen lassen (der Hash-Schutz im Skript
+ *  entscheidet, ob die Live-Beschreibung exakt dem Plan-Nachher entspricht). */
+export function produktIdentitaetPruefen(product, id, handle) {
+  const bekannt = [...ALLOWLIST, ...BLOCKLIST].some((x) => x.id === id && x.handle === handle);
+  if (!bekannt || !product || product.id !== id || product.handle !== handle) throw new Error(`${product?.handle || id}: Identität weicht von Allowlist/Plan ab`);
+  return true;
+}
+
+export function canaryLedgerPruefen(konf, ids) {
+  const s = new Set(ids);
+  if (konf.canary && (s.size !== 1 || !s.has(konf.canary.id))) throw new Error(`Canary-Ledger enthält nicht exakt das Canary-Produkt ${konf.canary.handle}`);
+  return true;
+}
+
+export function releaseAusAllowlist(allowlist, { editorSha256, assetSha256, editor = null, vorgaengerSha256 = [] }) {
   if (!allowlist || allowlist.schema !== 1 || !Array.isArray(allowlist.products) || !Array.isArray(allowlist.blocked)) throw new Error('Quell-Allowlist: Schema 1/products/blocked fehlt');
-  if (!/^[a-f0-9]{64}$/.test(editorSha256 || '') || allowlist.editorSha256 !== editorSha256) throw new Error('Quell-Allowlist: Editor-SHA weicht von der lokalen v6.3-Datei ab');
+  // Alter Pfad (6.3.1): die Allowlist trägt den Hash der lokalen Datei. Neuer Pfad (6.4.0): Ziel kommt aus
+  // editor-release.json; die Allowlist (sie baut die Karten) darf noch den Hash eines Vorgängers tragen.
+  let zielEditor;
+  if (editor) {
+    if (!HASH64.test(editor.sha256 || '') || !/^https:\/\/abannews\.com\/pod\/v6\/lspod-designer-v6-\d+\.\d+\.\d+\.js$/.test(editor.url || '')) throw new Error('Quell-Allowlist: Ziel-Editor aus editor-release.json unbrauchbar');
+    if (![editor.sha256, ...vorgaengerSha256].includes(allowlist.editorSha256)) throw new Error('Quell-Allowlist: Editor-SHA gehört weder zum Ziel-Release noch zu einem Vorgänger');
+    zielEditor = { url: editor.url, sha256: editor.sha256 };
+  } else {
+    if (!HASH64.test(editorSha256 || '') || allowlist.editorSha256 !== editorSha256) throw new Error('Quell-Allowlist: Editor-SHA weicht von der lokalen v6.3-Datei ab');
+    zielEditor = { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.1.js', sha256: editorSha256 };
+  }
   if (!(assetSha256 instanceof Map)) throw new Error('Quell-Allowlist: Asset-SHAs fehlen');
 
   const erwartet = new Map([...ALLOWLIST, ...BLOCKLIST.slice(1)].map((x) => [x.id, x]));
@@ -106,12 +265,12 @@ export function releaseAusAllowlist(allowlist, { editorSha256, assetSha256 }) {
     const p = rows.get(b.id);
     if (!p || p.handle !== b.handle || p.status !== 'ACTIVE' || p.rolloutStatus !== 'blocked') throw new Error(`Quell-Allowlist: Printful-Blocker weicht ab: ${b.handle}`);
   }
-  return { schema: 1, editor: { url: 'https://abannews.com/pod/v6/lspod-designer-v6-6.3.1.js', sha256: editorSha256 }, products };
+  return { schema: 1, editor: zielEditor, products };
 }
 
-export function releasePruefen(release) {
+export function releasePruefen(release, { editorPfad = '/pod/v6/lspod-designer-v6-6.3.1.js' } = {}) {
   if (!release || release.schema !== 1 || !Array.isArray(release.products)) throw new Error('Release-Manifest: Schema 1/products fehlt');
-  if (!release.editor || !assetPfad(release.editor.url, '/pod/v6/lspod-designer-v6-6.3.1.js') || !/^[a-f0-9]{64}$/.test(release.editor.sha256 || '')) {
+  if (!release.editor || !assetPfad(release.editor.url, editorPfad) || !/^[a-f0-9]{64}$/.test(release.editor.sha256 || '')) {
     throw new Error('Release-Manifest: Editor-URL oder SHA-256 unbrauchbar');
   }
   const erlaubt = new Map(ALLOWLIST.map((x) => [x.id, x]));
@@ -156,25 +315,49 @@ function editorScript(editor) {
   return `<script src="${attr(assetUrl(editor.url, editor.sha256))}" integrity="${attr(integritySha256(editor.sha256))}" crossorigin="anonymous" defer></script>`;
 }
 
-/** Release 6.3.1 darf in bestehenden Produktbeschreibungen ausschliesslich
- * den unveränderlichen Editorpfad, dessen URL-Version und SRI ersetzen.
- * Karten-, Vorschau-, Varianten- und Titelattribute müssen bytegleich bleiben. */
-export function editorReleasePlanen(alt, neuerBaustein, editor) {
+// Platzhalter mit Steuerzeichen: kommt in einer Beschreibung nicht vor (der Planer prüft es und bricht sonst ab).
+const PH = '\u0001';
+/** Normalisiert genau die Felder, die ein Editor-Release verändern darf, zu Platzhaltern:
+ *  das Editor-Script-Tag (Dateiname, `?v=`, SRI), das `card=` im Marker, das `?v=` von
+ *  `data-karte-url` und `data-vorschau-url`. Der Pfad der Karte/Vorschau bleibt im Text stehen. */
+export function editorBlockNormalisieren(text, scriptTags) {
+  let t = String(text);
+  if (t.includes(PH)) throw new Error('Beschreibung enthält ein Steuerzeichen, das der Editor-Planer als Platzhalter nutzt');
+  for (const s of scriptTags) t = t.split(s).join(`${PH}script${PH}`);
+  return t
+    .replace(/(<!-- lx-v63-editor:start product=gid:\/\/shopify\/Product\/\d+ card=)[a-f0-9]{64}( -->)/g, `$1${PH}card${PH}$2`)
+    .replace(/(\bdata-karte-url="[^"?]*)\?v=[a-f0-9]{16}"/g, `$1?v=${PH}karte${PH}"`)
+    .replace(/(\bdata-vorschau-url="[^"?]*)\?v=[a-f0-9]{16}"/g, `$1?v=${PH}vorschau${PH}"`);
+}
+
+/** Ein Editor-Release (z. B. 6.4.0) darf in einer bestehenden Produktbeschreibung ausschliesslich ändern:
+ *  das Editor-Script-Tag samt Dateiname, URL-Version und SRI, das `?v=` von `data-karte-url` und
+ *  `data-vorschau-url` und das `card=` im Marker (Karte/Vorschau können seit dem letzten Rollout neu gebaut
+ *  worden sein, z. B. die zwei T-Shirt-Produkte mit Commit 1835d4361d). Alles andere bleibt bytegleich;
+ *  der Pfad der Karte, Titel, Variante, Pflichtkarte, ein zweiter Marker oder ein fremdes Skript stoppen.
+ *  Zulässige Ausgangslagen: genau EIN Vorgänger-Script (alt) und kein Ziel-Script, oder das Ziel-Script
+ *  steht schon da und die Beschreibung bleibt bytegleich (geaendert=false). Jede andere Lage wirft.
+ *  `vorgaenger` ist die Liste erlaubter Vorgänger ({url, sha256}); Vorgabe wie bisher nur 6.3.0. */
+export function editorReleasePlanen(alt, neuerBaustein, editor, { vorgaenger = [VORHER_EDITOR] } = {}) {
   const text = String(alt || '');
   const marker = text.match(/<!-- lx-v63-editor:start\b[\s\S]*?<!-- lx-v63-editor:end -->\s*/giu) || [];
   if (marker.length !== 1) throw new Error(`Editor-Release braucht genau einen bestehenden v6-Marker, gefunden ${marker.length}`);
-  const vorher = editorScript(VORHER_EDITOR);
-  const nachher = editorScript(editor);
-  const vorherAnzahl = text.split(vorher).length - 1;
-  const nachherAnzahl = text.split(nachher).length - 1;
+  const ziel = editorScript(editor);
+  const vorgScripts = vorgaenger.map(editorScript);
+  const zielAnzahl = text.split(ziel).length - 1;
+  const vorgAnzahl = vorgScripts.map((s) => text.split(s).length - 1);
+  const vorgSumme = vorgAnzahl.reduce((a, b) => a + b, 0);
   const geplant = beschreibungPlanen(text, neuerBaustein);
-  if (vorherAnzahl === 1 && nachherAnzahl === 0) {
-    const nurEditor = text.replace(vorher, nachher);
-    if (geplant.nachher !== nurEditor) throw new Error('Editor-Release würde ausser Dateiname, URL-Version oder SRI weitere Beschreibungsbytes ändern');
+  if (geplant.nachher.split(ziel).length - 1 !== 1) throw new Error('Editor-Release: der neue Baustein trägt nicht genau einmal das Ziel-Release');
+  if (zielAnzahl === 0 && vorgSumme === 1) {
+    const istScript = vorgScripts[vorgAnzahl.indexOf(1)];
+    if (editorBlockNormalisieren(text, [istScript]) !== editorBlockNormalisieren(geplant.nachher, [ziel])) {
+      throw new Error('Editor-Release würde ausser Dateiname, URL-Version, SRI, Karten-/Vorschau-Version oder Karten-Hash weitere Beschreibungsbytes ändern');
+    }
     return geplant;
   }
-  if (vorherAnzahl === 0 && nachherAnzahl === 1 && geplant.nachher === text) return geplant;
-  throw new Error(`Editor-Release-Ausgangslage unzulässig (alt=${vorherAnzahl}, neu=${nachherAnzahl})`);
+  if (zielAnzahl === 1 && vorgSumme === 0 && geplant.nachher === text) return geplant;
+  throw new Error(`Editor-Release-Ausgangslage unzulässig (alt=${vorgSumme}, neu=${zielAnzahl})`);
 }
 
 export function blockerBaustein({ product, blocker }) {

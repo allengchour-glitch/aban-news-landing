@@ -22,8 +22,11 @@ export function playwright() {
   throw new Error('Playwright nicht gefunden');
 }
 
-/** Die geprüfte Fassung des Editors: 6.2.0. Die Rücknahme 6.1.0 (lspod-designer-v6.js) läuft mit V6_DATEI=… und V6_VERSION=6.1.0 durch dieselben Prüfungen. */
-export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.2.0.js');
+/** Die geprüfte Fassung des Editors: 6.4.0. Die Vorgänger (6.3.1, 6.2.0 und die Rücknahme 6.1.0 = lspod-designer-v6.js) laufen mit V6_DATEI=… und V6_VERSION=… durch dieselben Prüfungen
+ *  (Prüfungen der neuen Ansichten gibt es dort nicht: bearbeiten_test.mjs prüft die Version und beendet sich sonst). */
+export const V6_DATEI = process.env.V6_DATEI || join(v6Ordner, 'lspod-designer-v6-6.4.0.js');
+/** Referenzfassung für Vergleiche (gleiche Eingaben, andere Datei): Standard 6.3.1. Die Mock-Seite lädt sie mit dem Parameter editor=ref. */
+export const V6_REF_DATEI = process.env.V6_REF_DATEI || join(v6Ordner, 'lspod-designer-v6-6.3.1.js');
 export const V5_DATEI = join(repo, 'pod', 'live', 'lspod-designer-v5-safe.js');
 /** Optionaler Ordner mit heruntergeladenen Vorlagenbildern (sha1 der Adresse, 16 Zeichen); ohne ihn gibt es einfache Attrappen. */
 export const BILDCACHE = process.env.V6_BILDCACHE || '';
@@ -58,9 +61,13 @@ function karteMitShop(id, shopParam, ohneMinDpi, extraHinweise) {
 export function starteServer() {
   const server = createServer((req, res) => {
     const u = new URL(req.url, 'http://x');
-    const senden = (typ, inhalt, code = 200) => { res.writeHead(code, { 'content-type': typ, 'cache-control': 'no-store' }); res.end(inhalt); };
+    const senden0 = (typ, inhalt, code = 200) => { res.writeHead(code, { 'content-type': typ, 'cache-control': 'no-store' }); res.end(inhalt); };
+    // verzoegerung=ms: Vorschaudaten treffen verspätet ein (Test: Daten kommen erst NACH der ersten Änderung des Kunden)
+    const verz = /^\/vorschau\//.test(u.pathname) ? Number(u.searchParams.get('verzoegerung')) || 0 : 0;
+    const senden = verz > 0 ? (typ, inhalt, code = 200) => { setTimeout(() => senden0(typ, inhalt, code), verz); } : senden0;
     if (u.pathname === '/mock.html') return senden('text/html; charset=utf-8', readFileSync(join(hier, 'mock.html')));
     if (u.pathname === '/lspod-designer-v6.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_DATEI));
+    if (u.pathname === '/lspod-designer-v6-ref.js') return senden('text/javascript; charset=utf-8', readFileSync(V6_REF_DATEI));
     if (u.pathname === '/v5.js') return senden('text/javascript; charset=utf-8', readFileSync(V5_DATEI));
     let m;
     if (u.pathname === '/karten/syn.json') {
@@ -83,6 +90,19 @@ export function starteServer() {
       const varianten = {};
       for (const paar of (u.searchParams.get('shop') || '').split(',').filter(Boolean)) { const [sv, pv, mo] = paar.split(':'); if (sv && pv && mo) varianten[sv] = { pv: Number(pv), m: Number(mo) }; }
       return senden('application/json', JSON.stringify({ schema: 1, modelle, shop: { varianten } }));
+    }
+    // LIVE-Karten und -Vorschaudaten aus pod/v6/maps (die Dateien, die in den Produktbeschreibungen stehen): karte=live-<Dateiname ohne «lspod-» und Endung>, vorschau=live-<…>; spiegel=0 (Vorgabe der Tests): Vorlagenbilder
+    // werden von der Printful-Adresse geladen (mit V6_BILDCACHE die echten Bilder), sonst gelten die gespiegelten Adressen der Datei.
+    if ((m = u.pathname.match(/^\/karten\/live-(\d+)\.json$/))) {
+      const f = join(v6Ordner, 'maps', `lspod-${m[1]}.karte.json`);
+      return existsSync(f) ? senden('application/json', readFileSync(f)) : senden('text/plain', 'keine Karte', 404);
+    }
+    if ((m = u.pathname.match(/^\/vorschau\/live-(\d+)\.json$/))) {
+      const f = join(v6Ordner, 'maps', `lspod-${m[1]}.vorschau.json`);
+      if (!existsSync(f)) return senden('text/plain', 'keine Vorschaudaten', 404);
+      const d = JSON.parse(readFileSync(f, 'utf8'));
+      if (u.searchParams.get('spiegel') === '0') for (const mo of Object.values(d.modelle)) for (const k of Object.keys(mo.bilder || {})) mo.bilder[k] = null;
+      return senden('application/json', JSON.stringify(d));
     }
     if ((m = u.pathname.match(/^\/vorschau\/([\d,]+)\.json$/))) {
       // Vorschaudaten (Schema 1) aus den Test-Katalogen im Repo, gebaut mit dem echten Werkzeug; spiegel=0: Bilder nicht gespiegelt (null), sonst auf «cdn.shopify.com/s/files/test/»
@@ -203,12 +223,12 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
  * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool,
  *                   cloudinaryMaxBytes: Zahl (grössere Uploads → HTTP 400 «File size too large»), cloudinaryMaxPixel: Zahl (mehr Pixel → HTTP 400 «Image dimensions too large»),
  *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms,
- *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulHaengt / shopifyHaengt: (url) => bool (Antwort kommt nie), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
+ *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulHaengt / shopifyHaengt: (url) => bool (Antwort kommt nie), printfulBild / shopifyBild: (url) => { status?, typ, body, cors?, verzoegerung? } | null, corsErwartet: bool }
  * @returns { page, ctx, fehler: string[], uploads: [], abgelehnt: [], warenkorb: [], png(url), schliessen() }
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
   const ctx = await browser.newContext({
-    viewport: { width: opt.breite || 1440, height: opt.hoehe || 900 }, deviceScaleFactor: 1, userAgent: NORMALE_KENNUNG, hasTouch: !!opt.mobil, isMobile: !!opt.mobil, locale: opt.sprache || 'de-CH',
+    viewport: { width: opt.breite || 1440, height: opt.hoehe || 900 }, deviceScaleFactor: 1, userAgent: NORMALE_KENNUNG, hasTouch: !!opt.mobil, isMobile: !!opt.mobil, locale: opt.sprache || 'de-CH', reducedMotion: opt.reducedMotion || 'no-preference',
   });
   const page = await ctx.newPage();
   if (opt.initSkript) await page.addInitScript(opt.initSkript);   // läuft vor jedem Skript der Seite (z. B. gesperrter Speicher)
@@ -234,7 +254,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     bildAnfragen.push(u);
     if (opt.printfulHaengt && opt.printfulHaengt(u)) return;   // Antwort bleibt aus (Verbindung offen): Test der Fristen
     const eigene = opt.printfulBild ? opt.printfulBild(u) : null;
-    if (eigene) return bildAntwort(route, eigene);
+    if (eigene) { if (eigene.verzoegerung > 0) { setTimeout(() => { bildAntwort(route, eigene).catch(() => {}); }, eigene.verzoegerung); return; } return bildAntwort(route, eigene); }   // verzoegerung: ms bis zur Antwort (Test: das Foto scheitert erst, wenn die Seite längst steht)
     const b = vorlagenBild(u); route.fulfill({ status: 200, contentType: b.typ, body: b.body, headers: { 'access-control-allow-origin': '*' } });
   });
   await page.route('https://cdn.shopify.com/**', (route) => {
@@ -284,7 +304,11 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     if (opt.warenkorbVerzoegerung) await new Promise((r) => setTimeout(r, opt.warenkorbVerzoegerung));
     route.fulfill({ status: opt.warenkorbFehler ? 422 : 200, contentType: 'application/json', body: JSON.stringify(opt.warenkorbFehler ? { description: 'mock-warenkorb-fehler' } : { id: 1, items: [] }) });
   });
-  await page.goto(`${basis}/mock.html?${opt.query || ''}`, { waitUntil: 'domcontentloaded' });
+  // V6_BEARBEITEN (Umgebung): Wert für data-bearbeiten, wenn die Abfrage keinen nennt. Vorgabe der Attrappe ist «0» (Verhalten von 6.3.1: die zwei alten Schalter); mit V6_BEARBEITEN=fehlt fehlt das Attribut,
+  // wie in einem Shop ohne Rollout-Eingriff (Startansicht «Bearbeiten», drei Reiter), mit 1 oder angebot gilt der jeweilige Wert. So laufen editor_test und vorschau_test auch im Standard der echten Seite.
+  let query = opt.query || '';
+  if (process.env.V6_BEARBEITEN && !/(^|&)bearbeiten=/.test(query)) query += (query ? '&' : '') + 'bearbeiten=' + process.env.V6_BEARBEITEN;
+  await page.goto(`${basis}/mock.html?${query}`, { waitUntil: 'domcontentloaded' });
   return { page, ctx, fehler, uploads, abgelehnt, warenkorb, bildAnfragen, png: (url) => gespeichert.get(url), schliessen: () => ctx.close() };
 }
 

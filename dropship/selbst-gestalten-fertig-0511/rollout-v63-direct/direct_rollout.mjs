@@ -5,19 +5,29 @@ import { fileURLToPath } from 'node:url';
 import { shopifyGql } from '../../../automation/lib/shopify_gql.mjs';
 import { shopifyClientSecret } from '../../../automation/lib/shopify_secret.mjs';
 import {
-  ALLOWLIST, BLOCKLIST, PREVIEW_IDS, assetUrl, baustein, beschreibungPlanen,
-  blockerBaustein, blockerProduktPruefen, editorReleasePlanen, numericId, produktPruefen,
-  releaseAusAllowlist, releasePruefen, sha256,
+  ALLOWLIST, APPLY_LEDGER_ZUSTAENDE, BLOCKLIST, PREVIEW_IDS, ROLLBACK_SCHREIBBAR, ROLLOUT_V63, VORHER_EDITOR, assetUrl, auswahlPlanen,
+  baustein, beschreibungPlanen, blockerBaustein, blockerProduktPruefen, canaryLedgerPruefen, editorAusRelease,
+  editorReleaseFormPruefen, editorReleasePlanen, numericId, produktIdentitaetPruefen, produktPruefen, releaseAusAllowlist,
+  releasePruefen, rolloutKonfig, rollbackLedgerAuswerten, sha256, vorgaengerAusRelease,
 } from './direct_rollout_lib.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HIER, '../../..');
 
-const MODE = String(process.env.MODE || 'plan').toLowerCase();
-const SCOPE = String(process.env.SCOPE || 'canary').toLowerCase();
-const CANARY = 'keramik-tasse-selbst-gestalten';
-const LIVE = process.env.LIVE === '1';
-const ACK = process.env.ACK || process.env.ACK_FULL || '';
+// EDITOR_VERSION=6.3.1 (Vorgabe) = alter Pfad, EDITOR_VERSION=6.4.0 = neuer Pfad (Ziel aus editor-release.json,
+// Scopes canary-tasse|canary-jutebeutel|full, Bestätigungen V64_*). Der 6.4.0-Workflow setzt es fest.
+const KONF = rolloutKonfig({
+  mode: process.env.MODE,
+  scope: process.env.SCOPE,
+  ack: process.env.ACK || process.env.ACK_FULL || '',
+  live: process.env.LIVE === '1',
+  editorVersion: process.env.EDITOR_VERSION || ROLLOUT_V63,
+});
+const MODE = KONF.mode;
+const SCOPE = KONF.scope;
+const EDITOR_VERSION = KONF.editorVersion;
+const ALT_PFAD = EDITOR_VERSION === ROLLOUT_V63;
+const EDITOR_RELEASE = join(HIER, 'editor-release.json');
 const SHOP = String(process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(/\/.*$/, '') || 'au3j0y-hq.myshopify.com';
 const API = '2026-01';
 const EXPECTED_SHOP = 'au3j0y-hq.myshopify.com';
@@ -26,13 +36,6 @@ const ASSET_ROOT = resolve(process.env.ASSET_ROOT || join(ROOT, 'pod/v6'));
 const OUT = resolve(process.env.OUT_DIR || join(HIER, 'lauf'));
 const ROLLBACK_PLAN = process.env.ROLLBACK_PLAN ? resolve(process.env.ROLLBACK_PLAN) : '';
 
-if (!['plan', 'apply', 'rollback'].includes(MODE)) throw new Error('MODE muss plan, apply oder rollback sein');
-if (!['canary', 'full'].includes(SCOPE)) throw new Error('SCOPE muss canary oder full sein');
-if (MODE !== 'plan' && !LIVE) throw new Error(`${MODE}: LIVE=1 fehlt`);
-if (MODE === 'apply' && SCOPE === 'canary' && ACK !== 'V63_CANARY_TASSE') throw new Error('Canary braucht ACK=V63_CANARY_TASSE');
-if (MODE === 'apply' && SCOPE === 'full' && ACK !== 'V63_FULL_19_SAFE') throw new Error('Vollausrollung braucht ACK=V63_FULL_19_SAFE');
-if (MODE === 'rollback' && SCOPE === 'canary' && ACK !== 'V63_ROLLBACK_TASSE') throw new Error('Canary-Rollback braucht ACK=V63_ROLLBACK_TASSE');
-if (MODE === 'rollback' && SCOPE === 'full' && ACK !== 'V63_ROLLBACK_19_SAFE') throw new Error('Voll-Rollback braucht ACK=V63_ROLLBACK_19_SAFE');
 if (MODE !== 'rollback' && !existsSync(SOURCE_ALLOWLIST)) throw new Error(`Quell-Allowlist fehlt: ${SOURCE_ALLOWLIST}`);
 
 async function token() {
@@ -99,10 +102,28 @@ async function assetPruefen(url, soll, art) {
   if (art !== 'editor' && (!/max-age=86400/.test(cache) || !/must-revalidate/.test(cache) || /immutable/.test(cache))) throw new Error(`Karten-Cache-Regel falsch: ${url} (${cache || '-'})`);
 }
 
+/** 6.4.0: Ziel und Vorgänger kommen aus editor-release.json; jede Datei wird hier gegen ihre echten Bytes geprüft.
+ *  Weicht die Datei ab (z. B. weil 6.4.0 nach dem Erzeugen geändert wurde), stoppt der Lauf vor jedem Netzzugriff. */
+function editorReleaseLaden() {
+  if (!existsSync(EDITOR_RELEASE)) throw new Error(`editor-release.json fehlt: ${EDITOR_RELEASE} (erzeugen mit editor_release_bauen.mjs)`);
+  const er = editorReleaseFormPruefen(JSON.parse(readFileSync(EDITOR_RELEASE, 'utf8')));
+  if (er.version !== EDITOR_VERSION) throw new Error(`editor-release.json trägt Version ${er.version}, der Lauf ist auf ${EDITOR_VERSION} festgelegt`);
+  for (const e of [er, ...er.vorgaenger]) {
+    const pfad = join(ASSET_ROOT, e.file.split('/').pop());
+    if (!existsSync(pfad)) throw new Error(`Lokale Editor-Datei fehlt: ${pfad}`);
+    const bytes = readFileSync(pfad);
+    if (sha256(bytes) !== e.sha256 || bytes.length !== e.bytes) throw new Error(`editor-release.json weicht von ${e.file} ab (Datei geändert?): neu erzeugen mit editor_release_bauen.mjs`);
+  }
+  return er;
+}
+
 function releaseLokalBauen() {
   const allowlist = JSON.parse(readFileSync(SOURCE_ALLOWLIST, 'utf8'));
-  const editorPfad = join(ASSET_ROOT, 'lspod-designer-v6-6.3.1.js');
-  if (!existsSync(editorPfad)) throw new Error(`Lokaler v6.3-Editor fehlt: ${editorPfad}`);
+  let editorPfad = null; let er = null;
+  if (ALT_PFAD) {
+    editorPfad = join(ASSET_ROOT, 'lspod-designer-v6-6.3.1.js');
+    if (!existsSync(editorPfad)) throw new Error(`Lokaler v6.3-Editor fehlt: ${editorPfad}`);
+  } else er = editorReleaseLaden();
   const assetSha256 = new Map();
   for (const id of ALLOWLIST.map((x) => x.numericId)) {
     const card = `lspod-${id}.karte.json`;
@@ -116,19 +137,18 @@ function releaseLokalBauen() {
       assetSha256.set(preview, sha256(readFileSync(previewPfad)));
     }
   }
-  return releaseAusAllowlist(allowlist, { editorSha256: sha256(readFileSync(editorPfad)), assetSha256 });
+  if (ALT_PFAD) return { release: releaseAusAllowlist(allowlist, { editorSha256: sha256(readFileSync(editorPfad)), assetSha256 }), vorgaenger: [VORHER_EDITOR] };
+  const vorgaenger = vorgaengerAusRelease(er);
+  return { release: releaseAusAllowlist(allowlist, { editor: editorAusRelease(er), vorgaengerSha256: vorgaenger.map((v) => v.sha256), assetSha256 }), vorgaenger };
 }
 
-function auswahl(alle) {
-  if (SCOPE === 'full') return alle;
-  const p = alle.find((x) => x.handle === CANARY);
-  if (!p) throw new Error(`Canary nicht in Allowlist: ${CANARY}`);
-  return [p];
-}
+const auswahl = (alle) => auswahlPlanen(alle, KONF);
 
-async function planen(tok, release) {
-  releasePruefen(release);
+async function planen(tok, release, vorgaenger) {
+  releasePruefen(release, { editorPfad: KONF.editorUrlPfad });
   await assetPruefen(release.editor.url, release.editor.sha256, 'editor');
+  // 6.4.0: auch die Rückweg-Ziele müssen live unverändert ausgeliefert werden (SHA, CORS/CORP, Cache), sonst gibt es keinen sicheren Rollback.
+  if (!ALT_PFAD) for (const v of vorgaenger) await assetPruefen(v.url, v.sha256, 'editor');
   const byId = new Map(release.products.map((p) => [p.id, p]));
   const plaene = [];
   for (const a of ALLOWLIST) {
@@ -138,7 +158,7 @@ async function planen(tok, release) {
     await storefrontPruefen(p);
     await assetPruefen(rp.cardUrl, rp.cardSha256, 'karte');
     if (rp.previewUrl) await assetPruefen(rp.previewUrl, rp.previewSha256, 'vorschau');
-    const diff = editorReleasePlanen(p.descriptionHtml, baustein({ product: p, releaseProduct: rp, editor: release.editor }), release.editor);
+    const diff = editorReleasePlanen(p.descriptionHtml, baustein({ product: p, releaseProduct: rp, editor: release.editor }), release.editor, { vorgaenger });
     plaene.push({ kind: 'editor', id: p.id, numericId: numericId(p.id), handle: p.handle, title: p.title, updatedAt: p.updatedAt, onlineStoreUrl: p.onlineStoreUrl, expectedVariantIds: rp.variantIds.map(String), ...diff });
   }
   for (const b of BLOCKLIST) {
@@ -163,7 +183,7 @@ function planSchreiben(plaene, release) {
   }
   const releaseText = JSON.stringify(release, null, 2) + '\n';
   writeFileSync(join(OUT, 'release.json'), releaseText);
-  const meta = { schema: 2, createdAt: new Date().toISOString(), shop: EXPECTED_SHOP, primaryDomain: 'luxestyle.ch', currency: 'CHF', releaseSha256: sha256(releaseText), scope: SCOPE, canary: SCOPE === 'canary' ? CANARY : null, products: plaene.map(({ vorher, nachher, ...x }) => x) };
+  const meta = { schema: 2, createdAt: new Date().toISOString(), shop: EXPECTED_SHOP, primaryDomain: 'luxestyle.ch', currency: 'CHF', releaseSha256: sha256(releaseText), scope: SCOPE, canary: KONF.canary ? KONF.canary.handle : null, ...(ALT_PFAD ? {} : { editorVersion: EDITOR_VERSION }), products: plaene.map(({ vorher, nachher, ...x }) => x) };
   const planText = JSON.stringify(meta, null, 2) + '\n';
   writeFileSync(join(OUT, 'plan.json'), planText);
   if (readFileSync(join(OUT, 'plan.json'), 'utf8') !== planText || readFileSync(join(OUT, 'release.json'), 'utf8') !== releaseText) throw new Error('Plan-/Release-Readback weicht ab');
@@ -173,6 +193,8 @@ function planSchreiben(plaene, release) {
 
 function planMetaPruefen(meta, quelle) {
   if (!meta || meta.schema !== 2 || meta.shop !== EXPECTED_SHOP || meta.primaryDomain !== 'luxestyle.ch' || meta.currency !== 'CHF' || !Array.isArray(meta.products)) throw new Error('Planidentität/Schema weicht ab');
+  // Ein Artefakt gehört zu genau einem Pfad: 6.4.0-Pläne tragen editorVersion, alte 6.3.1-Pläne tragen keine.
+  if ((ALT_PFAD ? meta.editorVersion !== undefined : meta.editorVersion !== EDITOR_VERSION) || meta.canary !== (KONF.canary ? KONF.canary.handle : null) || meta.scope !== SCOPE) throw new Error('Plan gehört zu einem anderen Editor-Release oder Scope');
   const soll = new Map([...ALLOWLIST.map((x) => [x.id, { ...x, kind: 'editor' }]), ...BLOCKLIST.map((x) => [x.id, { ...x, kind: 'blocked' }])]);
   if (meta.products.length !== soll.size) throw new Error(`Plan muss exakt ${soll.size} Produkte enthalten`);
   const gesehen = new Set();
@@ -188,7 +210,7 @@ function planMetaPruefen(meta, quelle) {
   }
   const releasePfad = join(quelle, 'release.json');
   if (!existsSync(releasePfad) || sha256(readFileSync(releasePfad)) !== meta.releaseSha256) throw new Error('Release-Sicherung fehlt oder Hash weicht ab');
-  releasePruefen(JSON.parse(readFileSync(releasePfad, 'utf8')));
+  releasePruefen(JSON.parse(readFileSync(releasePfad, 'utf8')), { editorPfad: KONF.editorUrlPfad });
   return true;
 }
 
@@ -200,12 +222,83 @@ function rollbackMeta(tokMeta, quelle) {
   if (ledger?.schema !== 1 || ledger.mode !== 'apply' || ledger.scope !== SCOPE || ledger.sourcePlanSha256 !== sha256(readFileSync(join(quelle, 'plan.json'))) || !Array.isArray(ledger.products) || !ledger.products.length) throw new Error('Apply-Ledger passt nicht zum Rollback-Scope/Plan');
   const planById = new Map(tokMeta.products.map((p) => [p.id, p]));
   const ids = new Set();
+  const zustand = new Map();
   for (const x of ledger.products) {
-    if (!planById.has(x.id) || ids.has(x.id) || !['applied', 'unchanged', 'rejected', 'unknown', 'unknown-write-response', 'unknown-readback', 'unknown-readback-unavailable'].includes(x.state)) throw new Error(`Apply-Ledger unzulässig: ${x.id || '?'} / ${x.state || '?'}`);
+    if (!planById.has(x.id) || ids.has(x.id) || !APPLY_LEDGER_ZUSTAENDE.includes(x.state)) throw new Error(`Apply-Ledger unzulässig: ${x.id || '?'} / ${x.state || '?'}`);
     ids.add(x.id);
+    zustand.set(x.id, x.state);
   }
-  if (SCOPE === 'canary' && (ids.size !== 1 || !ids.has(ALLOWLIST.find((x) => x.handle === CANARY)?.id))) throw new Error('Canary-Ledger enthält nicht exakt den Tassen-Canary');
-  return { ...tokMeta, products: tokMeta.products.filter((p) => ids.has(p.id)) };
+  canaryLedgerPruefen(KONF, ids);
+  rollbackLedgerAuswerten(ledger.products);   // ohne einen einzigen geschriebenen Eintrag gibt es nichts zurückzunehmen: Abbruch
+  return { ...tokMeta, products: tokMeta.products.filter((p) => ids.has(p.id)).map((p) => ({ ...p, applyState: zustand.get(p.id) })) };
+}
+
+/** Schreibt `soll` als Beschreibung. Ein Versuch, nie wiederholt; jeder unklare Ausgang bekommt seinen Ledger-Zustand und wirft.
+ *  Vor dem Write steht die Absichtszeile «writing» im Ledger: bricht der Lauf zwischen Write und Rücklesen ab (Cancel, Kill),
+ *  bleibt der Rückweg über das Artefakt möglich. Gibt das frisch gelesene Produkt zurück. */
+async function beschreibungSchreiben(tok, x, soll, zeile, buche, okZustand) {
+  buche(zeile, { state: 'writing' });
+  let r;
+  try {
+    r = (await shopifyGql(SHOP, API, tok, UPDATE_M, { p: { id: x.id, descriptionHtml: soll } }, { versuche: 1 })).productUpdate;
+  } catch {
+    buche(zeile, { state: 'unknown-write-response' });
+    throw new Error(`${x.handle}: Write-Antwort unbekannt; keine Wiederholung`);
+  }
+  if (r?.userErrors?.length) {
+    buche(zeile, { state: 'rejected', userErrors: r.userErrors });
+    throw new Error(`${x.handle}: Shopify hat das Update abgelehnt; keine Wiederholung`);
+  }
+  if (!r || !Array.isArray(r.userErrors) || !r.product) {
+    buche(zeile, { state: 'unknown', userErrors: r?.userErrors || null });
+    throw new Error(`${x.handle}: Write unklar/fehlerhaft; keine Wiederholung`);
+  }
+  let frisch;
+  try { frisch = await produkt(tok, x.id); }
+  catch {
+    buche(zeile, { state: 'unknown-readback-unavailable' });
+    throw new Error(`${x.handle}: Rücklesung nicht verfügbar; keine Wiederholung`);
+  }
+  if (sha256(frisch.descriptionHtml || '') !== sha256(soll)) {
+    buche(zeile, { state: 'unknown-readback' });
+    throw new Error(`${x.handle}: Rücklesung weicht ab; keine Wiederholung`);
+  }
+  buche(zeile, { state: okZustand, sha256: sha256(soll), readAt: new Date().toISOString() });
+  return frisch;
+}
+
+/** Ein Produkt des Apply-Laufs: alle Gates frisch, dann nur bei exakt passender Vorher-Beschreibung schreiben. Wirft bei jedem Fehler. */
+async function produktAnwenden(tok, x, quelle, zeile, buche) {
+  const p = await produkt(tok, x.id);
+  if (x.kind === 'editor') produktPruefen(p, { id: x.id, handle: x.handle, variantIds: x.expectedVariantIds });
+  else blockerProduktPruefen(p, BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);
+  await storefrontPruefen(p);
+  const soll = readFileSync(join(quelle, `${x.numericId}.after.html`), 'utf8');
+  if (sha256(p.descriptionHtml || '') !== x.vorherSha256) throw new Error(`${x.handle}: Beschreibung seit dem Plan verändert; nichts überschrieben`);
+  if (sha256(soll) === x.vorherSha256) {
+    buche(zeile, { state: 'unchanged', sha256: x.vorherSha256, readAt: new Date().toISOString() });
+    return;
+  }
+  await beschreibungSchreiben(tok, x, soll, zeile, buche, 'applied');
+}
+
+/** Ein Produkt des Rollbacks. Nur Zeilen, bei denen der Apply geschrieben hat, werden angefasst. Die Live-Beschreibung muss exakt
+ *  dem Plan-Nachher entsprechen (oder schon dem Vorher), sonst wird NICHTS überschrieben. Kein Status-, Kaufbarkeits-,
+ *  Varianten- oder Storefront-Gate vorab (ein ENTWURF lässt sich zurückstellen); Auffälligkeiten stehen als Hinweis im Ledger. */
+async function produktZurueckstellen(tok, x, quelle, zeile, buche) {
+  const p = await produkt(tok, x.id);
+  produktIdentitaetPruefen(p, x.id, x.handle);
+  const frischSha = sha256(p.descriptionHtml || '');
+  if (frischSha === x.vorherSha256) {
+    buche(zeile, { state: 'already-rolled-back', sha256: frischSha, readAt: new Date().toISOString() });
+    return;
+  }
+  if (frischSha !== x.nachherSha256) throw Object.assign(new Error(`${x.handle}: Beschreibung seit dem Plan verändert; nichts überschrieben`), { zustand: 'failed-changed' });
+  const frisch = await beschreibungSchreiben(tok, x, readFileSync(join(quelle, `${x.numericId}.before.html`), 'utf8'), zeile, buche, 'rolled-back');
+  const hinweise = [];
+  if (frisch.status !== 'ACTIVE') hinweise.push(`Produktstatus ${frisch.status}`);
+  if (frisch.onlineStoreUrl) { try { await storefrontPruefen(frisch); } catch (e) { hinweise.push(`Storefront: ${e.message}`); } }
+  if (hinweise.length) buche(zeile, { hinweise });
 }
 
 async function anwenden(tok, meta, quelle) {
@@ -213,78 +306,51 @@ async function anwenden(tok, meta, quelle) {
   if (existsSync(join(OUT, 'ledger.json'))) throw new Error(`Ledger existiert bereits; kein blinder Wiederholungslauf: ${OUT}`);
   const ledger = { schema: 1, startedAt: new Date().toISOString(), mode: MODE, scope: SCOPE, sourcePlanSha256: sha256(readFileSync(join(quelle, 'plan.json'))), products: [] };
   mkdirSync(OUT, { recursive: true });
+  const sichern = () => writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
+  const buche = (zeile, felder) => { Object.assign(zeile, felder); if (!ledger.products.includes(zeile)) ledger.products.push(zeile); sichern(); };
+  const offen = [];
   for (const x of ziel) {
-    const p = await produkt(tok, x.id);
-    if (x.kind === 'editor') produktPruefen(p, { id: x.id, handle: x.handle, variantIds: x.expectedVariantIds });
-    else blockerProduktPruefen(p, BLOCKLIST.find((b) => b.id === x.id), x.expectedVariantIds);
-    await storefrontPruefen(p);
-    const erwartet = MODE === 'rollback' ? x.nachherSha256 : x.vorherSha256;
-    const sollDatei = MODE === 'rollback' ? `${x.numericId}.before.html` : `${x.numericId}.after.html`;
-    const soll = readFileSync(join(quelle, sollDatei), 'utf8');
-    const frischSha = sha256(p.descriptionHtml || '');
-    if (MODE === 'rollback' && frischSha === x.vorherSha256) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'already-rolled-back', sha256: frischSha, readAt: new Date().toISOString() });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      continue;
+    const zeile = { id: x.id, handle: x.handle };
+    if (MODE !== 'rollback') { await produktAnwenden(tok, x, quelle, zeile, buche); continue; }   // Apply: beim ersten Fehler Abbruch
+    // Rollback: jedes Produkt für sich. Ein Fehler stoppt die übrigen nicht; Exit != 0 und Ledger nennen, was offen blieb.
+    if (!ROLLBACK_SCHREIBBAR.includes(x.applyState)) { buche(zeile, { state: 'skipped-not-written', applyState: x.applyState }); continue; }
+    try { await produktZurueckstellen(tok, x, quelle, zeile, buche); }
+    catch (e) {
+      buche(zeile, { state: e.zustand || (zeile.state && zeile.state !== 'writing' ? zeile.state : 'failed'), fehler: e.message });
+      offen.push(e.message);
     }
-    if (frischSha !== erwartet) throw new Error(`${x.handle}: Beschreibung seit dem Plan verändert; nichts überschrieben`);
-    if (sha256(soll) === erwartet) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unchanged', sha256: erwartet, readAt: new Date().toISOString() });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      continue;
-    }
-    let r;
-    try {
-      r = (await shopifyGql(SHOP, API, tok, UPDATE_M, { p: { id: x.id, descriptionHtml: soll } }, { versuche: 1 })).productUpdate;
-    } catch {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown-write-response' });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Write-Antwort unbekannt; keine Wiederholung`);
-    }
-    if (r?.userErrors?.length) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'rejected', userErrors: r.userErrors });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Shopify hat das Update abgelehnt; keine Wiederholung`);
-    }
-    if (!r || !Array.isArray(r.userErrors) || !r.product) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown', userErrors: r?.userErrors || null });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Write unklar/fehlerhaft; keine Wiederholung`);
-    }
-    let frisch;
-    try { frisch = await produkt(tok, x.id); }
-    catch {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown-readback-unavailable' });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Rücklesung nicht verfügbar; keine Wiederholung`);
-    }
-    if (sha256(frisch.descriptionHtml || '') !== sha256(soll)) {
-      ledger.products.push({ id: x.id, handle: x.handle, state: 'unknown-readback' });
-      writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-      throw new Error(`${x.handle}: Rücklesung weicht ab; keine Wiederholung`);
-    }
-    ledger.products.push({ id: x.id, handle: x.handle, state: MODE === 'rollback' ? 'rolled-back' : 'applied', sha256: sha256(soll), readAt: new Date().toISOString() });
-    writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
   }
   ledger.completedAt = new Date().toISOString();
-  writeFileSync(join(OUT, 'ledger.json'), JSON.stringify(ledger, null, 2) + '\n');
-  return ledger;
+  if (offen.length) ledger.offen = offen.length;
+  sichern();
+  return { ledger, offen };
 }
 
+// Alles Lokale zuerst, BEVOR irgendein Netzzugriff (Token, Shop, Assets) stattfindet:
+//  - Plan/Apply: Release, editor-release.json und Editor-/Kartendateien bauen und prüfen;
+//  - Rollback: das Artefakt des Apply-Laufs (Plan, Release, Sicherungen, Ledger) gegen Scope und Editor-Release prüfen.
+// Weicht etwas ab, stoppt der Lauf hier.
+function rollbackLokalLaden() {
+  if (!ROLLBACK_PLAN || !existsSync(join(ROLLBACK_PLAN, 'plan.json'))) throw new Error('ROLLBACK_PLAN mit plan.json fehlt');
+  return rollbackMeta(JSON.parse(readFileSync(join(ROLLBACK_PLAN, 'plan.json'), 'utf8')), ROLLBACK_PLAN);
+}
+const lokal = MODE === 'rollback' ? rollbackLokalLaden() : releaseLokalBauen();
+const zaehle = (ledger, zustand) => ledger.products.filter((p) => p.state === zustand).length;
 const tok = await token();
 await identitaetPruefen(tok);
 if (MODE === 'rollback') {
-  if (!ROLLBACK_PLAN || !existsSync(join(ROLLBACK_PLAN, 'plan.json'))) throw new Error('ROLLBACK_PLAN mit plan.json fehlt');
-  const meta = rollbackMeta(JSON.parse(readFileSync(join(ROLLBACK_PLAN, 'plan.json'), 'utf8')), ROLLBACK_PLAN);
-  const ledger = await anwenden(tok, meta, ROLLBACK_PLAN);
-  console.log(JSON.stringify({ mode: MODE, scope: SCOPE, changed: ledger.products.length }, null, 2));
+  const { ledger, offen } = await anwenden(tok, lokal, ROLLBACK_PLAN);
+  // changed = echte Writes dieses Rollbacks; notWritten = Zeilen, bei denen der Apply nichts geschrieben hatte (Sperren, schon auf Ziel); failed = nicht zurückgestellt
+  console.log(JSON.stringify({ mode: MODE, scope: SCOPE, editorVersion: EDITOR_VERSION, changed: zaehle(ledger, 'rolled-back'), alreadyRolledBack: zaehle(ledger, 'already-rolled-back'), notWritten: zaehle(ledger, 'skipped-not-written'), failed: offen.length }, null, 2));
+  if (offen.length) throw new Error(`Rollback unvollständig: ${offen.length} von ${ledger.products.length} Produkten nicht zurückgestellt, die übrigen sind erledigt (Ledger im Artefakt). ${offen.join(' | ')}`);
 } else {
-  const release = releaseLokalBauen();
-  const alle = await planen(tok, release);                         // alle 19 vor jedem Write erneut prüfen
+  const { release, vorgaenger } = lokal;
+  const alle = await planen(tok, release, vorgaenger);             // alle 19 vor jedem Write erneut prüfen
   const meta = planSchreiben(alle, release);
-  if (MODE === 'plan') console.log(JSON.stringify({ mode: MODE, productsChecked: alle.length, selected: auswahl(meta.products).map((x) => x.handle), output: OUT }, null, 2));
+  if (MODE === 'plan') console.log(JSON.stringify({ mode: MODE, editorVersion: EDITOR_VERSION, scope: SCOPE, productsChecked: alle.length, selected: auswahl(meta.products).map((x) => x.handle), output: OUT }, null, 2));
   else {
-    const ledger = await anwenden(tok, meta, OUT);
-    console.log(JSON.stringify({ mode: MODE, scope: SCOPE, changed: ledger.products.length, output: OUT }, null, 2));
+    const { ledger } = await anwenden(tok, meta, OUT);
+    // changed = echte Writes; unchanged = Zeilen ohne Write (Ziel schon da, Sperren)
+    console.log(JSON.stringify({ mode: MODE, scope: SCOPE, editorVersion: EDITOR_VERSION, changed: zaehle(ledger, 'applied'), unchanged: zaehle(ledger, 'unchanged'), output: OUT }, null, 2));
   }
 }

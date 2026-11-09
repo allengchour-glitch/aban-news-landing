@@ -17,6 +17,12 @@ const nur = process.argv[2] || '';
 const szenarien = [];
 function szenario(name, kern, fn) { szenarien.push({ name, kern, fn }); }
 
+// Betriebsart (Umgebung V6_BEARBEITEN, siehe lib.mjs): Vorgabe = data-bearbeiten=0, die zwei Schalter «Druckfläche | Auf dem Produkt» von 6.3.1. Mit V6_BEARBEITEN=fehlt (oder 1) laufen dieselben Szenarien im
+// Standard der echten Seite (Reiter «Bearbeiten | Druckversion | Vorschau», Start in «Bearbeiten»): die Erwartungen unten nennen dann die Reiter statt der Schalter.
+const NEU = !!process.env.V6_BEARBEITEN && !/^(0|aus)$/.test(process.env.V6_BEARBEITEN);
+const BUEHNE = NEU ? 'bearbeiten' : 'druck';               // Schalter bzw. Reiter, der die Bühne zeigt (Wert von data-sicht und st.sicht)
+const FLAECHE = NEU ? /«Bearbeiten»/ : /Druckfläche/;       // Name der Bühnenansicht in den Hinweisen der Vorschau
+const gew = async (p, art) => (await p.locator(`.lsp6-sbtn[data-sicht="${art}"]`).getAttribute(NEU ? 'aria-selected' : 'aria-pressed')) === 'true';   // ist dieser Schalter bzw. Reiter gewählt?
 const PC = { breite: 1440, hoehe: 900 };
 const MOBIL = { breite: 390, hoehe: 844, mobil: true };
 /** Test-Varianten des T-Shirts 71: weiss (#ffffff), schwarz (#0c0c0c), pink (#c02773), laut Farbtabelle der Karte. */
@@ -54,7 +60,7 @@ async function textHinzufuegen(p, text) {
   await p.locator('.lsp6-text').fill(text);
 }
 async function reviewBestaetigenWennNoetig(p) {
-  if (!(await p.evaluate(() => window.LSPOD6 && /^6\.3\./.test(window.LSPOD6.version || '')))) return;
+  if (!(await p.evaluate(() => window.LSPOD6 && /^6\.[3-9]\./.test(window.LSPOD6.version || '')))) return;
   const dialog = p.locator('[data-lsp6-review="1"]');
   await dialog.waitFor({ state: 'visible', timeout: 30000 });
   await dialog.locator('.lsp6-review-accept').check();
@@ -113,18 +119,18 @@ szenario('umschalter', true, async (b, srv) => {
   const p = s.page;
   await sichtWarten(p);
   const knoepfe = await p.locator('.lsp6-sbtn').allInnerTexts();
-  pruefe('Umschalter «Druckfläche» und «Auf dem Produkt»', knoepfe.join('|') === 'Druckfläche|Auf dem Produkt', knoepfe.join('|'));
-  pruefe('Vorgabe: Druckfläche gewählt, Produktansicht verborgen', (await p.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-pressed')) === 'true' && await p.locator('.lsp6-pvwrap').isHidden());
+  pruefe('Umschalter «Druckfläche» und «Auf dem Produkt»', knoepfe.join('|') === (NEU ? 'Bearbeiten|Druckversion|Vorschau' : 'Druckfläche|Auf dem Produkt'), knoepfe.join('|'));
+  pruefe('Vorgabe: Druckfläche gewählt, Produktansicht verborgen', await gew(p, BUEHNE) && await p.locator('.lsp6-pvwrap').isHidden());
   const hoch = await p.locator('.lsp6-sbtn').evaluateAll((e) => e.map((x) => x.getBoundingClientRect().height));
   pruefe('Umschalter mindestens 44 px hoch', hoch.every((h) => h >= 44), hoch.join(','));
   await textHinzufuegen(p, 'Hallo');
   await produktAnsicht(p);
   pruefe('Produktansicht: Canvas sichtbar, Bühne verborgen', await p.locator('.lsp6-pv').isVisible() && await p.locator('.lsp6-stagewrap').isHidden());
-  pruefe('Produktansicht: Umschalter zeigt den Zustand an (aria-pressed)', (await p.locator('.lsp6-sbtn[data-sicht="produkt"]').getAttribute('aria-pressed')) === 'true' && (await p.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-pressed')) === 'false');
+  pruefe('Produktansicht: Umschalter zeigt den Zustand an (aria-pressed, bei Reitern aria-selected)', await gew(p, 'produkt') && !(await gew(p, BUEHNE)));
   const cv = await p.locator('.lsp6-pv').evaluate((c) => ({ w: c.width, h: c.height, b: c.getBoundingClientRect().width, label: c.getAttribute('aria-label') }));
   pruefe('Canvas quadratisch und lesbar beschriftet', cv.w === cv.h && cv.w >= 300 && cv.w <= 1000 && /Vorschau/.test(cv.label), JSON.stringify(cv));
   pruefe('Hinweis «Annäherung» steht unter der Vorschau, kein Gedankenstrich', /Annäherung/.test(await p.locator('.lsp6-pvwrap').innerText()) && !/—/.test(await p.locator('.lsp6').innerText()));
-  await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  await p.locator(`.lsp6-sbtn[data-sicht="${BUEHNE}"]`).click();
   pruefe('zurück: Bühne wieder da, die Ebene ist unverändert', await p.locator('.lsp6-stagewrap').isVisible() && await p.locator('.lsp6-layer').count() === 1);
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
@@ -285,7 +291,7 @@ szenario('tasse', true, async (b, srv) => {
   pruefe('Tasse ohne Spiegel: die Vorschaudaten (Tasse mit Eichung, ohne gespiegeltes Foto) sind gültig', await t.page.evaluate(async () => window.LSPOD6.editors[0].vorschauDatenSetzen(await (await fetch('/vorschau/19.json?spiegel=0')).json())) === true);
   await textHinzufuegen(t.page, 'Hallo');
   pruefe('Tasse ohne gespiegeltes Foto: der Umschalter «Auf dem Produkt» wird nicht angeboten', await t.page.locator('[data-feld="sicht"]').isHidden() && await t.page.locator('.lsp6-sbtn[data-sicht="produkt"]').isHidden());
-  pruefe('Tasse ohne gespiegeltes Foto: die Ansicht lässt sich auch über die Schnittstelle nicht öffnen (bleibt die Druckfläche)', (await t.page.evaluate(() => { window.LSPOD6.editors[0].sichtSetzen('produkt'); return window.LSPOD6.editors[0].st.sicht; })) === 'druck' && await t.page.locator('.lsp6-pv').isHidden());
+  pruefe('Tasse ohne gespiegeltes Foto: die Ansicht lässt sich auch über die Schnittstelle nicht öffnen (bleibt die Druckfläche)', (await t.page.evaluate(() => { window.LSPOD6.editors[0].sichtSetzen('produkt'); return window.LSPOD6.editors[0].st.sicht; })) === BUEHNE && await t.page.locator('.lsp6-pv').isHidden());
   pruefe('Tasse ohne gespiegeltes Foto: das Katalogfoto (ohne CORS) wird gar nicht erst angefordert', !t.bildAnfragen.some((u) => /\/products\//.test(u)), JSON.stringify(t.bildAnfragen));
   const ex = await t.page.evaluate(async () => { const b2 = await window.LSPOD6.editors[0].vorschauExport(); return b2 ? b2.size : null; });
   pruefe('Tasse ohne gespiegeltes Foto: kein JPEG (die Zeichenfläche wäre verschmutzt)', ex === null, String(ex));
@@ -304,7 +310,7 @@ szenario('tasse', true, async (b, srv) => {
   await m.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
   await m.page.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
   const ti = await m.page.locator('[data-feld="produktinfo"]').innerText();
-  pruefe('Tasse, Ausführung ohne gespiegeltes Foto: klarer Hinweis «keine Produktvorschau» mit Verweis auf die Druckfläche (kein Rückprall)', /keine Produktvorschau/.test(ti) && /Druckfläche/.test(ti) && (await m.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'produkt' && await m.page.locator('.lsp6-pv').isHidden(), ti);
+  pruefe('Tasse, Ausführung ohne gespiegeltes Foto: klarer Hinweis «keine Produktvorschau» mit Verweis auf die Druckfläche (kein Rückprall)', /keine Produktvorschau/.test(ti) && FLAECHE.test(ti) && (await m.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'produkt' && await m.page.locator('.lsp6-pv').isHidden(), ti);
   pruefe('Tasse, Ausführung ohne gespiegeltes Foto: das Katalogfoto (ohne CORS) wird nicht angefordert', !m.bildAnfragen.some((u) => /\/products\//.test(u)), JSON.stringify(m.bildAnfragen));
   await m.page.locator('input[name="id"][value="1002"]').check();
   await m.page.waitForFunction(() => window.LSPOD6.editors[0].st.shopVariante === '1002');
@@ -319,7 +325,7 @@ szenario('tasse', true, async (b, srv) => {
   await datenSetzen(kp.page, 19, "for (const t of Object.values(d.modelle[19].tasse)) t.foto = 'https://cdn.shopify.com/s/files/test/kaputt-tasse.jpg';");
   await kp.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
   await kp.page.waitForFunction(() => document.querySelector('[data-feld="sichthinweis"]').textContent.length > 0, null, { timeout: 12000 });
-  pruefe('Tasse: gespiegeltes Foto lädt nicht (404): Rückfall auf die Druckfläche mit ruhigem Hinweis', (await kp.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'druck' && /nicht verfügbar/.test(await kp.page.locator('[data-feld="sichthinweis"]').innerText()) && await kp.page.locator('.lsp6-stagewrap').isVisible());
+  pruefe('Tasse: gespiegeltes Foto lädt nicht (404): Rückfall auf die Druckfläche mit ruhigem Hinweis', (await kp.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === BUEHNE && /nicht verfügbar/.test(await kp.page.locator('[data-feld="sichthinweis"]').innerText()) && await kp.page.locator('.lsp6-stagewrap').isVisible());
   pruefe('Tasse mit kaputtem Spiegel: keine Seitenfehler', kp.fehler.length === 0, kp.fehler.join(' | '));
   await kp.schliessen();
 });
@@ -378,7 +384,7 @@ szenario('farbfest', true, async (b, srv) => {
   await info.waitFor({ state: 'visible', timeout: 8000 });
   await p.waitForTimeout(300);
   const t = await info.innerText();
-  pruefe('Vorderseite mit festem Farbfoto (Modell 1592, 9 Farben): Hinweis «feste Stofffarbe» statt Vorschau, Verweis auf die Druckfläche, kein Gedankenstrich', /feste Stofffarbe/.test(t) && /Druckfläche/.test(t) && /keine Produktvorschau/.test(t) && !/—/.test(t), t);
+  pruefe('Vorderseite mit festem Farbfoto (Modell 1592, 9 Farben): Hinweis «feste Stofffarbe» statt Vorschau, Verweis auf die Druckfläche, kein Gedankenstrich', /feste Stofffarbe/.test(t) && FLAECHE.test(t) && /keine Produktvorschau/.test(t) && !/—/.test(t), t);
   pruefe('Vorderseite: kein Canvas, keine Notiz «Annäherung», kein weiteres Bild für die Zeichenfläche angefordert', await p.locator('.lsp6-pv').isHidden() && !(await p.locator('.lsp6-pvnote').isVisible()) && s.bildAnfragen.length === anfragenVorher, JSON.stringify(s.bildAnfragen.slice(anfragenVorher)));
   const r = await zeichne(p);
   pruefe('Vorderseite: vorschauZeichnen meldet «hinweis», kein Export', !r.ok && r.grund === 'hinweis' && (await p.evaluate(async () => { const x = await window.LSPOD6.editors[0].vorschauExport(); return x ? x.size : null; })) === null, JSON.stringify(r));
@@ -410,12 +416,12 @@ szenario('farbfest', true, async (b, srv) => {
   await q.waitForFunction((x) => Number(document.querySelector('.lsp6-pv').getAttribute('data-gezeichnet') || 0) > x, v2, { timeout: 10000 });
   pruefe('die Rückseite (nicht in der Liste) zeigt weiter die Vorschau', await q.locator('.lsp6-pv').isVisible() && await q.locator('[data-feld="produktinfo"]').isHidden());
   await datenSetzen(q, 71, "d.modelle[71].adapter = 'keine'; d.modelle[71].grund = 'farbfest';");
-  await q.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  await q.locator(`.lsp6-sbtn[data-sicht="${BUEHNE}"]`).click();
   await q.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
   await q.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
   pruefe('Modell «keine» mit Grund «farbfest»: Hinweis «feste Stofffarbe» auf allen Platzierungen', /feste Stofffarbe/.test(await q.locator('[data-feld="produktinfo"]').innerText()));
   await datenSetzen(q, 71, "d.modelle[71].adapter = 'keine'; d.modelle[71].grund = 'ungeeignet';");
-  await q.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  await q.locator(`.lsp6-sbtn[data-sicht="${BUEHNE}"]`).click();
   await q.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
   await q.locator('[data-feld="produktinfo"]').waitFor({ state: 'visible', timeout: 8000 });
   pruefe('Grund «ungeeignet»: allgemeiner Hinweis, nicht der Farbhinweis', !/feste Stofffarbe/.test(await q.locator('[data-feld="produktinfo"]').innerText()) && /keine Produktvorschau/.test(await q.locator('[data-feld="produktinfo"]').innerText()));
@@ -533,7 +539,7 @@ szenario('hinweis-statt-vorschau', true, async (b, srv) => {
   const th = await h.page.locator('[data-feld="produktinfo"]').innerText();
   pruefe('Rundum-Druck: ehrlicher Hinweis über Schnittteile und Nähte', /Rundum-Druck/.test(th) && /Schnittteile/.test(th) && /keine Produktvorschau/.test(th), th);
   pruefe('Rundum-Druck: kein Canvas', await h.page.locator('.lsp6-pv').isHidden());
-  await h.page.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  await h.page.locator(`.lsp6-sbtn[data-sicht="${BUEHNE}"]`).click();
   pruefe('zurück zur Druckfläche geht immer', await h.page.locator('.lsp6-stagewrap').isVisible());
   pruefe('Rundum-Druck: keine Seitenfehler', h.fehler.length === 0, h.fehler.join(' | '));
   await h.schliessen();
@@ -547,11 +553,12 @@ szenario('rueckfall', true, async (b, srv) => {
     const p = s.page; await sichtWarten(p);
     await textHinzufuegen(p, 'Hallo');
     await p.locator('.lsp6-sbtn[data-sicht="produkt"]').click();
+    // Rückfall der T-Shirt-Vorschau: in beiden Betriebsarten die Bühne mit Vorhang («Druckfläche» bzw. «Druckversion»; mit Reitern fällt die Bühne «Bearbeiten» bei einem Foto, das nicht lädt, schon vorher dorthin zurück)
     await p.waitForFunction(() => window.LSPOD6.editors[0].st.sicht === 'druck' && document.querySelector('[data-feld="sichthinweis"]').textContent.length > 0, null, { timeout: 15000 });
     const hinweis = await p.locator('[data-feld="sichthinweis"]').innerText();
     pruefe(`${name}: zurück auf die Druckfläche, Bühne sichtbar`, await p.locator('.lsp6-stagewrap').isVisible() && await p.locator('.lsp6-pvwrap').isHidden());
     pruefe(`${name}: ruhiger Hinweis ohne Fehlerton`, /nicht verfügbar/.test(hinweis) && /trotzdem gestalten/.test(hinweis) && !/Fehler|Error|CORS/.test(hinweis), hinweis);
-    pruefe(`${name}: Umschalter zeigt «Druckfläche»`, (await p.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-pressed')) === 'true');
+    pruefe(`${name}: Umschalter zeigt «Druckfläche» bzw. «Druckversion»`, await gew(p, 'druck'));
     // weiter gestalten und kaufen geht
     await p.locator('.lsp6-text').fill('Weiter');
     await kaufen(s);
@@ -580,7 +587,7 @@ szenario('rueckfall', true, async (b, srv) => {
   await produktAnsicht(s.page);
   await s.page.locator('input[name="id"][value="1002"]').check();
   await s.page.waitForFunction(() => document.querySelector('[data-feld="sicht"]').hidden, null, { timeout: 8000 });
-  pruefe('Bündel: Ausführung eines Modells ohne Vorschaudaten: Umschalter weg, Bühne wieder da', await s.page.locator('.lsp6-stagewrap').isVisible() && (await s.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === 'druck');
+  pruefe('Bündel: Ausführung eines Modells ohne Vorschaudaten: Umschalter weg, Bühne wieder da', await s.page.locator('.lsp6-stagewrap').isVisible() && (await s.page.evaluate(() => window.LSPOD6.editors[0].st.sicht)) === BUEHNE);
   await s.page.locator('input[name="id"][value="1001"]').check();
   await s.page.waitForFunction(() => !document.querySelector('[data-feld="sicht"]').hidden, null, { timeout: 8000 });
   pruefe('Bündel: zurück zum Modell mit Daten: Umschalter wieder da', await s.page.locator('[data-feld="sicht"]').isVisible());
