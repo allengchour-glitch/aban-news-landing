@@ -27,7 +27,7 @@ Der Besitzer hat «mach alles fix fertig und live» gesagt: Editor 6.4.0 («Auf 
 
 ## Was nach dem Einfrieren von 6.4.0 zu tun ist (Auftraggeber)
 
-1. `node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor_release_bauen.mjs` ausführen und `editor-release.json` mit der Datei committen. **Die heutige JSON ist vorläufig:** erzeugt mit dem Dateistand von 6.4.0 vom 09.11. (`37702e97…`, 253 952 Byte); ändert sich die Datei, schlägt der Konsistenztest in `direct_rollout_test.mjs` fehl und `direct_rollout.mjs` bricht vor jedem Netzzugriff ab.
+1. `node dropship/selbst-gestalten-fertig-0511/rollout-v63-direct/editor_release_bauen.mjs` ausführen und `editor-release.json` mit der Datei committen. **Die JSON war bis zur Schlussprüfung vorläufig und ist seit dem Commit nach der Schlussprüfung auf dem eingefrorenen Stand (sha256 e7e30bc2…):** erzeugt mit dem Dateistand von 6.4.0 vom 09.11. (`37702e97…`, 253 952 Byte); ändert sich die Datei, schlägt der Konsistenztest in `direct_rollout_test.mjs` fehl und `direct_rollout.mjs` bricht vor jedem Netzzugriff ab.
 2. Datei und JSON auf `main`, Cloudflare-Pages-Deploy abwarten; erst dann Plan, Artefakt lesen, Stufe A (Tasse), Gates, Stufe B (Jutebeutel), Beobachtung, Full. Rückweg in umgekehrter Reihenfolge, je mit dem Artefakt des zugehörigen Apply-Laufs. Gates und Grenzen: README, Abschnitt «Editor 6.4.0».
 3. Ausführung nur über Actions («Run workflow»); aus der Sitzung kann `actions_run_trigger` mit HTTP 500 scheitern (nicht wiederholen, dem Besitzer «Run workflow» nennen).
 
