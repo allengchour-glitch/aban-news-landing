@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuell: belegte KI-Bot-Prüfungen integriert
+
+Der spätere Nutzerauftrag «baue alles rein» erlaubt die Umsetzung der belegten technischen Rechercheergebnisse. Branch `codex/ki-bot-gemeinsam`: Datenalter/abgeschlossene Kerzen, Signal-/Historienprüfungen, Vergleiche mit gleichem Risikobudget, getrennte Zeiträume, aufgeschlüsselte Kosten und erweiterte Risikokennzahlen im Offline-Labor integriert.20 dauerhafte Tests und isolierter Testbaum bestanden; vier absichtliche Fehler erkannt,21 bestehende Binance-Spot-Tests mit Börsennachbau grün. Testaufruf im vorhandenen Deploy-Check ergänzt. [Integrationsmatrix und Grenzen](docs/ki-bot-gemeinsam/INTEGRATION.md). Keine Änderung am bestehenden Handelsbot, Echtgeld, Brokeraufträgen oder Not-Aus. Claude-Review, ungelesene Paper, vollständiger Modellnachweis und Live-Stand weiterhin offen. Ältere Pausenvermerke weiter unten sind durch den neueren Integrationsauftrag für diesen Umfang überholt.
+
+
 ## Vorrang: Recherche vor KI-Bot-Entwicklung
 
 Neuster Nutzerauftrag: «informiere dich überall zuerst bevor du baust». Keine weitere Implementierung/Parameterauswahl am Forschungsbot; vorhandener Entwurf bleibt unbestätigt. Zehn externe offizielle Dokumentations-/Projektquellen direkt gelesen, Umfang und Hashes erfasst. Wissenschaftliche Originaltexte teils durch Cloud-Proxy403 blockiert, Recherche nicht abgeschlossen. [Recherche und konkreter Claude-Leseauftrag](docs/ki-bot-gemeinsam/RECHERCHE.md). Neue Domains im bestehenden Netzwerkentwurf ergänzt; noch keine Anwendung oder neue Erreichbarkeit bestätigt. Keine neuen Handelsfunktionen gebaut.

@@ -1,5 +1,7 @@
 # Recherche vor weiterer Entwicklung
 
+**Aktualisierung:** Der spätere Nutzerauftrag «baue alles rein» erlaubt die Umsetzung der belegten technischen Erkenntnisse. Der folgende Text dokumentiert die vorherige Recherchephase; aktueller Implementierungsstand und Grenzen stehen in [README.md](README.md) und [INTEGRATION.md](INTEGRATION.md). Noch ungelesene Originaltexte bleiben ungelesen.
+
 ## Verbindlicher Stand
 
 Neuester Nutzerauftrag: «informiere dich überall zuerst bevor du baust». Weitere Implementierung, Parametertests und Handelsintegration sind pausiert. Der vorhandene Konsens-Prototyp bleibt ein Forschungsentwurf. Er ist weder eine wissenschaftlich ausgewählte Strategie noch ein von Claude bestätigter Bot. Der ältere Auftrag zur Veröffentlichung ist kein Auftrag, diesen neuen Forschungsentwurf live zu handeln.
