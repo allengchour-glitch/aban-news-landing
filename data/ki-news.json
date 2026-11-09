@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-08T11:15:18Z",
+ "stand": "2026-11-09T12:47:41Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Sorgen um Weihnachtsgeschäft wegen teurer Elektronik",
-   "u": "https://www.heise.de/news/Sorgen-um-Weihnachtsgeschaeft-wegen-teurer-Elektronik-11516579.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-08T11:02:00Z",
-   "s": "Teure Speicherchips trüben das Festgeschäft: Weil gedrosselte Produktion auf weltweiten KI-Boom trifft, sind Preise für Laptops, Handys und Hardware hoch.",
-   "sprache": "de"
-  },
-  {
-   "t": "Von Überbevölkerung zur KI: Die erstaunliche Prognose von 1960",
-   "u": "https://t3n.de/news/doomsday-formel-1960-prognose-ki-singularitaet-1771528/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-08T10:45:00Z",
-   "s": "Weltuntergang am 13. November 2026? Eine 1960 in Science veröffentlichte Formel, die für 2026 eine katastrophale Überbevölkerung vorhersagte, hat sich nicht besweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Mathe-Professor kapituliert: Warum Hausaufgaben durch KI sinnlos sind",
-   "u": "https://t3n.de/news/ki-mathe-studium-zukunft-hausaufgaben-kapitulation-1769844/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-08T09:35:00Z",
-   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu stud…",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: iX-Workshop: Weniger Zeit, mehr Code – schneller programmieren mit Claude Code",
-   "u": "https://www.heise.de/news/iX-Workshop-Claude-Code-in-der-Praxis-effizienter-entwickeln-mit-KI-Agenten-11503304.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-08T09:00:00Z",
-   "s": "Erfahren Sie, wie Sie Ihre Entwicklungsaufgaben mit Claude Code autonom bearbeiten lassen und Ihre Workflows mit KI-Agenten spürbar beschleunigen können.",
-   "sprache": "de"
-  },
-  {
-   "t": "Degitalisierung: Agilität",
-   "u": "https://netzpolitik.org/2026/degitalisierung-agilitaet/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-08T07:09:23Z",
-   "s": "\"Hauptsache schnell\" ist das Motto aktueller KI-Entwicklung. – Gemeinfrei-ähnlich freigegeben durch unsplash.com: Jorgen HendriksenDeutschland soll beim KI-Ausbau schneller werden, dafür braucht es an…",
-   "sprache": "de"
-  },
-  {
-   "t": "After the midterms, things are looking rocky for Elon Musk and data centers",
-   "u": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-07T22:07:22Z",
-   "s": "On Equity, we unpacked what the midterms mean for the tech industry.",
-   "sprache": "en"
-  },
-  {
-   "t": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
-   "u": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-07T21:17:08Z",
-   "s": "A memo circulated earlier this year reportedly claimed that China’s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
-   "sprache": "en"
-  },
-  {
-   "t": "(g+) Surveillance Pricing: Wie weit dürfen Händler Preise personalisieren?",
-   "u": "https://www.golem.de/news/surveillance-pricing-wie-weit-duerfen-haendler-preise-personalisieren-2611-214937.html",
-   "q": "Golem",
-   "d": "2026-11-07T09:00:01Z",
-   "s": "Ein Produkt, zwei Kunden, zwei unterschiedliche Preise: Wir erklären, wann Händler in der EU Kundendaten zur Preisgestaltung nutzen dürfen und wo Datenschutz- und Verbraucherrecht Grenzen setzen. Eine…",
-   "sprache": "de"
-  },
-  {
-   "t": "Flughafen Leipzig: BKA sucht mit KI-Bild nach mutmaßlichem Drohnenangreifer",
-   "u": "https://www.golem.de/news/leipzig-fahnder-suchen-mutmasslichen-drohnen-taeter-mit-ki-gesicht-2611-214948.html",
-   "q": "Golem",
-   "d": "2026-11-07T08:26:02Z",
-   "s": "Die ukrainische Transportmaschine wurde mit einer Sprengstoffdrohne attackiert. Die Ermittler vermuten russische Sabotage. (KI, Security)",
-   "sprache": "de"
-  },
-  {
-   "t": "ToyBlocks: A controlled world for robot learning and evaluation",
-   "u": "https://huggingface.co/blog/allenai/toyblocks",
+   "t": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
+   "u": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
    "q": "Hugging Face",
-   "d": "2026-11-06T14:00:48Z",
+   "d": "2026-11-09T12:34:29Z",
    "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Mail an Sam Altman: Warum ein Entwickler dem OpenAI-CEO jeden Tag eine Nachricht per Skript schickt",
+   "u": "https://t3n.de/news/sam-altman-mail-skript-entwickler-ram-1772368/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-09T12:30:02Z",
+   "s": "Ein Entwickler wehrt sich auf kreative Weise gegen Aussagen von Sam Altman. Er schickt ihm jeden Tag eine besondere E-Mail per Skript. Was er damit erreichen will. weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "heise+ | So sichern Sie KI-Anwendungen und Agenten ab: Jenseits der Testpyramide",
+   "u": "https://www.heise.de/hintergrund/So-sichern-Sie-KI-Anwendungen-und-Agenten-ab-Jenseits-der-Testpyramide-11510121.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-11-09T12:30:00Z",
+   "s": "Die klassische Testpyramide stößt bei KI-Anwendungen an ihre Grenzen. Wie kombiniert man statistische Verfahren mit Laufzeitschutz und menschlicher Aufsicht?",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Coding-Agenten verfrachten Zugangsdaten in öffentliche Repositories",
+   "u": "https://www.heise.de/news/KI-Coding-Agenten-verfrachten-Zugangsdaten-in-oeffentliche-Repositories-11517278.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-09T12:23:00Z",
+   "s": "Wer mit KI-Coding-Agenten arbeitet, kann Zugangsdaten in öffentliche Repositories ausleiten. Schuld ist eine Komfortfunktion.",
+   "sprache": "de"
+  },
+  {
+   "t": "Cyberangriff auf WorkOS: Abtrünniger KI-Agent hackt Entwicklerplattform",
+   "u": "https://www.golem.de/news/cyberangriff-auf-workos-abtruenniger-ki-agent-hackt-entwicklerplattform-2611-214993.html",
+   "q": "Golem",
+   "d": "2026-11-09T12:14:02Z",
+   "s": "Ein KI-Agent eines Sicherheitsforschers hat unerwartet ein System von WorkOS attackiert und Kundendaten ausgeleitet. Der Forscher gestand die Panne. (Security, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Behördendaten, US-Dienste, KI-Streit: Der Schweizer Mythos Proton wird entzaubert",
+   "u": "https://www.golem.de/news/behoerdendaten-us-dienste-ki-streit-der-schweizer-mythos-proton-wird-entzaubert-2611-214978.html",
+   "q": "Golem",
+   "d": "2026-11-09T12:00:02Z",
+   "s": "Proton gibt Nutzerdaten an Behörden heraus, arbeitet mit US-Dienstleistern und setzt seine Mitarbeiter beim KI-Einsatz unter Druck. Wie passt das zum Anspruch des Schweizer Unternehmens? Eine Analyse …",
+   "sprache": "de"
+  },
+  {
+   "t": "Dieses neue Drohnen-Design übersteht Zusammenstöße",
+   "u": "https://t3n.de/news/entgegen-jahrhundertealter-tradition-dieses-neue-drohnen-design-uebersteht-zusammenstoesse-1772370/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-09T10:45:11Z",
+   "s": "Seit über 100 Jahren prägen starre Rahmen die Konstruktion von Multicoptern. Mit Flexi Quad zeigt ein Schweizer Team, dass es auch anders geht: mit einem biegsamen Körper, kontrollierbarer Verformung …",
+   "sprache": "de"
+  },
+  {
+   "t": "Trainingsvideos für Verhaltensanalyse: Für die Überwachungs-KI gibt es nie genug Gewalt",
+   "u": "https://netzpolitik.org/2026/trainingsvideos-fuer-verhaltensanalyse-fuer-die-ueberwachungs-ki-gibt-es-nie-genug-gewalt/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-09T10:05:26Z",
+   "s": "Anhand von solchen Bildern soll die Überwachungssoftware lernen, wie Gewalt aussieht. – Gemeinfrei: KI-generiert, Screenshot von staige.comDer Berliner Verhaltensscanner wird mit KI-Videos trainiert. …",
+   "sprache": "de"
+  },
+  {
+   "t": "The climate case for AI has not been made",
+   "u": "https://www.technologyreview.com/2026/11/09/1148166/the-climate-case-for-ai-has-not-been-made/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-09T10:00:00Z",
+   "s": "This week, as countries meet in Antalya, Turkey for the United Nations climate conference, one topic likely to dominate the conversation is artificial intelligence. The host has already called on coun…",
+   "sprache": "en"
+  },
+  {
+   "t": "Is Jensen Huang’s job on the line? Yale’s Jeffrey Sonnenfeld estimates it’s “about a 50-50”",
+   "u": "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-09T05:26:29Z",
+   "s": "Nvidia’s board is investigating Jensen Huang over his relationship with a suspected Chinese spy, and Yale’s Jeffrey Sonnenfeld thinks it’s roughly a coin flip whether Huang stays on as CEO.",
    "sprache": "en"
   }
  ]
