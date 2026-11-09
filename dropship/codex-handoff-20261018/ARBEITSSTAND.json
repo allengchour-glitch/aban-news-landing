@@ -16,47 +16,37 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-08",
-    "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
-    "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung. R146: Metricool-Identität und Planung08.–15.11. wurden als kleine Planungsgegenprobe gelesen; keine Kennzahlabfrage oder Mutation. Drei konkrete Produkte, ein Merchant-Sicherheitsprodukt und eine einzelne CJ-Yoga-Route wurden gezielt geprüft; keine breite Katalogpagination, Klaviyo-/Bestell-/Kauf-Watch-Wiederholung oder Verkaufsableitung. R147: Genau das bestehende Masterprodukt15521256604033 wurde eng mit sieben Varianten,12 Bildern, Tags und Inventory-Verhalten gelesen; keine breite Katalog-, Kennzahl-, Flow-, Bestell- oder Kauf-Watch-Abfrage und keine Mutation.",
+    "currentDayEvidenceDate": "2026-11-09",
+    "currentDayEvidenceKind": "R154_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_AND_KLAVIYO_FLOW_REPORT_PARTIALS_UNKNOWN",
+    "currentDayEvidence": "Vor Abfragen Revision153, Projektgedächtnis und vorhandenen Tagesstand geprüft; für09.11. lag noch kein Tagesreport vor. Einmalig02.–08.11.: gültige Metricool-Kennzahl-IDs entdeckt und sechs kleine kanalgetrennte Reihen gelesen; fehlende Zeilen/null bleiben unbekannt. Genau ein Klaviyo-Flowreport nach frischer Placed-Order-MetrikW7XTVD; fehlende Flowzeilen unbekannt, alle geprüften Flows draft. Zwei Shopify-Produkte und Planung09.–17.11. gezielt gelesen; 43 ungeeignete bestehende Videoobjekte als Qualitätskorrektur auf draft/autopublish aus gesetzt und zurückgelesen. Kein breiter Verkaufsreport, keine Bestellung/Kauf-Watch, keine Verkaufsableitung. Heute ohne neuen konkreten Gegenprüfgrund Kennzahlen, Klaviyo oder breite Verkaufsdaten nicht erneut lesen.",
     "completedReports": {
-      "searchConsole": {
-        "localDate": "2026-11-08",
-        "range": "2026-10-09/2026-11-05",
-        "source": "HYPD",
-        "dataState": "final",
-        "partialRows": true
+      "metricool": {
+        "localDate": "2026-11-09",
+        "range": "2026-11-02/2026-11-08",
+        "definitionCalls": 6,
+        "dataCalls": 6,
+        "partialRows": true,
+        "missingIsUnknown": true
       },
-      "merchant": {
-        "localDate": "2026-11-08",
-        "source": "HYPD",
-        "summaryScannedProducts": 5000,
-        "summaryTruncated": true,
-        "disapprovalRowsRead": 25,
-        "nextPageTokenPresent": true,
-        "r149Countercheck": {
-          "reason": "owner_supplied_110mb_merchant_export_with_new_shipping_scope",
-          "scannedProducts": 5000,
-          "truncated": true,
-          "eligibleLimited": 4991,
-          "notEligibleOrDisapproved": 9,
-          "missingShippingProductsInPartialScan": 5000,
-          "disapprovalRowsRead": 10,
-          "accountIssuesReturned": 0,
-          "catalogQuoteAllowed": false,
-          "writes": 0
-        }
+      "klaviyo": {
+        "localDate": "2026-11-09",
+        "range": "2026-11-02/2026-11-09T00:00 Europe/Zurich",
+        "metricDiscoveryCalls": 1,
+        "flowReportCalls": 1,
+        "missingRowsUnknown": true
       },
-      "proof": "dropship/codex-handoff-20261018/HYPD-LIVE-AUDIT-20261108-R130.json",
-      "publicTrackingRouteR141": {
-        "localDate": "2026-11-08",
-        "pages": 2,
-        "mode": "read_only_browser",
-        "reason": "R140 missing-ecommerce root-cause countercheck",
-        "cartCheckoutOrderTriggered": false,
-        "proof": "/workspace/luxestyle-review/tracking-fix-20261108/public-network-audit.json",
-        "sha256": "e0264a21bae766b510db796eaf88da6ff3380173d2da3a0918313d36a6d3fe41"
-      }
+      "targetedProducts": {
+        "localDate": "2026-11-09",
+        "shopifyProducts": 2,
+        "broadPagination": false
+      },
+      "planning": {
+        "localDate": "2026-11-09",
+        "range": "2026-11-09/2026-11-17",
+        "objects": 65,
+        "videoQualityBlocksWritten": 43
+      },
+      "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json"
     },
     "dayHistory": [
       {
@@ -207,6 +197,57 @@
               "reason": "one narrow sales improvement; no revenue metrics"
             },
             "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261106-R115.json"
+          }
+        }
+      },
+      {
+        "dateZurich": "2026-11-08",
+        "record": {
+          "timezone": "Europe/Zurich",
+          "checkLogBeforeReading": true,
+          "metricsFlowAndBroadSalesMaxPerDay": 1,
+          "exception": "new_concrete_finding_with_recorded_reason",
+          "currentDayEvidenceDate": "2026-11-08",
+          "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
+          "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung. R146: Metricool-Identität und Planung08.–15.11. wurden als kleine Planungsgegenprobe gelesen; keine Kennzahlabfrage oder Mutation. Drei konkrete Produkte, ein Merchant-Sicherheitsprodukt und eine einzelne CJ-Yoga-Route wurden gezielt geprüft; keine breite Katalogpagination, Klaviyo-/Bestell-/Kauf-Watch-Wiederholung oder Verkaufsableitung. R147: Genau das bestehende Masterprodukt15521256604033 wurde eng mit sieben Varianten,12 Bildern, Tags und Inventory-Verhalten gelesen; keine breite Katalog-, Kennzahl-, Flow-, Bestell- oder Kauf-Watch-Abfrage und keine Mutation.",
+          "completedReports": {
+            "searchConsole": {
+              "localDate": "2026-11-08",
+              "range": "2026-10-09/2026-11-05",
+              "source": "HYPD",
+              "dataState": "final",
+              "partialRows": true
+            },
+            "merchant": {
+              "localDate": "2026-11-08",
+              "source": "HYPD",
+              "summaryScannedProducts": 5000,
+              "summaryTruncated": true,
+              "disapprovalRowsRead": 25,
+              "nextPageTokenPresent": true,
+              "r149Countercheck": {
+                "reason": "owner_supplied_110mb_merchant_export_with_new_shipping_scope",
+                "scannedProducts": 5000,
+                "truncated": true,
+                "eligibleLimited": 4991,
+                "notEligibleOrDisapproved": 9,
+                "missingShippingProductsInPartialScan": 5000,
+                "disapprovalRowsRead": 10,
+                "accountIssuesReturned": 0,
+                "catalogQuoteAllowed": false,
+                "writes": 0
+              }
+            },
+            "proof": "dropship/codex-handoff-20261018/HYPD-LIVE-AUDIT-20261108-R130.json",
+            "publicTrackingRouteR141": {
+              "localDate": "2026-11-08",
+              "pages": 2,
+              "mode": "read_only_browser",
+              "reason": "R140 missing-ecommerce root-cause countercheck",
+              "cartCheckoutOrderTriggered": false,
+              "proof": "/workspace/luxestyle-review/tracking-fix-20261108/public-network-audit.json",
+              "sha256": "e0264a21bae766b510db796eaf88da6ff3380173d2da3a0918313d36a6d3fe41"
+            }
           }
         }
       }
