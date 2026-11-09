@@ -425,7 +425,7 @@
 @media(max-width:640px){.kb-chef-links{grid-template-columns:repeat(2,minmax(0,1fr))}.kb3-viewer-head{flex-wrap:wrap}.kb3-room-label{flex-basis:100%}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-7">
+<div class="kb" data-design="campus-einheitlich-8">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -491,7 +491,7 @@
     <div class="kb3-viewer" tabindex="-1" aria-label="Interaktives Büro">
     <div class="kb3-viewer-head">
       <label class="kb3-room-label">Raum <select class="kb3-room-select" aria-label="Büroraum auswählen">
-        <option value="alle">Alle Büros</option><option value="Shop">Shop</option><option value="Versand">Versand</option><option value="Krypto">Krypto</option><option value="Social Media">Social Media</option><option value="Entwicklerbüro">Entwicklung</option><option value="YouTube-Studio">YouTube</option><option value="Chefbüro">Chefbüro</option>
+        <option value="alle">Alle Büros</option><option value="Shop">Shop</option><option value="Versand">Versand</option><option value="Krypto">Krypto</option><option value="Campusplatz">Campusplatz · Monitor</option><option value="Social Media">Social Media</option><option value="Entwicklerbüro">Entwicklung</option><option value="YouTube-Studio">YouTube</option><option value="Chefbüro">Chefbüro</option>
       </select></label>
       <button type="button" class="kb3-tool" data-open-orders aria-expanded="false" aria-controls="kb-auftraege">Aufträge</button>
       <button type="button" class="kb3-tool kb3-boss" data-cmd="view:Chefbüro" aria-label="Chefbüro-Kontrolle öffnen">Kontrolle</button>
@@ -503,6 +503,7 @@
       <button type="button" class="kb3-chip" data-cmd="view:Shop" aria-pressed="false">Shop</button>
       <button type="button" class="kb3-chip" data-cmd="view:Versand" aria-pressed="false">Versand</button>
       <button type="button" class="kb3-chip" data-cmd="view:Krypto" aria-pressed="false">Krypto</button>
+      <button type="button" class="kb3-chip" data-cmd="view:Campusplatz" aria-pressed="false">Campusplatz · Monitor</button>
       <button type="button" class="kb3-chip" data-cmd="view:Social Media" aria-pressed="false">Social Media</button>
       <button type="button" class="kb3-chip" data-cmd="view:Entwicklerbüro" aria-pressed="false">Entwicklerbüro</button>
       <button type="button" class="kb3-chip" data-cmd="view:YouTube-Studio" aria-pressed="false">YouTube</button>
@@ -1588,7 +1589,7 @@
       }
       var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
       var desktopControls=window.matchMedia('(min-width:641px) and (pointer:fine)').matches;
-      var m = K3.Buero.mount(el, { desktopControls:desktopControls, instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
+      var m = K3.Buero.mount(el, { desktopControls:desktopControls, instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){root.querySelector('[data-alles-anzeigen]').click();return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
       made3d = m && m.ok ? m : null;
       if(made3d)root.querySelectorAll('[data-cmd=move],[data-cmd=rotate]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cmd===(desktopControls?'move':'rotate')));});
       return m;

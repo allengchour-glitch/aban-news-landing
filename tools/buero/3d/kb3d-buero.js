@@ -97,7 +97,7 @@
       /* ---------- Kamera ---------- */
       var cam = new K.Camera();
       var viewName = 'alle', userDist = null;
-      function fitDist(base, aspect) { return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
+      function fitDist(base, aspect) { if(viewName==='Campusplatz')return base; return base * (cfg.desktopControls && viewName === 'alle' ? 0.85 : 1) * Math.pow(Math.max(1, 1.33 / Math.max(0.3, aspect)), 0.85); }
       function goView(name, now) {
         var v = W.views[name] || W.views.alle;
         viewName = W.views[name] ? name : 'alle';
@@ -151,7 +151,7 @@
         if (W.updateInfo) {
           var stopped = ents.filter(function(e){return e.state === 'rot';}).length;
           var stale = ents.filter(function(e){return e.state === 'alt';}).length;
-          W.updateInfo('Shop, Projekte und Social Media');
+          W.updateInfo(ents.length+' Einträge · '+stopped+' Stopp · '+stale+' alte Messungen');
         }
         if (state.colors) Object.keys(DEF).forEach(function (k) { if (state.colors[k]) col[k] = K.col(state.colors[k]); });
         sel = state.sel || null;
@@ -200,6 +200,7 @@
           }
         });
         W.cards.forEach(function (cd, k) { cd.on = k < cardEnts.length; });
+        if(W.campusPanel)picks.push({id:'__campus',mn:W.campusPanel.mn,mx:W.campusPanel.mx});
         if(W.moneyPanel)picks.push({id:'__geldmanager',mn:W.moneyPanel.mn,mx:W.moneyPanel.mx});
         // Chef
         var boss = W.seats[W.seats.length - 1];
