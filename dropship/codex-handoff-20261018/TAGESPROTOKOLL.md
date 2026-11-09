@@ -1699,3 +1699,18 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation | R155-Paket, Maschinenbelege und Master-Aufnahmeblock gespeichert; Übergabe und Arbeitsstand fortgeführt | Belegte Prüfung, Entwurf und Blocker getrennt; Claude-Empfang unbekannt |
 
 [LUXESTYLE_R155_20261109] [Paket](CONTENT-VERKAUFSPAKET-20261109-R155.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261109-R155.json) · [Masterblock](MASTER-AUFNAHME-ABNAHME-20261109-R155.md) · [FR-Diff](FR-VERKAUFSDIFF-20261109-R155.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, Merchant-, DNS- oder kostenpflichtige Renderänderung.
+
+### R156
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Tagesgrenze | Revision155, Projektgedächtnis, Übergabe und heutigen Tagesblock gelesen | R154-Kennzahlen/Klaviyo und R155-DNS nicht wiederholt; Kauf-Watch beendet |
+| Identität | Shopify und Metricool samt sechs Kanälen frisch gelesen | LuxeStyle/luxestyle.ch/CHF/CH und brandId6227837/Europe-Zurich vollständig passend; keine andere Marke bearbeitet |
+| Metricool / Planung | 09.–17.11. in drei kleinen Fenstern gelesen; fällige Zustände, Medien und Duplikate geprüft | 65 Objekte,21 aktiv/44 Entwürfe/0 aktive Videos; zwei heutige Fotoobjekte kanalweise PUBLISHED;19 zukünftige aktive Bilder;0 Writes |
+| Shopify-Produkte | Projektor und Futterspender gezielt auf Status, Varianten, Preis, Bilder, Tags, Kaufbarkeit und Inventory-Verhalten gelesen | beide ACTIVE/kaufbar; untracked/CONTINUE/Menge0; keine Bestands-/Lieferzusage; beide Filmgates blockiert |
+| Master | hashgebundenen Ingest-/Freigabe-Preflight mit Varianten-, Einheiten-, Clip-, Rechte-, Musik- und Exportgates erstellt und getestet | 6/6 Tests grün; Metadaten-PASS nicht freigabefähig; realer Lauf FAIL_BLOCKED; keine MP4, kein Upload/Push |
+| Verkaufsaktion | FR-Page, vier Digests und öffentliche Ausgabe frisch gegengeprüft; exakte Mutation/Variablen/Readback lokal validiert | PASS, Stale-Digest erwartungsgemäss FAIL; FR weiterhin deutsch; kein Shop-Write |
+| SEO | genau fünf öffentliche Seiten und drei Bilder geprüft | alle HTTP200; FR-Fallback,744–751 Collection-Ziele und HTTP-OG-Bilder bestätigt; keine Änderung |
+| Dokumentation | R156-Paket und Maschinenbelege gespeichert; Übergabe, Projektgedächtnis, Arbeitsstand und Tagesprotokoll additiv fortgeführt | Revision156,24 Aufgaben, Historie erhalten; Claude-Empfang unbekannt |
+
+[LUXESTYLE_R156_20261109] [Paket](CONTENT-VERKAUFSPAKET-20261109-R156.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261109-R156.json) · [Master](MASTER-INGEST-PREFLIGHT-20261109-R156.md) · [FR-Diff](FR-VERKAUFSDIFF-20261109-R156.json). Keine Kunden-, Rabatt-, Budget-, Shop-, Flow-, DNS-, Merchant-, Feed- oder kostenpflichtige Renderänderung.
