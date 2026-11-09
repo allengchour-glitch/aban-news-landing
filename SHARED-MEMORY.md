@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Neuer gemeinsamer Forschungsauftrag: KI-Bot mit Claude Code
+
+Nutzer: «das beste ki bot erfinden du und claude zusammen». Branch `codex/ki-bot-gemeinsam`: erklärbaren Offline-Konsens-Prototyp gebaut, feste Vergleiche und Kostenstress ausgeführt, neun lokale Gegenproben bestanden. Kleinere historische Einbrüche, aber weniger Rendite als einfacher Trend200; keine Überlegenheit behaupten. Claude hat noch nicht geprüft. Entwurf, vollständige Messung und unabhängiger Claude-Prüfauftrag: [Gemeinsamer KI-Bot](docs/ki-bot-gemeinsam/README.md). Kein Broker, keine echte Anmeldung/Nachricht, keine Strategie-/Schutzänderung am bestehenden Bot. Website-/Berichts-Veröffentlichung bleibt separat auf den bereits gepushten Branches; Details dort in `docs/CLAUDE-CODE-WEBSITE-BOT-LIVE.md`.
+
+
 ## Codex-Übergabe für Claude – 09.11.2026
 
 Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. Dort stehen die neuen Büro-/Judge.me-/Monitorarbeiten, echte Ausführungsbelege und die Produktqualitätsmessung für die Fortsetzung um 21:00 Europe/Zurich. Die Datei ist auch nach späteren Codex-Arbeiten zu aktualisieren. Ein gespeicherter Auftrag, Scan oder grüner Workflow ist keine bestätigte Produktkorrektur. Keine privaten Finanz- oder Kundendaten in diese Dateien schreiben.

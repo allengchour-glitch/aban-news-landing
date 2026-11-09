@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Neuer gemeinsamer Forschungsauftrag: KI-Bot mit Claude Code
+
+Nutzer: «das beste ki bot erfinden du und claude zusammen». Branch `codex/ki-bot-gemeinsam`: erklärbaren Offline-Konsens-Prototyp gebaut, feste Vergleiche und Kostenstress ausgeführt, neun lokale Gegenproben bestanden. Kleinere historische Einbrüche, aber weniger Rendite als einfacher Trend200; keine Überlegenheit behaupten. Claude hat noch nicht geprüft. Entwurf, vollständige Messung und unabhängiger Claude-Prüfauftrag: [Gemeinsamer KI-Bot](ki-bot-gemeinsam/README.md). Kein Broker, keine echte Anmeldung/Nachricht, keine Strategie-/Schutzänderung am bestehenden Bot. Website-/Berichts-Veröffentlichung bleibt separat auf den bereits gepushten Branches; Details dort in `docs/CLAUDE-CODE-WEBSITE-BOT-LIVE.md`.
+
+
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
 ## Lizenzoberfläche: Störung von Ablehnung unterscheiden · 09.11.2026
