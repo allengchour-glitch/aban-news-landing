@@ -212,3 +212,17 @@ Klaviyo ist frisch vollständig `draft`; den einzigen R154-Vorschlag nicht ohne 
 Claude-Empfang bleibt unbekannt, bis ein tatsächlicher Empfangsbeleg vorliegt. Keine Views als Verkäufe, keine fehlenden Kennzahlen als Null, keine Termine als erfolgreiche Publikation ausgeben.
 
 [LUXESTYLE_R154_20261109]
+
+## Aktueller Befund 09.11.2026, R155
+
+[R155-Paket](CONTENT-VERKAUFSPAKET-20261109-R155.md), [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261109-R155.json), [Master-Aufnahmeblock](MASTER-AUFNAHME-ABNAHME-20261109-R155.md), [Metricool-Plan](METRICOOL-PLAN-20261109-R155.json) und [FR-Verkaufsdiff](FR-VERKAUFSDIFF-20261109-R155.json) zuerst lesen. Identitäten passen. Tageskennzahlen und Klaviyo wurden nach R154 nicht wiederholt.
+
+Metricool ab14:08:59 Objekte,20 aktiv,39 Entwürfe,0 aktive Videos; keine aktiven kanalgleichen Kollisionen/Medien-/Textduplikate. Bestehender Foto-Post ID414929635/UUID-8720943201794045273 um12:15 auf Facebook+Instagram PUBLISHED zurückgelesen, kein eigener Publish. FB/IG bis15.11., Pinterest bis14.11.; TikTok/Threads/YouTube und alle Kanäle ab16.11. offen. Nicht mit gesperrten Videos auffüllen.
+
+Derselbe Projektor-Master bleibt ohne professionelle MP4. R155 präzisiert genau eine A–G-Einheit, `unitToken`, Identitätsclip, vier native Takes, Rechtehashes,540 Frames und Zehn-Punkte-QA. Kein alter Clip oder kurze Slideshows als Ersatz. Erst nach vollständigen Gates rendern und dann frischen Produkt-/Kanal-/Historienpreflight ausführen.
+
+Die einzige Verkaufsaktion zur Freigabe ist Page698444710273: vier französische Page-Übersetzungen gemäss R155-Diff registrieren, Handle/Theme/Canonical/Hreflang erhalten und DE/FR vollständig zurücklesen. Homepage nicht blind ändern; vorhandene Shop-FR-Meta wird nicht gerendert, Override unbekannt. Klaviyo-Vorschlag aus R154 bleibt der einzige und unangewendet. DNS-Records weiterhin öffentlich nicht umgesetzt, Writer unbekannt.
+
+Claude-Empfang bleibt unbekannt. Keine fehlenden Daten als Null, keine Termine als Publikation und keine Views als Verkäufe ausgeben.
+
+[LUXESTYLE_R155_20261109]
