@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Aktuelle Übergabe an Claude Code: Veröffentlichung
+
+Der Nutzer hat «mach alles besser und live» freigegeben und Claude Code mit der Übernahme beauftragt. Beide geprüften Branches sind auf GitHub; noch kein PR/Merge/Deployment bestätigt. Vollständiger Stand, Tests, Proxy-Blocker und konkrete nächste Schritte: [Website und KI-Bot live übernehmen](docs/CLAUDE-CODE-WEBSITE-BOT-LIVE.md). Zusätzlich170 Auto-Update-Tests bestanden. Angaben weiter unten mit «lokal» beschreiben den älteren Stand vor dem erfolgreichen Push.
+
+
 ## Fortsetzung Trading-/Krypto-Bot
 
 Lokaler Branch `codex/ki-bot-wochenbericht`: Reproduzierten Wochenbericht-Absturz bei optionalen Logbüchern mit falscher JSON-Grundstruktur korrigiert und Datenlücke sichtbar gemacht.116 Berichtstests grün; Testaufruf im bestehenden Paket-Workflow ergänzt. Keine Live-Aufträge oder Veröffentlichung. Website-Arbeit liegt separat als lokaler Commit `6e6e8c9c1` auf `codex/abannews-website-optimierung`. Details und Grenzen in [der Übergabe](docs/CODEX-CLAUDE-UEBERGABE.md), Abschnitt «KI-/Krypto-Bot: optionale Logbücher im Wochenbericht».

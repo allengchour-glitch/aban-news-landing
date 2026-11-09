@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Aktuelle Übergabe an Claude Code: Veröffentlichung
+
+Der Nutzer hat «mach alles besser und live» freigegeben und Claude Code mit der Übernahme beauftragt. Beide geprüften Branches sind auf GitHub; noch kein PR/Merge/Deployment bestätigt. Vollständiger Stand, Tests, Proxy-Blocker und konkrete nächste Schritte: [Website und KI-Bot live übernehmen](CLAUDE-CODE-WEBSITE-BOT-LIVE.md). Zusätzlich170 Auto-Update-Tests bestanden. Angaben weiter unten mit «lokal» beschreiben den älteren Stand vor dem erfolgreichen Push.
+
+
 ## KI-/Krypto-Bot: optionale Logbücher im Wochenbericht
 
 - Nutzer bestätigte ausdrücklich die Fortsetzung am Trading-/Krypto-Bot. Website-Arbeit separat im lokalen Commit `6e6e8c9c1` auf `codex/abannews-website-optimierung` gesichert; nicht veröffentlicht. Bot-Arbeit auf `codex/ki-bot-wochenbericht` von `origin/main` `989827a7d`.
