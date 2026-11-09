@@ -186,6 +186,9 @@
 .kb3-chip:focus-visible, .kb3-tool:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
 .kb3-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; min-height: 15rem; max-height: 82vh; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; color: var(--color-fg-muted); background: radial-gradient(ellipse at 50% 38%, #e8ede4 0%, #d9e2d9 58%, #c5d1c9 100%); user-select: none; -webkit-user-select: none; }
 .kb3-stage.is-gross { aspect-ratio: 3 / 4; }
+.kb3-viewer.is-monitor .kb3-stage{aspect-ratio:2.1;min-height:0;max-height:none;}
+.kb3-viewer.is-monitor .kb3-viewer-head,.kb3-viewer.is-monitor .kb3-bar,.kb3-viewer.is-monitor .kb3-tools,.kb3-viewer.is-monitor .kb3-desktop-hint,.kb3-viewer.is-monitor .kb3-touch-hint{display:none;}
+.kb3-monitor-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;}
 .kb3-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
 .kb3-tool[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
 .kb3-canvas:active { cursor: grabbing; }
@@ -425,7 +428,7 @@
 @media(max-width:640px){.kb-chef-links{grid-template-columns:repeat(2,minmax(0,1fr))}.kb3-viewer-head{flex-wrap:wrap}.kb3-room-label{flex-basis:100%}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-8">
+<div class="kb" data-design="campus-einheitlich-9">
   <header class="kb-head">
     <span class="kb-eyebrow">Deine Arbeitszentrale</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -489,6 +492,7 @@
   <div class="kb-pane" id="kb-pane-3d" data-pane="3d" role="tabpanel" aria-labelledby="kb-tab-3d">
     <p class="kb-hint">Wähle einen Raum. Ziehen bewegt die Ansicht im gewählten Modus. Zwei Finger zoomen und verschieben. Tippe oder klicke auf eine Figur für Details.</p>
     <div class="kb3-viewer" tabindex="-1" aria-label="Interaktives Büro">
+    <div class="kb3-monitor-tools" hidden role="group" aria-label="Monitoransicht"><strong>Zentralmonitor</strong><button type="button" class="kb3-tool" data-cmd="monitorBack">← Zurück zum Büro</button><button type="button" class="kb3-tool" data-alles-anzeigen>Alle Bereiche öffnen</button><button type="button" class="kb3-tool" data-cmd="fullscreen" aria-pressed="false">Vollbild</button></div>
     <div class="kb3-viewer-head">
       <label class="kb3-room-label">Raum <select class="kb3-room-select" aria-label="Büroraum auswählen">
         <option value="alle">Alle Büros</option><option value="Shop">Shop</option><option value="Versand">Versand</option><option value="Krypto">Krypto</option><option value="Campusplatz">Campusplatz · Monitor</option><option value="Social Media">Social Media</option><option value="Entwicklerbüro">Entwicklung</option><option value="YouTube-Studio">YouTube</option><option value="Chefbüro">Chefbüro</option>
@@ -1554,6 +1558,7 @@
   }
   document.addEventListener('fullscreenchange',function(){if(viewer && !document.fullscreenElement)vollbildStatus(false);});
   document.addEventListener('keydown',function(e){
+    if(viewer&&viewer.classList.contains('is-monitor')&&e.key==='Escape'){if(made3d)made3d.cmd('monitorBack');e.preventDefault();return;}
     if (!viewer || !viewer.classList.contains('is-fullscreen')) return;
     if(e.key==='Escape'){vollbildStatus(false);if(document.fullscreenElement===viewer && document.exitFullscreen)document.exitFullscreen().catch(function(){});}
     if(e.key==='Tab'){
@@ -1589,7 +1594,7 @@
       }
       var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
       var desktopControls=window.matchMedia('(min-width:641px) and (pointer:fine)').matches;
-      var m = K3.Buero.mount(el, { desktopControls:desktopControls, instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){root.querySelector('[data-alles-anzeigen]').click();return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onFail: ohne3d, onView: raumKnopf });
+      var m = K3.Buero.mount(el, { desktopControls:desktopControls, instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){if(made3d)made3d.cmd('monitor');return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onMonitorMode:function(an){viewer.classList.toggle('is-monitor',an);var tools=viewer.querySelector('.kb3-monitor-tools');tools.hidden=!an;if(an)tools.querySelector('[data-cmd=monitorBack]').focus({preventScroll:true});else viewer.querySelector('.kb3-canvas').focus({preventScroll:true});}, onFail: ohne3d, onView: raumKnopf });
       made3d = m && m.ok ? m : null;
       if(made3d)root.querySelectorAll('[data-cmd=move],[data-cmd=rotate]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cmd===(desktopControls?'move':'rotate')));});
       return m;

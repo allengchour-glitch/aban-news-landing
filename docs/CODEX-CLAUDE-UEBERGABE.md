@@ -2,6 +2,13 @@
 
 Diese Übergabe enthält nur belegte Arbeit und ausdrücklich bezeichnete Grenzen. Finanz- und Kundendaten bleiben ausserhalb des Repositories. QUELLE bedeutet: aus dem genannten Beleg übernommen, nicht in dieser Übergabe erneut live gemessen.
 
+## Monitor-Klick zoomt wie im Spiel · 09.11.2026
+
+- Inhaber wünscht beim Monitor-Klick eine nahe Bildschirmansicht statt Listenwechsel. Von main90856a7 auf `codex/monitor-fokus` begonnen; Regeln und Übergaben gelesen. Campusplatz PR3032 produktiv: Produktionslauf42704306021 erfolgreich, Version8 auf Desktop/Handy gegengeprüft.
+- Gemeinsame Designversion9: Monitor-Klick speichert Kameraposition und fährt frontal an den Bildschirm. Eigene Monitorleiste mit Zurück, separatem Überblick und Vollbild; normale Werkzeuge ausgeblendet. Zurück/Escape stellt Kamera wieder her, Raumwahl beendet Modus. Grössenwechsel passen Abstand an; reduzierte Bewegung schaltet sofort um. Keine neue Datenquelle, Kontoaktion, Freigabe oder Zahlung.
+- **GEMESSEN:**67 Büro- und25 Entwicklerprüfungen lokal grün (92). Software-WebGL bei1440px/390px: Monitor bleibt in3D, frontales Kameraziel, Zurück/Escape funktionieren. Nach Layoutwechsel asynchronen Kameraabstand abgewartet. Ansicht visuell angesehen. Echte Handy-GPU-Leistung ungemessen.
+- Quelle und öffentliche HTML konsistent, gespeicherte öffentliche Zeilen erhalten. Vollständiges privates Claude-Paket ausserhalb des Repositorys neu gebaut; private Artefaktübersicht bei der Übergabe berücksichtigen. Andere Claude-Session nicht automatisch verändert. Aktuellen Merge-/Deploystand im zugehörigen PR lesen. Finanzielle Wirkung nicht gemessen.
+
 ## Campusplatz und Büroartefakte · 09.11.2026
 
 - Inhaberauftrag: Büroartefakte anderer Session anzeigen, Büro aufwerten, grosser Platz in der Mitte mit Monitor. Von mainaaab8c1 auf `codex/buero-mitte` begonnen; AGENTS, CLAUDE, Shared Memory und Übergabe gelesen. Vorige Büroübersicht PR3028 abgeschlossen: Merge29533b15fb6d63f2112a25a08fa0aa343a170426, Produktionslauf42696200036 erfolgreich,15 Arbeitsplätze und Metricool-Statusquelle auf Desktop/Handy live bestätigt.
