@@ -1,0 +1,1916 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-09T08:30:00+01:00",
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "facebook": "1049840534888592",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+  },
+  "summary": {
+    "objects": 65,
+    "activeObjects": 21,
+    "draftObjects": 44,
+    "activeVideoObjects": 0,
+    "draftVideoObjects": 43,
+    "draftVideoChannelStates": 50,
+    "allDraftVideosBlocked": true
+  },
+  "perDate": [
+    {
+      "date": "2026-11-09",
+      "objects": 10,
+      "activeObjects": 3,
+      "draftObjects": 7,
+      "activeVideos": 0,
+      "draftVideos": 7,
+      "activeByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 0,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 3,
+        "pinterest": 0,
+        "threads": 1,
+        "youtube": 2
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "objects": 11,
+      "activeObjects": 3,
+      "draftObjects": 8,
+      "activeVideos": 0,
+      "draftVideos": 8,
+      "activeByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 0,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 3,
+        "pinterest": 0,
+        "threads": 1,
+        "youtube": 2
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "objects": 11,
+      "activeObjects": 4,
+      "draftObjects": 7,
+      "activeVideos": 0,
+      "draftVideos": 7,
+      "activeByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 0,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 3,
+        "pinterest": 0,
+        "threads": 1,
+        "youtube": 2
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "objects": 10,
+      "activeObjects": 3,
+      "draftObjects": 7,
+      "activeVideos": 0,
+      "draftVideos": 7,
+      "activeByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 0,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 3,
+        "pinterest": 0,
+        "threads": 1,
+        "youtube": 2
+      }
+    },
+    {
+      "date": "2026-11-13",
+      "objects": 10,
+      "activeObjects": 3,
+      "draftObjects": 7,
+      "activeVideos": 0,
+      "draftVideos": 7,
+      "activeByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 0,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 3,
+        "pinterest": 0,
+        "threads": 1,
+        "youtube": 2
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "objects": 10,
+      "activeObjects": 3,
+      "draftObjects": 7,
+      "activeVideos": 0,
+      "draftVideos": 7,
+      "activeByNetwork": {
+        "facebook": 2,
+        "instagram": 2,
+        "tiktok": 0,
+        "pinterest": 1,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 3,
+        "pinterest": 0,
+        "threads": 1,
+        "youtube": 2
+      }
+    },
+    {
+      "date": "2026-11-15",
+      "objects": 3,
+      "activeObjects": 2,
+      "draftObjects": 1,
+      "activeVideos": 0,
+      "draftVideos": 0,
+      "activeByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 0,
+        "pinterest": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 1,
+        "instagram": 1,
+        "tiktok": 0,
+        "pinterest": 0,
+        "threads": 0,
+        "youtube": 0
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "objects": 0,
+      "activeObjects": 0,
+      "draftObjects": 0,
+      "activeVideos": 0,
+      "draftVideos": 0,
+      "activeByNetwork": {
+        "facebook": 0,
+        "instagram": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 0,
+        "instagram": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "threads": 0,
+        "youtube": 0
+      }
+    },
+    {
+      "date": "2026-11-17",
+      "objects": 0,
+      "activeObjects": 0,
+      "draftObjects": 0,
+      "activeVideos": 0,
+      "draftVideos": 0,
+      "activeByNetwork": {
+        "facebook": 0,
+        "instagram": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "threads": 0,
+        "youtube": 0
+      },
+      "draftByNetwork": {
+        "facebook": 0,
+        "instagram": 0,
+        "tiktok": 0,
+        "pinterest": 0,
+        "threads": 0,
+        "youtube": 0
+      }
+    }
+  ],
+  "draftVideos": [
+    {
+      "id": 421442478,
+      "uuid": "3863915044291300024",
+      "publicationDate": {
+        "dateTime": "2026-11-09T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ]
+    },
+    {
+      "id": 421442496,
+      "uuid": "-7257455683644011058",
+      "publicationDate": {
+        "dateTime": "2026-11-09T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6952390440388807210.mp4"
+      ]
+    },
+    {
+      "id": 421442507,
+      "uuid": "8935974072695279179",
+      "publicationDate": {
+        "dateTime": "2026-11-09T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "threads"
+      ],
+      "providerStates": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ]
+    },
+    {
+      "id": 421442520,
+      "uuid": "-3553911421145298799",
+      "publicationDate": {
+        "dateTime": "2026-11-09T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ]
+    },
+    {
+      "id": 421444593,
+      "uuid": "-7893674518673470896",
+      "publicationDate": {
+        "dateTime": "2026-11-09T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ]
+    },
+    {
+      "id": 421444601,
+      "uuid": "-4166141021700799850",
+      "publicationDate": {
+        "dateTime": "2026-11-09T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ]
+    },
+    {
+      "id": 421444647,
+      "uuid": "-6967517640837021033",
+      "publicationDate": {
+        "dateTime": "2026-11-09T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+      ]
+    },
+    {
+      "id": 421442230,
+      "uuid": "3963843144054620883",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ]
+    },
+    {
+      "id": 421442693,
+      "uuid": "2172266762404316928",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6485766386185117874.mp4"
+      ]
+    },
+    {
+      "id": 421442700,
+      "uuid": "6352982241777305829",
+      "publicationDate": {
+        "dateTime": "2026-11-10T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "threads"
+      ],
+      "providerStates": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ]
+    },
+    {
+      "id": 421442710,
+      "uuid": "-7002936161864562103",
+      "publicationDate": {
+        "dateTime": "2026-11-10T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4484538235821608627.mp4"
+      ]
+    },
+    {
+      "id": 421445054,
+      "uuid": "2479551942795872090",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/641132f9706749de.mp4"
+      ]
+    },
+    {
+      "id": 421445064,
+      "uuid": "7496893774506381155",
+      "publicationDate": {
+        "dateTime": "2026-11-10T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+      ]
+    },
+    {
+      "id": 421445071,
+      "uuid": "2505682137165939640",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/798e85d511a24c97.mp4"
+      ]
+    },
+    {
+      "id": 421445087,
+      "uuid": "-8877028874765120990",
+      "publicationDate": {
+        "dateTime": "2026-11-10T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/03154b702fe74b55.mp4"
+      ]
+    },
+    {
+      "id": 421445290,
+      "uuid": "3738748663902192714",
+      "publicationDate": {
+        "dateTime": "2026-11-11T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ]
+    },
+    {
+      "id": 421445297,
+      "uuid": "-6647584058486602683",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ]
+    },
+    {
+      "id": 421445312,
+      "uuid": "2157228003212543673",
+      "publicationDate": {
+        "dateTime": "2026-11-11T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ]
+    },
+    {
+      "id": 421445323,
+      "uuid": "1675642812797436191",
+      "publicationDate": {
+        "dateTime": "2026-11-11T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "threads"
+      ],
+      "providerStates": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ]
+    },
+    {
+      "id": 421445332,
+      "uuid": "-6835976662518839807",
+      "publicationDate": {
+        "dateTime": "2026-11-11T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/564a9d8e30f74302.mp4"
+      ]
+    },
+    {
+      "id": 421445344,
+      "uuid": "-4605953212411130849",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ]
+    },
+    {
+      "id": 421445356,
+      "uuid": "6800747654958566068",
+      "publicationDate": {
+        "dateTime": "2026-11-11T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/571ecf32992444c3.mp4"
+      ]
+    },
+    {
+      "id": 421442906,
+      "uuid": "-2435184774283179178",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ]
+    },
+    {
+      "id": 421442921,
+      "uuid": "-7768329881687535680",
+      "publicationDate": {
+        "dateTime": "2026-11-12T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-1274389193212186929.mp4"
+      ]
+    },
+    {
+      "id": 421442930,
+      "uuid": "5102918478982235752",
+      "publicationDate": {
+        "dateTime": "2026-11-12T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "threads"
+      ],
+      "providerStates": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ]
+    },
+    {
+      "id": 421442944,
+      "uuid": "5681760339256165072",
+      "publicationDate": {
+        "dateTime": "2026-11-12T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12232378341625795248.mp4"
+      ]
+    },
+    {
+      "id": 421445571,
+      "uuid": "-3118555118962720263",
+      "publicationDate": {
+        "dateTime": "2026-11-12T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+      ]
+    },
+    {
+      "id": 421445581,
+      "uuid": "-1176313182659524583",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/e0cc1ce5b4c5448f.mp4"
+      ]
+    },
+    {
+      "id": 421445585,
+      "uuid": "8215510415468351070",
+      "publicationDate": {
+        "dateTime": "2026-11-12T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/a56abb0f5af84123.mp4"
+      ]
+    },
+    {
+      "id": 421441957,
+      "uuid": "5647388074617226143",
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ]
+    },
+    {
+      "id": 421443103,
+      "uuid": "1744402171830094170",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ]
+    },
+    {
+      "id": 421443115,
+      "uuid": "-4472725258033347244",
+      "publicationDate": {
+        "dateTime": "2026-11-13T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-570633038356564255.mp4"
+      ]
+    },
+    {
+      "id": 421445754,
+      "uuid": "673796377030903265",
+      "publicationDate": {
+        "dateTime": "2026-11-13T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/8254cc9ca6cc4b0a.mp4"
+      ]
+    },
+    {
+      "id": 421445763,
+      "uuid": "-8797746381899281322",
+      "publicationDate": {
+        "dateTime": "2026-11-13T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "threads"
+      ],
+      "providerStates": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/047058ae58654b9f.mp4"
+      ]
+    },
+    {
+      "id": 421445771,
+      "uuid": "-9210583075457839526",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/8254cc9ca6cc4b0a.mp4"
+      ]
+    },
+    {
+      "id": 421445780,
+      "uuid": "4651045624279025767",
+      "publicationDate": {
+        "dateTime": "2026-11-13T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/f0469c70806745d3.mp4"
+      ]
+    },
+    {
+      "id": 421446019,
+      "uuid": "-6748893881700627372",
+      "publicationDate": {
+        "dateTime": "2026-11-14T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ]
+    },
+    {
+      "id": 421446032,
+      "uuid": "-2924344703561023385",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 421446048,
+      "uuid": "8178449842924373712",
+      "publicationDate": {
+        "dateTime": "2026-11-14T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 421446059,
+      "uuid": "8356246782781639563",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "threads"
+      ],
+      "providerStates": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 421446074,
+      "uuid": "8229862176301272727",
+      "publicationDate": {
+        "dateTime": "2026-11-14T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/887dafedd9f84ed3.mp4"
+      ]
+    },
+    {
+      "id": 421446088,
+      "uuid": "7993315583738791837",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "youtube"
+      ],
+      "providerStates": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/df1e39898d3a4d21.mp4"
+      ]
+    },
+    {
+      "id": 421446104,
+      "uuid": "-1754664943692791070",
+      "publicationDate": {
+        "dateTime": "2026-11-14T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "tiktok"
+      ],
+      "providerStates": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": true,
+      "autoPublish": false,
+      "instagramAutoPublish": false,
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/2873122143414705.mp4"
+      ]
+    }
+  ],
+  "activePosts": [
+    {
+      "id": 414929635,
+      "uuid": "-8720943201794045273",
+      "publicationDate": {
+        "dateTime": "2026-11-09T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-7806874043140745604.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8901571588773561866.jpeg"
+      ]
+    },
+    {
+      "id": 415033593,
+      "uuid": "-8611238648907481079",
+      "publicationDate": {
+        "dateTime": "2026-11-09T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4505158859945613837.jpeg"
+      ]
+    },
+    {
+      "id": 421390066,
+      "uuid": "6046957420136514778",
+      "publicationDate": {
+        "dateTime": "2026-11-09T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "pinterest"
+      ],
+      "providerStates": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-17721174364004767911.jpeg"
+      ]
+    },
+    {
+      "id": 407893833,
+      "uuid": "-4686288400674371149",
+      "publicationDate": {
+        "dateTime": "2026-11-10T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-4160774621955894715.jpeg"
+      ]
+    },
+    {
+      "id": 415035691,
+      "uuid": "37985340483322184",
+      "publicationDate": {
+        "dateTime": "2026-11-10T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3482646658187184216.jpeg"
+      ]
+    },
+    {
+      "id": 421390078,
+      "uuid": "1201792213285619236",
+      "publicationDate": {
+        "dateTime": "2026-11-10T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "pinterest"
+      ],
+      "providerStates": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-443949474634896890.jpeg"
+      ]
+    },
+    {
+      "id": 415000163,
+      "uuid": "-4201876028718560102",
+      "publicationDate": {
+        "dateTime": "2026-11-11T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8583404517825039536.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12975306260184098837.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-2436596064500590019.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11102341631370552592.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-1107893845215096747.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-16562641166621667992.jpeg"
+      ]
+    },
+    {
+      "id": 415000221,
+      "uuid": "-8822571646587483154",
+      "publicationDate": {
+        "dateTime": "2026-11-11T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-90633665431348684.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-2165778225675445795.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8742528706314942075.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-8785534367035130029.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11236030041211411187.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13386137609000236981.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11175349090546228427.jpeg"
+      ]
+    },
+    {
+      "id": 417962546,
+      "uuid": "3294509733200285464",
+      "publicationDate": {
+        "dateTime": "2026-11-11T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-9019448443445299966.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6700642228488989031.jpeg"
+      ]
+    },
+    {
+      "id": 421390086,
+      "uuid": "-3417097081304103516",
+      "publicationDate": {
+        "dateTime": "2026-11-11T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "pinterest"
+      ],
+      "providerStates": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-9071769128208536752.jpeg"
+      ]
+    },
+    {
+      "id": 415077082,
+      "uuid": "-8331410252591837975",
+      "publicationDate": {
+        "dateTime": "2026-11-12T12:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-7009072093400135523.jpeg"
+      ]
+    },
+    {
+      "id": 417962744,
+      "uuid": "-6029234844495164842",
+      "publicationDate": {
+        "dateTime": "2026-11-12T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+      ]
+    },
+    {
+      "id": 421390094,
+      "uuid": "2095739444122305341",
+      "publicationDate": {
+        "dateTime": "2026-11-12T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "pinterest"
+      ],
+      "providerStates": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-1181522674229391439.jpeg"
+      ]
+    },
+    {
+      "id": 407894075,
+      "uuid": "-1741815444231403909",
+      "publicationDate": {
+        "dateTime": "2026-11-13T12:15:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-6415736996846283824.jpeg"
+      ]
+    },
+    {
+      "id": 415081189,
+      "uuid": "3126986420977421943",
+      "publicationDate": {
+        "dateTime": "2026-11-13T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15962699906781127537.jpeg"
+      ]
+    },
+    {
+      "id": 421390106,
+      "uuid": "-2331828084021443536",
+      "publicationDate": {
+        "dateTime": "2026-11-13T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "pinterest"
+      ],
+      "providerStates": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-2948500063045043671.jpeg"
+      ]
+    },
+    {
+      "id": 407894120,
+      "uuid": "-3403126915283661861",
+      "publicationDate": {
+        "dateTime": "2026-11-14T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-8113277485822534619.jpeg"
+      ]
+    },
+    {
+      "id": 415131163,
+      "uuid": "3200332797454403886",
+      "publicationDate": {
+        "dateTime": "2026-11-14T19:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook",
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-3588905237727497872.jpeg"
+      ]
+    },
+    {
+      "id": 421390112,
+      "uuid": "-3513321668753471647",
+      "publicationDate": {
+        "dateTime": "2026-11-14T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "pinterest"
+      ],
+      "providerStates": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-14102036045632191984.jpeg"
+      ]
+    },
+    {
+      "id": 420726136,
+      "uuid": "6199136659928140012",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "instagram"
+      ],
+      "providerStates": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+      ]
+    },
+    {
+      "id": 420728374,
+      "uuid": "7768651932591999367",
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "networks": [
+        "facebook"
+      ],
+      "providerStates": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "draft": false,
+      "autoPublish": true,
+      "instagramAutoPublish": true,
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+      ]
+    }
+  ]
+}
