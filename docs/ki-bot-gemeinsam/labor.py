@@ -204,7 +204,11 @@ def main():
     a.add_argument("--ausgabe", type=Path, required=True, help="Neue Ergebnisdatei; bestehende werden nicht überschrieben")
     a.add_argument("--stichtag", type=date.fromisoformat,
                    default=datetime.now(timezone.utc).date(), help="UTC-Stichtag für Datenalter")
+    a.add_argument("--nachrichten", type=Path, help="Optionale Offline-News mit Zeitstempeln und Modellwerten")
+    a.add_argument("--entscheidungszeit", help="ISO-Zeit mit Zeitzone; nur zusammen mit --nachrichten")
     args = a.parse_args()
+    if bool(args.nachrichten) != bool(args.entscheidungszeit):
+        a.error("--nachrichten und --entscheidungszeit müssen zusammen angegeben werden")
     tage, p, datenhash = laden(args.daten)
     qualitaet = datenalter(tage, args.stichtag)
     if not qualitaet["abgeschlossen"]:
@@ -227,9 +231,23 @@ def main():
               "ergebnisse": auswerten(tage, p)}
     if not result["ergebnisse"]:
         raise ValueError("Keine ausreichend lange vorab festgelegte Teilperiode vorhanden")
+    if args.nachrichten:
+        from nachrichten import pruefen, zeit
+        entscheidung = zeit(args.entscheidungszeit)
+        if entscheidung.date() > args.stichtag:
+            raise ValueError("Nachrichten-Entscheidungszeit liegt nach dem gewählten Stichtag")
+        raw = args.nachrichten.read_bytes()
+        result["nachrichten_pruefung"] = pruefen(json.loads(raw), args.entscheidungszeit, "BTC-USD")
+        result["nachrichten_sha256"] = hashlib.sha256(raw).hexdigest()
+        result["nachrichten_code_sha256"] = hashlib.sha256(
+            Path(__file__).with_name("nachrichten.py").read_bytes()).hexdigest()
+        result["nachrichten_strategiewirkung"] = "Keine: separater Datencheck, nicht rückwirkend in Kurssignale eingemischt"
     result["versuch_id"] = hashlib.sha256(json.dumps({
         "code": result["code_sha256"], "daten": datenhash,
         "protokoll": protokollhash, "stichtag": str(args.stichtag),
+        "nachrichten": result.get("nachrichten_sha256"),
+        "nachrichten_code": result.get("nachrichten_code_sha256"),
+        "entscheidungszeit": args.entscheidungszeit,
     }, sort_keys=True).encode()).hexdigest()
     payload = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     with args.ausgabe.open("x", encoding="utf-8") as f:

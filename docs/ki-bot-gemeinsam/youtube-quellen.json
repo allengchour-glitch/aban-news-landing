@@ -1,0 +1,45 @@
+{
+  "videozugriff": "Cloud-Proxy-CONNECT HTTP403, keine Videos/Untertitel gesehen",
+  "videos_aus_begleit_readmes": [
+    "https://www.youtube.com/watch?v=1PEyddA1y5E",
+    "https://www.youtube.com/watch?v=gMRee2srpe8"
+  ],
+  "quellen": [
+    {
+      "url": "https://github.com/nicknochnack/MLTradingBot/blob/main/README.md",
+      "sha256": "ad6da73fcc79f59afff56b4fccec706245b4ba9614e395038081751e2498ebed",
+      "bytes": 1635,
+      "umfang": "README gelesen"
+    },
+    {
+      "url": "https://github.com/nicknochnack/MLTradingBot/blob/main/tradingbot.py",
+      "sha256": "1fc065ed727551b53137224229abbb8ca18128b9fbd30733882bd969badf3fa3",
+      "bytes": 3344,
+      "umfang": "Beispielstrategie gelesen; keine Ausführung"
+    },
+    {
+      "url": "https://github.com/nicknochnack/MLTradingBot/blob/main/finbert_utils.py",
+      "sha256": "2f3454b801caefa1b5ee8252c4dbc21936dcb4b5806c6fe3625a4b5091769c02",
+      "bytes": 1074,
+      "umfang": "Aggregationsfunktion gelesen und mathematisch mit künstlichen Logits gegengeprüft"
+    },
+    {
+      "url": "https://github.com/hackingthemarkets/supertrend-crypto-bot/blob/master/README.md",
+      "sha256": "debdd25982fa5736831ab836cc6e2e94392452fbecc3b2d9f273a642e23ebbe0",
+      "bytes": 257,
+      "umfang": "README mit Videoverweis gelesen, kein Video oder vollständiger Strategiecode geprüft"
+    },
+    {
+      "url": "https://github.com/hackingthemarkets/tradingview-binance-strategy-alert-webhook/blob/master/README.md",
+      "sha256": "df7431b163b31148cfe259583dee9567bbf006ae6bc8f912a4eaac7bed2de0ce",
+      "bytes": 218,
+      "umfang": "README mit Videoverweis gelesen, kein Video oder vollständiger Brokerpfad geprüft"
+    },
+    {
+      "url": "https://github.com/Lumiwealth/lumibot/blob/master/README.md",
+      "sha256": "0b8223488054dfda3b9aa4bcf884137f0fc3679b84e5ec2c7a0ac8a5c48eca53",
+      "bytes": 9888,
+      "umfang": "README zur gemeinsamen Backtest-/Live-Schnittstelle gelesen; keine Installation"
+    }
+  ]
+}

@@ -14,6 +14,9 @@ HIER = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location("ki_forschung", HIER / "labor.py")
 L = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(L)
+spec_news = importlib.util.spec_from_file_location("ki_nachrichten", HIER / "nachrichten.py")
+N = importlib.util.module_from_spec(spec_news)
+spec_news.loader.exec_module(N)
 
 
 def preise(n=800):
@@ -175,6 +178,120 @@ class DatenUndSignale(unittest.TestCase):
             out.unlink()
             cmd[-1] = rows[-1][0]
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
+            self.assertFalse(out.exists())
+
+
+class Nachrichten(unittest.TestCase):
+    def artikel(self, **updates):
+        row = {"id": "eins", "headline": "Bitcoin Meldung", "symbol": "BTC-USD",
+               "source": "Erfundene Testquelle", "model_id": "erfundenes-modell@v1",
+               "published_at": "2026-10-29T12:00:00Z", "available_at": "2026-10-29T12:01:00Z",
+               "scored_at": "2026-10-29T12:02:00Z", "model_trained_until": "2025-01-01T00:00:00Z",
+               "probabilities": {"positive": .7, "negative": .1, "neutral": .2}}
+        row.update(updates)
+        return row
+
+    def check_news(self, rows):
+        return N.pruefen(rows, "2026-10-29T13:00:00Z", "BTC-USD")
+
+    def test_duplikate_verstaerken_stimmung_nicht(self):
+        a = self.check_news([self.artikel()])
+        b = self.check_news([self.artikel(id=str(i), headline="  BITCOIN   Meldung  ") for i in range(7)])
+        self.assertEqual(a["mittel_klassenwahrscheinlichkeiten"], b["mittel_klassenwahrscheinlichkeiten"])
+        self.assertEqual(b["verwendet"], 1)
+        self.assertEqual(b["verworfen"]["duplikat"], 6)
+        self.assertFalse(b["handelsfreigabe"])
+
+    def test_spaeterer_empfang(self):
+        r = self.check_news([self.artikel(available_at="2026-10-29T14:00:00Z", scored_at="2026-10-29T14:01:00Z")])
+        self.assertEqual(r["verworfen"]["zukunft"], 1)
+        self.assertIsNone(r["stimmungswert"])
+
+    def test_spaetere_modellbewertung(self):
+        r = self.check_news([self.artikel(scored_at="2026-10-29T14:00:00Z")])
+        self.assertEqual(r["verworfen"]["zukunft"], 1)
+
+    def test_spaeteres_modell(self):
+        r = self.check_news([self.artikel(model_trained_until="2026-10-29T14:00:00Z", scored_at="2026-10-29T15:00:00Z")])
+        self.assertEqual(r["verworfen"]["zukunft"], 1)
+
+    def test_zeitzonen(self):
+        a = self.check_news([self.artikel()])
+        b = N.pruefen([self.artikel()], "2026-10-29T15:00:00+02:00", "BTC-USD")
+        self.assertEqual(a, b)
+        with self.assertRaises(ValueError):
+            N.pruefen([], "2026-10-29T13:00:00", "BTC-USD")
+
+    def test_ungueltige_wahrscheinlichkeiten(self):
+        for probs in [{"positive": float("nan"), "negative": .1, "neutral": .2},
+                      {"positive": .7, "negative": .7, "neutral": .2},
+                      {"positive": True, "negative": 0, "neutral": 0},
+                      {"positive": .7, "negative": .1}]:
+            with self.subTest(probs=probs):
+                r = self.check_news([self.artikel(probabilities=probs)])
+                self.assertEqual(r["verworfen"]["ungueltig"], 1)
+                self.assertIsNone(r["stimmungswert"])
+
+    def test_fehlende_belege_und_falsche_zeitfolge(self):
+        for fields in [{"model_id": ""}, {"scored_at": None}, {"model_trained_until": None},
+                       {"available_at": "2026-10-29T11:00:00Z"},
+                       {"scored_at": "2026-10-29T12:00:00Z"}]:
+            with self.subTest(fields=fields):
+                self.assertEqual(self.check_news([self.artikel(**fields)])["verworfen"]["ungueltig"], 1)
+
+    def test_erste_beobachtung_unabhaengig_von_reihenfolge(self):
+        first = self.artikel()
+        later = self.artikel(scored_at="2026-10-29T12:30:00Z",
+                             probabilities={"positive": .1, "negative": .7, "neutral": .2})
+        self.assertEqual(self.check_news([first, later]), self.check_news([later, first]))
+
+    def test_modelle_nicht_mischen(self):
+        r = self.check_news([self.artikel(), self.artikel(model_id="anderes-modell@v2")])
+        self.assertEqual(r["status"], "verschiedene_modelle_nicht_vergleichbar")
+        self.assertIsNone(r["stimmungswert"])
+
+    def test_mittel_statt_aufaddierter_logits(self):
+        r = self.check_news([self.artikel(), self.artikel(id="zwei", headline="Andere Nachricht",
+                             probabilities={"positive": .1, "negative": .7, "neutral": .2})])
+        self.assertAlmostEqual(r["mittel_klassenwahrscheinlichkeiten"]["positive"], .4)
+        self.assertAlmostEqual(r["stimmungswert"], 0)
+
+    def test_alter_und_symbol(self):
+        r = self.check_news([self.artikel(published_at="2026-10-26T12:59:59Z"), self.artikel(symbol="SPY")])
+        self.assertEqual(r["verworfen"]["zu_alt"], 1)
+        self.assertEqual(r["verworfen"]["anderes_symbol"], 1)
+        boundary = self.artikel(published_at="2026-10-26T13:00:00Z")
+        self.assertEqual(self.check_news([boundary])["verwendet"], 1)
+
+    def test_keine_nachricht_ist_nicht_neutrale_prognose(self):
+        r = self.check_news([])
+        self.assertEqual(r["status"], "keine_verwendbaren_nachrichten")
+        self.assertIsNone(r["mittel_klassenwahrscheinlichkeiten"])
+
+    def test_cli_nachrichten_als_getrennten_datencheck(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            data, news, out = d / "kurse.json", d / "news.json", d / "bericht.json"
+            start = date(2020, 1, 1)
+            data.write_text(json.dumps([[str(start + timedelta(days=i)), p]
+                                        for i, p in enumerate(preise(2200))]))
+            news.write_text(json.dumps([self.artikel()]))
+            cmd = [sys.executable, str(HIER / "labor.py"), "--daten", str(data), "--ausgabe", str(out),
+                   "--stichtag", "2026-10-29"]
+            before = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(before.returncode, 0, before.stderr)
+            baseline = json.loads(out.read_text())
+            out.unlink()
+            pair = ["--nachrichten", str(news), "--entscheidungszeit", "2026-10-29T13:00:00Z"]
+            after = subprocess.run(cmd + pair, capture_output=True, text=True)
+            self.assertEqual(after.returncode, 0, after.stderr)
+            r = json.loads(out.read_text())
+            self.assertEqual(r["nachrichten_pruefung"]["verwendet"], 1)
+            self.assertFalse(r["handelsfreigabe"])
+            self.assertEqual(r["ergebnisse"], baseline["ergebnisse"])
+            self.assertNotEqual(r["versuch_id"], baseline["versuch_id"])
+            out.unlink()
+            self.assertNotEqual(subprocess.run(cmd + pair[:2], capture_output=True).returncode, 0)
             self.assertFalse(out.exists())
 
 

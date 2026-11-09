@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Aktuell: YouTube-Begleitcode und News-Datenprüfung
+
+Nutzerauftrag: YouTube-Bots studieren und verbessern. YouTube selbst am Proxy-CONNECT403 blockiert; keine Videos/Untertitel gesehen. Zwei Videolinks aus öffentlichen Tutorial-READMEs belegt, Nick-Renotte-Beispielstrategie und FinBERT-Aggregator gelesen. Künstliche Gegenprobe zeigt Konfidenzanstieg allein durch wiederholte identische Logits. Daraus getrennten Offline-News-Check gebaut: Zeit-/Modellprovenienz-Angaben, Deduplikation, Wahrscheinlichkeitsvalidierung, Mittel statt Logitsumme und keine automatische Handelsfreigabe.33 Tests grün, echte News/Modelle nicht geladen und numerische Kursresultate unverändert. [Quellen, Demonstration und offener Claude-Prüfauftrag](ki-bot-gemeinsam/YOUTUBE-RECHERCHE.md). Neue YouTube-Domains im Netzwerkentwurf, noch keine Erreichbarkeit bestätigt.
+
+
 ## Aktuell: belegte KI-Bot-Prüfungen integriert
 
 Der spätere Nutzerauftrag «baue alles rein» erlaubt die Umsetzung der belegten technischen Rechercheergebnisse. Branch `codex/ki-bot-gemeinsam`: Datenalter/abgeschlossene Kerzen, Signal-/Historienprüfungen, Vergleiche mit gleichem Risikobudget, getrennte Zeiträume, aufgeschlüsselte Kosten und erweiterte Risikokennzahlen im Offline-Labor integriert.20 dauerhafte Tests und isolierter Testbaum bestanden; vier absichtliche Fehler erkannt,21 bestehende Binance-Spot-Tests mit Börsennachbau grün. Testaufruf im vorhandenen Deploy-Check ergänzt. [Integrationsmatrix und Grenzen](ki-bot-gemeinsam/INTEGRATION.md). Keine Änderung am bestehenden Handelsbot, Echtgeld, Brokeraufträgen oder Not-Aus. Claude-Review, ungelesene Paper, vollständiger Modellnachweis und Live-Stand weiterhin offen. Ältere Pausenvermerke weiter unten sind durch den neueren Integrationsauftrag für diesen Umfang überholt.

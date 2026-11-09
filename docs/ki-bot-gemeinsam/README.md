@@ -1,5 +1,7 @@
 # Gemeinsamer KI-Bot: umgesetzte Forschungsprüfungen
 
+Aktuelle Ergänzung aus der Tutorial-Recherche: [News-Sentiment prüfen statt Duplikate verstärken](YOUTUBE-RECHERCHE.md). Begleitcode auf GitHub gelesen; Videos selbst wegen Proxy403 noch nicht gesehen. Optionaler Zeit-/Duplikat-/Modellcheck integriert,33 Tests grün; keine News-Handelsstrategie oder echten Modellprognosen behauptet.
+
 Neuester Auftrag: «baue alles rein». Die belegten technischen Erkenntnisse aus der [Recherche](RECHERCHE.md) sind im getrennten Offline-Labor umgesetzt. Ungelesene Paper, ungetestete Frameworks und Claudes Zustimmung gelten weiterhin nicht als bestätigt. Der bestehende Handelsbot und seine Strategie-/Risikoeinstellungen sind unverändert.
 
 ## Was integriert ist
