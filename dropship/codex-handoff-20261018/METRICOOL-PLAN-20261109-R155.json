@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-09T14:08:27+01:00",
+  "scope": "read_only_identity_and_schedule_no_metrics",
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "instagram": "luxestyle.ch",
+    "threads": "luxestyle.ch",
+    "tiktok": "luxestyle.ch",
+    "facebook": "1049840534888592",
+    "pinterest": "luxestyleCH",
+    "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+    "matchedExpected": true
+  },
+  "window": {
+    "futureFrom": "2026-11-09T14:08:27+01:00",
+    "futureThrough": "2026-11-17T23:59:59+01:00",
+    "pastDueCountercheck": "2026-11-09T00:00:00+01:00/2026-11-09T14:08:26+01:00"
+  },
+  "queryNote": "One large planning request returned INVALID_ARGUMENT because the response exceeded the maximum size; it was then read successfully in three non-overlapping small ranges. This is not an empty-data result.",
+  "futureSummary": {
+    "objects": 59,
+    "activeObjects": 20,
+    "draftObjects": 39,
+    "manualObjects": 0,
+    "activeVideoObjects": 0,
+    "activeSameChannelSlotCollisions": 0,
+    "activeSameChannelMediaDuplicates": 0,
+    "activeSameChannelExactTextDuplicates": 0
+  },
+  "activeByDate": {
+    "2026-11-09": {"facebook": 1, "instagram": 1, "pinterest": 1, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-10": {"facebook": 2, "instagram": 2, "pinterest": 1, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-11": {"facebook": 2, "instagram": 2, "pinterest": 1, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-12": {"facebook": 2, "instagram": 2, "pinterest": 1, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-13": {"facebook": 2, "instagram": 2, "pinterest": 1, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-14": {"facebook": 2, "instagram": 2, "pinterest": 1, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-15": {"facebook": 1, "instagram": 1, "pinterest": 0, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-16": {"facebook": 0, "instagram": 0, "pinterest": 0, "tiktok": 0, "threads": 0, "youtube": 0},
+    "2026-11-17": {"facebook": 0, "instagram": 0, "pinterest": 0, "tiktok": 0, "threads": 0, "youtube": 0}
+  },
+  "dueCountercheck": {
+    "published": [{"id": 414929635, "uuid": "-8720943201794045273", "time": "2026-11-09T12:15:00+01:00", "networks": ["facebook", "instagram"], "states": ["PUBLISHED", "PUBLISHED"]}],
+    "pastDatedDrafts": 5,
+    "pastDatedDraftsState": "draft=true, autoPublish=false; PENDING labels do not make them active"
+  },
+  "interpretation": {
+    "scheduledOrPendingProvesPublished": false,
+    "futureActivePhotoOnly": true,
+    "tiktokThreadsYoutubeGap": "entire future window",
+    "pinterestGapFrom": "2026-11-15",
+    "facebookInstagramGapFrom": "2026-11-16",
+    "writes": 0,
+    "metricsRepeated": false
+  }
+}
