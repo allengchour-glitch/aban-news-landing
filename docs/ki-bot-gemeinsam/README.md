@@ -1,5 +1,7 @@
 # Gemeinsamer KI-Bot: Codex baut, Claude Code prüft unabhängig
 
+**Neuester Auftrag: erst recherchieren, dann bauen. Weitere Entwicklung ist pausiert.** Der bisherige Prototyp ist ein unbestätigter Entwurf. [Recherche, gelesene Quellen und offene Originaltexte](RECHERCHE.md) haben Vorrang vor den älteren Entwicklungsaufträgen weiter unten.
+
 ## Ziel
 
 Ein nachvollziehbarer Trading-Bot, dessen Nutzen nach Gebühren und Verlusten überprüfbar ist. «Der beste» ist ein Ziel, kein belegtes Ergebnis. Mehr KI, mehr Trades oder ein höherer Rückblickgewinn sind allein kein Fortschritt. Bestehender Pilot, Konten, Risikolimits und Echtgeld-Sperren bleiben unverändert. Nutzerauftrag: «das beste ki bot erfinden du und claude zusammen».

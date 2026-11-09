@@ -1,0 +1,85 @@
+{
+  "quellen": [
+    {
+      "quelle": "https://github.com/freqtrade/freqtrade/blob/develop/docs/lookahead-analysis.md",
+      "abruf_url": "https://raw.githubusercontent.com/freqtrade/freqtrade/develop/docs/lookahead-analysis.md",
+      "sha256": "49c0cc7f34f5aa071827366d0fe28af765a2fe7a91f823548d33687bf5b633b9",
+      "bytes": 7801,
+      "gelesener_umfang": "Funktionsweise, Beispiele und Einschränkungen",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/freqtrade/freqtrade/blob/develop/docs/recursive-analysis.md",
+      "abruf_url": "https://raw.githubusercontent.com/freqtrade/freqtrade/develop/docs/recursive-analysis.md",
+      "sha256": "9449ae882ae8583b8f40837359248ede7db71558bb786031e108b6855b215a1e",
+      "bytes": 7896,
+      "gelesener_umfang": "Unterschiede durch Startdaten und Historienlänge",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/freqtrade/freqtrade/blob/develop/docs/backtesting.md",
+      "abruf_url": "https://raw.githubusercontent.com/freqtrade/freqtrade/develop/docs/backtesting.md",
+      "sha256": "dc74cad035e679e4f361fe4c7cff4c8dd2dd62f534c39f7b5b012d307dee7fd9",
+      "bytes": 57906,
+      "gelesener_umfang": "Gebühren, dynamische Marktlisten, Ausführungsannahmen, Kennzahlen-/p-Wert-Grenzen",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/freqtrade/freqtrade/blob/develop/docs/freqai-running.md",
+      "abruf_url": "https://raw.githubusercontent.com/freqtrade/freqtrade/develop/docs/freqai-running.md",
+      "sha256": "cf150175b3ffcf5f4bc721f9a5f2d9cc10839531bff1fc682f6543ac62d91b86",
+      "bytes": 17355,
+      "gelesener_umfang": "Gleitende Fenster, Feature-Leakage, gespeicherte Vorhersagen und Modellwiederverwendung",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/microsoft/qlib/blob/main/README.md",
+      "abruf_url": "https://raw.githubusercontent.com/microsoft/qlib/main/README.md",
+      "sha256": "e9f7cc8eeb60e3fe3784ec496e350ecb584157c3240cda0651c20acb26fd9037",
+      "bytes": 44277,
+      "gelesener_umfang": "Überblick, ML-Pipeline, verlinkte Arbeiten und R&D-Agent",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/microsoft/RD-Agent/blob/main/README.md",
+      "abruf_url": "https://raw.githubusercontent.com/microsoft/RD-Agent/main/README.md",
+      "sha256": "b68ff14551944e1821023ae54a090fc0aabaad58170165cc9c17c6e0e7290c13",
+      "bytes": 41910,
+      "gelesener_umfang": "Quant-Bereich, Forschungsablauf und als Projektbehauptungen eingeordnete Ergebnisse",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/AI4Finance-Foundation/FinRL/blob/master/README.md",
+      "abruf_url": "https://raw.githubusercontent.com/AI4Finance-Foundation/FinRL/master/README.md",
+      "sha256": "498bb3870ec65e5b1a885d4faf4070f3c4f28ba4dab9558cb657b5e096d22063",
+      "bytes": 23178,
+      "gelesener_umfang": "Projektstatus, Bildungs-/Forschungszweck, Nachfolger und Abgrenzung",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/AI4Finance-Foundation/FinRL-Trading/blob/master/README.md",
+      "abruf_url": "https://raw.githubusercontent.com/AI4Finance-Foundation/FinRL-Trading/master/README.md",
+      "sha256": "87b6d384f7b9f98ab2d091cf52391c5a0246a342c61213bf5cf7eec1c366d6d2",
+      "bytes": 16808,
+      "gelesener_umfang": "Überblick, gewichtete Strategieschnittstelle und Architekturschichten",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+      "abruf_url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+      "sha256": "4bc4693f7bed86fe36da20f673b1f6dc8839ab8129030f1dead44e5134dbd029",
+      "bytes": 207246,
+      "gelesener_umfang": "Allgemeine API-Regeln, Timeout, HTTP-Status und Rate-Limits",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    },
+    {
+      "quelle": "https://github.com/binance/binance-spot-api-docs/blob/master/filters.md",
+      "abruf_url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/filters.md",
+      "sha256": "6dd26bcb117d08b3d4d0b95870a3781e0ae287c7773c7be3d196d5f809f9d23b",
+      "bytes": 13518,
+      "gelesener_umfang": "Preis-/Mengenraster, Mindest-/Maximalwerte, Spot-Filter",
+      "status": "Abschnitte der offiziellen Dokumentation/Projektbeschreibung gelesen; kein unabhängiger Laufnachweis"
+    }
+  ],
+  "grenze": "Bewegliche Branch-URLs; Hashes bezeichnen die gelesenen lokalen Fassungen. Ungelesene Originalarbeiten sind in RECHERCHE.md getrennt erfasst."
+}
