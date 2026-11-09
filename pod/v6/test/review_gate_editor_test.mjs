@@ -73,7 +73,7 @@ async function desktopSzenario(browser, srv) {
   const p = s.page;
   try {
     await editorBereit(p);
-    pruefe('v6.3.1 ist geladen', await p.evaluate(() => window.LSPOD6 && window.LSPOD6.version) === '6.3.1');
+    pruefe(`v${process.env.V6_VERSION} ist geladen`, await p.evaluate(() => window.LSPOD6 && window.LSPOD6.version) === process.env.V6_VERSION);
     await textAuf(p, 'front', 'Vorne geprueft');
     await textAuf(p, 'back', 'Hinten geprueft');
 

@@ -4,7 +4,7 @@
  * (Byte-Vergleich gegen 6.3.1), Review-Tor, Entwurf, Start-Steuerung.
  * Karten und Vorschaudaten: die LIVE-Dateien aus pod/v6/maps (T-Shirt 71/456/586, Hoodie 145/821, Classic-Tee 438, Kiss-Cut 358, Stickerei 1552) und die Test-Karten aus testdaten/ (Tasse 19, Poster 268,
  * Kappe 206, Allover-Hoodie 388, Modell 1592, T-Shirt 71 mit Farbtabelle). Vorlagenbilder: Nachbauten (lib.mjs: geisterPng) oder, mit V6_BILDCACHE, die echten Printful-Bilder.
- * Aufruf: node bearbeiten_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = die schnellen für die Mutationsprobe)
+ * Aufruf: node bearbeiten_test.mjs [Teil]   (Teil: Name oder Anfang eines Szenarios; ohne Angabe alle; «kern» = die für die Mutationsprobe, seit 6.4.0 alle: sie dauern zusammen unter einer Minute)
  * Umgebung: V6_DATEI (andere Fassung des Editors, für die Mutationsprobe), V6_REF_DATEI (Referenz für den Byte-Vergleich, Standard 6.3.1), V6_BILDCACHE, V6_MESSWERTE=1 (druckt die Zahlen von «Gleiche Vorschau»).
  */
 import { readFileSync, existsSync } from 'node:fs';
@@ -124,6 +124,7 @@ szenario('angebot', true, async (b, srv) => {
   pruefe('Reiterleiste ist ein tablist mit role=tab', await p.locator('[data-feld="sicht"][role="tablist"] [role="tab"]').count() === 3);
   const hoch = await p.locator('.lsp6-sbtn').evaluateAll((e) => e.map((x) => x.getBoundingClientRect().height));
   pruefe('Reiter mindestens 44 px hoch', hoch.every((h) => h >= 44), hoch.join(','));
+  pruefe('drei Reiter: kompakte Schrift und enge Füllung (data-anzahl=3), damit sie am Handy nebeneinander passen', await p.evaluate(() => { const g = document.querySelector('[data-feld="sicht"]'), b = document.querySelector('.lsp6-sbtn'); const c = getComputedStyle(b); return g.getAttribute('data-anzahl') === '3' && c.paddingLeft === '6px' && c.fontSize === '12.5px'; }));
   pruefe('keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
   // alle anderen Fälle: kein Reiter «Druckversion» und kein Produkt-Bearbeiten
@@ -153,6 +154,14 @@ szenario('angebot', true, async (b, srv) => {
   pruefe('data-bearbeiten=0: zwei Schalter «Druckfläche | Auf dem Produkt» wie 6.3.1, kein Knoten «bearbeiten»', (await z.page.locator('.lsp6-sbtn').allInnerTexts()).join('|') === 'Druckfläche|Auf dem Produkt' && await z.page.locator('[data-sicht="bearbeiten"]').count() === 0 && (await z.page.locator('.lsp6-stage').getAttribute('data-ansicht')) === 'druck');
   pruefe('data-bearbeiten=0: role=group mit aria-pressed (kein tablist)', await z.page.locator('[data-feld="sicht"][role="group"]').count() === 1 && (await z.page.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-pressed')) === 'true');
   await z.schliessen();
+  // Schalter in der Schnittstelle: 0 und «aus» schalten «Bearbeiten auf dem Produkt» ab, 1 und angebot lassen es zu
+  for (const [wert, soll, modus] of [['0', false, 'aus'], ['aus', false, 'aus'], ['1', true, 'start'], ['angebot', true, 'angebot']]) {
+    const m = await oeffnen(b, srv, T71.replace('bearbeiten=1', 'bearbeiten=' + wert));
+    await sichtWarten(m.page);
+    const r = await m.page.evaluate(() => { const ed = window.LSPOD6.editors[0]; return { modus: ed.bearbeitenModus, moeglich: ed.produktfotoMoeglich(ed.st.aktiv), tabs: [...document.querySelectorAll('.lsp6-sbtn')].filter((x) => !x.hidden).map((x) => x.textContent.trim()).join('|') }; });
+    pruefe(`data-bearbeiten=${wert}: Modus «${modus}», Produktfoto-Tor ${soll ? 'offen' : 'zu'} (auch in der Schnittstelle), Reiter ${soll ? 'Bearbeiten|Druckversion|Vorschau' : 'Druckfläche|Auf dem Produkt'}`, r.modus === modus && r.moeglich === soll && r.tabs === (soll ? 'Bearbeiten|Druckversion|Vorschau' : 'Druckfläche|Auf dem Produkt'), JSON.stringify(r));
+    await m.schliessen();
+  }
   const a = await oeffnen(b, srv, T71.replace('bearbeiten=1', 'bearbeiten=angebot'));
   await sichtWarten(a.page);
   pruefe('data-bearbeiten=angebot: drei Reiter, Start in «Druckversion»', (await tabsText(a.page)).join('|') === 'Bearbeiten|Druckversion|Vorschau' && (await sicht(a.page)) === 'druck' && (await a.page.locator('.lsp6-stage').getAttribute('data-ansicht')) === 'druck');
@@ -162,7 +171,7 @@ szenario('angebot', true, async (b, srv) => {
   await l.schliessen();
 });
 
-szenario('reiter-a11y', false, async (b, srv) => {
+szenario('reiter-a11y', true, async (b, srv) => {
   const s = await oeffnen(b, srv, T71);
   const p = s.page;
   await sichtWarten(p);
@@ -175,6 +184,7 @@ szenario('reiter-a11y', false, async (b, srv) => {
   await p.keyboard.press('ArrowRight');
   pruefe('Pfeil rechts: Fokus auf «Druckversion», noch nicht gewählt', await p.evaluate(() => document.activeElement.getAttribute('data-sicht')) === 'druck' && (await sicht(p)) === 'bearbeiten');
   await p.keyboard.press('Enter');
+  pruefe('nach der Wahl wandert der Tabindex mit (nur der gewählte Reiter ist per Tab erreichbar: -1,0,-1)', (await p.evaluate(() => [...document.querySelectorAll('.lsp6-sbtn')].map((x) => x.getAttribute('tabindex')).join(','))) === '-1,0,-1');
   pruefe('Enter wählt: Druckversion, aria-selected und Live-Meldung', (await sicht(p)) === 'druck' && (await p.locator('.lsp6-sbtn[data-sicht="druck"]').getAttribute('aria-selected')) === 'true' && /Druckversion/.test(await p.locator('[data-feld="sichtlive"]').innerText()));
   pruefe('Druckversion: Hinweis «So wird die Druckdatei gedruckt», Vorhang sichtbar, kein Zoom-Knopf', /So wird die Druckdatei/.test(await p.locator('[data-feld="sichtnote"]').innerText()) && await p.locator('.lsp6-veil:visible').count() === 4 && await p.locator('.lsp6-zoom').isHidden());
   await p.keyboard.press('End');
@@ -242,6 +252,8 @@ szenario('fenster-zoom', true, async (b, srv) => {
     await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
     lagePruefen(`${bez} Druckversion`, await lage(p), sollLage(g.vl, 'flaeche'));
     pruefe(`${bez}: Druckversion hat den Link «Ganze Vorlage zeigen», keine Zoomknöpfe`, await p.locator('.lsp6-meta .lsp6-linkbtn').isVisible() && await p.locator('.lsp6-zoom').isHidden());
+    await p.evaluate(() => window.LSPOD6.editors[0].zoomSetzen('vorlage'));
+    pruefe(`${bez}: in der Druckversion ändert die Schnittstelle den Zoom der Produktbühne nicht (Stufe bleibt «produkt»)`, await p.evaluate(() => window.LSPOD6.editors[0].st.zoom) === 'produkt');
     await p.locator('.lsp6-meta .lsp6-linkbtn').click();
     lagePruefen(`${bez} Druckversion, ganze Vorlage`, await lage(p), sollLage(g.vl, 'vorlage'));
     await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
@@ -361,7 +373,7 @@ szenario('schichten', true, async (b, srv) => {
 });
 
 // ── 5. Ziehen, Skalieren, Drehen: Maus und Touch ────────────────────────────────────────────────
-szenario('ebenen-bedienung', false, async (b, srv) => {
+szenario('ebenen-bedienung', true, async (b, srv) => {
   const s = await oeffnen(b, srv, SHIRT_Q(), { ...PC });
   const p = s.page;
   await sichtWarten(p);
@@ -401,6 +413,16 @@ szenario('ebenen-bedienung', false, async (b, srv) => {
   const vorW = JSON.stringify(await ebenen(p)), vorSel = await p.evaluate(() => window.LSPOD6.editors[0].st.sel);
   for (const art of ['druck', 'produkt', 'bearbeiten']) { await p.locator(`.lsp6-sbtn[data-sicht="${art}"]`).click(); if (art === 'produkt') await p.waitForTimeout(300); }
   pruefe('Ansichtswechsel hin und her: Ebenen und Auswahl unverändert', JSON.stringify(await ebenen(p)) === vorW && (await p.evaluate(() => window.LSPOD6.editors[0].st.sel)) === vorSel);
+  // Zurück in der Ebene (Druckversion) gilt der Rahmen von 6.3.1 wieder (8 px um die Ebene, kein Stil aus der Schicht über dem Foto)
+  await p.locator('.lsp6-sbtn[data-sicht="druck"]').click();
+  const rahmen = await p.evaluate(() => {
+    const f = document.querySelector('.lsp6-layer .lsp6-sel-frame'), l = document.querySelector('.lsp6-layer');
+    if (!f) return null;
+    // Layoutmasse (offset*) statt Bildschirmrechtecken: die Ebene ist gedreht, dann sind die Rechtecke von Rahmen und Ebene verschieden gross
+    return { stil: f.getAttribute('style'), links: f.offsetLeft, oben: f.offsetTop, dw: f.offsetWidth - l.offsetWidth, dh: f.offsetHeight - l.offsetHeight, sichtbar: getComputedStyle(f).display !== 'none' };
+  });
+  pruefe('Druckversion: der gewählte Rahmen sitzt wieder in der Ebene, ohne Stil aus der Schicht, 8 px Abstand rundum', !!rahmen && !rahmen.stil && rahmen.sichtbar && Math.abs(rahmen.links + 8) <= 0.6 && Math.abs(rahmen.oben + 8) <= 0.6 && Math.abs(rahmen.dw - 16) <= 1.2 && Math.abs(rahmen.dh - 16) <= 1.2, JSON.stringify(rahmen));
+  await p.locator('.lsp6-sbtn[data-sicht="bearbeiten"]').click();
   // Das Motiv lässt sich nicht aus der Druckfläche ziehen
   const l5 = await rect(p, '.lsp6-layer');
   await p.mouse.move(l5.x + l5.w / 2, l5.y + l5.h / 2); await p.mouse.down(); await p.mouse.move(h.x - 300, h.y - 300, { steps: 6 }); await p.mouse.up();
@@ -419,7 +441,7 @@ szenario('ebenen-bedienung', false, async (b, srv) => {
   await s.schliessen();
 });
 
-szenario('touch', false, async (b, srv) => {
+szenario('touch', true, async (b, srv) => {
   const s = await oeffnen(b, srv, SHIRT_Q(), MOBIL);
   const p = s.page;
   await sichtWarten(p);
@@ -458,7 +480,7 @@ szenario('touch', false, async (b, srv) => {
 });
 
 // ── 6. Handy: Bedienung bei 390, 360 und 320 px ─────────────────────────────────────────────────
-szenario('handy-bedienung', false, async (b, srv) => {
+szenario('handy-bedienung', true, async (b, srv) => {
   for (const breite of [390, 360, 320]) {
     const s = await oeffnen(b, srv, SHIRT_Q(), { breite, hoehe: 800, mobil: true });
     const p = s.page;
@@ -632,7 +654,7 @@ szenario('druckdatei-unveraendert', true, async (b, srv) => {
   pruefe('die Druckdatei ist nicht leer (mehr als 5 KB)', ref.d.bytes > 5000, String(ref.d.bytes));
 });
 
-szenario('review-kaufweg', false, async (b, srv) => {
+szenario('review-kaufweg', true, async (b, srv) => {
   const lauf = async (extra) => {
     const s = await oeffnen(b, srv, SHIRT_Q([V71, V456, V586]).replace('&bearbeiten=1', '') + '&' + extra);
     const p = s.page;
@@ -651,6 +673,21 @@ szenario('review-kaufweg', false, async (b, srv) => {
   pruefe('Kauf aus «Bearbeiten»: Uploads (Typ, Pixelgrösse) wie 6.3.1', JSON.stringify(neu.uploads.filter((u) => u.b)) === JSON.stringify(alt.uploads.filter((u) => u.b)), JSON.stringify([neu.uploads, alt.uploads]));
   pruefe('Kauf aus «Bearbeiten»: Eigenschaften und _pod_karte wie 6.3.1', neu.wk[0] === alt.wk[0] && neu.karte === alt.karte, JSON.stringify([neu.wk[0], alt.wk[0], neu.karte, alt.karte]));
   pruefe('keine Seitenfehler beim Kauf', neu.fehler.length === 0 && alt.fehler.length === 0, JSON.stringify([neu.fehler, alt.fehler]));
+  // Ein Ansichtswechsel ist keine Änderung des Designs: eine offene Druckprüfung (Dialog) bleibt offen und gültig
+  const o = await oeffnen(b, srv, SHIRT_Q());
+  await sichtWarten(o.page);
+  await textHinzufuegen(o.page, 'Kauf');
+  await o.page.locator('.lsp6-cta').click();
+  const dialog = o.page.locator('[data-lsp6-review="1"]');
+  await dialog.waitFor({ state: 'visible', timeout: 30000 });
+  await o.page.evaluate(() => { const ed = window.LSPOD6.editors[0]; ed.sichtSetzen('druck'); ed.sichtSetzen('bearbeiten'); });
+  await o.page.waitForTimeout(150);
+  pruefe('Ansichtswechsel bei offener Druckprüfung: der Dialog bleibt offen und die Bestätigung führt in den Warenkorb', await dialog.isVisible());
+  await dialog.locator('.lsp6-review-accept').check();
+  await dialog.locator('.lsp6-review-confirm').click();
+  await o.page.waitForURL('**/cart', { timeout: 30000 });
+  pruefe('Ansichtswechsel bei offener Druckprüfung: Warenkorb erreicht, keine Seitenfehler', o.warenkorb.length === 1 && o.fehler.length === 0, JSON.stringify([o.warenkorb.length, o.fehler]));
+  await o.schliessen();
 });
 
 // ── 8b. Gate: wann zeigt «Bearbeiten» das Produkt? Platzierungen, Bündel, veränderte Vorschaudaten ─────
@@ -715,16 +752,18 @@ szenario('gate', true, async (b, srv) => {
   await sichtWarten(k.page);
   let z = await stand(k.page);
   pruefe('Bündel: Modell 71 hat Vorschaudaten: Produktbühne und drei Reiter', z.pb && z.tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(z));
+  await k.page.locator('.lsp6-sbtn[data-sicht="produkt"]').click();   // Wunsch «Vorschau»
+  pruefe('Bündel: Wunsch «Vorschau» ist gewählt', (await stand(k.page)).sicht === 'produkt' && (await stand(k.page)).wunsch === 'produkt');
   await k.page.locator('input[name="id"][value="1002"]').check();
   await k.page.waitForFunction(() => window.LSPOD6.editors[0].karte.printfulProductId === 586, null, { timeout: 5000 });
   await k.page.waitForTimeout(150);
   z = await stand(k.page);
-  pruefe('Bündel: Modell 586 ohne Vorschaudaten: Bühne von 6.3.1, die Reiterleiste verschwindet', !z.pb && z.sicht === 'bearbeiten' && !(await gruppeSichtbar(k.page)), JSON.stringify(z));
+  pruefe('Bündel: Modell 586 ohne Vorschaudaten: Bühne von 6.3.1, die Reiterleiste verschwindet, der Wunsch «Vorschau» wird aufgegeben', !z.pb && z.sicht === 'bearbeiten' && z.wunsch === 'bearbeiten' && !(await gruppeSichtbar(k.page)), JSON.stringify(z));
   await k.page.locator('input[name="id"][value="1001"]').check();
   await k.page.waitForFunction(() => window.LSPOD6.editors[0].karte.printfulProductId === 71, null, { timeout: 5000 });
   await k.page.waitForTimeout(150);
   z = await stand(k.page);
-  pruefe('Bündel: zurück auf Modell 71: Produktbühne und Reiter sind wieder da', z.pb && z.tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(z));
+  pruefe('Bündel: zurück auf Modell 71: Produktbühne und Reiter sind wieder da, die aufgegebene «Vorschau» kommt nicht von selbst zurück', z.pb && z.sicht === 'bearbeiten' && z.tabs === 'Bearbeiten|Druckversion|Vorschau', JSON.stringify(z));
   await k.schliessen();
   // Das Tor verlangt den Adapter «flach» UND ein bekanntes Produktfoto: ein Tassen- oder Poster-Modell, dessen Vorlagenadresse (zufällig) in «bilder» steht, bekommt trotzdem keine Produktbühne
   for (const [name, q, id] of [['Tasse 19 (Adapter «tasse»)', T19, '19'], ['Poster 268 (Adapter «papier»)', 'karte=268&vorschau=268&bearbeiten=1', '268']]) {
@@ -826,7 +865,7 @@ szenario('start-steuerung', true, async (b, srv) => {
   await e.schliessen();
 });
 
-szenario('rueckfall-bild', false, async (b, srv) => {
+szenario('rueckfall-bild', true, async (b, srv) => {
   // das Produktfoto lädt nicht (404 auf /m/): «Bearbeiten» springt auf «Druckversion» mit einem ruhigen Hinweis, der Kauf geht weiter
   const s = await oeffnen(b, srv, SHIRT_Q(), { printfulBild: (u) => (/\/m\//.test(u) ? { status: 404, typ: 'text/plain', body: '' } : null) });
   const p = s.page;
@@ -840,6 +879,15 @@ szenario('rueckfall-bild', false, async (b, srv) => {
   pruefe('Foto fehlt: der Kauf geht trotzdem durch (Druckdatei, ohne Vorschau-Foto)', s.warenkorb.length === 1 && s.uploads.length >= 1);
   pruefe('Foto fehlt: keine Seitenfehler', s.fehler.length === 0, s.fehler.join(' | '));
   await s.schliessen();
+  // das Foto scheitert erst, wenn die Seite längst steht (spätes 404, kein weiterer Neuaufbau): der Rückfall kommt trotzdem, aus dem Fehlerereignis des Bildes
+  const t = await oeffnen(b, srv, SHIRT_Q(), { printfulBild: (u) => (/\/m\//.test(u) ? { status: 404, typ: 'text/plain', body: '', verzoegerung: 1800 } : null) });
+  await sichtWarten(t.page);
+  await t.page.waitForTimeout(300);
+  pruefe('spätes 404: vor dem Fehler zeigt «Bearbeiten» noch die Bühne (der Test misst den Rückfall aus dem Fehlerereignis)', (await sicht(t.page)) === 'bearbeiten' || (await sicht(t.page)) === 'druck');
+  await t.page.waitForFunction(() => window.LSPOD6.editors[0].st.sicht === 'druck', null, { timeout: 6000 });
+  pruefe('spätes 404: die Ansicht fällt auf «Druckversion» zurück und sagt es ruhig', (await sicht(t.page)) === 'druck' && /Produktfoto lädt gerade nicht/.test(await t.page.locator('[data-feld="sichthinweis"]').innerText()));
+  pruefe('spätes 404: keine Seitenfehler', t.fehler.length === 0, t.fehler.join(' | '));
+  await t.schliessen();
 });
 
 szenario('statische-pruefung', true, async () => {

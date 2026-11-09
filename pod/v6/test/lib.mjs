@@ -223,7 +223,7 @@ const NORMALE_KENNUNG = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHT
  * @param opt      { query: 'karte=71&…', breite, hoehe, mobil, sprache, cloudinaryFehler: bool,
  *                   cloudinaryMaxBytes: Zahl (grössere Uploads → HTTP 400 «File size too large»), cloudinaryMaxPixel: Zahl (mehr Pixel → HTTP 400 «Image dimensions too large»),
  *                   cloudinaryVerzoegerung: (n, art) => ms (n = laufende Nummer des Uploads), cloudinaryHaengt: (n) => bool (Antwort kommt nie), warenkorbVerzoegerung: ms,
- *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulHaengt / shopifyHaengt: (url) => bool (Antwort kommt nie), printfulBild / shopifyBild: (url) => { status?, typ, body, cors? } | null, corsErwartet: bool }
+ *                   initSkript: String (läuft vor den Skripten der Seite), cloudinaryJpegFehler: bool (nur Uploads von JPEG scheitern), printfulHaengt / shopifyHaengt: (url) => bool (Antwort kommt nie), printfulBild / shopifyBild: (url) => { status?, typ, body, cors?, verzoegerung? } | null, corsErwartet: bool }
  * @returns { page, ctx, fehler: string[], uploads: [], abgelehnt: [], warenkorb: [], png(url), schliessen() }
  */
 export async function seiteOeffnen(browser, basis, opt = {}) {
@@ -254,7 +254,7 @@ export async function seiteOeffnen(browser, basis, opt = {}) {
     bildAnfragen.push(u);
     if (opt.printfulHaengt && opt.printfulHaengt(u)) return;   // Antwort bleibt aus (Verbindung offen): Test der Fristen
     const eigene = opt.printfulBild ? opt.printfulBild(u) : null;
-    if (eigene) return bildAntwort(route, eigene);
+    if (eigene) { if (eigene.verzoegerung > 0) { setTimeout(() => { bildAntwort(route, eigene).catch(() => {}); }, eigene.verzoegerung); return; } return bildAntwort(route, eigene); }   // verzoegerung: ms bis zur Antwort (Test: das Foto scheitert erst, wenn die Seite längst steht)
     const b = vorlagenBild(u); route.fulfill({ status: 200, contentType: b.typ, body: b.body, headers: { 'access-control-allow-origin': '*' } });
   });
   await page.route('https://cdn.shopify.com/**', (route) => {
