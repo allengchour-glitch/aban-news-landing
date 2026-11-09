@@ -32,6 +32,14 @@ def bereinigen(runs, jetzt=None):
                             'Der letzte Ablauf wartet, läuft noch oder endete ohne Erfolgsnachweis. Kein abgeschlossener Arbeitsfortschritt belegt.')
             row['naechster_schritt'] = 'Ergebnis im passenden Arbeitsbereich prüfen; fachliche Wirkung getrennt nachweisen.'
         except (ValueError,TypeError,KeyError,AttributeError): pass
+        if ident in ('social_meta', 'social_pinterest'):
+            row['quelle'] = 'Vorhandene Metricool-Planerprüfung und Freigabe'
+            row['aktiv_h'] = 0
+            if row['status'] == 'gruen':
+                row['status'] = 'gelb'
+                row['ereignis'] = 'Metricool-Lauf beendet – Ergebnis prüfen'
+                row['befund'] = 'Der Metricool-Freigabelauf endete erfolgreich. Er kann Entwürfe prüfen oder einplanen; veröffentlichte Beiträge, Reichweite und Verkäufe sind dadurch nicht bestätigt.'
+            row['naechster_schritt'] = 'Ergebnis und bestehende Planung in Metricool prüfen. Kein zweiter Publisher und kein neuer Freigabelauf durch diese Anzeige.'
         if ident == 'bewertungen':
             row['quelle'] = 'Laufstatus des vorhandenen CJ→Judge.me-Importers'
             row['aktiv_h'] = 0
