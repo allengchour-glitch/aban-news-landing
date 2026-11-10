@@ -17,7 +17,7 @@ Für den PC-Claude mit Brave (Port 9222, eingeloggt, siehe `dropship/BROWSER-AGE
 3. Shopify-Admin, Einstellungen, Versand und Lieferung, Versandprofil «Allgemein»: Zone **Liechtenstein**: Tarife, Mindestbetrag, kostenloser Versand ja oder nein, Lieferzeit. **Das sind die Werte, die ins Merchant Center gehören.** Stimmen sie nicht mit Schritt 2 unten überein, gilt Shopify.
 
 ## Schritt 2: Ändern (nur wenn Schritt 1 sauber war)
-Entweder **A** oder **B**; Standard ist **A**, ausser der Besitzer hat im Chat B gewählt.
+Entweder **A** oder **B**; Standard ist **A**, ausser der Besitzer hat im Chat B gewählt. **Entscheid des Besitzers 10.11. ~00:00 UTC (auf gezielte Frage): A.**
 
 **A. Versanddienst für Liechtenstein anlegen** (Merchant Center, Versand und Rückgabe, Versanddienste, neuer Dienst oder den Schweizer Dienst um das Land ergänzen, je nachdem, was die Oberfläche anbietet):
 - Land: Liechtenstein; Währung CHF

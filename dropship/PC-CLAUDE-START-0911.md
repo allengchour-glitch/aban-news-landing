@@ -2,6 +2,8 @@
 
 Für den PC-Claude mit Brave (Port 9222, eingeloggt, siehe `dropship/BROWSER-AGENT-SETUP.md`). Diese Datei bündelt die vier offenen Browser-Aufträge. Cloud-Claude kann sie nicht selbst ausführen (kein Browser, kein Login). Jeder Auftrag hat seine eigene Datei mit Grenzen und Schritten; **die Grenzen dort gelten vor allem anderen**.
 
+**Entscheide des Besitzers (10.11. ~00:00 UTC, auf gezielte Frage):** Liechtenstein = **Variante A** (Versanddienst pauschal CHF 14.90 anlegen). Der Pullover-Pilot (329 Produkte) ist freigegeben und bereits ausgeführt; das braucht PC-Claude nicht.
+
 ## Zum Einfügen bei PC-Claude (Besitzer: kopieren und senden)
 
 > Hole das Repo `allengchour-glitch/aban-news-landing` (Zweig `main`) und führe nacheinander diese Aufträge aus. Lies jeden Auftrag ganz, bevor du beginnst, halte dich an seine Grenzen und melde nach jedem Auftrag kurz auf Deutsch, was du getan und gesehen hast (mit Bildschirmfotos). Bei Login-Wand, 2FA, Preisen oder Obergrenzen: anhalten und mich fragen. Nichts bezahlen, nichts anderes ändern.
