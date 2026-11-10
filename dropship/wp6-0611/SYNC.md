@@ -230,9 +230,9 @@ Ein erlaubter Kauf mit einem kleinen Foto landet damit immer im Handgriff. Das i
 
 | Testdatei | Endstand | `main` vor Phase 1 | Zweig vor der Zusammenführung |
 |---|---|---|---|
-| `automation/lib/printful_bestellweg_test.mjs` | **618 ok, 0 Fehler** | 393 | 492 |
+| `automation/lib/printful_bestellweg_test.mjs` | **625 ok, 0 Fehler** (618 am 09.11., dazu 7 Prüfungen zum Ausmass der Sperre, 10.11.) | 393 | 492 |
 | `automation/lib/printful_platzierung_test.mjs` | **212 ok, 0 Fehler** | 212 | 212 |
-| `automation/printful_sync_test.mjs` | **258 ok, 0 Fehler** | 181 | 206 |
+| `automation/printful_sync_test.mjs` | **260 ok, 0 Fehler** (258 am 09.11., dazu 2 Prüfungen zum gemischten Warenkorb, 10.11.) | 181 | 206 |
 | `automation/printful_reprice_test.mjs` (neu) | **27 ok, 0 Fehler** | (Test fehlte) | (Test fehlte) |
 | `automation/pod_auswahl_test.mjs` | 112 ok, 0 Fehler | | |
 
