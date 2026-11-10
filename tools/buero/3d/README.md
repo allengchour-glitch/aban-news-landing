@@ -88,3 +88,6 @@ HTML und 3D-Code gemeinsam aktualisieren. Das Designpaket enthält keine private
 
 
 `campus-einheitlich-12`: Nach echten Screenshots Büro vor Auftragsknöpfe gelegt, Statuskarten/Erklärung unter die Bühne verschoben und dunkle Kopfkarte einschließlich Messzeit lesbar gemacht. Mobile3D startet am Campusplatz mit an Hochformat angepasstem Abstand. Die leichte2D-Startansicht am Handy bleibt wählbar und unverändert als Standard; keine neue Datenquelle oder Kontoaktion.
+
+
+`campus-einheitlich-13` ergänzt den geschützten Metricool-Monitor in Werkzeugen und Monitorleiste. Die generische Vorlage `../metricool_monitor.html` enthält nur einen Platzhalter. Echte Kanal-/Kalenderwerte bleiben außerhalb des Repositorys und auf der bestehenden privaten Büro-Seite. Geplante Einträge, publizierte Inhalte und Reichweite sind getrennt; kein Dauersync oder Publisher.

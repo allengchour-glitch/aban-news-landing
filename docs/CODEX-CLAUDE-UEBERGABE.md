@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Metricool-Monitor mit tatsächlichen Quellenantworten
+
+Inhaber: «live auch metricool sachen monitor». Auf eigenem Branch von main4f16875b. Metricool-Marke anhand verbundener LuxeStyle-Kanäle und Europe/Zurich frisch lesend bestätigt. Bestehenden Kalender10.–16.11.2026 tageweise gelesen, nachdem Gesamtantwort zu groß war; alle sieben Einzelantworten erfolgreich. Offizielle verfügbare Metriken vor Datenabruf gelesen,28-Tage-Daten13.10.–09.11.2026 für Instagram/TikTok/Pinterest/YouTube erhalten. Keine Kontokennungen, Beitragstexte oder realen Messwerte im Repository. Private Rohdaten ausschließlich `/workspace/private-metricool-20261110/`.
+
+Generische Vorlage `tools/buero/metricool_monitor.html`: Kanalfilter, einzelne datierte Follower-/Abonnentenstände, bekannte Aufrufe/Impressionen und veröffentlichte Inhalte, fehlende Messwerte separat, Teilsummen gekennzeichnet. Siebentage-Kalender zählt eindeutige Einträge ohne Entwürfe, zeigt leere Tage und Kanalstatus; Planung ist kein Publikationsnachweis. Neue private Visualisierung in bestehender Büro-Seite, bisherige Ranking-/Artefaktinhalte erhalten. Öffentliche Büro-/Monitorleiste nur mit authentifiziertem Zugangslink, gemeinsame Designversion13. Kein Website-OAuth oder automatischer Dauersync, keine neue Automation, Frequenz-/Konto-/Social-/Zahlungsaktion.
+
+GEMESSEN:67 Büro- und25 Entwicklerprüfungen lokal grün (92). Private Ansicht1440/390px: Kanalwechsel, Kalender, eigene Quellenstände, Datenlücken, keine Seitenüberbreite. Screenshots außerhalb Git. Endgültige Bereitstellung und öffentliche Gegenprobe im zugehörigen PR prüfen. Wirtschaftlicher Nutzen: vorhandene Planungslücken und Messlücken erkennen, kein Mengenziel oder Umsatz-/Gewinnnachweis. Finanzielle Wirkung nicht gemessen.
+
 ## Sichtprüfung und selbst entschiedene Bürogestaltung
 
 Nutzer: «screenshote selber und entscheide selber für mich». Produktive Version11 bei1440/390px fotografiert und angesehen: Auftragsknöpfe verdrängen mobil das Büro, Monitor zu klein in der Gesamtansicht, Messzeit auf dunkler Karte schlecht lesbar; Statuskarten/Erklärung schieben Bühne auch auf Desktop nach unten. Auf eigenem Branch von main17808b8 korrigiert: Version12, Büro vor übrigen Knöpfen auf allen Breiten, kompakter Kopf mit lesbarer Messzeit, Status/Erklärung unter Bühne. Mobile3D beginnt am Campusplatz; Hochformatabstand berücksichtigt Bildbreite und vermeidet abgeschnittenen Monitor. Mobile2D als leichter Erstaufruf erhalten. Vollständige Übersicht bleibt über «Alle Büros» erreichbar, Monitor-Zoom/Zurück/Escape erhalten.
