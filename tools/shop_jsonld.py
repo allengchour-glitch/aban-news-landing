@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Schreibt Suchmaschinen- und Ersatzanzeige aus demselben vorhandenen Shop-Katalog.
 
-Vorher war sie von Hand gepflegt: alte Preise, alte Stripe-Links, neue Produkte fehlten. Läuft im
-Stripe-Workflow nach jedem Abgleich, damit Suchmaschinen dieselben Preise sehen wie die Kasse.
+Ersatzkatalog und Suchmaschinenliste dürfen nicht vom regulären Shop abweichen. Der bestehende
+Stripe-Katalogworkflow ruft dieses Werkzeug nach dem Abgleich auf; es selbst liest nur lokale Dateien.
 
-    python3 tools/shop_jsonld.py            # schreibt shop.html (idempotent)
-    python3 tools/shop_jsonld.py --pruefen  # Exit 1, wenn shop.html veraltet ist
+    python3 tools/shop_jsonld.py            # schreibt shop.html und js/shop-config.js (idempotent)
+    python3 tools/shop_jsonld.py --pruefen  # Exit 1, wenn eine der beiden Anzeigen veraltet ist
 """
 import json
 import re
