@@ -1,151 +1,223 @@
-// ============================================================
-// SHOP-KONFIG — Notfall-Fallback, falls /data/shop-products.json nicht lädt.
-//
-// ⚠️ Dies ist NICHT mehr die Quelle der Wahrheit. shop.html holt die echten
-// Preise/Links zuerst aus /data/shop-products.json (wird von
-// automation/stripe_sync.py aus data/kit-catalog.json + Stripe erzeugt).
-// window.ABAN_SHOP hier greift NUR, wenn dieser Fetch scheitert (Netzfehler).
-//
-// Gefunden 2026-09-16: diese Datei zeigte noch 3 von 22 Paketen, in EUR statt
-// CHF, mit leeren Kauf-Links — ein Besucher hätte im Fehlerfall einen kaputten
-// Mini-Shop gesehen statt der echten 22 Pakete. Jetzt 1:1 mit
-// data/shop-products.json synchronisiert (Stand: die dort hinterlegten
-// Stripe-Links). Bei echten Preis-/Katalog-Änderungen neu synchronisieren:
-//   python3 -c "import json; d=json.load(open('data/shop-products.json')); ..."
-// (siehe Commit, der diese Datei zuletzt geändert hat, für das genaue Skript).
-// ============================================================
+// Automatisch aus data/shop-products.json erzeugt; nicht von Hand pflegen.
+// Ohne Konto- oder Preisänderung: Ersatzanzeige für einen fehlgeschlagenen Produktabruf.
+// Aktualisieren: python3 tools/shop_jsonld.py
 window.ABAN_SHOP = [
   {
-    title: "Alle KI-Starter-Kits (Bundle)",
-    desc: "Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.",
-    price: "CHF 79",
-    buy: "https://buy.stripe.com/6oUbJ38iicfq4kf2El5wI0m",
-    bundle: true
+    "slug": "alle-kits",
+    "title": "Alle KI-Starter-Kits (Bundle)",
+    "desc": "Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts \u0026 Checklisten für jede Branche.",
+    "price": "CHF 39",
+    "buy": "https://buy.stripe.com/dRm7sN2XY6V68AvceV5wI0Q",
+    "bundle": true
   },
   {
-    title: "KI-Starter-Kit für Ärzte & Praxen",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/eVq5kF422bbm5oj4Mt5wI00"
+    "slug": "aerzte",
+    "title": "KI-Starter-Kit für Ärzte \u0026 Praxen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/eVq5kF422bbm5oj4Mt5wI00"
   },
   {
-    title: "KI-Starter-Kit für Handwerk",
-    desc: "Angebote, Mails, Bewertungen schneller schreiben.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/cNi9AV9mmbbmaID1Ah5wI01"
+    "slug": "handwerker",
+    "title": "KI-Starter-Kit für Handwerk",
+    "desc": "Angebote, Mails, Bewertungen schneller schreiben.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNi9AV9mmbbmaID1Ah5wI01"
   },
   {
-    title: "KI-Starter-Kit für Steuerberatung",
-    desc: "Mandanten-Kommunikation, Standardschreiben, Recherche.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/6oU5kF4226V65ojen35wI02"
+    "slug": "steuerberater",
+    "title": "KI-Starter-Kit für Steuerberatung",
+    "desc": "Mandanten-Kommunikation, Standardschreiben, Recherche.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/6oU5kF4226V65ojen35wI02"
   },
   {
-    title: "KI-Starter-Kit für Kanzleien",
-    desc: "Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/fZu14p7ee3IU03ZdiZ5wI03"
+    "slug": "anwaelte",
+    "title": "KI-Starter-Kit für Kanzleien",
+    "desc": "Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/fZu14p7ee3IU03ZdiZ5wI03"
   },
   {
-    title: "KI-Starter-Kit für Gastronomie",
-    desc: "Bewertungen, Social, Speisekarten-Texte.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/cNi9AVdCCgvG9Ez4Mt5wI04"
+    "slug": "gastronomie",
+    "title": "KI-Starter-Kit für Gastronomie",
+    "desc": "Bewertungen, Social, Speisekarten-Texte.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNi9AVdCCgvG9Ez4Mt5wI04"
   },
   {
-    title: "KI-Starter-Kit für Coaches & Berater",
-    desc: "Angebote, Posts, Session-Vorbereitung — ohne Hype.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/28E14p1TUenycQL1Ah5wI08"
+    "slug": "coaches",
+    "title": "KI-Starter-Kit für Coaches \u0026 Berater",
+    "desc": "Angebote, Posts, Session-Vorbereitung — ohne Hype.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/28E14p1TUenycQL1Ah5wI08"
   },
   {
-    title: "KI-Starter-Kit für Immobilienmakler",
-    desc: "Exposés, Anfragen-Antworten, Inserate schneller.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/eVqeVf9mm0wI2c72El5wI09"
+    "slug": "immobilienmakler",
+    "title": "KI-Starter-Kit für Immobilienmakler",
+    "desc": "Exposés, Anfragen-Antworten, Inserate schneller.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/eVqeVf9mm0wI2c72El5wI09"
   },
   {
-    title: "KI-Starter-Kit für Friseure & Salons",
-    desc: "Social-Posts, Bewertungen, Terminmails.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/cNiaEZ1TUa7i9Ez6UB5wI0a"
+    "slug": "friseure",
+    "title": "KI-Starter-Kit für Friseure \u0026 Salons",
+    "desc": "Social-Posts, Bewertungen, Terminmails.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNiaEZ1TUa7i9Ez6UB5wI0a"
   },
   {
-    title: "KI-Starter-Kit für Fotografen",
-    desc: "Angebote, Bildtexte, Kundenkommunikation.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/28E3cx2XYdjug2Xgvb5wI0b"
+    "slug": "fotografen",
+    "title": "KI-Starter-Kit für Fotografen",
+    "desc": "Angebote, Bildtexte, Kundenkommunikation.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/28E3cx2XYdjug2Xgvb5wI0b"
   },
   {
-    title: "KI-Starter-Kit für Architekturbüros",
-    desc: "Texte, Ausschreibungen, Recherche — mit Grenzen.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/8x25kF6aa7Za7wrbaR5wI0c"
+    "slug": "architekten",
+    "title": "KI-Starter-Kit für Architekturbüros",
+    "desc": "Texte, Ausschreibungen, Recherche — mit Grenzen.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/8x25kF6aa7Za7wrbaR5wI0c"
   },
   {
-    title: "KI-Starter-Kit für Fitnessstudios",
-    desc: "Social, Mitglieder-Mails, Kurs-Beschreibungen.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/3cIbJ3cyya7i8Ava6N5wI0d"
+    "slug": "fitnessstudios",
+    "title": "KI-Starter-Kit für Fitnessstudios",
+    "desc": "Social, Mitglieder-Mails, Kurs-Beschreibungen.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/3cIbJ3cyya7i8Ava6N5wI0d"
   },
   {
-    title: "KI-Starter-Kit für Kosmetik- & Nagelstudios",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/5kQ28taqqcfq8Av5Qx5wI0e"
+    "slug": "kosmetikstudios",
+    "title": "KI-Starter-Kit für Kosmetik- \u0026 Nagelstudios",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/5kQ28taqqcfq8Av5Qx5wI0e"
   },
   {
-    title: "KI-Starter-Kit für KFZ-Werkstätten",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/6oU6oJeGGa7iaIDgvb5wI0f"
+    "slug": "kfz-werkstaetten",
+    "title": "KI-Starter-Kit für KFZ-Werkstätten",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/6oU6oJeGGa7iaIDgvb5wI0f"
   },
   {
-    title: "KI-Starter-Kit für Maler & Lackierer",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/00w28t1TU1AM8AvceV5wI0g"
+    "slug": "maler",
+    "title": "KI-Starter-Kit für Maler \u0026 Lackierer",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/00w28t1TU1AM8AvceV5wI0g"
   },
   {
-    title: "KI-Starter-Kit für Hotels & Pensionen",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/7sYaEZ1TU4MYeYTen35wI0h"
+    "slug": "hotels",
+    "title": "KI-Starter-Kit für Hotels \u0026 Pensionen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/7sYaEZ1TU4MYeYTen35wI0h"
   },
   {
-    title: "KI-Starter-Kit für Physiotherapie-Praxen",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/7sY9AVbuu4MYbMH2El5wI0i"
+    "slug": "physiotherapeuten",
+    "title": "KI-Starter-Kit für Physiotherapie-Praxen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/7sY9AVbuu4MYbMH2El5wI0i"
   },
   {
-    title: "KI-Starter-Kit für Reinigungsfirmen",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/5kQ7sNfKK2EQ03Z7YF5wI0j"
+    "slug": "reinigungsfirmen",
+    "title": "KI-Starter-Kit für Reinigungsfirmen",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/5kQ7sNfKK2EQ03Z7YF5wI0j"
   },
   {
-    title: "KI-Starter-Kit für Garten- & Landschaftsbau",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/4gMdRb8iidju5oj0wd5wI0k"
+    "slug": "garten-landschaftsbau",
+    "title": "KI-Starter-Kit für Garten- \u0026 Landschaftsbau",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/4gMdRb8iidju5oj0wd5wI0k"
   },
   {
-    title: "KI-Starter-Kit für Goldschmiede & Juweliere",
-    desc: "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
-    price: "CHF 12",
-    buy: "https://buy.stripe.com/5kQeVf2XY4MY2c71Ah5wI0l"
+    "slug": "goldschmiede",
+    "title": "KI-Starter-Kit für Goldschmiede \u0026 Juweliere",
+    "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/5kQeVf2XY4MY2c71Ah5wI0l"
   },
   {
-    title: "KI-Prompt-Bibliothek für DACH-Solopreneure",
-    desc: "100+ erprobte Prompts zum Kopieren — Akquise, Kunden, Marketing, Admin & Recherche. Branchen-übergreifend, ehrlich, ohne Hype.",
-    price: "CHF 19",
-    buy: "https://buy.stripe.com/28E4gBgOO0wI3gben35wI0n"
+    "slug": "prompt-bibliothek",
+    "title": "KI-Prompt-Bibliothek für DACH-Solopreneure",
+    "desc": "100+ erprobte Prompts zum Kopieren — Akquise, Kunden, Marketing, Admin \u0026 Recherche. Branchen-übergreifend, ehrlich, ohne Hype.",
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/eVq8wR6aagvG03Zfr75wI0R"
   },
   {
-    title: "Fertige Text-Vorlagen für Solopreneure",
-    desc: "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
-    price: "CHF 19",
-    buy: "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o"
+    "slug": "vorlagen-set",
+    "title": "Fertige Text-Vorlagen für Solopreneure",
+    "desc": "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen \u0026 Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/8x2cN70PQ7Za1837YF5wI0S"
   },
+  {
+    "slug": "strategie-pruefstand",
+    "title": "Strategie-Prüfstand: Trading-Ideen ehrlich testen",
+    "desc": "Python-Kit: deine Regel gegen 9 bekannte Stile und 200 Zufallsstrategien, Skill in Prozent, Zukunfts-Schutz, Auswahl-Falle, Daytrading-Test. Mit Anleitung zu den sieben Fallen. Keine Anlageberatung.",
+    "price": "CHF 19",
+    "buy": "https://buy.stripe.com/aFa4gB422djucQLen35wI0T"
+  },
+  {
+    "slug": "schulden-plan",
+    "title": "Schulden-Plan Schweiz: tilgen oder investieren",
+    "desc": "Alle Schulden in einem Plan: Lawine oder Schneeball, schuldenfrei-Datum, gesparte Zinsen und die Rendite, ab der Investieren gewinnt. Offline-Rechner mit Monatsplan und Anleitung. Keine Finanzberatung.",
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/aFa8wR7ee3IU03Zfr75wI0U"
+  },
+  {
+    "slug": "budget-plan",
+    "title": "Budget-Plan Schweiz: nie mehr von der Steuerrechnung überrascht",
+    "desc": "Alle Einnahmen und Ausgaben mit Takt (monatlich bis jährlich), monatliche Rückstellung für Steuern und Jahresrechnungen, Muss/Kann/Sparen, Notreserve. Offline-Rechner mit Anleitung. Keine Finanzberatung.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/6oUcN7cyydju3gbfr75wI0V"
+  },
+  {
+    "slug": "mietzins-paket",
+    "title": "Mietzins-Paket Schweiz: Senkung verlangen, mit fertigem Brief",
+    "desc": "Berechnet die Mietzinssenkung nach Art. 13 und 16 VMWG (Referenzzins, Teuerung, Kosten), den nächstmöglichen Termin und die Fristen, und schreibt das Herabsetzungsbegehren nach Art. 270a OR fertig. Offline-Rechner mit Anleitung. Keine Rechtsberatung.",
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/fZu8wR6aagvGg2XdiZ5wI0W"
+  },
+  {
+    "slug": "hochzeits-budget",
+    "title": "Hochzeits-Budget-Plan: Kosten pro Gast, Zahlungsplan, Sparrate",
+    "desc": "Alle Posten mit Preis pro Gast oder Pauschale, jede Anzahlung mit Datum, die Sparrate, die jede Zahlung deckt, und wie viele Gäste ins Budget passen. Offline-App und Excel-Vorlage mit Anleitung.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/eVq28taqq5R29Ez3Ip5wI0X"
+  },
+  {
+    "slug": "finanz-kompass",
+    "title": "Finanz-Kompass Schweiz: Budget, Miete und Schulden in einem Plan",
+    "desc": "Der Gesamtplan mit Daten: Rückstellungen, Mietzinssenkung, Start-Reserve, Schulden nach Lawine oder Schneeball, volle Notreserve. Dazu Budget-Plan, Mietzins-Paket, Schulden-Plan und Bonus Hochzeits-Budget-Plan mit Excel-Vorlagen (einzeln CHF 52). Offline, kein Konto. Keine Finanzberatung.",
+    "price": "CHF 24",
+    "buy": "https://buy.stripe.com/dRmbJ3buufrC5oj3Ip5wI15"
+  },
+  {
+    "slug": "umzugs-paket",
+    "title": "Umzugs-Paket Schweiz: Kündigung, Umzugsplan und Wohnungsabgabe",
+    "desc": "Nächstmöglicher Kündigungstermin mit letztem Zugangstag, fertiger Kündigungsbrief (Familienwohnung, Nachmieter), Umzugsplan mit Daten, Adressänderungs-Liste und Abgabeprotokoll zum Drucken. Offline-App mit Anleitung. Keine Rechtsberatung.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/cNi3cx6aa2EQ3gben35wI13"
+  },
+  {
+    "slug": "krankenkasse-wechsel",
+    "title": "Krankenkassen-Wechsel Schweiz: Franchise, Frist und fertige Kündigung",
+    "desc": "Günstigste Franchise für jede Person im Haushalt (mit Gewinnschwelle und schlimmstem Fall), Frist bis 30. November mit Datum, Kündigungsbriefe für Grund- und Zusatzversicherung, Checkliste. Nach Art. 7 KVG und KVV. Offline-App mit Anleitung.",
+    "price": "CHF 12",
+    "buy": "https://buy.stripe.com/8x2fZjbuu3IU3gbgvb5wI16"
+  },
+  {
+    "slug": "pensions-check",
+    "title": "Pensions-Check Schweiz: AHV, Pensionskasse, 3a und die Rentenlücke",
+    "desc": "AHV-Rente nach der Rentenformel inklusive 13. Altersrente und Ehepaar-Begrenzung, Pensionskasse aus dem Vorsorgeausweis, Säule 3a und Erspartes, Lücke zum Budget mit nötiger Sparrate, Fahrplan 10 Jahre bis zur Pensionierung. Offline-App mit Anleitung. Keine Finanzberatung.",
+    "price": "CHF 14",
+    "buy": "https://buy.stripe.com/4gM7sNeGGcfq03ZbaR5wI17"
+  }
 ];
