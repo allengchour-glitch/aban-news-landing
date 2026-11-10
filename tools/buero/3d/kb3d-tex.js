@@ -56,6 +56,126 @@
     g.fillStyle='#c3dfd6';g.font='24px '+FONT;g.fillText(info&&info.zeitraum||'Private Datenquelle noch nicht geladen',42,405);
     g.font='20px '+FONT;g.fillText('Antippen für die Tabelle · Fehlende Kosten bleiben unbekannt',42,463);return o.c;
   };
+  /* ---------- Liveboard: grosser Wandmonitor je Raum, Zahlen kommen nur aus den Zeilen ----------
+     model = { titel, zeit, stand, farben, zaehler:{gruen,gelb,rot,du,alt}, kpi:{wert,label}|null,
+               zeilen:[{ name, state, text, frisch (0..1 oder null) }] }   (null = noch keine Daten) */
+  var LB_FARBE = { gruen: '#2f9e5b', gelb: '#d99a1b', rot: '#e04b4b', du: '#4f86f0', alt: '#8b949e' };
+  var LB_WORT = { gruen: 'Läuft', gelb: 'Prüfen', rot: 'Steht', du: 'Für dich', alt: 'Alt' };
+  var LB_ZUSTAENDE = ['gruen', 'gelb', 'rot', 'du', 'alt'];
+  function lbFit(g, text, maxW) {
+    text = String(text == null ? '' : text);
+    if (g.measureText(text).width <= maxW) return text;
+    while (text.length > 1 && g.measureText(text + '…').width > maxW) text = text.slice(0, -1);
+    return text + '…';
+  }
+  /* Lampe: gleiche Formen wie die Markierungen im Raum (Kreis, Dreieck, Quadrat, Raute, Ring). */
+  function lbLampe(g, state, x, y, r, farbe) {
+    g.fillStyle = farbe; g.strokeStyle = farbe;
+    g.beginPath();
+    if (state === 'gruen') { g.arc(x, y, r, 0, PI * 2); g.fill(); return; }
+    if (state === 'gelb') { g.moveTo(x, y - r * 1.1); g.lineTo(x + r * 1.05, y + r * 0.8); g.lineTo(x - r * 1.05, y + r * 0.8); g.closePath(); g.fill(); return; }
+    if (state === 'rot') { g.rect(x - r * 0.9, y - r * 0.9, r * 1.8, r * 1.8); g.fill(); return; }
+    if (state === 'du') { g.moveTo(x, y - r * 1.15); g.lineTo(x + r * 0.95, y); g.lineTo(x, y + r * 1.15); g.lineTo(x - r * 0.95, y); g.closePath(); g.fill(); return; }
+    g.lineWidth = Math.max(2, r * 0.38); g.arc(x, y, r * 0.8, 0, PI * 2); g.stroke();
+  }
+  function lbKopf(g, kicker, titel, zeit, farben) {
+    var grad = g.createLinearGradient(0, 0, 1024, 512); grad.addColorStop(0, '#0f2a3d'); grad.addColorStop(1, '#16213a');
+    g.fillStyle = '#08121f'; g.fillRect(0, 0, 1024, 512);
+    g.fillStyle = grad; rr(g, 8, 8, 1008, 496, 18); g.fill();
+    g.fillStyle = '#7ad6c4'; g.font = 'bold 17px ' + FONT; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+    g.fillText(kicker, 48, 44);
+    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(lbFit(g, titel, 560), 48, 92);
+    // Uhr und «live»-Punkt
+    g.textAlign = 'right';
+    g.fillStyle = '#a5e9df'; g.font = 'bold 16px ' + FONT; g.fillText('LIVE', 976, 38);
+    g.fillStyle = farben.gruen; g.beginPath(); g.arc(976 - g.measureText('LIVE').width - 14, 33, 6, 0, PI * 2); g.fill();
+    g.fillStyle = '#f3f8ff'; g.font = 'bold 44px ' + FONT; g.fillText(zeit || '--:--', 976, 82);
+    g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('Schweizer Zeit', 976, 103);
+    g.textAlign = 'left';
+  }
+  T.liveboard = function (m) {
+    var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i;
+    lbKopf(g, 'LIVEBOARD', m ? m.titel : 'Liveboard', m && m.zeit, farben);
+    if (!m) {
+      g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen dieses Raums …', 48, 250);
+      return o.c;
+    }
+    // Sonder-Kennzahl (zum Beispiel offene Bestellungen) als Plakette neben der Uhr
+    if (m.kpi) {
+      g.fillStyle = 'rgba(122,214,196,0.16)'; rr(g, 560, 52, 230, 58, 14); g.fill();
+      g.fillStyle = '#f3f8ff'; g.font = 'bold 38px ' + FONT; g.textAlign = 'left'; g.fillText(String(m.kpi.wert), 576, 95);
+      var nw = g.measureText(String(m.kpi.wert)).width;
+      g.fillStyle = '#a5e9df'; g.font = '15px ' + FONT;
+      g.fillText(lbFit(g, m.kpi.label, 790 - 576 - nw - 20), 576 + nw + 12, 94);
+    }
+    // Fünf Zähler
+    var tw = 176, th = 78, ty = 112;
+    for (i = 0; i < 5; i++) {
+      var st = LB_ZUSTAENDE[i], tx = 48 + i * (tw + 12), n = (m.zaehler && m.zaehler[st]) || 0;
+      g.fillStyle = 'rgba(255,255,255,0.075)'; rr(g, tx, ty, tw, th, 14); g.fill();
+      g.fillStyle = farben[st]; rr(g, tx, ty + 10, 6, th - 20, 3); g.fill();
+      g.fillStyle = n > 0 || st === 'gruen' ? '#f3f8ff' : '#7f93a3'; g.font = 'bold 50px ' + FONT; g.textAlign = 'left'; g.fillText(String(n), tx + 22, ty + 52);
+      g.fillStyle = '#b5cad6'; g.font = '18px ' + FONT; g.fillText(LB_WORT[st], tx + 22, ty + 72);
+      lbLampe(g, st, tx + tw - 28, ty + 26, 9, farben[st]);
+    }
+    // Zeilen
+    var zeilen = m.zeilen || [], y0 = 216, zh = 39, max = 7;
+    g.fillStyle = '#7ad6c4'; g.font = 'bold 16px ' + FONT; g.fillText('ABLAUF', 82, y0 - 6); g.fillText('LETZTES EREIGNIS', 452, y0 - 6); g.fillText('FRISCHE', 840, y0 - 6);
+    for (i = 0; i < Math.min(max, zeilen.length); i++) {
+      var z = zeilen[i], y = y0 + 6 + i * zh, c = farben[z.state] || farben.alt;
+      if (i % 2 === 0) { g.fillStyle = 'rgba(255,255,255,0.045)'; rr(g, 40, y - 2, 944, zh - 2, 8); g.fill(); }
+      lbLampe(g, z.state, 62, y + zh / 2 - 2, 10, c);
+      g.fillStyle = '#f3f8ff'; g.font = 'bold 25px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, z.name, 355), 84, y + 27);
+      g.fillStyle = '#b5cad6'; g.font = '21px ' + FONT; g.fillText(lbFit(g, z.text || '', 370), 452, y + 27);
+      // Frische-Balken: voll = eben gemessen, leer = Messung ist so alt wie die Frist
+      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, 840, y + 12, 130, 12, 6); g.fill();
+      if (z.frisch != null) {
+        var f = Math.max(0, Math.min(1, z.frisch));
+        g.fillStyle = f > 0.5 ? farben.gruen : f > 0.2 ? farben.gelb : farben.rot;
+        if (f > 0.02) { rr(g, 840, y + 12, Math.max(12, 130 * f), 12, 6); g.fill(); }
+      } else { g.fillStyle = '#7f93a3'; g.font = '15px ' + FONT; g.fillText('kein Alter', 846, y + 24); }
+    }
+    if (zeilen.length > max) { g.fillStyle = '#9cb8c8'; g.font = '16px ' + FONT; g.fillText('+ ' + (zeilen.length - max) + ' weitere Zeilen im Raum', 84, y0 + 6 + max * zh + 16); }
+    g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
+    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Lampen und Balken sind Messwerte, kein Livesignal' : 'Messstand unbekannt', 48, 492);
+    return o.c;
+  };
+  /* Zentralmonitor: alle Räume nebeneinander. model = { zeit, stand, farben, summe:{...}, n, raeume:[{ titel, n, zaehler }] } */
+  T.liveboardUebersicht = function (m) {
+    var o = mk(1024, 512), g = o.g, farben = Object.assign({}, LB_FARBE, m && m.farben || {}), i, k;
+    lbKopf(g, 'ZENTRALMONITOR', 'Alle Räume im Blick', m && m.zeit, farben);
+    if (!m) { g.fillStyle = '#9cb8c8'; g.font = '28px ' + FONT; g.fillText('Wartet auf die Zeilen des Büros …', 48, 250); return o.c; }
+    var raeume = (m.raeume || []).slice(0, 7), tw = 221, th = 168, gap = 14, x0 = 48, y0 = 120;
+    function kachel(idx, titel, zaehler, n, gross) {
+      var cx = x0 + (idx % 4) * (tw + gap), cy = y0 + Math.floor(idx / 4) * (th + gap), j, summe = 0;
+      g.fillStyle = gross ? 'rgba(122,214,196,0.15)' : 'rgba(255,255,255,0.075)'; rr(g, cx, cy, tw, th, 16); g.fill();
+      g.fillStyle = '#f3f8ff'; g.font = 'bold 23px ' + FONT; g.textAlign = 'left'; g.fillText(lbFit(g, titel, tw - 30), cx + 16, cy + 36);
+      g.fillStyle = '#b5cad6'; g.font = '16px ' + FONT; g.fillText(n + (n === 1 ? ' Eintrag' : ' Einträge'), cx + 16, cy + 60);
+      for (j = 0; j < 5; j++) summe += zaehler[LB_ZUSTAENDE[j]] || 0;
+      // Balken: Anteile der fünf Zustände
+      var bx = cx + 16, bw = tw - 32, by = cy + 76, off = 0;
+      g.fillStyle = 'rgba(255,255,255,0.12)'; rr(g, bx, by, bw, 14, 7); g.fill();
+      if (summe > 0) {
+        g.save(); rr(g, bx, by, bw, 14, 7); g.clip();
+        for (j = 0; j < 5; j++) {
+          var cnt = zaehler[LB_ZUSTAENDE[j]] || 0; if (!cnt) continue;
+          var w = bw * cnt / summe; g.fillStyle = farben[LB_ZUSTAENDE[j]]; g.fillRect(bx + off, by, w + 0.5, 14); off += w;
+        }
+        g.restore();
+      }
+      // Zahlen mit Lampen
+      for (j = 0; j < 5; j++) {
+        var st = LB_ZUSTAENDE[j], px = cx + 16 + (j % 3) * 66, py = cy + 122 + Math.floor(j / 3) * 34;
+        lbLampe(g, st, px + 8, py - 6, 7, farben[st]);
+        g.fillStyle = (zaehler[st] || 0) > 0 ? '#f3f8ff' : '#6f8394'; g.font = 'bold 22px ' + FONT; g.fillText(String(zaehler[st] || 0), px + 22, py);
+      }
+    }
+    for (i = 0; i < raeume.length; i++) kachel(i, raeume[i].titel, raeume[i].zaehler || {}, raeume[i].n || 0, false);
+    kachel(7, 'Alle zusammen', m.summe || {}, m.n || 0, true);
+    g.fillStyle = '#8fa6b5'; g.font = '16px ' + FONT; g.textAlign = 'left';
+    g.fillText(m.stand ? 'Messstand ' + m.stand + ' · Antippen: grosse Ansicht' : 'Messstand unbekannt', 48, 492);
+    return o.c;
+  };
   T.rng = rng; T.mk = mk; T.rr = rr; T.hashStr = hashStr; T.FONT = FONT;
 
   /* ---------- Böden ---------- */
