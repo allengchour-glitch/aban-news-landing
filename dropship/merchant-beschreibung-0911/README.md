@@ -34,6 +34,30 @@ Quelle: `Update product descriptions to include details customers are looking fo
 
 **Pilot an den 634 Pullover-Produkten:** `seo.description` mit Material, Muster und Grössen aus den Produktdaten (nur belegte Angaben, ≤ 160 Zeichen, kurzer Versandhinweis am Ende), danach nach etwa sieben Tagen den **gleichen Bericht** neu aus dem Merchant Center ziehen: verschwindet die Empfehlung «Muster, Material» und zeigt die Spalte «Description» den neuen Text, ist der Weg bewiesen, und die Umstellung lässt sich auf den Katalog ausdehnen. Rücknahme: Originaltexte vorher sichern (Werkzeug wie `dropship/ranking-0911/apply_*.py`). Alternative ohne Meta-Text-Änderung: bei der App eine eigene Google-Beschreibung hinterlegen, falls die App dafür ein Feld kennt (ungeprüft).
 
+## Pilot: GESTARTET und abgeschlossen (09.11. 23:54 bis 10.11. 00:01 UTC): 329 von 329 Pullovern umgestellt
+
+**Ja des Besitzers 09.11. ~23:52 UTC** (Frage mit Beispielen: «Ja: erst 20, dann den Rest»). **Ergebnis (GEMESSEN):** erste 20 um 23:54 UTC, die übrigen 309 von 23:56 bis 00:01 UTC; **329 von 329 geschrieben, je frisch zurückgelesen gleich Soll, 0 Fehler**; ein frischer Trockenlauf danach findet nichts mehr zu ändern (358 haben jetzt einen eigenen Text: 329 von uns, 29 schon vorher). An vier Produktseiten (`curl`, Browser-Kopf, 00:00 UTC): `description`, `og:description` und `twitter:description` tragen den neuen Text, die Werbezeile steht nicht mehr im HTML. Sicherung der 329 Originale: `sicherung/pilot_pullover_vorher.json`. **Die Wirkung bei Google ist ungemessen** (Messung in rund sieben Tagen, siehe unten).
+
+`pilot_pullover.py` setzt `seo.description` der Frauenpullover auf einen kurzen Sachtext aus belegten Angaben (Vorgabe Trockenlauf, `--selbsttest` 59 Prüfungen, Mutationsprobe 21 von 22 erkannt; der eine überlebende Mutant ist gleichwertig, weil eine zweite Prüfung dasselbe leistet).
+
+**Trockenlauf gegen den Live-Shop vor dem Start (GEMESSEN 09.11. 23:49 UTC):** von 634 Produkten würden **329 geändert**; 270 bleiben (zu wenig belegte Angaben), 29 haben schon eine eigene SEO-Beschreibung, 6 sind Entwürfe. Länge der neuen Texte 65 bis 159 Zeichen (Grenze 160), 0 doppelte Texte. Plan mit «vorher/nachher» je Produkt: `lauf/pilot_pullover_plan.json`.
+
+**Was in den Text kommt (nur Belegtes):** Titel (plus «für Damen», wenn der Titel es nicht nennt), `Material` und `Muster` aus der Faktenliste «Produktdetails» der Produktseite, Grössen aus den Optionen (S–XL; «Einheitsgrösse»), Anzahl Farben (ab zwei). **Kein Werbetext** (Google verbietet «Gratis-Versand», Codes und Ähnliches in Beschreibungen; die bisherige Werbezeile entfällt damit auch als Meta-Beschreibung in den Suchergebnissen).
+
+**Was bewusst weggelassen wird:** Material mit heiklen Fasern (Kaschmir, Seide, Leinen, Wolle, Merino …, dazu Denim und Leder als Datenblattfehler bei Pullovern; Baumwolle bleibt), «Muster: Unifarben», wenn der Titel ein Muster nennt (Colorblock, Jacquard, Halloween, Weihnachts-… : 52 Titel im Test widersprachen dem Datenblatt), Grössen bei Mutter-Kind-Sets und Mischwerten. Ein Produkt braucht mindestens Material oder Muster **und** Grössen, sonst bleibt es, wie es ist.
+
+Beispiele (Vorher: «<Titel> bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.»):
+
+- «Weihnachtsbaum-Pullover für Damen. Material: Polyester. Grössen: S–5XL.» (71 Zeichen)
+- «Eleganter Herbst/Winter Pullover für Damen. Material: Polyester. Muster: Unifarben. Grössen: S–4XL. In 8 Farben erhältlich.» (123 Zeichen)
+- «Leichter Cardigan mit Taschen für Damen. Material: Polyester. Muster: Unifarben. Grössen: S–5XL. In 8 Farben erhältlich.» (120 Zeichen)
+
+**Ablauf (so lief es):** `LIMIT=20 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py` (Sicherung der Originale in `sicherung/pilot_pullover_vorher.json`, Rücklesen), Seiten und Merkmale stichprobenweise prüfen, dann `LIVE=1 …` für den Rest. **Rücknahme:** `ZURUECK=1 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py` (stellt die Originale wieder her, aber nur dort, wo noch unser Text steht; eine fremde Änderung wird nicht überschrieben).
+
+**Messung (Besitzer, rund 1 Minute):** nach etwa sieben Tagen denselben Bericht neu aus dem Merchant Center laden (Empfehlungen → «Update product descriptions to include details customers are looking for», Filter Kategorie «Women's Sweaters», CSV) und `klassifizieren.py <Bericht.csv>` laufen lassen: die Klasse **pilot** zeigt, wie viele Produkte bei Google den neuen Text tragen. Steht dort weiter die Werbezeile, stimmt die Hypothese «die App nimmt die SEO-Beschreibung» nicht, und der Pilot wird zurückgenommen.
+
+**Grenzen:** Die Wirkung auf Rang und Sichtbarkeit ist ungemessen (Hypothese). Die Google-&-YouTube-App synchronisiert die geänderten Produkte neu zu Google (einmalig, Stunden bis Tage). Die SEO-Beschreibung ist auch die Meta-Beschreibung der Suchergebnisse; die Pullover haben dort heute fast keine Klicks.
+
 ## Messrezept
 
 `python3 dropship/merchant-beschreibung-0911/klassifizieren.py <Bericht.csv>` (nur lesend, Selbsttest `--selbsttest`). Den Bericht liefert das Merchant Center unter den Empfehlungen («Update product descriptions to include details customers are looking for», Filter: Kategorie wählen, CSV laden); die Drive-Anbindung liest nur Dateien bis 10 MB.

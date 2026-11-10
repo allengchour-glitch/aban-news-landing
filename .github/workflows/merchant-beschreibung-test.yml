@@ -1,0 +1,35 @@
+name: Merchant-Beschreibung Selbsttest
+
+# Offline-Tests (kein Shop, kein Schlüssel) für den Pullover-Pilot und das Messskript des Befunds «Google bekommt die Werbezeile».
+# Eigene kleine Datei statt einer Zeile in luxestyle-automation-tests.yml: diese Datei ändern viele offene Entwürfe.
+on:
+  pull_request:
+    paths:
+      - 'dropship/merchant-beschreibung-0911/**'
+      - 'dropship/fr-produkte-0911/shop.py'
+      - '.github/workflows/merchant-beschreibung-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: merchant-beschreibung-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            dropship/merchant-beschreibung-0911
+            dropship/fr-produkte-0911/shop.py
+            dropship/ranking-0911/apply_fristen.py
+          sparse-checkout-cone-mode: false
+      - name: Selbsttest Messskript
+        run: python3 dropship/merchant-beschreibung-0911/klassifizieren.py --selbsttest
+      - name: Selbsttest Pullover-Pilot (Regeln, Ablauf mit Attrappe, Rücknahme)
+        run: python3 dropship/merchant-beschreibung-0911/pilot_pullover.py --selbsttest
