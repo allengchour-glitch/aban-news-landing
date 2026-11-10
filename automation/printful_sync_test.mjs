@@ -743,7 +743,7 @@ for (const [name, sz, soll] of [
     ist('Phase 1 Dienst-Standort: das öffentliche Protokoll nennt nur Nummer und Befundart', [e.prot.warn.some((l) => /dienst-standort/.test(l)), e.prot.warn.some((l) => /Fulfillment-Service-Standort|Doppeldruck/.test(l)), e.prot.log.some((l) => /Fulfillment-Service-Standort|Doppeldruck/.test(l))], [true, false, false]);
     const zweit = lauf(shirt(vorneText, { order: { tags: ['printful-review', 'printful-review-dienst-standort'], fulfillmentOrders: fos([zeile({ id: 'gid://shopify/LineItem/9001' })], FO_DIENST) } }));
     ist('Phase 1 Dienst-Standort, zweiter Lauf: die Bestellung mit dem Review-Tag wird nicht mehr gelesen (Abfrage schliesst sie aus), nichts erneut gemeldet', [zweit.prot.shop[0].q.includes('-tag:printful-review'), tgAnzahl(zweit) <= 1], [true, true]);
-    // Nachtrag 10.11.2026 (SYNC.md 7.2a): bei vier Produkten liegen nur einige Varianten am Dienst-Standort. Ein Warenkorb mit einer Dienst- und einer Händler-Variante derselben Produkts hält die GANZE Bestellung an:
+    // Nachtrag 10.11.2026 (SYNC.md 7.2a): bei vier Produkten liegen nur einige Varianten am Dienst-Standort. Ein Warenkorb mit einer Dienst- und einer Händler-Variante desselben Produkts hält die GANZE Bestellung an:
     // auch die Händler-Position wird nicht gedruckt, bis der Besitzer eingreift (sichere Richtung, aber eine Folge, die der Besitzer kennen muss).
     {
       const attrT = attr(vorneText);

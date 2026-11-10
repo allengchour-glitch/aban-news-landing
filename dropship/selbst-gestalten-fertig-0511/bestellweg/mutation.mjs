@@ -19,7 +19,7 @@ const DATEIEN = [
   'automation/lib/printful_platzierung.mjs', 'automation/lib/printful_platzierung_test.mjs', 'automation/lib/printful_bestellweg.mjs', 'automation/lib/printful_bestellweg_test.mjs',
   'automation/lib/shopify_secret.mjs',
   'dropship/pod-auswahl/platzierung_mitschnitte.json', 'dropship/pod-auswahl/katalog.json', 'dropship/pod-auswahl/bestellweg_katalog_auszug.json',
-  'dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json',
+  'dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json', 'dropship/selbst-gestalten-fertig-0511/bestellweg/standort_messung_1011.json',   // vom Bestellweg-Test gelesen (Ausmass der Sperre «dienst-standort»)
   'automation/printful_reprice.mjs', 'automation/printful_reprice_test.mjs', 'automation/lib/pod_auswahl_spec.mjs',
   'dropship/selbst-gestalten-fertig-0511/werkzeuge/preisformel.mjs',
   '.github/workflows/printful-sync.yml',

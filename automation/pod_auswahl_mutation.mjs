@@ -16,7 +16,7 @@ const DATEIEN = [
   'automation/lib/shopify_secret.mjs', 'automation/lib/shopify_gql.mjs', 'automation/lib/shopify_host.mjs',
   ...readdirSync(join(REPO, 'dropship/pod-auswahl')).filter((f) => f.endsWith('.json')).map((f) => `dropship/pod-auswahl/${f}`),
   'dropship/pod-auswahl/README.md', 'automation/pod_auswahl_mutation.mjs',   // vom Test «kein Eszett» gelesen
-  'dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json', '.github/workflows/printful-sync.yml',   // vom Bestellweg-Test (Editor 6.4.0 Ende zu Ende, Workflow-Standardwerte) gelesen
+  'dropship/selbst-gestalten-fertig-0511/bestellweg/editor_640_mitschnitt.json', 'dropship/selbst-gestalten-fertig-0511/bestellweg/standort_messung_1011.json', '.github/workflows/printful-sync.yml',   // vom Bestellweg-Test (Editor 6.4.0 Ende zu Ende, Workflow-Standardwerte) gelesen
 ];
 const LIB = ['lib/pod_preise_test.mjs', 'lib/printful_platzierung_test.mjs', 'lib/printful_bestellweg_test.mjs', 'lib/pod_auswahl_plan_test.mjs', 'lib/pod_auswahl_daten_test.mjs', 'lib/pod_auswahl_gql_test.mjs', 'lib/pod_auswahl_schreiben_test.mjs'];
 const ALLE = [...LIB, 'pod_auswahl_test.mjs', 'printful_sync_test.mjs'];
