@@ -2026,3 +2026,17 @@ GSC wurde heute nicht wiederholt. Keine Merchant-, Feed-, Theme-, Menü-, GTM-, 
 [R164 Bericht](SEO-PRODUKT-FORTSETZUNG-20261110-R164.md) · [Maschinenbeleg](SEO-PRODUKT-FORTSETZUNG-20261110-R164.json).
 
 [LUXESTYLE_R164_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 165: Content- und Verkaufspaket mit offenen Master-Gates
+
+Shopify bestätigte frisch LuxeStyle/`luxestyle.ch`/CHF/Schweiz; Metricool bestätigte brandId `6227837`, Europe/Zurich und die sechs erwarteten Kanalidentitäten. Im Fenster 10.11. 08:07 bis 18.11. 00:00 wurden 62 Postobjekte mit 79 Kanalzuständen gelesen. Alle waren `PENDING`, `draft=false` und global `autoPublish=true`; der kanalbezogene Auto-Publish-Wert war nur für Instagram ausdrücklich geliefert. Exakte kanalgleiche Text-/Medien-Doppel und gleichzeitige Kollisionen wurden nicht gefunden. Belegte Lücken bestehen am 16.–17.11. auf allen Kanälen sowie am 15.11. zusätzlich auf Pinterest und YouTube. Ohne qualifizierten Master wurde nichts ergänzt.
+
+Die kleinen Kennzahlabfragen 03.–09.11. ergaben vollständige Instagram-Darstellungen von 669 und Facebook-Inhaltsaufrufe von 405. TikTok lieferte für 03.–08.11. 2'383 Aufrufe und 8 Interaktionen, YouTube für 03.–07.11. 607 Aufrufe. Fehlende Tages- oder Interaktionswerte bleiben unbekannt; Pinterest lieferte im abgefragten Scope sieben explizite 0/0-Tageszeilen. Es wurde weder eine kanalübergreifende Rate noch ein Verkauf abgeleitet.
+
+Der Projektor `15521256604033` und der Futterspender `15523986473345` sind ACTIVE, öffentlich erreichbar und kaufbar. Inventory ist jeweils ungetrackt/`CONTINUE`; Menge 0 ist kein Ausverkaufsbeleg. Beim Projektor blockieren `auswahl-offen`, fehlende A–G-Varianten-/Motiv-/Einheitenbindung und unbekannte Medienrechte. Die aktuelle 960×540/25-fps-Quelle bleibt nur Identitätsreferenz. Ein präziser 18-Sekunden-/540-Frame-Plan mit zwei alternativen Hooks liegt vor; keine professionelle Master-MP4 wurde gerendert, und alte Juni-Assets wurden nicht verwendet.
+
+Klaviyo bestätigte Placed Order `W7XTVD`; Konto-USD und Shop-CHF blieben getrennt. `XEGbTB` ist LIVE, die vier geprüften weiteren Flows sind DRAFT oder gesperrt. Ein neutraler Betreff-/Vorschautext für die zweite Abbruchmail ist nur Freigabeentwurf. Ebenso ist die claim-sichere Futterspender-Produkt-/SEO-Fassung nur zur Freigabe vorbereitet. Keine Metricool-, Shopify-, Klaviyo-, DNS-, Merchant-, Feed-, Budget-, Rabatt-, Kunden- oder Renderänderung in R165; Wirkung unbekannt und Claude-Empfang unbestätigt.
+
+[R165 Bericht](CONTENT-VERKAUFSPAKET-20261110-R165.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261110-R165.json).
+
+[LUXESTYLE_R165_20261110]

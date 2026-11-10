@@ -349,3 +349,16 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R163.md/.json`.
 7. Claude-Kenntnisnahme bleibt bis zu einem echten Receipt `unknown_no_claude_receipt`.
 
 Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
+
+## R165 – Content- und Verkaufspaket, Master weiterhin gesperrt
+
+[LUXESTYLE_R165_20261110]
+
+1. Identität frisch PASS: Shopify LuxeStyle/`luxestyle.ch`/CHF/Schweiz; Metricool brandId `6227837`, Europe/Zurich, Instagram/Threads/TikTok `luxestyle.ch`, Facebook `1049840534888592`, Pinterest `luxestyleCH`, YouTube `UCSfCEYjAsdOyYxyfTClXRZA`.
+2. Planung nicht erneut breit lesen: R165-Fenster 10.11.08:07–18.11.00:00 Zürich enthält 62 Objekte/79 `PENDING`-Kanalzustände, alle `draft=false` und global `autoPublish=true`; kanalbezogener Wert nur Instagram ausdrücklich true. Keine erkannten exakten kanalgleichen Text-/Medien-Doppel oder Zeitkollisionen. Lücken alle Kanäle 16.–17.11., Pinterest/YouTube zusätzlich15.11.
+3. Keine Lücken mit ungeprüften Medien füllen. Projektor `15521256604033` bleibt wegen `auswahl-offen`, fehlender A–G-Varianten-/Motiv-/Einheitenbindung, fehlender kommerzieller Rechte, fehlender nativer 1080×1920/30-fps-Takes und fehlender Musikfreigabe gesperrt. 18-Sekunden-/540-Frame-Storyboard ist kein Film; keine MP4 gerendert oder publiziert. Alte Juni-Assets nicht verwenden.
+4. Projektor und Futterspender `15523986473345` sind ACTIVE/kaufbar; Inventory untracked/`CONTINUE`, Menge0 nicht als Ausverkauf ausgeben. Futterspender-Body/SEO in R165 ist nur Freigabeentwurf. Vor einem späteren Write Produkt frisch lesen und nur den exakt freigegebenen Diff anwenden.
+5. Klaviyo: `W7XTVD` Placed Order, Konto-USD/Shop-CHF getrennt. `XEGbTB` LIVE, `Vse76a`, `VbLQj6`, `RnTvsY`, `UXEjv2` DRAFT beziehungsweise gesperrt. Nur der neutrale XEGbTB-Mail2-Betreff/Vorschautext liegt zur Freigabe vor; keinen Flow aktivieren oder Kunden kontaktieren.
+6. Kennzahlen nicht unnötig wiederholen: heutige Metricool-Teilmessungen stehen im R165-Beleg. Fehlende Werte unbekannt; keine Verkäufe aus Aufrufen oder Interaktionen ableiten.
+7. Keine Metricool-, Shopify-, Klaviyo-, DNS-, Merchant-, Feed-, Ads-, Budget-, Rabatt-, Kunden- oder Renderänderung in R165. 08/14/19 Europe/Zurich unverändert, keine neue Automation.
+8. Belege: `CONTENT-VERKAUFSPAKET-20261110-R165.md/.json`. Claude-Kenntnisnahme erst mit echtem Receipt behaupten; aktueller Zustand `unknown_no_claude_receipt`.

@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "marker": "[LUXESTYLE_R165_20261110]",
+  "revision": 165,
+  "observedAt": "2026-11-10T08:12:00+01:00",
+  "identity": {
+    "shopify": {
+      "name": "LuxeStyle",
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "country": "Switzerland",
+      "verified": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "verified": true,
+      "otherBrandIgnored": true
+    }
+  },
+  "metricoolPlan": {
+    "from": "2026-11-10T08:07:00+01:00",
+    "to": "2026-11-18T00:00:00+01:00",
+    "initialLargeQuery": "INVALID_ARGUMENT",
+    "splitQueriesSucceeded": true,
+    "postObjects": 62,
+    "channelStates": 79,
+    "providerStatus": "PENDING",
+    "draftFalse": 79,
+    "globalAutoPublishTrue": 79,
+    "channelAutoPublish": {
+      "instagram": true,
+      "facebook": "unknown_field_not_delivered",
+      "threads": "unknown_field_not_delivered",
+      "tiktok": "unknown_field_not_delivered",
+      "pinterest": "unknown_field_not_delivered",
+      "youtube": "unknown_field_not_delivered"
+    },
+    "counts": {
+      "instagram": 19,
+      "facebook": 19,
+      "threads": 6,
+      "tiktok": 18,
+      "pinterest": 5,
+      "youtube": 12
+    },
+    "dailyMatrix": {
+      "2026-11-10": [3, 3, 1, 3, 1, 2],
+      "2026-11-11": [4, 4, 1, 4, 1, 3],
+      "2026-11-12": [3, 3, 1, 3, 1, 2],
+      "2026-11-13": [4, 4, 1, 4, 1, 3],
+      "2026-11-14": [3, 3, 1, 3, 1, 2],
+      "2026-11-15": [2, 2, 1, 1, 0, 0],
+      "2026-11-16": [0, 0, 0, 0, 0, 0],
+      "2026-11-17": [0, 0, 0, 0, 0, 0]
+    },
+    "dailyMatrixOrder": ["instagram", "facebook", "threads", "tiktok", "pinterest", "youtube"],
+    "gaps": {
+      "allChannels": ["2026-11-16", "2026-11-17"],
+      "pinterestAndYoutubeAdditional": ["2026-11-15"]
+    },
+    "sameChannelDuplicates": 0,
+    "sameTimeCollisions": 0,
+    "mediaUrlIdentities": 62,
+    "rightsAndQualityProvenByPlan": false,
+    "publishedHistory": "unknown_not_delivered_by_future_plan_tool",
+    "writes": 0
+  },
+  "metricoolAnalytics": {
+    "from": "2026-11-03T00:00:00+01:00",
+    "to": "2026-11-09T23:59:59+01:00",
+    "instagram": {
+      "metrics": ["IGEV05", "IGEV38"],
+      "impressions": 669,
+      "impressionsComplete": true,
+      "interactionsExplicitMinimum": 5,
+      "interactionsWeek": "unknown_missing_four_days"
+    },
+    "facebook": {
+      "metrics": ["FBEV49", "FBEV34"],
+      "contentViews": 405,
+      "contentViewsComplete": true,
+      "interactionsExplicitMinimum": 1,
+      "interactionsWeek": "unknown_missing_six_days"
+    },
+    "threads": {
+      "metrics": ["THEV06", "THEV05"],
+      "explicit20261109": {"impressions": 0, "interactions": 0},
+      "week": "unknown_missing_20261103_to_20261108"
+    },
+    "tiktok": {
+      "metrics": ["TKEV12", "TKEV13", "TKEV14", "TKEV15"],
+      "partialRange": "2026-11-03/2026-11-08",
+      "views": 2383,
+      "interactions": 8,
+      "week": "unknown_missing_20261109"
+    },
+    "pinterest": {
+      "metrics": ["PIEV11", "PIEV13"],
+      "allSevenDaysDelivered": true,
+      "impressions": 0,
+      "interactions": 0,
+      "scope": "pins_published_in_period"
+    },
+    "youtube": {
+      "metrics": ["YTEV02", "YTEV14", "YTEV16", "YTEV18"],
+      "partialRange": "2026-11-03/2026-11-07",
+      "views": 607,
+      "week": "unknown_incomplete_interactions_and_missing_20261108_09"
+    },
+    "salesInferred": false
+  },
+  "products": {
+    "projector": {
+      "id": "15521256604033",
+      "status": "ACTIVE",
+      "publicHttp": 200,
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "variantLabels": ["A", "B", "C", "D", "E", "F", "G"],
+      "variantPricesCHF": ["34.90", "37.90", "40.90", "49.90", "51.90", "44.90", "35.90"],
+      "priceRangeCHF": ["34.90", "51.90"],
+      "allAvailableForSale": true,
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "imageCount": 12,
+      "videoCount": 1,
+      "publicationCount": 8,
+      "tagBlocker": "auswahl-offen",
+      "targetVariantBound": false,
+      "mediaRights": "unknown"
+    },
+    "feeder": {
+      "id": "15523986473345",
+      "status": "ACTIVE",
+      "publicHttp": 200,
+      "url": "https://luxestyle.ch/products/futterautomat-fur-katze-527488",
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1da71d7a-c3b9-44ea-8179-626f37671f2e.jpg?v=1788416889",
+      "variantId": "56217490391425",
+      "sku": "CJ-1418384701726527488",
+      "priceCHF": "96.90",
+      "availableForSale": true,
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "imageCount": 5,
+      "publicationCount": 8,
+      "definedSocialBlockTag": false,
+      "unverifiedClaims": ["Edelstahl", "automatische Fütterung während Abwesenheit", "2,2 kg"]
+    }
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "finishedMasterMp4": false,
+    "sourcePath": "/workspace/luxestyle-review/master-shopify-refresh-20261108/shopify-source.mp4",
+    "sourceSha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "sourceTechnical": {"durationSeconds": 27.96, "width": 960, "height": 540, "fps": 25},
+    "targetTechnical": {"durationSeconds": 18, "frames": 540, "width": 1080, "height": 1920, "fps": 30},
+    "hooks": ["Dein Raum. Neues Licht.", "Licht im Detail."],
+    "cta": "Produkt ansehen",
+    "musicSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "musicTechnicallyAvailable": true,
+    "musicRightsAndListeningApproval": false,
+    "oldJuneVideoAssetsUsed": false,
+    "blockers": ["current_variant_and_unit_binding", "native_vertical_30fps_takes", "commercial_media_rights", "music_provenance_and_mix_approval"]
+  },
+  "klaviyo": {
+    "account": "XWqMAD",
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "placedOrderMetric": "W7XTVD",
+    "checkoutStartedMetric": "XhnJPv",
+    "addedToCartMetric": "TFy7Yn",
+    "flows": {
+      "XEGbTB": "LIVE",
+      "Vse76a": "DRAFT",
+      "VbLQj6": "DRAFT",
+      "RnTvsY": "DRAFT",
+      "UXEjv2": "DRAFT_BLOCKED_FOREIGN_BRAND_EN_US"
+    },
+    "sevenDayReport": {
+      "XEGbTB": {"recipients": 1, "delivered": 1, "uniqueOpens": 1, "uniqueClicks": 0, "conversions": 0},
+      "otherSelectedFlows": "unknown_no_report_rows"
+    },
+    "singleApprovalProposal": {
+      "flow": "XEGbTB",
+      "message": "email_2",
+      "subject": "Dein Einkauf ist noch gespeichert",
+      "preview": "Kehre zu deinem Warenkorb zurück und prüfe die aktuellen Angaben an der Kasse.",
+      "applied": false
+    },
+    "writes": 0
+  },
+  "salesAction": {
+    "productId": "15523986473345",
+    "type": "claim_safe_product_copy_and_seo",
+    "title": "Futterspender für Katzen in Weiss",
+    "body": [
+      "Dieser weisse Futterspender für Katzen ist in einer Ausführung erhältlich. Prüfe vor dem Kauf die aktuelle Produktseite.",
+      "Aktuelle Ausführung: Farbe Weiss; eine Ausführung. Der aktuelle Preis und die Verfügbarkeit werden auf der Produktseite angezeigt."
+    ],
+    "seoTitle": "Futterspender für Katzen in Weiss | LuxeStyle",
+    "seoDescription": "Weisser Futterspender für Katzen in einer Ausführung. Aktuellen Preis und Verfügbarkeit direkt bei LuxeStyle prüfen.",
+    "approvalState": "prepared_for_owner_approval_not_applied"
+  },
+  "writes": {
+    "metricool": 0,
+    "shopify": 0,
+    "klaviyo": 0,
+    "dns": 0,
+    "merchant": 0,
+    "feed": 0,
+    "ads": 0,
+    "budget": 0,
+    "discount": 0,
+    "customerMessages": 0,
+    "renders": 0
+  },
+  "rankingImpact": "unknown",
+  "salesImpact": "unknown",
+  "claudeReceipt": "unknown_no_claude_receipt"
+}

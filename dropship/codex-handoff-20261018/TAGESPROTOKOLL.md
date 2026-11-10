@@ -1834,3 +1834,20 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Grenzen | Keine GSC-Wiederholung und keine Theme-, Menü-, Merchant-, Feed-, GTM-, Ads-, Budget-, Rabatt-, Flow-, DNS-, Social-, CJ- oder Renderaktion | Keine Ranking- oder Verkaufswirkung behauptet; Unbekanntes bleibt unbekannt |
 
 [LUXESTYLE_R164_20261110]
+
+### R165
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | R164-Handoff, Projektgedächtnis und denselben 10.11.-Tagesblock gelesen; Shopify und Metricool frisch verifiziert | LuxeStyle/luxestyle.ch/CHF/Schweiz sowie brandId6227837/EuropeZurich und sechs Kanalidentitäten passend |
+| Metricool-Planung | 10.11.08:07–18.11.00:00 in zwei kleinen Fenstern gelesen; UUID-/Medien-/Kollisions- und Doppelprüfung | 62 Objekte/79 PENDING-Zustände; keine erkannten exakten kanalgleichen Text-/Medien-Doppel oder Zeitkollisionen; Lücken alle Kanäle16.–17.11., Pinterest/YouTube zusätzlich15.11.;0 Writes |
+| Kanalmetriken | Gültige IDs entdeckt und03.–09.11. in kleinen Kanalabfragen gelesen | IG669 Darstellungen vollständig; FB405 Inhaltsaufrufe vollständig; TikTok03.–08.11. 2'383/8; YouTube03.–07.11.607; Fehlwerte unbekannt; keine Verkaufsableitung |
+| Produkte | Projektor und Futterspender gezielt auf ACTIVE, Preise, Varianten, Bilder, Kaufbarkeit und Inventory geprüft | Beide kaufbar; untracked/CONTINUE/Menge0; Projektor wegen `auswahl-offen` und fehlender Bindung/Rechte Social-gesperrt |
+| Master / Rechte | Aktuelle Shopify-Quelle, echtes Referenzbild und Pflichtmusik technisch geprüft; 18s-/540-Frame-Storyboard fortgeführt | Quelle960×540/25fps nur Referenz; Variante/Motiv/Einheit, native Hochkanttakes, Rechte und Musikabnahme fehlen; keine MP4, keine Juni-Assets verwendet |
+| Content-Entwurf | Zwei alternative Hooks, präziser Schnittplan, deutsche Overlays, sechs kanalgerechte Texte und eindeutige UTMs erstellt | Nur Entwurf; Instagram/TikTok-Bio, Pinterest-Board und YouTube-Postflags vor Nutzung erneut prüfen |
+| Klaviyo | Placed-Order-Metrik, relevante Flows und kleinen 7-Tage-Report read-only geprüft; USD/CHF getrennt | XEGbTB LIVE; weitere geprüfte Flows DRAFT/gesperrt; genau ein neutraler Mail2-Textvorschlag zur Freigabe;0 Writes |
+| Verkaufsaktion | Claim-sicheren deutschen Futterspender-Body und SEO als exakten Freigabeentwurf erstellt | Unbelegte Edelstahl-, Gewichts-, Automatik-/Abwesenheitsclaims würden entfernt; noch kein Shopify-Write |
+| Dokumentation / Claude Code | R165-Paket und kanonische Übergabe additiv fortgeführt | Revision165 mit24 Aufgaben/128 Historieneinträgen vorgesehen;08/14/19 unverändert; Claude-Receipt unbekannt |
+| Grenzen | Keine Kunden-, Rabatt-, Budget-, Shop-Einstellungs-, Flow-, DNS-, Merchant-, Feed-, Social- oder Renderänderung | Unbekanntes bleibt unbekannt; keine Ranking- oder Verkaufswirkung behauptet |
+
+[LUXESTYLE_R165_20261110]

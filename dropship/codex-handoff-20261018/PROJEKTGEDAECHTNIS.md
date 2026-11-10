@@ -1434,3 +1434,15 @@ R163-Protokollsprache wurde auf den bereits vollzogenen Stand berichtigt. GSC ni
 Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 
 [LUXESTYLE_R164_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 165: begrenzte Content-, Planungs- und Verkaufsprüfung
+
+Shopify und Metricool wurden frisch auf LuxeStyle/`luxestyle.ch`/CHF/Schweiz sowie brandId `6227837`, Europe/Zurich und die sechs erwarteten Kanäle gebunden. Die Planung 10.–17.11. enthält 62 Postobjekte/79 `PENDING`-Kanalzustände, keine erkannten exakten kanalgleichen Text-/Medien-Doppel oder Zeitkollisionen. Lücken: alle Kanäle 16.–17.11.; Pinterest und YouTube zusätzlich 15.11. Kanalbezogenes Auto-Publish wurde nur für Instagram ausdrücklich geliefert. Ohne qualifizierte Masterdatei kein Write.
+
+Kleine Metricool-Abfragen 03.–09.11. bleiben kanalbezogen: Instagram 669 vollständige Darstellungen, Facebook 405 vollständige Inhaltsaufrufe, TikTok Teilmessung 03.–08.11. mit 2'383 Aufrufen/8 Interaktionen, YouTube Teilmessung 03.–07.11. mit 607 Aufrufen. Fehlende Werte unbekannt; keine Verkaufsableitung.
+
+Projektor `15521256604033` und Futterspender `15523986473345` sind ACTIVE, kaufbar und untracked/`CONTINUE`. Projektor-Social bleibt wegen `auswahl-offen`, fehlender Varianten-/Motiv-/Einheitenbindung, fehlender Rechte und fehlender nativer Hochkanttakes gesperrt. Der 18-Sekunden-/540-Frame-Master ist ein Storyboard, keine MP4. Alte Juni-Assets wurden nicht verwendet. Futterspender-Text/SEO und neutraler Klaviyo-Text für `XEGbTB` E-Mail 2 sind konkrete Freigabeentwürfe, nicht umgesetzt. Klaviyo-Metrik `W7XTVD`; USD und CHF getrennt.
+
+Keine operativen Writes und keine Ranking-/Verkaufswirkung behauptet. Claude-Receipt `unknown_no_claude_receipt`. Belege: `CONTENT-VERKAUFSPAKET-20261110-R165.md/.json`.
+
+[LUXESTYLE_R165_20261110]
