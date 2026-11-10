@@ -1899,3 +1899,19 @@ Fortsetzung des ausdrücklichen Kategorieauftrags über Mitternacht, Europe/Zuri
 | Dokumentation / Claude | R168-Bericht, Beleg und kanonische Übergabe fortgeführt | Revision168 vorgesehen; Zeitpunkt/Verursacher der bestehenden Korrektur unbekannt; Receipt unbekannt |
 
 [LUXESTYLE_R168_20261110] [Bericht](MERCHANT-AVAILABILITY-READBACK-20261110-R168.md) · [Beleg](MERCHANT-AVAILABILITY-READBACK-20261110-R168.json).
+
+### R169
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | Revision168, Projektgedächtnis und Tagesblock gelesen; Shopify/Metricool frisch gebunden | LuxeStyle/luxestyle.ch/CHF/Schweiz und brandId6227837/EuropeZurich/sechs Kanäle passend |
+| Metricool-Planung | 10.11.13:55–18.11.23:59 klein gelesen; UUID-/Medien-/Doppel-/Kollisions-/Statusprüfung |57 Objekte/72 PENDING; keine erkannten Doppel/Kollisionen;7 fällige Zustände PUBLISHED; Lücken15.11. Pinterest/YT und16.–18.11. alle Kanäle;0 Writes |
+| Kennzahlen | Heutige R165-Messung und gültige IDs wiederverwendet | Keine Doppelabfrage; fehlende Tage unbekannt; keine Verkaufsableitung |
+| Produkte | Projektor und Futterspender frisch auf Varianten/Preis/Bilder/Kaufbarkeit/Inventory/Tags/Publikation geprüft | Beide ACTIVE/kaufbar/untracked/CONTINUE; Projektor alte Variante veraltet und `auswahl-offen`; Futterspender-Titel driftete, Ursache unbekannt |
+| Master / Content | Quelle/Bild/Musik/Storyboard frisch geprüft und denselben18s-Master plus sechs deutsche Entwürfe/UTMs präzisiert | Nur Storyboard; A–G-Bindung, native Takes, Rechte, Musikabnahme und MP4 fehlen;0 Render/Upload/Social |
+| Klaviyo | Heutige R165/R166-Belege statt erneuter umfangreicher Abfrage verwendet | XEGbTB LIVE; andere geprüfte Flows DRAFT/gesperrt; kein neuer Vorschlag/Write |
+| Verkaufsentwurf | Einen internen Link von Futterautomaten-Kollektion Seite1 zum Produkt vorbereitet | Freigabeentwurf; HTTP200/self-canonical; Ranking-/Verkaufswirkung unbekannt; nicht live |
+| Dokumentation / Claude | R169-Bericht, Maschinenbeleg und kanonische Übergabe fortgeführt | Revision169 vorgesehen;08/14/19 unverändert; Receipt unbekannt |
+| Grenzen | Keine Shopify-, Merchant-, Feed-, Metricool-, Klaviyo-, Kunden-, DNS-, Theme-, Budget-, Rabatt- oder Renderänderung | Unbekanntes bleibt unbekannt |
+
+[LUXESTYLE_R169_20261110] [Bericht](CONTENT-VERKAUFSPAKET-20261110-R169.md) · [Beleg](CONTENT-VERKAUFSPAKET-20261110-R169.json).

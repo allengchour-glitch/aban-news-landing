@@ -1480,3 +1480,13 @@ Nach ausdrücklicher Inhaberfreigabe wurde das Angebot `13331643115375957532` in
 Kein Merchant-/Feed-Write, weil kein Diff bestand. Zeitpunkt und Verursacher der Korrektur unbekannt. Schweiz Free Listings freigegeben; separate LI-Versandbeanstandung bleibt unverändert und ausserhalb der Freigabe. Keine Versand-, Länder-, Preis- oder Statusänderung. Belege: `MERCHANT-AVAILABILITY-READBACK-20261110-R168.md/.json`. Claude-Receipt bleibt `unknown_no_claude_receipt`.
 
 [LUXESTYLE_R168_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 169: Content-/Verkaufspaket ohne Qualitätsumgehung
+
+Identitäten PASS. Metricool10.11.13:55–18.11.23:59:57 Zukunftsobjekte/72 PENDING-Zustände, draft=false/global autoPublish=true; nur Instagram kanalbezogen bestätigt. Keine erkannten exakten kanalgleichen Doppel/Kollisionen;7 fällige Zustände PUBLISHED. Lücken15.11. Pinterest/YouTube und16.–18.11. alle sechs Kanäle. Kein Write: Master-/Rechtegates verhindern sichere Ergänzung. Ein Pin12.11. nutzt Board1111333714239114033 mit unbekanntem Namen/Eigentum.
+
+Projektor aktuell7 A–G-Varianten, alte Variante56197916361089 veraltet. ACTIVE/kaufbar/untracked/CONTINUE, aber `auswahl-offen`, Filmzuordnung und Rechte offen. Der eine18s-Master bleibt Storyboard mit zwei Hooks und sechs deutschen Kanal-/UTM-Entwürfen; keine MP4. Futterspender ACTIVE/kaufbar; öffentlicher Titel jetzt «Automatischer Futterspender für Katzen», Abweichungsursache unbekannt. Genau ein interner Kollektionslink als Freigabeentwurf, nicht live.
+
+Heutige Kennzahlen/Klaviyo nicht wiederholt; R165/R166 bleiben Tagesbeleg. Keine Social-, Shopify-, Theme-, Klaviyo-, Merchant-, Feed-, CJ-, DNS-, Ads-, Budget-, Rabatt- oder Renderwrites. Belege `CONTENT-VERKAUFSPAKET-20261110-R169.md/.json`. Receipt `unknown_no_claude_receipt`.
+
+[LUXESTYLE_R169_20261110]

@@ -2078,3 +2078,15 @@ Kein Write wurde ausgeführt, weil kein fachlicher Diff mehr bestand. Zeitpunkt 
 [R168 Bericht](MERCHANT-AVAILABILITY-READBACK-20261110-R168.md) · [Maschinenbeleg](MERCHANT-AVAILABILITY-READBACK-20261110-R168.json).
 
 [LUXESTYLE_R168_20261110]
+
+## Aktueller Stand – 10.11.2026, Revision 169: rollende Planung frisch geprüft, Master weiterentwickelt
+
+Shopify und Metricool wurden passend gebunden. Das frische Fenster 10.11.13:55–18.11.23:59 Zürich enthält57 zukünftige Objekte/72 PENDING-Kanalzustände, alle draft=false/global autoPublish=true; kanalbezogenes Auto-Publish nur für Instagram ausdrücklich geliefert. Keine erkannten exakten kanalgleichen Doppel oder Zeitkollisionen. Sieben heute fällige Kanalzustände waren PUBLISHED. Abdeckung10.–14.11. vollständig;15.11. fehlen Pinterest/YouTube,16.–18.11. alle sechs Kanäle. Wegen offener Film-/Rechtegates kein Ersatzpost.
+
+Projektor und Futterspender sind ACTIVE/kaufbar, untracked/CONTINUE; Menge0 ist kein Ausverkaufsbeleg. Die alte Projektorvariante ist veraltet; sieben aktuelle A–G-Varianten liegen vor, aber Tag `auswahl-offen` und fehlende Film-/Variantenbindung blockieren Social. Quelle960×540/25fps und Musikdatei technisch vorhanden; Rechte, native Hochkanttakes, Musikabnahme und Master-MP4 fehlen. Der eine18s-/540-Frame-Plan sowie sechs deutsche Kanalentwürfe/UTMs wurden präzisiert, nicht gerendert oder terminiert.
+
+Klaviyo- und Kennzahlabfragen wurden wegen heutiger R165-Messung nicht wiederholt. Neu vorbereiteter Freigabeschritt: genau ein interner Link von Seite1 der Futterautomaten-Kollektion zum Futterspender. Der öffentliche Produkt-H1 weicht aktuell von R166 ab; Ursache unbekannt, keine Titeländerung. Alle Plattformwrites0; Wirkung unbekannt.
+
+[R169 Bericht](CONTENT-VERKAUFSPAKET-20261110-R169.md) · [Maschinenbeleg](CONTENT-VERKAUFSPAKET-20261110-R169.json).
+
+[LUXESTYLE_R169_20261110]

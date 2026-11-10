@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "run": "R169",
+  "brand": "luxestyle.ch",
+  "checkedAt": "2026-11-10T14:01:35+01:00",
+  "identity": {
+    "shopify": {"name":"LuxeStyle","domain":"luxestyle.ch","currency":"CHF","country":"Switzerland"},
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "facebook": "1049840534888592",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "identityMatch": true,
+      "otherBrandIgnored": 7967118
+    }
+  },
+  "metricoolPlan": {
+    "from": "2026-11-10T13:55:00+01:00",
+    "to": "2026-11-18T23:59:59+01:00",
+    "postObjects": 57,
+    "channelStates": 72,
+    "states": {"PENDING":72},
+    "draftFalse": 72,
+    "globalAutoPublishTrue": 72,
+    "channelAutoPublish": {"instagramTrue":17,"facebook":"unknown","threads":"unknown","tiktok":"unknown","pinterest":"unknown","youtube":"unknown"},
+    "perChannel": {"facebook":17,"instagram":17,"tiktok":17,"youtube":11,"threads":5,"pinterest":5},
+    "exactSameChannelDuplicates": 0,
+    "sameChannelTimeCollisions": 0,
+    "dueBeforeRead": {"postObjects":5,"channelStates":7,"published":7,"errorStates":0},
+    "coverage": {
+      "2026-11-10/2026-11-14": "all_six_channels",
+      "2026-11-15": {"missing":["pinterest","youtube"]},
+      "2026-11-16": {"missing":["facebook","instagram","threads","tiktok","pinterest","youtube"]},
+      "2026-11-17": {"missing":["facebook","instagram","threads","tiktok","pinterest","youtube"]},
+      "2026-11-18": {"missing":["facebook","instagram","threads","tiktok","pinterest","youtube"]}
+    },
+    "rollingSevenDayRequirementMet": false,
+    "pinterest": {
+      "verifiedBoardInPlan": {"id":"1111333714239114020","name":"Geschenkideen Schweiz","owner":"luxestyleCH","plannedPosts":4},
+      "unknownBoardInPlan": {"id":"1111333714239114033","postId":422791720,"uuid":"2095739444122305341","plannedAt":"2026-11-12T20:00:00+01:00","name":null,"owner":null,"publicExactSearch":"no_binding_result","directPinterestResource":"http_403","verificationState":"unknown_do_not_treat_as_verified"},
+      "historicalBoard1111333714239531706Used": false
+    },
+    "writes": 0
+  },
+  "metrics": {
+    "repeatedInR169": false,
+    "reason": "already read today in R165",
+    "period": "2026-11-03/2026-11-09",
+    "instagram": {"metricIds":["IGEV05","IGEV38"],"impressions":669,"interactionsMinimum":5,"missingInteractionDays":4},
+    "facebook": {"metricIds":["FBEV49","FBEV34"],"contentViews":405,"interactionsMinimum":1,"missingInteractionDays":6},
+    "threads": {"metricIds":["THEV06","THEV05"],"deliveredDays":["2026-11-09"],"deliveredImpressions":0,"deliveredInteractions":0,"missingDays":["2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08"]},
+    "tiktok": {"metricIds":["TKEV12","TKEV13","TKEV14","TKEV15"],"period":"2026-11-03/2026-11-08","views":2383,"interactions":8,"2026-11-09":"unknown"},
+    "pinterest": {"metricIds":["PIEV11","PIEV13"],"deliveredDailyRows":7,"impressions":0,"interactions":0,"scope":"pins published in period"},
+    "youtube": {"metricIds":["YTEV02","YTEV14","YTEV16","YTEV18"],"period":"2026-11-03/2026-11-07","views":607,"2026-11-08/2026-11-09":"unknown","completeInteractions":"unknown"},
+    "salesAttribution": "not_inferred"
+  },
+  "products": {
+    "projector": {
+      "productId":"15521256604033","status":"ACTIVE","publicHttp":200,"available":true,"url":"https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "historicalVariant56197916361089":"stale_do_not_use",
+      "variants":[
+        {"label":"A","id":"68122445283719","sku":"CJSN139239101AZ","priceCHF":"34.90"},
+        {"label":"B","id":"68122445316487","sku":"CJSN139239102BY","priceCHF":"37.90"},
+        {"label":"C","id":"68122445349255","sku":"CJSN139239103CX","priceCHF":"40.90"},
+        {"label":"D","id":"68122445382023","sku":"CJSN139239104DW","priceCHF":"49.90"},
+        {"label":"E","id":"68122445414791","sku":"CJSN139239105EV","priceCHF":"51.90"},
+        {"label":"F","id":"68122445447559","sku":"CJSN139239106FU","priceCHF":"44.90"},
+        {"label":"G","id":"68122445480327","sku":"CJSN139239107GT","priceCHF":"35.90"}
+      ],
+      "allAvailableForSale":true,"inventoryQuantity":0,"inventoryTracked":false,"inventoryPolicy":"CONTINUE","tagsNonEmpty":true,"channelGuardHits":[],"rueckholHits":[],"selectionTag":"auswahl-offen","images":12,"videos":1,"featuredImageSha256":"bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d","socialEligible":false
+    },
+    "feeder": {
+      "productId":"15523986473345","title":"Automatischer Futterspender für Katzen","titleDiffersFromR166":true,"titleChangeCausation":"unknown","status":"ACTIVE","publicHttp":200,"available":true,"url":"https://luxestyle.ch/products/futterautomat-fur-katze-527488","variantId":"56217490391425","sku":"CJ-1418384701726527488","priceCHF":"96.90","availableForSale":true,"inventoryQuantity":0,"inventoryTracked":false,"inventoryPolicy":"CONTINUE","tagsNonEmpty":true,"channelGuardHits":[],"rueckholHits":[],"images":5,"videos":0,"featuredImageSha256":"08e3a02097d9d323ff38e6f871148323ea525b6604a1fa8001e24625544840f1","professionalFilmEligible":false
+    }
+  },
+  "master": {
+    "masterId":"luxe_sternenprojektor_master_20261018","professionalMp4":false,"sourceSha256":"2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57","sourceTechnical":{"durationSeconds":27.96,"width":960,"height":540,"fps":25},"referenceImageSha256":"bb5526ce54c7eca8ac2bb38bb720d53a590a97e6df5bc1904de9cef8e8544b5d","musicSha256":"a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688","musicAvailable":true,"musicRightsApproved":false,"target":{"durationSeconds":18,"frames":540,"width":1080,"height":1920,"fps":30},"hooks":["Dein Raum. Neues Licht.","Licht im Detail."],"cta":"Produkt ansehen","oldJuneAssetsUsed":false,"blockers":["exact_current_A_G_variant_and_filmed_unit_binding","four_native_vertical_takes","commercial_file_bound_film_edit_advertising_rights","music_commercial_listening_mix_approval","final_mp4_and_quality_acceptance"]
+  },
+  "klaviyo": {
+    "repeatedInR169":false,"account":"XWqMAD","accountCurrency":"USD","shopCurrency":"CHF","placedOrderMetric":"W7XTVD","checkoutStartedMetric":"XhnJPv","addedToCartMetric":"TFy7Yn","flows":{"XEGbTB":"LIVE","Vse76a":"DRAFT","VbLQj6":"DRAFT","RnTvsY":"DRAFT","UXEjv2":"DRAFT_BLOCKED_ABAN_EN_US"},"sevenDayXEGbTB":{"recipients":1,"delivered":1,"uniqueOpens":1,"uniqueClicks":0,"conversions":0},"otherFlowRows":"unknown","newProposal":null,"writes":0
+  },
+  "salesApprovalDraft": {
+    "collection":"/collections/tier-futterautomaten","product":"/products/futterautomat-fur-katze-527488","html":"<p><a href=\"/products/futterautomat-fur-katze-527488\">Futterspender für Katzen ansehen</a>.</p>","reason":"product absent from collection page1 and present three times on page2; shorten crawl path","rankingEffect":"unknown","salesEffect":"unknown","executed":false
+  },
+  "writeSummary": {"metricool":0,"social":0,"shopify":0,"theme":0,"menu":0,"klaviyo":0,"customers":0,"merchant":0,"feed":0,"cj":0,"dns":0,"ads":0,"budget":0,"discount":0,"paidRenders":0,"uploads":0},
+  "claudeReceipt":"unknown_no_claude_receipt"
+}

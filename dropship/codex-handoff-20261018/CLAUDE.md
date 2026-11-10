@@ -399,3 +399,14 @@ Belege: `SEO-PRODUKT-FORTSETZUNG-20261110-R164.md/.json`.
 4. Kein Write und nicht erneut schreiben: Der Zielzustand war bereits vorhanden; Zeitpunkt/Verursacher unbekannt.
 5. CH Free Listings freigegeben. Separate LI-Versandbeanstandung bleibt; ohne eigene Freigabe und Lieferbelege nichts ändern.
 6. Keine Versand-, Preis-, Länder-, Produktstatus-, Feed-, Social- oder sonstige Plattformänderung. Belege `MERCHANT-AVAILABILITY-READBACK-20261110-R168.md/.json`. Receipt `unknown_no_claude_receipt`.
+
+## R169 – Planungslücken und derselbe professionelle Master
+
+[LUXESTYLE_R169_20261110]
+
+1. Frische Identität PASS. Metricool10.11.13:55–18.11.23:59:57 Zukunftsobjekte/72 PENDING-Zustände, draft=false/global autoPublish=true; kanalbezogen nur Instagram true.7 fällige Zustände PUBLISHED; keine erkannten exakten kanalgleichen Doppel/Kollisionen.
+2. Lücken:15.11. Pinterest/YouTube;16.–18.11. alle sechs Kanäle. Nicht mit Altclips/Slideshows füllen. Pin422791720/UUID2095739444122305341 nutzt Board1111333714239114033, Name/Eigentum unbekannt; nicht blind ändern.
+3. Projektor15521256604033 ACTIVE/kaufbar, aktuelle Varianten A–G68122445283719–68122445480327. Historische56197916361089 nicht verwenden. `auswahl-offen`, Einheit/Film/Rechte/native Hochkanttakes/Musikabnahme/MP4 blockieren Social.
+4. Master-ID unverändert. Quelle SHA2bb28156…/960×540/25fps nur Referenz; Ziel18s/540Frames/1080×1920/30fps. Hooks «Dein Raum. Neues Licht.»/«Licht im Detail.», CTA «Produkt ansehen». Sechs deutsche Entwürfe/UTMs im R169-Bericht;0 Render/Upload/Planung.
+5. Futterspender15523986473345 ACTIVE/kaufbar/CHF96.90. Öffentlicher Titel jetzt «Automatischer Futterspender für Katzen», Ursache der Abweichung von R166 unbekannt; nicht zurücksetzen. Interner Link von Kollektion Seite1 ist Freigabeentwurf.
+6. Kennzahlen/Klaviyo heute nicht wiederholen. Keine Plattformwrites. Belege `CONTENT-VERKAUFSPAKET-20261110-R169.md/.json`; Receipt `unknown_no_claude_receipt`.
