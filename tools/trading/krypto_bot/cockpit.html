@@ -809,7 +809,7 @@ function zeigeProfit(p) {
     </div>
     <h2 style="margin-top:12px">Offene Positionen</h2>${pos}`;
   linie($("p-kurve"), [{name: "Gewinn", farbe: "--s-pilot", punkte: p.kumuliert}], {fmt: x => vz(x) + " USDT", achse: x => vz(x), kurz: true,
-    titel: "Gewinn kumuliert", leer: "Noch kein realisierter Gewinn oder Verlust."});
+    titel: "Gewinn kumuliert", leer: "Für die Kurve werden mindestens zwei Tagesstände benötigt."});
   balken($("p-tage"), p.tage);
   uebersichtZeichnen();
 }

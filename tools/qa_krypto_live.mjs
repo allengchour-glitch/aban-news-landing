@@ -64,6 +64,8 @@ try {
     assert.match(await page.locator('[aria-label="Aktuelle Kontowerte"]').innerText(), /850/);
     assert.match(await page.locator('#u-konto').innerText(), /1.?114/);
     checks++;
+    assert.match(await page.locator('#p-kurve').innerText(), /mindestens zwei Tagesstände/);
+    checks++;
     for (const [zeitraum, wert] of [['heute', '22'], ['7_tage', '35'], ['30_tage', '62'], ['gesamt', '114']]) {
       await page.locator(`[data-profit-zeitraum="${zeitraum}"]`).click();
       assert.match(await page.locator('#p-netto').innerText(), new RegExp(wert));
